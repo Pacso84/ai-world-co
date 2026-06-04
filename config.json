@@ -1,0 +1,36 @@
+{
+  "company": {
+    "name": "AI World Co.",
+    "tagline": "Australian AI News, Curated by Agents",
+    "target_audience": "Australia",
+    "language": "en-AU",
+    "timezone": "Australia/Sydney"
+  },
+  "agents": {
+    "ceo": {
+      "model_provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "enabled": true
+    },
+    "rss-scraper": {
+      "model_provider": "google",
+      "model": "gemini-2.5-flash",
+      "enabled": true,
+      "schedule": "every 6 hours"
+    },
+    "iro": {
+      "model_provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "enabled": true
+    },
+    "ellenorzo": {
+      "model_provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "enabled": true
+    }
+  },
+  "limits": {
+    "daily_articles_max": 20,
+    "daily_api_cost_usd_max": 5
+  }
+}
