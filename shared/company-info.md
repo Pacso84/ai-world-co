@@ -147,30 +147,45 @@ Nem amerikai hírek vakon átvéve — saját kommentárral, helyi kontextussal.
 
 ## 7. A cég "személyisége" (brand voice)
 
-### 🎭 Két fő jelző:
+### 🎭 Három fő jelző:
 
-- 🎩 **Komoly és szakmai** — tényszerű, pontos, hiteles
-- 😄 **Barátságos és közvetlen** — mint egy okos barát aki elmagyarázza
+- 📖 **Tanító** — magyarázunk, ismétlünk ha kell, türelmesek vagyunk
+- 😄 **Barátságos** — közvetlen, közeli, nem leereszkedő
+- 💡 **Magyarázó** — minden szakszó azonnal elmagyarázva, hogy MINDENKI megértse
 
 ### 💡 A keverék jellemzése:
-> **"Szakmailag pontos, de érthető és emberi."**
-> Komoly téma, közvetlen hangnem. Tényalapú, de nem száraz. Olyan, mint amikor egy tanult barát kávé mellett mesél valamit — pontos, de élvezetes.
+> **"Mint egy jó tanár, aki barátságosan magyaráz — hogy MINDENKI megértse."**
+>
+> Tanítjuk az olvasót, nem ítélkezünk felette. Türelmesek vagyunk. Ha kell, **ismétlünk**. Ha kell, **analógiát** használunk. **Soha nem feltételezzük** hogy az olvasó már tudja a fogalmat.
 
 ### Példa hangnem (ugyanaz a hír 3 stílusban):
 
-> ❌ **Túl száraz**: *"Az OpenAI 2026.06.04-én bejelentette a GPT-5 modellt."*
+> ❌ **Túl szakmai**: *"Az OpenAI bejelentette a GPT-5 LLM-et 175B paraméterrel és multimodális képességekkel."*
 >
-> ✅ **A mi hangnemünk**: *"Megjött a GPT-5: az OpenAI ma bejelentette legújabb modelljét, és van benne pár dolog, amit érdemes közelebbről megnézni."*
+> ✅ **A mi hangnemünk**: *"Megjött a GPT-5! Ez az OpenAI legújabb AI modellje — gondolj rá úgy, mint egy nagyobb és okosabb ChatGPT-re. Most már nemcsak szöveget, hanem képeket és hangot is megért. Lássuk, mit jelent ez a hétköznapokban..."*
 >
 > ❌ **Túl bulvár**: *"BOMBA! Megjött a GPT-5 és FÜSTÖL! Soha nem hiszed mit tud!"*
 
 ### 📏 Konkrét szabályok az írónak:
-- ✅ Használj **tegező** formát ("nézd", "fontold meg", "így használd")
-- ✅ **Rövid mondatok** keverve hosszabbakkal — ritmus számít
-- ✅ **Kérdések** is mehetnek ("Mit jelent ez számodra?")
-- ❌ Ne használj felesleges felkiáltójeleket
-- ❌ Ne legyen click-bait ("Soha nem hiszed...")
-- ❌ Ne fogalmazz hivatalosan ("alulírott", "értesítjük Önt")
+
+#### ✅ KELL:
+- **Tegező** forma ("nézd", "fontold meg", "így használd")
+- **Minden szakszót azonnal magyarázni** zárójelben:
+  - Pl. *"LLM (nagy nyelvi modell — mint a ChatGPT motorja)"*
+  - Pl. *"API (programok közti kommunikációs csatorna)"*
+- **Analógiákat** használni ("olyan, mint amikor...")
+- **Rövid mondatok** keverve hosszabbakkal — ritmus számít
+- **Kérdések** is mehetnek ("Mit jelent ez számodra?")
+- **Ismétlés** ha fontos koncepció — a tanulás egyik kulcsa
+- **Konkrét példák** elvont magyarázat helyett
+
+#### ❌ NEM SZABAD:
+- Felesleges felkiáltójelek
+- Click-bait fogalmazás ("Soha nem hiszed...")
+- Hivatalos hangnem ("alulírott", "értesítjük Önt")
+- Magyarázat nélküli szakszó ("transformer architecture", "RAG pipeline" — magyarázat nélkül NEM)
+- Leereszkedés ("egy laikus számára ezt nehéz megérteni, de...")
+- Feltételezés hogy az olvasó már ért valamit
 
 ---
 
@@ -239,7 +254,7 @@ Bevezetjük a következőket:
 
 **Nem csinálunk**: politika, orvosi/pénzügyi tanács, híres emberek, hadiipar, lejáratás, összehasonlítás más cégek termékei között.
 
-**Hangnem**: szakmailag pontos, de érthető és emberi. Mint egy okos barát aki elmagyaráz.
+**Hangnem**: **tanító + barátságos + magyarázó**. Mint egy jó tanár, aki barátságosan magyaráz — hogy MINDENKI megértse.
 
 **Tempó**: napi 3-5 cikk + heti 1 mély elemzés. **Üres nap jobb mint gyenge nap.**
 
