@@ -1,0 +1,23 @@
+{
+  "name": "ai-world-co",
+  "version": "1.0.0",
+  "description": "AI World Co. - Multi-agent AI system serving Australian audience with daily AI news in plain language",
+  "type": "module",
+  "main": "core/orchestrator.js",
+  "scripts": {
+    "router-test": "node core/ai-router.test.js",
+    "scrape": "node scheduled/morning-scrape.js"
+  },
+  "keywords": ["ai", "agents", "news", "australia"],
+  "author": "pacsi84",
+  "license": "MIT",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.102.0",
+    "@google/genai": "^2.8.0",
+    "dotenv": "^17.4.2",
+    "groq-sdk": "^1.2.1"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

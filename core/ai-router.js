@@ -1,0 +1,303 @@
+// ===================================================================
+// AI ROUTER — A multi-provider agy
+// ===================================================================
+//
+// CÉL:
+//   Az agentek nem közvetlenül hívják a Claude/Gemini/Groq API-t.
+//   Helyette EZT a routert hívják: ai.ask(prompt, options)
+//   A router dönti el melyik szolgáltatóhoz menjen, fallback-eli ha
+//   elesik, és logolja a költséget.
+//
+// HASZNÁLAT (agentekben):
+//   import { ask } from '../core/ai-router.js';
+//   const response = await ask("Mi a fővárosa Ausztráliának?", {
+//     agentName: "rss-scraper"
+//   });
+//
+// MARVEEN-INSPIRÁCIÓ:
+//   - Safety filter a válaszra (AUP block check)
+//   - Tool restrictions (csak ami kell)
+//   - Event-driven response handling
+// ===================================================================
+
+import 'dotenv/config';
+import { readFileSync } from 'fs';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+
+import Anthropic from '@anthropic-ai/sdk';
+import { GoogleGenAI } from '@google/genai';
+import Groq from 'groq-sdk';
+
+// ===================================================================
+// KONFIG BETÖLTÉS
+// ===================================================================
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const configPath = join(__dirname, '..', 'config.json');
+const config = JSON.parse(readFileSync(configPath, 'utf-8'));
+
+// ===================================================================
+// PROVIDER KLIENSEK (lazy init — csak ha van API kulcs)
+// ===================================================================
+const clients = {
+  anthropic: null,
+  google: null,
+  groq: null
+};
+
+function getClient(provider) {
+  if (clients[provider]) return clients[provider];
+
+  switch (provider) {
+    case 'anthropic':
+      if (!process.env.ANTHROPIC_API_KEY) {
+        throw new Error('ANTHROPIC_API_KEY nincs a .env fájlban!');
+      }
+      clients.anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+      break;
+
+    case 'google':
+      if (!process.env.GOOGLE_API_KEY) {
+        throw new Error('GOOGLE_API_KEY nincs a .env fájlban!');
+      }
+      clients.google = new GoogleGenAI({ apiKey: process.env.GOOGLE_API_KEY });
+      break;
+
+    case 'groq':
+      if (!process.env.GROQ_API_KEY) {
+        throw new Error('GROQ_API_KEY nincs a .env fájlban!');
+      }
+      clients.groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
+      break;
+
+    default:
+      throw new Error(`Ismeretlen provider: ${provider}`);
+  }
+
+  return clients[provider];
+}
+
+// ===================================================================
+// PROVIDER-SPECIFIKUS HÍVÓK
+// ===================================================================
+
+async function callAnthropic(prompt, model, options) {
+  const client = getClient('anthropic');
+  const response = await client.messages.create({
+    model: model,
+    max_tokens: options.maxTokens || 2048,
+    system: options.systemPrompt || 'You are a helpful assistant.',
+    messages: [{ role: 'user', content: prompt }]
+  });
+
+  return {
+    text: response.content[0]?.text || '',
+    usage: {
+      inputTokens: response.usage.input_tokens,
+      outputTokens: response.usage.output_tokens
+    },
+    model: model,
+    provider: 'anthropic'
+  };
+}
+
+async function callGoogle(prompt, model, options) {
+  const client = getClient('google');
+  const response = await client.models.generateContent({
+    model: model,
+    contents: prompt,
+    config: {
+      systemInstruction: options.systemPrompt || 'You are a helpful assistant.',
+      maxOutputTokens: options.maxTokens || 2048
+    }
+  });
+
+  return {
+    text: response.text || '',
+    usage: {
+      inputTokens: response.usageMetadata?.promptTokenCount || 0,
+      outputTokens: response.usageMetadata?.candidatesTokenCount || 0
+    },
+    model: model,
+    provider: 'google'
+  };
+}
+
+async function callGroq(prompt, model, options) {
+  const client = getClient('groq');
+  const response = await client.chat.completions.create({
+    model: model,
+    max_tokens: options.maxTokens || 2048,
+    messages: [
+      { role: 'system', content: options.systemPrompt || 'You are a helpful assistant.' },
+      { role: 'user', content: prompt }
+    ]
+  });
+
+  return {
+    text: response.choices[0]?.message?.content || '',
+    usage: {
+      inputTokens: response.usage.prompt_tokens,
+      outputTokens: response.usage.completion_tokens
+    },
+    model: model,
+    provider: 'groq'
+  };
+}
+
+// Provider -> hívó függvény map
+const providerCallers = {
+  anthropic: callAnthropic,
+  google: callGoogle,
+  groq: callGroq
+};
+
+// ===================================================================
+// SAFETY FILTER (Marveen-inspiráció)
+// ===================================================================
+// Ellenőrzi hogy a válasz nem-e blokkolt vagy hibás.
+// Ha NULL-t ad vissza, az hívó tudja: a tartalom nem használható.
+// ===================================================================
+
+function safetyFilter(response) {
+  if (!response.text || response.text.trim().length === 0) {
+    return { safe: false, reason: 'Üres válasz' };
+  }
+
+  const blockedPhrases = [
+    "I can't help with",
+    "I cannot provide",
+    "I'm not able to",
+    "I cannot assist",
+    "This request violates"
+  ];
+
+  const lowerText = response.text.toLowerCase();
+  for (const phrase of blockedPhrases) {
+    if (lowerText.includes(phrase.toLowerCase())) {
+      return { safe: false, reason: `Tartalom-szabály blokk: "${phrase}"` };
+    }
+  }
+
+  return { safe: true };
+}
+
+// ===================================================================
+// KÖLTSÉG SZÁMÍTÁS (közelítés)
+// ===================================================================
+// Modell -> ár per 1M token (input/output USD)
+// ===================================================================
+
+const PRICING = {
+  // Anthropic
+  'claude-haiku-4-5': { input: 1.0, output: 5.0 },
+  'claude-sonnet-4-6': { input: 3.0, output: 15.0 },
+  'claude-opus-4-8': { input: 15.0, output: 75.0 },
+  // Google (Flash és Pro INGYENES a free tier-ig!)
+  'gemini-2.5-flash': { input: 0.075, output: 0.30 },
+  'gemini-2.5-pro': { input: 1.25, output: 5.0 },
+  // Groq (INGYENES a free tier-ig!)
+  'llama-3.3-70b-versatile': { input: 0.59, output: 0.79 }
+};
+
+function calculateCost(model, usage) {
+  const prices = PRICING[model];
+  if (!prices) return 0;
+  return (usage.inputTokens * prices.input + usage.outputTokens * prices.output) / 1_000_000;
+}
+
+// ===================================================================
+// LOGOLÁS
+// ===================================================================
+
+function logCall(agentName, provider, model, usage, costUsd, success, error = null) {
+  const timestamp = new Date().toISOString();
+  const entry = {
+    timestamp,
+    agent: agentName,
+    provider,
+    model,
+    inputTokens: usage?.inputTokens || 0,
+    outputTokens: usage?.outputTokens || 0,
+    costUsd: costUsd.toFixed(6),
+    success,
+    error: error?.message || null
+  };
+  // Egyszerű console log most — később fájlba is logolhatunk
+  const icon = success ? '✅' : '❌';
+  console.log(`${icon} [${agentName}] ${provider}/${model} - ${entry.inputTokens}+${entry.outputTokens} tok - $${entry.costUsd}${error ? ' ERROR: ' + error.message : ''}`);
+}
+
+// ===================================================================
+// FŐ FÜGGVÉNY: ASK
+// ===================================================================
+// Ez az amit az agentek hívnak!
+//
+// Paraméterek:
+//   prompt    - mit kérdezünk az AI-tól (string)
+//   options   - { agentName, systemPrompt?, maxTokens? }
+//
+// Visszaadja: { text, provider, model, costUsd } VAGY null ha minden elesett
+// ===================================================================
+
+export async function ask(prompt, options = {}) {
+  const { agentName, systemPrompt, maxTokens } = options;
+
+  if (!agentName) {
+    throw new Error('agentName kötelező az options-ban!');
+  }
+
+  const agentConfig = config.agents[agentName];
+  if (!agentConfig) {
+    throw new Error(`Ismeretlen agent: ${agentName} (config.json nem tartalmazza)`);
+  }
+
+  // Próbáljuk a primary modellt, majd fallback-et
+  const attempts = [agentConfig.primary_model, agentConfig.fallback_model].filter(Boolean);
+
+  for (const attempt of attempts) {
+    const { provider, model } = attempt;
+    const caller = providerCallers[provider];
+
+    if (!caller) {
+      console.warn(`⚠️  Ismeretlen provider "${provider}" — kihagyom`);
+      continue;
+    }
+
+    try {
+      const response = await caller(prompt, model, { systemPrompt, maxTokens });
+
+      // Safety check
+      const safety = safetyFilter(response);
+      if (!safety.safe) {
+        logCall(agentName, provider, model, response.usage, 0, false, new Error(safety.reason));
+        continue; // Próbáljuk a fallback-et
+      }
+
+      // Költség számítás + log
+      const cost = calculateCost(model, response.usage);
+      logCall(agentName, provider, model, response.usage, cost, true);
+
+      return {
+        text: response.text,
+        provider,
+        model,
+        costUsd: cost
+      };
+
+    } catch (error) {
+      logCall(agentName, provider, model, null, 0, false, error);
+      // Folytatjuk a fallback-kel
+    }
+  }
+
+  // Ha ide eljutunk, minden próbálkozás elesett
+  console.error(`💥 [${agentName}] MINDEN provider elesett!`);
+  return null;
+}
+
+// ===================================================================
+// EXPORTOK
+// ===================================================================
+
+export default { ask };
