@@ -1,36 +1,142 @@
 {
+  "_meta": {
+    "description": "AI World Co. központi konfiguráció - KÖLTSÉGHATÉKONY beállítás",
+    "version": "2.0",
+    "last_updated": "2026-06-04",
+    "philosophy": "Minden agenthez a LEGOLCSÓBB modell amelyik még jól megcsinálja. Ingyen tier-ek maximális kihasználása."
+  },
+
   "company": {
     "name": "AI World Co.",
     "tagline": "Australian AI News, Curated by Agents",
     "target_audience": "Australia",
     "language": "en-AU",
-    "timezone": "Australia/Sydney"
+    "timezone": "Australia/Sydney",
+    "website_url": "https://aiworld.example.com"
   },
+
   "agents": {
     "ceo": {
-      "model_provider": "anthropic",
-      "model": "claude-sonnet-4-6",
-      "enabled": true
+      "primary_model": { "provider": "anthropic", "model": "claude-haiku-4-5" },
+      "fallback_model": { "provider": "google", "model": "gemini-2.5-flash" },
+      "enabled": true,
+      "comment": "Orkesztrálás egyszerű feladat - Haiku elég ($1/$5 vs Sonnet $3/$15). Fallback: Gemini Flash (ingyen)."
     },
     "rss-scraper": {
-      "model_provider": "google",
-      "model": "gemini-2.5-flash",
+      "primary_model": { "provider": "google", "model": "gemini-2.5-flash" },
+      "fallback_model": { "provider": "groq", "model": "llama-3.3-70b-versatile" },
       "enabled": true,
-      "schedule": "every 6 hours"
+      "schedule": "every 4 hours",
+      "comment": "INGYEN (Gemini Flash napi 1500). Csak strukturálatlan adat rendezése. Fallback: Groq (szintén ingyen, brutál gyors)."
     },
     "iro": {
-      "model_provider": "anthropic",
-      "model": "claude-sonnet-4-6",
-      "enabled": true
+      "primary_model": { "provider": "anthropic", "model": "claude-sonnet-4-6" },
+      "fallback_model": { "provider": "google", "model": "gemini-2.5-pro" },
+      "enabled": true,
+      "comment": "Cikkíráshoz kell a minőség - Sonnet. Fallback: Gemini Pro (50/nap ingyen, utána fizetős)."
     },
     "ellenorzo": {
-      "model_provider": "anthropic",
-      "model": "claude-sonnet-4-6",
-      "enabled": true
+      "primary_model": { "provider": "google", "model": "gemini-2.5-pro" },
+      "fallback_model": { "provider": "anthropic", "model": "claude-sonnet-4-6" },
+      "enabled": true,
+      "comment": "Ellenőrzés strukturált feladat - Gemini Pro 50/nap INGYEN elég napi 20 cikkre. Fallback: Claude Sonnet ha túllépjük."
     }
   },
+
+  "providers": {
+    "anthropic": {
+      "enabled": true,
+      "api_key_env": "ANTHROPIC_API_KEY",
+      "models_available": ["claude-haiku-4-5", "claude-sonnet-4-6", "claude-opus-4-8"],
+      "pricing_note": "Csak fizetős. Min. $5 betöltés szükséges."
+    },
+    "google": {
+      "enabled": true,
+      "api_key_env": "GOOGLE_API_KEY",
+      "models_available": ["gemini-2.5-flash", "gemini-2.5-pro", "imagen-3"],
+      "free_tier": "Flash: 1500/nap | Pro: 50/nap | Imagen: 50/nap",
+      "pricing_note": "INGYEN. Bankkártya nem kell."
+    },
+    "groq": {
+      "enabled": true,
+      "api_key_env": "GROQ_API_KEY",
+      "models_available": ["llama-3.3-70b-versatile", "mixtral-8x7b"],
+      "free_tier": "~30 req/min, napi limit",
+      "pricing_note": "INGYEN. Brutál gyors (1000+ tok/sec)."
+    },
+    "openrouter": {
+      "enabled": false,
+      "api_key_env": "OPENROUTER_API_KEY",
+      "comment": "Opcionális backup - 300+ modell, pár ingyen. Most kikapcsolva."
+    }
+  },
+
+  "infrastructure": {
+    "hosting": {
+      "platform": "cloudflare-pages",
+      "url": "https://pages.cloudflare.com",
+      "cost": "0 (ingyenes, korlátlan)"
+    },
+    "database": {
+      "platform": "supabase",
+      "url": "https://supabase.com",
+      "cost": "0 (500MB Postgres + auth + storage ingyen)"
+    },
+    "images": {
+      "platform": "cloudinary",
+      "url": "https://cloudinary.com",
+      "cost": "0 (25GB tárhely + 25GB sávszél/hó)"
+    },
+    "newsletter": {
+      "platform": "mailerlite",
+      "url": "https://mailerlite.com",
+      "cost": "0 (1000 subscriber + 12000 email/hó)",
+      "enabled_phase": 3
+    },
+    "analytics": {
+      "platforms": ["google-analytics-4", "cloudflare-web-analytics"],
+      "cost": "0 (mindkettő ingyenes)"
+    },
+    "monitoring": {
+      "platform": "uptimerobot",
+      "cost": "0 (50 monitor ingyen)"
+    },
+    "automation": {
+      "platform": "github-actions",
+      "cost": "0 (2000 perc/hó ingyen)",
+      "fallback": "Saját PC + Windows Task Scheduler"
+    },
+    "domain": {
+      "tld": ".com",
+      "cost": "~$10-15/év",
+      "registrar_options": ["namecheap", "cloudflare-registrar (legolcsóbb)"]
+    }
+  },
+
   "limits": {
-    "daily_articles_max": 20,
-    "daily_api_cost_usd_max": 5
+    "daily_articles_max": 5,
+    "daily_articles_min": 0,
+    "weekly_deep_articles": 1,
+    "daily_api_cost_usd_max": 3,
+    "monthly_budget_usd_target": 30,
+    "monthly_budget_usd_hard_cap": 80,
+    "_comment": "Ha eléri a hard_cap-et, az agentek leállnak és felhasználói jóváhagyás kell."
+  },
+
+  "fallback_strategy": {
+    "rule_1": "Ha primary provider rate limit -> automatikusan fallback model",
+    "rule_2": "Ha mindkettő failel -> Telegram értesítés felhasználónak",
+    "rule_3": "Naponta egyszer költség report generálódik logs/-ba"
+  },
+
+  "cost_estimation_monthly_usd": {
+    "claude_haiku_ceo": "5-10 (orkesztrálás)",
+    "claude_sonnet_iro": "20-35 (cikkírás)",
+    "gemini_free_tier": "0 (scraper + ellenőrző + képek)",
+    "groq_free": "0 (Telegram, gyors válaszok)",
+    "hosting_supabase_cloudinary": "0",
+    "domain_yearly_divided": "~1",
+    "TOTAL_ESTIMATED": "$25-45/hó",
+    "WITHIN_BUDGET": "✅ (cél: $30, hard cap: $80)"
   }
 }
