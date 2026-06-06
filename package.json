@@ -8,14 +8,20 @@
     "router-test": "node core/ai-router.test.js",
     "scrape": "node scheduled/morning-scrape.js"
   },
-  "keywords": ["ai", "agents", "news", "australia"],
+  "keywords": [
+    "ai",
+    "agents",
+    "news",
+    "australia"
+  ],
   "author": "pacsi84",
   "license": "MIT",
   "dependencies": {
     "@anthropic-ai/sdk": "^0.102.0",
     "@google/genai": "^2.8.0",
     "dotenv": "^17.4.2",
-    "groq-sdk": "^1.2.1"
+    "groq-sdk": "^1.2.1",
+    "rss-parser": "^3.13.0"
   },
   "engines": {
     "node": ">=20.0.0"
