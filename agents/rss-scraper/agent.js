@@ -1,20 +1,23 @@
 // ===================================================================
-// RSS SCRAPER AGENT
+// RSS SCRAPER AGENT (v2.0 - éles teszt után optimalizálva)
 // ===================================================================
 //
 // FELADAT:
 //   1. Beolvassa az engedélyezett RSS forrásokat (sources/rss-feeds.json)
-//   2. Letölti minden forrásból a friss cikkeket
-//   3. AI-jal (Gemini Flash) eldönti melyik RELEVÁNS nekünk
-//   4. Lementi a releváns cikkeket nyers formában (content/drafts/)
-//   5. Naplózza mi történt (logs/)
+//   2. Feedenként CSAK a legújabb N cikket nézi (max_items_per_feed)
+//   3. INGYENES kulcsszó-előszűrő: nyilvánvaló nem-AI cikkek kiszűrése
+//   4. A maradékot KÖTEGELVE (batch) küldi az AI-nak (kvóta spórolás!)
+//   5. Releváns cikkeket lement (content/drafts/)
 //
 // FUTTATÁS:
 //   node agents/rss-scraper/agent.js
+//   node agents/rss-scraper/agent.js --max-ai-calls 3   (kvóta limit)
 //
-// FŐ ELV (a brand-ből):
-//   "Nem erőltetjük a cikkeket" — ha nincs jó hír, nem írunk.
-//   A Scraper SOK hírt gyűjt, de szigorúan SZŰR.
+// v2.0 VÁLTOZÁSOK (éles teszt tanulságai):
+//   - Limit feedenként (volt: 992 cikk egy feedből!)
+//   - Kulcsszó előszűrő (ingyenes)
+//   - Batch AI hívás (volt: 1 hívás/cikk -> kvóta azonnal elfogyott)
+//   - Seen bug fix: csak sikeres AI döntés után jelöl "látottnak"
 // ===================================================================
 
 import 'dotenv/config';
@@ -34,41 +37,72 @@ const PROJECT_ROOT = join(__dirname, '..', '..');
 const FEEDS_PATH = join(PROJECT_ROOT, 'sources', 'rss-feeds.json');
 const DRAFTS_DIR = join(PROJECT_ROOT, 'content', 'drafts');
 const LOGS_DIR = join(PROJECT_ROOT, 'logs');
-
 const SEEN_ITEMS_PATH = join(__dirname, 'seen-items.json');
 
 const AGENT_NAME = 'rss-scraper';
 
+// Mennyi cikket küldjünk egy AI hívásba (batch méret)
+const BATCH_SIZE = 15;
+// Hány új cikknél magasabb relevancia-pont kell a mentéshez
+const MIN_SCORE = 6;
+
 const parser = new Parser({
   timeout: 15000,
-  headers: { 'User-Agent': 'AIWorldCo-RSS-Scraper/1.0' }
+  headers: { 'User-Agent': 'Mozilla/5.0 (compatible; AIWorldCo/1.0; +https://aiworld.co)' }
 });
 
 // ===================================================================
-// "SEEN ITEMS" KEZELÉS — már látott cikkek nyilvántartása
+// PARANCSSORI ARGUMENTUMOK
 // ===================================================================
-// Hogy ne dolgozzuk fel ugyanazt a cikket többször!
-// Egyszerű JSON: { "feed-id": ["link1", "link2", ...] }
+
+function parseArgs() {
+  const args = process.argv.slice(2);
+  let maxAiCalls = Infinity;
+  const idx = args.indexOf('--max-ai-calls');
+  if (idx !== -1 && args[idx + 1]) maxAiCalls = parseInt(args[idx + 1], 10);
+  return { maxAiCalls };
+}
+
+// ===================================================================
+// KULCSSZÓ ELŐSZŰRŐ (INGYENES - nem hív AI-t!)
+// ===================================================================
+// Ha a cikk címében/leírásában van AI-kapcsolódó szó, átengedi.
+// Így a nyilvánvaló nem-AI cikkeket ingyen kiszűrjük.
+// ===================================================================
+
+const AI_KEYWORDS = [
+  'ai', 'a.i.', 'artificial intelligence', 'machine learning', 'deep learning',
+  'llm', 'large language model', 'neural', 'gpt', 'chatgpt', 'openai',
+  'claude', 'anthropic', 'gemini', 'deepmind', 'mistral', 'llama', 'meta ai',
+  'copilot', 'midjourney', 'dall-e', 'dalle', 'sora', 'stable diffusion',
+  'generative', 'chatbot', 'agent', 'automation', 'algorithm', 'model',
+  'hugging face', 'nvidia', 'transformer', 'prompt', 'fine-tun', 'inference',
+  'robot', 'autonomous', 'multimodal'
+];
+
+function keywordPrefilter(item) {
+  const haystack = `${item.title || ''} ${item.contentSnippet || item.content || ''}`.toLowerCase();
+  return AI_KEYWORDS.some(kw => haystack.includes(kw));
+}
+
+// ===================================================================
+// SEEN ITEMS
+// ===================================================================
 
 function loadSeenItems() {
   if (!existsSync(SEEN_ITEMS_PATH)) return {};
   try {
     return JSON.parse(readFileSync(SEEN_ITEMS_PATH, 'utf-8'));
-  } catch (e) {
-    console.warn(`⚠️  seen-items.json olvasási hiba: ${e.message} — ürességgel kezdünk`);
+  } catch {
     return {};
   }
 }
 
 function saveSeenItems(seen) {
-  writeFileSync(SEEN_ITEMS_PATH, JSON.stringify(seen, null, 2), 'utf-8');
-}
-
-// Csak az utolsó 200 elemet tartjuk feed-enként (memória takarékosság)
-function trimSeen(seen, feedId) {
-  if (seen[feedId] && seen[feedId].length > 200) {
-    seen[feedId] = seen[feedId].slice(-200);
+  for (const id of Object.keys(seen)) {
+    if (seen[id].length > 300) seen[id] = seen[id].slice(-300);
   }
+  writeFileSync(SEEN_ITEMS_PATH, JSON.stringify(seen, null, 2), 'utf-8');
 }
 
 // ===================================================================
@@ -78,72 +112,54 @@ function trimSeen(seen, feedId) {
 async function fetchFeed(feedConfig) {
   try {
     const feed = await parser.parseURL(feedConfig.url);
-    return {
-      ok: true,
-      items: feed.items || [],
-      title: feed.title
-    };
+    return { ok: true, items: feed.items || [] };
   } catch (error) {
-    return {
-      ok: false,
-      error: error.message,
-      items: []
-    };
+    return { ok: false, error: error.message, items: [] };
   }
 }
 
 // ===================================================================
-// AI RELEVANCIA SZŰRŐ (Gemini Flash INGYEN!)
+// BATCH RELEVANCIA ELLENŐRZÉS (több cikk EGY AI hívásban!)
 // ===================================================================
 
 const RELEVANCE_SYSTEM_PROMPT = `You are a content curator for AI World Co., an Australian AI news portal for everyday people (not developers).
 
-The portal covers:
-- AI company news (OpenAI, Anthropic, Google, Meta, Mistral, etc.)
-- New AI features and how to use them in daily life
-- AI and work, AI and learning, AI and safety
-- Practical, everyday-usage angles
+RELEVANT topics: AI company news (OpenAI, Anthropic, Google, Meta, etc.), new AI features and how to use them, AI in daily life, AI and work/learning/safety, practical AI usage.
 
-The portal does NOT cover:
-- Politics, gambling, adult content, military, medical advice
-- Celebrity gossip, comparisons that put down competitors
-- Pure academic research without practical implications
-- Anything not related to AI
+NOT RELEVANT: politics, gambling, adult content, military, medical advice, celebrity gossip, comparisons that put down competitors, pure academic research with no practical angle, anything not AI-related.
 
-For each article, decide if it's RELEVANT for our portal.
-Respond ONLY in this exact JSON format (no markdown, no extra text):
-{"relevant": true|false, "score": 1-10, "reason": "brief reason in English", "category": "ai-news|how-to|business|work|creative|other"}`;
+You will receive a NUMBERED LIST of articles. For EACH article decide relevance.
+Respond ONLY with a JSON array (no markdown, no extra text), one object per article:
+[{"index": 0, "relevant": true, "score": 8, "category": "ai-news", "reason": "brief"}, {"index": 1, "relevant": false, "score": 2, "category": "other", "reason": "brief"}]
 
-async function checkRelevance(item) {
-  const prompt = `Article title: "${item.title}"
-Article summary: "${(item.contentSnippet || item.content || '').slice(0, 500)}"
-Published: ${item.pubDate || 'unknown'}
+Categories: ai-news, how-to, business, work, creative, other.
+Score 1-10 (how well it fits our portal).`;
 
-Is this relevant for our portal? Respond with JSON only.`;
+async function checkRelevanceBatch(batch) {
+  // batch: [{ globalIndex, title, snippet }]
+  const list = batch.map((it, i) =>
+    `[${i}] Title: ${it.title}\n    Summary: ${(it.snippet || '').slice(0, 200)}`
+  ).join('\n\n');
+
+  const prompt = `Evaluate these ${batch.length} articles. Respond with a JSON array of ${batch.length} objects (index 0 to ${batch.length - 1}).
+
+${list}`;
 
   const response = await ask(prompt, {
     agentName: AGENT_NAME,
     systemPrompt: RELEVANCE_SYSTEM_PROMPT,
-    maxTokens: 200
+    maxTokens: 2000
   });
 
-  if (!response) return { relevant: false, reason: 'AI router failed', score: 0 };
+  if (!response) return { ok: false, results: null, cost: 0 };
 
-  // Próbáljuk parse-olni a JSON-t (az AI néha markdown-ba teszi)
   try {
     let text = response.text.trim();
-    // Markdown ``` blokkok eltávolítása ha vannak
     text = text.replace(/^```(?:json)?\s*/, '').replace(/\s*```$/, '');
     const parsed = JSON.parse(text);
-    parsed._aiCost = response.costUsd;
-    return parsed;
+    return { ok: true, results: parsed, cost: response.costUsd };
   } catch (e) {
-    return {
-      relevant: false,
-      reason: `JSON parse error: ${e.message}`,
-      score: 0,
-      _aiCost: response.costUsd
-    };
+    return { ok: false, results: null, cost: response.costUsd, error: e.message };
   }
 }
 
@@ -155,7 +171,7 @@ function saveDraft(item, feedConfig, relevance) {
   if (!existsSync(DRAFTS_DIR)) mkdirSync(DRAFTS_DIR, { recursive: true });
 
   const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
-  const safeTitle = (item.title || 'untitled').slice(0, 60).replace(/[^a-z0-9-]/gi, '_');
+  const safeTitle = (item.title || 'untitled').slice(0, 50).replace(/[^a-z0-9-]/gi, '_');
   const filename = `${timestamp}_${feedConfig.id}_${safeTitle}.json`;
   const filepath = join(DRAFTS_DIR, filename);
 
@@ -180,15 +196,10 @@ function saveDraft(item, feedConfig, relevance) {
   return filename;
 }
 
-// ===================================================================
-// LOG MENTÉS (összegzés egy futtatásról)
-// ===================================================================
-
 function saveRunLog(stats) {
   if (!existsSync(LOGS_DIR)) mkdirSync(LOGS_DIR, { recursive: true });
   const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
-  const logfile = join(LOGS_DIR, `scrape_${timestamp}.json`);
-  writeFileSync(logfile, JSON.stringify(stats, null, 2), 'utf-8');
+  writeFileSync(join(LOGS_DIR, `scrape_${timestamp}.json`), JSON.stringify(stats, null, 2), 'utf-8');
 }
 
 // ===================================================================
@@ -196,121 +207,149 @@ function saveRunLog(stats) {
 // ===================================================================
 
 async function main() {
-  console.log('🕵️  RSS SCRAPER AGENT INDUL');
+  const args = parseArgs();
+
+  console.log('🕵️  RSS SCRAPER AGENT v2.0 INDUL');
   console.log('─'.repeat(60));
 
-  // 1. Konfig betöltés
   const feedsConfig = JSON.parse(readFileSync(FEEDS_PATH, 'utf-8'));
   const enabledFeeds = feedsConfig.sources.filter(f => f.enabled);
-  console.log(`📋 ${enabledFeeds.length} aktív RSS forrás beolvasva\n`);
+  const maxPerFeed = feedsConfig._meta.max_items_per_feed || 5;
+  console.log(`📋 ${enabledFeeds.length} aktív forrás | max ${maxPerFeed} cikk/feed | batch méret: ${BATCH_SIZE}`);
+  if (args.maxAiCalls !== Infinity) console.log(`⚠️  AI hívás limit: ${args.maxAiCalls}`);
+  console.log();
 
-  // 2. Seen items betöltés
   const seen = loadSeenItems();
 
-  // 3. Statisztika
   const stats = {
     started_at: new Date().toISOString(),
     feeds_total: enabledFeeds.length,
     feeds_ok: 0,
     feeds_failed: 0,
-    items_total: 0,
-    items_new: 0,
+    items_seen_before: 0,
+    items_keyword_filtered: 0,
+    candidates_for_ai: 0,
+    ai_calls: 0,
     items_relevant: 0,
     items_saved: 0,
     ai_cost_usd: 0,
-    by_feed: {}
+    failed_feeds: []
   };
 
-  // 4. Minden feed feldolgozása
+  // ===== 1. FÁZIS: Letöltés + előszűrés (INGYENES) =====
+  console.log('━━━ 1. FÁZIS: Letöltés + kulcsszó előszűrés (ingyenes) ━━━\n');
+
+  const candidates = []; // { feedConfig, item, snippet }
+
   for (const feedConfig of enabledFeeds) {
-    console.log(`📡 ${feedConfig.name} (${feedConfig.id})...`);
-
-    const feedStats = { ok: false, items_total: 0, items_new: 0, items_relevant: 0, items_saved: 0 };
-    stats.by_feed[feedConfig.id] = feedStats;
-
-    const result = await fetchFeed(feedConfig);
-    if (!result.ok) {
-      console.log(`   ❌ Hiba: ${result.error}\n`);
-      stats.feeds_failed++;
-      feedStats.error = result.error;
-      continue;
-    }
-
-    stats.feeds_ok++;
-    feedStats.ok = true;
-    feedStats.items_total = result.items.length;
-    stats.items_total += result.items.length;
-
-    // Új cikkek szűrése (még nem láttuk)
     if (!seen[feedConfig.id]) seen[feedConfig.id] = [];
     const seenLinks = new Set(seen[feedConfig.id]);
 
-    const newItems = result.items.filter(item => item.link && !seenLinks.has(item.link));
-    feedStats.items_new = newItems.length;
-    stats.items_new += newItems.length;
+    const result = await fetchFeed(feedConfig);
+    if (!result.ok) {
+      console.log(`❌ ${feedConfig.name}: ${result.error.slice(0, 40)}`);
+      stats.feeds_failed++;
+      stats.failed_feeds.push({ id: feedConfig.id, error: result.error });
+      continue;
+    }
+    stats.feeds_ok++;
 
-    if (newItems.length === 0) {
-      console.log(`   ⚪ ${result.items.length} cikk, mind már látott\n`);
+    // CSAK a legújabb N cikk!
+    const recent = result.items.slice(0, maxPerFeed);
+
+    let newCount = 0, kwFiltered = 0, alreadySeen = 0;
+    for (const item of recent) {
+      if (!item.link) continue;
+      if (seenLinks.has(item.link)) { alreadySeen++; continue; }
+
+      if (!keywordPrefilter(item)) {
+        // Nem AI téma - ingyen kiszűrjük ÉS megjelöljük látottként
+        kwFiltered++;
+        seen[feedConfig.id].push(item.link);
+        continue;
+      }
+
+      candidates.push({
+        feedConfig,
+        item,
+        snippet: item.contentSnippet || item.content || ''
+      });
+      newCount++;
+    }
+
+    stats.items_seen_before += alreadySeen;
+    stats.items_keyword_filtered += kwFiltered;
+    console.log(`✅ ${feedConfig.name.padEnd(28)} ${newCount} jelölt | ${kwFiltered} kiszűrve | ${alreadySeen} régi`);
+  }
+
+  stats.candidates_for_ai = candidates.length;
+  console.log(`\n📊 Összesen ${candidates.length} cikk megy AI ellenőrzésre (kötegelve)\n`);
+
+  // ===== 2. FÁZIS: Batch AI ellenőrzés =====
+  console.log('━━━ 2. FÁZIS: Batch AI relevancia ellenőrzés ━━━\n');
+
+  for (let i = 0; i < candidates.length; i += BATCH_SIZE) {
+    if (stats.ai_calls >= args.maxAiCalls) {
+      console.log(`⚠️  Elértük az AI hívás limitet (${args.maxAiCalls}). Maradék cikkek később.`);
+      break;
+    }
+
+    const batch = candidates.slice(i, i + BATCH_SIZE);
+    const batchNum = Math.floor(i / BATCH_SIZE) + 1;
+    const totalBatches = Math.ceil(candidates.length / BATCH_SIZE);
+    console.log(`🤖 Batch ${batchNum}/${totalBatches} (${batch.length} cikk)...`);
+
+    const { ok, results, cost, error } = await checkRelevanceBatch(batch);
+    stats.ai_calls++;
+    stats.ai_cost_usd += cost || 0;
+
+    if (!ok || !results) {
+      console.log(`   ❌ Batch hiba: ${error || 'AI router elesett'} — ezek a cikkek később újra`);
+      // NEM jelöljük látottnak -> legközelebb újra próbáljuk
       continue;
     }
 
-    console.log(`   🆕 ${newItems.length} új cikk találva (${result.items.length}-ből)`);
+    // Eredmények alkalmazása
+    for (const decision of results) {
+      const candidate = batch[decision.index];
+      if (!candidate) continue;
 
-    // AI relevancia szűrés minden új cikkre
-    for (const item of newItems) {
-      const relevance = await checkRelevance(item);
-      stats.ai_cost_usd += relevance._aiCost || 0;
+      // MOST jelöljük látottnak (sikeres döntés után!)
+      seen[candidate.feedConfig.id].push(candidate.item.link);
 
-      // Megjelöljük látottként (akár releváns akár nem)
-      seen[feedConfig.id].push(item.link);
-
-      if (relevance.relevant && relevance.score >= 6) {
-        const filename = saveDraft(item, feedConfig, relevance);
-        feedStats.items_relevant++;
-        feedStats.items_saved++;
+      if (decision.relevant && decision.score >= MIN_SCORE) {
+        saveDraft(candidate.item, candidate.feedConfig, decision);
         stats.items_relevant++;
         stats.items_saved++;
-        console.log(`      ✅ ${item.title?.slice(0, 70)}... (score: ${relevance.score})`);
-      } else {
-        console.log(`      ⏭️  ${item.title?.slice(0, 50)}... (score: ${relevance.score || 0} - ${relevance.reason?.slice(0, 50)})`);
+        console.log(`   ✅ [${decision.score}] ${candidate.item.title?.slice(0, 60)}`);
       }
     }
-
-    trimSeen(seen, feedConfig.id);
-    console.log();
   }
 
-  // 5. Seen items mentés
+  // ===== Mentés =====
   saveSeenItems(seen);
-
-  // 6. Statisztika
   stats.finished_at = new Date().toISOString();
   stats.duration_seconds = (new Date(stats.finished_at) - new Date(stats.started_at)) / 1000;
   saveRunLog(stats);
 
-  // 7. Összefoglaló
-  console.log('─'.repeat(60));
+  // ===== Összefoglaló =====
+  console.log('\n' + '─'.repeat(60));
   console.log('📊 ÖSSZEFOGLALÓ:');
   console.log(`   Forrás OK / FAIL: ${stats.feeds_ok} / ${stats.feeds_failed}`);
-  console.log(`   Cikk összesen: ${stats.items_total}`);
-  console.log(`   Új cikk: ${stats.items_new}`);
-  console.log(`   Releváns: ${stats.items_relevant}`);
-  console.log(`   Mentve draft-ba: ${stats.items_saved}`);
-  console.log(`   AI költség: $${stats.ai_cost_usd.toFixed(4)}`);
-  console.log(`   Időtartam: ${stats.duration_seconds.toFixed(1)}s`);
+  console.log(`   Kulcsszó-szűrt (ingyen): ${stats.items_keyword_filtered}`);
+  console.log(`   AI-hoz jelölt: ${stats.candidates_for_ai}`);
+  console.log(`   AI hívások: ${stats.ai_calls}`);
+  console.log(`   ✅ Releváns + mentve: ${stats.items_saved}`);
+  console.log(`   💰 AI költség: $${stats.ai_cost_usd.toFixed(4)}`);
+  console.log(`   ⏱️  ${stats.duration_seconds.toFixed(1)}s`);
   console.log('─'.repeat(60));
 
   if (stats.items_saved === 0) {
-    console.log('💤 Nem találtunk releváns új cikket — ma nem írunk semmit.');
-    console.log('   ("Üres nap jobb mint gyenge nap" — brand szabály)');
+    console.log('💤 Nem találtunk releváns új cikket. ("Üres nap jobb mint gyenge nap")');
   } else {
-    console.log(`✨ ${stats.items_saved} draft várja az Író-Agentet a content/drafts/-ban`);
+    console.log(`✨ ${stats.items_saved} draft vár az Író-Agentre`);
   }
 }
-
-// ===================================================================
-// INDÍTÁS
-// ===================================================================
 
 main().catch(error => {
   console.error('💥 KRITIKUS HIBA:', error);

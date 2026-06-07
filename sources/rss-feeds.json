@@ -1,9 +1,10 @@
 {
   "_meta": {
     "description": "RSS hírforrások az AI World Co. Scraper-Agent számára",
-    "version": "1.0",
-    "last_updated": "2026-06-04",
-    "total_sources": 18,
+    "version": "2.0",
+    "last_updated": "2026-06-07",
+    "note": "v2.0: halott URL-ek javítva éles teszt után, 2 új ausztrál forrás hozzáadva",
+    "max_items_per_feed": 5,
     "priority_legend": {
       "1": "Magas - naponta többször ellenőrizzük (fő AI cégek)",
       "2": "Közepes - naponta 1x (tech média)",
@@ -14,17 +15,6 @@
   "sources": [
 
     {
-      "id": "anthropic-blog",
-      "name": "Anthropic Blog",
-      "url": "https://www.anthropic.com/news/rss.xml",
-      "category": "ai-company-official",
-      "priority": 1,
-      "language": "en",
-      "country": "US",
-      "comment": "Anthropic hivatalos blog - Claude frissítések, kutatás, bejelentések. ELSŐDLEGES forrás.",
-      "enabled": true
-    },
-    {
       "id": "openai-blog",
       "name": "OpenAI Blog",
       "url": "https://openai.com/blog/rss.xml",
@@ -32,7 +22,7 @@
       "priority": 1,
       "language": "en",
       "country": "US",
-      "comment": "OpenAI hivatalos blog - GPT, DALL-E, Sora, API hírek. ELSŐDLEGES forrás.",
+      "comment": "OpenAI hivatalos blog - GPT, DALL-E, Sora. FIGYELEM: 990+ cikket ad, limit kell!",
       "enabled": true
     },
     {
@@ -43,29 +33,29 @@
       "priority": 1,
       "language": "en",
       "country": "US/UK",
-      "comment": "Google DeepMind - Gemini, kutatás, áttörések. ELSŐDLEGES forrás.",
+      "comment": "Google DeepMind - Gemini, kutatás.",
       "enabled": true
     },
     {
-      "id": "meta-ai",
-      "name": "Meta AI Blog",
-      "url": "https://ai.meta.com/blog/rss/",
+      "id": "google-ai-blog",
+      "name": "Google AI (blog.google)",
+      "url": "https://blog.google/technology/ai/rss/",
       "category": "ai-company-official",
       "priority": 1,
       "language": "en",
       "country": "US",
-      "comment": "Meta AI (Llama modellek, open source AI).",
+      "comment": "ÚJ v2.0 - Google fogyasztó-fókuszú AI hírek, közérthető.",
       "enabled": true
     },
     {
-      "id": "mistral-news",
-      "name": "Mistral AI News",
-      "url": "https://mistral.ai/news/rss.xml",
+      "id": "meta-ai",
+      "name": "Meta AI / Tech News",
+      "url": "https://about.fb.com/news/category/technology-and-innovation/feed/",
       "category": "ai-company-official",
       "priority": 2,
       "language": "en",
-      "country": "FR",
-      "comment": "Európai AI cég, GDPR-barát perspektíva.",
+      "country": "US",
+      "comment": "JAVÍTVA v2.0 - Meta tech & innováció hírek (Llama, AI funkciók).",
       "enabled": true
     },
     {
@@ -88,18 +78,18 @@
       "priority": 1,
       "language": "en",
       "country": "US",
-      "comment": "Friss AI hírek, üzleti aspektusok, startup bejelentések.",
+      "comment": "Friss AI hírek, üzleti aspektusok.",
       "enabled": true
     },
     {
       "id": "theverge-ai",
       "name": "The Verge - AI",
-      "url": "https://www.theverge.com/ai-artificial-intelligence/rss/index.xml",
+      "url": "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml",
       "category": "tech-media",
       "priority": 1,
       "language": "en",
       "country": "US",
-      "comment": "Fogyasztó-fókuszú AI hírek, könnyen érthető cikkek.",
+      "comment": "JAVÍTVA v2.0 - Fogyasztó-fókuszú AI hírek, könnyen érthető.",
       "enabled": true
     },
     {
@@ -110,7 +100,7 @@
       "priority": 2,
       "language": "en",
       "country": "US",
-      "comment": "Mélyebb technikai elemzések - jó hátteret adnak.",
+      "comment": "Mélyebb technikai elemzések.",
       "enabled": true
     },
     {
@@ -125,17 +115,6 @@
       "enabled": true
     },
     {
-      "id": "mit-tech-review-ai",
-      "name": "MIT Technology Review - AI",
-      "url": "https://www.technologyreview.com/topic/artificial-intelligence/feed",
-      "category": "tech-media",
-      "priority": 2,
-      "language": "en",
-      "country": "US",
-      "comment": "Akadémiai/kutatás-fókuszú, megbízható források.",
-      "enabled": true
-    },
-    {
       "id": "venturebeat-ai",
       "name": "VentureBeat AI",
       "url": "https://venturebeat.com/category/ai/feed/",
@@ -143,19 +122,30 @@
       "priority": 2,
       "language": "en",
       "country": "US",
-      "comment": "Üzleti AI hírek, befektetések, vállalati AI.",
+      "comment": "Üzleti AI hírek, vállalati AI.",
       "enabled": true
     },
 
     {
-      "id": "itnews-au",
-      "name": "iTnews Australia",
-      "url": "https://www.itnews.com.au/rss/news.aspx",
+      "id": "the-conversation-au",
+      "name": "The Conversation AU - Technology",
+      "url": "https://theconversation.com/au/technology/articles.atom",
       "category": "australian-tech",
       "priority": 1,
       "language": "en",
       "country": "AU",
-      "comment": "Ausztrál tech hírportál - LOKÁLIS perspektíva FONTOS!",
+      "comment": "ÚJ v2.0 - AUSZTRÁL! Akadémiai de közérthető, ír AI cégekről is. ARANYBÁNYA a brand-hez.",
+      "enabled": true
+    },
+    {
+      "id": "itnews-au",
+      "name": "iTnews Australia",
+      "url": "https://www.itnews.com.au/rss/rss.ashx",
+      "category": "australian-tech",
+      "priority": 1,
+      "language": "en",
+      "country": "AU",
+      "comment": "JAVÍTVA v2.0 - Ausztrál tech, AI a munkahelyen. LOKÁLIS perspektíva!",
       "enabled": true
     },
     {
@@ -166,8 +156,54 @@
       "priority": 2,
       "language": "en",
       "country": "AU",
-      "comment": "Ausztrál tech média - vállalati IT, AI a munkahelyen.",
+      "comment": "Ausztrál tech média.",
       "enabled": true
+    },
+
+    {
+      "id": "huggingface-blog",
+      "name": "Hugging Face Blog",
+      "url": "https://huggingface.co/blog/feed.xml",
+      "category": "ai-research",
+      "priority": 3,
+      "language": "en",
+      "country": "US/FR",
+      "comment": "Open source AI. FIGYELEM: 790+ cikket ad, limit kell!",
+      "enabled": true
+    },
+    {
+      "id": "hackernews-ai",
+      "name": "Hacker News - AI Search",
+      "url": "https://hnrss.org/newest?q=AI+OR+LLM+OR+GPT+OR+Claude",
+      "category": "community",
+      "priority": 3,
+      "language": "en",
+      "country": "INT",
+      "comment": "JAVÍTVA v2.0 - AI-szűrt HN. FIGYELEM: lassú (~8s).",
+      "enabled": true
+    },
+
+    {
+      "id": "anthropic-blog",
+      "name": "Anthropic Blog",
+      "url": "https://www.anthropic.com/news/rss.xml",
+      "category": "ai-company-official",
+      "priority": 1,
+      "language": "en",
+      "country": "US",
+      "comment": "KIKAPCSOLVA v2.0 - Anthropic NEM ad RSS-t (404). A The Conversation AU + TechCrunch ír róluk.",
+      "enabled": false
+    },
+    {
+      "id": "mistral-news",
+      "name": "Mistral AI News",
+      "url": "https://mistral.ai/news/rss.xml",
+      "category": "ai-company-official",
+      "priority": 2,
+      "language": "en",
+      "country": "FR",
+      "comment": "KIKAPCSOLVA v2.0 - Mistral NEM ad RSS-t (404).",
+      "enabled": false
     },
     {
       "id": "innovation-aus",
@@ -177,75 +213,34 @@
       "priority": 3,
       "language": "en",
       "country": "AU",
-      "comment": "Ausztrál innováció, AI startupok, kormányzati AI politika.",
-      "enabled": true
-    },
-
-    {
-      "id": "huggingface-blog",
-      "name": "Hugging Face Blog",
-      "url": "https://huggingface.co/blog/feed.xml",
-      "category": "ai-research",
-      "priority": 2,
-      "language": "en",
-      "country": "US/FR",
-      "comment": "Open source AI közösség - új modellek, tutorialok.",
-      "enabled": true
+      "comment": "KIKAPCSOLVA v2.0 - 403 blokk (scraping védelem).",
+      "enabled": false
     },
     {
       "id": "arxiv-cs-ai",
-      "name": "arXiv - Computer Science: AI",
+      "name": "arXiv - CS: AI",
       "url": "http://export.arxiv.org/rss/cs.AI",
       "category": "ai-research",
       "priority": 3,
       "language": "en",
       "country": "INT",
-      "comment": "Tudományos AI papírok - csak nagyon fontos áttörésekhez. SOK adat!",
+      "comment": "KIKAPCSOLVA - túl sok akadémiai adat.",
       "enabled": false
-    },
-
-    {
-      "id": "hackernews-ai",
-      "name": "Hacker News - AI Front Page",
-      "url": "https://hnrss.org/frontpage?q=AI+OR+LLM+OR+GPT+OR+Claude+OR+Gemini",
-      "category": "community",
-      "priority": 2,
-      "language": "en",
-      "country": "INT",
-      "comment": "Hacker News közösség - mit beszélnek a fejlesztők. Trend-jelző.",
-      "enabled": true
     }
 
   ],
 
   "categories": {
-    "ai-company-official": {
-      "description": "Hivatalos AI cég blogok - ELSŐDLEGES források, mindig megbízhatók",
-      "scrape_frequency": "every_2_hours"
-    },
-    "tech-media": {
-      "description": "Tech újságírás - friss hírek, kontextus, vélemény",
-      "scrape_frequency": "every_4_hours"
-    },
-    "australian-tech": {
-      "description": "Ausztrál tech média - LOKÁLIS perspektíva (kulcs!)",
-      "scrape_frequency": "every_6_hours"
-    },
-    "ai-research": {
-      "description": "Akadémiai / kutatás - csak fontos áttörésekhez",
-      "scrape_frequency": "daily"
-    },
-    "community": {
-      "description": "Közösség / fórum - trend-jelző, mit beszélnek az emberek",
-      "scrape_frequency": "every_6_hours"
-    }
+    "ai-company-official": { "description": "Hivatalos AI cég blogok", "scrape_frequency": "every_2_hours" },
+    "tech-media": { "description": "Tech újságírás", "scrape_frequency": "every_4_hours" },
+    "australian-tech": { "description": "Ausztrál tech média - LOKÁLIS perspektíva", "scrape_frequency": "every_6_hours" },
+    "ai-research": { "description": "Akadémiai / kutatás", "scrape_frequency": "daily" },
+    "community": { "description": "Közösség / fórum", "scrape_frequency": "every_6_hours" }
   },
 
   "future_sources_todo": [
-    "X (Twitter) - kulcs AI figurák (Sam Altman, Dario Amodei, Yann LeCun, Andrej Karpathy) - Nitter alapon",
-    "Reddit (r/MachineLearning, r/LocalLLaMA, r/singularity, r/ChatGPT)",
-    "YouTube AI csatornák (Two Minute Papers, Yannic Kilcher, AI Explained)",
-    "GitHub Trending AI projektek",
-    "Product Hunt - új AI eszközök"
+    "X (Twitter) - kulcs AI figurák - Nitter alapon",
+    "Reddit (r/MachineLearning, r/LocalLLaMA, r/ChatGPT)",
+    "YouTube AI csatornák"
   ]
 }
