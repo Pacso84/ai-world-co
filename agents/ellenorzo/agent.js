@@ -212,6 +212,9 @@ PASS rules: overall_score >= 7 AND no individual score < 5 AND no prohibited con
 FAIL otherwise.`;
 
 async function aiReview(articleMarkdown, sourceInfo, brandContext) {
+  // FONTOS: a brandContext-et NEM küldjük el teljes egészében!
+  // A REVIEWER_SYSTEM_PROMPT már tartalmazza az összes szabályt.
+  // A teljes 30k karakteres kontextus összezavarta a modellt (JSON output csonkolt lett).
   const userPrompt = `Review this article for publication.
 
 SOURCE METADATA:
@@ -220,15 +223,13 @@ ${sourceInfo}
 ARTICLE TO REVIEW:
 ${articleMarkdown}
 
-BRAND CONTEXT (the rules this article must follow):
-${brandContext}
-
-Now provide your judgement as JSON (no markdown wrapping).`;
+Now provide your judgement as JSON only (the rules are in your instructions).`;
 
   const response = await ask(userPrompt, {
     agentName: AGENT_NAME,
     systemPrompt: REVIEWER_SYSTEM_PROMPT,
-    maxTokens: 1500
+    maxTokens: 1500,
+    jsonMode: true
   });
 
   if (!response) return null;
@@ -236,6 +237,10 @@ Now provide your judgement as JSON (no markdown wrapping).`;
   try {
     let text = response.text.trim();
     text = text.replace(/^```(?:json)?\s*/, '').replace(/\s*```$/, '');
+    // Robosztus: első { és utolsó } közti rész
+    const start = text.indexOf('{');
+    const end = text.lastIndexOf('}');
+    if (start !== -1 && end !== -1 && end > start) text = text.slice(start, end + 1);
     const parsed = JSON.parse(text);
     parsed._aiCost = response.costUsd;
     parsed._provider = response.provider;
@@ -406,9 +411,9 @@ URL: ${writerData._meta.source_link}
 Original title: ${writerData.original_title}
 `;
 
-    const aiReview = await aiReview(markdown, sourceInfo, brandContext);
+    const aiReviewResult = await aiReview(markdown, sourceInfo, brandContext);
 
-    if (!aiReview) {
+    if (!aiReviewResult) {
       console.log(`   ⚠️  AI review failed — megőrizzük újra próbáláshoz\n`);
       stats.ai_review_failed++;
       stats.by_article.push({
@@ -419,35 +424,35 @@ Original title: ${writerData.original_title}
       continue;
     }
 
-    stats.total_cost_usd += aiReview._aiCost || 0;
+    stats.total_cost_usd += aiReviewResult._aiCost || 0;
 
-    console.log(`   🤖 AI ítélet: ${aiReview.decision} (score: ${aiReview.overall_score}/10)`);
-    if (aiReview.verdict) console.log(`      💭 ${aiReview.verdict}`);
+    console.log(`   🤖 AI ítélet: ${aiReviewResult.decision} (score: ${aiReviewResult.overall_score}/10)`);
+    if (aiReviewResult.verdict) console.log(`      💭 ${aiReviewResult.verdict}`);
 
     // 4c. Döntés alapján mozgatás
-    const finalPass = aiReview.decision === 'PASS' && aiReview.overall_score >= MIN_PASSING_SCORE;
+    const finalPass = aiReviewResult.decision === 'PASS' && aiReviewResult.overall_score >= MIN_PASSING_SCORE;
 
     if (finalPass) {
-      const articleName = moveToArticles(writerFilename, writerData, autoCheckResult, aiReview);
+      const articleName = moveToArticles(writerFilename, writerData, autoCheckResult, aiReviewResult);
       console.log(`   ✅ PUBLIKÁLVA: ${articleName}\n`);
       stats.passed++;
       stats.by_article.push({
         writer: writerFilename,
         article: articleName,
         decision: 'PASS',
-        score: aiReview.overall_score,
-        cost_usd: aiReview._aiCost
+        score: aiReviewResult.overall_score,
+        cost_usd: aiReviewResult._aiCost
       });
     } else {
-      const rejectedName = moveToRejected(writerFilename, writerData, autoCheckResult, aiReview);
+      const rejectedName = moveToRejected(writerFilename, writerData, autoCheckResult, aiReviewResult);
       console.log(`   ❌ ELUTASÍTVA: ${rejectedName}\n`);
       stats.failed++;
       stats.by_article.push({
         writer: writerFilename,
         rejected: rejectedName,
         decision: 'FAIL',
-        score: aiReview.overall_score,
-        cost_usd: aiReview._aiCost
+        score: aiReviewResult.overall_score,
+        cost_usd: aiReviewResult._aiCost
       });
     }
   }
