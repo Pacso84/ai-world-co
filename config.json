@@ -23,23 +23,23 @@
       "comment": "Orkesztrálás egyszerű feladat - Haiku elég ($1/$5 vs Sonnet $3/$15). Fallback: Gemini Flash (ingyen)."
     },
     "rss-scraper": {
-      "primary_model": { "provider": "google", "model": "gemini-2.5-flash" },
-      "fallback_model": { "provider": "groq", "model": "llama-3.3-70b-versatile" },
+      "primary_model": { "provider": "google", "model": "gemini-flash-latest" },
+      "fallback_model": { "provider": "google", "model": "gemini-2.5-flash" },
       "enabled": true,
       "schedule": "every 4 hours",
-      "comment": "INGYEN (Gemini Flash napi 1500). Csak strukturálatlan adat rendezése. Fallback: Groq (szintén ingyen, brutál gyors)."
+      "comment": "INGYEN. gemini-flash-latest (sajat kvota) + fallback 2.5-flash. Strukturalatlan adat rendezese."
     },
     "iro": {
       "primary_model": { "provider": "anthropic", "model": "claude-sonnet-4-6" },
-      "fallback_model": { "provider": "google", "model": "gemini-2.5-pro" },
+      "fallback_model": { "provider": "google", "model": "gemini-flash-latest" },
       "enabled": true,
-      "comment": "Cikkíráshoz kell a minőség - Sonnet. Fallback: Gemini Pro (50/nap ingyen, utána fizetős)."
+      "comment": "Cikkiráshoz Claude Sonnet (ha van kulcs). Fallback: gemini-flash-latest (INGYEN, mukodik kulcs nelkul is)."
     },
     "ellenorzo": {
-      "primary_model": { "provider": "google", "model": "gemini-2.5-pro" },
-      "fallback_model": { "provider": "anthropic", "model": "claude-sonnet-4-6" },
+      "primary_model": { "provider": "google", "model": "gemini-flash-latest" },
+      "fallback_model": { "provider": "google", "model": "gemini-2.5-pro" },
       "enabled": true,
-      "comment": "Ellenőrzés strukturált feladat - Gemini Pro 50/nap INGYEN elég napi 20 cikkre. Fallback: Claude Sonnet ha túllépjük."
+      "comment": "Ellenorzes: gemini-flash-latest (INGYEN sajat kvota) + fallback 2.5-pro. Kesobb Claude ha kell jobb minoseg."
     }
   },
 

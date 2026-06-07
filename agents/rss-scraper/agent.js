@@ -42,7 +42,7 @@ const SEEN_ITEMS_PATH = join(__dirname, 'seen-items.json');
 const AGENT_NAME = 'rss-scraper';
 
 // Mennyi cikket küldjünk egy AI hívásba (batch méret)
-const BATCH_SIZE = 15;
+const BATCH_SIZE = 10;
 // Hány új cikknél magasabb relevancia-pont kell a mentéshez
 const MIN_SCORE = 6;
 
@@ -119,6 +119,26 @@ async function fetchFeed(feedConfig) {
 }
 
 // ===================================================================
+// ROBOSZTUS JSON TÖMB KINYERÉS
+// ===================================================================
+// Az AI néha markdown-ba teszi (```json), néha szöveget ír köré.
+// Ez kinyeri az első [ és utolsó ] közti részt és parse-olja.
+// ===================================================================
+
+function extractJsonArray(text) {
+  let t = text.trim();
+  // Markdown ``` blokkok eltávolítása
+  t = t.replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/, '');
+  // Első [ és utolsó ] közti rész
+  const start = t.indexOf('[');
+  const end = t.lastIndexOf(']');
+  if (start !== -1 && end !== -1 && end > start) {
+    t = t.slice(start, end + 1);
+  }
+  return JSON.parse(t);
+}
+
+// ===================================================================
 // BATCH RELEVANCIA ELLENŐRZÉS (több cikk EGY AI hívásban!)
 // ===================================================================
 
@@ -148,15 +168,14 @@ ${list}`;
   const response = await ask(prompt, {
     agentName: AGENT_NAME,
     systemPrompt: RELEVANCE_SYSTEM_PROMPT,
-    maxTokens: 2000
+    maxTokens: 4000,
+    jsonMode: true
   });
 
   if (!response) return { ok: false, results: null, cost: 0 };
 
   try {
-    let text = response.text.trim();
-    text = text.replace(/^```(?:json)?\s*/, '').replace(/\s*```$/, '');
-    const parsed = JSON.parse(text);
+    const parsed = extractJsonArray(response.text);
     return { ok: true, results: parsed, cost: response.costUsd };
   } catch (e) {
     return { ok: false, results: null, cost: response.costUsd, error: e.message };

@@ -103,13 +103,18 @@ async function callAnthropic(prompt, model, options) {
 
 async function callGoogle(prompt, model, options) {
   const client = getClient('google');
+  const genConfig = {
+    systemInstruction: options.systemPrompt || 'You are a helpful assistant.',
+    maxOutputTokens: options.maxTokens || 2048
+  };
+  // JSON-mód: garantáltan érvényes JSON kimenet (strukturált válaszhoz)
+  if (options.jsonMode) {
+    genConfig.responseMimeType = 'application/json';
+  }
   const response = await client.models.generateContent({
     model: model,
     contents: prompt,
-    config: {
-      systemInstruction: options.systemPrompt || 'You are a helpful assistant.',
-      maxOutputTokens: options.maxTokens || 2048
-    }
+    config: genConfig
   });
 
   return {
@@ -195,6 +200,8 @@ const PRICING = {
   'claude-opus-4-8': { input: 15.0, output: 75.0 },
   // Google (Flash és Pro INGYENES a free tier-ig!)
   'gemini-2.5-flash': { input: 0.075, output: 0.30 },
+  'gemini-flash-latest': { input: 0.075, output: 0.30 },
+  'gemini-2.0-flash': { input: 0.075, output: 0.30 },
   'gemini-2.5-pro': { input: 1.25, output: 5.0 },
   // Groq (INGYENES a free tier-ig!)
   'llama-3.3-70b-versatile': { input: 0.59, output: 0.79 }
@@ -241,7 +248,7 @@ function logCall(agentName, provider, model, usage, costUsd, success, error = nu
 // ===================================================================
 
 export async function ask(prompt, options = {}) {
-  const { agentName, systemPrompt, maxTokens } = options;
+  const { agentName, systemPrompt, maxTokens, jsonMode } = options;
 
   if (!agentName) {
     throw new Error('agentName kötelező az options-ban!');
@@ -265,7 +272,7 @@ export async function ask(prompt, options = {}) {
     }
 
     try {
-      const response = await caller(prompt, model, { systemPrompt, maxTokens });
+      const response = await caller(prompt, model, { systemPrompt, maxTokens, jsonMode });
 
       // Safety check
       const safety = safetyFilter(response);
