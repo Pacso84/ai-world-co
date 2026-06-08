@@ -54,10 +54,11 @@
 
   function applyFilter(filter) {
     if (!grid) return;
-    // kártyák
+    // kártyák — audience alapján; a "both" cikkek MINDKÉT szűrőben látszanak
     grid.querySelectorAll('.card').forEach(card => {
-      const cat = card.getAttribute('data-category');
-      card.style.display = (filter === 'all' || cat === filter) ? '' : 'none';
+      const aud = card.getAttribute('data-audience');
+      const show = (filter === 'all') || (aud === filter) || (aud === 'both');
+      card.style.display = show ? '' : 'none';
     });
     // chip aktív állapot
     if (filters) {

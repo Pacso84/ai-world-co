@@ -146,13 +146,21 @@ OTHER RULES:
    - No invented facts, fake quotes, or made-up numbers. If unsure of a specific number, speak generally instead.
 
 6. OUTPUT FORMAT: Markdown with YAML frontmatter, then the article body. NO source line, NO external links.
-   Frontmatter must include: title, subtitle, category, read_time_minutes, tags.
+   Frontmatter must include: title, subtitle, category, audience, read_time_minutes, tags.
+
+7. AUDIENCE FIELD (important!): classify WHO can apply this in their life. One of:
+   - "personal" = useful for everyday personal life (home, study, hobbies, daily tasks)
+   - "business" = useful for running a business / for an entrepreneur / at work professionally
+   - "both" = genuinely applicable to both personal life AND business
+   Pick honestly. If it clearly helps both, use "both". The "What this means for you" section should
+   address the audience(s) you chose (e.g. a "both" article gives a personal angle AND a business angle).
 
 Example output structure:
 ---
 title: "How to Use AI Voice Assistants in Your Daily Routine (60-80 chars, descriptive, NOT click-bait)"
 subtitle: "One practical, benefit-focused sentence (100-150 chars)"
 category: "how-to"
+audience: "both"
 read_time_minutes: 4
 tags: ["voice-ai", "productivity", "getting-started"]
 ---
@@ -172,9 +180,9 @@ Practical, original guidance. Explain any technical term immediately.
 
 ## What this means for you
 
-- **If you're new to AI**: practical first step
-- **If you use AI for work**: a specific use case
-- **If you're worried about [common concern]**: reassurance + facts
+- **In everyday life**: a concrete personal use (home, study, daily tasks)
+- **For your business or work**: a concrete professional/entrepreneur use
+- **If you're just getting started**: an easy first step
 
 ## Wrap-up
 

@@ -43,6 +43,13 @@ const CATEGORIES = {
   'other':    { label: 'AI',       cls: 'cat-other' }
 };
 
+// Célhasználat (audience) — hova építhető be
+const AUDIENCES = {
+  'personal': { label: 'Everyday life', icon: '🏠', cls: 'aud-personal' },
+  'business': { label: 'Business',      icon: '💼', cls: 'aud-business' },
+  'both':     { label: 'Life & Business', icon: '🔄', cls: 'aud-both' }
+};
+
 // ===================================================================
 // SEGÉDEK
 // ===================================================================
@@ -60,7 +67,7 @@ function escapeHtml(s) {
 
 // Egyszerű frontmatter parser (--- ... --- blokk a markdown tetején)
 function parseFrontmatter(markdown) {
-  const fm = { title: '', subtitle: '', category: 'other', read_time_minutes: 3, tags: [] };
+  const fm = { title: '', subtitle: '', category: 'other', audience: 'both', read_time_minutes: 3, tags: [] };
   const match = markdown.match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/);
   if (!match) return { meta: fm, body: markdown };
 
@@ -123,6 +130,7 @@ function loadArticles() {
         title: meta.title || data.original_title || 'Untitled',
         subtitle: meta.subtitle || '',
         category: meta.category || 'other',
+        audience: ['personal', 'business', 'both'].includes(meta.audience) ? meta.audience : 'both',
         readTime: meta.read_time_minutes || 3,
         tags: meta.tags || [],
         bodyHtml: wrapImpactSection(marked.parse(body)),
@@ -169,9 +177,8 @@ function pageShell({ title, description, bodyContent, isArticle = false }) {
       <a href="${homePath}" class="navbar__logo">${SITE.name}<span class="navbar__dot">.</span></a>
       <nav class="navbar__nav">
         <a href="${homePath}#all" data-nav="all">Latest</a>
-        <a href="${homePath}#ai-news" data-nav="ai-news">News</a>
-        <a href="${homePath}#how-to" data-nav="how-to">How-To</a>
-        <a href="${homePath}#business" data-nav="business">Business</a>
+        <a href="${homePath}#personal" data-nav="personal">🏠 Everyday life</a>
+        <a href="${homePath}#business" data-nav="business">💼 Business</a>
       </nav>
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Light / dark">
         <span class="theme-toggle__icon">☾</span>
@@ -203,18 +210,19 @@ function pageShell({ title, description, bodyContent, isArticle = false }) {
 
 function articleCard(a, featured = false) {
   const cat = CATEGORIES[a.category] || CATEGORIES.other;
+  const aud = AUDIENCES[a.audience] || AUDIENCES.both;
   const cls = featured ? 'card card--featured' : 'card';
   const aos = featured ? 'zoom-in' : 'fade-up';
-  return `<article class="${cls}" data-category="${a.category}" data-aos="${aos}">
+  return `<article class="${cls}" data-audience="${a.audience}" data-category="${a.category}" data-aos="${aos}">
     <a href="article/${a.slug}.html" class="card__link">
       <div class="card__meta">
-        <span class="tag ${cat.cls}">${cat.label}</span>
+        <span class="aud ${aud.cls}">${aud.icon} ${aud.label}</span>
         <span class="card__read">${a.readTime} min read</span>
       </div>
       <h2 class="card__title">${escapeHtml(a.title)}</h2>
       <p class="card__subtitle">${escapeHtml(a.subtitle)}</p>
       <div class="card__foot">
-        <span class="card__source">${formatDate(a.publishedAt)}</span>
+        <span class="tag ${cat.cls}">${cat.label}</span>
         <span class="card__arrow">→</span>
       </div>
     </a>
@@ -236,14 +244,11 @@ function buildIndex(articles) {
     ${articleCard(featured, true)}
   </section>`;
 
-  // Kategória chipek - csak a ténylegesen jelen lévő kategóriák
-  const presentCats = [...new Set(rest.map(a => a.category))];
-  const chipsHtml = rest.length > 2 ? `<div class="filters" id="filters">
+  // Célhasználat (audience) szűrő chipek — ez a fő tengely
+  const chipsHtml = rest.length > 1 ? `<div class="filters" id="filters">
       <button class="chip chip--active" data-filter="all">All</button>
-      ${presentCats.map(c => {
-        const cat = CATEGORIES[c] || CATEGORIES.other;
-        return `<button class="chip" data-filter="${c}">${cat.label}</button>`;
-      }).join('')}
+      <button class="chip" data-filter="personal">🏠 Everyday life</button>
+      <button class="chip" data-filter="business">💼 Business</button>
     </div>` : '';
 
   const grid = rest.length > 0 ? `<section class="grid-section">
@@ -266,13 +271,17 @@ function buildIndex(articles) {
 
 function buildArticlePage(a) {
   const cat = CATEGORIES[a.category] || CATEGORIES.other;
+  const aud = AUDIENCES[a.audience] || AUDIENCES.both;
   const tagsHtml = a.tags.length
     ? `<div class="article__tags">${a.tags.map(t => `<span class="minitag">#${escapeHtml(t)}</span>`).join('')}</div>`
     : '';
 
   const body = `<article class="article">
     <div class="article__head">
-      <span class="tag ${cat.cls}">${cat.label}</span>
+      <div class="article__badges">
+        <span class="aud ${aud.cls}">${aud.icon} ${aud.label}</span>
+        <span class="tag ${cat.cls}">${cat.label}</span>
+      </div>
       <h1 class="article__title">${escapeHtml(a.title)}</h1>
       <p class="article__subtitle">${escapeHtml(a.subtitle)}</p>
       <div class="article__meta">
