@@ -159,19 +159,23 @@ function pageShell({ title, description, bodyContent, isArticle = false }) {
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..700&family=Hanken+Grotesk:wght@400..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
   <link rel="stylesheet" href="${cssPath}">
 </head>
 <body>
+  ${isArticle ? '<div class="progress-bar" id="progressBar"></div>' : ''}
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Light / dark">
+    <span class="theme-toggle__icon">☾</span>
+  </button>
   <header class="masthead">
     <div class="masthead__inner">
       <div class="masthead__top">
-        <span class="masthead__edition">Australian Edition</span>
+        <span class="masthead__edition">Issue 01 — Australian Edition</span>
         <span class="masthead__date">${formatDate(new Date().toISOString())}</span>
       </div>
       <a href="${homePath}" class="masthead__logo">${SITE.name}<span class="masthead__dot">.</span></a>
       <p class="masthead__tagline">${SITE.tagline}</p>
     </div>
-    <div class="masthead__rule"></div>
   </header>
   <main class="wrap">
     ${bodyContent}
@@ -183,6 +187,8 @@ function pageShell({ title, description, bodyContent, isArticle = false }) {
       <p class="site-footer__fine">Written and curated by autonomous AI agents · Reviewed for accuracy · © ${year} AI World Co.</p>
     </div>
   </footer>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script src="${cssPath.replace('style.css', 'app.js')}"></script>
 </body>
 </html>`;
 }
@@ -190,7 +196,8 @@ function pageShell({ title, description, bodyContent, isArticle = false }) {
 function articleCard(a, featured = false) {
   const cat = CATEGORIES[a.category] || CATEGORIES.other;
   const cls = featured ? 'card card--featured' : 'card';
-  return `<article class="${cls}">
+  const aos = featured ? 'zoom-in' : 'fade-up';
+  return `<article class="${cls}" data-category="${a.category}" data-aos="${aos}">
     <a href="article/${a.slug}.html" class="card__link">
       <div class="card__meta">
         <span class="tag ${cat.cls}">${cat.label}</span>
@@ -217,12 +224,24 @@ function buildIndex(articles) {
 
   const [featured, ...rest] = articles;
   const featuredHtml = `<section class="hero">
+    <div class="hero__label">Cover Story</div>
     ${articleCard(featured, true)}
   </section>`;
 
+  // Kategória chipek - csak a ténylegesen jelen lévő kategóriák
+  const presentCats = [...new Set(rest.map(a => a.category))];
+  const chipsHtml = rest.length > 2 ? `<div class="filters" id="filters">
+      <button class="chip chip--active" data-filter="all">All</button>
+      ${presentCats.map(c => {
+        const cat = CATEGORIES[c] || CATEGORIES.other;
+        return `<button class="chip" data-filter="${c}">${cat.label}</button>`;
+      }).join('')}
+    </div>` : '';
+
   const grid = rest.length > 0 ? `<section class="grid-section">
-    <h2 class="section-label">Latest stories</h2>
-    <div class="grid">
+    <h2 class="section-label">The Edit — Latest Stories</h2>
+    ${chipsHtml}
+    <div class="grid" id="grid">
       ${rest.map(a => articleCard(a)).join('\n')}
     </div>
   </section>` : '';
@@ -279,13 +298,15 @@ function main() {
   mkdirSync(OUT_ARTICLE_DIR, { recursive: true });
   mkdirSync(OUT_ASSETS_DIR, { recursive: true });
 
-  // CSS másolás
-  const cssSrc = join(ASSETS_SRC, 'style.css');
-  if (existsSync(cssSrc)) {
-    copyFileSync(cssSrc, join(OUT_ASSETS_DIR, 'style.css'));
-    console.log('✅ style.css másolva');
-  } else {
-    console.warn('⚠️  Nincs style.css az assets/-ben!');
+  // Asset-ek másolása (CSS + JS)
+  for (const asset of ['style.css', 'app.js']) {
+    const src = join(ASSETS_SRC, asset);
+    if (existsSync(src)) {
+      copyFileSync(src, join(OUT_ASSETS_DIR, asset));
+      console.log(`✅ ${asset} másolva`);
+    } else {
+      console.warn(`⚠️  Nincs ${asset} az assets/-ben!`);
+    }
   }
 
   // Cikkek

@@ -1,155 +1,156 @@
 /* ===================================================================
-   AI WORLD — Editorial newsroom design
+   AI WORLD — Contemporary MAGAZINE design
    Fraunces (display serif) + Hanken Grotesk (body sans)
-   Warm paper · ink · vermilion accent · eucalyptus green
+   Glossy · vibrant · dramatic scale · colour blocks · drop caps
    =================================================================== */
 
 :root {
-  --paper: #f6f1e7;
-  --paper-2: #efe8d8;
-  --ink: #211d18;
+  --paper: #f7f2e9;
+  --paper-2: #efe7d6;
+  --ink: #1b1814;
   --ink-soft: #4a443b;
   --muted: #8a8175;
-  --line: #d9cfba;
-  --accent: #d6451f;        /* vermilion */
+  --line: #ddd2bd;
+  --accent: #e23d12;        /* vivid vermilion */
   --accent-dark: #b1330f;
-  --green: #1f6f5c;         /* eucalyptus */
-  --gold: #b8862b;
-  --blue: #2a5b8c;
-  --plum: #7a3b62;
+  --green: #1f6f5c;
+  --gold: #c8911f;
+  --blue: #2456a6;
+  --plum: #8a2f63;
 
-  --maxw: 1140px;
-  --radius: 4px;
-  --shadow: 0 2px 0 var(--ink);
+  --maxw: 1180px;
+  --radius: 10px;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
-
 html { scroll-behavior: smooth; }
 
 body {
   background-color: var(--paper);
   background-image:
-    radial-gradient(circle at 12% 18%, rgba(214,69,31,0.04), transparent 36%),
-    radial-gradient(circle at 88% 8%, rgba(31,111,92,0.045), transparent 34%);
+    radial-gradient(circle at 90% -5%, rgba(226,61,18,0.07), transparent 40%),
+    radial-gradient(circle at 5% 105%, rgba(31,111,92,0.06), transparent 42%);
   color: var(--ink);
   font-family: 'Hanken Grotesk', -apple-system, sans-serif;
-  font-size: 18px;
-  line-height: 1.65;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
+  font-size: 18px; line-height: 1.65;
+  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
 }
 
-.wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+.wrap { max-width: var(--maxw); margin: 0 auto; padding: 44px 24px 70px; }
 
-/* ---------- MASTHEAD ---------- */
-.masthead { padding-top: 28px; }
-.masthead__inner { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; text-align: center; }
+/* ---------- MASTHEAD (magazine cover top) ---------- */
+.masthead { padding-top: 24px; }
+.masthead__inner { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
 .masthead__top {
   display: flex; justify-content: space-between; align-items: center;
-  font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
-  color: var(--muted); font-weight: 600;
-  border-bottom: 1px solid var(--line); padding-bottom: 10px; margin-bottom: 22px;
+  font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--ink); font-weight: 700;
+  padding-bottom: 14px; margin-bottom: 14px;
+  border-bottom: 2px solid var(--ink);
 }
 .masthead__logo {
-  display: inline-block;
-  font-family: 'Fraunces', serif;
-  font-weight: 900;
-  font-size: clamp(48px, 9vw, 104px);
-  letter-spacing: -0.03em;
-  line-height: 0.9;
-  color: var(--ink);
-  text-decoration: none;
+  display: block; text-align: center;
+  font-family: 'Fraunces', serif; font-weight: 900;
+  font-size: clamp(60px, 15vw, 168px);
+  letter-spacing: -0.04em; line-height: 0.82;
+  color: var(--ink); text-decoration: none;
   font-optical-sizing: auto;
 }
 .masthead__dot { color: var(--accent); }
 .masthead__tagline {
-  font-family: 'Fraunces', serif;
-  font-style: italic;
-  font-size: clamp(15px, 2vw, 20px);
-  color: var(--ink-soft);
-  margin-top: 10px;
-}
-.masthead__rule {
-  height: 5px;
-  max-width: var(--maxw);
-  margin: 24px auto 0;
-  background: var(--ink);
-  position: relative;
-}
-.masthead__rule::after {
-  content: ""; position: absolute; left: 0; top: 0; height: 100%; width: 32%;
-  background: var(--accent);
+  text-align: center;
+  font-family: 'Fraunces', serif; font-style: italic;
+  font-size: clamp(16px, 2.2vw, 23px); color: var(--ink-soft);
+  margin-top: 14px; padding-bottom: 6px;
+  border-bottom: 2px solid var(--ink);
 }
 
-/* ---------- HERO / FEATURED ---------- */
-.wrap { padding-top: 40px; padding-bottom: 60px; }
-.hero { margin-bottom: 54px; }
+/* ---------- HERO / COVER STORY ---------- */
+.hero { margin-bottom: 60px; }
+.hero__label {
+  font-size: 13px; font-weight: 800; letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 18px; display: flex; align-items: center; gap: 12px;
+}
+.hero__label::after { content: ""; flex: 1; height: 2px; background: var(--accent); opacity: 0.4; }
 
 .card--featured .card__link {
-  display: grid; gap: 14px;
-  padding: 38px 40px;
-  background: var(--paper-2);
-  border: 2px solid var(--ink);
+  display: grid; gap: 20px;
+  padding: 54px 56px;
+  background: var(--ink);
+  color: var(--paper);
   border-radius: var(--radius);
-  box-shadow: 8px 8px 0 var(--ink);
-  transition: transform .18s ease, box-shadow .18s ease;
+  position: relative; overflow: hidden;
+  transition: transform .25s cubic-bezier(.2,.8,.2,1);
 }
-.card--featured .card__link:hover { transform: translate(-3px,-3px); box-shadow: 12px 12px 0 var(--accent); }
-.card--featured .card__title { font-size: clamp(30px, 5vw, 54px); line-height: 1.02; }
-.card--featured .card__subtitle { font-size: clamp(17px, 2.2vw, 22px); max-width: 60ch; }
+.card--featured .card__link::before {
+  content: ""; position: absolute; top: -40%; right: -10%;
+  width: 50%; height: 180%;
+  background: radial-gradient(circle, rgba(226,61,18,0.5), transparent 65%);
+  pointer-events: none;
+}
+.card--featured .card__link:hover { transform: scale(1.01); }
+.card--featured .card__title {
+  font-size: clamp(36px, 6.5vw, 76px); line-height: 0.98; color: var(--paper);
+  letter-spacing: -0.025em; max-width: 16ch;
+}
+.card--featured .card__subtitle { font-size: clamp(18px, 2.4vw, 24px); color: var(--paper-2); max-width: 56ch; }
+.card--featured .card__foot { border-top-color: rgba(247,242,233,0.2); color: var(--paper-2); }
+.card--featured .card__read { color: var(--paper-2); }
 
-/* ---------- GRID ---------- */
+/* ---------- SECTION LABEL ---------- */
 .section-label {
-  font-family: 'Hanken Grotesk', sans-serif;
-  font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--accent); font-weight: 800;
-  display: flex; align-items: center; gap: 14px; margin-bottom: 26px;
+  font-family: 'Fraunces', serif; font-weight: 800; font-style: italic;
+  font-size: clamp(24px, 4vw, 40px); color: var(--ink);
+  margin-bottom: 30px; letter-spacing: -0.01em;
+  display: flex; align-items: baseline; gap: 16px;
 }
-.section-label::after { content: ""; flex: 1; height: 2px; background: var(--line); }
+.section-label::after { content: ""; flex: 1; height: 3px; background: var(--ink); align-self: center; }
 
+/* ---------- MAGAZINE GRID (asymmetric) ---------- */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 26px;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 28px;
 }
+.card { grid-column: span 2; }          /* default: 3 per row */
+.card:first-child { grid-column: span 3; }  /* first two bigger */
+.card:nth-child(2) { grid-column: span 3; }
 
-.card { height: 100%; }
 .card__link {
-  display: flex; flex-direction: column; gap: 12px; height: 100%;
-  padding: 26px 26px 22px;
-  background: rgba(255,255,255,0.4);
-  border: 1.5px solid var(--ink);
+  display: flex; flex-direction: column; gap: 13px; height: 100%;
+  padding: 28px 28px 24px;
+  background: var(--paper-2);
   border-radius: var(--radius);
   text-decoration: none; color: var(--ink);
-  transition: transform .16s ease, box-shadow .16s ease, background .16s ease;
+  border: 1px solid transparent;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
 }
 .card__link:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 0 -2px var(--ink);
-  background: rgba(255,255,255,0.75);
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px -18px rgba(27,24,20,0.5);
+  border-color: var(--ink);
 }
 .card__meta { display: flex; align-items: center; justify-content: space-between; }
 .card__read { font-size: 12.5px; color: var(--muted); font-weight: 600; letter-spacing: 0.04em; }
 .card__title {
   font-family: 'Fraunces', serif; font-weight: 700;
-  font-size: 23px; line-height: 1.12; letter-spacing: -0.01em;
+  font-size: 26px; line-height: 1.08; letter-spacing: -0.015em;
 }
-.card__subtitle { color: var(--ink-soft); font-size: 15.5px; line-height: 1.5; flex: 1; }
+.card:first-child .card__title, .card:nth-child(2) .card__title { font-size: 34px; }
+.card__subtitle { color: var(--ink-soft); font-size: 16px; line-height: 1.5; flex: 1; }
 .card__foot {
   display: flex; align-items: center; justify-content: space-between;
-  margin-top: 6px; padding-top: 14px; border-top: 1px solid var(--line);
+  margin-top: 8px; padding-top: 15px; border-top: 1px solid var(--line);
   font-size: 13px; color: var(--muted); font-weight: 600;
 }
-.card__arrow { color: var(--accent); font-size: 18px; transition: transform .16s ease; }
-.card__link:hover .card__arrow { transform: translateX(5px); }
+.card__arrow { color: var(--accent); font-size: 20px; transition: transform .18s ease; }
+.card__link:hover .card__arrow { transform: translateX(6px); }
 
-/* ---------- TAGS ---------- */
+/* ---------- TAGS (magazine section stamps) ---------- */
 .tag {
   display: inline-block; font-size: 11px; font-weight: 800;
-  letter-spacing: 0.1em; text-transform: uppercase;
-  padding: 4px 10px; border-radius: 100px; color: #fff;
-  background: var(--ink);
+  letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 5px 12px; border-radius: 100px; color: #fff; background: var(--ink);
 }
 .cat-news { background: var(--accent); }
 .cat-howto { background: var(--green); }
@@ -158,103 +159,160 @@ body {
 .cat-creative { background: var(--gold); }
 .cat-other { background: var(--ink-soft); }
 
-/* ---------- ARTICLE PAGE ---------- */
-.article { max-width: 720px; margin: 0 auto; }
-.article__head { margin-bottom: 36px; }
+/* ---------- ARTICLE PAGE (magazine feature) ---------- */
+.article { max-width: 740px; margin: 0 auto; }
+.article__head { margin-bottom: 40px; text-align: center; }
 .article__title {
-  font-family: 'Fraunces', serif; font-weight: 800;
-  font-size: clamp(32px, 5.5vw, 56px); line-height: 1.04;
-  letter-spacing: -0.02em; margin: 16px 0 14px;
+  font-family: 'Fraunces', serif; font-weight: 900;
+  font-size: clamp(38px, 6.5vw, 72px); line-height: 0.98;
+  letter-spacing: -0.025em; margin: 20px 0 18px;
 }
 .article__subtitle {
   font-family: 'Fraunces', serif; font-style: italic;
-  font-size: clamp(18px, 2.6vw, 24px); color: var(--ink-soft); line-height: 1.4;
+  font-size: clamp(19px, 2.8vw, 27px); color: var(--ink-soft); line-height: 1.35;
+  max-width: 30ch; margin: 0 auto;
 }
 .article__meta {
-  display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
-  margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--line);
-  font-size: 14px; color: var(--muted); font-weight: 600;
+  display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: center;
+  margin-top: 26px; padding: 16px 0; border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink);
+  font-size: 13px; color: var(--ink); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
 }
-.article__meta .dot { color: var(--line); }
+.article__meta .dot { color: var(--accent); }
 
-.article__body { font-size: 19px; line-height: 1.75; }
-.article__body h2 {
-  font-family: 'Fraunces', serif; font-weight: 700;
-  font-size: 28px; line-height: 1.15; margin: 38px 0 14px;
-  letter-spacing: -0.01em;
+.article__body { font-size: 19.5px; line-height: 1.78; }
+/* INICIÁLÉ (drop cap) - magazin védjegy */
+.article__body > p:first-of-type::first-letter {
+  font-family: 'Fraunces', serif; font-weight: 900;
+  font-size: 5.4em; line-height: 0.72; float: left;
+  margin: 8px 14px 0 0; color: var(--accent);
 }
-.article__body h3 { font-family: 'Fraunces', serif; font-size: 22px; margin: 28px 0 10px; }
-.article__body p { margin-bottom: 22px; color: var(--ink); }
-.article__body ul, .article__body ol { margin: 0 0 22px 1.2em; }
-.article__body li { margin-bottom: 10px; }
-.article__body a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
-.article__body strong { font-weight: 700; }
+.article__body h2 {
+  font-family: 'Fraunces', serif; font-weight: 800;
+  font-size: 32px; line-height: 1.12; margin: 44px 0 16px; letter-spacing: -0.015em;
+}
+.article__body h3 { font-family: 'Fraunces', serif; font-size: 24px; margin: 30px 0 12px; }
+.article__body p { margin-bottom: 24px; }
+.article__body ul, .article__body ol { margin: 0 0 24px 1.2em; }
+.article__body li { margin-bottom: 11px; }
+.article__body a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+.article__body blockquote {
+  font-family: 'Fraunces', serif; font-style: italic; font-size: 27px; line-height: 1.3;
+  margin: 34px 0; padding-left: 26px; border-left: 5px solid var(--accent); color: var(--ink);
+}
 .article__body hr { display: none; }
 
-/* "What this means for you" kiemelt doboz - a brand védjegye */
+/* "What this means for you" — magazine highlight spread */
 .impact {
-  background: var(--ink); color: var(--paper);
-  border-radius: 8px; padding: 30px 32px; margin: 38px 0;
-  box-shadow: 8px 8px 0 var(--accent);
+  background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+  color: #fff; border-radius: 14px; padding: 38px 40px; margin: 46px 0;
+  box-shadow: 0 24px 50px -20px rgba(226,61,18,0.6);
 }
 .impact__label {
-  font-family: 'Hanken Grotesk', sans-serif;
-  font-size: 13px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase;
-  color: var(--accent); margin-bottom: 16px;
-  display: flex; align-items: center; gap: 10px;
+  font-size: 13px; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase;
+  color: #fff; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; opacity: 0.95;
 }
-.impact__label::before { content: "✦"; font-size: 16px; }
+.impact__label::before { content: "✦"; }
 .impact ul { list-style: none; margin: 0; }
-.impact li { margin-bottom: 14px; padding-left: 22px; position: relative; line-height: 1.6; }
-.impact li::before { content: "→"; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
-.impact strong { color: #fff; }
+.impact li { margin-bottom: 16px; padding-left: 26px; position: relative; line-height: 1.6; }
+.impact li::before { content: "→"; position: absolute; left: 0; font-weight: 800; }
+.impact strong { color: #fff; font-weight: 800; }
 .impact p { margin-bottom: 12px; }
+.article__body .impact::first-letter,
+.impact p::first-letter { all: unset; } /* iniciálé ne érintse a dobozt */
 
 /* tags + footer */
-.article__tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 34px 0; }
-.minitag { font-size: 13px; color: var(--muted); background: var(--paper-2); padding: 4px 10px; border-radius: 100px; }
-.article__foot { margin-top: 40px; padding-top: 26px; border-top: 2px solid var(--ink); }
-.source-link { display: inline-block; font-weight: 700; color: var(--accent); text-decoration: none; margin-bottom: 18px; }
+.article__tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 38px 0; justify-content: center; }
+.minitag { font-size: 13px; color: var(--muted); background: var(--paper-2); padding: 5px 12px; border-radius: 100px; }
+.article__foot { margin-top: 44px; padding-top: 28px; border-top: 3px double var(--ink); text-align: center; }
+.source-link { display: inline-block; font-weight: 700; color: var(--accent); text-decoration: none; margin-bottom: 20px; }
 .source-link:hover { text-decoration: underline; }
 .ai-disclosure {
   font-size: 14px; color: var(--muted); font-style: italic;
-  background: var(--paper-2); padding: 14px 18px; border-radius: var(--radius);
-  border-left: 3px solid var(--green); margin-bottom: 22px;
+  background: var(--paper-2); padding: 16px 20px; border-radius: var(--radius);
+  border-left: 3px solid var(--green); margin: 0 auto 24px; max-width: 60ch; text-align: left;
 }
 .back-link { display: inline-block; font-weight: 700; color: var(--ink); text-decoration: none; }
 .back-link:hover { color: var(--accent); }
 
-/* ---------- EMPTY STATE ---------- */
-.empty { text-align: center; padding: 80px 20px; }
-.empty__title { font-family: 'Fraunces', serif; font-size: 42px; margin-bottom: 12px; }
+/* ---------- EMPTY ---------- */
+.empty { text-align: center; padding: 90px 20px; }
+.empty__title { font-family: 'Fraunces', serif; font-size: 52px; margin-bottom: 12px; }
 
 /* ---------- FOOTER ---------- */
-.site-footer {
-  background: var(--ink); color: var(--paper);
-  margin-top: 60px; padding: 50px 0;
-}
-.site-footer__brand { font-family: 'Fraunces', serif; font-weight: 900; font-size: 32px; }
-.site-footer__note { color: var(--paper-2); margin: 8px 0 18px; max-width: 50ch; }
+.site-footer { background: var(--ink); color: var(--paper); margin-top: 70px; padding: 60px 0; }
+.site-footer__brand { font-family: 'Fraunces', serif; font-weight: 900; font-size: 40px; }
+.site-footer__note { color: var(--paper-2); margin: 10px 0 20px; max-width: 50ch; }
 .site-footer__fine { font-size: 13px; color: #9a9286; letter-spacing: 0.02em; }
 
-/* ---------- ANIMÁCIÓ: oldal betöltés ---------- */
-@keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
-.hero, .grid-section, .article { animation: rise .5s ease both; }
-.grid-section { animation-delay: .08s; }
-.grid .card { animation: rise .5s ease both; }
-.grid .card:nth-child(2) { animation-delay: .05s; }
-.grid .card:nth-child(3) { animation-delay: .1s; }
-.grid .card:nth-child(4) { animation-delay: .15s; }
-.grid .card:nth-child(n+5) { animation-delay: .2s; }
+/* ---------- ANIMATION (AOS kezeli a kártyákat; ez a wrapper-eknek) ---------- */
+@keyframes rise { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
+.article { animation: rise .6s cubic-bezier(.2,.8,.2,1) both; }
 
-/* ---------- RESPONSIVE ---------- */
-@media (max-width: 640px) {
-  body { font-size: 17px; }
-  .card--featured .card__link { padding: 26px 24px; box-shadow: 5px 5px 0 var(--ink); }
-  .masthead__top { font-size: 10px; }
-  .impact { padding: 24px; box-shadow: 5px 5px 0 var(--accent); }
+/* ---------- DARK MODE (magazin éjszakai változat) ---------- */
+[data-theme="dark"] {
+  --paper: #16140f;
+  --paper-2: #211d16;
+  --ink: #f1ead9;
+  --ink-soft: #c5bca8;
+  --muted: #968c78;
+  --line: #38322a;
+}
+[data-theme="dark"] body {
+  background-image:
+    radial-gradient(circle at 90% -5%, rgba(226,61,18,0.12), transparent 42%),
+    radial-gradient(circle at 5% 105%, rgba(31,111,92,0.10), transparent 44%);
+}
+[data-theme="dark"] .card--featured .card__link { background: #000; }
+[data-theme="dark"] .card__link:hover { box-shadow: 0 18px 40px -18px rgba(0,0,0,0.8); }
+[data-theme="dark"] .masthead__top,
+[data-theme="dark"] .masthead__tagline { border-color: var(--ink); }
+
+/* ---------- THEME TOGGLE gomb ---------- */
+.theme-toggle {
+  position: fixed; top: 18px; right: 18px; z-index: 100;
+  width: 46px; height: 46px; border-radius: 50%;
+  background: var(--ink); color: var(--paper);
+  border: none; cursor: pointer; font-size: 20px;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 6px 18px -6px rgba(0,0,0,0.5);
+  transition: transform .2s ease, background .2s ease;
+}
+.theme-toggle:hover { transform: rotate(-20deg) scale(1.08); background: var(--accent); }
+
+/* ---------- KATEGÓRIA SZŰRŐ chipek ---------- */
+.filters { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px; }
+.chip {
+  font-family: 'Hanken Grotesk', sans-serif;
+  font-size: 13px; font-weight: 700; letter-spacing: 0.04em;
+  padding: 8px 18px; border-radius: 100px; cursor: pointer;
+  background: transparent; color: var(--ink);
+  border: 1.5px solid var(--ink);
+  transition: all .16s ease;
+}
+.chip:hover { background: var(--paper-2); }
+.chip--active { background: var(--ink); color: var(--paper); }
+
+/* ---------- OLVASÁSI FOLYAMATJELZŐ ---------- */
+.progress-bar {
+  position: fixed; top: 0; left: 0; height: 4px; width: 0%;
+  background: linear-gradient(90deg, var(--accent), var(--gold));
+  z-index: 200; transition: width .1s linear;
 }
 
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 880px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+  .card, .card:first-child, .card:nth-child(2) { grid-column: span 1; }
+  .card:first-child .card__title, .card:nth-child(2) .card__title { font-size: 26px; }
+}
+@media (max-width: 560px) {
+  body { font-size: 17px; }
+  .grid { grid-template-columns: 1fr; }
+  .card, .card:first-child, .card:nth-child(2) { grid-column: span 1; }
+  .card--featured .card__link { padding: 34px 26px; }
+  .impact { padding: 28px 24px; }
+  .article__body > p:first-of-type::first-letter { font-size: 4em; }
+}
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
