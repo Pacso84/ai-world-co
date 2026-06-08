@@ -236,6 +236,31 @@ function logCall(agentName, provider, model, usage, costUsd, success, error = nu
 }
 
 // ===================================================================
+// RETRY SEGÉDEK
+// ===================================================================
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+// Átmeneti hiba? (érdemes ugyanazt a modellt újrapróbálni)
+// 503/500/502/504 = szerver túlterhelt; hálózati hibák; "overloaded"
+// NEM átmeneti: 429 (kvóta - inkább fallback), 401/403 (auth)
+function isTransientError(error) {
+  const msg = (error?.message || '').toLowerCase();
+  const transientSignals = [
+    '503', '500', '502', '504',
+    'unavailable', 'overloaded', 'high demand', 'try again',
+    'timeout', 'etimedout', 'econnreset', 'enotfound', 'socket hang up',
+    'fetch failed', 'network'
+  ];
+  return transientSignals.some(s => msg.includes(s));
+}
+
+const MAX_TRANSIENT_RETRIES = 2;   // ugyanazon a modellen
+const RETRY_BASE_DELAY_MS = 1000;  // 1s, majd 2s (exponenciális)
+
+// ===================================================================
 // FŐ FÜGGVÉNY: ASK
 // ===================================================================
 // Ez az amit az agentek hívnak!
@@ -245,6 +270,10 @@ function logCall(agentName, provider, model, usage, costUsd, success, error = nu
 //   options   - { agentName, systemPrompt?, maxTokens? }
 //
 // Visszaadja: { text, provider, model, costUsd } VAGY null ha minden elesett
+//
+// HIBAKEZELÉS:
+//   - Átmeneti hiba (503, hálózat) -> ugyanazt a modellt újrapróbálja (backoff)
+//   - Kvóta (429) vagy más -> azonnal fallback modell
 // ===================================================================
 
 export async function ask(prompt, options = {}) {
@@ -271,30 +300,37 @@ export async function ask(prompt, options = {}) {
       continue;
     }
 
-    try {
-      const response = await caller(prompt, model, { systemPrompt, maxTokens, jsonMode });
+    // Átmeneti hibákra ugyanazt a modellt újrapróbáljuk (backoff-fal)
+    for (let tryNum = 1; tryNum <= MAX_TRANSIENT_RETRIES + 1; tryNum++) {
+      try {
+        const response = await caller(prompt, model, { systemPrompt, maxTokens, jsonMode });
 
-      // Safety check
-      const safety = safetyFilter(response);
-      if (!safety.safe) {
-        logCall(agentName, provider, model, response.usage, 0, false, new Error(safety.reason));
-        continue; // Próbáljuk a fallback-et
+        // Safety check
+        const safety = safetyFilter(response);
+        if (!safety.safe) {
+          logCall(agentName, provider, model, response.usage, 0, false, new Error(safety.reason));
+          break; // Tartalom-szabály blokk -> fallback (nem retry)
+        }
+
+        // Költség számítás + log
+        const cost = calculateCost(model, response.usage);
+        logCall(agentName, provider, model, response.usage, cost, true);
+
+        return { text: response.text, provider, model, costUsd: cost };
+
+      } catch (error) {
+        logCall(agentName, provider, model, null, 0, false, error);
+
+        // Átmeneti hiba + van még próba -> várunk és újra ugyanazt a modellt
+        if (isTransientError(error) && tryNum <= MAX_TRANSIENT_RETRIES) {
+          const delay = RETRY_BASE_DELAY_MS * Math.pow(2, tryNum - 1);
+          console.log(`   ⏳ Átmeneti hiba — újrapróbálom ${delay}ms múlva (${tryNum}/${MAX_TRANSIENT_RETRIES})...`);
+          await sleep(delay);
+          continue;
+        }
+        // Nem átmeneti (pl. 429 kvóta) vagy elfogytak a próbák -> fallback modell
+        break;
       }
-
-      // Költség számítás + log
-      const cost = calculateCost(model, response.usage);
-      logCall(agentName, provider, model, response.usage, cost, true);
-
-      return {
-        text: response.text,
-        provider,
-        model,
-        costUsd: cost
-      };
-
-    } catch (error) {
-      logCall(agentName, provider, model, null, 0, false, error);
-      // Folytatjuk a fallback-kel
     }
   }
 
