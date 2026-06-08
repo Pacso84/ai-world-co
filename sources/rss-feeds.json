@@ -1,14 +1,14 @@
 {
   "_meta": {
-    "description": "RSS hírforrások az AI World Co. Scraper-Agent számára",
-    "version": "2.0",
-    "last_updated": "2026-06-07",
-    "note": "v2.0: halott URL-ek javítva éles teszt után, 2 új ausztrál forrás hozzáadva",
+    "description": "Forrasok az AI World Co. Scraper-Agent szamara - CSAK ELSODLEGES FORRASOK",
+    "version": "3.0",
+    "last_updated": "2026-06-08",
+    "strategy": "Csak hivatalos cég-oldalak + közösség/social (Reddit, HN, YouTube, X). NINCS más hírmagazin - hogy senkit ne másoljunk és ne lopjunk cikket. A magazinok kikapcsolva (enabled:false), de a fájlban maradnak emlékeztetőül.",
     "max_items_per_feed": 5,
     "priority_legend": {
-      "1": "Magas - naponta többször ellenőrizzük (fő AI cégek)",
-      "2": "Közepes - naponta 1x (tech média)",
-      "3": "Alacsony - heti pár alkalom (specifikus)"
+      "1": "Magas - hivatalos cég blogok",
+      "2": "Közepes - közösség/social trend",
+      "3": "Alacsony - ritka"
     }
   },
 
@@ -16,58 +16,137 @@
 
     {
       "id": "openai-blog",
-      "name": "OpenAI Blog",
+      "name": "OpenAI Blog (hivatalos)",
       "url": "https://openai.com/blog/rss.xml",
       "category": "ai-company-official",
       "priority": 1,
       "language": "en",
       "country": "US",
-      "comment": "OpenAI hivatalos blog - GPT, DALL-E, Sora. FIGYELEM: 990+ cikket ad, limit kell!",
+      "comment": "HIVATALOS OpenAI - GPT, DALL-E, Sora, új funkciók.",
       "enabled": true
     },
     {
       "id": "google-deepmind",
-      "name": "Google DeepMind Blog",
+      "name": "Google DeepMind (hivatalos)",
       "url": "https://deepmind.google/blog/rss.xml",
       "category": "ai-company-official",
       "priority": 1,
       "language": "en",
       "country": "US/UK",
-      "comment": "Google DeepMind - Gemini, kutatás.",
+      "comment": "HIVATALOS Google DeepMind - Gemini, kutatás.",
       "enabled": true
     },
     {
       "id": "google-ai-blog",
-      "name": "Google AI (blog.google)",
+      "name": "Google AI (hivatalos, blog.google)",
       "url": "https://blog.google/technology/ai/rss/",
       "category": "ai-company-official",
       "priority": 1,
       "language": "en",
       "country": "US",
-      "comment": "ÚJ v2.0 - Google fogyasztó-fókuszú AI hírek, közérthető.",
+      "comment": "HIVATALOS Google - fogyasztói AI funkciók, közérthető.",
       "enabled": true
     },
     {
       "id": "meta-ai",
-      "name": "Meta AI / Tech News",
+      "name": "Meta Newsroom (hivatalos)",
       "url": "https://about.fb.com/news/category/technology-and-innovation/feed/",
       "category": "ai-company-official",
       "priority": 2,
       "language": "en",
       "country": "US",
-      "comment": "JAVÍTVA v2.0 - Meta tech & innováció hírek (Llama, AI funkciók).",
+      "comment": "HIVATALOS Meta newsroom (Llama, AI funkciók).",
       "enabled": true
     },
     {
       "id": "microsoft-ai",
-      "name": "Microsoft AI Blog",
+      "name": "Microsoft AI (hivatalos)",
       "url": "https://blogs.microsoft.com/ai/feed/",
       "category": "ai-company-official",
       "priority": 2,
       "language": "en",
       "country": "US",
-      "comment": "Microsoft Copilot, Azure AI, Windows AI funkciók.",
+      "comment": "HIVATALOS Microsoft - Copilot, Azure AI, Windows AI.",
       "enabled": true
+    },
+    {
+      "id": "huggingface-blog",
+      "name": "Hugging Face (hivatalos platform)",
+      "url": "https://huggingface.co/blog/feed.xml",
+      "category": "ai-company-official",
+      "priority": 3,
+      "language": "en",
+      "country": "US/FR",
+      "comment": "HIVATALOS HF platform blog - új modellek, eszközök.",
+      "enabled": true
+    },
+
+    {
+      "id": "reddit-artificial",
+      "name": "Reddit r/artificial",
+      "url": "https://www.reddit.com/r/artificial/top/.rss?t=day",
+      "category": "community",
+      "priority": 2,
+      "language": "en",
+      "country": "INT",
+      "comment": "Közösség - általános AI diskurzus. KIKAPCSOLVA: Reddit 403 (OAuth API kell, future).",
+      "enabled": false
+    },
+    {
+      "id": "reddit-openai",
+      "name": "Reddit r/OpenAI",
+      "url": "https://www.reddit.com/r/OpenAI/top/.rss?t=week",
+      "category": "community",
+      "priority": 2,
+      "language": "en",
+      "country": "INT",
+      "comment": "Közösség - OpenAI eszközök használata. KIKAPCSOLVA: Reddit 403 (OAuth kell).",
+      "enabled": false
+    },
+    {
+      "id": "reddit-chatgpt",
+      "name": "Reddit r/ChatGPT",
+      "url": "https://www.reddit.com/r/ChatGPT/top/.rss?t=week",
+      "category": "community",
+      "priority": 2,
+      "language": "en",
+      "country": "INT",
+      "comment": "Közösség - how-to ötletek. KIKAPCSOLVA: Reddit 403 (OAuth kell).",
+      "enabled": false
+    },
+    {
+      "id": "reddit-claude",
+      "name": "Reddit r/ClaudeAI",
+      "url": "https://www.reddit.com/r/ClaudeAI/top/.rss?t=week",
+      "category": "community",
+      "priority": 3,
+      "language": "en",
+      "country": "INT",
+      "comment": "Közösség - Claude tippek. KIKAPCSOLVA: Reddit 403 (OAuth kell).",
+      "enabled": false
+    },
+    {
+      "id": "hackernews-ai",
+      "name": "Hacker News - AI",
+      "url": "https://hnrss.org/newest?q=AI+OR+LLM+OR+GPT+OR+Claude",
+      "category": "community",
+      "priority": 3,
+      "language": "en",
+      "country": "INT",
+      "comment": "Közösség/fejlesztő - mit beszélnek, trend-jelző.",
+      "enabled": true
+    },
+
+    {
+      "id": "anthropic-blog",
+      "name": "Anthropic (hivatalos)",
+      "url": "https://www.anthropic.com/news/rss.xml",
+      "category": "ai-company-official",
+      "priority": 1,
+      "language": "en",
+      "country": "US",
+      "comment": "HIVATALOS de NINCS RSS-ük (404). X-en aktívak - X integráció kell hozzá (future).",
+      "enabled": false
     },
 
     {
@@ -75,172 +154,101 @@
       "name": "TechCrunch AI",
       "url": "https://techcrunch.com/category/artificial-intelligence/feed/",
       "category": "tech-media",
-      "priority": 1,
+      "priority": 9,
       "language": "en",
       "country": "US",
-      "comment": "Friss AI hírek, üzleti aspektusok.",
-      "enabled": true
+      "comment": "KIKAPCSOLVA v3.0 - más hírmagazin, nem másolunk senkit.",
+      "enabled": false
     },
     {
       "id": "theverge-ai",
-      "name": "The Verge - AI",
+      "name": "The Verge AI",
       "url": "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml",
       "category": "tech-media",
-      "priority": 1,
+      "priority": 9,
       "language": "en",
       "country": "US",
-      "comment": "JAVÍTVA v2.0 - Fogyasztó-fókuszú AI hírek, könnyen érthető.",
-      "enabled": true
+      "comment": "KIKAPCSOLVA v3.0 - más hírmagazin.",
+      "enabled": false
     },
     {
       "id": "arstechnica-ai",
       "name": "Ars Technica AI",
       "url": "https://arstechnica.com/ai/feed/",
       "category": "tech-media",
-      "priority": 2,
+      "priority": 9,
       "language": "en",
       "country": "US",
-      "comment": "Mélyebb technikai elemzések.",
-      "enabled": true
+      "comment": "KIKAPCSOLVA v3.0 - más hírmagazin.",
+      "enabled": false
     },
     {
       "id": "wired-ai",
-      "name": "Wired - AI",
+      "name": "Wired AI",
       "url": "https://www.wired.com/feed/tag/ai/latest/rss",
       "category": "tech-media",
-      "priority": 2,
+      "priority": 9,
       "language": "en",
       "country": "US",
-      "comment": "Long-form cikkek, társadalmi hatások.",
-      "enabled": true
+      "comment": "KIKAPCSOLVA v3.0 - más hírmagazin.",
+      "enabled": false
     },
     {
       "id": "venturebeat-ai",
       "name": "VentureBeat AI",
       "url": "https://venturebeat.com/category/ai/feed/",
       "category": "tech-media",
-      "priority": 2,
+      "priority": 9,
       "language": "en",
       "country": "US",
-      "comment": "Üzleti AI hírek, vállalati AI.",
-      "enabled": true
+      "comment": "KIKAPCSOLVA v3.0 - más hírmagazin.",
+      "enabled": false
     },
-
     {
       "id": "the-conversation-au",
-      "name": "The Conversation AU - Technology",
+      "name": "The Conversation AU",
       "url": "https://theconversation.com/au/technology/articles.atom",
-      "category": "australian-tech",
-      "priority": 1,
+      "category": "tech-media",
+      "priority": 9,
       "language": "en",
       "country": "AU",
-      "comment": "ÚJ v2.0 - AUSZTRÁL! Akadémiai de közérthető, ír AI cégekről is. ARANYBÁNYA a brand-hez.",
-      "enabled": true
+      "comment": "KIKAPCSOLVA v3.0 - hírmédia, nem másolunk. (Ausztrál nézőpont az Író fejéből jön.)",
+      "enabled": false
     },
     {
       "id": "itnews-au",
       "name": "iTnews Australia",
       "url": "https://www.itnews.com.au/rss/rss.ashx",
-      "category": "australian-tech",
-      "priority": 1,
+      "category": "tech-media",
+      "priority": 9,
       "language": "en",
       "country": "AU",
-      "comment": "JAVÍTVA v2.0 - Ausztrál tech, AI a munkahelyen. LOKÁLIS perspektíva!",
-      "enabled": true
+      "comment": "KIKAPCSOLVA v3.0 - hírmédia.",
+      "enabled": false
     },
     {
       "id": "zdnet-au",
       "name": "ZDNet Australia",
       "url": "https://www.zdnet.com/au/rss.xml",
-      "category": "australian-tech",
-      "priority": 2,
+      "category": "tech-media",
+      "priority": 9,
       "language": "en",
       "country": "AU",
-      "comment": "Ausztrál tech média.",
-      "enabled": true
-    },
-
-    {
-      "id": "huggingface-blog",
-      "name": "Hugging Face Blog",
-      "url": "https://huggingface.co/blog/feed.xml",
-      "category": "ai-research",
-      "priority": 3,
-      "language": "en",
-      "country": "US/FR",
-      "comment": "Open source AI. FIGYELEM: 790+ cikket ad, limit kell!",
-      "enabled": true
-    },
-    {
-      "id": "hackernews-ai",
-      "name": "Hacker News - AI Search",
-      "url": "https://hnrss.org/newest?q=AI+OR+LLM+OR+GPT+OR+Claude",
-      "category": "community",
-      "priority": 3,
-      "language": "en",
-      "country": "INT",
-      "comment": "JAVÍTVA v2.0 - AI-szűrt HN. FIGYELEM: lassú (~8s).",
-      "enabled": true
-    },
-
-    {
-      "id": "anthropic-blog",
-      "name": "Anthropic Blog",
-      "url": "https://www.anthropic.com/news/rss.xml",
-      "category": "ai-company-official",
-      "priority": 1,
-      "language": "en",
-      "country": "US",
-      "comment": "KIKAPCSOLVA v2.0 - Anthropic NEM ad RSS-t (404). A The Conversation AU + TechCrunch ír róluk.",
-      "enabled": false
-    },
-    {
-      "id": "mistral-news",
-      "name": "Mistral AI News",
-      "url": "https://mistral.ai/news/rss.xml",
-      "category": "ai-company-official",
-      "priority": 2,
-      "language": "en",
-      "country": "FR",
-      "comment": "KIKAPCSOLVA v2.0 - Mistral NEM ad RSS-t (404).",
-      "enabled": false
-    },
-    {
-      "id": "innovation-aus",
-      "name": "InnovationAus",
-      "url": "https://www.innovationaus.com/feed/",
-      "category": "australian-tech",
-      "priority": 3,
-      "language": "en",
-      "country": "AU",
-      "comment": "KIKAPCSOLVA v2.0 - 403 blokk (scraping védelem).",
-      "enabled": false
-    },
-    {
-      "id": "arxiv-cs-ai",
-      "name": "arXiv - CS: AI",
-      "url": "http://export.arxiv.org/rss/cs.AI",
-      "category": "ai-research",
-      "priority": 3,
-      "language": "en",
-      "country": "INT",
-      "comment": "KIKAPCSOLVA - túl sok akadémiai adat.",
+      "comment": "KIKAPCSOLVA v3.0 - hírmédia.",
       "enabled": false
     }
 
   ],
 
   "categories": {
-    "ai-company-official": { "description": "Hivatalos AI cég blogok", "scrape_frequency": "every_2_hours" },
-    "tech-media": { "description": "Tech újságírás", "scrape_frequency": "every_4_hours" },
-    "australian-tech": { "description": "Ausztrál tech média - LOKÁLIS perspektíva", "scrape_frequency": "every_6_hours" },
-    "ai-research": { "description": "Akadémiai / kutatás", "scrape_frequency": "daily" },
-    "community": { "description": "Közösség / fórum", "scrape_frequency": "every_6_hours" }
+    "ai-company-official": { "description": "Hivatalos AI cég blogok - ELSŐDLEGES forrás", "scrape_frequency": "every_2_hours" },
+    "community": { "description": "Közösség/social (Reddit, HN) - valódi használat, trend", "scrape_frequency": "every_6_hours" },
+    "tech-media": { "description": "KIKAPCSOLVA - más hírmagazinok, nem másolunk", "scrape_frequency": "never" }
   },
 
   "future_sources_todo": [
-    "X (Twitter) - kulcs AI figurák - Nitter alapon",
-    "Reddit (r/MachineLearning, r/LocalLLaMA, r/ChatGPT)",
-    "YouTube AI csatornák"
+    "X (Twitter) - kulcs AI figurák + cégek hivatalos fiókjai (Altman, Amodei, OpenAI, Anthropic). Nincs ingyenes RSS - Nitter instabil VAGY fizetős X API kell.",
+    "YouTube - hivatalos cég csatornák + AI oktatók (channel_id alapú RSS: youtube.com/feeds/videos.xml?channel_id=UC...). Channel ID-k összegyűjtése kell.",
+    "Reddit további: r/LocalLLaMA, r/GoogleGemini, r/singularity (óvatosan)"
   ]
 }

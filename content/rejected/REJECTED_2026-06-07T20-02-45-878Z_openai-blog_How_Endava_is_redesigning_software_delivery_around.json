@@ -1,0 +1,30 @@
+{
+  "_meta": {
+    "written_at": "2026-06-08T18:01:04.050Z",
+    "writer_provider": "google",
+    "writer_model": "gemini-flash-latest",
+    "writer_cost_usd": 0.001042425,
+    "original_draft": "2026-06-07T20-02-45-878Z_openai-blog_How_Endava_is_redesigning_software_delivery_around.json",
+    "source_id": "openai-blog",
+    "source_name": "OpenAI Blog",
+    "source_link": "https://openai.com/index/endava-frontiers",
+    "status": "rejected",
+    "rejected_at": "2026-06-08T18:02:27.748Z",
+    "auto_check": {
+      "passed": false,
+      "issues": [
+        "MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!)"
+      ],
+      "wordCount": 349
+    },
+    "ai_review": {
+      "decision": "FAIL",
+      "verdict": "Critical auto-check failures: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!)",
+      "skipped_ai": true
+    },
+    "reason": "Critical auto-check failures: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!)",
+    "can_retry": true
+  },
+  "article_markdown": "---\ntitle: \"How AI Agents Are Quietly Changing the Way We Work\"\nsubtitle: \"Discover how these independent digital helpers are moving beyond simple chat to managing entire tasks for you.\"\ncategory: \"explainers\"\nread_time_minutes: 4\ntags: [\"ai-agents\", \"productivity\", \"future-of-work\"]\n---\n\n# How AI Agents Are Quietly Changing the Way We Work\n\nIf you have used tools like ChatGPT, you already know they are great at writing emails or answering quick questions. But a new wave of technology called AI agents is about to change how we complete daily tasks at work and at home. \n\nInstead of just chatting with us, these systems are beginning to do the actual work for us.\n\n## What is an AI agent?\n\nTo understand this shift, we need to look at how AI is evolving. Most of us are used to conversational AI, where we type a prompt (the instruction you give to an AI) and get a single response. \n\nAn **AI agent (an AI system that can use tools, make decisions, and take actions on its own)** goes several steps further. \n\nThink of standard AI as a very fast calculator. It sits there waiting for you to type in the exact numbers and press enter. An AI agent is more like a helpful office assistant. Instead of telling it every single step, you give it a final goal. The agent then figures out the plan, opens the right software, and coordinates the task from start to finish.\n\nThis is made possible because these agents can connect to other software through an **API (a digital bridge that allows different computer programs to talk to each other)**.\n\n## How they work in daily life\n\nThis is not just for software developers or big tech companies. This shift will make life easier for everyday Aussie workers in almost every industry.\n\nImagine you run a local boutique gym in Brisbane. Normally, managing a new member involves a lot of manual steps. You have to read their sign-up email, add their details to your client database, send them a welcome pack, and log the payment. \n\nWith an AI agent",
+  "original_title": "How Endava is redesigning software delivery around AI agents"
+}
