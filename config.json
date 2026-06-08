@@ -46,6 +46,11 @@
       "fallback_model": { "provider": "google", "model": "gemini-2.5-flash" },
       "enabled": true,
       "comment": "Forras-kutato: uj HIVATALOS AI forrasokat keres, teszteli az RSS-t, javaslatot ir (ember donti el)."
+    },
+    "publisher": {
+      "deterministic": true,
+      "enabled": true,
+      "comment": "Publikalo: weboldal+dashboard build + deploy. NEM hasznal AI-t (determinisztikus)."
     }
   },
 
@@ -78,6 +83,11 @@
   },
 
   "infrastructure": {
+    "deploy": {
+      "method": "none",
+      "_comment": "none = csak helyi build (meg nincs eles tarhely). Kesobb: cloudflare | github-pages | ftp",
+      "target_dir": "website/public"
+    },
     "hosting": {
       "platform": "cloudflare-pages",
       "url": "https://pages.cloudflare.com",

@@ -28,7 +28,8 @@ const AGENT_META = {
   'rss-scraper':  { icon: '🛰️', name: 'Scraper', role: 'Monitors official AI sources' },
   'iro':          { icon: '✍️', name: 'Writer', role: 'Writes original articles' },
   'ellenorzo':    { icon: '🔎', name: 'Reviewer', role: 'Quality & accuracy gate' },
-  'source-scout': { icon: '🔭', name: 'Source Scout', role: 'Discovers new official sources' }
+  'source-scout': { icon: '🔭', name: 'Source Scout', role: 'Discovers new official sources' },
+  'publisher':    { icon: '🚀', name: 'Publisher', role: 'Builds & deploys the website' }
 };
 
 const TODAY = new Date().toISOString().slice(0, 10);
@@ -84,7 +85,7 @@ function gather() {
     return {
       id, ...meta,
       enabled: cfg.enabled !== false,
-      model: cfg.primary_model ? `${cfg.primary_model.model}` : '?'
+      model: cfg.primary_model ? `${cfg.primary_model.model}` : (cfg.deterministic ? 'deterministic' : '?')
     };
   });
 
