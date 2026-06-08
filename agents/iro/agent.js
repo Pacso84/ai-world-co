@@ -217,13 +217,40 @@ ${brandContext}
 
 Now write the original article. Output the markdown only — no extra commentary, no source line.`;
 
-  const response = await ask(userPrompt, {
+  // 1. próba
+  let response = await ask(userPrompt, {
     agentName: AGENT_NAME,
     systemPrompt: WRITER_SYSTEM_PROMPT,
     maxTokens: 3000
   });
 
+  // SELF-CHECK: kötelező szekciók megléte. Ha hiányzik -> 1 retry nyomatékkal.
+  if (response && !hasRequiredSections(response.text)) {
+    console.log('   ↻ Hiányzik a kötelező szekció — újrapróbálom nyomatékkal...');
+    const retryPrompt = userPrompt + `
+
+⚠️ CRITICAL: Your article MUST contain a section with the EXACT heading "## What this means for you" (a markdown H2). It is mandatory. Also start with a YAML frontmatter block (---). Write the full article again, complete.`;
+    const retry = await ask(retryPrompt, {
+      agentName: AGENT_NAME,
+      systemPrompt: WRITER_SYSTEM_PROMPT,
+      maxTokens: 3000
+    });
+    // A retry-t csak akkor fogadjuk el, ha tényleg jobb (megvan a szekció)
+    if (retry && hasRequiredSections(retry.text)) {
+      retry.costUsd += response.costUsd; // a két hívás költsége együtt
+      response = retry;
+    }
+  }
+
   return response; // null vagy { text, provider, model, costUsd }
+}
+
+// Kötelező szekciók ellenőrzése (a brand szabály szerint)
+function hasRequiredSections(markdown) {
+  if (!markdown) return false;
+  const hasImpact = /what this means for you/i.test(markdown);
+  const hasFrontmatter = markdown.trimStart().startsWith('---');
+  return hasImpact && hasFrontmatter;
 }
 
 // ===================================================================

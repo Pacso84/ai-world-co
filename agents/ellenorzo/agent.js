@@ -225,36 +225,47 @@ ${articleMarkdown}
 
 Now provide your judgement as JSON only (the rules are in your instructions).`;
 
-  const response = await ask(userPrompt, {
-    agentName: AGENT_NAME,
-    systemPrompt: REVIEWER_SYSTEM_PROMPT,
-    maxTokens: 1500,
-    jsonMode: true
-  });
+  // RETRY: max 2 próba a JSON parse hibára (az AI néha hibás JSON-t ad)
+  let totalCost = 0;
+  let lastError = 'unknown';
 
-  if (!response) return null;
+  for (let attempt = 1; attempt <= 2; attempt++) {
+    const response = await ask(userPrompt, {
+      agentName: AGENT_NAME,
+      systemPrompt: REVIEWER_SYSTEM_PROMPT,
+      maxTokens: 1500,
+      jsonMode: true
+    });
 
-  try {
-    let text = response.text.trim();
-    text = text.replace(/^```(?:json)?\s*/, '').replace(/\s*```$/, '');
-    // Robosztus: első { és utolsó } közti rész
-    const start = text.indexOf('{');
-    const end = text.lastIndexOf('}');
-    if (start !== -1 && end !== -1 && end > start) text = text.slice(start, end + 1);
-    const parsed = JSON.parse(text);
-    parsed._aiCost = response.costUsd;
-    parsed._provider = response.provider;
-    parsed._model = response.model;
-    return parsed;
-  } catch (e) {
-    return {
-      overall_score: 0,
-      decision: 'FAIL',
-      issues: [`AI response JSON parse error: ${e.message}`],
-      verdict: 'Could not parse AI review',
-      _aiCost: response.costUsd
-    };
+    if (!response) { lastError = 'AI router null'; continue; }
+    totalCost += response.costUsd || 0;
+
+    try {
+      let text = response.text.trim();
+      text = text.replace(/^```(?:json)?\s*/, '').replace(/\s*```$/, '');
+      const start = text.indexOf('{');
+      const end = text.lastIndexOf('}');
+      if (start !== -1 && end !== -1 && end > start) text = text.slice(start, end + 1);
+      const parsed = JSON.parse(text);
+      parsed._aiCost = totalCost;
+      parsed._provider = response.provider;
+      parsed._model = response.model;
+      parsed._attempts = attempt;
+      return parsed;
+    } catch (e) {
+      lastError = e.message;
+      if (attempt < 2) console.log(`      ↻ JSON parse hiba — újrapróbálom (${attempt}/2)...`);
+    }
   }
+
+  // Mindkét próba elbukott
+  return {
+    overall_score: 0,
+    decision: 'FAIL',
+    issues: [`AI response JSON parse error after retries: ${lastError}`],
+    verdict: 'Could not parse AI review (2 attempts)',
+    _aiCost: totalCost
+  };
 }
 
 // ===================================================================

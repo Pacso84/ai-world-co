@@ -1,0 +1,48 @@
+{
+  "_meta": {
+    "written_at": "2026-06-08T18:15:46.477Z",
+    "writer_provider": "google",
+    "writer_model": "gemini-flash-latest",
+    "writer_cost_usd": 0.001174725,
+    "original_draft": "2026-06-07T20-02-45-878Z_openai-blog_How_Endava_is_redesigning_software_delivery_around.json",
+    "source_id": "openai-blog",
+    "source_name": "OpenAI Blog",
+    "source_link": "https://openai.com/index/endava-frontiers",
+    "status": "published",
+    "published_at": "2026-06-08T18:16:56.107Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 696
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "decision": "PASS",
+      "scores": {
+        "brand_voice": 10,
+        "audience_fit": 10,
+        "australian_english": 8,
+        "no_prohibited": 10,
+        "structure": 10,
+        "factual": 10,
+        "no_cliches": 9,
+        "respect": 10
+      },
+      "issues": [
+        "Used the American spelling 'labor' instead of the Australian spelling 'labour' in the 'How agents work in the real world' section."
+      ],
+      "praise": [
+        "Fantastic, clear definitions of technical terms (LLM, API, prompt, workflow) that are perfectly tailored for everyday readers.",
+        "The 'What this means for you' section is highly actionable and addresses common job anxieties with empathy and reassurance.",
+        "Great hook and logical structure that flows naturally."
+      ],
+      "verdict": "An exceptional, highly accessible guide to AI agents that perfectly matches our friendly, educational brand voice. Change 'labor' to 'labour' and it is ready for publication.",
+      "_aiCost": 0.0003276,
+      "_provider": "google",
+      "_model": "gemini-flash-latest",
+      "_attempts": 2
+    }
+  },
+  "article_markdown": "---\ntitle: \"What is an AI Agent? The Simple Guide to Delegating Your Work Tasks\"\nsubtitle: \"Discover how AI agents are moving beyond simple chat boxes to actually do your daily work for you.\"\ncategory: \"how-to\"\nread_time_minutes: 4\ntags: [\"ai-agents\", \"productivity\", \"future-of-work\"]\n---\n\n# What is an AI Agent? The Simple Guide to Delegating Your Work Tasks\n\nImagine having a digital assistant that doesn't just answer your questions, but actually logs into your systems, sends emails, and organises your schedule. This is the promise of AI agents, and they are quickly shifting how we get things done at work.\n\n## Chatbots versus agents: What is the difference?\n\nMost of us have used a basic chatbot by now. You type a prompt (the instruction you give to an AI), and it gives you a written response. \n\nThe chatbot is powered by an LLM (large language model — like the engine behind ChatGPT). However, the chatbot is passive. It sits there and waits for you to tell it what to do next, step by step.\n\nAn AI agent (an AI that can use tools and take actions on its own, rather than just writing text) is different. Instead of asking you for every single step, you give the agent a final goal. It then looks at the tools it has, plans the steps required, and executes the task. \n\n## How agents work in the real world\n\nTo understand how this changes your day, let's look at how an agent handles workflows (the series of steps you take to finish a specific task from start to finish).\n\nImagine you run a small business and need to onboard a new client:\n\n*   **The old way:** You read the client's email, copy their details, open your database, paste the details, draft a welcome email, attach a contract, send it, and set a reminder to check on it next Tuesday.\n*   **The agent way:** You forward the email to your AI agent with the goal: \"Onboard this client.\" The agent reads the email, automatically uses an API (a way for programs to talk to each other) to create the database profile, drafts the email, attaches the correct file, sends it, and adds the follow-up reminder directly to your calendar.\n\nInstead of doing the manual labor, your job becomes checking the agent's work and giving the final approval.\n\n## How to start using agents today\n\nYou do not need to be a software developer to start working with agents. Many everyday tools are building these features directly into their software.\n\nFor example, you can create a custom version of ChatGPT or Claude and instruct it to act as a specific assistant. You can upload your business guidelines, templates, and typical processes. Once set up, you can simply feed it raw data, and it will handle the complex multi-step drafting for you.\n\nThe key to starting is to choose one small, highly repetitive task and try to map out the steps for your AI helper.\n\n## What this means for you\n\n*   **If you're new to AI:** Treat AI like an eager trainee. Do not expect it to run your whole day yet. Start by asking it to draft a single weekly report or organise a messy list of customer feedback.\n*   **If you use AI for work:** Look for the bottlenecks in your daily routine. Try using the custom instructions or \"Projects\" features in your favourite AI tool to build a virtual assistant that knows your specific templates and business tone.\n*   **If you're worried about your job:** Remember that AI agents are designed to take away the boring, repetitive admin work that nobody enjoys. This frees you up to focus on the human side of your role, such as building relationships with clients and creative problem-solving.\n\n## Wrap-up\n\nAI agents are changing how we think about productivity by shifting our role from \"doer\" to \"manager\". Instead of spending hours organising spreadsheets or copying data between applications, you can oversee digital helpers that do the heavy lifting. Open your favourite AI tool today and ask it: \"What is a repetitive task in my job that you can help me map out and automate?\"",
+  "original_title": "How Endava is redesigning software delivery around AI agents"
+}
