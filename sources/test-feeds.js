@@ -20,6 +20,65 @@ const parser = new Parser({
   headers: { 'User-Agent': 'Mozilla/5.0 (compatible; AIWorldCo/1.0; +https://aiworld.co)' }
 });
 
+// ÚJ HIVATALOS forrás-jelöltek (2026-06-08 bővítés)
+const OFFICIAL_CANDIDATES = {
+  'nvidia': [
+    'https://blogs.nvidia.com/feed/',
+    'https://developer.nvidia.com/blog/feed/'
+  ],
+  'aws-ml': [
+    'https://aws.amazon.com/blogs/machine-learning/feed/'
+  ],
+  'apple-ml': [
+    'https://machinelearning.apple.com/rss.xml'
+  ],
+  'google-research': [
+    'https://research.google/blog/rss/',
+    'https://blog.research.google/feeds/posts/default'
+  ],
+  'microsoft-research': [
+    'https://www.microsoft.com/en-us/research/feed/'
+  ],
+  'github-blog': [
+    'https://github.blog/feed/',
+    'https://github.blog/ai-and-ml/feed/'
+  ],
+  'stability-ai': [
+    'https://stability.ai/news?format=rss',
+    'https://stability.ai/blog?format=rss'
+  ],
+  'cohere': [
+    'https://cohere.com/blog/rss.xml',
+    'https://txt.cohere.com/rss/'
+  ],
+  'elevenlabs': [
+    'https://elevenlabs.io/blog/rss.xml',
+    'https://elevenlabs.io/blog/rss'
+  ],
+  'runway': [
+    'https://runwayml.com/blog/rss',
+    'https://runwayml.com/research/rss'
+  ],
+  'ibm-research': [
+    'https://research.ibm.com/blog/rss',
+    'https://www.ibm.com/blogs/research/feed/'
+  ],
+  'perplexity': [
+    'https://www.perplexity.ai/hub/rss',
+    'https://blog.perplexity.ai/rss.xml'
+  ],
+  'mistral': [
+    'https://mistral.ai/news/feed.xml',
+    'https://mistral.ai/feed'
+  ],
+  'aws-bedrock': [
+    'https://aws.amazon.com/blogs/aws/category/artificial-intelligence/feed/'
+  ],
+  'google-workspace': [
+    'https://workspaceupdates.googleblog.com/feeds/posts/default'
+  ]
+};
+
 // Alternatív URL jelöltek a halott feedekhez
 const CANDIDATES = {
   'anthropic-blog': [
@@ -85,7 +144,27 @@ async function testUrl(url) {
 }
 
 async function main() {
-  const mode = process.argv.includes('--candidates') ? 'candidates' : 'config';
+  const mode = process.argv.includes('--official') ? 'official'
+    : process.argv.includes('--candidates') ? 'candidates' : 'config';
+
+  if (mode === 'official') {
+    console.log('🔍 ÚJ HIVATALOS FORRÁS-JELÖLTEK TESZTELÉSE\n');
+    console.log('═'.repeat(70));
+    for (const [id, urls] of Object.entries(OFFICIAL_CANDIDATES)) {
+      console.log(`\n📡 ${id}`);
+      for (const url of urls) {
+        const result = await testUrl(url);
+        if (result.ok) {
+          console.log(`   ✅ MŰKÖDIK (${result.itemCount} cikk, ${result.ms}ms)`);
+          console.log(`      ${url}`);
+          console.log(`      Példa: "${result.sampleTitle}..."`);
+        } else {
+          console.log(`   ❌ ${result.error.slice(0, 45)} — ${url}`);
+        }
+      }
+    }
+    return;
+  }
 
   if (mode === 'candidates') {
     console.log('🔍 ALTERNATÍV URL-EK TESZTELÉSE\n');

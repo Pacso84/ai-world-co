@@ -80,6 +80,72 @@
       "comment": "HIVATALOS HF platform blog - új modellek, eszközök.",
       "enabled": true
     },
+    {
+      "id": "nvidia-blog",
+      "name": "NVIDIA Blog (hivatalos)",
+      "url": "https://blogs.nvidia.com/feed/",
+      "category": "ai-company-official",
+      "priority": 2,
+      "language": "en",
+      "country": "US",
+      "comment": "HIVATALOS NVIDIA - fogyasztói AI hírek, GPU, alkalmazások.",
+      "enabled": true
+    },
+    {
+      "id": "google-workspace",
+      "name": "Google Workspace Updates (hivatalos)",
+      "url": "https://workspaceupdates.googleblog.com/feeds/posts/default",
+      "category": "ai-company-official",
+      "priority": 2,
+      "language": "en",
+      "country": "US",
+      "comment": "HIVATALOS Google - hétköznapi AI funkciók (Gmail, Docs, Classroom). ARANYBÁNYA a how-to-hoz!",
+      "enabled": true
+    },
+    {
+      "id": "google-research",
+      "name": "Google Research (hivatalos)",
+      "url": "https://research.google/blog/rss/",
+      "category": "ai-company-official",
+      "priority": 3,
+      "language": "en",
+      "country": "US",
+      "comment": "HIVATALOS Google Research - új AI képességek, áttörések.",
+      "enabled": true
+    },
+    {
+      "id": "microsoft-research",
+      "name": "Microsoft Research (hivatalos)",
+      "url": "https://www.microsoft.com/en-us/research/feed/",
+      "category": "ai-company-official",
+      "priority": 3,
+      "language": "en",
+      "country": "US",
+      "comment": "HIVATALOS Microsoft Research.",
+      "enabled": true
+    },
+    {
+      "id": "github-ai",
+      "name": "GitHub AI & ML (hivatalos)",
+      "url": "https://github.blog/ai-and-ml/feed/",
+      "category": "ai-company-official",
+      "priority": 3,
+      "language": "en",
+      "country": "US",
+      "comment": "HIVATALOS GitHub - Copilot, fejlesztői AI eszközök.",
+      "enabled": true
+    },
+    {
+      "id": "aws-ml",
+      "name": "AWS Machine Learning (hivatalos)",
+      "url": "https://aws.amazon.com/blogs/machine-learning/feed/",
+      "category": "ai-company-official",
+      "priority": 3,
+      "language": "en",
+      "country": "US",
+      "comment": "HIVATALOS Amazon/AWS - vállalati AI, eszközök.",
+      "enabled": true
+    },
 
     {
       "id": "reddit-artificial",
