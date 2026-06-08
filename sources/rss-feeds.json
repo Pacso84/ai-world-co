@@ -1,9 +1,9 @@
 {
   "_meta": {
     "description": "Forrasok az AI World Co. Scraper-Agent szamara - CSAK ELSODLEGES FORRASOK",
-    "version": "3.0",
+    "version": "3.1",
     "last_updated": "2026-06-08",
-    "strategy": "Csak hivatalos cég-oldalak + közösség/social (Reddit, HN, YouTube, X). NINCS más hírmagazin - hogy senkit ne másoljunk és ne lopjunk cikket. A magazinok kikapcsolva (enabled:false), de a fájlban maradnak emlékeztetőül.",
+    "strategy": "CSAK HIVATALOS cég-források (OpenAI, Google, Meta, Microsoft, Hugging Face). SEMMI hírmagazin és SEMMI hír-aggregátor (Hacker News is kivéve - mások tartalmára mutat). Senkit nem másolunk/lopunk. Social (X/Reddit/YouTube) = future, csak hivatalos cég-fiókok lesznek belőle.",
     "max_items_per_feed": 5,
     "priority_legend": {
       "1": "Magas - hivatalos cég blogok",
@@ -133,8 +133,8 @@
       "priority": 3,
       "language": "en",
       "country": "INT",
-      "comment": "Közösség/fejlesztő - mit beszélnek, trend-jelző.",
-      "enabled": true
+      "comment": "KIKAPCSOLVA v3.1 - hír-aggregátor, mások tartalmára mutat. Felhasználó: nem etikus. Csak hivatalos forrás.",
+      "enabled": false
     },
 
     {
