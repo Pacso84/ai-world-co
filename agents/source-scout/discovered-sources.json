@@ -1,0 +1,47 @@
+{
+  "_meta": {
+    "generated_at": "2026-06-08T18:33:31.425Z",
+    "generated_by": "source-scout agent",
+    "note": "JAVASLATOK új hivatalos forrásokra. A felhasználó dönti el melyiket adjuk a sources/rss-feeds.json-hoz (enabled:true-val).",
+    "checked_orgs": 17,
+    "newly_discovered": 3
+  },
+  "discovered_sources": [
+    {
+      "suggested_id": "mistral",
+      "name": "Mistral AI Blog (hivatalos)",
+      "url": "https://mistral.ai/rss.xml",
+      "category": "ai-company-official",
+      "priority": 3,
+      "language": "en",
+      "country": "?",
+      "comment": "JAVASLAT (source-scout): European AI lab detailing open-weights and commercial frontier models.. Felhasználói jóváhagyás kell!",
+      "enabled": false,
+      "item_count_at_discovery": 73
+    },
+    {
+      "suggested_id": "allenai",
+      "name": "Allen Institute for AI (hivatalos)",
+      "url": "https://allenai.org/rss.xml",
+      "category": "ai-company-official",
+      "priority": 3,
+      "language": "en",
+      "country": "?",
+      "comment": "JAVASLAT (source-scout): Non-profit AI research lab covering semantic scholar, climate modeling, and reasoning systems.. Felhasználói jóváhagyás kell!",
+      "enabled": false,
+      "item_count_at_discovery": 25
+    },
+    {
+      "suggested_id": "sakana",
+      "name": "Sakana AI Blog (hivatalos)",
+      "url": "https://sakana.ai/feed.xml",
+      "category": "ai-company-official",
+      "priority": 3,
+      "language": "en",
+      "country": "?",
+      "comment": "JAVASLAT (source-scout): Japan-based lab focusing on nature-inspired AI, evolutionary algorithms, and model merging.. Felhasználói jóváhagyás kell!",
+      "enabled": false,
+      "item_count_at_discovery": 10
+    }
+  ]
+}

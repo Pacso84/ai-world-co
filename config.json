@@ -40,6 +40,12 @@
       "fallback_model": { "provider": "google", "model": "gemini-2.5-pro" },
       "enabled": true,
       "comment": "Ellenorzes: gemini-flash-latest (INGYEN sajat kvota) + fallback 2.5-pro. Kesobb Claude ha kell jobb minoseg."
+    },
+    "source-scout": {
+      "primary_model": { "provider": "google", "model": "gemini-flash-latest" },
+      "fallback_model": { "provider": "google", "model": "gemini-2.5-flash" },
+      "enabled": true,
+      "comment": "Forras-kutato: uj HIVATALOS AI forrasokat keres, teszteli az RSS-t, javaslatot ir (ember donti el)."
     }
   },
 
