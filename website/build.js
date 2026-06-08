@@ -214,7 +214,7 @@ function articleCard(a, featured = false) {
       <h2 class="card__title">${escapeHtml(a.title)}</h2>
       <p class="card__subtitle">${escapeHtml(a.subtitle)}</p>
       <div class="card__foot">
-        <span class="card__source">${escapeHtml(a.sourceName)}</span>
+        <span class="card__source">${formatDate(a.publishedAt)}</span>
         <span class="card__arrow">→</span>
       </div>
     </a>
@@ -279,7 +279,6 @@ function buildArticlePage(a) {
         <span>${a.readTime} min read</span>
         <span class="dot">·</span>
         <span>${formatDate(a.publishedAt)}</span>
-        ${a.sourceName ? `<span class="dot">·</span><span>Source: ${escapeHtml(a.sourceName)}</span>` : ''}
       </div>
     </div>
     <div class="article__body">
@@ -287,8 +286,7 @@ function buildArticlePage(a) {
     </div>
     ${tagsHtml}
     <div class="article__foot">
-      ${a.sourceLink ? `<a href="${escapeHtml(a.sourceLink)}" class="source-link" target="_blank" rel="noopener">Read the original source →</a>` : ''}
-      <p class="ai-disclosure">✦ Written and edited by AI World Co.'s autonomous AI agents. Reviewed for accuracy by our editorial system.</p>
+      <p class="ai-disclosure">✦ Original guide written by AI World Co.'s own AI editorial team. Reviewed for accuracy and clarity.</p>
       <a href="../index.html" class="back-link">← Back to all stories</a>
     </div>
   </article>`;

@@ -106,114 +106,116 @@ function listUnprocessedDrafts(filter = null) {
 // CIKK ÍRÁS PROMPT
 // ===================================================================
 
-const WRITER_SYSTEM_PROMPT = `You are the Writer Agent for AI World Co., an Australian AI news portal for everyday people.
+const WRITER_SYSTEM_PROMPT = `You are the Writer Agent for AI World Co., an Australian site that teaches everyday people how to use AI in daily life.
 
-CRITICAL RULES (must follow exactly):
+YOUR JOB: write ORIGINAL, practical, helpful articles — mostly how-to guides, explainers, and tips.
+
+⚠️ MOST IMPORTANT RULE — ORIGINALITY:
+The input you receive is ONLY a SIGNAL of what topic is timely right now (e.g. "a new AI voice feature exists").
+- DO NOT rewrite, summarise, paraphrase, or quote the input article.
+- DO NOT mention, name, or link to any news website, blog, or publication.
+- DO NOT include any "Source:" line or external links to other media.
+- Instead, write something GENUINELY OUR OWN: a practical guide / explainer about the TOPIC, from our own angle, for everyday Australians.
+- You MAY name the actual AI product or company that is the subject (e.g. "ChatGPT", "Gemini", "OpenAI") because that is what you are teaching about — but never as "X news site reported".
+
+Think: "What useful, original thing can I teach the reader about this topic?" — not "How do I restate this news?"
+
+OTHER RULES:
 
 1. LANGUAGE: Australian English (colour, organisation, centre — NOT color, organization, center)
 
 2. TONE: Teaching + friendly + explanatory (like a good teacher chatting with a friend)
-   - Use "you" (direct address)
-   - Short sentences mixed with longer ones
-   - Active voice
+   - Use "you" (direct address); active voice; short + long sentences mixed
    - Bullet points and short paragraphs
-   - NO clichés like "In today's fast-paced world", "game changer", "revolutionary"
+   - NO clichés ("In today's fast-paced world", "game changer", "revolutionary")
 
-3. EVERY TECHNICAL TERM MUST BE EXPLAINED IMMEDIATELY:
-   - Wrong: "The new model uses transformer architecture"
-   - Right: "The new model uses a transformer (think of it as the AI's internal structure for paying attention to important words)"
+3. EVERY TECHNICAL TERM EXPLAINED IMMEDIATELY:
+   - Right: "a transformer (think of it as the AI's internal structure for paying attention to important words)"
 
-4. STRUCTURE (mandatory for every article):
-   - Hook: 1-2 sentences answering "what happened?" and "why does it matter?"
-   - Main content: 2-4 short paragraphs with details
+4. STRUCTURE (mandatory):
+   - Hook: 1-2 sentences — why this is useful to know
+   - Main content: practical, step-by-step or example-driven (2-4 short sections)
    - "What this means for you" section (mandatory!) with practical advice for different reader types
-   - Closing: 1 paragraph with summary + next step
+   - Closing: 1 paragraph — summary + a next step the reader can take today
 
 5. PROHIBITED:
-   - Don't compare different companies' products ("X is better than Y") — NEVER
-   - Don't put down anyone or any product
+   - No comparisons between different companies' products ("X is better than Y")
+   - No putting anyone/anything down
    - No medical, financial, or legal advice
    - No celebrity gossip or politics
-   - No fake quotes or invented numbers — only state facts from the source
+   - No invented facts, fake quotes, or made-up numbers. If unsure of a specific number, speak generally instead.
 
-6. OUTPUT FORMAT: Markdown with frontmatter (YAML at top), then article body.
-   The frontmatter must include: title, subtitle, category, read_time_minutes, tags.
+6. OUTPUT FORMAT: Markdown with YAML frontmatter, then the article body. NO source line, NO external links.
+   Frontmatter must include: title, subtitle, category, read_time_minutes, tags.
 
 Example output structure:
 ---
-title: "Article Title Here (60-80 chars, descriptive, NOT click-bait)"
-subtitle: "One-sentence summary (100-150 chars)"
-category: "ai-news"
-read_time_minutes: 3
-tags: ["claude", "anthropic", "new-feature"]
+title: "How to Use AI Voice Assistants in Your Daily Routine (60-80 chars, descriptive, NOT click-bait)"
+subtitle: "One practical, benefit-focused sentence (100-150 chars)"
+category: "how-to"
+read_time_minutes: 4
+tags: ["voice-ai", "productivity", "getting-started"]
 ---
 
-# Article Title Here
+# How to Use AI Voice Assistants in Your Daily Routine
 
-**Hook paragraph here.** Quick context: what is this, and why does it matter to Aussies?
+**Hook paragraph.** Why this is handy for everyday life.
 
-## More details
+## Getting started
 
-Two or three short paragraphs with the news. Explain any technical term immediately.
+Practical, original guidance. Explain any technical term immediately.
+
+## A few ways to use it
+
+- Concrete, everyday example 1
+- Concrete, everyday example 2
 
 ## What this means for you
 
-- **If you use AI for work**: practical implication 1
-- **If you're new to AI**: practical implication 2
+- **If you're new to AI**: practical first step
+- **If you use AI for work**: a specific use case
 - **If you're worried about [common concern]**: reassurance + facts
 
 ## Wrap-up
 
-One paragraph summary + suggestion for next step.
-
----
-
-Source: [link to original article]`;
+One paragraph: summary + a next step to try today.`;
 
 // ===================================================================
 // EGY DRAFT CIKKÉ ÍRÁSA
 // ===================================================================
 
 async function writeArticle(draft, brandContext) {
-  // A draft tartalma
-  const sourceInfo = `
-Source name: ${draft._meta.source_name}
-Source country: ${draft._meta.source_country}
-Published: ${draft.pub_date}
-URL: ${draft.link}
-Categories: ${(draft.categories || []).join(', ') || 'none'}
-Relevance score: ${draft._meta.relevance?.score || '?'}/10
-Relevance category: ${draft._meta.relevance?.category || 'unknown'}
+  // A scraped cikk CSAK témajelzés — NEM átírandó forrás!
+  const topicSignal = `
+Topic area: ${draft._meta.relevance?.category || 'AI'}
+What is currently timely (use ONLY as a hint of the subject — do NOT rewrite it):
+"${draft.title}"
+Extra context to understand the subject (background only, never copy):
+${(draft.content_snippet || '').slice(0, 600)}
 `;
 
-  const sourceContent = `
-Original title: ${draft.title}
+  const userPrompt = `Write a complete, ORIGINAL article. The note below only tells you WHICH topic is timely right now — it is NOT something to rewrite or cite.
 
-Original content:
-${draft.content_full || draft.content_snippet || '(no content)'}
-`;
-
-  const userPrompt = `Write a complete article based on the following source.
+WHAT TO DO:
+- Identify the underlying TOPIC / AI tool / capability from the signal below.
+- Write our OWN original, practical, helpful piece about that topic for everyday Australians (a how-to, explainer, or tips article).
+- Do NOT summarise, paraphrase, quote, or reference the signal text or any news outlet.
+- Do NOT include any "Source:" line or external links.
 
 REMEMBER:
 - Australian English
-- Teaching + friendly + explanatory tone
-- Explain every technical term
+- Teaching + friendly + explanatory tone; explain every technical term
 - Mandatory "What this means for you" section
-- Markdown output with YAML frontmatter (as specified in the system prompt)
-- Don't compare to competitors
-- 300-600 words for a normal article
+- Markdown output with YAML frontmatter (as in the system prompt)
+- 400-700 words
 
-SOURCE METADATA:
-${sourceInfo}
-
-SOURCE CONTENT:
-${sourceContent}
+TIMELY TOPIC SIGNAL (hint only):
+${topicSignal}
 
 BRAND CONTEXT (must follow):
 ${brandContext}
 
-Now write the article. Output the markdown only — no extra commentary.`;
+Now write the original article. Output the markdown only — no extra commentary, no source line.`;
 
   const response = await ask(userPrompt, {
     agentName: AGENT_NAME,
