@@ -56,6 +56,7 @@ function parseArgs() {
     skipScrape: args.includes('--skip-scrape'),
     skipWrite: args.includes('--skip-write'),
     skipReview: args.includes('--skip-review'),
+    skipDesign: args.includes('--skip-design'),
     skipPublish: args.includes('--skip-publish'),
     reportOnly: args.includes('--report'),
     dryRun: args.includes('--dry-run')
@@ -268,7 +269,8 @@ async function main() {
     if (!args.skipScrape) console.log('   1. RSS Scraper futtatása');
     if (!args.skipWrite) console.log('   2. Író agent futtatása');
     if (!args.skipReview) console.log('   3. Ellenőrző agent futtatása');
-    if (!args.skipPublish) console.log('   4. Publikáló agent (weboldal build + deploy)');
+    if (!args.skipDesign) console.log('   4. Designer agent (fejlécképek)');
+    if (!args.skipPublish) console.log('   5. Publikáló agent (weboldal build + deploy)');
     console.log('\n✓ Dry run vége.');
     return;
   }
@@ -304,9 +306,18 @@ async function main() {
     console.log('⏭️  Ellenőrző kihagyva (--skip-review)');
   }
 
-  // 4d. Publikáló (weboldal build + deploy)
+  // 4d. Designer (fejlécképek)
+  if (!args.skipDesign) {
+    console.log('\n━━━ 4. LÉPÉS: DESIGNER AGENT ━━━');
+    const result = await runAgent('agents/designer/agent.js');
+    session.stages.designer = { exit_code: result.code };
+  } else {
+    console.log('⏭️  Designer kihagyva (--skip-design)');
+  }
+
+  // 4e. Publikáló (weboldal build + deploy)
   if (!args.skipPublish) {
-    console.log('\n━━━ 4. LÉPÉS: PUBLIKÁLÓ AGENT ━━━');
+    console.log('\n━━━ 5. LÉPÉS: PUBLIKÁLÓ AGENT ━━━');
     const result = await runAgent('agents/publisher/agent.js');
     session.stages.publisher = { exit_code: result.code };
   } else {

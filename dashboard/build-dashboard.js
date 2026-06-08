@@ -29,6 +29,7 @@ const AGENT_META = {
   'iro':          { icon: '✍️', name: 'Writer', role: 'Writes original articles' },
   'ellenorzo':    { icon: '🔎', name: 'Reviewer', role: 'Quality & accuracy gate' },
   'source-scout': { icon: '🔭', name: 'Source Scout', role: 'Discovers new official sources' },
+  'designer':     { icon: '🎨', name: 'Designer', role: 'Generates article cover images' },
   'publisher':    { icon: '🚀', name: 'Publisher', role: 'Builds & deploys the website' }
 };
 

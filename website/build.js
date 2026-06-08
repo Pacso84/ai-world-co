@@ -14,7 +14,7 @@
 //   website/public/assets/style.css    - stílus (másolva)
 // ===================================================================
 
-import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync, copyFileSync, rmSync } from 'fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync, copyFileSync, rmSync, cpSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { marked } from 'marked';
@@ -35,12 +35,12 @@ const SITE = {
 
 // Kategória -> megjelenítendő név + CSS osztály (szín)
 const CATEGORIES = {
-  'ai-news':  { label: 'AI News',  cls: 'cat-news' },
-  'how-to':   { label: 'How-To',   cls: 'cat-howto' },
-  'business': { label: 'Business', cls: 'cat-business' },
-  'work':     { label: 'Work',     cls: 'cat-work' },
-  'creative': { label: 'Creative', cls: 'cat-creative' },
-  'other':    { label: 'AI',       cls: 'cat-other' }
+  'ai-news':  { label: 'AI News',  cls: 'cat-news',     icon: '📰' },
+  'how-to':   { label: 'How-To',   cls: 'cat-howto',    icon: '🛠️' },
+  'business': { label: 'Business', cls: 'cat-business', icon: '📈' },
+  'work':     { label: 'Work',     cls: 'cat-work',     icon: '💡' },
+  'creative': { label: 'Creative', cls: 'cat-creative', icon: '🎨' },
+  'other':    { label: 'AI',       cls: 'cat-other',    icon: '✨' }
 };
 
 // Célhasználat (audience) — hova építhető be
@@ -125,8 +125,13 @@ function loadArticles() {
       const { meta, body } = parseFrontmatter(data.article_markdown);
       const slug = slugify(meta.title || data.original_title || file);
 
+      // Van valódi kép a slug-hoz? (Designer agent generálta)
+      const imgFile = ['jpg', 'png', 'jpeg', 'webp'].map(ext => `${slug}.${ext}`)
+        .find(name => existsSync(join(ASSETS_SRC, 'images', name)));
+
       articles.push({
         slug,
+        image: imgFile || null,
         title: meta.title || data.original_title || 'Untitled',
         subtitle: meta.subtitle || '',
         category: meta.category || 'other',
@@ -208,6 +213,15 @@ function pageShell({ title, description, bodyContent, isArticle = false }) {
 </html>`;
 }
 
+// Borító: valódi kép (ha van), különben lágy gradiens borító kategória-ikonnal
+function coverHtml(a, pathPrefix, cls) {
+  const cat = CATEGORIES[a.category] || CATEGORIES.other;
+  if (a.image) {
+    return `<div class="${cls}"><img src="${pathPrefix}assets/images/${a.image}" alt="${escapeHtml(a.title)}" loading="lazy"></div>`;
+  }
+  return `<div class="${cls} cover--gen ${cat.cls}"><span class="cover__icon">${cat.icon}</span></div>`;
+}
+
 function articleCard(a, featured = false) {
   const cat = CATEGORIES[a.category] || CATEGORIES.other;
   const aud = AUDIENCES[a.audience] || AUDIENCES.both;
@@ -215,6 +229,7 @@ function articleCard(a, featured = false) {
   const aos = featured ? 'zoom-in' : 'fade-up';
   return `<article class="${cls}" data-audience="${a.audience}" data-category="${a.category}" data-aos="${aos}">
     <a href="article/${a.slug}.html" class="card__link">
+      ${coverHtml(a, '', 'card__cover')}
       <div class="card__meta">
         <span class="aud ${aud.cls}">${aud.icon} ${aud.label}</span>
         <span class="card__read">${a.readTime} min read</span>
@@ -277,6 +292,7 @@ function buildArticlePage(a) {
     : '';
 
   const body = `<article class="article">
+    ${coverHtml(a, '../', 'article__cover')}
     <div class="article__head">
       <div class="article__badges">
         <span class="aud ${aud.cls}">${aud.icon} ${aud.label}</span>
@@ -325,6 +341,14 @@ function main() {
     } else {
       console.warn(`⚠️  Nincs ${asset} az assets/-ben!`);
     }
+  }
+
+  // Képek mappa másolása (ha van)
+  const imagesSrc = join(ASSETS_SRC, 'images');
+  if (existsSync(imagesSrc)) {
+    cpSync(imagesSrc, join(OUT_ASSETS_DIR, 'images'), { recursive: true });
+    const imgCount = readdirSync(imagesSrc).filter(f => /\.(jpg|jpeg|png|webp)$/i.test(f)).length;
+    console.log(`✅ ${imgCount} kép másolva`);
   }
 
   // Cikkek

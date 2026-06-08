@@ -162,6 +162,29 @@ body {
   box-shadow: 0 20px 44px -26px rgba(28,26,22,0.42);
   border-color: var(--line-strong);
 }
+/* ---------- BORÍTÓ (kép vagy gradiens) ---------- */
+.card__cover {
+  margin: -28px -28px 16px; height: 158px; overflow: hidden;
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+.card__cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.card--featured .card__cover { height: 260px; margin: -46px -48px 24px; border-radius: var(--radius) var(--radius) 0 0; }
+.cover--gen { display: flex; align-items: center; justify-content: center; }
+.cover__icon { font-size: 58px; filter: saturate(.7); opacity: .9; }
+/* gradiens borítók kategória szerint (lágy) */
+.cover--gen.cat-news { background: linear-gradient(135deg, #f3d9cd, #e8b79f); }
+.cover--gen.cat-howto { background: linear-gradient(135deg, #d6e6dd, #a9cdb9); }
+.cover--gen.cat-business { background: linear-gradient(135deg, #d4e0ec, #a7c0db); }
+.cover--gen.cat-work { background: linear-gradient(135deg, #e6d8e6, #c8a9c8); }
+.cover--gen.cat-creative { background: linear-gradient(135deg, #f0e3c4, #ddc488); }
+.cover--gen.cat-other { background: linear-gradient(135deg, #e4ddd0, #cdc3b1); }
+.article__cover {
+  height: 340px; margin: 0 0 34px; border-radius: var(--radius); overflow: hidden;
+}
+.article__cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.article__cover.cover--gen { display: flex; align-items: center; justify-content: center; }
+.article__cover .cover__icon { font-size: 96px; }
+
 .card__meta { display: flex; align-items: center; justify-content: space-between; }
 .card__read { font-size: 12.5px; color: var(--muted); font-weight: 600; }
 .card__title {

@@ -47,6 +47,11 @@
       "enabled": true,
       "comment": "Forras-kutato: uj HIVATALOS AI forrasokat keres, teszteli az RSS-t, javaslatot ir (ember donti el)."
     },
+    "designer": {
+      "primary_model": { "provider": "google", "model": "gemini-2.5-flash-image" },
+      "enabled": true,
+      "comment": "Designer: cikkenkent fejlecKEP generalas (Gemini image, INGYEN sajat kvota). Ha kvota elfogyott, a build lagy gradiens boritot tesz."
+    },
     "publisher": {
       "deterministic": true,
       "enabled": true,
