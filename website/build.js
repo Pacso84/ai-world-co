@@ -158,7 +158,7 @@ function pageShell({ title, description, bodyContent, isArticle = false }) {
   <meta name="description" content="${escapeHtml(description)}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..700&family=Hanken+Grotesk:wght@400..800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..700&family=Hanken+Grotesk:wght@400..700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
   <link rel="stylesheet" href="${cssPath}">
 </head>
@@ -232,7 +232,7 @@ function buildIndex(articles) {
 
   const [featured, ...rest] = articles;
   const featuredHtml = `<section class="hero">
-    <div class="hero__label">Cover Story</div>
+    <span class="pill">Cover Story</span>
     ${articleCard(featured, true)}
   </section>`;
 
@@ -247,7 +247,10 @@ function buildIndex(articles) {
     </div>` : '';
 
   const grid = rest.length > 0 ? `<section class="grid-section">
-    <h2 class="section-label">The Edit — Latest Stories</h2>
+    <div class="section-head">
+      <span class="pill">The Edit</span>
+      <h2 class="section-title">Latest <span class="muted-word">stories</span></h2>
+    </div>
     ${chipsHtml}
     <div class="grid" id="grid">
       ${rest.map(a => articleCard(a)).join('\n')}
