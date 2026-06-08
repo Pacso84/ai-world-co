@@ -38,31 +38,58 @@ body {
 
 .wrap { max-width: var(--maxw); margin: 0 auto; padding: 44px 24px 70px; }
 
-/* ---------- MASTHEAD (magazine cover top) ---------- */
-.masthead { padding-top: 24px; }
-.masthead__inner { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
-.masthead__top {
-  display: flex; justify-content: space-between; align-items: center;
-  font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase;
-  color: var(--ink); font-weight: 700;
-  padding-bottom: 14px; margin-bottom: 14px;
-  border-bottom: 2px solid var(--ink);
+/* ---------- NAVBAR (modern horizontal, sticky) ---------- */
+.navbar {
+  position: sticky; top: 0; z-index: 90;
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
 }
-.masthead__logo {
-  display: block; text-align: center;
+.navbar__inner {
+  max-width: var(--maxw); margin: 0 auto; padding: 16px 24px;
+  display: flex; align-items: center; gap: 24px;
+}
+.navbar__logo {
   font-family: 'Fraunces', serif; font-weight: 900;
-  font-size: clamp(60px, 15vw, 168px);
-  letter-spacing: -0.04em; line-height: 0.82;
-  color: var(--ink); text-decoration: none;
-  font-optical-sizing: auto;
+  font-size: 26px; letter-spacing: -0.03em; color: var(--ink);
+  text-decoration: none; white-space: nowrap;
 }
-.masthead__dot { color: var(--accent); }
-.masthead__tagline {
-  text-align: center;
+.navbar--scrolled { box-shadow: 0 4px 24px -12px rgba(0,0,0,0.4); }
+.navbar__dot { color: var(--accent); }
+.navbar__nav {
+  display: flex; gap: 26px; margin-left: auto;
+}
+.navbar__nav a {
+  font-family: 'Hanken Grotesk', sans-serif;
+  font-size: 14px; font-weight: 700; letter-spacing: 0.04em;
+  color: var(--ink-soft); text-decoration: none;
+  position: relative; padding: 4px 0;
+  transition: color .15s ease;
+}
+.navbar__nav a::after {
+  content: ""; position: absolute; left: 0; bottom: -2px; width: 0; height: 2px;
+  background: var(--accent); transition: width .2s ease;
+}
+.navbar__nav a:hover { color: var(--ink); }
+.navbar__nav a:hover::after, .navbar__nav a.nav--active::after { width: 100%; }
+.navbar__nav a.nav--active { color: var(--ink); }
+
+/* ---------- INTRO (homepage hero strip) ---------- */
+.intro { border-bottom: 1px solid var(--line); }
+.intro__inner { max-width: var(--maxw); margin: 0 auto; padding: 56px 24px 48px; }
+.intro__kicker {
+  font-size: 12px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 16px;
+}
+.intro__title {
+  font-family: 'Fraunces', serif; font-weight: 900;
+  font-size: clamp(40px, 8vw, 92px); line-height: 0.95; letter-spacing: -0.03em;
+  color: var(--ink); max-width: 16ch;
+}
+.intro__title em { font-style: italic; color: var(--accent); font-weight: 700; }
+.intro__tagline {
   font-family: 'Fraunces', serif; font-style: italic;
-  font-size: clamp(16px, 2.2vw, 23px); color: var(--ink-soft);
-  margin-top: 14px; padding-bottom: 6px;
-  border-bottom: 2px solid var(--ink);
+  font-size: clamp(17px, 2.2vw, 22px); color: var(--ink-soft); margin-top: 18px;
 }
 
 /* ---------- HERO / COVER STORY ---------- */
@@ -267,14 +294,13 @@ body {
 [data-theme="dark"] .masthead__top,
 [data-theme="dark"] .masthead__tagline { border-color: var(--ink); }
 
-/* ---------- THEME TOGGLE gomb ---------- */
+/* ---------- THEME TOGGLE gomb (navbarban) ---------- */
 .theme-toggle {
-  position: fixed; top: 18px; right: 18px; z-index: 100;
-  width: 46px; height: 46px; border-radius: 50%;
+  flex-shrink: 0;
+  width: 40px; height: 40px; border-radius: 50%;
   background: var(--ink); color: var(--paper);
-  border: none; cursor: pointer; font-size: 20px;
+  border: none; cursor: pointer; font-size: 18px;
   display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 6px 18px -6px rgba(0,0,0,0.5);
   transition: transform .2s ease, background .2s ease;
 }
 .theme-toggle:hover { transform: rotate(-20deg) scale(1.08); background: var(--accent); }

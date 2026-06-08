@@ -164,19 +164,27 @@ function pageShell({ title, description, bodyContent, isArticle = false }) {
 </head>
 <body>
   ${isArticle ? '<div class="progress-bar" id="progressBar"></div>' : ''}
-  <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Light / dark">
-    <span class="theme-toggle__icon">☾</span>
-  </button>
-  <header class="masthead">
-    <div class="masthead__inner">
-      <div class="masthead__top">
-        <span class="masthead__edition">Issue 01 — Australian Edition</span>
-        <span class="masthead__date">${formatDate(new Date().toISOString())}</span>
-      </div>
-      <a href="${homePath}" class="masthead__logo">${SITE.name}<span class="masthead__dot">.</span></a>
-      <p class="masthead__tagline">${SITE.tagline}</p>
+  <header class="navbar" id="navbar">
+    <div class="navbar__inner">
+      <a href="${homePath}" class="navbar__logo">${SITE.name}<span class="navbar__dot">.</span></a>
+      <nav class="navbar__nav">
+        <a href="${homePath}#all" data-nav="all">Latest</a>
+        <a href="${homePath}#ai-news" data-nav="ai-news">News</a>
+        <a href="${homePath}#how-to" data-nav="how-to">How-To</a>
+        <a href="${homePath}#business" data-nav="business">Business</a>
+      </nav>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Light / dark">
+        <span class="theme-toggle__icon">☾</span>
+      </button>
     </div>
-  </header>
+  </header>${isArticle ? '' : `
+  <section class="intro">
+    <div class="intro__inner">
+      <p class="intro__kicker">Issue 01 · Australian Edition · ${formatDate(new Date().toISOString())}</p>
+      <h1 class="intro__title">Everyday AI, <em>explained simply.</em></h1>
+      <p class="intro__tagline">${SITE.tagline}</p>
+    </div>
+  </section>`}
   <main class="wrap">
     ${bodyContent}
   </main>

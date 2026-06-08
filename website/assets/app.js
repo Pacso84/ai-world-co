@@ -47,28 +47,58 @@
     if (icon) icon.textContent = isDark ? '☀' : '☾';
   }
 
-  // ---------- 3. KATEGÓRIA SZŰRŐ ----------
+  // ---------- 3. KATEGÓRIA SZŰRŐ (chipek + navbar menü + hash) ----------
   const filters = document.getElementById('filters');
   const grid = document.getElementById('grid');
+  const navLinks = document.querySelectorAll('.navbar__nav a[data-nav]');
 
+  function applyFilter(filter) {
+    if (!grid) return;
+    // kártyák
+    grid.querySelectorAll('.card').forEach(card => {
+      const cat = card.getAttribute('data-category');
+      card.style.display = (filter === 'all' || cat === filter) ? '' : 'none';
+    });
+    // chip aktív állapot
+    if (filters) {
+      filters.querySelectorAll('.chip').forEach(c =>
+        c.classList.toggle('chip--active', c.getAttribute('data-filter') === filter));
+    }
+    // navbar aktív állapot
+    navLinks.forEach(a =>
+      a.classList.toggle('nav--active', a.getAttribute('data-nav') === filter));
+  }
+
+  // Chip kattintás
   if (filters && grid) {
     filters.addEventListener('click', function (e) {
       const btn = e.target.closest('.chip');
-      if (!btn) return;
+      if (btn) applyFilter(btn.getAttribute('data-filter'));
+    });
+  }
 
-      // Aktív chip váltás
-      filters.querySelectorAll('.chip').forEach(c => c.classList.remove('chip--active'));
-      btn.classList.add('chip--active');
-
-      const filter = btn.getAttribute('data-filter');
-      const cards = grid.querySelectorAll('.card');
-
-      cards.forEach(card => {
-        const cat = card.getAttribute('data-category');
-        const show = (filter === 'all' || cat === filter);
-        card.style.display = show ? '' : 'none';
+  // Navbar menü kattintás (csak a főoldalon szűr; cikkről átnavigál)
+  if (grid) {
+    navLinks.forEach(a => {
+      a.addEventListener('click', function (e) {
+        const cat = a.getAttribute('data-nav');
+        e.preventDefault();
+        history.replaceState(null, '', '#' + cat);
+        applyFilter(cat);
+        grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
     });
+    // Hash a betöltéskor (pl. cikkről "News"-ra kattintva érkezünk)
+    const hash = (location.hash || '').replace('#', '');
+    if (hash) applyFilter(hash);
+  }
+
+  // ---------- 3b. NAVBAR árnyék görgetésnél ----------
+  const navbar = document.getElementById('navbar');
+  if (navbar) {
+    window.addEventListener('scroll', function () {
+      navbar.classList.toggle('navbar--scrolled', window.scrollY > 10);
+    }, { passive: true });
   }
 
   // ---------- 4. OLVASÁSI FOLYAMATJELZŐ (cikk oldalakon) ----------
