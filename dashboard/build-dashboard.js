@@ -74,8 +74,35 @@ function gather() {
     sources, costToday, costTotal, activity, agents,
     memory: memStats(), memories: memList({ limit: 14 }),
     deploy: CONFIG.infrastructure?.deploy?.method || 'none',
-    limits: CONFIG.limits || {}
+    limits: CONFIG.limits || {},
+    keys: gatherKeys()
   };
+}
+
+// API kulcsok állapota (.env-ből, MASZKOLVA — sosem mutatjuk a teljes kulcsot)
+function gatherKeys() {
+  const envPath = join(ROOT, '.env');
+  const env = {};
+  if (existsSync(envPath)) {
+    for (const line of readFileSync(envPath, 'utf-8').split('\n')) {
+      const m = line.match(/^\s*([A-Z0-9_]+)\s*=\s*(.*)$/);
+      if (m) env[m[1]] = m[2].trim();
+    }
+  }
+  // Ismert providerek (config + extra ingyenesek)
+  const known = [
+    { id: 'anthropic', label: 'Claude (Anthropic)', env: 'ANTHROPIC_API_KEY', free: false },
+    { id: 'google', label: 'Gemini (Google)', env: 'GOOGLE_API_KEY', free: true },
+    { id: 'groq', label: 'Groq', env: 'GROQ_API_KEY', free: true },
+    { id: 'cerebras', label: 'Cerebras', env: 'CEREBRAS_API_KEY', free: true },
+    { id: 'openrouter', label: 'OpenRouter', env: 'OPENROUTER_API_KEY', free: true },
+    { id: 'telegram', label: 'Telegram Bot', env: 'TELEGRAM_BOT_TOKEN', free: true }
+  ];
+  return known.map(k => {
+    const val = env[k.env] || '';
+    const set = val.length > 0;
+    return { ...k, set, masked: set ? (val.slice(0, 4) + '…' + val.slice(-3)) : '' };
+  });
 }
 
 function summariseLog(filename, log) {
@@ -171,7 +198,27 @@ function panelLogs(d) {
 
 function panelSettings(d) {
   const row = (k, v) => `<div class="setrow"><span class="setk">${k}</span><span class="setv">${v}</span></div>`;
-  return `<div class="panel"><div class="panel__h">⚙️ Settings</div>
+  const keyRows = d.keys.map(k => `<div class="keyrow">
+      <span class="key__dot ${k.set ? 'on' : 'off'}"></span>
+      <span class="key__l">${k.label} ${k.free ? '<span class="freeb">free</span>' : ''}</span>
+      <span class="key__v">${k.set ? k.masked : '<span class="muted">not set</span>'}</span>
+    </div>`).join('');
+  const keyOptions = d.keys.map(k => `<option value="${k.env}">${k.label}</option>`).join('');
+
+  return `<div class="panel"><div class="panel__h">🔑 API keys</div>
+    ${keyRows}
+    <div class="keyform" id="keyform">
+      <div class="muted" style="margin:14px 0 8px">Add or update a key (saved locally to .env):</div>
+      <div class="keyform__row">
+        <select id="keyProvider">${keyOptions}</select>
+        <input id="keyValue" type="password" placeholder="paste API key…" autocomplete="off">
+        <button id="keySave">Save</button>
+      </div>
+      <div id="keyMsg" class="keymsg"></div>
+      <div class="muted" style="margin-top:8px;font-size:12px">⚠️ Only works via the Control Panel server (node dashboard/server.js). Keys stay on your computer.</div>
+    </div>
+  </div>
+  <div class="panel"><div class="panel__h">⚙️ System</div>
     ${row('Deploy method', d.deploy + (d.deploy === 'none' ? ' (local build only — not live yet)' : ''))}
     ${row('Max articles / day', d.limits.daily_articles_max ?? '?')}
     ${row('Max AI cost / day', '$' + (d.limits.daily_api_cost_usd_max ?? '?'))}
@@ -255,6 +302,16 @@ body{background:#e7e0d2;color:var(--ink);font-family:'Hanken Grotesk',sans-serif
 .dotc{width:9px;height:9px;border-radius:50%;flex-shrink:0}.src__n{flex:1}.src__c{color:var(--muted);font-size:12px}
 .setrow{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line)}.setrow:last-child{border:none}
 .setk{color:var(--soft);font-weight:600}.setv{font-weight:600}
+.keyrow{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--line)}.keyrow:last-child{border:none}
+.key__dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}.key__dot.on{background:#7aa37f}.key__dot.off{background:#d3b0a0}
+.key__l{flex:1;font-weight:600}.key__v{font-family:monospace;font-size:12px;color:var(--soft)}
+.freeb{font-size:9px;font-weight:700;background:#e2efe7;color:#3d7a5f;padding:1px 6px;border-radius:100px;text-transform:uppercase;letter-spacing:.05em}
+.keyform__row{display:flex;gap:8px;flex-wrap:wrap}
+.keyform select,.keyform input{font-family:inherit;font-size:13px;padding:9px 11px;border:1px solid var(--line2);border-radius:8px;background:var(--card)}
+.keyform input{flex:1;min-width:180px}
+.keyform button{font-family:inherit;font-size:13px;font-weight:700;padding:9px 18px;border:none;border-radius:8px;background:var(--ink);color:var(--paper);cursor:pointer}
+.keyform button:hover{background:var(--accent)}
+.keymsg{margin-top:10px;font-size:13px;font-weight:600}.keymsg.ok{color:#3d7a5f}.keymsg.err{color:#b5694a}
 @media(max-width:680px){.app{grid-template-columns:1fr}.side{display:flex;flex-wrap:wrap;gap:4px;border-right:none;border-bottom:1px solid var(--line)}.brand{width:100%}.nav{width:auto}.nav span{display:none}}
 </style></head>
 <body>
@@ -279,6 +336,21 @@ body{background:#e7e0d2;color:var(--ink);font-family:'Hanken Grotesk',sans-serif
     b.classList.add('nav--active');
     document.querySelector('.pane[data-pane="'+b.dataset.p+'"]').classList.add('pane--active');
   }));
+  // API kulcs mentés (csak a Control Panel szerver alatt működik)
+  var saveBtn=document.getElementById('keySave');
+  if(saveBtn){saveBtn.addEventListener('click',async function(){
+    var env=document.getElementById('keyProvider').value;
+    var val=document.getElementById('keyValue').value.trim();
+    var msg=document.getElementById('keyMsg');
+    if(!val){msg.className='keymsg err';msg.textContent='Paste a key first.';return;}
+    msg.className='keymsg';msg.textContent='Saving…';
+    try{
+      var r=await fetch('/api/key',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({env:env,value:val})});
+      var j=await r.json();
+      if(j.ok){msg.className='keymsg ok';msg.textContent='✅ Saved '+env+'. Reload to see status.';document.getElementById('keyValue').value='';}
+      else{msg.className='keymsg err';msg.textContent='❌ '+(j.error||'failed');}
+    }catch(e){msg.className='keymsg err';msg.textContent='❌ Not running via Control Panel server. Start: node dashboard/server.js';}
+  });}
 </script>
 </body></html>`;
 }
@@ -290,4 +362,9 @@ function main() {
   console.log(`✅ Kész: dashboard/index.html`);
   console.log(`   Agentek: ${d.agents.filter(a => a.enabled).length}/${d.agents.length} | Publikált: ${d.published} | Forrás: ${d.sources.length} | Emlékek: ${d.memory.total} | Költség: $${d.costTotal.toFixed(4)}`);
 }
-main();
+
+export { gather, render };
+
+// Csak közvetlen futtatáskor generáljuk a statikus fájlt
+import { argv } from 'process';
+if (argv[1] && argv[1].endsWith('build-dashboard.js')) main();

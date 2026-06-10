@@ -1,0 +1,97 @@
+// ===================================================================
+// VEZÉRLŐPULT SZERVER (Control Panel) — helyi, localhost-only
+// ===================================================================
+//
+// Élő Mission Control + API kulcs hozzáadás űrlapon (a .env-be ír).
+// Node beépített http — NINCS külső csomag.
+//
+// FUTTATÁS:
+//   node dashboard/server.js
+//   majd nyisd meg: http://localhost:4178
+//
+// BIZTONSÁG: CSAK 127.0.0.1 (localhost). A kulcsok a gépeden maradnak,
+// a .env-be kerülnek (amit a .gitignore véd). Kulcsot sosem ír ki teljesen.
+// ===================================================================
+
+import { createServer } from 'http';
+import { readFileSync, writeFileSync, existsSync } from 'fs';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+import { gather, render } from './build-dashboard.js';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const ROOT = join(__dirname, '..');
+const ENV_PATH = join(ROOT, '.env');
+const PORT = 4178;
+const HOST = '127.0.0.1'; // CSAK localhost!
+
+// Engedélyezett kulcs-nevek (whitelist — biztonság)
+const ALLOWED_KEYS = new Set([
+  'ANTHROPIC_API_KEY', 'GOOGLE_API_KEY', 'GROQ_API_KEY',
+  'CEREBRAS_API_KEY', 'OPENROUTER_API_KEY', 'TELEGRAM_BOT_TOKEN', 'TELEGRAM_CHAT_ID'
+]);
+
+// .env-be ír: meglévő sort frissít, vagy hozzáad
+function saveKey(envName, value) {
+  if (!ALLOWED_KEYS.has(envName)) throw new Error('ismeretlen kulcs-név');
+  if (/[\r\n]/.test(value)) throw new Error('érvénytelen érték');
+  let lines = existsSync(ENV_PATH) ? readFileSync(ENV_PATH, 'utf-8').split('\n') : [];
+  let found = false;
+  lines = lines.map(l => {
+    if (l.match(new RegExp('^\\s*' + envName + '\\s*='))) { found = true; return `${envName}=${value}`; }
+    return l;
+  });
+  if (!found) lines.push(`${envName}=${value}`);
+  writeFileSync(ENV_PATH, lines.join('\n'), 'utf-8');
+}
+
+function readBody(req) {
+  return new Promise((resolve) => {
+    let data = '';
+    req.on('data', c => { data += c; if (data.length > 1e5) req.destroy(); });
+    req.on('end', () => resolve(data));
+  });
+}
+
+const server = createServer(async (req, res) => {
+  try {
+    // Élő dashboard
+    if (req.method === 'GET' && (req.url === '/' || req.url === '/index.html')) {
+      const html = render(gather());
+      res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+      return res.end(html);
+    }
+
+    // Kulcs mentés
+    if (req.method === 'POST' && req.url === '/api/key') {
+      const body = await readBody(req);
+      let payload;
+      try { payload = JSON.parse(body); } catch { payload = {}; }
+      const { env, value } = payload;
+      try {
+        if (!env || !value) throw new Error('hiányzó adat');
+        saveKey(env, value.trim());
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        return res.end(JSON.stringify({ ok: true }));
+      } catch (e) {
+        res.writeHead(400, { 'Content-Type': 'application/json' });
+        return res.end(JSON.stringify({ ok: false, error: e.message }));
+      }
+    }
+
+    res.writeHead(404, { 'Content-Type': 'text/plain' });
+    res.end('Not found');
+  } catch (e) {
+    res.writeHead(500, { 'Content-Type': 'text/plain' });
+    res.end('Server error: ' + e.message);
+  }
+});
+
+server.listen(PORT, HOST, () => {
+  console.log('🎛️  VEZÉRLŐPULT FUT (Control Panel)');
+  console.log('─'.repeat(50));
+  console.log(`   Nyisd meg: http://localhost:${PORT}`);
+  console.log('   Itt élőben látod a dashboardot ÉS hozzáadhatsz API kulcsot.');
+  console.log('   Leállítás: Ctrl+C');
+  console.log('   (Csak localhost — a kulcsok a gépeden maradnak.)');
+});
