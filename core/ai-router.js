@@ -261,6 +261,62 @@ const MAX_TRANSIENT_RETRIES = 2;   // ugyanazon a modellen
 const RETRY_BASE_DELAY_MS = 1000;  // 1s, majd 2s (exponenciális)
 
 // ===================================================================
+// KVÓTA-TUDATOS ROUTING (a "főnök" automatikusan átirányít)
+// ===================================================================
+// Ha egy modell napi kvótája elfogy (429), megjegyezzük meddig, és
+// kihagyjuk — átirányítunk egy másik szabad modellre.
+// ===================================================================
+
+const QUOTA_PATH = join(__dirname, 'quota-state.json');
+
+// Szabad modell-pool: ha a primary+fallback kimerült, ezeken megy végig.
+// (Külön kvótájú Gemini modellek + ingyenes providerek. Kulcs hiányában kimarad.)
+const FREE_POOL = [
+  { provider: 'google', model: 'gemini-flash-latest' },
+  { provider: 'google', model: 'gemini-2.5-flash' },
+  { provider: 'google', model: 'gemini-2.0-flash' },
+  { provider: 'google', model: 'gemini-2.5-pro' },
+  { provider: 'groq', model: 'llama-3.3-70b-versatile' },
+  { provider: 'cerebras', model: 'llama-3.3-70b' },
+  { provider: 'openrouter', model: 'deepseek/deepseek-chat' }
+];
+
+function loadQuota() {
+  if (!existsSync(QUOTA_PATH)) return {};
+  try { return JSON.parse(readFileSync(QUOTA_PATH, 'utf-8')); } catch { return {}; }
+}
+function saveQuota(q) {
+  try { writeFileSync(QUOTA_PATH, JSON.stringify(q, null, 2), 'utf-8'); } catch { /* ignore */ }
+}
+function isExhausted(model) {
+  const q = loadQuota();
+  return q[model] && new Date(q[model].until) > new Date();
+}
+function markExhausted(model, daily) {
+  const q = loadQuota();
+  let until;
+  if (daily) {
+    // napi kvóta: holnap reggelig kihagyjuk (helyi éjfél után)
+    const d = new Date(); d.setHours(24, 5, 0, 0); until = d.toISOString();
+  } else {
+    // perces limit: 5 perc
+    until = new Date(Date.now() + 5 * 60000).toISOString();
+  }
+  q[model] = { until, daily: !!daily, marked: new Date().toISOString() };
+  saveQuota(q);
+  console.log(`   🚦 Kvóta kimerült: ${model} → kihagyom ${daily ? 'ma estig' : '5 percig'} (átirányítás másik modellre)`);
+}
+// 429 = kvóta. PerDay = napi kimerülés; egyébként perces limit.
+function isQuotaError(error) {
+  const m = (error?.message || '').toLowerCase();
+  return m.includes('429') || m.includes('resource_exhausted') || m.includes('quota');
+}
+function isDailyQuota(error) {
+  const m = (error?.message || '').toLowerCase();
+  return m.includes('perday') || m.includes('per day') || m.includes('free_tier');
+}
+
+// ===================================================================
 // FŐ FÜGGVÉNY: ASK
 // ===================================================================
 // Ez az amit az agentek hívnak!
@@ -288,15 +344,22 @@ export async function ask(prompt, options = {}) {
     throw new Error(`Ismeretlen agent: ${agentName} (config.json nem tartalmazza)`);
   }
 
-  // Próbáljuk a primary modellt, majd fallback-et
-  const attempts = [agentConfig.primary_model, agentConfig.fallback_model].filter(Boolean);
+  // Sorrend: primary -> fallback -> szabad pool (kvóta-tudatos átirányítás)
+  const raw = [agentConfig.primary_model, agentConfig.fallback_model, ...FREE_POOL].filter(Boolean);
+  // dedup modell szerint (megőrzi a sorrendet)
+  const seen = new Set();
+  const attempts = raw.filter(a => { const k = a.provider + '|' + a.model; if (seen.has(k)) return false; seen.add(k); return true; });
 
   for (const attempt of attempts) {
     const { provider, model } = attempt;
     const caller = providerCallers[provider];
 
     if (!caller) {
-      console.warn(`⚠️  Ismeretlen provider "${provider}" — kihagyom`);
+      continue; // ismeretlen provider -> tovább
+    }
+
+    // Kvóta kimerült ma? -> kihagyjuk, megyünk a következő modellre
+    if (isExhausted(model)) {
       continue;
     }
 
@@ -321,6 +384,11 @@ export async function ask(prompt, options = {}) {
       } catch (error) {
         logCall(agentName, provider, model, null, 0, false, error);
 
+        // Kvóta-hiba (429) -> megjegyezzük (napi vagy perces), és átirányítunk másik modellre
+        if (isQuotaError(error)) {
+          markExhausted(model, isDailyQuota(error));
+          break; // tovább a következő (szabad) modellre
+        }
         // Átmeneti hiba + van még próba -> várunk és újra ugyanazt a modellt
         if (isTransientError(error) && tryNum <= MAX_TRANSIENT_RETRIES) {
           const delay = RETRY_BASE_DELAY_MS * Math.pow(2, tryNum - 1);
@@ -328,7 +396,7 @@ export async function ask(prompt, options = {}) {
           await sleep(delay);
           continue;
         }
-        // Nem átmeneti (pl. 429 kvóta) vagy elfogytak a próbák -> fallback modell
+        // Egyéb hiba (pl. nincs kulcs) -> következő modell
         break;
       }
     }

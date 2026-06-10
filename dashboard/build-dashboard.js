@@ -91,8 +91,21 @@ function gather() {
     memory: memStats(), memories: memList({ limit: 14 }),
     deploy: CONFIG.infrastructure?.deploy?.method || 'none',
     limits: CONFIG.limits || {},
-    keys: gatherKeys()
+    keys: gatherKeys(),
+    exhausted: gatherExhausted()
   };
+}
+
+// Kimerült modellek (kvóta) — a router quota-state.json-jából
+function gatherExhausted() {
+  const qp = join(ROOT, 'core', 'quota-state.json');
+  if (!existsSync(qp)) return [];
+  try {
+    const q = JSON.parse(readFileSync(qp, 'utf-8'));
+    return Object.entries(q)
+      .filter(([, v]) => new Date(v.until) > new Date())
+      .map(([model, v]) => ({ model, daily: v.daily }));
+  } catch { return []; }
 }
 
 // API kulcsok állapota (.env-ből, MASZKOLVA — sosem mutatjuk a teljes kulcsot)
@@ -245,7 +258,14 @@ function panelSettings(d) {
     </div>`).join('');
   const keyOptions = d.keys.map(k => `<option value="${k.env}">${k.label}</option>`).join('');
 
-  return `<div class="panel"><div class="panel__h">🔑 API keys</div>
+  const exhaustedHtml = d.exhausted.length
+    ? `<div class="panel"><div class="panel__h">🚦 Quota status — auto-rerouting</div>
+        <div class="muted" style="margin-bottom:8px">These models hit their limit today — the boss automatically routes around them:</div>
+        ${d.exhausted.map(e => `<div class="keyrow"><span class="key__dot off"></span><span class="key__l">${e.model}</span><span class="key__v">${e.daily ? 'until tomorrow' : 'few minutes'}</span></div>`).join('')}
+      </div>`
+    : `<div class="panel"><div class="panel__h">🚦 Quota status</div><div class="muted">All models have quota available. ✅</div></div>`;
+
+  return exhaustedHtml + `<div class="panel"><div class="panel__h">🔑 API keys</div>
     ${keyRows}
     <div class="keyform" id="keyform">
       <div class="muted" style="margin:14px 0 8px">Add or update a key (saved locally to .env):</div>
