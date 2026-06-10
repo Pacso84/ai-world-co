@@ -28,6 +28,7 @@ import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync } from 
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { ask } from '../../core/ai-router.js';
+import { recall } from '../../core/memory-manager.js';
 
 // ===================================================================
 // SETUP
@@ -39,26 +40,16 @@ const PROJECT_ROOT = join(__dirname, '..', '..');
 const DRAFTS_DIR = join(PROJECT_ROOT, 'content', 'drafts');
 const LOGS_DIR = join(PROJECT_ROOT, 'logs');
 const SHARED_DIR = join(PROJECT_ROOT, 'shared');
-const LESSONS_PATH = join(__dirname, 'lessons.json'); // TANULÁS: az Ellenőrző írja, mi olvassuk
-
 const AGENT_NAME = 'iro';
 
 // ===================================================================
-// TANULÁS: korábbi elutasítások leckéi (hogy ne ismétlődjenek a hibák)
+// TANULÁS: a rétegzett MEMÓRIÁBÓL hívjuk elő a korábbi elutasítások leckéit
 // ===================================================================
 function loadLessons() {
-  if (!existsSync(LESSONS_PATH)) return '';
-  try {
-    const store = JSON.parse(readFileSync(LESSONS_PATH, 'utf-8'));
-    if (!store.lessons?.length) return '';
-    // Az utolsó 8 lecke egyedi okai
-    const recent = store.lessons.slice(-8);
-    const reasons = [...new Set(recent.flatMap(l => l.reasons || []))].slice(0, 10);
-    if (reasons.length === 0) return '';
-    return `\n\nLESSONS FROM PAST REJECTIONS (avoid these mistakes — they got articles rejected before):\n${reasons.map(r => `- ${r}`).join('\n')}`;
-  } catch {
-    return '';
-  }
+  const hits = recall('rejection mistakes brand rules section missing tone', { scope: 'iro', limit: 8 });
+  if (!hits.length) return '';
+  const reasons = [...new Set(hits.map(h => h.text))].slice(0, 10);
+  return `\n\nLESSONS FROM PAST REJECTIONS (avoid these mistakes — they got articles rejected before):\n${reasons.map(r => `- ${r}`).join('\n')}`;
 }
 
 // ===================================================================

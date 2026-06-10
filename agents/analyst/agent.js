@@ -20,6 +20,7 @@ import { readFileSync, writeFileSync, existsSync, readdirSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { ask } from '../../core/ai-router.js';
+import { decay, stats as memStats } from '../../core/memory-manager.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..', '..');
@@ -139,8 +140,13 @@ ${text}
     console.log('💤 Nincs elég elutasítás javaslathoz (ez jó jel!).');
   }
 
+  // 3. Memória karbantartás (salience decay — régi emlékek halványulnak, de nem törlődnek)
+  const d = decay();
+  const ms = memStats();
+  console.log(`\n🧠 Memória decay: ${d.moved} emlék réteget váltott (összesen ${ms.total}: ${ms.hot} hot / ${ms.warm} warm / ${ms.cold} cold)`);
+
   console.log('\n' + '─'.repeat(60));
-  console.log('📊 Tanulás frissítve. (Az Író a lessons.json-t automatikusan használja.)');
+  console.log('📊 Tanulás frissítve. (Az Író a memóriából hívja elő a leckéket.)');
 }
 
 main().catch(e => { console.error('💥 KRITIKUS HIBA:', e); process.exit(1); });

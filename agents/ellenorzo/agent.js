@@ -26,6 +26,7 @@ import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync, rename
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { ask } from '../../core/ai-router.js';
+import { remember } from '../../core/memory-manager.js';
 
 // ===================================================================
 // SETUP
@@ -335,28 +336,16 @@ function moveToRejected(writerFilename, writerData, autoCheckResult, aiReviewRes
 // TANULÁS: lecke feljegyzése az Írónak (autonóm visszacsatolás)
 // ===================================================================
 function recordLesson(aiReviewResult, autoCheckResult, title) {
-  let store = { _meta: { note: 'Az Ellenorzo elutasitasaibol tanult leckek. Az Iro figyelembe veszi iras elott.' }, lessons: [] };
-  if (existsSync(LESSONS_PATH)) {
-    try { store = JSON.parse(readFileSync(LESSONS_PATH, 'utf-8')); } catch { /* friss */ }
-  }
-  if (!Array.isArray(store.lessons)) store.lessons = [];
-
-  // A lecke: a konkrét hibák (auto + AI) tömör formában
+  // A konkrét hibák (auto + AI) tömör formában
   const reasons = [];
   if (autoCheckResult?.issues?.length) reasons.push(...autoCheckResult.issues.map(i => i.split(':')[0]));
   if (aiReviewResult?.issues?.length) reasons.push(...aiReviewResult.issues.slice(0, 3));
   if (aiReviewResult?.verdict && reasons.length === 0) reasons.push(aiReviewResult.verdict);
 
-  store.lessons.push({
-    date: new Date().toISOString().slice(0, 10),
-    title: (title || '').slice(0, 60),
-    reasons: reasons.slice(0, 4)
-  });
-
-  // Csak az utolsó 20 leckét tartjuk
-  if (store.lessons.length > 20) store.lessons = store.lessons.slice(-20);
-  store._meta.updated = new Date().toISOString();
-  writeFileSync(LESSONS_PATH, JSON.stringify(store, null, 2), 'utf-8');
+  // A rétegzett MEMÓRIÁBA mentjük (az Író innen hívja elő) — minden ok külön emlék
+  for (const reason of reasons.slice(0, 4)) {
+    remember('iro', reason, { tags: ['rejection', 'lesson'] });
+  }
 }
 
 // ===================================================================

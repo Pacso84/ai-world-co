@@ -17,6 +17,7 @@
 import { readFileSync, writeFileSync, existsSync, readdirSync, statSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
+import { stats as memStats } from '../core/memory-manager.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
@@ -91,7 +92,9 @@ function gather() {
     };
   });
 
-  return { published, draftsScraper, draftsWriter, rejected, sourcesActive, costToday, costTotal, activity, agents };
+  const memory = memStats();
+
+  return { published, draftsScraper, draftsWriter, rejected, sourcesActive, costToday, costTotal, activity, agents, memory };
 }
 
 function summariseLog(filename, log) {
@@ -211,6 +214,7 @@ h1 .dot-accent{color:var(--accent)}
         ${statCard(d.published, 'Published', 'articles live')}
         ${statCard(d.sourcesActive, 'Sources', 'official only')}
         ${statCard('$'+d.costTotal.toFixed(3), 'Total AI cost', `$${d.costToday.toFixed(3)} today`)}
+        ${statCard(d.memory.total, 'Memories', `${d.memory.hot}🔥 ${d.memory.warm}🌤️ ${d.memory.cold}❄️`)}
       </div>
 
       <div class="cols">
