@@ -30,6 +30,7 @@ const AGENT_META = {
   'ellenorzo':    { icon: '🔎', name: 'Reviewer', role: 'Quality & accuracy gate' },
   'source-scout': { icon: '🔭', name: 'Source Scout', role: 'Discovers new official sources' },
   'designer':     { icon: '🎨', name: 'Designer', role: 'Generates article cover images' },
+  'analyst':      { icon: '📊', name: 'Analyst', role: 'Learns from results, suggests improvements' },
   'publisher':    { icon: '🚀', name: 'Publisher', role: 'Builds & deploys the website' }
 };
 

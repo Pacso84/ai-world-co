@@ -39,8 +39,27 @@ const PROJECT_ROOT = join(__dirname, '..', '..');
 const DRAFTS_DIR = join(PROJECT_ROOT, 'content', 'drafts');
 const LOGS_DIR = join(PROJECT_ROOT, 'logs');
 const SHARED_DIR = join(PROJECT_ROOT, 'shared');
+const LESSONS_PATH = join(__dirname, 'lessons.json'); // TANULÁS: az Ellenőrző írja, mi olvassuk
 
 const AGENT_NAME = 'iro';
+
+// ===================================================================
+// TANULÁS: korábbi elutasítások leckéi (hogy ne ismétlődjenek a hibák)
+// ===================================================================
+function loadLessons() {
+  if (!existsSync(LESSONS_PATH)) return '';
+  try {
+    const store = JSON.parse(readFileSync(LESSONS_PATH, 'utf-8'));
+    if (!store.lessons?.length) return '';
+    // Az utolsó 8 lecke egyedi okai
+    const recent = store.lessons.slice(-8);
+    const reasons = [...new Set(recent.flatMap(l => l.reasons || []))].slice(0, 10);
+    if (reasons.length === 0) return '';
+    return `\n\nLESSONS FROM PAST REJECTIONS (avoid these mistakes — they got articles rejected before):\n${reasons.map(r => `- ${r}`).join('\n')}`;
+  } catch {
+    return '';
+  }
+}
 
 // ===================================================================
 // PARANCSSORI ARGUMENTUMOK
@@ -221,7 +240,7 @@ TIMELY TOPIC SIGNAL (hint only):
 ${topicSignal}
 
 BRAND CONTEXT (must follow):
-${brandContext}
+${brandContext}${loadLessons()}
 
 Now write the original article. Output the markdown only — no extra commentary, no source line.`;
 

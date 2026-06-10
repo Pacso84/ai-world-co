@@ -1,0 +1,29 @@
+{
+  "_meta": {
+    "note": "Forrás-minőség: publikált vs elutasított cikkek forrásonként.",
+    "updated": "2026-06-10T19:01:41.953Z"
+  },
+  "stats": [
+    {
+      "source_id": "hackernews-ai",
+      "published": 1,
+      "rejected": 0,
+      "total": 1,
+      "yield_rate": 100
+    },
+    {
+      "source_id": "openai-blog",
+      "published": 1,
+      "rejected": 2,
+      "total": 3,
+      "yield_rate": 33
+    },
+    {
+      "source_id": "google-ai-blog",
+      "published": 1,
+      "rejected": 0,
+      "total": 1,
+      "yield_rate": 100
+    }
+  ]
+}

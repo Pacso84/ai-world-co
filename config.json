@@ -52,6 +52,12 @@
       "enabled": true,
       "comment": "Designer: cikkenkent fejlecKEP generalas (Gemini image, INGYEN sajat kvota). Ha kvota elfogyott, a build lagy gradiens boritot tesz."
     },
+    "analyst": {
+      "primary_model": { "provider": "google", "model": "gemini-flash-latest" },
+      "fallback_model": { "provider": "google", "model": "gemini-2.5-flash" },
+      "enabled": true,
+      "comment": "Elemzo/Tanulas: forras-statisztika + onfejlesztesi javaslat (user dont). Az autonom tanulas: Ellenorzo->lessons.json->Iro."
+    },
     "publisher": {
       "deterministic": true,
       "enabled": true,

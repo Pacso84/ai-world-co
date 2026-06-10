@@ -39,6 +39,8 @@ const ARTICLES_DIR = join(PROJECT_ROOT, 'content', 'articles');
 const REJECTED_DIR = join(PROJECT_ROOT, 'content', 'rejected');
 const LOGS_DIR = join(PROJECT_ROOT, 'logs');
 const SHARED_DIR = join(PROJECT_ROOT, 'shared');
+// TANULÁS: az Ellenőrző ide írja a leckéket, az Író ezeket olvassa
+const LESSONS_PATH = join(PROJECT_ROOT, 'agents', 'iro', 'lessons.json');
 
 const AGENT_NAME = 'ellenorzo';
 
@@ -323,7 +325,38 @@ function moveToRejected(writerFilename, writerData, autoCheckResult, aiReviewRes
   writeFileSync(rejectedPath, JSON.stringify(rejectedRecord, null, 2), 'utf-8');
   unlinkSync(join(DRAFTS_DIR, writerFilename));
 
+  // TANULÁS: feljegyezzük a leckét az Írónak
+  recordLesson(aiReviewResult, autoCheckResult, writerData.original_title);
+
   return rejectedFilename;
+}
+
+// ===================================================================
+// TANULÁS: lecke feljegyzése az Írónak (autonóm visszacsatolás)
+// ===================================================================
+function recordLesson(aiReviewResult, autoCheckResult, title) {
+  let store = { _meta: { note: 'Az Ellenorzo elutasitasaibol tanult leckek. Az Iro figyelembe veszi iras elott.' }, lessons: [] };
+  if (existsSync(LESSONS_PATH)) {
+    try { store = JSON.parse(readFileSync(LESSONS_PATH, 'utf-8')); } catch { /* friss */ }
+  }
+  if (!Array.isArray(store.lessons)) store.lessons = [];
+
+  // A lecke: a konkrét hibák (auto + AI) tömör formában
+  const reasons = [];
+  if (autoCheckResult?.issues?.length) reasons.push(...autoCheckResult.issues.map(i => i.split(':')[0]));
+  if (aiReviewResult?.issues?.length) reasons.push(...aiReviewResult.issues.slice(0, 3));
+  if (aiReviewResult?.verdict && reasons.length === 0) reasons.push(aiReviewResult.verdict);
+
+  store.lessons.push({
+    date: new Date().toISOString().slice(0, 10),
+    title: (title || '').slice(0, 60),
+    reasons: reasons.slice(0, 4)
+  });
+
+  // Csak az utolsó 20 leckét tartjuk
+  if (store.lessons.length > 20) store.lessons = store.lessons.slice(-20);
+  store._meta.updated = new Date().toISOString();
+  writeFileSync(LESSONS_PATH, JSON.stringify(store, null, 2), 'utf-8');
 }
 
 // ===================================================================
