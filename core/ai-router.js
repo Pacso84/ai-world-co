@@ -21,7 +21,7 @@
 // ===================================================================
 
 import 'dotenv/config';
-import { readFileSync } from 'fs';
+import { readFileSync, writeFileSync, existsSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 

@@ -99,6 +99,22 @@
       "deterministic": true,
       "enabled": true,
       "comment": "Publikalo: weboldal+dashboard build + deploy. NEM hasznal AI-t (determinisztikus)."
+    },
+    "social": {
+      "primary_model": {
+        "provider": "google",
+        "model": "gemini-flash-latest"
+      },
+      "fallback_model": {
+        "provider": "google",
+        "model": "gemini-2.5-flash"
+      },
+      "enabled": true,
+      "type": "custom",
+      "name": "Social Media",
+      "icon": "??",
+      "role": "Writes short social posts from articles",
+      "instructions": "You write ONE short, friendly social media post (max 280 chars) about the given AI article for everyday Australians. No hashtags spam, max 2 relevant hashtags. Australian English."
     }
   },
   "providers": {

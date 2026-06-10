@@ -14,7 +14,7 @@
 // ===================================================================
 
 import { createServer } from 'http';
-import { readFileSync, writeFileSync, existsSync } from 'fs';
+import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { gather, render } from './build-dashboard.js';
@@ -64,6 +64,29 @@ function saveAgent({ id, provider, model, enabled }) {
   writeFileSync(CONFIG_PATH, JSON.stringify(config, null, 2), 'utf-8');
 }
 
+// ÚJ custom agent létrehozása (mint az etalonnál: név + ikon + szerep + utasítás + modell)
+function createAgent({ id, name, icon, role, instructions, provider, model }) {
+  if (!/^[a-z0-9][a-z0-9-]{1,28}$/.test(id || '')) throw new Error('érvénytelen id (kisbetű, szám, kötőjel)');
+  if (!name || !instructions) throw new Error('hiányzó név vagy utasítás');
+  if (provider && !ALLOWED_PROVIDERS.has(provider)) throw new Error('ismeretlen provider');
+  const config = JSON.parse(readFileSync(CONFIG_PATH, 'utf-8'));
+  if (config.agents[id]) throw new Error('már létezik ilyen agent: ' + id);
+
+  config.agents[id] = {
+    primary_model: { provider: provider || 'google', model: model || 'gemini-flash-latest' },
+    fallback_model: { provider: 'google', model: 'gemini-2.5-flash' },
+    enabled: true,
+    type: 'custom',
+    name, icon: icon || '🤖', role: role || '',
+    instructions
+  };
+  writeFileSync(CONFIG_PATH, JSON.stringify(config, null, 2), 'utf-8');
+
+  // instructions.md is (kényelemből)
+  const dir = join(ROOT, 'agents', id);
+  try { mkdirSync(dir, { recursive: true }); writeFileSync(join(dir, 'instructions.md'), instructions, 'utf-8'); } catch {}
+}
+
 function readBody(req) {
   return new Promise((resolve) => {
     let data = '';
@@ -106,6 +129,20 @@ const server = createServer(async (req, res) => {
       try {
         if (!payload.id) throw new Error('hiányzó agent id');
         saveAgent(payload);
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        return res.end(JSON.stringify({ ok: true }));
+      } catch (e) {
+        res.writeHead(400, { 'Content-Type': 'application/json' });
+        return res.end(JSON.stringify({ ok: false, error: e.message }));
+      }
+    }
+
+    // Új custom agent létrehozása
+    if (req.method === 'POST' && req.url === '/api/create-agent') {
+      const body = await readBody(req);
+      let payload; try { payload = JSON.parse(body); } catch { payload = {}; }
+      try {
+        createAgent(payload);
         res.writeHead(200, { 'Content-Type': 'application/json' });
         return res.end(JSON.stringify({ ok: true }));
       } catch (e) {

@@ -77,9 +77,13 @@ function gather() {
   }
 
   const agents = Object.keys(CONFIG.agents).map(id => {
-    const meta = AGENT_META[id] || { icon: '🤖', name: id, role: '' };
     const cfg = CONFIG.agents[id];
+    // Beépített agentnek AGENT_META; custom agentnek a config saját mezői
+    const meta = cfg.type === 'custom'
+      ? { icon: cfg.icon || '🤖', name: cfg.name || id, role: cfg.role || '' }
+      : (AGENT_META[id] || { icon: '🤖', name: id, role: '' });
     return { id, ...meta, enabled: cfg.enabled !== false,
+      custom: cfg.type === 'custom',
       deterministic: !!cfg.deterministic,
       provider: cfg.primary_model?.provider || '',
       model: cfg.primary_model ? cfg.primary_model.model : (cfg.deterministic ? 'deterministic' : '?') };
@@ -185,12 +189,14 @@ function panelTeam(d) {
   const opts = (selProvider, selModel) => MODEL_OPTIONS.map(o =>
     `<option value="${o.provider}|${o.model}" ${o.provider === selProvider && o.model === selModel ? 'selected' : ''}>${modelLabel(o.provider, o.model)}</option>`).join('');
 
+  const modelSelectOptions = MODEL_OPTIONS.map(o => `<option value="${o.provider}|${o.model}">${modelLabel(o.provider, o.model)}</option>`).join('');
+
   return `<div class="panel"><div class="panel__h">🤖 The team — ${d.agents.length} agents</div>
     <div class="muted" style="margin-bottom:12px">Choose each agent's model version (what your API keys allow) and toggle it on/off. Saves via Control Panel server.</div>
     ${d.agents.map(a => `<div class="agent" data-agent="${a.id}">
       <div class="agent__i">${a.icon}</div>
       <div class="agent__info">
-        <div class="agent__n">${a.name}</div>
+        <div class="agent__n">${a.name} ${a.custom ? '<span class="st cust">custom</span>' : ''}</div>
         <div class="agent__r">${a.role}</div>
       </div>
       <div class="agent__ctrl">
@@ -202,6 +208,21 @@ function panelTeam(d) {
       </div>
     </div>`).join('')}
     <div id="agentMsg" class="keymsg"></div>
+  </div>
+  <div class="panel"><div class="panel__h">➕ Create a new agent</div>
+    <div class="muted" style="margin-bottom:12px">Give it a name, an avatar, a job, and instructions (its "personality"). It joins the team and can be run with: <code>node agents/custom-runner.js &lt;id&gt; "input"</code></div>
+    <div class="newform">
+      <div class="nf__row">
+        <input id="naId" placeholder="id (e.g. translator)" maxlength="28">
+        <input id="naIcon" placeholder="icon 🌐" maxlength="4" style="max-width:70px">
+        <input id="naName" placeholder="Name (e.g. Translator)">
+      </div>
+      <input id="naRole" placeholder="Short role (e.g. Translates articles to other languages)">
+      <select id="naModel">${modelSelectOptions}</select>
+      <textarea id="naInstr" rows="4" placeholder="Instructions (the agent's job & personality). E.g. 'You translate AI articles into clear, friendly Hungarian for everyday readers…'"></textarea>
+      <button id="naCreate">Create agent</button>
+      <div id="naMsg" class="keymsg"></div>
+    </div>
   </div>`;
 }
 
@@ -347,7 +368,13 @@ body{background:#e7e0d2;color:var(--ink);font-family:'Hanken Grotesk',sans-serif
 .agent{display:flex;align-items:center;gap:13px;padding:11px 0;border-bottom:1px solid var(--line)}.agent:last-child{border:none}
 .agent__i{font-size:20px;width:30px;text-align:center}.agent__info{flex:1}.agent__n{font-weight:700}
 .st{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;padding:2px 7px;border-radius:100px;margin-left:6px}
-.st.on{background:#e2efe7;color:#3d7a5f}.st.off{background:#efe7e4;color:#9a6a5a}
+.st.on{background:#e2efe7;color:#3d7a5f}.st.off{background:#efe7e4;color:#9a6a5a}.st.cust{background:#e6ddef;color:#7a3b8a}
+.newform{display:flex;flex-direction:column;gap:9px}
+.nf__row{display:flex;gap:9px;flex-wrap:wrap}.nf__row input{flex:1;min-width:90px}
+.newform input,.newform select,.newform textarea{font-family:inherit;font-size:13px;padding:9px 11px;border:1px solid var(--line2);border-radius:8px;background:var(--card);width:100%}
+.newform textarea{resize:vertical}
+.newform button{font-family:inherit;font-size:13px;font-weight:700;padding:10px 18px;border:none;border-radius:8px;background:var(--ink);color:var(--paper);cursor:pointer;align-self:flex-start}
+.newform button:hover{background:var(--accent)}
 .agent__r{color:var(--soft);font-size:12.5px}.agent__m{font-size:10.5px;color:var(--muted);font-family:monospace;background:var(--card);padding:3px 7px;border-radius:6px;border:1px solid var(--line)}
 .agent__ctrl{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .agent__model{font-family:inherit;font-size:12px;padding:6px 8px;border:1px solid var(--line2);border-radius:7px;background:var(--card);max-width:170px}
@@ -439,6 +466,28 @@ body{background:#e7e0d2;color:var(--ink);font-family:'Hanken Grotesk',sans-serif
     if(saveBtn)saveBtn.addEventListener('click',save);
     if(enChk&&!saveBtn)enChk.addEventListener('change',save);
   });
+  // Új agent létrehozása
+  var naBtn=document.getElementById('naCreate');
+  if(naBtn){naBtn.addEventListener('click',async function(){
+    var msg=document.getElementById('naMsg');
+    var pm=document.getElementById('naModel').value.split('|');
+    var payload={
+      id:document.getElementById('naId').value.trim(),
+      icon:document.getElementById('naIcon').value.trim(),
+      name:document.getElementById('naName').value.trim(),
+      role:document.getElementById('naRole').value.trim(),
+      provider:pm[0], model:pm[1],
+      instructions:document.getElementById('naInstr').value.trim()
+    };
+    if(!payload.id||!payload.name||!payload.instructions){msg.className='keymsg err';msg.textContent='Fill in id, name and instructions.';return;}
+    msg.className='keymsg';msg.textContent='Creating…';
+    try{
+      var r=await fetch('/api/create-agent',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+      var j=await r.json();
+      if(j.ok){msg.className='keymsg ok';msg.textContent='✅ Created "'+payload.name+'"! Reload to see it in the team.';}
+      else{msg.className='keymsg err';msg.textContent='❌ '+(j.error||'failed');}
+    }catch(e){msg.className='keymsg err';msg.textContent='❌ Start the Control Panel server: node dashboard/server.js';}
+  });}
 </script>
 </body></html>`;
 }
