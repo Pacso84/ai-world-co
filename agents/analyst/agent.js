@@ -21,6 +21,8 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { ask } from '../../core/ai-router.js';
 import { decay, stats as memStats } from '../../core/memory-manager.js';
+import { addSkill } from '../../core/skills.js';
+import { notify } from '../../core/ops.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..', '..');
@@ -136,6 +138,10 @@ ${text}
     writeFileSync(SUGGESTIONS_PATH, md, 'utf-8');
     console.log(`✅ Javaslatok → agents/iro/improvement-suggestions.md (TE döntesz!)`);
     console.log(`   💰 AI költség: $${(cost || 0).toFixed(4)}`);
+    // SKILL FACTORY: a tanulságból újrahasznosítható recept
+    addSkill('Avoid common article rejections', text, { scope: 'iro' });
+    console.log('🛠️  Skill frissítve: "Avoid common article rejections"');
+    notify('info', `Elemzés kész: ${rejected.length} elutasítás alapján új javaslat + skill.`, { agent: 'analyst' });
   } else {
     console.log('💤 Nincs elég elutasítás javaslathoz (ez jó jel!).');
   }

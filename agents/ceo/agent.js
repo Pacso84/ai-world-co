@@ -27,6 +27,7 @@ import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync, statSy
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { spawn } from 'child_process';
+import { addTask, setTaskStatus, notify } from '../../core/ops.js';
 
 // ===================================================================
 // SETUP
@@ -72,8 +73,13 @@ function parseArgs() {
 function runAgent(agentPath, args = []) {
   return new Promise((resolve) => {
     const fullPath = join(PROJECT_ROOT, agentPath);
+    const label = agentPath.split('/')[1] || agentPath;
     console.log(`\n┌─ Indítás: ${agentPath} ${args.join(' ')}`);
     console.log(`│`);
+
+    // Kanban: feladat létrehozása + "doing"
+    const taskId = addTask('Run ' + label, { agent: label });
+    setTaskStatus(taskId, 'doing');
 
     const proc = spawn('node', [fullPath, ...args], {
       cwd: PROJECT_ROOT,
@@ -102,11 +108,14 @@ function runAgent(agentPath, args = []) {
 
     proc.on('close', (code) => {
       console.log(`└─ Befejezve, exit code: ${code}\n`);
+      setTaskStatus(taskId, 'done');
       resolve({ code, stdout: stdoutBuffer, stderr: stderrBuffer });
     });
 
     proc.on('error', (err) => {
       console.log(`└─ HIBA: ${err.message}\n`);
+      setTaskStatus(taskId, 'done');
+      notify('alert', `Pipeline lépés hiba: ${label} — ${err.message}`, { agent: 'ceo' });
       resolve({ code: -1, error: err.message });
     });
   });
@@ -349,12 +358,14 @@ async function main() {
   const logfile = saveCeoLog(session);
   console.log(`\n📋 Session log: ${logfile}`);
 
-  // 7. Üzenet a brand-szabály szerint
+  // 7. Üzenet + ÉRTESÍTÉS (heartbeat) a brand-szabály szerint
   if (articlesNew === 0) {
     console.log('\n💤 Ma nem publikáltunk semmit — ez OK.');
     console.log('   "Üres nap jobb mint gyenge nap." (brand szabály)');
+    notify('info', 'Pipeline lefutott — ma nem volt publikálható új tartalom.', { agent: 'ceo' });
   } else {
     console.log(`\n🎉 ${articlesNew} új cikk élesben!`);
+    notify('success', `${articlesNew} új cikk publikálva (költség: $${costSpent.toFixed(4)}).`, { agent: 'ceo' });
   }
 }
 

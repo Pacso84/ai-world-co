@@ -12,6 +12,8 @@ import { readFileSync, writeFileSync, existsSync, readdirSync, statSync } from '
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { stats as memStats, list as memList } from '../core/memory-manager.js';
+import { listTasks, listNotifications } from '../core/ops.js';
+import { listSkills } from '../core/skills.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
@@ -96,7 +98,10 @@ function gather() {
     deploy: CONFIG.infrastructure?.deploy?.method || 'none',
     limits: CONFIG.limits || {},
     keys: gatherKeys(),
-    exhausted: gatherExhausted()
+    exhausted: gatherExhausted(),
+    tasks: listTasks(),
+    notifications: listNotifications(15),
+    skills: listSkills()
   };
 }
 
@@ -308,6 +313,38 @@ function panelSettings(d) {
   </div>`;
 }
 
+function panelTasks(d) {
+  const col = (title, items, cls) => `<div class="kcol"><div class="kcol__h ${cls}">${title} <span>${items.length}</span></div>
+    ${items.length ? items.map(t => `<div class="kcard">${esc(t.title)}${t.agent ? `<span class="kcard__a">${t.agent}</span>` : ''}</div>`).join('') : '<div class="muted" style="font-size:12px">—</div>'}</div>`;
+  return `<div class="panel"><div class="panel__h">📋 Task board (Kanban)</div>
+    <div class="kanban">
+      ${col('To do', d.tasks.todo, 'k-todo')}
+      ${col('Doing', d.tasks.doing, 'k-doing')}
+      ${col('Done', d.tasks.done, 'k-done')}
+    </div>
+  </div>`;
+}
+
+function panelNotifications(d) {
+  const icon = l => ({ info: 'ℹ️', success: '✅', warn: '⚠️', alert: '🚨' }[l] || '•');
+  return `<div class="panel"><div class="panel__h">🔔 Notifications (heartbeat)</div>
+    <div class="muted" style="margin-bottom:10px">🚨 alerts are the "loud" ones — these go to Telegram once it's connected.</div>
+    ${d.notifications.length ? d.notifications.map(n => `<div class="noti noti--${n.level}">
+      <span class="noti__i">${icon(n.level)}</span><span class="noti__t">${esc(n.text)}</span>
+      <span class="noti__time">${new Date(n.at).toLocaleString('en-AU', { dateStyle: 'short', timeStyle: 'short' })}</span></div>`).join('')
+      : '<div class="muted">No notifications yet.</div>'}
+  </div>`;
+}
+
+function panelSkills(d) {
+  return `<div class="panel"><div class="panel__h">🛠️ Skill Factory — ${d.skills.length} skills</div>
+    <div class="muted" style="margin-bottom:10px">Reusable recipes the agents distil from experience.</div>
+    ${d.skills.length ? d.skills.map(s => `<details class="skill"><summary>${esc(s.title)} <span class="skill__sc">${s.scope}</span></summary>
+      <div class="skill__body">${esc(s.recipe).slice(0, 600)}</div></details>`).join('')
+      : '<div class="muted">No skills yet. The Analyst creates them as the company learns.</div>'}
+  </div>`;
+}
+
 function esc(s) { return (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
 
 // ===================================================================
@@ -317,14 +354,18 @@ function render(d) {
   const NAV = [
     ['overview', '📊', 'Overview'],
     ['team', '🤖', 'Team'],
+    ['tasks', '📋', 'Tasks'],
+    ['notifications', '🔔', 'Notifications'],
     ['memory', '🧠', 'Memory'],
+    ['skills', '🛠️', 'Skills'],
     ['sources', '📚', 'Sources'],
     ['content', '📦', 'Content'],
     ['logs', '⚡', 'Activity'],
     ['settings', '⚙️', 'Settings']
   ];
   const panels = {
-    overview: panelOverview(d), team: panelTeam(d), memory: panelMemory(d),
+    overview: panelOverview(d), team: panelTeam(d), tasks: panelTasks(d),
+    notifications: panelNotifications(d), memory: panelMemory(d), skills: panelSkills(d),
     sources: panelSources(d), content: panelContent(d), logs: panelLogs(d), settings: panelSettings(d)
   };
   const nav = NAV.map(([id, ic, label], i) =>
@@ -406,6 +447,20 @@ body{background:#e7e0d2;color:var(--ink);font-family:'Hanken Grotesk',sans-serif
 .keyform button{font-family:inherit;font-size:13px;font-weight:700;padding:9px 18px;border:none;border-radius:8px;background:var(--ink);color:var(--paper);cursor:pointer}
 .keyform button:hover{background:var(--accent)}
 .keymsg{margin-top:10px;font-size:13px;font-weight:600}.keymsg.ok{color:#3d7a5f}.keymsg.err{color:#b5694a}
+.kanban{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:680px){.kanban{grid-template-columns:1fr}}
+.kcol__h{font-weight:800;font-size:13px;margin-bottom:10px;padding-bottom:6px;border-bottom:2px solid var(--line2)}
+.kcol__h span{float:right;color:var(--muted)}
+.k-todo{color:var(--soft)}.k-doing{color:#b5894a}.k-done{color:#3d7a5f}
+.kcard{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:9px 11px;margin-bottom:7px;font-size:13px}
+.kcard__a{display:block;font-size:10.5px;color:var(--muted);margin-top:3px;font-family:monospace}
+.noti{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--line);font-size:13px}.noti:last-child{border:none}
+.noti__i{width:20px;text-align:center}.noti__t{flex:1}.noti__time{color:var(--muted);font-size:11.5px;white-space:nowrap}
+.noti--alert .noti__t{color:#b5694a;font-weight:600}.noti--warn .noti__t{color:#9a7a2b}
+.skill{border:1px solid var(--line);border-radius:8px;padding:10px 12px;margin-bottom:8px;background:var(--card)}
+.skill summary{cursor:pointer;font-weight:700;font-size:13px}
+.skill__sc{font-size:10px;color:var(--muted);font-family:monospace;margin-left:6px}
+.skill__body{margin-top:8px;font-size:12.5px;color:var(--soft);white-space:pre-wrap;line-height:1.5}
 @media(max-width:680px){.app{grid-template-columns:1fr}.side{display:flex;flex-wrap:wrap;gap:4px;border-right:none;border-bottom:1px solid var(--line)}.brand{width:100%}.nav{width:auto}.nav span{display:none}}
 </style></head>
 <body>
