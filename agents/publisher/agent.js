@@ -26,6 +26,8 @@ import { readFileSync, existsSync, readdirSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { spawn } from 'child_process';
+import { ask } from '../../core/ai-router.js';
+import { notify } from '../../core/ops.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..', '..');
@@ -89,6 +91,40 @@ async function deploy(method) {
 }
 
 // ===================================================================
+// AI FŐSZERKESZTŐI ZÁRÓ-ELLENŐRZÉS (kész-e a kiadásra?)
+// ===================================================================
+
+async function editorialReview() {
+  const dir = join(ROOT, 'content', 'articles');
+  const titles = [];
+  if (existsSync(dir)) {
+    for (const f of readdirSync(dir).filter(x => x.startsWith('ARTICLE_') && x.endsWith('.json')).slice(-10)) {
+      try {
+        const d = JSON.parse(readFileSync(join(dir, f), 'utf-8'));
+        const m = (d.article_markdown || '').match(/^title:\s*"?(.+?)"?\s*$/m);
+        titles.push(m ? m[1] : (d.original_title || f));
+      } catch {}
+    }
+  }
+  if (titles.length === 0) {
+    notify('warn', 'Publikáló: nincs publikálható cikk — üres kiadás.', { agent: 'publisher' });
+    return;
+  }
+
+  const prompt = `You are the editor-in-chief of AI World Co. (Australian AI news for everyday people).
+The site is about to be published with these articles:
+${titles.map((t, i) => `${i + 1}. ${t}`).join('\n')}
+
+In 2-3 sentences, write a short publish summary for the owner: is the line-up coherent and ready, and any concern to note? Be concise and friendly.`;
+
+  const res = await ask(prompt, { agentName: 'publisher', systemPrompt: 'You are a concise editor-in-chief. 2-3 sentences only.', maxTokens: 300 });
+  if (res) {
+    console.log(`\n📰 Főszerkesztői összefoglaló:\n   ${res.text.trim()}\n`);
+    notify('success', `Kiadás kész (${titles.length} cikk). ${res.text.trim().slice(0, 200)}`, { agent: 'publisher' });
+  }
+}
+
+// ===================================================================
 // FŐ
 // ===================================================================
 
@@ -96,6 +132,9 @@ async function main() {
   const args = parseArgs();
   console.log('🚀 PUBLIKÁLÓ AGENT INDUL');
   console.log('─'.repeat(60));
+
+  // 0. AI főszerkesztői záró-ellenőrzés (kész-e a kiadásra)
+  try { await editorialReview(); } catch (e) { console.log('⚠️  Főszerkesztői review kihagyva: ' + e.message); }
 
   // 1. Weboldal build
   const webOk = await runScript('website/build.js', 'Weboldal build');

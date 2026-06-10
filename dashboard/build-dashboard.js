@@ -27,7 +27,7 @@ const AGENT_META = {
   'source-scout': { icon: '🔭', name: 'Source Scout', role: 'Discovers new official sources' },
   'designer':     { icon: '🎨', name: 'Designer', role: 'Generates article cover images' },
   'analyst':      { icon: '📊', name: 'Analyst', role: 'Learns from results, suggests improvements' },
-  'publisher':    { icon: '🚀', name: 'Publisher', role: 'Builds & deploys the website' }
+  'publisher':    { icon: '🚀', name: 'Publisher', role: 'Editor-in-chief check + builds & deploys' }
 };
 const TODAY = new Date().toISOString().slice(0, 10);
 

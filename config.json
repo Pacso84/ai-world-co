@@ -96,9 +96,10 @@
       "comment": "Elemzo/Tanulas: forras-statisztika + onfejlesztesi javaslat (user dont). Az autonom tanulas: Ellenorzo->lessons.json->Iro."
     },
     "publisher": {
-      "deterministic": true,
+      "primary_model": { "provider": "google", "model": "gemini-flash-latest" },
+      "fallback_model": { "provider": "google", "model": "gemini-2.5-flash" },
       "enabled": true,
-      "comment": "Publikalo: weboldal+dashboard build + deploy. NEM hasznal AI-t (determinisztikus)."
+      "comment": "Publikalo: determinisztikus build (HTML) + AI FOSZERKESZTOI zaro-ellenorzes (kesz-e a kiadasra) + kiadasi osszefoglalo."
     },
     "social": {
       "primary_model": {
