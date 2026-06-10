@@ -127,16 +127,30 @@ function gatherKeys() {
       if (m) env[m[1]] = m[2].trim();
     }
   }
-  // Ismert providerek (config + extra ingyenesek)
+  // Ismert providerek (label-ekhez). Bővíthető — de bármilyen kulcs is mehet.
   const known = [
-    { id: 'anthropic', label: 'Claude (Anthropic)', env: 'ANTHROPIC_API_KEY', free: false },
-    { id: 'google', label: 'Gemini (Google)', env: 'GOOGLE_API_KEY', free: true },
-    { id: 'groq', label: 'Groq', env: 'GROQ_API_KEY', free: true },
-    { id: 'cerebras', label: 'Cerebras', env: 'CEREBRAS_API_KEY', free: true },
-    { id: 'openrouter', label: 'OpenRouter', env: 'OPENROUTER_API_KEY', free: true },
-    { id: 'telegram', label: 'Telegram Bot', env: 'TELEGRAM_BOT_TOKEN', free: true }
+    { label: 'Claude (Anthropic)', env: 'ANTHROPIC_API_KEY', free: false },
+    { label: 'Gemini (Google)', env: 'GOOGLE_API_KEY', free: true },
+    { label: 'Groq', env: 'GROQ_API_KEY', free: true },
+    { label: 'Cerebras', env: 'CEREBRAS_API_KEY', free: true },
+    { label: 'OpenRouter', env: 'OPENROUTER_API_KEY', free: true },
+    { label: 'OpenAI', env: 'OPENAI_API_KEY', free: false },
+    { label: 'Mistral', env: 'MISTRAL_API_KEY', free: true },
+    { label: 'Cohere', env: 'COHERE_API_KEY', free: true },
+    { label: 'DeepSeek', env: 'DEEPSEEK_API_KEY', free: false },
+    { label: 'Together AI', env: 'TOGETHER_API_KEY', free: true },
+    { label: 'Hugging Face', env: 'HF_API_KEY', free: true },
+    { label: 'xAI (Grok)', env: 'XAI_API_KEY', free: false },
+    { label: 'Telegram Bot', env: 'TELEGRAM_BOT_TOKEN', free: true }
   ];
-  return known.map(k => {
+  const knownEnvs = new Set(known.map(k => k.env));
+
+  // .env-ben TÉNYLEG jelen lévő, kulcs-szerű nevek (akár egyedi is)
+  const extraFromEnv = Object.keys(env)
+    .filter(name => /(_API_KEY|_TOKEN|_KEY)$/.test(name) && !knownEnvs.has(name))
+    .map(name => ({ label: name.replace(/_API_KEY|_TOKEN|_KEY/g, '').replace(/_/g, ' ') + ' (custom)', env: name, free: false }));
+
+  return [...known, ...extraFromEnv].map(k => {
     const val = env[k.env] || '';
     const set = val.length > 0;
     return { ...k, set, masked: set ? (val.slice(0, 4) + '…' + val.slice(-3)) : '' };
@@ -282,7 +296,11 @@ function panelSettings(d) {
       <span class="key__l">${k.label} ${k.free ? '<span class="freeb">free</span>' : ''}</span>
       <span class="key__v">${k.set ? k.masked : '<span class="muted">not set</span>'}</span>
     </div>`).join('');
-  const keyOptions = d.keys.map(k => `<option value="${k.env}">${k.label}</option>`).join('');
+  // dedup env szerint + "Egyéb (saját)" opció a listán kívüli kulcsokhoz
+  const seenEnv = new Set();
+  const keyOptions = d.keys.filter(k => { if (seenEnv.has(k.env)) return false; seenEnv.add(k.env); return true; })
+    .map(k => `<option value="${k.env}">${k.label}</option>`).join('')
+    + `<option value="__custom__">➕ Other (type a custom name)…</option>`;
 
   const exhaustedHtml = d.exhausted.length
     ? `<div class="panel"><div class="panel__h">🚦 Quota status — auto-rerouting</div>
@@ -297,6 +315,7 @@ function panelSettings(d) {
       <div class="muted" style="margin:14px 0 8px">Add or update a key (saved locally to .env):</div>
       <div class="keyform__row">
         <select id="keyProvider">${keyOptions}</select>
+        <input id="keyCustomName" placeholder="ENV_NAME_API_KEY" style="display:none;text-transform:uppercase">
         <input id="keyValue" type="password" placeholder="paste API key…" autocomplete="off">
         <button id="keySave">Save</button>
       </div>
@@ -486,11 +505,18 @@ body{background:#e7e0d2;color:var(--ink);font-family:'Hanken Grotesk',sans-serif
     document.querySelector('.pane[data-pane="'+b.dataset.p+'"]').classList.add('pane--active');
   }));
   // API kulcs mentés (csak a Control Panel szerver alatt működik)
+  var keyProv=document.getElementById('keyProvider');
+  var keyCustom=document.getElementById('keyCustomName');
+  if(keyProv&&keyCustom){keyProv.addEventListener('change',function(){
+    keyCustom.style.display = keyProv.value==='__custom__' ? '' : 'none';
+  });}
   var saveBtn=document.getElementById('keySave');
   if(saveBtn){saveBtn.addEventListener('click',async function(){
     var env=document.getElementById('keyProvider').value;
+    if(env==='__custom__'){ env=(keyCustom.value||'').trim().toUpperCase().replace(/[^A-Z0-9_]/g,'_'); }
     var val=document.getElementById('keyValue').value.trim();
     var msg=document.getElementById('keyMsg');
+    if(env==='__custom__'||!env){msg.className='keymsg err';msg.textContent='Type a custom key name (e.g. MISTRAL_API_KEY).';return;}
     if(!val){msg.className='keymsg err';msg.textContent='Paste a key first.';return;}
     msg.className='keymsg';msg.textContent='Saving…';
     try{

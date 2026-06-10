@@ -33,8 +33,9 @@ const ALLOWED_KEYS = new Set([
 ]);
 
 // .env-be ír: meglévő sort frissít, vagy hozzáad
+// Bármilyen érvényes kulcs-név mehet (nem fix lista) — így új provider is hozzáadható.
 function saveKey(envName, value) {
-  if (!ALLOWED_KEYS.has(envName)) throw new Error('ismeretlen kulcs-név');
+  if (!/^[A-Z][A-Z0-9_]{2,48}$/.test(envName || '')) throw new Error('érvénytelen kulcs-név (NAGYBETŰ_FORMÁTUM)');
   if (/[\r\n]/.test(value)) throw new Error('érvénytelen érték');
   let lines = existsSync(ENV_PATH) ? readFileSync(ENV_PATH, 'utf-8').split('\n') : [];
   let found = false;
