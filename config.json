@@ -5,7 +5,6 @@
     "last_updated": "2026-06-04",
     "philosophy": "Minden agenthez a LEGOLCSÓBB modell amelyik még jól megcsinálja. Ingyen tier-ek maximális kihasználása."
   },
-
   "company": {
     "name": "AI World Co.",
     "tagline": "Australian AI News, Curated by Agents",
@@ -14,47 +13,85 @@
     "timezone": "Australia/Sydney",
     "website_url": "https://aiworld.example.com"
   },
-
   "agents": {
     "ceo": {
-      "primary_model": { "provider": "anthropic", "model": "claude-haiku-4-5" },
-      "fallback_model": { "provider": "google", "model": "gemini-2.5-flash" },
+      "primary_model": {
+        "provider": "anthropic",
+        "model": "claude-haiku-4-5"
+      },
+      "fallback_model": {
+        "provider": "google",
+        "model": "gemini-2.5-flash"
+      },
       "enabled": true,
       "comment": "Orkesztrálás egyszerű feladat - Haiku elég ($1/$5 vs Sonnet $3/$15). Fallback: Gemini Flash (ingyen)."
     },
     "rss-scraper": {
-      "primary_model": { "provider": "google", "model": "gemini-flash-latest" },
-      "fallback_model": { "provider": "google", "model": "gemini-2.5-flash" },
+      "primary_model": {
+        "provider": "google",
+        "model": "gemini-flash-latest"
+      },
+      "fallback_model": {
+        "provider": "google",
+        "model": "gemini-2.5-flash"
+      },
       "enabled": true,
       "schedule": "every 4 hours",
       "comment": "INGYEN. gemini-flash-latest (sajat kvota) + fallback 2.5-flash. Strukturalatlan adat rendezese."
     },
     "iro": {
-      "primary_model": { "provider": "anthropic", "model": "claude-sonnet-4-6" },
-      "fallback_model": { "provider": "google", "model": "gemini-flash-latest" },
+      "primary_model": {
+        "provider": "anthropic",
+        "model": "claude-sonnet-4-6"
+      },
+      "fallback_model": {
+        "provider": "google",
+        "model": "gemini-flash-latest"
+      },
       "enabled": true,
       "comment": "Cikkiráshoz Claude Sonnet (ha van kulcs). Fallback: gemini-flash-latest (INGYEN, mukodik kulcs nelkul is)."
     },
     "ellenorzo": {
-      "primary_model": { "provider": "google", "model": "gemini-flash-latest" },
-      "fallback_model": { "provider": "google", "model": "gemini-2.5-pro" },
+      "primary_model": {
+        "provider": "google",
+        "model": "gemini-flash-latest"
+      },
+      "fallback_model": {
+        "provider": "google",
+        "model": "gemini-2.5-pro"
+      },
       "enabled": true,
       "comment": "Ellenorzes: gemini-flash-latest (INGYEN sajat kvota) + fallback 2.5-pro. Kesobb Claude ha kell jobb minoseg."
     },
     "source-scout": {
-      "primary_model": { "provider": "google", "model": "gemini-flash-latest" },
-      "fallback_model": { "provider": "google", "model": "gemini-2.5-flash" },
+      "primary_model": {
+        "provider": "google",
+        "model": "gemini-flash-latest"
+      },
+      "fallback_model": {
+        "provider": "google",
+        "model": "gemini-2.5-flash"
+      },
       "enabled": true,
       "comment": "Forras-kutato: uj HIVATALOS AI forrasokat keres, teszteli az RSS-t, javaslatot ir (ember donti el)."
     },
     "designer": {
-      "primary_model": { "provider": "google", "model": "gemini-2.5-flash-image" },
+      "primary_model": {
+        "provider": "google",
+        "model": "gemini-2.5-flash-image"
+      },
       "enabled": true,
       "comment": "Designer: cikkenkent fejlecKEP generalas (Gemini image, INGYEN sajat kvota). Ha kvota elfogyott, a build lagy gradiens boritot tesz."
     },
     "analyst": {
-      "primary_model": { "provider": "google", "model": "gemini-flash-latest" },
-      "fallback_model": { "provider": "google", "model": "gemini-2.5-flash" },
+      "primary_model": {
+        "provider": "google",
+        "model": "gemini-flash-latest"
+      },
+      "fallback_model": {
+        "provider": "google",
+        "model": "gemini-2.5-flash"
+      },
       "enabled": true,
       "comment": "Elemzo/Tanulas: forras-statisztika + onfejlesztesi javaslat (user dont). Az autonom tanulas: Ellenorzo->lessons.json->Iro."
     },
@@ -64,25 +101,35 @@
       "comment": "Publikalo: weboldal+dashboard build + deploy. NEM hasznal AI-t (determinisztikus)."
     }
   },
-
   "providers": {
     "anthropic": {
       "enabled": true,
       "api_key_env": "ANTHROPIC_API_KEY",
-      "models_available": ["claude-haiku-4-5", "claude-sonnet-4-6", "claude-opus-4-8"],
+      "models_available": [
+        "claude-haiku-4-5",
+        "claude-sonnet-4-6",
+        "claude-opus-4-8"
+      ],
       "pricing_note": "Csak fizetős. Min. $5 betöltés szükséges."
     },
     "google": {
       "enabled": true,
       "api_key_env": "GOOGLE_API_KEY",
-      "models_available": ["gemini-2.5-flash", "gemini-2.5-pro", "imagen-3"],
+      "models_available": [
+        "gemini-2.5-flash",
+        "gemini-2.5-pro",
+        "imagen-3"
+      ],
       "free_tier": "Flash: 1500/nap | Pro: 50/nap | Imagen: 50/nap",
       "pricing_note": "INGYEN. Bankkártya nem kell."
     },
     "groq": {
       "enabled": true,
       "api_key_env": "GROQ_API_KEY",
-      "models_available": ["llama-3.3-70b-versatile", "mixtral-8x7b"],
+      "models_available": [
+        "llama-3.3-70b-versatile",
+        "mixtral-8x7b"
+      ],
       "free_tier": "~30 req/min, napi limit",
       "pricing_note": "INGYEN. Brutál gyors (1000+ tok/sec)."
     },
@@ -92,7 +139,6 @@
       "comment": "Opcionális backup - 300+ modell, pár ingyen. Most kikapcsolva."
     }
   },
-
   "infrastructure": {
     "deploy": {
       "method": "none",
@@ -121,7 +167,10 @@
       "enabled_phase": 3
     },
     "analytics": {
-      "platforms": ["google-analytics-4", "cloudflare-web-analytics"],
+      "platforms": [
+        "google-analytics-4",
+        "cloudflare-web-analytics"
+      ],
       "cost": "0 (mindkettő ingyenes)"
     },
     "monitoring": {
@@ -136,10 +185,12 @@
     "domain": {
       "tld": ".com",
       "cost": "~$10-15/év",
-      "registrar_options": ["namecheap", "cloudflare-registrar (legolcsóbb)"]
+      "registrar_options": [
+        "namecheap",
+        "cloudflare-registrar (legolcsóbb)"
+      ]
     }
   },
-
   "limits": {
     "daily_articles_max": 5,
     "daily_articles_min": 0,
@@ -149,13 +200,11 @@
     "monthly_budget_usd_hard_cap": 80,
     "_comment": "Ha eléri a hard_cap-et, az agentek leállnak és felhasználói jóváhagyás kell."
   },
-
   "fallback_strategy": {
     "rule_1": "Ha primary provider rate limit -> automatikusan fallback model",
     "rule_2": "Ha mindkettő failel -> Telegram értesítés felhasználónak",
     "rule_3": "Naponta egyszer költség report generálódik logs/-ba"
   },
-
   "cost_estimation_monthly_usd": {
     "claude_haiku_ceo": "5-10 (orkesztrálás)",
     "claude_sonnet_iro": "20-35 (cikkírás)",

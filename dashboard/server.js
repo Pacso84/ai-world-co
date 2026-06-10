@@ -22,6 +22,7 @@ import { gather, render } from './build-dashboard.js';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
 const ENV_PATH = join(ROOT, '.env');
+const CONFIG_PATH = join(ROOT, 'config.json');
 const PORT = 4178;
 const HOST = '127.0.0.1'; // CSAK localhost!
 
@@ -43,6 +44,24 @@ function saveKey(envName, value) {
   });
   if (!found) lines.push(`${envName}=${value}`);
   writeFileSync(ENV_PATH, lines.join('\n'), 'utf-8');
+}
+
+const ALLOWED_PROVIDERS = new Set(['anthropic', 'google', 'groq', 'cerebras', 'openrouter']);
+
+// config.json agent beállítás frissítése (modell + enabled)
+function saveAgent({ id, provider, model, enabled }) {
+  const config = JSON.parse(readFileSync(CONFIG_PATH, 'utf-8'));
+  if (!config.agents[id]) throw new Error('ismeretlen agent: ' + id);
+  // enabled mindig állítható
+  if (typeof enabled === 'boolean') config.agents[id].enabled = enabled;
+  // modell csak ha nem determinisztikus és kapott provider+model-t
+  if (provider && model) {
+    if (!ALLOWED_PROVIDERS.has(provider)) throw new Error('ismeretlen provider');
+    if (!/^[\w.\/-]{2,60}$/.test(model)) throw new Error('érvénytelen modell');
+    if (config.agents[id].deterministic) throw new Error('ez az agent determinisztikus (nincs modell)');
+    config.agents[id].primary_model = { provider, model };
+  }
+  writeFileSync(CONFIG_PATH, JSON.stringify(config, null, 2), 'utf-8');
 }
 
 function readBody(req) {
@@ -71,6 +90,22 @@ const server = createServer(async (req, res) => {
       try {
         if (!env || !value) throw new Error('hiányzó adat');
         saveKey(env, value.trim());
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        return res.end(JSON.stringify({ ok: true }));
+      } catch (e) {
+        res.writeHead(400, { 'Content-Type': 'application/json' });
+        return res.end(JSON.stringify({ ok: false, error: e.message }));
+      }
+    }
+
+    // Agent beállítás mentés
+    if (req.method === 'POST' && req.url === '/api/agent') {
+      const body = await readBody(req);
+      let payload;
+      try { payload = JSON.parse(body); } catch { payload = {}; }
+      try {
+        if (!payload.id) throw new Error('hiányzó agent id');
+        saveAgent(payload);
         res.writeHead(200, { 'Content-Type': 'application/json' });
         return res.end(JSON.stringify({ ok: true }));
       } catch (e) {

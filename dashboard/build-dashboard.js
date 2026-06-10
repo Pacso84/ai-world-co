@@ -29,6 +29,20 @@ const AGENT_META = {
 };
 const TODAY = new Date().toISOString().slice(0, 10);
 
+// Választható modellek (provider/model) az agent-beállításhoz
+const MODEL_OPTIONS = [
+  { provider: 'anthropic', model: 'claude-haiku-4-5' },
+  { provider: 'anthropic', model: 'claude-sonnet-4-6' },
+  { provider: 'anthropic', model: 'claude-opus-4-8' },
+  { provider: 'google', model: 'gemini-flash-latest' },
+  { provider: 'google', model: 'gemini-2.5-flash' },
+  { provider: 'google', model: 'gemini-2.5-pro' },
+  { provider: 'google', model: 'gemini-2.5-flash-image' },
+  { provider: 'groq', model: 'llama-3.3-70b-versatile' },
+  { provider: 'cerebras', model: 'llama-3.3-70b' },
+  { provider: 'openrouter', model: 'deepseek/deepseek-chat' }
+];
+
 function countFiles(dir, fn) {
   const full = join(ROOT, dir);
   if (!existsSync(full)) return 0;
@@ -66,6 +80,8 @@ function gather() {
     const meta = AGENT_META[id] || { icon: '🤖', name: id, role: '' };
     const cfg = CONFIG.agents[id];
     return { id, ...meta, enabled: cfg.enabled !== false,
+      deterministic: !!cfg.deterministic,
+      provider: cfg.primary_model?.provider || '',
       model: cfg.primary_model ? cfg.primary_model.model : (cfg.deterministic ? 'deterministic' : '?') };
   });
 
@@ -142,13 +158,37 @@ function panelOverview(d) {
   </div>`;
 }
 
+function modelLabel(provider, model) {
+  const map = {
+    'claude-haiku-4-5': 'Claude Haiku 4.5', 'claude-sonnet-4-6': 'Claude Sonnet 4.6', 'claude-opus-4-8': 'Claude Opus 4.8',
+    'gemini-flash-latest': 'Gemini Flash (latest)', 'gemini-2.5-flash': 'Gemini 2.5 Flash', 'gemini-2.5-pro': 'Gemini 2.5 Pro',
+    'gemini-2.5-flash-image': 'Gemini Flash Image', 'llama-3.3-70b-versatile': 'Groq Llama 3.3 70B',
+    'llama-3.3-70b': 'Cerebras Llama 3.3 70B', 'deepseek/deepseek-chat': 'OpenRouter DeepSeek'
+  };
+  return map[model] || `${provider}/${model}`;
+}
+
 function panelTeam(d) {
+  const opts = (selProvider, selModel) => MODEL_OPTIONS.map(o =>
+    `<option value="${o.provider}|${o.model}" ${o.provider === selProvider && o.model === selModel ? 'selected' : ''}>${modelLabel(o.provider, o.model)}</option>`).join('');
+
   return `<div class="panel"><div class="panel__h">🤖 The team — ${d.agents.length} agents</div>
-    ${d.agents.map(a => `<div class="agent">
+    <div class="muted" style="margin-bottom:12px">Choose each agent's model version (what your API keys allow) and toggle it on/off. Saves via Control Panel server.</div>
+    ${d.agents.map(a => `<div class="agent" data-agent="${a.id}">
       <div class="agent__i">${a.icon}</div>
-      <div class="agent__info"><div class="agent__n">${a.name} <span class="st ${a.enabled ? 'on' : 'off'}">${a.enabled ? 'active' : 'off'}</span></div>
-      <div class="agent__r">${a.role}</div></div>
-      <div class="agent__m">${a.model}</div></div>`).join('')}
+      <div class="agent__info">
+        <div class="agent__n">${a.name}</div>
+        <div class="agent__r">${a.role}</div>
+      </div>
+      <div class="agent__ctrl">
+        ${a.deterministic
+          ? `<span class="agent__det">deterministic (no AI)</span>`
+          : `<select class="agent__model">${opts(a.provider, a.model)}</select>`}
+        <label class="tgl"><input type="checkbox" class="agent__en" ${a.enabled ? 'checked' : ''}><span>on</span></label>
+        ${a.deterministic ? '' : `<button class="agent__save">Save</button>`}
+      </div>
+    </div>`).join('')}
+    <div id="agentMsg" class="keymsg"></div>
   </div>`;
 }
 
@@ -289,6 +329,13 @@ body{background:#e7e0d2;color:var(--ink);font-family:'Hanken Grotesk',sans-serif
 .st{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;padding:2px 7px;border-radius:100px;margin-left:6px}
 .st.on{background:#e2efe7;color:#3d7a5f}.st.off{background:#efe7e4;color:#9a6a5a}
 .agent__r{color:var(--soft);font-size:12.5px}.agent__m{font-size:10.5px;color:var(--muted);font-family:monospace;background:var(--card);padding:3px 7px;border-radius:6px;border:1px solid var(--line)}
+.agent__ctrl{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.agent__model{font-family:inherit;font-size:12px;padding:6px 8px;border:1px solid var(--line2);border-radius:7px;background:var(--card);max-width:170px}
+.agent__det{font-size:11px;color:var(--muted);font-style:italic}
+.tgl{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:var(--soft);cursor:pointer}
+.agent__save{font-family:inherit;font-size:12px;font-weight:700;padding:6px 12px;border:none;border-radius:7px;background:var(--ink);color:var(--paper);cursor:pointer}
+.agent__save:hover{background:var(--accent)}
+@media(max-width:680px){.agent{flex-wrap:wrap}.agent__ctrl{width:100%;padding-left:43px}}
 .pipe{display:flex;align-items:center;justify-content:space-between;gap:6px}
 .pstep{flex:1;text-align:center;background:var(--card);border:1px solid var(--line);border-radius:9px;padding:13px 6px}
 .pn{font-family:'Schibsted Grotesk',sans-serif;font-weight:800;font-size:22px}.pl{font-size:11px;color:var(--soft);margin-top:3px}.parr{color:var(--muted)}
@@ -351,6 +398,27 @@ body{background:#e7e0d2;color:var(--ink);font-family:'Hanken Grotesk',sans-serif
       else{msg.className='keymsg err';msg.textContent='❌ '+(j.error||'failed');}
     }catch(e){msg.className='keymsg err';msg.textContent='❌ Not running via Control Panel server. Start: node dashboard/server.js';}
   });}
+  // Agent beállítás mentés (modell + on/off)
+  document.querySelectorAll('.agent').forEach(function(row){
+    var id=row.dataset.agent;
+    var saveBtn=row.querySelector('.agent__save');
+    var modelSel=row.querySelector('.agent__model');
+    var enChk=row.querySelector('.agent__en');
+    var msg=document.getElementById('agentMsg');
+    async function save(){
+      var payload={id:id, enabled:enChk.checked};
+      if(modelSel){var pm=modelSel.value.split('|');payload.provider=pm[0];payload.model=pm[1];}
+      msg.className='keymsg';msg.textContent='Saving '+id+'…';
+      try{
+        var r=await fetch('/api/agent',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+        var j=await r.json();
+        if(j.ok){msg.className='keymsg ok';msg.textContent='✅ Saved '+id+' ('+(payload.model||'on/off')+')';}
+        else{msg.className='keymsg err';msg.textContent='❌ '+(j.error||'failed');}
+      }catch(e){msg.className='keymsg err';msg.textContent='❌ Start the Control Panel server: node dashboard/server.js';}
+    }
+    if(saveBtn)saveBtn.addEventListener('click',save);
+    if(enChk&&!saveBtn)enChk.addEventListener('change',save);
+  });
 </script>
 </body></html>`;
 }
