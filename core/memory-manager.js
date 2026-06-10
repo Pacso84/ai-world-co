@@ -128,6 +128,17 @@ export function decay() {
   return { total: store.items.length, moved };
 }
 
+// ---------- LIST (dashboardhoz — emlékek listája salience szerint) ----------
+export function list(opts = {}) {
+  const store = load();
+  const { limit = 12, scope = null } = opts;
+  return store.items
+    .filter(it => !scope || it.scope === scope)
+    .sort((a, b) => b.salience - a.salience)
+    .slice(0, limit)
+    .map(it => ({ text: it.text, tier: it.tier, scope: it.scope, tags: it.tags, salience: Math.round(it.salience * 100) }));
+}
+
 // ---------- STATS (dashboardhoz) ----------
 export function stats() {
   const store = load();
