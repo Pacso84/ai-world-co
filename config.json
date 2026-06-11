@@ -77,11 +77,15 @@
     },
     "designer": {
       "primary_model": {
+        "provider": "groq",
+        "model": "llama-3.3-70b-versatile"
+      },
+      "fallback_model": {
         "provider": "google",
-        "model": "gemini-2.5-flash-image"
+        "model": "gemini-flash-latest"
       },
       "enabled": true,
-      "comment": "Designer: cikkenkent fejlecKEP generalas (Gemini image, INGYEN sajat kvota). Ha kvota elfogyott, a build lagy gradiens boritot tesz."
+      "comment": "Designer: (1) art-director text lepes (Groq llama, megbizhato rovid valaszra) konkret jelenetet ir a cikkbol, (2) kep generalas hardkodolt backenddel (Cloudflare Flux -> HF -> Gemini image)."
     },
     "analyst": {
       "primary_model": {

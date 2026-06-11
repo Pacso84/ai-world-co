@@ -23,6 +23,7 @@ import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync } from 
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { GoogleGenAI } from '@google/genai';
+import { ask } from '../../core/ai-router.js';
 
 const ai = new GoogleGenAI({ apiKey: process.env.GOOGLE_API_KEY });
 const IMAGE_MODEL = 'gemini-2.5-flash-image';
@@ -40,28 +41,47 @@ function slugify(text) {
   return (text || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 70);
 }
 
-// Minimál frontmatter olvasás (title + category)
+// Minimál frontmatter olvasás (title + subtitle + category)
 function parseMeta(markdown) {
   const m = (markdown || '').match(/^---\n([\s\S]*?)\n---/);
-  const meta = { title: '', category: 'other' };
+  const meta = { title: '', subtitle: '', category: 'other' };
   if (m) {
     for (const line of m[1].split('\n')) {
       const mm = line.match(/^(\w+):\s*(.*)$/);
       if (!mm) continue;
-      if (mm[1] === 'title') meta.title = mm[2].trim().replace(/^["']|["']$/g, '');
-      if (mm[1] === 'category') meta.category = mm[2].trim().replace(/^["']|["']$/g, '');
+      const v = mm[2].trim().replace(/^["']|["']$/g, '');
+      if (mm[1] === 'title') meta.title = v;
+      if (mm[1] === 'subtitle') meta.subtitle = v;
+      if (mm[1] === 'category') meta.category = v;
     }
   }
   return meta;
 }
 
+// ART DIRECTOR: a cikkből konkrét vizuális jelenetet ír (hogy a kép kapcsolódjon a tartalomhoz)
+async function describeScene(title, subtitle) {
+  const prompt = `Article title: "${title}"
+Subtitle: "${subtitle}"
+
+Describe ONE concrete visual scene that best represents this article as a cover image.
+Name specific objects/symbols/setting (e.g. "a glowing brain made of circuit boards beside stacks of gold coins").
+NO people's faces, NO text/letters in the scene. Reply with ONLY the scene description, max 25 words.`;
+  try {
+    const r = await ask(prompt, { agentName: 'designer', systemPrompt: 'You are an art director. Reply with one vivid, concrete visual scene description only.', maxTokens: 200 });
+    const t = (r && r.text || '').trim().replace(/^["']|["']$/g, '');
+    if (t.length >= 15) return t;   // csak ha értelmes hosszúságú
+  } catch { /* fallback */ }
+  // Tartalék: a cím + alcím adja a témát
+  return `${title}. ${subtitle}`.slice(0, 140);
+}
+
 // A brand vizuális stílusa a prompthoz — SZÍNES 3D RENDER
 const STYLE = 'vibrant colorful 3D render, glossy soft rounded shapes, playful modern tech illustration, soft studio lighting, smooth materials, clean minimal background, depth of field, high quality octane render, 4k, no text no words no letters';
 
-function buildPrompt(title, category) {
-  // A cím adja a témát/tárgyat, a STYLE a konzisztens 3D megjelenést
-  const topic = title.replace(/[:?!"']/g, '').slice(0, 90);
-  return `A wide landscape 3D rendered scene representing: ${topic}. Centered composition with breathing room around the subject. ${STYLE}`;
+function buildPrompt(scene) {
+  // A jelenet (art-director által) adja a tárgyat, a STYLE a konzisztens 3D megjelenést
+  const s = scene.replace(/["']/g, '').slice(0, 140);
+  return `A wide landscape 3D rendered scene: ${s}. Centered composition with breathing room around the subject. ${STYLE}`;
 }
 
 // ===================================================================
@@ -151,9 +171,10 @@ async function main() {
       continue;
     }
 
-    const prompt = buildPrompt(meta.title, meta.category);
-
     console.log(`🖼️  ${meta.title.slice(0, 55)}...`);
+    const scene = await describeScene(meta.title, meta.subtitle);
+    console.log(`   🎬 Jelenet: ${scene.slice(0, 70)}`);
+    const prompt = buildPrompt(scene);
     try {
       const { size, backend } = await generateImage(prompt, imgPath);
       console.log(`   ✅ Kép mentve: ${slug}.jpg (${(size/1024).toFixed(0)} KB, ${backend})`);
