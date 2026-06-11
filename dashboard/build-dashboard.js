@@ -42,7 +42,9 @@ const MODEL_OPTIONS = [
   { provider: 'google', model: 'gemini-2.5-flash-image' },
   { provider: 'groq', model: 'llama-3.3-70b-versatile' },
   { provider: 'cerebras', model: 'llama-3.3-70b' },
-  { provider: 'openrouter', model: 'deepseek/deepseek-chat' }
+  { provider: 'mistral', model: 'mistral-small-latest' },
+  { provider: 'mistral', model: 'mistral-large-latest' },
+  { provider: 'openrouter', model: 'deepseek/deepseek-chat:free' }
 ];
 
 function countFiles(dir, fn) {
@@ -201,7 +203,8 @@ function modelLabel(provider, model) {
     'claude-haiku-4-5': 'Claude Haiku 4.5', 'claude-sonnet-4-6': 'Claude Sonnet 4.6', 'claude-opus-4-8': 'Claude Opus 4.8',
     'gemini-flash-latest': 'Gemini Flash (latest)', 'gemini-2.5-flash': 'Gemini 2.5 Flash', 'gemini-2.5-pro': 'Gemini 2.5 Pro',
     'gemini-2.5-flash-image': 'Gemini Flash Image', 'llama-3.3-70b-versatile': 'Groq Llama 3.3 70B',
-    'llama-3.3-70b': 'Cerebras Llama 3.3 70B', 'deepseek/deepseek-chat': 'OpenRouter DeepSeek'
+    'llama-3.3-70b': 'Cerebras Llama 3.3 70B', 'deepseek/deepseek-chat:free': 'OpenRouter DeepSeek (free)',
+    'mistral-small-latest': 'Mistral Small', 'mistral-large-latest': 'Mistral Large'
   };
   return map[model] || `${provider}/${model}`;
 }

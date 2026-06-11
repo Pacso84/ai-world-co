@@ -150,11 +150,59 @@ async function callGroq(prompt, model, options) {
   };
 }
 
+// ===================================================================
+// OPENAI-KOMPATIBILIS PROVIDEREK (Cerebras, OpenRouter, Mistral)
+// ===================================================================
+// Mindegyik ugyanazt a /chat/completions formátumot használja, csak
+// más URL + kulcs. Egy közös caller-gyár fedi le mindet (fetch-csel,
+// SDK nélkül).
+// ===================================================================
+
+function makeOpenAICaller({ provider, baseUrl, keyEnv, extraHeaders }) {
+  return async function (prompt, model, options) {
+    const key = process.env[keyEnv];
+    if (!key) throw new Error(`${keyEnv} nincs a .env fájlban!`);
+
+    const body = {
+      model,
+      max_tokens: options.maxTokens || 2048,
+      messages: [
+        { role: 'system', content: options.systemPrompt || 'You are a helpful assistant.' },
+        { role: 'user', content: prompt }
+      ]
+    };
+    if (options.jsonMode) body.response_format = { type: 'json_object' };
+
+    const res = await fetch(baseUrl, {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json', ...(extraHeaders || {}) },
+      body: JSON.stringify(body)
+    });
+    if (!res.ok) {
+      const errText = await res.text().catch(() => '');
+      throw new Error(`${provider} HTTP ${res.status}: ${errText.slice(0, 200)}`);
+    }
+    const j = await res.json();
+    return {
+      text: j.choices?.[0]?.message?.content || '',
+      usage: { inputTokens: j.usage?.prompt_tokens || 0, outputTokens: j.usage?.completion_tokens || 0 },
+      model, provider
+    };
+  };
+}
+
+const callCerebras = makeOpenAICaller({ provider: 'cerebras', baseUrl: 'https://api.cerebras.ai/v1/chat/completions', keyEnv: 'CEREBRAS_API_KEY' });
+const callOpenRouter = makeOpenAICaller({ provider: 'openrouter', baseUrl: 'https://openrouter.ai/api/v1/chat/completions', keyEnv: 'OPENROUTER_API_KEY', extraHeaders: { 'HTTP-Referer': 'https://aiworld.co', 'X-Title': 'AI World Co.' } });
+const callMistral = makeOpenAICaller({ provider: 'mistral', baseUrl: 'https://api.mistral.ai/v1/chat/completions', keyEnv: 'MISTRAL_API_KEY' });
+
 // Provider -> hívó függvény map
 const providerCallers = {
   anthropic: callAnthropic,
   google: callGoogle,
-  groq: callGroq
+  groq: callGroq,
+  cerebras: callCerebras,
+  openrouter: callOpenRouter,
+  mistral: callMistral
 };
 
 // ===================================================================
@@ -204,7 +252,12 @@ const PRICING = {
   'gemini-2.0-flash': { input: 0.075, output: 0.30 },
   'gemini-2.5-pro': { input: 1.25, output: 5.0 },
   // Groq (INGYENES a free tier-ig!)
-  'llama-3.3-70b-versatile': { input: 0.59, output: 0.79 }
+  'llama-3.3-70b-versatile': { input: 0.59, output: 0.79 },
+  // Cerebras / OpenRouter / Mistral (ingyenes tier-en ~0)
+  'llama-3.3-70b': { input: 0, output: 0 },
+  'deepseek/deepseek-chat:free': { input: 0, output: 0 },
+  'mistral-small-latest': { input: 0.20, output: 0.60 },
+  'mistral-large-latest': { input: 2.0, output: 6.0 }
 };
 
 function calculateCost(model, usage) {
@@ -278,7 +331,8 @@ const FREE_POOL = [
   { provider: 'google', model: 'gemini-2.5-pro' },
   { provider: 'groq', model: 'llama-3.3-70b-versatile' },
   { provider: 'cerebras', model: 'llama-3.3-70b' },
-  { provider: 'openrouter', model: 'deepseek/deepseek-chat' }
+  { provider: 'mistral', model: 'mistral-small-latest' },
+  { provider: 'openrouter', model: 'deepseek/deepseek-chat:free' }
 ];
 
 function loadQuota() {

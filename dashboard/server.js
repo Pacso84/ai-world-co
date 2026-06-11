@@ -47,7 +47,7 @@ function saveKey(envName, value) {
   writeFileSync(ENV_PATH, lines.join('\n'), 'utf-8');
 }
 
-const ALLOWED_PROVIDERS = new Set(['anthropic', 'google', 'groq', 'cerebras', 'openrouter']);
+const ALLOWED_PROVIDERS = new Set(['anthropic', 'google', 'groq', 'cerebras', 'openrouter', 'mistral']);
 
 // config.json agent beállítás frissítése (modell + enabled)
 function saveAgent({ id, provider, model, enabled }) {
