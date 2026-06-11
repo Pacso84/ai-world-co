@@ -1,0 +1,101 @@
+{
+  "_meta": {
+    "description": "AI World Co. szervezeti felépítés, döntési jogkörök és munkafolyamatok. A CEO ezt olvassa és eszerint vezényel.",
+    "updated": "2026-06-11"
+  },
+
+  "hierarchy": {
+    "ceo": {
+      "title": "CEO (Orchestrator)",
+      "reports_to": "human (owner)",
+      "manages_departments": ["editorial", "growth", "operations"]
+    },
+    "departments": {
+      "editorial": {
+        "label": "📰 Editorial — tartalomgyártás",
+        "lead": "ellenorzo",
+        "members": ["rss-scraper", "iro", "designer", "ellenorzo"]
+      },
+      "growth": {
+        "label": "📈 Growth — elérés & közönség",
+        "lead": "seo",
+        "members": ["seo", "social"]
+      },
+      "operations": {
+        "label": "⚙️ Operations — a gépezet működtetése",
+        "lead": "api-expert",
+        "members": ["api-expert", "analyst", "source-scout", "publisher"]
+      }
+    }
+  },
+
+  "decision_rights": [
+    { "who": "human (owner)", "decides": "Élesítés (go-live), önfejlesztés jóváhagyása, új források jóváhagyása, költségkeret" },
+    { "who": "ceo", "decides": "Napi prioritás, go/no-go, limit-betartatás (cikk/nap, költség/nap)" },
+    { "who": "ellenorzo", "decides": "Publikál vagy elutasít (minőségi + jogi kapu)" },
+    { "who": "api-expert", "decides": "Melyik modellt használja az egyes agent (elérhetőség + feladat alapján)" },
+    { "who": "analyst", "decides": "Mit tanuljunk; önfejlesztési JAVASLAT (ember hagyja jóvá)" },
+    { "who": "source-scout", "decides": "Új forrás JAVASLAT (ember hagyja jóvá)" }
+  ],
+
+  "feedback_loops": [
+    {
+      "from": "ellenorzo",
+      "to": "iro",
+      "trigger": "A cikk megbukott a minőségi/jogi ellenőrzésen",
+      "mechanism": "A bukott cikk a content/rejected/-be kerül a KONKRÉT hibákkal. Az Író --rework módban kijavítja és visszaadja újraellenőrzésre.",
+      "max_rounds": 2,
+      "give_up": "2 sikertelen kör után a cikk kecsesen elutasítva marad (nincs végtelen hurok)."
+    },
+    {
+      "from": "ellenorzo",
+      "to": "iro",
+      "trigger": "Visszatérő hibák több cikknél",
+      "mechanism": "TANULÁS: az Ellenőrző a hibákat a rétegzett memóriába írja; az Író minden új cikknél előhívja ('lessons from past rejections'), így a hibák hosszú távon csökkennek."
+    },
+    {
+      "from": "analyst / source-scout",
+      "to": "human (owner)",
+      "trigger": "Fejlesztési vagy új-forrás ötlet",
+      "mechanism": "JAVASLAT készül — az ember dönt (önfejlesztés sosem automatikus)."
+    }
+  ],
+
+  "workflows": {
+    "daily-news": {
+      "label": "Napi hírgyártás (fő pipeline)",
+      "trigger": "ütemezett (napi) vagy kézi",
+      "steps": [
+        { "agent": "rss-scraper", "script": "agents/rss-scraper/agent.js", "action": "Témák gyűjtése hivatalos forrásokból", "skip": "skipScrape" },
+        { "agent": "iro", "script": "agents/iro/agent.js", "action": "Eredeti cikkek írása", "skip": "skipWrite", "dynamic_limit": true },
+        { "agent": "ellenorzo", "script": "agents/ellenorzo/agent.js", "action": "Minőség + jog ellenőrzés", "skip": "skipReview", "decides": "publikál / VISSZAAD átdolgozásra" },
+        { "agent": "iro", "script": "agents/iro/agent.js --rework", "action": "REWORK: a visszaadott cikkek javítása a konkrét hibák alapján", "skip": "skipRework", "conditional": "csak ha van visszaadott cikk" },
+        { "agent": "ellenorzo", "script": "agents/ellenorzo/agent.js", "action": "Újra-ellenőrzés a javítás után", "skip": "skipRework", "conditional": "csak ha volt rework" },
+        { "agent": "designer", "script": "agents/designer/agent.js", "action": "Fejlécképek (téma-kapcsolt 3D)", "skip": "skipDesign" },
+        { "agent": "seo", "script": "agents/seo/agent.js", "action": "Meta-leírás, kulcsszavak, SEO-pont", "skip": "skipSeo" },
+        { "agent": "publisher", "script": "agents/publisher/agent.js", "action": "Főszerkesztői check + build + deploy", "skip": "skipPublish" }
+      ]
+    },
+    "learning-cycle": {
+      "label": "Tanulási ciklus (időszakos)",
+      "trigger": "kézi vagy időszakos",
+      "steps": [
+        { "agent": "analyst", "script": "agents/analyst/agent.js", "action": "Forrás-statisztika + tanulság + skill + javaslat (ember dönt)" }
+      ]
+    },
+    "source-discovery": {
+      "label": "Forrás-felfedezés",
+      "trigger": "kézi",
+      "steps": [
+        { "agent": "source-scout", "script": "agents/source-scout/agent.js", "action": "Új hivatalos források keresése → JAVASLAT (ember hagyja jóvá)" }
+      ]
+    },
+    "model-optimization": {
+      "label": "Modell-optimalizálás",
+      "trigger": "új API kulcs után",
+      "steps": [
+        { "agent": "api-expert", "script": "agents/api-expert/agent.js", "action": "Minden agenthez a legjobb elérhető modell beállítása" }
+      ]
+    }
+  }
+}

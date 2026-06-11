@@ -57,12 +57,28 @@ function parseArgs() {
     skipScrape: args.includes('--skip-scrape'),
     skipWrite: args.includes('--skip-write'),
     skipReview: args.includes('--skip-review'),
+    skipRework: args.includes('--skip-rework'),
     skipDesign: args.includes('--skip-design'),
     skipSeo: args.includes('--skip-seo'),
     skipPublish: args.includes('--skip-publish'),
     reportOnly: args.includes('--report'),
     dryRun: args.includes('--dry-run')
   };
+}
+
+// Hány elutasított cikket lehet még visszaadni az Írónak javításra?
+// (can_retry !== false ÉS még nem érte el a max átdolgozási kört)
+const MAX_REWORK_ATTEMPTS = 2;
+function countReworkable() {
+  if (!existsSync(REJECTED_DIR)) return 0;
+  return readdirSync(REJECTED_DIR)
+    .filter(f => f.startsWith('REJECTED_') && f.endsWith('.json'))
+    .filter(f => {
+      try {
+        const d = JSON.parse(readFileSync(join(REJECTED_DIR, f), 'utf-8'));
+        return d._meta?.can_retry !== false && (d._meta?.rework_attempts || 0) < MAX_REWORK_ATTEMPTS;
+      } catch { return false; }
+    }).length;
 }
 
 // ===================================================================
@@ -279,6 +295,7 @@ async function main() {
     if (!args.skipScrape) console.log('   1. RSS Scraper futtatása');
     if (!args.skipWrite) console.log('   2. Író agent futtatása');
     if (!args.skipReview) console.log('   3. Ellenőrző agent futtatása');
+    if (!args.skipRework && !args.skipReview) console.log('   3b. Rework: bukott cikkek vissza az Íróhoz → újra-ellenőrzés (ha van)');
     if (!args.skipDesign) console.log('   4. Designer agent (fejlécképek)');
     if (!args.skipSeo) console.log('   5. SEO agent (meta-leírás, kulcsszavak)');
     if (!args.skipPublish) console.log('   6. Publikáló agent (weboldal build + deploy)');
@@ -315,6 +332,22 @@ async function main() {
     session.stages.reviewer = { exit_code: result.code };
   } else {
     console.log('⏭️  Ellenőrző kihagyva (--skip-review)');
+  }
+
+  // 4c+. REWORK KÖR — az Ellenőrző VISSZAADJA a megbukott cikkeket az Írónak,
+  //      az Író kijavítja a konkrét hibákat, majd ÚJRA ellenőrzés.
+  //      (A rework_attempts számláló miatt nem lesz végtelen hurok.)
+  if (!args.skipRework && !args.skipReview) {
+    const reworkable = countReworkable();
+    if (reworkable > 0) {
+      console.log(`\n━━━ 3b. LÉPÉS: REWORK — ${reworkable} cikk vissza az Íróhoz ━━━`);
+      const fix = await runAgent('agents/iro/agent.js', ['--rework']);
+      console.log('\n━━━ 3c. LÉPÉS: ÚJRA-ELLENŐRZÉS ━━━');
+      const recheck = await runAgent('agents/ellenorzo/agent.js');
+      session.stages.rework = { reworkable, fix_exit: fix.code, recheck_exit: recheck.code };
+    } else {
+      console.log('\n✓ Nincs visszaadandó cikk (rework kör kihagyva).');
+    }
   }
 
   // 4d. Designer (fejlécképek)

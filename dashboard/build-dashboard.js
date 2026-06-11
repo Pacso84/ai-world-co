@@ -106,8 +106,16 @@ function gather() {
     exhausted: gatherExhausted(),
     tasks: listTasks(),
     notifications: listNotifications(15),
-    skills: listSkills()
+    skills: listSkills(),
+    org: loadOrg()
   };
+}
+
+// Szervezeti felépítés (core/org.json) — hierarchia, döntési jogkörök, visszacsatolások
+function loadOrg() {
+  const p = join(ROOT, 'core', 'org.json');
+  if (!existsSync(p)) return null;
+  try { return JSON.parse(readFileSync(p, 'utf-8')); } catch { return null; }
 }
 
 // Kimerült modellek (kvóta) — a router quota-state.json-jából
@@ -374,6 +382,72 @@ function panelSkills(d) {
 
 function esc(s) { return (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
 
+// Agent-azonosító → ikon + név (a hierarchia-kártyákhoz)
+function agentChip(id) {
+  const m = AGENT_META[id] || (CONFIG.agents[id]?.type === 'custom'
+    ? { icon: CONFIG.agents[id].icon || '🤖', name: CONFIG.agents[id].name || id }
+    : { icon: '🤖', name: id });
+  return `<span class="ochip"><span class="ochip__i">${m.icon}</span>${esc(m.name)}</span>`;
+}
+
+function panelOrg(d) {
+  const org = d.org;
+  if (!org) return `<div class="panel"><div class="panel__h">🏢 Org chart</div><div class="muted">core/org.json not found.</div></div>`;
+
+  const depts = org.hierarchy?.departments || {};
+  const deptCards = Object.entries(depts).map(([key, dep]) => {
+    const lead = dep.lead;
+    const members = (dep.members || []).filter(m => m !== lead);
+    return `<div class="odept">
+      <div class="odept__h">${esc(dep.label || key)}</div>
+      <div class="orole">👑 Lead</div>
+      <div class="orow">${agentChip(lead)}</div>
+      <div class="orole">Team</div>
+      <div class="orow">${members.map(agentChip).join('') || '<span class="muted">—</span>'}</div>
+    </div>`;
+  }).join('');
+
+  const decisions = (org.decision_rights || []).map(r =>
+    `<div class="setrow"><span class="setk">${esc(r.who)}</span><span class="setv" style="max-width:62%;text-align:right;font-weight:500">${esc(r.decides)}</span></div>`).join('');
+
+  const loops = (org.feedback_loops || []).map(l =>
+    `<div class="oloop">
+      <div class="oloop__h">${esc(l.from)} <span class="oarr">↩︎ visszaadja →</span> ${esc(l.to)}${l.max_rounds ? ` <span class="obadge">max ${l.max_rounds}×</span>` : ''}</div>
+      <div class="oloop__b"><b>Mikor:</b> ${esc(l.trigger)}</div>
+      <div class="oloop__b"><b>Hogyan:</b> ${esc(l.mechanism)}</div>
+      ${l.give_up ? `<div class="oloop__b"><b>Feladás:</b> ${esc(l.give_up)}</div>` : ''}
+    </div>`).join('');
+
+  const wf = org.workflows?.['daily-news'];
+  const flow = wf ? wf.steps.map((s, i) =>
+    `<div class="ostep${s.conditional ? ' ostep--cond' : ''}">
+       <div class="ostep__n">${agentChip(s.agent)}</div>
+       <div class="ostep__a">${esc(s.action)}</div>
+       ${s.decides ? `<div class="ostep__d">⚖️ dönt: ${esc(s.decides)}</div>` : ''}
+       ${s.conditional ? `<div class="ostep__c">↩︎ ${esc(s.conditional)}</div>` : ''}
+     </div>${i < wf.steps.length - 1 ? '<div class="oflowarr">↓</div>' : ''}`).join('') : '';
+
+  return `
+  <div class="panel"><div class="panel__h">🏢 Hierarchy — who reports to whom</div>
+    <div class="oceo">${agentChip('ceo')}<span class="oceo__r">reports to: 🧑 ${esc(org.hierarchy?.ceo?.reports_to || 'owner')}</span></div>
+    <div class="oceo__arr">manages ↓</div>
+    <div class="odepts">${deptCards}</div>
+  </div>
+
+  <div class="panel"><div class="panel__h">⚖️ Decision rights — who decides what</div>
+    ${decisions || '<div class="muted">—</div>'}
+  </div>
+
+  <div class="panel"><div class="panel__h">🔁 Feedback loops — handing work back</div>
+    <div class="muted" style="margin-bottom:12px">If something isn't good enough, it goes back — it's a team, not a one-way conveyor.</div>
+    ${loops || '<div class="muted">—</div>'}
+  </div>
+
+  <div class="panel"><div class="panel__h">📋 Daily-news workflow — ${esc(wf?.label || '')}</div>
+    <div class="oflow">${flow}</div>
+  </div>`;
+}
+
 // ===================================================================
 // RENDER (sidebar app)
 // ===================================================================
@@ -381,6 +455,7 @@ function render(d) {
   const NAV = [
     ['overview', '📊', 'Overview'],
     ['team', '🤖', 'Team'],
+    ['org', '🏢', 'Org chart'],
     ['tasks', '📋', 'Tasks'],
     ['notifications', '🔔', 'Notifications'],
     ['memory', '🧠', 'Memory'],
@@ -391,7 +466,7 @@ function render(d) {
     ['settings', '⚙️', 'Settings']
   ];
   const panels = {
-    overview: panelOverview(d), team: panelTeam(d), tasks: panelTasks(d),
+    overview: panelOverview(d), team: panelTeam(d), org: panelOrg(d), tasks: panelTasks(d),
     notifications: panelNotifications(d), memory: panelMemory(d), skills: panelSkills(d),
     sources: panelSources(d), content: panelContent(d), logs: panelLogs(d), settings: panelSettings(d)
   };
@@ -489,6 +564,30 @@ body{background:#e7e0d2;color:var(--ink);font-family:'Hanken Grotesk',sans-serif
 .skill__sc{font-size:10px;color:var(--muted);font-family:monospace;margin-left:6px}
 .skill__body{margin-top:8px;font-size:12.5px;color:var(--soft);white-space:pre-wrap;line-height:1.5}
 @media(max-width:680px){.app{grid-template-columns:1fr}.side{display:flex;flex-wrap:wrap;gap:4px;border-right:none;border-bottom:1px solid var(--line)}.brand{width:100%}.nav{width:auto}.nav span{display:none}}
+.ochip{display:inline-flex;align-items:center;gap:6px;background:var(--card);border:1px solid var(--line2);border-radius:100px;padding:4px 11px 4px 5px;font-size:12.5px;font-weight:600;margin:3px 5px 3px 0}
+.ochip__i{font-size:14px}
+.oceo{display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:center;background:var(--ink);color:var(--paper);border-radius:11px;padding:13px 18px}
+.oceo .ochip{background:var(--paper);border-color:transparent;font-size:14px}
+.oceo__r{font-size:12px;opacity:.85}
+.oceo__arr{text-align:center;color:var(--muted);font-size:12px;font-weight:700;margin:8px 0}
+.odepts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:680px){.odepts{grid-template-columns:1fr}}
+.odept{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px}
+.odept__h{font-family:'Schibsted Grotesk',sans-serif;font-weight:800;font-size:13px;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.orole{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:8px 0 4px}
+.orow{display:flex;flex-wrap:wrap}
+.oloop{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:12px 14px;margin-bottom:10px}
+.oloop__h{font-weight:700;font-size:13.5px;margin-bottom:6px}
+.oarr{color:var(--accent);font-weight:800}
+.obadge{font-size:9.5px;font-weight:700;background:#f0ead8;color:#9a7a2b;padding:2px 7px;border-radius:100px;text-transform:uppercase;letter-spacing:.05em}
+.oloop__b{font-size:12.5px;color:var(--soft);margin-top:3px}
+.oflow{display:flex;flex-direction:column;align-items:stretch}
+.ostep{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:11px 14px}
+.ostep--cond{border-style:dashed;border-color:var(--line2);background:var(--paper)}
+.ostep__a{font-size:12.5px;color:var(--soft);margin-top:3px}
+.ostep__d{font-size:11.5px;color:#9a7a2b;font-weight:600;margin-top:4px}
+.ostep__c{font-size:11px;color:var(--accent);font-style:italic;margin-top:3px}
+.oflowarr{text-align:center;color:var(--muted);font-weight:800;font-size:14px;margin:4px 0}
 </style></head>
 <body>
 <div class="win">

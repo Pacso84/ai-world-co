@@ -1,0 +1,141 @@
+{
+  "started_at": "2026-06-07T19:33:18.464Z",
+  "feeds_total": 17,
+  "feeds_ok": 10,
+  "feeds_failed": 7,
+  "items_total": 1983,
+  "items_new": 1983,
+  "items_relevant": 0,
+  "items_saved": 0,
+  "ai_cost_usd": 0.0005211000000000001,
+  "by_feed": {
+    "anthropic-blog": {
+      "ok": false,
+      "items_total": 0,
+      "items_new": 0,
+      "items_relevant": 0,
+      "items_saved": 0,
+      "error": "Status code 404"
+    },
+    "openai-blog": {
+      "ok": true,
+      "items_total": 992,
+      "items_new": 992,
+      "items_relevant": 0,
+      "items_saved": 0
+    },
+    "google-deepmind": {
+      "ok": true,
+      "items_total": 100,
+      "items_new": 100,
+      "items_relevant": 0,
+      "items_saved": 0
+    },
+    "meta-ai": {
+      "ok": false,
+      "items_total": 0,
+      "items_new": 0,
+      "items_relevant": 0,
+      "items_saved": 0,
+      "error": "Status code 404"
+    },
+    "mistral-news": {
+      "ok": false,
+      "items_total": 0,
+      "items_new": 0,
+      "items_relevant": 0,
+      "items_saved": 0,
+      "error": "Status code 404"
+    },
+    "microsoft-ai": {
+      "ok": true,
+      "items_total": 10,
+      "items_new": 10,
+      "items_relevant": 0,
+      "items_saved": 0
+    },
+    "techcrunch-ai": {
+      "ok": true,
+      "items_total": 20,
+      "items_new": 20,
+      "items_relevant": 0,
+      "items_saved": 0
+    },
+    "theverge-ai": {
+      "ok": false,
+      "items_total": 0,
+      "items_new": 0,
+      "items_relevant": 0,
+      "items_saved": 0,
+      "error": "Status code 404"
+    },
+    "arstechnica-ai": {
+      "ok": true,
+      "items_total": 20,
+      "items_new": 20,
+      "items_relevant": 0,
+      "items_saved": 0
+    },
+    "wired-ai": {
+      "ok": true,
+      "items_total": 10,
+      "items_new": 10,
+      "items_relevant": 0,
+      "items_saved": 0
+    },
+    "mit-tech-review-ai": {
+      "ok": true,
+      "items_total": 10,
+      "items_new": 10,
+      "items_relevant": 0,
+      "items_saved": 0
+    },
+    "venturebeat-ai": {
+      "ok": true,
+      "items_total": 7,
+      "items_new": 7,
+      "items_relevant": 0,
+      "items_saved": 0
+    },
+    "itnews-au": {
+      "ok": false,
+      "items_total": 0,
+      "items_new": 0,
+      "items_relevant": 0,
+      "items_saved": 0,
+      "error": "Status code 404"
+    },
+    "zdnet-au": {
+      "ok": true,
+      "items_total": 20,
+      "items_new": 20,
+      "items_relevant": 0,
+      "items_saved": 0
+    },
+    "innovation-aus": {
+      "ok": false,
+      "items_total": 0,
+      "items_new": 0,
+      "items_relevant": 0,
+      "items_saved": 0,
+      "error": "Status code 403"
+    },
+    "huggingface-blog": {
+      "ok": true,
+      "items_total": 794,
+      "items_new": 794,
+      "items_relevant": 0,
+      "items_saved": 0
+    },
+    "hackernews-ai": {
+      "ok": false,
+      "items_total": 0,
+      "items_new": 0,
+      "items_relevant": 0,
+      "items_saved": 0,
+      "error": "Status code 502"
+    }
+  },
+  "finished_at": "2026-06-07T19:36:29.776Z",
+  "duration_seconds": 191.312
+}

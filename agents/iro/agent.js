@@ -24,7 +24,7 @@
 // ===================================================================
 
 import 'dotenv/config';
-import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync } from 'fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync, unlinkSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { ask } from '../../core/ai-router.js';
@@ -38,9 +38,14 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = join(__dirname, '..', '..');
 
 const DRAFTS_DIR = join(PROJECT_ROOT, 'content', 'drafts');
+const REJECTED_DIR = join(PROJECT_ROOT, 'content', 'rejected');
 const LOGS_DIR = join(PROJECT_ROOT, 'logs');
 const SHARED_DIR = join(PROJECT_ROOT, 'shared');
 const AGENT_NAME = 'iro';
+
+// Hányszor adhatja vissza az Ellenőrző ugyanazt a cikket átdolgozásra,
+// mielőtt kecsesen feladjuk (végtelen hurok elkerülése).
+const MAX_REWORK_ATTEMPTS = 2;
 
 // ===================================================================
 // TANULÁS: a rétegzett MEMÓRIÁBÓL hívjuk elő a korábbi elutasítások leckéit
@@ -59,6 +64,7 @@ function loadLessons() {
 function parseArgs() {
   const args = process.argv.slice(2);
   const parsed = { limit: null, file: null };
+  parsed.rework = args.includes('--rework');
   for (let i = 0; i < args.length; i++) {
     if (args[i] === '--limit' && args[i + 1]) {
       parsed.limit = parseInt(args[i + 1], 10);
@@ -312,6 +318,179 @@ function saveRunLog(stats) {
 }
 
 // ===================================================================
+// REWORK MÓD — az Ellenőrző VISSZAADTA a cikket javításra
+// ===================================================================
+// Az Ellenőrző a content/rejected/ mappába teszi a megbukott cikkeket
+// (REJECTED_ prefix), a konkrét hibákkal a _meta-ban. Itt az Író
+// elővesz minden olyat, amit még érdemes megpróbálni javítani
+// (can_retry !== false ÉS rework_attempts < MAX), kijavítja a kapott
+// HIBÁK alapján, és visszateszi WRITER_ néven az Ellenőrzőhöz.
+// ===================================================================
+
+function listRejectedForRework() {
+  if (!existsSync(REJECTED_DIR)) return [];
+  return readdirSync(REJECTED_DIR)
+    .filter(f => f.startsWith('REJECTED_') && f.endsWith('.json'))
+    .filter(f => {
+      try {
+        const data = JSON.parse(readFileSync(join(REJECTED_DIR, f), 'utf-8'));
+        const attempts = data._meta?.rework_attempts || 0;
+        return data._meta?.can_retry !== false && attempts < MAX_REWORK_ATTEMPTS;
+      } catch { return false; }
+    })
+    .sort();
+}
+
+// A konkrét, kijavítandó hibák összeszedése (auto + AI ellenőrzés)
+function collectFeedback(meta) {
+  const points = [];
+  if (meta?.auto_check?.issues?.length) points.push(...meta.auto_check.issues);
+  if (meta?.ai_review?.issues?.length) points.push(...meta.ai_review.issues);
+  if (meta?.ai_review?.verdict) points.push(`Reviewer verdict: ${meta.ai_review.verdict}`);
+  if (meta?.reason && points.length === 0) points.push(meta.reason);
+  return [...new Set(points)];
+}
+
+async function reworkArticle(rejectedData, brandContext) {
+  const feedback = collectFeedback(rejectedData._meta);
+  const original = rejectedData.article_markdown || '';
+
+  const userPrompt = `One of your earlier articles was sent BACK by the Reviewer. Your job now is to FIX it — keep what works, repair the specific problems, and return the full corrected article.
+
+THE REVIEWER'S SPECIFIC PROBLEMS (you MUST address every one):
+${feedback.map((f, i) => `${i + 1}. ${f}`).join('\n')}
+
+RULES (still apply):
+- Keep it ORIGINAL — do not copy or cite any news outlet, no "Source:" line, no external links.
+- Australian English; teaching + friendly tone; explain every technical term.
+- Mandatory "## What this means for you" section.
+- Markdown output with YAML frontmatter (title, subtitle, category, audience, read_time_minutes, tags).
+- 400-700 words.
+
+THE ARTICLE TO FIX (rewrite it fully, corrected):
+${original}
+
+BRAND CONTEXT (must follow):
+${brandContext}${loadLessons()}
+
+Now output ONLY the corrected article markdown — no commentary, no notes about what you changed.`;
+
+  let response = await ask(userPrompt, {
+    agentName: AGENT_NAME,
+    systemPrompt: WRITER_SYSTEM_PROMPT,
+    maxTokens: 3000
+  });
+
+  // Self-check: kötelező szekciók — ha hiányzik, egy nyomatékos retry
+  if (response && !hasRequiredSections(response.text)) {
+    const retry = await ask(userPrompt + `
+
+⚠️ CRITICAL: The corrected article MUST contain a "## What this means for you" H2 section and start with a YAML frontmatter (---). Output the full corrected article again.`, {
+      agentName: AGENT_NAME,
+      systemPrompt: WRITER_SYSTEM_PROMPT,
+      maxTokens: 3000
+    });
+    if (retry && hasRequiredSections(retry.text)) {
+      retry.costUsd += response.costUsd;
+      response = retry;
+    }
+  }
+  return response;
+}
+
+// Ez NEM a cikk hibája volt, hanem maga az ELLENŐRZŐ akadt meg
+// (pl. JSON-parse hiba az AI válaszában)? Akkor a jó cikket NEM írjuk át,
+// csak visszatesszük újraellenőrzésre.
+function isReviewerSideFailure(meta) {
+  const autoOk = !(meta?.auto_check?.issues?.length);
+  const reviewerGlitch = /could not parse|parse error|json/i.test(
+    [meta?.reason, meta?.ai_review?.verdict, ...(meta?.ai_review?.issues || [])].join(' ')
+  );
+  return autoOk && reviewerGlitch;
+}
+
+// Visszatesszük WRITER_ néven az Ellenőrzőhöz, növeljük a számlálót,
+// a REJECTED_ fájlt töröljük. `text` = vagy az átdolgozott, vagy a változatlan cikk.
+function saveBackToReview(rejectedFilename, rejectedData, { text, provider, model, costUsd, requeued }) {
+  const writerFilename = rejectedFilename.replace(/^REJECTED_/, 'WRITER_');
+  const newPath = join(DRAFTS_DIR, writerFilename);
+  const prevAttempts = rejectedData._meta?.rework_attempts || 0;
+
+  const writerOutput = {
+    _meta: {
+      ...rejectedData._meta,
+      written_at: new Date().toISOString(),
+      writer_provider: provider,
+      writer_model: model,
+      writer_cost_usd: costUsd,
+      rework_attempts: prevAttempts + 1,
+      reworked_from: rejectedFilename,
+      requeued_unchanged: !!requeued, // true = nem írtuk át, csak újraellenőrzésre küldtük
+      status: 'awaiting-review'
+    },
+    article_markdown: text,
+    original_title: rejectedData.original_title
+  };
+
+  if (!existsSync(DRAFTS_DIR)) mkdirSync(DRAFTS_DIR, { recursive: true });
+  writeFileSync(newPath, JSON.stringify(writerOutput, null, 2), 'utf-8');
+  unlinkSync(join(REJECTED_DIR, rejectedFilename));
+  return writerFilename;
+}
+
+async function runReworkMode(brandContext) {
+  const rejected = listRejectedForRework();
+  console.log('🔁 REWORK MÓD — visszaadott cikkek javítása');
+  if (rejected.length === 0) {
+    console.log('   💤 Nincs javítható elutasított cikk (vagy elérték a max próbát).');
+    return;
+  }
+  console.log(`   📋 ${rejected.length} cikk vár átdolgozásra\n`);
+
+  let fixed = 0, requeued = 0, gaveUp = 0, cost = 0;
+  for (const filename of rejected) {
+    const data = JSON.parse(readFileSync(join(REJECTED_DIR, filename), 'utf-8'));
+    const attempt = (data._meta?.rework_attempts || 0) + 1;
+
+    // ESET A: az Ellenőrző glitch-elt (nem a cikk a hibás) → változatlanul újra
+    if (isReviewerSideFailure(data._meta)) {
+      console.log(`↩️  Újra-sorba (ellenőrző-hiba, nem a cikké) [${attempt}/${MAX_REWORK_ATTEMPTS}]: ${filename.slice(0, 50)}...`);
+      const writerName = saveBackToReview(filename, data, {
+        text: data.article_markdown,
+        provider: data._meta?.writer_provider,
+        model: data._meta?.writer_model,
+        costUsd: 0,
+        requeued: true
+      });
+      console.log(`   ✅ Változatlanul visszaküldve → ${writerName} (0 költség)\n`);
+      requeued++;
+      continue;
+    }
+
+    // ESET B: valódi tartalmi/jogi hiba → az Író átdolgozza
+    console.log(`🔧 Átdolgozás (${attempt}/${MAX_REWORK_ATTEMPTS}): ${filename.slice(0, 55)}...`);
+    collectFeedback(data._meta).slice(0, 3).forEach(f => console.log(`      • javítandó: ${String(f).slice(0, 70)}`));
+
+    const response = await reworkArticle(data, brandContext);
+    if (!response) {
+      console.log('   ❌ Nem sikerült (AI router null) — marad elutasítva\n');
+      gaveUp++;
+      continue;
+    }
+    const writerName = saveBackToReview(filename, data, {
+      text: response.text, provider: response.provider, model: response.model, costUsd: response.costUsd
+    });
+    cost += response.costUsd || 0;
+    fixed++;
+    console.log(`   ✅ Javítva → ${writerName} (újraellenőrzésre vár)\n`);
+  }
+
+  console.log('─'.repeat(60));
+  console.log(`📊 REWORK: ${fixed} átdolgozva, ${requeued} újra-sorba (ingyen), ${gaveUp} sikertelen | költség $${cost.toFixed(4)}`);
+  if (fixed + requeued > 0) console.log(`✨ ${fixed + requeued} cikk visszakerült az Ellenőrzőhöz (WRITER_*)`);
+}
+
+// ===================================================================
 // FŐ FUTTATÁS
 // ===================================================================
 
@@ -324,6 +503,12 @@ async function main() {
   // 1. Brand kontextus betöltés
   const brandContext = loadBrandContext();
   console.log(`📚 Brand kontextus betöltve (${brandContext.length} karakter)`);
+
+  // REWORK MÓD: az Ellenőrző visszaadott cikkeket javítjuk (nem új írás)
+  if (args.rework) {
+    await runReworkMode(brandContext);
+    return;
+  }
 
   // 2. Feldolgozatlan draft-ok keresése
   const drafts = listUnprocessedDrafts(args.file);
