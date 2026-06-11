@@ -4,9 +4,12 @@
 //
 // FELADAT:
 //   Minden publikált cikkhez generál egy LÁGY, illusztratív fejlécképet,
-//   ha még nincs neki. INGYENES (Pollinations.ai, kulcs nélkül).
-//   A képet HELYBEN menti (website/assets/images/<slug>.jpg), így a
-//   weboldal nem függ futásidőben a külső szolgáltatótól.
+//   ha még nincs neki. TÖBB-BACKENDES kép-router fallback-kel:
+//     Cloudflare Workers AI (Flux, 10k/nap ingyen) -> Hugging Face (Flux)
+//     -> Gemini (gemini-2.5-flash-image, szűk kvóta)
+//   Kulcsok a .env-ben: CLOUDFLARE_API_TOKEN+CLOUDFLARE_ACCOUNT_ID, HF_API_KEY, GOOGLE_API_KEY
+//   Ha egyik backendnek sincs kulcsa/mind elesik -> a build LÁGY GRADIENS borítót tesz.
+//   A képet HELYBEN menti (website/assets/images/<slug>.jpg).
 //
 // FUTTATÁS:
 //   node agents/designer/agent.js
@@ -61,20 +64,64 @@ function buildPrompt(title, category) {
   return `${topic}, ${category} concept, ${STYLE}`;
 }
 
-// Gemini képgenerálás (gemini-2.5-flash-image) — a választ base64 képként adja
-async function generateImage(prompt, destPath) {
-  const res = await ai.models.generateContent({
-    model: IMAGE_MODEL,
-    contents: prompt,
-    config: { responseModalities: ['IMAGE', 'TEXT'] }
+// ===================================================================
+// KÉP-BACKENDEK (több szolgáltató, fallback-kel — mint a szöveg-router)
+// ===================================================================
+
+// 1) Cloudflare Workers AI (Flux) — INGYEN 10k neuron/nap. Kell: CLOUDFLARE_API_TOKEN + CLOUDFLARE_ACCOUNT_ID
+async function viaCloudflare(prompt) {
+  const token = process.env.CLOUDFLARE_API_TOKEN, acct = process.env.CLOUDFLARE_ACCOUNT_ID;
+  if (!token || !acct) return null;
+  const url = `https://api.cloudflare.com/client/v4/accounts/${acct}/ai/run/@cf/black-forest-labs/flux-1-schnell`;
+  const r = await fetch(url, { method: 'POST', headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' }, body: JSON.stringify({ prompt }) });
+  if (!r.ok) throw new Error('Cloudflare HTTP ' + r.status);
+  const j = await r.json();
+  const b64 = j?.result?.image;
+  if (!b64) throw new Error('Cloudflare: nincs kép');
+  return Buffer.from(b64, 'base64');
+}
+
+// 2) Hugging Face Inference (Flux/SD) — INGYEN (rate limit). Kell: HF_API_KEY
+async function viaHuggingFace(prompt) {
+  const key = process.env.HF_API_KEY;
+  if (!key) return null;
+  const r = await fetch('https://api-inference.huggingface.co/models/black-forest-labs/FLUX.1-schnell', {
+    method: 'POST', headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' }, body: JSON.stringify({ inputs: prompt })
   });
-  const parts = res.candidates?.[0]?.content?.parts || [];
-  const img = parts.find(p => p.inlineData);
-  if (!img) throw new Error('nem érkezett kép a válaszban');
-  const buf = Buffer.from(img.inlineData.data, 'base64');
-  if (buf.length < 1000) throw new Error('gyanúsan kicsi kép');
-  writeFileSync(destPath, buf);
-  return buf.length;
+  if (!r.ok) throw new Error('HuggingFace HTTP ' + r.status);
+  return Buffer.from(await r.arrayBuffer());
+}
+
+// 3) Gemini (gemini-2.5-flash-image) — szűk ingyenes kvóta. Kell: GOOGLE_API_KEY
+async function viaGemini(prompt) {
+  if (!process.env.GOOGLE_API_KEY) return null;
+  const res = await ai.models.generateContent({ model: IMAGE_MODEL, contents: prompt, config: { responseModalities: ['IMAGE', 'TEXT'] } });
+  const img = (res.candidates?.[0]?.content?.parts || []).find(p => p.inlineData);
+  if (!img) throw new Error('Gemini: nincs kép a válaszban');
+  return Buffer.from(img.inlineData.data, 'base64');
+}
+
+// Kép-router: sorra próbálja a backendeket (a legbőkezűbb ingyenes elöl)
+const IMAGE_BACKENDS = [
+  { name: 'Cloudflare', fn: viaCloudflare },
+  { name: 'HuggingFace', fn: viaHuggingFace },
+  { name: 'Gemini', fn: viaGemini }
+];
+
+async function generateImage(prompt, destPath) {
+  let lastErr = 'nincs elérhető kép-backend (adj hozzá CLOUDFLARE/HF/GOOGLE kulcsot)';
+  for (const b of IMAGE_BACKENDS) {
+    try {
+      const buf = await b.fn(prompt);
+      if (!buf) continue;                 // nincs kulcs ehhez a backendhez -> tovább
+      if (buf.length < 1000) { lastErr = `${b.name}: gyanúsan kicsi kép`; continue; }
+      writeFileSync(destPath, buf);
+      return { size: buf.length, backend: b.name };
+    } catch (e) {
+      lastErr = `${b.name}: ${e.message}`;
+    }
+  }
+  throw new Error(lastErr);
 }
 
 async function main() {
@@ -105,8 +152,8 @@ async function main() {
 
     console.log(`🖼️  ${meta.title.slice(0, 55)}...`);
     try {
-      const size = await generateImage(prompt, imgPath);
-      console.log(`   ✅ Kép mentve: ${slug}.jpg (${(size/1024).toFixed(0)} KB)`);
+      const { size, backend } = await generateImage(prompt, imgPath);
+      console.log(`   ✅ Kép mentve: ${slug}.jpg (${(size/1024).toFixed(0)} KB, ${backend})`);
       generated++;
     } catch (e) {
       const short = e.message.includes('429') ? 'KVÓTA elfogyott (próbáld később)' : e.message.slice(0, 60);

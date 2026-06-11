@@ -139,7 +139,9 @@ function gatherKeys() {
     { label: 'Cohere', env: 'COHERE_API_KEY', free: true },
     { label: 'DeepSeek', env: 'DEEPSEEK_API_KEY', free: false },
     { label: 'Together AI', env: 'TOGETHER_API_KEY', free: true },
-    { label: 'Hugging Face', env: 'HF_API_KEY', free: true },
+    { label: 'Hugging Face (képek is)', env: 'HF_API_KEY', free: true },
+    { label: 'Cloudflare AI token (képek)', env: 'CLOUDFLARE_API_TOKEN', free: true },
+    { label: 'Cloudflare account ID', env: 'CLOUDFLARE_ACCOUNT_ID', free: true },
     { label: 'xAI (Grok)', env: 'XAI_API_KEY', free: false },
     { label: 'Telegram Bot', env: 'TELEGRAM_BOT_TOKEN', free: true }
   ];
