@@ -59,7 +59,9 @@ body {
   font-family: 'Schibsted Grotesk', sans-serif; font-weight: 800;
   font-size: 21px; letter-spacing: -0.02em; color: var(--ink);
   text-decoration: none; white-space: nowrap;
+  display: flex; align-items: center; gap: 9px;
 }
+.navbar__mark { width: 30px; height: 30px; display: block; }
 .navbar__dot { color: var(--accent); }
 .navbar__nav { display: flex; gap: 24px; margin-left: auto; }
 .navbar__nav a {

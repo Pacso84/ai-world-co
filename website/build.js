@@ -172,6 +172,7 @@ function pageShell({ title, description, bodyContent, isArticle = false }) {
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..700&family=Hanken+Grotesk:wght@400..700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="${cssPath.replace('style.css', 'logo.svg')}">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
   <link rel="stylesheet" href="${cssPath}">
 </head>
@@ -179,7 +180,7 @@ function pageShell({ title, description, bodyContent, isArticle = false }) {
   ${isArticle ? '<div class="progress-bar" id="progressBar"></div>' : ''}
   <header class="navbar" id="navbar">
     <div class="navbar__inner">
-      <a href="${homePath}" class="navbar__logo">${SITE.name}<span class="navbar__dot">.</span></a>
+      <a href="${homePath}" class="navbar__logo"><img src="${cssPath.replace('style.css', 'logo.svg')}" alt="" class="navbar__mark">${SITE.name}<span class="navbar__dot">.</span></a>
       <nav class="navbar__nav">
         <a href="${homePath}#all" data-nav="all">Latest</a>
         <a href="${homePath}#personal" data-nav="personal">🏠 Everyday life</a>
