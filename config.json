@@ -16,8 +16,8 @@
   "agents": {
     "ceo": {
       "primary_model": {
-        "provider": "anthropic",
-        "model": "claude-haiku-4-5"
+        "provider": "google",
+        "model": "gemini-flash-latest"
       },
       "fallback_model": {
         "provider": "google",
@@ -54,11 +54,11 @@
     "ellenorzo": {
       "primary_model": {
         "provider": "google",
-        "model": "gemini-flash-latest"
+        "model": "gemini-2.5-pro"
       },
       "fallback_model": {
         "provider": "google",
-        "model": "gemini-2.5-pro"
+        "model": "gemini-flash-latest"
       },
       "enabled": true,
       "comment": "Ellenorzes: gemini-flash-latest (INGYEN sajat kvota) + fallback 2.5-pro. Kesobb Claude ha kell jobb minoseg."
@@ -100,16 +100,33 @@
       "comment": "Elemzo/Tanulas: forras-statisztika + onfejlesztesi javaslat (user dont). Az autonom tanulas: Ellenorzo->lessons.json->Iro."
     },
     "seo": {
-      "primary_model": { "provider": "groq", "model": "llama-3.3-70b-versatile" },
-      "fallback_model": { "provider": "google", "model": "gemini-flash-latest" },
+      "primary_model": {
+        "provider": "groq",
+        "model": "llama-3.3-70b-versatile"
+      },
+      "fallback_model": {
+        "provider": "google",
+        "model": "gemini-flash-latest"
+      },
       "enabled": true,
       "comment": "SEO szakerto: cikkenkent meta-leiras + kulcsszavak + SEO-pont (a cikk _meta.seo-ba). A build hasznalja (meta/OG/JSON-LD)."
     },
     "publisher": {
-      "primary_model": { "provider": "google", "model": "gemini-flash-latest" },
-      "fallback_model": { "provider": "google", "model": "gemini-2.5-flash" },
+      "primary_model": {
+        "provider": "groq",
+        "model": "llama-3.3-70b-versatile"
+      },
+      "fallback_model": {
+        "provider": "google",
+        "model": "gemini-flash-latest"
+      },
       "enabled": true,
       "comment": "Publikalo: determinisztikus build (HTML) + AI FOSZERKESZTOI zaro-ellenorzes (kesz-e a kiadasra) + kiadasi osszefoglalo."
+    },
+    "api-expert": {
+      "deterministic": true,
+      "enabled": true,
+      "comment": "API-szakerto: szabaly-alapu, tudja melyik modell mire jo, es a legjobb ELERHETO modellt rendeli minden agenthez. Futtasd uj kulcs utan: node agents/api-expert/agent.js"
     },
     "social": {
       "primary_model": {
@@ -123,7 +140,7 @@
       "enabled": true,
       "type": "custom",
       "name": "Social Media",
-      "icon": "??",
+      "icon": "📱",
       "role": "Writes short social posts from articles",
       "instructions": "You write ONE short, friendly social media post (max 280 chars) about the given AI article for everyday Australians. No hashtags spam, max 2 relevant hashtags. Australian English."
     }

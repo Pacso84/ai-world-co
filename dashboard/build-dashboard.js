@@ -28,6 +28,7 @@ const AGENT_META = {
   'designer':     { icon: '🎨', name: 'Designer', role: 'Generates article cover images' },
   'analyst':      { icon: '📊', name: 'Analyst', role: 'Learns from results, suggests improvements' },
   'seo':          { icon: '🔍', name: 'SEO', role: 'Optimises articles for search rankings' },
+  'api-expert':   { icon: '🧠', name: 'API Expert', role: 'Assigns the best available model to each agent' },
   'publisher':    { icon: '🚀', name: 'Publisher', role: 'Editor-in-chief check + builds & deploys' }
 };
 const TODAY = new Date().toISOString().slice(0, 10);
