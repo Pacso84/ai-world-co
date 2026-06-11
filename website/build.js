@@ -29,8 +29,8 @@ const ASSETS_SRC = join(__dirname, 'assets');
 
 const SITE = {
   name: 'AI WORLD',
-  tagline: 'Australian AI news, in plain language',
-  description: 'AI news and how-to guides for everyday Australians — fresh, friendly, jargon-free.'
+  tagline: 'AI news, in plain language',
+  description: 'AI news and how-to guides for everyday people — fresh, friendly, jargon-free.'
 };
 
 // Kategória -> megjelenítendő név + CSS osztály (szín)
@@ -193,7 +193,7 @@ function pageShell({ title, description, bodyContent, isArticle = false }) {
   </header>${isArticle ? '' : `
   <section class="intro">
     <div class="intro__inner">
-      <p class="intro__kicker">Issue 01 · Australian Edition · ${formatDate(new Date().toISOString())}</p>
+      <p class="intro__kicker">Issue 01 · ${formatDate(new Date().toISOString())}</p>
       <h1 class="intro__title">Everyday AI, <em>explained simply.</em></h1>
       <p class="intro__tagline">${SITE.tagline}</p>
     </div>
