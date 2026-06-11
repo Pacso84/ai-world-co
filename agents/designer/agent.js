@@ -61,19 +61,22 @@ const STYLE = 'vibrant colorful 3D render, glossy soft rounded shapes, playful m
 function buildPrompt(title, category) {
   // A cím adja a témát/tárgyat, a STYLE a konzisztens 3D megjelenést
   const topic = title.replace(/[:?!"']/g, '').slice(0, 90);
-  return `A 3D rendered scene representing: ${topic}. ${STYLE}`;
+  return `A wide landscape 3D rendered scene representing: ${topic}. Centered composition with breathing room around the subject. ${STYLE}`;
 }
 
 // ===================================================================
 // KÉP-BACKENDEK (több szolgáltató, fallback-kel — mint a szöveg-router)
 // ===================================================================
 
+// Fekvő (landscape) méret — illeszkedik a borító-keretekhez (16:9)
+const IMG_W = 1280, IMG_H = 720;
+
 // 1) Cloudflare Workers AI (Flux) — INGYEN 10k neuron/nap. Kell: CLOUDFLARE_API_TOKEN + CLOUDFLARE_ACCOUNT_ID
 async function viaCloudflare(prompt) {
   const token = process.env.CLOUDFLARE_API_TOKEN, acct = process.env.CLOUDFLARE_ACCOUNT_ID;
   if (!token || !acct) return null;
   const url = `https://api.cloudflare.com/client/v4/accounts/${acct}/ai/run/@cf/black-forest-labs/flux-1-schnell`;
-  const r = await fetch(url, { method: 'POST', headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' }, body: JSON.stringify({ prompt }) });
+  const r = await fetch(url, { method: 'POST', headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' }, body: JSON.stringify({ prompt, width: IMG_W, height: IMG_H }) });
   if (!r.ok) throw new Error('Cloudflare HTTP ' + r.status);
   const j = await r.json();
   const b64 = j?.result?.image;
@@ -86,7 +89,7 @@ async function viaHuggingFace(prompt) {
   const key = process.env.HF_API_KEY;
   if (!key) return null;
   const r = await fetch('https://api-inference.huggingface.co/models/black-forest-labs/FLUX.1-schnell', {
-    method: 'POST', headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' }, body: JSON.stringify({ inputs: prompt })
+    method: 'POST', headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' }, body: JSON.stringify({ inputs: prompt, parameters: { width: IMG_W, height: IMG_H } })
   });
   if (!r.ok) throw new Error('HuggingFace HTTP ' + r.status);
   return Buffer.from(await r.arrayBuffer());
