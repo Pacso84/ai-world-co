@@ -99,6 +99,12 @@
       "enabled": true,
       "comment": "Elemzo/Tanulas: forras-statisztika + onfejlesztesi javaslat (user dont). Az autonom tanulas: Ellenorzo->lessons.json->Iro."
     },
+    "seo": {
+      "primary_model": { "provider": "groq", "model": "llama-3.3-70b-versatile" },
+      "fallback_model": { "provider": "google", "model": "gemini-flash-latest" },
+      "enabled": true,
+      "comment": "SEO szakerto: cikkenkent meta-leiras + kulcsszavak + SEO-pont (a cikk _meta.seo-ba). A build hasznalja (meta/OG/JSON-LD)."
+    },
     "publisher": {
       "primary_model": { "provider": "google", "model": "gemini-flash-latest" },
       "fallback_model": { "provider": "google", "model": "gemini-2.5-flash" },

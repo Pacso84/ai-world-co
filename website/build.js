@@ -27,10 +27,15 @@ const OUT_ARTICLE_DIR = join(OUT_DIR, 'article');
 const OUT_ASSETS_DIR = join(OUT_DIR, 'assets');
 const ASSETS_SRC = join(__dirname, 'assets');
 
+// Site URL a config-ból (canonical/OG/sitemap-hez). Domain hiányában placeholder.
+let SITE_URL = 'https://aiworld.example.com';
+try { SITE_URL = (JSON.parse(readFileSync(join(PROJECT_ROOT, 'config.json'), 'utf-8')).company?.website_url || SITE_URL).replace(/\/$/, ''); } catch {}
+
 const SITE = {
   name: 'AI WORLD',
   tagline: 'AI news, in plain language',
-  description: 'AI news and how-to guides for everyday people — fresh, friendly, jargon-free.'
+  description: 'AI news and how-to guides for everyday people — fresh, friendly, jargon-free.',
+  url: SITE_URL
 };
 
 // Kategória -> megjelenítendő név + CSS osztály (szín)
@@ -138,6 +143,8 @@ function loadArticles() {
         audience: ['personal', 'business', 'both'].includes(meta.audience) ? meta.audience : 'both',
         readTime: meta.read_time_minutes || 3,
         tags: meta.tags || [],
+        seoDescription: data._meta?.seo?.description || meta.subtitle || '',
+        seoKeywords: (data._meta?.seo?.keywords || meta.tags || []).join(', '),
         bodyHtml: wrapImpactSection(marked.parse(body)),
         publishedAt: data._meta?.published_at || '',
         sourceName: data._meta?.source_name || '',
@@ -158,10 +165,12 @@ function loadArticles() {
 // HTML SABLONOK
 // ===================================================================
 
-function pageShell({ title, description, bodyContent, isArticle = false }) {
+function pageShell({ title, description, bodyContent, isArticle = false, canonical = '', ogImage = '', keywords = '', jsonld = null }) {
   const cssPath = isArticle ? '../assets/style.css' : 'assets/style.css';
   const homePath = isArticle ? '../index.html' : 'index.html';
   const year = new Date().getFullYear();
+  const url = canonical || SITE.url;
+  const img = ogImage || (SITE.url + '/assets/logo.svg');
   return `<!DOCTYPE html>
 <html lang="en-AU">
 <head>
@@ -169,12 +178,27 @@ function pageShell({ title, description, bodyContent, isArticle = false }) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${escapeHtml(title)}</title>
   <meta name="description" content="${escapeHtml(description)}">
+  ${keywords ? `<meta name="keywords" content="${escapeHtml(keywords)}">` : ''}
+  <link rel="canonical" href="${escapeHtml(url)}">
+  <!-- Open Graph (közösségi megosztás) -->
+  <meta property="og:type" content="${isArticle ? 'article' : 'website'}">
+  <meta property="og:site_name" content="${SITE.name}">
+  <meta property="og:title" content="${escapeHtml(title)}">
+  <meta property="og:description" content="${escapeHtml(description)}">
+  <meta property="og:url" content="${escapeHtml(url)}">
+  <meta property="og:image" content="${escapeHtml(img)}">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="${escapeHtml(title)}">
+  <meta name="twitter:description" content="${escapeHtml(description)}">
+  <meta name="twitter:image" content="${escapeHtml(img)}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..700&family=Hanken+Grotesk:wght@400..700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="${cssPath.replace('style.css', 'logo.svg')}">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
   <link rel="stylesheet" href="${cssPath}">
+  ${jsonld ? `<script type="application/ld+json">${JSON.stringify(jsonld)}</script>` : ''}
 </head>
 <body>
   ${isArticle ? '<div class="progress-bar" id="progressBar"></div>' : ''}
@@ -281,6 +305,9 @@ function buildIndex(articles) {
   return pageShell({
     title: `${SITE.name} — ${SITE.tagline}`,
     description: SITE.description,
+    canonical: SITE.url,
+    ogImage: articles[0]?.image ? `${SITE.url}/assets/images/${articles[0].image}` : '',
+    jsonld: { '@context': 'https://schema.org', '@type': 'WebSite', name: SITE.name, url: SITE.url, description: SITE.description },
     bodyContent: featuredHtml + grid
   });
 }
@@ -317,7 +344,25 @@ function buildArticlePage(a) {
     </div>
   </article>`;
 
-  return pageShell({ title: `${a.title} — ${SITE.name}`, description: a.subtitle, bodyContent: body, isArticle: true });
+  const canonical = `${SITE.url}/article/${a.slug}.html`;
+  const ogImage = a.image ? `${SITE.url}/assets/images/${a.image}` : '';
+  const jsonld = {
+    '@context': 'https://schema.org', '@type': 'Article',
+    headline: a.title, description: a.seoDescription || a.subtitle,
+    image: ogImage || undefined,
+    datePublished: a.publishedAt || undefined,
+    author: { '@type': 'Organization', name: SITE.name },
+    publisher: { '@type': 'Organization', name: SITE.name },
+    mainEntityOfPage: canonical,
+    keywords: a.seoKeywords || undefined
+  };
+  return pageShell({
+    title: `${a.title} — ${SITE.name}`,
+    description: a.seoDescription || a.subtitle,
+    keywords: a.seoKeywords,
+    canonical, ogImage, jsonld,
+    bodyContent: body, isArticle: true
+  });
 }
 
 // ===================================================================
@@ -365,6 +410,20 @@ function main() {
     writeFileSync(join(OUT_ARTICLE_DIR, `${a.slug}.html`), buildArticlePage(a), 'utf-8');
   }
   console.log(`✅ ${articles.length} cikk oldal generálva`);
+
+  // SEO: sitemap.xml + robots.txt
+  const today = new Date().toISOString().slice(0, 10);
+  const urls = [
+    { loc: SITE.url + '/', date: today },
+    ...articles.map(a => ({ loc: `${SITE.url}/article/${a.slug}.html`, date: (a.publishedAt || '').slice(0, 10) || today }))
+  ];
+  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urls.map(u => `  <url><loc>${u.loc}</loc><lastmod>${u.date}</lastmod></url>`).join('\n')}
+</urlset>`;
+  writeFileSync(join(OUT_DIR, 'sitemap.xml'), sitemap, 'utf-8');
+  writeFileSync(join(OUT_DIR, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${SITE.url}/sitemap.xml\n`, 'utf-8');
+  console.log('✅ sitemap.xml + robots.txt generálva');
 
   console.log('─'.repeat(60));
   console.log(`✨ Kész! Nyisd meg: website/public/index.html`);
