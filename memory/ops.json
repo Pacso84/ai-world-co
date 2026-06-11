@@ -1,5 +1,70 @@
 {
-  "tasks": [],
+  "tasks": [
+    {
+      "id": "t178120951883835",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-06-11T20:25:18.838Z",
+      "updated": "2026-06-11T20:32:02.972Z"
+    },
+    {
+      "id": "t17812099229735",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-06-11T20:32:02.973Z",
+      "updated": "2026-06-11T20:33:12.569Z"
+    },
+    {
+      "id": "t178120999257019",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-06-11T20:33:12.570Z",
+      "updated": "2026-06-11T20:34:06.854Z"
+    },
+    {
+      "id": "t17812100468568",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-06-11T20:34:06.856Z",
+      "updated": "2026-06-11T20:34:07.218Z"
+    },
+    {
+      "id": "t178121004721954",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-06-11T20:34:07.219Z",
+      "updated": "2026-06-11T20:34:31.589Z"
+    },
+    {
+      "id": "t17812100715905",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-06-11T20:34:31.590Z",
+      "updated": "2026-06-11T20:34:39.894Z"
+    },
+    {
+      "id": "t178121007989517",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-06-11T20:34:39.895Z",
+      "updated": "2026-06-11T20:34:41.476Z"
+    },
+    {
+      "id": "t17812100814774",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-06-11T20:34:41.477Z",
+      "updated": "2026-06-11T20:34:42.640Z"
+    }
+  ],
   "notifications": [
     {
       "id": "n178112127565599",
@@ -23,6 +88,46 @@
       "text": "API-szakértő: 3 agent modellje optimalizálva az elérhető kulcsokhoz.",
       "agent": "api-expert",
       "at": "2026-06-11T20:04:02.916Z",
+      "loud": false
+    },
+    {
+      "id": "n178121008146463",
+      "level": "info",
+      "text": "SEO: 3 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-06-11T20:34:41.464Z",
+      "loud": false
+    },
+    {
+      "id": "n178121008234216",
+      "level": "success",
+      "text": "Kiadás kész (4 cikk). Our latest line-up is ready to go live, featuring a great mix of industry insights, practical guides, and helpful tips on AI applications. The articles are coherent and well-rounded, covering both the",
+      "agent": "publisher",
+      "at": "2026-06-11T20:34:42.342Z",
+      "loud": false
+    },
+    {
+      "id": "n178121008264430",
+      "level": "success",
+      "text": "2 új cikk publikálva (költség: $0.0059).",
+      "agent": "ceo",
+      "at": "2026-06-11T20:34:42.644Z",
+      "loud": false
+    },
+    {
+      "id": "n17812103505977",
+      "level": "info",
+      "text": "SEO: 1 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-06-11T20:39:10.597Z",
+      "loud": false
+    },
+    {
+      "id": "n178121035142573",
+      "level": "success",
+      "text": "Kiadás kész (4 cikk). Our latest line-up is coherent and ready to go, covering a range of topics from AI investment to practical applications. The articles cater to both beginners and tech-savvy readers, providing valuable",
+      "agent": "publisher",
+      "at": "2026-06-11T20:39:11.426Z",
       "loud": false
     }
   ]

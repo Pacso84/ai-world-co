@@ -1,0 +1,21 @@
+{
+  "started_at": "2026-06-11T20:25:19.156Z",
+  "feeds_total": 13,
+  "feeds_ok": 12,
+  "feeds_failed": 1,
+  "items_seen_before": 7,
+  "items_keyword_filtered": 8,
+  "candidates_for_ai": 45,
+  "ai_calls": 5,
+  "items_relevant": 14,
+  "items_saved": 14,
+  "ai_cost_usd": 0.0010406999999999999,
+  "failed_feeds": [
+    {
+      "id": "microsoft-ai",
+      "error": "Status code 410"
+    }
+  ],
+  "finished_at": "2026-06-11T20:26:15.976Z",
+  "duration_seconds": 56.82
+}

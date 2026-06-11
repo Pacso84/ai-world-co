@@ -1,0 +1,57 @@
+{
+  "started_at": "2026-06-11T20:25:18.833Z",
+  "date": "2026-06-11",
+  "mode": "full-pipeline",
+  "stages": {
+    "scraper": {
+      "exit_code": 0
+    },
+    "writer": {
+      "exit_code": 0,
+      "limit_used": 4
+    },
+    "reviewer": {
+      "exit_code": 0
+    },
+    "rework": {
+      "reworkable": 2,
+      "fix_exit": 0,
+      "recheck_exit": 0
+    },
+    "designer": {
+      "exit_code": 0
+    },
+    "seo": {
+      "exit_code": 0
+    },
+    "publisher": {
+      "exit_code": 0
+    }
+  },
+  "pre_report": {
+    "date": "2026-06-11",
+    "articles_published_today": 1,
+    "drafts_awaiting_writer": 34,
+    "drafts_awaiting_review": 2,
+    "rejected_today": 0,
+    "total_cost_today_usd": 0.000179175,
+    "daily_limit_articles": 5,
+    "daily_limit_cost_usd": 3,
+    "cost_remaining_usd": 2.999820825,
+    "articles_remaining": 4
+  },
+  "post_report": {
+    "date": "2026-06-11",
+    "articles_published_today": 3,
+    "drafts_awaiting_writer": 48,
+    "drafts_awaiting_review": 0,
+    "rejected_today": 0,
+    "total_cost_today_usd": 0.00605981,
+    "daily_limit_articles": 5,
+    "daily_limit_cost_usd": 3,
+    "cost_remaining_usd": 2.99394019,
+    "articles_remaining": 2
+  },
+  "finished_at": "2026-06-11T20:34:42.642Z",
+  "duration_seconds": 563.809
+}

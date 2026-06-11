@@ -192,27 +192,16 @@ YOU MUST CHECK:
 7. NO CLICHÉS: Is the writing fresh? No "game changer", "in today's fast-paced world", etc.
 8. RESPECT: Does it avoid putting anyone down? Is it kind and non-judgmental?
 
-Respond ONLY in this exact JSON format (no markdown, no extra text):
-{
-  "overall_score": 1-10,
-  "decision": "PASS" | "FAIL",
-  "scores": {
-    "brand_voice": 1-10,
-    "audience_fit": 1-10,
-    "australian_english": 1-10,
-    "no_prohibited": 1-10,
-    "structure": 1-10,
-    "factual": 1-10,
-    "no_cliches": 1-10,
-    "respect": 1-10
-  },
-  "issues": ["specific issue 1", "specific issue 2"],
-  "praise": ["what works well"],
-  "verdict": "1-2 sentence reasoning"
-}
+Respond with ONLY a single JSON object — no markdown fences, no commentary before or after — in EXACTLY this flat shape:
+{"overall_score": <integer 1-10>, "decision": "PASS" or "FAIL", "issues": ["short issue", "short issue"], "verdict": "1-2 sentence reasoning"}
 
-PASS rules: overall_score >= 7 AND no individual score < 5 AND no prohibited content found.
-FAIL otherwise.`;
+STRICT OUTPUT RULES (important for reliability):
+- Output the JSON object and NOTHING else. No \`\`\` fences. No explanation.
+- "issues" = at most 4 SHORT strings (one phrase each). Use [] if none. Avoid quotes/newlines inside the strings.
+- Do NOT add any other fields (no nested "scores", no "praise").
+- Keep "verdict" to one or two short sentences on a single line.
+
+PASS rules: overall_score >= 7 AND no prohibited content found. FAIL otherwise.`;
 
 async function aiReview(articleMarkdown, sourceInfo, brandContext) {
   // FONTOS: a brandContext-et NEM küldjük el teljes egészében!
@@ -231,6 +220,7 @@ Now provide your judgement as JSON only (the rules are in your instructions).`;
   // RETRY: max 2 próba a JSON parse hibára (az AI néha hibás JSON-t ad)
   let totalCost = 0;
   let lastError = 'unknown';
+  let lastRaw = '';
 
   for (let attempt = 1; attempt <= 2; attempt++) {
     const response = await ask(userPrompt, {
@@ -242,33 +232,85 @@ Now provide your judgement as JSON only (the rules are in your instructions).`;
 
     if (!response) { lastError = 'AI router null'; continue; }
     totalCost += response.costUsd || 0;
+    lastRaw = response.text || '';
 
-    try {
-      let text = response.text.trim();
-      text = text.replace(/^```(?:json)?\s*/, '').replace(/\s*```$/, '');
-      const start = text.indexOf('{');
-      const end = text.lastIndexOf('}');
-      if (start !== -1 && end !== -1 && end > start) text = text.slice(start, end + 1);
-      const parsed = JSON.parse(text);
+    const parsed = parseReview(lastRaw);
+    if (parsed) {
       parsed._aiCost = totalCost;
       parsed._provider = response.provider;
       parsed._model = response.model;
       parsed._attempts = attempt;
+      if (parsed._salvaged) console.log(`      🛟 Csonka JSON — mentő parserrel kinyerve (${parsed.decision} ${parsed.overall_score}/10)`);
       return parsed;
-    } catch (e) {
-      lastError = e.message;
-      if (attempt < 2) console.log(`      ↻ JSON parse hiba — újrapróbálom (${attempt}/2)...`);
     }
+    lastError = 'JSON parse + salvage failed';
+    if (attempt < 2) console.log(`      ↻ JSON parse hiba — újrapróbálom (${attempt}/2)...`);
   }
 
-  // Mindkét próba elbukott
+  // Mindkét próba elbukott — naplózzuk a NYERS választ a diagnózishoz
+  saveParseFailure(lastRaw, lastError);
   return {
     overall_score: 0,
     decision: 'FAIL',
     issues: [`AI response JSON parse error after retries: ${lastError}`],
     verdict: 'Could not parse AI review (2 attempts)',
-    _aiCost: totalCost
+    _aiCost: totalCost,
+    _parseFailed: true
   };
+}
+
+// ===================================================================
+// ROBUSZTUS REVIEW-PARSER (provider-független)
+// ===================================================================
+// 1) Szigorú JSON.parse a kinyert {...}-ra.
+// 2) Ha az elbukik (pl. Gemini csonka JSON-t adott), MENTŐ regex-kinyerés:
+//    a döntéshez elég az overall_score + decision (+ verdict, issues).
+// ===================================================================
+function parseReview(raw) {
+  if (!raw) return null;
+  let text = raw.trim().replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/, '');
+
+  // 1) Szigorú próba
+  const start = text.indexOf('{');
+  const end = text.lastIndexOf('}');
+  if (start !== -1 && end !== -1 && end > start) {
+    try { return JSON.parse(text.slice(start, end + 1)); } catch { /* megy a mentésre */ }
+  }
+
+  // 2) Mentő kinyerés — a két DÖNTŐ mező kell: score + decision
+  const scoreM = text.match(/"?overall_score"?\s*[:=]\s*(\d{1,2})/i);
+  const decM = text.match(/"?decision"?\s*[:=]\s*"?\s*(PASS|FAIL)/i);
+  if (!scoreM && !decM) return null; // tényleg semmi értelmezhető
+
+  const score = scoreM ? parseInt(scoreM[1], 10) : null;
+  let decision = decM ? decM[1].toUpperCase() : null;
+  // Ha csak az egyik van meg, a másikat a szabályból következtetjük
+  if (!decision && score !== null) decision = score >= MIN_PASSING_SCORE ? 'PASS' : 'FAIL';
+  if (score === null && decision) return null; // döntés pontszám nélkül nem megbízható → bukás-ág
+
+  const verdM = text.match(/"?verdict"?\s*[:=]\s*"([^"]{0,300})/i);
+  const issuesM = text.match(/"?issues"?\s*[:=]\s*\[([^\]]*)\]/i);
+  const issues = issuesM
+    ? issuesM[1].split(',').map(s => s.replace(/^[\s"]+|[\s"]+$/g, '')).filter(Boolean).slice(0, 4)
+    : [];
+
+  return {
+    overall_score: score,
+    decision,
+    issues,
+    verdict: verdM ? verdM[1].trim() : 'Salvaged from a partial AI response.',
+    _salvaged: true
+  };
+}
+
+// A nem értelmezhető NYERS választ kiírjuk, hogy később megnézhessük
+function saveParseFailure(raw, err) {
+  try {
+    if (!existsSync(LOGS_DIR)) mkdirSync(LOGS_DIR, { recursive: true });
+    const ts = new Date().toISOString().replace(/[:.]/g, '-');
+    writeFileSync(join(LOGS_DIR, `reviewer-parsefail_${ts}.json`),
+      JSON.stringify({ error: err, raw_length: (raw || '').length, raw }, null, 2), 'utf-8');
+  } catch { /* a naplózás hibája ne döntse el a futást */ }
 }
 
 // ===================================================================

@@ -1,0 +1,27 @@
+{
+  "started_at": "2026-06-11T20:34:07.567Z",
+  "total": 2,
+  "passed": 1,
+  "failed": 1,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.00130241,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-06-07T19-58-14-251Z_hackernews-ai_Billions_spent_and_hypothetical_returns__the_AI_bo.json",
+      "rejected": "REJECTED_2026-06-07T19-58-14-251Z_hackernews-ai_Billions_spent_and_hypothetical_returns__the_AI_bo.json",
+      "decision": "FAIL",
+      "score": 0,
+      "cost_usd": 0.0002784
+    },
+    {
+      "writer": "WRITER_2026-06-07T20-02-45-881Z_google-ai-blog_The_latest_AI_news_we_announced_in_May_2026.json",
+      "article": "ARTICLE_2026-06-07T20-02-45-881Z_google-ai-blog_The_latest_AI_news_we_announced_in_May_2026.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.00102401
+    }
+  ],
+  "finished_at": "2026-06-11T20:34:31.574Z",
+  "duration_seconds": 24.007
+}

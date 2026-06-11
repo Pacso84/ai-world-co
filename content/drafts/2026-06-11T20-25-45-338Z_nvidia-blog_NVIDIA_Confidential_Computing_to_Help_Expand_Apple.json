@@ -1,0 +1,29 @@
+{
+  "_meta": {
+    "scraped_at": "2026-06-11T20:25:45.338Z",
+    "source_id": "nvidia-blog",
+    "source_name": "NVIDIA Blog (hivatalos)",
+    "source_country": "US",
+    "relevance": {
+      "index": 6,
+      "relevant": true,
+      "score": 7,
+      "category": "ai-news",
+      "reason": "Relates to the security and privacy backend of Apple's consumer AI features, which is relevant to everyday users concerned about data safety."
+    }
+  },
+  "title": "NVIDIA Confidential Computing to Help Expand Apple’s Private Cloud Compute",
+  "link": "https://blogs.nvidia.com/blog/nvidia-confidential-computing-apple-private-cloud-compute/",
+  "pub_date": "Tue, 09 Jun 2026 22:34:27 +0000",
+  "author": "Avinash Ahuja",
+  "content_snippet": "NVIDIA GPUs with Confidential Computing are now used for confidential inference in Apple’s Private Cloud Compute (PCC), as it expands beyond Apple’s data centers to Google Cloud.  Unveiled during Apple’s annual WWDC gathering for developers from around the globe, NVIDIA GPUs will support server-side inference for Apple Foundation Models, custom-built by Apple and Google, leveraging […]",
+  "content_full": "<div id=\"bsf_rt_marker\"></div><p><span style=\"font-weight: 400;\">NVIDIA GPUs with </span><a target=\"_blank\" href=\"https://www.nvidia.com/en-us/data-center/solutions/confidential-computing/\"><span style=\"font-weight: 400;\">Confidential Computing</span></a><span style=\"font-weight: 400;\"> are now used for confidential inference in Apple’s Private Cloud Compute (PCC), as it </span><a target=\"_blank\" href=\"https://security.apple.com/blog/expanding-pcc/\"><span style=\"font-weight: 400;\">expands</span></a><span style=\"font-weight: 400;\"> beyond Apple’s data centers to Google Cloud. </span></p>\n<p><span style=\"font-weight: 400;\">Unveiled during Apple’s annual WWDC gathering for developers from around the globe, NVIDIA GPUs will support server-side inference for </span><a target=\"_blank\" href=\"https://machinelearning.apple.com/research/introducing-third-generation-of-apple-foundation-models\"><span style=\"font-weight: 400;\">Apple Foundation Models</span></a><span style=\"font-weight: 400;\">, custom-built by Apple and Google, leveraging the technologies behind the Gemini family of models.</span></p>\n<p><span style=\"font-weight: 400;\">NVIDIA is collaborating with Apple and Google to support </span><span style=\"font-weight: 400;\">some of the </span><span style=\"font-weight: 400;\">next-generation Apple Intelligence features, using NVIDIA Blackwell GPUs with Confidential Computing integrated into Private Cloud Compute’s hardware security architecture running on Google Cloud.</span></p>\n<h2><b>Confidential Computing Matters for the Era of AI Experiences </b></h2>\n<p><span style=\"font-weight: 400;\">NVIDIA Confidential Computing provides a hardware-based security layer for accelerated AI workloads. The technology protects data while it’s being processed by isolating workloads in trusted execution environments and enabling systems to cryptographically verify that the infrastructure has not been tampered with before any sensitive data is sent to the server. </span></p>\n<p><span style=\"font-weight: 400;\">For end users, NVIDIA Confidential Computing means that no one, not even the system’s builders, can look at their data, chats or conversations.</span></p>\n<p><span style=\"font-weight: 400;\">Adoption of NVIDIA Confidential Computing at this scale reflects a broader shift in AI infrastructure: As AI experiences combine on-device and cloud-based processing for their tasks, there’s a need for high-performance, server-side inference while maintaining strong privacy and security guarantees. </span></p>\n<h2><b>How Confidential Computing Enforces Privacy and Trust</b></h2>\n<p><span style=\"font-weight: 400;\">NVIDIA Confidential Computing reflects NVIDIA’s commitment to </span><a target=\"_blank\" href=\"https://www.nvidia.com/en-us/ai-trust-center/trustworthy-ai/\"><span style=\"font-weight: 400;\">trustworthy AI</span></a><span style=\"font-weight: 400;\"> and includes these key capabilities:</span></p>\n<ul>\n<li style=\"font-weight: 400;\" aria-level=\"1\"><b>Hardware-rooted trust</b><span style=\"font-weight: 400;\">, helping establish that systems are running on genuine, untampered NVIDIA GPUs.</span></li>\n<li style=\"font-weight: 400;\" aria-level=\"1\"><b>Encrypted communication paths</b><span style=\"font-weight: 400;\">, helping protect data as it moves between components.</span></li>\n<li style=\"font-weight: 400;\" aria-level=\"1\"><b>Remote attestation</b><span style=\"font-weight: 400;\">, enabling software to verify the security state of the platform before releasing sensitive data.</span></li>\n<li style=\"font-weight: 400;\" aria-level=\"1\"><b>Support for accelerated AI inference and training</b><span style=\"font-weight: 400;\">, helping organizations run privacy-sensitive workloads without moving away from GPU performance.</span></li>\n</ul>\n<p><span style=\"font-weight: 400;\">These capabilities are increasingly relevant for AI services that need to process sensitive information while maintaining strong user privacy controls.</span></p>\n<p><i><span style=\"font-weight: 400;\">Learn more about </span></i><a target=\"_blank\" href=\"https://www.nvidia.com/en-us/data-center/solutions/confidential-computing/?ncid=no-ncid\"><i><span style=\"font-weight: 400;\">NVIDIA Confidential Computing</span></i></a><i><span style=\"font-weight: 400;\"> and </span></i><a target=\"_blank\" href=\"https://www.nvidia.com/en-us/solutions/ai/cybersecurity/\"><i><span style=\"font-weight: 400;\">NVIDIA AI cybersecurity</span></i></a><i><span style=\"font-weight: 400;\"> solutions. </span></i></p>\n",
+  "categories": [
+    "AI Infrastructure",
+    "Artificial Intelligence",
+    "Cybersecurity",
+    "Hardware",
+    "Inference",
+    "NVIDIA Blackwell"
+  ]
+}

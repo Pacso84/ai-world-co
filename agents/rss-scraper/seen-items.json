@@ -4,28 +4,41 @@
     "https://openai.com/index/chatgpt-memory-dreaming",
     "https://openai.com/index/biodefense-in-the-intelligence-age",
     "https://openai.com/index/introducing-new-capabilities-to-gpt-rosalind",
-    "https://openai.com/index/wasmer"
+    "https://openai.com/index/wasmer",
+    "https://openai.com/index/using-codex-to-simulate-black-holes",
+    "https://openai.com/index/openai-to-acquire-ona",
+    "https://openai.com/index/supporting-eu-trustworthy-ai-ecosystem",
+    "https://openai.com/index/bbva",
+    "https://openai.com/index/openai-on-oracle-cloud"
   ],
   "google-deepmind": [
     "https://deepmind.google/blog/fast-tracking-genetic-leads-to-reverse-cellular-aging/",
     "https://deepmind.google/blog/introducing-google-antigravity-2-0/",
     "https://deepmind.google/blog/were-launching-the-google-deepmind-accelerator-program-in-asia-pacific-to-tackle-environmental-risks/",
     "https://deepmind.google/blog/simulate-real-world-places-with-project-genie-and-street-view/",
-    "https://deepmind.google/blog/introducing-gemini-omni/"
+    "https://deepmind.google/blog/introducing-gemini-omni/",
+    "https://deepmind.google/blog/diffusiongemma-4x-faster-text-generation/",
+    "https://deepmind.google/blog/investing-in-multi-agent-ai-safety-research/",
+    "https://deepmind.google/blog/fluid-natural-voice-translation-with-gemini-35-live-translate/",
+    "https://deepmind.google/blog/introducing-gemma-4-12b-a-unified-encoder-free-multimodal-model/",
+    "https://deepmind.google/blog/powering-the-future-of-robotics-in-europe/"
   ],
   "google-ai-blog": [
     "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-may-2026/",
     "https://blog.google/products-and-platforms/products/search/thrifting-tips/",
     "https://blog.google/innovation-and-ai/technology/ai/io-2026-google-ai/",
     "https://blog.google/innovation-and-ai/technology/ai/io-2026-vibe-coded-quiz/",
-    "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-3-5-videos/"
+    "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-3-5-videos/",
+    "https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/virginia-community-investments/"
   ],
   "meta-ai": [
     "https://about.fb.com/news/2026/06/creator-assistant-more-languages-for-ai-translations-on-facebook/",
     "https://about.fb.com/news/2026/05/meta-ai-wearables-changing-the-game-for-disabled-people/",
     "https://about.fb.com/news/2026/05/which-meta-ai-glasses-are-right-for-you/",
     "https://about.fb.com/news/2026/04/infrastructure-explained-meta-data-centers/",
-    "https://about.fb.com/news/2026/04/powering-ai-strengthening-the-grid-space-solar-energy-and-long-duration-storage/"
+    "https://about.fb.com/news/2026/04/powering-ai-strengthening-the-grid-space-solar-energy-and-long-duration-storage/",
+    "https://about.fb.com/news/2026/06/what-is-compute-power-meta-ai-infrastructure/",
+    "https://about.fb.com/news/2026/06/meta-partners-with-reliance-on-ai-enabled-data-center-in-india/"
   ],
   "microsoft-ai": [
     "https://blogs.microsoft.com/ai/a-conversation-with-kevin-scott-whats-next-in-ai/",
@@ -95,7 +108,12 @@
     "https://huggingface.co/blog/nvidia/nemotron-3-5-content-safety",
     "https://huggingface.co/blog/ServiceNow-AI/eva-bench-data",
     "https://huggingface.co/blog/hf-cli-for-agents",
-    "https://huggingface.co/blog/Dharma-AI/direct-preference-optimization-beyond-chatbots"
+    "https://huggingface.co/blog/Dharma-AI/direct-preference-optimization-beyond-chatbots",
+    "https://huggingface.co/blog/torch-mlp-fusion",
+    "https://huggingface.co/blog/ServiceNow-AI/code-switching",
+    "https://huggingface.co/blog/CohereLabs/introducing-north-mini-code",
+    "https://huggingface.co/blog/mishig/spaces-agents-md",
+    "https://huggingface.co/blog/github-ci-hf-jobs"
   ],
   "hackernews-ai": [
     "https://www.theguardian.com/technology/2026/jun/07/billions-spent-hypothetical-returns-the-ai-boom-explained-with-six-charts",
@@ -103,5 +121,54 @@
     "https://chromewebstore.google.com/detail/codesage-pro-â-universal/cbkkghdedpjamcicmnfpihehmgjemmhi",
     "https://weidongzhou.wordpress.com/2026/06/06/deep-dive-into-llm-token-cost-blog-series-part-2-how-prompt-caching-actually-works/",
     "https://www.wmbriggs.com/post/61049/"
+  ],
+  "nvidia-blog": [
+    "https://blogs.nvidia.com/blog/geforce-now-thursday-summer-sale-2026/",
+    "https://blogs.nvidia.com/blog/halos-os-robotaxi-safety/",
+    "https://blogs.nvidia.com/blog/rtx-ai-garage-local-gemma-diffusion/",
+    "https://blogs.nvidia.com/blog/nvidia-confidential-computing-apple-private-cloud-compute/",
+    "https://blogs.nvidia.com/blog/uk-sovereign-ai-advancements/"
+  ],
+  "google-workspace": [
+    "http://workspaceupdates.googleblog.com/2026/06/google-vault-now-supports-retention-rules-and-litigation-holds-for-Gemini-app.html",
+    "http://workspaceupdates.googleblog.com/2026/06/google-meet-now-supports-sending-1080p-HD-video-from-ChromeOS-meeting-room-hardware.html",
+    "http://workspaceupdates.googleblog.com/2026/06/introducing-workspace-policy-api-mutate-endpoints-for-DLP.html",
+    "http://workspaceupdates.googleblog.com/2026/06/convert-rubric-files-and-images-into-Google-Classroom-rubrics-with-help-from-Gemini.html",
+    "http://workspaceupdates.googleblog.com/2026/06/request-lightweight-document-alignment-with approvals in Google Drive.html"
+  ],
+  "google-research": [
+    "https://research.google/blog/towards-passive-heart-health-monitoring-via-smartphone-camera/",
+    "https://research.google/blog/a-new-era-of-innovation-google-research-at-io-2026/",
+    "https://research.google/blog/new-framework-for-auditing-machine-unlearning/",
+    "https://research.google/blog/unlocking-dependable-responses-with-gemini-enterprise-agent-platforms-agentic-rag/",
+    "https://research.google/blog/the-next-chapter-in-flood-resilience-open-sourcing-googles-hydrology-framework/"
+  ],
+  "microsoft-research": [
+    "https://www.microsoft.com/en-us/research/blog/data-formulator-0-7-ai-powered-data-analytics-for-enterprise-data/",
+    "https://www.microsoft.com/en-us/research/blog/extending-human-intelligence-through-ai/",
+    "https://www.microsoft.com/en-us/research/blog/magenticlite-magenticbrain-fara1-5-an-agentic-experience-optimized-for-small-models/",
+    "https://www.microsoft.com/en-us/research/blog/vega-zero-knowledge-proofs-for-digital-identity-in-the-age-of-ai/",
+    "https://www.microsoft.com/en-us/research/blog/further-notes-on-our-recent-research-on-ai-delegation-and-long-horizon-reliability/"
+  ],
+  "github-ai": [
+    "https://github.blog/security/making-secret-scanning-more-trustworthy-reducing-false-positives-at-scale/",
+    "https://github.blog/ai-and-ml/github-copilot/give-github-copilot-cli-real-code-intelligence-with-language-servers/",
+    "https://github.blog/ai-and-ml/github-copilot/from-one-off-prompts-to-workflows-how-to-use-custom-agents-in-github-copilot-cli/",
+    "https://github.blog/ai-and-ml/github-copilot/github-recognized-as-a-leader-in-the-gartner-magic-quadrant-for-enterprise-ai-coding-agents-for-the-third-year-in-a-row/",
+    "https://github.blog/news-insights/product-news/take-your-local-github-sessions-anywhere/"
+  ],
+  "aws-ml": [
+    "https://aws.amazon.com/blogs/machine-learning/spot-trends-faster-sort-smarter-unlocking-sparklines-and-custom-sort-in-amazon-quick/",
+    "https://aws.amazon.com/blogs/machine-learning/extract-data-with-on-demand-and-batch-pipelines-dynamically/",
+    "https://aws.amazon.com/blogs/machine-learning/evaluate-ai-agents-systematically-with-agent-evalkit/",
+    "https://aws.amazon.com/blogs/machine-learning/optimize-blueprint-extraction-accuracy-in-amazon-bedrock-data-automation/",
+    "https://aws.amazon.com/blogs/machine-learning/how-frontier-teams-are-reinventing-ai-native-development/"
+  ],
+  "mistral-ai": [
+    "https://mistral.ai/news/ai-now-summit-2026/",
+    "https://mistral.ai/news/vibe-agent/",
+    "https://mistral.ai/news/search-toolkit/",
+    "https://mistral.ai/news/introducing-physics-ai-at-mistral/",
+    "https://mistral.ai/news/physics-ai-research/"
   ]
 }

@@ -1,7 +1,7 @@
 {
   "_meta": {
     "note": "AI World rétegzett memória (hot/warm/cold, salience decay).",
-    "updated": "2026-06-11T20:17:52.574Z"
+    "updated": "2026-06-11T20:34:23.538Z"
   },
   "items": [
     {
@@ -12,8 +12,8 @@
         "rejection"
       ],
       "created": "2026-06-10T19:08:58.085Z",
-      "lastAccessed": "2026-06-11T20:17:52.573Z",
-      "accessCount": 3,
+      "lastAccessed": "2026-06-11T20:32:28.438Z",
+      "accessCount": 7,
       "salience": 1,
       "tier": "hot"
     },
@@ -25,8 +25,50 @@
         "rejection"
       ],
       "created": "2026-06-10T19:08:58.088Z",
-      "lastAccessed": "2026-06-11T20:17:52.573Z",
-      "accessCount": 3,
+      "lastAccessed": "2026-06-11T20:32:28.438Z",
+      "accessCount": 7,
+      "salience": 1,
+      "tier": "hot"
+    },
+    {
+      "id": "m1781210009246763",
+      "scope": "iro",
+      "text": "AI response JSON parse error after retries: Expected ',' or '}' after property value in JSON at position 237 (line 12 column 17)",
+      "tags": [
+        "rejection",
+        "lesson"
+      ],
+      "created": "2026-06-11T20:33:29.246Z",
+      "lastAccessed": "2026-06-11T20:33:29.246Z",
+      "accessCount": 0,
+      "salience": 1,
+      "tier": "hot"
+    },
+    {
+      "id": "m1781210046836925",
+      "scope": "iro",
+      "text": "AI response JSON parse error after retries: Unterminated string in JSON at position 174 (line 9 column 15)",
+      "tags": [
+        "rejection",
+        "lesson"
+      ],
+      "created": "2026-06-11T20:34:06.836Z",
+      "lastAccessed": "2026-06-11T20:34:06.836Z",
+      "accessCount": 0,
+      "salience": 1,
+      "tier": "hot"
+    },
+    {
+      "id": "m1781210063538968",
+      "scope": "iro",
+      "text": "AI response JSON parse error after retries: Unterminated string in JSON at position 117 (line 7 column 13)",
+      "tags": [
+        "rejection",
+        "lesson"
+      ],
+      "created": "2026-06-11T20:34:23.538Z",
+      "lastAccessed": "2026-06-11T20:34:23.538Z",
+      "accessCount": 0,
       "salience": 1,
       "tier": "hot"
     }
