@@ -333,8 +333,8 @@ function main() {
   mkdirSync(OUT_ARTICLE_DIR, { recursive: true });
   mkdirSync(OUT_ASSETS_DIR, { recursive: true });
 
-  // Asset-ek másolása (CSS + JS)
-  for (const asset of ['style.css', 'app.js']) {
+  // Asset-ek másolása (CSS + JS + logó)
+  for (const asset of ['style.css', 'app.js', 'logo.svg']) {
     const src = join(ASSETS_SRC, asset);
     if (existsSync(src)) {
       copyFileSync(src, join(OUT_ASSETS_DIR, asset));
