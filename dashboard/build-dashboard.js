@@ -41,7 +41,8 @@ const MODEL_OPTIONS = [
   { provider: 'google', model: 'gemini-2.5-pro' },
   { provider: 'google', model: 'gemini-2.5-flash-image' },
   { provider: 'groq', model: 'llama-3.3-70b-versatile' },
-  { provider: 'cerebras', model: 'llama-3.3-70b' },
+  { provider: 'cerebras', model: 'gpt-oss-120b' },
+  { provider: 'cerebras', model: 'zai-glm-4.7' },
   { provider: 'mistral', model: 'mistral-small-latest' },
   { provider: 'mistral', model: 'mistral-large-latest' },
   { provider: 'openrouter', model: 'deepseek/deepseek-chat:free' }
@@ -203,7 +204,7 @@ function modelLabel(provider, model) {
     'claude-haiku-4-5': 'Claude Haiku 4.5', 'claude-sonnet-4-6': 'Claude Sonnet 4.6', 'claude-opus-4-8': 'Claude Opus 4.8',
     'gemini-flash-latest': 'Gemini Flash (latest)', 'gemini-2.5-flash': 'Gemini 2.5 Flash', 'gemini-2.5-pro': 'Gemini 2.5 Pro',
     'gemini-2.5-flash-image': 'Gemini Flash Image', 'llama-3.3-70b-versatile': 'Groq Llama 3.3 70B',
-    'llama-3.3-70b': 'Cerebras Llama 3.3 70B', 'deepseek/deepseek-chat:free': 'OpenRouter DeepSeek (free)',
+    'gpt-oss-120b': 'Cerebras GPT-OSS 120B', 'zai-glm-4.7': 'Cerebras GLM 4.7', 'deepseek/deepseek-chat:free': 'OpenRouter DeepSeek (free)',
     'mistral-small-latest': 'Mistral Small', 'mistral-large-latest': 'Mistral Large'
   };
   return map[model] || `${provider}/${model}`;

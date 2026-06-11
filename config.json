@@ -41,15 +41,15 @@
     },
     "iro": {
       "primary_model": {
-        "provider": "anthropic",
-        "model": "claude-sonnet-4-6"
+        "provider": "cerebras",
+        "model": "gpt-oss-120b"
       },
       "fallback_model": {
         "provider": "google",
         "model": "gemini-flash-latest"
       },
       "enabled": true,
-      "comment": "Cikkiráshoz Claude Sonnet (ha van kulcs). Fallback: gemini-flash-latest (INGYEN, mukodik kulcs nelkul is)."
+      "comment": "Cikkiras: Cerebras gpt-oss-120b (eros, INGYEN 1M token/nap). Fallback: gemini-flash-latest. (Ha lesz Claude kulcs, a Vezerlopulton atallithato.)"
     },
     "ellenorzo": {
       "primary_model": {

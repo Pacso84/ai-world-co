@@ -254,6 +254,8 @@ const PRICING = {
   // Groq (INGYENES a free tier-ig!)
   'llama-3.3-70b-versatile': { input: 0.59, output: 0.79 },
   // Cerebras / OpenRouter / Mistral (ingyenes tier-en ~0)
+  'gpt-oss-120b': { input: 0, output: 0 },
+  'zai-glm-4.7': { input: 0, output: 0 },
   'llama-3.3-70b': { input: 0, output: 0 },
   'deepseek/deepseek-chat:free': { input: 0, output: 0 },
   'mistral-small-latest': { input: 0.20, output: 0.60 },
@@ -330,7 +332,7 @@ const FREE_POOL = [
   { provider: 'google', model: 'gemini-2.0-flash' },
   { provider: 'google', model: 'gemini-2.5-pro' },
   { provider: 'groq', model: 'llama-3.3-70b-versatile' },
-  { provider: 'cerebras', model: 'llama-3.3-70b' },
+  { provider: 'cerebras', model: 'gpt-oss-120b' },
   { provider: 'mistral', model: 'mistral-small-latest' },
   { provider: 'openrouter', model: 'deepseek/deepseek-chat:free' }
 ];
