@@ -55,13 +55,13 @@ function parseMeta(markdown) {
   return meta;
 }
 
-// A brand vizuális stílusa a prompthoz (lágy, meleg, minimál)
-const STYLE = 'soft warm minimalist editorial illustration, cream and sage green palette, gentle shapes, flat modern, friendly, calm, no text, no words, no letters';
+// A brand vizuális stílusa a prompthoz — SZÍNES 3D RENDER
+const STYLE = 'vibrant colorful 3D render, glossy soft rounded shapes, playful modern tech illustration, soft studio lighting, smooth materials, clean minimal background, depth of field, high quality octane render, 4k, no text no words no letters';
 
 function buildPrompt(title, category) {
-  // A cím + kategória adja a témát, a STYLE a konzisztens megjelenést
+  // A cím adja a témát/tárgyat, a STYLE a konzisztens 3D megjelenést
   const topic = title.replace(/[:?!"']/g, '').slice(0, 90);
-  return `${topic}, ${category} concept, ${STYLE}`;
+  return `A 3D rendered scene representing: ${topic}. ${STYLE}`;
 }
 
 // ===================================================================
