@@ -366,7 +366,7 @@ body {
 
 /* ===== Support (támogatás) — navbar gomb, footer link, oldal ===== */
 .navbar__support {
-  padding: 6px 15px; border-radius: 100px;
+  padding: 8px 22px; border-radius: 100px;
   border: 1px solid var(--line-strong); background: transparent;
   color: var(--ink) !important; font-weight: 700; line-height: 1; white-space: nowrap;
   transition: background .2s ease, color .2s ease, border-color .2s ease;
