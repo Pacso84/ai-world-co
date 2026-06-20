@@ -20,16 +20,16 @@ const ROOT = join(__dirname, '..');
 const CONFIG = JSON.parse(readFileSync(join(ROOT, 'config.json'), 'utf-8'));
 
 const AGENT_META = {
-  'ceo':          { icon: '👔', name: 'CEO', role: 'Orchestrates the whole pipeline' },
-  'rss-scraper':  { icon: '🛰️', name: 'Scraper', role: 'Monitors official AI sources' },
-  'iro':          { icon: '✍️', name: 'Writer', role: 'Writes original articles' },
-  'ellenorzo':    { icon: '🔎', name: 'Reviewer', role: 'Quality & accuracy gate' },
-  'source-scout': { icon: '🔭', name: 'Source Scout', role: 'Discovers new official sources' },
-  'designer':     { icon: '🎨', name: 'Designer', role: 'Generates article cover images' },
-  'analyst':      { icon: '📊', name: 'Analyst', role: 'Learns from results, suggests improvements' },
-  'seo':          { icon: '🔍', name: 'SEO', role: 'Optimises articles for search rankings' },
-  'api-expert':   { icon: '🧠', name: 'API Expert', role: 'Assigns the best available model to each agent' },
-  'publisher':    { icon: '🚀', name: 'Publisher', role: 'Editor-in-chief check + builds & deploys' }
+  'ceo':          { icon: '👔', name: 'CEO', role: 'A teljes folyamatot vezényli' },
+  'rss-scraper':  { icon: '🛰️', name: 'Gyűjtő', role: 'Hivatalos AI-forrásokat figyel' },
+  'iro':          { icon: '✍️', name: 'Író', role: 'Eredeti cikkeket ír' },
+  'ellenorzo':    { icon: '🔎', name: 'Ellenőrző', role: 'Minőségi és pontossági kapu' },
+  'source-scout': { icon: '🔭', name: 'Forrás-kutató', role: 'Új hivatalos forrásokat keres' },
+  'designer':     { icon: '🎨', name: 'Tervező', role: 'Cikk-borítóképeket készít' },
+  'analyst':      { icon: '📊', name: 'Elemző', role: 'Tanul az eredményekből, javaslatokat tesz' },
+  'seo':          { icon: '🔍', name: 'SEO', role: 'Keresőoptimalizálja a cikkeket' },
+  'api-expert':   { icon: '🧠', name: 'API-szakértő', role: 'A legjobb elérhető modellt rendeli minden agenthez' },
+  'publisher':    { icon: '🚀', name: 'Publikáló', role: 'Főszerkesztői ellenőrzés + build és közzététel' }
 };
 const TODAY = new Date().toISOString().slice(0, 10);
 
@@ -176,10 +176,10 @@ function summariseLog(filename, log) {
   const when = log.finished_at || log.started_at || '';
   const time = when ? new Date(when).toLocaleString('en-AU', { dateStyle: 'short', timeStyle: 'short' }) : '';
   let icon = '•', text = filename;
-  if (filename.startsWith('scrape_')) { icon = '🛰️'; text = `Scraper: ${log.items_saved ?? '?'} relevant saved`; }
-  else if (filename.startsWith('writer_')) { icon = '✍️'; text = `Writer: ${log.articles_written ?? '?'} written`; }
-  else if (filename.startsWith('reviewer_')) { icon = '🔎'; text = `Reviewer: ${log.passed ?? '?'} published, ${log.failed ?? '?'} rejected`; }
-  else if (filename.startsWith('ceo_')) { icon = '👔'; text = `CEO: pipeline run`; }
+  if (filename.startsWith('scrape_')) { icon = '🛰️'; text = `Gyűjtő: ${log.items_saved ?? '?'} releváns mentve`; }
+  else if (filename.startsWith('writer_')) { icon = '✍️'; text = `Író: ${log.articles_written ?? '?'} cikk megírva`; }
+  else if (filename.startsWith('reviewer_')) { icon = '🔎'; text = `Ellenőrző: ${log.passed ?? '?'} publikálva, ${log.failed ?? '?'} elutasítva`; }
+  else if (filename.startsWith('ceo_')) { icon = '👔'; text = `CEO: folyamat lefutott`; }
   return { icon, text, time };
 }
 
@@ -192,20 +192,20 @@ const catColor = { 'ai-company-official': '#5f8a76', community: '#5b7a9d', 'tech
 function panelOverview(d) {
   const stat = (n, l, s = '') => `<div class="stat"><div class="stat__n">${n}</div><div class="stat__l">${l}</div>${s ? `<div class="stat__s">${s}</div>` : ''}</div>`;
   return `<div class="stats">
-    ${stat(d.agents.filter(a => a.enabled).length + '/' + d.agents.length, 'Agents', 'active / total')}
-    ${stat(d.published, 'Published', 'articles live')}
-    ${stat(d.sources.length, 'Sources', 'official only')}
-    ${stat('$' + d.costTotal.toFixed(3), 'AI cost', `$${d.costToday.toFixed(3)} today`)}
-    ${stat(d.memory.total, 'Memories', `${d.memory.hot}🔥 ${d.memory.warm}🌤️ ${d.memory.cold}❄️`)}
+    ${stat(d.agents.filter(a => a.enabled).length + '/' + d.agents.length, 'Agentek', 'aktív / összes')}
+    ${stat(d.published, 'Publikálva', 'élő cikk')}
+    ${stat(d.sources.length, 'Források', 'csak hivatalos')}
+    ${stat('$' + d.costTotal.toFixed(3), 'AI költség', `$${d.costToday.toFixed(3)} ma`)}
+    ${stat(d.memory.total, 'Emlékek', `${d.memory.hot}🔥 ${d.memory.warm}🌤️ ${d.memory.cold}❄️`)}
   </div>
   <div class="panel">
-    <div class="panel__h">📦 Content pipeline</div>
+    <div class="panel__h">📦 Tartalom-folyamat</div>
     <div class="pipe">
-      <div class="pstep"><div class="pn">${d.draftsScraper}</div><div class="pl">Topics found</div></div><span class="parr">→</span>
-      <div class="pstep"><div class="pn">${d.draftsWriter}</div><div class="pl">Awaiting review</div></div><span class="parr">→</span>
-      <div class="pstep"><div class="pn">${d.published}</div><div class="pl">Published</div></div>
+      <div class="pstep"><div class="pn">${d.draftsScraper}</div><div class="pl">Talált téma</div></div><span class="parr">→</span>
+      <div class="pstep"><div class="pn">${d.draftsWriter}</div><div class="pl">Ellenőrzésre vár</div></div><span class="parr">→</span>
+      <div class="pstep"><div class="pn">${d.published}</div><div class="pl">Publikálva</div></div>
     </div>
-    <div class="muted" style="margin-top:8px">${d.rejected} rejected (sent back to learn from)</div>
+    <div class="muted" style="margin-top:8px">${d.rejected} elutasítva (visszaküldve tanulásra)</div>
   </div>`;
 }
 
@@ -226,36 +226,36 @@ function panelTeam(d) {
 
   const modelSelectOptions = MODEL_OPTIONS.map(o => `<option value="${o.provider}|${o.model}">${modelLabel(o.provider, o.model)}</option>`).join('');
 
-  return `<div class="panel"><div class="panel__h">🤖 The team — ${d.agents.length} agents</div>
-    <div class="muted" style="margin-bottom:12px">Choose each agent's model version (what your API keys allow) and toggle it on/off. Saves via Control Panel server.</div>
+  return `<div class="panel"><div class="panel__h">🤖 A csapat — ${d.agents.length} agent</div>
+    <div class="muted" style="margin-bottom:12px">Állítsd be agentenként a modell-verziót (amit az API-kulcsaid engednek), és kapcsold be/ki. Mentés a Vezérlőpult-szerveren keresztül.</div>
     ${d.agents.map(a => `<div class="agent" data-agent="${a.id}">
       <div class="agent__i">${a.icon}</div>
       <div class="agent__info">
-        <div class="agent__n">${a.name} ${a.custom ? '<span class="st cust">custom</span>' : ''}</div>
+        <div class="agent__n">${a.name} ${a.custom ? '<span class="st cust">saját</span>' : ''}</div>
         <div class="agent__r">${a.role}</div>
       </div>
       <div class="agent__ctrl">
         ${a.deterministic
-          ? `<span class="agent__det">deterministic (no AI)</span>`
+          ? `<span class="agent__det">determinisztikus (nincs AI)</span>`
           : `<select class="agent__model">${opts(a.provider, a.model)}</select>`}
-        <label class="tgl"><input type="checkbox" class="agent__en" ${a.enabled ? 'checked' : ''}><span>on</span></label>
-        ${a.deterministic ? '' : `<button class="agent__save">Save</button>`}
+        <label class="tgl"><input type="checkbox" class="agent__en" ${a.enabled ? 'checked' : ''}><span>be</span></label>
+        ${a.deterministic ? '' : `<button class="agent__save">Mentés</button>`}
       </div>
     </div>`).join('')}
     <div id="agentMsg" class="keymsg"></div>
   </div>
-  <div class="panel"><div class="panel__h">➕ Create a new agent</div>
-    <div class="muted" style="margin-bottom:12px">Give it a name, an avatar, a job, and instructions (its "personality"). It joins the team and can be run with: <code>node agents/custom-runner.js &lt;id&gt; "input"</code></div>
+  <div class="panel"><div class="panel__h">➕ Új agent létrehozása</div>
+    <div class="muted" style="margin-bottom:12px">Adj neki nevet, ikont, feladatot és utasításokat (a „személyiségét"). Csatlakozik a csapathoz, és így futtatható: <code>node agents/custom-runner.js &lt;id&gt; "input"</code></div>
     <div class="newform">
       <div class="nf__row">
-        <input id="naId" placeholder="id (e.g. translator)" maxlength="28">
-        <input id="naIcon" placeholder="icon 🌐" maxlength="4" style="max-width:70px">
-        <input id="naName" placeholder="Name (e.g. Translator)">
+        <input id="naId" placeholder="id (pl. forditó)" maxlength="28">
+        <input id="naIcon" placeholder="ikon 🌐" maxlength="4" style="max-width:70px">
+        <input id="naName" placeholder="Név (pl. Fordító)">
       </div>
-      <input id="naRole" placeholder="Short role (e.g. Translates articles to other languages)">
+      <input id="naRole" placeholder="Rövid szerep (pl. Cikkeket fordít más nyelvekre)">
       <select id="naModel">${modelSelectOptions}</select>
-      <textarea id="naInstr" rows="4" placeholder="Instructions (the agent's job & personality). E.g. 'You translate AI articles into clear, friendly Hungarian for everyday readers…'"></textarea>
-      <button id="naCreate">Create agent</button>
+      <textarea id="naInstr" rows="4" placeholder="Utasítások (az agent feladata és személyisége). Pl. „Te AI-cikkeket fordítasz világos, barátságos magyarra a hétköznapi olvasóknak…"></textarea>
+      <button id="naCreate">Agent létrehozása</button>
       <div id="naMsg" class="keymsg"></div>
     </div>
   </div>`;
@@ -263,19 +263,19 @@ function panelTeam(d) {
 
 function panelMemory(d) {
   return `<div class="stats">
-    <div class="stat"><div class="stat__n">${d.memory.hot}</div><div class="stat__l">🔥 Hot</div></div>
-    <div class="stat"><div class="stat__n">${d.memory.warm}</div><div class="stat__l">🌤️ Warm</div></div>
-    <div class="stat"><div class="stat__n">${d.memory.cold}</div><div class="stat__l">❄️ Cold</div></div>
-    <div class="stat"><div class="stat__n">${d.memory.total}</div><div class="stat__l">Total</div></div>
+    <div class="stat"><div class="stat__n">${d.memory.hot}</div><div class="stat__l">🔥 Forró</div></div>
+    <div class="stat"><div class="stat__n">${d.memory.warm}</div><div class="stat__l">🌤️ Langyos</div></div>
+    <div class="stat"><div class="stat__n">${d.memory.cold}</div><div class="stat__l">❄️ Hideg</div></div>
+    <div class="stat"><div class="stat__n">${d.memory.total}</div><div class="stat__l">Összes</div></div>
   </div>
-  <div class="panel"><div class="panel__h">🧠 Memories (by salience)</div>
+  <div class="panel"><div class="panel__h">🧠 Emlékek (fontosság szerint)</div>
     ${d.memories.length ? d.memories.map(m => `<div class="mem">${tierBadge(m.tier)}<span class="mem__t">${esc(m.text)}</span><span class="mem__s">${m.salience}%</span></div>`).join('')
-      : '<div class="muted">No memories yet. They appear as the Reviewer learns from rejections.</div>'}
+      : '<div class="muted">Még nincs emlék. Akkor jelennek meg, ahogy az Ellenőrző tanul az elutasításokból.</div>'}
   </div>`;
 }
 
 function panelSources(d) {
-  return `<div class="panel"><div class="panel__h">📚 Official sources — ${d.sources.length}</div>
+  return `<div class="panel"><div class="panel__h">📚 Hivatalos források — ${d.sources.length}</div>
     ${d.sources.map(s => `<div class="src"><span class="dotc" style="background:${catColor[s.category] || '#999'}"></span>
       <span class="src__n">${esc(s.name)}</span><span class="src__c">${s.country || ''}</span></div>`).join('')}
   </div>`;
@@ -283,25 +283,25 @@ function panelSources(d) {
 
 function panelContent(d) {
   return `<div class="stats">
-    <div class="stat"><div class="stat__n">${d.draftsScraper}</div><div class="stat__l">Topics</div></div>
-    <div class="stat"><div class="stat__n">${d.draftsWriter}</div><div class="stat__l">Awaiting review</div></div>
-    <div class="stat"><div class="stat__n">${d.published}</div><div class="stat__l">Published</div></div>
-    <div class="stat"><div class="stat__n">${d.rejected}</div><div class="stat__l">Rejected</div></div>
+    <div class="stat"><div class="stat__n">${d.draftsScraper}</div><div class="stat__l">Témák</div></div>
+    <div class="stat"><div class="stat__n">${d.draftsWriter}</div><div class="stat__l">Ellenőrzésre vár</div></div>
+    <div class="stat"><div class="stat__n">${d.published}</div><div class="stat__l">Publikálva</div></div>
+    <div class="stat"><div class="stat__n">${d.rejected}</div><div class="stat__l">Elutasítva</div></div>
   </div>
-  <div class="panel"><div class="panel__h">📦 Flow</div>
+  <div class="panel"><div class="panel__h">📦 Folyamat</div>
   <div class="pipe">
-    <div class="pstep"><div class="pn">🛰️</div><div class="pl">Scrape</div></div><span class="parr">→</span>
-    <div class="pstep"><div class="pn">✍️</div><div class="pl">Write</div></div><span class="parr">→</span>
-    <div class="pstep"><div class="pn">🔎</div><div class="pl">Review</div></div><span class="parr">→</span>
-    <div class="pstep"><div class="pn">🎨</div><div class="pl">Design</div></div><span class="parr">→</span>
-    <div class="pstep"><div class="pn">🚀</div><div class="pl">Publish</div></div>
+    <div class="pstep"><div class="pn">🛰️</div><div class="pl">Gyűjtés</div></div><span class="parr">→</span>
+    <div class="pstep"><div class="pn">✍️</div><div class="pl">Írás</div></div><span class="parr">→</span>
+    <div class="pstep"><div class="pn">🔎</div><div class="pl">Ellenőrzés</div></div><span class="parr">→</span>
+    <div class="pstep"><div class="pn">🎨</div><div class="pl">Tervezés</div></div><span class="parr">→</span>
+    <div class="pstep"><div class="pn">🚀</div><div class="pl">Közzététel</div></div>
   </div></div>`;
 }
 
 function panelLogs(d) {
-  return `<div class="panel"><div class="panel__h">⚡ Recent activity</div>
+  return `<div class="panel"><div class="panel__h">⚡ Legutóbbi tevékenység</div>
     ${d.activity.length ? d.activity.map(x => `<div class="act"><span class="act__i">${x.icon}</span><span class="act__t">${x.text}</span><span class="act__time">${x.time}</span></div>`).join('')
-      : '<div class="muted">No activity yet. Run the pipeline.</div>'}
+      : '<div class="muted">Még nincs tevékenység. Futtasd a folyamatot.</div>'}
   </div>`;
 }
 
@@ -309,65 +309,65 @@ function panelSettings(d) {
   const row = (k, v) => `<div class="setrow"><span class="setk">${k}</span><span class="setv">${v}</span></div>`;
   const keyRows = d.keys.map(k => `<div class="keyrow">
       <span class="key__dot ${k.set ? 'on' : 'off'}"></span>
-      <span class="key__l">${k.label} ${k.free ? '<span class="freeb">free</span>' : ''}</span>
-      <span class="key__v">${k.set ? k.masked : '<span class="muted">not set</span>'}</span>
+      <span class="key__l">${k.label} ${k.free ? '<span class="freeb">ingyen</span>' : ''}</span>
+      <span class="key__v">${k.set ? k.masked : '<span class="muted">nincs beállítva</span>'}</span>
     </div>`).join('');
   // dedup env szerint + "Egyéb (saját)" opció a listán kívüli kulcsokhoz
   const seenEnv = new Set();
   const keyOptions = d.keys.filter(k => { if (seenEnv.has(k.env)) return false; seenEnv.add(k.env); return true; })
     .map(k => `<option value="${k.env}">${k.label}</option>`).join('')
-    + `<option value="__custom__">➕ Other (type a custom name)…</option>`;
+    + `<option value="__custom__">➕ Egyéb (saját név megadása)…</option>`;
 
   const exhaustedHtml = d.exhausted.length
-    ? `<div class="panel"><div class="panel__h">🚦 Quota status — auto-rerouting</div>
-        <div class="muted" style="margin-bottom:8px">These models hit their limit today — the boss automatically routes around them:</div>
-        ${d.exhausted.map(e => `<div class="keyrow"><span class="key__dot off"></span><span class="key__l">${e.model}</span><span class="key__v">${e.daily ? 'until tomorrow' : 'few minutes'}</span></div>`).join('')}
+    ? `<div class="panel"><div class="panel__h">🚦 Kvóta-állapot — automatikus átirányítás</div>
+        <div class="muted" style="margin-bottom:8px">Ezek a modellek ma elérték a limitjüket — a főnök automatikusan kikerüli őket:</div>
+        ${d.exhausted.map(e => `<div class="keyrow"><span class="key__dot off"></span><span class="key__l">${e.model}</span><span class="key__v">${e.daily ? 'holnapig' : 'pár perc'}</span></div>`).join('')}
       </div>`
-    : `<div class="panel"><div class="panel__h">🚦 Quota status</div><div class="muted">All models have quota available. ✅</div></div>`;
+    : `<div class="panel"><div class="panel__h">🚦 Kvóta-állapot</div><div class="muted">Minden modellnek van szabad kvótája. ✅</div></div>`;
 
-  return exhaustedHtml + `<div class="panel"><div class="panel__h">🔑 API keys</div>
+  return exhaustedHtml + `<div class="panel"><div class="panel__h">🔑 API-kulcsok</div>
     ${keyRows}
     <div class="keyform" id="keyform">
-      <div class="muted" style="margin:14px 0 8px">Add or update a key (saved locally to .env):</div>
+      <div class="muted" style="margin:14px 0 8px">Kulcs hozzáadása vagy frissítése (helyben mentve a .env-be):</div>
       <div class="keyform__row">
         <select id="keyProvider">${keyOptions}</select>
-        <input id="keyCustomName" placeholder="ENV_NAME_API_KEY" style="display:none;text-transform:uppercase">
-        <input id="keyValue" type="password" placeholder="paste API key…" autocomplete="off">
-        <button id="keySave">Save</button>
+        <input id="keyCustomName" placeholder="ENV_NEV_API_KEY" style="display:none;text-transform:uppercase">
+        <input id="keyValue" type="password" placeholder="illeszd be az API-kulcsot…" autocomplete="off">
+        <button id="keySave">Mentés</button>
       </div>
       <div id="keyMsg" class="keymsg"></div>
-      <div class="muted" style="margin-top:8px;font-size:12px">⚠️ Only works via the Control Panel server (node dashboard/server.js). Keys stay on your computer.</div>
+      <div class="muted" style="margin-top:8px;font-size:12px">⚠️ Csak a Vezérlőpult-szerveren át működik (node dashboard/server.js). A kulcsok a gépeden maradnak.</div>
     </div>
   </div>
-  <div class="panel"><div class="panel__h">⚙️ System</div>
-    ${row('Deploy method', d.deploy + (d.deploy === 'none' ? ' (local build only — not live yet)' : ''))}
-    ${row('Max articles / day', d.limits.daily_articles_max ?? '?')}
-    ${row('Max AI cost / day', '$' + (d.limits.daily_api_cost_usd_max ?? '?'))}
-    ${row('Monthly budget target', '$' + (d.limits.monthly_budget_usd_target ?? '?'))}
-    ${row('Boss model (CEO)', d.agents.find(a => a.id === 'ceo')?.model || '?')}
+  <div class="panel"><div class="panel__h">⚙️ Rendszer</div>
+    ${row('Közzététel módja', d.deploy + (d.deploy === 'none' ? ' (csak helyi build — még nem éles)' : ''))}
+    ${row('Max cikk / nap', d.limits.daily_articles_max ?? '?')}
+    ${row('Max AI költség / nap', '$' + (d.limits.daily_api_cost_usd_max ?? '?'))}
+    ${row('Havi költségkeret-cél', '$' + (d.limits.monthly_budget_usd_target ?? '?'))}
+    ${row('Főnök modellje (CEO)', d.agents.find(a => a.id === 'ceo')?.model || '?')}
   </div>`;
 }
 
 function panelTasks(d) {
   const col = (title, items, cls) => `<div class="kcol"><div class="kcol__h ${cls}">${title} <span>${items.length}</span></div>
     ${items.length ? items.map(t => `<div class="kcard">${esc(t.title)}${t.agent ? `<span class="kcard__a">${t.agent}</span>` : ''}</div>`).join('') : '<div class="muted" style="font-size:12px">—</div>'}</div>`;
-  return `<div class="panel"><div class="panel__h">📋 Task board (Kanban)</div>
+  return `<div class="panel"><div class="panel__h">📋 Feladattábla (Kanban)</div>
     <div class="kanban">
-      ${col('To do', d.tasks.todo, 'k-todo')}
-      ${col('Doing', d.tasks.doing, 'k-doing')}
-      ${col('Done', d.tasks.done, 'k-done')}
+      ${col('Teendő', d.tasks.todo, 'k-todo')}
+      ${col('Folyamatban', d.tasks.doing, 'k-doing')}
+      ${col('Kész', d.tasks.done, 'k-done')}
     </div>
   </div>`;
 }
 
 function panelNotifications(d) {
   const icon = l => ({ info: 'ℹ️', success: '✅', warn: '⚠️', alert: '🚨' }[l] || '•');
-  return `<div class="panel"><div class="panel__h">🔔 Notifications (heartbeat)</div>
-    <div class="muted" style="margin-bottom:10px">🚨 alerts are the "loud" ones — these go to Telegram once it's connected.</div>
+  return `<div class="panel"><div class="panel__h">🔔 Értesítések (heartbeat)</div>
+    <div class="muted" style="margin-bottom:10px">🚨 A riasztások a „hangos" értesítések — ezek a Telegramra mennek, amint be lesz kötve.</div>
     ${d.notifications.length ? d.notifications.map(n => `<div class="noti noti--${n.level}">
       <span class="noti__i">${icon(n.level)}</span><span class="noti__t">${esc(n.text)}</span>
-      <span class="noti__time">${new Date(n.at).toLocaleString('en-AU', { dateStyle: 'short', timeStyle: 'short' })}</span></div>`).join('')
-      : '<div class="muted">No notifications yet.</div>'}
+      <span class="noti__time">${new Date(n.at).toLocaleString('hu-HU', { dateStyle: 'short', timeStyle: 'short' })}</span></div>`).join('')
+      : '<div class="muted">Még nincs értesítés.</div>'}
   </div>`;
 }
 
@@ -380,7 +380,7 @@ function panelSkills(d) {
   const groupHtml = order.map(scope => {
     const meta = AGENT_META[scope] || { icon: scope === 'shared' ? '🌐' : '🤖', name: scope };
     const items = groups[scope].map(s => {
-      const off = s.enabled === false ? ' <span class="skill__off">(off)</span>' : '';
+      const off = s.enabled === false ? ' <span class="skill__off">(ki)</span>' : '';
       const uses = s.uses ? ` <span class="skill__sc">${s.uses}×</span>` : '';
       return `<details class="skill"><summary>${esc(s.title)}${uses}${off}</summary>
         <div class="skill__body">${esc(s.recipe).slice(0, 600)}</div></details>`;
@@ -388,9 +388,9 @@ function panelSkills(d) {
     return `<div class="skillgrp"><div class="skillgrp__h">${meta.icon} ${esc(meta.name)} <span class="skill__sc">${groups[scope].length}</span></div>${items}</div>`;
   }).join('');
 
-  return `<div class="panel"><div class="panel__h">🛠️ Skill Factory — ${d.skills.length} skills, ${order.length} agent</div>
-    <div class="muted" style="margin-bottom:12px">Each agent follows its own skills (recipes). Edit anytime in <code>skills/skills.json</code> (or add to <code>skills/default-skills.json</code> and re-seed). The Analyst also distils new ones from experience.</div>
-    ${d.skills.length ? groupHtml : '<div class="muted">No skills yet. Run <code>node core/seed-skills.js</code>.</div>'}
+  return `<div class="panel"><div class="panel__h">🛠️ Készség-gyár — ${d.skills.length} készség, ${order.length} agent</div>
+    <div class="muted" style="margin-bottom:12px">Minden agent a saját készségeit (receptjeit) követi. Bármikor szerkeszthető a <code>skills/skills.json</code>-ban (vagy vegyél fel újat a <code>skills/default-skills.json</code>-ba és seedelj újra). Az Elemző tapasztalatból is gyárt újakat.</div>
+    ${d.skills.length ? groupHtml : '<div class="muted">Még nincs készség. Futtasd: <code>node core/seed-skills.js</code>.</div>'}
   </div>`;
 }
 
@@ -406,7 +406,7 @@ function agentChip(id) {
 
 function panelOrg(d) {
   const org = d.org;
-  if (!org) return `<div class="panel"><div class="panel__h">🏢 Org chart</div><div class="muted">core/org.json not found.</div></div>`;
+  if (!org) return `<div class="panel"><div class="panel__h">🏢 Szervezet</div><div class="muted">core/org.json nem található.</div></div>`;
 
   const depts = org.hierarchy?.departments || {};
   const deptCards = Object.entries(depts).map(([key, dep]) => {
@@ -414,9 +414,9 @@ function panelOrg(d) {
     const members = (dep.members || []).filter(m => m !== lead);
     return `<div class="odept">
       <div class="odept__h">${esc(dep.label || key)}</div>
-      <div class="orole">👑 Lead</div>
+      <div class="orole">👑 Vezető</div>
       <div class="orow">${agentChip(lead)}</div>
-      <div class="orole">Team</div>
+      <div class="orole">Csapat</div>
       <div class="orow">${members.map(agentChip).join('') || '<span class="muted">—</span>'}</div>
     </div>`;
   }).join('');
@@ -442,22 +442,22 @@ function panelOrg(d) {
      </div>${i < wf.steps.length - 1 ? '<div class="oflowarr">↓</div>' : ''}`).join('') : '';
 
   return `
-  <div class="panel"><div class="panel__h">🏢 Hierarchy — who reports to whom</div>
-    <div class="oceo">${agentChip('ceo')}<span class="oceo__r">reports to: 🧑 ${esc(org.hierarchy?.ceo?.reports_to || 'owner')}</span></div>
-    <div class="oceo__arr">manages ↓</div>
+  <div class="panel"><div class="panel__h">🏢 Hierarchia — ki kinek jelent</div>
+    <div class="oceo">${agentChip('ceo')}<span class="oceo__r">jelent neki: 🧑 ${esc(org.hierarchy?.ceo?.reports_to || 'tulajdonos')}</span></div>
+    <div class="oceo__arr">irányítja ↓</div>
     <div class="odepts">${deptCards}</div>
   </div>
 
-  <div class="panel"><div class="panel__h">⚖️ Decision rights — who decides what</div>
+  <div class="panel"><div class="panel__h">⚖️ Döntési jogkörök — ki mit dönt</div>
     ${decisions || '<div class="muted">—</div>'}
   </div>
 
-  <div class="panel"><div class="panel__h">🔁 Feedback loops — handing work back</div>
-    <div class="muted" style="margin-bottom:12px">If something isn't good enough, it goes back — it's a team, not a one-way conveyor.</div>
+  <div class="panel"><div class="panel__h">🔁 Visszacsatolások — a munka visszaadása</div>
+    <div class="muted" style="margin-bottom:12px">Ha valami nem elég jó, visszamegy — ez csapat, nem egyirányú futószalag.</div>
     ${loops || '<div class="muted">—</div>'}
   </div>
 
-  <div class="panel"><div class="panel__h">📋 Daily-news workflow — ${esc(wf?.label || '')}</div>
+  <div class="panel"><div class="panel__h">📋 Napi hír-folyamat — ${esc(wf?.label || '')}</div>
     <div class="oflow">${flow}</div>
   </div>`;
 }
@@ -467,17 +467,17 @@ function panelOrg(d) {
 // ===================================================================
 function render(d) {
   const NAV = [
-    ['overview', '📊', 'Overview'],
-    ['team', '🤖', 'Team'],
-    ['org', '🏢', 'Org chart'],
-    ['tasks', '📋', 'Tasks'],
-    ['notifications', '🔔', 'Notifications'],
-    ['memory', '🧠', 'Memory'],
-    ['skills', '🛠️', 'Skills'],
-    ['sources', '📚', 'Sources'],
-    ['content', '📦', 'Content'],
-    ['logs', '⚡', 'Activity'],
-    ['settings', '⚙️', 'Settings']
+    ['overview', '📊', 'Áttekintés'],
+    ['team', '🤖', 'Csapat'],
+    ['org', '🏢', 'Szervezet'],
+    ['tasks', '📋', 'Feladatok'],
+    ['notifications', '🔔', 'Értesítések'],
+    ['memory', '🧠', 'Memória'],
+    ['skills', '🛠️', 'Készségek'],
+    ['sources', '📚', 'Források'],
+    ['content', '📦', 'Tartalom'],
+    ['logs', '⚡', 'Tevékenység'],
+    ['settings', '⚙️', 'Beállítások']
   ];
   const panels = {
     overview: panelOverview(d), team: panelTeam(d), org: panelOrg(d), tasks: panelTasks(d),
@@ -489,9 +489,9 @@ function render(d) {
   const panelHtml = NAV.map(([id], i) =>
     `<section class="pane ${i === 0 ? 'pane--active' : ''}" data-pane="${id}">${panels[id]}</section>`).join('');
 
-  return `<!DOCTYPE html><html lang="en"><head>
+  return `<!DOCTYPE html><html lang="hu"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI World — Mission Control</title>
+<title>AI World — Irányítóközpont</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400..900&family=Hanken+Grotesk:wght@400..700&display=swap" rel="stylesheet">
 <style>
@@ -609,15 +609,15 @@ body{background:#e7e0d2;color:var(--ink);font-family:'Hanken Grotesk',sans-serif
 </style></head>
 <body>
 <div class="win">
-  <div class="bar"><span class="d r"></span><span class="d y"></span><span class="d g"></span><span class="bar__t">AI World Co. · Mission Control</span></div>
+  <div class="bar"><span class="d r"></span><span class="d y"></span><span class="d g"></span><span class="bar__t">AI World Co. · Irányítóközpont</span></div>
   <div class="app">
     <aside class="side">
       <div class="brand">AI WORLD<span class="a">.</span></div>
       ${nav}
     </aside>
     <main class="main">
-      <div class="h1">Mission Control</div>
-      <div class="sub">Generated ${new Date().toLocaleString('en-AU', { dateStyle: 'medium', timeStyle: 'short' })}</div>
+      <div class="h1">Irányítóközpont</div>
+      <div class="sub">Generálva: ${new Date().toLocaleString('hu-HU', { dateStyle: 'medium', timeStyle: 'short' })}</div>
       ${panelHtml}
     </main>
   </div>
@@ -641,15 +641,15 @@ body{background:#e7e0d2;color:var(--ink);font-family:'Hanken Grotesk',sans-serif
     if(env==='__custom__'){ env=(keyCustom.value||'').trim().toUpperCase().replace(/[^A-Z0-9_]/g,'_'); }
     var val=document.getElementById('keyValue').value.trim();
     var msg=document.getElementById('keyMsg');
-    if(env==='__custom__'||!env){msg.className='keymsg err';msg.textContent='Type a custom key name (e.g. MISTRAL_API_KEY).';return;}
-    if(!val){msg.className='keymsg err';msg.textContent='Paste a key first.';return;}
-    msg.className='keymsg';msg.textContent='Saving…';
+    if(env==='__custom__'||!env){msg.className='keymsg err';msg.textContent='Adj meg egy saját kulcs-nevet (pl. MISTRAL_API_KEY).';return;}
+    if(!val){msg.className='keymsg err';msg.textContent='Előbb illeszd be a kulcsot.';return;}
+    msg.className='keymsg';msg.textContent='Mentés…';
     try{
       var r=await fetch('/api/key',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({env:env,value:val})});
       var j=await r.json();
-      if(j.ok){msg.className='keymsg ok';msg.textContent='✅ Saved '+env+'. Reload to see status.';document.getElementById('keyValue').value='';}
-      else{msg.className='keymsg err';msg.textContent='❌ '+(j.error||'failed');}
-    }catch(e){msg.className='keymsg err';msg.textContent='❌ Not running via Control Panel server. Start: node dashboard/server.js';}
+      if(j.ok){msg.className='keymsg ok';msg.textContent='✅ Mentve: '+env+'. Töltsd újra az állapothoz.';document.getElementById('keyValue').value='';}
+      else{msg.className='keymsg err';msg.textContent='❌ '+(j.error||'sikertelen');}
+    }catch(e){msg.className='keymsg err';msg.textContent='❌ Nem a Vezérlőpult-szerveren fut. Indítsd: node dashboard/server.js';}
   });}
   // Agent beállítás mentés (modell + on/off)
   document.querySelectorAll('.agent').forEach(function(row){
@@ -661,13 +661,13 @@ body{background:#e7e0d2;color:var(--ink);font-family:'Hanken Grotesk',sans-serif
     async function save(){
       var payload={id:id, enabled:enChk.checked};
       if(modelSel){var pm=modelSel.value.split('|');payload.provider=pm[0];payload.model=pm[1];}
-      msg.className='keymsg';msg.textContent='Saving '+id+'…';
+      msg.className='keymsg';msg.textContent='Mentés: '+id+'…';
       try{
         var r=await fetch('/api/agent',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
         var j=await r.json();
-        if(j.ok){msg.className='keymsg ok';msg.textContent='✅ Saved '+id+' ('+(payload.model||'on/off')+')';}
-        else{msg.className='keymsg err';msg.textContent='❌ '+(j.error||'failed');}
-      }catch(e){msg.className='keymsg err';msg.textContent='❌ Start the Control Panel server: node dashboard/server.js';}
+        if(j.ok){msg.className='keymsg ok';msg.textContent='✅ Mentve: '+id+' ('+(payload.model||'be/ki')+')';}
+        else{msg.className='keymsg err';msg.textContent='❌ '+(j.error||'sikertelen');}
+      }catch(e){msg.className='keymsg err';msg.textContent='❌ Indítsd a Vezérlőpult-szervert: node dashboard/server.js';}
     }
     if(saveBtn)saveBtn.addEventListener('click',save);
     if(enChk&&!saveBtn)enChk.addEventListener('change',save);
@@ -685,14 +685,14 @@ body{background:#e7e0d2;color:var(--ink);font-family:'Hanken Grotesk',sans-serif
       provider:pm[0], model:pm[1],
       instructions:document.getElementById('naInstr').value.trim()
     };
-    if(!payload.id||!payload.name||!payload.instructions){msg.className='keymsg err';msg.textContent='Fill in id, name and instructions.';return;}
-    msg.className='keymsg';msg.textContent='Creating…';
+    if(!payload.id||!payload.name||!payload.instructions){msg.className='keymsg err';msg.textContent='Töltsd ki: id, név és utasítások.';return;}
+    msg.className='keymsg';msg.textContent='Létrehozás…';
     try{
       var r=await fetch('/api/create-agent',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
       var j=await r.json();
-      if(j.ok){msg.className='keymsg ok';msg.textContent='✅ Created "'+payload.name+'"! Reload to see it in the team.';}
-      else{msg.className='keymsg err';msg.textContent='❌ '+(j.error||'failed');}
-    }catch(e){msg.className='keymsg err';msg.textContent='❌ Start the Control Panel server: node dashboard/server.js';}
+      if(j.ok){msg.className='keymsg ok';msg.textContent='✅ Létrehozva: „'+payload.name+'"! Töltsd újra, hogy lásd a csapatban.';}
+      else{msg.className='keymsg err';msg.textContent='❌ '+(j.error||'sikertelen');}
+    }catch(e){msg.className='keymsg err';msg.textContent='❌ Indítsd a Vezérlőpult-szervert: node dashboard/server.js';}
   });}
 </script>
 </body></html>`;
