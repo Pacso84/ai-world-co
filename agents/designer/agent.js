@@ -24,6 +24,7 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { GoogleGenAI } from '@google/genai';
 import { ask } from '../../core/ai-router.js';
+import { skillsBlock } from '../../core/skills.js';
 
 const ai = new GoogleGenAI({ apiKey: process.env.GOOGLE_API_KEY });
 const IMAGE_MODEL = 'gemini-2.5-flash-image';
@@ -65,7 +66,8 @@ Subtitle: "${subtitle}"
 
 Describe ONE concrete visual scene that best represents this article as a cover image.
 Name specific objects/symbols/setting (e.g. "a glowing brain made of circuit boards beside stacks of gold coins").
-NO people's faces, NO text/letters in the scene. Reply with ONLY the scene description, max 25 words.`;
+NO people's faces, NO text/letters in the scene. Reply with ONLY the scene description, max 25 words.
+${skillsBlock('designer')}`;
   try {
     const r = await ask(prompt, { agentName: 'designer', systemPrompt: 'You are an art director. Reply with one vivid, concrete visual scene description only.', maxTokens: 200 });
     const t = (r && r.text || '').trim().replace(/^["']|["']$/g, '');

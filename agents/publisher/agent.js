@@ -27,6 +27,7 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { spawn } from 'child_process';
 import { ask } from '../../core/ai-router.js';
+import { skillsBlock } from '../../core/skills.js';
 import { notify } from '../../core/ops.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -115,7 +116,8 @@ async function editorialReview() {
 The site is about to be published with these articles:
 ${titles.map((t, i) => `${i + 1}. ${t}`).join('\n')}
 
-In 2-3 sentences, write a short publish summary for the owner: is the line-up coherent and ready, and any concern to note? Be concise and friendly.`;
+In 2-3 sentences, write a short publish summary for the owner: is the line-up coherent and ready, and any concern to note? Be concise and friendly.
+${skillsBlock('publisher')}`;
 
   const res = await ask(prompt, { agentName: 'publisher', systemPrompt: 'You are a concise editor-in-chief. 2-3 sentences only.', maxTokens: 300 });
   if (res) {

@@ -29,7 +29,7 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { ask } from '../../core/ai-router.js';
 import { recallSemantic } from '../../core/memory-manager.js';
-import { listSkills, recordUse } from '../../core/skills.js';
+import { skillsBlock } from '../../core/skills.js';
 
 // ===================================================================
 // SETUP
@@ -63,11 +63,7 @@ async function loadLessons() {
 // betöltjük a promptba (iro + shared scope), és megjelöljük használtként (uses++).
 // Így a skillek TÉNYLEGESEN hatnak a cikkre, nem csak a dashboardon ülnek.
 function loadSkills() {
-  const skills = [...listSkills('iro'), ...listSkills('shared')];
-  if (!skills.length) return '';
-  recordUse(skills.map(s => s.id));
-  const lines = skills.slice(0, 6).map(s => `- ${s.title}: ${String(s.recipe).slice(0, 300)}`);
-  return `\n\nLEARNED SKILLS (proven recipes the team distilled — apply them):\n${lines.join('\n')}`;
+  return skillsBlock('iro'); // iro + shared aktív készségek, promptba fűzve (uses++)
 }
 
 // ===================================================================

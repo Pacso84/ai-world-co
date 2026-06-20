@@ -25,6 +25,7 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import Parser from 'rss-parser';
 import { ask } from '../../core/ai-router.js';
+import { skillsBlock } from '../../core/skills.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = join(__dirname, '..', '..');
@@ -77,7 +78,7 @@ Respond ONLY with a JSON array (no markdown):
 Give 15-25 entries. type must be "official". Include a global mix (US, EU, Asia, Australia if any).`;
 
 async function getCandidateOrgs() {
-  const prompt = `List 15 official AI/tech company and research-lab blogs (first-party only, no news media). Return a complete, valid JSON array only.`;
+  const prompt = `List 15 official AI/tech company and research-lab blogs (first-party only, no news media). Return a complete, valid JSON array only.${skillsBlock('source-scout')}`;
   let totalCost = 0;
 
   // RETRY: max 3 próba (az AI néha csonka JSON-t ad)

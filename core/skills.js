@@ -44,7 +44,7 @@ export function addSkill(title, recipe, opts = {}) {
       uses: 0
     });
   }
-  if (s.skills.length > 40) s.skills = s.skills.slice(-40);
+  if (s.skills.length > 200) s.skills = s.skills.slice(-200);
   save(s);
 }
 export function listSkills(scope = null) {
@@ -53,6 +53,53 @@ export function listSkills(scope = null) {
 }
 export function skillStats() {
   return { total: load().skills.length };
+}
+
+// ---- SEED: alap készségek betöltése (csak a HIÁNYZÓKAT, nem ír felül) -------
+// Az alapokat a skills/default-skills.json tartalmazza. Újrafuttatható:
+// a már létező (scope+title) készségeket MEGŐRZI (a kézi módosításaid maradnak),
+// csak az újakat veszi fel. Így bármikor bővíthető a default-lista.
+export function seedDefaults(defaults = []) {
+  const s = load();
+  let added = 0;
+  for (const d of defaults) {
+    if (!d.title || !d.recipe) continue;
+    const exists = s.skills.find(k => k.scope === (d.scope || 'shared') && k.title === d.title);
+    if (exists) continue; // megőrizzük a meglévőt (lehet, hogy módosítottad)
+    s.skills.push({
+      id: 'sk' + Date.now() + Math.floor(Math.random() * 100000),
+      scope: d.scope || 'shared',
+      title: d.title,
+      recipe: d.recipe,
+      source: 'default',
+      enabled: true,
+      created: new Date().toISOString(),
+      uses: 0
+    });
+    added++;
+  }
+  if (added) save(s);
+  return added;
+}
+
+// Egy készség be-/kikapcsolása törlés nélkül (id alapján)
+export function setEnabled(id, enabled) {
+  const s = load();
+  const k = s.skills.find(x => x.id === id);
+  if (!k) return false;
+  k.enabled = enabled;
+  save(s);
+  return true;
+}
+
+// PROMPT-BLOKK: az adott scope (+ 'shared') AKTÍV készségei, promptba fűzve.
+// Minden AI-agent ezt hívja, hogy a saját készségei tényleg hassanak a munkára.
+export function skillsBlock(scope, { record = true, max = 10 } = {}) {
+  const all = [...listSkills(scope), ...listSkills('shared')].filter(k => k.enabled !== false);
+  if (!all.length) return '';
+  if (record) recordUse(all.map(k => k.id));
+  const lines = all.slice(0, max).map(k => `- ${k.title}: ${String(k.recipe).slice(0, 400)}`);
+  return `\n\nYOUR SKILLS — proven recipes for your role (follow them):\n${lines.join('\n')}`;
 }
 
 // Megjelöli, hogy egy-egy skillt TÉNYLEGESEN használt egy agent (uses++).
@@ -71,4 +118,4 @@ export function recordUse(ids = []) {
   if (changed) save(s);
 }
 
-export default { addSkill, listSkills, skillStats, recordUse };
+export default { addSkill, listSkills, skillStats, recordUse, seedDefaults, setEnabled, skillsBlock };

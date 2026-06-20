@@ -18,6 +18,7 @@ import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync } from 
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { ask } from '../core/ai-router.js';
+import { skillsBlock } from '../core/skills.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
@@ -65,7 +66,7 @@ async function main() {
   if (agent.enabled === false) { console.log('⏸️  Ez az agent ki van kapcsolva.'); return; }
 
   const systemPrompt = loadInstructions();
-  const input = resolveInput();
+  const input = resolveInput() + skillsBlock(agentId); // a custom agent saját + shared készségei
 
   const response = await ask(input, { agentName: agentId, systemPrompt, maxTokens: 2000 });
   if (!response) { console.log('❌ Nem érkezett válasz (router elesett).'); process.exit(1); }

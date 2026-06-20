@@ -27,6 +27,7 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { ask } from '../../core/ai-router.js';
 import { remember } from '../../core/memory-manager.js';
+import { skillsBlock } from '../../core/skills.js';
 
 // ===================================================================
 // SETUP
@@ -214,6 +215,7 @@ ${sourceInfo}
 
 ARTICLE TO REVIEW:
 ${articleMarkdown}
+${skillsBlock('ellenorzo')}
 
 Now provide your judgement as JSON only (the rules are in your instructions).`;
 

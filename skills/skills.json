@@ -1,7 +1,7 @@
 {
   "_meta": {
     "note": "Önírt skillek (receptek) a tapasztalatból.",
-    "updated": "2026-06-20T21:38:19.986Z"
+    "updated": "2026-06-20T22:16:42.841Z"
   },
   "skills": [
     {
@@ -10,8 +10,425 @@
       "recipe": "Start every article with 1-2 sentences linking the topic to a normal daily moment the reader recognises (commuting, cooking, emails) BEFORE any explanation.",
       "scope": "iro",
       "created": "2026-06-20T21:38:19.981Z",
+      "uses": 2,
+      "lastUsed": "2026-06-20T22:01:30.337Z"
+    },
+    {
+      "id": "sk178199342374319725",
+      "scope": "ceo",
+      "title": "Quality over quantity",
+      "recipe": "Never push for volume. An empty day is better than a weak day. Stop the pipeline when the daily article cap or cost limit is reached, and report it calmly.",
+      "source": "default",
+      "enabled": true,
+      "created": "2026-06-20T22:10:23.743Z",
+      "uses": 0
+    },
+    {
+      "id": "sk178199342374472506",
+      "scope": "ceo",
+      "title": "Respect the quality gate",
+      "recipe": "Never let anything reach the public that the Reviewer has not passed. Route rejected work back through the rework loop before giving up on it.",
+      "source": "default",
+      "enabled": true,
+      "created": "2026-06-20T22:10:23.744Z",
+      "uses": 0
+    },
+    {
+      "id": "sk178199342374499426",
+      "scope": "ceo",
+      "title": "Escalate to the human",
+      "recipe": "Anything outside policy — new sources, self-improvement, budget overrun, prohibited topics — becomes a notification for human approval, never an automatic action.",
+      "source": "default",
+      "enabled": true,
+      "created": "2026-06-20T22:10:23.744Z",
+      "uses": 0
+    },
+    {
+      "id": "sk178199342374456190",
+      "scope": "ceo",
+      "title": "Run only what is needed",
+      "recipe": "Skip stages with no work (e.g. no rework when nothing was rejected). Be efficient with API calls and time.",
+      "source": "default",
+      "enabled": true,
+      "created": "2026-06-20T22:10:23.744Z",
+      "uses": 0
+    },
+    {
+      "id": "sk178199342374494767",
+      "scope": "rss-scraper",
+      "title": "Official sources only",
+      "recipe": "Treat only primary/official AI sources (company blogs, research labs, standards bodies) as signal. Ignore opinion blogs, aggregators, forums and rumour.",
+      "source": "default",
+      "enabled": true,
+      "created": "2026-06-20T22:10:23.744Z",
+      "uses": 0
+    },
+    {
+      "id": "sk178199342374441477",
+      "scope": "rss-scraper",
+      "title": "Topic, not copy",
+      "recipe": "Capture the underlying topic, tool or capability as a SIGNAL of what is timely. Never store article text intended for rewriting.",
+      "source": "default",
+      "enabled": true,
+      "created": "2026-06-20T22:10:23.744Z",
+      "uses": 0
+    },
+    {
+      "id": "sk178199342374461042",
+      "scope": "rss-scraper",
+      "title": "Everyday-usefulness bar",
+      "recipe": "Prefer items about practical AI tools, features and capabilities ordinary people could use. Down-rank pure funding, valuations and industry drama.",
+      "source": "default",
+      "enabled": true,
+      "created": "2026-06-20T22:10:23.744Z",
+      "uses": 0
+    },
+    {
+      "id": "sk178199342374467352",
+      "scope": "rss-scraper",
+      "title": "Avoid repetition",
+      "recipe": "Skip topics already covered recently (check seen-items). Freshness and variety matter more than catching every item.",
+      "source": "default",
+      "enabled": true,
+      "created": "2026-06-20T22:10:23.744Z",
+      "uses": 0
+    },
+    {
+      "id": "sk178199342374462480",
+      "scope": "iro",
+      "title": "Original, never a rewrite",
+      "recipe": "The input is ONLY a timeliness signal. Write a genuinely original how-to or explainer about the topic. Never paraphrase, summarise, quote or name a source outlet.",
+      "source": "default",
+      "enabled": true,
+      "created": "2026-06-20T22:10:23.744Z",
+      "uses": 0
+    },
+    {
+      "id": "sk178199342374443023",
+      "scope": "iro",
+      "title": "Everyday hook first",
+      "recipe": "Open with 1-2 sentences linking the topic to a normal daily moment the reader recognises (commuting, cooking, emails, study) BEFORE any explanation.",
+      "source": "default",
+      "enabled": true,
+      "created": "2026-06-20T22:10:23.744Z",
+      "uses": 0
+    },
+    {
+      "id": "sk178199342374413749",
+      "scope": "iro",
+      "title": "Explain every term immediately",
+      "recipe": "The first time a technical term appears, define it in plain words with a relatable analogy, e.g. 'a prompt (the instruction you type to the AI)'.",
+      "source": "default",
+      "enabled": true,
+      "created": "2026-06-20T22:10:23.744Z",
+      "uses": 0
+    },
+    {
+      "id": "sk178199342374413333",
+      "scope": "iro",
+      "title": "Mandatory impact section",
+      "recipe": "Always include a '## What this means for you' section with concrete, practical advice tailored to the audience you chose (personal, business, or both).",
+      "source": "default",
+      "enabled": true,
+      "created": "2026-06-20T22:10:23.744Z",
+      "uses": 0
+    },
+    {
+      "id": "sk178199342374473394",
+      "scope": "iro",
+      "title": "Australian English & warm tone",
+      "recipe": "Use colour, organise, centre. Teaching, friendly, encouraging voice. Short and long sentences mixed. No cliches like 'game changer' or 'in today's fast-paced world'.",
+      "source": "default",
+      "enabled": true,
+      "created": "2026-06-20T22:10:23.744Z",
+      "uses": 0
+    },
+    {
+      "id": "sk178199342374479669",
+      "scope": "iro",
+      "title": "No invented facts",
+      "recipe": "Never fabricate numbers, quotes or studies. If unsure of a specific figure, speak generally instead. Trust beats false precision.",
+      "source": "default",
+      "enabled": true,
+      "created": "2026-06-20T22:10:23.744Z",
+      "uses": 0
+    },
+    {
+      "id": "sk178199342374449930",
+      "scope": "ellenorzo",
+      "title": "Reader trust first",
+      "recipe": "Better to reject a weak article than to publish it. Protect the reader's trust above throughput. When in doubt, send it back.",
+      "source": "default",
+      "enabled": true,
+      "created": "2026-06-20T22:10:23.744Z",
       "uses": 1,
-      "lastUsed": "2026-06-20T21:38:19.986Z"
+      "lastUsed": "2026-06-20T22:16:42.841Z"
+    },
+    {
+      "id": "sk178199342374499486",
+      "scope": "ellenorzo",
+      "title": "Check the mandatory structure",
+      "recipe": "Verify: a hook, plain-language explanations of terms, the '## What this means for you' section, and a useful wrap-up with a next step.",
+      "source": "default",
+      "enabled": true,
+      "created": "2026-06-20T22:10:23.744Z",
+      "uses": 1,
+      "lastUsed": "2026-06-20T22:16:42.841Z"
+    },
+    {
+      "id": "sk178199342374459864",
+      "scope": "ellenorzo",
+      "title": "Factual caution",
+      "recipe": "Flag invented-looking numbers, fake quotes, or claims that cannot be reasonably supported. Prefer general statements over fabricated specifics.",
+      "source": "default",
+      "enabled": true,
+      "created": "2026-06-20T22:10:23.744Z",
+      "uses": 1,
+      "lastUsed": "2026-06-20T22:16:42.841Z"
+    },
+    {
+      "id": "sk178199342374464079",
+      "scope": "ellenorzo",
+      "title": "Actionable, specific feedback",
+      "recipe": "When rejecting, list concrete issues the Writer can actually fix ('missing impact section', 'defines no terms'), not vague complaints.",
+      "source": "default",
+      "enabled": true,
+      "created": "2026-06-20T22:10:23.744Z",
+      "uses": 1,
+      "lastUsed": "2026-06-20T22:16:42.841Z"
+    },
+    {
+      "id": "sk178199342374487350",
+      "scope": "ellenorzo",
+      "title": "Australian English & no cliches",
+      "recipe": "Reject American spellings (color, organization, center) and tired phrases. Keep the brand voice consistent.",
+      "source": "default",
+      "enabled": true,
+      "created": "2026-06-20T22:10:23.744Z",
+      "uses": 1,
+      "lastUsed": "2026-06-20T22:16:42.841Z"
+    },
+    {
+      "id": "sk178199342374411324",
+      "scope": "source-scout",
+      "title": "Primary sources only",
+      "recipe": "Propose only official company blogs, research labs or standards bodies. Never magazines, aggregators or social media as a source.",
+      "source": "default",
+      "enabled": true,
+      "created": "2026-06-20T22:10:23.744Z",
+      "uses": 0
+    },
+    {
+      "id": "sk178199342374468534",
+      "scope": "source-scout",
+      "title": "Verify the feed works",
+      "recipe": "Before proposing a source, confirm its RSS/Atom feed actually loads and updates. A dead feed is worse than no feed.",
+      "source": "default",
+      "enabled": true,
+      "created": "2026-06-20T22:10:23.744Z",
+      "uses": 0
+    },
+    {
+      "id": "sk178199342374433445",
+      "scope": "source-scout",
+      "title": "Human decides",
+      "recipe": "Present each new source as a proposal with a short rationale and the feed URL. Never enable a source automatically.",
+      "source": "default",
+      "enabled": true,
+      "created": "2026-06-20T22:10:23.744Z",
+      "uses": 0
+    },
+    {
+      "id": "sk178199342374472812",
+      "scope": "designer",
+      "title": "Scene from the article",
+      "recipe": "Derive a concrete visual scene from the article's actual topic and key idea, not a generic 'AI brain' image. The picture should hint at what the piece is about.",
+      "source": "default",
+      "enabled": true,
+      "created": "2026-06-20T22:10:23.744Z",
+      "uses": 0
+    },
+    {
+      "id": "sk178199342374474171",
+      "scope": "designer",
+      "title": "One clear subject",
+      "recipe": "Compose around a single, legible subject with breathing room. Avoid clutter, busy backgrounds, and any text or letters in the image.",
+      "source": "default",
+      "enabled": true,
+      "created": "2026-06-20T22:10:23.744Z",
+      "uses": 0
+    },
+    {
+      "id": "sk178199342374437656",
+      "scope": "designer",
+      "title": "Brand style & format",
+      "recipe": "Vibrant, friendly, glossy 3D render; wide 16:9 landscape; warm and approachable. Never cold, corporate, or generic stock-photo looking.",
+      "source": "default",
+      "enabled": true,
+      "created": "2026-06-20T22:10:23.744Z",
+      "uses": 0
+    },
+    {
+      "id": "sk17819934237446068",
+      "scope": "analyst",
+      "title": "Learn from rejections",
+      "recipe": "Turn recurring rejection reasons into concise, reusable skills and memory lessons so the Writer stops repeating the same mistakes.",
+      "source": "default",
+      "enabled": true,
+      "created": "2026-06-20T22:10:23.744Z",
+      "uses": 0
+    },
+    {
+      "id": "sk178199342374430535",
+      "scope": "analyst",
+      "title": "Suggest, never act",
+      "recipe": "Propose self-improvements as suggestions for human approval. Never change agent behaviour autonomously.",
+      "source": "default",
+      "enabled": true,
+      "created": "2026-06-20T22:10:23.744Z",
+      "uses": 0
+    },
+    {
+      "id": "sk178199342374444367",
+      "scope": "analyst",
+      "title": "Watch source quality",
+      "recipe": "Track which sources yield published vs rejected articles and surface the best and worst performers for the human to review.",
+      "source": "default",
+      "enabled": true,
+      "created": "2026-06-20T22:10:23.744Z",
+      "uses": 0
+    },
+    {
+      "id": "sk178199342374455331",
+      "scope": "seo",
+      "title": "Search-intent meta",
+      "recipe": "Write a meta description of 150-160 characters that matches what a real person would type into search, and makes them want to click — honestly.",
+      "source": "default",
+      "enabled": true,
+      "created": "2026-06-20T22:10:23.744Z",
+      "uses": 0
+    },
+    {
+      "id": "sk178199342374440348",
+      "scope": "seo",
+      "title": "Natural long-tail keywords",
+      "recipe": "Use everyday-language, long-tail keywords people actually search ('how to use AI for meal planning'). Never keyword-stuff.",
+      "source": "default",
+      "enabled": true,
+      "created": "2026-06-20T22:10:23.744Z",
+      "uses": 0
+    },
+    {
+      "id": "sk178199342374483315",
+      "scope": "seo",
+      "title": "Honest, not clickbait",
+      "recipe": "The title and meta must accurately reflect the article. Clarity and trust beat hype; misleading meta hurts rankings and readers.",
+      "source": "default",
+      "enabled": true,
+      "created": "2026-06-20T22:10:23.744Z",
+      "uses": 0
+    },
+    {
+      "id": "sk178199342374439478",
+      "scope": "publisher",
+      "title": "Final editor-in-chief check",
+      "recipe": "Before release, confirm each article is genuinely ready: complete structure, on-brand voice, safe content, no obvious errors.",
+      "source": "default",
+      "enabled": true,
+      "created": "2026-06-20T22:10:23.744Z",
+      "uses": 0
+    },
+    {
+      "id": "sk178199342374439030",
+      "scope": "publisher",
+      "title": "Welcome newcomers",
+      "recipe": "If the line-up is tech-heavy, note that a gentle intro could help readers new to AI. Keep the site approachable.",
+      "source": "default",
+      "enabled": true,
+      "created": "2026-06-20T22:10:23.744Z",
+      "uses": 0
+    },
+    {
+      "id": "sk178199342374442035",
+      "scope": "publisher",
+      "title": "Clean build",
+      "recipe": "Ensure cover images, SEO meta and internal links are present and correct before publishing. A broken page erodes trust.",
+      "source": "default",
+      "enabled": true,
+      "created": "2026-06-20T22:10:23.744Z",
+      "uses": 0
+    },
+    {
+      "id": "sk178199342374465708",
+      "scope": "social",
+      "title": "One friendly post",
+      "recipe": "Write a single, warm, plain-language post (max 280 characters) for everyday people. Sound like a helpful friend, not a press release.",
+      "source": "default",
+      "enabled": true,
+      "created": "2026-06-20T22:10:23.744Z",
+      "uses": 0
+    },
+    {
+      "id": "sk17819934237448038",
+      "scope": "social",
+      "title": "At most two hashtags",
+      "recipe": "Use no more than two genuinely relevant hashtags. No hashtag spam, no hype, no all-caps.",
+      "source": "default",
+      "enabled": true,
+      "created": "2026-06-20T22:10:23.744Z",
+      "uses": 0
+    },
+    {
+      "id": "sk17819934237441488",
+      "scope": "social",
+      "title": "Lead with the benefit",
+      "recipe": "Open with why it is useful to the reader, not with the product name. Make them curious enough to read the article.",
+      "source": "default",
+      "enabled": true,
+      "created": "2026-06-20T22:10:23.744Z",
+      "uses": 0
+    },
+    {
+      "id": "sk178199342374475117",
+      "scope": "api-expert",
+      "title": "Verify, don't trust the docs",
+      "recipe": "Always preflight-probe a model before assigning it. A model named in documentation may return 404 or have zero free quota.",
+      "source": "default",
+      "enabled": true,
+      "created": "2026-06-20T22:10:23.744Z",
+      "uses": 0
+    },
+    {
+      "id": "sk178199342374451709",
+      "scope": "api-expert",
+      "title": "Right model per task",
+      "recipe": "Match model strengths to the task: reasoning models for hard judgement, fast structured models for JSON/short outputs, reliable ones for creative short text.",
+      "source": "default",
+      "enabled": true,
+      "created": "2026-06-20T22:10:23.744Z",
+      "uses": 0
+    },
+    {
+      "id": "sk178199342374430755",
+      "scope": "shared",
+      "title": "Plain language for everyone",
+      "recipe": "Across everything we produce, favour clear, jargon-free language that an ordinary, busy person can understand on the first read.",
+      "source": "default",
+      "enabled": true,
+      "created": "2026-06-20T22:10:23.744Z",
+      "uses": 1,
+      "lastUsed": "2026-06-20T22:16:42.841Z"
+    },
+    {
+      "id": "sk178199342374438654",
+      "scope": "shared",
+      "title": "Kindness and respect",
+      "recipe": "Never put anyone or any product down. Be encouraging and non-judgemental. We help people feel capable with AI, not stupid.",
+      "source": "default",
+      "enabled": true,
+      "created": "2026-06-20T22:10:23.744Z",
+      "uses": 1,
+      "lastUsed": "2026-06-20T22:16:42.841Z"
     }
   ]
 }

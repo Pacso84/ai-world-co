@@ -372,11 +372,25 @@ function panelNotifications(d) {
 }
 
 function panelSkills(d) {
-  return `<div class="panel"><div class="panel__h">🛠️ Skill Factory — ${d.skills.length} skills</div>
-    <div class="muted" style="margin-bottom:10px">Reusable recipes the agents distil from experience.</div>
-    ${d.skills.length ? d.skills.map(s => `<details class="skill"><summary>${esc(s.title)} <span class="skill__sc">${s.scope}</span></summary>
-      <div class="skill__body">${esc(s.recipe).slice(0, 600)}</div></details>`).join('')
-      : '<div class="muted">No skills yet. The Analyst creates them as the company learns.</div>'}
+  // Scope (agent) szerint csoportosítva
+  const groups = {};
+  for (const s of d.skills) (groups[s.scope] = groups[s.scope] || []).push(s);
+  const order = Object.keys(groups).sort();
+
+  const groupHtml = order.map(scope => {
+    const meta = AGENT_META[scope] || { icon: scope === 'shared' ? '🌐' : '🤖', name: scope };
+    const items = groups[scope].map(s => {
+      const off = s.enabled === false ? ' <span class="skill__off">(off)</span>' : '';
+      const uses = s.uses ? ` <span class="skill__sc">${s.uses}×</span>` : '';
+      return `<details class="skill"><summary>${esc(s.title)}${uses}${off}</summary>
+        <div class="skill__body">${esc(s.recipe).slice(0, 600)}</div></details>`;
+    }).join('');
+    return `<div class="skillgrp"><div class="skillgrp__h">${meta.icon} ${esc(meta.name)} <span class="skill__sc">${groups[scope].length}</span></div>${items}</div>`;
+  }).join('');
+
+  return `<div class="panel"><div class="panel__h">🛠️ Skill Factory — ${d.skills.length} skills, ${order.length} agent</div>
+    <div class="muted" style="margin-bottom:12px">Each agent follows its own skills (recipes). Edit anytime in <code>skills/skills.json</code> (or add to <code>skills/default-skills.json</code> and re-seed). The Analyst also distils new ones from experience.</div>
+    ${d.skills.length ? groupHtml : '<div class="muted">No skills yet. Run <code>node core/seed-skills.js</code>.</div>'}
   </div>`;
 }
 
@@ -563,6 +577,10 @@ body{background:#e7e0d2;color:var(--ink);font-family:'Hanken Grotesk',sans-serif
 .skill summary{cursor:pointer;font-weight:700;font-size:13px}
 .skill__sc{font-size:10px;color:var(--muted);font-family:monospace;margin-left:6px}
 .skill__body{margin-top:8px;font-size:12.5px;color:var(--soft);white-space:pre-wrap;line-height:1.5}
+.skill__off{font-size:10px;color:#b5694a;font-weight:700}
+.skillgrp{margin-bottom:18px}
+.skillgrp__h{font-family:'Schibsted Grotesk',sans-serif;font-weight:800;font-size:13.5px;margin:0 0 8px;padding-bottom:5px;border-bottom:1px solid var(--line2)}
+.panel__h code,.muted code{font-family:monospace;font-size:11.5px;background:var(--p2);padding:1px 5px;border-radius:5px}
 @media(max-width:680px){.app{grid-template-columns:1fr}.side{display:flex;flex-wrap:wrap;gap:4px;border-right:none;border-bottom:1px solid var(--line)}.brand{width:100%}.nav{width:auto}.nav span{display:none}}
 .ochip{display:inline-flex;align-items:center;gap:6px;background:var(--card);border:1px solid var(--line2);border-radius:100px;padding:4px 11px 4px 5px;font-size:12.5px;font-weight:600;margin:3px 5px 3px 0}
 .ochip__i{font-size:14px}

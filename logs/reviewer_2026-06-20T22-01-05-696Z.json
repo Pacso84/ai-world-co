@@ -1,0 +1,19 @@
+{
+  "started_at": "2026-06-20T22:01:05.689Z",
+  "total": 1,
+  "passed": 0,
+  "failed": 1,
+  "auto_check_failed": 1,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0,
+  "by_article": [
+    {
+      "writer": "WRITER_TEST_rework-demo.json",
+      "decision": "FAIL",
+      "reason": "auto-check critical",
+      "skipped_ai": true
+    }
+  ],
+  "finished_at": "2026-06-20T22:01:05.696Z",
+  "duration_seconds": 0.007
+}

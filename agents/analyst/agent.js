@@ -21,7 +21,7 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { ask } from '../../core/ai-router.js';
 import { decay, stats as memStats } from '../../core/memory-manager.js';
-import { addSkill } from '../../core/skills.js';
+import { addSkill, skillsBlock } from '../../core/skills.js';
 import { notify } from '../../core/ops.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -85,7 +85,8 @@ Rejected articles and reasons:
 ${reasons}
 
 Suggest 3-5 CONCRETE, actionable improvements to our Writer agent's instructions to reduce these rejections.
-Be specific (e.g. "always do X", "avoid Y"). Respond as a short markdown bullet list only.`;
+Be specific (e.g. "always do X", "avoid Y"). Respond as a short markdown bullet list only.
+${skillsBlock('analyst')}`;
 
   const response = await ask(prompt, {
     agentName: AGENT_NAME,

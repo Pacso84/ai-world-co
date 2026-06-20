@@ -20,6 +20,7 @@ import { readFileSync, writeFileSync, existsSync, readdirSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { ask } from '../../core/ai-router.js';
+import { skillsBlock } from '../../core/skills.js';
 import { notify } from '../../core/ops.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -59,6 +60,7 @@ async function optimise(title, subtitle, body) {
   const prompt = `Title: ${title}
 Subtitle: ${subtitle}
 Article (excerpt): ${body.replace(/[#*>\-]/g, ' ').slice(0, 700)}
+${skillsBlock('seo')}
 
 Produce the SEO JSON.`;
   // retry max 2x (a rövid/hibás JSON ellen)

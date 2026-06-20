@@ -26,6 +26,7 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import Parser from 'rss-parser';
 import { ask } from '../../core/ai-router.js';
+import { skillsBlock } from '../../core/skills.js';
 
 // ===================================================================
 // SETUP
@@ -163,7 +164,8 @@ async function checkRelevanceBatch(batch) {
 
   const prompt = `Evaluate these ${batch.length} articles. Respond with a JSON array of ${batch.length} objects (index 0 to ${batch.length - 1}).
 
-${list}`;
+${list}
+${skillsBlock('rss-scraper')}`;
 
   const response = await ask(prompt, {
     agentName: AGENT_NAME,
