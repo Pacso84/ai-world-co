@@ -363,3 +363,45 @@ body {
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+/* ===== Support (támogatás) — navbar gomb, footer link, oldal ===== */
+.navbar__support {
+  padding: 7px 14px; border-radius: 100px;
+  background: var(--accent); color: var(--paper) !important;
+  font-weight: 700; line-height: 1; white-space: nowrap;
+  transition: background .2s ease, transform .15s ease;
+}
+.navbar__support::after { display: none !important; }
+.navbar__support:hover { background: var(--accent-dark); transform: translateY(-1px); }
+.site-footer__support { margin: 10px 0 4px; font-size: 14px; color: var(--ink-soft); }
+.site-footer__support a { color: var(--accent-dark); font-weight: 700; }
+.site-footer__support a:hover { text-decoration: underline; }
+
+.support { max-width: 760px; margin: 0 auto; padding: 56px 0 24px; text-align: center; }
+.support__title {
+  font-family: 'Schibsted Grotesk', sans-serif; font-weight: 800;
+  font-size: clamp(30px, 5vw, 46px); letter-spacing: -0.02em; line-height: 1.08;
+  margin: 16px 0 14px;
+}
+.support__title em { color: var(--accent); font-style: italic; }
+.support__lead { font-size: 18px; color: var(--ink-soft); max-width: 620px; margin: 0 auto 28px; line-height: 1.6; }
+.support__cta { margin: 6px 0 40px; }
+.support__btn {
+  display: inline-block; padding: 16px 34px; border-radius: 100px;
+  background: var(--accent); color: var(--paper); font-weight: 800; font-size: 18px;
+  box-shadow: 0 14px 30px -12px color-mix(in srgb, var(--accent) 70%, transparent);
+  transition: transform .15s ease, background .2s ease;
+}
+.support__btn:hover { transform: translateY(-2px); background: var(--accent-dark); }
+.support__btn--soon { background: var(--paper-2); color: var(--muted); box-shadow: none; cursor: default; border: 1px dashed var(--line-strong); }
+.support__btn--soon:hover { transform: none; background: var(--paper-2); }
+.support__cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 8px 0 36px; text-align: left; }
+.support__card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 22px 20px; }
+.support__ico { font-size: 26px; }
+.support__card h3 { font-family: 'Schibsted Grotesk', sans-serif; font-size: 16px; margin: 10px 0 6px; }
+.support__card p { font-size: 14px; color: var(--ink-soft); line-height: 1.5; }
+.support__note { font-size: 14px; color: var(--muted); max-width: 600px; margin: 0 auto 30px; line-height: 1.6; }
+@media (max-width: 700px) {
+  .support__cards { grid-template-columns: 1fr; }
+  .support { padding-top: 36px; }
+}

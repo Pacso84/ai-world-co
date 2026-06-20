@@ -27,9 +27,18 @@ const OUT_ARTICLE_DIR = join(OUT_DIR, 'article');
 const OUT_ASSETS_DIR = join(OUT_DIR, 'assets');
 const ASSETS_SRC = join(__dirname, 'assets');
 
-// Site URL a config-ból (canonical/OG/sitemap-hez). Domain hiányában placeholder.
+// Site URL + támogatás a config-ból (canonical/OG/sitemap + Support gomb).
 let SITE_URL = 'https://aiworld.example.com';
-try { SITE_URL = (JSON.parse(readFileSync(join(PROJECT_ROOT, 'config.json'), 'utf-8')).company?.website_url || SITE_URL).replace(/\/$/, ''); } catch {}
+let SUPPORT = { enabled: false, url: '', label: 'Buy us a coffee' };
+try {
+  const company = JSON.parse(readFileSync(join(PROJECT_ROOT, 'config.json'), 'utf-8')).company || {};
+  SITE_URL = (company.website_url || SITE_URL).replace(/\/$/, '');
+  SUPPORT = {
+    enabled: company.support_enabled !== false,
+    url: (company.support_url || '').trim(),
+    label: company.support_label || 'Buy us a coffee'
+  };
+} catch {}
 
 const SITE = {
   name: 'AI WORLD',
@@ -165,9 +174,10 @@ function loadArticles() {
 // HTML SABLONOK
 // ===================================================================
 
-function pageShell({ title, description, bodyContent, isArticle = false, canonical = '', ogImage = '', keywords = '', jsonld = null }) {
+function pageShell({ title, description, bodyContent, isArticle = false, noIntro = false, canonical = '', ogImage = '', keywords = '', jsonld = null }) {
   const cssPath = isArticle ? '../assets/style.css' : 'assets/style.css';
   const homePath = isArticle ? '../index.html' : 'index.html';
+  const supportPath = isArticle ? '../support.html' : 'support.html';
   const year = new Date().getFullYear();
   const url = canonical || SITE.url;
   const img = ogImage || (SITE.url + '/assets/logo.svg');
@@ -209,12 +219,13 @@ function pageShell({ title, description, bodyContent, isArticle = false, canonic
         <a href="${homePath}#all" data-nav="all">Latest</a>
         <a href="${homePath}#personal" data-nav="personal">🏠 Everyday life</a>
         <a href="${homePath}#business" data-nav="business">💼 Business</a>
+        ${SUPPORT.enabled ? `<a href="${supportPath}" class="navbar__support">☕ Support</a>` : ''}
       </nav>
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Light / dark">
         <span class="theme-toggle__icon">☾</span>
       </button>
     </div>
-  </header>${isArticle ? '' : `
+  </header>${(isArticle || noIntro) ? '' : `
   <section class="intro">
     <div class="intro__inner">
       <p class="intro__kicker">Issue 01 · ${formatDate(new Date().toISOString())}</p>
@@ -229,6 +240,7 @@ function pageShell({ title, description, bodyContent, isArticle = false, canonic
     <div class="wrap">
       <p class="site-footer__brand">${SITE.name}<span class="masthead__dot">.</span></p>
       <p class="site-footer__note">${escapeHtml(SITE.description)}</p>
+      ${SUPPORT.enabled ? `<p class="site-footer__support"><a href="${supportPath}">☕ ${escapeHtml(SUPPORT.label)}</a> — help keep AI World free &amp; ad-light</p>` : ''}
       <p class="site-footer__fine">Written and curated by autonomous AI agents · Reviewed for accuracy · © ${year} AI World Co.</p>
     </div>
   </footer>
@@ -366,6 +378,45 @@ function buildArticlePage(a) {
 }
 
 // ===================================================================
+// SUPPORT OLDAL (önkéntes támogatás — magánszemélyként is)
+// ===================================================================
+// A config.company.support_url-ből épül. Ha üres, "coming soon" gomb.
+// Hangnem: átlátszó, barátságos, nem tolakodó (brand szabály).
+// ===================================================================
+
+function buildSupportPage() {
+  const cta = SUPPORT.url
+    ? `<a class="support__btn" href="${escapeHtml(SUPPORT.url)}" target="_blank" rel="noopener noreferrer">☕ ${escapeHtml(SUPPORT.label)}</a>`
+    : `<span class="support__btn support__btn--soon" aria-disabled="true">☕ ${escapeHtml(SUPPORT.label)} — coming soon</span>`;
+
+  const body = `<section class="support">
+    <span class="pill">Support us</span>
+    <h1 class="support__title">Keep everyday AI <em>free for everyone</em></h1>
+    <p class="support__lead">AI World is a small, independent project — a team of AI agents and one human — publishing clear, jargon-free guides about AI. We keep it free and ad-light. If you find it useful, you can chip in to help cover the running costs.</p>
+
+    <div class="support__cta">${cta}</div>
+
+    <div class="support__cards">
+      <div class="support__card"><span class="support__ico">🖥️</span><h3>Hosting &amp; domain</h3><p>Keeping the site online, fast and reachable for everyone.</p></div>
+      <div class="support__card"><span class="support__ico">🧠</span><h3>The AI newsroom</h3><p>The models that research, write, fact-check and improve every article.</p></div>
+      <div class="support__card"><span class="support__ico">🎨</span><h3>Original artwork</h3><p>The custom cover image generated for each story.</p></div>
+    </div>
+
+    <p class="support__note">Supporting us is completely optional — the site stays free either way. We're a small independent project, not a registered charity, so your contribution is a friendly <strong>voluntary tip</strong>, not a tax-deductible donation. Thank you for reading. 💛</p>
+
+    <a href="index.html" class="back-link">← Back to all stories</a>
+  </section>`;
+
+  return pageShell({
+    title: `Support — ${SITE.name}`,
+    description: 'Help keep AI World free and ad-light. A small voluntary tip covers our hosting and the AI that writes each article.',
+    canonical: `${SITE.url}/support.html`,
+    noIntro: true,
+    bodyContent: body
+  });
+}
+
+// ===================================================================
 // FŐ BUILD
 // ===================================================================
 
@@ -411,10 +462,17 @@ function main() {
   }
   console.log(`✅ ${articles.length} cikk oldal generálva`);
 
+  // Support (támogatás) oldal
+  if (SUPPORT.enabled) {
+    writeFileSync(join(OUT_DIR, 'support.html'), buildSupportPage(), 'utf-8');
+    console.log(`✅ support.html generálva${SUPPORT.url ? '' : ' (link még nincs beállítva — "coming soon")'}`);
+  }
+
   // SEO: sitemap.xml + robots.txt
   const today = new Date().toISOString().slice(0, 10);
   const urls = [
     { loc: SITE.url + '/', date: today },
+    ...(SUPPORT.enabled ? [{ loc: `${SITE.url}/support.html`, date: today }] : []),
     ...articles.map(a => ({ loc: `${SITE.url}/article/${a.slug}.html`, date: (a.publishedAt || '').slice(0, 10) || today }))
   ];
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
