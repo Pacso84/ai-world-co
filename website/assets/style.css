@@ -365,14 +365,14 @@ body {
 }
 
 /* ===== Support (támogatás) — navbar gomb, footer link, oldal ===== */
-.navbar__support {
-  padding: 9px 28px; border-radius: 12px;
+.navbar__nav a.navbar__support {
+  padding: 9px 26px; border-radius: 12px;
   border: 1px solid var(--line-strong); background: transparent;
-  color: var(--ink) !important; font-weight: 700; line-height: 1; white-space: nowrap;
+  color: var(--ink); font-weight: 700; line-height: 1; white-space: nowrap;
   transition: background .2s ease, color .2s ease, border-color .2s ease;
 }
-.navbar__support::after { display: none !important; }
-.navbar__support:hover { background: var(--ink); color: var(--paper) !important; border-color: var(--ink); }
+.navbar__nav a.navbar__support::after { display: none; }
+.navbar__nav a.navbar__support:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
 .site-footer__support { margin: 10px 0 4px; font-size: 14px; color: var(--ink-soft); }
 .site-footer__support a { color: var(--accent-dark); font-weight: 700; }
 .site-footer__support a:hover { text-decoration: underline; }
