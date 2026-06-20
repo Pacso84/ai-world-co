@@ -58,11 +58,11 @@
     "ellenorzo": {
       "primary_model": {
         "provider": "google",
-        "model": "gemini-2.5-pro"
+        "model": "gemini-flash-latest"
       },
       "fallback_model": {
-        "provider": "google",
-        "model": "gemini-flash-latest"
+        "provider": "groq",
+        "model": "llama-3.3-70b-versatile"
       },
       "enabled": true,
       "comment": "Ellenorzes: gemini-flash-latest (INGYEN sajat kvota) + fallback 2.5-pro. Kesobb Claude ha kell jobb minoseg."

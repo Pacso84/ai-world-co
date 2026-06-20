@@ -486,7 +486,41 @@ export async function ask(prompt, options = {}) {
 }
 
 // ===================================================================
+// PROBE — egyetlen KONKRÉT modell tesztelése (preflight, fallback NÉLKÜL)
+// ===================================================================
+// Egy apró hívással leteszteli, hogy a megadott provider/model TÉNYLEG él-e.
+// Így nem manuálisan derül ki egy elgépelt/megszűnt modellnév (pl. 404).
+// Visszaad: { provider, model, ok, status, detail }
+//   status: 'ok' | 'not_found' | 'quota' | 'auth' | 'error' | 'no_caller' | 'no_key'
+export async function probeModel(provider, model) {
+  const r = { provider, model, ok: false, status: 'error', detail: '' };
+  try {
+    // Embedding modell külön úton fut (embedContent, nem chat)
+    if (/embedding/i.test(model)) {
+      const v = await embedText('ping');
+      if (Array.isArray(v) && v.length) { r.ok = true; r.status = 'ok'; r.detail = `dim=${v.length}`; }
+      else { r.status = 'error'; r.detail = 'nincs vektor (kulcs/hiba)'; }
+      return r;
+    }
+    const caller = providerCallers[provider];
+    if (!caller) { r.status = 'no_caller'; r.detail = 'ismeretlen provider'; return r; }
+    const resp = await caller('ping', model, { maxTokens: 1 });
+    r.ok = true; r.status = 'ok'; r.detail = `${resp?.usage?.outputTokens ?? '?'} tok`;
+    return r;
+  } catch (e) {
+    const msg = (e?.message || String(e)).toLowerCase();
+    if (/404|not found|is not supported|does not exist|could not find|not_found|decommission/.test(msg)) r.status = 'not_found';
+    else if (isQuotaError(e)) r.status = 'quota';
+    else if (isTransientError(e)) r.status = 'busy';   // 503/overloaded — a modell JÓ, csak épp terhelt
+    else if (/401|403|api key|api_key|unauthor|permission|no key|nincs.*kulcs/.test(msg)) r.status = 'auth';
+    else r.status = 'error';
+    r.detail = (e?.message || String(e)).replace(/\s+/g, ' ').slice(0, 120);
+    return r;
+  }
+}
+
+// ===================================================================
 // EXPORTOK
 // ===================================================================
 
-export default { ask };
+export default { ask, embedText, probeModel };
