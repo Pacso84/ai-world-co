@@ -113,6 +113,63 @@ export function recall(query, opts = {}) {
   return scored.map(s => ({ text: s.it.text, tags: s.it.tags, tier: s.it.tier, scope: s.it.scope }));
 }
 
+// ---------- SZEMANTIKUS RECALL (Gemini embeddings + salience) ----------
+// Jelentés alapján keres, nem csak szó szerinti egyezésre. Ha az embedding
+// nem érhető el (nincs Google kulcs / hálózati hiba), átáll a kulcsszavas
+// recall()-ra — így sosem bukik el.
+function cosineSim(a, b) {
+  if (!a || !b || a.length !== b.length) return 0;
+  let dot = 0, na = 0, nb = 0;
+  for (let i = 0; i < a.length; i++) { dot += a[i] * b[i]; na += a[i] * a[i]; nb += b[i] * b[i]; }
+  return (na && nb) ? dot / (Math.sqrt(na) * Math.sqrt(nb)) : 0;
+}
+
+export async function recallSemantic(query, opts = {}) {
+  const { scope = null, limit = 8 } = opts;
+
+  // Embedding-függvény lazy betöltése (ne terhelje a dashboardot, ami csak stats-ot hív)
+  let embedText = null;
+  try { ({ embedText } = await import('./ai-router.js')); } catch { /* nincs router */ }
+
+  const qVec = embedText ? await embedText(query) : null;
+  if (!qVec) return recall(query, opts); // nincs embedding → kulcsszó-fallback
+
+  const store = load();
+  const candidates = store.items.filter(it => !scope || it.scope === scope);
+  if (!candidates.length) return [];
+
+  // Hiányzó emlék-embeddingek pótlása (egyszer, cache-elve a store-ba)
+  let dirty = false;
+  for (const it of candidates) {
+    if (!Array.isArray(it.embedding)) {
+      const v = await embedText(it.text);
+      if (v) { it.embedding = v; dirty = true; }
+    }
+  }
+
+  const scored = candidates
+    .filter(it => Array.isArray(it.embedding))
+    .map(it => {
+      const recency = 1 / (1 + daysSince(it.lastAccessed));
+      return { it, score: cosineSim(qVec, it.embedding) * (0.5 + 0.5 * it.salience) + recency * 0.1 };
+    })
+    .sort((a, b) => b.score - a.score)
+    .slice(0, limit);
+
+  if (!scored.length) { if (dirty) save(store); return recall(query, opts); }
+
+  // Visszahívott emlékek erősödnek (mint a kulcsszavas recall-nál)
+  const now = new Date().toISOString();
+  for (const s of scored) {
+    s.it.accessCount++;
+    s.it.lastAccessed = now;
+    s.it.salience = Math.min(1, s.it.salience + ACCESS_BOOST);
+    s.it.tier = tierOf(s.it.salience);
+  }
+  save(store);
+  return scored.map(s => ({ text: s.it.text, tags: s.it.tags, tier: s.it.tier, scope: s.it.scope, _semantic: true }));
+}
+
 // ---------- DECAY (időszakos halványítás, soha nem töröl) ----------
 export function decay() {
   const store = load();
@@ -150,4 +207,4 @@ export function stats() {
   return s;
 }
 
-export default { remember, recall, decay, stats };
+export default { remember, recall, recallSemantic, decay, stats };

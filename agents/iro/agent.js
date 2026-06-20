@@ -28,7 +28,7 @@ import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync, unlink
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { ask } from '../../core/ai-router.js';
-import { recall } from '../../core/memory-manager.js';
+import { recallSemantic } from '../../core/memory-manager.js';
 import { listSkills, recordUse } from '../../core/skills.js';
 
 // ===================================================================
@@ -51,8 +51,9 @@ const MAX_REWORK_ATTEMPTS = 2;
 // ===================================================================
 // TANULÁS: a rétegzett MEMÓRIÁBÓL hívjuk elő a korábbi elutasítások leckéit
 // ===================================================================
-function loadLessons() {
-  const hits = recall('rejection mistakes brand rules section missing tone', { scope: 'iro', limit: 8 });
+async function loadLessons() {
+  // Szemantikus keresés (Gemini embeddings); ha nem elérhető, kulcsszóra esik vissza.
+  const hits = await recallSemantic('rejection mistakes brand rules section missing tone quality', { scope: 'iro', limit: 8 });
   if (!hits.length) return '';
   const reasons = [...new Set(hits.map(h => h.text))].slice(0, 10);
   return `\n\nLESSONS FROM PAST REJECTIONS (avoid these mistakes — they got articles rejected before):\n${reasons.map(r => `- ${r}`).join('\n')}`;
@@ -230,6 +231,8 @@ Extra context to understand the subject (background only, never copy):
 ${(draft.content_snippet || '').slice(0, 600)}
 `;
 
+  const lessons = await loadLessons();   // szemantikus memória (async)
+  const skills = loadSkills();
   const userPrompt = `Write a complete, ORIGINAL article. The note below only tells you WHICH topic is timely right now — it is NOT something to rewrite or cite.
 
 WHAT TO DO:
@@ -249,7 +252,7 @@ TIMELY TOPIC SIGNAL (hint only):
 ${topicSignal}
 
 BRAND CONTEXT (must follow):
-${brandContext}${loadLessons()}${loadSkills()}
+${brandContext}${lessons}${skills}
 
 Now write the original article. Output the markdown only — no extra commentary, no source line.`;
 
@@ -366,6 +369,8 @@ function collectFeedback(meta) {
 async function reworkArticle(rejectedData, brandContext) {
   const feedback = collectFeedback(rejectedData._meta);
   const original = rejectedData.article_markdown || '';
+  const lessons = await loadLessons();   // szemantikus memória (async)
+  const skills = loadSkills();
 
   const userPrompt = `One of your earlier articles was sent BACK by the Reviewer. Your job now is to FIX it — keep what works, repair the specific problems, and return the full corrected article.
 
@@ -383,7 +388,7 @@ THE ARTICLE TO FIX (rewrite it fully, corrected):
 ${original}
 
 BRAND CONTEXT (must follow):
-${brandContext}${loadLessons()}${loadSkills()}
+${brandContext}${lessons}${skills}
 
 Now output ONLY the corrected article markdown — no commentary, no notes about what you changed.`;
 

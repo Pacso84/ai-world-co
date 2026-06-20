@@ -78,6 +78,28 @@ function getClient(provider) {
 }
 
 // ===================================================================
+// EMBEDDING (szemantikus memóriához) — Gemini text-embedding-004, INGYEN
+// ===================================================================
+// Egy szám-vektort ad vissza a szöveghez, vagy null-t ha nem sikerült
+// (nincs Google kulcs / hiba). A hívó ilyenkor kulcsszó-keresésre eshet vissza.
+export async function embedText(text) {
+  const t = (text || '').trim();
+  if (!t || !process.env.GOOGLE_API_KEY) return null;
+  try {
+    const client = getClient('google');
+    const resp = await client.models.embedContent({
+      model: 'gemini-embedding-001',
+      contents: t.slice(0, 2000),
+      config: { outputDimensionality: 768 }
+    });
+    const v = resp?.embeddings?.[0]?.values || resp?.embedding?.values || null;
+    return Array.isArray(v) && v.length ? v : null;
+  } catch {
+    return null;
+  }
+}
+
+// ===================================================================
 // PROVIDER-SPECIFIKUS HÍVÓK
 // ===================================================================
 
