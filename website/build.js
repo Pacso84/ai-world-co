@@ -47,6 +47,9 @@ const SITE = {
   url: SITE_URL
 };
 
+// Cache-busting verzió: minden build új érték -> a böngésző mindig friss CSS/JS-t tölt
+const ASSET_V = Date.now();
+
 // Kategória -> megjelenítendő név + CSS osztály (szín)
 const CATEGORIES = {
   'ai-news':  { label: 'AI News',  cls: 'cat-news',     icon: '📰' },
@@ -207,7 +210,7 @@ function pageShell({ title, description, bodyContent, isArticle = false, noIntro
   <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..700&family=Hanken+Grotesk:wght@400..700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="${cssPath.replace('style.css', 'logo.svg')}">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
-  <link rel="stylesheet" href="${cssPath}">
+  <link rel="stylesheet" href="${cssPath}?v=${ASSET_V}">
   ${jsonld ? `<script type="application/ld+json">${JSON.stringify(jsonld)}</script>` : ''}
 </head>
 <body>
@@ -245,7 +248,7 @@ function pageShell({ title, description, bodyContent, isArticle = false, noIntro
     </div>
   </footer>
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script src="${cssPath.replace('style.css', 'app.js')}"></script>
+  <script src="${cssPath.replace('style.css', 'app.js')}?v=${ASSET_V}"></script>
 </body>
 </html>`;
 }
