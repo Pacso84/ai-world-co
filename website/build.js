@@ -402,6 +402,11 @@ function buildSupportPage() {
       <div class="support__card"><span class="support__ico">🎨</span><h3>Original artwork</h3><p>The custom cover image generated for each story.</p></div>
     </div>
 
+    <div class="support__thanks">
+      <p class="support__thanks-h">To everyone who chips in — thank you. 💛</p>
+      <p>You keep AI World free, ad-light and open to everyone. Every coffee helps cover our hosting and powers the little AI newsroom behind every article. We're a tiny independent team, so it genuinely means the world to us.</p>
+    </div>
+
     <p class="support__note">Supporting us is completely optional — the site stays free either way. We're a small independent project, not a registered charity, so your contribution is a friendly <strong>voluntary tip</strong>, not a tax-deductible donation. Thank you for reading. 💛</p>
 
     <a href="index.html" class="back-link">← Back to all stories</a>

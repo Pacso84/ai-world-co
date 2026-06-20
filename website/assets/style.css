@@ -400,6 +400,13 @@ body {
 .support__ico { font-size: 26px; }
 .support__card h3 { font-family: 'Schibsted Grotesk', sans-serif; font-size: 16px; margin: 10px 0 6px; }
 .support__card p { font-size: 14px; color: var(--ink-soft); line-height: 1.5; }
+.support__thanks {
+  background: color-mix(in srgb, var(--accent) 9%, var(--card));
+  border: 1px solid color-mix(in srgb, var(--accent) 28%, var(--line));
+  border-radius: var(--radius-sm); padding: 24px 26px; max-width: 620px; margin: 0 auto 30px;
+}
+.support__thanks-h { font-family: 'Schibsted Grotesk', sans-serif; font-weight: 800; font-size: 18px; margin-bottom: 8px; }
+.support__thanks p:last-child { font-size: 15px; color: var(--ink-soft); line-height: 1.6; }
 .support__note { font-size: 14px; color: var(--muted); max-width: 600px; margin: 0 auto 30px; line-height: 1.6; }
 @media (max-width: 700px) {
   .support__cards { grid-template-columns: 1fr; }
