@@ -55,4 +55,20 @@ export function skillStats() {
   return { total: load().skills.length };
 }
 
-export default { addSkill, listSkills, skillStats };
+// Megjelöli, hogy egy-egy skillt TÉNYLEGESEN használt egy agent (uses++).
+// Így a dashboardon látszik, mely receptek hatnak valóban a munkára.
+export function recordUse(ids = []) {
+  if (!ids.length) return;
+  const s = load();
+  let changed = false;
+  for (const k of s.skills) {
+    if (ids.includes(k.id)) {
+      k.uses = (k.uses || 0) + 1;
+      k.lastUsed = new Date().toISOString();
+      changed = true;
+    }
+  }
+  if (changed) save(s);
+}
+
+export default { addSkill, listSkills, skillStats, recordUse };

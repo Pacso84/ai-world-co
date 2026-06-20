@@ -29,6 +29,7 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { ask } from '../../core/ai-router.js';
 import { recall } from '../../core/memory-manager.js';
+import { listSkills, recordUse } from '../../core/skills.js';
 
 // ===================================================================
 // SETUP
@@ -55,6 +56,17 @@ function loadLessons() {
   if (!hits.length) return '';
   const reasons = [...new Set(hits.map(h => h.text))].slice(0, 10);
   return `\n\nLESSONS FROM PAST REJECTIONS (avoid these mistakes — they got articles rejected before):\n${reasons.map(r => `- ${r}`).join('\n')}`;
+}
+
+// SKILL FACTORY használat: az Elemző által desztillált, bevált recepteket
+// betöltjük a promptba (iro + shared scope), és megjelöljük használtként (uses++).
+// Így a skillek TÉNYLEGESEN hatnak a cikkre, nem csak a dashboardon ülnek.
+function loadSkills() {
+  const skills = [...listSkills('iro'), ...listSkills('shared')];
+  if (!skills.length) return '';
+  recordUse(skills.map(s => s.id));
+  const lines = skills.slice(0, 6).map(s => `- ${s.title}: ${String(s.recipe).slice(0, 300)}`);
+  return `\n\nLEARNED SKILLS (proven recipes the team distilled — apply them):\n${lines.join('\n')}`;
 }
 
 // ===================================================================
@@ -237,7 +249,7 @@ TIMELY TOPIC SIGNAL (hint only):
 ${topicSignal}
 
 BRAND CONTEXT (must follow):
-${brandContext}${loadLessons()}
+${brandContext}${loadLessons()}${loadSkills()}
 
 Now write the original article. Output the markdown only — no extra commentary, no source line.`;
 
@@ -371,7 +383,7 @@ THE ARTICLE TO FIX (rewrite it fully, corrected):
 ${original}
 
 BRAND CONTEXT (must follow):
-${brandContext}${loadLessons()}
+${brandContext}${loadLessons()}${loadSkills()}
 
 Now output ONLY the corrected article markdown — no commentary, no notes about what you changed.`;
 
