@@ -12,7 +12,23 @@
     "source_id": "guide",
     "source_name": "AI World Guide",
     "source_link": "",
-    "status": "awaiting-review"
+    "status": "published",
+    "published_at": "2026-06-21T20:12:59.674Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 664
+    },
+    "ai_review": {
+      "overall_score": 10,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "This is an exceptionally well-written, beginner-friendly guide that perfectly aligns with our brand voice and formatting standards. It uses correct Australian English spelling and provides highly actionable steps without any clichés.",
+      "_aiCost": 0.00014707499999999998,
+      "_provider": "google",
+      "_model": "gemini-flash-latest",
+      "_attempts": 1
+    }
   },
   "article_markdown": "---\ntitle: \"How to Write a Clear Prompt that Gets Better AI Answers\"\nsubtitle: \"Learn a simple step‑by‑step method for crafting specific, contextual prompts that guide any chatbot to provide the results you need.\"\ncategory: \"guide\"\naudience: \"both\"\ncompany: \"\"\ntool: \"\"\nlevel: \"beginner\"\nread_time_minutes: 4\ntags: [\"getting-started\", \"chatgpt\"]\n---\n\n# How to Write a Clear Prompt that Gets Better AI Answers\n\n**Hook:** By the end of this guide you’ll know exactly how to phrase a request so that any AI‑powered chatbot gives you a useful, on‑point reply. It’s written for anyone who’s never typed a prompt before.\n\n## Before you start\n- You have an internet‑connected device (computer, tablet or phone).  \n- You have access to a chatbot (for example, the free version on a web site).  \n- You are ready to type a short sentence and see what happens.\n\n## Step 1 — Start with the goal\nThink of the answer you want as a destination on a map. Write a one‑line statement that says *what* you want, not *how* the AI should think.  \n💬 Example: “I need a three‑item grocery list for a vegetarian dinner.”\n\n## Step 2 — Add essential context\nContext is the background information that narrows the AI’s field of view. It’s like telling a friend the colour of the wall before asking how to paint it. Include any details that shape the answer.  \n💬 Example: “The dinner will be for two adults, no dairy, and we have a stove and a microwave.”\n\n## Step 3 — Specify the format you expect\nThe AI can reply in many styles – a paragraph, a bullet list, a table, or a short code snippet. Describing the format is like ordering a coffee “large, with skim milk, extra hot.” It tells the bot exactly how to serve you.  \n💬 Example: “Give the list as bullet points, each with a brief cooking tip.”\n\n## Step 4 — Combine into a single prompt\nPut the pieces together in a clear, natural sentence. Keep it concise, but don’t sacrifice needed detail.  \n💬 Example: “Create a three‑item grocery list for a vegetarian dinner for two adults, no dairy, using only a stove and microwave. List each item as a bullet point and add a short cooking tip.”\n\n## Step 5 — Test and tweak\nSend the prompt, read the reply, and decide if it meets the goal. If the answer is too vague, add one more piece of context. If it’s too long, trim the request. This iterative loop is like adjusting a recipe until the flavour is just right.  \n💬 Example tweak: If the AI includes a dairy cheese, edit the prompt to say “no cheese or any dairy product.”\n\n## Common mistakes\n- **Being too vague:** “Give me a recipe.” The AI won’t know what you like or what you can cook.  \n- **Leaving out the format:** Without saying “bullet points,” the answer may come as a paragraph, which is harder to copy‑paste.  \n- **Mixing several questions:** Asking “What’s a good dinner? Also, how do I budget?” can confuse the model; keep each prompt focused on one task.\n\n## What this means for you\n- **In everyday life:** Want a quick travel itinerary? Write a prompt like “Plan a two‑day visit to Sydney for a family of four, focusing on outdoor activities, and list each day as a numbered schedule.”  \n- **For your business or work:** Need a concise project brief? Try “Summarise the main objectives of our new marketing campaign in three sentences, and list key performance indicators as a table.”  \n- **If you're just getting started:** The easiest first move is to ask the AI to rewrite a sentence you already have, e.g., “Rewrite ‘Our product is cheap and reliable’ as a friendly tagline, no more than eight words.”\n\n## Try it now\nOpen your favourite chatbot, type the combined prompt from Step 4, and hit Enter. In two minutes you’ll see how a well‑structured request produces a tidy, ready‑to‑use answer.",
   "original_title": "How to write a clear prompt that gets better AI answers"

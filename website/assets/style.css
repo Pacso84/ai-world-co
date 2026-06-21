@@ -415,3 +415,30 @@ body {
   .support__cards { grid-template-columns: 1fr; }
   .support { padding-top: 36px; }
 }
+
+/* ===== Útmutató (step-by-step guide) ===== */
+.cat-guide { background: #4f7a86; }
+.g-tool, .g-level { display:inline-block; font-size:12px; font-weight:700; padding:4px 11px; border-radius:100px; }
+.g-tool { background: color-mix(in srgb, #4f7a86 14%, var(--paper)); color:#3a5b65; border:1px solid color-mix(in srgb,#4f7a86 30%,transparent); }
+.g-level { background: var(--paper-2); color: var(--ink-soft); text-transform: capitalize; }
+.g-intro { font-size: 19px; line-height: 1.6; color: var(--ink); margin: 6px 0 30px; }
+.g-intro strong { font-weight: 700; }
+.g-steps { display: flex; flex-direction: column; gap: 16px; }
+.g-step { display: flex; gap: 16px; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px 22px; }
+.g-step__no { flex-shrink:0; width: 38px; height: 38px; border-radius: 50%; background: var(--ink); color: var(--paper);
+  font-family: 'Schibsted Grotesk', sans-serif; font-weight: 800; font-size: 18px; display: flex; align-items: center; justify-content: center; }
+.g-step__body { flex: 1; min-width: 0; }
+.g-step__h { font-family: 'Schibsted Grotesk', sans-serif; font-weight: 800; font-size: 19px; margin: 4px 0 8px; letter-spacing: -0.01em; }
+.g-step__body p, .g-section p { margin: 8px 0; }
+.g-example { background: color-mix(in srgb, var(--accent) 12%, var(--paper)); border-left: 3px solid var(--accent);
+  border-radius: 0 8px 8px 0; padding: 10px 14px; font-size: 14.5px; color: var(--ink); margin: 10px 0 !important; }
+.g-prereq, .g-mistakes, .g-try { border-radius: var(--radius); padding: 18px 22px; margin: 16px 0; border: 1px solid var(--line); }
+.g-prereq { background: color-mix(in srgb, var(--accent) 8%, var(--card)); }
+.g-mistakes { background: color-mix(in srgb, var(--c-news) 8%, var(--card)); border-color: color-mix(in srgb, var(--c-news) 22%, var(--line)); }
+.g-try { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.g-try a { color: var(--paper); text-decoration: underline; }
+.g-block__h { font-family: 'Schibsted Grotesk', sans-serif; font-weight: 800; font-size: 16px; margin-bottom: 8px; }
+.g-prereq ul, .g-mistakes ul { margin: 4px 0 0; padding-left: 20px; }
+.g-prereq li, .g-mistakes li { margin: 5px 0; }
+.g-section { margin: 16px 0; }
+@media (max-width: 560px){ .g-step { padding: 16px; gap: 12px; } .g-step__no{ width:32px;height:32px;font-size:16px; } }

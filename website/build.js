@@ -57,6 +57,7 @@ const CATEGORIES = {
   'business': { label: 'Business', cls: 'cat-business', icon: '📈' },
   'work':     { label: 'Work',     cls: 'cat-work',     icon: '💡' },
   'creative': { label: 'Creative', cls: 'cat-creative', icon: '🎨' },
+  'guide':    { label: 'Guide',    cls: 'cat-guide',    icon: '📘' },
   'other':    { label: 'AI',       cls: 'cat-other',    icon: '✨' }
 };
 
@@ -158,6 +159,11 @@ function loadArticles() {
         seoDescription: data._meta?.seo?.description || meta.subtitle || '',
         seoKeywords: (data._meta?.seo?.keywords || meta.tags || []).join(', '),
         bodyHtml: wrapImpactSection(marked.parse(body)),
+        bodyMd: body,
+        isGuide: (data._meta?.type === 'guide') || meta.category === 'guide',
+        company: data._meta?.company || '',
+        tool: data._meta?.tool || '',
+        level: data._meta?.level || '',
         publishedAt: data._meta?.published_at || '',
         sourceName: data._meta?.source_name || '',
         sourceLink: data._meta?.source_link || '',
@@ -381,6 +387,103 @@ function buildArticlePage(a) {
 }
 
 // ===================================================================
+// ÚTMUTATÓ OLDAL (lépésről-lépésre, prezentáció-érzet)
+// ===================================================================
+// A guide markdownt szekciókra bontjuk (## fejlécek mentén), és a
+// lépéseket számozott kártyaként, a többi szekciót (Before you start,
+// Common mistakes, What this means for you, Try it now) saját stílussal
+// jelenítjük meg. A 💬 példák kiemelt dobozba kerülnek.
+// ===================================================================
+
+function parseGuideSections(bodyMd) {
+  const md = (bodyMd || '').replace(/^#\s+.*$/m, '').trim(); // a H1 címet a metából rakjuk ki
+  const parts = md.split(/\n(?=##\s+)/);
+  let intro = '';
+  const sections = [];
+  for (const p of parts) {
+    const m = p.match(/^##\s+([^\n]+)\n?([\s\S]*)$/);
+    if (m) sections.push({ title: m[1].trim(), body: (m[2] || '').trim() });
+    else intro += p + '\n';
+  }
+  return { intro: intro.trim(), sections };
+}
+
+// egy szekció HTML-je: a 💬 példákat (külön soron) kiemelt dobozba tesszük
+function guideSectionHtml(bodyMd) {
+  // a 💬-vel kezdődő sorokat markdown ELŐTT blokk-szintű dobozzá alakítjuk
+  const pre = (bodyMd || '').replace(/^[ \t>]*💬[ \t]*(.+)$/gm, '\n\n<div class="g-example">💬 $1</div>\n\n');
+  return marked.parse(pre);
+}
+
+function buildGuidePage(a) {
+  const cat = CATEGORIES.guide;
+  const aud = AUDIENCES[a.audience] || AUDIENCES.both;
+  const { intro, sections } = parseGuideSections(a.bodyMd);
+
+  let stepNo = 0;
+  const blocks = sections.map(s => {
+    const t = s.title;
+    if (/^step\s*\d*\s*[—:-]?/i.test(t)) {
+      stepNo++;
+      const heading = t.replace(/^step\s*\d*\s*[—:-]?\s*/i, '');
+      return `<div class="g-step"><div class="g-step__no">${stepNo}</div>
+        <div class="g-step__body"><h3 class="g-step__h">${escapeHtml(heading)}</h3>${guideSectionHtml(s.body)}</div></div>`;
+    }
+    if (/before you start|before we start|prerequisit/i.test(t))
+      return `<div class="g-prereq"><div class="g-block__h">✅ ${escapeHtml(t)}</div>${guideSectionHtml(s.body)}</div>`;
+    if (/common mistakes|watch out|pitfalls/i.test(t))
+      return `<div class="g-mistakes"><div class="g-block__h">⚠️ ${escapeHtml(t)}</div>${guideSectionHtml(s.body)}</div>`;
+    if (/what this means for you/i.test(t))
+      return `<aside class="impact"><div class="impact__label">${escapeHtml(t)}</div>${guideSectionHtml(s.body)}</aside>`;
+    if (/try it now|your turn|next step/i.test(t))
+      return `<div class="g-try"><div class="g-block__h">🚀 ${escapeHtml(t)}</div>${guideSectionHtml(s.body)}</div>`;
+    return `<div class="g-section"><h2>${escapeHtml(t)}</h2>${guideSectionHtml(s.body)}</div>`;
+  }).join('\n');
+
+  const toolChip = (a.company || a.tool)
+    ? `<span class="g-tool">📘 ${escapeHtml([a.company, a.tool].filter(Boolean).join(' · '))}</span>` : '';
+  const levelChip = a.level ? `<span class="g-level">${escapeHtml(a.level)}</span>` : '';
+  const stepsTotal = sections.filter(s => /^step\s*\d/i.test(s.title)).length;
+
+  const body = `<article class="article guide">
+    ${coverHtml(a, '../', 'article__cover')}
+    <div class="article__head">
+      <div class="article__badges">
+        <span class="tag ${cat.cls}">📘 Step-by-step guide</span>
+        ${toolChip}${levelChip}
+        <span class="aud ${aud.cls}">${aud.icon} ${aud.label}</span>
+      </div>
+      <h1 class="article__title">${escapeHtml(a.title)}</h1>
+      <p class="article__subtitle">${escapeHtml(a.subtitle)}</p>
+      <div class="article__meta"><span>${a.readTime} min read</span><span class="dot">·</span><span>${stepsTotal} steps</span><span class="dot">·</span><span>${formatDate(a.publishedAt)}</span></div>
+    </div>
+    ${intro ? `<div class="g-intro">${guideSectionHtml(intro)}</div>` : ''}
+    <div class="g-steps">${blocks}</div>
+    <div class="article__foot">
+      <p class="ai-disclosure">✦ Original step-by-step guide by AI World Co.'s AI editorial team. Written in plain language, reviewed for accuracy.</p>
+      <a href="../index.html" class="back-link">← Back to all stories</a>
+    </div>
+  </article>`;
+
+  const canonical = `${SITE.url}/article/${a.slug}.html`;
+  const ogImage = a.image ? `${SITE.url}/assets/images/${a.image}` : '';
+  const jsonld = {
+    '@context': 'https://schema.org', '@type': 'HowTo',
+    name: a.title, description: a.seoDescription || a.subtitle,
+    image: ogImage || undefined,
+    step: sections.filter(s => /^step\s*\d/i.test(s.title)).map(s => ({
+      '@type': 'HowToStep', name: s.title.replace(/^step\s*\d*\s*[—:-]?\s*/i, '')
+    }))
+  };
+  return pageShell({
+    title: `${a.title} — ${SITE.name}`,
+    description: a.seoDescription || a.subtitle,
+    keywords: a.seoKeywords, canonical, ogImage, jsonld,
+    bodyContent: body, isArticle: true
+  });
+}
+
+// ===================================================================
 // SUPPORT OLDAL (önkéntes támogatás — magánszemélyként is)
 // ===================================================================
 // A config.company.support_url-ből épül. Ha üres, "coming soon" gomb.
@@ -464,11 +567,14 @@ function main() {
   writeFileSync(join(OUT_DIR, 'index.html'), buildIndex(articles), 'utf-8');
   console.log('✅ index.html generálva');
 
-  // Cikk oldalak
+  // Cikk + útmutató oldalak
+  let guideCount = 0;
   for (const a of articles) {
-    writeFileSync(join(OUT_ARTICLE_DIR, `${a.slug}.html`), buildArticlePage(a), 'utf-8');
+    const html = a.isGuide ? buildGuidePage(a) : buildArticlePage(a);
+    if (a.isGuide) guideCount++;
+    writeFileSync(join(OUT_ARTICLE_DIR, `${a.slug}.html`), html, 'utf-8');
   }
-  console.log(`✅ ${articles.length} cikk oldal generálva`);
+  console.log(`✅ ${articles.length} oldal generálva (${guideCount} útmutató)`);
 
   // Support (támogatás) oldal
   if (SUPPORT.enabled) {
