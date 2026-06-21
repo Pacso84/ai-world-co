@@ -122,6 +122,13 @@ function wrapImpactSection(html) {
   });
 }
 
+// A markdown táblázatokat görgethető burokba tesszük (mobil + stílus)
+function wrapTables(html) {
+  return html
+    .replace(/<table>/g, '<div class="table-wrap"><table>')
+    .replace(/<\/table>/g, '</table></div>');
+}
+
 function formatDate(iso) {
   if (!iso) return '';
   const d = new Date(iso);
@@ -158,7 +165,7 @@ function loadArticles() {
         tags: meta.tags || [],
         seoDescription: data._meta?.seo?.description || meta.subtitle || '',
         seoKeywords: (data._meta?.seo?.keywords || meta.tags || []).join(', '),
-        bodyHtml: wrapImpactSection(marked.parse(body)),
+        bodyHtml: wrapTables(wrapImpactSection(marked.parse(body))),
         bodyMd: body,
         isGuide: (data._meta?.type === 'guide') || meta.category === 'guide',
         company: data._meta?.company || '',
@@ -507,7 +514,7 @@ function parseGuideSections(bodyMd) {
 function guideSectionHtml(bodyMd) {
   // a 💬-vel kezdődő sorokat markdown ELŐTT blokk-szintű dobozzá alakítjuk
   const pre = (bodyMd || '').replace(/^[ \t>]*💬[ \t]*(.+)$/gm, '\n\n<div class="g-example">💬 $1</div>\n\n');
-  return marked.parse(pre);
+  return wrapTables(marked.parse(pre));
 }
 
 function buildGuidePage(a) {

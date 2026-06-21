@@ -472,3 +472,12 @@ body {
 .brandtile__n { font-family:'Schibsted Grotesk',sans-serif; font-weight:800; font-size:14px; }
 .brandtile__c { font-size:11px; color:var(--muted); }
 @media(max-width:560px){ .gtiles{ grid-template-columns:repeat(2,1fr); } .guides-cta{ flex-wrap:wrap; } .brandtiles{ grid-template-columns:repeat(3,1fr); } }
+
+/* ===== Táblázatok (cikkekben + útmutatókban) ===== */
+.table-wrap { overflow-x:auto; margin:22px 0; border:1px solid var(--line); border-radius:12px; -webkit-overflow-scrolling:touch; }
+.table-wrap table { width:100%; border-collapse:collapse; font-size:14.5px; min-width:480px; }
+.table-wrap th, .table-wrap td { text-align:left; padding:12px 16px; border-bottom:1px solid var(--line); vertical-align:top; line-height:1.5; }
+.table-wrap thead th { background:var(--paper-2); font-family:'Schibsted Grotesk',sans-serif; font-weight:800; font-size:12.5px; letter-spacing:.01em; color:var(--ink); border-bottom:2px solid var(--line-strong); }
+.table-wrap tbody tr:last-child td { border-bottom:none; }
+.table-wrap tbody tr:nth-child(even) { background:color-mix(in srgb,var(--paper-2) 35%,transparent); }
+.table-wrap td:first-child { font-weight:700; color:var(--ink); }
