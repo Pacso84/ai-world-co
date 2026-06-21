@@ -1,9 +1,9 @@
 {
   "_meta": {
     "description": "Forrasok az AI World Co. Scraper-Agent szamara - CSAK ELSODLEGES FORRASOK",
-    "version": "3.1",
-    "last_updated": "2026-06-08",
-    "strategy": "CSAK HIVATALOS cég-források (OpenAI, Google, Meta, Microsoft, Hugging Face). SEMMI hírmagazin és SEMMI hír-aggregátor (Hacker News is kivéve - mások tartalmára mutat). Senkit nem másolunk/lopunk. Social (X/Reddit/YouTube) = future, csak hivatalos cég-fiókok lesznek belőle.",
+    "version": "3.2",
+    "last_updated": "2026-06-21",
+    "strategy": "CSAK HIVATALOS cég-források, MINDEN nagy LLM-cég lefedve a hitelességért: OpenAI, Google (DeepMind/AI/Research/Workspace), Anthropic, Microsoft, Meta, Mistral, Alibaba (Qwen), Apple, NVIDIA, Hugging Face, AWS, GitHub. Akiknek NINCS nyilvános RSS-ük (Anthropic, Perplexity, xAI, DeepSeek, Cohere) -> felvéve de kikapcsolva, hírhez X/HTML integráció kell (future). SEMMI hírmagazin/aggregátor. Minden feed tesztelve (működik-e).",
     "max_items_per_feed": 5,
     "priority_legend": {
       "1": "Magas - hivatalos cég blogok",
@@ -61,12 +61,12 @@
     {
       "id": "microsoft-ai",
       "name": "Microsoft AI (hivatalos)",
-      "url": "https://blogs.microsoft.com/ai/feed/",
+      "url": "https://news.microsoft.com/source/topics/ai/feed/",
       "category": "ai-company-official",
       "priority": 2,
       "language": "en",
       "country": "US",
-      "comment": "HIVATALOS Microsoft - Copilot, Azure AI, Windows AI.",
+      "comment": "HIVATALOS Microsoft (news.microsoft.com/source AI) - Copilot, Azure AI. A regi blogs.microsoft.com/ai 410 lett, atallitva 2026-06-21 (tesztelve: 200 FEED).",
       "enabled": true
     },
     {
@@ -156,6 +156,72 @@
       "country": "FR",
       "comment": "HIVATALOS Mistral - európai AI cég, fogyasztói termék (Le Chat). Forrás-kutató agent találta (2026-06-08).",
       "enabled": true
+    },
+    {
+      "id": "alibaba-qwen",
+      "name": "Alibaba Qwen (hivatalos)",
+      "url": "https://qwenlm.github.io/blog/index.xml",
+      "category": "ai-company-official",
+      "priority": 2,
+      "language": "en",
+      "country": "CN",
+      "comment": "HIVATALOS Alibaba Qwen blog. Tesztelve 2026-06-21: 200 FEED.",
+      "enabled": true
+    },
+    {
+      "id": "apple-ml",
+      "name": "Apple Machine Learning Research (hivatalos)",
+      "url": "https://machinelearning.apple.com/rss.xml",
+      "category": "ai-company-official",
+      "priority": 3,
+      "language": "en",
+      "country": "US",
+      "comment": "HIVATALOS Apple ML Research (Apple Intelligence háttér). Tesztelve 2026-06-21: 200 FEED.",
+      "enabled": true
+    },
+    {
+      "id": "perplexity-blog",
+      "name": "Perplexity (hivatalos)",
+      "url": "https://www.perplexity.ai/hub/rss.xml",
+      "category": "ai-company-official",
+      "priority": 2,
+      "language": "en",
+      "country": "US",
+      "comment": "HIVATALOS Perplexity, de 403 (nincs nyilvános RSS / botvédett, 2026-06-21). KIKAPCSOLVA - útmutatóban szerepel; hírhez X/HTML integráció kell (future).",
+      "enabled": false
+    },
+    {
+      "id": "xai-blog",
+      "name": "xAI / Grok (hivatalos)",
+      "url": "https://x.ai/blog/rss.xml",
+      "category": "ai-company-official",
+      "priority": 2,
+      "language": "en",
+      "country": "US",
+      "comment": "HIVATALOS xAI, de 403 (nincs nyilvános RSS, 2026-06-21). KIKAPCSOLVA - hírhez X integráció kell (future).",
+      "enabled": false
+    },
+    {
+      "id": "deepseek-blog",
+      "name": "DeepSeek (hivatalos)",
+      "url": "https://api-docs.deepseek.com/news",
+      "category": "ai-company-official",
+      "priority": 2,
+      "language": "en",
+      "country": "CN",
+      "comment": "HIVATALOS DeepSeek, de nincs RSS (404/HTML, 2026-06-21). KIKAPCSOLVA - hírhez HTML-scrape kell (future).",
+      "enabled": false
+    },
+    {
+      "id": "cohere-blog",
+      "name": "Cohere (hivatalos)",
+      "url": "https://cohere.com/blog",
+      "category": "ai-company-official",
+      "priority": 3,
+      "language": "en",
+      "country": "CA",
+      "comment": "HIVATALOS Cohere (vállalati AI), de nincs RSS (HTML, 2026-06-21). KIKAPCSOLVA (future).",
+      "enabled": false
     },
 
     {
