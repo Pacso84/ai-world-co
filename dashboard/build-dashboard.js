@@ -23,6 +23,7 @@ const AGENT_META = {
   'ceo':          { icon: '👔', name: 'CEO', role: 'A teljes folyamatot vezényli' },
   'rss-scraper':  { icon: '🛰️', name: 'Gyűjtő', role: 'Hivatalos AI-forrásokat figyel' },
   'iro':          { icon: '✍️', name: 'Író', role: 'Eredeti cikkeket ír' },
+  'guide':        { icon: '📘', name: 'Útmutató', role: 'Lépésről-lépésre gyakorlati útmutatókat ír' },
   'ellenorzo':    { icon: '🔎', name: 'Ellenőrző', role: 'Minőségi és pontossági kapu' },
   'source-scout': { icon: '🔭', name: 'Forrás-kutató', role: 'Új hivatalos forrásokat keres' },
   'designer':     { icon: '🎨', name: 'Tervező', role: 'Cikk-borítóképeket készít' },

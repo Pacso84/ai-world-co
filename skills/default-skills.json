@@ -51,6 +51,12 @@
     { "scope": "social", "title": "At most two hashtags", "recipe": "Use no more than two genuinely relevant hashtags. No hashtag spam, no hype, no all-caps." },
     { "scope": "social", "title": "Lead with the benefit", "recipe": "Open with why it is useful to the reader, not with the product name. Make them curious enough to read the article." },
 
+    { "scope": "guide", "title": "A complete beginner can follow it", "recipe": "Assume zero prior knowledge. Every step must be doable by someone who has never opened the tool. Describe where to look in general terms ('find a button like…') since menus change." },
+    { "scope": "guide", "title": "One action per step", "recipe": "Each numbered step is a single concrete action with a short why and a copyable example. Aim for 3-6 steps — never a wall of text." },
+    { "scope": "guide", "title": "Original, never copy the docs", "recipe": "Teach the concept in our own words. Name the real tool, but never copy or paraphrase a company's help pages or marketing." },
+    { "scope": "guide", "title": "Neutral and kind about every tool", "recipe": "When mentioning other tools, stay neutral and respectful — never put any company or product down. Help the reader choose, don't sell." },
+    { "scope": "guide", "title": "End with a real first move", "recipe": "Always finish with a 'Try it now' the reader can do in two minutes. Momentum beats theory." },
+
     { "scope": "api-expert", "title": "Verify, don't trust the docs", "recipe": "Always preflight-probe a model before assigning it. A model named in documentation may return 404 or have zero free quota." },
     { "scope": "api-expert", "title": "Right model per task", "recipe": "Match model strengths to the task: reasoning models for hard judgement, fast structured models for JSON/short outputs, reliable ones for creative short text." },
 

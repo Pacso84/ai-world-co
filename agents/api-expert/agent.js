@@ -57,6 +57,8 @@ const TASK_PREFERENCES = {
   'rss-scraper': [['google','gemini-flash-latest'], ['groq','llama-3.3-70b-versatile'], ['cerebras','gpt-oss-120b']],
   // Kreatív, hosszú cikkírás: minőség
   'iro': [['anthropic','claude-sonnet-4-6'], ['cerebras','gpt-oss-120b'], ['google','gemini-2.5-pro'], ['google','gemini-flash-latest']],
+  // Útmutató (hosszú, strukturált, lépésről-lépésre): mint az Író
+  'guide': [['anthropic','claude-sonnet-4-6'], ['cerebras','gpt-oss-120b'], ['google','gemini-2.5-pro'], ['google','gemini-flash-latest']],
   // Minőség-ellenőrzés (strukturált JSON): erős + megbízható
   'ellenorzo': [['anthropic','claude-sonnet-4-6'], ['google','gemini-2.5-pro'], ['google','gemini-flash-latest'], ['groq','llama-3.3-70b-versatile']],
   // Felfedezés/kutatás: olcsó, JSON

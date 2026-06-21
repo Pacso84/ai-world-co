@@ -127,6 +127,18 @@
       "enabled": true,
       "comment": "Publikalo: determinisztikus build (HTML) + AI FOSZERKESZTOI zaro-ellenorzes (kesz-e a kiadasra) + kiadasi osszefoglalo."
     },
+    "guide": {
+      "primary_model": {
+        "provider": "cerebras",
+        "model": "gpt-oss-120b"
+      },
+      "fallback_model": {
+        "provider": "google",
+        "model": "gemini-flash-latest"
+      },
+      "enabled": true,
+      "comment": "Utmutato-agent: lepesrol-lepesre gyakorlati utmutatok (guides/guide-topics.json). Eros, ingyenes iras (Cerebras), fallback gemini-flash."
+    },
     "api-expert": {
       "deterministic": true,
       "enabled": true,

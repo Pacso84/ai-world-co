@@ -1,0 +1,223 @@
+{
+  "_meta": {
+    "note": "Utmutato-temak (gyakorlati, lepesrol-lepesre). SZERKESZTHETO: vegyel fel/torolj temat, vagy allitsd a 'status'-t. Az Utmutato-agent a legregebbi 'todo' temat dolgozza fel (vagy --id/--title parameterrel konkretat), siker utan 'done'-ra allitja. A tartalom mindig EREDETI - a cegek doksijat csak ihletkent hasznaljuk, sosem masoljuk.",
+    "levels": [
+      "beginner",
+      "intermediate"
+    ],
+    "editable": true
+  },
+  "topics": [
+    {
+      "id": "prompt-basics",
+      "company": "",
+      "tool": "",
+      "title": "How to write a clear prompt that gets better AI answers",
+      "audience": "both",
+      "level": "beginner",
+      "angle": "The single most useful skill: be specific, give context, ask for a format. Works with any chatbot.",
+      "status": "done",
+      "written_at": "2026-06-21T20:07:34.577Z"
+    },
+    {
+      "id": "what-ai-is-good-for",
+      "company": "",
+      "tool": "",
+      "title": "What everyday tasks AI is actually great at (and what to avoid)",
+      "audience": "both",
+      "level": "beginner",
+      "angle": "Concrete everyday jobs: drafting, summarising, planning, explaining; plus where to be careful.",
+      "status": "todo"
+    },
+    {
+      "id": "fact-check-ai",
+      "company": "",
+      "tool": "",
+      "title": "How to fact-check an AI answer in under a minute",
+      "audience": "both",
+      "level": "beginner",
+      "angle": "Teach healthy scepticism: ask for sources, cross-check, watch for confident-but-wrong.",
+      "status": "todo"
+    },
+    {
+      "id": "ai-privacy-basics",
+      "company": "",
+      "tool": "",
+      "title": "How to use AI safely with your personal information",
+      "audience": "both",
+      "level": "beginner",
+      "angle": "What not to paste, settings to check, simple habits to stay private.",
+      "status": "todo"
+    },
+    {
+      "id": "chatgpt-getting-started",
+      "company": "OpenAI",
+      "tool": "ChatGPT",
+      "title": "Getting started with ChatGPT: your first 15 minutes",
+      "audience": "both",
+      "level": "beginner",
+      "angle": "Account, the chat box, a first useful task, saving and sharing.",
+      "status": "todo"
+    },
+    {
+      "id": "chatgpt-memory",
+      "company": "OpenAI",
+      "tool": "ChatGPT",
+      "title": "How to use ChatGPT's memory so it remembers your preferences",
+      "audience": "both",
+      "level": "beginner",
+      "angle": "Teach it your style once; manage and delete memories.",
+      "status": "todo"
+    },
+    {
+      "id": "chatgpt-voice",
+      "company": "OpenAI",
+      "tool": "ChatGPT",
+      "title": "Using ChatGPT Voice for hands-free everyday tasks",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "Talk to it while cooking, commuting, tidying.",
+      "status": "todo"
+    },
+    {
+      "id": "gemini-getting-started",
+      "company": "Google",
+      "tool": "Gemini",
+      "title": "Getting started with Google Gemini for everyday life",
+      "audience": "both",
+      "level": "beginner",
+      "angle": "Where to find it, a first task, how it differs from search.",
+      "status": "todo"
+    },
+    {
+      "id": "gemini-workspace",
+      "company": "Google",
+      "tool": "Gemini in Workspace",
+      "title": "Using Gemini in Gmail and Docs to save time",
+      "audience": "business",
+      "level": "beginner",
+      "angle": "Draft emails, summarise threads, tidy documents.",
+      "status": "todo"
+    },
+    {
+      "id": "claude-getting-started",
+      "company": "Anthropic",
+      "tool": "Claude",
+      "title": "Getting started with Claude for clear, careful help",
+      "audience": "both",
+      "level": "beginner",
+      "angle": "Account, first task, when Claude shines (long docs, careful answers).",
+      "status": "todo"
+    },
+    {
+      "id": "claude-projects",
+      "company": "Anthropic",
+      "tool": "Claude Projects",
+      "title": "How to use Claude Projects to keep your work organised",
+      "audience": "business",
+      "level": "intermediate",
+      "angle": "Group related chats and files around one goal.",
+      "status": "todo"
+    },
+    {
+      "id": "copilot-getting-started",
+      "company": "Microsoft",
+      "tool": "Copilot",
+      "title": "Getting started with Microsoft Copilot in everyday apps",
+      "audience": "both",
+      "level": "beginner",
+      "angle": "Where it lives (Windows, Edge, Office), a first helpful task.",
+      "status": "todo"
+    },
+    {
+      "id": "meta-ai-whatsapp",
+      "company": "Meta",
+      "tool": "Meta AI",
+      "title": "How to use Meta AI inside WhatsApp",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "Ask questions, get ideas without leaving your chats.",
+      "status": "todo"
+    },
+    {
+      "id": "perplexity-getting-started",
+      "company": "Perplexity",
+      "tool": "Perplexity",
+      "title": "Getting started with Perplexity for answers that show their sources",
+      "audience": "both",
+      "level": "beginner",
+      "angle": "Great for research and shopping: every answer cites where it came from.",
+      "status": "todo"
+    },
+    {
+      "id": "qwen-getting-started",
+      "company": "Alibaba",
+      "tool": "Qwen",
+      "title": "Getting started with Alibaba's Qwen chatbot",
+      "audience": "both",
+      "level": "beginner",
+      "angle": "Where to access it, a first task, strong with many languages.",
+      "status": "todo"
+    },
+    {
+      "id": "grok-getting-started",
+      "company": "xAI",
+      "tool": "Grok",
+      "title": "Getting started with Grok (xAI) for everyday questions",
+      "audience": "both",
+      "level": "beginner",
+      "angle": "Where to find it (X app and web), a first task, casual tone.",
+      "status": "todo"
+    },
+    {
+      "id": "lechat-getting-started",
+      "company": "Mistral",
+      "tool": "Le Chat",
+      "title": "Getting started with Mistral's Le Chat",
+      "audience": "both",
+      "level": "beginner",
+      "angle": "A privacy-minded European option; a simple first task.",
+      "status": "todo"
+    },
+    {
+      "id": "deepseek-getting-started",
+      "company": "DeepSeek",
+      "tool": "DeepSeek",
+      "title": "Getting started with DeepSeek for everyday help",
+      "audience": "both",
+      "level": "beginner",
+      "angle": "Free and capable at step-by-step reasoning; where to use it.",
+      "status": "todo"
+    },
+    {
+      "id": "amazon-alexa-plus",
+      "company": "Amazon",
+      "tool": "Alexa+",
+      "title": "Using Amazon's new conversational Alexa+ at home",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "A chattier Alexa for reminders, planning and questions around the house.",
+      "status": "todo"
+    },
+    {
+      "id": "apple-intelligence-getting-started",
+      "company": "Apple",
+      "tool": "Apple Intelligence",
+      "title": "Getting started with Apple Intelligence on your iPhone",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "Writing tools, a smarter Siri, on-device privacy.",
+      "status": "todo"
+    },
+    {
+      "id": "ai-assistants-overview",
+      "company": "",
+      "tool": "",
+      "title": "The main AI assistants explained simply (and what each is best at)",
+      "audience": "both",
+      "level": "beginner",
+      "angle": "A neutral, friendly overview of ChatGPT, Gemini, Claude, Copilot, Perplexity, Grok, Qwen, Le Chat and DeepSeek. Never put any of them down; help the reader choose.",
+      "status": "todo"
+    }
+  ]
+}

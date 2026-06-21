@@ -1,7 +1,7 @@
 {
   "_meta": {
     "note": "Önírt skillek (receptek) a tapasztalatból.",
-    "updated": "2026-06-20T22:16:42.841Z"
+    "updated": "2026-06-21T20:07:32.841Z"
   },
   "skills": [
     {
@@ -416,8 +416,8 @@
       "source": "default",
       "enabled": true,
       "created": "2026-06-20T22:10:23.744Z",
-      "uses": 1,
-      "lastUsed": "2026-06-20T22:16:42.841Z"
+      "uses": 2,
+      "lastUsed": "2026-06-21T20:07:32.841Z"
     },
     {
       "id": "sk178199342374438654",
@@ -427,8 +427,63 @@
       "source": "default",
       "enabled": true,
       "created": "2026-06-20T22:10:23.744Z",
+      "uses": 2,
+      "lastUsed": "2026-06-21T20:07:32.841Z"
+    },
+    {
+      "id": "sk178207244160547611",
+      "scope": "guide",
+      "title": "A complete beginner can follow it",
+      "recipe": "Assume zero prior knowledge. Every step must be doable by someone who has never opened the tool. Describe where to look in general terms ('find a button like…') since menus change.",
+      "source": "default",
+      "enabled": true,
+      "created": "2026-06-21T20:07:21.605Z",
       "uses": 1,
-      "lastUsed": "2026-06-20T22:16:42.841Z"
+      "lastUsed": "2026-06-21T20:07:32.841Z"
+    },
+    {
+      "id": "sk178207244160644284",
+      "scope": "guide",
+      "title": "One action per step",
+      "recipe": "Each numbered step is a single concrete action with a short why and a copyable example. Aim for 3-6 steps — never a wall of text.",
+      "source": "default",
+      "enabled": true,
+      "created": "2026-06-21T20:07:21.606Z",
+      "uses": 1,
+      "lastUsed": "2026-06-21T20:07:32.841Z"
+    },
+    {
+      "id": "sk178207244160670818",
+      "scope": "guide",
+      "title": "Original, never copy the docs",
+      "recipe": "Teach the concept in our own words. Name the real tool, but never copy or paraphrase a company's help pages or marketing.",
+      "source": "default",
+      "enabled": true,
+      "created": "2026-06-21T20:07:21.606Z",
+      "uses": 1,
+      "lastUsed": "2026-06-21T20:07:32.841Z"
+    },
+    {
+      "id": "sk178207244160699602",
+      "scope": "guide",
+      "title": "Neutral and kind about every tool",
+      "recipe": "When mentioning other tools, stay neutral and respectful — never put any company or product down. Help the reader choose, don't sell.",
+      "source": "default",
+      "enabled": true,
+      "created": "2026-06-21T20:07:21.606Z",
+      "uses": 1,
+      "lastUsed": "2026-06-21T20:07:32.841Z"
+    },
+    {
+      "id": "sk178207244160676831",
+      "scope": "guide",
+      "title": "End with a real first move",
+      "recipe": "Always finish with a 'Try it now' the reader can do in two minutes. Momentum beats theory.",
+      "source": "default",
+      "enabled": true,
+      "created": "2026-06-21T20:07:21.606Z",
+      "uses": 1,
+      "lastUsed": "2026-06-21T20:07:32.841Z"
     }
   ]
 }
