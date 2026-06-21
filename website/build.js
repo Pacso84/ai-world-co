@@ -413,10 +413,10 @@ function buildGuidesPage(guides) {
   const cnt = n => `${n} guide${n > 1 ? 's' : ''}`;
 
   // 1) ELŐSZÖR a cégek — "hol keress" (csempék, ugrás a szekcióra)
-  const brandTile = (c) => `<a class="brandtile" href="#c-${companySlug(c)}">
+  const brandTile = (c) => `<a class="brandtile" href="#c-${companySlug(c)}" style="--gc:${GUIDE_COVER_COLORS[c] || '#4f7a86'}">
       <span class="brandtile__i">${COMPANY_ICONS[c] || '🤖'}</span>
       <span class="brandtile__n">${escapeHtml(c)}</span><span class="brandtile__c">${cnt(groups[c].length)}</span></a>`;
-  const generalBrand = hasGeneral ? `<a class="brandtile" href="#c-general">
+  const generalBrand = hasGeneral ? `<a class="brandtile" href="#c-general" style="--gc:#4f7a86">
       <span class="brandtile__i">🧭</span><span class="brandtile__n">General skills</span>
       <span class="brandtile__c">${cnt(groups[''].length)}</span></a>` : '';
   const brandRow = `<section class="brandpick">
