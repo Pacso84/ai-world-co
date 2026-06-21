@@ -454,10 +454,12 @@ body {
 .guides-hero__title { font-family:'Schibsted Grotesk',sans-serif; font-weight:800; font-size:clamp(32px,6vw,52px); letter-spacing:-.02em; line-height:1.05; margin:8px 0 10px; }
 .guides-hero__title em { color:var(--accent); font-style:italic; }
 .guides-hero__tag { font-size:18px; color:var(--ink-soft); max-width:640px; }
-.gtiles { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:14px; }
-.gtile { display:flex; flex-direction:column; gap:8px; background:var(--card); border:1px solid var(--line); border-radius:var(--radius-sm); padding:20px 18px; min-height:150px; text-decoration:none; color:var(--ink); transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease; }
-.gtile:hover { transform:translateY(-3px); box-shadow:0 18px 38px -24px rgba(28,26,22,.45); border-color:var(--line-strong); }
-.gtile__icon { font-size:34px; line-height:1; }
+.gtiles { display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); gap:16px; }
+.gtile { display:flex; flex-direction:column; background:var(--card); border:1px solid var(--line); border-radius:var(--radius-sm); overflow:hidden; min-height:178px; text-decoration:none; color:var(--ink); transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease; }
+.gtile:hover { transform:translateY(-4px); box-shadow:0 20px 40px -24px rgba(28,26,22,.5); border-color:var(--line-strong); }
+.gtile__head { height:80px; display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg, color-mix(in srgb,var(--gc) 72%,#fff), var(--gc)); }
+.gtile__badge { width:52px; height:52px; border-radius:15px; background:rgba(255,255,255,.95); display:flex; align-items:center; justify-content:center; font-size:28px; box-shadow:0 8px 18px -8px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.8); }
+.gtile__body { display:flex; flex-direction:column; gap:8px; padding:14px 16px 16px; flex:1; }
 .gtile__title { font-family:'Schibsted Grotesk',sans-serif; font-weight:700; font-size:15.5px; line-height:1.25; }
 .gtile__meta { display:flex; flex-wrap:wrap; gap:6px; margin-top:auto; align-items:center; }
 .gtile__tool { font-size:11px; font-weight:700; color:#3a5b65; background:color-mix(in srgb,#4f7a86 12%,var(--paper)); padding:3px 9px; border-radius:100px; }
@@ -492,3 +494,13 @@ body {
 .guide-cover__label { position:relative; color:#fff; font-family:'Schibsted Grotesk',sans-serif; font-weight:800; font-size:14.5px; letter-spacing:.03em;
   background:rgba(0,0,0,.20); padding:7px 17px; border-radius:100px; -webkit-backdrop-filter:blur(4px); backdrop-filter:blur(4px); }
 @media (max-width:560px){ .guide-cover__badge{ width:84px; height:84px; font-size:44px; border-radius:22px; } }
+
+/* Lépések a márka színével (cég-szín az <article>-ön: --gc) */
+.guide .g-step__no { background: var(--gc, var(--ink)); }
+.guide .g-step { border-left: 3px solid color-mix(in srgb, var(--gc, var(--accent)) 55%, var(--line)); }
+
+/* 💬 példa = chat-input mockup ("így írd be") — vizuális használat-bemutatás */
+.g-prompt { margin: 16px 0; }
+.g-prompt__lbl { display:block; font-size:11px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:var(--muted); margin-bottom:7px; }
+.g-prompt__box { display:block; position:relative; background:var(--paper); border:1px solid var(--line-strong); border-radius:16px; padding:14px 50px 14px 16px; font-size:14.5px; color:var(--ink); line-height:1.5; box-shadow:0 8px 20px -14px rgba(28,26,22,.45); }
+.g-prompt__send { position:absolute; right:11px; top:50%; transform:translateY(-50%); width:30px; height:30px; border-radius:50%; background:var(--gc, var(--accent)); color:#fff; display:flex; align-items:center; justify-content:center; font-size:12px; }

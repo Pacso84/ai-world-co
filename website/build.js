@@ -391,12 +391,15 @@ function guideCoverHtml(a, cls) {
 }
 
 function guideTile(a) {
+  const color = GUIDE_COVER_COLORS[a.company] || '#4f7a86';
   const aud = AUDIENCES[a.audience] || AUDIENCES.both;
   const level = a.level ? `<span class="gtile__lvl">${escapeHtml(a.level)}</span>` : '';
-  return `<a class="gtile" href="article/${a.slug}.html" data-audience="${a.audience}">
-    <span class="gtile__icon">${guideIcon(a)}</span>
-    <span class="gtile__title">${escapeHtml(a.title)}</span>
-    <span class="gtile__meta"><span class="gtile__aud">${aud.icon} ${aud.label}</span>${level}</span>
+  return `<a class="gtile" href="article/${a.slug}.html" data-audience="${a.audience}" style="--gc:${color}">
+    <span class="gtile__head"><span class="gtile__badge">${guideIcon(a)}</span></span>
+    <span class="gtile__body">
+      <span class="gtile__title">${escapeHtml(a.title)}</span>
+      <span class="gtile__meta"><span class="gtile__aud">${aud.icon} ${aud.label}</span>${level}</span>
+    </span>
   </a>`;
 }
 
@@ -529,7 +532,8 @@ function parseGuideSections(bodyMd) {
 // egy szekció HTML-je: a 💬 példákat (külön soron) kiemelt dobozba tesszük
 function guideSectionHtml(bodyMd) {
   // a 💬-vel kezdődő sorokat markdown ELŐTT blokk-szintű dobozzá alakítjuk
-  const pre = (bodyMd || '').replace(/^[ \t>]*💬[ \t]*(.+)$/gm, '\n\n<div class="g-example">💬 $1</div>\n\n');
+  const pre = (bodyMd || '').replace(/^[ \t>]*💬[ \t]*(?:example:?\s*)?(.+)$/gmi,
+    '\n\n<div class="g-prompt"><span class="g-prompt__lbl">💬 Try typing this</span><span class="g-prompt__box">$1<span class="g-prompt__send">➤</span></span></div>\n\n');
   return wrapTables(marked.parse(pre));
 }
 
@@ -563,7 +567,7 @@ function buildGuidePage(a) {
   const levelChip = a.level ? `<span class="g-level">${escapeHtml(a.level)}</span>` : '';
   const stepsTotal = sections.filter(s => /^step\s*\d/i.test(s.title)).length;
 
-  const body = `<article class="article guide">
+  const body = `<article class="article guide" style="--gc:${GUIDE_COVER_COLORS[a.company] || '#4f7a86'}">
     ${guideCoverHtml(a, 'article__cover')}
     <div class="article__head">
       <div class="article__badges">
