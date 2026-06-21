@@ -481,3 +481,14 @@ body {
 .table-wrap tbody tr:last-child td { border-bottom:none; }
 .table-wrap tbody tr:nth-child(even) { background:color-mix(in srgb,var(--paper-2) 35%,transparent); }
 .table-wrap td:first-child { font-weight:700; color:var(--ink); }
+
+/* ===== Útmutató borító (megtervezett, nem AI-fotó) ===== */
+.guide-cover { position:relative; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px; overflow:hidden;
+  background:radial-gradient(125% 125% at 28% 18%, color-mix(in srgb,var(--gc) 75%,#fff) 0%, var(--gc) 52%, color-mix(in srgb,var(--gc) 72%,#000) 100%); }
+.guide-cover__deco { position:absolute; inset:0;
+  background:radial-gradient(42% 60% at 86% 92%, rgba(255,255,255,.20), transparent 70%), radial-gradient(34% 44% at 12% 14%, rgba(255,255,255,.16), transparent 70%); }
+.guide-cover__badge { position:relative; width:104px; height:104px; border-radius:26px; display:flex; align-items:center; justify-content:center; font-size:54px;
+  background:rgba(255,255,255,.94); box-shadow:0 22px 46px -18px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.8); }
+.guide-cover__label { position:relative; color:#fff; font-family:'Schibsted Grotesk',sans-serif; font-weight:800; font-size:14.5px; letter-spacing:.03em;
+  background:rgba(0,0,0,.20); padding:7px 17px; border-radius:100px; -webkit-backdrop-filter:blur(4px); backdrop-filter:blur(4px); }
+@media (max-width:560px){ .guide-cover__badge{ width:84px; height:84px; font-size:44px; border-radius:22px; } }

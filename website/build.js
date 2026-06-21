@@ -374,6 +374,22 @@ function guideIcon(a) {
 function companySlug(c) { return c ? c.toLowerCase().replace(/[^a-z0-9]+/g, '-') : 'general'; }
 
 // Egy útmutató-csempe: ikon + cím + (kinek + szint). data-audience a szűréshez.
+// Megtervezett (NEM AI-fotó) útmutató-borító: márka-szín + app-ikon badge + eszköz.
+const GUIDE_COVER_COLORS = {
+  'OpenAI': '#10a37f', 'Google': '#4285f4', 'Anthropic': '#cc785c', 'Microsoft': '#0a7bd0',
+  'Meta': '#0866ff', 'Perplexity': '#20808d', 'Alibaba': '#ff6a00', 'xAI': '#2a2a2a',
+  'Mistral': '#fa5310', 'DeepSeek': '#4d6bfe', 'Amazon': '#ff9900', 'Apple': '#555555'
+};
+function guideCoverHtml(a, cls) {
+  const color = GUIDE_COVER_COLORS[a.company] || '#4f7a86';
+  const label = a.company ? escapeHtml([a.company, a.tool].filter(Boolean).join(' · ')) : 'Step-by-step guide';
+  return `<div class="${cls} guide-cover" style="--gc:${color}">
+    <div class="guide-cover__deco"></div>
+    <div class="guide-cover__badge">${guideIcon(a)}</div>
+    <div class="guide-cover__label">${label}</div>
+  </div>`;
+}
+
 function guideTile(a) {
   const aud = AUDIENCES[a.audience] || AUDIENCES.both;
   const level = a.level ? `<span class="gtile__lvl">${escapeHtml(a.level)}</span>` : '';
@@ -548,7 +564,7 @@ function buildGuidePage(a) {
   const stepsTotal = sections.filter(s => /^step\s*\d/i.test(s.title)).length;
 
   const body = `<article class="article guide">
-    ${coverHtml(a, '../', 'article__cover')}
+    ${guideCoverHtml(a, 'article__cover')}
     <div class="article__head">
       <div class="article__badges">
         <span class="tag ${cat.cls}">📘 Step-by-step guide</span>
