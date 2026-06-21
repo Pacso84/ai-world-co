@@ -172,6 +172,7 @@ function saveGuide(topic, response) {
       guide_topic_id: topic.id || null,
       company: topic.company || '',
       tool: topic.tool || '',
+      icon: topic.icon || '',
       level: topic.level || 'beginner',
       written_at: new Date().toISOString(),
       writer_provider: response.provider,

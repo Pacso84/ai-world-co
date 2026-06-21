@@ -164,6 +164,7 @@ function loadArticles() {
         company: data._meta?.company || '',
         tool: data._meta?.tool || '',
         level: data._meta?.level || '',
+        icon: data._meta?.icon || '',
         publishedAt: data._meta?.published_at || '',
         sourceName: data._meta?.source_name || '',
         sourceLink: data._meta?.source_link || '',
@@ -187,6 +188,7 @@ function pageShell({ title, description, bodyContent, isArticle = false, noIntro
   const cssPath = isArticle ? '../assets/style.css' : 'assets/style.css';
   const homePath = isArticle ? '../index.html' : 'index.html';
   const supportPath = isArticle ? '../support.html' : 'support.html';
+  const guidesPath = isArticle ? '../guides.html' : 'guides.html';
   const year = new Date().getFullYear();
   const url = canonical || SITE.url;
   const img = ogImage || (SITE.url + '/assets/logo.svg');
@@ -225,9 +227,8 @@ function pageShell({ title, description, bodyContent, isArticle = false, noIntro
     <div class="navbar__inner">
       <a href="${homePath}" class="navbar__logo"><img src="${cssPath.replace('style.css', 'logo.svg')}" alt="" class="navbar__mark">${SITE.name}<span class="navbar__dot">.</span></a>
       <nav class="navbar__nav">
-        <a href="${homePath}#all" data-nav="all">Latest</a>
-        <a href="${homePath}#personal" data-nav="personal">🏠 Everyday life</a>
-        <a href="${homePath}#business" data-nav="business">💼 Business</a>
+        <a href="${homePath}">News</a>
+        <a href="${guidesPath}">📘 Guides</a>
         ${SUPPORT.enabled ? `<a href="${supportPath}" class="navbar__support">☕ Support</a>` : ''}
       </nav>
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Light / dark">
@@ -315,7 +316,7 @@ function buildIndex(articles) {
   const grid = rest.length > 0 ? `<section class="grid-section">
     <div class="section-head">
       <span class="pill">The Edit</span>
-      <h2 class="section-title">Latest <span class="muted-word">stories</span></h2>
+      <h2 class="section-title">Latest <span class="muted-word">news</span></h2>
     </div>
     ${chipsHtml}
     <div class="grid" id="grid">
@@ -323,13 +324,107 @@ function buildIndex(articles) {
     </div>
   </section>` : '';
 
+  const guidesCta = `<a class="guides-cta" href="guides.html">
+    <span class="guides-cta__i">📘</span>
+    <span class="guides-cta__t"><strong>New to AI? Start with our step-by-step guides</strong><br>Browse practical how-tos by tool and task — everyday and business.</span>
+    <span class="guides-cta__arrow">→</span></a>`;
+
   return pageShell({
     title: `${SITE.name} — ${SITE.tagline}`,
     description: SITE.description,
     canonical: SITE.url,
     ogImage: articles[0]?.image ? `${SITE.url}/assets/images/${articles[0].image}` : '',
     jsonld: { '@context': 'https://schema.org', '@type': 'WebSite', name: SITE.name, url: SITE.url, description: SITE.description },
-    bodyContent: featuredHtml + grid
+    bodyContent: featuredHtml + guidesCta + grid
+  });
+}
+
+// ===================================================================
+// ÚTMUTATÓK OLDAL — funkció szerinti, IKONOS CSEMPÉS böngésző
+// ===================================================================
+// Két szekció: 🏠 Mindennapi és 💼 Üzleti. Minden útmutató egy csempe
+// (ikon + cím + eszköz/szint), hogy az olvasó a KERESETT funkciót
+// gyorsan megtalálja. (Nem hír — ezért külön oldalon.)
+// ===================================================================
+
+const COMPANY_ICONS = {
+  'OpenAI': '💬', 'Google': '✨', 'Anthropic': '📝', 'Microsoft': '🪟',
+  'Meta': '🟢', 'Perplexity': '🔎', 'Alibaba': '🌏', 'xAI': '⚡',
+  'Mistral': '🌀', 'DeepSeek': '🐋', 'Amazon': '🔊', 'Apple': '🍎'
+};
+function guideIcon(a) {
+  if (a.icon) return a.icon;                       // explicit (a témából)
+  if (a.company && COMPANY_ICONS[a.company]) return COMPANY_ICONS[a.company];
+  const t = (a.title || '').toLowerCase();
+  if (t.includes('prompt')) return '✍️';
+  if (t.includes('fact')) return '🔍';
+  if (t.includes('privacy') || t.includes('safe')) return '🔒';
+  if (t.includes('which') || t.includes('explained') || t.includes('overview') || t.includes('best at')) return '🧭';
+  if (t.includes('task')) return '🧰';
+  return '📘';
+}
+
+function companySlug(c) { return c ? c.toLowerCase().replace(/[^a-z0-9]+/g, '-') : 'general'; }
+
+// Egy útmutató-csempe: ikon + cím + (kinek + szint). data-audience a szűréshez.
+function guideTile(a) {
+  const aud = AUDIENCES[a.audience] || AUDIENCES.both;
+  const level = a.level ? `<span class="gtile__lvl">${escapeHtml(a.level)}</span>` : '';
+  return `<a class="gtile" href="article/${a.slug}.html" data-audience="${a.audience}">
+    <span class="gtile__icon">${guideIcon(a)}</span>
+    <span class="gtile__title">${escapeHtml(a.title)}</span>
+    <span class="gtile__meta"><span class="gtile__aud">${aud.icon} ${aud.label}</span>${level}</span>
+  </a>`;
+}
+
+function buildGuidesPage(guides) {
+  // CÉG szerinti csoportosítás ('' = általános készségek)
+  const groups = {};
+  for (const g of guides) { const k = g.company || ''; (groups[k] = groups[k] || []).push(g); }
+  const ORDER = ['OpenAI', 'Google', 'Anthropic', 'Microsoft', 'Meta', 'Perplexity', 'Alibaba', 'xAI', 'Mistral', 'DeepSeek', 'Amazon', 'Apple'];
+  const companies = [...ORDER.filter(c => groups[c]), ...Object.keys(groups).filter(c => c && !ORDER.includes(c))];
+  const hasGeneral = !!groups[''];
+  const cnt = n => `${n} guide${n > 1 ? 's' : ''}`;
+
+  // 1) ELŐSZÖR a cégek — "hol keress" (csempék, ugrás a szekcióra)
+  const brandTile = (c) => `<a class="brandtile" href="#c-${companySlug(c)}">
+      <span class="brandtile__i">${COMPANY_ICONS[c] || '🤖'}</span>
+      <span class="brandtile__n">${escapeHtml(c)}</span><span class="brandtile__c">${cnt(groups[c].length)}</span></a>`;
+  const generalBrand = hasGeneral ? `<a class="brandtile" href="#c-general">
+      <span class="brandtile__i">🧭</span><span class="brandtile__n">General skills</span>
+      <span class="brandtile__c">${cnt(groups[''].length)}</span></a>` : '';
+  const brandRow = `<section class="brandpick">
+      <div class="section-head"><span class="pill">Step 1</span><h2 class="section-title">Pick your <span class="muted-word">AI tool</span></h2></div>
+      <div class="brandtiles">${companies.map(brandTile).join('')}${generalBrand}</div></section>`;
+
+  // 2) UTÁNA a funkciók/útmutatók — cégenként
+  const companySection = (c) => `<section class="grid-section" id="c-${companySlug(c)}">
+      <div class="section-head"><span class="pill">${COMPANY_ICONS[c] || '🤖'} ${escapeHtml(c)}</span>
+        <h2 class="section-title">${escapeHtml(c)} <span class="muted-word">guides</span></h2></div>
+      <div class="gtiles">${groups[c].map(guideTile).join('')}</div></section>`;
+  const generalSection = hasGeneral ? `<section class="grid-section" id="c-general">
+      <div class="section-head"><span class="pill">🧭 General skills</span>
+        <h2 class="section-title">Core <span class="muted-word">AI skills</span></h2></div>
+      <div class="gtiles">${groups[''].map(guideTile).join('')}</div></section>` : '';
+
+  const header = `<section class="guides-hero">
+    <p class="intro__kicker">Step-by-step</p>
+    <h1 class="guides-hero__title">Practical AI <em>guides</em></h1>
+    <p class="guides-hero__tag">Plain-language tutorials. First pick the AI tool you use, then choose what you want to learn.</p>
+  </section>`;
+
+  const empty = `<p class="muted" style="color:var(--ink-soft)">Guides are on their way — check back shortly.</p>`;
+  const body = header + (guides.length
+    ? brandRow + companies.map(companySection).join('') + generalSection
+    : empty);
+
+  return pageShell({
+    title: `Guides — ${SITE.name}`,
+    description: 'Step-by-step, plain-language guides to using AI tools like ChatGPT, Gemini, Claude and more. Pick your tool, then learn what you need.',
+    canonical: `${SITE.url}/guides.html`,
+    noIntro: true,
+    jsonld: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'AI World Guides', url: `${SITE.url}/guides.html` },
+    bodyContent: body
   });
 }
 
@@ -559,13 +654,19 @@ function main() {
     console.log(`✅ ${imgCount} kép másolva`);
   }
 
-  // Cikkek
+  // Cikkek — hírek (főoldal) és útmutatók (külön oldal) szétválasztva
   const articles = loadArticles();
-  console.log(`📰 ${articles.length} publikált cikk betöltve`);
+  const news = articles.filter(a => !a.isGuide);
+  const guides = articles.filter(a => a.isGuide);
+  console.log(`📰 ${articles.length} publikált (${news.length} hír, ${guides.length} útmutató)`);
 
-  // Index
-  writeFileSync(join(OUT_DIR, 'index.html'), buildIndex(articles), 'utf-8');
-  console.log('✅ index.html generálva');
+  // Főoldal = CSAK hírek
+  writeFileSync(join(OUT_DIR, 'index.html'), buildIndex(news), 'utf-8');
+  console.log('✅ index.html generálva (hírek)');
+
+  // Útmutatók oldal = ikonos csempés böngésző (Mindennapi / Üzleti)
+  writeFileSync(join(OUT_DIR, 'guides.html'), buildGuidesPage(guides), 'utf-8');
+  console.log(`✅ guides.html generálva (${guides.length} útmutató, csempés)`);
 
   // Cikk + útmutató oldalak
   let guideCount = 0;
@@ -586,6 +687,7 @@ function main() {
   const today = new Date().toISOString().slice(0, 10);
   const urls = [
     { loc: SITE.url + '/', date: today },
+    ...(guides.length ? [{ loc: `${SITE.url}/guides.html`, date: today }] : []),
     ...(SUPPORT.enabled ? [{ loc: `${SITE.url}/support.html`, date: today }] : []),
     ...articles.map(a => ({ loc: `${SITE.url}/article/${a.slug}.html`, date: (a.publishedAt || '').slice(0, 10) || today }))
   ];

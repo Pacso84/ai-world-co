@@ -1,0 +1,83 @@
+{
+  "started_at": "2026-06-21T20:33:00.928Z",
+  "total": 10,
+  "passed": 8,
+  "failed": 2,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.0034987599999999996,
+  "by_article": [
+    {
+      "writer": "WRITER_GUIDE_ai-privacy-basics.json",
+      "article": "ARTICLE_GUIDE_ai-privacy-basics.json",
+      "decision": "PASS",
+      "score": 10,
+      "cost_usd": 0.000159
+    },
+    {
+      "writer": "WRITER_GUIDE_chatgpt-getting-started.json",
+      "article": "ARTICLE_GUIDE_chatgpt-getting-started.json",
+      "decision": "PASS",
+      "score": 10,
+      "cost_usd": 0.00017565000000000001
+    },
+    {
+      "writer": "WRITER_GUIDE_chatgpt-memory.json",
+      "article": "ARTICLE_GUIDE_chatgpt-memory.json",
+      "decision": "PASS",
+      "score": 10,
+      "cost_usd": 0.0001563
+    },
+    {
+      "writer": "WRITER_GUIDE_chatgpt-voice.json",
+      "rejected": "REJECTED_GUIDE_chatgpt-voice.json",
+      "decision": "FAIL",
+      "score": 6,
+      "cost_usd": 0.00017984999999999995
+    },
+    {
+      "writer": "WRITER_GUIDE_claude-getting-started.json",
+      "article": "ARTICLE_GUIDE_claude-getting-started.json",
+      "decision": "PASS",
+      "score": 10,
+      "cost_usd": 0.000153
+    },
+    {
+      "writer": "WRITER_GUIDE_claude-projects.json",
+      "rejected": "REJECTED_GUIDE_claude-projects.json",
+      "decision": "FAIL",
+      "score": 5,
+      "cost_usd": 0.00014414999999999998
+    },
+    {
+      "writer": "WRITER_GUIDE_fact-check-ai.json",
+      "article": "ARTICLE_GUIDE_fact-check-ai.json",
+      "decision": "PASS",
+      "score": 10,
+      "cost_usd": 0.0001596
+    },
+    {
+      "writer": "WRITER_GUIDE_gemini-getting-started.json",
+      "article": "ARTICLE_GUIDE_gemini-getting-started.json",
+      "decision": "PASS",
+      "score": 10,
+      "cost_usd": 0.00015239999999999996
+    },
+    {
+      "writer": "WRITER_GUIDE_gemini-workspace.json",
+      "article": "ARTICLE_GUIDE_gemini-workspace.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.00112276
+    },
+    {
+      "writer": "WRITER_GUIDE_what-ai-is-good-for.json",
+      "article": "ARTICLE_GUIDE_what-ai-is-good-for.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0010960499999999999
+    }
+  ],
+  "finished_at": "2026-06-21T20:33:43.722Z",
+  "duration_seconds": 42.794
+}

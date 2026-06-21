@@ -76,7 +76,7 @@ function countReworkable() {
     .filter(f => {
       try {
         const d = JSON.parse(readFileSync(join(REJECTED_DIR, f), 'utf-8'));
-        return d._meta?.can_retry !== false && (d._meta?.rework_attempts || 0) < MAX_REWORK_ATTEMPTS;
+        return d._meta?.type !== 'guide' && d._meta?.can_retry !== false && (d._meta?.rework_attempts || 0) < MAX_REWORK_ATTEMPTS;
       } catch { return false; }
     }).length;
 }
