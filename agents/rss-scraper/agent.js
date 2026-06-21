@@ -115,7 +115,18 @@ async function fetchFeed(feedConfig) {
     const feed = await parser.parseURL(feedConfig.url);
     return { ok: true, items: feed.items || [] };
   } catch (error) {
-    return { ok: false, error: error.message, items: [] };
+    // TARTALÉK: nyers XML letöltése + hibás entitások javítása, majd parseString.
+    // (Pl. Apple feed: escape-eletlen & -> "Invalid character in entity name".)
+    try {
+      const r = await fetch(feedConfig.url, { headers: { 'User-Agent': 'Mozilla/5.0 (compatible; AIWorldCo/1.0)' } });
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      let xml = await r.text();
+      xml = xml.replace(/&(?!(?:amp|lt|gt|quot|apos|#\d+|#x[0-9a-fA-F]+);)/g, '&amp;');
+      const feed = await parser.parseString(xml);
+      return { ok: true, items: feed.items || [], recovered: true };
+    } catch (e2) {
+      return { ok: false, error: error.message, items: [] };
+    }
   }
 }
 
