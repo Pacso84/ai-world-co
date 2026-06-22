@@ -15,7 +15,7 @@
     "editorial": {
       "label": "📰 Editorial — tartalomgyártás",
       "lead": "ellenorzo",
-      "members": ["rss-scraper", "iro", "guide", "designer", "web-designer"]
+      "members": ["rss-scraper", "iro", "guide", "designer", "web-designer", "fact-check"]
     },
     "growth": {
       "label": "📈 Growth — elérés & közönség",
@@ -31,12 +31,13 @@
 
   "roster": {
     "ceo":         { "title": "CEO / Orchestrator",            "reports_to": "human",      "manages": ["ellenorzo", "seo", "api-expert"],                         "peers": [],                                                 "authority": "Vezényel; go/no-go; limit-betartatás; útmutató-eszkaláció végső döntése." },
-    "ellenorzo":   { "title": "Főszerkesztő / Minőségi kapu",  "department": "editorial",  "reports_to": "ceo", "manages": ["rss-scraper", "iro", "guide", "designer", "web-designer"], "peers": ["seo", "api-expert"], "authority": "Publikál vagy visszaad — minőségi + jogi kapu." },
+    "ellenorzo":   { "title": "Főszerkesztő / Minőségi kapu",  "department": "editorial",  "reports_to": "ceo", "manages": ["rss-scraper", "iro", "guide", "designer", "web-designer", "fact-check"], "peers": ["seo", "api-expert"], "authority": "Publikál vagy visszaad — minőségi + jogi kapu." },
     "rss-scraper": { "title": "Gyűjtő",                        "department": "editorial",  "reports_to": "ellenorzo",  "peers": ["iro", "guide", "designer", "web-designer"],       "authority": "Témákat gyűjt hivatalos forrásokból → átadja az Írónak." },
     "iro":         { "title": "Író (hírek)",                   "department": "editorial",  "reports_to": "ellenorzo",  "peers": ["rss-scraper", "guide", "designer", "web-designer"], "authority": "Eredeti híreket ír; rework-ban javít (max 2 kör)." },
     "guide":       { "title": "Útmutató-író",                  "department": "editorial",  "reports_to": "ellenorzo",  "peers": ["rss-scraper", "iro", "designer", "web-designer"], "authority": "Lépésről-lépésre útmutatókat ír; rework-ban javít (4 körig, utána CEO dönt)." },
     "designer":    { "title": "Tervező (képek)",              "department": "editorial",  "reports_to": "ellenorzo",  "peers": ["rss-scraper", "iro", "guide", "web-designer"],   "authority": "Cikk-borítóképeket készít." },
-    "web-designer":{ "title": "Honlap-szerkesztő (layout)",    "department": "editorial",  "reports_to": "ellenorzo",  "peers": ["rss-scraper", "iro", "guide", "designer"],       "authority": "A weboldal elrendezése (website/design.json); a design-szabályokat a memóriájában tartja." },
+    "web-designer":{ "title": "Honlap-szerkesztő (layout)",    "department": "editorial",  "reports_to": "ellenorzo",  "peers": ["rss-scraper", "iro", "guide", "designer", "fact-check"], "authority": "A weboldal elrendezése (website/design.json); a design-szabályokat a memóriájában tartja." },
+    "fact-check":  { "title": "Tény-ellenőrző / Frissesség-őr",  "department": "editorial",  "reports_to": "ellenorzo",  "peers": ["rss-scraper", "iro", "guide", "designer", "web-designer"], "authority": "A PUBLIKÁLT útmutatókat újraellenőrzi; a valótlanná vált részt eltávolítja/lágyítja → vissza az Ellenőrzőre. Tárgytalan útmutatót levesz, emberhez eszkalál." },
     "seo":         { "title": "SEO-vezető",                    "department": "growth",     "reports_to": "ceo", "manages": ["social"],                                  "peers": ["ellenorzo", "api-expert"],                        "authority": "Keresőoptimalizálás; a Growth részleg vezetése." },
     "social":      { "title": "Közösségi",                     "department": "growth",     "reports_to": "seo",        "peers": [],                                                 "authority": "Közösségi posztok (terv)." },
     "api-expert":  { "title": "Operations-vezető / API-szakértő","department": "operations","reports_to": "ceo", "manages": ["analyst", "source-scout", "publisher"],     "peers": ["ellenorzo", "seo"],                               "authority": "Modell-hozzárendelés (elérhetőség + feladat); az Operations vezetése." },
@@ -47,7 +48,7 @@
 
   "peer_groups": [
     { "label": "Részlegvezetők (mellérendelt)", "members": ["ellenorzo", "seo", "api-expert"], "note": "Egyenrangúak; mind a CEO-nak jelent. Ha keresztbe-érintő ügy van, egyeztetnek, nem utasítják egymást." },
-    { "label": "Tartalom-csapat (mellérendelt)", "members": ["rss-scraper", "iro", "guide", "designer", "web-designer"], "note": "Egyenrangú szakemberek az Editorialban; az Ellenőrzőnek jelentenek, egymásnak laterálisan adják át a munkát." },
+    { "label": "Tartalom-csapat (mellérendelt)", "members": ["rss-scraper", "iro", "guide", "designer", "web-designer", "fact-check"], "note": "Egyenrangú szakemberek az Editorialban; az Ellenőrzőnek jelentenek, egymásnak laterálisan adják át a munkát." },
     { "label": "Operations-csapat (mellérendelt)", "members": ["analyst", "source-scout", "publisher"], "note": "Egyenrangúak; az API-szakértőnek jelentenek." }
   ],
 
@@ -55,6 +56,7 @@
     { "who": "human (owner)", "decides": "Élesítés (go-live), önfejlesztés jóváhagyása, új források jóváhagyása, költségkeret" },
     { "who": "ceo", "decides": "Napi prioritás, go/no-go, limitek (cikk/nap, költség/nap); az útmutató VÉGSŐ sorsa 4 sikertelen kör után (jóváhagyás felülbírálással VAGY emberhez eszkalálás)" },
     { "who": "ellenorzo", "decides": "Publikál vagy elutasít (minőségi + jogi kapu) — mind a hírek, mind az útmutatók felett" },
+    { "who": "fact-check", "decides": "A publikált útmutatóból mit kell eltávolítani/lágyítani (valótlanná vált rész); javaslatát az Ellenőrző hagyja jóvá újra-ellenőrzéskor" },
     { "who": "web-designer", "decides": "A weboldal elrendezése (oszlopszám, csempe-méret, igazítás) a megjegyzett design-szabályok alapján" },
     { "who": "api-expert", "decides": "Melyik modellt használja az egyes agent (elérhetőség + feladat alapján)" },
     { "who": "analyst", "decides": "Mit tanuljunk; önfejlesztési JAVASLAT (ember hagyja jóvá)" },
@@ -97,6 +99,11 @@
       "mechanism": "AGENT-KOMMUNIKÁCIÓ (core/ops.js): problem (mi a baj) / fix (mit javítottam) / need (hiányos vagy kell még adat — nyitva marad) / decision (főnök) üzenetek. Látható a vezérlő Kommunikáció paneljén."
     },
     {
+      "from": "fact-check", "to": "ellenorzo",
+      "trigger": "Egy publikált útmutató valótlanná vált (funkció megszűnt/változott)",
+      "mechanism": "A Tény-ellenőrző eltávolítja/lágyítja a valótlan részt, a régi verziót LEVESZI az oldalról, a javítottat visszaküldi az Ellenőrző igazság-kapujára (újra-ellenőrzés). Ha tárgytalan az egész → leveszi és emberhez eszkalál. Tanulság a 'guide' memóriába, hogy a jövőben se állítsuk."
+    },
+    {
       "from": "human / ceo", "to": "web-designer",
       "trigger": "Új design-elv",
       "mechanism": "A Honlap-szerkesztő --rule kapcsolóval megjegyzi a szabályt a memóriájába (scope:designer), és onnantól minden tervezéskor alkalmazza."
@@ -131,6 +138,14 @@
       "steps": [
         { "agent": "guide", "script": "agents/guide/agent.js --limit N", "action": "Útmutatók írása a guide-topics.json todo témáiból" },
         { "agent": "ellenorzo", "script": "agents/ellenorzo/agent.js", "action": "Ellenőrzés → publikál / visszaad" }
+      ]
+    },
+    "fact-check": {
+      "label": "Tény-ellenőrzés / frissesség-őr (időszakos vagy hír-trigger)",
+      "trigger": "időszakos, vagy amikor egy cég funkció-változást jelent be",
+      "steps": [
+        { "agent": "fact-check", "script": "agents/fact-check/agent.js [--claim \"...\"] [--company X]", "action": "Publikált útmutatók újraellenőrzése; a valótlan rész eltávolítása/lágyítása → vissza az Ellenőrzőre" },
+        { "agent": "ellenorzo", "script": "agents/ellenorzo/agent.js", "action": "Igazság-kapu: a javított útmutató újra-ellenőrzése → újra-publikálás csak ha átment" }
       ]
     },
     "learning-cycle": {

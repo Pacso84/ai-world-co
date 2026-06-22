@@ -159,6 +159,18 @@
       "icon": "📱",
       "role": "Writes short social posts from articles",
       "instructions": "You write ONE short, friendly social media post (max 280 chars) about the given AI article for everyday Australians. No hashtags spam, max 2 relevant hashtags. Australian English."
+    },
+    "fact-check": {
+      "primary_model": {
+        "provider": "google",
+        "model": "gemini-flash-latest"
+      },
+      "fallback_model": {
+        "provider": "google",
+        "model": "gemini-2.5-flash"
+      },
+      "enabled": true,
+      "comment": "Teny-ellenorzo / frissesseg-or: a publikalt utmutatokat ujraellenorzi, a valotlanna valt reszt eltavolitja/lagyitja, majd a guide visszamegy az Ellenorzo igazsag-kapujara. Nagy-kontextusu modell kell (teljes utmutato): gemini-flash + gemini-2.5-flash fallback (groq 12k limit keves)."
     }
   },
   "providers": {
