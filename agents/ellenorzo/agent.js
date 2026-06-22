@@ -27,6 +27,7 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { ask } from '../../core/ai-router.js';
 import { remember } from '../../core/memory-manager.js';
+import { message, resolveNeed } from '../../core/ops.js';
 import { skillsBlock } from '../../core/skills.js';
 
 // ===================================================================
@@ -344,7 +345,26 @@ function moveToArticles(writerFilename, writerData, autoCheckResult, aiReviewRes
   // Töröljük az eredeti WRITER_ fájlt drafts-ból
   unlinkSync(join(DRAFTS_DIR, writerFilename));
 
+  // KOMMUNIKÁCIÓ: ha átdolgozás után ment át, jelezzük a csapatnak (a kör bezárul),
+  // és lezárjuk az ehhez a munkához tartozó nyitott "kell még adat" kéréseket.
+  const to = writerData._meta?.type === 'guide' ? 'guide' : 'iro';
+  const wasRework = (writerData._meta?.rework_attempts || 0) > 0;
+  if (wasRework) {
+    message('ellenorzo', to, 'info', `Rendben ✓ átment: "${writerData.original_title}" (${aiReviewResult?.score ?? '?'}/10)`, { ref: baseRef(writerFilename) });
+    resolveNeed(baseRef(writerFilename));   // a kör elején nyitott 'need' lezárása
+  }
+
   return articleFilename;
+}
+
+// Stabil azonosító a munka teljes életciklusára (REJECTED_/WRITER_/ARTICLE_ → közös alapnév)
+function baseRef(filename) {
+  return String(filename || '').replace(/^(REJECTED_|WRITER_|ARTICLE_)/, '');
+}
+
+// "Hiányos / kell még adat" típusú hibák felismerése a szövegből
+function looksIncomplete(text) {
+  return /truncat|incomplete|cut[\s-]?off|cuts? off|unfinished|mid-sentence|finish the|complete the (final |last )?section|missing (the )?(section|step|part)|too short|needs? more (detail|info|information|data|context)|add more/i.test(text || '');
 }
 
 function moveToRejected(writerFilename, writerData, autoCheckResult, aiReviewResult) {
@@ -370,25 +390,47 @@ function moveToRejected(writerFilename, writerData, autoCheckResult, aiReviewRes
   writeFileSync(rejectedPath, JSON.stringify(rejectedRecord, null, 2), 'utf-8');
   unlinkSync(join(DRAFTS_DIR, writerFilename));
 
-  // TANULÁS: feljegyezzük a leckét az Írónak
-  recordLesson(aiReviewResult, autoCheckResult, writerData.original_title);
+  // TANULÁS: feljegyezzük a leckét — a TÍPUSNAK megfelelő scope-ra,
+  // hogy a megfelelő agent (Író vagy Útmutató) elő tudja hívni.
+  recordLesson(aiReviewResult, autoCheckResult, writerData.original_title, writerData._meta?.type);
+
+  // KOMMUNIKÁCIÓ: az Ellenőrző ELMONDJA a producernek (Író/Útmutató) MI A BAJ,
+  // és ha a munka HIÁNYOS / KELL MÉG ADAT, azt külön 'need' üzenetként jelzi.
+  const to = writerData._meta?.type === 'guide' ? 'guide' : 'iro';
+  const title = writerData.original_title || rejectedFilename;
+  const issues = [
+    ...(autoCheckResult?.issues || []),
+    ...(aiReviewResult?.issues || [])
+  ];
+  const probText = issues.length ? issues.slice(0, 3).join('; ') : (aiReviewResult?.verdict || 'minőségi kifogás');
+  message('ellenorzo', to, 'problem', `Visszaadva javításra: "${title}" — mi a baj: ${probText}`, { ref: baseRef(rejectedFilename) });
+
+  const allText = [aiReviewResult?.verdict, ...issues].join(' ');
+  if (looksIncomplete(allText)) {
+    message('ellenorzo', to, 'need', `Hiányos / kell még adat: "${title}" — egészítsd ki: ${probText}`, { ref: baseRef(rejectedFilename) });
+  }
 
   return rejectedFilename;
 }
 
 // ===================================================================
-// TANULÁS: lecke feljegyzése az Írónak (autonóm visszacsatolás)
+// TANULÁS: lecke feljegyzése (autonóm visszacsatolás)
 // ===================================================================
-function recordLesson(aiReviewResult, autoCheckResult, title) {
+// FONTOS: a guide-ok hibái 'guide' scope-ra, a cikkeké 'iro' scope-ra
+// kerülnek — így a guide-agent loadLessons()-je (scope:'guide') tényleg
+// LÁTJA a saját korábbi bukásait, és nem ismétli meg őket. (Automatikus
+// tanulás: minden elutasítás → lecke → következő íráskor + rework-nél előjön.)
+function recordLesson(aiReviewResult, autoCheckResult, title, type) {
   // A konkrét hibák (auto + AI) tömör formában
   const reasons = [];
   if (autoCheckResult?.issues?.length) reasons.push(...autoCheckResult.issues.map(i => i.split(':')[0]));
   if (aiReviewResult?.issues?.length) reasons.push(...aiReviewResult.issues.slice(0, 3));
   if (aiReviewResult?.verdict && reasons.length === 0) reasons.push(aiReviewResult.verdict);
 
-  // A rétegzett MEMÓRIÁBA mentjük (az Író innen hívja elő) — minden ok külön emlék
+  const scope = type === 'guide' ? 'guide' : 'iro';
+  // A rétegzett MEMÓRIÁBA mentjük (az adott agent innen hívja elő) — minden ok külön emlék
   for (const reason of reasons.slice(0, 4)) {
-    remember('iro', reason, { tags: ['rejection', 'lesson'] });
+    remember(scope, reason, { tags: ['rejection', 'lesson', type === 'guide' ? 'guide' : 'article'] });
   }
 }
 

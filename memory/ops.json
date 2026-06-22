@@ -63,6 +63,30 @@
       "agent": "publisher",
       "created": "2026-06-11T20:34:41.477Z",
       "updated": "2026-06-11T20:34:42.640Z"
+    },
+    {
+      "id": "t178215466242944",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-06-22T18:57:42.429Z",
+      "updated": "2026-06-22T19:01:22.871Z"
+    },
+    {
+      "id": "t178215488287769",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-06-22T19:01:22.877Z",
+      "updated": "2026-06-22T19:01:29.023Z"
+    },
+    {
+      "id": "t178215488902420",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-06-22T19:01:29.024Z",
+      "updated": "2026-06-22T19:01:33.605Z"
     }
   ],
   "notifications": [
@@ -145,6 +169,135 @@
       "agent": "api-expert",
       "at": "2026-06-20T21:53:55.812Z",
       "loud": false
+    },
+    {
+      "id": "n178215468128246",
+      "level": "warn",
+      "text": "📨 ellenorzo → guide: Hiányos / kell még adat: \"The main AI assistants explained simply (and what each is best at)\" — egészítsd ki: The articl",
+      "agent": "ellenorzo",
+      "at": "2026-06-22T18:58:01.282Z",
+      "loud": false
+    },
+    {
+      "id": "n178215487528624",
+      "level": "warn",
+      "text": "📨 ellenorzo → guide: Hiányos / kell még adat: \"Getting started with Grok (xAI) for everyday questions\" — egészítsd ki: Article text is cut of",
+      "agent": "ellenorzo",
+      "at": "2026-06-22T19:01:15.286Z",
+      "loud": false
+    },
+    {
+      "id": "n178215489362449",
+      "level": "success",
+      "text": "10 új cikk publikálva (költség: $0.0074).",
+      "agent": "ceo",
+      "at": "2026-06-22T19:01:33.624Z",
+      "loud": false
+    }
+  ],
+  "messages": [
+    {
+      "id": "m178215468128061",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"The main AI assistants explained simply (and what each is best at)\" — mi a baj: The article ends abruptly mid-sentence in the final section.; Contains US spelling 'summarizing' instead of AU spelling 'summarising'.",
+      "ref": "REJECTED_GUIDE_ai-assistants-overview.json",
+      "at": "2026-06-22T18:58:01.280Z"
+    },
+    {
+      "id": "m178215468128249",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "need",
+      "text": "Hiányos / kell még adat: \"The main AI assistants explained simply (and what each is best at)\" — egészítsd ki: The article ends abruptly mid-sentence in the final section.; Contains US spelling 'summarizing' instead of AU spelling 'summarising'.",
+      "ref": "REJECTED_GUIDE_ai-assistants-overview.json",
+      "open": false,
+      "at": "2026-06-22T18:58:01.282Z",
+      "resolved_at": "2026-06-22T19:03:34.937Z"
+    },
+    {
+      "id": "m178215487528442",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Getting started with Grok (xAI) for everyday questions\" — mi a baj: Article text is cut off at the very end",
+      "ref": "REJECTED_GUIDE_grok-getting-started.json",
+      "at": "2026-06-22T19:01:15.284Z"
+    },
+    {
+      "id": "m178215487528650",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "need",
+      "text": "Hiányos / kell még adat: \"Getting started with Grok (xAI) for everyday questions\" — egészítsd ki: Article text is cut off at the very end",
+      "ref": "REJECTED_GUIDE_grok-getting-started.json",
+      "open": false,
+      "at": "2026-06-22T19:01:15.286Z",
+      "resolved_at": "2026-06-22T19:03:34.938Z"
+    },
+    {
+      "id": "m178215488686030",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"The main AI assistants explained simply (and what each is best at)\" — javítva: The article ends abruptly mid-sentence in the final section.; Contains US spelling 'summarizing' instead of AU spelling 'summarising'.; újraküldöm.",
+      "ref": "WRITER_GUIDE_ai-assistants-overview.json",
+      "at": "2026-06-22T19:01:26.860Z"
+    },
+    {
+      "id": "m178215488900817",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Getting started with Grok (xAI) for everyday questions\" — javítva: Article text is cut off at the very end; Reviewer verdict: The guide is friendly, highly accessible, and uses correct Australian English. However, the text cuts off abruptly mid-sentence at the very end of the 'Try it now' section and needs to be completed.; újraküldöm.",
+      "ref": "WRITER_GUIDE_grok-getting-started.json",
+      "at": "2026-06-22T19:01:29.008Z"
+    },
+    {
+      "id": "m17821548900842",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"The main AI assistants explained simply (and what each is best at)\" (?/10)",
+      "ref": "WRITER_GUIDE_ai-assistants-overview.json",
+      "at": "2026-06-22T19:01:30.084Z"
+    },
+    {
+      "id": "m178215489358850",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Getting started with Grok (xAI) for everyday questions\" (?/10)",
+      "ref": "WRITER_GUIDE_grok-getting-started.json",
+      "at": "2026-06-22T19:01:33.588Z"
+    },
+    {
+      "id": "m178215629429871",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Rendbe raktam a csempéket: 12 cég → 4/3/2 oszlop, egyenletes sorok. Egyensúly és kiegyensúlyozott elrendezés",
+      "ref": "guides.html",
+      "at": "2026-06-22T19:24:54.298Z"
+    },
+    {
+      "id": "m178215634430771",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Rendbe raktam a csempéket: 12 cég → 6/4/3 oszlop, egyenletes sorok. Egyensúlyban van a terv",
+      "ref": "guides.html",
+      "at": "2026-06-22T19:25:44.307Z"
+    },
+    {
+      "id": "m178215679924868",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Rendbe raktam a csempéket: 12 cég → 6/4/3 oszlop, egyenletes sorok. a központi elrendezés érdekében választottam",
+      "ref": "guides.html",
+      "at": "2026-06-22T19:33:19.248Z"
     }
   ]
 }

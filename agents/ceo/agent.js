@@ -81,6 +81,24 @@ function countReworkable() {
     }).length;
 }
 
+// ÚTMUTATÓK: a felhasználó kérése szerint SOHA nem adjuk fel — GUIDE_MAX_REWORK
+// körig az Útmutató-agent újraírja, utána a FŐNÖK (escalate-guides.js) dönt.
+const GUIDE_MAX_REWORK = 4;
+function readRejected() {
+  if (!existsSync(REJECTED_DIR)) return [];
+  return readdirSync(REJECTED_DIR)
+    .filter(f => f.startsWith('REJECTED_') && f.endsWith('.json'))
+    .map(f => { try { return JSON.parse(readFileSync(join(REJECTED_DIR, f), 'utf-8'))._meta || {}; } catch { return {}; } });
+}
+// Hány guide írható még újra (4 kör alatt, nincs CEO-döntés)?
+function countGuideReworkable() {
+  return readRejected().filter(m => m.type === 'guide' && !m.ceo_decision && m.can_retry !== false && (m.rework_attempts || 0) < GUIDE_MAX_REWORK).length;
+}
+// Hány guide vár a FŐNÖK végső döntésére (4 kört kimerítette)?
+function countGuideEscalatable() {
+  return readRejected().filter(m => m.type === 'guide' && !m.ceo_decision && (m.rework_attempts || 0) >= GUIDE_MAX_REWORK).length;
+}
+
 // ===================================================================
 // AGENT FUTTATÁS (child process-ként)
 // ===================================================================
@@ -334,20 +352,46 @@ async function main() {
     console.log('⏭️  Ellenőrző kihagyva (--skip-review)');
   }
 
-  // 4c+. REWORK KÖR — az Ellenőrző VISSZAADJA a megbukott cikkeket az Írónak,
-  //      az Író kijavítja a konkrét hibákat, majd ÚJRA ellenőrzés.
-  //      (A rework_attempts számláló miatt nem lesz végtelen hurok.)
+  // 4c+. REWORK KÖR — az Ellenőrző VISSZAADJA a megbukott munkát.
+  //      CIKKEK: az Író kijavítja (max MAX_REWORK_ATTEMPTS), majd újra-ellenőrzés.
+  //      ÚTMUTATÓK: az Útmutató-agent írja át, és SOHA nem adjuk fel — GUIDE_MAX_REWORK
+  //      körig hurkoljuk (újraírás → újra-ellenőrzés), utána a FŐNÖK dönt.
   if (!args.skipRework && !args.skipReview) {
-    const reworkable = countReworkable();
-    if (reworkable > 0) {
-      console.log(`\n━━━ 3b. LÉPÉS: REWORK — ${reworkable} cikk vissza az Íróhoz ━━━`);
+    session.stages.rework = { article: null, guide_rounds: 0, escalated: 0 };
+
+    // --- CIKKEK (változatlan logika) ---
+    const reworkableArticles = countReworkable();
+    if (reworkableArticles > 0) {
+      console.log(`\n━━━ 3b. LÉPÉS: REWORK (cikkek) — ${reworkableArticles} vissza az Íróhoz ━━━`);
       const fix = await runAgent('agents/iro/agent.js', ['--rework']);
       console.log('\n━━━ 3c. LÉPÉS: ÚJRA-ELLENŐRZÉS ━━━');
       const recheck = await runAgent('agents/ellenorzo/agent.js');
-      session.stages.rework = { reworkable, fix_exit: fix.code, recheck_exit: recheck.code };
-    } else {
-      console.log('\n✓ Nincs visszaadandó cikk (rework kör kihagyva).');
+      session.stages.rework.article = { reworkable: reworkableArticles, fix_exit: fix.code, recheck_exit: recheck.code };
     }
+
+    // --- ÚTMUTATÓK: hurok, amíg van mit javítani VAGY el nem fogy a 4 kör ---
+    let guideRound = 0;
+    while (countGuideReworkable() > 0 && guideRound < GUIDE_MAX_REWORK) {
+      guideRound++;
+      const n = countGuideReworkable();
+      console.log(`\n━━━ 3d. LÉPÉS: ÚTMUTATÓ REWORK — ${guideRound}/${GUIDE_MAX_REWORK}. kör (${n} guide) ━━━`);
+      await runAgent('agents/guide/agent.js', ['--rework']);
+      console.log('\n━━━ 3e. LÉPÉS: ÚTMUTATÓ ÚJRA-ELLENŐRZÉS ━━━');
+      await runAgent('agents/ellenorzo/agent.js');
+    }
+    session.stages.rework.guide_rounds = guideRound;
+
+    // --- FŐNÖK DÖNTÉS: ami 4 kör után sem ment át, a CEO elé kerül ---
+    const escalate = countGuideEscalatable();
+    if (escalate > 0) {
+      console.log(`\n━━━ 3f. LÉPÉS: FŐNÖK DÖNTÉS — ${escalate} útmutató a 4. próba után ━━━`);
+      const boss = await runAgent('agents/ceo/escalate-guides.js');
+      session.stages.rework.escalated = escalate;
+      session.stages.rework.escalate_exit = boss.code;
+    }
+
+    if (reworkableArticles === 0 && guideRound === 0 && escalate === 0)
+      console.log('\n✓ Nincs visszaadandó munka (rework kör kihagyva).');
   }
 
   // 4d. Designer (fejlécképek)
@@ -366,6 +410,14 @@ async function main() {
     session.stages.seo = { exit_code: result.code };
   } else {
     console.log('⏭️  SEO kihagyva (--skip-seo)');
+  }
+
+  // 4e+. Honlap-szerkesztő (LAYOUT) — a publikálás ELŐTT fusson, mert a
+  //      website/design.json-t írja, amit a build (publisher) beolvas.
+  if (!args.skipPublish) {
+    console.log('\n━━━ 5b. LÉPÉS: HONLAP-SZERKESZTŐ AGENT (layout) ━━━');
+    const result = await runAgent('agents/designer/web-designer.js');
+    session.stages.web_designer = { exit_code: result.code };
   }
 
   // 4f. Publikáló (weboldal build + deploy)

@@ -12,7 +12,7 @@ import { readFileSync, writeFileSync, existsSync, readdirSync, statSync } from '
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { stats as memStats, list as memList } from '../core/memory-manager.js';
-import { listTasks, listNotifications } from '../core/ops.js';
+import { listTasks, listNotifications, listMessages } from '../core/ops.js';
 import { listSkills } from '../core/skills.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -107,6 +107,7 @@ function gather() {
     exhausted: gatherExhausted(),
     tasks: listTasks(),
     notifications: listNotifications(15),
+    messages: listMessages(40),
     skills: listSkills(),
     org: loadOrg()
   };
@@ -361,6 +362,38 @@ function panelTasks(d) {
   </div>`;
 }
 
+function panelComms(d) {
+  const meta = {
+    problem:  { i: '⚠️', label: 'Hiba',   cls: 'c-problem' },
+    fix:      { i: '🔧', label: 'Javítás', cls: 'c-fix' },
+    need:     { i: '🙋', label: 'Kell',   cls: 'c-need' },
+    decision: { i: '👔', label: 'Döntés', cls: 'c-decision' },
+    info:     { i: '✅', label: 'Rendben', cls: 'c-info' }
+  };
+  const name = a => ({ ellenorzo: 'Ellenőrző', guide: 'Útmutató', iro: 'Író', ceo: 'Főnök', human: 'Te', team: 'Csapat',
+    'rss-scraper': 'Scraper', designer: 'Designer', seo: 'SEO', publisher: 'Publikáló' }[a] || a || '?');
+  const msgs = d.messages || [];
+  const openNeeds = msgs.filter(m => m.kind === 'need' && m.open);
+
+  const needsBar = openNeeds.length
+    ? `<div class="muted" style="margin-bottom:10px">🙋 <b>${openNeeds.length} nyitott kérés</b> (hiányzó adat / befejezetlen munka) vár megoldásra.</div>`
+    : `<div class="muted" style="margin-bottom:10px">Itt látod, ahogy az agentek átadják egymásnak a munkát, és elmondják mi a baj vagy mi hiányzik.</div>`;
+
+  return `<div class="panel"><div class="panel__h">💬 Csapat-kommunikáció</div>
+    ${needsBar}
+    ${msgs.length ? msgs.map(m => {
+      const mm = meta[m.kind] || meta.info;
+      const open = m.kind === 'need' && m.open ? ' <span class="cmsg__open">nyitott</span>' : '';
+      return `<div class="cmsg ${mm.cls}">
+        <span class="cmsg__k">${mm.i} ${mm.label}</span>
+        <span class="cmsg__who">${esc(name(m.from))} → ${esc(name(m.to))}${open}</span>
+        <span class="cmsg__t">${esc(m.text)}</span>
+        <span class="cmsg__time">${new Date(m.at).toLocaleString('hu-HU', { dateStyle: 'short', timeStyle: 'short' })}</span>
+      </div>`;
+    }).join('') : '<div class="muted">Még nincs üzenet. Az első rework/ellenőrzés után itt megjelenik a beszélgetés.</div>'}
+  </div>`;
+}
+
 function panelNotifications(d) {
   const icon = l => ({ info: 'ℹ️', success: '✅', warn: '⚠️', alert: '🚨' }[l] || '•');
   return `<div class="panel"><div class="panel__h">🔔 Értesítések (heartbeat)</div>
@@ -472,6 +505,7 @@ function render(d) {
     ['team', '🤖', 'Csapat'],
     ['org', '🏢', 'Szervezet'],
     ['tasks', '📋', 'Feladatok'],
+    ['comms', '💬', 'Kommunikáció'],
     ['notifications', '🔔', 'Értesítések'],
     ['memory', '🧠', 'Memória'],
     ['skills', '🛠️', 'Készségek'],
@@ -482,6 +516,7 @@ function render(d) {
   ];
   const panels = {
     overview: panelOverview(d), team: panelTeam(d), org: panelOrg(d), tasks: panelTasks(d),
+    comms: panelComms(d),
     notifications: panelNotifications(d), memory: panelMemory(d), skills: panelSkills(d),
     sources: panelSources(d), content: panelContent(d), logs: panelLogs(d), settings: panelSettings(d)
   };
@@ -574,6 +609,13 @@ body{background:#e7e0d2;color:var(--ink);font-family:'Hanken Grotesk',sans-serif
 .noti{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--line);font-size:13px}.noti:last-child{border:none}
 .noti__i{width:20px;text-align:center}.noti__t{flex:1}.noti__time{color:var(--muted);font-size:11.5px;white-space:nowrap}
 .noti--alert .noti__t{color:#b5694a;font-weight:600}.noti--warn .noti__t{color:#9a7a2b}
+.cmsg{display:grid;grid-template-columns:92px 150px 1fr auto;gap:10px;align-items:baseline;padding:9px 0;border-bottom:1px solid var(--line);font-size:13px}.cmsg:last-child{border:none}
+.cmsg__k{font-size:11px;font-weight:700;padding:2px 8px;border-radius:20px;text-align:center;white-space:nowrap}
+.cmsg__who{color:var(--soft);font-weight:600;font-size:12px}.cmsg__t{color:var(--ink)}.cmsg__time{color:var(--muted);font-size:11px;white-space:nowrap}
+.cmsg__open{color:#9a7a2b;font-weight:700;font-size:10.5px;text-transform:uppercase;letter-spacing:.03em;margin-left:4px}
+.c-problem .cmsg__k{background:#f6e2da;color:#b5694a}.c-fix .cmsg__k{background:#e2ecf6;color:#3a6ea5}
+.c-need .cmsg__k{background:#f6efd6;color:#9a7a2b}.c-decision .cmsg__k{background:#e7e0f2;color:#6b53a3}.c-info .cmsg__k{background:#dceee0;color:#3f7a55}
+@media(max-width:680px){.cmsg{grid-template-columns:1fr;gap:2px}.cmsg__time{font-size:10px}}
 .skill{border:1px solid var(--line);border-radius:8px;padding:10px 12px;margin-bottom:8px;background:var(--card)}
 .skill summary{cursor:pointer;font-weight:700;font-size:13px}
 .skill__sc{font-size:10px;color:var(--muted);font-family:monospace;margin-left:6px}

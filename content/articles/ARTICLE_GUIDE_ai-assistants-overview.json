@@ -1,0 +1,45 @@
+{
+  "_meta": {
+    "type": "guide",
+    "guide_topic_id": "ai-assistants-overview",
+    "company": "",
+    "tool": "",
+    "icon": "🧭",
+    "level": "beginner",
+    "written_at": "2026-06-22T19:01:26.858Z",
+    "writer_provider": "cerebras",
+    "writer_model": "gpt-oss-120b",
+    "writer_cost_usd": 0,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "rejected_at": "2026-06-22T18:58:01.270Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 693
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "decision": "PASS",
+      "issues": [
+        "minor potential for tech jargon",
+        "limited international options discussed"
+      ],
+      "verdict": "The article is well-structured, accessible, and respectful, providing a clear and friendly guide to AI assistants for everyday people.",
+      "_aiCost": 0.0010614199999999998,
+      "_provider": "groq",
+      "_model": "llama-3.3-70b-versatile",
+      "_attempts": 1
+    },
+    "reason": "The guide is exceptionally well-written and perfectly matches our friendly brand voice, but it cannot be published because the final sentence cuts off mid-thought.",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_GUIDE_ai-assistants-overview.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-06-22T19:01:30.082Z"
+  },
+  "article_markdown": "---\ntitle: \"The main AI assistants explained simply (and what each is best at)\"\nsubtitle: \"Confused by all the different AI tools? Here is a friendly guide to finding the perfect assistant for your daily tasks.\"\ncategory: \"guide\"\naudience: \"both\"\ncompany: \"\"\ntool: \"\"\nlevel: \"beginner\"\nread_time_minutes: 4\ntags: [\"getting-started\", \"ai-assistants\"]\n---\n\n# The main AI assistants explained simply (and what each is best at)\n\n**Hook:** If you ever feel overwhelmed by the growing number of AI assistants on the market, this guide will help you spot the right one for your everyday tasks. It’s written for anyone who wants a clear, friendly overview without any tech jargon.\n\n## Before you start\n- **Internet connection:** You’ll need a web browser or the relevant mobile app to reach the assistants.\n- **Free account:** Most of the tools offer a free tier, so you can try them without spending a cent.\n\n## Step 1 — Meet the friendly all‑rounders (ChatGPT and Gemini)\nBoth of these tools run on a **large language model (LLM)** – think of it as the brain that lets the AI understand and generate text.\n\n- **ChatGPT (OpenAI):** A versatile companion great for drafting emails, planning events, or breaking down complex ideas.\n- **Gemini (Google):** Works smoothly with Google services like Docs, Gmail and Maps, making web‑based research easy.\n\n💬 **Example prompt to try:** *“Give me a step‑by‑step plan to organise my garage this weekend, including how to categorise items.”*\n\n## Step 2 — Use the work‑and‑writing specialists (Claude and Copilot)\nIf you need help with professional writing or office‑based tasks, these assistants shine:\n\n- **Claude (Anthropic):** Known for a warm, natural tone. Perfect for polishing a resume, drafting a thoughtful letter, or analysing a long report.\n- **Copilot (Microsoft):** Built into Microsoft Office apps, it can assist directly inside Word, Excel and Outlook.\n\n💬 **Example prompt to try:** *“Read this draft email to my landlord and help me make the tone more polite but firm.”*\n\n## Step 3 — Try the search and social discoverers (Perplexity and Grok)\nWhen you just want facts or the latest trends, these assistants act like research helpers:\n\n- **Perplexity:** Instead of giving you a list of links, it reads the web for you and writes a clear answer, complete with footnotes to the sources.\n- **Grok (xAI):** Linked to the X platform (formerly Twitter), it summarises real‑time news, public opinion and trending topics as they happen.\n\n💬 **Example prompt to try:** *“What are the latest updates on the local public transport extensions, and where can I read the official announcements?”*\n\n## Step 4 — Explore international options (Qwen, Le Chat and DeepSeek)\nThese assistants come from outside the typical Silicon Valley crowd and bring unique strengths:\n\n- **Qwen (Alibaba):** Excels at translating and understanding cultural nuance, especially across Asian languages.\n- **Le Chat (Mistral AI):** A privacy‑focused European model that is efficient at straightforward text generation and logical reasoning.\n- **DeepSeek:** Strong at logical reasoning, mathematics and coding assistance.\n\n💬 **Example prompt to try:** *“Translate this business greeting into polite conversational Japanese and explain any cultural etiquette I should keep in mind.”*\n\n## Common mistakes\n- **Assuming perfect accuracy:** AI can sometimes hallucinate (confidently generate incorrect facts). Always double‑check dates, legal details or statistics.\n- **Stopping after the first answer:** If the response isn’t quite right, treat the assistant like a conversation partner. Try, “That’s a bit too formal – can you make it sound friendlier?”\n\n## What this means for you\n- **In everyday life:** Use Gemini to find a recipe from the ingredients in your fridge, and Claude to craft a heartfelt birthday card.\n- **For your business or work:** Let Copilot summarise long meeting notes, or have ChatGPT draft social‑media posts to free up creative time.\n- **If you’re just getting started:** Pick one assistant, spend a few minutes exploring it, and gradually add more tools as you become comfortable.\n\n## Try it now\nOpen a free account with **ChatGPT** or **Gemini** in your browser right now. Copy and paste this prompt to see how the assistant responds: *“Write a friendly three‑sentence reminder for my neighbour about the upcoming rubbish collection day.”*",
+  "original_title": "The main AI assistants explained simply (and what each is best at)"
+}

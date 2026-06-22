@@ -30,6 +30,7 @@ import { dirname, join } from 'path';
 import { ask } from '../../core/ai-router.js';
 import { recallSemantic } from '../../core/memory-manager.js';
 import { skillsBlock } from '../../core/skills.js';
+import { message } from '../../core/ops.js';
 
 // ===================================================================
 // SETUP
@@ -497,6 +498,10 @@ async function runReworkMode(brandContext) {
     cost += response.costUsd || 0;
     fixed++;
     console.log(`   ✅ Javítva → ${writerName} (újraellenőrzésre vár)\n`);
+
+    // KOMMUNIKÁCIÓ: az Író visszaszól az Ellenőrzőnek, mit javított
+    const fb = collectFeedback(data._meta);
+    message('iro', 'ellenorzo', 'fix', `Átdolgoztam: "${data.original_title || filename}" — javítva: ${fb.slice(0, 2).join('; ') || 'a jelzett hibák'}; újraküldöm.`, { ref: writerName.replace(/^(REJECTED_|WRITER_|ARTICLE_)/, '') });
   }
 
   console.log('─'.repeat(60));

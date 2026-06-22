@@ -20,29 +20,37 @@
 // ===================================================================
 
 import 'dotenv/config';
-import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync, unlinkSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { ask } from '../../core/ai-router.js';
 import { recallSemantic } from '../../core/memory-manager.js';
 import { skillsBlock } from '../../core/skills.js';
+import { message } from '../../core/ops.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..', '..');
 const DRAFTS_DIR = join(ROOT, 'content', 'drafts');
+const REJECTED_DIR = join(ROOT, 'content', 'rejected');
 const LOGS_DIR = join(ROOT, 'logs');
 const SHARED_DIR = join(ROOT, 'shared');
 const TOPICS_PATH = join(ROOT, 'guides', 'guide-topics.json');
 const AGENT_NAME = 'guide';
 
+// Hány körön át próbálja az Útmutató-agent ÚJRAÍRNI a megbukott guide-ot,
+// MIELŐTT a főnök (CEO) elé kerül végső döntésre. (A felhasználó kérése:
+// "ha negyedik próbálkozásra sem egyeznek meg, akkor a főnök tegyen rendet".)
+const GUIDE_MAX_REWORK = 4;
+
 // ---- argumentumok ----
 function parseArgs() {
   const a = process.argv.slice(2);
-  const p = { id: null, title: null, limit: 1 };
+  const p = { id: null, title: null, limit: 1, rework: false };
   for (let i = 0; i < a.length; i++) {
     if (a[i] === '--id' && a[i + 1]) { p.id = a[++i]; }
     else if (a[i] === '--title' && a[i + 1]) { p.title = a[++i]; }
     else if (a[i] === '--limit' && a[i + 1]) { p.limit = parseInt(a[++i], 10) || 1; }
+    else if (a[i] === '--rework') { p.rework = true; }
   }
   return p;
 }
@@ -203,8 +211,174 @@ async function writeGuide(topic, brandContext) {
   return response;
 }
 
+// ===================================================================
+// REWORK MÓD — az Ellenőrző VISSZAADTA az útmutatót javításra
+// ===================================================================
+// A guide-okat az Író NEM dolgozza át (cikké írná), ezért az ÚTMUTATÓ-
+// AGENT javítja őket — az eredeti lépésről-lépésre formátumban, az
+// Ellenőrző konkrét kifogásai alapján. A felhasználó kérése: a guide
+// SOHA nem kerül végleg feladásra — GUIDE_MAX_REWORK körig próbáljuk,
+// utána a CEO (escalate-guides.js) hoz végső döntést.
+// ===================================================================
+
+function collectFeedback(meta) {
+  const points = [];
+  if (meta?.auto_check?.issues?.length) points.push(...meta.auto_check.issues);
+  if (meta?.ai_review?.issues?.length) points.push(...meta.ai_review.issues);
+  if (meta?.ai_review?.verdict) points.push(`Reviewer verdict: ${meta.ai_review.verdict}`);
+  if (meta?.reason && points.length === 0) points.push(meta.reason);
+  return [...new Set(points)];
+}
+
+// Nem a guide hibája, hanem az Ellenőrző akadt meg (pl. JSON-parse hiba)?
+function isReviewerSideFailure(meta) {
+  const autoOk = !(meta?.auto_check?.issues?.length);
+  const glitch = /could not parse|parse error|json/i.test(
+    [meta?.reason, meta?.ai_review?.verdict, ...(meta?.ai_review?.issues || [])].join(' ')
+  );
+  return autoOk && glitch;
+}
+
+function listRejectedGuidesForRework() {
+  if (!existsSync(REJECTED_DIR)) return [];
+  return readdirSync(REJECTED_DIR)
+    .filter(f => f.startsWith('REJECTED_') && f.endsWith('.json'))
+    .filter(f => {
+      try {
+        const d = JSON.parse(readFileSync(join(REJECTED_DIR, f), 'utf-8'));
+        const attempts = d._meta?.rework_attempts || 0;
+        // CSAK guide; a CEO végső döntése (ceo_decision) után már nem nyúlunk hozzá
+        return d._meta?.type === 'guide' && !d._meta?.ceo_decision
+          && d._meta?.can_retry !== false && attempts < GUIDE_MAX_REWORK;
+      } catch { return false; }
+    })
+    .sort();
+}
+
+async function reworkGuide(rejectedData, brandContext) {
+  const feedback = collectFeedback(rejectedData._meta);
+  const original = rejectedData.article_markdown || '';
+  const lessons = await loadLessons();   // szemantikus memória (scope:'guide')
+  const skills = skillsBlock('guide');
+
+  const userPrompt = `One of your earlier step-by-step GUIDES was sent BACK by the Reviewer. Fix it — keep what works, repair the SPECIFIC problems, and return the full corrected guide in the SAME step-by-step format.
+
+THE REVIEWER'S SPECIFIC PROBLEMS (you MUST address every one):
+${feedback.map((f, i) => `${i + 1}. ${f}`).join('\n')}
+
+KEEP THE GUIDE FORMAT (this is a guide, NOT a news article):
+- YAML frontmatter with category: "guide".
+- "## Before you start", then 3-6 "## Step N — …" headings, then "## Common mistakes", "## What this means for you", "## Try it now".
+- 💬 Example lines where helpful. Australian English, warm teaching tone, explain every term.
+- ORIGINAL writing only — never copy company docs, no "Source:" line, no external links.
+
+THE GUIDE TO FIX (rewrite it fully, corrected):
+${original}
+
+BRAND CONTEXT (must follow):
+${brandContext}${lessons}${skills}
+
+Now output ONLY the corrected guide markdown — no commentary.`;
+
+  let response = await ask(userPrompt, { agentName: AGENT_NAME, systemPrompt: GUIDE_SYSTEM_PROMPT, maxTokens: 3000 });
+  if (response && !hasGuideStructure(response.text)) {
+    const retry = await ask(userPrompt + `\n\n⚠️ CRITICAL: Use YAML frontmatter (---), at least 2 "## Step N — …" headings, and a "## What this means for you" section. Write the full corrected guide again.`,
+      { agentName: AGENT_NAME, systemPrompt: GUIDE_SYSTEM_PROMPT, maxTokens: 3000 });
+    if (retry && hasGuideStructure(retry.text)) { retry.costUsd += response.costUsd; response = retry; }
+  }
+  return response;
+}
+
+// Visszatesszük WRITER_GUIDE_ néven az Ellenőrzőhöz, növeljük a számlálót.
+// requeued=true → nem írtuk át (ellenőrző-glitch), a számlálót NEM növeljük
+// (nem a guide hibája, ne fogyassza a 4 próbát).
+function saveGuideBackToReview(rejectedFilename, rejectedData, { text, provider, model, costUsd, requeued }) {
+  const writerFilename = rejectedFilename.replace(/^REJECTED_/, 'WRITER_');
+  const prevAttempts = rejectedData._meta?.rework_attempts || 0;
+  const out = {
+    _meta: {
+      ...rejectedData._meta,
+      written_at: new Date().toISOString(),
+      writer_provider: provider,
+      writer_model: model,
+      writer_cost_usd: costUsd,
+      rework_attempts: requeued ? prevAttempts : prevAttempts + 1,
+      reworked_from: rejectedFilename,
+      requeued_unchanged: !!requeued,
+      status: 'awaiting-review'
+    },
+    article_markdown: text,
+    original_title: rejectedData.original_title
+  };
+  if (!existsSync(DRAFTS_DIR)) mkdirSync(DRAFTS_DIR, { recursive: true });
+  writeFileSync(join(DRAFTS_DIR, writerFilename), JSON.stringify(out, null, 2), 'utf-8');
+  unlinkSync(join(REJECTED_DIR, rejectedFilename));
+  return writerFilename;
+}
+
+async function runGuideReworkMode(brandContext) {
+  const rejected = listRejectedGuidesForRework();
+  console.log('🔁 ÚTMUTATÓ REWORK MÓD — visszaadott guide-ok javítása');
+  if (rejected.length === 0) {
+    console.log('   💤 Nincs javítható elutasított útmutató (vagy a CEO elé vár).');
+    return;
+  }
+  console.log(`   📋 ${rejected.length} útmutató vár átdolgozásra\n`);
+
+  let fixed = 0, requeued = 0, gaveUp = 0, cost = 0;
+  for (const filename of rejected) {
+    const data = JSON.parse(readFileSync(join(REJECTED_DIR, filename), 'utf-8'));
+    const attempt = (data._meta?.rework_attempts || 0) + 1;
+
+    // ESET A: Ellenőrző-glitch (nem a guide hibája) → változatlanul újra, számláló marad
+    if (isReviewerSideFailure(data._meta)) {
+      console.log(`↩️  Újra-sorba (ellenőrző-hiba, nem a guide-é): ${filename.slice(0, 50)}...`);
+      const w = saveGuideBackToReview(filename, data, {
+        text: data.article_markdown, provider: data._meta?.writer_provider, model: data._meta?.writer_model, costUsd: 0, requeued: true
+      });
+      console.log(`   ✅ Változatlanul visszaküldve → ${w} (0 költség)\n`);
+      requeued++;
+      continue;
+    }
+
+    // ESET B: valódi hiba → átdolgozás
+    console.log(`🔧 Átdolgozás (${attempt}/${GUIDE_MAX_REWORK}): ${filename.slice(0, 55)}...`);
+    collectFeedback(data._meta).slice(0, 3).forEach(f => console.log(`      • javítandó: ${String(f).slice(0, 70)}`));
+
+    const response = await reworkGuide(data, brandContext);
+    if (!response) { console.log('   ❌ Nem sikerült (AI router null) — marad elutasítva\n'); gaveUp++; continue; }
+
+    const w = saveGuideBackToReview(filename, data, { text: response.text, provider: response.provider, model: response.model, costUsd: response.costUsd });
+    cost += response.costUsd || 0;
+    fixed++;
+    console.log(`   ✅ Javítva → ${w} (újraellenőrzésre vár)\n`);
+
+    // KOMMUNIKÁCIÓ: visszaszólunk az Ellenőrzőnek, MIT javítottunk; és ha olyan
+    // ADATOT kérnek, amit nem találhatunk ki (tény/szám/forrás), azt jelezzük.
+    const title = data.original_title || filename;
+    const fb = collectFeedback(data._meta);
+    const ref = w.replace(/^(REJECTED_|WRITER_|ARTICLE_)/, '');
+    message('guide', 'ellenorzo', 'fix', `Átdolgoztam: "${title}" — javítva: ${fb.slice(0, 2).join('; ') || 'a jelzett hibák'}; újraküldöm.`, { ref });
+    if (fb.some(f => /fact|number|statistic|figure|source|cite|citation|evidence|data|reference/i.test(f))) {
+      message('guide', 'ceo', 'need', `Kell még adat: "${title}" — az Ellenőrző tényt/forrást kér, amit nem találhatok ki: ${fb.find(f => /fact|number|statistic|figure|source|cite|citation|evidence|data|reference/i.test(f))}`, { ref });
+    }
+  }
+
+  console.log('─'.repeat(60));
+  console.log(`📊 ÚTMUTATÓ REWORK: ${fixed} átdolgozva, ${requeued} újra-sorba (ingyen), ${gaveUp} sikertelen | költség $${cost.toFixed(4)}`);
+}
+
 async function main() {
   const args = parseArgs();
+
+  // REWORK MÓD: az Ellenőrző visszaadott útmutatókat javítjuk (nem új írás)
+  if (args.rework) {
+    console.log('📘 ÚTMUTATÓ AGENT — REWORK');
+    console.log('─'.repeat(60));
+    await runGuideReworkMode(loadBrandContext());
+    return;
+  }
+
   console.log('📘 ÚTMUTATÓ AGENT INDUL');
   console.log('─'.repeat(60));
 

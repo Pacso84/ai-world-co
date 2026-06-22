@@ -47,6 +47,40 @@ const SITE = {
   url: SITE_URL
 };
 
+// LAYOUT-KONFIG — a Honlap-szerkesztő (web-designer) agent állítja (website/design.json).
+// A build innen veszi a guides-oldal csempe-elrendezését (oszlopszám, méret).
+let DESIGN = {
+  brandtiles: { desktop: 6, tablet: 4, mobile: 3 },
+  guidetiles: { basis: 230, max: 300, justify: 'center' },
+  align: 'center'
+};
+try {
+  const d = JSON.parse(readFileSync(join(__dirname, 'design.json'), 'utf-8'));
+  DESIGN = {
+    brandtiles: { ...DESIGN.brandtiles, ...(d.brandtiles || {}) },
+    guidetiles: { ...DESIGN.guidetiles, ...(d.guidetiles || {}) },
+    align: d.align || DESIGN.align
+  };
+} catch {}
+
+// A design-konfigból generált <style> blokk (a guides-oldal fejébe injektáljuk,
+// így az agent döntése felülírja a style.css alapértelmezett rács-beállításait).
+function designStyleBlock() {
+  const b = DESIGN.brandtiles, g = DESIGN.guidetiles;
+  const heroCenter = DESIGN.align === 'center'
+    ? `.guides-hero{text-align:center}
+.guides-hero__tag{margin-left:auto;margin-right:auto}`
+    : '';
+  return `<style id="design-tokens">
+.brandtiles{grid-template-columns:repeat(${b.desktop},1fr)}
+@media(max-width:900px){.brandtiles{grid-template-columns:repeat(${b.tablet},1fr)}}
+@media(max-width:560px){.brandtiles{grid-template-columns:repeat(${b.mobile},1fr)}}
+.gtiles{display:flex;flex-wrap:wrap;justify-content:${g.justify};gap:16px}
+.gtile{flex:1 1 ${g.basis}px;max-width:${g.max}px}
+${heroCenter}
+</style>`;
+}
+
 // Cache-busting verzió: minden build új érték -> a böngésző mindig friss CSS/JS-t tölt
 const ASSET_V = Date.now();
 
@@ -412,36 +446,39 @@ function buildGuidesPage(guides) {
   const hasGeneral = !!groups[''];
   const cnt = n => `${n} guide${n > 1 ? 's' : ''}`;
 
-  // 1) ELŐSZÖR a cégek — "hol keress" (csempék, ugrás a szekcióra)
+  // 1) FELÜL: ÁLTALÁNOS készségek — MINDEN AI-ra érvényes (kiemelve, külön zóna,
+  //    NEM a cég-csempék közé keverve)
+  const generalTop = hasGeneral ? `<section class="grid-section grid-section--general" id="c-general">
+      <div class="section-head"><span class="pill">Start here</span>
+        <h2 class="section-title">Skills that work with <span class="muted-word">any AI</span></h2>
+        <p class="section-note">These apply no matter which assistant you use — ChatGPT, Gemini, Claude or any other.</p></div>
+      <div class="gtiles">${groups[''].map(guideTile).join('')}</div></section>` : '';
+
+  // 2) LENTEBB: cég/modell-specifikus rész — előbb a választó csempék (CSAK cégek)
   const brandTile = (c) => `<a class="brandtile" href="#c-${companySlug(c)}" style="--gc:${GUIDE_COVER_COLORS[c] || '#4f7a86'}">
       <span class="brandtile__i">${COMPANY_ICONS[c] || '🤖'}</span>
       <span class="brandtile__n">${escapeHtml(c)}</span><span class="brandtile__c">${cnt(groups[c].length)}</span></a>`;
-  const generalBrand = hasGeneral ? `<a class="brandtile" href="#c-general" style="--gc:#4f7a86">
-      <span class="brandtile__i">🧭</span><span class="brandtile__n">General skills</span>
-      <span class="brandtile__c">${cnt(groups[''].length)}</span></a>` : '';
-  const brandRow = `<section class="brandpick">
-      <div class="section-head"><span class="pill">Step 1</span><h2 class="section-title">Pick your <span class="muted-word">AI tool</span></h2></div>
-      <div class="brandtiles">${companies.map(brandTile).join('')}${generalBrand}</div></section>`;
+  const brandRow = companies.length ? `<section class="brandpick">
+      <div class="section-head"><span class="pill">By tool</span>
+        <h2 class="section-title">Guides for a <span class="muted-word">specific tool</span></h2>
+        <p class="section-note">Pick the AI tool you use to jump to step-by-step guides made for it.</p></div>
+      <div class="brandtiles">${companies.map(brandTile).join('')}</div></section>` : '';
 
-  // 2) UTÁNA a funkciók/útmutatók — cégenként
+  // 3) majd a cégenkénti útmutató-rácsok
   const companySection = (c) => `<section class="grid-section" id="c-${companySlug(c)}">
       <div class="section-head"><span class="pill">${COMPANY_ICONS[c] || '🤖'} ${escapeHtml(c)}</span>
         <h2 class="section-title">${escapeHtml(c)} <span class="muted-word">guides</span></h2></div>
       <div class="gtiles">${groups[c].map(guideTile).join('')}</div></section>`;
-  const generalSection = hasGeneral ? `<section class="grid-section" id="c-general">
-      <div class="section-head"><span class="pill">🧭 General skills</span>
-        <h2 class="section-title">Core <span class="muted-word">AI skills</span></h2></div>
-      <div class="gtiles">${groups[''].map(guideTile).join('')}</div></section>` : '';
 
   const header = `<section class="guides-hero">
     <p class="intro__kicker">Step-by-step</p>
     <h1 class="guides-hero__title">Practical AI <em>guides</em></h1>
-    <p class="guides-hero__tag">Plain-language tutorials. First pick the AI tool you use, then choose what you want to learn.</p>
+    <p class="guides-hero__tag">Plain-language tutorials. Start with the universal skills up top, then jump to guides for your specific AI tool.</p>
   </section>`;
 
   const empty = `<p class="muted" style="color:var(--ink-soft)">Guides are on their way — check back shortly.</p>`;
-  const body = header + (guides.length
-    ? brandRow + companies.map(companySection).join('') + generalSection
+  const body = designStyleBlock() + header + (guides.length
+    ? generalTop + brandRow + companies.map(companySection).join('')
     : empty);
 
   return pageShell({
@@ -516,6 +553,140 @@ function buildArticlePage(a) {
 // jelenítjük meg. A 💬 példák kiemelt dobozba kerülnek.
 // ===================================================================
 
+// ---- Lépés-illusztrációk (tervezett vektor / SVG) -----------------
+// Minden motívum currentColor-t használ → a .g-step__art a --gc márka-
+// színt adja rá, így EGY készletből minden cég saját színt kap.
+// Nincs AI-fotó, nincs screenshot: tiszta, lapos, egységes vektor.
+const ART_FRAME = (inner) =>
+  `<svg class="g-art__svg" viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">` +
+  `<rect x="3" y="3" width="194" height="144" rx="22" fill="currentColor" opacity="0.07"/>` +
+  `<g fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">${inner}</g>` +
+  `</svg>`;
+
+const GUIDE_ART = {
+  // cél / mit szeretnél elérni
+  target: ART_FRAME(`
+    <circle cx="86" cy="84" r="40"/>
+    <circle cx="86" cy="84" r="24" opacity=".5"/>
+    <circle cx="86" cy="84" r="9" fill="currentColor" stroke="none"/>
+    <path d="M168 30 L96 78"/>
+    <path d="M96 78 l22 -1 M96 78 l1 -22"/>`),
+  // gépelés / prompt / kérdés beírása
+  chat: ART_FRAME(`
+    <rect x="34" y="36" width="132" height="70" rx="16"/>
+    <path d="M60 106 l0 18 l18 -18"/>
+    <line x1="52" y1="60" x2="148" y2="60" opacity=".45"/>
+    <line x1="52" y1="74" x2="124" y2="74" opacity=".45"/>
+    <line x1="52" y1="88" x2="100" y2="88" opacity=".45"/>
+    <rect x="104" y="82" width="4" height="14" rx="2" fill="currentColor" stroke="none"/>`),
+  // kontextus / részletek / hozzáadás (rétegezett kártyák)
+  layers: ART_FRAME(`
+    <rect x="44" y="34" width="100" height="62" rx="12" opacity=".4"/>
+    <rect x="56" y="48" width="100" height="62" rx="12" opacity=".7"/>
+    <rect x="68" y="62" width="100" height="62" rx="12"/>
+    <line x1="80" y1="82" x2="150" y2="82" opacity=".45"/>
+    <line x1="80" y1="96" x2="134" y2="96" opacity=".45"/>
+    <line x1="80" y1="110" x2="148" y2="110" opacity=".45"/>`),
+  // formátum / lista / felépítés (dokumentum)
+  doc: ART_FRAME(`
+    <rect x="58" y="24" width="84" height="102" rx="10"/>
+    <rect x="72" y="40" width="56" height="10" rx="5" fill="currentColor" stroke="none"/>
+    <circle cx="77" cy="68" r="3.5" fill="currentColor" stroke="none"/><line x1="88" y1="68" x2="128" y2="68" opacity=".45"/>
+    <circle cx="77" cy="84" r="3.5" fill="currentColor" stroke="none"/><line x1="88" y1="84" x2="128" y2="84" opacity=".45"/>
+    <circle cx="77" cy="100" r="3.5" fill="currentColor" stroke="none"/><line x1="88" y1="100" x2="116" y2="100" opacity=".45"/>`),
+  // ellenőrzés / finomítás / szerkesztés (jelölőlista pipákkal)
+  check: ART_FRAME(`
+    <rect x="54" y="34" width="92" height="100" rx="12"/>
+    <rect x="82" y="26" width="36" height="16" rx="6" fill="currentColor" stroke="none"/>
+    <path d="M68 64 l9 9 l17 -19"/>
+    <line x1="104" y1="64" x2="132" y2="64" opacity=".45"/>
+    <path d="M68 96 l9 9 l17 -19"/>
+    <line x1="104" y1="96" x2="132" y2="96" opacity=".45"/>`),
+  // küldés / futtatás / generálás (papírrepülő)
+  plane: ART_FRAME(`
+    <path d="M162 40 L40 108 L104 92 L120 122 Z"/>
+    <path d="M162 40 L104 92" opacity=".5"/>
+    <path d="M34 126 q22 -8 44 -4" stroke-dasharray="2 11" opacity=".5"/>`),
+  // beállítások / testreszabás (csúszkák)
+  sliders: ART_FRAME(`
+    <line x1="46" y1="52" x2="154" y2="52"/><circle cx="122" cy="52" r="11" fill="currentColor" stroke="none"/>
+    <line x1="46" y1="82" x2="154" y2="82"/><circle cx="78" cy="82" r="11" fill="currentColor" stroke="none"/>
+    <line x1="46" y1="112" x2="154" y2="112"/><circle cx="132" cy="112" r="11" fill="currentColor" stroke="none"/>`),
+  // mentés / export / megosztás (tálca + nyíl)
+  download: ART_FRAME(`
+    <path d="M100 34 L100 98"/>
+    <path d="M76 76 L100 102 L124 76"/>
+    <path d="M50 104 L50 126 L150 126 L150 104"/>`),
+  // hang / beszéd / felvétel (mikrofon + hullámok)
+  mic: ART_FRAME(`
+    <rect x="84" y="32" width="32" height="58" rx="16"/>
+    <path d="M68 80 a32 32 0 0 0 64 0"/>
+    <line x1="100" y1="112" x2="100" y2="128"/>
+    <line x1="84" y1="128" x2="116" y2="128"/>
+    <path d="M140 52 a18 18 0 0 1 0 40" opacity=".5"/>
+    <path d="M152 42 a30 30 0 0 1 0 60" opacity=".3"/>`),
+  // keresés / felfedezés (nagyító)
+  search: ART_FRAME(`
+    <circle cx="90" cy="74" r="34"/>
+    <line x1="116" y1="100" x2="146" y2="130"/>
+    <line x1="76" y1="66" x2="106" y2="66" opacity=".45"/>
+    <line x1="76" y1="80" x2="98" y2="80" opacity=".45"/>`),
+  // kép / vizuál / design (keret + nap + hegyek)
+  image: ART_FRAME(`
+    <rect x="44" y="38" width="112" height="86" rx="12"/>
+    <circle cx="74" cy="64" r="9" fill="currentColor" stroke="none"/>
+    <path d="M50 118 L84 84 L106 104 L128 80 L150 110"/>`),
+  // adatvédelem / biztonság (pajzs + pipa)
+  shield: ART_FRAME(`
+    <path d="M100 28 L150 48 V86 C150 112 128 126 100 134 C72 126 50 112 50 86 V48 Z"/>
+    <path d="M82 80 l12 12 l24 -28"/>`),
+  // tipp / megértés / tanulás (villanykörte + sugarak)
+  bulb: ART_FRAME(`
+    <circle cx="100" cy="62" r="32"/>
+    <path d="M88 96 h24"/><path d="M90 108 h20"/><path d="M93 120 h14"/>
+    <line x1="100" y1="14" x2="100" y2="24" opacity=".5"/>
+    <line x1="148" y1="36" x2="139" y2="45" opacity=".5"/>
+    <line x1="52" y1="36" x2="61" y2="45" opacity=".5"/>
+    <line x1="160" y1="74" x2="148" y2="74" opacity=".5"/>
+    <line x1="40" y1="74" x2="52" y2="74" opacity=".5"/>`),
+  // megnyitás / fiók / belépés (böngészőablak + profil)
+  login: ART_FRAME(`
+    <rect x="40" y="34" width="120" height="86" rx="12"/>
+    <line x1="40" y1="56" x2="160" y2="56"/>
+    <circle cx="54" cy="45" r="3" fill="currentColor" stroke="none"/>
+    <circle cx="66" cy="45" r="3" fill="currentColor" stroke="none"/>
+    <circle cx="78" cy="45" r="3" fill="currentColor" stroke="none"/>
+    <circle cx="100" cy="83" r="13"/>
+    <path d="M80 110 a20 20 0 0 1 40 0"/>`),
+};
+
+// Lépéscím → illusztráció kulcs (specifikusabb előbb!)
+const STEP_ART_RULES = [
+  [/voice|speak|talk|audio|listen|record|dictat|sound|microphone/i, 'mic'],
+  [/image|picture|photo|visual|drawing|artwork|illustrat|generate an image|create an image/i, 'image'],
+  [/search|find\b|explore|browse|discover|look up|research|sources?/i, 'search'],
+  [/privac|secur|safe|protect|your data|be careful|permission|consent|sensitive/i, 'shield'],
+  [/setting|configur|option|preferenc|customi|control|toggle|enable|turn (it )?on|choose a model|pick a model/i, 'sliders'],
+  [/save|export|download|share|copy|publish|send it to/i, 'download'],
+  [/send|run\b|submit|generat|press enter|hit enter|press send|get your (answer|result|response)/i, 'plane'],
+  [/review|check|refine|edit\b|improve|fix\b|adjust|iterate|verif|proofread|polish|double-check/i, 'check'],
+  [/format|structure|outline|template|organi|layout|section|make a list|bullet/i, 'doc'],
+  [/context|detail|background|be specific|example|describe|explain|add (more )?|include|provide|give it/i, 'layers'],
+  [/type|write|prompt|ask\b|message|enter your|chat|tell it|input|conversation|question|your request/i, 'chat'],
+  [/define|goal|what you want|decide|choose what|pick what|plan\b|aim\b|outcome|result you|identify/i, 'target'],
+  [/tip|note|remember|understand|learn|know\b|why\b|what (it|this) means|matters/i, 'bulb'],
+  [/open\b|start\b|begin|sign ?up|sign ?in|account|log ?in|install|get started|access|set ?up|first/i, 'login'],
+];
+const STEP_ART_CYCLE = ['target', 'chat', 'layers', 'doc', 'check', 'plane', 'sliders', 'search'];
+
+function stepArt(title, idx) {
+  const t = title || '';
+  let key = null;
+  for (const [re, k] of STEP_ART_RULES) { if (re.test(t)) { key = k; break; } }
+  if (!key) key = STEP_ART_CYCLE[idx % STEP_ART_CYCLE.length];
+  return `<div class="g-step__art">${GUIDE_ART[key] || GUIDE_ART.target}</div>`;
+}
+
 function parseGuideSections(bodyMd) {
   const md = (bodyMd || '').replace(/^#\s+.*$/m, '').trim(); // a H1 címet a metából rakjuk ki
   const parts = md.split(/\n(?=##\s+)/);
@@ -549,7 +720,10 @@ function buildGuidePage(a) {
       stepNo++;
       const heading = t.replace(/^step\s*\d*\s*[—:-]?\s*/i, '');
       return `<div class="g-step"><div class="g-step__no">${stepNo}</div>
-        <div class="g-step__body"><h3 class="g-step__h">${escapeHtml(heading)}</h3>${guideSectionHtml(s.body)}</div></div>`;
+        <div class="g-step__grid">
+          <div class="g-step__body"><h3 class="g-step__h">${escapeHtml(heading)}</h3>${guideSectionHtml(s.body)}</div>
+          ${stepArt(heading, stepNo - 1)}
+        </div></div>`;
     }
     if (/before you start|before we start|prerequisit/i.test(t))
       return `<div class="g-prereq"><div class="g-block__h">✅ ${escapeHtml(t)}</div>${guideSectionHtml(s.body)}</div>`;

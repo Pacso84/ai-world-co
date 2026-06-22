@@ -1,0 +1,39 @@
+{
+  "_meta": {
+    "type": "guide",
+    "guide_topic_id": "perplexity-getting-started",
+    "company": "Perplexity",
+    "tool": "Perplexity",
+    "icon": "🔎",
+    "level": "beginner",
+    "written_at": "2026-06-22T18:54:13.840Z",
+    "writer_provider": "google",
+    "writer_model": "gemini-flash-latest",
+    "writer_cost_usd": 0.0012710999999999998,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-06-22T19:01:18.106Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 922
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "decision": "PASS",
+      "issues": [
+        "some potential for user confusion with technical terms like 'hallucinations' without clear definition on first use",
+        "minor risk of perceived bias towards Perplexity"
+      ],
+      "verdict": "The article is well-structured, explanatory, and respectful, making it suitable for publication with minor adjustments for clarity and balance.",
+      "_aiCost": 0.00120387,
+      "_provider": "groq",
+      "_model": "llama-3.3-70b-versatile",
+      "_attempts": 1
+    }
+  },
+  "article_markdown": "---\ntitle: \"Getting started with Perplexity for answers that show their sources\"\nsubtitle: \"Learn how to use this AI-powered search tool to find reliable information with clear, clickable source links.\"\ncategory: \"guide\"\naudience: \"both\"\ncompany: \"Perplexity\"\ntool: \"Perplexity\"\nlevel: \"beginner\"\nread_time_minutes: 4\ntags: [\"getting-started\", \"perplexity\"]\n---\n\n# Getting started with Perplexity for answers that show their sources\n\nImagine searching the web and getting a single, beautifully written answer that directly answers your question, while also showing you exactly which websites the information came from. This guide will show you how to use Perplexity, a tool designed to make researching, shopping, and learning online faster and much more reliable. \n\n## Before you start\n- **An internet connection:** You can use Perplexity on any computer, tablet, or smartphone.\n- **No account required to start:** You can use the basic features straight away without signing up, though creating a free account lets you save your search history.\n\n## Step 1 — Visit the homepage\nOpen your web browser and navigate to the Perplexity website. \n\nPerplexity is an **AI search engine** (a tool that uses artificial intelligence to scan the live internet, read dozens of websites in seconds, and summarise the findings for you, rather than just giving you a list of blue links). When the page loads, you will see a clean screen with a prominent search bar in the centre.\n\n## Step 2 — Ask a complete question\nUnlike traditional search engines where you type short keywords like \"best vacuum cleaner\", Perplexity works best when you talk to it naturally. \n\nType your **prompt** (the instruction or question you give to an AI) as if you were speaking to a helpful research assistant. \n\n💬 Example: \n> \"What are the best dog-friendly camping spots within a two-hour drive of Sydney, and what facilities do they have?\"\n\n## Step 3 — Follow the trail of sources\nOnce you press enter, Perplexity will search the web and write an answer. \n\nAs you read the response, you will notice small, numbered brackets next to the facts (like `[1]` or `[2]`). These are **citations** (clickable links that show the exact website the AI used to find that piece of information). \n\nAt the very top of the answer, you will also see a visual row of source cards. This transparency is a brilliant way to protect against **hallucinations** (a term for when an AI confidently makes up incorrect facts).\n\n💬 Example: Hover your mouse or tap on the number `[1]` next to a camping spot's name. A small preview of the original travel blog or national parks website will appear. Click it to open that page in a new tab to book your spot.\n\n## Step 4 — Ask a follow-up question\nOne of the best features of Perplexity is that you do not have to start a new search if you want more details. You can simply have a conversation. \n\nThe tool remembers what you have already asked in this specific chat. \n\n💬 Example: In the follow-up box at the bottom of your answer, type:\n> \"Which of those options have hot showers?\"\n\nPerplexity will filter the previous list and give you the updated answer instantly, still showing the sources.\n\n## Step 5 — Use Focus mode for specific tasks\nBefore you type a question, look for a button near the search bar labelled **Focus**. This button allows you to narrow down where the AI looks for information. \n\nBy default, it searches the entire internet, but you can change this to search only academic papers, only YouTube videos, or even turn off internet search entirely if you just want to write a creative story.\n\n💬 Example: Click **Focus** and select **YouTube**. Now, type: \n> \"How to change a tyre on a mountain bike\" \n\nPerplexity will summarise the steps and link you directly to the exact moments in the video tutorials.\n\n## Common mistakes\n- **Treating it like old-school search:** Avoid typing single words. Give the AI context. Instead of \"baking recipes\", try \"I have eggs, flour, and lemons. What can I bake in under 30 minutes?\"\n- **Skipping the source verification:** While the AI is highly accurate, it is always wise to click on one or two of the citations for highly important decisions (like medical or financial details) to ensure the source website is reputable.\n- **Forgetting to specify your location:** Because Perplexity searches the global web, it might assume you are in another country if you ask for \"local lawnmower repair shops\". Always add your city or suburb to the prompt.\n\n## What this means for you\n\n- **In everyday life:** You can easily compare products before buying. Ask Perplexity to compare three models of coffee machines based on recent user reviews, and it will give you a neat table with links to the original forums.\n- **For your business or work:** You can find up-to-date industry statistics for your reports or presentations. You will save hours of clicking through websites, and you can easily copy the source links to prove your numbers are accurate.\n- **If you're just getting started:** Think of Perplexity as a friendly assistant who reads the internet for you and hands you the summary, along with the receipts.\n\n## Try it now\nOpen a new browser tab and go to perplexity.ai. In the search bar, type: \n\n> \"What are three unique, indoor activities to do in Melbourne on a rainy afternoon?\"\n\nPress enter, read the summary, and click on one of the numbered source links at the top to see the original website.",
+  "original_title": "Getting started with Perplexity for answers that show their sources"
+}
