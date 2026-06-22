@@ -27,8 +27,10 @@ const AGENT_META = {
   'ellenorzo':    { icon: '🔎', name: 'Ellenőrző', role: 'Minőségi és pontossági kapu' },
   'source-scout': { icon: '🔭', name: 'Forrás-kutató', role: 'Új hivatalos forrásokat keres' },
   'designer':     { icon: '🎨', name: 'Tervező', role: 'Cikk-borítóképeket készít' },
+  'web-designer': { icon: '🖥️', name: 'Honlap-szerkesztő', role: 'A weboldal elrendezése (layout) + design-szabályok' },
   'analyst':      { icon: '📊', name: 'Elemző', role: 'Tanul az eredményekből, javaslatokat tesz' },
   'seo':          { icon: '🔍', name: 'SEO', role: 'Keresőoptimalizálja a cikkeket' },
+  'social':       { icon: '📣', name: 'Közösségi', role: 'Közösségi posztok (terv)' },
   'api-expert':   { icon: '🧠', name: 'API-szakértő', role: 'A legjobb elérhető modellt rendeli minden agenthez' },
   'publisher':    { icon: '🚀', name: 'Publikáló', role: 'Főszerkesztői ellenőrzés + build és közzététel' }
 };
@@ -442,25 +444,41 @@ function panelOrg(d) {
   const org = d.org;
   if (!org) return `<div class="panel"><div class="panel__h">🏢 Szervezet</div><div class="muted">core/org.json nem található.</div></div>`;
 
-  const depts = org.hierarchy?.departments || {};
+  // id → chip (ismert agent), egyébként külső szereplő (pl. human, fájl)
+  const node = x => AGENT_META[x] ? agentChip(x) : `<span class="ochip ochip--ext">${esc(x)}</span>`;
+  const roster = org.roster || {};
+  const depts = org.departments || org.hierarchy?.departments || {};
+
+  // ALÁ-FÖLÉ: CEO + részlegek (vezető + csapat, kinek jelentenek)
   const deptCards = Object.entries(depts).map(([key, dep]) => {
     const lead = dep.lead;
     const members = (dep.members || []).filter(m => m !== lead);
     return `<div class="odept">
       <div class="odept__h">${esc(dep.label || key)}</div>
-      <div class="orole">👑 Vezető</div>
+      <div class="orole">👑 Vezető <span class="muted">— jelent: 👔 CEO</span></div>
       <div class="orow">${agentChip(lead)}</div>
-      <div class="orole">Csapat</div>
+      <div class="orole">Csapat <span class="muted">— jelentenek a vezetőnek; egymással mellérendeltek</span></div>
       <div class="orow">${members.map(agentChip).join('') || '<span class="muted">—</span>'}</div>
     </div>`;
   }).join('');
+
+  // MELLÉRENDELTSÉG: egyenrangú csoportok
+  const peers = (org.peer_groups || []).map(g => `<div class="opeer">
+      <div class="opeer__h">↔️ ${esc(g.label)}</div>
+      <div class="orow">${(g.members || []).map(node).join('')}</div>
+      ${g.note ? `<div class="oloop__b">${esc(g.note)}</div>` : ''}
+    </div>`).join('');
+
+  // MUNKAÁTADÁS (lateral): ki adja kinek
+  const handoffs = (org.handoff_rules || []).map(h =>
+    `<div class="ohand">${node(h.from)} <span class="oarr">→</span> ${node(h.to)}<div class="oloop__b">${esc(h.what)}</div></div>`).join('');
 
   const decisions = (org.decision_rights || []).map(r =>
     `<div class="setrow"><span class="setk">${esc(r.who)}</span><span class="setv" style="max-width:62%;text-align:right;font-weight:500">${esc(r.decides)}</span></div>`).join('');
 
   const loops = (org.feedback_loops || []).map(l =>
     `<div class="oloop">
-      <div class="oloop__h">${esc(l.from)} <span class="oarr">↩︎ visszaadja →</span> ${esc(l.to)}${l.max_rounds ? ` <span class="obadge">max ${l.max_rounds}×</span>` : ''}</div>
+      <div class="oloop__h">${esc(l.from)} <span class="oarr">↩︎ →</span> ${esc(l.to)}${l.max_rounds ? ` <span class="obadge">max ${l.max_rounds}×</span>` : ''}</div>
       <div class="oloop__b"><b>Mikor:</b> ${esc(l.trigger)}</div>
       <div class="oloop__b"><b>Hogyan:</b> ${esc(l.mechanism)}</div>
       ${l.give_up ? `<div class="oloop__b"><b>Feladás:</b> ${esc(l.give_up)}</div>` : ''}
@@ -475,11 +493,23 @@ function panelOrg(d) {
        ${s.conditional ? `<div class="ostep__c">↩︎ ${esc(s.conditional)}</div>` : ''}
      </div>${i < wf.steps.length - 1 ? '<div class="oflowarr">↓</div>' : ''}`).join('') : '';
 
+  const ceoRep = roster.ceo?.reports_to || 'human';
+
   return `
-  <div class="panel"><div class="panel__h">🏢 Hierarchia — ki kinek jelent</div>
-    <div class="oceo">${agentChip('ceo')}<span class="oceo__r">jelent neki: 🧑 ${esc(org.hierarchy?.ceo?.reports_to || 'tulajdonos')}</span></div>
-    <div class="oceo__arr">irányítja ↓</div>
+  <div class="panel"><div class="panel__h">🏢 Alá-fölé rendeltség — ki kinek jelent</div>
+    <div class="oceo">${agentChip('ceo')}<span class="oceo__r">jelent neki: 🧑 ${esc(ceoRep === 'human' ? 'Tulajdonos' : ceoRep)}</span></div>
+    <div class="oceo__arr">irányítja a 3 részlegvezetőt ↓</div>
     <div class="odepts">${deptCards}</div>
+  </div>
+
+  <div class="panel"><div class="panel__h">↔️ Mellérendeltség — kik egyenrangúak</div>
+    <div class="muted" style="margin-bottom:12px">Az egyenrangúak nem utasítják egymást — egyeztetnek és laterálisan adják át a munkát.</div>
+    ${peers || '<div class="muted">—</div>'}
+  </div>
+
+  <div class="panel"><div class="panel__h">📨 Munkaátadás — ki adja kinek</div>
+    <div class="muted" style="margin-bottom:12px">A tiszta átadási pontok megakadályozzák a kavarodást a munkafolyamatban.</div>
+    ${handoffs || '<div class="muted">—</div>'}
   </div>
 
   <div class="panel"><div class="panel__h">⚖️ Döntési jogkörök — ki mit dönt</div>
@@ -637,6 +667,11 @@ body{background:#e7e0d2;color:var(--ink);font-family:'Hanken Grotesk',sans-serif
 .odept__h{font-family:'Schibsted Grotesk',sans-serif;font-weight:800;font-size:13px;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--line)}
 .orole{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:8px 0 4px}
 .orow{display:flex;flex-wrap:wrap}
+.ochip--ext{background:var(--p2);border-style:dashed;color:var(--soft);font-weight:700}
+.opeer{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:10px}
+.opeer__h{font-weight:800;font-size:13px;margin-bottom:6px}
+.ohand{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:10px 13px;margin-bottom:8px;display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.ohand .oloop__b{flex-basis:100%}
 .oloop{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:12px 14px;margin-bottom:10px}
 .oloop__h{font-weight:700;font-size:13.5px;margin-bottom:6px}
 .oarr{color:var(--accent);font-weight:800}
