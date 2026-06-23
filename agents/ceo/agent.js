@@ -58,6 +58,7 @@ function parseArgs() {
     skipWrite: args.includes('--skip-write'),
     skipReview: args.includes('--skip-review'),
     skipRework: args.includes('--skip-rework'),
+    skipPairing: args.includes('--skip-pairing'),
     skipDesign: args.includes('--skip-design'),
     skipSeo: args.includes('--skip-seo'),
     skipPublish: args.includes('--skip-publish'),
@@ -97,6 +98,12 @@ function countGuideReworkable() {
 // Hány guide vár a FŐNÖK végső döntésére (4 kört kimerítette)?
 function countGuideEscalatable() {
   return readRejected().filter(m => m.type === 'guide' && !m.ceo_decision && (m.rework_attempts || 0) >= GUIDE_MAX_REWORK).length;
+}
+// Hány MEGÍRANDÓ (todo) útmutató-téma van? (a párosító ide tesz új témákat a hírekből)
+const GUIDE_TOPICS_PATH = join(PROJECT_ROOT, 'guides', 'guide-topics.json');
+function countTodoGuideTopics() {
+  try { return JSON.parse(readFileSync(GUIDE_TOPICS_PATH, 'utf-8')).topics.filter(t => t.status !== 'done').length; }
+  catch { return 0; }
 }
 
 // ===================================================================
@@ -392,6 +399,27 @@ async function main() {
 
     if (reworkableArticles === 0 && guideRound === 0 && escalate === 0)
       console.log('\n✓ Nincs visszaadandó munka (rework kör kihagyva).');
+  }
+
+  // 3g. HÍR–ÚTMUTATÓ PÁROSÍTÁS — a frissen jóváhagyott hírekből (ha funkció-hír)
+  //     a Párosító guide-témát készít, az Útmutató-agent megírja, az Ellenőrző
+  //     ellenőrzi. (A megbukott paired guide-okat a következő futás rework-hurka kezeli.)
+  if (!args.skipPairing) {
+    console.log('\n━━━ 3g. LÉPÉS: HÍR–ÚTMUTATÓ PÁROSÍTÁS ━━━');
+    const pair = await runAgent('agents/pairing/agent.js');
+    const newTopics = countTodoGuideTopics();
+    session.stages.pairing = { exit_code: pair.code, new_topics: newTopics };
+    if (newTopics > 0) {
+      const writeN = Math.min(newTopics, 5);
+      console.log(`\n━━━ 3h. LÉPÉS: ÚTMUTATÓ-ÍRÁS (${writeN} új téma) ━━━`);
+      const gw = await runAgent('agents/guide/agent.js', ['--limit', String(writeN)]);
+      console.log('\n━━━ 3i. LÉPÉS: ÚJ ÚTMUTATÓK ELLENŐRZÉSE ━━━');
+      const gr = await runAgent('agents/ellenorzo/agent.js');
+      session.stages.pairing.guide_write_exit = gw.code;
+      session.stages.pairing.guide_review_exit = gr.code;
+    } else {
+      console.log('   ✓ Nincs új útmutatható hír.');
+    }
   }
 
   // 4d. Designer (fejlécképek)
