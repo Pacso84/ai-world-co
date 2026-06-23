@@ -260,7 +260,7 @@
         "deepseek-reasoner"
       ],
       "get_key": "https://platform.deepseek.com (nagyon olcsó)",
-      "comment": "OPCIONÁLIS (olcsó). Erős reasoning/kód kis pénzből."
+      "comment": "NINCS bekötve. NINCS ingyenes tier (HTTP 402 egyenleg nélkül) — csak fizetős feltöltéssel működne, ezért a free-first elv miatt kihagyjuk."
     }
   },
   "infrastructure": {
