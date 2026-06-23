@@ -171,6 +171,18 @@
       },
       "enabled": true,
       "comment": "Teny-ellenorzo / frissesseg-or: a publikalt utmutatokat ujraellenorzi, a valotlanna valt reszt eltavolitja/lagyitja, majd a guide visszamegy az Ellenorzo igazsag-kapujara. Nagy-kontextusu modell kell (teljes utmutato): gemini-flash + gemini-2.5-flash fallback (groq 12k limit keves)."
+    },
+    "pairing": {
+      "primary_model": {
+        "provider": "google",
+        "model": "gemini-flash-latest"
+      },
+      "fallback_model": {
+        "provider": "groq",
+        "model": "llama-3.3-70b-versatile"
+      },
+      "enabled": true,
+      "comment": "Hir-utmutato parosito: eldonti, hogy egy hir UTMUTATHATO-e (uj, hasznalhato funkcio) vagy sem (szovetseg, tozsdere lepes, felvasarlas, vezetovaltas, jogi/uzleti hir = NEM). Csak az utmutathato hirhez keszit guide-temat es kereszthivatkozast."
     }
   },
   "providers": {

@@ -182,6 +182,7 @@ function saveGuide(topic, response) {
       tool: topic.tool || '',
       icon: topic.icon || '',
       level: topic.level || 'beginner',
+      source_news: topic.source_news || null,   // hír→útmutató kereszthivatkozáshoz
       written_at: new Date().toISOString(),
       writer_provider: response.provider,
       writer_model: response.model,

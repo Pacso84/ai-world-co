@@ -26,6 +26,7 @@ const AGENT_META = {
   'guide':        { icon: '📘', name: 'Útmutató', role: 'Lépésről-lépésre gyakorlati útmutatókat ír' },
   'ellenorzo':    { icon: '🔎', name: 'Ellenőrző', role: 'Minőségi és pontossági kapu' },
   'fact-check':   { icon: '🕵️', name: 'Tény-ellenőrző', role: 'A publikált útmutatókat frissen tartja — a valótlant eltávolítja' },
+  'pairing':      { icon: '🔗', name: 'Párosító', role: 'Eldönti, mely hírhez kell útmutató, és összekapcsolja őket' },
   'source-scout': { icon: '🔭', name: 'Forrás-kutató', role: 'Új hivatalos forrásokat keres' },
   'designer':     { icon: '🎨', name: 'Tervező', role: 'Cikk-borítóképeket készít' },
   'web-designer': { icon: '🖥️', name: 'Honlap-szerkesztő', role: 'A weboldal elrendezése (layout) + design-szabályok' },
@@ -374,7 +375,7 @@ function panelComms(d) {
     info:     { i: '✅', label: 'Rendben', cls: 'c-info' }
   };
   const name = a => ({ ellenorzo: 'Ellenőrző', guide: 'Útmutató', iro: 'Író', ceo: 'Főnök', human: 'Te', team: 'Csapat',
-    'rss-scraper': 'Scraper', designer: 'Designer', 'web-designer': 'Honlap-szerkesztő', 'fact-check': 'Tény-ellenőrző', seo: 'SEO', publisher: 'Publikáló' }[a] || a || '?');
+    'rss-scraper': 'Scraper', designer: 'Designer', 'web-designer': 'Honlap-szerkesztő', 'fact-check': 'Tény-ellenőrző', pairing: 'Párosító', seo: 'SEO', publisher: 'Publikáló' }[a] || a || '?');
   const msgs = d.messages || [];
   const openNeeds = msgs.filter(m => m.kind === 'need' && m.open);
 

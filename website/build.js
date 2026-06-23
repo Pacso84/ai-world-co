@@ -190,6 +190,10 @@ function loadArticles() {
 
       articles.push({
         slug,
+        file,
+        guideTopicId: data._meta?.guide_topic_id || null,
+        relatedGuideTopic: data._meta?.related_guide_topic || null,
+        sourceNews: data._meta?.source_news || null,
         image: imgFile || null,
         title: meta.title || data.original_title || 'Untitled',
         subtitle: meta.subtitle || '',
@@ -219,6 +223,33 @@ function loadArticles() {
   // Legújabb előre
   articles.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
   return articles;
+}
+
+// ---- KERESZTHIVATKOZÁS (hír ↔ útmutató) -----------------------------
+// A párosító agent kötötte össze őket: a hír _meta.related_guide_topic →
+// útmutató (guide_topic_id), az útmutató _meta.source_news.file → hír (file).
+// A build itt oldja fel mindkét irányt a tényleg PUBLIKÁLT párra.
+let XREF = { guideByTopic: new Map(), newsByFile: new Map() };
+function buildXref(articles) {
+  XREF = { guideByTopic: new Map(), newsByFile: new Map() };
+  for (const a of articles) {
+    if (a.isGuide && a.guideTopicId) XREF.guideByTopic.set(a.guideTopicId, a);
+    if (!a.isGuide && a.file) XREF.newsByFile.set(a.file, a);
+  }
+}
+function xrefBox(a) {
+  if (a.isGuide) {
+    // útmutató → forrás-hír
+    const news = a.sourceNews?.file ? XREF.newsByFile.get(a.sourceNews.file) : null;
+    if (!news) return '';
+    return `<aside class="xref xref--news"><span class="xref__lbl">📰 What prompted this guide</span>
+      <a class="xref__link" href="${news.slug}.html"><span class="xref__t">${escapeHtml(news.title)}</span><span class="xref__arrow">→</span></a></aside>`;
+  }
+  // hír → kapcsolódó útmutató
+  const guide = a.relatedGuideTopic ? XREF.guideByTopic.get(a.relatedGuideTopic) : null;
+  if (!guide) return '';
+  return `<aside class="xref xref--guide"><span class="xref__lbl">📘 Want to try it? Step-by-step guide</span>
+    <a class="xref__link" href="${guide.slug}.html"><span class="xref__t">${escapeHtml(guide.title)}</span><span class="xref__arrow">→</span></a></aside>`;
 }
 
 // ===================================================================
@@ -517,6 +548,7 @@ function buildArticlePage(a) {
       ${a.bodyHtml}
     </div>
     ${tagsHtml}
+    ${xrefBox(a)}
     <div class="article__foot">
       <p class="ai-disclosure">✦ Original guide written by AI World Co.'s own AI editorial team. Reviewed for accuracy and clarity.</p>
       <a href="../index.html" class="back-link">← Back to all stories</a>
@@ -755,6 +787,7 @@ function buildGuidePage(a) {
     </div>
     ${intro ? `<div class="g-intro">${guideSectionHtml(intro)}</div>` : ''}
     <div class="g-steps">${blocks}</div>
+    ${xrefBox(a)}
     <div class="article__foot">
       <p class="ai-disclosure">✦ Original step-by-step guide by AI World Co.'s AI editorial team. Written in plain language, reviewed for accuracy.</p>
       <a href="../index.html" class="back-link">← Back to all stories</a>
@@ -857,6 +890,7 @@ function main() {
 
   // Cikkek — hírek (főoldal) és útmutatók (külön oldal) szétválasztva
   const articles = loadArticles();
+  buildXref(articles);  // hír ↔ útmutató kereszthivatkozás-index
   const news = articles.filter(a => !a.isGuide);
   const guides = articles.filter(a => a.isGuide);
   console.log(`📰 ${articles.length} publikált (${news.length} hír, ${guides.length} útmutató)`);
