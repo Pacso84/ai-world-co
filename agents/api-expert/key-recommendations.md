@@ -1,8 +1,8 @@
 # API-kulcs ajánlások — az API-szakértő agenttől
 
-*Generálva: 2026-06-23T19:36:41.195Z · ELV: ingyen-először (csak akkor fizetünk, ha ingyen nem megoldható).*
+*Generálva: 2026-06-23T19:45:14.116Z · ELV: ingyen-először (csak akkor fizetünk, ha ingyen nem megoldható).*
 
-**Bekötött gyártók:** google (free), groq (free), cerebras (free), openrouter (freemium)
+**Bekötött gyártók:** google (free), groq (free), cerebras (free), openrouter (freemium), mistral (free)
 **Költség-állapot:** 12 agent ingyenes modellen — minden agent INGYENES modellen fut ✅.
 
 ### 🧩 Le NEM fedett képességek (ezekhez kéne kulcs)
@@ -11,7 +11,6 @@
 - **Hang (TTS/átirat)** — legjobb: openai, google. Javaslat: **google**. Ingyenes opció: google korlátozottan
 
 ### 🔑 Beköthető kulcsok (ingyen-először)
-- **mistral** _(free, Van ingyenes tier (la Plateforme).)_ — erre jó: chat, cheap, eu-privacy. EU-s, adatvédelem-barát; jó redundancia.
 - **cloudflare** _(free, Workers AI ingyenes napi kvóta (Flux képgenerálás).)_ — erre jó: image-generate. Már HASZNÁLJUK a Designerben (fejlécképek) — ingyenes képgenerálás.
 - **perplexity** _(freemium, Korlátozott ingyenes kredit; Sonar modellek.)_ — erre jó: research-web, citations. WEBES kutatás FORRÁSMEGJELÖLÉSSEL — erre nincs jelenleg bekötött gyártónk.
 - **deepseek** _(cheap)_ — erre jó: reasoning, code, cheap. Nagyon olcsó; erős reasoning/kód.

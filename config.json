@@ -20,24 +20,24 @@
   "agents": {
     "ceo": {
       "primary_model": {
-        "provider": "google",
-        "model": "gemini-flash-latest"
+        "provider": "groq",
+        "model": "llama-3.3-70b-versatile"
       },
       "fallback_model": {
-        "provider": "google",
-        "model": "gemini-2.5-flash"
+        "provider": "cerebras",
+        "model": "gpt-oss-120b"
       },
       "enabled": true,
       "comment": "Orkesztrálás egyszerű feladat - Haiku elég ($1/$5 vs Sonnet $3/$15). Fallback: Gemini Flash (ingyen)."
     },
     "rss-scraper": {
       "primary_model": {
-        "provider": "google",
-        "model": "gemini-flash-latest"
+        "provider": "groq",
+        "model": "llama-3.3-70b-versatile"
       },
       "fallback_model": {
-        "provider": "google",
-        "model": "gemini-2.5-flash"
+        "provider": "cerebras",
+        "model": "gpt-oss-120b"
       },
       "enabled": true,
       "schedule": "every 4 hours",
@@ -57,24 +57,24 @@
     },
     "ellenorzo": {
       "primary_model": {
-        "provider": "google",
-        "model": "gemini-flash-latest"
-      },
-      "fallback_model": {
         "provider": "groq",
         "model": "llama-3.3-70b-versatile"
+      },
+      "fallback_model": {
+        "provider": "cerebras",
+        "model": "gpt-oss-120b"
       },
       "enabled": true,
       "comment": "Ellenorzes: gemini-flash-latest (INGYEN sajat kvota) + fallback 2.5-pro. Kesobb Claude ha kell jobb minoseg."
     },
     "source-scout": {
       "primary_model": {
-        "provider": "google",
-        "model": "gemini-flash-latest"
+        "provider": "groq",
+        "model": "llama-3.3-70b-versatile"
       },
       "fallback_model": {
-        "provider": "google",
-        "model": "gemini-2.5-flash"
+        "provider": "cerebras",
+        "model": "gpt-oss-120b"
       },
       "enabled": true,
       "comment": "Forras-kutato: uj HIVATALOS AI forrasokat keres, teszteli az RSS-t, javaslatot ir (ember donti el)."
@@ -93,12 +93,12 @@
     },
     "analyst": {
       "primary_model": {
-        "provider": "google",
-        "model": "gemini-flash-latest"
+        "provider": "groq",
+        "model": "llama-3.3-70b-versatile"
       },
       "fallback_model": {
-        "provider": "google",
-        "model": "gemini-2.5-flash"
+        "provider": "cerebras",
+        "model": "gpt-oss-120b"
       },
       "enabled": true,
       "comment": "Elemzo/Tanulas: forras-statisztika + onfejlesztesi javaslat (user dont). Az autonom tanulas: Ellenorzo->lessons.json->Iro."
@@ -163,23 +163,23 @@
     "fact-check": {
       "primary_model": {
         "provider": "google",
-        "model": "gemini-flash-latest"
+        "model": "gemini-2.5-flash"
       },
       "fallback_model": {
-        "provider": "google",
-        "model": "gemini-2.5-flash"
+        "provider": "groq",
+        "model": "llama-3.3-70b-versatile"
       },
       "enabled": true,
       "comment": "Teny-ellenorzo / frissesseg-or: a publikalt utmutatokat ujraellenorzi, a valotlanna valt reszt eltavolitja/lagyitja, majd a guide visszamegy az Ellenorzo igazsag-kapujara. Nagy-kontextusu modell kell (teljes utmutato): gemini-flash + gemini-2.5-flash fallback (groq 12k limit keves)."
     },
     "pairing": {
       "primary_model": {
-        "provider": "google",
-        "model": "gemini-flash-latest"
-      },
-      "fallback_model": {
         "provider": "groq",
         "model": "llama-3.3-70b-versatile"
+      },
+      "fallback_model": {
+        "provider": "cerebras",
+        "model": "gpt-oss-120b"
       },
       "enabled": true,
       "comment": "Hir-utmutato parosito: eldonti, hogy egy hir UTMUTATHATO-e (uj, hasznalhato funkcio) vagy sem (szovetseg, tozsdere lepes, felvasarlas, vezetovaltas, jogi/uzleti hir = NEM). Csak az utmutathato hirhez keszit guide-temat es kereszthivatkozast."
@@ -220,16 +220,21 @@
     "cerebras": {
       "enabled": true,
       "api_key_env": "CEREBRAS_API_KEY",
-      "models_available": ["gpt-oss-120b"],
+      "models_available": [
+        "gpt-oss-120b"
+      ],
       "free_tier": "Ingyenes, gyors, nagy modell",
       "pricing_note": "INGYEN. Hosszú íráshoz kiváló."
     },
     "mistral": {
-      "enabled": false,
+      "enabled": true,
       "api_key_env": "MISTRAL_API_KEY",
-      "models_available": ["mistral-small-latest", "mistral-large-latest"],
+      "models_available": [
+        "mistral-small-latest",
+        "mistral-large-latest"
+      ],
       "get_key": "https://console.mistral.ai (ingyenes tier, EU adatvédelem)",
-      "comment": "JAVASOLT (ingyen). Redundancia + EU. Kulcs után: node agents/api-expert/agent.js"
+      "comment": "BEKÖTVE (ingyen). Redundancia + EU. Tesztelve: small + large OK."
     },
     "openrouter": {
       "enabled": true,
@@ -240,14 +245,20 @@
     "perplexity": {
       "enabled": false,
       "api_key_env": "PERPLEXITY_API_KEY",
-      "models_available": ["sonar", "sonar-pro"],
+      "models_available": [
+        "sonar",
+        "sonar-pro"
+      ],
       "get_key": "https://www.perplexity.ai/settings/api (korlátozott ingyenes kredit)",
       "comment": "JAVASOLT webes KUTATÁSHOZ forrásmegjelöléssel — erre nincs más gyártónk."
     },
     "deepseek": {
       "enabled": false,
       "api_key_env": "DEEPSEEK_API_KEY",
-      "models_available": ["deepseek-chat", "deepseek-reasoner"],
+      "models_available": [
+        "deepseek-chat",
+        "deepseek-reasoner"
+      ],
       "get_key": "https://platform.deepseek.com (nagyon olcsó)",
       "comment": "OPCIONÁLIS (olcsó). Erős reasoning/kód kis pénzből."
     }
