@@ -285,6 +285,9 @@ const PRICING = {
   'zai-glm-4.7': { input: 0, output: 0 },
   'llama-3.3-70b': { input: 0, output: 0 },
   'deepseek/deepseek-chat:free': { input: 0, output: 0 },
+  'meta-llama/llama-3.3-70b-instruct:free': { input: 0, output: 0 },
+  'deepseek-chat': { input: 0.14, output: 0.28 },
+  'sonar': { input: 1.0, output: 1.0 },
   'mistral-small-latest': { input: 0.20, output: 0.60 },
   'mistral-large-latest': { input: 2.0, output: 6.0 }
 };
@@ -361,7 +364,7 @@ const FREE_POOL = [
   { provider: 'groq', model: 'llama-3.3-70b-versatile' },
   { provider: 'cerebras', model: 'gpt-oss-120b' },
   { provider: 'mistral', model: 'mistral-small-latest' },
-  { provider: 'openrouter', model: 'deepseek/deepseek-chat:free' }
+  { provider: 'openrouter', model: 'meta-llama/llama-3.3-70b-instruct:free' }
 ];
 
 function loadQuota() {

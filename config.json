@@ -232,10 +232,10 @@
       "comment": "JAVASOLT (ingyen). Redundancia + EU. Kulcs után: node agents/api-expert/agent.js"
     },
     "openrouter": {
-      "enabled": false,
+      "enabled": true,
       "api_key_env": "OPENROUTER_API_KEY",
       "get_key": "https://openrouter.ai/keys (sok modell, pár ingyen :free)",
-      "comment": "JAVASOLT (freemium). Meta-fallback 300+ modellhez egy kulccsal."
+      "comment": "BEKÖTVE (freemium). Meta-fallback 300+ modellhez egy kulccsal."
     },
     "perplexity": {
       "enabled": false,
