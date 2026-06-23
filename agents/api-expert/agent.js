@@ -59,7 +59,9 @@ function availableProviders() {
     groq: !!env.GROQ_API_KEY,
     cerebras: !!env.CEREBRAS_API_KEY,
     openrouter: !!env.OPENROUTER_API_KEY,
-    mistral: !!env.MISTRAL_API_KEY
+    mistral: !!env.MISTRAL_API_KEY,
+    deepseek: !!env.DEEPSEEK_API_KEY,
+    perplexity: !!env.PERPLEXITY_API_KEY
   };
 }
 

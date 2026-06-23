@@ -217,10 +217,39 @@
       "free_tier": "~30 req/min, napi limit",
       "pricing_note": "INGYEN. Brutál gyors (1000+ tok/sec)."
     },
+    "cerebras": {
+      "enabled": true,
+      "api_key_env": "CEREBRAS_API_KEY",
+      "models_available": ["gpt-oss-120b"],
+      "free_tier": "Ingyenes, gyors, nagy modell",
+      "pricing_note": "INGYEN. Hosszú íráshoz kiváló."
+    },
+    "mistral": {
+      "enabled": false,
+      "api_key_env": "MISTRAL_API_KEY",
+      "models_available": ["mistral-small-latest", "mistral-large-latest"],
+      "get_key": "https://console.mistral.ai (ingyenes tier, EU adatvédelem)",
+      "comment": "JAVASOLT (ingyen). Redundancia + EU. Kulcs után: node agents/api-expert/agent.js"
+    },
     "openrouter": {
       "enabled": false,
       "api_key_env": "OPENROUTER_API_KEY",
-      "comment": "Opcionális backup - 300+ modell, pár ingyen. Most kikapcsolva."
+      "get_key": "https://openrouter.ai/keys (sok modell, pár ingyen :free)",
+      "comment": "JAVASOLT (freemium). Meta-fallback 300+ modellhez egy kulccsal."
+    },
+    "perplexity": {
+      "enabled": false,
+      "api_key_env": "PERPLEXITY_API_KEY",
+      "models_available": ["sonar", "sonar-pro"],
+      "get_key": "https://www.perplexity.ai/settings/api (korlátozott ingyenes kredit)",
+      "comment": "JAVASOLT webes KUTATÁSHOZ forrásmegjelöléssel — erre nincs más gyártónk."
+    },
+    "deepseek": {
+      "enabled": false,
+      "api_key_env": "DEEPSEEK_API_KEY",
+      "models_available": ["deepseek-chat", "deepseek-reasoner"],
+      "get_key": "https://platform.deepseek.com (nagyon olcsó)",
+      "comment": "OPCIONÁLIS (olcsó). Erős reasoning/kód kis pénzből."
     }
   },
   "infrastructure": {

@@ -1,6 +1,6 @@
 # API-kulcs ajánlások — az API-szakértő agenttől
 
-*Generálva: 2026-06-23T19:21:29.211Z · ELV: ingyen-először (csak akkor fizetünk, ha ingyen nem megoldható).*
+*Generálva: 2026-06-23T19:28:18.717Z · ELV: ingyen-először (csak akkor fizetünk, ha ingyen nem megoldható).*
 
 **Bekötött gyártók:** google (free), groq (free), cerebras (free)
 **Költség-állapot:** 12 agent ingyenes modellen — minden agent INGYENES modellen fut ✅.

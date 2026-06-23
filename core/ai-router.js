@@ -216,6 +216,9 @@ function makeOpenAICaller({ provider, baseUrl, keyEnv, extraHeaders }) {
 const callCerebras = makeOpenAICaller({ provider: 'cerebras', baseUrl: 'https://api.cerebras.ai/v1/chat/completions', keyEnv: 'CEREBRAS_API_KEY' });
 const callOpenRouter = makeOpenAICaller({ provider: 'openrouter', baseUrl: 'https://openrouter.ai/api/v1/chat/completions', keyEnv: 'OPENROUTER_API_KEY', extraHeaders: { 'HTTP-Referer': 'https://aiworld.co', 'X-Title': 'AI World Co.' } });
 const callMistral = makeOpenAICaller({ provider: 'mistral', baseUrl: 'https://api.mistral.ai/v1/chat/completions', keyEnv: 'MISTRAL_API_KEY' });
+// Új, OpenAI-kompatibilis gyártók (a kulcs hiányában tisztán továbblép a router)
+const callDeepSeek = makeOpenAICaller({ provider: 'deepseek', baseUrl: 'https://api.deepseek.com/v1/chat/completions', keyEnv: 'DEEPSEEK_API_KEY' });
+const callPerplexity = makeOpenAICaller({ provider: 'perplexity', baseUrl: 'https://api.perplexity.ai/chat/completions', keyEnv: 'PERPLEXITY_API_KEY' });
 
 // Provider -> hívó függvény map
 const providerCallers = {
@@ -224,7 +227,9 @@ const providerCallers = {
   groq: callGroq,
   cerebras: callCerebras,
   openrouter: callOpenRouter,
-  mistral: callMistral
+  mistral: callMistral,
+  deepseek: callDeepSeek,
+  perplexity: callPerplexity
 };
 
 // ===================================================================
