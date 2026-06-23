@@ -1,0 +1,33 @@
+{
+  "_meta": {
+    "description": "Az API-szakértő agent TUDÁSBÁZISA: melyik gyártó miben a legjobb, ingyenes-e, és melyik képességhez melyik kulcs kell. ELV: ingyen-először — csak akkor fizetünk, ha ingyen nem megoldható. Az agent ezt olvassa az ajánlásokhoz; a --learn mód frissítési JAVASLATot ír (ember dönt).",
+    "updated": "2026-06-23",
+    "principle": "free-first"
+  },
+
+  "providers": {
+    "google":    { "key_env": "GOOGLE_API_KEY",    "cost": "free",  "free_notes": "Gemini: nagy ingyenes napi kvóta.", "best_for": ["chat", "json", "long-form", "embeddings", "vision", "cheap"], "notes": "Sokoldalú, multimodális, embeddinget is ad (ezt használjuk a memóriához)." },
+    "groq":      { "key_env": "GROQ_API_KEY",      "cost": "free",  "free_notes": "Ingyenes, de kis TPM limit (~12k).", "best_for": ["speed", "chat", "json"], "notes": "Nagyon gyors; nagy prompthoz kevés a limit (413)." },
+    "cerebras":  { "key_env": "CEREBRAS_API_KEY",  "cost": "free",  "free_notes": "Ingyenes, gyors, nagy modell (gpt-oss-120b).", "best_for": ["long-form", "speed", "writing", "cheap"], "notes": "Hosszú íráshoz kiváló és ingyen — az útmutató-író fő modellje." },
+    "anthropic": { "key_env": "ANTHROPIC_API_KEY", "cost": "paid",  "best_for": ["quality", "reasoning", "long-form", "writing", "review"], "notes": "FIZETŐS. A legjobb minőség íráshoz/ellenőrzéshez — csak ha az ingyenes nem elég jó." },
+    "mistral":   { "key_env": "MISTRAL_API_KEY",   "cost": "free",  "free_notes": "Van ingyenes tier (la Plateforme).", "best_for": ["chat", "cheap", "eu-privacy"], "notes": "EU-s, adatvédelem-barát; jó redundancia." },
+    "openrouter":{ "key_env": "OPENROUTER_API_KEY","cost": "freemium", "free_notes": "Néhány modell ingyen (:free), a többi pay-per-use.", "best_for": ["variety", "fallback"], "notes": "Sok modellhez egy kulcs — jó meta-fallback." },
+    "perplexity":{ "key_env": "PERPLEXITY_API_KEY","cost": "freemium", "free_notes": "Korlátozott ingyenes kredit; Sonar modellek.", "best_for": ["research-web", "citations"], "notes": "WEBES kutatás FORRÁSMEGJELÖLÉSSEL — erre nincs jelenleg bekötött gyártónk." },
+    "openai":    { "key_env": "OPENAI_API_KEY",    "cost": "paid",  "best_for": ["image-generate", "image-edit", "voice", "chat"], "notes": "FIZETŐS. Natív képgenerálás/szerkesztés és hang. A képgenerálást ingyen a Cloudflare Flux is megoldja." },
+    "deepseek":  { "key_env": "DEEPSEEK_API_KEY",  "cost": "cheap", "best_for": ["reasoning", "code", "cheap"], "notes": "Nagyon olcsó; erős reasoning/kód." },
+    "cloudflare":{ "key_env": "CLOUDFLARE_API_TOKEN", "cost": "free", "free_notes": "Workers AI ingyenes napi kvóta (Flux képgenerálás).", "best_for": ["image-generate"], "notes": "Már HASZNÁLJUK a Designerben (fejlécképek) — ingyenes képgenerálás." }
+  },
+
+  "capabilities": {
+    "chat-general":     { "label": "Általános chat/feladat", "best": ["google", "groq", "cerebras"], "free_option": "google/groq/cerebras (mind ingyen)" },
+    "long-form-writing":{ "label": "Hosszú, minőségi írás (cikk/útmutató)", "best": ["anthropic", "cerebras", "google"], "free_option": "cerebras gpt-oss-120b (ingyen, erős)" },
+    "quality-review":   { "label": "Minőség/igazság-ellenőrzés", "best": ["anthropic", "google", "groq"], "free_option": "gemini-flash + groq llama (ingyen)" },
+    "json-structured":  { "label": "Strukturált JSON kimenet", "best": ["google", "groq"], "free_option": "gemini-flash (ingyen, megbízható)" },
+    "embeddings":       { "label": "Szemantikus memória (embedding)", "best": ["google"], "free_option": "google gemini-embedding-001 (ingyen) — HASZNÁLJUK" },
+    "research-web":     { "label": "Webes kutatás forrásmegjelöléssel", "best": ["perplexity"], "free_option": "perplexity (korlátozott ingyenes kredit)", "covered": false },
+    "image-generate":   { "label": "Képgenerálás", "best": ["cloudflare", "openai", "google"], "free_option": "Cloudflare Flux (ingyen) — HASZNÁLJUK a Designerben" },
+    "image-edit":       { "label": "Képszerkesztés (feltöltött kép)", "best": ["openai", "google"], "free_option": "korlátozott; tisztán ingyenes natív szerkesztés ma gyenge", "covered": false },
+    "voice-audio":      { "label": "Hang (TTS/átirat)", "best": ["openai", "google"], "free_option": "google korlátozottan", "covered": false },
+    "speed":            { "label": "Sebesség (gyors válasz)", "best": ["groq", "cerebras"], "free_option": "groq/cerebras (ingyen)" }
+  }
+}
