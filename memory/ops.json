@@ -87,6 +87,14 @@
       "agent": "ellenorzo",
       "created": "2026-06-22T19:01:29.024Z",
       "updated": "2026-06-22T19:01:33.605Z"
+    },
+    {
+      "id": "t178224028181344",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-06-23T18:44:41.813Z",
+      "updated": "2026-06-23T18:44:42.221Z"
     }
   ],
   "notifications": [
@@ -192,6 +200,22 @@
       "text": "10 új cikk publikálva (költség: $0.0074).",
       "agent": "ceo",
       "at": "2026-06-22T19:01:33.624Z",
+      "loud": false
+    },
+    {
+      "id": "n178224028223784",
+      "level": "info",
+      "text": "Pipeline lefutott — ma nem volt publikálható új tartalom.",
+      "agent": "ceo",
+      "at": "2026-06-23T18:44:42.237Z",
+      "loud": false
+    },
+    {
+      "id": "n178224068657824",
+      "level": "info",
+      "text": "SEO: 21 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-06-23T18:51:26.578Z",
       "loud": false
     }
   ],
