@@ -1,0 +1,40 @@
+{
+  "_meta": {
+    "type": "guide",
+    "guide_topic_id": "ai-translate",
+    "company": "",
+    "tool": "",
+    "icon": "🌍",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-06-24T19:18:58.548Z",
+    "writer_provider": "cerebras",
+    "writer_model": "gpt-oss-120b",
+    "writer_cost_usd": 0,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-06-24T19:22:46.695Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 798
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "decision": "PASS",
+      "issues": [
+        "minor formatting",
+        "no issues otherwise"
+      ],
+      "verdict": "The article meets all requirements, is well-structured, and provides clear explanations for everyday people to understand and use AI for language translation.",
+      "_aiCost": 0.0011375199999999997,
+      "_provider": "groq",
+      "_model": "llama-3.3-70b-versatile",
+      "_attempts": 1
+    }
+  },
+  "article_markdown": "---\ntitle: \"How to Translate and Understand Other Languages with AI\"\nsubtitle: \"A step‑by‑step guide for beginners to translate messages, menus, and documents using AI, and why keeping context matters\"\ncategory: \"guide\"\naudience: \"both\"\ncompany: \"\"\ntool: \"\"\nlevel: \"beginner\"\nread_time_minutes: 4\ntags: [\"getting-started\", \"translation\"]\n---\n\n# How to Translate and Understand Other Languages with AI\n\n**Hook:** By the end of this guide you’ll be able to turn any piece of foreign text—whether a quick chat, a restaurant menu, or a PDF report—into clear English (or your preferred language) with an AI tool, and you’ll know how to keep the meaning intact. This is for anyone who’s never used AI for translation before.\n\n## Before you start\n- **An internet‑connected device** (phone, tablet, or computer).  \n- **A free account** on an AI chat platform that offers text generation (e.g., ChatGPT, Gemini, Claude).  \n- **A piece of text** you want to translate (copy‑paste it into a note or have it on screen).\n\n## Step 1 — Open the AI chat window\nLaunch the web page or app where you normally talk to the AI. Look for a button that says **“New chat”** or a plus‑icon that opens a fresh conversation. This gives you a clean space so the AI can focus just on the translation you’re about to request.\n\n💬 **Example:** Click the “New chat” button and you’ll see a blank text box ready for you to type.\n\n## Step 2 — Tell the AI what you need, with a bit of context\nIn the first message, write a short prompt like:\n\n> “Please translate the following French text into English and keep the tone friendly:”\n\nThen paste the foreign text right after the colon. Adding “keep the tone friendly” or “preserve the formal style” tells the AI the kind of voice you expect, which helps it retain meaning.\n\n💬 **Example:**  \n```\nPlease translate the following Japanese menu into English and keep the restaurant’s casual tone:\n\n寿司 1200円\nラーメン 850円\n天ぷらセット 1500円\n```\n\n## Step 3 — Review the AI’s output for context clues\nAI translations are usually spot‑on, but they can miss nuance if a word has multiple meanings. Scan the result for any words that seem odd or out of place. If something feels wrong, ask the AI to **re‑translate that specific line** and add a note like “Here ‘〇〇’ could also mean …, which fits better?”\n\n💬 **Example:** If the AI returns “Sushi – 12.00 AUD”, you might reply: “Could you keep the original yen amount instead of converting to AUD?”\n\n## Step 4 — Translate longer documents with “chunking”\nFor PDFs or multi‑page documents, copy a few paragraphs at a time (about 300‑500 words) and repeat steps 2‑3. This “chunking” method prevents the AI from hitting its limit on how much text it can handle in one go, and it lets you keep track of each section’s meaning.\n\n💬 **Example:**  \n1. Copy the first page of a technical guide.  \n2. Paste it after the prompt “Translate into English, preserving technical terms.”  \n3. When done, repeat with the next page.\n\n## Step 5 — Save the translated text in a useful format\nOnce you’re happy with a section, select the AI’s answer, copy it, and paste it into a document program (like Word or Google Docs). Give the file a clear name—e.g., “Menu_Translation_English.docx”—so you can find it later without hunting.\n\n💬 **Example:** Highlight the AI’s translation, press **Ctrl + C** (or Cmd + C on Mac), open a new Google Doc, and press **Ctrl + V** to paste.\n\n## Common mistakes\n- **Skipping the context note:** Forgetting to tell the AI whether the text should stay formal or casual can lead to a tone that feels off.  \n- **Pasting the whole PDF at once:** Overloading the AI with too much text may cause it to truncate or lose accuracy.  \n- **Accepting the first answer blindly:** A quick glance can miss subtle errors; a brief second look usually catches them.\n\n## What this means for you\n- **In everyday life:** You can decode a foreign restaurant menu on the fly, so you’re never stuck wondering what “Ribollita” means.  \n- **For your business or work:** Translate client emails, product sheets, or safety manuals without hiring a professional translator, saving time and money.  \n- **If you're just getting started:** The easiest first move is to open a chat, paste a short sentence in another language, and ask for a translation—watch the AI do the heavy lifting instantly.\n\n## Try it now\nTake a piece of text you’ve got handy—a text message, a product label, or a snippet from a news article—open your AI chat, type the prompt “Please translate the following into English:” and paste the text. Hit send, and you’ll see the translation appear in under a minute.",
+  "original_title": "How to translate and understand other languages with AI"
+}
