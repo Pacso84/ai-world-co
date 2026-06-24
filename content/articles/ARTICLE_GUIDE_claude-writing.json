@@ -1,0 +1,40 @@
+{
+  "_meta": {
+    "type": "guide",
+    "guide_topic_id": "claude-writing",
+    "company": "Anthropic",
+    "tool": "Claude",
+    "icon": "✍️",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-06-24T20:09:25.187Z",
+    "writer_provider": "cerebras",
+    "writer_model": "gpt-oss-120b",
+    "writer_cost_usd": 0,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-06-24T20:11:43.032Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 702
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "decision": "PASS",
+      "issues": [
+        "missing explicit Australian English spellings check",
+        "some minor tone variations"
+      ],
+      "verdict": "The article provides a clear, step-by-step guide on using Claude for everyday writing tasks, explaining technical terms and following the required structure, making it suitable for publication.",
+      "_aiCost": 0.00105968,
+      "_provider": "groq",
+      "_model": "llama-3.3-70b-versatile",
+      "_attempts": 1
+    }
+  },
+  "article_markdown": "---\ntitle: \"How to use Claude for clear, careful writing and editing in everyday tasks\"\nsubtitle: \"Learn step‑by‑step how to draft, polish and set the right tone with Anthropic’s Claude – a handy guide for anyone who wants smoother emails, reports or school essays.\"\ncategory: \"guide\"\naudience: \"both\"\ncompany: \"Anthropic\"\ntool: \"Claude\"\nlevel: \"beginner\"\nread_time_minutes: 4\ntags: [\"getting-started\", \"claude\"]\n---\n\n# How to use Claude for clear, careful writing and editing in everyday tasks\n\n**Hook:** By the end of this guide you’ll be able to ask Claude to create a first draft, tidy it up for clarity, and tweak the tone, whether you’re writing a casual email or a professional report. It’s written for anyone who’s new to AI‑assisted writing.\n\n## Before you start\n- **A free Anthropic account** – you can sign up at claude.ai with an email address.\n- **An internet‑connected device** – computer, tablet or phone will do.\n- **A short piece of text you want to improve** – a sentence, paragraph or a list of points.\n\n## Step 1 — Open Claude and start a new chat\nLog in to the Claude website, then look for a button that says **“New chat”** or a plus‑icon ( + ) near the top‑right corner. Clicking it opens a fresh conversation where you can type your first request.\n\n💬 **Example:** Click “New chat” → you’ll see a blank box that says “Ask Claude anything”.\n\n## Step 2 — Tell Claude what you need to write\nType a simple prompt that describes the piece you want. A *prompt* is just the instruction you give to an AI. Be clear about the purpose, length and audience.\n\n💬 **Example:**  \n```\nWrite a polite email asking my manager for a one‑hour meeting next week to discuss project updates.\n```\n\nClaude will reply with a draft you can copy straight away.\n\n## Step 3 — Ask Claude to edit for clarity\nIf the draft feels a bit wordy or confusing, ask Claude to “make it clearer”. You can also mention you want a “concise” version. Claude will rewrite the same text, keeping the original meaning but trimming unnecessary words.\n\n💬 **Example:**  \n```\nCan you make the email shorter and clearer while keeping it friendly?\n```\n\n## Step 4 — Choose a tone that fits the situation\nThe *tone* describes the feeling of the writing – formal, friendly, enthusiastic, etc. Tell Claude the tone you need, and it will adjust the wording accordingly.\n\n💬 **Example:**  \n```\nRewrite the email in a more formal tone.\n```\n\n## Step 5 — Review, copy, and save\nRead Claude’s final version. If anything still looks off, you can ask for a quick tweak (“Replace ‘project updates’ with ‘progress report’”). Once satisfied, select the text, copy it, and paste it into your email client, document or wherever you need it.\n\n💬 **Example:** Highlight the finished email, press Ctrl + C (or Cmd + C on a Mac), then paste it into Outlook.\n\n## Common mistakes\n- **Not giving enough context:** Claude can’t guess details you haven’t mentioned. Include the necessary background (who you’re writing to, why, any key dates).\n- **Using vague prompts:** “Write something nice” is too open‑ended. Specify the format, length and audience.\n- **Skipping a quick fact‑check:** Claude sometimes adds invented details (known as a “hallucination”). Always skim the output to ensure names, dates or numbers are correct.\n\n## What this means for you\n- **In everyday life:** You can turn a rough note into a polished email to a friend or a clear message to a school teacher in seconds.\n- **For your business or work:** Draft reports, proposals or client replies that sound professional without spending hours on wording.\n- **If you're just getting started:** The easiest first move is to ask Claude to rewrite a single sentence you already have – it shows the power of the tool instantly.\n\n## Try it now\n1. Go to **claude.ai** and click **“New chat.”**  \n2. Type:  \n```\nRewrite this sentence to sound more professional: “I think we should meet up tomorrow.”\n```  \n3. Copy the improved version and use it in a real message.\n\nGive yourself two minutes – you’ll see how quickly Claude can tidy up your writing!",
+  "original_title": "How to use Claude for clear, careful writing and editing"
+}
