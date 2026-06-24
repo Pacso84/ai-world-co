@@ -447,11 +447,18 @@ const GUIDE_COVER_COLORS = {
 };
 function guideCoverHtml(a, cls) {
   const color = GUIDE_COVER_COLORS[a.company] || '#4f7a86';
-  const label = a.company ? escapeHtml([a.company, a.tool].filter(Boolean).join(' · ')) : 'Step-by-step guide';
+  const focal = a.tool || a.company || 'AI skills';
+  const sub = (a.company && a.tool) ? a.company : 'For everyday people';
   return `<div class="${cls} guide-cover" style="--gc:${color}">
-    <div class="guide-cover__deco"></div>
-    <div class="guide-cover__badge">${guideIcon(a)}</div>
-    <div class="guide-cover__label">${label}</div>
+    <span class="guide-cover__rings" aria-hidden="true"></span>
+    <div class="guide-cover__inner">
+      <span class="guide-cover__eyebrow">Step-by-step guide</span>
+      <div class="guide-cover__row">
+        <span class="guide-cover__chip">${guideIcon(a)}</span>
+        <span class="guide-cover__focal">${escapeHtml(focal)}</span>
+      </div>
+      <span class="guide-cover__sub">${escapeHtml(sub)}</span>
+    </div>
   </div>`;
 }
 
@@ -459,8 +466,13 @@ function guideTile(a) {
   const color = GUIDE_COVER_COLORS[a.company] || '#4f7a86';
   const aud = AUDIENCES[a.audience] || AUDIENCES.both;
   const level = a.level ? `<span class="gtile__lvl">${escapeHtml(a.level)}</span>` : '';
+  const brand = a.tool || a.company || 'For everyone';
   return `<a class="gtile" href="article/${a.slug}.html" data-audience="${a.audience}" style="--gc:${color}">
-    <span class="gtile__head"><span class="gtile__badge">${guideIcon(a)}</span></span>
+    <span class="gtile__head">
+      <span class="gtile__rings" aria-hidden="true"></span>
+      <span class="gtile__chip">${guideIcon(a)}</span>
+      <span class="gtile__brand">${escapeHtml(brand)}</span>
+    </span>
     <span class="gtile__body">
       <span class="gtile__title">${escapeHtml(a.title)}</span>
       <span class="gtile__meta"><span class="gtile__aud">${aud.icon} ${aud.label}</span>${level}</span>

@@ -465,8 +465,14 @@ body {
 .gtiles { display:flex; flex-wrap:wrap; justify-content:center; gap:16px; }
 .gtile { flex:1 1 230px; max-width:300px; display:flex; flex-direction:column; background:var(--card); border:1px solid var(--line); border-radius:var(--radius-sm); overflow:hidden; min-height:178px; text-decoration:none; color:var(--ink); transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease; }
 .gtile:hover { transform:translateY(-4px); box-shadow:0 20px 40px -24px rgba(28,26,22,.5); border-color:var(--line-strong); }
-.gtile__head { height:80px; display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg, color-mix(in srgb,var(--gc) 72%,#fff), var(--gc)); }
-.gtile__badge { width:52px; height:52px; border-radius:15px; background:rgba(255,255,255,.95); display:flex; align-items:center; justify-content:center; font-size:28px; box-shadow:0 8px 18px -8px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.8); }
+.gtile__head { position:relative; overflow:hidden; height:92px; display:flex; align-items:center; gap:12px; padding:0 16px;
+  background:linear-gradient(145deg, color-mix(in srgb,var(--gc) 82%,#fff) 0%, var(--gc) 50%, color-mix(in srgb,var(--gc) 72%,#000) 100%); }
+.gtile__rings { position:absolute; right:-46px; top:-46px; width:160px; height:160px; pointer-events:none;
+  background:repeating-radial-gradient(circle at center, rgba(255,255,255,.13) 0 1.5px, transparent 1.5px 18px);
+  -webkit-mask-image:radial-gradient(circle,#000 52%,transparent 70%); mask-image:radial-gradient(circle,#000 52%,transparent 70%); }
+.gtile__chip { position:relative; z-index:1; flex-shrink:0; width:46px; height:46px; border-radius:13px; display:flex; align-items:center; justify-content:center; font-size:24px;
+  background:rgba(255,255,255,.17); border:1px solid rgba(255,255,255,.32); -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px); box-shadow:inset 0 1px 0 rgba(255,255,255,.38); }
+.gtile__brand { position:relative; z-index:1; color:#fff; font-family:'Schibsted Grotesk',sans-serif; font-weight:800; font-size:14px; letter-spacing:-.01em; line-height:1.15; }
 .gtile__body { display:flex; flex-direction:column; gap:8px; padding:14px 16px 16px; flex:1; }
 .gtile__title { font-family:'Schibsted Grotesk',sans-serif; font-weight:700; font-size:15.5px; line-height:1.25; }
 .gtile__meta { display:flex; flex-wrap:wrap; gap:6px; margin-top:auto; align-items:center; }
@@ -507,15 +513,21 @@ body {
 .table-wrap td:first-child { font-weight:700; color:var(--ink); }
 
 /* ===== Útmutató borító (megtervezett, nem AI-fotó) ===== */
-.guide-cover { position:relative; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px; overflow:hidden;
-  background:radial-gradient(125% 125% at 28% 18%, color-mix(in srgb,var(--gc) 75%,#fff) 0%, var(--gc) 52%, color-mix(in srgb,var(--gc) 72%,#000) 100%); }
-.guide-cover__deco { position:absolute; inset:0;
-  background:radial-gradient(42% 60% at 86% 92%, rgba(255,255,255,.20), transparent 70%), radial-gradient(34% 44% at 12% 14%, rgba(255,255,255,.16), transparent 70%); }
-.guide-cover__badge { position:relative; width:104px; height:104px; border-radius:26px; display:flex; align-items:center; justify-content:center; font-size:54px;
-  background:rgba(255,255,255,.94); box-shadow:0 22px 46px -18px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.8); }
-.guide-cover__label { position:relative; color:#fff; font-family:'Schibsted Grotesk',sans-serif; font-weight:800; font-size:14.5px; letter-spacing:.03em;
-  background:rgba(0,0,0,.20); padding:7px 17px; border-radius:100px; -webkit-backdrop-filter:blur(4px); backdrop-filter:blur(4px); }
-@media (max-width:560px){ .guide-cover__badge{ width:84px; height:84px; font-size:44px; border-radius:22px; } }
+/* Útmutató-borító — szerkesztőségi sáv: bal-igazított, gyűrű-aláírással */
+.guide-cover { position:relative; display:flex; align-items:flex-end; overflow:hidden;
+  background:linear-gradient(145deg, color-mix(in srgb,var(--gc) 84%,#fff) 0%, var(--gc) 44%, color-mix(in srgb,var(--gc) 70%,#000) 100%); }
+.guide-cover__rings { position:absolute; right:-90px; top:-90px; width:360px; height:360px; pointer-events:none;
+  background:repeating-radial-gradient(circle at center, rgba(255,255,255,.11) 0 1.5px, transparent 1.5px 30px);
+  -webkit-mask-image:radial-gradient(circle at center,#000 58%,transparent 72%); mask-image:radial-gradient(circle at center,#000 58%,transparent 72%); }
+.guide-cover__inner { position:relative; z-index:1; padding:34px 36px; }
+.guide-cover__eyebrow { display:inline-block; font-size:11.5px; font-weight:800; letter-spacing:.16em; text-transform:uppercase; color:rgba(255,255,255,.80); }
+.guide-cover__row { display:flex; align-items:center; gap:18px; margin-top:16px; }
+.guide-cover__chip { flex-shrink:0; width:62px; height:62px; border-radius:18px; display:flex; align-items:center; justify-content:center; font-size:33px;
+  background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.32); -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.38), 0 12px 30px -14px rgba(0,0,0,.45); }
+.guide-cover__focal { font-family:'Schibsted Grotesk',sans-serif; font-weight:800; font-size:clamp(28px,5vw,44px); line-height:1; letter-spacing:-.025em; color:#fff; }
+.guide-cover__sub { display:block; margin-top:13px; font-size:13.5px; font-weight:600; color:rgba(255,255,255,.74); }
+@media (max-width:560px){ .guide-cover__inner{ padding:22px 22px; } .guide-cover__chip{ width:50px;height:50px;font-size:26px;border-radius:14px; } }
 
 /* Lépések a márka színével (cég-szín az <article>-ön: --gc) */
 .guide .g-step__no { background: var(--gc, var(--ink)); }
