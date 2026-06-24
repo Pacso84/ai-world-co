@@ -94,6 +94,25 @@
     if (hash) applyFilter(hash);
   }
 
+  // ---------- 3c. ÚTMUTATÓ FÜLEK (Mindennapi / Eszközök szerint) ----------
+  const gtabs = document.querySelectorAll('.gtab');
+  if (gtabs.length) {
+    gtabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        const target = tab.getAttribute('data-gpanel');
+        gtabs.forEach(t => t.classList.toggle('gtab--active', t === tab));
+        document.querySelectorAll('.gpanel').forEach(p =>
+          p.classList.toggle('gpanel--active', p.getAttribute('data-gpanel') === target));
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+    // Ha cég-horgonnyal érkezünk (#c-openai), a "By tool" fül legyen aktív
+    if ((location.hash || '').startsWith('#c-')) {
+      const toolTab = document.querySelector('.gtab[data-gpanel="tool"]');
+      if (toolTab) toolTab.click();
+    }
+  }
+
   // ---------- 3b. NAVBAR árnyék görgetésnél ----------
   const navbar = document.getElementById('navbar');
   if (navbar) {

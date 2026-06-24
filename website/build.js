@@ -378,19 +378,14 @@ function buildIndex(articles) {
     ${articleCard(featured, true)}
   </section>`;
 
-  // Célhasználat (audience) szűrő chipek — ez a fő tengely
-  const chipsHtml = rest.length > 1 ? `<div class="filters" id="filters">
-      <button class="chip chip--active" data-filter="all">All</button>
-      <button class="chip" data-filter="personal">🏠 Everyday life</button>
-      <button class="chip" data-filter="business">💼 Business</button>
-    </div>` : '';
-
+  // (A hír audience-szűrő eltávolítva: minden hír "both" besorolású, így a
+  //  Mindennapi/Üzleti gomb ugyanazt mutatta — a megkülönböztetés az
+  //  ÚTMUTATÓ-oldalon érdemi, ott van a két fül.)
   const grid = rest.length > 0 ? `<section class="grid-section">
     <div class="section-head">
       <span class="pill">The Edit</span>
       <h2 class="section-title">Latest <span class="muted-word">news</span></h2>
     </div>
-    ${chipsHtml}
     <div class="grid" id="grid">
       ${rest.map(a => articleCard(a)).join('\n')}
     </div>
@@ -489,39 +484,45 @@ function buildGuidesPage(guides) {
   const hasGeneral = !!groups[''];
   const cnt = n => `${n} guide${n > 1 ? 's' : ''}`;
 
-  // 1) FELÜL: ÁLTALÁNOS készségek — MINDEN AI-ra érvényes (kiemelve, külön zóna,
-  //    NEM a cég-csempék közé keverve)
-  const generalTop = hasGeneral ? `<section class="grid-section grid-section--general" id="c-general">
-      <div class="section-head"><span class="pill">Start here</span>
-        <h2 class="section-title">Skills that work with <span class="muted-word">any AI</span></h2>
-        <p class="section-note">These apply no matter which assistant you use — ChatGPT, Gemini, Claude or any other.</p></div>
-      <div class="gtiles">${groups[''].map(guideTile).join('')}</div></section>` : '';
+  const generalCount = (groups[''] || []).length;
+  const companyCount = guides.length - generalCount;
 
-  // 2) LENTEBB: cég/modell-specifikus rész — előbb a választó csempék (CSAK cégek)
+  // FÜL 1 — ÁLTALÁNOS (mindennapi): minden AI-ra érvényes készségek
+  const everydayInner = hasGeneral
+    ? `<p class="section-note gpanel__note">These work with any assistant — ChatGPT, Gemini, Claude or any other.</p>
+       <div class="gtiles">${groups[''].map(guideTile).join('')}</div>`
+    : `<p class="muted">No everyday guides yet.</p>`;
+
+  // FÜL 2 — CÉGES (eszközök szerint): választó csempék + cégenkénti rácsok
   const brandTile = (c) => `<a class="brandtile" href="#c-${companySlug(c)}" style="--gc:${GUIDE_COVER_COLORS[c] || '#4f7a86'}">
       <span class="brandtile__i">${COMPANY_ICONS[c] || '🤖'}</span>
       <span class="brandtile__n">${escapeHtml(c)}</span><span class="brandtile__c">${cnt(groups[c].length)}</span></a>`;
   const brandRow = companies.length ? `<section class="brandpick">
-      <div class="section-head"><span class="pill">By tool</span>
-        <h2 class="section-title">Guides for a <span class="muted-word">specific tool</span></h2>
-        <p class="section-note">Pick the AI tool you use to jump to step-by-step guides made for it.</p></div>
+      <p class="section-note gpanel__note">Pick the AI tool you use to jump to its step-by-step guides.</p>
       <div class="brandtiles">${companies.map(brandTile).join('')}</div></section>` : '';
-
-  // 3) majd a cégenkénti útmutató-rácsok
   const companySection = (c) => `<section class="grid-section" id="c-${companySlug(c)}">
       <div class="section-head"><span class="pill">${COMPANY_ICONS[c] || '🤖'} ${escapeHtml(c)}</span>
         <h2 class="section-title">${escapeHtml(c)} <span class="muted-word">guides</span></h2></div>
       <div class="gtiles">${groups[c].map(guideTile).join('')}</div></section>`;
+  const toolInner = companyCount ? (brandRow + companies.map(companySection).join('')) : `<p class="muted">No tool guides yet.</p>`;
 
   const header = `<section class="guides-hero">
     <p class="intro__kicker">Step-by-step</p>
     <h1 class="guides-hero__title">Practical AI <em>guides</em></h1>
-    <p class="guides-hero__tag">Plain-language tutorials. Start with the universal skills up top, then jump to guides for your specific AI tool.</p>
+    <p class="guides-hero__tag">Plain-language tutorials. Choose everyday skills that work anywhere, or guides for a specific AI tool.</p>
   </section>`;
+
+  // Két fül — hogy ne legyen egyben sok (általános vs. céges)
+  const tabs = `<div class="gtabs" role="tablist">
+    <button class="gtab gtab--active" data-gpanel="everyday">🏠 Everyday skills <span class="gtab__c">${generalCount}</span></button>
+    <button class="gtab" data-gpanel="tool">🧰 By AI tool <span class="gtab__c">${companyCount}</span></button>
+  </div>`;
 
   const empty = `<p class="muted" style="color:var(--ink-soft)">Guides are on their way — check back shortly.</p>`;
   const body = designStyleBlock() + header + (guides.length
-    ? generalTop + brandRow + companies.map(companySection).join('')
+    ? tabs
+      + `<div class="gpanel gpanel--active" data-gpanel="everyday">${everydayInner}</div>`
+      + `<div class="gpanel" data-gpanel="tool">${toolInner}</div>`
     : empty);
 
   return pageShell({

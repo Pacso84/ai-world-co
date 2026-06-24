@@ -462,6 +462,16 @@ body {
 .guides-hero__title { font-family:'Schibsted Grotesk',sans-serif; font-weight:800; font-size:clamp(32px,6vw,52px); letter-spacing:-.02em; line-height:1.05; margin:8px 0 10px; }
 .guides-hero__title em { color:var(--accent); font-style:italic; }
 .guides-hero__tag { font-size:18px; color:var(--ink-soft); max-width:640px; }
+/* Útmutató fülek — Mindennapi (általános) vs. Eszközök szerint (céges) */
+.gtabs { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin:6px 0 28px; }
+.gtab { display:inline-flex; align-items:center; gap:8px; font-family:'Schibsted Grotesk',sans-serif; font-weight:800; font-size:15px; color:var(--ink-soft); background:var(--card); border:1px solid var(--line-strong); border-radius:100px; padding:10px 22px; cursor:pointer; transition:transform .15s ease, background .15s ease, color .15s ease, border-color .15s ease; }
+.gtab:hover { color:var(--ink); border-color:var(--ink-soft); }
+.gtab--active { background:var(--ink); color:var(--paper); border-color:var(--ink); }
+.gtab__c { font-size:12px; font-weight:700; opacity:.65; }
+.gpanel { display:none; }
+.gpanel--active { display:block; animation:gpanelIn .25s ease; }
+.gpanel__note { text-align:center; margin:0 auto 18px; max-width:560px; }
+@keyframes gpanelIn { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:none} }
 .gtiles { display:flex; flex-wrap:wrap; justify-content:center; gap:16px; }
 .gtile { flex:1 1 230px; max-width:300px; display:flex; flex-direction:column; background:var(--card); border:1px solid var(--line); border-radius:var(--radius-sm); overflow:hidden; min-height:178px; text-decoration:none; color:var(--ink); transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease; }
 .gtile:hover { transform:translateY(-4px); box-shadow:0 20px 40px -24px rgba(28,26,22,.5); border-color:var(--line-strong); }
