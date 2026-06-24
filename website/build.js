@@ -482,14 +482,6 @@ function guideTile(a) {
   </a>`;
 }
 
-// Lapok közti átváltó sáv (link-fülek): Mindennapi vs. Eszközök szerint
-function guideTabsBar(active, counts) {
-  return `<div class="gtabs">
-    <a class="gtab ${active === 'everyday' ? 'gtab--active' : ''}" href="guides.html">🏠 Everyday skills <span class="gtab__c">${counts.everyday}</span></a>
-    <a class="gtab ${active === 'tool' ? 'gtab--active' : ''}" href="tools.html">🧰 By AI tool <span class="gtab__c">${counts.tool}</span></a>
-  </div>`;
-}
-
 // ÁLTALÁNOS (mindennapi) útmutatók — guides.html
 function buildGuidesPage(generalGuides, counts) {
   const tiles = generalGuides.length
@@ -500,7 +492,7 @@ function buildGuidesPage(generalGuides, counts) {
     <h1 class="guides-hero__title">Everyday AI <em>skills</em></h1>
     <p class="guides-hero__tag">Plain-language how-tos that work with any assistant — ChatGPT, Gemini, Claude or others. For tool-specific guides, see <a href="tools.html">AI tools</a>.</p>
   </section>`;
-  const body = designStyleBlock() + header + guideTabsBar('everyday', counts) + tiles;
+  const body = designStyleBlock() + header + tiles;
   return pageShell({
     title: `Everyday AI guides — ${SITE.name}`,
     description: 'Plain-language, step-by-step guides to everyday AI skills: writing prompts, summarising, fact-checking, staying safe and more. Works with any assistant.',
@@ -535,7 +527,7 @@ function buildToolsPage(companyGuides, counts) {
     <p class="guides-hero__tag">Pick your assistant for tool-specific how-tos. For skills that work everywhere, see <a href="guides.html">Everyday skills</a>.</p>
   </section>`;
   const empty = `<p class="muted" style="color:var(--ink-soft)">Tool guides are on their way — check back shortly.</p>`;
-  const body = designStyleBlock() + header + guideTabsBar('tool', counts) + (companyGuides.length ? (brandRow + companies.map(companySection).join('')) : empty);
+  const body = designStyleBlock() + header + (companyGuides.length ? (brandRow + companies.map(companySection).join('')) : empty);
   return pageShell({
     title: `AI tool guides — ${SITE.name}`,
     description: 'Step-by-step guides for specific AI tools: ChatGPT, Gemini, Claude, Copilot, Perplexity and more. Pick your tool and learn what you need.',
