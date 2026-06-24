@@ -471,6 +471,177 @@
       "angle": "Upload your notes and PDFs, ask questions grounded in them, and try the audio overview.",
       "status": "done",
       "written_at": "2026-06-24T19:22:12.080Z"
+    },
+    {
+      "id": "chatgpt-images",
+      "company": "OpenAI",
+      "tool": "ChatGPT",
+      "title": "How to create and edit images in ChatGPT",
+      "audience": "both",
+      "level": "beginner",
+      "icon": "🖼️",
+      "angle": "Describe the image you want, refine it, and what is and isn’t allowed.",
+      "status": "done",
+      "written_at": "2026-06-24T20:00:45.341Z"
+    },
+    {
+      "id": "chatgpt-files-data",
+      "company": "OpenAI",
+      "tool": "ChatGPT",
+      "title": "How to analyse files and spreadsheets with ChatGPT",
+      "audience": "both",
+      "level": "beginner",
+      "icon": "📊",
+      "angle": "Upload a PDF or spreadsheet and ask for summaries, answers and simple charts.",
+      "status": "done",
+      "written_at": "2026-06-24T20:00:47.499Z"
+    },
+    {
+      "id": "chatgpt-gpts",
+      "company": "OpenAI",
+      "tool": "ChatGPT",
+      "title": "How to use custom GPTs (and build a simple one)",
+      "audience": "both",
+      "level": "beginner",
+      "icon": "🤖",
+      "angle": "Find a GPT for your task and build your own — no coding.",
+      "status": "done",
+      "written_at": "2026-06-24T20:01:26.712Z"
+    },
+    {
+      "id": "gemini-images",
+      "company": "Google",
+      "tool": "Gemini",
+      "title": "How to generate images with Google Gemini",
+      "audience": "both",
+      "level": "beginner",
+      "icon": "🎨",
+      "angle": "Prompt for images, pick a style, and understand usage rights.",
+      "status": "done",
+      "written_at": "2026-06-24T20:01:46.296Z"
+    },
+    {
+      "id": "gemini-deep-research",
+      "company": "Google",
+      "tool": "Gemini",
+      "title": "How to use Gemini Deep Research for thorough reports",
+      "audience": "both",
+      "level": "beginner",
+      "icon": "🔬",
+      "angle": "Ask Gemini to research a topic and compile a structured report you can check.",
+      "status": "done",
+      "written_at": "2026-06-24T20:02:04.572Z"
+    },
+    {
+      "id": "gemini-phone",
+      "company": "Google",
+      "tool": "Gemini",
+      "title": "How to use Gemini on your Android phone",
+      "audience": "personal",
+      "level": "beginner",
+      "icon": "📱",
+      "angle": "Voice, on-screen help and quick everyday tasks on mobile.",
+      "status": "done",
+      "written_at": "2026-06-24T20:02:22.581Z"
+    },
+    {
+      "id": "claude-artifacts",
+      "company": "Anthropic",
+      "tool": "Claude",
+      "title": "How to use Claude Artifacts to create and preview your work",
+      "audience": "both",
+      "level": "beginner",
+      "icon": "🧩",
+      "angle": "Generate documents, summaries and simple apps you can see live beside the chat.",
+      "status": "todo"
+    },
+    {
+      "id": "claude-writing",
+      "company": "Anthropic",
+      "tool": "Claude",
+      "title": "How to use Claude for clear, careful writing and editing",
+      "audience": "both",
+      "level": "beginner",
+      "icon": "✍️",
+      "angle": "Drafting, editing and tone — where Claude shines for longer text.",
+      "status": "todo"
+    },
+    {
+      "id": "copilot-office",
+      "company": "Microsoft",
+      "tool": "Copilot",
+      "title": "How to use Microsoft Copilot in Word, Excel and Outlook",
+      "audience": "business",
+      "level": "beginner",
+      "icon": "📎",
+      "angle": "Draft documents, analyse spreadsheets and summarise email.",
+      "status": "todo"
+    },
+    {
+      "id": "copilot-windows",
+      "company": "Microsoft",
+      "tool": "Copilot",
+      "title": "How to use Copilot on Windows for everyday tasks",
+      "audience": "both",
+      "level": "beginner",
+      "icon": "🪟",
+      "angle": "Open it, ask questions, change settings and get on-screen help.",
+      "status": "todo"
+    },
+    {
+      "id": "meta-ai-instagram",
+      "company": "Meta",
+      "tool": "Meta AI",
+      "title": "How to use Meta AI on Instagram and Messenger",
+      "audience": "personal",
+      "level": "beginner",
+      "icon": "📸",
+      "angle": "Ask questions, search and have image fun across Meta apps.",
+      "status": "todo"
+    },
+    {
+      "id": "perplexity-spaces",
+      "company": "Perplexity",
+      "tool": "Perplexity",
+      "title": "How to use Perplexity Spaces to organise your research",
+      "audience": "both",
+      "level": "beginner",
+      "icon": "🗂️",
+      "angle": "Group related searches, add your own sources, and keep findings together.",
+      "status": "todo"
+    },
+    {
+      "id": "grok-on-x",
+      "company": "xAI",
+      "tool": "Grok",
+      "title": "How to use Grok on X for real-time answers",
+      "audience": "both",
+      "level": "beginner",
+      "icon": "⚡",
+      "angle": "Ask about trending topics in real time — and where to be careful.",
+      "status": "todo"
+    },
+    {
+      "id": "apple-writing-tools",
+      "company": "Apple",
+      "tool": "Apple Intelligence",
+      "title": "How to use Apple Intelligence Writing Tools",
+      "audience": "personal",
+      "level": "beginner",
+      "icon": "🍏",
+      "angle": "Proofread, rewrite and summarise text across your Apple apps.",
+      "status": "todo"
+    },
+    {
+      "id": "alexa-routines",
+      "company": "Amazon",
+      "tool": "Alexa+",
+      "title": "How to set up smart routines with Alexa+",
+      "audience": "personal",
+      "level": "beginner",
+      "icon": "🏠",
+      "angle": "Automate everyday moments at home with conversational Alexa+.",
+      "status": "todo"
     }
   ]
 }

@@ -1,0 +1,40 @@
+{
+  "_meta": {
+    "type": "guide",
+    "guide_topic_id": "chatgpt-images",
+    "company": "OpenAI",
+    "tool": "ChatGPT",
+    "icon": "🖼️",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-06-24T20:00:45.340Z",
+    "writer_provider": "cerebras",
+    "writer_model": "gpt-oss-120b",
+    "writer_cost_usd": 0,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-06-24T20:02:26.033Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 831
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "decision": "PASS",
+      "issues": [
+        "minor formatting",
+        "no issues with content"
+      ],
+      "verdict": "The article is well-structured, easy to follow, and provides clear explanations of technical terms, making it suitable for publication.",
+      "_aiCost": 0.0011561999999999998,
+      "_provider": "groq",
+      "_model": "llama-3.3-70b-versatile",
+      "_attempts": 1
+    }
+  },
+  "article_markdown": "---\ntitle: \"How to create and edit images in ChatGPT\"\nsubtitle: \"Learn step‑by‑step how to ask ChatGPT for pictures, tweak them, and stay within the tool’s safe‑use rules.\"\ncategory: \"guide\"\naudience: \"both\"\ncompany: \"OpenAI\"\ntool: \"ChatGPT\"\nlevel: \"beginner\"\nread_time_minutes: 4\ntags: [\"getting-started\", \"chatgpt\"]\n---\n\n# How to create and edit images in ChatGPT\n\n**Hook:** By the end of this guide you’ll be able to type a simple description, get an image from ChatGPT, and adjust it to suit your needs – all without needing any design software. It’s perfect for anyone who wants a quick visual for a blog post, a social media banner, or a personal project.\n\n## Before you start\n- You have an active OpenAI account (sign‑up at openai.com if you don’t already have one).  \n- You are using the ChatGPT web interface or the official desktop app where the **image generation** feature is visible.  \n- You have a basic internet connection – the tool runs in the browser, so no extra software is required.\n\n## Step 1 — Choose the “Create image” mode\nIn the chat window look for a button or tab labelled **“Create image”** (or a camera‑icon). If you don’t see it straight away, click the “+ More” menu – OpenAI often hides optional tools under that dropdown. Selecting this mode tells ChatGPT you plan to work with pictures instead of plain text.\n\n💬 **Example:** Click the camera‑icon at the bottom of the chat bar, then you’ll see a blank textbox that says “Describe the image you want…”.\n\n## Step 2 — Write a clear prompt\nA **prompt** (the instruction you give the AI) should describe the picture as if you were briefing a human illustrator. Mention the main subject, style, colours, and any specific details you need. The clearer the prompt, the closer the result will be to what you imagined.\n\n💬 **Example:**  \n```\nA sunny beach scene with a red‑and‑white surfboard leaning against a palm tree, painted in a soft‑watercolour style, pastel colours.\n```\n\n## Step 3 — Review the generated image\nChatGPT will return a thumbnail of the image it created. Click the image to view it full‑size. If the picture looks good, you can download it by right‑clicking (or tapping the three‑dot menu on mobile) and selecting **“Download”**. If something is off – maybe the colour palette is too bright or the composition is missing a element – move to the next step.\n\n💬 **Example:** You notice the surfboard is blue instead of red. That’s a cue to refine the prompt.\n\n## Step 4 — Refine with an edit request\nTo change the picture, simply type a new prompt that references the previous image. Start with a phrase like **“Edit the image to…”** and then list the adjustments. The AI will keep the original layout while applying your tweaks.\n\n💬 **Example:**  \n```\nEdit the image to make the surfboard bright red, add a seashell on the sand, and soften the shadows.\n```\n\n## Step 5 — Save the final version and respect the usage policy\nOnce you’re happy with the edited picture, download it again. Remember that OpenAI’s image policy forbids creating or editing images that contain:\n- Nudity, sexual content, or explicit violence.  \n- Misleading political propaganda or deep‑fake likenesses of real people.  \n- Content that breaches copyright (e.g., copying a famous painting pixel‑by‑pixel).\n\nIf you stay within those boundaries, you can use the image for personal projects, presentations, or even commercial marketing – just check the licence note that appears under the download button.\n\n💬 **Example:** The licence line reads “Free for personal and commercial use with attribution”. Keep that note handy if you plan to share the image publicly.\n\n## Common mistakes\n- **Skipping the edit step:** Trying to get a perfect picture on the first try often leads to disappointment. Small tweaks are quick and cheap.  \n- **Vague prompts:** Leaving out details like colour or style can give you a generic image that needs many revisions.  \n- **Ignoring policy warnings:** The interface will flag disallowed content; continuing anyway can lead to the image being blocked or your account being flagged.\n\n## What this means for you\n- **In everyday life:** Want a quick illustration for a family recipe card? Just type the dish name and a style, and you’ll have a ready‑made picture in seconds.  \n- **For your business or work:** Need a banner for a project update? Generate a professional‑looking visual, tweak the text colour, and download it without ever opening Photoshop.  \n- **If you're just getting started:** The easiest first move is to open ChatGPT, click the “Create image” button, and type a one‑sentence description of something you love – like “a koala hugging a eucalyptus leaf in a cartoon style”.\n\n## Try it now\nSpend the next two minutes opening ChatGPT, selecting the image‑creation mode, and typing a simple prompt such as **“A cup of coffee on a wooden table, sketch style”**. Download the result and see how fast a quality picture can appear.",
+  "original_title": "How to create and edit images in ChatGPT"
+}
