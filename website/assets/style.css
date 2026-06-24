@@ -464,7 +464,7 @@ body {
 .guides-hero__tag { font-size:18px; color:var(--ink-soft); max-width:640px; }
 /* Útmutató fülek — Mindennapi (általános) vs. Eszközök szerint (céges) */
 .gtabs { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin:6px 0 28px; }
-.gtab { display:inline-flex; align-items:center; gap:8px; font-family:'Schibsted Grotesk',sans-serif; font-weight:800; font-size:15px; color:var(--ink-soft); background:var(--card); border:1px solid var(--line-strong); border-radius:100px; padding:10px 22px; cursor:pointer; transition:transform .15s ease, background .15s ease, color .15s ease, border-color .15s ease; }
+.gtab { display:inline-flex; align-items:center; gap:8px; font-family:'Schibsted Grotesk',sans-serif; font-weight:800; font-size:15px; color:var(--ink-soft); background:var(--card); border:1px solid var(--line-strong); border-radius:100px; padding:10px 22px; cursor:pointer; text-decoration:none; transition:transform .15s ease, background .15s ease, color .15s ease, border-color .15s ease; }
 .gtab:hover { color:var(--ink); border-color:var(--ink-soft); }
 .gtab--active { background:var(--ink); color:var(--paper); border-color:var(--ink); }
 .gtab__c { font-size:12px; font-weight:700; opacity:.65; }

@@ -261,6 +261,7 @@ function pageShell({ title, description, bodyContent, isArticle = false, noIntro
   const homePath = isArticle ? '../index.html' : 'index.html';
   const supportPath = isArticle ? '../support.html' : 'support.html';
   const guidesPath = isArticle ? '../guides.html' : 'guides.html';
+  const toolsPath = isArticle ? '../tools.html' : 'tools.html';
   const year = new Date().getFullYear();
   const url = canonical || SITE.url;
   const img = ogImage || (SITE.url + '/assets/logo.svg');
@@ -301,6 +302,7 @@ function pageShell({ title, description, bodyContent, isArticle = false, noIntro
       <nav class="navbar__nav">
         <a href="${homePath}">News</a>
         <a href="${guidesPath}">📘 Guides</a>
+        <a href="${toolsPath}">🧰 AI tools</a>
         ${SUPPORT.enabled ? `<a href="${supportPath}" class="navbar__support">☕ Support</a>` : ''}
       </nav>
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Light / dark">
@@ -378,14 +380,19 @@ function buildIndex(articles) {
     ${articleCard(featured, true)}
   </section>`;
 
-  // (A hír audience-szűrő eltávolítva: minden hír "both" besorolású, így a
-  //  Mindennapi/Üzleti gomb ugyanazt mutatta — a megkülönböztetés az
-  //  ÚTMUTATÓ-oldalon érdemi, ott van a két fül.)
+  // Célhasználat (audience) szűrő chipek — a "both" cikkek mindkét szűrőben látszanak
+  const chipsHtml = rest.length > 1 ? `<div class="filters" id="filters">
+      <button class="chip chip--active" data-filter="all">All</button>
+      <button class="chip" data-filter="personal">🏠 Everyday life</button>
+      <button class="chip" data-filter="business">💼 Business</button>
+    </div>` : '';
+
   const grid = rest.length > 0 ? `<section class="grid-section">
     <div class="section-head">
       <span class="pill">The Edit</span>
       <h2 class="section-title">Latest <span class="muted-word">news</span></h2>
     </div>
+    ${chipsHtml}
     <div class="grid" id="grid">
       ${rest.map(a => articleCard(a)).join('\n')}
     </div>
@@ -475,62 +482,65 @@ function guideTile(a) {
   </a>`;
 }
 
-function buildGuidesPage(guides) {
-  // CÉG szerinti csoportosítás ('' = általános készségek)
+// Lapok közti átváltó sáv (link-fülek): Mindennapi vs. Eszközök szerint
+function guideTabsBar(active, counts) {
+  return `<div class="gtabs">
+    <a class="gtab ${active === 'everyday' ? 'gtab--active' : ''}" href="guides.html">🏠 Everyday skills <span class="gtab__c">${counts.everyday}</span></a>
+    <a class="gtab ${active === 'tool' ? 'gtab--active' : ''}" href="tools.html">🧰 By AI tool <span class="gtab__c">${counts.tool}</span></a>
+  </div>`;
+}
+
+// ÁLTALÁNOS (mindennapi) útmutatók — guides.html
+function buildGuidesPage(generalGuides, counts) {
+  const tiles = generalGuides.length
+    ? `<div class="gtiles">${generalGuides.map(guideTile).join('')}</div>`
+    : `<p class="muted" style="color:var(--ink-soft)">Everyday guides are on their way — check back shortly.</p>`;
+  const header = `<section class="guides-hero">
+    <p class="intro__kicker">Step-by-step</p>
+    <h1 class="guides-hero__title">Everyday AI <em>skills</em></h1>
+    <p class="guides-hero__tag">Plain-language how-tos that work with any assistant — ChatGPT, Gemini, Claude or others. For tool-specific guides, see <a href="tools.html">AI tools</a>.</p>
+  </section>`;
+  const body = designStyleBlock() + header + guideTabsBar('everyday', counts) + tiles;
+  return pageShell({
+    title: `Everyday AI guides — ${SITE.name}`,
+    description: 'Plain-language, step-by-step guides to everyday AI skills: writing prompts, summarising, fact-checking, staying safe and more. Works with any assistant.',
+    canonical: `${SITE.url}/guides.html`, noIntro: true,
+    jsonld: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'Everyday AI Guides', url: `${SITE.url}/guides.html` },
+    bodyContent: body
+  });
+}
+
+// CÉGES (eszköz-specifikus) útmutatók — tools.html
+function buildToolsPage(companyGuides, counts) {
   const groups = {};
-  for (const g of guides) { const k = g.company || ''; (groups[k] = groups[k] || []).push(g); }
+  for (const g of companyGuides) { const k = g.company || 'Other'; (groups[k] = groups[k] || []).push(g); }
   const ORDER = ['OpenAI', 'Google', 'Anthropic', 'Microsoft', 'Meta', 'Perplexity', 'Alibaba', 'xAI', 'Mistral', 'DeepSeek', 'Amazon', 'Apple'];
   const companies = [...ORDER.filter(c => groups[c]), ...Object.keys(groups).filter(c => c && !ORDER.includes(c))];
-  const hasGeneral = !!groups[''];
   const cnt = n => `${n} guide${n > 1 ? 's' : ''}`;
 
-  const generalCount = (groups[''] || []).length;
-  const companyCount = guides.length - generalCount;
-
-  // FÜL 1 — ÁLTALÁNOS (mindennapi): minden AI-ra érvényes készségek
-  const everydayInner = hasGeneral
-    ? `<p class="section-note gpanel__note">These work with any assistant — ChatGPT, Gemini, Claude or any other.</p>
-       <div class="gtiles">${groups[''].map(guideTile).join('')}</div>`
-    : `<p class="muted">No everyday guides yet.</p>`;
-
-  // FÜL 2 — CÉGES (eszközök szerint): választó csempék + cégenkénti rácsok
   const brandTile = (c) => `<a class="brandtile" href="#c-${companySlug(c)}" style="--gc:${GUIDE_COVER_COLORS[c] || '#4f7a86'}">
       <span class="brandtile__i">${COMPANY_ICONS[c] || '🤖'}</span>
       <span class="brandtile__n">${escapeHtml(c)}</span><span class="brandtile__c">${cnt(groups[c].length)}</span></a>`;
   const brandRow = companies.length ? `<section class="brandpick">
-      <p class="section-note gpanel__note">Pick the AI tool you use to jump to its step-by-step guides.</p>
+      <p class="section-note">Pick the AI tool you use to jump to its step-by-step guides.</p>
       <div class="brandtiles">${companies.map(brandTile).join('')}</div></section>` : '';
   const companySection = (c) => `<section class="grid-section" id="c-${companySlug(c)}">
       <div class="section-head"><span class="pill">${COMPANY_ICONS[c] || '🤖'} ${escapeHtml(c)}</span>
         <h2 class="section-title">${escapeHtml(c)} <span class="muted-word">guides</span></h2></div>
       <div class="gtiles">${groups[c].map(guideTile).join('')}</div></section>`;
-  const toolInner = companyCount ? (brandRow + companies.map(companySection).join('')) : `<p class="muted">No tool guides yet.</p>`;
 
   const header = `<section class="guides-hero">
     <p class="intro__kicker">Step-by-step</p>
-    <h1 class="guides-hero__title">Practical AI <em>guides</em></h1>
-    <p class="guides-hero__tag">Plain-language tutorials. Choose everyday skills that work anywhere, or guides for a specific AI tool.</p>
+    <h1 class="guides-hero__title">Guides by <em>AI tool</em></h1>
+    <p class="guides-hero__tag">Pick your assistant for tool-specific how-tos. For skills that work everywhere, see <a href="guides.html">Everyday skills</a>.</p>
   </section>`;
-
-  // Két fül — hogy ne legyen egyben sok (általános vs. céges)
-  const tabs = `<div class="gtabs" role="tablist">
-    <button class="gtab gtab--active" data-gpanel="everyday">🏠 Everyday skills <span class="gtab__c">${generalCount}</span></button>
-    <button class="gtab" data-gpanel="tool">🧰 By AI tool <span class="gtab__c">${companyCount}</span></button>
-  </div>`;
-
-  const empty = `<p class="muted" style="color:var(--ink-soft)">Guides are on their way — check back shortly.</p>`;
-  const body = designStyleBlock() + header + (guides.length
-    ? tabs
-      + `<div class="gpanel gpanel--active" data-gpanel="everyday">${everydayInner}</div>`
-      + `<div class="gpanel" data-gpanel="tool">${toolInner}</div>`
-    : empty);
-
+  const empty = `<p class="muted" style="color:var(--ink-soft)">Tool guides are on their way — check back shortly.</p>`;
+  const body = designStyleBlock() + header + guideTabsBar('tool', counts) + (companyGuides.length ? (brandRow + companies.map(companySection).join('')) : empty);
   return pageShell({
-    title: `Guides — ${SITE.name}`,
-    description: 'Step-by-step, plain-language guides to using AI tools like ChatGPT, Gemini, Claude and more. Pick your tool, then learn what you need.',
-    canonical: `${SITE.url}/guides.html`,
-    noIntro: true,
-    jsonld: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'AI World Guides', url: `${SITE.url}/guides.html` },
+    title: `AI tool guides — ${SITE.name}`,
+    description: 'Step-by-step guides for specific AI tools: ChatGPT, Gemini, Claude, Copilot, Perplexity and more. Pick your tool and learn what you need.',
+    canonical: `${SITE.url}/tools.html`, noIntro: true,
+    jsonld: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'AI Tool Guides', url: `${SITE.url}/tools.html` },
     bodyContent: body
   });
 }
@@ -906,15 +916,20 @@ function main() {
   buildXref(articles);  // hír ↔ útmutató kereszthivatkozás-index
   const news = articles.filter(a => !a.isGuide);
   const guides = articles.filter(a => a.isGuide);
-  console.log(`📰 ${articles.length} publikált (${news.length} hír, ${guides.length} útmutató)`);
+  const generalGuides = guides.filter(g => !g.company);
+  const companyGuides = guides.filter(g => g.company);
+  const guideCounts = { everyday: generalGuides.length, tool: companyGuides.length };
+  console.log(`📰 ${articles.length} publikált (${news.length} hír, ${guides.length} útmutató: ${generalGuides.length} mindennapi + ${companyGuides.length} céges)`);
 
   // Főoldal = CSAK hírek
   writeFileSync(join(OUT_DIR, 'index.html'), buildIndex(news), 'utf-8');
   console.log('✅ index.html generálva (hírek)');
 
-  // Útmutatók oldal = ikonos csempés böngésző (Mindennapi / Üzleti)
-  writeFileSync(join(OUT_DIR, 'guides.html'), buildGuidesPage(guides), 'utf-8');
-  console.log(`✅ guides.html generálva (${guides.length} útmutató, csempés)`);
+  // Útmutatók KÉT KÜLÖN OLDALON: guides.html = mindennapi, tools.html = céges
+  writeFileSync(join(OUT_DIR, 'guides.html'), buildGuidesPage(generalGuides, guideCounts), 'utf-8');
+  console.log(`✅ guides.html generálva (${generalGuides.length} mindennapi útmutató)`);
+  writeFileSync(join(OUT_DIR, 'tools.html'), buildToolsPage(companyGuides, guideCounts), 'utf-8');
+  console.log(`✅ tools.html generálva (${companyGuides.length} céges útmutató)`);
 
   // Cikk + útmutató oldalak
   let guideCount = 0;
@@ -935,7 +950,8 @@ function main() {
   const today = new Date().toISOString().slice(0, 10);
   const urls = [
     { loc: SITE.url + '/', date: today },
-    ...(guides.length ? [{ loc: `${SITE.url}/guides.html`, date: today }] : []),
+    ...(generalGuides.length ? [{ loc: `${SITE.url}/guides.html`, date: today }] : []),
+    ...(companyGuides.length ? [{ loc: `${SITE.url}/tools.html`, date: today }] : []),
     ...(SUPPORT.enabled ? [{ loc: `${SITE.url}/support.html`, date: today }] : []),
     ...articles.map(a => ({ loc: `${SITE.url}/article/${a.slug}.html`, date: (a.publishedAt || '').slice(0, 10) || today }))
   ];

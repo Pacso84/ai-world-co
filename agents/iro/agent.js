@@ -178,8 +178,9 @@ OTHER RULES:
    - "personal" = useful for everyday personal life (home, study, hobbies, daily tasks)
    - "business" = useful for running a business / for an entrepreneur / at work professionally
    - "both" = genuinely applicable to both personal life AND business
-   Pick honestly. If it clearly helps both, use "both". The "What this means for you" section should
-   address the audience(s) you chose (e.g. a "both" article gives a personal angle AND a business angle).
+   Prefer the MORE SPECIFIC label when one side clearly dominates (e.g. funding/markets/enterprise = "business";
+   a consumer feature/home/study tool = "personal"). Use "both" ONLY when it genuinely serves both equally —
+   do NOT default to "both". The "What this means for you" section should address the audience(s) you chose.
 
 Example output structure:
 ---
