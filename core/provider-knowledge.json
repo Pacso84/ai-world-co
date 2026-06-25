@@ -15,7 +15,7 @@
     "perplexity":{ "key_env": "PERPLEXITY_API_KEY","cost": "freemium", "free_notes": "Korlátozott ingyenes kredit; Sonar modellek.", "best_for": ["research-web", "citations"], "notes": "WEBES kutatás FORRÁSMEGJELÖLÉSSEL — erre nincs jelenleg bekötött gyártónk." },
     "openai":    { "key_env": "OPENAI_API_KEY",    "cost": "paid",  "best_for": ["image-generate", "image-edit", "voice", "chat"], "notes": "FIZETŐS. Natív képgenerálás/szerkesztés és hang. A képgenerálást ingyen a Cloudflare Flux is megoldja." },
     "deepseek":  { "key_env": "DEEPSEEK_API_KEY",  "cost": "cheap", "best_for": ["reasoning", "code", "cheap"], "notes": "Nagyon olcsó; erős reasoning/kód." },
-    "cloudflare":{ "key_env": "CLOUDFLARE_API_TOKEN", "cost": "free", "free_notes": "Workers AI ingyenes napi kvóta (Flux képgenerálás).", "best_for": ["image-generate"], "notes": "Már HASZNÁLJUK a Designerben (fejlécképek) — ingyenes képgenerálás." }
+    "cloudflare":{ "key_env": "CLOUDFLARE_FLUX_TOKEN", "cost": "free", "free_notes": "Workers AI ingyenes napi kvóta (Flux képgenerálás).", "best_for": ["image-generate"], "notes": "Designer (fejlécképek). KÜLÖN név (nem CLOUDFLARE_API_TOKEN), hogy ne ütközzön a Pages-deploy OAuth-jával." }
   },
 
   "capabilities": {

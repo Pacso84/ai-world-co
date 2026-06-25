@@ -93,9 +93,10 @@ function buildPrompt(scene) {
 // Fekvő (landscape) méret — illeszkedik a borító-keretekhez (16:9)
 const IMG_W = 1280, IMG_H = 720;
 
-// 1) Cloudflare Workers AI (Flux) — INGYEN 10k neuron/nap. Kell: CLOUDFLARE_API_TOKEN + CLOUDFLARE_ACCOUNT_ID
+// 1) Cloudflare Workers AI (Flux) — INGYEN 10k neuron/nap. Kell: CLOUDFLARE_FLUX_TOKEN + CLOUDFLARE_ACCOUNT_ID
+//    (FLUX külön név, hogy NE ütközzön a wrangler/Pages OAuth-jával a deploynál)
 async function viaCloudflare(prompt) {
-  const token = process.env.CLOUDFLARE_API_TOKEN, acct = process.env.CLOUDFLARE_ACCOUNT_ID;
+  const token = process.env.CLOUDFLARE_FLUX_TOKEN, acct = process.env.CLOUDFLARE_ACCOUNT_ID;
   if (!token || !acct) return null;
   const url = `https://api.cloudflare.com/client/v4/accounts/${acct}/ai/run/@cf/black-forest-labs/flux-1-schnell`;
   const r = await fetch(url, { method: 'POST', headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' }, body: JSON.stringify({ prompt, width: IMG_W, height: IMG_H }) });
