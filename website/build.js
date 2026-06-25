@@ -424,7 +424,8 @@ function buildIndex(articles) {
 const COMPANY_ICONS = {
   'OpenAI': '💬', 'Google': '✨', 'Anthropic': '📝', 'Microsoft': '🪟',
   'Meta': '🟢', 'Perplexity': '🔎', 'Alibaba': '🌏', 'xAI': '⚡',
-  'Mistral': '🌀', 'DeepSeek': '🐋', 'Amazon': '🔊', 'Apple': '🍎'
+  'Mistral': '🌀', 'DeepSeek': '🐋', 'Amazon': '🔊', 'Apple': '🍎',
+  'Hugging Face': '🤗', 'NVIDIA': '🎮', 'GitHub': '🐙', 'Cohere': '🔵'
 };
 function guideIcon(a) {
   if (a.icon) return a.icon;                       // explicit (a témából)
@@ -445,7 +446,8 @@ function companySlug(c) { return c ? c.toLowerCase().replace(/[^a-z0-9]+/g, '-')
 const GUIDE_COVER_COLORS = {
   'OpenAI': '#10a37f', 'Google': '#4285f4', 'Anthropic': '#cc785c', 'Microsoft': '#0a7bd0',
   'Meta': '#0866ff', 'Perplexity': '#20808d', 'Alibaba': '#ff6a00', 'xAI': '#2a2a2a',
-  'Mistral': '#fa5310', 'DeepSeek': '#4d6bfe', 'Amazon': '#ff9900', 'Apple': '#555555'
+  'Mistral': '#fa5310', 'DeepSeek': '#4d6bfe', 'Amazon': '#ff9900', 'Apple': '#555555',
+  'Hugging Face': '#ff9d00', 'NVIDIA': '#76b900', 'GitHub': '#6e40c9', 'Cohere': '#39594d'
 };
 function guideCoverHtml(a, cls) {
   const color = GUIDE_COVER_COLORS[a.company] || '#4f7a86';
@@ -506,7 +508,7 @@ function buildGuidesPage(generalGuides, counts) {
 function buildToolsPage(companyGuides, counts) {
   const groups = {};
   for (const g of companyGuides) { const k = g.company || 'Other'; (groups[k] = groups[k] || []).push(g); }
-  const ORDER = ['OpenAI', 'Google', 'Anthropic', 'Microsoft', 'Meta', 'Perplexity', 'Alibaba', 'xAI', 'Mistral', 'DeepSeek', 'Amazon', 'Apple'];
+  const ORDER = ['OpenAI', 'Google', 'Anthropic', 'Microsoft', 'Meta', 'Perplexity', 'Alibaba', 'xAI', 'Mistral', 'DeepSeek', 'Amazon', 'Apple', 'Hugging Face', 'NVIDIA', 'GitHub', 'Cohere'];
   const companies = [...ORDER.filter(c => groups[c]), ...Object.keys(groups).filter(c => c && !ORDER.includes(c))];
   const cnt = n => `${n} guide${n > 1 ? 's' : ''}`;
 
