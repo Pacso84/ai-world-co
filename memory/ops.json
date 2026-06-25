@@ -191,6 +191,86 @@
       "agent": "publisher",
       "created": "2026-06-23T20:04:55.952Z",
       "updated": "2026-06-23T20:04:59.875Z"
+    },
+    {
+      "id": "t178241396757524",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-06-25T18:59:27.575Z",
+      "updated": "2026-06-25T19:03:51.549Z"
+    },
+    {
+      "id": "t178241423155064",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-06-25T19:03:51.550Z",
+      "updated": "2026-06-25T19:05:17.005Z"
+    },
+    {
+      "id": "t178241431700669",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-06-25T19:05:17.006Z",
+      "updated": "2026-06-25T19:05:19.175Z"
+    },
+    {
+      "id": "t178241431917611",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-06-25T19:05:19.176Z",
+      "updated": "2026-06-25T19:05:49.762Z"
+    },
+    {
+      "id": "t17824143497636",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-06-25T19:05:49.763Z",
+      "updated": "2026-06-25T19:05:51.165Z"
+    },
+    {
+      "id": "t178241435116894",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-06-25T19:05:51.168Z",
+      "updated": "2026-06-25T19:05:54.135Z"
+    },
+    {
+      "id": "t17824143541371",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-06-25T19:05:54.137Z",
+      "updated": "2026-06-25T19:08:24.995Z"
+    },
+    {
+      "id": "t178241450499623",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-06-25T19:08:24.996Z",
+      "updated": "2026-06-25T19:09:28.180Z"
+    },
+    {
+      "id": "t178241456818074",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-06-25T19:09:28.180Z",
+      "updated": "2026-06-25T19:09:29.542Z"
+    },
+    {
+      "id": "t178241456954347",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-06-25T19:09:29.543Z",
+      "updated": "2026-06-25T19:09:31.064Z"
     }
   ],
   "notifications": [
@@ -352,6 +432,30 @@
       "text": "6 új cikk publikálva (költség: $0.0183).",
       "agent": "ceo",
       "at": "2026-06-23T20:04:59.899Z",
+      "loud": false
+    },
+    {
+      "id": "n178241456817429",
+      "level": "info",
+      "text": "SEO: 36 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-06-25T19:09:28.174Z",
+      "loud": false
+    },
+    {
+      "id": "n178241457070360",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The line-up is coherent and ready, offering a balanced mix of beginner-friendly guides and practical tips. Each article maintains our on-brand, approachable voice and avoids jargon, ensuring accessibi",
+      "agent": "publisher",
+      "at": "2026-06-25T19:09:30.703Z",
+      "loud": false
+    },
+    {
+      "id": "n178241457107061",
+      "level": "success",
+      "text": "5 új cikk publikálva (költség: $0.0116).",
+      "agent": "ceo",
+      "at": "2026-06-25T19:09:31.070Z",
       "loud": false
     }
   ],
@@ -585,6 +689,87 @@
       "text": "3 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
       "ref": null,
       "at": "2026-06-24T20:24:41.012Z"
+    },
+    {
+      "id": "m178241431852222",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Dreaming: Better memory for a more helpful ChatGPT\" — mi a baj: NO_FRONTMATTER: A cikk nem YAML frontmatter-rel kezdődik",
+      "ref": "2026-06-07T20-02-45-880Z_openai-blog_Dreaming__Better_memory_for_a_more_helpful_ChatGPT.json",
+      "at": "2026-06-25T19:05:18.522Z"
+    },
+    {
+      "id": "m178241431916889",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Simulate real-world places with Project Genie and Street View\" — mi a baj: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!)",
+      "ref": "2026-06-07T20-02-45-881Z_google-deepmind_Simulate_real-world_places_with_Project_Genie_and_.json",
+      "at": "2026-06-25T19:05:19.168Z"
+    },
+    {
+      "id": "m178241433150021",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Dreaming: Better memory for a more helpful ChatGPT\" — javítva: NO_FRONTMATTER: A cikk nem YAML frontmatter-rel kezdődik; Reviewer verdict: Critical auto-check failures: NO_FRONTMATTER: A cikk nem YAML frontmatter-rel kezdődik; újraküldöm.",
+      "ref": "2026-06-07T20-02-45-880Z_openai-blog_Dreaming__Better_memory_for_a_more_helpful_ChatGPT.json",
+      "at": "2026-06-25T19:05:31.500Z"
+    },
+    {
+      "id": "m178241434975552",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Simulate real-world places with Project Genie and Street View\" — javítva: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!); Reviewer verdict: Critical auto-check failures: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!); újraküldöm.",
+      "ref": "2026-06-07T20-02-45-881Z_google-deepmind_Simulate_real-world_places_with_Project_Genie_and_.json",
+      "at": "2026-06-25T19:05:49.755Z"
+    },
+    {
+      "id": "m178241435047865",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Dreaming: Better memory for a more helpful ChatGPT\" (?/10)",
+      "ref": "2026-06-07T20-02-45-880Z_openai-blog_Dreaming__Better_memory_for_a_more_helpful_ChatGPT.json",
+      "at": "2026-06-25T19:05:50.478Z"
+    },
+    {
+      "id": "m178241435115674",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Simulate real-world places with Project Genie and Street View\" (?/10)",
+      "ref": "2026-06-07T20-02-45-881Z_google-deepmind_Simulate_real-world_places_with_Project_Genie_and_.json",
+      "at": "2026-06-25T19:05:51.156Z"
+    },
+    {
+      "id": "m178241435316716",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "info",
+      "text": "A \"Dreaming: Better memory for a more helpful ChatGPT\" hír a meglévő útmutatóra mutat: chatgpt-memory",
+      "ref": "chatgpt-memory",
+      "at": "2026-06-25T19:05:53.167Z"
+    },
+    {
+      "id": "m178241435369162",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "info",
+      "text": "A \"The latest AI news we announced in May 2026\" hír a meglévő útmutatóra mutat: gemini-getting-started",
+      "ref": "gemini-getting-started",
+      "at": "2026-06-25T19:05:53.691Z"
+    },
+    {
+      "id": "m178241456948723",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Rendbe raktam a csempéket: 12 cég → 6/4/3 oszlop, egyenletes sorok. Azonos számú oszlopok minden eszközön, kiegyensúlyozott megjelenés",
+      "ref": "guides.html",
+      "at": "2026-06-25T19:09:29.487Z"
     }
   ]
 }

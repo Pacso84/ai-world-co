@@ -1,55 +1,60 @@
 {
   "_meta": {
-    "written_at": "2026-06-23T20:01:23.518Z",
-    "writer_provider": "mistral",
-    "writer_model": "mistral-small-latest",
-    "writer_cost_usd": 0.0030118000000000002,
+    "written_at": "2026-06-25T19:05:31.499Z",
+    "writer_provider": "google",
+    "writer_model": "gemini-flash-latest",
+    "writer_cost_usd": 0.0012593249999999997,
     "original_draft": "2026-06-07T20-02-45-880Z_openai-blog_Dreaming__Better_memory_for_a_more_helpful_ChatGPT.json",
     "source_id": "openai-blog",
     "source_name": "OpenAI Blog",
     "source_link": "https://openai.com/index/chatgpt-memory-dreaming",
     "status": "published",
-    "published_at": "2026-06-23T20:02:44.715Z",
+    "rejected_at": "2026-06-25T19:05:18.516Z",
     "auto_check": {
       "passed": true,
       "issues": [],
-      "wordCount": 553
+      "wordCount": 641
     },
     "ai_review": {
       "overall_score": 9,
       "decision": "PASS",
       "issues": [
-        "minor lack of technical term explanations"
+        "none"
       ],
-      "verdict": "The article is well-structured, easy to understand, and provides actionable steps for using the new memory feature in ChatGPT, making it suitable for publication with minor adjustments.",
-      "_aiCost": 0.00093478,
+      "verdict": "The article is well-structured, informative, and written in a friendly and explanatory tone, making it suitable for publication.",
+      "_aiCost": 0.0009522299999999999,
       "_provider": "groq",
       "_model": "llama-3.3-70b-versatile",
       "_attempts": 1
     },
+    "reason": "Critical auto-check failures: NO_FRONTMATTER: A cikk nem YAML frontmatter-rel kezdődik",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-06-07T20-02-45-880Z_openai-blog_Dreaming__Better_memory_for_a_more_helpful_ChatGPT.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-06-25T19:05:50.477Z",
     "pairing_checked": true,
-    "pairing_checked_at": "2026-06-23T20:03:19.197Z",
+    "pairing_checked_at": "2026-06-25T19:05:53.159Z",
     "guide_worthy": true,
     "related_guide_topic": "chatgpt-memory",
     "seo": {
-      "meta_description": "Learn how to make ChatGPT remember your preferences and context for more personalized answers without repetition",
+      "meta_description": "Learn how to teach ChatGPT to remember your preferences so you never repeat yourself in conversations again. Simple, step-by-step guide.",
       "keywords": [
-        "ChatGPT memory feature",
-        "how to use ChatGPT",
-        "ChatGPT settings",
-        "AI conversation tips"
+        "how to use ChatGPT memory",
+        "stop repeating yourself in AI chats",
+        "teach ChatGPT your preferences",
+        "AI memory feature guide",
+        "personalize ChatGPT conversations"
       ],
       "seo_score": 8,
       "suggestions": [
-        "Add a step-by-step screenshot guide to the memory feature setup",
-        "Include a section on common use cases for the memory feature",
-        "Optimize subheadings with relevant long-tail keywords"
+        "Add a quick-start checklist for enabling ChatGPT memory in settings",
+        "Include a real-world example of saved preferences in action",
+        "Link to related guides on customizing AI responses for work or personal use"
       ],
-      "optimised_at": "2026-06-23T20:04:41.742Z"
-    },
-    "social": true,
-    "social_at": "2026-06-24T20:24:36.946Z"
+      "optimised_at": "2026-06-25T19:08:29.093Z"
+    }
   },
-  "article_markdown": "---\ntitle: \"How to Make ChatGPT Remember You Without Repeating Yourself\"\nsubtitle: \"Use ChatGPT’s new memory feature to skip repeating details and get more helpful answers every time\"\ncategory: \"how-to\"\naudience: \"personal\"\nread_time_minutes: 5\ntags: [\"chatgpt\", \"memory\", \"productivity\", \"getting-started\"]\n---\n\n# How to Make ChatGPT Remember You Without Repeating Yourself\n\nYou’ve probably noticed ChatGPT forgets your preferences after a few chats. That means you end up typing the same details over and over — your name, your writing style, your project goals. It’s like starting a conversation with a stranger every time. The new memory feature in ChatGPT is designed to fix that. It keeps your context fresh across conversations so the AI can give you answers that actually fit you.\n\n---\n\n## Start by turning on memory\n\nThe memory feature isn’t on by default. To enable it:\n\n1. Open ChatGPT and tap your profile icon in the top-right corner.\n2. Choose **Settings & Beta**.\n3. Toggle **Memory** to **On**.\n\nOnce enabled, ChatGPT will start quietly storing useful details from your chats. It learns from what you share naturally — like mentioning your role, your goals, or your preferences — without you having to ask it to remember.\n\n---\n\n## Teach it what matters to you\n\nChatGPT doesn’t guess what to remember. You need to show it. Here’s how to build its memory:\n\n- **Be specific**: Instead of saying “I’m a teacher,” try “I teach Year 6 maths in Sydney and I focus on hands-on activities.”\n- **Repeat once**: If you mention something important, say it twice in the same chat. ChatGPT uses repetition as a signal that this detail matters.\n- **Use natural language**: Don’t force a list. Just chat normally. For example, “I’m writing a blog about AI tools for small businesses and I want a friendly, practical tone.”\n\nOver time, ChatGPT will start to remember these details and use them to tailor its responses.\n\n---\n\n## Check and refine what it remembers\n\nChatGPT’s memory isn’t perfect. It can miss things or store the wrong details. To keep it accurate:\n\n1. Start a new chat and ask: “What do you know about me?”\n2. Review the list. If something is wrong or missing, correct it directly.\n3. Say: “Remember I prefer short paragraphs and bullet points in my writing.”\n4. ChatGPT will update its memory based on your feedback.\n\nYou can also ask it to forget something: “Forget I mentioned my dog’s name is Max.” It will remove that detail from its memory.\n\n---\n\n## What this means for you\n\n- **In everyday life**: If you use ChatGPT to draft emails or plan meals, it will start remembering your preferences. No more typing “write in a friendly tone” every time.\n- **For your business or work**: If you rely on ChatGPT for reports or client communications, it will adapt to your brand voice and key details, saving you editing time.\n- **If you're just getting started**: Turn on memory, then casually mention 2–3 key details in your next chat. Watch how it uses them in later conversations.\n\n---\n\nChatGPT’s new memory feature is like having a helpful assistant who actually listens. It won’t replace your memory, but it will stop you from repeating yourself. Start small: turn on memory, share a few details naturally, and let the AI do the remembering.",
+  "article_markdown": "---\ntitle: \"How to Use ChatGPT Memory to Stop Repeating Yourself\"\nsubtitle: \"Teach your AI assistant your preferences once so it remembers them across every single conversation.\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 3\ntags: [\"chatgpt\", \"productivity\", \"personal-ai\", \"how-to-guide\"]\n---\n\n# How to Use ChatGPT Memory to Stop Repeating Yourself\n\nImagine sitting down to organise your weekly family meal plan or draft a work email, only to realise you have to explain your dietary requirements or business tone to your AI helper for the hundredth time. Thankfully, you can now skip the repetitive introductions and help your AI get to know you.\n\n## How AI memory works\n\nWhen we talk about an AI's \"memory\", we are referring to its ability to store key details from your chats and apply them to future conversations. Instead of treating every new chat like a first meeting, the system keeps track of your preferences, family details, and work guidelines. \n\nYou do not need to do anything highly technical to make this work. The AI uses its natural language processing (the technology that helps computers understand and interpret human speech and text) to automatically recognise when you share something important. It then saves that detail as a memory.\n\nFor instance, if you mention that you only cook vegetarian meals, the AI will remember this. Next time you ask for a quick dinner recipe in a completely new chat, it will automatically suggest vegetarian options without you having to ask. \n\n## Taking control of what the AI remembers\n\nHaving an assistant that remembers things is incredibly helpful, but you also want to make sure you can manage what it knows. You can easily guide and edit these memories within the settings (the control panel where you adjust how an app behaves).\n\n*   **Direct instructions:** You can explicitly tell the AI what to keep in mind. For example, you can type a prompt (the instruction or question you give to the AI) like: *\"Remember that I write in Australian English and prefer short, punchy paragraphs.\"*\n*   **Checking the memory bank:** You can view every single detail the AI has saved. In your settings, look for the personalisation or memory section. Here, you will see a list of saved facts.\n*   **Deleting memories:** If your circumstances change—perhaps you change jobs or no longer need to avoid gluten—you can simply delete individual memories. You can also tell the AI directly in a chat: *\"Forget that I work in retail.\"*\n\n## What this means for you\n\n*   **For your daily personal life:** You can set up your AI as a personalised home assistant. Tell it your fitness goals, your family size, or your favourite holiday destinations. The next time you ask for a weekend itinerary or a workout plan, the advice will be tailored specifically to your life.\n*   **For your business or work:** You can use memory to maintain a consistent professional standard. Save details about your target audience, your organisation’s colour palette, or your specific job role. This ensures that any reports, emails, or marketing ideas the AI helps you draft are always aligned with your brand.\n*   **If you're just getting started:** Try a simple test today. Open a chat and tell the AI one specific thing about yourself—such as your preferred writing style or a hobby. Then, open a brand-new chat and ask it to write a short paragraph about that topic to see how well it remembers your preference.\n\n## Wrap-up\n\nTeaching your AI assistant about your preferences makes your daily interactions smoother, faster, and much more personal. By taking a few moments to set up and manage these memories, you can turn a general tool into a specialised assistant that truly understands how you like to work and live. Head into your AI settings today to see what it already knows, and start customising your experience.",
   "original_title": "Dreaming: Better memory for a more helpful ChatGPT"
 }

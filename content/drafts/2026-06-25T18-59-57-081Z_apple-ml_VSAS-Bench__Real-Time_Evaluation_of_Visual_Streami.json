@@ -1,0 +1,22 @@
+{
+  "_meta": {
+    "scraped_at": "2026-06-25T18:59:57.081Z",
+    "source_id": "apple-ml",
+    "source_name": "Apple Machine Learning Research (hivatalos)",
+    "source_country": "US",
+    "relevance": {
+      "index": 4,
+      "relevant": true,
+      "score": 7,
+      "category": "ai-news",
+      "reason": "New AI capability with potential for real-time applications"
+    }
+  },
+  "title": "VSAS-Bench: Real-Time Evaluation of Visual Streaming Assistant Models",
+  "link": "https://machinelearning.apple.com/research/vsas-bench-streaming-assistant",
+  "pub_date": "Fri, 22 May 2026 00:00:00 GMT",
+  "author": null,
+  "content_snippet": "Streaming vision-language models (VLMs) continuously generate responses given an instruction prompt and an online stream of input frames. This is a core mechanism for real-time visual assistants. Existing VLM frameworks predominantly assess models in offline settings. In contrast, the performance of a streaming VLM depends on additional metrics beyond pure video understanding, including proactiveness, which reflects the timeliness of the model’s responses, and consistency, which captures the robustness of its responses over time. To address this limitation, we propose VSAS-Bench, a new…",
+  "content_full": "Streaming vision-language models (VLMs) continuously generate responses given an instruction prompt and an online stream of input frames. This is a core mechanism for real-time visual assistants. Existing VLM frameworks predominantly assess models in offline settings. In contrast, the performance of a streaming VLM depends on additional metrics beyond pure video understanding, including proactiveness, which reflects the timeliness of the model’s responses, and consistency, which captures the robustness of its responses over time. To address this limitation, we propose VSAS-Bench, a new…",
+  "categories": []
+}

@@ -1,53 +1,54 @@
 {
   "_meta": {
-    "written_at": "2026-06-23T20:02:30.182Z",
-    "writer_provider": "mistral",
-    "writer_model": "mistral-small-latest",
-    "writer_cost_usd": 0.0031006000000000002,
+    "written_at": "2026-06-25T19:04:34.031Z",
+    "writer_provider": "google",
+    "writer_model": "gemini-flash-latest",
+    "writer_cost_usd": 0.0012207000000000001,
     "original_draft": "2026-06-07T20-02-45-881Z_google-ai-blog_The_latest_AI_news_we_announced_in_May_2026.json",
     "source_id": "google-ai-blog",
     "source_name": "Google AI (blog.google)",
     "source_link": "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-may-2026/",
     "status": "published",
-    "published_at": "2026-06-23T20:02:49.119Z",
+    "published_at": "2026-06-25T19:05:19.162Z",
     "auto_check": {
       "passed": true,
       "issues": [],
-      "wordCount": 681
+      "wordCount": 699
     },
     "ai_review": {
       "overall_score": 9,
       "decision": "PASS",
-      "issues": [],
-      "verdict": "The article meets all the requirements, with a clear and concise structure, plain language explanations, and a respectful tone, making it suitable for publication.",
-      "_aiCost": 0.00101891,
+      "issues": [
+        "some sentences are a bit long"
+      ],
+      "verdict": "The article is well-structured, easy to understand, and explains technical terms in a friendly manner, making it suitable for publication.",
+      "_aiCost": 0.00099257,
       "_provider": "groq",
       "_model": "llama-3.3-70b-versatile",
       "_attempts": 1
     },
     "pairing_checked": true,
-    "pairing_checked_at": "2026-06-23T20:03:26.999Z",
+    "pairing_checked_at": "2026-06-25T19:05:53.687Z",
     "guide_worthy": true,
-    "related_guide_topic": "how-to-turn-your-notes-into-a-polished-report-with-ai-in-min",
+    "related_guide_topic": "gemini-getting-started",
     "seo": {
-      "meta_description": "Turn voice memos into polished reports with AI in minutes. Learn how to use AI to create clear, professional writing from messy notes.",
+      "meta_description": "Discover how Google’s built-in AI can declutter your inbox, plan your week, and simplify daily tasks—no extra apps needed. Easy step-by-step guide inside.",
       "keywords": [
-        "AI report writing",
-        "voice memo to text",
-        "AI note taking",
-        "automatic report generation"
+        "how to use Google AI for organization",
+        "Google AI tools for daily life",
+        "AI in Gmail and Google Docs",
+        "organize with Google AI",
+        "smart AI features for productivity"
       ],
       "seo_score": 8,
       "suggestions": [
-        "Add a step-by-step guide to using AI for report writing",
-        "Include examples of AI-powered report writing tools",
-        "Optimize headings for long-tail keywords like 'AI report writing tips'"
+        "Add a short intro sentence with a question to hook readers (e.g., 'Tired of a messy inbox? Google’s AI can help.')",
+        "Include a quick list of tools covered (Gmail, Docs, Sheets) in the first paragraph for clarity.",
+        "Add a call-to-action like 'Try these steps today and reclaim your time!' to boost engagement."
       ],
-      "optimised_at": "2026-06-23T20:04:45.295Z"
-    },
-    "social": true,
-    "social_at": "2026-06-24T20:24:41.010Z"
+      "optimised_at": "2026-06-25T19:08:30.774Z"
+    }
   },
-  "article_markdown": "---\ntitle: \"How to Turn Your Notes into a Polished Report with AI in Minutes\"\nsubtitle: \"Use your phone’s voice memos or a quick text file to create a clear, professional report with AI — no typing required\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"ai-writing\", \"productivity\", \"voice-ai\", \"report-writing\"]\n---\n\n# How to Turn Your Notes into a Polished Report with AI in Minutes\n\nYou’re sitting on the train, halfway through your commute, when your manager texts: *“Can you send over a quick summary of yesterday’s client feedback by 9am?”* You’ve got a voice memo full of rambling thoughts, a scribbled note on your phone, and zero time to turn it into something professional. What if you could just speak your ideas, let AI clean them up, and send a polished report — all before your stop?\n\nThis isn’t a futuristic skill. It’s a practical way to use AI to turn messy notes into clear, professional writing — whether you're summarising a meeting, drafting a client update, or writing a personal reflection. You don’t need to be a writer. You just need your voice or a rough text file and a few taps.\n\n---\n\n## Start with what you’ve already got\n\nYou don’t need to start from scratch. AI works best when you feed it something real — even if it’s rough.\n\n- **Voice memo?** Record yourself talking through your ideas. No need to script it. Just speak naturally.\n- **Text file?** Paste your scribbled notes, bullet points, or even a screenshot of handwritten text.\n- **Email draft?** Copy the messy draft you started.\n\nAI doesn’t care how messy your starting point is. It’s designed to organise, clarify, and polish — not to judge.\n\n---\n\n## Use AI to shape your raw notes into a report\n\nOnce you’ve got your raw material, paste it into a tool like **ChatGPT**, **Gemini**, or **Claude**. Then give it a simple instruction. For example:\n\n> “Turn this into a professional report. Keep it concise, use clear headings, and write in Australian English.”\n\nThat’s it. AI will:\n- Group similar ideas together\n- Remove repetition\n- Fix grammar and spelling\n- Add structure with headings like *“Key Points”* or *“Next Steps”*\n\nYou can go further. Try prompts like:\n\n> “Summarise this into three bullet points for a quick update.”\n\n> “Write this as a formal email to my manager, tone professional and concise.”\n\n> “Turn this into a 150-word social media post.”\n\nEach time, AI adapts your content to the format you need — without changing your original meaning.\n\n---\n\n## Add a human touch — it’s still your work\n\nAI gives you the structure and clarity. But the ideas? Those are yours.\n\nAfter AI drafts your report, read it through. Does it sound like you? Fix anything that feels off. Add your personal tone, examples, or local context. Maybe you want to mention a recent local event or use a local term — that’s what makes it feel authentic.\n\nThink of AI as your assistant, not your replacement. It handles the heavy lifting of organisation and grammar. You handle the meaning and voice.\n\n---\n\n## What this means for you\n\n- **In everyday life**: Next time you’re in a hurry, record a voice memo on your phone, paste it into an AI tool, and ask it to turn it into a clear note or message. No typing, no stress — just clarity.\n\n- **For your business or work**: Use this to quickly turn meeting notes, client feedback, or brainstorming sessions into professional updates. Save hours every week by letting AI do the formatting while you focus on the content.\n\n- **If you're just getting started**: Try it once this week. Record a 30-second voice memo about your weekend plans, paste it into ChatGPT, and ask it to turn it into a friendly email to a friend. You’ll see how easy it is to turn chaos into clarity.\n\n---\n\nNow go ahead — record your next idea, paste it into AI, and watch it transform into something polished. You’ll be done before your coffee gets cold.",
+  "article_markdown": "---\ntitle: \"How to Use Google’s Built-In AI to Organise Your Daily Life\"\nsubtitle: \"Learn how the latest smart features in your favourite everyday apps can clear your inbox and plan your week.\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"google-gemini\", \"productivity\", \"getting-started\", \"life-admin\"]\n---\n\n# How to Use Google’s Built-In AI to Organise Your Daily Life\n\nImagine opening your laptop on a busy Monday morning, staring at a mountain of unread emails, and wishing someone could just summarise the chaos for you. With the latest updates to the online tools you already use every day, that helpful assistant is now sitting right inside your screen, ready to help you sort through the noise.\n\nInstead of copying and pasting text back and forth between different apps, you can now use built-in AI helpers directly inside Gmail, Google Docs, and Google Sheets. Here is how to get started with these tools to make your daily life and work feel a lot lighter.\n\n## Working smarter inside your inbox\n\nMost of us spend far too much time wading through long email threads trying to find a single piece of information. The latest update introduces a smart sidebar panel (the small sliding window on the right side of your screen where the AI helper lives) that can read and analyse your emails.\n\nTo use it, you simply open a long email thread and click the little sparkle icon in the top right corner. You can type a prompt (the text instruction you give to the AI) asking it to find specific details. \n\nFor example, you could ask: \n* *\"What time did Sarah say we should meet, and what did she ask me to bring?\"*\n* *\"Summarise this thread into three bullet points.\"*\n\nThe AI will scan the entire conversation and give you a neat, friendly summary in seconds, saving you from scrolling through weeks of replies.\n\n## Planning and creating in Google Docs\n\nWhen you are staring at a blank page trying to write a newsletter, a family budget, or a work proposal, getting started is often the hardest part. The built-in AI in Google Docs can now help you draft content based on files you already have stored in your Google Drive.\n\nThis works because the system is multimodal (meaning it is an AI that can understand and connect different types of information, like text, images, and spreadsheets, all at the same time). \n\nIf you are planning a family holiday, you can open a new Google Doc, click the AI helper, and ask it to look at a travel spreadsheet in your Drive to create a daily itinerary. It does the heavy lifting of reading your notes and organising them into a beautifully formatted document, leaving you with more time to actually look forward to your trip.\n\n## What this means for you\n\nIntegrating smart assistants directly into your daily apps makes technology feel less like a chore and more like a helpful partner.\n\n* **For your personal life**: Use the email summary tool to quickly find school permission slips, party details, or utility bills without endless searching. You can also use Docs to draft polite emails to landlords or plan weekly family meal schedules.\n* **For your business or work**: You can extract key action items from long client threads instantly. Instead of writing meeting minutes from scratch, let the AI read your rough notes and format them into a professional email ready to send to your team.\n* **If you're just getting started**: Don't feel pressured to use it for everything. Start small. The next time you get an email that is longer than three paragraphs, click the sparkle icon in Gmail and ask it to summarise the message for you.\n\n## Wrap-up\n\nHaving an AI assistant built directly into your daily workspace means you no longer need to be a technology expert to save time on your daily chores. By letting the helper summarise long threads and draft quick outlines, you can clear the digital clutter and focus on what really matters. Open your Gmail account today, look for that little sparkle icon in the top corner, and ask it to help you tackle your very next email.",
   "original_title": "The latest AI news we announced in May 2026"
 }
