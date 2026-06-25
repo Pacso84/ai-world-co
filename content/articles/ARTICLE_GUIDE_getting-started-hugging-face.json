@@ -1,0 +1,37 @@
+{
+  "_meta": {
+    "type": "guide",
+    "guide_topic_id": "getting-started-hugging-face",
+    "company": "Hugging Face",
+    "tool": "Hugging Face",
+    "icon": "🤗",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-06-25T20:01:02.745Z",
+    "writer_provider": "cerebras",
+    "writer_model": "gpt-oss-120b",
+    "writer_cost_usd": 0,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-06-25T20:01:44.140Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 786
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Clear, accessible guide with strong step-by-step instructions and no prohibited content.",
+      "_aiCost": 0.000403,
+      "_provider": "mistral",
+      "_model": "mistral-small-latest",
+      "_attempts": 1
+    }
+  },
+  "article_markdown": "---\ntitle: \"Getting started with Hugging Face: a beginner's guide to AI models and demos\"\nsubtitle: \"Learn how to browse, test and use thousands of free AI models and interactive demos (Spaces) right in your web browser – no install, no coding required.\"\ncategory: \"guide\"\naudience: \"both\"\ncompany: \"Hugging Face\"\ntool: \"Hugging Face\"\nlevel: \"beginner\"\nread_time_minutes: 4\ntags: [\"getting-started\", \"huggingface\"]\n---\n\n# Getting started with Hugging Face: a beginner's guide to AI models and demos\n\n**Hook:** By the end of this guide you’ll be able to find a free AI model, run its demo, and even experiment with an interactive Space – all without writing a single line of code. It’s perfect for anyone who’s curious about AI but isn’t a developer.\n\n## Before you start\n- **A device with internet access** – a laptop, tablet or phone will do.\n- **A modern web browser** – Chrome, Edge, Safari or Firefox.\n- **(Optional) A free Hugging Face account** – useful for bookmarking favourite models, but you can try demos without signing up.\n\n## Step 1 — Open the Hugging Face Model Hub\nThe Model Hub is the central catalogue where Hugging Face lists every AI model that the community shares. Think of it as a library shelf, but each “book” is a machine‑learning model you can read about or try.\n\n💬 **Example:** In your browser’s address bar type `https://huggingface.co/models` and press **Enter**. You’ll see a grid of model cards, each showing a short name and a thumbnail.\n\n## Step 2 — Search for a model you want to explore\nAt the top of the page there’s a search box. This works like a Google search but limited to AI models. You can type anything from “sentiment analysis” to “image generation”.\n\n💬 **Example:** Type **sentiment analysis** and hit **Enter**. The page refreshes with models that can judge whether a piece of text sounds positive, negative or neutral.\n\n## Step 3 — Open a model’s demo (no code needed)\nClick on a model card that interests you. On the model’s page look for a tab or button called **Demo** or **Inference API**. This is a ready‑made interface that lets you type an input and see the model’s output instantly – similar to chatting with a bot.\n\n💬 **Example:** On the “DistilBERT‑sentiment‑analysis” page, click the **Demo** tab. You’ll see a text box labelled “Enter text”. Type “I love hiking on weekends.” and press the **Run** button. In a few seconds the model returns a sentiment label (e.g., *Positive*).\n\n## Step 4 — Try a Space (interactive AI app)\nA **Space** is a web‑hosted app that runs a model behind the scenes, often with sliders, image upload fields or visualisations. Think of a Space as a specialised calculator you can use directly on the web.\n\n💬 **Example:** From the main navigation, select **Spaces** (or go to `https://huggingface.co/spaces`). Search for “stable‑diffusion”. Click the first result, then hit the **Open** button. You’ll see an image‑generation interface where you can type a prompt like “a sunset over a eucalyptus forest” and press **Generate** to see the AI create a picture.\n\n## Step 5 — Save or share what you’ve created\nMost demos and Spaces include a **Copy** or **Download** button. Use it to keep a record of the output or to share with friends or colleagues.\n\n💬 **Example:** After generating an image in the Stable Diffusion Space, click the **Download** icon (usually a downward‑arrow). The picture saves to your device, ready to be attached to an email or posted on social media.\n\n## Common mistakes\n- **Skipping the “Run” button:** Typing text into a demo box does nothing until you click **Run** or **Generate**.\n- **Uploading huge files:** Many demos limit uploads to a few megabytes; large files will be rejected with an error message.\n- **Assuming you need to install Python:** All the steps above happen entirely inside your web browser – no programming language required.\n\n## What this means for you\n- **In everyday life:** Quickly summarise a news article, generate a birthday card image, or check the tone of a text message without leaving your phone.\n- **For your business or work:** Classify customer support tickets, draft product descriptions, or prototype a visual mock‑up for a marketing campaign in minutes.\n- **If you're just getting started:** The easiest first move is to try a text‑classification demo – it shows you instantly how an AI can understand language.\n\n## Try it now\nOpen a new tab, go to `https://huggingface.co/models`, type **sentiment analysis** into the search bar, and press **Enter**. Click the first model’s **Demo** tab, paste the sentence “Learning AI is fun!” and hit **Run**. You’ll see the model’s response in under two minutes – that’s your first hands‑on AI experience!",
+  "original_title": "Getting started with Hugging Face: a beginner's guide"
+}

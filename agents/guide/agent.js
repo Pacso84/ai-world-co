@@ -16,7 +16,8 @@
 //   node agents/guide/agent.js --title "How to ..."
 //   node agents/guide/agent.js --limit 3       -- több téma egymás után
 //   node agents/guide/agent.js --ideas 8       -- NEM ír, csak ÚJ témákat ötletel
-//                                                 a guide-topics.json-ba (status: todo)
+//                                                 a guide-topics.json-ba (cég-lefedettség elöl)
+//   node agents/guide/agent.js --cover         -- a HIÁNYZÓ cégekhez témát ad (ingyen, LLM nélkül)
 //
 // FŐ ELV: EREDETI tartalom. A cégek doksiját csak ihletként — sosem másoljuk.
 // ===================================================================
@@ -47,12 +48,13 @@ const GUIDE_MAX_REWORK = 4;
 // ---- argumentumok ----
 function parseArgs() {
   const a = process.argv.slice(2);
-  const p = { id: null, title: null, limit: 1, rework: false, ideas: 0 };
+  const p = { id: null, title: null, limit: 1, rework: false, ideas: 0, cover: false };
   for (let i = 0; i < a.length; i++) {
     if (a[i] === '--id' && a[i + 1]) { p.id = a[++i]; }
     else if (a[i] === '--title' && a[i + 1]) { p.title = a[++i]; }
     else if (a[i] === '--limit' && a[i + 1]) { p.limit = parseInt(a[++i], 10) || 1; }
     else if (a[i] === '--rework') { p.rework = true; }
+    else if (a[i] === '--cover') { p.cover = true; }
     else if (a[i] === '--ideas') { p.ideas = parseInt(a[i + 1], 10) || 6; if (a[i + 1] && /^\d+$/.test(a[i + 1])) i++; }
   }
   return p;
@@ -74,11 +76,77 @@ function saveTopics(data) {
   writeFileSync(TOPICS_PATH, JSON.stringify(data, null, 2), 'utf-8');
 }
 
-// Mely témá(ka)t dolgozzuk fel?
+// Mely témá(ka)t dolgozzuk fel? A 'coverage' (hiányzó-cég) témák ELŐRE kerülnek.
 function pickTopics(store, args) {
   if (args.id) return store.topics.filter(t => t.id === args.id);
   if (args.title) return store.topics.filter(t => t.title === args.title);
-  return store.topics.filter(t => t.status !== 'done').slice(0, args.limit);
+  const todo = store.topics.filter(t => t.status !== 'done');
+  todo.sort((a, b) => (b.priority === 'coverage' ? 1 : 0) - (a.priority === 'coverage' ? 1 : 0));
+  return todo.slice(0, args.limit);
+}
+
+// ===================================================================
+// CÉG-LEFEDETTSÉG — "minden követett céghez legyen útmutató"
+// ===================================================================
+// A katalógus a követett hivatalos AI-cégeket (sources/rss-feeds.json
+// category:'ai-company-official') + a hétköznapi felhasználóknak szóló FŐ
+// eszközüket tartalmazza. Az ötletelő ELŐSZÖR a 0-útmutatós ("alsó") cégeket
+// tölti fel — determinisztikusan, LLM nélkül, ingyen.
+const COMPANY_CATALOG = [
+  { company: 'OpenAI',       tool: 'ChatGPT',            icon: '🤖', audience: 'both' },
+  { company: 'Google',       tool: 'Gemini',             icon: '✨', audience: 'both' },
+  { company: 'Anthropic',    tool: 'Claude',             icon: '🧠', audience: 'both' },
+  { company: 'Microsoft',    tool: 'Microsoft Copilot',  icon: '🪟', audience: 'both' },
+  { company: 'Meta',         tool: 'Meta AI',            icon: '💬', audience: 'personal' },
+  { company: 'Apple',        tool: 'Apple Intelligence', icon: '🍎', audience: 'personal' },
+  { company: 'Amazon',       tool: 'Amazon Alexa+',      icon: '📦', audience: 'personal' },
+  { company: 'Perplexity',   tool: 'Perplexity',         icon: '🔎', audience: 'both' },
+  { company: 'xAI',          tool: 'Grok',               icon: '🛰️', audience: 'both' },
+  { company: 'DeepSeek',     tool: 'DeepSeek',           icon: '🐳', audience: 'both' },
+  { company: 'Mistral',      tool: 'Le Chat (Mistral)',  icon: '🇪🇺', audience: 'both' },
+  { company: 'Alibaba',      tool: 'Qwen Chat',          icon: '🐲', audience: 'both' },
+  { company: 'Hugging Face', tool: 'Hugging Face',       icon: '🤗', audience: 'both',
+    angle: 'A plain-English first look at Hugging Face: how to find and try thousands of free AI models and demos (Spaces) in your browser — no install, no coding.' },
+  { company: 'NVIDIA',       tool: 'NVIDIA ChatRTX',     icon: '🎮', audience: 'personal',
+    angle: 'How to run a private AI chatbot on your own NVIDIA-powered PC with ChatRTX — what it is, what you need, and the easiest way to start.' },
+  { company: 'GitHub',       tool: 'GitHub Copilot',     icon: '🐙', audience: 'business',
+    angle: 'GitHub Copilot for absolute beginners: what an AI coding helper does, where it appears, and how to try it safely on a tiny first project.' },
+  { company: 'Cohere',       tool: 'Cohere',             icon: '🔵', audience: 'business',
+    angle: 'What is Cohere? A friendly, plain-English intro to its AI tools for businesses and what everyday users should know.' }
+];
+
+function normCompany(s) { return (s || '').toLowerCase().replace(/[^a-z0-9]/g, ''); }
+
+// Mely cégekhez VAN már útmutató(-téma)? (a topics company mezője alapján)
+function coveredCompanySet(store) {
+  const set = new Set();
+  for (const t of store.topics) if (t.company) set.add(normCompany(t.company));
+  return set;
+}
+// 0-útmutatós ("hiányzó") cégek a katalógusból
+function missingCompanies(store) {
+  const covered = coveredCompanySet(store);
+  return COMPANY_CATALOG.filter(c => !covered.has(normCompany(c.company)));
+}
+// Determinisztikus lefedettségi téma minden hiányzó céghez (LLM nélkül, ingyen)
+function addCompanyCoverage(store, max = 99) {
+  const missing = missingCompanies(store);
+  const usedIds = new Set(store.topics.map(t => t.id).filter(Boolean));
+  let added = 0;
+  for (const c of missing) {
+    if (added >= max) break;
+    const title = `Getting started with ${c.tool}: a beginner's guide`;
+    const id = uniqueId(slugify(`getting-started-${c.tool}`), usedIds);
+    store.topics.push({
+      id, company: c.company, tool: c.tool, title,
+      audience: c.audience || 'both', level: 'beginner',
+      angle: c.angle || `A friendly first look at ${c.tool} (by ${c.company}) for everyday people: what it is, what it does well, and the easiest way to try it for free.`,
+      status: 'todo', icon: c.icon || '🏢',
+      priority: 'coverage', proposed_at: new Date().toISOString(), proposed_by: 'company-coverage'
+    });
+    added++;
+  }
+  return { added, missing: missing.map(m => m.company) };
 }
 
 // ===================================================================
@@ -140,12 +208,23 @@ async function proposeNewTopics(count, store, brandContext) {
   // A meglévő címek egy részét megmutatjuk, hogy NE ismételje őket
   const sample = store.topics.slice(-25).map(t => `- ${t.title}`).join('\n');
 
+  // Fél-lefedett cégek (1 útmutató): ezekhez kérünk inkább újat ("alsók")
+  const counts = {};
+  for (const t of store.topics) if (t.company) counts[normCompany(t.company)] = (counts[normCompany(t.company)] || 0) + 1;
+  const underCovered = COMPANY_CATALOG
+    .map(c => ({ name: c.company, n: counts[normCompany(c.company)] || 0 }))
+    .filter(c => c.n > 0 && c.n < 3)
+    .map(c => c.name);
+  const coverageHint = underCovered.length
+    ? `\n\nThese tracked companies have only a FEW guides — please lean towards them (give at least some of your ideas to them): ${underCovered.join(', ')}.`
+    : '';
+
   const userPrompt = `Propose ${count + 4} brand-new beginner guide topics for AI World Co.
 
 DO NOT repeat or lightly reword any of these EXISTING topics:
 ${sample}
 
-Pick fresh, genuinely useful angles people want (e.g. everyday tasks, study, small business, parents, job hunting, accessibility, safety/privacy, comparing tools, free vs paid, mobile apps, voice, images, spreadsheets, email). Aim for a healthy mix of general and company-specific.
+Pick fresh, genuinely useful angles people want (e.g. everyday tasks, study, small business, parents, job hunting, accessibility, safety/privacy, comparing tools, free vs paid, mobile apps, voice, images, spreadsheets, email). Aim for a healthy mix of general and company-specific.${coverageHint}
 
 BRAND CONTEXT:
 ${brandContext}
@@ -183,17 +262,46 @@ Return ONLY the JSON array (${count + 4} items).`;
 }
 
 async function runIdeasMode(count, brandContext) {
-  console.log(`💡 ÖTLETELŐ MÓD — ${count} új útmutató-téma javaslása`);
+  console.log(`💡 ÖTLETELŐ MÓD — cél: ${count} új téma (cég-lefedettség előnyben)`);
   console.log('─'.repeat(60));
   const store = loadTopics();
-  const before = store.topics.length;
-  const { added, cost } = await proposeNewTopics(count, store, brandContext);
+  let before = store.topics.length;
+
+  // 1) LEFEDETTSÉG ELŐSZÖR: a 0-útmutatós cégeket töltjük fel (ingyen, LLM nélkül)
+  const cov = addCompanyCoverage(store, count);
+  if (cov.added > 0) {
+    console.log(`   🏢 ${cov.added} hiányzó céghez coverage-téma:`);
+    store.topics.slice(before).forEach(t => console.log(`      • ${t.title} [${t.company}]`));
+    before = store.topics.length;
+  }
+
+  // 2) MARADÉK helyre általános LLM-ötletelés (változatos témák)
+  let llmAdded = 0, cost = 0;
+  const remaining = count - cov.added;
+  if (remaining > 0) {
+    const r = await proposeNewTopics(remaining, store, brandContext);
+    llmAdded = r.added; cost = r.cost;
+    store.topics.slice(before).forEach(t => console.log(`      • ${t.title}${t.company ? ` [${t.company}]` : ''}`));
+  }
+
+  if (cov.added + llmAdded > 0) {
+    saveTopics(store);
+    console.log(`   ✅ Összesen ${cov.added + llmAdded} új téma (${cov.added} cég-lefedettség + ${llmAdded} ötlet), backlog: ${store.topics.length} | költség $${cost.toFixed(4)}`);
+  } else {
+    console.log('   💤 Nem született új téma (minden cég lefedve, és nincs új ötlet).');
+  }
+}
+
+async function runCoverMode() {
+  console.log('🏢 CÉG-LEFEDETTSÉG MÓD — minden követett céghez legyen útmutató');
+  console.log('─'.repeat(60));
+  const store = loadTopics();
+  const { added, missing } = addCompanyCoverage(store);
   if (added > 0) {
     saveTopics(store);
-    console.log(`   ✅ ${added} új téma a backlogba (összesen ${store.topics.length}) | költség $${cost.toFixed(4)}`);
-    store.topics.slice(before).forEach(t => console.log(`      • ${t.title}${t.company ? ` [${t.company}]` : ''}`));
+    console.log(`   ✅ ${added} hiányzó-cég téma hozzáadva: ${missing.slice(0, added).join(', ')}`);
   } else {
-    console.log('   💤 Nem született új, nem-duplikátum téma (próbáld újra később).');
+    console.log('   ✓ Minden követett céghez van már útmutató(-téma). Nincs teendő.');
   }
 }
 
@@ -496,6 +604,12 @@ async function main() {
     console.log('📘 ÚTMUTATÓ AGENT — REWORK');
     console.log('─'.repeat(60));
     await runGuideReworkMode(loadBrandContext());
+    return;
+  }
+
+  // CÉG-LEFEDETTSÉG MÓD: a hiányzó cégekhez téma (ingyen, LLM nélkül)
+  if (args.cover) {
+    await runCoverMode();
     return;
   }
 
