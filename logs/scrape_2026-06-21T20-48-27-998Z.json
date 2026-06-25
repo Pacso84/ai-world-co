@@ -1,0 +1,21 @@
+{
+  "started_at": "2026-06-21T20:47:25.705Z",
+  "feeds_total": 15,
+  "feeds_ok": 14,
+  "feeds_failed": 1,
+  "items_seen_before": 21,
+  "items_keyword_filtered": 7,
+  "candidates_for_ai": 42,
+  "ai_calls": 5,
+  "items_relevant": 18,
+  "items_saved": 18,
+  "ai_cost_usd": 0.0010932749999999999,
+  "failed_feeds": [
+    {
+      "id": "apple-ml",
+      "error": "Invalid character in entity name\nLine: 79\nColumn: 67\nChar:  "
+    }
+  ],
+  "finished_at": "2026-06-21T20:48:27.998Z",
+  "duration_seconds": 62.293
+}

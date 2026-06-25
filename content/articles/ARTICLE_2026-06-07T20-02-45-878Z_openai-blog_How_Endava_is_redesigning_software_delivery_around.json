@@ -1,54 +1,54 @@
 {
   "_meta": {
-    "written_at": "2026-06-25T19:03:55.273Z",
-    "writer_provider": "cerebras",
-    "writer_model": "gpt-oss-120b",
-    "writer_cost_usd": 0,
+    "written_at": "2026-06-25T18:49:29.709Z",
+    "writer_provider": "google",
+    "writer_model": "gemini-flash-latest",
+    "writer_cost_usd": 0.00124575,
     "original_draft": "2026-06-07T20-02-45-878Z_openai-blog_How_Endava_is_redesigning_software_delivery_around.json",
     "source_id": "openai-blog",
     "source_name": "OpenAI Blog",
     "source_link": "https://openai.com/index/endava-frontiers",
     "status": "published",
-    "published_at": "2026-06-25T19:05:18.515Z",
+    "published_at": "2026-06-25T18:50:33.897Z",
     "auto_check": {
       "passed": true,
       "issues": [],
-      "wordCount": 720
+      "wordCount": 731
     },
     "ai_review": {
       "overall_score": 9,
       "decision": "PASS",
       "issues": [
-        "minor potential for over-reliance on specific tools"
+        "minor lack of Australian English spellings",
+        "no obvious hallucinations but cautious on some examples"
       ],
-      "verdict": "The article is well-structured, explains technical terms clearly, and provides practical guidance on using AI agents for everyday teams, making it suitable for publication.",
-      "_aiCost": 0.0010767699999999997,
+      "verdict": "The article is well-structured, easy to understand, and free of prohibited content, making it suitable for publication with minor adjustments to ensure consistent use of Australian English spellings.",
+      "_aiCost": 0.00103748,
       "_provider": "groq",
       "_model": "llama-3.3-70b-versatile",
       "_attempts": 1
     },
     "pairing_checked": true,
-    "pairing_checked_at": "2026-06-25T19:05:52.575Z",
+    "pairing_checked_at": "2026-06-25T18:50:54.551Z",
     "guide_worthy": false,
-    "pairing_reason": "The article does not introduce one specific, named feature, but rather provides a generic guide on using AI agents for software delivery",
+    "pairing_reason": "The article discusses a generic topic of AI agents without introducing a specific named feature or tool",
     "seo": {
-      "meta_description": "Learn how AI agents like ChatGPT Enterprise and GitHub Copilot can automate repetitive tasks and speed up software delivery for teams without extra hassle.",
+      "meta_description": "Discover how AI agents are changing the way we plan and work, automating complex tasks and boosting productivity behind the scenes.",
       "keywords": [
-        "how to use AI agents for software delivery",
-        "AI tools to speed up coding",
-        "automate software tasks with AI",
-        "GitHub Copilot for teams",
-        "AI assistants in software development"
+        "AI agents",
+        "autonomous AI assistants",
+        "project planning with AI",
+        "AI for work productivity"
       ],
       "seo_score": 8,
       "suggestions": [
-        "Add a section on measuring time saved with AI agents",
-        "Include real-world examples of teams using AI for faster delivery",
-        "Link to beginner-friendly tools like GitHub Copilot"
+        "Add a section on real-world examples of AI agents in use",
+        "Include a brief guide on how to get started with using AI agents for project planning",
+        "Use header tags to structure the article for better readability and SEO"
       ],
-      "optimised_at": "2026-06-25T19:08:27.788Z"
+      "optimised_at": "2026-06-25T18:52:28.994Z"
     }
   },
-  "article_markdown": "---\ntitle: \"How AI Agents Can Speed Up Software Delivery for Everyday Teams\"\nsubtitle: \"A practical guide to using AI assistants, code generators and workflow bots to get software built faster and with fewer headaches\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"ai-agents\", \"software-development\", \"productivity\", \"no-code\", \"enterprise\"]\n---\n\n# How AI Agents Can Speed Up Software Delivery for Everyday Teams\n\nEver felt stuck waiting for a teammate to finish a tiny piece of code, or spent ages moving a task from email to a ticket system?  AI agents can take over those repetitive steps, letting you focus on the work that really matters.\n\n## Getting started with AI agents\n\n1. **Pick an AI assistant** – tools like ChatGPT Enterprise (a version of ChatGPT designed for companies) give you access to a large language model (LLM – a huge text‑understanding engine similar to the brain behind ChatGPT).  \n2. **Add a code helper** – OpenAI’s Codex (the AI that powers GitHub Copilot) can write or tweak snippets in languages such as Python, JavaScript, or Java.  \n3. **Connect the agents to your tools** – Most modern platforms provide an API (application programming interface – a way for one program to talk to another).  By linking the LLM’s API to Slack, Jira or your CI/CD pipeline, the agent can automatically create tickets, suggest fixes, or even run tests.\n\n### Simple set‑up steps\n\n| Step | What to do | Why it matters |\n|------|------------|----------------|\n| 1️⃣ | Sign up for ChatGPT Enterprise and generate an API key. | The key unlocks the LLM for your internal apps without exposing it publicly. |\n| 2️⃣ | Install the Codex extension in your IDE (e.g., VS Code). | You’ll get on‑the‑fly code suggestions while you type. |\n| 3️⃣ | Use a low‑code integration tool (such as Zapier or Microsoft Power Automate) to link the LLM API to your ticketing system. | The agent can read a request email and automatically open a Jira issue. |\n| 4️⃣ | Create a few prompt templates (the instructions you give the AI) for common tasks – e.g., “Write a unit test for this function” or “Summarise the bug report”. | Consistent prompts give reliable results and reduce the need for trial‑and‑error. |\n\n## A few everyday ways to use AI agents\n\n- **Instant code snippets** – Stuck on a one‑line regex? Ask the Codex agent: “Give me a JavaScript regex to validate Australian phone numbers.” The agent returns a ready‑to‑paste line that you can test immediately.  \n- **Ticket triage** – Forward an incoming support email to a Slack channel. The AI agent reads the text, extracts the problem, and creates a ticket with priority and suggested assignee. No manual copy‑pasting.  \n- **Documentation updates** – Ask the LLM: “Update the README to include the new API endpoint we just added.” The agent rewrites the markdown file, keeping the style consistent.  \n- **Automated testing** – Trigger the agent after each commit. It can generate a basic test case for the changed function and run it in your CI pipeline, alerting you if anything breaks.  \n\n## What this means for you\n\n- **In personal projects**: You can finish a side‑app or hobby script weeks faster. Instead of Googling for a code example, just ask the AI for a starter file and adapt it.  \n- **At work or in a small business**: Routine chores like ticket creation, status reporting, and basic code reviews become automatic. Your team spends less time on admin and more on delivering features that your customers actually need.  \n- **If you’re new to AI tools**: Start with one simple prompt each day—perhaps “Write a function that converts a date to ISO format”. As you see the results, you’ll get a feel for how the agent thinks, and you can gradually expand to more complex workflows.\n\n## Wrap‑up\n\nAI agents are not a futuristic gimmick; they are practical helpers you can plug into the tools you already use. By setting up a LLM, a code‑generation assistant and a few integration links, you can shave hours off mundane tasks and keep momentum high.  \n\n**Try this today:** pick a single repetitive step in your current project—maybe turning an email into a task—and use ChatGPT Enterprise’s API to automate it. You’ll see instantly how a little AI can make a big difference.",
+  "article_markdown": "---\ntitle: \"How AI Agents Are Quietly Changing the Way We Plan and Work\"\nsubtitle: \"Beyond simple chatbots, autonomous AI assistants are starting to run whole projects behind the scenes.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"ai-agents\", \"productivity\", \"future-of-work\"]\n---\n\n# How AI Agents Are Quietly Changing the Way We Plan and Work\n\nThink about the last time you sat down to plan a big project at work, only to find yourself immediately bogged down in endless emails, spreadsheets, and status updates. While many of us have used chatbots to write a quick email or answer a simple question, a new wave of digital assistants is beginning to take over these complex, multi-step tasks for us.\n\nThis shift is happening through the rise of AI agents, and they are changing how we organise our daily work.\n\n## What is an AI agent?\n\nTo understand this shift, it helps to look at how AI is evolving. Most of us are familiar with standard generative AI, where you type a prompt (the instruction or question you give to the AI) and get a single response back. \n\nAn **AI agent** is different. Think of an agent as a smart assistant that you don't have to micromanage. Instead of just answering a question, you give an agent a final goal—like \"organise our team's weekly schedule based on everyone's availability\"—and the agent will figure out the steps, use different software tools, and complete the task on its own. \n\nRather than waiting for you to tell it what to do next, the agent works through its own internal checklist until the job is done.\n\n## Redesigning how we get things done\n\nWorkplaces are beginning to rebuild their daily workflows (the step-by-step processes we follow to get a job done) around these active digital helpers. \n\nInstead of a human having to copy data from an email, paste it into a database, write a report, and then send a notification to the team, AI agents can connect these separate steps together. For example:\n\n*   **Handling customer feedback:** An agent can read an incoming customer email, identify the core issue, search a company database for the right solution, draft a reply, and update the team's dashboard without a human needing to act as the middleman.\n*   **Drafting project plans:** When a new project starts, an agent can gather initial requirements, outline a draft timeline, and even write the first draft of the code or content needed to get the project moving.\n\nBy handling the repetitive \"glue\" work that usually clutters our days, these tools are allowing teams to focus more on creative problem-solving and actual human connection.\n\n## What this means for you\n\nThe transition to using AI agents is happening gradually, but it will eventually change how most of us interact with technology at work and at home.\n\n*   **For your business or work:** Look closely at the tasks that take up your time. If you find yourself constantly copying information from one app to another, keep an eye out for agent-style features built into the software tools you already use. Many common email, spreadsheet, and project management tools are currently adding these automated helpers.\n*   **In everyday life:** You can start using simple agent-like features today to make life easier. For instance, when planning a family holiday, instead of doing dozens of separate searches, you can ask a modern AI tool to \"compare five hotels in Melbourne under a certain budget, check their distance from the city centre, and put the options into a neat table.\"\n*   **If you're just getting started:** Don't worry about learning how to code. The best way to prepare is to practice giving clear, goal-oriented instructions. Think about how you would delegate a task to a human assistant, and try writing your prompts in the same clear, step-by-step manner.\n\n## Wrap-up\n\nWe are moving away from a world where we have to tell computers how to do every single step of a task, and towards a world where we simply describe the outcome we want to achieve. Today, take a moment to look at your to-do list and identify one repetitive, multi-step task you do every week. Next time you open your preferred AI tool, try asking it to outline a plan to automate that task for you—you might be surprised at how much of the heavy lifting it can already handle.",
   "original_title": "How Endava is redesigning software delivery around AI agents"
 }

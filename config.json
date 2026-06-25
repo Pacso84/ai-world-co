@@ -318,6 +318,8 @@
   "limits": {
     "daily_articles_max": 5,
     "daily_articles_min": 0,
+    "daily_guides_max": 4,
+    "_daily_guides_comment": "Az ÚTMUTATÓK külön napi kerete (saját sáv). A hír-keret betelése NEM akadályozza az útmutató-írást: ha nincs új hír / maradt token, az idle-fill ebből a keretből ír útmutatókat. Csak a költség-limit állít le mindent.",
     "weekly_deep_articles": 1,
     "daily_api_cost_usd_max": 3,
     "monthly_budget_usd_target": 30,

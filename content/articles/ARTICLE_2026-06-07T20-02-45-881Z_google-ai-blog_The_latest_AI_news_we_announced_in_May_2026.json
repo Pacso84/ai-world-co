@@ -1,54 +1,53 @@
 {
   "_meta": {
-    "written_at": "2026-06-25T19:04:34.031Z",
+    "written_at": "2026-06-25T18:50:09.820Z",
     "writer_provider": "google",
     "writer_model": "gemini-flash-latest",
-    "writer_cost_usd": 0.0012207000000000001,
+    "writer_cost_usd": 0.0012201,
     "original_draft": "2026-06-07T20-02-45-881Z_google-ai-blog_The_latest_AI_news_we_announced_in_May_2026.json",
     "source_id": "google-ai-blog",
     "source_name": "Google AI (blog.google)",
     "source_link": "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-may-2026/",
     "status": "published",
-    "published_at": "2026-06-25T19:05:19.162Z",
+    "published_at": "2026-06-25T18:50:37.925Z",
     "auto_check": {
       "passed": true,
       "issues": [],
-      "wordCount": 699
+      "wordCount": 675
     },
     "ai_review": {
       "overall_score": 9,
       "decision": "PASS",
       "issues": [
-        "some sentences are a bit long"
+        "minor structure adjustment suggestions"
       ],
-      "verdict": "The article is well-structured, easy to understand, and explains technical terms in a friendly manner, making it suitable for publication.",
-      "_aiCost": 0.00099257,
+      "verdict": "The article effectively explains technical terms, is well-structured, and provides actionable tips for everyday people, making it a great fit for publication.",
+      "_aiCost": 0.0009896199999999999,
       "_provider": "groq",
       "_model": "llama-3.3-70b-versatile",
       "_attempts": 1
     },
     "pairing_checked": true,
-    "pairing_checked_at": "2026-06-25T19:05:53.687Z",
+    "pairing_checked_at": "2026-06-25T18:51:09.518Z",
     "guide_worthy": true,
     "related_guide_topic": "gemini-getting-started",
     "seo": {
-      "meta_description": "Discover how Google’s built-in AI can declutter your inbox, plan your week, and simplify daily tasks—no extra apps needed. Easy step-by-step guide inside.",
+      "meta_description": "Discover how Google's latest AI updates can help organise your busy week, from planning trips to cleaning your inbox with Gmail, Docs, and Search",
       "keywords": [
-        "how to use Google AI for organization",
-        "Google AI tools for daily life",
-        "AI in Gmail and Google Docs",
-        "organize with Google AI",
-        "smart AI features for productivity"
+        "Google AI features",
+        "organising busy week",
+        "Gmail updates",
+        "AI productivity tools"
       ],
       "seo_score": 8,
       "suggestions": [
-        "Add a short intro sentence with a question to hook readers (e.g., 'Tired of a messy inbox? Google’s AI can help.')",
-        "Include a quick list of tools covered (Gmail, Docs, Sheets) in the first paragraph for clarity.",
-        "Add a call-to-action like 'Try these steps today and reclaim your time!' to boost engagement."
+        "Add a step-by-step guide to implementing the new AI features",
+        "Include screenshots or images of the updated Google tools",
+        "Provide examples of how the AI assistant can be used in different scenarios"
       ],
-      "optimised_at": "2026-06-25T19:08:30.774Z"
+      "optimised_at": "2026-06-25T18:52:35.549Z"
     }
   },
-  "article_markdown": "---\ntitle: \"How to Use Google’s Built-In AI to Organise Your Daily Life\"\nsubtitle: \"Learn how the latest smart features in your favourite everyday apps can clear your inbox and plan your week.\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"google-gemini\", \"productivity\", \"getting-started\", \"life-admin\"]\n---\n\n# How to Use Google’s Built-In AI to Organise Your Daily Life\n\nImagine opening your laptop on a busy Monday morning, staring at a mountain of unread emails, and wishing someone could just summarise the chaos for you. With the latest updates to the online tools you already use every day, that helpful assistant is now sitting right inside your screen, ready to help you sort through the noise.\n\nInstead of copying and pasting text back and forth between different apps, you can now use built-in AI helpers directly inside Gmail, Google Docs, and Google Sheets. Here is how to get started with these tools to make your daily life and work feel a lot lighter.\n\n## Working smarter inside your inbox\n\nMost of us spend far too much time wading through long email threads trying to find a single piece of information. The latest update introduces a smart sidebar panel (the small sliding window on the right side of your screen where the AI helper lives) that can read and analyse your emails.\n\nTo use it, you simply open a long email thread and click the little sparkle icon in the top right corner. You can type a prompt (the text instruction you give to the AI) asking it to find specific details. \n\nFor example, you could ask: \n* *\"What time did Sarah say we should meet, and what did she ask me to bring?\"*\n* *\"Summarise this thread into three bullet points.\"*\n\nThe AI will scan the entire conversation and give you a neat, friendly summary in seconds, saving you from scrolling through weeks of replies.\n\n## Planning and creating in Google Docs\n\nWhen you are staring at a blank page trying to write a newsletter, a family budget, or a work proposal, getting started is often the hardest part. The built-in AI in Google Docs can now help you draft content based on files you already have stored in your Google Drive.\n\nThis works because the system is multimodal (meaning it is an AI that can understand and connect different types of information, like text, images, and spreadsheets, all at the same time). \n\nIf you are planning a family holiday, you can open a new Google Doc, click the AI helper, and ask it to look at a travel spreadsheet in your Drive to create a daily itinerary. It does the heavy lifting of reading your notes and organising them into a beautifully formatted document, leaving you with more time to actually look forward to your trip.\n\n## What this means for you\n\nIntegrating smart assistants directly into your daily apps makes technology feel less like a chore and more like a helpful partner.\n\n* **For your personal life**: Use the email summary tool to quickly find school permission slips, party details, or utility bills without endless searching. You can also use Docs to draft polite emails to landlords or plan weekly family meal schedules.\n* **For your business or work**: You can extract key action items from long client threads instantly. Instead of writing meeting minutes from scratch, let the AI read your rough notes and format them into a professional email ready to send to your team.\n* **If you're just getting started**: Don't feel pressured to use it for everything. Start small. The next time you get an email that is longer than three paragraphs, click the sparkle icon in Gmail and ask it to summarise the message for you.\n\n## Wrap-up\n\nHaving an AI assistant built directly into your daily workspace means you no longer need to be a technology expert to save time on your daily chores. By letting the helper summarise long threads and draft quick outlines, you can clear the digital clutter and focus on what really matters. Open your Gmail account today, look for that little sparkle icon in the top corner, and ask it to help you tackle your very next email.",
+  "article_markdown": "---\ntitle: \"How to Use Google's Latest AI Features to Organise Your Busy Week\"\nsubtitle: \"Discover how the newest updates to Gmail, Docs, and Search can help you plan trips, clean your inbox, and save hours of manual work.\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"google-gemini\", \"productivity\", \"organisation\", \"getting-started\"]\n---\n\n# How to Use Google's Latest AI Features to Organise Your Busy Week\n\nHave you ever stared at a messy inbox or a disorganised digital calendar and wished someone could just sort it all out for you? With the latest updates to Google’s built-in AI assistant, Gemini, that wish is becoming a practical reality for everyday tasks. \n\nThese updates are designed to fit right into the tools you already use, making it easier than ever to get a handle on your weekly schedule. Here is how you can make these new features work for you.\n\n## Making sense of the new tools\n\nInstead of forcing you to open a separate website or app, the latest updates bring AI directly into your existing Google Workspace. You can now access the assistant via a sidebar (a handy panel on the right side of your computer screen) whilst working in Gmail, Google Docs, or Google Sheets.\n\nThese updates rely on extensions (the digital bridges that allow the AI to safely access and read information across your different Google apps). This means the assistant can look at an email in your inbox, find a date mentioned in a Google Doc, and help you schedule it in your calendar without you having to copy and paste a single thing.\n\n## Smart ways to use these features today\n\nYou do not need to be a software developer to get real value out of these updates. Here are three simple ways to use them in your normal routine:\n\n*   **Tame your chaotic email threads:** When you are copied into a long email chain with family or colleagues, click the AI icon in Gmail and ask it to \"summarise this email thread\". It will instantly pull out the key points and list your action items (the specific tasks you actually need to do).\n*   **Plan trips directly in Search:** Google’s search page can now build complex, customised plans. If you type a prompt (the instruction you give to the AI) like, \"Plan a three-day weekend in Sydney focused on coastal walks and local cafes,\" the search engine will generate a complete itinerary with maps, dining suggestions, and travel times.\n*   **Draft documents from rough notes:** If you have a jumble of thoughts for a newsletter, a school project, or a club announcement, type them into Google Docs. You can then ask the sidebar assistant to \"rewrite this as a friendly, formal announcement\". \n\n## What this means for you\n\nThe way we interact with our computers is shifting from manual clicking to simple conversations. Here is how you can apply these updates to your own life:\n\n*   **In everyday life:** Use the new search features to plan weekend activities, organise family dinners, or compare local services without spending hours opening dozens of browser tabs.\n*   **For your business or work:** Minimise the time you spend on administrative chores. You can use the assistant to draft quick replies to client enquiries, summarise long meeting notes, or categorise customer feedback in Google Sheets.\n*   **If you're just getting started:** Open Gmail on your computer today. Look for the small, colourful star-shaped icon in the top-right corner. Click it, and type: *\"What are the key points of my most recent unread emails?\"* to see the helper in action.\n\n## Wrap-up\n\nAI is no longer just a futuristic concept; it is quietly becoming a helpful companion built directly into our favourite daily tools. By letting these new features handle the tedious tasks of sorting, summarising, and drafting, you can reclaim valuable time for the things that matter most. To take your first step today, open up a blank document in Google Docs and ask the assistant to help you write your weekly shopping list or to-do list.",
   "original_title": "The latest AI news we announced in May 2026"
 }

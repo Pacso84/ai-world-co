@@ -34,22 +34,20 @@
       "_attempts": 1
     },
     "seo": {
-      "meta_description": "Learn how to use Claude Artifacts to instantly create and preview documents, summaries, or simple apps right beside your chat—no coding needed. Step-by-step beginner guide.",
+      "meta_description": "Create documents, summaries, and simple apps with Claude Artifacts, no coding needed. Learn how to use Claude with this beginner-friendly guide",
       "keywords": [
-        "how to use Claude Artifacts",
-        "Claude Artifacts tutorial",
-        "create documents with AI",
-        "preview AI-generated work",
-        "AI tools for beginners",
-        "turn ideas into apps with AI"
+        "Claude Artifacts",
+        "AI document creation",
+        "generate summaries",
+        "create simple apps"
       ],
       "seo_score": 8,
       "suggestions": [
-        "Add a section on common use cases (e.g., resumes, reports) to target specific searches",
-        "Include a short video demo to improve engagement and dwell time",
-        "Optimize the URL to include 'claude-artifacts-guide' for better keyword alignment"
+        "Add a brief introduction to Claude Artifacts for readers unfamiliar with the tool",
+        "Include screenshots or examples of generated documents and apps to enhance user understanding",
+        "Provide additional tips for customizing and refining generated content"
       ],
-      "optimised_at": "2026-06-25T19:09:10.117Z"
+      "optimised_at": "2026-06-25T18:53:50.046Z"
     }
   },
   "article_markdown": "---\ntitle: \"How to use Claude Artifacts to create and preview your work\"\nsubtitle: \"A beginner‑friendly walk‑through for generating documents, summaries and simple apps that appear live beside your Claude chat\"\ncategory: \"guide\"\naudience: \"both\"\ncompany: \"Anthropic\"\ntool: \"Claude\"\nlevel: \"beginner\"\nread_time_minutes: 4\ntags: [\"getting-started\", \"claude\", \"artifacts\"]\n---\n\n# How to use Claude Artifacts to create and preview your work\n\n**Hook:** By the end of this guide you’ll be able to ask Claude to produce a document, a summary or even a tiny web‑app and see the result instantly beside the chat – no coding experience needed. This is for anyone who wants a quick, visual way to turn ideas into finished pieces.\n\n## Before you start\n- **An Anthropic account** – you need a login to access Claude.  \n- **A modern web browser** (Chrome, Edge, Firefox…) – the interface works best on a desktop or laptop.  \n- **A piece of text or an idea** you’d like to turn into a document, summary or simple app.\n\n## Step 1 — Open Claude and start a new chat\nLog in at [claude.ai] and click the button that looks like “+ New chat”. This opens a fresh conversation window where you can type your first prompt.  \n💬 **Example:** “Hi Claude, I’d like to draft a one‑page thank‑you letter for a neighbour who helped me move.”\n\n## Step 2 — Turn on the **Artifacts** pane\nIn the chat toolbar look for an icon that resembles a small paper stack or a rectangle with a “play” symbol – that’s the **Artifacts** button. Click it to reveal a side pane where Claude will display any document, image or code it creates.  \n💬 **Example:** After clicking, the pane appears on the right side of the screen, labelled “Artifacts”.\n\n## Step 3 — Write a clear **prompt**\nA **prompt** is simply the instruction you give Claude. Keep it short, specific and include the word “artifact” so Claude knows you want a visual output.  \n💬 **Example:**  \n```\nCreate a thank‑you letter artifact for my neighbour, Emma, who helped me move my sofa on Saturday. Use a friendly tone and keep it under 200 words.\n```\n\n## Step 4 — Let Claude generate the **artifact**\nClaude will process the prompt and, once it finishes, the finished letter will appear in the Artifacts pane. You can scroll, copy or download it directly from there.  \n💬 **Example:** The pane shows a nicely formatted document titled “Thank‑You Letter to Emma” with the text you asked for.\n\n## Step 5 — Use the **live preview** to see changes instantly\nIf you want to tweak the letter, simply add a follow‑up prompt like “Add a sentence thanking her for her coffee.” Claude updates the same artifact, and the preview refreshes in real time. The same workflow works for other artefacts – a summary of a news article or a tiny HTML app that calculates a tip.  \n💬 **Example:**  \n```\nNow make a separate artifact that summarises the key points of this article: https://example.com/article\n```\nClaude creates a second artifact, a concise bullet‑point summary, shown side‑by‑side with the original chat.\n\n## Common mistakes\n- **Forgetting to enable the Artifacts pane** – Claude will still give you text, but you won’t see the visual preview.  \n- **Using overly long prompts** – Claude’s **context window** (the amount of text it can remember at once) is limited; break complex requests into smaller steps.  \n- **Not saving or copying the artifact** – the pane shows a live view, but if you close the chat the work disappears unless you download it.\n\n## What this means for you\n- **In everyday life:** Quickly draft letters, grocery lists or simple travel itineraries and see them formatted instantly, saving you time on typing and layout.\n- **For your business or work:** Produce meeting minutes, product briefs or a basic calculator app without opening separate software – just ask Claude and export the artifact to share with colleagues.\n- **If you're just getting started:** The easiest first move is to ask Claude for a one‑page summary of a recent email you received; you’ll see the preview appear and learn the workflow in under five minutes.\n\n## Try it now\nOpen Claude, enable the Artifacts pane, and type:  \n```\nCreate a short thank‑you note artifact for a friend who baked me a cake. Keep it under 100 words.\n```  \nPress enter and watch the document appear beside the chat – you’ll have a finished piece in less time than it takes to brew a cup of tea.",

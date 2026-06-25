@@ -1,0 +1,76 @@
+{
+  "started_at": "2026-06-24T20:11:30.991Z",
+  "total": 9,
+  "passed": 9,
+  "failed": 0,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.01053316,
+  "by_article": [
+    {
+      "writer": "WRITER_GUIDE_alexa-routines.json",
+      "article": "ARTICLE_GUIDE_alexa-routines.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0013994799999999998
+    },
+    {
+      "writer": "WRITER_GUIDE_apple-writing-tools.json",
+      "article": "ARTICLE_GUIDE_apple-writing-tools.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.00136962
+    },
+    {
+      "writer": "WRITER_GUIDE_claude-artifacts.json",
+      "article": "ARTICLE_GUIDE_claude-artifacts.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0010796900000000001
+    },
+    {
+      "writer": "WRITER_GUIDE_claude-writing.json",
+      "article": "ARTICLE_GUIDE_claude-writing.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.00105968
+    },
+    {
+      "writer": "WRITER_GUIDE_copilot-office.json",
+      "article": "ARTICLE_GUIDE_copilot-office.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.00115957
+    },
+    {
+      "writer": "WRITER_GUIDE_copilot-windows.json",
+      "article": "ARTICLE_GUIDE_copilot-windows.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0010549199999999998
+    },
+    {
+      "writer": "WRITER_GUIDE_grok-on-x.json",
+      "article": "ARTICLE_GUIDE_grok-on-x.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.0011816099999999998
+    },
+    {
+      "writer": "WRITER_GUIDE_meta-ai-instagram.json",
+      "article": "ARTICLE_GUIDE_meta-ai-instagram.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.00106534
+    },
+    {
+      "writer": "WRITER_GUIDE_perplexity-spaces.json",
+      "article": "ARTICLE_GUIDE_perplexity-spaces.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.00116325
+    }
+  ],
+  "finished_at": "2026-06-24T20:12:22.812Z",
+  "duration_seconds": 51.821
+}

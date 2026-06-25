@@ -1,0 +1,27 @@
+{
+  "started_at": "2026-06-22T18:39:00.606Z",
+  "total": 2,
+  "passed": 2,
+  "failed": 0,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.00030937499999999997,
+  "by_article": [
+    {
+      "writer": "WRITER_GUIDE_chatgpt-voice.json",
+      "article": "ARTICLE_GUIDE_chatgpt-voice.json",
+      "decision": "PASS",
+      "score": 10,
+      "cost_usd": 0.00015015
+    },
+    {
+      "writer": "WRITER_GUIDE_claude-projects.json",
+      "article": "ARTICLE_GUIDE_claude-projects.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.000159225
+    }
+  ],
+  "finished_at": "2026-06-22T18:39:49.004Z",
+  "duration_seconds": 48.398
+}

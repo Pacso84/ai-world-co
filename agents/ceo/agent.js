@@ -59,6 +59,7 @@ function parseArgs() {
     skipReview: args.includes('--skip-review'),
     skipRework: args.includes('--skip-rework'),
     skipPairing: args.includes('--skip-pairing'),
+    skipGuides: args.includes('--skip-guides'),
     skipDesign: args.includes('--skip-design'),
     skipSeo: args.includes('--skip-seo'),
     skipPublish: args.includes('--skip-publish'),
@@ -167,18 +168,25 @@ function runAgent(agentPath, args = []) {
 // NAPI STATISZTIKA
 // ===================================================================
 
-function countTodayArticles() {
-  if (!existsSync(ARTICLES_DIR)) return 0;
-  const files = readdirSync(ARTICLES_DIR).filter(f => f.endsWith('.json'));
-  return files.filter(f => {
+// Ma publikált tartalom TÍPUS szerint bontva: hír (news) vs útmutató (guide).
+// A két sáv KÜLÖN napi keretet kap (lásd config.limits), hogy a hír-keret
+// betelése ne akadályozza az útmutató-írást.
+function countTodayByType() {
+  const out = { news: 0, guides: 0 };
+  if (!existsSync(ARTICLES_DIR)) return out;
+  for (const f of readdirSync(ARTICLES_DIR)) {
+    if (!f.endsWith('.json')) continue;
     try {
       const data = JSON.parse(readFileSync(join(ARTICLES_DIR, f), 'utf-8'));
-      const publishedDate = (data._meta?.published_at || '').slice(0, 10);
-      return publishedDate === TODAY;
-    } catch {
-      return false;
-    }
-  }).length;
+      if ((data._meta?.published_at || '').slice(0, 10) !== TODAY) continue;
+      if (data._meta?.type === 'guide') out.guides++; else out.news++;
+    } catch { /* ignore */ }
+  }
+  return out;
+}
+function countTodayArticles() {
+  const t = countTodayByType();
+  return t.news + t.guides;
 }
 
 function calculateTodayCost() {
@@ -209,8 +217,10 @@ function countDrafts() {
 // NAPI JELENTÉS
 // ===================================================================
 
+const GUIDES_MAX = LIMITS.daily_guides_max ?? 4;
 function generateReport() {
-  const todayArticles = countTodayArticles();
+  const byType = countTodayByType();
+  const todayArticles = byType.news + byType.guides;
   const todayCost = calculateTodayCost();
   const drafts = countDrafts();
   const rejectedToday = existsSync(REJECTED_DIR)
@@ -220,14 +230,20 @@ function generateReport() {
   return {
     date: TODAY,
     articles_published_today: todayArticles,
+    news_published_today: byType.news,
+    guides_published_today: byType.guides,
     drafts_awaiting_writer: drafts.scraper,
     drafts_awaiting_review: drafts.writer,
     rejected_today: rejectedToday,
     total_cost_today_usd: todayCost,
     daily_limit_articles: LIMITS.daily_articles_max,
+    daily_limit_guides: GUIDES_MAX,
     daily_limit_cost_usd: LIMITS.daily_api_cost_usd_max,
     cost_remaining_usd: Math.max(0, LIMITS.daily_api_cost_usd_max - todayCost),
-    articles_remaining: Math.max(0, LIMITS.daily_articles_max - todayArticles)
+    // HÍR-sáv szabad helyei (a hírírás ezt kapja limitként):
+    articles_remaining: Math.max(0, LIMITS.daily_articles_max - byType.news),
+    // ÚTMUTATÓ-sáv szabad helyei (az idle-fill ezt használja):
+    guides_remaining: Math.max(0, GUIDES_MAX - byType.guides)
   };
 }
 
@@ -237,7 +253,8 @@ function printReport(report) {
   console.log('╠══════════════════════════════════════════════════════════╣');
   console.log(`║  Dátum:                ${report.date}                            ║`);
   console.log('║                                                            ║');
-  console.log(`║  ✅ Publikálva ma:     ${String(report.articles_published_today).padEnd(3)} / ${LIMITS.daily_articles_max} cikk                       ║`);
+  console.log(`║  ✅ Hír publikálva ma: ${String(report.news_published_today).padEnd(3)} / ${LIMITS.daily_articles_max} cikk                       ║`);
+  console.log(`║  📘 Útmutató ma:       ${String(report.guides_published_today).padEnd(3)} / ${GUIDES_MAX} útmutató                   ║`);
   console.log(`║  ❌ Elutasítva ma:     ${String(report.rejected_today).padEnd(3)} cikk                                ║`);
   console.log(`║  💰 Költség ma:        $${report.total_cost_today_usd.toFixed(4)} / $${LIMITS.daily_api_cost_usd_max.toFixed(2)}                ║`);
   console.log('║                                                            ║');
@@ -250,15 +267,14 @@ function printReport(report) {
 // LIMIT ELLENŐRZÉS
 // ===================================================================
 
+// Sávonkénti kapuzás: a KÖLTSÉG kemény stop (valódi pénz), a darabszám-keretek
+// külön zárnak — a hír-keret betelése NEM állítja le az útmutató-írást.
 function checkLimits(report) {
-  const blockers = [];
-  if (report.articles_published_today >= LIMITS.daily_articles_max) {
-    blockers.push(`Napi cikk limit elérve: ${report.articles_published_today}/${LIMITS.daily_articles_max}`);
-  }
-  if (report.total_cost_today_usd >= LIMITS.daily_api_cost_usd_max) {
-    blockers.push(`Napi költség limit elérve: $${report.total_cost_today_usd.toFixed(4)}/$${LIMITS.daily_api_cost_usd_max}`);
-  }
-  return blockers;
+  return {
+    costBlocked: report.total_cost_today_usd >= LIMITS.daily_api_cost_usd_max,
+    newsBlocked: report.articles_remaining <= 0,     // hír-sáv betelt
+    guidesBlocked: report.guides_remaining <= 0      // útmutató-sáv betelt
+  };
 }
 
 // ===================================================================
@@ -302,17 +318,28 @@ async function main() {
     return;
   }
 
-  // 2. LIMIT ELLENŐRZÉS
-  const blockers = checkLimits(preReport);
-  if (blockers.length > 0) {
-    console.log('🚫 LIMIT ELÉRVE — pipeline NEM indul el:');
-    blockers.forEach(b => console.log(`   • ${b}`));
+  // 2. LIMIT ELLENŐRZÉS (sávonként). A KÖLTSÉG kemény stop; a darabszám-keretek
+  //    külön zárnak, hogy a hír-keret betelése ne akadályozza az útmutatókat.
+  const gate = checkLimits(preReport);
+  if (gate.costBlocked) {
+    console.log('🚫 KÖLTSÉG-LIMIT ELÉRVE — a teljes pipeline leáll (valódi pénz):');
+    console.log(`   • $${preReport.total_cost_today_usd.toFixed(4)} / $${LIMITS.daily_api_cost_usd_max}`);
     console.log('\n💡 Holnap újra próbálkozhatunk.');
     session.blocked = true;
-    session.blockers = blockers;
+    session.blockers = ['cost'];
     saveCeoLog(session);
     return;
   }
+  if (gate.newsBlocked && gate.guidesBlocked) {
+    console.log('🚫 Hír- ÉS útmutató-keret is betelt mára — nincs több teendő.');
+    console.log('\n💡 Holnap újra próbálkozhatunk.');
+    session.blocked = true;
+    session.blockers = ['news+guides'];
+    saveCeoLog(session);
+    return;
+  }
+  if (gate.newsBlocked) console.log('ℹ️  Hír-keret betelt — ma már CSAK útmutatókat írunk (idle-fill).');
+  if (gate.guidesBlocked) console.log('ℹ️  Útmutató-keret betelt — ma már csak hírekkel foglalkozunk.');
 
   // 3. DRY RUN ESETÉN
   if (args.dryRun) {
@@ -321,6 +348,8 @@ async function main() {
     if (!args.skipWrite) console.log('   2. Író agent futtatása');
     if (!args.skipReview) console.log('   3. Ellenőrző agent futtatása');
     if (!args.skipRework && !args.skipReview) console.log('   3b. Rework: bukott cikkek vissza az Íróhoz → újra-ellenőrzés (ha van)');
+    if (!args.skipPairing) console.log('   3g. Hír–útmutató párosítás → új útmutatók írása (ha van funkció-hír)');
+    if (!args.skipGuides) console.log('   3j. Idle-fill: maradék kapacitásból útmutatók (ha nincs hír / van token) — üres backlognál előbb ötletelés');
     if (!args.skipDesign) console.log('   4. Designer agent (fejlécképek)');
     if (!args.skipSeo) console.log('   5. SEO agent (meta-leírás, kulcsszavak)');
     if (!args.skipPublish) console.log('   6. Publikáló agent (weboldal build + deploy)');
@@ -330,24 +359,23 @@ async function main() {
 
   // 4. PIPELINE FUTTATÁS
 
-  // 4a. RSS Scraper
-  if (!args.skipScrape) {
+  // 4a. RSS Scraper (csak ha van szabad HÍR-keret — különben felesleges hírt gyűjteni)
+  if (!args.skipScrape && !gate.newsBlocked) {
     console.log('\n━━━ 1. LÉPÉS: RSS SCRAPER ━━━');
     const result = await runAgent('agents/rss-scraper/agent.js');
     session.stages.scraper = { exit_code: result.code };
   } else {
-    console.log('⏭️  RSS Scraper kihagyva (--skip-scrape)');
+    console.log(gate.newsBlocked ? '⏭️  RSS Scraper kihagyva (hír-keret betelt)' : '⏭️  RSS Scraper kihagyva (--skip-scrape)');
   }
 
-  // 4b. Író
-  if (!args.skipWrite) {
+  // 4b. Író (a HÍR-sáv szabad helyeit kapja limitként)
+  if (!args.skipWrite && !gate.newsBlocked) {
     console.log('\n━━━ 2. LÉPÉS: ÍRÓ AGENT ━━━');
-    // Limit átadása: maximum ennyi cikket írjon ma
-    const remaining = LIMITS.daily_articles_max - preReport.articles_published_today;
+    const remaining = preReport.articles_remaining;   // napi hír-limit − ma publikált hír
     const result = await runAgent('agents/iro/agent.js', ['--limit', String(remaining)]);
     session.stages.writer = { exit_code: result.code, limit_used: remaining };
   } else {
-    console.log('⏭️  Író kihagyva (--skip-write)');
+    console.log(gate.newsBlocked ? '⏭️  Író kihagyva (hír-keret betelt)' : '⏭️  Író kihagyva (--skip-write)');
   }
 
   // 4c. Ellenőrző
@@ -366,8 +394,8 @@ async function main() {
   if (!args.skipRework && !args.skipReview) {
     session.stages.rework = { article: null, guide_rounds: 0, escalated: 0 };
 
-    // --- CIKKEK (változatlan logika) ---
-    const reworkableArticles = countReworkable();
+    // --- CIKKEK: csak ha van szabad HÍR-keret (a javított cikk hírként publikál) ---
+    const reworkableArticles = gate.newsBlocked ? 0 : countReworkable();
     if (reworkableArticles > 0) {
       console.log(`\n━━━ 3b. LÉPÉS: REWORK (cikkek) — ${reworkableArticles} vissza az Íróhoz ━━━`);
       const fix = await runAgent('agents/iro/agent.js', ['--rework']);
@@ -409,16 +437,56 @@ async function main() {
     const pair = await runAgent('agents/pairing/agent.js');
     const newTopics = countTodoGuideTopics();
     session.stages.pairing = { exit_code: pair.code, new_topics: newTopics };
-    if (newTopics > 0) {
-      const writeN = Math.min(newTopics, 5);
-      console.log(`\n━━━ 3h. LÉPÉS: ÚTMUTATÓ-ÍRÁS (${writeN} új téma) ━━━`);
+    // A paired útmutatók is az ÚTMUTATÓ-keretből írnak (fresh budget)
+    const gbudget = generateReport().guides_remaining;
+    const writeN = Math.min(newTopics, gbudget);
+    if (newTopics > 0 && writeN > 0) {
+      console.log(`\n━━━ 3h. LÉPÉS: ÚTMUTATÓ-ÍRÁS (${writeN} új téma, keret: ${gbudget}) ━━━`);
       const gw = await runAgent('agents/guide/agent.js', ['--limit', String(writeN)]);
       console.log('\n━━━ 3i. LÉPÉS: ÚJ ÚTMUTATÓK ELLENŐRZÉSE ━━━');
       const gr = await runAgent('agents/ellenorzo/agent.js');
       session.stages.pairing.guide_write_exit = gw.code;
       session.stages.pairing.guide_review_exit = gr.code;
+    } else if (newTopics > 0) {
+      console.log(`   ⏭️  ${newTopics} új téma várólistán — útmutató-keret betelt, az idle-fill/holnap megírja.`);
     } else {
       console.log('   ✓ Nincs új útmutatható hír.');
+    }
+  }
+
+  // 3j. IDLE-FILL: az ÚTMUTATÓ-keret maradékát kihasználjuk.
+  //     A felhasználó kérése: "kellenének még útmutatók — ha nincs új hír
+  //     vagy maradt token, használja arra". Az útmutatóknak SAJÁT napi keretük
+  //     van (daily_guides_max), így a hír-keret betelése NEM akadályozza őket.
+  //     Ha üres a téma-backlog, előbb ÖTLETELÜNK (guide --ideas), hogy SOHA
+  //     ne fogyjon ki a téma.
+  if (!args.skipGuides && !gate.guidesBlocked) {
+    const now = generateReport();                       // FRISS útmutató-keret
+    const slots = now.guides_remaining;                 // napi útmutató-limit − ma írt útmutató
+    const budgetOk = now.cost_remaining_usd > 0.01;     // van-e még költségkeret
+    console.log(`\n━━━ 3j. LÉPÉS: IDLE-FILL (útmutatók a saját keretből) ━━━`);
+    console.log(`   Szabad útmutató-slot: ${slots} | költségkeret: $${now.cost_remaining_usd.toFixed(2)}`);
+
+    if (slots <= 0 || !budgetOk) {
+      console.log('   ⏭️  Nincs szabad útmutató-keret vagy költségkeret — kihagyva.');
+      session.stages.idle_fill = { slots, skipped: true };
+    } else {
+      // Ha üres a téma-backlog, az Útmutató-agent ÚJ témákat ötletel (slot + tartalék)
+      if (countTodoGuideTopics() === 0) {
+        console.log('   💡 Üres a téma-backlog — ötletelés (guide --ideas)…');
+        await runAgent('agents/guide/agent.js', ['--ideas', String(slots + 5)]);
+      }
+      const todo = countTodoGuideTopics();
+      const writeN = Math.min(slots, todo);
+      if (writeN > 0) {
+        console.log(`   ✍️  ${writeN} útmutató írása a maradék kapacitásból…`);
+        const gw = await runAgent('agents/guide/agent.js', ['--limit', String(writeN)]);
+        const gr = await runAgent('agents/ellenorzo/agent.js');
+        session.stages.idle_fill = { slots, wrote: writeN, write_exit: gw.code, review_exit: gr.code };
+      } else {
+        console.log('   💤 Nincs megírható téma (az ötletelő sem adott újat) — kihagyva.');
+        session.stages.idle_fill = { slots, wrote: 0 };
+      }
     }
   }
 
@@ -469,12 +537,15 @@ async function main() {
 
   printReport(postReport);
 
-  // Mit változott a futtatás közben?
-  const articlesNew = postReport.articles_published_today - preReport.articles_published_today;
+  // Mit változott a futtatás közben? (hír + útmutató külön)
+  const newsNew = postReport.news_published_today - preReport.news_published_today;
+  const guidesNew = postReport.guides_published_today - preReport.guides_published_today;
+  const articlesNew = newsNew + guidesNew;
   const costSpent = postReport.total_cost_today_usd - preReport.total_cost_today_usd;
 
   console.log(`📈 Ebben a futtatásban:`);
-  console.log(`   ✨ ${articlesNew} új cikk publikálva`);
+  console.log(`   📰 ${newsNew} új hír-cikk publikálva`);
+  console.log(`   📘 ${guidesNew} új útmutató publikálva`);
   console.log(`   💸 $${costSpent.toFixed(4)} elköltve`);
   console.log(`   ⏱️  ${session.duration_seconds.toFixed(1)}s teljes időtartam`);
 
@@ -488,8 +559,8 @@ async function main() {
     console.log('   "Üres nap jobb mint gyenge nap." (brand szabály)');
     notify('info', 'Pipeline lefutott — ma nem volt publikálható új tartalom.', { agent: 'ceo' });
   } else {
-    console.log(`\n🎉 ${articlesNew} új cikk élesben!`);
-    notify('success', `${articlesNew} új cikk publikálva (költség: $${costSpent.toFixed(4)}).`, { agent: 'ceo' });
+    console.log(`\n🎉 ${newsNew} hír + ${guidesNew} útmutató élesben!`);
+    notify('success', `${newsNew} hír + ${guidesNew} útmutató publikálva (költség: $${costSpent.toFixed(4)}).`, { agent: 'ceo' });
   }
 }
 

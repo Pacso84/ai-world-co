@@ -1,0 +1,41 @@
+{
+  "started_at": "2026-06-22T18:57:42.411Z",
+  "date": "2026-06-22",
+  "mode": "full-pipeline",
+  "stages": {
+    "reviewer": {
+      "exit_code": 0
+    },
+    "rework": {
+      "article": null,
+      "guide_rounds": 1,
+      "escalated": 0
+    }
+  },
+  "pre_report": {
+    "date": "2026-06-22",
+    "articles_published_today": 2,
+    "drafts_awaiting_writer": 66,
+    "drafts_awaiting_review": 10,
+    "rejected_today": 0,
+    "total_cost_today_usd": 0.011389050000000001,
+    "daily_limit_articles": 5,
+    "daily_limit_cost_usd": 3,
+    "cost_remaining_usd": 2.98861095,
+    "articles_remaining": 3
+  },
+  "post_report": {
+    "date": "2026-06-22",
+    "articles_published_today": 12,
+    "drafts_awaiting_writer": 66,
+    "drafts_awaiting_review": 0,
+    "rejected_today": 0,
+    "total_cost_today_usd": 0.018827125,
+    "daily_limit_articles": 5,
+    "daily_limit_cost_usd": 3,
+    "cost_remaining_usd": 2.981172875,
+    "articles_remaining": 0
+  },
+  "finished_at": "2026-06-22T19:01:33.623Z",
+  "duration_seconds": 231.212
+}

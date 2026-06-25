@@ -15,6 +15,8 @@
 //   node agents/guide/agent.js --id prompt-basics
 //   node agents/guide/agent.js --title "How to ..."
 //   node agents/guide/agent.js --limit 3       -- több téma egymás után
+//   node agents/guide/agent.js --ideas 8       -- NEM ír, csak ÚJ témákat ötletel
+//                                                 a guide-topics.json-ba (status: todo)
 //
 // FŐ ELV: EREDETI tartalom. A cégek doksiját csak ihletként — sosem másoljuk.
 // ===================================================================
@@ -45,12 +47,13 @@ const GUIDE_MAX_REWORK = 4;
 // ---- argumentumok ----
 function parseArgs() {
   const a = process.argv.slice(2);
-  const p = { id: null, title: null, limit: 1, rework: false };
+  const p = { id: null, title: null, limit: 1, rework: false, ideas: 0 };
   for (let i = 0; i < a.length; i++) {
     if (a[i] === '--id' && a[i + 1]) { p.id = a[++i]; }
     else if (a[i] === '--title' && a[i + 1]) { p.title = a[++i]; }
     else if (a[i] === '--limit' && a[i + 1]) { p.limit = parseInt(a[++i], 10) || 1; }
     else if (a[i] === '--rework') { p.rework = true; }
+    else if (a[i] === '--ideas') { p.ideas = parseInt(a[i + 1], 10) || 6; if (a[i + 1] && /^\d+$/.test(a[i + 1])) i++; }
   }
   return p;
 }
@@ -76,6 +79,122 @@ function pickTopics(store, args) {
   if (args.id) return store.topics.filter(t => t.id === args.id);
   if (args.title) return store.topics.filter(t => t.title === args.title);
   return store.topics.filter(t => t.status !== 'done').slice(0, args.limit);
+}
+
+// ===================================================================
+// ÖTLETELŐ MÓD (--ideas N) — ÚJ, IDŐTÁLLÓ útmutató-témákat javasol
+// ===================================================================
+// Ha kifogyott a backlog (minden téma 'done'), a CEO idle-fill fázisa
+// ezt hívja, hogy legyen MIT írni a maradék kapacitásból. NEM ír cikket,
+// csak új 'todo' témákat fűz a guide-topics.json-hoz — duplikátum-szűréssel.
+// ===================================================================
+
+const IDEAS_SYSTEM_PROMPT = `You are the editorial planner for AI World Co., a site that teaches everyday people how to use AI in daily life (primary audience: Australia, but written for anyone).
+
+Propose NEW, EVERGREEN, beginner-friendly guide topics — practical "how to…" tutorials people genuinely search for. Mix GENERAL topics (not tied to one company) with COMPANY/TOOL-specific ones (ChatGPT, Gemini, Claude, Copilot, Midjourney, etc.). Favour useful, timeless skills over news.
+
+Return ONLY a JSON array, no prose, in this exact shape:
+[
+  {
+    "title": "Clear how-to title (60-90 chars), plain English",
+    "company": "OpenAI",          // company name, or "" if general
+    "tool": "ChatGPT",            // tool name, or "" if general
+    "audience": "personal" | "business" | "both",
+    "level": "beginner" | "intermediate",
+    "angle": "One sentence: the specific, practical focus / the single most useful takeaway.",
+    "icon": "✍️"                  // one relevant emoji
+  }
+]`;
+
+// Laza, CSONKOLÁS-TŰRŐ JSON-kinyerés: kódkeret le, az első [-tól indul, és ha
+// a tömb a token-limit miatt félbeszakadt, az utolsó teljes }-ig vágva zárjuk.
+function extractJsonArray(text) {
+  let t = (text || '').trim().replace(/^```(?:json)?/i, '').replace(/```$/i, '').trim();
+  const s = t.indexOf('[');
+  if (s === -1) return [];
+  t = t.slice(s);
+  const e = t.lastIndexOf(']');
+  if (e > 0) { try { const v = JSON.parse(t.slice(0, e + 1)); if (Array.isArray(v)) return v; } catch { /* megpróbáljuk menteni */ } }
+  // Mentés csonkolt válaszból: az utolsó teljes objektumig + tömbzárás
+  const lastBrace = t.lastIndexOf('}');
+  if (lastBrace > 0) { try { const v = JSON.parse(t.slice(0, lastBrace + 1) + ']'); if (Array.isArray(v)) return v; } catch { /* feladjuk */ } }
+  return [];
+}
+
+// Cím-normalizálás a duplikátum-szűréshez (kisbetű, csak betű/szám)
+function normTitle(s) {
+  return (s || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+}
+
+// Egyedi id biztosítása (a slug ütközne meglévővel? → -2, -3 …)
+function uniqueId(base, used) {
+  let id = base || 'guide', n = 2;
+  while (used.has(id)) id = `${base}-${n++}`;
+  used.add(id);
+  return id;
+}
+
+async function proposeNewTopics(count, store, brandContext) {
+  const existingTitles = new Set(store.topics.map(t => normTitle(t.title)));
+  const usedIds = new Set(store.topics.map(t => t.id).filter(Boolean));
+  // A meglévő címek egy részét megmutatjuk, hogy NE ismételje őket
+  const sample = store.topics.slice(-25).map(t => `- ${t.title}`).join('\n');
+
+  const userPrompt = `Propose ${count + 4} brand-new beginner guide topics for AI World Co.
+
+DO NOT repeat or lightly reword any of these EXISTING topics:
+${sample}
+
+Pick fresh, genuinely useful angles people want (e.g. everyday tasks, study, small business, parents, job hunting, accessibility, safety/privacy, comparing tools, free vs paid, mobile apps, voice, images, spreadsheets, email). Aim for a healthy mix of general and company-specific.
+
+BRAND CONTEXT:
+${brandContext}
+
+Return ONLY the JSON array (${count + 4} items).`;
+
+  const res = await ask(userPrompt, { agentName: AGENT_NAME, systemPrompt: IDEAS_SYSTEM_PROMPT, maxTokens: 4000 });
+  if (!res) return { added: 0, cost: 0 };
+
+  const raw = extractJsonArray(res.text);
+  let added = 0;
+  for (const it of raw) {
+    const title = (it.title || '').toString().trim();
+    if (!title || title.length < 12) continue;
+    if (existingTitles.has(normTitle(title))) continue;     // már van ilyen
+    existingTitles.add(normTitle(title));                    // a mostani batch-en belül se duplázzon
+    const id = uniqueId(slugify(title), usedIds);
+    store.topics.push({
+      id,
+      company: (it.company || '').toString().trim(),
+      tool: (it.tool || '').toString().trim(),
+      title,
+      audience: ['personal', 'business', 'both'].includes(it.audience) ? it.audience : 'both',
+      level: it.level === 'intermediate' ? 'intermediate' : 'beginner',
+      angle: (it.angle || '').toString().trim(),
+      status: 'todo',
+      icon: (it.icon || '💡').toString().trim(),
+      proposed_at: new Date().toISOString(),
+      proposed_by: 'guide-ideas'
+    });
+    added++;
+    if (added >= count) break;
+  }
+  return { added, cost: res.costUsd || 0 };
+}
+
+async function runIdeasMode(count, brandContext) {
+  console.log(`💡 ÖTLETELŐ MÓD — ${count} új útmutató-téma javaslása`);
+  console.log('─'.repeat(60));
+  const store = loadTopics();
+  const before = store.topics.length;
+  const { added, cost } = await proposeNewTopics(count, store, brandContext);
+  if (added > 0) {
+    saveTopics(store);
+    console.log(`   ✅ ${added} új téma a backlogba (összesen ${store.topics.length}) | költség $${cost.toFixed(4)}`);
+    store.topics.slice(before).forEach(t => console.log(`      • ${t.title}${t.company ? ` [${t.company}]` : ''}`));
+  } else {
+    console.log('   💤 Nem született új, nem-duplikátum téma (próbáld újra később).');
+  }
 }
 
 async function loadLessons() {
@@ -377,6 +496,12 @@ async function main() {
     console.log('📘 ÚTMUTATÓ AGENT — REWORK');
     console.log('─'.repeat(60));
     await runGuideReworkMode(loadBrandContext());
+    return;
+  }
+
+  // ÖTLETELŐ MÓD: ÚJ témákat fűzünk a backloghoz (nem írunk cikket)
+  if (args.ideas > 0) {
+    await runIdeasMode(args.ideas, loadBrandContext());
     return;
   }
 
