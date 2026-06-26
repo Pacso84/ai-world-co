@@ -303,6 +303,118 @@
       "agent": "ellenorzo",
       "created": "2026-06-25T19:42:13.703Z",
       "updated": "2026-06-25T19:42:38.617Z"
+    },
+    {
+      "id": "t178243993355997",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-06-26T02:12:13.559Z",
+      "updated": "2026-06-26T02:17:02.843Z"
+    },
+    {
+      "id": "t17824402228443",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-06-26T02:17:02.844Z",
+      "updated": "2026-06-26T02:18:20.446Z"
+    },
+    {
+      "id": "t178244030044777",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-06-26T02:18:20.447Z",
+      "updated": "2026-06-26T02:18:46.974Z"
+    },
+    {
+      "id": "t178244032697674",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-06-26T02:18:46.976Z",
+      "updated": "2026-06-26T02:19:16.344Z"
+    },
+    {
+      "id": "t178244035634994",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-06-26T02:19:16.349Z",
+      "updated": "2026-06-26T02:19:46.366Z"
+    },
+    {
+      "id": "t178244038636768",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-06-26T02:19:46.367Z",
+      "updated": "2026-06-26T02:19:52.712Z"
+    },
+    {
+      "id": "t178244039271564",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-06-26T02:19:52.715Z",
+      "updated": "2026-06-26T02:19:52.875Z"
+    },
+    {
+      "id": "t178244039287697",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-06-26T02:19:52.876Z",
+      "updated": "2026-06-26T02:20:12.296Z"
+    },
+    {
+      "id": "t178244041229777",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-06-26T02:20:12.297Z",
+      "updated": "2026-06-26T02:20:30.273Z"
+    },
+    {
+      "id": "t178244043027342",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-06-26T02:20:30.273Z",
+      "updated": "2026-06-26T02:20:32.064Z"
+    },
+    {
+      "id": "t178244043206428",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-06-26T02:20:32.064Z",
+      "updated": "2026-06-26T02:20:53.977Z"
+    },
+    {
+      "id": "t17824404539780",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-06-26T02:20:53.978Z",
+      "updated": "2026-06-26T02:21:21.177Z"
+    },
+    {
+      "id": "t178244048117840",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-06-26T02:21:21.178Z",
+      "updated": "2026-06-26T02:21:22.694Z"
+    },
+    {
+      "id": "t178244048269581",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-06-26T02:21:22.695Z",
+      "updated": "2026-06-26T02:21:24.088Z"
     }
   ],
   "notifications": [
@@ -496,6 +608,30 @@
       "text": "0 hír + 4 útmutató publikálva (költség: $0.0044).",
       "agent": "ceo",
       "at": "2026-06-25T19:42:38.697Z",
+      "loud": false
+    },
+    {
+      "id": "n178244048117270",
+      "level": "info",
+      "text": "SEO: 17 cikk optimalizálva (átlag 8.1/10).",
+      "agent": "seo",
+      "at": "2026-06-26T02:21:21.172Z",
+      "loud": false
+    },
+    {
+      "id": "n178244048374999",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The lineup is coherent, tech-focused but beginner-friendly, and ready to publish. Ensure all articles use plain language, internal links are correct, and cover images are polished. One gentle intro no",
+      "agent": "publisher",
+      "at": "2026-06-26T02:21:23.749Z",
+      "loud": false
+    },
+    {
+      "id": "n178244048409320",
+      "level": "success",
+      "text": "5 hír + 4 útmutató publikálva (költség: $0.0220).",
+      "agent": "ceo",
+      "at": "2026-06-26T02:21:24.093Z",
       "loud": false
     }
   ],
@@ -783,6 +919,33 @@
       "text": "Rendbe raktam a csempéket: 12 cég → 6/4/3 oszlop, egyenletes sorok. egyensúly és kiegyensúlyozott elrendezés",
       "ref": "guides.html",
       "at": "2026-06-25T18:54:27.726Z"
+    },
+    {
+      "id": "m178244034301345",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "info",
+      "text": "A \"Dreaming: Better memory for a more helpful ChatGPT\" hír a meglévő útmutatóra mutat: chatgpt-memory",
+      "ref": "chatgpt-memory",
+      "at": "2026-06-26T02:19:03.013Z"
+    },
+    {
+      "id": "m178244034973024",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "info",
+      "text": "A \"The latest AI news we announced in May 2026\" hír a meglévő útmutatóra mutat: gemini-getting-started",
+      "ref": "gemini-getting-started",
+      "at": "2026-06-26T02:19:09.730Z"
+    },
+    {
+      "id": "m178244048264949",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Rendbe raktam a csempéket: 16 cég → 4/4/2 oszlop, egyenletes sorok. 16 brandtile osztható 8/4/2, a guidek 25-ös oszlopai 5/5/5-re egyszerűsödnek, mindkét esetben tökéletes szimmetria",
+      "ref": "guides.html",
+      "at": "2026-06-26T02:21:22.649Z"
     }
   ]
 }
