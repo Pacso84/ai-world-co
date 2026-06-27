@@ -1,0 +1,57 @@
+{
+  "_meta": {
+    "type": "guide",
+    "guide_topic_id": "how-to-use-project-genie-with-street-view",
+    "company": "Google",
+    "tool": "Project Genie",
+    "icon": "🆕",
+    "level": "beginner",
+    "source_news": {
+      "file": "ARTICLE_2026-06-07T20-02-45-881Z_google-deepmind_Simulate_real-world_places_with_Project_Genie_and_.json",
+      "title": "Simulate real-world places with Project Genie and Street View"
+    },
+    "written_at": "2026-06-27T02:17:23.541Z",
+    "writer_provider": "google",
+    "writer_model": "gemini-flash-latest",
+    "writer_cost_usd": 0.001262175,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-06-27T02:17:24.423Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 887
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "The article is well-structured, clearly explains technical terms, and provides a friendly and explanatory tone, making it suitable for everyday people to learn about using Project Genie with Street View.",
+      "_aiCost": 0.00114854,
+      "_provider": "groq",
+      "_model": "llama-3.3-70b-versatile",
+      "_attempts": 1
+    },
+    "seo": {
+      "meta_description": "Learn how to turn Street View images into playable virtual worlds with Google's Project Genie, a generative AI model, and create your own interactive environments",
+      "keywords": [
+        "Project Genie",
+        "Street View",
+        "generative AI",
+        "virtual worlds",
+        "Google AI"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more examples of use cases for Project Genie",
+        "Include step-by-step screenshots of the process",
+        "Provide additional resources for learning about generative AI"
+      ],
+      "optimised_at": "2026-06-27T02:18:59.815Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"How to Use Project Genie with Street View\"\nsubtitle: \"Turn everyday street photos into your own playable virtual worlds with Google's clever experimental AI.\"\ncategory: \"guide\"\naudience: \"personal\"\ncompany: \"Google\"\ntool: \"Project Genie\"\nlevel: \"beginner\"\nread_time_minutes: 4\ntags: [\"getting-started\", \"generative-ai\", \"google-labs\"]\n---\n\n# How to Use Project Genie with Street View\n\n**Imagine taking a quick snapshot of your local café, your childhood street, or a famous holiday spot, and instantly turning it into a video game level you can run and jump through. This guide will show you how to use Google's Project Genie to transform flat Street View images into interactive, playable virtual worlds.**\n\nProject Genie is a *generative AI* model (a type of artificial intelligence that can create new things, like images or interactive environments, rather than just analysing them). Think of it as a digital stage designer. It takes a single 2D image and guesses where the solid ground is, where the obstacles are, and how a virtual character should move through the space. \n\nBest of all, you do not need to know a single line of code to make this happen. Here is how to get started.\n\n---\n\n## Before you start\n- **Get a Google Account:** You will need a standard Google login to access Google’s experimental platforms.\n- **Find a Street View image:** Open Google Maps on your phone or computer, search for a cool street, and take a clear screenshot of the scene.\n\n---\n\n## Step 1 — Capture a clean street scene\nThe AI works best when it has clear visual cues to work with. Look for a Street View scene that looks like a classic side-scroller game. \n\nLook for a perspective that is slightly from the side, showing a clear pathway, sidewalk, or road. Avoid images that are extremely blurry, taken in heavy rain, or packed with hundreds of crowded moving cars. \n\n💬 **Example:** Search for \"Great Ocean Road, Victoria\" on Google Maps, enter Street View, and take a screenshot of a section where the road meets the cliffs. \n\n---\n\n## Step 2 — Upload your image to the workspace\nOpen the Project Genie experimental page (usually found within Google’s AI Test Kitchen or Labs portals). \n\n1. Look for the main dashboard interface. You will see an option that looks like **Upload Image** or a drag-and-drop box.\n2. Select your saved Street View screenshot and upload it.\n3. The AI will take a few moments to process. During this time, it is analysing the shapes, lines, and depth in your photo to understand where a character can physically walk.\n\n---\n\n## Step 3 — Let the AI map the \"physics\"\nOnce the image is loaded, Project Genie will automatically try to map out the \"interactive layers\". \n\nIn simple terms, this means the AI decides which parts of the photo are solid objects (like the road, a brick wall, or a bench) and which parts are just background (like the sky or distant trees). \n\nYou can use the simple mouse brush tools on the screen to paint over any areas you want to make extra bouncy, solid, or slippery. \n\n💬 **Example:** Use the brush tool to colour over a park bench in your photo to tell the AI, \"My character can jump on top of this bench!\"\n\n---\n\n## Step 4 — Press play and explore\nNow comes the magic. Click the **Generate** or **Play** button on the screen. \n\nThe AI will generate a little character at the starting edge of your photo. You can now use your keyboard's arrow keys or an on-screen controller to move left, right, and jump. \n\nAs you move, the AI will dynamically imagine what lies just off the edges of your original photo, creating an endless, seamless world based on the style of your Street View snapshot.\n\n---\n\n## Common mistakes\n\n- **Using top-down photos:** If you take a screenshot looking straight down at the ground from a bird's-eye view, the AI will struggle to understand where the \"ground\" is. Stick to eye-level street perspectives.\n- **Expecting Hollywood graphics:** Remember, Project Genie is designed to create charming, retro-style interactive environments. It converts your photo into a stylised playground, so do not worry if some details look a bit blocky or dreamlike.\n- **Too much clutter:** If your photo has too many overlapping power lines, crowds of people, and signs, the AI character might get stuck. Start with simple, open streets first.\n\n---\n\n## What this means for you\n\n- **In everyday life:** You can bring your travel memories to life. Turn a street photo from your favourite holiday in Tokyo or Rome into a mini-game to share with friends and family.\n- **For your business or work:** If you work in design, architecture, or event planning, you can use this to quickly show clients a playful, interactive way to \"walk through\" a concept of a local street front.\n- **If you're just getting started:** It is the easiest, most playful introduction to how modern AI can understand depth and space. You do not need any technical game-design skills to enjoy it.\n\n---\n\n## Try it now\nTake a screenshot of your own driveway or front street right now. Head over to your Google Labs dashboard, upload the image, and spend two minutes jumping over your own mailbox in a virtual world!",
+  "original_title": "How to Use Project Genie with Street View"
+}

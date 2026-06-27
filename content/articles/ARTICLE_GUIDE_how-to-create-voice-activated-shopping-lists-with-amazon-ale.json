@@ -1,0 +1,56 @@
+{
+  "_meta": {
+    "type": "guide",
+    "guide_topic_id": "how-to-create-voice-activated-shopping-lists-with-amazon-ale",
+    "company": "Amazon",
+    "tool": "Alexa",
+    "icon": "🛒",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-06-27T02:17:29.445Z",
+    "writer_provider": "cerebras",
+    "writer_model": "gpt-oss-120b",
+    "writer_cost_usd": 0,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-06-27T02:18:38.400Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 856
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "decision": "PASS",
+      "issues": [
+        "none"
+      ],
+      "verdict": "The article is well-structured, easy to understand, and provides a clear, step-by-step guide on how to create voice-activated shopping lists with Amazon Alexa and AI, making it suitable for publication.",
+      "_aiCost": 0.00117039,
+      "_provider": "groq",
+      "_model": "llama-3.3-70b-versatile",
+      "_attempts": 1
+    },
+    "seo": {
+      "meta_description": "Create a voice-activated shopping list with Amazon Alexa and AI. Learn to add groceries, get meal ideas, and sync across devices in easy steps.",
+      "keywords": [
+        "voice-activated shopping list",
+        "Amazon Alexa",
+        "AI for meal planning",
+        "Alexa-enabled devices",
+        "smart home shopping lists"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add subheadings for better structure and readability",
+        "Include a brief summary or conclusion at the end of the article",
+        "Optimize images with alt tags containing target keywords"
+      ],
+      "optimised_at": "2026-06-27T02:18:59.131Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"How to build voice‑activated shopping lists with Amazon Alexa and AI\"\nsubtitle: \"Learn to ask Alexa to add items, get meal ideas, and keep your list synced across all your devices – all in a few easy steps.\"\ncategory: \"guide\"\naudience: \"both\"\ncompany: \"Amazon\"\ntool: \"Alexa\"\nlevel: \"beginner\"\nread_time_minutes: 4\ntags: [\"getting-started\", \"alexa\"]\n---\n\n# How to build voice‑activated shopping lists with Amazon Alexa and AI\n\n**Hook:** By the end of this guide you’ll be able to tell Alexa to add groceries, ask for meal suggestions, and see the same list on your phone, tablet, or Echo device. It’s perfect for anyone who wants to free up a few minutes of hand‑free time.\n\n## Before you start\n- You have an Amazon account (the same login you use for shopping on Amazon.com.au).  \n- You own an Alexa‑enabled device – a smart speaker such as Echo, a Fire TV, or the Alexa app on your smartphone.  \n- You have internet access so the device can talk to Amazon’s cloud.\n\n## Step 1 — Set up an Alexa‑enabled device\nTurn on your Echo or open the Alexa app on your phone. The device is the hardware that listens for your voice, just like a radio that can also talk back.  \n💬 Example: On a phone, tap **Open** > **Alexa** > **Set up device**, then follow the on‑screen prompts to connect to your Wi‑Fi.\n\n## Step 2 — Sign in to your Amazon account\nWhen the app asks you to **sign in**, enter the same email and password you use for Amazon shopping. This links your voice commands to your personal shopping list stored in the cloud (a remote computer that keeps your data safe and up‑to‑date).  \n💬 Example: The sign‑in screen will show a field labelled **Amazon email** – type in `yourname@example.com`.\n\n## Step 3 — Find the Shopping List feature\nIn the Alexa app, tap the **More** menu (three horizontal lines) and choose **Lists & Notes**. You’ll see a default list called **Shopping List** – this is where Alexa will store any items you speak. If you don’t see it, tap **+ Create List** and name it “Shopping List”.  \n💬 Example: After tapping **Lists & Notes**, you should see a screen with “Shopping List” at the top. Tap it to open the list.\n\n## Step 4 — Tell Alexa to add items\nNow you can speak naturally. Say “Alexa, add **bread** to my shopping list.” Alexa will confirm, “I’ve added bread.” The word **shopping list** tells Alexa which list you mean; without it she might add the item to a different list.  \n💬 Example:  \n> **You:** “Alexa, add two kilos of apples to my shopping list.”  \n> **Alexa:** “I’ve added two kilos of apples.”\n\n## Step 5 — Ask for meal ideas and let AI suggest ingredients\nAlexa’s AI can suggest meals based on what you already have. Try “Alexa, what can I make with chicken and rice?” Alexa will reply with a simple recipe and automatically add any missing ingredients to your shopping list. This saves you the step of looking up a recipe yourself.  \n💬 Example:  \n> **You:** “Alexa, suggest a quick dinner with tomatoes.”  \n> **Alexa:** “How about a tomato pasta? I’ll add pasta and basil to your shopping list.”\n\n## Step 6 — Keep the list synced across all your devices\nWhenever you add or remove an item, the change appears instantly on every device linked to the same Amazon account. Open the Alexa app on your tablet, ask your Echo, or even log into the Amazon website to see the updated list. This is called **cloud sync** – think of it as a shared notebook that everyone can write in at the same time.  \n💬 Example: After saying “Alexa, add cheese,” open the Alexa app on your phone and you’ll see **cheese** appear at the bottom of the list.\n\n## Common mistakes\n- **Skipping the word “shopping”** – Alexa might add the item to a different list (like a To‑Do list).  \n- **Using a nickname for the list** – Alexa only recognises the exact name you created, so say “Shopping List” unless you renamed it.  \n- **Forgetting to refresh the app** – If you don’t see the new item, pull down on the list screen to refresh; the cloud sync may need a moment.\n\n## What this means for you\n- **In everyday life:** You can keep your groceries organised while you’re cooking, driving, or on a walk – no need to scribble notes.  \n- **For your business or work:** If you run a small office pantry, ask Alexa to restock items and have the list appear on a shared tablet, saving time on manual inventory.  \n- **If you’re just getting started:** The easiest first move is to ask Alexa to add a single item, like “milk,” and watch it appear on your phone instantly.\n\n## Try it now\nOpen the Alexa app, tap **Lists & Notes**, then say out loud: “Alexa, add bananas to my shopping list.” In the next two minutes you’ll see the word **bananas** appear on your phone – proof that your voice‑activated list is working!",
+  "original_title": "How to create voice‑activated shopping lists with Amazon Alexa and AI"
+}
