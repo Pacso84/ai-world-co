@@ -4,7 +4,7 @@
     "version": "3.2",
     "last_updated": "2026-06-21",
     "strategy": "CSAK HIVATALOS cég-források, MINDEN nagy LLM-cég lefedve a hitelességért: OpenAI, Google (DeepMind/AI/Research/Workspace), Anthropic, Microsoft, Meta, Mistral, Alibaba (Qwen), Apple, NVIDIA, Hugging Face, AWS, GitHub. Akiknek NINCS nyilvános RSS-ük (Anthropic, Perplexity, xAI, DeepSeek, Cohere) -> felvéve de kikapcsolva, hírhez X/HTML integráció kell (future). SEMMI hírmagazin/aggregátor. Minden feed tesztelve (működik-e).",
-    "max_items_per_feed": 5,
+    "max_items_per_feed": 10,
     "priority_legend": {
       "1": "Magas - hivatalos cég blogok",
       "2": "Közepes - közösség/social trend",

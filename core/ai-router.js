@@ -29,6 +29,8 @@ import Anthropic from '@anthropic-ai/sdk';
 import { GoogleGenAI } from '@google/genai';
 import Groq from 'groq-sdk';
 
+import { recordSpend, meteredBlocked, isMetered } from './budget.js';
+
 // ===================================================================
 // KONFIG BETÖLTÉS
 // ===================================================================
@@ -436,6 +438,7 @@ export async function ask(prompt, options = {}) {
   const seen = new Set();
   const attempts = raw.filter(a => { const k = a.provider + '|' + a.model; if (seen.has(k)) return false; seen.add(k); return true; });
 
+  let budgetNotice = false;   // hogy a költségőr üzenetét csak egyszer írjuk ki
   for (const attempt of attempts) {
     const { provider, model } = attempt;
     const caller = providerCallers[provider];
@@ -447,6 +450,17 @@ export async function ask(prompt, options = {}) {
     // Kvóta kimerült ma? -> kihagyjuk, megyünk a következő modellre
     if (isExhausted(model)) {
       continue;
+    }
+
+    // KÖLTSÉGŐR: ha a FIZETŐS (metered) keret betelt, a metered providereket
+    // kihagyjuk és a FREE kulcsokra váltunk (a felhasználó kérése: figyelje a
+    // keretet és váltson időben). A free providerek mindig mehetnek.
+    if (isMetered(provider)) {
+      const mb = meteredBlocked();
+      if (mb.blocked) {
+        if (!budgetNotice) { console.log(`   💰 Költségőr: ${mb.reason} — metered kulcsok kihagyva.`); budgetNotice = true; }
+        continue;
+      }
     }
 
     // Átmeneti hibákra ugyanazt a modellt újrapróbáljuk (backoff-fal)
@@ -461,9 +475,10 @@ export async function ask(prompt, options = {}) {
           break; // Tartalom-szabály blokk -> fallback (nem retry)
         }
 
-        // Költség számítás + log
+        // Költség számítás + log + költségkeret-rögzítés (csak a fizetős fogy)
         const cost = calculateCost(model, response.usage);
         logCall(agentName, provider, model, response.usage, cost, true);
+        if (isMetered(provider)) recordSpend(provider, cost);
 
         return { text: response.text, provider, model, costUsd: cost };
 

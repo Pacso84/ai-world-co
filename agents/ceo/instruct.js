@@ -21,6 +21,7 @@ import { dirname, join } from 'path';
 import { spawn } from 'child_process';
 import { ask } from '../../core/ai-router.js';
 import { sendMessage } from '../../core/telegram.js';
+import { budgetStatus } from '../../core/budget.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..', '..');
@@ -58,6 +59,7 @@ Intents:
 - "write_guide": write a step-by-step GUIDE. params: topic (string, the guide subject), company (string or ""), tool (string or ""), audience ("personal"|"business"|"both").
 - "run_pipeline": run the full pipeline now (find news + write + publish). no params.
 - "status": report what's going on (counts, last run). no params.
+- "budget": the owner asks about spending / tokens / API budget / how much is left. no params.
 - "help": the owner asks what they can do, or is just greeting. no params.
 - "other": anything else (config/design/code changes) — NOT yet supported in this phase. params: note (short restatement).
 
@@ -66,6 +68,7 @@ Examples:
 "csinálj egy ChatGPT kezdő útmutatót" -> {"intent":"write_guide","topic":"ChatGPT for beginners","company":"OpenAI","tool":"ChatGPT","audience":"both"}
 "fuss most" -> {"intent":"run_pipeline"}
 "mi a helyzet?" -> {"intent":"status"}
+"mennyit költöttünk? / mennyi a keret?" -> {"intent":"budget"}
 "szia" -> {"intent":"help"}
 "írd át a főoldal színeit kékre" -> {"intent":"other","note":"change homepage colors to blue"}
 
@@ -160,7 +163,21 @@ function handleStatus() {
       } catch {}
     }
   }
-  return `📊 *AI World Co. — állapot*\n• Hírek: ${news}\n• Útmutatók: ${guides}\n• Ma publikálva: ${today}\n• Élő oldal: ${SITE_URL}\n\nA felhő naponta többször magától dolgozik. Írj parancsot, és intézem! 👔`;
+  const b = budgetStatus();
+  return `📊 *AI World Co. — állapot*\n• Hírek: ${news}\n• Útmutatók: ${guides}\n• Ma publikálva: ${today}\n• 💰 Fizetős költés ma: $${b.today.toFixed(2)} / $${b.todayCap} · hónap: $${b.month.toFixed(2)} / $${b.monthHardCap}\n• Élő oldal: ${SITE_URL}\n\nA felhő naponta többször magától dolgozik. Írj parancsot, és intézem! 👔`;
+}
+
+function handleBudget() {
+  const b = budgetStatus();
+  const provs = Object.entries(b.byProviderToday);
+  const provLine = provs.length ? provs.map(([p, v]) => `   - ${p}: $${Number(v).toFixed(3)}`).join('\n') : '   - (ma még semmi fizetős)';
+  const sw = b.meteredBlocked.blocked
+    ? `⚠️ Most a *free* kulcsokon megyünk (${b.meteredBlocked.reason}).`
+    : `✅ A fizetős kulcs még megy, van keret.`;
+  return `💰 *Költségkeret*\n` +
+    `• Ma: $${b.today.toFixed(3)} / $${b.todayCap} (fizetős napi keret)\n` +
+    `• Hónap: $${b.month.toFixed(2)} (cél $${b.monthTarget}, hard stop $${b.monthHardCap})\n` +
+    `• Ma providerenként:\n${provLine}\n\n${sw}\n\n_Ha eléri a napi keretet, automatikusan a free kulcsokra (Cerebras/Groq/Mistral) váltok — nem fizetünk feleslegesen._`;
 }
 
 function handleHelp() {
@@ -168,7 +185,8 @@ function handleHelp() {
     `• „*írj útmutatót <témáról>*" — pl. az AI-adóbevallásról\n` +
     `• „*írj egy kezdő útmutatót a ChatGPT-hez*"\n` +
     `• „*fuss most*" — azonnal keresek hírt és publikálok\n` +
-    `• „*mi a helyzet?*" — összefoglaló\n\n` +
+    `• „*mi a helyzet?*" — összefoglaló\n` +
+    `• „*mennyi a keret?*" — mennyit költöttünk, van-e még fizetős keret\n\n` +
     `_(Hamarosan: dizájn, ütemezés és bármi más állítása is — szóban.)_`;
 }
 
@@ -188,6 +206,7 @@ async function main() {
     case 'write_guide':   reply = await handleWriteGuide(intent); break;
     case 'run_pipeline':  reply = await handleRunPipeline(); break;
     case 'status':        reply = handleStatus(); break;
+    case 'budget':        reply = handleBudget(); break;
     case 'help':          reply = handleHelp(); break;
     case 'other':
       reply = `🛠️ Ezt értem: „${intent.note || TEXT}". Ezt a fajta módosítást (dizájn/ütemezés/kód) a *2-3. fázisban* kötjük be — épp építjük. Addig tartalmat és futtatást kérhetsz.`;

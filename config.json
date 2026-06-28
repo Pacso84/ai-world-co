@@ -316,12 +316,15 @@
     }
   },
   "limits": {
-    "daily_articles_max": 5,
+    "daily_articles_max": 25,
+    "_daily_articles_comment": "A HÍR napi kerete. Felemelve 5→25 (a felhasználó: 'amennyi van'). A költségőr (paid_daily_usd_max) tartja kordában a pénzt: ami a fizetős keret felett van, azt a free kulcsok írják ~0 Ft-ért. A gyenge híreket az Ellenőrző úgyis kiszűri.",
     "daily_articles_min": 0,
     "daily_guides_max": 4,
     "_daily_guides_comment": "Az ÚTMUTATÓK külön napi kerete (saját sáv). A hír-keret betelése NEM akadályozza az útmutató-írást: ha nincs új hír / maradt token, az idle-fill ebből a keretből ír útmutatókat. Csak a költség-limit állít le mindent.",
     "weekly_deep_articles": 1,
     "daily_api_cost_usd_max": 3,
+    "paid_daily_usd_max": 1.0,
+    "_paid_daily_comment": "A FIZETŐS (metered) kulcsok napi költségkerete (pl. Gemini paid, Anthropic). $1/nap ~= $30/hó (illeszkedik a havi célhoz). Ha a mai költés eléri ezt, a router a metered kulcsokat KIHAGYJA és a FREE kulcsokra vált (Cerebras/Groq/Mistral). Telegramon állítható lesz. A havi hard_cap a végső stop.",
     "monthly_budget_usd_target": 30,
     "monthly_budget_usd_hard_cap": 80,
     "_comment": "Ha eléri a hard_cap-et, az agentek leállnak és felhasználói jóváhagyás kell."
