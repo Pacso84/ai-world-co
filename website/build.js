@@ -52,14 +52,16 @@ const SITE = {
 let DESIGN = {
   brandtiles: { desktop: 6, tablet: 4, mobile: 3 },
   guidetiles: { basis: 230, max: 300, justify: 'center' },
-  align: 'center'
+  align: 'center',
+  mobileCss: ''   // a web-designer agent tölti fel (reszponzív mobil blokk)
 };
 try {
   const d = JSON.parse(readFileSync(join(__dirname, 'design.json'), 'utf-8'));
   DESIGN = {
     brandtiles: { ...DESIGN.brandtiles, ...(d.brandtiles || {}) },
     guidetiles: { ...DESIGN.guidetiles, ...(d.guidetiles || {}) },
-    align: d.align || DESIGN.align
+    align: d.align || DESIGN.align,
+    mobileCss: d.mobileCss || ''
   };
 } catch {}
 
@@ -293,13 +295,14 @@ function pageShell({ title, description, bodyContent, isArticle = false, noIntro
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
   <link rel="stylesheet" href="${cssPath}?v=${ASSET_V}">
   ${jsonld ? `<script type="application/ld+json">${JSON.stringify(jsonld)}</script>` : ''}
+  ${DESIGN.mobileCss ? `<style id="responsive">${DESIGN.mobileCss}</style>` : ''}
 </head>
 <body>
   ${isArticle ? '<div class="progress-bar" id="progressBar"></div>' : ''}
   <header class="navbar" id="navbar">
     <div class="navbar__inner">
       <a href="${homePath}" class="navbar__logo"><img src="${cssPath.replace('style.css', 'logo.svg')}" alt="" class="navbar__mark">${SITE.name}<span class="navbar__dot">.</span></a>
-      <nav class="navbar__nav">
+      <nav class="navbar__nav" id="navMenu">
         <a href="${homePath}">News</a>
         <a href="${guidesPath}">📘 Guides</a>
         <a href="${toolsPath}">🧰 AI tools</a>
@@ -307,6 +310,9 @@ function pageShell({ title, description, bodyContent, isArticle = false, noIntro
       </nav>
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Light / dark">
         <span class="theme-toggle__icon">☾</span>
+      </button>
+      <button class="navbar__burger" id="navBurger" aria-label="Menu" aria-expanded="false" aria-controls="navMenu">
+        <span></span><span></span><span></span>
       </button>
     </div>
   </header>${(isArticle || noIntro) ? '' : `

@@ -102,6 +102,31 @@
     }, { passive: true });
   }
 
+  // ---------- 3c. HAMBURGER MENÜ (mobil) ----------
+  const burger = document.getElementById('navBurger');
+  const navMenu = document.getElementById('navMenu');
+  if (burger && navbar && navMenu) {
+    const setOpen = function (open) {
+      navbar.classList.toggle('navbar--open', open);
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    };
+    burger.addEventListener('click', function (e) {
+      e.stopPropagation();
+      setOpen(!navbar.classList.contains('navbar--open'));
+    });
+    // Link választásra zárjon be
+    navMenu.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () { setOpen(false); });
+    });
+    // Kattintás a menün kívül → zár
+    document.addEventListener('click', function (e) {
+      if (navbar.classList.contains('navbar--open') && !navbar.contains(e.target)) setOpen(false);
+    });
+    // Escape → zár; nagyobb képernyőre váltáskor reset
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
+    window.addEventListener('resize', function () { if (window.innerWidth > 760) setOpen(false); });
+  }
+
   // ---------- 4. OLVASÁSI FOLYAMATJELZŐ (cikk oldalakon) ----------
   const progressBar = document.getElementById('progressBar');
   if (progressBar) {

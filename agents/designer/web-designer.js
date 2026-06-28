@@ -41,8 +41,72 @@ const AGENT_NAME = 'designer';
 // KIINDULÓ design-szabályok — ha még nincsenek a memóriában, ezeket jegyzi meg.
 const DEFAULT_RULES = [
   'Tiles and cards must form even, balanced rows. Pick a column count that divides the number of tiles (e.g. 12 tiles → 6 desktop / 4 tablet / 3 mobile) so no row is left ragged with more on top than bottom. Center any partial last row instead of left-aligning it.',
-  'When the layout is centered (centered tiles/cards), the page heading and intro text must also be centered, so the whole page feels consistent — do not leave the title or tagline left-aligned.'
+  'When the layout is centered (centered tiles/cards), the page heading and intro text must also be centered, so the whole page feels consistent — do not leave the title or tagline left-aligned.',
+  'MOBILE-FIRST: the site must look and work great on phones. Under ~760px the navbar collapses into a hamburger menu (links never overflow or wrap into the logo). Touch targets are at least 42px. Tiles drop to 2 columns (1 on very small screens). Covers and cards never spill outside their container. Nothing causes horizontal scrolling.'
 ];
+
+// ===================================================================
+// RESZPONZÍV (MOBIL) CSS — az agent terméke. A build.js a design.json
+// "mobileCss" mezőjéből veszi és MINDEN oldal fejlécébe injektálja, így a
+// style.css alapértelmezéseit mobilon felülírja. Determinisztikus blokk
+// (megbízható), de az agent felelőssége és ő tartja karban a szabály szerint.
+// ===================================================================
+const RESPONSIVE_CSS = `
+/* ===== MOBILE-FIRST (web-designer agent) ===== */
+.navbar__burger{ display:none; }
+
+@media (max-width:760px){
+  /* Navbar → hamburger (a linkek sosem csordulnak túl) */
+  .navbar__inner{ gap:12px; padding:12px 18px; position:relative; }
+  .navbar__logo{ font-size:18px; }
+  .navbar__mark{ width:26px; height:26px; }
+  .theme-toggle{ margin-left:auto; }
+  .navbar__burger{
+    display:flex; flex-direction:column; justify-content:center; gap:5px;
+    width:44px; height:44px; padding:0 10px; flex-shrink:0;
+    background:transparent; border:1px solid var(--line-strong); border-radius:10px; cursor:pointer;
+  }
+  .navbar__burger span{ display:block; height:2px; width:100%; background:var(--ink); border-radius:2px;
+    transition:transform .22s ease, opacity .22s ease; }
+  .navbar--open .navbar__burger span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+  .navbar--open .navbar__burger span:nth-child(2){ opacity:0; }
+  .navbar--open .navbar__burger span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+  /* A menü a sáv alá nyílik (lenyíló panel) */
+  .navbar__nav{
+    position:absolute; top:100%; left:0; right:0; margin:0;
+    flex-direction:column; align-items:stretch; gap:0;
+    background:var(--paper); border-bottom:1px solid var(--line);
+    box-shadow:0 20px 34px -24px rgba(0,0,0,.45);
+    max-height:0; overflow:hidden; transition:max-height .28s ease;
+  }
+  .navbar--open .navbar__nav{ max-height:78vh; }
+  .navbar__nav a{ padding:16px 22px; font-size:16px; border-top:1px solid var(--line); }
+  .navbar__nav a::after{ display:none; }
+  .navbar__nav a.navbar__support{ margin:12px 22px; text-align:center; }
+}
+
+@media (max-width:560px){
+  /* Kiemelt borító margó-fix: a negatív margó kövesse a kártya paddingjét */
+  .card--featured .card__link{ padding:30px 22px; }
+  .card--featured .card__cover{ margin:-30px -22px 18px; height:200px; }
+  .wrap{ padding:36px 16px 60px; }
+  /* Útmutató-csempék: VALÓDI 2 oszlop (a flex-szándék mobilon nem érvényesült) */
+  .gtiles{ display:grid !important; grid-template-columns:1fr 1fr; gap:12px; }
+  .gtile{ flex:none !important; max-width:none !important; min-height:0; }
+  .gtile__head{ height:78px; }
+  /* Cikk-tipográfia mobilra */
+  .article__body{ font-size:17px; }
+  .article__body > p:first-of-type::first-letter{ font-size:3.2em; }
+  .article__body h2{ font-size:23px; }
+  .impact{ padding:24px 20px; }
+  .guide-cover__focal{ font-size:clamp(24px,7vw,34px); }
+}
+
+@media (max-width:400px){
+  .gtiles{ grid-template-columns:1fr; }
+  .brandtiles{ grid-template-columns:repeat(2,1fr) !important; }
+}
+`;
 
 function parseArgs() {
   const a = process.argv.slice(2);
@@ -187,19 +251,22 @@ async function main() {
   if (args.dry) { console.log('\n(--dry: nem írtam ki a design.json-t.)'); return; }
 
   const out = {
-    _comment: 'A Honlap-szerkesztő (web-designer) agent írja. A build.js innen veszi a guides-oldal csempe-elrendezését. NE szerkeszd kézzel — futtasd: node agents/designer/web-designer.js',
+    _comment: 'A Honlap-szerkesztő (web-designer) agent írja. A build.js innen veszi a guides-oldal csempe-elrendezését ÉS a mobileCss reszponzív blokkot (minden oldal fejlécébe). NE szerkeszd kézzel — futtasd: node agents/designer/web-designer.js',
     updated_at: new Date().toISOString(),
     updated_by: `web-designer (${response?.model || 'fallback'})`,
     brandtiles: design.brandtiles,
     guidetiles: design.guidetiles,
     align: design.align,
+    mobileCss: RESPONSIVE_CSS,          // MOBIL-FIRST reszponzív blokk (hamburger, borító-fix, gridek)
+    responsive: true,
     rationale: design.rationale,
     based_on: { companies: counts.companies, general: counts.general }
   };
   writeFileSync(DESIGN_PATH, JSON.stringify(out, null, 2), 'utf-8');
 
-  remember('designer', `Applied layout: ${counts.companies} brand tiles → ${design.brandtiles.desktop}/${design.brandtiles.tablet}/${design.brandtiles.mobile} cols (even rows).`, { tags: ['design', 'layout'] });
-  message('designer', 'team', 'fix', `Rendbe raktam a csempéket: ${counts.companies} cég → ${design.brandtiles.desktop}/${design.brandtiles.tablet}/${design.brandtiles.mobile} oszlop, egyenletes sorok. ${design.rationale}`, { ref: 'guides.html' });
+  console.log('📱 Mobil-first reszponzív blokk (mobileCss) kiírva: hamburger-menü, borító-fix, valódi 2-oszlopos gridek.');
+  remember('designer', `Applied layout: ${counts.companies} brand tiles → ${design.brandtiles.desktop}/${design.brandtiles.tablet}/${design.brandtiles.mobile} cols (even rows). Mobile-first responsive block (hamburger nav under 760px, 2-col tiles, cover-margin fix) emitted to design.json.`, { tags: ['design', 'layout', 'mobile'] });
+  message('designer', 'team', 'fix', `Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: ${counts.companies} → ${design.brandtiles.desktop}/${design.brandtiles.tablet}/${design.brandtiles.mobile} oszlop.`, { ref: 'mobile' });
 
   if (!existsSync(LOGS_DIR)) mkdirSync(LOGS_DIR, { recursive: true });
   writeFileSync(join(LOGS_DIR, `webdesign_${new Date().toISOString().replace(/[:.]/g, '-')}.json`), JSON.stringify(out, null, 2), 'utf-8');

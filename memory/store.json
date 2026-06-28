@@ -1,7 +1,7 @@
 {
   "_meta": {
     "note": "AI World rétegzett memória (hot/warm/cold, salience decay).",
-    "updated": "2026-06-28T02:37:22.190Z"
+    "updated": "2026-06-28T19:44:51.718Z"
   },
   "items": [
     {
@@ -9421,8 +9421,8 @@
         "design-rule"
       ],
       "created": "2026-06-22T19:24:53.845Z",
-      "lastAccessed": "2026-06-28T02:37:18.739Z",
-      "accessCount": 9,
+      "lastAccessed": "2026-06-28T19:44:51.128Z",
+      "accessCount": 11,
       "salience": 1,
       "tier": "hot"
     },
@@ -9435,8 +9435,8 @@
         "layout"
       ],
       "created": "2026-06-22T19:24:54.293Z",
-      "lastAccessed": "2026-06-28T02:37:18.739Z",
-      "accessCount": 9,
+      "lastAccessed": "2026-06-28T19:44:51.128Z",
+      "accessCount": 11,
       "salience": 1,
       "tier": "hot"
     },
@@ -9449,8 +9449,8 @@
         "layout"
       ],
       "created": "2026-06-22T19:25:44.302Z",
-      "lastAccessed": "2026-06-28T02:37:18.739Z",
-      "accessCount": 11,
+      "lastAccessed": "2026-06-28T19:44:51.128Z",
+      "accessCount": 13,
       "salience": 1,
       "tier": "hot"
     },
@@ -9462,8 +9462,8 @@
         "design-rule"
       ],
       "created": "2026-06-22T19:33:18.784Z",
-      "lastAccessed": "2026-06-28T02:37:18.739Z",
-      "accessCount": 6,
+      "lastAccessed": "2026-06-28T19:44:51.128Z",
+      "accessCount": 8,
       "salience": 1,
       "tier": "hot"
     },
@@ -11046,8 +11046,36 @@
         "layout"
       ],
       "created": "2026-06-26T02:21:22.646Z",
-      "lastAccessed": "2026-06-28T02:37:22.190Z",
-      "accessCount": 4,
+      "lastAccessed": "2026-06-28T19:44:51.128Z",
+      "accessCount": 6,
+      "salience": 1,
+      "tier": "hot"
+    },
+    {
+      "id": "m1782675891115716",
+      "scope": "designer",
+      "text": "MOBILE-FIRST: the site must look and work great on phones. Under ~760px the navbar collapses into a hamburger menu (links never overflow or wrap into the logo). Touch targets are at least 42px. Tiles drop to 2 columns (1 on very small screens). Covers and cards never spill outside their container. Nothing causes horizontal scrolling.",
+      "tags": [
+        "design-rule"
+      ],
+      "created": "2026-06-28T19:44:51.115Z",
+      "lastAccessed": "2026-06-28T19:44:51.128Z",
+      "accessCount": 1,
+      "salience": 1,
+      "tier": "hot"
+    },
+    {
+      "id": "m1782675891717120",
+      "scope": "designer",
+      "text": "Applied layout: 16 brand tiles → 4/4/2 cols (even rows). Mobile-first responsive block (hamburger nav under 760px, 2-col tiles, cover-margin fix) emitted to design.json.",
+      "tags": [
+        "design",
+        "layout",
+        "mobile"
+      ],
+      "created": "2026-06-28T19:44:51.717Z",
+      "lastAccessed": "2026-06-28T19:44:51.717Z",
+      "accessCount": 0,
       "salience": 1,
       "tier": "hot"
     }
