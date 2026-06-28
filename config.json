@@ -323,10 +323,9 @@
     "_daily_guides_comment": "Az ÚTMUTATÓK külön napi kerete (saját sáv). A hír-keret betelése NEM akadályozza az útmutató-írást: ha nincs új hír / maradt token, az idle-fill ebből a keretből ír útmutatókat. Csak a költség-limit állít le mindent.",
     "weekly_deep_articles": 1,
     "daily_api_cost_usd_max": 3,
-    "paid_daily_usd_max": 1.0,
-    "_paid_daily_comment": "A FIZETŐS (metered) kulcsok napi költségkerete (pl. Gemini paid, Anthropic). $1/nap ~= $30/hó (illeszkedik a havi célhoz). Ha a mai költés eléri ezt, a router a metered kulcsokat KIHAGYJA és a FREE kulcsokra vált (Cerebras/Groq/Mistral). Telegramon állítható lesz. A havi hard_cap a végső stop.",
     "monthly_budget_usd_target": 30,
     "monthly_budget_usd_hard_cap": 80,
+    "_paid_strategy_comment": "ELV: a fizetős kulcsot (pl. Gemini paid) HASZNÁLJUK, amíg bírja; amikor eléri a saját rate/kvóta limitjét (429), a router AUTOMATIKUSAN a következő kulcsra vált (free pool: Cerebras/Groq/Mistral). NINCS napi dollár-plafon (a felhasználó sem tudja, meddig elég a csomag). A core/budget.js KÖVETI a költést (látható a 'mennyi a keret?' paranccsal), és a havi hard_cap a VÉGSŐ biztosíték egy elfutó számla ellen.",
     "_comment": "Ha eléri a hard_cap-et, az agentek leállnak és felhasználói jóváhagyás kell."
   },
   "fallback_strategy": {

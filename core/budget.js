@@ -26,7 +26,6 @@ const LIMITS = CONFIG.limits || {};
 const METERED = new Set(['google', 'anthropic', 'openai', 'deepseek', 'perplexity']);
 export function isMetered(provider) { return METERED.has(provider); }
 
-const PAID_DAILY_MAX = Number(LIMITS.paid_daily_usd_max ?? 2.0);
 const MONTH_HARD_CAP = Number(LIMITS.monthly_budget_usd_hard_cap ?? 80);
 const MONTH_TARGET = Number(LIMITS.monthly_budget_usd_target ?? 30);
 
@@ -69,13 +68,13 @@ export function byProviderToday() {
 }
 
 // A FŐ DÖNTÉS: ki kell-e hagyni MOST a fizetős (metered) providereket?
-//   - havi hard cap elérve  -> KEMÉNY stop (minden metered ki)
-//   - napi fizetős keret elérve -> váltás free-re a nap hátralévő részére
+// FILOZÓFIA: használjuk a fizetős kulcsot, AMÍG BÍRJA — a kimerülést (rate/kvóta
+// limit) a router 429-kezelése érzékeli és vált free-re. Itt NINCS napi
+// dollár-plafon; csak a havi HARD CAP a végső biztosíték, hogy egy hiba ne
+// fusson el a számlával.
 export function meteredBlocked() {
   const month = spentThisMonth();
-  if (month >= MONTH_HARD_CAP) return { blocked: true, reason: `havi hard cap elérve ($${month.toFixed(2)}/$${MONTH_HARD_CAP})`, hard: true };
-  const day = spentToday();
-  if (day >= PAID_DAILY_MAX) return { blocked: true, reason: `napi fizetős keret elérve ($${day.toFixed(2)}/$${PAID_DAILY_MAX}) → free kulcsokra váltok`, hard: false };
+  if (month >= MONTH_HARD_CAP) return { blocked: true, reason: `havi hard cap elérve ($${month.toFixed(2)}/$${MONTH_HARD_CAP}) — végső biztosíték`, hard: true };
   return { blocked: false };
 }
 
@@ -83,7 +82,7 @@ export function meteredBlocked() {
 export function budgetStatus() {
   const day = spentToday(), mon = spentThisMonth();
   return {
-    today: +day.toFixed(4), todayCap: PAID_DAILY_MAX,
+    today: +day.toFixed(4),
     month: +mon.toFixed(4), monthTarget: MONTH_TARGET, monthHardCap: MONTH_HARD_CAP,
     byProviderToday: byProviderToday(),
     meteredBlocked: meteredBlocked()

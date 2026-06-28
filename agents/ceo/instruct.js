@@ -164,7 +164,7 @@ function handleStatus() {
     }
   }
   const b = budgetStatus();
-  return `📊 *AI World Co. — állapot*\n• Hírek: ${news}\n• Útmutatók: ${guides}\n• Ma publikálva: ${today}\n• 💰 Fizetős költés ma: $${b.today.toFixed(2)} / $${b.todayCap} · hónap: $${b.month.toFixed(2)} / $${b.monthHardCap}\n• Élő oldal: ${SITE_URL}\n\nA felhő naponta többször magától dolgozik. Írj parancsot, és intézem! 👔`;
+  return `📊 *AI World Co. — állapot*\n• Hírek: ${news}\n• Útmutatók: ${guides}\n• Ma publikálva: ${today}\n• 💰 Fizetős költés ma: $${b.today.toFixed(2)} · hónap: $${b.month.toFixed(2)} (hard stop $${b.monthHardCap})\n• Élő oldal: ${SITE_URL}\n\nA felhő naponta többször magától dolgozik. Írj parancsot, és intézem! 👔`;
 }
 
 function handleBudget() {
@@ -172,12 +172,12 @@ function handleBudget() {
   const provs = Object.entries(b.byProviderToday);
   const provLine = provs.length ? provs.map(([p, v]) => `   - ${p}: $${Number(v).toFixed(3)}`).join('\n') : '   - (ma még semmi fizetős)';
   const sw = b.meteredBlocked.blocked
-    ? `⚠️ Most a *free* kulcsokon megyünk (${b.meteredBlocked.reason}).`
-    : `✅ A fizetős kulcs még megy, van keret.`;
-  return `💰 *Költségkeret*\n` +
-    `• Ma: $${b.today.toFixed(3)} / $${b.todayCap} (fizetős napi keret)\n` +
-    `• Hónap: $${b.month.toFixed(2)} (cél $${b.monthTarget}, hard stop $${b.monthHardCap})\n` +
-    `• Ma providerenként:\n${provLine}\n\n${sw}\n\n_Ha eléri a napi keretet, automatikusan a free kulcsokra (Cerebras/Groq/Mistral) váltok — nem fizetünk feleslegesen._`;
+    ? `⛔ Elértük a havi végső stopot (${b.meteredBlocked.reason}) — most csak a *free* kulcsok mennek.`
+    : `✅ A fizetős kulcs megy, amíg bírja; ha eléri a limitjét, magától vált a free kulcsokra.`;
+  return `💰 *Mennyit használtunk*\n` +
+    `• Ma: $${b.today.toFixed(3)}\n` +
+    `• Hónap: $${b.month.toFixed(2)} (cél $${b.monthTarget}, végső stop $${b.monthHardCap})\n` +
+    `• Ma providerenként:\n${provLine}\n\n${sw}\n\n_Elv: a fizetős Gemini kulcsot HASZNÁLJUK, amíg bírja; amikor eléri a saját limitjét, automatikusan a free kulcsokra (Cerebras/Groq/Mistral) váltok. Így látod, mennyit fogyott eddig a csomag._`;
 }
 
 function handleHelp() {
