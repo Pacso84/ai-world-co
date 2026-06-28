@@ -1,0 +1,37 @@
+{
+  "_meta": {
+    "type": "guide",
+    "guide_topic_id": "creating-a-polished-readme-with-github-copilot",
+    "company": "GitHub",
+    "tool": "GitHub Copilot",
+    "icon": "🤖",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-06-28T21:18:32.882Z",
+    "writer_provider": "cerebras",
+    "writer_model": "gpt-oss-120b",
+    "writer_cost_usd": 0,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-06-28T21:24:19.962Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 892
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "This article meets all the requirements, providing a clear and friendly guide to creating a polished README with GitHub Copilot, while maintaining a respectful and encouraging tone.",
+      "_aiCost": 0.00121519,
+      "_provider": "groq",
+      "_model": "llama-3.3-70b-versatile",
+      "_attempts": 1
+    }
+  },
+  "article_markdown": "---\ntitle: \"Creating a polished README with GitHub Copilot\"\nsubtitle: \"Use Copilot’s autocomplete to craft a clear project overview, installation guide and usage examples without writing a line from scratch\"\ncategory: \"guide\"\naudience: \"both\"\ncompany: \"GitHub\"\ntool: \"GitHub Copilot\"\nlevel: \"beginner\"\nread_time_minutes: 4\ntags: [\"getting-started\", \"copilot\"]\n---\n\n# Creating a polished README with GitHub Copilot\n\n**Hook:** By the end of this guide you’ll have a professional‑looking README file ready for your project, and you’ll have used Copilot’s AI‑powered autocomplete to generate the text without typing a single sentence yourself. It’s perfect for anyone who’s new to coding or just wants a tidy description for a hobby project.\n\n## Before you start\n- You have a free GitHub account (sign‑up at github.com if you don’t already have one).  \n- You have a repository (a folder on GitHub that holds your code) you can edit.  \n- You have the **GitHub Copilot** extension installed in Visual Studio Code (VS Code) – the free trial is enough for this tutorial.\n\n## Step 1 — Open the README file\nIn your repository, look for a file called `README.md`. If it doesn’t exist, create a new file with that exact name. The “.md” suffix tells GitHub the file is written in Markdown, a simple language for formatting text (headings, lists, links, etc.).  \n💬 **Example:** In VS Code’s Explorer pane, right‑click the folder, choose *New File*, type `README.md`, and hit **Enter**.\n\n## Step 2 — Invoke Copilot’s autocomplete\nPlace your cursor on the first line of the file and type a short prompt that tells Copilot what you need, such as:  \n\n```markdown\n# Project Name\n```\n\nThen press **Enter**. Copilot will read your prompt and start suggesting a full paragraph that describes the project. If the suggestion looks close, accept it by pressing **Tab**. If not, keep pressing **Ctrl + Space** (or the shortcut shown by the extension) to cycle through alternatives until you find one you like.  \n💬 **Example:** After typing `# Weather App`, Copilot might suggest “A simple web app that shows the current weather for any city using the OpenWeatherMap API.” Accept the line you prefer.\n\n## Step 3 — Generate an installation section\nMove the cursor a few lines down, type a heading like:\n\n```markdown\n## Installation\n```\n\nPress **Enter**, then start a new line with a brief cue, for example:\n\n```markdown\nRun the following command:\n```\n\nCopilot will auto‑complete a shell command such as `npm install` or `pip install -r requirements.txt`, depending on the language it guesses from your repository. Review the suggestion; if your project uses a different package manager, edit the line accordingly.  \n💬 **Example:** If you see `npm install` but your project is in Python, replace it with `pip install -r requirements.txt`.\n\n## Step 4 — Add a usage example\nBelow the installation heading, type another heading:\n\n```markdown\n## Usage\n```\n\nOn the next line, write a short cue like:\n\n```markdown\nStart the app with:\n```\n\nCopilot will propose a command like `npm start` or `python app.py`. Accept the appropriate one, then add a brief description of what the command does.  \n💬 **Example:** After accepting `python app.py`, you could add “This launches the local server on http://localhost:5000”.\n\n## Step 5 — Polish the README with a summary and licence note\nFinally, add a short concluding paragraph. Type:\n\n```markdown\n## Overview\n```\n\nThen type a few words like “This project demonstrates …”. Copilot will fill in a concise summary. After that, add a licence badge if you have one, or simply write:\n\n```markdown\n## License\nThis project is licensed under the MIT License.\n```\n\nYou now have a complete README that reads naturally, thanks to Copilot’s suggestions.  \n💬 **Example:** Your final file might look like:\n\n```markdown\n# Weather App\nA simple web app that shows the current weather for any city using the OpenWeatherMap API.\n\n## Installation\nRun the following command:\npip install -r requirements.txt\n\n## Usage\nStart the app with:\npython app.py\nThis launches the local server on http://localhost:5000.\n\n## Overview\nThis project demonstrates how to fetch and display weather data in a clean, responsive UI.\n\n## License\nThis project is licensed under the MIT License.\n```\n\n## Common mistakes\n- **Accepting the first suggestion blindly:** Copilot can guess the wrong language or package manager. Always double‑check the generated command against your actual project.  \n- **Leaving placeholder text:** Phrases like “TODO” or “Insert description here” will appear in the final README if you don’t replace them.  \n- **Forgetting Markdown formatting:** A missing `#` before a heading means the line shows up as plain text, not a heading. Use the `#` symbols as shown.\n\n## What this means for you\n- **In everyday life:** You can quickly create clear documentation for a hobby script, making it easier to share with friends or post on a forum.  \n- **For your business or work:** A tidy README gives colleagues confidence that the project is well‑maintained, reducing onboarding time.  \n- **If you're just getting started:** The easiest first move is to let Copilot write the opening paragraph – you’ll see how the AI predicts natural language based on just a few words.\n\n## Try it now\nOpen any repository you own, create a `README.md`, type `# My Project` and press **Enter**. Let Copilot finish the first paragraph, accept the suggestion, and you’ll have the foundation of a polished README in under two minutes. Happy writing!",
+  "original_title": "Creating a polished README with GitHub Copilot"
+}

@@ -471,10 +471,12 @@ async function main() {
       console.log('   ⏭️  Nincs szabad útmutató-keret vagy költségkeret — kihagyva.');
       session.stages.idle_fill = { slots, skipped: true };
     } else {
-      // 1) CÉG-LEFEDETTSÉG: a hiányzó cégekhez téma (ingyen, LLM nélkül) — ezek
-      //    elöl íródnak (pickTopics priority), így "minden céghez lesz útmutató".
+      // 1) CÉG-LEFEDETTSÉG: a hiányzó cégekhez téma (ingyen, LLM nélkül).
       await runAgent('agents/guide/agent.js', ['--cover']);
-      // 2) Ha még kevés a téma a slotokhoz, általános ötletelés (LLM)
+      // 2) KIEGYENLÍTÉS: a lemaradó cégeket felhozzuk a küszöbig (önkorlátozó:
+      //    ha egy cég eléri a célt a backlogban, már nem ad többet hozzá).
+      await runAgent('agents/guide/agent.js', ['--balance', String(slots + 4)]);
+      // 3) Ha még kevés a téma a slotokhoz, általános ötletelés (general útmutatók).
       if (countTodoGuideTopics() < slots) {
         console.log('   💡 Kevés a téma a slotokhoz — ötletelés (guide --ideas)…');
         await runAgent('agents/guide/agent.js', ['--ideas', String(slots + 5)]);

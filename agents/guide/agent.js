@@ -18,6 +18,7 @@
 //   node agents/guide/agent.js --ideas 8       -- NEM ír, csak ÚJ témákat ötletel
 //                                                 a guide-topics.json-ba (cég-lefedettség elöl)
 //   node agents/guide/agent.js --cover         -- a HIÁNYZÓ cégekhez témát ad (ingyen, LLM nélkül)
+//   node agents/guide/agent.js --balance 8     -- a LEMARADÓ cégeket hozza fel a küszöbig (arányosság)
 //
 // FŐ ELV: EREDETI tartalom. A cégek doksiját csak ihletként — sosem másoljuk.
 // ===================================================================
@@ -48,7 +49,7 @@ const GUIDE_MAX_REWORK = 4;
 // ---- argumentumok ----
 function parseArgs() {
   const a = process.argv.slice(2);
-  const p = { id: null, title: null, limit: 1, rework: false, ideas: 0, cover: false };
+  const p = { id: null, title: null, limit: 1, rework: false, ideas: 0, cover: false, balance: 0 };
   for (let i = 0; i < a.length; i++) {
     if (a[i] === '--id' && a[i + 1]) { p.id = a[++i]; }
     else if (a[i] === '--title' && a[i + 1]) { p.title = a[++i]; }
@@ -56,6 +57,7 @@ function parseArgs() {
     else if (a[i] === '--rework') { p.rework = true; }
     else if (a[i] === '--cover') { p.cover = true; }
     else if (a[i] === '--ideas') { p.ideas = parseInt(a[i + 1], 10) || 6; if (a[i + 1] && /^\d+$/.test(a[i + 1])) i++; }
+    else if (a[i] === '--balance') { p.balance = parseInt(a[i + 1], 10) || 8; if (a[i + 1] && /^\d+$/.test(a[i + 1])) i++; }
   }
   return p;
 }
@@ -76,13 +78,39 @@ function saveTopics(data) {
   writeFileSync(TOPICS_PATH, JSON.stringify(data, null, 2), 'utf-8');
 }
 
-// Mely témá(ka)t dolgozzuk fel? A 'coverage' (hiányzó-cég) témák ELŐRE kerülnek.
+// 3 SZINTŰ rangsor a 4/nap kereten belül:
+//   1) FRISS funkció-útmutató (hír-párosításból = source_news, vagy Telegramon
+//      kért = 'requested') → ELŐSZÖR, mert időérzékeny (ne maradjunk le az új
+//      funkciókról).
+//   2) KIEGYENLÍTÉS (balance/coverage) → a lemaradó cégek felhozása.
+//   3) GENERAL (evergreen) → folyamatosan, hogy ne álljon le.
+// A 2-3 közt 2:1 interleave, hogy a general is folyamatosan menjen.
+function isFresh(t) { return !!t.source_news || t.priority === 'fresh' || t.priority === 'requested'; }
+function isBalanceTopic(t) { return t.priority === 'balance' || t.priority === 'coverage'; }
+
 function pickTopics(store, args) {
   if (args.id) return store.topics.filter(t => t.id === args.id);
   if (args.title) return store.topics.filter(t => t.title === args.title);
   const todo = store.topics.filter(t => t.status !== 'done');
-  todo.sort((a, b) => (b.priority === 'coverage' ? 1 : 0) - (a.priority === 'coverage' ? 1 : 0));
-  return todo.slice(0, args.limit);
+  const fresh = todo.filter(isFresh);
+  const balance = todo.filter(t => !isFresh(t) && isBalanceTopic(t));
+  const general = todo.filter(t => !isFresh(t) && !isBalanceTopic(t));
+  const out = [];
+  for (const t of fresh) { if (out.length >= args.limit) break; out.push(t); }   // 1) friss elöl
+  let bi = 0, gi = 0;                                                            // 2-3) balance:general = 2:1
+  while (out.length < args.limit && (bi < balance.length || gi < general.length)) {
+    if (bi < balance.length) out.push(balance[bi++]);
+    if (out.length < args.limit && bi < balance.length) out.push(balance[bi++]);
+    if (out.length < args.limit && gi < general.length) out.push(general[gi++]);
+  }
+  return out;
+}
+
+// Útmutató-szám cégenként (a katalógus kanonikus cégeire)
+function companyCounts(store) {
+  const c = {};
+  for (const t of store.topics) if (t.company) c[normCompany(t.company)] = (c[normCompany(t.company)] || 0) + 1;
+  return c;
 }
 
 // ===================================================================
@@ -147,6 +175,117 @@ function addCompanyCoverage(store, max = 99) {
     added++;
   }
   return { added, missing: missing.map(m => m.company) };
+}
+
+// ===================================================================
+// KIEGYENLÍTÉS (--balance) — minden céget egy ALSÓ KÜSZÖBIG felhozunk,
+// hogy ne tűnjön egyik cég fontosabbnak. A leginkább lemaradókat előbb.
+// ===================================================================
+const GUIDES_PER_COMPANY_TARGET = (() => {
+  try { return JSON.parse(readFileSync(join(ROOT, 'config.json'), 'utf-8')).limits?.guides_per_company_target ?? 4; }
+  catch { return 4; }
+})();
+
+// Cégenkénti hiány a DINAMIKUS célig (deficit szerint csökkenő sorrend).
+// A cél = a LEGTÖBB útmutatóval bíró cég száma (min. a floor) — így ahogy a
+// vezető cégek bővülnek (pl. hír-párosításból), a lemaradók célja is NŐ, és a
+// rés NEM szélesedik. A napi írás-tempót külön a daily_guides_max (4) fogja.
+function dynamicTarget(store, floor = GUIDES_PER_COMPANY_TARGET) {
+  const counts = companyCounts(store);
+  const max = Math.max(floor, ...COMPANY_CATALOG.map(c => counts[normCompany(c.company)] || 0));
+  return max;
+}
+function companyDeficits(store, target = dynamicTarget(store)) {
+  const counts = companyCounts(store);
+  return COMPANY_CATALOG
+    .map(c => ({ company: c.company, tool: c.tool, audience: c.audience, count: counts[normCompany(c.company)] || 0 }))
+    .filter(c => c.count < target)
+    .map(c => ({ ...c, need: target - c.count }))
+    .sort((a, b) => b.need - a.need);
+}
+
+const BALANCE_SYSTEM_PROMPT = `You are the editorial planner for AI World Co. Propose SPECIFIC, varied, genuinely useful BEGINNER guide topics for given AI tools, so each company has a fair, balanced set of guides (no company should look more important than another).
+
+Return ONLY a JSON array: [{"title":"...","company":"OpenAI","tool":"ChatGPT","audience":"personal|business|both","level":"beginner|intermediate","angle":"one practical sentence","icon":"🤖"}]`;
+
+async function proposeCompanyTopics(needs, store, brandContext) {
+  const existingByCompany = {};
+  for (const t of store.topics) if (t.company) (existingByCompany[normCompany(t.company)] ||= []).push(t.title);
+  const usedIds = new Set(store.topics.map(t => t.id).filter(Boolean));
+
+  const ask_lines = needs.map(n => {
+    const have = (existingByCompany[normCompany(n.company)] || []).slice(0, 8).map(t => `"${t}"`).join(', ') || '(none yet)';
+    return `- ${n.company} (tool: ${n.tool}) — need ${n.need} NEW topics. Already has: ${have}`;
+  }).join('\n');
+  const total = needs.reduce((s, n) => s + n.need, 0);
+
+  const userPrompt = `Propose ${total} new beginner guide topics, distributed across these companies so each gets the requested count. Make each topic SPECIFIC and DIFFERENT from what the company already has (different tasks/use-cases, not reworded duplicates).
+
+COMPANIES NEEDING MORE GUIDES:
+${ask_lines}
+
+Mix everyday-life and work uses. Plain English, beginner-friendly.
+
+BRAND CONTEXT:
+${brandContext}
+
+Return ONLY the JSON array (${total} items), each with the correct "company" and "tool".`;
+
+  const res = await ask(userPrompt, { agentName: AGENT_NAME, systemPrompt: BALANCE_SYSTEM_PROMPT, maxTokens: 4000 });
+  if (!res) return { added: 0, cost: 0 };
+
+  const raw = extractJsonArray(res.text);
+  const seenTitles = new Set(store.topics.map(t => normTitle(t.title)));
+  let added = 0;
+  for (const it of raw) {
+    const title = (it.title || '').toString().trim();
+    if (!title || title.length < 12) continue;
+    if (seenTitles.has(normTitle(title))) continue;
+    seenTitles.add(normTitle(title));
+    const id = uniqueId(slugify(title), usedIds);
+    store.topics.push({
+      id,
+      company: (it.company || '').toString().trim(),
+      tool: (it.tool || '').toString().trim(),
+      title,
+      audience: ['personal', 'business', 'both'].includes(it.audience) ? it.audience : 'both',
+      level: it.level === 'intermediate' ? 'intermediate' : 'beginner',
+      angle: (it.angle || '').toString().trim(),
+      status: 'todo', icon: (it.icon || '🏢').toString().trim(),
+      priority: 'balance', proposed_at: new Date().toISOString(), proposed_by: 'guide-balance'
+    });
+    added++;
+  }
+  return { added, cost: res.costUsd || 0 };
+}
+
+async function runBalanceMode(limit, brandContext) {
+  console.log(`⚖️  KIEGYENLÍTŐ MÓD — cél: min ${GUIDES_PER_COMPANY_TARGET} útmutató/cég`);
+  console.log('─'.repeat(60));
+  const store = loadTopics();
+  let deficits = companyDeficits(store);
+  if (!deficits.length) { console.log('   ✓ Minden cég eléri a küszöböt — nincs teendő.'); return; }
+
+  // Csak a legnagyobb hiányokat töltjük EBBEN a körben (limit téma összesen)
+  const picked = [];
+  let budget = limit;
+  for (const d of deficits) {
+    if (budget <= 0) break;
+    const take = Math.min(d.need, budget);
+    picked.push({ ...d, need: take });
+    budget -= take;
+  }
+  console.log('   Lemaradó cégek (ebben a körben):', picked.map(p => `${p.company} +${p.need}`).join(', '));
+
+  const before = store.topics.length;
+  const { added, cost } = await proposeCompanyTopics(picked, store, brandContext);
+  if (added > 0) {
+    saveTopics(store);
+    console.log(`   ✅ ${added} kiegyenlítő téma a backlogba | költség $${cost.toFixed(4)}`);
+    store.topics.slice(before).forEach(t => console.log(`      • ${t.title} [${t.company}]`));
+  } else {
+    console.log('   💤 Nem született új, nem-duplikátum téma.');
+  }
 }
 
 // ===================================================================
@@ -610,6 +749,12 @@ async function main() {
   // CÉG-LEFEDETTSÉG MÓD: a hiányzó cégekhez téma (ingyen, LLM nélkül)
   if (args.cover) {
     await runCoverMode();
+    return;
+  }
+
+  // KIEGYENLÍTŐ MÓD: a lemaradó cégeket felhozzuk a küszöbig
+  if (args.balance > 0) {
+    await runBalanceMode(args.balance, loadBrandContext());
     return;
   }
 
