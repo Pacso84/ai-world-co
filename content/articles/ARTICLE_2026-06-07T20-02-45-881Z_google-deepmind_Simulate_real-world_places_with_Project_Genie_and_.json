@@ -1,52 +1,59 @@
 {
   "_meta": {
-    "written_at": "2026-06-27T02:15:42.590Z",
+    "written_at": "2026-06-28T02:34:26.628Z",
     "writer_provider": "google",
     "writer_model": "gemini-flash-latest",
-    "writer_cost_usd": 0.001234875,
+    "writer_cost_usd": 0.00125445,
     "original_draft": "2026-06-07T20-02-45-881Z_google-deepmind_Simulate_real-world_places_with_Project_Genie_and_.json",
     "source_id": "google-deepmind",
     "source_name": "Google DeepMind Blog",
     "source_link": "https://deepmind.google/blog/simulate-real-world-places-with-project-genie-and-street-view/",
     "status": "published",
-    "published_at": "2026-06-27T02:15:49.025Z",
+    "rejected_at": "2026-06-28T02:34:05.765Z",
     "auto_check": {
       "passed": true,
       "issues": [],
-      "wordCount": 704
+      "wordCount": 624
     },
     "ai_review": {
       "overall_score": 9,
       "decision": "PASS",
-      "issues": [],
-      "verdict": "The article is well-structured, explains technical terms in plain language, and provides a clear and respectful introduction to Google's Project Genie and Street View, making it suitable for publication.",
-      "_aiCost": 0.00101697,
+      "issues": [
+        "minor lack of direct source citation"
+      ],
+      "verdict": "The article is well-structured, explanatory, and respectful, effectively conveying the benefits of AI-powered street simulations to a general audience, with minor room for improvement in factual accuracy and source citation.",
+      "_aiCost": 0.00096075,
       "_provider": "groq",
       "_model": "llama-3.3-70b-versatile",
       "_attempts": 1
     },
+    "reason": "Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-06-07T20-02-45-881Z_google-deepmind_Simulate_real-world_places_with_Project_Genie_and_.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-06-28T02:34:27.696Z",
     "pairing_checked": true,
-    "pairing_checked_at": "2026-06-27T02:16:36.636Z",
-    "guide_worthy": true,
-    "related_guide_topic": "how-to-use-project-genie-with-street-view",
+    "pairing_checked_at": "2026-06-28T02:35:03.316Z",
+    "guide_worthy": false,
+    "pairing_reason": "no specific named feature or tool to use",
     "seo": {
-      "meta_description": "Turn Street View photos into interactive 3D worlds with Google's Genie AI, explore favorite places in a new way, learn how",
+      "meta_description": "Explore destinations from home with AI-powered street simulations. Discover how generative AI turns photos into interactive worlds",
       "keywords": [
-        "Google Genie AI",
-        "Street View photos to 3D",
-        "virtual world generation",
-        "AI for virtual exploration",
-        "interactive 3D environments"
+        "AI street simulation",
+        "generative AI",
+        "virtual travel",
+        "exploring cities online"
       ],
       "seo_score": 8,
       "suggestions": [
-        "Add more specific examples of Genie AI in use",
-        "Include a brief FAQ section on Genie AI limitations and potential applications",
-        "Use subheadings to break up the content and improve readability"
+        "Add a section on practical applications of AI street simulation",
+        "Include examples of popular destinations that can be explored",
+        "Optimize images with descriptive alt tags"
       ],
-      "optimised_at": "2026-06-27T02:18:57.757Z"
+      "optimised_at": "2026-06-28T02:37:15.121Z"
     }
   },
-  "article_markdown": "---\ntitle: \"How to Turn Street View Photos Into Playable Virtual Worlds\"\nsubtitle: \"Explore your favourite places in a completely new way with Google's latest interactive world-generation AI.\"\ncategory: \"how-to\"\naudience: \"personal\"\nread_time_minutes: 4\ntags: [\"google-ai\", \"virtual-worlds\", \"street-view\", \"generative-ai\"]\n---\n\n# How to Turn Street View Photos Into Playable Virtual Worlds\n\nThink about the last time you used a digital map to find a holiday spot, wishing you could actually step off the footpath and explore behind the buildings. A new type of AI is making this possible by turning standard, flat street photos into interactive, three-dimensional environments you can walk through. \n\nThrough Google's latest project, called Genie, everyday users are beginning to see how static pictures can become fully playable virtual worlds.\n\n## What is a generative world model?\n\nTraditionally, if a video game developer wanted to create a digital version of a real street, they had to spend hundreds of hours manually coding the buildings, trees, and roads. \n\nThis new technology uses a **generative world model (an AI system that turns flat photos into interactive, 3D digital spaces you can move through like a video game)**. Instead of relying on pre-written code, the AI looks at a single image and uses what it has learned from millions of other pictures to predict what the rest of the space should look like. \n\nIf you decide to turn a virtual corner, the AI instantly generates the next part of the street, the sky above, and the footpath beneath your feet in real time.\n\n## Moving from maps to interactive spaces\n\nBy combining this world-generation power with **Street View (the massive collection of panoramic road-level images on digital maps)**, the AI can simulate real-world locations. \n\nHere is how the experience works in practice:\n\n* **Select a starting image**: You choose a location from a map, such as a historic cobblestone street or a quiet beachside road.\n* **Generate the environment**: The AI analyses the photo, establishing where the ground is, where buildings stand, and how the light falls.\n* **Interact and explore**: Using your mouse or keyboard, you can \"walk\" forward. The AI uses **physics simulation (the way the AI mimics real-world movement, gravity, and lighting so that the virtual environment behaves realistically)** to let you interact with the surroundings, making it feel like a simple, self-generating simulation.\n\n## Fun ways to use this technology\n\nWhile this technology is still in its early stages of being rolled out to premium subscribers, there are plenty of practical and creative ways to think about using it:\n\n* **Preview travel destinations**: Before booking flights to a historic city, you can simulate a walk around the neighbourhood to see if the local streets are easy to navigate on foot.\n* **Revisit old memories**: You can take a virtual stroll down the street of your childhood home, even if you now live thousands of kilometres away, seeing it rendered as an interactive space.\n* **Boost your digital hobbies**: If you enjoy writing, digital art, or world-building, you can use these simulated spaces as visual references to spark new ideas.\n\n## What this means for you\n\n* **In everyday life**: You will soon be able to explore remote holiday spots, national parks, and historic landmarks in a deeply immersive format, going far beyond simple flat photos.\n* **For your hobbies and creativity**: You can use generated worlds as a playground to test layout ideas, practice digital photography in a simulated space, or gather inspiration for creative writing.\n* **If you're just getting started**: If you have a premium Google AI subscription, check your account options to see if you have access to the Genie preview. If not, look up public demonstration videos online to see how these interactive spaces are generated from single photos.\n\n## Wrap-up\n\nAI is quickly moving from generating simple text and images to building entire virtual spaces we can explore. This technology makes our digital maps feel less like static photo albums and more like living, interactive environments. To take your first step today, find a dream travel destination on a map, zoom in on the street level, and imagine what it will be like when you can step off the footpath and explore every hidden corner.",
+  "article_markdown": "---\ntitle: \"How to Explore the World from Your Couch with AI-Powered Street Simulations\"\nsubtitle: \"Step inside your next holiday destination or new neighbourhood using generative AI\"\ncategory: \"explainer\"\naudience: \"personal\"\nread_time_minutes: 4\ntags: [\"google-ai\", \"travel\", \"virtual-reality\", \"street-view\"]\n---\n\n# How to Explore the World from Your Couch with AI-Powered Street Simulations\n\nHave you ever tried planning a holiday or checking out a rental property online, only to wish you could actually walk down the street and feel the vibe of the neighbourhood? Now, generative AI (artificial intelligence that can create new content, like images or virtual spaces, from existing data) is making it possible to turn flat, static street photos into interactive, simulated worlds you can step inside.\n\n## What is AI street simulation?\n\nUntil recently, exploring a far-off city online meant clicking through a series of flat, 360-degree photographs. While helpful, it always felt a bit like looking at a slideshow. \n\nA new wave of AI technology, including tools like Google's Project Genie, is changing this. By using a vast library of Street View photos, the AI acts like a highly creative digital artist. It takes the existing photos of a real-world location and uses predictive algorithms (computational rules that guess what should come next) to fill in the gaps between the images.\n\nThis allows the system to build a fully interactive, three-dimensional simulation. Instead of jumping from one static photo bubble to another, you can smoothly glide down a cobblestone street in Rome, turn corners, and look at buildings from entirely new angles that were never actually photographed. \n\n## Practical ways to use it\n\nThis technology is not just for tech enthusiasts; it has highly practical uses for your everyday planning.\n\n* **Stress-free holiday scouting:** Before you book that hotel, you can walk the exact route from the lobby to the nearest train station. You can check if the footpaths are pram-friendly, find where the hills are, or see if the street feels too busy at night.\n* **Smarter house hunting:** If you are looking to buy or rent a home in a different town or suburb, you can explore the surrounding blocks without buying a plane ticket. You can see how close the local cafes are and get a genuine feel for the streetscape.\n* **Reliving memories:** You can revisit the street you grew up on or the tiny seaside village you visited a decade ago, experiencing it as a fluid, lifelike environment rather than a collection of old, disconnected snapshots.\n\n## What this means for you\n\nThe shift from flat images to interactive simulations will change how we interact with the physical world from our screens.\n\n* **In everyday life:** You can save hours of research time when moving to a new area or booking accommodation. It takes the guesswork out of travel planning by letting you \"try before you buy\".\n* **For your hobbies and curiosity:** If you love history, architecture, or geography, you can explore heritage sites and remote natural wonders with unprecedented freedom, observing details that traditional maps miss.\n* **If you are just getting started:** You do not need expensive virtual reality headsets to try this. Keep an eye out for these simulation features rolling out directly inside your favourite mapping and AI apps on your phone or computer.\n\n## Wrap-up\n\nBy blending massive photographic databases with generative AI, we are moving beyond simple maps into a world of fluid, digital exploration. It is a fantastic tool for making more informed decisions about the places you want to visit, live in, or discover. To start today, open your favourite map application and try using the immersive view options on a famous landmark to see how AI is already shaping the way we view our world.",
   "original_title": "Simulate real-world places with Project Genie and Street View"
 }

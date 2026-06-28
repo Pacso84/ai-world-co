@@ -1,0 +1,57 @@
+{
+  "_meta": {
+    "type": "guide",
+    "guide_topic_id": "add-an-ai-chatbot-to-your-small-business-site-using-alibaba-",
+    "company": "Alibaba",
+    "tool": "Alibaba Cloud AI",
+    "icon": "🤖",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-06-28T02:36:16.161Z",
+    "writer_provider": "google",
+    "writer_model": "gemini-flash-latest",
+    "writer_cost_usd": 0.002404425,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-06-28T02:36:56.071Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 902
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "decision": "PASS",
+      "issues": [
+        "minor cliches",
+        "no source claims"
+      ],
+      "verdict": "The article is well-structured, easy to understand, and provides a clear step-by-step guide on adding an Alibaba Cloud AI chatbot to a WordPress site, meeting the required standards for publication.",
+      "_aiCost": 0.00118496,
+      "_provider": "groq",
+      "_model": "llama-3.3-70b-versatile",
+      "_attempts": 1
+    },
+    "seo": {
+      "meta_description": "Add a 24/7 chatbot to your WordPress site with Alibaba Cloud AI, no coding required. Follow our step-by-step guide to set up a simple chatbot.",
+      "keywords": [
+        "Alibaba Cloud AI chatbot",
+        "WordPress chatbot",
+        "AI chatbot setup",
+        "automated chatbot",
+        "WordPress AI integration"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Use header tags to structure the guide for better readability",
+        "Add alt text to images to improve accessibility and search engine understanding",
+        "Include a brief FAQ section to address common user questions"
+      ],
+      "optimised_at": "2026-06-28T02:37:15.683Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"How to Add an Alibaba Cloud AI Chatbot to Your WordPress Site\"\nsubtitle: \"Greet your visitors day and night by setting up a simple, automated chatbot on your small business website.\"\ncategory: \"guide\"\naudience: \"business\"\ncompany: \"Alibaba\"\ntool: \"Alibaba Cloud AI\"\nlevel: \"beginner\"\nread_time_minutes: 4\ntags: [\"getting-started\", \"chatbot\", \"wordpress\"]\n---\n\n# How to Add an Alibaba Cloud AI Chatbot to Your WordPress Site\n\n**Hook:** Imagine having a digital receptionist who never sleeps, greeting every visitor to your website and answering their basic questions instantly. This guide will show you how to set up a friendly AI chatbot using Alibaba Cloud and plug it directly into your WordPress website, even if you have never touched code in your life.\n\n---\n\n## Before you start\n- **An Alibaba Cloud account:** You can sign up for free on their official website.\n- **A WordPress website:** You will need administrator access (the ability to log in and make changes to your site).\n\n---\n\n## Step 1 — Launch your chatbot assistant\nFirst, we need to set up the chatbot in the cloud. Think of this as hiring your new digital assistant and giving them a desk to work from.\n\n1. Log in to your **Alibaba Cloud Console** (the online control room where you manage all your cloud services).\n2. Use the search bar at the top to search for \"Chatbot\" or \"Model Studio\" and select it.\n3. Look for a button that says **Create Robot** or **New Instance** to begin. \n4. Give your chatbot a friendly name that represents your business, such as \"Front Desk Helper\".\n\n---\n\n## Step 2 — Customise your welcome message\nNow, we want to teach your chatbot how to greet people. This is the very first text a visitor will see when they click the chat bubble on your website.\n\n1. Inside your chatbot settings, locate the section labelled **Greetings** or **Welcome Messages**.\n2. Write a clear, warm message that tells visitors what the bot can do.\n\n💬 **Example:** \n> \"Hi there! Welcome to [Your Business Name]. I am your digital assistant. Ask me about our opening hours, services, or how to book an appointment!\"\n\n---\n\n## Step 3 — Match the design to your brand\nYou want the chat bubble to look like it belongs on your website, not like a random pop-up.\n\n1. Find the **Customisation** or **Style** tab in the chatbot panel.\n2. Choose a **theme colour** (using your brand’s primary colour) that matches your existing website layout.\n3. Upload a small logo or a friendly icon to serve as your chatbot's profile picture.\n4. Choose where the chat bubble should sit on your screen—usually, the bottom right-hand corner is best, as this is where most web users expect to find help.\n\n---\n\n## Step 4 — Copy your chatbot widget code\nTo connect your new chatbot to WordPress, we need to grab a tiny piece of **HTML code** (a snippet of web instructions that tells your website to display the chat window).\n\n1. Once you are happy with your settings, click the **Publish** or **Deploy** button.\n2. Look for a section called **Embed Code** or **Web Widget**.\n3. You will see a small box of code starting with `<script>`. Click **Copy** to save this code to your computer's clipboard.\n\n---\n\n## Step 5 — Paste the code into WordPress\nNow, we will paste that code into WordPress. We will do this by putting it in your website's \"footer,\" which is the very bottom section of your site that appears on every single page.\n\n1. Log in to your WordPress dashboard.\n2. In the left-hand menu, go to **Appearance** and then **Widgets** (or use a free plugin like \"Insert Headers and Footers\" if you prefer an easier layout).\n3. Add a **Custom HTML** block to your footer area.\n4. Paste the code you copied from Alibaba Cloud into this block.\n5. Click **Update** or **Save** at the top right of your WordPress screen.\n\n---\n\n## Common mistakes\n- **Leaving the chatbot completely untrained:** A chatbot that only says \"I don't know\" frustrates customers. Take five minutes to type in your business hours and contact details in the chatbot's knowledge settings.\n- **Letting the chat window block important buttons:** Test your website on a mobile phone. Make sure the new chat bubble does not cover up key navigation buttons or checkout links.\n- **Forgetting to test as a visitor:** Open your website in a private browser window to see exactly what your customers see, and send a test message to ensure it replies correctly.\n\n---\n\n## What this means for you\n\n- **In everyday life:** You can reclaim your evenings. Instead of answering repetitive emails about opening hours while dinner gets cold, your chatbot handles them.\n- **For your business or work:** You will capture leads and enquiries from potential clients who visit your website late at night, long after your physical doors have closed.\n- **If you're just getting started:** You don't need to build a complex AI system. A simple greeting and a list of frequently asked questions are all you need to make a great first impression.\n\n---\n\n## Try it now\nLog into your WordPress dashboard, install a free headers/footers plugin, and find where you can paste code scripts. Just finding this area takes less than two minutes and prepares your website for any smart tools you want to add in the future.",
+  "original_title": "Add an AI chatbot to your small business site using Alibaba Cloud"
+}

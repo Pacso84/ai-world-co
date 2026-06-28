@@ -1,60 +1,53 @@
 {
   "_meta": {
-    "written_at": "2026-06-27T02:16:27.185Z",
+    "written_at": "2026-06-28T02:33:27.208Z",
     "writer_provider": "google",
     "writer_model": "gemini-flash-latest",
-    "writer_cost_usd": 0.001322925,
+    "writer_cost_usd": 0.001201875,
     "original_draft": "2026-06-07T20-02-45-880Z_openai-blog_Dreaming__Better_memory_for_a_more_helpful_ChatGPT.json",
     "source_id": "openai-blog",
     "source_name": "OpenAI Blog",
     "source_link": "https://openai.com/index/chatgpt-memory-dreaming",
     "status": "published",
-    "rejected_at": "2026-06-27T02:15:43.974Z",
+    "published_at": "2026-06-28T02:34:05.758Z",
     "auto_check": {
       "passed": true,
       "issues": [],
-      "wordCount": 776
+      "wordCount": 626
     },
     "ai_review": {
       "overall_score": 9,
       "decision": "PASS",
       "issues": [
-        "minor cliches possible"
+        "minor lack of specific examples in wrap-up"
       ],
-      "verdict": "The article is well-structured, explanatory, and respectful, making it suitable for publication, but minor adjustments can further refine the language to avoid potential cliches.",
-      "_aiCost": 0.00104529,
+      "verdict": "The article effectively explains ChatGPT's memory feature in a clear, friendly manner, making it suitable for everyday people, and it follows the required structure and brand voice guidelines.",
+      "_aiCost": 0.00096291,
       "_provider": "groq",
       "_model": "llama-3.3-70b-versatile",
       "_attempts": 1
     },
-    "reason": "Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben",
-    "can_retry": true,
-    "rework_attempts": 1,
-    "reworked_from": "REJECTED_2026-06-07T20-02-45-880Z_openai-blog_Dreaming__Better_memory_for_a_more_helpful_ChatGPT.json",
-    "requeued_unchanged": false,
-    "published_at": "2026-06-27T02:16:27.911Z",
     "pairing_checked": true,
-    "pairing_checked_at": "2026-06-27T02:16:29.678Z",
-    "guide_worthy": false,
-    "pairing_reason": "The article does not introduce a specific named feature or tool, but rather a general concept of AI memory",
+    "pairing_checked_at": "2026-06-28T02:34:47.292Z",
+    "guide_worthy": true,
+    "related_guide_topic": "chatgpt-memory",
     "seo": {
-      "meta_description": "Discover how AI assistants can learn your habits and needs, making interactions more personalised and efficient with AI memory",
+      "meta_description": "Learn how to use ChatGPT's memory feature to save time daily by teaching your AI assistant your preferences and work style for personalized support",
       "keywords": [
-        "AI memory",
-        "personalised AI assistants",
-        "teaching AI preferences",
-        "AI learning habits",
-        "customising digital assistants"
+        "ChatGPT memory feature",
+        "how to use ChatGPT",
+        "AI assistant personalization",
+        "time saving tips for ChatGPT"
       ],
       "seo_score": 8,
       "suggestions": [
-        "Add a section on implementing AI memory in popular virtual assistants",
-        "Include examples of AI memory in real-life applications",
-        "Optimise subheadings with relevant long-tail keywords"
+        "Add a step-by-step guide to enabling the memory feature",
+        "Include examples of how the memory feature can be used in daily life",
+        "Optimize subheadings with relevant keywords"
       ],
-      "optimised_at": "2026-06-27T02:18:56.783Z"
+      "optimised_at": "2026-06-28T02:37:14.084Z"
     }
   },
-  "article_markdown": "---\ntitle: \"Teach Your AI Assistant to Remember Your Preferences\"\nsubtitle: \"Discover how AI memory helps your digital assistant learn your habits and needs, making every interaction more personalised and efficient.\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"ai-memory\", \"personalisation\", \"productivity\", \"getting-started\"]\n---\n\n# Teach Your AI Assistant to Remember Your Preferences\n\nHave you ever found yourself repeating your dietary requirements or business style guide to a digital assistant every single time you start a new chat? It can feel a bit like meeting a new colleague every morning who has completely forgotten your name and how you like your coffee. \n\nFortunately, newer AI tools can now remember who you are and what you prefer, building on your past conversations to offer truly tailored help.\n\n## What is AI memory?\n\nTraditionally, when you talk to an AI, it relies on its context window (the temporary memory space an AI uses to follow the flow of a single, ongoing conversation). Think of it like a physical whiteboard: the AI can see everything written on the board during your current chat, but as soon as you close that chat or start a new session, the board is wiped completely clean. This is why you often have to remind it of your favourite colour or your company’s tone of voice every single time you open a new window.\n\nAI memory, however, introduces persistent memory (a long-term storage system that saves key facts across different days and entirely separate chats). It acts like a digital notepad where the AI jots down important details about you. The next time you ask for help, it quietly references those notes to give you a highly relevant answer.\n\n## How you control what your AI remembers\n\nThe best part about this feature is that you are entirely in control of what your assistant keeps on its digital notepad. You can explicitly type a prompt (the instruction or question you give to an AI) telling it to remember something, or the AI can automatically pick up on details you mention frequently. \n\nMost systems that use memory provide simple settings to help you manage this information:\n\n*   **View stored memories:** You can open a dedicated settings menu to read a list of every fact the AI has saved about you.\n*   **Edit or delete details:** If you change your job title, move to a new suburb, or no longer need a specific project style remembered, you can delete that memory with a single click.\n*   **Turn memory off entirely:** If you prefer your chats to start with a completely clean slate every time, you can toggle the memory switch off in your settings.\n\n## Practical ways to use AI memory\n\nOnce you enable memory, your daily tasks become much smoother because you no longer need to write long explanations. Here are a few ways to use it:\n\n*   **For cooking and meal planning:** Tell your AI once that you cook for a family of four, prefer gluten-free meals, and dislike spicy food. Every recipe it suggests from that point on will automatically fit those boundaries.\n*   **For writing and study:** If you are a visual learner, let your AI know. When you ask it to explain a complex topic, it will automatically use analogies and suggest visual layouts to help you learn.\n*   **For professional tasks:** Share your organisation's brand guidelines, your preferred email signature, or the spelling of your client's name. The AI will apply these details to every draft it creates for you, saving you valuable editing time.\n\n## What this means for you\n\n*   **In everyday life:** You will spend far less time typing out repetitive background information. Your assistant becomes a helpful companion that remembers your family's dietary needs, your hobbies, and your personal goals.\n*   **For your business or work:** You can maintain a consistent professional standard. Whether you are drafting emails, organising project tasks, or writing reports, the AI will automatically align with your work style and company rules.\n*   **If you are just getting started:** Open your favourite AI tool, head to the settings to ensure memory is enabled, and type: *\"Remember that I prefer short, bullet-point summaries whenever I ask for information.\"* Watch how it adapts its next response to match your preference.\n\n## Wrap-up\n\nAllowing your digital assistant to remember your preferences makes your daily interactions much faster and more natural. By taking a few moments to teach your AI your specific needs today, you can stop repeating yourself and enjoy a tool that is genuinely customised to your life and work. Try sharing just one preference today to see how much easier your next conversation becomes.",
+  "article_markdown": "---\ntitle: \"How to Use ChatGPT's Memory Feature to Save Time Every Day\"\nsubtitle: \"Teach your AI assistant your preferences, work style, and daily routines so you never have to repeat your instructions.\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"chatgpt\", \"productivity\", \"ai-tips\", \"getting-started\"]\n---\n\n# How to Use ChatGPT's Memory Feature to Save Time Every Day\n\nThink about how nice it is when your local barista remembers your exact coffee order without you having to say a word. In the digital world, typing the same background information every time you start a new chat with an AI can quickly feel like a chore. \n\nThankfully, you do not have to repeat yourself. With the memory feature in ChatGPT, your AI assistant can remember key details about your life, work, and preferences across different conversations. This means you can build a highly personalised companion that understands your context (the background information that helps the AI understand what you need) without starting from scratch every time.\n\n## How the memory feature works\n\nUnlike a standard chat where the AI forgets everything the moment you close the window, memory allows ChatGPT to carry important details over to new chats. \n\nThere are two ways the AI gathers these memories:\n\n1. **Explicitly**: You can directly tell the AI to remember something. For example, you might type: *\"Remember that I prefer short, bullet-point summaries with Australian spelling.\"*\n2. **Implicitly**: The AI can automatically pick up details from your conversations. If you mention that you are planning a vegetarian dinner party, it might save \"prefers vegetarian recipes\" to its memory bank.\n\nWhenever ChatGPT saves a memory, you will see a small notification at the top of your screen. \n\n## How to manage and edit what is remembered\n\nYou are always in complete control of what the AI remembers. You do not have to worry about old or incorrect information cluttering up your chats.\n\nTo view or change these details, simply navigate to your settings. Click on your profile picture, select **Settings**, then go to **Personalisation** and choose **Manage Memory**. Here, you will see a tidy list of every fact the AI has saved. You can click the bin icon next to any memory to delete it instantly, or you can simply tell the AI in a normal chat: *\"Forget that I am learning Spanish.\"*\n\n## What this means for you\n\nHaving an AI that remembers your preferences can make your daily routine much smoother. Here is how you can make the most of it:\n\n- **For your everyday life**: Teach the AI about your family's dietary requirements, your favourite fitness goals, or the draft of a novel you are writing. The next time you ask for a meal plan, it will automatically exclude ingredients you dislike without you needing to prompt (the written instructions or questions you type into the AI) it.\n- **For your business or work**: Save your business's target audience, your brand's tone of voice, or your preferred email templates. When you ask the AI to draft a newsletter, it will use your established style automatically, saving you from constant editing.\n- **If you're just getting started**: Try starting a chat with a simple instruction like: *\"Remember that I am a primary school teacher who loves creative writing.\"* See how its subsequent suggestions naturally tailor themselves to your profession.\n\n## Wrap-up\n\nTaking a few moments to set up ChatGPT's memory is like training a helpful assistant who actually listens. By letting the AI keep track of the small details, you can spend less time typing out background information and more time getting things done. To get started today, open a new chat and type in three key facts about your work or hobbies that you want the AI to remember.",
   "original_title": "Dreaming: Better memory for a more helpful ChatGPT"
 }

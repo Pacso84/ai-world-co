@@ -1,0 +1,57 @@
+{
+  "_meta": {
+    "type": "guide",
+    "guide_topic_id": "summarise-documents-instantly-with-mistral-ai-s-tiny-model-s",
+    "company": "Mistral",
+    "tool": "Mistral AI",
+    "icon": "📝",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-06-28T02:35:39.821Z",
+    "writer_provider": "google",
+    "writer_model": "gemini-flash-latest",
+    "writer_cost_usd": 0.001222575,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-06-28T02:36:57.357Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 777
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "decision": "PASS",
+      "issues": [
+        "missing Australian English checks",
+        "some minor cliches"
+      ],
+      "verdict": "The article is well-structured and provides clear explanations, making it suitable for everyday people, but it requires minor adjustments to ensure consistency with Australian English and avoid cliches.",
+      "_aiCost": 0.0010828799999999998,
+      "_provider": "groq",
+      "_model": "llama-3.3-70b-versatile",
+      "_attempts": 1
+    },
+    "seo": {
+      "meta_description": "Summarise long documents instantly with Mistral AI's tiny-model summariser, turning reports into easy-to-read paragraphs in under a minute",
+      "keywords": [
+        "document summariser",
+        "Mistral AI",
+        "AI document summary",
+        "PDF summariser",
+        "instant document summary"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add header tags to structure the article",
+        "Include a brief introduction to Mistral AI for new users",
+        "Use alt text for any images of the chat platform"
+      ],
+      "optimised_at": "2026-06-28T02:37:18.547Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Summarise documents instantly with Mistral AI’s tiny‑model summariser\"\nsubtitle: \"Learn how to upload any PDF or Word file to Mistral AI and get a clear, one-paragraph summary in seconds.\"\ncategory: \"guide\"\naudience: \"both\"\ncompany: \"Mistral\"\ntool: \"Mistral AI\"\nlevel: \"beginner\"\nread_time_minutes: 4\ntags: [\"getting-started\", \"mistral-ai\", \"productivity\"]\n---\n\n# Summarise documents instantly with Mistral AI’s tiny‑model summariser\n\n**Hook:** Getting buried under long reports, manuals, or essays is a common headache. This guide shows you how to use Mistral AI’s smart platform to turn thick documents into a single, easy-to-read paragraph in under a minute.\n\n## Before you start\n- **A free account:** You will need a free account on Mistral AI's chat platform.\n- **A document:** Have a PDF or Word document (.docx) ready on your computer or phone.\n\n---\n\n## Step 1 — Log in to the chat interface\nOpen your web browser and navigate to the official Mistral AI chat platform, known as *le Chat*. Think of this platform as a messaging app, but instead of texting a friend, you are chatting with an AI model (a giant digital brain trained to understand and generate text). \n\nIf you do not have an account yet, you can sign up for free using your email address in just a few moments.\n\n💬 **Example:** Once you are logged in, you will see a clean, simple screen with a text box at the bottom, very similar to a standard text messaging screen.\n\n---\n\n## Step 2 — Locate and use the upload button\nBefore you can ask the AI to read your file, you need to share the file with it. This process is called uploading. \n\nLook at the text box at the bottom of the screen. Inside or right next to this box, you will see a small paperclip icon or a plus symbol. This is the attachment button.\n\n1. Click the paperclip icon.\n2. A window will open showing the files on your device.\n3. Select the PDF or Word document you want to summarise and click **Open**.\n\n💬 **Example:** You will see a small rectangular icon representing your file appear just above the text box, showing that the AI has successfully received the document.\n\n---\n\n## Step 3 — Type your summary request\nNow you need to tell the AI exactly what to do with the file. We do this by writing a *prompt* (a plain-English instruction you give to an AI to guide its behaviour). \n\nTo get the best result from a smaller, faster AI model, it helps to be highly specific about the length and style of the output you want.\n\n💬 **Example:** In the text box, type the following message:\n> \"Please read this attached document and provide a clear, easy-to-understand summary of the main points in exactly one paragraph.\"\n\n---\n\n## Step 4 — Send the request and read your summary\nOnce your file is attached and your prompt is typed, press the send button (usually shaped like a paper plane or an upward arrow next to your text box) or hit the **Enter** key on your keyboard.\n\nThe AI will process the document. Because Mistral's smaller models are highly optimised (built to run fast and light, like a compact car), your summary should appear on your screen in just a few seconds.\n\n---\n\n## Common mistakes\n- **Uploading image-only files:** If you upload a PDF that is just a photograph of printed paper, the AI might struggle to read the text. Always try to use digital documents where you can highlight and select the text with your cursor.\n- **Being too vague:** If you just say \"summarise this\", the AI might write a response that is much longer than you want. Always specify that you want \"one paragraph\" or \"three bullet points\".\n\n---\n\n## What this means for you\n\n- **In everyday life:** You can quickly upload long home appliance manuals or rental agreements to find the specific information you need without reading pages of fine print.\n- **For your business or work:** You can stay on top of industry newsletters, project proposals, or meeting minutes by digesting them in seconds rather than letting them pile up in your inbox.\n- **If you're just getting started:** This is the gentlest way to build confidence with AI. You do not need to learn complex code; you simply have a natural conversation with a helpful assistant.\n\n---\n\n## Try it now\nFind a short PDF or Word document on your computer right now. Log in to Mistral's chat platform, upload the file, and type: *\"Give me a single-paragraph summary of this document.\"* Watch how quickly it organises the key ideas for you!",
+  "original_title": "Summarise documents instantly with Mistral AI’s tiny‑model summariser"
+}

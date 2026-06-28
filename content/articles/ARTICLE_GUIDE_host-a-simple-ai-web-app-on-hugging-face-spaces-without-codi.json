@@ -1,0 +1,56 @@
+{
+  "_meta": {
+    "type": "guide",
+    "guide_topic_id": "host-a-simple-ai-web-app-on-hugging-face-spaces-without-codi",
+    "company": "Hugging Face",
+    "tool": "Spaces",
+    "icon": "🚀",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-06-28T02:36:55.370Z",
+    "writer_provider": "google",
+    "writer_model": "gemini-flash-latest",
+    "writer_cost_usd": 0.002403525,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-06-28T02:36:56.524Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 802
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "decision": "PASS",
+      "issues": [
+        "minor formatting",
+        "no prohibited content found"
+      ],
+      "verdict": "The article meets all the requirements, providing a clear, step-by-step guide in a friendly tone, making it suitable for publication.",
+      "_aiCost": 0.0011062499999999998,
+      "_provider": "groq",
+      "_model": "llama-3.3-70b-versatile",
+      "_attempts": 1
+    },
+    "seo": {
+      "meta_description": "Host a simple AI web app without coding using Hugging Face Spaces, learn how to copy, customize and publish your own free interactive AI demo in minutes",
+      "keywords": [
+        "host AI web app",
+        "Hugging Face Spaces",
+        "no code AI",
+        "custom AI demo"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add a step-by-step screenshot guide to improve tutorial clarity",
+        "Include a brief overview of the benefits of using Hugging Face Spaces",
+        "Use header tags to structure the article and highlight key points"
+      ],
+      "optimised_at": "2026-06-28T02:37:16.347Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Host a simple AI web app on Hugging Face Spaces without coding\"\nsubtitle: \"Learn how to copy, customise, and publish your own free, interactive AI demo in minutes.\"\ncategory: \"guide\"\naudience: \"personal\"\ncompany: \"Hugging Face\"\ntool: \"Spaces\"\nlevel: \"beginner\"\nread_time_minutes: 4\ntags: [\"getting-started\", \"no-code\", \"hugging-face\"]\n---\n\n# Host a simple AI web app on Hugging Face Spaces without coding\n\n**Hook:** Want to show off a cool AI tool to your friends or colleagues, but don't know how to code an app from scratch? This guide will show you how to find a ready-made AI app, customise it, and launch it on the web for free.\n\n## Before you start\n- **Create a free account:** Head to the Hugging Face website and sign up. Hugging Face is like a giant, open-source library where people share AI models (the smart \"brains\" behind AI) and code.\n- **No software needed:** Everything we do today happens inside your web browser.\n\n## Step 1 — Explore the Spaces library\nFirst, let's find a simple app to copy. Hugging Face has a feature called **Spaces** (hosting environments that let you run mini web applications directly in your browser). \n\n1. Once logged in, click on **Spaces** in the main top menu.\n2. You will see a list of popular, trending apps. In the search bar at the top of the Spaces page, search for a simple utility, such as a \"text summariser\" or \"image generator\".\n3. Click on one of the search results to open it. Look for an app that uses **Gradio** or **Streamlit** (these are just user-friendly tools that turn AI models into pretty, clickable web pages).\n\n💬 *Example:* Search for \"simple image generator\" and click on a popular community-made tool that lets you type a prompt and see a picture.\n\n## Step 2 — Duplicate the Space\nTo make this app your own without writing any code, we are going to \"duplicate\" it. Think of duplicating like taking a digital photocopy of the entire project so you can control it in your own account.\n\n1. Look at the top right-hand corner of the Space you have opened.\n2. Click the button with **three vertical dots** (or a settings gear, depending on current website layouts).\n3. Select **Duplicate this Space** from the dropdown menu.\n\n## Step 3 — Customise your settings\nA new screen will appear, asking how you want to set up your copied app. This is where you make it yours.\n\n1. **Owner:** This will show your username.\n2. **Space name:** Give your app a unique, friendly name. Use lowercase letters and hyphens.\n3. **Visibility:** Choose **Public** if you want to share the link with friends, or **Private** if you want to keep it to yourself.\n4. **Hardware:** Keep this on the **Free CPU basic** tier. Hugging Face offers powerful paid computers to run heavy apps, but the free option is perfect for simple tools.\n\n💬 *Example:* Rename your Space to `my-first-image-generator` and set the visibility to Public.\n\n## Step 4 — Launch and run your web app\nOnce you click the **Duplicate Space** button at the bottom of the form, Hugging Face will start assembling your app.\n\n1. You will see a status bar at the top showing \"Building\". This means the system is setting up the computer in the background to run your app.\n2. Wait two to three minutes. Once the status changes to a green \"Running\" badge, your app is live!\n3. Type a prompt into your new app and click the action button to see it work.\n\n## Common mistakes\n- **Selecting paid hardware:** When duplicating, make sure you do not accidentally select a paid GPU (graphics processing unit—a powerful chip used for heavy AI tasks). Always stick to the option marked \"Free\" so you do not get billed.\n- **Changing files by mistake:** Your Space has a tab called \"Files and versions\". Avoid editing these unless you want to dive into the code. The app works perfectly fine out of the box.\n\n## What this means for you\n\n- **In everyday life:** You can easily create personalised AI tools—like a custom recipe generator or bedtime story writer—to share directly with family members via a simple web link.\n- **For your business or work:** You can build quick interactive prototypes of AI tools to show your team what is possible, without spending thousands of dollars on software developers.\n- **If you're just getting started:** Duplicating Spaces is the gentlest way to understand how web apps interact with AI models behind the scenes, giving you confidence without the frustration of coding errors.\n\n## Try it now\nOpen Hugging Face in a new tab, search for a simple \"AI chatbot\" Space, and click the duplicate button. Within five minutes, you will have your very own custom chat page to share.",
+  "original_title": "Host a simple AI web app on Hugging Face Spaces without coding"
+}

@@ -1,54 +1,61 @@
 {
   "_meta": {
-    "written_at": "2026-06-27T02:12:38.016Z",
+    "written_at": "2026-06-28T02:34:15.457Z",
     "writer_provider": "google",
     "writer_model": "gemini-flash-latest",
-    "writer_cost_usd": 0.0011904,
+    "writer_cost_usd": 0.001279425,
     "original_draft": "2026-06-07T20-02-45-881Z_google-ai-blog_The_latest_AI_news_we_announced_in_May_2026.json",
     "source_id": "google-ai-blog",
     "source_name": "Google AI (blog.google)",
     "source_link": "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-may-2026/",
     "status": "published",
-    "published_at": "2026-06-27T02:15:44.453Z",
+    "rejected_at": "2026-06-28T02:34:05.759Z",
     "auto_check": {
       "passed": true,
       "issues": [],
-      "wordCount": 585
+      "wordCount": 689
     },
     "ai_review": {
       "overall_score": 9,
       "decision": "PASS",
       "issues": [
-        "minor factual detail missing",
-        "no specific examples of Australian use cases"
+        "minor lack of Australian English spellings in source metadata",
+        "no issues found in article content"
       ],
-      "verdict": "The article clearly explains Google's Gemini AI features in an accessible and friendly tone, with a well-structured format and no prohibited content, making it suitable for publication.",
-      "_aiCost": 0.00093873,
+      "verdict": "The article effectively explains technical terms, provides a clear structure, and offers practical advice, making it suitable for publication.",
+      "_aiCost": 0.0010091199999999999,
       "_provider": "groq",
       "_model": "llama-3.3-70b-versatile",
       "_attempts": 1
     },
+    "reason": "Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-06-07T20-02-45-881Z_google-ai-blog_The_latest_AI_news_we_announced_in_May_2026.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-06-28T02:34:27.316Z",
     "pairing_checked": true,
-    "pairing_checked_at": "2026-06-27T02:16:31.186Z",
+    "pairing_checked_at": "2026-06-28T02:34:55.802Z",
     "guide_worthy": true,
     "related_guide_topic": "gemini-getting-started",
     "seo": {
-      "meta_description": "Learn how to use Google's new Gemini AI features in daily apps like Gmail and Docs to save time and increase productivity with smart summaries and more",
+      "meta_description": "Use Google's latest AI features to simplify daily tasks, from trip planning to email drafting, with Gemini's newest updates.",
       "keywords": [
-        "Google Gemini AI",
-        "AI features in Gmail",
-        "productivity tips with AI",
-        "using AI in daily apps"
+        "Google AI features",
+        "Gemini updates",
+        "daily life organization",
+        "AI assistants",
+        "productivity tools"
       ],
       "seo_score": 8,
       "suggestions": [
-        "Add subheadings with relevant keywords",
-        "Include examples of AI-powered features in action",
-        "Optimize images with descriptive alt tags"
+        "Add subheadings to break up the content",
+        "Include relevant images or screenshots of Gemini in action",
+        "Provide concrete examples of how Gemini's updates can be applied to daily life"
       ],
-      "optimised_at": "2026-06-27T02:18:57.227Z"
+      "optimised_at": "2026-06-28T02:37:14.609Z"
     }
   },
-  "article_markdown": "---\ntitle: \"How to Use Google's New Gemini AI Features in Your Daily Apps\"\nsubtitle: \"Discover how the latest updates to Google's built-in helper can save you time when writing emails, planning trips, and searching the web.\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"google-gemini\", \"productivity-tools\", \"getting-started\"]\n---\n\n# How to Use Google's New Gemini AI Features in Your Daily Apps\n\nImagine opening your laptop in the morning to a mountain of unread emails, or trying to plan a weekend family getaway with twenty open browser tabs. Google has recently rolled out updates to its built-in AI assistant, Gemini, making it much easier to handle these daily tasks directly inside the tools you already use.\n\nRather than visiting a separate website to use AI, you can now find these helpful features waiting for you in your inbox, your documents, and your search bar. Here is how to make the most of these new updates in your day-to-day life.\n\n## Smart Summaries in Gmail and Docs\n\nIf you find yourself drowning in long email chains, you can now let the AI do the heavy reading. Google has integrated Gemini directly into Google Workspace (the collection of online office apps like Google Docs, Sheets, and Gmail). \n\nBecause of an increased context window (how much text the AI can \"remember\" and look at in one go), the assistant can now read, analyse, and summarise thousands of words of email threads or long reports in seconds.\n\nTo use this feature:\n1. Open a long email thread or a document on your computer.\n2. Click the Gemini icon (it looks like a small, colourful sparkle) in the top-right corner of your screen.\n3. Select \"Summarise this email\" or type a prompt (the simple instruction you give to an AI) such as, \"What are the main action items from this discussion?\"\n\n## Smarter Planning in Google Search\n\nPlanning a trip or researching a big purchase usually involves clicking through dozens of different websites to compare options. Google Search now uses AI to do that legwork for you, turning search results into organised, ready-to-use plans.\n\nFor example, if you want to plan a weekend trip to Melbourne, you can type a highly specific question into the search bar. Try asking: \"Create a two-day itinerary for a family in Melbourne, focusing on free outdoor activities, and group the suggestions by suburb.\" \n\nThe search engine will gather information from across the web, organise it into a clean table, and give you direct links to the sources if you want to read further.\n\n## What this means for you\n\n*   **For your everyday life**: You can quickly organise busy family schedules, draft polite RSVP emails, or summarise long school newsletters without spending your evenings staring at a screen.\n*   **For your business or work**: You can write professional email replies faster, draft meeting agendas in Docs, and analyse spreadsheets in Sheets using simple, everyday English.\n*   **If you're just getting started**: Open Gmail on your computer today, look for the sparkle icon in the top-right corner, and ask it to find and summarise your latest online shopping delivery updates.\n\n## Wrap-up\n\nThese new updates mean you do not need to be a technology expert to benefit from AI. By building these capabilities straight into the apps we already use, Google has made it easier than ever to save time on mundane tasks. Try clicking the sparkle icon in your Gmail inbox today to see how much time you can save on your very next email.",
+  "article_markdown": "---\ntitle: \"How to Use Google's Latest AI Features to Organise Your Daily Life\"\nsubtitle: \"Discover how the newest updates to Gemini can help you plan trips, draft emails, and sort your messy files in seconds.\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"google-gemini\", \"productivity\", \"digital-organisation\"]\n---\n\n# How to Use Google's Latest AI Features to Organise Your Daily Life\n\nImagine sitting at your kitchen table with a cup of tea, staring at a cluttered inbox and trying to plan a family weekend away while also prepping for a big work meeting. It is easy to feel overwhelmed by the sheer volume of digital coordination required to keep our daily lives on track.\n\nGoogle has rolled out a suite of updates to its AI assistant, Gemini (a tool designed to help you process information and write content), making it much easier to handle these exact moments. Instead of hopping between web searches, spreadsheets, and emails, you can now use these tools together in one place to simplify your daily routine.\n\n## The power of helper tools in your side panel\n\nOne of the most practical updates is the smarter side panel in tools like Google Docs and Gmail. You no longer need to open a separate browser tab to chat with the AI.\n\nTo make the most of this, try these steps:\n\n1. **Open the side panel**: Click the Gemini icon (the sparkly diamond symbol) in the top-right corner of Gmail or Docs.\n2. **Ask for a summary**: If you are looking at a long email thread about an upcoming school project or work event, type a prompt (the instruction you give to the AI) like: *\"Summarise the main decisions and list the action items.\"*\n3. **Draft a reply on the spot**: You can immediately ask the assistant to draft a polite response based on that summary, saving you from staring at a blank screen.\n\n## Planning complex tasks with multimodal search\n\nThe latest updates also improve how the AI handles multimodal requests. In plain terms, multimodal means the ability of an AI to process different types of information—like text, images, and voice—at the same time. \n\nFor example, if you are planning a backyard renovation, you can upload a photo of your lawn and ask: *\"What kind of low-maintenance native plants would grow well in a spot that looks like this, and how should I arrange them?\"* The AI will analyse the photo, search for local planting guides, and lay out a step-by-step garden plan for you.\n\n## Smart planning in Google Sheets\n\nIf you dread setting up budgets or schedules, the updated AI features can now build complex templates for you. By opening Google Sheets and asking the assistant to *\"create a monthly household budget tracker with categories for groceries, petrol, and streaming services\"*, it will generate a fully formatted table complete with formulas (the mathematical rules used to calculate totals) automatically.\n\n## What this means for you\n\n*   **In everyday life**: You can streamline your personal planning. Use the AI in Google Docs to plan a weekly meal schedule, generate a shopping list based on those meals, and format it so it is easy to read on your phone at the supermarket.\n*   **For your business or work**: You can tackle administrative bottlenecks faster. Use the Gemini sidebar in Gmail to quickly find specific details hidden in long client conversations, or ask it to draft professional follow-up messages in your preferred tone.\n*   **If you're just getting started**: Open a blank Google Doc, click the little pen icon on the left margin, and type: *\"Write a checklist of things to pack for a winter camping trip.\"* It is a simple, risk-free way to see how the tool responds to your needs.\n\n## Wrap-up\n\nGetting organised does not have to feel like a second job. By letting Google's updated assistant handle the heavy lifting of sorting, summarising, and formatting, you can reclaim your time for the things that actually matter. Try opening Gmail or a Google Doc today, and ask the AI to summarise a long email thread—you might be surprised by how much lighter your afternoon feels.",
   "original_title": "The latest AI news we announced in May 2026"
 }
