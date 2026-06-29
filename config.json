@@ -30,6 +30,18 @@
       "enabled": true,
       "comment": "Orkesztrálás egyszerű feladat - Haiku elég ($1/$5 vs Sonnet $3/$15). Fallback: Gemini Flash (ingyen)."
     },
+    "boss": {
+      "primary_model": {
+        "provider": "google",
+        "model": "gemini-2.5-flash"
+      },
+      "fallback_model": {
+        "provider": "groq",
+        "model": "llama-3.3-70b-versatile"
+      },
+      "enabled": true,
+      "comment": "A Telegram-FŐNÖK beszélgető agya (instruct.js). Gemini 2.5-flash a jó magyar társalgásért; fallback groq/cerebras, ha a Gemini kimerül (a budget-guard/quota dönti). Csak a chat-választ generálja, nem a tartalmat."
+    },
     "rss-scraper": {
       "primary_model": {
         "provider": "groq",
