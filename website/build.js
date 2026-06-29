@@ -352,8 +352,8 @@ function pageShell({ title, description, bodyContent, isArticle = false, noIntro
   // hreflang + nyelvváltó (minden oldalnak ugyanaz a pagePath-ja minden nyelven)
   const hreflang = SITE_LANGS.map(l => `<link rel="alternate" hreflang="${l}" href="${SITE.url}${langPrefix(l)}/${pagePath}">`).join('\n  ')
     + `\n  <link rel="alternate" hreflang="x-default" href="${SITE.url}/${pagePath}">`;
-  const langSwitcher = `<select class="lang-select" onchange="if(this.value)location.href=this.value" aria-label="${T.language}" style="background:transparent;border:1px solid var(--line-strong);border-radius:8px;color:var(--ink);font:inherit;font-size:13px;padding:7px 6px;cursor:pointer">
-        ${SITE_LANGS.map(l => `<option value="${SITE.url}${langPrefix(l)}/${pagePath}" ${l === LANG ? 'selected' : ''}>${LANG_NAME[l]}</option>`).join('')}
+  const langSwitcher = `<select class="lang-select" onchange="if(this.value)location.href=this.value" aria-label="${T.language}" style="background-color:var(--card);color:var(--ink);border:1px solid var(--line-strong);border-radius:8px;font:inherit;font-size:13px;padding:7px 6px;cursor:pointer;color-scheme:light dark">
+        ${SITE_LANGS.map(l => `<option value="${SITE.url}${langPrefix(l)}/${pagePath}" ${l === LANG ? 'selected' : ''} style="background-color:var(--card);color:var(--ink)">${LANG_NAME[l]}</option>`).join('')}
       </select>`;
   return `<!DOCTYPE html>
 <html lang="${HTML_LANG[LANG] || 'en'}">
