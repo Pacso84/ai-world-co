@@ -63,6 +63,7 @@ function parseArgs() {
     skipDesign: args.includes('--skip-design'),
     skipSeo: args.includes('--skip-seo'),
     skipPublish: args.includes('--skip-publish'),
+    skipTranslate: args.includes('--skip-translate'),
     reportOnly: args.includes('--report'),
     dryRun: args.includes('--dry-run')
   };
@@ -519,6 +520,16 @@ async function main() {
     console.log('\n━━━ 5b. LÉPÉS: HONLAP-SZERKESZTŐ AGENT (layout) ━━━');
     const result = await runAgent('agents/designer/web-designer.js');
     session.stages.web_designer = { exit_code: result.code };
+  }
+
+  // 5c. FORDÍTÓ — a publikálás (build) ELŐTT fut, hogy az új cikkek lefordítva
+  //      kerüljenek ki a /hu /es /de /fr oldalakra. Kötegelt + idempotens:
+  //      futásonként max ennyi (article,nyelv) párt fordít, a kész fordításokat
+  //      kihagyja, így pár futás alatt utoléri magát. Free Cerebras (Gemini fallback).
+  if (!args.skipPublish && !args.skipTranslate) {
+    console.log('\n━━━ 5c. LÉPÉS: FORDÍTÓ AGENT (többnyelvűség) ━━━');
+    const result = await runAgent('agents/translator/agent.js', ['--limit', '40']);
+    session.stages.translator = { exit_code: result.code };
   }
 
   // 4f. Publikáló (weboldal build + deploy)

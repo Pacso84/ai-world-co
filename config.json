@@ -42,6 +42,18 @@
       "enabled": true,
       "comment": "A Telegram-FŐNÖK beszélgető agya (instruct.js). Gemini 2.5-flash a jó magyar társalgásért; fallback groq/cerebras, ha a Gemini kimerül (a budget-guard/quota dönti). Csak a chat-választ generálja, nem a tartalmat."
     },
+    "translator": {
+      "primary_model": {
+        "provider": "cerebras",
+        "model": "gpt-oss-120b"
+      },
+      "fallback_model": {
+        "provider": "google",
+        "model": "gemini-2.5-flash"
+      },
+      "enabled": true,
+      "comment": "Cikkek/útmutatók fordítása nyelvenként (nagy volumen!). FREE Cerebras elöl a költség miatt; Gemini fallback a minőségért. A felhasználó: teljes többnyelvű honlap (hu/es/de/fr)."
+    },
     "rss-scraper": {
       "primary_model": {
         "provider": "groq",
