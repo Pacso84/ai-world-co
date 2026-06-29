@@ -49,7 +49,8 @@
 
   // ---------- 3. KATEGÓRIA SZŰRŐ (chipek + navbar menü + hash) ----------
   const filters = document.getElementById('filters');
-  const grid = document.getElementById('grid');
+  // A hír-folyam: a 7 napos, napokra bontott konténer (#newsfeed), vagy a sima #grid
+  const grid = document.getElementById('newsfeed') || document.getElementById('grid');
   const navLinks = document.querySelectorAll('.navbar__nav a[data-nav]');
 
   function applyFilter(filter) {
@@ -59,6 +60,11 @@
       const aud = card.getAttribute('data-audience');
       const show = (filter === 'all') || (aud === filter) || (aud === 'both');
       card.style.display = show ? '' : 'none';
+    });
+    // üres nap-csoportokat (nincs látható kártya) elrejtjük
+    grid.querySelectorAll('.day-group').forEach(group => {
+      const anyVisible = [...group.querySelectorAll('.card')].some(c => c.style.display !== 'none');
+      group.style.display = anyVisible ? '' : 'none';
     });
     // chip aktív állapot
     if (filters) {

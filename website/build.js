@@ -118,6 +118,16 @@ const UI_EXTRA = {
 };
 for (const l of SITE_LANGS) Object.assign(UI[l], UI_EXTRA[l] || {});
 
+// Nap-feliratok a 7 napos hír-archívumhoz
+const UI_DAYS = {
+  en: { past7: 'Past 7 days', today: 'Today', yesterday: 'Yesterday' },
+  hu: { past7: 'Az elmúlt 7 nap', today: 'Ma', yesterday: 'Tegnap' },
+  es: { past7: 'Últimos 7 días', today: 'Hoy', yesterday: 'Ayer' },
+  de: { past7: 'Letzte 7 Tage', today: 'Heute', yesterday: 'Gestern' },
+  fr: { past7: '7 derniers jours', today: "Aujourd'hui", yesterday: 'Hier' }
+};
+for (const l of SITE_LANGS) Object.assign(UI[l], UI_DAYS[l] || {});
+
 // Aktuális nyelv-állapot (a build ciklus állítja nyelvenként)
 let LANG = 'en';
 let LP = '';            // útvonal-prefix: '' (en) vagy '/hu' stb.
@@ -471,27 +481,48 @@ function buildIndex(articles) {
     return pageShell({ title: `${SITE.name} — ${SITE.tagline}`, description: SITE.description, bodyContent: empty, pagePath: '' });
   }
 
-  const [featured, ...rest] = articles;
+  // 7 NAPOS ABLAK: a főoldal az elmúlt 7 nap híreit mutatja, napokra bontva.
+  // A régebbiek lekerülnek a főoldalról (de a saját oldaluk + sitemap megmarad).
+  const DAY = 86400000;
+  const cutoff = Date.now() - 7 * DAY;
+  let recent = articles.filter(a => { const t = new Date(a.publishedAt).getTime(); return t && t >= cutoff; });
+  if (recent.length === 0) recent = articles.slice(0, 6);   // ne legyen üres nyugodt héten
+
+  const [featured, ...rest] = recent;
   const featuredHtml = `<section class="hero">
     <span class="pill">${tr('coverStory')}</span>
     ${articleCard(featured, true)}
   </section>`;
 
-  // Célhasználat (audience) szűrő chipek — a "both" cikkek mindkét szűrőben látszanak
   const chipsHtml = rest.length > 1 ? `<div class="filters" id="filters">
       <button class="chip chip--active" data-filter="all">${tr('all')}</button>
       <button class="chip" data-filter="personal">${tr('personal')}</button>
       <button class="chip" data-filter="business">${tr('business')}</button>
     </div>` : '';
 
+  // Napokra bontás (legújabb nap elöl) — "Ma" / "Tegnap" / dátum fejlécekkel
+  const todayKey = new Date().toISOString().slice(0, 10);
+  const yKey = new Date(Date.now() - DAY).toISOString().slice(0, 10);
+  const dayLabel = (key) => key === todayKey ? tr('today') : (key === yKey ? tr('yesterday') : formatDate(key + 'T12:00:00Z'));
+  const byDay = new Map();
+  for (const a of rest) {
+    const key = (a.publishedAt || '').slice(0, 10) || todayKey;
+    if (!byDay.has(key)) byDay.set(key, []);
+    byDay.get(key).push(a);
+  }
+  const dayGroups = [...byDay.entries()].map(([key, items]) => `<section class="day-group">
+      <h3 class="day-head">${dayLabel(key)}</h3>
+      <div class="grid">${items.map(a => articleCard(a)).join('\n')}</div>
+    </section>`).join('\n');
+
   const grid = rest.length > 0 ? `<section class="grid-section">
     <div class="section-head">
       <span class="pill">${tr('edit')}</span>
-      <h2 class="section-title">${tr('latestNews')}</h2>
+      <h2 class="section-title">${tr('past7')}</h2>
     </div>
     ${chipsHtml}
-    <div class="grid" id="grid">
-      ${rest.map(a => articleCard(a)).join('\n')}
+    <div id="newsfeed">
+      ${dayGroups}
     </div>
   </section>` : '';
 
