@@ -76,12 +76,30 @@ function gatherContext() {
   const last = recent.sort((a, b) => (b.t || '').localeCompare(a.t || '')).slice(0, 5)
     .map(r => `• ${r.guide ? '📘' : '📰'} ${r.title}`).join('\n');
 
+  // Fizetős költés providerenként (ma) + a paid kulcs limit-állapota (quota-state)
+  const provToday = Object.entries(b.byProviderToday || {}).map(([p, v]) => `${p} $${Number(v).toFixed(3)}`).join(', ') || 'semmi fizetős ma';
+  let limited = [];
+  try {
+    const q = JSON.parse(readFileSync(join(ROOT, 'core', 'quota-state.json'), 'utf-8'));
+    const now = Date.now();
+    limited = Object.entries(q).filter(([, v]) => v && new Date(v.until).getTime() > now).map(([m]) => m);
+  } catch { /* */ }
+  const paidStatus = limited.length
+    ? `right now these models are rate-limited and skipped (so we're on free keys): ${limited.join(', ')}`
+    : `the paid key is running fine, not rate-limited right now`;
+
   return `Site: ${SITE_URL}
 Published — news: ${news}, guides: ${guides}, today: ${today}
 Guides per company: ${perCo}
 Guide backlog (queued, not yet written): ${backlog}
-Paid AI spend — today: $${b.today.toFixed(2)}, this month: $${b.month.toFixed(2)} (final stop $${b.monthHardCap})
 Daily limits: news ${CONFIG.limits?.daily_articles_max}, guides ${CONFIG.limits?.daily_guides_max}/day
+
+=== BUDGET / "keret" ===
+Paid AI spend today: $${b.today.toFixed(2)} (by provider: ${provToday})
+Paid AI spend this month: $${b.month.toFixed(2)}
+Paid-key status: ${paidStatus}
+IMPORTANT: the paid Gemini plan is PAY-AS-YOU-GO — there is NO fixed "remaining quota" number we can see. We simply use it until it rate-limits, then auto-switch to the free keys. The $${b.monthHardCap}/month figure is ONLY a safety stop, not "how much is left".
+
 Recently published:
 ${last || '(none yet)'}`;
 }
@@ -99,6 +117,7 @@ WHAT YOU CAN ACTUALLY DO (set "action"):
 - "none" — EVERYTHING ELSE: questions, status, budget, ideas, opinions, explanations, small talk, OR things not wired yet (changing design / schedule / sources / code is coming in a later phase). For "none", put your FULL, helpful, natural answer in "reply", grounded in the live data below.
 
 RULES:
+- BUDGET / "mennyi keretünk van" questions: there is NO fixed remaining number for the paid Gemini plan — it's pay-as-you-go. Answer honestly and usefully: how much we've SPENT so far (today + this month, and which key ate it), whether the paid key is currently rate-limited (so we're temporarily on the free keys), and that you automatically switch to the free keys when it maxes out. Do NOT say "$80 remains" — that $80 is only a safety stop, not the plan's quota. If they want to know "how long the plan lasts", explain we'll see it from the spend trend and from when it starts rate-limiting.
 - News is only written from official company sources — you can't fabricate a news story on an arbitrary topic. If they ask for "news about X", offer a GUIDE on X, or run the pipeline for the latest real news. Explain briefly, don't just refuse.
 - If they ask for something not yet possible (e.g. "change the colours", "post every 2 hours"), say it's coming in the next phase, and offer what you CAN do now. Be helpful, not dismissive.
 - Use the real numbers when asked about status/spend/coverage. Don't invent figures.
