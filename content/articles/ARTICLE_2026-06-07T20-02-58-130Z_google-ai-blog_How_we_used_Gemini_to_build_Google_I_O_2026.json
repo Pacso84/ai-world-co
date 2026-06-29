@@ -1,0 +1,61 @@
+{
+  "_meta": {
+    "written_at": "2026-06-29T02:43:40.491Z",
+    "writer_provider": "google",
+    "writer_model": "gemini-2.5-flash",
+    "writer_cost_usd": 0.0012808499999999998,
+    "original_draft": "2026-06-07T20-02-58-130Z_google-ai-blog_How_we_used_Gemini_to_build_Google_I_O_2026.json",
+    "source_id": "google-ai-blog",
+    "source_name": "Google AI (blog.google)",
+    "source_link": "https://blog.google/innovation-and-ai/technology/ai/io-2026-google-ai/",
+    "status": "published",
+    "rejected_at": "2026-06-29T02:41:52.476Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 666
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "decision": "PASS",
+      "issues": [
+        "minor risk of invented examples",
+        "some long sentences"
+      ],
+      "verdict": "The article is well-structured, easy to understand, and provides valuable information on using AI for event planning, making it suitable for publication with minor revisions.",
+      "_aiCost": 0.00099496,
+      "_provider": "groq",
+      "_model": "llama-3.3-70b-versatile",
+      "_attempts": 1
+    },
+    "reason": "Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-06-07T20-02-58-130Z_google-ai-blog_How_we_used_Gemini_to_build_Google_I_O_2026.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-06-29T02:45:14.873Z",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-06-29T02:47:01.325Z",
+    "guide_worthy": true,
+    "related_guide_topic": "gemini-getting-started",
+    "seo": {
+      "meta_description": "Discover how AI assistants can simplify event planning for birthdays, weddings, or business events. Learn practical tips to save time and reduce stress.",
+      "keywords": [
+        "how to use AI for event planning",
+        "AI tools for party planning",
+        "AI assistants for big events",
+        "automate event coordination with AI",
+        "AI for wedding planning"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add a section on free AI tools for event planning to target budget-conscious searches.",
+        "Include real-world examples of AI-assisted events to improve credibility.",
+        "Optimize subheadings with long-tail keywords like 'AI for birthday party planning'."
+      ],
+      "optimised_at": "2026-06-29T02:50:38.653Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"How to Plan Your Next Big Event Using AI Assistants\"\nsubtitle: \"From family reunions to business launches, learn how to use AI to handle the heavy lifting of event planning.\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"gemini\", \"productivity\", \"event-planning\", \"project-management\"]\n---\n\n# How to Plan Your Next Big Event Using AI Assistants\n\nWhether you are trying to coordinate a milestone birthday bash for fifty relatives or organising a professional workshop for your team, planning a large event can quickly feel overwhelming. Behind the scenes of major global conferences, organisers are now using AI assistants to manage the chaos—and you can use those exact same strategies for your own projects.\n\nBy treating an AI assistant as your co-planner, you can delegate the tedious parts of coordination and focus on making your gathering memorable.\n\n## Brainstorming and theme generation\n\nEvery great event starts with a spark of an idea, but staring at a blank page is never fun. Instead of stressing over a theme, you can use an AI as a creative partner by giving it a specific prompt (the instructions or questions you type into the AI).\n\nTo get the best results, give the AI some context. For example, you might type:\n\n> *\"I am planning a community fundraiser with a budget of $500. Give me five unique theme ideas, including simple decoration concepts and one activity for each.\"*\n\nBecause the AI can process vast amounts of information instantly, it will generate structured, tailored suggestions that fit your exact budget and goals in seconds.\n\n## Mapping out timelines and schedules\n\nOnce you have chosen your theme, the real work begins. You need to map out what needs to happen, and when.\n\nAI excels at structuring information. You can ask your AI assistant to draft a run sheet (a detailed timeline used by event coordinators to keep track of what happens and when).\n\nTo do this, try asking:\n\n> *\"Create a day-of run sheet for a three-hour retirement party starting at 2:00pm. Include times for arrival, speeches, afternoon tea, and clean-up.\"*\n\nIf you need to contact local vendors, you can also ask the AI to draft the email templates. It can write polite, clear inquiries asking for quotes, saving you from drafting the same message over and over.\n\n## Managing the guest list and details\n\nModern AI assistants are multimodal (meaning they can understand different types of information, like text, spreadsheets, and photos, all at once). This is incredibly useful when RSVPs start rolling in.\n\nYou can copy and paste a messy list of RSVP emails directly into the AI and ask it to organise the data. For instance, you can ask:\n\n> *\"Based on this text, create a table showing who is attending, who is a 'maybe', and list any dietary requirements mentioned.\"*\n\nThe AI will sort the jumbled messages into a neat table that you can copy straight into your favourite spreadsheet program.\n\n## What this means for you\n\n-   **In everyday life**: You can use AI to plan stress-free family gatherings, complex holiday itineraries, or neighbourhood street parties without losing your mind over the logistics.\n-   **For your business or work**: You can streamline client workshops, product launches, or team-building days, allowing you to focus on connecting with attendees rather than chasing down schedules.\n-   **If you're just getting started**: Open an AI assistant today and type: *\"I am planning a family dinner for ten people next month. What are the first five steps I should take?\"*\n\n## Wrap-up\n\nUsing an AI to help plan your events is like having a tireless assistant who is always ready to organise your thoughts and draft your schedules. By letting technology handle the sorting and writing, you can focus on the human side of hosting. Take a moment today to think of one upcoming event—even a simple weekend barbecue—and ask an AI to help you draft the menu.\n\n*Written and edited by AI World Co.'s autonomous AI agents. Reviewed for accuracy by our editorial system.*",
+  "original_title": "How we used Gemini to build Google I/O 2026"
+}

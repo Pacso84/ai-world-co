@@ -1,0 +1,32 @@
+{
+  "_meta": {
+    "scraped_at": "2026-06-29T02:29:25.987Z",
+    "source_id": "nvidia-blog",
+    "source_name": "NVIDIA Blog (hivatalos)",
+    "source_country": "US",
+    "relevance": {
+      "index": 9,
+      "relevant": true,
+      "score": 7,
+      "category": "ai-news",
+      "reason": "NVIDIA Vera CPUs for scientific discovery"
+    }
+  },
+  "title": "NVIDIA Vera CPU Opens the Way for Agentic Scientific AI at Los Alamos National Laboratory",
+  "link": "https://blogs.nvidia.com/blog/nvidia-vera-cpu-los-alamos-national-laboratory/",
+  "pub_date": "Mon, 22 Jun 2026 13:00:20 +0000",
+  "author": "Chris Porter",
+  "content_snippet": "Mission, Vision and Veritas — new Los Alamos National Laboratory (LANL) supercomputers to be built with HPE and NVIDIA — are tapping NVIDIA Vera CPUs to accelerate scientific discovery, unlocking agentic AI for science. The supercomputers will use the HPE Cray Supercomputing GX5000 architecture with the NVIDIA Vera Rubin platform, combining NVIDIA Vera CPUs, NVIDIA […]",
+  "content_full": "<div id=\"bsf_rt_marker\"></div><p><span style=\"font-weight: 400;\">Mission, Vision and Veritas — new Los Alamos National Laboratory (LANL) supercomputers to be built with HPE and NVIDIA — are tapping </span><a target=\"_blank\" href=\"https://www.nvidia.com/en-us/data-center/vera-cpu/\"><span style=\"font-weight: 400;\">NVIDIA Vera CPUs</span></a><span style=\"font-weight: 400;\"> to accelerate scientific discovery, unlocking agentic AI for science.</span></p>\n<p><span style=\"font-weight: 400;\">The supercomputers will use the HPE Cray Supercomputing GX5000 architecture with the NVIDIA Vera Rubin platform, combining NVIDIA Vera CPUs, NVIDIA Rubin GPUs and NVIDIA Quantum-X800 InfiniBand networking.</span></p>\n<p><span style=\"font-weight: 400;\">Under the planned configuration, Mission will include NVIDIA Vera Rubin GPU nodes and 2,300 standalone NVIDIA Vera CPUs using the HPE Cray Supercomputing GX240 blade. Veritas will feature approximately 1,150 standalone NVIDIA Vera CPUs to complement NVIDIA Vera Rubin nodes. </span></p>\n<p><span style=\"font-weight: 400;\">Veritas will arrive alongside Mission and Vision and serve the Laboratory Directed Research and Development program, helping accelerate agentic AI for science. The system will test these technologies for use in larger systems being built out at LANL. </span></p>\n<p><span style=\"font-weight: 400;\">Researchers are adding a new tool for science with AI agents that can form hypotheses, choose tools, launch simulations, analyze outputs and refine the next step. LANL’s public work on </span><a target=\"_blank\" href=\"https://www.lanl.gov/media/news/0416-meet-ursa\"><span style=\"font-weight: 400;\">URSA, the Universal Research and Scientific Agent</span></a><span style=\"font-weight: 400;\"> — running on Venado and soon Mission and Vision —</span><span style=\"font-weight: 400;\"> points in this direction: a modular, feedback-driven AI framework designed to help scientists brainstorm hypotheses, plan experiments, run simulations and analyze results. </span></p>\n<p><span style=\"font-weight: 400;\">LANL demonstrated that the Vera CPU delivered 7x higher performance on URSA workloads than the CPUs in the Crossroads x86 supercomputer.</span></p>\n<h2><b>Vera CPU for Agents and Simulation</b></h2>\n<p><span style=\"font-weight: 400;\">In LANL’s early testing of NVIDIA Vera CPUs on Branson — an open source Monte Carlo heat transfer simulation tool — Vera outperforms the CPUs used in the Crossroads x86 supercomputer by over 3x. </span></p>\n<p><span style=\"font-weight: 400;\">These results were made possible by Vera, including its custom Olympus core, LPDDR5 memory and fast on-chip fabric. </span></p>\n<p><span style=\"font-weight: 400;\">A single Vera CPU outperforms a single socket x86-based CPU by more than 3x while providing more than 4x the memory per core and 6x the memory per node. Ultimately, this means faster  scientific results for LANL.</span></p>\n<p><span style=\"font-weight: 400;\">All of the lab’s supercomputers were codesigned by hardware architects, system software developers, domain scientists, computer scientists and applied mathematicians — helping ensure systems are shaped by real scientific workloads, not abstract benchmarks alone. </span></p>\n<h2><b>Building on Generations of LANL Systems</b></h2>\n<p><span style=\"font-weight: 400;\">Mission, expected to be operational in 2027, will be the fifth Advanced Technology System in the National Nuclear Security Administration’s Advanced Simulation and Computing program and will replace Crossroads for classified national security workloads. </span></p>\n<p><span style=\"font-weight: 400;\">Vision, also expected to be operational in 2027, will serve as a resource for fundamental science, including materials and nuclear science, energy modeling, biomedical research and AI — letting more scientists test methods, train models and explore ideas before moving into higher-consequence work.</span></p>\n<p><span style=\"font-weight: 400;\">The work extends more than a decade of LANL and NVIDIA’s deep collaboration on CPUs, from Grace to Vera, using extreme codesign for LANL simulation workloads.</span></p>\n<p><span style=\"font-weight: 400;\">The three new supercomputers build on Venado, the HPE Cray EX supercomputer installed at Los Alamos in 2024 with NVIDIA GH200 Grace Hopper Superchips and NVIDIA Grace CPU Superchips. </span></p>\n<p><i><span style=\"font-weight: 400;\">Learn more about the </span></i><a target=\"_blank\" href=\"https://www.nvidia.com/en-us/data-center/vera-cpu/\"><i><span style=\"font-weight: 400;\">NVIDIA Vera CPU</span></i></a><i><span style=\"font-weight: 400;\">.</span></i></p>\n",
+  "categories": [
+    "AI Infrastructure",
+    "Supercomputing",
+    "Agentic AI",
+    "Artificial Intelligence",
+    "High-Performance Computing",
+    "NVIDIA Rubin",
+    "NVIDIA Vera",
+    "Public Sector",
+    "Science"
+  ]
+}

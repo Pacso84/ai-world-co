@@ -1,0 +1,56 @@
+{
+  "_meta": {
+    "written_at": "2026-06-29T02:39:04.702Z",
+    "writer_provider": "cerebras",
+    "writer_model": "gpt-oss-120b",
+    "writer_cost_usd": 0,
+    "original_draft": "2026-06-07T20-02-58-137Z_microsoft-ai_From_Hot_Wheels_to_handling_content__How_brands_ar.json",
+    "source_id": "microsoft-ai",
+    "source_name": "Microsoft AI Blog",
+    "source_link": "https://blogs.microsoft.com/ai/from-hot-wheels-to-handling-content-how-brands-are-using-microsoft-ai-to-be-more-productive-and-imaginative/",
+    "status": "published",
+    "published_at": "2026-06-29T02:42:33.074Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 739
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "decision": "PASS",
+      "issues": [
+        "minor terminology explanation",
+        "some sections feel a bit promotional"
+      ],
+      "verdict": "The article is well-structured, easy to understand, and provides practical tips for using Microsoft AI, making it suitable for publication with minor adjustments.",
+      "_aiCost": 0.00113164,
+      "_provider": "groq",
+      "_model": "llama-3.3-70b-versatile",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-06-29T02:47:48.298Z",
+    "guide_worthy": true,
+    "related_guide_topic": "automate-meeting-note-taking-with-microsoft-copilot-in-teams",
+    "seo": {
+      "meta_description": "Learn how to use Microsoft Copilot in Office apps to boost productivity and creativity with practical AI tips for Word, Excel, and more.",
+      "keywords": [
+        "how to use Microsoft Copilot",
+        "AI productivity tips",
+        "Microsoft 365 AI tools",
+        "Copilot in Office guide",
+        "boost work with AI",
+        "AI for Word and Excel"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add a section on troubleshooting common Copilot setup issues",
+        "Include a quick-start checklist for first-time users",
+        "Link to official Microsoft Copilot support pages for credibility"
+      ],
+      "optimised_at": "2026-06-29T02:50:47.865Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Boost Your Work with Microsoft AI: Practical Tips for Productivity and Creativity\"\nsubtitle: \"Learn how to use Microsoft Copilot across Office apps to speed up tasks, spark ideas, and free up time for the things that matter.\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"microsoft-ai\",\"productivity\",\"creativity\",\"business-tools\",\"AI-usage\"]\n---\n\n# Boost Your Work with Microsoft AI: Practical Tips for Productivity and Creativity\n\nEver stared at a blank Word document or a long email chain and wondered if there’s a faster way? Microsoft’s AI‑powered Copilot can turn those moments into quick wins, whether you’re drafting a report, designing a presentation, or simply keeping your inbox tidy.\n\n## Getting started with Microsoft Copilot\n\n1. **Check your licence** – Copilot is rolled out to Microsoft 365 subscribers who have the “Copilot in Office” add‑on. If you see a small wave‑icon next to the app name, you’re good to go.  \n2. **Open an Office app** – Word, Excel, PowerPoint, Outlook, and Teams all have a built‑in Copilot button (usually on the toolbar). Click it to launch the chat side‑panel.  \n3. **Enter a prompt** – A *prompt* (the instruction you type to the AI) can be as simple as “Write a two‑page summary of the latest sales numbers” or “Create a slide deck about sustainable packaging”.  \n4. **Review and edit** – Copilot generates text, charts, or designs. Treat the output as a draft; tweak wording or data as needed before sharing.\n\n> **Note on terminology**  \n> *LLM (large language model)* – the AI brain behind Copilot, similar to the engine that powers ChatGPT.  \n> *API (application‑programming interface)* – a way for the Copilot service to talk to your Office apps behind the scenes.\n\n## Three everyday ways to use Copilot\n\n### 1. Drafting and polishing documents in Word  \n- **Idea generator** – Ask Copilot, “Give me three opening paragraphs about our new product line.” It will produce options you can mix‑and‑match.  \n- **Style tuner** – Paste a paragraph and say, “Rewrite this in a friendly tone.” Copilot adjusts the language while keeping the original meaning.  \n- **Citation helper** – When you need references, request, “Add Harvard‑style citations for these statistics.” Copilot fetches formatted citations you can copy into the bibliography.\n\n### 2. Creating visual, eye‑catching presentations in PowerPoint  \n- **Slide outline** – Provide a brief brief, e.g., “Outline a 10‑slide deck on renewable energy trends.” Copilot creates a structured slide list.  \n- **Design suggestions** – Highlight a slide and ask, “Suggest a colour scheme that feels modern and trustworthy.” The AI offers palette ideas and even inserts matching icons.  \n- **Data visualisation** – Paste a table of numbers and prompt, “Turn this into a bar chart that shows quarterly growth.” Copilot builds the chart and places it on the slide.\n\n### 3. Managing communication in Outlook and Teams  \n- **Email drafts** – In Outlook, type “Draft a polite follow‑up to a client who hasn’t replied in a week.” Copilot produces a courteous message you can send with a click.  \n- **Meeting summaries** – After a Teams call, click the Copilot “Summarise meeting” button. It will list key decisions, action items, and deadlines, saving you the note‑taking hassle.  \n- **Task extraction** – Ask Copilot, “Create a to‑do list from today’s chat.” The AI pulls out tasks and can even push them into Microsoft Planner.\n\n## What this means for you\n\n- **In everyday life**: You can use Copilot to write a family newsletter, plan a vacation itinerary, or generate a grocery list from recipe ideas. The same tools that help a marketing team speed up copywriting can free up personal time.  \n- **For your business or work**: Copilot cuts down on repetitive writing, speeds up data visualisation, and keeps communications clear. Small business owners can produce polished proposals without hiring a designer, while larger teams can standardise meeting notes across departments.  \n- **If you’re just getting started**: Try a single prompt each day – for example, ask Copilot to draft a short thank‑you email after a meeting. Notice how much time you save, then expand to larger tasks like full reports or slide decks.\n\n## Wrap‑up\n\nMicrosoft’s AI Copilot is a practical ally that turns cumbersome tasks into quick, collaborative steps. By enabling the feature, practising simple prompts, and reviewing the AI’s output, you’ll reclaim hours in both your personal and professional life. Today, open Word, type a one‑sentence prompt, and watch Copilot get to work – your first AI‑boosted draft is just a click away.",
+  "original_title": "From Hot Wheels to handling content: How brands are using Microsoft AI to be more productive and imaginative"
+}

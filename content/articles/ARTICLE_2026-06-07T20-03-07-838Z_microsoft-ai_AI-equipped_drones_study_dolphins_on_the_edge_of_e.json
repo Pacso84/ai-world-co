@@ -1,0 +1,55 @@
+{
+  "_meta": {
+    "written_at": "2026-06-29T02:39:52.856Z",
+    "writer_provider": "google",
+    "writer_model": "gemini-flash-latest",
+    "writer_cost_usd": 0.001231425,
+    "original_draft": "2026-06-07T20-03-07-838Z_microsoft-ai_AI-equipped_drones_study_dolphins_on_the_edge_of_e.json",
+    "source_id": "microsoft-ai",
+    "source_name": "Microsoft AI Blog",
+    "source_link": "https://news.microsoft.com/apac/features/ai-drones-dolphins-maui63/",
+    "status": "published",
+    "published_at": "2026-06-29T02:43:00.007Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 705
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "decision": "PASS",
+      "issues": [
+        "minor risk of invented-looking numbers",
+        "no sources cited"
+      ],
+      "verdict": "The article is well-structured, easy to understand, and uses Australian English, making it suitable for publication, but lacks explicit sources to support claims.",
+      "_aiCost": 0.00101561,
+      "_provider": "groq",
+      "_model": "llama-3.3-70b-versatile",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-06-29T02:48:09.069Z",
+    "guide_worthy": false,
+    "pairing_reason": "Article discusses a generic topic of AI-equipped drones without introducing a specific named feature or tool that can be used by ordinary people today.",
+    "seo": {
+      "meta_description": "See how AI-powered drones help researchers track endangered wildlife safely and efficiently from the sky, saving time and animals.",
+      "keywords": [
+        "AI drones for wildlife conservation",
+        "how drones help protect endangered animals",
+        "AI wildlife monitoring technology",
+        "tracking animals with AI drones",
+        "conservation drones with AI"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add a section on 'best AI drone models for wildlife tracking' to target high-intent searchers",
+        "Include a short video or infographic showing drone wildlife monitoring in action",
+        "Optimize the subtitle with a keyword like 'AI drones tracking endangered species'"
+      ],
+      "optimised_at": "2026-06-29T02:50:52.084Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"How AI-Powered Drones Are Quietly Protecting Our Wildlife\"\nsubtitle: \"Discover the clever technology helping researchers track and save endangered animals from the sky.\"\ncategory: \"explainer\"\naudience: \"personal\"\nread_time_minutes: 4\ntags: [\"wildlife-conservation\", \"drones\", \"computer-vision\", \"explainers\"]\n---\n\n# How AI-Powered Drones Are Quietly Protecting Our Wildlife\n\nImagine standing on a windy coastal cliff during a weekend walk, squinting at the ocean waves hoping to catch a fleeting glimpse of a dolphin fin. While finding marine life is a thrilling game of patience for us, local researchers face the monumental task of counting and protecting these precious creatures across vast, unpredictable waters.\n\nTraditionally, monitoring endangered species has been a slow, costly, and sometimes disruptive task. Scientists had to spend hours on noisy boats or in helicopters, peer through binoculars, and manually count animals. Today, the combination of lightweight drones and smart software is quietly transforming how we care for our natural world.\n\n## How does a drone get \"smart\"?\n\nA standard drone can capture beautiful aerial footage, but it still requires a human to sit down and watch hours of video to spot a single animal. By adding artificial intelligence to the mix, the drone itself can understand what it is looking at in real-time. \n\nThe secret behind these high-tech sky cameras relies on three clever concepts:\n\n*   **Computer vision (the technology that allows computers to \"see\" and understand visual information):** This is the same technology that lets your smartphone unlock when it recognises your face. In the wild, it helps a drone distinguish a dolphin fin or a koala from a floating log or a shadow.\n*   **Machine learning (a method where an AI learns to spot patterns by looking at thousands of examples, rather than following rigid rules):** To train the drone, researchers feed the AI system thousands of photos of the target animal. Over time, the system learns the distinct shape, colour, and movement patterns of the species.\n*   **Edge AI (running smart software directly on a small, portable device instead of sending data back to a massive cloud database):** In the middle of the ocean or deep in the bush, there is no mobile reception. Edge AI allows the drone to process what it sees instantly on its own internal computer chip, without needing an internet connection.\n\n## Why this is a win for nature\n\nUsing AI in the sky is far more than just a cool tech trick. It keeps animals safe. Because drones can fly high above the water or tree canopy, they do not disturb the natural behaviour of sensitive species. \n\nFurthermore, the AI can do things human eyes struggle with. It can count an entire pod of dolphins in a split second, track their swimming speeds, and even estimate their body condition to see if they are getting enough food. This gives conservationists the precise data they need to make urgent decisions about protecting marine parks and habitats.\n\n## What this means for you\n\nWhile you might not be flying drones over the ocean, this technology is already shaping our everyday lives. \n\n*   **For your personal life and hobbies:** You can use the exact same computer vision technology on your weekend walks. Apps like *iNaturalist* or *Seek* allow you to take a photo of a backyard bird, insect, or plant, and use AI to identify the species instantly.\n*   **For your peace of mind:** Knowing that AI is being used to protect fragile ecosystems shows how these tools can be used for genuine, positive environmental action.\n*   **If you're just getting started:** Try opening your smartphone camera and using the built-in search tool (like Google Lens or Apple’s Visual Look Up) on a pet or a houseplant. It is a simple, fun way to see computer vision in action right in your living room.\n\n## Wrap-up\n\nAI-equipped drones are proving that technology can be a powerful ally in preserving our planet's biodiversity. By taking over the tedious task of searching and counting, these smart tools are giving conservationists more time to focus on what really matters: saving species from extinction. To see how this technology feels in your own hands, try downloading a nature identification app today and discover the plants and wildlife living in your own backyard.",
+  "original_title": "AI-equipped drones study dolphins on the edge of extinction"
+}

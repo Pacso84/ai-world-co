@@ -158,7 +158,11 @@
       "angle": "Where it lives (Windows, Edge, Office), a first helpful task.",
       "status": "done",
       "icon": "🪟",
-      "written_at": "2026-06-22T18:53:49.962Z"
+      "written_at": "2026-06-22T18:53:49.962Z",
+      "source_news": {
+        "file": "ARTICLE_2026-06-07T20-03-07-836Z_microsoft-ai_Microsoft_open_sources_its__farm_of_the_future__to.json",
+        "title": "Microsoft open sources its ‘farm of the future’ toolkit"
+      }
     },
     {
       "id": "meta-ai-whatsapp",
@@ -1039,11 +1043,12 @@
       "audience": "business",
       "level": "beginner",
       "angle": "Follow a drag‑and‑drop setup to connect Cohere’s language model to a web widget that answers common customer queries.",
-      "status": "todo",
+      "status": "done",
       "icon": "🤖",
       "priority": "balance",
       "proposed_at": "2026-06-28T21:17:35.770Z",
-      "proposed_by": "guide-balance"
+      "proposed_by": "guide-balance",
+      "written_at": "2026-06-29T02:49:19.833Z"
     },
     {
       "id": "translate-everyday-documents-with-deepseek-s-multilingual-ch",
@@ -1053,11 +1058,12 @@
       "audience": "personal",
       "level": "beginner",
       "angle": "Copy‑paste a letter or receipt and get an instant translation in the language you need, no extra software required.",
-      "status": "todo",
+      "status": "done",
       "icon": "🤖",
       "priority": "balance",
       "proposed_at": "2026-06-28T21:17:35.770Z",
-      "proposed_by": "guide-balance"
+      "proposed_by": "guide-balance",
+      "written_at": "2026-06-29T02:49:26.641Z"
     },
     {
       "id": "generate-creative-story-ideas-using-deepseek-s-chat-interfac",
@@ -1193,11 +1199,16 @@
       "audience": "business",
       "level": "beginner",
       "angle": "Enable Copilot to capture key points, actions, and decisions during a Teams call and export them to Outlook.",
-      "status": "todo",
+      "status": "done",
       "icon": "🤖",
       "priority": "balance",
       "proposed_at": "2026-06-28T21:17:54.907Z",
-      "proposed_by": "guide-balance"
+      "proposed_by": "guide-balance",
+      "source_news": {
+        "file": "ARTICLE_2026-06-07T20-02-58-137Z_microsoft-ai_From_Hot_Wheels_to_handling_content__How_brands_ar.json",
+        "title": "From Hot Wheels to handling content: How brands are using Microsoft AI to be more productive and imaginative"
+      },
+      "written_at": "2026-06-29T02:49:16.430Z"
     },
     {
       "id": "design-ai-driven-story-prompts-on-meta-ai-for-your-writing-h",
@@ -1268,6 +1279,22 @@
       "priority": "balance",
       "proposed_at": "2026-06-28T21:17:54.907Z",
       "proposed_by": "guide-balance"
+    },
+    {
+      "id": "how-to-get-faster-help-from-ai-powered-customer-service",
+      "company": "",
+      "tool": "AI-powered customer service assistants",
+      "title": "How to Get Faster Help From AI-Powered Customer Service",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "Optimizing user interaction with digital customer service agents",
+      "status": "done",
+      "icon": "🆕",
+      "source_news": {
+        "file": "ARTICLE_2026-06-07T20-03-07-837Z_microsoft-ai_How_data_and_AI_will_transform_contact_centres_for.json",
+        "title": "How data and AI will transform contact centres for financial services"
+      },
+      "written_at": "2026-06-29T02:49:18.320Z"
     }
   ]
 }

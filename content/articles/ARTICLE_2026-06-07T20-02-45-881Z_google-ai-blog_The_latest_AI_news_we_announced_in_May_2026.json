@@ -1,61 +1,55 @@
 {
   "_meta": {
-    "written_at": "2026-06-28T02:34:15.457Z",
+    "written_at": "2026-06-29T02:34:39.431Z",
     "writer_provider": "google",
     "writer_model": "gemini-flash-latest",
-    "writer_cost_usd": 0.001279425,
+    "writer_cost_usd": 0.0012189000000000002,
     "original_draft": "2026-06-07T20-02-45-881Z_google-ai-blog_The_latest_AI_news_we_announced_in_May_2026.json",
     "source_id": "google-ai-blog",
     "source_name": "Google AI (blog.google)",
     "source_link": "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-may-2026/",
     "status": "published",
-    "rejected_at": "2026-06-28T02:34:05.759Z",
+    "published_at": "2026-06-29T02:41:50.692Z",
     "auto_check": {
       "passed": true,
       "issues": [],
-      "wordCount": 689
+      "wordCount": 674
     },
     "ai_review": {
       "overall_score": 9,
       "decision": "PASS",
       "issues": [
-        "minor lack of Australian English spellings in source metadata",
-        "no issues found in article content"
+        "minor structure tweak",
+        "one small sentence for Australian English clarification"
       ],
-      "verdict": "The article effectively explains technical terms, provides a clear structure, and offers practical advice, making it suitable for publication.",
-      "_aiCost": 0.0010091199999999999,
+      "verdict": "The article meets all requirements, is well-structured, and provides clear explanations of technical terms, making it suitable for publication with minor adjustments.",
+      "_aiCost": 0.00099299,
       "_provider": "groq",
       "_model": "llama-3.3-70b-versatile",
       "_attempts": 1
     },
-    "reason": "Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben",
-    "can_retry": true,
-    "rework_attempts": 1,
-    "reworked_from": "REJECTED_2026-06-07T20-02-45-881Z_google-ai-blog_The_latest_AI_news_we_announced_in_May_2026.json",
-    "requeued_unchanged": false,
-    "published_at": "2026-06-28T02:34:27.316Z",
     "pairing_checked": true,
-    "pairing_checked_at": "2026-06-28T02:34:55.802Z",
+    "pairing_checked_at": "2026-06-29T02:46:41.566Z",
     "guide_worthy": true,
     "related_guide_topic": "gemini-getting-started",
     "seo": {
-      "meta_description": "Use Google's latest AI features to simplify daily tasks, from trip planning to email drafting, with Gemini's newest updates.",
+      "meta_description": "Learn how to use Gemini's new live video and screen features for hands-free help with daily tasks like fixing appliances or organizing documents.",
       "keywords": [
-        "Google AI features",
-        "Gemini updates",
-        "daily life organization",
-        "AI assistants",
-        "productivity tools"
+        "how to use Gemini live video features",
+        "Gemini screen sharing tutorial",
+        "AI hands-free help for daily tasks",
+        "multimodal AI for real-time assistance",
+        "using Gemini for troubleshooting"
       ],
       "seo_score": 8,
       "suggestions": [
-        "Add subheadings to break up the content",
-        "Include relevant images or screenshots of Gemini in action",
-        "Provide concrete examples of how Gemini's updates can be applied to daily life"
+        "Add a step-by-step guide section to improve readability and target 'how to' searches",
+        "Include a short FAQ at the end to capture voice search queries",
+        "Optimize subheadings with natural language questions like 'What can I do with Gemini's live video feature?'"
       ],
-      "optimised_at": "2026-06-28T02:37:14.609Z"
+      "optimised_at": "2026-06-29T02:50:34.809Z"
     }
   },
-  "article_markdown": "---\ntitle: \"How to Use Google's Latest AI Features to Organise Your Daily Life\"\nsubtitle: \"Discover how the newest updates to Gemini can help you plan trips, draft emails, and sort your messy files in seconds.\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"google-gemini\", \"productivity\", \"digital-organisation\"]\n---\n\n# How to Use Google's Latest AI Features to Organise Your Daily Life\n\nImagine sitting at your kitchen table with a cup of tea, staring at a cluttered inbox and trying to plan a family weekend away while also prepping for a big work meeting. It is easy to feel overwhelmed by the sheer volume of digital coordination required to keep our daily lives on track.\n\nGoogle has rolled out a suite of updates to its AI assistant, Gemini (a tool designed to help you process information and write content), making it much easier to handle these exact moments. Instead of hopping between web searches, spreadsheets, and emails, you can now use these tools together in one place to simplify your daily routine.\n\n## The power of helper tools in your side panel\n\nOne of the most practical updates is the smarter side panel in tools like Google Docs and Gmail. You no longer need to open a separate browser tab to chat with the AI.\n\nTo make the most of this, try these steps:\n\n1. **Open the side panel**: Click the Gemini icon (the sparkly diamond symbol) in the top-right corner of Gmail or Docs.\n2. **Ask for a summary**: If you are looking at a long email thread about an upcoming school project or work event, type a prompt (the instruction you give to the AI) like: *\"Summarise the main decisions and list the action items.\"*\n3. **Draft a reply on the spot**: You can immediately ask the assistant to draft a polite response based on that summary, saving you from staring at a blank screen.\n\n## Planning complex tasks with multimodal search\n\nThe latest updates also improve how the AI handles multimodal requests. In plain terms, multimodal means the ability of an AI to process different types of information—like text, images, and voice—at the same time. \n\nFor example, if you are planning a backyard renovation, you can upload a photo of your lawn and ask: *\"What kind of low-maintenance native plants would grow well in a spot that looks like this, and how should I arrange them?\"* The AI will analyse the photo, search for local planting guides, and lay out a step-by-step garden plan for you.\n\n## Smart planning in Google Sheets\n\nIf you dread setting up budgets or schedules, the updated AI features can now build complex templates for you. By opening Google Sheets and asking the assistant to *\"create a monthly household budget tracker with categories for groceries, petrol, and streaming services\"*, it will generate a fully formatted table complete with formulas (the mathematical rules used to calculate totals) automatically.\n\n## What this means for you\n\n*   **In everyday life**: You can streamline your personal planning. Use the AI in Google Docs to plan a weekly meal schedule, generate a shopping list based on those meals, and format it so it is easy to read on your phone at the supermarket.\n*   **For your business or work**: You can tackle administrative bottlenecks faster. Use the Gemini sidebar in Gmail to quickly find specific details hidden in long client conversations, or ask it to draft professional follow-up messages in your preferred tone.\n*   **If you're just getting started**: Open a blank Google Doc, click the little pen icon on the left margin, and type: *\"Write a checklist of things to pack for a winter camping trip.\"* It is a simple, risk-free way to see how the tool responds to your needs.\n\n## Wrap-up\n\nGetting organised does not have to feel like a second job. By letting Google's updated assistant handle the heavy lifting of sorting, summarising, and formatting, you can reclaim your time for the things that actually matter. Try opening Gmail or a Google Doc today, and ask the AI to summarise a long email thread—you might be surprised by how much lighter your afternoon feels.",
+  "article_markdown": "---\ntitle: \"How to Use Gemini's New Live Video and Screen Features in Daily Life\"\nsubtitle: \"Use your camera and screen to get instant, hands-free help with chores, messy documents, and daily tasks.\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"google-gemini\", \"voice-ai\", \"productivity\", \"getting-started\"]\n---\n\n# How to Use Gemini's New Live Video and Screen Features in Daily Life\n\nImagine standing in front of a flat bicycle tyre or a confusing error code on your washing machine, wishing a patient expert was standing right next to you. With the latest updates to Gemini (Google's conversational assistant), you can now show the AI what you are looking at in real time and talk through a solution together. \n\nThis is made possible by multimodal AI (technology that can understand text, voice, and video all at once), allowing you to interact with your phone in a much more natural, hands-free way. Here is how you can start using these new visual features to make your daily routine a little easier.\n\n## Show, don't just tell: Using live video\n\nSometimes it is hard to find the right words to describe a problem. If you are trying to identify a strange weed in your garden or figure out where a specific cable plugs into the back of your television, typing a prompt (the instruction or question you give to the AI) can be frustrating.\n\nTo use the live video feature:\n1. Open the Gemini app on your phone.\n2. Tap the live icon (usually a small waveform or camera symbol next to the text bar).\n3. Point your camera at the object you are asking about.\n4. Start speaking naturally. \n\nFor example, you can point your camera at the ingredients left in your fridge and ask, \"What can I cook with these for dinner tonight?\" The AI will analyse the visual information and suggest a recipe on the spot, talking you through the steps while your hands remain free to chop and stir.\n\n## Let the AI read your screen\n\nAnother incredibly helpful update is the ability for the AI to understand what is currently displayed on your phone or tablet screen. This is particularly useful when you are dealing with long, dry documents or complex spreadsheets on the go.\n\nIf you are reading a long council PDF about local recycling rules or looking at a messy itinerary for a family holiday, you can activate the assistant and ask it to \"summarise this screen\". \n\nBecause the AI can see the layout of the page, it does not just read the text; it understands the structure. It can quickly pull out the key dates, prices, or bullet points, saving you from squinting at tiny font on your phone screen while you are on your morning commute.\n\n## What this means for you\n\n* **In everyday life**: You can use this to tackle weekend DIY projects. Instead of searching through long video tutorials to find the exact moment that applies to your sink, you can show the AI your plumbing setup and get personalised, step-by-step guidance.\n* **For your business or work**: You can easily digest complex reports, client briefs, or organisation charts while multitasking. Simply open the document, turn on the screen-reading feature, and have the AI read out the most important action points while you organise your desk or make a cup of tea.\n* **If you're just getting started**: Don't worry about using perfect language. The system is designed to understand casual, conversational English. Speak to it just as you would talk to a friend over the phone.\n\n## Wrap-up\n\nThese new visual and conversational tools turn your phone into a helpful set of eyes and ears, making it easier to solve real-world problems on the spot. To try this out today, open your assistant app, tap the camera icon, and ask it to identify something in your room—you might be surprised by how much it can see and understand.\n\n---\n*Written and edited by AI World Co.'s autonomous AI agents. Reviewed for accuracy by our editorial system.*",
   "original_title": "The latest AI news we announced in May 2026"
 }

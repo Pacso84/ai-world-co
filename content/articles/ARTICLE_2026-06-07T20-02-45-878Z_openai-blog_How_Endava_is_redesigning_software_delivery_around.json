@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "written_at": "2026-06-28T02:33:13.021Z",
+    "written_at": "2026-06-29T02:34:01.176Z",
     "writer_provider": "cerebras",
     "writer_model": "gpt-oss-120b",
     "writer_cost_usd": 0,
@@ -9,46 +9,46 @@
     "source_name": "OpenAI Blog",
     "source_link": "https://openai.com/index/endava-frontiers",
     "status": "published",
-    "published_at": "2026-06-28T02:34:05.205Z",
+    "published_at": "2026-06-29T02:41:44.758Z",
     "auto_check": {
       "passed": true,
       "issues": [],
-      "wordCount": 765
+      "wordCount": 764
     },
     "ai_review": {
       "overall_score": 9,
       "decision": "PASS",
       "issues": [
-        "some minor American spellings may have been missed",
-        "no direct sources provided"
+        "minor formatting inconsistencies"
       ],
-      "verdict": "The article is well-structured, easy to understand, and provides a clear guide on using AI agents in software development, making it suitable for publication with minor checks for Australian English consistency and source inclusion.",
-      "_aiCost": 0.00113759,
+      "verdict": "The article is well-structured, easy to understand, and provides practical guidance on using AI agents for software delivery, making it suitable for publication.",
+      "_aiCost": 0.00107753,
       "_provider": "groq",
       "_model": "llama-3.3-70b-versatile",
       "_attempts": 1
     },
     "pairing_checked": true,
-    "pairing_checked_at": "2026-06-28T02:34:40.853Z",
+    "pairing_checked_at": "2026-06-29T02:46:28.332Z",
     "guide_worthy": false,
-    "pairing_reason": "The article is about a generic topic of using AI agents in software development, not a specific named feature introduced in this article.",
+    "pairing_reason": "The article is a generic guide to using AI agents, not a specific named feature or tool.",
     "seo": {
-      "meta_description": "Discover how AI agents like ChatGPT Enterprise and Codex can streamline your coding workflow and boost productivity with this practical guide",
+      "meta_description": "Learn how AI agents can automate routine tasks and speed up software projects. Discover practical tips to get started with AI-driven assistants today.",
       "keywords": [
-        "AI for coding",
-        "AI assistants for software development",
-        "ChatGPT Enterprise",
-        "Codex for coding"
+        "how to use AI agents in software development",
+        "AI assistants for faster coding",
+        "automate software projects with AI",
+        "best AI tools for developers",
+        "AI agents for solo coders"
       ],
       "seo_score": 8,
       "suggestions": [
-        "Add subheadings with relevant keywords",
-        "Use alt text for images with descriptive phrases like 'AI agent workflow'",
-        "Include internal links to other AI-related articles for better user experience"
+        "Include specific examples of AI agent platforms (e.g., GitHub Copilot, Cursor) to improve search relevance.",
+        "Add a short section on common AI agent use cases to target more long-tail queries.",
+        "Optimize the subtitle with a keyword like 'AI tools for developers' to align with search intent."
       ],
-      "optimised_at": "2026-06-28T02:37:13.587Z"
+      "optimised_at": "2026-06-29T02:50:32.036Z"
     }
   },
-  "article_markdown": "---\ntitle: \"How AI Agents Can Speed Up Your Software Projects\"\nsubtitle: \"A practical guide to adding ChatGPT Enterprise, Codex and similar helpers into your everyday coding workflow\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"ai-agents\", \"software-development\", \"productivity\", \"coding-assistants\"]\n---\n\n# How AI Agents Can Speed Up Your Software Projects\n\n**Hook:** Ever wish you could copy‑paste a chunk of code, get a test written, and have the documentation appear without breaking a sweat? AI agents—software tools that act like a little robot assistant—can turn that wish into a routine part of your workday.\n\n## Getting started with AI agents\n\n1. **Choose your assistant**  \n   - **ChatGPT Enterprise** is a large language model (LLM — a type of AI that predicts text, like the engine behind ChatGPT) hosted in a secure, business‑focused environment.  \n   - **Codex** is a specialised LLM that focuses on turning natural‑language instructions into code.  \n\n   Both can be accessed via an **API (application programming interface)**—think of it as a door that lets your own programs talk to the AI.\n\n2. **Set up a small test project**  \n   Create a folder on your computer, initialise a Git repository (Git = a version‑control system that tracks changes), and add a `README.md`. This will be your sandbox for trying out the AI.\n\n3. **Write your first prompt**  \n   A **prompt** is the instruction you give the AI. For example:  \n   ```\n   Write a Python function that converts a list of temperatures from Celsius to Fahrenheit.\n   ```  \n   Paste this into ChatGPT Enterprise’s chat window or send it via the API, and watch the code appear.\n\n## Automating repetitive tasks\n\n### Code generation\n\n- **Speed:** Instead of typing boilerplate code, ask the AI to generate it.  \n- **Quality tip:** Review the output carefully; the AI can occasionally make syntax errors or suggest outdated libraries.  \n\n### Test creation\n\n- Prompt example: “Create three unit tests for the temperature conversion function using pytest.”  \n- The AI will produce test files that you can run directly, saving you from writing repetitive test scaffolding.\n\n### Documentation\n\n- After you finish a function, ask: “Write a README section that explains how to use `convert_temp`.”  \n- The AI will output concise markdown that you can paste straight into your project’s documentation.\n\n## Building an AI‑native workflow\n\n1. **Integrate with your IDE**  \n   Many integrated development environments (IDEs) like VS Code now have extensions that let you send prompts to ChatGPT or Codex without leaving the editor. This reduces context‑switching.\n\n2. **Hook the AI into CI/CD pipelines**  \n   CI/CD (continuous integration/continuous deployment) is a set of automated steps that test and deploy code. You can add a step that runs the AI to generate code comments before each build, ensuring documentation stays up‑to‑date.\n\n3. **Use version‑control hooks**  \n   Set up a Git *pre‑commit hook* that calls the AI to check for missing docstrings or to suggest refactors. When you commit, the AI runs in the background and flags issues.\n\n## Tips for safe and effective use\n\n- **Validate everything** – AI can hallucinate (invent facts). Always run linters, tests, and security scans on generated code.  \n- **Limit the context window** – an LLM only remembers a certain amount of text at once (the *context window*). Keep prompts focused; if you need the AI to remember earlier parts, include them explicitly.  \n- **Protect secrets** – never send passwords, API keys or proprietary data in prompts. Use placeholder variables instead.  \n- **Start small** – experiment with a single function before automating an entire pipeline.  \n\n## What this means for you\n\n- **If you’re a hobby coder or student**: AI agents can turn a vague idea into working code in minutes, letting you focus on learning concepts rather than syntax.  \n- **If you run a small business or freelance practice**: Automating test writing and documentation frees up time for client work, and the AI’s quick code snippets can help you meet tight deadlines.  \n- **If you work in a larger company**: Embedding AI assistants in your CI/CD and version‑control processes can standardise quality across teams, reduce technical debt, and make onboarding new developers smoother.  \n\n## Wrap‑up\n\nAI agents like ChatGPT Enterprise and Codex are becoming ordinary tools for anyone who writes software, from students to enterprise teams. By setting up a simple sandbox, experimenting with prompts, and gradually weaving the AI into your development pipeline, you can shave hours off repetitive tasks and keep your codebase cleaner.  \n\n**Next step:** Open your favourite code editor, fire up a ChatGPT Enterprise chat, and ask it to write a short function you’ve needed for a week. Watch the assistant in action and start building a faster, AI‑augmented workflow today.",
+  "article_markdown": "---\ntitle: \"How AI Agents Can Speed Up Your Software Projects\"\nsubtitle: \"A practical guide to using AI‑driven assistants for faster, smoother software delivery – whether you’re a solo coder or part of a larger team\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"ai-agents\", \"software-development\", \"productivity\", \"ai-tools\"]\n---\n\n# How AI Agents Can Speed Up Your Software Projects\n\nImagine you’re about to start a new feature for an app, and instead of juggling dozens of emails, spreadsheets and code snippets, an AI assistant quietly takes care of the routine bits while you focus on the creative work. That’s the promise of AI agents – software helpers that can read, write and act on your behalf.\n\n## Getting started with AI agents\n\n1. **Pick a platform** – Many cloud providers now offer AI agents that you can call through an API (application programming interface – a set of rules that lets one program talk to another). Look for a service that offers a **large language model (LLM)** – the kind of AI that powers ChatGPT – because it understands natural language and can generate code.\n\n2. **Create a simple prompt** – A *prompt* is just the instruction you give to the AI. For example:  \n   `“Generate a Python function that validates an email address.”`  \n   The clearer the prompt, the better the output.\n\n3. **Test and iterate** – Run the code the agent produces, check it works, and then ask follow‑up questions if you need tweaks. Think of it as a conversation with a very attentive colleague.\n\n4. **Add the agent to your workflow** – Most agents can be linked to tools you already use, such as GitHub (for version control) or Slack (for team chat). This step often involves a small piece of code that tells the agent when to act – for example, “when a pull request is opened, run the code‑review agent.”\n\n## Everyday ways to use an AI agent in software delivery\n\n- **Automated code snippets** – Need a quick helper function? Ask the agent and paste the result straight into your editor.  \n- **Documentation generation** – Point the agent at your codebase and request a README file. The AI can summarise functions and explain usage, saving you hours of writing.  \n- **Bug triage** – Feed the agent recent error logs and have it suggest likely causes. It can also draft a short ticket for your issue tracker.  \n- **Continuous integration (CI) scripts** – Instead of manually writing the YAML for a CI pipeline, describe the steps you want and let the agent output the configuration file.\n\n## Setting up for a team or solo project\n\n| Step | What to do | Why it helps |\n|------|------------|--------------|\n| **Define the agent’s role** | Decide whether it will be a “code writer”, “reviewer”, or “project organiser”. | Clear boundaries prevent the AI from stepping on human tasks. |\n| **Provide context** | Use *fine‑tuning* (customising the AI on your own code examples) or *RAG* (retrieval‑augmented generation – letting the AI pull information from your docs). | The AI becomes aware of your project’s style and conventions. |\n| **Set a guardrail** | Establish a maximum *context window* (the amount of text the AI can remember at once) – e.g., 8 KB – to keep responses focused. | Prevents the AI from drifting off‑topic or overloading your system. |\n| **Monitor outputs** | Review every piece of code or text the agent creates before merging it into the main branch. | Guarantees quality and catches any hallucinations (when the AI confidently makes up facts). |\n\n## What this means for you\n\n- **For personal projects**: You can prototype ideas faster. Instead of spending a morning hunting for a snippet, ask an AI agent and get a working example in minutes.  \n- **For small teams or freelancers**: Automate repetitive tasks like documentation, test generation or ticket drafting, freeing up time for client‑focused work.  \n- **If you’re new to AI tools**: Start with a free tier of an LLM service, experiment with simple prompts, and gradually integrate the agent into one part of your workflow – perhaps just for code comments.  \n\n## Wrap‑up\n\nAI agents are becoming reliable teammates for developers of any size. By giving them clear prompts, linking them to the tools you already use, and reviewing their output, you can shave hours off each development cycle. Today, try a quick experiment: ask an AI to write a tiny helper function you’ve needed for weeks, copy the result into your project, and see how much smoother the rest of the day feels. Happy coding!",
   "original_title": "How Endava is redesigning software delivery around AI agents"
 }

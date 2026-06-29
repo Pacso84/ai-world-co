@@ -1,0 +1,55 @@
+{
+  "_meta": {
+    "type": "guide",
+    "guide_topic_id": "build-a-simple-chatbot-for-your-small-business-site-with-coh",
+    "company": "Cohere",
+    "tool": "Cohere",
+    "icon": "🤖",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-06-29T02:49:19.833Z",
+    "writer_provider": "cerebras",
+    "writer_model": "gpt-oss-120b",
+    "writer_cost_usd": 0,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-06-29T02:49:28.421Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 826
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Clear, accessible guide with excellent step-by-step instructions and friendly tone. Perfect for small-business owners.",
+      "_aiCost": 0.0004368,
+      "_provider": "mistral",
+      "_model": "mistral-small-latest",
+      "_attempts": 1
+    },
+    "seo": {
+      "meta_description": "Learn how to build a simple AI chatbot for your small business website using Cohere—no coding needed. Step-by-step guide inside.",
+      "keywords": [
+        "how to build an AI chatbot for my website",
+        "simple chatbot for small business",
+        "Cohere chatbot tutorial",
+        "add AI assistant to website",
+        "no-code chatbot guide",
+        "AI customer service for small business"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Include a short intro sentence in the article with the keyword 'no-code AI chatbot for small businesses' to improve readability and SEO.",
+        "Add a FAQ section at the end answering common questions like 'Is Cohere free to use?' to capture more search traffic.",
+        "Optimize the title to include 'no-code' for better search intent alignment."
+      ],
+      "optimised_at": "2026-06-29T02:51:07.751Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Build a simple chatbot for your small‑business site with Cohere\"\nsubtitle: \"A step‑by‑step drag‑and‑drop guide that lets you add a friendly AI helper to answer common customer questions on your website.\"\ncategory: \"guide\"\naudience: \"business\"\ncompany: \"Cohere\"\ntool: \"Cohere\"\nlevel: \"beginner\"\nread_time_minutes: 4\ntags: [\"getting-started\", \"cohere\", \"chatbot\"]\n---\n\n# Build a simple chatbot for your small‑business site with Cohere\n\n**Hook:** By the end of this guide you’ll have a live chatbot on your website that can answer the most frequent customer queries – no coding required. It’s perfect for shop owners, service providers, or anyone who wants a quick, friendly AI assistant.\n\n## Before you start\n- A free or paid Cohere account (sign‑up takes under a minute).  \n- Access to your website’s HTML – for example, the ability to edit the footer or a page through your CMS (WordPress, Wix, Squarespace, etc.).  \n- A list of the top 5 questions your customers ask (e.g., “What are your opening hours?”).\n\n## Step 1 — Create a Cohere account\nGo to **cohere.com** and click the “Sign up” button. Fill in your name, email, and choose a password. You’ll receive a verification email – open it and confirm the account.  \n💬 **Example:** Use `jane.doe@example.com` and a password you can remember, then click the link in the email.\n\n## Step 2 — Start a new chatbot project\n1. Once logged in, look for a **Dashboard** or **Projects** area – it’s usually a big button labelled “New Project”.  \n2. Click it and pick “Chatbot” as the project type.  \n3. Give the bot a name, like “ShopHelper”.  \nWhy? This creates a dedicated space where Cohere will store the language model (LLM – large language model, the brain behind the chatbot) and all your settings.  \n\n💬 **Example:** Project name: `ShopHelper`.\n\n## Step 3 — Use the drag‑and‑drop builder to set up replies\nCohere provides a visual builder where you can **drag** blocks like “Question”, “Answer”, and “Condition” onto a canvas and **drop** them into order.  \n1. Drag a “Question” block onto the canvas and type a common query, e.g., “What are your opening hours?”.  \n2. Drag an “Answer” block right below it and type the response, e.g., “We’re open Monday‑Friday 9 am‑5 pm.”  \n3. Repeat for each of your top questions.  \nWhy? This visual layout replaces writing code – you just tell the bot what to say when it hears a certain phrase.  \n\n💬 **Example:**  \n- Question block: *“Do you ship internationally?”*  \n- Answer block: *“Yes, we ship to Australia, New Zealand, and the UK.”*\n\n## Step 4 — Turn the bot into a web widget\nA **widget** is a small piece of interactive UI (user interface) that you can embed on any web page.  \n1. In the builder, find the “Deploy” or “Export” tab – look for a button that says “Create widget”.  \n2. Choose the style you like (size, colour, font). The system will generate a short snippet of HTML/JavaScript code.  \nWhy? This snippet is the bridge that lets your website talk to the Cohere LLM via an API (application programming interface – a way for two programmes to exchange data).  \n\n💬 **Example:** The generated code might look like  \n```html\n<script src=\"https://widget.cohere.com/embed.js\"></script>\n<div id=\"cohere-chat\"></div>\n<script>\n  CohereChat.init({\n    container: \"#cohere-chat\",\n    botId: \"ShopHelper\"\n  });\n</script>\n```\n\n## Step 5 — Add the widget to your site\n1. Open your website’s editor and locate the part where you want the chat icon to appear – usually the footer or a “Contact us” page.  \n2. Paste the snippet from Step 4 into the HTML area. Save and publish.  \nWhy? Once the page reloads, visitors will see a chat bubble that opens the AI assistant you just configured.  \n\n💬 **Example:** In WordPress, go to **Appearance → Theme Editor → footer.php**, paste the code just before the `</body>` tag, then click “Update File”.\n\n## Common mistakes\n- **Forgetting to publish the changes** – the widget will not appear until the page is saved and live.  \n- **Leaving the answer blocks blank** – the bot will respond with “I’m not sure” if it has no reply.  \n- **Using special characters in questions** – keep wording simple; the LLM matches on plain text, not on emojis or symbols.\n\n## What this means for you\n- **In everyday life:** You can ask your own chatbot “What’s the return policy?” and get an instant answer, saving you time typing the same email over and over.  \n- **For your business or work:** The bot handles routine enquiries 24 hours a day, freeing up staff to focus on sales or product fulfilment.  \n- **If you're just getting started:** The easiest first move is to set up a single “Hello” question and answer, then watch how visitors interact.\n\n## Try it now\nOpen your Cohere dashboard, click **New Project**, and create a single question‑answer pair (e.g., “Hello” → “Hi! How can I help you today?”). In the next two minutes you’ll have the foundation of a live chatbot ready to be embedded.",
+  "original_title": "Build a simple chatbot for your small‑business site with Cohere"
+}

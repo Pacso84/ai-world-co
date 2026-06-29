@@ -1,0 +1,60 @@
+{
+  "_meta": {
+    "written_at": "2026-06-29T02:44:29.336Z",
+    "writer_provider": "google",
+    "writer_model": "gemini-2.5-flash",
+    "writer_cost_usd": 0.0013388249999999999,
+    "original_draft": "2026-06-07T20-03-07-840Z_techcrunch-ai_OpenAI_unveils_Lockdown_Mode_to_protect_sensitive_.json",
+    "source_id": "techcrunch-ai",
+    "source_name": "TechCrunch AI",
+    "source_link": "https://techcrunch.com/2026/06/06/openai-unveils-lockdown-mode-to-protect-sensitive-data-from-prompt-injection-attacks/",
+    "status": "published",
+    "rejected_at": "2026-06-29T02:43:00.014Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 794
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "decision": "PASS",
+      "issues": [
+        "minor language cliches"
+      ],
+      "verdict": "The article effectively explains AI security features and provides actionable advice for everyday people, while maintaining a kind and respectful tone, but could benefit from slightly fresher language to fully embody the brand voice.",
+      "_aiCost": 0.00109664,
+      "_provider": "groq",
+      "_model": "llama-3.3-70b-versatile",
+      "_attempts": 1
+    },
+    "reason": "Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-06-07T20-03-07-840Z_techcrunch-ai_OpenAI_unveils_Lockdown_Mode_to_protect_sensitive_.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-06-29T02:45:18.315Z",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-06-29T02:48:21.842Z",
+    "guide_worthy": false,
+    "pairing_reason": "Article is about a generic topic of AI security features and does not introduce a specific, named feature that can be used today",
+    "seo": {
+      "meta_description": "Learn how AI security features like prompt injection protection keep your private chats safe. Simple tips to lock down your AI tools today.",
+      "keywords": [
+        "AI security features",
+        "protect private information from AI",
+        "how to secure AI chats",
+        "prevent prompt injection attacks",
+        "AI privacy settings guide"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add a bullet-point checklist of quick security steps readers can take immediately",
+        "Include a short FAQ section addressing common AI security concerns",
+        "Optimize H2/H3 headers with target keywords for better readability and SEO"
+      ],
+      "optimised_at": "2026-06-29T02:50:54.796Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Understanding AI Security Features: Protecting Your Private Information\"\nsubtitle: \"Learn how new AI safeguards can help protect your sensitive data from clever tricks in your chats.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"ai-safety\", \"privacy\", \"security\", \"data-protection\"]\n---\n\n# Understanding AI Security Features: Protecting Your Private Information\n\nUsing AI tools like ChatGPT or Gemini can feel like chatting with a super-smart assistant. You might share all sorts of information, from brainstorming ideas to drafting personal emails. But what if someone could sneak a hidden instruction into your chat that makes the AI reveal things it shouldn't? This is where understanding AI security features, like specialised \"lockdown\" settings, becomes really useful for protecting your private information.\n\n## What is a 'Prompt Injection' Attack?\n\nImagine you're telling your AI assistant to summarise a confidential work document. A \"prompt injection\" is like a digital trick where a malicious instruction, often hidden within seemingly innocent text or a complex prompt (which is the instruction you give to an AI), overrides your original command to the AI.\n\nThink of it this way: you tell your dog to \"sit\" (your prompt). But someone secretly trained your dog that if they hear \"sit, *then bark*\", they should actually \"bark\" instead of sitting, and maybe even fetch something they shouldn't. In the AI world, this hidden command could force the AI to ignore your privacy settings and accidentally share parts of your confidential document or reveal information about other ongoing conversations. It's a clever way for attackers to manipulate the AI's behaviour.\n\n## How New Security Features Help\n\nAI companies are constantly working to make their models safer. One way they're doing this is by introducing enhanced security features, sometimes referred to as \"Lockdown Modes\" or similar specialised settings. These modes are designed to add extra layers of protection against prompt injection attacks.\n\nWhen you activate such a feature, it's like putting up a digital shield around your conversation. The AI model becomes more resistant to those hidden, malicious commands. It's trained to better distinguish between your genuine instructions and attempts to trick it, prioritising privacy and data security. This means the AI is less likely to accidentally reveal sensitive information or misuse its capabilities when faced with a cleverly disguised prompt from an attacker.\n\n## Best Practices for Protecting Your Data\n\nEven with advanced security features, it's always wise to practise good digital hygiene when using AI.\n\n*   **Be Mindful of What You Share:** The most effective defence is to avoid sharing highly sensitive personal, financial, or proprietary business data with any AI model unless you are absolutely sure of the platform's security and your own understanding of its privacy settings.\n*   **Understand Your Tools:** Take a moment to learn about the specific security and privacy features offered by the AI tools you use. Are there specific \"private browsing\" or \"lockdown\" modes? Do they offer end-to-end encryption for your data?\n*   **Keep Software Updated:** AI platforms are constantly improving their security. Make sure you're using the latest versions of apps or browser interfaces to benefit from the newest protections.\n*   **Be Sceptical of External Prompts:** If you're copying and pasting prompts from online sources, always read them carefully. A malicious prompt injection could be hidden in plain sight, designed to exploit vulnerabilities.\n\n## What this means for you\n\n*   **In everyday life:** If you're using AI for personal tasks like organising your thoughts or drafting emails, be aware of what personal details you input. Using specialised security modes, if available, can add peace of mind, but never assume perfect security. Always review outputs from the AI carefully before acting on them or sharing them further.\n*   **For your business or work:** For professionals handling client information, internal reports, or intellectual property, understanding and utilising these AI security features is crucial. Implement internal guidelines for AI use, train your team on prompt injection risks, and opt for AI platforms that offer robust data protection and compliance. Even with security features enabled, human oversight remains critical.\n*   **If you're just getting started:** Begin by experimenting with AI using non-sensitive information. Get comfortable with how the AI responds and the platform's interface. As you gain confidence, gradually explore its capabilities, always keeping privacy and data security top of mind. Make a habit of checking for and using any enhanced privacy settings.\n\n## Wrap-up\n\nAI security is an evolving field, and features like enhanced privacy modes are a positive step towards a safer digital experience. By understanding the risks of things like prompt injection and adopting smart habits when interacting with AI, you can better protect your valuable information. Take a moment today to check the privacy and security settings of your favourite AI tool and see what protections are available to you.",
+  "original_title": "OpenAI unveils Lockdown Mode to protect sensitive data from prompt injection attacks"
+}

@@ -1,0 +1,57 @@
+{
+  "_meta": {
+    "type": "guide",
+    "guide_topic_id": "automate-meeting-note-taking-with-microsoft-copilot-in-teams",
+    "company": "Microsoft",
+    "tool": "Microsoft Copilot",
+    "icon": "🤖",
+    "level": "beginner",
+    "source_news": {
+      "file": "ARTICLE_2026-06-07T20-02-58-137Z_microsoft-ai_From_Hot_Wheels_to_handling_content__How_brands_ar.json",
+      "title": "From Hot Wheels to handling content: How brands are using Microsoft AI to be more productive and imaginative"
+    },
+    "written_at": "2026-06-29T02:49:16.430Z",
+    "writer_provider": "google",
+    "writer_model": "gemini-2.5-flash",
+    "writer_cost_usd": 0.0013982999999999999,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-06-29T02:49:27.655Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1117
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Clear, accessible guide with strong structure and Australian English. Minor cliché in hook but otherwise excellent.",
+      "_aiCost": 0.0004926,
+      "_provider": "mistral",
+      "_model": "mistral-small-latest",
+      "_attempts": 1
+    },
+    "seo": {
+      "meta_description": "Learn how to automate meeting notes in Microsoft Teams using Copilot. Capture key points, action items, and decisions, then export them to Outlook for easy follow-up.",
+      "keywords": [
+        "how to use Microsoft Copilot in Teams for meeting notes",
+        "automate meeting notes with Copilot",
+        "Microsoft Teams Copilot meeting summary",
+        "export Teams meeting notes to Outlook",
+        "AI meeting notes in Microsoft 365"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add a step-by-step checklist for enabling Copilot in Teams to improve readability and SEO.",
+        "Include a short troubleshooting section for common issues users might face.",
+        "Optimize the first paragraph to include the primary keyword naturally."
+      ],
+      "optimised_at": "2026-06-29T02:51:04.863Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Automate meeting note-taking with Microsoft Copilot in Teams\"\nsubtitle: \"Learn how to use Microsoft Copilot in Teams to automatically capture key points, action items, and decisions from your calls, then easily export them to Outlook for follow-up.\"\ncategory: \"guide\"\naudience: \"business\"\ncompany: \"Microsoft\"\ntool: \"Microsoft Copilot\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"getting-started\", \"microsoft-copilot\", \"teams\", \"outlook\"]\n---\n\n# Automate meeting note-taking with Microsoft Copilot in Teams\n\nImagine never missing an important detail from a meeting again! This guide will show you how to use Microsoft Copilot, an **AI (Artificial Intelligence)** assistant, to automatically capture the crucial parts of your Microsoft Teams calls. By the end, you'll be able to get clear summaries, action items, and key decisions, then send them straight to your Outlook email. This is perfect for anyone who wants to stay organised and ensure everyone is on the same page after a discussion.\n\n## Before you start\n- **Microsoft 365 Account with Copilot:** You'll need a Microsoft 365 subscription that includes access to Microsoft Copilot. This is often provided by your workplace.\n- **Microsoft Teams:** Ensure you have the Microsoft Teams desktop app installed and are signed in.\n- **Microsoft Outlook:** Have your Outlook desktop app or web access ready for exporting notes.\n\n## Step 1 — Start a Teams meeting with transcription\nTo get the most out of Copilot, you need to ensure your meeting in Teams is being **transcribed**. Think of transcription like having a super-fast stenographer who types out every word spoken in the meeting. Copilot needs this written record to understand what was said and create its summaries.\n\n1.  **Start your meeting:** Open Microsoft Teams and start or join a meeting.\n2.  **Turn on transcription:** Once in the meeting, look at the top of the meeting window. You should see a toolbar. Click on **\"More actions\"** (often represented by three dots `...`).\n3.  **Find \"Start transcription\":** From the menu, select **\"Start transcription\"**. You might also see \"Start recording\" – while recording captures video and audio, transcription is what Copilot uses for its text summary. Confirm any prompts that appear. All participants will be notified that transcription has begun.\n\n💬 Example: You've started your weekly project catch-up. Now, click `...` > `Start transcription`.\n\n## Step 2 — Open Copilot during the meeting\nOnce transcription is running, Copilot is silently listening and processing the conversation. You can interact with it in real-time to ask questions about the discussion. This is like having a digital assistant in the room with you.\n\n1.  **Find the Copilot icon:** In the same toolbar at the top of your Teams meeting window, look for the **\"Copilot\"** icon. It often looks like a stylised 'C' or a robot head.\n2.  **Open the Copilot pane:** Click on the Copilot icon. A side panel will open on the right side of your screen. This is where you'll chat with Copilot.\n3.  **Ask a question:** In the chat box at the bottom of the Copilot pane, type a question related to the meeting. Copilot will use the ongoing transcription to provide an answer.\n\n💬 Example: As the meeting progresses, you can ask: \"Summarise what we've discussed so far about the budget.\" or \"What action items have been mentioned regarding the new client?\"\n\n## Step 3 — Review Copilot's summary and notes\nAfter the meeting ends, Copilot gets to work compiling all the important bits. This is where it creates a helpful summary, extracts **action items** (tasks that need to be done), and highlights **key decisions** (important choices made).\n\n1.  **Access meeting recap:** After the meeting finishes, go to your Teams Calendar. Find the meeting you just attended and click on it.\n2.  **Navigate to the \"Recap\" tab:** In the meeting details, you'll see several tabs (like \"Chat\", \"Files\"). Click on the **\"Recap\"** tab.\n3.  **View Copilot's notes:** Within the \"Recap\" tab, you'll find Copilot's summary, action items, and decisions clearly laid out. Take a moment to read through these. This is your chance to make sure everything looks right.\n\n## Step 4 — Export notes to Outlook\nNow that you have Copilot's organised notes, you can send them directly to your Outlook email. This makes it easy to share with others, add to your calendar, or file away for future reference.\n\n1.  **Find the \"Share\" or \"Export\" option:** While viewing Copilot's notes in the \"Recap\" tab, look for a button or link that says something like **\"Share\"**, **\"Export\"**, or **\"Send to Outlook\"**. It might be near the top of the Copilot section.\n2.  **Select \"Outlook\":** When prompted, choose **\"Outlook\"** as your export destination.\n3.  **Review the draft email:** Copilot will create a new draft email in Outlook, pre-filled with the meeting summary, action items, and key decisions.\n4.  **Send the email:** Add any additional comments, recipients, or adjust the subject line, then send the email.\n\n💬 Example: You've reviewed Copilot's notes and they look good. Click \"Share\" > \"Outlook\" and then send the pre-filled email to your team members.\n\n## Common mistakes\n-   **Forgetting to start transcription:** Copilot can't summarise what it hasn't \"heard\" (or read). Always ensure transcription is active.\n-   **Expecting active participation:** Copilot is an assistant, not a meeting participant. It won't join the conversation or make suggestions, it just processes what's said.\n-   **Not allowing enough time:** Copilot needs a few minutes after the meeting to fully process the transcription and generate its detailed recap. Don't worry if it's not instant.\n\n## What this means for you\n-   **In everyday life:** You can use this for family calls or community group meetings. Instead of scribbling notes by hand, you'll have a clear record of decisions, who needs to do what, and what was discussed. No more \"Wait, what did we decide about the holiday plans?\"\n-   **For your business or work:** This is a huge time-saver! It reduces the need for someone to manually take notes, ensures accuracy, and helps keep projects on track. Everyone can focus on the discussion, knowing the important details will be captured and easily shared. It's particularly useful for project managers, team leaders, or anyone who regularly attends collaborative meetings.\n-   **If you're just getting started:** Just focus on Step 1 and Step 3. Simply turn on transcription for your next meeting, then check the \"Recap\" tab afterwards to see what Copilot has generated. You'll be amazed at how much it captures!\n\n## Try it now\nJoin or start a short Microsoft Teams meeting (even with just yourself for practice!). Make sure to turn on **\"Start transcription\"** right away. Say a few things about a pretend project, then end the meeting. Afterwards, navigate to the meeting in your Teams Calendar and check the **\"Recap\"** tab to see what Copilot has captured.",
+  "original_title": "Automate meeting note‑taking with Microsoft Copilot in Teams"
+}

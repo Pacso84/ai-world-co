@@ -1,0 +1,61 @@
+{
+  "_meta": {
+    "written_at": "2026-06-29T02:44:21.787Z",
+    "writer_provider": "google",
+    "writer_model": "gemini-2.5-flash",
+    "writer_cost_usd": 0.0012759,
+    "original_draft": "2026-06-07T20-03-07-839Z_techcrunch-ai_OpenAI_is_still_working_on_that__super_app_.json",
+    "source_id": "techcrunch-ai",
+    "source_name": "TechCrunch AI",
+    "source_link": "https://techcrunch.com/2026/06/07/openai-is-still-working-on-that-super-app/",
+    "status": "published",
+    "rejected_at": "2026-06-29T02:43:00.008Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 662
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "decision": "PASS",
+      "issues": [
+        "minor cliches",
+        "no Australian English errors found"
+      ],
+      "verdict": "The article is well-structured, explanatory, and free of prohibited content, making it suitable for publication with minor adjustments to remove cliches.",
+      "_aiCost": 0.0009837399999999999,
+      "_provider": "groq",
+      "_model": "llama-3.3-70b-versatile",
+      "_attempts": 1
+    },
+    "reason": "Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-06-07T20-03-07-839Z_techcrunch-ai_OpenAI_is_still_working_on_that__super_app_.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-06-29T02:45:17.611Z",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-06-29T02:48:15.496Z",
+    "guide_worthy": false,
+    "pairing_reason": "The article discusses a generic concept of an integrated AI assistant without introducing a specific, named feature or tool.",
+    "seo": {
+      "meta_description": "Discover how a central AI assistant could manage your emails, calendar, and tasks in one place—simplifying your daily digital life effortlessly.",
+      "keywords": [
+        "central AI assistant",
+        "AI digital assistant for daily tasks",
+        "how AI manages apps and calendars",
+        "integrated AI hub for productivity",
+        "smart AI assistant for busy people"
+      ],
+      "seo_score": 7,
+      "suggestions": [
+        "Add a section explaining how to set up an AI assistant like this today (e.g., using existing tools).",
+        "Include real-world examples of apps that already offer partial centralization (e.g., Google Assistant, Siri).",
+        "Optimize the subtitle to include a keyword like 'central AI assistant for productivity'."
+      ],
+      "optimised_at": "2026-06-29T02:50:53.527Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"How AI Could Become Your Central Digital Assistant\"\nsubtitle: \"Imagine one intelligent assistant managing all your apps and tasks – here’s what that could look like in your daily life.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"ai-assistants\", \"productivity\", \"future-tech\"]\n---\n\n# How AI Could Become Your Central Digital Assistant\n\nDo you ever feel like you're constantly jumping between different apps – your email, calendar, messaging, and notes – just to get one task done? What if one smart assistant could handle all those scattered tasks for you, acting as a central brain for your digital life?\n\n## The Idea of a Central AI Hub\n\nThink of an **integrated AI assistant** (a smart computer program designed to help you with many different jobs) as a conductor for your digital orchestra. Instead of you opening individual apps like email or a to-do list, you'd tell this central AI what you need. It would then use its connections – often through **APIs (Application Programming Interfaces, which are like secret handshakes that let different software programs talk to each other)** – to coordinate across all your services.\n\nThis isn't about replacing your favourite apps, but rather having an intelligent layer that sits on top, making them work together seamlessly. It could learn your habits, preferences, and even predict what you need before you ask.\n\n## Everyday Examples in Action\n\nImagine you have a client meeting coming up. You could simply tell your integrated AI: \"Prepare me for my 2 PM meeting with Sarah.\" The AI could then:\n\n*   Scan your calendar for meeting details.\n*   Check your email for recent communication with Sarah.\n*   Pull up relevant notes or project files from your document storage.\n*   Even draft a quick summary of the meeting's agenda for you to review.\n\nAnother example: planning a weekend away. Instead of searching multiple sites, you could ask, \"Find a pet-friendly Airbnb near the coast for next month and book a restaurant for Saturday night.\" The AI would check availability, cross-reference your preferences, and even make the bookings, all with your approval.\n\n## Beyond Chat – Taking Action\n\nThis kind of AI isn't just for chatting or providing information. It's about empowering the AI to take **actions** on your behalf within the apps it's connected to. This means it could actually send that email, add that event to your calendar, or confirm that restaurant reservation – always with your explicit permission, of course. The goal is to reduce the number of clicks and decisions you have to make, freeing up your mental energy for more important things.\n\n## What this means for you\n\n*   **In everyday life**: Picture your AI sorting your personal emails, managing your family's grocery list across different family members' phones, or automatically adding events from a school newsletter to your calendar. It could become your ultimate personal assistant, handling the small, repetitive tasks that eat up your day.\n*   **For your business or work**: This level of integration could transform productivity. Imagine the AI scheduling follow-up emails after meetings, updating project management boards with tasks you discussed, or summarising customer feedback from various channels into a single report. It frees up staff to focus on creative problem-solving and client relationships.\n*   **If you're just getting started**: While full \"AI hubs\" are still evolving, you can already see glimpses of this future in current AI tools. Look for features in your existing AI assistants that connect to your calendar or email. Experiment with these connections to see how they can streamline simple tasks.\n\n## Wrap-up\n\nThe idea of a single, integrated AI assistant is moving from concept to reality, promising a future where our digital lives are far more organised and efficient. By letting AI handle the digital busywork, you could unlock more time and mental space for what truly matters to you. Why not explore the integrations available in your current AI tools and see how they can start simplifying your digital world today?",
+  "original_title": "OpenAI is still working on that ‘super app’"
+}

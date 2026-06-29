@@ -1,0 +1,61 @@
+{
+  "_meta": {
+    "written_at": "2026-06-29T02:44:56.441Z",
+    "writer_provider": "google",
+    "writer_model": "gemini-2.5-flash",
+    "writer_cost_usd": 0.0014458499999999998,
+    "original_draft": "2026-06-07T20-03-21-284Z_arstechnica-ai_School_shooting_survivor_sues_AI_gun_detection_fir.json",
+    "source_id": "arstechnica-ai",
+    "source_name": "Ars Technica AI",
+    "source_link": "https://arstechnica.com/tech-policy/2026/06/school-shooting-survivor-sues-ai-gun-detection-firm-after-system-failed-to-spot-weapon/",
+    "status": "published",
+    "rejected_at": "2026-06-29T02:43:16.738Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 992
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "decision": "PASS",
+      "issues": [
+        "minor use of backticks for emphasis",
+        "some complex sentences"
+      ],
+      "verdict": "The article provides a clear and explanatory introduction to AI detection, avoiding prohibited content and using Australian English spellings, making it suitable for publication with minor adjustments.",
+      "_aiCost": 0.0012655799999999999,
+      "_provider": "groq",
+      "_model": "llama-3.3-70b-versatile",
+      "_attempts": 1
+    },
+    "reason": "Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-06-07T20-03-21-284Z_arstechnica-ai_School_shooting_survivor_sues_AI_gun_detection_fir.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-06-29T02:45:45.024Z",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-06-29T02:48:51.030Z",
+    "guide_worthy": false,
+    "pairing_reason": "The article is a generic explainer on AI detection and its limitations, not introducing a specific named feature or tool.",
+    "seo": {
+      "meta_description": "Discover how AI detection works to filter spam or recognize faces—and why these smart systems aren’t perfect. Learn the limits of AI in plain language.",
+      "keywords": [
+        "what is AI detection",
+        "how AI detection works",
+        "limitations of AI detection",
+        "AI pattern recognition explained",
+        "AI spam filters explained"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add a section on real-world examples of AI detection failures to address user concerns.",
+        "Include a simple infographic showing how AI detection compares to human detection.",
+        "Optimize the subtitle with a keyword like 'AI detection limits' for better search visibility."
+      ],
+      "optimised_at": "2026-06-29T02:51:00.340Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Understanding AI Detection: What It Is and Why It Isn't Always Perfect\"\nsubtitle: \"Learn how AI systems spot patterns and why knowing their limits helps you navigate a smarter world.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"ai-safety\", \"ai-accuracy\", \"machine-learning\", \"security\"]\n---\n\n# Understanding AI Detection: What It Is and Why It Isn't Always Perfect\n\nHave you ever wondered how your email automatically filters out spam, or how your phone camera `recognises` faces? That's AI detection at work. These clever systems are becoming more common in our daily lives, helping to sort, secure, and even identify things in the world around us. But while they're powerful tools, it's also important to understand that they aren't foolproof and have clear limitations.\n\n## What is AI Detection?\n\nAt its core, an AI detection system is a computer program designed to automatically identify specific patterns, objects, or behaviours within data. This data could be anything from text in an email to images from a security camera, or even sounds.\n\nThese systems learn to do this through a process called **machine learning** (think of it as the AI's way of learning from experience, like a student studying many examples). They are fed enormous amounts of data – called **training data** – which is often labelled by humans. For instance, if you want an AI to detect cats, you show it millions of pictures, some with cats labelled \"cat,\" and some without. Over time, the AI starts to figure out the common features that make a cat a cat.\n\n## How AI \"Spots\" Things\n\nWhen an AI detects something, it's essentially performing complex **pattern `recognition`**. Inside the AI, there are often intricate structures called **neural networks** (imagine them like layers of digital \"neurons\" that process information, each layer looking for different features).\n\nWhen new data comes in, the neural network processes it, looking for the patterns it learned during its training. If enough of those \"cat\" patterns are present in a new image, the AI will classify it as containing a cat. The system then gives a probability or a \"confidence score\" – it's not saying \"this *is* a cat,\" but rather \"I am 98% confident this is a cat based on what I've learned.\"\n\n## Why AI Detection Isn't Always Perfect\n\nDespite their sophistication, AI detection systems aren't infallible. There are several reasons why they can make mistakes:\n\n*   **False Positives:** This is when the AI incorrectly flags something. For example, a cloud formation might be mistaken for a human face, or a toy might be identified as a real weapon.\n*   **False Negatives:** This is the opposite – when the AI *misses* something it should have detected. A piece of spam might slip through the filter, or a critical detail in a medical scan could be overlooked.\n*   **Lack of Context:** AIs often struggle with nuance. They see pixels and patterns, but they don't *understand* the broader situation. A prop in a play looks very different from a real object in a dangerous situation to a human, but to an AI, they might share similar visual features.\n*   **Bias in Training Data:** If the training data used to teach the AI isn't diverse or has embedded human biases, the AI will inherit and amplify those biases. This can lead to unfair or inaccurate detections, particularly for certain groups of people or specific scenarios.\n*   **Adversarial Attacks:** Some malicious actors can intentionally create subtle alterations to images or data that are invisible to humans but cause an AI to misclassify things.\n\n## Where We See AI Detection in Action\n\nYou probably interact with AI detection more often than you `realise`:\n\n*   **Email Spam Filters:** These systems constantly analyse incoming emails for patterns associated with junk mail.\n*   **Social Media Content Moderation:** AI helps to identify and flag harmful, inappropriate, or illegal content, though human reviewers often make the final decision.\n*   **Smart Home Security:** Cameras can use AI to distinguish between a person, a pet, or a passing car, reducing unnecessary alerts.\n*   **Manufacturing and Quality Control:** AI can inspect products on an assembly line for tiny defects that might be hard for the human eye to consistently spot.\n\n## What this means for you\n\nUnderstanding the capabilities and, more importantly, the limitations of AI detection is crucial in our increasingly AI-powered world.\n\n*   **In everyday life:** Don't blindly accept an AI's judgement as absolute truth. If your social media post gets flagged, or an email is sent to spam, consider that the AI might have made an error. Be aware of how AI detection might be used in public spaces for security, and maintain a healthy scepticism about its infallibility.\n*   **For your business or work:** If you're considering implementing AI detection for security, quality control, or content review, remember it's a tool to *assist* humans, not replace them entirely. Always build in a layer of human oversight, especially for high-stakes decisions. Be mindful of potential biases in any AI system you use and plan for how to mitigate false positives and negatives.\n*   **If you're just getting started:** The most important takeaway is that AI is powerful, but it's not magic. It learns from data, and it can only be as good as the data it's trained on. Approach AI detections with a critical mind, asking yourself: \"What might this AI be missing?\" or \"Could this be a mistake?\"\n\n## Wrap-up\n\nAI detection systems are incredibly useful for automatically sifting through vast amounts of information and identifying specific patterns. From keeping your inbox clean to helping with security, their applications are widespread. However, like any tool, they have their limitations. By understanding that AI can make mistakes – whether by missing something important or flagging something incorrectly – you can navigate the smart world around you with greater awareness and critical thinking. The next time you see an AI at work, remember to appreciate its cleverness, but also to question its certainty.",
+  "original_title": "School shooting survivor sues AI gun detection firm after system failed to spot weapon"
+}
