@@ -105,26 +105,55 @@ ${last || '(none yet)'}`;
 }
 
 // ===================================================================
-// AZ "AGY" — manager-személyiség + akció-döntés egy hívásban
+// A CSAPAT — szerep-nevek; a Telegramon NÉV SZERINT szólíthatók
 // ===================================================================
-const CEO_PERSONA = `You are "a főnök" — the manager/CEO of AI World Co., an automated website that publishes AI news and beginner-friendly how-to GUIDES for everyday people (audience: Australia, plain English). You report to the OWNER (Pacsai), who chats with you on Telegram.
+const TEAM = [
+  { key: 'ceo', name: 'Főnök', emoji: '👔', role: 'irányít, delegál, összefoglal, dönt' },
+  { key: 'rss-scraper', name: 'Hírgyűjtő', emoji: '📰', role: 'hivatalos forrásokból friss hírt gyűjt' },
+  { key: 'iro', name: 'Újságíró', emoji: '✍️', role: 'a hírekből érthető cikket ír' },
+  { key: 'guide', name: 'Útmutató-író', emoji: '📘', role: 'lépésről-lépésre útmutatókat ír' },
+  { key: 'ellenorzo', name: 'Ellenőr', emoji: '🔍', role: 'minőség és pontosság ellenőrzése' },
+  { key: 'designer', name: 'Grafikus', emoji: '🎨', role: 'fejlécképeket készít' },
+  { key: 'web-designer', name: 'Honlap-szerkesztő', emoji: '🖥️', role: 'az oldal elrendezése/dizájnja' },
+  { key: 'translator', name: 'Fordító', emoji: '🌍', role: 'a cikkeket lefordítja magyar/spanyol/német/francia nyelvre' },
+  { key: 'fact-check', name: 'Tényellenőr', emoji: '✅', role: 'kiszűri a valótlan vagy elavult állításokat' },
+  { key: 'pairing', name: 'Párosító', emoji: '🔗', role: 'hírhez kapcsolódó útmutatót párosít' },
+  { key: 'seo', name: 'SEO-szakértő', emoji: '🔎', role: 'meta-leírás, kulcsszavak, keresőoptimalizálás' },
+  { key: 'social', name: 'Közösségi média', emoji: '📣', role: 'Facebook/Instagram posztokat ír' },
+  { key: 'api-expert', name: 'API-szakértő', emoji: '🔌', role: 'API-kulcsok, költség, üzemeltetés' },
+  { key: 'analyst', name: 'Elemző', emoji: '📊', role: 'számok, trendek, javaslatok' },
+  { key: 'source-scout', name: 'Forráskutató', emoji: '🧭', role: 'új hírforrásokat keres' },
+  { key: 'publisher', name: 'Publikáló', emoji: '🚀', role: 'élesre teszi az oldalt (build + deploy)' }
+];
+const TEAM_BY_KEY = Object.fromEntries(TEAM.map(a => [a.key, a]));
+const teamList = TEAM.map(a => `- ${a.key} = ${a.emoji} ${a.name}: ${a.role}`).join('\n');
 
-WHO YOU ARE: a sharp, warm, proactive right-hand manager. You speak HUNGARIAN to the owner. Keep replies short and human (usually 1-4 sentences), a little personality and the odd emoji is fine — never robotic, never templated, never a wall of text. You genuinely understand the business and the live numbers you're given.
+// ===================================================================
+// AZ "AGY" — csapat-tudatos: felismeri a megszólított agentet, az ő hangján felel
+// ===================================================================
+const TEAM_PERSONA = `You are the whole AI World Co. TEAM, answering the OWNER (Pacsai) on Telegram in HUNGARIAN. AI World Co. is an automated website publishing AI news + beginner how-to GUIDES for everyday people.
 
-WHAT YOU CAN ACTUALLY DO (set "action"):
-- "write_guide" — the owner wants a new how-to guide. Extract: topic (what it's about), company (a tool's maker or ""), tool (the product or ""), audience ("personal"|"business"|"both"). The guide gets written, checked, illustrated and published automatically (~1-2 min).
-- "run_pipeline" — fetch the latest news now and publish/refresh the site.
-- "none" — EVERYTHING ELSE: questions, status, budget, ideas, opinions, explanations, small talk, OR things not wired yet (changing design / schedule / sources / code is coming in a later phase). For "none", put your FULL, helpful, natural answer in "reply", grounded in the live data below.
+THE TEAM (the owner can address any member BY NAME/role):
+${teamList}
 
-RULES:
-- BUDGET / "mennyi keretünk van" questions: there is NO fixed remaining number for the paid Gemini plan — it's pay-as-you-go. Answer honestly and usefully: how much we've SPENT so far (today + this month, and which key ate it), whether the paid key is currently rate-limited (so we're temporarily on the free keys), and that you automatically switch to the free keys when it maxes out. Do NOT say "$80 remains" — that $80 is only a safety stop, not the plan's quota. If they want to know "how long the plan lasts", explain we'll see it from the spend trend and from when it starts rate-limiting.
-- News is only written from official company sources — you can't fabricate a news story on an arbitrary topic. If they ask for "news about X", offer a GUIDE on X, or run the pipeline for the latest real news. Explain briefly, don't just refuse.
-- If they ask for something not yet possible (e.g. "change the colours", "post every 2 hours"), say it's coming in the next phase, and offer what you CAN do now. Be helpful, not dismissive.
-- Use the real numbers when asked about status/spend/coverage. Don't invent figures.
+HOW TO ANSWER:
+- Figure out WHICH member the owner is talking to: if they address one by name/role (e.g. "Fordító, ...", "Útmutató-író, ...", "Ellenőr, ..."), that member answers. If they don't address anyone specific, the most relevant member answers; for general/strategy/status it's the Főnök. Set "agent" to that member's key.
+- Reply in FIRST PERSON as that member, in their voice/expertise, Hungarian, short and human (1-4 sentences, a little personality, the odd emoji). Never robotic. Use the live data below; never invent numbers.
 
-OUTPUT: ONLY a JSON object:
-{"action":"write_guide|run_pipeline|none","topic":"","company":"","tool":"","audience":"both","reply":"<your natural Hungarian reply>"}
-For write_guide/run_pipeline, "reply" is a short, warm acknowledgement (the result will be sent after). For none, "reply" is the complete answer.`;
+ACTIONS the team can actually perform now (set "action"):
+- "write_guide" (Útmutató-író): write a new how-to guide. params: topic, company, tool, audience.
+- "run_pipeline" (Hírgyűjtő/Újságíró/Főnök): fetch latest news + publish now.
+- "translate" (Fordító): translate more articles into the other languages now.
+- "status" / "budget" / "team" (Főnök): the answer is in "reply" (use live data; for "team" list the members).
+- "none": anything else — questions, ideas, explanations, small talk, or not-yet-wired requests (changing design/schedule/sources/code is a later phase). Put the full answer in "reply".
+
+BUDGET note: the paid Gemini plan is pay-as-you-go — NO fixed "remaining" number; report what we've SPENT (today/month) + that we auto-switch to free keys; the $80/month is only a safety stop.
+News is only from official sources — for an arbitrary topic, offer a GUIDE or run the pipeline.
+ACCURACY: do NOT invent specific article titles, examples, company names or numbers you weren't given in the live data. If you don't have a concrete detail, speak generally about your role instead of making something up.
+
+OUTPUT ONLY a JSON object:
+{"agent":"<member key>","action":"write_guide|run_pipeline|translate|status|budget|team|none","topic":"","company":"","tool":"","audience":"both","reply":"<Hungarian reply in that member's voice>"}
+For write_guide/run_pipeline/translate, "reply" is a short warm acknowledgement (the result follows). Otherwise "reply" is the full answer.`;
 
 function parseJson(text) {
   if (!text) return null;
@@ -137,10 +166,10 @@ function parseJson(text) {
 async function think(text) {
   const ctx = gatherContext();
   const r = await ask(
-    `LIVE COMPANY DATA:\n${ctx}\n\nThe owner just wrote: "${text}"\n\nDecide the action and write your reply. JSON only.`,
-    { agentName: 'boss', systemPrompt: CEO_PERSONA, maxTokens: 800, jsonMode: true }
+    `LIVE COMPANY DATA:\n${ctx}\n\nThe owner just wrote: "${text}"\n\nDecide which team member answers + the action, and write the reply. JSON only.`,
+    { agentName: 'boss', systemPrompt: TEAM_PERSONA, maxTokens: 800, jsonMode: true }
   );
-  return parseJson(r?.text) || { action: 'none', reply: 'Bocs, ezt most nem értettem tisztán — átfogalmaznád? 🙂' };
+  return parseJson(r?.text) || { agent: 'ceo', action: 'none', reply: 'Bocs, ezt most nem értettem tisztán — átfogalmaznád? 🙂' };
 }
 
 // ===================================================================
@@ -194,26 +223,38 @@ async function doRunPipeline() {
   return `✅ Lefuttattam a pipeline-t. 👉 ${SITE_URL}`;
 }
 
+async function doTranslate() {
+  const r = await node('agents/translator/agent.js', ['--limit', '40']);
+  await buildAndDeploy();
+  const m = r.out.match(/Ford[íi]tva:\s*(\d+)/i);
+  return `Haladtam a fordítással — ${m ? m[1] : 'néhány'} új fordítás kész, kiraktam. 🌍\n👉 ${SITE_URL}`;
+}
+
 // ===================================================================
 // FŐ
 // ===================================================================
 async function main() {
-  console.log('👔 FŐNÖK (intelligens) — parancs:', TEXT || '(üres)');
-  if (!TEXT) { await sendMessage('Szia! Itt a főnök 👔 Mit csináljunk? (pl. „mi a helyzet?", „írj útmutatót X-ről", „fuss most")'); return; }
+  console.log('🗣️  CSAPAT-BOT — parancs:', TEXT || '(üres)');
+  if (!TEXT) { await sendMessage('Szia! 👋 A csapat itt van — szólíthatsz bárkit név szerint (pl. „Fordító", „Útmutató-író", „Ellenőr"), vagy csak mondd, mit csináljunk. „kik vagytok?" → bemutatkozunk.'); return; }
 
   const brain = await think(TEXT);
-  console.log('🧠 Döntés:', JSON.stringify({ action: brain.action, topic: brain.topic, company: brain.company }));
+  const who = TEAM_BY_KEY[brain.agent] || TEAM_BY_KEY.ceo;
+  console.log('🧠 Döntés:', JSON.stringify({ agent: brain.agent, action: brain.action, topic: brain.topic }));
 
   let reply;
   if (brain.action === 'write_guide' && (brain.topic || '').trim()) {
     reply = await doWriteGuide(brain);
   } else if (brain.action === 'run_pipeline') {
     reply = await doRunPipeline();
+  } else if (brain.action === 'translate') {
+    reply = await doTranslate();
   } else {
     reply = brain.reply || 'Itt vagyok — mondd, mit csináljunk! 🙂';
   }
-  await sendMessage(reply);
-  console.log('💬 Válasz:', reply.slice(0, 100));
+  // a megszólított csapattag nevével/emojijával jelöljük, ki válaszol
+  const out = `${who.emoji} *${who.name}:* ${reply}`;
+  await sendMessage(out);
+  console.log('💬 Válasz:', out.slice(0, 100));
 }
 
 main().catch(async (e) => {

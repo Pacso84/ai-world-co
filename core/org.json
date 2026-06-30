@@ -3,180 +3,603 @@
     "description": "AI World Co. szervezeti felépítés: ALÁ-FÖLÉ rendeltség (ki kinek jelent), MELLÉRENDELTSÉG (kik egyenrangúak), döntési jogkörök, lateral átadási szabályok és munkafolyamatok. Cél: tiszta felelősség, semmi kavarodás. A CEO eszerint vezényel.",
     "updated": "2026-06-22"
   },
-
   "chain_of_command": [
-    { "level": 0, "who": "human", "label": "🧑 Tulajdonos", "note": "Végső döntéshozó: go-live, költségkeret, önfejlesztés és új források jóváhagyása." },
-    { "level": 1, "who": "ceo", "label": "👔 CEO (Orchestrator)", "note": "A teljes pipeline-t vezényli; go/no-go, prioritás, limitek. A 4 sikertelen útmutató-kör után ő a végső bíró." },
-    { "level": 2, "who": ["ellenorzo", "seo", "api-expert"], "label": "Részlegvezetők", "note": "Három EGYENRANGÚ (mellérendelt) vezető, mindegyik egy részleget visz; a CEO-nak jelentenek." },
-    { "level": 3, "who": "csapattagok", "label": "Csapattagok", "note": "A saját részlegvezetőjüknek jelentenek; egymással mellérendeltek, laterálisan adják át a munkát." }
+    {
+      "level": 0,
+      "who": "human",
+      "label": "🧑 Tulajdonos",
+      "note": "Végső döntéshozó: go-live, költségkeret, önfejlesztés és új források jóváhagyása."
+    },
+    {
+      "level": 1,
+      "who": "ceo",
+      "label": "👔 CEO (Orchestrator)",
+      "note": "A teljes pipeline-t vezényli; go/no-go, prioritás, limitek. A 4 sikertelen útmutató-kör után ő a végső bíró."
+    },
+    {
+      "level": 2,
+      "who": [
+        "ellenorzo",
+        "seo",
+        "api-expert"
+      ],
+      "label": "Részlegvezetők",
+      "note": "Három EGYENRANGÚ (mellérendelt) vezető, mindegyik egy részleget visz; a CEO-nak jelentenek."
+    },
+    {
+      "level": 3,
+      "who": "csapattagok",
+      "label": "Csapattagok",
+      "note": "A saját részlegvezetőjüknek jelentenek; egymással mellérendeltek, laterálisan adják át a munkát."
+    }
   ],
-
   "departments": {
     "editorial": {
       "label": "📰 Editorial — tartalomgyártás",
       "lead": "ellenorzo",
-      "members": ["rss-scraper", "iro", "guide", "designer", "web-designer", "fact-check", "pairing"]
+      "members": [
+        "rss-scraper",
+        "iro",
+        "guide",
+        "designer",
+        "web-designer",
+        "fact-check",
+        "pairing"
+      ]
     },
     "growth": {
       "label": "📈 Growth — elérés & közönség",
       "lead": "seo",
-      "members": ["social"]
+      "members": [
+        "social"
+      ]
     },
     "operations": {
       "label": "⚙️ Operations — a gépezet működtetése",
       "lead": "api-expert",
-      "members": ["analyst", "source-scout", "publisher"]
+      "members": [
+        "analyst",
+        "source-scout",
+        "publisher"
+      ]
     }
   },
-
   "roster": {
-    "ceo":         { "title": "CEO / Orchestrator",            "reports_to": "human",      "manages": ["ellenorzo", "seo", "api-expert"],                         "peers": [],                                                 "authority": "Vezényel; go/no-go; limit-betartatás; útmutató-eszkaláció végső döntése." },
-    "ellenorzo":   { "title": "Főszerkesztő / Minőségi kapu",  "department": "editorial",  "reports_to": "ceo", "manages": ["rss-scraper", "iro", "guide", "designer", "web-designer", "fact-check"], "peers": ["seo", "api-expert"], "authority": "Publikál vagy visszaad — minőségi + jogi kapu." },
-    "rss-scraper": { "title": "Gyűjtő",                        "department": "editorial",  "reports_to": "ellenorzo",  "peers": ["iro", "guide", "designer", "web-designer"],       "authority": "Témákat gyűjt hivatalos forrásokból → átadja az Írónak." },
-    "iro":         { "title": "Író (hírek)",                   "department": "editorial",  "reports_to": "ellenorzo",  "peers": ["rss-scraper", "guide", "designer", "web-designer"], "authority": "Eredeti híreket ír; rework-ban javít (max 2 kör)." },
-    "guide":       { "title": "Útmutató-író",                  "department": "editorial",  "reports_to": "ellenorzo",  "peers": ["rss-scraper", "iro", "designer", "web-designer"], "authority": "Lépésről-lépésre útmutatókat ír; rework-ban javít (4 körig, utána CEO dönt)." },
-    "designer":    { "title": "Tervező (képek)",              "department": "editorial",  "reports_to": "ellenorzo",  "peers": ["rss-scraper", "iro", "guide", "web-designer"],   "authority": "Cikk-borítóképeket készít." },
-    "web-designer":{ "title": "Honlap-szerkesztő (layout)",    "department": "editorial",  "reports_to": "ellenorzo",  "peers": ["rss-scraper", "iro", "guide", "designer", "fact-check"], "authority": "A weboldal elrendezése (website/design.json); a design-szabályokat a memóriájában tartja." },
-    "fact-check":  { "title": "Tény-ellenőrző / Frissesség-őr",  "department": "editorial",  "reports_to": "ellenorzo",  "peers": ["rss-scraper", "iro", "guide", "designer", "web-designer", "pairing"], "authority": "A PUBLIKÁLT útmutatókat újraellenőrzi; a valótlanná vált részt eltávolítja/lágyítja → vissza az Ellenőrzőre. Tárgytalan útmutatót levesz, emberhez eszkalál." },
-    "pairing":     { "title": "Hír–útmutató párosító",          "department": "editorial",  "reports_to": "ellenorzo",  "peers": ["rss-scraper", "iro", "guide", "designer", "web-designer", "fact-check"], "authority": "Eldönti, mely hír útmutatható (új, használható funkció) és melyik nem (szövetség/tőzsde/felvásárlás/üzleti/összefoglaló); csak az előbbihez készít guide-témát + kereszthivatkozást." },
-    "seo":         { "title": "SEO-vezető",                    "department": "growth",     "reports_to": "ceo", "manages": ["social"],                                  "peers": ["ellenorzo", "api-expert"],                        "authority": "Keresőoptimalizálás; a Growth részleg vezetése." },
-    "social":      { "title": "Közösségi",                     "department": "growth",     "reports_to": "seo",        "peers": [],                                                 "authority": "Közösségi posztok (terv)." },
-    "api-expert":  { "title": "Operations-vezető / API-szakértő","department": "operations","reports_to": "ceo", "manages": ["analyst", "source-scout", "publisher"],     "peers": ["ellenorzo", "seo"],                               "authority": "Modell-hozzárendelés (elérhetőség + feladat, INGYEN-először); tudásbázis (core/provider-knowledge.json) alapján megmondja, milyen kulcsot kössünk még be (key-recommendations.md); az Operations vezetése." },
-    "analyst":     { "title": "Elemző",                        "department": "operations", "reports_to": "api-expert", "peers": ["source-scout", "publisher"],                      "authority": "Tanul az eredményekből; önfejlesztési JAVASLAT (ember dönt)." },
-    "source-scout":{ "title": "Forrás-kutató",                 "department": "operations", "reports_to": "api-expert", "peers": ["analyst", "publisher"],                           "authority": "Új hivatalos források keresése → JAVASLAT (ember dönt)." },
-    "publisher":   { "title": "Publikáló",                     "department": "operations", "reports_to": "api-expert", "peers": ["analyst", "source-scout"],                        "authority": "Weboldal build + közzététel." }
+    "ceo": {
+      "title": "CEO / Orchestrator",
+      "reports_to": "human",
+      "manages": [
+        "ellenorzo",
+        "seo",
+        "api-expert"
+      ],
+      "peers": [],
+      "authority": "Vezényel; go/no-go; limit-betartatás; útmutató-eszkaláció végső döntése.",
+      "name": "Főnök",
+      "emoji": "👔"
+    },
+    "ellenorzo": {
+      "title": "Főszerkesztő / Minőségi kapu",
+      "department": "editorial",
+      "reports_to": "ceo",
+      "manages": [
+        "rss-scraper",
+        "iro",
+        "guide",
+        "designer",
+        "web-designer",
+        "fact-check"
+      ],
+      "peers": [
+        "seo",
+        "api-expert"
+      ],
+      "authority": "Publikál vagy visszaad — minőségi + jogi kapu.",
+      "name": "Ellenőr",
+      "emoji": "🔍"
+    },
+    "rss-scraper": {
+      "title": "Gyűjtő",
+      "department": "editorial",
+      "reports_to": "ellenorzo",
+      "peers": [
+        "iro",
+        "guide",
+        "designer",
+        "web-designer"
+      ],
+      "authority": "Témákat gyűjt hivatalos forrásokból → átadja az Írónak.",
+      "name": "Hírgyűjtő",
+      "emoji": "📰"
+    },
+    "iro": {
+      "title": "Író (hírek)",
+      "department": "editorial",
+      "reports_to": "ellenorzo",
+      "peers": [
+        "rss-scraper",
+        "guide",
+        "designer",
+        "web-designer"
+      ],
+      "authority": "Eredeti híreket ír; rework-ban javít (max 2 kör).",
+      "name": "Újságíró",
+      "emoji": "✍️"
+    },
+    "guide": {
+      "title": "Útmutató-író",
+      "department": "editorial",
+      "reports_to": "ellenorzo",
+      "peers": [
+        "rss-scraper",
+        "iro",
+        "designer",
+        "web-designer"
+      ],
+      "authority": "Lépésről-lépésre útmutatókat ír; rework-ban javít (4 körig, utána CEO dönt).",
+      "name": "Útmutató-író",
+      "emoji": "📘"
+    },
+    "designer": {
+      "title": "Tervező (képek)",
+      "department": "editorial",
+      "reports_to": "ellenorzo",
+      "peers": [
+        "rss-scraper",
+        "iro",
+        "guide",
+        "web-designer"
+      ],
+      "authority": "Cikk-borítóképeket készít.",
+      "name": "Grafikus",
+      "emoji": "🎨"
+    },
+    "web-designer": {
+      "title": "Honlap-szerkesztő (layout)",
+      "department": "editorial",
+      "reports_to": "ellenorzo",
+      "peers": [
+        "rss-scraper",
+        "iro",
+        "guide",
+        "designer",
+        "fact-check"
+      ],
+      "authority": "A weboldal elrendezése (website/design.json); a design-szabályokat a memóriájában tartja.",
+      "name": "Honlap-szerkesztő",
+      "emoji": "🖥️"
+    },
+    "fact-check": {
+      "title": "Tény-ellenőrző / Frissesség-őr",
+      "department": "editorial",
+      "reports_to": "ellenorzo",
+      "peers": [
+        "rss-scraper",
+        "iro",
+        "guide",
+        "designer",
+        "web-designer",
+        "pairing"
+      ],
+      "authority": "A PUBLIKÁLT útmutatókat újraellenőrzi; a valótlanná vált részt eltávolítja/lágyítja → vissza az Ellenőrzőre. Tárgytalan útmutatót levesz, emberhez eszkalál.",
+      "name": "Tényellenőr",
+      "emoji": "✅"
+    },
+    "pairing": {
+      "title": "Hír–útmutató párosító",
+      "department": "editorial",
+      "reports_to": "ellenorzo",
+      "peers": [
+        "rss-scraper",
+        "iro",
+        "guide",
+        "designer",
+        "web-designer",
+        "fact-check"
+      ],
+      "authority": "Eldönti, mely hír útmutatható (új, használható funkció) és melyik nem (szövetség/tőzsde/felvásárlás/üzleti/összefoglaló); csak az előbbihez készít guide-témát + kereszthivatkozást.",
+      "name": "Párosító",
+      "emoji": "🔗"
+    },
+    "seo": {
+      "title": "SEO-vezető",
+      "department": "growth",
+      "reports_to": "ceo",
+      "manages": [
+        "social"
+      ],
+      "peers": [
+        "ellenorzo",
+        "api-expert"
+      ],
+      "authority": "Keresőoptimalizálás; a Growth részleg vezetése.",
+      "name": "SEO-szakértő",
+      "emoji": "🔎"
+    },
+    "social": {
+      "title": "Közösségi",
+      "department": "growth",
+      "reports_to": "seo",
+      "peers": [],
+      "authority": "Közösségi posztok (terv).",
+      "name": "Közösségi média",
+      "emoji": "📣"
+    },
+    "api-expert": {
+      "title": "Operations-vezető / API-szakértő",
+      "department": "operations",
+      "reports_to": "ceo",
+      "manages": [
+        "analyst",
+        "source-scout",
+        "publisher"
+      ],
+      "peers": [
+        "ellenorzo",
+        "seo"
+      ],
+      "authority": "Modell-hozzárendelés (elérhetőség + feladat, INGYEN-először); tudásbázis (core/provider-knowledge.json) alapján megmondja, milyen kulcsot kössünk még be (key-recommendations.md); az Operations vezetése.",
+      "name": "API-szakértő",
+      "emoji": "🔌"
+    },
+    "analyst": {
+      "title": "Elemző",
+      "department": "operations",
+      "reports_to": "api-expert",
+      "peers": [
+        "source-scout",
+        "publisher"
+      ],
+      "authority": "Tanul az eredményekből; önfejlesztési JAVASLAT (ember dönt).",
+      "name": "Elemző",
+      "emoji": "📊"
+    },
+    "source-scout": {
+      "title": "Forrás-kutató",
+      "department": "operations",
+      "reports_to": "api-expert",
+      "peers": [
+        "analyst",
+        "publisher"
+      ],
+      "authority": "Új hivatalos források keresése → JAVASLAT (ember dönt).",
+      "name": "Forráskutató",
+      "emoji": "🧭"
+    },
+    "publisher": {
+      "title": "Publikáló",
+      "department": "operations",
+      "reports_to": "api-expert",
+      "peers": [
+        "analyst",
+        "source-scout"
+      ],
+      "authority": "Weboldal build + közzététel.",
+      "name": "Publikáló",
+      "emoji": "🚀"
+    },
+    "translator": {
+      "name": "Fordító",
+      "emoji": "🌍"
+    }
   },
-
   "peer_groups": [
-    { "label": "Részlegvezetők (mellérendelt)", "members": ["ellenorzo", "seo", "api-expert"], "note": "Egyenrangúak; mind a CEO-nak jelent. Ha keresztbe-érintő ügy van, egyeztetnek, nem utasítják egymást." },
-    { "label": "Tartalom-csapat (mellérendelt)", "members": ["rss-scraper", "iro", "guide", "designer", "web-designer", "fact-check", "pairing"], "note": "Egyenrangú szakemberek az Editorialban; az Ellenőrzőnek jelentenek, egymásnak laterálisan adják át a munkát." },
-    { "label": "Operations-csapat (mellérendelt)", "members": ["analyst", "source-scout", "publisher"], "note": "Egyenrangúak; az API-szakértőnek jelentenek." }
+    {
+      "label": "Részlegvezetők (mellérendelt)",
+      "members": [
+        "ellenorzo",
+        "seo",
+        "api-expert"
+      ],
+      "note": "Egyenrangúak; mind a CEO-nak jelent. Ha keresztbe-érintő ügy van, egyeztetnek, nem utasítják egymást."
+    },
+    {
+      "label": "Tartalom-csapat (mellérendelt)",
+      "members": [
+        "rss-scraper",
+        "iro",
+        "guide",
+        "designer",
+        "web-designer",
+        "fact-check",
+        "pairing"
+      ],
+      "note": "Egyenrangú szakemberek az Editorialban; az Ellenőrzőnek jelentenek, egymásnak laterálisan adják át a munkát."
+    },
+    {
+      "label": "Operations-csapat (mellérendelt)",
+      "members": [
+        "analyst",
+        "source-scout",
+        "publisher"
+      ],
+      "note": "Egyenrangúak; az API-szakértőnek jelentenek."
+    }
   ],
-
   "decision_rights": [
-    { "who": "human (owner)", "decides": "Élesítés (go-live), önfejlesztés jóváhagyása, új források jóváhagyása, költségkeret" },
-    { "who": "ceo", "decides": "Napi prioritás, go/no-go, limitek (cikk/nap, költség/nap); az útmutató VÉGSŐ sorsa 4 sikertelen kör után (jóváhagyás felülbírálással VAGY emberhez eszkalálás)" },
-    { "who": "ellenorzo", "decides": "Publikál vagy elutasít (minőségi + jogi kapu) — mind a hírek, mind az útmutatók felett" },
-    { "who": "fact-check", "decides": "A publikált útmutatóból mit kell eltávolítani/lágyítani (valótlanná vált rész); javaslatát az Ellenőrző hagyja jóvá újra-ellenőrzéskor" },
-    { "who": "pairing", "decides": "Mely hír útmutatható (kap guide-témát + kereszthivatkozást) és melyik nem" },
-    { "who": "web-designer", "decides": "A weboldal elrendezése (oszlopszám, csempe-méret, igazítás) a megjegyzett design-szabályok alapján" },
-    { "who": "api-expert", "decides": "Melyik modellt használja az egyes agent (elérhetőség + feladat alapján)" },
-    { "who": "analyst", "decides": "Mit tanuljunk; önfejlesztési JAVASLAT (ember hagyja jóvá)" },
-    { "who": "source-scout", "decides": "Új forrás JAVASLAT (ember hagyja jóvá)" }
+    {
+      "who": "human (owner)",
+      "decides": "Élesítés (go-live), önfejlesztés jóváhagyása, új források jóváhagyása, költségkeret"
+    },
+    {
+      "who": "ceo",
+      "decides": "Napi prioritás, go/no-go, limitek (cikk/nap, költség/nap); az útmutató VÉGSŐ sorsa 4 sikertelen kör után (jóváhagyás felülbírálással VAGY emberhez eszkalálás)"
+    },
+    {
+      "who": "ellenorzo",
+      "decides": "Publikál vagy elutasít (minőségi + jogi kapu) — mind a hírek, mind az útmutatók felett"
+    },
+    {
+      "who": "fact-check",
+      "decides": "A publikált útmutatóból mit kell eltávolítani/lágyítani (valótlanná vált rész); javaslatát az Ellenőrző hagyja jóvá újra-ellenőrzéskor"
+    },
+    {
+      "who": "pairing",
+      "decides": "Mely hír útmutatható (kap guide-témát + kereszthivatkozást) és melyik nem"
+    },
+    {
+      "who": "web-designer",
+      "decides": "A weboldal elrendezése (oszlopszám, csempe-méret, igazítás) a megjegyzett design-szabályok alapján"
+    },
+    {
+      "who": "api-expert",
+      "decides": "Melyik modellt használja az egyes agent (elérhetőség + feladat alapján)"
+    },
+    {
+      "who": "analyst",
+      "decides": "Mit tanuljunk; önfejlesztési JAVASLAT (ember hagyja jóvá)"
+    },
+    {
+      "who": "source-scout",
+      "decides": "Új forrás JAVASLAT (ember hagyja jóvá)"
+    }
   ],
-
   "handoff_rules": [
-    { "from": "rss-scraper", "to": "iro", "what": "Összegyűjtött, releváns témák (content/drafts)" },
-    { "from": "guide-topics.json", "to": "guide", "what": "Megírandó útmutató-témák" },
-    { "from": "iro / guide", "to": "ellenorzo", "what": "Kész piszkozat ellenőrzésre (WRITER_*)" },
-    { "from": "ellenorzo", "to": "iro / guide", "what": "Visszaadott munka a KONKRÉT hibákkal (REJECTED_*) + 'problem'/'need' üzenet" },
-    { "from": "ellenorzo", "to": "ceo", "what": "Útmutató, ami 4 kör után sem ment át → végső döntésre" },
-    { "from": "web-designer", "to": "publisher", "what": "Layout-döntés (website/design.json) a build ELŐTT" },
-    { "from": "seo", "to": "publisher", "what": "Meta-leírás + kulcsszavak a build ELŐTT" }
+    {
+      "from": "rss-scraper",
+      "to": "iro",
+      "what": "Összegyűjtött, releváns témák (content/drafts)"
+    },
+    {
+      "from": "guide-topics.json",
+      "to": "guide",
+      "what": "Megírandó útmutató-témák"
+    },
+    {
+      "from": "iro / guide",
+      "to": "ellenorzo",
+      "what": "Kész piszkozat ellenőrzésre (WRITER_*)"
+    },
+    {
+      "from": "ellenorzo",
+      "to": "iro / guide",
+      "what": "Visszaadott munka a KONKRÉT hibákkal (REJECTED_*) + 'problem'/'need' üzenet"
+    },
+    {
+      "from": "ellenorzo",
+      "to": "ceo",
+      "what": "Útmutató, ami 4 kör után sem ment át → végső döntésre"
+    },
+    {
+      "from": "web-designer",
+      "to": "publisher",
+      "what": "Layout-döntés (website/design.json) a build ELŐTT"
+    },
+    {
+      "from": "seo",
+      "to": "publisher",
+      "what": "Meta-leírás + kulcsszavak a build ELŐTT"
+    }
   ],
-
   "feedback_loops": [
     {
-      "from": "ellenorzo", "to": "iro",
+      "from": "ellenorzo",
+      "to": "iro",
       "trigger": "Hír megbukott a minőségi/jogi ellenőrzésen",
       "mechanism": "A bukott cikk a content/rejected/-be kerül a KONKRÉT hibákkal; az Író --rework módban javít és visszaad.",
       "max_rounds": 2,
       "give_up": "2 sikertelen kör után a cikk kecsesen elutasítva marad."
     },
     {
-      "from": "ellenorzo", "to": "guide",
+      "from": "ellenorzo",
+      "to": "guide",
       "trigger": "Útmutató megbukott az ellenőrzésen",
       "mechanism": "Az Útmutató-agent --rework módban javít (helyes útmutató-formátum). SOHA nem adjuk fel.",
       "max_rounds": 4,
       "give_up": "4 sikertelen kör után a CEO dönt: jóváhagyás felülbírálással VAGY emberhez eszkalálás (escalate-guides.js)."
     },
     {
-      "from": "ellenorzo", "to": "iro / guide",
+      "from": "ellenorzo",
+      "to": "iro / guide",
       "trigger": "Visszatérő hibák",
       "mechanism": "AUTOMATIKUS TANULÁS: az Ellenőrző a hibákat a rétegzett memóriába írja a TÍPUSNAK megfelelő scope-ra (hír→'iro', útmutató→'guide'); a producer minden új munkánál előhívja ('lessons'), így a hibák csökkennek."
     },
     {
-      "from": "bármely agent", "to": "csapat",
+      "from": "bármely agent",
+      "to": "csapat",
       "trigger": "Átadás, hiba, hiány vagy döntés",
       "mechanism": "AGENT-KOMMUNIKÁCIÓ (core/ops.js): problem (mi a baj) / fix (mit javítottam) / need (hiányos vagy kell még adat — nyitva marad) / decision (főnök) üzenetek. Látható a vezérlő Kommunikáció paneljén."
     },
     {
-      "from": "pairing", "to": "guide",
+      "from": "pairing",
+      "to": "guide",
       "trigger": "Új, használható funkcióról szóló hír jelent meg",
       "mechanism": "A Párosító eldönti, hogy a hír útmutatható-e (NEM az: szövetség, tőzsde, felvásárlás, vezetőváltás, jogi/üzleti, kutatás, összefoglaló). Ha igen és még nincs ilyen útmutató → új téma a guide-topics.json-ba (todo) a forrás-hírrel; ha már van → a meglévőre köt. A build a hír és az útmutató oldalt KERESZTHIVATKOZZA."
     },
     {
-      "from": "fact-check", "to": "ellenorzo",
+      "from": "fact-check",
+      "to": "ellenorzo",
       "trigger": "Egy publikált útmutató valótlanná vált (funkció megszűnt/változott)",
       "mechanism": "A Tény-ellenőrző eltávolítja/lágyítja a valótlan részt, a régi verziót LEVESZI az oldalról, a javítottat visszaküldi az Ellenőrző igazság-kapujára (újra-ellenőrzés). Ha tárgytalan az egész → leveszi és emberhez eszkalál. Tanulság a 'guide' memóriába, hogy a jövőben se állítsuk."
     },
     {
-      "from": "human / ceo", "to": "web-designer",
+      "from": "human / ceo",
+      "to": "web-designer",
       "trigger": "Új design-elv",
       "mechanism": "A Honlap-szerkesztő --rule kapcsolóval megjegyzi a szabályt a memóriájába (scope:designer), és onnantól minden tervezéskor alkalmazza."
     },
     {
-      "from": "analyst / source-scout", "to": "human (owner)",
+      "from": "analyst / source-scout",
+      "to": "human (owner)",
       "trigger": "Fejlesztési vagy új-forrás ötlet",
       "mechanism": "JAVASLAT készül — az ember dönt (önfejlesztés sosem automatikus)."
     }
   ],
-
   "workflows": {
     "daily-news": {
       "label": "Napi hírgyártás (fő pipeline)",
       "trigger": "ütemezett (napi) vagy kézi",
       "steps": [
-        { "agent": "rss-scraper", "script": "agents/rss-scraper/agent.js", "action": "Témák gyűjtése hivatalos forrásokból", "skip": "skipScrape" },
-        { "agent": "iro", "script": "agents/iro/agent.js", "action": "Eredeti cikkek írása", "skip": "skipWrite", "dynamic_limit": true },
-        { "agent": "ellenorzo", "script": "agents/ellenorzo/agent.js", "action": "Minőség + jog ellenőrzés", "skip": "skipReview", "decides": "publikál / VISSZAAD átdolgozásra" },
-        { "agent": "iro", "script": "agents/iro/agent.js --rework", "action": "REWORK: a visszaadott cikkek javítása (max 2 kör)", "skip": "skipRework", "conditional": "csak ha van visszaadott cikk" },
-        { "agent": "guide", "script": "agents/guide/agent.js --rework", "action": "REWORK: visszaadott útmutatók javítása (max 4 kör)", "skip": "skipRework", "conditional": "csak ha van visszaadott útmutató" },
-        { "agent": "ceo", "script": "agents/ceo/escalate-guides.js", "action": "FŐNÖK DÖNTÉS: a 4 kört kimerített útmutatók végső sorsa", "skip": "skipRework", "conditional": "csak ha maradt elakadt útmutató" },
-        { "agent": "pairing", "script": "agents/pairing/agent.js", "action": "PÁROSÍTÁS: a jóváhagyott hírekből kiválasztja a funkció-híreket → guide-téma + kereszthivatkozás", "skip": "skipPairing" },
-        { "agent": "guide", "script": "agents/guide/agent.js --limit N", "action": "Az új (hírből jött) útmutató-témák megírása", "skip": "skipPairing", "conditional": "csak ha a párosító új témát hozott" },
-        { "agent": "ellenorzo", "script": "agents/ellenorzo/agent.js", "action": "Az új útmutatók ellenőrzése (a bukók a köv. futás rework-hurkába)", "skip": "skipPairing", "conditional": "csak ha volt új útmutató" },
-        { "agent": "designer", "script": "agents/designer/agent.js", "action": "Fejlécképek", "skip": "skipDesign" },
-        { "agent": "seo", "script": "agents/seo/agent.js", "action": "Meta-leírás, kulcsszavak", "skip": "skipSeo" },
-        { "agent": "web-designer", "script": "agents/designer/web-designer.js", "action": "A weboldal elrendezése (design.json) a build előtt", "skip": "skipPublish" },
-        { "agent": "publisher", "script": "agents/publisher/agent.js", "action": "Build + közzététel", "skip": "skipPublish" }
+        {
+          "agent": "rss-scraper",
+          "script": "agents/rss-scraper/agent.js",
+          "action": "Témák gyűjtése hivatalos forrásokból",
+          "skip": "skipScrape"
+        },
+        {
+          "agent": "iro",
+          "script": "agents/iro/agent.js",
+          "action": "Eredeti cikkek írása",
+          "skip": "skipWrite",
+          "dynamic_limit": true
+        },
+        {
+          "agent": "ellenorzo",
+          "script": "agents/ellenorzo/agent.js",
+          "action": "Minőség + jog ellenőrzés",
+          "skip": "skipReview",
+          "decides": "publikál / VISSZAAD átdolgozásra"
+        },
+        {
+          "agent": "iro",
+          "script": "agents/iro/agent.js --rework",
+          "action": "REWORK: a visszaadott cikkek javítása (max 2 kör)",
+          "skip": "skipRework",
+          "conditional": "csak ha van visszaadott cikk"
+        },
+        {
+          "agent": "guide",
+          "script": "agents/guide/agent.js --rework",
+          "action": "REWORK: visszaadott útmutatók javítása (max 4 kör)",
+          "skip": "skipRework",
+          "conditional": "csak ha van visszaadott útmutató"
+        },
+        {
+          "agent": "ceo",
+          "script": "agents/ceo/escalate-guides.js",
+          "action": "FŐNÖK DÖNTÉS: a 4 kört kimerített útmutatók végső sorsa",
+          "skip": "skipRework",
+          "conditional": "csak ha maradt elakadt útmutató"
+        },
+        {
+          "agent": "pairing",
+          "script": "agents/pairing/agent.js",
+          "action": "PÁROSÍTÁS: a jóváhagyott hírekből kiválasztja a funkció-híreket → guide-téma + kereszthivatkozás",
+          "skip": "skipPairing"
+        },
+        {
+          "agent": "guide",
+          "script": "agents/guide/agent.js --limit N",
+          "action": "Az új (hírből jött) útmutató-témák megírása",
+          "skip": "skipPairing",
+          "conditional": "csak ha a párosító új témát hozott"
+        },
+        {
+          "agent": "ellenorzo",
+          "script": "agents/ellenorzo/agent.js",
+          "action": "Az új útmutatók ellenőrzése (a bukók a köv. futás rework-hurkába)",
+          "skip": "skipPairing",
+          "conditional": "csak ha volt új útmutató"
+        },
+        {
+          "agent": "designer",
+          "script": "agents/designer/agent.js",
+          "action": "Fejlécképek",
+          "skip": "skipDesign"
+        },
+        {
+          "agent": "seo",
+          "script": "agents/seo/agent.js",
+          "action": "Meta-leírás, kulcsszavak",
+          "skip": "skipSeo"
+        },
+        {
+          "agent": "web-designer",
+          "script": "agents/designer/web-designer.js",
+          "action": "A weboldal elrendezése (design.json) a build előtt",
+          "skip": "skipPublish"
+        },
+        {
+          "agent": "publisher",
+          "script": "agents/publisher/agent.js",
+          "action": "Build + közzététel",
+          "skip": "skipPublish"
+        }
       ]
     },
     "guides": {
       "label": "Útmutató-gyártás",
       "trigger": "kézi vagy időszakos",
       "steps": [
-        { "agent": "guide", "script": "agents/guide/agent.js --limit N", "action": "Útmutatók írása a guide-topics.json todo témáiból" },
-        { "agent": "ellenorzo", "script": "agents/ellenorzo/agent.js", "action": "Ellenőrzés → publikál / visszaad" }
+        {
+          "agent": "guide",
+          "script": "agents/guide/agent.js --limit N",
+          "action": "Útmutatók írása a guide-topics.json todo témáiból"
+        },
+        {
+          "agent": "ellenorzo",
+          "script": "agents/ellenorzo/agent.js",
+          "action": "Ellenőrzés → publikál / visszaad"
+        }
       ]
     },
     "fact-check": {
       "label": "Tény-ellenőrzés / frissesség-őr (időszakos vagy hír-trigger)",
       "trigger": "időszakos, vagy amikor egy cég funkció-változást jelent be",
       "steps": [
-        { "agent": "fact-check", "script": "agents/fact-check/agent.js [--claim \"...\"] [--company X]", "action": "Publikált útmutatók újraellenőrzése; a valótlan rész eltávolítása/lágyítása → vissza az Ellenőrzőre" },
-        { "agent": "ellenorzo", "script": "agents/ellenorzo/agent.js", "action": "Igazság-kapu: a javított útmutató újra-ellenőrzése → újra-publikálás csak ha átment" }
+        {
+          "agent": "fact-check",
+          "script": "agents/fact-check/agent.js [--claim \"...\"] [--company X]",
+          "action": "Publikált útmutatók újraellenőrzése; a valótlan rész eltávolítása/lágyítása → vissza az Ellenőrzőre"
+        },
+        {
+          "agent": "ellenorzo",
+          "script": "agents/ellenorzo/agent.js",
+          "action": "Igazság-kapu: a javított útmutató újra-ellenőrzése → újra-publikálás csak ha átment"
+        }
       ]
     },
     "learning-cycle": {
       "label": "Tanulási ciklus (időszakos)",
       "trigger": "kézi vagy időszakos",
       "steps": [
-        { "agent": "analyst", "script": "agents/analyst/agent.js", "action": "Forrás-statisztika + tanulság + skill + javaslat (ember dönt)" }
+        {
+          "agent": "analyst",
+          "script": "agents/analyst/agent.js",
+          "action": "Forrás-statisztika + tanulság + skill + javaslat (ember dönt)"
+        }
       ]
     },
     "source-discovery": {
       "label": "Forrás-felfedezés",
       "trigger": "kézi",
       "steps": [
-        { "agent": "source-scout", "script": "agents/source-scout/agent.js", "action": "Új hivatalos források keresése → JAVASLAT (ember hagyja jóvá)" }
+        {
+          "agent": "source-scout",
+          "script": "agents/source-scout/agent.js",
+          "action": "Új hivatalos források keresése → JAVASLAT (ember hagyja jóvá)"
+        }
       ]
     },
     "model-optimization": {
       "label": "Modell-optimalizálás",
       "trigger": "új API kulcs után",
       "steps": [
-        { "agent": "api-expert", "script": "agents/api-expert/agent.js", "action": "Minden agenthez a legjobb elérhető modell beállítása" }
+        {
+          "agent": "api-expert",
+          "script": "agents/api-expert/agent.js",
+          "action": "Minden agenthez a legjobb elérhető modell beállítása"
+        }
       ]
     }
   }
