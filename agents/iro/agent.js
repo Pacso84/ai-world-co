@@ -114,18 +114,31 @@ function loadBrandContext() {
 // WRITER_* prefix  = már megírtuk, vár az Ellenőrzőre
 // ===================================================================
 
+const DRAFT_MAX_AGE_DAYS = 7;   // a hír romlandó: ennél régebbi, meg nem írt draftot eldobunk
+
 function listUnprocessedDrafts(filter = null) {
   if (!existsSync(DRAFTS_DIR)) return [];
 
   const allFiles = readdirSync(DRAFTS_DIR);
-  // Csak a SCRAPER_ prefixű JSON-ok feldolgozatlanok
   const drafts = allFiles.filter(f => f.endsWith('.json') && !f.startsWith('WRITER_'));
 
   if (filter) {
     return drafts.filter(f => f === filter);
   }
 
-  return drafts.sort(); // időrend (a fájlnév kezdődik timestamp-pel)
+  // ROMLANDÓSÁG: a 7 napnál régebbi, még meg nem írt scraper-drafteket eldobjuk
+  // (különben heteket késő "friss" hírt publikálnánk). A fájlnév időbélyeggel kezdődik.
+  const cutoff = Date.now() - DRAFT_MAX_AGE_DAYS * 86400000;
+  const fresh = [];
+  for (const f of drafts) {
+    const m = f.match(/^(\d{4}-\d{2}-\d{2})T/);
+    const t = m ? new Date(m[1]).getTime() : Date.now();
+    if (t < cutoff) { try { unlinkSync(join(DRAFTS_DIR, f)); } catch { /* */ } }
+    else fresh.push(f);
+  }
+
+  // LEGÚJABB ELÖL — a friss hír megy ki előbb (nem ragad be a régi backlogon)
+  return fresh.sort().reverse();
 }
 
 // ===================================================================
@@ -316,6 +329,12 @@ function saveWrittenArticle(originalDraftFilename, draft, articleResponse) {
   };
 
   writeFileSync(newPath, JSON.stringify(writerOutput, null, 2), 'utf-8');
+
+  // FONTOS: a megírt scraper-draftot TÖRÖLJÜK, hogy ne írjuk meg újra minden
+  // futáskor (ez ragasztotta be a hírt a legrégebbi 25 cikkre). Így a sor halad,
+  // és minden draft pontosan EGYSZER lesz cikké.
+  try { unlinkSync(join(DRAFTS_DIR, originalDraftFilename)); } catch { /* már nincs ott */ }
+
   return newFilename;
 }
 
