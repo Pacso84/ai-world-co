@@ -327,12 +327,23 @@ function moveToArticles(writerFilename, writerData, autoCheckResult, aiReviewRes
   const articleFilename = writerFilename.replace(/^WRITER_/, 'ARTICLE_');
   const articlePath = join(ARTICLES_DIR, articleFilename);
 
+  // DÁTUM MEGŐRZÉSE: ha ez a cikk MÁR publikálva volt korábban (újra-közzététel,
+  // pl. átdolgozás után), tartsuk meg az EREDETI published_at-ot — különben a
+  // dátum mindig "mára" ugrana, és a 7 napos archívumban minden egy napnak tűnne.
+  let publishedAt = new Date().toISOString();
+  try {
+    if (existsSync(articlePath)) {
+      const prev = JSON.parse(readFileSync(articlePath, 'utf-8'));
+      if (prev?._meta?.published_at) publishedAt = prev._meta.published_at;
+    }
+  } catch { /* marad az új dátum */ }
+
   // Markdown formátumba mentjük a cikket (a meta + az AI review-val együtt)
   const finalArticle = {
     _meta: {
       ...writerData._meta,
       status: 'published',
-      published_at: new Date().toISOString(),
+      published_at: publishedAt,
       auto_check: autoCheckResult,
       ai_review: aiReviewResult
     },
