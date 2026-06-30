@@ -1,55 +1,38 @@
 {
   "_meta": {
-    "written_at": "2026-06-29T02:37:49.061Z",
-    "writer_provider": "google",
-    "writer_model": "gemini-flash-latest",
-    "writer_cost_usd": 0.00123945,
+    "written_at": "2026-06-30T17:06:51.129Z",
+    "writer_provider": "cerebras",
+    "writer_model": "gpt-oss-120b",
+    "writer_cost_usd": 0,
     "original_draft": "2026-06-07T20-02-58-134Z_meta-ai_Our_AI_Wearables_Are__Changing_the_Game__for_Disab.json",
     "source_id": "meta-ai",
     "source_name": "Meta AI / Tech News",
     "source_link": "https://about.fb.com/news/2026/05/meta-ai-wearables-changing-the-game-for-disabled-people/",
     "status": "published",
-    "published_at": "2026-06-29T02:42:08.743Z",
+    "published_at": "2026-06-30T17:20:31.617Z",
     "auto_check": {
       "passed": true,
       "issues": [],
-      "wordCount": 716
+      "wordCount": 934
     },
     "ai_review": {
       "overall_score": 9,
       "decision": "PASS",
       "issues": [
-        "missing source citation in the article",
-        "no explicit Australian context"
+        "minor cliches",
+        "lacking specific sources"
       ],
-      "verdict": "The article is well-structured, informative, and respectful, making it suitable for publication with minor adjustments to address the mentioned issues.",
-      "_aiCost": 0.00103153,
+      "verdict": "The article is well-structured, informative, and respectful, with a clear brand voice and accessible language, making it suitable for publication with minor revisions.",
+      "_aiCost": 0.00124413,
       "_provider": "groq",
       "_model": "llama-3.3-70b-versatile",
       "_attempts": 1
     },
     "pairing_checked": true,
-    "pairing_checked_at": "2026-06-29T02:47:28.650Z",
+    "pairing_checked_at": "2026-06-30T17:23:05.756Z",
     "guide_worthy": false,
-    "pairing_reason": "The article is about a generic topic of AI smart glasses and their applications, not a specific named feature or tool.",
-    "seo": {
-      "meta_description": "Discover how AI smart glasses use built-in artificial intelligence to help people with vision or hearing challenges navigate daily tasks more easily.",
-      "keywords": [
-        "AI smart glasses for navigation",
-        "wearable AI for accessibility",
-        "AI glasses for visually impaired",
-        "AI assistive technology",
-        "AI eyewear for daily tasks"
-      ],
-      "seo_score": 8,
-      "suggestions": [
-        "Add a section on specific AI smart glasses models and their features",
-        "Include real user testimonials to build trust",
-        "Optimize subheadings with long-tail keywords like 'How AI glasses help with reading menus'"
-      ],
-      "optimised_at": "2026-06-29T02:50:44.001Z"
-    }
+    "pairing_reason": "article is a generic roundup of multiple unnamed AI wearables, not a specific named tool"
   },
-  "article_markdown": "---\ntitle: \"How AI Smart Glasses Are Helping People Navigate the World\"\nsubtitle: \"Modern wearable technology is using built-in artificial intelligence to make everyday tasks much more accessible for everyone.\"\ncategory: \"explainer\"\naudience: \"personal\"\nread_time_minutes: 3\ntags: [\"wearable-ai\", \"accessibility\", \"smart-glasses\", \"assistive-technology\"]\n---\n\n# How AI Smart Glasses Are Helping People Navigate the World\n\nImagine trying to read a tiny, beautifully styled menu in a dimly lit cafe, or trying to find the right platform in a busy, unfamiliar train station. For many of us, gathering information from our surroundings is something we do without thinking, but for people living with vision, hearing, or learning challenges, it requires constant effort and planning.\n\nFortunately, a new wave of wearable technology is starting to make navigating the physical world much easier. By combining everyday eyewear with smart technology, these devices act as friendly guides that help users interact with their surroundings in entirely new ways.\n\n## What are AI smart glasses?\n\nWe are currently seeing a major shift in how we use technology, moving from screens in our hands to devices we can wear. Smart glasses look and feel like regular spectacles, but they are equipped with tiny cameras, microphones, and speakers built directly into the frames. \n\nThe real magic, however, lies in the built-in artificial intelligence. These glasses use **computer vision** (the AI's ability to \"see\", identify, and process visual information like objects, text, and faces) to act as a supportive companion. Instead of just taking photos, the glasses can actually understand what you are looking at and describe it to you through small speakers nestled safely near your ears.\n\n## Practical ways this technology helps\n\nFor people with disabilities, these wearables offer a massive boost to independence. Here are a few ways they are being used today:\n\n*   **Reading the world aloud:** If you have low vision or struggle with printed text, AI glasses can read aloud things like food labels, street signs, or mail. You simply double-tap the side of the frame, and the AI translates the visual text into spoken words.\n*   **Recognising loved ones and objects:** The glasses can be trained to recognise familiar faces. When a friend walks up to you, the AI can whisper their name to you quietly so you never miss a greeting. It can also help locate everyday items, like finding where you left your cup on the kitchen bench.\n*   **Real-time translation and captions:** For those with hearing difficulties, some smart glasses can listen to spoken conversations and project live text onto the inside of the lenses, acting like real-life subtitles.\n\n## How does it actually work?\n\nWhen you ask your glasses a question, the camera takes a quick snapshot. This image is processed using **multimodal AI** (an artificial intelligence system that can understand different types of information, like text, images, and sound, all at the same time). \n\nThe AI quickly analyses the layout of the room, detects the objects in front of you, and formulates a helpful response. Because this happens in just a few seconds, it feels like a natural conversation with a helpful assistant who is standing right next to you.\n\n## What this means for you\n\n*   **In everyday life:** If you or a family member live with vision impairment or dyslexia, these wearables offer a new level of daily independence. From grocery shopping to reading safety labels, the physical world becomes much more accessible.\n*   **For your hobbies and leisure:** You can easily explore museums, read plaques in national parks, or enjoy cooking with physical recipe books without needing specialised handheld magnifying gear.\n*   **If you're just getting started:** You do not need to buy expensive, high-tech glasses straight away to experience this. You can try out free accessibility tools already built into your smartphone (such as Apple's Magnifier or Google's Lookout) to see how helpful computer vision can be in your daily routine.\n\n## Wrap-up\n\nTechnology is at its best when it removes barriers and brings people together. While smart glasses might still feel a little futuristic, the helpful AI inside them is already making the world a friendlier, more accessible place. To see this technology in action today, open your smartphone's app store and download a free helper app to experience how easily AI can turn images into clear, helpful speech.",
+  "article_markdown": "---\ntitle: \"How AI Glasses Can Boost Everyday Independence for People with Disabilities\"\nsubtitle: \"A practical guide to using AI‑powered wearables for reading, navigation, communication and more – step by step and with real‑world tips.\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"ai-wearables\", \"accessibility\", \"assistive-technology\"]\n---\n\n# How AI Glasses Can Boost Everyday Independence for People with Disabilities\n\n**Hook:** Imagine you’re at a busy café, trying to follow a menu, locate the restroom, and keep up with a conversation—all at once. With AI‑powered glasses, many of those tasks can happen automatically, freeing you to focus on the moment instead of the mechanics.\n\n## Getting started with AI glasses\n\n1. **Choose the right device** – Most AI wearables look like ordinary prescription glasses, but they embed a small computer that runs an **LLM (large language model – the engine behind ChatGPT)** for language tasks and a **computer‑vision system** for recognising text and objects.  \n2. **Power up and pair** – Turn the glasses on, then follow the on‑screen prompts to connect them via Bluetooth to your smartphone. The phone acts as a bridge, delivering updates and storing personal settings.  \n3. **Create a profile** – During the initial setup you’ll be asked about your specific needs: visual impairment, hearing loss, motor challenges, or a combination. The device uses this information to tailor its assistance.\n\n> *Tip:* If you wear prescription lenses, ask for a “vision‑prescription” frame so the glasses double as your regular eyewear.\n\n## Core accessibility features\n\n- **Live text reading** – The camera captures printed words (signs, labels, menus) and the LLM turns them into spoken audio. Think of it as a portable “read‑aloud” that works wherever you point the lenses.  \n- **Object & obstacle detection** – Using **computer vision** (the ability of a machine to recognise shapes and distances), the glasses alert you to nearby obstacles via gentle vibration or a soft tone. This is especially useful for navigating crowded streets or unfamiliar indoor spaces.  \n- **Speech‑to‑text captions** – In a conversation, the glasses convert spoken words into subtitles that appear on a tiny display inside the frame. For someone with hearing loss, it’s like having a personal captioning service on demand.  \n- **Sign‑language recognition** – Some newer models include a **multimodal** model (handles text, images, and video together) that can identify simple sign‑language gestures and translate them into spoken language.  \n- **Voice‑controlled commands** – A simple wake word (e.g., “Hey Vision”) lets you ask the glasses to set reminders, call contacts, or take a photo without touching any button.\n\n## Practical everyday uses\n\n- **Reading menus or medication labels** – Point the lenses at the paper, and the glasses will read the text aloud, pausing for you to ask follow‑up questions like “What does ‘gluten‑free’ mean?”  \n- **Navigating public transport** – When you approach a bus stop, the device can announce the route number, next arrival time, and even remind you to tap your ticket.  \n- **Engaging in meetings** – During a video call, the glasses can display live captions on the edge of your vision, letting you follow the discussion without missing a beat.  \n- **Safety alerts** – While crossing a street, the glasses detect traffic lights and issue a gentle buzz if you start to move against a red signal.  \n- **Learning and hobbies** – Want to learn a new craft? Point the lenses at a tutorial booklet, and the device can summarise each step, letting you keep your hands free.\n\n## Setting up and customising for maximum benefit\n\n| Step | Action | Why it matters |\n|------|--------|----------------|\n| **1. Adjust audio levels** | Use the companion app to set the volume for spoken feedback. | Prevents the sound from being too loud in quiet settings. |\n| **2. Choose caption style** | Select font size, colour (e.g., high‑contrast white on black), and placement. | Makes the subtitles easy to read for different visual abilities. |\n| **3. Enable obstacle alerts** | Turn on vibration patterns for different obstacle types (e.g., stairs vs. low‑lying objects). | Gives a discreet warning without needing to look at a screen. |\n| **4. Add favourite contacts** | Record voice shortcuts for quick calls (“Call Mom”). | Saves time and reduces the need to navigate menus. |\n| **5. Test in a safe environment** | Try the features at home before heading out. | Builds confidence and lets you fine‑tune settings. |\n\n## What this means for you\n\n- **In everyday life** – You can read printed information, navigate public spaces, and join conversations without needing a separate reader or interpreter. The glasses become an invisible ally that works as you move.  \n- **In the workplace** – Employers can offer AI glasses as part of an inclusive toolkit, allowing staff with visual or hearing impairments to participate fully in meetings, training sessions, and on‑site inspections.  \n- **If you’re just getting started** – Begin with the simple “read‑aloud” feature. Point the lenses at a newspaper headline, listen, then experiment with voice commands. Once comfortable, explore the more advanced navigation and caption tools.\n\n## Wrap‑up\n\nAI‑powered glasses are more than a cool gadget; they’re a practical bridge between everyday tasks and the challenges that disability can pose. By setting up a personalised profile, testing the core features, and gradually adding custom shortcuts, you’ll unlock a level of independence that fits seamlessly into your daily routine.  \n\n**Next step:** Pick a quiet spot at home, power on your new AI glasses, and try the live‑text reading feature on a favourite book page. Feel the difference, and then plan a short walk to see the navigation alerts in action.",
   "original_title": "Our AI Wearables Are “Changing the Game” for Disabled People"
 }

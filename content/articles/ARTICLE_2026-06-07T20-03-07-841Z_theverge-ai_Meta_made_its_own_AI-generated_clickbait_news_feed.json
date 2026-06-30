@@ -1,54 +1,40 @@
 {
   "_meta": {
-    "written_at": "2026-06-29T02:40:45.477Z",
+    "written_at": "2026-06-30T17:18:19.769Z",
     "writer_provider": "google",
     "writer_model": "gemini-2.5-flash",
-    "writer_cost_usd": 0.001317075,
+    "writer_cost_usd": 0.001297275,
     "original_draft": "2026-06-07T20-03-07-841Z_theverge-ai_Meta_made_its_own_AI-generated_clickbait_news_feed.json",
     "source_id": "theverge-ai",
     "source_name": "The Verge - AI",
     "source_link": "https://www.theverge.com/ai-artificial-intelligence/944235/meta-app-ai-clickbait-articles",
     "status": "published",
-    "published_at": "2026-06-29T02:43:16.730Z",
+    "published_at": "2026-06-30T17:21:34.552Z",
     "auto_check": {
-      "passed": true,
-      "issues": [],
-      "wordCount": 846
+      "passed": false,
+      "issues": [
+        "CLICHE: Tiltott klisé találva: \"you won't believe\""
+      ],
+      "wordCount": 804
     },
     "ai_review": {
       "overall_score": 9,
       "decision": "PASS",
       "issues": [
-        "none"
+        "some complex sentences",
+        "minor repetitive phrasing"
       ],
-      "verdict": "The article effectively teaches readers to identify AI-generated content in a friendly and explanatory manner, providing clear examples and actionable advice while maintaining a respectful tone and using Australian English spellings.",
-      "_aiCost": 0.0011627,
+      "verdict": "The article is well-structured, informative, and provides actionable advice for readers to critically evaluate AI-generated content, maintaining a respectful and non-judgmental tone throughout.",
+      "_aiCost": 0.0011245699999999999,
       "_provider": "groq",
       "_model": "llama-3.3-70b-versatile",
       "_attempts": 1
     },
     "pairing_checked": true,
-    "pairing_checked_at": "2026-06-29T02:48:38.003Z",
+    "pairing_checked_at": "2026-06-30T17:23:13.507Z",
     "guide_worthy": false,
-    "pairing_reason": "The article is a generic topic about spotting AI-generated content, not a specific named feature or tool.",
-    "seo": {
-      "meta_description": "Learn simple ways to spot AI-generated text and images in your feed so you can trust what you read and see online every day.",
-      "keywords": [
-        "how to spot AI-generated content",
-        "identify fake AI images",
-        "check if text is AI-written",
-        "AI content detection tips",
-        "trustworthy online content"
-      ],
-      "seo_score": 8,
-      "suggestions": [
-        "Add a quick checklist (e.g., '5 signs your post might be AI-made') to improve readability and shareability.",
-        "Include real examples of AI vs. human content to make the guide more practical.",
-        "Optimize subheadings with long-tail keywords like 'AI image red flags' or 'how to verify AI text'."
-      ],
-      "optimised_at": "2026-06-29T02:50:57.739Z"
-    }
+    "pairing_reason": "No specific named feature/tool/mode/setting to use"
   },
-  "article_markdown": "---\ntitle: \"How to Spot AI-Generated Content in Your Online Feed\"\nsubtitle: \"Learn to identify misleading AI-created text and images to navigate your daily digital world with confidence.\"\ncategory: \"explainer\"\naudience: \"personal\"\nread_time_minutes: 4\ntags: [\"ai-literacy\", \"critical-thinking\", \"online-safety\"]\n---\n\n# How to Spot AI-Generated Content in Your Online Feed\n\nHave you ever scrolled through your social media or news feed and seen an image that just looked... off? Or read a headline that promised the world but delivered nothing substantial? Increasingly, artificial intelligence (AI) is behind some of this strange content, and knowing how to spot it is becoming a vital skill for navigating your daily digital life.\n\n## What is AI-Generated Content and Why Does it Appear?\n\nAI-generated content refers to text, images, or even sounds created by artificial intelligence programs. These tools, often called large language models (LLMs, like the engine behind ChatGPT) for text, or image generators for visuals, learn by analysing vast amounts of existing data. They then use these patterns to create something new.\n\nWhy is this content popping up in your feeds? Well, AI can create content incredibly fast and at a huge scale. Sometimes this is useful, like helping writers draft ideas or artists find inspiration. But other times, it's used to quickly churn out articles or images designed to grab your attention – often with sensational headlines or eye-catching visuals – without necessarily providing accurate or high-quality information. This is where the term \"clickbait\" comes in, and AI can be very good at creating it.\n\nOne key thing to understand about AI is that it sometimes \"hallucinates.\" This means the AI confidently makes up facts, figures, or visual details that aren't real, simply because the patterns it learned suggest it *should* put something there.\n\n## Visual Clues: Spotting AI-Generated Images\n\nAI-generated images have come a long way, but they still often leave subtle hints. Here are a few things to look for:\n\n*   **Distorted or extra body parts:** Hands and fingers are notorious sticking points for AI. Look for too many fingers, strangely bent limbs, or unnatural body proportions.\n*   **Unusual backgrounds or objects:** The background might be blurry in odd ways, or objects might morph into each other. Sometimes everyday items like cups or glasses will have strange reflections or unusual shapes.\n*   **Inconsistent lighting and shadows:** The light source might not make sense, or shadows could fall in unnatural directions.\n*   **Nonsensical text:** If there's text in an image (like on a sign or a book cover), check if it's readable, makes sense, or looks like gibberish. AI often struggles with realistic lettering.\n*   **Symmetry and repetition:** Sometimes AI creates overly symmetrical or repetitive patterns that feel unnatural in a real-world scene.\n\nKeep in mind that AI image generation is constantly improving, so these \"tells\" are becoming harder to spot.\n\n## Textual Clues: Identifying AI-Generated Text\n\nAI-written articles or social media posts can also have common characteristics:\n\n*   **Sensational or vague headlines:** They grab attention but often lack concrete details, promising a lot but delivering little substance.\n*   **Repetitive phrasing:** The AI might reuse similar sentence structures or phrases throughout the text.\n*   **Lack of specific details or sources:** Genuine articles usually cite specific examples, names, dates, or studies. AI-generated text often speaks in generalities.\n*   **Overly formal or generic language:** The writing might sound stiff, overly academic, or just a bit bland and lacking a distinct human voice. It can also lack nuance, presenting things in a very black-and-white manner.\n*   **Confidently incorrect facts (hallucinations):** As mentioned, AI can simply make things up. If something sounds too unbelievable or contradicts what you know, it could be an AI hallucination.\n*   **Awkward phrasing or grammar:** While AI is good at grammar, sometimes cultural idioms or complex sentence structures can be slightly off.\n\n## What this means for you\n\n*   **In everyday life:** When you come across a strange image or an unbelievable headline online, take an extra moment to pause. Look for the visual and textual clues mentioned above. Don't immediately share content that feels \"off\" – a quick scroll to check comments or a cross-reference with a known news source can save you from spreading misinformation. Cultivating a healthy dose of scepticism is your best defence.\n*   **If you're just getting started:** Start by becoming an active observer of your feed. When you see something that makes you do a double-take, apply these tips. Look closely at the image, read the text carefully. Even if you can't definitively say it's AI-generated, recognising that something is \"unreliable\" is a crucial first step in media literacy in the age of AI.\n\n## Wrap-up\n\nThe rise of AI-generated content means we all need to be a little savvier about what we consume online. By learning to identify the tell-tale signs of AI-created images and text, you can better navigate the digital world and protect yourself from misleading or low-quality information. Start today by simply paying closer attention to the next strange post you see in your feed – those small details might just reveal the AI behind it.",
+  "article_markdown": "---\ntitle: \"Spotting AI-Generated Content in Your Daily Scroll\"\nsubtitle: \"Learn to identify and critically evaluate AI-created articles and images to stay informed and avoid misleading information online.\"\ncategory: \"explainer\"\naudience: \"personal\"\nread_time_minutes: 4\ntags: [\"AI-content\", \"misinformation\", \"critical-thinking\", \"online-safety\"]\n---\n\n# Spotting AI-Generated Content in Your Daily Scroll\n\nAs you scroll through your social media feeds or browse online, you're likely encountering more and more content that wasn't created by a human. AI is getting very good at generating text and images, and sometimes this content is specifically designed to grab your attention – much like traditional \"clickbait\". Knowing how to spot these AI creations is becoming a crucial skill for navigating the digital world.\n\n## What is an AI-Generated Feed?\n\nImagine a computer program that can write articles, create images, and even put together entire news-style feeds, all without direct human input for each piece. That's essentially what an AI-generated feed does. These systems use large amounts of data to learn patterns and then generate new content based on what they've learned. The goal can be anything from providing quick summaries to deliberately creating sensational headlines and images to attract clicks.\n\nThe challenge is that while AI can be incredibly creative, it doesn't truly *understand* what it's generating. It's predicting the next word or pixel based on statistical likelihoods, which means it can sometimes \"hallucinate\" (make up facts or create illogical images) or repeat common biases found in its training data.\n\n## How to Spot AI-Created Content\n\nBeing a smart consumer of information online means looking for a few tell-tale signs:\n\n*   **Unusual Images:** AI-generated images, especially earlier versions, often have subtle (or not-so-subtle) flaws. Look for distortions in hands, eyes, or backgrounds. Sometimes there are strange textures, inconsistent lighting, or nonsensical details that don't quite make sense. Overly smooth skin or a lack of fine detail can also be clues.\n*   **Generic or Repetitive Text:** Does the article read a bit blandly, even if the headline is dramatic? AI-generated text can sometimes lack genuine insight, use overly formal or repetitive phrasing, or simply rehash common knowledge without adding anything new. It might also struggle with nuance or local context.\n*   **Sensational Headlines with Little Substance:** Just like human-written clickbait, AI can excel at crafting headlines that promise the world (\"You won't BELIEVE what happened next!\") but the article itself delivers very little factual information or is poorly structured.\n*   **Lack of Author or Reputable Source:** Is there a clear author's name, or is it just attributed to a generic \"staff writer\" or \"AI\"? Does the website or platform have a history of publishing reliable information? A lack of transparency can be a red flag.\n\n## Why This Matters for Your Information Diet\n\nIt's easy to dismiss these as harmless distractions, but relying on AI-generated content without critical assessment can have real impacts:\n\n*   **Accuracy Concerns:** AI can confidently present incorrect information as fact. If you're using this content for research or decision-making, you could be misled.\n*   **Bias Reinforcement:** AI models learn from the data they're fed. If that data contains biases (e.g., stereotypes, specific political leanings), the AI can unwittingly reproduce and even amplify these biases in its generated content.\n*   **Erosion of Trust:** When it becomes harder to distinguish between reliable, human-vetted content and AI-generated content (especially if it's flawed or misleading), our overall trust in online information decreases. This makes it challenging to find genuinely useful and factual material.\n*   **Time Wasting:** Clicking on sensational but ultimately vacuous headlines can divert your attention from valuable information and waste your precious time.\n\n## What this means for you\n\n*   **In everyday life:** Become a savvy digital detective. Before you share an article or believe a sensational claim, take a moment to look for the signs of AI generation. Check the image for anomalies and read past the headline to assess the quality and depth of the content. If something feels \"off,\" it probably is.\n*   **If you're just getting started:** A good first step is to focus on the images. Are the people's hands natural? Is the background consistent? Then, read the first few paragraphs of the text. Does it sound like it was written by a real person with a clear point of view, or is it generic and repetitive?\n\n## Wrap-up\n\nAs AI continues to evolve and create more of the content we see online, developing your critical thinking skills for digital media is more important than ever. By being aware of how AI-generated feeds work and learning to spot the common signs of AI creation, you can better protect yourself from misinformation and make more informed choices about the content you consume and share. Why not try checking the images and headlines on your favourite news or social media feeds today to see what you can spot?",
   "original_title": "Meta made its own AI-generated clickbait news feed"
 }

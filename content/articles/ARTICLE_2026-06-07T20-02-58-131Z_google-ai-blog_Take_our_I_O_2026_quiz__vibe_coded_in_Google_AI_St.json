@@ -1,61 +1,35 @@
 {
   "_meta": {
-    "written_at": "2026-06-29T02:43:48.443Z",
+    "written_at": "2026-06-30T17:04:58.170Z",
     "writer_provider": "google",
-    "writer_model": "gemini-2.5-flash",
-    "writer_cost_usd": 0.0013574249999999998,
+    "writer_model": "gemini-flash-latest",
+    "writer_cost_usd": 0.0022717500000000003,
     "original_draft": "2026-06-07T20-02-58-131Z_google-ai-blog_Take_our_I_O_2026_quiz__vibe_coded_in_Google_AI_St.json",
     "source_id": "google-ai-blog",
     "source_name": "Google AI (blog.google)",
     "source_link": "https://blog.google/innovation-and-ai/technology/ai/io-2026-vibe-coded-quiz/",
     "status": "published",
-    "rejected_at": "2026-06-29T02:41:52.482Z",
+    "published_at": "2026-06-30T17:19:40.258Z",
     "auto_check": {
       "passed": true,
       "issues": [],
-      "wordCount": 842
+      "wordCount": 658
     },
     "ai_review": {
       "overall_score": 9,
       "decision": "PASS",
-      "issues": [
-        "minor structure adjustments"
-      ],
-      "verdict": "The article is well-written, informative, and easy to understand, making it suitable for everyday people with a clear explanation of technical terms and no prohibited content.",
-      "_aiCost": 0.0011145099999999998,
+      "issues": [],
+      "verdict": "The article is well-structured, easy to understand, and provides a clear explanation of vibe coding and Google AI Studio, making it suitable for publication.",
+      "_aiCost": 0.0009843,
       "_provider": "groq",
       "_model": "llama-3.3-70b-versatile",
       "_attempts": 1
     },
-    "reason": "Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben",
-    "can_retry": true,
-    "rework_attempts": 1,
-    "reworked_from": "REJECTED_2026-06-07T20-02-58-131Z_google-ai-blog_Take_our_I_O_2026_quiz__vibe_coded_in_Google_AI_St.json",
-    "requeued_unchanged": false,
-    "published_at": "2026-06-29T02:45:15.581Z",
     "pairing_checked": true,
-    "pairing_checked_at": "2026-06-29T02:47:07.955Z",
-    "guide_worthy": false,
-    "pairing_reason": "The article introduces a generic topic of vibe coding, not a specific named feature or tool.",
-    "seo": {
-      "meta_description": "Discover vibe coding: build simple apps like quizzes and calculators by chatting with AI—no coding skills needed. Start creating today!",
-      "keywords": [
-        "what is vibe coding",
-        "build apps without coding",
-        "AI app builder",
-        "create simple apps with AI",
-        "no-code AI tools",
-        "how to use AI for app development"
-      ],
-      "seo_score": 8,
-      "suggestions": [
-        "Add a step-by-step example in the article to improve user engagement signals.",
-        "Include common questions like 'Is vibe coding free?' in the FAQ section.",
-        "Optimize subheadings with long-tail keywords (e.g., 'How to start vibe coding today')."
-      ],
-      "optimised_at": "2026-06-29T02:50:39.972Z"
-    }
+    "pairing_checked_at": "2026-06-30T17:23:03.406Z",
+    "guide_worthy": true,
+    "related_guide_topic": "host-a-simple-ai-web-app-on-hugging-face-spaces-without-codi"
   },
-  "article_markdown": "---\ntitle: \"What is Vibe Coding? How to Build Simple Apps Without Writing Code\"\nsubtitle: \"Create your own custom quizzes, tools, and mini-programs simply by describing what you want to an AI in plain language\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"vibe-coding\", \"google-ai-studio\", \"no-code\", \"getting-started\"]\n---\n\n# What is Vibe Coding? How to Build Simple Apps Without Writing Code\n\nHave you ever wished you could build a quick interactive quiz for a family trivia night, or a simple calculator to tally up your weekly household budget, without having to learn complex programming languages? With a new approach called \"vibe coding\", you can now create functional mini-apps simply by chatting with an AI.\n\nThis shift means you no longer need to understand computer science to build helpful digital tools for your home or business. Here is a guide to what vibe coding is and how you can start using it today.\n\n## What on earth is \"vibe coding\"?\n\nVibe coding is a friendly, informal term for building software simply by describing what you want in plain English. Instead of typing out lines of complex code (the behind-the-scenes instructions that make software work), you describe your vision to an AI, and the AI writes the actual code for you.\n\nTo do this, everyday creators use an AI playground (a web-based testing space where you can experiment with AI models).\n\nThe process is highly conversational. You might start with a rough idea, see what the AI generates, and then ask for changes based on the \"vibe\" or feel of the program. If a button looks too small, you do not need to learn CSS (the styling language used to design the look of a webpage). You simply tell the AI: \"Please make the buttons larger and colour them blue.\"\n\n## How to get started with your first project\n\nBuilding your first mini-app is much easier than it sounds. You can start by following these three steps:\n\n1.  **Access an AI workspace:** Head to a free developer platform that offers AI coding assistance. You do not need to be a professional programmer to use these spaces; they are often open to anyone with a basic account.\n2.  **Write your initial prompt:** A prompt (the instruction you type to the AI) should be as descriptive as possible. For example, you could write: *\"Please create a simple, single-page webpage with a five-question quiz about Australian native animals. Make it interactive so that when a user clicks an answer, it immediately shows whether they are correct or incorrect.\"*\n3.  **Review and refine:** The AI will generate the code. Most modern AI platforms will also let you preview the project directly in your browser. If you notice a typo or want to add a timer to the quiz, just type: *\"Add a 30-second countdown timer to the top of the page.\"*\n\nBy repeating this conversational process, you can build a fully functional tool in a matter of minutes.\n\n## Practical ideas you can build today\n\nYou do not need to build the next massive social media platform to get value out of vibe coding. Here are a few simple, highly useful projects you can try making this weekend:\n\n*   **A chore randomised spinner:** A simple wheel-spinning utility to help your household decide who does the dishes or takes out the bins.\n*   **A custom unit converter:** A handy tool for the kitchen that converts old family recipes from imperial measurements to metric units (like Celsius and grams).\n*   **A basic invoice generator:** A straightforward page where you can enter your hours and hourly rate, which then automatically calculates the total including GST (Goods and Services Tax) and formats a clean receipt.\n\n## What this means for you\n\n*   **In everyday life:** You can create personalised educational games for your children, interactive party invitations, or custom budget calculators tailored to your family's exact spending categories.\n*   **For your business or work:** You can quickly build a prototype (a rough, early model of an app used to test an idea) to show clients or colleagues, saving you the time and expense of hiring an external developer just to test a concept. This speeds up the feedback loop and helps you refine your ideas before significant investment.\n*   **If you're just getting started:** Keep your first project incredibly simple. Try asking the AI to build a basic webpage that displays a random, positive quote every time you click a button. This low-stakes project will help you get familiar with the conversational process.\n\n## Wrap-up\n\nThe era of software development being restricted to those who can read and write complex programming code is rapidly drawing to a close. By using AI tools to \"vibe code\" your ideas into reality, you can take control of your digital environment and build the exact tools you need without needing to be an expert.\n\nTo take your first step today, open up an AI assistant, describe a simple interactive game you enjoyed as a child, and ask the AI to write the webpage code to recreate it.",
+  "article_markdown": "---\ntitle: \"How to Vibe Code Your First Web App with Google AI Studio\"\nsubtitle: \"You do not need to be a software developer to build a custom quiz or helper tool; you just need to describe your ideas in plain English.\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"vibe-coding\", \"google-ai-studio\", \"no-code\", \"getting-started\"]\n---\n\n# How to Vibe Code Your First Web App with Google AI Studio\n\nHave you ever had a quick idea for a simple tool—like a personalised trivia game for a family gathering or a basic calculator to track your weekly expenses—but abandoned it because you didn't know how to write code? Thanks to a new approach called \"vibe coding\", you can now turn these ideas into working web applications just by chatting. \n\nYou do not need a degree in computer science to bring your ideas to life anymore. Here is how you can get started.\n\n## What is \"vibe coding\"?\n\n**Vibe coding** is a playful term for building software simply by describing what you want in plain English, letting the AI handle the programming behind the scenes. Instead of spending weeks learning coding **syntax** (the strict grammar rules of programming languages), you simply share your \"vibe\"—the look, feel, and function you want—and the AI creates the code for you. \n\nTo do this, we use a tool like **Google AI Studio**. Think of this as a free, web-based **sandbox** (a safe testing environment where you can play with technology without breaking anything). It connects you directly to Google’s most powerful AI models, giving you a blank canvas to build and test your ideas.\n\n## How to build your first project\n\nBuilding a simple application, like an interactive quiz, takes only a few steps inside the studio:\n\n1. **Access the studio:** Head to Google AI Studio and sign in with your standard Google account. \n2. **Create a prompt:** A **prompt** is simply the set of instructions you type to the AI. In the chat box, describe exactly what you want to build. \n3. **Be specific:** Instead of asking for \"a quiz\", try: *\"Write the code for a simple interactive quiz about Australian native animals. Include five multiple-choice questions. Make the background a soft green, and show the final score at the end.\"*\n4. **Run and copy:** The AI will generate the underlying HTML and JavaScript code. You can copy this code and paste it into a free online viewer (like Codepen or any basic text editor on your computer) to see your quiz run instantly in your browser.\n\nIf you want to change something—such as making the buttons larger or changing the colour scheme—you do not need to edit the code yourself. Simply tell the AI: *\"Make the font larger and change the background to blue,\"* and it will rewrite the code for you.\n\n## What this means for you\n\n- **In everyday life:** You can create custom tools for your hobbies or household. This could be a chore tracker for the kids, a digital recipe organiser, or a custom party game tailored to your friends' inside jokes.\n- **For your business or work:** You can quickly prototype simple tools to make your day easier. For example, you can build a basic shipping cost calculator for your online store or a feedback form draft to show your team before paying a professional developer to build the final version.\n- **If you're just getting started:** Begin with something incredibly small. Ask the AI to build a single button that changes colour when you click it. Once you see how it works, you can slowly add more features.\n\n## Wrap-up\n\nVibe coding shifts the focus of software creation from writing complex computer code to simply explaining your creative ideas clearly. By using free sandboxes like Google AI Studio, anyone can become a creator. To take your first step today, log in to the studio and ask the AI to write the code for a basic holiday packing checklist.",
   "original_title": "Take our I/O 2026 quiz, vibe coded in Google AI Studio."
 }

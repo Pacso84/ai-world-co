@@ -1,58 +1,38 @@
 {
   "_meta": {
-    "written_at": "2026-06-29T02:43:28.764Z",
+    "written_at": "2026-06-30T17:01:11.132Z",
     "writer_provider": "google",
-    "writer_model": "gemini-2.5-flash",
-    "writer_cost_usd": 0.0012643499999999998,
+    "writer_model": "gemini-flash-latest",
+    "writer_cost_usd": 0.00226665,
     "original_draft": "2026-06-07T20-02-45-881Z_google-deepmind_Simulate_real-world_places_with_Project_Genie_and_.json",
     "source_id": "google-deepmind",
     "source_name": "Google DeepMind Blog",
     "source_link": "https://deepmind.google/blog/simulate-real-world-places-with-project-genie-and-street-view/",
     "status": "published",
-    "rejected_at": "2026-06-29T02:41:50.693Z",
+    "published_at": "2026-06-30T17:19:22.082Z",
     "auto_check": {
       "passed": true,
       "issues": [],
-      "wordCount": 631
+      "wordCount": 765
     },
     "ai_review": {
       "overall_score": 9,
       "decision": "PASS",
-      "issues": [],
-      "verdict": "The article is well-structured, easy to understand, and provides a clear explanation of how to use AI to simulate real-world places, making it a great fit for our audience.",
-      "_aiCost": 0.0009707499999999999,
+      "issues": [
+        "minor lack of Australian English spellings",
+        "some complex sentences"
+      ],
+      "verdict": "The article is well-structured, easy to understand, and provides valuable explanations of technical terms, making it suitable for publication with minor revisions.",
+      "_aiCost": 0.00106556,
       "_provider": "groq",
       "_model": "llama-3.3-70b-versatile",
       "_attempts": 1
     },
-    "reason": "Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben",
-    "can_retry": true,
-    "rework_attempts": 1,
-    "reworked_from": "REJECTED_2026-06-07T20-02-45-881Z_google-deepmind_Simulate_real-world_places_with_Project_Genie_and_.json",
-    "requeued_unchanged": false,
-    "published_at": "2026-06-29T02:45:14.303Z",
     "pairing_checked": true,
-    "pairing_checked_at": "2026-06-29T02:46:47.151Z",
+    "pairing_checked_at": "2026-06-30T17:23:01.160Z",
     "guide_worthy": false,
-    "pairing_reason": "The article does not introduce a specific, named feature or tool.",
-    "seo": {
-      "meta_description": "Discover how AI turns map data into realistic simulations of real-world places. Plan trips, scout locations, or revisit spots virtually with ease.",
-      "keywords": [
-        "how to use AI for travel planning",
-        "AI virtual tour simulation",
-        "explore real places with AI",
-        "AI for location scouting",
-        "generate 3D maps with AI"
-      ],
-      "seo_score": 8,
-      "suggestions": [
-        "Add a step-by-step guide section with clear headings for better readability and SEO",
-        "Include real-world examples of AI-generated simulations for credibility",
-        "Optimize subheadings with long-tail keywords like 'AI for trip planning'"
-      ],
-      "optimised_at": "2026-06-29T02:50:36.080Z"
-    }
+    "pairing_reason": "no specific named feature/tool/mode/setting to use today"
   },
-  "article_markdown": "---\ntitle: \"How to Explore and Simulate Real-World Places Using AI\"\nsubtitle: \"Step inside a virtual world generated from real map data to plan trips, scout locations, or revisit favourite spots.\"\ncategory: \"how-to\"\naudience: \"personal\"\nread_time_minutes: 4\ntags: [\"virtual-reality\", \"google-ai\", \"travel-tips\", \"immersive-tech\"]\n---\n\n# How to Explore and Simulate Real-World Places Using AI\n\nImagine trying to book a holiday rental or plan a walking route in a city you have never visited, only to find yourself squinting at flat, outdated photos online. Now, generative AI (software that can create new content, like text, images, or 3D environments, from simple instructions) is changing how we experience places before we ever step foot there. \n\nBy combining map data with smart imagery tools, you can now generate realistic simulations of physical locations right from your computer or phone. Here is how this technology works and how you can use it in your daily life.\n\n## Bringing maps to life with AI\n\nFor years, we have used street-level photography to preview destinations. However, these images are static and only show a single moment in time. \n\nNew developments in multimodal AI (an AI system that can understand and combine different types of information, such as text, photos, and geography, all at once) allow us to build a spatial simulation. Think of a spatial simulation as a virtual, interactive 3D model of a real-world location that you can explore on your screen as if you were walking through a video game.\n\nRather than just looking at a photo, the AI uses existing images to estimate depth, lighting, and 3D shapes. It then fills in the gaps to let you move smoothly through the space, change the time of day, or even alter the weather to see how a location looks under different conditions.\n\n## How to simulate and explore your next destination\n\nWhile some of these advanced features are currently rolling out to premium AI subscribers, you can start using spatial exploration tools with these simple steps:\n\n1.  **Identify your target location:** Enter an address or landmark into your AI assistant or advanced mapping tool.\n2.  **Describe what you want to experience:** Use simple, natural language prompts (the instructions you type into the AI). For example, you can ask: *\"Show me what this street looks like during a rainy evening,\"* or *\"Simulate a walk from the train station to this hotel cafe.\"*\n3.  **Interact with the environment:** Use your mouse or touch screen to pan, tilt, and glide through the generated space. The AI will render the surroundings on the fly, creating a seamless view of the streetscape.\n\n## What this means for you\n\n-   **For your next holiday or move**: You can virtually walk the path from a potential rental property to the nearest supermarket to see if the walk is actually flat and accessible, or explore a new neighbourhood to get a feel for the local vibe before moving.\n-   **For creative projects and hobbies**: If you are a photographer, painter, or writer, you can scout real-world locations from home to see how the natural light hits a specific street corner at sunrise without needing to travel there first.\n-   **If you're just getting started**: Open up your favourite mapping application on your phone and look for options like \"immersive view\" or \"3D view\". It is an easy, free way to get used to navigating computer-generated spaces before moving on to fully interactive AI simulators.\n\n## Wrap-up\n\nBy turning static, flat maps into living digital worlds, AI makes exploring our planet easier and much more interactive. To take your first step today, open up a digital map of a landmark you have always wanted to visit, switch to the 3D or immersive view, and start exploring the world from the comfort of your living room.",
+  "article_markdown": "---\ntitle: \"How AI is Turning Street Photos Into Virtual Worlds You Can Explore\"\nsubtitle: \"A new wave of AI technology lets you step inside street-view photos and simulate real-world places directly from your screen.\"\ncategory: \"explainers\"\naudience: \"personal\"\nread_time_minutes: 4\ntags: [\"virtual-reality\", \"google-ai\", \"travel\", \"interactive-ai\"]\n---\n\n# How AI is Turning Street Photos Into Virtual Worlds You Can Explore\n\nImagine planning a holiday to a historic coastal town, but instead of just looking at flat photos online, you could virtually step onto the pavement, walk around the corner, and see how the evening light hits the local shopfronts. This kind of virtual exploration is quickly becoming a reality thanks to new AI tools that turn everyday street maps into interactive digital environments. \n\nBy blending vast databases of street imagery with smart AI, we are moving past static screen photos and entering a time where we can actively simulate real-world places.\n\n## What is an interactive world simulator?\n\nTraditionally, when you look at a digital map, you are viewing a series of flat, 360-degree photos stitched together. You click an arrow, the screen blurs, and you jump to the next photo. \n\nNow, researchers and technology companies are using a **generative interactive world model (an AI system that doesn't just show a photo, but actually builds a virtual world you can actively move through and change)**. \n\nInstead of jumping from one static image to another, the AI reads the flat pixels of a street photo, understands the depth of the buildings, trees, and roads, and creates a seamless 3D space. It essentially \"fills in the blanks\" for the angles the camera missed, allowing you to move smoothly through the environment as if you were playing a video game.\n\n## How does the technology work?\n\nThe magic happens through a mix of geographic data and advanced generative AI. \n\n1. **Depth Mapping:** First, the AI analyses street-level photos to calculate where objects are in relation to each other. It figures out that a lamppost is close, while a mountain range is far away.\n2. **Predictive Generation:** If you decide to walk down a side path that wasn't fully captured by the mapping vehicle, the AI uses what it knows about the surrounding architecture and vegetation to generate the missing scenery.\n3. **Real-Time Rendering:** The system uses **rendering (the process of the AI drawing and building the visual scene on your screen in real time)** to let you interact with the environment. \n\nIn some advanced setups, you can even use a **prompt (the written instruction or command you give to the AI)** to change the conditions of the simulation. For example, you could type \"make it a rainy winter afternoon\" or \"show me what this street looks like at sunset,\" and the AI will instantly recalculate the lighting and reflections.\n\n## Practical ways to use virtual simulations\n\nWhile this technology sounds incredibly high-tech, it has some wonderful, practical uses for everyday life:\n\n* **Smarter holiday planning:** Before booking accommodation, you can virtually walk the local neighbourhood to see if the streets are too steep for a pram, or if there are accessible paths nearby.\n* **Creative inspiration:** If you are a writer, artist, or hobbyist game designer, you can use these simulated environments to visualise backdrops and settings based on real-world locations without needing to travel there.\n* **Virtual nostalgia:** You can revisit the streets where you grew up, exploring them from angles that standard cameras never quite captured.\n\n## What this means for you\n\n- **If you love to travel**: You will soon be able to scout destinations with unprecedented detail. You can check out local streets, cafes, and walkways from your couch, ensuring there are no surprises when you arrive.\n- **If you enjoy creative projects**: You can use these simulated environments to spark ideas for stories, paintings, or digital designs by easily manipulating the time of day and weather of real-world places.\n- **If you're just getting started with AI**: You don't need expensive virtual reality goggles to try this. These capabilities are slowly rolling out to premium tiers of everyday search and map applications on the smartphones and laptops you already own.\n\n## Wrap-up\n\nAI is transforming how we view our planet, turning static maps into living, breathing digital spaces. The next time you are daydreaming about your next weekend getaway, keep an eye out for these interactive features in your favourite mapping apps—they might just let you take a test walk before you even pack your bags.\n\n*Written and edited by AI World Co.'s autonomous AI agents. Reviewed for accuracy by our editorial system.*",
   "original_title": "Simulate real-world places with Project Genie and Street View"
 }

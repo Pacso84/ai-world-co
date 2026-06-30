@@ -1,61 +1,37 @@
 {
   "_meta": {
-    "written_at": "2026-06-29T02:43:59.531Z",
-    "writer_provider": "google",
-    "writer_model": "gemini-2.5-flash",
-    "writer_cost_usd": 0.0012988499999999998,
+    "written_at": "2026-06-30T17:06:49.217Z",
+    "writer_provider": "cerebras",
+    "writer_model": "gpt-oss-120b",
+    "writer_cost_usd": 0,
     "original_draft": "2026-06-07T20-02-58-133Z_meta-ai_Introducing_Creator_Assistant__Plus_More_Languages.json",
     "source_id": "meta-ai",
     "source_name": "Meta AI / Tech News",
     "source_link": "https://about.fb.com/news/2026/06/creator-assistant-more-languages-for-ai-translations-on-facebook/",
     "status": "published",
-    "rejected_at": "2026-06-29T02:42:01.185Z",
+    "published_at": "2026-06-30T17:20:13.559Z",
     "auto_check": {
       "passed": true,
       "issues": [],
-      "wordCount": 703
+      "wordCount": 798
     },
     "ai_review": {
       "overall_score": 9,
       "decision": "PASS",
       "issues": [
-        "some technical terms could be further explained",
-        "minor structure adjustments possible"
+        "missing some technical term explanations"
       ],
-      "verdict": "The article is well-structured, easy to understand, and provides valuable information on using AI social media assistants, with only minor improvements needed for clarity and flow.",
-      "_aiCost": 0.00102644,
+      "verdict": "The article is well-structured, written in a friendly and explanatory tone, and provides valuable information to everyday people, with clear explanations of technical terms like 'large language model' and 'transformer architecture'.",
+      "_aiCost": 0.0011477899999999999,
       "_provider": "groq",
       "_model": "llama-3.3-70b-versatile",
       "_attempts": 1
     },
-    "reason": "Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben",
-    "can_retry": true,
-    "rework_attempts": 1,
-    "reworked_from": "REJECTED_2026-06-07T20-02-58-133Z_meta-ai_Introducing_Creator_Assistant__Plus_More_Languages.json",
-    "requeued_unchanged": false,
-    "published_at": "2026-06-29T02:45:16.308Z",
     "pairing_checked": true,
-    "pairing_checked_at": "2026-06-29T02:47:22.080Z",
+    "pairing_checked_at": "2026-06-30T17:23:05.034Z",
     "guide_worthy": false,
-    "pairing_reason": "article introduces generic AI social media assistants, not a specific named feature",
-    "seo": {
-      "meta_description": "Discover how AI social media assistants can help you brainstorm content ideas and auto-translate videos to grow your audience effortlessly.",
-      "keywords": [
-        "how to use AI for social media growth",
-        "AI social media tools for beginners",
-        "auto-translate videos for social media",
-        "AI content creation tips",
-        "grow audience with AI assistants"
-      ],
-      "seo_score": 8,
-      "suggestions": [
-        "Add a section on free AI tools vs. paid options for clarity",
-        "Include real examples of AI-generated content ideas",
-        "Optimize subheadings with long-tail keywords like 'best AI social media assistants'"
-      ],
-      "optimised_at": "2026-06-29T02:50:42.753Z"
-    }
+    "pairing_reason": "article covers multiple unrelated features (Creator Assistant + AI Translations) and is a generic how-to guide"
   },
-  "article_markdown": "---\ntitle: \"How to Use AI Social Media Assistants to Grow Your Audience\"\nsubtitle: \"Learn how built-in AI tools can help you brainstorm content ideas and translate your videos into multiple languages automatically.\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"social-media\", \"content-creation\", \"translation-ai\", \"getting-started\"]\n---\n\n# How to Use AI Social Media Assistants to Grow Your Audience\n\nScrolling through your social media feed after dinner, you might wonder how some creators manage to post so consistently. You might also notice videos from creators worldwide, seamlessly translated into English, and wonder how you can do the same. Today, social media platforms are introducing built-in AI assistants and translation tools to help everyday users and small businesses create content and reach people across the globe. Here is how these tools work and how you can use them to your advantage.\n\n## What is an AI creator assistant?\n\nAn AI creator assistant is a digital helper built directly into your social media apps. Instead of leaving the app to use external writing tools, you can access help right where you draft your posts.\n\nThese assistants rely on **generative AI** (technology that creates new text, images, or ideas from simple prompts) to help you beat blank-page anxiety. You can use them to:\n\n*   **Brainstorm ideas:** Ask the assistant for five video concepts about your hobby or business.\n*   **Draft captions:** Write a basic sentence and ask the assistant to make it more engaging, funny, or professional.\n*   **Organise schedules:** Ask the tool to help you plan a weekly posting calendar.\n\n## Breaking language barriers with AI translation\n\nOne of the most powerful updates to social platforms is the introduction of automatic video translation. Traditionally, translating a video meant hiring expensive translators and voice actors. Now, AI can handle this in seconds.\n\nMany platforms now use **synthetic dubbing** (using computer-generated voices that mimic your original tone and style) to translate spoken video content. The AI listens to your English audio, translates the words into another language like Spanish or Portuguese, and generates a new audio track that sounds remarkably like you.\n\nSome advanced systems even adjust the video slightly so your lip movements match the translated words. This makes your content accessible to millions of people who do not speak your language, without requiring any extra editing on your part.\n\n## Practical tips for using social AI tools\n\nTo get the most out of these built-in assistants without losing your personal touch, keep these simple tips in mind:\n\n1.  **Use AI as a starting point, not the final word:** Let the assistant draft your captions, but always edit the text so it sounds like your natural voice.\n2.  **Experiment with short clips first:** Before trying to reach a global audience with a long presentation, test the translation features on a short, 15-second video to see how the voice and lip-syncing look.\n3.  **Be specific with your prompts:** When asking the assistant for help, give it details. Instead of asking for \"ideas about baking\", ask for \"three simple baking ideas for beginners using pantry staples\".\n\n## What this means for you\n\n*   **For your personal projects or hobbies:** You can share your passions—whether it is gardening, woodwork, or local history—with a global community, letting the AI translate your speech so viewers worldwide can understand your tips.\n*   **For your business or work:** You can localise your promotional videos for diverse communities right in your neighbourhood or test international markets without a large marketing budget.\n*   **If you're just getting started:** Next time you draft a post on Facebook or Instagram, look for a small \"sparkle\" or \"assistant\" icon near the text box. Tap it and ask it to write a friendly greeting to see how it works.\n\n## Wrap-up\n\nAI tools are quickly becoming a standard part of how we communicate online, making it easier than ever to write, plan, and speak to a global audience. You do not need to be a technology expert or a professional video editor to benefit from these updates. Open your favourite social media app today, look for the built-in AI assistant, and ask it to generate three caption ideas for your next post to see how simple it is to get started.",
+  "article_markdown": "---\ntitle: \"How to Use Facebook’s Creator Assistant and AI Translations to Grow Your Content\"\nsubtitle: \"A step‑by‑step guide that shows everyday creators and small business owners how to set up Meta’s Creator Assistant and publish posts in multiple languages\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"creator-assistant\", \"facebook\", \"ai-translation\", \"social-media\", \"productivity\"]\n---\n\n# How to Use Facebook’s Creator Assistant and AI Translations to Grow Your Content\n\nEver felt stuck wondering what to post next, or wished your audience from different language backgrounds could understand your updates without you manually re‑writing each one? Facebook’s new Creator Assistant, paired with expanded AI‑powered translations, can take the guesswork out of content planning and help you reach more people—all from a single dashboard.\n\n## Getting Started with Creator Assistant\n\n1. **Open Meta Business Suite** (formerly Creator Studio) on your computer or mobile app. This is the hub where you manage pages, profiles, and posts.  \n2. **Locate the “Creator Assistant” tab** on the left‑hand menu. If you don’t see it, click *Settings* → *Features* → *Enable Creator Assistant*.  \n3. **Connect your page or profile** by selecting the account you want the assistant to support. The tool now has permission to read your recent performance data.  \n4. **Choose your focus** – you can ask the assistant to suggest post ideas, optimise captions, or surface audience insights.  \n5. **Start a conversation** by typing a simple *prompt* (the instruction you give to the AI). For example, “Give me three post ideas about sustainable gardening for a weekend audience.”  \n\n> **Prompt** – the text you type that tells the AI what you want; think of it as a polite request to a very knowledgeable assistant.\n\nThe assistant uses a *large language model* (LLM – a type of AI that processes language similarly to how ChatGPT works) to generate suggestions in real time. You’ll see a list of ideas, each with a brief caption draft and a performance estimate based on past posts.\n\n## Using AI‑Powered Translations\n\nMeta has added support for many more languages, from Arabic and Hindi to Portuguese and Vietnamese. Here’s how to let the system translate your posts automatically:\n\n1. **Create or edit a post** in Business Suite.  \n2. In the post composer, look for the **“Translate”** button next to the language selector.  \n3. **Select “Auto‑translate”** and pick the languages you want. The AI will generate a translation for each chosen language.  \n4. **Review the suggestions** – AI translations are good, but a quick read‑through helps catch idiomatic quirks.  \n5. **Publish** – you can either post the multi‑language version as one combined update, or publish separate versions for each language at staggered times.\n\nThe translation engine works on a *transformer* architecture (think of it as the AI’s internal system that pays attention to each word’s context). This means it can keep the meaning of your original caption while adapting phrasing for different cultural nuances.\n\n### Quick tip: Use the “Edit after publishing” feature to tweak any translation that feels off, then re‑publish the updated version without losing the original engagement metrics.\n\n## Practical Tips to Boost Reach\n\n- **Schedule smartly** – use the assistant’s suggested posting times (based on when your followers are most active).  \n- **Combine insights with translations** – the assistant shows which languages are already driving traffic. Prioritise those for future posts.  \n- **Keep captions concise** – AI‑generated captions work best when they’re under 150 characters, especially for mobile viewers.  \n- **Add a call‑to‑action** in each language (“Tell us your favourite tip”) to encourage comments across regions.  \n\n## What this means for you\n\n- **If you’re a hobby creator** – you can spend less time brainstorming and more time filming or crafting. The assistant supplies fresh ideas, while AI translations let your posts be understood by friends overseas without learning a new language yourself.  \n- **If you run a small business** – the tool helps you maintain a consistent posting schedule and expand into new markets without hiring a multilingual copywriter. You can test which language resonates best before committing larger ad spend.  \n- **If you’re just starting** – the simplest first step is to enable Creator Assistant, ask for one post idea, and let the translation feature add two languages you already serve (e.g., English and Spanish). Publish and watch the engagement metric dashboard update.\n\n## Wrap‑up\n\nFacebook’s Creator Assistant and its broadened AI translation capabilities turn content creation from a chore into a collaborative process. By following the steps above, you’ll have fresh post ideas, multilingual reach, and data‑driven timing—all without needing a separate marketing team.  \n\n**Try it today:** open Meta Business Suite, enable Creator Assistant, ask for a post idea, and let the AI translate it into at least one additional language. Watch how your audience reacts, then refine based on the insights you receive. Happy creating!",
   "original_title": "Introducing Creator Assistant, Plus More Languages For AI Translations on Facebook"
 }
