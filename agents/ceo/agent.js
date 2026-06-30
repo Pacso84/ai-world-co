@@ -369,6 +369,16 @@ async function main() {
     console.log(gate.newsBlocked ? '⏭️  RSS Scraper kihagyva (hír-keret betelt)' : '⏭️  RSS Scraper kihagyva (--skip-scrape)');
   }
 
+  // 4a+. FORRÁS-KUTATÓ (throttled, ~3 naponta) — új, MEGBÍZHATÓ hivatalos
+  //      források felfedezése. Önszabályozó: minden futáskor hívjuk, de csak
+  //      akkor dolgozik, ha 3+ napja nem futott (--if-stale). A talált
+  //      jelölteket NEM kapcsolja be — javaslat, a felhasználó/főnök dönt.
+  if (!args.skipScrape) {
+    console.log('\n━━━ 1b. LÉPÉS: FORRÁS-KUTATÓ (megbízhatóság-kapu, throttled) ━━━');
+    const result = await runAgent('agents/source-scout/agent.js', ['--if-stale', '3']);
+    session.stages.source_scout = { exit_code: result.code };
+  }
+
   // 4b. Író (a HÍR-sáv szabad helyeit kapja limitként)
   if (!args.skipWrite && !gate.newsBlocked) {
     console.log('\n━━━ 2. LÉPÉS: ÍRÓ AGENT ━━━');

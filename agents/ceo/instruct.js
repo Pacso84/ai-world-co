@@ -25,6 +25,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..', '..');
 const TOPICS_PATH = join(ROOT, 'guides', 'guide-topics.json');
 const ARTICLES_DIR = join(ROOT, 'content', 'articles');
+const DISCOVERED_PATH = join(ROOT, 'agents', 'source-scout', 'discovered-sources.json');
 const CONFIG = JSON.parse(readFileSync(join(ROOT, 'config.json'), 'utf-8'));
 const SITE_URL = (CONFIG.company?.website_url || 'https://aiworldco.pages.dev').replace(/\/$/, '');
 
@@ -144,16 +145,17 @@ ACTIONS the team can actually perform now (set "action"):
 - "write_guide" (Útmutató-író): write a new how-to guide. params: topic, company, tool, audience.
 - "run_pipeline" (Hírgyűjtő/Újságíró/Főnök): fetch latest news + publish now.
 - "translate" (Fordító): translate more articles into the other languages now.
+- "find_sources" (Forráskutató): research NEW reliable, official news sources now. Use when the owner asks to look for / discover new sources/feeds. params: none.
 - "status" / "budget" / "team" (Főnök): the answer is in "reply" (use live data; for "team" list the members).
-- "none": anything else — questions, ideas, explanations, small talk, or not-yet-wired requests (changing design/schedule/sources/code is a later phase). Put the full answer in "reply".
+- "none": anything else — questions, ideas, explanations, small talk, or not-yet-wired requests (changing design/schedule/code is a later phase). Put the full answer in "reply".
 
 BUDGET note: the paid Gemini plan is pay-as-you-go — NO fixed "remaining" number; report what we've SPENT (today/month) + that we auto-switch to free keys; the $80/month is only a safety stop.
 News is only from official sources — for an arbitrary topic, offer a GUIDE or run the pipeline.
 ACCURACY: do NOT invent specific article titles, examples, company names or numbers you weren't given in the live data. If you don't have a concrete detail, speak generally about your role instead of making something up.
 
 OUTPUT ONLY a JSON object:
-{"agent":"<member key>","action":"write_guide|run_pipeline|translate|status|budget|team|none","topic":"","company":"","tool":"","audience":"both","reply":"<Hungarian reply in that member's voice>"}
-For write_guide/run_pipeline/translate, "reply" is a short warm acknowledgement (the result follows). Otherwise "reply" is the full answer.`;
+{"agent":"<member key>","action":"write_guide|run_pipeline|translate|find_sources|status|budget|team|none","topic":"","company":"","tool":"","audience":"both","reply":"<Hungarian reply in that member's voice>"}
+For write_guide/run_pipeline/translate/find_sources, "reply" is a short warm acknowledgement (the result follows). Otherwise "reply" is the full answer.`;
 
 function parseJson(text) {
   if (!text) return null;
@@ -230,6 +232,22 @@ async function doTranslate() {
   return `Haladtam a fordítással — ${m ? m[1] : 'néhány'} új fordítás kész, kiraktam. 🌍\n👉 ${SITE_URL}`;
 }
 
+async function doFindSources() {
+  // --force: most azonnal kutasson (a throttle-t átugorja)
+  await node('agents/source-scout/agent.js', ['--force']);
+  let found = [];
+  try { found = JSON.parse(readFileSync(DISCOVERED_PATH, 'utf-8')).discovered_sources || []; }
+  catch { /* nincs fájl */ }
+
+  if (found.length === 0) {
+    return '🧭 Körülnéztem, de most nem találtam a megbízhatósági küszöböt elérő ÚJ hivatalos forrást — a meglévők lefedik a nagyokat. Később újra megnézem.';
+  }
+  const top = found.slice(0, 6)
+    .map(d => `• *${d.name.replace(/\s*\(hivatalos\)$/, '')}* — megbízhatóság ${d.reliability_score}/100${d.last_post_age_days != null ? `, utolsó cikk ${d.last_post_age_days} napja` : ''}`)
+    .join('\n');
+  return `🧭 Találtam ${found.length} ÚJ, megbízható hivatalos forrást (csak elsődleges, ellenőrzött):\n${top}\n\nEgyiket sem kapcsoltam be magamtól — szólj, melyiket vegyem fel a forrásokhoz, és élesítem. ✅`;
+}
+
 // ===================================================================
 // FŐ
 // ===================================================================
@@ -248,6 +266,8 @@ async function main() {
     reply = await doRunPipeline();
   } else if (brain.action === 'translate') {
     reply = await doTranslate();
+  } else if (brain.action === 'find_sources') {
+    reply = await doFindSources();
   } else {
     reply = brain.reply || 'Itt vagyok — mondd, mit csináljunk! 🙂';
   }
