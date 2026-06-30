@@ -445,7 +445,7 @@ function pageShell({ title, description, bodyContent, isArticle = false, noIntro
 function coverHtml(a, pathPrefix, cls) {
   const cat = CATEGORIES[a.category] || CATEGORIES.other;
   if (a.image) {
-    return `<div class="${cls}"><img src="/assets/images/${a.image}" alt="${escapeHtml(a.title)}" loading="lazy"></div>`;
+    return `<div class="${cls}"><img src="/assets/images/${a.image}" alt="${escapeHtml(a.title)}" loading="lazy" decoding="async" width="1000" height="563"></div>`;
   }
   return `<div class="${cls} cover--gen ${cat.cls}"><span class="cover__icon">${cat.icon}</span></div>`;
 }

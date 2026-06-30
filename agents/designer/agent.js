@@ -134,13 +134,24 @@ const IMAGE_BACKENDS = [
   { name: 'Gemini', fn: viaGemini }
 ];
 
+// Opcionális kép-tömörítés (sharp) — ha nincs telepítve, sima mentés.
+// Így a friss képek is KICSIK (max 1000px, JPEG q72) → gyors oldalbetöltés.
+let _sharp = null, _sharpTried = false;
+async function compressImage(buf) {
+  if (!_sharpTried) { _sharpTried = true; try { _sharp = (await import('sharp')).default; } catch { _sharp = null; } }
+  if (!_sharp) return buf;
+  try { return await _sharp(buf).resize({ width: 1000, withoutEnlargement: true }).jpeg({ quality: 72, mozjpeg: true }).toBuffer(); }
+  catch { return buf; }
+}
+
 async function generateImage(prompt, destPath) {
   let lastErr = 'nincs elérhető kép-backend (adj hozzá CLOUDFLARE/HF/GOOGLE kulcsot)';
   for (const b of IMAGE_BACKENDS) {
     try {
-      const buf = await b.fn(prompt);
+      let buf = await b.fn(prompt);
       if (!buf) continue;                 // nincs kulcs ehhez a backendhez -> tovább
       if (buf.length < 1000) { lastErr = `${b.name}: gyanúsan kicsi kép`; continue; }
+      buf = await compressImage(buf);     // kicsinyítés + tömörítés (ha van sharp)
       writeFileSync(destPath, buf);
       return { size: buf.length, backend: b.name };
     } catch (e) {
