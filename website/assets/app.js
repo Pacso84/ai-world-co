@@ -20,8 +20,13 @@
   const root = document.documentElement;
   const toggle = document.getElementById('themeToggle');
 
+  // localStorage BIZTONSÁGOSAN — ha a böngésző/biztonsági szoftver blokkolja,
+  // NE dobjon kivételt (különben az egész app.js leállna: szűrő, hamburger, stb.)
+  function lsGet(k) { try { return localStorage.getItem(k); } catch { return null; } }
+  function lsSet(k, v) { try { localStorage.setItem(k, v); } catch { /* blokkolt — nem baj */ } }
+
   // Mentett preferencia visszaállítása
-  const saved = localStorage.getItem('aiworld-theme');
+  const saved = lsGet('aiworld-theme');
   if (saved === 'dark') {
     root.setAttribute('data-theme', 'dark');
     updateToggleIcon(true);
@@ -32,11 +37,11 @@
       const isDark = root.getAttribute('data-theme') === 'dark';
       if (isDark) {
         root.removeAttribute('data-theme');
-        localStorage.setItem('aiworld-theme', 'light');
+        lsSet('aiworld-theme', 'light');
         updateToggleIcon(false);
       } else {
         root.setAttribute('data-theme', 'dark');
-        localStorage.setItem('aiworld-theme', 'dark');
+        lsSet('aiworld-theme', 'dark');
         updateToggleIcon(true);
       }
     });
