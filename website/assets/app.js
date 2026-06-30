@@ -52,61 +52,10 @@
     if (icon) icon.textContent = isDark ? '☀' : '☾';
   }
 
-  // ---------- 3. KATEGÓRIA SZŰRŐ (chipek + navbar menü + hash) ----------
-  const filters = document.getElementById('filters');
-  // A hír-folyam: a 7 napos, napokra bontott konténer (#newsfeed), vagy a sima #grid
-  const grid = document.getElementById('newsfeed') || document.getElementById('grid');
-  const navLinks = document.querySelectorAll('.navbar__nav a[data-nav]');
-
-  function applyFilter(filter) {
-    if (!grid) return;
-    // kártyák — audience alapján; a "both" cikkek MINDKÉT szűrőben látszanak
-    grid.querySelectorAll('.card').forEach(card => {
-      const aud = card.getAttribute('data-audience');
-      const show = (filter === 'all') || (aud === filter) || (aud === 'both');
-      card.style.display = show ? '' : 'none';
-      // a megjelenített kártya AZONNAL látszódjon (ne várjon az AOS görgetés-animációra,
-      // különben szűréskor "üresnek"/működésképtelennek tűnne az oldal)
-      if (show) card.classList.add('aos-animate');
-    });
-    // üres nap-csoportokat (nincs látható kártya) elrejtjük
-    grid.querySelectorAll('.day-group').forEach(group => {
-      const anyVisible = [...group.querySelectorAll('.card')].some(c => c.style.display !== 'none');
-      group.style.display = anyVisible ? '' : 'none';
-    });
-    // chip aktív állapot
-    if (filters) {
-      filters.querySelectorAll('.chip').forEach(c =>
-        c.classList.toggle('chip--active', c.getAttribute('data-filter') === filter));
-    }
-    // navbar aktív állapot
-    navLinks.forEach(a =>
-      a.classList.toggle('nav--active', a.getAttribute('data-nav') === filter));
-  }
-
-  // Chip kattintás
-  if (filters && grid) {
-    filters.addEventListener('click', function (e) {
-      const btn = e.target.closest('.chip');
-      if (btn) applyFilter(btn.getAttribute('data-filter'));
-    });
-  }
-
-  // Navbar menü kattintás (csak a főoldalon szűr; cikkről átnavigál)
-  if (grid) {
-    navLinks.forEach(a => {
-      a.addEventListener('click', function (e) {
-        const cat = a.getAttribute('data-nav');
-        e.preventDefault();
-        history.replaceState(null, '', '#' + cat);
-        applyFilter(cat);
-        grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      });
-    });
-    // Hash a betöltéskor (pl. cikkről "News"-ra kattintva érkezünk)
-    const hash = (location.hash || '').replace('#', '');
-    if (hash) applyFilter(hash);
-  }
+  // ---------- 3. KATEGÓRIA SZŰRŐ ----------
+  // A célközönség-szűrő mostantól TISZTA CSS (rejtett rádiók + :checked szabályok
+  // a style.css-ben), így JavaScript nélkül is működik — nem függ attól, hogy a
+  // böngésző/biztonsági szoftver engedi-e a scriptet. Itt nincs teendő.
 
   // ---------- 3b. NAVBAR árnyék görgetésnél ----------
   const navbar = document.getElementById('navbar');

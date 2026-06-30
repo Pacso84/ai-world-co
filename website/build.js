@@ -494,10 +494,15 @@ function buildIndex(articles) {
     ${articleCard(featured, true)}
   </section>`;
 
-  const chipsHtml = rest.length > 1 ? `<div class="filters" id="filters">
-      <button class="chip chip--active" data-filter="all">${tr('all')}</button>
-      <button class="chip" data-filter="personal">${tr('personal')}</button>
-      <button class="chip" data-filter="business">${tr('business')}</button>
+  // TISZTA CSS szűrő (JS NÉLKÜL is működik): rejtett rádiók + címkék. A rádiók a
+  // #newsfeed TESTVÉREI, így a CSS ~ szelektorral tudja rejteni a nem illő kártyákat.
+  const chipsHtml = rest.length > 1 ? `<input type="radio" name="audflt" id="flt-all" class="flt-radio" checked>
+    <input type="radio" name="audflt" id="flt-personal" class="flt-radio">
+    <input type="radio" name="audflt" id="flt-business" class="flt-radio">
+    <div class="filters" id="filters">
+      <label class="chip" for="flt-all">${tr('all')}</label>
+      <label class="chip" for="flt-personal">${tr('personal')}</label>
+      <label class="chip" for="flt-business">${tr('business')}</label>
     </div>` : '';
 
   // Napokra bontás (legújabb nap elöl) — "Ma" / "Tegnap" / dátum fejlécekkel
