@@ -60,6 +60,9 @@
       const aud = card.getAttribute('data-audience');
       const show = (filter === 'all') || (aud === filter) || (aud === 'both');
       card.style.display = show ? '' : 'none';
+      // a megjelenített kártya AZONNAL látszódjon (ne várjon az AOS görgetés-animációra,
+      // különben szűréskor "üresnek"/működésképtelennek tűnne az oldal)
+      if (show) card.classList.add('aos-animate');
     });
     // üres nap-csoportokat (nincs látható kártya) elrejtjük
     grid.querySelectorAll('.day-group').forEach(group => {
