@@ -1,0 +1,54 @@
+{
+  "_meta": {
+    "type": "guide",
+    "guide_topic_id": "draft-meeting-agendas-with-mistral-s-le-chat-for-office-team",
+    "company": "Mistral",
+    "tool": "Le Chat (Mistral)",
+    "icon": "🤖",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-06-30T17:46:27.740Z",
+    "writer_provider": "cerebras",
+    "writer_model": "gpt-oss-120b",
+    "writer_cost_usd": 0,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-06-30T17:46:30.512Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 757
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "The article is well-structured, easy to understand, and provides a clear guide on using Le Chat for drafting meeting agendas, making it suitable for publication.",
+      "_aiCost": 0.00112315,
+      "_provider": "groq",
+      "_model": "llama-3.3-70b-versatile",
+      "_attempts": 1
+    },
+    "seo": {
+      "meta_description": "Learn how to quickly draft professional meeting agendas using Mistral’s Le Chat AI tool. Save time and keep meetings focused with clear, ready-to-send plans.",
+      "keywords": [
+        "how to create meeting agendas with AI",
+        "draft meeting agenda using Mistral Le Chat",
+        "AI tools for office meetings",
+        "automate meeting preparation with AI",
+        "Le Chat AI for team meetings"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add a short intro sentence at the start of the article to improve readability and SEO.",
+        "Include a FAQ section with common questions about AI-generated agendas.",
+        "Optimize subheadings with target keywords for better search visibility."
+      ],
+      "optimised_at": "2026-06-30T17:47:27.237Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Draft meeting agendas with Mistral’s Le Chat for office teams\"\nsubtitle: \"Learn how to turn your key discussion points into a polished agenda in seconds, so you can email a clear plan to everyone before the meeting starts.\"\ncategory: \"guide\"\naudience: \"business\"\ncompany: \"Mistral\"\ntool: \"Le Chat\"\nlevel: \"beginner\"\nread_time_minutes: 4\ntags: [\"getting-started\", \"le-chat\", \"agenda\"]\n---\n\n# Draft meeting agendas with Mistral’s Le Chat for office teams\n\n**Hook:** By the end of this guide you’ll be able to feed a few bullet points into Le Chat and receive a ready‑to‑send agenda, saving you time and keeping your meetings on track. It’s perfect for anyone who runs or attends regular team meetings.\n\n## Before you start\n- **Mistral account:** Sign up at mistral.ai and verify your email (free tier is enough for this tutorial).  \n- **Le Chat access:** Log into the web console and open the chat window titled “Le Chat”.  \n- **A short list of topics:** Jot down the main points you want to discuss (e.g., project update, budget review, next steps).\n\n## Step 1 — Open a new chat session\nIn the Le Chat dashboard click the **“New conversation”** button (it usually looks like a plus ✚ icon).  \n💬 **Example:** You’ll see a clean text box labelled “Ask Le Chat anything…”.\n\nWhy? Starting a fresh thread keeps the agenda request separate from any earlier chats, so Le Chat won’t mix up content.\n\n## Step 2 — Tell Le Chat what you need\nType a short prompt that explains the goal. A prompt is simply the instruction you give the AI.  \n💬 **Example:**  \n```\nPlease create a concise meeting agenda for a 30‑minute team sync. Topics: project progress, budget review, upcoming deadlines.\n```\n\nWhy? Providing the purpose and the key topics lets Le Chat understand the structure you expect.\n\n## Step 3 — Add any formatting preferences\nIf you like a particular style (bullet points, numbered items, time slots), mention it.  \n💬 **Example:**  \n```\nFormat the agenda as a numbered list with a 5‑minute slot for each item.\n```\n\nWhy? Le Chat can adapt the output to match how you usually share agendas, making the copy‑and‑paste step trivial.\n\n## Step 4 — Review the generated agenda\nLe Chat will reply with a short agenda. Read it quickly to ensure the wording matches your tone and that no topic is missing.  \n💬 **Example output:**  \n1. **5 min – Project progress** – Brief status from each sub‑team.  \n2. **5 min – Budget review** – Current spend vs. forecast.  \n3. **5 min – Upcoming deadlines** – Key dates for the next sprint.  \n4. **5 min – Risks & blockers** – Open issues and mitigation plans.  \n5. **5 min – Next steps** – Assign actions and owners.\n\nWhy? A quick skim catches any accidental omissions before you send it to the group.\n\n## Step 5 — Copy the agenda into an email\nSelect the text, copy (Ctrl +C / Cmd +C), open your email client, and paste it into the body. Add a friendly greeting, the meeting link, and hit send.  \n💬 **Example email start:**  \n```\nHi team,\n\nHere’s the agenda for tomorrow’s sync (30 min). Please review and let me know if anything should be added.\n\n[Paste agenda here]\n\nThanks,\n[Your Name]\n```\n\nWhy? The copy‑paste action is the final piece that turns the AI‑generated text into a real communication.\n\n## Common mistakes\n- **Skipping the formatting hint:** Le Chat defaults to plain paragraphs, which can look messy if you need a list.  \n- **Overloading the prompt:** Including too many topics can make the agenda overly long; keep it to 3‑5 items for a 30‑minute meeting.  \n- **Not double‑checking the output:** The model can occasionally mis‑interpret a word (e.g., “budget” as “budgetary”), so a quick read‑through is essential.\n\n## What this means for you\n- **In everyday life:** You can draft a family meeting or community group agenda in the same way, keeping everyone on the same page with minimal effort.  \n- **For your business or work:** Turn ad‑hoc brainstorming sessions into structured meetings, which improves focus and reduces follow‑up emails.  \n- **If you're just getting started:** The easiest first move is to open Le Chat, type a one‑sentence prompt, and watch the agenda appear instantly.\n\n## Try it now\nGrab a pen, write down three bullet points for your next team catch‑up, open Le Chat, and type:  \n```\nCreate a short agenda for a 20‑minute meeting covering: sales numbers, product roadmap, and client feedback.\n```  \nHit Enter and you’ll have a ready‑to‑send agenda in under a minute.",
+  "original_title": "Draft meeting agendas with Mistral’s Le Chat for office teams"
+}

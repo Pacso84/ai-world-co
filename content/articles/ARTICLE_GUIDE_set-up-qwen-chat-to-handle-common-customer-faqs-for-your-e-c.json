@@ -1,0 +1,57 @@
+{
+  "_meta": {
+    "type": "guide",
+    "guide_topic_id": "set-up-qwen-chat-to-handle-common-customer-faqs-for-your-e-c",
+    "company": "Alibaba",
+    "tool": "Qwen Chat",
+    "icon": "🤖",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-06-30T17:46:29.401Z",
+    "writer_provider": "cerebras",
+    "writer_model": "gpt-oss-120b",
+    "writer_cost_usd": 0,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-06-30T17:46:31.342Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 808
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "decision": "PASS",
+      "issues": [
+        "minor potential for cliches in future content",
+        "no explicit mention of Australian English spellings"
+      ],
+      "verdict": "The article meets all the criteria for publication, with a clear structure, plain language explanations, and a respectful tone, making it suitable for everyday people to learn about setting up Qwen Chat for their e-commerce store.",
+      "_aiCost": 0.00121608,
+      "_provider": "groq",
+      "_model": "llama-3.3-70b-versatile",
+      "_attempts": 1
+    },
+    "seo": {
+      "meta_description": "Learn how to set up Qwen Chat to automatically answer FAQs for your e-commerce store. Save time and improve customer support with this step-by-step guide.",
+      "keywords": [
+        "how to set up Qwen Chat for FAQs",
+        "AI customer support for e-commerce",
+        "automate FAQs with Qwen Chat",
+        "e-commerce customer service AI",
+        "Qwen Chat integration guide"
+      ],
+      "seo_score": 9,
+      "suggestions": [
+        "Add a short intro sentence summarizing the time saved (e.g., 'Save hours weekly by automating FAQs').",
+        "Include a bullet-point list of prerequisites in the meta description for clarity.",
+        "Consider adding 'Shopify, WooCommerce, or BigCommerce' to keywords for platform-specific searches."
+      ],
+      "optimised_at": "2026-06-30T17:47:32.195Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Set up Qwen Chat to automatically answer FAQs for your e‑commerce store\"\nsubtitle: \"Learn how to connect Alibaba's Qwen Chat to your shop’s help centre so it can instantly handle shipping, returns and product‑info questions, saving time and improving customer experience.\"\ncategory: \"guide\"\naudience: \"business\"\ncompany: \"Alibaba\"\ntool: \"Qwen Chat\"\nlevel: \"beginner\"\nread_time_minutes: 4\ntags: [\"getting-started\", \"qwen-chat\", \"ecommerce\"]\n---\n\n# Set up Qwen Chat to handle common customer FAQs for your e‑commerce store\n\n**Hook:** By the end of this guide you’ll have a Qwen Chat assistant answering shipping, returns and product‑info queries automatically, freeing up your support team for higher‑value work. This is for anyone running an online shop, even if you’ve never touched AI before.\n\n## Before you start\n- **Alibaba Cloud account** – you need a free or paid account to access Qwen Chat.  \n- **Admin rights to your e‑commerce platform** – you’ll add a small piece of code (a “widget”) to your help centre.  \n- **A list of typical FAQ questions** – think of the three most common queries your customers ask (e.g., “How long does shipping take?”).\n\n## Step 1 — Create a Qwen Chat project\nLog in to the Alibaba Cloud console, find the **AI Services** section and click **Qwen Chat**. Choose **Create New Project**, give it a name like “Shop‑FAQ Bot”, and hit **Create**.  \n💬 **Example:** In the name field type `Shop‑FAQ Bot` and click the green **Create** button.\n\n## Step 2 — Add your FAQ prompts\nInside the project, look for a tab called **Prompt Library** (or similar). Here you’ll teach the bot what to say. For each FAQ, add a new prompt:\n\n- **Prompt title:** Shipping‑time  \n- **Prompt text:** “A customer asks: *How long will my order take to arrive?* Respond with a friendly answer that mentions our standard 3‑5 day shipping for mainland Australia and any express options.”\n\nRepeat for returns and product‑info.  \n💬 **Example Prompt:**  \n```\nQuestion: How do I return an item?  \nAnswer: You can return any product within 30 days of purchase. Just log into your account, select the order, and click “Request Return”. We’ll send you a prepaid label.\n```\n\n## Step 3 — Enable the API connection\nQwen Chat talks to other software through an **API (application programming interface)** – a set of rules that let two programmes share data. In the project dashboard, find **API Keys**, generate a new key, and copy it (you’ll need it soon).  \n💬 **Example:** Click **Generate Key**, then click **Copy** next to the key string `abc123…`.\n\n## Step 4 — Embed the chat widget on your help centre\nMost e‑commerce platforms (Shopify, WooCommerce, BigCommerce) let you add custom HTML/JavaScript. Open the page editor for your help centre, locate the **Custom Code** area, and paste the following snippet, replacing `YOUR_API_KEY` with the key you copied:\n\n```html\n<script src=\"https://qwen.chat/sdk.js\"></script>\n<script>\n  QwenChat.init({\n    apiKey: 'YOUR_API_KEY',\n    containerId: 'qwen-chat',\n    welcomeMessage: 'Hi! How can I help you with your order today?'\n  });\n</script>\n<div id=\"qwen-chat\"></div>\n```\n\nSave the page and preview it – you should see a small chat bubble at the bottom right.  \n💬 **Example:** After pasting the code, click **Save** and then **View Site**; the chat icon appears.\n\n## Step 5 — Test and fine‑tune\nOpen the live help page on a separate browser tab. Type a common question like “Where is my order?” and watch Qwen Chat reply. If the answer is too generic, return to the **Prompt Library**, edit the relevant prompt, and click **Save**. Test again until the response sounds natural and covers the key details.  \n💬 **Example:** If the bot says “Your order is on the way,” edit the prompt to add “You’ll receive a tracking link by email within 24 hours.”\n\n## Common mistakes\n- **Copy‑pasting the API key wrong** – a missing character will stop the widget from loading. Double‑check the key.\n- **Leaving prompts too short** – the bot may guess and give vague answers. Include the exact phrasing you want it to use.\n- **Forgetting to publish the help‑centre page** – changes won’t be visible to customers until you hit “Publish” or “Live”.\n\n## What this means for you\n- **In everyday life:** If you run a side‑hustle on platforms like Etsy, the bot can reply to buyers while you sleep, so you never miss a sale.\n- **For your business or work:** Your support team can focus on complex issues, while Qwen Chat handles the routine 80 % of queries, cutting response times dramatically.\n- **If you're just getting started:** The easiest first move is to create a single prompt (e.g., “How long does shipping take?”) and see the bot answer it on your site.\n\n## Try it now\nOpen the Alibaba Cloud console, navigate to **Qwen Chat**, and click **Create New Project**. Name it “Test‑FAQ Bot” and hit **Create** – you’ll be ready to add prompts in the next two minutes.",
+  "original_title": "Set up Qwen Chat to handle common customer FAQs for your e‑commerce store"
+}
