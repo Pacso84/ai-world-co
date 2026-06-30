@@ -26,6 +26,7 @@ const ROOT = join(__dirname, '..', '..');
 const TOPICS_PATH = join(ROOT, 'guides', 'guide-topics.json');
 const ARTICLES_DIR = join(ROOT, 'content', 'articles');
 const DISCOVERED_PATH = join(ROOT, 'agents', 'source-scout', 'discovered-sources.json');
+const FEEDS_PATH = join(ROOT, 'sources', 'rss-feeds.json');
 const CONFIG = JSON.parse(readFileSync(join(ROOT, 'config.json'), 'utf-8'));
 const SITE_URL = (CONFIG.company?.website_url || 'https://aiworldco.pages.dev').replace(/\/$/, '');
 
@@ -146,6 +147,7 @@ ACTIONS the team can actually perform now (set "action"):
 - "run_pipeline" (Hírgyűjtő/Újságíró/Főnök): fetch latest news + publish now.
 - "translate" (Fordító): translate more articles into the other languages now.
 - "find_sources" (Forráskutató): research NEW reliable, official news sources now. Use when the owner asks to look for / discover new sources/feeds. params: none.
+- "approve_source" (Forráskutató): the owner APPROVES one of the discovered source suggestions to be added live. Use when they say things like "vedd fel a(z) X", "hagyd jóvá X-et", "jó lesz az X", "add hozzá X forrást". Put the source name in the "source" param.
 - "status" / "budget" / "team" (Főnök): the answer is in "reply" (use live data; for "team" list the members).
 - "none": anything else — questions, ideas, explanations, small talk, or not-yet-wired requests (changing design/schedule/code is a later phase). Put the full answer in "reply".
 
@@ -154,8 +156,8 @@ News is only from official sources — for an arbitrary topic, offer a GUIDE or 
 ACCURACY: do NOT invent specific article titles, examples, company names or numbers you weren't given in the live data. If you don't have a concrete detail, speak generally about your role instead of making something up.
 
 OUTPUT ONLY a JSON object:
-{"agent":"<member key>","action":"write_guide|run_pipeline|translate|find_sources|status|budget|team|none","topic":"","company":"","tool":"","audience":"both","reply":"<Hungarian reply in that member's voice>"}
-For write_guide/run_pipeline/translate/find_sources, "reply" is a short warm acknowledgement (the result follows). Otherwise "reply" is the full answer.`;
+{"agent":"<member key>","action":"write_guide|run_pipeline|translate|find_sources|approve_source|status|budget|team|none","topic":"","company":"","tool":"","source":"","audience":"both","reply":"<Hungarian reply in that member's voice>"}
+For write_guide/run_pipeline/translate/find_sources/approve_source, "reply" is a short warm acknowledgement (the result follows). Otherwise "reply" is the full answer.`;
 
 function parseJson(text) {
   if (!text) return null;
@@ -248,6 +250,58 @@ async function doFindSources() {
   return `🧭 Találtam ${found.length} ÚJ, megbízható hivatalos forrást (csak elsődleges, ellenőrzött):\n${top}\n\nEgyiket sem kapcsoltam be magamtól — szólj, melyiket vegyem fel a forrásokhoz, és élesítem. ✅`;
 }
 
+async function doApproveSource(p) {
+  const want = normCompany(p.source || p.company || p.topic || p.tool || '');
+  if (!want) return '🤔 Melyik forrást vegyem fel? Mondd a nevét, pl. „vedd fel az IBM Research-t".';
+
+  let disc;
+  try { disc = JSON.parse(readFileSync(DISCOVERED_PATH, 'utf-8')); }
+  catch { return 'Most nincs jóváhagyható javaslat-listám. Írd: „keress új forrásokat", és körülnézek. 🧭'; }
+  const list = disc.discovered_sources || [];
+  if (list.length === 0) return 'Üres a javaslat-lista. Írd: „keress új forrásokat", és hozok újakat. 🧭';
+
+  // Egyezés normalizált név / id / domain-címke alapján (rugalmasan)
+  const pick = list.find(d => {
+    const n = normCompany(d.name), id = normCompany(d.suggested_id);
+    return n.includes(want) || want.includes(id) || id === want || (id && want.includes(id));
+  });
+  if (!pick) {
+    const names = list.map(d => '„' + d.name.replace(/\s*\(hivatalos\)$/, '') + '"').join(', ');
+    return `Nem találom ezt a listámban. Amit jóvá tudsz hagyni: ${names}. Melyik legyen? 🙂`;
+  }
+
+  const feeds = JSON.parse(readFileSync(FEEDS_PATH, 'utf-8'));
+  const dup = feeds.sources.some(s => {
+    try { return new URL(s.url).hostname.replace(/^www\./, '') === new URL(pick.url).hostname.replace(/^www\./, ''); }
+    catch { return false; }
+  });
+  if (dup) {
+    disc.discovered_sources = list.filter(d => d !== pick);
+    writeFileSync(DISCOVERED_PATH, JSON.stringify(disc, null, 2), 'utf-8');
+    return `A(z) *${pick.name.replace(/\s*\(hivatalos\)$/, '')}* már a forrásaink között van — nincs teendő. ✅`;
+  }
+
+  feeds.sources.push({
+    id: pick.suggested_id,
+    name: pick.name,
+    url: pick.url,
+    category: pick.category || 'ai-company-official',
+    priority: pick.priority || 3,
+    language: pick.language || 'en',
+    country: pick.country || '?',
+    comment: `Telegramon JÓVÁHAGYVA (${new Date().toISOString().slice(0, 10)}), megbízhatóság ${pick.reliability_score || '?'}/100.`,
+    enabled: true
+  });
+  writeFileSync(FEEDS_PATH, JSON.stringify(feeds, null, 2), 'utf-8');
+
+  // Kivesszük a javaslatok közül (már élesítve)
+  disc.discovered_sources = list.filter(d => d !== pick);
+  writeFileSync(DISCOVERED_PATH, JSON.stringify(disc, null, 2), 'utf-8');
+
+  const clean = pick.name.replace(/\s*\(hivatalos\)$/, '');
+  return `✅ Felvettem és élesítettem: *${clean}*\n${pick.url}\nA következő hírgyűjtéskor már innen is figyelek! 🗞️`;
+}
+
 // ===================================================================
 // FŐ
 // ===================================================================
@@ -268,6 +322,8 @@ async function main() {
     reply = await doTranslate();
   } else if (brain.action === 'find_sources') {
     reply = await doFindSources();
+  } else if (brain.action === 'approve_source') {
+    reply = await doApproveSource(brain);
   } else {
     reply = brain.reply || 'Itt vagyok — mondd, mit csináljunk! 🙂';
   }

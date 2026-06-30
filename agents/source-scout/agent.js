@@ -37,6 +37,7 @@ import Parser from 'rss-parser';
 import { ask } from '../../core/ai-router.js';
 import { skillsBlock } from '../../core/skills.js';
 import { notify } from '../../core/ops.js';
+import { sendMessage } from '../../core/telegram.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = join(__dirname, '..', '..');
@@ -401,9 +402,24 @@ async function main() {
     console.log(`   agents/source-scout/discovered-sources.json`);
     discovered.slice(0, 5).forEach(d => console.log(`   • [${d.reliability_score}] ${d.name} — ${d.url}`));
     console.log(`   Nézd át/hagyd jóvá, és amit jónak látsz, átemeljük a forrásokhoz!`);
-    // Telegram/heartbeat értesítés a főnöknek
-    const top = discovered.slice(0, 5).map(d => `• [${d.reliability_score}] ${d.name}`).join('\n');
-    notify('info', `🧭 Forráskutató: ${discovered.length} ÚJ megbízható forrás-javaslat (küszöb ${MIN_SCORE}).\n${top}\nJóváhagyod valamelyiket?`, { agent: 'source-scout' });
+
+    // Heartbeat (vezérlőpult-napló) + VALÓDI Telegram-üzenet a főnöknek,
+    // hogy egy szóval jóvá tudja hagyni.
+    const topLog = discovered.slice(0, 5).map(d => `• [${d.reliability_score}] ${d.name}`).join('\n');
+    notify('info', `🧭 Forráskutató: ${discovered.length} ÚJ megbízható forrás-javaslat (küszöb ${MIN_SCORE}).\n${topLog}\nJóváhagyod valamelyiket?`, { agent: 'source-scout' });
+
+    const tg = discovered.slice(0, 6).map(d => {
+      const clean = d.name.replace(/\s*\(hivatalos\)$/, '');
+      const age = d.last_post_age_days != null ? `, utolsó cikk ${d.last_post_age_days} napja` : '';
+      return `• *${clean}* — megbízhatóság ${d.reliability_score}/100${age}`;
+    }).join('\n');
+    const firstName = discovered[0].name.replace(/\s*\(hivatalos\)$/, '');
+    try {
+      await sendMessage(
+        `🧭 *Forráskutató* itt! Találtam ${discovered.length} ÚJ, megbízható hivatalos AI-forrást (csak elsődleges, ellenőrzött):\n\n${tg}\n\n` +
+        `Egyiket sem kapcsoltam be magamtól. Ha jónak látod, írd vissza pl.:\n„*vedd fel a(z) ${firstName}*" — és élesítem. ✅`
+      );
+    } catch (e) { console.log('⚠️ Telegram értesítés kihagyva:', e.message); }
   } else {
     console.log('\n💤 Nem találtunk a küszöböt elérő új forrást (a meglévők már jók).');
   }
