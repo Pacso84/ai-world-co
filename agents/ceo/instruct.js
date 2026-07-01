@@ -18,7 +18,7 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { spawn } from 'child_process';
 import { ask } from '../../core/ai-router.js';
-import { sendMessage } from '../../core/telegram.js';
+import { sendMessage, loadChatHistory, appendChatHistory } from '../../core/telegram.js';
 import { budgetStatus } from '../../core/budget.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -98,8 +98,17 @@ function gatherContext() {
     ? `right now these models are rate-limited and skipped (so we're on free keys): ${limited.join(', ')}`
     : `the paid key is running fine, not rate-limited right now`;
 
+  // Jóváhagyásra váró forrás-javaslatok (a Forráskutatótól) — hogy az agy
+  // tudja, mire vonatkozhat egy "vedd fel / mindet / az elsőt" válasz.
+  let pendingSources = '(none)';
+  try {
+    const ds = JSON.parse(readFileSync(DISCOVERED_PATH, 'utf-8')).discovered_sources || [];
+    if (ds.length) pendingSources = ds.map(d => `${d.name.replace(/\s*\(hivatalos\)$/, '')} [${d.reliability_score}/100]`).join(', ');
+  } catch { /* nincs fájl */ }
+
   return `Site: ${SITE_URL}
 Published — news: ${news}, guides: ${guides}, today: ${today}
+PENDING SOURCE SUGGESTIONS (found by Forráskutató, awaiting the owner's approval): ${pendingSources}
 Guides per company: ${perCo}
 Guide backlog (queued, not yet written): ${backlog}
 Daily limits: news ${CONFIG.limits?.daily_articles_max}, guides ${CONFIG.limits?.daily_guides_max}/day
@@ -150,12 +159,17 @@ HOW TO ANSWER:
 - Figure out WHICH member the owner is talking to: if they address one by name/role (e.g. "Fordító, ...", "Útmutató-író, ...", "Ellenőr, ..."), that member answers. If they don't address anyone specific, the most relevant member answers; for general/strategy/status it's the Főnök. Set "agent" to that member's key.
 - Reply in FIRST PERSON as that member, in their voice/expertise, Hungarian, short and human (1-4 sentences, a little personality, the odd emoji). Never robotic. Use the live data below; never invent numbers.
 
+CONVERSATION MEMORY (very important):
+- You also receive the RECENT CONVERSATION (owner + bot messages, oldest first). SHORT owner replies almost always react to the LAST bot message: "mindet"/"az összeset" = ALL items just offered; "igen"/"jó"/"mehet"/"oké" = do the thing just proposed; "az elsőt"/"a másodikat" = that item from the last list; "azt is"/"a többit is" = extend the previous action.
+- Resolve these from the conversation and ACT (set the proper action + params). NEVER reply "nem értettem" when the conversation makes the intent clear.
+- Example: bot listed pending source suggestions, owner replies "mindet" → action "approve_source" with source "all".
+
 ACTIONS the team can actually perform now (set "action"):
 - "write_guide" (Útmutató-író): write a new how-to guide. params: topic, company, tool, audience.
 - "run_pipeline" (Hírgyűjtő/Újságíró/Főnök): fetch latest news + publish now.
 - "translate" (Fordító): translate more articles into the other languages now.
 - "find_sources" (Forráskutató): research NEW reliable, official news sources now. Use when the owner asks to look for / discover new sources/feeds. params: none.
-- "approve_source" (Forráskutató): the owner APPROVES one of the discovered source suggestions to be added live. Use when they say things like "vedd fel a(z) X", "hagyd jóvá X-et", "jó lesz az X", "add hozzá X forrást". Put the source name in the "source" param.
+- "approve_source" (Forráskutató): the owner APPROVES discovered source suggestion(s) to be added live. Use when they say things like "vedd fel a(z) X", "hagyd jóvá X-et", "jó lesz az X", "add hozzá X forrást". "source" param: the source name, SEVERAL names comma-separated, or "all" if they want every pending suggestion ("mindet", "az összeset", "vedd fel mindet", "mehet mind").
 - "status" / "budget" / "team" (Főnök): the answer is in "reply" (use live data; for "team" list the members).
 - "none": anything else — questions, ideas, explanations, small talk, or not-yet-wired requests (changing design/schedule/code is a later phase). Put the full answer in "reply".
 
@@ -177,11 +191,25 @@ function parseJson(text) {
 
 async function think(text) {
   const ctx = gatherContext();
-  const r = await ask(
-    `LIVE COMPANY DATA:\n${ctx}\n\nThe owner just wrote: "${text}"\n\nDecide which team member answers + the action, and write the reply. JSON only.`,
-    { agentName: 'boss', systemPrompt: TEAM_PERSONA, maxTokens: 800, jsonMode: true }
-  );
-  return parseJson(r?.text) || { agent: 'ceo', action: 'none', reply: 'Bocs, ezt most nem értettem tisztán — átfogalmaznád? 🙂' };
+
+  // BESZÉLGETÉS-ELŐZMÉNY: az utolsó ~10 üzenetváltás, hogy a rövid válaszok
+  // ("mindet", "igen", "az elsőt") is érthetők legyenek.
+  const history = loadChatHistory().slice(-10)
+    .map(h => `${h.from === 'owner' ? 'OWNER' : 'BOT'}: ${h.text.replace(/\n+/g, ' ').slice(0, 300)}`)
+    .join('\n') || '(no previous messages)';
+
+  const prompt = `LIVE COMPANY DATA:\n${ctx}\n\nRECENT CONVERSATION (oldest first):\n${history}\n\nThe owner just wrote: "${text}"\n\nDecide which team member answers + the action, and write the reply. JSON only.`;
+
+  // 2 próba: ha az első válasz nem érvényes JSON, szigorúbb emlékeztetővel újra.
+  for (let attempt = 1; attempt <= 2; attempt++) {
+    const r = await ask(
+      attempt === 1 ? prompt : prompt + '\n\nREMINDER: Output ONLY the raw JSON object, no markdown, no extra text.',
+      { agentName: 'boss', systemPrompt: TEAM_PERSONA, maxTokens: 800, jsonMode: true }
+    );
+    const parsed = parseJson(r?.text);
+    if (parsed) return parsed;
+  }
+  return { agent: 'ceo', action: 'none', reply: 'Bocs, ezt most nem értettem tisztán — átfogalmaznád? 🙂 (Kérhetsz: útmutatót, friss hírt, fordítást, forrás-kutatást, forrás-jóváhagyást, státuszt, keretet.)' };
 }
 
 // ===================================================================
@@ -259,55 +287,62 @@ async function doFindSources() {
 }
 
 async function doApproveSource(p) {
-  const want = normCompany(p.source || p.company || p.topic || p.tool || '');
-  if (!want) return '🤔 Melyik forrást vegyem fel? Mondd a nevét, pl. „vedd fel az IBM Research-t".';
+  const raw = (p.source || p.company || p.topic || p.tool || '').trim();
+  if (!raw) return '🤔 Melyik forrást vegyem fel? Mondd a nevét („vedd fel az IBM Research-t") vagy: „vedd fel mindet".';
 
   let disc;
   try { disc = JSON.parse(readFileSync(DISCOVERED_PATH, 'utf-8')); }
   catch { return 'Most nincs jóváhagyható javaslat-listám. Írd: „keress új forrásokat", és körülnézek. 🧭'; }
   const list = disc.discovered_sources || [];
-  if (list.length === 0) return 'Üres a javaslat-lista. Írd: „keress új forrásokat", és hozok újakat. 🧭';
+  if (list.length === 0) return 'Üres a javaslat-lista (mindent feldolgoztunk már). Írd: „keress új forrásokat", és hozok újakat. 🧭';
 
-  // Egyezés normalizált név / id / domain-címke alapján (rugalmasan)
-  const pick = list.find(d => {
+  // MIND? ("all" az agytól, vagy magyarul: mindet / összes / mindegyik)
+  const wantAll = /^(all|mind(et|egyik(et)?)?|az\s*összes(et)?|összes(et)?)$/i.test(raw.replace(/[.!]/g, '').trim());
+  // Több név vesszővel / "és"-sel elválasztva is jöhet
+  const wanted = wantAll ? null : raw.split(/,|\bés\b/i).map(s => normCompany(s)).filter(Boolean);
+
+  const picks = list.filter(d => {
+    if (wantAll) return true;
     const n = normCompany(d.name), id = normCompany(d.suggested_id);
-    return n.includes(want) || want.includes(id) || id === want || (id && want.includes(id));
+    return wanted.some(w => n.includes(w) || w.includes(id) || id === w);
   });
-  if (!pick) {
+  if (picks.length === 0) {
     const names = list.map(d => '„' + d.name.replace(/\s*\(hivatalos\)$/, '') + '"').join(', ');
-    return `Nem találom ezt a listámban. Amit jóvá tudsz hagyni: ${names}. Melyik legyen? 🙂`;
+    return `Nem találom ezt a listámban. Amit jóvá tudsz hagyni: ${names} — vagy mondd: „vedd fel mindet". 🙂`;
   }
 
   const feeds = JSON.parse(readFileSync(FEEDS_PATH, 'utf-8'));
-  const dup = feeds.sources.some(s => {
-    try { return new URL(s.url).hostname.replace(/^www\./, '') === new URL(pick.url).hostname.replace(/^www\./, ''); }
-    catch { return false; }
-  });
-  if (dup) {
-    disc.discovered_sources = list.filter(d => d !== pick);
-    writeFileSync(DISCOVERED_PATH, JSON.stringify(disc, null, 2), 'utf-8');
-    return `A(z) *${pick.name.replace(/\s*\(hivatalos\)$/, '')}* már a forrásaink között van — nincs teendő. ✅`;
-  }
+  const host = u => { try { return new URL(u).hostname.replace(/^www\./, ''); } catch { return ''; } };
+  const added = [], skipped = [];
 
-  feeds.sources.push({
-    id: pick.suggested_id,
-    name: pick.name,
-    url: pick.url,
-    category: pick.category || 'ai-company-official',
-    priority: pick.priority || 3,
-    language: pick.language || 'en',
-    country: pick.country || '?',
-    comment: `Telegramon JÓVÁHAGYVA (${new Date().toISOString().slice(0, 10)}), megbízhatóság ${pick.reliability_score || '?'}/100.`,
-    enabled: true
-  });
+  for (const pick of picks) {
+    if (feeds.sources.some(s => host(s.url) === host(pick.url))) { skipped.push(pick); continue; }
+    feeds.sources.push({
+      id: pick.suggested_id,
+      name: pick.name,
+      url: pick.url,
+      category: pick.category || 'ai-company-official',
+      priority: pick.priority || 3,
+      language: pick.language || 'en',
+      country: pick.country || '?',
+      comment: `Telegramon JÓVÁHAGYVA (${new Date().toISOString().slice(0, 10)}), megbízhatóság ${pick.reliability_score || '?'}/100.`,
+      enabled: true
+    });
+    added.push(pick);
+  }
   writeFileSync(FEEDS_PATH, JSON.stringify(feeds, null, 2), 'utf-8');
 
-  // Kivesszük a javaslatok közül (már élesítve)
-  disc.discovered_sources = list.filter(d => d !== pick);
+  // A feldolgozottak (felvett + már meglévő) kikerülnek a javaslatok közül
+  disc.discovered_sources = list.filter(d => !picks.includes(d));
   writeFileSync(DISCOVERED_PATH, JSON.stringify(disc, null, 2), 'utf-8');
 
-  const clean = pick.name.replace(/\s*\(hivatalos\)$/, '');
-  return `✅ Felvettem és élesítettem: *${clean}*\n${pick.url}\nA következő hírgyűjtéskor már innen is figyelek! 🗞️`;
+  const clean = d => d.name.replace(/\s*\(hivatalos\)$/, '');
+  if (added.length === 0) return `Ezek már mind a forrásaink között vannak — nincs teendő. ✅`;
+  const lines = added.map(d => `• ${clean(d)}`).join('\n');
+  const extra = skipped.length ? `\n(${skipped.map(clean).join(', ')} már megvolt.)` : '';
+  return added.length === 1
+    ? `✅ Felvettem és élesítettem: *${clean(added[0])}*\n${added[0].url}\nA következő hírgyűjtéskor már innen is figyelek! 🗞️${extra}`
+    : `✅ Felvettem mind a ${added.length} forrást:\n${lines}${extra}\nA következő hírgyűjtéskor már ezekből is dolgozom! 🗞️`;
 }
 
 // ===================================================================
@@ -317,6 +352,7 @@ async function main() {
   console.log('🗣️  CSAPAT-BOT — parancs:', TEXT || '(üres)');
   if (!TEXT) { await sendMessage('Szia! 👋 A csapat itt van — szólíthatsz bárkit név szerint (pl. „Fordító", „Útmutató-író", „Ellenőr"), vagy csak mondd, mit csináljunk. „kik vagytok?" → bemutatkozunk.'); return; }
 
+  appendChatHistory('owner', TEXT);   // a beszélgetés-memóriába (a bot-válaszokat a sendMessage naplózza)
   const brain = await think(TEXT);
   const who = TEAM_BY_KEY[brain.agent] || TEAM_BY_KEY.ceo;
   console.log('🧠 Döntés:', JSON.stringify({ agent: brain.agent, action: brain.action, topic: brain.topic }));

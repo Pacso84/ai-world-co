@@ -11,9 +11,7 @@
       "3": "Alacsony - ritka"
     }
   },
-
   "sources": [
-
     {
       "id": "openai-blog",
       "name": "OpenAI Blog (hivatalos)",
@@ -223,7 +221,6 @@
       "comment": "HIVATALOS Cohere (vállalati AI), de nincs RSS (HTML, 2026-06-21). KIKAPCSOLVA (future).",
       "enabled": false
     },
-
     {
       "id": "reddit-artificial",
       "name": "Reddit r/artificial",
@@ -279,7 +276,6 @@
       "comment": "KIKAPCSOLVA v3.1 - hír-aggregátor, mások tartalmára mutat. Felhasználó: nem etikus. Csak hivatalos forrás.",
       "enabled": false
     },
-
     {
       "id": "anthropic-blog",
       "name": "Anthropic (hivatalos)",
@@ -291,7 +287,6 @@
       "comment": "HIVATALOS de NINCS RSS-ük (404). X-en aktívak - X integráció kell hozzá (future).",
       "enabled": false
     },
-
     {
       "id": "techcrunch-ai",
       "name": "TechCrunch AI",
@@ -379,16 +374,99 @@
       "country": "AU",
       "comment": "KIKAPCSOLVA v3.0 - hírmédia.",
       "enabled": false
+    },
+    {
+      "id": "salesforce",
+      "name": "Salesforce AI Blog (hivatalos)",
+      "url": "https://www.salesforce.com/news/feed/",
+      "category": "ai-company-official",
+      "priority": 3,
+      "language": "en",
+      "country": "US",
+      "comment": "Telegramon JÓVÁHAGYVA (2026-07-01), megbízhatóság 100/100.",
+      "enabled": true
+    },
+    {
+      "id": "sap",
+      "name": "SAP Innovation Blog (hivatalos)",
+      "url": "https://news.sap.com/feed/",
+      "category": "ai-company-official",
+      "priority": 3,
+      "language": "en",
+      "country": "DE",
+      "comment": "Telegramon JÓVÁHAGYVA (2026-07-01), megbízhatóság 100/100.",
+      "enabled": true
+    },
+    {
+      "id": "databricks",
+      "name": "Databricks Blog (hivatalos)",
+      "url": "https://databricks.com/blog/feed.xml",
+      "category": "ai-company-official",
+      "priority": 3,
+      "language": "en",
+      "country": "US",
+      "comment": "Telegramon JÓVÁHAGYVA (2026-07-01), megbízhatóság 100/100.",
+      "enabled": true
+    },
+    {
+      "id": "snowflake",
+      "name": "Snowflake Blog (hivatalos)",
+      "url": "https://www.snowflake.com/feed/",
+      "category": "ai-company-official",
+      "priority": 3,
+      "language": "en",
+      "country": "US",
+      "comment": "Telegramon JÓVÁHAGYVA (2026-07-01), megbízhatóság 100/100.",
+      "enabled": true
+    },
+    {
+      "id": "together",
+      "name": "Together AI Blog (hivatalos)",
+      "url": "https://together.ai/blog/rss.xml",
+      "category": "ai-company-official",
+      "priority": 3,
+      "language": "en",
+      "country": "US",
+      "comment": "Telegramon JÓVÁHAGYVA (2026-07-01), megbízhatóság 100/100.",
+      "enabled": true
+    },
+    {
+      "id": "pinecone",
+      "name": "Pinecone Blog (hivatalos)",
+      "url": "https://pinecone.io/rss/",
+      "category": "ai-company-official",
+      "priority": 3,
+      "language": "en",
+      "country": "US",
+      "comment": "Telegramon JÓVÁHAGYVA (2026-07-01), megbízhatóság 100/100.",
+      "enabled": true
+    },
+    {
+      "id": "ibm",
+      "name": "IBM Research (hivatalos)",
+      "url": "https://research.ibm.com/rss/",
+      "category": "ai-company-official",
+      "priority": 3,
+      "language": "en",
+      "country": "US",
+      "comment": "Telegramon JÓVÁHAGYVA (2026-07-01), megbízhatóság 100/100.",
+      "enabled": true
     }
-
   ],
-
   "categories": {
-    "ai-company-official": { "description": "Hivatalos AI cég blogok - ELSŐDLEGES forrás", "scrape_frequency": "every_2_hours" },
-    "community": { "description": "Közösség/social (Reddit, HN) - valódi használat, trend", "scrape_frequency": "every_6_hours" },
-    "tech-media": { "description": "KIKAPCSOLVA - más hírmagazinok, nem másolunk", "scrape_frequency": "never" }
+    "ai-company-official": {
+      "description": "Hivatalos AI cég blogok - ELSŐDLEGES forrás",
+      "scrape_frequency": "every_2_hours"
+    },
+    "community": {
+      "description": "Közösség/social (Reddit, HN) - valódi használat, trend",
+      "scrape_frequency": "every_6_hours"
+    },
+    "tech-media": {
+      "description": "KIKAPCSOLVA - más hírmagazinok, nem másolunk",
+      "scrape_frequency": "never"
+    }
   },
-
   "future_sources_todo": [
     "X (Twitter) - kulcs AI figurák + cégek hivatalos fiókjai (Altman, Amodei, OpenAI, Anthropic). Nincs ingyenes RSS - Nitter instabil VAGY fizetős X API kell.",
     "YouTube - hivatalos cég csatornák + AI oktatók (channel_id alapú RSS: youtube.com/feeds/videos.xml?channel_id=UC...). Channel ID-k összegyűjtése kell.",

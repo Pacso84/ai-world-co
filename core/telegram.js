@@ -9,10 +9,35 @@
 //   TELEGRAM_OWNER_CHAT_ID  — a tulajdonos chat-ID-ja (ide megy a válasz)
 // ===================================================================
 
+import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+
 const API = (token, method) => `https://api.telegram.org/bot${token}/${method}`;
+
+// ---------- BESZÉLGETÉS-MEMÓRIA ----------
+// Minden bot-üzenet ide is bekerül (memory/chat-history.json), hogy a főnök
+// "agya" lássa az előzményeket — így érti a rövid válaszokat is ("mindet",
+// "igen", "az elsőt"). A workflow visszacommitolja, tehát futások közt megmarad.
+const HISTORY_PATH = join(dirname(fileURLToPath(import.meta.url)), '..', 'memory', 'chat-history.json');
+const HISTORY_MAX = 40;
+
+export function loadChatHistory() {
+  try { return JSON.parse(readFileSync(HISTORY_PATH, 'utf-8')); } catch { return []; }
+}
+export function appendChatHistory(from, text) {
+  try {
+    const dir = dirname(HISTORY_PATH);
+    if (!existsSync(dir)) mkdirSync(dir, { recursive: true });
+    const h = loadChatHistory();
+    h.push({ at: new Date().toISOString(), from, text: String(text).slice(0, 600) });
+    writeFileSync(HISTORY_PATH, JSON.stringify(h.slice(-HISTORY_MAX), null, 2), 'utf-8');
+  } catch { /* a memória-napló sosem törheti el a küldést */ }
+}
 
 // Egy üzenet küldése. Ha nincs token/chat-id, csendben kihagyja (pl. helyi futás).
 export async function sendMessage(text, opts = {}) {
+  appendChatHistory('bot', text);
   const token = process.env.TELEGRAM_BOT_TOKEN;
   const chatId = opts.chatId || process.env.TELEGRAM_OWNER_CHAT_ID;
   if (!token || !chatId) {
