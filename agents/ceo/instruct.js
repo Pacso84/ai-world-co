@@ -37,15 +37,23 @@ function slugify(t) {
 }
 function normCompany(s) { return (s || '').toLowerCase().replace(/[^a-z0-9]/g, ''); }
 
-// Gyerek-folyamat futtatása (agent vagy parancs)
+// Gyerek-folyamat futtatása (agent vagy parancs) — ŐRKUTYÁVAL: ha a folyamat
+// beragad (pl. lógó hálózati kapcsolat), 30 perc után leállítjuk, hogy a
+// Telegram-válasz és a visszacommit akkor is megtörténjen (2026-07-01 tanulság).
+const SH_TIMEOUT_MS = 30 * 60 * 1000;
 function sh(cmd, args, opts = {}) {
   return new Promise((resolve) => {
     const proc = spawn(cmd, args, { cwd: ROOT, env: process.env, shell: false });
     let out = '';
+    const watchdog = setTimeout(() => {
+      out += '\n⏱️ IDŐTÚLLÉPÉS — a beragadt folyamatot leállítottam.';
+      console.log('⏱️  IDŐTÚLLÉPÉS (' + (SH_TIMEOUT_MS / 60000) + ' perc) — leállítom: ' + cmd + ' ' + args.join(' '));
+      try { proc.kill('SIGKILL'); } catch { /* már nem él */ }
+    }, SH_TIMEOUT_MS);
     proc.stdout.on('data', d => { const s = d.toString(); out += s; process.stdout.write(s); });
     proc.stderr.on('data', d => { const s = d.toString(); out += s; process.stderr.write(s); });
-    proc.on('close', code => resolve({ code, out }));
-    proc.on('error', e => resolve({ code: -1, out: out + '\n' + e.message }));
+    proc.on('close', code => { clearTimeout(watchdog); resolve({ code, out }); });
+    proc.on('error', e => { clearTimeout(watchdog); resolve({ code: -1, out: out + '\n' + e.message }); });
   });
 }
 const node = (script, args = []) => sh('node', [script, ...args]);

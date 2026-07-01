@@ -118,7 +118,7 @@ async function fetchFeed(feedConfig) {
     // TARTALÉK: nyers XML letöltése + hibás entitások javítása, majd parseString.
     // (Pl. Apple feed: escape-eletlen & -> "Invalid character in entity name".)
     try {
-      const r = await fetch(feedConfig.url, { headers: { 'User-Agent': 'Mozilla/5.0 (compatible; AIWorldCo/1.0)' } });
+      const r = await fetch(feedConfig.url, { headers: { 'User-Agent': 'Mozilla/5.0 (compatible; AIWorldCo/1.0)' }, signal: AbortSignal.timeout(20000) });
       if (!r.ok) throw new Error('HTTP ' + r.status);
       let xml = await r.text();
       xml = xml.replace(/&(?!(?:amp|lt|gt|quot|apos|#\d+|#x[0-9a-fA-F]+);)/g, '&amp;');
@@ -383,7 +383,9 @@ async function main() {
   }
 }
 
-main().catch(error => {
+// EXPLICIT KILÉPÉS: egy válasz nélkül lógó RSS-kapcsolat életben tartja a
+// node-ot a main() után is (2026-07-01: 6 órás beragadás a felhőben!).
+main().then(() => process.exit(0)).catch(error => {
   console.error('💥 KRITIKUS HIBA:', error);
   process.exit(1);
 });

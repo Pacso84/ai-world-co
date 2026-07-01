@@ -18,6 +18,9 @@ concurrency:
 jobs:
   run:
     runs-on: ubuntu-latest
+    # Biztonsági plafon: beragadás esetén max 1 órát égetünk, nem 6-ot
+    # (2026-07-01: két 6 órás beragadás ~720 ingyen-percet vitt el).
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
 
@@ -66,4 +69,12 @@ jobs:
           git config user.email "bot@aiworld.local"
           git add -A
           git commit -m "auto: pipeline run $(date -u +%FT%TZ)" || echo "nincs változás"
-          git push || echo "push kihagyva"
+          # VERSENY-VÉDELEM: ha közben egy másik futás pusholt, rebase + újrapróba,
+          # hogy a generált tartalom NE vesszen el csendben. (-X theirs: ütközésnél
+          # a MI friss generált fájlunk nyer.)
+          for i in 1 2 3; do
+            git push && exit 0
+            git pull --rebase -X theirs || { git rebase --abort 2>/dev/null || true; }
+            sleep 5
+          done
+          git push || echo "⚠️ push 3 próba után sem sikerült — e futás tartalma elveszhet!"

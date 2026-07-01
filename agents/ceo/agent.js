@@ -114,6 +114,11 @@ function countTodoGuideTopics() {
 // Egy másik Node script futtatása. Visszaadja a kimenetet és exit kódot.
 // ===================================================================
 
+// ŐRKUTYA: ha egy lépés ennyi ideig nem fejeződik be, leállítjuk. Egy lógva
+// maradt hálózati kapcsolat örökre életben tarthat egy agentet (2026-07-01:
+// 6 órás beragadás a felhőben, ~360 ingyen-perc elégetve) — ez a védőháló.
+const STEP_TIMEOUT_MS = 30 * 60 * 1000;
+
 function runAgent(agentPath, args = []) {
   return new Promise((resolve) => {
     const fullPath = join(PROJECT_ROOT, agentPath);
@@ -130,6 +135,12 @@ function runAgent(agentPath, args = []) {
       env: process.env,
       stdio: ['inherit', 'pipe', 'pipe']
     });
+
+    const watchdog = setTimeout(() => {
+      console.log(`│ ⏱️  IDŐTÚLLÉPÉS (${STEP_TIMEOUT_MS / 60000} perc) — a beragadt lépést leállítom.`);
+      notify('alert', `Pipeline lépés időtúllépés: ${label} — leállítva ${STEP_TIMEOUT_MS / 60000} perc után.`, { agent: 'ceo' });
+      try { proc.kill('SIGKILL'); } catch { /* már nem él */ }
+    }, STEP_TIMEOUT_MS);
 
     let stdoutBuffer = '';
     let stderrBuffer = '';
@@ -151,12 +162,14 @@ function runAgent(agentPath, args = []) {
     });
 
     proc.on('close', (code) => {
+      clearTimeout(watchdog);
       console.log(`└─ Befejezve, exit code: ${code}\n`);
       setTaskStatus(taskId, 'done');
       resolve({ code, stdout: stdoutBuffer, stderr: stderrBuffer });
     });
 
     proc.on('error', (err) => {
+      clearTimeout(watchdog);
       console.log(`└─ HIBA: ${err.message}\n`);
       setTaskStatus(taskId, 'done');
       notify('alert', `Pipeline lépés hiba: ${label} — ${err.message}`, { agent: 'ceo' });

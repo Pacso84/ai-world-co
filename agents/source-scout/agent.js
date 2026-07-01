@@ -181,16 +181,16 @@ async function getCandidateOrgs(coverage) {
 
 async function discoverFeedForDomain(domain) {
   const base = domain.replace(/\/$/, '');
-  for (const pattern of RSS_PATTERNS) {
+  // PÁRHUZAMOSAN próbáljuk az összes mintát — az első működő nyer.
+  // (Sorban 14 minta × 12 mp timeout = percek EGY lassú domainre; így max ~12 mp.)
+  const attempts = RSS_PATTERNS.map(async (pattern) => {
     const url = base + pattern;
-    try {
-      const feed = await parser.parseURL(url);
-      if (feed.items && feed.items.length > 0) {
-        return { url, feed };
-      }
-    } catch { /* próbáljuk a következő mintát */ }
-  }
-  return null;
+    const feed = await parser.parseURL(url);
+    if (feed.items && feed.items.length > 0) return { url, feed };
+    throw new Error('üres feed');
+  });
+  try { return await Promise.any(attempts); }
+  catch { return null; }
 }
 
 // ===================================================================
@@ -369,6 +369,23 @@ async function main() {
     });
   }
 
+  // KORÁBBI, még érvényes javaslatok MEGŐRZÉSE: ami a múltkori kutatásból
+  // még nincs se lefedve, se az új listában, azt nem dobjuk el (már átment
+  // a megbízhatóság-kapun). Így egy újrafuttatás nem "felejti el" a várólistát.
+  try {
+    const prev = JSON.parse(readFileSync(OUTPUT_PATH, 'utf-8')).discovered_sources || [];
+    const newHosts = new Set(discovered.map(d => { try { return new URL(d.url).hostname.replace(/^www\./, ''); } catch { return ''; } }));
+    for (const p of prev) {
+      let host = '';
+      try { host = new URL(p.url).hostname.replace(/^www\./, ''); } catch { continue; }
+      if (newHosts.has(host) || coverage.domains.has(host)) continue;
+      if (coverage.brands.has(hostFirstLabel(host))) continue;
+      discovered.push(p);
+      newHosts.add(host);
+      console.log(`♻️  Megőrizve a korábbi kutatásból: ${p.name} [${p.reliability_score}]`);
+    }
+  } catch { /* nincs korábbi fájl */ }
+
   // Legmegbízhatóbb elöl
   discovered.sort((a, b) => b.reliability_score - a.reliability_score);
 
@@ -425,7 +442,9 @@ async function main() {
   }
 }
 
-main().catch(error => {
+// EXPLICIT KILÉPÉS: a sok RSS-próbálkozás után lógva maradt kapcsolatok
+// életben tarthatják a node-ot (2026-07-01: 6 órás beragadás a felhőben!).
+main().then(() => process.exit(0)).catch(error => {
   console.error('💥 KRITIKUS HIBA:', error);
   process.exit(1);
 });
