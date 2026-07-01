@@ -1,0 +1,36 @@
+{
+  "_meta": {
+    "written_at": "2026-07-01T17:52:31.043Z",
+    "writer_provider": "mistral",
+    "writer_model": "mistral-small-latest",
+    "writer_cost_usd": 0,
+    "original_draft": "2026-06-29T02-29-25-986Z_google-ai-blog_Check_out_real-life_AI_prototypes_from_the_Futures.json",
+    "source_id": "google-ai-blog",
+    "source_name": "Google AI (hivatalos, blog.google)",
+    "source_link": "https://blog.google/innovation-and-ai/technology/ai/university-waterloo-labs/",
+    "status": "rejected",
+    "rejected_at": "2026-07-01T17:52:33.490Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 895
+    },
+    "ai_review": {
+      "overall_score": 0,
+      "decision": "FAIL",
+      "issues": [
+        "AI response JSON parse error after retries: AI router null"
+      ],
+      "verdict": "Could not parse AI review (2 attempts)",
+      "_aiCost": 0,
+      "_parseFailed": true
+    },
+    "reason": "Could not parse AI review (2 attempts)",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-06-29T02-29-25-986Z_google-ai-blog_Check_out_real-life_AI_prototypes_from_the_Futures.json",
+    "requeued_unchanged": true
+  },
+  "article_markdown": "---\ntitle: \"How to Turn Your Rough Notes into a Polished Report Using AI\"\nsubtitle: \"Turn messy scribbles or voice memos into a clear, professional report in minutes — no typing required\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"ai-tools\", \"productivity\", \"writing\", \"organisation\"]\n---\n\n# How to Turn Your Rough Notes into a Polished Report Using AI\n\nYou’ve just finished a long meeting, scribbled a few ideas on a napkin, or recorded a voice memo on your phone while walking the dog. Now you need to turn those rough notes into a clear, professional report — but staring at the blank page feels overwhelming. What if there was a way to let AI do the heavy lifting while you focus on the message?\n\nWith today’s AI tools, you can feed your messy notes — whether handwritten, typed, or spoken — and get back a clean, well-structured report in minutes. No rewriting from scratch, no staring at a blinking cursor. Here’s how to do it, step by step.\n\n---\n\n## Step 1: Get Your Notes into Text\n\nBefore AI can help, your notes need to be in a format it can read. That means turning handwriting, voice recordings, or scattered text into typed words.\n\n- **Handwritten notes?** Use your phone’s camera and a free app like Microsoft Lens or Google Keep to scan and convert them to text. These apps use **OCR (optical character recognition)** — think of it as a robot that reads your messy handwriting and turns it into clean text.\n- **Voice memos?** Upload the audio file to a transcription tool like Otter.ai or the built-in transcription in Google Docs. These tools use **speech-to-text** to convert your spoken words into written text.\n- **Already typed but messy?** Paste your rough draft into a document and clean up the obvious typos first — AI works best with clear input.\n\nOnce your notes are in text form, save them in a single document or paste them into a chat with your AI assistant.\n\n---\n\n## Step 2: Choose Your AI Assistant\n\nYou don’t need a fancy tool — just one that understands your writing style and can follow instructions. Here are a few good options:\n\n- **ChatGPT (free or Plus)**: Great for general writing and editing.\n- **Gemini (Google)**: Strong at summarising and structuring long text.\n- **Claude**: Excellent at preserving your tone and avoiding over-editing.\n- **Perplexity**: Good if you want sources or references included.\n\nPick one that feels comfortable and open a new chat. You’re about to give it a simple instruction: “Turn these rough notes into a polished report.”\n\n---\n\n## Step 3: Give Clear Instructions\n\nAI doesn’t read your mind — it follows your words. To get a useful report, give it three things:\n\n1. **Your raw notes** (paste them in).\n2. **The purpose of the report** (e.g., “for my manager,” “for a client,” “for my study group”).\n3. **Any specific sections or tone** (e.g., “include an executive summary,” “keep it under 500 words,” “use a friendly but professional tone”).\n\nHere’s a prompt you can copy and paste:\n\n> “Here are my rough notes from a team meeting. Turn them into a polished report for my manager. Include:\n> - A one-sentence summary at the top\n> - 3 main sections with bullet points\n> - A short conclusion with next steps\n> Keep it under 500 words and use a professional but approachable tone.”\n\nThe AI will now generate a clean, structured report based on your messy notes.\n\n---\n\n## Step 4: Review and Refine\n\nAI isn’t perfect — it might miss a detail, add something irrelevant, or use a tone that doesn’t quite fit. That’s okay. Your job is to review the output and make it yours.\n\n- **Check for accuracy**: Did the AI include everything important? Did it leave out a key point?\n- **Adjust the tone**: If the report feels too formal or too casual, tell the AI: “Make this more conversational” or “Use a formal tone.”\n- **Shorten or expand**: Ask for a shorter version or a longer one with more detail.\n\nYou can even ask the AI to “rewrite this section in simpler language” or “make this more concise.” It’s like having a writing partner who never gets tired.\n\n---\n\n## What this means for you\n\n- **In everyday life**: Next time you’re at a school meeting or a community event, record a quick voice memo and turn it into a clear summary for your family or friends — no more “I’ll write it up later” stress.\n- **For your business or work**: Use this trick to turn client call notes, brainstorming sessions, or project updates into professional reports in minutes. Save hours of typing and editing.\n- **If you're just getting started**: Start with a small test — take a voice memo of your grocery list, turn it into a typed list, and ask an AI to organise it by category. You’ll see how easy it is to use AI as your assistant.\n\n---\n\nYou don’t need to be a writer or a tech expert to create clear, professional reports. With AI, your rough notes are just the starting point — not the finish line. Try it today: grab a voice memo or a scribbled page, feed it to your AI, and watch your messy ideas turn into something polished and ready to share.",
+  "original_title": "Check out real-life AI prototypes from the Futures Lab."
+}

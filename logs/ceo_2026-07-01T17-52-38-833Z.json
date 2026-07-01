@@ -1,0 +1,90 @@
+{
+  "started_at": "2026-07-01T17:46:09.846Z",
+  "date": "2026-07-01",
+  "mode": "full-pipeline",
+  "stages": {
+    "scraper": {
+      "exit_code": 0
+    },
+    "source_scout": {
+      "exit_code": 0
+    },
+    "writer": {
+      "exit_code": 0,
+      "limit_used": 12
+    },
+    "reviewer": {
+      "exit_code": 0
+    },
+    "rework": {
+      "article": {
+        "reworkable": 23,
+        "fix_exit": 0,
+        "recheck_exit": 0
+      },
+      "guide_rounds": 0,
+      "escalated": 0
+    },
+    "pairing": {
+      "exit_code": 0,
+      "new_topics": 11,
+      "guide_write_exit": 0,
+      "guide_review_exit": 0
+    },
+    "idle_fill": {
+      "slots": 4,
+      "wrote": 4,
+      "write_exit": 0,
+      "review_exit": 0
+    },
+    "designer": {
+      "exit_code": 0
+    },
+    "seo": {
+      "exit_code": 0
+    },
+    "web_designer": {
+      "exit_code": 0
+    },
+    "translator": {
+      "exit_code": 0
+    },
+    "publisher": {
+      "exit_code": 0
+    }
+  },
+  "pre_report": {
+    "date": "2026-07-01",
+    "articles_published_today": 13,
+    "news_published_today": 13,
+    "guides_published_today": 0,
+    "drafts_awaiting_writer": 45,
+    "drafts_awaiting_review": 0,
+    "rejected_today": 0,
+    "total_cost_today_usd": 0.045431885000000005,
+    "daily_limit_articles": 25,
+    "daily_limit_guides": 4,
+    "daily_limit_cost_usd": 3,
+    "cost_remaining_usd": 2.954568115,
+    "articles_remaining": 12,
+    "guides_remaining": 4
+  },
+  "post_report": {
+    "date": "2026-07-01",
+    "articles_published_today": 13,
+    "news_published_today": 13,
+    "guides_published_today": 0,
+    "drafts_awaiting_writer": 36,
+    "drafts_awaiting_review": 0,
+    "rejected_today": 2,
+    "total_cost_today_usd": 0.07089522000000001,
+    "daily_limit_articles": 25,
+    "daily_limit_guides": 4,
+    "daily_limit_cost_usd": 3,
+    "cost_remaining_usd": 2.92910478,
+    "articles_remaining": 12,
+    "guides_remaining": 4
+  },
+  "finished_at": "2026-07-01T17:52:38.833Z",
+  "duration_seconds": 388.987
+}
