@@ -1,0 +1,43 @@
+{
+  "_meta": {
+    "written_at": "2026-07-01T11:31:21.070Z",
+    "writer_provider": "mistral",
+    "writer_model": "mistral-small-latest",
+    "writer_cost_usd": 0.003407,
+    "original_draft": "2026-06-29T02-29-27-063Z_microsoft-research_GridSFM__A_new__small_foundation_model_for_the_ele.json",
+    "source_id": "microsoft-research",
+    "source_name": "Microsoft Research (hivatalos)",
+    "source_link": "https://www.microsoft.com/en-us/research/blog/gridsfm-a-new-small-foundation-model-for-the-electric-grid/",
+    "status": "published",
+    "rejected_at": "2026-07-01T11:30:18.047Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 813
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "decision": "PASS",
+      "issues": [
+        "none"
+      ],
+      "verdict": "The article meets all the criteria, providing a clear and friendly explanation of AI optimisation, with a focus on everyday applications and benefits, while avoiding prohibited content and cliches.",
+      "_aiCost": 0.00111078,
+      "_provider": "groq",
+      "_model": "llama-3.3-70b-versatile",
+      "_attempts": 1
+    },
+    "reason": "Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-06-29T02-29-27-063Z_microsoft-research_GridSFM__A_new__small_foundation_model_for_the_ele.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-07-01T11:32:36.703Z",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-07-01T11:32:44.239Z",
+    "guide_worthy": false,
+    "pairing_reason": "no specific named feature or tool is introduced"
+  },
+  "article_markdown": "---\ntitle: \"How AI Can Tame the Chaos in Everyday Systems\"\nsubtitle: \"From traffic jams to power bills, AI is quietly learning how our complex systems work — and showing us smarter ways to run them.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"AI-optimisation\", \"efficiency\", \"prediction\", \"smart-systems\"]\n---\n\n# How AI Can Tame the Chaos in Everyday Systems\n\nEver felt stuck in a traffic jam that shouldn’t have happened? Or watched your energy bill climb even when you’re careful with the air-con? Many parts of daily life are actually complex networks — transport grids, power lines, delivery routes — where small changes can cause big delays or waste. Now, a quiet revolution is happening: AI is learning how these systems *really* behave, and using that knowledge to smooth out the chaos.\n\n## What’s an AI “System Brain”?\n\nYou’ve probably heard of AI models like ChatGPT that understand language. But there’s a newer kind: AI trained not on words, but on *how a specific system behaves*. Think of it as a “system brain” — a model that learns the hidden rules of a traffic network, an electricity grid, or even a hospital’s patient flow.\n\nThese models don’t just memorise data. They learn *patterns* — like how a sudden rain shower slows down traffic, or how a heatwave spikes electricity demand. They’re trained on real-time and historical data: sensor readings, weather reports, past breakdowns, and usage trends. Over time, they build an internal map of the system’s “personality” — its quirks, bottlenecks, and pressure points.\n\n## How AI Actually Optimises Things\n\nOnce trained, these AI models don’t just analyse — they *act*. They run **predictive optimisation**, which means they forecast what’s likely to happen next and suggest the best way to respond.\n\nFor example:\n- In a city’s traffic network, the AI might detect a bottleneck forming and adjust traffic light timings in real time, keeping cars moving smoothly.\n- In an energy grid, it could predict a surge in demand (like when everyone turns on their heaters during a cold snap) and reroute power from less critical areas or switch on backup generators before the system gets overloaded.\n- In a hospital, it might analyse patient arrival patterns and staff schedules to reduce waiting times without hiring extra nurses.\n\nThe AI doesn’t replace human operators — it gives them a crystal ball. Instead of reacting to problems after they happen, teams can see trouble coming and act early, saving time, money, and frustration.\n\n## The Real-World Payoff\n\nThis isn’t just theory. Cities and companies around the world are already using these AI systems to:\n\n- **Cut costs**: By running systems more efficiently, organisations use less energy, fewer resources, and avoid expensive emergency fixes.\n- **Boost reliability**: Spotting potential failures before they happen — like a transformer overheating or a delivery truck stuck in traffic — means fewer service disruptions.\n- **Plan better**: With real-time insights, leaders can make smarter decisions about infrastructure upgrades, staffing, or policy changes.\n- **Reduce waste**: Less congestion means fewer cars idling in traffic. Smarter energy use means lower bills and a smaller carbon footprint.\n\n## What this means for you\n\nThis technology often runs behind the scenes, but it’s already starting to touch everyday life — and it will only become more visible.\n\n- **In everyday life**: Imagine your home energy system using AI to run your washing machine when solar power is strongest, or your EV charging at the cheapest time of day. You might notice fewer traffic jams because AI is coordinating traffic lights across the city, or receive more accurate delivery times because logistics companies are using AI to predict and reroute trucks in real time.\n\n- **For your business or work**: If you manage logistics, inventory, staffing, or even a data centre, AI optimisation can save significant time and money. It can help you predict supply chain disruptions, optimise delivery routes, schedule staff more effectively during peak times, or even reduce your energy bills by running servers when electricity is cheapest.\n\n- **If you're just getting started**: Start by looking at a “system” in your own routine — your morning commute, your household chores, or how you manage a small project. Ask: *Where do small delays or waste keep popping up?* Then imagine an AI that could predict those moments and suggest smoother alternatives. You don’t need to build the AI yourself — just start noticing where better planning could make a difference.\n\n## Wrap-up\n\nAI is learning the hidden choreography of the systems we live and work within. By turning mountains of data into actionable foresight, it’s helping us avoid congestion, save resources, and keep things running smoothly — not by magic, but by understanding how the world *actually* works. Start looking at the systems around you. You might be surprised how much smoother life could feel with a little more prediction and planning.",
+  "original_title": "GridSFM: A new, small foundation model for the electric grid"
+}

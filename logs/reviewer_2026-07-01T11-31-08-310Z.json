@@ -1,0 +1,171 @@
+{
+  "started_at": "2026-07-01T11:30:17.372Z",
+  "total": 25,
+  "passed": 7,
+  "failed": 18,
+  "auto_check_failed": 17,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.00857732,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-06-29T02-29-25-987Z_nvidia-blog_NVIDIA_Vera_CPU_Opens_the_Way_for_Agentic_Scientif.json",
+      "article": "ARTICLE_2026-06-29T02-29-25-987Z_nvidia-blog_NVIDIA_Vera_CPU_Opens_the_Way_for_Agentic_Scientif.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0010695
+    },
+    {
+      "writer": "WRITER_2026-06-29T02-29-27-063Z_microsoft-research_GridSFM__A_new__small_foundation_model_for_the_ele.json",
+      "decision": "FAIL",
+      "reason": "auto-check critical",
+      "skipped_ai": true
+    },
+    {
+      "writer": "WRITER_2026-06-29T02-29-27-063Z_nvidia-blog_Eco_Wave_Power_Turns_Waves_Into_Watts_With_NVIDIA_.json",
+      "decision": "FAIL",
+      "reason": "auto-check critical",
+      "skipped_ai": true
+    },
+    {
+      "writer": "WRITER_2026-06-29T02-29-27-064Z_aws-ml_Build_a_healthcare_appointment_agent_with_Amazon_N.json",
+      "decision": "FAIL",
+      "reason": "auto-check critical",
+      "skipped_ai": true
+    },
+    {
+      "writer": "WRITER_2026-06-29T02-29-27-064Z_github-ai_How_we_made_GitHub_Copilot_CLI_more_selective_abou.json",
+      "decision": "FAIL",
+      "reason": "auto-check critical",
+      "skipped_ai": true
+    },
+    {
+      "writer": "WRITER_2026-06-29T02-29-27-067Z_alibaba-qwen_Qwen3-Coder__Agentic_Coding_in_the_World.json",
+      "decision": "FAIL",
+      "reason": "auto-check critical",
+      "skipped_ai": true
+    },
+    {
+      "writer": "WRITER_2026-06-29T02-29-27-067Z_alibaba-qwen_Qwen_VLo__From__Understanding__the_World_to__Depic.json",
+      "decision": "FAIL",
+      "reason": "auto-check critical",
+      "skipped_ai": true
+    },
+    {
+      "writer": "WRITER_2026-06-29T02-29-27-067Z_alibaba-qwen_Time_to_Speak_Some_Dialects__Qwen-TTS_.json",
+      "decision": "FAIL",
+      "reason": "auto-check critical",
+      "skipped_ai": true
+    },
+    {
+      "writer": "WRITER_2026-06-29T02-29-27-067Z_mistral-ai_Connect_the_dots__Build_with_built-in_and_custom_M.json",
+      "decision": "FAIL",
+      "reason": "auto-check critical",
+      "skipped_ai": true
+    },
+    {
+      "writer": "WRITER_2026-06-29T02-29-27-067Z_mistral-ai_Remote_agents_in_Vibe__Powered_by_Mistral_Medium_3.json",
+      "decision": "FAIL",
+      "reason": "auto-check critical",
+      "skipped_ai": true
+    },
+    {
+      "writer": "WRITER_2026-06-29T02-29-42-864Z_alibaba-qwen_Qwen3_Embedding__Advancing_Text_Embedding_and_Rera.json",
+      "decision": "FAIL",
+      "reason": "auto-check critical",
+      "skipped_ai": true
+    },
+    {
+      "writer": "WRITER_2026-06-29T02-29-42-864Z_alibaba-qwen_Qwen3__Think_Deeper__Act_Faster.json",
+      "decision": "FAIL",
+      "reason": "auto-check critical",
+      "skipped_ai": true
+    },
+    {
+      "writer": "WRITER_2026-06-29T02-29-42-864Z_apple-ml_Apple_Workshop_on_Privacy-Preserving_Machine_Learn.json",
+      "article": "ARTICLE_2026-06-29T02-29-42-864Z_apple-ml_Apple_Workshop_on_Privacy-Preserving_Machine_Learn.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.00095857
+    },
+    {
+      "writer": "WRITER_2026-06-30T16-43-12-109Z_openai-blog_How_ChatGPT_adoption_has_expanded.json",
+      "article": "ARTICLE_2026-06-30T16-43-12-109Z_openai-blog_How_ChatGPT_adoption_has_expanded.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0010698799999999998
+    },
+    {
+      "writer": "WRITER_2026-06-30T16-43-12-110Z_google-ai-blog_Ask_an_AI_expert__What_exactly_is_the_full_stack_.json",
+      "decision": "FAIL",
+      "reason": "auto-check critical",
+      "skipped_ai": true
+    },
+    {
+      "writer": "WRITER_2026-06-30T16-43-12-110Z_google-ai-blog_Unlocking_Britain_s_next_era_of_productivity__Buil.json",
+      "article": "ARTICLE_2026-06-30T16-43-12-110Z_google-ai-blog_Unlocking_Britain_s_next_era_of_productivity__Buil.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.00118219
+    },
+    {
+      "writer": "WRITER_2026-06-30T16-43-12-110Z_nvidia-blog_How_NVIDIA_s_Inference_Software_Stack_Powers_the_L.json",
+      "rejected": "REJECTED_2026-06-30T16-43-12-110Z_nvidia-blog_How_NVIDIA_s_Inference_Software_Stack_Powers_the_L.json",
+      "decision": "FAIL",
+      "score": 8,
+      "cost_usd": 0.00127653
+    },
+    {
+      "writer": "WRITER_2026-06-30T16-43-12-110Z_openai-blog_Mapping_Europe_s_AI_Workforce_Opportunity.json",
+      "decision": "FAIL",
+      "reason": "auto-check critical",
+      "skipped_ai": true
+    },
+    {
+      "writer": "WRITER_2026-06-30T16-43-13-543Z_google-workspace_Create_fully_native_and_editable_presentations_wit.json",
+      "decision": "FAIL",
+      "reason": "auto-check critical",
+      "skipped_ai": true
+    },
+    {
+      "writer": "WRITER_2026-06-30T16-43-13-543Z_google-workspace_Data_regions_support_for_the_Gemini_app_now_availa.json",
+      "decision": "FAIL",
+      "reason": "auto-check critical",
+      "skipped_ai": true
+    },
+    {
+      "writer": "WRITER_2026-06-30T16-43-13-543Z_nvidia-blog_Claude_Meets_Blackwell_Ultra__Anthropic_s_Models_N.json",
+      "decision": "FAIL",
+      "reason": "auto-check critical",
+      "skipped_ai": true
+    },
+    {
+      "writer": "WRITER_2026-06-30T16-43-13-543Z_nvidia-blog_Open_Models__Closed_Environments__Palantir_Brings_.json",
+      "decision": "FAIL",
+      "reason": "auto-check critical",
+      "skipped_ai": true
+    },
+    {
+      "writer": "WRITER_2026-07-01T11-16-41-238Z_aws-ml_Introducing_Claude_Sonnet_5_on_AWS__Anthropic_s_mo.json",
+      "article": "ARTICLE_2026-07-01T11-16-41-238Z_aws-ml_Introducing_Claude_Sonnet_5_on_AWS__Anthropic_s_mo.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.00098296
+    },
+    {
+      "writer": "WRITER_2026-07-01T11-16-41-238Z_google-workspace_AI_Overviews_in_Drive_now_available_on_mobile.json",
+      "article": "ARTICLE_2026-07-01T11-16-41-238Z_google-workspace_AI_Overviews_in_Drive_now_available_on_mobile.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.00099317
+    },
+    {
+      "writer": "WRITER_2026-07-01T11-16-41-238Z_google-workspace_Ask_Gemini_in_Drive_now_available_on_mobile.json",
+      "article": "ARTICLE_2026-07-01T11-16-41-238Z_google-workspace_Ask_Gemini_in_Drive_now_available_on_mobile.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.00104452
+    }
+  ],
+  "finished_at": "2026-07-01T11:31:08.310Z",
+  "duration_seconds": 50.938
+}

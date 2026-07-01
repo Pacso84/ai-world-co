@@ -1,0 +1,37 @@
+{
+  "_meta": {
+    "written_at": "2026-07-01T11:26:25.617Z",
+    "writer_provider": "cerebras",
+    "writer_model": "gpt-oss-120b",
+    "writer_cost_usd": 0,
+    "original_draft": "2026-06-30T16-43-12-110Z_nvidia-blog_How_NVIDIA_s_Inference_Software_Stack_Powers_the_L.json",
+    "source_id": "nvidia-blog",
+    "source_name": "NVIDIA Blog (hivatalos)",
+    "source_link": "https://blogs.nvidia.com/blog/inference-software-lowest-token-cost/",
+    "status": "rejected",
+    "rejected_at": "2026-07-01T11:30:42.362Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 868
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "decision": "FAIL",
+      "issues": [
+        "uses American spellings like 'optimisation' should be 'optimization' is incorrect but other way around is a point",
+        "missing plain-language explanations for some technical terms like 'calibration dataset'",
+        "FP16 and INT8 explanations are technical"
+      ],
+      "verdict": "The article generally meets the requirements but has some technical terms that need explanation and uses some American spellings, so it needs revision to better fit the brand voice and audience.",
+      "_aiCost": 0.00127653,
+      "_provider": "groq",
+      "_model": "llama-3.3-70b-versatile",
+      "_attempts": 1
+    },
+    "reason": "The article generally meets the requirements but has some technical terms that need explanation and uses some American spellings, so it needs revision to better fit the brand voice and audience.",
+    "can_retry": true
+  },
+  "article_markdown": "---\ntitle: \"Cutting AI Costs: How to Use NVIDIA’s Inference Stack for Cheaper Tokens\"\nsubtitle: \"A step‑by‑step guide to getting more AI output per dollar by deploying LLMs with NVIDIA’s optimisation tools\"\ncategory: \"how-to\"\naudience: \"business\"\nread_time_minutes: 5\ntags: [\"NVIDIA\", \"AI inference\", \"token cost\", \"LLM\", \"productivity\"]\n---\n\n# Cut AI Costs: How to Use NVIDIA’s Inference Stack for Cheaper Tokens\n\n**Hook:** You’ve probably noticed AI‑generated text costing a bit more than you expected – whether it’s a marketing copy generator or a chatbot for customer support. The good news is that you can shrink that bill by tinkering with the way the model runs, and NVIDIA’s inference software stack makes it surprisingly straightforward.\n\n## 1. Getting started with the stack\n\nBefore you dive in, you need a few basics in place.\n\n1. **Pick a compatible GPU** – NVIDIA’s GPUs (like the RTX 4090 or the data‑centre A100) are the hardware that the stack is built for. The more memory the GPU has, the larger the model you can host.\n2. **Install the driver and CUDA** – The driver talks to the GPU; CUDA (Compute Unified Device Architecture) is the software layer that lets programs run calculations on the GPU. Think of it as the “engine oil” for your AI car.\n3. **Grab the software** – The two key pieces are:\n   * **TensorRT** – an optimiser that converts a raw model into a version that runs faster and uses less power.\n   * **Triton Inference Server** – a service that handles incoming requests, batches them, and serves the optimised model.\n\nAll three (driver, TensorRT, Triton) are free to download from NVIDIA’s website. Follow the installation guides; they usually boil down to a few command‑line steps.\n\n## 2. Optimising models for low token cost\n\nA *token* is a tiny chunk of text (roughly four characters). AI providers often charge per token, so the cheaper each token is to generate, the lower your bill.\n\n### a) Quantise the model\n\n*Quantisation* means storing numbers with fewer bits – for example, converting 32‑bit floating point (FP32) weights to 16‑bit half‑precision (FP16) or even 8‑bit integer (INT8). TensorRT does this automatically:\n\n```bash\ntrtexec --onnx=model.onnx --fp16   # FP16 conversion\ntrtexec --onnx=model.onnx --int8   # INT8 conversion (requires a calibration dataset)\n```\n\n- **FP16** cuts memory and compute roughly in half, with minimal quality loss.\n- **INT8** can shave another 30‑40 % off compute, but you need a small sample of real data to teach the model what “typical” numbers look like (that’s the calibration step).\n\n### b) Use efficient model formats\n\nConvert your model to **ONNX** (Open Neural Network Exchange) – a neutral format that TensorRT understands. Most major LLMs (like LLaMA, Mistral, or OpenAI‑compatible models) can be exported to ONNX with a single script.\n\n### c) Enable dynamic batching\n\nTriton can group several requests together before sending them to the GPU. This “batching” spreads the fixed cost of running the model across many tokens, lowering the per‑token price. In the `model_config.pbtxt` file, set:\n\n```yaml\nmax_batch_size: 32   # up to 32 requests at once\ndynamic_batching {\n  preferred_batch_size: [8, 16, 32]\n}\n```\n\n## 3. Running inference efficiently\n\nOnce the model is optimised, you need to keep an eye on two things: **latency** (how quickly a response arrives) and **throughput** (how many tokens per second you can produce).\n\n- **Profile with NVIDIA Nsight** – a visual tool that shows where the GPU spends time. Look for “memory stalls”; if they dominate, you may need to increase batch size or reduce model size.\n- **Monitor token cost** – Triton exposes metrics via Prometheus. Hook these into Grafana dashboards to see the exact number of tokens generated per dollar spent on compute.\n- **Cache frequent prompts** – If your application repeatedly asks the same question (e.g., “What’s the company’s return policy?”), store the answer and skip the model altogether. Caching can cut token usage dramatically.\n\n## What this means for you\n\n- **For business owners:** By moving from a generic cloud API to your own GPU equipped with TensorRT and Triton, you can cut the *effective* price per token by up to 50 % depending on model size and batch strategy. That translates into lower operating costs for chatbots, content‑generation pipelines, or internal knowledge bases.\n- **If you’re a developer or data‑engineer:** The stack lets you experiment with quantisation and batching without deep‑learning expertise. You can test a model locally, see the cost impact, and then scale it on a server farm.\n- **If you’re new to AI deployment:** Start small – a single RTX 4090 on a workstation, quantise to FP16, and enable dynamic batching in Triton. You’ll see noticeable savings before committing to a larger GPU cluster.\n\n## Wrap‑up\n\nReducing token cost isn’t about cutting corners; it’s about smarter use of the hardware you already own. NVIDIA’s inference stack gives you the knobs to trim memory, speed up computation, and batch work efficiently. Today, try installing CUDA and TensorRT on a spare GPU, convert a modest LLM to ONNX, and run it through Triton with a simple Python client. You’ll get a clear picture of how many tokens you can squeeze out of each dollar – and that insight is the first step to a leaner AI operation.",
+  "original_title": "How NVIDIA’s Inference Software Stack Powers the Lowest Token Cost"
+}

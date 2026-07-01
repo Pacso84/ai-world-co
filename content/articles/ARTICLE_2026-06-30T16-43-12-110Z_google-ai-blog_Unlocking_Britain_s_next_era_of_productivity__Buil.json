@@ -1,0 +1,37 @@
+{
+  "_meta": {
+    "written_at": "2026-07-01T11:26:29.165Z",
+    "writer_provider": "cerebras",
+    "writer_model": "gpt-oss-120b",
+    "writer_cost_usd": 0,
+    "original_draft": "2026-06-30T16-43-12-110Z_google-ai-blog_Unlocking_Britain_s_next_era_of_productivity__Buil.json",
+    "source_id": "google-ai-blog",
+    "source_name": "Google AI (hivatalos, blog.google)",
+    "source_link": "https://blog.google/company-news/inside-google/around-the-globe/google-europe/united-kingdom/unlocking-britains-next-era-of-productivity-building-a-nation-of-ai-trailblazers/",
+    "status": "published",
+    "published_at": "2026-07-01T11:30:24.603Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 794
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "decision": "PASS",
+      "issues": [
+        "minor potential for hallucinations not fully addressed"
+      ],
+      "verdict": "The article effectively explains AI concepts in a friendly and accessible manner, making it suitable for everyday people, and provides a clear structure with practical examples and a useful wrap-up.",
+      "_aiCost": 0.00118219,
+      "_provider": "groq",
+      "_model": "llama-3.3-70b-versatile",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-07-01T11:33:44.019Z",
+    "guide_worthy": false,
+    "pairing_reason": "The article does not introduce a single specific, named feature, but rather provides a general guide on using AI tools like Gemini and ChatGPT"
+  },
+  "article_markdown": "---\ntitle: \"How to Use AI to Boost Your Everyday Productivity (Home, Study, Work)\"\nsubtitle: \"A practical guide to adopting AI tools like Gemini and ChatGPT so you can save time, streamline tasks, and stay ahead without needing a tech background.\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"AI productivity\", \"LLM\", \"guides\", \"everyday AI\"]\n---\n\n# How to Use AI to Boost Your Everyday Productivity (Home, Study, Work)\n\n**Hook** – Ever wish you had an extra pair of hands while drafting emails, planning a week’s meals, or sketching a project brief? AI‑powered assistants can act like that invisible helper, freeing up minutes (or even hours) each day. Let’s turn the hype into a habit you can start today.\n\n## 1. Pick a starter AI tool\n\nYou don’t need a dozen apps to get value. Choose one well‑known, easy‑to‑access platform:\n\n- **Gemini (Google’s AI)** – built into the Google Workspace suite, it can suggest text, summarise documents, and generate ideas.\n- **ChatGPT (OpenAI)** – offers a web chat and a browser extension for quick prompts.\n- **Claude (Anthropic)** – focuses on safe, conversational assistance.\n\nAll three are *large language models (LLM – think of them as the brain behind ChatGPT that predicts the next word based on vast amounts of text)*. They work through an **API (application programming interface – a bridge that lets your browser talk to the AI’s server)**, but you’ll only interact with a simple chat window or a plug‑in, no coding required.\n\n## 2. Set up for instant access\n\n1. **Create an account** – Use your existing Google or Microsoft email to sign up; most services offer a free tier.\n2. **Add the browser extension** – For ChatGPT, install the official Chrome/Edge add‑on. It drops a small icon in the toolbar that opens a prompt box on any web page.\n3. **Enable “assist in documents”** – In Google Docs, open *Tools > Gemini* and turn on the sidebar. In Microsoft Word, look for *Copilot* (the same underlying LLM) under *Home > AI Assist*.\n4. **Save a few starter prompts** – Write down simple commands you’ll use repeatedly, such as:  \n   - “Summarise this email thread.”  \n   - “Create a three‑day meal plan with vegetarian options.”  \n   - “Draft a project brief for a new website redesign.”\n\n## 3. Three everyday ways to let AI do the heavy lifting\n\n### a. Email and message summarisation\n- **What you do:** Highlight a lengthy email chain, click the AI icon, and ask “Summarise the key points and action items.”\n- **Why it helps:** Cuts the time you’d spend scrolling, and you get a clear to‑do list in seconds.\n\n### b. Planning and organising\n- **What you do:** Type “Plan my week – include two workouts, three grocery trips, and time for a 30‑minute reading session.”\n- **Why it helps:** The AI returns a tidy table you can copy into your calendar app. No more manual spreadsheet fiddling.\n\n### c. Content creation for study or work\n- **What you do:** Prompt “Write a 300‑word overview of the water cycle for a Year 10 science report” or “Generate a friendly briefing email about our new product launch.”\n- **Why it helps:** Provides a first draft you can edit, rather than starting from blank paper. It also teaches you how to structure information by example.\n\n## 4. Keep the AI output reliable\n\n- **Check for hallucinations** – AI sometimes fabricates details (called *hallucinations*). Verify names, dates, or figures against a trusted source.\n- **Use the “cite sources” feature** – Both Gemini and ChatGPT can add a footnote that links back to the original web page or document they referenced.\n- **Limit sensitive data** – Avoid pasting passwords, personal IDs, or confidential business info into the chat. Treat the AI like a public forum.\n\n## What this means for you\n\n- **In everyday life:** You can reclaim minutes from inbox overload, get quick meal plans, and produce clean notes for school or hobbies without becoming a tech wizard.\n- **At work or study:** AI becomes a drafting partner for reports, presentations, and project briefs, letting you focus on analysis and decision‑making rather than rote writing.\n- **If you’re just getting started:** Try the “summarise” prompt on a recent email. If the result is useful, copy the prompt into a note‑taking app and reuse it whenever you need a quick recap.\n\n## Wrap‑up\n\nAI assistants like Gemini, ChatGPT, and Claude are now mature enough to act as everyday productivity sidekicks. By setting up a simple browser extension, saving a handful of prompts, and habitually delegating summarisation, planning, and draft‑writing tasks, you’ll see tangible time savings within days. Today, open your favourite AI chat, paste a lengthy email, and ask for a summary – that’s your first step toward becoming an AI‑enhanced trailblazer.",
+  "original_title": "Unlocking Britain’s next era of productivity: Building a nation of AI trailblazers"
+}

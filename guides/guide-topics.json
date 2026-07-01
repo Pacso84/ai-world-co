@@ -138,7 +138,11 @@
       "angle": "Account, first task, when Claude shines (long docs, careful answers).",
       "status": "done",
       "icon": "📝",
-      "written_at": "2026-06-21T20:30:23.820Z"
+      "written_at": "2026-06-21T20:30:23.820Z",
+      "source_news": {
+        "file": "ARTICLE_2026-07-01T11-16-41-238Z_aws-ml_Introducing_Claude_Sonnet_5_on_AWS__Anthropic_s_mo.json",
+        "title": "Introducing Claude Sonnet 5 on AWS: Anthropic’s most capable Sonnet model"
+      }
     },
     {
       "id": "claude-projects",
@@ -250,7 +254,11 @@
       "angle": "A chattier Alexa for reminders, planning and questions around the house.",
       "status": "done",
       "icon": "🔊",
-      "written_at": "2026-06-22T18:56:16.814Z"
+      "written_at": "2026-06-22T18:56:16.814Z",
+      "source_news": {
+        "file": "ARTICLE_2026-06-30T18-26-47-625Z_aws-ml_Simplify_multi-account_access_to_Amazon_Bedrock_mo.json",
+        "title": "Simplify multi-account access to Amazon Bedrock models with managed entitlements"
+      }
     },
     {
       "id": "apple-intelligence-getting-started",
@@ -422,7 +430,11 @@
       "icon": "🗒️",
       "angle": "From notes or a transcript to a summary plus tasks, with privacy care.",
       "status": "done",
-      "written_at": "2026-06-24T19:19:55.624Z"
+      "written_at": "2026-06-24T19:19:55.624Z",
+      "source_news": {
+        "file": "ARTICLE_2026-06-30T16-43-28-635Z_aws-ml_Build_an_agentic_AI_healthcare_claims_pipeline_wit.json",
+        "title": "Build an agentic AI healthcare claims pipeline with Amazon Bedrock and AWS HealthLake"
+      }
     },
     {
       "id": "ai-image-basics",
@@ -1307,6 +1319,21 @@
         "title": "How data and AI will transform contact centres for financial services"
       },
       "written_at": "2026-06-29T02:49:18.320Z"
+    },
+    {
+      "id": "how-to-use-skillopt-to-train-ai-agent-skills",
+      "company": "",
+      "tool": "SkillOpt",
+      "title": "How to Use SkillOpt to Train AI Agent Skills",
+      "audience": "both",
+      "level": "intermediate",
+      "angle": "Focus on training AI agent skills using SkillOpt",
+      "status": "todo",
+      "icon": "🆕",
+      "source_news": {
+        "file": "ARTICLE_2026-06-30T18-26-47-624Z_microsoft-research_SkillOpt__Agent_skills_as_trainable_parameters.json",
+        "title": "SkillOpt: Agent skills as trainable parameters"
+      }
     }
   ]
 }
