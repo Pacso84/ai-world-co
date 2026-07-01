@@ -86,7 +86,7 @@ async function translateMarkdown(markdown, langName) {
   const enSub = fmValue(parts.fm, 'subtitle');
 
   const prompt = `Translate the following into ${langName}. Use the exact output format (TITLE / SUBTITLE / BODY).\n\nTITLE: ${enTitle}\nSUBTITLE: ${enSub}\nBODY:\n${parts.body}`;
-  const r = await ask(prompt, { agentName: AGENT_NAME, systemPrompt: SYSTEM, maxTokens: 3500 });
+  const r = await ask(prompt, { agentName: AGENT_NAME, systemPrompt: SYSTEM, maxTokens: 6000 });
   if (!r || !r.text) return null;
 
   const t = r.text;
@@ -97,6 +97,9 @@ async function translateMarkdown(markdown, langName) {
   const sub = (sm ? sm[1] : enSub).trim().replace(/^["']|["']$/g, '');
   const body = (bm ? bm[1] : '').trim();
   if (body.length < 80) return null;
+  // CSONKULÁS-VÉDELEM: ha a fordítás gyanúsan rövidebb az angolnál (kifutott
+  // a token-keretből), NE mentsük el félbevágva — inkább következő körben újra.
+  if (body.length < parts.body.length * 0.35) return null;
 
   const fm = parts.fm
     .replace(/^title:\s*.*$/m, `title: "${title.replace(/"/g, '')}"`)
@@ -116,9 +119,19 @@ async function main() {
   console.log('─'.repeat(60));
 
   if (!existsSync(ARTICLES_DIR)) { console.log('Nincs cikk.'); return; }
-  // Legújabb cikkek előbb (a fájlnév időbélyeggel kezdődik) — a friss tartalom
-  // fordul le hamarabb.
-  const files = readdirSync(ARTICLES_DIR).filter(f => f.startsWith('ARTICLE_') && f.endsWith('.json')).sort().reverse();
+  // PRIORITÁS: a published_at szerint LEGFRISSEBB tartalom fordul először —
+  // így a címlapon lévő friss HÍREK minden nyelven hamar megjelennek.
+  // (A korábbi fájlnév-rendezés az ARTICLE_GUIDE_* fájlokat vette mindig előre
+  // — 'G' > '2026' — ezért a hírek SOSEM kerültek sorra. 2026-07-01 tanulság.)
+  const files = readdirSync(ARTICLES_DIR)
+    .filter(f => f.startsWith('ARTICLE_') && f.endsWith('.json'))
+    .map(f => {
+      let pub = '';
+      try { pub = JSON.parse(readFileSync(join(ARTICLES_DIR, f), 'utf-8'))._meta?.published_at || ''; } catch { /* skip */ }
+      return { f, pub };
+    })
+    .sort((a, b) => (b.pub || '').localeCompare(a.pub || ''))
+    .map(x => x.f);
 
   let done = 0, cost = 0, skipped = 0, failed = 0;
   outer:
