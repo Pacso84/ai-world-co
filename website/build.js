@@ -665,7 +665,10 @@ function guideTile(a) {
   const color = GUIDE_COVER_COLORS[a.company] || '#4f7a86';
   const aud = AUDIENCES[a.audience] || AUDIENCES.both;
   const level = a.level ? `<span class="gtile__lvl">${escapeHtml(tr('lvl_' + a.level) || a.level)}</span>` : '';
-  const brand = a.tool || a.company || tr('forEveryone');
+  // Csak RÖVID márkanév mehet a csempe fejlécébe — a hosszú leíró frázis
+  // (pl. "AI-powered customer service assistants") minden nyelven csúnya/angol.
+  let brand = a.tool || a.company || tr('forEveryone');
+  if (brand.length > 24) brand = a.company || tr('forEveryone');
   return `<a class="gtile" href="article/${a.slug}.html" data-audience="${a.audience}" style="--gc:${color}">
     <span class="gtile__head">
       <span class="gtile__rings" aria-hidden="true"></span>
