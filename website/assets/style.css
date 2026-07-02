@@ -575,3 +575,6 @@ body {
 .day-head::after {
   content: ""; flex: 1; height: 0;   /* a cím után a vonal a teljes szélességig fut */
 }
+
+/* Lépés-illusztrációk (3D spot artok) */
+.g-art__img { display: block; width: 100%; height: auto; border-radius: 20px; box-shadow: 0 14px 30px -18px rgba(28,26,22,.35); }

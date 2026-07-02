@@ -932,6 +932,9 @@ function stepArt(title, idx) {
   let key = null;
   for (const [re, k] of STEP_ART_RULES) { if (re.test(t)) { key = k; break; } }
   if (!key) key = STEP_ART_CYCLE[idx % STEP_ART_CYCLE.length];
+  // Színes 3D illusztráció (a borítók stílusában) — ha létezik; különben SVG tartalék
+  if (existsSync(join(__dirname, 'assets', 'art', key + '.jpg')))
+    return `<div class="g-step__art"><img class="g-art__img" src="/assets/art/${key}.jpg" alt="" loading="lazy" decoding="async" width="640" height="480"></div>`;
   return `<div class="g-step__art">${GUIDE_ART[key] || GUIDE_ART.target}</div>`;
 }
 
@@ -1105,6 +1108,13 @@ function main() {
     } else {
       console.warn(`⚠️  Nincs ${asset} az assets/-ben!`);
     }
+  }
+
+  // Lépés-illusztrációk mappa másolása (ha van)
+  const artSrc = join(ASSETS_SRC, 'art');
+  if (existsSync(artSrc)) {
+    cpSync(artSrc, join(OUT_ASSETS_DIR, 'art'), { recursive: true });
+    console.log('✅ art/ (lépés-illusztrációk) másolva');
   }
 
   // Képek mappa másolása (ha van)
