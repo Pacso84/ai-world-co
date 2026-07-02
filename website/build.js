@@ -127,6 +127,7 @@ const UI_GUIDES = {
         companyGuides: '{c} <span class="muted-word">guides</span>',
         comingSoon: 'Guides are on their way — check back shortly.',
         audPersonal: 'Everyday life', audBusiness: 'Business', audBoth: 'Life & Business',
+        tryTyping: 'Try typing this', xrefNews: 'What prompted this guide', xrefGuide: 'Want to try it? Step-by-step guide',
         disclosureNews: "✦ Original guide written by AI World Co.'s own AI editorial team. Reviewed for accuracy and clarity.",
         disclosureGuide: "✦ Original step-by-step guide by AI World Co.'s AI editorial team. Written in plain language, reviewed for accuracy." },
   hu: { tagline: 'AI-hírek, közérthetően', forEveryone: 'Mindenkinek',
@@ -136,6 +137,7 @@ const UI_GUIDES = {
         companyGuides: '{c} <span class="muted-word">útmutatók</span>',
         comingSoon: 'Az útmutatók úton vannak — nézz vissza hamarosan.',
         audPersonal: 'Hétköznapok', audBusiness: 'Üzlet', audBoth: 'Otthon és munka',
+        tryTyping: 'Írd be ezt', xrefNews: 'Ebből a hírből született az útmutató', xrefGuide: 'Kipróbálnád? Lépésről lépésre útmutató',
         disclosureNews: '✦ Az AI World Co. saját AI-szerkesztősége által írt eredeti cikk. Pontosságra és érthetőségre ellenőrizve.',
         disclosureGuide: '✦ Az AI World Co. AI-szerkesztőségének eredeti, lépésről lépésre útmutatója. Közérthetően írva, pontosságra ellenőrizve.' },
   es: { tagline: 'Noticias de IA, en lenguaje claro', forEveryone: 'Para todos',
@@ -145,6 +147,7 @@ const UI_GUIDES = {
         companyGuides: '<span class="muted-word">Guías de</span> {c}',
         comingSoon: 'Las guías están en camino — vuelve pronto.',
         audPersonal: 'Día a día', audBusiness: 'Negocios', audBoth: 'Vida y negocios',
+        tryTyping: 'Escribe esto', xrefNews: 'La noticia detrás de esta guía', xrefGuide: '¿Quieres probarlo? Guía paso a paso',
         disclosureNews: '✦ Artículo original escrito por el equipo editorial de IA de AI World Co. Revisado para mayor precisión y claridad.',
         disclosureGuide: '✦ Guía original paso a paso del equipo editorial de IA de AI World Co. Escrita en lenguaje claro y revisada para mayor precisión.' },
   de: { tagline: 'KI-News, verständlich erklärt', forEveryone: 'Für alle',
@@ -154,6 +157,7 @@ const UI_GUIDES = {
         companyGuides: '{c}-<span class="muted-word">Anleitungen</span>',
         comingSoon: 'Die Anleitungen sind unterwegs — schau bald wieder vorbei.',
         audPersonal: 'Alltag', audBusiness: 'Business', audBoth: 'Alltag & Business',
+        tryTyping: 'Tipp das ein', xrefNews: 'Die News hinter dieser Anleitung', xrefGuide: 'Ausprobieren? Schritt-für-Schritt-Anleitung',
         disclosureNews: '✦ Originalartikel, geschrieben vom KI-Redaktionsteam von AI World Co. Auf Richtigkeit und Klarheit geprüft.',
         disclosureGuide: '✦ Original-Schritt-für-Schritt-Anleitung vom KI-Redaktionsteam von AI World Co. Verständlich geschrieben, auf Richtigkeit geprüft.' },
   fr: { tagline: "L'actu IA, en langage clair", forEveryone: 'Pour tous',
@@ -163,6 +167,7 @@ const UI_GUIDES = {
         companyGuides: '<span class="muted-word">Guides</span> {c}',
         comingSoon: 'Les guides arrivent — revenez bientôt.',
         audPersonal: 'Quotidien', audBusiness: 'Pro', audBoth: 'Perso & pro',
+        tryTyping: 'Essayez ceci', xrefNews: "L'actu derrière ce guide", xrefGuide: "Envie d'essayer ? Guide pas à pas",
         disclosureNews: "✦ Article original rédigé par l'équipe éditoriale IA d'AI World Co. Vérifié pour l'exactitude et la clarté.",
         disclosureGuide: "✦ Guide original pas à pas de l'équipe éditoriale IA d'AI World Co. Rédigé en langage clair, vérifié pour l'exactitude." }
 };
@@ -391,13 +396,13 @@ function xrefBox(a) {
     // útmutató → forrás-hír
     const news = a.sourceNews?.file ? XREF.newsByFile.get(a.sourceNews.file) : null;
     if (!news) return '';
-    return `<aside class="xref xref--news"><span class="xref__lbl">📰 What prompted this guide</span>
+    return `<aside class="xref xref--news"><span class="xref__lbl">📰 ${tr('xrefNews')}</span>
       <a class="xref__link" href="${news.slug}.html"><span class="xref__t">${escapeHtml(news.title)}</span><span class="xref__arrow">→</span></a></aside>`;
   }
   // hír → kapcsolódó útmutató
   const guide = a.relatedGuideTopic ? XREF.guideByTopic.get(a.relatedGuideTopic) : null;
   if (!guide) return '';
-  return `<aside class="xref xref--guide"><span class="xref__lbl">📘 Want to try it? Step-by-step guide</span>
+  return `<aside class="xref xref--guide"><span class="xref__lbl">📘 ${tr('xrefGuide')}</span>
     <a class="xref__link" href="${guide.slug}.html"><span class="xref__t">${escapeHtml(guide.title)}</span><span class="xref__arrow">→</span></a></aside>`;
 }
 
@@ -644,7 +649,7 @@ function guideCoverHtml(a, cls) {
   return `<div class="${cls} guide-cover" style="--gc:${color}">
     <span class="guide-cover__rings" aria-hidden="true"></span>
     <div class="guide-cover__inner">
-      <span class="guide-cover__eyebrow">Step-by-step guide</span>
+      <span class="guide-cover__eyebrow">${tr('stepByStep')}</span>
       <div class="guide-cover__row">
         <span class="guide-cover__chip">${guideIcon(a)}</span>
         <span class="guide-cover__focal">${escapeHtml(focal)}</span>
@@ -941,8 +946,11 @@ function parseGuideSections(bodyMd) {
 // egy szekció HTML-je: a 💬 példákat (külön soron) kiemelt dobozba tesszük
 function guideSectionHtml(bodyMd) {
   // a 💬-vel kezdődő sorokat markdown ELŐTT blokk-szintű dobozzá alakítjuk
-  const pre = (bodyMd || '').replace(/^[ \t>]*💬[ \t]*(?:example:?\s*)?(.+)$/gmi,
-    '\n\n<div class="g-prompt"><span class="g-prompt__lbl">💬 Try typing this</span><span class="g-prompt__box">$1<span class="g-prompt__send">➤</span></span></div>\n\n');
+  // (1) csak-címke 💬 sor ("💬 **Példa prompt:**") → fűzzük hozzá a következő sort
+  let pre = (bodyMd || '').replace(/^([ \t>]*💬[^\n]*:\*{0,2})[ \t]*\n+[ \t]*(?=\S)/gm, '$1 ');
+  // (2) többnyelvű címke leszedése (Example/Példa/Ejemplo/Beispiel/Exemple, félkövérrel is)
+  pre = pre.replace(/^[ \t>]*💬[ \t]*(?:\*\*[^*\n]{1,40}\*\*[ \t]*:?[ \t]*|(?:example|p[ée]lda(?:[ \t]*prompt)?|ejemplo|beispiel|exemple)[ \t]*:?[ \t]*)?(.+)$/gmi,
+    '\n\n<div class="g-prompt"><span class="g-prompt__lbl">💬 ' + tr('tryTyping') + '</span><span class="g-prompt__box">$1<span class="g-prompt__send">➤</span></span></div>\n\n');
   return wrapTables(marked.parse(pre));
 }
 
@@ -954,20 +962,22 @@ function buildGuidePage(a) {
   let stepNo = 0;
   const blocks = sections.map(s => {
     const t = s.title;
-    if (/^step\s*\d*\s*[—:-]?/i.test(t)) {
+    // Többnyelvű lépés-fejlécek: "Step 1 —", "1. lépés —", "Paso 1", "Schritt 1", "Étape 1"
+    const STEP_RX = /^(?:(?:step|paso|schritt|[ée]tape)\s*\d*|\d+\s*\.?\s*l[ée]p[ée]s)\s*[—:–.-]?\s*/i;
+    if (STEP_RX.test(t)) {
       stepNo++;
-      const heading = t.replace(/^step\s*\d*\s*[—:-]?\s*/i, '');
+      const heading = t.replace(STEP_RX, '');
       return `<div class="g-step"><div class="g-step__no">${stepNo}</div>
         <div class="g-step__grid">
           <div class="g-step__body"><h3 class="g-step__h">${escapeHtml(heading)}</h3>${guideSectionHtml(s.body)}</div>
           ${stepArt(heading, stepNo - 1)}
         </div></div>`;
     }
-    if (/before you start|before we start|prerequisit/i.test(t))
+    if (/before you start|before we start|prerequisit|miel[őo]tt elkezd|kezd[ée]s el[őo]tt|antes de (?:empezar|comenzar)|bevor (?:du|sie) (?:loslegst|beginn)|vorbereitung|avant de commencer/i.test(t))
       return `<div class="g-prereq"><div class="g-block__h">✅ ${escapeHtml(t)}</div>${guideSectionHtml(s.body)}</div>`;
-    if (/common mistakes|watch out|pitfalls/i.test(t))
+    if (/common mistakes|watch out|pitfalls|gyakori hib|err(?:ores|eurs) (?:comunes|frecuentes|courantes|fr[ée]quentes)|h[äa]ufige fehler|pi[èe]ges/i.test(t))
       return `<div class="g-mistakes"><div class="g-block__h">⚠️ ${escapeHtml(t)}</div>${guideSectionHtml(s.body)}</div>`;
-    if (/what this means for you/i.test(t))
+    if (/what this means for you|mit jelent (?:ez )?(?:neked|ez neked)|mi ez neked|qu[ée] significa (?:esto )?para ti|was (?:das|dies) f[üu]r (?:dich|sie) bedeutet|ce que cela signifie pour (?:vous|toi)/i.test(t))
       return `<aside class="impact"><div class="impact__label">${escapeHtml(t)}</div>${guideSectionHtml(s.body)}</aside>`;
     if (/try it now|your turn|next step/i.test(t))
       return `<div class="g-try"><div class="g-block__h">🚀 ${escapeHtml(t)}</div>${guideSectionHtml(s.body)}</div>`;
