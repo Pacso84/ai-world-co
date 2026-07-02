@@ -927,11 +927,37 @@ const STEP_ART_RULES = [
 ];
 const STEP_ART_CYCLE = ['target', 'chat', 'layers', 'doc', 'check', 'plane', 'sliders', 'search'];
 
-function stepArt(title, idx) {
+// Többnyelvű kulcsszavak (hu/es/de/fr) — a fordított fejlécekhez is témára találjon
+const STEP_ART_RULES_I18N = [
+  [/hang\b|mikrofon|diktál|hangosan|\bvoz\b|dicta|aufnahme|sprich|diktier|parle|dicte/i, 'mic'],
+  [/\bkép|fotó|\bimagen|\bfoto\b|\bbild|\bphoto/i, 'image'],
+  [/keres|kutat|búsq|busca|\bsuch|recherch|cherch/i, 'search'],
+  [/bizton|adatvéd|privát|magánél|segur|privacidad|datenschutz|sicher|sécur|confidentialité/i, 'shield'],
+  [/beállít|testreszab|kapcsold|ajusta|einstell|paramèt|réglage|personnalis/i, 'sliders'],
+  [/ments|mentsd|letölt|megoszt|guarda|descarg|comparte|speicher|herunterlad|\bteilen|enregistr|télécharg|partag/i, 'download'],
+  [/küldd?\b|futtat|envía|enviar|\bsende|ausführ|envoy|lance/i, 'plane'],
+  [/ellenőriz|finomít|javítsd|szerkeszt|átnéz|revisa|corrig|prüf|überprüf|verbesser|vérif|améliore|peaufine/i, 'check'],
+  [/formáz|szerkezet|vázlat|sablon|listá|estructura|formato|plantilla|gliederung|vorlage|modèle/i, 'doc'],
+  [/csevegés|beszélget|írd be|gépeld|írj\b|escribe|conversac|tippe|eingabe|converse|saisis|écris/i, 'chat'],
+  [/fiók|belép|jelentkez|kulcs\b|cuenta|inicia sesión|anmeld|konto\b|connexion|compte|clé\b/i, 'login'],
+  [/ötlet|\bidea|einfall|idée/i, 'bulb'],
+  [/\bcél|objetivo|\bziel|objectif/i, 'target']
+];
+
+function stepArt(title, idx, used) {
   const t = title || '';
   let key = null;
   for (const [re, k] of STEP_ART_RULES) { if (re.test(t)) { key = k; break; } }
+  if (!key) for (const [re, k] of STEP_ART_RULES_I18N) { if (re.test(t)) { key = k; break; } }
   if (!key) key = STEP_ART_CYCLE[idx % STEP_ART_CYCLE.length];
+  // OLDALON BELÜLI DEDUP: ugyanaz az illusztráció ne ismétlődjön (zavaró volt)
+  if (used) {
+    if (used.has(key)) {
+      const free = STEP_ART_CYCLE.find(k => !used.has(k));
+      if (free) key = free;
+    }
+    used.add(key);
+  }
   // Színes 3D illusztráció (a borítók stílusában) — ha létezik; különben SVG tartalék
   if (existsSync(join(__dirname, 'assets', 'art', key + '.jpg')))
     return `<div class="g-step__art"><img class="g-art__img" src="/assets/art/${key}.jpg" alt="" loading="lazy" decoding="async" width="640" height="480"></div>`;
@@ -974,6 +1000,7 @@ function buildGuidePage(a) {
   const { intro, sections } = parseGuideSections(a.bodyMd);
 
   let stepNo = 0;
+  const usedArt = new Set();
   const blocks = sections.map(s => {
     const t = s.title;
     // Többnyelvű lépés-fejlécek: "Step 1 —", "1. lépés —", "Paso 1", "Schritt 1", "Étape 1"
@@ -984,7 +1011,7 @@ function buildGuidePage(a) {
       return `<div class="g-step"><div class="g-step__no">${stepNo}</div>
         <div class="g-step__grid">
           <div class="g-step__body"><h3 class="g-step__h">${escapeHtml(heading)}</h3>${guideSectionHtml(s.body)}</div>
-          ${stepArt(heading, stepNo - 1)}
+          ${stepArt(heading, stepNo - 1, usedArt)}
         </div></div>`;
     }
     if (/before you start|before we start|prerequisit|miel[őo]tt elkezd|kezd[ée]s el[őo]tt|antes de (?:empezar|comenzar)|bevor (?:du|sie) (?:loslegst|beginn)|vorbereitung|avant de commencer/i.test(t))
