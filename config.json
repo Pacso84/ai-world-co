@@ -74,7 +74,7 @@
       },
       "fallback_model": {
         "provider": "google",
-        "model": "gemini-flash-latest"
+        "model": "gemini-2.5-flash"
       },
       "enabled": true,
       "comment": "Cikkiras: Cerebras gpt-oss-120b (eros, INGYEN 1M token/nap). Fallback: gemini-flash-latest. (Ha lesz Claude kulcs, a Vezerlopulton atallithato.)"
@@ -110,7 +110,7 @@
       },
       "fallback_model": {
         "provider": "google",
-        "model": "gemini-flash-latest"
+        "model": "gemini-2.5-flash"
       },
       "enabled": true,
       "comment": "Designer: (1) art-director text lepes (Groq llama, megbizhato rovid valaszra) konkret jelenetet ir a cikkbol, (2) kep generalas hardkodolt backenddel (Cloudflare Flux -> HF -> Gemini image)."
@@ -134,7 +134,7 @@
       },
       "fallback_model": {
         "provider": "google",
-        "model": "gemini-flash-latest"
+        "model": "gemini-2.5-flash"
       },
       "enabled": true,
       "comment": "SEO szakerto: cikkenkent meta-leiras + kulcsszavak + SEO-pont (a cikk _meta.seo-ba). A build hasznalja (meta/OG/JSON-LD)."
@@ -146,7 +146,7 @@
       },
       "fallback_model": {
         "provider": "google",
-        "model": "gemini-flash-latest"
+        "model": "gemini-2.5-flash"
       },
       "enabled": true,
       "comment": "Publikalo: determinisztikus build (HTML) + AI FOSZERKESZTOI zaro-ellenorzes (kesz-e a kiadasra) + kiadasi osszefoglalo."
@@ -158,7 +158,7 @@
       },
       "fallback_model": {
         "provider": "google",
-        "model": "gemini-flash-latest"
+        "model": "gemini-2.5-flash"
       },
       "enabled": true,
       "comment": "Utmutato-agent: lepesrol-lepesre gyakorlati utmutatok (guides/guide-topics.json). Eros, ingyenes iras (Cerebras), fallback gemini-flash."
@@ -171,7 +171,7 @@
     "social": {
       "primary_model": {
         "provider": "google",
-        "model": "gemini-flash-latest"
+        "model": "gemini-2.5-flash"
       },
       "fallback_model": {
         "provider": "google",

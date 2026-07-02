@@ -372,6 +372,8 @@ async function main() {
     reply = brain.reply || 'Itt vagyok — mondd, mit csináljunk! 🙂';
   }
   // a megszólított csapattag nevével/emojijával jelöljük, ki válaszol
+  // (ha az agy már maga elé írta a nevét, ne duplázzuk)
+  reply = (reply || '').replace(new RegExp('^(?:' + who.emoji + '\\s*)?\\*' + who.name + ':?\\*:?\\s*'), '');
   const out = `${who.emoji} *${who.name}:* ${reply}`;
   await sendMessage(out);
   console.log('💬 Válasz:', out.slice(0, 100));

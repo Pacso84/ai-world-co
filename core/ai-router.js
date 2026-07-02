@@ -271,15 +271,16 @@ function safetyFilter(response) {
 // ===================================================================
 
 const PRICING = {
-  // Anthropic
+  // Anthropic (2026-07 árak)
   'claude-haiku-4-5': { input: 1.0, output: 5.0 },
   'claude-sonnet-4-6': { input: 3.0, output: 15.0 },
-  'claude-opus-4-8': { input: 15.0, output: 75.0 },
-  // Google (Flash és Pro INGYENES a free tier-ig!)
-  'gemini-2.5-flash': { input: 0.075, output: 0.30 },
-  'gemini-flash-latest': { input: 0.075, output: 0.30 },
-  'gemini-2.0-flash': { input: 0.075, output: 0.30 },
-  'gemini-2.5-pro': { input: 1.25, output: 5.0 },
+  'claude-opus-4-8': { input: 5.0, output: 25.0 },
+  // Google — PAID TIER (2026-07-02-től számlázva!). FIGYELEM:
+  // a 'gemini-flash-latest' alias a 3.5 Flash-re mutat = 5x drágább a 2.5-nél!
+  'gemini-2.5-flash': { input: 0.30, output: 2.50 },
+  'gemini-flash-latest': { input: 1.50, output: 9.00 },
+  'gemini-2.0-flash': { input: 0.10, output: 0.40 },
+  'gemini-2.5-pro': { input: 1.25, output: 10.0 },
   // Groq (INGYENES a free tier-ig!)
   'llama-3.3-70b-versatile': { input: 0.59, output: 0.79 },
   // Cerebras / OpenRouter / Mistral (ingyenes tier-en ~0)
@@ -359,14 +360,17 @@ const QUOTA_PATH = join(__dirname, 'quota-state.json');
 // Szabad modell-pool: ha a primary+fallback kimerült, ezeken megy végig.
 // (Külön kvótájú Gemini modellek + ingyenes providerek. Kulcs hiányában kimarad.)
 const FREE_POOL = [
-  { provider: 'google', model: 'gemini-flash-latest' },
+  // KÖLTSÉG-SORREND (Google paid tier, 2026-07-02): elöl az olcsó-megbízható
+  // 2.5-flash, a DRÁGA 'latest' (3.5 Flash, 5x ár) és a Pro a lista VÉGÉN,
+  // csak végső tartaléknak.
   { provider: 'google', model: 'gemini-2.5-flash' },
   { provider: 'google', model: 'gemini-2.0-flash' },
-  { provider: 'google', model: 'gemini-2.5-pro' },
   { provider: 'groq', model: 'llama-3.3-70b-versatile' },
   { provider: 'cerebras', model: 'gpt-oss-120b' },
   { provider: 'mistral', model: 'mistral-small-latest' },
-  { provider: 'openrouter', model: 'meta-llama/llama-3.3-70b-instruct:free' }
+  { provider: 'openrouter', model: 'meta-llama/llama-3.3-70b-instruct:free' },
+  { provider: 'google', model: 'gemini-flash-latest' },
+  { provider: 'google', model: 'gemini-2.5-pro' }
 ];
 
 function loadQuota() {
