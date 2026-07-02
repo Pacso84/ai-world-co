@@ -58,7 +58,7 @@ function saveCache(file, data) {
   writeFileSync(join(TRANS_DIR, file), JSON.stringify(data, null, 2), 'utf-8');
 }
 
-const SYSTEM = `You are a professional translator for a friendly AI-news + how-to website for everyday people. Translate faithfully and naturally (warm, clear — not robotic). Do NOT translate brand/product names (ChatGPT, Gemini, Claude, Copilot, etc.) or code. In the BODY keep all Markdown intact (## headings, lists, **bold**, emojis, line breaks) and translate only the human text.
+const SYSTEM = `You are a professional translator for a friendly AI-news + how-to website for everyday people. Translate faithfully and naturally (warm, clear — not robotic). Do NOT translate brand/product names (ChatGPT, Gemini, Claude, Copilot, etc.) or REAL program code (commands, code with actual syntax, API endpoints, JSON keys, file names). HOWEVER: example prompts and messages that a user would TYPE TO AN AI ASSISTANT are human text — ALWAYS translate them, even when they appear inside quotes, after a 💬 marker, or inside backticks/code fences. In the BODY keep all Markdown intact (## headings, lists, **bold**, emojis, line breaks) and translate only the human text.
 
 Output EXACTLY this format, nothing else (keep the three labels in English, each on its own line):
 TITLE: <translated title>

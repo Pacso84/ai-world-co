@@ -36,6 +36,9 @@ const IMAGES_DIR = join(ROOT, 'website', 'assets', 'images');
 
 const args = process.argv.slice(2);
 const FORCE = args.includes('--force');
+// --only <részlet>: csak az egyező slugú cikkek képét generálja újra (force-szal)
+const onlyIdx = args.indexOf('--only');
+const ONLY = onlyIdx !== -1 && args[onlyIdx + 1] ? args[onlyIdx + 1].toLowerCase() : null;
 
 // Ugyanaz a slug-képzés mint a build.js-ben (egyezniük kell!)
 function slugify(text) {
@@ -64,26 +67,32 @@ async function describeScene(title, subtitle) {
   const prompt = `Article title: "${title}"
 Subtitle: "${subtitle}"
 
-Describe ONE concrete visual scene that best represents this article as a cover image.
-Name specific objects/symbols/setting (e.g. "a glowing brain made of circuit boards beside stacks of gold coins").
-NO people's faces, NO text/letters in the scene. Reply with ONLY the scene description, max 25 words.
+Describe ONE concrete visual scene for the cover image. STRICT RULES:
+- The scene MUST show the article's actual SUBJECT as instantly recognizable objects
+  (photo analysis -> "a smartphone displaying a photo, scanned by a glowing magnifying lens";
+   customer-service bot -> "a friendly robot with a headset behind a help desk counter").
+- Name 2-4 specific objects and what they are DOING; the main object dominates the frame.
+- FORBIDDEN: landscapes, hills, balloons, cloud scenery, abstract blobs, people's faces, text/letters.
+Reply with ONLY the scene description, max 30 words.
 ${skillsBlock('designer')}`;
   try {
-    const r = await ask(prompt, { agentName: 'designer', systemPrompt: 'You are an art director. Reply with one vivid, concrete visual scene description only.', maxTokens: 200 });
+    const r = await ask(prompt, { agentName: 'designer', systemPrompt: 'You are an art director. Reply with one vivid, concrete visual scene description only. The scene must make the article topic instantly recognizable — never a generic landscape.', maxTokens: 200 });
     const t = (r && r.text || '').trim().replace(/^["']|["']$/g, '');
     if (t.length >= 15) return t;   // csak ha értelmes hosszúságú
   } catch { /* fallback */ }
-  // Tartalék: a cím + alcím adja a témát
-  return `${title}. ${subtitle}`.slice(0, 140);
+  // Tartalék: a témát TÁRGYAKKÁ fordítjuk (nehogy tájkép legyen!)
+  return `A close-up 3D still life of concrete objects representing: ${title}`.slice(0, 160);
 }
 
 // A brand vizuális stílusa a prompthoz — SZÍNES 3D RENDER
 const STYLE = 'vibrant colorful 3D render, glossy soft rounded shapes, playful modern tech illustration, soft studio lighting, smooth materials, clean minimal background, depth of field, high quality octane render, 4k, no text no words no letters';
 
 function buildPrompt(scene) {
-  // A jelenet (art-director által) adja a tárgyat, a STYLE a konzisztens 3D megjelenést
-  const s = scene.replace(/["']/g, '').slice(0, 140);
-  return `A wide landscape 3D rendered scene: ${s}. Centered composition with breathing room around the subject. ${STYLE}`;
+  // A jelenet (art-director által) adja a tárgyat, a STYLE a konzisztens 3D megjelenést.
+  // FONTOS: a "landscape" szó TILOS a promptban — a képgenerátor tájképnek érti,
+  // ebből lettek a semmitmondó dombos-lufis borítók (2026-07-02 user-jelzés).
+  const s = scene.replace(/["']/g, '').slice(0, 160);
+  return `3D rendered illustration, 16:9 wide format: ${s}. The subject is large, centered and instantly recognizable. ${STYLE}`;
 }
 
 // ===================================================================
@@ -180,7 +189,8 @@ async function main() {
     const slug = slugify(meta.title || data.original_title || file);
     const imgPath = join(IMAGES_DIR, `${slug}.jpg`);
 
-    if (existsSync(imgPath) && !FORCE) {
+    if (ONLY && !slug.includes(ONLY)) { skipped++; continue; }
+    if (existsSync(imgPath) && !FORCE && !ONLY) {
       skipped++;
       continue;
     }
