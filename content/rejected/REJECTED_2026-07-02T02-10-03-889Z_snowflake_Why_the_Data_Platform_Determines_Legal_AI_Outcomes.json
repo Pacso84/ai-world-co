@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "written_at": "2026-07-02T02:11:35.704Z",
+    "written_at": "2026-07-02T10:41:30.255Z",
     "writer_provider": "mistral",
     "writer_model": "mistral-small-latest",
     "writer_cost_usd": 0,
@@ -9,7 +9,7 @@
     "source_name": "Snowflake Blog (hivatalos)",
     "source_link": "https://www.snowflake.com/content/snowflake-site/global/en/blog/data-platform-legal-ai-outcomes",
     "status": "rejected",
-    "rejected_at": "2026-07-02T02:11:36.176Z",
+    "rejected_at": "2026-07-02T10:41:30.753Z",
     "auto_check": {
       "passed": true,
       "issues": [],
@@ -27,7 +27,7 @@
     },
     "reason": "Could not parse AI review (2 attempts)",
     "can_retry": true,
-    "rework_attempts": 1,
+    "rework_attempts": 2,
     "reworked_from": "REJECTED_2026-07-02T02-10-03-889Z_snowflake_Why_the_Data_Platform_Determines_Legal_AI_Outcomes.json",
     "requeued_unchanged": true
   },

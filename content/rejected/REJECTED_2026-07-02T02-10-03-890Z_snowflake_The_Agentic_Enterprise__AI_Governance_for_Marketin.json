@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "written_at": "2026-07-02T02:11:35.704Z",
+    "written_at": "2026-07-02T10:41:30.256Z",
     "writer_provider": "mistral",
     "writer_model": "mistral-small-latest",
     "writer_cost_usd": 0,
@@ -9,7 +9,7 @@
     "source_name": "Snowflake Blog (hivatalos)",
     "source_link": "https://www.snowflake.com/content/snowflake-site/global/en/blog/mmds-ai-governance-framework-agentic-enterprise",
     "status": "rejected",
-    "rejected_at": "2026-07-02T02:11:36.191Z",
+    "rejected_at": "2026-07-02T10:41:30.769Z",
     "auto_check": {
       "passed": true,
       "issues": [],
@@ -27,7 +27,7 @@
     },
     "reason": "Could not parse AI review (2 attempts)",
     "can_retry": true,
-    "rework_attempts": 1,
+    "rework_attempts": 2,
     "reworked_from": "REJECTED_2026-07-02T02-10-03-890Z_snowflake_The_Agentic_Enterprise__AI_Governance_for_Marketin.json",
     "requeued_unchanged": true
   },

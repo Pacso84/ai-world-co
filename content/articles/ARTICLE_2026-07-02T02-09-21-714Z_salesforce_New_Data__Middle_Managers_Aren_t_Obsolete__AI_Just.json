@@ -1,0 +1,34 @@
+{
+  "_meta": {
+    "written_at": "2026-07-02T10:32:07.005Z",
+    "writer_provider": "google",
+    "writer_model": "gemini-flash-latest",
+    "writer_cost_usd": 0.00121095,
+    "original_draft": "2026-07-02T02-09-21-714Z_salesforce_New_Data__Middle_Managers_Aren_t_Obsolete__AI_Just.json",
+    "source_id": "salesforce",
+    "source_name": "Salesforce AI Blog (hivatalos)",
+    "source_link": "https://www.salesforce.com/news/stories/middle-managers-vital-age-of-ai/",
+    "status": "published",
+    "published_at": "2026-07-02T10:36:49.902Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 637
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "decision": "PASS",
+      "issues": [
+        "minor structure deviation",
+        "some technical terms not explained"
+      ],
+      "verdict": "The article effectively guides managers through leading their team's AI transition, using a friendly and explanatory tone, while maintaining Australian English and avoiding prohibited content.",
+      "_aiCost": 0.0009650599999999999,
+      "_provider": "groq",
+      "_model": "llama-3.3-70b-versatile",
+      "_attempts": 1
+    }
+  },
+  "article_markdown": "---\ntitle: \"How to Lead Your Team’s AI Transition as a Manager\"\nsubtitle: \"A practical guide to helping your team adopt AI tools safely, boost productivity, and keep a human touch.\"\ncategory: \"how-to\"\naudience: \"business\"\nread_time_minutes: 4\ntags: [\"management\", \"workplace-ai\", \"productivity\", \"leadership\"]\n---\n\n# How to Lead Your Team’s AI Transition as a Manager\n\nYou sit down at your desk with your morning coffee, looking at a mountain of unread emails and project requests, wondering how on earth you are going to help your team adopt new AI tools while keeping daily operations running smoothly. It is a common challenge for managers today, but you are actually the key to making these tools work successfully in your organisation.\n\nWhile technology updates quickly, software alone cannot organise a team or build trust. As a manager, your role is not to be a coding expert, but to guide your team in using these tools safely and effectively. \n\nHere is how you can lead the way without feeling overwhelmed.\n\n## Start with a \"sandbox\" approach\n\nThe easiest way to lower anxiety around new technology is to encourage play. People are often worried about making mistakes or entering sensitive information into public systems. \n\nYou can ease this worry by creating a digital sandbox (a secure, private environment where your team can safely test tools without risking company data). \n\n- Set aside 15 minutes in your next weekly meeting for a \"show and tell\".\n- Ask one team member to share a useful prompt (the specific instruction or question you type into an AI) that saved them time that week.\n- Keep the focus on learning rather than instant perfection. \n\n## Map your team's workflows\n\nBefore introducing any new tool, look at how your team actually gets work done. It is best to map out your team's workflows (the step-by-step processes your team uses to complete daily tasks) to see where AI can actually help.\n\nLook for repetitive, time-consuming tasks. For example, if your team spends hours summariesing long meeting notes or drafting repetitive client updates, these are perfect tasks to delegate to an AI assistant. \n\nOnce you find a process that works, write it down. Create a simple library of shared prompt templates (pre-written instructions your team can copy, paste, and customise) so everyone can get the same high-quality results.\n\n## Set clear boundaries\n\nAI is excellent at drafting outlines and analysing data, but it still struggles with accuracy. It can sometimes suffer from hallucination (when an AI confidently makes up incorrect facts or figures). \n\nMake sure your team knows that AI is a starting point, not the final product. Establish a golden rule: every piece of AI-generated content must be reviewed, edited, and approved by a human before it goes to a client or senior leadership.\n\n## What this means for you\n\n- **For managers leading teams**: Focus on reducing fear. Show your team that AI is there to take away the boring parts of their jobs—like data entry—so they can focus on creative problem-solving.\n- **For business owners and executives**: Support your middle managers. They are the bridge between your high-level AI strategy and the daily habits of your staff. Give them the time and budget to experiment.\n- **If you're just getting started**: Pick one small task today. Use an AI tool to draft a weekly update email or outline a project plan. Notice where it saves you time and where it still needs your personal touch.\n\n## Wrap-up\n\nSuccessfully bringing AI into your workplace is not really a technical challenge—it is a human one. By encouraging safe experimentation, identifying repetitive tasks, and setting clear quality standards, you can help your team work smarter. Choose one repetitive task that your team does every week, and spend ten minutes tomorrow seeing how an AI assistant can help streamline it.",
+  "original_title": "New Data: Middle Managers Aren’t Obsolete. AI Just Made Them More Important."
+}

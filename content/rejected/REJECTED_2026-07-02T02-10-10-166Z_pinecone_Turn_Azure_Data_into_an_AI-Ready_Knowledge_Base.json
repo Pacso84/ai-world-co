@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "written_at": "2026-07-02T02:11:35.876Z",
+    "written_at": "2026-07-02T10:41:30.385Z",
     "writer_provider": "google",
     "writer_model": "gemini-flash-latest",
     "writer_cost_usd": 0,
@@ -9,7 +9,7 @@
     "source_name": "Pinecone Blog (hivatalos)",
     "source_link": "https://www.pinecone.io/blog/turn-azure-data-into-an-ai-ready-knowledge-base/",
     "status": "rejected",
-    "rejected_at": "2026-07-02T02:11:36.208Z",
+    "rejected_at": "2026-07-02T10:41:30.787Z",
     "auto_check": {
       "passed": true,
       "issues": [],
@@ -27,7 +27,7 @@
     },
     "reason": "Could not parse AI review (2 attempts)",
     "can_retry": true,
-    "rework_attempts": 1,
+    "rework_attempts": 2,
     "reworked_from": "REJECTED_2026-07-02T02-10-10-166Z_pinecone_Turn_Azure_Data_into_an_AI-Ready_Knowledge_Base.json",
     "requeued_unchanged": true
   },

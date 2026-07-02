@@ -1,0 +1,36 @@
+{
+  "_meta": {
+    "written_at": "2026-07-02T10:41:21.958Z",
+    "writer_provider": "mistral",
+    "writer_model": "mistral-small-latest",
+    "writer_cost_usd": 0.0034140000000000004,
+    "original_draft": "2026-07-02T02-09-20-689Z_aws-ml_Run_NVIDIA_Nemotron_and_OpenAI_GPT_OSS_models_on_A.json",
+    "source_id": "aws-ml",
+    "source_name": "AWS Machine Learning (hivatalos)",
+    "source_link": "https://aws.amazon.com/blogs/machine-learning/run-nvidia-nemotron-and-openai-gpt-oss-models-on-amazon-bedrock-in-aws-govcloud-us/",
+    "status": "rejected",
+    "rejected_at": "2026-07-02T10:41:30.735Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 869
+    },
+    "ai_review": {
+      "overall_score": 0,
+      "decision": "FAIL",
+      "issues": [
+        "AI response JSON parse error after retries: AI router null"
+      ],
+      "verdict": "Could not parse AI review (2 attempts)",
+      "_aiCost": 0,
+      "_parseFailed": true
+    },
+    "reason": "Could not parse AI review (2 attempts)",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-07-02T02-09-20-689Z_aws-ml_Run_NVIDIA_Nemotron_and_OpenAI_GPT_OSS_models_on_A.json",
+    "requeued_unchanged": false
+  },
+  "article_markdown": "---\ntitle: \"What Powers Your AI Tools? A Simple Guide to Foundation Models\"\nsubtitle: \"Learn what’s under the hood of the AI tools you use every day and how they’re evolving to help you even more.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"foundation-models\", \"ai-basics\", \"how-ai-works\"]\n---\n\n# What Powers Your AI Tools? A Simple Guide to Foundation Models\n\nYou probably use AI every day without giving it much thought — whether it’s smart replies in your email, a chatbot answering questions, or an app that helps you plan your week. But have you ever wondered what makes these tools tick? Understanding the “brains” behind them can help you see where AI is heading and how it might become even more useful in your life.\n\n## The building blocks of today’s AI\n\nAt the core of many AI tools you interact with are **foundation models**. Think of a foundation model as a highly trained, versatile assistant that has read a vast amount of information — text, images, and sometimes even audio. The most common type you may have heard of is a **large language model (LLM)**, which powers tools like ChatGPT or Google’s Gemini.\n\nThey’re called “foundation” models because other apps are built *on top* of them, just like a house is built on a strong base. These models are designed to handle a wide range of general tasks rather than just one specific job. They can understand context, generate creative text, summarise long documents, translate languages, and even write code. In short, they’re the Swiss Army knife of AI.\n\n## How these models end up in your apps\n\nCreating a foundation model from scratch is a massive project. It requires enormous amounts of data, powerful computers, and deep expertise. Most developers don’t build these models themselves. Instead, they access them through online platforms that offer different foundation models from various providers. These platforms act like libraries or marketplaces where developers can choose the best fit for their needs.\n\nThis approach lets developers “plug in” a sophisticated AI brain into their own applications. For example, a small business might build a customer service chatbot that uses a foundation model to understand customer questions and provide helpful responses. Or a local school could use one to create personalised learning materials for students. It’s a bit like choosing the right engine for a car — the developer picks the foundation model that best suits their design and purpose.\n\n## Why more model choices matter for you\n\nFor a while, there were only a few very large, general-purpose foundation models available. Now, a more diverse range is emerging, including what are sometimes called “open-weight” models. This means the core instructions and knowledge of these models are more accessible, allowing developers to customise and innovate more easily.\n\nThis trend is great news for everyday users like you, because it means:\n\n- **More specialised AI tools:** Instead of a one-size-fits-all AI, developers can now fine-tune models for specific tasks. This could lead to tools that are much better at things like transcribing local accents, analysing regional market trends, or suggesting recipes using ingredients you can easily find at your local shop.\n- **More competition and better quality:** With more models to choose from, developers can pick the best one for their app, rather than being limited to just a few options. This competition encourages innovation and leads to better, more tailored tools for you.\n- **Faster development of new tools:** When more foundation models are readily available, developers can experiment and build new AI tools much faster. This means you’ll see a steady stream of new, useful AI applications hitting the market.\n\n## What this means for you\n\n- **In everyday life:** You’ll likely see more AI tools tailored to your specific hobbies, learning goals, or personal projects. Keep an eye out for apps that seem to “understand” your niche needs better than older, more general AI tools. For example, a travel planner AI might become much better at suggesting specific routes for a road trip through the countryside.\n- **For your business or work:** Businesses, especially smaller ones, can now leverage AI tools that are highly specialised for their industry. This can boost efficiency for specific tasks, from writing marketing copy with your brand’s unique voice to analysing customer feedback for a local service.\n- **If you're just getting started:** Don’t feel overwhelmed by the increasing variety. Instead, see it as an opportunity. This diversity means you're more likely to find an AI tool that fits *your* exact problem or need, rather than having to adapt to a one-size-fits-all solution. Start by focusing on what challenge you want AI to help you solve.\n\n## Wrap-up\n\nThe world of AI’s foundational building blocks is expanding rapidly, bringing a wave of innovation that will ripple into the everyday apps and services you use. As more powerful and diverse foundation models become available, you can expect to see AI tools becoming even more intelligent, specialised, and helpful. Keep an eye out for AI applications that offer highly tailored features — they're likely leveraging these advanced models behind the scenes to make your life easier and more productive. Why not try exploring one of these tools today?",
+  "original_title": "Run NVIDIA Nemotron and OpenAI GPT OSS models on Amazon Bedrock in AWS GovCloud (US)"
+}
