@@ -127,7 +127,7 @@ const UI_GUIDES = {
         companyGuides: '{c} <span class="muted-word">guides</span>',
         comingSoon: 'Guides are on their way — check back shortly.',
         audPersonal: 'Everyday life', audBusiness: 'Business', audBoth: 'Life & Business',
-        tryTyping: 'Try typing this', xrefNews: 'What prompted this guide', xrefGuide: 'Want to try it? Step-by-step guide',
+        aiSkills: 'AI skills', coverSub: 'For everyday people', exampleLabel: 'Example', tryTyping: 'Try typing this', xrefNews: 'What prompted this guide', xrefGuide: 'Want to try it? Step-by-step guide',
         disclosureNews: "✦ Original guide written by AI World Co.'s own AI editorial team. Reviewed for accuracy and clarity.",
         disclosureGuide: "✦ Original step-by-step guide by AI World Co.'s AI editorial team. Written in plain language, reviewed for accuracy." },
   hu: { tagline: 'AI-hírek, közérthetően', forEveryone: 'Mindenkinek',
@@ -137,7 +137,7 @@ const UI_GUIDES = {
         companyGuides: '{c} <span class="muted-word">útmutatók</span>',
         comingSoon: 'Az útmutatók úton vannak — nézz vissza hamarosan.',
         audPersonal: 'Hétköznapok', audBusiness: 'Üzlet', audBoth: 'Otthon és munka',
-        tryTyping: 'Írd be ezt', xrefNews: 'Ebből a hírből született az útmutató', xrefGuide: 'Kipróbálnád? Lépésről lépésre útmutató',
+        aiSkills: 'AI-készségek', coverSub: 'Hétköznapi embereknek', exampleLabel: 'Példa', tryTyping: 'Írd be ezt', xrefNews: 'Ebből a hírből született az útmutató', xrefGuide: 'Kipróbálnád? Lépésről lépésre útmutató',
         disclosureNews: '✦ Az AI World Co. saját AI-szerkesztősége által írt eredeti cikk. Pontosságra és érthetőségre ellenőrizve.',
         disclosureGuide: '✦ Az AI World Co. AI-szerkesztőségének eredeti, lépésről lépésre útmutatója. Közérthetően írva, pontosságra ellenőrizve.' },
   es: { tagline: 'Noticias de IA, en lenguaje claro', forEveryone: 'Para todos',
@@ -147,7 +147,7 @@ const UI_GUIDES = {
         companyGuides: '<span class="muted-word">Guías de</span> {c}',
         comingSoon: 'Las guías están en camino — vuelve pronto.',
         audPersonal: 'Día a día', audBusiness: 'Negocios', audBoth: 'Vida y negocios',
-        tryTyping: 'Escribe esto', xrefNews: 'La noticia detrás de esta guía', xrefGuide: '¿Quieres probarlo? Guía paso a paso',
+        aiSkills: 'Habilidades de IA', coverSub: 'Para el día a día', exampleLabel: 'Ejemplo', tryTyping: 'Escribe esto', xrefNews: 'La noticia detrás de esta guía', xrefGuide: '¿Quieres probarlo? Guía paso a paso',
         disclosureNews: '✦ Artículo original escrito por el equipo editorial de IA de AI World Co. Revisado para mayor precisión y claridad.',
         disclosureGuide: '✦ Guía original paso a paso del equipo editorial de IA de AI World Co. Escrita en lenguaje claro y revisada para mayor precisión.' },
   de: { tagline: 'KI-News, verständlich erklärt', forEveryone: 'Für alle',
@@ -157,7 +157,7 @@ const UI_GUIDES = {
         companyGuides: '{c}-<span class="muted-word">Anleitungen</span>',
         comingSoon: 'Die Anleitungen sind unterwegs — schau bald wieder vorbei.',
         audPersonal: 'Alltag', audBusiness: 'Business', audBoth: 'Alltag & Business',
-        tryTyping: 'Tipp das ein', xrefNews: 'Die News hinter dieser Anleitung', xrefGuide: 'Ausprobieren? Schritt-für-Schritt-Anleitung',
+        aiSkills: 'KI-Können', coverSub: 'Für den Alltag', exampleLabel: 'Beispiel', tryTyping: 'Tipp das ein', xrefNews: 'Die News hinter dieser Anleitung', xrefGuide: 'Ausprobieren? Schritt-für-Schritt-Anleitung',
         disclosureNews: '✦ Originalartikel, geschrieben vom KI-Redaktionsteam von AI World Co. Auf Richtigkeit und Klarheit geprüft.',
         disclosureGuide: '✦ Original-Schritt-für-Schritt-Anleitung vom KI-Redaktionsteam von AI World Co. Verständlich geschrieben, auf Richtigkeit geprüft.' },
   fr: { tagline: "L'actu IA, en langage clair", forEveryone: 'Pour tous',
@@ -167,7 +167,7 @@ const UI_GUIDES = {
         companyGuides: '<span class="muted-word">Guides</span> {c}',
         comingSoon: 'Les guides arrivent — revenez bientôt.',
         audPersonal: 'Quotidien', audBusiness: 'Pro', audBoth: 'Perso & pro',
-        tryTyping: 'Essayez ceci', xrefNews: "L'actu derrière ce guide", xrefGuide: "Envie d'essayer ? Guide pas à pas",
+        aiSkills: 'Compétences IA', coverSub: 'Pour tous les jours', exampleLabel: 'Exemple', tryTyping: 'Essayez ceci', xrefNews: "L'actu derrière ce guide", xrefGuide: "Envie d'essayer ? Guide pas à pas",
         disclosureNews: "✦ Article original rédigé par l'équipe éditoriale IA d'AI World Co. Vérifié pour l'exactitude et la clarté.",
         disclosureGuide: "✦ Guide original pas à pas de l'équipe éditoriale IA d'AI World Co. Rédigé en langage clair, vérifié pour l'exactitude." }
 };
@@ -644,8 +644,10 @@ const GUIDE_COVER_COLORS = {
 };
 function guideCoverHtml(a, cls) {
   const color = GUIDE_COVER_COLORS[a.company] || '#4f7a86';
-  const focal = a.tool || a.company || 'AI skills';
-  const sub = (a.company && a.tool) ? a.company : 'For everyday people';
+  let focal = a.tool || a.company || tr('aiSkills');
+  // Hosszú angol leíró frázis (nem márkanév) ne maradjon a nem-angol borítón
+  if (LANG !== 'en' && focal.length > 24) focal = tr('aiSkills');
+  const sub = (a.company && a.tool) ? a.company : tr('coverSub');
   return `<div class="${cls} guide-cover" style="--gc:${color}">
     <span class="guide-cover__rings" aria-hidden="true"></span>
     <div class="guide-cover__inner">
@@ -950,7 +952,13 @@ function guideSectionHtml(bodyMd) {
   let pre = (bodyMd || '').replace(/^([ \t>]*💬[^\n]*:\*{0,2})[ \t]*\n+[ \t]*(?=\S)/gm, '$1 ');
   // (2) többnyelvű címke leszedése (Example/Példa/Ejemplo/Beispiel/Exemple, félkövérrel is)
   pre = pre.replace(/^[ \t>]*💬[ \t]*(?:\*\*[^*\n]{1,40}\*\*[ \t]*:?[ \t]*|(?:example|p[ée]lda(?:[ \t]*prompt)?|ejemplo|beispiel|exemple)[ \t]*:?[ \t]*)?(.+)$/gmi,
-    '\n\n<div class="g-prompt"><span class="g-prompt__lbl">💬 ' + tr('tryTyping') + '</span><span class="g-prompt__box">$1<span class="g-prompt__send">➤</span></span></div>\n\n');
+    (m, txt) => {
+      // Idézőjellel kezdődik = tényleg beírandó prompt; különben csak példa-leírás
+      const isPrompt = /^[„“"'«‘]/.test(txt.trim());
+      const lbl = isPrompt ? tr('tryTyping') : tr('exampleLabel');
+      const send = isPrompt ? '<span class="g-prompt__send">➤</span>' : '';
+      return '\n\n<div class="g-prompt"><span class="g-prompt__lbl">💬 ' + lbl + '</span><span class="g-prompt__box">' + txt + send + '</span></div>\n\n';
+    });
   return wrapTables(marked.parse(pre));
 }
 
