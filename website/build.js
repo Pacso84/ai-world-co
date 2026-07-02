@@ -118,6 +118,56 @@ const UI_EXTRA = {
 };
 for (const l of SITE_LANGS) Object.assign(UI[l], UI_EXTRA[l] || {});
 
+// Útmutató-oldalak + cikk-lábléc feliratai (a user jelezte: angolul maradtak)
+const UI_GUIDES = {
+  en: { tagline: 'AI news, in plain language', forEveryone: 'For everyone',
+        lvl_beginner: 'beginner', lvl_intermediate: 'intermediate', lvl_advanced: 'advanced',
+        guideWordOne: 'guide', guideWordMany: 'guides',
+        pickTool: 'Pick the AI tool you use to jump to its step-by-step guides.',
+        companyGuides: '{c} <span class="muted-word">guides</span>',
+        comingSoon: 'Guides are on their way — check back shortly.',
+        audPersonal: 'Everyday life', audBusiness: 'Business', audBoth: 'Life & Business',
+        disclosureNews: "✦ Original guide written by AI World Co.'s own AI editorial team. Reviewed for accuracy and clarity.",
+        disclosureGuide: "✦ Original step-by-step guide by AI World Co.'s AI editorial team. Written in plain language, reviewed for accuracy." },
+  hu: { tagline: 'AI-hírek, közérthetően', forEveryone: 'Mindenkinek',
+        lvl_beginner: 'kezdő', lvl_intermediate: 'középhaladó', lvl_advanced: 'haladó',
+        guideWordOne: 'útmutató', guideWordMany: 'útmutató',
+        pickTool: 'Válaszd ki az AI-eszközt, amit használsz — és ugorj a lépésről lépésre útmutatóihoz.',
+        companyGuides: '{c} <span class="muted-word">útmutatók</span>',
+        comingSoon: 'Az útmutatók úton vannak — nézz vissza hamarosan.',
+        audPersonal: 'Hétköznapok', audBusiness: 'Üzlet', audBoth: 'Otthon és munka',
+        disclosureNews: '✦ Az AI World Co. saját AI-szerkesztősége által írt eredeti cikk. Pontosságra és érthetőségre ellenőrizve.',
+        disclosureGuide: '✦ Az AI World Co. AI-szerkesztőségének eredeti, lépésről lépésre útmutatója. Közérthetően írva, pontosságra ellenőrizve.' },
+  es: { tagline: 'Noticias de IA, en lenguaje claro', forEveryone: 'Para todos',
+        lvl_beginner: 'principiante', lvl_intermediate: 'intermedio', lvl_advanced: 'avanzado',
+        guideWordOne: 'guía', guideWordMany: 'guías',
+        pickTool: 'Elige la herramienta de IA que usas para ir a sus guías paso a paso.',
+        companyGuides: '<span class="muted-word">Guías de</span> {c}',
+        comingSoon: 'Las guías están en camino — vuelve pronto.',
+        audPersonal: 'Día a día', audBusiness: 'Negocios', audBoth: 'Vida y negocios',
+        disclosureNews: '✦ Artículo original escrito por el equipo editorial de IA de AI World Co. Revisado para mayor precisión y claridad.',
+        disclosureGuide: '✦ Guía original paso a paso del equipo editorial de IA de AI World Co. Escrita en lenguaje claro y revisada para mayor precisión.' },
+  de: { tagline: 'KI-News, verständlich erklärt', forEveryone: 'Für alle',
+        lvl_beginner: 'Einsteiger', lvl_intermediate: 'Mittelstufe', lvl_advanced: 'Profi',
+        guideWordOne: 'Anleitung', guideWordMany: 'Anleitungen',
+        pickTool: 'Wähle dein KI-Tool und spring direkt zu seinen Schritt-für-Schritt-Anleitungen.',
+        companyGuides: '{c}-<span class="muted-word">Anleitungen</span>',
+        comingSoon: 'Die Anleitungen sind unterwegs — schau bald wieder vorbei.',
+        audPersonal: 'Alltag', audBusiness: 'Business', audBoth: 'Alltag & Business',
+        disclosureNews: '✦ Originalartikel, geschrieben vom KI-Redaktionsteam von AI World Co. Auf Richtigkeit und Klarheit geprüft.',
+        disclosureGuide: '✦ Original-Schritt-für-Schritt-Anleitung vom KI-Redaktionsteam von AI World Co. Verständlich geschrieben, auf Richtigkeit geprüft.' },
+  fr: { tagline: "L'actu IA, en langage clair", forEveryone: 'Pour tous',
+        lvl_beginner: 'débutant', lvl_intermediate: 'intermédiaire', lvl_advanced: 'avancé',
+        guideWordOne: 'guide', guideWordMany: 'guides',
+        pickTool: "Choisissez l'outil IA que vous utilisez pour accéder à ses guides pas à pas.",
+        companyGuides: '<span class="muted-word">Guides</span> {c}',
+        comingSoon: 'Les guides arrivent — revenez bientôt.',
+        audPersonal: 'Quotidien', audBusiness: 'Pro', audBoth: 'Perso & pro',
+        disclosureNews: "✦ Article original rédigé par l'équipe éditoriale IA d'AI World Co. Vérifié pour l'exactitude et la clarté.",
+        disclosureGuide: "✦ Guide original pas à pas de l'équipe éditoriale IA d'AI World Co. Rédigé en langage clair, vérifié pour l'exactitude." }
+};
+for (const l of SITE_LANGS) Object.assign(UI[l], UI_GUIDES[l] || {});
+
 // Nap-feliratok a 7 napos hír-archívumhoz
 const UI_DAYS = {
   en: { past7: 'Past 7 days', today: 'Today', yesterday: 'Yesterday' },
@@ -127,6 +177,10 @@ const UI_DAYS = {
   fr: { past7: '7 derniers jours', today: "Aujourd'hui", yesterday: 'Hier' }
 };
 for (const l of SITE_LANGS) Object.assign(UI[l], UI_DAYS[l] || {});
+
+// VALÓDI lapszám: hány külön napon jelent meg tartalom (a main() számolja ki).
+// A user jelezte: fixen "Issue 01"-et írt a dátum mellett — az nem igaz.
+let ISSUE_NO = 1;
 
 // Aktuális nyelv-állapot (a build ciklus állítja nyelvenként)
 let LANG = 'en';
@@ -191,9 +245,9 @@ const CATEGORIES = {
 
 // Célhasználat (audience) — hova építhető be
 const AUDIENCES = {
-  'personal': { label: 'Everyday life', icon: '🏠', cls: 'aud-personal' },
-  'business': { label: 'Business',      icon: '💼', cls: 'aud-business' },
-  'both':     { label: 'Life & Business', icon: '🔄', cls: 'aud-both' }
+  'personal': { label: 'Everyday life', key: 'audPersonal', icon: '🏠', cls: 'aud-personal' },
+  'business': { label: 'Business',      key: 'audBusiness', icon: '💼', cls: 'aud-business' },
+  'both':     { label: 'Life & Business', key: 'audBoth', icon: '🔄', cls: 'aud-both' }
 };
 
 // ===================================================================
@@ -257,10 +311,11 @@ function wrapTables(html) {
     .replace(/<\/table>/g, '</table></div>');
 }
 
+const DATE_LOCALES = { en: 'en-AU', hu: 'hu-HU', es: 'es-ES', de: 'de-DE', fr: 'fr-FR' };
 function formatDate(iso) {
   if (!iso) return '';
   const d = new Date(iso);
-  return d.toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' });
+  return d.toLocaleDateString(DATE_LOCALES[LANG] || 'en-AU', { day: 'numeric', month: 'long', year: 'numeric' });
 }
 
 // ===================================================================
@@ -419,9 +474,9 @@ function pageShell({ title, description, bodyContent, isArticle = false, noIntro
   </header>${(isArticle || noIntro) ? '' : `
   <section class="intro">
     <div class="intro__inner">
-      <p class="intro__kicker">${T.heroKicker} · ${formatDate(new Date().toISOString())}</p>
+      <p class="intro__kicker">${tr('heroKicker').replace('01', String(ISSUE_NO).padStart(2, '0'))} · ${formatDate(new Date().toISOString())}</p>
       <h1 class="intro__title">${T.heroTitle}</h1>
-      <p class="intro__tagline">${SITE.tagline}</p>
+      <p class="intro__tagline">${tr('tagline')}</p>
     </div>
   </section>`}
   <main class="wrap">
@@ -459,7 +514,7 @@ function articleCard(a, featured = false) {
     <a href="article/${a.slug}.html" class="card__link">
       ${coverHtml(a, '', 'card__cover')}
       <div class="card__meta">
-        <span class="aud ${aud.cls}">${aud.icon} ${aud.label}</span>
+        <span class="aud ${aud.cls}">${aud.icon} ${tr(aud.key)}</span>
         <span class="card__read">${a.readTime} ${tr('minRead')}</span>
       </div>
       <h2 class="card__title">${escapeHtml(a.title)}</h2>
@@ -478,7 +533,7 @@ function buildIndex(articles) {
       <h1 class="empty__title">${tr('noStories')}</h1>
       <p>${tr('noStoriesNote')}</p>
     </div>`;
-    return pageShell({ title: `${SITE.name} — ${SITE.tagline}`, description: SITE.description, bodyContent: empty, pagePath: '' });
+    return pageShell({ title: `${SITE.name} — ${tr('tagline')}`, description: SITE.description, bodyContent: empty, pagePath: '' });
   }
 
   // 7 NAPOS ABLAK: a főoldal az elmúlt 7 nap híreit mutatja, napokra bontva.
@@ -537,7 +592,7 @@ function buildIndex(articles) {
     <span class="guides-cta__arrow">→</span></a>`;
 
   return pageShell({
-    title: `${SITE.name} — ${SITE.tagline}`,
+    title: `${SITE.name} — ${tr('tagline')}`,
     description: SITE.description,
     ogImage: articles[0]?.image ? `${SITE.url}/assets/images/${articles[0].image}` : '',
     jsonld: { '@context': 'https://schema.org', '@type': 'WebSite', name: SITE.name, url: SITE.url, description: SITE.description },
@@ -602,8 +657,8 @@ function guideCoverHtml(a, cls) {
 function guideTile(a) {
   const color = GUIDE_COVER_COLORS[a.company] || '#4f7a86';
   const aud = AUDIENCES[a.audience] || AUDIENCES.both;
-  const level = a.level ? `<span class="gtile__lvl">${escapeHtml(a.level)}</span>` : '';
-  const brand = a.tool || a.company || 'For everyone';
+  const level = a.level ? `<span class="gtile__lvl">${escapeHtml(tr('lvl_' + a.level) || a.level)}</span>` : '';
+  const brand = a.tool || a.company || tr('forEveryone');
   return `<a class="gtile" href="article/${a.slug}.html" data-audience="${a.audience}" style="--gc:${color}">
     <span class="gtile__head">
       <span class="gtile__rings" aria-hidden="true"></span>
@@ -612,7 +667,7 @@ function guideTile(a) {
     </span>
     <span class="gtile__body">
       <span class="gtile__title">${escapeHtml(a.title)}</span>
-      <span class="gtile__meta"><span class="gtile__aud">${aud.icon} ${aud.label}</span>${level}</span>
+      <span class="gtile__meta"><span class="gtile__aud">${aud.icon} ${tr(aud.key)}</span>${level}</span>
     </span>
   </a>`;
 }
@@ -621,7 +676,7 @@ function guideTile(a) {
 function buildGuidesPage(generalGuides, counts) {
   const tiles = generalGuides.length
     ? `<div class="gtiles">${generalGuides.map(guideTile).join('')}</div>`
-    : `<p class="muted" style="color:var(--ink-soft)">Everyday guides are on their way — check back shortly.</p>`;
+    : `<p class="muted" style="color:var(--ink-soft)">${tr('comingSoon')}</p>`;
   const header = `<section class="guides-hero">
     <p class="intro__kicker">${tr('stepByStep')}</p>
     <h1 class="guides-hero__title">${tr('guidesTitle')}</h1>
@@ -643,17 +698,17 @@ function buildToolsPage(companyGuides, counts) {
   for (const g of companyGuides) { const k = g.company || 'Other'; (groups[k] = groups[k] || []).push(g); }
   const ORDER = ['OpenAI', 'Google', 'Anthropic', 'Microsoft', 'Meta', 'Perplexity', 'Alibaba', 'xAI', 'Mistral', 'DeepSeek', 'Amazon', 'Apple', 'Hugging Face', 'NVIDIA', 'GitHub', 'Cohere'];
   const companies = [...ORDER.filter(c => groups[c]), ...Object.keys(groups).filter(c => c && !ORDER.includes(c))];
-  const cnt = n => `${n} guide${n > 1 ? 's' : ''}`;
+  const cnt = n => `${n} ${n > 1 ? tr('guideWordMany') : tr('guideWordOne')}`;
 
   const brandTile = (c) => `<a class="brandtile" href="#c-${companySlug(c)}" style="--gc:${GUIDE_COVER_COLORS[c] || '#4f7a86'}">
       <span class="brandtile__i">${COMPANY_ICONS[c] || '🤖'}</span>
       <span class="brandtile__n">${escapeHtml(c)}</span><span class="brandtile__c">${cnt(groups[c].length)}</span></a>`;
   const brandRow = companies.length ? `<section class="brandpick">
-      <p class="section-note">Pick the AI tool you use to jump to its step-by-step guides.</p>
+      <p class="section-note">${tr('pickTool')}</p>
       <div class="brandtiles">${companies.map(brandTile).join('')}</div></section>` : '';
   const companySection = (c) => `<section class="grid-section" id="c-${companySlug(c)}">
       <div class="section-head"><span class="pill">${COMPANY_ICONS[c] || '🤖'} ${escapeHtml(c)}</span>
-        <h2 class="section-title">${escapeHtml(c)} <span class="muted-word">guides</span></h2></div>
+        <h2 class="section-title">${tr('companyGuides').replace('{c}', escapeHtml(c))}</h2></div>
       <div class="gtiles">${groups[c].map(guideTile).join('')}</div></section>`;
 
   const header = `<section class="guides-hero">
@@ -661,7 +716,7 @@ function buildToolsPage(companyGuides, counts) {
     <h1 class="guides-hero__title">${tr('toolsTitle')}</h1>
     <p class="guides-hero__tag">${tr('toolsTag')}</p>
   </section>`;
-  const empty = `<p class="muted" style="color:var(--ink-soft)">Tool guides are on their way — check back shortly.</p>`;
+  const empty = `<p class="muted" style="color:var(--ink-soft)">${tr('comingSoon')}</p>`;
   const body = designStyleBlock() + header + (companyGuides.length ? (brandRow + companies.map(companySection).join('')) : empty);
   return pageShell({
     title: `AI tool guides — ${SITE.name}`,
@@ -683,7 +738,7 @@ function buildArticlePage(a) {
     ${coverHtml(a, '../', 'article__cover')}
     <div class="article__head">
       <div class="article__badges">
-        <span class="aud ${aud.cls}">${aud.icon} ${aud.label}</span>
+        <span class="aud ${aud.cls}">${aud.icon} ${tr(aud.key)}</span>
         <span class="tag ${cat.cls}">${cat.label}</span>
       </div>
       <h1 class="article__title">${escapeHtml(a.title)}</h1>
@@ -700,7 +755,7 @@ function buildArticlePage(a) {
     ${tagsHtml}
     ${xrefBox(a)}
     <div class="article__foot">
-      <p class="ai-disclosure">✦ Original guide written by AI World Co.'s own AI editorial team. Reviewed for accuracy and clarity.</p>
+      <p class="ai-disclosure">${tr('disclosureNews')}</p>
       <a href="../index.html" class="back-link">${tr('backStories')}</a>
     </div>
   </article>`;
@@ -930,7 +985,7 @@ function buildGuidePage(a) {
       <div class="article__badges">
         <span class="tag ${cat.cls}">📘 Step-by-step guide</span>
         ${toolChip}${levelChip}
-        <span class="aud ${aud.cls}">${aud.icon} ${aud.label}</span>
+        <span class="aud ${aud.cls}">${aud.icon} ${tr(aud.key)}</span>
       </div>
       <h1 class="article__title">${escapeHtml(a.title)}</h1>
       <p class="article__subtitle">${escapeHtml(a.subtitle)}</p>
@@ -940,7 +995,7 @@ function buildGuidePage(a) {
     <div class="g-steps">${blocks}</div>
     ${xrefBox(a)}
     <div class="article__foot">
-      <p class="ai-disclosure">✦ Original step-by-step guide by AI World Co.'s AI editorial team. Written in plain language, reviewed for accuracy.</p>
+      <p class="ai-disclosure">${tr('disclosureGuide')}</p>
       <a href="../index.html" class="back-link">${tr('backStories')}</a>
     </div>
   </article>`;
@@ -1042,6 +1097,8 @@ function main() {
   // Cikkek betöltése (egyszer) + kereszthivatkozás-index
   const articles = loadArticles();
   buildXref(articles);
+  // VALÓDI lapszám: ahány külön napon jelent meg tartalom
+  ISSUE_NO = new Set(articles.map(a => (a.publishedAt || '').slice(0, 10)).filter(Boolean)).size || 1;
   console.log(`📰 ${articles.length} publikált cikk/útmutató — generálás ${SITE_LANGS.length} nyelven`);
 
   const today = new Date().toISOString().slice(0, 10);
