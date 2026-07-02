@@ -1,30 +1,36 @@
 {
   "_meta": {
-    "written_at": "2026-07-02T10:30:35.754Z",
-    "writer_provider": "google",
-    "writer_model": "gemini-flash-latest",
-    "writer_cost_usd": 0.00223005,
+    "written_at": "2026-07-02T17:27:14.544Z",
+    "writer_provider": "mistral",
+    "writer_model": "mistral-small-latest",
+    "writer_cost_usd": 0.0031654000000000005,
     "original_draft": "2026-07-02T02-09-37-791Z_databricks_How_we_keep_GPUs_reliable_across_Databricks_AI.json",
     "source_id": "databricks",
     "source_name": "Databricks Blog (hivatalos)",
     "source_link": "https://www.databricks.com/blog/how-we-keep-gpus-reliable-across-databricks-ai",
     "status": "rejected",
-    "rejected_at": "2026-07-02T10:37:07.006Z",
+    "rejected_at": "2026-07-02T17:27:23.038Z",
     "auto_check": {
-      "passed": false,
-      "issues": [
-        "NO_H1: Nincs H1 (# Cím) a cikkben"
-      ],
-      "wordCount": 680
+      "passed": true,
+      "issues": [],
+      "wordCount": 543
     },
     "ai_review": {
+      "overall_score": 0,
       "decision": "FAIL",
-      "verdict": "Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben",
-      "skipped_ai": true
+      "issues": [
+        "AI response JSON parse error after retries: AI router null"
+      ],
+      "verdict": "Could not parse AI review (2 attempts)",
+      "_aiCost": 0,
+      "_parseFailed": true
     },
-    "reason": "Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben",
-    "can_retry": true
+    "reason": "Could not parse AI review (2 attempts)",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-07-02T02-09-37-791Z_databricks_How_we_keep_GPUs_reliable_across_Databricks_AI.json",
+    "requeued_unchanged": false
   },
-  "article_markdown": "---\ntitle: \"What is a GPU? The Hidden Engine Powering Your Daily AI Tools\"\nsubtitle: \"Understand the powerful computer chips that make tools like ChatGPT and Gemini possible, and why keeping them running is a massive job.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 3\ntags: [\"hardware\", \"how-ai-works\", \"gpus\", \"getting-started\"]\n---\n\nImagine typing a quick question into an AI assistant while sipping your morning coffee, only to watch the text appear almost instantly, word by word. Have you ever wondered what is happening behind the scenes to make those clever answers appear on your screen so quickly? \n\nThe magic relies on specialized hardware called a **GPU (graphics processing unit — a specialised computer chip designed to handle thousands of mathematical tasks all at once)**. While you cannot see them, these chips are the absolute workhorses of the modern AI world. \n\n## The secret engine: GPU vs CPU\n\nTo understand how your favourite AI tools work, it helps to understand the difference between the chips inside our computers. \n\nMost traditional computers rely on a **CPU (central processing unit — the traditional chip that acts as the main 'brain' of your computer, handling tasks one by one)**. \n\nTo understand the difference, imagine a busy restaurant kitchen:\n*   A **CPU** is like a world-class head chef. This chef is incredibly smart and can cook any complex recipe, but they can only focus on one dish at a time. \n*   A **GPU** is like a team of one hundred kitchen assistants. Individually, they might only know how to chop vegetables, but because they all work at the same time, they can prepare ingredients for a massive banquet in seconds.\n\nBecause AI tasks require millions of simple calculations to be done simultaneously, the GPU is the perfect tool for the job. \n\n## Keeping the giants happy\n\nTo run popular AI systems, technology companies do not just use one or two of these chips. They connect thousands of them together inside a **data centre (a giant, climate-controlled warehouse filled with thousands of powerful computers)**. \n\nKeeping these massive groups of chips working together is a major engineering challenge. If even a single chip gets too hot, fails, or has a small memory glitch, it can cause the entire AI system to pause or slow down. \n\nWhen you ask an AI to write an email or generate an image, your request travels to a **server (a powerful computer that stores information and shares it with your device over the internet)** in one of these data centres. Engineers work around the clock to monitor these chips, make sure they do not overheat, and quickly redirect workloads if one chip goes offline.\n\n## What this means for you\n\nUnderstanding how GPUs power AI can help you get the most out of these tools in your daily life.\n\n*   **In everyday life**: If you notice your favourite free AI tools slowing down, it is usually because thousands of people are trying to share the same pool of GPUs. Try using the tools during quieter times of the day to get faster responses.\n*   **For your business or work**: If your team relies on AI for daily operations, investing in a paid subscription usually gives you priority access to these powerful chips, meaning your work will not be delayed during peak hours.\n*   **If you're just getting started**: Don't panic if an AI tool occasionally freezes or says \"server busy\". It simply means the distant data centre is experiencing a high volume of traffic, and the system is organising itself to handle the load.\n\n## Wrap-up\n\nWhile AI feels like magic, it actually relies on physical, hard-working computer chips located in warehouses around the globe. The next time you use an AI tool, you will know that a silent army of GPUs is working together to generate your answer. \n\nTo see this in action, try opening your favourite AI tool today and asking it a complex question—then watch how quickly those tiny silicon chips process your request!\n\n*Written and edited by AI World Co.'s autonomous AI agents. Reviewed for accuracy by our editorial system.*",
+  "article_markdown": "---\ntitle: \"What Is a GPU? The Hidden Engine Behind Your AI Tools\"\nsubtitle: \"Discover how the tiny chips powering your AI apps work, why they sometimes slow down, and what it means for your daily life.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 3\ntags: [\"hardware\", \"how-ai-works\", \"gpus\", \"getting-started\"]\n---\n\n# What Is a GPU? The Hidden Engine Behind Your AI Tools\n\nYou’ve probably noticed how fast AI tools like chatbots or image generators respond—almost like magic. But behind that instant reply is a very real, very busy piece of hardware called a **GPU (graphics processing unit — a specialised chip designed to handle many small calculations at once)**.\n\nThink of it like a tiny factory inside your computer or phone, working non-stop to turn your words into answers, images, or even music. Without GPUs, AI tools would crawl along like a snail.\n\n## How GPUs power AI\n\nTo understand why GPUs are so important, let’s compare them to the other main chip in your device: the **CPU (central processing unit — the general-purpose 'brain' of your computer that handles tasks one at a time)**.\n\nImagine your computer is a restaurant:\n\n- The **CPU** is the head chef. This chef is brilliant at cooking any dish, but can only focus on one plate at a time.\n- The **GPU** is a team of 100 kitchen assistants. Each one is simple—maybe they only chop vegetables—but together, they can prepare a banquet in minutes.\n\nAI tasks like understanding language or generating images require millions of tiny calculations happening at the same time. That’s exactly what GPUs are built for—teamwork on a massive scale.\n\n## Why your AI tool sometimes feels slow\n\nWhen you use an AI tool, your request doesn’t just run on your phone or laptop. It travels over the internet to a **data centre (a climate-controlled warehouse packed with thousands of powerful computers)**. These centres house not just one or two GPUs, but **thousands connected together**.\n\nKeeping all those chips running smoothly is a huge job. If one chip gets too hot, glitches, or fails, engineers have to quickly reroute the work so your request isn’t left waiting. That’s why you might see a “server busy” message during peak times—it’s not your device, but the distant data centre juggling too many requests at once.\n\n## What this means for you\n\nUnderstanding GPUs helps you get the most out of AI tools without frustration.\n\n- **In everyday life**: If your favourite free AI tool feels sluggish, try using it during quieter hours—like early morning or late evening—when fewer people are online.\n- **For your business or work**: If your team relies on AI daily, consider a paid plan. These often give you priority access to faster GPUs, so your work isn’t delayed during busy periods.\n- **If you're just getting started**: Don’t worry if an AI tool occasionally freezes or says “server busy.” It’s just the system reorganising itself to handle the load—like a busy restaurant taking a moment to seat everyone.\n\n## Wrap-up\n\nNext time you fire up an AI tool, remember: behind every instant answer is a silent army of GPUs working together. To see it in action, try asking a complex question today—then watch how quickly those tiny chips process your request.",
   "original_title": "How we keep GPUs reliable across Databricks AI"
 }

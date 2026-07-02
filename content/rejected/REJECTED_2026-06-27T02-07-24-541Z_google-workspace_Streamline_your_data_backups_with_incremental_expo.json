@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "written_at": "2026-07-02T10:38:18.860Z",
+    "written_at": "2026-07-02T17:26:52.564Z",
     "writer_provider": "cerebras",
     "writer_model": "gpt-oss-120b",
     "writer_cost_usd": 0,
@@ -9,7 +9,7 @@
     "source_name": "Google Workspace Updates (hivatalos)",
     "source_link": "http://workspaceupdates.googleblog.com/2026/06/streamline-your-data-backups-with-incremental-exports-for-Google-Workspace.html",
     "status": "rejected",
-    "rejected_at": "2026-07-02T10:41:30.605Z",
+    "rejected_at": "2026-07-02T17:27:22.883Z",
     "auto_check": {
       "passed": true,
       "issues": [],
@@ -27,9 +27,9 @@
     },
     "reason": "Could not parse AI review (2 attempts)",
     "can_retry": true,
-    "rework_attempts": 1,
+    "rework_attempts": 2,
     "reworked_from": "REJECTED_2026-06-27T02-07-24-541Z_google-workspace_Streamline_your_data_backups_with_incremental_expo.json",
-    "requeued_unchanged": false
+    "requeued_unchanged": true
   },
   "article_markdown": "---\ntitle: \"Smart Backups for Your Business: Understanding Incremental Data Exports\"\nsubtitle: \"Learn how to protect your important work files and emails more efficiently with smarter backup methods.\"\ncategory: \"explainer\"\naudience: \"business\"\nread_time_minutes: 4\ntags: [\"data-backup\", \"google-workspace\", \"business-productivity\"]\n---\n\n# Smart Backups for Your Business: Understanding Incremental Data Exports\n\nEver spent hours polishing a client presentation, only to find the file vanished from your drive? Data loss can halt a project in its tracks, but a modern backup strategy can keep your work safe without draining resources.\n\n## What is an incremental data export?\n\nAn **incremental data export** (think of it as a “only‑the‑new‑bits” backup) copies just the changes made since the last backup, rather than duplicating everything each time. Imagine photocopying only the new pages you added to a thick cookbook, instead of recreating the whole book every day – it’s faster, lighter and cheaper.\n\nIn the context of **Google Workspace** (Google’s suite of business tools, including Gmail, Drive and Chat), an incremental export means you’re pulling just the latest emails, documents or chat messages that have been modified, rather than re‑exporting the entire archive.\n\n## Why incremental backups matter for your business\n\n- **Speedier runs:** Backing up only the changes means the job finishes in minutes instead of hours, so it hardly interrupts daily operations.\n- **Lower storage bills:** The first full backup might be large, but each subsequent incremental snapshot is tiny. Less data stored in **Google Cloud Storage (GCS)** – Google’s scalable, secure cloud “warehouse” – translates to lower monthly costs.\n- **More frequent protection:** Because each run is cheap and quick, you can schedule backups daily, hourly, or even after major edits. This reduces the window of potential data loss.\n- **Easier restores:** With many recent snapshots, you can roll back to a point just a few hours ago if a file is accidentally deleted or corrupted, minimising downtime.\n\n## Setting up incremental exports in Google Workspace\n\n1. **Choose the services you need** – Gmail, Drive, and Chat are the most common. You can also pick specific folders or labels to narrow the scope.\n2. **Configure the export schedule** – Use Google’s admin console or a third‑party backup tool that integrates with Google Workspace. Set the frequency that matches your risk tolerance (e.g., nightly for high‑value data, weekly for less critical files).\n3. **Define the destination** – Point the export to a GCS bucket. This is where the incremental snapshots are stored. You’ll need at least one bucket with versioning turned on, so each export is kept as a separate object.\n4. **Test a restore** – After the first few exports, run a trial restore of a recent email or document. Confirm that the version you retrieve matches what you expect; this gives confidence that the process works when you really need it.\n\n## What this means for you\n\n- **If you run a small business:** You can protect client contracts, invoices and project files without hiring a dedicated IT team. Automating incremental backups means you spend less time worrying about storage limits and more time serving customers.\n- **If you manage a team:** Deploy the same backup configuration across all employee accounts. Everyone’s data is covered, and you have a single recovery point for the whole organisation, which helps keep operations running smoothly during outages.\n- **If you’re new to data management:** Starting with incremental exports is a gentle entry point. You’ll learn how to slice your data into manageable pieces and see tangible benefits – faster backups, lower costs and peace of mind.\n\n## Wrap‑up\n\nIncremental data exports let you secure Google Workspace information efficiently by backing up only what’s changed. The result is quicker, cheaper and more reliable protection for the files and communications that keep your business moving. Today, open your Google Workspace admin console, enable an incremental export schedule, and set a modest storage bucket in Google Cloud Storage. You’ll be one step closer to a disaster‑ready workflow without the headache of full‑copy backups.",
   "original_title": "Streamline your data backups with incremental exports for Google Workspace"
