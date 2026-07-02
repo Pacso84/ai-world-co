@@ -1,150 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178284017072681",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-06-30T17:22:50.726Z",
-      "updated": "2026-06-30T17:22:57.417Z"
-    },
-    {
-      "id": "t178284017741976",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-06-30T17:22:57.419Z",
-      "updated": "2026-06-30T17:23:17.658Z"
-    },
-    {
-      "id": "t178284019766511",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-06-30T17:23:17.665Z",
-      "updated": "2026-06-30T17:23:34.865Z"
-    },
-    {
-      "id": "t178284021486732",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-06-30T17:23:34.867Z",
-      "updated": "2026-06-30T17:23:35.099Z"
-    },
-    {
-      "id": "t178284021510682",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-06-30T17:23:35.106Z",
-      "updated": "2026-06-30T17:23:35.304Z"
-    },
-    {
-      "id": "t178284021530672",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-06-30T17:23:35.306Z",
-      "updated": "2026-06-30T17:23:35.516Z"
-    },
-    {
-      "id": "t178284021551827",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-06-30T17:23:35.518Z",
-      "updated": "2026-06-30T17:23:36.435Z"
-    },
-    {
-      "id": "t178284021643657",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-06-30T17:23:36.437Z",
-      "updated": "2026-06-30T17:23:36.646Z"
-    },
-    {
-      "id": "t178284021664750",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-06-30T17:23:36.647Z",
-      "updated": "2026-06-30T17:24:20.779Z"
-    },
-    {
-      "id": "t178284026078114",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-06-30T17:24:20.781Z",
-      "updated": "2026-06-30T17:24:21.044Z"
-    },
-    {
-      "id": "t178284026104640",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-06-30T17:24:21.046Z",
-      "updated": "2026-06-30T17:24:21.288Z"
-    },
-    {
-      "id": "t178284026129016",
-      "title": "Run translator",
-      "status": "done",
-      "agent": "translator",
-      "created": "2026-06-30T17:24:21.290Z",
-      "updated": "2026-06-30T17:24:21.662Z"
-    },
-    {
-      "id": "t178284026166442",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-06-30T17:24:21.664Z",
-      "updated": "2026-06-30T17:24:22.710Z"
-    },
-    {
-      "id": "t178284157981998",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-06-30T17:46:19.819Z",
-      "updated": "2026-06-30T17:46:20.084Z"
-    },
-    {
-      "id": "t178284158008616",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-06-30T17:46:20.086Z",
-      "updated": "2026-06-30T17:46:20.337Z"
-    },
-    {
-      "id": "t178284158033927",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-06-30T17:46:20.339Z",
-      "updated": "2026-06-30T17:46:22.644Z"
-    },
-    {
-      "id": "t178284158264512",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-06-30T17:46:22.645Z",
-      "updated": "2026-06-30T17:46:23.835Z"
-    },
-    {
-      "id": "t178284158384364",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-06-30T17:46:23.843Z",
-      "updated": "2026-06-30T17:46:29.412Z"
-    },
-    {
       "id": "t178284158941478",
       "title": "Run ellenorzo",
       "status": "done",
@@ -479,6 +335,150 @@
       "agent": "publisher",
       "created": "2026-07-01T17:52:37.699Z",
       "updated": "2026-07-01T17:52:38.826Z"
+    },
+    {
+      "id": "t178295814913680",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-07-02T02:09:09.136Z",
+      "updated": "2026-07-02T02:10:15.039Z"
+    },
+    {
+      "id": "t178295821504112",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-07-02T02:10:15.042Z",
+      "updated": "2026-07-02T02:10:15.287Z"
+    },
+    {
+      "id": "t178295821528990",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-07-02T02:10:15.289Z",
+      "updated": "2026-07-02T02:11:32.004Z"
+    },
+    {
+      "id": "t178295829200619",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-02T02:11:32.006Z",
+      "updated": "2026-07-02T02:11:32.297Z"
+    },
+    {
+      "id": "t178295829230042",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-07-02T02:11:32.300Z",
+      "updated": "2026-07-02T02:11:35.889Z"
+    },
+    {
+      "id": "t178295829589118",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-02T02:11:35.891Z",
+      "updated": "2026-07-02T02:11:36.249Z"
+    },
+    {
+      "id": "t178295829625389",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-07-02T02:11:36.253Z",
+      "updated": "2026-07-02T02:11:36.466Z"
+    },
+    {
+      "id": "t178295829647557",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-07-02T02:11:36.475Z",
+      "updated": "2026-07-02T02:11:37.508Z"
+    },
+    {
+      "id": "t178295829751033",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-02T02:11:37.510Z",
+      "updated": "2026-07-02T02:11:37.796Z"
+    },
+    {
+      "id": "t178295829780495",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-07-02T02:11:37.804Z",
+      "updated": "2026-07-02T02:11:38.018Z"
+    },
+    {
+      "id": "t178295829802025",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-07-02T02:11:38.020Z",
+      "updated": "2026-07-02T02:11:38.253Z"
+    },
+    {
+      "id": "t178295829825680",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-07-02T02:11:38.256Z",
+      "updated": "2026-07-02T02:11:39.207Z"
+    },
+    {
+      "id": "t178295829920972",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-02T02:11:39.209Z",
+      "updated": "2026-07-02T02:11:39.422Z"
+    },
+    {
+      "id": "t178295829942435",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-02T02:11:39.424Z",
+      "updated": "2026-07-02T02:11:39.641Z"
+    },
+    {
+      "id": "t178295829964298",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-07-02T02:11:39.642Z",
+      "updated": "2026-07-02T02:11:39.886Z"
+    },
+    {
+      "id": "t178295829988873",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-02T02:11:39.888Z",
+      "updated": "2026-07-02T02:11:40.150Z"
+    },
+    {
+      "id": "t178295830015138",
+      "title": "Run translator",
+      "status": "done",
+      "agent": "translator",
+      "created": "2026-07-02T02:11:40.151Z",
+      "updated": "2026-07-02T02:11:40.425Z"
+    },
+    {
+      "id": "t178295830042724",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-07-02T02:11:40.427Z",
+      "updated": "2026-07-02T02:11:41.741Z"
     }
   ],
   "notifications": [
@@ -865,243 +865,17 @@
       "agent": "source-scout",
       "at": "2026-07-01T19:49:49.949Z",
       "loud": false
+    },
+    {
+      "id": "n178295830175133",
+      "level": "info",
+      "text": "Pipeline lefutott — ma nem volt publikálható új tartalom.",
+      "agent": "ceo",
+      "at": "2026-07-02T02:11:41.751Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178252674101784",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Rendbe raktam a csempéket: 16 cég → 4/4/2 oszlop, egyenletes sorok. Kiválasztottam a szimmetrikus elrendezést",
-      "ref": "guides.html",
-      "at": "2026-06-27T02:19:01.017Z"
-    },
-    {
-      "id": "m178261404576435",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"The latest AI news we announced in May 2026\" — mi a baj: NO_H1: Nincs H1 (# Cím) a cikkben",
-      "ref": "2026-06-07T20-02-45-881Z_google-ai-blog_The_latest_AI_news_we_announced_in_May_2026.json",
-      "at": "2026-06-28T02:34:05.764Z"
-    },
-    {
-      "id": "m178261404577211",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Simulate real-world places with Project Genie and Street View\" — mi a baj: NO_H1: Nincs H1 (# Cím) a cikkben",
-      "ref": "2026-06-07T20-02-45-881Z_google-deepmind_Simulate_real-world_places_with_Project_Genie_and_.json",
-      "at": "2026-06-28T02:34:05.772Z"
-    },
-    {
-      "id": "m178261405545832",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"The latest AI news we announced in May 2026\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; Reviewer verdict: Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben; újraküldöm.",
-      "ref": "2026-06-07T20-02-45-881Z_google-ai-blog_The_latest_AI_news_we_announced_in_May_2026.json",
-      "at": "2026-06-28T02:34:15.458Z"
-    },
-    {
-      "id": "m178261406662984",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Simulate real-world places with Project Genie and Street View\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; Reviewer verdict: Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben; újraküldöm.",
-      "ref": "2026-06-07T20-02-45-881Z_google-deepmind_Simulate_real-world_places_with_Project_Genie_and_.json",
-      "at": "2026-06-28T02:34:26.629Z"
-    },
-    {
-      "id": "m178261406731732",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"The latest AI news we announced in May 2026\" (?/10)",
-      "ref": "2026-06-07T20-02-45-881Z_google-ai-blog_The_latest_AI_news_we_announced_in_May_2026.json",
-      "at": "2026-06-28T02:34:27.317Z"
-    },
-    {
-      "id": "m178261406769719",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Simulate real-world places with Project Genie and Street View\" (?/10)",
-      "ref": "2026-06-07T20-02-45-881Z_google-deepmind_Simulate_real-world_places_with_Project_Genie_and_.json",
-      "at": "2026-06-28T02:34:27.697Z"
-    },
-    {
-      "id": "m178261408729891",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "info",
-      "text": "A \"Dreaming: Better memory for a more helpful ChatGPT\" hír a meglévő útmutatóra mutat: chatgpt-memory",
-      "ref": "chatgpt-memory",
-      "at": "2026-06-28T02:34:47.298Z"
-    },
-    {
-      "id": "m178261409580778",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "info",
-      "text": "A \"The latest AI news we announced in May 2026\" hír a meglévő útmutatóra mutat: gemini-getting-started",
-      "ref": "gemini-getting-started",
-      "at": "2026-06-28T02:34:55.807Z"
-    },
-    {
-      "id": "m178261424219384",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Rendbe raktam a csempéket: 16 cég → 4/4/2 oszlop, egyenletes sorok. Egyensúly és kiegyensúlyozott elrendezés biztosítása",
-      "ref": "guides.html",
-      "at": "2026-06-28T02:37:22.193Z"
-    },
-    {
-      "id": "m178267589172581",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 16 → 4/4/2 oszlop.",
-      "ref": "mobile",
-      "at": "2026-06-28T19:44:51.725Z"
-    },
-    {
-      "id": "m178270091069831",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Simulate real-world places with Project Genie and Street View\" — mi a baj: NO_H1: Nincs H1 (# Cím) a cikkben",
-      "ref": "2026-06-07T20-02-45-881Z_google-deepmind_Simulate_real-world_places_with_Project_Genie_and_.json",
-      "at": "2026-06-29T02:41:50.698Z"
-    },
-    {
-      "id": "m178270091248163",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"How we used Gemini to build Google I/O 2026\" — mi a baj: NO_H1: Nincs H1 (# Cím) a cikkben",
-      "ref": "2026-06-07T20-02-58-130Z_google-ai-blog_How_we_used_Gemini_to_build_Google_I_O_2026.json",
-      "at": "2026-06-29T02:41:52.481Z"
-    },
-    {
-      "id": "m178270091248722",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Take our I/O 2026 quiz, vibe coded in Google AI Studio.\" — mi a baj: NO_H1: Nincs H1 (# Cím) a cikkben",
-      "ref": "2026-06-07T20-02-58-131Z_google-ai-blog_Take_our_I_O_2026_quiz__vibe_coded_in_Google_AI_St.json",
-      "at": "2026-06-29T02:41:52.487Z"
-    },
-    {
-      "id": "m178270092119183",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Introducing Creator Assistant, Plus More Languages For AI Translations on Facebook\" — mi a baj: NO_H1: Nincs H1 (# Cím) a cikkben",
-      "ref": "2026-06-07T20-02-58-133Z_meta-ai_Introducing_Creator_Assistant__Plus_More_Languages.json",
-      "at": "2026-06-29T02:42:01.191Z"
-    },
-    {
-      "id": "m178270093641998",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"A conversation with Kevin Scott: What’s next in AI\" — mi a baj: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!)",
-      "ref": "2026-06-07T20-02-58-136Z_microsoft-ai_A_conversation_with_Kevin_Scott__What_s_next_in_AI.json",
-      "at": "2026-06-29T02:42:16.419Z"
-    },
-    {
-      "id": "m178270098001488",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"OpenAI is still working on that ‘super app’\" — mi a baj: NO_H1: Nincs H1 (# Cím) a cikkben",
-      "ref": "2026-06-07T20-03-07-839Z_techcrunch-ai_OpenAI_is_still_working_on_that__super_app_.json",
-      "at": "2026-06-29T02:43:00.014Z"
-    },
-    {
-      "id": "m178270098001922",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"OpenAI unveils Lockdown Mode to protect sensitive data from prompt injection attacks\" — mi a baj: NO_H1: Nincs H1 (# Cím) a cikkben",
-      "ref": "2026-06-07T20-03-07-840Z_techcrunch-ai_OpenAI_unveils_Lockdown_Mode_to_protect_sensitive_.json",
-      "at": "2026-06-29T02:43:00.019Z"
-    },
-    {
-      "id": "m178270098002538",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"AI ‘content creators’ are getting harder to spot\" — mi a baj: NO_H1: Nincs H1 (# Cím) a cikkben",
-      "ref": "2026-06-07T20-03-07-840Z_theverge-ai_AI__content_creators__are_getting_harder_to_spot.json",
-      "at": "2026-06-29T02:43:00.025Z"
-    },
-    {
-      "id": "m178270099673726",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Here comes new Siri again\" — mi a baj: NO_H1: Nincs H1 (# Cím) a cikkben",
-      "ref": "2026-06-07T20-03-07-842Z_theverge-ai_Here_comes_new_Siri_again.json",
-      "at": "2026-06-29T02:43:16.737Z"
-    },
-    {
-      "id": "m178270099674344",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"School shooting survivor sues AI gun detection firm after system failed to spot weapon\" — mi a baj: NO_H1: Nincs H1 (# Cím) a cikkben",
-      "ref": "2026-06-07T20-03-21-284Z_arstechnica-ai_School_shooting_survivor_sues_AI_gun_detection_fir.json",
-      "at": "2026-06-29T02:43:16.743Z"
-    },
-    {
-      "id": "m178270099674874",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"This is your laptop… on AI\" — mi a baj: NO_H1: Nincs H1 (# Cím) a cikkben",
-      "ref": "2026-06-07T20-03-21-284Z_theverge-ai_This_is_your_laptop__on_AI.json",
-      "at": "2026-06-29T02:43:16.748Z"
-    },
-    {
-      "id": "m178270099675349",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"The Fitbit Air is a good wearable weighed down by a chatty AI \"coach\"\" — mi a baj: NO_H1: Nincs H1 (# Cím) a cikkben",
-      "ref": "2026-06-07T20-03-21-286Z_arstechnica-ai_The_Fitbit_Air_is_a_good_wearable_weighed_down_by_.json",
-      "at": "2026-06-29T02:43:16.753Z"
-    },
-    {
-      "id": "m178270100876546",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Simulate real-world places with Project Genie and Street View\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; Reviewer verdict: Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben; újraküldöm.",
-      "ref": "2026-06-07T20-02-45-881Z_google-deepmind_Simulate_real-world_places_with_Project_Genie_and_.json",
-      "at": "2026-06-29T02:43:28.765Z"
-    },
-    {
-      "id": "m178270102049146",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"How we used Gemini to build Google I/O 2026\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; Reviewer verdict: Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben; újraküldöm.",
-      "ref": "2026-06-07T20-02-58-130Z_google-ai-blog_How_we_used_Gemini_to_build_Google_I_O_2026.json",
-      "at": "2026-06-29T02:43:40.491Z"
-    },
-    {
-      "id": "m178270102844484",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Take our I/O 2026 quiz, vibe coded in Google AI Studio.\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; Reviewer verdict: Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben; újraküldöm.",
-      "ref": "2026-06-07T20-02-58-131Z_google-ai-blog_Take_our_I_O_2026_quiz__vibe_coded_in_Google_AI_St.json",
-      "at": "2026-06-29T02:43:48.444Z"
-    },
     {
       "id": "m178270103953224",
       "from": "iro",
@@ -2219,6 +1993,240 @@
       "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 16 → 4/4/2 oszlop.",
       "ref": "mobile",
       "at": "2026-07-01T17:52:37.395Z"
+    },
+    {
+      "id": "m178295829220662",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Why the Data Platform Determines Legal AI Outcomes\" — mi a baj: AI response JSON parse error after retries: AI router null",
+      "ref": "2026-07-02T02-10-03-889Z_snowflake_Why_the_Data_Platform_Determines_Legal_AI_Outcomes.json",
+      "at": "2026-07-02T02:11:32.206Z"
+    },
+    {
+      "id": "m178295829221893",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"How Snowflake Built an AI-Native Marketing Team\" — mi a baj: AI response JSON parse error after retries: AI router null",
+      "ref": "2026-07-02T02-10-03-890Z_snowflake_How_Snowflake_Built_an_AI-Native_Marketing_Team.json",
+      "at": "2026-07-02T02:11:32.218Z"
+    },
+    {
+      "id": "m178295829222695",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"The Agentic Enterprise: AI Governance for Marketing Leaders\" — mi a baj: AI response JSON parse error after retries: AI router null",
+      "ref": "2026-07-02T02-10-03-890Z_snowflake_The_Agentic_Enterprise__AI_Governance_for_Marketin.json",
+      "at": "2026-07-02T02:11:32.226Z"
+    },
+    {
+      "id": "m178295829223692",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Kimi K2.7 Code vs Claude Fable 5: Landing pages that cost 94% less\" — mi a baj: AI response JSON parse error after retries: AI router null",
+      "ref": "2026-07-02T02-10-03-890Z_together_Kimi_K2_7_Code_vs_Claude_Fable_5__Landing_pages_th.json",
+      "at": "2026-07-02T02:11:32.236Z"
+    },
+    {
+      "id": "m178295829224913",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Pinecone Nexus Is Now in Public Preview\" — mi a baj: NO_H1: Nincs H1 (# Cím) a cikkben; CLICHE: Tiltott klisé találva: \"game-changer\"",
+      "ref": "2026-07-02T02-10-10-166Z_pinecone_Pinecone_Nexus_Is_Now_in_Public_Preview.json",
+      "at": "2026-07-02T02:11:32.249Z"
+    },
+    {
+      "id": "m17829582922571",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Turn Azure Data into an AI-Ready Knowledge Base\" — mi a baj: AI response JSON parse error after retries: AI router null",
+      "ref": "2026-07-02T02-10-10-166Z_pinecone_Turn_Azure_Data_into_an_AI-Ready_Knowledge_Base.json",
+      "at": "2026-07-02T02:11:32.257Z"
+    },
+    {
+      "id": "m178295829226639",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Violin: An open-source video translation skill that breaks language barriers\" — mi a baj: AI response JSON parse error after retries: AI router null",
+      "ref": "2026-07-02T02-10-10-166Z_together_Violin__An_open-source_video_translation_skill_tha.json",
+      "at": "2026-07-02T02:11:32.266Z"
+    },
+    {
+      "id": "m178295829227643",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Running AI on mixed hardware for speed and affordability\" — mi a baj: AI response JSON parse error after retries: AI router null",
+      "ref": "2026-07-02T02-10-15-027Z_ibm_Running_AI_on_mixed_hardware_for_speed_and_afforda.json",
+      "at": "2026-07-02T02:11:32.276Z"
+    },
+    {
+      "id": "m178295829609346",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"How Cara pioneers domain-specific AI for enterprise insurance brokerages with AWS\" — mi a baj: AI response JSON parse error after retries: AI router null",
+      "ref": "2026-06-27T02-07-24-542Z_aws-ml_How_Cara_pioneers_domain-specific_AI_for_enterpris.json",
+      "at": "2026-07-02T02:11:36.093Z"
+    },
+    {
+      "id": "m178295829610461",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Production-grade AI agents for financial compliance: Lessons from Stripe\" — mi a baj: AI response JSON parse error after retries: AI router null",
+      "ref": "2026-06-27T02-07-24-542Z_aws-ml_Production-grade_AI_agents_for_financial_complianc.json",
+      "at": "2026-07-02T02:11:36.104Z"
+    },
+    {
+      "id": "m178295829611354",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Check out real-life AI prototypes from the Futures Lab.\" — mi a baj: AI response JSON parse error after retries: AI router null",
+      "ref": "2026-06-29T02-29-25-986Z_google-ai-blog_Check_out_real-life_AI_prototypes_from_the_Futures.json",
+      "at": "2026-07-02T02:11:36.113Z"
+    },
+    {
+      "id": "m178295829612397",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Measuring the impact of learning with AI in Sierra Leone and beyond\" — mi a baj: AI response JSON parse error after retries: AI router null",
+      "ref": "2026-06-29T02-29-25-986Z_google-deepmind_Measuring_the_impact_of_learning_with_AI_in_Sierra.json",
+      "at": "2026-07-02T02:11:36.123Z"
+    },
+    {
+      "id": "m178295829613151",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"HP Inc. launches Frontier strategic partnership with OpenAI\" — mi a baj: AI response JSON parse error after retries: AI router null",
+      "ref": "2026-06-29T02-29-25-986Z_openai-blog_HP_Inc__launches_Frontier_strategic_partnership_wi.json",
+      "at": "2026-07-02T02:11:36.131Z"
+    },
+    {
+      "id": "m178295829614090",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Costa Rican dairy cooperative turns AI agents into coworkers\" — mi a baj: AI response JSON parse error after retries: AI router null",
+      "ref": "2026-06-29T02-29-25-987Z_microsoft-ai_Costa_Rican_dairy_cooperative_turns_AI_agents_into.json",
+      "at": "2026-07-02T02:11:36.140Z"
+    },
+    {
+      "id": "m178295829614821",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Pairing geotechnical data with AI helps New Zealand build better\" — mi a baj: AI response JSON parse error after retries: AI router null",
+      "ref": "2026-06-29T02-29-25-987Z_microsoft-ai_Pairing_geotechnical_data_with_AI_helps_New_Zealan.json",
+      "at": "2026-07-02T02:11:36.148Z"
+    },
+    {
+      "id": "m178295829615618",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"From Materials Simulation to Experimental Astronomy, New NVIDIA AI Software Unlocks Scientific Discoveries\" — mi a baj: AI response JSON parse error after retries: AI router null",
+      "ref": "2026-06-29T02-29-25-987Z_nvidia-blog_From_Materials_Simulation_to_Experimental_Astronom.json",
+      "at": "2026-07-02T02:11:36.156Z"
+    },
+    {
+      "id": "m178295829616633",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"New York City educators and industry leaders gathered at Google’s offices to shape the future of AI in classrooms.\" — mi a baj: AI response JSON parse error after retries: AI router null",
+      "ref": "2026-07-01T17-46-16-620Z_google-ai-blog_New_York_City_educators_and_industry_leaders_gathe.json",
+      "at": "2026-07-02T02:11:36.166Z"
+    },
+    {
+      "id": "m178295829617440",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"New AI-powered library lets people meet Theodore Roosevelt in a whole new way \" — mi a baj: AI response JSON parse error after retries: AI router null",
+      "ref": "2026-07-01T17-46-16-620Z_microsoft-ai_New_AI-powered_library_lets_people_meet_Theodore_R.json",
+      "at": "2026-07-02T02:11:36.174Z"
+    },
+    {
+      "id": "m178295829618157",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Why the Data Platform Determines Legal AI Outcomes\" — mi a baj: AI response JSON parse error after retries: AI router null",
+      "ref": "2026-07-02T02-10-03-889Z_snowflake_Why_the_Data_Platform_Determines_Legal_AI_Outcomes.json",
+      "at": "2026-07-02T02:11:36.181Z"
+    },
+    {
+      "id": "m178295829618972",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"How Snowflake Built an AI-Native Marketing Team\" — mi a baj: AI response JSON parse error after retries: AI router null",
+      "ref": "2026-07-02T02-10-03-890Z_snowflake_How_Snowflake_Built_an_AI-Native_Marketing_Team.json",
+      "at": "2026-07-02T02:11:36.189Z"
+    },
+    {
+      "id": "m178295829619780",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"The Agentic Enterprise: AI Governance for Marketing Leaders\" — mi a baj: AI response JSON parse error after retries: AI router null",
+      "ref": "2026-07-02T02-10-03-890Z_snowflake_The_Agentic_Enterprise__AI_Governance_for_Marketin.json",
+      "at": "2026-07-02T02:11:36.197Z"
+    },
+    {
+      "id": "m178295829620683",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Kimi K2.7 Code vs Claude Fable 5: Landing pages that cost 94% less\" — mi a baj: AI response JSON parse error after retries: AI router null",
+      "ref": "2026-07-02T02-10-03-890Z_together_Kimi_K2_7_Code_vs_Claude_Fable_5__Landing_pages_th.json",
+      "at": "2026-07-02T02:11:36.206Z"
+    },
+    {
+      "id": "m178295829621492",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Turn Azure Data into an AI-Ready Knowledge Base\" — mi a baj: AI response JSON parse error after retries: AI router null",
+      "ref": "2026-07-02T02-10-10-166Z_pinecone_Turn_Azure_Data_into_an_AI-Ready_Knowledge_Base.json",
+      "at": "2026-07-02T02:11:36.214Z"
+    },
+    {
+      "id": "m178295829622181",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Violin: An open-source video translation skill that breaks language barriers\" — mi a baj: AI response JSON parse error after retries: AI router null",
+      "ref": "2026-07-02T02-10-10-166Z_together_Violin__An_open-source_video_translation_skill_tha.json",
+      "at": "2026-07-02T02:11:36.221Z"
+    },
+    {
+      "id": "m178295829623035",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Running AI on mixed hardware for speed and affordability\" — mi a baj: AI response JSON parse error after retries: AI router null",
+      "ref": "2026-07-02T02-10-15-027Z_ibm_Running_AI_on_mixed_hardware_for_speed_and_afforda.json",
+      "at": "2026-07-02T02:11:36.230Z"
+    },
+    {
+      "id": "m178295830013149",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 16 → 4/4/2 oszlop.",
+      "ref": "mobile",
+      "at": "2026-07-02T02:11:40.132Z"
     }
   ]
 }

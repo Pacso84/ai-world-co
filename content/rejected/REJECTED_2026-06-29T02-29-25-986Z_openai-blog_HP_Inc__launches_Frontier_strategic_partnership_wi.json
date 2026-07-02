@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "written_at": "2026-07-01T17:52:31.044Z",
+    "written_at": "2026-07-02T02:11:32.533Z",
     "writer_provider": "mistral",
     "writer_model": "mistral-small-latest",
     "writer_cost_usd": 0,
@@ -9,7 +9,7 @@
     "source_name": "OpenAI Blog (hivatalos)",
     "source_link": "https://openai.com/index/hp-frontier-partnership",
     "status": "rejected",
-    "rejected_at": "2026-07-01T17:52:33.507Z",
+    "rejected_at": "2026-07-02T02:11:36.125Z",
     "auto_check": {
       "passed": true,
       "issues": [],
@@ -27,7 +27,7 @@
     },
     "reason": "Could not parse AI review (2 attempts)",
     "can_retry": true,
-    "rework_attempts": 1,
+    "rework_attempts": 2,
     "reworked_from": "REJECTED_2026-06-29T02-29-25-986Z_openai-blog_HP_Inc__launches_Frontier_strategic_partnership_wi.json",
     "requeued_unchanged": true
   },

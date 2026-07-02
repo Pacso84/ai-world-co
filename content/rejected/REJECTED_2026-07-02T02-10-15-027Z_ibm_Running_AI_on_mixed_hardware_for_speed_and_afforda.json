@@ -1,0 +1,36 @@
+{
+  "_meta": {
+    "written_at": "2026-07-02T02:11:35.877Z",
+    "writer_provider": "cerebras",
+    "writer_model": "gpt-oss-120b",
+    "writer_cost_usd": 0,
+    "original_draft": "2026-07-02T02-10-15-027Z_ibm_Running_AI_on_mixed_hardware_for_speed_and_afforda.json",
+    "source_id": "ibm",
+    "source_name": "IBM Research (hivatalos)",
+    "source_link": "https://research.ibm.com/blog/fast-inference-mixed-gpus?utm_medium=rss&utm_source=rss",
+    "status": "rejected",
+    "rejected_at": "2026-07-02T02:11:36.223Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 935
+    },
+    "ai_review": {
+      "overall_score": 0,
+      "decision": "FAIL",
+      "issues": [
+        "AI response JSON parse error after retries: AI router null"
+      ],
+      "verdict": "Could not parse AI review (2 attempts)",
+      "_aiCost": 0,
+      "_parseFailed": true
+    },
+    "reason": "Could not parse AI review (2 attempts)",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-07-02T02-10-15-027Z_ibm_Running_AI_on_mixed_hardware_for_speed_and_afforda.json",
+    "requeued_unchanged": true
+  },
+  "article_markdown": "---\ntitle: \"How to Speed Up AI Inference on a Mixed GPU Setup (Affordable)\"\nsubtitle: \"Blend older and newer graphics cards to get faster AI responses without breaking the bank\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"AI inference\", \"heterogeneous GPUs\", \"cost-effective AI\", \"LLM\", \"productivity\"]\n---\n\n# How to Speed Up AI Inference on a Mixed GPU Setup\n\n**Hook:** Imagine you’re waiting for an AI‑generated report while a cup of tea steeps, and the screen stays frozen. By the time the brew is ready, the AI is still thinking. Using a mix of graphics cards can cut that wait time dramatically, and you don’t need a brand‑new, high‑price GPU to do it.\n\n## 1. Why mix hardware at all?\n\nAI models, especially large language models (LLM – a big text‑understanding engine like the one behind ChatGPT), need a lot of maths power. A single powerful GPU can do the job, but it also costs more and may sit idle when the model’s workload is light. By pairing a high‑end GPU with a cheaper, older one, you spread the work across both cards. The result is:\n\n- **Higher inference speed** – the model answers quicker.\n- **Better throughput** – you can handle more requests in the same time.\n- **Lower overall cost** – you reuse existing hardware instead of buying the newest card.\n\n## 2. Check what you have\n\n| Device | Typical use |\n|--------|--------------|\n| **Newer GPU** (e.g., Nvidia RTX 4090) | Handles the heaviest parts of the model. |\n| **Older GPU** (e.g., Nvidia GTX 1660 or RTX 3060) | Takes lighter layers or runs auxiliary tasks. |\n| **CPU** (central processing unit) | Coordinates the work; useful for tiny pieces that don’t need GPU speed. |\n\nMake a quick inventory:\n\n1. Open your system’s device manager (Windows) or `lspci` (Linux) to see which GPUs are recognised.\n2. Note the VRAM (video memory) of each card – the larger the model, the more VRAM you’ll need.\n3. Confirm driver versions are up to date; old drivers can throttle performance.\n\n## 3. Choose a simple framework\n\nFor most hobbyists and small teams, **PyTorch** (an open‑source machine‑learning library) is the easiest route. It lets you tell each part of the model which device to run on.\n\nExample snippet (you can paste into a Python notebook):\n\n```python\nimport torch\nmodel = torch.hub.load('huggingface/pytorch-transformers', 'model_name')\n# Send the first half to the new GPU\nmodel.part1.to('cuda:0')   # cuda:0 = first GPU (newer)\n# Send the second half to the older GPU\nmodel.part2.to('cuda:1')   # cuda:1 = second GPU (older)\n```\n\n**Explanation of terms:**\n- **CUDA** – a software platform that lets the GPU understand and run AI calculations.\n- **Device** – the specific piece of hardware (GPU or CPU) you assign work to.\n\nIf you’re not comfortable coding, look for a “GUI‑based” tool like **InvokeAI** or **Oobabooga** that includes a “GPU selector” option. These tools hide the code but still let you pick which GPU handles which stage.\n\n## 4. Split the model intelligently\n\nLarge models are built from many layers. The early layers (which process raw text) are usually lighter than the later layers (which generate the answer). A practical rule of thumb:\n\n- **Assign layers 1‑10 to the older GPU** (they need less VRAM and compute).\n- **Assign layers 11‑end to the newer GPU** (they do the heavy lifting).\n\nMost libraries let you create a *pipeline* that defines this split. Here’s a high‑level flow:\n\n1. **Load the model** on the CPU first (so you can inspect its layer count).\n2. **Create two sub‑models** – one for the early layers, one for the later layers.\n3. **Move each sub‑model** to its designated GPU.\n4. **Run inference** by feeding the input through the first sub‑model, then passing its output to the second.\n\n## 5. Test and fine‑tune\n\nRun a simple prompt (e.g., “What’s the weather like in Sydney today?”) and time how long the response takes. Compare three scenarios:\n\n1. **Only the newer GPU** – baseline speed.\n2. **Only the older GPU** – slower, but cheaper.\n3. **Mixed setup** – should be close to the baseline but with lower overall power draw.\n\nIf the mixed setup is still slower, try:\n\n- Moving a few more layers to the newer GPU.\n- Reducing batch size (the number of requests processed together).\n- Enabling **tensor cores** (specialised hardware in newer GPUs for matrix maths).\n\n## What this means for you\n\n- **If you’re a hobbyist or student:** You can repurpose an old gaming card that’s gathering dust. Combine it with a modest newer GPU, and your AI projects (code assistants, chatbots, text summarisers) will feel snappier without a big spend.\n- **If you run a small business or freelance operation:** Faster inference means you can respond to client queries or generate reports in real time, boosting productivity. Using mixed hardware spreads the cost across existing assets, keeping overhead low.\n- **If you’re just getting started:** Grab the free version of PyTorch, install the latest Nvidia drivers, and try the two‑line example above. Even a single extra GPU can shave seconds off each AI call – a visible improvement in everyday tasks.\n\n## Wrap‑up\n\nMixing old and new GPUs is a practical, cost‑effective way to speed up AI inference. By inventorying your hardware, using a flexible framework like PyTorch, and assigning model layers to the appropriate device, you can enjoy quicker AI responses without buying the latest, most expensive graphics card. Today, try running a simple prompt on both your existing GPU and a borrowed newer one; you’ll see the difference and have a clear path to a faster, more affordable AI workflow.",
+  "original_title": "Running AI on mixed hardware for speed and affordability"
+}
