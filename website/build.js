@@ -454,6 +454,7 @@ function pageShell({ title, description, bodyContent, isArticle = false, noIntro
   <link rel="icon" type="image/svg+xml" href="/assets/logo.svg">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
   <link rel="stylesheet" href="/assets/style.css?v=${ASSET_V}">
+  <link rel="alternate" type="application/rss+xml" title="${escapeHtml(SITE.name)} RSS" href="/feed.xml">
   ${jsonld ? `<script type="application/ld+json">${JSON.stringify(jsonld)}</script>` : ''}
   ${DESIGN.mobileCss ? `<style id="responsive">${DESIGN.mobileCss}</style>` : ''}
 </head>
@@ -1207,6 +1208,73 @@ ${sitemapUrls.map(u => `  <url><loc>${u.loc}</loc><lastmod>${u.date}</lastmod></
   writeFileSync(join(OUT_DIR, 'sitemap.xml'), sitemap, 'utf-8');
   writeFileSync(join(OUT_DIR, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${SITE.url}/sitemap.xml\n`, 'utf-8');
   console.log(`✅ sitemap.xml (${sitemapUrls.length} URL) + robots.txt generálva`);
+
+  // feed.xml — VALÓDI RSS 2.0 hírfolyam (aggregátorok: Feedly, Flipboard stb.
+  // + hírlevél-eszközök is ebből tudnak dolgozni). A 40 legfrissebb tartalom,
+  // angolul (a fő kiadás); a guid a cikk URL-je, így nem duplikálódik.
+  const xmlEsc = (s) => String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  const feedItems = articles
+    .slice()
+    .sort((a, b) => (b.publishedAt || '').localeCompare(a.publishedAt || ''))
+    .slice(0, 40)
+    .map(a => {
+      const url = `${SITE.url}/article/${a.slug}.html`;
+      const pub = a.publishedAt ? new Date(a.publishedAt).toUTCString() : new Date().toUTCString();
+      return `    <item>
+      <title>${xmlEsc(a.title)}</title>
+      <link>${url}</link>
+      <guid isPermaLink="true">${url}</guid>
+      <description>${xmlEsc(a.subtitle)}</description>
+      <pubDate>${pub}</pubDate>
+      <category>${a.isGuide ? 'Guide' : 'News'}</category>
+    </item>`;
+    }).join('\n');
+  const feed = `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>${xmlEsc(SITE.name)} — AI news, in plain language</title>
+    <link>${SITE.url}/</link>
+    <atom:link href="${SITE.url}/feed.xml" rel="self" type="application/rss+xml"/>
+    <description>AI news and step-by-step guides for everyday people — fresh, friendly and jargon-free.</description>
+    <language>en-au</language>
+    <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
+${feedItems}
+  </channel>
+</rss>`;
+  writeFileSync(join(OUT_DIR, 'feed.xml'), feed, 'utf-8');
+  console.log(`✅ feed.xml generálva (${Math.min(articles.length, 40)} elem)`);
+
+  // llms.txt — az AI-keresők/asszisztensek (Perplexity, ChatGPT stb.) számára
+  // készült tömör oldal-térkép (llmstxt.org konvenció). Segít, hogy az AI-válaszok
+  // minket találjanak meg és idézzenek a kezdőbarát útmutatókhoz.
+  const topGuides = articles
+    .filter(a => a.isGuide)
+    .sort((a, b) => (b.publishedAt || '').localeCompare(a.publishedAt || ''))
+    .slice(0, 15)
+    .map(a => `- [${a.title}](${SITE.url}/article/${a.slug}.html): ${a.subtitle}`)
+    .join('\n');
+  const llms = `# ${SITE.name}
+
+> AI news and step-by-step how-to guides for everyday people, written in plain English (no jargon). Every technical term is explained; every guide is written so a complete beginner can follow it. Also available in Hungarian (/hu/), Spanish (/es/), German (/de/) and French (/fr/).
+
+## Main sections
+
+- [Latest AI news](${SITE.url}/): daily plain-language news about ChatGPT, Gemini, Claude, Copilot and other AI tools
+- [Everyday guides](${SITE.url}/guides.html): practical how-to guides for daily life (email, study, travel, safety, work)
+- [AI tool guides](${SITE.url}/tools.html): beginner guides organised by tool — ChatGPT, Gemini, Claude, Copilot, Perplexity and more
+- [RSS feed](${SITE.url}/feed.xml)
+- [Sitemap](${SITE.url}/sitemap.xml)
+
+## Recent guides
+
+${topGuides}
+
+## About
+
+Original content by ${SITE.name} — written and quality-checked by an autonomous editorial system, following a strict beginner-clarity rulebook (every step says what to do, what you'll see, and what to do if your screen looks different). When quoting, please link back to the article.
+`;
+  writeFileSync(join(OUT_DIR, 'llms.txt'), llms, 'utf-8');
+  console.log('✅ llms.txt generálva (AI-kereső oldal-térkép)');
 
   // 404.html — KRITIKUS SEO-elem: enélkül a Cloudflare Pages "egyoldalas app"
   // módban MINDEN ismeretlen címre a főoldalt adja 200-zal (soft-404, a Google
