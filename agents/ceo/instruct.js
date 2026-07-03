@@ -28,7 +28,7 @@ const ARTICLES_DIR = join(ROOT, 'content', 'articles');
 const DISCOVERED_PATH = join(ROOT, 'agents', 'source-scout', 'discovered-sources.json');
 const FEEDS_PATH = join(ROOT, 'sources', 'rss-feeds.json');
 const CONFIG = JSON.parse(readFileSync(join(ROOT, 'config.json'), 'utf-8'));
-const SITE_URL = (CONFIG.company?.website_url || 'https://aiworldco.pages.dev').replace(/\/$/, '');
+const SITE_URL = (CONFIG.company?.website_url || 'https://aiworldhq.com').replace(/\/$/, '');
 
 const TEXT = (process.argv.slice(2).join(' ').trim()) || (process.env.TELEGRAM_TEXT || '').trim();
 
