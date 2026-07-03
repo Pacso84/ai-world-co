@@ -1208,6 +1208,28 @@ ${sitemapUrls.map(u => `  <url><loc>${u.loc}</loc><lastmod>${u.date}</lastmod></
   writeFileSync(join(OUT_DIR, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${SITE.url}/sitemap.xml\n`, 'utf-8');
   console.log(`✅ sitemap.xml (${sitemapUrls.length} URL) + robots.txt generálva`);
 
+  // 404.html — KRITIKUS SEO-elem: enélkül a Cloudflare Pages "egyoldalas app"
+  // módban MINDEN ismeretlen címre a főoldalt adja 200-zal (soft-404, a Google
+  // bünteti). Ha van 404.html a gyökérben, a Pages valódi 404-et szolgál ki.
+  // Csak abszolút útvonalak (/assets/...), mert bármilyen mélységű URL-en jelenhet meg.
+  const notFoundBody = `<section class="guides-hero" style="text-align:center">
+    <p class="intro__kicker">404</p>
+    <h1 class="guides-hero__title">This page has wandered off</h1>
+    <p class="guides-hero__tag">The link may be old, or the address has a typo. No worries — everything useful is one tap away.</p>
+    <p style="margin-top:22px"><a class="support__btn" style="display:inline-block" href="/">← Back to the homepage</a></p>
+    <p style="margin-top:14px"><a href="/guides.html">Everyday guides</a> · <a href="/tools.html">AI tool guides</a></p>
+    <p style="margin-top:26px;font-size:13px;color:var(--ink-soft)">
+      <a href="/hu/">Magyar</a> · <a href="/es/">Español</a> · <a href="/de/">Deutsch</a> · <a href="/fr/">Français</a>
+    </p>
+  </section>`;
+  writeFileSync(join(OUT_DIR, '404.html'), pageShell({
+    title: `Page not found — ${SITE.name}`,
+    description: 'This page does not exist. Head back to the homepage for fresh AI news and guides.',
+    noIntro: true, pagePath: '404.html',
+    bodyContent: notFoundBody
+  }), 'utf-8');
+  console.log('✅ 404.html generálva (soft-404 megszüntetve)');
+
   console.log('─'.repeat(60));
   console.log(`✨ Kész! Nyisd meg: website/public/index.html`);
 }
