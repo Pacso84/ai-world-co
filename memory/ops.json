@@ -1,86 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178295829751033",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-02T02:11:37.510Z",
-      "updated": "2026-07-02T02:11:37.796Z"
-    },
-    {
-      "id": "t178295829780495",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-02T02:11:37.804Z",
-      "updated": "2026-07-02T02:11:38.018Z"
-    },
-    {
-      "id": "t178295829802025",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-02T02:11:38.020Z",
-      "updated": "2026-07-02T02:11:38.253Z"
-    },
-    {
-      "id": "t178295829825680",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-02T02:11:38.256Z",
-      "updated": "2026-07-02T02:11:39.207Z"
-    },
-    {
-      "id": "t178295829920972",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-02T02:11:39.209Z",
-      "updated": "2026-07-02T02:11:39.422Z"
-    },
-    {
-      "id": "t178295829942435",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-02T02:11:39.424Z",
-      "updated": "2026-07-02T02:11:39.641Z"
-    },
-    {
-      "id": "t178295829964298",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-07-02T02:11:39.642Z",
-      "updated": "2026-07-02T02:11:39.886Z"
-    },
-    {
-      "id": "t178295829988873",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-02T02:11:39.888Z",
-      "updated": "2026-07-02T02:11:40.150Z"
-    },
-    {
-      "id": "t178295830015138",
-      "title": "Run translator",
-      "status": "done",
-      "agent": "translator",
-      "created": "2026-07-02T02:11:40.151Z",
-      "updated": "2026-07-02T02:11:40.425Z"
-    },
-    {
-      "id": "t178295830042724",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-07-02T02:11:40.427Z",
-      "updated": "2026-07-02T02:11:41.741Z"
-    },
-    {
       "id": "t178298806376321",
       "title": "Run rss-scraper",
       "status": "done",
@@ -479,6 +399,86 @@
       "agent": "publisher",
       "created": "2026-07-03T02:15:30.146Z",
       "updated": "2026-07-03T02:15:33.738Z"
+    },
+    {
+      "id": "t178307434500484",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-07-03T10:25:45.004Z",
+      "updated": "2026-07-03T10:25:54.761Z"
+    },
+    {
+      "id": "t178307435476357",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-07-03T10:25:54.763Z",
+      "updated": "2026-07-03T10:25:55.000Z"
+    },
+    {
+      "id": "t178307435500235",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-07-03T10:25:55.002Z",
+      "updated": "2026-07-03T10:25:55.195Z"
+    },
+    {
+      "id": "t178307435519736",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-03T10:25:55.197Z",
+      "updated": "2026-07-03T10:25:55.395Z"
+    },
+    {
+      "id": "t178307435540164",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-07-03T10:25:55.401Z",
+      "updated": "2026-07-03T10:28:07.688Z"
+    },
+    {
+      "id": "t178307448769771",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-03T10:28:07.697Z",
+      "updated": "2026-07-03T10:28:07.917Z"
+    },
+    {
+      "id": "t17830744879198",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-07-03T10:28:07.919Z",
+      "updated": "2026-07-03T10:32:49.421Z"
+    },
+    {
+      "id": "t17830747694229",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-03T10:32:49.422Z",
+      "updated": "2026-07-03T10:32:52.579Z"
+    },
+    {
+      "id": "t178307477258081",
+      "title": "Run translator",
+      "status": "done",
+      "agent": "translator",
+      "created": "2026-07-03T10:32:52.580Z",
+      "updated": "2026-07-03T10:32:58.279Z"
+    },
+    {
+      "id": "t178307477828161",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-07-03T10:32:58.281Z",
+      "updated": "2026-07-03T10:33:01.630Z"
     }
   ],
   "notifications": [
@@ -913,36 +913,25 @@
       "agent": "ceo",
       "at": "2026-07-03T02:15:33.747Z",
       "loud": false
+    },
+    {
+      "id": "n178307478030039",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). This is a strong, coherent line-up ready for publication",
+      "agent": "publisher",
+      "at": "2026-07-03T10:33:00.300Z",
+      "loud": false
+    },
+    {
+      "id": "n178307478163917",
+      "level": "info",
+      "text": "Pipeline lefutott — ma nem volt publikálható új tartalom.",
+      "agent": "ceo",
+      "at": "2026-07-03T10:33:01.639Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178290555981460",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Qwen VLo: From \"Understanding\" the World to \"Depicting\" It\" (?/10)",
-      "ref": "2026-06-29T02-29-27-067Z_alibaba-qwen_Qwen_VLo__From__Understanding__the_World_to__Depic.json",
-      "at": "2026-07-01T11:32:39.814Z"
-    },
-    {
-      "id": "m178290556073555",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "info",
-      "text": "A \"NVIDIA Vera CPU Opens the Way for Agentic Scientific AI\" hír a meglévő útmutatóra mutat: how-to-turn-your-notes-into-a-polished-report-with-ai-in-min",
-      "ref": "how-to-turn-your-notes-into-a-polished-report-with-ai-in-min",
-      "at": "2026-07-01T11:32:40.735Z"
-    },
-    {
-      "id": "m17829056145204",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "info",
-      "text": "A \"How ChatGPT adoption has expanded\" hír a meglévő útmutatóra mutat: chatgpt-getting-started",
-      "ref": "chatgpt-getting-started",
-      "at": "2026-07-01T11:33:34.520Z"
-    },
     {
       "id": "m17829056301359",
       "from": "pairing",
@@ -2266,6 +2255,33 @@
       "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 16 → 4/4/2 oszlop.",
       "ref": "mobile",
       "at": "2026-07-03T02:04:30.027Z"
+    },
+    {
+      "id": "m178307435634761",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "info",
+      "text": "A \"Ask Gemini in Drive now available on mobile\" hír a meglévő útmutatóra mutat: gemini-getting-started",
+      "ref": "gemini-getting-started",
+      "at": "2026-07-03T10:25:56.347Z"
+    },
+    {
+      "id": "m178307435852388",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "info",
+      "text": "A \"Salesforce Launches Agentforce Help Agent That Deploys \" hír a meglévő útmutatóra mutat: how-to-get-faster-help-from-ai-powered-customer-service",
+      "ref": "how-to-get-faster-help-from-ai-powered-customer-service",
+      "at": "2026-07-03T10:25:58.523Z"
+    },
+    {
+      "id": "m178307477253949",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 16 → 4/4/2 oszlop.",
+      "ref": "mobile",
+      "at": "2026-07-03T10:32:52.539Z"
     }
   ]
 }
