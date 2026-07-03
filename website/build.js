@@ -1276,6 +1276,13 @@ Original content by ${SITE.name} — written and quality-checked by an autonomou
   writeFileSync(join(OUT_DIR, 'llms.txt'), llms, 'utf-8');
   console.log('✅ llms.txt generálva (AI-kereső oldal-térkép)');
 
+  // _redirects — a pages.dev "ál-domain" ELTÜNTETÉSE (user-kérés 2026-07-03):
+  // aki a régi aiworldco.pages.dev címen jön, 301-gyel a saját domainre kerül.
+  // A 301 a Google-nek is szól: a rangsor-erő átköltözik az új címre.
+  // FIGYELEM: csak akkor élesíthető, ha a custom domain már AKTÍV a Pages-en!
+  writeFileSync(join(OUT_DIR, '_redirects'), `https://aiworldco.pages.dev/* ${SITE.url}/:splat 301\n`, 'utf-8');
+  console.log('✅ _redirects generálva (pages.dev → saját domain, 301)');
+
   // 404.html — KRITIKUS SEO-elem: enélkül a Cloudflare Pages "egyoldalas app"
   // módban MINDEN ismeretlen címre a főoldalt adja 200-zal (soft-404, a Google
   // bünteti). Ha van 404.html a gyökérben, a Pages valódi 404-et szolgál ki.
