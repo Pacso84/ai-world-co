@@ -41,7 +41,7 @@ try {
 } catch {}
 
 const SITE = {
-  name: 'AI WORLD',
+  name: 'AI WORLD HQ',   // a megjelenő márkanév — egyezik a domainnel (aiworldhq.com)
   tagline: 'AI news, in plain language',
   description: 'AI news and how-to guides for everyday people — fresh, friendly, jargon-free.',
   url: SITE_URL
