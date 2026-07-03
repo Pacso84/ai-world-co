@@ -1,86 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178298806376321",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-07-02T10:27:43.763Z",
-      "updated": "2026-07-02T10:27:53.892Z"
-    },
-    {
-      "id": "t178298807390512",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-07-02T10:27:53.905Z",
-      "updated": "2026-07-02T10:27:54.491Z"
-    },
-    {
-      "id": "t178298807449363",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-07-02T10:27:54.493Z",
-      "updated": "2026-07-02T10:35:58.929Z"
-    },
-    {
-      "id": "t178298855893084",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-02T10:35:58.930Z",
-      "updated": "2026-07-02T10:38:01.397Z"
-    },
-    {
-      "id": "t178298868140136",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-07-02T10:38:01.401Z",
-      "updated": "2026-07-02T10:41:30.397Z"
-    },
-    {
-      "id": "t178298889039925",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-02T10:41:30.399Z",
-      "updated": "2026-07-02T10:41:30.830Z"
-    },
-    {
-      "id": "t178298889083595",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-07-02T10:41:30.835Z",
-      "updated": "2026-07-02T10:41:31.055Z"
-    },
-    {
-      "id": "t17829888910652",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-02T10:41:31.065Z",
-      "updated": "2026-07-02T10:41:31.859Z"
-    },
-    {
-      "id": "t178298889186155",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-02T10:41:31.861Z",
-      "updated": "2026-07-02T10:41:32.131Z"
-    },
-    {
-      "id": "t178298889213926",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-02T10:41:32.139Z",
-      "updated": "2026-07-02T10:41:32.346Z"
-    },
-    {
       "id": "t178298889234778",
       "title": "Run guide",
       "status": "done",
@@ -479,6 +399,86 @@
       "agent": "publisher",
       "created": "2026-07-03T10:32:58.281Z",
       "updated": "2026-07-03T10:33:01.630Z"
+    },
+    {
+      "id": "t178309872903539",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-07-03T17:12:09.035Z",
+      "updated": "2026-07-03T17:12:19.170Z"
+    },
+    {
+      "id": "t178309873917227",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-07-03T17:12:19.172Z",
+      "updated": "2026-07-03T17:12:19.409Z"
+    },
+    {
+      "id": "t17830987394117",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-07-03T17:12:19.411Z",
+      "updated": "2026-07-03T17:12:19.636Z"
+    },
+    {
+      "id": "t178309873963887",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-03T17:12:19.638Z",
+      "updated": "2026-07-03T17:12:19.868Z"
+    },
+    {
+      "id": "t178309873987471",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-07-03T17:12:19.874Z",
+      "updated": "2026-07-03T17:12:22.613Z"
+    },
+    {
+      "id": "t178309874262339",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-03T17:12:22.623Z",
+      "updated": "2026-07-03T17:12:22.837Z"
+    },
+    {
+      "id": "t178309874283961",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-07-03T17:12:22.839Z",
+      "updated": "2026-07-03T17:16:14.089Z"
+    },
+    {
+      "id": "t178309897409035",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-03T17:16:14.090Z",
+      "updated": "2026-07-03T17:16:17.221Z"
+    },
+    {
+      "id": "t178309897722313",
+      "title": "Run translator",
+      "status": "done",
+      "agent": "translator",
+      "created": "2026-07-03T17:16:17.223Z",
+      "updated": "2026-07-03T17:16:17.463Z"
+    },
+    {
+      "id": "t178309897746531",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-07-03T17:16:17.465Z",
+      "updated": "2026-07-03T17:16:20.836Z"
     }
   ],
   "notifications": [
@@ -929,27 +929,33 @@
       "agent": "ceo",
       "at": "2026-07-03T10:33:01.639Z",
       "loud": false
+    },
+    {
+      "id": "n178309897407949",
+      "level": "info",
+      "text": "SEO: 24 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-07-03T17:16:14.079Z",
+      "loud": false
+    },
+    {
+      "id": "n178309897951647",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). Hi there! This is a strong and coherent",
+      "agent": "publisher",
+      "at": "2026-07-03T17:16:19.516Z",
+      "loud": false
+    },
+    {
+      "id": "n178309898084745",
+      "level": "info",
+      "text": "Pipeline lefutott — ma nem volt publikálható új tartalom.",
+      "agent": "ceo",
+      "at": "2026-07-03T17:16:20.847Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m17829056301359",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "info",
-      "text": "A \"Educators and students can now share Gemini Canvas crea\" hír a meglévő útmutatóra mutat: gemini-getting-started",
-      "ref": "gemini-getting-started",
-      "at": "2026-07-01T11:33:50.135Z"
-    },
-    {
-      "id": "m178290564321251",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "info",
-      "text": "A \"Pair Nova 2 Lite with Claude for cost-optimized documen\" hír a meglévő útmutatóra mutat: how-to-turn-your-notes-into-a-polished-report-with-ai-in-min",
-      "ref": "how-to-turn-your-notes-into-a-polished-report-with-ai-in-min",
-      "at": "2026-07-01T11:34:03.212Z"
-    },
     {
       "id": "m178290564869770",
       "from": "pairing",
@@ -2282,6 +2288,24 @@
       "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 16 → 4/4/2 oszlop.",
       "ref": "mobile",
       "at": "2026-07-03T10:32:52.539Z"
+    },
+    {
+      "id": "m178309874219991",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "info",
+      "text": "A \"How Amazon Bedrock catches AI-generated phishing\" hír a meglévő útmutatóra mutat: amazon-alexa-plus",
+      "ref": "amazon-alexa-plus",
+      "at": "2026-07-03T17:12:22.199Z"
+    },
+    {
+      "id": "m178309897717549",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 16 → 4/4/2 oszlop.",
+      "ref": "mobile",
+      "at": "2026-07-03T17:16:17.175Z"
     }
   ]
 }
