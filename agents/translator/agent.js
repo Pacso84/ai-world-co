@@ -86,7 +86,9 @@ async function translateMarkdown(markdown, langName) {
   const enSub = fmValue(parts.fm, 'subtitle');
 
   const prompt = `Translate the following into ${langName}. Use the exact output format (TITLE / SUBTITLE / BODY).\n\nTITLE: ${enTitle}\nSUBTITLE: ${enSub}\nBODY:\n${parts.body}`;
-  const r = await ask(prompt, { agentName: AGENT_NAME, systemPrompt: SYSTEM, maxTokens: 6000 });
+  // 16000: a gemini-2.5-flash "gondolkodási" tokenjei IS ebbe a keretbe számítanak —
+  // 6000-nél a hosszú (1200 szavas) útmutatóknál a látható fordítás csonkult (2026-07-03).
+  const r = await ask(prompt, { agentName: AGENT_NAME, systemPrompt: SYSTEM, maxTokens: 16000 });
   if (!r || !r.text) return null;
 
   const t = r.text;
