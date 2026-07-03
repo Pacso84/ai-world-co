@@ -1,0 +1,90 @@
+{
+  "started_at": "2026-07-03T20:14:49.328Z",
+  "total": 11,
+  "passed": 9,
+  "failed": 2,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.0062835,
+  "by_article": [
+    {
+      "writer": "WRITER_GUIDE_ai-job-interview.json",
+      "article": "ARTICLE_GUIDE_ai-job-interview.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0010551999999999998
+    },
+    {
+      "writer": "WRITER_GUIDE_ai-privacy-basics.json",
+      "article": "ARTICLE_GUIDE_ai-privacy-basics.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0
+    },
+    {
+      "writer": "WRITER_GUIDE_ai-spot-scams.json",
+      "rejected": "REJECTED_GUIDE_ai-spot-scams.json",
+      "decision": "FAIL",
+      "score": 6,
+      "cost_usd": 0
+    },
+    {
+      "writer": "WRITER_GUIDE_ai-translate.json",
+      "article": "ARTICLE_GUIDE_ai-translate.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0
+    },
+    {
+      "writer": "WRITER_GUIDE_amazon-alexa-plus.json",
+      "article": "ARTICLE_GUIDE_amazon-alexa-plus.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0
+    },
+    {
+      "writer": "WRITER_GUIDE_automating-repetitive-git-commands-using-copilot-suggestions.json",
+      "article": "ARTICLE_GUIDE_automating-repetitive-git-commands-using-copilot-suggestions.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0
+    },
+    {
+      "writer": "WRITER_GUIDE_chatgpt-getting-started.json",
+      "article": "ARTICLE_GUIDE_chatgpt-getting-started.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0009113
+    },
+    {
+      "writer": "WRITER_GUIDE_chatgpt-memory.json",
+      "article": "ARTICLE_GUIDE_chatgpt-memory.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0010859
+    },
+    {
+      "writer": "WRITER_GUIDE_copilot-getting-started.json",
+      "article": "ARTICLE_GUIDE_copilot-getting-started.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0011051
+    },
+    {
+      "writer": "WRITER_GUIDE_getting-started-github-copilot.json",
+      "article": "ARTICLE_GUIDE_getting-started-github-copilot.json",
+      "decision": "PASS",
+      "score": 10,
+      "cost_usd": 0.0010921
+    },
+    {
+      "writer": "WRITER_GUIDE_upscale-old-videos-with-nvidia-ai-video-super-resolution-for.json",
+      "rejected": "REJECTED_GUIDE_upscale-old-videos-with-nvidia-ai-video-super-resolution-for.json",
+      "decision": "FAIL",
+      "score": 6,
+      "cost_usd": 0.0010339000000000001
+    }
+  ],
+  "finished_at": "2026-07-03T20:15:37.488Z",
+  "duration_seconds": 48.16
+}

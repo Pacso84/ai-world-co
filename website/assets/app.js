@@ -6,6 +6,15 @@
 (function () {
   'use strict';
 
+  // ---------- 0. ál-domain eltüntetése (user-kérés 2026-07-03) ----------
+  // A pages.dev címen érkezőket azonnal a saját domainre visszük. (A Cloudflare
+  // a _redirects fájlból host-alapú átirányítást nem támogat; a keresőknek a
+  // canonical linkek amúgy is a saját domainre mutatnak.)
+  if (location.hostname === 'aiworldco.pages.dev') {
+    location.replace('https://aiworldhq.com' + location.pathname + location.search + location.hash);
+    return;
+  }
+
   // ---------- 1. AOS scroll-animációk inicializálás ----------
   if (window.AOS) {
     AOS.init({

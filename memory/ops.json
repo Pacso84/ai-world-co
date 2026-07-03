@@ -891,693 +891,39 @@
       "loud": false
     },
     {
-      "id": "n178304426700153",
-      "level": "info",
-      "text": "SEO: 4 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-07-03T02:04:27.001Z",
+      "id": "n178310799846347",
+      "level": "warn",
+      "text": "📨 ellenorzo → guide: Hiányos / kell még adat: \"How to use Claude Projects to keep your work organised\" — egészítsd ki: Incomplete wrap-up sec",
+      "agent": "ellenorzo",
+      "at": "2026-07-03T19:46:38.463Z",
       "loud": false
     },
     {
-      "id": "n178304493237247",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The lineup is coherent and looks ready, offering practical,",
-      "agent": "publisher",
-      "at": "2026-07-03T02:15:32.372Z",
+      "id": "n178310890753413",
+      "level": "warn",
+      "text": "📨 guide → ceo: Kell még adat: \"Getting started with Apple Intelligence on your iPhone\" — az Ellenőrző tényt/forrást kér, amit nem talál",
+      "agent": "guide",
+      "at": "2026-07-03T20:01:47.534Z",
       "loud": false
     },
     {
-      "id": "n178304493374714",
-      "level": "success",
-      "text": "8 hír + 4 útmutató publikálva (költség: $0.0498).",
-      "agent": "ceo",
-      "at": "2026-07-03T02:15:33.747Z",
+      "id": "n178310908218160",
+      "level": "warn",
+      "text": "📨 ellenorzo → guide: Hiányos / kell még adat: \"Getting started with Apple Intelligence on your iPhone\" — egészítsd ki: Step 2 UI label descri",
+      "agent": "ellenorzo",
+      "at": "2026-07-03T20:04:42.181Z",
       "loud": false
     },
     {
-      "id": "n178307478030039",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). This is a strong, coherent line-up ready for publication",
-      "agent": "publisher",
-      "at": "2026-07-03T10:33:00.300Z",
-      "loud": false
-    },
-    {
-      "id": "n178307478163917",
-      "level": "info",
-      "text": "Pipeline lefutott — ma nem volt publikálható új tartalom.",
-      "agent": "ceo",
-      "at": "2026-07-03T10:33:01.639Z",
-      "loud": false
-    },
-    {
-      "id": "n178309897407949",
-      "level": "info",
-      "text": "SEO: 24 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-07-03T17:16:14.079Z",
-      "loud": false
-    },
-    {
-      "id": "n178309897951647",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). Hi there! This is a strong and coherent",
-      "agent": "publisher",
-      "at": "2026-07-03T17:16:19.516Z",
-      "loud": false
-    },
-    {
-      "id": "n178309898084745",
-      "level": "info",
-      "text": "Pipeline lefutott — ma nem volt publikálható új tartalom.",
-      "agent": "ceo",
-      "at": "2026-07-03T17:16:20.847Z",
+      "id": "n178310969815321",
+      "level": "warn",
+      "text": "📨 ellenorzo → guide: Hiányos / kell még adat: \"How to spot AI scams, deepfakes and fake content\" — egészítsd ki: Incomplete 'What this means ",
+      "agent": "ellenorzo",
+      "at": "2026-07-03T20:14:58.153Z",
       "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178290564869770",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "info",
-      "text": "A \"Build an agentic AI healthcare claims pipeline with Ama\" hír a meglévő útmutatóra mutat: ai-meeting-notes",
-      "ref": "ai-meeting-notes",
-      "at": "2026-07-01T11:34:08.697Z"
-    },
-    {
-      "id": "m178290565667788",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "need",
-      "text": "Új funkció-hír → kéne hozzá útmutató: \"How to Use SkillOpt to Train AI Agent Skills\"",
-      "ref": "how-to-use-skillopt-to-train-ai-agent-skills",
-      "open": true,
-      "at": "2026-07-01T11:34:16.677Z"
-    },
-    {
-      "id": "m178290566492915",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "info",
-      "text": "A \"Simplify multi-account access to Amazon Bedrock models \" hír a meglévő útmutatóra mutat: amazon-alexa-plus",
-      "ref": "amazon-alexa-plus",
-      "at": "2026-07-01T11:34:24.929Z"
-    },
-    {
-      "id": "m17829056709977",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "info",
-      "text": "A \"Introducing Claude Sonnet 5 on AWS: Anthropic’s most ca\" hír a meglévő útmutatóra mutat: claude-getting-started",
-      "ref": "claude-getting-started",
-      "at": "2026-07-01T11:34:30.997Z"
-    },
-    {
-      "id": "m178290569154487",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 16 → 4/4/2 oszlop.",
-      "ref": "mobile",
-      "at": "2026-07-01T11:34:51.544Z"
-    },
-    {
-      "id": "m178292835071444",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"How Cara pioneers domain-specific AI for enterprise insurance brokerages with AWS\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-06-27T02-07-24-542Z_aws-ml_How_Cara_pioneers_domain-specific_AI_for_enterpris.json",
-      "at": "2026-07-01T17:52:30.714Z"
-    },
-    {
-      "id": "m178292835072644",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Production-grade AI agents for financial compliance: Lessons from Stripe\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-06-27T02-07-24-542Z_aws-ml_Production-grade_AI_agents_for_financial_complianc.json",
-      "at": "2026-07-01T17:52:30.726Z"
-    },
-    {
-      "id": "m17829283507361",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Check out real-life AI prototypes from the Futures Lab.\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-06-29T02-29-25-986Z_google-ai-blog_Check_out_real-life_AI_prototypes_from_the_Futures.json",
-      "at": "2026-07-01T17:52:30.736Z"
-    },
-    {
-      "id": "m178292835074760",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Measuring the impact of learning with AI in Sierra Leone and beyond\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-06-29T02-29-25-986Z_google-deepmind_Measuring_the_impact_of_learning_with_AI_in_Sierra.json",
-      "at": "2026-07-01T17:52:30.747Z"
-    },
-    {
-      "id": "m178292835075571",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"HP Inc. launches Frontier strategic partnership with OpenAI\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-06-29T02-29-25-986Z_openai-blog_HP_Inc__launches_Frontier_strategic_partnership_wi.json",
-      "at": "2026-07-01T17:52:30.755Z"
-    },
-    {
-      "id": "m178292835076469",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Costa Rican dairy cooperative turns AI agents into coworkers\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-06-29T02-29-25-987Z_microsoft-ai_Costa_Rican_dairy_cooperative_turns_AI_agents_into.json",
-      "at": "2026-07-01T17:52:30.764Z"
-    },
-    {
-      "id": "m178292835077385",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Pairing geotechnical data with AI helps New Zealand build better\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-06-29T02-29-25-987Z_microsoft-ai_Pairing_geotechnical_data_with_AI_helps_New_Zealan.json",
-      "at": "2026-07-01T17:52:30.773Z"
-    },
-    {
-      "id": "m178292835077944",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Work smarter in 90 days: A real-world guide to using AI\" — mi a baj: NO_H1: Nincs H1 (# Cím) a cikkben",
-      "ref": "2026-06-29T02-29-25-987Z_microsoft-ai_Work_smarter_in_90_days__A_real-world_guide_to_usi.json",
-      "at": "2026-07-01T17:52:30.779Z"
-    },
-    {
-      "id": "m178292835078827",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"From Materials Simulation to Experimental Astronomy, New NVIDIA AI Software Unlocks Scientific Discoveries\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-06-29T02-29-25-987Z_nvidia-blog_From_Materials_Simulation_to_Experimental_Astronom.json",
-      "at": "2026-07-01T17:52:30.788Z"
-    },
-    {
-      "id": "m178292835079668",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"New York City educators and industry leaders gathered at Google’s offices to shape the future of AI in classrooms.\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-07-01T17-46-16-620Z_google-ai-blog_New_York_City_educators_and_industry_leaders_gathe.json",
-      "at": "2026-07-01T17:52:30.796Z"
-    },
-    {
-      "id": "m17829283508043",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"New AI-powered library lets people meet Theodore Roosevelt in a whole new way \" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-07-01T17-46-16-620Z_microsoft-ai_New_AI-powered_library_lets_people_meet_Theodore_R.json",
-      "at": "2026-07-01T17:52:30.804Z"
-    },
-    {
-      "id": "m178292835347993",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"How Cara pioneers domain-specific AI for enterprise insurance brokerages with AWS\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-06-27T02-07-24-542Z_aws-ml_How_Cara_pioneers_domain-specific_AI_for_enterpris.json",
-      "at": "2026-07-01T17:52:33.479Z"
-    },
-    {
-      "id": "m178292835348868",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Production-grade AI agents for financial compliance: Lessons from Stripe\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-06-27T02-07-24-542Z_aws-ml_Production-grade_AI_agents_for_financial_complianc.json",
-      "at": "2026-07-01T17:52:33.488Z"
-    },
-    {
-      "id": "m178292835349530",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Check out real-life AI prototypes from the Futures Lab.\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-06-29T02-29-25-986Z_google-ai-blog_Check_out_real-life_AI_prototypes_from_the_Futures.json",
-      "at": "2026-07-01T17:52:33.495Z"
-    },
-    {
-      "id": "m178292835350578",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Measuring the impact of learning with AI in Sierra Leone and beyond\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-06-29T02-29-25-986Z_google-deepmind_Measuring_the_impact_of_learning_with_AI_in_Sierra.json",
-      "at": "2026-07-01T17:52:33.505Z"
-    },
-    {
-      "id": "m178292835351225",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"HP Inc. launches Frontier strategic partnership with OpenAI\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-06-29T02-29-25-986Z_openai-blog_HP_Inc__launches_Frontier_strategic_partnership_wi.json",
-      "at": "2026-07-01T17:52:33.512Z"
-    },
-    {
-      "id": "m178292835352035",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Costa Rican dairy cooperative turns AI agents into coworkers\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-06-29T02-29-25-987Z_microsoft-ai_Costa_Rican_dairy_cooperative_turns_AI_agents_into.json",
-      "at": "2026-07-01T17:52:33.520Z"
-    },
-    {
-      "id": "m178292835352715",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Pairing geotechnical data with AI helps New Zealand build better\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-06-29T02-29-25-987Z_microsoft-ai_Pairing_geotechnical_data_with_AI_helps_New_Zealan.json",
-      "at": "2026-07-01T17:52:33.527Z"
-    },
-    {
-      "id": "m178292835353579",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"From Materials Simulation to Experimental Astronomy, New NVIDIA AI Software Unlocks Scientific Discoveries\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-06-29T02-29-25-987Z_nvidia-blog_From_Materials_Simulation_to_Experimental_Astronom.json",
-      "at": "2026-07-01T17:52:33.535Z"
-    },
-    {
-      "id": "m178292835354320",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"New York City educators and industry leaders gathered at Google’s offices to shape the future of AI in classrooms.\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-07-01T17-46-16-620Z_google-ai-blog_New_York_City_educators_and_industry_leaders_gathe.json",
-      "at": "2026-07-01T17:52:33.543Z"
-    },
-    {
-      "id": "m178292835355131",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"New AI-powered library lets people meet Theodore Roosevelt in a whole new way \" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-07-01T17-46-16-620Z_microsoft-ai_New_AI-powered_library_lets_people_meet_Theodore_R.json",
-      "at": "2026-07-01T17:52:33.551Z"
-    },
-    {
-      "id": "m178292835739517",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 16 → 4/4/2 oszlop.",
-      "ref": "mobile",
-      "at": "2026-07-01T17:52:37.395Z"
-    },
-    {
-      "id": "m178295829220662",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Why the Data Platform Determines Legal AI Outcomes\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-07-02T02-10-03-889Z_snowflake_Why_the_Data_Platform_Determines_Legal_AI_Outcomes.json",
-      "at": "2026-07-02T02:11:32.206Z"
-    },
-    {
-      "id": "m178295829221893",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"How Snowflake Built an AI-Native Marketing Team\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-07-02T02-10-03-890Z_snowflake_How_Snowflake_Built_an_AI-Native_Marketing_Team.json",
-      "at": "2026-07-02T02:11:32.218Z"
-    },
-    {
-      "id": "m178295829222695",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"The Agentic Enterprise: AI Governance for Marketing Leaders\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-07-02T02-10-03-890Z_snowflake_The_Agentic_Enterprise__AI_Governance_for_Marketin.json",
-      "at": "2026-07-02T02:11:32.226Z"
-    },
-    {
-      "id": "m178295829223692",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Kimi K2.7 Code vs Claude Fable 5: Landing pages that cost 94% less\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-07-02T02-10-03-890Z_together_Kimi_K2_7_Code_vs_Claude_Fable_5__Landing_pages_th.json",
-      "at": "2026-07-02T02:11:32.236Z"
-    },
-    {
-      "id": "m178295829224913",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Pinecone Nexus Is Now in Public Preview\" — mi a baj: NO_H1: Nincs H1 (# Cím) a cikkben; CLICHE: Tiltott klisé találva: \"game-changer\"",
-      "ref": "2026-07-02T02-10-10-166Z_pinecone_Pinecone_Nexus_Is_Now_in_Public_Preview.json",
-      "at": "2026-07-02T02:11:32.249Z"
-    },
-    {
-      "id": "m17829582922571",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Turn Azure Data into an AI-Ready Knowledge Base\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-07-02T02-10-10-166Z_pinecone_Turn_Azure_Data_into_an_AI-Ready_Knowledge_Base.json",
-      "at": "2026-07-02T02:11:32.257Z"
-    },
-    {
-      "id": "m178295829226639",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Violin: An open-source video translation skill that breaks language barriers\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-07-02T02-10-10-166Z_together_Violin__An_open-source_video_translation_skill_tha.json",
-      "at": "2026-07-02T02:11:32.266Z"
-    },
-    {
-      "id": "m178295829227643",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Running AI on mixed hardware for speed and affordability\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-07-02T02-10-15-027Z_ibm_Running_AI_on_mixed_hardware_for_speed_and_afforda.json",
-      "at": "2026-07-02T02:11:32.276Z"
-    },
-    {
-      "id": "m178295829609346",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"How Cara pioneers domain-specific AI for enterprise insurance brokerages with AWS\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-06-27T02-07-24-542Z_aws-ml_How_Cara_pioneers_domain-specific_AI_for_enterpris.json",
-      "at": "2026-07-02T02:11:36.093Z"
-    },
-    {
-      "id": "m178295829610461",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Production-grade AI agents for financial compliance: Lessons from Stripe\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-06-27T02-07-24-542Z_aws-ml_Production-grade_AI_agents_for_financial_complianc.json",
-      "at": "2026-07-02T02:11:36.104Z"
-    },
-    {
-      "id": "m178295829611354",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Check out real-life AI prototypes from the Futures Lab.\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-06-29T02-29-25-986Z_google-ai-blog_Check_out_real-life_AI_prototypes_from_the_Futures.json",
-      "at": "2026-07-02T02:11:36.113Z"
-    },
-    {
-      "id": "m178295829612397",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Measuring the impact of learning with AI in Sierra Leone and beyond\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-06-29T02-29-25-986Z_google-deepmind_Measuring_the_impact_of_learning_with_AI_in_Sierra.json",
-      "at": "2026-07-02T02:11:36.123Z"
-    },
-    {
-      "id": "m178295829613151",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"HP Inc. launches Frontier strategic partnership with OpenAI\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-06-29T02-29-25-986Z_openai-blog_HP_Inc__launches_Frontier_strategic_partnership_wi.json",
-      "at": "2026-07-02T02:11:36.131Z"
-    },
-    {
-      "id": "m178295829614090",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Costa Rican dairy cooperative turns AI agents into coworkers\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-06-29T02-29-25-987Z_microsoft-ai_Costa_Rican_dairy_cooperative_turns_AI_agents_into.json",
-      "at": "2026-07-02T02:11:36.140Z"
-    },
-    {
-      "id": "m178295829614821",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Pairing geotechnical data with AI helps New Zealand build better\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-06-29T02-29-25-987Z_microsoft-ai_Pairing_geotechnical_data_with_AI_helps_New_Zealan.json",
-      "at": "2026-07-02T02:11:36.148Z"
-    },
-    {
-      "id": "m178295829615618",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"From Materials Simulation to Experimental Astronomy, New NVIDIA AI Software Unlocks Scientific Discoveries\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-06-29T02-29-25-987Z_nvidia-blog_From_Materials_Simulation_to_Experimental_Astronom.json",
-      "at": "2026-07-02T02:11:36.156Z"
-    },
-    {
-      "id": "m178295829616633",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"New York City educators and industry leaders gathered at Google’s offices to shape the future of AI in classrooms.\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-07-01T17-46-16-620Z_google-ai-blog_New_York_City_educators_and_industry_leaders_gathe.json",
-      "at": "2026-07-02T02:11:36.166Z"
-    },
-    {
-      "id": "m178295829617440",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"New AI-powered library lets people meet Theodore Roosevelt in a whole new way \" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-07-01T17-46-16-620Z_microsoft-ai_New_AI-powered_library_lets_people_meet_Theodore_R.json",
-      "at": "2026-07-02T02:11:36.174Z"
-    },
-    {
-      "id": "m178295829618157",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Why the Data Platform Determines Legal AI Outcomes\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-07-02T02-10-03-889Z_snowflake_Why_the_Data_Platform_Determines_Legal_AI_Outcomes.json",
-      "at": "2026-07-02T02:11:36.181Z"
-    },
-    {
-      "id": "m178295829618972",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"How Snowflake Built an AI-Native Marketing Team\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-07-02T02-10-03-890Z_snowflake_How_Snowflake_Built_an_AI-Native_Marketing_Team.json",
-      "at": "2026-07-02T02:11:36.189Z"
-    },
-    {
-      "id": "m178295829619780",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"The Agentic Enterprise: AI Governance for Marketing Leaders\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-07-02T02-10-03-890Z_snowflake_The_Agentic_Enterprise__AI_Governance_for_Marketin.json",
-      "at": "2026-07-02T02:11:36.197Z"
-    },
-    {
-      "id": "m178295829620683",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Kimi K2.7 Code vs Claude Fable 5: Landing pages that cost 94% less\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-07-02T02-10-03-890Z_together_Kimi_K2_7_Code_vs_Claude_Fable_5__Landing_pages_th.json",
-      "at": "2026-07-02T02:11:36.206Z"
-    },
-    {
-      "id": "m178295829621492",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Turn Azure Data into an AI-Ready Knowledge Base\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-07-02T02-10-10-166Z_pinecone_Turn_Azure_Data_into_an_AI-Ready_Knowledge_Base.json",
-      "at": "2026-07-02T02:11:36.214Z"
-    },
-    {
-      "id": "m178295829622181",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Violin: An open-source video translation skill that breaks language barriers\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-07-02T02-10-10-166Z_together_Violin__An_open-source_video_translation_skill_tha.json",
-      "at": "2026-07-02T02:11:36.221Z"
-    },
-    {
-      "id": "m178295829623035",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Running AI on mixed hardware for speed and affordability\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-07-02T02-10-15-027Z_ibm_Running_AI_on_mixed_hardware_for_speed_and_afforda.json",
-      "at": "2026-07-02T02:11:36.230Z"
-    },
-    {
-      "id": "m178295830013149",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 16 → 4/4/2 oszlop.",
-      "ref": "mobile",
-      "at": "2026-07-02T02:11:40.132Z"
-    },
-    {
-      "id": "m178298855913614",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Evaluating performance and efficiency of the GitHub Copilot agentic harness across models and tasks\" — mi a baj: NO_H1: Nincs H1 (# Cím) a cikkben",
-      "ref": "2026-06-26T02-12-21-214Z_github-ai_Evaluating_performance_and_efficiency_of_the_GitHu.json",
-      "at": "2026-07-02T10:35:59.136Z"
-    },
-    {
-      "id": "m178298855988010",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Streamline your data backups with incremental exports for Google Workspace\" — mi a baj: NO_H1: Nincs H1 (# Cím) a cikkben",
-      "ref": "2026-06-27T02-07-24-541Z_google-workspace_Streamline_your_data_backups_with_incremental_expo.json",
-      "at": "2026-07-02T10:35:59.880Z"
-    },
-    {
-      "id": "m178298855989032",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Previewing GPT-5.6 Sol: a next-generation model\" — mi a baj: NO_H1: Nincs H1 (# Cím) a cikkben",
-      "ref": "2026-06-27T02-07-24-541Z_openai-blog_Previewing_GPT-5_6_Sol__a_next-generation_model.json",
-      "at": "2026-07-02T10:35:59.890Z"
-    },
-    {
-      "id": "m178298855990313",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Run NVIDIA Nemotron and OpenAI GPT OSS models on Amazon Bedrock in AWS GovCloud (US)\" — mi a baj: NO_H1: Nincs H1 (# Cím) a cikkben",
-      "ref": "2026-07-02T02-09-20-689Z_aws-ml_Run_NVIDIA_Nemotron_and_OpenAI_GPT_OSS_models_on_A.json",
-      "at": "2026-07-02T10:35:59.903Z"
-    },
-    {
-      "id": "m178298855991317",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"The latest AI news we announced in June 2026\" — mi a baj: NO_H1: Nincs H1 (# Cím) a cikkben",
-      "ref": "2026-07-02T02-09-20-689Z_google-ai-blog_The_latest_AI_news_we_announced_in_June_2026.json",
-      "at": "2026-07-02T10:35:59.913Z"
-    },
-    {
-      "id": "m17829886270042",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Forecasting at the speed of modern retail \" — mi a baj: NO_H1: Nincs H1 (# Cím) a cikkben",
-      "ref": "2026-07-02T02-09-37-791Z_databricks_Forecasting_at_the_speed_of_modern_retail_.json",
-      "at": "2026-07-02T10:37:07.004Z"
-    },
-    {
-      "id": "m178298862701230",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"How we keep GPUs reliable across Databricks AI\" — mi a baj: NO_H1: Nincs H1 (# Cím) a cikkben",
-      "ref": "2026-07-02T02-09-37-791Z_databricks_How_we_keep_GPUs_reliable_across_Databricks_AI.json",
-      "at": "2026-07-02T10:37:07.012Z"
-    },
-    {
-      "id": "m17829886429170",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Snowflake Achieves HDS Certification in France, Helping Healthcare Organizations Accelerate Data and AI Innovation \" — mi a baj: prohibited content: medical advice; missing source for security standards claims",
-      "ref": "2026-07-02T02-09-37-791Z_snowflake_Snowflake_Achieves_HDS_Certification_in_France__He.json",
-      "at": "2026-07-02T10:37:22.917Z"
-    },
-    {
-      "id": "m178298865151911",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Announcing Claude Sonnet 5 on Snowflake Cortex AI\" — mi a baj: NO_H1: Nincs H1 (# Cím) a cikkben",
-      "ref": "2026-07-02T02-09-37-792Z_snowflake_Announcing_Claude_Sonnet_5_on_Snowflake_Cortex_AI.json",
-      "at": "2026-07-02T10:37:31.519Z"
-    },
-    {
-      "id": "m178298869604679",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Evaluating performance and efficiency of the GitHub Copilot agentic harness across models and tasks\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; Reviewer verdict: Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben; újraküldöm.",
-      "ref": "2026-06-26T02-12-21-214Z_github-ai_Evaluating_performance_and_efficiency_of_the_GitHu.json",
-      "at": "2026-07-02T10:38:16.046Z"
-    },
-    {
-      "id": "m178298869886195",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Streamline your data backups with incremental exports for Google Workspace\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; Reviewer verdict: Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben; újraküldöm.",
-      "ref": "2026-06-27T02-07-24-541Z_google-workspace_Streamline_your_data_backups_with_incremental_expo.json",
-      "at": "2026-07-02T10:38:18.861Z"
-    },
-    {
-      "id": "m178298870433052",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Previewing GPT-5.6 Sol: a next-generation model\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; Reviewer verdict: Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben; újraküldöm.",
-      "ref": "2026-06-27T02-07-24-541Z_openai-blog_Previewing_GPT-5_6_Sol__a_next-generation_model.json",
-      "at": "2026-07-02T10:38:24.330Z"
-    },
-    {
-      "id": "m178298871272966",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Work smarter in 90 days: A real-world guide to using AI\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; Reviewer verdict: Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben; újraküldöm.",
-      "ref": "2026-06-29T02-29-25-987Z_microsoft-ai_Work_smarter_in_90_days__A_real-world_guide_to_usi.json",
-      "at": "2026-07-02T10:38:32.729Z"
-    },
-    {
-      "id": "m17829887399104",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Time to Speak Some Dialects, Qwen-TTS!\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; Reviewer verdict: Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben; újraküldöm.",
-      "ref": "2026-06-29T02-29-27-067Z_alibaba-qwen_Time_to_Speak_Some_Dialects__Qwen-TTS_.json",
-      "at": "2026-07-02T10:38:59.910Z"
-    },
-    {
-      "id": "m178298874930586",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Connect the dots: Build with built-in and custom MCPs in Studio\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; Reviewer verdict: Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben; újraküldöm.",
-      "ref": "2026-06-29T02-29-27-067Z_mistral-ai_Connect_the_dots__Build_with_built-in_and_custom_M.json",
-      "at": "2026-07-02T10:39:09.305Z"
-    },
-    {
-      "id": "m178298876089396",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Remote agents in Vibe. Powered by Mistral Medium 3.5.\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; Reviewer verdict: Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben; újraküldöm.",
-      "ref": "2026-06-29T02-29-27-067Z_mistral-ai_Remote_agents_in_Vibe__Powered_by_Mistral_Medium_3.json",
-      "at": "2026-07-02T10:39:20.893Z"
-    },
     {
       "id": "m178298877158780",
       "from": "iro",
@@ -2155,157 +1501,786 @@
       "at": "2026-07-02T17:27:34.402Z"
     },
     {
-      "id": "m178304360985958",
-      "from": "iro",
+      "id": "m178310789477854",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"How to summarise a long document or article with AI\" — mi a baj: Beginner clarity too low (5/10): steps are vague or could mislead a first-time user",
+      "ref": "GUIDE_ai-summarise-long.json",
+      "at": "2026-07-03T19:44:54.778Z"
+    },
+    {
+      "id": "m178310790831965",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"How to set up smart routines with Alexa+\" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "GUIDE_alexa-routines.json",
+      "at": "2026-07-03T19:45:08.319Z"
+    },
+    {
+      "id": "m178310791563887",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Getting started with Apple Intelligence on your iPhone\" — mi a baj: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user",
+      "ref": "GUIDE_apple-intelligence-getting-started.json",
+      "at": "2026-07-03T19:45:15.638Z"
+    },
+    {
+      "id": "m17831079984600",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"How to use Claude Projects to keep your work organised\" — mi a baj: Incomplete wrap-up section; Missing conclusion/next steps",
+      "ref": "GUIDE_claude-projects.json",
+      "at": "2026-07-03T19:46:38.460Z"
+    },
+    {
+      "id": "m178310799846341",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "need",
+      "text": "Hiányos / kell még adat: \"How to use Claude Projects to keep your work organised\" — egészítsd ki: Incomplete wrap-up section; Missing conclusion/next steps",
+      "ref": "GUIDE_claude-projects.json",
+      "open": false,
+      "at": "2026-07-03T19:46:38.463Z",
+      "resolved_at": "2026-07-03T19:59:46.798Z"
+    },
+    {
+      "id": "m178310801217638",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"How to use Microsoft Copilot in Word, Excel and Outlook\" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "GUIDE_copilot-office.json",
+      "at": "2026-07-03T19:46:52.176Z"
+    },
+    {
+      "id": "m178310802557974",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Create royalty‑free AI music loops for podcasts and videos – beginner tutorial\" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "GUIDE_create-royalty-free-ai-music-loops-for-podcasts-and-videos-b.json",
+      "at": "2026-07-03T19:47:05.579Z"
+    },
+    {
+      "id": "m17831080507975",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Digitize handwritten notes with AI and turn them into editable text\" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "GUIDE_digitize-handwritten-notes-with-ai-and-turn-them-into-editab.json",
+      "at": "2026-07-03T19:47:30.797Z"
+    },
+    {
+      "id": "m178310814755342",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"How to use Grok on X for real-time answers\" — mi a baj: includes political example; missing clear wrap‑up conclusion",
+      "ref": "GUIDE_grok-on-x.json",
+      "at": "2026-07-03T19:49:07.553Z"
+    },
+    {
+      "id": "m17831081486940",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Host a simple AI web app on Hugging Face Spaces without coding\" — mi a baj: Step 1 assumes you’re already logged in; Step 3 doesn’t explain where to find hardware selector; Missing explicit login step in ‘Before you start’",
+      "ref": "GUIDE_host-a-simple-ai-web-app-on-hugging-face-spaces-without-codi.json",
+      "at": "2026-07-03T19:49:08.694Z"
+    },
+    {
+      "id": "m178310814998838",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"How GitHub Copilot Can Write Unit Tests for Your Code\" — mi a baj: Missing prerequisite: Node and npm for JavaScript tests; Step 1 lacks fallback if Extensions view not visible",
+      "ref": "GUIDE_how-github-copilot-can-write-unit-tests-for-your-code.json",
+      "at": "2026-07-03T19:49:09.989Z"
+    },
+    {
+      "id": "m178310819678841",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Getting started with Mistral's Le Chat\" — mi a baj: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user",
+      "ref": "GUIDE_lechat-getting-started.json",
+      "at": "2026-07-03T19:49:56.788Z"
+    },
+    {
+      "id": "m178310820424323",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"How to use Meta AI on Instagram and Messenger\" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "GUIDE_meta-ai-instagram.json",
+      "at": "2026-07-03T19:50:04.243Z"
+    },
+    {
+      "id": "m178310821972853",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Getting started with Google NotebookLM for your own documents\" — mi a baj: Beginner clarity too low (5/10): steps are vague or could mislead a first-time user",
+      "ref": "GUIDE_notebooklm-getting-started.json",
+      "at": "2026-07-03T19:50:19.728Z"
+    },
+    {
+      "id": "m178310827120388",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Set up Qwen Chat to handle common customer FAQs for your e‑commerce store\" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "GUIDE_set-up-qwen-chat-to-handle-common-customer-faqs-for-your-e-c.json",
+      "at": "2026-07-03T19:51:11.203Z"
+    },
+    {
+      "id": "m17831082804573",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Summarise documents instantly with Mistral AI’s tiny‑model summariser\" — mi a baj: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user",
+      "ref": "GUIDE_summarise-documents-instantly-with-mistral-ai-s-tiny-model-s.json",
+      "at": "2026-07-03T19:51:20.457Z"
+    },
+    {
+      "id": "m178310837288761",
+      "from": "guide",
       "to": "ellenorzo",
       "kind": "fix",
-      "text": "Átdolgoztam: \"Announcing Claude Sonnet 5 on Snowflake Cortex AI\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; Reviewer verdict: Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben; újraküldöm.",
-      "ref": "2026-07-02T02-09-37-792Z_snowflake_Announcing_Claude_Sonnet_5_on_Snowflake_Cortex_AI.json",
-      "at": "2026-07-03T01:53:29.859Z"
+      "text": "Átdolgoztam: \"How to summarise a long document or article with AI\" — javítva: Beginner clarity too low (5/10): steps are vague or could mislead a first-time user; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "GUIDE_ai-summarise-long.json",
+      "at": "2026-07-03T19:52:52.887Z"
     },
     {
-      "id": "m178304361926241",
-      "from": "iro",
+      "id": "m178310841381645",
+      "from": "guide",
       "to": "ellenorzo",
       "kind": "fix",
-      "text": "Átdolgoztam: \"Pinecone Nexus Is Now in Public Preview\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; CLICHE: Tiltott klisé találva: \"game-changer\"; újraküldöm.",
-      "ref": "2026-07-02T02-10-10-166Z_pinecone_Pinecone_Nexus_Is_Now_in_Public_Preview.json",
-      "at": "2026-07-03T01:53:39.262Z"
+      "text": "Átdolgoztam: \"How to set up smart routines with Alexa+\" — javítva: Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "GUIDE_alexa-routines.json",
+      "at": "2026-07-03T19:53:33.816Z"
     },
     {
-      "id": "m178304362768958",
-      "from": "iro",
+      "id": "m178310843398837",
+      "from": "guide",
       "to": "ellenorzo",
       "kind": "fix",
-      "text": "Átdolgoztam: \"MemoryLLM: Plug-n-Play Interpretable Feed-Forward Memory for Transformers\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; Reviewer verdict: Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben; újraküldöm.",
-      "ref": "2026-07-02T17-25-51-088Z_apple-ml_MemoryLLM__Plug-n-Play_Interpretable_Feed-Forward_.json",
-      "at": "2026-07-03T01:53:47.689Z"
+      "text": "Átdolgoztam: \"Getting started with Apple Intelligence on your iPhone\" — javítva: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "GUIDE_apple-intelligence-getting-started.json",
+      "at": "2026-07-03T19:53:53.988Z"
     },
     {
-      "id": "m17830436285576",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Forecasting at the speed of modern retail \" (?/10)",
-      "ref": "2026-07-02T02-09-37-791Z_databricks_Forecasting_at_the_speed_of_modern_retail_.json",
-      "at": "2026-07-03T01:53:48.557Z"
-    },
-    {
-      "id": "m178304362909341",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"How we keep GPUs reliable across Databricks AI\" (?/10)",
-      "ref": "2026-07-02T02-09-37-791Z_databricks_How_we_keep_GPUs_reliable_across_Databricks_AI.json",
-      "at": "2026-07-03T01:53:49.093Z"
-    },
-    {
-      "id": "m178304362972112",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Snowflake Achieves HDS Certification in France, Helping Healthcare Organizations Accelerate Data and AI Innovation \" (?/10)",
-      "ref": "2026-07-02T02-09-37-791Z_snowflake_Snowflake_Achieves_HDS_Certification_in_France__He.json",
-      "at": "2026-07-03T01:53:49.721Z"
-    },
-    {
-      "id": "m178304364043031",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Announcing Claude Sonnet 5 on Snowflake Cortex AI\" (?/10)",
-      "ref": "2026-07-02T02-09-37-792Z_snowflake_Announcing_Claude_Sonnet_5_on_Snowflake_Cortex_AI.json",
-      "at": "2026-07-03T01:54:00.431Z"
-    },
-    {
-      "id": "m178304365805572",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Pinecone Nexus Is Now in Public Preview\" (?/10)",
-      "ref": "2026-07-02T02-10-10-166Z_pinecone_Pinecone_Nexus_Is_Now_in_Public_Preview.json",
-      "at": "2026-07-03T01:54:18.055Z"
-    },
-    {
-      "id": "m178304366063378",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"MemoryLLM: Plug-n-Play Interpretable Feed-Forward Memory for Transformers\" (?/10)",
-      "ref": "2026-07-02T17-25-51-088Z_apple-ml_MemoryLLM__Plug-n-Play_Interpretable_Feed-Forward_.json",
-      "at": "2026-07-03T01:54:20.633Z"
-    },
-    {
-      "id": "m17830436685881",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "info",
-      "text": "A \"Google Workspace Weekly Recap - June 26, 2026\" hír a meglévő útmutatóra mutat: gemini-getting-started",
-      "ref": "gemini-getting-started",
-      "at": "2026-07-03T01:54:28.588Z"
-    },
-    {
-      "id": "m178304367610955",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "info",
-      "text": "A \"AI Overviews in Drive now available on mobile\" hír a meglévő útmutatóra mutat: gemini-getting-started",
-      "ref": "gemini-getting-started",
-      "at": "2026-07-03T01:54:36.109Z"
-    },
-    {
-      "id": "m178304427002720",
-      "from": "designer",
-      "to": "team",
+      "id": "m178310845607527",
+      "from": "guide",
+      "to": "ellenorzo",
       "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 16 → 4/4/2 oszlop.",
-      "ref": "mobile",
-      "at": "2026-07-03T02:04:30.027Z"
+      "text": "Átdolgoztam: \"How to use Claude Projects to keep your work organised\" — javítva: Incomplete wrap-up section; Missing conclusion/next steps; újraküldöm.",
+      "ref": "GUIDE_claude-projects.json",
+      "at": "2026-07-03T19:54:16.075Z"
     },
     {
-      "id": "m178307435634761",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "info",
-      "text": "A \"Ask Gemini in Drive now available on mobile\" hír a meglévő útmutatóra mutat: gemini-getting-started",
-      "ref": "gemini-getting-started",
-      "at": "2026-07-03T10:25:56.347Z"
-    },
-    {
-      "id": "m178307435852388",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "info",
-      "text": "A \"Salesforce Launches Agentforce Help Agent That Deploys \" hír a meglévő útmutatóra mutat: how-to-get-faster-help-from-ai-powered-customer-service",
-      "ref": "how-to-get-faster-help-from-ai-powered-customer-service",
-      "at": "2026-07-03T10:25:58.523Z"
-    },
-    {
-      "id": "m178307477253949",
-      "from": "designer",
-      "to": "team",
+      "id": "m178310848178917",
+      "from": "guide",
+      "to": "ellenorzo",
       "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 16 → 4/4/2 oszlop.",
-      "ref": "mobile",
-      "at": "2026-07-03T10:32:52.539Z"
+      "text": "Átdolgoztam: \"How to use Microsoft Copilot in Word, Excel and Outlook\" — javítva: Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "GUIDE_copilot-office.json",
+      "at": "2026-07-03T19:54:41.789Z"
     },
     {
-      "id": "m178309874219991",
-      "from": "pairing",
+      "id": "m178310850025499",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Create royalty‑free AI music loops for podcasts and videos – beginner tutorial\" — javítva: Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "GUIDE_create-royalty-free-ai-music-loops-for-podcasts-and-videos-b.json",
+      "at": "2026-07-03T19:55:00.254Z"
+    },
+    {
+      "id": "m178310852978668",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Digitize handwritten notes with AI and turn them into editable text\" — javítva: Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "GUIDE_digitize-handwritten-notes-with-ai-and-turn-them-into-editab.json",
+      "at": "2026-07-03T19:55:29.786Z"
+    },
+    {
+      "id": "m178310857232992",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"How to use Grok on X for real-time answers\" — javítva: includes political example; missing clear wrap‑up conclusion; újraküldöm.",
+      "ref": "GUIDE_grok-on-x.json",
+      "at": "2026-07-03T19:56:12.329Z"
+    },
+    {
+      "id": "m178310861547139",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Host a simple AI web app on Hugging Face Spaces without coding\" — javítva: Step 1 assumes you’re already logged in; Step 3 doesn’t explain where to find hardware selector; újraküldöm.",
+      "ref": "GUIDE_host-a-simple-ai-web-app-on-hugging-face-spaces-without-codi.json",
+      "at": "2026-07-03T19:56:55.471Z"
+    },
+    {
+      "id": "m17831086551954",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"How GitHub Copilot Can Write Unit Tests for Your Code\" — javítva: Missing prerequisite: Node and npm for JavaScript tests; Step 1 lacks fallback if Extensions view not visible; újraküldöm.",
+      "ref": "GUIDE_how-github-copilot-can-write-unit-tests-for-your-code.json",
+      "at": "2026-07-03T19:57:35.195Z"
+    },
+    {
+      "id": "m178310867391327",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Getting started with Mistral's Le Chat\" — javítva: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "GUIDE_lechat-getting-started.json",
+      "at": "2026-07-03T19:57:53.913Z"
+    },
+    {
+      "id": "m178310871284094",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"How to use Meta AI on Instagram and Messenger\" — javítva: Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "GUIDE_meta-ai-instagram.json",
+      "at": "2026-07-03T19:58:32.840Z"
+    },
+    {
+      "id": "m178310875377828",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Getting started with Google NotebookLM for your own documents\" — javítva: Beginner clarity too low (5/10): steps are vague or could mislead a first-time user; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "GUIDE_notebooklm-getting-started.json",
+      "at": "2026-07-03T19:59:13.778Z"
+    },
+    {
+      "id": "m178310877469284",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Set up Qwen Chat to handle common customer FAQs for your e‑commerce store\" — javítva: Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "GUIDE_set-up-qwen-chat-to-handle-common-customer-faqs-for-your-e-c.json",
+      "at": "2026-07-03T19:59:34.692Z"
+    },
+    {
+      "id": "m17831087769948",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Summarise documents instantly with Mistral AI’s tiny‑model summariser\" — javítva: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "GUIDE_summarise-documents-instantly-with-mistral-ai-s-tiny-model-s.json",
+      "at": "2026-07-03T19:59:36.994Z"
+    },
+    {
+      "id": "m178310877838241",
+      "from": "ellenorzo",
       "to": "guide",
       "kind": "info",
-      "text": "A \"How Amazon Bedrock catches AI-generated phishing\" hír a meglévő útmutatóra mutat: amazon-alexa-plus",
-      "ref": "amazon-alexa-plus",
-      "at": "2026-07-03T17:12:22.199Z"
+      "text": "Rendben ✓ átment: \"How to summarise a long document or article with AI\" (?/10)",
+      "ref": "GUIDE_ai-summarise-long.json",
+      "at": "2026-07-03T19:59:38.382Z"
     },
     {
-      "id": "m178309897717549",
-      "from": "designer",
-      "to": "team",
+      "id": "m17831087784061",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"How to set up smart routines with Alexa+\" — mi a baj: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!)",
+      "ref": "GUIDE_alexa-routines.json",
+      "at": "2026-07-03T19:59:38.407Z"
+    },
+    {
+      "id": "m178310877944380",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Getting started with Apple Intelligence on your iPhone\" — mi a baj: Step 2 UI label vague; Unverified claim about iOS 18 requirement; Missing source citations for feature details",
+      "ref": "GUIDE_apple-intelligence-getting-started.json",
+      "at": "2026-07-03T19:59:39.443Z"
+    },
+    {
+      "id": "m178310878679665",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"How to use Claude Projects to keep your work organised\" (?/10)",
+      "ref": "GUIDE_claude-projects.json",
+      "at": "2026-07-03T19:59:46.796Z"
+    },
+    {
+      "id": "m178310879379696",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"How to use Microsoft Copilot in Word, Excel and Outlook\" (?/10)",
+      "ref": "GUIDE_copilot-office.json",
+      "at": "2026-07-03T19:59:53.796Z"
+    },
+    {
+      "id": "m178310880172519",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Create royalty‑free AI music loops for podcasts and videos – beginner tutorial\" (?/10)",
+      "ref": "GUIDE_create-royalty-free-ai-music-loops-for-podcasts-and-videos-b.json",
+      "at": "2026-07-03T20:00:01.725Z"
+    },
+    {
+      "id": "m178310880896210",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Digitize handwritten notes with AI and turn them into editable text\" (?/10)",
+      "ref": "GUIDE_digitize-handwritten-notes-with-ai-and-turn-them-into-editab.json",
+      "at": "2026-07-03T20:00:08.962Z"
+    },
+    {
+      "id": "m178310880898425",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"How to use Grok on X for real-time answers\" — mi a baj: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!)",
+      "ref": "GUIDE_grok-on-x.json",
+      "at": "2026-07-03T20:00:08.984Z"
+    },
+    {
+      "id": "m178310880900456",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Host a simple AI web app on Hugging Face Spaces without coding\" — mi a baj: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!)",
+      "ref": "GUIDE_host-a-simple-ai-web-app-on-hugging-face-spaces-without-codi.json",
+      "at": "2026-07-03T20:00:09.004Z"
+    },
+    {
+      "id": "m178310881882099",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"How GitHub Copilot Can Write Unit Tests for Your Code\" (?/10)",
+      "ref": "GUIDE_how-github-copilot-can-write-unit-tests-for-your-code.json",
+      "at": "2026-07-03T20:00:18.820Z"
+    },
+    {
+      "id": "m178310882598611",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Getting started with Mistral's Le Chat\" (?/10)",
+      "ref": "GUIDE_lechat-getting-started.json",
+      "at": "2026-07-03T20:00:25.986Z"
+    },
+    {
+      "id": "m178310882600682",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"How to use Meta AI on Instagram and Messenger\" — mi a baj: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!)",
+      "ref": "GUIDE_meta-ai-instagram.json",
+      "at": "2026-07-03T20:00:26.006Z"
+    },
+    {
+      "id": "m178310882602556",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Getting started with Google NotebookLM for your own documents\" — mi a baj: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!)",
+      "ref": "GUIDE_notebooklm-getting-started.json",
+      "at": "2026-07-03T20:00:26.025Z"
+    },
+    {
+      "id": "m17831088333492",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Set up Qwen Chat to handle common customer FAQs for your e‑commerce store\" (?/10)",
+      "ref": "GUIDE_set-up-qwen-chat-to-handle-common-customer-faqs-for-your-e-c.json",
+      "at": "2026-07-03T20:00:33.349Z"
+    },
+    {
+      "id": "m178310884058071",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Summarise documents instantly with Mistral AI’s tiny‑model summariser\" (?/10)",
+      "ref": "GUIDE_summarise-documents-instantly-with-mistral-ai-s-tiny-model-s.json",
+      "at": "2026-07-03T20:00:40.580Z"
+    },
+    {
+      "id": "m178310888608658",
+      "from": "guide",
+      "to": "ellenorzo",
       "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 16 → 4/4/2 oszlop.",
-      "ref": "mobile",
-      "at": "2026-07-03T17:16:17.175Z"
+      "text": "Átdolgoztam: \"How to set up smart routines with Alexa+\" — javítva: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!); Reviewer verdict: Critical auto-check failures: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!); újraküldöm.",
+      "ref": "GUIDE_alexa-routines.json",
+      "at": "2026-07-03T20:01:26.086Z"
+    },
+    {
+      "id": "m178310890753153",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Getting started with Apple Intelligence on your iPhone\" — javítva: Step 2 UI label vague; Unverified claim about iOS 18 requirement; újraküldöm.",
+      "ref": "GUIDE_apple-intelligence-getting-started.json",
+      "at": "2026-07-03T20:01:47.531Z"
+    },
+    {
+      "id": "m178310890753440",
+      "from": "guide",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Kell még adat: \"Getting started with Apple Intelligence on your iPhone\" — az Ellenőrző tényt/forrást kér, amit nem találhatok ki: Missing source citations for feature details",
+      "ref": "GUIDE_apple-intelligence-getting-started.json",
+      "open": false,
+      "at": "2026-07-03T20:01:47.534Z",
+      "resolved_at": "2026-07-03T21:31:01.830Z"
+    },
+    {
+      "id": "m178310894857448",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"How to use Grok on X for real-time answers\" — javítva: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!); Reviewer verdict: Critical auto-check failures: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!); újraküldöm.",
+      "ref": "GUIDE_grok-on-x.json",
+      "at": "2026-07-03T20:02:28.574Z"
+    },
+    {
+      "id": "m178310899180738",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Host a simple AI web app on Hugging Face Spaces without coding\" — javítva: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!); Reviewer verdict: Critical auto-check failures: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!); újraküldöm.",
+      "ref": "GUIDE_host-a-simple-ai-web-app-on-hugging-face-spaces-without-codi.json",
+      "at": "2026-07-03T20:03:11.807Z"
+    },
+    {
+      "id": "m178310903314087",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"How to use Meta AI on Instagram and Messenger\" — javítva: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!); Reviewer verdict: Critical auto-check failures: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!); újraküldöm.",
+      "ref": "GUIDE_meta-ai-instagram.json",
+      "at": "2026-07-03T20:03:53.140Z"
+    },
+    {
+      "id": "m178310908028546",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Getting started with Google NotebookLM for your own documents\" — javítva: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!); Reviewer verdict: Critical auto-check failures: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!); újraküldöm.",
+      "ref": "GUIDE_notebooklm-getting-started.json",
+      "at": "2026-07-03T20:04:40.285Z"
+    },
+    {
+      "id": "m17831090807036",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"How to set up smart routines with Alexa+\" — mi a baj: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!)",
+      "ref": "GUIDE_alexa-routines.json",
+      "at": "2026-07-03T20:04:40.703Z"
+    },
+    {
+      "id": "m178310908217879",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Getting started with Apple Intelligence on your iPhone\" — mi a baj: Step 2 UI label description vague; Step 5 rainbow light cue may be inaccurate; Step 2 activation button location not exact",
+      "ref": "GUIDE_apple-intelligence-getting-started.json",
+      "at": "2026-07-03T20:04:42.178Z"
+    },
+    {
+      "id": "m178310908218124",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "need",
+      "text": "Hiányos / kell még adat: \"Getting started with Apple Intelligence on your iPhone\" — egészítsd ki: Step 2 UI label description vague; Step 5 rainbow light cue may be inaccurate; Step 2 activation button location not exact",
+      "ref": "GUIDE_apple-intelligence-getting-started.json",
+      "open": false,
+      "at": "2026-07-03T20:04:42.181Z",
+      "resolved_at": "2026-07-03T21:31:01.830Z"
+    },
+    {
+      "id": "m178310908219731",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"How to use Grok on X for real-time answers\" — mi a baj: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!)",
+      "ref": "GUIDE_grok-on-x.json",
+      "at": "2026-07-03T20:04:42.197Z"
+    },
+    {
+      "id": "m178310908221465",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Host a simple AI web app on Hugging Face Spaces without coding\" — mi a baj: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!)",
+      "ref": "GUIDE_host-a-simple-ai-web-app-on-hugging-face-spaces-without-codi.json",
+      "at": "2026-07-03T20:04:42.214Z"
+    },
+    {
+      "id": "m178310908321037",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"How to use Meta AI on Instagram and Messenger\" (?/10)",
+      "ref": "GUIDE_meta-ai-instagram.json",
+      "at": "2026-07-03T20:04:43.210Z"
+    },
+    {
+      "id": "m178310908322948",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Getting started with Google NotebookLM for your own documents\" — mi a baj: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!)",
+      "ref": "GUIDE_notebooklm-getting-started.json",
+      "at": "2026-07-03T20:04:43.229Z"
+    },
+    {
+      "id": "m178310908730928",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"How to set up smart routines with Alexa+\" — javítva: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!); Reviewer verdict: Critical auto-check failures: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!); újraküldöm.",
+      "ref": "GUIDE_alexa-routines.json",
+      "at": "2026-07-03T20:04:47.309Z"
+    },
+    {
+      "id": "m178310912675091",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Getting started with Apple Intelligence on your iPhone\" — javítva: Step 2 UI label description vague; Step 5 rainbow light cue may be inaccurate; újraküldöm.",
+      "ref": "GUIDE_apple-intelligence-getting-started.json",
+      "at": "2026-07-03T20:05:26.750Z"
+    },
+    {
+      "id": "m178310916904275",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"How to use Grok on X for real-time answers\" — javítva: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!); Reviewer verdict: Critical auto-check failures: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!); újraküldöm.",
+      "ref": "GUIDE_grok-on-x.json",
+      "at": "2026-07-03T20:06:09.042Z"
+    },
+    {
+      "id": "m178310918848585",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Host a simple AI web app on Hugging Face Spaces without coding\" — javítva: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!); Reviewer verdict: Critical auto-check failures: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!); újraküldöm.",
+      "ref": "GUIDE_host-a-simple-ai-web-app-on-hugging-face-spaces-without-codi.json",
+      "at": "2026-07-03T20:06:28.485Z"
+    },
+    {
+      "id": "m178310922831977",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Getting started with Google NotebookLM for your own documents\" — javítva: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!); Reviewer verdict: Critical auto-check failures: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!); újraküldöm.",
+      "ref": "GUIDE_notebooklm-getting-started.json",
+      "at": "2026-07-03T20:07:08.319Z"
+    },
+    {
+      "id": "m178310923545562",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"How to set up smart routines with Alexa+\" (?/10)",
+      "ref": "GUIDE_alexa-routines.json",
+      "at": "2026-07-03T20:07:15.455Z"
+    },
+    {
+      "id": "m178310923550124",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Getting started with Apple Intelligence on your iPhone\" — mi a baj: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!); GUIDE_TOO_SHORT: Csak 251 szó — az útmutató-szabály 700-1200 szó (guide-quality-rules.md)",
+      "ref": "GUIDE_apple-intelligence-getting-started.json",
+      "at": "2026-07-03T20:07:15.501Z"
+    },
+    {
+      "id": "m178310923555226",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"How to use Grok on X for real-time answers\" — mi a baj: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!); TOO_SHORT: Csak 97 szó (minimum 200 javasolt); GUIDE_TOO_SHORT: Csak 97 szó — az útmutató-szabály 700-1200 szó (guide-quality-rules.md)",
+      "ref": "GUIDE_grok-on-x.json",
+      "at": "2026-07-03T20:07:15.552Z"
+    },
+    {
+      "id": "m178310924248070",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Host a simple AI web app on Hugging Face Spaces without coding\" (?/10)",
+      "ref": "GUIDE_host-a-simple-ai-web-app-on-hugging-face-spaces-without-codi.json",
+      "at": "2026-07-03T20:07:22.480Z"
+    },
+    {
+      "id": "m178310924252298",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Getting started with Google NotebookLM for your own documents\" — mi a baj: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!); TOO_SHORT: Csak 106 szó (minimum 200 javasolt); GUIDE_TOO_SHORT: Csak 106 szó — az útmutató-szabály 700-1200 szó (guide-quality-rules.md)",
+      "ref": "GUIDE_notebooklm-getting-started.json",
+      "at": "2026-07-03T20:07:22.522Z"
+    },
+    {
+      "id": "m178310969815071",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"How to spot AI scams, deepfakes and fake content\" — mi a baj: Incomplete 'What this means for you' section; Missing wrap-up conclusion; Some UI instructions are vague",
+      "ref": "GUIDE_ai-spot-scams.json",
+      "at": "2026-07-03T20:14:58.150Z"
+    },
+    {
+      "id": "m178310969815335",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "need",
+      "text": "Hiányos / kell még adat: \"How to spot AI scams, deepfakes and fake content\" — egészítsd ki: Incomplete 'What this means for you' section; Missing wrap-up conclusion; Some UI instructions are vague",
+      "ref": "GUIDE_ai-spot-scams.json",
+      "open": false,
+      "at": "2026-07-03T20:14:58.153Z",
+      "resolved_at": "2026-07-03T21:30:54.993Z"
+    },
+    {
+      "id": "m178310973748628",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Upscale old videos with NVIDIA AI Video Super‑Resolution for free in minutes\" — mi a baj: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user",
+      "ref": "GUIDE_upscale-old-videos-with-nvidia-ai-video-super-resolution-for.json",
+      "at": "2026-07-03T20:15:37.486Z"
+    },
+    {
+      "id": "m178311410902877",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"How to automate daily email replies with AI for faster inbox management\" — mi a baj: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user",
+      "ref": "GUIDE_how-to-automate-daily-email-replies-with-ai-for-faster-inbox.json",
+      "at": "2026-07-03T21:28:29.028Z"
+    },
+    {
+      "id": "m178311414388385",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"How to spot AI scams, deepfakes and fake content\" — javítva: Incomplete 'What this means for you' section; Missing wrap-up conclusion; újraküldöm.",
+      "ref": "GUIDE_ai-spot-scams.json",
+      "at": "2026-07-03T21:29:03.883Z"
+    },
+    {
+      "id": "m178311414624662",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Getting started with Apple Intelligence on your iPhone\" — javítva: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!); GUIDE_TOO_SHORT: Csak 251 szó — az útmutató-szabály 700-1200 szó (guide-quality-rules.md); újraküldöm.",
+      "ref": "GUIDE_apple-intelligence-getting-started.json",
+      "at": "2026-07-03T21:29:06.246Z"
+    },
+    {
+      "id": "m178311416553543",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"How to use Grok on X for real-time answers\" — javítva: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!); TOO_SHORT: Csak 97 szó (minimum 200 javasolt); újraküldöm.",
+      "ref": "GUIDE_grok-on-x.json",
+      "at": "2026-07-03T21:29:25.535Z"
+    },
+    {
+      "id": "m178311420580952",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"How to automate daily email replies with AI for faster inbox management\" — javítva: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "GUIDE_how-to-automate-daily-email-replies-with-ai-for-faster-inbox.json",
+      "at": "2026-07-03T21:30:05.809Z"
+    },
+    {
+      "id": "m178311422611540",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Getting started with Google NotebookLM for your own documents\" — javítva: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!); TOO_SHORT: Csak 106 szó (minimum 200 javasolt); újraküldöm.",
+      "ref": "GUIDE_notebooklm-getting-started.json",
+      "at": "2026-07-03T21:30:26.115Z"
+    },
+    {
+      "id": "m178311424822395",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Upscale old videos with NVIDIA AI Video Super‑Resolution for free in minutes\" — javítva: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "GUIDE_upscale-old-videos-with-nvidia-ai-video-super-resolution-for.json",
+      "at": "2026-07-03T21:30:48.223Z"
+    },
+    {
+      "id": "m178311425499076",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"How to spot AI scams, deepfakes and fake content\" (?/10)",
+      "ref": "GUIDE_ai-spot-scams.json",
+      "at": "2026-07-03T21:30:54.990Z"
+    },
+    {
+      "id": "m178311426182751",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Getting started with Apple Intelligence on your iPhone\" (?/10)",
+      "ref": "GUIDE_apple-intelligence-getting-started.json",
+      "at": "2026-07-03T21:31:01.827Z"
+    },
+    {
+      "id": "m178311426876830",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"How to use Grok on X for real-time answers\" (?/10)",
+      "ref": "GUIDE_grok-on-x.json",
+      "at": "2026-07-03T21:31:08.768Z"
+    },
+    {
+      "id": "m178311427590095",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"How to automate daily email replies with AI for faster inbox management\" (?/10)",
+      "ref": "GUIDE_how-to-automate-daily-email-replies-with-ai-for-faster-inbox.json",
+      "at": "2026-07-03T21:31:15.900Z"
+    },
+    {
+      "id": "m178311428270014",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Getting started with Google NotebookLM for your own documents\" (?/10)",
+      "ref": "GUIDE_notebooklm-getting-started.json",
+      "at": "2026-07-03T21:31:22.700Z"
+    },
+    {
+      "id": "m178311428952788",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Upscale old videos with NVIDIA AI Video Super‑Resolution for free in minutes\" (?/10)",
+      "ref": "GUIDE_upscale-old-videos-with-nvidia-ai-video-super-resolution-for.json",
+      "at": "2026-07-03T21:31:29.527Z"
     }
   ]
 }

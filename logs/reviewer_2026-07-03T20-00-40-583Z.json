@@ -1,0 +1,113 @@
+{
+  "started_at": "2026-07-03T19:59:37.452Z",
+  "total": 15,
+  "passed": 9,
+  "failed": 6,
+  "auto_check_failed": 5,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.009224499999999998,
+  "by_article": [
+    {
+      "writer": "WRITER_GUIDE_ai-summarise-long.json",
+      "article": "ARTICLE_GUIDE_ai-summarise-long.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0
+    },
+    {
+      "writer": "WRITER_GUIDE_alexa-routines.json",
+      "decision": "FAIL",
+      "reason": "auto-check critical",
+      "skipped_ai": true
+    },
+    {
+      "writer": "WRITER_GUIDE_apple-intelligence-getting-started.json",
+      "rejected": "REJECTED_GUIDE_apple-intelligence-getting-started.json",
+      "decision": "FAIL",
+      "score": 5,
+      "cost_usd": 0
+    },
+    {
+      "writer": "WRITER_GUIDE_claude-projects.json",
+      "article": "ARTICLE_GUIDE_claude-projects.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0010393
+    },
+    {
+      "writer": "WRITER_GUIDE_copilot-office.json",
+      "article": "ARTICLE_GUIDE_copilot-office.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0012432
+    },
+    {
+      "writer": "WRITER_GUIDE_create-royalty-free-ai-music-loops-for-podcasts-and-videos-b.json",
+      "article": "ARTICLE_GUIDE_create-royalty-free-ai-music-loops-for-podcasts-and-videos-b.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0011273
+    },
+    {
+      "writer": "WRITER_GUIDE_digitize-handwritten-notes-with-ai-and-turn-them-into-editab.json",
+      "article": "ARTICLE_GUIDE_digitize-handwritten-notes-with-ai-and-turn-them-into-editab.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0012397999999999999
+    },
+    {
+      "writer": "WRITER_GUIDE_grok-on-x.json",
+      "decision": "FAIL",
+      "reason": "auto-check critical",
+      "skipped_ai": true
+    },
+    {
+      "writer": "WRITER_GUIDE_host-a-simple-ai-web-app-on-hugging-face-spaces-without-codi.json",
+      "decision": "FAIL",
+      "reason": "auto-check critical",
+      "skipped_ai": true
+    },
+    {
+      "writer": "WRITER_GUIDE_how-github-copilot-can-write-unit-tests-for-your-code.json",
+      "article": "ARTICLE_GUIDE_how-github-copilot-can-write-unit-tests-for-your-code.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0011248
+    },
+    {
+      "writer": "WRITER_GUIDE_lechat-getting-started.json",
+      "article": "ARTICLE_GUIDE_lechat-getting-started.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0011648
+    },
+    {
+      "writer": "WRITER_GUIDE_meta-ai-instagram.json",
+      "decision": "FAIL",
+      "reason": "auto-check critical",
+      "skipped_ai": true
+    },
+    {
+      "writer": "WRITER_GUIDE_notebooklm-getting-started.json",
+      "decision": "FAIL",
+      "reason": "auto-check critical",
+      "skipped_ai": true
+    },
+    {
+      "writer": "WRITER_GUIDE_set-up-qwen-chat-to-handle-common-customer-faqs-for-your-e-c.json",
+      "article": "ARTICLE_GUIDE_set-up-qwen-chat-to-handle-common-customer-faqs-for-your-e-c.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0013093
+    },
+    {
+      "writer": "WRITER_GUIDE_summarise-documents-instantly-with-mistral-ai-s-tiny-model-s.json",
+      "article": "ARTICLE_GUIDE_summarise-documents-instantly-with-mistral-ai-s-tiny-model-s.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.000976
+    }
+  ],
+  "finished_at": "2026-07-03T20:00:40.582Z",
+  "duration_seconds": 63.13
+}
