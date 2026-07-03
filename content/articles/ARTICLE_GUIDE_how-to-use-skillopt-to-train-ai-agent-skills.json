@@ -1,0 +1,59 @@
+{
+  "_meta": {
+    "type": "guide",
+    "guide_topic_id": "how-to-use-skillopt-to-train-ai-agent-skills",
+    "company": "",
+    "tool": "SkillOpt",
+    "icon": "🆕",
+    "level": "intermediate",
+    "source_news": {
+      "file": "ARTICLE_2026-06-30T18-26-47-624Z_microsoft-research_SkillOpt__Agent_skills_as_trainable_parameters.json",
+      "title": "SkillOpt: Agent skills as trainable parameters"
+    },
+    "written_at": "2026-07-03T01:56:01.577Z",
+    "writer_provider": "google",
+    "writer_model": "gemini-2.5-flash",
+    "writer_cost_usd": 0.0076502,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-07-03T01:57:35.641Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1168
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "decision": "PASS",
+      "issues": [
+        "Wrap-up section ends abruptly"
+      ],
+      "verdict": "The article is well-structured, explains technical terms clearly, and fits the brand voice. The only issue is the incomplete final sentence in the 'Try it now' section, which needs to be properly concluded.",
+      "_aiCost": 0.000883,
+      "_provider": "google",
+      "_model": "gemini-2.5-flash",
+      "_attempts": 1
+    },
+    "seo": {
+      "meta_description": "Learn how to train your AI agent with SkillOpt in simple steps. Turn your AI assistant into a powerful, customised helper for daily tasks or work with new skills.",
+      "keywords": [
+        "how to train AI agent with SkillOpt",
+        "teach AI new skills",
+        "custom AI abilities guide",
+        "SkillOpt AI training tutorial",
+        "personalise AI assistant"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add a short intro sentence with a common question like 'Wondering how to make your AI assistant more useful?'",
+        "Include a quick checklist of prerequisites (e.g., SkillOpt account, existing AI agent) in the meta description",
+        "Consider adding 'beginner-friendly' to one keyword for broader reach"
+      ],
+      "optimised_at": "2026-07-03T02:04:21.496Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Train Your AI Agent with SkillOpt: A Step-by-Step Guide\"\nsubtitle: \"Learn how to teach your AI assistant new, custom abilities using SkillOpt, turning it into a truly personalised and powerful helper for your daily tasks or business needs.\"\ncategory: \"guide\"\naudience: \"both\"\ncompany: \"SkillOpt\"\ntool: \"SkillOpt\"\nlevel: \"intermediate\"\nread_time_minutes: 6\ntags: [\"getting-started\", \"ai-agents\", \"skill-training\"]\n---\n\n# Train Your AI Agent with SkillOpt: A Step-by-Step Guide\n\nEver wished your AI assistant could do more than just chat? **AI agents** are clever AI programs that can use tools and take action, almost like a digital personal assistant. This guide will show you how to use SkillOpt, a platform designed to help you teach your AI agent new, specific abilities – or \"skills\" – making it even more valuable in your everyday life and work. By the end, you'll know how to add a brand-new talent to your AI helper.\n\n## Before you start\n- You'll need an active SkillOpt account.\n- You should have an existing AI agent set up within SkillOpt that you wish to train.\n- Have a clear idea of one specific task you want your agent to learn.\n\n## Step 1 — Understand Your AI Agent\nBefore you teach your AI agent something new, it helps to understand what it is. Think of an **AI agent** like a proactive digital assistant. Unlike a regular chatbot that just answers your questions, an agent can understand your goals, make decisions, and even use other digital tools (like your calendar or an email app) to get things done. SkillOpt helps you fine-tune these agents to perform exactly as you need.\n\n## Step 2 — Identify the New Skill You Need\nThe first step in training is knowing precisely what you want to teach. Don't try to teach your agent \"everything\" at once. Focus on one, clear, and actionable skill. The clearer your goal, the easier it will be to train the AI.\n\n💬 Example: Instead of \"Manage my emails,\" aim for something specific like \"Summarise long email threads and suggest a concise reply.\" Or, for personal use: \"Draft a birthday message for a friend based on their recent social media posts.\"\n\n## Step 3 — Define the Skill in SkillOpt\nNow, let's tell SkillOpt about this new ability. Log into your SkillOpt account and navigate to your AI agent's dashboard. Look for an option to \"Add New Skill\" or \"Train Skill.\" You'll usually be prompted to give your skill a name and a brief description.\n\n-   **Skill Name**: Keep this short and memorable, describing what the skill does.\n-   **Skill Description**: This is where you explain the *purpose* of the skill in plain language. Be clear about what input the agent will receive and what output you expect. This helps the AI understand the task's context.\n\n💬 Example:\n-   **Skill Name**: Email Thread Summariser\n-   **Skill Description**: \"This skill takes a long email conversation as input and should output a 3-sentence summary of the key points, followed by 2-3 bullet points suggesting a polite and helpful reply based on the summary.\"\n\n## Step 4 — Provide Training Examples\nThis is the most crucial part! AI learns by seeing examples, much like a student learns from practice problems. You'll need to provide examples of both the *input* the agent will receive and the *correct output* you expect it to generate. These are called **training data** – they show the AI what a good result looks like.\n\n-   **Input Example**: Copy and paste a real (or realistic) example of the type of information your agent will work with. For our email summariser, this would be a full, lengthy email thread.\n-   **Expected Output**: Manually write the perfect 3-sentence summary and the 2-3 bullet point reply *you* would want the AI to generate for that specific input.\n\nSkillOpt typically allows you to add multiple examples. The more good examples you provide (aim for at least 5-10 for a start), the better your agent will understand the skill.\n\n💬 Example (for 'Email Thread Summariser'):\n-   **Input Example**: [Paste a real, multi-message email chain about a project deadline]\n-   **Expected Output**:\n    \"The project deadline for 'Aurora's Garden Redesign' has been moved to next Friday due to a client-requested scope change. John needs approval for the new timeline and revised budget. Sarah has offered to help reallocate resources.\n    *   Confirm the new deadline is approved.\n    *   Ask John to provide the updated budget breakdown.\n    *   Thank Sarah for her offer of support.\"\n\n## Step 5 — Test and Refine the Skill\nOnce you've provided some examples, SkillOpt will process them. Now it's time to test! Look for a \"Test Skill\" or \"Run Skill\" option. You'll provide a *new* input (one the agent hasn't seen in the training examples) and see what the AI generates.\n\n-   **Review**: Compare the AI's output to your ideal result. Is it accurate? Does it follow your instructions?\n-   **Feedback**: If it's not quite right, you can often provide feedback directly within SkillOpt, perhaps by editing the AI's output to match your ideal and saving it as another training example. This is like giving the AI extra homework to learn from its mistakes. Repeat this step, adding more examples and testing until the agent performs reliably.\n\n## Step 6 — Deploy and Monitor the Skill\nOnce you're happy with how your agent performs the new skill, it's time to make it active! Look for a \"Deploy Skill\" or \"Activate Skill\" button. Your agent will now be able to use this new ability whenever you give it a task that requires it. Even after deployment, it's a good idea to monitor its performance. If you notice it making mistakes, you can always go back to SkillOpt, add more training examples, and refine the skill further.\n\n## Common mistakes\n-   **Being too vague**: Don't tell your agent \"be creative.\" Tell it \"write a poem in the style of Banjo Paterson.\" Specificity is key.\n-   **Not enough examples**: A few examples might teach your agent the basics, but many varied examples help it handle different situations.\n-   **Inconsistent examples**: Make sure your \"expected output\" examples are always formatted and styled in the same way. Inconsistency confuses the AI.\n\n## What this means for you\n-   **In everyday life:** You can train your agent to handle specific chores like summarising long news articles, drafting polite thank-you notes, or organising your digital photos into specific categories, saving you valuable time.\n-   **For your business or work:** Imagine an agent trained to pre-screen job applications, summarise complex client reports, or even draft initial marketing copy following your brand guidelines, freeing up your team for more strategic tasks.\n-   **If you're just getting started:** Begin with a simple, clear task like summarising a single paragraph of text into one sentence. Focus on getting one skill perfect before moving to more complex ones.\n\n## Try it now\nThink of one very small, specific task you'd like an AI agent to perform. Perhaps summarising restaurant reviews, or drafting",
+  "original_title": "How to Use SkillOpt to Train AI Agent Skills"
+}
