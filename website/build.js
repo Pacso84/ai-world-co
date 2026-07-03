@@ -677,6 +677,7 @@ function guideTile(a) {
     </span>
     <span class="gtile__body">
       <span class="gtile__title">${escapeHtml(a.title)}</span>
+      ${a.subtitle ? `<span class="gtile__sub">${escapeHtml(a.subtitle)}</span>` : ''}
       <span class="gtile__meta"><span class="gtile__aud">${aud.icon} ${tr(aud.key)}</span>${level}</span>
     </span>
   </a>`;

@@ -485,6 +485,8 @@ body {
 .gtile__brand { position:relative; z-index:1; color:#fff; font-family:'Schibsted Grotesk',sans-serif; font-weight:800; font-size:14px; letter-spacing:-.01em; line-height:1.15; }
 .gtile__body { display:flex; flex-direction:column; gap:8px; padding:14px 16px 16px; flex:1; }
 .gtile__title { font-family:'Schibsted Grotesk',sans-serif; font-weight:700; font-size:15.5px; line-height:1.25; }
+/* Alcím a csempén: 2 sorra vágva — így már választáskor látszik, MIRŐL szól az útmutató */
+.gtile__sub { font-size:12.5px; line-height:1.45; color:var(--ink-soft); display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
 .gtile__meta { display:flex; flex-wrap:wrap; gap:6px; margin-top:auto; align-items:center; }
 .gtile__tool { font-size:11px; font-weight:700; color:#3a5b65; background:color-mix(in srgb,#4f7a86 12%,var(--paper)); padding:3px 9px; border-radius:100px; }
 .gtile__aud { font-size:11px; font-weight:700; color:var(--ink-soft); background:var(--paper-2); padding:3px 9px; border-radius:100px; }

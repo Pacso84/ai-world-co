@@ -19,6 +19,8 @@
 //                                                 a guide-topics.json-ba (cég-lefedettség elöl)
 //   node agents/guide/agent.js --cover         -- a HIÁNYZÓ cégekhez témát ad (ingyen, LLM nélkül)
 //   node agents/guide/agent.js --balance 8     -- a LEMARADÓ cégeket hozza fel a küszöbig (arányosság)
+//   node agents/guide/agent.js --upgrade [N]   -- a RÉGI publikált útmutatókat írja át a
+//                                                 guide-quality-rules.md szintjére (rules_version 2)
 //
 // FŐ ELV: EREDETI tartalom. A cégek doksiját csak ihletként — sosem másoljuk.
 // ===================================================================
@@ -49,9 +51,10 @@ const GUIDE_MAX_REWORK = 4;
 // ---- argumentumok ----
 function parseArgs() {
   const a = process.argv.slice(2);
-  const p = { id: null, title: null, limit: 1, rework: false, ideas: 0, cover: false, balance: 0 };
+  const p = { id: null, title: null, limit: 1, rework: false, ideas: 0, cover: false, balance: 0, upgrade: false, upgradeLimit: 0 };
   for (let i = 0; i < a.length; i++) {
-    if (a[i] === '--id' && a[i + 1]) { p.id = a[++i]; }
+    if (a[i] === '--upgrade') { p.upgrade = true; if (a[i + 1] && /^\d+$/.test(a[i + 1])) p.upgradeLimit = parseInt(a[++i], 10); }
+    else if (a[i] === '--id' && a[i + 1]) { p.id = a[++i]; }
     else if (a[i] === '--title' && a[i + 1]) { p.title = a[++i]; }
     else if (a[i] === '--limit' && a[i + 1]) { p.limit = parseInt(a[++i], 10) || 1; }
     else if (a[i] === '--rework') { p.rework = true; }
@@ -64,7 +67,9 @@ function parseArgs() {
 
 function loadBrandContext() {
   const parts = [];
-  for (const f of ['company-info.md', 'style-guide.md', 'legal-rules.md']) {
+  // A guide-quality-rules.md a KEZDŐ-ÉRTHETŐSÉGI szabálykönyv (2026-07-03):
+  // minden lépés 6 kötelező eleme + őszinteségi szabályok + mélység-előírás.
+  for (const f of ['company-info.md', 'style-guide.md', 'legal-rules.md', 'guide-quality-rules.md']) {
     const path = join(SHARED_DIR, f);
     if (existsSync(path)) parts.push(`=== ${f} ===\n${readFileSync(path, 'utf-8')}`);
   }
@@ -465,6 +470,21 @@ TONE & RULES:
 - No invented facts, fake numbers, or made-up menu items. If a UI detail may vary, say so ("look for a button like…").
 - Safe: no medical/financial/legal advice, no politics.
 
+BEGINNER-CLARITY RULES (MANDATORY — a complete beginner must be able to follow
+every step without getting lost or misled; the Reviewer rejects guides that fail):
+- EVERY step weaves in all SIX parts: (1) the exact ACTION (one per step),
+  (2) WHAT YOU SEE on screen at that moment, (3) WHAT HAPPENS after the action,
+  (4) an "IF IT LOOKS DIFFERENT" fallback (apps vary by device and change often),
+  (5) a 💬 Example to copy where the step involves typing, and
+  (6) a SUCCESS CHECK: end with "You'll know it worked when …".
+- Each step is 60–140 words. Two thin sentences per step is NOT acceptable.
+- HONESTY: never state uncertain UI details as fact (use "look for a button
+  like …"); never over-promise what the tool will do — say what USUALLY happens
+  and what to do when it doesn't; say plainly if a feature may need a paid plan;
+  include one honest sentence about what the tool CANNOT do for this task.
+- "Before you start" lists EVERYTHING needed (account, app/website, device,
+  free-or-paid plan, rough total time) so nobody hits a surprise blocker later.
+
 OUTPUT FORMAT: Markdown with YAML frontmatter, then the guide body, in EXACTLY this shape:
 ---
 title: "Clear, descriptive title (60-80 chars)"
@@ -474,7 +494,7 @@ audience: "personal" | "business" | "both"
 company: "OpenAI"          # the company, or "" if general
 tool: "ChatGPT"            # the tool, or "" if general
 level: "beginner" | "intermediate"
-read_time_minutes: 4
+read_time_minutes: 6
 tags: ["getting-started", "chatgpt"]
 ---
 
@@ -486,14 +506,15 @@ tags: ["getting-started", "chatgpt"]
 - 1-3 quick prerequisites (an account, the app, etc.). Keep it short.
 
 ## Step 1 — <short action>
-Plain-language explanation of what to do and why.
+The exact action + what you see on screen + what happens next + what to do if
+it looks different on your device + "You'll know it worked when …" (60-140 words).
 💬 Example: a concrete example the reader can copy.
 
 ## Step 2 — <short action>
-…(write 3 to 6 numbered steps total; each with a 💬 Example where helpful)…
+…(write 4 to 7 steps total, EACH with the six parts; 💬 Example where the reader types something)…
 
 ## Common mistakes
-- 2-3 short, friendly "watch out for…" points.
+- 3 friendly "watch out for…" points, each naming the mistake AND the fix.
 
 ## What this means for you
 - **In everyday life:** a concrete personal use.
@@ -503,7 +524,7 @@ Plain-language explanation of what to do and why.
 ## Try it now
 One concrete action the reader can take in the next 2 minutes.
 
-Write 450-800 words. Output ONLY the markdown — no commentary.`;
+Write 700-1200 words. Output ONLY the markdown — no commentary.`;
 
 function buildUserPrompt(topic, brandContext, lessons, skills) {
   const subject = topic.company || topic.tool
@@ -543,6 +564,7 @@ function saveGuide(topic, response) {
   const out = {
     _meta: {
       type: 'guide',
+      rules_version: 2,   // guide-quality-rules.md szerint íródott (kezdő-érthetőség)
       guide_topic_id: topic.id || null,
       company: topic.company || '',
       tool: topic.tool || '',
@@ -568,11 +590,11 @@ async function writeGuide(topic, brandContext) {
   const skills = skillsBlock('guide');
   const userPrompt = buildUserPrompt(topic, brandContext, lessons, skills);
 
-  let response = await ask(userPrompt, { agentName: AGENT_NAME, systemPrompt: GUIDE_SYSTEM_PROMPT, maxTokens: 3000 });
+  let response = await ask(userPrompt, { agentName: AGENT_NAME, systemPrompt: GUIDE_SYSTEM_PROMPT, maxTokens: 4500 });
   if (response && !hasGuideStructure(response.text)) {
     console.log('   ↻ Hiányos szerkezet — újrapróbálom nyomatékkal...');
     const retry = await ask(userPrompt + `\n\n⚠️ CRITICAL: Use YAML frontmatter (---), at least 2 "## Step N — …" headings, and a "## What this means for you" section. Write the full guide again.`,
-      { agentName: AGENT_NAME, systemPrompt: GUIDE_SYSTEM_PROMPT, maxTokens: 3000 });
+      { agentName: AGENT_NAME, systemPrompt: GUIDE_SYSTEM_PROMPT, maxTokens: 4500 });
     if (retry && hasGuideStructure(retry.text)) { retry.costUsd += response.costUsd; response = retry; }
   }
   return response;
@@ -647,10 +669,10 @@ ${brandContext}${lessons}${skills}
 
 Now output ONLY the corrected guide markdown — no commentary.`;
 
-  let response = await ask(userPrompt, { agentName: AGENT_NAME, systemPrompt: GUIDE_SYSTEM_PROMPT, maxTokens: 3000 });
+  let response = await ask(userPrompt, { agentName: AGENT_NAME, systemPrompt: GUIDE_SYSTEM_PROMPT, maxTokens: 4500 });
   if (response && !hasGuideStructure(response.text)) {
     const retry = await ask(userPrompt + `\n\n⚠️ CRITICAL: Use YAML frontmatter (---), at least 2 "## Step N — …" headings, and a "## What this means for you" section. Write the full corrected guide again.`,
-      { agentName: AGENT_NAME, systemPrompt: GUIDE_SYSTEM_PROMPT, maxTokens: 3000 });
+      { agentName: AGENT_NAME, systemPrompt: GUIDE_SYSTEM_PROMPT, maxTokens: 4500 });
     if (retry && hasGuideStructure(retry.text)) { retry.costUsd += response.costUsd; response = retry; }
   }
   return response;
@@ -735,8 +757,126 @@ async function runGuideReworkMode(brandContext) {
   console.log(`📊 ÚTMUTATÓ REWORK: ${fixed} átdolgozva, ${requeued} újra-sorba (ingyen), ${gaveUp} sikertelen | költség $${cost.toFixed(4)}`);
 }
 
+// ===================================================================
+// UPGRADE MÓD (--upgrade [N]) — a MÁR PUBLIKÁLT útmutatók felhozása a
+// guide-quality-rules.md (rules_version 2) szintjére. 2026-07-03 user-kérés:
+// "a leírások legyenek részletesebbek, félreviszik a kezdő felhasználókat".
+// ===================================================================
+// Működés: ARTICLE_GUIDE_* → átírt WRITER_GUIDE_* draft (meta átvéve,
+// rules_version:2, upgraded_from) → a NORMÁL Ellenőrző-pipeline dönt.
+// Az eredeti cikk addig él, amíg az új át nem megy (published_at megmarad,
+// mert a WRITER→ARTICLE név ugyanaz). Idempotens: a rules_version>=2 cikkeket
+// és a már drafts-ban váró párokat kihagyja — megszakítható, folytatható.
+// ===================================================================
+
+const ARTICLES_DIR = join(ROOT, 'content', 'articles');
+
+function listUpgradeCandidates() {
+  if (!existsSync(ARTICLES_DIR)) return [];
+  return readdirSync(ARTICLES_DIR)
+    .filter(f => f.startsWith('ARTICLE_') && f.endsWith('.json'))
+    .filter(f => {
+      try {
+        const d = JSON.parse(readFileSync(join(ARTICLES_DIR, f), 'utf-8'));
+        if (d._meta?.type !== 'guide') return false;
+        if ((d._meta?.rules_version || 1) >= 2) return false;           // már friss
+        const writerName = f.replace(/^ARTICLE_/, 'WRITER_');
+        if (existsSync(join(DRAFTS_DIR, writerName))) return false;     // már sorban áll
+        const rejName = f.replace(/^ARTICLE_/, 'REJECTED_');
+        if (existsSync(join(REJECTED_DIR, rejName))) return false;      // rework alatt
+        return true;
+      } catch { return false; }
+    })
+    .sort();
+}
+
+async function upgradeGuide(articleData, brandContext) {
+  const original = articleData.article_markdown || '';
+  const skills = skillsBlock('guide');
+
+  const userPrompt = `One of our OLDER PUBLISHED guides was written under thinner quality rules and is too vague for a complete beginner. REWRITE it so it fully meets the current beginner-clarity rules (see BRAND CONTEXT, especially guide-quality-rules.md).
+
+WHAT TO KEEP:
+- The SAME title, and the same frontmatter values (title, subtitle may be lightly improved; keep audience, company, tool, level, tags; update read_time_minutes to match the new length).
+- The same topic and the same overall teaching goal; keep the step order where it makes sense.
+
+WHAT TO IMPROVE (this is the point):
+- EXPAND every step to the six mandatory parts: exact action, what you see on screen, what happens next, an "if it looks different" fallback, a 💬 Example where the reader types something, and a "You'll know it worked when …" success check. Each step 60-140 words.
+- Fix anything vague ("find the settings") or potentially misleading (uncertain UI details stated as fact, over-promises, hidden paywalls, missing prerequisites).
+- "Before you start" must list EVERYTHING needed. "Common mistakes" gets 3 points, each with mistake AND fix. Total 700-1200 words.
+
+THE PUBLISHED GUIDE TO UPGRADE:
+${original}
+
+BRAND CONTEXT (must follow):
+${brandContext}${skills}
+
+Now output ONLY the upgraded guide markdown — no commentary.`;
+
+  let response = await ask(userPrompt, { agentName: AGENT_NAME, systemPrompt: GUIDE_SYSTEM_PROMPT, maxTokens: 4500 });
+  if (response && !hasGuideStructure(response.text)) {
+    const retry = await ask(userPrompt + `\n\n⚠️ CRITICAL: Use YAML frontmatter (---), at least 2 "## Step N — …" headings, and a "## What this means for you" section. Write the full upgraded guide again.`,
+      { agentName: AGENT_NAME, systemPrompt: GUIDE_SYSTEM_PROMPT, maxTokens: 4500 });
+    if (retry && hasGuideStructure(retry.text)) { retry.costUsd += response.costUsd; response = retry; }
+  }
+  return response;
+}
+
+async function runUpgradeMode(limit, brandContext, idFilter) {
+  console.log(`⬆️  UPGRADE MÓD — publikált útmutatók felhozása a rules_version 2 szintre${limit ? ` (max ${limit})` : ''}`);
+  console.log('─'.repeat(60));
+  let candidates = listUpgradeCandidates();
+  if (idFilter) candidates = candidates.filter(f => f.includes(idFilter));
+  if (!candidates.length) { console.log('   ✓ Minden publikált útmutató a friss szabályok szerint készült. Nincs teendő.'); return; }
+  const batch = limit ? candidates.slice(0, limit) : candidates;
+  console.log(`   📋 Elavult szabályú útmutató: ${candidates.length} | most átdolgozandó: ${batch.length}\n`);
+
+  let done = 0, failed = 0, cost = 0;
+  for (const file of batch) {
+    const data = JSON.parse(readFileSync(join(ARTICLES_DIR, file), 'utf-8'));
+    console.log(`⬆️  ${(data.original_title || file).slice(0, 60)}...`);
+    const response = await upgradeGuide(data, brandContext);
+    if (!response || !hasGuideStructure(response.text)) { console.log('   ❌ Sikertelen (router/struktúra) — az eredeti marad élőben\n'); failed++; continue; }
+
+    const writerName = file.replace(/^ARTICLE_/, 'WRITER_');
+    const out = {
+      _meta: {
+        // az EREDETI meta öröklődik (guide_topic_id, company, tool, icon,
+        // source_news, source_* stb.) — a review-mezőket a friss kör tölti újra
+        ...data._meta,
+        auto_check: undefined, ai_review: undefined,
+        rules_version: 2,
+        upgraded_from: file,
+        rework_attempts: 0,
+        written_at: new Date().toISOString(),
+        writer_provider: response.provider,
+        writer_model: response.model,
+        writer_cost_usd: response.costUsd,
+        status: 'awaiting-review'
+      },
+      article_markdown: response.text,
+      original_title: data.original_title
+    };
+    if (!existsSync(DRAFTS_DIR)) mkdirSync(DRAFTS_DIR, { recursive: true });
+    writeFileSync(join(DRAFTS_DIR, writerName), JSON.stringify(out, null, 2), 'utf-8');
+    cost += response.costUsd || 0;
+    done++;
+    console.log(`   ✅ Átírva → ${writerName} (Ellenőrzőre vár, $${(response.costUsd || 0).toFixed(4)})\n`);
+  }
+
+  console.log('─'.repeat(60));
+  console.log(`📊 UPGRADE: ${done} átírva (Ellenőrzőre vár), ${failed} sikertelen, hátra: ${candidates.length - batch.length} | költség $${cost.toFixed(4)}`);
+  if (done > 0) console.log('   ➡️  Következő lépés: node agents/ellenorzo/agent.js');
+}
+
 async function main() {
   const args = parseArgs();
+
+  // UPGRADE MÓD: publikált útmutatók felhozása az új szabály-szintre
+  if (args.upgrade) {
+    await runUpgradeMode(args.upgradeLimit, loadBrandContext(), args.id);
+    return;
+  }
 
   // REWORK MÓD: az Ellenőrző visszaadott útmutatókat javítjuk (nem új írás)
   if (args.rework) {

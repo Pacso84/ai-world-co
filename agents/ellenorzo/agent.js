@@ -102,7 +102,7 @@ function listAwaitingReview(filter = null) {
 // 1. SZINT: AUTOMATA STRUKTÚRA ELLENŐRZÉS (ingyenes!)
 // ===================================================================
 
-function runAutoCheck(articleMarkdown) {
+function runAutoCheck(articleMarkdown, type) {
   const issues = [];
 
   // Van YAML frontmatter?
@@ -137,6 +137,11 @@ function runAutoCheck(articleMarkdown) {
   const wordCount = articleMarkdown.split(/\s+/).length;
   if (wordCount < 150) {
     issues.push(`TOO_SHORT: Csak ${wordCount} szó (minimum 200 javasolt)`);
+  }
+  // GUIDE-oknál a guide-quality-rules.md 700-1200 szót ír elő — 550 alatt
+  // biztosan túl vékony a kezdőknek → ingyen (AI nélkül) buktatjuk.
+  if (type === 'guide' && wordCount < 550) {
+    issues.push(`GUIDE_TOO_SHORT: Csak ${wordCount} szó — az útmutató-szabály 700-1200 szó (guide-quality-rules.md)`);
   }
   if (wordCount > 2500) {
     issues.push(`TOO_LONG: ${wordCount} szó — talán szét kéne bontani`);
@@ -193,9 +198,17 @@ YOU MUST CHECK:
 6. FACTUAL ACCURACY: Are claims backed by sources? Any obvious hallucinations or invented facts/quotes?
 7. NO CLICHÉS: Is the writing fresh? No "game changer", "in today's fast-paced world", etc.
 8. RESPECT: Does it avoid putting anyone down? Is it kind and non-judgmental?
+9. BEGINNER CLARITY — ONLY for step-by-step guides (category "guide"); for news articles skip this and set clarity_score to null. Mentally walk through the steps AS A COMPLETE BEGINNER on a phone. A guide fails this check if ANY of these appear:
+   - a vague action ("find the settings", "open the chat") without saying where it is, what the screen looks like, or what happens after;
+   - no fallback when the reader's screen may differ ("if you don't see X, look for …");
+   - an uncertain UI detail (menu name, button label, price, limit) stated as hard fact;
+   - a promise the tool may not keep, or a paid feature not flagged as possibly paid;
+   - a prerequisite that first appears mid-guide instead of in "Before you start";
+   - steps so thin (a sentence or two) that the reader is left guessing.
+   Score it as clarity_score 1-10: could a smart 70-year-old who never used this tool follow EVERY step without help and without being misled?
 
 Respond with ONLY a single JSON object — no markdown fences, no commentary before or after — in EXACTLY this flat shape:
-{"overall_score": <integer 1-10>, "decision": "PASS" or "FAIL", "issues": ["short issue", "short issue"], "verdict": "1-2 sentence reasoning"}
+{"overall_score": <integer 1-10>, "clarity_score": <integer 1-10 for guides, null for news>, "decision": "PASS" or "FAIL", "issues": ["short issue", "short issue"], "verdict": "1-2 sentence reasoning"}
 
 STRICT OUTPUT RULES (important for reliability):
 - Output the JSON object and NOTHING else. No \`\`\` fences. No explanation.
@@ -203,7 +216,7 @@ STRICT OUTPUT RULES (important for reliability):
 - Do NOT add any other fields (no nested "scores", no "praise").
 - Keep "verdict" to one or two short sentences on a single line.
 
-PASS rules: overall_score >= 7 AND no prohibited content found. FAIL otherwise.`;
+PASS rules: overall_score >= 7 AND no prohibited content found AND (for guides) clarity_score >= 7. FAIL otherwise. When a guide fails on clarity, the "issues" must name the SPECIFIC steps/sentences that are vague or misleading, so the writer can fix them.`;
 
 async function aiReview(articleMarkdown, sourceInfo, brandContext) {
   // FONTOS: a brandContext-et NEM küldjük el teljes egészében!
@@ -296,9 +309,11 @@ function parseReview(raw) {
   const issues = issuesM
     ? issuesM[1].split(',').map(s => s.replace(/^[\s"]+|[\s"]+$/g, '')).filter(Boolean).slice(0, 4)
     : [];
+  const clarM = text.match(/"?clarity_score"?\s*[:=]\s*(\d{1,2})/i);
 
   return {
     overall_score: score,
+    clarity_score: clarM ? parseInt(clarM[1], 10) : null,
     decision,
     issues,
     verdict: verdM ? verdM[1].trim() : 'Salvaged from a partial AI response.',
@@ -335,6 +350,17 @@ function moveToArticles(writerFilename, writerData, autoCheckResult, aiReviewRes
     if (existsSync(articlePath)) {
       const prev = JSON.parse(readFileSync(articlePath, 'utf-8'));
       if (prev?._meta?.published_at) publishedAt = prev._meta.published_at;
+      // FORDÍTÁS-INVALIDÁLÁS: ha a cikk SZÖVEGE megváltozott (upgrade/rework
+      // utáni újra-publikálás), a régi fordítás-cache elavult → töröljük, a
+      // fordító a következő körben újrafordítja. (Enélkül a nem-angol oldalak
+      // a RÉGI szöveget mutatnák tovább.)
+      if (prev?.article_markdown && prev.article_markdown !== writerData.article_markdown) {
+        const transPath = join(PROJECT_ROOT, 'content', 'translations', articleFilename);
+        if (existsSync(transPath)) {
+          unlinkSync(transPath);
+          console.log('   🌍 Fordítás-cache törölve (a szöveg változott — újrafordítás jön)');
+        }
+      }
     }
   } catch { /* marad az új dátum */ }
 
@@ -504,7 +530,7 @@ async function main() {
     const markdown = writerData.article_markdown;
 
     // 4a. Auto check (ingyenes)
-    const autoCheckResult = runAutoCheck(markdown);
+    const autoCheckResult = runAutoCheck(markdown, writerData._meta?.type);
     console.log(`   📐 Auto check: ${autoCheckResult.passed ? '✅ OK' : `❌ ${autoCheckResult.issues.length} probléma`}`);
     if (!autoCheckResult.passed) {
       autoCheckResult.issues.slice(0, 3).forEach(i => console.log(`      • ${i}`));
@@ -512,7 +538,7 @@ async function main() {
 
     // Ha az auto check elbukik komoly hibákkal, nem is hívunk AI-t (spórolunk)
     const criticalAutoFailures = autoCheckResult.issues.filter(i =>
-      i.startsWith('NO_FRONTMATTER') || i.startsWith('NO_H1') || i.startsWith('MISSING_SECTION')
+      i.startsWith('NO_FRONTMATTER') || i.startsWith('NO_H1') || i.startsWith('MISSING_SECTION') || i.startsWith('GUIDE_TOO_SHORT')
     );
 
     if (criticalAutoFailures.length > 0) {
@@ -556,11 +582,21 @@ Original title: ${writerData.original_title}
 
     stats.total_cost_usd += aiReviewResult._aiCost || 0;
 
-    console.log(`   🤖 AI ítélet: ${aiReviewResult.decision} (score: ${aiReviewResult.overall_score}/10)`);
+    const clarityInfo = aiReviewResult.clarity_score != null ? `, érthetőség: ${aiReviewResult.clarity_score}/10` : '';
+    console.log(`   🤖 AI ítélet: ${aiReviewResult.decision} (score: ${aiReviewResult.overall_score}/10${clarityInfo})`);
     if (aiReviewResult.verdict) console.log(`      💭 ${aiReviewResult.verdict}`);
 
     // 4c. Döntés alapján mozgatás
-    const finalPass = aiReviewResult.decision === 'PASS' && aiReviewResult.overall_score >= MIN_PASSING_SCORE;
+    // KEZDŐ-ÉRTHETŐSÉGI KAPU (guide-oknál): a clarity_score is legyen >= 7.
+    // Ha a modell nem adott clarity_score-t, NEM buktatunk (parse-variancia
+    // ne büntessen) — a fő kapu az overall + decision marad.
+    const clarityOk = writerData._meta?.type !== 'guide'
+      || aiReviewResult.clarity_score == null
+      || aiReviewResult.clarity_score >= MIN_PASSING_SCORE;
+    if (!clarityOk && !aiReviewResult.issues?.length) {
+      aiReviewResult.issues = [`Beginner clarity too low (${aiReviewResult.clarity_score}/10): steps are vague or could mislead a first-time user`];
+    }
+    const finalPass = aiReviewResult.decision === 'PASS' && aiReviewResult.overall_score >= MIN_PASSING_SCORE && clarityOk;
 
     if (finalPass) {
       const articleName = moveToArticles(writerFilename, writerData, autoCheckResult, aiReviewResult);
