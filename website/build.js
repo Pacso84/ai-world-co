@@ -183,6 +183,67 @@ const UI_DAYS = {
 };
 for (const l of SITE_LANGS) Object.assign(UI[l], UI_DAYS[l] || {});
 
+// Támogatói oldal + lábléc-leírás (user-jelzés 2026-07-03: ezek beégetett
+// angol szövegek voltak — a support.html minden nyelven angolul jelent meg)
+const UI_SUPPORT = {
+  en: { siteDesc: 'AI news and how-to guides for everyday people — fresh, friendly, jargon-free.',
+        supPill: 'Support us', supTitle: 'Keep everyday AI <em>free for everyone</em>',
+        supLead: 'AI World is a small, independent project — a team of AI agents and one human — publishing clear, jargon-free guides about AI. We keep it free and ad-light. If you find it useful, you can chip in to help cover the running costs.',
+        supCard1h: 'Hosting &amp; domain', supCard1p: 'Keeping the site online, fast and reachable for everyone.',
+        supCard2h: 'The AI newsroom', supCard2p: 'The models that research, write, fact-check and improve every article.',
+        supCard3h: 'Original artwork', supCard3p: 'The custom cover image generated for each story.',
+        supThanksH: 'To everyone who chips in — thank you. 💛',
+        supThanksP: "You keep AI World free, ad-light and open to everyone. Every coffee helps cover our hosting and powers the little AI newsroom behind every article. We're a tiny independent team, so it genuinely means the world to us.",
+        supNote: 'Supporting us is completely optional — the site stays free either way. We\'re a small independent project, not a registered charity, so your contribution is a friendly <strong>voluntary tip</strong>, not a tax-deductible donation. Thank you for reading. 💛',
+        supSoon: 'coming soon', supMetaTitle: 'Support',
+        supMetaDesc: 'Help keep AI World free and ad-light. A small voluntary tip covers our hosting and the AI that writes each article.' },
+  hu: { siteDesc: 'AI-hírek és útmutatók hétköznapi embereknek — frissen, barátságosan, szakzsargon nélkül.',
+        supPill: 'Támogass minket', supTitle: 'Maradjon a hétköznapi AI <em>mindenkinek ingyenes</em>',
+        supLead: 'Az AI World egy kicsi, független projekt — egy csapatnyi AI-ügynök és egyetlen ember —, amely közérthető, szakzsargon-mentes útmutatókat készít az AI-ról. Ingyen adjuk, alig van rajta hirdetés. Ha hasznosnak találod, bedobhatsz egy kávéra valót a működési költségekhez.',
+        supCard1h: 'Tárhely és domain', supCard1p: 'Hogy az oldal online, gyors és mindenki számára elérhető maradjon.',
+        supCard2h: 'Az AI-szerkesztőség', supCard2p: 'A modellek, amelyek minden cikket kutatnak, megírnak, tényellenőriznek és csiszolnak.',
+        supCard3h: 'Eredeti grafikák', supCard3p: 'Minden cikkhez egyedi borítókép készül.',
+        supThanksH: 'Mindenkinek, aki beszáll — köszönjük. 💛',
+        supThanksP: 'Neked köszönhető, hogy az AI World ingyenes, alig hirdetéses és mindenki előtt nyitva áll. Minden kávé a tárhelyet fedezi, és a cikkek mögötti kis AI-szerkesztőséget hajtja. Pici, független csapat vagyunk — tényleg sokat jelent.',
+        supNote: 'A támogatás teljesen önkéntes — az oldal enélkül is ingyenes marad. Kicsi, független projekt vagyunk, nem bejegyzett jótékonysági szervezet, ezért a hozzájárulásod baráti <strong>önkéntes borravaló</strong>, nem adóból leírható adomány. Köszönjük, hogy olvasol. 💛',
+        supSoon: 'hamarosan', supMetaTitle: 'Támogatás',
+        supMetaDesc: 'Segíts, hogy az AI World ingyenes és hirdetésmentes-közeli maradjon. Egy kis önkéntes borravaló fedezi a tárhelyet és a cikkeket író AI-t.' },
+  es: { siteDesc: 'Noticias y guías de IA para gente común — frescas, cercanas y sin jerga.',
+        supPill: 'Apóyanos', supTitle: 'Mantén la IA cotidiana <em>gratis para todos</em>',
+        supLead: 'AI World es un proyecto pequeño e independiente — un equipo de agentes de IA y una sola persona — que publica guías claras y sin jerga sobre la IA. Lo mantenemos gratis y casi sin anuncios. Si te resulta útil, puedes aportar algo para cubrir los costes.',
+        supCard1h: 'Alojamiento y dominio', supCard1p: 'Mantener el sitio en línea, rápido y accesible para todos.',
+        supCard2h: 'La redacción de IA', supCard2p: 'Los modelos que investigan, escriben, verifican y mejoran cada artículo.',
+        supCard3h: 'Ilustraciones originales', supCard3p: 'La imagen de portada creada para cada historia.',
+        supThanksH: 'A todos los que aportan: gracias. 💛',
+        supThanksP: 'Gracias a ti, AI World sigue siendo gratuito, con pocos anuncios y abierto a todos. Cada café ayuda a cubrir el alojamiento y alimenta la pequeña redacción de IA detrás de cada artículo. Somos un equipo diminuto e independiente, así que significa muchísimo.',
+        supNote: 'Apoyarnos es totalmente opcional: el sitio seguirá siendo gratuito de todos modos. Somos un pequeño proyecto independiente, no una organización benéfica registrada, así que tu aportación es una <strong>propina voluntaria</strong>, no un donativo desgravable. Gracias por leernos. 💛',
+        supSoon: 'muy pronto', supMetaTitle: 'Apóyanos',
+        supMetaDesc: 'Ayuda a que AI World siga siendo gratuito y casi sin anuncios. Una pequeña propina voluntaria cubre el alojamiento y la IA que escribe cada artículo.' },
+  de: { siteDesc: 'KI-News und Anleitungen für alle — frisch, freundlich, ohne Fachchinesisch.',
+        supPill: 'Unterstütze uns', supTitle: 'Halte Alltags-KI <em>für alle kostenlos</em>',
+        supLead: 'AI World ist ein kleines, unabhängiges Projekt — ein Team aus KI-Agenten und einem einzigen Menschen —, das klare, jargonfreie Anleitungen rund um KI veröffentlicht. Die Seite bleibt kostenlos und fast werbefrei. Wenn sie dir hilft, kannst du etwas zu den laufenden Kosten beisteuern.',
+        supCard1h: 'Hosting &amp; Domain', supCard1p: 'Damit die Seite online, schnell und für alle erreichbar bleibt.',
+        supCard2h: 'Die KI-Redaktion', supCard2p: 'Die Modelle, die jeden Artikel recherchieren, schreiben, prüfen und verbessern.',
+        supCard3h: 'Eigene Illustrationen', supCard3p: 'Das individuelle Titelbild zu jeder Geschichte.',
+        supThanksH: 'An alle, die etwas beisteuern — danke. 💛',
+        supThanksP: 'Dank dir bleibt AI World kostenlos, werbearm und offen für alle. Jeder Kaffee hilft beim Hosting und treibt die kleine KI-Redaktion hinter jedem Artikel an. Wir sind ein winziges unabhängiges Team — es bedeutet uns wirklich viel.',
+        supNote: 'Uns zu unterstützen ist völlig freiwillig — die Seite bleibt so oder so kostenlos. Wir sind ein kleines unabhängiges Projekt und keine eingetragene Wohltätigkeitsorganisation; dein Beitrag ist ein freundliches <strong>freiwilliges Trinkgeld</strong>, keine steuerlich absetzbare Spende. Danke fürs Lesen. 💛',
+        supSoon: 'bald verfügbar', supMetaTitle: 'Unterstützen',
+        supMetaDesc: 'Hilf mit, dass AI World kostenlos und werbearm bleibt. Ein kleines freiwilliges Trinkgeld deckt Hosting und die KI hinter jedem Artikel.' },
+  fr: { siteDesc: 'Actus et guides IA pour tous — clairs, chaleureux, sans jargon.',
+        supPill: 'Soutenez-nous', supTitle: "Gardons l'IA du quotidien <em>gratuite pour tous</em>",
+        supLead: "AI World est un petit projet indépendant — une équipe d'agents IA et un seul humain — qui publie des guides clairs et sans jargon sur l'IA. Le site reste gratuit et presque sans publicité. S'il vous est utile, vous pouvez contribuer aux frais de fonctionnement.",
+        supCard1h: 'Hébergement &amp; domaine', supCard1p: 'Garder le site en ligne, rapide et accessible à tous.',
+        supCard2h: 'La rédaction IA', supCard2p: 'Les modèles qui recherchent, écrivent, vérifient et améliorent chaque article.',
+        supCard3h: 'Illustrations originales', supCard3p: "L'image de couverture créée pour chaque article.",
+        supThanksH: 'À tous ceux qui contribuent — merci. 💛',
+        supThanksP: "Grâce à vous, AI World reste gratuit, peu publicitaire et ouvert à tous. Chaque café aide à couvrir l'hébergement et fait tourner la petite rédaction IA derrière chaque article. Nous sommes une toute petite équipe indépendante — cela compte énormément.",
+        supNote: "Nous soutenir est entièrement facultatif — le site reste gratuit quoi qu'il arrive. Nous sommes un petit projet indépendant, pas une association caritative enregistrée : votre contribution est un <strong>pourboire volontaire</strong>, pas un don déductible des impôts. Merci de nous lire. 💛",
+        supSoon: 'bientôt disponible', supMetaTitle: 'Soutenir',
+        supMetaDesc: "Aidez AI World à rester gratuit et presque sans publicité. Un petit pourboire volontaire couvre l'hébergement et l'IA qui écrit chaque article." }
+};
+for (const l of SITE_LANGS) Object.assign(UI[l], UI_SUPPORT[l] || {});
+
 // VALÓDI lapszám: hány külön napon jelent meg tartalom (a main() számolja ki).
 // A user jelezte: fixen "Issue 01"-et írt a dátum mellett — az nem igaz.
 let ISSUE_NO = 1;
@@ -491,7 +552,7 @@ function pageShell({ title, description, bodyContent, isArticle = false, noIntro
   <footer class="site-footer">
     <div class="wrap">
       <p class="site-footer__brand">${SITE.name}<span class="masthead__dot">.</span></p>
-      <p class="site-footer__note">${escapeHtml(SITE.description)}</p>
+      <p class="site-footer__note">${escapeHtml(tr('siteDesc') || SITE.description)}</p>
       ${SUPPORT.enabled ? `<p class="site-footer__support"><a href="${supportPath}">${T.support}</a></p>` : ''}
       <p class="site-footer__fine">${T.footerNote} · © ${year} AI World Co.</p>
     </div>
@@ -1082,34 +1143,34 @@ function buildGuidePage(a) {
 function buildSupportPage() {
   const cta = SUPPORT.url
     ? `<a class="support__btn" href="${escapeHtml(SUPPORT.url)}" target="_blank" rel="noopener noreferrer">☕ ${escapeHtml(SUPPORT.label)}</a>`
-    : `<span class="support__btn support__btn--soon" aria-disabled="true">☕ ${escapeHtml(SUPPORT.label)} — coming soon</span>`;
+    : `<span class="support__btn support__btn--soon" aria-disabled="true">☕ ${escapeHtml(SUPPORT.label)} — ${tr('supSoon')}</span>`;
 
   const body = `<section class="support">
-    <span class="pill">Support us</span>
-    <h1 class="support__title">Keep everyday AI <em>free for everyone</em></h1>
-    <p class="support__lead">AI World is a small, independent project — a team of AI agents and one human — publishing clear, jargon-free guides about AI. We keep it free and ad-light. If you find it useful, you can chip in to help cover the running costs.</p>
+    <span class="pill">${tr('supPill')}</span>
+    <h1 class="support__title">${tr('supTitle')}</h1>
+    <p class="support__lead">${tr('supLead')}</p>
 
     <div class="support__cta">${cta}</div>
 
     <div class="support__cards">
-      <div class="support__card"><span class="support__ico">🖥️</span><h3>Hosting &amp; domain</h3><p>Keeping the site online, fast and reachable for everyone.</p></div>
-      <div class="support__card"><span class="support__ico">🧠</span><h3>The AI newsroom</h3><p>The models that research, write, fact-check and improve every article.</p></div>
-      <div class="support__card"><span class="support__ico">🎨</span><h3>Original artwork</h3><p>The custom cover image generated for each story.</p></div>
+      <div class="support__card"><span class="support__ico">🖥️</span><h3>${tr('supCard1h')}</h3><p>${tr('supCard1p')}</p></div>
+      <div class="support__card"><span class="support__ico">🧠</span><h3>${tr('supCard2h')}</h3><p>${tr('supCard2p')}</p></div>
+      <div class="support__card"><span class="support__ico">🎨</span><h3>${tr('supCard3h')}</h3><p>${tr('supCard3p')}</p></div>
     </div>
 
     <div class="support__thanks">
-      <p class="support__thanks-h">To everyone who chips in — thank you. 💛</p>
-      <p>You keep AI World free, ad-light and open to everyone. Every coffee helps cover our hosting and powers the little AI newsroom behind every article. We're a tiny independent team, so it genuinely means the world to us.</p>
+      <p class="support__thanks-h">${tr('supThanksH')}</p>
+      <p>${tr('supThanksP')}</p>
     </div>
 
-    <p class="support__note">Supporting us is completely optional — the site stays free either way. We're a small independent project, not a registered charity, so your contribution is a friendly <strong>voluntary tip</strong>, not a tax-deductible donation. Thank you for reading. 💛</p>
+    <p class="support__note">${tr('supNote')}</p>
 
     <a href="index.html" class="back-link">${tr('backStories')}</a>
   </section>`;
 
   return pageShell({
-    title: `Support — ${SITE.name}`,
-    description: 'Help keep AI World free and ad-light. A small voluntary tip covers our hosting and the AI that writes each article.',
+    title: `${tr('supMetaTitle')} — ${SITE.name}`,
+    description: tr('supMetaDesc'),
     noIntro: true, pagePath: 'support.html',
     bodyContent: body
   });
