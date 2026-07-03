@@ -590,11 +590,11 @@ async function writeGuide(topic, brandContext) {
   const skills = skillsBlock('guide');
   const userPrompt = buildUserPrompt(topic, brandContext, lessons, skills);
 
-  let response = await ask(userPrompt, { agentName: AGENT_NAME, systemPrompt: GUIDE_SYSTEM_PROMPT, maxTokens: 4500 });
+  let response = await ask(userPrompt, { agentName: AGENT_NAME, systemPrompt: GUIDE_SYSTEM_PROMPT, maxTokens: 10000 });
   if (response && !hasGuideStructure(response.text)) {
     console.log('   ↻ Hiányos szerkezet — újrapróbálom nyomatékkal...');
     const retry = await ask(userPrompt + `\n\n⚠️ CRITICAL: Use YAML frontmatter (---), at least 2 "## Step N — …" headings, and a "## What this means for you" section. Write the full guide again.`,
-      { agentName: AGENT_NAME, systemPrompt: GUIDE_SYSTEM_PROMPT, maxTokens: 4500 });
+      { agentName: AGENT_NAME, systemPrompt: GUIDE_SYSTEM_PROMPT, maxTokens: 10000 });
     if (retry && hasGuideStructure(retry.text)) { retry.costUsd += response.costUsd; response = retry; }
   }
   return response;
@@ -669,10 +669,10 @@ ${brandContext}${lessons}${skills}
 
 Now output ONLY the corrected guide markdown — no commentary.`;
 
-  let response = await ask(userPrompt, { agentName: AGENT_NAME, systemPrompt: GUIDE_SYSTEM_PROMPT, maxTokens: 4500 });
+  let response = await ask(userPrompt, { agentName: AGENT_NAME, systemPrompt: GUIDE_SYSTEM_PROMPT, maxTokens: 10000 });
   if (response && !hasGuideStructure(response.text)) {
     const retry = await ask(userPrompt + `\n\n⚠️ CRITICAL: Use YAML frontmatter (---), at least 2 "## Step N — …" headings, and a "## What this means for you" section. Write the full corrected guide again.`,
-      { agentName: AGENT_NAME, systemPrompt: GUIDE_SYSTEM_PROMPT, maxTokens: 4500 });
+      { agentName: AGENT_NAME, systemPrompt: GUIDE_SYSTEM_PROMPT, maxTokens: 10000 });
     if (retry && hasGuideStructure(retry.text)) { retry.costUsd += response.costUsd; response = retry; }
   }
   return response;
@@ -813,10 +813,10 @@ ${brandContext}${skills}
 
 Now output ONLY the upgraded guide markdown — no commentary.`;
 
-  let response = await ask(userPrompt, { agentName: AGENT_NAME, systemPrompt: GUIDE_SYSTEM_PROMPT, maxTokens: 4500 });
+  let response = await ask(userPrompt, { agentName: AGENT_NAME, systemPrompt: GUIDE_SYSTEM_PROMPT, maxTokens: 10000 });
   if (response && !hasGuideStructure(response.text)) {
     const retry = await ask(userPrompt + `\n\n⚠️ CRITICAL: Use YAML frontmatter (---), at least 2 "## Step N — …" headings, and a "## What this means for you" section. Write the full upgraded guide again.`,
-      { agentName: AGENT_NAME, systemPrompt: GUIDE_SYSTEM_PROMPT, maxTokens: 4500 });
+      { agentName: AGENT_NAME, systemPrompt: GUIDE_SYSTEM_PROMPT, maxTokens: 10000 });
     if (retry && hasGuideStructure(retry.text)) { retry.costUsd += response.costUsd; response = retry; }
   }
   return response;
