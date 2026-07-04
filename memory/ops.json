@@ -1,102 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178301324442159",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-02T17:27:24.421Z",
-      "updated": "2026-07-02T17:27:24.645Z"
-    },
-    {
-      "id": "t178301324465474",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-02T17:27:24.654Z",
-      "updated": "2026-07-02T17:27:24.851Z"
-    },
-    {
-      "id": "t178301324485220",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-02T17:27:24.852Z",
-      "updated": "2026-07-02T17:27:25.053Z"
-    },
-    {
-      "id": "t178301324505534",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-02T17:27:25.055Z",
-      "updated": "2026-07-02T17:27:26.173Z"
-    },
-    {
-      "id": "t178301324617434",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-02T17:27:26.174Z",
-      "updated": "2026-07-02T17:27:26.366Z"
-    },
-    {
-      "id": "t178301324636962",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-02T17:27:26.369Z",
-      "updated": "2026-07-02T17:27:33.911Z"
-    },
-    {
-      "id": "t178301325391387",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-07-02T17:27:33.913Z",
-      "updated": "2026-07-02T17:27:34.188Z"
-    },
-    {
-      "id": "t178301325418944",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-02T17:27:34.189Z",
-      "updated": "2026-07-02T17:27:34.420Z"
-    },
-    {
-      "id": "t178301325442123",
-      "title": "Run translator",
-      "status": "done",
-      "agent": "translator",
-      "created": "2026-07-02T17:27:34.421Z",
-      "updated": "2026-07-02T17:27:34.714Z"
-    },
-    {
-      "id": "t178301325471518",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-07-02T17:27:34.715Z",
-      "updated": "2026-07-02T17:27:36.102Z"
-    },
-    {
-      "id": "t178304357567863",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-07-03T01:52:55.678Z",
-      "updated": "2026-07-03T01:53:05.922Z"
-    },
-    {
-      "id": "t178304358592461",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-07-03T01:53:05.924Z",
-      "updated": "2026-07-03T01:53:06.177Z"
-    },
-    {
       "id": "t178304358617967",
       "title": "Run iro",
       "status": "done",
@@ -479,6 +383,102 @@
       "agent": "publisher",
       "created": "2026-07-04T02:07:54.680Z",
       "updated": "2026-07-04T02:07:58.213Z"
+    },
+    {
+      "id": "t178315913046992",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-07-04T09:58:50.469Z",
+      "updated": "2026-07-04T09:58:59.619Z"
+    },
+    {
+      "id": "t178315913962161",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-07-04T09:58:59.621Z",
+      "updated": "2026-07-04T09:58:59.864Z"
+    },
+    {
+      "id": "t178315913986611",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-07-04T09:58:59.866Z",
+      "updated": "2026-07-04T09:59:00.097Z"
+    },
+    {
+      "id": "t178315914009953",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-04T09:59:00.099Z",
+      "updated": "2026-07-04T09:59:00.306Z"
+    },
+    {
+      "id": "t178315914031395",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-07-04T09:59:00.313Z",
+      "updated": "2026-07-04T09:59:33.369Z"
+    },
+    {
+      "id": "t178315917337143",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-04T09:59:33.371Z",
+      "updated": "2026-07-04T09:59:34.812Z"
+    },
+    {
+      "id": "t178315917481780",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-07-04T09:59:34.817Z",
+      "updated": "2026-07-04T09:59:35.048Z"
+    },
+    {
+      "id": "t178315917506166",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-04T09:59:35.061Z",
+      "updated": "2026-07-04T09:59:38.855Z"
+    },
+    {
+      "id": "t178315917885769",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-07-04T09:59:38.857Z",
+      "updated": "2026-07-04T10:01:38.187Z"
+    },
+    {
+      "id": "t178315929818937",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-04T10:01:38.189Z",
+      "updated": "2026-07-04T10:01:40.035Z"
+    },
+    {
+      "id": "t178315930003697",
+      "title": "Run translator",
+      "status": "done",
+      "agent": "translator",
+      "created": "2026-07-04T10:01:40.036Z",
+      "updated": "2026-07-04T10:05:22.840Z"
+    },
+    {
+      "id": "t178315952284251",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-07-04T10:05:22.842Z",
+      "updated": "2026-07-04T10:05:27.971Z"
     }
   ],
   "notifications": [
@@ -945,54 +945,33 @@
       "agent": "ceo",
       "at": "2026-07-04T02:07:58.224Z",
       "loud": false
+    },
+    {
+      "id": "n178315929817639",
+      "level": "info",
+      "text": "SEO: 31 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-07-04T10:01:38.176Z",
+      "loud": false
+    },
+    {
+      "id": "n178315952631913",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). Our latest line-up is coherent and ready to publish, featuring a range of practical articles that showcase everyday uses of AI. I do note that some readers new to AI may appreciate a gentle introducti",
+      "agent": "publisher",
+      "at": "2026-07-04T10:05:26.319Z",
+      "loud": false
+    },
+    {
+      "id": "n178315952798461",
+      "level": "success",
+      "text": "0 hír + 2 útmutató publikálva (költség: $0.0043).",
+      "agent": "ceo",
+      "at": "2026-07-04T10:05:27.984Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178298883691551",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Mapping Europe’s AI Workforce Opportunity\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; Reviewer verdict: Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben; újraküldöm.",
-      "ref": "2026-06-30T16-43-12-110Z_openai-blog_Mapping_Europe_s_AI_Workforce_Opportunity.json",
-      "at": "2026-07-02T10:40:36.915Z"
-    },
-    {
-      "id": "m178298885029553",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Create fully native and editable presentations with Gemini in Google Slides\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; Reviewer verdict: Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben; újraküldöm.",
-      "ref": "2026-06-30T16-43-13-543Z_google-workspace_Create_fully_native_and_editable_presentations_wit.json",
-      "at": "2026-07-02T10:40:50.295Z"
-    },
-    {
-      "id": "m178298885939893",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Data regions support for the Gemini app now available \" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; Reviewer verdict: Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben; újraküldöm.",
-      "ref": "2026-06-30T16-43-13-543Z_google-workspace_Data_regions_support_for_the_Gemini_app_now_availa.json",
-      "at": "2026-07-02T10:40:59.398Z"
-    },
-    {
-      "id": "m178298886799981",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Claude Meets Blackwell Ultra: Anthropic’s Models Now Run on NVIDIA GB300 in Azure\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; CLICHE: Tiltott klisé találva: \"game-changer\"; újraküldöm.",
-      "ref": "2026-06-30T16-43-13-543Z_nvidia-blog_Claude_Meets_Blackwell_Ultra__Anthropic_s_Models_N.json",
-      "at": "2026-07-02T10:41:07.999Z"
-    },
-    {
-      "id": "m178298887516151",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Open Models, Closed Environments: Palantir Brings Secure AI to US Agencies With NVIDIA Nemotron\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; Reviewer verdict: Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben; újraküldöm.",
-      "ref": "2026-06-30T16-43-13-543Z_nvidia-blog_Open_Models__Closed_Environments__Palantir_Brings_.json",
-      "at": "2026-07-02T10:41:15.161Z"
-    },
     {
       "id": "m178298888195938",
       "from": "iro",
@@ -2305,6 +2284,51 @@
       "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 16 → 4/4/2 oszlop.",
       "ref": "mobile",
       "at": "2026-07-04T02:00:42.098Z"
+    },
+    {
+      "id": "m178315914317799",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Plan a weekly grocery list using Apple Intelligence’s Siri shortcuts\" — javítva: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "GUIDE_plan-a-weekly-grocery-list-using-apple-intelligence-s-siri-s.json",
+      "at": "2026-07-04T09:59:03.177Z"
+    },
+    {
+      "id": "m178315917335852",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Set up a home‑assistant chatbot with NVIDIA ChatRTX on your PC\" — javítva: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "GUIDE_set-up-a-home-assistant-chatbot-with-nvidia-chatrtx-on-your-.json",
+      "at": "2026-07-04T09:59:33.358Z"
+    },
+    {
+      "id": "m178315917418073",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Plan a weekly grocery list using Apple Intelligence’s Siri shortcuts\" (?/10)",
+      "ref": "GUIDE_plan-a-weekly-grocery-list-using-apple-intelligence-s-siri-s.json",
+      "at": "2026-07-04T09:59:34.180Z"
+    },
+    {
+      "id": "m17831591747897",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Set up a home‑assistant chatbot with NVIDIA ChatRTX on your PC\" (?/10)",
+      "ref": "GUIDE_set-up-a-home-assistant-chatbot-with-nvidia-chatrtx-on-your-.json",
+      "at": "2026-07-04T09:59:34.789Z"
+    },
+    {
+      "id": "m178315930002343",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 16 → 4/4/2 oszlop.",
+      "ref": "mobile",
+      "at": "2026-07-04T10:01:40.023Z"
     }
   ]
 }
