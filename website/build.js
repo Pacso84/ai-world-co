@@ -47,7 +47,10 @@ try {
     bing: (company.bing_site_verification || '').trim(),
     // Google FÁJLOS igazolás (Search Console "HTML file" módszer): a build minden
     // futáskor újrateremti a gyökérben, így a deploy sosem veszíti el.
-    googleFile: (company.google_site_verification_file || '').trim()
+    googleFile: (company.google_site_verification_file || '').trim(),
+    // IndexNow kulcs — SZÁNDÉKOSAN nyilvános (a protokoll így igazolja a
+    // tulajdonjogot: a kulcsfájlt a webhelyen kell kiszolgálni). Nem titok!
+    indexnow: (company.indexnow_key || '').trim()
   };
 } catch {}
 
@@ -1393,6 +1396,12 @@ Original content by ${SITE.name} — written and quality-checked by an autonomou
 `;
   writeFileSync(join(OUT_DIR, 'llms.txt'), llms, 'utf-8');
   console.log('✅ llms.txt generálva (AI-kereső oldal-térkép)');
+
+  // IndexNow kulcsfájl (a .txt-t a szép-URL nem irányítja át, sima 200)
+  if (VERIFY.indexnow) {
+    writeFileSync(join(OUT_DIR, `${VERIFY.indexnow}.txt`), VERIFY.indexnow, 'utf-8');
+    console.log('✅ IndexNow kulcsfájl generálva');
+  }
 
   // Google Search Console fájlos igazolás (a fájl TARTALMA kötelezően ez a formátum).
   // A .html-t a Pages "szép URL"-je 308-cal átirányítaná (a Google pontos 200-at

@@ -63,6 +63,11 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: npx --yes wrangler pages deploy website/public --project-name=aiworldco --branch=main --commit-dirty=true
 
+      # IndexNow: a friss cikkeket AZONNAL bejelentjük a keresőknek (Bing =
+      # a ChatGPT-kereső indexe). Hiba esetén nem dönti el a futást (|| true).
+      - name: IndexNow — friss URL-ek bejelentése
+        run: node core/indexnow.js || true
+
       - name: Generált tartalom megőrzése (visszacommit)
         run: |
           git config user.name "AI World Bot"
