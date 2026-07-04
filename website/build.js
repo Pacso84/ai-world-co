@@ -1394,9 +1394,14 @@ Original content by ${SITE.name} — written and quality-checked by an autonomou
   writeFileSync(join(OUT_DIR, 'llms.txt'), llms, 'utf-8');
   console.log('✅ llms.txt generálva (AI-kereső oldal-térkép)');
 
-  // Google Search Console fájlos igazolás (a fájl TARTALMA kötelezően ez a formátum)
+  // Google Search Console fájlos igazolás (a fájl TARTALMA kötelezően ez a formátum).
+  // A .html-t a Pages "szép URL"-je 308-cal átirányítaná (a Google pontos 200-at
+  // vár), ezért a tartalmat .txt MÁSOLATBAN is kitesszük, és a _redirects a
+  // .html címet arra rewrite-olja (200, cím-változás nélkül).
   if (VERIFY.googleFile) {
-    writeFileSync(join(OUT_DIR, VERIFY.googleFile), `google-site-verification: ${VERIFY.googleFile}`, 'utf-8');
+    const verifyBody = `google-site-verification: ${VERIFY.googleFile}`;
+    writeFileSync(join(OUT_DIR, VERIFY.googleFile), verifyBody, 'utf-8');
+    writeFileSync(join(OUT_DIR, 'google-verify.txt'), verifyBody, 'utf-8');
     console.log(`✅ ${VERIFY.googleFile} (Search Console igazolás)`);
   }
 
@@ -1404,7 +1409,10 @@ Original content by ${SITE.name} — written and quality-checked by an autonomou
   // aki a régi aiworldco.pages.dev címen jön, 301-gyel a saját domainre kerül.
   // A 301 a Google-nek is szól: a rangsor-erő átköltözik az új címre.
   // FIGYELEM: csak akkor élesíthető, ha a custom domain már AKTÍV a Pages-en!
-  writeFileSync(join(OUT_DIR, '_redirects'), `https://aiworldco.pages.dev/* ${SITE.url}/:splat 301\n`, 'utf-8');
+  // + A Google-igazoló fájlt a "szép URL" 308-as átirányítása ALÓL kivesszük
+  //   (200-as rewrite önmagára): a Search Console pontos 200-at vár.
+  const verifyRule = VERIFY.googleFile ? `/${VERIFY.googleFile} /google-verify.txt 200\n` : '';
+  writeFileSync(join(OUT_DIR, '_redirects'), `${verifyRule}https://aiworldco.pages.dev/* ${SITE.url}/:splat 301\n`, 'utf-8');
   console.log('✅ _redirects generálva (pages.dev → saját domain, 301)');
 
   // 404.html — KRITIKUS SEO-elem: enélkül a Cloudflare Pages "egyoldalas app"
