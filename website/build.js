@@ -136,8 +136,8 @@ const UI_GUIDES = {
         comingSoon: 'Guides are on their way — check back shortly.',
         audPersonal: 'Everyday life', audBusiness: 'Business', audBoth: 'Life & Business',
         aiSkills: 'AI skills', coverSub: 'For everyday people', exampleLabel: 'Example', tryTyping: 'Try typing this', xrefNews: 'What prompted this guide', xrefGuide: 'Want to try it? Step-by-step guide',
-        disclosureNews: "✦ Original guide written by AI World Co.'s own AI editorial team. Reviewed for accuracy and clarity.",
-        disclosureGuide: "✦ Original step-by-step guide by AI World Co.'s AI editorial team. Written in plain language, reviewed for accuracy." },
+        disclosureNews: "✦ Original guide written by AI World HQ's own AI editorial team. Reviewed for accuracy and clarity.",
+        disclosureGuide: "✦ Original step-by-step guide by AI World HQ's AI editorial team. Written in plain language, reviewed for accuracy." },
   hu: { tagline: 'AI-hírek, közérthetően', forEveryone: 'Mindenkinek',
         lvl_beginner: 'kezdő', lvl_intermediate: 'középhaladó', lvl_advanced: 'haladó',
         guideWordOne: 'útmutató', guideWordMany: 'útmutató',
@@ -146,8 +146,8 @@ const UI_GUIDES = {
         comingSoon: 'Az útmutatók úton vannak — nézz vissza hamarosan.',
         audPersonal: 'Hétköznapok', audBusiness: 'Üzlet', audBoth: 'Otthon és munka',
         aiSkills: 'AI-készségek', coverSub: 'Hétköznapi embereknek', exampleLabel: 'Példa', tryTyping: 'Írd be ezt', xrefNews: 'Ebből a hírből született az útmutató', xrefGuide: 'Kipróbálnád? Lépésről lépésre útmutató',
-        disclosureNews: '✦ Az AI World Co. saját AI-szerkesztősége által írt eredeti cikk. Pontosságra és érthetőségre ellenőrizve.',
-        disclosureGuide: '✦ Az AI World Co. AI-szerkesztőségének eredeti, lépésről lépésre útmutatója. Közérthetően írva, pontosságra ellenőrizve.' },
+        disclosureNews: '✦ Az AI World HQ saját AI-szerkesztősége által írt eredeti cikk. Pontosságra és érthetőségre ellenőrizve.',
+        disclosureGuide: '✦ Az AI World HQ AI-szerkesztőségének eredeti, lépésről lépésre útmutatója. Közérthetően írva, pontosságra ellenőrizve.' },
   es: { tagline: 'Noticias de IA, en lenguaje claro', forEveryone: 'Para todos',
         lvl_beginner: 'principiante', lvl_intermediate: 'intermedio', lvl_advanced: 'avanzado',
         guideWordOne: 'guía', guideWordMany: 'guías',
@@ -156,8 +156,8 @@ const UI_GUIDES = {
         comingSoon: 'Las guías están en camino — vuelve pronto.',
         audPersonal: 'Día a día', audBusiness: 'Negocios', audBoth: 'Vida y negocios',
         aiSkills: 'Habilidades de IA', coverSub: 'Para el día a día', exampleLabel: 'Ejemplo', tryTyping: 'Escribe esto', xrefNews: 'La noticia detrás de esta guía', xrefGuide: '¿Quieres probarlo? Guía paso a paso',
-        disclosureNews: '✦ Artículo original escrito por el equipo editorial de IA de AI World Co. Revisado para mayor precisión y claridad.',
-        disclosureGuide: '✦ Guía original paso a paso del equipo editorial de IA de AI World Co. Escrita en lenguaje claro y revisada para mayor precisión.' },
+        disclosureNews: '✦ Artículo original escrito por el equipo editorial de IA de AI World HQ Revisado para mayor precisión y claridad.',
+        disclosureGuide: '✦ Guía original paso a paso del equipo editorial de IA de AI World HQ Escrita en lenguaje claro y revisada para mayor precisión.' },
   de: { tagline: 'KI-News, verständlich erklärt', forEveryone: 'Für alle',
         lvl_beginner: 'Einsteiger', lvl_intermediate: 'Mittelstufe', lvl_advanced: 'Profi',
         guideWordOne: 'Anleitung', guideWordMany: 'Anleitungen',
@@ -166,8 +166,8 @@ const UI_GUIDES = {
         comingSoon: 'Die Anleitungen sind unterwegs — schau bald wieder vorbei.',
         audPersonal: 'Alltag', audBusiness: 'Business', audBoth: 'Alltag & Business',
         aiSkills: 'KI-Können', coverSub: 'Für den Alltag', exampleLabel: 'Beispiel', tryTyping: 'Tipp das ein', xrefNews: 'Die News hinter dieser Anleitung', xrefGuide: 'Ausprobieren? Schritt-für-Schritt-Anleitung',
-        disclosureNews: '✦ Originalartikel, geschrieben vom KI-Redaktionsteam von AI World Co. Auf Richtigkeit und Klarheit geprüft.',
-        disclosureGuide: '✦ Original-Schritt-für-Schritt-Anleitung vom KI-Redaktionsteam von AI World Co. Verständlich geschrieben, auf Richtigkeit geprüft.' },
+        disclosureNews: '✦ Originalartikel, geschrieben vom KI-Redaktionsteam von AI World HQ Auf Richtigkeit und Klarheit geprüft.',
+        disclosureGuide: '✦ Original-Schritt-für-Schritt-Anleitung vom KI-Redaktionsteam von AI World HQ Verständlich geschrieben, auf Richtigkeit geprüft.' },
   fr: { tagline: "L'actu IA, en langage clair", forEveryone: 'Pour tous',
         lvl_beginner: 'débutant', lvl_intermediate: 'intermédiaire', lvl_advanced: 'avancé',
         guideWordOne: 'guide', guideWordMany: 'guides',
@@ -176,8 +176,8 @@ const UI_GUIDES = {
         comingSoon: 'Les guides arrivent — revenez bientôt.',
         audPersonal: 'Quotidien', audBusiness: 'Pro', audBoth: 'Perso & pro',
         aiSkills: 'Compétences IA', coverSub: 'Pour tous les jours', exampleLabel: 'Exemple', tryTyping: 'Essayez ceci', xrefNews: "L'actu derrière ce guide", xrefGuide: "Envie d'essayer ? Guide pas à pas",
-        disclosureNews: "✦ Article original rédigé par l'équipe éditoriale IA d'AI World Co. Vérifié pour l'exactitude et la clarté.",
-        disclosureGuide: "✦ Guide original pas à pas de l'équipe éditoriale IA d'AI World Co. Rédigé en langage clair, vérifié pour l'exactitude." }
+        disclosureNews: "✦ Article original rédigé par l'équipe éditoriale IA d'AI World HQ Vérifié pour l'exactitude et la clarté.",
+        disclosureGuide: "✦ Guide original pas à pas de l'équipe éditoriale IA d'AI World HQ Rédigé en langage clair, vérifié pour l'exactitude." }
 };
 for (const l of SITE_LANGS) Object.assign(UI[l], UI_GUIDES[l] || {});
 
@@ -564,7 +564,7 @@ function pageShell({ title, description, bodyContent, isArticle = false, noIntro
       <p class="site-footer__brand">${SITE.name}<span class="masthead__dot">.</span></p>
       <p class="site-footer__note">${escapeHtml(tr('siteDesc') || SITE.description)}</p>
       ${SUPPORT.enabled ? `<p class="site-footer__support"><a href="${supportPath}">${T.support}</a></p>` : ''}
-      <p class="site-footer__fine">${T.footerNote} · © ${year} AI World Co.</p>
+      <p class="site-footer__fine">${T.footerNote} · © ${year} AI World HQ</p>
     </div>
   </footer>
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
