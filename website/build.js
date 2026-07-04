@@ -44,7 +44,10 @@ try {
   };
   VERIFY = {
     google: (company.google_site_verification || '').trim(),
-    bing: (company.bing_site_verification || '').trim()
+    bing: (company.bing_site_verification || '').trim(),
+    // Google FÁJLOS igazolás (Search Console "HTML file" módszer): a build minden
+    // futáskor újrateremti a gyökérben, így a deploy sosem veszíti el.
+    googleFile: (company.google_site_verification_file || '').trim()
   };
 } catch {}
 
@@ -1390,6 +1393,12 @@ Original content by ${SITE.name} — written and quality-checked by an autonomou
 `;
   writeFileSync(join(OUT_DIR, 'llms.txt'), llms, 'utf-8');
   console.log('✅ llms.txt generálva (AI-kereső oldal-térkép)');
+
+  // Google Search Console fájlos igazolás (a fájl TARTALMA kötelezően ez a formátum)
+  if (VERIFY.googleFile) {
+    writeFileSync(join(OUT_DIR, VERIFY.googleFile), `google-site-verification: ${VERIFY.googleFile}`, 'utf-8');
+    console.log(`✅ ${VERIFY.googleFile} (Search Console igazolás)`);
+  }
 
   // _redirects — a pages.dev "ál-domain" ELTÜNTETÉSE (user-kérés 2026-07-03):
   // aki a régi aiworldco.pages.dev címen jön, 301-gyel a saját domainre kerül.
