@@ -1,86 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178304358617967",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-07-03T01:53:06.179Z",
-      "updated": "2026-07-03T01:53:10.157Z"
-    },
-    {
-      "id": "t178304359015918",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-03T01:53:10.159Z",
-      "updated": "2026-07-03T01:53:11.762Z"
-    },
-    {
-      "id": "t178304359176622",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-07-03T01:53:11.766Z",
-      "updated": "2026-07-03T01:53:47.699Z"
-    },
-    {
-      "id": "t178304362770152",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-03T01:53:47.701Z",
-      "updated": "2026-07-03T01:54:20.643Z"
-    },
-    {
-      "id": "t178304366064948",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-07-03T01:54:20.649Z",
-      "updated": "2026-07-03T01:55:45.611Z"
-    },
-    {
-      "id": "t178304374562147",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-03T01:55:45.621Z",
-      "updated": "2026-07-03T01:57:11.828Z"
-    },
-    {
-      "id": "t178304383182923",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-03T01:57:11.829Z",
-      "updated": "2026-07-03T01:57:40.678Z"
-    },
-    {
-      "id": "t17830438606884",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-03T01:57:40.688Z",
-      "updated": "2026-07-03T01:58:14.976Z"
-    },
-    {
-      "id": "t178304389497977",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-07-03T01:58:14.979Z",
-      "updated": "2026-07-03T02:04:27.010Z"
-    },
-    {
-      "id": "t178304426701250",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-03T02:04:27.012Z",
-      "updated": "2026-07-03T02:04:30.080Z"
-    },
-    {
       "id": "t178304427008196",
       "title": "Run translator",
       "status": "done",
@@ -479,6 +399,86 @@
       "agent": "publisher",
       "created": "2026-07-04T10:05:22.842Z",
       "updated": "2026-07-04T10:05:27.971Z"
+    },
+    {
+      "id": "t17831839454006",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-07-04T16:52:25.400Z",
+      "updated": "2026-07-04T16:52:34.156Z"
+    },
+    {
+      "id": "t178318395415836",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-07-04T16:52:34.158Z",
+      "updated": "2026-07-04T16:52:34.418Z"
+    },
+    {
+      "id": "t17831839544204",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-07-04T16:52:34.420Z",
+      "updated": "2026-07-04T16:52:34.625Z"
+    },
+    {
+      "id": "t178318395462748",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-04T16:52:34.627Z",
+      "updated": "2026-07-04T16:52:34.843Z"
+    },
+    {
+      "id": "t178318395484934",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-07-04T16:52:34.849Z",
+      "updated": "2026-07-04T16:52:35.117Z"
+    },
+    {
+      "id": "t178318395513026",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-04T16:52:35.130Z",
+      "updated": "2026-07-04T16:52:35.353Z"
+    },
+    {
+      "id": "t178318395535493",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-07-04T16:52:35.354Z",
+      "updated": "2026-07-04T16:52:35.571Z"
+    },
+    {
+      "id": "t178318395557394",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-04T16:52:35.573Z",
+      "updated": "2026-07-04T16:52:36.407Z"
+    },
+    {
+      "id": "t178318395640961",
+      "title": "Run translator",
+      "status": "done",
+      "agent": "translator",
+      "created": "2026-07-04T16:52:36.409Z",
+      "updated": "2026-07-04T16:52:36.732Z"
+    },
+    {
+      "id": "t178318395673393",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-07-04T16:52:36.733Z",
+      "updated": "2026-07-04T16:52:39.791Z"
     }
   ],
   "notifications": [
@@ -969,18 +969,25 @@
       "agent": "ceo",
       "at": "2026-07-04T10:05:27.984Z",
       "loud": false
+    },
+    {
+      "id": "n178318395814891",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). Our latest lineup is coherent and ready to publish, with a great mix of practical articles that showcase AI's everyday applications. I do note that some topics may be tech-heavy, so a gentle intro or ",
+      "agent": "publisher",
+      "at": "2026-07-04T16:52:38.148Z",
+      "loud": false
+    },
+    {
+      "id": "n178318395980325",
+      "level": "info",
+      "text": "Pipeline lefutott — ma nem volt publikálható új tartalom.",
+      "agent": "ceo",
+      "at": "2026-07-04T16:52:39.803Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178298888195938",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Run NVIDIA Nemotron and OpenAI GPT OSS models on Amazon Bedrock in AWS GovCloud (US)\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; Reviewer verdict: Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben; újraküldöm.",
-      "ref": "2026-07-02T02-09-20-689Z_aws-ml_Run_NVIDIA_Nemotron_and_OpenAI_GPT_OSS_models_on_A.json",
-      "at": "2026-07-02T10:41:21.959Z"
-    },
     {
       "id": "m178298888931349",
       "from": "iro",
@@ -2329,6 +2336,15 @@
       "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 16 → 4/4/2 oszlop.",
       "ref": "mobile",
       "at": "2026-07-04T10:01:40.023Z"
+    },
+    {
+      "id": "m17831839563693",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 16 → 4/4/2 oszlop.",
+      "ref": "mobile",
+      "at": "2026-07-04T16:52:36.369Z"
     }
   ]
 }
