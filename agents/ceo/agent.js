@@ -79,6 +79,9 @@ function countReworkable() {
     .filter(f => {
       try {
         const d = JSON.parse(readFileSync(join(REJECTED_DIR, f), 'utf-8'));
+        // 3 napnál öregebb bukott hír = lejárt, nem számít újraírandónak (iro-val egyezően)
+        const age = Date.now() - new Date(d._meta?.rejected_at || d._meta?.written_at || 0).getTime();
+        if (age > 72 * 3600e3) return false;
         return d._meta?.type !== 'guide' && d._meta?.can_retry !== false && (d._meta?.rework_attempts || 0) < MAX_REWORK_ATTEMPTS;
       } catch { return false; }
     }).length;

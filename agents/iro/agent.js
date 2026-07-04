@@ -367,6 +367,11 @@ function listRejectedForRework() {
       try {
         const data = JSON.parse(readFileSync(join(REJECTED_DIR, f), 'utf-8'));
         const attempts = data._meta?.rework_attempts || 0;
+        // LEJÁRAT (2026-07-04): 3 napnál öregebb bukott HÍRT nem írunk újra —
+        // mire átmenne, már senkit sem érdekel. (A napi hír-keret miatt a rework
+        // gyakran kimaradt, és a régi bukások örökre felhalmozódtak.)
+        const age = Date.now() - new Date(data._meta?.rejected_at || data._meta?.written_at || 0).getTime();
+        if (age > 72 * 3600e3) return false;
         // Az útmutatókat (type=guide) az Író NEM dolgozza át (cikké írná) — kihagyjuk
         return data._meta?.type !== 'guide' && data._meta?.can_retry !== false && attempts < MAX_REWORK_ATTEMPTS;
       } catch { return false; }
