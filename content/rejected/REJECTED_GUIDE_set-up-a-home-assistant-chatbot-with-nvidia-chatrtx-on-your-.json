@@ -1,0 +1,44 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "set-up-a-home-assistant-chatbot-with-nvidia-chatrtx-on-your-",
+    "company": "NVIDIA",
+    "tool": "NVIDIA ChatRTX",
+    "icon": "🤖",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-07-04T01:53:55.636Z",
+    "writer_provider": "mistral",
+    "writer_model": "mistral-small-latest",
+    "writer_cost_usd": 0.0035646,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "rejected",
+    "rejected_at": "2026-07-04T01:55:06.336Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 956
+    },
+    "ai_review": {
+      "overall_score": 7,
+      "clarity_score": 6,
+      "decision": "FAIL",
+      "issues": [
+        "Beginner clarity too low (6/10): steps are vague or could mislead a first-time user"
+      ],
+      "verdict": "Salvaged from a partial AI response.",
+      "_salvaged": true,
+      "_aiCost": 0.0008558999999999999,
+      "_provider": "google",
+      "_model": "gemini-2.5-flash",
+      "_attempts": 1
+    },
+    "reason": "Salvaged from a partial AI response.",
+    "can_retry": true
+  },
+  "article_markdown": "---\ntitle: \"Set up a home‑assistant chatbot with NVIDIA ChatRTX on your PC\"\nsubtitle: \"Run a friendly AI assistant on your own computer to answer household questions, control smart devices, and keep a daily journal.\"\ncategory: \"guide\"\naudience: \"personal\"\ncompany: \"NVIDIA\"\ntool: \"ChatRTX\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"getting-started\", \"nvidia\", \"chatrtx\", \"local-ai\"]\n---\n\n# Set up a home‑assistant chatbot with NVIDIA ChatRTX on your PC\n\nTurn your Windows PC into a helpful home assistant that can answer questions, control smart lights, and keep a daily journal — all without sending your data to the cloud.\n\n## Before you start\n- A Windows PC with at least **8 GB of RAM** and **20 GB of free disk space**.\n- An **NVIDIA GPU** (GTX 1650 or better; RTX cards work best).\n- A **free NVIDIA account** at [https://www.nvidia.com](https://www.nvidia.com).\n- Roughly **20 minutes** of your time.\n\n> ⚠️ ChatRTX is free for personal use. Some advanced features may need an RTX GPU.\n\n---\n\n## Step 1 — Download the ChatRTX installer\nOpen your web browser and go to the official NVIDIA ChatRTX page. Look for a button like **Download for Windows** or **Get ChatRTX**. Click it to start the download.\n\nAfter you click, the installer file (usually named something like `ChatRTX_Setup.exe`) will begin downloading. When the download finishes, open the file from your **Downloads** folder.\n\nYou'll know it worked when you see the installer window open on your screen.\n\n💬 Example:\n> If you don’t see the installer, check your browser’s download list or your Downloads folder.\n\n---\n\n## Step 2 — Run the installer and agree to the terms\nDouble-click the installer file you just downloaded. A window will appear asking you to accept the license agreement. Read it if you like, then tick the box that says **I accept the terms** and click **Install**.\n\nThe installer will copy files and set up the program. This can take a few minutes. When it’s done, you’ll see a message that says **Installation Complete**.\n\nYou'll know it worked when the installer closes and you see a shortcut on your desktop called **NVIDIA ChatRTX**.\n\n💬 Example:\n> If the installer asks for admin rights, click **Yes** to continue.\n\n---\n\n## Step 3 — Launch ChatRTX and sign in\nDouble-click the **NVIDIA ChatRTX** shortcut on your desktop. A window will open with a sign-in button. Click it and enter the email and password for your NVIDIA account.\n\nAfter you sign in, the app will open to a chat window. You’ll see a welcome message and a blinking cursor ready for your first message.\n\nYou'll know it worked when you see the chat prompt and can type a message.\n\n💬 Example:\n> If the sign-in button is missing, look for a small person icon in the top-right corner.\n\n---\n\n## Step 4 — Pick your assistant model\nIn the top-left corner of the ChatRTX window, click the dropdown that says **Select Model**. Choose **mistral-7b-instruct-v0.2.Q4_K_M** (a small but capable model) or **llama-3-8b-instruct.Q4_K_M** if you prefer.\n\nThe model will load — this can take a minute. When it’s ready, the chat window will show a message like **Model loaded**.\n\nYou'll know it worked when the model name appears in the corner and the chat prompt is active.\n\n💬 Example:\n> If the dropdown is greyed out, close and reopen the app.\n\n---\n\n## Step 5 — Teach it about your home\nIn the chat box, type:\n💬 Example:\n> \"Remember: I live in a two-bedroom apartment in Sydney. I have a Philips Hue light in the living room and a Google Nest thermostat. My daily routine is wake up at 7am, leave for work at 8:30am, and return at 6pm.\"\n\nThe assistant will reply with a summary of what it learned. It will now remember these details for future chats.\n\nYou'll know it worked when the assistant confirms it understands your home setup.\n\n---\n\n## Step 6 — Ask your first question\nType a real question into the chat box, like:\n💬 Example:\n> \"What time should I leave to get to Bondi Junction by 9am if I walk to the station?\"\n\nThe assistant will use the details you taught it and give a practical answer.\n\nYou'll know it worked when you get a sensible, location-aware answer.\n\n---\n\n## Step 7 — Connect a smart device (optional)\nIf you have a smart light or thermostat, click **Tools** in the top menu, then **Device Manager**. Look for an option like **Add Device** and follow the prompts to connect your device.\n\nOnce connected, you can ask the assistant to control it:\n💬 Example:\n> \"Turn on the living room light.\"\n\nYou'll know it worked when the light turns on or off as requested.\n\n> ⚠️ Device support depends on your hardware and brand. Not all devices work.\n\n---\n\n## Common mistakes\n- **Installer won’t open**: Make sure you downloaded the Windows version and your PC meets the requirements.\n- **Model won’t load**: Close the app, restart your PC, and try again. If it still fails, pick a smaller model from the dropdown.\n- **Assistant forgets your home**: Re-teach it by typing your details again in a new chat.\n\n---\n\n## What this means for you\n\n- **In everyday life**: Ask your assistant, “What’s on my calendar today?” or “Did I water the plants?” It keeps a private journal of your daily notes.\n- **For your business or work**: Use it to draft emails, summarise documents, or answer FAQs about your work — all locally on your PC.\n- **If you're just getting started**: Start with simple questions like “What’s the weather today?” to build trust in the assistant.\n\n---\n\n## Try it now\nOpen ChatRTX and type:\n💬 Example:\n> \"What time is sunset today in Melbourne?\"",
+  "original_title": "Set up a home‑assistant chatbot with NVIDIA ChatRTX on your PC"
+}
