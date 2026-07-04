@@ -252,6 +252,16 @@ const UI_SUPPORT = {
 };
 for (const l of SITE_LANGS) Object.assign(UI[l], UI_SUPPORT[l] || {});
 
+// Folyamat-térkép feliratok (útmutató-oldal tetején lévő lépés-áttekintő)
+const UI_MAP = {
+  en: { mapTitle: 'Your roadmap', mapSteps: 'steps' },
+  hu: { mapTitle: 'Így fogod csinálni', mapSteps: 'lépés' },
+  es: { mapTitle: 'Así lo harás', mapSteps: 'pasos' },
+  de: { mapTitle: 'So gehst du vor', mapSteps: 'Schritte' },
+  fr: { mapTitle: 'Votre parcours', mapSteps: 'étapes' }
+};
+for (const l of SITE_LANGS) Object.assign(UI[l], UI_MAP[l] || {});
+
 // VALÓDI lapszám: hány külön napon jelent meg tartalom (a main() számolja ki).
 // A user jelezte: fixen "Issue 01"-et írt a dátum mellett — az nem igaz.
 let ISSUE_NO = 1;
@@ -1017,7 +1027,14 @@ const STEP_ART_RULES_I18N = [
   [/\bcél|objetivo|\bziel|objectif/i, 'target']
 ];
 
-function stepArt(title, idx, used) {
+// Többnyelvű lépés-fejléc felismerő: "Step 1 —", "1. lépés —", "Paso 1", "Schritt 1", "Étape 1"
+// (a lépés-dobozok, a folyamat-térkép, a stepsTotal ÉS a HowTo jsonld közös alapja)
+const STEP_RX = /^(?:(?:step|paso|schritt|[ée]tape)\s*\d*|\d+\s*\.?\s*l[ée]p[ée]s)\s*[—:–.-]?\s*/i;
+
+// A lépéshez tartozó illusztráció KULCSA (téma-egyeztetés + oldalon belüli dedup).
+// Determinisztikus: azonos cím-sorozatra azonos kulcs-sorozat → a folyamat-térkép
+// és a lépés-dobozok ikonjai garantáltan egyeznek.
+function stepArtKey(title, idx, used) {
   const t = title || '';
   let key = null;
   for (const [re, k] of STEP_ART_RULES) { if (re.test(t)) { key = k; break; } }
@@ -1031,10 +1048,35 @@ function stepArt(title, idx, used) {
     }
     used.add(key);
   }
+  return key;
+}
+
+function stepArtHtml(key) {
   // Színes 3D illusztráció (a borítók stílusában) — ha létezik; különben SVG tartalék
   if (existsSync(join(__dirname, 'assets', 'art', key + '.jpg')))
     return `<div class="g-step__art"><img class="g-art__img" src="/assets/art/${key}.jpg" alt="" loading="lazy" decoding="async" width="640" height="480"></div>`;
   return `<div class="g-step__art">${GUIDE_ART[key] || GUIDE_ART.target}</div>`;
+}
+
+// FOLYAMAT-TÉRKÉP az útmutató tetejére (user-ötlet 2026-07-04): számozott,
+// kattintható csomópontok a lépések 3D ikonjaival — a lépés-listából SZÁRMAZIK,
+// ezért sosem avul el, és minden nyelven magától jó.
+function guideMapHtml(headings, artKeys) {
+  if (headings.length < 3) return '';   // 1-2 lépésnél nincs értelme térképnek
+  const nodes = headings.map((h, i) => {
+    const key = artKeys[i];
+    const img = existsSync(join(__dirname, 'assets', 'art', key + '.jpg'))
+      ? `<img class="g-map__img" src="/assets/art/${key}.jpg" alt="" loading="lazy" decoding="async" width="124" height="124">`
+      : `<span class="g-map__img g-map__img--f" aria-hidden="true">${i + 1}</span>`;
+    let label = h;
+    if (label.length > 34) label = label.slice(0, 31).trimEnd() + '…';
+    return `<a class="g-map__node" href="#step-${i + 1}">
+      <span class="g-map__badge">${i + 1}</span>${img}
+      <span class="g-map__lbl">${escapeHtml(label)}</span></a>`;
+  }).join('<span class="g-map__arr" aria-hidden="true">➜</span>');
+  return `<nav class="g-map" aria-label="${escapeHtml(tr('mapTitle'))}">
+    <div class="g-map__head"><span class="g-map__kicker">🗺️ ${tr('mapTitle')}</span><span class="g-map__count">${headings.length} ${tr('mapSteps')}</span></div>
+    <div class="g-map__row">${nodes}</div></nav>`;
 }
 
 function parseGuideSections(bodyMd) {
@@ -1072,19 +1114,21 @@ function buildGuidePage(a) {
   const aud = AUDIENCES[a.audience] || AUDIENCES.both;
   const { intro, sections } = parseGuideSections(a.bodyMd);
 
+  // ELŐSZÖR a lépés-címek + ikon-kulcsok (a térkép ÉS a dobozok közös forrása)
+  const stepHeadings = sections.filter(s => STEP_RX.test(s.title)).map(s => s.title.replace(STEP_RX, ''));
+  const artSet = new Set();
+  const artKeys = stepHeadings.map((h, i) => stepArtKey(h, i, artSet));
+
   let stepNo = 0;
-  const usedArt = new Set();
   const blocks = sections.map(s => {
     const t = s.title;
-    // Többnyelvű lépés-fejlécek: "Step 1 —", "1. lépés —", "Paso 1", "Schritt 1", "Étape 1"
-    const STEP_RX = /^(?:(?:step|paso|schritt|[ée]tape)\s*\d*|\d+\s*\.?\s*l[ée]p[ée]s)\s*[—:–.-]?\s*/i;
     if (STEP_RX.test(t)) {
       stepNo++;
       const heading = t.replace(STEP_RX, '');
-      return `<div class="g-step"><div class="g-step__no">${stepNo}</div>
+      return `<div class="g-step" id="step-${stepNo}"><div class="g-step__no">${stepNo}</div>
         <div class="g-step__grid">
           <div class="g-step__body"><h3 class="g-step__h">${escapeHtml(heading)}</h3>${guideSectionHtml(s.body)}</div>
-          ${stepArt(heading, stepNo - 1, usedArt)}
+          ${stepArtHtml(artKeys[stepNo - 1])}
         </div></div>`;
     }
     if (/before you start|before we start|prerequisit|miel[őo]tt elkezd|kezd[ée]s el[őo]tt|antes de (?:empezar|comenzar)|bevor (?:du|sie) (?:loslegst|beginn)|vorbereitung|avant de commencer/i.test(t))
@@ -1101,7 +1145,7 @@ function buildGuidePage(a) {
   const toolChip = (a.company || a.tool)
     ? `<span class="g-tool">📘 ${escapeHtml([a.company, a.tool].filter(Boolean).join(' · '))}</span>` : '';
   const levelChip = a.level ? `<span class="g-level">${escapeHtml(a.level)}</span>` : '';
-  const stepsTotal = sections.filter(s => /^step\s*\d/i.test(s.title)).length;
+  const stepsTotal = stepHeadings.length;   // többnyelvű STEP_RX-ből (régen csak "Step N"-t értett)
 
   const body = `<article class="article guide" style="--gc:${GUIDE_COVER_COLORS[a.company] || '#4f7a86'}">
     ${guideCoverHtml(a, 'article__cover')}
@@ -1115,6 +1159,7 @@ function buildGuidePage(a) {
       <p class="article__subtitle">${escapeHtml(a.subtitle)}</p>
       <div class="article__meta"><span>${a.readTime} ${tr('minRead')}</span><span class="dot">·</span><span>${formatDate(a.publishedAt)}</span></div>
     </div>
+    ${guideMapHtml(stepHeadings, artKeys)}
     ${intro ? `<div class="g-intro">${guideSectionHtml(intro)}</div>` : ''}
     <div class="g-steps">${blocks}</div>
     ${xrefBox(a)}
@@ -1131,9 +1176,8 @@ function buildGuidePage(a) {
     name: a.title, description: a.seoDescription || a.subtitle,
     image: ogImage || undefined,
     inLanguage: HTML_LANG[LANG] || 'en',
-    step: sections.filter(s => /^step\s*\d/i.test(s.title)).map(s => ({
-      '@type': 'HowToStep', name: s.title.replace(/^step\s*\d*\s*[—:-]?\s*/i, '')
-    }))
+    // többnyelvű STEP_RX: a nem-angol oldalak HowTo jelölése eddig ÜRES volt
+    step: stepHeadings.map(h => ({ '@type': 'HowToStep', name: h }))
   };
   return pageShell({
     title: `${a.title} — ${SITE.name}`,
