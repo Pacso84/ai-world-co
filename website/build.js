@@ -30,6 +30,10 @@ const ASSETS_SRC = join(__dirname, 'assets');
 // Site URL + támogatás a config-ból (canonical/OG/sitemap + Support gomb).
 let SITE_URL = 'https://aiworld.example.com';
 let SUPPORT = { enabled: false, url: '', label: 'Buy us a coffee' };
+// Kereső-igazoló kódok (Google Search Console / Bing Webmaster) — a config
+// company.google_site_verification / bing_site_verification mezőiből; ha üres,
+// nem kerül meta-tag az oldalba.
+let VERIFY = { google: '', bing: '' };
 try {
   const company = JSON.parse(readFileSync(join(PROJECT_ROOT, 'config.json'), 'utf-8')).company || {};
   SITE_URL = (company.website_url || SITE_URL).replace(/\/$/, '');
@@ -37,6 +41,10 @@ try {
     enabled: company.support_enabled !== false,
     url: (company.support_url || '').trim(),
     label: company.support_label || 'Buy us a coffee'
+  };
+  VERIFY = {
+    google: (company.google_site_verification || '').trim(),
+    bing: (company.bing_site_verification || '').trim()
   };
 } catch {}
 
@@ -516,6 +524,8 @@ function pageShell({ title, description, bodyContent, isArticle = false, noIntro
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
   <link rel="stylesheet" href="/assets/style.css?v=${ASSET_V}">
   <link rel="alternate" type="application/rss+xml" title="${escapeHtml(SITE.name)} RSS" href="/feed.xml">
+  ${VERIFY.google ? `<meta name="google-site-verification" content="${escapeHtml(VERIFY.google)}">` : ''}
+  ${VERIFY.bing ? `<meta name="msvalidate.01" content="${escapeHtml(VERIFY.bing)}">` : ''}
   ${jsonld ? `<script type="application/ld+json">${JSON.stringify(jsonld)}</script>` : ''}
   ${DESIGN.mobileCss ? `<style id="responsive">${DESIGN.mobileCss}</style>` : ''}
 </head>
