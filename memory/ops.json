@@ -1,86 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178309872903539",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-07-03T17:12:09.035Z",
-      "updated": "2026-07-03T17:12:19.170Z"
-    },
-    {
-      "id": "t178309873917227",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-07-03T17:12:19.172Z",
-      "updated": "2026-07-03T17:12:19.409Z"
-    },
-    {
-      "id": "t17830987394117",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-07-03T17:12:19.411Z",
-      "updated": "2026-07-03T17:12:19.636Z"
-    },
-    {
-      "id": "t178309873963887",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-03T17:12:19.638Z",
-      "updated": "2026-07-03T17:12:19.868Z"
-    },
-    {
-      "id": "t178309873987471",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-07-03T17:12:19.874Z",
-      "updated": "2026-07-03T17:12:22.613Z"
-    },
-    {
-      "id": "t178309874262339",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-03T17:12:22.623Z",
-      "updated": "2026-07-03T17:12:22.837Z"
-    },
-    {
-      "id": "t178309874283961",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-07-03T17:12:22.839Z",
-      "updated": "2026-07-03T17:16:14.089Z"
-    },
-    {
-      "id": "t178309897409035",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-03T17:16:14.090Z",
-      "updated": "2026-07-03T17:16:17.221Z"
-    },
-    {
-      "id": "t178309897722313",
-      "title": "Run translator",
-      "status": "done",
-      "agent": "translator",
-      "created": "2026-07-03T17:16:17.223Z",
-      "updated": "2026-07-03T17:16:17.463Z"
-    },
-    {
-      "id": "t178309897746531",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-07-03T17:16:17.465Z",
-      "updated": "2026-07-03T17:16:20.836Z"
-    },
-    {
       "id": "t178312996495690",
       "title": "Run rss-scraper",
       "status": "done",
@@ -479,6 +399,86 @@
       "agent": "publisher",
       "created": "2026-07-05T02:07:09.532Z",
       "updated": "2026-07-05T02:07:12.224Z"
+    },
+    {
+      "id": "t178324576510141",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-07-05T10:02:45.101Z",
+      "updated": "2026-07-05T10:02:53.037Z"
+    },
+    {
+      "id": "t178324577303810",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-07-05T10:02:53.038Z",
+      "updated": "2026-07-05T10:02:53.305Z"
+    },
+    {
+      "id": "t178324577330890",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-07-05T10:02:53.308Z",
+      "updated": "2026-07-05T10:02:53.535Z"
+    },
+    {
+      "id": "t178324577353773",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-05T10:02:53.537Z",
+      "updated": "2026-07-05T10:02:53.757Z"
+    },
+    {
+      "id": "t178324577376371",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-07-05T10:02:53.763Z",
+      "updated": "2026-07-05T10:02:54.026Z"
+    },
+    {
+      "id": "t178324577403927",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-05T10:02:54.039Z",
+      "updated": "2026-07-05T10:02:54.286Z"
+    },
+    {
+      "id": "t178324577428946",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-07-05T10:02:54.289Z",
+      "updated": "2026-07-05T10:02:54.529Z"
+    },
+    {
+      "id": "t178324577453048",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-05T10:02:54.530Z",
+      "updated": "2026-07-05T10:02:55.305Z"
+    },
+    {
+      "id": "t178324577592059",
+      "title": "Run translator",
+      "status": "done",
+      "agent": "translator",
+      "created": "2026-07-05T10:02:55.920Z",
+      "updated": "2026-07-05T10:02:56.207Z"
+    },
+    {
+      "id": "t17832457762083",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-07-05T10:02:56.209Z",
+      "updated": "2026-07-05T10:02:58.989Z"
     }
   ],
   "notifications": [
@@ -1009,18 +1009,25 @@
       "agent": "ceo",
       "at": "2026-07-05T02:07:12.235Z",
       "loud": false
+    },
+    {
+      "id": "n178324577723911",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). Our line-up is coherent and ready to publish, covering a range of practical AI applications for everyday tasks. I do note that some articles may be more tech-heavy, so a gentle introduction to AI for ",
+      "agent": "publisher",
+      "at": "2026-07-05T10:02:57.240Z",
+      "loud": false
+    },
+    {
+      "id": "n178324577900153",
+      "level": "info",
+      "text": "Pipeline lefutott — ma nem volt publikálható új tartalom.",
+      "agent": "ceo",
+      "at": "2026-07-05T10:02:59.001Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178298889060261",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Evaluating performance and efficiency of the GitHub Copilot agentic harness across models and tasks\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-06-26T02-12-21-214Z_github-ai_Evaluating_performance_and_efficiency_of_the_GitHu.json",
-      "at": "2026-07-02T10:41:30.602Z"
-    },
     {
       "id": "m178298889061291",
       "from": "ellenorzo",
@@ -2369,6 +2376,15 @@
       "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 16 → 4/4/2 oszlop.",
       "ref": "mobile",
       "at": "2026-07-05T02:02:23.394Z"
+    },
+    {
+      "id": "m178324577529482",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 16 → 4/4/2 oszlop.",
+      "ref": "mobile",
+      "at": "2026-07-05T10:02:55.294Z"
     }
   ]
 }
