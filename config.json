@@ -30,7 +30,9 @@
         "model": "gpt-oss-120b"
       },
       "enabled": true,
-      "comment": "Orkesztrálás egyszerű feladat - Haiku elég ($1/$5 vs Sonnet $3/$15). Fallback: Gemini Flash (ingyen)."
+      "comment": "Orkesztrálás egyszerű feladat - Haiku elég ($1/$5 vs Sonnet $3/$15). Fallback: Gemini Flash (ingyen).",
+      "routing": "paid-only",
+      "_routing_comment": "CSAK fizetős: minőség-kapu / főnök-agy — itt nem spórolunk (user-döntés 2026-07-05)"
     },
     "boss": {
       "primary_model": {
@@ -42,7 +44,9 @@
         "model": "llama-3.3-70b-versatile"
       },
       "enabled": true,
-      "comment": "A Telegram-FŐNÖK beszélgető agya (instruct.js). Gemini 2.5-flash a jó magyar társalgásért; fallback groq/cerebras, ha a Gemini kimerül (a budget-guard/quota dönti). Csak a chat-választ generálja, nem a tartalmat."
+      "comment": "A Telegram-FŐNÖK beszélgető agya (instruct.js). Gemini 2.5-flash a jó magyar társalgásért; fallback groq/cerebras, ha a Gemini kimerül (a budget-guard/quota dönti). Csak a chat-választ generálja, nem a tartalmat.",
+      "routing": "paid-only",
+      "_routing_comment": "CSAK fizetős: minőség-kapu / főnök-agy — itt nem spórolunk (user-döntés 2026-07-05)"
     },
     "translator": {
       "primary_model": {
@@ -54,7 +58,9 @@
         "model": "gemini-2.5-flash"
       },
       "enabled": true,
-      "comment": "Cikkek/útmutatók fordítása nyelvenként (nagy volumen!). FREE Cerebras elöl a költség miatt; Gemini fallback a minőségért. A felhasználó: teljes többnyelvű honlap (hu/es/de/fr)."
+      "comment": "Cikkek/útmutatók fordítása nyelvenként (nagy volumen!). FREE Cerebras elöl a költség miatt; Gemini fallback a minőségért. A felhasználó: teljes többnyelvű honlap (hu/es/de/fr).",
+      "routing": "paid-only",
+      "_routing_comment": "CSAK fizetős: a fordítást senki nem ellenőrzi utólag — a nem-angol oldalak minősége múlik rajta (user-döntés 2026-07-05)"
     },
     "rss-scraper": {
       "primary_model": {
@@ -91,7 +97,9 @@
         "model": "gpt-oss-120b"
       },
       "enabled": true,
-      "comment": "Ellenorzes: gemini-flash-latest (INGYEN sajat kvota) + fallback 2.5-pro. Kesobb Claude ha kell jobb minoseg."
+      "comment": "Ellenorzes: gemini-flash-latest (INGYEN sajat kvota) + fallback 2.5-pro. Kesobb Claude ha kell jobb minoseg.",
+      "routing": "paid-only",
+      "_routing_comment": "CSAK fizetős: minőség-kapu / főnök-agy — itt nem spórolunk (user-döntés 2026-07-05)"
     },
     "source-scout": {
       "primary_model": {

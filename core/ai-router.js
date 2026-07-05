@@ -357,18 +357,28 @@ const RETRY_BASE_DELAY_MS = 1000;  // 1s, majd 2s (exponenciális)
 
 const QUOTA_PATH = join(__dirname, 'quota-state.json');
 
-// Szabad modell-pool: ha a primary+fallback kimerült, ezeken megy végig.
-// (Külön kvótájú Gemini modellek + ingyenes providerek. Kulcs hiányában kimarad.)
-const FREE_POOL = [
-  // KÖLTSÉG-SORREND (Google paid tier, 2026-07-02): elöl az olcsó-megbízható
-  // 2.5-flash, a DRÁGA 'latest' (3.5 Flash, 5x ár) és a Pro a lista VÉGÉN,
-  // csak végső tartaléknak.
+// ===================================================================
+// KÉT POOL — INGYENES vs FIZETŐS (user-stratégia 2026-07-05):
+// "Előbb az ingyenes kulcsok dolgozzanak; ha kimerültek, jöjjön a fizetős.
+//  KIVÉTEL az Ellenőrző, a Főnök és a Fordító — ott csak a fizetős megy,
+//  mert a minőség-kapun és a te asszisztenseden nem spórolunk."
+// A stratégiát a config.json agents.<név>.routing mező adja:
+//   'free-first' (alapértelmezés) | 'paid-only'
+// ===================================================================
+
+// VALÓBAN ingyenes szolgáltatók (free-tier kulcsok; kulcs hiányában kimarad)
+const FREE_TIER_POOL = [
+  { provider: 'cerebras', model: 'gpt-oss-120b' },
+  { provider: 'groq', model: 'llama-3.3-70b-versatile' },
+  { provider: 'mistral', model: 'mistral-small-latest' },
+  { provider: 'openrouter', model: 'meta-llama/llama-3.3-70b-instruct:free' }
+];
+
+// FIZETŐS pool (Google paid tier) — olcsó-megbízható elöl, a DRÁGA
+// 'flash-latest' (3.5 Flash, 5x ár!) és a Pro a végén, végső tartaléknak.
+const PAID_POOL = [
   { provider: 'google', model: 'gemini-2.5-flash' },
   { provider: 'google', model: 'gemini-2.0-flash' },
-  { provider: 'groq', model: 'llama-3.3-70b-versatile' },
-  { provider: 'cerebras', model: 'gpt-oss-120b' },
-  { provider: 'mistral', model: 'mistral-small-latest' },
-  { provider: 'openrouter', model: 'meta-llama/llama-3.3-70b-instruct:free' },
   { provider: 'google', model: 'gemini-flash-latest' },
   { provider: 'google', model: 'gemini-2.5-pro' }
 ];
@@ -436,8 +446,19 @@ export async function ask(prompt, options = {}) {
     throw new Error(`Ismeretlen agent: ${agentName} (config.json nem tartalmazza)`);
   }
 
-  // Sorrend: primary -> fallback -> szabad pool (kvóta-tudatos átirányítás)
-  const raw = [agentConfig.primary_model, agentConfig.fallback_model, ...FREE_POOL].filter(Boolean);
+  // SORREND a routing-stratégia szerint (config.json agents.<név>.routing):
+  //   'free-first' (alapértelmezés): saját ingyenes modellek → ingyenes pool →
+  //                                  saját fizetős modellek → fizetős pool
+  //   'paid-only'  (ellenorzo/boss/translator): CSAK fizetős — ingyenes SOHA
+  const routing = agentConfig.routing || 'free-first';
+  const own = [agentConfig.primary_model, agentConfig.fallback_model].filter(Boolean);
+  const isPaidEntry = (a) => isMetered(a.provider);
+  let raw;
+  if (routing === 'paid-only') {
+    raw = [...own.filter(isPaidEntry), ...PAID_POOL];
+  } else {
+    raw = [...own.filter(a => !isPaidEntry(a)), ...FREE_TIER_POOL, ...own.filter(isPaidEntry), ...PAID_POOL];
+  }
   // dedup modell szerint (megőrzi a sorrendet)
   const seen = new Set();
   const attempts = raw.filter(a => { const k = a.provider + '|' + a.model; if (seen.has(k)) return false; seen.add(k); return true; });
