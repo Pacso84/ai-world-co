@@ -136,8 +136,8 @@ const SCOUT_SYSTEM_PROMPT = `You are a research assistant finding OFFICIAL prima
 We ONLY want OFFICIAL, first-party sources — a company's / organisation's / research-lab's OWN blog or newsroom.
 We do NOT want: news media, magazines, aggregators, anyone reporting on others (TechCrunch, The Verge, VentureBeat, ZDNet, Hacker News, Reddit, Medium, Substack, etc.).
 
-We ALREADY cover the big ones (OpenAI, Google, Anthropic, Microsoft, Meta, Mistral, Alibaba/Qwen, Apple, NVIDIA, Hugging Face, AWS, GitHub, Perplexity, xAI, DeepSeek, Cohere).
-=> Suggest GENUINELY DIFFERENT, still reputable organisations with a REAL AI product or research output and an ACTIVE official blog. Good examples to consider: Stability AI, Runway, ElevenLabs, Adobe (Firefly), IBM Research, Salesforce AI, SAP, ServiceNow, Databricks, Snowflake, Qualcomm AI, Samsung Research, Baidu Research, Tencent AI, Naver, Together AI, AssemblyAI, Replicate, Pinecone, Weights & Biases, Scale AI, Character.AI, Midjourney, Suno, etc. (only if they truly publish an official blog).
+We ALREADY cover the big ones (OpenAI, Google, Anthropic, Microsoft, Meta, Mistral, Alibaba/Qwen, Apple, NVIDIA, Hugging Face, AWS, GitHub, Perplexity, xAI, DeepSeek, Cohere) and many well-known second-tier ones.
+=> Suggest GENUINELY DIFFERENT, still reputable organisations with a REAL AI product or research output and an ACTIVE official blog. Focus on the SPECIFIC NICHES the user asks for, and prefer names that are NOT the first ones everyone thinks of — dig deeper into those niches.
 
 For each, give the blog's base domain (https://...), with NO path.
 
@@ -146,9 +146,32 @@ Respond ONLY with a JSON array (no markdown):
 
 Give 15-25 entries. type must be "official". Prefer a global mix (US, EU, Asia, Australia if any). Do NOT include any organisation we already cover.`;
 
+// FORGÓ VADÁSZMEZŐK (2026-07-05, user-jelzés: "nem küld új forrásokat"):
+// a fix példa-lista kimerült — futásonként 2 VÉLETLEN fülkéből kérünk
+// jelölteket, így mindig új területen kutat, nem ugyanazt a 18 nevet rágja.
+const SCOUT_NICHES = [
+  'AI video, image and creative-media tool companies',
+  'voice, speech and music AI companies',
+  'AI coding-assistant and developer-tool companies',
+  'open-source AI labs, foundations and model builders',
+  'university and non-profit AI research labs',
+  'Australian and New Zealand technology / AI organisations',
+  'European AI companies and research labs',
+  'Japanese, Korean, Indian and Southeast-Asian tech-giant AI research divisions',
+  'robotics and embodied-AI companies',
+  'AI safety, standards and policy organisations',
+  'enterprise software companies with major AI products',
+  'AI hardware, chip and infrastructure companies',
+  'health, science and climate AI research groups',
+  'consumer app companies with strong AI features (design, productivity, education)'
+];
+
 async function getCandidateOrgs(coverage) {
   const known = [...coverage.brands].filter(b => b.length >= 4).slice(0, 30).join(', ');
-  const prompt = `List 18 official AI/tech company and research-lab blogs (first-party only, no news media). Do NOT include any of these already-covered orgs: ${known}. Return a complete, valid JSON array only.${skillsBlock('source-scout')}`;
+  // 2 véletlen fülke — minden futás máshol vadászik
+  const niches = [...SCOUT_NICHES].sort(() => Math.random() - 0.5).slice(0, 2);
+  console.log(`🎯 Mai vadászmezők: ${niches.join('  +  ')}`);
+  const prompt = `List 18 official blogs/newsrooms of: (a) ${niches[0]}, and (b) ${niches[1]}. First-party sources only, no news media. Do NOT include any of these already-covered orgs: ${known}. Return a complete, valid JSON array only.${skillsBlock('source-scout')}`;
   let totalCost = 0;
 
   for (let attempt = 1; attempt <= 3; attempt++) {

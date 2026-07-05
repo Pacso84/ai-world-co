@@ -1,5 +1,29 @@
 # AI World Co. — közösségi posztok
 
+*Generálva: 2026-07-05T20:18:36.270Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## How Endava is redesigning software delivery around AI agents
+**🔗 https://aiworldhq.com/article/using-ai-agents-to-accelerate-software-delivery-a-practical-.html**
+
+**Facebook:**
+Want to finish your sprint a day early? AI agents can take care of routine coding and testing so you can ship features faster. https://aiworldhq.com/article/using-ai-agents-to-accelerate-software-delivery-a-practical-.html #AItools #productivity
+
+**Instagram:**
+Speed up your software delivery
+AI agents like ChatGPT Enterprise can automate the repetitive bits of coding and testing, giving your team more time for the creative work. #AIagents
+#softwaredev
+#automation
+#productivity
+Link in bio.
+
+*Kép-ötlet: A developer working at a laptop with a subtle AI glow on the screen and a coffee mug nearby.*
+
+---
+
+# AI World Co. — közösségi posztok
+
 *Generálva: 2026-07-05T18:49:13.976Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
 
 ---

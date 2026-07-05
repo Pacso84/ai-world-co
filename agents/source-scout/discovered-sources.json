@@ -1,13 +1,35 @@
 {
   "_meta": {
-    "generated_at": "2026-07-05T02:00:24.130Z",
+    "generated_at": "2026-07-05T20:22:22.109Z",
     "generated_by": "source-scout agent v3.0 (megbízhatóság-kapu)",
     "note": "JAVASLATOK új, MEGBÍZHATÓ hivatalos forrásokra. A felhasználó/főnök dönti el, melyiket adjuk a sources/rss-feeds.json-hoz (enabled:true-val). Minden jelölt megbízhatósági pontszámmal + indoklással.",
     "min_score": 70,
-    "checked_orgs": 18,
-    "newly_discovered": 0,
+    "checked_orgs": 17,
+    "newly_discovered": 1,
     "rejected_count": 0,
     "rejected_examples": []
   },
-  "discovered_sources": []
+  "discovered_sources": [
+    {
+      "suggested_id": "ntt-research",
+      "name": "NTT Research (hivatalos)",
+      "url": "https://ntt-research.com/feed/",
+      "category": "ai-company-official",
+      "priority": 3,
+      "language": "en",
+      "country": "JP",
+      "reliability_score": 100,
+      "reliability_reasons": [
+        "friss (utolsó cikk 54 napja)",
+        "bő kínálat (12 cikk)",
+        "hivatalos forrásként jelölve",
+        "a domain/feed egyezik a cég nevével",
+        "HTTPS + érvényes RSS"
+      ],
+      "item_count_at_discovery": 12,
+      "last_post_age_days": 54,
+      "comment": "JAVASLAT (source-scout, megbízhatóság 100/100): Research in AI, robotics, and more. Felhasználói jóváhagyás kell!",
+      "enabled": false
+    }
+  ]
 }
