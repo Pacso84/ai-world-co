@@ -94,13 +94,23 @@ async function main() {
     // A FB-szövegben benne van az URL — kiszedjük, mert a linket KÜLÖN mezőben
     // küldjük (abból lesz a szép előnézeti kártya; duplán csúnya lenne).
     const message = String(post.facebook).split(post.url).join('').replace(/[ \t]{2,}/g, ' ').replace(/\n{3,}/g, '\n\n').trim();
+    // FOTÓS poszt (user-kérés 2026-07-05: "képet mellékelni, mint a cégek"):
+    // a borítóképet KÖZVETLENÜL posztoljuk, a link a caption végére kerül.
+    // (A link-kártyás módban a Facebook az új domain képét megbízhatatlanul
+    // töltötte be — a fotós poszt mindig nagy, szép képpel jelenik meg.)
+    const site = post.url.replace(/(https?:\/\/[^/]+).*/, '$1');
+    const imgUrl = `${site}/assets/images/${post.slug}.jpg`;
+    let image = imgUrl;
+    try { const h = await fetch(imgUrl, { method: 'HEAD', signal: AbortSignal.timeout(10000) }); if (!h.ok) image = `${site}/assets/og-default.jpg`; }
+    catch { image = `${site}/assets/og-default.jpg`; }
+    const caption = `${message}\n\n👉 ${post.url}`;
     console.log(`📘 ${String(post.title).slice(0, 55)}...`);
-    if (DRY) { console.log(`   (próba) message: ${message.slice(0, 70)}…`); continue; }
+    if (DRY) { console.log(`   (próba) caption: ${caption.slice(0, 70)}…`); continue; }
     try {
       const r = await fetch(hook, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message, link: post.url, title: post.title || '' }),
+        body: JSON.stringify({ message, link: post.url, title: post.title || '', image, caption }),
         signal: AbortSignal.timeout(20000)
       });
       if (r.ok) {

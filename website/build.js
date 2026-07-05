@@ -503,7 +503,8 @@ function pageShell({ title, description, bodyContent, isArticle = false, noIntro
   const toolsPath = `${LP}/tools.html`;
   const year = new Date().getFullYear();
   const url = `${SITE.url}${LP}/${pagePath}`;
-  const img = ogImage || (SITE.url + '/assets/logo.svg');
+  // Tartalék megosztás-kép: JPG kell (az SVG-t a Facebook nem jeleníti meg!)
+  const img = ogImage || (SITE.url + '/assets/og-default.jpg');
   // hreflang + nyelvváltó (minden oldalnak ugyanaz a pagePath-ja minden nyelven)
   const hreflang = SITE_LANGS.map(l => `<link rel="alternate" hreflang="${l}" href="${SITE.url}${langPrefix(l)}/${pagePath}">`).join('\n  ')
     + `\n  <link rel="alternate" hreflang="x-default" href="${SITE.url}/${pagePath}">`;
@@ -527,6 +528,8 @@ function pageShell({ title, description, bodyContent, isArticle = false, noIntro
   <meta property="og:description" content="${escapeHtml(description)}">
   <meta property="og:url" content="${escapeHtml(url)}">
   <meta property="og:image" content="${escapeHtml(img)}">
+  <meta property="og:image:width" content="1000">
+  <meta property="og:image:height" content="563">
   <meta property="og:locale" content="${(HTML_LANG[LANG] || 'en').replace('-', '_')}">
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
