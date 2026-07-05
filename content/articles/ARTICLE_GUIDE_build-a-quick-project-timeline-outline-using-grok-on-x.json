@@ -1,0 +1,55 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "build-a-quick-project-timeline-outline-using-grok-on-x",
+    "company": "xAI",
+    "tool": "Grok",
+    "icon": "🤖",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-07-05T02:00:27.389Z",
+    "writer_provider": "cerebras",
+    "writer_model": "gpt-oss-120b",
+    "writer_cost_usd": 0,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-07-05T02:01:24.934Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1055
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "The article provides a clear and step-by-step guide on using Grok to create a project timeline, with a friendly tone and explanations that are easy to understand, making it suitable for publication.",
+      "_aiCost": 0.0014889999999999999,
+      "_provider": "groq",
+      "_model": "llama-3.3-70b-versatile",
+      "_attempts": 1
+    },
+    "seo": {
+      "meta_description": "Create a project timeline using Grok on X, a simple AI assistant. Get a ready-to-copy list of milestones and dates in 10 minutes, perfect for busy professionals",
+      "keywords": [
+        "project timeline outline",
+        "Grok on X",
+        "AI assistant for project management",
+        "simple workflow for busy professionals"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add a clear call-to-action in the introduction",
+        "Use subheadings to break up the content for better readability",
+        "Include a brief example of a successful project timeline created with Grok on X"
+      ],
+      "optimised_at": "2026-07-05T02:02:12.266Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Build a quick project timeline outline using Grok on X\"\nsubtitle: \"Prompt Grok to break your project into milestones and dates, then copy the list into your planner – a simple workflow for busy professionals.\"\ncategory: \"guide\"\naudience: \"business\"\ncompany: \"xAI\"\ntool: \"Grok\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"getting-started\", \"grok\", \"project-management\"]\n---\n\n# Build a quick project timeline outline using Grok on X\n\n**Hook:** By the end of this guide you’ll have a ready‑to‑copy list of milestones and delivery dates that you can paste straight into your favourite planner or spreadsheet. It’s designed for anyone who manages a project but has never used an AI assistant before.\n\n## Before you start\n- A free or paid xAI account (the free tier is enough for a short timeline).  \n- Access to the web version of **X** (the social platform that hosts Grok) on a desktop or tablet.  \n- About 10 minutes total – 5 minutes for prompting Grok and 5 minutes for copying the result into your planner.  \n\n## Step 1 — Open Grok on X\nOpen your web browser, go to `https://x.com` and sign in. In the left‑hand navigation look for the **Grok** icon – it’s a little robot head, usually under the “Explore” section. Click the icon; a chat window slides up with a text box at the bottom. If you don’t see a robot head, look for a button labelled “AI Assistant” or a similar icon with three dots that opens a menu where “Grok” is listed. 💬 Example: *“Hey Grok, can you help me map out a project timeline?”* You’ll know it worked when the chat area displays a friendly greeting from Grok ready to receive your prompt.\n\n## Step 2 — Describe your project in plain language\nIn the chat box type a brief description of the project, including its purpose, major phases, and any fixed dates you already know. For example, *“I’m planning a product launch that runs from 1 July to 31 August, with a design phase, a testing phase, and a final rollout.”* After you hit Enter, Grok processes the text and shows a short acknowledgement. If the response looks like a generic “Sure, tell me more,” it means Grok needs a clearer scope – add any missing details such as “design starts on 1 July”. You’ll know it worked when Grok replies with “Got it – let’s create the timeline.”\n\n## Step 3 — Ask Grok to break the project into milestones\nNow type a direct request: *“Please turn that into a list of milestones with suggested completion dates.”* Grok will generate a numbered list where each item combines a **milestone** (a key checkpoint or deliverable) and a **due date**. The list may look like “1. Design brief completed – 5 July”. If the output is a paragraph rather than a list, simply ask “Can you format that as a bullet list?” – Grok usually complies. You’ll know it worked when the screen shows a clean list of numbered items each ending with a date.\n\n## Step 4 — Review and fine‑tune the dates\nRead each milestone and check whether the dates align with your known constraints. If a date is too early, type a follow‑up like *“Move the testing start to 20 July instead of 15 July.”* Grok will edit the specific line and return an updated list. Occasionally Grok may repeat a date or skip a step; if that happens, ask “What’s missing after the testing phase?” and it will fill the gap. You’ll know it worked when every line now reads “Milestone – Date” and the dates make sense to you.\n\n## Step 5 — Copy the list to your planner\nSelect the entire list by clicking and dragging from the first character to the last, then press Ctrl + C (or Cmd + C on a Mac) to copy. Open your preferred planner – for example, Microsoft Excel, Google Sheets, or a paper‑based planner – and paste the list into the first column. If the pasted text appears as a single block, look for a “Paste as plain text” option in your planner, which will keep each milestone on its own line. You’ll know it worked when each milestone occupies its own row and you can see the dates beside them.\n\n## Step 6 — Save and share the timeline\nFinally, give the document a clear name such as “July‑August Launch Timeline” and hit Save. If you work with a team, click the “Share” button (usually a silhouette with a + sign) and add colleagues’ email addresses. On mobile, the share icon may be three connected dots – look for a button that says “Share” if you don’t see the exact icon. You’ll know it worked when the file is stored in your cloud folder and you see a confirmation that invites have been sent.\n\n## Common mistakes\n- **Copy‑paste brings hidden formatting:** If the list turns into one long paragraph, use the “Paste plain text” option or paste first into a simple text editor, then copy again into your planner.  \n- **Missing a fixed date:** Forgetting an already‑set deadline (e.g., a client review on 10 July) will cause the timeline to be inaccurate. Double‑check any hard dates before you ask Grok to generate milestones.  \n- **Over‑loading Grok with too much detail at once:** Giving a wall of text can confuse the model, leading to vague milestones. Keep the initial description to a few sentences, then refine step by step as shown in the guide.\n\n## What this means for you\n- **In everyday life:** You can turn a DIY home renovation plan into a tidy schedule in minutes, freeing up mental space for the fun parts.  \n- **For your business or work:** Project managers can produce a first‑draft timeline for stakeholder meetings without spending hours drafting tables manually.  \n- **If you're just getting started:** The easiest first move is to ask Grok for a simple list – the AI does the heavy lifting, and you only need to verify the dates.\n\n## Try it now\nOpen Grok on X, type: *“I need a three‑step timeline for a website redesign starting 1 September.”* Within a minute you’ll have a ready‑to‑copy list you can paste into your planner. Give it a go – you’ll see how quickly AI can organise your work.",
+  "original_title": "Build a quick project timeline outline using Grok on X"
+}
