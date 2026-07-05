@@ -68,6 +68,18 @@ jobs:
       - name: IndexNow — friss URL-ek bejelentése
         run: node core/indexnow.js || true
 
+      # Social: poszt-szöveg az új cikkekhez + kiküldés (Make webhook → FB oldal).
+      # Max 2 poszt/futás (kulturált tempó); hiba nem dönti el a futást.
+      - name: Social — poszt-gyártás + kiküldés
+        env:
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
+          MAKE_WEBHOOK_URL: ${{ secrets.MAKE_WEBHOOK_URL }}
+        run: |
+          node agents/social/agent.js --limit 6 || true
+          node agents/social/poster.js --limit 2 || true
+
       - name: Generált tartalom megőrzése (visszacommit)
         run: |
           git config user.name "AI World Bot"

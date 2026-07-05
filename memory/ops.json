@@ -1045,6 +1045,24 @@
   ],
   "messages": [
     {
+      "id": "m178298889060261",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Evaluating performance and efficiency of the GitHub Copilot agentic harness across models and tasks\" — mi a baj: AI response JSON parse error after retries: AI router null",
+      "ref": "2026-06-26T02-12-21-214Z_github-ai_Evaluating_performance_and_efficiency_of_the_GitHu.json",
+      "at": "2026-07-02T10:41:30.602Z"
+    },
+    {
+      "id": "m178298889061291",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Streamline your data backups with incremental exports for Google Workspace\" — mi a baj: AI response JSON parse error after retries: AI router null",
+      "ref": "2026-06-27T02-07-24-541Z_google-workspace_Streamline_your_data_backups_with_incremental_expo.json",
+      "at": "2026-07-02T10:41:30.612Z"
+    },
+    {
       "id": "m178298889062095",
       "from": "ellenorzo",
       "to": "iro",
@@ -2376,31 +2394,13 @@
       "at": "2026-07-04T16:52:36.369Z"
     },
     {
-      "id": "m17832169433942",
-      "from": "designer",
+      "id": "m178327735398220",
+      "from": "social",
       "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 16 → 4/4/2 oszlop.",
-      "ref": "mobile",
-      "at": "2026-07-05T02:02:23.394Z"
-    },
-    {
-      "id": "m178324577529482",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 16 → 4/4/2 oszlop.",
-      "ref": "mobile",
-      "at": "2026-07-05T10:02:55.294Z"
-    },
-    {
-      "id": "m178327044375588",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 16 → 4/4/2 oszlop.",
-      "ref": "mobile",
-      "at": "2026-07-05T16:54:03.755Z"
+      "kind": "info",
+      "text": "3 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
+      "ref": null,
+      "at": "2026-07-05T18:49:13.982Z"
     }
   ]
 }

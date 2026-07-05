@@ -1,6 +1,73 @@
 # AI World Co. — közösségi posztok
 
-*Generálva: 2026-06-24T20:24:41.010Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+*Generálva: 2026-07-05T18:49:13.976Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## Billions spent and hypothetical returns: the AI boom explained with six charts
+**🔗 https://aiworldhq.com/article/making-sense-of-the-ai-boom-how-to-spend-smarter-on-ai-tools.html**
+
+**Facebook:**
+Feeling a bit lost with all the AI talk and not sure where to start spending your hard-earned cash? Our latest guide cuts through the noise to help everyday people and small businesses make smart choices for real value. https://aiworldhq.com/article/making-sense-of-the-ai-boom-how-to-spend-smarter-on-ai-tools.html #AISpending #SmallBizAI
+
+**Instagram:**
+Navigating the AI investment maze?
+
+Don't let the hype overwhelm you! Our guide helps you understand where the money's going in AI and how to make savvy decisions for your own needs. Get practical tips to evaluate AI tools and ensure you're getting real value, not just spending.
+
+#AIforBusiness
+#SmartSpending
+#AItools
+#ProductivityTips
+#AIEducation
+
+Link in bio.
+
+*Kép-ötlet: A clean, modern graphic of a person thoughtfully looking at a simple bar chart on a digital screen, symbolising smart financial choices amidst the AI landscape.*
+
+---
+
+## Dreaming: Better memory for a more helpful ChatGPT
+**🔗 https://aiworldhq.com/article/how-to-use-chatgpt-memory-to-stop-repeating-yourself.html**
+
+**Facebook:**
+Tired of telling ChatGPT the same things over and over? Discover how its new Memory feature can save you heaps of time and effort! Learn how to make your AI assistant remember your preferences. https://aiworldhq.com/article/how-to-use-chatgpt-memory-to-stop-repeating-yourself.html #ChatGPTTips #AIMemory
+
+**Instagram:**
+Stop repeating yourself to ChatGPT!
+
+This clever new feature lets your AI assistant remember your preferences across conversations. Save time and make your interactions much smoother.
+
+#ChatGPT
+#AITips
+#Productivity
+#AIDaily
+#TechSimplified
+Link in bio.
+
+*Kép-ötlet: A stylised graphic of a human brain merging with a cloud or data points, symbolising AI memory.*
+
+---
+
+## The latest AI news we announced in May 2026
+**🔗 https://aiworldhq.com/article/how-to-use-google-s-new-gemini-features-to-organise-your-bus.html**
+
+**Facebook:**
+Tired of a messy inbox or tricky trip planning? Google's new Gemini features can help sort your emails, plan holidays, and tackle admin faster. Find out how to make your life a bit easier with AI. https://aiworldhq.com/article/how-to-use-google-s-new-gemini-features-to-organise-your-bus.html #GoogleGemini #Productivity
+
+**Instagram:**
+Tame your digital chaos!
+
+Google Gemini's latest updates make managing your emails, planning trips, and handling life admin a breeze. Learn simple ways to get organised with AI.
+
+#GoogleGemini
+#LifeAdmin
+#ProductivityTips
+#AItools
+
+Link in bio.
+
+*Kép-ötlet: A clean, minimalist desk scene with a laptop open to a simplified digital interface, suggesting organisation and ease.*
 
 ---
 
