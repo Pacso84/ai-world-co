@@ -145,7 +145,11 @@ async function callGoogle(prompt, model, options) {
     text: response.text || '',
     usage: {
       inputTokens: response.usageMetadata?.promptTokenCount || 0,
-      outputTokens: response.usageMetadata?.candidatesTokenCount || 0
+      // FONTOS (2026-07-07): a GONDOLKODÁSI tokenek (thoughtsTokenCount) is
+      // válasz-áron számlázódnak! Nélkülük a mérő ~2.7x alulmért ($5.19 vs
+      // a Google valós $14.21-e). A költség-számításba mindkettő kell.
+      outputTokens: (response.usageMetadata?.candidatesTokenCount || 0)
+                  + (response.usageMetadata?.thoughtsTokenCount || 0)
     },
     model: model,
     provider: 'google'
