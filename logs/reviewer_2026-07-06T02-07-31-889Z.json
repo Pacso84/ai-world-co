@@ -1,0 +1,55 @@
+{
+  "started_at": "2026-07-06T02:06:46.630Z",
+  "total": 6,
+  "passed": 4,
+  "failed": 2,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.0047109000000000005,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-07-06T02-05-53-938Z_ntt-research_Architecting_Trust__Integrating_Security_into_the_.json",
+      "article": "ARTICLE_2026-07-06T02-05-53-938Z_ntt-research_Architecting_Trust__Integrating_Security_into_the_.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0008114
+    },
+    {
+      "writer": "WRITER_2026-07-06T02-05-53-938Z_ntt-research_Fireside_Chat__Beyond_Buzzwords__Realize_the_True_.json",
+      "article": "ARTICLE_2026-07-06T02-05-53-938Z_ntt-research_Fireside_Chat__Beyond_Buzzwords__Realize_the_True_.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.0007821999999999999
+    },
+    {
+      "writer": "WRITER_2026-07-06T02-05-53-938Z_ntt-research_Presentation__Verifiable_Trust_for_Agentic_Life_Sc.json",
+      "article": "ARTICLE_2026-07-06T02-05-53-938Z_ntt-research_Presentation__Verifiable_Trust_for_Agentic_Life_Sc.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0007786000000000001
+    },
+    {
+      "writer": "WRITER_2026-07-06T02-05-53-939Z_ntt-research_Presentation__The_AI-Native_Infrastructure_for_a_R.json",
+      "rejected": "REJECTED_2026-07-06T02-05-53-939Z_ntt-research_Presentation__The_AI-Native_Infrastructure_for_a_R.json",
+      "decision": "FAIL",
+      "score": 5,
+      "cost_usd": 0.0007547
+    },
+    {
+      "writer": "WRITER_2026-07-06T02-05-53-940Z_ntt-research_Panel__Beyond_the_Bottleneck__Photonics_and_the_Fu.json",
+      "article": "ARTICLE_2026-07-06T02-05-53-940Z_ntt-research_Panel__Beyond_the_Bottleneck__Photonics_and_the_Fu.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0007461
+    },
+    {
+      "writer": "WRITER_2026-07-06T02-05-53-940Z_ntt-research_Presentation__Successful_Implementation_of_the_Ent.json",
+      "rejected": "REJECTED_2026-07-06T02-05-53-940Z_ntt-research_Presentation__Successful_Implementation_of_the_Ent.json",
+      "decision": "FAIL",
+      "score": 6,
+      "cost_usd": 0.0008378999999999999
+    }
+  ],
+  "finished_at": "2026-07-06T02:07:31.889Z",
+  "duration_seconds": 45.259
+}

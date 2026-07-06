@@ -1,0 +1,56 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "drafting-professional-presentations-from-scratch-using-micro",
+    "company": "Microsoft",
+    "tool": "Microsoft Copilot",
+    "icon": "🤖",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-07-06T02:08:56.680Z",
+    "writer_provider": "mistral",
+    "writer_model": "mistral-small-latest",
+    "writer_cost_usd": 0.0036934,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-07-06T02:09:03.637Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1119
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "The article is well-structured, friendly, and provides clear, actionable steps for",
+      "_salvaged": true,
+      "_aiCost": 0.0009266999999999999,
+      "_provider": "google",
+      "_model": "gemini-2.5-flash",
+      "_attempts": 1
+    },
+    "seo": {
+      "meta_description": "Create polished presentations in minutes with Copilot in PowerPoint. Learn how to turn a blank slide deck into a professional outline and draft content quickly.",
+      "keywords": [
+        "Copilot in PowerPoint",
+        "create presentations quickly",
+        "PowerPoint draft slides",
+        "Microsoft Copilot"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add a step-by-step guide with screenshots",
+        "Include a brief video tutorial on using Copilot",
+        "Provide tips for customizing Copilot-generated content"
+      ],
+      "optimised_at": "2026-07-06T02:10:00.185Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Draft Professional Presentations from Scratch Using Copilot in PowerPoint\"\nsubtitle: \"Turn a blank slide deck into a polished outline and draft content in minutes using Microsoft Copilot inside PowerPoint.\"\ncategory: \"guide\"\naudience: \"business\"\ncompany: \"Microsoft\"\ntool: \"Microsoft Copilot in PowerPoint\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"getting-started\", \"microsoft-copilot\", \"powerpoint\"]\n---\n\n# Draft professional presentations from scratch using Copilot in PowerPoint\n\n**Hook:**\nImagine starting a new PowerPoint file and, in under five minutes, having a clear outline and draft slides ready to polish. Copilot in PowerPoint does exactly that—turning your rough idea into a professional deck without starting from a blank page.\n\n## Before you start\n- A **Microsoft 365 account** (free personal or work/school)\n- **PowerPoint for the web** (free) or the **PowerPoint desktop app** (any recent version)\n- A **modern browser** if using the web version (Edge, Chrome, Firefox, Safari)\n- A **short topic idea** in mind (e.g., “Quarterly sales update” or “New product launch plan”)\n- Roughly **10–15 minutes** total time\n\n> 💡 Tip: Copilot works best with a **paid Microsoft 365 plan**, but the free web version can still draft outlines and slide content.\n\n---\n\n## Step 1 — Open PowerPoint and start a new presentation\nOpen PowerPoint on your computer or go to [powerpoint.office.com](https://powerpoint.office.com) in your browser. Click **New blank presentation** to create a file with one blank slide.\nYou’ll see a single slide with a title box that says “Click to add title.”\nIf you don’t see this, look for a button like **“+ New”** or **“Blank Presentation”** in the top-left corner.\nYou'll know it worked when you see a clean white slide with a blinking cursor in the title box.\n\n💬 Example:\nJust open PowerPoint and click **New blank presentation**.\n\n---\n\n## Step 2 — Open the Copilot pane\nWith your blank presentation open, look at the **Home** tab on the ribbon at the top. On the right side of the ribbon, find and click the **Copilot** button (it looks like a spark icon with a chat bubble).\nA sidebar opens on the right side of the screen with a message like “Ask me anything about your presentation.”\nIf you don’t see the Copilot button, look for a **“More”** menu or a **“Show Copilot”** option in the ribbon.\nYou'll know it worked when you see a chat window labeled “Copilot” on the right side.\n\n💬 Example:\nClick the Copilot button in the top-right corner of the ribbon.\n\n---\n\n## Step 3 — Ask Copilot to create an outline\nIn the Copilot chat box, type:\n💬 Example:\n*\"Create an outline for a 5-slide presentation about our Q2 sales results. Include a title slide, agenda, results summary, key wins, and next steps.\"*\n\nAfter you press Enter, Copilot will respond with a numbered outline in the chat. It usually lists slides like:\n1. Title slide\n2. Agenda\n3. Q2 Sales Overview\n4. Key Wins\n5. Next Steps\nYou’ll see the outline appear in the chat window.\nIf Copilot doesn’t respond or shows an error, refresh the page or check your internet connection.\nYou'll know it worked when you see a clear 5-slide outline in the chat.\n\n---\n\n## Step 4 — Generate slide content from the outline\nNow, ask Copilot to turn the outline into real slide content. Type:\n💬 Example:\n*\"Turn this outline into draft slides with speaker notes.\"*\n\nCopilot will create a new slide for each item in the outline and add placeholder text and speaker notes. You’ll see each slide appear in your presentation one by one.\nIf the slides look too short or generic, ask Copilot to expand them by typing:\n💬 Example:\n*\"Add more detail to the Q2 Sales Overview slide and include a simple data table.\"*\nYou'll know it worked when you see 5 new slides with titles, bullet points, and speaker notes.\n\n---\n\n## Step 5 — Refine the draft with a prompt\nTo make the slides more specific, type a follow-up prompt in Copilot:\n💬 Example:\n*\"Update the presentation to focus on the Australian market and include a comparison with last year’s Q2 results.\"*\n\nCopilot will revise the slides, update the speaker notes, and adjust the tone to sound more professional and region-specific. It usually keeps the structure but adds relevant details.\nIf the changes don’t appear, click the **Regenerate** button in the Copilot chat.\nYou'll know it worked when the slides include phrases like “Australian market” and “Q2 2025 vs 2024 comparison.”\n\n---\n\n## Step 6 — Add your own data and branding\nNow it’s time to personalise. Replace any placeholder text with your real data. For example, edit the “Q2 Sales Overview” slide to include your actual revenue numbers.\nYou can also add your company logo by going to the **Insert** tab, clicking **Pictures**, and choosing your logo file.\nIf you don’t have a logo file, skip this step—your slides will still look professional.\nYou'll know it worked when the slide shows your real data and, if added, your logo appears in the corner.\n\n---\n\n## Step 7 — Review and polish the slides\nRead through each slide and its speaker notes. Use Copilot one last time to clean up the language:\n💬 Example:\n*\"Make the speaker notes more concise and professional.\"*\n\nCopilot will shorten long sentences and improve the tone. You can also ask it to fix any spelling or grammar issues.\nIf you prefer, edit the text manually—PowerPoint’s built-in spelling checker will highlight errors in red.\nYou'll know it worked when the speaker notes are clear, concise, and free of errors.\n\n---\n\n## Common mistakes\n- **Mistake:** Typing a vague prompt like “Make it better.”\n  **Fix:** Be specific. Say “Add a data table with Q2 revenue by region” instead.\n\n- **Mistake:** Expecting Copilot to pull live data from Excel.\n  **Fix:** Copilot can’t connect to external files. Copy and paste your data into the slide manually.\n\n- **Mistake:** Skipping the speaker notes.\n  **Fix:** Speaker notes help you present confidently. Always review and edit them.\n\n---\n\n## What this means for you\n\n- **In everyday life:** Need a quick update for your book club? Ask Copilot to draft a 3-slide recap with key points and talking notes—ready in minutes.\n\n- **For your business or work:** Preparing for a client meeting? Use Copilot to turn your rough notes into a polished 5-slide deck with speaker notes, saving hours of formatting.\n\n- **If you're just getting started:** Start with a simple topic like “Monthly team goals” and let Copilot build the outline and draft slides. You’ll learn how to guide AI to do the heavy lifting.\n\n---\n\n## Try it now\nOpen PowerPoint, start a new blank presentation, open Copilot, and type:\n💬 Example:\n*\"Create a 4-slide outline for a presentation about our new customer support plan.\"*",
+  "original_title": "Drafting Professional Presentations from Scratch Using Microsoft Copilot in PowerPoint"
+}

@@ -1,0 +1,57 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "quickly-research-any-topic-and-summarise-web-pages-with-micr",
+    "company": "Microsoft",
+    "tool": "Microsoft Copilot",
+    "icon": "🤖",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-07-06T02:08:41.657Z",
+    "writer_provider": "mistral",
+    "writer_model": "mistral-small-latest",
+    "writer_cost_usd": 0.0035694000000000004,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-07-06T02:09:15.804Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 971
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "The article is well-structured, clear, and provides excellent step-by-step guidance",
+      "_salvaged": true,
+      "_aiCost": 0.000869,
+      "_provider": "google",
+      "_model": "gemini-2.5-flash",
+      "_attempts": 1
+    },
+    "seo": {
+      "meta_description": "Learn to use Microsoft Copilot in Edge to instantly summarise web pages and answer questions, saving time while researching online with AI",
+      "keywords": [
+        "Microsoft Copilot",
+        "research tools",
+        "AI for research",
+        "web page summarizer",
+        "Microsoft Edge browser"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add subheadings to break up the content for easier reading",
+        "Use bullet points to list the benefits of using Copilot in Edge",
+        "Include a screenshot of Copilot in action to illustrate its functionality"
+      ],
+      "optimised_at": "2026-07-06T02:10:01.422Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Quickly Research Any Topic and Summarise Web Pages with Microsoft Copilot in Edge\"\nsubtitle: \"Learn to use Copilot in Microsoft Edge to instantly summarise web pages, answer questions, and save time while researching online.\"\ncategory: \"guide\"\naudience: \"both\"\ncompany: \"Microsoft\"\ntool: \"Microsoft Copilot\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"getting-started\", \"microsoft-copilot\", \"edge\"]\n---\n\n# Research Smarter with Copilot in Edge\n\n**Hook:**\nImagine researching a topic online and getting instant, trustworthy summaries without reading every word. With Copilot in Microsoft Edge, you can do exactly that — ask questions, get concise answers, and even have the AI pull key points from multiple web pages, all while you stay in your browser. Perfect for students, professionals, or anyone tired of endless scrolling.\n\n## Before you start\n- A **computer or tablet** with the **Microsoft Edge browser** installed (free).\n- A **Microsoft account** (free).\n- About **10 minutes** of your time.\n- Optional: a **paid Copilot Pro plan** (free plan works for basic use).\n\n---\n\n## Step 1 — Open Copilot in Edge\nOpen the **Microsoft Edge browser** on your device. Look for the **Copilot icon** in the top-right corner of the screen — it looks like a blue square with a white spark inside. Click it once. A sidebar will open on the right side of your screen with Copilot ready to chat. If you don’t see the spark icon, look for a **blue circle with a white \"C\"** or a menu with three lines (☰) in the top-right corner. You’ll know it worked when the Copilot sidebar appears.\n\n💬 Example:\nClick the blue spark icon in the top-right corner of Edge.\n\n---\n\n## Step 2 — Start a new chat\nIn the Copilot sidebar, you’ll see a text box that says **\"Ask Copilot anything…\"** Click inside it. A blinking cursor will appear. This is where you type your research question or topic. If the box is missing, look for a **\"New chat\"** button at the top of the sidebar. You’ll know it worked when you see the cursor ready for you to type.\n\n💬 Example:\nType: *\"Summarise the key points from this page about renewable energy in Australia.\"*\n\n---\n\n## Step 3 — Ask your research question\nType your question or topic into the text box. For example, if you’re researching climate change, you might type: *\"What are the main causes and effects of climate change in Australia?\"* Then press **Enter** or click the send arrow. Copilot will process your request and show a response in the chat. If nothing happens, check your internet connection or try refreshing the page. You’ll know it worked when you see Copilot’s answer appear below your question.\n\n💬 Example:\n*\"What are the main causes and effects of climate change in Australia?\"*\n\n---\n\n## Step 4 — Request a page summary\nIf you’re on a long article or webpage and want a quick summary, highlight the URL in your browser’s address bar, copy it (Ctrl+C or Cmd+C), then paste it (Ctrl+V or Cmd+V) into the Copilot chat box. Add a note like: *\"Summarise this page.\"* Press Enter. Copilot will read the page and give you a concise summary. If the summary is too long, ask: *\"Give me the top 3 points only.\"* You’ll know it worked when you see a clear, shortened version of the page’s content.\n\n💬 Example:\nPaste: *\"https://example.com/climate-change-australia\"*\nThen type: *\"Summarise this page.\"*\n\n---\n\n## Step 5 — Ask follow-up questions\nAfter Copilot gives you a summary, you can ask more questions to dig deeper. For example, if the summary mentions \"renewable energy targets,\" you could ask: *\"What are Australia’s current renewable energy targets for 2030?\"* Copilot will use the context from your chat to give a more accurate answer. If Copilot doesn’t understand, try rephrasing your question. You’ll know it worked when you get a relevant, detailed answer based on the conversation so far.\n\n💬 Example:\n*\"What are Australia’s current renewable energy targets for 2030?\"*\n\n---\n\n## Step 6 — Compare information from multiple pages\nTo research a topic across several sources, open each webpage in a new tab. Then, in Copilot, ask: *\"Compare the main points about renewable energy policies from these pages: [paste first URL], [paste second URL].\"* Copilot will analyse the content and give you a side-by-side summary. If you get an error, make sure the pages are public and accessible. You’ll know it worked when you see a comparison that highlights differences and similarities.\n\n💬 Example:\n*\"Compare the main points about renewable energy policies from these pages: https://example.com/page1 and https://example.com/page2.\"*\n\n---\n\n## Common mistakes\n- **Mistake:** Typing a question but not pressing Enter.\n  **Fix:** Always press Enter or click the send arrow after typing.\n- **Mistake:** Pasting a URL without context.\n  **Fix:** Add a note like *\"Summarise this page\"* after the URL.\n- **Mistake:** Expecting Copilot to browse private or password-protected pages.\n  **Fix:** Only use public web pages that anyone can access.\n\n---\n\n## What this means for you\n\n- **In everyday life:** Need a quick recap of a long news article before a meeting? Ask Copilot to summarise it. Studying for an exam? Have Copilot pull the key points from your textbook pages.\n- **For your business or work:** Researching a competitor or market trend? Copilot can pull and compare information from multiple sources in seconds, saving hours of manual reading.\n- **If you're just getting started:** Start with a single page summary. Pick a short article, paste the URL into Copilot, and ask for a summary. It’s the easiest way to see how powerful this tool can be.\n\n---\n\n## Try it now\nOpen Microsoft Edge, click the Copilot icon in the top-right corner, and ask: *\"Summarise the key points from this page: https://austrade.gov.au/renewable-energy\"* (or any page you’re curious about). See how quickly you get a clear, useful summary — no extra apps or logins needed.",
+  "original_title": "Quickly Research Any Topic and Summarise Web Pages with Microsoft Copilot in Edge"
+}

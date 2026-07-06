@@ -1,6 +1,98 @@
 # AI World Co. — közösségi posztok
 
-*Generálva: 2026-07-05T20:18:36.270Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+*Generálva: 2026-07-06T02:19:31.830Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## Simulate real-world places with Project Genie and Street View
+**🔗 https://aiworldhq.com/article/how-ai-is-turning-street-photos-into-virtual-worlds-you-can-.html**
+
+**Facebook:**
+Ever wanted to walk the streets of a holiday spot before you book? AI can turn Google Street View into a simple, interactive walk‑through, so you can explore the vibe first. https://aiworldhq.com/article/how-ai-is-turning-street-photos-into-virtual-worlds-you-can-.html #travel #AI
+
+**Instagram:**
+Step inside a town without leaving your couch.
+AI can turn Street View photos into a 3‑D walk‑through, letting you scout cafés, parks and heritage sites before you travel.
+#virtualtour
+#traveltech
+#aiexploration
+Link in bio.
+
+*Kép-ötlet: A laptop screen displaying a 3‑D street scene overlaying a real street‑view photo, with a coffee mug beside it.*
+
+---
+
+## 5 ways Google Search can level up your thrift and vintage shopping
+**🔗 https://aiworldhq.com/article/5-ways-google-search-can-boost-your-thrift-and-vintage-finds.html**
+
+**Facebook:**
+Tired of scrolling forever for that perfect vintage piece? Google Search’s new AI tricks can spot hidden gems and compare prices in seconds, so you can thrift smarter. https://aiworldhq.com/article/5-ways-google-search-can-boost-your-thrift-and-vintage-finds.html #Thrifting #GoogleTips
+
+**Instagram:**
+Ready to hunt smarter for vintage treasures?
+Use Google’s AI search filters to uncover hidden gems and see price comparisons instantly – it’s like a personal thrifting assistant. #vintagefinds
+#thrifting
+#GoogleTips
+#AI
+#savemoney
+Link in bio.
+
+*Kép-ötlet: A bright second-hand store aisle with colourful racks of clothing and a laptop open to a Google search results page.*
+
+---
+
+## How we used Gemini to build Google I/O 2026
+**🔗 https://aiworldhq.com/article/how-to-use-gemini-to-plan-and-organise-your-next-big-project.html**
+
+**Facebook:**
+Turn a mountain of tasks into a clear checklist with Gemini – it helps you plan your next big project in minutes. Give it a go and feel the progress. https://aiworldhq.com/article/how-to-use-gemini-to-plan-and-organise-your-next-big-project.html #productivity
+
+**Instagram:**
+Stuck on where to start?
+Gemini breaks a big project into simple steps so you can keep moving forward.
+#projectmanagement
+#Gemini
+#productivity
+Link in bio.
+
+*Kép-ötlet: A tidy desk with a laptop displaying a simple checklist and a sunny window beside it.*
+
+---
+
+## Take our I/O 2026 quiz, vibe coded in Google AI Studio.
+**🔗 https://aiworldhq.com/article/how-to-vibe-code-your-first-web-app-with-google-ai-studio.html**
+
+**Facebook:**
+Got a quick idea for a family quiz or a simple budget calculator? You can build it as a web app in minutes, just by describing it in plain English – no coding required. https://aiworldhq.com/article/how-to-vibe-code-your-first-web-app-with-google-ai-studio.html #NoCode #AIHelp
+
+**Instagram:**
+Turn your idea into a web app – no code needed!
+Just describe what you want and Google AI Studio creates it for you. Ideal for trivia nights or tracking expenses.
+#NoCode
+#GoogleAIStudio
+#VibeCoding
+Link in bio.
+
+*Kép-ötlet: A relaxed setting with a person scribbling a quiz idea on a notebook, while a laptop displays a friendly AI Studio interface.*
+
+---
+
+## 9 demos of Gemini Omni and Gemini 3.5 in action
+**🔗 https://aiworldhq.com/article/how-to-use-gemini-s-voice-and-camera-features-in-your-daily-.html**
+
+**Facebook:**
+Stuck with a recipe or flat‑pack instructions? Ask Gemini to read the steps out loud or snap a photo for instant help – all from your phone. https://aiworldhq.com/article/how-to-use-gemini-s-voice-and-camera-features-in-your-daily-.html #AIhelp #Gemini
+
+**Instagram:**
+Turn your kitchen into a smart helper
+Ask Gemini to read a recipe aloud or point your phone at a shelf for instant assembly tips.
+#Gemini
+#VoiceAI
+#MultimodalAI
+#EverydayTech
+Link in bio.
+
+*Kép-ötlet: A person in a kitchen holding a smartphone, speaking to it while the camera points at a recipe card, with a subtle AI glow effect.*
 
 ---
 

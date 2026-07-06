@@ -1,0 +1,27 @@
+{
+  "started_at": "2026-07-06T02:07:53.861Z",
+  "total": 2,
+  "passed": 0,
+  "failed": 2,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.0016316999999999998,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-07-06T02-05-53-939Z_ntt-research_Presentation__The_AI-Native_Infrastructure_for_a_R.json",
+      "rejected": "REJECTED_2026-07-06T02-05-53-939Z_ntt-research_Presentation__The_AI-Native_Infrastructure_for_a_R.json",
+      "decision": "FAIL",
+      "score": 6,
+      "cost_usd": 0.0007467999999999999
+    },
+    {
+      "writer": "WRITER_2026-07-06T02-05-53-940Z_ntt-research_Presentation__Successful_Implementation_of_the_Ent.json",
+      "rejected": "REJECTED_2026-07-06T02-05-53-940Z_ntt-research_Presentation__Successful_Implementation_of_the_Ent.json",
+      "decision": "FAIL",
+      "score": 6,
+      "cost_usd": 0.0008849
+    }
+  ],
+  "finished_at": "2026-07-06T02:08:08.954Z",
+  "duration_seconds": 15.093
+}
