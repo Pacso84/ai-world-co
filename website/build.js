@@ -269,6 +269,56 @@ const UI_MAP = {
 for (const l of SITE_LANGS) Object.assign(UI[l], UI_MAP[l] || {});
 
 // Kereső feliratok (navbar kereső-overlay, 2026-07-07)
+// Kapcsolódó cikkek + Kezdd itt feliratok
+const UI_REL = {
+  en: { relatedTitle: 'Keep reading', startHere: 'Start here' },
+  hu: { relatedTitle: 'Olvass tovább', startHere: 'Kezdd itt!' },
+  es: { relatedTitle: 'Sigue leyendo', startHere: 'Empieza aquí' },
+  de: { relatedTitle: 'Weiterlesen', startHere: 'Starte hier' },
+  fr: { relatedTitle: 'À lire ensuite', startHere: 'Commencez ici' }
+};
+for (const l of SITE_LANGS) Object.assign(UI[l], UI_REL[l] || {});
+
+// "Kezdd itt!" oldal szövegei (teljesen kezdő látogatóknak, 2026-07-07)
+const UI_START = {
+  en: { startTitle: 'New to AI? Start here.', startTag: 'No jargon, no pressure — just the first small steps, in the right order.',
+        startS1h: 'What is this site?', startS1p: 'AI World HQ explains artificial intelligence for everyday people: fresh news in plain language, and step-by-step guides a complete beginner can follow. Every technical word is explained the first time it appears.',
+        startS2h: 'How to begin', startS2p: 'Pick the first guide below and simply follow the steps — each one tells you what to do, what you should see on your screen, and what to do if yours looks different. Tick off the steps as you go!',
+        startS3h: 'Stay safe from day one', startS3p: 'Two golden rules: never paste passwords, ID numbers or bank details into an AI chat, and always double-check important facts — AI assistants sound confident even when they are wrong.',
+        startPickH: 'Your first 5 guides', startMore: 'Browse all guides' },
+  hu: { startTitle: 'Új vagy az AI-ban? Kezdd itt!', startTag: 'Se szakzsargon, se nyomás — csak az első kis lépések, jó sorrendben.',
+        startS1h: 'Mi ez az oldal?', startS1p: 'Az AI World HQ hétköznapi embereknek magyarázza a mesterséges intelligenciát: friss hírek közérthetően, és lépésről lépésre útmutatók, amiket egy teljesen kezdő is követni tud. Minden szakszót megmagyarázunk az első előfordulásakor.',
+        startS2h: 'Így indulj el', startS2p: 'Válaszd ki lent az első útmutatót, és egyszerűen kövesd a lépéseket — mindegyik megmondja, mit csinálj, mit kell látnod a képernyőn, és mit tegyél, ha nálad máshogy néz ki. A lépéseket ki is pipálhatod!',
+        startS3h: 'Biztonság az első naptól', startS3p: 'Két aranyszabály: soha ne írj jelszót, személyes azonosítót vagy bankadatot AI-csevegésbe, és a fontos tényeket mindig ellenőrizd — az AI magabiztosan beszél akkor is, amikor téved.',
+        startPickH: 'Az első 5 útmutatód', startMore: 'Az összes útmutató' },
+  es: { startTitle: '¿Nuevo en la IA? Empieza aquí.', startTag: 'Sin jerga y sin presión: solo los primeros pasos, en el orden correcto.',
+        startS1h: '¿Qué es este sitio?', startS1p: 'AI World HQ explica la inteligencia artificial para gente común: noticias en lenguaje claro y guías paso a paso que cualquier principiante puede seguir. Cada término técnico se explica la primera vez que aparece.',
+        startS2h: 'Cómo empezar', startS2p: 'Elige la primera guía de abajo y sigue los pasos: cada uno te dice qué hacer, qué deberías ver en tu pantalla y qué hacer si la tuya se ve diferente. ¡Puedes ir marcando los pasos!',
+        startS3h: 'Seguridad desde el primer día', startS3p: 'Dos reglas de oro: nunca pegues contraseñas, documentos o datos bancarios en un chat de IA, y verifica siempre los datos importantes: la IA suena segura incluso cuando se equivoca.',
+        startPickH: 'Tus primeras 5 guías', startMore: 'Ver todas las guías' },
+  de: { startTitle: 'Neu bei KI? Starte hier.', startTag: 'Kein Fachchinesisch, kein Druck — nur die ersten kleinen Schritte, in der richtigen Reihenfolge.',
+        startS1h: 'Was ist diese Seite?', startS1p: 'AI World HQ erklärt künstliche Intelligenz für alle: frische News in klarer Sprache und Schritt-für-Schritt-Anleitungen, denen auch komplette Anfänger folgen können. Jeder Fachbegriff wird beim ersten Auftauchen erklärt.',
+        startS2h: 'So fängst du an', startS2p: 'Wähle unten die erste Anleitung und folge einfach den Schritten — jeder sagt dir, was zu tun ist, was du auf dem Bildschirm sehen solltest und was du tust, wenn es bei dir anders aussieht. Schritte kannst du abhaken!',
+        startS3h: 'Von Anfang an sicher', startS3p: 'Zwei goldene Regeln: Gib niemals Passwörter, Ausweisdaten oder Bankdaten in einen KI-Chat ein, und prüfe wichtige Fakten immer nach — KI klingt auch dann überzeugt, wenn sie falsch liegt.',
+        startPickH: 'Deine ersten 5 Anleitungen', startMore: 'Alle Anleitungen ansehen' },
+  fr: { startTitle: "Nouveau dans l'IA ? Commencez ici.", startTag: 'Pas de jargon, pas de pression — juste les premiers petits pas, dans le bon ordre.',
+        startS1h: "Ce site, c'est quoi ?", startS1p: "AI World HQ explique l'intelligence artificielle à tout le monde : des actus en langage clair et des guides pas à pas qu'un débutant complet peut suivre. Chaque terme technique est expliqué à sa première apparition.",
+        startS2h: 'Comment commencer', startS2p: "Choisissez le premier guide ci-dessous et suivez simplement les étapes — chacune vous dit quoi faire, ce que vous devriez voir à l'écran, et quoi faire si le vôtre est différent. Vous pouvez cocher les étapes !",
+        startS3h: 'En sécurité dès le premier jour', startS3p: "Deux règles d'or : ne collez jamais de mots de passe, de pièces d'identité ou de données bancaires dans un chat IA, et vérifiez toujours les faits importants — l'IA a l'air sûre d'elle même quand elle se trompe.",
+        startPickH: 'Vos 5 premiers guides', startMore: 'Voir tous les guides' }
+};
+for (const l of SITE_LANGS) Object.assign(UI[l], UI_START[l] || {});
+
+// Olvasói visszajelzés feliratok (2026-07-07)
+const UI_FB = {
+  en: { fbQ: 'Was this helpful?', fbThanks: 'Thanks for the feedback! 💛' },
+  hu: { fbQ: 'Hasznos volt?', fbThanks: 'Köszönjük a visszajelzést! 💛' },
+  es: { fbQ: '¿Te ha resultado útil?', fbThanks: '¡Gracias por tu opinión! 💛' },
+  de: { fbQ: 'War das hilfreich?', fbThanks: 'Danke für dein Feedback! 💛' },
+  fr: { fbQ: 'Cela vous a été utile ?', fbThanks: 'Merci pour votre retour ! 💛' }
+};
+for (const l of SITE_LANGS) Object.assign(UI[l], UI_FB[l] || {});
+
 const UI_SEARCH = {
   en: { searchLabel: 'Search', searchPh: 'Search articles and guides…', noResults: 'No results — try another word' },
   hu: { searchLabel: 'Keresés', searchPh: 'Keress a cikkek és útmutatók közt…', noResults: 'Nincs találat — próbálj más szót' },
@@ -486,6 +536,42 @@ function buildXref(articles) {
     if (!a.isGuide && a.file) XREF.newsByFile.set(a.file, a);
   }
 }
+// ===================================================================
+// KAPCSOLÓDÓ CIKKEK (2026-07-07) — cikk alji "olvass tovább" ajánló.
+// Rokonság: azonos cég (+3), közös címke (+1/db), azonos kategória (+1).
+// EN-metaadatokból számoljuk EGYSZER; a címek renderkor lokalizálódnak.
+// ===================================================================
+let RELATED = new Map();
+function buildRelated(articles) {
+  RELATED = new Map();
+  for (const a of articles) {
+    const at = new Set(a.tags || []);
+    const scored = [];
+    for (const b of articles) {
+      if (b === a) continue;
+      let s = 0;
+      if (a.company && b.company === a.company) s += 3;
+      for (const t of (b.tags || [])) if (at.has(t)) s += 1;
+      if (a.category === b.category) s += 1;
+      if (s > 1) scored.push([s, b]);   // 1 pont (csak kategória) még nem rokonság
+    }
+    scored.sort((x, y) => y[0] - x[0] || (y[1].publishedAt || '').localeCompare(x[1].publishedAt || ''));
+    RELATED.set(a.file, scored.slice(0, 3).map(p => p[1]));
+  }
+}
+function relatedBox(a) {
+  const rel = RELATED.get(a.file) || [];
+  if (!rel.length) return '';
+  const items = rel.map(r => {
+    const lr = localizeArticle(r, LANG);
+    return `<a class="rel__item" href="${r.slug}.html">
+      <span class="rel__ico">${r.isGuide ? '📘' : '📰'}</span>
+      <span><span class="rel__t">${escapeHtml(lr.title)}</span>
+      ${lr.subtitle ? `<span class="rel__s">${escapeHtml(lr.subtitle)}</span>` : ''}</span></a>`;
+  }).join('');
+  return `<section class="rel"><h2 class="rel__h">${tr('relatedTitle')}</h2><div class="rel__grid">${items}</div></section>`;
+}
+
 function xrefBox(a) {
   if (a.isGuide) {
     // útmutató → forrás-hír (a hivatkozott cikk CÍME is az aktuális nyelven!)
@@ -512,6 +598,7 @@ function pageShell({ title, description, bodyContent, isArticle = false, noIntro
   const homePath = `${LP}/`;
   const supportPath = `${LP}/support.html`;
   const guidesPath = `${LP}/guides.html`;
+  const startPath = `${LP}/start.html`;
   const toolsPath = `${LP}/tools.html`;
   const year = new Date().getFullYear();
   const url = `${SITE.url}${LP}/${pagePath}`;
@@ -566,6 +653,7 @@ function pageShell({ title, description, bodyContent, isArticle = false, noIntro
     <div class="navbar__inner">
       <a href="${homePath}" class="navbar__logo"><img src="/assets/logo.svg" alt="" class="navbar__mark">${SITE.name}<span class="navbar__dot">.</span></a>
       <nav class="navbar__nav" id="navMenu">
+        <a href="${startPath}" class="nav--star">⭐ ${tr('startHere')}</a>
         <a href="${homePath}">${T.news}</a>
         <a href="${guidesPath}">${T.guides}</a>
         <a href="${toolsPath}">${T.tools}</a>
@@ -876,7 +964,9 @@ function buildArticlePage(a) {
     </div>
     ${tagsHtml}
     ${xrefBox(a)}
+    ${relatedBox(a)}
     <div class="article__foot">
+      <div class="fb" data-slug="${a.slug}" data-thanks="${escapeHtml(tr('fbThanks'))}"><span class="fb__q">${tr('fbQ')}</span><button class="fb__btn" data-vote="up" aria-label="👍">👍</button><button class="fb__btn" data-vote="down" aria-label="👎">👎</button></div>
       <p class="ai-disclosure">${tr('disclosureNews')}</p>
       <a href="../index.html" class="back-link">${tr('backStories')}</a>
     </div>
@@ -1193,7 +1283,9 @@ function buildGuidePage(a) {
     ${intro ? `<div class="g-intro">${guideSectionHtml(intro)}</div>` : ''}
     <div class="g-steps">${blocks}</div>
     ${xrefBox(a)}
+    ${relatedBox(a)}
     <div class="article__foot">
+      <div class="fb" data-slug="${a.slug}" data-thanks="${escapeHtml(tr('fbThanks'))}"><span class="fb__q">${tr('fbQ')}</span><button class="fb__btn" data-vote="up" aria-label="👍">👍</button><button class="fb__btn" data-vote="down" aria-label="👎">👎</button></div>
       <p class="ai-disclosure">${tr('disclosureGuide')}</p>
       <a href="../index.html" class="back-link">${tr('backStories')}</a>
     </div>
@@ -1257,6 +1349,43 @@ function buildSupportPage() {
     description: tr('supMetaDesc'),
     noIntro: true, pagePath: 'support.html',
     bodyContent: body
+  });
+}
+
+// ===================================================================
+// "KEZDD ITT!" OLDAL — a teljesen kezdő látogató kapuja (2026-07-07)
+// ===================================================================
+const START_GUIDE_IDS = ['what-ai-is-good-for', 'prompt-basics', 'chatgpt-getting-started', 'ai-privacy-basics', 'fact-check-ai'];
+function buildStartPage(allLoc) {
+  const picks = [];
+  for (const id of START_GUIDE_IDS) {
+    const g = allLoc.find(a => a.isGuide && a.file.includes(id));
+    if (g) picks.push(g);
+  }
+  for (const g of allLoc.filter(a => a.isGuide && !a.company)) {   // tartalék
+    if (picks.length >= 5) break;
+    if (!picks.includes(g)) picks.push(g);
+  }
+  const items = picks.map((g, i) => `<a class="start__pick" href="article/${g.slug}.html">
+      <span class="start__num">${i + 1}</span>
+      <span><span class="rel__t">${escapeHtml(g.title)}</span>
+      ${g.subtitle ? `<span class="rel__s">${escapeHtml(g.subtitle)}</span>` : ''}</span></a>`).join('');
+  const body = `<section class="guides-hero">
+      <p class="intro__kicker">⭐ ${tr('startHere')}</p>
+      <h1 class="guides-hero__title">${escapeHtml(tr('startTitle'))}</h1>
+      <p class="guides-hero__tag">${escapeHtml(tr('startTag'))}</p>
+    </section>
+    <div class="start__cols">
+      <div class="start__card"><h2>💡 ${tr('startS1h')}</h2><p>${tr('startS1p')}</p></div>
+      <div class="start__card"><h2>👣 ${tr('startS2h')}</h2><p>${tr('startS2p')}</p></div>
+      <div class="start__card"><h2>🛡️ ${tr('startS3h')}</h2><p>${tr('startS3p')}</p></div>
+    </div>
+    <section class="start__picks"><h2 class="rel__h">📘 ${tr('startPickH')}</h2>${items}
+      <p style="margin-top:18px"><a class="back-link" href="guides.html">${tr('startMore')} →</a></p></section>`;
+  return pageShell({
+    title: `${tr('startTitle')} — ${SITE.name}`,
+    description: tr('startTag'),
+    noIntro: true, pagePath: 'start.html', bodyContent: body
   });
 }
 
@@ -1339,6 +1468,7 @@ function main() {
   // Cikkek betöltése (egyszer) + kereszthivatkozás-index
   const articles = loadArticles();
   buildXref(articles);
+  buildRelated(articles);
   // VALÓDI lapszám: ahány külön napon jelent meg tartalom
   ISSUE_NO = new Set(articles.map(a => (a.publishedAt || '').slice(0, 10)).filter(Boolean)).size || 1;
   console.log(`📰 ${articles.length} publikált cikk/útmutató — generálás ${SITE_LANGS.length} nyelven`);
@@ -1363,6 +1493,7 @@ function main() {
     writeFileSync(join(outBase, 'index.html'), buildIndex(news), 'utf-8');
     writeFileSync(join(outBase, 'guides.html'), buildGuidesPage(generalGuides, guideCounts), 'utf-8');
     writeFileSync(join(outBase, 'tools.html'), buildToolsPage(companyGuides, guideCounts), 'utf-8');
+    writeFileSync(join(outBase, 'start.html'), buildStartPage(loc), 'utf-8');
     writeFileSync(join(outBase, 'feed.xml'), feedXml(loc, lang), 'utf-8');   // nyelvenkénti RSS
     // Kereső-index (villámkereső a navbarban): cím + alcím + márka + slug
     const searchIndex = loc.map(a => ({
@@ -1382,6 +1513,7 @@ function main() {
     if (generalGuides.length) sitemapUrls.push({ loc: `${SITE.url}${lp}/guides.html`, date: today });
     if (companyGuides.length) sitemapUrls.push({ loc: `${SITE.url}${lp}/tools.html`, date: today });
     if (SUPPORT.enabled) sitemapUrls.push({ loc: `${SITE.url}${lp}/support.html`, date: today });
+    sitemapUrls.push({ loc: `${SITE.url}${lp}/start.html`, date: today });
     for (const a of loc) sitemapUrls.push({ loc: `${SITE.url}${lp}/article/${a.slug}.html`, date: (a.publishedAt || '').slice(0, 10) || today });
 
     console.log(`✅ [${lang}] ${loc.length + 3} oldal generálva (${outBase === OUT_DIR ? 'gyökér' : lang + '/'})`);

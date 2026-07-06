@@ -9,3 +9,8 @@ compatibility_date = "2024-11-01"
 #   wrangler secret put WEBHOOK_SECRET
 [vars]
 GH_REPO = "Pacso84/ai-world-co"
+
+# Olvasói 👍/👎 visszajelzés tárolója (2026-07-07)
+[[kv_namespaces]]
+binding = "FEEDBACK"
+id = "3ec3cac8de4247d09ddac8b245f9b985"

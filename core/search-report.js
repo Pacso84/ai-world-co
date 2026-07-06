@@ -144,6 +144,27 @@ async function main() {
     lines.push(`🔎 Bing: *${b.clicks} kattintás* · ${b.impressions} megjelenés`);
   } else lines.push('🔎 Bing: nincs kulcs beállítva');
 
+  // OLVASÓI 👍/👎 összesítés (a Worker KV-jából, ha van export-kulcs)
+  try {
+    const expKey = (process.env.FEEDBACK_EXPORT_KEY || '').trim();
+    if (expKey) {
+      const fr = await fetch('https://aiworld-telegram.pacsi84.workers.dev/feedback-export',
+        { headers: { 'X-Export-Key': expKey }, signal: AbortSignal.timeout(15000) });
+      if (fr.ok) {
+        const fb = await fr.json();
+        const entries = Object.entries(fb).filter(([s]) => s !== 'proba-cikk');
+        const votes = entries.reduce((n, [, v]) => n + (v.up || 0) + (v.down || 0), 0);
+        if (votes > 0) {
+          const best = entries.sort((a, b) => (b[1].up || 0) - (a[1].up || 0))[0];
+          const worst = entries.sort((a, b) => (b[1].down || 0) - (a[1].down || 0))[0];
+          lines.push(``, `🗳️ Olvasói szavazat a héten: ${votes}`);
+          if (best && best[1].up > 0) lines.push(`   👍 kedvenc: ${best[0].slice(0, 45)} (${best[1].up})`);
+          if (worst && worst[1].down > 0) lines.push(`   👎 leggyengébb: ${worst[0].slice(0, 45)} (${worst[1].down})`);
+        }
+      }
+    }
+  } catch { /* a visszajelzés-blokk hibája ne állítsa meg a riportot */ }
+
   // HÍRLEVÉL-LÁMPA: ha a napi átlag kattintás eléri a küszöböt, ideje hírlevelet indítani
   const daily = Math.round(weeklyClicks / 7);
   lines.push(``, daily >= NEWSLETTER_DAILY_CLICKS

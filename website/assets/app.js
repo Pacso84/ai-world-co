@@ -177,3 +177,64 @@
   });
   inp.addEventListener('input', function () { render(inp.value); });
 })();
+
+// ===================================================================
+// LÉPÉS-KIPIPÁLÁS (2026-07-07) — az útmutató lépés-számára kattintva
+// pipa lesz; a haladást a böngésző megjegyzi (localStorage, oldalanként).
+// ===================================================================
+(function () {
+  'use strict';
+  var steps = document.querySelectorAll('.g-step');
+  if (!steps.length) return;
+  var key = 'aiworld-steps:' + location.pathname;
+  function lsGet() { try { return JSON.parse(localStorage.getItem(key) || '[]'); } catch (e) { return []; } }
+  function lsSet(v) { try { localStorage.setItem(key, JSON.stringify(v)); } catch (e) { /* blokkolva — nem baj */ } }
+  var done = lsGet();
+
+  steps.forEach(function (step) {
+    var no = step.querySelector('.g-step__no');
+    if (!no) return;
+    var id = step.id || '';
+    var orig = no.textContent;
+    function apply(isDone) {
+      step.classList.toggle('g-step--done', isDone);
+      no.textContent = isDone ? '✓' : orig;
+      no.setAttribute('title', isDone ? '✓' : '');
+    }
+    if (done.indexOf(id) !== -1) apply(true);
+    no.addEventListener('click', function () {
+      var i = done.indexOf(id);
+      if (i === -1) { done.push(id); apply(true); }
+      else { done.splice(i, 1); apply(false); }
+      lsSet(done);
+    });
+  });
+})();
+
+// ===================================================================
+// 👍/👎 OLVASÓI VISSZAJELZÉS (2026-07-07) — a Workernek küldi, egyszer/cikk
+// ===================================================================
+(function () {
+  'use strict';
+  var box = document.querySelector('.fb');
+  if (!box) return;
+  var slug = box.getAttribute('data-slug');
+  var key = 'aiworld-fb:' + slug;
+  function lsGet(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+  function lsSet(k, v) { try { localStorage.setItem(k, v); } catch (e) { } }
+  function thank() { box.innerHTML = '<span class="fb__q">' + (box.getAttribute('data-thanks') || '💛') + '</span>'; }
+  if (lsGet(key)) { thank(); return; }
+  var seg = location.pathname.split('/')[1];
+  var lang = ['hu', 'es', 'de', 'fr'].indexOf(seg) !== -1 ? seg : 'en';
+  box.querySelectorAll('.fb__btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      lsSet(key, btn.getAttribute('data-vote'));
+      thank();
+      fetch('https://aiworld-telegram.pacsi84.workers.dev/feedback', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ slug: slug, lang: lang, vote: btn.getAttribute('data-vote') })
+      }).catch(function () { /* csendes — a köszönet már kint van */ });
+    });
+  });
+})();

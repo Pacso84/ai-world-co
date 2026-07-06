@@ -15,8 +15,56 @@
 //   GH_REPO         — pl. "Pacso84/ai-world-co"
 // ===================================================================
 
+// ===================================================================
+// OLVASÓI 👍/👎 VISSZAJELZÉS (2026-07-07) — a weboldal cikkeiről érkezik.
+// POST /feedback  {slug, lang, vote:'up'|'down'}  → KV számláló
+// GET  /feedback-export  (X-Export-Key fejléccel) → összesítés a heti riportnak
+// ===================================================================
+const FEEDBACK_CORS = {
+  'Access-Control-Allow-Origin': 'https://aiworldhq.com',
+  'Access-Control-Allow-Methods': 'POST, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type'
+};
+
+async function handleFeedback(request, env) {
+  if (request.method === 'OPTIONS') return new Response(null, { status: 204, headers: FEEDBACK_CORS });
+  if (request.method !== 'POST') return new Response('method', { status: 405, headers: FEEDBACK_CORS });
+  let body;
+  try { body = await request.json(); } catch { return new Response('bad json', { status: 400, headers: FEEDBACK_CORS }); }
+  const slug = String(body.slug || '').replace(/[^a-z0-9-]/g, '').slice(0, 80);
+  const lang = ['en', 'hu', 'es', 'de', 'fr'].includes(body.lang) ? body.lang : 'en';
+  const vote = body.vote === 'up' ? 'up' : body.vote === 'down' ? 'down' : null;
+  if (!slug || !vote) return new Response('bad input', { status: 400, headers: FEEDBACK_CORS });
+  const key = `fb:${slug}`;
+  let rec = { up: 0, down: 0, byLang: {} };
+  try { rec = JSON.parse(await env.FEEDBACK.get(key)) || rec; } catch { /* első szavazat */ }
+  rec[vote] = (rec[vote] || 0) + 1;
+  rec.byLang[lang] = rec.byLang[lang] || { up: 0, down: 0 };
+  rec.byLang[lang][vote]++;
+  await env.FEEDBACK.put(key, JSON.stringify(rec));
+  return new Response('ok', { status: 200, headers: FEEDBACK_CORS });
+}
+
+async function handleFeedbackExport(request, env) {
+  // Csak a heti riport olvashatja (titkos fejléc-kulccsal)
+  if (!env.FEEDBACK_EXPORT_KEY || request.headers.get('X-Export-Key') !== env.FEEDBACK_EXPORT_KEY) {
+    return new Response('forbidden', { status: 403 });
+  }
+  const out = {};
+  const list = await env.FEEDBACK.list({ prefix: 'fb:' });
+  for (const k of list.keys) {
+    try { out[k.name.slice(3)] = JSON.parse(await env.FEEDBACK.get(k.name)); } catch { /* skip */ }
+  }
+  return new Response(JSON.stringify(out), { status: 200, headers: { 'Content-Type': 'application/json' } });
+}
+
 export default {
   async fetch(request, env) {
+    // Olvasói visszajelzés útvonalak (a Telegram-webhook előtt ágazik el)
+    const path = new URL(request.url).pathname;
+    if (path === '/feedback') return handleFeedback(request, env);
+    if (path === '/feedback-export') return handleFeedbackExport(request, env);
+
     // Egészség-ellenőrzés / böngészős megnyitás
     if (request.method !== 'POST') {
       return new Response('AI World Telegram worker — OK', { status: 200 });

@@ -99,6 +99,7 @@ jobs:
           TELEGRAM_OWNER_CHAT_ID: ${{ secrets.TELEGRAM_OWNER_CHAT_ID }}
           GSC_SA_JSON: ${{ secrets.GSC_SA_JSON }}
           BING_WM_API_KEY: ${{ secrets.BING_WM_API_KEY }}
+          FEEDBACK_EXPORT_KEY: ${{ secrets.FEEDBACK_EXPORT_KEY }}
         run: node core/search-report.js || true
 
       - name: Generált tartalom megőrzése (visszacommit)

@@ -609,3 +609,37 @@ body {
 .search-hit__t { display: block; font-weight: 700; font-size: 15px; line-height: 1.3; }
 .search-hit__s { display: block; font-size: 12.5px; color: var(--ink-soft); line-height: 1.4; margin-top: 2px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .search-empty { padding: 18px; color: var(--muted); font-size: 14px; text-align: center; }
+
+/* ===== Kapcsolódó cikkek (cikk alján, 2026-07-07) ===== */
+.rel { margin: 46px 0 8px; padding-top: 30px; border-top: 1px solid var(--line); }
+.rel__h { font-family: 'Schibsted Grotesk', sans-serif; font-weight: 800; font-size: 20px; margin-bottom: 18px; }
+.rel__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+.rel__item { display: flex; gap: 10px; align-items: flex-start; padding: 16px; background: var(--card); border: 1px solid var(--line); border-radius: 16px; text-decoration: none; color: var(--ink); transition: transform .15s ease, box-shadow .15s ease; }
+.rel__item:hover { transform: translateY(-3px); box-shadow: 0 14px 30px -18px rgba(28,26,22,.4); }
+.rel__ico { flex-shrink: 0; font-size: 18px; }
+.rel__t { display: block; font-weight: 700; font-size: 14.5px; line-height: 1.3; }
+.rel__s { display: block; font-size: 12px; color: var(--ink-soft); line-height: 1.4; margin-top: 4px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+/* ===== Lépés-kipipálás az útmutatókon (2026-07-07) ===== */
+.g-step__no { cursor: pointer; user-select: none; transition: background .2s ease, transform .15s ease; }
+.g-step__no:hover { transform: scale(1.08); }
+.g-step--done .g-step__no { background: var(--accent) !important; color: #fff !important; }
+.g-step--done .g-step__h { color: var(--muted); }
+.g-step--done .g-step__body { opacity: .72; }
+
+/* ===== "Kezdd itt!" oldal (2026-07-07) ===== */
+.start__cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; margin: 34px 0; }
+.start__card { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 24px; }
+.start__card h2 { font-family: 'Schibsted Grotesk', sans-serif; font-size: 17px; font-weight: 800; margin-bottom: 10px; }
+.start__card p { font-size: 14.5px; line-height: 1.6; color: var(--ink-soft); }
+.start__picks { max-width: 680px; margin: 24px auto 0; }
+.start__pick { display: flex; gap: 14px; align-items: flex-start; padding: 16px 18px; margin-bottom: 12px; background: var(--card); border: 1px solid var(--line); border-radius: 16px; text-decoration: none; color: var(--ink); transition: transform .15s ease, box-shadow .15s ease; }
+.start__pick:hover { transform: translateY(-3px); box-shadow: 0 14px 30px -18px rgba(28,26,22,.4); }
+.start__num { flex-shrink: 0; width: 30px; height: 30px; border-radius: 50%; background: var(--accent); color: #fff; font-weight: 800; font-size: 14px; display: flex; align-items: center; justify-content: center; }
+.nav--star { white-space: nowrap; }
+
+/* ===== 👍/👎 visszajelzés (2026-07-07) ===== */
+.fb { display: flex; align-items: center; gap: 12px; margin: 26px 0 14px; padding: 14px 18px; background: var(--paper-2); border: 1px solid var(--line); border-radius: 16px; }
+.fb__q { font-weight: 700; font-size: 14.5px; }
+.fb__btn { font-size: 20px; background: var(--card); border: 1px solid var(--line-strong); border-radius: 12px; padding: 6px 14px; cursor: pointer; transition: transform .15s ease, background .15s ease; }
+.fb__btn:hover { transform: scale(1.12); background: var(--paper); }
