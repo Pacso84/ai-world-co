@@ -268,6 +268,16 @@ const UI_MAP = {
 };
 for (const l of SITE_LANGS) Object.assign(UI[l], UI_MAP[l] || {});
 
+// Kereső feliratok (navbar kereső-overlay, 2026-07-07)
+const UI_SEARCH = {
+  en: { searchLabel: 'Search', searchPh: 'Search articles and guides…', noResults: 'No results — try another word' },
+  hu: { searchLabel: 'Keresés', searchPh: 'Keress a cikkek és útmutatók közt…', noResults: 'Nincs találat — próbálj más szót' },
+  es: { searchLabel: 'Buscar', searchPh: 'Busca artículos y guías…', noResults: 'Sin resultados — prueba otra palabra' },
+  de: { searchLabel: 'Suche', searchPh: 'Artikel und Anleitungen durchsuchen…', noResults: 'Keine Treffer — versuch ein anderes Wort' },
+  fr: { searchLabel: 'Rechercher', searchPh: 'Rechercher articles et guides…', noResults: 'Aucun résultat — essayez un autre mot' }
+};
+for (const l of SITE_LANGS) Object.assign(UI[l], UI_SEARCH[l] || {});
+
 // VALÓDI lapszám: hány külön napon jelent meg tartalom (a main() számolja ki).
 // A user jelezte: fixen "Issue 01"-et írt a dátum mellett — az nem igaz.
 let ISSUE_NO = 1;
@@ -562,6 +572,7 @@ function pageShell({ title, description, bodyContent, isArticle = false, noIntro
         ${SUPPORT.enabled ? `<a href="${supportPath}" class="navbar__support">${T.support}</a>` : ''}
       </nav>
       ${langSwitcher}
+      <button class="search-toggle" id="searchToggle" aria-label="${tr('searchLabel')}" title="${tr('searchLabel')}">🔍</button>
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Light / dark">
         <span class="theme-toggle__icon">☾</span>
       </button>
@@ -569,7 +580,13 @@ function pageShell({ title, description, bodyContent, isArticle = false, noIntro
         <span></span><span></span><span></span>
       </button>
     </div>
-  </header>${(isArticle || noIntro) ? '' : `
+  </header>
+  <div class="search-overlay" id="searchOverlay" hidden>
+    <div class="search-box">
+      <input id="searchInput" type="search" placeholder="${escapeHtml(tr('searchPh'))}" autocomplete="off" aria-label="${tr('searchLabel')}">
+      <div id="searchResults" class="search-results" data-noresults="${escapeHtml(tr('noResults'))}"></div>
+    </div>
+  </div>${(isArticle || noIntro) ? '' : `
   <section class="intro">
     <div class="intro__inner">
       <p class="intro__kicker">${tr('heroKicker').replace('01', String(ISSUE_NO).padStart(2, '0'))} · ${formatDate(new Date().toISOString())}</p>
@@ -1347,6 +1364,12 @@ function main() {
     writeFileSync(join(outBase, 'guides.html'), buildGuidesPage(generalGuides, guideCounts), 'utf-8');
     writeFileSync(join(outBase, 'tools.html'), buildToolsPage(companyGuides, guideCounts), 'utf-8');
     writeFileSync(join(outBase, 'feed.xml'), feedXml(loc, lang), 'utf-8');   // nyelvenkénti RSS
+    // Kereső-index (villámkereső a navbarban): cím + alcím + márka + slug
+    const searchIndex = loc.map(a => ({
+      t: a.title, s: a.subtitle || '', b: [a.company, a.tool].filter(Boolean).join(' '),
+      u: a.slug, g: a.isGuide ? 1 : 0
+    }));
+    writeFileSync(join(outBase, 'search.json'), JSON.stringify(searchIndex), 'utf-8');
     for (const a of loc) {
       const html = a.isGuide ? buildGuidePage(a) : buildArticlePage(a);
       writeFileSync(join(outArticle, `${a.slug}.html`), html, 'utf-8');

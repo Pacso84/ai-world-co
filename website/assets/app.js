@@ -111,3 +111,69 @@
     }, { passive: true });
   }
 })();
+
+// ===================================================================
+// VILLÁMKERESŐ (2026-07-07) — navbar 🔍 → overlay, gépelés közben szűr.
+// Az indexet (search.json, nyelvenként) csak az első megnyitáskor tölti.
+// ===================================================================
+(function () {
+  'use strict';
+  var tog = document.getElementById('searchToggle');
+  var ov = document.getElementById('searchOverlay');
+  var inp = document.getElementById('searchInput');
+  var res = document.getElementById('searchResults');
+  if (!tog || !ov || !inp || !res) return;
+
+  var seg = location.pathname.split('/')[1];
+  var pref = ['hu', 'es', 'de', 'fr'].indexOf(seg) !== -1 ? '/' + seg : '';
+  var idx = null;
+
+  function esc(s) { var d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+
+  function render(q) {
+    q = (q || '').trim().toLowerCase();
+    if (q.length < 2) { res.innerHTML = ''; return; }
+    if (!idx) return;
+    var scored = [];
+    for (var i = 0; i < idx.length; i++) {
+      var a = idx[i];
+      var t = a.t.toLowerCase(), s = (a.s || '').toLowerCase(), b = (a.b || '').toLowerCase();
+      var score = -1;
+      if (t.indexOf(q) === 0) score = 0;
+      else if (t.indexOf(q) !== -1) score = 1;
+      else if (b.indexOf(q) !== -1) score = 2;
+      else if (s.indexOf(q) !== -1) score = 3;
+      if (score >= 0) scored.push([score, a]);
+    }
+    scored.sort(function (x, y) { return x[0] - y[0]; });
+    var top = scored.slice(0, 10);
+    if (!top.length) { res.innerHTML = '<p class="search-empty">' + esc(res.getAttribute('data-noresults') || 'No results') + '</p>'; return; }
+    res.innerHTML = top.map(function (p) {
+      var a = p[1];
+      return '<a class="search-hit" href="' + pref + '/article/' + a.u + '.html">' +
+        '<span class="search-hit__ico">' + (a.g ? '📘' : '📰') + '</span>' +
+        '<span><span class="search-hit__t">' + esc(a.t) + '</span>' +
+        (a.s ? '<span class="search-hit__s">' + esc(a.s) + '</span>' : '') + '</span></a>';
+    }).join('');
+  }
+
+  function open() {
+    ov.hidden = false;
+    document.body.style.overflow = 'hidden';
+    inp.focus();
+    if (!idx) {
+      fetch(pref + '/search.json').then(function (r) { return r.json(); })
+        .then(function (d) { idx = d; render(inp.value); })
+        .catch(function () { /* index nélkül nincs találat */ });
+    }
+  }
+  function close() { ov.hidden = true; document.body.style.overflow = ''; }
+
+  tog.addEventListener('click', function () { ov.hidden ? open() : close(); });
+  ov.addEventListener('click', function (e) { if (e.target === ov) close(); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !ov.hidden) close();
+    if ((e.ctrlKey || e.metaKey) && e.key === 'k') { e.preventDefault(); ov.hidden ? open() : close(); }
+  });
+  inp.addEventListener('input', function () { render(inp.value); });
+})();

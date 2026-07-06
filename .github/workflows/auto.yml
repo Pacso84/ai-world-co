@@ -85,6 +85,13 @@ jobs:
           node agents/social/agent.js --limit 6 || true
           node agents/social/poster.js --limit 2 || true
 
+      # Napi önjelentés a Főnöktől Telegramra (naponta 1x, a 7-15 UTC sávban)
+      - name: Napi önjelentés (Telegram)
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_OWNER_CHAT_ID: ${{ secrets.TELEGRAM_OWNER_CHAT_ID }}
+        run: node core/daily-report.js || true
+
       - name: Generált tartalom megőrzése (visszacommit)
         run: |
           git config user.name "AI World Bot"

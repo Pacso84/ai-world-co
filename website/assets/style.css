@@ -595,3 +595,17 @@ body {
 .g-map__lbl { font-size: 11.5px; line-height: 1.35; text-align: center; color: var(--ink-soft); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .g-map__arr { flex: 0 0 auto; margin-top: 24px; color: var(--muted); font-size: 15px; }
 .g-step { scroll-margin-top: 92px; }  /* horgony-ugrásnál ne takarja a fejléc */
+
+/* ===== Villámkereső (navbar 🔍 overlay, 2026-07-07) ===== */
+.search-toggle { flex-shrink: 0; width: 38px; height: 38px; border-radius: 50%; background: transparent; color: var(--ink); border: 1px solid var(--line-strong); cursor: pointer; font-size: 15px; display: flex; align-items: center; justify-content: center; transition: background .2s ease, transform .2s ease; }
+.search-toggle:hover { background: var(--paper-2); transform: scale(1.06); }
+.search-overlay { position: fixed; inset: 0; z-index: 200; background: color-mix(in srgb, var(--ink) 30%, transparent); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); padding: 12vh 20px 20px; }
+.search-box { max-width: 620px; margin: 0 auto; background: var(--card); border: 1px solid var(--line-strong); border-radius: 20px; box-shadow: 0 30px 70px -30px rgba(28,26,22,.6); overflow: hidden; }
+.search-box input { width: 100%; border: 0; outline: none; background: transparent; color: var(--ink); font: inherit; font-size: 18px; padding: 18px 22px; border-bottom: 1px solid var(--line); }
+.search-results { max-height: 52vh; overflow-y: auto; padding: 8px; }
+.search-hit { display: flex; gap: 12px; align-items: flex-start; padding: 12px 14px; border-radius: 14px; text-decoration: none; color: var(--ink); }
+.search-hit:hover { background: var(--paper-2); }
+.search-hit__ico { flex-shrink: 0; font-size: 18px; margin-top: 1px; }
+.search-hit__t { display: block; font-weight: 700; font-size: 15px; line-height: 1.3; }
+.search-hit__s { display: block; font-size: 12.5px; color: var(--ink-soft); line-height: 1.4; margin-top: 2px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.search-empty { padding: 18px; color: var(--muted); font-size: 14px; text-align: center; }
