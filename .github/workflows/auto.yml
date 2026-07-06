@@ -92,6 +92,15 @@ jobs:
           TELEGRAM_OWNER_CHAT_ID: ${{ secrets.TELEGRAM_OWNER_CHAT_ID }}
         run: node core/daily-report.js || true
 
+      # Heti kereső-riport (vasárnap): GSC+Bing számok + hírlevél-lámpa
+      - name: Heti kereső-riport (Telegram)
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_OWNER_CHAT_ID: ${{ secrets.TELEGRAM_OWNER_CHAT_ID }}
+          GSC_SA_JSON: ${{ secrets.GSC_SA_JSON }}
+          BING_WM_API_KEY: ${{ secrets.BING_WM_API_KEY }}
+        run: node core/search-report.js || true
+
       - name: Generált tartalom megőrzése (visszacommit)
         run: |
           git config user.name "AI World Bot"
