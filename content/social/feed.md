@@ -1,6 +1,100 @@
 # AI World Co. — közösségi posztok
 
-*Generálva: 2026-07-06T11:59:11.382Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+*Generálva: 2026-07-06T18:12:18.950Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## Introducing Creator Assistant, Plus More Languages For AI Translations on Facebook
+**🔗 https://aiworldhq.com/article/how-to-use-facebook-s-creator-assistant-and-ai-translations-.html**
+
+**Facebook:**
+Stuck on what to post? Use Facebook’s Creator Assistant to get ideas and publish in multiple languages, so more people see your content. https://aiworldhq.com/article/how-to-use-facebook-s-creator-assistant-and-ai-translations-.html #CreatorTools #AItranslations
+
+**Instagram:**
+Run your business in more languages – effortlessly
+Creator Assistant suggests post ideas and Meta’s AI translation turns them into the language your audience speaks. Save time and grow your reach.
+#FacebookTips
+#AIHelper
+#SmallBiz
+Link in bio.
+
+*Kép-ötlet: A laptop screen displaying the Facebook Creator Assistant UI, with a subtle world map illustration behind it.*
+
+---
+
+## Our AI Wearables Are “Changing the Game” for Disabled People
+**🔗 https://aiworldhq.com/article/how-ai-glasses-can-boost-everyday-independence-for-people-wi.html**
+
+**Facebook:**
+Want a bit more independence at the café or on the street? AI glasses can read menus, guide you to the restroom and help you stay in the conversation – all hands‑free. https://aiworldhq.com/article/how-ai-glasses-can-boost-everyday-independence-for-people-wi.html #AssistiveTech #Accessibility
+
+**Instagram:**
+Seeing the world a little easier 👓
+AI‑powered glasses read menus, give turn‑by‑turn cues and translate speech, so everyday tasks feel smoother.
+#AIwearables
+#Accessibility
+#AssistiveTech
+#EverydayIndependence
+Link in bio.
+
+*Kép-ötlet: A close‑up of a person wearing sleek glasses, looking at a café menu, with subtle digital overlay cues in the lenses.*
+
+---
+
+## Which AI Glasses Are Right For You?
+**🔗 https://aiworldhq.com/article/a-simple-guide-to-choosing-your-first-pair-of-ai-smart-glass.html**
+
+**Facebook:**
+Tired of juggling your phone to snap a quick photo? Discover how AI smart glasses can free your hands and keep you focused on the moment. https://aiworldhq.com/article/a-simple-guide-to-choosing-your-first-pair-of-ai-smart-glass.html #smartglasses #wearables
+
+**Instagram:**
+Hands‑free photos, music and answers
+Learn which AI smart glasses fit your everyday life and how they can capture memories without the phone in your hand. Link in bio.
+#smartglasses
+#wearables
+#AI
+#techguide
+#Australia
+
+*Kép-ötlet: A person walking a dog at sunset, wearing sleek AI smart glasses that subtly reflect the sky.*
+
+---
+
+## From Hot Wheels to handling content: How brands are using Microsoft AI to be more productive and imaginative
+**🔗 https://aiworldhq.com/article/how-to-use-microsoft-copilot-to-boost-your-daily-creativity.html**
+
+**Facebook:**
+Ever wish you could finish an email or plan a project faster? Microsoft Copilot can draft, brainstorm and save you time, so you can focus on what matters. https://aiworldhq.com/article/how-to-use-microsoft-copilot-to-boost-your-daily-creativity.html #productivity #MicrosoftCopilot
+
+**Instagram:**
+Stuck on a blank page?
+Let Copilot spin up a first draft or spark new ideas – it’s like a quiet brainstorming buddy.
+#productivity
+#AIhelpers
+#OfficeTips
+Link in bio.
+
+*Kép-ötlet: A person at a tidy desk with a laptop, the screen showing a document and a subtle AI icon, natural light from a window.*
+
+---
+
+## Microsoft open sources its ‘farm of the future’ toolkit
+**🔗 https://aiworldhq.com/article/how-smart-farming-toolkits-are-bringing-ai-to-the-land.html**
+
+**Facebook:**
+Tired of guessing when to water or fertilise? Microsoft’s free, open‑source toolkit uses AI to monitor soil and forecast weather, helping you manage crops more efficiently. https://aiworldhq.com/article/how-smart-farming-toolkits-are-bringing-ai-to-the-land.html #SmartFarming #OpenSource
+
+**Instagram:**
+Stop guessing, start growing smarter.
+Microsoft has released an open‑source farm toolkit that lets anyone track soil moisture, predict weather and plan crop care with AI – no costly licence required.
+#smartfarming
+#opensource
+#agtech
+#AI
+#sustainablefarming
+Link in bio.
+
+*Kép-ötlet: A sunrise over a calm field with a farmer holding a tablet that shows simple soil data visualisation.*
 
 ---
 

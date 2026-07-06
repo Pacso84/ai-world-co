@@ -1,0 +1,38 @@
+{
+  "_meta": {
+    "written_at": "2026-07-06T18:06:19.071Z",
+    "writer_provider": "mistral",
+    "writer_model": "mistral-small-latest",
+    "writer_cost_usd": 0.00318,
+    "original_draft": "2026-07-06T18-04-05-099Z_apple-ml_Revisiting_ASR_Error_Correction_with_Specialized_M.json",
+    "source_id": "apple-ml",
+    "source_name": "Apple Machine Learning Research (hivatalos)",
+    "source_link": "https://machinelearning.apple.com/research/asr-error-correction",
+    "status": "rejected",
+    "rejected_at": "2026-07-06T18:06:52.315Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 563
+    },
+    "ai_review": {
+      "overall_score": 6,
+      "clarity_score": 6,
+      "decision": "FAIL",
+      "issues": [],
+      "verdict": "Salvaged from a partial AI response.",
+      "_salvaged": true,
+      "_aiCost": 0.0006772999999999999,
+      "_provider": "google",
+      "_model": "gemini-2.5-flash",
+      "_attempts": 1
+    },
+    "reason": "Salvaged from a partial AI response.",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-07-06T18-04-05-099Z_apple-ml_Revisiting_ASR_Error_Correction_with_Specialized_M.json",
+    "requeued_unchanged": false
+  },
+  "article_markdown": "---\ntitle: \"How to Clean Up AI Voice Notes When It Mishears You\"\nsubtitle: \"Quick fixes for voice-to-text errors without re-recording everything\"\ncategory: \"how-to\"\naudience: \"personal\"\nread_time_minutes: 5\ntags: [\"voice-ai\", \"speech-to-text\", \"editing\", \"productivity\"]\n---\n\n# How to Clean Up AI Voice Notes When It Mishears You\n\n**You’ve just dictated a quick message or note, only to open the text and find the AI turned “see you at five” into “sea you at dive.”**\n\nIt’s one of those tiny frustrations that slows you down. Voice typing is meant to save time, but when the words come out wrong, it can feel like starting over. The good news is you don’t have to. Most voice tools let you fix the text directly — no re-recording needed.\n\n---\n\n## Why AI Gets It Wrong\n\nVoice typing uses something called **automatic speech recognition (ASR)**. Think of it like a fast but slightly tone-deaf translator. It listens to your voice, breaks it into sounds, and tries to match them to words. When you speak quickly, use slang, or have background noise, it can get confused. Even a soft voice or a strong accent can throw it off.\n\nThe upside? Most tools let you edit the text right there. You don’t need to re-record — just correct the words.\n\n---\n\n## How to Fix Voice Notes in 3 Steps\n\n### 1. Open the Text and Listen Again\nAfter you finish recording, the AI usually shows the text right away. Tap or click on it to open the full transcript.\n\nListen to the audio while reading the text. You’ll spot mismatches faster when you hear the original voice.\n\n> 💡 Tip: Most voice tools (like Google Docs Voice Typing or Apple’s built-in dictation) let you play the audio from the transcript. Use that to double-check.\n\n### 2. Edit Only the Mistakes\nInstead of rewriting everything, just fix the errors:\n\n- Tap the word you want to change.\n- Type the correct word over it.\n- Press Enter or Done to save.\n\nNo need to re-record. The AI keeps the rest of your text intact.\n\n> 💡 Example: If the AI wrote “I’ll meet you at 4pm” but you said “I’ll meet you at 3pm,” just change the “4” to “3.”\n\n### 3. Add Punctuation and Paragraphs\nVoice notes often miss punctuation. Add commas, periods, and line breaks to make it readable.\n\n- Say “new paragraph” or “comma” while recording to help the AI.\n- After recording, add them manually if needed.\n\n> ✅ Before: “hi how are you doing today”\n> ✅ After: “Hi, how are you doing today?”\n\n---\n\n## What this means for you\n\n- **If you’re a student**: Use voice notes to capture lecture ideas, then clean up the text before studying. No more rewriting messy notes.\n- **If you work from home**: Dictate emails or messages, fix errors, and send them off — without re-recording.\n- **If you’re just getting started**: Try voice typing in a free tool like Google Docs or Apple Notes. Edit the text right away to build confidence.\n\n---\n\n## Wrap-up\n\nVoice typing is handy for speed, but it’s not perfect. The trick isn’t to avoid mistakes — it’s to fix them quickly. Open the text, listen while you read, and edit only what’s wrong. With a little practice, your voice notes will be as clear as if you’d typed them yourself.",
+  "original_title": "Revisiting ASR Error Correction with Specialized Models"
+}

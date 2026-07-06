@@ -1,0 +1,62 @@
+{
+  "started_at": "2026-07-06T18:05:11.739Z",
+  "total": 7,
+  "passed": 3,
+  "failed": 4,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.005684799999999999,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-07-06T18-04-05-097Z_google-workspace_Join_video_conferences_on_Google_Meet_hardware_via.json",
+      "article": "ARTICLE_2026-07-06T18-04-05-097Z_google-workspace_Join_video_conferences_on_Google_Meet_hardware_via.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0008711999999999999
+    },
+    {
+      "writer": "WRITER_2026-07-06T18-04-05-097Z_nvidia-blog_How_Open_Models_Are_Driving_AI_Research.json",
+      "rejected": "REJECTED_2026-07-06T18-04-05-097Z_nvidia-blog_How_Open_Models_Are_Driving_AI_Research.json",
+      "decision": "FAIL",
+      "score": 3,
+      "cost_usd": 0.0007119
+    },
+    {
+      "writer": "WRITER_2026-07-06T18-04-05-098Z_aws-ml_Automatically_redact_PII_in_images_with_Amazon_Nov.json",
+      "article": "ARTICLE_2026-07-06T18-04-05-098Z_aws-ml_Automatically_redact_PII_in_images_with_Amazon_Nov.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0008214
+    },
+    {
+      "writer": "WRITER_2026-07-06T18-04-05-098Z_aws-ml_Run_MiniMax_models_on_Amazon_Bedrock.json",
+      "article": "ARTICLE_2026-07-06T18-04-05-098Z_aws-ml_Run_MiniMax_models_on_Amazon_Bedrock.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0008585
+    },
+    {
+      "writer": "WRITER_2026-07-06T18-04-05-099Z_apple-ml_Revisiting_ASR_Error_Correction_with_Specialized_M.json",
+      "rejected": "REJECTED_2026-07-06T18-04-05-099Z_apple-ml_Revisiting_ASR_Error_Correction_with_Specialized_M.json",
+      "decision": "FAIL",
+      "score": 5,
+      "cost_usd": 0.0006902
+    },
+    {
+      "writer": "WRITER_2026-07-06T18-04-05-099Z_aws-ml_Streaming_benchmark_and_recommendation_results_to_.json",
+      "rejected": "REJECTED_2026-07-06T18-04-05-099Z_aws-ml_Streaming_benchmark_and_recommendation_results_to_.json",
+      "decision": "FAIL",
+      "score": 5,
+      "cost_usd": 0.0008667
+    },
+    {
+      "writer": "WRITER_2026-07-06T18-04-05-695Z_databricks_OpenAI_and_Databricks_at_DAIS_2026__Making_enterpr.json",
+      "rejected": "REJECTED_2026-07-06T18-04-05-695Z_databricks_OpenAI_and_Databricks_at_DAIS_2026__Making_enterpr.json",
+      "decision": "FAIL",
+      "score": 6,
+      "cost_usd": 0.0008648999999999999
+    }
+  ],
+  "finished_at": "2026-07-06T18:06:00.130Z",
+  "duration_seconds": 48.391
+}
