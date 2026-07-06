@@ -1153,14 +1153,15 @@ function buildGuidePage(a) {
 
   const toolChip = (a.company || a.tool)
     ? `<span class="g-tool">📘 ${escapeHtml([a.company, a.tool].filter(Boolean).join(' · '))}</span>` : '';
-  const levelChip = a.level ? `<span class="g-level">${escapeHtml(a.level)}</span>` : '';
+  // Szint-címke fordítva (lvl_beginner/intermediate/advanced — mint a csempéken)
+  const levelChip = a.level ? `<span class="g-level">${escapeHtml(tr('lvl_' + a.level) || a.level)}</span>` : '';
   const stepsTotal = stepHeadings.length;   // többnyelvű STEP_RX-ből (régen csak "Step N"-t értett)
 
   const body = `<article class="article guide" style="--gc:${GUIDE_COVER_COLORS[a.company] || '#4f7a86'}">
     ${guideCoverHtml(a, 'article__cover')}
     <div class="article__head">
       <div class="article__badges">
-        <span class="tag ${cat.cls}">📘 Step-by-step guide</span>
+        <span class="tag ${cat.cls}">📘 ${tr('stepByStep')}</span>
         ${toolChip}${levelChip}
         <span class="aud ${aud.cls}">${aud.icon} ${tr(aud.key)}</span>
       </div>
