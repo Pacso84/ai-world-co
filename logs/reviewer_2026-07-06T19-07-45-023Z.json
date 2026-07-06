@@ -1,0 +1,62 @@
+{
+  "started_at": "2026-07-06T19:06:56.106Z",
+  "total": 7,
+  "passed": 6,
+  "failed": 1,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.006096000000000001,
+  "by_article": [
+    {
+      "writer": "WRITER_GUIDE_automate-basic-email-replies-in-outlook-with-meta-ai.json",
+      "rejected": "REJECTED_GUIDE_automate-basic-email-replies-in-outlook-with-meta-ai.json",
+      "decision": "FAIL",
+      "score": 6,
+      "cost_usd": 0.000827
+    },
+    {
+      "writer": "WRITER_GUIDE_build-simple-community-event-flyers-with-meta-ai-s-design-pr.json",
+      "article": "ARTICLE_GUIDE_build-simple-community-event-flyers-with-meta-ai-s-design-pr.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0008386
+    },
+    {
+      "writer": "WRITER_GUIDE_create-ai-generated-grocery-shopping-lists-from-pantry-photo.json",
+      "article": "ARTICLE_GUIDE_create-ai-generated-grocery-shopping-lists-from-pantry-photo.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0008543
+    },
+    {
+      "writer": "WRITER_GUIDE_design-a-personalized-weekly-workout-plan-with-meta-ai.json",
+      "article": "ARTICLE_GUIDE_design-a-personalized-weekly-workout-plan-with-meta-ai.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0007641
+    },
+    {
+      "writer": "WRITER_GUIDE_drafting-professional-presentations-from-scratch-using-micro.json",
+      "article": "ARTICLE_GUIDE_drafting-professional-presentations-from-scratch-using-micro.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0009988
+    },
+    {
+      "writer": "WRITER_GUIDE_plan-your-next-weekend-getaway-or-event-with-claude-s-help.json",
+      "article": "ARTICLE_GUIDE_plan-your-next-weekend-getaway-or-event-with-claude-s-help.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.000841
+    },
+    {
+      "writer": "WRITER_GUIDE_quickly-research-any-topic-and-summarise-web-pages-with-micr.json",
+      "article": "ARTICLE_GUIDE_quickly-research-any-topic-and-summarise-web-pages-with-micr.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0009721999999999999
+    }
+  ],
+  "finished_at": "2026-07-06T19:07:45.023Z",
+  "duration_seconds": 48.917
+}

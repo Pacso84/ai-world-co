@@ -1,0 +1,46 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "automate-basic-email-replies-in-outlook-with-meta-ai",
+    "company": "Meta",
+    "tool": "Meta AI",
+    "icon": "🤖",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-07-06T19:08:05.621Z",
+    "writer_provider": "cerebras",
+    "writer_model": "gpt-oss-120b",
+    "writer_cost_usd": 0,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "rejected_at": "2026-07-06T19:07:03.908Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1311
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "This guide is well-",
+      "_salvaged": true,
+      "_aiCost": 0.0010002,
+      "_provider": "google",
+      "_model": "gemini-2.5-flash",
+      "_attempts": 1
+    },
+    "reason": "Salvaged from a partial AI response.",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_GUIDE_automate-basic-email-replies-in-outlook-with-meta-ai.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-07-06T19:08:13.155Z"
+  },
+  "article_markdown": "---\ntitle: \"Automate basic email replies in Outlook with Meta AI\"\nsubtitle: \"Save time every day by letting Meta AI draft quick, professional replies you can send with one click in Outlook.\"\ncategory: \"guide\"\naudience: \"business\"\ncompany: \"Meta\"\ntool: \"Meta AI\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"getting-started\", \"outlook\", \"meta-ai\"]\n---\n\n# Let Meta AI draft your Outlook replies in seconds\n\n**Hook:** Imagine cutting the time you spend answering routine emails in half. With Meta AI inside Outlook you can ask the assistant to write a polite reply, tweak it, and send it – all without leaving your inbox. This guide is for anyone who opens Outlook and wants a faster way to answer.\n\n## Before you start\n- A Microsoft Outlook account (desktop app or the web version at outlook.com).  \n- An internet‑connected device – a PC, laptop, or tablet will do.  \n- A recent version of Outlook; older builds may miss the Meta AI button.  \n- About 10 minutes to follow the steps and try a test reply.  \n- No coding knowledge required; the free Outlook plan already includes the AI helper.\n\n## Step 1 — Open Outlook and locate the Meta AI icon  \n**ACTION:** Launch Outlook (desktop or go to outlook.com) and look for the Meta AI button.  \n**WHAT YOU SEE:** In the top‑right corner you’ll usually see a small blue circle with a white “M”. It may sit next to the search field or appear inside the compose pane. If you don’t spot it, look for a button labelled “Meta AI”, “Ask Meta AI”, or a similar icon in the ribbon (the toolbar that runs across the top).  \n**WHAT HAPPENS NEXT:** Clicking the icon opens a small panel where you can type instructions for the AI.  \n**IF IT LOOKS DIFFERENT:** On some tablets the icon appears as a three‑dot menu; tap that and choose “Meta AI” from the list.  \n💬 Example: You see a blue “M” at the top‑right and click it.  \nYou'll know it worked when a thin text box labelled “Ask Meta AI” slides into view.\n\n## Step 2 — Open the email you want to answer  \n**ACTION:** Open an incoming message or start a new reply by clicking the “Reply” button.  \n**WHAT YOU SEE:** The email opens in a compose window. At the bottom of that window you’ll find the “Ask Meta AI” text box we opened in Step 1.  \n**WHAT HAPPENS NEXT:** The cursor automatically moves into the box, ready for you to type a prompt.  \n**IF IT LOOKS DIFFERENT:** If the box isn’t visible, check the toolbar for a small “AI” icon and click it to reveal the prompt area.  \n💬 Example: Click “Reply” on an email from Jane, and the compose pane appears with the AI box at the bottom.  \nYou'll know it worked when the blinking cursor is inside the “Ask Meta AI” field.\n\n## Step 3 — Tell Meta AI what kind of reply you need  \n**ACTION:** Type a brief instruction (a “prompt”) asking the AI to draft your reply.  \n**WHAT YOU SEE:** The prompt box shows the words you type. For a first‑time user, a prompt like “Draft a polite reply thanking the sender and asking for more details” works well.  \n**WHAT HAPPENS NEXT:** Meta AI reads the original email you’re replying to and, within a few seconds, generates a draft directly above the prompt box. The draft appears in plain grey text.  \n**IF IT LOOKS DIFFERENT:** If you only see a loading spinner and no draft, try re‑typing the prompt or ensure the original email is still open.  \n💬 Example:  \n> Draft a polite reply thanking the sender and asking for more details.  \nYou'll know it worked when a full paragraph of suggested text appears just above the prompt box.\n\n## Step 4 — Review, edit, and perfect the draft  \n**ACTION:** Click into the suggested reply and edit any part you’d like to change.  \n**WHAT YOU SEE:** The draft becomes an editable text field; you can delete, add, or replace words just like any normal email.  \n**WHAT HAPPENS NEXT:** As you edit, the AI does not automatically rewrite anything – you are in full control of the final wording.  \n**IF IT LOOKS DIFFERENT:** If the draft is locked (greyed out and not clickable), click the “Edit” button that may appear next to the draft. Older versions sometimes require you to select the text and start typing to unlock it.  \n💬 Example: Change “Looking forward to your response” to “Could you let me know your thoughts by Friday?”  \nYou'll know it worked when you can type freely in the draft area and see your changes reflected instantly.\n\n## Step 5 — Send the email with one click  \n**ACTION:** Once satisfied, press the regular “Send” button at the bottom of the compose window.  \n**WHAT YOU SEE:** The button is usually blue and labelled “Send”. Clicking it triggers Outlook to move the message from your Outbox to the Sent Items folder.  \n**WHAT HAPPENS NEXT:** Outlook delivers the email to the recipient; the AI does not send anything on its own.  \n**IF IT LOOKS DIFFERENT:** If the button is greyed out, double‑check that the “To” field contains a valid email address and that the draft is not empty.  \n💬 Example: Click the blue “Send” button after editing your reply.  \nYou'll know it worked when the message disappears from the compose pane and appears in your “Sent Items” folder.\n\n## Step 6 — Refine the reply by asking Meta AI to shorten or expand it  \n**ACTION:** If the draft is too long or too brief, type a new prompt asking for a different length.  \n**WHAT YOU SEE:** The same “Ask Meta AI” box is still at the bottom. Type something like “Make this reply shorter, under 50 words” or “Add a meeting request for next week”.  \n**WHAT HAPPENS NEXT:** The AI generates a fresh version that replaces the previous draft, keeping the same tone but obeying the length instruction.  \n**IF IT LOOKS DIFFERENT:** If a new draft doesn’t appear, clear the box, re‑type the prompt, and press Enter. Some older builds require you to click a small “Refresh” icon next to the prompt field.  \n💬 Example:  \n> Make this reply shorter, under 50 words.  \n>  \n> Expand this reply to include a meeting request for next Wednesday.  \nYou'll know it worked when the grey draft updates to match the new length request.\n\n## Common mistakes\n- **Can’t find the Meta AI button.**  \n  *Fix:* Look for any icon that resembles a blue “M” or a menu labelled “AI”. If it’s missing, ensure your Outlook version is up to date or refresh the page.  \n- **The draft doesn’t match the tone you need.**  \n  *Fix:* Add more detail to your prompt, e.g., “Draft a friendly reply thanking the sender for the invitation and asking about the agenda”. The AI works better with clearer instructions.  \n- **Accidentally sending the email before editing.**  \n  *Fix:* Always pause after the draft appears, review it, and only click “Send” once you’re happy. You can edit the draft any time before the final click.\n\n## What this means for you\n- **In everyday life:** Quickly answer routine messages—meeting invites, simple enquiries, or thank‑you notes—without typing each sentence yourself.  \n- **For your business or work:** Keep a high‑volume inbox under control, maintain a consistent professional tone, and free up mental space for strategic tasks.  \n- **If you're just getting started:** Begin with a single prompt like “Draft a short reply accepting an invitation”. Seeing the AI’s response will build confidence for more complex replies later.\n\n## Try it now\nOpen Outlook, pick an email you need to answer, and type in the “Ask Meta AI” box:  \n💬 Example:  \n> Draft a short reply accepting an invitation and asking for the agenda.  \nReview the generated text, make any tweaks you like, and hit “Send”. You’ve just completed your first AI‑assisted reply—in under two minutes.",
+  "original_title": "Automate basic email replies in Outlook with Meta AI"
+}

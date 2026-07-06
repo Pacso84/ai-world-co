@@ -1053,33 +1053,6 @@
   ],
   "messages": [
     {
-      "id": "m178298889061291",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Streamline your data backups with incremental exports for Google Workspace\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-06-27T02-07-24-541Z_google-workspace_Streamline_your_data_backups_with_incremental_expo.json",
-      "at": "2026-07-02T10:41:30.612Z"
-    },
-    {
-      "id": "m178298889062095",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Previewing GPT-5.6 Sol: a next-generation model\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-06-27T02-07-24-541Z_openai-blog_Previewing_GPT-5_6_Sol__a_next-generation_model.json",
-      "at": "2026-07-02T10:41:30.620Z"
-    },
-    {
-      "id": "m178298889063178",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Work smarter in 90 days: A real-world guide to using AI\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-06-29T02-29-25-987Z_microsoft-ai_Work_smarter_in_90_days__A_real-world_guide_to_usi.json",
-      "at": "2026-07-02T10:41:30.631Z"
-    },
-    {
       "id": "m178298889063947",
       "from": "ellenorzo",
       "to": "iro",
@@ -2409,6 +2382,33 @@
       "text": "1 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
       "ref": null,
       "at": "2026-07-05T20:18:36.274Z"
+    },
+    {
+      "id": "m178336482393088",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Automate basic email replies in Outlook with Meta AI\" — mi a baj: Beginner clarity too low (5/10): steps are vague or could mislead a first-time user",
+      "ref": "GUIDE_automate-basic-email-replies-in-outlook-with-meta-ai.json",
+      "at": "2026-07-06T19:07:03.930Z"
+    },
+    {
+      "id": "m178336488562473",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Automate basic email replies in Outlook with Meta AI\" — javítva: Beginner clarity too low (5/10): steps are vague or could mislead a first-time user; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "GUIDE_automate-basic-email-replies-in-outlook-with-meta-ai.json",
+      "at": "2026-07-06T19:08:05.624Z"
+    },
+    {
+      "id": "m17833648931580",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Automate basic email replies in Outlook with Meta AI\" (?/10)",
+      "ref": "GUIDE_automate-basic-email-replies-in-outlook-with-meta-ai.json",
+      "at": "2026-07-06T19:08:13.158Z"
     }
   ]
 }
