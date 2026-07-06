@@ -353,7 +353,7 @@
     "daily_articles_max": 25,
     "_daily_articles_comment": "A HÍR napi kerete. Felemelve 5→25 (a felhasználó: 'amennyi van'). A költségőr (paid_daily_usd_max) tartja kordában a pénzt: ami a fizetős keret felett van, azt a free kulcsok írják ~0 Ft-ért. A gyenge híreket az Ellenőrző úgyis kiszűri.",
     "daily_articles_min": 0,
-    "daily_guides_max": 4,
+    "daily_guides_max": 6,
     "_daily_guides_comment": "Az ÚTMUTATÓK külön napi kerete (saját sáv). A hír-keret betelése NEM akadályozza az útmutató-írást: ha nincs új hír / maradt token, az idle-fill ebből a keretből ír útmutatókat. Csak a költség-limit állít le mindent.",
     "guides_per_company_target": 4,
     "_guides_per_company_comment": "ARÁNYOSSÁG: minden követett céghez legalább ennyi útmutatóra törekszünk, hogy ne tűnjön egyik cég fontosabbnak a másiknál. A balance mód a lemaradó cégeket hozza fel (deficit sorrendben), de a general útmutatók is folyamatosan íródnak (2:1 interleave).",
