@@ -57,6 +57,11 @@ jobs:
       - name: Weboldal build
         run: node website/build.js
 
+      # i18n-őrszem: angol maradványok a nem-EN oldalakon → hangos figyelmeztetés
+      # a naplóban (a deployt nem állítja meg)
+      - name: i18n-őrszem (angol maradvány-vadász)
+        run: node website/check-i18n.js || true
+
       - name: Deploy — Cloudflare Pages
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}

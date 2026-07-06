@@ -478,17 +478,19 @@ function buildXref(articles) {
 }
 function xrefBox(a) {
   if (a.isGuide) {
-    // útmutató → forrás-hír
+    // útmutató → forrás-hír (a hivatkozott cikk CÍME is az aktuális nyelven!)
     const news = a.sourceNews?.file ? XREF.newsByFile.get(a.sourceNews.file) : null;
     if (!news) return '';
+    const locNews = localizeArticle(news, LANG);
     return `<aside class="xref xref--news"><span class="xref__lbl">📰 ${tr('xrefNews')}</span>
-      <a class="xref__link" href="${news.slug}.html"><span class="xref__t">${escapeHtml(news.title)}</span><span class="xref__arrow">→</span></a></aside>`;
+      <a class="xref__link" href="${news.slug}.html"><span class="xref__t">${escapeHtml(locNews.title)}</span><span class="xref__arrow">→</span></a></aside>`;
   }
-  // hír → kapcsolódó útmutató
+  // hír → kapcsolódó útmutató (fordított címmel)
   const guide = a.relatedGuideTopic ? XREF.guideByTopic.get(a.relatedGuideTopic) : null;
   if (!guide) return '';
+  const locGuide = localizeArticle(guide, LANG);
   return `<aside class="xref xref--guide"><span class="xref__lbl">📘 ${tr('xrefGuide')}</span>
-    <a class="xref__link" href="${guide.slug}.html"><span class="xref__t">${escapeHtml(guide.title)}</span><span class="xref__arrow">→</span></a></aside>`;
+    <a class="xref__link" href="${guide.slug}.html"><span class="xref__t">${escapeHtml(locGuide.title)}</span><span class="xref__arrow">→</span></a></aside>`;
 }
 
 // ===================================================================
