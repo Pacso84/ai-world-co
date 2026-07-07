@@ -1,0 +1,38 @@
+{
+  "_meta": {
+    "written_at": "2026-07-07T17:53:35.925Z",
+    "writer_provider": "google",
+    "writer_model": "gemini-2.5-flash",
+    "writer_cost_usd": 0.0087818,
+    "original_draft": "2026-07-07T17-51-01-246Z_aws-ml_Build_a_serverless_image_editing_agent_with_Amazon.json",
+    "source_id": "aws-ml",
+    "source_name": "AWS Machine Learning (hivatalos)",
+    "source_link": "https://aws.amazon.com/blogs/machine-learning/build-a-serverless-image-editing-agent-with-amazon-bedrock-agentcore-harness/",
+    "status": "rejected",
+    "rejected_at": "2026-07-07T17:54:36.361Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 782
+    },
+    "ai_review": {
+      "overall_score": 7,
+      "clarity_score": 6,
+      "decision": "FAIL",
+      "issues": [],
+      "verdict": "Salvaged from a partial AI response.",
+      "_salvaged": true,
+      "_aiCost": 0.0043425,
+      "_provider": "google",
+      "_model": "gemini-2.5-flash",
+      "_attempts": 1
+    },
+    "reason": "Salvaged from a partial AI response.",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-07-07T17-51-01-246Z_aws-ml_Build_a_serverless_image_editing_agent_with_Amazon.json",
+    "requeued_unchanged": false
+  },
+  "article_markdown": "---\ntitle: \"Edit Your Photos with Words: How AI Makes Image Editing Simple\"\nsubtitle: \"Discover how AI tools let you transform pictures using only simple text descriptions, no complex software needed.\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"image-editing\", \"ai-tools\", \"productivity\", \"creative-ai\"]\n---\n\n# Edit Your Photos with Words: How AI Makes Image Editing Simple\n\nDo you ever look at a photo and wish you could quickly change just one small detail without learning complicated software? Imagine being able to tell a computer exactly what you want – like \"make the sky brighter\" or \"remove that person in the background\" – and have it happen in seconds. That's exactly what new AI-powered image editing tools are making possible.\n\n## Your Photos, Edited by Text\n\nGone are the days when you needed to be a graphic design expert to make basic edits. With these clever AI tools, you can upload a photo and then simply type in what you want to change. It's like having a personal photo editor who understands natural language – the way you speak every day – rather than needing to click through menus or use fiddly tools.\n\nThese tools work thanks to advanced AI models (think of these as the sophisticated computer brains that power the AI). They've been trained on millions of images and text descriptions, allowing them to understand your instructions and then generate new pixels in your photo to match your request.\n\n## How It Works: Speaking to Your Pictures\n\nGetting started is usually very straightforward. Here’s a general idea of the steps involved:\n\n1.  **Choose Your Tool**: Many websites and apps are starting to offer this capability. You'll simply open one up in your web browser or on your phone.\n2.  **Upload Your Image**: Find the photo you want to edit on your device and upload it to the AI tool.\n3.  **Type Your Edit**: This is where the magic happens! In a text box, describe the change you want. This instruction is often called a 'prompt' (the text command you give to the AI). Be specific, but don't worry about being overly technical.\n    *   *Example prompt*: \"Make the grass greener and add a few white clouds to the sky.\"\n    *   *Example prompt*: \"Remove the sign from the background.\"\n    *   *Example prompt*: \"Change the lighting to a warm, sunset glow.\"\n4.  **Generate and Review**: The AI model will process your request and present you with the edited image. You can then download it or even refine your prompt further if you want to make more tweaks.\n\n## Beyond Basic Edits: Creative Ideas\n\nThese tools aren't just for fixing blemishes. They can unlock surprising creative possibilities:\n\n*   **Change the Mood**: Want a picture to look more dramatic or serene? Describe the atmosphere you're after.\n*   **Add or Remove Objects**: Easily take out distractions, or even add new elements to your scene (within ethical boundaries, of course – no putting people in places they weren't!).\n*   **Style Transfers**: Ask the AI to make your photo look like a painting by a famous artist, or apply a unique visual style.\n*   **Background Swaps**: \"Replace the busy street with a calm beach background.\"\n\nThe key is to experiment with your prompts. The clearer and more detailed your instruction, the better the AI can understand your vision.\n\n## What this means for you\n\n*   **In everyday life**: You can effortlessly tidy up holiday snaps, prepare photos for social media, or create unique images for hobbies like scrapbooking or digital art, all without investing in expensive software or courses. A quick edit for a birthday card or a family photo is now just a few words away.\n*   **For your business or work**: Small businesses can quickly create compelling marketing visuals for social media or websites, edit product photos, or generate engaging imagery for presentations without needing a dedicated graphic designer. It saves time and resources, allowing you to focus on your core work.\n*   **If you're just getting started**: Don't be afraid to try it! Find a free online AI image editor (a quick search will bring up many options) and upload a photo. Start with a simple prompt like \"make the colours more vibrant\" and see what happens. You'll be surprised how intuitive it is.\n\n## Wrap-up\n\nThe ability to edit photos using simple text instructions is a significant step towards making powerful creative tools accessible to everyone. It removes the technical barriers, allowing you to focus on your vision rather than the complexities of software. So, next time you have a photo that needs a little something extra, try speaking your edits into existence – you might just find your new favourite way to work with images.",
+  "original_title": "Build a serverless image editing agent with Amazon Bedrock AgentCore harness"
+}

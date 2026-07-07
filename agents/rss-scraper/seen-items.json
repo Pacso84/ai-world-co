@@ -63,7 +63,8 @@
     "https://blog.google/company-news/inside-google/around-the-globe/google-europe/united-kingdom/unlocking-britains-next-era-of-productivity-building-a-nation-of-ai-trailblazers/",
     "https://blog.google/innovation-and-ai/technology/ai/full-stack-ai-explainer/",
     "https://blog.google/products-and-platforms/products/education/nyc-ai-summit/",
-    "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-june-2026/"
+    "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-june-2026/",
+    "https://blog.google/innovation-and-ai/technology/developers-tools/expanding-managed-agents-gemini-api/"
   ],
   "meta-ai": [
     "https://about.fb.com/news/2026/06/creator-assistant-more-languages-for-ai-translations-on-facebook/",
@@ -183,7 +184,8 @@
     "https://huggingface.co/blog/cerebras-gemma4-voice-ai",
     "https://huggingface.co/blog/revamped-kernels",
     "https://huggingface.co/blog/lerobot-release-v060",
-    "https://huggingface.co/blog/Photoroom/prx-part4-data"
+    "https://huggingface.co/blog/Photoroom/prx-part4-data",
+    "https://huggingface.co/blog/microsoft/foundry-managed-compute"
   ],
   "hackernews-ai": [
     "https://www.theguardian.com/technology/2026/jun/07/billions-spent-hypothetical-returns-the-ai-boom-explained-with-six-charts",
@@ -225,7 +227,8 @@
     "https://blogs.nvidia.com/blog/geforce-now-thursday-july-2026-games-list/",
     "https://blogs.nvidia.com/blog/open-models-icml-2026/",
     "https://blogs.nvidia.com/blog/nations-deploy-ai-strategic-priorities/",
-    "https://blogs.nvidia.com/blog/hugging-face-lerobot-models-frameworks-open-robotics/"
+    "https://blogs.nvidia.com/blog/hugging-face-lerobot-models-frameworks-open-robotics/",
+    "https://blogs.nvidia.com/blog/nvidia-vera-max-single-threaded-cpu-at-scale/"
   ],
   "google-workspace": [
     "http://workspaceupdates.googleblog.com/2026/06/google-vault-now-supports-retention-rules-and-litigation-holds-for-Gemini-app.html",
@@ -258,7 +261,8 @@
     "http://workspaceupdates.googleblog.com/2026/06/ask-gemini-in-drive-now-available-on-mobile.html",
     "http://workspaceupdates.googleblog.com/2026/06/import-3d-bar-charts-into-google-sheets.html",
     "http://workspaceupdates.googleblog.com/2026/07/weekly-recap-07-03-2026.html",
-    "http://workspaceupdates.googleblog.com/2026/07/join-video-conferences-on-google-meet-hardware-via-SIP-through-Pexip.html"
+    "http://workspaceupdates.googleblog.com/2026/07/join-video-conferences-on-google-meet-hardware-via-SIP-through-Pexip.html",
+    "http://workspaceupdates.googleblog.com/2026/07/occupancy-counting-now-available-for-Google-Meet-on-Neat-room-hardware.html"
   ],
   "google-research": [
     "https://research.google/blog/towards-passive-heart-health-monitoring-via-smartphone-camera/",
@@ -273,7 +277,8 @@
     "https://research.google/blog/thinking-to-recall-how-reasoning-unlocks-parametric-knowledge-in-llms/",
     "https://research.google/blog/accelerating-gemini-nano-models-on-pixel-with-frozen-multi-token-prediction/",
     "https://research.google/blog/expanding-our-heat-resilience-data-to-50-global-cities/",
-    "https://research.google/blog/introducing-tabfm-a-zero-shot-foundation-model-for-tabular-data/"
+    "https://research.google/blog/introducing-tabfm-a-zero-shot-foundation-model-for-tabular-data/",
+    "https://research.google/blog/the-power-of-collaboration-how-we-can-reduce-traffic-congestion/"
   ],
   "microsoft-research": [
     "https://www.microsoft.com/en-us/research/blog/data-formulator-0-7-ai-powered-data-analytics-for-enterprise-data/",
@@ -357,7 +362,16 @@
     "https://aws.amazon.com/blogs/machine-learning/automatically-redact-pii-in-images-with-amazon-nova/",
     "https://aws.amazon.com/blogs/machine-learning/streaming-benchmark-and-recommendation-results-to-mlflow-with-amazon-sagemaker-ai/",
     "https://aws.amazon.com/blogs/machine-learning/from-hugging-face-to-amazon-sagemaker-studio-in-one-click-2/",
-    "https://aws.amazon.com/blogs/machine-learning/teaching-models-to-forget-selective-unlearning-with-amazon-nova/"
+    "https://aws.amazon.com/blogs/machine-learning/teaching-models-to-forget-selective-unlearning-with-amazon-nova/",
+    "https://aws.amazon.com/blogs/machine-learning/enrich-your-datasets-with-business-context-migrating-from-legacy-topics-to-semantic-datasets-in-amazon-quick/",
+    "https://aws.amazon.com/blogs/machine-learning/multi-dataset-topic-best-practices-for-amazon-quick-chat/",
+    "https://aws.amazon.com/blogs/machine-learning/data-modeling-best-practices-for-amazon-quick-sight-multi-dataset-relationships/",
+    "https://aws.amazon.com/blogs/machine-learning/data-modeling-patterns-for-amazon-quick-sight-multi-dataset-relationships/",
+    "https://aws.amazon.com/blogs/machine-learning/build-a-unified-semantic-layer-across-datasets-with-multi-dataset-topics-in-amazon-quick/",
+    "https://aws.amazon.com/blogs/machine-learning/build-a-serverless-image-editing-agent-with-amazon-bedrock-agentcore-harness/",
+    "https://aws.amazon.com/blogs/machine-learning/monitoring-discriminative-ml-models-using-amazon-sagemaker-ai-with-mlflow/",
+    "https://aws.amazon.com/blogs/machine-learning/build-an-ai-powered-aws-support-companion-with-amazon-bedrock-agentcore/",
+    "https://aws.amazon.com/blogs/machine-learning/how-aws-finance-teams-reclaimed-hundreds-of-hours-with-amazon-quick/"
   ],
   "mistral-ai": [
     "https://mistral.ai/news/ai-now-summit-2026/",
@@ -411,7 +425,14 @@
     "https://machinelearning.apple.com/research/topoprimer-topological-context",
     "https://machinelearning.apple.com/research/annotator-safety-policy-interpretability",
     "https://machinelearning.apple.com/research/segmental-attention-decoding",
-    "https://machinelearning.apple.com/research/fortress-stabilizing-search-recommendations"
+    "https://machinelearning.apple.com/research/fortress-stabilizing-search-recommendations",
+    "https://machinelearning.apple.com/research/sounding-video-generation",
+    "https://machinelearning.apple.com/research/dynamics-fine-tuning-llms",
+    "https://machinelearning.apple.com/research/lensvlm-context-expansion",
+    "https://machinelearning.apple.com/research/mt-editflow-image-editing",
+    "https://machinelearning.apple.com/research/weblica-visual-web-agents",
+    "https://machinelearning.apple.com/research/floweval-ui-evaluation",
+    "https://machinelearning.apple.com/research/single-neuron-safety-alignment"
   ],
   "salesforce": [
     "https://www.salesforce.com/news/stories/salesforce-closing-ai-skills-gap/",
@@ -425,7 +446,8 @@
     "https://www.salesforce.com/news/stories/bobbi-agentforce-transforms-law-enforcement/",
     "https://www.salesforce.com/news/stories/salesforce-databricks-shared-foundation-of-human-agent-work-announcement/",
     "https://www.salesforce.com/news/press-releases/2026/07/02/ai-for-good-global-commission-announcement/",
-    "https://www.salesforce.com/news/press-releases/2026/07/07/1-billion-ai-transformation-investment-switzerland/"
+    "https://www.salesforce.com/news/press-releases/2026/07/07/1-billion-ai-transformation-investment-switzerland/",
+    "https://www.salesforce.com/news/stories/futureforce-next-generation-of-builders/"
   ],
   "sap": [
     "https://news.sap.com/2026/07/advanced-success-plan-for-sap-cx-offers-utilities/",
@@ -441,7 +463,8 @@
     "https://news.sap.com/2026/07/ibm-technology-sap-cloud-erp-private-client-momentum-ai-innovation/",
     "https://news.sap.com/2026/07/fall-in-love-with-problem-not-solution-ai-real-impact/",
     "https://news.sap.com/2026/07/sap-completes-dremio-acquisition/",
-    "https://news.sap.com/2026/07/sap-customer-checkout-viva-com-advancing-payment-processes-pos-checkout-experience/"
+    "https://news.sap.com/2026/07/sap-customer-checkout-viva-com-advancing-payment-processes-pos-checkout-experience/",
+    "https://news.sap.com/2026/07/how-sap-is-reinventing-people-analytics/"
   ],
   "databricks": [
     "https://www.databricks.com/blog/celebrating-winners-2026-built-databricks-startup-challenge",
@@ -460,7 +483,8 @@
     "https://www.databricks.com/blog/openai-and-databricks-dais-2026-making-enterprise-ai-real",
     "https://www.databricks.com/blog/automatic-upgrades-best-practice-features-your-lakehouse-tables",
     "https://www.databricks.com/blog/reimagining-data-modeling-lakehouse-introducing-vibe-data-modeling",
-    "https://www.databricks.com/blog/contextual-policies-omnigent-using-session-state-better-govern-ai-agents"
+    "https://www.databricks.com/blog/contextual-policies-omnigent-using-session-state-better-govern-ai-agents",
+    "https://www.databricks.com/blog/barracuda-makes-security-logs-conversational-genie"
   ],
   "snowflake": [
     "https://www.snowflake.com/content/snowflake-site/global/en/blog/snowflake-postgres-ml-online-feature-store",

@@ -1,6 +1,109 @@
 # AI World Co. — közösségi posztok
 
-*Generálva: 2026-07-07T10:58:24.112Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+*Generálva: 2026-07-07T18:05:22.095Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## NVIDIA Vera CPU Opens the Way for Agentic Scientific AI at Los Alamos National Laboratory
+**🔗 https://aiworldhq.com/article/how-to-use-ai-to-turn-your-rough-notes-into-a-polished-repor.html**
+
+**Facebook:**
+Got a bunch of scribbles? Free AI tools can tidy them up and spin a professional report in minutes—saving you time and hassle. https://aiworldhq.com/article/how-to-use-ai-to-turn-your-rough-notes-into-a-polished-repor.html #productivity #AI
+
+**Instagram:**
+Turn messy notes into a polished report in minutes
+Use free AI tools to clean, organise and format your ideas without re‑typing everything.
+#AIwriting
+#productivity
+#organise
+#worksmarter
+Link in bio.
+
+*Kép-ötlet: A tidy desk with a laptop showing a clean report beside a scattered notebook of handwritten notes.*
+
+---
+
+## GridSFM: A new, small foundation model for the electric grid
+**🔗 https://aiworldhq.com/article/how-ai-can-tame-the-chaos-in-everyday-systems.html**
+
+**Facebook:**
+Wondering why your power bill spikes? A new AI model called GridSFM helps utilities predict demand more accurately, so you could see steadier prices. https://aiworldhq.com/article/how-ai-can-tame-the-chaos-in-everyday-systems.html #AIoptimisation #EnergyEfficiency
+
+**Instagram:**
+Can AI keep the lights on cheaper? 💡
+GridSFM is a compact model that learns how the power grid works, letting providers plan better and keep your bill steadier.
+
+#AIoptimisation #SmartEnergy
+Link in bio.
+
+*Kép-ötlet: A simple city skyline with power lines, overlaid by subtle data flow lines to hint at AI analysing the grid.*
+
+---
+
+## Eco Wave Power Turns Waves Into Watts With NVIDIA AI Infrastructure and Digital Twins
+**🔗 https://aiworldhq.com/article/why-ai-uses-so-much-energy-and-what-you-can-do-about-it.html**
+
+**Facebook:**
+Ever wondered if the ocean could power our devices? Learn how AI is helping Eco Wave Power turn sea waves into clean electricity, and why that matters for a greener future. https://aiworldhq.com/article/why-ai-uses-so-much-energy-and-what-you-can-do-about-it.html #sustainability #AI
+
+**Instagram:**
+Turning tides into power ⚡
+AI and digital twins help Eco Wave Power capture wave energy more efficiently, boosting clean electricity.
+#sustainability
+#cleantech
+#AI
+Link in bio
+
+*Kép-ötlet: A calm coastline at sunrise with gentle waves and a subtle wave‑energy turbine silhouette on the horizon.*
+
+---
+
+## Build a healthcare appointment agent with Amazon Nova 2 Sonic
+**🔗 https://aiworldhq.com/article/how-smart-ai-voice-agents-are-changing-your-service-calls.html**
+
+**Facebook:**
+Tired of waiting on hold to book or change a medical appointment? A new AI voice agent can handle it in seconds, freeing up your time. https://aiworldhq.com/article/how-smart-ai-voice-agents-are-changing-your-service-calls.html #healthtech #AI
+
+**Instagram:**
+Skip the phone queue for your next doctor visit
+A smart voice assistant can reschedule appointments in just a few words, saving you minutes and stress.
+#healthcare
+#voiceAI
+#Australia
+Link in bio.
+
+*Kép-ötlet: A relaxed home office desk with a laptop and smartphone, showing a voice assistant waveform to suggest an AI handling a phone call.*
+
+---
+
+## How we made GitHub Copilot CLI more selective about delegation
+**🔗 https://aiworldhq.com/article/how-ai-command-assistants-simplify-your-digital-tasks.html**
+
+**Facebook:**
+Ever wish your computer could tidy up a folder for you while you focus on other things? An AI command assistant can turn a simple text prompt into a finished task, saving you time. https://aiworldhq.com/article/how-ai-command-assistants-simplify-your-digital-tasks.html #productivity #AI
+
+**Instagram:**
+Let your computer do the grunt work.
+Type a plain instruction like “tidy my photo folder” and watch an AI assistant handle the steps for you.
+#AIassistant
+#automation
+#productivity
+Link in bio.
+
+*Kép-ötlet: A home office desk with a laptop showing a terminal window and a neat folder icon, bathed in soft natural light.*
+
+---
+
+## Qwen3-Coder: Agentic Coding in the World
+**🔗 https://aiworldhq.com/article/how-to-use-ai-coding-assistants-without-knowing-a-line-of-co.html**
+
+**Facebook:**
+Need to-fix tech tasks got you stuck? Learn how to use AI coding assistants to turn headaches into quick solutions https://aiworldhq.com/article/how-to-use-ai-coding-assistants-without-knowing-a-line-of-co.html #ai #productivity
+
+**Instagram:**
+Tired of feeling stuck with tech tasks? AI coding assistants can help you find quick solutions. Learn how to use them to save time and boost productivity #ai #productivity #automation #gettingstarted Link in bio
+
+*Kép-ötlet: A person sitting at a desk with a calm expression, looking at a laptop with a simple and tidy coding interface on the screen.*
 
 ---
 

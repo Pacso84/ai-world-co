@@ -1,0 +1,92 @@
+{
+  "started_at": "2026-07-07T17:51:03.000Z",
+  "drafts_total": 9,
+  "articles_written": 9,
+  "articles_failed": 0,
+  "total_cost_usd": 0.041454,
+  "by_article": [
+    {
+      "draft": "2026-07-07T17-51-02-626Z_salesforce_Meet_the_Next_Generation_of_Builders__How_They_Wor.json",
+      "writer_output": "WRITER_2026-07-07T17-51-02-626Z_salesforce_Meet_the_Next_Generation_of_Builders__How_They_Wor.json",
+      "success": true,
+      "cost_usd": 0,
+      "duration_ms": 2848,
+      "provider": "cerebras",
+      "model": "gpt-oss-120b"
+    },
+    {
+      "draft": "2026-07-07T17-51-02-626Z_aws-ml_How_AWS_Finance_teams_reclaimed_hundreds_of_hours_.json",
+      "writer_output": "WRITER_2026-07-07T17-51-02-626Z_aws-ml_How_AWS_Finance_teams_reclaimed_hundreds_of_hours_.json",
+      "success": true,
+      "cost_usd": 0,
+      "duration_ms": 2396,
+      "provider": "cerebras",
+      "model": "gpt-oss-120b"
+    },
+    {
+      "draft": "2026-07-07T17-51-02-626Z_apple-ml_MT-EditFlow__Reinforcement_Learning_for_Multi-Turn.json",
+      "writer_output": "WRITER_2026-07-07T17-51-02-626Z_apple-ml_MT-EditFlow__Reinforcement_Learning_for_Multi-Turn.json",
+      "success": true,
+      "cost_usd": 0.0030856000000000004,
+      "duration_ms": 10382,
+      "provider": "mistral",
+      "model": "mistral-small-latest"
+    },
+    {
+      "draft": "2026-07-07T17-51-02-626Z_apple-ml_FlowEval__Reference-Based_Evaluation_of_Generated_.json",
+      "writer_output": "WRITER_2026-07-07T17-51-02-626Z_apple-ml_FlowEval__Reference-Based_Evaluation_of_Generated_.json",
+      "success": true,
+      "cost_usd": 0.0030981999999999997,
+      "duration_ms": 10305,
+      "provider": "mistral",
+      "model": "mistral-small-latest"
+    },
+    {
+      "draft": "2026-07-07T17-51-02-626Z_apple-ml_A_Single_Neuron_Is_Sufficient_to_Bypass_Safety_Ali.json",
+      "writer_output": "WRITER_2026-07-07T17-51-02-626Z_apple-ml_A_Single_Neuron_Is_Sufficient_to_Bypass_Safety_Ali.json",
+      "success": true,
+      "cost_usd": 0.0031284,
+      "duration_ms": 9034,
+      "provider": "mistral",
+      "model": "mistral-small-latest"
+    },
+    {
+      "draft": "2026-07-07T17-51-01-246Z_nvidia-blog_AI_Innovators_Adopt_NVIDIA_Vera___Why_Max_Single-T.json",
+      "writer_output": "WRITER_2026-07-07T17-51-01-246Z_nvidia-blog_AI_Innovators_Adopt_NVIDIA_Vera___Why_Max_Single-T.json",
+      "success": true,
+      "cost_usd": 0.0031548,
+      "duration_ms": 8038,
+      "provider": "mistral",
+      "model": "mistral-small-latest"
+    },
+    {
+      "draft": "2026-07-07T17-51-01-246Z_google-workspace_Occupancy_counting_now_available_for_Google_Meet_o.json",
+      "writer_output": "WRITER_2026-07-07T17-51-01-246Z_google-workspace_Occupancy_counting_now_available_for_Google_Meet_o.json",
+      "success": true,
+      "cost_usd": 0.009409899999999999,
+      "duration_ms": 12450,
+      "provider": "google",
+      "model": "gemini-2.5-flash"
+    },
+    {
+      "draft": "2026-07-07T17-51-01-246Z_aws-ml_Monitoring_discriminative_ML_models_using_Amazon_S.json",
+      "writer_output": "WRITER_2026-07-07T17-51-01-246Z_aws-ml_Monitoring_discriminative_ML_models_using_Amazon_S.json",
+      "success": true,
+      "cost_usd": 0.0112607,
+      "duration_ms": 18347,
+      "provider": "google",
+      "model": "gemini-2.5-flash"
+    },
+    {
+      "draft": "2026-07-07T17-51-01-246Z_aws-ml_Build_a_serverless_image_editing_agent_with_Amazon.json",
+      "writer_output": "WRITER_2026-07-07T17-51-01-246Z_aws-ml_Build_a_serverless_image_editing_agent_with_Amazon.json",
+      "success": true,
+      "cost_usd": 0.0083164,
+      "duration_ms": 10363,
+      "provider": "google",
+      "model": "gemini-2.5-flash"
+    }
+  ],
+  "finished_at": "2026-07-07T17:52:27.169Z",
+  "duration_seconds": 84.169
+}
