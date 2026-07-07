@@ -155,11 +155,28 @@ async function main() {
         const entries = Object.entries(fb).filter(([s]) => s !== 'proba-cikk');
         const votes = entries.reduce((n, [, v]) => n + (v.up || 0) + (v.down || 0), 0);
         if (votes > 0) {
+          // slug → MAGYAR cím (a Főnök magyarul jelent — user-kérés 2026-07-08)
+          const { readdirSync } = await import('fs');
+          const slugify = (t) => (t || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 70);
+          const huTitle = {};
+          try {
+            for (const f of readdirSync(join(ROOT, 'content', 'articles')).filter(x => x.endsWith('.json'))) {
+              const d = JSON.parse(readFileSync(join(ROOT, 'content', 'articles', f), 'utf-8'));
+              const m = (d.article_markdown || '').match(/^---\n[\s\S]*?^title:\s*["']?(.+?)["']?\s*$/m);
+              const slug = slugify((m && m[1]) || d.original_title || f);
+              try {
+                const hu = JSON.parse(readFileSync(join(ROOT, 'content', 'translations', f), 'utf-8')).hu || '';
+                const hm = hu.match(/^title:\s*["']?(.+?)["']?\s*$/m);
+                huTitle[slug] = hm ? hm[1] : (m && m[1]) || slug;
+              } catch { huTitle[slug] = (m && m[1]) || slug; }
+            }
+          } catch { /* marad a slug */ }
+          const name = (s) => (huTitle[s] || s).slice(0, 50);
           const best = entries.sort((a, b) => (b[1].up || 0) - (a[1].up || 0))[0];
           const worst = entries.sort((a, b) => (b[1].down || 0) - (a[1].down || 0))[0];
           lines.push(``, `🗳️ Olvasói szavazat a héten: ${votes}`);
-          if (best && best[1].up > 0) lines.push(`   👍 kedvenc: ${best[0].slice(0, 45)} (${best[1].up})`);
-          if (worst && worst[1].down > 0) lines.push(`   👎 leggyengébb: ${worst[0].slice(0, 45)} (${worst[1].down})`);
+          if (best && best[1].up > 0) lines.push(`   👍 kedvenc: ${name(best[0])} (${best[1].up})`);
+          if (worst && worst[1].down > 0) lines.push(`   👎 leggyengébb: ${name(worst[0])} (${worst[1].down})`);
         }
       }
     }

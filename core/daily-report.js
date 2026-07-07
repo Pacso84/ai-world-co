@@ -42,7 +42,8 @@ function collect() {
   const now = Date.now();
   const h24 = 24 * 3600e3;
 
-  // Új tartalom (24 óra)
+  // Új tartalom (24 óra) — a címeket MAGYARUL idézzük (a fordítás-cache-ből),
+  // mert a jelentés a magyar Főnöktől jön (user-kérés 2026-07-08)
   let news = 0, guides = 0; const titles = [];
   const artDir = join(ROOT, 'content', 'articles');
   if (existsSync(artDir)) {
@@ -52,7 +53,15 @@ function collect() {
         const pub = new Date(d._meta?.published_at || 0).getTime();
         if (now - pub > h24) continue;
         d._meta?.type === 'guide' ? guides++ : news++;
-        if (titles.length < 3) titles.push(d.original_title || f);
+        if (titles.length < 3) {
+          let title = d.original_title || f;
+          try {
+            const hu = JSON.parse(readFileSync(join(ROOT, 'content', 'translations', f), 'utf-8')).hu || '';
+            const m = hu.match(/^title:\s*["']?(.+?)["']?\s*$/m);
+            if (m) title = m[1];
+          } catch { /* marad az angol, ha még nincs fordítás */ }
+          titles.push(title);
+        }
       } catch { /* skip */ }
     }
   }
