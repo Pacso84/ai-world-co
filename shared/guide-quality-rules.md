@@ -84,3 +84,9 @@ translation pipeline — keep them EXACTLY:
 - `💬 Example:` marker for copyable examples.
 - Australian English, warm teaching voice, no clichés, original writing only —
   never copy company docs, no "Source:" line, no external links.
+
+## 6. 💬 Example formatting (render-compatibility — added 2026-07-06)
+
+- The ENTIRE example must live in ONE paragraph, on the SAME line as (or immediately after) the `💬 Example:` marker.
+- NEVER indent continuation lines under a 💬 example — indented lines render as a broken code box on the website.
+- If the example output has multiple items, write them as a single flowing sentence ("…Maria finalises the budget by Friday; John drafts the comms; Sarah books the follow-up.") instead of an indented bullet list.

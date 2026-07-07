@@ -643,3 +643,7 @@ body {
 .fb__q { font-weight: 700; font-size: 14.5px; }
 .fb__btn { font-size: 20px; background: var(--card); border: 1px solid var(--line-strong); border-radius: 12px; padding: 6px 14px; cursor: pointer; transition: transform .15s ease, background .15s ease; }
 .fb__btn:hover { transform: scale(1.12); background: var(--paper); }
+
+/* VÉDŐHÁLÓ (2026-07-06): kód/előformázott blokk SOHA ne lógjon ki a kartonról */
+.article pre, .g-step pre, .g-prompt__box pre { white-space: pre-wrap; word-break: break-word; overflow-x: auto; max-width: 100%; }
+.article code { word-break: break-word; }
