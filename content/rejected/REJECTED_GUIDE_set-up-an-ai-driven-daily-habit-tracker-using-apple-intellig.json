@@ -1,0 +1,44 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "set-up-an-ai-driven-daily-habit-tracker-using-apple-intellig",
+    "company": "Apple",
+    "tool": "Apple Intelligence",
+    "icon": "🤖",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-07-07T02:09:30.037Z",
+    "writer_provider": "mistral",
+    "writer_model": "mistral-small-latest",
+    "writer_cost_usd": 0.0035292,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "rejected",
+    "rejected_at": "2026-07-07T02:10:07.061Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 917
+    },
+    "ai_review": {
+      "overall_score": 5,
+      "clarity_score": 4,
+      "decision": "FAIL",
+      "issues": [
+        "Beginner clarity too low (4/10): steps are vague or could mislead a first-time user"
+      ],
+      "verdict": "Salvaged from a partial AI response.",
+      "_salvaged": true,
+      "_aiCost": 0.0044241,
+      "_provider": "google",
+      "_model": "gemini-2.5-flash",
+      "_attempts": 1
+    },
+    "reason": "Salvaged from a partial AI response.",
+    "can_retry": true
+  },
+  "article_markdown": "---\ntitle: \"Set up an AI-driven daily habit tracker using Apple Intelligence\"\nsubtitle: \"Turn your iPhone into an automatic habit coach by linking Siri shortcuts with Apple’s on-device AI.\"\ncategory: \"guide\"\naudience: \"personal\"\ncompany: \"Apple\"\ntool: \"Apple Intelligence\"\nlevel: \"beginner\"\nread_time_minutes: 7\ntags: [\"getting-started\", \"apple-intelligence\", \"siri-shortcuts\"]\n---\n\n# Track your habits automatically with Apple Intelligence\n\n**Hook:**\nImagine your iPhone gently reminding you to drink water, stretch, or take medication — without any extra apps. With Apple Intelligence and Siri Shortcuts you can build a silent, on-device habit tracker that learns your routine and nudges you at the right moment.\n\n## Before you start\n- An **iPhone 15 Pro or later** (Apple Intelligence is on-device only).\n- **iOS 18.1 or newer** installed.\n- A free **Apple ID**.\n- Roughly **15 minutes** of quiet time.\n\n## Step 1 — Open the Shortcuts app\nTap the **Shortcuts** icon (a blue circle with a white shortcut symbol) on your Home Screen or in the App Library. If you don’t see it, swipe down and type “Shortcuts” in Spotlight. The app shows a list of your existing shortcuts or a welcome screen if it’s new.\nYou’ll know it worked when the Shortcuts library opens in front of you.\n\n## Step 2 — Create a new shortcut\nTap the **+** (plus) button in the top-right corner. A blank shortcut editor appears with “Untitled Shortcut” at the top. Below it you’ll see a search bar that says “Type a name or choose an action.”\n💬 Example: Tap the search bar and type `Ask for Input`.\n\n## Step 3 — Name your shortcut\nTap “Untitled Shortcut” at the top and type a clear name like **Daily Water Check**. This name will appear in Siri and in the Shortcuts widget, so keep it short and memorable.\nYou’ll know it worked when the title bar changes to “Daily Water Check”.\n\n## Step 4 — Add the first action\nIn the search bar, type `Ask for Input` and tap the matching action that appears. A card appears with the label “Ask for Input” and a default prompt “What do you want to ask?”.\n💬 Example: Replace the placeholder text with **How many glasses of water did you drink today?**\n\n## Step 5 — Save the response\nBelow the prompt, tap the dropdown that says “Text” and change it to **Number**. This tells Shortcuts to expect a number instead of free text.\nYou’ll know it worked when the card now shows a number field and the prompt reads “How many glasses of water did you drink today?”\n\n## Step 6 — Add the Apple Intelligence check\nTap the **+** button again, search for `If`, and choose **If** from the Logic section. A new card labelled “If” appears with an empty condition. Tap “Condition” and pick **Scripting → Text → Contains**.\n💬 Example: In the text field type **0**.\nThis condition will trigger only when the number is zero.\n\n## Step 7 — Add the gentle nudge\nTap the **+** inside the “If” block, search for `Show Notification` and tap it. A card appears with “Show Notification” and a default message. Replace the text with:\n💬 Example:\n📱 **Time to hydrate!** You haven’t logged any water today. Tap to open the shortcut.\n\n## Step 8 — Close the loop\nTap the **+** below the “If” block (outside it) and add another `Show Notification`. This time set the message to:\n💬 Example:\n✅ **Great job!** You logged 3 glasses today. Keep it up!\n\n## Step 9 — Test the shortcut\nTap the play ▶️ button at the bottom. A pop-up asks “How many glasses…”. Enter **0** and tap Done. If everything is set up correctly, you’ll see the first notification immediately.\nYou’ll know it worked when you receive a notification titled “Time to hydrate!”.\n\n## Step 10 — Add it to Siri\nGo back to the shortcut list, tap the **…** (three dots) on “Daily Water Check”, then tap **Add to Siri**. A red recording button appears. Say out loud:\n💬 Example: “Hey Siri, daily water check.”\nWhen Siri confirms “Got it,” the shortcut is voice-ready.\n\n## Step 11 — Schedule it (optional)\nOpen the **Clock** app, tap **Bedtime** (or **Alarm**), then **Add Alarm**. Set a daily time (e.g., 7:00 PM), tap **Sound**, and choose **None**. Under **Repeat**, pick **Daily**. In the **Actions** section tap **Add Action → Shortcuts → Daily Water Check**. Save the alarm.\nYou’ll know it worked when the alarm rings and Siri opens the shortcut automatically.\n\n## Common mistakes\n- **Shortcut not showing up in Siri** — Make sure you tapped **Add to Siri** inside the shortcut’s detail screen, not in the list view.\n- **Notifications not appearing** — Go to **Settings → Notifications → Shortcuts** and turn on **Allow Notifications**.\n- **Wrong number accepted** — Double-check the “If” block uses the exact word **0** and the dropdown is set to **Number**.\n\n## What this means for you\n- **In everyday life:** Once set up, your iPhone quietly reminds you to log habits without installing any third-party apps.\n- **For your business or work:** Use the same pattern to build quick check-ins for team stand-ups or daily goals.\n- **If you're just getting started:** Start with one habit (water, steps, medication) and duplicate the shortcut for the next one.\n\n## Try it now\nOpen the Shortcuts app, tap **+**, name it “First Habit”, add the “Ask for Input” action, and test it with a simple question. You’ll have your first working habit tracker in under two minutes.",
+  "original_title": "Set up an AI‑driven daily habit tracker using Apple Intelligence"
+}

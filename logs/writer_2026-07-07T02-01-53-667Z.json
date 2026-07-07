@@ -1,0 +1,56 @@
+{
+  "started_at": "2026-07-07T02:01:15.407Z",
+  "drafts_total": 5,
+  "articles_written": 5,
+  "articles_failed": 0,
+  "total_cost_usd": 0.009569,
+  "by_article": [
+    {
+      "draft": "2026-07-07T02-01-14-878Z_databricks_Contextual_Policies_in_Omnigent__Using_session_sta.json",
+      "writer_output": "WRITER_2026-07-07T02-01-14-878Z_databricks_Contextual_Policies_in_Omnigent__Using_session_sta.json",
+      "success": true,
+      "cost_usd": 0,
+      "duration_ms": 2931,
+      "provider": "cerebras",
+      "model": "gpt-oss-120b"
+    },
+    {
+      "draft": "2026-07-07T02-01-14-878Z_apple-ml_Understanding_Annotator_Safety_Policy_with_Interpr.json",
+      "writer_output": "WRITER_2026-07-07T02-01-14-878Z_apple-ml_Understanding_Annotator_Safety_Policy_with_Interpr.json",
+      "success": true,
+      "cost_usd": 0,
+      "duration_ms": 2141,
+      "provider": "cerebras",
+      "model": "gpt-oss-120b"
+    },
+    {
+      "draft": "2026-07-07T02-01-14-877Z_aws-ml_Teaching_models_to_forget__Selective_unlearning_wi.json",
+      "writer_output": "WRITER_2026-07-07T02-01-14-877Z_aws-ml_Teaching_models_to_forget__Selective_unlearning_wi.json",
+      "success": true,
+      "cost_usd": 0.0031076,
+      "duration_ms": 10679,
+      "provider": "mistral",
+      "model": "mistral-small-latest"
+    },
+    {
+      "draft": "2026-07-07T02-01-14-877Z_aws-ml_From_Hugging_Face_to_Amazon_SageMaker_Studio_in_on.json",
+      "writer_output": "WRITER_2026-07-07T02-01-14-877Z_aws-ml_From_Hugging_Face_to_Amazon_SageMaker_Studio_in_on.json",
+      "success": true,
+      "cost_usd": 0.0033438,
+      "duration_ms": 12320,
+      "provider": "mistral",
+      "model": "mistral-small-latest"
+    },
+    {
+      "draft": "2026-07-07T02-01-14-877Z_apple-ml_TopoPrimer__The_Missing_Topological_Context_in_For.json",
+      "writer_output": "WRITER_2026-07-07T02-01-14-877Z_apple-ml_TopoPrimer__The_Missing_Topological_Context_in_For.json",
+      "success": true,
+      "cost_usd": 0.0031176,
+      "duration_ms": 10185,
+      "provider": "mistral",
+      "model": "mistral-small-latest"
+    }
+  ],
+  "finished_at": "2026-07-07T02:01:53.667Z",
+  "duration_seconds": 38.26
+}

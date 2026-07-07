@@ -1,0 +1,60 @@
+{
+  "_meta": {
+    "written_at": "2026-07-07T02:03:38.856Z",
+    "writer_provider": "mistral",
+    "writer_model": "mistral-small-latest",
+    "writer_cost_usd": 0.0036866000000000004,
+    "original_draft": "2026-07-07T02-01-14-877Z_aws-ml_From_Hugging_Face_to_Amazon_SageMaker_Studio_in_on.json",
+    "source_id": "aws-ml",
+    "source_name": "AWS Machine Learning (hivatalos)",
+    "source_link": "https://aws.amazon.com/blogs/machine-learning/from-hugging-face-to-amazon-sagemaker-studio-in-one-click-2/",
+    "status": "published",
+    "rejected_at": "2026-07-07T02:02:22.004Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 977
+    },
+    "ai_review": {
+      "overall_score": 7,
+      "clarity_score": 8,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Salvaged from a partial AI response.",
+      "_salvaged": true,
+      "_aiCost": 0.004485899999999999,
+      "_provider": "google",
+      "_model": "gemini-2.5-flash",
+      "_attempts": 1
+    },
+    "reason": "While well-written, this guide is far too vague for a beginner and glosses over highly technical, paid platforms like SageMaker and AutoTrain. It needs actual step-by-step navigation, cost warnings, and a realistic approach to what an everyday user can do without coding.",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-07-07T02-01-14-877Z_aws-ml_From_Hugging_Face_to_Amazon_SageMaker_Studio_in_on.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-07-07T02:07:28.166Z",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-07-07T02:07:47.585Z",
+    "guide_worthy": true,
+    "related_guide_topic": "getting-started-hugging-face",
+    "seo": {
+      "meta_description": "Discover how to use AI model hubs without coding. Learn to find, test, and use AI models easily, with a step-by-step guide for beginners.",
+      "keywords": [
+        "AI model hubs",
+        "no coding required",
+        "beginner's guide to AI",
+        "using AI models",
+        "AI for beginners"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add a section on popular AI model hubs",
+        "Include screenshots of the AI model hub interface",
+        "Provide examples of practical applications of AI models"
+      ],
+      "optimised_at": "2026-07-07T02:12:36.750Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"How to Use AI Model Hubs Without Coding: A Beginner’s Step-by-Step Guide\"\nsubtitle: \"Find, test, and use AI models with simple clicks—no tech skills required.\"\ncategory: \"how-to\"\naudience: \"personal\"\nread_time_minutes: 5\ntags: [\"ai-models\", \"hugging-face\", \"no-code\", \"getting-started\", \"ai-hub\"]\n---\n\n# How to Use AI Model Hubs Without Coding: A Beginner’s Step-by-Step Guide\n\n**Picture this:** You’ve heard about an AI that can turn your holiday photos into cartoons or write a polite email for you. But when you try to use it, you’re stuck on a website full of buttons and jargon. What if you could skip the confusion and start testing those models in just a few clicks?\n\nThat’s where AI model hubs come in. Think of them as digital libraries where anyone can browse, try out, and even tweak AI models—no coding required. Whether you want to experiment with an image generator or test a language model, these hubs make it easy to get hands-on.\n\nLet’s break down how to use them step by step.\n\n---\n\n## Finding the Right Model\n\nAI model hubs like **Hugging Face** are packed with thousands of models. But how do you find the one that fits your needs?\n\nStart by using the search bar. Type in what you’re looking for—like “text-to-image” or “summarise documents.” Most hubs let you filter results by:\n\n- **Task** (e.g., text generation, image classification)\n- **License** (e.g., open-source or commercial use)\n- **Popularity** (models used by many people)\n\nFor example, if you want to turn a photo into a cartoon, search for “image-to-image” models and filter by “image generation.” You’ll see options like **Stable Diffusion** or **ControlNet**, which are popular tools for this task.\n\n> 💡 **Tip:** Look for models with high “download” or “like” counts. These are usually well-tested and reliable.\n\n---\n\n## Testing Models Without Writing Code\n\nOne of the best things about model hubs is that you can **try models before committing**. Many hubs offer a “playground” or “demo” feature where you input your own text or image and see the results instantly.\n\nFor instance, on **Hugging Face**, you can click on a model like **BART** (a text summarisation model) and use their built-in demo. Just paste a long article, and the model will summarise it for you—no coding needed.\n\nHere’s how to do it:\n\n1. Go to [Hugging Face](https://huggingface.co) and search for “BART.”\n2. Click on the model named **“facebook/bart-large-cnn”**.\n3. Scroll down to the **“Use this model”** section.\n4. Paste your text into the input box and click **“Generate”**.\n5. Watch as the model summarises your text in seconds.\n\n> 📌 **What this means for you:**\n> - **If you’re curious about AI:** Start with the “playground” demos on Hugging Face. Pick a model, type in your prompt, and see what happens.\n> - **If you want to use AI at work:** Try Hugging Face’s **Spaces** feature. It’s designed for sharing AI apps without any setup.\n> - **If you’re just getting started:** Focus on models with simple demos. Avoid ones that require complex setups or coding.\n\n---\n\n## Fine-Tuning Models for Your Needs\n\nWhat if the model isn’t quite right for your task? Many hubs let you **fine-tune** models to better suit your needs. Fine-tuning is like teaching the model a new skill—such as recognising your handwriting or understanding industry-specific jargon.\n\nOn **Hugging Face**, you can use their **AutoTrain** tool to fine-tune a model with your own data. For example, if you have a collection of customer reviews, you can fine-tune a sentiment analysis model to better understand your brand’s tone.\n\nHere’s how to get started:\n\n1. Go to the **AutoTrain** page on Hugging Face.\n2. Click **“Create a new project”** and select **“Text Classification”**.\n3. Upload your dataset (e.g., customer reviews).\n4. Choose a base model (e.g., **DistilBERT**).\n5. Click **“Start training”** and wait for the model to fine-tune.\n\n> ⚠️ **Important note:** Fine-tuning requires some data, and you’ll need to ensure it’s relevant and high-quality. Avoid using sensitive or personal information.\n\n---\n\n## Sharing and Collaborating\n\nOnce you’ve found or fine-tuned a model, you can **share it with others** or collaborate on projects. Hugging Face, for example, lets you publish your fine-tuned models to their hub. This way, others can use and build upon your work.\n\nYou can also join **AI communities** within these hubs. For example, Hugging Face has discussion forums where you can ask questions, share tips, and even get feedback on your projects.\n\n> 🔗 **What this means for you:**\n> - **If you’re a hobbyist:** Share your fine-tuned models on Hugging Face. It’s a great way to get feedback and connect with others.\n> - **If you’re using AI at work:** Collaborate with your team by sharing models on Hugging Face. This ensures everyone is using the same tools and standards.\n\n---\n\n## What This Means for You\n\n- **In everyday life:** Start with Hugging Face’s demos. Try a text-to-speech model to read your emails aloud while you cook dinner.\n- **For your business or work:** Use Hugging Face’s **Spaces** to create a simple AI app for your team. It’s designed for sharing without any setup.\n- **If you're just getting started:** Focus on models with simple demos and avoid ones that require coding. Build confidence by experimenting with real examples.\n\n---\n\n## Wrap-up\n\nAI model hubs are like digital playgrounds where you can explore, test, and even create AI models without writing a single line of code. Start with a simple demo on Hugging Face, fine-tune a model to fit your needs, and share your work with others. The best part? You don’t need to be a developer to get started. Pick a model, try it out, and see what AI can do for you today.\n\n**Your next step:** Head to [Hugging Face](https://huggingface.co) and try the **BART summarisation demo** right now. Paste a long article and watch the model work its magic!",
+  "original_title": "From Hugging Face to Amazon SageMaker Studio in one click"
+}

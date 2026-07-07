@@ -1,150 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178324577376371",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-07-05T10:02:53.763Z",
-      "updated": "2026-07-05T10:02:54.026Z"
-    },
-    {
-      "id": "t178324577403927",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-05T10:02:54.039Z",
-      "updated": "2026-07-05T10:02:54.286Z"
-    },
-    {
-      "id": "t178324577428946",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-07-05T10:02:54.289Z",
-      "updated": "2026-07-05T10:02:54.529Z"
-    },
-    {
-      "id": "t178324577453048",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-05T10:02:54.530Z",
-      "updated": "2026-07-05T10:02:55.305Z"
-    },
-    {
-      "id": "t178324577592059",
-      "title": "Run translator",
-      "status": "done",
-      "agent": "translator",
-      "created": "2026-07-05T10:02:55.920Z",
-      "updated": "2026-07-05T10:02:56.207Z"
-    },
-    {
-      "id": "t17832457762083",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-07-05T10:02:56.209Z",
-      "updated": "2026-07-05T10:02:58.989Z"
-    },
-    {
-      "id": "t178327043205175",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-07-05T16:53:52.051Z",
-      "updated": "2026-07-05T16:54:00.723Z"
-    },
-    {
-      "id": "t178327044072553",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-07-05T16:54:00.725Z",
-      "updated": "2026-07-05T16:54:00.983Z"
-    },
-    {
-      "id": "t178327044098535",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-07-05T16:54:00.985Z",
-      "updated": "2026-07-05T16:54:01.197Z"
-    },
-    {
-      "id": "t178327044119923",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-05T16:54:01.199Z",
-      "updated": "2026-07-05T16:54:01.410Z"
-    },
-    {
-      "id": "t178327044141728",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-07-05T16:54:01.417Z",
-      "updated": "2026-07-05T16:54:01.639Z"
-    },
-    {
-      "id": "t178327044165224",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-05T16:54:01.652Z",
-      "updated": "2026-07-05T16:54:01.884Z"
-    },
-    {
-      "id": "t178327044188622",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-07-05T16:54:01.886Z",
-      "updated": "2026-07-05T16:54:02.149Z"
-    },
-    {
-      "id": "t178327044217614",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-05T16:54:02.176Z",
-      "updated": "2026-07-05T16:54:03.787Z"
-    },
-    {
-      "id": "t178327044378957",
-      "title": "Run translator",
-      "status": "done",
-      "agent": "translator",
-      "created": "2026-07-05T16:54:03.789Z",
-      "updated": "2026-07-05T16:54:04.086Z"
-    },
-    {
-      "id": "t17832704440875",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-07-05T16:54:04.087Z",
-      "updated": "2026-07-05T16:54:06.747Z"
-    },
-    {
-      "id": "t178330354424670",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-07-06T02:05:44.246Z",
-      "updated": "2026-07-06T02:05:53.999Z"
-    },
-    {
-      "id": "t178330355400129",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-07-06T02:05:54.001Z",
-      "updated": "2026-07-06T02:05:54.234Z"
-    },
-    {
       "id": "t178330355423675",
       "title": "Run iro",
       "status": "done",
@@ -479,6 +335,150 @@
       "agent": "publisher",
       "created": "2026-07-06T18:11:47.195Z",
       "updated": "2026-07-06T18:11:49.994Z"
+    },
+    {
+      "id": "t178338966045355",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-07-07T02:01:00.453Z",
+      "updated": "2026-07-07T02:01:14.934Z"
+    },
+    {
+      "id": "t178338967493693",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-07-07T02:01:14.936Z",
+      "updated": "2026-07-07T02:01:15.185Z"
+    },
+    {
+      "id": "t178338967518696",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-07-07T02:01:15.186Z",
+      "updated": "2026-07-07T02:01:53.678Z"
+    },
+    {
+      "id": "t178338971367978",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-07T02:01:53.679Z",
+      "updated": "2026-07-07T02:02:47.837Z"
+    },
+    {
+      "id": "t178338976784193",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-07-07T02:02:47.841Z",
+      "updated": "2026-07-07T02:04:50.550Z"
+    },
+    {
+      "id": "t178338989055218",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-07T02:04:50.552Z",
+      "updated": "2026-07-07T02:07:46.224Z"
+    },
+    {
+      "id": "t178339006623032",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-07-07T02:07:46.230Z",
+      "updated": "2026-07-07T02:07:48.498Z"
+    },
+    {
+      "id": "t178339006851188",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-07-07T02:07:48.511Z",
+      "updated": "2026-07-07T02:09:30.047Z"
+    },
+    {
+      "id": "t178339017004986",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-07T02:09:30.049Z",
+      "updated": "2026-07-07T02:10:14.626Z"
+    },
+    {
+      "id": "t178339021463891",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-07-07T02:10:14.638Z",
+      "updated": "2026-07-07T02:10:14.835Z"
+    },
+    {
+      "id": "t17833902148379",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-07-07T02:10:14.837Z",
+      "updated": "2026-07-07T02:10:22.556Z"
+    },
+    {
+      "id": "t178339022256056",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-07-07T02:10:22.560Z",
+      "updated": "2026-07-07T02:11:30.893Z"
+    },
+    {
+      "id": "t178339029089455",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-07T02:11:30.894Z",
+      "updated": "2026-07-07T02:12:06.712Z"
+    },
+    {
+      "id": "t178339032671449",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-07T02:12:06.714Z",
+      "updated": "2026-07-07T02:12:35.464Z"
+    },
+    {
+      "id": "t178339035546535",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-07-07T02:12:35.465Z",
+      "updated": "2026-07-07T02:12:44.423Z"
+    },
+    {
+      "id": "t178339036442546",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-07T02:12:44.425Z",
+      "updated": "2026-07-07T02:12:45.210Z"
+    },
+    {
+      "id": "t178339036521263",
+      "title": "Run translator",
+      "status": "done",
+      "agent": "translator",
+      "created": "2026-07-07T02:12:45.212Z",
+      "updated": "2026-07-07T02:29:54.543Z"
+    },
+    {
+      "id": "t178339139454579",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-07-07T02:29:54.545Z",
+      "updated": "2026-07-07T02:29:59.351Z"
     }
   ],
   "notifications": [
@@ -1049,234 +1049,41 @@
       "agent": "source-scout",
       "at": "2026-07-05T20:22:22.111Z",
       "loud": false
+    },
+    {
+      "id": "n178339006621565",
+      "level": "warn",
+      "text": "📨 ellenorzo → iro: Hiányos / kell még adat: \"Contextual Policies in Omnigent: Using session state to better govern AI agents\" — egészítsd k",
+      "agent": "ellenorzo",
+      "at": "2026-07-07T02:07:46.215Z",
+      "loud": false
+    },
+    {
+      "id": "n178339036441343",
+      "level": "info",
+      "text": "SEO: 15 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-07-07T02:12:44.413Z",
+      "loud": false
+    },
+    {
+      "id": "n178339139546531",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). I'm delighted to confirm that our line-up is coherent and ready for publication, with a great balance of practical tips and introductions to AI tools that will resonate with our everyday audience. One",
+      "agent": "publisher",
+      "at": "2026-07-07T02:29:55.465Z",
+      "loud": false
+    },
+    {
+      "id": "n178339139937189",
+      "level": "success",
+      "text": "4 hír + 4 útmutató publikálva (költség: $0.1947).",
+      "agent": "ceo",
+      "at": "2026-07-07T02:29:59.371Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178298889063947",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Time to Speak Some Dialects, Qwen-TTS!\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-06-29T02-29-27-067Z_alibaba-qwen_Time_to_Speak_Some_Dialects__Qwen-TTS_.json",
-      "at": "2026-07-02T10:41:30.639Z"
-    },
-    {
-      "id": "m178298889064755",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Connect the dots: Build with built-in and custom MCPs in Studio\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-06-29T02-29-27-067Z_mistral-ai_Connect_the_dots__Build_with_built-in_and_custom_M.json",
-      "at": "2026-07-02T10:41:30.647Z"
-    },
-    {
-      "id": "m178298889065681",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Remote agents in Vibe. Powered by Mistral Medium 3.5.\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-06-29T02-29-27-067Z_mistral-ai_Remote_agents_in_Vibe__Powered_by_Mistral_Medium_3.json",
-      "at": "2026-07-02T10:41:30.656Z"
-    },
-    {
-      "id": "m178298889066513",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Qwen3 Embedding: Advancing Text Embedding and Reranking Through Foundation Models\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-06-29T02-29-42-864Z_alibaba-qwen_Qwen3_Embedding__Advancing_Text_Embedding_and_Rera.json",
-      "at": "2026-07-02T10:41:30.665Z"
-    },
-    {
-      "id": "m178298889067346",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Qwen3: Think Deeper, Act Faster\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-06-29T02-29-42-864Z_alibaba-qwen_Qwen3__Think_Deeper__Act_Faster.json",
-      "at": "2026-07-02T10:41:30.673Z"
-    },
-    {
-      "id": "m178298889068157",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Ask an AI expert: What exactly is the full stack?\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-06-30T16-43-12-110Z_google-ai-blog_Ask_an_AI_expert__What_exactly_is_the_full_stack_.json",
-      "at": "2026-07-02T10:41:30.681Z"
-    },
-    {
-      "id": "m178298889068945",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"How NVIDIA’s Inference Software Stack Powers the Lowest Token Cost\" — mi a baj: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!)",
-      "ref": "2026-06-30T16-43-12-110Z_nvidia-blog_How_NVIDIA_s_Inference_Software_Stack_Powers_the_L.json",
-      "at": "2026-07-02T10:41:30.689Z"
-    },
-    {
-      "id": "m178298889069722",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Mapping Europe’s AI Workforce Opportunity\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-06-30T16-43-12-110Z_openai-blog_Mapping_Europe_s_AI_Workforce_Opportunity.json",
-      "at": "2026-07-02T10:41:30.697Z"
-    },
-    {
-      "id": "m178298889070664",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Create fully native and editable presentations with Gemini in Google Slides\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-06-30T16-43-13-543Z_google-workspace_Create_fully_native_and_editable_presentations_wit.json",
-      "at": "2026-07-02T10:41:30.706Z"
-    },
-    {
-      "id": "m178298889071451",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Data regions support for the Gemini app now available \" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-06-30T16-43-13-543Z_google-workspace_Data_regions_support_for_the_Gemini_app_now_availa.json",
-      "at": "2026-07-02T10:41:30.714Z"
-    },
-    {
-      "id": "m178298889072379",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Claude Meets Blackwell Ultra: Anthropic’s Models Now Run on NVIDIA GB300 in Azure\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-06-30T16-43-13-543Z_nvidia-blog_Claude_Meets_Blackwell_Ultra__Anthropic_s_Models_N.json",
-      "at": "2026-07-02T10:41:30.723Z"
-    },
-    {
-      "id": "m178298889073375",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Open Models, Closed Environments: Palantir Brings Secure AI to US Agencies With NVIDIA Nemotron\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-06-30T16-43-13-543Z_nvidia-blog_Open_Models__Closed_Environments__Palantir_Brings_.json",
-      "at": "2026-07-02T10:41:30.733Z"
-    },
-    {
-      "id": "m178298889074295",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Run NVIDIA Nemotron and OpenAI GPT OSS models on Amazon Bedrock in AWS GovCloud (US)\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-07-02T02-09-20-689Z_aws-ml_Run_NVIDIA_Nemotron_and_OpenAI_GPT_OSS_models_on_A.json",
-      "at": "2026-07-02T10:41:30.742Z"
-    },
-    {
-      "id": "m178298889075051",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"The latest AI news we announced in June 2026\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-07-02T02-09-20-689Z_google-ai-blog_The_latest_AI_news_we_announced_in_June_2026.json",
-      "at": "2026-07-02T10:41:30.750Z"
-    },
-    {
-      "id": "m17829888907590",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Why the Data Platform Determines Legal AI Outcomes\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-07-02T02-10-03-889Z_snowflake_Why_the_Data_Platform_Determines_Legal_AI_Outcomes.json",
-      "at": "2026-07-02T10:41:30.759Z"
-    },
-    {
-      "id": "m17829888907672",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"How Snowflake Built an AI-Native Marketing Team\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-07-02T02-10-03-890Z_snowflake_How_Snowflake_Built_an_AI-Native_Marketing_Team.json",
-      "at": "2026-07-02T10:41:30.767Z"
-    },
-    {
-      "id": "m178298889077634",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"The Agentic Enterprise: AI Governance for Marketing Leaders\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-07-02T02-10-03-890Z_snowflake_The_Agentic_Enterprise__AI_Governance_for_Marketin.json",
-      "at": "2026-07-02T10:41:30.776Z"
-    },
-    {
-      "id": "m178298889078593",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Kimi K2.7 Code vs Claude Fable 5: Landing pages that cost 94% less\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-07-02T02-10-03-890Z_together_Kimi_K2_7_Code_vs_Claude_Fable_5__Landing_pages_th.json",
-      "at": "2026-07-02T10:41:30.785Z"
-    },
-    {
-      "id": "m17829888907947",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Turn Azure Data into an AI-Ready Knowledge Base\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-07-02T02-10-10-166Z_pinecone_Turn_Azure_Data_into_an_AI-Ready_Knowledge_Base.json",
-      "at": "2026-07-02T10:41:30.794Z"
-    },
-    {
-      "id": "m178298889080227",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Violin: An open-source video translation skill that breaks language barriers\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-07-02T02-10-10-166Z_together_Violin__An_open-source_video_translation_skill_tha.json",
-      "at": "2026-07-02T10:41:30.802Z"
-    },
-    {
-      "id": "m178298889081099",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Running AI on mixed hardware for speed and affordability\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-07-02T02-10-15-027Z_ibm_Running_AI_on_mixed_hardware_for_speed_and_afforda.json",
-      "at": "2026-07-02T10:41:30.810Z"
-    },
-    {
-      "id": "m178298891524576",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 16 → 4/4/2 oszlop.",
-      "ref": "mobile",
-      "at": "2026-07-02T10:41:55.245Z"
-    },
-    {
-      "id": "m178301320968570",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"MemoryLLM: Plug-n-Play Interpretable Feed-Forward Memory for Transformers\" — mi a baj: NO_H1: Nincs H1 (# Cím) a cikkben",
-      "ref": "2026-07-02T17-25-51-088Z_apple-ml_MemoryLLM__Plug-n-Play_Interpretable_Feed-Forward_.json",
-      "at": "2026-07-02T17:26:49.685Z"
-    },
-    {
-      "id": "m178301322003595",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"How NVIDIA’s Inference Software Stack Powers the Lowest Token Cost\" — javítva: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!); Reviewer verdict: Critical auto-check failures: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!); újraküldöm.",
-      "ref": "2026-06-30T16-43-12-110Z_nvidia-blog_How_NVIDIA_s_Inference_Software_Stack_Powers_the_L.json",
-      "at": "2026-07-02T17:27:00.035Z"
-    },
-    {
-      "id": "m178301322799273",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Forecasting at the speed of modern retail \" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; Reviewer verdict: Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben; újraküldöm.",
-      "ref": "2026-07-02T02-09-37-791Z_databricks_Forecasting_at_the_speed_of_modern_retail_.json",
-      "at": "2026-07-02T17:27:07.992Z"
-    },
     {
       "id": "m178301323454526",
       "from": "iro",
@@ -2409,6 +2216,232 @@
       "text": "Rendben ✓ átment: \"Automate basic email replies in Outlook with Meta AI\" (?/10)",
       "ref": "GUIDE_automate-basic-email-replies-in-outlook-with-meta-ai.json",
       "at": "2026-07-06T19:08:13.158Z"
+    },
+    {
+      "id": "m17833897420445",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"From Hugging Face to Amazon SageMaker Studio in one click\" — mi a baj: Vague instructions without step-by-step UI guidance; Recommends complex developer tools like SageMaker as simple no-code; Mentions technical notebook environments contradicting the no-code promise",
+      "ref": "2026-07-07T02-01-14-877Z_aws-ml_From_Hugging_Face_to_Amazon_SageMaker_Studio_in_on.json",
+      "at": "2026-07-07T02:02:22.044Z"
+    },
+    {
+      "id": "m178338975447551",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Teaching models to forget: Selective unlearning with Amazon Nova\" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "2026-07-07T02-01-14-877Z_aws-ml_Teaching_models_to_forget__Selective_unlearning_wi.json",
+      "at": "2026-07-07T02:02:34.475Z"
+    },
+    {
+      "id": "m178338976782660",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Contextual Policies in Omnigent: Using session state to better govern AI agents\" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "2026-07-07T02-01-14-878Z_databricks_Contextual_Policies_in_Omnigent__Using_session_sta.json",
+      "at": "2026-07-07T02:02:47.826Z"
+    },
+    {
+      "id": "m178338977729145",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"How Open Models Are Driving AI Research\" — javítva: Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "2026-07-06T18-04-05-097Z_nvidia-blog_How_Open_Models_Are_Driving_AI_Research.json",
+      "at": "2026-07-07T02:02:57.291Z"
+    },
+    {
+      "id": "m178338978454930",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Revisiting ASR Error Correction with Specialized Models\" — javítva: Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "2026-07-06T18-04-05-099Z_apple-ml_Revisiting_ASR_Error_Correction_with_Specialized_M.json",
+      "at": "2026-07-07T02:03:04.549Z"
+    },
+    {
+      "id": "m178338979687760",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Streaming benchmark and recommendation results to MLflow with Amazon SageMaker AI\" — javítva: Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "2026-07-06T18-04-05-099Z_aws-ml_Streaming_benchmark_and_recommendation_results_to_.json",
+      "at": "2026-07-07T02:03:16.877Z"
+    },
+    {
+      "id": "m178338980782363",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"OpenAI and Databricks at DAIS 2026: Making enterprise AI real\" — javítva: Contradicts 'without writing code' with code steps; Guide assumes technical coding knowledge; újraküldöm.",
+      "ref": "2026-07-06T18-04-05-695Z_databricks_OpenAI_and_Databricks_at_DAIS_2026__Making_enterpr.json",
+      "at": "2026-07-07T02:03:27.823Z"
+    },
+    {
+      "id": "m17833898188570",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"From Hugging Face to Amazon SageMaker Studio in one click\" — javítva: Vague instructions without step-by-step UI guidance; Recommends complex developer tools like SageMaker as simple no-code; újraküldöm.",
+      "ref": "2026-07-07T02-01-14-877Z_aws-ml_From_Hugging_Face_to_Amazon_SageMaker_Studio_in_on.json",
+      "at": "2026-07-07T02:03:38.857Z"
+    },
+    {
+      "id": "m178338985794745",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Teaching models to forget: Selective unlearning with Amazon Nova\" — javítva: Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "2026-07-07T02-01-14-877Z_aws-ml_Teaching_models_to_forget__Selective_unlearning_wi.json",
+      "at": "2026-07-07T02:04:17.947Z"
+    },
+    {
+      "id": "m178338989054159",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Contextual Policies in Omnigent: Using session state to better govern AI agents\" — javítva: Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "2026-07-07T02-01-14-878Z_databricks_Contextual_Policies_in_Omnigent__Using_session_sta.json",
+      "at": "2026-07-07T02:04:50.541Z"
+    },
+    {
+      "id": "m178338993306614",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"How Open Models Are Driving AI Research\" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "2026-07-06T18-04-05-097Z_nvidia-blog_How_Open_Models_Are_Driving_AI_Research.json",
+      "at": "2026-07-07T02:05:33.066Z"
+    },
+    {
+      "id": "m178338994096581",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Revisiting ASR Error Correction with Specialized Models\" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "2026-07-06T18-04-05-099Z_apple-ml_Revisiting_ASR_Error_Correction_with_Specialized_M.json",
+      "at": "2026-07-07T02:05:40.965Z"
+    },
+    {
+      "id": "m178338994871698",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Streaming benchmark and recommendation results to MLflow with Amazon SageMaker AI\" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "2026-07-06T18-04-05-099Z_aws-ml_Streaming_benchmark_and_recommendation_results_to_.json",
+      "at": "2026-07-07T02:05:48.716Z"
+    },
+    {
+      "id": "m178339004071254",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"OpenAI and Databricks at DAIS 2026: Making enterprise AI real\" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "2026-07-06T18-04-05-695Z_databricks_OpenAI_and_Databricks_at_DAIS_2026__Making_enterpr.json",
+      "at": "2026-07-07T02:07:20.712Z"
+    },
+    {
+      "id": "m178339004816817",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"From Hugging Face to Amazon SageMaker Studio in one click\" (?/10)",
+      "ref": "2026-07-07T02-01-14-877Z_aws-ml_From_Hugging_Face_to_Amazon_SageMaker_Studio_in_on.json",
+      "at": "2026-07-07T02:07:28.168Z"
+    },
+    {
+      "id": "m17833900588056",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Teaching models to forget: Selective unlearning with Amazon Nova\" (?/10)",
+      "ref": "2026-07-07T02-01-14-877Z_aws-ml_Teaching_models_to_forget__Selective_unlearning_wi.json",
+      "at": "2026-07-07T02:07:38.805Z"
+    },
+    {
+      "id": "m178339006621449",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Contextual Policies in Omnigent: Using session state to better govern AI agents\" — mi a baj: Incomplete \"What this means for you\" section; Guide lacks specific instructions to apply the YAML rule; Missing clear wrap-up",
+      "ref": "2026-07-07T02-01-14-878Z_databricks_Contextual_Policies_in_Omnigent__Using_session_sta.json",
+      "at": "2026-07-07T02:07:46.214Z"
+    },
+    {
+      "id": "m178339006621588",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "need",
+      "text": "Hiányos / kell még adat: \"Contextual Policies in Omnigent: Using session state to better govern AI agents\" — egészítsd ki: Incomplete \"What this means for you\" section; Guide lacks specific instructions to apply the YAML rule; Missing clear wrap-up",
+      "ref": "2026-07-07T02-01-14-878Z_databricks_Contextual_Policies_in_Omnigent__Using_session_sta.json",
+      "open": true,
+      "at": "2026-07-07T02:07:46.215Z"
+    },
+    {
+      "id": "m178339006759568",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "info",
+      "text": "A \"From Hugging Face to Amazon SageMaker Studio in one cli\" hír a meglévő útmutatóra mutat: getting-started-hugging-face",
+      "ref": "getting-started-hugging-face",
+      "at": "2026-07-07T02:07:47.595Z"
+    },
+    {
+      "id": "m178339017855326",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Automate basic email replies in Outlook with Meta AI\" — mi a baj: Beginner clarity too low (4/10): steps are vague or could mislead a first-time user",
+      "ref": "GUIDE_automate-basic-email-replies-in-outlook-with-meta-ai.json",
+      "at": "2026-07-07T02:09:38.553Z"
+    },
+    {
+      "id": "m178339020707650",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Set up an AI‑driven daily habit tracker using Apple Intelligence\" — mi a baj: Beginner clarity too low (4/10): steps are vague or could mislead a first-time user",
+      "ref": "GUIDE_set-up-an-ai-driven-daily-habit-tracker-using-apple-intellig.json",
+      "at": "2026-07-07T02:10:07.076Z"
+    },
+    {
+      "id": "m178339031207717",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Create AI‑generated meeting summaries directly in Apple Calendar\" — mi a baj: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user",
+      "ref": "GUIDE_create-ai-generated-meeting-summaries-directly-in-apple-cale.json",
+      "at": "2026-07-07T02:11:52.077Z"
+    },
+    {
+      "id": "m17833903267013",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Teach Alexa+ to read bedtime stories to kids\" — mi a baj: Beginner clarity too low (5/10): steps are vague or could mislead a first-time user",
+      "ref": "GUIDE_teach-alexa-to-read-bedtime-stories-to-kids.json",
+      "at": "2026-07-07T02:12:06.701Z"
+    },
+    {
+      "id": "m178339036517357",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 16 → 4/4/2 oszlop.",
+      "ref": "mobile",
+      "at": "2026-07-07T02:12:45.173Z"
+    },
+    {
+      "id": "m178339151355617",
+      "from": "social",
+      "to": "team",
+      "kind": "info",
+      "text": "5 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
+      "ref": null,
+      "at": "2026-07-07T02:31:53.556Z"
     }
   ]
 }

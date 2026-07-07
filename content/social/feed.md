@@ -1,6 +1,99 @@
 # AI World Co. — közösségi posztok
 
-*Generálva: 2026-07-06T18:12:18.950Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+*Generálva: 2026-07-07T02:31:53.555Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## How data and AI will transform contact centres for financial services
+**🔗 https://aiworldhq.com/article/understanding-ai-in-customer-service-how-it-changes-getting-.html**
+
+**Facebook:**
+Tired of long hold times when you call your bank? AI‑powered contact centres can cut the wait and get you the right answer faster. https://aiworldhq.com/article/understanding-ai-in-customer-service-how-it-changes-getting-.html #CustomerService #AI
+
+**Instagram:**
+Say goodbye to endless hold music.
+AI is helping banks answer your queries quicker and with fewer repeats, so you spend less time waiting and more time doing what matters.
+#CustomerService
+#AI
+#FinancialHelp
+#EverydayTech
+Link in bio.
+
+*Kép-ötlet: A calm bank contact centre with a friendly agent at a desk, a subtle AI icon hovering near the computer screen.*
+
+---
+
+## AI-equipped drones study dolphins on the edge of extinction
+**🔗 https://aiworldhq.com/article/how-ai-is-helping-us-protect-wildlife-and-how-you-can-join-i.html**
+
+**Facebook:**
+Ever wondered how tech can help save endangered dolphins? Discover how AI‑driven drones are giving scientists fresh eyes on the ocean – and ways you can help. https://aiworldhq.com/article/how-ai-is-helping-us-protect-wildlife-and-how-you-can-join-i.html #conservation #AI
+
+**Instagram:**
+Drones + AI = a lifeline for dolphins
+Smart drones are tracking dolphin pods in remote waters, feeding researchers vital data to protect the species. You can even join citizen‑science projects.
+#conservation
+#naturetech
+#citizenscience
+Link in bio.
+
+*Kép-ötlet: A low‑flying drone over clear blue water with a pod of dolphins surfacing nearby.*
+
+---
+
+## OpenAI is still working on that ‘super app’
+**🔗 https://aiworldhq.com/article/beyond-chat-your-ai-assistant-that-connects-and-acts.html**
+
+**Facebook:**
+Imagine an AI that can handle your calendar, emails and online shopping without you juggling apps – it could free up a few minutes each day. Learn how this might work for you. https://aiworldhq.com/article/beyond-chat-your-ai-assistant-that-connects-and-acts.html #productivity #AI
+
+**Instagram:**
+Wish your AI could do more than chat?
+It may soon book appointments, tidy up emails and even shop for you from one place.
+
+#AIassistant
+#productivity
+#futuretech
+Link in bio.
+
+*Kép-ötlet: A person at a desk using a laptop, with subtle, glowing icons of a calendar, email envelope, and shopping bag floating nearby.*
+
+---
+
+## OpenAI unveils Lockdown Mode to protect sensitive data from prompt injection attacks
+**🔗 https://aiworldhq.com/article/how-to-keep-your-chatgpt-conversations-safe-with-lockdown-mo.html**
+
+**Facebook:**
+Want to keep work details safe when you ask ChatGPT a quick question? OpenAI's new Lockdown Mode stops accidental data leaks—learn how to enable it in minutes. https://aiworldhq.com/article/how-to-keep-your-chatgpt-conversations-safe-with-lockdown-mo.html #privacy #AI
+
+**Instagram:**
+Keep your chat safe with Lockdown Mode
+Turn on Lockdown Mode and stop ChatGPT from storing sensitive info—great for work emails or personal notes.
+#privacy
+#AIsecurity
+#ChatGPTtips
+#productivity
+Link in bio.
+
+*Kép-ötlet: A calm home office desk with a laptop screen showing the ChatGPT interface and a subtle shield icon nearby.*
+
+---
+
+## AI ‘content creators’ are getting harder to spot
+**🔗 https://aiworldhq.com/article/how-to-spot-ai-generated-content-creators-and-use-them-wisel.html**
+
+**Facebook:**
+Ever wonder if that stylish avatar is a real person or AI‑made? A quick guide shows you how to spot synthetic creators and protect your feed. https://aiworldhq.com/article/how-to-spot-ai-generated-content-creators-and-use-them-wisel.html #DigitalLiteracy
+
+**Instagram:**
+Spot the fake, stay safe.
+A few simple checks reveal if a profile is AI‑generated, so you can choose who to follow and share.
+#SyntheticMedia
+#AIAwareness
+#DigitalLiteracy
+Link in bio.
+
+*Kép-ötlet: A split-screen: one side shows a realistic social‑media avatar, the other side shows a faint digital grid overlay hinting it's AI‑generated.*
 
 ---
 

@@ -1,0 +1,60 @@
+{
+  "_meta": {
+    "written_at": "2026-07-07T02:04:17.946Z",
+    "writer_provider": "google",
+    "writer_model": "gemini-2.5-flash",
+    "writer_cost_usd": 0.0224682,
+    "original_draft": "2026-07-07T02-01-14-877Z_aws-ml_Teaching_models_to_forget__Selective_unlearning_wi.json",
+    "source_id": "aws-ml",
+    "source_name": "AWS Machine Learning (hivatalos)",
+    "source_link": "https://aws.amazon.com/blogs/machine-learning/teaching-models-to-forget-selective-unlearning-with-amazon-nova/",
+    "status": "published",
+    "rejected_at": "2026-07-07T02:02:34.462Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 796
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "This article is excellent, clearly explaining complex AI concepts in an accessible way for everyday users. The practical steps are well-detailed and respect the varied UIs of different AI tools,",
+      "_salvaged": true,
+      "_aiCost": 0.004361100000000001,
+      "_provider": "google",
+      "_model": "gemini-2.5-flash",
+      "_attempts": 1
+    },
+    "reason": "Salvaged from a partial AI response.",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-07-07T02-01-14-877Z_aws-ml_Teaching_models_to_forget__Selective_unlearning_wi.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-07-07T02:07:38.804Z",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-07-07T02:07:47.987Z",
+    "guide_worthy": false,
+    "pairing_reason": "The article does not introduce a specific, named feature or tool.",
+    "seo": {
+      "meta_description": "Learn how to control what your AI assistant remembers about you and guide it to respect your privacy with practical tips and existing features",
+      "keywords": [
+        "AI privacy",
+        "guide AI to forget",
+        "manage AI memory",
+        "control AI conversation",
+        "privacy with AI assistants"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Use subheadings to break up the content and highlight key points",
+        "Add examples of real-life scenarios where managing AI memory is important",
+        "Include a step-by-step guide or checklist for readers to follow"
+      ],
+      "optimised_at": "2026-07-07T02:12:37.373Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"How to Guide AI to Respect Your Privacy and Forget Details\"\nsubtitle: \"Learn practical ways to manage what your AI assistant remembers about you, using features you already have.\"\ncategory: \"how-to\"\naudience: \"personal\"\nread_time_minutes: 5\ntags: [\"privacy\", \"customisation\", \"everyday-ai\", \"personalisation\"]\n---\n\n# How to Guide AI to Respect Your Privacy and Forget Details\n\nHave you ever shared a personal detail with an AI chatbot, like an old address or a hobby, only for it to pop up in a later conversation when you didn't want it to? It's a common experience. While AI doesn't \"forget\" in the human sense, you absolutely have ways to guide what it brings up and how it responds, helping you maintain your privacy and control.\n\n## Understanding AI's \"Memory\"\n\nWhen we talk about an AI \"remembering\" something, it's not like a human brain storing a memory. Instead, it's usually one of two things:\n\n1.  **Conversation History (or Context Window):** An AI keeps track of what you've said in the current chat. This is called its \"context window\" (think of it like a short-term memory for that specific conversation). If you've mentioned your old job in a chat, it will remember it for the rest of *that* chat.\n2.  **Custom Instructions (or Personalisation Settings):** Many AI tools let you set \"custom instructions\" (like telling the AI, \"I'm a teacher,\" or \"always respond formally\"). These are details the AI remembers across *all* your new conversations, shaping how it interacts with you.\n\nKnowing this helps us understand how to \"teach\" it to forget or ignore information.\n\n## Practical Steps to Guide AI's Memory\n\nYou don't need any technical skills to manage how your AI assistant handles your information. Here are a few simple methods you can use today:\n\n### 1. Delete Conversation History for a Fresh Start\n\nThis is the most direct way to make an AI \"forget\" an entire interaction. If you've discussed something sensitive or shared outdated information in a particular chat, simply deleting that conversation removes it from the AI's long-term record for you.\n\n*   **How to do it:** Most AI chat platforms have a \"delete chat\" or \"clear conversation\" option, usually found next to or within each chat in your history sidebar. Look for an `X` icon, a rubbish bin icon, or a menu with \"delete\" as an option.\n\n### 2. Update Your Custom Instructions\n\nIf you've given the AI persistent information about yourself (like a previous role or a location) via custom instructions, you can easily change or remove it. This ensures new conversations don't automatically recall those details.\n\n*   **How to do it:** Go to your AI tool's settings or profile. Look for a section labelled \"Custom Instructions,\" \"Personalised Responses,\" or similar. Here, you can edit or clear any details you no longer want the AI to remember about you for future interactions. For example, if you moved, you might change \"I live in Sydney\" to \"I live in Melbourne.\"\n\n### 3. Explicitly Override in a New Chat\n\nSometimes, you might want the AI to ignore a detail it *might* have learned from a past, undeleted conversation without completely wiping your history. You can simply tell it to do so at the start of a new chat.\n\n*   **How to do it:** When starting a new conversation, give the AI a clear instruction. For example: \"For this conversation, please ignore any previous mention of my old address; I now live at [new address].\" Or: \"Please assume I'm now a graphic designer, not a web developer, for this task.\" This new instruction overrides any potentially remembered details for *that specific chat*.\n\n## What this means for you\n\n*   **For your privacy:** By regularly deleting sensitive conversations or updating your custom instructions, you take an active role in managing what personal data an AI associates with you. This is especially important if you use AI for tasks involving private information.\n*   **For managing changing details:** As life changes (new job, new address, new hobbies), you can easily update your AI's understanding of you. This keeps its responses relevant and stops it from bringing up outdated information.\n*   **If you're just getting started:** Start by using the \"delete conversation\" feature whenever you feel a chat contains information you wouldn't want the AI to retain. It's an easy first step to take control of your AI's \"memory.\"\n\n## Wrap-up\n\nWhile AI's \"memory\" works differently from ours, you have powerful, easy-to-use tools to guide what it remembers and how it interacts with you. By managing your chat history, updating custom instructions, or providing clear override prompts, you can ensure your AI assistant respects your preferences and privacy. Why not try it today? Take a moment to check your AI tool's custom instructions or delete an old conversation you no longer need.",
+  "original_title": "Teaching models to forget: Selective unlearning with Amazon Nova"
+}
