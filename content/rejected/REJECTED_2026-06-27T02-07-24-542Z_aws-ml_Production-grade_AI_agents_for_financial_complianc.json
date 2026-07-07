@@ -9,27 +9,29 @@
     "source_name": "AWS Machine Learning (hivatalos)",
     "source_link": "https://aws.amazon.com/blogs/machine-learning/production-grade-ai-agents-for-financial-compliance-lessons-from-stripe/",
     "status": "rejected",
-    "rejected_at": "2026-07-02T02:11:36.098Z",
     "auto_check": {
       "passed": true,
       "issues": [],
       "wordCount": 891
     },
-    "ai_review": {
-      "overall_score": 0,
-      "decision": "FAIL",
-      "issues": [
-        "AI response JSON parse error after retries: AI router null"
-      ],
-      "verdict": "Could not parse AI review (2 attempts)",
-      "_aiCost": 0,
-      "_parseFailed": true
-    },
-    "reason": "Could not parse AI review (2 attempts)",
     "can_retry": true,
     "rework_attempts": 2,
     "reworked_from": "REJECTED_2026-06-27T02-07-24-542Z_aws-ml_Production-grade_AI_agents_for_financial_complianc.json",
-    "requeued_unchanged": true
+    "requeued_unchanged": true,
+    "rejected_at": "2026-07-07T03:54:38.678Z",
+    "ai_review": {
+      "overall_score": 5,
+      "clarity_score": 4,
+      "decision": "FAIL",
+      "issues": [],
+      "verdict": "Salvaged from a partial AI response.",
+      "_salvaged": true,
+      "_aiCost": 0.0044004,
+      "_provider": "google",
+      "_model": "gemini-2.5-flash",
+      "_attempts": 1
+    },
+    "reason": "Salvaged from a partial AI response."
   },
   "article_markdown": "---\ntitle: \"How to Use AI to Automate Your Boring Work Tasks (Without Writing Code)\"\nsubtitle: \"Turn repetitive chores into one-click shortcuts using AI agents that do the work for you\"\ncategory: \"how-to\"\naudience: \"personal\"\nread_time_minutes: 5\ntags: [\"ai-agents\", \"automation\", \"productivity\", \"getting-started\"]\n---\n\n# How to Use AI to Automate Your Boring Work Tasks (Without Writing Code)\n\nYou’ve just spent 20 minutes copying data from one spreadsheet to another. Again. Or maybe you’re stuck copying the same email template over and over, changing just a few words each time. These aren’t the parts of your day that make you feel proud or creative — they’re the chores. What if you could hand them to an AI assistant and get back an hour every week?\n\nThat’s what AI agents are for. Think of them as tiny digital helpers that can log into your apps, follow your instructions, and do the repetitive work for you — without you needing to write a single line of code.\n\n---\n\n## What is an AI agent?\n\nAn **AI agent** is a program that can take action on your behalf. It’s not just a chatbot that answers questions — it can open your email, fill out forms, move files between folders, or even send messages in apps like Slack or Teams. You give it a goal (like “organise my receipts into folders by month”), and it figures out how to do it step by step.\n\nBehind the scenes, it uses something called **tool use** — imagine the AI has a set of tools (like a web browser, file system, or email client) that it can control using your instructions. It’s like giving someone a key to your house and saying, “Please water the plants every Tuesday.”\n\n---\n\n## How to set up your first AI agent (step by step)\n\nYou don’t need to be a programmer. Most AI agents today work through simple chat interfaces. Here’s how to get started:\n\n### 1. Pick a platform that supports agents\nSome AI tools already have agents built in. For example:\n- **Claude** (by Anthropic) has a feature called **Claude Code** that can run scripts and interact with your computer.\n- **ChatGPT** (with a paid plan) can use **plugins** or **custom instructions** to act as an agent.\n- **Gemini** (by Google) supports **extensions** that let it access your Google Drive, Gmail, or Calendar.\n\nChoose one you already use — no need to switch.\n\n### 2. Give it a clear goal\nInstead of saying, “Help me organise my files,” try:\n> “Go through my Downloads folder, find all PDF receipts from the last 30 days, rename them with the date and vendor name, and move them to a folder called ‘Receipts-2025’.”\n\nThat’s specific enough for the AI to understand and act on.\n\n### 3. Add your tools (if needed)\nSome agents need permission to access your apps. For example:\n- If you want it to read your emails, you’ll need to connect your Gmail or Outlook account.\n- If it needs to move files, it’ll ask for access to your file system.\nThis is like giving a house key — only do it with apps you trust.\n\n### 4. Let it run (and watch it work)\nOnce you hit send, the agent starts. It may open your file manager, rename files, or draft an email. You can watch in real time or step away — it’s doing the work.\n\n> ⚠️ Tip: Start small. Try automating something like “move all screenshots to a Screenshots folder” before tackling bigger tasks.\n\n---\n\n## 3 real-life tasks you can automate today\n\nHere are three common chores that AI agents can handle — no coding required:\n\n### ✅ Organise your downloads folder\nInstead of manually sorting files, tell your AI:\n> “Organise my Downloads folder: move PDFs to Documents, images to Pictures, and zip files older than 7 days into an archive folder.”\n\n### ✅ Batch process emails\nNeed to send 20 similar emails? Try:\n> “Draft 20 emails to clients thanking them for their recent purchase. Use this template: [paste template]. Replace [Name] with each client’s name from my contact list.”\n\n### ✅ Clean up your desktop\n> “Delete all files on my desktop that haven’t been opened in the last 30 days and move the rest to a folder called ‘Desktop-Cleanup’.”\n\nEach of these takes minutes to set up — and saves hours over time.\n\n---\n\n## What this means for you\n\n- **If you're at home**: Start with one small task like organising your photos or cleaning up your downloads. Pick a day when you’re not in a rush, and let the AI do the sorting while you make a cuppa.\n- **If you work in an office**: Try automating repetitive tasks like report formatting or email follow-ups. Even saving 10 minutes a day adds up to over an hour a week.\n- **If you're just getting started**: Don’t overcomplicate it. Pick one tool you already use (like Gmail or Google Drive), connect it to your AI, and give it a simple task. Once it works, build from there.\n\n---\n\nAutomating the boring stuff isn’t about replacing your skills — it’s about giving you back time to focus on what matters. Start small, trust the process, and soon you’ll wonder how you ever lived without an AI assistant doing the heavy lifting.",
   "original_title": "Production-grade AI agents for financial compliance: Lessons from Stripe"

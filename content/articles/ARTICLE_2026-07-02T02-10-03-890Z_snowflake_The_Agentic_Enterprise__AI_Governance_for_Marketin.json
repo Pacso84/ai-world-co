@@ -8,28 +8,30 @@
     "source_id": "snowflake",
     "source_name": "Snowflake Blog (hivatalos)",
     "source_link": "https://www.snowflake.com/content/snowflake-site/global/en/blog/mmds-ai-governance-framework-agentic-enterprise",
-    "status": "rejected",
-    "rejected_at": "2026-07-02T10:41:30.769Z",
+    "status": "published",
     "auto_check": {
       "passed": true,
       "issues": [],
       "wordCount": 765
     },
-    "ai_review": {
-      "overall_score": 0,
-      "decision": "FAIL",
-      "issues": [
-        "AI response JSON parse error after retries: AI router null"
-      ],
-      "verdict": "Could not parse AI review (2 attempts)",
-      "_aiCost": 0,
-      "_parseFailed": true
-    },
-    "reason": "Could not parse AI review (2 attempts)",
     "can_retry": true,
     "rework_attempts": 2,
     "reworked_from": "REJECTED_2026-07-02T02-10-03-890Z_snowflake_The_Agentic_Enterprise__AI_Governance_for_Marketin.json",
-    "requeued_unchanged": true
+    "requeued_unchanged": true,
+    "published_at": "2026-07-02T02:10:03.000Z",
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 8,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "This article is well-structured, clear, and aligns perfectly with the brand voice and",
+      "_salvaged": true,
+      "_aiCost": 0.004359,
+      "_provider": "google",
+      "_model": "gemini-2.5-flash",
+      "_attempts": 1
+    },
+    "date_note": "published_at = eredeti forrás-dátum (2026-07-07 mentőakció: router-hiba miatt tévesen elutasított cikkek)"
   },
   "article_markdown": "---\ntitle: \"How to Use AI Agents at Work Without Losing Control\"\nsubtitle: \"A practical guide to setting up AI assistants that actually help you finish tasks instead of adding to your to-do list\"\ncategory: \"how-to\"\naudience: \"business\"\nread_time_minutes: 5\ntags: [\"ai-agents\", \"workplace\", \"automation\", \"getting-started\"]\n---\n\n# How to Use AI Agents at Work Without Losing Control\n\nYou’ve probably heard the buzz: AI agents can now “do things” for you at work. But the idea of handing over tasks to a digital helper can feel risky—what if it messes up your emails, posts the wrong thing, or wastes time asking for clarification?\n\nThe good news is, you don’t need to hand over the keys to your calendar or inbox. With a few simple steps, you can set up AI agents to handle routine tasks safely and reliably—so you can focus on the work that actually matters.\n\nLet’s walk through how to use them without giving up control.\n\n---\n\n## Start with a clear “job description”\n\nThink of an AI agent like a new team member who needs clear instructions. Before you set one loose, decide exactly what it should do—and what it shouldn’t.\n\nFor example:\n- ✅ *Handle routine follow-ups on invoices*\n- ✅ *Summarise long meeting notes into key points*\n- ✅ *Draft responses to common customer questions*\n- ❌ *Send sensitive financial data*\n- ❌ *Post on social media without review*\n- ❌ *Make decisions about hiring or promotions*\n\nThis isn’t about trusting the AI blindly—it’s about giving it boundaries. You’re still the boss.\n\n---\n\n## Give it the right tools (and access)\n\nAI agents work best when they have access to the tools they need—but only the ones they need.\n\nFor example:\n- A **document summariser** agent only needs access to your shared drives or cloud storage.\n- A **meeting assistant** might need access to your calendar and email.\n- A **customer support responder** could use your helpdesk software.\n\nMost AI platforms let you connect these tools safely. Look for options like:\n- **API access** (think of it as a secure bridge between the AI and your tools)\n- **Read-only permissions** (so the AI can see files but not edit them)\n- **Approval steps** (so nothing goes out without you checking it first)\n\nAlways start with the least access possible. You can always give more later—if you trust it.\n\n---\n\n## Set up guardrails (so it doesn’t go off track)\n\nEven the best AI can go rogue if it’s not guided. That’s why you need “guardrails”—simple rules to keep it on track.\n\nFor example:\n- **Approval before sending**: The AI drafts an email, but you review and hit send.\n- **Templates only**: The AI can only use pre-approved response templates.\n- **Time limits**: The AI stops after 3 follow-ups and asks you for help.\n- **Error alerts**: If the AI spots something unusual (like a typo in a client name), it flags it for you.\n\nThese aren’t just safety nets—they’re training wheels. The more you use the agent, the more you’ll trust it to handle things on its own.\n\n---\n\n## Test it with low-stakes tasks first\n\nDon’t hand over your most important client communication on day one. Start small.\n\nTry these safe tasks first:\n- Summarising internal reports\n- Organising your inbox by priority\n- Drafting routine meeting agendas\n- Updating project status boards\n\nWatch how it performs. Does it get the tone right? Does it miss key details? Adjust your instructions and try again.\n\nThis isn’t about perfection—it’s about progress. Every small success builds trust.\n\n---\n\n## What this means for you\n\n- **If you’re just getting started**: Pick one routine task (like summarising emails) and set up a simple agent to help. Start with read-only access and approval steps.\n- **If you’re in a team**: Choose a shared tool (like a shared drive or project board) and set up an agent to keep it organised. Make sure everyone knows the rules.\n- **If you’re managing people**: Use agents to handle repetitive tasks (like data entry or follow-ups) so your team can focus on strategy and creativity.\n\n---\n\n## Wrap-up\n\nAI agents aren’t about replacing you—they’re about giving you back time. Start small, set clear boundaries, and always keep yourself in the loop. The goal isn’t to automate everything—it’s to automate the things that drain your energy, so you can focus on the work that matters.\n\nTry setting up one agent this week. Pick a task that feels repetitive, give it clear instructions, and see how it goes. You might be surprised at how much it can do—without taking over.",
   "original_title": "The Agentic Enterprise: AI Governance for Marketing Leaders"

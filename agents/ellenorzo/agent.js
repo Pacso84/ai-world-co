@@ -263,6 +263,15 @@ Now provide your judgement as JSON only (the rules are in your instructions).`;
     if (attempt < 2) console.log(`      ↻ JSON parse hiba — újrapróbálom (${attempt}/2)...`);
   }
 
+  // Ha SOHA nem kaptunk választ (minden provider elesett = infrastruktúra-hiba,
+  // nem a cikk hibája!) → NEM utasítjuk el, hanem kihagyjuk: a vázlat megmarad,
+  // a következő futás újrapróbálja. (2026-07-07: Google-akadozás miatt jó cikk
+  // került az elutasítottak közé.)
+  if (lastError === 'AI router null' && !lastRaw) {
+    console.log('      ⏭️  Minden provider elérhetetlen — a vázlat MARAD, következő körben újra.');
+    return null;
+  }
+
   // Mindkét próba elbukott — naplózzuk a NYERS választ a diagnózishoz
   saveParseFailure(lastRaw, lastError);
   return {

@@ -8,28 +8,29 @@
     "source_id": "alibaba-qwen",
     "source_name": "Alibaba Qwen (hivatalos)",
     "source_link": "https://qwenlm.github.io/blog/qwen3-embedding/",
-    "status": "rejected",
-    "rejected_at": "2026-07-02T17:27:22.937Z",
+    "status": "published",
     "auto_check": {
       "passed": true,
       "issues": [],
       "wordCount": 828
     },
-    "ai_review": {
-      "overall_score": 0,
-      "decision": "FAIL",
-      "issues": [
-        "AI response JSON parse error after retries: AI router null"
-      ],
-      "verdict": "Could not parse AI review (2 attempts)",
-      "_aiCost": 0,
-      "_parseFailed": true
-    },
-    "reason": "Could not parse AI review (2 attempts)",
     "can_retry": true,
     "rework_attempts": 2,
     "reworked_from": "REJECTED_2026-06-29T02-29-42-864Z_alibaba-qwen_Qwen3_Embedding__Advancing_Text_Embedding_and_Rera.json",
-    "requeued_unchanged": true
+    "requeued_unchanged": true,
+    "published_at": "2026-06-29T02:29:42.000Z",
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "This article is an excellent explainer on text embeddings, using clear analogies and practical examples. It perfectly matches the brand voice and audience requirements, and the structure is solid.",
+      "_aiCost": 0.004285199999999999,
+      "_provider": "google",
+      "_model": "gemini-2.5-flash",
+      "_attempts": 1
+    },
+    "date_note": "published_at = eredeti forrás-dátum (2026-07-07 mentőakció: router-hiba miatt tévesen elutasított cikkek)"
   },
   "article_markdown": "---\ntitle: \"How AI Understands What You Really Mean: The Magic of Text Embeddings\"\nsubtitle: \"Discover how AI goes beyond just keywords to find exactly what you're looking for, making your digital life much smarter.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"text-embeddings\", \"ai-search\", \"information-retrieval\", \"understanding-ai\"]\n---\n\n# How AI Understands What You Really Mean: The Magic of Text Embeddings\n\nHave you ever searched for something online or asked an AI a question, only for it to completely miss the subtle point you were trying to make? It can feel like the AI is just matching words, not truly understanding your intent. This is where a clever AI trick called \"text embeddings\" comes into play, helping AI systems truly grasp the *meaning* behind your words.\n\n## What are Text Embeddings?\n\nImagine you have a giant library, and instead of just listing books by title or author, every single book had a unique \"meaning fingerprint\" that captured its core ideas, themes, and tone. Books about similar topics, even if they used different words, would have very similar fingerprints. That's essentially what text embeddings do for AI.\n\nAn **embedding** is when an AI transforms a piece of text – it could be a single word, a sentence, or even an entire document – into a special string of numbers. Think of this string of numbers like a set of coordinates on a vast conceptual map. Words or sentences that mean similar things will have coordinates that are very close together on this map, regardless of the exact vocabulary used. So, \"car\" and \"automobile\" might be close, and \"happy dog\" and \"joyful puppy\" would also be neighbours.\n\nThis process moves beyond simply matching keywords. It's about capturing the *context* and *nuance* of language.\n\n## How AI Uses These \"Meaning Maps\"\n\nOnce text is turned into these numerical fingerprints, AI can do some incredibly smart things:\n\n### Smarter Search and Retrieval\n\nWhen you type a query into a search engine or ask an AI assistant a question, it doesn't just look for exact word matches. Instead, it takes your query, turns it into an embedding (a numerical fingerprint of *your* meaning), and then quickly searches its vast database for other pieces of text with very similar numerical fingerprints.\n\nFor instance, if you search for \"hearty meals for a cold night,\" the AI isn't just looking for those exact words. It understands the *concept* of warm, comforting food and might retrieve recipes for \"slow-cooked lamb stew,\" \"winter vegetable bake,\" or \"comforting curry,\" even if they don't explicitly mention \"cold night\" or \"hearty.\" This is called **retrieval**, because the AI is retrieving information based on semantic (meaning-based) similarity.\n\n### Reranking for Precision\n\nSometimes, an initial search might bring back many relevant results. To make sure you see the *most* helpful ones first, AI uses a technique called **reranking**. This is like a second layer of refinement. The AI takes the initial set of retrieved results and re-evaluates them against your original query's embedding. It then sorts them again, pushing the items that are conceptually closest to your query's meaning right to the top of the list.\n\nThese powerful capabilities are often built using **foundation models** (large, highly versatile AI models trained on enormous amounts of data), which are very good at understanding and generating human language, making them excellent at creating these precise text embeddings.\n\n## What this means for you\n\n*   **In everyday life:** You'll notice better, more relevant results when you search on your favourite platforms (like streaming services suggesting movies you'll truly like, or shopping sites showing products that really fit your needs). Your AI assistants will also seem more intelligent, understanding complex questions and providing more accurate answers because they're grasping the underlying meaning, not just keywords.\n*   **For your business or work:** If you work with large amounts of information, text embeddings can transform how you find and organise data. Customer service chatbots can better understand complex or nuanced customer queries, leading to quicker resolutions. Businesses can use them to find specific internal documents, summarise vast reports more effectively, or personalise marketing messages by understanding customer preferences at a deeper level.\n*   **If you're just getting started:** Pay attention to how your AI tools or search engines seem to \"get\" you better. Don't be afraid to try more descriptive or nuanced questions. You might be surprised at how well they understand what you *really* mean, even when you don't use the perfect words.\n\n## Wrap-up\n\nText embeddings are a fundamental building block for many of the smart AI features we see today. By converting words and sentences into meaningful numerical representations, AI can move beyond simple keyword matching to truly understand the context and intent behind language. This makes our interactions with technology more intuitive and effective, whether we're searching for information, getting recommendations, or chatting with an AI assistant. The next time an AI surprises you with its understanding, remember the clever \"meaning fingerprints\" working behind the scenes!",
   "original_title": "Qwen3 Embedding: Advancing Text Embedding and Reranking Through Foundation Models"

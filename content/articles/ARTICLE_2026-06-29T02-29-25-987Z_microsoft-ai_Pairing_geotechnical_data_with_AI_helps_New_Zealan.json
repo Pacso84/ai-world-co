@@ -8,28 +8,30 @@
     "source_id": "microsoft-ai",
     "source_name": "Microsoft AI (hivatalos)",
     "source_link": "https://news.microsoft.com/source/asia/features/pairing-geotechnical-data-with-ai-helps-new-zealand-to-build-better/",
-    "status": "rejected",
-    "rejected_at": "2026-07-02T02:11:36.142Z",
+    "status": "published",
     "auto_check": {
       "passed": true,
       "issues": [],
       "wordCount": 579
     },
-    "ai_review": {
-      "overall_score": 0,
-      "decision": "FAIL",
-      "issues": [
-        "AI response JSON parse error after retries: AI router null"
-      ],
-      "verdict": "Could not parse AI review (2 attempts)",
-      "_aiCost": 0,
-      "_parseFailed": true
-    },
-    "reason": "Could not parse AI review (2 attempts)",
     "can_retry": true,
     "rework_attempts": 2,
     "reworked_from": "REJECTED_2026-06-29T02-29-25-987Z_microsoft-ai_Pairing_geotechnical_data_with_AI_helps_New_Zealan.json",
-    "requeued_unchanged": true
+    "requeued_unchanged": true,
+    "published_at": "2026-06-29T02:29:25.000Z",
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "The article is well-structured, easy to understand, and provides clear,",
+      "_salvaged": true,
+      "_aiCost": 0.0042648,
+      "_provider": "google",
+      "_model": "gemini-2.5-flash",
+      "_attempts": 1
+    },
+    "date_note": "published_at = eredeti forrás-dátum (2026-07-07 mentőakció: router-hiba miatt tévesen elutasított cikkek)"
   },
   "article_markdown": "---\ntitle: \"How to Turn Your Meeting Notes into Clear Action Plans with AI\"\nsubtitle: \"Use AI to automatically organise your meeting notes into tasks, deadlines and owners — so nothing falls through the cracks\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"meeting-ai\", \"productivity\", \"workplace-tools\"]\n---\n\n# How to Turn Your Meeting Notes into Clear Action Plans with AI\n\nYou just left a meeting where everyone nodded in agreement, but now you’re staring at your notes wondering who’s actually supposed to do what — and by when. Sound familiar? AI can turn your scribbled notes into a clear action plan in seconds, so you can stop guessing and start doing.\n\n## Start with a clean transcript\n\nIf your meeting was recorded (or you used a voice assistant to take notes), grab that audio file or text. AI tools like **Otter.ai** or **Microsoft Copilot** can transcribe spoken words into text automatically. No need to type everything out yourself — just upload the file and let the AI do the heavy lifting.\n\n*Tip: If you’re in a rush, use a voice memo app on your phone and upload the recording straight away. The AI will clean up the background noise and spelling mistakes for you.*\n\n## Ask the AI to organise your notes\n\nOnce you have the text, paste it into an AI tool like **ChatGPT**, **Gemini**, or **Claude**. Then use a prompt like this:\n\n> “Here are my meeting notes. Please turn them into a clear action plan with:\n> - A list of tasks\n> - The person responsible for each task\n> - A deadline for each task\n> - Any follow-up meetings or dates mentioned”\n\nThe AI will scan your notes for action items, names, and dates, then create a structured list. For example:\n\n- **Task:** Finalise the quarterly budget report\n- **Owner:** Sarah (Marketing)\n- **Deadline:** 15 June\n- **Follow-up:** Review session on 10 June\n\n*No need to be a prompt expert — just describe what you need in plain English. The AI will figure out the rest.*\n\n## Share the plan with your team\n\nCopy the AI’s output and paste it into a shared document like **Google Docs**, **Notion**, or **Trello**. Add your team members as collaborators so everyone sees their tasks and deadlines at a glance. You can even ask the AI to draft an email for you:\n\n> “Write a short email to the team with the action plan from today’s meeting.”\n\nThe AI will create a professional, clear message that you can send right away.\n\n## What this means for you\n\n- **In everyday life:** Use AI to organise personal project notes — like planning a holiday or a home renovation — so you don’t forget important steps.\n- **For your business or work:** Save hours every week by automating the tedious task of turning meeting chaos into clear action plans. No more “I thought you were doing that!”\n- **If you're just getting started:** Start with a short voice memo of your next meeting. Upload it to an AI tool and ask it to create a simple task list. You’ll see how easy it is to get organised.\n\n## Wrap-up\n\nNext time you leave a meeting, skip the scribble and record your notes instead. Let AI do the organising, and you’ll spend less time wondering what to do next — and more time actually doing it. Try it today with a voice memo and one of the AI tools mentioned above.",
   "original_title": "Pairing geotechnical data with AI helps New Zealand build better"

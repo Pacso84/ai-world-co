@@ -222,11 +222,15 @@ function calculateTodayCost() {
 }
 
 function countDrafts() {
-  if (!existsSync(DRAFTS_DIR)) return { scraper: 0, writer: 0 };
+  if (!existsSync(DRAFTS_DIR)) return { scraper: 0, writer: 0, writerGuides: 0 };
   const files = readdirSync(DRAFTS_DIR);
   return {
     scraper: files.filter(f => f.endsWith('.json') && !f.startsWith('WRITER_')).length,
-    writer: files.filter(f => f.startsWith('WRITER_')).length
+    writer: files.filter(f => f.startsWith('WRITER_')).length,
+    // A még ELLENŐRZÉSRE VÁRÓ útmutató-vázlatok is a napi keretbe számítanak!
+    // (2026-07-07 hiba: a párosító+idle-fill nem látta egymás félkész munkáit
+    // → 11 útmutató született a napi 6-os keret ellenére)
+    writerGuides: files.filter(f => f.startsWith('WRITER_GUIDE_')).length
   };
 }
 
@@ -259,8 +263,9 @@ function generateReport() {
     cost_remaining_usd: Math.max(0, LIMITS.daily_api_cost_usd_max - todayCost),
     // HÍR-sáv szabad helyei (a hírírás ezt kapja limitként):
     articles_remaining: Math.max(0, LIMITS.daily_articles_max - byType.news),
-    // ÚTMUTATÓ-sáv szabad helyei (az idle-fill ezt használja):
-    guides_remaining: Math.max(0, GUIDES_MAX - byType.guides)
+    // ÚTMUTATÓ-sáv szabad helyei (az idle-fill ezt használja) — a MÁR MEGÍRT,
+    // de még ellenőrzésre váró vázlatok IS foglalják a helyet:
+    guides_remaining: Math.max(0, GUIDES_MAX - byType.guides - drafts.writerGuides)
   };
 }
 

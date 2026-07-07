@@ -9,27 +9,29 @@
     "source_name": "AWS Machine Learning (hivatalos)",
     "source_link": "https://aws.amazon.com/blogs/machine-learning/how-cara-pioneers-domain-specific-ai-for-enterprise-insurance-brokerages-with-aws/",
     "status": "rejected",
-    "rejected_at": "2026-07-02T02:11:36.086Z",
     "auto_check": {
       "passed": true,
       "issues": [],
       "wordCount": 648
     },
-    "ai_review": {
-      "overall_score": 0,
-      "decision": "FAIL",
-      "issues": [
-        "AI response JSON parse error after retries: AI router null"
-      ],
-      "verdict": "Could not parse AI review (2 attempts)",
-      "_aiCost": 0,
-      "_parseFailed": true
-    },
-    "reason": "Could not parse AI review (2 attempts)",
     "can_retry": true,
     "rework_attempts": 2,
     "reworked_from": "REJECTED_2026-06-27T02-07-24-542Z_aws-ml_How_Cara_pioneers_domain-specific_AI_for_enterpris.json",
-    "requeued_unchanged": true
+    "requeued_unchanged": true,
+    "rejected_at": "2026-07-07T03:54:30.711Z",
+    "ai_review": {
+      "overall_score": 6,
+      "clarity_score": 6,
+      "decision": "FAIL",
+      "issues": [],
+      "verdict": "Salvaged from a partial AI response.",
+      "_salvaged": true,
+      "_aiCost": 0.0042955,
+      "_provider": "google",
+      "_model": "gemini-2.5-flash",
+      "_attempts": 1
+    },
+    "reason": "Salvaged from a partial AI response."
   },
   "article_markdown": "---\ntitle: \"How to Use AI to Turn Your Rough Notes Into Polished Writing\"\nsubtitle: \"Save hours rewriting by letting AI tidy up your messy first drafts in minutes\"\ncategory: \"how-to\"\naudience: \"personal\"\nread_time_minutes: 5\ntags: [\"writing\", \"productivity\", \"ai-tools\"]\n---\n\n# How to Use AI to Turn Your Rough Notes Into Polished Writing\n\nYou’ve just scribbled down a few ideas on your phone during a coffee break or jotted bullet points in a notebook after a meeting. Now you need to turn those rough notes into something clear, professional, and ready to share. That’s where AI can step in and do the heavy lifting for you.\n\nWith a few simple steps, you can paste your messy notes into an AI tool and have it rewrite them into smooth, readable paragraphs—saving you time and frustration.\n\n---\n\n## Start with a clean copy of your notes\n\nBefore you feed anything to AI, make sure your raw notes are in one place. Copy them into a plain text document or paste them directly into the AI tool’s chat window.\n\nIf your notes are handwritten, take a quick photo and use a free app like Microsoft Lens or Google Keep to extract the text. AI works best with clean, typed input, so spend a minute tidying up any typos or unclear phrases.\n\n---\n\n## Give the AI a clear instruction (the “prompt”)\n\nA prompt is just the instruction you give to the AI—think of it like a recipe card. The clearer your prompt, the better the result.\n\nInstead of pasting your notes and saying “fix this,” try something like:\n\n> “Rewrite the following notes into a clear, professional paragraph. Keep the meaning the same but make it flow naturally. Notes: [paste your notes here]”\n\nIf you want a friendlier tone, add:\n\n> “Rewrite this in a warm, conversational style suitable for an email to a colleague.”\n\nIf you’re writing for work, you might say:\n\n> “Rewrite this into a concise business email draft. Keep it under 100 words.”\n\n---\n\n## Choose the right AI tool for the job\n\nNot all AI tools are the same. Some are better for short emails, others for long reports.\n\n- **ChatGPT** or **Gemini**: Great for general rewriting and polishing.\n- **Claude**: Good for longer documents and keeping tone consistent.\n- **Microsoft Copilot**: Built into Word and Outlook, perfect if you’re already using Microsoft 306.\n- **Google Docs with Gemini**: If you work in Google Workspace, this is seamless.\n\nPick one that fits your workflow and budget.\n\n---\n\n## Review and tweak the AI’s output\n\nAI isn’t perfect—it might add extra fluff, change your meaning slightly, or use words that don’t sound like you. Always read the AI’s rewrite carefully.\n\nAsk yourself:\n- Does it sound like me?\n- Did it keep all the important points?\n- Is the tone right for the audience?\n\nIf something feels off, tweak your prompt or ask the AI to try again with a different style.\n\n---\n\n## What this means for you\n\n- **If you’re a student**: Use AI to turn your lecture notes into clear study summaries. Paste your messy scribbles, prompt the AI to “organise this into bullet points with key concepts highlighted,” and you’ll have a revision sheet in minutes.\n- **If you work in an office**: Turn meeting notes into a quick email update for your team. Just paste the notes, ask the AI to “write a professional summary,” and copy it straight into your email.\n- **If you’re just getting started**: Start with a short paragraph or email draft. Paste it into ChatGPT, say “make this clearer,” and see how much smoother it reads. It’s a risk-free way to try AI without pressure.\n\n---\n\nNow you’re ready to let AI handle the rewriting while you focus on what really matters—your ideas. Try it today with a single paragraph and see how much time you save.",
   "original_title": "How Cara pioneers domain-specific AI for enterprise insurance brokerages with AWS"

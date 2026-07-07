@@ -1125,6 +1125,96 @@
   ],
   "messages": [
     {
+      "id": "m178310819678841",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Getting started with Mistral's Le Chat\" — mi a baj: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user",
+      "ref": "GUIDE_lechat-getting-started.json",
+      "at": "2026-07-03T19:49:56.788Z"
+    },
+    {
+      "id": "m178310820424323",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"How to use Meta AI on Instagram and Messenger\" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "GUIDE_meta-ai-instagram.json",
+      "at": "2026-07-03T19:50:04.243Z"
+    },
+    {
+      "id": "m178310821972853",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Getting started with Google NotebookLM for your own documents\" — mi a baj: Beginner clarity too low (5/10): steps are vague or could mislead a first-time user",
+      "ref": "GUIDE_notebooklm-getting-started.json",
+      "at": "2026-07-03T19:50:19.728Z"
+    },
+    {
+      "id": "m178310827120388",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Set up Qwen Chat to handle common customer FAQs for your e‑commerce store\" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "GUIDE_set-up-qwen-chat-to-handle-common-customer-faqs-for-your-e-c.json",
+      "at": "2026-07-03T19:51:11.203Z"
+    },
+    {
+      "id": "m17831082804573",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Summarise documents instantly with Mistral AI’s tiny‑model summariser\" — mi a baj: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user",
+      "ref": "GUIDE_summarise-documents-instantly-with-mistral-ai-s-tiny-model-s.json",
+      "at": "2026-07-03T19:51:20.457Z"
+    },
+    {
+      "id": "m178310837288761",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"How to summarise a long document or article with AI\" — javítva: Beginner clarity too low (5/10): steps are vague or could mislead a first-time user; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "GUIDE_ai-summarise-long.json",
+      "at": "2026-07-03T19:52:52.887Z"
+    },
+    {
+      "id": "m178310841381645",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"How to set up smart routines with Alexa+\" — javítva: Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "GUIDE_alexa-routines.json",
+      "at": "2026-07-03T19:53:33.816Z"
+    },
+    {
+      "id": "m178310843398837",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Getting started with Apple Intelligence on your iPhone\" — javítva: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "GUIDE_apple-intelligence-getting-started.json",
+      "at": "2026-07-03T19:53:53.988Z"
+    },
+    {
+      "id": "m178310845607527",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"How to use Claude Projects to keep your work organised\" — javítva: Incomplete wrap-up section; Missing conclusion/next steps; újraküldöm.",
+      "ref": "GUIDE_claude-projects.json",
+      "at": "2026-07-03T19:54:16.075Z"
+    },
+    {
+      "id": "m178310848178917",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"How to use Microsoft Copilot in Word, Excel and Outlook\" — javítva: Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "GUIDE_copilot-office.json",
+      "at": "2026-07-03T19:54:41.789Z"
+    },
+    {
       "id": "m178310850025499",
       "from": "guide",
       "to": "ellenorzo",
@@ -2077,409 +2167,319 @@
       "at": "2026-07-07T02:31:53.556Z"
     },
     {
-      "id": "m178342111491697",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Salesforce Deepens Commitment to Switzerland with $1 Billion Investment to Accelerate Agentic AI Transformation\" — mi a baj: Salvaged from a partial AI response.",
-      "ref": "2026-07-07T10-44-55-042Z_salesforce_Salesforce_Deepens_Commitment_to_Switzerland_with_.json",
-      "at": "2026-07-07T10:45:14.916Z"
-    },
-    {
-      "id": "m178342111802910",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Contextual Policies in Omnigent: Using session state to better govern AI agents\" — javítva: Incomplete \"What this means for you\" section; Guide lacks specific instructions to apply the YAML rule; újraküldöm.",
-      "ref": "2026-07-07T02-01-14-878Z_databricks_Contextual_Policies_in_Omnigent__Using_session_sta.json",
-      "at": "2026-07-07T10:45:18.029Z"
-    },
-    {
-      "id": "m17834211287328",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Salesforce Deepens Commitment to Switzerland with $1 Billion Investment to Accelerate Agentic AI Transformation\" — javítva: Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
-      "ref": "2026-07-07T10-44-55-042Z_salesforce_Salesforce_Deepens_Commitment_to_Switzerland_with_.json",
-      "at": "2026-07-07T10:45:28.732Z"
-    },
-    {
-      "id": "m178342113699870",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Contextual Policies in Omnigent: Using session state to better govern AI agents\" — mi a baj: Salvaged from a partial AI response.",
-      "ref": "2026-07-07T02-01-14-878Z_databricks_Contextual_Policies_in_Omnigent__Using_session_sta.json",
-      "at": "2026-07-07T10:45:36.998Z"
-    },
-    {
-      "id": "m178342114367293",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Salesforce Deepens Commitment to Switzerland with $1 Billion Investment to Accelerate Agentic AI Transformation\" — mi a baj: Salvaged from a partial AI response.",
-      "ref": "2026-07-07T10-44-55-042Z_salesforce_Salesforce_Deepens_Commitment_to_Switzerland_with_.json",
-      "at": "2026-07-07T10:45:43.672Z"
-    },
-    {
-      "id": "m178342115380112",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Automate basic email replies in Outlook with Meta AI\" — javítva: Beginner clarity too low (4/10): steps are vague or could mislead a first-time user; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
-      "ref": "GUIDE_automate-basic-email-replies-in-outlook-with-meta-ai.json",
-      "at": "2026-07-07T10:45:53.801Z"
-    },
-    {
-      "id": "m178342116591095",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Create AI‑generated meeting summaries directly in Apple Calendar\" — javítva: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
-      "ref": "GUIDE_create-ai-generated-meeting-summaries-directly-in-apple-cale.json",
-      "at": "2026-07-07T10:46:05.910Z"
-    },
-    {
-      "id": "m178342117631552",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Set up an AI‑driven daily habit tracker using Apple Intelligence\" — javítva: Beginner clarity too low (4/10): steps are vague or could mislead a first-time user; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
-      "ref": "GUIDE_set-up-an-ai-driven-daily-habit-tracker-using-apple-intellig.json",
-      "at": "2026-07-07T10:46:16.315Z"
-    },
-    {
-      "id": "m178342118626687",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Teach Alexa+ to read bedtime stories to kids\" — javítva: Beginner clarity too low (5/10): steps are vague or could mislead a first-time user; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
-      "ref": "GUIDE_teach-alexa-to-read-bedtime-stories-to-kids.json",
-      "at": "2026-07-07T10:46:26.266Z"
-    },
-    {
-      "id": "m178342119374785",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Automate basic email replies in Outlook with Meta AI\" — mi a baj: Beginner clarity too low (1/10): steps are vague or could mislead a first-time user",
-      "ref": "GUIDE_automate-basic-email-replies-in-outlook-with-meta-ai.json",
-      "at": "2026-07-07T10:46:33.747Z"
-    },
-    {
-      "id": "m178342120121079",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Create AI‑generated meeting summaries directly in Apple Calendar\" — mi a baj: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user",
-      "ref": "GUIDE_create-ai-generated-meeting-summaries-directly-in-apple-cale.json",
-      "at": "2026-07-07T10:46:41.210Z"
-    },
-    {
-      "id": "m17834212078076",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Set up an AI‑driven daily habit tracker using Apple Intelligence\" (?/10)",
-      "ref": "GUIDE_set-up-an-ai-driven-daily-habit-tracker-using-apple-intellig.json",
-      "at": "2026-07-07T10:46:47.807Z"
-    },
-    {
-      "id": "m178342121538632",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Teach Alexa+ to read bedtime stories to kids\" — mi a baj: Beginner clarity too low (5/10): steps are vague or could mislead a first-time user",
-      "ref": "GUIDE_teach-alexa-to-read-bedtime-stories-to-kids.json",
-      "at": "2026-07-07T10:46:55.386Z"
-    },
-    {
-      "id": "m178342122679587",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Automate basic email replies in Outlook with Meta AI\" — javítva: Beginner clarity too low (1/10): steps are vague or could mislead a first-time user; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
-      "ref": "GUIDE_automate-basic-email-replies-in-outlook-with-meta-ai.json",
-      "at": "2026-07-07T10:47:06.795Z"
-    },
-    {
-      "id": "m178342123879093",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Create AI‑generated meeting summaries directly in Apple Calendar\" — javítva: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
-      "ref": "GUIDE_create-ai-generated-meeting-summaries-directly-in-apple-cale.json",
-      "at": "2026-07-07T10:47:18.790Z"
-    },
-    {
-      "id": "m178342124859119",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Teach Alexa+ to read bedtime stories to kids\" — javítva: Beginner clarity too low (5/10): steps are vague or could mislead a first-time user; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
-      "ref": "GUIDE_teach-alexa-to-read-bedtime-stories-to-kids.json",
-      "at": "2026-07-07T10:47:28.591Z"
-    },
-    {
-      "id": "m178342125563610",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Automate basic email replies in Outlook with Meta AI\" (?/10)",
-      "ref": "GUIDE_automate-basic-email-replies-in-outlook-with-meta-ai.json",
-      "at": "2026-07-07T10:47:35.636Z"
-    },
-    {
-      "id": "m17834212629148",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Create AI‑generated meeting summaries directly in Apple Calendar\" — mi a baj: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user",
-      "ref": "GUIDE_create-ai-generated-meeting-summaries-directly-in-apple-cale.json",
-      "at": "2026-07-07T10:47:42.914Z"
-    },
-    {
-      "id": "m178342127057232",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Teach Alexa+ to read bedtime stories to kids\" — mi a baj: Beginner clarity too low (4/10): steps are vague or could mislead a first-time user",
-      "ref": "GUIDE_teach-alexa-to-read-bedtime-stories-to-kids.json",
-      "at": "2026-07-07T10:47:50.572Z"
-    },
-    {
-      "id": "m178342130088023",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Create AI‑generated meeting summaries directly in Apple Calendar\" — javítva: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
-      "ref": "GUIDE_create-ai-generated-meeting-summaries-directly-in-apple-cale.json",
-      "at": "2026-07-07T10:48:20.880Z"
-    },
-    {
-      "id": "m178342138140977",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Teach Alexa+ to read bedtime stories to kids\" — javítva: Beginner clarity too low (4/10): steps are vague or could mislead a first-time user; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
-      "ref": "GUIDE_teach-alexa-to-read-bedtime-stories-to-kids.json",
-      "at": "2026-07-07T10:49:41.409Z"
-    },
-    {
-      "id": "m178342138813929",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Create AI‑generated meeting summaries directly in Apple Calendar\" (?/10)",
-      "ref": "GUIDE_create-ai-generated-meeting-summaries-directly-in-apple-cale.json",
-      "at": "2026-07-07T10:49:48.139Z"
-    },
-    {
-      "id": "m178342139476024",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Teach Alexa+ to read bedtime stories to kids\" (?/10)",
-      "ref": "GUIDE_teach-alexa-to-read-bedtime-stories-to-kids.json",
-      "at": "2026-07-07T10:49:54.760Z"
-    },
-    {
-      "id": "m178342139574882",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "info",
-      "text": "A \"NVIDIA and Hugging Face Bring New Models and Frameworks\" hír a meglévő útmutatóra mutat: generate-ai-powered-email-replies-using-hugging-face-inferen",
-      "ref": "generate-ai-powered-email-replies-using-hugging-face-inferen",
-      "at": "2026-07-07T10:49:55.748Z"
-    },
-    {
-      "id": "m178342141105774",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 16 → 4/4/2 oszlop.",
-      "ref": "mobile",
-      "at": "2026-07-07T10:50:11.058Z"
-    },
-    {
-      "id": "m17834219041133",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
-      "ref": null,
-      "at": "2026-07-07T10:58:24.113Z"
-    },
-    {
-      "id": "m178344674734387",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Build a serverless image editing agent with Amazon Bedrock AgentCore harness\" — mi a baj: NO_H1: Nincs H1 (# Cím) a cikkben",
-      "ref": "2026-07-07T17-51-01-246Z_aws-ml_Build_a_serverless_image_editing_agent_with_Amazon.json",
-      "at": "2026-07-07T17:52:27.343Z"
-    },
-    {
-      "id": "m178344674735892",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Monitoring discriminative ML models using Amazon SageMaker AI with MLflow\" — mi a baj: NO_H1: Nincs H1 (# Cím) a cikkben",
-      "ref": "2026-07-07T17-51-01-246Z_aws-ml_Monitoring_discriminative_ML_models_using_Amazon_S.json",
-      "at": "2026-07-07T17:52:27.358Z"
-    },
-    {
-      "id": "m178344674737170",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Occupancy counting now available for Google Meet on Neat room hardware\" — mi a baj: NO_H1: Nincs H1 (# Cím) a cikkben",
-      "ref": "2026-07-07T17-51-01-246Z_google-workspace_Occupancy_counting_now_available_for_Google_Meet_o.json",
-      "at": "2026-07-07T17:52:27.371Z"
-    },
-    {
-      "id": "m178344677593273",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"MT-EditFlow: Reinforcement Learning for Multi-Turn Image Editing with Flow Matching\" — mi a baj: Salvaged from a partial AI response.",
-      "ref": "2026-07-07T17-51-02-626Z_apple-ml_MT-EditFlow__Reinforcement_Learning_for_Multi-Turn.json",
-      "at": "2026-07-07T17:52:55.932Z"
-    },
-    {
-      "id": "m178344679071087",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Meet the Next Generation of Builders: How They Work and What They’re Making\" — mi a baj: Salvaged from a partial AI response.",
-      "ref": "2026-07-07T17-51-02-626Z_salesforce_Meet_the_Next_Generation_of_Builders__How_They_Wor.json",
-      "at": "2026-07-07T17:53:10.710Z"
-    },
-    {
-      "id": "m178344680760792",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Salesforce Deepens Commitment to Switzerland with $1 Billion Investment to Accelerate Agentic AI Transformation\" — javítva: Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
-      "ref": "2026-07-07T10-44-55-042Z_salesforce_Salesforce_Deepens_Commitment_to_Switzerland_with_.json",
-      "at": "2026-07-07T17:53:27.607Z"
-    },
-    {
-      "id": "m178344681592636",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Build a serverless image editing agent with Amazon Bedrock AgentCore harness\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; Reviewer verdict: Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben; újraküldöm.",
-      "ref": "2026-07-07T17-51-01-246Z_aws-ml_Build_a_serverless_image_editing_agent_with_Amazon.json",
-      "at": "2026-07-07T17:53:35.926Z"
-    },
-    {
-      "id": "m178344682491961",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Monitoring discriminative ML models using Amazon SageMaker AI with MLflow\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; Reviewer verdict: Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben; újraküldöm.",
-      "ref": "2026-07-07T17-51-01-246Z_aws-ml_Monitoring_discriminative_ML_models_using_Amazon_S.json",
-      "at": "2026-07-07T17:53:44.919Z"
-    },
-    {
-      "id": "m17834468336053",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Occupancy counting now available for Google Meet on Neat room hardware\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; Reviewer verdict: Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben; újraküldöm.",
-      "ref": "2026-07-07T17-51-01-246Z_google-workspace_Occupancy_counting_now_available_for_Google_Meet_o.json",
-      "at": "2026-07-07T17:53:53.605Z"
-    },
-    {
-      "id": "m178344684881825",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"MT-EditFlow: Reinforcement Learning for Multi-Turn Image Editing with Flow Matching\" — javítva: Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
-      "ref": "2026-07-07T17-51-02-626Z_apple-ml_MT-EditFlow__Reinforcement_Learning_for_Multi-Turn.json",
-      "at": "2026-07-07T17:54:08.818Z"
-    },
-    {
-      "id": "m178344686202363",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Meet the Next Generation of Builders: How They Work and What They’re Making\" — javítva: Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
-      "ref": "2026-07-07T17-51-02-626Z_salesforce_Meet_the_Next_Generation_of_Builders__How_They_Wor.json",
-      "at": "2026-07-07T17:54:22.023Z"
-    },
-    {
-      "id": "m178344686904212",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Salesforce Deepens Commitment to Switzerland with $1 Billion Investment to Accelerate Agentic AI Transformation\" — mi a baj: Salvaged from a partial AI response.",
-      "ref": "2026-07-07T10-44-55-042Z_salesforce_Salesforce_Deepens_Commitment_to_Switzerland_with_.json",
-      "at": "2026-07-07T17:54:29.042Z"
-    },
-    {
-      "id": "m178344687637472",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Build a serverless image editing agent with Amazon Bedrock AgentCore harness\" — mi a baj: Salvaged from a partial AI response.",
-      "ref": "2026-07-07T17-51-01-246Z_aws-ml_Build_a_serverless_image_editing_agent_with_Amazon.json",
-      "at": "2026-07-07T17:54:36.374Z"
-    },
-    {
-      "id": "m178344688264769",
+      "id": "m17833964489678",
       "from": "ellenorzo",
       "to": "iro",
       "kind": "info",
-      "text": "Rendben ✓ átment: \"Monitoring discriminative ML models using Amazon SageMaker AI with MLflow\" (?/10)",
-      "ref": "2026-07-07T17-51-01-246Z_aws-ml_Monitoring_discriminative_ML_models_using_Amazon_S.json",
-      "at": "2026-07-07T17:54:42.647Z"
+      "text": "Rendben ✓ átment: \"Evaluating performance and efficiency of the GitHub Copilot agentic harness across models and tasks\" (?/10)",
+      "ref": "2026-06-26T02-12-21-214Z_github-ai_Evaluating_performance_and_efficiency_of_the_GitHu.json",
+      "at": "2026-07-07T03:54:08.967Z"
     },
     {
-      "id": "m178344688827223",
+      "id": "m178339645437395",
       "from": "ellenorzo",
       "to": "iro",
       "kind": "info",
-      "text": "Rendben ✓ átment: \"Occupancy counting now available for Google Meet on Neat room hardware\" (?/10)",
-      "ref": "2026-07-07T17-51-01-246Z_google-workspace_Occupancy_counting_now_available_for_Google_Meet_o.json",
-      "at": "2026-07-07T17:54:48.272Z"
+      "text": "Rendben ✓ átment: \"Streamline your data backups with incremental exports for Google Workspace\" (?/10)",
+      "ref": "2026-06-27T02-07-24-541Z_google-workspace_Streamline_your_data_backups_with_incremental_expo.json",
+      "at": "2026-07-07T03:54:14.373Z"
     },
     {
-      "id": "m178344689564965",
+      "id": "m178339646164291",
       "from": "ellenorzo",
       "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"MT-EditFlow: Reinforcement Learning for Multi-Turn Image Editing with Flow Matching\" — mi a baj: Salvaged from a partial AI response.",
-      "ref": "2026-07-07T17-51-02-626Z_apple-ml_MT-EditFlow__Reinforcement_Learning_for_Multi-Turn.json",
-      "at": "2026-07-07T17:54:55.649Z"
-    },
-    {
-      "id": "m178344690339273",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Meet the Next Generation of Builders: How They Work and What They’re Making\" — mi a baj: Salvaged from a partial AI response.",
-      "ref": "2026-07-07T17-51-02-626Z_salesforce_Meet_the_Next_Generation_of_Builders__How_They_Wor.json",
-      "at": "2026-07-07T17:55:03.392Z"
-    },
-    {
-      "id": "m178344697130193",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 16 → 4/4/2 oszlop.",
-      "ref": "mobile",
-      "at": "2026-07-07T17:56:11.301Z"
-    },
-    {
-      "id": "m178344752209670",
-      "from": "social",
-      "to": "team",
       "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
-      "ref": null,
-      "at": "2026-07-07T18:05:22.096Z"
+      "text": "Rendben ✓ átment: \"Previewing GPT-5.6 Sol: a next-generation model\" (?/10)",
+      "ref": "2026-06-27T02-07-24-541Z_openai-blog_Previewing_GPT-5_6_Sol__a_next-generation_model.json",
+      "at": "2026-07-07T03:54:21.642Z"
+    },
+    {
+      "id": "m178339647073070",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"How Cara pioneers domain-specific AI for enterprise insurance brokerages with AWS\" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "2026-06-27T02-07-24-542Z_aws-ml_How_Cara_pioneers_domain-specific_AI_for_enterpris.json",
+      "at": "2026-07-07T03:54:30.730Z"
+    },
+    {
+      "id": "m178339647869513",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Production-grade AI agents for financial compliance: Lessons from Stripe\" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "2026-06-27T02-07-24-542Z_aws-ml_Production-grade_AI_agents_for_financial_complianc.json",
+      "at": "2026-07-07T03:54:38.695Z"
+    },
+    {
+      "id": "m178339648532629",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Check out real-life AI prototypes from the Futures Lab.\" (?/10)",
+      "ref": "2026-06-29T02-29-25-986Z_google-ai-blog_Check_out_real-life_AI_prototypes_from_the_Futures.json",
+      "at": "2026-07-07T03:54:45.327Z"
+    },
+    {
+      "id": "m178339649249145",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Measuring the impact of learning with AI in Sierra Leone and beyond\" (?/10)",
+      "ref": "2026-06-29T02-29-25-986Z_google-deepmind_Measuring_the_impact_of_learning_with_AI_in_Sierra.json",
+      "at": "2026-07-07T03:54:52.491Z"
+    },
+    {
+      "id": "m178339649925234",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"HP Inc. launches Frontier strategic partnership with OpenAI\" (?/10)",
+      "ref": "2026-06-29T02-29-25-986Z_openai-blog_HP_Inc__launches_Frontier_strategic_partnership_wi.json",
+      "at": "2026-07-07T03:54:59.252Z"
+    },
+    {
+      "id": "m178339650579981",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Costa Rican dairy cooperative turns AI agents into coworkers\" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "2026-06-29T02-29-25-987Z_microsoft-ai_Costa_Rican_dairy_cooperative_turns_AI_agents_into.json",
+      "at": "2026-07-07T03:55:05.799Z"
+    },
+    {
+      "id": "m178339651309249",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Pairing geotechnical data with AI helps New Zealand build better\" (?/10)",
+      "ref": "2026-06-29T02-29-25-987Z_microsoft-ai_Pairing_geotechnical_data_with_AI_helps_New_Zealan.json",
+      "at": "2026-07-07T03:55:13.092Z"
+    },
+    {
+      "id": "m178339651989886",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Work smarter in 90 days: A real-world guide to using AI\" — mi a baj: Missing instructions to access AI tools; Some common phrases used; Clarity for complete beginners needs improvement",
+      "ref": "2026-06-29T02-29-25-987Z_microsoft-ai_Work_smarter_in_90_days__A_real-world_guide_to_usi.json",
+      "at": "2026-07-07T03:55:19.898Z"
+    },
+    {
+      "id": "m178339652819353",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"From Materials Simulation to Experimental Astronomy, New NVIDIA AI Software Unlocks Scientific Discoveries\" (?/10)",
+      "ref": "2026-06-29T02-29-25-987Z_nvidia-blog_From_Materials_Simulation_to_Experimental_Astronom.json",
+      "at": "2026-07-07T03:55:28.193Z"
+    },
+    {
+      "id": "m178339653557445",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Time to Speak Some Dialects, Qwen-TTS!\" (?/10)",
+      "ref": "2026-06-29T02-29-27-067Z_alibaba-qwen_Time_to_Speak_Some_Dialects__Qwen-TTS_.json",
+      "at": "2026-07-07T03:55:35.574Z"
+    },
+    {
+      "id": "m178339654280312",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Connect the dots: Build with built-in and custom MCPs in Studio\" (?/10)",
+      "ref": "2026-06-29T02-29-27-067Z_mistral-ai_Connect_the_dots__Build_with_built-in_and_custom_M.json",
+      "at": "2026-07-07T03:55:42.803Z"
+    },
+    {
+      "id": "m178339654943423",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Remote agents in Vibe. Powered by Mistral Medium 3.5.\" (?/10)",
+      "ref": "2026-06-29T02-29-27-067Z_mistral-ai_Remote_agents_in_Vibe__Powered_by_Mistral_Medium_3.json",
+      "at": "2026-07-07T03:55:49.434Z"
+    },
+    {
+      "id": "m178339655626082",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Qwen3 Embedding: Advancing Text Embedding and Reranking Through Foundation Models\" (?/10)",
+      "ref": "2026-06-29T02-29-42-864Z_alibaba-qwen_Qwen3_Embedding__Advancing_Text_Embedding_and_Rera.json",
+      "at": "2026-07-07T03:55:56.260Z"
+    },
+    {
+      "id": "m178339656196197",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Qwen3: Think Deeper, Act Faster\" (?/10)",
+      "ref": "2026-06-29T02-29-42-864Z_alibaba-qwen_Qwen3__Think_Deeper__Act_Faster.json",
+      "at": "2026-07-07T03:56:01.961Z"
+    },
+    {
+      "id": "m178339656823566",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Ask an AI expert: What exactly is the full stack?\" (?/10)",
+      "ref": "2026-06-30T16-43-12-110Z_google-ai-blog_Ask_an_AI_expert__What_exactly_is_the_full_stack_.json",
+      "at": "2026-07-07T03:56:08.235Z"
+    },
+    {
+      "id": "m178339657532640",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"How NVIDIA’s Inference Software Stack Powers the Lowest Token Cost\" (?/10)",
+      "ref": "2026-06-30T16-43-12-110Z_nvidia-blog_How_NVIDIA_s_Inference_Software_Stack_Powers_the_L.json",
+      "at": "2026-07-07T03:56:15.326Z"
+    },
+    {
+      "id": "m178339658107866",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Mapping Europe’s AI Workforce Opportunity\" (?/10)",
+      "ref": "2026-06-30T16-43-12-110Z_openai-blog_Mapping_Europe_s_AI_Workforce_Opportunity.json",
+      "at": "2026-07-07T03:56:21.078Z"
+    },
+    {
+      "id": "m178339658854584",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Create fully native and editable presentations with Gemini in Google Slides\" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "2026-06-30T16-43-13-543Z_google-workspace_Create_fully_native_and_editable_presentations_wit.json",
+      "at": "2026-07-07T03:56:28.545Z"
+    },
+    {
+      "id": "m178339659323351",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Data regions support for the Gemini app now available \" (?/10)",
+      "ref": "2026-06-30T16-43-13-543Z_google-workspace_Data_regions_support_for_the_Gemini_app_now_availa.json",
+      "at": "2026-07-07T03:56:33.233Z"
+    },
+    {
+      "id": "m178339659807763",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Claude Meets Blackwell Ultra: Anthropic’s Models Now Run on NVIDIA GB300 in Azure\" (?/10)",
+      "ref": "2026-06-30T16-43-13-543Z_nvidia-blog_Claude_Meets_Blackwell_Ultra__Anthropic_s_Models_N.json",
+      "at": "2026-07-07T03:56:38.077Z"
+    },
+    {
+      "id": "m178339660348274",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Open Models, Closed Environments: Palantir Brings Secure AI to US Agencies With NVIDIA Nemotron\" (?/10)",
+      "ref": "2026-06-30T16-43-13-543Z_nvidia-blog_Open_Models__Closed_Environments__Palantir_Brings_.json",
+      "at": "2026-07-07T03:56:43.482Z"
+    },
+    {
+      "id": "m178339661050997",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"New York City educators and industry leaders gathered at Google’s offices to shape the future of AI in classrooms.\" (?/10)",
+      "ref": "2026-07-01T17-46-16-620Z_google-ai-blog_New_York_City_educators_and_industry_leaders_gathe.json",
+      "at": "2026-07-07T03:56:50.509Z"
+    },
+    {
+      "id": "m178339661760149",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"New AI-powered library lets people meet Theodore Roosevelt in a whole new way \" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "2026-07-01T17-46-16-620Z_microsoft-ai_New_AI-powered_library_lets_people_meet_Theodore_R.json",
+      "at": "2026-07-07T03:56:57.601Z"
+    },
+    {
+      "id": "m178339662509938",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Run NVIDIA Nemotron and OpenAI GPT OSS models on Amazon Bedrock in AWS GovCloud (US)\" (?/10)",
+      "ref": "2026-07-02T02-09-20-689Z_aws-ml_Run_NVIDIA_Nemotron_and_OpenAI_GPT_OSS_models_on_A.json",
+      "at": "2026-07-07T03:57:05.099Z"
+    },
+    {
+      "id": "m17833966303908",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"The latest AI news we announced in June 2026\" (?/10)",
+      "ref": "2026-07-02T02-09-20-689Z_google-ai-blog_The_latest_AI_news_we_announced_in_June_2026.json",
+      "at": "2026-07-07T03:57:10.390Z"
+    },
+    {
+      "id": "m178339663765940",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Why the Data Platform Determines Legal AI Outcomes\" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "2026-07-02T02-10-03-889Z_snowflake_Why_the_Data_Platform_Determines_Legal_AI_Outcomes.json",
+      "at": "2026-07-07T03:57:17.659Z"
+    },
+    {
+      "id": "m178339664495564",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"How Snowflake Built an AI-Native Marketing Team\" (?/10)",
+      "ref": "2026-07-02T02-10-03-890Z_snowflake_How_Snowflake_Built_an_AI-Native_Marketing_Team.json",
+      "at": "2026-07-07T03:57:24.955Z"
+    },
+    {
+      "id": "m178339665247995",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"The Agentic Enterprise: AI Governance for Marketing Leaders\" (?/10)",
+      "ref": "2026-07-02T02-10-03-890Z_snowflake_The_Agentic_Enterprise__AI_Governance_for_Marketin.json",
+      "at": "2026-07-07T03:57:32.479Z"
+    },
+    {
+      "id": "m178339665932611",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Kimi K2.7 Code vs Claude Fable 5: Landing pages that cost 94% less\" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "2026-07-02T02-10-03-890Z_together_Kimi_K2_7_Code_vs_Claude_Fable_5__Landing_pages_th.json",
+      "at": "2026-07-07T03:57:39.326Z"
+    },
+    {
+      "id": "m17833966650128",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Turn Azure Data into an AI-Ready Knowledge Base\" (?/10)",
+      "ref": "2026-07-02T02-10-10-166Z_pinecone_Turn_Azure_Data_into_an_AI-Ready_Knowledge_Base.json",
+      "at": "2026-07-07T03:57:45.012Z"
+    },
+    {
+      "id": "m178339667238875",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Violin: An open-source video translation skill that breaks language barriers\" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "2026-07-02T02-10-10-166Z_together_Violin__An_open-source_video_translation_skill_tha.json",
+      "at": "2026-07-07T03:57:52.388Z"
+    },
+    {
+      "id": "m178339667953327",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Running AI on mixed hardware for speed and affordability\" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "2026-07-02T02-10-15-027Z_ibm_Running_AI_on_mixed_hardware_for_speed_and_afforda.json",
+      "at": "2026-07-07T03:57:59.533Z"
     }
   ]
 }

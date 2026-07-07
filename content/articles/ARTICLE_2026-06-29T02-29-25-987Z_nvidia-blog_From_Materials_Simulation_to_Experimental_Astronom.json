@@ -8,28 +8,30 @@
     "source_id": "nvidia-blog",
     "source_name": "NVIDIA Blog (hivatalos)",
     "source_link": "https://blogs.nvidia.com/blog/ai-for-science-software-cuda/",
-    "status": "rejected",
-    "rejected_at": "2026-07-02T02:11:36.150Z",
+    "status": "published",
     "auto_check": {
       "passed": true,
       "issues": [],
       "wordCount": 608
     },
-    "ai_review": {
-      "overall_score": 0,
-      "decision": "FAIL",
-      "issues": [
-        "AI response JSON parse error after retries: AI router null"
-      ],
-      "verdict": "Could not parse AI review (2 attempts)",
-      "_aiCost": 0,
-      "_parseFailed": true
-    },
-    "reason": "Could not parse AI review (2 attempts)",
     "can_retry": true,
     "rework_attempts": 2,
     "reworked_from": "REJECTED_2026-06-29T02-29-25-987Z_nvidia-blog_From_Materials_Simulation_to_Experimental_Astronom.json",
-    "requeued_unchanged": true
+    "requeued_unchanged": true,
+    "published_at": "2026-06-29T02:29:25.000Z",
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "The article effectively explains a complex topic in an engaging and accessible way, aligning perfectly with",
+      "_salvaged": true,
+      "_aiCost": 0.0042645,
+      "_provider": "google",
+      "_model": "gemini-2.5-flash",
+      "_attempts": 1
+    },
+    "date_note": "published_at = eredeti forrás-dátum (2026-07-07 mentőakció: router-hiba miatt tévesen elutasított cikkek)"
   },
   "article_markdown": "---\ntitle: \"How AI is Speeding Up the Search for New Materials and Scientific Discoveries\"\nsubtitle: \"From better smartphone batteries to sustainable plastics, smart algorithms are running virtual science labs at lightning speed.\"\ncategory: \"explainers\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"scientific-ai\", \"future-tech\", \"getting-started\"]\n---\n\n# How AI is Speeding Up the Search for New Materials and Scientific Discoveries\n\nWhen you plug in your smartphone or put on a pair of lightweight running shoes, you are using physical materials that took scientists years of slow, trial-and-error laboratory experiments to create. Today, smart algorithms (the step-by-step instructions that tell a computer how to solve a problem) are stepping into the lab to compress decades of scientific research into just a few days.\n\nThis shift is changing how we discover everything from greener concrete to next-generation energy storage. Here is a look at how this technology works and how it is quietly shaping the physical objects around us.\n\n## The virtual science lab\n\nIn a traditional laboratory, finding a new material means mixing chemicals, heating them up, and seeing what happens. If the mixture fails, the researcher must start again from scratch. It is a slow, expensive process.\n\nWith modern computing, scientists can now run simulations (virtual experiments run on computers to test how things work before making them in real life). \n\nUsing neural networks (computer systems designed to mimic how the human brain learns patterns), AI can predict how billions of chemical combinations will behave in seconds. The AI acts like a digital sieve, filtering out the millions of combinations that will not work and leaving scientists with a small, highly promising shortlist to test in the physical world.\n\n## Where AI is making a difference right now\n\nThis technology is already leaving the realm of science fiction and delivering practical results in several key areas:\n\n*   **Better batteries:** Researchers are using AI to find new chemical mixes for electric car and home batteries. The goal is to design batteries that charge faster, hold more power, and rely less on scarce minerals.\n*   **Eco-friendly materials:** Chemical engineers are searching for stronger, lighter plastics that break down naturally in the environment instead of sitting in landfills for centuries.\n*   **Stargazing and physics:** Astronomers use smart software to sift through millions of images from giant telescopes, spotting faint stars and helping us understand the outer edges of our universe.\n\n## What this means for you\n\n- **In everyday life**: You can expect the everyday products you buy to improve at a faster rate. Over the coming years, this will likely translate into longer-lasting phone batteries, more efficient solar panels for your home, and smarter, biodegradable packaging on your groceries.\n- **For your business or work**: If you work in construction, manufacturing, or product design, keep a close eye on new sustainable materials hitting the market. AI-driven discoveries are making eco-friendly alternatives cheaper and more durable, which could help your business meet green targets without raising costs.\n- **If you're just getting started**: You do not need a science degree to explore this space. You can follow along with these developments by subscribing to general science newsletters or reading public-access science blogs that highlight how computing is solving real-world puzzles.\n\n## Wrap-up\n\nWhile AI in science happens behind the scenes in universities and high-tech labs, the practical outcomes will soon be sitting on our kitchen benches and parked in our driveways. To see a simple version of this technology in action today, search online for a free interactive molecule viewer in your web browser, which lets you rotate and explore the three-dimensional structures of the chemical building blocks that make up our world.",
   "original_title": "From Materials Simulation to Experimental Astronomy, New NVIDIA AI Software Unlocks Scientific Discoveries"

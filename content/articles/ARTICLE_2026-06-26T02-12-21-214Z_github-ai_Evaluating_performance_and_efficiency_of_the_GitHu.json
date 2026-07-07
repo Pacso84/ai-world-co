@@ -8,28 +8,29 @@
     "source_id": "github-ai",
     "source_name": "GitHub AI & ML (hivatalos)",
     "source_link": "https://github.blog/ai-and-ml/github-copilot/evaluating-performance-and-efficiency-of-the-github-copilot-agentic-harness-across-models-and-tasks/",
-    "status": "rejected",
-    "rejected_at": "2026-07-02T17:27:22.871Z",
+    "status": "published",
     "auto_check": {
       "passed": true,
       "issues": [],
       "wordCount": 921
     },
-    "ai_review": {
-      "overall_score": 0,
-      "decision": "FAIL",
-      "issues": [
-        "AI response JSON parse error after retries: AI router null"
-      ],
-      "verdict": "Could not parse AI review (2 attempts)",
-      "_aiCost": 0,
-      "_parseFailed": true
-    },
-    "reason": "Could not parse AI review (2 attempts)",
     "can_retry": true,
     "rework_attempts": 2,
     "reworked_from": "REJECTED_2026-06-26T02-12-21-214Z_github-ai_Evaluating_performance_and_efficiency_of_the_GitHu.json",
-    "requeued_unchanged": true
+    "requeued_unchanged": true,
+    "published_at": "2026-06-26T02:12:21.000Z",
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "This article is excellent; it perfectly aligns with the brand voice and audience, explaining complex AI concepts clearly and engagingly. All structural and content requirements have been met, making it ready for publication.",
+      "_aiCost": 0.0039216,
+      "_provider": "google",
+      "_model": "gemini-2.5-flash",
+      "_attempts": 1
+    },
+    "date_note": "published_at = eredeti forrás-dátum (2026-07-07 mentőakció: router-hiba miatt tévesen elutasított cikkek)"
   },
   "article_markdown": "---\ntitle: \"Your Smart Coding Partner: How AI Code Assistants Go Beyond Autocomplete\"\nsubtitle: \"Discover how advanced AI code assistants can help you with coding tasks, from small website tweaks to automating spreadsheets, even if you're not a developer.\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"ai-coding\", \"productivity\", \"getting-started\", \"automation\"]\n---\n\n# Your Smart Coding Partner: How AI Code Assistants Go Beyond Autocomplete\n\nHave you ever looked at a simple coding task – maybe updating a little bit of text on a website, or wanting to automate a repetitive action in a spreadsheet – and wished you had a coding buddy to help out? Good news: advanced AI code assistants are becoming that smart partner, moving beyond just suggesting the next word to helping you tackle bigger, multi-step coding problems.\n\n## What is an AI Code Assistant?\n\nYou might already be familiar with AI helping you write emails or summarise documents. An AI code assistant, like GitHub Copilot, applies similar intelligence to programming. In its simplest form, it's like an incredibly smart autocomplete for your code. As you type, it suggests lines or even entire blocks of code based on what it thinks you're trying to achieve.\n\nBut the latest versions are more sophisticated. They're becoming \"agentic,\" which means they can act more like a project manager for your code. Instead of just guessing the next few characters, they try to understand your overall goal – \"I want a script that organises my photos by date\" – and then work through the steps needed to build that solution. They can draw on different AI \"smarts\" to understand the problem, suggest different ways to solve it, and even fix errors as you go.\n\n## How these smart assistants work for you\n\nImagine you're trying to achieve a specific outcome, but you don't know the exact code to write. Here's how an advanced AI code assistant helps:\n\n1.  **Understanding your intent**: You describe your task in plain language, like \"I need a simple web page with a contact form that sends emails to my address.\" The AI doesn't just wait for you to start typing HTML; it understands the *concept* of a contact form.\n2.  **Breaking down the problem**: It then mentally (or digitally!) breaks your request into smaller coding steps: create an HTML form, add fields, style it with CSS, and then write some JavaScript or backend code to handle sending the email.\n3.  **Generating code (and options)**: It provides the code for each step, often offering different approaches. It might even suggest using a common library (a pre-written collection of code functions) to make things easier.\n4.  **Debugging and refining**: If the code doesn't work right, or you want to change something, you can tell the AI, and it will help you find the problem or adjust the solution. It's like having a patient tutor who points out mistakes and helps you learn from them.\n\nThis means you don't have to be a coding expert to get started. The AI handles a lot of the heavy lifting, translating your plain-language requests into functional code.\n\n## Practical ways everyday people can use them\n\nYou might think coding is just for software engineers, but many everyday tasks can benefit from a touch of code:\n\n*   **Quick website updates**: Need to add a new section, change a button's colour, or embed a video on your personal blog or small business website? Describe what you want, and the AI can generate the HTML, CSS, or even a basic JavaScript snippet.\n*   **Automating data tasks**: If you regularly work with spreadsheets, an AI can help you write small scripts (often in a language like Python) to clean up data, extract specific information, or automate repetitive reporting tasks.\n*   **Learning to code**: If you're keen to pick up a new skill, these assistants are invaluable. They can provide code examples, explain complex concepts, and even help you solve coding challenges, making the learning curve much smoother.\n*   **Fixing small issues**: Found a script online for a personal project or a work task, but it's not quite working? Paste it into the AI and ask it to find the bug (an error in the code) or suggest improvements.\n\n## What this means for you\n\n*   **In everyday life**: You can finally tackle those small tech projects you've put off. Want to build a simple digital dashboard for your smart home, or automate how your digital photos are organised? An AI code assistant can be your guide, turning vague ideas into real-world tools.\n*   **For your business or work**: Small business owners can become more self-sufficient, making quick updates to their website, creating simple automation scripts for marketing tasks, or customising reports without needing to hire a full-time developer for every small change.\n*   **If you're just getting started**: Don't be intimidated by the idea of coding. Think of these AI tools as a bridge. Start with a simple project you're interested in, describe your goal to the AI, and let it guide you through the process. You'll be surprised at how quickly you can build something useful.\n\n## Wrap-up\n\nThe evolution of AI code assistants from simple autocomplete to smart, \"agentic\" partners is making coding more accessible than ever. Whether you're looking to automate a chore, spruce up a website, or just learn a new skill, these tools can empower you to bring your ideas to life with code. Why not try describing a small coding project to an AI assistant today and see what you can create?",
   "original_title": "Evaluating performance and efficiency of the GitHub Copilot agentic harness across models and tasks"

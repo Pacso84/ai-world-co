@@ -9,27 +9,29 @@
     "source_name": "Snowflake Blog (hivatalos)",
     "source_link": "https://www.snowflake.com/content/snowflake-site/global/en/blog/data-platform-legal-ai-outcomes",
     "status": "rejected",
-    "rejected_at": "2026-07-02T10:41:30.753Z",
     "auto_check": {
       "passed": true,
       "issues": [],
       "wordCount": 591
     },
-    "ai_review": {
-      "overall_score": 0,
-      "decision": "FAIL",
-      "issues": [
-        "AI response JSON parse error after retries: AI router null"
-      ],
-      "verdict": "Could not parse AI review (2 attempts)",
-      "_aiCost": 0,
-      "_parseFailed": true
-    },
-    "reason": "Could not parse AI review (2 attempts)",
     "can_retry": true,
     "rework_attempts": 2,
     "reworked_from": "REJECTED_2026-07-02T02-10-03-889Z_snowflake_Why_the_Data_Platform_Determines_Legal_AI_Outcomes.json",
-    "requeued_unchanged": true
+    "requeued_unchanged": true,
+    "rejected_at": "2026-07-07T03:57:17.641Z",
+    "ai_review": {
+      "overall_score": 6,
+      "clarity_score": 6,
+      "decision": "FAIL",
+      "issues": [],
+      "verdict": "Salvaged from a partial AI response.",
+      "_salvaged": true,
+      "_aiCost": 0.004287399999999999,
+      "_provider": "google",
+      "_model": "gemini-2.5-flash",
+      "_attempts": 1
+    },
+    "reason": "Salvaged from a partial AI response."
   },
   "article_markdown": "---\ntitle: \"How to Build Your Own AI-Powered Knowledge Base Without Coding\"\nsubtitle: \"Turn messy notes, emails, and articles into a searchable AI assistant in under an hour\"\ncategory: \"how-to\"\naudience: \"personal\"\nread_time_minutes: 6\ntags: [\"ai-tools\", \"knowledge-management\", \"organisation\", \"productivity\", \"getting-started\"]\n---\n\n# How to Build Your Own AI-Powered Knowledge Base Without Coding\n\nYou’ve probably saved a dozen articles, copied a few emails, and scribbled notes on napkins — only to forget where you put them. What if you could ask an AI, “Where did I see that thing about composting in the garden?” and get the exact paragraph back?\n\nThat’s what a personal knowledge base does. And with today’s AI tools, you can build one without writing a single line of code.\n\n---\n\n## Start with a simple folder of files\n\nThink of your knowledge base as a digital filing cabinet. You don’t need fancy software — just a folder on your computer or in the cloud.\n\n1. **Create a folder** called “My AI Notes” on your desktop or in Google Drive.\n2. **Drag in** any text files, PDFs, Word docs, or even screenshots saved as images.\n3. **Add a “README.txt”** file at the top with one sentence: “This folder contains everything I’ve learned about gardening, travel, and home repairs.”\n\nThat’s it. No structure needed yet — the AI will help you search later.\n\n---\n\n## Pick an AI tool that reads your files\n\nNot all AI tools can read your documents. You need one that supports **RAG (Retrieval-Augmented Generation)** — a fancy way of saying the AI can look up facts in your files before answering.\n\nHere are three beginner-friendly options:\n\n- **Google Drive + Gemini**: Upload your folder to Google Drive, open a chat in Gemini, and paste a link to the folder.\n- **Notion + Notion AI**: Create a Notion page, paste your notes, and use Notion’s built-in AI search.\n- **Obsidian + Copilot**: Install the Obsidian app, drop your files into a vault, and enable the AI plugin.\n\nEach tool works differently, but they all do the same thing: let you ask questions about your own notes.\n\n---\n\n## Ask your AI questions like a librarian\n\nOnce your files are connected, try asking:\n\n- “What did I write about composting in March?”\n- “Summarise the key points from the email about the plumbing repair.”\n- “List all the travel tips I saved from last year.”\n\nThe AI scans your files and pulls the relevant text. It’s like having a librarian who knows every word you’ve ever saved.\n\n**Pro tip**: Start with short, specific questions. Instead of “Tell me about gardening,” try “What’s the best time to plant tomatoes in Melbourne?”\n\n---\n\n## What this means for you\n\n- **If you’re a student**: Keep lecture notes, assignment drafts, and research articles in one folder. Ask the AI, “What did the professor say about photosynthesis?” during exam prep.\n- **If you’re a parent**: Save kids’ school newsletters, activity schedules, and party ideas in one place. Ask, “When is the next school excursion?” and get the exact date.\n- **If you’re just getting started**: Pick one topic you care about (cooking, fitness, DIY) and build a tiny knowledge base. Add 5 files and try one question today.\n\n---\n\n## Wrap-up\n\nYou don’t need to be tech-savvy to build an AI-powered knowledge base. Start with a folder, connect it to an AI tool that reads files, and ask questions like you’re talking to a helpful librarian. Try it today: create a folder, add one file, and ask the AI one question.",
   "original_title": "Why the Data Platform Determines Legal AI Outcomes"

@@ -8,28 +8,29 @@
     "source_id": "google-ai-blog",
     "source_name": "Google AI (hivatalos, blog.google)",
     "source_link": "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-june-2026/",
-    "status": "rejected",
-    "rejected_at": "2026-07-02T17:27:23.022Z",
+    "status": "published",
     "auto_check": {
       "passed": true,
       "issues": [],
       "wordCount": 718
     },
-    "ai_review": {
-      "overall_score": 0,
-      "decision": "FAIL",
-      "issues": [
-        "AI response JSON parse error after retries: AI router null"
-      ],
-      "verdict": "Could not parse AI review (2 attempts)",
-      "_aiCost": 0,
-      "_parseFailed": true
-    },
-    "reason": "Could not parse AI review (2 attempts)",
     "can_retry": true,
     "rework_attempts": 2,
     "reworked_from": "REJECTED_2026-07-02T02-09-20-689Z_google-ai-blog_The_latest_AI_news_we_announced_in_June_2026.json",
-    "requeued_unchanged": true
+    "requeued_unchanged": true,
+    "published_at": "2026-07-02T02:09:20.000Z",
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "The article effectively explains how AI models improve and offers practical tips for users. It adheres to brand voice, audience fit, and structural requirements without prohibited content or clichés.",
+      "_aiCost": 0.0031288,
+      "_provider": "google",
+      "_model": "gemini-2.5-flash",
+      "_attempts": 1
+    },
+    "date_note": "published_at = eredeti forrás-dátum (2026-07-07 mentőakció: router-hiba miatt tévesen elutasított cikkek)"
   },
   "article_markdown": "---\ntitle: \"How AI Models Keep Getting Smarter (And How to Use Their Updates)\"\nsubtitle: \"Discover why your AI tools improve over time and simple ways to take advantage of their growing abilities.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"ai-updates\", \"productivity\", \"getting-started\"]\n---\n\n# How AI Models Keep Getting Smarter (And How to Use Their Updates)\n\nHave you ever noticed your go-to AI tool suddenly writes a more polished email draft or summarises a long article with perfect key points? That’s not a coincidence—it’s the result of ongoing updates behind the scenes. These improvements happen quietly, like software updates on your phone, and they’re designed to make AI more helpful, accurate, and versatile in your daily life.\n\n## Why AI models evolve over time\n\nThink of an AI model, like Google’s Gemini, as a student who never stops learning. Developers regularly feed it new information, fine-tune its internal structure (the way it processes and understands language), and teach it new skills. This continuous learning process is what keeps AI dynamic and improving.\n\nThese updates aren’t just about flashy new features. They focus on four key areas:\n\n*   **Accuracy:** Reducing “hallucinations” (when AI confidently makes something up) and improving the reliability of answers.\n*   **Understanding:** Getting better at grasping complex instructions and nuances in your language.\n*   **Efficiency:** Speeding up responses and handling larger, more detailed requests smoothly.\n*   **New Capabilities:** Adding skills like processing images alongside text (multimodal AI) or integrating with tools you already use.\n\n## How to spot these improvements in your everyday apps\n\nMany AI providers roll out updates in the background, so you might not see a big announcement. Instead, you’ll notice small but meaningful changes in how the AI behaves.\n\nFor example, your AI might now:\n\n*   Write clearer, more professional email drafts with less editing needed.\n*   Summarise long documents with sharper key points and better context.\n*   Generate more accurate answers by pulling from up-to-date information.\n*   Handle more complex tasks, like comparing options or creating detailed plans.\n\nThe key is to keep experimenting. What worked six months ago might not be the most effective way today, because the AI’s capabilities have likely expanded.\n\n## Practical ways to make the most of an evolving AI\n\nTo truly benefit from these updates, try these simple approaches:\n\n1.  **Revisit old prompts:** If an AI struggled with a specific task before, try the same prompt again. The model may have improved its understanding and ability to deliver.\n2.  **Explore built-in features:** Many AI tools are already integrated into apps you use daily. Check for new AI-powered writing, summarising, or image tools in services like Google Docs or Gmail.\n3.  **Ask for more detail:** As AI becomes more powerful, it can handle richer instructions. Instead of a simple request, ask for a detailed plan, a comparison, or a creative story with specific elements.\n4.  **Try multimodal input:** If the AI supports it, combine text with an image or voice command. For example, upload a photo and ask the AI to describe it, then request captions or related suggestions.\n\n## What this means for you\n\n*   **In everyday life:** Your AI assistant is becoming a more reliable and versatile helper. Whether you need help drafting a tricky email, planning a trip, or understanding a complex topic, the AI you use today is likely more capable than it was a few months ago. Keep trying it out for new tasks!\n*   **For your business or work:** AI-powered tools within your workflow are getting smarter at handling business-specific tasks. This means better first drafts of reports, more insightful data summaries, and more efficient content creation, freeing you up for higher-level work.\n*   **If you're just getting started:** Don’t feel overwhelmed by constant updates. The best way to benefit is simply to start using an AI assistant for a task you do regularly. As it evolves, you’ll naturally discover its growing capabilities.\n\n## Wrap-up\n\nAI models are always learning and improving, making your digital tools more powerful over time. The best way to take advantage of this is to keep exploring, experimenting with different prompts, and trying out new features as they appear. Why not ask your favourite AI assistant for help with a task you’ve never used it for before, and see how much it has learned?",
   "original_title": "The latest AI news we announced in June 2026"

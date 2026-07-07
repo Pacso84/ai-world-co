@@ -8,28 +8,29 @@
     "source_id": "nvidia-blog",
     "source_name": "NVIDIA Blog (hivatalos)",
     "source_link": "https://blogs.nvidia.com/blog/palantir-secure-ai-us-agencies-nemotron-open-models/",
-    "status": "rejected",
-    "rejected_at": "2026-07-02T17:27:23.005Z",
+    "status": "published",
     "auto_check": {
       "passed": true,
       "issues": [],
       "wordCount": 928
     },
-    "ai_review": {
-      "overall_score": 0,
-      "decision": "FAIL",
-      "issues": [
-        "AI response JSON parse error after retries: AI router null"
-      ],
-      "verdict": "Could not parse AI review (2 attempts)",
-      "_aiCost": 0,
-      "_parseFailed": true
-    },
-    "reason": "Could not parse AI review (2 attempts)",
     "can_retry": true,
     "rework_attempts": 2,
     "reworked_from": "REJECTED_2026-06-30T16-43-13-543Z_nvidia-blog_Open_Models__Closed_Environments__Palantir_Brings_.json",
-    "requeued_unchanged": true
+    "requeued_unchanged": true,
+    "published_at": "2026-06-30T16:43:13.000Z",
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "The article is well-structured, clearly explains complex concepts for everyday people, and maintains the friendly, educational brand voice without any prohibited content.",
+      "_aiCost": 0.0034569,
+      "_provider": "google",
+      "_model": "gemini-2.5-flash",
+      "_attempts": 1
+    },
+    "date_note": "published_at = eredeti forrás-dátum (2026-07-07 mentőakció: router-hiba miatt tévesen elutasított cikkek)"
   },
   "article_markdown": "---\ntitle: \"What Open-Source AI Really Means for Your Daily Life\"\nsubtitle: \"How transparent AI models can help you keep your data private and tailor tools to your needs\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"open-source\", \"ai-transparency\", \"data-privacy\", \"customisation\"]\n---\n\n# What Open-Source AI Really Means for Your Daily Life\n\nYou’ve probably used an AI tool without knowing whether it’s open or closed. That quiet voice in your smart speaker, the chatbot helping you draft an email, or the image generator you tried last weekend — most of these run behind closed doors. But what if you could open the hood, peek inside, and even tweak the engine? That’s the promise of open-source AI models.\n\n## What does “open-source AI” actually look like?\n\nImagine a recipe book where every ingredient list and cooking step is shared freely. In the digital world, that means the code and the trained “brain” of the AI are publicly available. Anyone can download it, run it on their own computer, modify it, or share improvements.\n\nMost popular AI tools you’ve heard of — like some versions of ChatGPT — are closed-source. The company keeps the code and training data private. You can use their tool, but you can’t see how it works, change it, or run it offline without their permission.\n\nOpen-source models let you:\n- **See the code**: Understand exactly how the AI was built and functions.\n- **Run it yourself**: Download and operate the model on your own computer or server.\n- **Modify it**: Change the code or further train the model to suit your specific needs.\n- **Share improvements**: Contribute back to the community, making the model better for everyone.\n\n## Why would you run AI in a “closed environment”?\n\nYou might be thinking: if an AI model is open-source, why would anyone put it in a “closed environment”? This isn’t about closing the model itself, but about creating a private, secure space to *use* it.\n\nImagine you have a powerful open-source AI, but you want to use it with highly sensitive information — like your medical notes, financial spreadsheets, or confidential client data. You might not want to send that information to a big company’s cloud server where you have less control.\n\nBy running an open-source model in your own **closed environment** — your personal computer, a secure server in your office, or a private cloud service — you gain:\n- **Enhanced data privacy**: Your sensitive information never leaves your controlled space.\n- **Increased security**: You manage the security measures, tailoring them to your specific risk profile.\n- **Customisation**: You can fine-tune (further train the AI on your specific data) the model to understand your unique language, industry jargon, or personal preferences without sharing that knowledge outside.\n- **No internet dependence (optional)**: If run entirely locally, you might not even need an internet connection to use the AI after the initial setup.\n\nThis approach gives you the best of both worlds: the transparency and flexibility of an open-source AI, combined with the security and control of keeping your data private.\n\n## How open-source AI helps you in practice\n\nThe rise of open-source AI models changes how we think about artificial intelligence in everyday life.\n\n- **Transparency and trust**: You can verify what goes into the AI, leading to more trust in its outputs, especially for critical tasks.\n- **Innovation and accessibility**: It lowers the barrier for individuals and smaller businesses to experiment with and build advanced AI applications, fostering more innovation beyond big tech companies.\n- **Control over your tools**: Instead of being locked into one company’s AI, you have the freedom to choose, adapt, or even combine different open models.\n- **Cost-effectiveness**: While there might be initial setup costs, running open-source models can sometimes be more economical for specific use cases, avoiding ongoing subscription fees for every interaction.\n\n## What this means for you\n\n- **In everyday life**: If you're concerned about your personal data being used by AI companies, understanding open-source models offers an alternative. You could explore running smaller, privacy-focused AI tools directly on your computer for tasks like summarising personal documents or organising notes, keeping your information entirely private. It also means you might see more AI features pop up in everyday apps that are built on these flexible, transparent models.\n\n- **For your business or work**: Open-source AI provides a powerful option for businesses handling sensitive customer data, proprietary research, or internal communications. You can use these models in your own secure internal systems, ensuring company secrets remain confidential while still leveraging advanced AI capabilities for tasks like internal document analysis, customer support automation, or data processing. This can lead to more tailored and secure AI solutions for your specific business needs.\n\n- **If you're just getting started**: Don’t feel overwhelmed! For now, simply knowing that there are different types of AI models — some you can \"look inside\" and control more, and some you can't — is a great start. When choosing an AI tool, consider if transparency or data privacy is important to you.\n\n## Wrap-up\n\nOpen-source AI models are opening up new possibilities for how we interact with and control artificial intelligence. They offer a path to greater transparency, customisation, and data privacy, whether you're a curious individual or a business with sensitive information. Next time you encounter an AI tool, consider looking into whether it's built on an open-source model — it might give you more power than you think. Why not try running a small open-source model on your computer this weekend and see what you can build?",
   "original_title": "Open Models, Closed Environments: Palantir Brings Secure AI to US Agencies With NVIDIA Nemotron"
