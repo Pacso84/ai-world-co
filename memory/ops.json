@@ -1,150 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178330355423675",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-07-06T02:05:54.236Z",
-      "updated": "2026-07-06T02:06:46.422Z"
-    },
-    {
-      "id": "t178330360642469",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-06T02:06:46.424Z",
-      "updated": "2026-07-06T02:07:31.899Z"
-    },
-    {
-      "id": "t178330365190321",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-07-06T02:07:31.903Z",
-      "updated": "2026-07-06T02:07:53.647Z"
-    },
-    {
-      "id": "t178330367364910",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-06T02:07:53.649Z",
-      "updated": "2026-07-06T02:08:08.964Z"
-    },
-    {
-      "id": "t178330368896929",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-07-06T02:08:08.969Z",
-      "updated": "2026-07-06T02:08:11.311Z"
-    },
-    {
-      "id": "t178330369132463",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-06T02:08:11.324Z",
-      "updated": "2026-07-06T02:08:56.690Z"
-    },
-    {
-      "id": "t178330373669257",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-06T02:08:56.692Z",
-      "updated": "2026-07-06T02:09:15.815Z"
-    },
-    {
-      "id": "t178330375582643",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-06T02:09:15.826Z",
-      "updated": "2026-07-06T02:09:16.032Z"
-    },
-    {
-      "id": "t178330375603490",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-06T02:09:16.034Z",
-      "updated": "2026-07-06T02:09:22.639Z"
-    },
-    {
-      "id": "t178330376264266",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-06T02:09:22.642Z",
-      "updated": "2026-07-06T02:09:36.438Z"
-    },
-    {
-      "id": "t17833037764400",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-06T02:09:36.440Z",
-      "updated": "2026-07-06T02:09:43.594Z"
-    },
-    {
-      "id": "t178330378359797",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-06T02:09:43.597Z",
-      "updated": "2026-07-06T02:09:57.215Z"
-    },
-    {
-      "id": "t178330379721844",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-07-06T02:09:57.218Z",
-      "updated": "2026-07-06T02:10:01.435Z"
-    },
-    {
-      "id": "t178330380143793",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-06T02:10:01.437Z",
-      "updated": "2026-07-06T02:10:02.166Z"
-    },
-    {
-      "id": "t178330380216898",
-      "title": "Run translator",
-      "status": "done",
-      "agent": "translator",
-      "created": "2026-07-06T02:10:02.168Z",
-      "updated": "2026-07-06T02:18:56.283Z"
-    },
-    {
-      "id": "t178330433628539",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-07-06T02:18:56.285Z",
-      "updated": "2026-07-06T02:18:58.819Z"
-    },
-    {
-      "id": "t178333885048681",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-07-06T11:54:10.486Z",
-      "updated": "2026-07-06T11:54:23.817Z"
-    },
-    {
-      "id": "t17833388638195",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-07-06T11:54:23.819Z",
-      "updated": "2026-07-06T11:54:24.068Z"
-    },
-    {
       "id": "t178333886407090",
       "title": "Run iro",
       "status": "done",
@@ -479,6 +335,150 @@
       "agent": "publisher",
       "created": "2026-07-07T02:29:54.545Z",
       "updated": "2026-07-07T02:29:59.351Z"
+    },
+    {
+      "id": "t178342108175312",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-07-07T10:44:41.753Z",
+      "updated": "2026-07-07T10:44:55.099Z"
+    },
+    {
+      "id": "t178342109510114",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-07-07T10:44:55.101Z",
+      "updated": "2026-07-07T10:44:55.343Z"
+    },
+    {
+      "id": "t17834210953456",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-07-07T10:44:55.345Z",
+      "updated": "2026-07-07T10:45:00.178Z"
+    },
+    {
+      "id": "t178342110017943",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-07T10:45:00.179Z",
+      "updated": "2026-07-07T10:45:14.929Z"
+    },
+    {
+      "id": "t178342111493390",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-07-07T10:45:14.933Z",
+      "updated": "2026-07-07T10:45:28.743Z"
+    },
+    {
+      "id": "t178342112874589",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-07T10:45:28.745Z",
+      "updated": "2026-07-07T10:45:43.682Z"
+    },
+    {
+      "id": "t178342114368857",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-07-07T10:45:43.688Z",
+      "updated": "2026-07-07T10:46:26.277Z"
+    },
+    {
+      "id": "t178342118627925",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-07T10:46:26.279Z",
+      "updated": "2026-07-07T10:46:55.395Z"
+    },
+    {
+      "id": "t17834212154012",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-07-07T10:46:55.401Z",
+      "updated": "2026-07-07T10:47:28.601Z"
+    },
+    {
+      "id": "t178342124860235",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-07T10:47:28.602Z",
+      "updated": "2026-07-07T10:47:50.583Z"
+    },
+    {
+      "id": "t178342127058866",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-07-07T10:47:50.588Z",
+      "updated": "2026-07-07T10:49:41.419Z"
+    },
+    {
+      "id": "t178342138142188",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-07T10:49:41.421Z",
+      "updated": "2026-07-07T10:49:54.783Z"
+    },
+    {
+      "id": "t178342139478948",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-07-07T10:49:54.789Z",
+      "updated": "2026-07-07T10:49:55.786Z"
+    },
+    {
+      "id": "t178342139581123",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-07T10:49:55.811Z",
+      "updated": "2026-07-07T10:50:05.978Z"
+    },
+    {
+      "id": "t178342140598139",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-07-07T10:50:05.981Z",
+      "updated": "2026-07-07T10:50:10.009Z"
+    },
+    {
+      "id": "t178342141001163",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-07T10:50:10.011Z",
+      "updated": "2026-07-07T10:50:11.090Z"
+    },
+    {
+      "id": "t178342141109216",
+      "title": "Run translator",
+      "status": "done",
+      "agent": "translator",
+      "created": "2026-07-07T10:50:11.092Z",
+      "updated": "2026-07-07T10:57:48.155Z"
+    },
+    {
+      "id": "t178342186815632",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-07-07T10:57:48.156Z",
+      "updated": "2026-07-07T10:57:52.664Z"
     }
   ],
   "notifications": [
@@ -1081,243 +1081,33 @@
       "agent": "ceo",
       "at": "2026-07-07T02:29:59.371Z",
       "loud": false
+    },
+    {
+      "id": "n178342140999629",
+      "level": "info",
+      "text": "SEO: 5 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-07-07T10:50:09.996Z",
+      "loud": false
+    },
+    {
+      "id": "n178342186917384",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). Our latest line-up is ready to publish, offering a diverse range of practical AI applications for everyday life, from household budgeting to study aids. The articles are well-structured, on-brand, and",
+      "agent": "publisher",
+      "at": "2026-07-07T10:57:49.173Z",
+      "loud": false
+    },
+    {
+      "id": "n178342187267710",
+      "level": "success",
+      "text": "1 hír + 3 útmutató publikálva (költség: $0.0586).",
+      "agent": "ceo",
+      "at": "2026-07-07T10:57:52.677Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178301323454526",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"How we keep GPUs reliable across Databricks AI\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; Reviewer verdict: Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben; újraküldöm.",
-      "ref": "2026-07-02T02-09-37-791Z_databricks_How_we_keep_GPUs_reliable_across_Databricks_AI.json",
-      "at": "2026-07-02T17:27:14.545Z"
-    },
-    {
-      "id": "m178301324155873",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Snowflake Achieves HDS Certification in France, Helping Healthcare Organizations Accelerate Data and AI Innovation \" — javítva: prohibited content: medical advice; missing source for security standards claims; újraküldöm.",
-      "ref": "2026-07-02T02-09-37-791Z_snowflake_Snowflake_Achieves_HDS_Certification_in_France__He.json",
-      "at": "2026-07-02T17:27:21.558Z"
-    },
-    {
-      "id": "m178301324288084",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Evaluating performance and efficiency of the GitHub Copilot agentic harness across models and tasks\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-06-26T02-12-21-214Z_github-ai_Evaluating_performance_and_efficiency_of_the_GitHu.json",
-      "at": "2026-07-02T17:27:22.880Z"
-    },
-    {
-      "id": "m178301324288985",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Streamline your data backups with incremental exports for Google Workspace\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-06-27T02-07-24-541Z_google-workspace_Streamline_your_data_backups_with_incremental_expo.json",
-      "at": "2026-07-02T17:27:22.889Z"
-    },
-    {
-      "id": "m178301324290075",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Previewing GPT-5.6 Sol: a next-generation model\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-06-27T02-07-24-541Z_openai-blog_Previewing_GPT-5_6_Sol__a_next-generation_model.json",
-      "at": "2026-07-02T17:27:22.900Z"
-    },
-    {
-      "id": "m178301324290839",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Work smarter in 90 days: A real-world guide to using AI\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-06-29T02-29-25-987Z_microsoft-ai_Work_smarter_in_90_days__A_real-world_guide_to_usi.json",
-      "at": "2026-07-02T17:27:22.908Z"
-    },
-    {
-      "id": "m178301324291746",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Time to Speak Some Dialects, Qwen-TTS!\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-06-29T02-29-27-067Z_alibaba-qwen_Time_to_Speak_Some_Dialects__Qwen-TTS_.json",
-      "at": "2026-07-02T17:27:22.917Z"
-    },
-    {
-      "id": "m178301324292599",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Connect the dots: Build with built-in and custom MCPs in Studio\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-06-29T02-29-27-067Z_mistral-ai_Connect_the_dots__Build_with_built-in_and_custom_M.json",
-      "at": "2026-07-02T17:27:22.925Z"
-    },
-    {
-      "id": "m178301324293410",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Remote agents in Vibe. Powered by Mistral Medium 3.5.\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-06-29T02-29-27-067Z_mistral-ai_Remote_agents_in_Vibe__Powered_by_Mistral_Medium_3.json",
-      "at": "2026-07-02T17:27:22.934Z"
-    },
-    {
-      "id": "m178301324294324",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Qwen3 Embedding: Advancing Text Embedding and Reranking Through Foundation Models\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-06-29T02-29-42-864Z_alibaba-qwen_Qwen3_Embedding__Advancing_Text_Embedding_and_Rera.json",
-      "at": "2026-07-02T17:27:22.943Z"
-    },
-    {
-      "id": "m178301324295283",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Qwen3: Think Deeper, Act Faster\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-06-29T02-29-42-864Z_alibaba-qwen_Qwen3__Think_Deeper__Act_Faster.json",
-      "at": "2026-07-02T17:27:22.952Z"
-    },
-    {
-      "id": "m178301324296012",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Ask an AI expert: What exactly is the full stack?\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-06-30T16-43-12-110Z_google-ai-blog_Ask_an_AI_expert__What_exactly_is_the_full_stack_.json",
-      "at": "2026-07-02T17:27:22.960Z"
-    },
-    {
-      "id": "m178301324296862",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"How NVIDIA’s Inference Software Stack Powers the Lowest Token Cost\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-06-30T16-43-12-110Z_nvidia-blog_How_NVIDIA_s_Inference_Software_Stack_Powers_the_L.json",
-      "at": "2026-07-02T17:27:22.968Z"
-    },
-    {
-      "id": "m178301324297844",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Mapping Europe’s AI Workforce Opportunity\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-06-30T16-43-12-110Z_openai-blog_Mapping_Europe_s_AI_Workforce_Opportunity.json",
-      "at": "2026-07-02T17:27:22.978Z"
-    },
-    {
-      "id": "m178301324298693",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Create fully native and editable presentations with Gemini in Google Slides\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-06-30T16-43-13-543Z_google-workspace_Create_fully_native_and_editable_presentations_wit.json",
-      "at": "2026-07-02T17:27:22.986Z"
-    },
-    {
-      "id": "m178301324299421",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Data regions support for the Gemini app now available \" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-06-30T16-43-13-543Z_google-workspace_Data_regions_support_for_the_Gemini_app_now_availa.json",
-      "at": "2026-07-02T17:27:22.994Z"
-    },
-    {
-      "id": "m178301324300224",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Claude Meets Blackwell Ultra: Anthropic’s Models Now Run on NVIDIA GB300 in Azure\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-06-30T16-43-13-543Z_nvidia-blog_Claude_Meets_Blackwell_Ultra__Anthropic_s_Models_N.json",
-      "at": "2026-07-02T17:27:23.002Z"
-    },
-    {
-      "id": "m178301324301166",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Open Models, Closed Environments: Palantir Brings Secure AI to US Agencies With NVIDIA Nemotron\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-06-30T16-43-13-543Z_nvidia-blog_Open_Models__Closed_Environments__Palantir_Brings_.json",
-      "at": "2026-07-02T17:27:23.011Z"
-    },
-    {
-      "id": "m178301324302095",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Run NVIDIA Nemotron and OpenAI GPT OSS models on Amazon Bedrock in AWS GovCloud (US)\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-07-02T02-09-20-689Z_aws-ml_Run_NVIDIA_Nemotron_and_OpenAI_GPT_OSS_models_on_A.json",
-      "at": "2026-07-02T17:27:23.020Z"
-    },
-    {
-      "id": "m178301324302885",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"The latest AI news we announced in June 2026\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-07-02T02-09-20-689Z_google-ai-blog_The_latest_AI_news_we_announced_in_June_2026.json",
-      "at": "2026-07-02T17:27:23.028Z"
-    },
-    {
-      "id": "m17830132430362",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Forecasting at the speed of modern retail \" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-07-02T02-09-37-791Z_databricks_Forecasting_at_the_speed_of_modern_retail_.json",
-      "at": "2026-07-02T17:27:23.036Z"
-    },
-    {
-      "id": "m178301324304465",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"How we keep GPUs reliable across Databricks AI\" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-07-02T02-09-37-791Z_databricks_How_we_keep_GPUs_reliable_across_Databricks_AI.json",
-      "at": "2026-07-02T17:27:23.044Z"
-    },
-    {
-      "id": "m17830132430533",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Snowflake Achieves HDS Certification in France, Helping Healthcare Organizations Accelerate Data and AI Innovation \" — mi a baj: AI response JSON parse error after retries: AI router null",
-      "ref": "2026-07-02T02-09-37-791Z_snowflake_Snowflake_Achieves_HDS_Certification_in_France__He.json",
-      "at": "2026-07-02T17:27:23.053Z"
-    },
-    {
-      "id": "m178301325440226",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 16 → 4/4/2 oszlop.",
-      "ref": "mobile",
-      "at": "2026-07-02T17:27:34.402Z"
-    },
-    {
-      "id": "m178310789477854",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"How to summarise a long document or article with AI\" — mi a baj: Beginner clarity too low (5/10): steps are vague or could mislead a first-time user",
-      "ref": "GUIDE_ai-summarise-long.json",
-      "at": "2026-07-03T19:44:54.778Z"
-    },
-    {
-      "id": "m178310790831965",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"How to set up smart routines with Alexa+\" — mi a baj: Salvaged from a partial AI response.",
-      "ref": "GUIDE_alexa-routines.json",
-      "at": "2026-07-03T19:45:08.319Z"
-    },
     {
       "id": "m178310791563887",
       "from": "ellenorzo",
@@ -2442,6 +2232,240 @@
       "text": "5 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
       "ref": null,
       "at": "2026-07-07T02:31:53.556Z"
+    },
+    {
+      "id": "m178342111491697",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Salesforce Deepens Commitment to Switzerland with $1 Billion Investment to Accelerate Agentic AI Transformation\" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "2026-07-07T10-44-55-042Z_salesforce_Salesforce_Deepens_Commitment_to_Switzerland_with_.json",
+      "at": "2026-07-07T10:45:14.916Z"
+    },
+    {
+      "id": "m178342111802910",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Contextual Policies in Omnigent: Using session state to better govern AI agents\" — javítva: Incomplete \"What this means for you\" section; Guide lacks specific instructions to apply the YAML rule; újraküldöm.",
+      "ref": "2026-07-07T02-01-14-878Z_databricks_Contextual_Policies_in_Omnigent__Using_session_sta.json",
+      "at": "2026-07-07T10:45:18.029Z"
+    },
+    {
+      "id": "m17834211287328",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Salesforce Deepens Commitment to Switzerland with $1 Billion Investment to Accelerate Agentic AI Transformation\" — javítva: Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "2026-07-07T10-44-55-042Z_salesforce_Salesforce_Deepens_Commitment_to_Switzerland_with_.json",
+      "at": "2026-07-07T10:45:28.732Z"
+    },
+    {
+      "id": "m178342113699870",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Contextual Policies in Omnigent: Using session state to better govern AI agents\" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "2026-07-07T02-01-14-878Z_databricks_Contextual_Policies_in_Omnigent__Using_session_sta.json",
+      "at": "2026-07-07T10:45:36.998Z"
+    },
+    {
+      "id": "m178342114367293",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Salesforce Deepens Commitment to Switzerland with $1 Billion Investment to Accelerate Agentic AI Transformation\" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "2026-07-07T10-44-55-042Z_salesforce_Salesforce_Deepens_Commitment_to_Switzerland_with_.json",
+      "at": "2026-07-07T10:45:43.672Z"
+    },
+    {
+      "id": "m178342115380112",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Automate basic email replies in Outlook with Meta AI\" — javítva: Beginner clarity too low (4/10): steps are vague or could mislead a first-time user; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "GUIDE_automate-basic-email-replies-in-outlook-with-meta-ai.json",
+      "at": "2026-07-07T10:45:53.801Z"
+    },
+    {
+      "id": "m178342116591095",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Create AI‑generated meeting summaries directly in Apple Calendar\" — javítva: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "GUIDE_create-ai-generated-meeting-summaries-directly-in-apple-cale.json",
+      "at": "2026-07-07T10:46:05.910Z"
+    },
+    {
+      "id": "m178342117631552",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Set up an AI‑driven daily habit tracker using Apple Intelligence\" — javítva: Beginner clarity too low (4/10): steps are vague or could mislead a first-time user; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "GUIDE_set-up-an-ai-driven-daily-habit-tracker-using-apple-intellig.json",
+      "at": "2026-07-07T10:46:16.315Z"
+    },
+    {
+      "id": "m178342118626687",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Teach Alexa+ to read bedtime stories to kids\" — javítva: Beginner clarity too low (5/10): steps are vague or could mislead a first-time user; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "GUIDE_teach-alexa-to-read-bedtime-stories-to-kids.json",
+      "at": "2026-07-07T10:46:26.266Z"
+    },
+    {
+      "id": "m178342119374785",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Automate basic email replies in Outlook with Meta AI\" — mi a baj: Beginner clarity too low (1/10): steps are vague or could mislead a first-time user",
+      "ref": "GUIDE_automate-basic-email-replies-in-outlook-with-meta-ai.json",
+      "at": "2026-07-07T10:46:33.747Z"
+    },
+    {
+      "id": "m178342120121079",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Create AI‑generated meeting summaries directly in Apple Calendar\" — mi a baj: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user",
+      "ref": "GUIDE_create-ai-generated-meeting-summaries-directly-in-apple-cale.json",
+      "at": "2026-07-07T10:46:41.210Z"
+    },
+    {
+      "id": "m17834212078076",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Set up an AI‑driven daily habit tracker using Apple Intelligence\" (?/10)",
+      "ref": "GUIDE_set-up-an-ai-driven-daily-habit-tracker-using-apple-intellig.json",
+      "at": "2026-07-07T10:46:47.807Z"
+    },
+    {
+      "id": "m178342121538632",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Teach Alexa+ to read bedtime stories to kids\" — mi a baj: Beginner clarity too low (5/10): steps are vague or could mislead a first-time user",
+      "ref": "GUIDE_teach-alexa-to-read-bedtime-stories-to-kids.json",
+      "at": "2026-07-07T10:46:55.386Z"
+    },
+    {
+      "id": "m178342122679587",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Automate basic email replies in Outlook with Meta AI\" — javítva: Beginner clarity too low (1/10): steps are vague or could mislead a first-time user; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "GUIDE_automate-basic-email-replies-in-outlook-with-meta-ai.json",
+      "at": "2026-07-07T10:47:06.795Z"
+    },
+    {
+      "id": "m178342123879093",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Create AI‑generated meeting summaries directly in Apple Calendar\" — javítva: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "GUIDE_create-ai-generated-meeting-summaries-directly-in-apple-cale.json",
+      "at": "2026-07-07T10:47:18.790Z"
+    },
+    {
+      "id": "m178342124859119",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Teach Alexa+ to read bedtime stories to kids\" — javítva: Beginner clarity too low (5/10): steps are vague or could mislead a first-time user; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "GUIDE_teach-alexa-to-read-bedtime-stories-to-kids.json",
+      "at": "2026-07-07T10:47:28.591Z"
+    },
+    {
+      "id": "m178342125563610",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Automate basic email replies in Outlook with Meta AI\" (?/10)",
+      "ref": "GUIDE_automate-basic-email-replies-in-outlook-with-meta-ai.json",
+      "at": "2026-07-07T10:47:35.636Z"
+    },
+    {
+      "id": "m17834212629148",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Create AI‑generated meeting summaries directly in Apple Calendar\" — mi a baj: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user",
+      "ref": "GUIDE_create-ai-generated-meeting-summaries-directly-in-apple-cale.json",
+      "at": "2026-07-07T10:47:42.914Z"
+    },
+    {
+      "id": "m178342127057232",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Teach Alexa+ to read bedtime stories to kids\" — mi a baj: Beginner clarity too low (4/10): steps are vague or could mislead a first-time user",
+      "ref": "GUIDE_teach-alexa-to-read-bedtime-stories-to-kids.json",
+      "at": "2026-07-07T10:47:50.572Z"
+    },
+    {
+      "id": "m178342130088023",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Create AI‑generated meeting summaries directly in Apple Calendar\" — javítva: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "GUIDE_create-ai-generated-meeting-summaries-directly-in-apple-cale.json",
+      "at": "2026-07-07T10:48:20.880Z"
+    },
+    {
+      "id": "m178342138140977",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Teach Alexa+ to read bedtime stories to kids\" — javítva: Beginner clarity too low (4/10): steps are vague or could mislead a first-time user; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "GUIDE_teach-alexa-to-read-bedtime-stories-to-kids.json",
+      "at": "2026-07-07T10:49:41.409Z"
+    },
+    {
+      "id": "m178342138813929",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Create AI‑generated meeting summaries directly in Apple Calendar\" (?/10)",
+      "ref": "GUIDE_create-ai-generated-meeting-summaries-directly-in-apple-cale.json",
+      "at": "2026-07-07T10:49:48.139Z"
+    },
+    {
+      "id": "m178342139476024",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Teach Alexa+ to read bedtime stories to kids\" (?/10)",
+      "ref": "GUIDE_teach-alexa-to-read-bedtime-stories-to-kids.json",
+      "at": "2026-07-07T10:49:54.760Z"
+    },
+    {
+      "id": "m178342139574882",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "info",
+      "text": "A \"NVIDIA and Hugging Face Bring New Models and Frameworks\" hír a meglévő útmutatóra mutat: generate-ai-powered-email-replies-using-hugging-face-inferen",
+      "ref": "generate-ai-powered-email-replies-using-hugging-face-inferen",
+      "at": "2026-07-07T10:49:55.748Z"
+    },
+    {
+      "id": "m178342141105774",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 16 → 4/4/2 oszlop.",
+      "ref": "mobile",
+      "at": "2026-07-07T10:50:11.058Z"
+    },
+    {
+      "id": "m17834219041133",
+      "from": "social",
+      "to": "team",
+      "kind": "info",
+      "text": "6 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
+      "ref": null,
+      "at": "2026-07-07T10:58:24.113Z"
     }
   ]
 }

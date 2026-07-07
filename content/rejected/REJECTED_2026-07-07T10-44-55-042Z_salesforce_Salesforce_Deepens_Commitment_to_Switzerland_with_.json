@@ -1,0 +1,38 @@
+{
+  "_meta": {
+    "written_at": "2026-07-07T10:45:28.731Z",
+    "writer_provider": "mistral",
+    "writer_model": "mistral-small-latest",
+    "writer_cost_usd": 0.0033684,
+    "original_draft": "2026-07-07T10-44-55-042Z_salesforce_Salesforce_Deepens_Commitment_to_Switzerland_with_.json",
+    "source_id": "salesforce",
+    "source_name": "Salesforce AI Blog (hivatalos)",
+    "source_link": "https://www.salesforce.com/news/press-releases/2026/07/07/1-billion-ai-transformation-investment-switzerland/",
+    "status": "rejected",
+    "rejected_at": "2026-07-07T10:45:43.656Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 704
+    },
+    "ai_review": {
+      "overall_score": 6,
+      "clarity_score": 6,
+      "decision": "FAIL",
+      "issues": [],
+      "verdict": "Salvaged from a partial AI response.",
+      "_salvaged": true,
+      "_aiCost": 0.004341,
+      "_provider": "google",
+      "_model": "gemini-2.5-flash",
+      "_attempts": 1
+    },
+    "reason": "Salvaged from a partial AI response.",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-07-07T10-44-55-042Z_salesforce_Salesforce_Deepens_Commitment_to_Switzerland_with_.json",
+    "requeued_unchanged": false
+  },
+  "article_markdown": "---\ntitle: \"How to Use AI Agents in Your Daily Work Without Writing a Line of Code\"\nsubtitle: \"Turn everyday tasks into hands-off automations using Salesforce’s AI agents—step by step\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"salesforce\", \"ai-agents\", \"automation\", \"productivity\", \"crm\"]\n---\n\n# How to Use AI Agents in Your Daily Work Without Writing a Line of Code\n\n**Hook:** You’ve got emails stacking up, leads to follow up, and reports to pull together. What if your to-do list could do half the work for you? Salesforce’s new AI agents can handle routine tasks like drafting replies, updating records, and even forecasting sales—all while you focus on the parts only you can do.\n\n## What is an AI agent—and why it matters\n\nAn **AI agent** is like a smart assistant that doesn’t just answer questions—it takes action. Think of it as a helper that can send an email, update a customer record, or suggest your next move, all on its own. No code required.\n\n- **Agentic AI** – AI systems that act on your behalf (e.g., send a message, update a file).\n- **LLM (large language model)** – the engine behind most modern AI; it understands and generates text.\n- **CRM (customer relationship management)** – software that stores your contacts, sales pipeline, and service history.\n\nSalesforce’s AI, called **Einstein**, now includes these agents. They’re designed to automate the repetitive parts of your day so you can spend more time on strategy and relationships.\n\n## Getting started with Einstein AI agents\n\nYou don’t need to be a developer to use them. Here’s how to set up your first agent in minutes.\n\n1. **Log in to Salesforce**\n   Open your browser and go to `login.salesforce.com`. Sign in with your credentials. If you don’t have an account, start a free trial by clicking “Try Free.”\n\n2. **Turn on Einstein**\n   - Click the gear icon → *Setup*.\n   - In the quick-find box, type “Einstein.”\n   - Select **Einstein Activation** and follow the prompts. It usually takes a few minutes to set up.\n\n3. **Create your first AI agent**\n   - Go to **Einstein Copilot** → **New Agent**.\n   - Give it a name, like “Email Follow-Up.”\n   - Choose a template: “Customer Service” or “Sales Assistant.”\n   - Add a simple instruction: “Draft a polite follow-up email for leads who haven’t replied in 7 days.”\n   - Save and activate.\n\n4. **Let it run in the background**\n   Einstein agents work inside Salesforce. They can:\n   - Watch for new leads and send a welcome email.\n   - Update records when a customer replies.\n   - Suggest next steps based on your sales data.\n\nNo code. No complex setup. Just guided prompts and clicks.\n\n## Everyday automations you can try today\n\n- **For your inbox:** Set an agent to draft replies to common questions like “What are your hours?” or “Do you offer refunds?” It saves time and keeps your tone consistent.\n- **For your sales team:** Let an agent analyse recent deals and highlight the ones most likely to close this week. You’ll see clearer priorities without digging through spreadsheets.\n- **For your side hustle:** Use an agent to log time entries when you mention a task in a chat. It updates your project board automatically, so your invoices stay accurate.\n\n## What this means for you\n\n- **If you’re a solo worker or freelancer:** Start with the free Einstein trial. Use the agent to automate follow-ups, draft emails, and keep your CRM tidy—so you spend less time on admin and more on your work.\n- **If you work in a team or small business:** The new agent features roll out automatically with Salesforce updates. Check the “Release Notes” in Setup to see what’s new, then enable the ones that fit your workflow.\n- **If you’re just getting started:** Sign up for a free trial, activate Einstein, and create one agent. Try it on a small task—like drafting a reply to a single lead—and see how it feels before expanding.\n\n## Wrap-up\n\nAI agents aren’t just for tech teams—they’re for anyone who wants to offload the busywork. By activating Einstein and setting up your first agent today, you can reclaim hours every week. Spend 10 minutes now creating a simple agent, and watch it start working for you.",
+  "original_title": "Salesforce Deepens Commitment to Switzerland with $1 Billion Investment to Accelerate Agentic AI Transformation"
+}

@@ -1,0 +1,34 @@
+{
+  "started_at": "2026-07-07T10:47:28.795Z",
+  "total": 3,
+  "passed": 1,
+  "failed": 2,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.0133759,
+  "by_article": [
+    {
+      "writer": "WRITER_GUIDE_automate-basic-email-replies-in-outlook-with-meta-ai.json",
+      "article": "ARTICLE_GUIDE_automate-basic-email-replies-in-outlook-with-meta-ai.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0044344
+    },
+    {
+      "writer": "WRITER_GUIDE_create-ai-generated-meeting-summaries-directly-in-apple-cale.json",
+      "rejected": "REJECTED_GUIDE_create-ai-generated-meeting-summaries-directly-in-apple-cale.json",
+      "decision": "FAIL",
+      "score": 6,
+      "cost_usd": 0.0045501000000000005
+    },
+    {
+      "writer": "WRITER_GUIDE_teach-alexa-to-read-bedtime-stories-to-kids.json",
+      "rejected": "REJECTED_GUIDE_teach-alexa-to-read-bedtime-stories-to-kids.json",
+      "decision": "FAIL",
+      "score": 4,
+      "cost_usd": 0.004391399999999999
+    }
+  ],
+  "finished_at": "2026-07-07T10:47:50.572Z",
+  "duration_seconds": 21.777
+}

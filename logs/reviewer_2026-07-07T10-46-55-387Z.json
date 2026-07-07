@@ -1,0 +1,41 @@
+{
+  "started_at": "2026-07-07T10:46:26.467Z",
+  "total": 4,
+  "passed": 1,
+  "failed": 3,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.0177463,
+  "by_article": [
+    {
+      "writer": "WRITER_GUIDE_automate-basic-email-replies-in-outlook-with-meta-ai.json",
+      "rejected": "REJECTED_GUIDE_automate-basic-email-replies-in-outlook-with-meta-ai.json",
+      "decision": "FAIL",
+      "score": 3,
+      "cost_usd": 0.0043816
+    },
+    {
+      "writer": "WRITER_GUIDE_create-ai-generated-meeting-summaries-directly-in-apple-cale.json",
+      "rejected": "REJECTED_GUIDE_create-ai-generated-meeting-summaries-directly-in-apple-cale.json",
+      "decision": "FAIL",
+      "score": 7,
+      "cost_usd": 0.004554600000000001
+    },
+    {
+      "writer": "WRITER_GUIDE_set-up-an-ai-driven-daily-habit-tracker-using-apple-intellig.json",
+      "article": "ARTICLE_GUIDE_set-up-an-ai-driven-daily-habit-tracker-using-apple-intellig.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.004424399999999999
+    },
+    {
+      "writer": "WRITER_GUIDE_teach-alexa-to-read-bedtime-stories-to-kids.json",
+      "rejected": "REJECTED_GUIDE_teach-alexa-to-read-bedtime-stories-to-kids.json",
+      "decision": "FAIL",
+      "score": 5,
+      "cost_usd": 0.0043857
+    }
+  ],
+  "finished_at": "2026-07-07T10:46:55.387Z",
+  "duration_seconds": 28.92
+}

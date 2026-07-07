@@ -1,41 +1,38 @@
 {
   "_meta": {
-    "written_at": "2026-07-07T02:04:50.540Z",
-    "writer_provider": "google",
-    "writer_model": "gemini-flash-latest",
-    "writer_cost_usd": 0.0481665,
+    "written_at": "2026-07-07T10:45:18.028Z",
+    "writer_provider": "cerebras",
+    "writer_model": "gpt-oss-120b",
+    "writer_cost_usd": 0,
     "original_draft": "2026-07-07T02-01-14-878Z_databricks_Contextual_Policies_in_Omnigent__Using_session_sta.json",
     "source_id": "databricks",
     "source_name": "Databricks Blog (hivatalos)",
     "source_link": "https://www.databricks.com/blog/contextual-policies-omnigent-using-session-state-better-govern-ai-agents",
     "status": "rejected",
-    "rejected_at": "2026-07-07T02:07:46.175Z",
+    "rejected_at": "2026-07-07T10:45:36.973Z",
     "auto_check": {
       "passed": true,
       "issues": [],
-      "wordCount": 634
+      "wordCount": 728
     },
     "ai_review": {
       "overall_score": 5,
-      "clarity_score": 3,
+      "clarity_score": 4,
       "decision": "FAIL",
-      "issues": [
-        "Incomplete \"What this means for you\" section",
-        "Guide lacks specific instructions to apply the YAML rule",
-        "Missing clear wrap-up"
-      ],
-      "verdict": "The article's \"What this means for you\" section is unfinished, and as a 'how-to' guide, it critically lacks practical steps for a beginner to actually implement the described policy.",
-      "_aiCost": 0.0041497,
+      "issues": [],
+      "verdict": "Salvaged from a partial AI response.",
+      "_salvaged": true,
+      "_aiCost": 0.004368,
       "_provider": "google",
       "_model": "gemini-2.5-flash",
       "_attempts": 1
     },
-    "reason": "The article's \"What this means for you\" section is unfinished, and as a 'how-to' guide, it critically lacks practical steps for a beginner to actually implement the described policy.",
+    "reason": "Salvaged from a partial AI response.",
     "can_retry": true,
-    "rework_attempts": 1,
+    "rework_attempts": 2,
     "reworked_from": "REJECTED_2026-07-07T02-01-14-878Z_databricks_Contextual_Policies_in_Omnigent__Using_session_sta.json",
     "requeued_unchanged": false
   },
-  "article_markdown": "---\ntitle: \"How to Build Guardrails for Your AI Assistants with Contextual Policies\"\nsubtitle: \"Learn how to use simple rules to stop your digital helpers from making mistakes at home or work\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"ai-agents\", \"productivity\", \"automation\", \"getting-started\"]\n---\n\n# How to Build Guardrails for Your AI Assistants with Contextual Policies\n\nHave you ever worried that a digital assistant might accidentally send an unfinished draft or book the wrong calendar slot while you are still chatting? By using contextual policies, you can set simple rules that stop your AI from taking action until you have given the explicit green light.\n\n## Understanding the digital guardrails\n\nTo make our AI helpers safer and more reliable, we need a few pieces to work together. Here is how they fit into your daily routine:\n\n*   **Agent** (an AI assistant that can actively perform tasks, like sending emails or updating lists).\n*   **Contextual policies** (rules that look at the current situation before letting the AI do something).\n*   **Session state** (the temporary memory of your current conversation — think of it as a notepad the AI uses to keep track of what you just said).\n*   **Omnigent** (a platform that acts like a digital traffic controller, organising how different AI programs and tools talk to each other).\n\nWhen you combine these elements, you create a system where the AI must check its \"notepad\" to see if it has permission to complete a task before it actually does it. \n\n## How to set up your first rule\n\nYou do not need to be a software developer to set up these boundaries. You can control your AI by writing simple instructions in text-based **configuration files** (simple text documents used to set options for your software). \n\nMany of these systems use **YAML** (a human-readable text format used for writing settings). Here is how you can write a basic rule to protect your calendar:\n\n### Step 1: Create your rule\nOpen a plain text editor on your computer and write a rule like this:\n\n```yaml\npolicies:\n  - name: check-before-booking\n    trigger: agent_action\n    condition: session.state.user_confirmed == true\n    allow: true\n    deny_message: \"Please tell me 'yes' to confirm the time before I book this.\"\n```\n\n*   **trigger:** Tells the system to run this check whenever the AI tries to perform an action.\n*   **condition:** The test the system runs. It looks at the notepad (session state) to see if you have typed a confirmation.\n*   **deny_message:** What the AI will say to you if it tries to book the meeting before you have said \"yes\".\n\n### Step 2: Test your rule\nOnce you save this rule into your AI program, you can test it in your chat window. \n\nIf you say, \"Put a meeting in my calendar for Tuesday,\" the AI will check its notepad. Because you have not yet confirmed the time, the rule will block the action, and the AI will show your friendly `deny_message`. Once you reply, \"Yes, Tuesday is perfect,\" the notepad updates, the rule is satisfied, and the AI safely books the slot.\n\n## Smart ways to use rules every day\n\nYou can use these boundaries to make almost any automated task safer:\n\n*   **Email protection:** Create a rule that blocks the AI from sending an email if the recipient's address is outside your school or work network. This prevents embarrassing accidental sends.\n*   **Budget limits:** Set a rule that stops your assistant from draft-approving any invoice or expense that is over a specific dollar amount, keeping your finances secure.\n*   **Time boundaries:** Set a policy that gently reminds your AI helper not to ping you with task updates after 6:00 pm, helping you protect your work-life balance.\n\n## What this means for you\n\n*   **In everyday life:** You can hand over tedious chores—like drafting weekly",
+  "article_markdown": "---\ntitle: \"How to Build Guardrails for Your AI Assistants Using Contextual Policies\"\nsubtitle: \"A step‑by‑step guide to writing simple YAML rules that keep your AI helpers from acting without your okay\"\ncategory: \"how‑to\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"ai‑agents\", \"productivity\", \"automation\", \"getting‑started\"]\n---\n\n# How to Build Guardrails for Your AI Assistants Using Contextual Policies\n\nEver asked an AI assistant to schedule a meeting, only for it to pop up a calendar invite before you’ve finished typing the time? A tiny rule can stop that from happening, giving you confidence that the AI only acts when you explicitly approve it.\n\n## The building blocks\n\n- **Agent** – an AI that can perform actions (send an email, update a list, book a calendar slot).  \n- **Contextual policy** – a rule that checks the current situation before the agent is allowed to act.  \n- **Session state** – the temporary memory of the ongoing conversation; think of it as the AI’s notepad.  \n- **YAML** – a human‑readable configuration format (YAML Ain’t Markup Language) that uses indentation instead of brackets. It’s the favourite way many AI platforms let you describe policies in plain text.\n\n## Step‑by‑step: writing your first guardrail\n\n### 1. Open the right file\n1. Locate the folder where your AI assistant stores its configuration files.  \n2. Open a plain‑text editor (Notepad, VS Code, Sublime, anything that saves plain .txt).  \n3. Create a new file called `policies.yaml` – the *.yaml* extension tells the system to treat it as a YAML document.\n\n### 2. Add a basic rule\nCopy the snippet below into the file, then save it.\n\n```yaml\npolicies:\n  - name: confirm‑before‑booking\n    trigger: agent_action          # run whenever the AI tries to do something\n    condition: session.state.user_confirmed == true   # only proceed if you said “yes”\n    allow: true\n    deny_message: \"Please say “yes” before I book the meeting.\"\n```\n\n**What each line does**  \n- **trigger** – tells the system *when* to run the check (here, on any agent action).  \n- **condition** – the test the system evaluates; it looks at the session state (the notepad) for a flag called `user_confirmed`.  \n- **allow** – if the condition is true, the action proceeds.  \n- **deny_message** – the reply the AI gives when the condition isn’t met.\n\n### 3. Tell the assistant where the file is\nMost platforms let you point to a policy file via an environment variable or a simple command line flag. For example:\n\n```bash\nai‑assistant --config /path/to/policies.yaml\n```\n\nIf you’re using a graphical dashboard, look for a **“Upload policy file”** button and select the `policies.yaml` you just saved.\n\n### 4. Test the rule\n1. In the chat window, type: “Schedule a call for Friday at 3 pm.”  \n2. The AI will reply with the `deny_message` because `user_confirmed` is still false.  \n3. Respond “Yes, that works.” – the assistant now sets `user_confirmed` to true, satisfies the condition, and creates the calendar event.\n\n## Everyday ways to extend the guardrails\n\n- **Email safety** – block sending if the recipient’s domain isn’t in your approved list.  \n- **Spending limits** – stop the AI from approving invoices above a chosen amount.  \n- **Quiet hours** – prevent task‑reminder pings after 6 pm by checking the current time.  \n\nEach new rule follows the same YAML pattern: define a trigger, write a condition that inspects the session state, and decide what to allow or deny.\n\n## What this means for you\n\n- **At home** – You can let an AI draft grocery lists, but stop it from ordering items online until you confirm the total cost.  \n- **At work** – Give your AI permission to send client emails only after you type “approved” in the chat, protecting against accidental sends.  \n- **If you’re just starting** – Create the `policies.yaml` file, copy the example rule, and run a quick test with a meeting request. That single experiment shows how a tiny text file can keep your digital helper in check.\n\n## Wrap‑up\n\nContextual policies are a low‑code way to make AI assistants behave exactly how you want. By writing a few lines of YAML, you give the AI a safety net that stops it from acting until you give the explicit go‑ahead. Today, open your favourite text editor, create the `policies.yaml` file shown above, and run a simple test request. You’ll see instantly how a small rule can turn a nervous guess into a confident, controllable assistant. Happy guarding!",
   "original_title": "Contextual Policies in Omnigent: Using session state to better govern AI agents"
 }

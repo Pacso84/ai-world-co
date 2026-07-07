@@ -1,6 +1,113 @@
 # AI World Co. — közösségi posztok
 
-*Generálva: 2026-07-07T02:31:53.555Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+*Generálva: 2026-07-07T10:58:24.112Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## Meta made its own AI-generated clickbait news feed
+**🔗 https://aiworldhq.com/article/spotting-ai-generated-content-in-your-daily-scroll.html**
+
+**Facebook:**
+Ever wonder if a story you read is AI‑made? Grab a few easy tips to spot AI‑generated text and images, and feel more certain about what you scroll. https://aiworldhq.com/article/spotting-ai-generated-content-in-your-daily-scroll.html #onlinesafety #criticalthinking
+
+**Instagram:**
+Is that post really human?
+Learn three quick ways to tell if content was created by AI, so you can trust the news you read.
+#AIcontent
+#misinformation
+#criticalthinking
+#onlinesafety
+Link in bio.
+
+*Kép-ötlet: A person holding a smartphone, looking thoughtfully at the screen, with faint social media icons blurred in the background.*
+
+---
+
+## Here comes new Siri again
+**🔗 https://aiworldhq.com/article/making-your-everyday-easier-with-a-smarter-ai-voice-assistan.html**
+
+**Facebook:**
+Ever wish your phone could do a bit more than read the weather? The new AI voice assistant can help you juggle appointments and reminders hands‑free. https://aiworldhq.com/article/making-your-everyday-easier-with-a-smarter-ai-voice-assistan.html #productivity #voiceAI
+
+**Instagram:**
+Your morning just got a little smoother.
+A smarter voice assistant can add events, set timers and give you a quick summary of the day while you’re busy making coffee.
+#voiceassistant
+#productivity
+#australia
+#AItech
+Link in bio.
+
+*Kép-ötlet: A sunny kitchen with a person making breakfast, a smartphone on the counter displaying a subtle voice waveform.*
+
+---
+
+## School shooting survivor sues AI gun detection firm after system failed to spot weapon
+**🔗 https://aiworldhq.com/article/understanding-ai-s-limits-in-safety-what-you-need-to-know.html**
+
+**Facebook:**
+Wondering how reliable AI security tools are? This quick read explains where they work and where human eyes still matter, plus a real case that shows the stakes. https://aiworldhq.com/article/understanding-ai-s-limits-in-safety-what-you-need-to-know.html #AIsafety #AIaccuracy
+
+**Instagram:**
+When AI misses, lives are on the line.
+A survivor’s lawsuit reveals gaps in gun‑detection tech, reminding us why human vigilance stays essential.
+#AIsafety
+#CriticalTech
+#EverydayAI
+Link in bio.
+
+*Kép-ötlet: A close‑up of a security camera view with a blurred silhouette of a person, suggesting unseen risks.*
+
+---
+
+## This is your laptop… on AI
+**🔗 https://aiworldhq.com/article/what-an-ai-pc-actually-does-for-you-in-everyday-life.html**
+
+**Facebook:**
+Tired of noisy calls and messy photos? New AI‑powered laptops can clean up background noise and tidy up pictures automatically, so you can focus on the conversation. https://aiworldhq.com/article/what-an-ai-pc-actually-does-for-you-in-everyday-life.html #AIproductivity #TechTips
+
+**Instagram:**
+Clear voice, clean photos – without lifting a finger.
+Your next laptop can filter out café chatter and straighten up images on the fly, even when you’re offline. It’s like having a tiny assistant built‑in.
+#AIhardware
+#LaptopTips
+#Productivity
+#EverydayTech
+Link in bio.
+
+*Kép-ötlet: A calm workspace with a laptop open, showing a photo before and after AI cleanup side by side.*
+
+---
+
+## The Fitbit Air is a good wearable weighed down by a chatty AI "coach"
+**🔗 https://aiworldhq.com/article/how-your-smartwatch-can-become-your-ai-fitness-coach.html**
+
+**Facebook:**
+Ever wish your smartwatch could gently remind you to move or breathe without constant nagging? The new Fitbit Air shows how an AI coach can learn your routine and give subtle nudges, helping you stay on track 😊 https://aiworldhq.com/article/how-your-smartwatch-can-become-your-ai-fitness-coach.html #AIfitness #wearables
+
+**Instagram:**
+Let your watch be your quiet health buddy.
+It learns when you need a step reminder or a calm moment, then gives a gentle nudge without overwhelming you.
+#AIfitness
+#healthtech
+#wellness
+Link in bio.
+
+*Kép-ötlet: A close‑up of a wrist wearing the Fitbit Air, the sleek band complementing a casual outfit.*
+
+---
+
+## Google Workspace Weekly Recap - June 26, 2026
+**🔗 https://aiworldhq.com/article/fix-spreadsheet-formula-errors-with-ai-in-google-sheets.html**
+
+**Facebook:**
+Tired of spreadsheet errors holding you back? Learn how to fix formula mistakes quickly with a little help from AI. Read more https://aiworldhq.com/article/fix-spreadsheet-formula-errors-with-ai-in-google-sheets.html #productivity
+
+**Instagram:**
+Sick of spreadsheet stress? AI can help you diagnose and fix formula errors in no time. Save time and frustration! #google sheets
+Link in bio
+
+*Kép-ötlet: A person sitting at a desk with a laptop and a spreadsheet on the screen, looking relieved.*
 
 ---
 
