@@ -272,6 +272,17 @@ const UI_MAP = {
 };
 for (const l of SITE_LANGS) Object.assign(UI[l], UI_MAP[l] || {});
 
+// Lépés-kipipálás felfedezhetőség (2026-07-08): a user jelezte, nem derül ki,
+// hogy a lépés SZÁMÁRA kattintva késznek jelölhető. Ez a tipp-sor elmondja.
+const UI_STEPTIP = {
+  en: { stepTipLabel: 'Tip', stepTip: 'tap a step’s number when you finish it — a green tick appears and your browser remembers how far you got.' },
+  hu: { stepTipLabel: 'Tipp', stepTip: 'kattints egy lépés számára, ha kész vagy — zöld pipa jelenik meg, és a böngésződ megjegyzi, meddig jutottál.' },
+  es: { stepTipLabel: 'Consejo', stepTip: 'toca el número de un paso cuando lo termines — aparece una marca verde y tu navegador recuerda hasta dónde llegaste.' },
+  de: { stepTipLabel: 'Tipp', stepTip: 'tippe auf die Nummer eines Schritts, wenn du ihn erledigt hast — ein grüner Haken erscheint und dein Browser merkt sich, wie weit du warst.' },
+  fr: { stepTipLabel: 'Astuce', stepTip: 'appuie sur le numéro d’une étape quand tu l’as terminée — une coche verte apparaît et ton navigateur retient où tu en étais.' }
+};
+for (const l of SITE_LANGS) Object.assign(UI[l], UI_STEPTIP[l] || {});
+
 // Kereső feliratok (navbar kereső-overlay, 2026-07-07)
 // Kapcsolódó cikkek + Kezdd itt feliratok
 const UI_REL = {
@@ -1449,6 +1460,7 @@ function buildGuidePage(a) {
     </div>
     ${guideMapHtml(stepHeadings, artKeys)}
     ${intro ? `<div class="g-intro">${guideSectionHtml(intro)}</div>` : ''}
+    ${blocks ? `<p class="g-steptip">💡 <strong>${tr('stepTipLabel')}:</strong> ${escapeHtml(tr('stepTip'))}</p>` : ''}
     <div class="g-steps">${blocks}</div>
     ${xrefBox(a)}
     ${relatedBox(a)}
