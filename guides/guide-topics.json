@@ -534,7 +534,11 @@
       "icon": "🤖",
       "angle": "Find a GPT for your task and build your own — no coding.",
       "status": "done",
-      "written_at": "2026-06-24T20:01:26.712Z"
+      "written_at": "2026-06-24T20:01:26.712Z",
+      "source_news": {
+        "file": "ARTICLE_2026-07-07T17-51-02-626Z_apple-ml_FlowEval__Reference-Based_Evaluation_of_Generated_.json",
+        "title": "FlowEval: Reference-Based Evaluation of Generated User Interfaces"
+      }
     },
     {
       "id": "gemini-images",
@@ -1636,11 +1640,12 @@
       "audience": "personal",
       "level": "beginner",
       "angle": "Play the same songs throughout the house with one voice command.",
-      "status": "todo",
+      "status": "done",
       "icon": "🤖",
       "priority": "balance",
       "proposed_at": "2026-07-05T20:31:11.137Z",
-      "proposed_by": "guide-balance"
+      "proposed_by": "guide-balance",
+      "written_at": "2026-07-08T01:47:33.428Z"
     },
     {
       "id": "set-up-alexa-to-monitor-and-report-daily-energy-usage",
@@ -1650,11 +1655,12 @@
       "audience": "both",
       "level": "beginner",
       "angle": "Get a nightly summary of electricity consumption to save on bills.",
-      "status": "todo",
+      "status": "done",
       "icon": "🤖",
       "priority": "balance",
       "proposed_at": "2026-07-05T20:31:11.137Z",
-      "proposed_by": "guide-balance"
+      "proposed_by": "guide-balance",
+      "written_at": "2026-07-08T01:47:36.345Z"
     },
     {
       "id": "generate-a-quick-faq-page-for-a-small-business-website-using",
@@ -1664,11 +1670,12 @@
       "audience": "business",
       "level": "beginner",
       "angle": "Answer customers’ common questions without writing everything yourself.",
-      "status": "todo",
+      "status": "done",
       "icon": "🤖",
       "priority": "balance",
       "proposed_at": "2026-07-05T20:31:11.137Z",
-      "proposed_by": "guide-balance"
+      "proposed_by": "guide-balance",
+      "written_at": "2026-07-08T01:47:49.150Z"
     },
     {
       "id": "organise-your-favourite-recipes-with-perplexity-q-a",
@@ -1678,11 +1685,12 @@
       "audience": "personal",
       "level": "beginner",
       "angle": "Ask Perplexity to store and retrieve recipes in a searchable space.",
-      "status": "todo",
+      "status": "done",
       "icon": "🤖",
       "priority": "balance",
       "proposed_at": "2026-07-05T20:31:11.137Z",
-      "proposed_by": "guide-balance"
+      "proposed_by": "guide-balance",
+      "written_at": "2026-07-08T01:48:00.591Z"
     },
     {
       "id": "plan-a-home-renovation-budget-using-perplexity-s-data-lookup",
@@ -1692,11 +1700,12 @@
       "audience": "personal",
       "level": "beginner",
       "angle": "Get cost estimates for materials and labour with AI‑sourced figures.",
-      "status": "todo",
+      "status": "done",
       "icon": "🤖",
       "priority": "balance",
       "proposed_at": "2026-07-05T20:31:11.137Z",
-      "proposed_by": "guide-balance"
+      "proposed_by": "guide-balance",
+      "written_at": "2026-07-08T01:48:11.275Z"
     },
     {
       "id": "create-a-simple-budget-spreadsheet-with-perplexity-s-suggest",
@@ -1706,11 +1715,12 @@
       "audience": "both",
       "level": "beginner",
       "angle": "Let Perplexity suggest categories and formulas for your monthly budget.",
-      "status": "todo",
+      "status": "done",
       "icon": "🤖",
       "priority": "balance",
       "proposed_at": "2026-07-05T20:31:11.137Z",
-      "proposed_by": "guide-balance"
+      "proposed_by": "guide-balance",
+      "written_at": "2026-07-08T01:48:20.968Z"
     },
     {
       "id": "generate-ai-powered-tweet-threads-on-x-with-grok",
@@ -1720,11 +1730,12 @@
       "audience": "personal",
       "level": "beginner",
       "angle": "Compose a series of engaging tweets in one go.",
-      "status": "todo",
+      "status": "done",
       "icon": "🤖",
       "priority": "balance",
       "proposed_at": "2026-07-05T20:31:11.137Z",
-      "proposed_by": "guide-balance"
+      "proposed_by": "guide-balance",
+      "written_at": "2026-07-08T01:49:15.197Z"
     },
     {
       "id": "brainstorm-product-names-for-a-new-startup-using-grok-on-x",
@@ -1948,6 +1959,76 @@
       "icon": "📝",
       "priority": "balance",
       "proposed_at": "2026-07-07T02:10:22.545Z",
+      "proposed_by": "guide-balance"
+    },
+    {
+      "id": "how-to-turn-a-messy-email-into-a-clear-bullet-point-list-wit",
+      "company": "Hugging Face",
+      "tool": "Hugging Face Transformers",
+      "title": "How to turn a messy email into a clear bullet-point list with Hugging Face’s free summarizer",
+      "audience": "both",
+      "level": "beginner",
+      "angle": "one practical sentence",
+      "status": "todo",
+      "icon": "📧",
+      "priority": "balance",
+      "proposed_at": "2026-07-08T01:49:05.965Z",
+      "proposed_by": "guide-balance"
+    },
+    {
+      "id": "build-a-personal-study-buddy-chatbot-in-15-minutes-using-hug",
+      "company": "Hugging Face",
+      "tool": "Hugging Face Spaces",
+      "title": "Build a personal study-buddy chatbot in 15 minutes using Hugging Face Spaces (no code)",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "one practical sentence",
+      "status": "todo",
+      "icon": "🎓",
+      "priority": "balance",
+      "proposed_at": "2026-07-08T01:49:05.965Z",
+      "proposed_by": "guide-balance"
+    },
+    {
+      "id": "use-hugging-face-s-inference-api-to-check-your-resume-for-at",
+      "company": "Hugging Face",
+      "tool": "Hugging Face Inference API",
+      "title": "Use Hugging Face’s Inference API to check your resume for ATS-friendly keywords",
+      "audience": "business",
+      "level": "beginner",
+      "angle": "one practical sentence",
+      "status": "todo",
+      "icon": "📄",
+      "priority": "balance",
+      "proposed_at": "2026-07-08T01:49:05.965Z",
+      "proposed_by": "guide-balance"
+    },
+    {
+      "id": "turn-a-voice-memo-into-a-polished-meeting-summary-with-huggi",
+      "company": "Hugging Face",
+      "tool": "Hugging Face Transformers",
+      "title": "Turn a voice memo into a polished meeting summary with Hugging Face’s free speech-to-text",
+      "audience": "both",
+      "level": "beginner",
+      "angle": "one practical sentence",
+      "status": "todo",
+      "icon": "🎤",
+      "priority": "balance",
+      "proposed_at": "2026-07-08T01:49:05.965Z",
+      "proposed_by": "guide-balance"
+    },
+    {
+      "id": "create-a-tiny-ai-weather-helper-widget-for-your-blog-with-hu",
+      "company": "Hugging Face",
+      "tool": "Hugging Face Widgets",
+      "title": "Create a tiny AI weather-helper widget for your blog with Hugging Face widgets",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "one practical sentence",
+      "status": "todo",
+      "icon": "🌦️",
+      "priority": "balance",
+      "proposed_at": "2026-07-08T01:49:05.965Z",
       "proposed_by": "guide-balance"
     }
   ]

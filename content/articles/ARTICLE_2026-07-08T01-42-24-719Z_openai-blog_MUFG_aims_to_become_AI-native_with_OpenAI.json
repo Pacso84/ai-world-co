@@ -1,0 +1,59 @@
+{
+  "_meta": {
+    "written_at": "2026-07-08T01:44:10.193Z",
+    "writer_provider": "mistral",
+    "writer_model": "mistral-small-latest",
+    "writer_cost_usd": 0.0030106000000000004,
+    "original_draft": "2026-07-08T01-42-24-719Z_openai-blog_MUFG_aims_to_become_AI-native_with_OpenAI.json",
+    "source_id": "openai-blog",
+    "source_name": "OpenAI Blog (hivatalos)",
+    "source_link": "https://openai.com/index/mufg",
+    "status": "published",
+    "rejected_at": "2026-07-08T01:43:03.956Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 422
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "This article effectively explains how to use AI for note organisation in a clear, friendly, and accessible manner. The instructions are easy to follow for beginners, and the structure meets all brand requirements.",
+      "_aiCost": 0.0036821999999999996,
+      "_provider": "google",
+      "_model": "gemini-2.5-flash",
+      "_attempts": 1
+    },
+    "reason": "Salvaged from a partial AI response.",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-07-08T01-42-24-719Z_openai-blog_MUFG_aims_to_become_AI-native_with_OpenAI.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-07-08T01:44:57.332Z",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-07-08T01:47:23.467Z",
+    "guide_worthy": false,
+    "pairing_reason": "article describes a generic AI writing use case without naming a specific tool or feature",
+    "seo": {
+      "meta_description": "Struggling with messy notes? Learn how to turn scribbled ideas into a polished report using AI in minutes—no rewriting needed.",
+      "keywords": [
+        "how to use AI to organize notes",
+        "AI for turning notes into reports",
+        "best AI tools for note cleanup",
+        "AI writing assistant for messy notes",
+        "automate report writing with AI"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add a step-by-step example of a prompt to improve clarity for readers",
+        "Include a short comparison of 2-3 AI tools for note cleanup",
+        "Optimize the H2/H3 headings with keyword-rich phrases"
+      ],
+      "optimised_at": "2026-07-08T01:51:31.457Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Turn Your Messy Notes Into a Clear Report Using AI\"\nsubtitle: \"Paste your scribbled ideas into an AI tool and get back a polished document in minutes—no rewriting required.\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"ai-writing\", \"productivity\", \"meeting-notes\", \"document-editing\"]\n---\n\n# Turn Your Messy Notes Into a Clear Report Using AI\n\nYou’re scribbling ideas on a napkin during a meeting, or typing half-sentences into your phone while walking to the bus. By the time you sit down to write your report, your notes look like a toddler’s shopping list. What if you could paste that mess into an AI tool and get back a clear, professional document in minutes?\n\nThat’s exactly what AI can do for you. No coding, no fancy formatting—just paste, prompt, and polish.\n\n---\n\n## Start with a simple prompt\n\nThe trick is giving the AI a clear instruction. Think of a **prompt** as the instruction you type to the AI—like handing a rough draft to a helpful editor and saying, “Make this readable and professional.”\n\nHere’s a prompt you can copy and paste right now:\n\n> “Turn these rough notes into a clear, professional report. Keep the key points, fix spelling and grammar, and organise it with headings. Don’t add new ideas—just make what’s here clearer and more readable.”\n\nPaste your messy notes after the prompt. No need to clean them up first.\n\n---\n\n## Try these three quick edits\n\nOnce you’ve got your polished draft, use AI to make it even better:\n\n- **Shorten it**: Add “Make this report concise—keep it under 300 words” to your prompt.\n- **Add structure**: Say “Add headings like ‘Key Points’ and ‘Next Steps’.”\n- **Tone it up**: Ask “Rewrite this in a friendly but professional tone.”\n\nEach of these takes one extra sentence in your prompt. No manual editing required.\n\n---\n\n## What this means for you\n\n- **In everyday life**: Got a messy grocery list or party-planning scribble? Paste it in and ask AI to turn it into a clean plan.\n- **For your business or work**: Use AI to clean up meeting notes, client emails, or brainstorming scribbles before sharing them with your team.\n- **If you're just getting started**: Start with a simple prompt like the one above. No setup, no training—just paste and go.\n\n---\n\nYou don’t need to be a writer to look polished. Paste your rough notes, tweak your prompt, and let AI do the heavy lifting. Try it today—your future self will thank you for the saved time and clearer thinking.",
+  "original_title": "MUFG aims to become AI-native with OpenAI"
+}

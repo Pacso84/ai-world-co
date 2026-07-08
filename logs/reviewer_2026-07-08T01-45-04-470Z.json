@@ -1,0 +1,55 @@
+{
+  "started_at": "2026-07-08T01:44:21.040Z",
+  "total": 6,
+  "passed": 2,
+  "failed": 4,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.025505299999999998,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-07-07T17-51-01-246Z_aws-ml_Build_a_serverless_image_editing_agent_with_Amazon.json",
+      "rejected": "REJECTED_2026-07-07T17-51-01-246Z_aws-ml_Build_a_serverless_image_editing_agent_with_Amazon.json",
+      "decision": "FAIL",
+      "score": 6,
+      "cost_usd": 0.0043579
+    },
+    {
+      "writer": "WRITER_2026-07-07T17-51-02-626Z_apple-ml_MT-EditFlow__Reinforcement_Learning_for_Multi-Turn.json",
+      "article": "ARTICLE_2026-07-07T17-51-02-626Z_apple-ml_MT-EditFlow__Reinforcement_Learning_for_Multi-Turn.json",
+      "decision": "PASS",
+      "score": 7,
+      "cost_usd": 0.0044022
+    },
+    {
+      "writer": "WRITER_2026-07-07T17-51-02-626Z_salesforce_Meet_the_Next_Generation_of_Builders__How_They_Wor.json",
+      "rejected": "REJECTED_2026-07-07T17-51-02-626Z_salesforce_Meet_the_Next_Generation_of_Builders__How_They_Wor.json",
+      "decision": "FAIL",
+      "score": 5,
+      "cost_usd": 0.0043546
+    },
+    {
+      "writer": "WRITER_2026-07-08T01-42-24-718Z_openai-blog_Australian_Payments_Plus_moves_faster_with_ChatGPT.json",
+      "rejected": "REJECTED_2026-07-08T01-42-24-718Z_openai-blog_Australian_Payments_Plus_moves_faster_with_ChatGPT.json",
+      "decision": "FAIL",
+      "score": 7,
+      "cost_usd": 0.0043302
+    },
+    {
+      "writer": "WRITER_2026-07-08T01-42-24-719Z_openai-blog_MUFG_aims_to_become_AI-native_with_OpenAI.json",
+      "article": "ARTICLE_2026-07-08T01-42-24-719Z_openai-blog_MUFG_aims_to_become_AI-native_with_OpenAI.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0036821999999999996
+    },
+    {
+      "writer": "WRITER_2026-07-08T01-42-24-720Z_google-workspace_Fill_with_Gemini_in_Sheets_now_available_in_11_add.json",
+      "rejected": "REJECTED_2026-07-08T01-42-24-720Z_google-workspace_Fill_with_Gemini_in_Sheets_now_available_in_11_add.json",
+      "decision": "FAIL",
+      "score": 6,
+      "cost_usd": 0.0043782
+    }
+  ],
+  "finished_at": "2026-07-08T01:45:04.470Z",
+  "duration_seconds": 43.43
+}

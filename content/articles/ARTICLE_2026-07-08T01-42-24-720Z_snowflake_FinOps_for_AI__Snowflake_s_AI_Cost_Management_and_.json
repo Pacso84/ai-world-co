@@ -1,0 +1,55 @@
+{
+  "_meta": {
+    "written_at": "2026-07-08T01:42:28.038Z",
+    "writer_provider": "cerebras",
+    "writer_model": "gpt-oss-120b",
+    "writer_cost_usd": 0,
+    "original_draft": "2026-07-08T01-42-24-720Z_snowflake_FinOps_for_AI__Snowflake_s_AI_Cost_Management_and_.json",
+    "source_id": "snowflake",
+    "source_name": "Snowflake Blog (hivatalos)",
+    "source_link": "https://www.snowflake.com/content/snowflake-site/global/en/blog/ai-finops-cost-management-governance-snowflake",
+    "status": "published",
+    "published_at": "2026-07-08T01:43:17.840Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 710
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "The article is well-structured, friendly, and clearly explains technical terms. It adheres",
+      "_salvaged": true,
+      "_aiCost": 0.0043504,
+      "_provider": "google",
+      "_model": "gemini-2.5-flash",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-07-08T01:47:24.104Z",
+    "guide_worthy": false,
+    "pairing_reason": "Article describes a suite of tools without naming a single specific feature/tool to use",
+    "seo": {
+      "meta_description": "Learn how Snowflake’s FinOps tools help track and control AI spending in your business with simple budgeting and monitoring steps.",
+      "keywords": [
+        "Snowflake FinOps tools",
+        "AI cost management",
+        "manage AI spending",
+        "cloud AI budgeting",
+        "track AI expenses",
+        "Snowflake AI dashboard"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add a step-by-step example of setting a budget limit in the dashboard",
+        "Include a comparison of Snowflake’s FinOps with other cloud cost tools",
+        "Optimize the H2 subheadings for better readability and keyword placement"
+      ],
+      "optimised_at": "2026-07-08T01:51:32.638Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Managing AI Spend with Snowflake’s FinOps Tools\"\nsubtitle: \"A practical guide to budgeting, tracking, and governing AI usage in your organisation\"\ncategory: \"how-to\"\naudience: \"business\"\nread_time_minutes: 5\ntags: [\"AI cost management\", \"FinOps\", \"Snowflake\", \"governance\", \"budgeting\"]\n---\n\n# Keep AI Costs Under Control with Snowflake’s FinOps Suite\n\nImagine you’re reviewing the monthly budget and notice a mysterious rise in AI‑related expenses. It’s easy to overlook hidden AI spend when you’re juggling multiple cloud services. Snowflake’s new FinOps (financial operations – the practice of managing cloud costs like a disciplined budget) tools let you see exactly where AI dollars are going, set limits, and keep spending in line with your organisation’s goals.\n\n## Getting Started with Snowflake’s AI Cost Dashboard\n\n1. **Log into the Snowflake console** – the web‑based interface where you manage data warehouses, compute resources, and now AI workloads.  \n2. **Navigate to the “FinOps” tab** – this is where Snowflake centralises cost‑management features.  \n3. **Enable the AI Cost Management module** – a simple toggle that activates granular tracking for every AI model you run through Snowflake’s native or external services.\n\nWhen the module is active, Snowflake begins to capture three key data points for each AI request:\n\n- **Compute usage** – how many virtual CPUs (vCPU) and memory were consumed.  \n- **Token count** – a token (think of it as a piece of text about four characters long) is the unit an LLM (large language model – like the engine behind ChatGPT) processes.  \n- **Model type** – which AI model (e.g., Claude, Gemini, or a custom‑trained model) was called.\n\nThese metrics feed into a real‑time dashboard that displays cost per model, per department, and per user.\n\n## Setting Budgets and Per‑User Quotas\n\n### Define an AI budget\n\n1. **Open the “Budgets” panel** within the FinOps tab.  \n2. **Create a new budget** and label it (e.g., “Marketing AI Campaign”).  \n3. **Enter a monthly limit** in your chosen currency (AUD or USD). Snowflake will automatically convert usage into the same unit, so you always compare apples to apples.  \n4. **Choose an alert threshold** – you can receive an email when spend reaches 80 % of the budget, and a hard stop at 100 % if you prefer.\n\n### Apply per‑user quotas\n\n1. **Go to “User Quotas”** and select the team or individual.  \n2. **Set a token‑per‑day limit** – for example, 500 000 tokens per day for a data‑science analyst.  \n3. **Assign a compute‑hour ceiling** – this caps how many CPU hours a user can consume on AI tasks each month.  \n4. **Save the policy** – Snowflake enforces the limits automatically, preventing runaway costs without needing manual oversight.\n\n## Monitoring Usage with Granular Views\n\nThe dashboard offers several views to keep you in the loop:\n\n- **Team Overview** – shows total spend by department, letting you spot which groups are heavy AI users.  \n- **Model Breakdown** – compares costs across different LLMs, helping you decide if a cheaper open‑source model could replace a pricey proprietary one.  \n- **Time‑Series Graph** – visualises daily spend trends, instantly highlighting spikes that may require investigation.\n\nYou can also export the usage data as a CSV file to combine with your existing finance tools, or connect Snowflake’s API (a program‑to‑program communication channel) to pull the data into a custom reporting dashboard.\n\n## What this means for you\n\n- **Finance teams**: You now have a single source of truth for AI spend, making it easier to reconcile cloud invoices with internal budgets.  \n- **Department heads**: Set clear limits for your teams, preventing surprise charges when a project scales up quickly.  \n- **AI developers and data scientists**: Get immediate feedback on how many tokens or compute hours a query uses, encouraging more efficient prompting.  \n- **If you’re just starting**: Enable the FinOps module, create a modest pilot budget for one project, and watch the dashboard to understand your baseline spend.\n\n## Wrap‑up\n\nSnowflake’s FinOps tools turn AI cost management from a guessing game into a transparent, controllable process. By enabling the dashboard, setting budgets, and applying per‑user quotas, you can keep AI spending aligned with business objectives while still empowering teams to experiment. Today, log into Snowflake, flip the FinOps toggle, and set a small budget for a single AI experiment – you’ll see the impact in minutes.",
+  "original_title": "FinOps for AI: Snowflake's AI Cost Management and Governance Tools"
+}

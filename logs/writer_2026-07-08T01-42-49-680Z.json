@@ -1,0 +1,47 @@
+{
+  "started_at": "2026-07-08T01:42:25.241Z",
+  "drafts_total": 4,
+  "articles_written": 4,
+  "articles_failed": 0,
+  "total_cost_usd": 0.006013600000000001,
+  "by_article": [
+    {
+      "draft": "2026-07-08T01-42-24-720Z_snowflake_FinOps_for_AI__Snowflake_s_AI_Cost_Management_and_.json",
+      "writer_output": "WRITER_2026-07-08T01-42-24-720Z_snowflake_FinOps_for_AI__Snowflake_s_AI_Cost_Management_and_.json",
+      "success": true,
+      "cost_usd": 0,
+      "duration_ms": 2797,
+      "provider": "cerebras",
+      "model": "gpt-oss-120b"
+    },
+    {
+      "draft": "2026-07-08T01-42-24-720Z_google-workspace_Fill_with_Gemini_in_Sheets_now_available_in_11_add.json",
+      "writer_output": "WRITER_2026-07-08T01-42-24-720Z_google-workspace_Fill_with_Gemini_in_Sheets_now_available_in_11_add.json",
+      "success": true,
+      "cost_usd": 0,
+      "duration_ms": 2056,
+      "provider": "cerebras",
+      "model": "gpt-oss-120b"
+    },
+    {
+      "draft": "2026-07-08T01-42-24-719Z_openai-blog_MUFG_aims_to_become_AI-native_with_OpenAI.json",
+      "writer_output": "WRITER_2026-07-08T01-42-24-719Z_openai-blog_MUFG_aims_to_become_AI-native_with_OpenAI.json",
+      "success": true,
+      "cost_usd": 0.0029138000000000002,
+      "duration_ms": 8823,
+      "provider": "mistral",
+      "model": "mistral-small-latest"
+    },
+    {
+      "draft": "2026-07-08T01-42-24-718Z_openai-blog_Australian_Payments_Plus_moves_faster_with_ChatGPT.json",
+      "writer_output": "WRITER_2026-07-08T01-42-24-718Z_openai-blog_Australian_Payments_Plus_moves_faster_with_ChatGPT.json",
+      "success": true,
+      "cost_usd": 0.0030998,
+      "duration_ms": 10761,
+      "provider": "mistral",
+      "model": "mistral-small-latest"
+    }
+  ],
+  "finished_at": "2026-07-08T01:42:49.679Z",
+  "duration_seconds": 24.438
+}
