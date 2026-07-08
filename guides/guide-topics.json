@@ -98,7 +98,11 @@
       "angle": "Talk to it while cooking, commuting, tidying.",
       "status": "done",
       "icon": "💬",
-      "written_at": "2026-06-21T20:28:43.119Z"
+      "written_at": "2026-06-21T20:28:43.119Z",
+      "source_news": {
+        "file": "ARTICLE_2026-07-08T17-18-32-414Z_aws-ml_Manage_AI_applications_on_Mac_with_Jamf_s_AI_Gover.json",
+        "title": "Manage AI applications on Mac with Jamf’s AI Governance and Amazon Bedrock"
+      }
     },
     {
       "id": "gemini-getting-started",
@@ -2030,6 +2034,21 @@
       "priority": "balance",
       "proposed_at": "2026-07-08T01:49:05.965Z",
       "proposed_by": "guide-balance"
+    },
+    {
+      "id": "how-to-lock-in-lower-ai-costs-with-reserved-capacity",
+      "company": "OpenAI",
+      "tool": "Reserved Capacity",
+      "title": "How to Lock In Lower AI Costs with Reserved Capacity",
+      "audience": "both",
+      "level": "beginner",
+      "angle": "How to use reserved capacity to lower AI costs",
+      "status": "todo",
+      "icon": "🆕",
+      "source_news": {
+        "file": "ARTICLE_2026-07-08T10-06-26-611Z_together_Open__convenient_and_predictable__Introducing_Prov.json",
+        "title": "Open, convenient and predictable: Introducing Provisioned Throughput"
+      }
     }
   ]
 }

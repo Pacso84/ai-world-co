@@ -1,0 +1,92 @@
+{
+  "started_at": "2026-07-08T17:21:51.602Z",
+  "total": 12,
+  "passed": 2,
+  "failed": 10,
+  "auto_check_failed": 5,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.030361399999999997,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-07-08T17-18-31-601Z_nvidia-blog_NVIDIA_Nemotron_Achieves_Benchmark-Leading_Perform.json",
+      "decision": "FAIL",
+      "reason": "auto-check critical",
+      "skipped_ai": true
+    },
+    {
+      "writer": "WRITER_2026-07-08T17-18-31-601Z_openai-blog_Helping_K_12_educators_build_practical_AI_skills.json",
+      "decision": "FAIL",
+      "reason": "auto-check critical",
+      "skipped_ai": true
+    },
+    {
+      "writer": "WRITER_2026-07-08T17-18-31-601Z_openai-blog_Introducing_GPT-Live.json",
+      "decision": "FAIL",
+      "reason": "auto-check critical",
+      "skipped_ai": true
+    },
+    {
+      "writer": "WRITER_2026-07-08T17-18-31-602Z_aws-ml_Powering_scientific_discovery__BYOKG_and_GraphRAG_.json",
+      "decision": "FAIL",
+      "reason": "auto-check critical",
+      "skipped_ai": true
+    },
+    {
+      "writer": "WRITER_2026-07-08T17-18-31-602Z_github-ai_How_GitHub_Copilot_enables_zero_DNS_configuration_.json",
+      "decision": "FAIL",
+      "reason": "auto-check critical",
+      "skipped_ai": true
+    },
+    {
+      "writer": "WRITER_2026-07-08T17-18-31-602Z_microsoft-research_Flint__A_visualization_language_for_the_AI_era.json",
+      "rejected": "REJECTED_2026-07-08T17-18-31-602Z_microsoft-research_Flint__A_visualization_language_for_the_AI_era.json",
+      "decision": "FAIL",
+      "score": 4,
+      "cost_usd": 0.0042456
+    },
+    {
+      "writer": "WRITER_2026-07-08T17-18-31-603Z_aws-ml_Automatically_sort_and_prioritize_your_mailboxes_b.json",
+      "article": "ARTICLE_2026-07-08T17-18-31-603Z_aws-ml_Automatically_sort_and_prioritize_your_mailboxes_b.json",
+      "decision": "PASS",
+      "score": 7,
+      "cost_usd": 0.0043387
+    },
+    {
+      "writer": "WRITER_2026-07-08T17-18-32-414Z_aws-ml_Manage_AI_applications_on_Mac_with_Jamf_s_AI_Gover.json",
+      "article": "ARTICLE_2026-07-08T17-18-32-414Z_aws-ml_Manage_AI_applications_on_Mac_with_Jamf_s_AI_Gover.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0043216999999999995
+    },
+    {
+      "writer": "WRITER_2026-07-08T17-18-32-415Z_mistral-ai_Introducing_Robostral_Navigate_.json",
+      "rejected": "REJECTED_2026-07-08T17-18-32-415Z_mistral-ai_Introducing_Robostral_Navigate_.json",
+      "decision": "FAIL",
+      "score": 4,
+      "cost_usd": 0.004296
+    },
+    {
+      "writer": "WRITER_2026-07-08T17-18-32-415Z_sap_How_Natura__Co_Is_Transforming_Finance_with_Genera.json",
+      "rejected": "REJECTED_2026-07-08T17-18-32-415Z_sap_How_Natura__Co_Is_Transforming_Finance_with_Genera.json",
+      "decision": "FAIL",
+      "score": 8,
+      "cost_usd": 0.004387899999999999
+    },
+    {
+      "writer": "WRITER_2026-07-08T17-18-32-415Z_snowflake_ML_Jobs_in_Snowflake_Data_Clean_Rooms_Now_GA.json",
+      "rejected": "REJECTED_2026-07-08T17-18-32-415Z_snowflake_ML_Jobs_in_Snowflake_Data_Clean_Rooms_Now_GA.json",
+      "decision": "FAIL",
+      "score": 6,
+      "cost_usd": 0.0043992
+    },
+    {
+      "writer": "WRITER_2026-07-08T17-18-32-416Z_snowflake_Transforming_FP_A_with_AI_Modernization.json",
+      "rejected": "REJECTED_2026-07-08T17-18-32-416Z_snowflake_Transforming_FP_A_with_AI_Modernization.json",
+      "decision": "FAIL",
+      "score": 6,
+      "cost_usd": 0.0043723
+    }
+  ],
+  "finished_at": "2026-07-08T17:23:09.077Z",
+  "duration_seconds": 77.475
+}

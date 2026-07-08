@@ -31,7 +31,9 @@
     "https://openai.com/index/genebench-pro/case-studies",
     "https://openai.com/index/introducing-genebench-pro",
     "https://openai.com/index/australian-payments-plus",
-    "https://openai.com/index/mufg"
+    "https://openai.com/index/mufg",
+    "https://openai.com/index/k-12-educators-practical-skills",
+    "https://openai.com/index/introducing-gpt-live"
   ],
   "google-deepmind": [
     "https://deepmind.google/blog/fast-tracking-genetic-leads-to-reverse-cellular-aging/",
@@ -189,7 +191,9 @@
     "https://huggingface.co/blog/Photoroom/prx-part4-data",
     "https://huggingface.co/blog/microsoft/foundry-managed-compute",
     "https://huggingface.co/blog/amazon/one-click-to-sagemaker-studio",
-    "https://huggingface.co/blog/skypilot-hf-storage"
+    "https://huggingface.co/blog/skypilot-hf-storage",
+    "https://huggingface.co/blog/nvidia/open-data-for-agents",
+    "https://huggingface.co/blog/native-speed-vllm-transformers-backend"
   ],
   "hackernews-ai": [
     "https://www.theguardian.com/technology/2026/jun/07/billions-spent-hypothetical-returns-the-ai-boom-explained-with-six-charts",
@@ -232,7 +236,8 @@
     "https://blogs.nvidia.com/blog/open-models-icml-2026/",
     "https://blogs.nvidia.com/blog/nations-deploy-ai-strategic-priorities/",
     "https://blogs.nvidia.com/blog/hugging-face-lerobot-models-frameworks-open-robotics/",
-    "https://blogs.nvidia.com/blog/nvidia-vera-max-single-threaded-cpu-at-scale/"
+    "https://blogs.nvidia.com/blog/nvidia-vera-max-single-threaded-cpu-at-scale/",
+    "https://blogs.nvidia.com/blog/nemotron-langchain-agents-open-stack/"
   ],
   "google-workspace": [
     "http://workspaceupdates.googleblog.com/2026/06/google-vault-now-supports-retention-rules-and-litigation-holds-for-Gemini-app.html",
@@ -298,7 +303,8 @@
     "https://www.microsoft.com/en-us/research/blog/mimalloc-a-high-performance-scalable-memory-allocator-for-the-modern-era/",
     "https://www.microsoft.com/en-us/research/blog/gridsfm-a-new-small-foundation-model-for-the-electric-grid/",
     "https://www.microsoft.com/en-us/research/blog/memora-a-harmonic-memory-representation-balancing-abstraction-and-specificity/",
-    "https://www.microsoft.com/en-us/research/blog/skillopt-agent-skills-as-trainable-parameters/"
+    "https://www.microsoft.com/en-us/research/blog/skillopt-agent-skills-as-trainable-parameters/",
+    "https://www.microsoft.com/en-us/research/blog/flint-a-visualization-language-for-the-ai-era/"
   ],
   "github-ai": [
     "https://github.blog/security/making-secret-scanning-more-trustworthy-reducing-false-positives-at-scale/",
@@ -313,7 +319,8 @@
     "https://github.blog/ai-and-ml/llms/accelerating-researchers-and-developers-building-multilingual-ai-with-a-new-open-dataset/",
     "https://github.blog/developer-skills/github/i-automated-my-job-and-it-made-me-a-better-leader/",
     "https://github.blog/ai-and-ml/github-copilot/evaluating-performance-and-efficiency-of-the-github-copilot-agentic-harness-across-models-and-tasks/",
-    "https://github.blog/ai-and-ml/how-we-made-github-copilot-cli-more-selective-about-delegation/"
+    "https://github.blog/ai-and-ml/how-we-made-github-copilot-cli-more-selective-about-delegation/",
+    "https://github.blog/ai-and-ml/github-copilot/how-github-copilot-enables-zero-dns-configuration-for-github-pages/"
   ],
   "aws-ml": [
     "https://aws.amazon.com/blogs/machine-learning/spot-trends-faster-sort-smarter-unlocking-sparklines-and-custom-sort-in-amazon-quick/",
@@ -377,7 +384,12 @@
     "https://aws.amazon.com/blogs/machine-learning/build-a-serverless-image-editing-agent-with-amazon-bedrock-agentcore-harness/",
     "https://aws.amazon.com/blogs/machine-learning/monitoring-discriminative-ml-models-using-amazon-sagemaker-ai-with-mlflow/",
     "https://aws.amazon.com/blogs/machine-learning/build-an-ai-powered-aws-support-companion-with-amazon-bedrock-agentcore/",
-    "https://aws.amazon.com/blogs/machine-learning/how-aws-finance-teams-reclaimed-hundreds-of-hours-with-amazon-quick/"
+    "https://aws.amazon.com/blogs/machine-learning/how-aws-finance-teams-reclaimed-hundreds-of-hours-with-amazon-quick/",
+    "https://aws.amazon.com/blogs/machine-learning/powering-scientific-discovery-byokg-and-graphrag-for-intelligent-pharmaceutical-research/",
+    "https://aws.amazon.com/blogs/machine-learning/automatically-sort-and-prioritize-your-mailboxes-by-using-amazon-bedrock/",
+    "https://aws.amazon.com/blogs/machine-learning/building-and-connecting-a-production-ready-ecommerce-mcp-server-using-amazon-bedrock-agentcore-and-mistral-ai-studio/",
+    "https://aws.amazon.com/blogs/machine-learning/securing-amazon-bedrock-agentcore-runtime-with-aws-waf/",
+    "https://aws.amazon.com/blogs/machine-learning/manage-ai-applications-on-mac-with-jamf-ai-governance-and-amazon-bedrock/"
   ],
   "mistral-ai": [
     "https://mistral.ai/news/ai-now-summit-2026/",
@@ -390,7 +402,8 @@
     "https://mistral.ai/news/accelerate-ai-native-industry/",
     "https://mistral.ai/news/vibe-remote-agents-mistral-medium-3-5/",
     "https://mistral.ai/news/connectors/",
-    "https://mistral.ai/news/leanstral-1-5/"
+    "https://mistral.ai/news/leanstral-1-5/",
+    "https://mistral.ai/news/robostral-navigate/"
   ],
   "alibaba-qwen": [
     "https://qwenlm.github.io/blog/qwen3guard/",
@@ -454,7 +467,9 @@
     "https://www.salesforce.com/news/press-releases/2026/07/02/ai-for-good-global-commission-announcement/",
     "https://www.salesforce.com/news/press-releases/2026/07/07/1-billion-ai-transformation-investment-switzerland/",
     "https://www.salesforce.com/news/stories/futureforce-next-generation-of-builders/",
-    "https://www.salesforce.com/news/press-releases/2026/07/08/us-air-force-missionforce-modernize-sustainment-operations/"
+    "https://www.salesforce.com/news/press-releases/2026/07/08/us-air-force-missionforce-modernize-sustainment-operations/",
+    "https://www.salesforce.com/news/linked-content/slackbot-can-now-do-anything-salesforce-can-just-ask/",
+    "https://www.salesforce.com/news/stories/cutting-inference-spend-by-right-sizing-models/"
   ],
   "sap": [
     "https://news.sap.com/2026/07/advanced-success-plan-for-sap-cx-offers-utilities/",
@@ -471,7 +486,8 @@
     "https://news.sap.com/2026/07/fall-in-love-with-problem-not-solution-ai-real-impact/",
     "https://news.sap.com/2026/07/sap-completes-dremio-acquisition/",
     "https://news.sap.com/2026/07/sap-customer-checkout-viva-com-advancing-payment-processes-pos-checkout-experience/",
-    "https://news.sap.com/2026/07/how-sap-is-reinventing-people-analytics/"
+    "https://news.sap.com/2026/07/how-sap-is-reinventing-people-analytics/",
+    "https://news.sap.com/2026/07/natura-co-transforming-finance-generative-ai/"
   ],
   "databricks": [
     "https://www.databricks.com/blog/celebrating-winners-2026-built-databricks-startup-challenge",
@@ -505,7 +521,9 @@
     "https://www.snowflake.com/content/snowflake-site/global/en/blog/snowflake-nvidia-bionemo-agentic-ai-life-sciences",
     "https://www.snowflake.com/content/snowflake-site/global/en/blog/snowflake-marketing-ai-council-ai-native-team",
     "https://www.snowflake.com/content/snowflake-site/global/en/blog/mmds-ai-governance-framework-agentic-enterprise",
-    "https://www.snowflake.com/content/snowflake-site/global/en/blog/ai-finops-cost-management-governance-snowflake"
+    "https://www.snowflake.com/content/snowflake-site/global/en/blog/ai-finops-cost-management-governance-snowflake",
+    "https://www.snowflake.com/content/snowflake-site/global/en/blog/ml-jobs-snowflake-data-clean-rooms",
+    "https://www.snowflake.com/content/snowflake-site/global/en/blog/fpa-ai-modernization-snowplan-v2"
   ],
   "together": [
     "https://www.together.ai/blog/announcing-our-series-c",
@@ -544,7 +562,8 @@
     "https://research.ibm.com/blog/fast-inference-mixed-gpus?utm_medium=rss&utm_source=rss",
     "https://research.ibm.com/blog/credits-recipients?utm_medium=rss&utm_source=rss",
     "https://research.ibm.com/blog/ai-for-qec?utm_medium=rss&utm_source=rss",
-    "https://research.ibm.com/blog/molten-salts-fusion-quantum?utm_medium=rss&utm_source=rss"
+    "https://research.ibm.com/blog/molten-salts-fusion-quantum?utm_medium=rss&utm_source=rss",
+    "https://research.ibm.com/blog/whats-new-q2-2026?utm_medium=rss&utm_source=rss"
   ],
   "ntt-research": [
     "https://ntt-research.com/ntt-researchers-contribute-17-papers-to-eurocrypt-2026/",
