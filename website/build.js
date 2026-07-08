@@ -94,31 +94,31 @@ const LANG_NAME = { en: 'English', hu: 'Magyar', es: 'Español', de: 'Deutsch', 
 // UI-szótár (a honlap "váza" — menü, hero, feliratok). A cikkek tartalmát a
 // fordító agent fordítja; ezek a fix felületi szövegek.
 const UI = {
-  en: { news: 'News', guides: '📘 Guides', tools: '🧰 AI tools', support: '☕ Support',
+  en: { news: 'News', guides: 'Guides', tools: 'AI tools', support: 'Support',
         heroKicker: 'Issue 01', heroTitle: 'Everyday AI, <em>explained simply.</em>',
         minRead: 'min read', stepByStep: 'Step-by-step',
         guidesTitle: 'Everyday AI <em>skills</em>', guidesTag: 'Plain-language how-tos that work with any assistant — ChatGPT, Gemini, Claude or others.',
         toolsTitle: 'Guides by <em>AI tool</em>', toolsTag: 'Pick your assistant for tool-specific how-tos.',
         footerNote: 'Written and curated by autonomous AI agents · Reviewed for accuracy', back: '← Back', language: 'Language' },
-  hu: { news: 'Hírek', guides: '📘 Útmutatók', tools: '🧰 AI eszközök', support: '☕ Támogatás',
+  hu: { news: 'Hírek', guides: 'Útmutatók', tools: 'AI eszközök', support: 'Támogatás',
         heroKicker: '01. szám', heroTitle: 'A hétköznapi AI, <em>érthetően.</em>',
         minRead: 'perc olvasás', stepByStep: 'Lépésről lépésre',
         guidesTitle: 'Hétköznapi AI <em>készségek</em>', guidesTag: 'Közérthető útmutatók, amelyek bármelyik asszisztenssel működnek — ChatGPT, Gemini, Claude és társai.',
         toolsTitle: 'Útmutatók <em>AI eszköz</em> szerint', toolsTag: 'Válaszd ki az asszisztensed az eszköz-specifikus útmutatókhoz.',
         footerNote: 'Önálló AI-ügynökök írják és gondozzák · Pontosságra ellenőrizve', back: '← Vissza', language: 'Nyelv' },
-  es: { news: 'Noticias', guides: '📘 Guías', tools: '🧰 Herramientas IA', support: '☕ Apóyanos',
+  es: { news: 'Noticias', guides: 'Guías', tools: 'Herramientas IA', support: 'Apóyanos',
         heroKicker: 'Número 01', heroTitle: 'La IA cotidiana, <em>explicada fácil.</em>',
         minRead: 'min de lectura', stepByStep: 'Paso a paso',
         guidesTitle: 'Habilidades de <em>IA cotidiana</em>', guidesTag: 'Guías en lenguaje claro que funcionan con cualquier asistente — ChatGPT, Gemini, Claude y más.',
         toolsTitle: 'Guías por <em>herramienta de IA</em>', toolsTag: 'Elige tu asistente para guías específicas.',
         footerNote: 'Escrito y curado por agentes de IA autónomos · Revisado para mayor precisión', back: '← Volver', language: 'Idioma' },
-  de: { news: 'News', guides: '📘 Anleitungen', tools: '🧰 KI-Tools', support: '☕ Unterstützen',
+  de: { news: 'News', guides: 'Anleitungen', tools: 'KI-Tools', support: 'Unterstützen',
         heroKicker: 'Ausgabe 01', heroTitle: 'Alltags-KI, <em>einfach erklärt.</em>',
         minRead: 'Min. Lesezeit', stepByStep: 'Schritt für Schritt',
         guidesTitle: 'Alltags-<em>KI-Können</em>', guidesTag: 'Verständliche Anleitungen für jeden Assistenten — ChatGPT, Gemini, Claude und mehr.',
         toolsTitle: 'Anleitungen nach <em>KI-Tool</em>', toolsTag: 'Wähle deinen Assistenten für tool-spezifische Anleitungen.',
         footerNote: 'Geschrieben und kuratiert von autonomen KI-Agenten · Auf Richtigkeit geprüft', back: '← Zurück', language: 'Sprache' },
-  fr: { news: 'Actus', guides: '📘 Guides', tools: '🧰 Outils IA', support: '☕ Soutenir',
+  fr: { news: 'Actus', guides: 'Guides', tools: 'Outils IA', support: 'Soutenir',
         heroKicker: 'Numéro 01', heroTitle: "L'IA au quotidien, <em>expliquée simplement.</em>",
         minRead: 'min de lecture', stepByStep: 'Pas à pas',
         guidesTitle: 'Compétences <em>IA du quotidien</em>', guidesTag: 'Des guides clairs qui marchent avec tout assistant — ChatGPT, Gemini, Claude et autres.',
@@ -334,11 +334,11 @@ for (const l of SITE_LANGS) Object.assign(UI[l], UI_SEARCH[l] || {});
 
 // AI-kisszótár feliratok (2026-07-08)
 const UI_GLOSS = {
-  en: { glossNav: '📖 Dictionary', glossTitle: 'The little AI dictionary', glossTag: 'Every AI word you keep seeing — explained in one breath, no jargon.' },
-  hu: { glossNav: '📖 Kisszótár', glossTitle: 'AI-kisszótár', glossTag: 'Minden AI-szó, amivel folyton találkozol — egy szuszra, szakzsargon nélkül elmagyarázva.' },
-  es: { glossNav: '📖 Diccionario', glossTitle: 'El pequeño diccionario de la IA', glossTag: 'Todas las palabras de IA que ves por todas partes — explicadas de un tirón, sin jerga.' },
-  de: { glossNav: '📖 Wörterbuch', glossTitle: 'Das kleine KI-Wörterbuch', glossTag: 'Alle KI-Begriffe, die dir ständig begegnen — in einem Atemzug erklärt, ohne Fachchinesisch.' },
-  fr: { glossNav: '📖 Dico', glossTitle: 'Le petit dico de l’IA', glossTag: 'Tous les mots de l’IA que vous croisez partout — expliqués d’un trait, sans jargon.' }
+  en: { glossNav: 'Dictionary', glossTitle: 'The little AI dictionary', glossTag: 'Every AI word you keep seeing — explained in one breath, no jargon.' },
+  hu: { glossNav: 'Kisszótár', glossTitle: 'AI-kisszótár', glossTag: 'Minden AI-szó, amivel folyton találkozol — egy szuszra, szakzsargon nélkül elmagyarázva.' },
+  es: { glossNav: 'Diccionario', glossTitle: 'El pequeño diccionario de la IA', glossTag: 'Todas las palabras de IA que ves por todas partes — explicadas de un tirón, sin jerga.' },
+  de: { glossNav: 'Wörterbuch', glossTitle: 'Das kleine KI-Wörterbuch', glossTag: 'Alle KI-Begriffe, die dir ständig begegnen — in einem Atemzug erklärt, ohne Fachchinesisch.' },
+  fr: { glossNav: 'Dico', glossTitle: 'Le petit dico de l’IA', glossTag: 'Tous les mots de l’IA que vous croisez partout — expliqués d’un trait, sans jargon.' }
 };
 for (const l of SITE_LANGS) Object.assign(UI[l], UI_GLOSS[l] || {});
 

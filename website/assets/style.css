@@ -63,11 +63,11 @@ body {
 }
 .navbar__mark { width: 30px; height: 30px; display: block; }
 .navbar__dot { color: var(--accent); }
-.navbar__nav { display: flex; gap: 24px; margin-left: auto; }
+.navbar__nav { display: flex; gap: 26px; margin-left: auto; align-items: center; }
 .navbar__nav a {
   font-size: 14px; font-weight: 600; color: var(--ink-soft);
   text-decoration: none; position: relative; padding: 4px 0;
-  transition: color .15s ease;
+  transition: color .15s ease; white-space: nowrap; line-height: 1;
 }
 .navbar__nav a::after {
   content: ""; position: absolute; left: 0; bottom: -1px; width: 0; height: 2px;
@@ -76,6 +76,49 @@ body {
 .navbar__nav a:hover { color: var(--ink); }
 .navbar__nav a:hover::after, .navbar__nav a.nav--active::after { width: 100%; }
 .navbar__nav a.nav--active { color: var(--ink); }
+
+/* ---------- HAMBURGER + MOBIL NAV (2026-07-08) ---------- */
+/* Desktopon a burger rejtve; a menü egy soros. Mobilon a burger nyit egy
+   lenyíló panelt (a JS a .navbar-ra teszi a .navbar--open osztályt). */
+.navbar__burger {
+  display: none; flex-direction: column; justify-content: center; gap: 5px;
+  width: 42px; height: 42px; padding: 0; flex-shrink: 0;
+  background: transparent; border: none; cursor: pointer;
+}
+.navbar__burger span {
+  display: block; width: 22px; height: 2px; border-radius: 2px; background: var(--ink);
+  margin: 0 auto; transition: transform .25s ease, opacity .2s ease;
+}
+
+@media (max-width: 900px) {
+  .navbar__inner { gap: 12px; padding: 13px 18px; }
+  .navbar__logo { font-size: 18px; }
+  .navbar__burger { display: flex; }
+  .navbar__nav {
+    position: absolute; top: 100%; left: 0; right: 0; margin: 0;
+    flex-direction: column; align-items: stretch; gap: 0;
+    padding: 4px 20px 16px;
+    background: var(--paper); border-bottom: 1px solid var(--line);
+    box-shadow: 0 20px 34px -22px rgba(0,0,0,.4);
+    max-height: 0; overflow: hidden; opacity: 0; pointer-events: none;
+    transition: max-height .28s ease, opacity .2s ease;
+  }
+  .navbar--open .navbar__nav { max-height: 82vh; overflow-y: auto; opacity: 1; pointer-events: auto; }
+  .navbar__nav a { font-size: 16px; font-weight: 600; padding: 14px 2px; color: var(--ink); }
+  .navbar__nav a:not(:last-child) { border-bottom: 1px solid var(--line); }
+  .navbar__nav a::after { display: none; }
+  .navbar__nav a.navbar__support {
+    margin-top: 12px; text-align: center; border: 1px solid var(--line-strong); border-radius: 999px;
+  }
+  .navbar--open .navbar__burger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .navbar--open .navbar__burger span:nth-child(2) { opacity: 0; }
+  .navbar--open .navbar__burger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+}
+@media (max-width: 440px) {
+  .navbar__logo { font-size: 16px; }
+  .navbar__logo .navbar__mark { width: 26px; height: 26px; }
+  .lang-select { font-size: 12px; padding: 6px 4px; }
+}
 
 /* ---------- THEME TOGGLE ---------- */
 .theme-toggle {
@@ -357,7 +400,6 @@ body {
   body { font-size: 16px; }
   .grid { grid-template-columns: 1fr; }
   .card, .card:first-child, .card:nth-child(2) { grid-column: span 1; }
-  .navbar__nav { gap: 16px; }
   .card--featured .card__link { padding: 32px 26px; }
   .impact { padding: 26px 24px; }
 }
@@ -636,7 +678,8 @@ body {
 .start__pick { display: flex; gap: 14px; align-items: flex-start; padding: 16px 18px; margin-bottom: 12px; background: var(--card); border: 1px solid var(--line); border-radius: 16px; text-decoration: none; color: var(--ink); transition: transform .15s ease, box-shadow .15s ease; }
 .start__pick:hover { transform: translateY(-3px); box-shadow: 0 14px 30px -18px rgba(28,26,22,.4); }
 .start__num { flex-shrink: 0; width: 30px; height: 30px; border-radius: 50%; background: var(--accent); color: #fff; font-weight: 800; font-size: 14px; display: flex; align-items: center; justify-content: center; }
-.nav--star { white-space: nowrap; }
+.nav--star { white-space: nowrap; color: var(--accent-dark); font-weight: 700; }
+.nav--star:hover { color: var(--accent); }
 
 /* ===== 👍/👎 visszajelzés (2026-07-07) ===== */
 .fb { display: flex; align-items: center; gap: 12px; margin: 26px 0 14px; padding: 14px 18px; background: var(--paper-2); border: 1px solid var(--line); border-radius: 16px; }
