@@ -1,0 +1,157 @@
+{
+  "_comment": "AI-kisszótár adatai — 19 kezdőbarát fogalom 5 nyelven. A build.js buildGlossaryPage() olvassa. Kézzel karbantartott, örökzöld tartalom (2026-07-08). Új fogalom: ide vedd fel mind az 5 nyelven.",
+  "terms": [
+    {
+      "id": "ai",
+      "en": { "term": "AI (artificial intelligence)", "def": "Computer programs that can do tasks which normally need human thinking — writing, answering questions, recognising pictures. The AI you meet online today is clever software, not a thinking robot." },
+      "hu": { "term": "AI (mesterséges intelligencia)", "def": "Olyan számítógépes programok, amelyek emberi gondolkodást igénylő feladatokat oldanak meg — írnak, kérdésekre válaszolnak, képeket ismernek fel. A mai AI okos szoftver, nem gondolkodó robot." },
+      "es": { "term": "IA (inteligencia artificial)", "def": "Programas informáticos capaces de hacer tareas que normalmente requieren pensamiento humano: escribir, responder preguntas, reconocer imágenes. La IA que encuentras hoy en internet es software ingenioso, no un robot que piensa." },
+      "de": { "term": "KI (künstliche Intelligenz)", "def": "Computerprogramme, die Aufgaben erledigen, für die man normalerweise menschliches Denken braucht — schreiben, Fragen beantworten, Bilder erkennen. Die KI, der du heute online begegnest, ist schlaue Software, kein denkender Roboter." },
+      "fr": { "term": "IA (intelligence artificielle)", "def": "Des programmes informatiques capables d’accomplir des tâches qui demandent normalement une réflexion humaine — écrire, répondre à des questions, reconnaître des images. L’IA que vous croisez aujourd’hui en ligne est un logiciel astucieux, pas un robot pensant." }
+    },
+    {
+      "id": "chatbot",
+      "en": { "term": "Chatbot / AI assistant", "def": "A program you talk to by typing or speaking — like ChatGPT, Gemini or Claude. You ask in normal sentences, it answers in normal sentences. No commands or code needed." },
+      "hu": { "term": "Chatbot / AI-asszisztens", "def": "Program, amellyel gépelve vagy beszélve társalogsz — ilyen a ChatGPT, a Gemini vagy a Claude. Hétköznapi mondatokban kérdezel, hétköznapi mondatokban válaszol. Se parancs, se kód nem kell hozzá." },
+      "es": { "term": "Chatbot / asistente de IA", "def": "Un programa con el que conversas escribiendo o hablando — como ChatGPT, Gemini o Claude. Preguntas con frases normales y responde con frases normales. Sin comandos ni código." },
+      "de": { "term": "Chatbot / KI-Assistent", "def": "Ein Programm, mit dem du tippend oder sprechend redest — wie ChatGPT, Gemini oder Claude. Du fragst in normalen Sätzen, es antwortet in normalen Sätzen. Keine Befehle, kein Code nötig." },
+      "fr": { "term": "Chatbot / assistant IA", "def": "Un programme avec lequel vous discutez en écrivant ou en parlant — comme ChatGPT, Gemini ou Claude. Vous posez vos questions en phrases normales, il répond en phrases normales. Ni commandes ni code." }
+    },
+    {
+      "id": "llm",
+      "en": { "term": "LLM (large language model)", "def": "The engine inside a chatbot. It learned from enormous amounts of text how words follow each other, which is how it writes and summarises so well. It predicts likely words — it doesn't \"know\" facts the way you do." },
+      "hu": { "term": "LLM (nagy nyelvi modell)", "def": "A chatbot belsejében dolgozó motor. Hatalmas mennyiségű szövegből tanulta meg, hogyan követik egymást a szavak — ezért ír és foglal össze ilyen ügyesen. Valószínű szavakat jósol, nem úgy \"tudja\" a tényeket, ahogy te." },
+      "es": { "term": "LLM (gran modelo de lenguaje)", "def": "El motor dentro de un chatbot. Aprendió de cantidades enormes de texto cómo se suceden las palabras, y por eso escribe y resume tan bien. Predice palabras probables — no \"sabe\" los hechos como tú." },
+      "de": { "term": "LLM (großes Sprachmodell)", "def": "Der Motor im Inneren eines Chatbots. Er hat aus riesigen Textmengen gelernt, wie Wörter aufeinander folgen — deshalb schreibt und fasst er so gut zusammen. Er sagt wahrscheinliche Wörter voraus — er \"weiß\" Fakten nicht so wie du." },
+      "fr": { "term": "LLM (grand modèle de langage)", "def": "Le moteur à l’intérieur d’un chatbot. Il a appris, à partir d’énormes quantités de texte, comment les mots s’enchaînent — c’est pour ça qu’il écrit et résume si bien. Il prédit des mots probables — il ne \"connaît\" pas les faits comme vous." }
+    },
+    {
+      "id": "prompt",
+      "en": { "term": "Prompt", "def": "The instruction or question you type to an AI. A better prompt gets a better answer: say what you want, who it's for and in what style — like briefing a helpful colleague." },
+      "hu": { "term": "Prompt", "def": "Az utasítás vagy kérdés, amit az AI-nak írsz. Jobb prompt = jobb válasz: mondd el, mit szeretnél, kinek készül és milyen stílusban — mintha egy segítőkész kollégának adnál feladatot." },
+      "es": { "term": "Prompt", "def": "La instrucción o pregunta que le escribes a una IA. Mejor prompt, mejor respuesta: di qué quieres, para quién es y en qué estilo — como si informaras a un colega servicial." },
+      "de": { "term": "Prompt", "def": "Die Anweisung oder Frage, die du der KI schreibst. Besserer Prompt = bessere Antwort: Sag, was du willst, für wen es ist und in welchem Stil — wie ein Briefing an einen hilfsbereiten Kollegen." },
+      "fr": { "term": "Prompt", "def": "L’instruction ou la question que vous écrivez à une IA. Meilleur prompt, meilleure réponse : dites ce que vous voulez, pour qui c’est et dans quel style — comme un brief à un collègue serviable." }
+    },
+    {
+      "id": "prompt-engineering",
+      "en": { "term": "Prompt engineering", "def": "The craft of phrasing your requests so the AI gives you what you actually need. No coding involved — just clear instructions, examples and context. Anyone can learn the basics in an afternoon." },
+      "hu": { "term": "Prompt-írás (prompt engineering)", "def": "Az a mesterség, hogy úgy fogalmazod meg a kérésed, hogy az AI tényleg azt adja, amire szükséged van. Semmi programozás — csak világos utasítás, példa és háttér-információ. Az alapokat bárki megtanulja egy délután alatt." },
+      "es": { "term": "Ingeniería de prompts", "def": "El arte de formular tus peticiones para que la IA te dé lo que realmente necesitas. No hay programación: solo instrucciones claras, ejemplos y contexto. Cualquiera aprende lo básico en una tarde." },
+      "de": { "term": "Prompt-Handwerk (Prompt Engineering)", "def": "Die Kunst, deine Anfragen so zu formulieren, dass die KI liefert, was du wirklich brauchst. Kein Programmieren — nur klare Anweisungen, Beispiele und Kontext. Die Grundlagen lernt jeder an einem Nachmittag." },
+      "fr": { "term": "Art du prompt (prompt engineering)", "def": "L’art de formuler vos demandes pour que l’IA donne ce dont vous avez vraiment besoin. Aucun code — juste des instructions claires, des exemples et du contexte. Tout le monde peut apprendre les bases en un après-midi." }
+    },
+    {
+      "id": "token",
+      "en": { "term": "Token", "def": "The small chunks of text an AI reads and writes — a word is usually one or two tokens. Prices and limits of AI services are often measured in tokens, which is why the word pops up everywhere." },
+      "hu": { "term": "Token", "def": "A szöveg apró darabkái, amelyekben az AI olvas és ír — egy szó általában egy-két token. Az AI-szolgáltatások árait és korlátait gyakran tokenben mérik, ezért bukkan fel a szó mindenhol." },
+      "es": { "term": "Token", "def": "Los pequeños trozos de texto que una IA lee y escribe — una palabra suele ser uno o dos tokens. Los precios y límites de los servicios de IA se miden a menudo en tokens; por eso la palabra aparece por todas partes." },
+      "de": { "term": "Token", "def": "Die kleinen Textstücke, in denen eine KI liest und schreibt — ein Wort sind meist ein bis zwei Tokens. Preise und Limits von KI-Diensten werden oft in Tokens gemessen — deshalb taucht das Wort überall auf." },
+      "fr": { "term": "Token (jeton)", "def": "Les petits morceaux de texte qu’une IA lit et écrit — un mot fait en général un ou deux tokens. Les prix et les limites des services d’IA se mesurent souvent en tokens, d’où ce mot qui revient partout." }
+    },
+    {
+      "id": "context-window",
+      "en": { "term": "Context window", "def": "How much text the AI can keep \"in mind\" within one conversation. If a chat gets very long, the oldest parts slip out — which is why the AI sometimes seems to forget what you said earlier." },
+      "hu": { "term": "Kontextusablak", "def": "Az a szövegmennyiség, amennyit az AI egy beszélgetésen belül \"fejben tud tartani\". Ha a csevegés nagyon hosszúra nyúlik, a legrégebbi részek kicsúsznak — ezért tűnik néha úgy, hogy az AI elfelejti, amit korábban mondtál." },
+      "es": { "term": "Ventana de contexto", "def": "Cuánto texto puede mantener \"en mente\" la IA dentro de una conversación. Si el chat se alarga mucho, las partes más antiguas se caen — por eso a veces parece que la IA olvida lo que dijiste antes." },
+      "de": { "term": "Kontextfenster", "def": "Wie viel Text die KI innerhalb eines Gesprächs \"im Kopf behalten\" kann. Wird ein Chat sehr lang, rutschen die ältesten Teile heraus — deshalb scheint die KI manchmal zu vergessen, was du früher gesagt hast." },
+      "fr": { "term": "Fenêtre de contexte", "def": "La quantité de texte que l’IA peut garder \"en tête\" dans une conversation. Si l’échange devient très long, les parties les plus anciennes glissent dehors — c’est pourquoi l’IA semble parfois oublier ce que vous avez dit avant." }
+    },
+    {
+      "id": "hallucination",
+      "en": { "term": "Hallucination", "def": "When an AI states something false with full confidence — an invented fact, source or date. It's not lying on purpose; it's predicting plausible-sounding text. Always double-check facts that matter." },
+      "hu": { "term": "Hallucináció", "def": "Amikor az AI teljes magabiztossággal állít valótlant — kitalált tényt, forrást vagy dátumot. Nem szándékosan hazudik: hihetően hangzó szöveget jósol. A fontos tényeket ezért mindig ellenőrizd." },
+      "es": { "term": "Alucinación", "def": "Cuando una IA afirma algo falso con total seguridad — un dato, una fuente o una fecha inventados. No miente a propósito: predice texto que suena verosímil. Verifica siempre los datos importantes." },
+      "de": { "term": "Halluzination", "def": "Wenn eine KI mit voller Überzeugung etwas Falsches behauptet — eine erfundene Tatsache, Quelle oder Jahreszahl. Sie lügt nicht absichtlich: Sie sagt plausibel klingenden Text voraus. Wichtige Fakten deshalb immer nachprüfen." },
+      "fr": { "term": "Hallucination", "def": "Quand une IA affirme quelque chose de faux avec un aplomb total — un fait, une source ou une date inventés. Elle ne ment pas exprès : elle prédit un texte qui sonne plausible. Vérifiez toujours les faits importants." }
+    },
+    {
+      "id": "generative-ai",
+      "en": { "term": "Generative AI", "def": "AI that creates new content — text, pictures, music, video — rather than just sorting or finding existing things. ChatGPT writing a poem and an app drawing a picture from your description are both generative AI." },
+      "hu": { "term": "Generatív AI", "def": "Olyan AI, amely új tartalmat hoz létre — szöveget, képet, zenét, videót —, nem csak meglévő dolgokat rendez vagy keres ki. A verset író ChatGPT és a leírásodból képet rajzoló app egyaránt generatív AI." },
+      "es": { "term": "IA generativa", "def": "IA que crea contenido nuevo — texto, imágenes, música, vídeo — en lugar de solo ordenar o encontrar cosas existentes. ChatGPT escribiendo un poema y una app dibujando a partir de tu descripción son ambas IA generativa." },
+      "de": { "term": "Generative KI", "def": "KI, die neue Inhalte erschafft — Text, Bilder, Musik, Video — statt nur Vorhandenes zu sortieren oder zu finden. ChatGPT, das ein Gedicht schreibt, und eine App, die nach deiner Beschreibung malt, sind beide generative KI." },
+      "fr": { "term": "IA générative", "def": "Une IA qui crée du contenu nouveau — texte, images, musique, vidéo — au lieu de seulement trier ou retrouver l’existant. ChatGPT qui écrit un poème et une appli qui dessine d’après votre description, c’est de l’IA générative." }
+    },
+    {
+      "id": "image-generator",
+      "en": { "term": "Image generator", "def": "An AI that draws a picture from your written description — \"a koala on a surfboard at sunset\" becomes an actual image in seconds. Built into tools like ChatGPT, Gemini and Canva." },
+      "hu": { "term": "Képgenerátor", "def": "Olyan AI, amely a leírásodból képet rajzol — a \"koala szörfdeszkán naplementében\" másodpercek alatt valódi képpé válik. Beépítve megtalálod a ChatGPT-ben, a Geminiben és a Canvában is." },
+      "es": { "term": "Generador de imágenes", "def": "Una IA que dibuja una imagen a partir de tu descripción escrita — \"un koala en una tabla de surf al atardecer\" se convierte en imagen real en segundos. Está integrado en herramientas como ChatGPT, Gemini y Canva." },
+      "de": { "term": "Bildgenerator", "def": "Eine KI, die aus deiner schriftlichen Beschreibung ein Bild malt — \"ein Koala auf einem Surfbrett im Sonnenuntergang\" wird in Sekunden ein echtes Bild. Eingebaut in Tools wie ChatGPT, Gemini und Canva." },
+      "fr": { "term": "Générateur d’images", "def": "Une IA qui dessine une image à partir de votre description écrite — \"un koala sur une planche de surf au coucher du soleil\" devient une vraie image en quelques secondes. Intégré dans des outils comme ChatGPT, Gemini et Canva." }
+    },
+    {
+      "id": "multimodal",
+      "en": { "term": "Multimodal", "def": "An AI that understands more than text: you can show it a photo, a document or a voice message, and it can work with those too — describe the photo, summarise the document, answer the voice note." },
+      "hu": { "term": "Multimodális", "def": "Olyan AI, amely nem csak szöveget ért: mutathatsz neki fotót, dokumentumot vagy hangüzenetet, és azokkal is dolgozik — leírja a fotót, összefoglalja a dokumentumot, válaszol a hangüzenetre." },
+      "es": { "term": "Multimodal", "def": "Una IA que entiende más que texto: puedes mostrarle una foto, un documento o un mensaje de voz, y también trabaja con ellos — describe la foto, resume el documento, responde a la nota de voz." },
+      "de": { "term": "Multimodal", "def": "Eine KI, die mehr als Text versteht: Du kannst ihr ein Foto, ein Dokument oder eine Sprachnachricht zeigen, und sie arbeitet auch damit — beschreibt das Foto, fasst das Dokument zusammen, antwortet auf die Sprachnotiz." },
+      "fr": { "term": "Multimodal", "def": "Une IA qui comprend plus que le texte : montrez-lui une photo, un document ou un message vocal, et elle sait travailler avec — décrire la photo, résumer le document, répondre au vocal." }
+    },
+    {
+      "id": "ai-agent",
+      "en": { "term": "AI agent", "def": "An AI that doesn't just answer but carries out multi-step tasks with some independence — searching, comparing, filling things in, booking. You give the goal; it works through the steps." },
+      "hu": { "term": "AI-ügynök (agent)", "def": "Olyan AI, amely nem csak válaszol, hanem többlépéses feladatokat hajt végre bizonyos önállósággal — keres, összehasonlít, kitölt, foglal. Te a célt adod meg, a lépéseken ő megy végig." },
+      "es": { "term": "Agente de IA", "def": "Una IA que no solo responde, sino que realiza tareas de varios pasos con cierta independencia — buscar, comparar, rellenar, reservar. Tú das el objetivo; ella recorre los pasos." },
+      "de": { "term": "KI-Agent", "def": "Eine KI, die nicht nur antwortet, sondern mehrstufige Aufgaben mit einer gewissen Selbstständigkeit erledigt — suchen, vergleichen, ausfüllen, buchen. Du gibst das Ziel vor; sie arbeitet die Schritte ab." },
+      "fr": { "term": "Agent IA", "def": "Une IA qui ne se contente pas de répondre : elle accomplit des tâches en plusieurs étapes avec une certaine autonomie — chercher, comparer, remplir, réserver. Vous donnez l’objectif ; elle déroule les étapes." }
+    },
+    {
+      "id": "fine-tuning",
+      "en": { "term": "Fine-tuning", "def": "Extra training that specialises a general AI for a specific job — say, medical texts or one company's writing style. Like sending a good all-round student to trade school." },
+      "hu": { "term": "Finomhangolás (fine-tuning)", "def": "Kiegészítő tanítás, amely egy általános AI-t egy konkrét feladatra szakosít — például orvosi szövegekre vagy egy cég stílusára. Mintha egy jó általános tanulót szakiskolába küldenél." },
+      "es": { "term": "Ajuste fino (fine-tuning)", "def": "Entrenamiento extra que especializa una IA general en un trabajo concreto — por ejemplo, textos médicos o el estilo de una empresa. Como mandar a un buen estudiante generalista a una escuela de oficios." },
+      "de": { "term": "Feinabstimmung (Fine-Tuning)", "def": "Zusätzliches Training, das eine allgemeine KI auf eine bestimmte Aufgabe spezialisiert — etwa medizinische Texte oder den Stil einer Firma. Wie ein guter Allround-Schüler, der auf die Fachschule geht." },
+      "fr": { "term": "Ajustement fin (fine-tuning)", "def": "Un entraînement supplémentaire qui spécialise une IA généraliste pour une tâche précise — par exemple les textes médicaux ou le style d’une entreprise. Comme envoyer un bon élève généraliste en école spécialisée." }
+    },
+    {
+      "id": "open-source-model",
+      "en": { "term": "Open-source model", "def": "An AI model whose \"recipe\" is public: anyone can download it, run it and build on it, often for free. Meta's Llama family is a well-known example." },
+      "hu": { "term": "Nyílt forráskódú modell", "def": "Olyan AI-modell, amelynek a \"receptje\" nyilvános: bárki letöltheti, futtathatja és építkezhet rá, gyakran ingyen. Ismert példa a Meta Llama-családja." },
+      "es": { "term": "Modelo de código abierto", "def": "Un modelo de IA cuya \"receta\" es pública: cualquiera puede descargarlo, ejecutarlo y construir sobre él, a menudo gratis. La familia Llama de Meta es un ejemplo conocido." },
+      "de": { "term": "Open-Source-Modell", "def": "Ein KI-Modell, dessen \"Rezept\" öffentlich ist: Jeder kann es herunterladen, betreiben und darauf aufbauen — oft kostenlos. Metas Llama-Familie ist ein bekanntes Beispiel." },
+      "fr": { "term": "Modèle open source", "def": "Un modèle d’IA dont la \"recette\" est publique : chacun peut le télécharger, l’exécuter et construire dessus, souvent gratuitement. La famille Llama de Meta en est un exemple connu." }
+    },
+    {
+      "id": "api",
+      "en": { "term": "API", "def": "The plug through which programs talk to each other. Developers use AI companies' APIs to build AI into their own apps and websites — that's how AI shows up inside so many tools you already use." },
+      "hu": { "term": "API", "def": "A csatlakozó, amelyen keresztül programok beszélgetnek egymással. A fejlesztők az AI-cégek API-jain át építik be az AI-t a saját appjaikba és honlapjaikba — ezért bukkan fel az AI annyi eszközben, amit már most is használsz." },
+      "es": { "term": "API", "def": "El enchufe por el que los programas hablan entre sí. Los desarrolladores usan las API de las empresas de IA para integrar la IA en sus propias apps y webs — así aparece la IA dentro de tantas herramientas que ya usas." },
+      "de": { "term": "API", "def": "Der Stecker, über den Programme miteinander sprechen. Entwickler nutzen die APIs der KI-Firmen, um KI in eigene Apps und Websites einzubauen — so taucht KI in so vielen Tools auf, die du längst benutzt." },
+      "fr": { "term": "API", "def": "La prise par laquelle les programmes se parlent. Les développeurs utilisent les API des entreprises d’IA pour intégrer l’IA dans leurs propres applis et sites — c’est ainsi que l’IA apparaît dans tant d’outils que vous utilisez déjà." }
+    },
+    {
+      "id": "deepfake",
+      "en": { "term": "Deepfake", "def": "An AI-made fake video, photo or voice that looks or sounds real. If a shocking clip of a famous person appears out of nowhere, check a trusted news source before believing or sharing it." },
+      "hu": { "term": "Deepfake", "def": "AI-val készített hamis videó, fotó vagy hang, amely valódinak tűnik. Ha a semmiből felbukkan egy megdöbbentő felvétel egy ismert emberről, előbb nézz utána megbízható hírforrásban, mielőtt elhiszed vagy továbbküldöd." },
+      "es": { "term": "Deepfake", "def": "Un vídeo, foto o voz falsos creados con IA que parecen reales. Si aparece de la nada un clip impactante de una persona famosa, consulta una fuente de noticias fiable antes de creerlo o compartirlo." },
+      "de": { "term": "Deepfake", "def": "Ein mit KI erzeugtes gefälschtes Video, Foto oder eine Stimme, die echt wirken. Taucht aus dem Nichts ein schockierender Clip einer bekannten Person auf, prüfe erst eine vertrauenswürdige Nachrichtenquelle, bevor du es glaubst oder teilst." },
+      "fr": { "term": "Deepfake", "def": "Une vidéo, une photo ou une voix truquées par IA qui semblent vraies. Si un clip choquant d’une personne connue surgit de nulle part, vérifiez une source d’information fiable avant d’y croire ou de le partager." }
+    },
+    {
+      "id": "voice-cloning",
+      "en": { "term": "Voice cloning", "def": "AI copying a real person's voice from a short sample. Useful for audiobooks and accessibility — and abused in phone scams. Agree on a family password for \"urgent money\" calls." },
+      "hu": { "term": "Hangklónozás", "def": "Az AI egy rövid minta alapján lemásolja egy valódi ember hangját. Hasznos hangoskönyvekhez és akadálymentesítéshez — és visszaélnek vele telefonos csalásokban. Beszéljetek meg családi jelszót a \"sürgősen pénz kell\" hívásokra." },
+      "es": { "term": "Clonación de voz", "def": "La IA copia la voz de una persona real a partir de una muestra corta. Útil para audiolibros y accesibilidad — y usada en estafas telefónicas. Acordad una contraseña familiar para las llamadas de \"dinero urgente\"." },
+      "de": { "term": "Stimmklonen", "def": "KI kopiert die Stimme eines echten Menschen aus einer kurzen Probe. Nützlich für Hörbücher und Barrierefreiheit — und missbraucht bei Telefonbetrug. Vereinbart ein Familien-Passwort für \"dringend Geld\"-Anrufe." },
+      "fr": { "term": "Clonage de voix", "def": "L’IA copie la voix d’une vraie personne à partir d’un court échantillon. Utile pour les livres audio et l’accessibilité — et détourné dans des arnaques téléphoniques. Convenez d’un mot de passe familial pour les appels \"argent urgent\"." }
+    },
+    {
+      "id": "training-data",
+      "en": { "term": "Training data", "def": "The huge pile of text and images an AI learned from. Whatever wasn't in it — very recent events, your private files — the AI can't know by itself, though many assistants can now search the web to catch up." },
+      "hu": { "term": "Tanítóadat", "def": "Az a hatalmas szöveg- és képhalmaz, amelyből az AI tanult. Ami nem volt benne — friss események, a te privát fájljaid —, azt az AI magától nem tudhatja, bár sok asszisztens ma már rá tud keresni a neten." },
+      "es": { "term": "Datos de entrenamiento", "def": "La enorme pila de texto e imágenes de la que aprendió la IA. Lo que no estaba ahí — sucesos muy recientes, tus archivos privados — la IA no puede saberlo por sí sola, aunque muchos asistentes ya pueden buscar en la web." },
+      "de": { "term": "Trainingsdaten", "def": "Der riesige Berg an Text und Bildern, aus dem eine KI gelernt hat. Was nicht darin war — ganz frische Ereignisse, deine privaten Dateien — kann die KI von selbst nicht wissen, auch wenn viele Assistenten inzwischen im Web nachschlagen können." },
+      "fr": { "term": "Données d’entraînement", "def": "L’énorme masse de textes et d’images dont l’IA a appris. Ce qui n’y figurait pas — les événements très récents, vos fichiers privés — l’IA ne peut pas le savoir seule, même si beaucoup d’assistants savent désormais chercher sur le web." }
+    },
+    {
+      "id": "agi",
+      "en": { "term": "AGI (artificial general intelligence)", "def": "A still-hypothetical AI that could think as flexibly as a human across every area. Today's AI is not this — it's very capable at specific tasks, which is exactly why it's useful and predictable." },
+      "hu": { "term": "AGI (általános mesterséges intelligencia)", "def": "Egyelőre elméleti AI, amely minden területen olyan rugalmasan gondolkodna, mint egy ember. A mai AI nem ilyen — konkrét feladatokban nagyon ügyes, és pont ettől hasznos és kiszámítható." },
+      "es": { "term": "AGI (inteligencia artificial general)", "def": "Una IA todavía hipotética que pensaría con la flexibilidad de un humano en cualquier ámbito. La IA de hoy no es eso — es muy capaz en tareas concretas, y justo por eso es útil y predecible." },
+      "de": { "term": "AGI (allgemeine künstliche Intelligenz)", "def": "Eine noch hypothetische KI, die in jedem Bereich so flexibel denken könnte wie ein Mensch. Die heutige KI ist das nicht — sie ist bei konkreten Aufgaben sehr fähig, und genau das macht sie nützlich und berechenbar." },
+      "fr": { "term": "AGI (intelligence artificielle générale)", "def": "Une IA encore hypothétique qui penserait avec la souplesse d’un humain dans tous les domaines. L’IA d’aujourd’hui n’en est pas là — elle est très douée pour des tâches précises, et c’est justement ce qui la rend utile et prévisible." }
+    }
+  ]
+}

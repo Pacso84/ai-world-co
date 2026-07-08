@@ -1,0 +1,37 @@
+{
+  "_comment": "Összehasonlító cikkek téma-sora. Az agent hetente (szerda) a legelső done:false témát írja meg, aztán done:true-ra állítja. Új téma: ide vedd fel a végére. Negyedéves frissítés: állítsd a done-t false-ra és a refresh_note-ba írd, mi változott.",
+  "topics": [
+    {
+      "id": "ai-chatbots",
+      "title": "ChatGPT vs Gemini vs Claude: Which AI Chatbot Should You Choose?",
+      "items": [
+        "ChatGPT (OpenAI)",
+        "Gemini (Google)",
+        "Claude (Anthropic)"
+      ],
+      "angle": "an everyday person picking their FIRST AI chatbot — writing help, everyday questions, learning",
+      "done": true,
+      "written_at": "2026-07-08T04:01:38.641Z"
+    },
+    {
+      "id": "ai-in-office",
+      "title": "Copilot vs ChatGPT: Which AI Helps More With Your Work Documents?",
+      "items": [
+        "Microsoft Copilot",
+        "ChatGPT (OpenAI)"
+      ],
+      "angle": "office workers who live in Word, Excel and Outlook and want AI help with documents and email",
+      "done": false
+    },
+    {
+      "id": "ai-on-phone",
+      "title": "Gemini vs ChatGPT on Your Phone: Which AI Assistant Fits Your Pocket?",
+      "items": [
+        "Gemini (Google)",
+        "ChatGPT (OpenAI)"
+      ],
+      "angle": "everyday phone users who want a voice-and-camera AI helper on Android or iPhone",
+      "done": false
+    }
+  ]
+}

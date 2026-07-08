@@ -34,8 +34,12 @@ let SUPPORT = { enabled: false, url: '', label: 'Buy us a coffee' };
 // company.google_site_verification / bing_site_verification mezőiből; ha üres,
 // nem kerül meta-tag az oldalba.
 let VERIFY = { google: '', bing: '' };
+// Cloudflare Web Analytics token (látogatás-számláló) — NYILVÁNOS by design
+// (minden oldal HTML-jében látszik), ezért mehet a configba. Ha üres, nincs mérés.
+let CF_BEACON = '';
 try {
   const company = JSON.parse(readFileSync(join(PROJECT_ROOT, 'config.json'), 'utf-8')).company || {};
+  CF_BEACON = (company.cf_beacon_token || '').trim();
   SITE_URL = (company.website_url || SITE_URL).replace(/\/$/, '');
   SUPPORT = {
     enabled: company.support_enabled !== false,
@@ -328,6 +332,167 @@ const UI_SEARCH = {
 };
 for (const l of SITE_LANGS) Object.assign(UI[l], UI_SEARCH[l] || {});
 
+// AI-kisszótár feliratok (2026-07-08)
+const UI_GLOSS = {
+  en: { glossNav: '📖 Dictionary', glossTitle: 'The little AI dictionary', glossTag: 'Every AI word you keep seeing — explained in one breath, no jargon.' },
+  hu: { glossNav: '📖 Kisszótár', glossTitle: 'AI-kisszótár', glossTag: 'Minden AI-szó, amivel folyton találkozol — egy szuszra, szakzsargon nélkül elmagyarázva.' },
+  es: { glossNav: '📖 Diccionario', glossTitle: 'El pequeño diccionario de la IA', glossTag: 'Todas las palabras de IA que ves por todas partes — explicadas de un tirón, sin jerga.' },
+  de: { glossNav: '📖 Wörterbuch', glossTitle: 'Das kleine KI-Wörterbuch', glossTag: 'Alle KI-Begriffe, die dir ständig begegnen — in einem Atemzug erklärt, ohne Fachchinesisch.' },
+  fr: { glossNav: '📖 Dico', glossTitle: 'Le petit dico de l’IA', glossTag: 'Tous les mots de l’IA que vous croisez partout — expliqués d’un trait, sans jargon.' }
+};
+for (const l of SITE_LANGS) Object.assign(UI[l], UI_GLOSS[l] || {});
+
+// "Melyik AI való neked?" varázsló feliratok (2026-07-08)
+const UI_WIZ = {
+  en: { wizTitle: 'Which AI is right for you?', wizTag: 'Four quick questions — and we point you to the assistant that fits your life.',
+        wizStep: 'Question', wizResultH: 'Your best match', wizAlso: 'Also worth a look', wizCta: 'See our guides for it', wizAgain: 'Start over',
+        wizBanner: 'Not sure which AI to pick? Take the 1-minute quiz →' },
+  hu: { wizTitle: 'Melyik AI való neked?', wizTag: 'Négy gyors kérdés — és megmutatjuk, melyik asszisztens illik az életedhez.',
+        wizStep: 'Kérdés', wizResultH: 'A te eszközöd', wizAlso: 'Ezt is érdemes megnézni', wizCta: 'Nézd meg az útmutatóinkat hozzá', wizAgain: 'Újrakezdem',
+        wizBanner: 'Nem tudod, melyik AI-t válaszd? 1 perces teszt →' },
+  es: { wizTitle: '¿Qué IA es la adecuada para ti?', wizTag: 'Cuatro preguntas rápidas — y te indicamos el asistente que encaja con tu vida.',
+        wizStep: 'Pregunta', wizResultH: 'Tu mejor opción', wizAlso: 'También vale la pena', wizCta: 'Ver nuestras guías', wizAgain: 'Empezar de nuevo',
+        wizBanner: '¿No sabes qué IA elegir? Test de 1 minuto →' },
+  de: { wizTitle: 'Welche KI passt zu dir?', wizTag: 'Vier schnelle Fragen — und wir zeigen dir den Assistenten, der zu deinem Alltag passt.',
+        wizStep: 'Frage', wizResultH: 'Dein Treffer', wizAlso: 'Auch einen Blick wert', wizCta: 'Unsere Anleitungen dazu ansehen', wizAgain: 'Neu starten',
+        wizBanner: 'Unsicher, welche KI? 1-Minuten-Quiz →' },
+  fr: { wizTitle: 'Quelle IA est faite pour vous ?', wizTag: 'Quatre questions rapides — et on vous oriente vers l’assistant qui colle à votre vie.',
+        wizStep: 'Question', wizResultH: 'Votre meilleur choix', wizAlso: 'À regarder aussi', wizCta: 'Voir nos guides', wizAgain: 'Recommencer',
+        wizBanner: 'Vous hésitez entre les IA ? Quiz d’1 minute →' }
+};
+for (const l of SITE_LANGS) Object.assign(UI[l], UI_WIZ[l] || {});
+
+// A varázsló kérdései + eredményei nyelvenként. A pontozás nyelvfüggetlen
+// (s: eszköz→pont), a szöveg lokalizált. SZÁNDÉKOSAN óvatos megfogalmazás:
+// nincs ár, nincs konkrét funkció-ígéret (az változik) — csak irány.
+const WIZ_DATA = {
+  en: {
+    q: [
+      { t: 'What would you mainly use AI for?', o: [
+        { t: 'Writing help — emails, letters, ideas', s: { chatgpt: 2, claude: 2 } },
+        { t: 'Learning and research — questions, explanations', s: { gemini: 2, chatgpt: 1 } },
+        { t: 'Quick everyday help on my phone', s: { gemini: 2, chatgpt: 1 } },
+        { t: 'Work documents — Word, Excel, Outlook', s: { copilot: 3 } }] },
+      { t: 'Which digital world do you live in?', o: [
+        { t: 'Google — Gmail, Android, Google Docs', s: { gemini: 2 } },
+        { t: 'Microsoft — Windows, Office, Outlook', s: { copilot: 2 } },
+        { t: 'Apple, mixed or neither', s: { chatgpt: 1, claude: 1 } }] },
+      { t: 'Would you pay a monthly fee for AI?', o: [
+        { t: 'No — free only for now', s: { gemini: 1 } },
+        { t: 'Yes, if it earns its keep', s: { chatgpt: 1, claude: 1 } }] },
+      { t: 'How confident are you with new apps?', o: [
+        { t: 'Total beginner — keep it simple', s: { chatgpt: 1, gemini: 1 } },
+        { t: 'Fairly confident', s: { claude: 1 } }] }
+    ],
+    r: {
+      chatgpt: { n: 'ChatGPT (OpenAI)', w: 'The most popular all-rounder: strong at writing, brainstorming and everyday questions, with a generous free version and endless tutorials online. If you want the AI everyone talks about, start here.' },
+      gemini:  { n: 'Gemini (Google)', w: 'Built right into the Google world: it plays nicely with Gmail and Google Docs, has a strong free version, and comes ready to use on many Android phones. A natural pick if you live in Google apps.' },
+      claude:  { n: 'Claude (Anthropic)', w: 'Loved for thoughtful, careful writing and for handling long documents. A great companion for summarising, drafting and getting honest, nuanced answers.' },
+      copilot: { n: 'Copilot (Microsoft)', w: 'Lives inside Word, Excel and Outlook. If your day already runs on Microsoft Office, Copilot puts AI right where you work — no new app to learn.' }
+    }
+  },
+  hu: {
+    q: [
+      { t: 'Mire használnád leginkább az AI-t?', o: [
+        { t: 'Írás — e-mailek, levelek, ötletek', s: { chatgpt: 2, claude: 2 } },
+        { t: 'Tanulás, kutatás — kérdések, magyarázatok', s: { gemini: 2, chatgpt: 1 } },
+        { t: 'Gyors hétköznapi segítség a telefonon', s: { gemini: 2, chatgpt: 1 } },
+        { t: 'Munka-dokumentumok — Word, Excel, Outlook', s: { copilot: 3 } }] },
+      { t: 'Melyik digitális világban élsz?', o: [
+        { t: 'Google — Gmail, Android, Google Dokumentumok', s: { gemini: 2 } },
+        { t: 'Microsoft — Windows, Office, Outlook', s: { copilot: 2 } },
+        { t: 'Apple, vegyes vagy egyik sem', s: { chatgpt: 1, claude: 1 } }] },
+      { t: 'Fizetnél havidíjat egy AI-ért?', o: [
+        { t: 'Nem — egyelőre csak ingyeneset', s: { gemini: 1 } },
+        { t: 'Igen, ha megéri', s: { chatgpt: 1, claude: 1 } }] },
+      { t: 'Mennyire vagy otthon az új appokban?', o: [
+        { t: 'Teljesen kezdő vagyok — legyen egyszerű', s: { chatgpt: 1, gemini: 1 } },
+        { t: 'Egész magabiztos', s: { claude: 1 } }] }
+    ],
+    r: {
+      chatgpt: { n: 'ChatGPT (OpenAI)', w: 'A legnépszerűbb mindenes: erős írásban, ötletelésben és hétköznapi kérdésekben, bőkezű ingyenes változattal és rengeteg útmutatóval a neten. Ha azt az AI-t akarod, amiről mindenki beszél, itt kezdd.' },
+      gemini:  { n: 'Gemini (Google)', w: 'A Google-világ beépített asszisztense: jól működik a Gmaillel és a Google Dokumentumokkal, erős az ingyenes változata, és sok Android-telefonon készen várja, hogy használd. Természetes választás, ha a Google-appokban élsz.' },
+      claude:  { n: 'Claude (Anthropic)', w: 'A megfontolt, gondos írásáért és a hosszú dokumentumok kezeléséért szeretik. Remek társ összefoglaláshoz, fogalmazáshoz és őszinte, árnyalt válaszokhoz.' },
+      copilot: { n: 'Copilot (Microsoft)', w: 'A Wordben, Excelben és Outlookban lakik. Ha a napod amúgy is a Microsoft Office-ban telik, a Copilot pont oda hozza az AI-t, ahol dolgozol — új appot sem kell tanulnod.' }
+    }
+  },
+  es: {
+    q: [
+      { t: '¿Para qué usarías la IA principalmente?', o: [
+        { t: 'Escribir — correos, cartas, ideas', s: { chatgpt: 2, claude: 2 } },
+        { t: 'Aprender e investigar — preguntas, explicaciones', s: { gemini: 2, chatgpt: 1 } },
+        { t: 'Ayuda rápida del día a día en el móvil', s: { gemini: 2, chatgpt: 1 } },
+        { t: 'Documentos de trabajo — Word, Excel, Outlook', s: { copilot: 3 } }] },
+      { t: '¿En qué mundo digital vives?', o: [
+        { t: 'Google — Gmail, Android, Google Docs', s: { gemini: 2 } },
+        { t: 'Microsoft — Windows, Office, Outlook', s: { copilot: 2 } },
+        { t: 'Apple, mixto o ninguno', s: { chatgpt: 1, claude: 1 } }] },
+      { t: '¿Pagarías una cuota mensual por la IA?', o: [
+        { t: 'No — por ahora solo gratis', s: { gemini: 1 } },
+        { t: 'Sí, si lo vale', s: { chatgpt: 1, claude: 1 } }] },
+      { t: '¿Qué tal te manejas con las apps nuevas?', o: [
+        { t: 'Principiante total — que sea sencillo', s: { chatgpt: 1, gemini: 1 } },
+        { t: 'Bastante seguro/a', s: { claude: 1 } }] }
+    ],
+    r: {
+      chatgpt: { n: 'ChatGPT (OpenAI)', w: 'El todoterreno más popular: fuerte en escritura, lluvia de ideas y preguntas cotidianas, con una versión gratuita generosa y tutoriales infinitos en la red. Si quieres la IA de la que todos hablan, empieza aquí.' },
+      gemini:  { n: 'Gemini (Google)', w: 'Integrada en el mundo Google: se lleva bien con Gmail y Google Docs, tiene una versión gratuita potente y viene lista para usar en muchos móviles Android. La opción natural si vives en las apps de Google.' },
+      claude:  { n: 'Claude (Anthropic)', w: 'Querida por su escritura cuidadosa y reflexiva y por manejar documentos largos. Una gran compañera para resumir, redactar y obtener respuestas honestas y matizadas.' },
+      copilot: { n: 'Copilot (Microsoft)', w: 'Vive dentro de Word, Excel y Outlook. Si tu día ya transcurre en Microsoft Office, Copilot pone la IA justo donde trabajas — sin apps nuevas que aprender.' }
+    }
+  },
+  de: {
+    q: [
+      { t: 'Wofür würdest du KI hauptsächlich nutzen?', o: [
+        { t: 'Schreiben — E-Mails, Briefe, Ideen', s: { chatgpt: 2, claude: 2 } },
+        { t: 'Lernen und Recherche — Fragen, Erklärungen', s: { gemini: 2, chatgpt: 1 } },
+        { t: 'Schnelle Alltagshilfe auf dem Handy', s: { gemini: 2, chatgpt: 1 } },
+        { t: 'Arbeitsdokumente — Word, Excel, Outlook', s: { copilot: 3 } }] },
+      { t: 'In welcher digitalen Welt lebst du?', o: [
+        { t: 'Google — Gmail, Android, Google Docs', s: { gemini: 2 } },
+        { t: 'Microsoft — Windows, Office, Outlook', s: { copilot: 2 } },
+        { t: 'Apple, gemischt oder keine davon', s: { chatgpt: 1, claude: 1 } }] },
+      { t: 'Würdest du für KI eine Monatsgebühr zahlen?', o: [
+        { t: 'Nein — vorerst nur kostenlos', s: { gemini: 1 } },
+        { t: 'Ja, wenn es sich lohnt', s: { chatgpt: 1, claude: 1 } }] },
+      { t: 'Wie sicher bist du mit neuen Apps?', o: [
+        { t: 'Blutiger Anfänger — bitte einfach', s: { chatgpt: 1, gemini: 1 } },
+        { t: 'Ziemlich sicher', s: { claude: 1 } }] }
+    ],
+    r: {
+      chatgpt: { n: 'ChatGPT (OpenAI)', w: 'Der beliebteste Allrounder: stark beim Schreiben, Brainstormen und bei Alltagsfragen, mit großzügiger Gratis-Version und unzähligen Anleitungen im Netz. Wenn du die KI willst, über die alle reden, fang hier an.' },
+      gemini:  { n: 'Gemini (Google)', w: 'Fest in der Google-Welt verankert: versteht sich mit Gmail und Google Docs, hat eine starke Gratis-Version und ist auf vielen Android-Handys startklar. Die natürliche Wahl, wenn du in Google-Apps lebst.' },
+      claude:  { n: 'Claude (Anthropic)', w: 'Beliebt für durchdachtes, sorgfältiges Schreiben und lange Dokumente. Ein starker Begleiter fürs Zusammenfassen, Entwerfen und für ehrliche, differenzierte Antworten.' },
+      copilot: { n: 'Copilot (Microsoft)', w: 'Wohnt direkt in Word, Excel und Outlook. Wenn dein Tag ohnehin in Microsoft Office stattfindet, bringt Copilot die KI genau dorthin, wo du arbeitest — ganz ohne neue App.' }
+    }
+  },
+  fr: {
+    q: [
+      { t: 'Pour quoi utiliseriez-vous surtout l’IA ?', o: [
+        { t: 'Écrire — e-mails, courriers, idées', s: { chatgpt: 2, claude: 2 } },
+        { t: 'Apprendre et rechercher — questions, explications', s: { gemini: 2, chatgpt: 1 } },
+        { t: 'Aide rapide au quotidien sur mon téléphone', s: { gemini: 2, chatgpt: 1 } },
+        { t: 'Documents de travail — Word, Excel, Outlook', s: { copilot: 3 } }] },
+      { t: 'Dans quel monde numérique vivez-vous ?', o: [
+        { t: 'Google — Gmail, Android, Google Docs', s: { gemini: 2 } },
+        { t: 'Microsoft — Windows, Office, Outlook', s: { copilot: 2 } },
+        { t: 'Apple, mixte ou aucun', s: { chatgpt: 1, claude: 1 } }] },
+      { t: 'Paieriez-vous un abonnement mensuel pour l’IA ?', o: [
+        { t: 'Non — gratuit seulement pour l’instant', s: { gemini: 1 } },
+        { t: 'Oui, si ça les vaut', s: { chatgpt: 1, claude: 1 } }] },
+      { t: 'À l’aise avec les nouvelles applis ?', o: [
+        { t: 'Grand débutant — restons simple', s: { chatgpt: 1, gemini: 1 } },
+        { t: 'Plutôt à l’aise', s: { claude: 1 } }] }
+    ],
+    r: {
+      chatgpt: { n: 'ChatGPT (OpenAI)', w: 'Le touche-à-tout le plus populaire : fort en écriture, en remue-méninges et en questions du quotidien, avec une version gratuite généreuse et des tutoriels à l’infini. Si vous voulez l’IA dont tout le monde parle, commencez ici.' },
+      gemini:  { n: 'Gemini (Google)', w: 'Intégrée au monde Google : elle s’entend bien avec Gmail et Google Docs, offre une version gratuite solide et est prête à l’emploi sur beaucoup de téléphones Android. Le choix naturel si vous vivez dans les applis Google.' },
+      claude:  { n: 'Claude (Anthropic)', w: 'Appréciée pour son écriture soignée et réfléchie et pour les documents longs. Une excellente compagne pour résumer, rédiger et obtenir des réponses honnêtes et nuancées.' },
+      copilot: { n: 'Copilot (Microsoft)', w: 'Habite dans Word, Excel et Outlook. Si votre journée se passe déjà dans Microsoft Office, Copilot amène l’IA là où vous travaillez — sans nouvelle appli à apprendre.' }
+    }
+  }
+};
+
 // VALÓDI lapszám: hány külön napon jelent meg tartalom (a main() számolja ki).
 // A user jelezte: fixen "Issue 01"-et írt a dátum mellett — az nem igaz.
 let ISSUE_NO = 1;
@@ -600,6 +765,7 @@ function pageShell({ title, description, bodyContent, isArticle = false, noIntro
   const guidesPath = `${LP}/guides.html`;
   const startPath = `${LP}/start.html`;
   const toolsPath = `${LP}/tools.html`;
+  const glossaryPath = `${LP}/glossary.html`;
   const year = new Date().getFullYear();
   const url = `${SITE.url}${LP}/${pagePath}`;
   // Tartalék megosztás-kép: JPG kell (az SVG-t a Facebook nem jeleníti meg!)
@@ -657,6 +823,7 @@ function pageShell({ title, description, bodyContent, isArticle = false, noIntro
         <a href="${homePath}">${T.news}</a>
         <a href="${guidesPath}">${T.guides}</a>
         <a href="${toolsPath}">${T.tools}</a>
+        <a href="${glossaryPath}">${tr('glossNav')}</a>
         ${SUPPORT.enabled ? `<a href="${supportPath}" class="navbar__support">${T.support}</a>` : ''}
       </nav>
       ${langSwitcher}
@@ -696,6 +863,7 @@ function pageShell({ title, description, bodyContent, isArticle = false, noIntro
   </footer>
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script src="/assets/app.js?v=${ASSET_V}"></script>
+  ${CF_BEACON ? `<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "${CF_BEACON}"}'></script>` : ''}
 </body>
 </html>`;
 }
@@ -1380,12 +1548,108 @@ function buildStartPage(allLoc) {
       <div class="start__card"><h2>👣 ${tr('startS2h')}</h2><p>${tr('startS2p')}</p></div>
       <div class="start__card"><h2>🛡️ ${tr('startS3h')}</h2><p>${tr('startS3p')}</p></div>
     </div>
+    <p class="start__wizcta"><a href="wizard.html">🧭 ${escapeHtml(tr('wizBanner'))}</a></p>
     <section class="start__picks"><h2 class="rel__h">📘 ${tr('startPickH')}</h2>${items}
       <p style="margin-top:18px"><a class="back-link" href="guides.html">${tr('startMore')} →</a></p></section>`;
   return pageShell({
     title: `${tr('startTitle')} — ${SITE.name}`,
     description: tr('startTag'),
     noIntro: true, pagePath: 'start.html', bodyContent: body
+  });
+}
+
+// ===================================================================
+// AI-KISSZÓTÁR — örökzöld fogalom-oldal (website/glossary-data.json)
+// Kézzel karbantartott, 5 nyelven — nem AI-generált, nem kell Ellenőrző.
+// ===================================================================
+let GLOSSARY = [];
+try { GLOSSARY = JSON.parse(readFileSync(join(__dirname, 'glossary-data.json'), 'utf-8')).terms || []; } catch { /* nincs szótár-adat */ }
+
+function buildGlossaryPage() {
+  const cards = GLOSSARY.map(t => {
+    const loc = t[LANG] || t.en;
+    return `<div class="gloss__card" id="${t.id}">
+      <h2 class="gloss__term">${escapeHtml(loc.term)}</h2>
+      <p class="gloss__def">${escapeHtml(loc.def)}</p>
+    </div>`;
+  }).join('\n');
+  const body = `<section class="guides-hero">
+      <p class="intro__kicker">${tr('glossNav')}</p>
+      <h1 class="guides-hero__title">${escapeHtml(tr('glossTitle'))}</h1>
+      <p class="guides-hero__tag">${escapeHtml(tr('glossTag'))}</p>
+    </section>
+    <div class="gloss__grid">${cards}</div>
+    <p class="start__wizcta"><a href="wizard.html">🧭 ${escapeHtml(tr('wizBanner'))}</a></p>`;
+  return pageShell({
+    title: `${tr('glossTitle')} — ${SITE.name}`,
+    description: tr('glossTag'),
+    noIntro: true, pagePath: 'glossary.html', bodyContent: body
+  });
+}
+
+// ===================================================================
+// "MELYIK AI VALÓ NEKED?" VARÁZSLÓ — 4 kérdés, kliens-oldali pontozás
+// (WIZ_DATA nyelvenként; a pontozás nyelvfüggetlen s-térképekből megy)
+// ===================================================================
+function buildWizardPage() {
+  const W = WIZ_DATA[LANG] || WIZ_DATA.en;
+  const data = {
+    q: W.q, r: W.r,
+    ui: { step: tr('wizStep'), resultH: tr('wizResultH'), also: tr('wizAlso'), cta: tr('wizCta'), again: tr('wizAgain') }
+  };
+  const body = `<section class="guides-hero">
+      <p class="intro__kicker">🧭</p>
+      <h1 class="guides-hero__title">${escapeHtml(tr('wizTitle'))}</h1>
+      <p class="guides-hero__tag">${escapeHtml(tr('wizTag'))}</p>
+    </section>
+    <div class="wiz">
+      <p class="wiz__progress" id="wizProgress"></p>
+      <div class="wiz__card" id="wizCard"></div>
+    </div>
+    <script>
+    (function(){
+      var D = ${JSON.stringify(data)};
+      var ORDER = ['chatgpt','gemini','copilot','claude'];
+      var i = 0, score = {chatgpt:0, gemini:0, claude:0, copilot:0};
+      var card = document.getElementById('wizCard'), prog = document.getElementById('wizProgress');
+      function esc(s){ var d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+      function show(){
+        if (i >= D.q.length) return result();
+        var q = D.q[i];
+        prog.textContent = D.ui.step + ' ' + (i + 1) + ' / ' + D.q.length;
+        card.innerHTML = '<h2 class="wiz__q">' + esc(q.t) + '</h2>' + q.o.map(function(o, j){
+          return '<button class="wiz__opt" data-j="' + j + '">' + esc(o.t) + '</button>';
+        }).join('');
+        card.querySelectorAll('.wiz__opt').forEach(function(b){
+          b.addEventListener('click', function(){
+            var s = D.q[i].o[+b.dataset.j].s;
+            for (var k in s) score[k] += s[k];
+            i++; show();
+            card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          });
+        });
+      }
+      function result(){
+        var sorted = ORDER.slice().sort(function(a, b){ return (score[b] - score[a]) || (ORDER.indexOf(a) - ORDER.indexOf(b)); });
+        var top = D.r[sorted[0]], second = D.r[sorted[1]];
+        prog.textContent = '';
+        card.innerHTML = '<p class="wiz__kicker">🎯 ' + esc(D.ui.resultH) + '</p>'
+          + '<h2 class="wiz__winner">' + esc(top.n) + '</h2>'
+          + '<p class="wiz__why">' + esc(top.w) + '</p>'
+          + '<p><a class="wiz__cta" href="tools.html">' + esc(D.ui.cta) + ' →</a></p>'
+          + '<p class="wiz__also">' + esc(D.ui.also) + ': <strong>' + esc(second.n) + '</strong></p>'
+          + '<p><button class="wiz__again" id="wizAgain">↺ ' + esc(D.ui.again) + '</button></p>';
+        document.getElementById('wizAgain').addEventListener('click', function(){
+          i = 0; score = {chatgpt:0, gemini:0, claude:0, copilot:0}; show();
+        });
+      }
+      show();
+    })();
+    </script>`;
+  return pageShell({
+    title: `${tr('wizTitle')} — ${SITE.name}`,
+    description: tr('wizTag'),
+    noIntro: true, pagePath: 'wizard.html', bodyContent: body
   });
 }
 
@@ -1494,6 +1758,8 @@ function main() {
     writeFileSync(join(outBase, 'guides.html'), buildGuidesPage(generalGuides, guideCounts), 'utf-8');
     writeFileSync(join(outBase, 'tools.html'), buildToolsPage(companyGuides, guideCounts), 'utf-8');
     writeFileSync(join(outBase, 'start.html'), buildStartPage(loc), 'utf-8');
+    writeFileSync(join(outBase, 'glossary.html'), buildGlossaryPage(), 'utf-8');   // AI-kisszótár
+    writeFileSync(join(outBase, 'wizard.html'), buildWizardPage(), 'utf-8');       // Melyik AI való neked?
     writeFileSync(join(outBase, 'feed.xml'), feedXml(loc, lang), 'utf-8');   // nyelvenkénti RSS
     // Kereső-index (villámkereső a navbarban): cím + alcím + márka + slug
     const searchIndex = loc.map(a => ({
@@ -1514,6 +1780,8 @@ function main() {
     if (companyGuides.length) sitemapUrls.push({ loc: `${SITE.url}${lp}/tools.html`, date: today });
     if (SUPPORT.enabled) sitemapUrls.push({ loc: `${SITE.url}${lp}/support.html`, date: today });
     sitemapUrls.push({ loc: `${SITE.url}${lp}/start.html`, date: today });
+    sitemapUrls.push({ loc: `${SITE.url}${lp}/glossary.html`, date: today });
+    sitemapUrls.push({ loc: `${SITE.url}${lp}/wizard.html`, date: today });
     for (const a of loc) sitemapUrls.push({ loc: `${SITE.url}${lp}/article/${a.slug}.html`, date: (a.publishedAt || '').slice(0, 10) || today });
 
     console.log(`✅ [${lang}] ${loc.length + 3} oldal generálva (${outBase === OUT_DIR ? 'gyökér' : lang + '/'})`);

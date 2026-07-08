@@ -99,10 +99,13 @@ async function main() {
     // (A link-kártyás módban a Facebook az új domain képét megbízhatatlanul
     // töltötte be — a fotós poszt mindig nagy, szép képpel jelenik meg.)
     const site = post.url.replace(/(https?:\/\/[^/]+).*/, '$1');
-    const imgUrl = `${site}/assets/images/${post.slug}.jpg`;
-    let image = imgUrl;
-    try { const h = await fetch(imgUrl, { method: 'HEAD', signal: AbortSignal.timeout(10000) }); if (!h.ok) image = `${site}/assets/og-default.jpg`; }
-    catch { image = `${site}/assets/og-default.jpg`; }
+    // Kép-prioritás: CÍMES megosztás-kép (share/) → sima borító → og-default
+    // (a share-képet a core/share-images.js gyártja build után, 2026-07-08)
+    let image = `${site}/assets/og-default.jpg`;
+    for (const cand of [`${site}/assets/share/${post.slug}.jpg`, `${site}/assets/images/${post.slug}.jpg`]) {
+      try { const h = await fetch(cand, { method: 'HEAD', signal: AbortSignal.timeout(10000) }); if (h.ok) { image = cand; break; } }
+      catch { /* következő jelölt */ }
+    }
     const caption = `${message}\n\n👉 ${post.url}`;
     console.log(`📘 ${String(post.title).slice(0, 55)}...`);
     if (DRY) { console.log(`   (próba) caption: ${caption.slice(0, 70)}…`); continue; }

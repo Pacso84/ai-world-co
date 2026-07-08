@@ -41,6 +41,8 @@ jobs:
           CLOUDFLARE_FLUX_TOKEN: ${{ secrets.CLOUDFLARE_FLUX_TOKEN }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          # 2. fázis (2026-07-08): "posztolj most" parancshoz kell a Make webhook
+          MAKE_WEBHOOK_URL: ${{ secrets.MAKE_WEBHOOK_URL }}
         run: node agents/ceo/instruct.js
 
       - name: Generált tartalom megőrzése (visszacommit)

@@ -14,6 +14,8 @@
     "website_url": "https://aiworldhq.com",
     "google_site_verification_file": "google9b2bbe4d952e2ff5.html",
     "indexnow_key": "298959409ebe114f91438741847c244119439a5c90bbe550",
+    "cf_beacon_token": "",
+    "_cf_beacon_comment": "Cloudflare Web Analytics token (latogatas-szamlalo). NYILVANOS by design (minden HTML-oldalban lathato) — nem titok. Ha ures, nincs szamlalo. Beszerzes: CF dashboard -> Web Analytics -> Add a site.",
     "support_enabled": true,
     "support_url": "https://ko-fi.com/D3G121RXFK",
     "support_label": "Buy us a coffee",
@@ -217,6 +219,30 @@
       },
       "enabled": true,
       "comment": "Hir-utmutato parosito: eldonti, hogy egy hir UTMUTATHATO-e (uj, hasznalhato funkcio) vagy sem (szovetseg, tozsdere lepes, felvasarlas, vezetovaltas, jogi/uzleti hir = NEM). Csak az utmutathato hirhez keszit guide-temat es kereszthivatkozast."
+    },
+    "digest": {
+      "primary_model": {
+        "provider": "cerebras",
+        "model": "gpt-oss-120b"
+      },
+      "fallback_model": {
+        "provider": "google",
+        "model": "gemini-2.5-flash"
+      },
+      "enabled": true,
+      "comment": "Heti osszefoglalo: vasarnaponkent 'This Week in AI' cikk a het sajat cikkeibol, belso linkekkel. Free-first (a normal Ellenorzo-kapun megy at)."
+    },
+    "compare": {
+      "primary_model": {
+        "provider": "cerebras",
+        "model": "gpt-oss-120b"
+      },
+      "fallback_model": {
+        "provider": "google",
+        "model": "gemini-2.5-flash"
+      },
+      "enabled": true,
+      "comment": "Osszehasonlito cikkek (ChatGPT vs Gemini vs Claude stb.) a topics-sorbol, hetente max 1 (szerda). Free-first, Ellenorzo-kapun megy at."
     }
   },
   "providers": {

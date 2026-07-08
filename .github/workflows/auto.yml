@@ -45,6 +45,20 @@ jobs:
           TELEGRAM_OWNER_CHAT_ID: ${{ secrets.TELEGRAM_OWNER_CHAT_ID }}
         run: node agents/ceo/agent.js
 
+      # Heti extrák (2026-07-08): vasárnap összefoglaló, szerdán összehasonlító.
+      # Vázlatot írnak (WRITER_) — a KÖVETKEZŐ ceo-futás Ellenőrzője viszi át
+      # a kapun. Belső naptár-őrrel maguk döntik el, mikor van dolguk.
+      - name: Heti összefoglaló + összehasonlító (vázlat)
+        env:
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+        run: |
+          node agents/digest/agent.js || true
+          node agents/compare/agent.js || true
+
       - name: Fordítás (többnyelvűség — backfill, mindig fut)
         env:
           GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
@@ -61,6 +75,10 @@ jobs:
       # a naplóban (a deployt nem állítja meg)
       - name: i18n-őrszem (angol maradvány-vadász)
         run: node website/check-i18n.js || true
+
+      # Címes megosztás-képek a friss cikkekhez (FB-posztokhoz; 2026-07-08)
+      - name: Megosztás-képek (címes borítók)
+        run: node core/share-images.js || true
 
       - name: Deploy — Cloudflare Pages
         env:

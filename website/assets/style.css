@@ -647,3 +647,30 @@ body {
 /* VÉDŐHÁLÓ (2026-07-06): kód/előformázott blokk SOHA ne lógjon ki a kartonról */
 .article pre, .g-step pre, .g-prompt__box pre { white-space: pre-wrap; word-break: break-word; overflow-x: auto; max-width: 100%; }
 .article code { word-break: break-word; }
+
+/* ============ AI-KISSZÓTÁR (2026-07-08) ============ */
+.gloss__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 16px; margin-top: 26px; }
+.gloss__card { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 22px 24px; scroll-margin-top: 90px; }
+.gloss__term { font-family: 'Schibsted Grotesk', sans-serif; font-size: 17px; font-weight: 800; margin-bottom: 8px; color: var(--ink); }
+.gloss__def { font-size: 14.5px; line-height: 1.65; color: var(--ink-soft); }
+
+/* ============ "MELYIK AI VALÓ NEKED?" VARÁZSLÓ (2026-07-08) ============ */
+.wiz { max-width: 620px; margin: 30px auto 50px; }
+.wiz__progress { text-align: center; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; min-height: 18px; }
+.wiz__card { background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 30px 28px; text-align: center; }
+.wiz__q { font-family: 'Schibsted Grotesk', sans-serif; font-size: 21px; font-weight: 800; line-height: 1.35; margin-bottom: 20px; }
+.wiz__opt { display: block; width: 100%; margin: 0 0 10px; padding: 14px 18px; font: inherit; font-size: 15px; text-align: left; background: var(--paper); color: var(--ink); border: 1px solid var(--line-strong); border-radius: 14px; cursor: pointer; transition: transform .12s ease, border-color .12s ease, background .12s ease; }
+.wiz__opt:hover { transform: translateY(-2px); border-color: var(--accent); background: var(--card); }
+.wiz__kicker { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent-dark); margin-bottom: 8px; }
+.wiz__winner { font-family: 'Schibsted Grotesk', sans-serif; font-size: 26px; font-weight: 900; margin-bottom: 12px; }
+.wiz__why { font-size: 15px; line-height: 1.65; color: var(--ink-soft); margin-bottom: 18px; }
+.wiz__cta { display: inline-block; padding: 12px 22px; background: var(--accent); color: #fff; border-radius: 999px; font-weight: 700; font-size: 15px; text-decoration: none; transition: background .12s ease, transform .12s ease; }
+.wiz__cta:hover { background: var(--accent-dark); transform: translateY(-2px); }
+.wiz__also { margin-top: 16px; font-size: 14px; color: var(--ink-soft); }
+.wiz__again { margin-top: 10px; font: inherit; font-size: 13.5px; background: none; border: none; color: var(--muted); cursor: pointer; text-decoration: underline; }
+.wiz__again:hover { color: var(--ink); }
+
+/* varázsló-hívó banner (kezdd itt! + kisszótár oldalak) */
+.start__wizcta { margin: 26px auto; text-align: center; }
+.start__wizcta a { display: inline-block; padding: 14px 26px; background: var(--card); border: 1.5px dashed var(--accent); border-radius: 999px; color: var(--accent-dark); font-weight: 700; font-size: 15px; text-decoration: none; transition: transform .15s ease, background .15s ease; }
+.start__wizcta a:hover { transform: translateY(-2px); background: var(--paper-2); }

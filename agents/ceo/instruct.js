@@ -171,6 +171,9 @@ ACTIONS the team can actually perform now (set "action"):
 - "find_sources" (Forráskutató): research NEW reliable, official news sources now. Use when the owner asks to look for / discover new sources/feeds. params: none.
 - "approve_source" (Forráskutató): the owner APPROVES discovered source suggestion(s) to be added live. Use when they say things like "vedd fel a(z) X", "hagyd jóvá X-et", "jó lesz az X", "add hozzá X forrást". "source" param: the source name, SEVERAL names comma-separated, or "all" if they want every pending suggestion ("mindet", "az összeset", "vedd fel mindet", "mehet mind").
 - "status" / "budget" / "team" (Főnök): the answer is in "reply" (use live data; for "team" list the members).
+- "post_now" (Social): send the freshest article posts to our Facebook page NOW. Use for "posztolj", "rakd ki FB-re", "menjen poszt a Facebookra".
+- "set_limit" (Főnök): change a DAILY content limit. Use for "állítsd a hír-limitet 30-ra", "napi 8 útmutató legyen". Params: "topic" = "news" or "guides", "tool" = the new NUMBER as string.
+- "report_now" (Főnök): send today's daily self-report now. Use when the owner asks for the daily report / "mi történt ma a cégnél, küldd a jelentést".
 - "none": anything else — questions, ideas, explanations, small talk, or not-yet-wired requests (changing design/schedule/code is a later phase). Put the full answer in "reply".
 
 BUDGET note: the paid Gemini plan is pay-as-you-go — NO fixed "remaining" number; report what we've SPENT (today/month) + that we auto-switch to free keys; the $80/month is only a safety stop.
@@ -178,8 +181,8 @@ News is only from official sources — for an arbitrary topic, offer a GUIDE or 
 ACCURACY: do NOT invent specific article titles, examples, company names or numbers you weren't given in the live data. If you don't have a concrete detail, speak generally about your role instead of making something up.
 
 OUTPUT ONLY a JSON object:
-{"agent":"<member key>","action":"write_guide|run_pipeline|translate|find_sources|approve_source|status|budget|team|none","topic":"","company":"","tool":"","source":"","audience":"both","reply":"<Hungarian reply in that member's voice>"}
-For write_guide/run_pipeline/translate/find_sources/approve_source, "reply" is a short warm acknowledgement (the result follows). Otherwise "reply" is the full answer.`;
+{"agent":"<member key>","action":"write_guide|run_pipeline|translate|find_sources|approve_source|post_now|set_limit|report_now|status|budget|team|none","topic":"","company":"","tool":"","source":"","audience":"both","reply":"<Hungarian reply in that member's voice>"}
+For write_guide/run_pipeline/translate/find_sources/approve_source/post_now/set_limit/report_now, "reply" is a short warm acknowledgement (the result follows). Otherwise "reply" is the full answer.`;
 
 function parseJson(text) {
   if (!text) return null;
@@ -345,6 +348,41 @@ async function doApproveSource(p) {
     : `✅ Felvettem mind a ${added.length} forrást:\n${lines}${extra}\nA következő hírgyűjtéskor már ezekből is dolgozom! 🗞️`;
 }
 
+// TELEGRAM 2. FÁZIS (2026-07-08): posztolás / limit-állítás / azonnali riport
+async function doPostNow() {
+  if (!process.env.MAKE_WEBHOOK_URL) return 'ℹ️ A posztoló webhook (MAKE_WEBHOOK_URL) nincs beállítva ebben a futásban — szólj a fejlesztőnek.';
+  await node('agents/social/agent.js', ['--limit', '6']);
+  const r = await node('agents/social/poster.js', ['--limit', '2']);
+  const m = r.out.match(/(\d+)\s*kiküldve/);
+  const n = m ? parseInt(m[1], 10) : 0;
+  return n > 0
+    ? `📘 Kiküldtem ${n} friss posztot a Facebook-oldalunkra! Pár percen belül kint van. ✅`
+    : '📭 Most nincs kiküldhető friss poszt — minden 7 napon belüli cikk posztja kiment már. A következő új cikknél megy magától!';
+}
+
+async function doSetLimit(p) {
+  const kindTxt = `${p.topic || ''} ${p.tool || ''} ${p.source || ''}`;
+  const kind = /guide|útmutat/i.test(kindTxt) ? 'guides' : 'news';
+  const num = parseInt(String(p.tool || p.source || p.topic || '').replace(/\D+/g, ''), 10);
+  if (!num) return '🤔 Mennyire állítsam? Mondd számmal, pl.: „napi útmutató-limit legyen 8".';
+  // Biztonsági sáv: Telegramról ne lehessen elszabadítani a költést
+  const [min, max] = kind === 'guides' ? [1, 10] : [5, 40];
+  const v = Math.max(min, Math.min(max, num));
+  const cfgPath = join(ROOT, 'config.json');
+  const cfg = JSON.parse(readFileSync(cfgPath, 'utf-8'));
+  const key = kind === 'guides' ? 'daily_guides_max' : 'daily_articles_max';
+  const old = cfg.limits[key];
+  cfg.limits[key] = v;
+  writeFileSync(cfgPath, JSON.stringify(cfg, null, 2), 'utf-8');
+  const capped = v !== num ? ` (a kért ${num} helyett — a biztonsági sáv ${min}–${max})` : '';
+  return `✅ Átállítottam: napi ${kind === 'guides' ? 'útmutató' : 'hír'}-keret ${old} → *${v}*${capped}. A következő futástól így termelünk.`;
+}
+
+async function doReportNow() {
+  await node('core/daily-report.js', ['--force']);
+  return '📊 Elküldtem a mai jelentést külön üzenetben — görgess fel egyet! ☝️';
+}
+
 // ===================================================================
 // FŐ
 // ===================================================================
@@ -368,6 +406,12 @@ async function main() {
     reply = await doFindSources();
   } else if (brain.action === 'approve_source') {
     reply = await doApproveSource(brain);
+  } else if (brain.action === 'post_now') {
+    reply = await doPostNow();
+  } else if (brain.action === 'set_limit') {
+    reply = await doSetLimit(brain);
+  } else if (brain.action === 'report_now') {
+    reply = await doReportNow();
   } else {
     reply = brain.reply || 'Itt vagyok — mondd, mit csináljunk! 🙂';
   }
