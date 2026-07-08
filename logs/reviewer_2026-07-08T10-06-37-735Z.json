@@ -1,0 +1,26 @@
+{
+  "started_at": "2026-07-08T10:06:30.227Z",
+  "total": 2,
+  "passed": 0,
+  "failed": 2,
+  "auto_check_failed": 1,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.0044367,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-07-08T04-01-38-639Z_aiworld-editorial_Compare_ai-chatbots.json",
+      "decision": "FAIL",
+      "reason": "auto-check critical",
+      "skipped_ai": true
+    },
+    {
+      "writer": "WRITER_2026-07-08T10-06-26-611Z_together_Open__convenient_and_predictable__Introducing_Prov.json",
+      "rejected": "REJECTED_2026-07-08T10-06-26-611Z_together_Open__convenient_and_predictable__Introducing_Prov.json",
+      "decision": "FAIL",
+      "score": 5,
+      "cost_usd": 0.0044367
+    }
+  ],
+  "finished_at": "2026-07-08T10:06:37.735Z",
+  "duration_seconds": 7.508
+}

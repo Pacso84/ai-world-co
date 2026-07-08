@@ -1,134 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178339006623032",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-07-07T02:07:46.230Z",
-      "updated": "2026-07-07T02:07:48.498Z"
-    },
-    {
-      "id": "t178339006851188",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-07T02:07:48.511Z",
-      "updated": "2026-07-07T02:09:30.047Z"
-    },
-    {
-      "id": "t178339017004986",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-07T02:09:30.049Z",
-      "updated": "2026-07-07T02:10:14.626Z"
-    },
-    {
-      "id": "t178339021463891",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-07T02:10:14.638Z",
-      "updated": "2026-07-07T02:10:14.835Z"
-    },
-    {
-      "id": "t17833902148379",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-07T02:10:14.837Z",
-      "updated": "2026-07-07T02:10:22.556Z"
-    },
-    {
-      "id": "t178339022256056",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-07T02:10:22.560Z",
-      "updated": "2026-07-07T02:11:30.893Z"
-    },
-    {
-      "id": "t178339029089455",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-07T02:11:30.894Z",
-      "updated": "2026-07-07T02:12:06.712Z"
-    },
-    {
-      "id": "t178339032671449",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-07T02:12:06.714Z",
-      "updated": "2026-07-07T02:12:35.464Z"
-    },
-    {
-      "id": "t178339035546535",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-07-07T02:12:35.465Z",
-      "updated": "2026-07-07T02:12:44.423Z"
-    },
-    {
-      "id": "t178339036442546",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-07T02:12:44.425Z",
-      "updated": "2026-07-07T02:12:45.210Z"
-    },
-    {
-      "id": "t178339036521263",
-      "title": "Run translator",
-      "status": "done",
-      "agent": "translator",
-      "created": "2026-07-07T02:12:45.212Z",
-      "updated": "2026-07-07T02:29:54.543Z"
-    },
-    {
-      "id": "t178339139454579",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-07-07T02:29:54.545Z",
-      "updated": "2026-07-07T02:29:59.351Z"
-    },
-    {
-      "id": "t178342108175312",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-07-07T10:44:41.753Z",
-      "updated": "2026-07-07T10:44:55.099Z"
-    },
-    {
-      "id": "t178342109510114",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-07-07T10:44:55.101Z",
-      "updated": "2026-07-07T10:44:55.343Z"
-    },
-    {
-      "id": "t17834210953456",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-07-07T10:44:55.345Z",
-      "updated": "2026-07-07T10:45:00.178Z"
-    },
-    {
-      "id": "t178342110017943",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-07T10:45:00.179Z",
-      "updated": "2026-07-07T10:45:14.929Z"
-    },
-    {
       "id": "t178342111493390",
       "title": "Run iro",
       "status": "done",
@@ -479,6 +351,134 @@
       "agent": "publisher",
       "created": "2026-07-08T02:05:26.680Z",
       "updated": "2026-07-08T02:05:31.546Z"
+    },
+    {
+      "id": "t178350517799939",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-07-08T10:06:17.999Z",
+      "updated": "2026-07-08T10:06:26.668Z"
+    },
+    {
+      "id": "t178350518667039",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-07-08T10:06:26.670Z",
+      "updated": "2026-07-08T10:06:26.913Z"
+    },
+    {
+      "id": "t178350518691571",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-07-08T10:06:26.915Z",
+      "updated": "2026-07-08T10:06:30.032Z"
+    },
+    {
+      "id": "t178350519003448",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-08T10:06:30.034Z",
+      "updated": "2026-07-08T10:06:37.768Z"
+    },
+    {
+      "id": "t178350519777241",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-07-08T10:06:37.772Z",
+      "updated": "2026-07-08T10:07:11.224Z"
+    },
+    {
+      "id": "t178350523122621",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-08T10:07:11.226Z",
+      "updated": "2026-07-08T10:07:51.929Z"
+    },
+    {
+      "id": "t178350527193379",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-07-08T10:07:51.933Z",
+      "updated": "2026-07-08T10:08:04.104Z"
+    },
+    {
+      "id": "t178350528410662",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-08T10:08:04.106Z",
+      "updated": "2026-07-08T10:08:11.699Z"
+    },
+    {
+      "id": "t178350529170357",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-07-08T10:08:11.703Z",
+      "updated": "2026-07-08T10:08:23.118Z"
+    },
+    {
+      "id": "t178350530312022",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-08T10:08:23.120Z",
+      "updated": "2026-07-08T10:08:30.058Z"
+    },
+    {
+      "id": "t178350531006188",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-07-08T10:08:30.061Z",
+      "updated": "2026-07-08T10:08:31.683Z"
+    },
+    {
+      "id": "t178350531169889",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-08T10:08:31.698Z",
+      "updated": "2026-07-08T10:08:37.730Z"
+    },
+    {
+      "id": "t178350531773252",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-07-08T10:08:37.732Z",
+      "updated": "2026-07-08T10:08:39.796Z"
+    },
+    {
+      "id": "t178350531979799",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-08T10:08:39.797Z",
+      "updated": "2026-07-08T10:08:40.482Z"
+    },
+    {
+      "id": "t178350532048468",
+      "title": "Run translator",
+      "status": "done",
+      "agent": "translator",
+      "created": "2026-07-08T10:08:40.484Z",
+      "updated": "2026-07-08T10:13:38.059Z"
+    },
+    {
+      "id": "t178350561806119",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-07-08T10:13:38.061Z",
+      "updated": "2026-07-08T10:13:42.821Z"
     }
   ],
   "notifications": [
@@ -1145,164 +1145,33 @@
       "agent": "ceo",
       "at": "2026-07-08T02:05:31.562Z",
       "loud": false
+    },
+    {
+      "id": "n17835053197867",
+      "level": "info",
+      "text": "SEO: 3 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-07-08T10:08:39.786Z",
+      "loud": false
+    },
+    {
+      "id": "n178350561893689",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). Our site is ready to publish with a coherent line-up of 10 articles that showcase practical AI applications for everyday people. I've reviewed each piece to ensure they're complete, on-brand, and erro",
+      "agent": "publisher",
+      "at": "2026-07-08T10:13:38.936Z",
+      "loud": false
+    },
+    {
+      "id": "n178350562283669",
+      "level": "success",
+      "text": "2 hír + 1 útmutató publikálva (költség: $0.0314).",
+      "agent": "ceo",
+      "at": "2026-07-08T10:13:42.836Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178310878679665",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"How to use Claude Projects to keep your work organised\" (?/10)",
-      "ref": "GUIDE_claude-projects.json",
-      "at": "2026-07-03T19:59:46.796Z"
-    },
-    {
-      "id": "m178310879379696",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"How to use Microsoft Copilot in Word, Excel and Outlook\" (?/10)",
-      "ref": "GUIDE_copilot-office.json",
-      "at": "2026-07-03T19:59:53.796Z"
-    },
-    {
-      "id": "m178310880172519",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Create royalty‑free AI music loops for podcasts and videos – beginner tutorial\" (?/10)",
-      "ref": "GUIDE_create-royalty-free-ai-music-loops-for-podcasts-and-videos-b.json",
-      "at": "2026-07-03T20:00:01.725Z"
-    },
-    {
-      "id": "m178310880896210",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Digitize handwritten notes with AI and turn them into editable text\" (?/10)",
-      "ref": "GUIDE_digitize-handwritten-notes-with-ai-and-turn-them-into-editab.json",
-      "at": "2026-07-03T20:00:08.962Z"
-    },
-    {
-      "id": "m178310880898425",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"How to use Grok on X for real-time answers\" — mi a baj: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!)",
-      "ref": "GUIDE_grok-on-x.json",
-      "at": "2026-07-03T20:00:08.984Z"
-    },
-    {
-      "id": "m178310880900456",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Host a simple AI web app on Hugging Face Spaces without coding\" — mi a baj: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!)",
-      "ref": "GUIDE_host-a-simple-ai-web-app-on-hugging-face-spaces-without-codi.json",
-      "at": "2026-07-03T20:00:09.004Z"
-    },
-    {
-      "id": "m178310881882099",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"How GitHub Copilot Can Write Unit Tests for Your Code\" (?/10)",
-      "ref": "GUIDE_how-github-copilot-can-write-unit-tests-for-your-code.json",
-      "at": "2026-07-03T20:00:18.820Z"
-    },
-    {
-      "id": "m178310882598611",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Getting started with Mistral's Le Chat\" (?/10)",
-      "ref": "GUIDE_lechat-getting-started.json",
-      "at": "2026-07-03T20:00:25.986Z"
-    },
-    {
-      "id": "m178310882600682",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"How to use Meta AI on Instagram and Messenger\" — mi a baj: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!)",
-      "ref": "GUIDE_meta-ai-instagram.json",
-      "at": "2026-07-03T20:00:26.006Z"
-    },
-    {
-      "id": "m178310882602556",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Getting started with Google NotebookLM for your own documents\" — mi a baj: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!)",
-      "ref": "GUIDE_notebooklm-getting-started.json",
-      "at": "2026-07-03T20:00:26.025Z"
-    },
-    {
-      "id": "m17831088333492",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Set up Qwen Chat to handle common customer FAQs for your e‑commerce store\" (?/10)",
-      "ref": "GUIDE_set-up-qwen-chat-to-handle-common-customer-faqs-for-your-e-c.json",
-      "at": "2026-07-03T20:00:33.349Z"
-    },
-    {
-      "id": "m178310884058071",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Summarise documents instantly with Mistral AI’s tiny‑model summariser\" (?/10)",
-      "ref": "GUIDE_summarise-documents-instantly-with-mistral-ai-s-tiny-model-s.json",
-      "at": "2026-07-03T20:00:40.580Z"
-    },
-    {
-      "id": "m178310888608658",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"How to set up smart routines with Alexa+\" — javítva: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!); Reviewer verdict: Critical auto-check failures: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!); újraküldöm.",
-      "ref": "GUIDE_alexa-routines.json",
-      "at": "2026-07-03T20:01:26.086Z"
-    },
-    {
-      "id": "m178310890753153",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Getting started with Apple Intelligence on your iPhone\" — javítva: Step 2 UI label vague; Unverified claim about iOS 18 requirement; újraküldöm.",
-      "ref": "GUIDE_apple-intelligence-getting-started.json",
-      "at": "2026-07-03T20:01:47.531Z"
-    },
-    {
-      "id": "m178310890753440",
-      "from": "guide",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Kell még adat: \"Getting started with Apple Intelligence on your iPhone\" — az Ellenőrző tényt/forrást kér, amit nem találhatok ki: Missing source citations for feature details",
-      "ref": "GUIDE_apple-intelligence-getting-started.json",
-      "open": false,
-      "at": "2026-07-03T20:01:47.534Z",
-      "resolved_at": "2026-07-03T21:31:01.830Z"
-    },
-    {
-      "id": "m178310894857448",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"How to use Grok on X for real-time answers\" — javítva: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!); Reviewer verdict: Critical auto-check failures: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!); újraküldöm.",
-      "ref": "GUIDE_grok-on-x.json",
-      "at": "2026-07-03T20:02:28.574Z"
-    },
-    {
-      "id": "m178310899180738",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Host a simple AI web app on Hugging Face Spaces without coding\" — javítva: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!); Reviewer verdict: Critical auto-check failures: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!); újraküldöm.",
-      "ref": "GUIDE_host-a-simple-ai-web-app-on-hugging-face-spaces-without-codi.json",
-      "at": "2026-07-03T20:03:11.807Z"
-    },
     {
       "id": "m178310903314087",
       "from": "guide",
@@ -2504,6 +2373,159 @@
       "text": "5 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
       "ref": null,
       "at": "2026-07-08T02:06:04.379Z"
+    },
+    {
+      "id": "m178350519024936",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"ChatGPT vs Gemini vs Claude: Which AI Chatbot Should You Choose?\" — mi a baj: NO_H1: Nincs H1 (# Cím) a cikkben",
+      "ref": "2026-07-08T04-01-38-639Z_aiworld-editorial_Compare_ai-chatbots.json",
+      "at": "2026-07-08T10:06:30.249Z"
+    },
+    {
+      "id": "m178350519773438",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Open, convenient and predictable: Introducing Provisioned Throughput\" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "2026-07-08T10-06-26-611Z_together_Open__convenient_and_predictable__Introducing_Prov.json",
+      "at": "2026-07-08T10:06:37.734Z"
+    },
+    {
+      "id": "m178350520010871",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Australian Payments Plus moves faster with ChatGPT and Codex\" — javítva: Vague instruction for phone voice assistant; Lacks specific guidance for phone voice assistant interaction; újraküldöm.",
+      "ref": "2026-07-08T01-42-24-718Z_openai-blog_Australian_Payments_Plus_moves_faster_with_ChatGPT.json",
+      "at": "2026-07-08T10:06:40.108Z"
+    },
+    {
+      "id": "m178350520891847",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Fill with Gemini in Sheets now available in 11 additional languages\" — javítva: Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "2026-07-08T01-42-24-720Z_google-workspace_Fill_with_Gemini_in_Sheets_now_available_in_11_add.json",
+      "at": "2026-07-08T10:06:48.918Z"
+    },
+    {
+      "id": "m178350521964236",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"ChatGPT vs Gemini vs Claude: Which AI Chatbot Should You Choose?\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; Reviewer verdict: Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben; újraküldöm.",
+      "ref": "2026-07-08T04-01-38-639Z_aiworld-editorial_Compare_ai-chatbots.json",
+      "at": "2026-07-08T10:06:59.642Z"
+    },
+    {
+      "id": "m178350523121389",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Open, convenient and predictable: Introducing Provisioned Throughput\" — javítva: Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "2026-07-08T10-06-26-611Z_together_Open__convenient_and_predictable__Introducing_Prov.json",
+      "at": "2026-07-08T10:07:11.213Z"
+    },
+    {
+      "id": "m17835052397618",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Australian Payments Plus moves faster with ChatGPT and Codex\" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "2026-07-08T01-42-24-718Z_openai-blog_Australian_Payments_Plus_moves_faster_with_ChatGPT.json",
+      "at": "2026-07-08T10:07:19.761Z"
+    },
+    {
+      "id": "m178350524706439",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Fill with Gemini in Sheets now available in 11 additional languages\" (?/10)",
+      "ref": "2026-07-08T01-42-24-720Z_google-workspace_Fill_with_Gemini_in_Sheets_now_available_in_11_add.json",
+      "at": "2026-07-08T10:07:27.064Z"
+    },
+    {
+      "id": "m178350526438120",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"ChatGPT vs Gemini vs Claude: Which AI Chatbot Should You Choose?\" (?/10)",
+      "ref": "2026-07-08T04-01-38-639Z_aiworld-editorial_Compare_ai-chatbots.json",
+      "at": "2026-07-08T10:07:44.381Z"
+    },
+    {
+      "id": "m178350527191762",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Open, convenient and predictable: Introducing Provisioned Throughput\" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "2026-07-08T10-06-26-611Z_together_Open__convenient_and_predictable__Introducing_Prov.json",
+      "at": "2026-07-08T10:07:51.917Z"
+    },
+    {
+      "id": "m178350528409447",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Plan a home renovation budget using Perplexity’s data lookup\" — javítva: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "GUIDE_plan-a-home-renovation-budget-using-perplexity-s-data-lookup.json",
+      "at": "2026-07-08T10:08:04.094Z"
+    },
+    {
+      "id": "m178350529167135",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Plan a home renovation budget using Perplexity’s data lookup\" — mi a baj: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user",
+      "ref": "GUIDE_plan-a-home-renovation-budget-using-perplexity-s-data-lookup.json",
+      "at": "2026-07-08T10:08:11.671Z"
+    },
+    {
+      "id": "m178350530310735",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Plan a home renovation budget using Perplexity’s data lookup\" — javítva: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "GUIDE_plan-a-home-renovation-budget-using-perplexity-s-data-lookup.json",
+      "at": "2026-07-08T10:08:23.107Z"
+    },
+    {
+      "id": "m17835053100069",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Plan a home renovation budget using Perplexity’s data lookup\" (?/10)",
+      "ref": "GUIDE_plan-a-home-renovation-budget-using-perplexity-s-data-lookup.json",
+      "at": "2026-07-08T10:08:30.006Z"
+    },
+    {
+      "id": "m178350531133632",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "info",
+      "text": "A \"Fill with Gemini in Sheets now available in 11 addition\" hír a meglévő útmutatóra mutat: gemini-getting-started",
+      "ref": "gemini-getting-started",
+      "at": "2026-07-08T10:08:31.336Z"
+    },
+    {
+      "id": "m178350532044719",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 16 → 4/4/2 oszlop.",
+      "ref": "mobile",
+      "at": "2026-07-08T10:08:40.447Z"
+    },
+    {
+      "id": "m178350566304545",
+      "from": "social",
+      "to": "team",
+      "kind": "info",
+      "text": "6 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
+      "ref": null,
+      "at": "2026-07-08T10:14:23.045Z"
     }
   ]
 }

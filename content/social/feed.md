@@ -1,6 +1,108 @@
 # AI World Co. — közösségi posztok
 
-*Generálva: 2026-07-08T02:06:04.377Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+*Generálva: 2026-07-08T10:14:23.043Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## HP Inc. launches Frontier strategic partnership with OpenAI
+**🔗 https://aiworldhq.com/article/how-to-turn-your-voice-notes-into-polished-documents-with-ai.html**
+
+**Facebook:**
+Tired of typing up voice notes? Learn a quick way to clean them up and turn them into polished documents in just a few minutes. https://aiworldhq.com/article/how-to-turn-your-voice-notes-into-polished-documents-with-ai.html #productivity #voiceai
+
+**Instagram:**
+Turn your spoken ideas into tidy docs 📄
+A simple step‑by‑step guide shows how to polish voice recordings into clear text without typing.
+#voiceai #productivity #AItools
+Link in bio.
+
+*Kép-ötlet: A person speaking into a phone while a clean text document appears on a laptop screen.*
+
+---
+
+## Pairing geotechnical data with AI helps New Zealand build better
+**🔗 https://aiworldhq.com/article/how-to-turn-your-meeting-notes-into-clear-action-plans-with-.html**
+
+**Facebook:**
+Using AI to analyse soil data means faster, safer building projects in New Zealand – and fewer surprises on site. Learn how the tech is shaping our infrastructure. https://aiworldhq.com/article/how-to-turn-your-meeting-notes-into-clear-action-plans-with-.html #AI #Geotech
+
+**Instagram:**
+AI meets earth science 🌏
+Turn complex ground data into clear building plans with less guesswork.
+Build smarter, protect the environment.
+#AI #Geotech #Construction #NewZealand
+Link in bio.
+
+*Kép-ötlet: A construction site with a digital overlay of soil layers and data points.*
+
+---
+
+## From Materials Simulation to Experimental Astronomy, New NVIDIA AI Software Unlocks Scientific Discoveries
+**🔗 https://aiworldhq.com/article/how-ai-is-speeding-up-the-search-for-new-materials-and-scien.html**
+
+**Facebook:**
+Ever wonder how your phone battery improves so quickly? New AI tools let scientists run thousands of material tests in a day, trimming years off development. https://aiworldhq.com/article/how-ai-is-speeding-up-the-search-for-new-materials-and-scien.html #scientificai #futuretech
+
+**Instagram:**
+Speeding up science, one simulation at a time.
+AI runs virtual labs to discover lighter shoes and greener plastics faster.
+#scientificai
+#futuretech
+#sustainability
+Link in bio.
+
+*Kép-ötlet: A researcher viewing a computer screen of colourful atom models, with a subtle galaxy backdrop suggesting astronomy.*
+
+---
+
+## Qwen VLo: From "Understanding" the World to "Depicting" It
+**🔗 https://aiworldhq.com/article/how-ai-that-sees-and-creates-images-can-work-for-you.html**
+
+**Facebook:**
+Want to bring a idea to life or fix a photo without any design tools? This AI lets you describe what you need and get an image in seconds. https://aiworldhq.com/article/how-ai-that-sees-and-creates-images-can-work-for-you.html #AI #creativity
+
+**Instagram:**
+Turn words into pictures in a flash
+Describe a scene or ask the AI to add a missing element to a photo – no design skills needed.
+#imagegeneration
+#multimodalAI
+#creativity
+#techtips
+Link in bio.
+
+*Kép-ötlet: A simple desk setup with a laptop screen showing a half‑finished illustration, next to a handwritten note of a scene description.*
+
+---
+
+## Time to Speak Some Dialects, Qwen-TTS!
+**🔗 https://aiworldhq.com/article/give-your-ai-voice-a-unique-sound-exploring-expressive-text-.html**
+
+**Facebook:**
+Add a natural accent to your AI voice and make podcasts, e‑books or tutorials feel more engaging. It’s easier to connect when the speech sounds like a real person. https://aiworldhq.com/article/give-your-ai-voice-a-unique-sound-exploring-expressive-text-.html #voiceai #contentcreation
+
+**Instagram:**
+Give your AI voice a local flavour
+Choose accents, emotions and tones that match your story – from calm narration to lively characters.
+#voiceai
+#texttospeech
+#contentcreation
+#accessibility
+Link in bio.
+
+*Kép-ötlet: A close‑up of a microphone with a soft waveform overlay and a faint map silhouette showing regional accents.*
+
+---
+
+## Connect the dots: Build with built-in and custom MCPs in Studio
+**🔗 https://aiworldhq.com/article/how-ai-can-work-directly-inside-your-business-tools.html**
+
+**Facebook:**
+Want to automate tasks and improve efficiency in your business? Discover how to integrate AI with your company's data and applications to get more done with less hassle https://aiworldhq.com/article/how-ai-can-work-directly-inside-your-business-tools.html #businessai #productivity
+
+**Instagram:**
+Get more done with less hassle! Integrating AI with your business tools can automate tasks and improve efficiency. Learn how to make it work for you #businessai #automation #productivity #security Link in bio
+
+*Kép-ötlet: A simple office workspace with a computer and a few plants, representing a calm and efficient work environment.*
 
 ---
 
