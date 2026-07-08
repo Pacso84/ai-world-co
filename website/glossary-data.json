@@ -152,6 +152,102 @@
       "es": { "term": "AGI (inteligencia artificial general)", "def": "Una IA todavía hipotética que pensaría con la flexibilidad de un humano en cualquier ámbito. La IA de hoy no es eso — es muy capaz en tareas concretas, y justo por eso es útil y predecible." },
       "de": { "term": "AGI (allgemeine künstliche Intelligenz)", "def": "Eine noch hypothetische KI, die in jedem Bereich so flexibel denken könnte wie ein Mensch. Die heutige KI ist das nicht — sie ist bei konkreten Aufgaben sehr fähig, und genau das macht sie nützlich und berechenbar." },
       "fr": { "term": "AGI (intelligence artificielle générale)", "def": "Une IA encore hypothétique qui penserait avec la souplesse d’un humain dans tous les domaines. L’IA d’aujourd’hui n’en est pas là — elle est très douée pour des tâches précises, et c’est justement ce qui la rend utile et prévisible." }
+    },
+    {
+      "id": "machine-learning",
+      "en": { "term": "Machine learning", "def": "A way of building AI: instead of being given step-by-step rules, the computer learns patterns from lots of examples — like learning to recognise cats by seeing thousands of cat photos." },
+      "hu": { "term": "Gépi tanulás", "def": "Az AI építésének egyik módja: a számítógép nem kész szabályokat kap, hanem rengeteg példából tanulja meg a mintázatokat — ahogy több ezer macskaképből megtanulja felismerni a macskát." },
+      "es": { "term": "Aprendizaje automático", "def": "Una forma de construir IA: en vez de recibir reglas paso a paso, la computadora aprende patrones a partir de muchos ejemplos — como aprender a reconocer gatos viendo miles de fotos de gatos." },
+      "de": { "term": "Maschinelles Lernen", "def": "Eine Art, KI zu bauen: Statt fertige Regeln zu bekommen, lernt der Computer Muster aus vielen Beispielen — so wie man Katzen erkennen lernt, indem man Tausende Katzenfotos sieht." },
+      "fr": { "term": "Apprentissage automatique", "def": "Une façon de construire l’IA : au lieu de recevoir des règles pas à pas, l’ordinateur apprend des schémas à partir de nombreux exemples — comme apprendre à reconnaître les chats en voyant des milliers de photos de chats." }
+    },
+    {
+      "id": "neural-network",
+      "en": { "term": "Neural network", "def": "The kind of software design most modern AI uses, loosely inspired by how brain cells connect. It's not a real brain — just a maths structure that's very good at spotting patterns." },
+      "hu": { "term": "Neurális hálózat", "def": "A legtöbb mai AI ilyen szoftver-felépítést használ, amelyet lazán az agysejtek kapcsolódása ihletett. Nem valódi agy — csak egy matematikai szerkezet, amely nagyon jól ismeri fel a mintázatokat." },
+      "es": { "term": "Red neuronal", "def": "El tipo de diseño de software que usa la mayoría de la IA moderna, inspirado a grandes rasgos en cómo se conectan las células del cerebro. No es un cerebro real — solo una estructura matemática muy buena detectando patrones." },
+      "de": { "term": "Neuronales Netz", "def": "Die Software-Bauart, die die meisten modernen KIs nutzen — grob inspiriert davon, wie Gehirnzellen sich verbinden. Es ist kein echtes Gehirn, nur eine mathematische Struktur, die sehr gut Muster erkennt." },
+      "fr": { "term": "Réseau de neurones", "def": "Le type de conception logicielle qu’utilise la plupart des IA modernes, vaguement inspiré de la façon dont les cellules du cerveau se connectent. Ce n’est pas un vrai cerveau — juste une structure mathématique très douée pour repérer des schémas." }
+    },
+    {
+      "id": "gpt",
+      "en": { "term": "GPT", "def": "The letters stand for ‘Generative Pre-trained Transformer’ — the technology behind ChatGPT and many other assistants. In plain terms: an AI trained on huge amounts of text that generates new text word by word." },
+      "hu": { "term": "GPT", "def": "A betűk jelentése angolul ‘Generative Pre-trained Transformer’ — a ChatGPT és sok más asszisztens mögötti technológia. Egyszerűen: hatalmas szövegmennyiségen tanult AI, amely szóról szóra új szöveget hoz létre." },
+      "es": { "term": "GPT", "def": "Las siglas significan ‘Generative Pre-trained Transformer’ (transformador generativo preentrenado), la tecnología detrás de ChatGPT y muchos otros asistentes. En simple: una IA entrenada con enormes cantidades de texto que genera texto nuevo palabra por palabra." },
+      "de": { "term": "GPT", "def": "Die Buchstaben stehen für ‘Generative Pre-trained Transformer’ — die Technik hinter ChatGPT und vielen anderen Assistenten. Einfach gesagt: eine KI, die mit riesigen Textmengen trainiert wurde und Wort für Wort neuen Text erzeugt." },
+      "fr": { "term": "GPT", "def": "Les lettres signifient « Generative Pre-trained Transformer » — la technologie derrière ChatGPT et beaucoup d’autres assistants. En clair : une IA entraînée sur d’énormes quantités de texte qui génère du texte nouveau mot par mot." }
+    },
+    {
+      "id": "reasoning-model",
+      "en": { "term": "Reasoning model", "def": "A newer kind of AI that ‘thinks’ step by step before answering, instead of replying instantly. It's slower but often better at maths, logic and tricky problems." },
+      "hu": { "term": "Gondolkodó modell", "def": "Újabb AI-fajta, amely válasz előtt lépésről lépésre ‘végiggondolja’ a feladatot, nem azonnal felel. Lassabb, de gyakran jobb a matekban, a logikában és a nehéz kérdésekben." },
+      "es": { "term": "Modelo de razonamiento", "def": "Un tipo más nuevo de IA que ‘piensa’ paso a paso antes de responder, en vez de contestar al instante. Es más lento, pero suele ser mejor en matemáticas, lógica y problemas difíciles." },
+      "de": { "term": "Reasoning-Modell (denkendes Modell)", "def": "Eine neuere KI-Art, die vor der Antwort Schritt für Schritt ‘nachdenkt’, statt sofort zu antworten. Langsamer, aber oft besser bei Mathe, Logik und kniffligen Aufgaben." },
+      "fr": { "term": "Modèle de raisonnement", "def": "Un type d’IA plus récent qui « réfléchit » étape par étape avant de répondre, au lieu de répondre instantanément. Plus lent, mais souvent meilleur en maths, en logique et sur les problèmes difficiles." }
+    },
+    {
+      "id": "knowledge-cutoff",
+      "en": { "term": "Knowledge cut-off", "def": "The date after which an AI hasn't learned anything new. Ask about events after that date and it may not know — unless it can search the web. Always check recent facts." },
+      "hu": { "term": "Tudás-határnap", "def": "Az a dátum, ami után az AI már nem tanult újat. Ha ez utáni eseményről kérdezed, lehet, hogy nem tudja — hacsak nem tud rákeresni a neten. A friss tényeket mindig ellenőrizd." },
+      "es": { "term": "Fecha de corte de conocimiento", "def": "La fecha después de la cual una IA no ha aprendido nada nuevo. Si preguntas por hechos posteriores, puede que no los sepa — salvo que pueda buscar en la web. Verifica siempre los datos recientes." },
+      "de": { "term": "Wissensstichtag", "def": "Das Datum, nach dem eine KI nichts Neues mehr gelernt hat. Fragst du nach späteren Ereignissen, weiß sie es vielleicht nicht — außer sie kann im Web suchen. Prüfe aktuelle Fakten immer nach." },
+      "fr": { "term": "Date de coupure des connaissances", "def": "La date après laquelle une IA n’a plus rien appris de nouveau. Posez une question sur des événements postérieurs et elle risque de l’ignorer — sauf si elle peut chercher sur le web. Vérifiez toujours les faits récents." }
+    },
+    {
+      "id": "bias",
+      "en": { "term": "Bias", "def": "When an AI's answers unfairly favour or disadvantage certain groups, because the data it learned from was unbalanced. It's a known problem — treat AI output as a helpful draft, not the final word." },
+      "hu": { "term": "Elfogultság (torzítás)", "def": "Amikor az AI válaszai igazságtalanul kedveznek vagy hátrányba hoznak bizonyos csoportokat, mert a tanuló-adat kiegyensúlyozatlan volt. Ismert probléma — az AI válaszát tekintsd segítő vázlatnak, ne végszónak." },
+      "es": { "term": "Sesgo", "def": "Cuando las respuestas de una IA favorecen o perjudican injustamente a ciertos grupos, porque los datos con los que aprendió estaban desequilibrados. Es un problema conocido — trata la respuesta de la IA como un borrador útil, no como la última palabra." },
+      "de": { "term": "Verzerrung (Bias)", "def": "Wenn die Antworten einer KI bestimmte Gruppen unfair bevorzugen oder benachteiligen, weil die gelernten Daten unausgewogen waren. Ein bekanntes Problem — nimm KI-Antworten als hilfreichen Entwurf, nicht als letztes Wort." },
+      "fr": { "term": "Biais", "def": "Quand les réponses d’une IA favorisent ou défavorisent injustement certains groupes, parce que les données apprises étaient déséquilibrées. C’est un problème connu — considérez la réponse de l’IA comme un brouillon utile, pas comme le dernier mot." }
+    },
+    {
+      "id": "watermark",
+      "en": { "term": "AI watermark", "def": "A hidden or visible mark added to AI-made images, video or text so it can be recognised as AI-generated. Still patchy — its absence doesn't prove something is real." },
+      "hu": { "term": "AI-vízjel", "def": "Rejtett vagy látható jelölés az AI által készített képen, videón vagy szövegen, hogy felismerhető legyen AI-eredetűként. Még hiányos — a hiánya nem bizonyítja, hogy valami valódi." },
+      "es": { "term": "Marca de agua de IA", "def": "Una marca oculta o visible añadida a imágenes, vídeos o textos hechos por IA para reconocerlos como generados por IA. Aún es irregular — su ausencia no prueba que algo sea real." },
+      "de": { "term": "KI-Wasserzeichen", "def": "Eine versteckte oder sichtbare Markierung in KI-erzeugten Bildern, Videos oder Texten, damit man sie als KI-generiert erkennt. Noch lückenhaft — ihr Fehlen beweist nicht, dass etwas echt ist." },
+      "fr": { "term": "Filigrane IA", "def": "Une marque cachée ou visible ajoutée aux images, vidéos ou textes créés par IA pour les reconnaître comme générés par IA. Encore inégal — son absence ne prouve pas qu’une chose est réelle." }
+    },
+    {
+      "id": "copilot",
+      "en": { "term": "Copilot", "def": "A common name for an AI helper built into a tool you already use — writing code, documents or emails alongside you. Microsoft and GitHub use the name, but the idea is general: AI as your assistant, not the pilot." },
+      "hu": { "term": "Copilot (másodpilóta)", "def": "Gyakori név a már használt eszközbe épített AI-segédre — veled együtt ír kódot, dokumentumot vagy e-mailt. A Microsoft és a GitHub is így hívja, de az ötlet általános: az AI a segéded, nem a pilóta." },
+      "es": { "term": "Copilot (copiloto)", "def": "Un nombre habitual para un asistente de IA integrado en una herramienta que ya usas — que escribe código, documentos o correos contigo. Microsoft y GitHub usan el nombre, pero la idea es general: la IA como ayudante, no como piloto." },
+      "de": { "term": "Copilot", "def": "Ein gängiger Name für einen KI-Helfer, der in ein Werkzeug eingebaut ist, das du schon nutzt — er schreibt Code, Dokumente oder E-Mails mit dir. Microsoft und GitHub verwenden den Namen, aber die Idee ist allgemein: KI als Assistent, nicht als Pilot." },
+      "fr": { "term": "Copilot (copilote)", "def": "Un nom courant pour un assistant IA intégré à un outil que vous utilisez déjà — il écrit du code, des documents ou des e-mails avec vous. Microsoft et GitHub emploient ce nom, mais l’idée est générale : l’IA comme assistant, pas comme pilote." }
+    },
+    {
+      "id": "jailbreak",
+      "en": { "term": "Jailbreak", "def": "Tricking an AI into ignoring its own safety rules — for example to get it to say something it normally wouldn't. Companies keep patching these, and trying them can break a service's terms of use." },
+      "hu": { "term": "Feltörés (jailbreak)", "def": "Az AI rászedése, hogy figyelmen kívül hagyja a saját biztonsági szabályait — például hogy olyat mondjon, amit normál esetben nem. A cégek folyton foltozzák, és a próbálgatásuk sértheti a szolgáltatás felhasználási feltételeit." },
+      "es": { "term": "Jailbreak (burlar los límites)", "def": "Engañar a una IA para que ignore sus propias reglas de seguridad — por ejemplo, para que diga algo que normalmente no diría. Las empresas lo corrigen constantemente, e intentarlo puede violar las condiciones de uso del servicio." },
+      "de": { "term": "Jailbreak", "def": "Eine KI austricksen, damit sie ihre eigenen Sicherheitsregeln ignoriert — etwa um sie etwas sagen zu lassen, was sie normalerweise nicht würde. Firmen stopfen diese Lücken laufend, und Versuche können die Nutzungsbedingungen verletzen." },
+      "fr": { "term": "Jailbreak (contournement)", "def": "Piéger une IA pour qu’elle ignore ses propres règles de sécurité — par exemple pour lui faire dire ce qu’elle refuserait normalement. Les entreprises corrigent sans cesse ces failles, et les tenter peut violer les conditions d’utilisation." }
+    },
+    {
+      "id": "benchmark",
+      "en": { "term": "Benchmark", "def": "A standard test used to compare AI models — like exams for AI. When you read ‘model X beats Y on a benchmark’, it means X scored higher on that particular test, not that it's better at everything." },
+      "hu": { "term": "Teljesítmény-teszt (benchmark)", "def": "Szabványos teszt AI-modellek összehasonlítására — mintha vizsga lenne az AI-nak. Ha azt olvasod, ‘az X modell veri az Y-t egy benchmarkon’, az annyit tesz, hogy X jobb pontszámot ért el azon a teszten, nem azt, hogy mindenben jobb." },
+      "es": { "term": "Prueba de referencia (benchmark)", "def": "Un examen estándar para comparar modelos de IA — como exámenes para IA. Cuando lees ‘el modelo X supera al Y en un benchmark’, significa que X sacó mejor nota en esa prueba concreta, no que sea mejor en todo." },
+      "de": { "term": "Benchmark (Vergleichstest)", "def": "Ein Standardtest zum Vergleich von KI-Modellen — wie Prüfungen für KI. Wenn du liest ‘Modell X schlägt Y in einem Benchmark’, heißt das, X war in diesem einen Test besser — nicht, dass es in allem besser ist." },
+      "fr": { "term": "Benchmark (test de référence)", "def": "Un test standard pour comparer les modèles d’IA — comme des examens pour l’IA. Quand vous lisez « le modèle X bat Y sur un benchmark », cela veut dire que X a eu une meilleure note à ce test précis, pas qu’il est meilleur partout." }
+    },
+    {
+      "id": "chip-gpu",
+      "en": { "term": "AI chip (GPU)", "def": "The powerful computer chips that run AI. Graphics chips (GPUs), first made for video games, turned out to be brilliant at AI maths — which is why companies like Nvidia are in the news so much." },
+      "hu": { "term": "AI-chip (GPU)", "def": "A nagy teljesítményű számítógép-chipek, amelyek az AI-t futtatják. A grafikus chipek (GPU-k), amelyeket eredetileg videojátékokhoz készítettek, kiválónak bizonyultak az AI-matekhoz — ezért van annyit a hírekben az Nvidia és a többi hasonló cég." },
+      "es": { "term": "Chip de IA (GPU)", "def": "Los potentes chips que hacen funcionar la IA. Los chips gráficos (GPU), creados al principio para videojuegos, resultaron ser buenísimos para las matemáticas de la IA — por eso empresas como Nvidia salen tanto en las noticias." },
+      "de": { "term": "KI-Chip (GPU)", "def": "Die leistungsstarken Computerchips, die KI ausführen. Grafikchips (GPUs), ursprünglich für Videospiele gebaut, erwiesen sich als hervorragend für KI-Mathematik — deshalb sind Firmen wie Nvidia so oft in den Nachrichten." },
+      "fr": { "term": "Puce IA (GPU)", "def": "Les puces informatiques puissantes qui font tourner l’IA. Les puces graphiques (GPU), conçues au départ pour les jeux vidéo, se sont révélées excellentes pour les calculs de l’IA — d’où la présence constante d’entreprises comme Nvidia dans l’actualité." }
+    },
+    {
+      "id": "guardrails",
+      "en": { "term": "Guardrails", "def": "The built-in limits that stop an AI from doing harmful things — like refusing dangerous instructions. They're not perfect, but they're why an assistant will politely decline some requests." },
+      "hu": { "term": "Védőkorlátok (guardrails)", "def": "Beépített korlátok, amelyek megakadályozzák, hogy az AI káros dolgokat tegyen — például elutasítja a veszélyes utasításokat. Nem tökéletesek, de ezért utasít vissza udvariasan bizonyos kéréseket egy asszisztens." },
+      "es": { "term": "Barreras de seguridad (guardrails)", "def": "Los límites integrados que impiden que una IA haga cosas dañinas — como rechazar instrucciones peligrosas. No son perfectos, pero por eso un asistente rechaza con educación ciertas peticiones." },
+      "de": { "term": "Schutzplanken (Guardrails)", "def": "Die eingebauten Grenzen, die eine KI von schädlichem Handeln abhalten — etwa das Ablehnen gefährlicher Anweisungen. Sie sind nicht perfekt, aber deshalb weist ein Assistent manche Anfragen höflich zurück." },
+      "fr": { "term": "Garde-fous (guardrails)", "def": "Les limites intégrées qui empêchent une IA de faire des choses nuisibles — comme refuser des instructions dangereuses. Ils ne sont pas parfaits, mais c’est pourquoi un assistant décline poliment certaines demandes." }
     }
   ]
 }
