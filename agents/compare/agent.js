@@ -75,6 +75,7 @@ audience: "both"
 read_time_minutes: 5
 tags: ["comparison"]
 ---
+- Immediately after the closing "---" of the frontmatter, repeat the title as an H1 markdown heading on its own line: # ${topic.title}
 - Warm 2-3 sentence intro: why this choice feels confusing, and that there is no single "best" — only the best FOR YOU.
 - One "## <tool name>" section per tool: what it feels like to use, 2 real strengths, 1 honest limitation (3-5 sentences each).
 - A "## Side by side" section with a markdown table: rows = what matters to a normal person (ease for beginners, writing help, works with your other apps, free version), columns = the tools. Keep cells SHORT (2-5 words).
@@ -86,9 +87,10 @@ tags: ["comparison"]
 function selfCheck(text) {
   if (!text) return false;
   const hasFm = text.trimStart().startsWith('---');
+  const hasH1 = /^#\s+.+$/m.test(text);              // az Ellenőrző auto-check NO_H1 kapuja!
   const hasImpact = /what this means for you/i.test(text);
   const hasTable = /\|.+\|.+\|/.test(text);
-  return hasFm && hasImpact && hasTable;
+  return hasFm && hasH1 && hasImpact && hasTable;
 }
 
 async function main() {
@@ -107,7 +109,7 @@ async function main() {
   let response = await ask(prompt, { agentName: AGENT_NAME, systemPrompt: SYSTEM_PROMPT, maxTokens: 3500 });
   if (response && !selfCheck(response.text)) {
     console.log('   ↻ Hiányos szerkezet (frontmatter / táblázat / záró szekció) — újrapróbálom nyomatékkal...');
-    const retry = await ask(prompt + `\n\n⚠️ CRITICAL: You MUST include the YAML frontmatter, a markdown TABLE in the "## Side by side" section, and a "## What this means for you" H2 section. Write the complete article again.`,
+    const retry = await ask(prompt + `\n\n⚠️ CRITICAL: You MUST include (1) the YAML frontmatter, (2) an H1 heading line "# ${topic.title}" right after the frontmatter, (3) a markdown TABLE in the "## Side by side" section, and (4) a "## What this means for you" H2 section. Write the complete article again.`,
       { agentName: AGENT_NAME, systemPrompt: SYSTEM_PROMPT, maxTokens: 3500 });
     if (retry && selfCheck(retry.text)) { retry.costUsd += response.costUsd; response = retry; }
   }

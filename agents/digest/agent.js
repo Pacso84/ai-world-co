@@ -101,6 +101,7 @@ audience: "both"
 read_time_minutes: 4
 tags: ["weekly-digest"]
 ---
+- Immediately after the closing "---" of the frontmatter, repeat the title as an H1 markdown heading on its own line: # ${exactTitle}
 - Then a warm 2-3 sentence intro (what kind of week it was).
 - Then the 5 picks, each as a "## <short catchy heading>" section with 2-4 sentences: WHAT happened and WHY a normal person should care. End each section with a markdown link to OUR article, exactly in this form: [Read the full story](<the link I gave you>).
 - Use ONLY the links I provided above — never invent URLs.
@@ -112,9 +113,10 @@ tags: ["weekly-digest"]
 function selfCheck(text) {
   if (!text) return false;
   const hasFm = text.trimStart().startsWith('---');
+  const hasH1 = /^#\s+.+$/m.test(text);              // az Ellenőrző auto-check NO_H1 kapuja!
   const hasImpact = /what this means for you/i.test(text);
   const internalLinks = (text.match(/\]\((https?:\/\/[^)]*\/article\/[^)]+)\)/g) || []).length;
-  return hasFm && hasImpact && internalLinks >= 3;
+  return hasFm && hasH1 && hasImpact && internalLinks >= 3;
 }
 
 async function main() {
@@ -134,7 +136,7 @@ async function main() {
   let response = await ask(prompt, { agentName: AGENT_NAME, systemPrompt: SYSTEM_PROMPT, maxTokens: 3000 });
   if (response && !selfCheck(response.text)) {
     console.log('   ↻ Hiányos szerkezet (frontmatter / záró szekció / belső linkek) — újrapróbálom nyomatékkal...');
-    const retry = await ask(prompt + `\n\n⚠️ CRITICAL: You MUST include the YAML frontmatter, at least 5 [Read the full story](...) links from the provided list, and a "## What this means for you" H2 section. Write the complete article again.`,
+    const retry = await ask(prompt + `\n\n⚠️ CRITICAL: You MUST include (1) the YAML frontmatter, (2) an H1 heading line "# ${exactTitle}" right after the frontmatter, (3) at least 5 [Read the full story](...) links from the provided list, and (4) a "## What this means for you" H2 section. Write the complete article again.`,
       { agentName: AGENT_NAME, systemPrompt: SYSTEM_PROMPT, maxTokens: 3000 });
     if (retry && selfCheck(retry.text)) { retry.costUsd += response.costUsd; response = retry; }
   }
