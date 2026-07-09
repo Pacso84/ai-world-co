@@ -1,0 +1,66 @@
+{
+  "started_at": "2026-07-09T17:46:41.036Z",
+  "drafts_total": 7,
+  "articles_written": 5,
+  "articles_failed": 2,
+  "total_cost_usd": 0.015958,
+  "by_article": [
+    {
+      "draft": "2026-07-09T17-46-40-142Z_snowflake_Own_Your_Context_Layer_with_an_AI_Governance_Frame.json",
+      "writer_output": "WRITER_2026-07-09T17-46-40-142Z_snowflake_Own_Your_Context_Layer_with_an_AI_Governance_Frame.json",
+      "success": true,
+      "cost_usd": 0.0032782,
+      "duration_ms": 13700,
+      "provider": "mistral",
+      "model": "mistral-small-latest"
+    },
+    {
+      "draft": "2026-07-09T17-46-40-142Z_mistral-ai_Your_Prompts_and_Skills_need_a_system_of_record_.json",
+      "writer_output": "WRITER_2026-07-09T17-46-40-142Z_mistral-ai_Your_Prompts_and_Skills_need_a_system_of_record_.json",
+      "success": true,
+      "cost_usd": 0.0031906,
+      "duration_ms": 11762,
+      "provider": "mistral",
+      "model": "mistral-small-latest"
+    },
+    {
+      "draft": "2026-07-09T17-46-40-142Z_ibm_CoFrGeNets_replace_the__bones__of_transformer-base.json",
+      "writer_output": "WRITER_2026-07-09T17-46-40-142Z_ibm_CoFrGeNets_replace_the__bones__of_transformer-base.json",
+      "success": true,
+      "cost_usd": 0.003241,
+      "duration_ms": 12841,
+      "provider": "mistral",
+      "model": "mistral-small-latest"
+    },
+    {
+      "draft": "2026-07-09T17-46-40-141Z_aws-ml_Enhancing_enterprise_inference_on_Amazon_SageMaker.json",
+      "writer_output": "WRITER_2026-07-09T17-46-40-141Z_aws-ml_Enhancing_enterprise_inference_on_Amazon_SageMaker.json",
+      "success": true,
+      "cost_usd": 0.003047,
+      "duration_ms": 10275,
+      "provider": "mistral",
+      "model": "mistral-small-latest"
+    },
+    {
+      "draft": "2026-07-09T17-46-40-140Z_openai-blog_GPT-5_6__Frontier_intelligence_that_scales_with_yo.json",
+      "writer_output": "WRITER_2026-07-09T17-46-40-140Z_openai-blog_GPT-5_6__Frontier_intelligence_that_scales_with_yo.json",
+      "success": true,
+      "cost_usd": 0.0032012,
+      "duration_ms": 12218,
+      "provider": "mistral",
+      "model": "mistral-small-latest"
+    },
+    {
+      "draft": "2026-07-09T17-46-40-140Z_openai-blog_ChatGPT_is_now_a_partner_for_your_most_ambitious_w.json",
+      "success": false,
+      "error": "AI router returned null"
+    },
+    {
+      "draft": "2026-07-09T17-46-40-140Z_microsoft-research_Aurora_1_5__Extending_open_foundation_models_for_w.json",
+      "success": false,
+      "error": "AI router returned null"
+    }
+  ],
+  "finished_at": "2026-07-09T17:47:50.834Z",
+  "duration_seconds": 69.798
+}
