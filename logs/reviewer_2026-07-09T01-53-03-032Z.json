@@ -1,0 +1,23 @@
+{
+  "started_at": "2026-07-09T01:53:02.231Z",
+  "total": 2,
+  "passed": 0,
+  "failed": 0,
+  "auto_check_failed": 0,
+  "ai_review_failed": 2,
+  "total_cost_usd": 0,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-07-09T01-52-45-731Z_google-workspace_Convert_your_Google_Slides_to_videos_in_7_addition.json",
+      "decision": "SKIPPED",
+      "reason": "AI router returned null"
+    },
+    {
+      "writer": "WRITER_2026-07-09T01-52-45-732Z_aws-ml_Introducing_Claude_apps_gateway_for_AWS.json",
+      "decision": "SKIPPED",
+      "reason": "AI router returned null"
+    }
+  ],
+  "finished_at": "2026-07-09T01:53:03.031Z",
+  "duration_seconds": 0.8
+}

@@ -1,6 +1,19 @@
 # AI World Co. — közösségi posztok
 
-*Generálva: 2026-07-08T17:38:36.033Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+*Generálva: 2026-07-09T01:55:20.455Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## Claude Meets Blackwell Ultra: Anthropic’s Models Now Run on NVIDIA GB300 in Azure
+**🔗 https://aiworldhq.com/article/what-ai-agents-actually-do-and-how-to-use-them-today.html**
+
+**Facebook:**
+Imagine having an extra pair of hands to help with tasks like booking trips or sorting your inbox. Learn how AI agents can make your life easier https://aiworldhq.com/article/what-ai-agents-actually-do-and-how-to-use-them-today.html #AIassistants #productivity
+
+**Instagram:**
+Want to free up time for the things you love? AI agents can help with tasks like travel planning and email management. They're not just for the future, they're available now! #AIassistants #productivity #automation #gettingstarted Link in bio
+
+*Kép-ötlet: A simple photo of a person relaxing on a weekend getaway, with a faint outline of a phone or laptop in the background.*
 
 ---
 
