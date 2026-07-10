@@ -814,6 +814,7 @@ function pageShell({ title, description, bodyContent, isArticle = false, noIntro
   const startPath = `${LP}/start.html`;
   const toolsPath = `${LP}/tools.html`;
   const glossaryPath = `${LP}/glossary.html`;
+  const aboutPath = `${LP}/about.html`;
   const year = new Date().getFullYear();
   const url = `${SITE.url}${LP}/${pagePath}`;
   // Tartalék megosztás-kép: JPG kell (az SVG-t a Facebook nem jeleníti meg!)
@@ -874,6 +875,7 @@ function pageShell({ title, description, bodyContent, isArticle = false, noIntro
         <a href="${guidesPath}">${T.guides}</a>
         <a href="${toolsPath}">${T.tools}</a>
         <a href="${glossaryPath}">${tr('glossNav')}</a>
+        <a href="${aboutPath}">${tr('aboutNav')}</a>
         ${SUPPORT.enabled ? `<a href="${supportPath}" class="navbar__support">${T.support}</a>` : ''}
       </nav>
       ${langSwitcher}

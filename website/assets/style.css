@@ -63,7 +63,7 @@ body {
 }
 .navbar__mark { width: 30px; height: 30px; display: block; }
 .navbar__dot { color: var(--accent); }
-.navbar__nav { display: flex; gap: 26px; margin-left: auto; align-items: center; }
+.navbar__nav { display: flex; gap: clamp(13px, 1.7vw, 24px); margin-left: auto; align-items: center; }
 .navbar__nav a {
   font-size: 14px; font-weight: 600; color: var(--ink-soft);
   text-decoration: none; position: relative; padding: 4px 0;
