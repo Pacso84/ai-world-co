@@ -1,6 +1,100 @@
 # AI World Co. — közösségi posztok
 
-*Generálva: 2026-07-09T10:47:04.357Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+*Generálva: 2026-07-10T10:50:50.597Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## Ask an AI expert: What exactly is the full stack?
+**🔗 https://aiworldhq.com/article/the-ai-you-use-understanding-its-full-stack-layers.html**
+
+**Facebook:**
+Ever wonder what’s under the AI you chat with? A quick look at its full stack shows the brain, the engine and the app – helping you use it smarter. https://aiworldhq.com/article/the-ai-you-use-understanding-its-full-stack-layers.html #AIbasics #TechExplained
+
+**Instagram:**
+What’s inside the AI you use?
+Learn the layers from the data brain to the app on your screen – clear steps, no jargon.
+#AIbasics
+#HowAIWorks
+#TechExplained
+Link in bio.
+
+*Kép-ötlet: A clean stacked set of three blocks labelled “brain”, “engine”, and “app” to visualise the AI full stack.*
+
+---
+
+## How NVIDIA’s Inference Software Stack Powers the Lowest Token Cost
+**🔗 https://aiworldhq.com/article/cut-ai-costs-how-to-run-llms-more-efficiently-with-nvidia-s-.html**
+
+**Facebook:**
+Want to keep more of your marketing budget? Using NVIDIA’s inference tools can cut the cost per token when running LLMs, so you get faster results without overspending. https://aiworldhq.com/article/cut-ai-costs-how-to-run-llms-more-efficiently-with-nvidia-s-.html #AIproductivity #CostSaving
+
+**Instagram:**
+Save money while your AI works harder
+NVIDIA’s inference stack lets you run large language models quicker and with fewer tokens, trimming the cost of chatbots and copy generation.
+#AI
+#LLM
+#Nvidia
+#CostEfficiency
+Link in bio.
+
+*Kép-ötlet: A laptop screen showing a chat window with small coin icons beside each AI reply, placed on a tidy desk.*
+
+---
+
+## Data regions support for the Gemini app now available 
+**🔗 https://aiworldhq.com/article/why-where-your-ai-data-lives-matters-and-how-to-check.html**
+
+**Facebook:**
+Wondering where your AI chats are stored? Knowing the data region can keep your info safer and give you more control. Read how to check in the Gemini app https://aiworldhq.com/article/why-where-your-ai-data-lives-matters-and-how-to-check.html #dataprivacy #AI
+
+**Instagram:**
+Where does your AI data live?
+Find out how Gemini's new data‑region setting lets you see and choose where info is stored, protecting your privacy.
+#dataprivacy
+#security
+#geminiapp
+Link in bio.
+
+*Kép-ötlet: A calm desktop scene showing a laptop with the Gemini app open, a world map icon subtly highlighted to suggest data location.*
+
+---
+
+## Open Models, Closed Environments: Palantir Brings Secure AI to US Agencies With NVIDIA Nemotron
+**🔗 https://aiworldhq.com/article/what-open-source-ai-really-means-for-your-daily-life.html**
+
+**Facebook:**
+Ever wonder how AI can be used by government agencies without risking your personal data? Palantir and NVIDIA are running AI inside secure, closed environments so the information stays private. https://aiworldhq.com/article/what-open-source-ai-really-means-for-your-daily-life.html #dataprivacy #AIsecurity
+
+**Instagram:**
+🔒 Keeping AI secure for the public good
+Palantir is deploying NVIDIA’s Nemotron model within tightly controlled systems, letting agencies benefit from AI while keeping data offline and private.
+#AIethics
+#dataprivacy
+#securetech
+#AIforgood
+Link in bio.
+
+*Kép-ötlet: A shield overlay on a server rack, subtly tinted with Australian flag colours, to convey secure AI.*
+
+---
+
+## Educators and students can now share Gemini Canvas creations directly to Google Classroom
+**🔗 https://aiworldhq.com/article/how-to-turn-your-classroom-ideas-into-interactive-lessons-wi.html**
+
+**Facebook:**
+Turn your lesson plan into an interactive quiz or mini‑website in minutes and share it straight to Google Classroom – a real time‑saver for busy teachers. https://aiworldhq.com/article/how-to-turn-your-classroom-ideas-into-interactive-lessons-wi.html #AIed #LessonPlanning
+
+**Instagram:**
+Turn your lesson plan into an interactive activity in minutes
+Create quizzes, games or simple websites with Gemini Canvas and push them directly to Google Classroom – no extra steps needed.
+#AIinEducation
+#TeachingTips
+#GoogleClassroom
+#GeminiCanvas
+#LessonIdeas
+Link in bio.
+
+*Kép-ötlet: A teacher smiling at a laptop screen displaying a colourful quiz preview, with a subtle cloud icon indicating AI assistance.*
 
 ---
 

@@ -1990,11 +1990,16 @@
       "audience": "personal",
       "level": "beginner",
       "angle": "one practical sentence",
-      "status": "todo",
+      "status": "done",
       "icon": "🎓",
       "priority": "balance",
       "proposed_at": "2026-07-08T01:49:05.965Z",
-      "proposed_by": "guide-balance"
+      "proposed_by": "guide-balance",
+      "source_news": {
+        "file": "ARTICLE_2026-07-09T17-46-40-141Z_aws-ml_Enhancing_enterprise_inference_on_Amazon_SageMaker.json",
+        "title": "Enhancing enterprise inference on Amazon SageMaker HyperPod with data capture, Hugging Face, NVMe, and Route 53 integration"
+      },
+      "written_at": "2026-07-10T10:45:21.470Z"
     },
     {
       "id": "use-hugging-face-s-inference-api-to-check-your-resume-for-at",
@@ -2018,11 +2023,16 @@
       "audience": "both",
       "level": "beginner",
       "angle": "one practical sentence",
-      "status": "todo",
+      "status": "done",
       "icon": "🎤",
       "priority": "balance",
       "proposed_at": "2026-07-08T01:49:05.965Z",
-      "proposed_by": "guide-balance"
+      "proposed_by": "guide-balance",
+      "source_news": {
+        "file": "ARTICLE_2026-07-08T17-18-32-416Z_snowflake_Transforming_FP_A_with_AI_Modernization.json",
+        "title": "Transforming FP&A with AI Modernization"
+      },
+      "written_at": "2026-07-10T10:45:32.390Z"
     },
     {
       "id": "create-a-tiny-ai-weather-helper-widget-for-your-blog-with-hu",
@@ -2053,6 +2063,21 @@
         "title": "Open, convenient and predictable: Introducing Provisioned Throughput"
       },
       "written_at": "2026-07-09T10:45:09.908Z"
+    },
+    {
+      "id": "how-to-use-openai-gpt-5-6-in-snowflake-cortex-ai-for-data-in",
+      "company": "Snowflake",
+      "tool": "GPT-5.6",
+      "title": "How to Use OpenAI GPT-5.6 in Snowflake Cortex AI for Data Insights and Drafts",
+      "audience": "both",
+      "level": "beginner",
+      "angle": "Setting up and using GPT-5.6 via Snowflake Cortex AI to analyze data and draft text directly from SQL.",
+      "status": "todo",
+      "icon": "🆕",
+      "source_news": {
+        "file": "ARTICLE_2026-07-10T01-51-50-217Z_snowflake_OpenAI_GPT_5_6_on_Snowflake_Cortex_AI.json",
+        "title": "OpenAI GPT 5.6 on Snowflake Cortex AI"
+      }
     }
   ]
 }
