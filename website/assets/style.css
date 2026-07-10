@@ -724,3 +724,8 @@ body {
 .start__wizcta { margin: 26px auto; text-align: center; }
 .start__wizcta a { display: inline-block; padding: 14px 26px; background: var(--card); border: 1.5px dashed var(--accent); border-radius: 999px; color: var(--accent-dark); font-weight: 700; font-size: 15px; text-decoration: none; transition: transform .15s ease, background .15s ease; }
 .start__wizcta a:hover { transform: translateY(-2px); background: var(--paper-2); }
+
+/* ============ KISSZÓTÁR-AUTOLINK (2026-07-10) ============ */
+/* Finom, pontozott aláhúzás — hover-re tooltip (title) a definícióval */
+.gloss-link { color: inherit; text-decoration: underline dotted var(--accent); text-decoration-thickness: 1.5px; text-underline-offset: 3px; cursor: help; }
+.gloss-link:hover { color: var(--accent-dark); text-decoration-style: solid; }

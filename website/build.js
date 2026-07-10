@@ -373,6 +373,43 @@ const UI_WIZ = {
 };
 for (const l of SITE_LANGS) Object.assign(UI[l], UI_WIZ[l] || {});
 
+// "Rólunk / Hogyan dolgozunk" bizalmi oldal (2026-07-10) — E-E-A-T: a Google
+// és az olvasó lássa, ki áll az oldal mögött és hogyan készül a tartalom.
+// ŐSZINTESÉG: nyíltan vállaljuk, hogy AI-agentek írják, minőség-kapuval.
+const UI_ABOUT = {
+  en: { aboutNav: 'About us', aboutTitle: 'About AI World HQ', aboutTag: 'Who we are, how our articles are made, and the rules we never break.',
+        aboutWhoH: 'What is AI World HQ?', aboutWhoP: 'A small, independent site that explains artificial intelligence for everyday people — fresh news in plain language and step-by-step guides a complete beginner can follow, in five languages.',
+        aboutHowH: 'How our content is made', aboutHowP: 'Our newsroom is run by AI agents — openly. They read the official announcements, write a plain-language article, and every piece must pass an automated quality gate that checks clarity and honesty before it can go live. A human owner oversees the system, reads your feedback and keeps tightening the rules.',
+        aboutSrcH: 'Where the news comes from', aboutSrcP: 'Only official, first-party sources: the newsrooms and blogs of the AI companies themselves — OpenAI, Google, Microsoft, Anthropic, Meta, NVIDIA, Mistral and more. No rumours, no anonymous “insiders”. If a company didn’t announce it, we don’t report it.',
+        aboutHonH: 'Our honesty rules', aboutHonP: 'Every article carries an AI-disclosure note. We never invent facts, screenshots or prices — anything that changes over time points you to the official site instead. Technical words are explained the first time they appear, and our AI dictionary covers the rest.',
+        aboutFixH: 'Spotted a mistake?', aboutFixP: 'Tell us with the 👍/👎 buttons under any article, or reach us via the Support page. Genuine errors get corrected and the fixed article is republished — that’s a promise.' },
+  hu: { aboutNav: 'Rólunk', aboutTitle: 'Az AI World HQ-ról', aboutTag: 'Kik vagyunk, hogyan készülnek a cikkeink, és melyek a szabályok, amiket sosem szegünk meg.',
+        aboutWhoH: 'Mi az AI World HQ?', aboutWhoP: 'Egy kis, független oldal, amely hétköznapi embereknek magyarázza a mesterséges intelligenciát — friss hírek közérthetően és lépésről lépésre útmutatók, amelyeket egy teljesen kezdő is követni tud, öt nyelven.',
+        aboutHowH: 'Hogyan készül a tartalom?', aboutHowP: 'A szerkesztőségünket AI-agentek működtetik — nyíltan vállalva. Elolvassák a hivatalos bejelentéseket, közérthető cikket írnak, és minden írásnak át kell mennie egy automatikus minőség-kapun, amely az érthetőséget és az őszinteséget ellenőrzi, mielőtt élesbe kerülhet. A rendszert emberi tulajdonos felügyeli: olvassa a visszajelzéseidet és folyamatosan szigorítja a szabályokat.',
+        aboutSrcH: 'Honnan jönnek a hírek?', aboutSrcP: 'Kizárólag hivatalos, elsődleges forrásokból: maguknak az AI-cégeknek a hírrovataiból és blogjairól — OpenAI, Google, Microsoft, Anthropic, Meta, NVIDIA, Mistral és társaik. Se pletyka, se névtelen „bennfentes”. Ha egy cég nem jelentette be, mi nem írjuk meg.',
+        aboutHonH: 'Őszinteség-szabályaink', aboutHonP: 'Minden cikken ott az AI-közreműködés jelölése. Sosem találunk ki tényt, képernyőképet vagy árat — ami idővel változik, ahhoz a hivatalos oldalra irányítunk. A szakszavakat az első előfordulásukkor elmagyarázzuk, a többit pedig az AI-kisszótárunk fedi le.',
+        aboutFixH: 'Hibát találtál?', aboutFixP: 'Jelezd a cikkek alatti 👍/👎 gombokkal, vagy írj a Támogatás oldalon keresztül. A valódi hibákat kijavítjuk, és a javított cikket újra kiadjuk — ez ígéret.' },
+  es: { aboutNav: 'Quiénes somos', aboutTitle: 'Sobre AI World HQ', aboutTag: 'Quiénes somos, cómo se hacen nuestros artículos y las reglas que nunca rompemos.',
+        aboutWhoH: '¿Qué es AI World HQ?', aboutWhoP: 'Un sitio pequeño e independiente que explica la inteligencia artificial para gente común: noticias frescas en lenguaje claro y guías paso a paso que cualquier principiante puede seguir, en cinco idiomas.',
+        aboutHowH: 'Cómo se hace el contenido', aboutHowP: 'Nuestra redacción la llevan agentes de IA — y lo decimos abiertamente. Leen los anuncios oficiales, escriben un artículo en lenguaje claro, y cada pieza debe pasar una puerta de calidad automática que comprueba claridad y honestidad antes de publicarse. Un propietario humano supervisa el sistema, lee tus comentarios y endurece las reglas continuamente.',
+        aboutSrcH: 'De dónde vienen las noticias', aboutSrcP: 'Solo fuentes oficiales y de primera mano: las salas de prensa y blogs de las propias empresas de IA — OpenAI, Google, Microsoft, Anthropic, Meta, NVIDIA, Mistral y más. Sin rumores ni “fuentes anónimas”. Si una empresa no lo anunció, no lo publicamos.',
+        aboutHonH: 'Nuestras reglas de honestidad', aboutHonP: 'Cada artículo lleva una nota de divulgación de IA. Nunca inventamos datos, capturas ni precios — lo que cambia con el tiempo te remite al sitio oficial. Las palabras técnicas se explican la primera vez que aparecen, y nuestro diccionario de IA cubre el resto.',
+        aboutFixH: '¿Has visto un error?', aboutFixP: 'Dínoslo con los botones 👍/👎 bajo cualquier artículo, o contáctanos por la página de Apoyo. Los errores reales se corrigen y el artículo arreglado se vuelve a publicar — es una promesa.' },
+  de: { aboutNav: 'Über uns', aboutTitle: 'Über AI World HQ', aboutTag: 'Wer wir sind, wie unsere Artikel entstehen und welche Regeln wir nie brechen.',
+        aboutWhoH: 'Was ist AI World HQ?', aboutWhoP: 'Eine kleine, unabhängige Seite, die künstliche Intelligenz für alle erklärt — frische News in klarer Sprache und Schritt-für-Schritt-Anleitungen, denen auch komplette Anfänger folgen können, in fünf Sprachen.',
+        aboutHowH: 'Wie unsere Inhalte entstehen', aboutHowP: 'Unsere Redaktion wird von KI-Agenten betrieben — ganz offen. Sie lesen die offiziellen Ankündigungen, schreiben einen verständlichen Artikel, und jeder Text muss durch ein automatisches Qualitätstor, das Klarheit und Ehrlichkeit prüft, bevor er live geht. Ein menschlicher Betreiber überwacht das System, liest dein Feedback und verschärft die Regeln laufend.',
+        aboutSrcH: 'Woher die News kommen', aboutSrcP: 'Nur offizielle Erstquellen: die Newsrooms und Blogs der KI-Firmen selbst — OpenAI, Google, Microsoft, Anthropic, Meta, NVIDIA, Mistral und mehr. Keine Gerüchte, keine anonymen „Insider“. Wenn eine Firma es nicht angekündigt hat, berichten wir nicht darüber.',
+        aboutHonH: 'Unsere Ehrlichkeitsregeln', aboutHonP: 'Jeder Artikel trägt einen KI-Hinweis. Wir erfinden nie Fakten, Screenshots oder Preise — bei allem, was sich ändert, verweisen wir auf die offizielle Seite. Fachbegriffe werden beim ersten Auftauchen erklärt, den Rest deckt unser KI-Wörterbuch ab.',
+        aboutFixH: 'Fehler entdeckt?', aboutFixP: 'Sag es uns mit den 👍/👎-Buttons unter jedem Artikel oder über die Unterstützen-Seite. Echte Fehler werden korrigiert und der berichtigte Artikel neu veröffentlicht — versprochen.' },
+  fr: { aboutNav: 'À propos', aboutTitle: 'À propos d’AI World HQ', aboutTag: 'Qui nous sommes, comment nos articles sont faits, et les règles que nous ne brisons jamais.',
+        aboutWhoH: 'C’est quoi, AI World HQ ?', aboutWhoP: 'Un petit site indépendant qui explique l’intelligence artificielle à tout le monde — des actus fraîches en langage clair et des guides pas à pas qu’un débutant complet peut suivre, en cinq langues.',
+        aboutHowH: 'Comment nos contenus sont faits', aboutHowP: 'Notre rédaction est tenue par des agents IA — en toute transparence. Ils lisent les annonces officielles, écrivent un article en langage clair, et chaque texte doit passer un portail de qualité automatique qui vérifie la clarté et l’honnêteté avant publication. Un propriétaire humain supervise le système, lit vos retours et durcit les règles en continu.',
+        aboutSrcH: 'D’où viennent les actus', aboutSrcP: 'Uniquement des sources officielles de première main : les salles de presse et blogs des entreprises d’IA elles-mêmes — OpenAI, Google, Microsoft, Anthropic, Meta, NVIDIA, Mistral et d’autres. Pas de rumeurs, pas d’« initiés » anonymes. Si une entreprise ne l’a pas annoncé, nous n’en parlons pas.',
+        aboutHonH: 'Nos règles d’honnêteté', aboutHonP: 'Chaque article porte une mention de contribution IA. Nous n’inventons jamais de faits, de captures ou de prix — pour tout ce qui change avec le temps, nous renvoyons au site officiel. Les termes techniques sont expliqués à leur première apparition, et notre dico de l’IA couvre le reste.',
+        aboutFixH: 'Une erreur repérée ?', aboutFixP: 'Signalez-la avec les boutons 👍/👎 sous chaque article, ou contactez-nous via la page Soutenir. Les vraies erreurs sont corrigées et l’article rectifié est republié — c’est une promesse.' }
+};
+for (const l of SITE_LANGS) Object.assign(UI[l], UI_ABOUT[l] || {});
+
 // A varázsló kérdései + eredményei nyelvenként. A pontozás nyelvfüggetlen
 // (s: eszköz→pont), a szöveg lokalizált. SZÁNDÉKOSAN óvatos megfogalmazás:
 // nincs ár, nincs konkrét funkció-ígéret (az változik) — csak irány.
@@ -812,11 +849,13 @@ function pageShell({ title, description, bodyContent, isArticle = false, noIntro
   <meta name="twitter:title" content="${escapeHtml(title)}">
   <meta name="twitter:description" content="${escapeHtml(description)}">
   <meta name="twitter:image" content="${escapeHtml(img)}">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..700&family=Hanken+Grotesk:wght@400..700&display=swap" rel="stylesheet">
+  <!-- SEBESSÉG (2026-07-10): betűtípusok + AOS saját kiszolgálásból — nincs
+       külső DNS/kapcsolat, gyorsabb első festés (Core Web Vitals) -->
+  <link rel="preload" href="/assets/fonts/schibsted-grotesk-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/hanken-grotesk-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/fonts.css?v=${ASSET_V}">
   <link rel="icon" type="image/svg+xml" href="/assets/logo.svg">
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+  <link rel="stylesheet" href="/assets/vendor/aos.css?v=${ASSET_V}">
   <link rel="stylesheet" href="/assets/style.css?v=${ASSET_V}">
   <link rel="alternate" type="application/rss+xml" title="${escapeHtml(SITE.name)} RSS" href="${LP}/feed.xml">
   ${VERIFY.google ? `<meta name="google-site-verification" content="${escapeHtml(VERIFY.google)}">` : ''}
@@ -867,12 +906,13 @@ function pageShell({ title, description, bodyContent, isArticle = false, noIntro
     <div class="wrap">
       <p class="site-footer__brand">${SITE.name}<span class="masthead__dot">.</span></p>
       <p class="site-footer__note">${escapeHtml(tr('siteDesc') || SITE.description)}</p>
+      <p class="site-footer__support"><a href="${LP}/about.html">${tr('aboutNav')}</a></p>
       ${SUPPORT.enabled ? `<p class="site-footer__support"><a href="${supportPath}">${T.support}</a></p>` : ''}
       <p class="site-footer__support"><a href="${LP}/feed.xml" title="RSS">📡 RSS</a></p>
       <p class="site-footer__fine">${T.footerNote} · © ${year} AI World HQ</p>
     </div>
   </footer>
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script src="/assets/vendor/aos.js?v=${ASSET_V}"></script>
   <script src="/assets/app.js?v=${ASSET_V}"></script>
   ${CF_BEACON ? `<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "${CF_BEACON}"}'></script>` : ''}
 </body>
@@ -880,10 +920,13 @@ function pageShell({ title, description, bodyContent, isArticle = false, noIntro
 }
 
 // Borító: valódi kép (ha van), különben lágy gradiens borító kategória-ikonnal
-function coverHtml(a, pathPrefix, cls) {
+function coverHtml(a, pathPrefix, cls, eager = false) {
   const cat = CATEGORIES[a.category] || CATEGORIES.other;
   if (a.image) {
-    return `<div class="${cls}"><img src="/assets/images/${a.image}" alt="${escapeHtml(a.title)}" loading="lazy" decoding="async" width="1000" height="563"></div>`;
+    // eager = a lap legnagyobb képe (címlap-sztori / cikk-borító): azonnali,
+    // magas prioritású betöltés (LCP / Core Web Vitals, 2026-07-10)
+    const load = eager ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"';
+    return `<div class="${cls}"><img src="/assets/images/${a.image}" alt="${escapeHtml(a.title)}" ${load} decoding="async" width="1000" height="563"></div>`;
   }
   return `<div class="${cls} cover--gen ${cat.cls}"><span class="cover__icon">${cat.icon}</span></div>`;
 }
@@ -895,7 +938,7 @@ function articleCard(a, featured = false) {
   const aos = featured ? 'zoom-in' : 'fade-up';
   return `<article class="${cls}" data-audience="${a.audience}" data-category="${a.category}" data-aos="${aos}">
     <a href="article/${a.slug}.html" class="card__link">
-      ${coverHtml(a, '', 'card__cover')}
+      ${coverHtml(a, '', 'card__cover', featured)}
       <div class="card__meta">
         <span class="aud ${aud.cls}">${aud.icon} ${tr(aud.key)}</span>
         <span class="card__read">${a.readTime} ${tr('minRead')}</span>
@@ -1124,7 +1167,7 @@ function buildArticlePage(a) {
     : '';
 
   const body = `<article class="article">
-    ${coverHtml(a, '../', 'article__cover')}
+    ${coverHtml(a, '../', 'article__cover', true)}
     <div class="article__head">
       <div class="article__badges">
         <span class="aud ${aud.cls}">${aud.icon} ${tr(aud.key)}</span>
@@ -1139,7 +1182,7 @@ function buildArticlePage(a) {
       </div>
     </div>
     <div class="article__body">
-      ${a.bodyHtml}
+      ${glossAutolink(a.bodyHtml, { linked: new Set(), count: 0 })}
     </div>
     ${tagsHtml}
     ${xrefBox(a)}
@@ -1440,6 +1483,12 @@ function buildGuidePage(a) {
     return `<div class="g-section"><h2>${escapeHtml(t)}</h2>${guideSectionHtml(s.body)}</div>`;
   }).join('\n');
 
+  // Kisszótár-autolink (2026-07-10): a bevezető ÉS a lépések közös állapottal —
+  // egy fogalom az egész útmutatóban csak egyszer linkelődik (először a bevezetőben).
+  const alState = { linked: new Set(), count: 0 };
+  const introHtml = intro ? glossAutolink(guideSectionHtml(intro), alState) : '';
+  const blocksLinked = glossAutolink(blocks, alState);
+
   const toolChip = (a.company || a.tool)
     ? `<span class="g-tool">📘 ${escapeHtml([a.company, a.tool].filter(Boolean).join(' · '))}</span>` : '';
   // Szint-címke fordítva (lvl_beginner/intermediate/advanced — mint a csempéken)
@@ -1459,9 +1508,9 @@ function buildGuidePage(a) {
       <div class="article__meta"><span>${a.readTime} ${tr('minRead')}</span><span class="dot">·</span><span>${formatDate(a.publishedAt)}</span></div>
     </div>
     ${guideMapHtml(stepHeadings, artKeys)}
-    ${intro ? `<div class="g-intro">${guideSectionHtml(intro)}</div>` : ''}
-    ${blocks ? `<p class="g-steptip">💡 <strong>${tr('stepTipLabel')}:</strong> ${escapeHtml(tr('stepTip'))}</p>` : ''}
-    <div class="g-steps">${blocks}</div>
+    ${introHtml ? `<div class="g-intro">${introHtml}</div>` : ''}
+    ${blocksLinked ? `<p class="g-steptip">💡 <strong>${tr('stepTipLabel')}:</strong> ${escapeHtml(tr('stepTip'))}</p>` : ''}
+    <div class="g-steps">${blocksLinked}</div>
     ${xrefBox(a)}
     ${relatedBox(a)}
     <div class="article__foot">
@@ -1577,6 +1626,107 @@ function buildStartPage(allLoc) {
 let GLOSSARY = [];
 try { GLOSSARY = JSON.parse(readFileSync(join(__dirname, 'glossary-data.json'), 'utf-8')).terms || []; } catch { /* nincs szótár-adat */ }
 
+// ===================================================================
+// KISSZÓTÁR-AUTOLINK (2026-07-10) — a cikk-törzsben az AI-szakszavak ELSŐ
+// előfordulása a kisszótárra linkel (title-ben a definícióval = tooltip).
+// Biztonság: <a>/<h1-6>/<code>/<pre> belsejét kihagyja; max 8 link/cikk;
+// egy fogalom cikkeként csak egyszer. A gyakori szavakat (AI, chatbot, API)
+// szándékosan NEM linkeljük — csak a valódi szakszavakat.
+// ===================================================================
+const AUTOLINK_KW = {
+  'prompt-engineering': { en: ['prompt engineering'], hu: ['prompt-írás', 'prompt engineering'], es: ['ingeniería de prompts'], de: ['Prompt Engineering'], fr: ['prompt engineering', 'art du prompt'] },
+  'machine-learning': { en: ['machine learning'], hu: ['gépi tanulás'], es: ['aprendizaje automático'], de: ['maschinelles Lernen'], fr: ['apprentissage automatique'] },
+  'neural-network': { en: ['neural network'], hu: ['neurális hálózat', 'neurális háló'], es: ['red neuronal', 'redes neuronales'], de: ['neuronales Netz', 'neuronale Netze'], fr: ['réseau de neurones', 'réseaux de neurones'] },
+  'context-window': { en: ['context window'], hu: ['kontextusablak'], es: ['ventana de contexto'], de: ['Kontextfenster'], fr: ['fenêtre de contexte'] },
+  'generative-ai': { en: ['generative AI'], hu: ['generatív AI'], es: ['IA generativa'], de: ['generative KI'], fr: ['IA générative'] },
+  'reasoning-model': { en: ['reasoning model'], hu: ['gondolkodó modell'], es: ['modelo de razonamiento'], de: ['Reasoning-Modell'], fr: ['modèle de raisonnement'] },
+  'knowledge-cutoff': { en: ['knowledge cut-off', 'knowledge cutoff'], hu: ['tudás-határnap'], es: ['fecha de corte de conocimiento'], de: ['Wissensstichtag'], fr: ['date de coupure des connaissances'] },
+  'training-data': { en: ['training data'], hu: ['tanítóadat'], es: ['datos de entrenamiento'], de: ['Trainingsdaten'], fr: ['données d’entraînement', "données d'entraînement"] },
+  'open-source-model': { en: ['open-source model', 'open source model'], hu: ['nyílt forráskódú modell'], es: ['modelo de código abierto'], de: ['Open-Source-Modell'], fr: ['modèle open source'] },
+  'voice-cloning': { en: ['voice cloning'], hu: ['hangklónozás'], es: ['clonación de voz'], de: ['Stimmklonen'], fr: ['clonage de voix'] },
+  'image-generator': { en: ['image generator'], hu: ['képgenerátor'], es: ['generador de imágenes'], de: ['Bildgenerator'], fr: ['générateur d’images', "générateur d'images"] },
+  'ai-agent': { en: ['AI agent'], hu: ['AI-ügynök'], es: ['agente de IA', 'agentes de IA'], de: ['KI-Agent', 'KI-Agenten'], fr: ['agent IA', 'agents IA'] },
+  'fine-tuning': { en: ['fine-tuning', 'fine-tuned', 'fine-tune'], hu: ['finomhangolás'], es: ['ajuste fino'], de: ['Feinabstimmung', 'Fine-Tuning'], fr: ['ajustement fin', 'fine-tuning'] },
+  'multimodal': { en: ['multimodal'], hu: ['multimodális'], es: ['multimodal'], de: ['multimodal'], fr: ['multimodal', 'multimodale'] },
+  'hallucination': { en: ['hallucination'], hu: ['hallucináció'], es: ['alucinación'], de: ['Halluzination'], fr: ['hallucination'] },
+  'deepfake': { en: ['deepfake'], hu: ['deepfake'], es: ['deepfake'], de: ['Deepfake'], fr: ['deepfake'] },
+  'jailbreak': { en: ['jailbreak'], hu: ['jailbreak'], es: ['jailbreak'], de: ['Jailbreak'], fr: ['jailbreak'] },
+  'benchmark': { en: ['benchmark'], hu: ['benchmark'], es: ['benchmark'], de: ['Benchmark'], fr: ['benchmark'] },
+  'guardrails': { en: ['guardrails', 'guardrail'], hu: ['védőkorlát'], es: ['barreras de seguridad'], de: ['Schutzplanken', 'Guardrails'], fr: ['garde-fous'] },
+  'watermark': { en: ['AI watermark', 'watermark'], hu: ['vízjel'], es: ['marca de agua'], de: ['Wasserzeichen'], fr: ['filigrane'] },
+  'token': { en: ['token'], hu: ['token'], es: ['token'], de: ['Token'], fr: ['token', 'jeton'] },
+  'prompt': { en: ['prompt'], hu: ['prompt'], es: ['prompt'], de: ['Prompt'], fr: ['prompt'] },
+  'llm': { en: ['LLM', 'large language model'], hu: ['LLM', 'nagy nyelvi modell'], es: ['LLM', 'gran modelo de lenguaje'], de: ['LLM', 'großes Sprachmodell'], fr: ['LLM', 'grand modèle de langage'] },
+  'agi': { en: ['AGI'], hu: ['AGI'], es: ['AGI'], de: ['AGI'], fr: ['AGI'] },
+  'chip-gpu': { en: ['GPU'], hu: ['GPU'], es: ['GPU'], de: ['GPU'], fr: ['GPU'] },
+  'gpt': { en: ['GPT'], hu: ['GPT'], es: ['GPT'], de: ['GPT'], fr: ['GPT'] }
+};
+const AUTOLINK_MAX = 8;
+const _autolinkCache = {};
+function getAutolinkTerms() {
+  if (_autolinkCache[LANG]) return _autolinkCache[LANG];
+  const out = [];
+  for (const [id, langs] of Object.entries(AUTOLINK_KW)) {
+    const g = GLOSSARY.find(t => t.id === id);
+    if (!g) continue;
+    const kws = langs[LANG] || langs.en || [];
+    const rxs = kws.map(kw => {
+      const esc = kw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      // Betűszó (LLM/GPU/GPT…): kis-nagybetű-érzékeny; magyar toldalék kötőjellel
+      // mehet (GPU-k), de modellnév-szám NEM (GPT-5) és szó belseje sem (ChatGPT).
+      return /^[A-Z0-9-]+$/.test(kw)
+        ? new RegExp(`(?<![\\p{L}\\p{N}])${esc}(?:-[a-záéíóöőúüűß]{1,6})?(?!-)(?![\\p{L}\\p{N}])`, 'u')
+        : new RegExp(`(?<![\\p{L}])${esc}[\\p{L}]*`, 'iu');
+    });
+    out.push({ id, rxs, def: (g[LANG] || g.en).def });
+  }
+  _autolinkCache[LANG] = out;
+  return out;
+}
+function glossAutolink(html, state) {
+  if (!html || !GLOSSARY.length) return html;
+  const terms = getAutolinkTerms();
+  const parts = html.split(/(<[^>]+>)/);
+  const OPEN = /^<(a|h[1-6]|code|pre|button|script|style)\b/i;
+  const CLOSE = /^<\/(a|h[1-6]|code|pre|button|script|style)>/i;
+  let skipDepth = 0;
+  for (let i = 0; i < parts.length; i++) {
+    const p = parts[i];
+    if (p.startsWith('<')) {
+      if (CLOSE.test(p)) skipDepth = Math.max(0, skipDepth - 1);
+      else if (OPEN.test(p)) skipDepth++;
+      continue;
+    }
+    if (skipDepth > 0 || state.count >= AUTOLINK_MAX || p.trim().length < 4) continue;
+    // Jelöltek az EREDETI szöveg-szeleten (átfedés-szűréssel), csere HÁTULRÓL —
+    // így a beszúrt link title-jébe soha nem "linkelünk bele".
+    const found = [];
+    for (const t of terms) {
+      if (state.linked.has(t.id)) continue;
+      let m = null;
+      for (const rx of t.rxs) { m = rx.exec(p); if (m) break; }
+      if (m) found.push({ t, idx: m.index, str: m[0] });
+    }
+    if (!found.length) continue;
+    found.sort((a, b) => a.idx - b.idx);
+    const accepted = []; let lastEnd = -1;
+    for (const f of found) {
+      if (f.idx < lastEnd) continue;
+      if (state.count + accepted.length >= AUTOLINK_MAX) break;
+      accepted.push(f); lastEnd = f.idx + f.str.length;
+    }
+    let text = p;
+    for (const f of accepted.sort((a, b) => b.idx - a.idx)) {
+      text = text.slice(0, f.idx)
+        + `<a class="gloss-link" href="${LP}/glossary.html#${f.t.id}" title="${escapeHtml(f.t.def)}">${f.str}</a>`
+        + text.slice(f.idx + f.str.length);
+      state.linked.add(f.t.id); state.count++;
+    }
+    parts[i] = text;
+  }
+  return parts.join('');
+}
+
 function buildGlossaryPage() {
   const cards = GLOSSARY.map(t => {
     const loc = t[LANG] || t.en;
@@ -1596,6 +1746,39 @@ function buildGlossaryPage() {
     title: `${tr('glossTitle')} — ${SITE.name}`,
     description: tr('glossTag'),
     noIntro: true, pagePath: 'glossary.html', bodyContent: body
+  });
+}
+
+// ===================================================================
+// "RÓLUNK / HOGYAN DOLGOZUNK" — bizalmi oldal (E-E-A-T, 2026-07-10)
+// Organization schema + őszinte műhely-leírás. A Google és az olvasó
+// bizalmát építi — a hirdetés-kampány előfeltétele.
+// ===================================================================
+function buildAboutPage() {
+  const cards = [
+    ['🌏', 'aboutWhoH', 'aboutWhoP'],
+    ['⚙️', 'aboutHowH', 'aboutHowP'],
+    ['📰', 'aboutSrcH', 'aboutSrcP'],
+    ['🤝', 'aboutHonH', 'aboutHonP'],
+    ['🔧', 'aboutFixH', 'aboutFixP']
+  ].map(([icon, h, p]) => `<div class="gloss__card"><h2 class="gloss__term">${icon} ${escapeHtml(tr(h))}</h2><p class="gloss__def">${escapeHtml(tr(p))}</p></div>`).join('\n');
+  const body = `<section class="guides-hero">
+      <p class="intro__kicker">${escapeHtml(tr('aboutNav'))}</p>
+      <h1 class="guides-hero__title">${escapeHtml(tr('aboutTitle'))}</h1>
+      <p class="guides-hero__tag">${escapeHtml(tr('aboutTag'))}</p>
+    </section>
+    <div class="gloss__grid">${cards}</div>
+    <p class="start__wizcta"><a href="start.html">⭐ ${escapeHtml(tr('startTitle'))}</a></p>`;
+  return pageShell({
+    title: `${tr('aboutTitle')} — ${SITE.name}`,
+    description: tr('aboutTag'),
+    noIntro: true, pagePath: 'about.html', bodyContent: body,
+    jsonld: {
+      '@context': 'https://schema.org', '@type': 'Organization',
+      name: SITE.name, url: SITE.url, logo: `${SITE.url}/assets/logo.svg`,
+      description: SITE.description,
+      sameAs: ['https://www.facebook.com/profile.php?id=61591788804540']
+    }
   });
 }
 
@@ -1715,14 +1898,23 @@ function main() {
   mkdirSync(OUT_ARTICLE_DIR, { recursive: true });
   mkdirSync(OUT_ASSETS_DIR, { recursive: true });
 
-  // Asset-ek másolása (CSS + JS + logó)
-  for (const asset of ['style.css', 'app.js', 'logo.svg']) {
+  // Asset-ek másolása (CSS + JS + logó + saját betű-CSS)
+  for (const asset of ['style.css', 'app.js', 'logo.svg', 'fonts.css']) {
     const src = join(ASSETS_SRC, asset);
     if (existsSync(src)) {
       copyFileSync(src, join(OUT_ASSETS_DIR, asset));
       console.log(`✅ ${asset} másolva`);
     } else {
       console.warn(`⚠️  Nincs ${asset} az assets/-ben!`);
+    }
+  }
+
+  // Saját kiszolgálású betűtípusok + vendor (AOS) mappák (2026-07-10, sebesség)
+  for (const dir of ['fonts', 'vendor']) {
+    const p = join(ASSETS_SRC, dir);
+    if (existsSync(p)) {
+      cpSync(p, join(OUT_ASSETS_DIR, dir), { recursive: true });
+      console.log(`✅ ${dir}/ másolva`);
     }
   }
 
@@ -1772,6 +1964,7 @@ function main() {
     writeFileSync(join(outBase, 'start.html'), buildStartPage(loc), 'utf-8');
     writeFileSync(join(outBase, 'glossary.html'), buildGlossaryPage(), 'utf-8');   // AI-kisszótár
     writeFileSync(join(outBase, 'wizard.html'), buildWizardPage(), 'utf-8');       // Melyik AI való neked?
+    writeFileSync(join(outBase, 'about.html'), buildAboutPage(), 'utf-8');         // Rólunk (bizalmi oldal)
     writeFileSync(join(outBase, 'feed.xml'), feedXml(loc, lang), 'utf-8');   // nyelvenkénti RSS
     // Kereső-index (villámkereső a navbarban): cím + alcím + márka + slug
     const searchIndex = loc.map(a => ({
@@ -1794,6 +1987,7 @@ function main() {
     sitemapUrls.push({ loc: `${SITE.url}${lp}/start.html`, date: today });
     sitemapUrls.push({ loc: `${SITE.url}${lp}/glossary.html`, date: today });
     sitemapUrls.push({ loc: `${SITE.url}${lp}/wizard.html`, date: today });
+    sitemapUrls.push({ loc: `${SITE.url}${lp}/about.html`, date: today });
     for (const a of loc) sitemapUrls.push({ loc: `${SITE.url}${lp}/article/${a.slug}.html`, date: (a.publishedAt || '').slice(0, 10) || today });
 
     console.log(`✅ [${lang}] ${loc.length + 3} oldal generálva (${outBase === OUT_DIR ? 'gyökér' : lang + '/'})`);
