@@ -438,6 +438,26 @@ function isDailyQuota(error) {
 //   - Kvóta (429) vagy más -> azonnal fallback modell
 // ===================================================================
 
+// VÉSZHÁLÓ-RIASZTÁS (2026-07-10): napi 1x Telegram, ha egy paid-only agent
+// ingyenes kulcsra kényszerült (= minden fizetős elesett). Fire-and-forget,
+// dinamikus telegram-import (nincs körkörös függőség); hiba nem állítja meg a routert.
+const EMERGENCY_STATE = join(__dirname, '..', 'memory', 'emergency-fallback-state.json');
+let _emergencyAlertedThisRun = false;
+function emergencyFallbackAlert(agentName, provider, model) {
+  if (_emergencyAlertedThisRun) return;
+  const today = new Date().toISOString().slice(0, 10);
+  try {
+    const st = existsSync(EMERGENCY_STATE) ? JSON.parse(readFileSync(EMERGENCY_STATE, 'utf-8')) : {};
+    if (st.last_alert === today) { _emergencyAlertedThisRun = true; return; }   // ma már szóltunk
+    writeFileSync(EMERGENCY_STATE, JSON.stringify({ last_alert: today, agent: agentName, provider, model }, null, 2), 'utf-8');
+  } catch { /* állapot-hiba ne állítsa meg a routert */ }
+  _emergencyAlertedThisRun = true;
+  console.log(`   🚨 VÉSZHÁLÓ: a(z) "${agentName}" fizetős helyett INGYENES kulccsal ment (${provider}) — Telegram-riasztás.`);
+  import('./telegram.js').then(({ sendMessage }) => {
+    sendMessage(`⚠️ *Vészhelyzet — figyelj rám!*\n\nA fizetős AI (Google/Gemini) nem elérhető — valószínűleg *elfogyott az egyenleg*. Átváltottam az INGYENES kulcsokra, így a cég TOVÁBB dolgozik és nem áll le. 👍\n\nA prémium minőségért töltsd fel a Google-egyenleged: ai.studio → a projekted → Billing.`).catch(() => {});
+  }).catch(() => {});
+}
+
 export async function ask(prompt, options = {}) {
   const { agentName, systemPrompt, maxTokens, jsonMode } = options;
 
@@ -459,7 +479,12 @@ export async function ask(prompt, options = {}) {
   const isPaidEntry = (a) => isMetered(a.provider);
   let raw;
   if (routing === 'paid-only') {
-    raw = [...own.filter(isPaidEntry), ...PAID_POOL];
+    // Alaphelyzetben CSAK fizetős (minőség). VÉSZHÁLÓ (2026-07-10): ha MINDEN
+    // fizetős provider elesik (pl. elfogyott a Google-egyenleg), vég-tartalékként
+    // az ingyenes kulcsokra váltunk — a cég NE álljon le csendben. A free csak
+    // akkor kerül sorra, ha minden fizetős elesett (a minőség így megmarad, míg a
+    // fizetős bírja).
+    raw = [...own.filter(isPaidEntry), ...PAID_POOL, ...own.filter(a => !isPaidEntry(a)), ...FREE_TIER_POOL];
   } else {
     raw = [...own.filter(a => !isPaidEntry(a)), ...FREE_TIER_POOL, ...own.filter(isPaidEntry), ...PAID_POOL];
   }
@@ -508,6 +533,11 @@ export async function ask(prompt, options = {}) {
         const cost = calculateCost(model, response.usage);
         logCall(agentName, provider, model, response.usage, cost, true);
         if (isMetered(provider)) recordSpend(provider, cost);
+
+        // VÉSZHÁLÓ-RIASZTÁS: ha egy 'paid-only' agent INGYENES providerrel járt
+        // sikerrel, az azt jelenti, hogy minden fizetős elesett (pl. Google-egyenleg
+        // elfogyott). Napi 1x szólunk Telegramon, hogy tudd, tölteni kell.
+        if (routing === 'paid-only' && !isMetered(provider)) emergencyFallbackAlert(agentName, provider, model);
 
         return { text: response.text, provider, model, costUsd: cost };
 

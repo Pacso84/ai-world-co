@@ -1277,51 +1277,6 @@
   ],
   "messages": [
     {
-      "id": "m178336482393088",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Automate basic email replies in Outlook with Meta AI\" — mi a baj: Beginner clarity too low (5/10): steps are vague or could mislead a first-time user",
-      "ref": "GUIDE_automate-basic-email-replies-in-outlook-with-meta-ai.json",
-      "at": "2026-07-06T19:07:03.930Z"
-    },
-    {
-      "id": "m178336488562473",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Automate basic email replies in Outlook with Meta AI\" — javítva: Beginner clarity too low (5/10): steps are vague or could mislead a first-time user; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
-      "ref": "GUIDE_automate-basic-email-replies-in-outlook-with-meta-ai.json",
-      "at": "2026-07-06T19:08:05.624Z"
-    },
-    {
-      "id": "m17833648931580",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Automate basic email replies in Outlook with Meta AI\" (?/10)",
-      "ref": "GUIDE_automate-basic-email-replies-in-outlook-with-meta-ai.json",
-      "at": "2026-07-06T19:08:13.158Z"
-    },
-    {
-      "id": "m17833897420445",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"From Hugging Face to Amazon SageMaker Studio in one click\" — mi a baj: Vague instructions without step-by-step UI guidance; Recommends complex developer tools like SageMaker as simple no-code; Mentions technical notebook environments contradicting the no-code promise",
-      "ref": "2026-07-07T02-01-14-877Z_aws-ml_From_Hugging_Face_to_Amazon_SageMaker_Studio_in_on.json",
-      "at": "2026-07-07T02:02:22.044Z"
-    },
-    {
-      "id": "m178338975447551",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Teaching models to forget: Selective unlearning with Amazon Nova\" — mi a baj: Salvaged from a partial AI response.",
-      "ref": "2026-07-07T02-01-14-877Z_aws-ml_Teaching_models_to_forget__Selective_unlearning_wi.json",
-      "at": "2026-07-07T02:02:34.475Z"
-    },
-    {
       "id": "m178338976782660",
       "from": "ellenorzo",
       "to": "iro",
@@ -2627,6 +2582,51 @@
       "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 16 → 4/4/2 oszlop.",
       "ref": "mobile",
       "at": "2026-07-10T01:52:57.487Z"
+    },
+    {
+      "id": "m178365690275781",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Flint: A visualization language for the AI era\" (?/10)",
+      "ref": "2026-07-08T17-18-31-602Z_microsoft-research_Flint__A_visualization_language_for_the_AI_era.json",
+      "at": "2026-07-10T04:15:02.757Z"
+    },
+    {
+      "id": "m178365690330841",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Introducing Robostral Navigate \" (?/10)",
+      "ref": "2026-07-08T17-18-32-415Z_mistral-ai_Introducing_Robostral_Navigate_.json",
+      "at": "2026-07-10T04:15:03.308Z"
+    },
+    {
+      "id": "m17836569038758",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"How Natura &Co Is Transforming Finance with Generative AI on SAP S/4HANA\" (?/10)",
+      "ref": "2026-07-08T17-18-32-415Z_sap_How_Natura__Co_Is_Transforming_Finance_with_Genera.json",
+      "at": "2026-07-10T04:15:03.875Z"
+    },
+    {
+      "id": "m17836569155611",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"ML Jobs in Snowflake Data Clean Rooms Now GA\" (?/10)",
+      "ref": "2026-07-08T17-18-32-415Z_snowflake_ML_Jobs_in_Snowflake_Data_Clean_Rooms_Now_GA.json",
+      "at": "2026-07-10T04:15:15.561Z"
+    },
+    {
+      "id": "m178365693418837",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Transforming FP&A with AI Modernization\" (?/10)",
+      "ref": "2026-07-08T17-18-32-416Z_snowflake_Transforming_FP_A_with_AI_Modernization.json",
+      "at": "2026-07-10T04:15:34.188Z"
     }
   ]
 }
