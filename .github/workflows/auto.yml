@@ -59,6 +59,18 @@ jobs:
           node agents/digest/agent.js || true
           node agents/compare/agent.js || true
 
+      # Orbit heti videó: szkript + hang (vasárnap; a videót a compose rakja össze)
+      - name: Orbit videó — szkript + hang (vasárnap)
+        env:
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_OWNER_CHAT_ID: ${{ secrets.TELEGRAM_OWNER_CHAT_ID }}
+        run: node agents/video/agent.js || true
+
       - name: Fordítás (többnyelvűség — backfill, mindig fut)
         env:
           GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
@@ -79,6 +91,10 @@ jobs:
       # Címes megosztás-képek a friss cikkekhez (FB-posztokhoz; 2026-07-08)
       - name: Megosztás-képek (címes borítók)
         run: node core/share-images.js || true
+
+      # Orbit heti videó összerakása (ffmpeg a runneren adott; mp4 nincs commitolva)
+      - name: Orbit videó — összerakás (mp4)
+        run: node core/video-compose.js || true
 
       - name: Deploy — Cloudflare Pages
         env:

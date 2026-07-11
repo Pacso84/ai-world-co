@@ -243,6 +243,18 @@
       },
       "enabled": true,
       "comment": "Osszehasonlito cikkek (ChatGPT vs Gemini vs Claude stb.) a topics-sorbol, hetente max 1 (szerda). Free-first, Ellenorzo-kapun megy at."
+    },
+    "video": {
+      "primary_model": {
+        "provider": "cerebras",
+        "model": "gpt-oss-120b"
+      },
+      "fallback_model": {
+        "provider": "google",
+        "model": "gemini-2.5-flash"
+      },
+      "enabled": true,
+      "comment": "Orbit heti video-bemondo: ~150 szavas beszelt szkript a heti digestbol (vasarnap), TTS: ingyenes Edge en-AU Natasha. Free-first."
     }
   },
   "providers": {

@@ -410,6 +410,31 @@ const UI_ABOUT = {
 };
 for (const l of SITE_LANGS) Object.assign(UI[l], UI_ABOUT[l] || {});
 
+// Orbit heti videó (2026-07-11): ha van friss weekly.json, a digest-cikk
+// tetejére videó-lejátszó kerül (a mp4-et a core/video-compose.js gyártja).
+let VIDEO_META = null;
+try {
+  const vm = JSON.parse(readFileSync(join(__dirname, 'assets', 'video', 'weekly.json'), 'utf-8'));
+  if (vm.slug && (Date.now() - new Date(vm.created_at).getTime()) < 8 * 86400e3) VIDEO_META = vm;
+} catch { /* nincs videó ezen a héten */ }
+
+const UI_VID = {
+  en: { vidNote: '▶ Orbit, our AI news anchor, sums up the week in about 90 seconds (English).' },
+  hu: { vidNote: '▶ Orbit, az AI-hírbemondónk kb. 90 másodpercben összefoglalja a hetet (angolul).' },
+  es: { vidNote: '▶ Orbit, nuestro presentador de IA, resume la semana en unos 90 segundos (en inglés).' },
+  de: { vidNote: '▶ Orbit, unser KI-Nachrichtensprecher, fasst die Woche in ca. 90 Sekunden zusammen (Englisch).' },
+  fr: { vidNote: '▶ Orbit, notre présentateur IA, résume la semaine en 90 secondes environ (en anglais).' }
+};
+for (const l of SITE_LANGS) Object.assign(UI[l], UI_VID[l] || {});
+
+function videoBlock(a) {
+  if (!VIDEO_META || VIDEO_META.slug !== a.slug) return '';
+  return `<div class="vid">
+    <video controls preload="metadata" poster="/assets/video/weekly-poster.jpg" src="/assets/video/weekly-${VIDEO_META.week}.mp4"></video>
+    <p class="ai-disclosure">${escapeHtml(tr('vidNote'))}</p>
+  </div>`;
+}
+
 // GYIK-blokk az útmutatók végén (2026-07-11) — a MEGLÉVŐ, már lefordított
 // tartalomból épül ($0 AI-költség): idő/eszköz templatelt válasz + az
 // "Mielőtt elkezded" és "Gyakori hibák" szekciók újracsomagolva. A Google
@@ -1220,6 +1245,7 @@ function buildArticlePage(a) {
         <span>${formatDate(a.publishedAt)}</span>
       </div>
     </div>
+    ${videoBlock(a)}
     <div class="article__body">
       ${glossAutolink(a.bodyHtml, { linked: new Set(), count: 0 })}
     </div>

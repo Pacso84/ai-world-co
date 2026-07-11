@@ -752,3 +752,8 @@ body {
 .arch__i { flex-shrink: 0; font-size: 14px; }
 .arch__t { font-size: 15px; font-weight: 600; line-height: 1.4; }
 @media (max-width: 560px){ .arch__d { width: 58px; } .arch__t { font-size: 14px; } }
+
+/* ============ ORBIT heti videó (2026-07-11) ============ */
+.vid { margin: 6px 0 26px; }
+.vid video { display: block; width: 100%; border-radius: var(--radius); border: 1px solid var(--line-strong); background: #000; aspect-ratio: 16/9; }
+.vid .ai-disclosure { margin-top: 8px; }
