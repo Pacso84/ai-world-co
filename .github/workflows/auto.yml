@@ -118,6 +118,9 @@ jobs:
           GSC_SA_JSON: ${{ secrets.GSC_SA_JSON }}
           BING_WM_API_KEY: ${{ secrets.BING_WM_API_KEY }}
           FEEDBACK_EXPORT_KEY: ${{ secrets.FEEDBACK_EXPORT_KEY }}
+          # Cloudflare Web Analytics a heti riportban (összes látogató, 2026-07-11)
+          CF_ANALYTICS_TOKEN: ${{ secrets.CF_ANALYTICS_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: node core/search-report.js || true
 
       - name: Generált tartalom megőrzése (visszacommit)

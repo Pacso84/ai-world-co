@@ -123,6 +123,53 @@ function pct(cur, prev) {
   return (p >= 0 ? '+' : '') + p + '%';
 }
 
+// ---------- Cloudflare Web Analytics (ÖSSZES látogató, nem csak kereső) ----------
+// Kulcsok: CF_ANALYTICS_TOKEN (Account Analytics: Read) + CLOUDFLARE_ACCOUNT_ID.
+// A site_tag-et magától megkeresi a fiók Web Analytics listájából.
+async function getVisitors() {
+  const token = (process.env.CF_ANALYTICS_TOKEN || '').trim();
+  const account = (process.env.CLOUDFLARE_ACCOUNT_ID || '').trim();
+  if (!token || !account) return null;
+  const H = { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' };
+
+  // 1) site_tag felderítése (aiworldhq.com Web Analytics mérője)
+  const lr = await fetch(`https://api.cloudflare.com/client/v4/accounts/${account}/rum/site_info/list`,
+    { headers: H, signal: AbortSignal.timeout(15000) });
+  if (!lr.ok) throw new Error('CF site-lista HTTP ' + lr.status);
+  const sites = (await lr.json()).result || [];
+  const site = sites.find(s => /aiworldhq/i.test(s.host || '')) || sites[0];
+  if (!site?.site_tag) return null;
+
+  // 2) GraphQL: heti látogatók + oldalletöltések + top oldalak
+  const since = new Date(Date.now() - 7 * 86400e3).toISOString();
+  const until = new Date().toISOString();
+  const q = `query($account: String!, $site: String!, $since: Time!, $until: Time!) {
+    viewer { accounts(filter: {accountTag: $account}) {
+      total: rumPageloadEventsAdaptiveGroups(filter: {siteTag: $site, datetime_geq: $since, datetime_leq: $until}, limit: 1) {
+        count sum { visits }
+      }
+      pages: rumPageloadEventsAdaptiveGroups(filter: {siteTag: $site, datetime_geq: $since, datetime_leq: $until}, limit: 4, orderBy: [count_DESC]) {
+        count dimensions { requestPath }
+      }
+    } }
+  }`;
+  const gr = await fetch('https://api.cloudflare.com/client/v4/graphql', {
+    method: 'POST', headers: H,
+    body: JSON.stringify({ query: q, variables: { account, site: site.site_tag, since, until } }),
+    signal: AbortSignal.timeout(20000)
+  });
+  if (!gr.ok) throw new Error('CF GraphQL HTTP ' + gr.status);
+  const data = await gr.json();
+  if (data.errors?.length) throw new Error('CF GraphQL: ' + JSON.stringify(data.errors[0].message).slice(0, 80));
+  const acc = data.data?.viewer?.accounts?.[0];
+  if (!acc) return null;
+  const t = acc.total?.[0] || {};
+  const pages = (acc.pages || [])
+    .map(p => `${p.dimensions?.requestPath || '?'} (${p.count})`)
+    .filter(s => !s.startsWith('? ')).slice(0, 3);
+  return { visits: t.sum?.visits || 0, pageviews: t.count || 0, pages };
+}
+
 async function main() {
   if (!guard()) return;
 
@@ -143,6 +190,15 @@ async function main() {
     weeklyClicks += b.clicks;
     lines.push(`🔎 Bing: *${b.clicks} kattintás* · ${b.impressions} megjelenés`);
   } else lines.push('🔎 Bing: nincs kulcs beállítva');
+
+  // ÖSSZES látogató (Cloudflare Web Analytics) — nem csak a keresőkből!
+  try {
+    const v = await getVisitors();
+    if (v) {
+      lines.push(`👥 Látogatók a héten: *${v.visits}* · ${v.pageviews} oldalletöltés`);
+      if (v.pages.length) lines.push(`   legnézettebb: ${v.pages.join(' · ')}`);
+    }
+  } catch (e) { console.log('⚠️ CF Analytics: ' + e.message.slice(0, 80)); }
 
   // OLVASÓI 👍/👎 összesítés (a Worker KV-jából, ha van export-kulcs)
   try {
