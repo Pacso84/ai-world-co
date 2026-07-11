@@ -436,11 +436,11 @@ for (const l of SITE_LANGS) Object.assign(UI[l], UI_FAQ[l] || {});
 // "Minden hír" archívum-oldal feliratai (2026-07-11) — a régi hírek eddig
 // csak a keresőből voltak elérhetők; az archívum lapozható + SEO-barát.
 const UI_ARCH = {
-  en: { archTitle: 'All news', archTag: 'Every story we have published — newest first, grouped by month.', archNav: 'Browse all news' },
-  hu: { archTitle: 'Minden hír', archTag: 'Az összes eddig megjelent hírünk — a legfrissebbtől, hónapok szerint.', archNav: 'Az összes hír böngészése' },
-  es: { archTitle: 'Todas las noticias', archTag: 'Todas las historias que hemos publicado — las más recientes primero, agrupadas por mes.', archNav: 'Ver todas las noticias' },
-  de: { archTitle: 'Alle News', archTag: 'Alle bisher veröffentlichten Meldungen — neueste zuerst, nach Monaten gruppiert.', archNav: 'Alle News durchstöbern' },
-  fr: { archTitle: 'Toutes les actus', archTag: 'Toutes nos publications — les plus récentes d’abord, groupées par mois.', archNav: 'Parcourir toutes les actus' }
+  en: { archTitle: 'All news', archTag: 'Every story we have published — newest first, grouped by month.', archNav: 'Browse all news', archNavS: 'Archive' },
+  hu: { archTitle: 'Minden hír', archTag: 'Az összes eddig megjelent hírünk — a legfrissebbtől, hónapok szerint.', archNav: 'Az összes hír böngészése', archNavS: 'Archívum' },
+  es: { archTitle: 'Todas las noticias', archTag: 'Todas las historias que hemos publicado — las más recientes primero, agrupadas por mes.', archNav: 'Ver todas las noticias', archNavS: 'Archivo' },
+  de: { archTitle: 'Alle News', archTag: 'Alle bisher veröffentlichten Meldungen — neueste zuerst, nach Monaten gruppiert.', archNav: 'Alle News durchstöbern', archNavS: 'Archiv' },
+  fr: { archTitle: 'Toutes les actus', archTag: 'Toutes nos publications — les plus récentes d’abord, groupées par mois.', archNav: 'Parcourir toutes les actus', archNavS: 'Archives' }
 };
 for (const l of SITE_LANGS) Object.assign(UI[l], UI_ARCH[l] || {});
 
@@ -849,6 +849,7 @@ function pageShell({ title, description, bodyContent, isArticle = false, noIntro
   const toolsPath = `${LP}/tools.html`;
   const glossaryPath = `${LP}/glossary.html`;
   const aboutPath = `${LP}/about.html`;
+  const archivePath = `${LP}/archive.html`;
   const year = new Date().getFullYear();
   const url = `${SITE.url}${LP}/${pagePath}`;
   // Tartalék megosztás-kép: JPG kell (az SVG-t a Facebook nem jeleníti meg!)
@@ -906,6 +907,7 @@ function pageShell({ title, description, bodyContent, isArticle = false, noIntro
       <nav class="navbar__nav" id="navMenu">
         <a href="${startPath}" class="nav--star">⭐ ${tr('startHere')}</a>
         <a href="${homePath}">${T.news}</a>
+        <a href="${archivePath}">${tr('archNavS')}</a>
         <a href="${guidesPath}">${T.guides}</a>
         <a href="${toolsPath}">${T.tools}</a>
         <a href="${glossaryPath}">${tr('glossNav')}</a>
