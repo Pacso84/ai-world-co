@@ -125,37 +125,27 @@ function pct(cur, prev) {
 
 // ---------- Cloudflare Web Analytics (ÖSSZES látogató, nem csak kereső) ----------
 // Kulcsok: CF_ANALYTICS_TOKEN (Account Analytics: Read) + CLOUDFLARE_ACCOUNT_ID.
-// A site_tag-et magától megkeresi a fiók Web Analytics listájából.
+// Tisztán GraphQL, FIÓK-szinten összesítve (a rum/site_info REST-hez ez a jog
+// nem elég — 403; a fiókban úgyis csak az aiworldhq.com mér, 2026-07-11).
 async function getVisitors() {
   const token = (process.env.CF_ANALYTICS_TOKEN || '').trim();
   const account = (process.env.CLOUDFLARE_ACCOUNT_ID || '').trim();
   if (!token || !account) return null;
-  const H = { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' };
-
-  // 1) site_tag felderítése (aiworldhq.com Web Analytics mérője)
-  const lr = await fetch(`https://api.cloudflare.com/client/v4/accounts/${account}/rum/site_info/list`,
-    { headers: H, signal: AbortSignal.timeout(15000) });
-  if (!lr.ok) throw new Error('CF site-lista HTTP ' + lr.status);
-  const sites = (await lr.json()).result || [];
-  const site = sites.find(s => /aiworldhq/i.test(s.host || '')) || sites[0];
-  if (!site?.site_tag) return null;
-
-  // 2) GraphQL: heti látogatók + oldalletöltések + top oldalak
   const since = new Date(Date.now() - 7 * 86400e3).toISOString();
   const until = new Date().toISOString();
-  const q = `query($account: String!, $site: String!, $since: Time!, $until: Time!) {
+  const q = `query($account: String!, $since: Time!, $until: Time!) {
     viewer { accounts(filter: {accountTag: $account}) {
-      total: rumPageloadEventsAdaptiveGroups(filter: {siteTag: $site, datetime_geq: $since, datetime_leq: $until}, limit: 1) {
+      total: rumPageloadEventsAdaptiveGroups(filter: {datetime_geq: $since, datetime_leq: $until}, limit: 10) {
         count sum { visits }
       }
-      pages: rumPageloadEventsAdaptiveGroups(filter: {siteTag: $site, datetime_geq: $since, datetime_leq: $until}, limit: 4, orderBy: [count_DESC]) {
+      pages: rumPageloadEventsAdaptiveGroups(filter: {datetime_geq: $since, datetime_leq: $until}, limit: 6, orderBy: [count_DESC]) {
         count dimensions { requestPath }
       }
     } }
   }`;
   const gr = await fetch('https://api.cloudflare.com/client/v4/graphql', {
-    method: 'POST', headers: H,
-    body: JSON.stringify({ query: q, variables: { account, site: site.site_tag, since, until } }),
+    method: 'POST', headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify({ query: q, variables: { account, since, until } }),
     signal: AbortSignal.timeout(20000)
   });
   if (!gr.ok) throw new Error('CF GraphQL HTTP ' + gr.status);
@@ -163,11 +153,12 @@ async function getVisitors() {
   if (data.errors?.length) throw new Error('CF GraphQL: ' + JSON.stringify(data.errors[0].message).slice(0, 80));
   const acc = data.data?.viewer?.accounts?.[0];
   if (!acc) return null;
-  const t = acc.total?.[0] || {};
+  let visits = 0, pageviews = 0;
+  for (const row of (acc.total || [])) { visits += row.sum?.visits || 0; pageviews += row.count || 0; }
   const pages = (acc.pages || [])
-    .map(p => `${p.dimensions?.requestPath || '?'} (${p.count})`)
-    .filter(s => !s.startsWith('? ')).slice(0, 3);
-  return { visits: t.sum?.visits || 0, pageviews: t.count || 0, pages };
+    .filter(p => p.dimensions?.requestPath)
+    .map(p => `${p.dimensions.requestPath} (${p.count})`).slice(0, 3);
+  return { visits, pageviews, pages };
 }
 
 async function main() {
