@@ -1,0 +1,27 @@
+{
+  "started_at": "2026-07-11T09:16:34.222Z",
+  "total": 2,
+  "passed": 1,
+  "failed": 1,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.0090753,
+  "by_article": [
+    {
+      "writer": "WRITER_GUIDE_draft-a-simple-legal-disclaimer-text-with-deepseek-s-chat.json",
+      "article": "ARTICLE_GUIDE_draft-a-simple-legal-disclaimer-text-with-deepseek-s-chat.json",
+      "decision": "PASS",
+      "score": 10,
+      "cost_usd": 0.0045138
+    },
+    {
+      "writer": "WRITER_GUIDE_set-up-a-customer-faq-chatbot-using-deepseek-on-your-website.json",
+      "rejected": "REJECTED_GUIDE_set-up-a-customer-faq-chatbot-using-deepseek-on-your-website.json",
+      "decision": "FAIL",
+      "score": 3,
+      "cost_usd": 0.0045615
+    }
+  ],
+  "finished_at": "2026-07-11T09:16:49.270Z",
+  "duration_seconds": 15.048
+}

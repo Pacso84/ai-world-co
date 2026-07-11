@@ -1,6 +1,100 @@
 # AI World Co. — közösségi posztok
 
-*Generálva: 2026-07-11T01:44:46.713Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+*Generálva: 2026-07-11T09:22:55.773Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## Introducing Claude Sonnet 5 on AWS: Anthropic’s most capable Sonnet model
+**🔗 https://aiworldhq.com/article/how-to-use-the-new-claude-sonnet-to-simplify-your-daily-task.html**
+
+**Facebook:**
+Feeling overwhelmed by emails or a stack of receipts? Claude Sonnet 5 on AWS can draft, organise and plan for you in seconds, giving you back precious time. https://aiworldhq.com/article/how-to-use-the-new-claude-sonnet-to-simplify-your-daily-task.html #productivity #AI
+
+**Instagram:**
+Turn chaos into clarity.
+Claude Sonnet 5 on AWS helps you write emails, sort receipts and map out your week in moments.
+#productivity
+#AI
+#anthropic
+Link in bio.
+
+*Kép-ötlet: A tidy desk with a laptop screen showing a simple to‑do list and a coffee cup beside it.*
+
+---
+
+## AI Overviews in Drive now available on mobile
+**🔗 https://aiworldhq.com/article/how-to-use-ai-overviews-in-google-drive-on-your-phone.html**
+
+**Facebook:**
+Tired of scrolling through endless Drive files on your phone? AI Overviews give you a quick summary at the top so you can find what you need in seconds. https://aiworldhq.com/article/how-to-use-ai-overviews-in-google-drive-on-your-phone.html #productivity #googleDrive
+
+**Instagram:**
+Find what you need in Drive without the endless scroll.
+AI Overviews now show a short summary of any file right in the Android or iOS app – perfect for busy days.
+#googleDrive
+#AIoverview
+#productivity
+Link in bio.
+
+*Kép-ötlet: A hand holding a smartphone with the Google Drive app open, showing a file list and a highlighted summary bar at the top.*
+
+---
+
+## Ask Gemini in Drive now available on mobile
+**🔗 https://aiworldhq.com/article/how-to-use-gemini-s-ask-in-drive-feature-on-your-mobile.html**
+
+**Facebook:**
+Need to grab a quick summary from a PDF on your commute? Gemini’s Ask in Drive can pull out the key points straight from Google Drive on your phone. https://aiworldhq.com/article/how-to-use-gemini-s-ask-in-drive-feature-on-your-mobile.html #aiassistant #productivity
+
+**Instagram:**
+Summarise a doc while you’re on the go
+Ask Gemini in Drive on your phone to pull out key points from PDFs or spreadsheets in seconds. Makes coffee breaks more productive.
+#gemini
+#googledrive
+#aihelp
+#mobileproductivity
+#aifriendly
+Link in bio.
+
+*Kép-ötlet: A hand holding a smartphone showing a Google Drive file with a chat bubble overlay.*
+
+---
+
+## New York City educators and industry leaders gathered at Google’s offices to shape the future of AI in classrooms.
+**🔗 https://aiworldhq.com/article/how-to-bring-generative-ai-into-your-classroom-today.html**
+
+**Facebook:**
+Finding time for personalised feedback? A simple AI tool can draft comments and suggest visual examples, helping you teach more efficiently. Learn easy steps you can start using today. https://aiworldhq.com/article/how-to-bring-generative-ai-into-your-classroom-today.html #AIinEducation #TeachingTips
+
+**Instagram:**
+Give your lessons a little AI boost
+Discover safe, easy ways to use generative AI for feedback, visual aids and lesson planning – no tech wizardry needed.
+#AIinClassroom
+#TeacherTools
+#EdTech
+Link in bio.
+
+*Kép-ötlet: A relaxed teacher at a desk with a laptop, subtle AI icons floating nearby, while students work in the background.*
+
+---
+
+## Run NVIDIA Nemotron and OpenAI GPT OSS models on Amazon Bedrock in AWS GovCloud (US)
+**🔗 https://aiworldhq.com/article/what-powers-your-ai-tools-a-simple-guide-to-foundation-model.html**
+
+**Facebook:**
+Want to know what powers the AI that helps you write emails or plan your day? This quick guide explains the foundation models behind popular tools, and how they’re now available on secure AWS GovCloud. https://aiworldhq.com/article/what-powers-your-ai-tools-a-simple-guide-to-foundation-model.html #AIbasics #FoundationModels
+
+**Instagram:**
+Ever wonder what’s under the hood of the AI you use?
+Our easy guide breaks down foundation models and shows how they’re now on AWS GovCloud for secure, reliable use.
+#AI
+#FoundationModels
+#AWS
+#TechExplained
+#EverydayAI
+Link in bio.
+
+*Kép-ötlet: A clean illustration of a cloud with subtle AI symbols (brain, circuit) hovering above a secure lock, conveying trustworthy AI in the cloud.*
 
 ---
 

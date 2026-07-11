@@ -1,150 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178361929055411",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-09T17:48:10.554Z",
-      "updated": "2026-07-09T17:48:10.789Z"
-    },
-    {
-      "id": "t178361929079125",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-09T17:48:10.791Z",
-      "updated": "2026-07-09T17:48:11.012Z"
-    },
-    {
-      "id": "t178361929101460",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-07-09T17:48:11.014Z",
-      "updated": "2026-07-09T17:48:11.248Z"
-    },
-    {
-      "id": "t17836192912493",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-09T17:48:11.249Z",
-      "updated": "2026-07-09T17:48:11.892Z"
-    },
-    {
-      "id": "t178361929189484",
-      "title": "Run translator",
-      "status": "done",
-      "agent": "translator",
-      "created": "2026-07-09T17:48:11.894Z",
-      "updated": "2026-07-09T17:48:12.167Z"
-    },
-    {
-      "id": "t178361929216825",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-07-09T17:48:12.168Z",
-      "updated": "2026-07-09T17:48:17.232Z"
-    },
-    {
-      "id": "t178364829822699",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-07-10T01:51:38.226Z",
-      "updated": "2026-07-10T01:51:50.266Z"
-    },
-    {
-      "id": "t178364831026874",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-07-10T01:51:50.268Z",
-      "updated": "2026-07-10T01:51:50.453Z"
-    },
-    {
-      "id": "t178364831045452",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-07-10T01:51:50.454Z",
-      "updated": "2026-07-10T01:52:35.393Z"
-    },
-    {
-      "id": "t178364835539560",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-10T01:52:35.395Z",
-      "updated": "2026-07-10T01:52:36.272Z"
-    },
-    {
-      "id": "t178364835627651",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-07-10T01:52:36.276Z",
-      "updated": "2026-07-10T01:52:36.447Z"
-    },
-    {
-      "id": "t178364835646680",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-10T01:52:36.466Z",
-      "updated": "2026-07-10T01:52:43.840Z"
-    },
-    {
-      "id": "t178364836384115",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-10T01:52:43.841Z",
-      "updated": "2026-07-10T01:52:44.043Z"
-    },
-    {
-      "id": "t178364836405528",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-10T01:52:44.055Z",
-      "updated": "2026-07-10T01:52:44.206Z"
-    },
-    {
-      "id": "t178364836420774",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-10T01:52:44.207Z",
-      "updated": "2026-07-10T01:52:47.644Z"
-    },
-    {
-      "id": "t178364836764619",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-10T01:52:47.646Z",
-      "updated": "2026-07-10T01:52:56.303Z"
-    },
-    {
-      "id": "t178364837630551",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-10T01:52:56.305Z",
-      "updated": "2026-07-10T01:52:56.513Z"
-    },
-    {
-      "id": "t178364837651549",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-10T01:52:56.515Z",
-      "updated": "2026-07-10T01:52:56.692Z"
-    },
-    {
       "id": "t17836483766939",
       "title": "Run seo",
       "status": "done",
@@ -479,33 +335,153 @@
       "agent": "publisher",
       "created": "2026-07-11T01:44:01.161Z",
       "updated": "2026-07-11T01:44:07.318Z"
+    },
+    {
+      "id": "t178376136781617",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-07-11T09:16:07.816Z",
+      "updated": "2026-07-11T09:16:18.171Z"
+    },
+    {
+      "id": "t178376137817339",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-07-11T09:16:18.173Z",
+      "updated": "2026-07-11T09:16:18.426Z"
+    },
+    {
+      "id": "t178376137842871",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-07-11T09:16:18.428Z",
+      "updated": "2026-07-11T09:16:18.639Z"
+    },
+    {
+      "id": "t178376137864034",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-11T09:16:18.640Z",
+      "updated": "2026-07-11T09:16:18.839Z"
+    },
+    {
+      "id": "t178376137884464",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-07-11T09:16:18.844Z",
+      "updated": "2026-07-11T09:16:34.027Z"
+    },
+    {
+      "id": "t178376139402974",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-11T09:16:34.029Z",
+      "updated": "2026-07-11T09:16:49.293Z"
+    },
+    {
+      "id": "t178376140929634",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-07-11T09:16:49.296Z",
+      "updated": "2026-07-11T09:17:11.914Z"
+    },
+    {
+      "id": "t178376143191614",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-11T09:17:11.916Z",
+      "updated": "2026-07-11T09:17:19.994Z"
+    },
+    {
+      "id": "t178376143999861",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-07-11T09:17:19.998Z",
+      "updated": "2026-07-11T09:17:32.313Z"
+    },
+    {
+      "id": "t178376145231618",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-11T09:17:32.316Z",
+      "updated": "2026-07-11T09:17:40.317Z"
+    },
+    {
+      "id": "t178376146032014",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-07-11T09:17:40.320Z",
+      "updated": "2026-07-11T09:17:56.949Z"
+    },
+    {
+      "id": "t178376147695211",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-11T09:17:56.952Z",
+      "updated": "2026-07-11T09:18:04.736Z"
+    },
+    {
+      "id": "t178376148473934",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-07-11T09:18:04.739Z",
+      "updated": "2026-07-11T09:18:04.968Z"
+    },
+    {
+      "id": "t178376148498659",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-11T09:18:04.986Z",
+      "updated": "2026-07-11T09:18:08.971Z"
+    },
+    {
+      "id": "t178376148897395",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-07-11T09:18:08.973Z",
+      "updated": "2026-07-11T09:18:10.737Z"
+    },
+    {
+      "id": "t178376149073873",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-11T09:18:10.738Z",
+      "updated": "2026-07-11T09:18:11.602Z"
+    },
+    {
+      "id": "t17837614916046",
+      "title": "Run translator",
+      "status": "done",
+      "agent": "translator",
+      "created": "2026-07-11T09:18:11.604Z",
+      "updated": "2026-07-11T09:22:10.403Z"
+    },
+    {
+      "id": "t178376173040638",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-07-11T09:22:10.406Z",
+      "updated": "2026-07-11T09:22:17.393Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178199243581239",
-      "level": "info",
-      "text": "API-szakértő: 1 agent modellje optimalizálva (preflight-ellenőrzött).",
-      "agent": "api-expert",
-      "at": "2026-06-20T21:53:55.812Z",
-      "loud": false
-    },
-    {
-      "id": "n178215468128246",
-      "level": "warn",
-      "text": "📨 ellenorzo → guide: Hiányos / kell még adat: \"The main AI assistants explained simply (and what each is best at)\" — egészítsd ki: The articl",
-      "agent": "ellenorzo",
-      "at": "2026-06-22T18:58:01.282Z",
-      "loud": false
-    },
-    {
-      "id": "n178215487528624",
-      "level": "warn",
-      "text": "📨 ellenorzo → guide: Hiányos / kell még adat: \"Getting started with Grok (xAI) for everyday questions\" — egészítsd ki: Article text is cut of",
-      "agent": "ellenorzo",
-      "at": "2026-06-22T19:01:15.286Z",
-      "loud": false
-    },
     {
       "id": "n178215489362449",
       "level": "success",
@@ -1281,117 +1257,33 @@
       "agent": "ceo",
       "at": "2026-07-11T01:44:07.335Z",
       "loud": false
+    },
+    {
+      "id": "n178376149072630",
+      "level": "info",
+      "text": "SEO: 2 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-07-11T09:18:10.726Z",
+      "loud": false
+    },
+    {
+      "id": "n17837617313632",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The line-up is coherent and ready to publish, with a great mix of practical articles that showcase AI's everyday uses. I do note that the topics are quite tech-heavy, so a gentle intro or brief explan",
+      "agent": "publisher",
+      "at": "2026-07-11T09:22:11.363Z",
+      "loud": false
+    },
+    {
+      "id": "n178376173741951",
+      "level": "success",
+      "text": "0 hír + 2 útmutató publikálva (költség: $0.0229).",
+      "agent": "ceo",
+      "at": "2026-07-11T09:22:17.419Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178339006759568",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "info",
-      "text": "A \"From Hugging Face to Amazon SageMaker Studio in one cli\" hír a meglévő útmutatóra mutat: getting-started-hugging-face",
-      "ref": "getting-started-hugging-face",
-      "at": "2026-07-07T02:07:47.595Z"
-    },
-    {
-      "id": "m178339017855326",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Automate basic email replies in Outlook with Meta AI\" — mi a baj: Beginner clarity too low (4/10): steps are vague or could mislead a first-time user",
-      "ref": "GUIDE_automate-basic-email-replies-in-outlook-with-meta-ai.json",
-      "at": "2026-07-07T02:09:38.553Z"
-    },
-    {
-      "id": "m178339020707650",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Set up an AI‑driven daily habit tracker using Apple Intelligence\" — mi a baj: Beginner clarity too low (4/10): steps are vague or could mislead a first-time user",
-      "ref": "GUIDE_set-up-an-ai-driven-daily-habit-tracker-using-apple-intellig.json",
-      "at": "2026-07-07T02:10:07.076Z"
-    },
-    {
-      "id": "m178339031207717",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Create AI‑generated meeting summaries directly in Apple Calendar\" — mi a baj: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user",
-      "ref": "GUIDE_create-ai-generated-meeting-summaries-directly-in-apple-cale.json",
-      "at": "2026-07-07T02:11:52.077Z"
-    },
-    {
-      "id": "m17833903267013",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Teach Alexa+ to read bedtime stories to kids\" — mi a baj: Beginner clarity too low (5/10): steps are vague or could mislead a first-time user",
-      "ref": "GUIDE_teach-alexa-to-read-bedtime-stories-to-kids.json",
-      "at": "2026-07-07T02:12:06.701Z"
-    },
-    {
-      "id": "m178339036517357",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 16 → 4/4/2 oszlop.",
-      "ref": "mobile",
-      "at": "2026-07-07T02:12:45.173Z"
-    },
-    {
-      "id": "m178339151355617",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "5 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
-      "ref": null,
-      "at": "2026-07-07T02:31:53.556Z"
-    },
-    {
-      "id": "m17833964489678",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Evaluating performance and efficiency of the GitHub Copilot agentic harness across models and tasks\" (?/10)",
-      "ref": "2026-06-26T02-12-21-214Z_github-ai_Evaluating_performance_and_efficiency_of_the_GitHu.json",
-      "at": "2026-07-07T03:54:08.967Z"
-    },
-    {
-      "id": "m178339645437395",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Streamline your data backups with incremental exports for Google Workspace\" (?/10)",
-      "ref": "2026-06-27T02-07-24-541Z_google-workspace_Streamline_your_data_backups_with_incremental_expo.json",
-      "at": "2026-07-07T03:54:14.373Z"
-    },
-    {
-      "id": "m178339646164291",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Previewing GPT-5.6 Sol: a next-generation model\" (?/10)",
-      "ref": "2026-06-27T02-07-24-541Z_openai-blog_Previewing_GPT-5_6_Sol__a_next-generation_model.json",
-      "at": "2026-07-07T03:54:21.642Z"
-    },
-    {
-      "id": "m178339647073070",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"How Cara pioneers domain-specific AI for enterprise insurance brokerages with AWS\" — mi a baj: Salvaged from a partial AI response.",
-      "ref": "2026-06-27T02-07-24-542Z_aws-ml_How_Cara_pioneers_domain-specific_AI_for_enterpris.json",
-      "at": "2026-07-07T03:54:30.730Z"
-    },
-    {
-      "id": "m178339647869513",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Production-grade AI agents for financial compliance: Lessons from Stripe\" — mi a baj: Salvaged from a partial AI response.",
-      "ref": "2026-06-27T02-07-24-542Z_aws-ml_Production-grade_AI_agents_for_financial_complianc.json",
-      "at": "2026-07-07T03:54:38.695Z"
-    },
     {
       "id": "m178339648532629",
       "from": "ellenorzo",
@@ -2635,6 +2527,114 @@
       "text": "5 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
       "ref": null,
       "at": "2026-07-11T01:44:46.714Z"
+    },
+    {
+      "id": "m178376138119545",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Draft a simple legal disclaimer text with DeepSeek’s chat\" — javítva: Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "GUIDE_draft-a-simple-legal-disclaimer-text-with-deepseek-s-chat.json",
+      "at": "2026-07-11T09:16:21.195Z"
+    },
+    {
+      "id": "m178376139401835",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Set up a customer FAQ chatbot using DeepSeek on your website\" — javítva: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "GUIDE_set-up-a-customer-faq-chatbot-using-deepseek-on-your-website.json",
+      "at": "2026-07-11T09:16:34.018Z"
+    },
+    {
+      "id": "m178376140153372",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Draft a simple legal disclaimer text with DeepSeek’s chat\" (?/10)",
+      "ref": "GUIDE_draft-a-simple-legal-disclaimer-text-with-deepseek-s-chat.json",
+      "at": "2026-07-11T09:16:41.533Z"
+    },
+    {
+      "id": "m178376140926975",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Set up a customer FAQ chatbot using DeepSeek on your website\" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "GUIDE_set-up-a-customer-faq-chatbot-using-deepseek-on-your-website.json",
+      "at": "2026-07-11T09:16:49.269Z"
+    },
+    {
+      "id": "m178376143190499",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Set up a customer FAQ chatbot using DeepSeek on your website\" — javítva: Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "GUIDE_set-up-a-customer-faq-chatbot-using-deepseek-on-your-website.json",
+      "at": "2026-07-11T09:17:11.904Z"
+    },
+    {
+      "id": "m178376143996330",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Set up a customer FAQ chatbot using DeepSeek on your website\" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "GUIDE_set-up-a-customer-faq-chatbot-using-deepseek-on-your-website.json",
+      "at": "2026-07-11T09:17:19.963Z"
+    },
+    {
+      "id": "m178376145230555",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Set up a customer FAQ chatbot using DeepSeek on your website\" — javítva: Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "GUIDE_set-up-a-customer-faq-chatbot-using-deepseek-on-your-website.json",
+      "at": "2026-07-11T09:17:32.305Z"
+    },
+    {
+      "id": "m178376146028294",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Set up a customer FAQ chatbot using DeepSeek on your website\" — mi a baj: Beginner clarity too low (2/10): steps are vague or could mislead a first-time user",
+      "ref": "GUIDE_set-up-a-customer-faq-chatbot-using-deepseek-on-your-website.json",
+      "at": "2026-07-11T09:17:40.282Z"
+    },
+    {
+      "id": "m17837614769405",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Set up a customer FAQ chatbot using DeepSeek on your website\" — javítva: Beginner clarity too low (2/10): steps are vague or could mislead a first-time user; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "GUIDE_set-up-a-customer-faq-chatbot-using-deepseek-on-your-website.json",
+      "at": "2026-07-11T09:17:56.940Z"
+    },
+    {
+      "id": "m178376148468695",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Set up a customer FAQ chatbot using DeepSeek on your website\" (?/10)",
+      "ref": "GUIDE_set-up-a-customer-faq-chatbot-using-deepseek-on-your-website.json",
+      "at": "2026-07-11T09:18:04.686Z"
+    },
+    {
+      "id": "m178376149156561",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 17 → 6/3/3 oszlop.",
+      "ref": "mobile",
+      "at": "2026-07-11T09:18:11.565Z"
+    },
+    {
+      "id": "m17837617757750",
+      "from": "social",
+      "to": "team",
+      "kind": "info",
+      "text": "5 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
+      "ref": null,
+      "at": "2026-07-11T09:22:55.775Z"
     }
   ]
 }

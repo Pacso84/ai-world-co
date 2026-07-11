@@ -1,0 +1,62 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "set-up-a-customer-faq-chatbot-using-deepseek-on-your-website",
+    "company": "DeepSeek",
+    "tool": "DeepSeek",
+    "icon": "🤖",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-07-11T09:17:56.938Z",
+    "writer_provider": "mistral",
+    "writer_model": "mistral-small-latest",
+    "writer_cost_usd": 0.0042548,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "rejected_at": "2026-07-11T09:17:40.252Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1296
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "The guide is exceptionally clear for beginners, with excellent step-by-step instructions",
+      "_salvaged": true,
+      "_aiCost": 0.004593600000000001,
+      "_provider": "google",
+      "_model": "gemini-2.5-flash",
+      "_attempts": 1
+    },
+    "reason": "Salvaged from a partial AI response.",
+    "can_retry": true,
+    "rework_attempts": 4,
+    "reworked_from": "REJECTED_GUIDE_set-up-a-customer-faq-chatbot-using-deepseek-on-your-website.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-07-11T09:18:04.684Z",
+    "seo": {
+      "meta_description": "Add a friendly FAQ chatbot to your site in 10 minutes with DeepSeek, no coding required, and give customers instant answers to common questions",
+      "keywords": [
+        "add FAQ chatbot to website",
+        "no code chatbot",
+        "DeepSeek chatbot",
+        "instant customer support"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Use header tags to structure the article",
+        "Add internal linking to other relevant AI-related articles",
+        "Optimize images with descriptive alt tags"
+      ],
+      "optimised_at": "2026-07-11T09:18:10.723Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Add a friendly FAQ chatbot to your site with DeepSeek in 10 minutes\"\nsubtitle: \"Give your customers instant answers to common questions without writing code or hiring support staff.\"\ncategory: \"guide\"\naudience: \"business\"\ncompany: \"DeepSeek\"\ntool: \"DeepSeek\"\nlevel: \"beginner\"\nread_time_minutes: 12\ntags: [\"getting-started\", \"deepseek\", \"chatbot\", \"business\"]\n---\n\n# Add a friendly FAQ chatbot to your site with DeepSeek in 10 minutes\n\n**Hook:**\nImagine answering the same five customer questions every day. Now picture an AI helper that does it for you, 24/7, in a friendly tone. With DeepSeek you can add a chat widget to your website that answers those questions instantly—no coding required. In this guide you’ll set up a simple FAQ bot, train it on your own questions, and place it on your site in under ten minutes.\n\n## Before you start\n- A website you can edit (WordPress, Wix, Squarespace, plain HTML).\n- A DeepSeek account (free at deepseek.com).\n- A list of 5–10 real questions your customers ask (for example, “What are your opening hours?”).\n- A paid plan with your website host if it restricts custom code.\n- Rough time: 10–12 minutes.\n\n> ⚠️ DeepSeek’s free plan works for small chatbots. If you expect lots of chats, check their pricing for limits.\n\n---\n\n## Step 1 — Sign in to DeepSeek and open the bot dashboard\nOpen your browser and go to [deepseek.com](https://www.deepseek.com). In the top-right corner you’ll see a **Sign in** button; tap it. Enter your email and password, then tap **Sign in**. After you sign in, you’ll land on the DeepSeek dashboard. On the left side you’ll see a sidebar with buttons. Look for a button like **Create Bot** or **New Bot** and tap it. A new page appears with fields such as **Bot Name**, **Description**, and **Knowledge Base**.\n\nYou'll know it worked when you see a fresh bot page with empty fields and a **Create** button at the bottom.\n\n💬 Example:\n```\nBot Name: FAQ Helper\nDescription: Answers common customer questions about our services.\n```\n\n---\n\n## Step 2 — Create your first bot\nOn the new bot page, fill in the fields:\n- Bot Name: “FAQ Helper”\n- Description: “Answers common customer questions about our services.”\nTap **Create** at the bottom. A new bot dashboard opens with tabs like **Settings**, **Knowledge**, and **Deploy**.\n\nYou'll know it worked when you see your bot’s name at the top of the dashboard and a green “Ready” status.\n\n💬 Example:\n```\nBot Name: FAQ Helper\nDescription: Answers common customer questions about our services.\n```\n\n---\n\n## Step 3 — Add your customer questions as knowledge\nIn the bot dashboard, find the **Knowledge** tab and tap it. You’ll see a box where you can paste text. Paste your list of 5–10 real customer questions one at a time. For example:\n```\nWhat are your opening hours?\nDo you offer free delivery?\nHow do I return an item?\nWhat payment methods do you accept?\n```\nAfter each paste, look for a button like **Save** or **Update Knowledge** and tap it. The system will process your questions and prepare answers based on them.\n\nYou'll know it worked when you see a green checkmark or “Knowledge updated” message.\n\n💬 Example:\n```\nWhat are your opening hours?\nDo you offer free delivery?\nHow do I return an item?\nWhat payment methods do you accept?\n```\n\n---\n## Step 4 — Train the bot to give helpful answers\nStill in the **Knowledge** section, look for a setting like **Answer Style** or **Response Tone**. Choose **Friendly and clear** to make answers feel warm. Next, find **Context Window** and set it to **Medium** (around 1,000 tokens). This helps the bot remember the questions better. Now scroll down and look for a button like **Train** or **Update Model**. Tap it. The bot will learn from your questions and prepare answers.\n\n> ⚠️ It can draft answers, but it can’t send them automatically—you’ll still review them.\n\nYou'll know it worked when you see a message like “Model trained successfully” and a preview of sample answers.\n\n---\n## Step 5 — Customise the chat widget\nIn your bot dashboard, find the **Deploy** tab and tap it. You’ll see a preview of a chat window on the right side of the screen. Look for options like **Widget Colour**, **Greeting Message**, and **Position on Page**. Change the greeting to something like:\n“Hi there! Ask me anything about our services.”\nPick a colour that matches your website. Then look for a button like **Save Settings** or **Generate Code**. Tap it. A box with code will appear.\n\nYou'll know it worked when you see the preview update with your greeting and colours.\n\n💬 Example:\n```\nGreeting Message: Hi there! Ask me anything about our services.\nWidget Colour: #0077b6 (a nice blue)\n```\n\n---\n## Step 6 — Add the code to your website\nCopy the code snippet from the box in Step 5. Now open your website editor. In WordPress go to **Appearance > Theme File Editor** and open **footer.php** or use a plugin like **Header and Footer Scripts**. In Wix go to **Settings > Custom Code** and paste it in the **Body Start** section. In Squarespace go to **Settings > Advanced > Code Injection** and paste it in the **Footer** box. Save your changes. Refresh your website—you should see a chat icon at the bottom-right corner.\n\n> ⚠️ If you don’t see the chat icon, clear your browser cache or check if your website host allows custom code.\n\nYou'll know it worked when you see a chat icon and can open it to ask a question.\n\n💬 Example:\n```html\n<script src=\"https://api.deepseek.com/widget.js\" async></script>\n```\n\n---\n## Step 7 — Test your chatbot with real questions\nOpen your website in a browser. Click the chat icon to open the widget. Type one of your customer questions, for example:\n“What are your opening hours?”\nThe bot should reply with a helpful answer based on your knowledge base. Try a few more questions to make sure it’s working. If an answer is wrong or missing, go back to **Knowledge** in your DeepSeek dashboard and add more details or correct the phrasing.\n\n> ⚠️ The bot can’t answer questions outside your knowledge base—it will say it doesn’t know.\n\nYou'll know it worked when the bot gives accurate, friendly answers to your test questions.\n\n💬 Example:\n```\nUser: What are your opening hours?\nBot: We're open Monday to Friday, 9 am to 5 pm. Saturday and Sunday by appointment.\n```\n\n---\n## Common mistakes\n- **Mistake:** Pasting all 10 questions at once and wondering why nothing appears.\n  **Fix:** Add questions one at a time and tap **Save** after each batch.\n\n- **Mistake:** Forgetting to save after adding knowledge.\n  **Fix:** Always tap **Save** or **Update Knowledge** before moving on.\n\n- **Mistake:** Not testing on mobile.\n  **Fix:** Open your website on your phone and try the chat widget—it should work the same.\n\n---\n## What this means for you\n\n- **In everyday life:** Your customers get instant answers day and night, freeing you up to focus on growing your business instead of answering the same questions over and over.\n\n- **For your business or work:** A chatbot can handle simple queries, reduce support emails, and improve customer satisfaction—all without hiring extra staff.\n\n- **If you're just getting started:** Start small with 5–10 questions, then add more as you see what customers ask most. The easiest first move is to list your top three customer questions and add them to your bot’s knowledge base.\n\n---\n## Try it now\nOpen [deepseek.com](https://www.deepseek.com), sign in, and create your first bot named “FAQ Helper”. Add three real customer questions, save, and copy the widget code. Paste it into your website’s footer. Refresh your site and test the chat icon—ask it one of your questions. Done!",
+  "original_title": "Set up a customer FAQ chatbot using DeepSeek on your website"
+}
