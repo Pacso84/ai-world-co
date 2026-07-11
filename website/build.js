@@ -2169,6 +2169,29 @@ Original content by ${SITE.name} — written and quality-checked by an autonomou
   writeFileSync(join(OUT_DIR, '_redirects'), `${verifyRule}https://aiworldco.pages.dev/* ${SITE.url}/:splat 301\n`, 'utf-8');
   console.log('✅ _redirects generálva (pages.dev → saját domain, 301)');
 
+  // _headers — biztonsági fejlécek (CF Security Center javaslat, 2026-07-11):
+  // HSTS (1 év, aldomainekkel) + alap védelmi fejlécek. A Pages ezt a fájlt
+  // minden válaszhoz hozzáfűzi.
+  writeFileSync(join(OUT_DIR, '_headers'), `/*
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+`, 'utf-8');
+  console.log('✅ _headers generálva (HSTS + biztonsági fejlécek)');
+
+  // security.txt — szabványos biztonsági kapcsolat-fájl (RFC 9116; a CF
+  // Security Center hiányolta). Kapcsolat: a support-oldal (nem személyes e-mail).
+  const swkDir = join(OUT_DIR, '.well-known');
+  mkdirSync(swkDir, { recursive: true });
+  const expires = new Date(Date.now() + 365 * 86400e3).toISOString();
+  writeFileSync(join(swkDir, 'security.txt'), `Contact: ${SITE.url}/support.html
+Expires: ${expires}
+Preferred-Languages: en, hu, es, de, fr
+Canonical: ${SITE.url}/.well-known/security.txt
+`, 'utf-8');
+  console.log('✅ .well-known/security.txt generálva');
+
   // 404.html — KRITIKUS SEO-elem: enélkül a Cloudflare Pages "egyoldalas app"
   // módban MINDEN ismeretlen címre a főoldalt adja 200-zal (soft-404, a Google
   // bünteti). Ha van 404.html a gyökérben, a Pages valódi 404-et szolgál ki.
