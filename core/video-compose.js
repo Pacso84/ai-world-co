@@ -88,6 +88,12 @@ ${lines.join('\n')}
 }
 
 function main() {
+  // KILL-SWITCH (user 2026-07-11): amíg agents.video.enabled false, élesben nem gyártunk
+  const FORCE = process.argv.includes('--force');
+  try {
+    const cfg = JSON.parse(readFileSync(join(ROOT, 'config.json'), 'utf-8'));
+    if (cfg.agents?.video?.enabled === false && !FORCE) { console.log('⏸️  Orbit-compose: KIKAPCSOLVA (fejlesztés alatt) — kihagyom.'); return; }
+  } catch { /* óvatos folytatás */ }
   const metaPath = join(VID_SRC, 'weekly.json');
   const mp3Path = join(VID_SRC, 'weekly.mp3');
   if (!existsSync(metaPath) || !existsSync(mp3Path)) { console.log('💤 Orbit-compose: nincs weekly.json/mp3 — nincs teendő.'); return; }
@@ -120,6 +126,22 @@ function main() {
       '-c:a', 'aac', '-b:a', '96k', '-movflags', '+faststart',
       join(OUT_DIR, outName)
     ], { cwd: VID_SRC, stdio: ['ignore', 'ignore', 'pipe'] });
+
+    // Többnyelvű VTT-feliratok (hu/es/de/fr) — a lejátszóban kapcsolhatók,
+    // a nem-angol oldalakon alapból BE (user-kérés 2026-07-11)
+    if (meta.sentences?.length) {
+      const vt = (ms) => {
+        const h = Math.floor(ms / 3600000), m = Math.floor(ms / 60000) % 60, s = Math.floor(ms / 1000) % 60, x = ms % 1000;
+        return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}.${String(x).padStart(3, '0')}`;
+      };
+      for (const lang of ['hu', 'es', 'de', 'fr']) {
+        const cues = meta.sentences.filter(x => x[lang]);
+        if (!cues.length) continue;
+        const body = cues.map((x, i) => `${i + 1}\n${vt(x.s)} --> ${vt(x.e)}\n${x[lang]}`).join('\n\n');
+        writeFileSync(join(OUT_DIR, `weekly-${meta.week}.${lang}.vtt`), `WEBVTT\n\n${body}\n`, 'utf-8');
+      }
+      console.log('   🌍 VTT-feliratok kiírva (hu/es/de/fr)');
+    }
 
     // poszter-kép a lejátszóhoz
     await sharp(boardPath).jpeg({ quality: 80 }).toFile(join(OUT_DIR, 'weekly-poster.jpg'));

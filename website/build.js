@@ -429,8 +429,16 @@ for (const l of SITE_LANGS) Object.assign(UI[l], UI_VID[l] || {});
 
 function videoBlock(a) {
   if (!VIDEO_META || VIDEO_META.slug !== a.slug) return '';
+  // Kapcsolható feliratok (hu/es/de/fr) — az oldal nyelvén alapból BE
+  const LANG_LABEL = { hu: 'Magyar', es: 'Español', de: 'Deutsch', fr: 'Français' };
+  const tracks = ['hu', 'es', 'de', 'fr']
+    .filter(l => VIDEO_META.sentences?.some(x => x[l]))
+    .map(l => `<track kind="subtitles" srclang="${l}" label="${LANG_LABEL[l]}" src="/assets/video/weekly-${VIDEO_META.week}.${l}.vtt"${l === LANG ? ' default' : ''}>`)
+    .join('\n      ');
   return `<div class="vid">
-    <video controls preload="metadata" poster="/assets/video/weekly-poster.jpg" src="/assets/video/weekly-${VIDEO_META.week}.mp4"></video>
+    <video controls preload="metadata" crossorigin="anonymous" poster="/assets/video/weekly-poster.jpg" src="/assets/video/weekly-${VIDEO_META.week}.mp4">
+      ${tracks}
+    </video>
     <p class="ai-disclosure">${escapeHtml(tr('vidNote'))}</p>
   </div>`;
 }

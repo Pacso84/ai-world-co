@@ -42,6 +42,12 @@ function isoWeek(d = new Date()) {
 }
 
 function guard() {
+  // KILL-SWITCH: amíg a config agents.video.enabled false, élesben NEM fut
+  // (user 2026-07-11: "ezen még dolgozunk, nem menjen élesbe"). --force = helyi teszt.
+  try {
+    const cfg = JSON.parse(readFileSync(join(ROOT, 'config.json'), 'utf-8'));
+    if (cfg.agents?.video?.enabled === false && !FORCE) { console.log('⏸️  Orbit-videó: KIKAPCSOLVA (fejlesztés alatt) — kihagyom.'); return false; }
+  } catch { /* config-hiba esetén óvatosan: futunk tovább a többi őrrel */ }
   if (FORCE) return true;
   if (new Date().getUTCDay() !== 0) { console.log('⏭️  Orbit-videó: nem vasárnap van — kihagyom.'); return false; }
   try {
@@ -165,9 +171,40 @@ async function main() {
   }
   console.log(`   🔊 Hang kész: weekly.mp3 | szó-időzítés: ${words.length} szó`);
 
-  // 3) Meta mentése (a compose + a build ebből dolgozik)
+  // 3) MONDAT-időzítések (a többnyelvű felirathoz): a szkriptet mondatokra
+  // bontjuk, és a szó-időzítések kurzorával megkapjuk a kezdet/vég időket.
+  const sentTexts = script.match(/[^.!?]+[.!?]+/g) || [script];
+  const sentences = [];
+  let cur = 0;
+  for (const st of sentTexts) {
+    const n = st.trim().split(/\s+/).length;
+    const from = Math.min(cur, words.length - 1);
+    const to = Math.min(cur + n - 1, words.length - 1);
+    if (words.length) sentences.push({ text: st.trim(), s: words[from].s, e: words[to].s + words[to].d });
+    cur += n;
+  }
+
+  // 4) Felirat-FORDÍTÁSOK (hu/es/de/fr) — user-kérés 2026-07-11: aki nem tud
+  // angolul, olvashassa. Számozott sorokként fordíttatjuk (1:1 megfeleltetés).
+  const LANG_NAMES = { hu: 'Hungarian', es: 'Spanish', de: 'German', fr: 'French' };
+  for (const [lang, langName] of Object.entries(LANG_NAMES)) {
+    try {
+      const numbered = sentences.map((x, i) => `${i + 1}. ${x.text}`).join('\n');
+      const tr = await ask(
+        `Translate these numbered subtitle lines into natural, spoken-style ${langName}. Return EXACTLY ${sentences.length} numbered lines, nothing else. Keep names (Orbit, AI World HQ, aiworldhq.com, company and product names) unchanged.\n\n${numbered}`,
+        { agentName: AGENT_NAME, systemPrompt: `You are a professional subtitle translator. Output only the numbered translated lines.`, maxTokens: 1500 });
+      if (!tr?.text) continue;
+      const lines = tr.text.split('\n').map(l => l.replace(/^\s*\d+[.)]\s*/, '').trim()).filter(Boolean);
+      if (lines.length === sentences.length) {
+        sentences.forEach((x, i) => { x[lang] = lines[i]; });
+        console.log(`   🌍 Felirat kész: ${lang}`);
+      } else console.log(`   ⚠️ Felirat kihagyva (${lang}): ${lines.length}/${sentences.length} sor`);
+    } catch (e) { console.log(`   ⚠️ Felirat-hiba (${lang}): ${e.message.slice(0, 50)}`); }
+  }
+
+  // 5) Meta mentése (a compose + a build ebből dolgozik)
   writeFileSync(join(OUT_DIR, 'weekly.json'), JSON.stringify({
-    week: isoWeek(), slug, title, script, voice: VOICE, words,
+    week: isoWeek(), slug, title, script, voice: VOICE, words, sentences,
     created_at: new Date().toISOString(), test_mode: !digest
   }, null, 2), 'utf-8');
 

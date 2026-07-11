@@ -253,8 +253,8 @@
         "provider": "google",
         "model": "gemini-2.5-flash"
       },
-      "enabled": true,
-      "comment": "Orbit heti video-bemondo: ~150 szavas beszelt szkript a heti digestbol (vasarnap), TTS: ingyenes Edge en-AU Natasha. Free-first."
+      "enabled": false,
+      "comment": "Orbit heti video-bemondo: ~150 szavas beszelt szkript a heti digestbol (vasarnap), TTS: ingyenes Edge en-AU Natasha. Free-first. enabled:false = FEJLESZTES ALATT (user 2026-07-11: 'nem menjen elesbe') — a felhoben kihagyja magat; helyi teszt --force-szal megy. Elesites: enabled:true."
     }
   },
   "providers": {
