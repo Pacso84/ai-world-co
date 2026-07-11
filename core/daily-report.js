@@ -24,6 +24,9 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
 const STATE_PATH = join(ROOT, 'memory', 'daily-report-state.json');
 const FORCE = process.argv.includes('--force');
+// Havi vész-stop a configból (ne legyen beégetve — user 2026-07-11: 80→40)
+let HARD_CAP = 40;
+try { HARD_CAP = Number(JSON.parse(readFileSync(join(ROOT, 'config.json'), 'utf-8')).limits?.monthly_budget_usd_hard_cap ?? HARD_CAP); } catch { /* marad az alap */ }
 
 function today() { return new Date().toISOString().slice(0, 10); }
 
@@ -122,7 +125,7 @@ async function main() {
     `📰 Új tartalom (24h): ${r.news} hír + ${r.guides} útmutató`,
     ...r.titles.map(t => `   • ${t.slice(0, 60)}`),
     `📘 Facebook-poszt: ${r.fbPosts}`,
-    `💰 Tegnap: $${r.spentYesterday.toFixed(2)} · e havi: $${r.spentMonth.toFixed(2)} / $80`,
+    `💰 Tegnap: $${r.spentYesterday.toFixed(2)} · e havi: $${r.spentMonth.toFixed(2)} / $${HARD_CAP}`,
     `🌍 Fordítás-hiány: ${r.missing} pár${r.bans ? ` · 🚦 kvóta-tiltás: ${r.bans}` : ''}`,
   ];
   if (r.pendingSources > 0) lines.push(`🔭 Jóváhagyásra váró forrás-javaslat: ${r.pendingSources} (írd: "mik a javaslatok?")`);

@@ -386,7 +386,7 @@
     "weekly_deep_articles": 1,
     "daily_api_cost_usd_max": 3,
     "monthly_budget_usd_target": 30,
-    "monthly_budget_usd_hard_cap": 80,
+    "monthly_budget_usd_hard_cap": 40,
     "_paid_strategy_comment": "ELV: a fizetős kulcsot (pl. Gemini paid) HASZNÁLJUK, amíg bírja; amikor eléri a saját rate/kvóta limitjét (429), a router AUTOMATIKUSAN a következő kulcsra vált (free pool: Cerebras/Groq/Mistral). NINCS napi dollár-plafon (a felhasználó sem tudja, meddig elég a csomag). A core/budget.js KÖVETI a költést (látható a 'mennyi a keret?' paranccsal), és a havi hard_cap a VÉGSŐ biztosíték egy elfutó számla ellen.",
     "_comment": "Ha eléri a hard_cap-et, az agentek leállnak és felhasználói jóváhagyás kell."
   },
@@ -403,6 +403,6 @@
     "hosting_supabase_cloudinary": "0",
     "domain_yearly_divided": "~1",
     "TOTAL_ESTIMATED": "$25-45/hó",
-    "WITHIN_BUDGET": "✅ (cél: $30, hard cap: $80)"
+    "WITHIN_BUDGET": "✅ (cél: $30, hard cap: $40 — user-döntés 2026-07-11)"
   }
 }
