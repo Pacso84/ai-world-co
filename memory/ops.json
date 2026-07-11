@@ -1,86 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t17836483766939",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-07-10T01:52:56.693Z",
-      "updated": "2026-07-10T01:52:56.860Z"
-    },
-    {
-      "id": "t178364837686290",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-10T01:52:56.862Z",
-      "updated": "2026-07-10T01:52:57.516Z"
-    },
-    {
-      "id": "t178364837751758",
-      "title": "Run translator",
-      "status": "done",
-      "agent": "translator",
-      "created": "2026-07-10T01:52:57.517Z",
-      "updated": "2026-07-10T01:52:57.732Z"
-    },
-    {
-      "id": "t17836483777340",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-07-10T01:52:57.734Z",
-      "updated": "2026-07-10T01:53:01.703Z"
-    },
-    {
-      "id": "t178368020486281",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-07-10T10:43:24.862Z",
-      "updated": "2026-07-10T10:43:35.705Z"
-    },
-    {
-      "id": "t178368021570723",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-07-10T10:43:35.707Z",
-      "updated": "2026-07-10T10:43:35.955Z"
-    },
-    {
-      "id": "t178368021595773",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-07-10T10:43:35.957Z",
-      "updated": "2026-07-10T10:43:38.102Z"
-    },
-    {
-      "id": "t17836802181044",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-10T10:43:38.104Z",
-      "updated": "2026-07-10T10:43:39.992Z"
-    },
-    {
-      "id": "t178368021999755",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-07-10T10:43:39.997Z",
-      "updated": "2026-07-10T10:45:03.538Z"
-    },
-    {
-      "id": "t17836803035555",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-10T10:45:03.555Z",
-      "updated": "2026-07-10T10:45:32.401Z"
-    },
-    {
       "id": "t178368033240342",
       "title": "Run ellenorzo",
       "status": "done",
@@ -479,25 +399,89 @@
       "agent": "publisher",
       "created": "2026-07-11T09:22:10.406Z",
       "updated": "2026-07-11T09:22:17.393Z"
+    },
+    {
+      "id": "t178378812339119",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-07-11T16:42:03.391Z",
+      "updated": "2026-07-11T16:42:12.812Z"
+    },
+    {
+      "id": "t178378813281440",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-07-11T16:42:12.814Z",
+      "updated": "2026-07-11T16:42:13.049Z"
+    },
+    {
+      "id": "t178378813305119",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-07-11T16:42:13.051Z",
+      "updated": "2026-07-11T16:42:13.255Z"
+    },
+    {
+      "id": "t178378813325731",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-11T16:42:13.257Z",
+      "updated": "2026-07-11T16:42:13.463Z"
+    },
+    {
+      "id": "t17837881334689",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-07-11T16:42:13.468Z",
+      "updated": "2026-07-11T16:42:13.714Z"
+    },
+    {
+      "id": "t178378813373350",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-11T16:42:13.733Z",
+      "updated": "2026-07-11T16:42:13.987Z"
+    },
+    {
+      "id": "t178378813398899",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-07-11T16:42:13.988Z",
+      "updated": "2026-07-11T16:42:14.206Z"
+    },
+    {
+      "id": "t178378813420856",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-11T16:42:14.208Z",
+      "updated": "2026-07-11T16:42:15.007Z"
+    },
+    {
+      "id": "t178378813500945",
+      "title": "Run translator",
+      "status": "done",
+      "agent": "translator",
+      "created": "2026-07-11T16:42:15.009Z",
+      "updated": "2026-07-11T16:42:15.318Z"
+    },
+    {
+      "id": "t178378813532037",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-07-11T16:42:15.320Z",
+      "updated": "2026-07-11T16:42:21.245Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178215489362449",
-      "level": "success",
-      "text": "10 új cikk publikálva (költség: $0.0074).",
-      "agent": "ceo",
-      "at": "2026-06-22T19:01:33.624Z",
-      "loud": false
-    },
-    {
-      "id": "n178224028223784",
-      "level": "info",
-      "text": "Pipeline lefutott — ma nem volt publikálható új tartalom.",
-      "agent": "ceo",
-      "at": "2026-06-23T18:44:42.237Z",
-      "loud": false
-    },
     {
       "id": "n178224068657824",
       "level": "info",
@@ -1281,27 +1265,25 @@
       "agent": "ceo",
       "at": "2026-07-11T09:22:17.419Z",
       "loud": false
+    },
+    {
+      "id": "n17837881360601",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). Our line-up is coherent and ready to publish, with a great mix of practical articles that showcase AI's everyday applications. I do note that some topics may be tech-heavy for new readers, so a friend",
+      "agent": "publisher",
+      "at": "2026-07-11T16:42:16.060Z",
+      "loud": false
+    },
+    {
+      "id": "n178378814126332",
+      "level": "info",
+      "text": "Pipeline lefutott — ma nem volt publikálható új tartalom.",
+      "agent": "ceo",
+      "at": "2026-07-11T16:42:21.263Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178339648532629",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Check out real-life AI prototypes from the Futures Lab.\" (?/10)",
-      "ref": "2026-06-29T02-29-25-986Z_google-ai-blog_Check_out_real-life_AI_prototypes_from_the_Futures.json",
-      "at": "2026-07-07T03:54:45.327Z"
-    },
-    {
-      "id": "m178339649249145",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Measuring the impact of learning with AI in Sierra Leone and beyond\" (?/10)",
-      "ref": "2026-06-29T02-29-25-986Z_google-deepmind_Measuring_the_impact_of_learning_with_AI_in_Sierra.json",
-      "at": "2026-07-07T03:54:52.491Z"
-    },
     {
       "id": "m178339649925234",
       "from": "ellenorzo",
@@ -2635,6 +2617,24 @@
       "text": "5 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
       "ref": null,
       "at": "2026-07-11T09:22:55.775Z"
+    },
+    {
+      "id": "m178378813497444",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 17 → 6/3/3 oszlop.",
+      "ref": "mobile",
+      "at": "2026-07-11T16:42:14.974Z"
+    },
+    {
+      "id": "m178378818404972",
+      "from": "social",
+      "to": "team",
+      "kind": "info",
+      "text": "5 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
+      "ref": null,
+      "at": "2026-07-11T16:43:04.049Z"
     }
   ]
 }
