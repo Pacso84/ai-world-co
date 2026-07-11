@@ -410,6 +410,40 @@ const UI_ABOUT = {
 };
 for (const l of SITE_LANGS) Object.assign(UI[l], UI_ABOUT[l] || {});
 
+// GYIK-blokk az útmutatók végén (2026-07-11) — a MEGLÉVŐ, már lefordított
+// tartalomból épül ($0 AI-költség): idő/eszköz templatelt válasz + az
+// "Mielőtt elkezded" és "Gyakori hibák" szekciók újracsomagolva. A Google
+// FAQPage-jelölést is kap → kinyíló kérdések a találati listában.
+const UI_FAQ = {
+  en: { faqTitle: 'Quick questions', faqQTime: 'How long does this take?', faqATime: 'About {min} minutes — the guide has {steps} steps, and you can tick each one off as you go.',
+        faqQTool: 'Which tool do I need?', faqATool: 'This guide uses {tool} — but the approach works very similarly in other AI assistants.',
+        faqQPrep: 'Do I need to prepare anything?', faqQMist: 'What mistakes should I avoid?' },
+  hu: { faqTitle: 'Gyors kérdések', faqQTime: 'Mennyi időt vesz igénybe?', faqATime: 'Kb. {min} perc — az útmutató {steps} lépésből áll, és mindegyiket ki tudod pipálni, ahogy haladsz.',
+        faqQTool: 'Milyen eszköz kell hozzá?', faqATool: 'Ez az útmutató a(z) {tool} eszközt használja — de a módszer nagyon hasonlóan működik más AI-asszisztensekben is.',
+        faqQPrep: 'Kell valamit előkészítenem?', faqQMist: 'Milyen hibákat kerüljek el?' },
+  es: { faqTitle: 'Preguntas rápidas', faqQTime: '¿Cuánto tiempo lleva?', faqATime: 'Unos {min} minutos — la guía tiene {steps} pasos y puedes ir marcándolos a medida que avanzas.',
+        faqQTool: '¿Qué herramienta necesito?', faqATool: 'Esta guía usa {tool} — pero el método funciona de forma muy parecida en otros asistentes de IA.',
+        faqQPrep: '¿Necesito preparar algo?', faqQMist: '¿Qué errores debo evitar?' },
+  de: { faqTitle: 'Schnelle Fragen', faqQTime: 'Wie lange dauert das?', faqATime: 'Etwa {min} Minuten — die Anleitung hat {steps} Schritte, und du kannst jeden beim Durcharbeiten abhaken.',
+        faqQTool: 'Welches Tool brauche ich?', faqATool: 'Diese Anleitung nutzt {tool} — aber die Methode funktioniert in anderen KI-Assistenten sehr ähnlich.',
+        faqQPrep: 'Muss ich etwas vorbereiten?', faqQMist: 'Welche Fehler sollte ich vermeiden?' },
+  fr: { faqTitle: 'Questions rapides', faqQTime: 'Combien de temps ça prend ?', faqATime: 'Environ {min} minutes — le guide compte {steps} étapes, que vous pouvez cocher au fur et à mesure.',
+        faqQTool: 'De quel outil ai-je besoin ?', faqATool: 'Ce guide utilise {tool} — mais la méthode fonctionne de façon très similaire dans d’autres assistants IA.',
+        faqQPrep: 'Dois-je préparer quelque chose ?', faqQMist: 'Quelles erreurs éviter ?' }
+};
+for (const l of SITE_LANGS) Object.assign(UI[l], UI_FAQ[l] || {});
+
+// "Minden hír" archívum-oldal feliratai (2026-07-11) — a régi hírek eddig
+// csak a keresőből voltak elérhetők; az archívum lapozható + SEO-barát.
+const UI_ARCH = {
+  en: { archTitle: 'All news', archTag: 'Every story we have published — newest first, grouped by month.', archNav: 'Browse all news' },
+  hu: { archTitle: 'Minden hír', archTag: 'Az összes eddig megjelent hírünk — a legfrissebbtől, hónapok szerint.', archNav: 'Az összes hír böngészése' },
+  es: { archTitle: 'Todas las noticias', archTag: 'Todas las historias que hemos publicado — las más recientes primero, agrupadas por mes.', archNav: 'Ver todas las noticias' },
+  de: { archTitle: 'Alle News', archTag: 'Alle bisher veröffentlichten Meldungen — neueste zuerst, nach Monaten gruppiert.', archNav: 'Alle News durchstöbern' },
+  fr: { archTitle: 'Toutes les actus', archTag: 'Toutes nos publications — les plus récentes d’abord, groupées par mois.', archNav: 'Parcourir toutes les actus' }
+};
+for (const l of SITE_LANGS) Object.assign(UI[l], UI_ARCH[l] || {});
+
 // A varázsló kérdései + eredményei nyelvenként. A pontozás nyelvfüggetlen
 // (s: eszköz→pont), a szöveg lokalizált. SZÁNDÉKOSAN óvatos megfogalmazás:
 // nincs ár, nincs konkrét funkció-ígéret (az változik) — csak irány.
@@ -1024,7 +1058,8 @@ function buildIndex(articles) {
     description: SITE.description,
     ogImage: articles[0]?.image ? `${SITE.url}/assets/images/${articles[0].image}` : '',
     jsonld: { '@context': 'https://schema.org', '@type': 'WebSite', name: SITE.name, url: SITE.url, description: SITE.description },
-    bodyContent: featuredHtml + guidesCta + grid,
+    bodyContent: featuredHtml + guidesCta + grid
+      + `<p class="start__wizcta"><a href="archive.html">🗂️ ${escapeHtml(tr('archNav'))} →</a></p>`,
     pagePath: ''
   });
 }
@@ -1463,6 +1498,7 @@ function buildGuidePage(a) {
   const artKeys = stepHeadings.map((h, i) => stepArtKey(h, i, artSet));
 
   let stepNo = 0;
+  let faqPrepBody = '', faqMistBody = '';   // GYIK-hoz: meglévő szekciók újracsomagolva
   const blocks = sections.map(s => {
     const t = s.title;
     if (STEP_RX.test(t)) {
@@ -1474,10 +1510,14 @@ function buildGuidePage(a) {
           ${stepArtHtml(artKeys[stepNo - 1])}
         </div></div>`;
     }
-    if (/before you start|before we start|prerequisit|miel[őo]tt elkezd|kezd[ée]s el[őo]tt|antes de (?:empezar|comenzar)|bevor (?:du|sie) (?:loslegst|beginn)|vorbereitung|avant de commencer/i.test(t))
+    if (/before you start|before we start|prerequisit|miel[őo]tt elkezd|kezd[ée]s el[őo]tt|antes de (?:empezar|comenzar)|bevor (?:du|sie) (?:loslegst|beginn)|vorbereitung|avant de commencer/i.test(t)) {
+      faqPrepBody = s.body;
       return `<div class="g-prereq"><div class="g-block__h">✅ ${escapeHtml(t)}</div>${guideSectionHtml(s.body)}</div>`;
-    if (/common mistakes|watch out|pitfalls|gyakori hib|err(?:ores|eurs) (?:comunes|frecuentes|courantes|fr[ée]quentes)|h[äa]ufige fehler|pi[èe]ges/i.test(t))
+    }
+    if (/common mistakes|watch out|pitfalls|gyakori hib|err(?:ores|eurs) (?:comunes|frecuentes|courantes|fr[ée]quentes)|h[äa]ufige fehler|pi[èe]ges/i.test(t)) {
+      faqMistBody = s.body;
       return `<div class="g-mistakes"><div class="g-block__h">⚠️ ${escapeHtml(t)}</div>${guideSectionHtml(s.body)}</div>`;
+    }
     if (/what this means for you|mit jelent (?:ez )?(?:neked|ez neked)|mi ez neked|qu[ée] significa (?:esto )?para ti|was (?:das|dies) f[üu]r (?:dich|sie) bedeutet|ce que cela signifie pour (?:vous|toi)/i.test(t))
       return `<aside class="impact"><div class="impact__label">${escapeHtml(t)}</div>${guideSectionHtml(s.body)}</aside>`;
     if (/try it now|your turn|next step/i.test(t))
@@ -1497,6 +1537,24 @@ function buildGuidePage(a) {
   const levelChip = a.level ? `<span class="g-level">${escapeHtml(tr('lvl_' + a.level) || a.level)}</span>` : '';
   const stepsTotal = stepHeadings.length;   // többnyelvű STEP_RX-ből (régen csak "Step N"-t értett)
 
+  // GYIK-blokk (2026-07-11): 2 templatelt kérdés (idő, eszköz) + max 2 a már
+  // MEGLÉVŐ (lefordított) szekciókból — $0 AI-költség, Google FAQ-jelöléssel.
+  const faqs = [];
+  if (a.readTime && stepsTotal) faqs.push({ q: tr('faqQTime'), aHtml: `<p>${escapeHtml(tr('faqATime').replace('{min}', a.readTime).replace('{steps}', stepsTotal))}</p>` });
+  const faqTool = [a.company, a.tool].filter(Boolean).join(' ');
+  if (faqTool) faqs.push({ q: tr('faqQTool'), aHtml: `<p>${escapeHtml(tr('faqATool').replace('{tool}', faqTool))}</p>` });
+  if (faqPrepBody) faqs.push({ q: tr('faqQPrep'), aHtml: guideSectionHtml(faqPrepBody) });
+  if (faqMistBody) faqs.push({ q: tr('faqQMist'), aHtml: guideSectionHtml(faqMistBody) });
+  const faqHtml = faqs.length >= 2 ? `<section class="g-faq"><h2 class="g-faq__h">❓ ${tr('faqTitle')}</h2>
+    ${faqs.map(f => `<details class="g-faq__item"><summary>${escapeHtml(f.q)}</summary><div class="g-faq__a">${f.aHtml}</div></details>`).join('\n')}</section>` : '';
+  const faqSchema = faqs.length >= 2 ? {
+    '@context': 'https://schema.org', '@type': 'FAQPage',
+    mainEntity: faqs.map(f => ({
+      '@type': 'Question', name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.aHtml.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 400) }
+    }))
+  } : null;
+
   const body = `<article class="article guide" style="--gc:${GUIDE_COVER_COLORS[a.company] || '#4f7a86'}">
     ${guideCoverHtml(a, 'article__cover')}
     <div class="article__head">
@@ -1513,6 +1571,7 @@ function buildGuidePage(a) {
     ${introHtml ? `<div class="g-intro">${introHtml}</div>` : ''}
     ${blocksLinked ? `<p class="g-steptip">💡 <strong>${tr('stepTipLabel')}:</strong> ${escapeHtml(tr('stepTip'))}</p>` : ''}
     <div class="g-steps">${blocksLinked}</div>
+    ${faqHtml}
     ${xrefBox(a)}
     ${relatedBox(a)}
     <div class="article__foot">
@@ -1535,7 +1594,10 @@ function buildGuidePage(a) {
   return pageShell({
     title: `${a.title} — ${SITE.name}`,
     description: a.seoDescription || a.subtitle,
-    keywords: a.seoKeywords, ogImage, jsonld, pagePath: `article/${a.slug}.html`,
+    keywords: a.seoKeywords, ogImage,
+    // HowTo + FAQPage együtt (a JSON-LD tömböt is érti a Google)
+    jsonld: faqSchema ? [jsonld, faqSchema] : jsonld,
+    pagePath: `article/${a.slug}.html`,
     bodyContent: body, isArticle: true
   });
 }
@@ -1748,6 +1810,41 @@ function buildGlossaryPage() {
     title: `${tr('glossTitle')} — ${SITE.name}`,
     description: tr('glossTag'),
     noIntro: true, pagePath: 'glossary.html', bodyContent: body
+  });
+}
+
+// ===================================================================
+// "MINDEN HÍR" ARCHÍVUM (2026-07-11) — a régi hírek eddig csak keresőből
+// voltak elérhetők; itt hónapok szerint, kompakt listában mind megvan.
+// ===================================================================
+function buildArchivePage(loc) {
+  const news = loc.filter(a => !a.isGuide)
+    .sort((a, b) => (b.publishedAt || '').localeCompare(a.publishedAt || ''));
+  const byMonth = new Map();
+  for (const a of news) {
+    const key = (a.publishedAt || '').slice(0, 7) || '????-??';
+    if (!byMonth.has(key)) {
+      const d = new Date((a.publishedAt || Date.now()));
+      byMonth.set(key, { label: d.toLocaleDateString(DATE_LOCALES[LANG] || 'en-AU', { year: 'numeric', month: 'long' }), items: [] });
+    }
+    byMonth.get(key).items.push(a);
+  }
+  const groups = [...byMonth.values()].map(g => `<section class="arch__month"><h2 class="arch__mh">${escapeHtml(g.label)}</h2>
+    ${g.items.map(a => {
+      const cat = CATEGORIES[a.category] || CATEGORIES.other;
+      const day = a.publishedAt ? new Date(a.publishedAt).toLocaleDateString(DATE_LOCALES[LANG] || 'en-AU', { day: 'numeric', month: 'short' }) : '';
+      return `<a class="arch__row" href="article/${a.slug}.html"><span class="arch__d">${escapeHtml(day)}</span><span class="arch__i">${cat.icon}</span><span class="arch__t">${escapeHtml(a.title)}</span></a>`;
+    }).join('\n')}</section>`).join('\n');
+  const body = `<section class="guides-hero">
+      <p class="intro__kicker">🗂️</p>
+      <h1 class="guides-hero__title">${escapeHtml(tr('archTitle'))}</h1>
+      <p class="guides-hero__tag">${escapeHtml(tr('archTag'))} (${news.length})</p>
+    </section>
+    <div class="arch">${groups}</div>`;
+  return pageShell({
+    title: `${tr('archTitle')} — ${SITE.name}`,
+    description: tr('archTag'),
+    noIntro: true, pagePath: 'archive.html', bodyContent: body
   });
 }
 
@@ -1967,6 +2064,7 @@ function main() {
     writeFileSync(join(outBase, 'glossary.html'), buildGlossaryPage(), 'utf-8');   // AI-kisszótár
     writeFileSync(join(outBase, 'wizard.html'), buildWizardPage(), 'utf-8');       // Melyik AI való neked?
     writeFileSync(join(outBase, 'about.html'), buildAboutPage(), 'utf-8');         // Rólunk (bizalmi oldal)
+    writeFileSync(join(outBase, 'archive.html'), buildArchivePage(loc), 'utf-8');  // Minden hír (archívum)
     writeFileSync(join(outBase, 'feed.xml'), feedXml(loc, lang), 'utf-8');   // nyelvenkénti RSS
     // Kereső-index (villámkereső a navbarban): cím + alcím + márka + slug
     const searchIndex = loc.map(a => ({
@@ -1990,6 +2088,7 @@ function main() {
     sitemapUrls.push({ loc: `${SITE.url}${lp}/glossary.html`, date: today });
     sitemapUrls.push({ loc: `${SITE.url}${lp}/wizard.html`, date: today });
     sitemapUrls.push({ loc: `${SITE.url}${lp}/about.html`, date: today });
+    sitemapUrls.push({ loc: `${SITE.url}${lp}/archive.html`, date: today });
     for (const a of loc) sitemapUrls.push({ loc: `${SITE.url}${lp}/article/${a.slug}.html`, date: (a.publishedAt || '').slice(0, 10) || today });
 
     console.log(`✅ [${lang}] ${loc.length + 3} oldal generálva (${outBase === OUT_DIR ? 'gyökér' : lang + '/'})`);
