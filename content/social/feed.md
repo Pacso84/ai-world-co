@@ -1,6 +1,99 @@
 # AI World Co. — közösségi posztok
 
-*Generálva: 2026-07-10T10:50:50.597Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+*Generálva: 2026-07-11T01:44:46.713Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## Memora: A Harmonic Memory Representation Balancing Abstraction and Specificity
+**🔗 https://aiworldhq.com/article/how-ai-can-remember-your-conversations-without-getting-confu.html**
+
+**Facebook:**
+Tired of AI assistants asking you to repeat yourself? Learn how a new memory tool keeps the context fresh so you can get things done faster. https://aiworldhq.com/article/how-ai-can-remember-your-conversations-without-getting-confu.html #AIMemory #Productivity
+
+**Instagram:**
+Never repeat yourself to your AI again.
+A simple guide shows how balanced memory lets assistants keep track of your chat, helping you finish tasks without confusion.
+#AIMemory
+#Productivity
+#EverydayAI
+Link in bio.
+
+*Kép-ötlet: A clean illustration of a chat bubble merging into a subtle brain-shaped outline, suggesting memory linking.*
+
+---
+
+## Pair Nova 2 Lite with Claude for cost-optimized document processing
+**🔗 https://aiworldhq.com/article/how-to-turn-scanned-documents-into-searchable-files-with-ai.html**
+
+**Facebook:**
+Tired of hunting through old papers? Turn them into searchable PDFs with just your phone and a free AI assistant – quick, cheap and tidy. https://aiworldhq.com/article/how-to-turn-scanned-documents-into-searchable-files-with-ai.html #productivity #AItools
+
+**Instagram:**
+Turn your shoebox of notes into searchable files.
+Snap a photo, let the AI read the text and save it as a searchable PDF – no typing needed.
+#AItools
+#productivity
+#documentScanning
+Link in bio.
+
+*Kép-ötlet: Hands holding a phone over a stack of old papers, with a subtle digital overlay suggesting searchable text.*
+
+---
+
+## Build an agentic AI healthcare claims pipeline with Amazon Bedrock and AWS HealthLake
+**🔗 https://aiworldhq.com/article/how-to-turn-your-meeting-notes-into-action-plans-with-ai.html**
+
+**Facebook:**
+Swamped with health‑claims paperwork? Learn how AI can automate the whole process, so you spend less time on admin and more on patients. https://aiworldhq.com/article/how-to-turn-your-meeting-notes-into-action-plans-with-ai.html #HealthTech #AI
+
+**Instagram:**
+Turn claim paperwork into a smooth, automated flow.
+A step‑by‑step guide shows how Amazon Bedrock and AWS HealthLake can build an AI pipeline that checks, validates and settles health claims faster – less admin, more care.
+#HealthAI
+#ClaimsAutomation
+#AWS
+#AIForGood
+#Australia
+Link in bio.
+
+*Kép-ötlet: A tidy office desk featuring a laptop displaying a simple flowchart beside a stethoscope.*
+
+---
+
+## SkillOpt: Agent skills as trainable parameters
+**🔗 https://aiworldhq.com/article/turning-ai-agent-skills-into-trainable-parameters-with-skill.html**
+
+**Facebook:**
+Tired of re‑writing prompts for your AI helper? SkillOpt lets you fine‑tune its habits like turning a knob, so it writes emails or manages your calendar just the way you like. https://aiworldhq.com/article/turning-ai-agent-skills-into-trainable-parameters-with-skill.html #AIproductivity #SkillOpt
+
+**Instagram:**
+Give your AI assistant a personal touch
+With SkillOpt you can adjust its skills as simple settings, no need to re‑train the whole model. It learns how you prefer to work, saving you time.
+#agentAI
+#AIproductivity
+#SkillOpt
+Link in bio.
+
+*Kép-ötlet: A close‑up of a hand turning a small knob on a sleek device, symbolising easy tuning of AI skills.*
+
+---
+
+## Simplify multi-account access to Amazon Bedrock models with managed entitlements
+**🔗 https://aiworldhq.com/article/how-to-share-amazon-bedrock-ai-models-across-your-organisati.html**
+
+**Facebook:**
+Need a simple way for every team to use the same AI models? Managed entitlements let you share Amazon Bedrock models across your organisation without the admin hassle. Find out how to set it up. https://aiworldhq.com/article/how-to-share-amazon-bedrock-ai-models-across-your-organisati.html #AWS #Productivity
+
+**Instagram:**
+Share AI models in your team with just a few clicks
+Centralise Bedrock subscriptions so each group gets secure, easy access – no more licence juggling.
+#AmazonBedrock
+#ManagedEntitlements
+#AIProductivity
+#CloudAI
+Link in bio.
+
+*Kép-ötlet: A clean diagram showing several department icons linked to a single cloud icon labelled 'Bedrock'.*
 
 ---
 

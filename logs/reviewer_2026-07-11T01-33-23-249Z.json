@@ -1,0 +1,27 @@
+{
+  "started_at": "2026-07-11T01:33:10.799Z",
+  "total": 2,
+  "passed": 2,
+  "failed": 0,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.0083626,
+  "by_article": [
+    {
+      "writer": "WRITER_GUIDE_ask-le-chat-to-explain-a-news-article-like-you-re-12-years-o.json",
+      "article": "ARTICLE_GUIDE_ask-le-chat-to-explain-a-news-article-like-you-re-12-years-o.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0044452
+    },
+    {
+      "writer": "WRITER_GUIDE_turn-your-messy-meeting-notes-into-a-polished-report-with-le.json",
+      "article": "ARTICLE_GUIDE_turn-your-messy-meeting-notes-into-a-polished-report-with-le.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0039174
+    }
+  ],
+  "finished_at": "2026-07-11T01:33:23.249Z",
+  "duration_seconds": 12.45
+}

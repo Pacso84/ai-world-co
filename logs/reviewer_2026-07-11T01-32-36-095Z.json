@@ -1,0 +1,55 @@
+{
+  "started_at": "2026-07-11T01:31:51.913Z",
+  "total": 6,
+  "passed": 4,
+  "failed": 2,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.026649600000000002,
+  "by_article": [
+    {
+      "writer": "WRITER_GUIDE_create-a-personalized-workout-routine-with-deepseek-s-multil.json",
+      "article": "ARTICLE_GUIDE_create-a-personalized-workout-routine-with-deepseek-s-multil.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0044343
+    },
+    {
+      "writer": "WRITER_GUIDE_draft-a-simple-legal-disclaimer-text-with-deepseek-s-chat.json",
+      "rejected": "REJECTED_GUIDE_draft-a-simple-legal-disclaimer-text-with-deepseek-s-chat.json",
+      "decision": "FAIL",
+      "score": 3,
+      "cost_usd": 0.0043486
+    },
+    {
+      "writer": "WRITER_GUIDE_generate-spreadsheet-formulas-for-common-calculations-using-.json",
+      "article": "ARTICLE_GUIDE_generate-spreadsheet-formulas-for-common-calculations-using-.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0044263
+    },
+    {
+      "writer": "WRITER_GUIDE_how-to-use-le-chat-to-translate-a-whole-webpage-in-one-click.json",
+      "article": "ARTICLE_GUIDE_how-to-use-le-chat-to-translate-a-whole-webpage-in-one-click.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.0043836000000000005
+    },
+    {
+      "writer": "WRITER_GUIDE_how-to-use-openai-gpt-5-6-in-snowflake-cortex-ai-for-data-in.json",
+      "article": "ARTICLE_GUIDE_how-to-use-openai-gpt-5-6-in-snowflake-cortex-ai-for-data-in.json",
+      "decision": "PASS",
+      "score": 7,
+      "cost_usd": 0.0045007
+    },
+    {
+      "writer": "WRITER_GUIDE_set-up-a-customer-faq-chatbot-using-deepseek-on-your-website.json",
+      "rejected": "REJECTED_GUIDE_set-up-a-customer-faq-chatbot-using-deepseek-on-your-website.json",
+      "decision": "FAIL",
+      "score": 6,
+      "cost_usd": 0.0045561
+    }
+  ],
+  "finished_at": "2026-07-11T01:32:36.095Z",
+  "duration_seconds": 44.182
+}
