@@ -90,3 +90,29 @@ translation pipeline — keep them EXACTLY:
 - The ENTIRE example must live in ONE paragraph, on the SAME line as (or immediately after) the `💬 Example:` marker.
 - NEVER indent continuation lines under a 💬 example — indented lines render as a broken code box on the website.
 - If the example output has multiple items, write them as a single flowing sentence ("…Maria finalises the budget by Friday; John drafts the comms; Sarah books the follow-up.") instead of an indented bullet list.
+
+## 7. Tool naming + official links (brand-chip rules — added 2026-07-12)
+
+The `tool` field is shown on the site as a BRAND CHIP (tile header + guide badge)
+and is NEVER translated. Therefore:
+
+- `tool` must be the SHORTEST OFFICIAL PRODUCT NAME users recognise:
+  ChatGPT, Copilot, Gemini, Claude, Le Chat, Alexa+, Qwen, Hugging Face, ChatRTX.
+- NEVER use: generic feature/technology phrases ("Reserved Capacity",
+  "AI-powered assistants"), sub-feature suffixes ("Claude Projects" → Claude;
+  "Gemini in Workspace" → Gemini; "ChatGPT API" → ChatGPT), parentheses
+  ("Le Chat (Mistral)" → Le Chat), company prefixes when the section already
+  shows the company ("Microsoft Copilot" → Copilot; "NVIDIA ChatRTX" → ChatRTX),
+  or comma lists. Exception: names that are ONLY official in full form
+  (GitHub Copilot, Meta AI, Apple Intelligence) stay as-is.
+- If there is no single clear product, leave `tool` EMPTY — the site then shows
+  the company name (or a localised "For everyone" label).
+
+Official links (website/tool-links.json):
+
+- Every guide automatically gets an "Official site" button: tool link first,
+  company link as fallback. INVENTED URLs are STRICTLY FORBIDDEN — only
+  verified official homepages go into the map.
+- New tool without any link? The daily Telegram report flags it
+  ("🔗 Hivatalos link nélküli új eszköz") — the map is extended with ONE line.
+  Tools with no known official page go on the `ignore` list instead.
