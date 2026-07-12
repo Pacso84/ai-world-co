@@ -102,6 +102,30 @@ function collect() {
     }
   }
 
+  // ÚJ eszköz/cég HIVATALOS LINK nélkül (2026-07-12, "model-bővítés legyen
+  // automatikus"): ha egy guide tool-jához ÉS cégéhez sincs link a térképben,
+  // a gomb nem jelenik meg — ilyenkor itt szólunk, hogy 1 sor bővítés kell.
+  let missingLinks = [];
+  try {
+    const tl = JSON.parse(readFileSync(join(ROOT, 'website', 'tool-links.json'), 'utf-8'));
+    const seen = new Set();
+    for (const f of readdirSync(artDir).filter(x => x.endsWith('.json'))) {
+      try {
+        const d = JSON.parse(readFileSync(join(artDir, f), 'utf-8'));
+        if (d._meta?.type !== 'guide') continue;
+        const md = d.article_markdown || '';
+        const strip = (s) => (s || '').trim().replace(/^["']+|["']+$/g, '').trim();
+        const tool = strip(d._meta?.tool || (md.match(/^tool:\s*(.*)$/m) || [])[1]);
+        const comp = strip(d._meta?.company || (md.match(/^company:\s*(.*)$/m) || [])[1]);
+        if ((tl.ignore || []).includes(tool) || (tl.ignore || []).includes(comp)) continue;
+        if (!tl.tools[tool] && !tl.companies[comp]) {
+          const key = tool || comp;
+          if (key && !seen.has(key)) { seen.add(key); missingLinks.push(key); }
+        }
+      } catch { /* skip */ }
+    }
+  } catch { /* nincs térkép-fájl */ }
+
   // Aktív kvóta-tiltások + várólistás forrás-javaslatok
   let bans = 0, pendingSources = 0;
   try {
@@ -112,7 +136,7 @@ function collect() {
     pendingSources = (JSON.parse(readFileSync(join(ROOT, 'agents', 'source-scout', 'discovered-sources.json'), 'utf-8')).discovered_sources || []).length;
   } catch { /* skip */ }
 
-  return { news, guides, titles, fbPosts, spentYesterday, spentMonth, missing, bans, pendingSources };
+  return { news, guides, titles, fbPosts, spentYesterday, spentMonth, missing, bans, pendingSources, missingLinks };
 }
 
 async function main() {
@@ -129,6 +153,7 @@ async function main() {
     `🌍 Fordítás-hiány: ${r.missing} pár${r.bans ? ` · 🚦 kvóta-tiltás: ${r.bans}` : ''}`,
   ];
   if (r.pendingSources > 0) lines.push(`🔭 Jóváhagyásra váró forrás-javaslat: ${r.pendingSources} (írd: "mik a javaslatok?")`);
+  if (r.missingLinks?.length) lines.push(`🔗 Hivatalos link nélküli új eszköz: ${r.missingLinks.join(', ')} — a fejlesztő 1 sorral pótolja (tool-links.json)`);
   lines.push(``, `Minden megy magától. ✅`);
 
   await sendMessage(lines.join('\n'));

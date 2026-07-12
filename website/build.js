@@ -410,6 +410,25 @@ const UI_ABOUT = {
 };
 for (const l of SITE_LANGS) Object.assign(UI[l], UI_ABOUT[l] || {});
 
+// HIVATALOS ELÉRHETŐSÉGEK (2026-07-12, user: "ha már van útmutatója, legyen
+// elérhetősége is") — CSAK stabil, hivatalos főoldalak; ahol nincs publikus
+// oldal (pl. kutatási projekt), ott nincs link. Kitalált URL TILOS.
+// A térkép KÖZÖS fájlban (website/tool-links.json) — a napi jelentés is innen
+// olvassa, így az új, link nélküli eszközről a Főnök magától szól Telegramon.
+let TOOL_LINKS = {}, COMPANY_LINKS = {};
+try {
+  const tl = JSON.parse(readFileSync(join(__dirname, 'tool-links.json'), 'utf-8'));
+  TOOL_LINKS = tl.tools || {}; COMPANY_LINKS = tl.companies || {};
+} catch { /* térkép nélkül nincs gomb — a build attól még fut */ }
+const UI_OFFICIAL = {
+  en: { officialSite: 'Official site', officialRow: 'Official sites' },
+  hu: { officialSite: 'Hivatalos oldal', officialRow: 'Hivatalos oldalak' },
+  es: { officialSite: 'Sitio oficial', officialRow: 'Sitios oficiales' },
+  de: { officialSite: 'Offizielle Seite', officialRow: 'Offizielle Seiten' },
+  fr: { officialSite: 'Site officiel', officialRow: 'Sites officiels' }
+};
+for (const l of SITE_LANGS) Object.assign(UI[l], UI_OFFICIAL[l] || {});
+
 // Orbit heti videó (2026-07-11): ha van friss weekly.json, a digest-cikk
 // tetejére videó-lejátszó kerül (a mp4-et a core/video-compose.js gyártja).
 let VIDEO_META = null;
@@ -1210,9 +1229,18 @@ function buildToolsPage(companyGuides, counts) {
   const brandRow = companies.length ? `<section class="brandpick">
       <p class="section-note">${tr('pickTool')}</p>
       <div class="brandtiles">${companies.map(brandTile).join('')}</div></section>` : '';
+  // Hivatalos linkek a szekció fejléce alatt (2026-07-12): az adott cég
+  // eszközeinek hivatalos oldalai; ÚJ eszköznél automatikusan a cég oldala.
+  const officialRow = (c) => {
+    const tools = [...new Set(groups[c].map(g => g.tool).filter(Boolean))];
+    const chips = tools.filter(t => TOOL_LINKS[t])
+      .map(t => `<a href="${TOOL_LINKS[t]}" target="_blank" rel="noopener">${escapeHtml(t)} ↗</a>`);
+    if (COMPANY_LINKS[c]) chips.push(`<a href="${COMPANY_LINKS[c]}" target="_blank" rel="noopener">${escapeHtml(c)} ↗</a>`);
+    return chips.length ? `<p class="official-row"><span class="official-row__l">${tr('officialRow')}:</span> ${chips.join(' ')}</p>` : '';
+  };
   const companySection = (c) => `<section class="grid-section" id="c-${companySlug(c)}">
       <div class="section-head"><span class="pill">${COMPANY_ICONS[c] || '🤖'} ${escapeHtml(c)}</span>
-        <h2 class="section-title">${tr('companyGuides').replace('{c}', escapeHtml(c))}</h2></div>
+        <h2 class="section-title">${tr('companyGuides').replace('{c}', escapeHtml(c))}</h2>${officialRow(c)}</div>
       <div class="gtiles">${groups[c].map(guideTile).join('')}</div></section>`;
 
   const header = `<section class="guides-hero">
@@ -1569,6 +1597,11 @@ function buildGuidePage(a) {
 
   const toolChip = (a.company || a.tool)
     ? `<span class="g-tool">📘 ${escapeHtml([a.company, a.tool].filter(Boolean).join(' · '))}</span>` : '';
+  // Hivatalos oldal gomb (2026-07-12): eszköz-link, új eszköznél AUTOMATIKUSAN
+  // a cég hivatalos oldala (kitalált URL soha)
+  const officialUrl = TOOL_LINKS[a.tool] || COMPANY_LINKS[a.company] || '';
+  const officialBtn = officialUrl
+    ? `<a class="g-official" href="${officialUrl}" target="_blank" rel="noopener">↗ ${escapeHtml(a.tool || a.company)} · ${tr('officialSite')}</a>` : '';
   // Szint-címke fordítva (lvl_beginner/intermediate/advanced — mint a csempéken)
   const levelChip = a.level ? `<span class="g-level">${escapeHtml(tr('lvl_' + a.level) || a.level)}</span>` : '';
   const stepsTotal = stepHeadings.length;   // többnyelvű STEP_RX-ből (régen csak "Step N"-t értett)
@@ -1596,7 +1629,7 @@ function buildGuidePage(a) {
     <div class="article__head">
       <div class="article__badges">
         <span class="tag ${cat.cls}">📘 ${tr('stepByStep')}</span>
-        ${toolChip}${levelChip}
+        ${toolChip}${officialBtn}${levelChip}
         <span class="aud ${aud.cls}">${aud.icon} ${tr(aud.key)}</span>
       </div>
       <h1 class="article__title">${escapeHtml(a.title)}</h1>
