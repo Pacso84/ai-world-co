@@ -111,7 +111,8 @@ Say guide_worthy = FALSE (there is nothing for a normal user to "do") for:
 - anything where you would have to INVENT or GENERALISE a feature that the article does not concretely describe.
 
 If unsure, choose FALSE. Output ONLY JSON (no prose, no code fence):
-{"guide_worthy":true|false,"reason":"one short sentence","title":"How to ... (only if worthy)","company":"OpenAI or empty","tool":"ChatGPT or empty","angle":"one sentence on what to focus on","audience":"personal|business|both","level":"beginner|intermediate"}`;
+{"guide_worthy":true|false,"reason":"one short sentence","title":"How to ... (only if worthy)","company":"OpenAI or empty","tool":"ChatGPT or empty","angle":"one sentence on what to focus on","audience":"personal|business|both","level":"beginner|intermediate"}
+IMPORTANT about "tool": it must be an OFFICIAL PRODUCT/BRAND NAME users recognise (ChatGPT, Copilot, Gemini, Claude, Le Chat, Alexa+). NEVER a generic feature or technology phrase (e.g. "Reserved Capacity", "AI Video Super-Resolution", "AI-powered assistants") — those are NOT tools; leave "tool" EMPTY instead. (The site shows this as a brand chip — a non-brand English phrase looks broken on translated pages. 2026-07-12)`;
 
 async function classify(news) {
   const md = news.data.article_markdown || '';
