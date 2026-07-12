@@ -1,86 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178376136781617",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-07-11T09:16:07.816Z",
-      "updated": "2026-07-11T09:16:18.171Z"
-    },
-    {
-      "id": "t178376137817339",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-07-11T09:16:18.173Z",
-      "updated": "2026-07-11T09:16:18.426Z"
-    },
-    {
-      "id": "t178376137842871",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-07-11T09:16:18.428Z",
-      "updated": "2026-07-11T09:16:18.639Z"
-    },
-    {
-      "id": "t178376137864034",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-11T09:16:18.640Z",
-      "updated": "2026-07-11T09:16:18.839Z"
-    },
-    {
-      "id": "t178376137884464",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-11T09:16:18.844Z",
-      "updated": "2026-07-11T09:16:34.027Z"
-    },
-    {
-      "id": "t178376139402974",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-11T09:16:34.029Z",
-      "updated": "2026-07-11T09:16:49.293Z"
-    },
-    {
-      "id": "t178376140929634",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-11T09:16:49.296Z",
-      "updated": "2026-07-11T09:17:11.914Z"
-    },
-    {
-      "id": "t178376143191614",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-11T09:17:11.916Z",
-      "updated": "2026-07-11T09:17:19.994Z"
-    },
-    {
-      "id": "t178376143999861",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-11T09:17:19.998Z",
-      "updated": "2026-07-11T09:17:32.313Z"
-    },
-    {
-      "id": "t178376145231618",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-11T09:17:32.316Z",
-      "updated": "2026-07-11T09:17:40.317Z"
-    },
-    {
       "id": "t178376146032014",
       "title": "Run guide",
       "status": "done",
@@ -479,25 +399,89 @@
       "agent": "publisher",
       "created": "2026-07-12T09:53:29.191Z",
       "updated": "2026-07-12T09:53:35.528Z"
+    },
+    {
+      "id": "t178387466766710",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-07-12T16:44:27.667Z",
+      "updated": "2026-07-12T16:44:39.271Z"
+    },
+    {
+      "id": "t17838746792731",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-07-12T16:44:39.273Z",
+      "updated": "2026-07-12T16:44:39.496Z"
+    },
+    {
+      "id": "t178387467949870",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-07-12T16:44:39.498Z",
+      "updated": "2026-07-12T16:44:39.673Z"
+    },
+    {
+      "id": "t178387467967556",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-12T16:44:39.675Z",
+      "updated": "2026-07-12T16:44:39.865Z"
+    },
+    {
+      "id": "t178387467987012",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-07-12T16:44:39.870Z",
+      "updated": "2026-07-12T16:44:40.092Z"
+    },
+    {
+      "id": "t178387468011164",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-12T16:44:40.111Z",
+      "updated": "2026-07-12T16:44:40.319Z"
+    },
+    {
+      "id": "t178387468032026",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-07-12T16:44:40.320Z",
+      "updated": "2026-07-12T16:44:40.523Z"
+    },
+    {
+      "id": "t178387468052517",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-12T16:44:40.525Z",
+      "updated": "2026-07-12T16:44:41.376Z"
+    },
+    {
+      "id": "t178387468137882",
+      "title": "Run translator",
+      "status": "done",
+      "agent": "translator",
+      "created": "2026-07-12T16:44:41.378Z",
+      "updated": "2026-07-12T16:44:41.648Z"
+    },
+    {
+      "id": "t178387468165016",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-07-12T16:44:41.650Z",
+      "updated": "2026-07-12T16:44:49.627Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178241366994564",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). I've completed the final check and I'm pleased to report that the line-up is coherent and ready to publish, with all articles featuring complete structures, on-brand voices, and safe content. The only",
-      "agent": "publisher",
-      "at": "2026-06-25T18:54:29.945Z",
-      "loud": false
-    },
-    {
-      "id": "n178241367126032",
-      "level": "success",
-      "text": "5 új cikk publikálva (költség: $0.0115).",
-      "agent": "ceo",
-      "at": "2026-06-25T18:54:31.260Z",
-      "loud": false
-    },
     {
       "id": "n178241655869735",
       "level": "success",
@@ -1281,27 +1265,25 @@
       "agent": "ceo",
       "at": "2026-07-12T09:53:35.546Z",
       "loud": false
+    },
+    {
+      "id": "n178387468250896",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). Our line-up is ready to publish, featuring a coherent mix of practical AI applications for everyday tasks, from resume building to study planning. I've confirmed each article is complete, on-brand, an",
+      "agent": "publisher",
+      "at": "2026-07-12T16:44:42.508Z",
+      "loud": false
+    },
+    {
+      "id": "n178387468964568",
+      "level": "info",
+      "text": "Pipeline lefutott — ma nem volt publikálható új tartalom.",
+      "agent": "ceo",
+      "at": "2026-07-12T16:44:49.645Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178339664495564",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"How Snowflake Built an AI-Native Marketing Team\" (?/10)",
-      "ref": "2026-07-02T02-10-03-890Z_snowflake_How_Snowflake_Built_an_AI-Native_Marketing_Team.json",
-      "at": "2026-07-07T03:57:24.955Z"
-    },
-    {
-      "id": "m178339665247995",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"The Agentic Enterprise: AI Governance for Marketing Leaders\" (?/10)",
-      "ref": "2026-07-02T02-10-03-890Z_snowflake_The_Agentic_Enterprise__AI_Governance_for_Marketin.json",
-      "at": "2026-07-07T03:57:32.479Z"
-    },
     {
       "id": "m178339665932611",
       "from": "ellenorzo",
@@ -2635,6 +2617,24 @@
       "text": "5 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
       "ref": null,
       "at": "2026-07-12T09:54:14.803Z"
+    },
+    {
+      "id": "m178387468134660",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 17 → 6/3/3 oszlop.",
+      "ref": "mobile",
+      "at": "2026-07-12T16:44:41.346Z"
+    },
+    {
+      "id": "m178387472987573",
+      "from": "social",
+      "to": "team",
+      "kind": "info",
+      "text": "5 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
+      "ref": null,
+      "at": "2026-07-12T16:45:29.875Z"
     }
   ]
 }
