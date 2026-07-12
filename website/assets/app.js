@@ -238,3 +238,34 @@
     });
   });
 })();
+
+// ===================================================================
+// HÍRLEVÉL-FELIRATKOZÁS (2026-07-12) — a Worker /subscribe végpontjára
+// ===================================================================
+(function () {
+  'use strict';
+  document.querySelectorAll('.nl').forEach(function (box) {
+    var form = box.querySelector('.nl__form');
+    if (!form) return;
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var btn = form.querySelector('button');
+      var email = (form.querySelector('input[type="email"]').value || '').trim();
+      var hp = form.querySelector('.nl__hp');
+      if (!email) return;
+      btn.disabled = true;
+      fetch('https://aiworld-telegram.pacsi84.workers.dev/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email, lang: form.getAttribute('data-lang') || 'en', web: hp ? hp.value : '' })
+      }).then(function (r) {
+        if (r.ok) {
+          form.outerHTML = '<p class="nl__done">' + (box.getAttribute('data-thanks') || 'Done!') + '</p>';
+        } else { throw new Error('http'); }
+      }).catch(function () {
+        btn.disabled = false;
+        alert(box.getAttribute('data-err') || 'Error — please try again.');
+      });
+    });
+  });
+})();

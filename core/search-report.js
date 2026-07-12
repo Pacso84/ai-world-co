@@ -199,7 +199,9 @@ async function main() {
         { headers: { 'X-Export-Key': expKey }, signal: AbortSignal.timeout(15000) });
       if (fr.ok) {
         const fb = await fr.json();
-        const entries = Object.entries(fb).filter(([s]) => s !== 'proba-cikk');
+        const entries = Object.entries(fb).filter(([s]) => s !== 'proba-cikk' && s !== '__nl_signups');
+        // Hírlevél-jelentkezések (2026-07-12): a Worker KV-számlálója
+        if (fb.__nl_signups > 0) lines.push(`📬 Hírlevél-feliratkozás eddig összesen: *${fb.__nl_signups}*`);
         const votes = entries.reduce((n, [, v]) => n + (v.up || 0) + (v.down || 0), 0);
         if (votes > 0) {
           // slug → MAGYAR cím (a Főnök magyarul jelent — user-kérés 2026-07-08)

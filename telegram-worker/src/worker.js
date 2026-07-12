@@ -45,6 +45,40 @@ async function handleFeedback(request, env) {
   return new Response('ok', { status: 200, headers: FEEDBACK_CORS });
 }
 
+// ===================================================================
+// HÍRLEVÉL-FELIRATKOZÁS (2026-07-12) — POST /subscribe {email, lang, web}
+// A weboldal saját dobozából jön; a Worker hívja a MailerLite API-t
+// (MAILERLITE_TOKEN secret — a kulcs SOHA nem kerül a böngészőbe).
+// A "web" mező HONEYPOT: ember üresen hagyja, bot kitölti → csendes eldobás.
+// A double opt-in (megerősítő email) a MailerLite-ban van bekapcsolva.
+// ===================================================================
+async function handleSubscribe(request, env) {
+  if (request.method === 'OPTIONS') return new Response(null, { status: 204, headers: FEEDBACK_CORS });
+  if (request.method !== 'POST') return new Response('method', { status: 405, headers: FEEDBACK_CORS });
+  if (!env.MAILERLITE_TOKEN) return new Response('not configured', { status: 503, headers: FEEDBACK_CORS });
+  let body;
+  try { body = await request.json(); } catch { return new Response('bad json', { status: 400, headers: FEEDBACK_CORS }); }
+  if (body.web) return new Response('ok', { status: 200, headers: FEEDBACK_CORS });   // honeypot: bot volt
+  const email = String(body.email || '').trim().toLowerCase().slice(0, 120);
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) return new Response('bad email', { status: 400, headers: FEEDBACK_CORS });
+  const lang = ['en', 'hu', 'es', 'de', 'fr'].includes(body.lang) ? body.lang : 'en';
+  try {
+    const r = await fetch('https://connect.mailerlite.com/api/subscribers', {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${env.MAILERLITE_TOKEN}`, 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({ email, fields: { language: lang }, status: 'unconfirmed' })
+    });
+    if (r.status === 200 || r.status === 201 || r.status === 409 || r.status === 422) {
+      // 200/201 = felvéve; 409/422 = már szerepel — az olvasónak mindegy: siker
+      try { const c = parseInt(await env.FEEDBACK.get('nl:signups') || '0', 10); await env.FEEDBACK.put('nl:signups', String(c + 1)); } catch { /* számláló nem kritikus */ }
+      return new Response('ok', { status: 200, headers: FEEDBACK_CORS });
+    }
+    return new Response('upstream ' + r.status, { status: 502, headers: FEEDBACK_CORS });
+  } catch {
+    return new Response('upstream error', { status: 502, headers: FEEDBACK_CORS });
+  }
+}
+
 async function handleFeedbackExport(request, env) {
   // Csak a heti riport olvashatja (titkos fejléc-kulccsal)
   if (!env.FEEDBACK_EXPORT_KEY || request.headers.get('X-Export-Key') !== env.FEEDBACK_EXPORT_KEY) {
@@ -55,6 +89,8 @@ async function handleFeedbackExport(request, env) {
   for (const k of list.keys) {
     try { out[k.name.slice(3)] = JSON.parse(await env.FEEDBACK.get(k.name)); } catch { /* skip */ }
   }
+  // Hírlevél-jelentkezések száma a heti riportnak (2026-07-12)
+  try { out.__nl_signups = parseInt(await env.FEEDBACK.get('nl:signups') || '0', 10); } catch { /* skip */ }
   return new Response(JSON.stringify(out), { status: 200, headers: { 'Content-Type': 'application/json' } });
 }
 
@@ -64,6 +100,7 @@ export default {
     const path = new URL(request.url).pathname;
     if (path === '/feedback') return handleFeedback(request, env);
     if (path === '/feedback-export') return handleFeedbackExport(request, env);
+    if (path === '/subscribe') return handleSubscribe(request, env);
 
     // Egészség-ellenőrzés / böngészős megnyitás
     if (request.method !== 'POST') {

@@ -420,6 +420,35 @@ try {
   const tl = JSON.parse(readFileSync(join(__dirname, 'tool-links.json'), 'utf-8'));
   TOOL_LINKS = tl.tools || {}; COMPANY_LINKS = tl.companies || {};
 } catch { /* térkép nélkül nincs gomb — a build attól még fut */ }
+// Hírlevél-feliratkozó doboz (2026-07-12) — a Worker /subscribe végpontjára
+// küld, a kulcs a Workerben marad. Double opt-in: a MailerLite megerősítő
+// emailt küld, ezt a szöveg őszintén jelzi.
+const UI_NL = {
+  en: { nlTitle: 'The week’s AI, in your inbox', nlText: 'One friendly email every Sunday — the 5 stories that mattered, in plain English. No spam, unsubscribe anytime.',
+        nlPh: 'your@email.com', nlBtn: 'Sign me up', nlThanks: 'Almost done! Check your inbox for a confirmation email. 💛', nlErr: 'That didn’t work — mind trying again?' },
+  hu: { nlTitle: 'A hét AI-hírei, egyenesen a postafiókodba', nlText: 'Hetente egy barátságos email vasárnaponként — az 5 sztori, ami számított, közérthetően. Semmi spam, bármikor leiratkozhatsz.',
+        nlPh: 'neved@email.hu', nlBtn: 'Feliratkozom', nlThanks: 'Már majdnem kész! Nézd meg a postafiókod — megerősítő emailt küldtünk. 💛', nlErr: 'Ez most nem sikerült — megpróbálod újra?' },
+  es: { nlTitle: 'La IA de la semana, en tu correo', nlText: 'Un email amable cada domingo: las 5 historias que importaron, en lenguaje claro. Sin spam, date de baja cuando quieras.',
+        nlPh: 'tu@email.com', nlBtn: 'Suscribirme', nlThanks: '¡Casi listo! Revisa tu correo: te enviamos un email de confirmación. 💛', nlErr: 'No ha funcionado — ¿lo intentas de nuevo?' },
+  de: { nlTitle: 'Die KI-Woche, direkt in dein Postfach', nlText: 'Jeden Sonntag eine freundliche E-Mail — die 5 wichtigsten Meldungen, klar erklärt. Kein Spam, jederzeit abbestellbar.',
+        nlPh: 'du@email.de', nlBtn: 'Anmelden', nlThanks: 'Fast geschafft! Schau in dein Postfach — wir haben eine Bestätigungs-E-Mail geschickt. 💛', nlErr: 'Das hat nicht geklappt — magst du es nochmal versuchen?' },
+  fr: { nlTitle: 'L’IA de la semaine, dans votre boîte mail', nlText: 'Un e-mail sympathique chaque dimanche — les 5 actus qui comptaient, en langage clair. Pas de spam, désinscription à tout moment.',
+        nlPh: 'vous@email.fr', nlBtn: 'Je m’abonne', nlThanks: 'Presque fini ! Vérifiez votre boîte mail — un e-mail de confirmation vous attend. 💛', nlErr: 'Ça n’a pas marché — vous réessayez ?' }
+};
+for (const l of SITE_LANGS) Object.assign(UI[l], UI_NL[l] || {});
+
+function nlBox() {
+  return `<section class="nl" data-thanks="${escapeHtml(tr('nlThanks'))}" data-err="${escapeHtml(tr('nlErr'))}">
+    <h2 class="nl__t">📬 ${escapeHtml(tr('nlTitle'))}</h2>
+    <p class="nl__p">${escapeHtml(tr('nlText'))}</p>
+    <form class="nl__form" data-lang="${LANG}">
+      <input type="text" name="web" class="nl__hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <input type="email" name="email" required placeholder="${escapeHtml(tr('nlPh'))}" aria-label="Email">
+      <button type="submit">${escapeHtml(tr('nlBtn'))}</button>
+    </form>
+  </section>`;
+}
+
 const UI_OFFICIAL = {
   en: { officialSite: 'Official site', officialRow: 'Official sites' },
   hu: { officialSite: 'Hivatalos oldal', officialRow: 'Hivatalos oldalak' },
@@ -1112,7 +1141,7 @@ function buildIndex(articles) {
     description: SITE.description,
     ogImage: articles[0]?.image ? `${SITE.url}/assets/images/${articles[0].image}` : '',
     jsonld: { '@context': 'https://schema.org', '@type': 'WebSite', name: SITE.name, url: SITE.url, description: SITE.description },
-    bodyContent: featuredHtml + guidesCta + grid
+    bodyContent: featuredHtml + guidesCta + grid + nlBox()
       + `<p class="start__wizcta"><a href="archive.html">🗂️ ${escapeHtml(tr('archNav'))} →</a></p>`,
     pagePath: ''
   });
@@ -1299,6 +1328,7 @@ function buildArticlePage(a) {
     ${xrefBox(a)}
     ${relatedBox(a)}
     <div class="article__foot">
+      ${nlBox()}
       <div class="fb" data-slug="${a.slug}" data-thanks="${escapeHtml(tr('fbThanks'))}"><span class="fb__q">${tr('fbQ')}</span><button class="fb__btn" data-vote="up" aria-label="👍">👍</button><button class="fb__btn" data-vote="down" aria-label="👎">👎</button></div>
       <p class="ai-disclosure">${tr('disclosureNews')}</p>
       <a href="../index.html" class="back-link">${tr('backStories')}</a>
@@ -1654,6 +1684,7 @@ function buildGuidePage(a) {
     ${xrefBox(a)}
     ${relatedBox(a)}
     <div class="article__foot">
+      ${nlBox()}
       <div class="fb" data-slug="${a.slug}" data-thanks="${escapeHtml(tr('fbThanks'))}"><span class="fb__q">${tr('fbQ')}</span><button class="fb__btn" data-vote="up" aria-label="👍">👍</button><button class="fb__btn" data-vote="down" aria-label="👎">👎</button></div>
       <p class="ai-disclosure">${tr('disclosureGuide')}</p>
       <a href="../index.html" class="back-link">${tr('backStories')}</a>
