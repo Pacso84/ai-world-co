@@ -1,134 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178368033240342",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-10T10:45:32.403Z",
-      "updated": "2026-07-10T10:45:34.207Z"
-    },
-    {
-      "id": "t178368033422256",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-10T10:45:34.223Z",
-      "updated": "2026-07-10T10:46:34.530Z"
-    },
-    {
-      "id": "t178368039453276",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-07-10T10:46:34.532Z",
-      "updated": "2026-07-10T10:47:18.707Z"
-    },
-    {
-      "id": "t178368043870864",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-10T10:47:18.709Z",
-      "updated": "2026-07-10T10:47:20.326Z"
-    },
-    {
-      "id": "t178368044032832",
-      "title": "Run translator",
-      "status": "done",
-      "agent": "translator",
-      "created": "2026-07-10T10:47:20.328Z",
-      "updated": "2026-07-10T10:50:06.943Z"
-    },
-    {
-      "id": "t178368060694513",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-07-10T10:50:06.945Z",
-      "updated": "2026-07-10T10:50:11.904Z"
-    },
-    {
-      "id": "t178370519255724",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-07-10T17:39:52.557Z",
-      "updated": "2026-07-10T17:40:04.312Z"
-    },
-    {
-      "id": "t178370520431472",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-07-10T17:40:04.314Z",
-      "updated": "2026-07-10T17:40:04.560Z"
-    },
-    {
-      "id": "t178370520456253",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-07-10T17:40:04.562Z",
-      "updated": "2026-07-10T17:40:08.425Z"
-    },
-    {
-      "id": "t178370520842742",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-10T17:40:08.427Z",
-      "updated": "2026-07-10T17:40:10.785Z"
-    },
-    {
-      "id": "t178370521079020",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-07-10T17:40:10.790Z",
-      "updated": "2026-07-10T17:40:23.861Z"
-    },
-    {
-      "id": "t178370522387858",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-10T17:40:23.878Z",
-      "updated": "2026-07-10T17:40:29.090Z"
-    },
-    {
-      "id": "t178370522909268",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-07-10T17:40:29.092Z",
-      "updated": "2026-07-10T17:40:35.935Z"
-    },
-    {
-      "id": "t178370523593730",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-10T17:40:35.937Z",
-      "updated": "2026-07-10T17:40:40.729Z"
-    },
-    {
-      "id": "t178370524073098",
-      "title": "Run translator",
-      "status": "done",
-      "agent": "translator",
-      "created": "2026-07-10T17:40:40.730Z",
-      "updated": "2026-07-10T17:42:21.264Z"
-    },
-    {
-      "id": "t17837053412668",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-07-10T17:42:21.266Z",
-      "updated": "2026-07-10T17:42:26.823Z"
-    },
-    {
       "id": "t178373342414318",
       "title": "Run rss-scraper",
       "status": "done",
@@ -479,33 +351,137 @@
       "agent": "publisher",
       "created": "2026-07-11T16:42:15.320Z",
       "updated": "2026-07-11T16:42:21.245Z"
+    },
+    {
+      "id": "t178382056724265",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-07-12T01:42:47.242Z",
+      "updated": "2026-07-12T01:42:56.045Z"
+    },
+    {
+      "id": "t178382057604710",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-07-12T01:42:56.047Z",
+      "updated": "2026-07-12T01:42:56.272Z"
+    },
+    {
+      "id": "t178382057627464",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-07-12T01:42:56.274Z",
+      "updated": "2026-07-12T01:42:56.502Z"
+    },
+    {
+      "id": "t178382057650460",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-12T01:42:56.504Z",
+      "updated": "2026-07-12T01:42:56.706Z"
+    },
+    {
+      "id": "t178382057671050",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-07-12T01:42:56.710Z",
+      "updated": "2026-07-12T01:42:56.943Z"
+    },
+    {
+      "id": "t178382057696025",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-07-12T01:42:56.960Z",
+      "updated": "2026-07-12T01:44:10.819Z"
+    },
+    {
+      "id": "t178382065082122",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-12T01:44:10.821Z",
+      "updated": "2026-07-12T01:44:53.777Z"
+    },
+    {
+      "id": "t178382069379331",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-07-12T01:44:53.793Z",
+      "updated": "2026-07-12T01:44:53.994Z"
+    },
+    {
+      "id": "t178382069399555",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-07-12T01:44:53.995Z",
+      "updated": "2026-07-12T01:45:01.161Z"
+    },
+    {
+      "id": "t178382070116493",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-07-12T01:45:01.164Z",
+      "updated": "2026-07-12T01:45:59.430Z"
+    },
+    {
+      "id": "t178382075943273",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-12T01:45:59.432Z",
+      "updated": "2026-07-12T01:46:27.324Z"
+    },
+    {
+      "id": "t178382078732682",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-12T01:46:27.326Z",
+      "updated": "2026-07-12T01:46:38.224Z"
+    },
+    {
+      "id": "t178382079822619",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-07-12T01:46:38.226Z",
+      "updated": "2026-07-12T01:46:42.813Z"
+    },
+    {
+      "id": "t178382080281557",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-12T01:46:42.815Z",
+      "updated": "2026-07-12T01:46:43.699Z"
+    },
+    {
+      "id": "t178382080370268",
+      "title": "Run translator",
+      "status": "done",
+      "agent": "translator",
+      "created": "2026-07-12T01:46:43.702Z",
+      "updated": "2026-07-12T01:57:06.269Z"
+    },
+    {
+      "id": "t178382142627142",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-07-12T01:57:06.271Z",
+      "updated": "2026-07-12T01:57:12.351Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178224068657824",
-      "level": "info",
-      "text": "SEO: 21 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-06-23T18:51:26.578Z",
-      "loud": false
-    },
-    {
-      "id": "n17822439141157",
-      "level": "info",
-      "text": "API-szakértő: 7 agent modellje optimalizálva (preflight-ellenőrzött).",
-      "agent": "api-expert",
-      "at": "2026-06-23T19:45:14.115Z",
-      "loud": false
-    },
-    {
-      "id": "n178224500700153",
-      "level": "warn",
-      "text": "📨 pairing → guide: Új funkció-hír → kéne hozzá útmutató: \"How to Turn Your Notes into a Polished Report with AI in Minutes\"",
-      "agent": "pairing",
-      "at": "2026-06-23T20:03:27.001Z",
-      "loud": false
-    },
     {
       "id": "n178224509192713",
       "level": "info",
@@ -1281,63 +1257,33 @@
       "agent": "ceo",
       "at": "2026-07-11T16:42:21.263Z",
       "loud": false
+    },
+    {
+      "id": "n178382080280357",
+      "level": "info",
+      "text": "SEO: 6 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-07-12T01:46:42.803Z",
+      "loud": false
+    },
+    {
+      "id": "n178382142700350",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). Our latest line-up is coherent and ready to publish, offering a range of practical AI applications for everyday tasks. I do note that the topics are quite tech-focused, so a gentle introduction to AI ",
+      "agent": "publisher",
+      "at": "2026-07-12T01:57:07.003Z",
+      "loud": false
+    },
+    {
+      "id": "n178382143236761",
+      "level": "success",
+      "text": "0 hír + 6 útmutató publikálva (költség: $0.0764).",
+      "agent": "ceo",
+      "at": "2026-07-12T01:57:12.367Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178339649925234",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"HP Inc. launches Frontier strategic partnership with OpenAI\" (?/10)",
-      "ref": "2026-06-29T02-29-25-986Z_openai-blog_HP_Inc__launches_Frontier_strategic_partnership_wi.json",
-      "at": "2026-07-07T03:54:59.252Z"
-    },
-    {
-      "id": "m178339650579981",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Costa Rican dairy cooperative turns AI agents into coworkers\" — mi a baj: Salvaged from a partial AI response.",
-      "ref": "2026-06-29T02-29-25-987Z_microsoft-ai_Costa_Rican_dairy_cooperative_turns_AI_agents_into.json",
-      "at": "2026-07-07T03:55:05.799Z"
-    },
-    {
-      "id": "m178339651309249",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Pairing geotechnical data with AI helps New Zealand build better\" (?/10)",
-      "ref": "2026-06-29T02-29-25-987Z_microsoft-ai_Pairing_geotechnical_data_with_AI_helps_New_Zealan.json",
-      "at": "2026-07-07T03:55:13.092Z"
-    },
-    {
-      "id": "m178339651989886",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Work smarter in 90 days: A real-world guide to using AI\" — mi a baj: Missing instructions to access AI tools; Some common phrases used; Clarity for complete beginners needs improvement",
-      "ref": "2026-06-29T02-29-25-987Z_microsoft-ai_Work_smarter_in_90_days__A_real-world_guide_to_usi.json",
-      "at": "2026-07-07T03:55:19.898Z"
-    },
-    {
-      "id": "m178339652819353",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"From Materials Simulation to Experimental Astronomy, New NVIDIA AI Software Unlocks Scientific Discoveries\" (?/10)",
-      "ref": "2026-06-29T02-29-25-987Z_nvidia-blog_From_Materials_Simulation_to_Experimental_Astronom.json",
-      "at": "2026-07-07T03:55:28.193Z"
-    },
-    {
-      "id": "m178339653557445",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Time to Speak Some Dialects, Qwen-TTS!\" (?/10)",
-      "ref": "2026-06-29T02-29-27-067Z_alibaba-qwen_Time_to_Speak_Some_Dialects__Qwen-TTS_.json",
-      "at": "2026-07-07T03:55:35.574Z"
-    },
     {
       "id": "m178339654280312",
       "from": "ellenorzo",
@@ -2635,6 +2581,60 @@
       "text": "5 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
       "ref": null,
       "at": "2026-07-11T16:43:04.049Z"
+    },
+    {
+      "id": "m178382065831334",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Ask Qwen Chat to compare two cities for your next holiday in simple terms\" — mi a baj: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user",
+      "ref": "GUIDE_ask-qwen-chat-to-compare-two-cities-for-your-next-holiday-in.json",
+      "at": "2026-07-12T01:44:18.313Z"
+    },
+    {
+      "id": "m178382067286856",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Let Le Chat help you write a polite complaint email to a service provider\" — mi a baj: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user",
+      "ref": "GUIDE_let-le-chat-help-you-write-a-polite-complaint-email-to-a-ser.json",
+      "at": "2026-07-12T01:44:32.868Z"
+    },
+    {
+      "id": "m178382068018560",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Use Le Chat to compare two job offers side-by-side in plain English\" — mi a baj: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user",
+      "ref": "GUIDE_use-le-chat-to-compare-two-job-offers-side-by-side-in-plain-.json",
+      "at": "2026-07-12T01:44:40.185Z"
+    },
+    {
+      "id": "m178382069376737",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Use Qwen Chat to generate a customised study schedule for your exams\" — mi a baj: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user",
+      "ref": "GUIDE_use-qwen-chat-to-generate-a-customised-study-schedule-for-yo.json",
+      "at": "2026-07-12T01:44:53.767Z"
+    },
+    {
+      "id": "m178382080366685",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 17 → 6/3/3 oszlop.",
+      "ref": "mobile",
+      "at": "2026-07-12T01:46:43.666Z"
+    },
+    {
+      "id": "m178382147917779",
+      "from": "social",
+      "to": "team",
+      "kind": "info",
+      "text": "5 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
+      "ref": null,
+      "at": "2026-07-12T01:57:59.177Z"
     }
   ]
 }

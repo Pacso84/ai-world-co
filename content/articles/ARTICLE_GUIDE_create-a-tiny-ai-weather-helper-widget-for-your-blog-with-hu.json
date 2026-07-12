@@ -1,0 +1,58 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "create-a-tiny-ai-weather-helper-widget-for-your-blog-with-hu",
+    "company": "Hugging Face",
+    "tool": "Hugging Face Widgets",
+    "icon": "🌦️",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-07-12T01:45:44.546Z",
+    "writer_provider": "mistral",
+    "writer_model": "mistral-small-latest",
+    "writer_cost_usd": 0.0036366000000000002,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-07-12T01:46:06.972Z",
+    "auto_check": {
+      "passed": false,
+      "issues": [
+        "AMERICAN_SPELLING: \"color\" — Ausztrál: colour"
+      ],
+      "wordCount": 1047
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 10,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "The guide is exceptionally clear and well-structured, providing excellent step-",
+      "_salvaged": true,
+      "_aiCost": 0.004473,
+      "_provider": "google",
+      "_model": "gemini-2.5-flash",
+      "_attempts": 1
+    },
+    "seo": {
+      "meta_description": "Add a live weather widget to your blog in under 10 minutes with Hugging Face's no-code widgets, embedding a tiny AI helper on your site easily",
+      "keywords": [
+        "Hugging Face widgets",
+        "AI weather widget",
+        "no-code weather helper",
+        "embed live weather on blog"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Use header tags to structure the guide for better readability",
+        "Add alt text to images of the widget for accessibility and SEO",
+        "Link to other relevant AI tutorials on the site to increase engagement"
+      ],
+      "optimised_at": "2026-07-12T01:46:39.905Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Create a tiny AI weather-helper widget for your blog with Hugging Face widgets\"\nsubtitle: \"Embed a live, no-code weather widget on your blog in under 10 minutes using Hugging Face's ready-made widgets.\"\ncategory: \"guide\"\naudience: \"personal\"\ncompany: \"Hugging Face\"\ntool: \"Hugging Face Widgets\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"getting-started\", \"hugging-face\", \"widget\", \"no-code\"]\n---\n\n# Add a live weather helper to your blog in minutes\n\n**Hook:**\nImagine your blog visitors seeing the current weather right where you mention travel or outdoor plans. With Hugging Face widgets you can drop a tiny, live weather helper onto any page — no coding required. By the end of this guide you’ll have a working widget that updates automatically and looks great on desktop and mobile.\n\n## Before you start\n- A blog or website you can edit (WordPress, Wix, Squarespace, GitHub Pages, etc.)\n- A free [Hugging Face account](https://huggingface.co/join) (2-minute signup)\n- 10 minutes of time and a text editor or blog dashboard\n- No paid plan needed for this task\n\n## Step 1 — Sign in to Hugging Face\nOpen any web browser and go to [https://huggingface.co](https://huggingface.co). In the top-right corner click **Log in / Sign up**. Choose **Sign up** and fill in your email, username and password. Check your inbox for a verification email and click the link inside. You’ll land on your new profile page.\n\nYou'll know it worked when you see your username in the top-right corner and the page shows “Welcome to Hugging Face, [your name].”\n\n💬 Example:\nOpen https://huggingface.co → click **Sign up** → enter your email and a password → click the link in the email you receive.\n\n## Step 2 — Open the widgets gallery\nOnce logged in, look at the left sidebar and click **Widgets** (it’s near the bottom, under “Resources”). A new page loads showing a grid of ready-made widgets. Each one is a small, interactive block you can paste into your blog.\n\nYou'll know it worked when you see a heading that reads “Browse all widgets” and a list of colorful cards.\n\n💬 Example:\nAfter login, click **Widgets** in the left sidebar.\n\n## Step 3 — Pick the weather widget\nOn the widgets page, use the search box at the top and type **weather**. You’ll see a card titled “Weather widget” with a small sun-and-cloud icon. Click the card once to open its detail page. This page shows a live preview, settings and the embed code you need.\n\nYou'll know it worked when you see a live weather display and options like “Location” and “Units”.\n\n💬 Example:\nSearch “weather” → click the “Weather widget” card.\n\n## Step 4 — Choose your settings\nOn the widget page you can set the city, temperature unit (Celsius or Fahrenheit) and color theme. Pick the city your blog readers care about most. Leave the other options on their defaults for now. As you change settings, the preview updates instantly so you can see how it will look.\n\nIf the preview doesn’t update, refresh the page or check your internet connection.\n\nYou'll know it worked when the preview shows the correct city and temperature unit.\n\n💬 Example:\nSet Location to “Sydney, Australia”, Units to “Celsius”, Theme to “Light”.\n\n## Step 5 — Copy the embed code\nBelow the preview you’ll find a box labeled **Embed this widget**. Click inside the box to highlight all the code, then press **Cmd+C** (Mac) or **Ctrl+C** (Windows) to copy it. The code starts with `<iframe` and ends with `</iframe>`.\n\nIf you don’t see the embed box, look for a button labeled **Copy to clipboard** or **Embed**.\n\nYou'll know it worked when you have the code on your clipboard and the box shows a green checkmark.\n\n💬 Example:\nClick inside the embed box → press **Cmd+C** (Mac) or **Ctrl+C** (Windows).\n\n## Step 6 — Paste the code into your blog\nOpen your blog editor (WordPress, Wix, Squarespace, etc.) and go to the page or post where you want the widget. Switch the editor to **HTML mode** (sometimes called “Code view”). Paste the code you copied right where you want the weather helper to appear. Switch back to **Visual mode** and save the page.\n\nIf your editor doesn’t have an HTML mode, look for an “Embed” or “Custom HTML” block and paste the code there.\n\nYou'll know it worked when you see the live weather box appear on the page and it shows the current temperature.\n\n💬 Example:\nIn WordPress → edit page → switch to **Code editor** → paste the `<iframe …>` → switch back to **Visual** → update page.\n\n## Step 7 — Check it on mobile\nOpen the same page on your phone or use the browser’s device toolbar. The widget should resize automatically and stay readable. If the text is too small, go back to the widget page and choose a larger theme or adjust your blog’s font size.\n\nIf the widget doesn’t appear, double-check that you pasted the entire `<iframe …>` block and saved the page.\n\nYou'll know it worked when the weather helper looks good on both desktop and mobile.\n\n💬 Example:\nOpen your blog on your phone → scroll to the widget → confirm it updates automatically.\n\n---\n\n## Common mistakes\n- **Pasting only part of the code** → the widget won’t load. Always paste the full `<iframe …></iframe>` block.\n- **Forgetting to save the page** → changes disappear. Save after pasting.\n- **Using the wrong editor mode** → in some builders the code won’t render unless you’re in HTML mode. Switch to HTML, paste, switch back.\n\n---\n\n## What this means for you\n- **In everyday life:** Add a tiny weather helper to your travel blog so readers instantly see if they need an umbrella.\n- **For your business or work:** Embed a local weather widget on your café’s site so customers know if it’s a good day for outdoor seating.\n- **If you're just getting started:** This is the easiest first step into AI widgets — once you’ve pasted one, you can try others like news tickers or calculators.\n\n---\n\n## Try it now\nOpen your blog editor, switch to HTML mode, paste the weather widget code you copied in Step 5, save the page, and refresh your blog. You should see the live weather box appear within 30 seconds.",
+  "original_title": "Create a tiny AI weather-helper widget for your blog with Hugging Face widgets"
+}
