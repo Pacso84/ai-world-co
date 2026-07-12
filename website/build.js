@@ -1232,10 +1232,20 @@ function buildToolsPage(companyGuides, counts) {
   // Hivatalos linkek a szekció fejléce alatt (2026-07-12): az adott cég
   // eszközeinek hivatalos oldalai; ÚJ eszköznél automatikusan a cég oldala.
   const officialRow = (c) => {
-    const tools = [...new Set(groups[c].map(g => g.tool).filter(Boolean))];
-    const chips = tools.filter(t => TOOL_LINKS[t])
-      .map(t => `<a href="${TOOL_LINKS[t]}" target="_blank" rel="noopener">${escapeHtml(t)} ↗</a>`);
-    if (COMPANY_LINKS[c]) chips.push(`<a href="${COMPANY_LINKS[c]}" target="_blank" rel="noopener">${escapeHtml(c)} ↗</a>`);
+    // URL-DEDUP (2026-07-12, user: "van duplikát link"): ugyanarra a címre
+    // csak EGY chip mehet — pl. Perplexity eszköz + Perplexity cég ugyanoda
+    // mutat, vagy ChatGPT + GPT-5.6 mindkettő a chatgpt.com-ra.
+    const seen = new Set();
+    const chips = [];
+    const norm = (u) => u.replace(/\/+$/, '').toLowerCase();
+    for (const t of [...new Set(groups[c].map(g => g.tool).filter(Boolean))]) {
+      const u = TOOL_LINKS[t];
+      if (!u || seen.has(norm(u))) continue;
+      seen.add(norm(u));
+      chips.push(`<a href="${u}" target="_blank" rel="noopener">${escapeHtml(t)} ↗</a>`);
+    }
+    const cu = COMPANY_LINKS[c];
+    if (cu && !seen.has(norm(cu))) chips.push(`<a href="${cu}" target="_blank" rel="noopener">${escapeHtml(c)} ↗</a>`);
     return chips.length ? `<p class="official-row"><span class="official-row__l">${tr('officialRow')}:</span> ${chips.join(' ')}</p>` : '';
   };
   const companySection = (c) => `<section class="grid-section" id="c-${companySlug(c)}">
