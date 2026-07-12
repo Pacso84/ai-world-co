@@ -66,7 +66,10 @@ async function handleSubscribe(request, env) {
     const r = await fetch('https://connect.mailerlite.com/api/subscribers', {
       method: 'POST',
       headers: { Authorization: `Bearer ${env.MAILERLITE_TOKEN}`, 'Content-Type': 'application/json', Accept: 'application/json' },
-      body: JSON.stringify({ email, fields: { language: lang }, status: 'unconfirmed' })
+      // NINCS status mező! Ha explicit státuszt küldünk, a MailerLite átugorja
+      // a double opt-in megerősítő emailt (2026-07-12 tanulság). Státusz nélkül
+      // az ML maga kezeli: unconfirmed + megerősítő email a feliratkozónak.
+      body: JSON.stringify({ email, fields: { language: lang } })
     });
     if (r.status === 200 || r.status === 201 || r.status === 409 || r.status === 422) {
       // 200/201 = felvéve; 409/422 = már szerepel — az olvasónak mindegy: siker
