@@ -85,10 +85,20 @@ for (const lang of LANGS) {
   }
 }
 
+// 3) MINŐSÉG-ŐR (2026-07-12): chip-szabályok + duplikált hivatalos linkek —
+//    a korábban kézzel futtatott ellenőrzések beépítve ("tudja a cégünk").
+let qualityHits = 0;
+try {
+  const { qualityFindings } = await import('../core/quality-guard.js');
+  const findings = qualityFindings();
+  for (const f of findings) console.log('⚠️  [minőség-őr] ' + f);
+  qualityHits = findings.length;
+} catch (e) { console.log('⚠️  minőség-őr nem futott: ' + e.message.slice(0, 60)); }
+
 console.log('─'.repeat(60));
-if (chromeHits + bodyHits === 0) {
-  console.log('✅ i18n-őrszem: nem találtam angol maradványt a nem-angol oldalakon.');
+if (chromeHits + bodyHits + qualityHits === 0) {
+  console.log('✅ i18n-őrszem + minőség-őr: nem találtam hibát (angol maradvány, chip-szabály, duplikált link).');
 } else {
-  console.log(`🚨 i18n-őrszem: ${chromeHits} felület-folt + ${bodyHits} fordítatlan-gyanús cikk — javítandó!`);
+  console.log(`🚨 őrszem: ${chromeHits} felület-folt + ${bodyHits} fordítatlan-gyanús + ${qualityHits} minőség-találat — javítandó!`);
 }
 process.exit(0);   // csak figyelmeztet, a pipeline megy tovább

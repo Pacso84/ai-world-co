@@ -154,6 +154,12 @@ async function main() {
   ];
   if (r.pendingSources > 0) lines.push(`🔭 Jóváhagyásra váró forrás-javaslat: ${r.pendingSources} (írd: "mik a javaslatok?")`);
   if (r.missingLinks?.length) lines.push(`🔗 Hivatalos link nélküli új eszköz: ${r.missingLinks.join(', ')} — a fejlesztő 1 sorral pótolja (tool-links.json)`);
+  // Minőség-őr összegzés (chip-szabályok + duplikált linkek) — ha talál valamit
+  try {
+    const { qualityFindings } = await import('./quality-guard.js');
+    const qf = qualityFindings();
+    if (qf.length) lines.push(`🧹 Minőség-őr: ${qf.length} találat (pl. ${qf[0].slice(0, 70)}…) — szólj a fejlesztőnek!`);
+  } catch { /* az őr hibája ne állítsa meg a jelentést */ }
   lines.push(``, `Minden megy magától. ✅`);
 
   await sendMessage(lines.join('\n'));
