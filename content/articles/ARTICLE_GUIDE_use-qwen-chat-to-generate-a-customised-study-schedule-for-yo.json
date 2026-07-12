@@ -1,0 +1,65 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "use-qwen-chat-to-generate-a-customised-study-schedule-for-yo",
+    "company": "Alibaba",
+    "tool": "Qwen Chat",
+    "icon": "📚",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-07-12T09:44:47.662Z",
+    "writer_provider": "mistral",
+    "writer_model": "mistral-small-latest",
+    "writer_cost_usd": 0.0038654,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "rejected_at": "2026-07-12T09:44:37.668Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 959
+    },
+    "ai_review": {
+      "overall_score": 7,
+      "clarity_score": 7,
+      "decision": "PASS",
+      "issues": [
+        "Example prompt in Step 5 is confusing and contradictory to the instruction"
+      ],
+      "verdict": "The guide is",
+      "_salvaged": true,
+      "_aiCost": 0.0044407,
+      "_provider": "google",
+      "_model": "gemini-2.5-flash",
+      "_attempts": 1
+    },
+    "reason": "Salvaged from a partial AI response.",
+    "can_retry": true,
+    "rework_attempts": 3,
+    "reworked_from": "REJECTED_GUIDE_use-qwen-chat-to-generate-a-customised-study-schedule-for-yo.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-07-12T09:44:54.552Z",
+    "seo": {
+      "meta_description": "Create a study timetable with Qwen Chat by typing one sentence, getting a colour-coded weekly plan with breaks to paste into your calendar easily",
+      "keywords": [
+        "Qwen Chat",
+        "study timetable",
+        "AI study planner",
+        "exam study schedule",
+        "easy study planning"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add a header tag for the 'Before you start' section to improve readability",
+        "Include a brief example of a Qwen Chat prompt to help users understand the process",
+        "Use a call-to-action at the end of the article to encourage users to try Qwen Chat"
+      ],
+      "optimised_at": "2026-07-12T09:45:09.158Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Turn one sentence into a ready-to-use study timetable with Qwen Chat\"\nsubtitle: \"Type a quick prompt and get a colour-coded weekly plan with built-in breaks—ready to paste straight into your calendar.\"\ncategory: \"guide\"\naudience: \"personal\"\ncompany: \"Alibaba\"\ntool: \"Qwen Chat\"\nlevel: \"beginner\"\nread_time_minutes: 7\ntags: [\"getting-started\", \"qwen-chat\", \"study\"]\n---\n\n# Build a ready-to-use study timetable with Qwen Chat\n\n**Hook:**\nImagine typing one sentence and instantly receiving a full week of study blocks, colour-coded subjects, and built-in breaks—ready to paste straight into your calendar. That’s what Qwen Chat can do for your exams. You don’t need spreadsheets or fancy apps; just a free AI assistant and five minutes.\n\n## Before you start\n- A free Qwen Chat account (web or mobile app)\n- Your exam date and the subjects you need to study written down\n- A phone, tablet or computer with internet\n- Total time: about 6–8 minutes\n\n---\n\n## Step 1 — Open Qwen Chat and start a fresh chat\nOpen your web browser or the Qwen Chat app. Look for a button like **“New Chat”** or a plus sign (+) in the top-right corner. Tap or click it. A clean chat window opens with a blinking cursor ready for your first message.\nYou’ll know it worked when you see a fresh chat box with the cursor waiting for you to type.\n\n💬 Example:\n`Start a new chat`\n\n---\n\n## Step 2 — Tell Qwen Chat your exam details\nIn the chat box, type a clear sentence that includes:\n- your exam date\n- the subjects you need to study\n- how many days you have left\n- any special topics or chapters you must cover\n\nThe AI will read your message and prepare to create your schedule.\nYou’ll know it worked when you see the AI’s first reply starting with something like “Here’s a personalised study plan…”\n\n💬 Example:\n`Create a 7-day study plan for my maths and science exams on 15 June. I have 10 days left and must cover algebra, geometry, and the periodic table.`\n\n---\n\n## Step 3 — Ask for a timetable that fits your life\nIf the first reply feels too rigid, ask the AI to adjust it. Say you want:\n- study blocks of 45–60 minutes\n- short breaks between subjects\n- time for meals and sleep\n- weekends mostly free\n\nThe AI will reorganise the plan and show you a new version.\nYou’ll know it worked when the new reply lists study blocks with clear start and end times and includes breaks.\n\n💬 Example:\n`Make the blocks 50 minutes each with 10-minute breaks. Keep weekends mostly free and add 8 hours of sleep each night.`\n\n---\n## Step 4 — Ask for colour-coding and labels\nTell the AI you want each subject to have a different colour and a short label. Ask it to add:\n- subject names in bold\n- estimated difficulty level (easy, medium, hard)\n- page numbers or topics for each block\n\nThe AI will add colours and labels so your plan looks neat and easy to scan.\nYou’ll know it worked when the reply shows coloured labels like **🔴 Maths – Algebra (p.45-52)** and **🟢 Science – Periodic Table (p.78-83)**.\n\n💬 Example:\n`Add colour-coded labels for each subject and include the page numbers or topics for every block.`\n\n---\n## Step 5 — Copy the plan into your calendar or to-do list\nHighlight the whole timetable in the chat and copy it (Ctrl+C or tap-hold and copy). Paste it into your phone’s calendar, Google Calendar, or a notes app. If your calendar asks for event titles, keep the subject names and times exactly as they appear.\nYou’ll know it worked when you see every study block in your calendar with the right colour and label.\n\n💬 Example:\n`Copy the plan below into your calendar: Monday 10 June, 4:00–5:00pm – 🔴 Maths – Algebra (p.45-52)`\n\n---\n## Step 6 — Ask for a quick summary and tips\nAsk Qwen Chat for a short summary that lists:\n- total study hours per subject\n- the hardest topics to focus on\n- a quick tip for each subject\n\nThe AI will send a concise recap you can screenshot or save as a note.\nYou’ll know it worked when you see a bullet-point list like “Maths: 3 hours total – focus on algebra; tip: practise past papers.”\n\n💬 Example:\n`Give me a quick summary of hours per subject and one tip for each.`\n\n---\n\n## Common mistakes\n- **Mistake:** Typing a vague prompt like “make me a study plan.”\n  **Fix:** Be specific: include exam date, subjects, days left, and key topics.\n- **Mistake:** Accepting the first plan without checking the timing.\n  **Fix:** Ask the AI to adjust block length and break times to fit your routine.\n- **Mistake:** Forgetting to copy the plan before closing the chat.\n  **Fix:** Highlight and copy the whole timetable before you leave the chat.\n\n---\n\n## What this means for you\n\n- **In everyday life:** Use Qwen Chat to build a stress-free revision timetable for any test—school, university, or even a driving theory exam. No spreadsheets, no guesswork.\n- **For your business or work:** Turn project deadlines into day-by-day task lists with built-in breaks, so you stay sharp and avoid burnout.\n- **If you're just getting started:** Start with one small exam. Once you see how easy it is, you’ll use the same trick for every future test.\n\n---\n## Try it now\nOpen Qwen Chat, start a new chat, and paste this prompt:\n`Create a 5-day study plan for my history exam on 20 June. I have 8 days left and must cover World War II and the Cold War. Make each block 50 minutes with 10-minute breaks and keep weekends free.`",
+  "original_title": "Use Qwen Chat to generate a customised study schedule for your exams"
+}

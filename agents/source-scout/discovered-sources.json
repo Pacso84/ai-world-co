@@ -1,13 +1,35 @@
 {
   "_meta": {
-    "generated_at": "2026-07-09T01:52:58.119Z",
+    "generated_at": "2026-07-12T09:42:48.618Z",
     "generated_by": "source-scout agent v3.0 (megbízhatóság-kapu)",
     "note": "JAVASLATOK új, MEGBÍZHATÓ hivatalos forrásokra. A felhasználó/főnök dönti el, melyiket adjuk a sources/rss-feeds.json-hoz (enabled:true-val). Minden jelölt megbízhatósági pontszámmal + indoklással.",
     "min_score": 70,
     "checked_orgs": 17,
-    "newly_discovered": 0,
+    "newly_discovered": 1,
     "rejected_count": 0,
     "rejected_examples": []
   },
-  "discovered_sources": []
+  "discovered_sources": [
+    {
+      "suggested_id": "d-id",
+      "name": "D-ID Blog (hivatalos)",
+      "url": "https://d-id.com/blog/feed/",
+      "category": "ai-company-official",
+      "priority": 3,
+      "language": "en",
+      "country": "IL",
+      "reliability_score": 94,
+      "reliability_reasons": [
+        "friss (utolsó cikk 17 napja)",
+        "rendszeres (9 cikk)",
+        "hivatalos forrásként jelölve",
+        "a domain/feed egyezik a cég nevével",
+        "HTTPS + érvényes RSS"
+      ],
+      "item_count_at_discovery": 9,
+      "last_post_age_days": 17,
+      "comment": "JAVASLAT (source-scout, megbízhatóság 94/100): AI-powered video production. Felhasználói jóváhagyás kell!",
+      "enabled": false
+    }
+  ]
 }

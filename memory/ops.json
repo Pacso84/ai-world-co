@@ -1,134 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178373342414318",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-07-11T01:30:24.143Z",
-      "updated": "2026-07-11T01:30:34.165Z"
-    },
-    {
-      "id": "t178373343416752",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-07-11T01:30:34.167Z",
-      "updated": "2026-07-11T01:30:34.396Z"
-    },
-    {
-      "id": "t178373343439850",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-07-11T01:30:34.398Z",
-      "updated": "2026-07-11T01:30:36.521Z"
-    },
-    {
-      "id": "t178373343652293",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-11T01:30:36.522Z",
-      "updated": "2026-07-11T01:30:43.833Z"
-    },
-    {
-      "id": "t17837334438385",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-07-11T01:30:43.838Z",
-      "updated": "2026-07-11T01:30:44.689Z"
-    },
-    {
-      "id": "t178373344470789",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-11T01:30:44.707Z",
-      "updated": "2026-07-11T01:31:51.715Z"
-    },
-    {
-      "id": "t178373351171755",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-11T01:31:51.717Z",
-      "updated": "2026-07-11T01:32:36.105Z"
-    },
-    {
-      "id": "t178373355612291",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-11T01:32:36.122Z",
-      "updated": "2026-07-11T01:32:36.313Z"
-    },
-    {
-      "id": "t178373355631590",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-11T01:32:36.315Z",
-      "updated": "2026-07-11T01:32:42.859Z"
-    },
-    {
-      "id": "t178373356286255",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-11T01:32:42.862Z",
-      "updated": "2026-07-11T01:33:10.612Z"
-    },
-    {
-      "id": "t178373359061331",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-11T01:33:10.613Z",
-      "updated": "2026-07-11T01:33:23.260Z"
-    },
-    {
-      "id": "t178373360326238",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-11T01:33:23.262Z",
-      "updated": "2026-07-11T01:33:35.557Z"
-    },
-    {
-      "id": "t17837336155598",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-07-11T01:33:35.559Z",
-      "updated": "2026-07-11T01:33:39.500Z"
-    },
-    {
-      "id": "t178373361950211",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-11T01:33:39.502Z",
-      "updated": "2026-07-11T01:33:40.192Z"
-    },
-    {
-      "id": "t178373362019326",
-      "title": "Run translator",
-      "status": "done",
-      "agent": "translator",
-      "created": "2026-07-11T01:33:40.193Z",
-      "updated": "2026-07-11T01:44:01.159Z"
-    },
-    {
-      "id": "t178373424116126",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-07-11T01:44:01.161Z",
-      "updated": "2026-07-11T01:44:07.318Z"
-    },
-    {
       "id": "t178376136781617",
       "title": "Run rss-scraper",
       "status": "done",
@@ -479,41 +351,137 @@
       "agent": "publisher",
       "created": "2026-07-12T01:57:06.271Z",
       "updated": "2026-07-12T01:57:12.351Z"
+    },
+    {
+      "id": "t178384933451469",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-07-12T09:42:14.514Z",
+      "updated": "2026-07-12T09:42:24.377Z"
+    },
+    {
+      "id": "t178384934437984",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-07-12T09:42:24.379Z",
+      "updated": "2026-07-12T09:42:49.078Z"
+    },
+    {
+      "id": "t178384936908019",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-07-12T09:42:49.080Z",
+      "updated": "2026-07-12T09:42:49.287Z"
+    },
+    {
+      "id": "t178384936928887",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-12T09:42:49.288Z",
+      "updated": "2026-07-12T09:42:57.177Z"
+    },
+    {
+      "id": "t178384937718426",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-07-12T09:42:57.184Z",
+      "updated": "2026-07-12T09:43:33.431Z"
+    },
+    {
+      "id": "t178384941343224",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-12T09:43:33.432Z",
+      "updated": "2026-07-12T09:44:02.552Z"
+    },
+    {
+      "id": "t178384944255575",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-07-12T09:44:02.555Z",
+      "updated": "2026-07-12T09:44:22.646Z"
+    },
+    {
+      "id": "t17838494626483",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-12T09:44:22.648Z",
+      "updated": "2026-07-12T09:44:37.741Z"
+    },
+    {
+      "id": "t178384947774560",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-07-12T09:44:37.745Z",
+      "updated": "2026-07-12T09:44:47.673Z"
+    },
+    {
+      "id": "t178384948767569",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-12T09:44:47.675Z",
+      "updated": "2026-07-12T09:44:54.605Z"
+    },
+    {
+      "id": "t178384949460960",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-07-12T09:44:54.609Z",
+      "updated": "2026-07-12T09:44:55.280Z"
+    },
+    {
+      "id": "t178384949529985",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-12T09:44:55.299Z",
+      "updated": "2026-07-12T09:45:05.692Z"
+    },
+    {
+      "id": "t178384950569495",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-07-12T09:45:05.694Z",
+      "updated": "2026-07-12T09:45:09.173Z"
+    },
+    {
+      "id": "t178384950917546",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-12T09:45:09.175Z",
+      "updated": "2026-07-12T09:45:10.075Z"
+    },
+    {
+      "id": "t178384951007724",
+      "title": "Run translator",
+      "status": "done",
+      "agent": "translator",
+      "created": "2026-07-12T09:45:10.077Z",
+      "updated": "2026-07-12T09:53:29.190Z"
+    },
+    {
+      "id": "t178385000919140",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-07-12T09:53:29.191Z",
+      "updated": "2026-07-12T09:53:35.528Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178224509192713",
-      "level": "info",
-      "text": "SEO: 6 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-06-23T20:04:51.927Z",
-      "loud": false
-    },
-    {
-      "id": "n178224509936576",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). I've reviewed the articles and our lineup is coherent and ready to publish, offering a great mix of introductory guides and practical tips for everyday AI use. My only note is that some readers new to",
-      "agent": "publisher",
-      "at": "2026-06-23T20:04:59.365Z",
-      "loud": false
-    },
-    {
-      "id": "n178224509989897",
-      "level": "success",
-      "text": "6 új cikk publikálva (költség: $0.0183).",
-      "agent": "ceo",
-      "at": "2026-06-23T20:04:59.899Z",
-      "loud": false
-    },
-    {
-      "id": "n17824136637260",
-      "level": "info",
-      "text": "SEO: 36 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-06-25T18:54:23.726Z",
-      "loud": false
-    },
     {
       "id": "n178241366994564",
       "level": "success",
@@ -1281,153 +1249,41 @@
       "agent": "ceo",
       "at": "2026-07-12T01:57:12.367Z",
       "loud": false
+    },
+    {
+      "id": "n178384936862023",
+      "level": "info",
+      "text": "🧭 Forráskutató: 1 ÚJ megbízható forrás-javaslat (küszöb 70).\n• [94] D-ID Blog (hivatalos)\nJóváhagyod valamelyiket?",
+      "agent": "source-scout",
+      "at": "2026-07-12T09:42:48.620Z",
+      "loud": false
+    },
+    {
+      "id": "n178384950916154",
+      "level": "info",
+      "text": "SEO: 5 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-07-12T09:45:09.161Z",
+      "loud": false
+    },
+    {
+      "id": "n178385001006672",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). Our article line-up is coherent and ready for publication, offering a diverse range of practical AI applications for everyday tasks. I do note that some readers new to AI may appreciate a gentle intro",
+      "agent": "publisher",
+      "at": "2026-07-12T09:53:30.066Z",
+      "loud": false
+    },
+    {
+      "id": "n17838500155462",
+      "level": "success",
+      "text": "1 hír + 4 útmutató publikálva (költség: $0.0358).",
+      "agent": "ceo",
+      "at": "2026-07-12T09:53:35.546Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178339654280312",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Connect the dots: Build with built-in and custom MCPs in Studio\" (?/10)",
-      "ref": "2026-06-29T02-29-27-067Z_mistral-ai_Connect_the_dots__Build_with_built-in_and_custom_M.json",
-      "at": "2026-07-07T03:55:42.803Z"
-    },
-    {
-      "id": "m178339654943423",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Remote agents in Vibe. Powered by Mistral Medium 3.5.\" (?/10)",
-      "ref": "2026-06-29T02-29-27-067Z_mistral-ai_Remote_agents_in_Vibe__Powered_by_Mistral_Medium_3.json",
-      "at": "2026-07-07T03:55:49.434Z"
-    },
-    {
-      "id": "m178339655626082",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Qwen3 Embedding: Advancing Text Embedding and Reranking Through Foundation Models\" (?/10)",
-      "ref": "2026-06-29T02-29-42-864Z_alibaba-qwen_Qwen3_Embedding__Advancing_Text_Embedding_and_Rera.json",
-      "at": "2026-07-07T03:55:56.260Z"
-    },
-    {
-      "id": "m178339656196197",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Qwen3: Think Deeper, Act Faster\" (?/10)",
-      "ref": "2026-06-29T02-29-42-864Z_alibaba-qwen_Qwen3__Think_Deeper__Act_Faster.json",
-      "at": "2026-07-07T03:56:01.961Z"
-    },
-    {
-      "id": "m178339656823566",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Ask an AI expert: What exactly is the full stack?\" (?/10)",
-      "ref": "2026-06-30T16-43-12-110Z_google-ai-blog_Ask_an_AI_expert__What_exactly_is_the_full_stack_.json",
-      "at": "2026-07-07T03:56:08.235Z"
-    },
-    {
-      "id": "m178339657532640",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"How NVIDIA’s Inference Software Stack Powers the Lowest Token Cost\" (?/10)",
-      "ref": "2026-06-30T16-43-12-110Z_nvidia-blog_How_NVIDIA_s_Inference_Software_Stack_Powers_the_L.json",
-      "at": "2026-07-07T03:56:15.326Z"
-    },
-    {
-      "id": "m178339658107866",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Mapping Europe’s AI Workforce Opportunity\" (?/10)",
-      "ref": "2026-06-30T16-43-12-110Z_openai-blog_Mapping_Europe_s_AI_Workforce_Opportunity.json",
-      "at": "2026-07-07T03:56:21.078Z"
-    },
-    {
-      "id": "m178339658854584",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Create fully native and editable presentations with Gemini in Google Slides\" — mi a baj: Salvaged from a partial AI response.",
-      "ref": "2026-06-30T16-43-13-543Z_google-workspace_Create_fully_native_and_editable_presentations_wit.json",
-      "at": "2026-07-07T03:56:28.545Z"
-    },
-    {
-      "id": "m178339659323351",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Data regions support for the Gemini app now available \" (?/10)",
-      "ref": "2026-06-30T16-43-13-543Z_google-workspace_Data_regions_support_for_the_Gemini_app_now_availa.json",
-      "at": "2026-07-07T03:56:33.233Z"
-    },
-    {
-      "id": "m178339659807763",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Claude Meets Blackwell Ultra: Anthropic’s Models Now Run on NVIDIA GB300 in Azure\" (?/10)",
-      "ref": "2026-06-30T16-43-13-543Z_nvidia-blog_Claude_Meets_Blackwell_Ultra__Anthropic_s_Models_N.json",
-      "at": "2026-07-07T03:56:38.077Z"
-    },
-    {
-      "id": "m178339660348274",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Open Models, Closed Environments: Palantir Brings Secure AI to US Agencies With NVIDIA Nemotron\" (?/10)",
-      "ref": "2026-06-30T16-43-13-543Z_nvidia-blog_Open_Models__Closed_Environments__Palantir_Brings_.json",
-      "at": "2026-07-07T03:56:43.482Z"
-    },
-    {
-      "id": "m178339661050997",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"New York City educators and industry leaders gathered at Google’s offices to shape the future of AI in classrooms.\" (?/10)",
-      "ref": "2026-07-01T17-46-16-620Z_google-ai-blog_New_York_City_educators_and_industry_leaders_gathe.json",
-      "at": "2026-07-07T03:56:50.509Z"
-    },
-    {
-      "id": "m178339661760149",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"New AI-powered library lets people meet Theodore Roosevelt in a whole new way \" — mi a baj: Salvaged from a partial AI response.",
-      "ref": "2026-07-01T17-46-16-620Z_microsoft-ai_New_AI-powered_library_lets_people_meet_Theodore_R.json",
-      "at": "2026-07-07T03:56:57.601Z"
-    },
-    {
-      "id": "m178339662509938",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Run NVIDIA Nemotron and OpenAI GPT OSS models on Amazon Bedrock in AWS GovCloud (US)\" (?/10)",
-      "ref": "2026-07-02T02-09-20-689Z_aws-ml_Run_NVIDIA_Nemotron_and_OpenAI_GPT_OSS_models_on_A.json",
-      "at": "2026-07-07T03:57:05.099Z"
-    },
-    {
-      "id": "m17833966303908",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"The latest AI news we announced in June 2026\" (?/10)",
-      "ref": "2026-07-02T02-09-20-689Z_google-ai-blog_The_latest_AI_news_we_announced_in_June_2026.json",
-      "at": "2026-07-07T03:57:10.390Z"
-    },
-    {
-      "id": "m178339663765940",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Why the Data Platform Determines Legal AI Outcomes\" — mi a baj: Salvaged from a partial AI response.",
-      "ref": "2026-07-02T02-10-03-889Z_snowflake_Why_the_Data_Platform_Determines_Legal_AI_Outcomes.json",
-      "at": "2026-07-07T03:57:17.659Z"
-    },
     {
       "id": "m178339664495564",
       "from": "ellenorzo",
@@ -2635,6 +2491,150 @@
       "text": "5 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
       "ref": null,
       "at": "2026-07-12T01:57:59.177Z"
+    },
+    {
+      "id": "m178384937996381",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Ask Qwen Chat to compare two cities for your next holiday in simple terms\" — javítva: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "GUIDE_ask-qwen-chat-to-compare-two-cities-for-your-next-holiday-in.json",
+      "at": "2026-07-12T09:42:59.963Z"
+    },
+    {
+      "id": "m178384939024873",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Let Le Chat help you write a polite complaint email to a service provider\" — javítva: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "GUIDE_let-le-chat-help-you-write-a-polite-complaint-email-to-a-ser.json",
+      "at": "2026-07-12T09:43:10.248Z"
+    },
+    {
+      "id": "m178384940326177",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Use Le Chat to compare two job offers side-by-side in plain English\" — javítva: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "GUIDE_use-le-chat-to-compare-two-job-offers-side-by-side-in-plain-.json",
+      "at": "2026-07-12T09:43:23.261Z"
+    },
+    {
+      "id": "m178384941341851",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Use Qwen Chat to generate a customised study schedule for your exams\" — javítva: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "GUIDE_use-qwen-chat-to-generate-a-customised-study-schedule-for-yo.json",
+      "at": "2026-07-12T09:43:33.418Z"
+    },
+    {
+      "id": "m178384942087895",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Ask Qwen Chat to compare two cities for your next holiday in simple terms\" (?/10)",
+      "ref": "GUIDE_ask-qwen-chat-to-compare-two-cities-for-your-next-holiday-in.json",
+      "at": "2026-07-12T09:43:40.878Z"
+    },
+    {
+      "id": "m178384942792353",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Let Le Chat help you write a polite complaint email to a service provider\" — mi a baj: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user",
+      "ref": "GUIDE_let-le-chat-help-you-write-a-polite-complaint-email-to-a-ser.json",
+      "at": "2026-07-12T09:43:47.923Z"
+    },
+    {
+      "id": "m178384943560364",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Use Le Chat to compare two job offers side-by-side in plain English\" (?/10)",
+      "ref": "GUIDE_use-le-chat-to-compare-two-job-offers-side-by-side-in-plain-.json",
+      "at": "2026-07-12T09:43:55.603Z"
+    },
+    {
+      "id": "m17838494425408",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Use Qwen Chat to generate a customised study schedule for your exams\" — mi a baj: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user",
+      "ref": "GUIDE_use-qwen-chat-to-generate-a-customised-study-schedule-for-yo.json",
+      "at": "2026-07-12T09:44:02.540Z"
+    },
+    {
+      "id": "m178384945309777",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Let Le Chat help you write a polite complaint email to a service provider\" — javítva: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "GUIDE_let-le-chat-help-you-write-a-polite-complaint-email-to-a-ser.json",
+      "at": "2026-07-12T09:44:13.097Z"
+    },
+    {
+      "id": "m178384946263692",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Use Qwen Chat to generate a customised study schedule for your exams\" — javítva: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "GUIDE_use-qwen-chat-to-generate-a-customised-study-schedule-for-yo.json",
+      "at": "2026-07-12T09:44:22.636Z"
+    },
+    {
+      "id": "m178384947023473",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Let Le Chat help you write a polite complaint email to a service provider\" (?/10)",
+      "ref": "GUIDE_let-le-chat-help-you-write-a-polite-complaint-email-to-a-ser.json",
+      "at": "2026-07-12T09:44:30.234Z"
+    },
+    {
+      "id": "m178384947769995",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Use Qwen Chat to generate a customised study schedule for your exams\" — mi a baj: Beginner clarity too low (5/10): steps are vague or could mislead a first-time user",
+      "ref": "GUIDE_use-qwen-chat-to-generate-a-customised-study-schedule-for-yo.json",
+      "at": "2026-07-12T09:44:37.699Z"
+    },
+    {
+      "id": "m178384948766344",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Use Qwen Chat to generate a customised study schedule for your exams\" — javítva: Beginner clarity too low (5/10): steps are vague or could mislead a first-time user; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "GUIDE_use-qwen-chat-to-generate-a-customised-study-schedule-for-yo.json",
+      "at": "2026-07-12T09:44:47.663Z"
+    },
+    {
+      "id": "m178384949455427",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Use Qwen Chat to generate a customised study schedule for your exams\" (?/10)",
+      "ref": "GUIDE_use-qwen-chat-to-generate-a-customised-study-schedule-for-yo.json",
+      "at": "2026-07-12T09:44:54.554Z"
+    },
+    {
+      "id": "m178384951004127",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 17 → 6/3/3 oszlop.",
+      "ref": "mobile",
+      "at": "2026-07-12T09:45:10.041Z"
+    },
+    {
+      "id": "m178385005480329",
+      "from": "social",
+      "to": "team",
+      "kind": "info",
+      "text": "5 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
+      "ref": null,
+      "at": "2026-07-12T09:54:14.803Z"
     }
   ]
 }

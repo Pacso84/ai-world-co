@@ -1,0 +1,61 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "ask-qwen-chat-to-compare-two-cities-for-your-next-holiday-in",
+    "company": "Alibaba",
+    "tool": "Qwen Chat",
+    "icon": "✈️",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-07-12T09:42:59.962Z",
+    "writer_provider": "cerebras",
+    "writer_model": "gpt-oss-120b",
+    "writer_cost_usd": 0,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "rejected_at": "2026-07-12T01:44:18.283Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1261
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 10,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "This guide is exceptionally clear and well-structured, providing excellent beginner clarity with helpful fall",
+      "_salvaged": true,
+      "_aiCost": 0.004570899999999999,
+      "_provider": "google",
+      "_model": "gemini-2.5-flash",
+      "_attempts": 1
+    },
+    "reason": "Salvaged from a partial AI response.",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_GUIDE_ask-qwen-chat-to-compare-two-cities-for-your-next-holiday-in.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-07-12T09:43:40.876Z",
+    "seo": {
+      "meta_description": "Compare two holiday cities quickly with Qwen Chat's chat-based AI, get a clear side-by-side travel comparison in minutes for weather, costs and attractions",
+      "keywords": [
+        "Qwen Chat travel comparison",
+        "holiday city comparison",
+        "AI travel planning"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add relevant subheadings to improve article structure",
+        "Include a brief example of a Qwen Chat comparison output",
+        "Use more specific long-tail keywords like 'how to compare travel destinations with AI'"
+      ],
+      "optimised_at": "2026-07-12T09:45:07.042Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Quickly compare two holiday cities using Qwen Chat\"\nsubtitle: \"Learn how a beginner can get a clear, side‑by‑side travel comparison in minutes with Qwen Chat’s chat‑based AI\"\ncategory: \"guide\"\naudience: \"personal\"\ncompany: \"Alibaba\"\ntool: \"Qwen Chat\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"getting-started\", \"qwen-chat\", \"travel\"]\n---\n\n# Compare two holiday cities with Qwen Chat — step by step\n\n**Hook:** By the end of this guide you’ll be able to type two city names into Qwen Chat and receive a tidy, easy‑to‑read comparison of weather, costs and attractions. It’s perfect for anyone who wants a fast first look without digging through dozens of travel blogs.\n\n## Before you start\n- A free Qwen Chat account (sign‑up takes about two minutes on the website).  \n- A device with a web browser – phone, tablet or computer will do.  \n- No special plan is required; the free tier can generate the comparison.  \n- Roughly ten minutes total time.\n\n## Step 1 — Open the Qwen Chat website and start a new conversation\nOpen your preferred web browser and navigate to **qwen.chat**. You’ll see a clean, white landing page with a large text box at the bottom labelled *Type a message…* (this is the **prompt box**, where you type instructions for the AI). Click inside that box; the cursor will blink, showing the field is ready for typing. If you’re on a phone and don’t see the box, look for a button that says **New chat** or a plus sign (+) in the corner. You’ll know it worked when the cursor appears in the prompt box ready for you to type.\n\n💬 Example: (no typing needed yet – just open the site).\n\n## Step 2 — Log in or continue as a guest\nIf you already have an account, click the **Log in** button near the top‑right of the page and enter your email and password. After you press **Enter**, the page will refresh and the prompt box will stay at the bottom, now showing your name or avatar on the side (that indicates you’re signed in). If you prefer not to create an account, look for a link that says **Continue as guest**; clicking it will skip the sign‑in step. On some devices the link may be under a three‑dot menu (⋯) instead. You’ll know it worked when you either see your profile name or the prompt box remains active without a sign‑in form.\n\n💬 Example: (type your email — e.g., *alice@example.com* — and password, then hit **Enter**).\n\n## Step 3 — Type a clear prompt asking for a city comparison\nIn the prompt box, type a single sentence that names the two cities and the aspects you want compared. This sentence is called a **prompt** – think of it as the exact question you ask the AI. For example: “Compare Cairns and Byron Bay for a 5‑day holiday in July, focusing on weather, daily cost and top attractions.” After you press **Enter** or click the send icon (usually a paper‑plane shape), the AI will start typing a response in the chat window. If the send icon looks different, it might be a labelled **Send** button instead. You’ll know it worked when the AI’s reply appears, beginning with a short introductory sentence.\n\n💬 Example: Compare Cairns and Byron Bay for a 5‑day holiday in July, focusing on weather, daily cost and top attractions.\n\n## Step 4 — Review the summary and ask for bullet‑point highlights\nRead the AI’s first reply; it will usually give a brief paragraph summarising the main differences. If the paragraph feels too long to scan, type a follow‑up prompt like “Give me the key points as a bullet list.” When you send that, the AI adds a new message with each point on its own line, making it easier to read. Some versions of Qwen Chat show a **Summarise** button above the reply – clicking it does the same thing. If you don’t see that button, just type the follow‑up prompt. You’ll know it worked when you see a list where each line starts with a dash or a bullet.\n\n💬 Example: Give me the key points as a bullet list.\n\n## Step 5 — Request a simple two‑column table for easy comparison\nNow ask the AI to turn the bullet points into a table, which is a grid of rows and columns that lets you compare side‑by‑side. Type something like “Please put the weather, cost and top attraction for each city into a two‑column table.” After you hit **Enter**, the AI will generate a text‑based table that looks like:\n\n| City | Weather | Daily cost | Top attraction |\n|------|---------|------------|----------------|\n| Cairns | Warm, tropical | $120 AUD | Great Barrier Reef |\n| Byron Bay | Mild, coastal | $110 AUD | Cape Byron Lighthouse |\n\nIf the AI replies with plain text instead of a grid, you can type “Format that as a table, please.” On some devices a **Table** icon appears in the toolbar above the reply – clicking it has the same effect. You’ll know it worked when you see neatly aligned columns separated by vertical bars (|) and hyphens (‑) as shown above.\n\n💬 Example: Please put the weather, cost and top attraction for each city into a two‑column table.\n\n## Step 6 — Save or share the comparison for later reference\nTo keep the chat for future use, look for a button labelled **Save chat**, **Copy link**, or an icon with three dots (⋯) in the top‑right corner of the conversation pane. Click it; a small message like “Link copied to clipboard” will appear, or a confirmation dialog will say “Chat saved.” On mobile, you may need to tap the three‑dot menu first before the save option appears. If you cannot find any of those, you can always select the whole table with your cursor, right‑click and choose **Copy**, then paste it into a notes app. You’ll know it worked when you either see a confirmation toast (“Chat saved”) or successfully paste the table elsewhere.\n\n💬 Example: Tap the three‑dot menu → Copy link.\n\n## Common mistakes\n- **Mistake:** Using vague city names such as “Gold Coast.”  \n  **Fix:** Specify the exact suburb or region (e.g., “Surfers Paradise vs. Byron Bay”) so the AI knows which places to compare.\n- **Mistake:** Expecting real‑time prices or live weather forecasts.  \n  **Fix:** Remember Qwen Chat provides general estimates based on typical data; always double‑check current prices or forecasts on official sites.\n- **Mistake:** Skipping the follow‑up request for bullet points or a table, leaving you with a long paragraph.  \n  **Fix:** After the first reply, explicitly ask “Give me the key points as a bullet list” or “Format that as a table” to get a scannable layout.\n\n## What this means for you\n- **In everyday life:** When you’re torn between two holiday spots, a quick chat with Qwen Chat gives you the core differences so you can decide without endless scrolling.  \n- **For your business or work:** Planning a team retreat or client visit? Use the same steps to compare venues on cost and amenities, helping you budget faster.  \n- **If you're just getting started:** Try the guide with two cities you already know a bit about; the easy copy‑and‑paste prompts will build your confidence in shaping AI replies.\n\n## Try it now\nOpen **qwen.chat** in your browser, type “Compare Melbourne and Brisbane for a 4‑day winter holiday, focusing on weather, cost and things to do,” and hit **Enter**. In under a minute you’ll have a concise comparison to help you pick your next getaway.",
+  "original_title": "Ask Qwen Chat to compare two cities for your next holiday in simple terms"
+}
