@@ -29,12 +29,46 @@ const PUBLIC_DIR = join(ROOT, 'website', 'public');
 // ezek NEM cégnév-duplázások / nem rövidítendők.
 const FULLFORM_OK = new Set([
   'GitHub Copilot', 'Meta AI', 'Apple Intelligence', 'Alibaba Cloud',
-  'Mistral AI', 'Le Chat', 'Hugging Face', 'Project Genie', 'NotebookLM'
+  'Mistral AI', 'Le Chat', 'Hugging Face', 'Project Genie', 'NotebookLM',
+  'Google Photos'
 ]);
 // Generikus (nem-termék) szavak a chipben → találat
-const GENERIC_RX = /\(|,| in |powered|capacit|resolution|assistant|chatbot|workspace|feature| api\b|projects?$| chat$|models?$/i;
+const GENERIC_RX = /\(|,| in |powered|capacit|resolution|assistant|chatbot|workspace|feature| api\b|projects?$| chat$|models?$| llm\b| ai$/i;
 
 function strip(s) { return (s || '').trim().replace(/^["']+|["']+$/g, '').trim(); }
+
+// GÉPI KANONIZÁLÁS (2026-07-13): a csempe-nevet KÓD teszi rendbe, nem prompt —
+// a párosító AI a kérés ellenére is írt "NVIDIA ChatRTX"-et. Rétegek sorban:
+//   1) páros-térkép (cég+eszköz): a "Copilot" a GitHub szekcióban = GitHub Copilot
+//   2) név-térkép: a 2026-07-12-i nagytakarítás ismert döntései
+//   3) FULLFORM-csonkolás: "Hugging Face Spaces" → "Hugging Face" (jövőállóan)
+//   4) cégnév-előtag levágása — DE generikus maradék ("LLM", "AI") esetén nem
+const PAIR_ALIAS = { 'github|copilot': 'GitHub Copilot' };
+const NAME_ALIAS = {
+  'nvidia chatrtx': 'ChatRTX', 'microsoft copilot': 'Copilot',
+  'qwen chat': 'Qwen', 'claude projects': 'Claude',
+  'deepseek chat': 'DeepSeek', 'deepseek llm': 'DeepSeek',
+  'amazon alexa': 'Alexa+', 'amazon alexa+': 'Alexa+', 'alexa': 'Alexa+',
+  'google gemini': 'Gemini', 'openai chatgpt': 'ChatGPT',
+  'alibaba cloud ai': 'Alibaba Cloud'
+};
+const GENERIC_REST_RX = /^(ai|llm|chat|app|api|bot|cloud|cloud ai|assistant|studio|models?)$/i;
+export function canonicalChip(tool, company) {
+  tool = strip(tool); company = strip(company);
+  if (!tool) return tool;
+  const pair = PAIR_ALIAS[(company + '|' + tool).toLowerCase()];
+  if (pair) return pair;
+  const alias = NAME_ALIAS[tool.toLowerCase()];
+  if (alias) return alias;
+  if (FULLFORM_OK.has(tool)) return tool;
+  for (const full of FULLFORM_OK)
+    if (tool.toLowerCase().startsWith(full.toLowerCase() + ' ')) return full;
+  if (company && tool.toLowerCase().startsWith(company.toLowerCase() + ' ')) {
+    const rest = tool.slice(company.length + 1).trim();
+    if (rest.length >= 3 && !GENERIC_REST_RX.test(rest)) return rest;   // "NVIDIA ChatRTX"→"ChatRTX"
+  }
+  return tool;   // amit nem értünk, azt NEM bántjuk — majd az őr jelzi
+}
 
 function loadGuideChips() {
   const rows = [];
@@ -44,9 +78,15 @@ function loadGuideChips() {
       const d = JSON.parse(readFileSync(join(ARTICLES_DIR, f), 'utf-8'));
       if (d._meta?.type !== 'guide') continue;
       const md = d.article_markdown || '';
-      const tool = strip(d._meta?.tool ?? (md.match(/^tool:\s*(.*)$/m) || [])[1]);
-      const company = strip(d._meta?.company ?? (md.match(/^company:\s*(.*)$/m) || [])[1]);
-      if (tool) rows.push({ tool, company, file: f });
+      // A frontmatter az elsődleges (az író VÉGSŐ döntése — ezt mutatja az oldal),
+      // a _meta (a párosító terve) csak tartalék; az eltérésüket külön jelezzük.
+      const fmCompany = strip((md.match(/^company:\s*(.*)$/m) || [])[1]);
+      const company = fmCompany || strip(d._meta?.company);
+      // Kanonizált értékeket hasonlítunk — a megjelenítés is ezt mutatja
+      const fmTool = canonicalChip((md.match(/^tool:\s*(.*)$/m) || [])[1], company);
+      const metaTool = canonicalChip(d._meta?.tool, company);
+      const tool = fmTool || metaTool;
+      if (tool) rows.push({ tool, company, fmTool, metaTool, file: f });
     } catch { /* skip */ }
   }
   return rows;
@@ -56,7 +96,10 @@ function checkChips() {
   const out = [];
   const rows = loadGuideChips();
   const tools = new Set(rows.map(r => r.tool));
-  for (const { tool, company, file } of rows) {
+  for (const { tool, company, fmTool, metaTool, file } of rows) {
+    // Terv ↔ kész cikk eltérés: a párosító mást tervezett, mint amiről az író írt
+    if (fmTool && metaTool && fmTool !== metaTool)
+      out.push(`CHIP terv≠cikk: _meta "${metaTool}" de a cikk "${fmTool}" (${file.slice(0, 50)})`);
     if (FULLFORM_OK.has(tool)) continue;
     if (GENERIC_RX.test(tool)) out.push(`CHIP generikus/toldalékos: "${tool}" (${file.slice(0, 50)})`);
     else if (company && tool.toLowerCase().startsWith(company.toLowerCase() + ' '))

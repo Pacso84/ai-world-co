@@ -31,6 +31,7 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { ask } from '../../core/ai-router.js';
 import { message } from '../../core/ops.js';
+import { canonicalChip } from '../../core/quality-guard.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..', '..');
@@ -129,6 +130,9 @@ Decide if it deserves a paired how-to guide. Output ONLY the JSON.`;
     const s = t.indexOf('{'), e = t.lastIndexOf('}');
     if (s >= 0 && e >= 0) { try { parsed = JSON.parse(t.slice(s, e + 1)); } catch {} }
   }
+  // GÉPI kanonizálás: a prompt-szabályt az AI néha átlépi ("NVIDIA ChatRTX",
+  // 2026-07-13) — a cégnév-előtagot kód vágja le, kivétel-listával.
+  if (parsed?.tool) parsed.tool = canonicalChip(parsed.tool, parsed.company);
   return { response, parsed };
 }
 

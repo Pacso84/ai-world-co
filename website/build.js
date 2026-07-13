@@ -18,6 +18,7 @@ import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync, copyFi
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { marked } from 'marked';
+import { canonicalChip } from '../core/quality-guard.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = join(__dirname, '..');
@@ -833,8 +834,11 @@ function loadArticles() {
         bodyHtml: wrapTables(wrapImpactSection(marked.parse(body))),
         bodyMd: body,
         isGuide: (data._meta?.type === 'guide') || meta.category === 'guide',
-        company: data._meta?.company || '',
-        tool: data._meta?.tool || '',
+        // Frontmatter az elsődleges (az író VÉGSŐ eszköz-választása), a _meta
+        // (a párosító terve) csak tartalék; a canonicalChip a cégnév-előtagot
+        // kódból vágja le (2026-07-13: "NVIDIA ChatRTX" átcsúszott a prompton).
+        company: meta.company || data._meta?.company || '',
+        tool: canonicalChip(meta.tool || data._meta?.tool || '', meta.company || data._meta?.company || ''),
         level: data._meta?.level || '',
         icon: data._meta?.icon || '',
         publishedAt: data._meta?.published_at || '',

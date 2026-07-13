@@ -19,6 +19,7 @@ import { readFileSync, writeFileSync, readdirSync, existsSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { sendMessage } from './telegram.js';
+import { canonicalChip } from './quality-guard.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
@@ -115,8 +116,10 @@ function collect() {
         if (d._meta?.type !== 'guide') continue;
         const md = d.article_markdown || '';
         const strip = (s) => (s || '').trim().replace(/^["']+|["']+$/g, '').trim();
-        const tool = strip(d._meta?.tool || (md.match(/^tool:\s*(.*)$/m) || [])[1]);
-        const comp = strip(d._meta?.company || (md.match(/^company:\s*(.*)$/m) || [])[1]);
+        // Frontmatter az elsődleges — a build is azt mutatja; kanonikus névvel
+        // keresünk linket, hogy ne legyen hamis "nincs link" riasztás (2026-07-13)
+        const comp = strip((md.match(/^company:\s*(.*)$/m) || [])[1] || d._meta?.company);
+        const tool = canonicalChip((md.match(/^tool:\s*(.*)$/m) || [])[1] || d._meta?.tool, comp);
         if ((tl.ignore || []).includes(tool) || (tl.ignore || []).includes(comp)) continue;
         if (!tl.tools[tool] && !tl.companies[comp]) {
           const key = tool || comp;
