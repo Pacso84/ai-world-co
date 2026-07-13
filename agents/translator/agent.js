@@ -22,12 +22,21 @@ import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync } from 
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { ask } from '../../core/ai-router.js';
+import { fileHandback, sourceDefect } from '../../core/handback.js';
+import { remember } from '../../core/memory-manager.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..', '..');
 const ARTICLES_DIR = join(ROOT, 'content', 'articles');
 const TRANS_DIR = join(ROOT, 'content', 'translations');
 const AGENT_NAME = 'translator';
+
+// Bukás-számláló (2026-07-13, cég-hierarchia): ne próbálkozzunk némán a
+// végtelenségig — 2 bukás UGYANARRA a (cikk, nyelv) párra ÉS hibás forrás
+// → visszaadás az Írónak (a modell-hiba NEM ok, az magától rendeződik).
+const FAILS_PATH = join(ROOT, 'memory', 'translation-failures.json');
+function loadFails() { try { return JSON.parse(readFileSync(FAILS_PATH, 'utf-8')); } catch { return {}; } }
+function saveFails(f) { writeFileSync(FAILS_PATH, JSON.stringify(f, null, 2), 'utf-8'); }
 
 // Cél-nyelvek (kód → emberi név az LLM-promptnak). Az 'en' a forrás.
 export const LANGS = {
@@ -156,10 +165,29 @@ async function main() {
         cache[code] = res.text.trim();
         saveCache(file, cache);
         cost += res.cost; done++;
+        // sikerült → a bukás-számláló törlődik erre a párra
+        const fails = loadFails();
+        if (fails[`${file}|${code}`]) { delete fails[`${file}|${code}`]; saveFails(fails); }
         console.log(`✅ ($${res.cost.toFixed(4)})`);
       } else {
         failed++;
-        console.log('❌ (sikertelen / érvénytelen)');
+        const fails = loadFails();
+        const key = `${file}|${code}`;
+        fails[key] = (fails[key] || 0) + 1;
+        saveFails(fails);
+        const defect = sourceDefect(md);
+        if (fails[key] >= 2 && defect) {
+          // Hibás FORRÁS: nem a modell hibája — visszaadás az Írónak, hogy ne
+          // égessünk pénzt reménytelen újrapróbákra (user 2026-07-13).
+          const r = fileHandback({ from: AGENT_NAME, to: 'iro', ref: file, reason: `fordítás 2x bukott (${code}) — forrás-hiba: ${defect}`, hint: 'Javítsd a cikk szerkezetét (H1 főcím + teljes törzs), a tartalmi mondanivalót őrizd meg.' });
+          if (r.ok) {
+            remember(AGENT_NAME, `Ha a forrás-cikk hibás (${defect}), NEM újrapróbálni kell, hanem visszaadni az Írónak.`);
+            delete fails[key]; saveFails(fails);
+            console.log(`↩️  visszaadva az Írónak (${defect})`);
+          } else { console.log('❌ (sikertelen / érvénytelen)'); }
+        } else {
+          console.log('❌ (sikertelen / érvénytelen)');
+        }
       }
     }
   }
