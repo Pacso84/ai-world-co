@@ -1,0 +1,55 @@
+{
+  "started_at": "2026-07-13T01:47:10.839Z",
+  "total": 6,
+  "passed": 3,
+  "failed": 3,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.0269375,
+  "by_article": [
+    {
+      "writer": "WRITER_GUIDE_create-a-custom-recipe-generator-that-only-uses-ingredients-.json",
+      "article": "ARTICLE_GUIDE_create-a-custom-recipe-generator-that-only-uses-ingredients-.json",
+      "decision": "PASS",
+      "score": 7,
+      "cost_usd": 0.0044476
+    },
+    {
+      "writer": "WRITER_GUIDE_how-to-write-your-first-github-readme-with-copilot-s-help-in.json",
+      "rejected": "REJECTED_GUIDE_how-to-write-your-first-github-readme-with-copilot-s-help-in.json",
+      "decision": "FAIL",
+      "score": 6,
+      "cost_usd": 0.004584899999999999
+    },
+    {
+      "writer": "WRITER_GUIDE_quickly-compare-two-excel-files-side-by-side-using-nvidia-ch.json",
+      "rejected": "REJECTED_GUIDE_quickly-compare-two-excel-files-side-by-side-using-nvidia-ch.json",
+      "decision": "FAIL",
+      "score": 6,
+      "cost_usd": 0.0044742
+    },
+    {
+      "writer": "WRITER_GUIDE_set-up-a-family-photo-sorting-assistant-that-groups-your-pho.json",
+      "rejected": "REJECTED_GUIDE_set-up-a-family-photo-sorting-assistant-that-groups-your-pho.json",
+      "decision": "FAIL",
+      "score": 7,
+      "cost_usd": 0.0045566999999999995
+    },
+    {
+      "writer": "WRITER_GUIDE_turn-your-holiday-voice-memos-into-a-polished-travel-blog-po.json",
+      "article": "ARTICLE_GUIDE_turn-your-holiday-voice-memos-into-a-polished-travel-blog-po.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.004397399999999999
+    },
+    {
+      "writer": "WRITER_GUIDE_use-nvidia-chatrtx-to-build-a-personal-study-buddy-that-quiz.json",
+      "article": "ARTICLE_GUIDE_use-nvidia-chatrtx-to-build-a-personal-study-buddy-that-quiz.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0044767
+    }
+  ],
+  "finished_at": "2026-07-13T01:47:52.933Z",
+  "duration_seconds": 42.094
+}

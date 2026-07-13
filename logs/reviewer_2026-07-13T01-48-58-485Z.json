@@ -1,0 +1,34 @@
+{
+  "started_at": "2026-07-13T01:48:37.193Z",
+  "total": 3,
+  "passed": 2,
+  "failed": 1,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.0131493,
+  "by_article": [
+    {
+      "writer": "WRITER_GUIDE_fix-typos-and-grammar-in-your-docs-with-copilot-in-seconds.json",
+      "rejected": "REJECTED_GUIDE_fix-typos-and-grammar-in-your-docs-with-copilot-in-seconds.json",
+      "decision": "FAIL",
+      "score": 3,
+      "cost_usd": 0.0043129
+    },
+    {
+      "writer": "WRITER_GUIDE_let-copilot-turn-your-messy-notes-into-a-clean-project-plan.json",
+      "article": "ARTICLE_GUIDE_let-copilot-turn-your-messy-notes-into-a-clean-project-plan.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0044794
+    },
+    {
+      "writer": "WRITER_GUIDE_use-copilot-to-draft-a-polite-email-to-a-client-about-a-dela.json",
+      "article": "ARTICLE_GUIDE_use-copilot-to-draft-a-polite-email-to-a-client-about-a-dela.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.004357
+    }
+  ],
+  "finished_at": "2026-07-13T01:48:58.485Z",
+  "duration_seconds": 21.292
+}

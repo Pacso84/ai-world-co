@@ -1,0 +1,44 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "set-up-a-family-photo-sorting-assistant-that-groups-your-pho",
+    "company": "NVIDIA",
+    "tool": "NVIDIA ChatRTX",
+    "icon": "👨‍👩‍👧‍👦",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-07-13T01:46:39.301Z",
+    "writer_provider": "mistral",
+    "writer_model": "mistral-small-latest",
+    "writer_cost_usd": 0.0038756000000000003,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "rejected",
+    "rejected_at": "2026-07-13T01:47:38.726Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1180
+    },
+    "ai_review": {
+      "overall_score": 7,
+      "clarity_score": 6,
+      "decision": "FAIL",
+      "issues": [
+        "Beginner clarity too low (6/10): steps are vague or could mislead a first-time user"
+      ],
+      "verdict": "Salvaged from a partial AI response.",
+      "_salvaged": true,
+      "_aiCost": 0.0045566999999999995,
+      "_provider": "google",
+      "_model": "gemini-2.5-flash",
+      "_attempts": 1
+    },
+    "reason": "Salvaged from a partial AI response.",
+    "can_retry": true
+  },
+  "article_markdown": "---\ntitle: \"Set up a family photo sorting assistant that groups your phone pictures by person using NVIDIA ChatRTX\"\nsubtitle: \"Turn your phone’s messy photo gallery into a neatly organised family album in under 10 minutes with a free AI helper.\"\ncategory: \"guide\"\naudience: \"personal\"\ncompany: \"NVIDIA\"\ntool: \"ChatRTX\"\nlevel: \"beginner\"\nread_time_minutes: 7\ntags: [\"getting-started\", \"photo-organising\", \"ChatRTX\"]\n---\n\n# Turn your phone photos into a family album with NVIDIA ChatRTX\n\n**Hook:**\nImagine opening your phone’s gallery and seeing every photo of your kids, partner, or pets neatly grouped together — no scrolling, no guessing. With NVIDIA’s free ChatRTX tool, your phone can automatically sort your pictures by the people in them, so you can find what you need in seconds.\n\n---\n\n## Before you start\n- A smartphone or computer with at least 8 GB of RAM (ChatRTX works on Windows PCs and RTX graphics cards; mobile users can use the web version).\n- A folder of family photos on your device (any size).\n- A free NVIDIA account (sign-up takes 2 minutes).\n- Rough total time: **8–10 minutes**.\n\n---\n\n## Step 1 — Install ChatRTX on your computer\nOpen your web browser and go to the official NVIDIA ChatRTX page. Look for a button like **“Download ChatRTX”** in the top-right corner. Click it, then choose the version for your operating system (Windows). The installer will download as a small file (about 300 MB). Double-click the file and follow the prompts to install. When the installation finishes, you’ll see a new **ChatRTX** icon on your desktop or in your start menu.\nYou'll know it worked when you see the ChatRTX window open with a welcome message.\n\n💬 Example:\nOpen your browser and visit `https://www.nvidia.com/en-us/ai-data-science/chatrtx/` → click **Download ChatRTX** → choose **Windows** → run the installer → open the app from your desktop.\n\n---\n\n## Step 2 — Sign in with your free NVIDIA account\nWhen ChatRTX opens, you’ll see a **“Sign in”** button in the top-right corner. Click it and enter the email and password you used to create your NVIDIA account. If you don’t have one yet, click **“Create account”** and follow the short sign-up form. Once signed in, the app will show your username in the top-right corner.\nYou'll know it worked when the app switches from “Sign in” to your username.\n\n💬 Example:\nEnter your email `your.name@example.com` and password `FamilyPhotos2025!` → click **Sign in**.\n\n---\n\n## Step 3 — Load your family photos folder\nIn the ChatRTX window, look for a button like **“Add folder”** or **“Load local files”** in the main panel. Click it and browse to the folder where your family photos are stored. Select the folder and click **Open**. ChatRTX will scan the folder and show a progress bar. This may take a minute or two depending on how many photos you have.\nYou'll know it worked when you see a list of your photos appear in the app.\n\n💬 Example:\nClick **Add folder** → go to `C:\\Users\\YourName\\Pictures\\Family` → select the folder → click **Open**.\n\n---\n\n## Step 4 — Start the person recognition process\nOnce your photos are loaded, look for a button like **“Start processing”** or **“Run face recognition”** in the bottom-right corner. Click it. ChatRTX will begin scanning each photo to find faces and group them by person. You’ll see a progress bar and a message like “Identifying faces…” This step can take several minutes for large photo collections.\nYou'll know it worked when the progress bar finishes and you see a new section called **“People”** appear in the left sidebar.\n\n💬 Example:\nClick **Start processing** → wait while the app scans your photos → watch the progress bar.\n\n---\n\n## Step 5 — Review and name the people in your photos\nIn the **“People”** section on the left, you’ll see a list of detected faces grouped under headings like “Unknown 1”, “Unknown 2”, etc. Click on one of these headings to see the photos that feature that person. To name them, click the **pencil icon** next to the heading and type the person’s name (e.g., “Mum”, “Liam”, “Sarah”). Repeat for each group until all faces are named.\nYou'll know it worked when every group in the **“People”** section has a real name instead of “Unknown”.\n\n💬 Example:\nClick **Unknown 1** → click the pencil icon → type `Dad` → press Enter → repeat for each group.\n\n---\n\n## Step 6 — Create a family album with one click\nOnce all the people are named, look for a button like **“Create album”** or **“Export group”** in the top-right corner. Click it and choose a name for your album (e.g., “Family 2025”). ChatRTX will create a new folder on your computer with neatly organised subfolders for each person. You can now open this folder in your file explorer or photo app to browse your family album.\nYou'll know it worked when you see a new folder on your desktop or in your Pictures folder with separate folders for each family member.\n\n💬 Example:\nClick **Create album** → type `Family Summer 2025` → click **Save** → open the new folder to see folders named “Dad”, “Mum”, “Liam”, etc.\n\n---\n\n## Step 7 — Keep your album updated automatically\nTo make sure new photos are automatically sorted, go back to the **Add folder** button and add your phone’s camera roll folder (usually in `This PC\\Phone\\DCIM\\Camera`). ChatRTX will continue to scan new photos and add them to the correct person folders. You can repeat Step 6 anytime to refresh your album.\nYou'll know it worked when new photos appear in the correct person folders without any extra effort.\n\n💬 Example:\nClick **Add folder** → select `This PC\\Phone\\DCIM\\Camera` → click **Open** → new photos will appear in the correct person folders.\n\n---\n\n## Common mistakes\n- **Mistake:** The app doesn’t detect any faces.\n  **Fix:** Make sure your photos are clear and well-lit. Try adding a few high-quality photos first, then add the rest.\n\n- **Mistake:** The names don’t save after I close the app.\n  **Fix:** Always click the pencil icon to rename people before closing the app. Your changes are saved locally.\n\n- **Mistake:** The app runs slowly on my older computer.\n  **Fix:** Close other apps while ChatRTX is running. If it’s still slow, try processing smaller folders first.\n\n---\n\n## What this means for you\n\n- **In everyday life:**\n  No more scrolling through hundreds of photos to find pictures of your child’s birthday or your last holiday. One click opens a folder with every photo of your family together.\n\n- **For your business or work:**\n  Use the same tool to organise project photos, team events, or client meetings by person. Share the organised folders with colleagues instead of messy email attachments.\n\n- **If you're just getting started:**\n  Start with a small folder of your favourite family photos. Once you see how easy it is, you can expand to your entire photo collection.\n\n---\n\n## Try it now\nOpen your browser, go to the [NVIDIA ChatRTX download page](https://www.nvidia.com/en-us/ai-data-science/chatrtx/), and install the app. In 5 minutes you’ll have your first family photo album automatically sorted by person.",
+  "original_title": "Set up a family photo sorting assistant that groups your phone pictures by person using NVIDIA ChatRTX"
+}
