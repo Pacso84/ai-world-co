@@ -1,6 +1,44 @@
 # AI World Co. — közösségi posztok
 
-*Generálva: 2026-07-13T01:57:42.552Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+*Generálva: 2026-07-13T10:57:40.928Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## Learning Structured Reasoning via Tractable Trajectory Control
+**🔗 https://aiworldhq.com/article/how-to-teach-ai-to-think-step-by-step-without-coding.html**
+
+**Facebook:**
+Tired of AI skipping steps? A quick guide shows how to prompt it to walk you through answers, so you get all the details every time. https://aiworldhq.com/article/how-to-teach-ai-to-think-step-by-step-without-coding.html #AItips #EverydayAI
+
+**Instagram:**
+Make AI explain its thinking.
+Learn a simple prompting trick that gets step‑by‑step answers without any coding, so you can trust the results.
+#AIreasoning
+#PromptTips
+#EverydayAI
+Link in bio.
+
+*Kép-ötlet: A person showing a robot a simple step‑by‑step checklist.*
+
+---
+
+## MemoryLLM: Plug-n-Play Interpretable Feed-Forward Memory for Transformers
+**🔗 https://aiworldhq.com/article/how-ai-remembers-your-conversations-and-how-you-can-use-it.html**
+
+**Facebook:**
+Ever wonder why your AI assistant seems to know your favourite coffee order? Discover how new memory tricks help it give more personalised replies. #AImemory #productivity https://aiworldhq.com/article/how-ai-remembers-your-conversations-and-how-you-can-use-it.html
+
+**Instagram:**
+Your AI can remember you better.
+Find out how simple memory modules let assistants recall preferences, making replies feel more personal and useful.
+#AI
+#Memory
+#Productivity
+#Personalisation
+#GettingStarted
+Link in bio.
+
+*Kép-ötlet: A coffee cup next to a laptop screen displaying a clean diagram of a memory module linking short conversation snippets.*
 
 ---
 
