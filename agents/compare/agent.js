@@ -113,7 +113,18 @@ async function main() {
       { agentName: AGENT_NAME, systemPrompt: SYSTEM_PROMPT, maxTokens: 3500 });
     if (retry && selfCheck(retry.text)) { retry.costUsd += response.costUsd; response = retry; }
   }
-  if (!response || !selfCheck(response.text)) { console.log('💥 Nem sikerült jó összehasonlítót írni — marad jövő hétre.'); return; }
+  if (!response || !selfCheck(response.text)) {
+    console.log('💥 Nem sikerült jó összehasonlítót írni — marad jövő hétre.');
+    // Bukás-számláló (2026-07-13): 2 egymást követő bukás a Főnök-asztalra kerül
+    try {
+      let st = {}; try { st = JSON.parse(readFileSync(STATE_PATH, 'utf-8')); } catch { /* első futás */ }
+      st.consecutive_failures = (st.consecutive_failures || 0) + 1;
+      writeFileSync(STATE_PATH, JSON.stringify(st, null, 2), 'utf-8');
+      const { remember } = await import('../../core/memory-manager.js');
+      remember(AGENT_NAME, 'Az összehasonlító cikk önellenőrzésen bukott — a táblázat + H1 már az első vázlatban legyen kész.');
+    } catch { /* a számláló nem kritikus */ }
+    return;
+  }
 
   if (DRY) {
     console.log('\n===== PRÓBA (nem mentem el) =====\n' + response.text.slice(0, 1500) + '\n... (levágva)');
@@ -145,7 +156,7 @@ async function main() {
   topic.done = true;
   topic.written_at = new Date().toISOString();
   try { writeFileSync(TOPICS_PATH, JSON.stringify(topicsData, null, 2), 'utf-8'); } catch { /* nem kritikus */ }
-  try { writeFileSync(STATE_PATH, JSON.stringify({ last_week: isoWeek(), topic: topic.id }, null, 2), 'utf-8'); } catch { /* nem kritikus */ }
+  try { writeFileSync(STATE_PATH, JSON.stringify({ last_week: isoWeek(), topic: topic.id, consecutive_failures: 0 }, null, 2), 'utf-8'); } catch { /* nem kritikus */ }
   console.log(`✅ Összehasonlító vázlat kész → ${filename} (az Ellenőrző kapuja következik) | $${response.costUsd.toFixed(4)}`);
 }
 
