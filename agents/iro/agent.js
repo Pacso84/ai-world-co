@@ -382,6 +382,7 @@ function listRejectedForRework() {
 // A konkrét, kijavítandó hibák összeszedése (auto + AI ellenőrzés)
 function collectFeedback(meta) {
   const points = [];
+  if (meta?.ceo_hint) points.push(meta.ceo_hint);   // a Főnök utasítása ELÖL (2026-07-13, Főnök-asztal)
   if (meta?.auto_check?.issues?.length) points.push(...meta.auto_check.issues);
   if (meta?.ai_review?.issues?.length) points.push(...meta.ai_review.issues);
   if (meta?.ai_review?.verdict) points.push(`Reviewer verdict: ${meta.ai_review.verdict}`);
@@ -479,13 +480,17 @@ function saveBackToReview(rejectedFilename, rejectedData, { text, provider, mode
 }
 
 async function runReworkMode(brandContext) {
-  const rejected = listRejectedForRework();
+  // Futásonkénti sapka (2026-07-13): ha a Főnök-asztal egyszerre sok régi
+  // ügyet indít újra, adagolva dolgozzuk fel — ne árassza el az oldalt és a keretet.
+  const MAX_REWORK_PER_RUN = 6;
+  const allRejected = listRejectedForRework();
+  const rejected = allRejected.slice(0, MAX_REWORK_PER_RUN);
   console.log('🔁 REWORK MÓD — visszaadott cikkek javítása');
   if (rejected.length === 0) {
     console.log('   💤 Nincs javítható elutasított cikk (vagy elérték a max próbát).');
     return;
   }
-  console.log(`   📋 ${rejected.length} cikk vár átdolgozásra\n`);
+  console.log(`   📋 ${rejected.length} cikk vár átdolgozásra${allRejected.length > rejected.length ? ` (+${allRejected.length - rejected.length} a következő futásokra adagolva)` : ''}\n`);
 
   let fixed = 0, requeued = 0, gaveUp = 0, cost = 0;
   for (const filename of rejected) {

@@ -23,7 +23,7 @@
 // ===================================================================
 
 import 'dotenv/config';
-import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync, statSync } from 'fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync, statSync, unlinkSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { spawn } from 'child_process';
@@ -380,6 +380,33 @@ async function main() {
   }
 
   // 4. PIPELINE FUTTATÁS
+
+  // 4/0a. POSTÁS (2026-07-13, cég-hierarchia): visszaadott munkák kézbesítése
+  // a javító-körbe — az Író MÉG EBBEN a futásban felveszi (friss hír nem
+  // marad le az oldalról). Spec: docs/superpowers/specs/2026-07-13-*.md
+  try {
+    const { openFor, markDelivered } = await import('../../core/handback.js');
+    for (const hb of openFor('iro')) {
+      const src = join(ARTICLES_DIR, hb.ref);
+      if (existsSync(src)) {
+        const d = JSON.parse(readFileSync(src, 'utf-8'));
+        d._meta = { ...(d._meta || {}), status: 'rejected', rejected_at: new Date().toISOString(), reason: hb.reason, ceo_hint: hb.hint || '', handback_from: hb.from };
+        const dest = join(REJECTED_DIR, hb.ref.replace(/^ARTICLE_/, 'REJECTED_'));
+        if (!existsSync(REJECTED_DIR)) mkdirSync(REJECTED_DIR, { recursive: true });
+        writeFileSync(dest, JSON.stringify(d, null, 2), 'utf-8');
+        unlinkSync(src);
+        console.log(`📮 postás: ${hb.from} → iro kézbesítve: ${hb.ref} (${String(hb.reason).slice(0, 60)})`);
+      } else {
+        console.log(`📮 postás: a hivatkozott fájl már nincs meg (${hb.ref}) — tétel kézbesítettnek jelölve.`);
+      }
+      markDelivered(hb.id);
+    }
+  } catch (e) { console.log('⚠️ postás-hiba (a pipeline megy tovább): ' + e.message.slice(0, 80)); }
+
+  // 4/0b. FŐNÖK-ASZTAL: azonnali döntés minden beragadt ügyről ("mentsd, ne dobd")
+  console.log('\n━━━ 0. LÉPÉS: FŐNÖK-ASZTAL ━━━');
+  const deskResult = await runAgent('agents/ceo/desk.js');
+  session.stages.desk = { exit_code: deskResult.code };
 
   // 4a. RSS Scraper (csak ha van szabad HÍR-keret — különben felesleges hírt gyűjteni)
   if (!args.skipScrape && !gate.newsBlocked) {
