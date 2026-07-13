@@ -465,6 +465,15 @@ export async function ask(prompt, options = {}) {
     throw new Error('agentName kötelező az options-ban!');
   }
 
+  // KÖZPONTI TANULÁS (2026-07-13): a cég közös tanulságai minden hívásba —
+  // "tudjanak egymás hibáiból tanulni". Determinisztikus, $0 (nincs API).
+  let sysWithLessons = systemPrompt;
+  try {
+    const { lessonsBlock } = await import('./memory-manager.js');
+    const lb = lessonsBlock(agentName);
+    if (lb) sysWithLessons = (systemPrompt || 'You are a helpful assistant.') + lb;
+  } catch { /* tanulság nélkül is megy */ }
+
   const agentConfig = config.agents[agentName];
   if (!agentConfig) {
     throw new Error(`Ismeretlen agent: ${agentName} (config.json nem tartalmazza)`);
@@ -520,7 +529,7 @@ export async function ask(prompt, options = {}) {
     // Átmeneti hibákra ugyanazt a modellt újrapróbáljuk (backoff-fal)
     for (let tryNum = 1; tryNum <= MAX_TRANSIENT_RETRIES + 1; tryNum++) {
       try {
-        const response = await caller(prompt, model, { systemPrompt, maxTokens, jsonMode });
+        const response = await caller(prompt, model, { systemPrompt: sysWithLessons, maxTokens, jsonMode });
 
         // Safety check
         const safety = safetyFilter(response);

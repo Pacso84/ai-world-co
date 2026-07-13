@@ -207,4 +207,25 @@ export function stats() {
   return s;
 }
 
-export default { remember, recall, recallSemantic, decay, stats };
+// ---------- TANULSÁG-BLOKK (2026-07-13, cég-hierarchia) ----------
+// Minden AI-hívás promptja elé kerül (core/ai-router.ask): a cég KÖZÖS
+// tanulságai ('shared' scope) + az agent SAJÁT leckéi — "tudjanak egymás
+// hibáiból tanulni". Kivétel: az iro és a guide a saját scope-ját maga tölti
+// szemantikusan (loadLessons) — nekik itt csak a shared jár, hogy ne
+// duplázzunk. Determinisztikus és $0 (nincs API-hívás).
+const SELF_LOADING = new Set(['iro', 'guide']);
+export function lessonsBlock(agentName) {
+  if (!agentName) return '';
+  try {
+    const shared = list({ scope: 'shared', limit: 4 });
+    const own = SELF_LOADING.has(agentName) ? [] : list({ scope: agentName, limit: 4 });
+    if (!shared.length && !own.length) return '';
+    const lines = [
+      ...shared.map(x => `- [cég] ${x.text}`),
+      ...own.map(x => `- [saját] ${x.text}`)
+    ].slice(0, 8);
+    return `\n\nCOMPANY LESSONS (learned from past mistakes — apply them):\n${lines.join('\n')}`.slice(0, 1500);
+  } catch { return ''; }
+}
+
+export default { remember, recall, recallSemantic, decay, stats, lessonsBlock };
