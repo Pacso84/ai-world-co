@@ -6,7 +6,8 @@ import { strict as assert } from 'assert';
 import { readFileSync, writeFileSync, existsSync, unlinkSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
-import { fileHandback, openFor, roundsFor, markDelivered, escalateStale, listEscalated, closeCase, sourceDefect } from './handback.js';
+import { fileHandback, openFor, roundsFor, markDelivered, escalateStale, listEscalated, closeCase, sourceDefect, deliverToIro } from './handback.js';
+import { mkdirSync, rmSync } from 'fs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const STATE = join(__dirname, '..', 'memory', 'handbacks.json');
@@ -59,7 +60,24 @@ try {
   assert.ok(sourceDefect('nincs cím, csak szöveg'), '8) H1-hiány felismerve');
   assert.equal(sourceDefect('---\ntitle: "x"\n---\n\n# Cím\n' + 'törzs '.repeat(120)), null, '8) egészséges cikk átmegy');
 
-  console.log('✅ handback.test: mind a 8 eset átment');
+  // 9) POSTÁS: nyitott iro-visszaadás → a cikk átkerül a javító-mappába
+  const TMP = join(__dirname, '..', 'memory', 'zz-postas-teszt');
+  mkdirSync(join(TMP, 'articles'), { recursive: true });
+  mkdirSync(join(TMP, 'rejected'), { recursive: true });
+  writeFileSync(join(TMP, 'articles', 'ARTICLE_zz-postas.json'), JSON.stringify({ original_title: 'zz', _meta: { status: 'published' } }, null, 2), 'utf-8');
+  writeFileSync(STATE, JSON.stringify({ items: [] }, null, 2), 'utf-8');
+  fileHandback({ from: 'translator', to: 'iro', ref: 'ARTICLE_zz-postas.json', reason: 'teszt-ok', hint: 'teszt-utasítás' });
+  const delivered = deliverToIro({ articlesDir: join(TMP, 'articles'), rejectedDir: join(TMP, 'rejected') });
+  assert.equal(delivered.length, 1, '9) kézbesítve');
+  assert.ok(!existsSync(join(TMP, 'articles', 'ARTICLE_zz-postas.json')), '9) a forrás elmozdult');
+  const moved = JSON.parse(readFileSync(join(TMP, 'rejected', 'REJECTED_zz-postas.json'), 'utf-8'));
+  assert.equal(moved._meta.status, 'rejected', '9) rejected státusz');
+  assert.equal(moved._meta.ceo_hint, 'teszt-utasítás', '9) utasítás átadva');
+  assert.equal(moved._meta.handback_from, 'translator', '9) feladó rögzítve');
+  assert.equal(openFor('iro').length, 0, '9) a tétel lezárult');
+  rmSync(TMP, { recursive: true, force: true });
+
+  console.log('✅ handback.test: mind a 9 eset átment');
 } finally {
   if (backup === null) { if (existsSync(STATE)) unlinkSync(STATE); }
   else writeFileSync(STATE, backup, 'utf-8');

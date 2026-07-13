@@ -13,7 +13,7 @@
 // Állapot: memory/handbacks.json — sérült fájl esetén üresként indul
 // újra, a pipeline-t SOSEM állítja meg.
 // ===================================================================
-import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs';
+import { readFileSync, writeFileSync, existsSync, mkdirSync, unlinkSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 
@@ -103,6 +103,32 @@ export function handbackStats() {
     deliveredToday: items.filter(it => it.status === 'delivered' && (it.updated_at || '').startsWith(day)).length,
     escalated: items.filter(it => it.status === 'escalated').length
   };
+}
+
+// POSTÁS (a CEO-orchestrator hívja a futás elején): az Írónak címzett
+// visszaadásokat a meglévő javító-körbe kézbesíti — a publikált cikk
+// átkerül content/rejected/-be REJECTED_ néven, a főnöki/visszaadói
+// utasítással a _meta-ban. Az Író MÉG UGYANABBAN a futásban felveszi.
+export function deliverToIro({ articlesDir, rejectedDir }) {
+  const delivered = [];
+  for (const hb of openFor('iro')) {
+    try {
+      const src = join(articlesDir, hb.ref);
+      if (existsSync(src)) {
+        const d = JSON.parse(readFileSync(src, 'utf-8'));
+        d._meta = { ...(d._meta || {}), status: 'rejected', rejected_at: new Date().toISOString(), reason: hb.reason, ceo_hint: hb.hint || '', handback_from: hb.from };
+        if (!existsSync(rejectedDir)) mkdirSync(rejectedDir, { recursive: true });
+        writeFileSync(join(rejectedDir, hb.ref.replace(/^ARTICLE_/, 'REJECTED_')), JSON.stringify(d, null, 2), 'utf-8');
+        unlinkSync(src);
+        console.log(`📮 postás: ${hb.from} → iro kézbesítve: ${hb.ref} (${String(hb.reason).slice(0, 60)})`);
+        delivered.push(hb.ref);
+      } else {
+        console.log(`📮 postás: a hivatkozott fájl már nincs meg (${hb.ref}) — tétel kézbesítettnek jelölve.`);
+      }
+      markDelivered(hb.id);
+    } catch (e) { console.log(`⚠️ postás-hiba egy tételnél (${hb.ref}): ${e.message.slice(0, 60)} — megy tovább.`); }
+  }
+  return delivered;
 }
 
 // Hibás forrás-cikk felismerése (a Fordító használja: EZ visszaadás-ok,
