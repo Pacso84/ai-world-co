@@ -116,3 +116,13 @@ Official links (website/tool-links.json):
 - New tool without any link? The daily Telegram report flags it
   ("🔗 Hivatalos link nélküli új eszköz") — the map is extended with ONE line.
   Tools with no known official page go on the `ignore` list instead.
+
+Enforcement (added 2026-07-13 — prompts alone are NOT enough, the AI ignored
+them once): these rules are enforced BY CODE, not by request.
+`core/quality-guard.js` → `canonicalChip()` mechanically canonicalises every
+chip (alias maps + company-prefix stripping with a generic-word guard), and
+the SELF-FIXER (`node core/quality-guard.js --fix`, pipeline step before the
+build) REPAIRS topic-list and article `_meta` chips automatically — the daily
+Telegram report lists what was self-fixed. Only non-deterministic cases remain
+as watchdog findings for a human/AI decision. The article frontmatter (the
+writer's final choice) always outranks `_meta` (the pairing agent's plan).

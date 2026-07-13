@@ -163,6 +163,13 @@ async function main() {
     const qf = qualityFindings();
     if (qf.length) lines.push(`🧹 Minőség-őr: ${qf.length} találat (pl. ${qf[0].slice(0, 70)}…) — szólj a fejlesztőnek!`);
   } catch { /* az őr hibája ne állítsa meg a jelentést */ }
+  // Önjavító napló (2026-07-13): amit a cég MAGÁTÓL kijavított, arról csak
+  // beszámol — ehhez már nem kell emberi kéz.
+  try {
+    const flog = JSON.parse(readFileSync(join(ROOT, 'memory', 'quality-fix-log.json'), 'utf-8'));
+    const tf = flog[today()] || [];
+    if (tf.length) lines.push(`🔧 Önjavító: ${tf.length} hibát magamtól kijavítottam (pl. ${tf[0].slice(0, 60)}…)`);
+  } catch { /* még nincs javítás-napló */ }
   lines.push(``, `Minden megy magától. ✅`);
 
   await sendMessage(lines.join('\n'));

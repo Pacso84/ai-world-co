@@ -80,6 +80,12 @@ jobs:
           MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
         run: node agents/translator/agent.js --limit 80
 
+      # Minőség-ÖNJAVÍTÓ (2026-07-13, "ne csak szóljon, javítsa is"): a
+      # determinisztikus csempe-hibákat KIJAVÍTJA a build előtt (témalista +
+      # cikkek _meta); a javítás-napló a napi Telegram-jelentésbe kerül.
+      - name: Minőség-önjavító (csempék)
+        run: node core/quality-guard.js --fix || true
+
       - name: Weboldal build
         run: node website/build.js
 

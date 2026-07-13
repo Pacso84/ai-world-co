@@ -16,8 +16,8 @@
 // A check-i18n (minden build után) kiírja, a napi Telegram-jelentés összegzi.
 // ===================================================================
 
-import { readFileSync, readdirSync, existsSync } from 'fs';
-import { fileURLToPath } from 'url';
+import { readFileSync, readdirSync, existsSync, writeFileSync } from 'fs';
+import { fileURLToPath, pathToFileURL } from 'url';
 import { dirname, join } from 'path';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -132,4 +132,95 @@ function checkDupLinks() {
 export function qualityFindings() {
   try { return [...checkChips(), ...checkDupLinks()]; }
   catch (e) { return ['MINŐSÉG-ŐR HIBA: ' + e.message.slice(0, 80)]; }
+}
+
+// ===================================================================
+// MINŐSÉG-ÖNJAVÍTÓ (2026-07-13, user: "ne csak szóljon, javítsa is") —
+// amit determinisztikusan lehet, azt KIJAVÍTJA, nem csak jelzi:
+//   • csempe-kanonizálás a témalistában (innen öröklődik minden új guide-ba)
+//   • cikkek/piszkozatok _meta.tool/company szinkron a frontmatterrel
+//   • kanonizálás után is generikus csempe → ÜRESRE (szabálykönyv: nincs
+//     egyértelmű termék → nincs chip)
+// A javítások a memory/quality-fix-log.json-ba kerülnek → a napi Telegram-
+// jelentés "ennyit javítottam magamtól" sort ír belőle. Ami nem javítható
+// gépi biztonsággal, az marad az őr találatának (ember/AI dönt).
+// Futtatás a pipeline-ban a build ELŐTT:  node core/quality-guard.js --fix
+// ===================================================================
+const TOPICS_PATH = join(ROOT, 'guides', 'guide-topics.json');
+const FIXLOG_PATH = join(ROOT, 'memory', 'quality-fix-log.json');
+
+function fixedChip(tool, company) {
+  const c = canonicalChip(tool, company);
+  // ha kanonizálva is generikus maradt → nincs chip (üres)
+  if (c && !FULLFORM_OK.has(c) && GENERIC_RX.test(c)) return '';
+  return c;
+}
+
+function logFixes(fixes) {
+  if (!fixes.length) return;
+  let log = {};
+  try { log = JSON.parse(readFileSync(FIXLOG_PATH, 'utf-8')); } catch { /* első futás */ }
+  const day = new Date().toISOString().slice(0, 10);
+  log[day] = [...(log[day] || []), ...fixes];
+  // 14 napnál régebbi bejegyzések ki
+  const keep = Object.keys(log).sort().slice(-14);
+  writeFileSync(FIXLOG_PATH, JSON.stringify(Object.fromEntries(keep.map(k => [k, log[k]])), null, 2), 'utf-8');
+}
+
+export function applyQualityFixes() {
+  const fixes = [];
+  // 1) témalista — a forrás, ahonnan az író örökli a _meta-t
+  try {
+    const topics = JSON.parse(readFileSync(TOPICS_PATH, 'utf-8'));
+    let dirty = false;
+    for (const t of topics.topics || []) {
+      const want = fixedChip(t.tool, t.company);
+      if (want !== strip(t.tool)) {
+        fixes.push(`téma ${String(t.id).slice(0, 40)}: "${t.tool}" → "${want || '(nincs chip)'}"`);
+        t.tool = want; dirty = true;
+      }
+    }
+    if (dirty) writeFileSync(TOPICS_PATH, JSON.stringify(topics, null, 2), 'utf-8');
+  } catch { /* nincs témalista */ }
+  // 2) cikkek + piszkozatok — _meta szinkron a kész cikk frontmatterével
+  for (const dir of [ARTICLES_DIR, join(ROOT, 'content', 'drafts')]) {
+    if (!existsSync(dir)) continue;
+    for (const f of readdirSync(dir).filter(x => x.endsWith('.json'))) {
+      try {
+        const p = join(dir, f);
+        const d = JSON.parse(readFileSync(p, 'utf-8'));
+        if (d._meta?.type !== 'guide' || !d._meta?.tool) continue;
+        const md = d.article_markdown || '';
+        const fmCompany = strip((md.match(/^company:\s*(.*)$/m) || [])[1]);
+        const fmTool = strip((md.match(/^tool:\s*(.*)$/m) || [])[1]);
+        const wantCompany = fmCompany || strip(d._meta.company);
+        const wantTool = fixedChip(fmTool || d._meta.tool, wantCompany);
+        let dirty = false;
+        if (wantTool !== strip(d._meta.tool)) {
+          fixes.push(`cikk ${f.slice(14, 55)}: tool "${d._meta.tool}" → "${wantTool || '(nincs chip)'}"`);
+          d._meta.tool = wantTool; dirty = true;
+        }
+        if (wantCompany && wantCompany !== strip(d._meta.company)) {
+          fixes.push(`cikk ${f.slice(14, 55)}: company "${d._meta.company}" → "${wantCompany}"`);
+          d._meta.company = wantCompany; dirty = true;
+        }
+        if (dirty) writeFileSync(p, JSON.stringify(d, null, 2), 'utf-8');
+      } catch { /* sérült fájl — az őr úgyis jelzi */ }
+    }
+  }
+  logFixes(fixes);
+  return fixes;
+}
+
+// Közvetlen futtatás:  node core/quality-guard.js --fix
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  if (process.argv.includes('--fix')) {
+    const fixes = applyQualityFixes();
+    for (const x of fixes) console.log('🔧 ' + x);
+    console.log(fixes.length ? `🔧 önjavító: ${fixes.length} hiba KIJAVÍTVA` : '✅ önjavító: nincs javítanivaló');
+  }
+  const left = qualityFindings();
+  for (const x of left) console.log('⚠️  ' + x);
+  console.log(left.length ? `⚠️  ${left.length} találat maradt — ehhez ember/AI kell` : '✅ minőség-őr: minden tiszta');
+  process.exit(0);
 }
