@@ -1,102 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178384934437984",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-07-12T09:42:24.379Z",
-      "updated": "2026-07-12T09:42:49.078Z"
-    },
-    {
-      "id": "t178384936908019",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-07-12T09:42:49.080Z",
-      "updated": "2026-07-12T09:42:49.287Z"
-    },
-    {
-      "id": "t178384936928887",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-12T09:42:49.288Z",
-      "updated": "2026-07-12T09:42:57.177Z"
-    },
-    {
-      "id": "t178384937718426",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-12T09:42:57.184Z",
-      "updated": "2026-07-12T09:43:33.431Z"
-    },
-    {
-      "id": "t178384941343224",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-12T09:43:33.432Z",
-      "updated": "2026-07-12T09:44:02.552Z"
-    },
-    {
-      "id": "t178384944255575",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-12T09:44:02.555Z",
-      "updated": "2026-07-12T09:44:22.646Z"
-    },
-    {
-      "id": "t17838494626483",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-12T09:44:22.648Z",
-      "updated": "2026-07-12T09:44:37.741Z"
-    },
-    {
-      "id": "t178384947774560",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-12T09:44:37.745Z",
-      "updated": "2026-07-12T09:44:47.673Z"
-    },
-    {
-      "id": "t178384948767569",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-12T09:44:47.675Z",
-      "updated": "2026-07-12T09:44:54.605Z"
-    },
-    {
-      "id": "t178384949460960",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-07-12T09:44:54.609Z",
-      "updated": "2026-07-12T09:44:55.280Z"
-    },
-    {
-      "id": "t178384949529985",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-12T09:44:55.299Z",
-      "updated": "2026-07-12T09:45:05.692Z"
-    },
-    {
-      "id": "t178384950569495",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-07-12T09:45:05.694Z",
-      "updated": "2026-07-12T09:45:09.173Z"
-    },
-    {
       "id": "t178384950917546",
       "title": "Run designer",
       "status": "done",
@@ -479,33 +383,105 @@
       "agent": "publisher",
       "created": "2026-07-13T10:56:44.573Z",
       "updated": "2026-07-13T10:56:51.291Z"
+    },
+    {
+      "id": "t178396486468583",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-07-13T17:47:44.685Z",
+      "updated": "2026-07-13T17:47:59.724Z"
+    },
+    {
+      "id": "t178396487972690",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-07-13T17:47:59.726Z",
+      "updated": "2026-07-13T17:47:59.970Z"
+    },
+    {
+      "id": "t178396487997244",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-07-13T17:47:59.972Z",
+      "updated": "2026-07-13T17:48:17.625Z"
+    },
+    {
+      "id": "t178396489762698",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-13T17:48:17.627Z",
+      "updated": "2026-07-13T17:48:39.707Z"
+    },
+    {
+      "id": "t17839649197101",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-07-13T17:48:39.710Z",
+      "updated": "2026-07-13T17:49:03.060Z"
+    },
+    {
+      "id": "t178396494306342",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-13T17:49:03.063Z",
+      "updated": "2026-07-13T17:49:18.103Z"
+    },
+    {
+      "id": "t178396495810791",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-07-13T17:49:18.107Z",
+      "updated": "2026-07-13T17:49:20.522Z"
+    },
+    {
+      "id": "t178396496054149",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-13T17:49:20.541Z",
+      "updated": "2026-07-13T17:49:26.457Z"
+    },
+    {
+      "id": "t178396496645940",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-07-13T17:49:26.459Z",
+      "updated": "2026-07-13T17:49:27.909Z"
+    },
+    {
+      "id": "t178396496791131",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-13T17:49:27.911Z",
+      "updated": "2026-07-13T17:49:28.772Z"
+    },
+    {
+      "id": "t178396496877461",
+      "title": "Run translator",
+      "status": "done",
+      "agent": "translator",
+      "created": "2026-07-13T17:49:28.774Z",
+      "updated": "2026-07-13T17:51:45.772Z"
+    },
+    {
+      "id": "t178396510577443",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-07-13T17:51:45.774Z",
+      "updated": "2026-07-13T17:51:53.325Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178252674241229",
-      "level": "success",
-      "text": "5 hír + 4 útmutató publikálva (költség: $0.0178).",
-      "agent": "ceo",
-      "at": "2026-06-27T02:19:02.412Z",
-      "loud": false
-    },
-    {
-      "id": "n178261423854814",
-      "level": "info",
-      "text": "SEO: 9 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-06-28T02:37:18.548Z",
-      "loud": false
-    },
-    {
-      "id": "n178261424509860",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). Our line-up is looking great, with a good mix of introductory guides and practical tips for everyday AI use. One note of consideration is that some articles may be tech-heavy, so a gentle introduction",
-      "agent": "publisher",
-      "at": "2026-06-28T02:37:25.098Z",
-      "loud": false
-    },
     {
       "id": "n178261424554118",
       "level": "success",
@@ -1281,99 +1257,33 @@
       "agent": "ceo",
       "at": "2026-07-13T10:56:51.309Z",
       "loud": false
+    },
+    {
+      "id": "n17839649678995",
+      "level": "info",
+      "text": "SEO: 2 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-07-13T17:49:27.899Z",
+      "loud": false
+    },
+    {
+      "id": "n178396510674730",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). Our publishing line-up looks coherent and ready to go, with a great mix of practical AI applications for everyday tasks. I do note that some articles may benefit from a brief introduction to AI basics",
+      "agent": "publisher",
+      "at": "2026-07-13T17:51:46.747Z",
+      "loud": false
+    },
+    {
+      "id": "n178396511335251",
+      "level": "success",
+      "text": "2 hír + 0 útmutató publikálva (költség: $0.0253).",
+      "agent": "ceo",
+      "at": "2026-07-13T17:51:53.352Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178347550194841",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 16 → 4/4/2 oszlop.",
-      "ref": "mobile",
-      "at": "2026-07-08T01:51:41.948Z"
-    },
-    {
-      "id": "m17834763643790",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "5 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
-      "ref": null,
-      "at": "2026-07-08T02:06:04.379Z"
-    },
-    {
-      "id": "m178350519024936",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"ChatGPT vs Gemini vs Claude: Which AI Chatbot Should You Choose?\" — mi a baj: NO_H1: Nincs H1 (# Cím) a cikkben",
-      "ref": "2026-07-08T04-01-38-639Z_aiworld-editorial_Compare_ai-chatbots.json",
-      "at": "2026-07-08T10:06:30.249Z"
-    },
-    {
-      "id": "m178350519773438",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Open, convenient and predictable: Introducing Provisioned Throughput\" — mi a baj: Salvaged from a partial AI response.",
-      "ref": "2026-07-08T10-06-26-611Z_together_Open__convenient_and_predictable__Introducing_Prov.json",
-      "at": "2026-07-08T10:06:37.734Z"
-    },
-    {
-      "id": "m178350520010871",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Australian Payments Plus moves faster with ChatGPT and Codex\" — javítva: Vague instruction for phone voice assistant; Lacks specific guidance for phone voice assistant interaction; újraküldöm.",
-      "ref": "2026-07-08T01-42-24-718Z_openai-blog_Australian_Payments_Plus_moves_faster_with_ChatGPT.json",
-      "at": "2026-07-08T10:06:40.108Z"
-    },
-    {
-      "id": "m178350520891847",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Fill with Gemini in Sheets now available in 11 additional languages\" — javítva: Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
-      "ref": "2026-07-08T01-42-24-720Z_google-workspace_Fill_with_Gemini_in_Sheets_now_available_in_11_add.json",
-      "at": "2026-07-08T10:06:48.918Z"
-    },
-    {
-      "id": "m178350521964236",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"ChatGPT vs Gemini vs Claude: Which AI Chatbot Should You Choose?\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; Reviewer verdict: Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben; újraküldöm.",
-      "ref": "2026-07-08T04-01-38-639Z_aiworld-editorial_Compare_ai-chatbots.json",
-      "at": "2026-07-08T10:06:59.642Z"
-    },
-    {
-      "id": "m178350523121389",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Open, convenient and predictable: Introducing Provisioned Throughput\" — javítva: Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
-      "ref": "2026-07-08T10-06-26-611Z_together_Open__convenient_and_predictable__Introducing_Prov.json",
-      "at": "2026-07-08T10:07:11.213Z"
-    },
-    {
-      "id": "m17835052397618",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Australian Payments Plus moves faster with ChatGPT and Codex\" — mi a baj: Salvaged from a partial AI response.",
-      "ref": "2026-07-08T01-42-24-718Z_openai-blog_Australian_Payments_Plus_moves_faster_with_ChatGPT.json",
-      "at": "2026-07-08T10:07:19.761Z"
-    },
-    {
-      "id": "m178350524706439",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Fill with Gemini in Sheets now available in 11 additional languages\" (?/10)",
-      "ref": "2026-07-08T01-42-24-720Z_google-workspace_Fill_with_Gemini_in_Sheets_now_available_in_11_add.json",
-      "at": "2026-07-08T10:07:27.064Z"
-    },
     {
       "id": "m178350526438120",
       "from": "ellenorzo",
@@ -2636,6 +2546,96 @@
       "text": "2 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
       "ref": null,
       "at": "2026-07-13T10:57:40.929Z"
+    },
+    {
+      "id": "m178396491234990",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Launching UI for generative AI inference recommendations in Amazon SageMaker AI\" — mi a baj: Beginner clarity: Step 1 is too vague for complete beginners",
+      "ref": "2026-07-13T17-47-59-661Z_aws-ml_Launching_UI_for_generative_AI_inference_recommend.json",
+      "at": "2026-07-13T17:48:32.349Z"
+    },
+    {
+      "id": "m178396491969571",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Apache Ossie (Incubating): The New Name for Open Semantic Interchange\" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "2026-07-13T17-47-59-661Z_snowflake_Apache_Ossie__Incubating___The_New_Name_for_Open_S.json",
+      "at": "2026-07-13T17:48:39.695Z"
+    },
+    {
+      "id": "m178396493112129",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Launching UI for generative AI inference recommendations in Amazon SageMaker AI\" — javítva: Beginner clarity: Step 1 is too vague for complete beginners; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "2026-07-13T17-47-59-661Z_aws-ml_Launching_UI_for_generative_AI_inference_recommend.json",
+      "at": "2026-07-13T17:48:51.121Z"
+    },
+    {
+      "id": "m178396494305066",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Apache Ossie (Incubating): The New Name for Open Semantic Interchange\" — javítva: Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "2026-07-13T17-47-59-661Z_snowflake_Apache_Ossie__Incubating___The_New_Name_for_Open_S.json",
+      "at": "2026-07-13T17:49:03.050Z"
+    },
+    {
+      "id": "m178396495021664",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Launching UI for generative AI inference recommendations in Amazon SageMaker AI\" (?/10)",
+      "ref": "2026-07-13T17-47-59-661Z_aws-ml_Launching_UI_for_generative_AI_inference_recommend.json",
+      "at": "2026-07-13T17:49:10.216Z"
+    },
+    {
+      "id": "m178396495808088",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Apache Ossie (Incubating): The New Name for Open Semantic Interchange\" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "2026-07-13T17-47-59-661Z_snowflake_Apache_Ossie__Incubating___The_New_Name_for_Open_S.json",
+      "at": "2026-07-13T17:49:18.080Z"
+    },
+    {
+      "id": "m178396495908024",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "info",
+      "text": "A \"Getting started with ChatGPT\" hír a meglévő útmutatóra mutat: chatgpt-getting-started",
+      "ref": "chatgpt-getting-started",
+      "at": "2026-07-13T17:49:19.080Z"
+    },
+    {
+      "id": "m178396496051124",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "info",
+      "text": "A \"Launching UI for generative AI inference recommendation\" hír a meglévő útmutatóra mutat: amazon-alexa-plus",
+      "ref": "amazon-alexa-plus",
+      "at": "2026-07-13T17:49:20.511Z"
+    },
+    {
+      "id": "m178396496873897",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 17 → 6/3/3 oszlop.",
+      "ref": "mobile",
+      "at": "2026-07-13T17:49:28.738Z"
+    },
+    {
+      "id": "m178396516004147",
+      "from": "social",
+      "to": "team",
+      "kind": "info",
+      "text": "1 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
+      "ref": null,
+      "at": "2026-07-13T17:52:40.041Z"
     }
   ]
 }

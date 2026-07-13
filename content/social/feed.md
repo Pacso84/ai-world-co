@@ -1,6 +1,19 @@
 # AI World Co. — közösségi posztok
 
-*Generálva: 2026-07-13T10:57:40.928Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+*Generálva: 2026-07-13T17:52:40.039Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## Global leaders launch AI for Good Global Commission to expand access, strengthen trust and accelerate impact 
+**🔗 https://aiworldhq.com/article/how-to-get-involved-with-the-ai-for-good-movement-and-use-tr.html**
+
+**Facebook:**
+Want to use tech to make a positive difference in your community? Learn how to get involved with the AI for Good movement and use trustworthy AI for social impact https://aiworldhq.com/article/how-to-get-involved-with-the-ai-for-good-movement-and-use-tr.html #AIforGood
+
+**Instagram:**
+Imagine using tech to make your community garden thrive! You can use AI to plan and grow a successful garden. Learn how to get involved with the AI for Good movement and use trustworthy AI for social impact. #AIforGood #SocialImpact Link in bio
+
+*Kép-ötlet: A photo of a community garden with people working together, with a few plants and gardening tools visible.*
 
 ---
 

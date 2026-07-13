@@ -1,0 +1,60 @@
+{
+  "_meta": {
+    "written_at": "2026-07-13T17:48:51.120Z",
+    "writer_provider": "mistral",
+    "writer_model": "mistral-small-latest",
+    "writer_cost_usd": 0.0033528000000000004,
+    "original_draft": "2026-07-13T17-47-59-661Z_aws-ml_Launching_UI_for_generative_AI_inference_recommend.json",
+    "source_id": "aws-ml",
+    "source_name": "AWS Machine Learning (hivatalos)",
+    "source_link": "https://aws.amazon.com/blogs/machine-learning/launching-ui-for-generative-ai-inference-recommendations-in-amazon-sagemaker-ai/",
+    "status": "published",
+    "rejected_at": "2026-07-13T17:48:32.319Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 708
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "This article is an excellent, clear guide for everyday business users, effectively explaining a",
+      "_salvaged": true,
+      "_aiCost": 0.004355100000000001,
+      "_provider": "google",
+      "_model": "gemini-2.5-flash",
+      "_attempts": 1
+    },
+    "reason": "Salvaged from a partial AI response.",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-07-13T17-47-59-661Z_aws-ml_Launching_UI_for_generative_AI_inference_recommend.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-07-13T17:49:10.214Z",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-07-13T17:49:20.495Z",
+    "guide_worthy": true,
+    "related_guide_topic": "amazon-alexa-plus",
+    "seo": {
+      "meta_description": "Set up Amazon SageMaker's Inference UI without coding, choose the right cloud settings for your AI model in minutes, no server knowledge needed",
+      "keywords": [
+        "Amazon SageMaker",
+        "Inference UI",
+        "AI model deployment",
+        "cloud settings",
+        "no code AI"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add alt text to images to improve accessibility and SEO",
+        "Use subheadings to break up long paragraphs and highlight key points",
+        "Include a brief summary or overview at the beginning of the article"
+      ],
+      "optimised_at": "2026-07-13T17:49:27.888Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"How to Use Amazon SageMaker’s New Inference UI Without Writing Code\"\nsubtitle: \"A step-by-step guide to finding the right cloud settings for your AI model in minutes, no server knowledge required\"\ncategory: \"how-to\"\naudience: \"business\"\nread_time_minutes: 5\ntags: [\"aws\", \"sagemaker\", \"generative-ai\", \"no-code\", \"cloud\"]\n---\n\n# How to Use Amazon SageMaker’s New Inference UI Without Writing Code\n\nYou’ve just downloaded a powerful AI model for your business—maybe a text generator for customer emails or an image creator for marketing. Now what? Amazon SageMaker’s new Inference Recommendation UI lets you set up the right cloud settings with a few clicks, so you don’t need to know what a “GPU instance” is or how much it costs.\n\n## Getting started in SageMaker Studio\n\n1. **Sign in to AWS and open SageMaker Studio**\n   Go to the [AWS Console](https://console.aws.amazon.com/) and sign in with your business account. In the services menu, search for “SageMaker” and click **“SageMaker Studio”**. Think of Studio as your online AI workshop—where you can write code, test models, and now, set up cloud settings without touching a server.\n\n2. **Find the Inference Recommendation tool**\n   Once Studio opens, look at the left sidebar. You’ll see tabs like “Notebooks” and “Data.” Scroll down until you see **“Inference Recommendations.”** Click it. You’ll land on a clean dashboard with charts and buttons—no spreadsheets or confusing numbers.\n\n3. **Pick the right use-case profile**\n   The UI shows preset profiles such as:\n   - **“Chat-style text generation”** (for customer chatbots)\n   - **“Text completion”** (for writing product descriptions)\n   - **“Code completion”** (for developers)\n   Each profile already bundles the best cloud settings for that job. No need to guess which server size fits your needs.\n\n4. **Compare cost and speed**\n   For your chosen profile, the UI shows a simple chart. The X-axis is **latency** (how fast the AI responds), and the Y-axis is **cost per 1,000 tokens** (a token is a small piece of text, like a word or part of a word). Hover over the bars to see exact numbers. This replaces the messy benchmark tables you’d normally have to read.\n\n5. **Select your setup**\n   Click **“Apply”** on the configuration that balances speed and cost for your business. The UI fills in the technical details for you—no JSON editing required.\n\n6. **Deploy your model in one click**\n   Press **“Deploy Model.”** SageMaker starts your chosen cloud server, loads your AI model, and creates an **endpoint**—a web address you can call from your website, app, or email system. You’ll get a URL like `https://your-model-endpoint.aws.amazon.com`. That’s it—your AI is live.\n\n---\n\n## Practical ways to use this UI\n\n- **Small business owner:** Need to generate social media posts every morning? Pick the “Text completion” profile, choose the cheapest instance, and have a working AI endpoint in under five minutes.\n- **Freelance copywriter:** Want to speed up writing product descriptions? Use the “Text completion” profile, compare the cost chart, and deploy a version that stays under your monthly budget.\n- **Startup founder:** Testing different AI models for your app? Use the “Chat-style” profile to see how different cloud setups affect response time—perfect for finding the right balance before you scale.\n\n---\n\n## What this means for you\n\n- **If you run a small business:** You can now experiment with powerful AI models without learning cloud computing or reading technical guides. A few clicks get you from a downloaded model to a live AI service.\n- **If you’re a freelancer or solopreneur:** The UI helps you control cloud costs while still delivering fast AI responses to clients. You can quickly swap to a cheaper setup if your budget tightens, or scale up for a busy season.\n- **If you’re new to AI tools:** The visual guide removes the intimidation of “setting parameters.” Treat the UI like a friendly assistant—pick a profile, compare the simple graphs, and you’ll have a working setup ready to test.\n\n---\nThis new SageMaker tool turns what used to be a specialist’s job into a simple, visual workflow. By following the steps above, you can pick a cost-effective setup, see how it will perform, and launch it with a single click. Today, open SageMaker Studio, explore the “Inference Recommendations” tab, and let the UI handle the heavy lifting. Your next AI-powered tool is only a few clicks away.",
+  "original_title": "Launching UI for generative AI inference recommendations in Amazon SageMaker AI"
+}

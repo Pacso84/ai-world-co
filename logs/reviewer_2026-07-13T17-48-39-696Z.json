@@ -1,0 +1,34 @@
+{
+  "started_at": "2026-07-13T17:48:17.823Z",
+  "total": 3,
+  "passed": 1,
+  "failed": 2,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.012749,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-07-13T17-47-59-660Z_openai-blog_Getting_started_with_ChatGPT.json",
+      "article": "ARTICLE_2026-07-13T17-47-59-660Z_openai-blog_Getting_started_with_ChatGPT.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0039663
+    },
+    {
+      "writer": "WRITER_2026-07-13T17-47-59-661Z_aws-ml_Launching_UI_for_generative_AI_inference_recommend.json",
+      "rejected": "REJECTED_2026-07-13T17-47-59-661Z_aws-ml_Launching_UI_for_generative_AI_inference_recommend.json",
+      "decision": "FAIL",
+      "score": 6,
+      "cost_usd": 0.0043273999999999995
+    },
+    {
+      "writer": "WRITER_2026-07-13T17-47-59-661Z_snowflake_Apache_Ossie__Incubating___The_New_Name_for_Open_S.json",
+      "rejected": "REJECTED_2026-07-13T17-47-59-661Z_snowflake_Apache_Ossie__Incubating___The_New_Name_for_Open_S.json",
+      "decision": "FAIL",
+      "score": 6,
+      "cost_usd": 0.004455300000000001
+    }
+  ],
+  "finished_at": "2026-07-13T17:48:39.696Z",
+  "duration_seconds": 21.873
+}
