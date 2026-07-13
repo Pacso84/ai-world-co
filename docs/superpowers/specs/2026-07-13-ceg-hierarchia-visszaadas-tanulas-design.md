@@ -40,8 +40,12 @@ a postás CSAK az engedélyezett élek mentén kézbesít (elgépelt cél = hang
   után status: resolved (a kézbesítés ténye), a munka sorsát a rework-kör viszi.
 - Korlátok: max 2 visszaadási kör ugyanarra a ref-re → status: escalated (a
   Főnök asztalára kerül). A körszámláló a ref TELJES életére számol (a már
-  resolved tételeket is beleértve), különben a kézbesítés nullázná. 7 napnál
-  idősebb nyitott tétel → escalated.
+  resolved tételeket is beleértve), különben a kézbesítés nullázná.
+- NINCS TÖBBNAPOS VÁRAKOZÁS (user 2026-07-13: "döntés szülessen, ne határidő —
+  pénzt emészt és fontos hír maradhat le"): egy tétel EGY esélyt kap a normál
+  csatornán (a kézbesítés futása); ha a KÖVETKEZŐ futás elején még mindig
+  megoldatlan (≈8 óra múlva), automatikusan a Főnök asztalára kerül. A néma
+  rothadás maximuma így ~1 futásnyi idő, nem napok.
 
 ### 2. core/lessons.js — közös tanulság-könyv
 - memory/lessons.json: `{ global: [..], <agent>: [..] }`, bejegyzés:
@@ -71,13 +75,27 @@ a postás CSAK az engedélyezett élek mentén kézbesít (elgépelt cél = hang
 
 ### 4. agents/ceo — Főnök-döntnök ("beragadt ügyek asztala")
 - Pipeline-lépés minden futásban (olcsó: üres asztal = 0 AI-hívás).
-- Bemenet: handbacks.json escalated tételei + kimerült rework-cikkek
-  (rework_attempts >= MAX a rejected-ben) + 2× bukott heti feladatok.
+- Bemenet: handbacks.json escalated tételei + MINDEN előző futásból megoldatlanul
+  maradt tétel + kimerült rework-cikkek (rework_attempts >= MAX a rejected-ben) +
+  az Író által fel nem vett elutasított cikkek + 2× bukott heti feladatok.
+- Hír-prioritás: friss hír (<48 óra) elakadása = AZONNALI újraküldés a javító-
+  körbe még ABBAN a futásban (a postás az ügynökök előtt fut, így az Író még
+  aznap felveszi).
+- MENTSD, NE DOBD (user 2026-07-13: "ügyeljünk az olvasóinkra — nehogy másnál
+  olvassák el ugyanazt"): régebbi elakadt hír alapértelmezésben NEM elvetés,
+  hanem ÚJRAÍRÁS friss szögből — "mi történt és mit jelent ez neked" utólagos
+  magyarázó cikk (pont a cég profilja: hétköznapi olvasónak értelmezni).
+  Elvetés CSAK végső esetben: duplikátum (ugyanarról már van cikkünk),
+  okafogyott (visszavont/téves hír), vagy 2 újraírási kör után is menthetetlen
+  — ilyenkor is tanulsággal.
 - Döntés MINDIG automatikus (user: teljes automatizálás): szabály-alapú
-  triázs, ha tartalmi ítélet kell → EGY ingyenes-először AI-hívás. Kimenetek:
-  a) még egy kör MÁS megközelítéssel (konkrét utasítás a hint-ben),
-  b) VÉGLEGES elvetés + tanulság (mit tanuljon a cég belőle),
-  c) publikálás kis javítással (ha csak formai gond volt).
+  triázs, ha tartalmi ítélet kell → EGY ingyenes-először AI-hívás. Kimenetek
+  FONTOSSÁGI SORRENDBEN (mentsd, ne dobd):
+  a) publikálás kis javítással (ha csak formai gond volt),
+  b) még egy kör MÁS megközelítéssel (konkrét utasítás a hint-ben; régi hírnél
+     "mit jelent ez neked" utólagos-magyarázó szög),
+  c) VÉGLEGES elvetés + tanulság — CSAK duplikátum/okafogyott/2 kör után is
+     menthetetlen esetben.
 - Minden döntés: learnLesson(scope:'global', "Főnöki döntés: … mert …") +
   bejegyzés a napi jelentésbe. A Telegram INFORMÁL, sosem kérdez-blokkol.
 
@@ -98,7 +116,7 @@ a postás CSAK az engedélyezett élek mentén kézbesít (elgépelt cél = hang
    REJECTED-be teszi → (szimulált) 2. kör után escalated → Főnök dönt → lesson.
 2. lessons.json injektálás: ask() hívásnál a prompt tartalmazza a blokkot
    (mock-agent névvel, AI-hívás nélkül ellenőrizve).
-3. Sapkák: 12 lesson/lista, dedup, 2 kör, 7 nap — határérték-tesztek.
+3. Sapkák: 12 lesson/lista, dedup, 2 kör, 1-futásnyi türelem — határérték-tesztek.
 
 ## Nem célok (YAGNI)
 - Nincs főszerkesztő-kapu minden kiadás előtt (user elvetette — drága).
