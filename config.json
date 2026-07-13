@@ -19,7 +19,21 @@
     "support_enabled": true,
     "support_url": "https://ko-fi.com/D3G121RXFK",
     "support_label": "Buy us a coffee",
-    "_support_comment": "support_url: ide jon a Ko-fi / Buy Me a Coffee / PayPal.me link (maganszemelykent is mukodik). Ha ures, a Support oldal 'hamarosan' allapotot mutat. Onkentes tip, NEM adolevonhato adomany."
+    "_support_comment": "support_url: ide jon a Ko-fi / Buy Me a Coffee / PayPal.me link (maganszemelykent is mukodik). Ha ures, a Support oldal 'hamarosan' allapotot mutat. Onkentes tip, NEM adolevonhato adomany.",
+    "hierarchy": {
+      "_comment": "Cegrend (2026-07-13): ki kinek jelent + ki kinek adhat vissza munkat. A postas (agents/ceo/agent.js) CSAK e menten kezbesit; tiltott el = hangos hiba.",
+      "ceo":        { "reports_to": null,        "may_handback_to": ["iro", "guide", "translator", "designer", "social"] },
+      "ellenorzo":  { "reports_to": "ceo",       "may_handback_to": ["iro", "guide"] },
+      "iro":        { "reports_to": "ellenorzo", "may_handback_to": [] },
+      "guide":      { "reports_to": "ellenorzo", "may_handback_to": [] },
+      "translator": { "reports_to": "ellenorzo", "may_handback_to": ["iro"] },
+      "designer":   { "reports_to": "ceo",       "may_handback_to": [] },
+      "social":     { "reports_to": "ceo",       "may_handback_to": [] },
+      "digest":     { "reports_to": "ceo",       "may_handback_to": [] },
+      "compare":    { "reports_to": "ceo",       "may_handback_to": [] },
+      "pairing":    { "reports_to": "ceo",       "may_handback_to": [] },
+      "video":      { "reports_to": "ceo",       "may_handback_to": [] }
+    }
   },
   "agents": {
     "ceo": {
