@@ -170,6 +170,23 @@ async function main() {
     const tf = flog[today()] || [];
     if (tf.length) lines.push(`🔧 Önjavító: ${tf.length} hibát magamtól kijavítottam (pl. ${tf[0].slice(0, 60)}…)`);
   } catch { /* még nincs javítás-napló */ }
+  // Hierarchia-műszerfal (2026-07-13): visszaadások + főnöki döntések + tanulságok
+  try {
+    const { handbackStats } = await import('./handback.js');
+    const hb = handbackStats();
+    if (hb.open + hb.deliveredToday + hb.escalated > 0)
+      lines.push(`↩️ Visszaadott munkák: ${hb.deliveredToday} kézbesítve ma · ${hb.open} nyitott · ${hb.escalated} a Főnök asztalán`);
+  } catch { /* iroda nélkül is megy */ }
+  try {
+    const dlog = JSON.parse(readFileSync(join(ROOT, 'memory', 'ceo-desk-log.json'), 'utf-8'));
+    const td = dlog[today()] || [];
+    if (td.length) lines.push(`👔 Főnöki döntés ma: ${td.length} (pl. ${td[0].slice(0, 70)}…)`);
+  } catch { /* még nincs asztal-napló */ }
+  try {
+    const store = JSON.parse(readFileSync(join(ROOT, 'memory', 'store.json'), 'utf-8'));
+    const todays = (store.items || []).filter(it => (it.created || '').startsWith(today())).length;
+    if (todays) lines.push(`📖 Új tanulság ma: ${todays} — a cég minden tagja látja a következő munkájánál`);
+  } catch { /* könyv nélkül is megy */ }
   lines.push(``, `Minden megy magától. ✅`);
 
   await sendMessage(lines.join('\n'));

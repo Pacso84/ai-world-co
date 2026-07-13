@@ -167,7 +167,7 @@ function logFixes(fixes) {
   writeFileSync(FIXLOG_PATH, JSON.stringify(Object.fromEntries(keep.map(k => [k, log[k]])), null, 2), 'utf-8');
 }
 
-export function applyQualityFixes() {
+export async function applyQualityFixes() {
   const fixes = [];
   // 1) témalista — a forrás, ahonnan az író örökli a _meta-t
   try {
@@ -208,6 +208,14 @@ export function applyQualityFixes() {
       } catch { /* sérült fájl — az őr úgyis jelzi */ }
     }
   }
+  // Tanulság a közös könyvbe (2026-07-13): ha javítani kellett, arról a cég
+  // MINDEN munkatársa tanul (a router minden promptba befűzi).
+  if (fixes.length) {
+    try {
+      const { remember } = await import('./memory-manager.js');
+      remember('shared', `Csempe-szabály emlékeztető: a tool mindig a legrövidebb hivatalos terméknév (ma ${fixes.length} javítás kellett, pl. ${fixes[0].slice(0, 60)}).`);
+    } catch { /* tanulság nélkül is megy */ }
+  }
   logFixes(fixes);
   return fixes;
 }
@@ -215,7 +223,7 @@ export function applyQualityFixes() {
 // Közvetlen futtatás:  node core/quality-guard.js --fix
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   if (process.argv.includes('--fix')) {
-    const fixes = applyQualityFixes();
+    const fixes = await applyQualityFixes();
     for (const x of fixes) console.log('🔧 ' + x);
     console.log(fixes.length ? `🔧 önjavító: ${fixes.length} hiba KIJAVÍTVA` : '✅ önjavító: nincs javítanivaló');
   }
