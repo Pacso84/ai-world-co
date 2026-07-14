@@ -1341,14 +1341,20 @@ function buildArticlePage(a) {
 
   const canonical = `${SITE.url}${LP}/article/${a.slug}.html`;
   const ogImage = a.image ? `${SITE.url}/assets/images/${a.image}` : '';
+  // NewsArticle a híreknek (2026-07-14, Google News/Discover-felkészítés);
+  // a szerző/kiadó az About-oldalra mutat (átlátható AI-szerkesztőség = E-E-A-T).
   const jsonld = {
-    '@context': 'https://schema.org', '@type': 'Article',
+    '@context': 'https://schema.org', '@type': 'NewsArticle',
     headline: a.title, description: a.seoDescription || a.subtitle,
     image: ogImage || undefined,
     datePublished: a.publishedAt || undefined,
+    dateModified: a.publishedAt || undefined,
     inLanguage: HTML_LANG[LANG] || 'en',
-    author: { '@type': 'Organization', name: SITE.name },
-    publisher: { '@type': 'Organization', name: SITE.name },
+    author: { '@type': 'Organization', name: SITE.name, url: `${SITE.url}/about` },
+    publisher: {
+      '@type': 'Organization', name: SITE.name, url: SITE.url,
+      logo: { '@type': 'ImageObject', url: `${SITE.url}/assets/logo.svg` }
+    },
     mainEntityOfPage: canonical,
     keywords: a.seoKeywords || undefined
   };
@@ -2216,8 +2222,19 @@ function main() {
 ${sitemapUrls.map(u => `  <url><loc>${u.loc}</loc><lastmod>${u.date}</lastmod></url>`).join('\n')}
 </urlset>`;
   writeFileSync(join(OUT_DIR, 'sitemap.xml'), sitemap, 'utf-8');
-  writeFileSync(join(OUT_DIR, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${SITE.url}/sitemap.xml\n`, 'utf-8');
-  console.log(`✅ sitemap.xml (${sitemapUrls.length} URL) + robots.txt generálva`);
+
+  // GOOGLE NEWS SITEMAP (2026-07-14): csak a 48 óránál FRISSEBB hírek (EN) —
+  // a Google News/Discover ebből indexel villámgyorsan. Útmutatók nem hírek.
+  const newsArts = articles.filter(a => !a.isGuide && a.publishedAt &&
+    (Date.now() - new Date(a.publishedAt).getTime()) < 48 * 3600e3);
+  const newsSitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+${newsArts.map(a => `  <url><loc>${SITE.url}/article/${a.slug}.html</loc><news:news><news:publication><news:name>${escapeHtml(SITE.name)}</news:name><news:language>en</news:language></news:publication><news:publication_date>${a.publishedAt}</news:publication_date><news:title>${escapeHtml(a.title)}</news:title></news:news></url>`).join('\n')}
+</urlset>`;
+  writeFileSync(join(OUT_DIR, 'news-sitemap.xml'), newsSitemap, 'utf-8');
+
+  writeFileSync(join(OUT_DIR, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${SITE.url}/sitemap.xml\nSitemap: ${SITE.url}/news-sitemap.xml\n`, 'utf-8');
+  console.log(`✅ sitemap.xml (${sitemapUrls.length} URL) + news-sitemap.xml (${newsArts.length} friss hír) + robots.txt generálva`);
 
   // feed.xml: NYELVENKÉNT készül a fő ciklusban (en=gyökér, /hu/feed.xml stb.)
   console.log('✅ feed.xml minden nyelven generálva (gyökér + /hu /es /de /fr)');

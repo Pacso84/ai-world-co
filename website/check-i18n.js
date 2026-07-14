@@ -81,6 +81,24 @@ for (const lang of LANGS) {
         console.log(`⚠️  [${lang}] FORDÍTATLAN TARTALOM GYANÚ (${hits} angol jel): ${short}`);
         bodyHits++;
       }
+      // --- 2b) MEGSZÓLÍTÁS-VADÁSZ (2026-07-14): a márka-norma hu=tegezés,
+      // de=du, es=tú, fr=vous — az ettől eltérő megszólítás stílustörés.
+      // Küszöb 2, hogy egy véletlen szóalak ne riasszon. (User szúrta ki a
+      // Roosevelt-cikkben; a fordító-prompt azóta előírja, ez a védőháló.)
+      const FORMALITY = {
+        // 'hozzon létre'/'adja meg' SZÁNDÉKOSAN nincs itt: 3. személyben az
+        // AI-ra is vonatkozhat ("kérd meg, hogy hozzon létre...") — álriasztás.
+        hu: ['kattintson', 'nyissa meg', 'jelentkezzen be', 'írja be', 'válassza ki', 'nyisson'],
+        de: ['klicken sie', 'öffnen sie', 'geben sie', 'erstellen sie', 'wählen sie', 'melden sie sich', 'tippen sie'],
+        es: ['haga clic', 'inicie sesión', 'seleccione', 'escriba su', 'abra su', 'pulse '],
+        fr: ['tu peux', 'ton compte', 'clique sur', 'ta première']
+      };
+      const marks = FORMALITY[lang] || [];
+      const mHits = marks.filter(w => text.includes(w)).length;
+      if (mHits >= 2) {
+        console.log(`⚠️  [${lang}] MEGSZÓLÍTÁS-TÖRÉS GYANÚ (${mHits} jel — norma: hu=tegezés/de=du/es=tú/fr=vous): ${short}`);
+        chromeHits++;
+      }
     }
   }
 }

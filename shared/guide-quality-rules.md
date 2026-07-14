@@ -49,6 +49,11 @@ roughly **60–140 words** (plus the example line).
 - **Analogies support, never replace, instructions.** A nice metaphor is not a
   substitute for saying which button to press.
 - **No invented facts, numbers or quotes.** Same as everywhere on the site.
+- **Vendor neutrality (added 2026-07-14, reader feedback).** When the article
+  is not ABOUT one specific tool, example lists must name SEVERAL assistants
+  from different companies (ChatGPT, Gemini, Claude, Copilot, Le Chat,
+  DeepSeek, …) or say "any AI assistant" — never spotlight the same one or
+  two, it reads like paid advertising.
 
 ## 3. Depth requirements
 

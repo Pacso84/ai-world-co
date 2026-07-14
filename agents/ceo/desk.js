@@ -139,7 +139,7 @@ async function decideNews(x) {
   m.ceo_rounds = rounds + 1;
   m.ceo_hint = v.action === 'fix-only'
     ? `CEO instruction (fix ONLY the flaws listed, keep everything else): ${v.hint}`
-    : `CEO instruction (REWRITE as an explainer — "what happened and what it means for you"; the news is a few days old, so context beats speed): ${v.hint}`;
+    : `CEO instruction (REWRITE as an explainer — "what happened and what it means for you"; the news is a few days old, so context beats speed): ${v.hint} HONESTY RULE: name the REAL products/places/organisations from the source; NEVER invent generic UI steps ("most platforms", fictional menu names). If you add a "try it yourself" section, use typed example prompts only (2026-07-14 reader complaint lesson).`;
   writeFileSync(join(REJECTED_DIR, f), JSON.stringify(d, null, 2), 'utf-8');
   if (v.lesson) remember('shared', `Főnöki döntés tanulsága: ${v.lesson}`);
   message('ceo', 'iro', 'problem', `Főnöki újraindítás: "${(d.original_title || '').slice(0, 60)}" — ${v.action}`, { ref: f.replace(/^REJECTED_/, '') });
