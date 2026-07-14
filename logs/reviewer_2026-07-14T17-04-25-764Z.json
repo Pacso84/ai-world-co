@@ -1,0 +1,62 @@
+{
+  "started_at": "2026-07-14T17:03:30.251Z",
+  "total": 7,
+  "passed": 1,
+  "failed": 6,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.031101200000000002,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-07-14T17-02-21-043Z_openai-blog_How_to_manage_AI_investments_in_the_agentic_era.json",
+      "rejected": "REJECTED_2026-07-14T17-02-21-043Z_openai-blog_How_to_manage_AI_investments_in_the_agentic_era.json",
+      "decision": "FAIL",
+      "score": 6,
+      "cost_usd": 0.004545100000000001
+    },
+    {
+      "writer": "WRITER_2026-07-14T17-02-21-044Z_aws-ml_Scaling_UX_testing_with_Amazon_Nova_Act__A_new_app.json",
+      "rejected": "REJECTED_2026-07-14T17-02-21-044Z_aws-ml_Scaling_UX_testing_with_Amazon_Nova_Act__A_new_app.json",
+      "decision": "FAIL",
+      "score": 6,
+      "cost_usd": 0.0043447
+    },
+    {
+      "writer": "WRITER_2026-07-14T17-02-21-044Z_nvidia-blog_Nemotron_Labs__How_Open_Models_Give_Enterprises_an.json",
+      "article": "ARTICLE_2026-07-14T17-02-21-044Z_nvidia-blog_Nemotron_Labs__How_Open_Models_Give_Enterprises_an.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0043917
+    },
+    {
+      "writer": "WRITER_2026-07-14T17-02-21-044Z_openai-blog_How_data_science_teams_use_ChatGPT_Work.json",
+      "rejected": "REJECTED_2026-07-14T17-02-21-044Z_openai-blog_How_data_science_teams_use_ChatGPT_Work.json",
+      "decision": "FAIL",
+      "score": 4,
+      "cost_usd": 0.0043635
+    },
+    {
+      "writer": "WRITER_2026-07-14T17-02-21-044Z_openai-blog_How_sales_teams_use_ChatGPT_Work.json",
+      "rejected": "REJECTED_2026-07-14T17-02-21-044Z_openai-blog_How_sales_teams_use_ChatGPT_Work.json",
+      "decision": "FAIL",
+      "score": 4,
+      "cost_usd": 0.004437399999999999
+    },
+    {
+      "writer": "WRITER_2026-07-14T17-02-21-767Z_apple-ml_Proactive_Agent_Research_Environment__Simulating_A.json",
+      "rejected": "REJECTED_2026-07-14T17-02-21-767Z_apple-ml_Proactive_Agent_Research_Environment__Simulating_A.json",
+      "decision": "FAIL",
+      "score": 6,
+      "cost_usd": 0.004525
+    },
+    {
+      "writer": "WRITER_2026-07-14T17-02-21-767Z_databricks_Blocking_Slow-Burn_Attacks__Contextual_Policies_in.json",
+      "rejected": "REJECTED_2026-07-14T17-02-21-767Z_databricks_Blocking_Slow-Burn_Attacks__Contextual_Policies_in.json",
+      "decision": "FAIL",
+      "score": 6,
+      "cost_usd": 0.0044938
+    }
+  ],
+  "finished_at": "2026-07-14T17:04:25.764Z",
+  "duration_seconds": 55.513
+}

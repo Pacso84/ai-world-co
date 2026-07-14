@@ -1,0 +1,74 @@
+{
+  "started_at": "2026-07-14T17:02:22.228Z",
+  "drafts_total": 7,
+  "articles_written": 7,
+  "articles_failed": 0,
+  "total_cost_usd": 0.0161758,
+  "by_article": [
+    {
+      "draft": "2026-07-14T17-02-21-767Z_databricks_Blocking_Slow-Burn_Attacks__Contextual_Policies_in.json",
+      "writer_output": "WRITER_2026-07-14T17-02-21-767Z_databricks_Blocking_Slow-Burn_Attacks__Contextual_Policies_in.json",
+      "success": true,
+      "cost_usd": 0,
+      "duration_ms": 2947,
+      "provider": "cerebras",
+      "model": "gpt-oss-120b"
+    },
+    {
+      "draft": "2026-07-14T17-02-21-767Z_apple-ml_Proactive_Agent_Research_Environment__Simulating_A.json",
+      "writer_output": "WRITER_2026-07-14T17-02-21-767Z_apple-ml_Proactive_Agent_Research_Environment__Simulating_A.json",
+      "success": true,
+      "cost_usd": 0,
+      "duration_ms": 2043,
+      "provider": "cerebras",
+      "model": "gpt-oss-120b"
+    },
+    {
+      "draft": "2026-07-14T17-02-21-044Z_openai-blog_How_sales_teams_use_ChatGPT_Work.json",
+      "writer_output": "WRITER_2026-07-14T17-02-21-044Z_openai-blog_How_sales_teams_use_ChatGPT_Work.json",
+      "success": true,
+      "cost_usd": 0.0032696000000000005,
+      "duration_ms": 13267,
+      "provider": "mistral",
+      "model": "mistral-small-latest"
+    },
+    {
+      "draft": "2026-07-14T17-02-21-044Z_openai-blog_How_data_science_teams_use_ChatGPT_Work.json",
+      "writer_output": "WRITER_2026-07-14T17-02-21-044Z_openai-blog_How_data_science_teams_use_ChatGPT_Work.json",
+      "success": true,
+      "cost_usd": 0.0031496000000000002,
+      "duration_ms": 10903,
+      "provider": "mistral",
+      "model": "mistral-small-latest"
+    },
+    {
+      "draft": "2026-07-14T17-02-21-044Z_nvidia-blog_Nemotron_Labs__How_Open_Models_Give_Enterprises_an.json",
+      "writer_output": "WRITER_2026-07-14T17-02-21-044Z_nvidia-blog_Nemotron_Labs__How_Open_Models_Give_Enterprises_an.json",
+      "success": true,
+      "cost_usd": 0.00318,
+      "duration_ms": 11947,
+      "provider": "mistral",
+      "model": "mistral-small-latest"
+    },
+    {
+      "draft": "2026-07-14T17-02-21-044Z_aws-ml_Scaling_UX_testing_with_Amazon_Nova_Act__A_new_app.json",
+      "writer_output": "WRITER_2026-07-14T17-02-21-044Z_aws-ml_Scaling_UX_testing_with_Amazon_Nova_Act__A_new_app.json",
+      "success": true,
+      "cost_usd": 0.0030972000000000005,
+      "duration_ms": 10361,
+      "provider": "mistral",
+      "model": "mistral-small-latest"
+    },
+    {
+      "draft": "2026-07-14T17-02-21-043Z_openai-blog_How_to_manage_AI_investments_in_the_agentic_era.json",
+      "writer_output": "WRITER_2026-07-14T17-02-21-043Z_openai-blog_How_to_manage_AI_investments_in_the_agentic_era.json",
+      "success": true,
+      "cost_usd": 0.0034794,
+      "duration_ms": 16350,
+      "provider": "mistral",
+      "model": "mistral-small-latest"
+    }
+  ],
+  "finished_at": "2026-07-14T17:03:30.050Z",
+  "duration_seconds": 67.822
+}

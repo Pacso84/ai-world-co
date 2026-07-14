@@ -1,0 +1,35 @@
+{
+  "_meta": {
+    "written_at": "2026-07-14T17:02:40.486Z",
+    "writer_provider": "mistral",
+    "writer_model": "mistral-small-latest",
+    "writer_cost_usd": 0.0032696000000000005,
+    "original_draft": "2026-07-14T17-02-21-044Z_openai-blog_How_sales_teams_use_ChatGPT_Work.json",
+    "source_id": "openai-blog",
+    "source_name": "OpenAI Blog (hivatalos)",
+    "source_link": "https://openai.com/academy/codex-for-work/how-sales-teams-use-codex",
+    "status": "rejected",
+    "rejected_at": "2026-07-14T17:04:10.638Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 789
+    },
+    "ai_review": {
+      "overall_score": 4,
+      "clarity_score": 3,
+      "decision": "FAIL",
+      "issues": [],
+      "verdict": "Salvaged from a partial AI response.",
+      "_salvaged": true,
+      "_aiCost": 0.004437399999999999,
+      "_provider": "google",
+      "_model": "gemini-2.5-flash",
+      "_attempts": 1
+    },
+    "reason": "Salvaged from a partial AI response.",
+    "can_retry": true
+  },
+  "article_markdown": "---\ntitle: \"How to Turn Your Sales Chats into Ready-to-Use Briefs with AI\"\nsubtitle: \"Stop rewriting notes after every call — let AI turn your sales conversations into clear briefs, plans, and forecasts you can use right away\"\ncategory: \"how-to\"\naudience: \"business\"\nread_time_minutes: 5\ntags: [\"sales\", \"meeting-notes\", \"ai-briefs\", \"productivity\"]\n---\n\n# How to Turn Your Sales Chats into Ready-to-Use Briefs with AI\n\nYou just finished a long call with a client. Your notes are scribbled on a napkin. The next meeting is in two days. You need a clear summary, next steps, and a forecast — but you’re staring at a page of half-words and arrows.\n\nWhat if your AI assistant could listen in, pull out the key points, and hand you a polished brief before you even open your laptop?\n\nThat’s exactly what tools like **ChatGPT Work** (a feature set within ChatGPT) are designed to do. They don’t just transcribe — they turn raw conversation into actionable insights you can use in pipeline reviews, account plans, or stalled-deal diagnoses.\n\nHere’s how to use them — step by step — so you can spend less time rewriting and more time selling.\n\n---\n\n## Start with a clean transcript\n\nBefore AI can help, you need a clean record of the conversation.\n\n- Use your meeting platform’s built-in recording (Zoom, Teams, Google Meet).\n- Enable live transcription if available — it gives the AI a head start.\n- Save the audio file or transcript locally. Most platforms let you export as a .txt or .docx.\n\n> 🔍 **Pro tip**: Name your files clearly. Instead of “meeting1.mp3”, try “AcmeCorp_2025-06-04_call.txt”. The AI will use this context to personalise the output.\n\n---\n\n## Upload and prompt: the two-minute setup\n\nOpen **ChatGPT Work** (or the AI tool you’re using) and upload your transcript.\n\nThen, paste this prompt — or adapt it to your needs:\n\n> “I’m a sales rep. Turn this transcript into:\n> 1. A 3-bullet **meeting summary** (decisions made, next steps, open questions).\n> 2. A **pipeline update** (stage, likelihood, forecast date).\n> 3. A **next-action list** (who does what by when).\n> Keep it concise and ready to copy into a CRM note.”\n\nThat’s it. No fancy code. No extra setup.\n\n> 💡 **What’s a prompt?** Think of it like giving instructions to a very smart assistant — the clearer you are, the better the result. A prompt is just a sentence or two that tells the AI exactly what you want.\n\n---\n\n## Use the output — without rewriting\n\nOnce the AI generates the brief, you’ll get something like:\n\n- **Summary**: “Client agreed to pilot in Q3. Budget approved. Next call scheduled for 12 July.”\n- **Pipeline update**: “AcmeCorp — Stage: Pilot Agreement. Likelihood: 85%. Forecast: 15 August.”\n- **Next actions**:\n  - You: Send contract by EOD Friday.\n  - Client: Confirm pilot start date.\n\nNow, copy-paste directly into your CRM or share with your team. No rewriting. No guessing.\n\n> ⚠️ **Watch out**: Always double-check the AI’s work. It can miss details or mishear names. A quick scan takes 10 seconds — and saves you from a costly mistake.\n\n---\n\n## Go further: turn briefs into plans\n\nOnce you’re comfortable, use the same method to create:\n\n- **Account plans**: Feed in multiple call transcripts and ask the AI to generate a one-page overview of the client’s pain points, goals, and decision timeline.\n- **Stalled-deal diagnoses**: Upload a series of past call notes and ask, “Why is this deal stuck? List 3 likely reasons and next steps.”\n- **Forecast reviews**: Combine recent call summaries and ask, “Which deals should I focus on this month to hit quota?”\n\nEach time, the AI turns scattered notes into a structured document you can act on.\n\n---\n\n## What this means for you\n\n- **If you're a sales rep**: Stop wasting time rewriting notes. Use AI to turn every call into a ready-to-use brief in under two minutes. You’ll walk into your next meeting prepared — not scrambling.\n- **If you lead a sales team**: Standardise your team’s output. Ask everyone to use the same prompt and upload format. Your pipeline reviews will become faster, clearer, and more data-driven.\n- **If you're just getting started with AI**: Start small. Try it on one call this week. Notice how much time you save — and how much more confident you feel walking into the next conversation.\n\n---\n\n## Wrap-up\n\nYou don’t need to be a tech expert to use AI in sales. With a clean transcript and a simple prompt, you can turn every call into a polished brief, a clear pipeline update, or a stalled-deal diagnosis — ready to use the moment the meeting ends.\n\nTry it once. You’ll wonder how you ever sold without it.",
+  "original_title": "How sales teams use ChatGPT Work"
+}

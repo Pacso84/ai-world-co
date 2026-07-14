@@ -1,9 +1,9 @@
 {
   "_meta": {
-    "written_at": "2026-07-02T10:41:30.255Z",
+    "written_at": "2026-07-14T17:05:23.578Z",
     "writer_provider": "mistral",
     "writer_model": "mistral-small-latest",
-    "writer_cost_usd": 0,
+    "writer_cost_usd": 0.0032421999999999998,
     "original_draft": "2026-07-02T02-10-03-889Z_snowflake_Why_the_Data_Platform_Determines_Legal_AI_Outcomes.json",
     "source_id": "snowflake",
     "source_name": "Snowflake Blog (hivatalos)",
@@ -12,21 +12,21 @@
     "auto_check": {
       "passed": true,
       "issues": [],
-      "wordCount": 591
+      "wordCount": 628
     },
     "can_retry": true,
-    "rework_attempts": 0,
+    "rework_attempts": 1,
     "reworked_from": "REJECTED_2026-07-02T02-10-03-889Z_snowflake_Why_the_Data_Platform_Determines_Legal_AI_Outcomes.json",
-    "requeued_unchanged": true,
-    "rejected_at": "2026-07-13T19:23:42.795Z",
+    "requeued_unchanged": false,
+    "rejected_at": "2026-07-14T17:06:09.627Z",
     "ai_review": {
-      "overall_score": 6,
-      "clarity_score": 6,
+      "overall_score": 3,
+      "clarity_score": 3,
       "decision": "FAIL",
       "issues": [],
       "verdict": "Salvaged from a partial AI response.",
       "_salvaged": true,
-      "_aiCost": 0.004287399999999999,
+      "_aiCost": 0.004340699999999999,
       "_provider": "google",
       "_model": "gemini-2.5-flash",
       "_attempts": 1
@@ -35,6 +35,6 @@
     "ceo_rounds": 1,
     "ceo_hint": "CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers."
   },
-  "article_markdown": "---\ntitle: \"How to Build Your Own AI-Powered Knowledge Base Without Coding\"\nsubtitle: \"Turn messy notes, emails, and articles into a searchable AI assistant in under an hour\"\ncategory: \"how-to\"\naudience: \"personal\"\nread_time_minutes: 6\ntags: [\"ai-tools\", \"knowledge-management\", \"organisation\", \"productivity\", \"getting-started\"]\n---\n\n# How to Build Your Own AI-Powered Knowledge Base Without Coding\n\nYou’ve probably saved a dozen articles, copied a few emails, and scribbled notes on napkins — only to forget where you put them. What if you could ask an AI, “Where did I see that thing about composting in the garden?” and get the exact paragraph back?\n\nThat’s what a personal knowledge base does. And with today’s AI tools, you can build one without writing a single line of code.\n\n---\n\n## Start with a simple folder of files\n\nThink of your knowledge base as a digital filing cabinet. You don’t need fancy software — just a folder on your computer or in the cloud.\n\n1. **Create a folder** called “My AI Notes” on your desktop or in Google Drive.\n2. **Drag in** any text files, PDFs, Word docs, or even screenshots saved as images.\n3. **Add a “README.txt”** file at the top with one sentence: “This folder contains everything I’ve learned about gardening, travel, and home repairs.”\n\nThat’s it. No structure needed yet — the AI will help you search later.\n\n---\n\n## Pick an AI tool that reads your files\n\nNot all AI tools can read your documents. You need one that supports **RAG (Retrieval-Augmented Generation)** — a fancy way of saying the AI can look up facts in your files before answering.\n\nHere are three beginner-friendly options:\n\n- **Google Drive + Gemini**: Upload your folder to Google Drive, open a chat in Gemini, and paste a link to the folder.\n- **Notion + Notion AI**: Create a Notion page, paste your notes, and use Notion’s built-in AI search.\n- **Obsidian + Copilot**: Install the Obsidian app, drop your files into a vault, and enable the AI plugin.\n\nEach tool works differently, but they all do the same thing: let you ask questions about your own notes.\n\n---\n\n## Ask your AI questions like a librarian\n\nOnce your files are connected, try asking:\n\n- “What did I write about composting in March?”\n- “Summarise the key points from the email about the plumbing repair.”\n- “List all the travel tips I saved from last year.”\n\nThe AI scans your files and pulls the relevant text. It’s like having a librarian who knows every word you’ve ever saved.\n\n**Pro tip**: Start with short, specific questions. Instead of “Tell me about gardening,” try “What’s the best time to plant tomatoes in Melbourne?”\n\n---\n\n## What this means for you\n\n- **If you’re a student**: Keep lecture notes, assignment drafts, and research articles in one folder. Ask the AI, “What did the professor say about photosynthesis?” during exam prep.\n- **If you’re a parent**: Save kids’ school newsletters, activity schedules, and party ideas in one place. Ask, “When is the next school excursion?” and get the exact date.\n- **If you’re just getting started**: Pick one topic you care about (cooking, fitness, DIY) and build a tiny knowledge base. Add 5 files and try one question today.\n\n---\n\n## Wrap-up\n\nYou don’t need to be tech-savvy to build an AI-powered knowledge base. Start with a folder, connect it to an AI tool that reads files, and ask questions like you’re talking to a helpful librarian. Try it today: create a folder, add one file, and ask the AI one question.",
+  "article_markdown": "---\ntitle: \"What a New AI Voice Feature Means for Your Daily Routine\"\nsubtitle: \"How to turn everyday voice chats into a helpful assistant that remembers your stuff\"\ncategory: \"how-to\"\naudience: \"personal\"\nread_time_minutes: 5\ntags: [\"voice-ai\", \"productivity\", \"getting-started\", \"organisation\"]\n---\n\n# What a New AI Voice Feature Means for Your Daily Routine\n\nYou’ve probably lost track of where you saved that article on composting, or forgotten the exact date from the school newsletter. What if you could just ask aloud, “Hey, where did I read about composting?” and get the answer back in seconds?\n\nThat’s the promise of a new AI voice feature — one that listens, remembers, and pulls answers from your own notes, emails, and saved links. It’s like having a helpful assistant who knows everything you’ve ever saved, without needing to type a single word.\n\n---\n\n## Start with your voice, not your screen\n\nThe first step is to speak naturally, the way you already do with friends or family. No need to change your habits — just talk to your phone or smart speaker as if you’re asking a friend.\n\n- Open your voice assistant (say “Hey Siri,” “OK Google,” or whatever you usually use).\n- Ask a simple question: “What did I save about composting last month?”\n- The AI will search your notes, emails, and saved links, then read back the most relevant paragraph.\n\nNo typing. No scrolling. Just talk and listen.\n\n---\n\n## Teach it where to look\n\nThe AI needs to know where to search. Most voice assistants let you choose which apps and folders they can access.\n\n- On an iPhone, go to Settings > Siri & Search > Siri & Dictation > App Library. Turn on access for Notes, Mail, and Files.\n- On Android, open the Google app > Settings > Voice > Voice Match. Make sure “Hey Google” is on and allow access to Drive, Keep, and Messages.\n- If you use a smart speaker, open its app and check the “Connected apps” section. Add your email account and any note-taking apps you use.\n\nOnce set up, the AI can search across your emails, saved articles, and notes — all from a single voice request.\n\n---\n\n## Use it like a librarian, not a search engine\n\nInstead of typing long queries, speak in short, natural sentences:\n\n- “Remind me what the email said about the plumbing repair.”\n- “Show me the travel tip I saved from last year.”\n- “What was the key point in that article about growing tomatoes?”\n\nThe AI will scan your files and read back the exact paragraph. It’s not guessing — it’s pulling from your own words.\n\n**Pro tip:** Start with clear, specific requests. Instead of “Tell me about gardening,” try “What’s the best time to plant tomatoes in Melbourne?” The more precise your question, the better the answer.\n\n---\n\n## What this means for you\n\n- **If you’re a student**: Keep lecture notes and research articles in your email or a note app. Ask aloud, “What did the professor say about photosynthesis?” while walking to class.\n- **If you’re a parent**: Save kids’ school newsletters and activity schedules in your notes. Ask, “When is the next school excursion?” and get the exact date without opening an app.\n- **If you’re just getting started**: Pick one topic you care about (cooking, fitness, DIY) and save a few articles or notes. Try asking one question aloud today.\n\n---\n\n## Wrap-up\n\nYou don’t need to be tech-savvy to use a new AI voice feature. Start by talking naturally to your phone or smart speaker, teach it where to look, and ask simple questions. Try it today: open your voice assistant, ask one question, and see how it pulls answers from your own notes.",
   "original_title": "Why the Data Platform Determines Legal AI Outcomes"
 }

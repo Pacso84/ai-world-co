@@ -1,0 +1,35 @@
+{
+  "_meta": {
+    "written_at": "2026-07-14T17:03:13.699Z",
+    "writer_provider": "mistral",
+    "writer_model": "mistral-small-latest",
+    "writer_cost_usd": 0.0030972000000000005,
+    "original_draft": "2026-07-14T17-02-21-044Z_aws-ml_Scaling_UX_testing_with_Amazon_Nova_Act__A_new_app.json",
+    "source_id": "aws-ml",
+    "source_name": "AWS Machine Learning (hivatalos)",
+    "source_link": "https://aws.amazon.com/blogs/machine-learning/scaling-ux-testing-with-amazon-nova-act-a-new-approach-to-user-flow-analysis/",
+    "status": "rejected",
+    "rejected_at": "2026-07-14T17:03:45.327Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 595
+    },
+    "ai_review": {
+      "overall_score": 6,
+      "clarity_score": 6,
+      "decision": "FAIL",
+      "issues": [],
+      "verdict": "Salvaged from a partial AI response.",
+      "_salvaged": true,
+      "_aiCost": 0.0043447,
+      "_provider": "google",
+      "_model": "gemini-2.5-flash",
+      "_attempts": 1
+    },
+    "reason": "Salvaged from a partial AI response.",
+    "can_retry": true
+  },
+  "article_markdown": "---\ntitle: \"How to Turn Your Website into an AI-Powered Testing Lab in 3 Steps\"\nsubtitle: \"Use generative AI to automatically find and fix user flow problems on your site without hiring testers\"\ncategory: \"how-to\"\naudience: \"business\"\nread_time_minutes: 5\ntags: [\"ai-testing\", \"ux\", \"automation\", \"business-tools\"]\n---\n\n# How to Turn Your Website into an AI-Powered Testing Lab in 3 Steps\n\nYou’ve spent months building a sleek new website, only to watch visitors drop off at the checkout page. What if you could watch every user’s journey in real time, spot the stumbling blocks, and fix them before customers even notice? Generative AI makes that possible—without hiring a team of testers.\n\nThis guide shows you how to set up a cloud-based testing system that automatically explores your site, finds problems, and even suggests fixes. You’ll use a new AI feature (let’s call it **Nova Act**) to run thousands of user flows in parallel, analyse the results, and get clear insights you can act on today.\n\n---\n\n## 1. Set up your AI testing cloud\n\nYou don’t need servers or code to start. Most AI testing platforms offer a simple “deploy to cloud” button. Here’s what to do:\n\n- **Sign up** for a Nova Act account (or similar AI testing tool).\n- **Create a new project** and paste your site’s URL.\n- **Choose “cloud deployment”**—this spins up a virtual testing environment that runs 24/7 in the background.\n\nThink of this as renting a digital testing lab. The AI handles the heavy lifting: spinning up browsers, navigating pages, and recording every click and scroll.\n\n---\n\n## 2. Feed your site’s documentation to the AI\n\nThe AI needs to understand your site’s purpose and structure. You’ll give it two things:\n\n- **Your site map** (a simple list of pages and their roles).\n- **User goals** (e.g., “complete a purchase,” “find the contact form”).\n\nUpload these as plain text or PDFs. The AI uses this to **automatically generate realistic test scenarios**—like a real user trying to buy a product or sign up for a newsletter.\n\nNo need to write code or hire testers. The AI writes the test cases for you, based on how people actually use your site.\n\n---\n\n## 3. Run tests and get actionable insights\n\nWith your cloud lab ready and test scenarios loaded, hit “start.” The AI:\n\n- **Executes thousands of user flows in parallel** (like having 100 virtual users clicking around your site at once).\n- **Records every step**, noting where users get stuck, hesitate, or abandon the flow.\n- **Generates a report** with clear highlights: “37% of users drop off at the payment step,” “The ‘Back’ button is broken on mobile.”\n\nYou’ll see **heatmaps**, **session recordings**, and **priority-ranked issues**—all delivered in plain language, not tech jargon.\n\n---\n\n## What this means for you\n\n- **If you run an online store**: Fix the checkout flow before your next big sale. The AI will flag payment errors, confusing form fields, and slow loading times.\n- **If you manage a SaaS product**: Test every onboarding path to reduce churn. The AI spots where new users get confused and suggests clearer instructions.\n- **If you’re just getting started**: Begin with a single high-traffic page (like your homepage) and expand as you see results.\n\n---\n\n## Wrap-up\n\nYou don’t need a testing team to find and fix user flow problems anymore. With a cloud-based AI testing lab, you can run thousands of realistic user journeys overnight, get clear insights, and improve your site without lifting a finger. Start small—test one key page this week—and scale up as you see results.",
+  "original_title": "Scaling UX testing with Amazon Nova Act: A new approach to user flow analysis"
+}

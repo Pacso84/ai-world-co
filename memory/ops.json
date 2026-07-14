@@ -1,110 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178393984327640",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-13T10:50:43.276Z",
-      "updated": "2026-07-13T10:50:58.757Z"
-    },
-    {
-      "id": "t17839398587616",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-13T10:50:58.761Z",
-      "updated": "2026-07-13T10:51:10.519Z"
-    },
-    {
-      "id": "t178393987052067",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-13T10:51:10.521Z",
-      "updated": "2026-07-13T10:51:18.428Z"
-    },
-    {
-      "id": "t178393987843114",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-13T10:51:18.431Z",
-      "updated": "2026-07-13T10:51:30.895Z"
-    },
-    {
-      "id": "t178393989089730",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-13T10:51:30.897Z",
-      "updated": "2026-07-13T10:51:38.332Z"
-    },
-    {
-      "id": "t178393989833614",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-07-13T10:51:38.336Z",
-      "updated": "2026-07-13T10:51:55.794Z"
-    },
-    {
-      "id": "t17839399157959",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-07-13T10:51:55.795Z",
-      "updated": "2026-07-13T10:51:56.023Z"
-    },
-    {
-      "id": "t178393991605741",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-13T10:51:56.057Z",
-      "updated": "2026-07-13T10:52:01.791Z"
-    },
-    {
-      "id": "t17839399217934",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-07-13T10:52:01.793Z",
-      "updated": "2026-07-13T10:52:03.812Z"
-    },
-    {
-      "id": "t178393992381473",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-13T10:52:03.814Z",
-      "updated": "2026-07-13T10:52:04.521Z"
-    },
-    {
-      "id": "t178393992452365",
-      "title": "Run translator",
-      "status": "done",
-      "agent": "translator",
-      "created": "2026-07-13T10:52:04.523Z",
-      "updated": "2026-07-13T10:56:44.572Z"
-    },
-    {
-      "id": "t178394020457362",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-07-13T10:56:44.573Z",
-      "updated": "2026-07-13T10:56:51.291Z"
-    },
-    {
-      "id": "t178396486468583",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-07-13T17:47:44.685Z",
-      "updated": "2026-07-13T17:47:59.724Z"
-    },
-    {
       "id": "t178396487972690",
       "title": "Run source-scout",
       "status": "done",
@@ -479,33 +375,113 @@
       "agent": "publisher",
       "created": "2026-07-14T09:53:30.175Z",
       "updated": "2026-07-14T09:53:39.151Z"
+    },
+    {
+      "id": "t178404851310077",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-07-14T17:01:53.100Z",
+      "updated": "2026-07-14T17:02:08.200Z"
+    },
+    {
+      "id": "t178404852820238",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-07-14T17:02:08.202Z",
+      "updated": "2026-07-14T17:02:21.779Z"
+    },
+    {
+      "id": "t178404854178133",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-07-14T17:02:21.781Z",
+      "updated": "2026-07-14T17:02:22.028Z"
+    },
+    {
+      "id": "t178404854203017",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-07-14T17:02:22.030Z",
+      "updated": "2026-07-14T17:03:30.063Z"
+    },
+    {
+      "id": "t178404861006588",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-14T17:03:30.065Z",
+      "updated": "2026-07-14T17:04:25.775Z"
+    },
+    {
+      "id": "t178404866577912",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-07-14T17:04:25.779Z",
+      "updated": "2026-07-14T17:05:23.590Z"
+    },
+    {
+      "id": "t178404872359229",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-14T17:05:23.592Z",
+      "updated": "2026-07-14T17:06:09.656Z"
+    },
+    {
+      "id": "t178404876966144",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-07-14T17:06:09.661Z",
+      "updated": "2026-07-14T17:06:11.387Z"
+    },
+    {
+      "id": "t178404877140794",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-14T17:06:11.407Z",
+      "updated": "2026-07-14T17:06:16.741Z"
+    },
+    {
+      "id": "t178404877674471",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-07-14T17:06:16.744Z",
+      "updated": "2026-07-14T17:06:18.648Z"
+    },
+    {
+      "id": "t178404877864996",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-14T17:06:18.649Z",
+      "updated": "2026-07-14T17:06:19.634Z"
+    },
+    {
+      "id": "t178404877963779",
+      "title": "Run translator",
+      "status": "done",
+      "agent": "translator",
+      "created": "2026-07-14T17:06:19.637Z",
+      "updated": "2026-07-14T17:08:56.938Z"
+    },
+    {
+      "id": "t178404893693962",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-07-14T17:08:56.939Z",
+      "updated": "2026-07-14T17:09:04.534Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178284211505241",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The lineup is coherent, practical, and ready—covering everyday AI uses from chatbots to budgeting with clear, beginner-friendly language. Just ensure all SEO meta and internal links are double-checked",
-      "agent": "publisher",
-      "at": "2026-06-30T17:55:15.052Z",
-      "loud": false
-    },
-    {
-      "id": "n178284211597611",
-      "level": "success",
-      "text": "0 hír + 4 útmutató publikálva (költség: $0.0043).",
-      "agent": "ceo",
-      "at": "2026-06-30T17:55:15.976Z",
-      "loud": false
-    },
-    {
-      "id": "n178284773702592",
-      "level": "info",
-      "text": "🧭 Forráskutató: 2 ÚJ megbízható forrás-javaslat (küszöb 70).\n• [100] IBM Research Blog (hivatalos)\n• [100] Databricks Blog (hivatalos)\nJóváhagyod valamelyiket?",
-      "agent": "source-scout",
-      "at": "2026-06-30T19:28:57.025Z",
-      "loud": false
-    },
     {
       "id": "n178290565667769",
       "level": "warn",
@@ -1281,235 +1257,33 @@
       "agent": "ceo",
       "at": "2026-07-14T09:53:39.169Z",
       "loud": false
+    },
+    {
+      "id": "n178404877863798",
+      "level": "info",
+      "text": "SEO: 2 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-07-14T17:06:18.637Z",
+      "loud": false
+    },
+    {
+      "id": "n178404893842383",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). I'm pleased to confirm that our article line-up is coherent and ready for publication, with a diverse range of practical AI applications that cater to everyday people. However, I do note that the tech",
+      "agent": "publisher",
+      "at": "2026-07-14T17:08:58.423Z",
+      "loud": false
+    },
+    {
+      "id": "n178404894455542",
+      "level": "success",
+      "text": "2 hír + 0 útmutató publikálva (költség: $0.0752).",
+      "agent": "ceo",
+      "at": "2026-07-14T17:09:04.555Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m17836569155611",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"ML Jobs in Snowflake Data Clean Rooms Now GA\" (?/10)",
-      "ref": "2026-07-08T17-18-32-415Z_snowflake_ML_Jobs_in_Snowflake_Data_Clean_Rooms_Now_GA.json",
-      "at": "2026-07-10T04:15:15.561Z"
-    },
-    {
-      "id": "m178365693418837",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Transforming FP&A with AI Modernization\" (?/10)",
-      "ref": "2026-07-08T17-18-32-416Z_snowflake_Transforming_FP_A_with_AI_Modernization.json",
-      "at": "2026-07-10T04:15:34.188Z"
-    },
-    {
-      "id": "m17836802379985",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "info",
-      "text": "A \"Transforming FP&A with AI Modernization\" hír a meglévő útmutatóra mutat: turn-a-voice-memo-into-a-polished-meeting-summary-with-huggi",
-      "ref": "turn-a-voice-memo-into-a-polished-meeting-summary-with-huggi",
-      "at": "2026-07-10T10:43:57.998Z"
-    },
-    {
-      "id": "m178368024578245",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "info",
-      "text": "A \"Convert your Google Slides to videos in 7 additional la\" hír a meglévő útmutatóra mutat: gemini-getting-started",
-      "ref": "gemini-getting-started",
-      "at": "2026-07-10T10:44:05.782Z"
-    },
-    {
-      "id": "m178368025342568",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "info",
-      "text": "A \"Introducing Claude apps gateway for AWS\" hír a meglévő útmutatóra mutat: claude-getting-started",
-      "ref": "claude-getting-started",
-      "at": "2026-07-10T10:44:13.425Z"
-    },
-    {
-      "id": "m178368026739263",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "info",
-      "text": "A \"ChatGPT is now a partner for your most ambitious work\" hír a meglévő útmutatóra mutat: chatgpt-getting-started",
-      "ref": "chatgpt-getting-started",
-      "at": "2026-07-10T10:44:27.392Z"
-    },
-    {
-      "id": "m178368027555237",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "info",
-      "text": "A \"GPT-5.6: Frontier intelligence that scales with your am\" hír a meglévő útmutatóra mutat: how-to-turn-your-notes-into-a-polished-report-with-ai-in-min",
-      "ref": "how-to-turn-your-notes-into-a-polished-report-with-ai-in-min",
-      "at": "2026-07-10T10:44:35.552Z"
-    },
-    {
-      "id": "m178368028227134",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "info",
-      "text": "A \"Enhancing enterprise inference on Amazon SageMaker Hype\" hír a meglévő útmutatóra mutat: build-a-personal-study-buddy-chatbot-in-15-minutes-using-hug",
-      "ref": "build-a-personal-study-buddy-chatbot-in-15-minutes-using-hug",
-      "at": "2026-07-10T10:44:42.271Z"
-    },
-    {
-      "id": "m178368030067020",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "info",
-      "text": "A \"GPT-5.6 is now the preferred model in Microsoft 365 Cop\" hír a meglévő útmutatóra mutat: copilot-getting-started",
-      "ref": "copilot-getting-started",
-      "at": "2026-07-10T10:45:00.670Z"
-    },
-    {
-      "id": "m178368030257066",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "need",
-      "text": "Új funkció-hír → kéne hozzá útmutató: \"How to Use OpenAI GPT-5.6 in Snowflake Cortex AI for Data Insights and Drafts\"",
-      "ref": "how-to-use-openai-gpt-5-6-in-snowflake-cortex-ai-for-data-in",
-      "open": true,
-      "at": "2026-07-10T10:45:02.570Z"
-    },
-    {
-      "id": "m17836804402926",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 16 → 4/4/2 oszlop.",
-      "ref": "mobile",
-      "at": "2026-07-10T10:47:20.292Z"
-    },
-    {
-      "id": "m178368065059988",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "5 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
-      "ref": null,
-      "at": "2026-07-10T10:50:50.599Z"
-    },
-    {
-      "id": "m178370524071779",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 16 → 4/4/2 oszlop.",
-      "ref": "mobile",
-      "at": "2026-07-10T17:40:40.717Z"
-    },
-    {
-      "id": "m17837334446506",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "info",
-      "text": "A \"Google Workspace Weekly Recap - July 10, 2026\" hír a meglévő útmutatóra mutat: gemini-getting-started",
-      "ref": "gemini-getting-started",
-      "at": "2026-07-11T01:30:44.650Z"
-    },
-    {
-      "id": "m178373352554841",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Draft a simple legal disclaimer text with DeepSeek’s chat\" — mi a baj: Salvaged from a partial AI response.",
-      "ref": "GUIDE_draft-a-simple-legal-disclaimer-text-with-deepseek-s-chat.json",
-      "at": "2026-07-11T01:32:05.548Z"
-    },
-    {
-      "id": "m178373355609413",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Set up a customer FAQ chatbot using DeepSeek on your website\" — mi a baj: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user",
-      "ref": "GUIDE_set-up-a-customer-faq-chatbot-using-deepseek-on-your-website.json",
-      "at": "2026-07-11T01:32:36.094Z"
-    },
-    {
-      "id": "m178373362015547",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 17 → 6/3/3 oszlop.",
-      "ref": "mobile",
-      "at": "2026-07-11T01:33:40.155Z"
-    },
-    {
-      "id": "m178373428671412",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "5 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
-      "ref": null,
-      "at": "2026-07-11T01:44:46.714Z"
-    },
-    {
-      "id": "m178376138119545",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Draft a simple legal disclaimer text with DeepSeek’s chat\" — javítva: Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
-      "ref": "GUIDE_draft-a-simple-legal-disclaimer-text-with-deepseek-s-chat.json",
-      "at": "2026-07-11T09:16:21.195Z"
-    },
-    {
-      "id": "m178376139401835",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Set up a customer FAQ chatbot using DeepSeek on your website\" — javítva: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
-      "ref": "GUIDE_set-up-a-customer-faq-chatbot-using-deepseek-on-your-website.json",
-      "at": "2026-07-11T09:16:34.018Z"
-    },
-    {
-      "id": "m178376140153372",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Draft a simple legal disclaimer text with DeepSeek’s chat\" (?/10)",
-      "ref": "GUIDE_draft-a-simple-legal-disclaimer-text-with-deepseek-s-chat.json",
-      "at": "2026-07-11T09:16:41.533Z"
-    },
-    {
-      "id": "m178376140926975",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Set up a customer FAQ chatbot using DeepSeek on your website\" — mi a baj: Salvaged from a partial AI response.",
-      "ref": "GUIDE_set-up-a-customer-faq-chatbot-using-deepseek-on-your-website.json",
-      "at": "2026-07-11T09:16:49.269Z"
-    },
-    {
-      "id": "m178376143190499",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Set up a customer FAQ chatbot using DeepSeek on your website\" — javítva: Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
-      "ref": "GUIDE_set-up-a-customer-faq-chatbot-using-deepseek-on-your-website.json",
-      "at": "2026-07-11T09:17:11.904Z"
-    },
-    {
-      "id": "m178376143996330",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Set up a customer FAQ chatbot using DeepSeek on your website\" — mi a baj: Salvaged from a partial AI response.",
-      "ref": "GUIDE_set-up-a-customer-faq-chatbot-using-deepseek-on-your-website.json",
-      "at": "2026-07-11T09:17:19.963Z"
-    },
-    {
-      "id": "m178376145230555",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Set up a customer FAQ chatbot using DeepSeek on your website\" — javítva: Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
-      "ref": "GUIDE_set-up-a-customer-faq-chatbot-using-deepseek-on-your-website.json",
-      "at": "2026-07-11T09:17:32.305Z"
-    },
     {
       "id": "m178376146028294",
       "from": "ellenorzo",
@@ -2636,6 +2410,231 @@
       "text": "5 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
       "ref": null,
       "at": "2026-07-14T09:54:18.696Z"
+    },
+    {
+      "id": "m178404851570659",
+      "from": "ceo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Főnöki újraindítás: \"How Cara pioneers domain-specific AI for enterprise insuranc\" — rewrite-explainer",
+      "ref": "2026-06-27T02-07-24-542Z_aws-ml_How_Cara_pioneers_domain-specific_AI_for_enterpris.json",
+      "at": "2026-07-14T17:01:55.706Z"
+    },
+    {
+      "id": "m178404852100175",
+      "from": "ceo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Főnöki újraindítás: \"Production-grade AI agents for financial compliance: Lessons\" — rewrite-explainer",
+      "ref": "2026-06-27T02-07-24-542Z_aws-ml_Production-grade_AI_agents_for_financial_complianc.json",
+      "at": "2026-07-14T17:02:01.001Z"
+    },
+    {
+      "id": "m17840485244010",
+      "from": "ceo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Főnöki újraindítás: \"Costa Rican dairy cooperative turns AI agents into coworkers\" — rewrite-explainer",
+      "ref": "2026-06-29T02-29-25-987Z_microsoft-ai_Costa_Rican_dairy_cooperative_turns_AI_agents_into.json",
+      "at": "2026-07-14T17:02:04.401Z"
+    },
+    {
+      "id": "m178404852626956",
+      "from": "ceo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Főnöki újraindítás: \"Work smarter in 90 days: A real-world guide to using AI\" — rewrite-explainer",
+      "ref": "2026-06-29T02-29-25-987Z_microsoft-ai_Work_smarter_in_90_days__A_real-world_guide_to_usi.json",
+      "at": "2026-07-14T17:02:06.269Z"
+    },
+    {
+      "id": "m178404852818961",
+      "from": "ceo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Főnöki újraindítás: \"Create fully native and editable presentations with Gemini i\" — rewrite-explainer",
+      "ref": "2026-06-30T16-43-13-543Z_google-workspace_Create_fully_native_and_editable_presentations_wit.json",
+      "at": "2026-07-14T17:02:08.189Z"
+    },
+    {
+      "id": "m178404861801434",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"How to manage AI investments in the agentic era\" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "2026-07-14T17-02-21-043Z_openai-blog_How_to_manage_AI_investments_in_the_agentic_era.json",
+      "at": "2026-07-14T17:03:38.014Z"
+    },
+    {
+      "id": "m178404862534760",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Scaling UX testing with Amazon Nova Act: A new approach to user flow analysis\" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "2026-07-14T17-02-21-044Z_aws-ml_Scaling_UX_testing_with_Amazon_Nova_Act__A_new_app.json",
+      "at": "2026-07-14T17:03:45.347Z"
+    },
+    {
+      "id": "m178404864288855",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"How data science teams use ChatGPT Work\" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "2026-07-14T17-02-21-044Z_openai-blog_How_data_science_teams_use_ChatGPT_Work.json",
+      "at": "2026-07-14T17:04:02.888Z"
+    },
+    {
+      "id": "m178404865065796",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"How sales teams use ChatGPT Work\" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "2026-07-14T17-02-21-044Z_openai-blog_How_sales_teams_use_ChatGPT_Work.json",
+      "at": "2026-07-14T17:04:10.657Z"
+    },
+    {
+      "id": "m178404865809119",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Proactive Agent Research Environment: Simulating Active Users to Evaluate Proactive Assistants\" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "2026-07-14T17-02-21-767Z_apple-ml_Proactive_Agent_Research_Environment__Simulating_A.json",
+      "at": "2026-07-14T17:04:18.091Z"
+    },
+    {
+      "id": "m178404866576320",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Blocking Slow-Burn Attacks: Contextual Policies in Omnigent \" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "2026-07-14T17-02-21-767Z_databricks_Blocking_Slow-Burn_Attacks__Contextual_Policies_in.json",
+      "at": "2026-07-14T17:04:25.763Z"
+    },
+    {
+      "id": "m178404867549221",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"How Cara pioneers domain-specific AI for enterprise insurance brokerages with AWS\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers.; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "2026-06-27T02-07-24-542Z_aws-ml_How_Cara_pioneers_domain-specific_AI_for_enterpris.json",
+      "at": "2026-07-14T17:04:35.492Z"
+    },
+    {
+      "id": "m178404868557620",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Production-grade AI agents for financial compliance: Lessons from Stripe\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers.; Clarity of Step 1 for beginners; újraküldöm.",
+      "ref": "2026-06-27T02-07-24-542Z_aws-ml_Production-grade_AI_agents_for_financial_complianc.json",
+      "at": "2026-07-14T17:04:45.577Z"
+    },
+    {
+      "id": "m178404869453414",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Costa Rican dairy cooperative turns AI agents into coworkers\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers.; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "2026-06-29T02-29-25-987Z_microsoft-ai_Costa_Rican_dairy_cooperative_turns_AI_agents_into.json",
+      "at": "2026-07-14T17:04:54.534Z"
+    },
+    {
+      "id": "m17840487039939",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Work smarter in 90 days: A real-world guide to using AI\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers.; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "2026-06-29T02-29-25-987Z_microsoft-ai_Work_smarter_in_90_days__A_real-world_guide_to_usi.json",
+      "at": "2026-07-14T17:05:03.993Z"
+    },
+    {
+      "id": "m178404871341497",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Create fully native and editable presentations with Gemini in Google Slides\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers.; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "2026-06-30T16-43-13-543Z_google-workspace_Create_fully_native_and_editable_presentations_wit.json",
+      "at": "2026-07-14T17:05:13.414Z"
+    },
+    {
+      "id": "m17840487235792",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Why the Data Platform Determines Legal AI Outcomes\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers.; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "2026-07-02T02-10-03-889Z_snowflake_Why_the_Data_Platform_Determines_Legal_AI_Outcomes.json",
+      "at": "2026-07-14T17:05:23.579Z"
+    },
+    {
+      "id": "m178404873174356",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"How Cara pioneers domain-specific AI for enterprise insurance brokerages with AWS\" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "2026-06-27T02-07-24-542Z_aws-ml_How_Cara_pioneers_domain-specific_AI_for_enterpris.json",
+      "at": "2026-07-14T17:05:31.743Z"
+    },
+    {
+      "id": "m178404873937853",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Production-grade AI agents for financial compliance: Lessons from Stripe\" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "2026-06-27T02-07-24-542Z_aws-ml_Production-grade_AI_agents_for_financial_complianc.json",
+      "at": "2026-07-14T17:05:39.378Z"
+    },
+    {
+      "id": "m178404874637942",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Costa Rican dairy cooperative turns AI agents into coworkers\" (?/10)",
+      "ref": "2026-06-29T02-29-25-987Z_microsoft-ai_Costa_Rican_dairy_cooperative_turns_AI_agents_into.json",
+      "at": "2026-07-14T17:05:46.379Z"
+    },
+    {
+      "id": "m17840487539282",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Work smarter in 90 days: A real-world guide to using AI\" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "2026-06-29T02-29-25-987Z_microsoft-ai_Work_smarter_in_90_days__A_real-world_guide_to_usi.json",
+      "at": "2026-07-14T17:05:53.928Z"
+    },
+    {
+      "id": "m17840487618062",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Create fully native and editable presentations with Gemini in Google Slides\" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "2026-06-30T16-43-13-543Z_google-workspace_Create_fully_native_and_editable_presentations_wit.json",
+      "at": "2026-07-14T17:06:01.806Z"
+    },
+    {
+      "id": "m178404876964649",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Why the Data Platform Determines Legal AI Outcomes\" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "2026-07-02T02-10-03-889Z_snowflake_Why_the_Data_Platform_Determines_Legal_AI_Outcomes.json",
+      "at": "2026-07-14T17:06:09.646Z"
+    },
+    {
+      "id": "m178404877959698",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 18 → 6/3/3 oszlop.",
+      "ref": "mobile",
+      "at": "2026-07-14T17:06:19.596Z"
+    },
+    {
+      "id": "m178404899124255",
+      "from": "social",
+      "to": "team",
+      "kind": "info",
+      "text": "5 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
+      "ref": null,
+      "at": "2026-07-14T17:09:51.242Z"
     }
   ]
 }
