@@ -1,0 +1,55 @@
+{
+  "started_at": "2026-07-14T01:26:16.666Z",
+  "total": 6,
+  "passed": 5,
+  "failed": 1,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.026915499999999995,
+  "by_article": [
+    {
+      "writer": "WRITER_GUIDE_ask-copilot-to-compare-two-product-specs-and-list-the-differ.json",
+      "article": "ARTICLE_GUIDE_ask-copilot-to-compare-two-product-specs-and-list-the-differ.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0045426
+    },
+    {
+      "writer": "WRITER_GUIDE_how-to-turn-messy-meeting-notes-into-a-clear-action-plan-wit.json",
+      "article": "ARTICLE_GUIDE_how-to-turn-messy-meeting-notes-into-a-clear-action-plan-wit.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.004533
+    },
+    {
+      "writer": "WRITER_GUIDE_how-to-use-physical-security-keys-with-your-work-computer.json",
+      "article": "ARTICLE_GUIDE_how-to-use-physical-security-keys-with-your-work-computer.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0044031
+    },
+    {
+      "writer": "WRITER_GUIDE_summarise-a-long-slack-thread-into-3-bullet-points-using-coh.json",
+      "rejected": "REJECTED_GUIDE_summarise-a-long-slack-thread-into-3-bullet-points-using-coh.json",
+      "decision": "FAIL",
+      "score": 6,
+      "cost_usd": 0.0045453
+    },
+    {
+      "writer": "WRITER_GUIDE_turn-a-messy-customer-review-into-a-polished-testimonial-wit.json",
+      "article": "ARTICLE_GUIDE_turn-a-messy-customer-review-into-a-polished-testimonial-wit.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.004465899999999999
+    },
+    {
+      "writer": "WRITER_GUIDE_turn-a-quick-voice-memo-into-a-structured-meeting-summary-wi.json",
+      "article": "ARTICLE_GUIDE_turn-a-quick-voice-memo-into-a-structured-meeting-summary-wi.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0044256
+    }
+  ],
+  "finished_at": "2026-07-14T01:26:58.150Z",
+  "duration_seconds": 41.484
+}

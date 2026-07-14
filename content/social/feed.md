@@ -1,6 +1,98 @@
 # AI World Co. — közösségi posztok
 
-*Generálva: 2026-07-13T17:52:40.039Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+*Generálva: 2026-07-14T01:39:58.707Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## On Robustness and Chain-of-Thought Consistency of RL-Finetuned VLMs
+**🔗 https://aiworldhq.com/article/how-to-get-accurate-answers-when-asking-ai-to-analyse-your-p.html**
+
+**Facebook:**
+Want reliable AI answers from your photos? Our quick guide shows how to phrase prompts so the model understands your image every time. https://aiworldhq.com/article/how-to-get-accurate-answers-when-asking-ai-to-analyse-your-p.html #AIvision #PromptTips
+
+**Instagram:**
+Getting AI to read your photos correctly
+Learn simple tricks to ask vision AI clear questions and avoid mixed‑up answers – whether it's a dashboard warning or a work chart.
+#AIvision
+#PromptTips
+#ImageAnalysis
+#HowTo
+
+*Kép-ötlet: A hand holding a phone displaying a close‑up of a car dashboard warning light, suggesting a note‑taking moment.*
+
+---
+
+## Inside the infrastructure strategies propelling AI leaders
+**🔗 https://aiworldhq.com/article/how-small-businesses-can-adopt-the-same-ai-infrastructure-st.html**
+
+**Facebook:**
+Want AI that runs fast and cheap for your small business? This guide shares the same infrastructure tricks big players use, without a PhD. https://aiworldhq.com/article/how-small-businesses-can-adopt-the-same-ai-infrastructure-st.html #AIinBusiness #SmallBiz
+
+**Instagram:**
+Speed up your AI without breaking the bank 🚀
+Learn the cloud and security set‑ups big firms rely on, explained for a busy owner.
+#AIinBusiness
+#SmallBiz
+#TechTips
+Link in bio.
+
+*Kép-ötlet: A tidy office desk with a laptop showing a cloud icon and a small plant, suggesting a simple yet powerful AI setup.*
+
+---
+
+## How Amazon Bedrock catches AI-generated phishing
+**🔗 https://aiworldhq.com/article/how-to-use-amazon-bedrock-to-spot-ai-generated-phishing-emai.html**
+
+**Facebook:**
+Tired of phishing emails that look legit? Learn a simple way to let Amazon Bedrock flag AI‑generated scams before you click. https://aiworldhq.com/article/how-to-use-amazon-bedrock-to-spot-ai-generated-phishing-emai.html #emailsecurity #AI
+
+**Instagram:**
+Spot fake emails before they bite.
+Amazon Bedrock can scan incoming messages and alert you when AI‑crafted phishing is detected, keeping your inbox safe.
+#emailsecurity
+#phishing
+#AI
+#AmazonBedrock
+#cloud
+Link in bio.
+
+*Kép-ötlet: A close‑up of a computer screen showing an email inbox with a highlighted suspicious email icon.*
+
+---
+
+## The 3 questions to answer to take AI from experimentation to impact
+**🔗 https://aiworldhq.com/article/three-key-questions-to-turn-ai-experiments-into-real-results.html**
+
+**Facebook:**
+Wondering if that AI tool can really save you time each day? Answer three simple questions and turn a one‑off test into a daily boost. https://aiworldhq.com/article/three-key-questions-to-turn-ai-experiments-into-real-results.html #AIAdoption #Productivity
+
+**Instagram:**
+Turn AI experiments into everyday wins
+Ask yourself: what problem does it solve? is it reliable? how will you measure success?
+#AIAdoption
+#Strategy
+#Productivity
+Link in bio.
+
+*Kép-ötlet: A person at a desk with a laptop, a thought bubble showing three question marks.*
+
+---
+
+## Google Workspace Weekly Recap - July 3, 2026
+**🔗 https://aiworldhq.com/article/boost-your-google-meet-calls-and-share-gemini-canvas-work-in.html**
+
+**Facebook:**
+Want clearer video on your next Google Meet? Our step‑by‑step guide helps you improve picture quality and attach AI‑made Gemini Canvas artwork to Google Classroom assignments. https://aiworldhq.com/article/boost-your-google-meet-calls-and-share-gemini-canvas-work-in.html #GoogleWorkspace #Productivity
+
+**Instagram:**
+Clearer Meet calls, brighter lessons.
+A quick guide to boost video quality and add Gemini Canvas creations to Classroom tasks.
+#GoogleMeet
+#GeminiCanvas
+#Teaching
+Link in bio.
+
+*Kép-ötlet: A teacher at a laptop, with a split-screen showing a crisp video call on one side and a colourful Gemini Canvas illustration on the other.*
 
 ---
 

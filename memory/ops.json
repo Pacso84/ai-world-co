@@ -1,158 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178384950917546",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-12T09:45:09.175Z",
-      "updated": "2026-07-12T09:45:10.075Z"
-    },
-    {
-      "id": "t178384951007724",
-      "title": "Run translator",
-      "status": "done",
-      "agent": "translator",
-      "created": "2026-07-12T09:45:10.077Z",
-      "updated": "2026-07-12T09:53:29.190Z"
-    },
-    {
-      "id": "t178385000919140",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-07-12T09:53:29.191Z",
-      "updated": "2026-07-12T09:53:35.528Z"
-    },
-    {
-      "id": "t178387466766710",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-07-12T16:44:27.667Z",
-      "updated": "2026-07-12T16:44:39.271Z"
-    },
-    {
-      "id": "t17838746792731",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-07-12T16:44:39.273Z",
-      "updated": "2026-07-12T16:44:39.496Z"
-    },
-    {
-      "id": "t178387467949870",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-07-12T16:44:39.498Z",
-      "updated": "2026-07-12T16:44:39.673Z"
-    },
-    {
-      "id": "t178387467967556",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-12T16:44:39.675Z",
-      "updated": "2026-07-12T16:44:39.865Z"
-    },
-    {
-      "id": "t178387467987012",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-07-12T16:44:39.870Z",
-      "updated": "2026-07-12T16:44:40.092Z"
-    },
-    {
-      "id": "t178387468011164",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-12T16:44:40.111Z",
-      "updated": "2026-07-12T16:44:40.319Z"
-    },
-    {
-      "id": "t178387468032026",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-07-12T16:44:40.320Z",
-      "updated": "2026-07-12T16:44:40.523Z"
-    },
-    {
-      "id": "t178387468052517",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-12T16:44:40.525Z",
-      "updated": "2026-07-12T16:44:41.376Z"
-    },
-    {
-      "id": "t178387468137882",
-      "title": "Run translator",
-      "status": "done",
-      "agent": "translator",
-      "created": "2026-07-12T16:44:41.378Z",
-      "updated": "2026-07-12T16:44:41.648Z"
-    },
-    {
-      "id": "t178387468165016",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-07-12T16:44:41.650Z",
-      "updated": "2026-07-12T16:44:49.627Z"
-    },
-    {
-      "id": "t178390714412775",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-07-13T01:45:44.127Z",
-      "updated": "2026-07-13T01:45:54.310Z"
-    },
-    {
-      "id": "t178390715431288",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-07-13T01:45:54.312Z",
-      "updated": "2026-07-13T01:45:54.554Z"
-    },
-    {
-      "id": "t178390715455626",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-07-13T01:45:54.556Z",
-      "updated": "2026-07-13T01:45:54.810Z"
-    },
-    {
-      "id": "t17839071548121",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-13T01:45:54.812Z",
-      "updated": "2026-07-13T01:45:55.049Z"
-    },
-    {
-      "id": "t178390715505619",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-07-13T01:45:55.056Z",
-      "updated": "2026-07-13T01:45:55.336Z"
-    },
-    {
-      "id": "t178390715535559",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-13T01:45:55.355Z",
-      "updated": "2026-07-13T01:47:10.601Z"
-    },
-    {
       "id": "t178390723060317",
       "title": "Run ellenorzo",
       "status": "done",
@@ -479,41 +327,161 @@
       "agent": "publisher",
       "created": "2026-07-13T17:51:45.774Z",
       "updated": "2026-07-13T17:51:53.325Z"
+    },
+    {
+      "id": "t178399213491021",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-07-14T01:22:14.910Z",
+      "updated": "2026-07-14T01:22:15.301Z"
+    },
+    {
+      "id": "t178399213530372",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-07-14T01:22:15.303Z",
+      "updated": "2026-07-14T01:22:26.232Z"
+    },
+    {
+      "id": "t178399214623494",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-07-14T01:22:26.234Z",
+      "updated": "2026-07-14T01:22:26.471Z"
+    },
+    {
+      "id": "t178399214647360",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-07-14T01:22:26.473Z",
+      "updated": "2026-07-14T01:22:41.118Z"
+    },
+    {
+      "id": "t17839921611196",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-14T01:22:41.119Z",
+      "updated": "2026-07-14T01:23:03.141Z"
+    },
+    {
+      "id": "t178399218314589",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-07-14T01:23:03.145Z",
+      "updated": "2026-07-14T01:24:09.288Z"
+    },
+    {
+      "id": "t178399224928917",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-14T01:24:09.289Z",
+      "updated": "2026-07-14T01:24:54.341Z"
+    },
+    {
+      "id": "t178399229434654",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-07-14T01:24:54.346Z",
+      "updated": "2026-07-14T01:24:55.235Z"
+    },
+    {
+      "id": "t178399229525491",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-07-14T01:24:55.254Z",
+      "updated": "2026-07-14T01:26:16.464Z"
+    },
+    {
+      "id": "t178399237646650",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-14T01:26:16.466Z",
+      "updated": "2026-07-14T01:26:58.160Z"
+    },
+    {
+      "id": "t178399241817663",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-07-14T01:26:58.176Z",
+      "updated": "2026-07-14T01:26:58.383Z"
+    },
+    {
+      "id": "t178399241838590",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-07-14T01:26:58.386Z",
+      "updated": "2026-07-14T01:27:04.179Z"
+    },
+    {
+      "id": "t178399242418257",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-07-14T01:27:04.182Z",
+      "updated": "2026-07-14T01:27:17.845Z"
+    },
+    {
+      "id": "t178399243784713",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-14T01:27:17.847Z",
+      "updated": "2026-07-14T01:27:25.269Z"
+    },
+    {
+      "id": "t178399244527133",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-14T01:27:25.271Z",
+      "updated": "2026-07-14T01:27:40.886Z"
+    },
+    {
+      "id": "t17839924608886",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-07-14T01:27:40.888Z",
+      "updated": "2026-07-14T01:27:44.911Z"
+    },
+    {
+      "id": "t178399246491342",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-14T01:27:44.913Z",
+      "updated": "2026-07-14T01:27:45.746Z"
+    },
+    {
+      "id": "t178399246574950",
+      "title": "Run translator",
+      "status": "done",
+      "agent": "translator",
+      "created": "2026-07-14T01:27:45.749Z",
+      "updated": "2026-07-14T01:39:11.032Z"
+    },
+    {
+      "id": "t178399315103349",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-07-14T01:39:11.033Z",
+      "updated": "2026-07-14T01:39:17.801Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178261424554118",
-      "level": "success",
-      "text": "5 hír + 4 útmutató publikálva (költség: $0.0204).",
-      "agent": "ceo",
-      "at": "2026-06-28T02:37:25.541Z",
-      "loud": false
-    },
-    {
-      "id": "n178270128248475",
-      "level": "warn",
-      "text": "📨 pairing → guide: Új funkció-hír → kéne hozzá útmutató: \"How to Get Faster Help From AI-Powered Customer Service\"",
-      "agent": "pairing",
-      "at": "2026-06-29T02:48:02.484Z",
-      "loud": false
-    },
-    {
-      "id": "n178270147956738",
-      "level": "info",
-      "text": "SEO: 35 cikk optimalizálva (átlag 7.9/10).",
-      "agent": "seo",
-      "at": "2026-06-29T02:51:19.567Z",
-      "loud": false
-    },
-    {
-      "id": "n178270148237980",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The line-up is coherent, practical, and ready—covering everyday AI uses from budgeting to video upscaling. It’s approachable for newcomers, with clear, jargon-free guides and a mix of free tools. Just",
-      "agent": "publisher",
-      "at": "2026-06-29T02:51:22.379Z",
-      "loud": false
-    },
     {
       "id": "n178270148288093",
       "level": "success",
@@ -1281,171 +1249,41 @@
       "agent": "ceo",
       "at": "2026-07-13T17:51:53.352Z",
       "loud": false
+    },
+    {
+      "id": "n178399229518045",
+      "level": "warn",
+      "text": "📨 pairing → guide: Új funkció-hír → kéne hozzá útmutató: \"How to Use Physical Security Keys with Your Work Computer\"",
+      "agent": "pairing",
+      "at": "2026-07-14T01:24:55.180Z",
+      "loud": false
+    },
+    {
+      "id": "n178399246489916",
+      "level": "info",
+      "text": "SEO: 7 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-07-14T01:27:44.899Z",
+      "loud": false
+    },
+    {
+      "id": "n178399315206050",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). Our line-up is looking great, with a good mix of practical AI applications that will resonate with our everyday audience. I do note that the topics are quite tech-heavy, so a gentle intro or beginner'",
+      "agent": "publisher",
+      "at": "2026-07-14T01:39:12.060Z",
+      "loud": false
+    },
+    {
+      "id": "n178399315781820",
+      "level": "success",
+      "text": "1 hír + 6 útmutató publikálva (költség: $0.1010).",
+      "agent": "ceo",
+      "at": "2026-07-14T01:39:17.818Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178353144423257",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Introducing GPT-Live\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; Reviewer verdict: Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben; újraküldöm.",
-      "ref": "2026-07-08T17-18-31-601Z_openai-blog_Introducing_GPT-Live.json",
-      "at": "2026-07-08T17:24:04.232Z"
-    },
-    {
-      "id": "m178353145633180",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Powering scientific discovery: BYOKG and GraphRAG for intelligent pharmaceutical research\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; Reviewer verdict: Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben; újraküldöm.",
-      "ref": "2026-07-08T17-18-31-602Z_aws-ml_Powering_scientific_discovery__BYOKG_and_GraphRAG_.json",
-      "at": "2026-07-08T17:24:16.331Z"
-    },
-    {
-      "id": "m178353146953742",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"How GitHub Copilot enables zero DNS configuration for GitHub Pages\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; Reviewer verdict: Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben; újraküldöm.",
-      "ref": "2026-07-08T17-18-31-602Z_github-ai_How_GitHub_Copilot_enables_zero_DNS_configuration_.json",
-      "at": "2026-07-08T17:24:29.537Z"
-    },
-    {
-      "id": "m178353149682981",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Flint: A visualization language for the AI era\" — javítva: Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
-      "ref": "2026-07-08T17-18-31-602Z_microsoft-research_Flint__A_visualization_language_for_the_AI_era.json",
-      "at": "2026-07-08T17:24:56.829Z"
-    },
-    {
-      "id": "m17835315065931",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Introducing Robostral Navigate \" — javítva: Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
-      "ref": "2026-07-08T17-18-32-415Z_mistral-ai_Introducing_Robostral_Navigate_.json",
-      "at": "2026-07-08T17:25:06.593Z"
-    },
-    {
-      "id": "m178353151965690",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"How Natura &Co Is Transforming Finance with Generative AI on SAP S/4HANA\" — javítva: Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
-      "ref": "2026-07-08T17-18-32-415Z_sap_How_Natura__Co_Is_Transforming_Finance_with_Genera.json",
-      "at": "2026-07-08T17:25:19.656Z"
-    },
-    {
-      "id": "m178353153551219",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"ML Jobs in Snowflake Data Clean Rooms Now GA\" — javítva: Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
-      "ref": "2026-07-08T17-18-32-415Z_snowflake_ML_Jobs_in_Snowflake_Data_Clean_Rooms_Now_GA.json",
-      "at": "2026-07-08T17:25:35.512Z"
-    },
-    {
-      "id": "m178353154656079",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Transforming FP&A with AI Modernization\" — javítva: Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
-      "ref": "2026-07-08T17-18-32-416Z_snowflake_Transforming_FP_A_with_AI_Modernization.json",
-      "at": "2026-07-08T17:25:46.560Z"
-    },
-    {
-      "id": "m17835315536960",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Open, convenient and predictable: Introducing Provisioned Throughput\" (?/10)",
-      "ref": "2026-07-08T10-06-26-611Z_together_Open__convenient_and_predictable__Introducing_Prov.json",
-      "at": "2026-07-08T17:25:53.696Z"
-    },
-    {
-      "id": "m178353156043280",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"NVIDIA Nemotron Achieves Benchmark-Leading Performance With LangChain Deep Agents Harness\" (?/10)",
-      "ref": "2026-07-08T17-18-31-601Z_nvidia-blog_NVIDIA_Nemotron_Achieves_Benchmark-Leading_Perform.json",
-      "at": "2026-07-08T17:26:00.432Z"
-    },
-    {
-      "id": "m178353156695957",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Helping K–12 educators build practical AI skills\" (?/10)",
-      "ref": "2026-07-08T17-18-31-601Z_openai-blog_Helping_K_12_educators_build_practical_AI_skills.json",
-      "at": "2026-07-08T17:26:06.959Z"
-    },
-    {
-      "id": "m178353157417015",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Introducing GPT-Live\" (?/10)",
-      "ref": "2026-07-08T17-18-31-601Z_openai-blog_Introducing_GPT-Live.json",
-      "at": "2026-07-08T17:26:14.170Z"
-    },
-    {
-      "id": "m178353157947178",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Powering scientific discovery: BYOKG and GraphRAG for intelligent pharmaceutical research\" (?/10)",
-      "ref": "2026-07-08T17-18-31-602Z_aws-ml_Powering_scientific_discovery__BYOKG_and_GraphRAG_.json",
-      "at": "2026-07-08T17:26:19.471Z"
-    },
-    {
-      "id": "m178353158736721",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"How GitHub Copilot enables zero DNS configuration for GitHub Pages\" (?/10)",
-      "ref": "2026-07-08T17-18-31-602Z_github-ai_How_GitHub_Copilot_enables_zero_DNS_configuration_.json",
-      "at": "2026-07-08T17:26:27.367Z"
-    },
-    {
-      "id": "m178353159489736",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Flint: A visualization language for the AI era\" — mi a baj: Salvaged from a partial AI response.",
-      "ref": "2026-07-08T17-18-31-602Z_microsoft-research_Flint__A_visualization_language_for_the_AI_era.json",
-      "at": "2026-07-08T17:26:34.897Z"
-    },
-    {
-      "id": "m178353160223320",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Introducing Robostral Navigate \" — mi a baj: Salvaged from a partial AI response.",
-      "ref": "2026-07-08T17-18-32-415Z_mistral-ai_Introducing_Robostral_Navigate_.json",
-      "at": "2026-07-08T17:26:42.233Z"
-    },
-    {
-      "id": "m17835316087848",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"How Natura &Co Is Transforming Finance with Generative AI on SAP S/4HANA\" — mi a baj: Salvaged from a partial AI response.",
-      "ref": "2026-07-08T17-18-32-415Z_sap_How_Natura__Co_Is_Transforming_Finance_with_Genera.json",
-      "at": "2026-07-08T17:26:48.784Z"
-    },
-    {
-      "id": "m178353161639773",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"ML Jobs in Snowflake Data Clean Rooms Now GA\" — mi a baj: Salvaged from a partial AI response.",
-      "ref": "2026-07-08T17-18-32-415Z_snowflake_ML_Jobs_in_Snowflake_Data_Clean_Rooms_Now_GA.json",
-      "at": "2026-07-08T17:26:56.397Z"
-    },
     {
       "id": "m178353162404858",
       "from": "ellenorzo",
@@ -2636,6 +2474,169 @@
       "text": "Főnöki újraindítás: \"ZZ E2E teszt hír\" — rewrite-explainer",
       "ref": "zz-e2e-teszt-hir.json",
       "at": "2026-07-13T19:31:29.711Z"
+    },
+    {
+      "id": "m178399217600734",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"OpenAI GPT-5.6 Sol, Terra, and Luna are now generally available on Amazon Bedrock\" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "2026-07-14T01-22-26-177Z_aws-ml_OpenAI_GPT-5_6_Sol__Terra__and_Luna_are_now_genera.json",
+      "at": "2026-07-14T01:22:56.007Z"
+    },
+    {
+      "id": "m17839921831200",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"When your brain works differently, AI isn’t a luxury—it’s accessibility\" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "2026-07-14T01-22-26-177Z_aws-ml_When_your_brain_works_differently__AI_isn_t_a_luxu.json",
+      "at": "2026-07-14T01:23:03.120Z"
+    },
+    {
+      "id": "m178399219326610",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"How Cara pioneers domain-specific AI for enterprise insurance brokerages with AWS\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers.; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "2026-06-27T02-07-24-542Z_aws-ml_How_Cara_pioneers_domain-specific_AI_for_enterpris.json",
+      "at": "2026-07-14T01:23:13.266Z"
+    },
+    {
+      "id": "m178399220403239",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Production-grade AI agents for financial compliance: Lessons from Stripe\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers.; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "2026-06-27T02-07-24-542Z_aws-ml_Production-grade_AI_agents_for_financial_complianc.json",
+      "at": "2026-07-14T01:23:24.032Z"
+    },
+    {
+      "id": "m178399221388173",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Costa Rican dairy cooperative turns AI agents into coworkers\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers.; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "2026-06-29T02-29-25-987Z_microsoft-ai_Costa_Rican_dairy_cooperative_turns_AI_agents_into.json",
+      "at": "2026-07-14T01:23:33.881Z"
+    },
+    {
+      "id": "m178399222647128",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Work smarter in 90 days: A real-world guide to using AI\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers.; Missing instructions to access AI tools; újraküldöm.",
+      "ref": "2026-06-29T02-29-25-987Z_microsoft-ai_Work_smarter_in_90_days__A_real-world_guide_to_usi.json",
+      "at": "2026-07-14T01:23:46.471Z"
+    },
+    {
+      "id": "m178399223827877",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Create fully native and editable presentations with Gemini in Google Slides\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers.; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "2026-06-30T16-43-13-543Z_google-workspace_Create_fully_native_and_editable_presentations_wit.json",
+      "at": "2026-07-14T01:23:58.278Z"
+    },
+    {
+      "id": "m178399224927818",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"New AI-powered library lets people meet Theodore Roosevelt in a whole new way \" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Add more specific examples and details about the AI-powered library's capabilities and user experience to make the article more engaging and informative; Re",
+      "ref": "2026-07-01T17-46-16-620Z_microsoft-ai_New_AI-powered_library_lets_people_meet_Theodore_R.json",
+      "at": "2026-07-14T01:24:09.278Z"
+    },
+    {
+      "id": "m178399225712522",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"How Cara pioneers domain-specific AI for enterprise insurance brokerages with AWS\" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "2026-06-27T02-07-24-542Z_aws-ml_How_Cara_pioneers_domain-specific_AI_for_enterpris.json",
+      "at": "2026-07-14T01:24:17.125Z"
+    },
+    {
+      "id": "m178399226435556",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Production-grade AI agents for financial compliance: Lessons from Stripe\" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "2026-06-27T02-07-24-542Z_aws-ml_Production-grade_AI_agents_for_financial_complianc.json",
+      "at": "2026-07-14T01:24:24.355Z"
+    },
+    {
+      "id": "m178399227163948",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Costa Rican dairy cooperative turns AI agents into coworkers\" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "2026-06-29T02-29-25-987Z_microsoft-ai_Costa_Rican_dairy_cooperative_turns_AI_agents_into.json",
+      "at": "2026-07-14T01:24:31.640Z"
+    },
+    {
+      "id": "m178399227884659",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Work smarter in 90 days: A real-world guide to using AI\" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "2026-06-29T02-29-25-987Z_microsoft-ai_Work_smarter_in_90_days__A_real-world_guide_to_usi.json",
+      "at": "2026-07-14T01:24:38.846Z"
+    },
+    {
+      "id": "m178399228667313",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Create fully native and editable presentations with Gemini in Google Slides\" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "2026-06-30T16-43-13-543Z_google-workspace_Create_fully_native_and_editable_presentations_wit.json",
+      "at": "2026-07-14T01:24:46.673Z"
+    },
+    {
+      "id": "m178399229433186",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"New AI-powered library lets people meet Theodore Roosevelt in a whole new way \" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "2026-07-01T17-46-16-620Z_microsoft-ai_New_AI-powered_library_lets_people_meet_Theodore_R.json",
+      "at": "2026-07-14T01:24:54.331Z"
+    },
+    {
+      "id": "m178399229518084",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "need",
+      "text": "Új funkció-hír → kéne hozzá útmutató: \"How to Use Physical Security Keys with Your Work Computer\"",
+      "ref": "how-to-use-physical-security-keys-with-your-work-computer",
+      "open": true,
+      "at": "2026-07-14T01:24:55.180Z"
+    },
+    {
+      "id": "m178399240461448",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Summarise a long Slack thread into 3 bullet points using Cohere\" — mi a baj: Beginner clarity too low (5/10): steps are vague or could mislead a first-time user",
+      "ref": "GUIDE_summarise-a-long-slack-thread-into-3-bullet-points-using-coh.json",
+      "at": "2026-07-14T01:26:44.614Z"
+    },
+    {
+      "id": "m178399246571060",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 18 → 6/3/3 oszlop.",
+      "ref": "mobile",
+      "at": "2026-07-14T01:27:45.710Z"
+    },
+    {
+      "id": "m178399319870820",
+      "from": "social",
+      "to": "team",
+      "kind": "info",
+      "text": "5 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
+      "ref": null,
+      "at": "2026-07-14T01:39:58.708Z"
     }
   ]
 }

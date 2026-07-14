@@ -1,9 +1,9 @@
 {
   "_meta": {
-    "written_at": "2026-07-02T02:11:32.531Z",
+    "written_at": "2026-07-14T01:23:13.265Z",
     "writer_provider": "mistral",
     "writer_model": "mistral-small-latest",
-    "writer_cost_usd": 0,
+    "writer_cost_usd": 0.0032134,
     "original_draft": "2026-06-27T02-07-24-542Z_aws-ml_How_Cara_pioneers_domain-specific_AI_for_enterpris.json",
     "source_id": "aws-ml",
     "source_name": "AWS Machine Learning (hivatalos)",
@@ -12,21 +12,21 @@
     "auto_check": {
       "passed": true,
       "issues": [],
-      "wordCount": 648
+      "wordCount": 635
     },
     "can_retry": true,
-    "rework_attempts": 0,
+    "rework_attempts": 1,
     "reworked_from": "REJECTED_2026-06-27T02-07-24-542Z_aws-ml_How_Cara_pioneers_domain-specific_AI_for_enterpris.json",
-    "requeued_unchanged": true,
-    "rejected_at": "2026-07-13T19:23:20.095Z",
+    "requeued_unchanged": false,
+    "rejected_at": "2026-07-14T01:24:17.108Z",
     "ai_review": {
-      "overall_score": 6,
-      "clarity_score": 6,
+      "overall_score": 3,
+      "clarity_score": 2,
       "decision": "FAIL",
       "issues": [],
       "verdict": "Salvaged from a partial AI response.",
       "_salvaged": true,
-      "_aiCost": 0.0042955,
+      "_aiCost": 0.0043013,
       "_provider": "google",
       "_model": "gemini-2.5-flash",
       "_attempts": 1
@@ -35,6 +35,6 @@
     "ceo_rounds": 1,
     "ceo_hint": "CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers."
   },
-  "article_markdown": "---\ntitle: \"How to Use AI to Turn Your Rough Notes Into Polished Writing\"\nsubtitle: \"Save hours rewriting by letting AI tidy up your messy first drafts in minutes\"\ncategory: \"how-to\"\naudience: \"personal\"\nread_time_minutes: 5\ntags: [\"writing\", \"productivity\", \"ai-tools\"]\n---\n\n# How to Use AI to Turn Your Rough Notes Into Polished Writing\n\nYou’ve just scribbled down a few ideas on your phone during a coffee break or jotted bullet points in a notebook after a meeting. Now you need to turn those rough notes into something clear, professional, and ready to share. That’s where AI can step in and do the heavy lifting for you.\n\nWith a few simple steps, you can paste your messy notes into an AI tool and have it rewrite them into smooth, readable paragraphs—saving you time and frustration.\n\n---\n\n## Start with a clean copy of your notes\n\nBefore you feed anything to AI, make sure your raw notes are in one place. Copy them into a plain text document or paste them directly into the AI tool’s chat window.\n\nIf your notes are handwritten, take a quick photo and use a free app like Microsoft Lens or Google Keep to extract the text. AI works best with clean, typed input, so spend a minute tidying up any typos or unclear phrases.\n\n---\n\n## Give the AI a clear instruction (the “prompt”)\n\nA prompt is just the instruction you give to the AI—think of it like a recipe card. The clearer your prompt, the better the result.\n\nInstead of pasting your notes and saying “fix this,” try something like:\n\n> “Rewrite the following notes into a clear, professional paragraph. Keep the meaning the same but make it flow naturally. Notes: [paste your notes here]”\n\nIf you want a friendlier tone, add:\n\n> “Rewrite this in a warm, conversational style suitable for an email to a colleague.”\n\nIf you’re writing for work, you might say:\n\n> “Rewrite this into a concise business email draft. Keep it under 100 words.”\n\n---\n\n## Choose the right AI tool for the job\n\nNot all AI tools are the same. Some are better for short emails, others for long reports.\n\n- **ChatGPT** or **Gemini**: Great for general rewriting and polishing.\n- **Claude**: Good for longer documents and keeping tone consistent.\n- **Microsoft Copilot**: Built into Word and Outlook, perfect if you’re already using Microsoft 306.\n- **Google Docs with Gemini**: If you work in Google Workspace, this is seamless.\n\nPick one that fits your workflow and budget.\n\n---\n\n## Review and tweak the AI’s output\n\nAI isn’t perfect—it might add extra fluff, change your meaning slightly, or use words that don’t sound like you. Always read the AI’s rewrite carefully.\n\nAsk yourself:\n- Does it sound like me?\n- Did it keep all the important points?\n- Is the tone right for the audience?\n\nIf something feels off, tweak your prompt or ask the AI to try again with a different style.\n\n---\n\n## What this means for you\n\n- **If you’re a student**: Use AI to turn your lecture notes into clear study summaries. Paste your messy scribbles, prompt the AI to “organise this into bullet points with key concepts highlighted,” and you’ll have a revision sheet in minutes.\n- **If you work in an office**: Turn meeting notes into a quick email update for your team. Just paste the notes, ask the AI to “write a professional summary,” and copy it straight into your email.\n- **If you’re just getting started**: Start with a short paragraph or email draft. Paste it into ChatGPT, say “make this clearer,” and see how much smoother it reads. It’s a risk-free way to try AI without pressure.\n\n---\n\nNow you’re ready to let AI handle the rewriting while you focus on what really matters—your ideas. Try it today with a single paragraph and see how much time you save.",
+  "article_markdown": "---\ntitle: \"What the New AI Voice Feature Means for Your Everyday Chats\"\nsubtitle: \"Turn your phone calls and voice messages into clear notes or summaries with one tap\"\ncategory: \"how-to\"\naudience: \"personal\"\nread_time_minutes: 5\ntags: [\"voice-ai\", \"productivity\", \"getting-started\"]\n---\n\n# What the New AI Voice Feature Means for Your Everyday Chats\n\nYou’ve just finished a quick phone call while walking the dog or left a voice message for your partner about the shopping list. Now you need to remember the details: what time was the appointment, which items to buy, or what your boss said about the project. That’s where the latest AI voice feature comes in—it listens to your call or message, writes it down clearly, and even turns it into a neat summary.\n\nWith a few taps, you can save time rewriting notes, share important points with someone else, or just free up your brain for the next thing.\n\n---\n\n## Start by turning on the voice feature\n\nFirst, make sure the feature is ready to use. Open your AI app (like ChatGPT, Gemini, or your phone’s built-in assistant). Look for a microphone icon or a “Voice” button—usually at the bottom of the screen. Tap it once to start listening.\n\nIf it’s your first time, the app might ask for permission to access your microphone. Say “yes” so it can record your voice clearly. No need to worry about privacy—your words stay private unless you choose to share them.\n\n---\n\n## Record your call or voice message\n\nNow you can use the feature in two simple ways:\n\n1. **During a call**: If you’re on a phone call and want to save what’s being said, tap the microphone icon in your AI app. It will listen and write down the conversation in real time. You’ll see the words appear on your screen as they’re spoken.\n\n2. **After a voice message**: If you’ve received a voice note and want to turn it into text, open the message in your messaging app. Look for an option like “Transcribe with AI” or “Summarise”. Tap it, and the AI will write out the message clearly.\n\nNo typing required—just speak naturally, and the AI does the rest.\n\n---\n\n## Turn your notes into something useful\n\nOnce your words are written down, you can do more than just read them:\n\n- **Summarise**: Ask the AI to shorten the text into key points. For example, type “summarise this into three bullet points” and it will give you the most important details.\n\n- **Share with someone**: Copy the summary and paste it into a message or email. No need to rewrite it yourself.\n\n- **Save for later**: Store the notes in your AI app or a note-taking tool like Google Keep or Apple Notes. You can search for them anytime.\n\n- **Set a reminder**: If the notes include a date or time, ask the AI to “add this to my calendar” and it will create an event for you.\n\n---\n\n## What this means for you\n\n- **If you’re a student**: Record your lecturer’s key points during a lecture, then ask the AI to turn them into study notes. You’ll save time rewriting and focus on understanding instead.\n\n- **If you work in an office**: Turn your quick phone calls with clients or colleagues into clear notes. Share the summary with your team so everyone’s on the same page without extra meetings.\n\n- **If you’re just getting started**: Try it with a short voice message to a friend. Ask the AI to “write this down clearly” and see how much easier it is to keep track of small details.\n\n---\n\nNow you can let AI handle the listening and writing while you focus on the conversation. Try it today with a single voice message and see how much time it saves.",
   "original_title": "How Cara pioneers domain-specific AI for enterprise insurance brokerages with AWS"
 }
