@@ -1,0 +1,54 @@
+{
+  "_meta": {
+    "written_at": "2026-07-14T09:45:59.986Z",
+    "writer_provider": "cerebras",
+    "writer_model": "gpt-oss-120b",
+    "writer_cost_usd": 0,
+    "original_draft": "2026-07-14T09-45-57-859Z_google-deepmind_Empowering_India_s_next_generation_of_innovators_w.json",
+    "source_id": "google-deepmind",
+    "source_name": "Google DeepMind (hivatalos)",
+    "source_link": "https://deepmind.google/blog/empowering-indias-next-generation-of-innovators-with-atl-saathi/",
+    "status": "published",
+    "published_at": "2026-07-14T09:46:07.943Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 644
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "This article is well-structured, clearly explains a new tool, and provides",
+      "_salvaged": true,
+      "_aiCost": 0.0043741000000000006,
+      "_provider": "google",
+      "_model": "gemini-2.5-flash",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-07-14T09:48:28.619Z",
+    "guide_worthy": true,
+    "related_guide_topic": "gemini-getting-started",
+    "seo": {
+      "meta_description": "Bring AI into your school robotics lab with ATL Saathi, a step-by-step guide to using AI for student projects and lesson planning",
+      "keywords": [
+        "AI in education",
+        "robotics lab",
+        "ATL Saathi",
+        "AI for students",
+        "robotics projects"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add concrete examples of successful AI-integrated robotics projects",
+        "Include testimonials from educators who have used ATL Saathi",
+        "Provide a brief FAQ section to address common questions about implementing AI in the classroom"
+      ],
+      "optimised_at": "2026-07-14T09:48:35.682Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"How to bring AI into your school robotics lab with ATL Saathi\"\nsubtitle: \"A step‑by‑step guide to using the Gemini‑powered ATL Saathi assistant to boost student projects, simplify lesson planning, and spark creative problem‑solving\"\ncategory: \"how-to\"\naudience: \"personal\"\nread_time_minutes: 5\ntags: [\"AI-education\", \"robotics\", \"Gemini\", \"ATL Saathi\", \"teaching\"]\n---\n\n# How to bring AI into your school robotics lab with ATL Saathi\n\n**Hook:** Imagine a robotics class where students can ask an AI for instant help on wiring diagrams, code snippets, or troubleshooting sensor issues. With ATL Saathi, that vision is already within reach, and you can start using it today.\n\n## Getting started\n\n1. **Create a user account**  \n   - Visit the ATL Saathi portal and sign up with your school email.  \n   - Verify the account via the link sent to your inbox – this keeps the tool limited to educators.\n\n2. **Familiarise yourself with the interface**  \n   - The dashboard shows three panels: **Chat**, **Resources**, and **Project Hub**.  \n   - **Chat** is where you type prompts (the instruction you give to the AI).  \n   - **Resources** stores lesson plans and code libraries that the AI can reference.  \n   - **Project Hub** lets you upload student robot designs for the AI to analyse.\n\n3. **Understanding the core tech**  \n   - **Gemini** is Google’s large language model (LLM – think of it as the brain behind ChatGPT).  \n   - An **LLM** learns patterns from massive text collections and can generate human‑like responses.  \n   - **Prompt**: the question or command you type. The clearer the prompt, the better the answer.  \n   - **Multimodal**: Gemini can handle text *and* images, so you can show it a circuit diagram and ask for improvements.\n\n## Three practical ways to use ATL Saathi in a robotics lab\n\n### 1. Instant code assistance\n- **Scenario:** A student is stuck on a loop that doesn’t exit.  \n- **Prompt example:** “My robot’s Arduino code has a while loop that never stops. Here’s the snippet: `while (sensorValue > 0) { … }`. How can I fix it?”  \n- **What you’ll get:** The AI returns a corrected version, explains why the original loop never ends, and adds comments for clarity.\n\n### 2. Design‑review feedback\n- **Scenario:** You’ve uploaded a CAD file of a 3‑D‑printed chassis.  \n- **Prompt example:** “Check this chassis for weight distribution issues and suggest reinforcement points.”  \n- **What you’ll get:** A visual overlay highlighting stress hotspots and a list of printable supports, ready to copy into your design software.\n\n### 3. Lesson‑plan enrichment\n- **Scenario:** You need a quick activity on sensor integration.  \n- **Prompt example:** “Generate a 30‑minute lesson plan that teaches students how to connect an ultrasonic distance sensor to a micro:bit.”  \n- **What you’ll get:** A ready‑to‑use plan with learning objectives, step‑by‑step instructions, and optional extension challenges.\n\n## Tips for effective prompting\n\n- **Be specific:** Include the programming language, hardware board, and any error messages.  \n- **Use context:** Attach a short screenshot or code snippet; the multimodal ability will read it.  \n- **Iterate:** If the first answer isn’t perfect, ask a follow‑up like “Can you explain line 5 in simpler terms?”  \n\n## What this means for you\n\n- **For classroom teachers:** You can reduce the time spent on routine troubleshooting, freeing up more minutes for hands‑on building and creativity.  \n- **For hobbyist educators or after‑school mentors:** ATL Saathi lets you support a larger group of learners without needing deep programming expertise yourself.  \n- **If you’re just starting with AI tools:** Begin by asking the assistant simple questions about wiring or code syntax, then gradually explore the design‑review features as confidence grows.\n\n## Wrap‑up\n\nATL Saathi turns a typical robotics lab into an AI‑enhanced workshop where students get rapid, personalised feedback and teachers can focus on guiding inquiry rather than fixing bugs. Today, sign up, try a quick code‑help prompt, and see how a few minutes of AI assistance can change the flow of your next class.",
+  "original_title": "Empowering India’s next generation of innovators with ATL Saathi"
+}

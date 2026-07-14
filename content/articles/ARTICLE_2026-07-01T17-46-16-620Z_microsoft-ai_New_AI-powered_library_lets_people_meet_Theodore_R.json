@@ -1,0 +1,64 @@
+{
+  "_meta": {
+    "written_at": "2026-07-14T09:46:59.021Z",
+    "writer_provider": "mistral",
+    "writer_model": "mistral-small-latest",
+    "writer_cost_usd": 0.0034326,
+    "original_draft": "2026-07-01T17-46-16-620Z_microsoft-ai_New_AI-powered_library_lets_people_meet_Theodore_R.json",
+    "source_id": "microsoft-ai",
+    "source_name": "Microsoft AI (hivatalos)",
+    "source_link": "https://news.microsoft.com/signal/articles/ai-theodore-roosevelt-presidential-library/",
+    "status": "published",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 816
+    },
+    "can_retry": true,
+    "rework_attempts": 2,
+    "reworked_from": "REJECTED_2026-07-01T17-46-16-620Z_microsoft-ai_New_AI-powered_library_lets_people_meet_Theodore_R.json",
+    "requeued_unchanged": false,
+    "rejected_at": "2026-07-14T01:24:54.314Z",
+    "ai_review": {
+      "overall_score": 7,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "The article effectively explains the concept of AI historical figures in a friendly, accessible style.",
+      "_salvaged": true,
+      "_aiCost": 0.0044119,
+      "_provider": "google",
+      "_model": "gemini-2.5-flash",
+      "_attempts": 1
+    },
+    "reason": "Salvaged from a partial AI response.",
+    "ceo_rounds": 1,
+    "ceo_hint": "CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Add more specific examples and details about the AI-powered library's capabilities and user experience to make the article more engaging and informative",
+    "published_at": "2026-07-14T09:47:47.745Z",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-07-14T09:48:27.991Z",
+    "guide_worthy": false,
+    "pairing_reason": "The article does not introduce a specific, named feature or tool",
+    "seo": {
+      "meta_description": "Discover how to use AI voice tools to chat with historical figures like Winston Churchill, bringing history to life with lifelike avatars and real-time conversations",
+      "keywords": [
+        "AI historical figures",
+        "chat with famous people",
+        "AI voice tools",
+        "history come alive",
+        "interactive history"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more concrete examples of AI historical libraries",
+        "Include step-by-step guide on creating an account and using the platform",
+        "Optimize heading tags for better readability and SEO"
+      ],
+      "optimised_at": "2026-07-14T09:48:35.011Z"
+    },
+    "social": true,
+    "social_at": "2026-07-14T09:54:15.523Z"
+  },
+  "article_markdown": "---\ntitle: \"Turn Dusty Archives into Living Conversations: How to Chat with AI Historical Figures\"\nsubtitle: \"Use AI voice tools to bring history to life by asking questions to lifelike avatars of famous people.\"\ncategory: \"how-to\"\naudience: \"personal\"\nread_time_minutes: 6\ntags: [\"voice-ai\", \"history\", \"learning\", \"conversation-ai\", \"ai-library\"]\n---\n\n# Turn Dusty Archives into Living Conversations: How to Chat with AI Historical Figures\n\nYou’re waiting for the train when your phone buzzes with a notification: “Ask Winston Churchill about his thoughts on the Battle of Britain.” One tap and suddenly you’re listening to a voice that sounds uncannily like the wartime leader himself, ready to answer your questions in his distinctive cadence. AI-powered historical libraries are turning centuries-old letters and speeches into real-time conversations—no museum ticket, no guided tour required.\n\n## Getting started with an AI historical library\n\nMost platforms work the same way. You create a free account with your email, choose a password, and log in. Once inside, look for a section called “Historical Figures,” “Presidents,” or “Primary Sources.” You’ll see a list of people you can “meet,” each represented by a photo or avatar. Click on Winston Churchill, for example, and a chat window opens where you can type or speak your questions.\n\n> **What’s happening behind the scenes?**\n> The avatar runs on a **large language model (LLM)**—think of it as the AI’s brain. It reads millions of pages of historical documents and learns to mimic the person’s speech patterns, favourite phrases, and known opinions. When you ask a question, the model predicts the most likely answer based on what it has read.\n\n## Crafting your first prompt\n\nA prompt is simply the question or instruction you type. Start with a friendly opener to set the tone:\n\n```\nGood afternoon, Mr Churchill. How did your experiences in the Boer War shape your views on empire and leadership?\n```\n\nThe AI will reply in a style that matches Churchill’s known speeches—long sentences, vivid imagery, and the occasional rhetorical flourish. If the answer feels too formal, try a more casual prompt:\n\n```\nHey Winston, what was it really like standing on the deck of the HMS Prince of Wales during the Atlantic Charter meeting with Roosevelt?\n```\n\n## Going deeper: ask for stories, not just facts\n\nTo get richer answers, give the AI extra context. Instead of:\n\n```\nTell me about the Battle of Britain.\n```\n\nTry:\n\n```\nIn your speech on 4 June 1940, you said, “We shall fight on the beaches.” Can you describe the moment you first saw the aerial dogfights over southern England?\n```\n\nAdding a date, speech title, or specific event nudges the model to pull from the right historical source, making the answer more vivid and accurate.\n\n## Verify what you hear\n\nAI can sometimes **hallucinate**—invent plausible-sounding details. Always double-check important facts. After the AI answers, you can:\n\n- Click the “View Sources” button to see the original letters, newspaper articles, or speeches it used.\n- Search the web for the exact quote or event.\n- Compare the AI’s answer with a trusted history book or reputable website.\n\n> **Quick tip:** If the AI mentions a law, treaty, or battle, jot down the name and look it up later. You’ll quickly learn which answers need extra checking.\n\n## Tips for richer conversations\n\n- **Ask open-ended questions** to encourage storytelling:\n  “What did you miss most about home while you were in South Africa?”\n- **Use follow-up questions** to dig deeper:\n  “You once said, ‘Success is not final, failure is not fatal.’ What failure taught you that lesson?”\n- **Try role-playing** to make it feel real:\n  “Imagine you’re addressing the House of Commons in 1941. What would you say to rally the nation after Pearl Harbor?”\n- **Set a learning goal** before you start:\n  Want a quick overview? Keep prompts broad.\n  Researching a school project? Ask for dates, laws, and citations.\n\n## What this means for you\n\n- **For everyday curiosity**: You can satisfy a lingering question about a historical event while cooking dinner or waiting for the train, turning idle time into a mini history lesson.\n- **For school projects**: Students can use the conversational avatar to draft research questions, gather preliminary information, and then verify each point with textbooks, making essays more engaging and accurate.\n- **If you're new to AI tools**: Start with a single, friendly prompt, check the answer, and gradually add more detail. The learning curve is gentle—treat it like chatting with a knowledgeable friend.\n\n## Wrap-up\n\nAn AI-powered historical library turns static archives into lively conversations, letting you “meet” Winston Churchill and other figures from the past. By crafting clear prompts, following up with verification, and using the built-in source links, you can turn casual curiosity into solid knowledge. Today, try signing up for a free trial, ask Churchill about his favourite pastime, and see how history comes to life at the click of a button.",
+  "original_title": "New AI-powered library lets people meet Theodore Roosevelt in a whole new way "
+}

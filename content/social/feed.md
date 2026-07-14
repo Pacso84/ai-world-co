@@ -1,6 +1,97 @@
 # AI World Co. — közösségi posztok
 
-*Generálva: 2026-07-14T01:39:58.707Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+*Generálva: 2026-07-14T09:54:18.694Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## New AI-powered library lets people meet Theodore Roosevelt in a whole new way 
+**🔗 https://aiworldhq.com/article/turn-dusty-archives-into-living-conversations-how-to-chat-wi.html**
+
+**Facebook:**
+Ever wish you could ask Teddy Roosevelt a question about his adventures? The new AI library lets you chat with lifelike historical avatars, turning old archives into a real conversation. Give it a try https://aiworldhq.com/article/turn-dusty-archives-into-living-conversations-how-to-chat-wi.html #AIEducation #History
+
+**Instagram:**
+Chat with history 👋
+Ask Theodore Roosevelt about his travels and hear a natural‑voice reply, like a live interview. Great for curious minds and students.
+#AIhistory
+#Learning
+#VoiceAI
+Link in bio.
+
+*Kép-ötlet: A cozy library setting with a subtle holographic portrait of Theodore Roosevelt speaking, no text overlay.*
+
+---
+
+## Architecting Trust: Integrating Security into the Future of AI Innovation
+**🔗 https://aiworldhq.com/article/how-to-spot-ai-scams-before-they-spot-you.html**
+
+**Facebook:**
+Ever get a call that sounds exactly like your bank? 📞 Learn simple checks to spot AI‑generated scams before they cost you. https://aiworldhq.com/article/how-to-spot-ai-scams-before-they-spot-you.html #AISafety #ScamAlert
+
+**Instagram:**
+Think that friendly voice on the line is really your bank?
+Use these quick questions to tell if it’s an AI voice – it can save you from costly fraud.
+#AISafety
+#ScamAlert
+#VoiceAI
+Link in bio
+
+*Kép-ötlet: A close‑up of a hand holding a phone with a puzzled expression, soft lighting, no text overlay.*
+
+---
+
+## Fireside Chat: Beyond Buzzwords: Realize the True Promise of Physical AI
+**🔗 https://aiworldhq.com/article/how-to-use-physical-ai-in-your-home-or-workspace-without-a-r.html**
+
+**Facebook:**
+Imagine your lights turning on as you walk into a room and the AC adjusting before you feel warm – no robotics degree needed. Our simple guide shows how to add physical AI to everyday objects. https://aiworldhq.com/article/how-to-use-physical-ai-in-your-home-or-workspace-without-a-r.html #SmartHome #PhysicalAI
+
+**Instagram:**
+Let your home think for you.
+Learn easy ways to turn everyday items into smart helpers – no engineering background required. Lights, cameras, thermostats and more in just five minutes.
+#PhysicalAI
+#SmartLiving
+#DIYTech
+Link in bio.
+
+*Kép-ötlet: A cosy living room with a lamp, thermostat and smart speaker subtly highlighted, a soft glow indicating AI activity.*
+
+---
+
+## Presentation: Verifiable Trust for Agentic Life Sciences
+**🔗 https://aiworldhq.com/article/how-to-spot-ai-generated-content-and-why-it-matters-for-your.html**
+
+**Facebook:**
+Ever wondered if that article or video was actually made by AI? Learn quick ways to spot AI‑generated content and keep your info reliable. #AItrust #DigitalLiteracy https://aiworldhq.com/article/how-to-spot-ai-generated-content-and-why-it-matters-for-your.html
+
+**Instagram:**
+Spot the fakes, protect your day.
+Simple tricks like checking language quirks and source cues help you tell if something was AI‑made. Stay informed, stay confident.
+#AItrust
+#DigitalLiteracy
+#EverydayTech
+Link in bio.
+
+*Kép-ötlet: A close‑up of a smartphone screen showing a news article with a subtle question‑mark overlay, suggesting curiosity.*
+
+---
+
+## Panel: Beyond the Bottleneck: Photonics and the Future of Sustainable Data Centers
+**🔗 https://aiworldhq.com/article/how-photonics-can-make-your-cloud-services-greener.html**
+
+**Facebook:**
+Want your cloud services to use less energy? Learn how light‑based tech can cut heat and power in data centres, keeping your internet greener. https://aiworldhq.com/article/how-photonics-can-make-your-cloud-services-greener.html #photonics #greenTech
+
+**Instagram:**
+Light can make your cloud greener 🌱
+Photonics swaps electricity for light, reducing heat and energy use in data centres. Small changes online can lower your digital carbon footprint.
+#photonics
+#sustainability
+#datacentres
+#greenTech
+Link in bio.
+
+*Kép-ötlet: A close‑up of a glowing fibre‑optic cable draped over a fresh green leaf, highlighting clean technology.*
 
 ---
 

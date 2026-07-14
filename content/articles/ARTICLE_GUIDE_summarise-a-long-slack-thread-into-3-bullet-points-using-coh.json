@@ -1,0 +1,63 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "summarise-a-long-slack-thread-into-3-bullet-points-using-coh",
+    "company": "Cohere",
+    "tool": "Summariser",
+    "icon": "💬",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-07-14T09:48:19.674Z",
+    "writer_provider": "mistral",
+    "writer_model": "mistral-small-latest",
+    "writer_cost_usd": 0.004217,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "rejected_at": "2026-07-14T09:48:08.014Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1096
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "This guide is",
+      "_salvaged": true,
+      "_aiCost": 0.0045645,
+      "_provider": "google",
+      "_model": "gemini-2.5-flash",
+      "_attempts": 1
+    },
+    "reason": "Salvaged from a partial AI response.",
+    "can_retry": true,
+    "rework_attempts": 2,
+    "reworked_from": "REJECTED_GUIDE_summarise-a-long-slack-thread-into-3-bullet-points-using-coh.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-07-14T09:48:27.215Z",
+    "seo": {
+      "meta_description": "Simplify long Slack threads into 3-bullet summaries using Cohere, saving you 5 minutes of scrolling and increasing productivity with easy steps",
+      "keywords": [
+        "Slack thread summary",
+        "Cohere summariser",
+        "productivity tools",
+        "Slack organization",
+        "AI summarization"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more screenshots or step-by-step images to illustrate the process",
+        "Mention the benefits of using Cohere for teams and collaboration",
+        "Provide a direct link to sign up for a free Cohere account"
+      ],
+      "optimised_at": "2026-07-14T09:48:36.406Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Turn a messy Slack thread into a clean 3-bullet summary with Cohere\"\nsubtitle: \"Save five minutes every time a long Slack chat buries the real action items under jokes and emojis.\"\ncategory: \"guide\"\naudience: \"business\"\ncompany: \"Cohere\"\ntool: \"Cohere Summariser\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"getting-started\", \"cohere\", \"summarise\", \"slack\"]\n---\n\n# Turn a Slack thread into a clean 3-bullet summary with Cohere\n\n**Hook:**\nYou’ve just finished a 45-message Slack thread that started with “Quick question…” and ended with three action items buried in jokes about the printer. Instead of scrolling back, use Cohere’s free summariser to extract the three key points in under 5 minutes.\n\n## Before you start\n- A **free Cohere account** (sign-up takes 30 seconds).\n- A **Slack thread link** or the text copied into a blank document.\n- A **computer or phone** with internet and a browser.\n- Rough time: **4–6 minutes** total.\n\n---\n\n## Step 1 — Copy the Slack thread text\nOpen the Slack thread on your computer or phone. Click the three dots menu at the top right of the thread → choose “Copy link” (computer) or long-press the thread → tap “Copy” (mobile). Paste the text into any blank document or note app so you have a clean copy.\n\nWhat you’ll see: a block of text with names, timestamps, and emojis.\nWhat happens next: you’ll paste this into Cohere in the next step.\nIf it looks different: on mobile, tap “Share” → “Copy to clipboard” instead of highlighting.\nYou’ll know it worked when you have the full text ready to paste.\n\n💬 Example:\n```\nJohn (9:14 AM): Quick question — does anyone know the Wi-Fi password for the new router?\nSarah (9:15 AM): It’s on the fridge door in the kitchen.\nAlex (9:16 AM): Can we update the onboarding doc? The printer section is outdated.\nSarah (9:18 AM): Done! I’ve updated the Google Doc.\nJohn (9:20 AM): Thanks! Also, can we schedule a team lunch next Friday?\nSarah (9:22 AM): Yes — I’ll send a poll in #team-events.\n```\n\n---\n\n## Step 2 — Go to Cohere’s free summariser\nOpen your browser and type **cohere.com/summarize** in the address bar. Press Enter. You’ll land on a clean page with a heading “Summarise text” and a large empty box below it.\n\nWhat you’ll see: a white page with the heading “Summarise text” and a big empty text box.\nWhat happens next: you’ll paste your Slack text here.\nIf it looks different: look for a button like “Try Summariser” or “Get Started” on the homepage.\nYou’ll know it worked when the page loads and you see the empty text box.\n\n---\n## Step 3 — Paste the Slack text\nClick inside the big text box. Press **Ctrl+V** (Windows/Linux) or **Cmd+V** (Mac) to paste the full Slack thread you copied earlier. The text will appear instantly.\n\nWhat you’ll see: your Slack thread text filling the box.\nWhat happens next: the page stays quiet until you click the button.\nIf it looks different: if the box is missing, refresh the page or look for a “Paste your text” link.\nYou’ll know it worked when the text appears exactly as you pasted it.\n\n---\n## Step 4 — Choose “Bullet points” and set length to 3\nBelow the text box, find the dropdown that says “Paragraph” and change it to **Bullet points**. Next to it, set the length slider to **3** (or type “3” in the box).\n\nWhat you’ll see: the dropdown now shows “Bullet points” and the number “3” appears.\nWhat happens next: the page will stay unchanged until you click the button.\nIf it looks different: look for a slider or a box labelled “Number of points” or “Length”.\nYou’ll know it worked when the dropdown and length box show the correct settings.\n\n---\n## Step 5 — Click “Summarise” and wait 2 seconds\nPress the big blue button labelled **Summarise**. In about two seconds, a new box will appear below with your three bullet points.\n\nWhat you’ll see: a loading spinner for a moment, then a new section with three clean bullet points.\nWhat happens next: you can copy these points or edit them.\nIf it looks different: if nothing happens, refresh the page and try again.\nYou’ll know it worked when you see three clear bullet points under a heading like “Summary”.\n\n💬 Example output:\n- Update the onboarding doc’s printer section (Sarah completed this).\n- Wi-Fi password is on the fridge door in the kitchen.\n- Schedule team lunch for next Friday; Sarah will send a poll in #team-events.\n\n---\n## Step 6 — Copy the bullets and paste them into Slack\nHighlight the three bullet points in the Cohere box. Press **Ctrl+C** (Windows/Linux) or **Cmd+C** (Mac) to copy them. Go back to your Slack thread, paste (**Ctrl+V** / **Cmd+V**) into a reply, and hit Enter.\n\nWhat you’ll see: your three bullet points appear as a clean reply in the thread.\nWhat happens next: teammates can read the summary instantly.\nIf it looks different: if Slack doesn’t paste, try pasting into a note first, then copy again.\nYou’ll know it worked when the three bullet points appear in your Slack reply.\n\n---\n\n## Common mistakes\n- **Pasting only part of the thread** → you’ll miss key points. Always highlight **all** messages before copying.\n- **Leaving the length at “Paragraph”** → you’ll get a long paragraph instead of bullets. Always switch to “Bullet points” and set length to 3.\n- **Clicking “Summarise” before pasting** → nothing happens. Always paste first, then click the button.\n\n---\n## What this means for you\n\n- **In everyday life:** next time a work chat explodes into 50 messages, run it through Cohere and drop the three bullets back into the thread. No more scrolling marathons.\n\n- **For your business or work:** use this trick before a meeting to prep a one-page recap. Paste the thread, set to 3 bullets, and email the summary to your team 10 minutes before the call.\n\n- **If you're just getting started:** start with a short Slack thread (under 20 messages) to get comfortable. Once you see how fast it works, you’ll use it every week.\n\n---\n## Try it now\nOpen [cohere.com/summarize](https://cohere.com/summarize) in a new tab, paste this 5-line Slack snippet, set it to 3 bullet points, and click Summarise. You’ll have your first summary in under 30 seconds.\n\n💬 Example to copy:\n```\nAlex: Quick question — who’s free to help test the new CRM next Tuesday?\nMaria: I am.\nJohn: Me too.\nAlex: Great! We’ll meet at 2pm in the small meeting room.\n```",
+  "original_title": "Summarise a long Slack thread into 3 bullet points using Cohere"
+}
