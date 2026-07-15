@@ -279,6 +279,9 @@ const PRICING = {
   'claude-haiku-4-5': { input: 1.0, output: 5.0 },
   'claude-sonnet-4-6': { input: 3.0, output: 15.0 },
   'claude-opus-4-8': { input: 5.0, output: 25.0 },
+  // MiniMax az OpenRouteren (2026-07-15, user kérése): a FŐNÖKI körös
+  // újraírások erős modellje — olcsóbb kimenet, mint a gemini-2.5-flash.
+  'minimax/minimax-m3': { input: 0.30, output: 1.20 },
   // Google — PAID TIER (2026-07-02-től számlázva!). FIGYELEM:
   // a 'gemini-flash-latest' alias a 3.5 Flash-re mutat = 5x drágább a 2.5-nél!
   'gemini-2.5-flash': { input: 0.30, output: 2.50 },
@@ -375,7 +378,10 @@ const FREE_TIER_POOL = [
   { provider: 'cerebras', model: 'gpt-oss-120b' },
   { provider: 'groq', model: 'llama-3.3-70b-versatile' },
   { provider: 'mistral', model: 'mistral-small-latest' },
-  { provider: 'openrouter', model: 'meta-llama/llama-3.3-70b-instruct:free' }
+  { provider: 'openrouter', model: 'meta-llama/llama-3.3-70b-instruct:free' },
+  // Kínai ingyenes erősítés (2026-07-15, user kérése): Qwen3-Next-80B —
+  // erős általános modell, 262k kontextus, $0 (OpenRouter :free)
+  { provider: 'openrouter', model: 'qwen/qwen3-next-80b-a3b-instruct:free' }
 ];
 
 // FIZETŐS pool (Google paid tier) — olcsó-megbízható elöl, a DRÁGA
@@ -485,7 +491,7 @@ export async function ask(prompt, options = {}) {
   //   'paid-only'  (ellenorzo/boss/translator): CSAK fizetős — ingyenes SOHA
   const routing = agentConfig.routing || 'free-first';
   const own = [agentConfig.primary_model, agentConfig.fallback_model].filter(Boolean);
-  const isPaidEntry = (a) => isMetered(a.provider);
+  const isPaidEntry = (a) => isMetered(a.provider, a.model);
   let raw;
   if (routing === 'paid-only') {
     // Alaphelyzetben CSAK fizetős (minőség). VÉSZHÁLÓ (2026-07-10): ha MINDEN
@@ -518,7 +524,7 @@ export async function ask(prompt, options = {}) {
     // KÖLTSÉGŐR: ha a FIZETŐS (metered) keret betelt, a metered providereket
     // kihagyjuk és a FREE kulcsokra váltunk (a felhasználó kérése: figyelje a
     // keretet és váltson időben). A free providerek mindig mehetnek.
-    if (isMetered(provider)) {
+    if (isMetered(provider, model)) {
       const mb = meteredBlocked();
       if (mb.blocked) {
         if (!budgetNotice) { console.log(`   💰 Költségőr: ${mb.reason} — metered kulcsok kihagyva.`); budgetNotice = true; }
@@ -541,12 +547,12 @@ export async function ask(prompt, options = {}) {
         // Költség számítás + log + költségkeret-rögzítés (csak a fizetős fogy)
         const cost = calculateCost(model, response.usage);
         logCall(agentName, provider, model, response.usage, cost, true);
-        if (isMetered(provider)) recordSpend(provider, cost);
+        if (isMetered(provider, model)) recordSpend(provider, cost);
 
         // VÉSZHÁLÓ-RIASZTÁS: ha egy 'paid-only' agent INGYENES providerrel járt
         // sikerrel, az azt jelenti, hogy minden fizetős elesett (pl. Google-egyenleg
         // elfogyott). Napi 1x szólunk Telegramon, hogy tudd, tölteni kell.
-        if (routing === 'paid-only' && !isMetered(provider)) emergencyFallbackAlert(agentName, provider, model);
+        if (routing === 'paid-only' && !isMetered(provider, model)) emergencyFallbackAlert(agentName, provider, model);
 
         return { text: response.text, provider, model, costUsd: cost };
 

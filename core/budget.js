@@ -23,8 +23,14 @@ const LIMITS = CONFIG.limits || {};
 
 // Mely providerek FIZETŐSEK (metered)? Ezeket fékezi a költségőr.
 // A free kulcsok (groq, cerebras, mistral, openrouter:free, cloudflare) sosem.
+// OPENROUTER VEGYES (2026-07-15): a ':free' végű modellek ingyenesek, minden
+// más FIZETŐS (pl. minimax/minimax-m3) — ezért modell-szinten döntünk.
 const METERED = new Set(['google', 'anthropic', 'openai', 'deepseek', 'perplexity']);
-export function isMetered(provider) { return METERED.has(provider); }
+export function isMetered(provider, model = '') {
+  if (METERED.has(provider)) return true;
+  if (provider === 'openrouter' && model && !/:free$/.test(model)) return true;
+  return false;
+}
 
 const MONTH_HARD_CAP = Number(LIMITS.monthly_budget_usd_hard_cap ?? 80);
 const MONTH_TARGET = Number(LIMITS.monthly_budget_usd_target ?? 30);

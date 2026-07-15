@@ -416,8 +416,12 @@ ${brandContext}${lessons}${skills}
 
 Now output ONLY the corrected article markdown — no commentary, no notes about what you changed.`;
 
+  // FŐNÖKI KÖRÖS újraírás → ERŐS modell (config.agents.rework, MiniMax M3) —
+  // a gyenge modell 2x2 körben is figyelmen kívül hagyta a főnöki utasítást
+  // (Roosevelt-eset, 2026-07-15). Sima rework: marad a free-first iro-út.
+  const reworkAgent = rejectedData._meta?.ceo_hint ? 'rework' : AGENT_NAME;
   let response = await ask(userPrompt, {
-    agentName: AGENT_NAME,
+    agentName: reworkAgent,
     systemPrompt: WRITER_SYSTEM_PROMPT,
     maxTokens: 3000
   });
@@ -427,7 +431,7 @@ Now output ONLY the corrected article markdown — no commentary, no notes about
     const retry = await ask(userPrompt + `
 
 ⚠️ CRITICAL: The corrected article MUST contain a "## What this means for you" H2 section and start with a YAML frontmatter (---). Output the full corrected article again.`, {
-      agentName: AGENT_NAME,
+      agentName: reworkAgent,
       systemPrompt: WRITER_SYSTEM_PROMPT,
       maxTokens: 3000
     });

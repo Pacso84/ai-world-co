@@ -36,6 +36,19 @@
     }
   },
   "agents": {
+    "rework": {
+      "primary_model": {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m3"
+      },
+      "fallback_model": {
+        "provider": "google",
+        "model": "gemini-2.5-flash"
+      },
+      "enabled": true,
+      "routing": "paid-only",
+      "comment": "FŐNÖKI KÖRÖS újraírások ERŐS modellje (2026-07-15, user: MiniMax M3). A sima napi rework marad az iro free-first útján; ez CSAK akkor él, ha ceo_hint van a cikken — a gyenge modell 2x2 körben is elengedte a főnöki utasítást (Roosevelt-eset)."
+    },
     "ceo": {
       "primary_model": {
         "provider": "groq",
