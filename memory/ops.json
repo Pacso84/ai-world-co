@@ -1,110 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178402236000059",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-14T09:46:00.000Z",
-      "updated": "2026-07-14T09:46:07.994Z"
-    },
-    {
-      "id": "t178402236799831",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-07-14T09:46:07.998Z",
-      "updated": "2026-07-14T09:46:59.033Z"
-    },
-    {
-      "id": "t178402241903441",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-14T09:46:59.034Z",
-      "updated": "2026-07-14T09:47:47.756Z"
-    },
-    {
-      "id": "t178402246776066",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-14T09:47:47.760Z",
-      "updated": "2026-07-14T09:47:59.179Z"
-    },
-    {
-      "id": "t178402247918258",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-14T09:47:59.182Z",
-      "updated": "2026-07-14T09:48:08.077Z"
-    },
-    {
-      "id": "t178402248808126",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-14T09:48:08.081Z",
-      "updated": "2026-07-14T09:48:19.684Z"
-    },
-    {
-      "id": "t178402249968659",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-14T09:48:19.686Z",
-      "updated": "2026-07-14T09:48:27.266Z"
-    },
-    {
-      "id": "t17840225072701",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-07-14T09:48:27.270Z",
-      "updated": "2026-07-14T09:48:28.647Z"
-    },
-    {
-      "id": "t178402250866610",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-14T09:48:28.666Z",
-      "updated": "2026-07-14T09:48:34.091Z"
-    },
-    {
-      "id": "t178402251409287",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-07-14T09:48:34.092Z",
-      "updated": "2026-07-14T09:48:36.420Z"
-    },
-    {
-      "id": "t178402251642256",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-14T09:48:36.422Z",
-      "updated": "2026-07-14T09:48:37.343Z"
-    },
-    {
-      "id": "t178402251734523",
-      "title": "Run translator",
-      "status": "done",
-      "agent": "translator",
-      "created": "2026-07-14T09:48:37.345Z",
-      "updated": "2026-07-14T09:53:30.173Z"
-    },
-    {
-      "id": "t178402281017578",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-07-14T09:53:30.175Z",
-      "updated": "2026-07-14T09:53:39.151Z"
-    },
-    {
       "id": "t178404851310077",
       "title": "Run ceo",
       "status": "done",
@@ -479,33 +375,113 @@
       "agent": "publisher",
       "created": "2026-07-15T10:00:43.024Z",
       "updated": "2026-07-15T10:00:50.415Z"
+    },
+    {
+      "id": "t178413505837941",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-07-15T17:04:18.379Z",
+      "updated": "2026-07-15T17:04:18.593Z"
+    },
+    {
+      "id": "t178413505859533",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-07-15T17:04:18.595Z",
+      "updated": "2026-07-15T17:04:30.324Z"
+    },
+    {
+      "id": "t178413507032558",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-07-15T17:04:30.325Z",
+      "updated": "2026-07-15T17:04:30.513Z"
+    },
+    {
+      "id": "t178413507051517",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-07-15T17:04:30.515Z",
+      "updated": "2026-07-15T17:04:36.110Z"
+    },
+    {
+      "id": "t178413507611287",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-15T17:04:36.112Z",
+      "updated": "2026-07-15T17:04:51.417Z"
+    },
+    {
+      "id": "t178413509142040",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-07-15T17:04:51.420Z",
+      "updated": "2026-07-15T17:05:50.937Z"
+    },
+    {
+      "id": "t178413515093936",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-15T17:05:50.939Z",
+      "updated": "2026-07-15T17:06:37.784Z"
+    },
+    {
+      "id": "t178413519778855",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-07-15T17:06:37.788Z",
+      "updated": "2026-07-15T17:06:39.299Z"
+    },
+    {
+      "id": "t178413519931632",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-15T17:06:39.316Z",
+      "updated": "2026-07-15T17:06:43.555Z"
+    },
+    {
+      "id": "t178413520355772",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-07-15T17:06:43.557Z",
+      "updated": "2026-07-15T17:06:45.337Z"
+    },
+    {
+      "id": "t17841352053494",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-15T17:06:45.349Z",
+      "updated": "2026-07-15T17:06:46.440Z"
+    },
+    {
+      "id": "t178413520644337",
+      "title": "Run translator",
+      "status": "done",
+      "agent": "translator",
+      "created": "2026-07-15T17:06:46.443Z",
+      "updated": "2026-07-15T17:09:10.040Z"
+    },
+    {
+      "id": "t178413535004174",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-07-15T17:09:10.041Z",
+      "updated": "2026-07-15T17:09:17.972Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178310799846347",
-      "level": "warn",
-      "text": "📨 ellenorzo → guide: Hiányos / kell még adat: \"How to use Claude Projects to keep your work organised\" — egészítsd ki: Incomplete wrap-up sec",
-      "agent": "ellenorzo",
-      "at": "2026-07-03T19:46:38.463Z",
-      "loud": false
-    },
-    {
-      "id": "n178310890753413",
-      "level": "warn",
-      "text": "📨 guide → ceo: Kell még adat: \"Getting started with Apple Intelligence on your iPhone\" — az Ellenőrző tényt/forrást kér, amit nem talál",
-      "agent": "guide",
-      "at": "2026-07-03T20:01:47.534Z",
-      "loud": false
-    },
-    {
-      "id": "n178310908218160",
-      "level": "warn",
-      "text": "📨 ellenorzo → guide: Hiányos / kell még adat: \"Getting started with Apple Intelligence on your iPhone\" — egészítsd ki: Step 2 UI label descri",
-      "agent": "ellenorzo",
-      "at": "2026-07-03T20:04:42.181Z",
-      "loud": false
-    },
     {
       "id": "n178310969815321",
       "level": "warn",
@@ -1281,153 +1257,33 @@
       "agent": "ceo",
       "at": "2026-07-15T10:00:50.436Z",
       "loud": false
+    },
+    {
+      "id": "n178413520532891",
+      "level": "info",
+      "text": "SEO: 2 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-07-15T17:06:45.328Z",
+      "loud": false
+    },
+    {
+      "id": "n178413535168983",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). Our publish line-up looks coherent and ready to go, covering a range of practical AI applications for everyday tasks and study needs. One potential concern is that the line-up is quite tech-heavy, so ",
+      "agent": "publisher",
+      "at": "2026-07-15T17:09:11.689Z",
+      "loud": false
+    },
+    {
+      "id": "n178413535798830",
+      "level": "success",
+      "text": "2 hír + 0 útmutató publikálva (költség: $0.0354).",
+      "agent": "ceo",
+      "at": "2026-07-15T17:09:17.988Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178393975198268",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Fix typos and grammar in your docs with Copilot in seconds\" — javítva: Beginner clarity too low (2/10): steps are vague or could mislead a first-time user; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
-      "ref": "GUIDE_fix-typos-and-grammar-in-your-docs-with-copilot-in-seconds.json",
-      "at": "2026-07-13T10:49:11.982Z"
-    },
-    {
-      "id": "m178393976363848",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"How to write your first GitHub README with Copilot’s help in 15 minutes\" — javítva: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
-      "ref": "GUIDE_how-to-write-your-first-github-readme-with-copilot-s-help-in.json",
-      "at": "2026-07-13T10:49:23.638Z"
-    },
-    {
-      "id": "m178393977523178",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Quickly compare two Excel files side-by-side using NVIDIA ChatRTX to spot differences\" — javítva: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
-      "ref": "GUIDE_quickly-compare-two-excel-files-side-by-side-using-nvidia-ch.json",
-      "at": "2026-07-13T10:49:35.231Z"
-    },
-    {
-      "id": "m17839397869706",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Set up a family photo sorting assistant that groups your phone pictures by person using NVIDIA ChatRTX\" — javítva: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
-      "ref": "GUIDE_set-up-a-family-photo-sorting-assistant-that-groups-your-pho.json",
-      "at": "2026-07-13T10:49:46.970Z"
-    },
-    {
-      "id": "m178393979425247",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Fix typos and grammar in your docs with Copilot in seconds\" (?/10)",
-      "ref": "GUIDE_fix-typos-and-grammar-in-your-docs-with-copilot-in-seconds.json",
-      "at": "2026-07-13T10:49:54.252Z"
-    },
-    {
-      "id": "m178393980137561",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"How to write your first GitHub README with Copilot’s help in 15 minutes\" (?/10)",
-      "ref": "GUIDE_how-to-write-your-first-github-readme-with-copilot-s-help-in.json",
-      "at": "2026-07-13T10:50:01.375Z"
-    },
-    {
-      "id": "m178393980867427",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Quickly compare two Excel files side-by-side using NVIDIA ChatRTX to spot differences\" — mi a baj: Beginner clarity too low (1/10): steps are vague or could mislead a first-time user",
-      "ref": "GUIDE_quickly-compare-two-excel-files-side-by-side-using-nvidia-ch.json",
-      "at": "2026-07-13T10:50:08.674Z"
-    },
-    {
-      "id": "m178393981633277",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Set up a family photo sorting assistant that groups your phone pictures by person using NVIDIA ChatRTX\" — mi a baj: Beginner clarity too low (4/10): steps are vague or could mislead a first-time user",
-      "ref": "GUIDE_set-up-a-family-photo-sorting-assistant-that-groups-your-pho.json",
-      "at": "2026-07-13T10:50:16.332Z"
-    },
-    {
-      "id": "m178393982871684",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Quickly compare two Excel files side-by-side using NVIDIA ChatRTX to spot differences\" — javítva: Beginner clarity too low (1/10): steps are vague or could mislead a first-time user; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
-      "ref": "GUIDE_quickly-compare-two-excel-files-side-by-side-using-nvidia-ch.json",
-      "at": "2026-07-13T10:50:28.716Z"
-    },
-    {
-      "id": "m178393984326353",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Set up a family photo sorting assistant that groups your phone pictures by person using NVIDIA ChatRTX\" — javítva: Beginner clarity too low (4/10): steps are vague or could mislead a first-time user; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
-      "ref": "GUIDE_set-up-a-family-photo-sorting-assistant-that-groups-your-pho.json",
-      "at": "2026-07-13T10:50:43.263Z"
-    },
-    {
-      "id": "m178393985129454",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Quickly compare two Excel files side-by-side using NVIDIA ChatRTX to spot differences\" — mi a baj: Beginner clarity too low (1/10): steps are vague or could mislead a first-time user",
-      "ref": "GUIDE_quickly-compare-two-excel-files-side-by-side-using-nvidia-ch.json",
-      "at": "2026-07-13T10:50:51.294Z"
-    },
-    {
-      "id": "m178393985870496",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Set up a family photo sorting assistant that groups your phone pictures by person using NVIDIA ChatRTX\" (?/10)",
-      "ref": "GUIDE_set-up-a-family-photo-sorting-assistant-that-groups-your-pho.json",
-      "at": "2026-07-13T10:50:58.704Z"
-    },
-    {
-      "id": "m178393987050779",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Quickly compare two Excel files side-by-side using NVIDIA ChatRTX to spot differences\" — javítva: Beginner clarity too low (1/10): steps are vague or could mislead a first-time user; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
-      "ref": "GUIDE_quickly-compare-two-excel-files-side-by-side-using-nvidia-ch.json",
-      "at": "2026-07-13T10:51:10.507Z"
-    },
-    {
-      "id": "m178393987839279",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Quickly compare two Excel files side-by-side using NVIDIA ChatRTX to spot differences\" — mi a baj: Beginner clarity too low (4/10): steps are vague or could mislead a first-time user",
-      "ref": "GUIDE_quickly-compare-two-excel-files-side-by-side-using-nvidia-ch.json",
-      "at": "2026-07-13T10:51:18.392Z"
-    },
-    {
-      "id": "m178393989088526",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Quickly compare two Excel files side-by-side using NVIDIA ChatRTX to spot differences\" — javítva: Beginner clarity too low (4/10): steps are vague or could mislead a first-time user; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
-      "ref": "GUIDE_quickly-compare-two-excel-files-side-by-side-using-nvidia-ch.json",
-      "at": "2026-07-13T10:51:30.885Z"
-    },
-    {
-      "id": "m178393989829874",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Quickly compare two Excel files side-by-side using NVIDIA ChatRTX to spot differences\" — mi a baj: Beginner clarity too low (3/10): steps are vague or could mislead a first-time user",
-      "ref": "GUIDE_quickly-compare-two-excel-files-side-by-side-using-nvidia-ch.json",
-      "at": "2026-07-13T10:51:38.298Z"
-    },
     {
       "id": "m17839399157470",
       "from": "ceo",
@@ -2636,6 +2492,150 @@
       "text": "5 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
       "ref": null,
       "at": "2026-07-15T10:02:05.039Z"
+    },
+    {
+      "id": "m178413508450363",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"NVIDIA and Japan Bring Full-Stack AI and Robotics to Every Industry\" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "2026-07-15T17-04-30-279Z_nvidia-blog_NVIDIA_and_Japan_Bring_Full-Stack_AI_and_Robotics_.json",
+      "at": "2026-07-15T17:04:44.503Z"
+    },
+    {
+      "id": "m178413510014391",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Why the Data Platform Determines Legal AI Outcomes\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers. HONESTY RULE: name the REAL products/places/organisations from the source; NEVER invent generic UI s",
+      "ref": "2026-07-02T02-10-03-889Z_snowflake_Why_the_Data_Platform_Determines_Legal_AI_Outcomes.json",
+      "at": "2026-07-15T17:05:00.143Z"
+    },
+    {
+      "id": "m178413511124843",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Running AI on mixed hardware for speed and affordability\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers.; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "2026-07-02T02-10-15-027Z_ibm_Running_AI_on_mixed_hardware_for_speed_and_afforda.json",
+      "at": "2026-07-15T17:05:11.248Z"
+    },
+    {
+      "id": "m178413512156633",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Presentation: Successful Implementation of the Enterprise AI Factory\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers.; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "2026-07-06T02-05-53-940Z_ntt-research_Presentation__Successful_Implementation_of_the_Ent.json",
+      "at": "2026-07-15T17:05:21.566Z"
+    },
+    {
+      "id": "m178413513056962",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"How Open Models Are Driving AI Research\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers.; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "2026-07-06T18-04-05-097Z_nvidia-blog_How_Open_Models_Are_Driving_AI_Research.json",
+      "at": "2026-07-15T17:05:30.569Z"
+    },
+    {
+      "id": "m178413514136439",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Revisiting ASR Error Correction with Specialized Models\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers.; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "2026-07-06T18-04-05-099Z_apple-ml_Revisiting_ASR_Error_Correction_with_Specialized_M.json",
+      "at": "2026-07-15T17:05:41.364Z"
+    },
+    {
+      "id": "m178413515092878",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Streaming benchmark and recommendation results to MLflow with Amazon SageMaker AI\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Add concrete examples and use cases of streaming benchmark and recommendation results to MLflow with Amazon SageMaker AI, and explain how it can help rea",
+      "ref": "2026-07-06T18-04-05-099Z_aws-ml_Streaming_benchmark_and_recommendation_results_to_.json",
+      "at": "2026-07-15T17:05:50.928Z"
+    },
+    {
+      "id": "m178413515982278",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Why the Data Platform Determines Legal AI Outcomes\" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "2026-07-02T02-10-03-889Z_snowflake_Why_the_Data_Platform_Determines_Legal_AI_Outcomes.json",
+      "at": "2026-07-15T17:05:59.822Z"
+    },
+    {
+      "id": "m178413516690936",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Running AI on mixed hardware for speed and affordability\" (?/10)",
+      "ref": "2026-07-02T02-10-15-027Z_ibm_Running_AI_on_mixed_hardware_for_speed_and_afforda.json",
+      "at": "2026-07-15T17:06:06.909Z"
+    },
+    {
+      "id": "m178413517445819",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Presentation: Successful Implementation of the Enterprise AI Factory\" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "2026-07-06T02-05-53-940Z_ntt-research_Presentation__Successful_Implementation_of_the_Ent.json",
+      "at": "2026-07-15T17:06:14.458Z"
+    },
+    {
+      "id": "m178413518180616",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"How Open Models Are Driving AI Research\" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "2026-07-06T18-04-05-097Z_nvidia-blog_How_Open_Models_Are_Driving_AI_Research.json",
+      "at": "2026-07-15T17:06:21.806Z"
+    },
+    {
+      "id": "m178413518931837",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Revisiting ASR Error Correction with Specialized Models\" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "2026-07-06T18-04-05-099Z_apple-ml_Revisiting_ASR_Error_Correction_with_Specialized_M.json",
+      "at": "2026-07-15T17:06:29.318Z"
+    },
+    {
+      "id": "m178413519777433",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Streaming benchmark and recommendation results to MLflow with Amazon SageMaker AI\" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "2026-07-06T18-04-05-099Z_aws-ml_Streaming_benchmark_and_recommendation_results_to_.json",
+      "at": "2026-07-15T17:06:37.774Z"
+    },
+    {
+      "id": "m178413519928814",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "info",
+      "text": "A \"Now available: group conversations with external collab\" hír a meglévő útmutatóra mutat: gemini-getting-started",
+      "ref": "gemini-getting-started",
+      "at": "2026-07-15T17:06:39.288Z"
+    },
+    {
+      "id": "m178413520641269",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-07-15T17:06:46.412Z"
+    },
+    {
+      "id": "m178413539812298",
+      "from": "social",
+      "to": "team",
+      "kind": "info",
+      "text": "5 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
+      "ref": null,
+      "at": "2026-07-15T17:09:58.122Z"
     }
   ]
 }

@@ -1,0 +1,27 @@
+{
+  "started_at": "2026-07-15T17:04:36.279Z",
+  "total": 2,
+  "passed": 1,
+  "failed": 1,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.008376,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-07-15T17-04-30-279Z_nvidia-blog_NVIDIA_and_Japan_Bring_Full-Stack_AI_and_Robotics_.json",
+      "rejected": "REJECTED_2026-07-15T17-04-30-279Z_nvidia-blog_NVIDIA_and_Japan_Bring_Full-Stack_AI_and_Robotics_.json",
+      "decision": "FAIL",
+      "score": 5,
+      "cost_usd": 0.004476399999999999
+    },
+    {
+      "writer": "WRITER_2026-07-15T17-04-30-280Z_google-workspace_Now_available__group_conversations_with_external_c.json",
+      "article": "ARTICLE_2026-07-15T17-04-30-280Z_google-workspace_Now_available__group_conversations_with_external_c.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0038996
+    }
+  ],
+  "finished_at": "2026-07-15T17:04:51.408Z",
+  "duration_seconds": 15.129
+}

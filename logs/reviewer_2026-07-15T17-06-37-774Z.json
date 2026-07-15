@@ -1,0 +1,55 @@
+{
+  "started_at": "2026-07-15T17:05:51.086Z",
+  "total": 6,
+  "passed": 1,
+  "failed": 5,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.026420099999999995,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-07-02T02-10-03-889Z_snowflake_Why_the_Data_Platform_Determines_Legal_AI_Outcomes.json",
+      "rejected": "REJECTED_2026-07-02T02-10-03-889Z_snowflake_Why_the_Data_Platform_Determines_Legal_AI_Outcomes.json",
+      "decision": "FAIL",
+      "score": 4,
+      "cost_usd": 0.0043389
+    },
+    {
+      "writer": "WRITER_2026-07-02T02-10-15-027Z_ibm_Running_AI_on_mixed_hardware_for_speed_and_afforda.json",
+      "article": "ARTICLE_2026-07-02T02-10-15-027Z_ibm_Running_AI_on_mixed_hardware_for_speed_and_afforda.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0043542
+    },
+    {
+      "writer": "WRITER_2026-07-06T02-05-53-940Z_ntt-research_Presentation__Successful_Implementation_of_the_Ent.json",
+      "rejected": "REJECTED_2026-07-06T02-05-53-940Z_ntt-research_Presentation__Successful_Implementation_of_the_Ent.json",
+      "decision": "FAIL",
+      "score": 7,
+      "cost_usd": 0.0044641
+    },
+    {
+      "writer": "WRITER_2026-07-06T18-04-05-097Z_nvidia-blog_How_Open_Models_Are_Driving_AI_Research.json",
+      "rejected": "REJECTED_2026-07-06T18-04-05-097Z_nvidia-blog_How_Open_Models_Are_Driving_AI_Research.json",
+      "decision": "FAIL",
+      "score": 5,
+      "cost_usd": 0.0044058000000000005
+    },
+    {
+      "writer": "WRITER_2026-07-06T18-04-05-099Z_apple-ml_Revisiting_ASR_Error_Correction_with_Specialized_M.json",
+      "rejected": "REJECTED_2026-07-06T18-04-05-099Z_apple-ml_Revisiting_ASR_Error_Correction_with_Specialized_M.json",
+      "decision": "FAIL",
+      "score": 5,
+      "cost_usd": 0.0043684
+    },
+    {
+      "writer": "WRITER_2026-07-06T18-04-05-099Z_aws-ml_Streaming_benchmark_and_recommendation_results_to_.json",
+      "rejected": "REJECTED_2026-07-06T18-04-05-099Z_aws-ml_Streaming_benchmark_and_recommendation_results_to_.json",
+      "decision": "FAIL",
+      "score": 5,
+      "cost_usd": 0.0044887
+    }
+  ],
+  "finished_at": "2026-07-15T17:06:37.774Z",
+  "duration_seconds": 46.688
+}

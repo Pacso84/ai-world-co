@@ -1,0 +1,35 @@
+{
+  "_meta": {
+    "written_at": "2026-07-15T17:04:36.100Z",
+    "writer_provider": "cerebras",
+    "writer_model": "gpt-oss-120b",
+    "writer_cost_usd": 0,
+    "original_draft": "2026-07-15T17-04-30-279Z_nvidia-blog_NVIDIA_and_Japan_Bring_Full-Stack_AI_and_Robotics_.json",
+    "source_id": "nvidia-blog",
+    "source_name": "NVIDIA Blog (hivatalos)",
+    "source_link": "https://blogs.nvidia.com/blog/japan-ecosystem-2026/",
+    "status": "rejected",
+    "rejected_at": "2026-07-15T17:04:44.478Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 896
+    },
+    "ai_review": {
+      "overall_score": 5,
+      "clarity_score": 4,
+      "decision": "FAIL",
+      "issues": [],
+      "verdict": "Salvaged from a partial AI response.",
+      "_salvaged": true,
+      "_aiCost": 0.004476399999999999,
+      "_provider": "google",
+      "_model": "gemini-2.5-flash",
+      "_attempts": 1
+    },
+    "reason": "Salvaged from a partial AI response.",
+    "can_retry": true
+  },
+  "article_markdown": "---\ntitle: \"Bringing AI and Robotics Home: A Practical Guide with Nvidia Jetson\"\nsubtitle: \"Learn how to set up a simple AI‑powered robot using Nvidia’s edge hardware, and discover everyday ways the technology can help at home and in a small business.\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"ai-robotics\", \"nvidia\", \"jetson\", \"home-automation\", \"DIY\"]\n---\n\n# Bringing AI and Robotics Home: A Practical Guide with Nvidia Jetson\n\n**Hook:** Ever wished your robot vacuum could recognise a spilled coffee and avoid it, or that a small business could automatically sort packages without a human hand? Nvidia’s recent push for full‑stack AI (think of it as an end‑to‑end set of tools that handle everything from data to action) makes that kind of smart automation possible for anyone with a bit of curiosity.\n\n## 1. What you need to get started\n\n| Item | Why it matters (simple explanation) |\n|------|--------------------------------------|\n| **Nvidia Jetson Nano** – a tiny computer built for AI at the edge (edge = the device itself, not a far‑away server). | It gives you the brainpower to run AI models locally, so your robot can think in real time. |\n| **JetPack SDK** – a software kit that bundles drivers, libraries and tools. | Think of it as a ready‑made toolbox that lets you install AI “apps” on the Jetson. |\n| **Camera module** (USB or CSI). | Provides the eyes for your robot; the AI will use the camera to see objects. |\n| **Robot chassis** (a simple kit with wheels and a motor driver). | The body that moves around – you can buy a cheap DIY kit or repurpose an old toy car. |\n| **Power supply** (5 V / 2 A USB‑C charger). | Keeps everything running safely. |\n\nAll of these items are available from online retailers for the price of a modest coffee machine.\n\n## 2. Setting up your first AI‑powered robot (step‑by‑step)\n\n1. **Unbox and connect** – attach the camera to the Jetson’s CSI port (or plug a USB webcam). Mount the camera on the robot chassis so it points forward.  \n2. **Install the OS** – flash the official Jetson Nano “Linux for Tegra” image onto a micro‑SD card (the image includes the kernel and basic drivers). Insert the card and power up.  \n3. **Run JetPack** – open a terminal and type `sudo apt update && sudo apt install nvidia-jetpack`. This pulls in the GPU driver, CUDA (a language that lets the GPU crunch numbers fast), and OpenCV (a library for image processing).  \n4. **Download a pre‑trained model** – Nvidia offers a tiny object‑detection model called **MobileNet‑SSD** (SSD = “single‑shot detector”, a quick way to recognise objects). You can copy it from the Jetson example folder or fetch it with `wget`.  \n5. **Test the vision** – run a Python script that feeds the camera feed into the model; you should see bounding boxes appear around objects on the screen.  \n6. **Add motion control** – install the `gpiozero` library to talk to the motor driver pins. Write a simple loop: if the model spots a “cup”, slow the motors; if the path is clear, drive forward.  \n7. **Deploy** – place the robot on a smooth floor and watch it navigate, avoiding obstacles it recognises.\n\n> **Tip:** The whole process from flashing the OS to the first run can be done in under an hour if you follow the official Jetson tutorials (they’re written for beginners).\n\n## 3. Everyday uses you can try next\n\n- **Home cleaning helper** – attach a low‑cost vacuum module and let the robot spot pet hair or crumbs, cleaning only where needed.  \n- **Package sorter for a home‑office** – train the model to recognise envelopes vs. boxes; the robot can push the right item onto a labelled shelf.  \n- **Garden monitor** – mount the Jetson on a small rover; the AI can spot weeds and trigger a spray nozzle (useful for hobby gardeners).  \n- **Retail demo** – small shop owners can set up a counter‑top robot that greets customers and points to featured products, using speech synthesis (another Nvidia tool called **Riva** for voice).  \n\nEach of these ideas builds on the same core steps: camera → AI model → action.\n\n## What this means for you\n\n- **If you’re a home user:** You can upgrade a simple robot toy into a smart assistant that recognises messes, pets, or even your slippers. No need for a tech degree – the Jetson Nano’s community tutorials walk you through everything.  \n- **If you run a small business or side‑hustle:** Automating routine visual tasks (like sorting mail or checking stock levels) can free up an hour or two a day, letting you focus on customer service or product creation.  \n- **If you’re just starting out:** The easiest first step is to order a Jetson Nano starter kit, follow the “blink an LED” tutorial to confirm the hardware works, then move on to the object‑detection example.  \n\n## Wrap‑up\n\nNvidia’s full‑stack AI approach means the heavy lifting—hardware, software, and pre‑trained models—comes bundled together, turning a modest hobby project into a functional robot that can help around the house or in a tiny shop. Today, try ordering a Jetson Nano starter kit, flash the official image, and run the built‑in object‑detection demo. In a few hours you’ll have a glimpse of how AI and robotics can start handling everyday chores for you.",
+  "original_title": "NVIDIA and Japan Bring Full-Stack AI and Robotics to Every Industry"
+}

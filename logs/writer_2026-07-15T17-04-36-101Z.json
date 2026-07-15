@@ -1,0 +1,29 @@
+{
+  "started_at": "2026-07-15T17:04:30.667Z",
+  "drafts_total": 2,
+  "articles_written": 2,
+  "articles_failed": 0,
+  "total_cost_usd": 0,
+  "by_article": [
+    {
+      "draft": "2026-07-15T17-04-30-280Z_google-workspace_Now_available__group_conversations_with_external_c.json",
+      "writer_output": "WRITER_2026-07-15T17-04-30-280Z_google-workspace_Now_available__group_conversations_with_external_c.json",
+      "success": true,
+      "cost_usd": 0,
+      "duration_ms": 3348,
+      "provider": "cerebras",
+      "model": "gpt-oss-120b"
+    },
+    {
+      "draft": "2026-07-15T17-04-30-279Z_nvidia-blog_NVIDIA_and_Japan_Bring_Full-Stack_AI_and_Robotics_.json",
+      "writer_output": "WRITER_2026-07-15T17-04-30-279Z_nvidia-blog_NVIDIA_and_Japan_Bring_Full-Stack_AI_and_Robotics_.json",
+      "success": true,
+      "cost_usd": 0,
+      "duration_ms": 2084,
+      "provider": "cerebras",
+      "model": "gpt-oss-120b"
+    }
+  ],
+  "finished_at": "2026-07-15T17:04:36.101Z",
+  "duration_seconds": 5.434
+}

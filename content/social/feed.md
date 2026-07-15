@@ -1,6 +1,98 @@
 # AI World Co. — közösségi posztok
 
-*Generálva: 2026-07-15T10:02:05.037Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+*Generálva: 2026-07-15T17:09:58.121Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## Running AI on mixed hardware for speed and affordability
+**🔗 https://aiworldhq.com/article/what-the-new-ai-voice-feature-means-for-your-daily-routine.html**
+
+**Facebook:**
+Cut down screen time by simply speaking to your phone – the new AI voice feature can set reminders, send messages and more in seconds. See how it fits into a busy morning routine. https://aiworldhq.com/article/what-the-new-ai-voice-feature-means-for-your-daily-routine.html #productivity #voiceAI
+
+**Instagram:**
+Speak, don’t tap.
+Your phone’s AI voice can add reminders, draft texts and handle simple tasks without you touching the screen – perfect for a rushed morning.
+#aiassistant
+#voicecontrol
+#productivity
+#australia
+Link in bio.
+
+*Kép-ötlet: A person holding a coffee mug, phone to ear, speaking, with a clean kitchen backdrop.*
+
+---
+
+## Occupancy counting now available for Google Meet on Neat room hardware
+**🔗 https://aiworldhq.com/article/how-ai-is-helping-offices-use-space-more-wisely.html**
+
+**Facebook:**
+Tired of walking past empty‑looking meeting rooms that are actually booked? AI now counts who's in the room, so you can see real‑time occupancy on Google Meet and pick a free space. https://aiworldhq.com/article/how-ai-is-helping-offices-use-space-more-wisely.html #SmartOffice #AI
+
+**Instagram:**
+Never guess if a meeting room is free again.
+AI sensors on Neat hardware feed real‑time counts straight into Google Meet, so you can book space that’s truly available.
+#WorkplaceAI
+#Efficiency
+#SmartSpaces
+Link in bio.
+
+*Kép-ötlet: A bright office corridor with a subtle sensor on the wall and a screen showing a meeting room occupancy chart.*
+
+---
+
+## AI Innovators Adopt NVIDIA Vera — Why Max Single-Threaded CPU at Scale Matters
+**🔗 https://aiworldhq.com/article/what-a-max-single-threaded-cpu-means-for-your-everyday-tech.html**
+
+**Facebook:**
+Ever wonder why some AI apps feel snappy while others lag? A new max single‑threaded CPU design can make everyday tools faster and more reliable, all without you noticing a thing. https://aiworldhq.com/article/what-a-max-single-threaded-cpu-means-for-your-everyday-tech.html #AI #Tech
+
+**Instagram:**
+Speed up your AI apps without changing anything.
+A max single‑threaded CPU helps your favourite tools run smoother and stay reliable, even when they’re busy.
+#AI
+#Performance
+#TechTips
+#EverydayTech
+Link in bio.
+
+*Kép-ötlet: A tidy desk featuring a modern motherboard with a highlighted CPU, softly lit to convey simplicity and performance.*
+
+---
+
+## A Single Neuron Is Sufficient to Bypass Safety Alignment in Large Language Models
+**🔗 https://aiworldhq.com/article/what-does-ai-safety-alignment-really-mean-for-you-a-simple-g.html**
+
+**Facebook:**
+Want to know how AI stays helpful and safe in your daily tasks? Our 5‑minute guide explains it in plain language. https://aiworldhq.com/article/what-does-ai-safety-alignment-really-mean-for-you-a-simple-g.html #AISafety #EverydayTech
+
+**Instagram:**
+Ever wonder if AI can be trusted?
+Our simple guide shows what safety alignment means for the tools you use every day and why it matters for you.
+#AISafety
+#TechExplained
+#EverydayAI
+Link in bio.
+
+*Kép-ötlet: A calm home office scene with a person using a laptop, soft natural light highlighting a friendly AI chat window on the screen.*
+
+---
+
+## FlowEval: Reference-Based Evaluation of Generated User Interfaces
+**🔗 https://aiworldhq.com/article/how-to-use-ai-to-build-simple-web-pages-without-writing-code.html**
+
+**Facebook:**
+Need a quick web page for a family event or a small business but don't know HTML? AI can turn your plain‑English description into a live site in minutes. https://aiworldhq.com/article/how-to-use-ai-to-build-simple-web-pages-without-writing-code.html #noCode #AItools
+
+**Instagram:**
+Turn ideas into web pages without typing a line of code.
+Just tell an AI what you need – a menu, sign‑up form or invitation – and it creates a ready‑to‑publish site. Perfect for busy people who want to get online fast.
+#nocode
+#webdesign
+#AItools
+Link in bio.
+
+*Kép-ötlet: A clean laptop screen displaying a simple webpage layout, with a coffee cup nearby, suggesting ease and speed.*
 
 ---
 

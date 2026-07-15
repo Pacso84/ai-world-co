@@ -1,0 +1,63 @@
+{
+  "_meta": {
+    "written_at": "2026-07-15T17:05:11.246Z",
+    "writer_provider": "mistral",
+    "writer_model": "mistral-small-latest",
+    "writer_cost_usd": 0.00333,
+    "original_draft": "2026-07-02T02-10-15-027Z_ibm_Running_AI_on_mixed_hardware_for_speed_and_afforda.json",
+    "source_id": "ibm",
+    "source_name": "IBM Research (hivatalos)",
+    "source_link": "https://research.ibm.com/blog/fast-inference-mixed-gpus?utm_medium=rss&utm_source=rss",
+    "status": "published",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 570
+    },
+    "can_retry": true,
+    "rework_attempts": 2,
+    "reworked_from": "REJECTED_2026-07-02T02-10-15-027Z_ibm_Running_AI_on_mixed_hardware_for_speed_and_afforda.json",
+    "requeued_unchanged": false,
+    "rejected_at": "2026-07-15T09:52:35.442Z",
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "The article is well-structured, friendly, and provides clear, actionable steps for everyday",
+      "_salvaged": true,
+      "_aiCost": 0.0043542,
+      "_provider": "google",
+      "_model": "gemini-2.5-flash",
+      "_attempts": 1
+    },
+    "reason": "Salvaged from a partial AI response.",
+    "ceo_rounds": 1,
+    "ceo_hint": "CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers.",
+    "published_at": "2026-07-15T17:06:06.908Z",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-07-15T17:06:38.629Z",
+    "guide_worthy": false,
+    "pairing_reason": "The article does not introduce a specific named feature or tool that can be used today",
+    "seo": {
+      "meta_description": "Discover how AI voice features on your phone can save time and reduce screen time with simple voice commands, making daily tasks easier",
+      "keywords": [
+        "AI voice assistant",
+        "phone AI features",
+        "reduce screen time",
+        "voice commands"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more concrete examples of daily tasks that can be simplified with AI voice assistants",
+        "Include a step-by-step guide on how to set up and use AI voice features on different smartphones",
+        "Optimize headings and subheadings with relevant keywords for better structure and readability"
+      ],
+      "optimised_at": "2026-07-15T17:06:44.619Z"
+    },
+    "social": true,
+    "social_at": "2026-07-15T17:09:53.949Z"
+  },
+  "article_markdown": "---\ntitle: \"What the New AI Voice Feature Means for Your Daily Routine\"\nsubtitle: \"How to use your phone’s AI voice assistant to save time and reduce screen time\"\ncategory: \"how-to\"\naudience: \"personal\"\nread_time_minutes: 5\ntags: [\"voice-ai\", \"productivity\", \"getting-started\", \"smartphones\"]\n---\n\n# What the New AI Voice Feature Means for Your Daily Routine\n\nYou’re halfway through your morning coffee when your phone buzzes with a reminder: “Pick up the kids at 3.” Instead of tapping the screen, you simply say, “Remind me to pick up the kids at 3.” Seconds later, the AI confirms, “Done.” No typing, no swiping—just your voice and a quiet confirmation.\n\nThat’s the power of the latest AI voice features built into most smartphones. Whether you’re cooking dinner, walking the dog, or driving, you can now talk to your phone the way you’d talk to a friend—and get things done faster.\n\n## How it works (in plain words)\n\nAI voice assistants use **speech recognition** (the phone’s ability to turn your voice into text) and **natural language processing** (the AI’s ability to understand what you mean, even if you don’t phrase it perfectly). Together, they let you ask for things using everyday language.\n\nFor example:\n- “Set a timer for 10 minutes.”\n- “Send a message to Mum: I’ll be 10 minutes late.”\n- “What’s the weather today?”\n\nYou don’t need to remember exact commands. The AI learns from context and adapts to your voice over time.\n\n## Try it today: 3 things to do right now\n\nYou don’t need to install anything new. Most modern phones already have this feature—it’s just turned off by default for some users.\n\n### 1. Turn on voice access\n- **On iPhone**: Go to *Settings > Accessibility > Voice Control*. Toggle it on.\n- **On Android**: Go to *Settings > System > Accessibility > Voice Access*. Turn it on and follow the setup prompts.\n\nYou’ll see a small microphone icon in your status bar. Tap it to start talking.\n\n### 2. Start with simple tasks\nOpen your notes app and say:\n- “Create a new note titled ‘Shopping list’.”\n- “Add milk, eggs, and bread.”\n\nThe AI will type it for you. No typing required.\n\n### 3. Use it while doing other things\n- Cooking? Say, “Set a timer for 15 minutes.”\n- Driving? Say, “Call Sarah.”\n- Jogging? Say, “What’s my step count today?”\n\nThe AI responds out loud so you don’t need to look at the screen.\n\n## What this means for you\n\n- **If you’re always on the go**: Use voice commands to send messages, set reminders, or check your schedule without stopping what you’re doing. It’s faster than typing and safer when you’re walking or driving.\n- **If you’re juggling work and family**: Dictate emails, update to-do lists, or ask for the day’s schedule while you’re packing lunches or folding laundry. Less screen time means more time for what matters.\n- **If you’re just getting started**: Pick one daily task—like setting a morning alarm or checking the weather—and start using voice commands for it. Once you see how easy it is, you’ll naturally use it more.\n\n## Wrap-up\n\nThe new AI voice features aren’t just for tech enthusiasts—they’re for anyone who wants to save time and reduce screen clutter. Start with one simple voice command today. Try saying, “Hey Siri” or “Hey Google” followed by a quick task. You’ll likely wonder how you ever managed without it.",
+  "original_title": "Running AI on mixed hardware for speed and affordability"
+}
