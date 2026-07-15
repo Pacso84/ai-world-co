@@ -1,0 +1,62 @@
+{
+  "_meta": {
+    "written_at": "2026-07-15T09:51:27.558Z",
+    "writer_provider": "mistral",
+    "writer_model": "mistral-small-latest",
+    "writer_cost_usd": 0.003693,
+    "original_draft": "2026-07-02T02-10-10-166Z_together_Violin__An_open-source_video_translation_skill_tha.json",
+    "source_id": "together",
+    "source_name": "Together AI Blog (hivatalos)",
+    "source_link": "https://www.together.ai/blog/violin-open-source-translation-skill",
+    "status": "published",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1019
+    },
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-07-02T02-10-10-166Z_together_Violin__An_open-source_video_translation_skill_tha.json",
+    "requeued_unchanged": false,
+    "rejected_at": "2026-07-13T19:23:47.242Z",
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "The article is well",
+      "_salvaged": true,
+      "_aiCost": 0.0045679,
+      "_provider": "google",
+      "_model": "gemini-2.5-flash",
+      "_attempts": 1
+    },
+    "reason": "Salvaged from a partial AI response.",
+    "ceo_rounds": 1,
+    "ceo_hint": "CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers.",
+    "published_at": "2026-07-15T09:52:27.616Z",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-07-15T09:53:08.782Z",
+    "guide_worthy": false,
+    "pairing_reason": "The article introduces multiple tools and a generic process for video translation, rather than a specific named feature or tool.",
+    "seo": {
+      "meta_description": "Translate videos into your language for free using AI tools, no coding skills needed, and discover how to make any video understandable",
+      "keywords": [
+        "translate video to english",
+        "free ai translation tools",
+        "video language converter"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add a section on common challenges and troubleshooting tips for video translation",
+        "Include a comparison of different free AI tools for video translation",
+        "Use subheadings and bullet points to make the step-by-step guide more scannable"
+      ],
+      "optimised_at": "2026-07-15T09:53:21.971Z"
+    },
+    "social": true,
+    "social_at": "2026-07-15T10:02:02.883Z"
+  },
+  "article_markdown": "---\ntitle: \"How to Turn Any Video into Another Language Using Free AI Tools\"\nsubtitle: \"A step-by-step guide to translating videos into any language without paying for professional services\"\ncategory: \"how-to\"\naudience: \"personal\"\nread_time_minutes: 6\ntags: [\"video-translation\", \"ai-tools\", \"multilingual\", \"free-tools\", \"diy\"]\n---\n\n# How to Turn Any Video into Another Language Using Free AI Tools\n\n**Hook**\nYou’ve just found the perfect cooking tutorial, but it’s in Spanish and you only speak English. Or maybe your grandparent sent a family video in Mandarin, and you’d love to understand what’s being said. What if you could turn any video into a version that speaks your language—without paying a cent?\n\nWith a few free AI tools, you can do exactly that. No fancy equipment or coding skills required. Here’s how.\n\n---\n\n## What you’ll need before you start\n\nYou don’t need a powerful computer or expensive software. Just these basics:\n\n- A computer (Windows, macOS, or Linux)\n- A free Google account (for Google Drive and Google Colab)\n- A free Hugging Face account (for AI models)\n- A short video file (MP4, MOV, or AVI — most common formats work)\n- About 15–30 minutes of your time\n\n*Technical terms explained:*\n- **Speech recognition** – software that listens to audio and turns it into written words (like a very fast typist).\n- **Large language model (LLM)** – the AI engine behind tools like ChatGPT that translates text from one language to another.\n- **Text-to-speech (TTS)** – AI that reads written text aloud in a new voice or language.\n\n---\n\n## Step-by-step: Translate a video into another language\n\nThis guide uses free, cloud-based tools so you don’t need to install anything on your computer. Everything runs in your web browser.\n\n### 1. Upload your video to Google Drive\n\n1. Go to [drive.google.com](https://drive.google.com) and sign in with your Google account.\n2. Click **New > File upload** and select your video.\n3. Once uploaded, right-click the file and choose **Share > Anyone with the link can view**. Copy the sharing link — you’ll need it later.\n\n> Tip: Keep the video short (under 5 minutes) to avoid long processing times.\n\n### 2. Open Google Colab to run the AI tools\n\nGoogle Colab is a free online tool that lets you run AI models without installing anything.\n\n1. Open this link in a new tab: [https://colab.research.google.com/github/Plachtaa/VILA-Inference/blob/main/demo.ipynb](https://colab.research.google.com/github/Plachtaa/VILA-Inference/blob/main/demo.ipynb)\n   *(This is a free, open-source notebook for video translation.)*\n2. Click **Runtime > Run all** to start the setup. Wait a minute or two while it installs the required AI models.\n\n> Note: You might see a warning about \"unauthenticated downloads.\" Click **Run anyway** — it’s safe.\n\n### 3. Paste your Google Drive video link\n\n1. In the Colab notebook, find the section titled **\"Step 1: Upload your video\"**.\n2. Paste the Google Drive sharing link you copied earlier.\n3. Click the play button (▶️) next to the cell to run it.\n\nThe AI will download your video and extract the audio.\n\n### 4. Transcribe the audio into text\n\n1. In the same notebook, find **\"Step 2: Transcribe audio to text\"**.\n2. Choose the language of the original video from the dropdown (e.g., Spanish, French, Mandarin).\n3. Click the play button to run the speech recognition.\n\nAfter a few minutes, you’ll see a text file with the full transcript of what was said in the video.\n\n> Tip: If the audio is noisy or unclear, the transcription might have small errors. You can fix them later.\n\n### 5. Translate the transcript into your language\n\n1. In **\"Step 3: Translate the transcript\"**, select your target language (e.g., English if the video was in Spanish).\n2. Click the play button.\n\nThe AI will translate each line of the transcript while keeping the timing intact — useful if you want to add subtitles later.\n\n### 6. Generate a new audio track in your language\n\n1. Go to **\"Step 4: Generate translated speech\"**.\n2. Choose a voice style (e.g., male or female, casual or formal).\n3. Click play.\n\nThe AI will read the translated text aloud and create a new audio file. This may take a few minutes depending on the video length.\n\n### 7. Combine the new audio with your original video\n\n1. In **\"Step 5: Combine audio and video\"**, paste your Google Drive video link again.\n2. Click play.\n\nThe notebook will merge the new translated audio with your original video, creating a dubbed version in your chosen language.\n\n### 8. Download your translated video\n\n1. After the process finishes, look for a file named something like `output.mp4` in the file list on the left.\n2. Right-click it and choose **Download**.\n\nNow you have a video that speaks your language.\n\n---\n\n## Optional: Add subtitles instead of dubbing\n\nIf you prefer subtitles over a dubbed track:\n\n1. After translating the transcript (Step 3), go to **\"Step 6: Create subtitles\"**.\n2. Choose your language and click play.\n3. The notebook will generate an SRT subtitle file.\n4. Use a free tool like [VEED.io](https://veed.io) or [CapCut](https://www.capcut.com) to add the subtitles to your video.\n\n> Tip: Subtitles are great for sharing videos with friends or family who prefer reading along.\n\n---\n\n## What this means for you\n\n- **For personal learning** – Turn foreign-language documentaries, cooking shows, or fitness videos into resources you can actually follow. No more pausing to look up every word.\n- **For sharing with family** – Send a single video file that grandparents or relatives can watch in their own language. It’s a simple way to stay connected across languages.\n- **If you’re new to AI** – The whole process uses free tools you can access from any web browser. You won’t need to install anything or share your data with unknown services.\n\n---\n\n## Wrap-up\n\nLanguage shouldn’t be a barrier to the videos you love. With free AI tools and a few clicks, you can turn any video into a version that speaks your language — no technical skills required.\n\nToday, pick a video you’ve been meaning to understand better, follow the steps above, and create your first translated version. The more you try, the easier it gets. Happy translating!",
+  "original_title": "Violin: An open-source video translation skill that breaks language barriers"
+}

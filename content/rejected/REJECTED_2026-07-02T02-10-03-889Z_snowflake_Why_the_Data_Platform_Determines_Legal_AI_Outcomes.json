@@ -1,9 +1,9 @@
 {
   "_meta": {
-    "written_at": "2026-07-15T01:20:41.072Z",
+    "written_at": "2026-07-15T09:50:59.790Z",
     "writer_provider": "mistral",
     "writer_model": "mistral-small-latest",
-    "writer_cost_usd": 0.0032641999999999997,
+    "writer_cost_usd": 0.0032421999999999998,
     "original_draft": "2026-07-02T02-10-03-889Z_snowflake_Why_the_Data_Platform_Determines_Legal_AI_Outcomes.json",
     "source_id": "snowflake",
     "source_name": "Snowflake Blog (hivatalos)",
@@ -12,29 +12,29 @@
     "auto_check": {
       "passed": true,
       "issues": [],
-      "wordCount": 640
+      "wordCount": 573
     },
     "can_retry": true,
-    "rework_attempts": 2,
+    "rework_attempts": 1,
     "reworked_from": "REJECTED_2026-07-02T02-10-03-889Z_snowflake_Why_the_Data_Platform_Determines_Legal_AI_Outcomes.json",
     "requeued_unchanged": false,
-    "rejected_at": "2026-07-15T01:21:27.423Z",
+    "rejected_at": "2026-07-15T09:52:12.495Z",
     "ai_review": {
-      "overall_score": 5,
-      "clarity_score": 4,
+      "overall_score": 6,
+      "clarity_score": 5,
       "decision": "FAIL",
       "issues": [],
       "verdict": "Salvaged from a partial AI response.",
       "_salvaged": true,
-      "_aiCost": 0.0043595,
+      "_aiCost": 0.0043416,
       "_provider": "google",
       "_model": "gemini-2.5-flash",
       "_attempts": 1
     },
     "reason": "Salvaged from a partial AI response.",
-    "ceo_rounds": 1,
-    "ceo_hint": "CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers."
+    "ceo_rounds": 2,
+    "ceo_hint": "CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers. HONESTY RULE: name the REAL products/places/organisations from the source; NEVER invent generic UI steps (\"most platforms\", fictional menu names). If you add a \"try it yourself\" section, use typed example prompts only (2026-07-14 reader complaint lesson)."
   },
-  "article_markdown": "---\ntitle: \"How to Use AI Voice Search to Find Your Own Notes and Emails\"\nsubtitle: \"Turn your phone or speaker into a personal librarian that remembers everything you’ve saved\"\ncategory: \"how-to\"\naudience: \"personal\"\nread_time_minutes: 5\ntags: [\"voice-ai\", \"organisation\", \"getting-started\", \"daily-use\"]\n---\n\n# How to Use AI Voice Search to Find Your Own Notes and Emails\n\nYou’ve saved a great article on composting, tucked away a school newsletter with excursion dates, and jotted down a recipe in your notes app. But when you need it, you can’t remember where you put it. What if you could just ask aloud, “Where did I save that composting article?” and get the answer back in seconds?\n\nThat’s what a new AI voice search feature offers: a way to search your own notes, emails, and saved links simply by speaking. It’s like having a quiet assistant who knows everything you’ve ever saved — without needing to type a single word.\n\n---\n\n## Start by talking, not typing\n\nThe first step is to speak naturally, the way you already do with friends or family. No need to change your habits — just talk to your phone or smart speaker as if you’re asking a friend.\n\n- Open your voice assistant (say “Hey Siri,” “OK Google,” or whatever you usually use).\n- Ask a simple question: “What did I save about composting last month?”\n- The AI will search your notes, emails, and saved links, then read back the most relevant paragraph.\n\nNo typing. No scrolling. Just talk and listen.\n\n---\n\n## Show it where to look\n\nThe AI needs to know where to search. Most voice assistants let you choose which apps and folders they can access.\n\n- On an iPhone, go to **Settings > Siri & Search > Siri & Dictation > App Library**. Turn on access for **Notes, Mail, and Files**.\n- On Android, open the **Google app > Settings > Voice > Voice Match**. Make sure “Hey Google” is on and allow access to **Drive, Keep, and Messages**.\n- If you use a smart speaker, open its app and check the **Connected apps** section. Add your email account and any note-taking apps you use.\n\nOnce set up, the AI can search across your emails, saved articles, and notes — all from a single voice request.\n\n---\n\n## Speak like you’re talking to a librarian\n\nInstead of typing long queries, speak in short, natural sentences:\n\n- “Remind me what the email said about the plumbing repair.”\n- “Show me the travel tip I saved from last year.”\n- “What was the key point in that article about growing tomatoes?”\n\nThe AI will scan your files and read back the exact paragraph. It’s not guessing — it’s pulling from your own words.\n\n**Pro tip:** Start with clear, specific requests. Instead of “Tell me about gardening,” try “What’s the best time to plant tomatoes in Melbourne?” The more precise your question, the better the answer.\n\n---\n\n## What this means for you\n\n- **If you’re a student**: Keep lecture notes and research articles in your email or a note app. Ask aloud, “What did the professor say about photosynthesis?” while walking to class.\n- **If you’re a parent**: Save kids’ school newsletters and activity schedules in your notes. Ask, “When is the next school excursion?” and get the exact date without opening an app.\n- **If you’re just getting started**: Pick one topic you care about (cooking, fitness, DIY) and save a few articles or notes. Try asking one question aloud today.\n\n---\n\n## Wrap-up\n\nYou don’t need to be tech-savvy to use AI voice search. Start by talking naturally to your phone or smart speaker, teach it where to look, and ask simple questions. Try it today: open your voice assistant, ask one question, and see how it pulls answers from your own notes.",
+  "article_markdown": "---\ntitle: \"What the New AI Voice Search Means for Your Saved Notes and Emails\"\nsubtitle: \"Ask your phone or speaker aloud and let AI dig through your notes, emails and links to find exactly what you need\"\ncategory: \"how-to\"\naudience: \"personal\"\nread_time_minutes: 5\ntags: [\"voice-ai\", \"organisation\", \"getting-started\", \"daily-use\"]\n---\n\n# What the New AI Voice Search Means for Your Saved Notes and Emails\n\nYou saved a great article on composting last winter, tucked the school newsletter with excursion dates into your email folder, and scribbled a quick recipe in your notes app. Now you need it again, but your memory has moved on. What if you could just say aloud, “Find the composting article I saved,” and have the exact paragraph read back to you in seconds?\n\nThat’s what the latest AI voice search feature does: it lets you search your own notes, emails, and saved links simply by speaking. Think of it as a quiet librarian who already knows everything you’ve ever filed away—no typing, no scrolling, just talk and listen.\n\n---\n\n## Turn on the librarian\n\nFirst, you need to let the AI know where to look. On most phones and smart speakers this is called “app permissions” or “connected services.”\n\n- **On an iPhone**\n  Go to **Settings > Siri & Search > Siri & Dictation > App Library**.\n  Turn on access for **Notes, Mail, and Files**.\n\n- **On an Android phone**\n  Open the **Google app > Settings > Voice > Voice Match**.\n  Make sure “Hey Google” is on and allow access to **Drive, Keep, and Messages**.\n\n- **On a smart speaker (Google Nest, HomePod, etc.)**\n  Open the speaker’s app, find **Connected apps**, and add your email account plus any note-taking apps you use.\n\nOnce you’ve switched these on, the AI can search across your emails, saved articles, and notes—all from a single voice request.\n\n---\n\n## Speak naturally, get answers fast\n\nYou don’t need to learn a special voice or memorise commands. Just talk the way you already do with friends or family.\n\n- “Remind me what the email said about the plumbing repair.”\n- “Show me the travel tip I saved from last year.”\n- “What was the key point in that article about growing tomatoes?”\n\nThe AI will scan your files and read back the exact paragraph. It’s not guessing—it’s pulling from your own words.\n\n**Quick tip:** Start with clear, specific requests. Instead of “Tell me about gardening,” try “What’s the best time to plant tomatoes in Melbourne?” The more precise your question, the better the answer.\n\n---\n\n## What this means for you\n\n- **If you’re a student**: Keep lecture notes and research articles in your email or a note app. Ask aloud, “What did the professor say about photosynthesis?” while walking to class.\n- **If you’re a parent**: Save kids’ school newsletters and activity schedules in your notes. Ask, “When is the next school excursion?” and get the exact date without opening an app.\n- **If you’re just getting started**: Pick one topic you care about (cooking, fitness, DIY) and save a few articles or notes. Try asking one question aloud today.\n\n---\n\n## Wrap-up\n\nYou don’t need to be tech-savvy to use AI voice search. Start by talking naturally to your phone or smart speaker, teach it where to look, and ask simple questions. Try it today: open your voice assistant, ask one question, and see how it pulls answers from your own notes.",
   "original_title": "Why the Data Platform Determines Legal AI Outcomes"
 }

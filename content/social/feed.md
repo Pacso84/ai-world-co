@@ -1,6 +1,96 @@
 # AI World Co. — közösségi posztok
 
-*Generálva: 2026-07-15T01:37:39.840Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+*Generálva: 2026-07-15T10:02:05.037Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## Kimi K2.7 Code vs Claude Fable 5: Landing pages that cost 94% less
+**🔗 https://aiworldhq.com/article/what-the-latest-ai-voice-feature-means-for-your-daily-routin.html**
+
+**Facebook:**
+Tired of juggling a phone while cooking? A new AI voice feature can let you ask your device to set timers or read recipes hands‑free, so you can stay focused on the food. https://aiworldhq.com/article/what-the-latest-ai-voice-feature-means-for-your-daily-routin.html #voiceAI #productivity
+
+**Instagram:**
+Hands‑free help while you hustle
+Your voice can now control timers, read messages, or pull up recipes without you looking at a screen. Perfect for cooking, driving or any busy moment.
+#voiceassistant
+#AIforEveryday
+#productivity
+#Australia
+Link in bio.
+
+*Kép-ötlet: A person in a kitchen, hands covered in flour, speaking to a smart speaker on the counter.*
+
+---
+
+## Violin: An open-source video translation skill that breaks language barriers
+**🔗 https://aiworldhq.com/article/how-to-turn-any-video-into-another-language-using-free-ai-to.html**
+
+**Facebook:**
+Want to watch a video in your own language without hiring a translator? This guide walks you through adding subtitles with free AI tools. https://aiworldhq.com/article/how-to-turn-any-video-into-another-language-using-free-ai-to.html #videotranslation #DIY
+
+**Instagram:**
+Turn any video into the language you need, for free.
+Follow our step‑by‑step guide to add accurate subtitles using open‑source AI – no cost, no extra software.
+#videotranslation
+#AItools
+#DIYprojects
+Link in bio.
+
+*Kép-ötlet: A laptop screen showing a video player with subtitles appearing in a different language, beside a coffee mug.*
+
+---
+
+## Presentation: The AI-Native Infrastructure for a Resilient and Sustainable Future
+**🔗 https://aiworldhq.com/article/how-to-turn-a-meeting-into-a-clear-shareable-summary-using-a.html**
+
+**Facebook:**
+Tired of messy meeting notes? Let AI turn your discussion into a clean, shareable summary in minutes. https://aiworldhq.com/article/how-to-turn-a-meeting-into-a-clear-shareable-summary-using-a.html #productivity #AI
+
+**Instagram:**
+No more scribbles after a meeting
+A few clicks and AI creates a clear summary you can email straight away. Save time and keep everyone on the same page.
+#meetings
+#AItools
+#productivity
+#worksmarter
+Link in bio.
+
+*Kép-ötlet: A relaxed professional at a laptop with a simple, tidy document preview floating beside them.*
+
+---
+
+## NVIDIA and Hugging Face Bring New Models and Frameworks to LeRobot for the Open Robotics Community
+**🔗 https://aiworldhq.com/article/getting-started-with-ai-powered-robots-using-lerobot-nvidia-.html**
+
+**Facebook:**
+Want your hobby robot to understand simple voice commands and plan its own path? This easy guide shows how to add AI skills with free tools, perfect for your weekend workshop. https://aiworldhq.com/article/getting-started-with-ai-powered-robots-using-lerobot-nvidia-.html #Robotics #DIY
+
+**Instagram:**
+Your garage robot can talk back!
+Learn how to give a small robot arm natural‑language commands and navigation using free, open‑source tools—no PhD required.
+#AI #Robotics
+Link in bio.
+
+*Kép-ötlet: A friendly robot arm on a workbench beside a laptop displaying code, in a bright home workshop.*
+
+---
+
+## Monitoring discriminative ML models using Amazon SageMaker AI with MLflow
+**🔗 https://aiworldhq.com/article/why-ai-needs-constant-checks-ensuring-fairness-and-accuracy.html**
+
+**Facebook:**
+Keep AI decisions fair and accurate with simple checks—learn how SageMaker and MLflow can help you spot bias early. https://aiworldhq.com/article/why-ai-needs-constant-checks-ensuring-fairness-and-accuracy.html #AIethics #FairAI
+
+**Instagram:**
+Is your AI playing fair?
+A quick guide shows how SageMaker and MLflow let you monitor models for hidden bias, so decisions stay trustworthy.
+#AIethics
+#BiasCheck
+#MLflow
+Link in bio.
+
+*Kép-ötlet: A calm office desk with a laptop showing a simple chart, a magnifying glass hovering over it to represent model monitoring.*
 
 ---
 

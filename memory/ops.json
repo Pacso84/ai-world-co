@@ -1,126 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178399229525491",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-14T01:24:55.254Z",
-      "updated": "2026-07-14T01:26:16.464Z"
-    },
-    {
-      "id": "t178399237646650",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-14T01:26:16.466Z",
-      "updated": "2026-07-14T01:26:58.160Z"
-    },
-    {
-      "id": "t178399241817663",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-14T01:26:58.176Z",
-      "updated": "2026-07-14T01:26:58.383Z"
-    },
-    {
-      "id": "t178399241838590",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-14T01:26:58.386Z",
-      "updated": "2026-07-14T01:27:04.179Z"
-    },
-    {
-      "id": "t178399242418257",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-14T01:27:04.182Z",
-      "updated": "2026-07-14T01:27:17.845Z"
-    },
-    {
-      "id": "t178399243784713",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-14T01:27:17.847Z",
-      "updated": "2026-07-14T01:27:25.269Z"
-    },
-    {
-      "id": "t178399244527133",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-14T01:27:25.271Z",
-      "updated": "2026-07-14T01:27:40.886Z"
-    },
-    {
-      "id": "t17839924608886",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-07-14T01:27:40.888Z",
-      "updated": "2026-07-14T01:27:44.911Z"
-    },
-    {
-      "id": "t178399246491342",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-14T01:27:44.913Z",
-      "updated": "2026-07-14T01:27:45.746Z"
-    },
-    {
-      "id": "t178399246574950",
-      "title": "Run translator",
-      "status": "done",
-      "agent": "translator",
-      "created": "2026-07-14T01:27:45.749Z",
-      "updated": "2026-07-14T01:39:11.032Z"
-    },
-    {
-      "id": "t178399315103349",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-07-14T01:39:11.033Z",
-      "updated": "2026-07-14T01:39:17.801Z"
-    },
-    {
-      "id": "t178402234619242",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-07-14T09:45:46.192Z",
-      "updated": "2026-07-14T09:45:46.424Z"
-    },
-    {
-      "id": "t178402234642695",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-07-14T09:45:46.426Z",
-      "updated": "2026-07-14T09:45:57.911Z"
-    },
-    {
-      "id": "t178402235791336",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-07-14T09:45:57.913Z",
-      "updated": "2026-07-14T09:45:58.136Z"
-    },
-    {
-      "id": "t178402235813865",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-07-14T09:45:58.138Z",
-      "updated": "2026-07-14T09:45:59.997Z"
-    },
-    {
       "id": "t178402236000059",
       "title": "Run ellenorzo",
       "status": "done",
@@ -479,41 +359,129 @@
       "agent": "publisher",
       "created": "2026-07-15T01:36:49.364Z",
       "updated": "2026-07-15T01:36:55.943Z"
+    },
+    {
+      "id": "t178410895951487",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-07-15T09:49:19.514Z",
+      "updated": "2026-07-15T09:49:22.231Z"
+    },
+    {
+      "id": "t178410896223377",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-07-15T09:49:22.233Z",
+      "updated": "2026-07-15T09:49:34.059Z"
+    },
+    {
+      "id": "t17841089740613",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-07-15T09:49:34.061Z",
+      "updated": "2026-07-15T09:50:32.044Z"
+    },
+    {
+      "id": "t178410903204753",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-07-15T09:50:32.047Z",
+      "updated": "2026-07-15T09:50:34.302Z"
+    },
+    {
+      "id": "t178410903430437",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-15T09:50:34.304Z",
+      "updated": "2026-07-15T09:50:48.022Z"
+    },
+    {
+      "id": "t178410904802752",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-07-15T09:50:48.027Z",
+      "updated": "2026-07-15T09:51:51.093Z"
+    },
+    {
+      "id": "t178410911109539",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-15T09:51:51.095Z",
+      "updated": "2026-07-15T09:52:50.209Z"
+    },
+    {
+      "id": "t178410917021490",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-07-15T09:52:50.214Z",
+      "updated": "2026-07-15T09:52:59.554Z"
+    },
+    {
+      "id": "t178410917955684",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-15T09:52:59.556Z",
+      "updated": "2026-07-15T09:53:07.359Z"
+    },
+    {
+      "id": "t178410918736474",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-07-15T09:53:07.364Z",
+      "updated": "2026-07-15T09:53:09.701Z"
+    },
+    {
+      "id": "t178410918972186",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-15T09:53:09.721Z",
+      "updated": "2026-07-15T09:53:20.537Z"
+    },
+    {
+      "id": "t178410920053943",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-07-15T09:53:20.539Z",
+      "updated": "2026-07-15T09:53:34.008Z"
+    },
+    {
+      "id": "t178410921401045",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-15T09:53:34.010Z",
+      "updated": "2026-07-15T09:53:40.959Z"
+    },
+    {
+      "id": "t178410922096169",
+      "title": "Run translator",
+      "status": "done",
+      "agent": "translator",
+      "created": "2026-07-15T09:53:40.961Z",
+      "updated": "2026-07-15T10:00:43.021Z"
+    },
+    {
+      "id": "t178410964302443",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-07-15T10:00:43.024Z",
+      "updated": "2026-07-15T10:00:50.415Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178293538994997",
-      "level": "info",
-      "text": "🧭 Forráskutató: 7 ÚJ megbízható forrás-javaslat (küszöb 70).\n• [100] Salesforce AI Blog (hivatalos)\n• [100] SAP Innovation Blog (hivatalos)\n• [100] Databricks Blog (hivatalos)\n• [100] Snowflake Blog (hivatalos)\n• [100] Together AI Blog (hivatalos)\nJóváhagyod valamelyiket?",
-      "agent": "source-scout",
-      "at": "2026-07-01T19:49:49.949Z",
-      "loud": false
-    },
-    {
-      "id": "n178295830175133",
-      "level": "info",
-      "text": "Pipeline lefutott — ma nem volt publikálható új tartalom.",
-      "agent": "ceo",
-      "at": "2026-07-02T02:11:41.751Z",
-      "loud": false
-    },
-    {
-      "id": "n178298891687722",
-      "level": "success",
-      "text": "16 hír + 0 útmutató publikálva (költség: $0.0508).",
-      "agent": "ceo",
-      "at": "2026-07-02T10:41:56.877Z",
-      "loud": false
-    },
-    {
-      "id": "n17830132561126",
-      "level": "success",
-      "text": "5 hír + 0 útmutató publikálva (költség: $0.0115).",
-      "agent": "ceo",
-      "at": "2026-07-02T17:27:36.112Z",
-      "loud": false
-    },
     {
       "id": "n178310799846347",
       "level": "warn",
@@ -1281,171 +1249,41 @@
       "agent": "ceo",
       "at": "2026-07-15T01:36:55.967Z",
       "loud": false
+    },
+    {
+      "id": "n178410903155061",
+      "level": "info",
+      "text": "🧭 Forráskutató: 2 ÚJ megbízható forrás-javaslat (küszöb 70).\n• [94] D-ID Blog (hivatalos)\n• [70] VinAI Research Blog (hivatalos)\nJóváhagyod valamelyiket?",
+      "agent": "source-scout",
+      "at": "2026-07-15T09:50:31.550Z",
+      "loud": false
+    },
+    {
+      "id": "n178410921399758",
+      "level": "info",
+      "text": "SEO: 5 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-07-15T09:53:33.997Z",
+      "loud": false
+    },
+    {
+      "id": "n178410964436626",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). Our line-up is coherent and ready, covering a range of practical AI applications for everyday tasks and study. I've double-checked each article for completeness, on-brand voice, and safety, but did no",
+      "agent": "publisher",
+      "at": "2026-07-15T10:00:44.366Z",
+      "loud": false
+    },
+    {
+      "id": "n17841096504368",
+      "level": "success",
+      "text": "4 hír + 1 útmutató publikálva (költség: $0.0395).",
+      "agent": "ceo",
+      "at": "2026-07-15T10:00:50.436Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178384943560364",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Use Le Chat to compare two job offers side-by-side in plain English\" (?/10)",
-      "ref": "GUIDE_use-le-chat-to-compare-two-job-offers-side-by-side-in-plain-.json",
-      "at": "2026-07-12T09:43:55.603Z"
-    },
-    {
-      "id": "m17838494425408",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Use Qwen Chat to generate a customised study schedule for your exams\" — mi a baj: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user",
-      "ref": "GUIDE_use-qwen-chat-to-generate-a-customised-study-schedule-for-yo.json",
-      "at": "2026-07-12T09:44:02.540Z"
-    },
-    {
-      "id": "m178384945309777",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Let Le Chat help you write a polite complaint email to a service provider\" — javítva: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
-      "ref": "GUIDE_let-le-chat-help-you-write-a-polite-complaint-email-to-a-ser.json",
-      "at": "2026-07-12T09:44:13.097Z"
-    },
-    {
-      "id": "m178384946263692",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Use Qwen Chat to generate a customised study schedule for your exams\" — javítva: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
-      "ref": "GUIDE_use-qwen-chat-to-generate-a-customised-study-schedule-for-yo.json",
-      "at": "2026-07-12T09:44:22.636Z"
-    },
-    {
-      "id": "m178384947023473",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Let Le Chat help you write a polite complaint email to a service provider\" (?/10)",
-      "ref": "GUIDE_let-le-chat-help-you-write-a-polite-complaint-email-to-a-ser.json",
-      "at": "2026-07-12T09:44:30.234Z"
-    },
-    {
-      "id": "m178384947769995",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Use Qwen Chat to generate a customised study schedule for your exams\" — mi a baj: Beginner clarity too low (5/10): steps are vague or could mislead a first-time user",
-      "ref": "GUIDE_use-qwen-chat-to-generate-a-customised-study-schedule-for-yo.json",
-      "at": "2026-07-12T09:44:37.699Z"
-    },
-    {
-      "id": "m178384948766344",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Use Qwen Chat to generate a customised study schedule for your exams\" — javítva: Beginner clarity too low (5/10): steps are vague or could mislead a first-time user; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
-      "ref": "GUIDE_use-qwen-chat-to-generate-a-customised-study-schedule-for-yo.json",
-      "at": "2026-07-12T09:44:47.663Z"
-    },
-    {
-      "id": "m178384949455427",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Use Qwen Chat to generate a customised study schedule for your exams\" (?/10)",
-      "ref": "GUIDE_use-qwen-chat-to-generate-a-customised-study-schedule-for-yo.json",
-      "at": "2026-07-12T09:44:54.554Z"
-    },
-    {
-      "id": "m178384951004127",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 17 → 6/3/3 oszlop.",
-      "ref": "mobile",
-      "at": "2026-07-12T09:45:10.041Z"
-    },
-    {
-      "id": "m178385005480329",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "5 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
-      "ref": null,
-      "at": "2026-07-12T09:54:14.803Z"
-    },
-    {
-      "id": "m178387468134660",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 17 → 6/3/3 oszlop.",
-      "ref": "mobile",
-      "at": "2026-07-12T16:44:41.346Z"
-    },
-    {
-      "id": "m178387472987573",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "5 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
-      "ref": null,
-      "at": "2026-07-12T16:45:29.875Z"
-    },
-    {
-      "id": "m178390724501429",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"How to write your first GitHub README with Copilot’s help in 15 minutes\" — mi a baj: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user",
-      "ref": "GUIDE_how-to-write-your-first-github-readme-with-copilot-s-help-in.json",
-      "at": "2026-07-13T01:47:25.014Z"
-    },
-    {
-      "id": "m178390725222229",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Quickly compare two Excel files side-by-side using NVIDIA ChatRTX to spot differences\" — mi a baj: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user",
-      "ref": "GUIDE_quickly-compare-two-excel-files-side-by-side-using-nvidia-ch.json",
-      "at": "2026-07-13T01:47:32.222Z"
-    },
-    {
-      "id": "m178390725874475",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Set up a family photo sorting assistant that groups your phone pictures by person using NVIDIA ChatRTX\" — mi a baj: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user",
-      "ref": "GUIDE_set-up-a-family-photo-sorting-assistant-that-groups-your-pho.json",
-      "at": "2026-07-13T01:47:38.744Z"
-    },
-    {
-      "id": "m178390732426393",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Fix typos and grammar in your docs with Copilot in seconds\" — mi a baj: Beginner clarity too low (2/10): steps are vague or could mislead a first-time user",
-      "ref": "GUIDE_fix-typos-and-grammar-in-your-docs-with-copilot-in-seconds.json",
-      "at": "2026-07-13T01:48:44.263Z"
-    },
-    {
-      "id": "m178390735389697",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 17 → 6/3/3 oszlop.",
-      "ref": "mobile",
-      "at": "2026-07-13T01:49:13.896Z"
-    },
-    {
-      "id": "m178390786255462",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "5 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
-      "ref": null,
-      "at": "2026-07-13T01:57:42.554Z"
-    },
     {
       "id": "m178393975198268",
       "from": "guide",
@@ -2636,6 +2474,168 @@
       "text": "5 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
       "ref": null,
       "at": "2026-07-15T01:37:39.841Z"
+    },
+    {
+      "id": "m178410896217854",
+      "from": "ceo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Főnöki újraindítás: \"Why the Data Platform Determines Legal AI Outcomes\" — rewrite-explainer",
+      "ref": "2026-07-02T02-10-03-889Z_snowflake_Why_the_Data_Platform_Determines_Legal_AI_Outcomes.json",
+      "at": "2026-07-15T09:49:22.178Z"
+    },
+    {
+      "id": "m178410904798434",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Business Value of AI Is Spiking, Driven by Increased Adoption and Agentic Expectations, SAP Finds\" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "2026-07-15T09-49-34-006Z_sap_Business_Value_of_AI_Is_Spiking__Driven_by_Increas.json",
+      "at": "2026-07-15T09:50:47.984Z"
+    },
+    {
+      "id": "m178410905006876",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"New AI-powered library lets people meet Theodore Roosevelt in a whole new way \" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers. HONESTY RULE: name the REAL products/places/organisations from the sourc",
+      "ref": "2026-07-01T17-46-16-620Z_microsoft-ai_New_AI-powered_library_lets_people_meet_Theodore_R.json",
+      "at": "2026-07-15T09:50:50.068Z"
+    },
+    {
+      "id": "m178410905979295",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Why the Data Platform Determines Legal AI Outcomes\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers. HONESTY RULE: name the REAL products/places/organisations from the source; NEVER invent generic UI s",
+      "ref": "2026-07-02T02-10-03-889Z_snowflake_Why_the_Data_Platform_Determines_Legal_AI_Outcomes.json",
+      "at": "2026-07-15T09:50:59.792Z"
+    },
+    {
+      "id": "m178410907326418",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Kimi K2.7 Code vs Claude Fable 5: Landing pages that cost 94% less\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers.; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "2026-07-02T02-10-03-890Z_together_Kimi_K2_7_Code_vs_Claude_Fable_5__Landing_pages_th.json",
+      "at": "2026-07-15T09:51:13.264Z"
+    },
+    {
+      "id": "m17841090875597",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Violin: An open-source video translation skill that breaks language barriers\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers.; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "2026-07-02T02-10-10-166Z_together_Violin__An_open-source_video_translation_skill_tha.json",
+      "at": "2026-07-15T09:51:27.559Z"
+    },
+    {
+      "id": "m178410910066497",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Running AI on mixed hardware for speed and affordability\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers.; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "2026-07-02T02-10-15-027Z_ibm_Running_AI_on_mixed_hardware_for_speed_and_afforda.json",
+      "at": "2026-07-15T09:51:40.664Z"
+    },
+    {
+      "id": "m178410911108352",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Presentation: The AI-Native Infrastructure for a Resilient and Sustainable Future\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers.; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "2026-07-06T02-05-53-939Z_ntt-research_Presentation__The_AI-Native_Infrastructure_for_a_R.json",
+      "at": "2026-07-15T09:51:51.083Z"
+    },
+    {
+      "id": "m178410911884158",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"New AI-powered library lets people meet Theodore Roosevelt in a whole new way \" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "2026-07-01T17-46-16-620Z_microsoft-ai_New_AI-powered_library_lets_people_meet_Theodore_R.json",
+      "at": "2026-07-15T09:51:58.841Z"
+    },
+    {
+      "id": "m178410913251536",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Why the Data Platform Determines Legal AI Outcomes\" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "2026-07-02T02-10-03-889Z_snowflake_Why_the_Data_Platform_Determines_Legal_AI_Outcomes.json",
+      "at": "2026-07-15T09:52:12.515Z"
+    },
+    {
+      "id": "m178410914014211",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Kimi K2.7 Code vs Claude Fable 5: Landing pages that cost 94% less\" (?/10)",
+      "ref": "2026-07-02T02-10-03-890Z_together_Kimi_K2_7_Code_vs_Claude_Fable_5__Landing_pages_th.json",
+      "at": "2026-07-15T09:52:20.142Z"
+    },
+    {
+      "id": "m178410914761716",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Violin: An open-source video translation skill that breaks language barriers\" (?/10)",
+      "ref": "2026-07-02T02-10-10-166Z_together_Violin__An_open-source_video_translation_skill_tha.json",
+      "at": "2026-07-15T09:52:27.617Z"
+    },
+    {
+      "id": "m178410915546164",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Running AI on mixed hardware for speed and affordability\" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "2026-07-02T02-10-15-027Z_ibm_Running_AI_on_mixed_hardware_for_speed_and_afforda.json",
+      "at": "2026-07-15T09:52:35.461Z"
+    },
+    {
+      "id": "m17841091701972",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Presentation: The AI-Native Infrastructure for a Resilient and Sustainable Future\" (?/10)",
+      "ref": "2026-07-06T02-05-53-939Z_ntt-research_Presentation__The_AI-Native_Infrastructure_for_a_R.json",
+      "at": "2026-07-15T09:52:50.197Z"
+    },
+    {
+      "id": "m178410917954282",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Use Microsoft Copilot in PowerPoint to turn a bulleted slide into a simple infographic in 5 clicks\" — javítva: Beginner clarity too low (4/10): steps are vague or could mislead a first-time user; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "GUIDE_use-microsoft-copilot-in-powerpoint-to-turn-a-bulleted-slide.json",
+      "at": "2026-07-15T09:52:59.542Z"
+    },
+    {
+      "id": "m178410918730990",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Use Microsoft Copilot in PowerPoint to turn a bulleted slide into a simple infographic in 5 clicks\" (?/10)",
+      "ref": "GUIDE_use-microsoft-copilot-in-powerpoint-to-turn-a-bulleted-slide.json",
+      "at": "2026-07-15T09:53:07.309Z"
+    },
+    {
+      "id": "m178410922094757",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-07-15T09:53:40.947Z"
+    },
+    {
+      "id": "m178410972503963",
+      "from": "social",
+      "to": "team",
+      "kind": "info",
+      "text": "5 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
+      "ref": null,
+      "at": "2026-07-15T10:02:05.039Z"
     }
   ]
 }
