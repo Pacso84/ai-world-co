@@ -82,16 +82,16 @@
   "agents": {
     "rework": {
       "primary_model": {
-        "provider": "openrouter",
-        "model": "minimax/minimax-m3"
-      },
-      "fallback_model": {
         "provider": "google",
         "model": "gemini-2.5-flash"
       },
+      "fallback_model": {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m3"
+      },
       "enabled": true,
       "routing": "paid-only",
-      "comment": "FŐNÖKI KÖRÖS újraírások ERŐS modellje (2026-07-15, user: MiniMax M3). A sima napi rework marad az iro free-first útján; ez CSAK akkor él, ha ceo_hint van a cikken — a gyenge modell 2x2 körben is elengedte a főnöki utasítást (Roosevelt-eset)."
+      "comment": "Javítókörök erős modellje. ÁTMENETI (2026-07-15): Gemini elöl, mert az OpenRouter-kredit még 0 — AUGUSZTUS 1-TŐL CSERE: MiniMax M3 elsődleges mindenhol (user-döntés, olcsóbb is: $1.20 vs $2.50 kimenet), Gemini tartalék."
     },
     "ceo": {
       "primary_model": {
