@@ -2,8 +2,8 @@
   "_meta": {
     "description": "AI World Co. központi konfiguráció - KÖLTSÉGHATÉKONY beállítás",
     "version": "2.0",
-    "last_updated": "2026-06-04",
-    "philosophy": "Minden agenthez a LEGOLCSÓBB modell amelyik még jól megcsinálja. Ingyen tier-ek maximális kihasználása."
+    "last_updated": "2026-07-15",
+    "philosophy": "MINŐSÉG-ELŐSZÖR (user-döntés 2026-07-15): tartalmi munkához mindig ERŐS modell — a gyenge modell hibája többe kerül (kézi javítás, olvasó-vesztés), mint az erős felára. Mechanikus rövid feladatokra az erős-ingyenesek (gpt-oss-120b, Qwen3-80B) mehetnek. Gyenge modell (mistral-small, gemini-2.0) tartalmat nem érinthet."
   },
   "company": {
     "name": "AI World Co.",
@@ -22,17 +22,61 @@
     "_support_comment": "support_url: ide jon a Ko-fi / Buy Me a Coffee / PayPal.me link (maganszemelykent is mukodik). Ha ures, a Support oldal 'hamarosan' allapotot mutat. Onkentes tip, NEM adolevonhato adomany.",
     "hierarchy": {
       "_comment": "Cegrend (2026-07-13): ki kinek jelent + ki kinek adhat vissza munkat. A postas (agents/ceo/agent.js) CSAK e menten kezbesit; tiltott el = hangos hiba.",
-      "ceo":        { "reports_to": null,        "may_handback_to": ["iro", "guide", "translator", "designer", "social"] },
-      "ellenorzo":  { "reports_to": "ceo",       "may_handback_to": ["iro", "guide"] },
-      "iro":        { "reports_to": "ellenorzo", "may_handback_to": [] },
-      "guide":      { "reports_to": "ellenorzo", "may_handback_to": [] },
-      "translator": { "reports_to": "ellenorzo", "may_handback_to": ["iro"] },
-      "designer":   { "reports_to": "ceo",       "may_handback_to": [] },
-      "social":     { "reports_to": "ceo",       "may_handback_to": [] },
-      "digest":     { "reports_to": "ceo",       "may_handback_to": [] },
-      "compare":    { "reports_to": "ceo",       "may_handback_to": [] },
-      "pairing":    { "reports_to": "ceo",       "may_handback_to": [] },
-      "video":      { "reports_to": "ceo",       "may_handback_to": [] }
+      "ceo": {
+        "reports_to": null,
+        "may_handback_to": [
+          "iro",
+          "guide",
+          "translator",
+          "designer",
+          "social"
+        ]
+      },
+      "ellenorzo": {
+        "reports_to": "ceo",
+        "may_handback_to": [
+          "iro",
+          "guide"
+        ]
+      },
+      "iro": {
+        "reports_to": "ellenorzo",
+        "may_handback_to": []
+      },
+      "guide": {
+        "reports_to": "ellenorzo",
+        "may_handback_to": []
+      },
+      "translator": {
+        "reports_to": "ellenorzo",
+        "may_handback_to": [
+          "iro"
+        ]
+      },
+      "designer": {
+        "reports_to": "ceo",
+        "may_handback_to": []
+      },
+      "social": {
+        "reports_to": "ceo",
+        "may_handback_to": []
+      },
+      "digest": {
+        "reports_to": "ceo",
+        "may_handback_to": []
+      },
+      "compare": {
+        "reports_to": "ceo",
+        "may_handback_to": []
+      },
+      "pairing": {
+        "reports_to": "ceo",
+        "may_handback_to": []
+      },
+      "video": {
+        "reports_to": "ceo",
+        "may_handback_to": []
+      }
     }
   },
   "agents": {
@@ -79,15 +123,15 @@
     },
     "translator": {
       "primary_model": {
-        "provider": "cerebras",
-        "model": "gpt-oss-120b"
-      },
-      "fallback_model": {
         "provider": "google",
         "model": "gemini-2.5-flash"
       },
+      "fallback_model": {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m3"
+      },
       "enabled": true,
-      "comment": "Cikkek/útmutatók fordítása nyelvenként (nagy volumen!). FREE Cerebras elöl a költség miatt; Gemini fallback a minőségért. A felhasználó: teljes többnyelvű honlap (hu/es/de/fr).",
+      "comment": "MINŐSÉG-ELŐSZÖR (user-döntés 2026-07-15): erős modellek — a gyenge modell hibája többe kerül (kézi javítás), mint az erős felára. Gemini 2.5 Flash → MiniMax M3; vég-tartalék a vészhálón át az erős-ingyenesek.",
       "routing": "paid-only",
       "_routing_comment": "CSAK fizetős: a fordítást senki nem ellenőrzi utólag — a nem-angol oldalak minősége múlik rajta (user-döntés 2026-07-05)"
     },
@@ -106,27 +150,28 @@
     },
     "iro": {
       "primary_model": {
-        "provider": "cerebras",
-        "model": "gpt-oss-120b"
-      },
-      "fallback_model": {
         "provider": "google",
         "model": "gemini-2.5-flash"
       },
+      "fallback_model": {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m3"
+      },
       "enabled": true,
-      "comment": "Cikkiras: Cerebras gpt-oss-120b (eros, INGYEN 1M token/nap). Fallback: gemini-flash-latest. (Ha lesz Claude kulcs, a Vezerlopulton atallithato.)"
+      "comment": "MINŐSÉG-ELŐSZÖR (user-döntés 2026-07-15): erős modellek — a gyenge modell hibája többe kerül (kézi javítás), mint az erős felára. Gemini 2.5 Flash → MiniMax M3; vég-tartalék a vészhálón át az erős-ingyenesek.",
+      "routing": "paid-only"
     },
     "ellenorzo": {
       "primary_model": {
-        "provider": "groq",
-        "model": "llama-3.3-70b-versatile"
+        "provider": "google",
+        "model": "gemini-2.5-flash"
       },
       "fallback_model": {
-        "provider": "cerebras",
-        "model": "gpt-oss-120b"
+        "provider": "openrouter",
+        "model": "minimax/minimax-m3"
       },
       "enabled": true,
-      "comment": "Ellenorzes: gemini-flash-latest (INGYEN sajat kvota) + fallback 2.5-pro. Kesobb Claude ha kell jobb minoseg.",
+      "comment": "MINŐSÉG-ELŐSZÖR (user-döntés 2026-07-15): erős modellek — a gyenge modell hibája többe kerül (kézi javítás), mint az erős felára. Gemini 2.5 Flash → MiniMax M3; vég-tartalék a vészhálón át az erős-ingyenesek.",
       "routing": "paid-only",
       "_routing_comment": "CSAK fizetős: minőség-kapu / főnök-agy — itt nem spórolunk (user-döntés 2026-07-05)"
     },
@@ -192,15 +237,16 @@
     },
     "guide": {
       "primary_model": {
-        "provider": "cerebras",
-        "model": "gpt-oss-120b"
-      },
-      "fallback_model": {
         "provider": "google",
         "model": "gemini-2.5-flash"
       },
+      "fallback_model": {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m3"
+      },
       "enabled": true,
-      "comment": "Utmutato-agent: lepesrol-lepesre gyakorlati utmutatok (guides/guide-topics.json). Eros, ingyenes iras (Cerebras), fallback gemini-flash."
+      "comment": "MINŐSÉG-ELŐSZÖR (user-döntés 2026-07-15): erős modellek — a gyenge modell hibája többe kerül (kézi javítás), mint az erős felára. Gemini 2.5 Flash → MiniMax M3; vég-tartalék a vészhálón át az erős-ingyenesek.",
+      "routing": "paid-only"
     },
     "api-expert": {
       "deterministic": true,
@@ -249,27 +295,29 @@
     },
     "digest": {
       "primary_model": {
-        "provider": "cerebras",
-        "model": "gpt-oss-120b"
-      },
-      "fallback_model": {
         "provider": "google",
         "model": "gemini-2.5-flash"
       },
+      "fallback_model": {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m3"
+      },
       "enabled": true,
-      "comment": "Heti osszefoglalo: vasarnaponkent 'This Week in AI' cikk a het sajat cikkeibol, belso linkekkel. Free-first (a normal Ellenorzo-kapun megy at)."
+      "comment": "MINŐSÉG-ELŐSZÖR (user-döntés 2026-07-15): erős modellek — a gyenge modell hibája többe kerül (kézi javítás), mint az erős felára. Gemini 2.5 Flash → MiniMax M3; vég-tartalék a vészhálón át az erős-ingyenesek.",
+      "routing": "paid-only"
     },
     "compare": {
       "primary_model": {
-        "provider": "cerebras",
-        "model": "gpt-oss-120b"
-      },
-      "fallback_model": {
         "provider": "google",
         "model": "gemini-2.5-flash"
       },
+      "fallback_model": {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m3"
+      },
       "enabled": true,
-      "comment": "Osszehasonlito cikkek (ChatGPT vs Gemini vs Claude stb.) a topics-sorbol, hetente max 1 (szerda). Free-first, Ellenorzo-kapun megy at."
+      "comment": "MINŐSÉG-ELŐSZÖR (user-döntés 2026-07-15): erős modellek — a gyenge modell hibája többe kerül (kézi javítás), mint az erős felára. Gemini 2.5 Flash → MiniMax M3; vég-tartalék a vészhálón át az erős-ingyenesek.",
+      "routing": "paid-only"
     },
     "video": {
       "primary_model": {

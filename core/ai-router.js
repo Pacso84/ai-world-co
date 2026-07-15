@@ -374,22 +374,24 @@ const QUOTA_PATH = join(__dirname, 'quota-state.json');
 // ===================================================================
 
 // VALÓBAN ingyenes szolgáltatók (free-tier kulcsok; kulcs hiányában kimarad)
+// MINŐSÉG-ELŐSZÖR (2026-07-15, user): erős-ingyenesek elöl; a mistral-small
+// KIKERÜLT (formátum-romboló volt a rework-ben — gyenge modell tartalmat nem érinthet).
 const FREE_TIER_POOL = [
   { provider: 'cerebras', model: 'gpt-oss-120b' },
-  { provider: 'groq', model: 'llama-3.3-70b-versatile' },
-  { provider: 'mistral', model: 'mistral-small-latest' },
-  { provider: 'openrouter', model: 'meta-llama/llama-3.3-70b-instruct:free' },
   // Kínai ingyenes erősítés (2026-07-15, user kérése): Qwen3-Next-80B —
   // erős általános modell, 262k kontextus, $0 (OpenRouter :free)
-  { provider: 'openrouter', model: 'qwen/qwen3-next-80b-a3b-instruct:free' }
+  { provider: 'openrouter', model: 'qwen/qwen3-next-80b-a3b-instruct:free' },
+  { provider: 'groq', model: 'llama-3.3-70b-versatile' },
+  { provider: 'openrouter', model: 'meta-llama/llama-3.3-70b-instruct:free' }
 ];
 
 // FIZETŐS pool (Google paid tier) — olcsó-megbízható elöl, a DRÁGA
 // 'flash-latest' (3.5 Flash, 5x ár!) és a Pro a végén, végső tartaléknak.
+// MINŐSÉG-ELŐSZÖR (2026-07-15, user): a gemini-2.0-flash (gyenge) és a
+// gemini-flash-latest (5x ár-CSAPDA) kikerült; MiniMax M3 a 2. erős láncszem.
 const PAID_POOL = [
   { provider: 'google', model: 'gemini-2.5-flash' },
-  { provider: 'google', model: 'gemini-2.0-flash' },
-  { provider: 'google', model: 'gemini-flash-latest' },
+  { provider: 'openrouter', model: 'minimax/minimax-m3' },
   { provider: 'google', model: 'gemini-2.5-pro' }
 ];
 
