@@ -376,13 +376,13 @@ const QUOTA_PATH = join(__dirname, 'quota-state.json');
 // VALÓBAN ingyenes szolgáltatók (free-tier kulcsok; kulcs hiányában kimarad)
 // MINŐSÉG-ELŐSZÖR (2026-07-15, user): erős-ingyenesek elöl; a mistral-small
 // KIKERÜLT (formátum-romboló volt a rework-ben — gyenge modell tartalmat nem érinthet).
+// KÍNAI ERŐSÍTÉS (2026-07-15, user): GLM-4.7 a Cerebrason (Zhipu csúcsmodell,
+// $0, JSON-módban is tesztelve) + Qwen3-Next-80B az OpenRouteren.
 const FREE_TIER_POOL = [
   { provider: 'cerebras', model: 'gpt-oss-120b' },
-  // Kínai ingyenes erősítés (2026-07-15, user kérése): Qwen3-Next-80B —
-  // erős általános modell, 262k kontextus, $0 (OpenRouter :free)
+  { provider: 'cerebras', model: 'zai-glm-4.7' },
   { provider: 'openrouter', model: 'qwen/qwen3-next-80b-a3b-instruct:free' },
-  { provider: 'groq', model: 'llama-3.3-70b-versatile' },
-  { provider: 'openrouter', model: 'meta-llama/llama-3.3-70b-instruct:free' }
+  { provider: 'groq', model: 'llama-3.3-70b-versatile' }
 ];
 
 // FIZETŐS pool (Google paid tier) — olcsó-megbízható elöl, a DRÁGA

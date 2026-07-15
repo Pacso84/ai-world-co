@@ -137,8 +137,8 @@
     },
     "rss-scraper": {
       "primary_model": {
-        "provider": "groq",
-        "model": "llama-3.3-70b-versatile"
+        "provider": "cerebras",
+        "model": "zai-glm-4.7"
       },
       "fallback_model": {
         "provider": "cerebras",
@@ -146,7 +146,7 @@
       },
       "enabled": true,
       "schedule": "every 4 hours",
-      "comment": "INGYEN. gemini-flash-latest (sajat kvota) + fallback 2.5-flash. Strukturalatlan adat rendezese."
+      "comment": "INGYEN. gemini-flash-latest (sajat kvota) + fallback 2.5-flash. Strukturalatlan adat rendezese. || KÍNAI-ERŐS-INGYENES (2026-07-15, user): GLM-4.7 elsődleges (Zhipu csúcsmodell, $0 a Cerebrason), gpt-oss-120b tartalék — a gyengébb Llama-70B-t leváltotta."
     },
     "iro": {
       "primary_model": {
@@ -177,15 +177,15 @@
     },
     "source-scout": {
       "primary_model": {
-        "provider": "groq",
-        "model": "llama-3.3-70b-versatile"
+        "provider": "cerebras",
+        "model": "zai-glm-4.7"
       },
       "fallback_model": {
         "provider": "cerebras",
         "model": "gpt-oss-120b"
       },
       "enabled": true,
-      "comment": "Forras-kutato: uj HIVATALOS AI forrasokat keres, teszteli az RSS-t, javaslatot ir (ember donti el)."
+      "comment": "Forras-kutato: uj HIVATALOS AI forrasokat keres, teszteli az RSS-t, javaslatot ir (ember donti el). || KÍNAI-ERŐS-INGYENES (2026-07-15, user): GLM-4.7 elsődleges (Zhipu csúcsmodell, $0 a Cerebrason), gpt-oss-120b tartalék — a gyengébb Llama-70B-t leváltotta."
     },
     "designer": {
       "primary_model": {
@@ -201,27 +201,27 @@
     },
     "analyst": {
       "primary_model": {
-        "provider": "groq",
-        "model": "llama-3.3-70b-versatile"
+        "provider": "cerebras",
+        "model": "zai-glm-4.7"
       },
       "fallback_model": {
         "provider": "cerebras",
         "model": "gpt-oss-120b"
       },
       "enabled": true,
-      "comment": "Elemzo/Tanulas: forras-statisztika + onfejlesztesi javaslat (user dont). Az autonom tanulas: Ellenorzo->lessons.json->Iro."
+      "comment": "Elemzo/Tanulas: forras-statisztika + onfejlesztesi javaslat (user dont). Az autonom tanulas: Ellenorzo->lessons.json->Iro. || KÍNAI-ERŐS-INGYENES (2026-07-15, user): GLM-4.7 elsődleges (Zhipu csúcsmodell, $0 a Cerebrason), gpt-oss-120b tartalék — a gyengébb Llama-70B-t leváltotta."
     },
     "seo": {
       "primary_model": {
-        "provider": "groq",
-        "model": "llama-3.3-70b-versatile"
+        "provider": "cerebras",
+        "model": "zai-glm-4.7"
       },
       "fallback_model": {
-        "provider": "google",
-        "model": "gemini-2.5-flash"
+        "provider": "cerebras",
+        "model": "gpt-oss-120b"
       },
       "enabled": true,
-      "comment": "SEO szakerto: cikkenkent meta-leiras + kulcsszavak + SEO-pont (a cikk _meta.seo-ba). A build hasznalja (meta/OG/JSON-LD)."
+      "comment": "SEO szakerto: cikkenkent meta-leiras + kulcsszavak + SEO-pont (a cikk _meta.seo-ba). A build hasznalja (meta/OG/JSON-LD). || KÍNAI-ERŐS-INGYENES (2026-07-15, user): GLM-4.7 elsődleges (Zhipu csúcsmodell, $0 a Cerebrason), gpt-oss-120b tartalék — a gyengébb Llama-70B-t leváltotta."
     },
     "publisher": {
       "primary_model": {
@@ -251,7 +251,15 @@
     "api-expert": {
       "deterministic": true,
       "enabled": true,
-      "comment": "API-szakerto: szabaly-alapu, tudja melyik modell mire jo, es a legjobb ELERHETO modellt rendeli minden agenthez. Futtasd uj kulcs utan: node agents/api-expert/agent.js"
+      "comment": "API-szakerto: szabaly-alapu, tudja melyik modell mire jo, es a legjobb ELERHETO modellt rendeli minden agenthez. Futtasd uj kulcs utan: node agents/api-expert/agent.js || KÍNAI-ERŐS-INGYENES (2026-07-15, user): GLM-4.7 elsődleges (Zhipu csúcsmodell, $0 a Cerebrason), gpt-oss-120b tartalék — a gyengébb Llama-70B-t leváltotta.",
+      "primary_model": {
+        "provider": "cerebras",
+        "model": "zai-glm-4.7"
+      },
+      "fallback_model": {
+        "provider": "cerebras",
+        "model": "gpt-oss-120b"
+      }
     },
     "social": {
       "primary_model": {
@@ -271,27 +279,27 @@
     },
     "fact-check": {
       "primary_model": {
-        "provider": "google",
-        "model": "gemini-2.5-flash"
-      },
-      "fallback_model": {
-        "provider": "groq",
-        "model": "llama-3.3-70b-versatile"
-      },
-      "enabled": true,
-      "comment": "Teny-ellenorzo / frissesseg-or: a publikalt utmutatokat ujraellenorzi, a valotlanna valt reszt eltavolitja/lagyitja, majd a guide visszamegy az Ellenorzo igazsag-kapujara. Nagy-kontextusu modell kell (teljes utmutato): gemini-flash + gemini-2.5-flash fallback (groq 12k limit keves)."
-    },
-    "pairing": {
-      "primary_model": {
-        "provider": "groq",
-        "model": "llama-3.3-70b-versatile"
+        "provider": "cerebras",
+        "model": "zai-glm-4.7"
       },
       "fallback_model": {
         "provider": "cerebras",
         "model": "gpt-oss-120b"
       },
       "enabled": true,
-      "comment": "Hir-utmutato parosito: eldonti, hogy egy hir UTMUTATHATO-e (uj, hasznalhato funkcio) vagy sem (szovetseg, tozsdere lepes, felvasarlas, vezetovaltas, jogi/uzleti hir = NEM). Csak az utmutathato hirhez keszit guide-temat es kereszthivatkozast."
+      "comment": "Teny-ellenorzo / frissesseg-or: a publikalt utmutatokat ujraellenorzi, a valotlanna valt reszt eltavolitja/lagyitja, majd a guide visszamegy az Ellenorzo igazsag-kapujara. Nagy-kontextusu modell kell (teljes utmutato): gemini-flash + gemini-2.5-flash fallback (groq 12k limit keves). || KÍNAI-ERŐS-INGYENES (2026-07-15, user): GLM-4.7 elsődleges (Zhipu csúcsmodell, $0 a Cerebrason), gpt-oss-120b tartalék — a gyengébb Llama-70B-t leváltotta."
+    },
+    "pairing": {
+      "primary_model": {
+        "provider": "cerebras",
+        "model": "zai-glm-4.7"
+      },
+      "fallback_model": {
+        "provider": "cerebras",
+        "model": "gpt-oss-120b"
+      },
+      "enabled": true,
+      "comment": "Hir-utmutato parosito: eldonti, hogy egy hir UTMUTATHATO-e (uj, hasznalhato funkcio) vagy sem (szovetseg, tozsdere lepes, felvasarlas, vezetovaltas, jogi/uzleti hir = NEM). Csak az utmutathato hirhez keszit guide-temat es kereszthivatkozast. || KÍNAI-ERŐS-INGYENES (2026-07-15, user): GLM-4.7 elsődleges (Zhipu csúcsmodell, $0 a Cerebrason), gpt-oss-120b tartalék — a gyengébb Llama-70B-t leváltotta."
     },
     "digest": {
       "primary_model": {
