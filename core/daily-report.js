@@ -170,6 +170,18 @@ async function main() {
     const tf = flog[today()] || [];
     if (tf.length) lines.push(`🔧 Önjavító: ${tf.length} hibát magamtól kijavítottam (pl. ${tf[0].slice(0, 60)}…)`);
   } catch { /* még nincs javítás-napló */ }
+  // MAKE-ŐRSZEM (2026-07-15, a 9 napos néma FB-leállás tanulsága): a webhook
+  // válaszából NEM látszik, ha a Make-forgatókönyv áll (200-zal nyeli a sorba) —
+  // ezért közvetlenül a Make API-tól kérdezzük. Csak BAJ esetén szól.
+  try {
+    if (process.env.MAKE_API_TOKEN) {
+      const mr = await fetch('https://eu1.make.com/api/v2/scenarios/6452490', { headers: { Authorization: 'Token ' + process.env.MAKE_API_TOKEN }, signal: AbortSignal.timeout(15000) });
+      const mj = await mr.json().catch(() => ({}));
+      if (mr.ok && mj.scenario && mj.scenario.isActive === false)
+        lines.push('⛔ FB-POSZTOLÓ LEÁLLT (Make-forgatókönyv inaktív)! Kapcsold vissza: eu1.make.com → Scenarios → kapcsoló a sor végén.');
+    }
+  } catch { /* a Make-őr hibája nem állítja meg a jelentést */ }
+
   // Hierarchia-műszerfal (2026-07-13): visszaadások + főnöki döntések + tanulságok
   try {
     const { handbackStats } = await import('./handback.js');

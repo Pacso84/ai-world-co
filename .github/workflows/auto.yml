@@ -130,6 +130,8 @@ jobs:
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_OWNER_CHAT_ID: ${{ secrets.TELEGRAM_OWNER_CHAT_ID }}
+          # Make-őrszem (2026-07-15): a FB-posztoló forgatókönyv állapotát figyeli
+          MAKE_API_TOKEN: ${{ secrets.MAKE_API_TOKEN }}
         run: node core/daily-report.js || true
 
       # Heti kereső-riport (vasárnap): GSC+Bing számok + hírlevél-lámpa
