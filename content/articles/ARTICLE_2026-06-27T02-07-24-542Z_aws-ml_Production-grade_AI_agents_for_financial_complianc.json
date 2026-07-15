@@ -1,0 +1,64 @@
+{
+  "_meta": {
+    "written_at": "2026-07-15T01:20:05.665Z",
+    "writer_provider": "mistral",
+    "writer_model": "mistral-small-latest",
+    "writer_cost_usd": 0.0035702000000000004,
+    "original_draft": "2026-06-27T02-07-24-542Z_aws-ml_Production-grade_AI_agents_for_financial_complianc.json",
+    "source_id": "aws-ml",
+    "source_name": "AWS Machine Learning (hivatalos)",
+    "source_link": "https://aws.amazon.com/blogs/machine-learning/production-grade-ai-agents-for-financial-compliance-lessons-from-stripe/",
+    "status": "published",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 916
+    },
+    "can_retry": true,
+    "rework_attempts": 2,
+    "reworked_from": "REJECTED_2026-06-27T02-07-24-542Z_aws-ml_Production-grade_AI_agents_for_financial_complianc.json",
+    "requeued_unchanged": false,
+    "rejected_at": "2026-07-14T17:05:39.357Z",
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 8,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "The article is well-structured, clear, and fits the brand voice and",
+      "_salvaged": true,
+      "_aiCost": 0.0044784,
+      "_provider": "google",
+      "_model": "gemini-2.5-flash",
+      "_attempts": 1
+    },
+    "reason": "Salvaged from a partial AI response.",
+    "ceo_rounds": 2,
+    "ceo_hint": "CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers.",
+    "published_at": "2026-07-15T01:20:56.546Z",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-07-15T01:21:28.141Z",
+    "guide_worthy": false,
+    "pairing_reason": "The article introduces a generic topic of AI agents and does not focus on a specific, named feature or tool",
+    "seo": {
+      "meta_description": "Discover AI agents, simple digital helpers that automate repetitive tasks across your apps, saving you time and effort, learn how to use them",
+      "keywords": [
+        "AI agents",
+        "automate tasks",
+        "digital assistants",
+        "productivity tools",
+        "easy AI helpers"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add concrete examples of AI agent use cases",
+        "Include a step-by-step guide on setting up an AI agent",
+        "Emphasize the benefits of using AI agents for busy professionals"
+      ],
+      "optimised_at": "2026-07-15T01:24:05.291Z"
+    },
+    "social": true,
+    "social_at": "2026-07-15T01:37:35.838Z"
+  },
+  "article_markdown": "---\ntitle: \"AI Agents Are Here: What They Do and How to Use Them Without the Tech Jargon\"\nsubtitle: \"Turn repetitive digital chores into one-click shortcuts with simple AI helpers that work across your apps\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"ai-agents\", \"automation\", \"productivity\", \"getting-started\"]\n---\n\n# AI Agents Are Here: What They Do and How to Use Them Without the Tech Jargon\n\nYou’ve just spent five minutes copying the same details from a work email into a spreadsheet. Or maybe you’re stuck renaming a folder full of holiday photos so they’re easier to find later. These aren’t the parts of your day that spark joy — they’re the quiet, repetitive chores that quietly eat your time. What if you could hand them to a helper that works across your apps, follows your instructions, and does the work while you grab a coffee?\n\nThat helper exists today. It’s called an **AI agent** — a small digital assistant that can open your email, move files, fill out forms, or send messages, all on your behalf. You give it a clear goal, and it figures out how to do the rest.\n\n---\n\n## What an AI agent actually is\n\nAn **AI agent** is a program that can take action for you. It’s not just a chatbot that answers questions — it can open your email, fill out forms, move files between folders, or even send messages in apps like Slack or Teams. You give it a goal (like “organise my receipts into folders by month”), and it works out how to do it step by step.\n\nBehind the scenes, it uses something called **tool use** — imagine the AI has a set of tools (like a web browser, file system, or email client) that it can control using your instructions. It’s like giving someone a key to your house and saying, “Please water the plants every Tuesday.”\n\n---\n\n## How to set up your first AI agent (step by step)\n\nYou don’t need to be a programmer. Most AI agents today work through simple chat interfaces. Here’s how to get started:\n\n### 1. Pick a platform that supports agents\nSome AI tools already have agents built in. For example:\n\n- **Claude** (by Anthropic) has a feature called **Claude Code** that can run scripts and interact with your computer.\n- **ChatGPT** (with a paid plan) can use **plugins** or **custom instructions** to act as an agent.\n- **Gemini** (by Google) supports **extensions** that let it access your Google Drive, Gmail, or Calendar.\n\nChoose one you already use — no need to switch.\n\n### 2. Give it a clear goal\nInstead of saying, “Help me organise my files,” try:\n\n> “Go through my Downloads folder, find all PDF receipts from the last 30 days, rename them with the date and vendor name, and move them to a folder called ‘Receipts-2025’.”\n\nThat’s specific enough for the AI to understand and act on.\n\n### 3. Add your tools (if needed)\nSome agents need permission to access your apps. For example:\n\n- If you want it to read your emails, you’ll need to connect your Gmail or Outlook account.\n- If it needs to move files, it’ll ask for access to your file system.\n\nThis is like giving a house key — only do it with apps you trust.\n\n### 4. Let it run (and watch it work)\nOnce you hit send, the agent starts. It may open your file manager, rename files, or draft an email. You can watch in real time or step away — it’s doing the work.\n\n> ⚠️ Tip: Start small. Try automating something like “move all screenshots to a Screenshots folder” before tackling bigger tasks.\n\n---\n\n## 3 real-life tasks you can automate today\n\nHere are three common chores that AI agents can handle — no coding required:\n\n### ✅ Organise your downloads folder\nInstead of manually sorting files, tell your AI:\n\n> “Organise my Downloads folder: move PDFs to Documents, images to Pictures, and zip files older than 7 days into an archive folder.”\n\n### ✅ Batch process emails\nNeed to send 20 similar emails? Try:\n\n> “Draft 20 emails to clients thanking them for their recent purchase. Use this template: [paste template]. Replace [Name] with each client’s name from my contact list.”\n\n### ✅ Clean up your desktop\n> “Delete all files on my desktop that haven’t been opened in the last 30 days and move the rest to a folder called ‘Desktop-Cleanup’.”\n\nEach of these takes minutes to set up — and saves hours over time.\n\n---\n\n## What this means for you\n\n- **In your personal life**: Start with one small task like organising your photos or cleaning up your downloads. Pick a day when you’re not in a rush, and let the AI do the sorting while you make a cuppa.\n- **For your business or work**: Try automating repetitive tasks like report formatting or email follow-ups. Even saving 10 minutes a day adds up to over an hour a week.\n- **If you're just getting started**: Don’t overcomplicate it. Pick one tool you already use (like Gmail or Google Drive), connect it to your AI, and give it a simple task. Once it works, build from there.\n\n---\nAutomating the boring stuff isn’t about replacing your skills — it’s about giving you back time to focus on what matters. Start small, trust the process, and soon you’ll wonder how you ever lived without an AI assistant doing the heavy lifting.",
+  "original_title": "Production-grade AI agents for financial compliance: Lessons from Stripe"
+}

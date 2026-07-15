@@ -1,0 +1,59 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "how-to-get-ai-insights-anywhere-with-genie-one-on-your-phone",
+    "company": "Genie",
+    "tool": "One",
+    "icon": "🆕",
+    "level": "beginner",
+    "source_news": {
+      "file": "ARTICLE_2026-07-15T01-19-07-585Z_databricks_Take_insights_anywhere_with_Genie_One_on_mobile.json",
+      "title": "Take insights anywhere with Genie One on mobile"
+    },
+    "written_at": "2026-07-15T01:21:41.757Z",
+    "writer_provider": "mistral",
+    "writer_model": "mistral-small-latest",
+    "writer_cost_usd": 0.0036861999999999997,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-07-15T01:22:48.016Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 857
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "This guide is exceptionally clear and well-structured, providing easy-to-follow steps with helpful examples for beginners. The language is accessible, and all brand voice and structural requirements are met.",
+      "_aiCost": 0.0036446,
+      "_provider": "google",
+      "_model": "gemini-2.5-flash",
+      "_attempts": 1
+    },
+    "seo": {
+      "meta_description": "Get instant AI insights on your phone with Genie One's mobile app, turning your device into a pocket business analyst for spreadsheets, emails, and notes",
+      "keywords": [
+        "AI insights on phone",
+        "Genie One mobile app",
+        "business analyst app",
+        "data-driven insights",
+        "instant analysis"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add a section on common use cases for Genie One's mobile app",
+        "Include screenshots of the app in action to enhance clarity",
+        "Emphasize the benefits of using AI for business analysis in the introduction"
+      ],
+      "optimised_at": "2026-07-15T01:24:06.238Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"How to Get AI Insights Anywhere with Genie One on Your Phone\"\nsubtitle: \"Turn your phone into a pocket business analyst by using Genie One’s mobile app to pull instant, data-driven insights from your spreadsheets, emails, and notes.\"\ncategory: \"guide\"\naudience: \"business\"\ncompany: \"Genie\"\ntool: \"Genie One\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"getting-started\", \"genie-one\", \"mobile-app\", \"data-insights\"]\n---\n\n# Turn your phone into a pocket analyst with Genie One\n\n**Hook:**\nImagine having a mini business analyst in your pocket. With the Genie One mobile app, you can ask questions about your sales reports, customer emails, or meeting notes and get clear, data-driven answers—anywhere, anytime. No spreadsheets, no waiting for reports. This guide shows you how to set it up in minutes.\n\n## Before you start\n- A **free Genie One account** (sign up at genie.one).\n- The **Genie One mobile app** installed on your phone (iOS or Android).\n- A **spreadsheet, email thread, or note** you want to analyse (CSV, XLSX, or plain text).\n- Roughly **10 minutes** of your time.\n\n---\n\n## Step 1 — Open the Genie One app and sign in\nOpen the Genie One app on your phone. You’ll see the login screen. Tap **Sign in** and enter the email and password you used to create your account. If you don’t have an account yet, tap **Create account** and follow the prompts.\n\n💬 Example:\n```\nEmail: your.name@company.com\nPassword: ••••••••\n```\n\nYou'll know it worked when you see your name or profile picture in the top-right corner of the screen.\n\n---\n\n## Step 2 — Tap the “+” icon to upload your file\nOn the main screen, look for a big **“+”** button in the bottom-right corner. Tap it. A menu will pop up with options like **Upload file**, **Connect cloud**, or **Paste text**. Choose **Upload file**.\n\n💬 Example:\n```\nTap “Upload file” → select “Sales_Report_Q2.xlsx” from your Downloads folder\n```\n\nYou'll know it worked when you see a green checkmark and the file name at the top of the screen.\n\n---\n\n## Step 3 — Ask your first question about the data\nAfter the file uploads, you’ll see a chat box at the bottom of the screen. Type your question in plain English. For example:\n💬 Example:\n```\n\"Which product had the highest sales in May?\"\n```\n\nYou'll know it worked when the app starts typing a response in the chat window within a few seconds.\n\n---\n\n## Step 4 — Read the insight and ask a follow-up\nThe app will show a clear answer like:\n> “Product X had the highest sales in May with $18,450.”\n\nIf the answer isn’t quite right, tap the message and say:\n💬 Example:\n```\n\"Show me the breakdown by region for Product X in May.\"\n```\n\nYou'll know it worked when the app updates the answer with a new chart or table.\n\n---\n\n## Step 5 — Save the conversation for later\nTo keep your insights handy, tap the **bookmark icon** (looks like a ribbon) next to your question in the chat. The conversation will appear in your **Saved** tab for quick access next time.\n\n💬 Example:\n```\nTap the ribbon icon → choose “Save this thread”\n```\n\nYou'll know it worked when you see a confirmation message: “Saved to your library.”\n\n---\n\n## Step 6 — Share the insight with your team\nTo send the result to a colleague, tap the **share icon** (an arrow pointing up from a box) next to the answer. Choose **Copy link** or **Send via email**. The link opens the full chat in their browser.\n\n💬 Example:\n```\nTap the share icon → choose “Copy link” → paste into Slack\n```\n\nYou'll know it worked when your colleague confirms they can open the link and see the same chart.\n\n---\n\n## Common mistakes\n- **Mistake:** Typing a question that’s too vague.\n  **Fix:** Be specific. Instead of “Tell me about sales,” say “Which product had the highest sales in May?”\n\n- **Mistake:** Uploading a locked or password-protected file.\n  **Fix:** Save the file as a normal XLSX or CSV first, then upload.\n\n- **Mistake:** Expecting the app to send emails or update databases automatically.\n  **Fix:** Genie One can draft insights, but it can’t send emails or change your CRM directly.\n\n---\n\n## What this means for you\n\n- **In everyday life:** Got a messy spreadsheet from your kid’s school fundraiser? Upload it and ask, “How much did each class raise?” in seconds.\n- **For your business or work:** Stuck in a meeting with a client report you haven’t read? Paste the key numbers into Genie One and ask, “What are the top 3 risks in this quarter’s data?” before the call starts.\n- **If you're just getting started:** Start with a small file—like a CSV of your last month’s expenses—and ask one simple question. You’ll see how fast it turns numbers into clear answers.\n\n---\n\n## Try it now\nOpen the Genie One app, upload a small file (like a CSV or XLSX), and ask:\n💬 Example:\n```\n\"What are the top 3 expenses in this file?\"\n```\nSee how it turns your data into a clear list—right on your phone.",
+  "original_title": "How to Get AI Insights Anywhere with Genie One on Your Phone"
+}

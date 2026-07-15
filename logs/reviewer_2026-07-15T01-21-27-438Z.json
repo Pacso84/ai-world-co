@@ -1,0 +1,55 @@
+{
+  "started_at": "2026-07-15T01:20:41.223Z",
+  "total": 6,
+  "passed": 1,
+  "failed": 5,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.026518899999999998,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-06-27T02-07-24-542Z_aws-ml_How_Cara_pioneers_domain-specific_AI_for_enterpris.json",
+      "rejected": "REJECTED_2026-06-27T02-07-24-542Z_aws-ml_How_Cara_pioneers_domain-specific_AI_for_enterpris.json",
+      "decision": "FAIL",
+      "score": 5,
+      "cost_usd": 0.0043888
+    },
+    {
+      "writer": "WRITER_2026-06-27T02-07-24-542Z_aws-ml_Production-grade_AI_agents_for_financial_complianc.json",
+      "article": "ARTICLE_2026-06-27T02-07-24-542Z_aws-ml_Production-grade_AI_agents_for_financial_complianc.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0044784
+    },
+    {
+      "writer": "WRITER_2026-06-29T02-29-25-987Z_microsoft-ai_Work_smarter_in_90_days__A_real-world_guide_to_usi.json",
+      "rejected": "REJECTED_2026-06-29T02-29-25-987Z_microsoft-ai_Work_smarter_in_90_days__A_real-world_guide_to_usi.json",
+      "decision": "FAIL",
+      "score": 6,
+      "cost_usd": 0.0044268
+    },
+    {
+      "writer": "WRITER_2026-06-30T16-43-13-543Z_google-workspace_Create_fully_native_and_editable_presentations_wit.json",
+      "rejected": "REJECTED_2026-06-30T16-43-13-543Z_google-workspace_Create_fully_native_and_editable_presentations_wit.json",
+      "decision": "FAIL",
+      "score": 7,
+      "cost_usd": 0.004431399999999999
+    },
+    {
+      "writer": "WRITER_2026-07-01T17-46-16-620Z_microsoft-ai_New_AI-powered_library_lets_people_meet_Theodore_R.json",
+      "rejected": "REJECTED_2026-07-01T17-46-16-620Z_microsoft-ai_New_AI-powered_library_lets_people_meet_Theodore_R.json",
+      "decision": "FAIL",
+      "score": 6,
+      "cost_usd": 0.004434
+    },
+    {
+      "writer": "WRITER_2026-07-02T02-10-03-889Z_snowflake_Why_the_Data_Platform_Determines_Legal_AI_Outcomes.json",
+      "rejected": "REJECTED_2026-07-02T02-10-03-889Z_snowflake_Why_the_Data_Platform_Determines_Legal_AI_Outcomes.json",
+      "decision": "FAIL",
+      "score": 5,
+      "cost_usd": 0.0043595
+    }
+  ],
+  "finished_at": "2026-07-15T01:21:27.438Z",
+  "duration_seconds": 46.215
+}

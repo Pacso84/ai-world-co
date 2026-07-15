@@ -1,0 +1,38 @@
+{
+  "started_at": "2026-07-15T01:19:07.944Z",
+  "drafts_total": 3,
+  "articles_written": 3,
+  "articles_failed": 0,
+  "total_cost_usd": 0.0034304000000000005,
+  "by_article": [
+    {
+      "draft": "2026-07-15T01-19-07-585Z_databricks_Take_insights_anywhere_with_Genie_One_on_mobile.json",
+      "writer_output": "WRITER_2026-07-15T01-19-07-585Z_databricks_Take_insights_anywhere_with_Genie_One_on_mobile.json",
+      "success": true,
+      "cost_usd": 0,
+      "duration_ms": 2222,
+      "provider": "cerebras",
+      "model": "gpt-oss-120b"
+    },
+    {
+      "draft": "2026-07-15T01-19-07-584Z_google-workspace_New_refinement_capabilities_allow_custom_editing_w.json",
+      "writer_output": "WRITER_2026-07-15T01-19-07-584Z_google-workspace_New_refinement_capabilities_allow_custom_editing_w.json",
+      "success": true,
+      "cost_usd": 0,
+      "duration_ms": 1643,
+      "provider": "cerebras",
+      "model": "gpt-oss-120b"
+    },
+    {
+      "draft": "2026-07-15T01-19-07-584Z_aws-ml_Multi-agent_social_intelligence_with_Strands_Agent.json",
+      "writer_output": "WRITER_2026-07-15T01-19-07-584Z_aws-ml_Multi-agent_social_intelligence_with_Strands_Agent.json",
+      "success": true,
+      "cost_usd": 0.0034304000000000005,
+      "duration_ms": 12493,
+      "provider": "mistral",
+      "model": "mistral-small-latest"
+    }
+  ],
+  "finished_at": "2026-07-15T01:19:24.304Z",
+  "duration_seconds": 16.36
+}

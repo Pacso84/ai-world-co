@@ -1,0 +1,35 @@
+{
+  "_meta": {
+    "written_at": "2026-07-15T01:19:24.304Z",
+    "writer_provider": "mistral",
+    "writer_model": "mistral-small-latest",
+    "writer_cost_usd": 0.0034304000000000005,
+    "original_draft": "2026-07-15T01-19-07-584Z_aws-ml_Multi-agent_social_intelligence_with_Strands_Agent.json",
+    "source_id": "aws-ml",
+    "source_name": "AWS Machine Learning (hivatalos)",
+    "source_link": "https://aws.amazon.com/blogs/machine-learning/multi-agent-social-intelligence-with-strands-agents-and-amazon-bedrock/",
+    "status": "rejected",
+    "rejected_at": "2026-07-15T01:19:32.737Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 980
+    },
+    "ai_review": {
+      "overall_score": 6,
+      "clarity_score": 4,
+      "decision": "FAIL",
+      "issues": [],
+      "verdict": "Salvaged from a partial AI response.",
+      "_salvaged": true,
+      "_aiCost": 0.004532,
+      "_provider": "google",
+      "_model": "gemini-2.5-flash",
+      "_attempts": 1
+    },
+    "reason": "Salvaged from a partial AI response.",
+    "can_retry": true
+  },
+  "article_markdown": "---\ntitle: \"How to Use AI Agents to Automate Your Business Tasks Without Coding\"\nsubtitle: \"A step-by-step guide to setting up AI agents that can handle prospect research, email drafting, and follow-ups for you\"\ncategory: \"how-to\"\naudience: \"business\"\nread_time_minutes: 6\ntags: [\"ai-agents\", \"automation\", \"business-tools\", \"getting-started\"]\n---\n\n# How to Use AI Agents to Automate Your Business Tasks Without Coding\n\n**Imagine finishing your workday and waking up to a full inbox of warm leads, each with a personalised email ready to send.** No more staring at spreadsheets or typing the same message over and over. This isn’t a futuristic dream — it’s something you can set up today using AI agents, even if you’ve never written a line of code.\n\nAI agents are like digital assistants that can research, decide, and act on your behalf. They can scan the web for potential clients, score their likelihood to buy, and even draft emails tailored to each person. The best part? You don’t need to be a developer to use them. Platforms like Amazon Bedrock and tools like Strands Agents make it as simple as filling out a form and clicking a button.\n\nLet’s walk through how to set one up for your business — no tech background required.\n\n---\n\n## What is an AI agent, really?\n\nThink of an AI agent as a **digital employee** that follows your instructions. It doesn’t just answer questions — it can *do* things. For example:\n\n- **Research**: It can look up a company’s website, recent news, and even social media to understand who they are.\n- **Decide**: It can score leads based on your criteria (e.g., \"only contact companies with 10–50 employees\").\n- **Act**: It can draft an email, send it, and even schedule a follow-up.\n\nThe key difference between a regular AI chatbot and an agent is **autonomy**. A chatbot waits for your next message. An agent can work in the background, make decisions, and take actions — all while you focus on higher-value work.\n\n---\n\n## Step 1: Pick your platform and tool\n\nYou’ll need two things:\n\n1. **A platform** to run the agent (like Amazon Bedrock).\n2. **An agent tool** (like Strands Agents) that connects to your platform.\n\nAmazon Bedrock is a cloud service that gives AI models access to tools and data. Strands Agents is a framework that helps you build agents that can research, decide, and act — all without code.\n\n> 💡 Think of Bedrock as the **engine** and Strands Agents as the **steering wheel and pedals**. You don’t need to know how the engine works to drive.\n\n---\n\n## Step 2: Define your goal and criteria\n\nBefore setting up the agent, ask yourself:\n\n- **What do I want the agent to do?** (e.g., find new leads, draft emails, follow up)\n- **What makes a good lead for me?** (e.g., company size, industry, recent funding)\n- **What should the email say?** (e.g., tone, key points, call-to-action)\n\nFor example, if you sell marketing software, your criteria might be:\n\n- Companies with 10–50 employees\n- In the retail or e-commerce industry\n- Located in Australia\n- No recent negative news\n\nYou’ll input these criteria into the agent tool. It’s like giving your digital assistant a job description.\n\n---\n\n## Step 3: Set up the agent\n\nHere’s how to do it in Strands Agents with Amazon Bedrock:\n\n1. **Sign up** for Amazon Bedrock and Strands Agents.\n2. **Connect your email** (e.g., Gmail or Outlook) so the agent can send messages.\n3. **Create a new agent** and give it a name (e.g., \"Lead Finder\").\n4. **Define the agent’s role**:\n   - *Researcher*: Scans the web for companies matching your criteria.\n   - *Scorer*: Rates each company based on your rules.\n   - *Writer*: Drafts personalised emails.\n   - *Scheduler*: Sends emails and follows up.\n5. **Set the criteria** (e.g., company size, industry, location).\n6. **Write your email template** (or let the agent generate one based on your instructions).\n\nThat’s it. The agent is now ready to work.\n\n> ⚠️ **Tip**: Start small. Test the agent with 5–10 leads first to make sure it’s working as expected.\n\n---\n\n## Step 4: Let the agent do the work\n\nOnce the agent is set up, it will:\n\n1. **Find leads**: It scans the web for companies that match your criteria.\n2. **Score leads**: It rates each company based on your rules.\n3. **Draft emails**: It writes a personalised message for each lead.\n4. **Send emails**: It sends the emails and schedules follow-ups.\n\nYou can monitor its progress in the agent’s dashboard. If something goes wrong, you can pause or adjust the agent.\n\n> 🔍 **Example**: A retail shop owner sets up an agent to find new leads. The agent finds 50 companies, scores them, and drafts emails. By the end of the week, the owner has 10 replies — all from warm leads.\n\n---\n\n## What this means for you\n\n- **If you're a small business owner**: You can automate repetitive tasks like lead generation and email follow-ups, freeing up time to focus on growing your business.\n- **If you work in sales or marketing**: You can scale your outreach without hiring more staff. The agent handles the heavy lifting, so you can focus on strategy.\n- **If you're just getting started**: Start with a simple agent that finds and scores leads. Once you’re comfortable, expand its role to include drafting emails or scheduling follow-ups.\n\n---\n\n## Wrap-up\n\nSetting up an AI agent might sound technical, but it’s as simple as filling out a form and clicking a button. Start with a small goal — like finding 10 new leads — and let the agent do the rest. You’ll save hours every week and get better results than if you did it manually.\n\n**Try it today**: Sign up for Amazon Bedrock and Strands Agents, set up your first agent, and let it work for you. Your future self will thank you.",
+  "original_title": "Multi-agent social intelligence with Strands Agents and Amazon Bedrock"
+}

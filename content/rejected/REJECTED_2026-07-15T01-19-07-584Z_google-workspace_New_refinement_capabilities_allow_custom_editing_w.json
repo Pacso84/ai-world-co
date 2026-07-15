@@ -1,0 +1,35 @@
+{
+  "_meta": {
+    "written_at": "2026-07-15T01:19:11.810Z",
+    "writer_provider": "cerebras",
+    "writer_model": "gpt-oss-120b",
+    "writer_cost_usd": 0,
+    "original_draft": "2026-07-15T01-19-07-584Z_google-workspace_New_refinement_capabilities_allow_custom_editing_w.json",
+    "source_id": "google-workspace",
+    "source_name": "Google Workspace Updates (hivatalos)",
+    "source_link": "http://workspaceupdates.googleblog.com/2026/07/new-refinement-capabilities-allow-custom-editing-with-Help-me-write-in-Gmail.html",
+    "status": "rejected",
+    "rejected_at": "2026-07-15T01:19:39.798Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 621
+    },
+    "ai_review": {
+      "overall_score": 6,
+      "clarity_score": 6,
+      "decision": "FAIL",
+      "issues": [],
+      "verdict": "Salvaged from a partial AI response.",
+      "_salvaged": true,
+      "_aiCost": 0.004390600000000001,
+      "_provider": "google",
+      "_model": "gemini-2.5-flash",
+      "_attempts": 1
+    },
+    "reason": "Salvaged from a partial AI response.",
+    "can_retry": true
+  },
+  "article_markdown": "---\ntitle: \"How to Fine‑Tune Your Gmail Drafts with Custom AI Refinements\"\nsubtitle: \"A step‑by‑step guide to using Gmail’s ‘Help me write’ prompt bar for precise, on‑the‑fly email edits\"\ncategory: \"how‑to\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"gmail\", \"ai‑email\", \"productivity\", \"help‑me‑write\"]\n---\n\n# How to Fine‑Tune Your Gmail Drafts with Custom AI Refinements\n\nEver start an email, hit send, and then realise you missed a key detail or used the wrong tone? With the new custom refine feature in Gmail’s **Help me write** tool, you can polish a draft without leaving your inbox. It’s like having a quick‑thinking editor right beside you.\n\n## Getting started\n\n1. **Open Gmail and start a new message** – the compose window looks the same as before.  \n2. **Type your first draft** – don’t worry about perfection; the AI will help you reshape it.  \n3. **Find the “Help me write” bar** – it sits just below the subject line. If you don’t see it, click the small lightning‑bolt icon to expand the AI assistant.\n\n   *Technical note*: **Help me write** is powered by an **LLM (large language model – the engine behind tools like ChatGPT)** that interprets the instructions you give it.\n\n## Using custom refine instructions\n\nInstead of the preset options (Polish, Formalise, Shorten), you can now type any instruction you like. Here’s how:\n\n| Step | Action | Example prompt |\n|------|--------|----------------|\n| **1** | Click the **Refine** button (the pencil icon) next to the AI’s response. | |\n| **2** | In the prompt bar, type a clear instruction. | “Add a deadline of 15 May for the report” |\n| **3** | Press **Enter** or the **Send** icon. | The draft updates instantly. |\n| **4** | Review the change. If it’s not right, click **Undo** (the curved arrow) to revert, or **Redo** to apply it again. | |\n\n**Tips for effective prompts**\n\n- Be specific: “Include a polite opening asking about their availability next week” works better than “Make it nicer.”  \n- Keep it short: a single sentence is usually enough for the AI to understand.  \n- Use familiar language: write the instruction as you would speak to a colleague.\n\n## Handy shortcuts and extra tricks\n\n- **Multiple refinements** – After one edit, you can add another. For example, first “Add a deadline,” then “Make the tone more casual.” Each step builds on the previous version.  \n- **Undo/Redo stack** – Gmail remembers each change, so you can step back several edits if needed.  \n- **Preview before sending** – The AI shows the revised draft inline; you can still make manual tweaks before hitting send.  \n- **Keyboard shortcut** – Press **Ctrl + Enter** (Windows) or **Cmd + Enter** (Mac) after typing a prompt to apply it faster.\n\n## What this means for you\n\n- **If you’re emailing friends or family**: Quickly add missing details (like a meetup time) without re‑typing the whole message.  \n- **If you work in a professional setting**: Ensure every client email has the right tone and includes required information, saving you the hassle of multiple drafts.  \n- **If you’re new to AI tools**: Treat the prompt bar like a conversation – think of it as a helpful colleague you can ask to “fix this sentence” or “make it sound more friendly.”  \n\n## Wrap‑up\n\nThe custom refine feature turns a rough draft into a polished email with just a few keystrokes. Try it out on your next Gmail message: type a quick draft, hit the “Help me write” pencil, and give the AI a simple instruction like “Add a friendly greeting.” You’ll see how easy it is to fine‑tune your communication on the fly.\n\n*Written and edited by AI World Co.’s autonomous AI agents. Reviewed for accuracy by our editorial team.*",
+  "original_title": "New refinement capabilities allow custom editing with Help me write in Gmail "
+}

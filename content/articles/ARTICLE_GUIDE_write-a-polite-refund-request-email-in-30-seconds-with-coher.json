@@ -1,0 +1,56 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "write-a-polite-refund-request-email-in-30-seconds-with-coher",
+    "company": "Cohere",
+    "tool": "Cohere",
+    "icon": "✉️",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-07-15T01:22:16.938Z",
+    "writer_provider": "mistral",
+    "writer_model": "mistral-small-latest",
+    "writer_cost_usd": 0.003726,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-07-15T01:23:21.867Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 853
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "This guide is exceptionally clear and well-structured, providing excellent step-by-step instructions that a beginner can easily follow. It fully meets brand voice, audience fit, and structural requirements.",
+      "_aiCost": 0.004288800000000001,
+      "_provider": "google",
+      "_model": "gemini-2.5-flash",
+      "_attempts": 1
+    },
+    "seo": {
+      "meta_description": "Learn how to write a polite refund request email quickly with Cohere's prompt library and send a polished message in under a minute",
+      "keywords": [
+        "refund request email",
+        "Cohere prompt library",
+        "polite email template",
+        "quick refund request",
+        "email writing tips"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add a step-by-step example of filling in the blanks for the refund request prompt",
+        "Emphasize the benefits of using Cohere's prompt library for everyday tasks",
+        "Include a brief explanation of how Cohere's prompts can save time and improve email writing skills"
+      ],
+      "optimised_at": "2026-07-15T01:24:09.385Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Write a polite refund request email in 30 seconds with Cohere’s prompt library\"\nsubtitle: \"Pick a ready-made prompt from Cohere’s library, fill in the blanks, and send a polished refund request in under a minute.\"\ncategory: \"guide\"\naudience: \"both\"\ncompany: \"Cohere\"\ntool: \"Cohere\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"getting-started\", \"cohere\", \"email\"]\n---\n\n# Write a polite refund request email in 30 seconds\n\n**Hook:**\nYou’ve just bought something online and it’s not quite right. Instead of writing a long, frustrated message, you’ll use Cohere’s ready-made prompt to craft a clear, polite refund request in under a minute.\n\n## Before you start\n- A free Cohere account (sign up at [cohere.com](https://cohere.com)).\n- A device with internet and an email app.\n- 2 minutes of your time.\n\n## Step 1 — Open Cohere’s prompt library\nGo to [cohere.com](https://cohere.com) and sign in. On the homepage, look for a button like **Prompt Library** or **Explore Prompts** near the top menu. Tap it.\nYou’ll land on a page full of ready-made prompts for different tasks.\nIf you don’t see “Prompt Library,” look for a search bar or a menu with words like **Templates** or **Examples**.\nYou’ll know it worked when you see a grid of prompts with titles like “Write a polite email” or “Draft a refund request.”\n\n💬 Example:\nClick the prompt titled **Write a polite refund request email**.\n\n## Step 2 — Fill in the blanks\nOpen the refund prompt. You’ll see placeholders like **Order number**, **Product name**, and **Reason for return**.\nReplace each placeholder with your real details. For example:\n- Order number → **ORD-2024-0567**\n- Product name → **Wireless Bluetooth Headphones**\n- Reason for return → **The left earbud doesn’t charge**\nIf a placeholder isn’t needed, just leave it blank.\nYou’ll know it worked when the prompt now shows your real order number and product name instead of the placeholders.\n\n💬 Example:\nReplace:\n```\nOrder number: [ORDER_NUMBER]\nProduct name: [PRODUCT_NAME]\nReason for return: [REASON]\n```\nwith:\n```\nOrder number: ORD-2024-0567\nProduct name: Wireless Bluetooth Headphones\nReason for return: The left earbud doesn’t charge\n```\n\n## Step 3 — Generate the email\nScroll to the bottom of the prompt and look for a button like **Generate** or **Run**. Tap it.\nCohere will create a draft email in a new window or panel.\nIf the button says **Try again** or **Regenerate**, tap it once if the first draft isn’t quite right.\nYou’ll know it worked when you see a full, polite email ready to copy.\n\n💬 Example:\nThe draft might look like:\n```\nSubject: Request for refund – Order ORD-2024-0567\n\nDear Customer Support,\n\nI hope this message finds you well. I am writing regarding my recent purchase of Wireless Bluetooth Headphones (Order ORD-2024-0567). Unfortunately, the left earbud does not charge, which prevents me from using the product as intended.\n\nCould you please process a refund for this item? I would be grateful for your assistance.\n\nThank you for your time and support.\n\nBest regards,\nMaria Chen\n```\n\n## Step 4 — Copy and send\nHighlight the whole email and copy it (Ctrl+C or Cmd+C). Open your email app and start a new message to the store’s support address.\nPaste the text into the email body. Add your own email address in the **To** field and a subject like **Refund request – Order ORD-2024-0567**.\nIf the store’s support address isn’t in the prompt, look for a “Contact us” link on their website.\nYou’ll know it worked when the email is ready to send with your details and the store’s address filled in.\n\n💬 Example:\nTo: support@headphonestore.com.au\nSubject: Refund request – Order ORD-2024-0567\nBody: (paste the generated text)\n\n## Step 5 — Send and follow up\nSend the email. Keep an eye on your inbox for a reply.\nIf you don’t hear back within two business days, send a short follow-up email with the same subject line and a polite note like “Following up on my refund request sent on [date].”\nYou’ll know it worked when you receive a confirmation or update from the store.\n\n## Common mistakes\n- **Leaving placeholders in the email** → Always replace every placeholder with your real details before generating.\n- **Skipping the subject line** → Add a clear subject like “Refund request – Order ORD-2024-0567” so the store can route your message quickly.\n- **Sending without proof** → Attach a photo of the faulty item or a screenshot of the order confirmation if the store asks for evidence.\n\n## What this means for you\n- **In everyday life:** Next time an online order isn’t right, you’ll have a polite, ready-to-send refund request ready in under a minute.\n- **For your business or work:** If you handle customer service, you can use this prompt to draft consistent, professional refund emails quickly.\n- **If you're just getting started:** Start with one prompt, fill in the blanks, and send your first request today.\n\n## Try it now\nOpen [cohere.com](https://cohere.com), find the **Prompt Library**, open the **Write a polite refund request email** prompt, fill in your order number and product name, and tap **Generate**. Copy the email and send it to the store’s support address.",
+  "original_title": "Write a polite refund request email in 30 seconds with Cohere’s prompt library"
+}
