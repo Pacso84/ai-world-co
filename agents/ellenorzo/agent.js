@@ -629,7 +629,18 @@ Original title: ${writerData.original_title}
         console.log(`   🛡️  HITELESSÉG-BLOKK: ${rejectedName} — ${gate.blockers[0]?.slice(0, 90)}\n`);
         stats.truth_blocked = (stats.truth_blocked || 0) + 1;
         logGate({ file: writerFilename, action: 'block', reasons: gate.blockers });
-        try { remember('shared', `Hitelesség-kapu blokk: ${(gate.blockers[0] || '').slice(0, 150)} — kitalált felületet/linket/számot SOHA ne írj le tényként`); } catch { /* lecke-hiba nem állít meg */ }
+        // Lecke a KÖZÖSBE (mindenki lássa) + a SZERZŐ saját rekeszébe STABIL
+        // szöveggel (2026-07-16, user: "külön memóriája... ne essenek bele
+        // mindig ugyanabba a hibába") — ismétlődéskor erősödik, nem duplikálódik.
+        try {
+          remember('shared', `Hitelesség-kapu blokk: ${(gate.blockers[0] || '').slice(0, 150)} — kitalált felületet/linket/számot SOHA ne írj le tényként`);
+          const authorScope = writerData._meta?.type === 'guide' ? 'guide' : 'iro';
+          const isLink = (gate.blockers[0] || '').startsWith('Halott');
+          remember(authorScope, isLink
+            ? 'Halott vagy kitalált linket írtál cikkbe — linket csak hivatalos, ellenőrzött helyről (tool-links.json) szabad használni.'
+            : 'A hitelesség-bíró kitalált állítást fogott (felület/gomb/modellnév/ár) — csak a forrásban igazolt, valóban létező dolgot írj le tényként.',
+            { tags: ['truth-gate'] });
+        } catch { /* lecke-hiba nem állít meg */ }
         continue;
       }
       if (gate.warnings.length) console.log(`   ⚠️  kapu-figyelmeztetés (nem blokkol): ${gate.warnings[0].slice(0, 90)}`);

@@ -64,6 +64,7 @@ ${skillsBlock('seo')}
 
 Produce the SEO JSON.`;
   // retry max 2x (a rövid/hibás JSON ellen)
+  let gotResponse = false;
   for (let i = 1; i <= 2; i++) {
     const r = await ask(prompt, { agentName: AGENT_NAME, systemPrompt: SEO_SYSTEM_PROMPT, maxTokens: 500, jsonMode: true });
     if (!r) continue;
@@ -74,6 +75,11 @@ Produce the SEO JSON.`;
       const j = JSON.parse(t);
       if (j.meta_description) return { ...j, _cost: r.costUsd };
     } catch { /* retry */ }
+    gotResponse = true;
+  }
+  // Saját lecke, ha volt válasz, de kétszer sem lett érvényes (stabil — 2026-07-16)
+  if (gotResponse) {
+    try { const { remember } = await import('../../core/memory-manager.js'); remember(AGENT_NAME, 'Az SEO-válasz két próbából sem lett érvényes JSON (meta_description hiányzott) — a kimeneti sémát szó szerint kell követni.', { tags: ['parse-fail'] }); } catch { /* nem állít meg */ }
   }
   return null;
 }

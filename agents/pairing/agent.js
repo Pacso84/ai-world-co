@@ -130,6 +130,10 @@ Decide if it deserves a paired how-to guide. Output ONLY the JSON.`;
     const s = t.indexOf('{'), e = t.lastIndexOf('}');
     if (s >= 0 && e >= 0) { try { parsed = JSON.parse(t.slice(s, e + 1)); } catch {} }
   }
+  // Saját lecke, ha VOLT válasz, de értelmezhetetlen (stabil szöveg — 2026-07-16)
+  if (response?.text && !parsed) {
+    try { const { remember } = await import('../../core/memory-manager.js'); remember(AGENT_NAME, 'A párosító-válasz JSON-ja értelmezhetetlen volt — szigorúan a kért {"worthy":...} sémát kell kérni, felesleges szöveg nélkül.', { tags: ['parse-fail'] }); } catch { /* nem állít meg */ }
+  }
   // GÉPI kanonizálás: a prompt-szabályt az AI néha átlépi ("NVIDIA ChatRTX",
   // 2026-07-13) — a cégnév-előtagot kód vágja le, kivétel-listával.
   if (parsed?.tool) parsed.tool = canonicalChip(parsed.tool, parsed.company);

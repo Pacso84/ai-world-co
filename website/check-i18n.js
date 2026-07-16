@@ -98,6 +98,12 @@ for (const lang of LANGS) {
       if (mHits >= 2) {
         console.log(`⚠️  [${lang}] MEGSZÓLÍTÁS-TÖRÉS GYANÚ (${mHits} jel — norma: hu=tegezés/de=du/es=tú/fr=vous): ${short}`);
         chromeHits++;
+        // A Fordító SAJÁT leckéje (stabil szöveg nyelvenkénti változatban,
+        // ismétlődésnél erősödik — 2026-07-16, "külön memória minden agentnek")
+        try {
+          const { remember } = await import('../core/memory-manager.js');
+          remember('translator', `[${lang}] Megszólítás-törés szökött át a kész oldalra — a norma (hu=tegezés, de=du, es=tú, fr=vous) KÖTELEZŐ, cikken belül keverni tilos.`, { tags: ['formality'] });
+        } catch { /* az őrszem hibája nem állítja meg a buildet */ }
       }
     }
   }

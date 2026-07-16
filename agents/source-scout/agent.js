@@ -198,6 +198,8 @@ async function getCandidateOrgs(coverage) {
     }
   }
   console.log('⚠️  3 próba után sem sikerült érvényes listát kapni.');
+  // Saját lecke (stabil szöveg — 2026-07-16, "külön memória minden agentnek")
+  try { const { remember } = await import('../../core/memory-manager.js'); remember(AGENT_NAME, 'A forrás-lista 3 próbából sem lett érvényes JSON-tömb — kevesebb elemet és szigorú tömb-formát kell kérni.', { tags: ['parse-fail'] }); } catch { /* nem állít meg */ }
   return { orgs: [], cost: totalCost };
 }
 

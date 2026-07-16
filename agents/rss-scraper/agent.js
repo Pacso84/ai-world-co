@@ -346,6 +346,8 @@ async function main() {
 
     if (!ok || !Array.isArray(results)) {
       console.log(`   ❌ Batch hiba: ${error || 'AI router elesett vagy nem tömböt adott'} — ezek a cikkek később újra`);
+      // Saját lecke STABIL szöveggel (ismétlődéskor erősödik) — 2026-07-16
+      try { const { remember } = await import('../../core/memory-manager.js'); remember(AGENT_NAME, 'A relevancia-válasz nem volt tömbként értelmezhető és a köteg kimaradt — a {"decisions":[...]} boríték-formátumot kell kérni és kikényszeríteni.', { tags: ['parse-fail'] }); } catch { /* lecke-hiba nem állít meg */ }
       // NEM jelöljük látottnak -> legközelebb újra próbáljuk
       continue;
     }

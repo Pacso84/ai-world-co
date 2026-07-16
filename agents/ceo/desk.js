@@ -117,6 +117,8 @@ async function decideNews(x) {
     m.can_retry = false; m.ceo_decision = 'unsalvageable';
     writeFileSync(join(REJECTED_DIR, f), JSON.stringify(d, null, 2), 'utf-8');
     remember('shared', `Főnöki döntés: "${(d.original_title || '').slice(0, 50)}" ${MAX_CEO_ROUNDS} főnöki kör után sem ment át — az ilyen témához korábban kell jobb forrást választani.`);
+    // Az ÍRÓ saját rekeszébe is, STABIL szöveggel (ismétlődésnél erősödik — 2026-07-16)
+    remember(d._meta?.type === 'guide' ? 'guide' : 'iro', 'Egy cikk az összes újraírási és főnöki kört elbukta — ha a forrás sovány vagy zavaros, már az ELSŐ vázlatnál jelezd vissza, ne told tovább.', { tags: ['desk'] });
     deskLog(`Menthetetlen (${MAX_CEO_ROUNDS} főnöki kör után), lezárva: "${(d.original_title || f).slice(0, 60)}"`);
     return;
   }
