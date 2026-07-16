@@ -129,8 +129,28 @@ function checkDupLinks() {
   return out;
 }
 
+// SLUG-ÜTKÖZÉS-ŐR (2026-07-16): ha két cikk EN címe ugyanarra a slugra képződik,
+// a build EGYMÁSRA ÍRJA őket (a Together-hír és a belőle párosított guide azonos
+// címet kapott → nyelvenként hol az egyik, hol a másik látszott). Nem javítható
+// gépi biztonsággal (címet AI-nak/embernek kell adnia) → őr-találat, Telegramra.
+function checkSlugCollisions() {
+  const slugify = (t) => t.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 70);
+  const seen = new Map();
+  const out = [];
+  for (const f of readdirSync(ARTICLES_DIR).filter(x => x.endsWith('.json'))) {
+    try {
+      const d = JSON.parse(readFileSync(join(ARTICLES_DIR, f), 'utf-8'));
+      const title = ((d.article_markdown || '').match(/^title:\s*["']?(.+?)["']?\s*$/m) || [])[1] || d.original_title || f;
+      const slug = slugify(title);
+      if (seen.has(slug)) out.push(`SLUG-ÜTKÖZÉS: "${title.slice(0, 50)}" — ${f.slice(0, 40)} és ${seen.get(slug).slice(0, 40)} egymásra épül!`);
+      else seen.set(slug, f);
+    } catch { /* hibás fájl nem az őr dolga */ }
+  }
+  return out;
+}
+
 export function qualityFindings() {
-  try { return [...checkChips(), ...checkDupLinks()]; }
+  try { return [...checkChips(), ...checkDupLinks(), ...checkSlugCollisions()]; }
   catch (e) { return ['MINŐSÉG-ŐR HIBA: ' + e.message.slice(0, 80)]; }
 }
 
