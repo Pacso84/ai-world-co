@@ -1587,8 +1587,24 @@ function parseGuideSections(bodyMd) {
 // egy szekció HTML-je: a 💬 példákat (külön soron) kiemelt dobozba tesszük
 function guideSectionHtml(bodyMd) {
   // a 💬-vel kezdődő sorokat markdown ELŐTT blokk-szintű dobozzá alakítjuk
-  // (1) csak-címke 💬 sor ("💬 **Példa prompt:**") → fűzzük hozzá a következő sort
-  let pre = (bodyMd || '').replace(/^([ \t>]*💬[^\n]*:\*{0,2})[ \t]*\n+[ \t]*(?=\S)/gm, '$1 ');
+  // (0) 💬 címke + KÖZVETLEN kódblokk → TÖBBSOROS példa-doboz (2026-07-16,
+  // user-lelet: a ```text jelölő szó szerint látszott a dobozban 152 oldalon —
+  // az (1) szabály a kerítés-sort ragasztotta a címkéhez, és a pár nélkül
+  // maradt záró ``` a doboz utáni szöveget kódblokká nyelte)
+  let pre = (bodyMd || '').replace(
+    /^[ \t>]*💬[ \t]*(?:\*\*[^*\n]{1,40}\*\*[ \t]*:?[ \t]*|(?:example|p[ée]lda(?:[ \t]*prompt)?|ejemplo|beispiel|exemple)[ \t]*:?[ \t]*)?[ \t]*\n+[ \t]*```[^\n]*\n([\s\S]*?)\n[ \t]*```[ \t]*$/gmi,
+    (m, body) => {
+      // behúzott kerítés-tartalom (van író, aki 4 szóközzel tolja) → kihúzzuk
+      body = body.replace(/^[ \t]{1,8}/gm, '');
+      const isPrompt = /^[„“"'«‘]/.test(body.trim());
+      const lbl = isPrompt ? tr('tryTyping') : tr('exampleLabel');
+      const send = isPrompt ? '<span class="g-prompt__send">➤</span>' : '';
+      const content = escapeHtml(body).replace(/\n/g, '<br>');
+      return '\n\n<div class="g-prompt"><span class="g-prompt__lbl">💬 ' + lbl + '</span><span class="g-prompt__box">' + content + send + '</span></div>\n\n';
+    });
+  // (1) csak-címke 💬 sor ("💬 **Példa prompt:**") → fűzzük hozzá a következő
+  // sort (kód-kerítést SOHA — azt a (0) kezeli)
+  pre = pre.replace(/^([ \t>]*💬[^\n]*:\*{0,2})[ \t]*\n+[ \t]*(?=[^\s`])/gm, '$1 ');
   // (2) többnyelvű címke leszedése (Example/Példa/Ejemplo/Beispiel/Exemple, félkövérrel is)
   pre = pre.replace(/^[ \t>]*💬[ \t]*(?:\*\*[^*\n]{1,40}\*\*[ \t]*:?[ \t]*|(?:example|p[ée]lda(?:[ \t]*prompt)?|ejemplo|beispiel|exemple)[ \t]*:?[ \t]*)?(.+)$/gmi,
     (m, txt) => {
