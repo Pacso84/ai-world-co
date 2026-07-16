@@ -27,6 +27,7 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { ask } from '../../core/ai-router.js';
 import { remember } from '../../core/memory-manager.js';
+import { truthGate, logGate } from '../../core/truth-gate.js';
 import { message, resolveNeed } from '../../core/ops.js';
 import { skillsBlock } from '../../core/skills.js';
 
@@ -607,7 +608,31 @@ Original title: ${writerData.original_title}
     }
     const finalPass = aiReviewResult.decision === 'PASS' && aiReviewResult.overall_score >= MIN_PASSING_SCORE && clarityOk;
 
+    // HITELESSÉG-KAPU (2026-07-16, user: "ne legyen hallucináció publikálva"):
+    // a minőségben átment cikk UTOLSÓ szűrője — halott/kitalált link vagy az
+    // AI-bíró által fogott kitalált állítás = NEM publikálódik. AI-hiba = HOLD:
+    // a piszkozat marad, a következő futás újrapróbálja.
     if (finalPass) {
+      const gate = await truthGate(writerData, { ask });
+      stats.total_cost_usd += gate.cost || 0;
+      if (!gate.pass && gate.hold) {
+        console.log(`   ⏸️  VISSZATARTVA (hitelesség-bíró nem elérhető): ${gate.blockers[0] || ''}\n`);
+        stats.truth_held = (stats.truth_held || 0) + 1;
+        logGate({ file: writerFilename, action: 'hold', reasons: gate.blockers });
+        continue; // marad a drafts-ban
+      }
+      if (!gate.pass) {
+        aiReviewResult.decision = 'FAIL';
+        aiReviewResult.issues = gate.blockers.slice(0, 4);
+        aiReviewResult.verdict = 'Hitelesség-kapu blokkolta: ' + (gate.blockers[0] || '').slice(0, 200);
+        const rejectedName = moveToRejected(writerFilename, writerData, autoCheckResult, aiReviewResult);
+        console.log(`   🛡️  HITELESSÉG-BLOKK: ${rejectedName} — ${gate.blockers[0]?.slice(0, 90)}\n`);
+        stats.truth_blocked = (stats.truth_blocked || 0) + 1;
+        logGate({ file: writerFilename, action: 'block', reasons: gate.blockers });
+        try { remember('shared', `Hitelesség-kapu blokk: ${(gate.blockers[0] || '').slice(0, 150)} — kitalált felületet/linket/számot SOHA ne írj le tényként`); } catch { /* lecke-hiba nem állít meg */ }
+        continue;
+      }
+      if (gate.warnings.length) console.log(`   ⚠️  kapu-figyelmeztetés (nem blokkol): ${gate.warnings[0].slice(0, 90)}`);
       const articleName = moveToArticles(writerFilename, writerData, autoCheckResult, aiReviewResult);
       console.log(`   ✅ PUBLIKÁLVA: ${articleName}\n`);
       stats.passed++;
@@ -643,6 +668,8 @@ Original title: ${writerData.original_title}
   console.log(`   Ellenőrzött: ${stats.total}`);
   console.log(`   ✅ Publikálva: ${stats.passed}`);
   console.log(`   ❌ Elutasítva: ${stats.failed}`);
+  if (stats.truth_blocked) console.log(`   🛡️  Hitelesség-blokk: ${stats.truth_blocked}`);
+  if (stats.truth_held) console.log(`   ⏸️  Visszatartva (bíró nem elérhető): ${stats.truth_held}`);
   console.log(`      • Auto-check fail: ${stats.auto_check_failed}`);
   console.log(`      • AI fail: ${stats.failed - stats.auto_check_failed}`);
   console.log(`   AI költség: $${stats.total_cost_usd.toFixed(4)}`);

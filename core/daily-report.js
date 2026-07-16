@@ -170,6 +170,17 @@ async function main() {
     const tf = flog[today()] || [];
     if (tf.length) lines.push(`🔧 Önjavító: ${tf.length} hibát magamtól kijavítottam (pl. ${tf[0].slice(0, 60)}…)`);
   } catch { /* még nincs javítás-napló */ }
+  // HITELESSÉG-KAPU összegzés (2026-07-16): mit fogott a publikálás előtti
+  // hallucináció-szűrő — blokk = rejected-be ment, hold = bíró-hiba, várakozik.
+  try {
+    const tlog = JSON.parse(readFileSync(join(ROOT, 'memory', 'truth-gate-log.json'), 'utf-8'));
+    const tt = tlog[today()] || [];
+    const blocked = tt.filter(x => x.action === 'block'), held = tt.filter(x => x.action === 'hold');
+    if (blocked.length || held.length) {
+      const sample = (blocked[0] || held[0])?.reasons?.[0] || '';
+      lines.push(`🛡️ Hitelesség-kapu: ${blocked.length} blokkolva · ${held.length} visszatartva (pl. ${sample.slice(0, 70)}…)`);
+    }
+  } catch { /* még nincs kapu-napló */ }
   // MAKE-ŐRSZEM (2026-07-15, a 9 napos néma FB-leállás tanulsága): a webhook
   // válaszából NEM látszik, ha a Make-forgatókönyv áll (200-zal nyeli a sorba) —
   // ezért közvetlenül a Make API-tól kérdezzük. Csak BAJ esetén szól.

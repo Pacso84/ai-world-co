@@ -338,6 +338,20 @@
       },
       "enabled": false,
       "comment": "Orbit heti video-bemondo: ~150 szavas beszelt szkript a heti digestbol (vasarnap), TTS: ingyenes Edge en-AU Natasha. Free-first. enabled:false = FEJLESZTES ALATT (user 2026-07-11: 'nem menjen elesbe') — a felhoben kihagyja magat; helyi teszt --force-szal megy. Elesites: enabled:true."
+    },
+    "truth": {
+      "primary_model": {
+        "provider": "google",
+        "model": "gemini-2.5-flash"
+      },
+      "fallback_model": {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m3"
+      },
+      "enabled": true,
+      "comment": "HITELESSÉG-KAPU (user-döntés 2026-07-16, 'mindig fizetős'): publikálás előtti hallucináció-bíró az Ellenőrzőben. AUGUSZTUS 1: a többi tartalmi agenttel együtt MiniMax-elsődlegesre vált.",
+      "routing": "paid-only",
+      "_routing_comment": "CSAK fizetős: ez az utolsó kapu a olvasó előtt — itt nem spórolunk"
     }
   },
   "providers": {
