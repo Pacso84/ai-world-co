@@ -1,0 +1,27 @@
+{
+  "started_at": "2026-07-16T19:50:51.658Z",
+  "total": 2,
+  "passed": 1,
+  "failed": 1,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.008980799999999999,
+  "by_article": [
+    {
+      "writer": "WRITER_GUIDE_build-a-simple-chatbot-for-your-small-business-site-with-coh.json",
+      "rejected": "REJECTED_GUIDE_build-a-simple-chatbot-for-your-small-business-site-with-coh.json",
+      "decision": "FAIL",
+      "score": 3,
+      "cost_usd": 0.0044193999999999995
+    },
+    {
+      "writer": "WRITER_GUIDE_getting-started-cohere.json",
+      "article": "ARTICLE_GUIDE_getting-started-cohere.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.004561399999999999
+    }
+  ],
+  "finished_at": "2026-07-16T19:51:11.203Z",
+  "duration_seconds": 19.545
+}

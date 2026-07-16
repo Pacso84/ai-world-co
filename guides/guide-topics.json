@@ -2660,6 +2660,62 @@
       "priority": "balance",
       "proposed_at": "2026-07-16T01:35:24.291Z",
       "proposed_by": "guide-balance"
+    },
+    {
+      "id": "summarise-a-long-pdf-into-5-bullet-points-with-claude",
+      "company": "Anthropic",
+      "tool": "Claude",
+      "title": "Summarise a long PDF into 5 bullet points with Claude",
+      "angle": "Upload a PDF to Claude and ask for a short, plain-English summary — no technical setup, works in the free chat.",
+      "audience": "both",
+      "level": "beginner",
+      "status": "todo",
+      "icon": "🤖",
+      "priority": "balance",
+      "proposed_at": "2026-07-16T19:50:51.232Z",
+      "proposed_by": "fact-check-reseed"
+    },
+    {
+      "id": "write-a-polite-refund-request-email-with-chatgpt",
+      "company": "OpenAI",
+      "tool": "ChatGPT",
+      "title": "Write a polite refund request email in 2 minutes with ChatGPT",
+      "angle": "Describe your purchase problem to ChatGPT and get a firm but polite refund email you can copy straight into your mail app.",
+      "audience": "both",
+      "level": "beginner",
+      "status": "todo",
+      "icon": "🤖",
+      "priority": "balance",
+      "proposed_at": "2026-07-16T19:50:51.232Z",
+      "proposed_by": "fact-check-reseed"
+    },
+    {
+      "id": "turn-a-messy-product-review-into-a-polished-testimonial-with",
+      "company": "Google",
+      "tool": "Gemini",
+      "title": "Turn a messy product review into a polished testimonial with Gemini",
+      "angle": "Paste a rough customer review into Gemini and reshape the tone and length with follow-up prompts — no special tools needed.",
+      "audience": "both",
+      "level": "beginner",
+      "status": "todo",
+      "icon": "🤖",
+      "priority": "balance",
+      "proposed_at": "2026-07-16T19:50:51.232Z",
+      "proposed_by": "fact-check-reseed"
+    },
+    {
+      "id": "summarise-a-long-chat-thread-into-3-bullet-points-with-copil",
+      "company": "Microsoft",
+      "tool": "Copilot",
+      "title": "Summarise a long chat thread into 3 bullet points with Copilot",
+      "angle": "Paste a long group-chat or email thread into Copilot in the browser and get just the decisions and action points.",
+      "audience": "both",
+      "level": "beginner",
+      "status": "todo",
+      "icon": "🤖",
+      "priority": "balance",
+      "proposed_at": "2026-07-16T19:50:51.232Z",
+      "proposed_by": "fact-check-reseed"
     }
   ]
 }

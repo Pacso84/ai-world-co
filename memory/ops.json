@@ -483,86 +483,6 @@
   ],
   "notifications": [
     {
-      "id": "n178321693861631",
-      "level": "info",
-      "text": "SEO: 4 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-07-05T02:02:18.616Z",
-      "loud": false
-    },
-    {
-      "id": "n17832172303472",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). Our latest line-up is looking great, with a cohesive mix of practical AI applications for everyday tasks and study/work needs. I've checked each article for completeness, voice, and accuracy, and all ",
-      "agent": "publisher",
-      "at": "2026-07-05T02:07:10.347Z",
-      "loud": false
-    },
-    {
-      "id": "n178321723223511",
-      "level": "success",
-      "text": "0 hír + 4 útmutató publikálva (költség: $0.0331).",
-      "agent": "ceo",
-      "at": "2026-07-05T02:07:12.235Z",
-      "loud": false
-    },
-    {
-      "id": "n178324577723911",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). Our line-up is coherent and ready to publish, covering a range of practical AI applications for everyday tasks. I do note that some articles may be more tech-heavy, so a gentle introduction to AI for ",
-      "agent": "publisher",
-      "at": "2026-07-05T10:02:57.240Z",
-      "loud": false
-    },
-    {
-      "id": "n178324577900153",
-      "level": "info",
-      "text": "Pipeline lefutott — ma nem volt publikálható új tartalom.",
-      "agent": "ceo",
-      "at": "2026-07-05T10:02:59.001Z",
-      "loud": false
-    },
-    {
-      "id": "n178327044500548",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). Our latest line-up is coherent and ready to go, with a great mix of practical AI applications for everyday life. I do note that some articles may benefit from a brief intro for newcomers to AI, to ens",
-      "agent": "publisher",
-      "at": "2026-07-05T16:54:05.005Z",
-      "loud": false
-    },
-    {
-      "id": "n178327044676046",
-      "level": "info",
-      "text": "Pipeline lefutott — ma nem volt publikálható új tartalom.",
-      "agent": "ceo",
-      "at": "2026-07-05T16:54:06.760Z",
-      "loud": false
-    },
-    {
-      "id": "n178328294211169",
-      "level": "info",
-      "text": "🧭 Forráskutató: 1 ÚJ megbízható forrás-javaslat (küszöb 70).\n• [100] NTT Research (hivatalos)\nJóváhagyod valamelyiket?",
-      "agent": "source-scout",
-      "at": "2026-07-05T20:22:22.111Z",
-      "loud": false
-    },
-    {
-      "id": "n178339006621565",
-      "level": "warn",
-      "text": "📨 ellenorzo → iro: Hiányos / kell még adat: \"Contextual Policies in Omnigent: Using session state to better govern AI agents\" — egészítsd k",
-      "agent": "ellenorzo",
-      "at": "2026-07-07T02:07:46.215Z",
-      "loud": false
-    },
-    {
-      "id": "n178339036441343",
-      "level": "info",
-      "text": "SEO: 15 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-07-07T02:12:44.413Z",
-      "loud": false
-    },
-    {
       "id": "n178339139546531",
       "level": "success",
       "text": "Kiadás kész (10 cikk). I'm delighted to confirm that our line-up is coherent and ready for publication, with a great balance of practical tips and introductions to AI tools that will resonate with our everyday audience. One",
@@ -1281,144 +1201,89 @@
       "agent": "ceo",
       "at": "2026-07-16T17:11:27.776Z",
       "loud": false
+    },
+    {
+      "id": "n178423123628868",
+      "level": "info",
+      "text": "📨 fact-check → team: Levettem (tárgytalan): \"Summarise a 20-page PDF policy document into 5 bul\" — Cohere's free web summarization tool no lo",
+      "agent": "fact-check",
+      "at": "2026-07-16T19:47:16.288Z",
+      "loud": false
+    },
+    {
+      "id": "n17842312362915",
+      "level": "warn",
+      "text": "📨 fact-check → human: Útmutató levéve, mert valótlanná vált: \"Summarise a 20-page PDF policy document into 5 bul\" — Cohere's free web summariz",
+      "agent": "fact-check",
+      "at": "2026-07-16T19:47:16.291Z",
+      "loud": false
+    },
+    {
+      "id": "n178423127063183",
+      "level": "info",
+      "text": "📨 fact-check → team: Levettem (tárgytalan): \"Summarise a long Slack thread into 3 bullet points\" — The entire guide is based on a specific Co",
+      "agent": "fact-check",
+      "at": "2026-07-16T19:47:50.631Z",
+      "loud": false
+    },
+    {
+      "id": "n178423127063462",
+      "level": "warn",
+      "text": "📨 fact-check → human: Útmutató levéve, mert valótlanná vált: \"Summarise a long Slack thread into 3 bullet points\" — The entire guide is based ",
+      "agent": "fact-check",
+      "at": "2026-07-16T19:47:50.634Z",
+      "loud": false
+    },
+    {
+      "id": "n178423132729421",
+      "level": "info",
+      "text": "📨 fact-check → team: Levettem (tárgytalan): \"Turn a messy product review into a polished custom\" — The guide describes a dedicated 'Rewrite t",
+      "agent": "fact-check",
+      "at": "2026-07-16T19:48:47.294Z",
+      "loud": false
+    },
+    {
+      "id": "n178423132729718",
+      "level": "warn",
+      "text": "📨 fact-check → human: Útmutató levéve, mert valótlanná vált: \"Turn a messy product review into a polished custom\" — The guide describes a dedi",
+      "agent": "fact-check",
+      "at": "2026-07-16T19:48:47.297Z",
+      "loud": false
+    },
+    {
+      "id": "n178423133874780",
+      "level": "info",
+      "text": "📨 fact-check → team: Levettem (tárgytalan): \"Write a polite refund request email in 30 seconds \" — The core feature described in the guide – ",
+      "agent": "fact-check",
+      "at": "2026-07-16T19:48:58.747Z",
+      "loud": false
+    },
+    {
+      "id": "n178423133874960",
+      "level": "warn",
+      "text": "📨 fact-check → human: Útmutató levéve, mert valótlanná vált: \"Write a polite refund request email in 30 seconds \" — The core feature described",
+      "agent": "fact-check",
+      "at": "2026-07-16T19:48:58.749Z",
+      "loud": false
+    },
+    {
+      "id": "n178423137783381",
+      "level": "info",
+      "text": "📨 fact-check → team: Levettem (tárgytalan): \"How to Use OpenAI GPT-5.6 in Snowflake Cortex AI f\" — The guide's core instruction set relies on",
+      "agent": "fact-check",
+      "at": "2026-07-16T19:49:37.833Z",
+      "loud": false
+    },
+    {
+      "id": "n178423137783686",
+      "level": "warn",
+      "text": "📨 fact-check → human: Útmutató levéve, mert valótlanná vált: \"How to Use OpenAI GPT-5.6 in Snowflake Cortex AI f\" — The guide's core instructi",
+      "agent": "fact-check",
+      "at": "2026-07-16T19:49:37.836Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178402238123059",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Production-grade AI agents for financial compliance: Lessons from Stripe\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers.; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
-      "ref": "2026-06-27T02-07-24-542Z_aws-ml_Production-grade_AI_agents_for_financial_complianc.json",
-      "at": "2026-07-14T09:46:21.230Z"
-    },
-    {
-      "id": "m17840223898436",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Costa Rican dairy cooperative turns AI agents into coworkers\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers.; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
-      "ref": "2026-06-29T02-29-25-987Z_microsoft-ai_Costa_Rican_dairy_cooperative_turns_AI_agents_into.json",
-      "at": "2026-07-14T09:46:29.843Z"
-    },
-    {
-      "id": "m178402239854437",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Work smarter in 90 days: A real-world guide to using AI\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers.; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
-      "ref": "2026-06-29T02-29-25-987Z_microsoft-ai_Work_smarter_in_90_days__A_real-world_guide_to_usi.json",
-      "at": "2026-07-14T09:46:38.544Z"
-    },
-    {
-      "id": "m178402240859770",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Create fully native and editable presentations with Gemini in Google Slides\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers.; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
-      "ref": "2026-06-30T16-43-13-543Z_google-workspace_Create_fully_native_and_editable_presentations_wit.json",
-      "at": "2026-07-14T09:46:48.597Z"
-    },
-    {
-      "id": "m178402241902291",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"New AI-powered library lets people meet Theodore Roosevelt in a whole new way \" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Add more specific examples and details about the AI-powered library's capabilities and user experience to make the article more engaging and informative; Re",
-      "ref": "2026-07-01T17-46-16-620Z_microsoft-ai_New_AI-powered_library_lets_people_meet_Theodore_R.json",
-      "at": "2026-07-14T09:46:59.022Z"
-    },
-    {
-      "id": "m178402242712311",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"How Cara pioneers domain-specific AI for enterprise insurance brokerages with AWS\" — mi a baj: Salvaged from a partial AI response.",
-      "ref": "2026-06-27T02-07-24-542Z_aws-ml_How_Cara_pioneers_domain-specific_AI_for_enterpris.json",
-      "at": "2026-07-14T09:47:07.123Z"
-    },
-    {
-      "id": "m178402243487328",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Production-grade AI agents for financial compliance: Lessons from Stripe\" — mi a baj: Clarity of Step 1 for beginners; Guide lacks actionable steps to enable agents within platforms",
-      "ref": "2026-06-27T02-07-24-542Z_aws-ml_Production-grade_AI_agents_for_financial_complianc.json",
-      "at": "2026-07-14T09:47:14.873Z"
-    },
-    {
-      "id": "m17840224421965",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Costa Rican dairy cooperative turns AI agents into coworkers\" — mi a baj: Salvaged from a partial AI response.",
-      "ref": "2026-06-29T02-29-25-987Z_microsoft-ai_Costa_Rican_dairy_cooperative_turns_AI_agents_into.json",
-      "at": "2026-07-14T09:47:22.196Z"
-    },
-    {
-      "id": "m178402244986734",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Work smarter in 90 days: A real-world guide to using AI\" — mi a baj: Salvaged from a partial AI response.",
-      "ref": "2026-06-29T02-29-25-987Z_microsoft-ai_Work_smarter_in_90_days__A_real-world_guide_to_usi.json",
-      "at": "2026-07-14T09:47:29.867Z"
-    },
-    {
-      "id": "m17840224573880",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Create fully native and editable presentations with Gemini in Google Slides\" — mi a baj: Salvaged from a partial AI response.",
-      "ref": "2026-06-30T16-43-13-543Z_google-workspace_Create_fully_native_and_editable_presentations_wit.json",
-      "at": "2026-07-14T09:47:37.388Z"
-    },
-    {
-      "id": "m178402246774633",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"New AI-powered library lets people meet Theodore Roosevelt in a whole new way \" (?/10)",
-      "ref": "2026-07-01T17-46-16-620Z_microsoft-ai_New_AI-powered_library_lets_people_meet_Theodore_R.json",
-      "at": "2026-07-14T09:47:47.746Z"
-    },
-    {
-      "id": "m178402247917071",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Summarise a long Slack thread into 3 bullet points using Cohere\" — javítva: Beginner clarity too low (5/10): steps are vague or could mislead a first-time user; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
-      "ref": "GUIDE_summarise-a-long-slack-thread-into-3-bullet-points-using-coh.json",
-      "at": "2026-07-14T09:47:59.170Z"
-    },
-    {
-      "id": "m178402248804167",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Summarise a long Slack thread into 3 bullet points using Cohere\" — mi a baj: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user",
-      "ref": "GUIDE_summarise-a-long-slack-thread-into-3-bullet-points-using-coh.json",
-      "at": "2026-07-14T09:48:08.041Z"
-    },
-    {
-      "id": "m178402249967576",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Summarise a long Slack thread into 3 bullet points using Cohere\" — javítva: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
-      "ref": "GUIDE_summarise-a-long-slack-thread-into-3-bullet-points-using-coh.json",
-      "at": "2026-07-14T09:48:19.675Z"
-    },
-    {
-      "id": "m178402250721758",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Summarise a long Slack thread into 3 bullet points using Cohere\" (?/10)",
-      "ref": "GUIDE_summarise-a-long-slack-thread-into-3-bullet-points-using-coh.json",
-      "at": "2026-07-14T09:48:27.217Z"
-    },
     {
       "id": "m178402250863651",
       "from": "pairing",
@@ -2634,6 +2499,146 @@
       "text": "5 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
       "ref": null,
       "at": "2026-07-16T17:12:15.923Z"
+    },
+    {
+      "id": "m178423121415482",
+      "from": "fact-check",
+      "to": "ellenorzo",
+      "kind": "problem",
+      "text": "Valótlan rész egy publikált útmutatóban: \"Build a simple chatbot for your small‑business sit\" — Cohere provides a visual, drag-and-drop editor where you can design how your chatbot responds.; Cohere will automatically generate a snippet of code (HTML/JavaScript) for an embeddable widget.; Look for a \"Deploy\" or \"Embed\" option within the Cohere interface to create a web widget.",
+      "ref": "GUIDE_build-a-simple-chatbot-for-your-small-business-site-with-coh.json",
+      "at": "2026-07-16T19:46:54.155Z"
+    },
+    {
+      "id": "m178423121415883",
+      "from": "fact-check",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Eltávolítottam/lágyítottam a valótlan részt: \"Build a simple chatbot for your small‑business sit\" → visszaküldöm igazság-ellenőrzésre.",
+      "ref": "GUIDE_build-a-simple-chatbot-for-your-small-business-site-with-coh.json",
+      "at": "2026-07-16T19:46:54.158Z"
+    },
+    {
+      "id": "m17842312162836",
+      "from": "fact-check",
+      "to": "ellenorzo",
+      "kind": "problem",
+      "text": "Valótlan rész egy publikált útmutatóban: \"Getting started with Cohere: a beginner's guide\" — The free plan usually offers enough usage to follow this guide and explore.; the AI remembers your previous conversation",
+      "ref": "GUIDE_getting-started-cohere.json",
+      "at": "2026-07-16T19:46:56.283Z"
+    },
+    {
+      "id": "m178423121628548",
+      "from": "fact-check",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Eltávolítottam/lágyítottam a valótlan részt: \"Getting started with Cohere: a beginner's guide\" → visszaküldöm igazság-ellenőrzésre.",
+      "ref": "GUIDE_getting-started-cohere.json",
+      "at": "2026-07-16T19:46:56.285Z"
+    },
+    {
+      "id": "m178423123628853",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "decision",
+      "text": "Levettem (tárgytalan): \"Summarise a 20-page PDF policy document into 5 bul\" — Cohere's free web summarization tool no longer supports PDF uploads, rendering the core premise of this guide false.",
+      "ref": "ARTICLE_GUIDE_summarise-a-20-page-pdf-policy-document-into-5-bullet-points.json",
+      "at": "2026-07-16T19:47:16.288Z"
+    },
+    {
+      "id": "m178423123629194",
+      "from": "fact-check",
+      "to": "human",
+      "kind": "need",
+      "text": "Útmutató levéve, mert valótlanná vált: \"Summarise a 20-page PDF policy document into 5 bul\" — Cohere's free web summarization tool no longer supports PDF uploads, rendering the core premise of this guide false.. Dönts a sorsáról.",
+      "ref": "ARTICLE_GUIDE_summarise-a-20-page-pdf-policy-document-into-5-bullet-points.json",
+      "open": true,
+      "at": "2026-07-16T19:47:16.291Z"
+    },
+    {
+      "id": "m178423127063169",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "decision",
+      "text": "Levettem (tárgytalan): \"Summarise a long Slack thread into 3 bullet points\" — The entire guide is based on a specific Cohere summarization tool that is no longer available or accessible in the described manner.",
+      "ref": "ARTICLE_GUIDE_summarise-a-long-slack-thread-into-3-bullet-points-using-coh.json",
+      "at": "2026-07-16T19:47:50.631Z"
+    },
+    {
+      "id": "m178423127063411",
+      "from": "fact-check",
+      "to": "human",
+      "kind": "need",
+      "text": "Útmutató levéve, mert valótlanná vált: \"Summarise a long Slack thread into 3 bullet points\" — The entire guide is based on a specific Cohere summarization tool that is no longer available or accessible in the described manner.. Dönts a sorsáról.",
+      "ref": "ARTICLE_GUIDE_summarise-a-long-slack-thread-into-3-bullet-points-using-coh.json",
+      "open": true,
+      "at": "2026-07-16T19:47:50.634Z"
+    },
+    {
+      "id": "m178423132729497",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "decision",
+      "text": "Levettem (tárgytalan): \"Turn a messy product review into a polished custom\" — The guide describes a dedicated 'Rewrite tool' with specific style options (e.g., 'Customer testimonial') within the Cohere user interface, which is no longer available. While Cohere's models can perform rewriting via prompting in their Playground, the specific step-by-step UI described for a dedicated 'Rewrite' tool doe",
+      "ref": "ARTICLE_GUIDE_turn-a-messy-product-review-into-a-polished-customer-testimo.json",
+      "at": "2026-07-16T19:48:47.294Z"
+    },
+    {
+      "id": "m178423132729724",
+      "from": "fact-check",
+      "to": "human",
+      "kind": "need",
+      "text": "Útmutató levéve, mert valótlanná vált: \"Turn a messy product review into a polished custom\" — The guide describes a dedicated 'Rewrite tool' with specific style options (e.g., 'Customer testimonial') within the Cohere user interface, which is no longer available. While Cohere's models can perform rewriting via prompting in their Playground, the specific step-by-step UI described for a dedicated 'R",
+      "ref": "ARTICLE_GUIDE_turn-a-messy-product-review-into-a-polished-customer-testimo.json",
+      "open": true,
+      "at": "2026-07-16T19:48:47.297Z"
+    },
+    {
+      "id": "m178423133874797",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "decision",
+      "text": "Levettem (tárgytalan): \"Write a polite refund request email in 30 seconds \" — The core feature described in the guide – a consumer-facing 'Prompt Library' on Cohere's website with ready-made, fill-in-the-blank templates for specific tasks like writing refund requests – no longer exists on their current developer-focused platform.",
+      "ref": "ARTICLE_GUIDE_write-a-polite-refund-request-email-in-30-seconds-with-coher.json",
+      "at": "2026-07-16T19:48:58.747Z"
+    },
+    {
+      "id": "m178423133874942",
+      "from": "fact-check",
+      "to": "human",
+      "kind": "need",
+      "text": "Útmutató levéve, mert valótlanná vált: \"Write a polite refund request email in 30 seconds \" — The core feature described in the guide – a consumer-facing 'Prompt Library' on Cohere's website with ready-made, fill-in-the-blank templates for specific tasks like writing refund requests – no longer exists on their current developer-focused platform.. Dönts a sorsáról.",
+      "ref": "ARTICLE_GUIDE_write-a-polite-refund-request-email-in-30-seconds-with-coher.json",
+      "open": true,
+      "at": "2026-07-16T19:48:58.749Z"
+    },
+    {
+      "id": "m178423137783377",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "decision",
+      "text": "Levettem (tárgytalan): \"How to Use OpenAI GPT-5.6 in Snowflake Cortex AI f\" — The guide's core instruction set relies on a specific model ('GPT-5.6') and function ('CORTEX.GPT5_6') that do not appear to exist or be publicly available within Snowflake Cortex AI, rendering the entire guide misleading and unexecutable.",
+      "ref": "ARTICLE_GUIDE_how-to-use-openai-gpt-5-6-in-snowflake-cortex-ai-for-data-in.json",
+      "at": "2026-07-16T19:49:37.833Z"
+    },
+    {
+      "id": "m178423137783684",
+      "from": "fact-check",
+      "to": "human",
+      "kind": "need",
+      "text": "Útmutató levéve, mert valótlanná vált: \"How to Use OpenAI GPT-5.6 in Snowflake Cortex AI f\" — The guide's core instruction set relies on a specific model ('GPT-5.6') and function ('CORTEX.GPT5_6') that do not appear to exist or be publicly available within Snowflake Cortex AI, rendering the entire guide misleading and unexecutable.. Dönts a sorsáról.",
+      "ref": "ARTICLE_GUIDE_how-to-use-openai-gpt-5-6-in-snowflake-cortex-ai-for-data-in.json",
+      "open": true,
+      "at": "2026-07-16T19:49:37.836Z"
+    },
+    {
+      "id": "m178423145994173",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Build a simple chatbot for your small‑business site with Cohere\" — mi a baj: Beginner clarity too low (3/10): steps are vague or could mislead a first-time user",
+      "ref": "GUIDE_build-a-simple-chatbot-for-your-small-business-site-with-coh.json",
+      "at": "2026-07-16T19:50:59.941Z"
     }
   ]
 }
