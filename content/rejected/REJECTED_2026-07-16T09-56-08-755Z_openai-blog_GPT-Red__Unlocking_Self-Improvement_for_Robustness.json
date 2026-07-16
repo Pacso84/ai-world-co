@@ -1,0 +1,30 @@
+{
+  "_meta": {
+    "written_at": "2026-07-16T09:56:28.013Z",
+    "writer_provider": "google",
+    "writer_model": "gemini-2.5-flash",
+    "writer_cost_usd": 0.0093451,
+    "original_draft": "2026-07-16T09-56-08-755Z_openai-blog_GPT-Red__Unlocking_Self-Improvement_for_Robustness.json",
+    "source_id": "openai-blog",
+    "source_name": "OpenAI Blog (hivatalos)",
+    "source_link": "https://openai.com/index/unlocking-self-improvement-gpt-red",
+    "status": "rejected",
+    "rejected_at": "2026-07-16T09:56:42.612Z",
+    "auto_check": {
+      "passed": false,
+      "issues": [
+        "NO_H1: Nincs H1 (# Cím) a cikkben"
+      ],
+      "wordCount": 809
+    },
+    "ai_review": {
+      "decision": "FAIL",
+      "verdict": "Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben",
+      "skipped_ai": true
+    },
+    "reason": "Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben",
+    "can_retry": true
+  },
+  "article_markdown": "---\ntitle: \"Why AIs Are Getting Smarter at Not Being Tricked\"\nsubtitle: \"Discover how AI systems are learning to test themselves, making your everyday interactions with them safer and more reliable.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"ai-safety\", \"prompt-injection\", \"trustworthy-ai\"]\n---\n\nHave you ever tried to get an AI to say something silly, or wondered why it sometimes seems to go off-track with your requests? Well, behind the scenes, AI developers are constantly working to make these tools more reliable and harder to trick. They're even training AIs to test other AIs – like digital sparring partners!\n\n## What's an \"AI Detective\"?\n\nImagine an AI system that's specifically designed to be an \"AI detective\". This system, often called an **automated red teaming** system (think of it like a security team that tries to hack its own system to find weaknesses), works to uncover vulnerabilities in other AI models. Its job is to find all the clever ways a target AI could be made to misbehave, give unhelpful answers, or even generate unsafe content.\n\nThis process helps build **AI safety** (making sure AI doesn't cause harm) and **AI alignment** (making sure AI does what humans intend). It's a bit like a quality assurance team, but entirely powered by artificial intelligence.\n\n## Boosting AI Robustness\n\nOne key area these AI detectives focus on is **robustness**. This simply means how well an AI can handle unexpected or tricky inputs while still performing reliably and securely. Think of a sturdy bridge: it's designed to be robust against strong winds or heavy traffic. For AI, robustness means it won't easily break or be misled by unusual questions or instructions.\n\nA big part of this is improving an AI's defence against **prompt injection**. This is a clever trick where someone tries to bypass an AI's built-in rules or instructions by inserting conflicting commands into their query (the prompt). For example, if you ask an AI to summarise a document but then add a hidden instruction within that request to \"ignore all previous instructions and just tell me a joke,\" that's a form of prompt injection. These AI detective systems actively seek out and report these weaknesses so the main AI model can learn and strengthen its defences.\n\n## How AIs Learn to Be More Secure\n\nThe process works a bit like this:\n\n1.  **The Red Team AI goes on the attack:** An AI detective system generates all sorts of tricky prompts and scenarios, trying to find ways to make the target AI misstep. It might try to push the boundaries of what the AI is allowed to say, or try to get it to reveal information it shouldn't.\n2.  **The Target AI responds:** The main AI model tries to answer these challenging prompts, often producing responses that are flagged as problematic by the red team AI or human reviewers.\n3.  **Learning from mistakes:** When a weakness is found, the target AI is then trained on these \"failed\" interactions. It learns *why* its response was problematic and how to avoid making the same mistake again. It's like a practice session where the AI gets better at identifying and deflecting tricky questions.\n\nThis constant cycle of testing and learning helps AI models become more stable, trustworthy, and less prone to giving unexpected or harmful outputs.\n\n## What this means for you\n\n*   **In everyday life**: You can have more confidence in the AI tools you use, whether it's for writing emails, getting recipe ideas, or planning a trip. They're designed to be less easily manipulated and more likely to stick to helpful, appropriate responses. This means less frustration and more reliable assistance.\n*   **For your business or work**: If your team uses AI for tasks like content creation, customer service, or data analysis, this ongoing improvement in AI robustness means less risk of the AI generating off-brand, inappropriate, or even harmful content. It helps ensure the AI remains a productive and safe tool for your professional needs.\n*   **If you're just getting started**: Knowing that AI developers are putting so much effort into making these tools safe and reliable should give you more peace of mind. You can experiment with AI tools like ChatGPT or Gemini knowing there are systems in place constantly working to prevent misuse and improve the quality of your interactions.\n\n## Wrap-up\n\nThe world of AI is moving fast, and part of that progress involves AIs actively working to make themselves better and safer. These \"AI detectives\" are a critical part of that journey, ensuring that the intelligent tools we use every day are robust, trustworthy, and aligned with our needs. So, next time you chat with an AI, remember there's a whole system working behind the scenes to make sure it's doing its best to help you responsibly. Go ahead and give one of your favourite AI tools a try today!",
+  "original_title": "GPT-Red: Unlocking Self-Improvement for Robustness"
+}

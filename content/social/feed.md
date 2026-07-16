@@ -1,6 +1,97 @@
 # AI World Co. — közösségi posztok
 
-*Generálva: 2026-07-16T01:49:10.813Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+*Generálva: 2026-07-16T10:09:29.497Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## Salesforce Deepens Commitment to Switzerland with $1 Billion Investment to Accelerate Agentic AI Transformation
+**🔗 https://aiworldhq.com/article/understanding-salesforce-ai-agents-and-their-business-impact.html**
+
+**Facebook:**
+Tired of endless emails and data entry? Salesforce's new AI agents can take over those routine tasks, giving your team more time for the work that matters. https://aiworldhq.com/article/understanding-salesforce-ai-agents-and-their-business-impact.html #AI #productivity
+
+**Instagram:**
+Free up your team's time with AI
+Salesforce's smart AI agents handle routine tasks like follow‑ups and data entry, so you can focus on what truly counts.
+#AI
+#automation
+#salesforce
+Link in bio.
+
+*Kép-ötlet: A tidy office desk with a laptop screen showing a simple flowchart of an AI agent managing emails.*
+
+---
+
+## Build a serverless image editing agent with Amazon Bedrock AgentCore harness
+**🔗 https://aiworldhq.com/article/transform-photos-with-text-how-ai-is-making-image-editing-ea.html**
+
+**Facebook:**
+Want to tidy up a photo without learning Photoshop? You can now tell AI to brighten the sky or remove an object just by typing a few words. https://aiworldhq.com/article/transform-photos-with-text-how-ai-is-making-image-editing-ea.html #AIphoto #Productivity
+
+**Instagram:**
+Edit your pictures with a simple text prompt.
+No design skills needed – the new serverless AI agent lets you fix lighting or erase distractions in seconds.
+#AIediting
+#PhotoTips
+#CreativeAI
+#TechForAll
+Link in bio.
+
+*Kép-ötlet: A close‑up of a smartphone screen showing a before‑and‑after photo with subtle lighting changes.*
+
+---
+
+## Fill with Gemini in Sheets now available in 11 additional languages
+**🔗 https://aiworldhq.com/article/turn-empty-spreadsheets-into-multilingual-ai-assistants-in-g.html**
+
+**Facebook:**
+Need to translate product descriptions or expense categories fast? Gemini in Google Sheets now supports 11 more languages, so you can do it straight from your spreadsheet. https://aiworldhq.com/article/turn-empty-spreadsheets-into-multilingual-ai-assistants-in-g.html #GoogleSheets #AI
+
+**Instagram:**
+Turn your spreadsheet into a multilingual assistant
+With Gemini you can write, translate and organise text in 11 extra languages—no extra tools or coding needed.
+#GoogleSheets
+#AIassist
+#Productivity
+#Multilingual
+#AI
+Link in bio.
+
+*Kép-ötlet: A tidy laptop screen showing an open Google Sheet with rows filled in various languages, soft natural lighting.*
+
+---
+
+## FinOps for AI: Snowflake's AI Cost Management and Governance Tools
+**🔗 https://aiworldhq.com/article/managing-ai-spend-with-snowflake-s-finops-tools.html**
+
+**Facebook:**
+Want to avoid unexpected AI costs? Snowflake’s FinOps tools help you set budgets and track spend easily, so you stay in control. https://aiworldhq.com/article/managing-ai-spend-with-snowflake-s-finops-tools.html #FinOps #AIbudget
+
+**Instagram:**
+Stop the surprise AI charge.
+Use Snowflake’s simple dashboard to set budgets, monitor spend and keep governance clear – a quick health check for your AI projects.
+#FinOps
+#AIcosts
+#Snowflake
+Link in bio.
+
+*Kép-ötlet: A laptop displaying a clear budgeting dashboard with a coffee mug beside it.*
+
+---
+
+## Open, convenient and predictable: Introducing Provisioned Throughput
+**🔗 https://aiworldhq.com/article/how-to-lock-in-lower-ai-costs-with-reserved-capacity.html**
+
+**Facebook:**
+Tired of surprise AI bills? Reserve the capacity you need and pay a steady rate – it’s like fixing the price of your daily coffee. https://aiworldhq.com/article/how-to-lock-in-lower-ai-costs-with-reserved-capacity.html #AIcosts #PredictablePricing
+
+**Instagram:**
+No more guessing your AI bill.
+💡 Lock in a fixed rate for the AI power you use and keep your budget on track. Simple, predictable, and easier to plan.
+#AIbudget #ReservedCapacity
+Link in bio.
+
+*Kép-ötlet: A relaxed home office scene with a laptop display showing a flat-rate price tag, alongside a coffee mug, conveying calm budgeting.*
 
 ---
 

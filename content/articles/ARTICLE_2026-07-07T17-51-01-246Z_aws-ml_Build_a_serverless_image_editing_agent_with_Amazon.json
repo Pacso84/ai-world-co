@@ -1,0 +1,68 @@
+{
+  "_meta": {
+    "written_at": "2026-07-16T09:58:13.666Z",
+    "writer_provider": "google",
+    "writer_model": "gemini-2.5-flash",
+    "writer_cost_usd": 0.0114202,
+    "original_draft": "2026-07-07T17-51-01-246Z_aws-ml_Build_a_serverless_image_editing_agent_with_Amazon.json",
+    "source_id": "aws-ml",
+    "source_name": "AWS Machine Learning (hivatalos)",
+    "source_link": "https://aws.amazon.com/blogs/machine-learning/build-a-serverless-image-editing-agent-with-amazon-bedrock-agentcore-harness/",
+    "status": "published",
+    "rejected_at": "2026-07-13T19:26:26.153Z",
+    "auto_check": {
+      "passed": false,
+      "issues": [
+        "CLICHE: Tiltott klisé találva: \"game-changer\""
+      ],
+      "wordCount": 963
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": 8,
+      "decision": "PASS",
+      "issues": [
+        "Uses cliché 'game-changer'"
+      ],
+      "verdict": "The article is well-structured",
+      "_salvaged": true,
+      "_aiCost": 0.0044866,
+      "_provider": "google",
+      "_model": "gemini-2.5-flash",
+      "_attempts": 1
+    },
+    "reason": "Salvaged from a partial AI response.",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-07-07T17-51-01-246Z_aws-ml_Build_a_serverless_image_editing_agent_with_Amazon.json",
+    "requeued_unchanged": false,
+    "ceo_rounds": 1,
+    "ceo_hint": "CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers.",
+    "published_at": "2026-07-16T09:58:43.275Z",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-07-16T09:59:46.093Z",
+    "guide_worthy": false,
+    "pairing_reason": "The article introduces multiple tools and does not focus on a single specific named feature.",
+    "seo": {
+      "meta_description": "Edit photos easily with AI, no design skills needed. Learn how to transform your pictures using simple text commands and discover the power of AI image editing",
+      "keywords": [
+        "AI photo editing",
+        "text based image editing",
+        "easy image editing",
+        "AI for photography",
+        "automatic photo editing"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more concrete examples of AI-powered photo editing tools",
+        "Include a step-by-step guide on how to use text commands for image editing",
+        "Mention the benefits of AI-powered photo editing for non-designers"
+      ],
+      "optimised_at": "2026-07-16T09:59:58.580Z"
+    },
+    "social": true,
+    "social_at": "2026-07-16T10:09:24.700Z"
+  },
+  "article_markdown": "---\ntitle: \"Transform Photos with Text: How AI is Making Image Editing Easy\"\nsubtitle: \"Discover the new way to edit pictures using simple words, no design skills or expensive software needed.\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"image-editing\", \"ai-tools\", \"creative-ai\", \"productivity\"]\n---\n\n# Transform Photos with Text: How AI is Making Image Editing Easy\n\nImagine you’ve just snapped a great photo on your phone, but the sky looks a bit dull, or there's an unwanted object in the background. Traditionally, fixing this meant wrestling with complex software like Photoshop, learning layers, tools, and technical jargon. But what if you could simply type a sentence – like \"make the sky a vivid blue\" or \"remove the power lines\" – and watch the changes appear? This accessible, text-based photo editing is a significant new development, putting powerful creative control into everyone's hands.\n\nThis capability is emerging thanks to advancements in AI. These new tools allow you to describe the edit you want using everyday language, and the AI handles the complex steps. It's like having an incredibly patient and skilled photo editor who understands exactly what you mean, even if you’re not sure how to explain it in design terms. This shift from clicking buttons and moving sliders to simply typing instructions is changing how we interact with our digital images.\n\n## How AI Understands Your Editing Requests\n\nThe magic behind this isn't really magic at all; it's **generative AI** (artificial intelligence that can create new things). These AI models have been trained on vast amounts of images and their descriptions. This means they understand the relationship between words and visual elements. When you type an instruction, the AI interprets your \"prompt\" (the fancy word for the text instruction you give to an AI) and then figures out how to manipulate the pixels in your image to match your description.\n\nThis is a game-changer because it takes the technical skill out of the equation. You no longer need to know *how* to use a particular tool to achieve an effect; you just need to know *what* effect you want. Companies like Adobe with Firefly, Canva, and Microsoft Designer are integrating these capabilities, making sophisticated image editing accessible right in your web browser or app.\n\n## Making Your First Text-Based Edit\n\nReady to try it yourself? You don't need to be a designer or particularly tech-savvy. Here’s how these tools generally work to get you started:\n\n1.  **Choose an AI image editor:** Many platforms now offer these capabilities directly. Look for tools from companies like Adobe (Firefly), Canva, or Microsoft (Designer). Several offer free access to get started.\n2.  **Upload your photo:** Find the \"Upload\" or \"Edit\" button and select the photo you want to work on from your device.\n3.  **Type your prompt:** In the designated text box, write what you want to change. Be clear and simple. The more descriptive you are, the better the AI can understand your vision.\n    *   \"Make the sunset warmer and add a few seagulls flying over the water.\"\n    *   \"Crop the photo to a square and increase the brightness slightly.\"\n    *   \"Turn this into a watercolour painting with soft edges and pastel colours.\"\n4.  **Generate and refine:** Press Enter or click \"Generate.\" The AI will process your request and present the edited image. If it’s not quite right, don't worry! Tweak your prompt, add more detail, or try a slightly different phrasing and generate again. The AI learns from your instructions, so don't be afraid to experiment.\n\n## Unexpected Creative Possibilities\n\nThese text-based editing tools aren't just for simple fixes. They unlock incredible creative potential:\n\n*   **Change the atmosphere:** Transform a daytime city scene into a moody, rainy evening or a summer park into a vibrant autumn landscape.\n*   **Remove distractions:** Effortlessly erase photobombers, power lines, or anything that detracts from your main subject.\n*   **Add new elements:** Imagine adding a vintage bicycle leaning against a fence, or a flock of exotic birds to a plain sky.\n*   **Explore new styles:** Redraw your photograph in the style of a famous artist, or convert it into a cartoon, sketch, or 3D render.\n*   **Refocus attention:** Blur backgrounds to make your subject pop, or highlight specific areas with enhanced colour and detail.\n\nThe only real limit is your imagination and how clearly you can articulate your ideas to the AI.\n\n## What this means for you\n\n*   **In everyday life:** You can quickly enhance holiday photos, create eye-catching social media posts, or design unique invitations and personalised gifts. No more struggling with complex photo software – just type your idea and see it come to life.\n*   **For your business or work:** Small business owners can refresh product images, generate marketing visuals for online campaigns, or create compelling graphics for presentations without needing to hire a designer or spend hours learning new tools. This saves both time and money, ensuring your brand always looks polished.\n*   **If you're just getting started:** Pick one of the free-to-use AI image editors available online. Upload a photo you'd like to improve and start with a simple prompt, like \"make the colours brighter\" or \"remove the person in the background.\" You'll be amazed at how quickly you can achieve professional-looking results.\n\n## Wrap-up\n\nThe ability to edit photos with simple text commands is a powerful advancement in how we interact with technology. It demystifies complex creative processes and makes them accessible to everyone. Whether you're looking to fix a minor imperfection, inject a new style, or completely reimagine an image, these AI-powered tools let you do it with just a few words. So next time your photo needs a little something extra, try describing the change instead of clicking through endless menus. You might just unlock a whole new level of creative expression.",
+  "original_title": "Build a serverless image editing agent with Amazon Bedrock AgentCore harness"
+}
