@@ -1,0 +1,51 @@
+{
+  "started_at": "2026-07-16T01:32:26.438Z",
+  "total": 6,
+  "passed": 2,
+  "failed": 4,
+  "auto_check_failed": 4,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.0076087,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-07-06T02-05-53-940Z_ntt-research_Presentation__Successful_Implementation_of_the_Ent.json",
+      "decision": "FAIL",
+      "reason": "auto-check critical",
+      "skipped_ai": true
+    },
+    {
+      "writer": "WRITER_2026-07-06T18-04-05-097Z_nvidia-blog_How_Open_Models_Are_Driving_AI_Research.json",
+      "decision": "FAIL",
+      "reason": "auto-check critical",
+      "skipped_ai": true
+    },
+    {
+      "writer": "WRITER_2026-07-06T18-04-05-099Z_apple-ml_Revisiting_ASR_Error_Correction_with_Specialized_M.json",
+      "decision": "FAIL",
+      "reason": "auto-check critical",
+      "skipped_ai": true
+    },
+    {
+      "writer": "WRITER_2026-07-06T18-04-05-099Z_aws-ml_Streaming_benchmark_and_recommendation_results_to_.json",
+      "article": "ARTICLE_2026-07-06T18-04-05-099Z_aws-ml_Streaming_benchmark_and_recommendation_results_to_.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.0033420999999999998
+    },
+    {
+      "writer": "WRITER_2026-07-06T18-04-05-695Z_databricks_OpenAI_and_Databricks_at_DAIS_2026__Making_enterpr.json",
+      "article": "ARTICLE_2026-07-06T18-04-05-695Z_databricks_OpenAI_and_Databricks_at_DAIS_2026__Making_enterpr.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.004266600000000001
+    },
+    {
+      "writer": "WRITER_2026-07-07T02-01-14-878Z_databricks_Contextual_Policies_in_Omnigent__Using_session_sta.json",
+      "decision": "FAIL",
+      "reason": "auto-check critical",
+      "skipped_ai": true
+    }
+  ],
+  "finished_at": "2026-07-16T01:32:38.808Z",
+  "duration_seconds": 12.37
+}

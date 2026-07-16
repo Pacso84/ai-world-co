@@ -1,0 +1,59 @@
+{
+  "_meta": {
+    "written_at": "2026-07-16T01:31:27.419Z",
+    "writer_provider": "google",
+    "writer_model": "gemini-2.5-flash",
+    "writer_cost_usd": 0.0117668,
+    "original_draft": "2026-07-06T18-04-05-099Z_aws-ml_Streaming_benchmark_and_recommendation_results_to_.json",
+    "source_id": "aws-ml",
+    "source_name": "AWS Machine Learning (hivatalos)",
+    "source_link": "https://aws.amazon.com/blogs/machine-learning/streaming-benchmark-and-recommendation-results-to-mlflow-with-amazon-sagemaker-ai/",
+    "status": "published",
+    "rejected_at": "2026-07-15T17:06:37.759Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 819
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "The article effectively explains complex AI experiment tracking concepts for a business audience. It adheres to the brand voice, structure, and uses accessible language.",
+      "_aiCost": 0.0033420999999999998,
+      "_provider": "google",
+      "_model": "gemini-2.5-flash",
+      "_attempts": 1
+    },
+    "reason": "Salvaged from a partial AI response.",
+    "can_retry": true,
+    "rework_attempts": 2,
+    "reworked_from": "REJECTED_2026-07-06T18-04-05-099Z_aws-ml_Streaming_benchmark_and_recommendation_results_to_.json",
+    "requeued_unchanged": false,
+    "ceo_rounds": 1,
+    "ceo_hint": "CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Add concrete examples and use cases of streaming benchmark and recommendation results to MLflow with Amazon SageMaker AI, and explain how it can help readers track their AI experiments more efficiently",
+    "published_at": "2026-07-16T01:32:32.203Z",
+    "seo": {
+      "meta_description": "Track your AI experiments efficiently with MLflow and Amazon SageMaker AI. Learn how to organise and scale your AI development from local to cloud.",
+      "keywords": [
+        "AI experiment tracking",
+        "MLflow",
+        "Amazon SageMaker AI",
+        "AI development tools",
+        "cloud AI projects"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add a step-by-step example of using MLflow with Amazon SageMaker AI",
+        "Include a comparison of MLflow with other AI experiment tracking tools",
+        "Provide tips for scaling AI experiments from local to cloud environments"
+      ],
+      "optimised_at": "2026-07-16T01:36:16.084Z"
+    },
+    "social": true,
+    "social_at": "2026-07-16T01:49:03.711Z"
+  },
+  "article_markdown": "---\ntitle: \"Tracking AI Experiments with MLflow and Amazon SageMaker AI\"\nsubtitle: \"Understand how to keep your AI development organised and efficient, from local runs to cloud-powered projects.\"\ncategory: \"business\"\naudience: \"business\"\nread_time_minutes: 5\ntags: [\"ai-experiments\", \"mlflow\", \"amazon-sagemaker\", \"cloud-ai\", \"tracking\", \"data-science\", \"benchmarking\"]\n---\n\n# Tracking AI Experiments with MLflow and Amazon SageMaker AI\n\nWhen you're building artificial intelligence (AI) models, it's a bit like being a chef trying different recipes. You tweak ingredients (parameters), adjust cooking times (training steps), and taste the results (evaluate metrics). Without a good system, you'll quickly forget which recipe worked best or how you achieved that perfect flavour. This is where tools like MLflow, especially when paired with cloud platforms like Amazon SageMaker AI, become incredibly useful, helping you keep track of every detail of your AI experiments.\n\n## The Challenge of Scaling AI Experiments\n\nIn the world of AI, an \"experiment\" is a single attempt to train a model with a specific set of settings and data. If you're just starting, you might run a few experiments on your laptop, saving notes in a spreadsheet or a text file. But as your projects grow, involving more complex models, larger datasets, and multiple team members, this manual approach quickly becomes a chaotic mess. You need a system that can automatically record everything, making it easy to compare results, reproduce past successes, and collaborate effectively.\n\n## Streamlining with MLflow and Amazon SageMaker AI\n\nMLflow is an open-source tool designed for \"experiment tracking\" – think of it as a digital lab notebook for your AI projects. It logs parameters (the settings you use), metrics (the performance results like accuracy or error rate), and even the model files themselves.\n\nFor serious AI development, many professionals use cloud platforms like Amazon SageMaker AI. SageMaker is a comprehensive service that provides all the tools you need to build, train, and deploy machine learning models at scale. It offers powerful computing resources, vast storage, and pre-built AI algorithms, freeing you from managing complex infrastructure.\n\nThe real magic happens when you connect MLflow with Amazon SageMaker AI. Instead of running experiments only on your local machine, you can launch large-scale training jobs on SageMaker, and MLflow will automatically capture all the important information. It means you can run hundreds of experiments in the cloud, and still have a single, organised dashboard to review and compare everything.\n\n## Capturing Insights: Benchmarks and Recommendation Results\n\nOne powerful use of this integration is \"streaming benchmark and recommendation results\" into MLflow.\n\n*   **Streaming Benchmarks**: A \"benchmark\" is a standard test or set of criteria used to evaluate a model's performance against specific goals. For example, if you're training a model to detect fraud, you might benchmark its ability to correctly identify fraudulent transactions versus false positives. When you run these benchmarks on Amazon SageMaker, MLflow can \"stream\" (send real-time updates) these results directly to your tracking dashboard.\n    *   **Use Case Example**: Imagine you're experimenting with different AI models to predict customer behaviour. As each model finishes its training run on SageMaker, MLflow automatically streams critical metrics like its prediction accuracy, training time, and the amount of data it processed. This real-time feedback allows you to immediately see which model performed best against your defined benchmarks, without having to manually collect results from various cloud logs. You can compare models side-by-side, quickly identifying the most promising candidates.\n\n*   **Streaming Recommendation Results**: If you're developing a \"recommendation engine\" (an AI that suggests products, movies, or content to users), you're not just interested in raw accuracy. You want to know if the recommendations actually lead to more clicks, purchases, or user engagement.\n    *   **Use Case Example**: Suppose you've deployed several versions of a product recommendation engine using Amazon SageMaker. As users interact with your application, you can stream key performance indicators (KPIs) – like the \"click-through rate\" (how often users click a recommended item) or \"conversion rate\" (how often they buy it) – directly from your deployed SageMaker model back into MLflow. This lets you track the real-world impact of each recommendation algorithm. You can quickly spot if a new model version, despite looking good in offline tests, isn't actually driving better engagement in a live environment, allowing for rapid adjustments.\n\n## What this means for you\n\n*   **For your business or professional work**: Integrating MLflow with Amazon SageMaker AI helps your team iterate faster and make data-driven decisions. You'll have a centralised, auditable record of every experiment, improving collaboration and ensuring you can always reproduce the best-performing models. This reduces wasted effort, speeds up development cycles, and allows you to deploy more effective AI solutions with confidence. It also simplifies compliance by providing a clear lineage of your model's development.\n\n*   **If you're learning AI**: While Amazon SageMaker is a professional cloud tool, understanding MLflow locally is a fantastic first step. Practising experiment tracking on your laptop will teach you good habits that scale directly to industry-",
+  "original_title": "Streaming benchmark and recommendation results to MLflow with Amazon SageMaker AI"
+}

@@ -1,0 +1,54 @@
+{
+  "started_at": "2026-07-16T01:34:35.211Z",
+  "total": 6,
+  "passed": 5,
+  "failed": 1,
+  "auto_check_failed": 1,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.0229683,
+  "by_article": [
+    {
+      "writer": "WRITER_GUIDE_ask-gemini-to-explain-a-confusing-work-email-in-plain-englis.json",
+      "decision": "FAIL",
+      "reason": "auto-check critical",
+      "skipped_ai": true
+    },
+    {
+      "writer": "WRITER_GUIDE_ask-qwen-chat-to-write-a-polite-complaint-email-about-a-dela.json",
+      "article": "ARTICLE_GUIDE_ask-qwen-chat-to-write-a-polite-complaint-email-about-a-dela.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0045609
+    },
+    {
+      "writer": "WRITER_GUIDE_how-to-start-a-new-google-docs-document-with-gemini-s-built-.json",
+      "article": "ARTICLE_GUIDE_how-to-start-a-new-google-docs-document-with-gemini-s-built-.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0046321
+    },
+    {
+      "writer": "WRITER_GUIDE_how-to-use-claude-to-draft-a-polite-work-email-in-5-minutes.json",
+      "article": "ARTICLE_GUIDE_how-to-use-claude-to-draft-a-polite-work-email-in-5-minutes.json",
+      "decision": "PASS",
+      "score": 7,
+      "cost_usd": 0.0045882
+    },
+    {
+      "writer": "WRITER_GUIDE_turn-any-messy-meeting-notes-into-a-clear-summary-with-claud.json",
+      "article": "ARTICLE_GUIDE_turn-any-messy-meeting-notes-into-a-clear-summary-with-claud.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.004552
+    },
+    {
+      "writer": "WRITER_GUIDE_use-qwen-chat-to-create-a-simple-meal-plan-for-the-week-usin.json",
+      "article": "ARTICLE_GUIDE_use-qwen-chat-to-create-a-simple-meal-plan-for-the-week-usin.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0046351000000000005
+    }
+  ],
+  "finished_at": "2026-07-16T01:35:11.446Z",
+  "duration_seconds": 36.235
+}

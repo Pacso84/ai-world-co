@@ -1,40 +1,35 @@
 {
   "_meta": {
-    "written_at": "2026-07-15T17:05:41.363Z",
-    "writer_provider": "mistral",
-    "writer_model": "mistral-small-latest",
-    "writer_cost_usd": 0.0032614000000000002,
+    "written_at": "2026-07-16T01:31:09.324Z",
+    "writer_provider": "google",
+    "writer_model": "gemini-2.5-flash",
+    "writer_cost_usd": 0.011647,
     "original_draft": "2026-07-06T18-04-05-099Z_apple-ml_Revisiting_ASR_Error_Correction_with_Specialized_M.json",
     "source_id": "apple-ml",
     "source_name": "Apple Machine Learning Research (hivatalos)",
     "source_link": "https://machinelearning.apple.com/research/asr-error-correction",
     "status": "rejected",
-    "rejected_at": "2026-07-15T17:06:29.303Z",
+    "rejected_at": "2026-07-16T01:32:26.486Z",
     "auto_check": {
-      "passed": true,
-      "issues": [],
-      "wordCount": 639
+      "passed": false,
+      "issues": [
+        "MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!)"
+      ],
+      "wordCount": 491
     },
     "ai_review": {
-      "overall_score": 5,
-      "clarity_score": 4,
       "decision": "FAIL",
-      "issues": [],
-      "verdict": "Salvaged from a partial AI response.",
-      "_salvaged": true,
-      "_aiCost": 0.0043684,
-      "_provider": "google",
-      "_model": "gemini-2.5-flash",
-      "_attempts": 1
+      "verdict": "Critical auto-check failures: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!)",
+      "skipped_ai": true
     },
-    "reason": "Salvaged from a partial AI response.",
+    "reason": "Critical auto-check failures: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!)",
     "can_retry": true,
-    "rework_attempts": 1,
+    "rework_attempts": 2,
     "reworked_from": "REJECTED_2026-07-06T18-04-05-099Z_apple-ml_Revisiting_ASR_Error_Correction_with_Specialized_M.json",
     "requeued_unchanged": false,
     "ceo_rounds": 1,
     "ceo_hint": "CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers."
   },
-  "article_markdown": "---\ntitle: \"What Happened with the New AI Voice Feature and How to Use It\"\nsubtitle: \"A clear explainer of the latest AI voice update and three practical ways to try it today\"\ncategory: \"how-to\"\naudience: \"personal\"\nread_time_minutes: 5\ntags: [\"voice-ai\", \"speech-to-text\", \"productivity\", \"getting-started\"]\n---\n\n# What Happened with the New AI Voice Feature and How to Use It\n\n**You’ve probably heard a friend or coworker rave about a new way to talk to their phone or computer—and now it’s your turn to try.**\n\nA recent update to a popular AI assistant means you can now dictate messages, take notes, or even control your apps using just your voice—and the words appear almost instantly. No typing required. Whether you’re in the car, cooking dinner, or just want to jot down an idea without stopping what you’re doing, this feature is designed to save time and keep your hands free.\n\n---\n\n## What changed and why it matters\n\nVoice assistants have been around for years, but the latest update adds something new: **real-time voice editing**. That means if the AI misunderstands you, you can correct it on the spot without starting over.\n\nHere’s how it works:\n- You speak naturally, and the AI turns your words into text.\n- If it gets something wrong, you can tap the word and fix it right away.\n- You can also add punctuation, paragraphs, or even commands like “new paragraph” while you speak.\n\nThis isn’t just about convenience—it’s about making voice tools more reliable for everyday use. Whether you’re sending a quick text, writing a shopping list, or taking meeting notes, the goal is to make voice typing feel as smooth as talking to a friend.\n\n---\n\n## Three ways to try it today\n\n### 1. Send a hands-free message\nOpen your favourite messaging app (like Messages or WhatsApp) and look for the microphone icon. Tap it and start speaking.\n\n> 💡 Tip: Say “comma” or “new paragraph” to add punctuation or break up your text naturally.\n\nOnce you’re done, review the text. If the AI misheard a word, just tap it and type the correct one. Hit send—no retyping needed.\n\n### 2. Take voice notes during a walk\nOpen your phone’s Notes app and tap the microphone. Start talking about your day, a meeting, or a to-do list.\n\n> ✅ Before: “remember to buy milk eggs bread”\n> ✅ After: “Remember to buy milk, eggs, and bread.”\n\nWhen you’re done, the text will be saved. You can go back later and clean it up—no need to rewrite everything from scratch.\n\n### 3. Control your phone with voice commands\nSome apps let you use voice to open settings, search the web, or even control smart home devices.\n\nTry saying:\n- “Open camera”\n- “Set a timer for 10 minutes”\n- “What’s the weather today?”\n\nThe AI will respond by doing the action—no tapping required.\n\n---\n\n## What this means for you\n\n- **If you’re a student**: Use voice notes to capture lecture ideas while walking between classes. Fix errors later and review your notes without rewriting.\n- **If you work from home**: Dictate emails or messages while making coffee. Edit mistakes quickly and send them off—no need to stop what you’re doing.\n- **If you’re just getting started**: Try voice typing in a free app like Google Docs or Apple Notes. Start with a short message and practice correcting the AI. It gets easier with each try.\n\n---\n\n## Wrap-up\n\nVoice AI isn’t perfect, but the latest update makes it more useful than ever. You don’t have to speak perfectly—the AI learns as you go, and you can fix mistakes in real time. Try it today: open your notes app, tap the microphone, and talk your way through a task. With a little practice, you’ll wonder how you ever got by without it.",
+  "article_markdown": "---\ntitle: \"Easier AI Voice Assistants: How Real-Time Corrections Help You\"\nsubtitle: \"Understand the latest AI voice update and learn practical ways to make it work for you today.\"\ncategory: \"how-to\"\naudience: \"personal\"\nread_time_minutes: 4\ntags: [\"voice-ai\", \"speech-to-text\", \"productivity\", \"getting-started\"]\n---\n\n# Easier AI Voice Assistants: How Real-Time Corrections Help You\n\nEver wish your phone or computer could just *get* what you're saying without you having to retype everything? That frustration is quickly becoming a thing of the past.\n\nA significant update to the technology powering many AI voice assistants means you can now speak naturally, watch your words appear, and instantly fix any little errors as you go. No more starting over just because the AI misheard \"tomorrow\" as \"to borrow.\" This makes using your voice to dictate messages, capture ideas, or even control your device much smoother and more reliable than ever before.\n\n## What's new with AI voice?\n\nFor years, we've had **AI voice assistants** (digital helpers like those built into your phone or computer) that convert what you say into text. While handy, they often made mistakes, leaving you to delete and re-record, or tediously edit after you'd finished speaking.\n\nThe big change is the introduction of **real-time voice editing**. This isn't just about the AI being smarter; it's about giving *you* more control *while you're speaking*. Imagine this:\n\n1.  You start talking, and the AI turns your speech into words on the screen, almost instantly.\n2.  If it makes a mistake (like typing \"their\" instead of \"there\"), you can now simply tap the incorrect word *on the screen* as you continue speaking.\n3.  A quick tap allows you to either choose a suggested correction or type the right word yourself, all without interrupting your flow.\n4.  You can also add punctuation or new paragraphs by simply saying \"comma,\" \"full stop,\" or \"new paragraph.\"\n\nThis enhancement moves AI voice from a sometimes-frustrating tool to a genuinely helpful daily companion, making it feel more like talking directly to your thoughts.\n\n## Practical ways to use real-time voice editing\n\nThis updated capability shines in situations where your hands are busy, or you just want to get ideas down quickly.\n\n### 1. Draft a message on the go\n\nWhether you're walking, cooking, or driving (hands-free, of course!), voice dictation is perfect for sending quick texts or emails.\n\n*   Open your messaging app (like Messages or WhatsApp) and tap the microphone icon in the keyboard.\n*   Start speaking your message. If the AI gets a word wrong, don't stop! Just tap on the incorrect word on the screen. A small pop-up will often offer corrections, or you can quickly type the right one.\n*   Continue speaking. The AI understands you're editing and will re-integrate your speech seamlessly.\n*   Say \"full stop\" or \"new paragraph\" to structure your message.\n\n### 2. Capture ideas and notes instantly\n\nGot a brilliant idea in the shower or while exercising? Don't let it slip away.\n\n",
   "original_title": "Revisiting ASR Error Correction with Specialized Models"
 }

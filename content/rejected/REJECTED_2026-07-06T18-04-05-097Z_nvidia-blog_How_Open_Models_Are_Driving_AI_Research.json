@@ -1,40 +1,35 @@
 {
   "_meta": {
-    "written_at": "2026-07-15T17:05:30.568Z",
-    "writer_provider": "mistral",
-    "writer_model": "mistral-small-latest",
-    "writer_cost_usd": 0.0033886000000000003,
+    "written_at": "2026-07-16T01:30:37.154Z",
+    "writer_provider": "google",
+    "writer_model": "gemini-2.5-flash",
+    "writer_cost_usd": 0.0116888,
     "original_draft": "2026-07-06T18-04-05-097Z_nvidia-blog_How_Open_Models_Are_Driving_AI_Research.json",
     "source_id": "nvidia-blog",
     "source_name": "NVIDIA Blog (hivatalos)",
     "source_link": "https://blogs.nvidia.com/blog/open-models-icml-2026/",
     "status": "rejected",
-    "rejected_at": "2026-07-15T17:06:21.791Z",
+    "rejected_at": "2026-07-16T01:32:26.465Z",
     "auto_check": {
-      "passed": true,
-      "issues": [],
-      "wordCount": 759
+      "passed": false,
+      "issues": [
+        "MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!)"
+      ],
+      "wordCount": 546
     },
     "ai_review": {
-      "overall_score": 5,
-      "clarity_score": 6,
       "decision": "FAIL",
-      "issues": [],
-      "verdict": "Salvaged from a partial AI response.",
-      "_salvaged": true,
-      "_aiCost": 0.0044058000000000005,
-      "_provider": "google",
-      "_model": "gemini-2.5-flash",
-      "_attempts": 1
+      "verdict": "Critical auto-check failures: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!)",
+      "skipped_ai": true
     },
-    "reason": "Salvaged from a partial AI response.",
+    "reason": "Critical auto-check failures: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!)",
     "can_retry": true,
-    "rework_attempts": 1,
+    "rework_attempts": 2,
     "reworked_from": "REJECTED_2026-07-06T18-04-05-097Z_nvidia-blog_How_Open_Models_Are_Driving_AI_Research.json",
     "requeued_unchanged": false,
     "ceo_rounds": 1,
     "ceo_hint": "CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers."
   },
-  "article_markdown": "---\ntitle: \"What Open AI Models Mean for Your Next Project (No Coding Required)\"\nsubtitle: \"Turn AI’s latest tools into practical help for your work, study, or side project — step by step\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"open-models\", \"ai-tools\", \"practical-guide\", \"getting-started\"]\n---\n\n# What Open AI Models Mean for Your Next Project (No Coding Required)\n\nYou’ve got an idea brewing — a blog post, a business plan, a creative story, or maybe a simple website for your local footy club. The trick is turning that idea into something real without learning to code or hiring someone. The good news is that many AI models are built to be used by anyone, no programming required.\n\n## What just happened and why it matters\n\nA few days ago, a major AI company released a new open model. Think of an open model as a smart assistant that can read, write, analyse, and even create based on the instructions you give it. The key difference is that these models are **open**, meaning their underlying code and training data are publicly available. This allows anyone to build on top of them without needing a supercomputer or a PhD.\n\nImagine it like upgrading from a basic calculator to a tool that can draft emails, brainstorm ideas, and even help plan a project — all through simple chat.\n\n## Pick your project, then pick the right model\n\nNot every AI model is the same. Some are built for writing, others for coding, and some for understanding images or audio. Here’s a simple way to match a model to your project:\n\n- **Writing or brainstorming?** Look for a model trained on text — like **GPT-4o** or **Gemini 1.5**. These are great for drafting emails, writing reports, or generating ideas.\n- **Need to analyse data?** Try a model with strong reasoning skills, such as **Claude 3.7 Sonnet**. It can help you make sense of spreadsheets, reports, or even complex instructions.\n- **Working with images or audio?** Use a **multimodal** model — one that understands text, images, and sound together. For example, you could upload a photo of a handwritten note and ask the AI to turn it into a typed document.\n\nYou don’t need to understand the technical details. Just ask yourself: *What am I trying to do?* Then pick the model that sounds like it can help.\n\n## Use a simple chat window to get started\n\nYou don’t need to install anything or write code. Many platforms let you interact with open AI models through a chat window — just like sending a message. For example:\n\n- **ChatGPT** (web or app)\n- **Gemini** (web or app)\n- **Claude** (web or app)\n\nOpen your chosen platform, type your goal in plain English, and let the AI respond. It’s like having a collaborator who’s available 24/7.\n\n## Turn your idea into a step-by-step plan\n\nLet’s say you want to create a simple website for your local community group. Here’s how you could use an open AI model:\n\n1. **Write your prompt:** “Help me plan a small website for a community garden. Include a homepage, contact page, and a section for upcoming events.”\n2. **Review the plan:** The AI will suggest a structure, sample text, and even code snippets.\n3. **Refine with feedback:** Ask the AI to simplify the language, make it more formal, or add a colour scheme.\n4. **Use the output:** Copy the text for your site or adapt the code for your platform.\n\nNo coding required — just clear instructions and a bit of patience.\n\n## What this means for you\n\n- **In everyday life:** Use open AI models to draft emails, organise your study notes, or plan a weekend project. For example, ask the AI to turn your messy bullet points into a clear report for your next meeting.\n\n- **For your business or work:** Automate repetitive tasks like writing product descriptions, summarising meeting notes, or generating social media posts. You can even use AI to help draft client emails or analyse survey data.\n\n- **If you're just getting started:** Start with a free chat interface. Pick one task you do regularly, write down your goal, and ask the AI for help. Keep it simple — the goal is to learn by doing.\n\n## Wrap-up\n\nOpen AI models are tools, not magic. They work best when you give them clear instructions and use them for real tasks. Pick a project you care about, try one of the free platforms, and see what happens. The only mistake you can make is not starting.",
+  "article_markdown": "---\ntitle: \"Demystifying Accessible AI Models: How Anyone Can Use Them\"\nsubtitle: \"Understand what readily available AI models are, why they matter, and how to put them to practical use in your daily life or work.\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"accessible-ai\", \"ai-tools\", \"practical-guide\", \"getting-started\"]\n---\n\n# Demystifying Accessible AI Models: How Anyone Can Use Them\n\nEver had a brilliant idea for a project, a report, or even just organising your home, but felt stuck because you didn't know where to start or lacked specific technical skills? Good news: a new wave of powerful AI models is making it incredibly easy for anyone to turn ideas into reality, without needing to learn complex coding or understand deep technical jargon.\n\n## What Accessible AI Models Are (and Why They Matter to You)\n\nFor a while now, advanced Artificial Intelligence (AI) has been a field often reserved for specialists. However, there's been a significant shift towards making these powerful tools **accessible** to everyone. Think of it like this: instead of needing to build a car from scratch, you can now simply jump in and drive.\n\nThese \"accessible AI models\" are sophisticated computer programs trained on vast amounts of data – like text, images, or even sounds. They can understand your instructions, answer questions, generate creative content, and perform complex tasks. The key reason they're so important right now is that they're being released in ways that allow *anyone* to use them, often through simple chat interfaces or web tools. This means you don't need to be a programmer or a data scientist; you just need to know how to ask a question or give a clear instruction.\n\nThis widespread availability opens up a world of possibilities, democratising powerful technology that can help you with everything from writing an email to planning a complex project.\n\n## Finding the Right Tool for Your Task\n\nNot all accessible AI models are the same, but most are designed with a specific strength. Matching the right tool to your goal makes a big difference. Many popular platforms offer access to these models, making them easy to try.\n\n-   **For writing, brainstorming, or summarising:** Look for models strong in text generation and understanding. Platforms like **ChatGPT**, **Gemini**, or **Claude** excel at drafting emails, creating marketing copy, outlining reports, or quickly getting the main points from a long document.\n-   **For analysing data or complex problem-solving:** Some models have advanced reasoning capabilities. They can help you sift through information, extract key insights from a spreadsheet, or even offer suggestions on how to structure a project plan.\n-   **For working with images, audio, or a mix of content (multimodal AI):** These models can understand different types of information at once. For example, you could upload a photo of a handwritten recipe and ask the AI to type it up, or even describe an image to create social media text.\n\nYou don't need to dive into technical specifications. Just think about *what you want to achieve* and choose a tool that seems designed for that kind of work.\n\n## How to Get Started with a Simple Chat Interface\n\nThe easiest way to begin is by using a chat-based AI platform. You don't need to download special software or write any code.\n\n1.  **Choose a platform",
   "original_title": "How Open Models Are Driving AI Research"
 }

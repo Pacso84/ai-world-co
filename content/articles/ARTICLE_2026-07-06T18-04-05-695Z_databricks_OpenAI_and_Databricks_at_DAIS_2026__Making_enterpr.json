@@ -1,0 +1,61 @@
+{
+  "_meta": {
+    "written_at": "2026-07-16T01:31:56.001Z",
+    "writer_provider": "google",
+    "writer_model": "gemini-2.5-flash",
+    "writer_cost_usd": 0.0220897,
+    "original_draft": "2026-07-06T18-04-05-695Z_databricks_OpenAI_and_Databricks_at_DAIS_2026__Making_enterpr.json",
+    "source_id": "databricks",
+    "source_name": "Databricks Blog (hivatalos)",
+    "source_link": "https://www.databricks.com/blog/openai-and-databricks-dais-2026-making-enterprise-ai-real",
+    "status": "published",
+    "rejected_at": "2026-07-13T19:24:56.629Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 812
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "This article is clear, well-structured, and aligns perfectly with the brand's voice and target audience. It effectively explains how AI can be used for spreadsheet analysis with accessible language and good examples.",
+      "_aiCost": 0.004266600000000001,
+      "_provider": "google",
+      "_model": "gemini-2.5-flash",
+      "_attempts": 1
+    },
+    "reason": "Salvaged from a partial AI response.",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-07-06T18-04-05-695Z_databricks_OpenAI_and_Databricks_at_DAIS_2026__Making_enterpr.json",
+    "requeued_unchanged": false,
+    "ceo_rounds": 1,
+    "ceo_hint": "CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers.",
+    "published_at": "2026-07-16T01:32:38.785Z",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-07-16T01:32:44.847Z",
+    "guide_worthy": false,
+    "pairing_reason": "The article does not introduce a specific named feature or tool that can be used today.",
+    "seo": {
+      "meta_description": "Use AI to unlock spreadsheet insights instantly, no coding needed. Discover hidden trends and get instant answers from your data with modern AI tools.",
+      "keywords": [
+        "AI for spreadsheet analysis",
+        "instant spreadsheet insights",
+        "no coding data analysis"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add examples of specific AI tools for spreadsheet analysis",
+        "Provide a step-by-step guide on how to use AI for spreadsheet insights",
+        "Include a section on common use cases for AI in spreadsheet analysis"
+      ],
+      "optimised_at": "2026-07-16T01:36:17.442Z"
+    },
+    "social": true,
+    "social_at": "2026-07-16T01:49:05.992Z"
+  },
+  "article_markdown": "---\ntitle: \"Unlocking Spreadsheet Insights with AI: What's Possible Now\"\nsubtitle: \"Discover how AI can analyse your spreadsheet data for instant answers, no coding skills or complex tools required.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"ai-tools\", \"productivity\", \"spreadsheets\", \"data-analysis\", \"getting-started\"]\n---\n\n# Unlocking Spreadsheet Insights with AI: What's Possible Now\n\nHave you ever looked at a spreadsheet packed with numbers and wished you could instantly know the key takeaways, or spot hidden trends, without hours of manual analysis? This is exactly what’s become possible with modern AI tools. Forget complicated formulas or needing a data analyst; AI can now interpret your raw data and give you clear answers in moments.\n\n## What's Happening with AI and Data?\n\nIn recent times, the **large language models (LLMs – the AI engines behind tools like ChatGPT or Gemini)** have become incredibly sophisticated. They've learned not just to understand human language, but also to recognise patterns in structured information, like the rows and columns of a spreadsheet. This means you can now simply copy-paste data directly into an AI chat, and it will understand it almost like a human would, but much faster. This development has transformed how everyday people can interact with their own data, moving data analysis from a specialist skill to an accessible tool for everyone.\n\n## Getting Instant Answers from Your Spreadsheets\n\nTurning your raw spreadsheet data into insights is surprisingly simple. You don't need any special software beyond what you might already use:\n\n1.  **Prepare your data:** Open your spreadsheet in a program like Google Sheets or Microsoft Excel. Make sure your data is clearly organised with headings (like \"Product\", \"Sales\", \"Region\").\n    ```\n    Product | Sales | Region\n    Widget A | 150 | East\n    Widget B | 89 | West\n    Widget C | 210 | East\n    ```\n2.  **Copy the relevant section:** Select the rows and columns you want the AI to analyse. Use `Ctrl+C` (or `Cmd+C` on a Mac) to copy them.\n3.  **Paste into your AI assistant:** Open your preferred AI tool (such as ChatGPT, Claude, or Gemini). In the chat box, type a clear instruction, often called a **prompt** (which is simply the text command you give to the AI), and then paste your data directly below it.\n\n    For example:\n    > \"Here's my sales data. Please tell me the top-selling product and any interesting observations:\n    > Product | Sales | Region\n    > Widget A | 150 | East\n    > Widget B | 89 | West\n    > Widget C | 210 | East\"\n\n    The AI will then process this information and provide a summary, such as:\n    > \"Based on your data, the top-selling product is Widget C with 210 units. An interesting observation is that all sales figures are unique, and Widget C in the East region significantly outsold others.\"\n\n## Going Deeper: Asking for Specific Insights\n\nOnce you've tried basic questions, you can explore more advanced analysis. The key is to be specific in your prompt:\n\n*   **Summarise key trends:** \"What are the overall sales trends by region?\"\n*   **Identify outliers:** \"Are there any products with unusually high or low sales compared to the others?\"\n*   **Compare categories:** \"Which region performed best, and by how much?\"\n*   **Spot opportunities:** \"Based on this data, what's one suggestion to boost sales next month?\"\n\nThe more clearly you ask your question, the more relevant and helpful the AI's answer will be. You can even tell the AI to adopt a specific **persona** (a role or character it should act as), like \"Act as a marketing analyst and highlight top sales performers.\"\n\n## What this means for you\n\n*   **For your personal finances or hobbies:** You can quickly analyse your monthly budget, track spending habits, or understand trends in personal projects (e.g., how much you're spending on a hobby, or how your study hours correlate with grades). No need to set up complex spreadsheets; just copy-paste and ask.\n*   **For your business or work:** If you're running a small business, managing a project, or dealing with client data, you can get rapid insights into sales figures, inventory, or survey results. This saves hours of manual work, allowing you to make faster, data-driven decisions without needing dedicated data software or staff.\n*   **If you're just getting started:** Try this with a small, simple spreadsheet first – maybe 5-10 rows. This helps you get comfortable with the process and see the AI's capabilities firsthand before tackling larger or more complex datasets.\n\n## Wrap-up\n\nThe ability for AI to instantly understand and analyse your spreadsheet data marks a significant shift, making powerful data insights accessible to everyone. By simply copying and pasting your information into a free AI assistant, you can turn raw numbers into clear, actionable answers in moments. Start today by giving your AI tool a small dataset and a question – you'll quickly see how valuable this new capability can be.",
+  "original_title": "OpenAI and Databricks at DAIS 2026: Making enterprise AI real"
+}

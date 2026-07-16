@@ -1,40 +1,35 @@
 {
   "_meta": {
-    "written_at": "2026-07-07T10:45:18.028Z",
-    "writer_provider": "cerebras",
-    "writer_model": "gpt-oss-120b",
-    "writer_cost_usd": 0,
+    "written_at": "2026-07-16T01:32:26.216Z",
+    "writer_provider": "google",
+    "writer_model": "gemini-2.5-flash",
+    "writer_cost_usd": 0.011714299999999999,
     "original_draft": "2026-07-07T02-01-14-878Z_databricks_Contextual_Policies_in_Omnigent__Using_session_sta.json",
     "source_id": "databricks",
     "source_name": "Databricks Blog (hivatalos)",
     "source_link": "https://www.databricks.com/blog/contextual-policies-omnigent-using-session-state-better-govern-ai-agents",
     "status": "rejected",
-    "rejected_at": "2026-07-13T19:24:58.672Z",
+    "rejected_at": "2026-07-16T01:32:38.788Z",
     "auto_check": {
-      "passed": true,
-      "issues": [],
-      "wordCount": 728
+      "passed": false,
+      "issues": [
+        "MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!)"
+      ],
+      "wordCount": 607
     },
     "ai_review": {
-      "overall_score": 5,
-      "clarity_score": 4,
       "decision": "FAIL",
-      "issues": [],
-      "verdict": "Salvaged from a partial AI response.",
-      "_salvaged": true,
-      "_aiCost": 0.004368,
-      "_provider": "google",
-      "_model": "gemini-2.5-flash",
-      "_attempts": 1
+      "verdict": "Critical auto-check failures: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!)",
+      "skipped_ai": true
     },
-    "reason": "Salvaged from a partial AI response.",
+    "reason": "Critical auto-check failures: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!)",
     "can_retry": true,
-    "rework_attempts": 0,
+    "rework_attempts": 1,
     "reworked_from": "REJECTED_2026-07-07T02-01-14-878Z_databricks_Contextual_Policies_in_Omnigent__Using_session_sta.json",
     "requeued_unchanged": false,
     "ceo_rounds": 1,
     "ceo_hint": "CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers."
   },
-  "article_markdown": "---\ntitle: \"How to Build Guardrails for Your AI Assistants Using Contextual Policies\"\nsubtitle: \"A step‑by‑step guide to writing simple YAML rules that keep your AI helpers from acting without your okay\"\ncategory: \"how‑to\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"ai‑agents\", \"productivity\", \"automation\", \"getting‑started\"]\n---\n\n# How to Build Guardrails for Your AI Assistants Using Contextual Policies\n\nEver asked an AI assistant to schedule a meeting, only for it to pop up a calendar invite before you’ve finished typing the time? A tiny rule can stop that from happening, giving you confidence that the AI only acts when you explicitly approve it.\n\n## The building blocks\n\n- **Agent** – an AI that can perform actions (send an email, update a list, book a calendar slot).  \n- **Contextual policy** – a rule that checks the current situation before the agent is allowed to act.  \n- **Session state** – the temporary memory of the ongoing conversation; think of it as the AI’s notepad.  \n- **YAML** – a human‑readable configuration format (YAML Ain’t Markup Language) that uses indentation instead of brackets. It’s the favourite way many AI platforms let you describe policies in plain text.\n\n## Step‑by‑step: writing your first guardrail\n\n### 1. Open the right file\n1. Locate the folder where your AI assistant stores its configuration files.  \n2. Open a plain‑text editor (Notepad, VS Code, Sublime, anything that saves plain .txt).  \n3. Create a new file called `policies.yaml` – the *.yaml* extension tells the system to treat it as a YAML document.\n\n### 2. Add a basic rule\nCopy the snippet below into the file, then save it.\n\n```yaml\npolicies:\n  - name: confirm‑before‑booking\n    trigger: agent_action          # run whenever the AI tries to do something\n    condition: session.state.user_confirmed == true   # only proceed if you said “yes”\n    allow: true\n    deny_message: \"Please say “yes” before I book the meeting.\"\n```\n\n**What each line does**  \n- **trigger** – tells the system *when* to run the check (here, on any agent action).  \n- **condition** – the test the system evaluates; it looks at the session state (the notepad) for a flag called `user_confirmed`.  \n- **allow** – if the condition is true, the action proceeds.  \n- **deny_message** – the reply the AI gives when the condition isn’t met.\n\n### 3. Tell the assistant where the file is\nMost platforms let you point to a policy file via an environment variable or a simple command line flag. For example:\n\n```bash\nai‑assistant --config /path/to/policies.yaml\n```\n\nIf you’re using a graphical dashboard, look for a **“Upload policy file”** button and select the `policies.yaml` you just saved.\n\n### 4. Test the rule\n1. In the chat window, type: “Schedule a call for Friday at 3 pm.”  \n2. The AI will reply with the `deny_message` because `user_confirmed` is still false.  \n3. Respond “Yes, that works.” – the assistant now sets `user_confirmed` to true, satisfies the condition, and creates the calendar event.\n\n## Everyday ways to extend the guardrails\n\n- **Email safety** – block sending if the recipient’s domain isn’t in your approved list.  \n- **Spending limits** – stop the AI from approving invoices above a chosen amount.  \n- **Quiet hours** – prevent task‑reminder pings after 6 pm by checking the current time.  \n\nEach new rule follows the same YAML pattern: define a trigger, write a condition that inspects the session state, and decide what to allow or deny.\n\n## What this means for you\n\n- **At home** – You can let an AI draft grocery lists, but stop it from ordering items online until you confirm the total cost.  \n- **At work** – Give your AI permission to send client emails only after you type “approved” in the chat, protecting against accidental sends.  \n- **If you’re just starting** – Create the `policies.yaml` file, copy the example rule, and run a quick test with a meeting request. That single experiment shows how a tiny text file can keep your digital helper in check.\n\n## Wrap‑up\n\nContextual policies are a low‑code way to make AI assistants behave exactly how you want. By writing a few lines of YAML, you give the AI a safety net that stops it from acting until you give the explicit go‑ahead. Today, open your favourite text editor, create the `policies.yaml` file shown above, and run a simple test request. You’ll see instantly how a small rule can turn a nervous guess into a confident, controllable assistant. Happy guarding!",
+  "article_markdown": "---\ntitle: \"How to Build Guardrails for Your AI Assistants Using Contextual Policies\"\nsubtitle: \"Keep your AI tools acting just the way you want, with simple rules that put you in control.\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"ai-agents\", \"productivity\", \"automation\", \"getting-started\", \"control\"]\n---\n\n# How to Build Guardrails for Your AI Assistants Using Contextual Policies\n\nEver found your AI assistant jumping the gun, perhaps scheduling a meeting or sending an email before you've given the final okay? As AI tools become smarter and more capable, giving them more autonomy means we also need ways to keep them in check. That's where AI guardrails come in — simple rules that ensure your digital helpers only act when you explicitly approve.\n\n## What Are AI Guardrails?\n\nThink of AI guardrails as a set of boundaries or rules you establish for your AI. Just as a parent sets rules for a child, or a traffic controller manages cars, these guardrails ensure your AI assistant operates safely and exactly how you intend. With the rise of AI agents (specialised AI tools that can perform tasks using other tools, like booking a flight or sending messages), having these controls has become essential. They stop the AI from acting too quickly, making errors, or doing something you didn't fully authorise. It's about building trust and giving you peace of mind.\n\n## Key Concepts for Control\n\nWhen you set up guardrails for your AI, you'll encounter a few important ideas:\n\n*   **AI Agent**: This is an AI that doesn't just chat; it can actually *do* things. For example, it might be able to send an email, update a list, or book a calendar slot.\n*   **Contextual Policy**: This is the guardrail itself — a rule that checks the current situation or \"context\" of your conversation before the AI agent is allowed to act.\n*   **Session State**: Imagine this as the AI's temporary notepad for your ongoing conversation. It remembers details like previous messages, tasks you've mentioned, or flags you've set (like \"user\\_confirmed\").\n*   **YAML**: This stands for \"YAML Ain't Markup Language\" (a fun, recursive name!). It's a simple, human-readable way to write configuration rules using indentation instead of brackets. Many AI platforms use YAML to let you describe policies in plain text.\n\n## Building Your First Guardrail\n\nLet's look at a common scenario: you want your AI to schedule a meeting, but *only* after you've explicitly confirmed the details.\n\n### 1. Identify Your AI's Policy Settings\n\nMost customisable AI platforms or agent-building tools will have a section for \"Policies,\" \"Rules,\" or \"Configuration.\" Often, you'll find an option to upload a policy file or directly edit rules in a text field. If you're using a custom-built agent, these rules usually live in a file, often named `policies.yaml` or similar, within your agent's configuration folder.\n\n### 2. Write a Simple Rule\n\nUsing your AI platform's policy editor (or a plain text editor like Notepad on Windows, TextEdit on Mac, or VS Code), add a rule that requires your confirmation before booking:\n\n```yaml\npolicies:\n  - name: confirm-before-booking\n    trigger: agent_action          # This rule runs whenever the AI tries to do something\n    condition: session.state.user_confirmed == true # Only proceed if you've said \"yes\"\n    allow: true                    # If the condition is true, let the action happen\n    deny_message: \"Please confirm by saying ‘yes’ before I book the meeting.\" # AI's reply if condition isn't met\n```\n\n**What each part does:**\n\n*   `name`: Just a label for your rule, so you can easily identify it later.\n*   `trigger`: Tells the system *when* to check this rule. `agent_action` means it checks whenever the AI tries to perform an action (like booking).",
   "original_title": "Contextual Policies in Omnigent: Using session state to better govern AI agents"
 }
