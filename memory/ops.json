@@ -1,110 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t17841089740613",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-07-15T09:49:34.061Z",
-      "updated": "2026-07-15T09:50:32.044Z"
-    },
-    {
-      "id": "t178410903204753",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-07-15T09:50:32.047Z",
-      "updated": "2026-07-15T09:50:34.302Z"
-    },
-    {
-      "id": "t178410903430437",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-15T09:50:34.304Z",
-      "updated": "2026-07-15T09:50:48.022Z"
-    },
-    {
-      "id": "t178410904802752",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-07-15T09:50:48.027Z",
-      "updated": "2026-07-15T09:51:51.093Z"
-    },
-    {
-      "id": "t178410911109539",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-15T09:51:51.095Z",
-      "updated": "2026-07-15T09:52:50.209Z"
-    },
-    {
-      "id": "t178410917021490",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-15T09:52:50.214Z",
-      "updated": "2026-07-15T09:52:59.554Z"
-    },
-    {
-      "id": "t178410917955684",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-15T09:52:59.556Z",
-      "updated": "2026-07-15T09:53:07.359Z"
-    },
-    {
-      "id": "t178410918736474",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-07-15T09:53:07.364Z",
-      "updated": "2026-07-15T09:53:09.701Z"
-    },
-    {
-      "id": "t178410918972186",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-15T09:53:09.721Z",
-      "updated": "2026-07-15T09:53:20.537Z"
-    },
-    {
-      "id": "t178410920053943",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-07-15T09:53:20.539Z",
-      "updated": "2026-07-15T09:53:34.008Z"
-    },
-    {
-      "id": "t178410921401045",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-15T09:53:34.010Z",
-      "updated": "2026-07-15T09:53:40.959Z"
-    },
-    {
-      "id": "t178410922096169",
-      "title": "Run translator",
-      "status": "done",
-      "agent": "translator",
-      "created": "2026-07-15T09:53:40.961Z",
-      "updated": "2026-07-15T10:00:43.021Z"
-    },
-    {
-      "id": "t178410964302443",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-07-15T10:00:43.024Z",
-      "updated": "2026-07-15T10:00:50.415Z"
-    },
-    {
       "id": "t178413505837941",
       "title": "Run ceo",
       "status": "done",
@@ -479,33 +375,113 @@
       "agent": "publisher",
       "created": "2026-07-16T10:08:08.578Z",
       "updated": "2026-07-16T10:08:16.140Z"
+    },
+    {
+      "id": "t178422134831753",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-07-16T17:02:28.317Z",
+      "updated": "2026-07-16T17:02:33.879Z"
+    },
+    {
+      "id": "t178422135388165",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-07-16T17:02:33.881Z",
+      "updated": "2026-07-16T17:02:48.973Z"
+    },
+    {
+      "id": "t178422136897531",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-07-16T17:02:48.975Z",
+      "updated": "2026-07-16T17:02:49.241Z"
+    },
+    {
+      "id": "t178422136924385",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-07-16T17:02:49.243Z",
+      "updated": "2026-07-16T17:02:49.451Z"
+    },
+    {
+      "id": "t178422136945238",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-16T17:02:49.452Z",
+      "updated": "2026-07-16T17:02:49.693Z"
+    },
+    {
+      "id": "t178422136969715",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-07-16T17:02:49.697Z",
+      "updated": "2026-07-16T17:05:28.592Z"
+    },
+    {
+      "id": "t178422152859411",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-16T17:05:28.594Z",
+      "updated": "2026-07-16T17:06:00.153Z"
+    },
+    {
+      "id": "t178422156015712",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-07-16T17:06:00.158Z",
+      "updated": "2026-07-16T17:06:04.481Z"
+    },
+    {
+      "id": "t178422156450524",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-16T17:06:04.505Z",
+      "updated": "2026-07-16T17:06:13.729Z"
+    },
+    {
+      "id": "t178422157373170",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-07-16T17:06:13.731Z",
+      "updated": "2026-07-16T17:06:18.813Z"
+    },
+    {
+      "id": "t178422157881680",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-16T17:06:18.816Z",
+      "updated": "2026-07-16T17:06:20.150Z"
+    },
+    {
+      "id": "t178422158015226",
+      "title": "Run translator",
+      "status": "done",
+      "agent": "translator",
+      "created": "2026-07-16T17:06:20.152Z",
+      "updated": "2026-07-16T17:11:20.112Z"
+    },
+    {
+      "id": "t178422188011592",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-07-16T17:11:20.115Z",
+      "updated": "2026-07-16T17:11:27.756Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178315952798461",
-      "level": "success",
-      "text": "0 hír + 2 útmutató publikálva (költség: $0.0043).",
-      "agent": "ceo",
-      "at": "2026-07-04T10:05:27.984Z",
-      "loud": false
-    },
-    {
-      "id": "n178318395814891",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). Our latest lineup is coherent and ready to publish, with a great mix of practical articles that showcase AI's everyday applications. I do note that some topics may be tech-heavy, so a gentle intro or ",
-      "agent": "publisher",
-      "at": "2026-07-04T16:52:38.148Z",
-      "loud": false
-    },
-    {
-      "id": "n178318395980325",
-      "level": "info",
-      "text": "Pipeline lefutott — ma nem volt publikálható új tartalom.",
-      "agent": "ceo",
-      "at": "2026-07-04T16:52:39.803Z",
-      "loud": false
-    },
     {
       "id": "n178321693861631",
       "level": "info",
@@ -1281,145 +1257,33 @@
       "agent": "ceo",
       "at": "2026-07-16T10:08:16.161Z",
       "loud": false
+    },
+    {
+      "id": "n178422157880018",
+      "level": "info",
+      "text": "SEO: 4 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-07-16T17:06:18.800Z",
+      "loud": false
+    },
+    {
+      "id": "n178422188106555",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). Our article line-up is coherent and ready to publish, with a great mix of practical AI applications for everyday tasks. However, I do note that some articles may benefit from a brief intro for newcome",
+      "agent": "publisher",
+      "at": "2026-07-16T17:11:21.065Z",
+      "loud": false
+    },
+    {
+      "id": "n178422188777650",
+      "level": "success",
+      "text": "4 hír + 0 útmutató publikálva (költség: $0.0187).",
+      "agent": "ceo",
+      "at": "2026-07-16T17:11:27.776Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178399221388173",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Costa Rican dairy cooperative turns AI agents into coworkers\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers.; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
-      "ref": "2026-06-29T02-29-25-987Z_microsoft-ai_Costa_Rican_dairy_cooperative_turns_AI_agents_into.json",
-      "at": "2026-07-14T01:23:33.881Z"
-    },
-    {
-      "id": "m178399222647128",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Work smarter in 90 days: A real-world guide to using AI\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers.; Missing instructions to access AI tools; újraküldöm.",
-      "ref": "2026-06-29T02-29-25-987Z_microsoft-ai_Work_smarter_in_90_days__A_real-world_guide_to_usi.json",
-      "at": "2026-07-14T01:23:46.471Z"
-    },
-    {
-      "id": "m178399223827877",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Create fully native and editable presentations with Gemini in Google Slides\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers.; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
-      "ref": "2026-06-30T16-43-13-543Z_google-workspace_Create_fully_native_and_editable_presentations_wit.json",
-      "at": "2026-07-14T01:23:58.278Z"
-    },
-    {
-      "id": "m178399224927818",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"New AI-powered library lets people meet Theodore Roosevelt in a whole new way \" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Add more specific examples and details about the AI-powered library's capabilities and user experience to make the article more engaging and informative; Re",
-      "ref": "2026-07-01T17-46-16-620Z_microsoft-ai_New_AI-powered_library_lets_people_meet_Theodore_R.json",
-      "at": "2026-07-14T01:24:09.278Z"
-    },
-    {
-      "id": "m178399225712522",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"How Cara pioneers domain-specific AI for enterprise insurance brokerages with AWS\" — mi a baj: Salvaged from a partial AI response.",
-      "ref": "2026-06-27T02-07-24-542Z_aws-ml_How_Cara_pioneers_domain-specific_AI_for_enterpris.json",
-      "at": "2026-07-14T01:24:17.125Z"
-    },
-    {
-      "id": "m178399226435556",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Production-grade AI agents for financial compliance: Lessons from Stripe\" — mi a baj: Salvaged from a partial AI response.",
-      "ref": "2026-06-27T02-07-24-542Z_aws-ml_Production-grade_AI_agents_for_financial_complianc.json",
-      "at": "2026-07-14T01:24:24.355Z"
-    },
-    {
-      "id": "m178399227163948",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Costa Rican dairy cooperative turns AI agents into coworkers\" — mi a baj: Salvaged from a partial AI response.",
-      "ref": "2026-06-29T02-29-25-987Z_microsoft-ai_Costa_Rican_dairy_cooperative_turns_AI_agents_into.json",
-      "at": "2026-07-14T01:24:31.640Z"
-    },
-    {
-      "id": "m178399227884659",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Work smarter in 90 days: A real-world guide to using AI\" — mi a baj: Salvaged from a partial AI response.",
-      "ref": "2026-06-29T02-29-25-987Z_microsoft-ai_Work_smarter_in_90_days__A_real-world_guide_to_usi.json",
-      "at": "2026-07-14T01:24:38.846Z"
-    },
-    {
-      "id": "m178399228667313",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Create fully native and editable presentations with Gemini in Google Slides\" — mi a baj: Salvaged from a partial AI response.",
-      "ref": "2026-06-30T16-43-13-543Z_google-workspace_Create_fully_native_and_editable_presentations_wit.json",
-      "at": "2026-07-14T01:24:46.673Z"
-    },
-    {
-      "id": "m178399229433186",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"New AI-powered library lets people meet Theodore Roosevelt in a whole new way \" — mi a baj: Salvaged from a partial AI response.",
-      "ref": "2026-07-01T17-46-16-620Z_microsoft-ai_New_AI-powered_library_lets_people_meet_Theodore_R.json",
-      "at": "2026-07-14T01:24:54.331Z"
-    },
-    {
-      "id": "m178399229518084",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "need",
-      "text": "Új funkció-hír → kéne hozzá útmutató: \"How to Use Physical Security Keys with Your Work Computer\"",
-      "ref": "how-to-use-physical-security-keys-with-your-work-computer",
-      "open": true,
-      "at": "2026-07-14T01:24:55.180Z"
-    },
-    {
-      "id": "m178399240461448",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Summarise a long Slack thread into 3 bullet points using Cohere\" — mi a baj: Beginner clarity too low (5/10): steps are vague or could mislead a first-time user",
-      "ref": "GUIDE_summarise-a-long-slack-thread-into-3-bullet-points-using-coh.json",
-      "at": "2026-07-14T01:26:44.614Z"
-    },
-    {
-      "id": "m178399246571060",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 18 → 6/3/3 oszlop.",
-      "ref": "mobile",
-      "at": "2026-07-14T01:27:45.710Z"
-    },
-    {
-      "id": "m178399319870820",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "5 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
-      "ref": null,
-      "at": "2026-07-14T01:39:58.708Z"
-    },
-    {
-      "id": "m178402237172684",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"How Cara pioneers domain-specific AI for enterprise insurance brokerages with AWS\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers.; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
-      "ref": "2026-06-27T02-07-24-542Z_aws-ml_How_Cara_pioneers_domain-specific_AI_for_enterpris.json",
-      "at": "2026-07-14T09:46:11.726Z"
-    },
     {
       "id": "m178402238123059",
       "from": "iro",
@@ -2635,6 +2499,141 @@
       "text": "5 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
       "ref": null,
       "at": "2026-07-16T10:09:29.499Z"
+    },
+    {
+      "id": "m178422135386794",
+      "from": "ceo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Főnöki újraindítás: \"Contextual Policies in Omnigent: Using session state to bett\" — fix-only",
+      "ref": "2026-07-07T02-01-14-878Z_databricks_Contextual_Policies_in_Omnigent__Using_session_sta.json",
+      "at": "2026-07-16T17:02:33.867Z"
+    },
+    {
+      "id": "m178422138257153",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Presentation: Successful Implementation of the Enterprise AI Factory\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Replace the title and intro to match the existing 'Run AI Privately' content, OR rewrite the article as an explainer about Enterprise AI Factory implementation with a",
+      "ref": "2026-07-06T02-05-53-940Z_ntt-research_Presentation__Successful_Implementation_of_the_Ent.json",
+      "at": "2026-07-16T17:03:02.571Z"
+    },
+    {
+      "id": "m178422139499118",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"How Open Models Are Driving AI Research\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers. HONESTY RULE: name the REAL products/places/organisations from the source; NEVER invent generic UI steps (\"most",
+      "ref": "2026-07-06T18-04-05-097Z_nvidia-blog_How_Open_Models_Are_Driving_AI_Research.json",
+      "at": "2026-07-16T17:03:14.991Z"
+    },
+    {
+      "id": "m178422141197623",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Revisiting ASR Error Correction with Specialized Models\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers. HONESTY RULE: name the REAL products/places/organisations from the source; NEVER invent generic",
+      "ref": "2026-07-06T18-04-05-099Z_apple-ml_Revisiting_ASR_Error_Correction_with_Specialized_M.json",
+      "at": "2026-07-16T17:03:31.976Z"
+    },
+    {
+      "id": "m178422144131113",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Contextual Policies in Omnigent: Using session state to better govern AI agents\" — javítva: CEO instruction (fix ONLY the flaws listed, keep everything else): Add a single H1 heading at the very top of the article body (right after the front-matter) that matches the editorial title 'Contextual Policies in Omnigent: Using session state to better govern AI agents'. Do not rewrite the a",
+      "ref": "2026-07-07T02-01-14-878Z_databricks_Contextual_Policies_in_Omnigent__Using_session_sta.json",
+      "at": "2026-07-16T17:04:01.311Z"
+    },
+    {
+      "id": "m178422151222445",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Meet the Next Generation of Builders: How They Work and What They’re Making\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers.; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "2026-07-07T17-51-02-626Z_salesforce_Meet_the_Next_Generation_of_Builders__How_They_Wor.json",
+      "at": "2026-07-16T17:05:12.224Z"
+    },
+    {
+      "id": "m17842215285813",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Australian Payments Plus moves faster with ChatGPT and Codex\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers.; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "2026-07-08T01-42-24-718Z_openai-blog_Australian_Payments_Plus_moves_faster_with_ChatGPT.json",
+      "at": "2026-07-16T17:05:28.581Z"
+    },
+    {
+      "id": "m178422153435280",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Presentation: Successful Implementation of the Enterprise AI Factory\" (?/10)",
+      "ref": "2026-07-06T02-05-53-940Z_ntt-research_Presentation__Successful_Implementation_of_the_Ent.json",
+      "at": "2026-07-16T17:05:34.352Z"
+    },
+    {
+      "id": "m178422154011048",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"How Open Models Are Driving AI Research\" (?/10)",
+      "ref": "2026-07-06T18-04-05-097Z_nvidia-blog_How_Open_Models_Are_Driving_AI_Research.json",
+      "at": "2026-07-16T17:05:40.110Z"
+    },
+    {
+      "id": "m178422154757177",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Revisiting ASR Error Correction with Specialized Models\" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "2026-07-06T18-04-05-099Z_apple-ml_Revisiting_ASR_Error_Correction_with_Specialized_M.json",
+      "at": "2026-07-16T17:05:47.571Z"
+    },
+    {
+      "id": "m178422154760719",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Contextual Policies in Omnigent: Using session state to better govern AI agents\" — mi a baj: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!); TOO_SHORT: Csak 67 szó (minimum 200 javasolt)",
+      "ref": "2026-07-07T02-01-14-878Z_databricks_Contextual_Policies_in_Omnigent__Using_session_sta.json",
+      "at": "2026-07-16T17:05:47.608Z"
+    },
+    {
+      "id": "m178422155517694",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Meet the Next Generation of Builders: How They Work and What They’re Making\" (?/10)",
+      "ref": "2026-07-07T17-51-02-626Z_salesforce_Meet_the_Next_Generation_of_Builders__How_They_Wor.json",
+      "at": "2026-07-16T17:05:55.176Z"
+    },
+    {
+      "id": "m178422156014131",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Australian Payments Plus moves faster with ChatGPT and Codex\" (?/10)",
+      "ref": "2026-07-08T01-42-24-718Z_openai-blog_Australian_Payments_Plus_moves_faster_with_ChatGPT.json",
+      "at": "2026-07-16T17:06:00.141Z"
+    },
+    {
+      "id": "m178422158009796",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-07-16T17:06:20.098Z"
+    },
+    {
+      "id": "m178422193592374",
+      "from": "social",
+      "to": "team",
+      "kind": "info",
+      "text": "5 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
+      "ref": null,
+      "at": "2026-07-16T17:12:15.923Z"
     }
   ]
 }

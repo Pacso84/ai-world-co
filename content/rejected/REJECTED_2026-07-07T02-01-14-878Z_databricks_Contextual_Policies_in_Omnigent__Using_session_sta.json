@@ -1,35 +1,36 @@
 {
   "_meta": {
-    "written_at": "2026-07-16T09:57:43.351Z",
+    "written_at": "2026-07-16T17:04:01.310Z",
     "writer_provider": "google",
     "writer_model": "gemini-2.5-flash",
-    "writer_cost_usd": 0.0108293,
+    "writer_cost_usd": 0.0118157,
     "original_draft": "2026-07-07T02-01-14-878Z_databricks_Contextual_Policies_in_Omnigent__Using_session_sta.json",
     "source_id": "databricks",
     "source_name": "Databricks Blog (hivatalos)",
     "source_link": "https://www.databricks.com/blog/contextual-policies-omnigent-using-session-state-better-govern-ai-agents",
     "status": "rejected",
-    "rejected_at": "2026-07-16T09:58:28.833Z",
+    "rejected_at": "2026-07-16T17:05:47.573Z",
     "auto_check": {
       "passed": false,
       "issues": [
-        "NO_H1: Nincs H1 (# Cím) a cikkben"
+        "MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!)",
+        "TOO_SHORT: Csak 67 szó (minimum 200 javasolt)"
       ],
-      "wordCount": 984
+      "wordCount": 67
     },
     "ai_review": {
       "decision": "FAIL",
-      "verdict": "Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben",
+      "verdict": "Critical auto-check failures: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!)",
       "skipped_ai": true
     },
-    "reason": "Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben",
+    "reason": "Critical auto-check failures: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!)",
     "can_retry": true,
-    "rework_attempts": 2,
+    "rework_attempts": 1,
     "reworked_from": "REJECTED_2026-07-07T02-01-14-878Z_databricks_Contextual_Policies_in_Omnigent__Using_session_sta.json",
     "requeued_unchanged": false,
-    "ceo_rounds": 1,
-    "ceo_hint": "CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers."
+    "ceo_rounds": 2,
+    "ceo_hint": "CEO instruction (fix ONLY the flaws listed, keep everything else): Add a single H1 heading at the very top of the article body (right after the front-matter) that matches the editorial title 'Contextual Policies in Omnigent: Using session state to better govern AI agents'. Do not rewrite the article — only add the missing H1 and adjust subsequent heading levels if needed."
   },
-  "article_markdown": "---\ntitle: \"AI Agents: What Guardrails Are and Why You Need Them\"\nsubtitle: \"Understand why setting boundaries for your AI tools is crucial for staying in control, whether for work or personal use.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"ai-agents\", \"control\", \"productivity\", \"getting-started\", \"safety\"]\n---\n\nImagine your AI assistant, keen to help, takes the initiative and books a meeting or sends an email based on a half-finished thought. As artificial intelligence tools become more capable and autonomous, they can sometimes act a little *too* independently. This shift means that knowing how to set boundaries for your digital helpers is becoming essential for everyday peace of mind.\n\n## The Rise of AI Agents and the Need for Control\n\nIn the world of AI, we're seeing the emergence of \"AI agents\" (think of these as specialised AI tools that can not only chat but also *do* things, like schedule appointments, send messages, or manage your digital tasks). These agents are designed to be proactive, using other digital tools to perform actions on your behalf. While incredibly powerful, this increased autonomy means there's a greater chance for them to act on incomplete instructions or in ways you didn't quite intend. This is why \"AI guardrails\" are no longer just a technical term but a practical necessity for anyone using these tools.\n\n## What Exactly Are AI Guardrails?\n\nThink of AI guardrails as a set of clear rules or boundaries you establish for your AI agent. Just like traffic rules guide cars to prevent accidents, these guardrails ensure your AI operates safely, efficiently, and exactly how you intend. They prevent the AI from acting too quickly, making errors, or doing something without your explicit approval. It's all about building trust in your AI tools and giving you ultimate control.\n\n## Key Ideas for Setting Boundaries\n\nWhen you set up guardrails for your AI, you'll work with a few important concepts:\n\n*   **AI Agent**: As mentioned, this is an AI that can perform actions using other tools, like writing an email or updating a spreadsheet, not just generating text.\n*   **Contextual Policy**: This is the guardrail itself — a specific rule that checks the current situation, or \"context\", of your conversation before the AI agent is allowed to take an action. For example, it might check if you've already confirmed a detail.\n*   **Session State**: Picture this as the AI's temporary memory for your ongoing conversation. It remembers details like previous messages, tasks you've mentioned, or special flags you've set (such as \"user\\_confirmed\").\n*   **YAML**: This stands for \"YAML Ain't Markup Language\" (a slightly quirky, recursive name!). It's a simple, human-readable way to write configuration rules using indentation to organise information, rather than brackets or tags. Many AI platforms let you define your policies in this straightforward text format.\n\n## Setting Up a Basic Guardrail for Confirmation\n\nLet's look at a common scenario: you want your AI to schedule a meeting, but *only* after you've given it a final, explicit confirmation.\n\n### 1. Find Your AI Platform's Policy Settings\n\nMost customisable AI platforms or agent-building tools will have a dedicated section for \"Policies\", \"Rules\", or \"Configuration.\" You might find an option to directly edit rules in a text field, or upload a file. If you're building a more custom agent, these rules often live in a file, perhaps called `policies.yaml`.\n\n### 2. Write a Simple Rule\n\nUsing your AI platform's policy editor (or a simple text editor), you can add a rule that requires your confirmation before the AI books anything. Here’s how a simple YAML rule might look:\n\n```yaml\npolicies:\n  - name: confirm-before-booking\n    trigger: agent_action          # This rule checks whenever the AI tries to do something\n    condition: session.state.user_confirmed == true # Only proceed if you've said \"yes\"\n    allow: true                    # If the condition is true, let the action happen\n    deny_message: \"I need your explicit confirmation first. Please say 'yes' if you'd like me to book the meeting.\" # AI's reply if condition isn't met\n```\n\n**What each part does:**\n\n*   `name`: A label for your rule, helping you identify it later.\n*   `trigger`: Tells the system *when* to check this rule. `agent_action` means it checks whenever the AI tries to perform an action (like booking a meeting).\n*   `condition`: This is the core of the guardrail. Here, it checks if a \"user\\_confirmed\" flag in the AI's `session.state` is set to `true`. You'd usually set this flag by specifically telling the AI \"yes, confirm that now.\"\n*   `allow`: If the `condition` is met, the AI is allowed to proceed.\n*   `deny_message`: If the `condition` isn't met (i.e., you haven't confirmed), this is the message the AI will respond with, prompting you for the necessary approval.\n\n## What this means for you\n\n*   **In your personal life**: If you use an AI assistant to manage your smart home, schedule personal appointments, or handle messages, setting guardrails can prevent unintended actions. For example, ensure it always asks before ordering groceries or inviting people to your calendar.\n*   **For your business or work**: For professionals and entrepreneurs using AI for customer service, marketing, or task automation, guardrails are crucial. They can ensure your AI always follows brand guidelines, confirms sensitive information before acting, or adheres to legal compliance, protecting your business from mistakes.\n*   **If you're just getting started**: Don't be intimidated! Start by checking your AI tool's settings for any pre-built \"confirmation\" options or simple switches that require approval before an action. Even a basic \"always ask me first\" setting is a form of guardrail.\n\n## Wrap-up\n\nAs AI tools become more integrated into our lives, understanding and implementing guardrails ensures you stay in the driver's seat. These simple rules help manage your AI, giving you control over its actions and ensuring it acts in your best interest. Why not explore your current AI tools' settings today and see if you can implement a basic confirmation rule to get started?",
+  "article_markdown": "---\ntitle: \"AI Agents: What Guardrails Are and Why You Need Them\"\nsubtitle: \"Understand why setting boundaries for your AI tools is crucial for staying in control, whether for work or personal use.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"ai-agents\", \"control\", \"productivity\", \"getting-started\", \"safety\"]\n---\n\n# Contextual Policies in Omnigent: Using session state to better govern AI agents\n\nImagine your AI assistant, keen to help, takes",
   "original_title": "Contextual Policies in Omnigent: Using session state to better govern AI agents"
 }
