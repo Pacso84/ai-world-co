@@ -147,7 +147,16 @@ function extractJsonArray(text) {
   if (start !== -1 && end !== -1 && end > start) {
     t = t.slice(start, end + 1);
   }
-  return JSON.parse(t);
+  const parsed = JSON.parse(t);
+  if (Array.isArray(parsed)) return parsed;
+  // JSON-objektum-mód (Cerebras/GLM-4.7) legfelül objektumot kényszerít:
+  // {"decisions":[...]} borítékból vagy egyetlen döntés-objektumból is
+  // ki kell tudni szedni a tömböt (2026-07-16: "results is not iterable").
+  if (parsed && typeof parsed === 'object') {
+    for (const v of Object.values(parsed)) if (Array.isArray(v)) return v;
+    if ('index' in parsed) return [parsed];
+  }
+  throw new Error('A válaszban nincs JSON-tömb');
 }
 
 // ===================================================================
@@ -161,8 +170,8 @@ RELEVANT topics: AI company news (OpenAI, Anthropic, Google, Meta, etc.), new AI
 NOT RELEVANT: politics, gambling, adult content, military, medical advice, celebrity gossip, comparisons that put down competitors, pure academic research with no practical angle, anything not AI-related.
 
 You will receive a NUMBERED LIST of articles. For EACH article decide relevance.
-Respond ONLY with a JSON array (no markdown, no extra text), one object per article:
-[{"index": 0, "relevant": true, "score": 8, "category": "ai-news", "reason": "brief"}, {"index": 1, "relevant": false, "score": 2, "category": "other", "reason": "brief"}]
+Respond ONLY with a JSON object (no markdown, no extra text) holding one entry per article — do NOT stop until EVERY listed index has an entry:
+{"decisions": [{"index": 0, "relevant": true, "score": 8, "category": "ai-news", "reason": "brief"}, {"index": 1, "relevant": false, "score": 2, "category": "other", "reason": "brief"}]}
 
 Categories: ai-news, how-to, business, work, creative, other.
 Score 1-10 (how well it fits our portal).`;
@@ -173,7 +182,7 @@ async function checkRelevanceBatch(batch) {
     `[${i}] Title: ${it.title}\n    Summary: ${(it.snippet || '').slice(0, 200)}`
   ).join('\n\n');
 
-  const prompt = `Evaluate these ${batch.length} articles. Respond with a JSON array of ${batch.length} objects (index 0 to ${batch.length - 1}).
+  const prompt = `Evaluate these ${batch.length} articles. Respond with {"decisions": [...]} containing exactly ${batch.length} objects (index 0 to ${batch.length - 1}).
 
 ${list}
 ${skillsBlock('rss-scraper')}`;
@@ -335,8 +344,8 @@ async function main() {
     stats.ai_calls++;
     stats.ai_cost_usd += cost || 0;
 
-    if (!ok || !results) {
-      console.log(`   ❌ Batch hiba: ${error || 'AI router elesett'} — ezek a cikkek később újra`);
+    if (!ok || !Array.isArray(results)) {
+      console.log(`   ❌ Batch hiba: ${error || 'AI router elesett vagy nem tömböt adott'} — ezek a cikkek később újra`);
       // NEM jelöljük látottnak -> legközelebb újra próbáljuk
       continue;
     }

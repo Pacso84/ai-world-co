@@ -534,10 +534,16 @@ export async function ask(prompt, options = {}) {
       }
     }
 
+    // GONDOLKODÓ-PADLÓ (2026-07-16): a zai-glm-4.7 reasoning-modell — kis
+    // token-keretnél (pl. pairing 400, seo 500) a TELJES keretet elgondolkodja
+    // és üres választ ad. $0-s modell, a ráhagyás ingyen van → padló alá.
+    // (Ugyanaz a lecke, mint a Gemini thinking-tokenjeinél 2026-07-03.)
+    const effMaxTokens = model === 'zai-glm-4.7' ? Math.max(maxTokens || 2048, 4000) : maxTokens;
+
     // Átmeneti hibákra ugyanazt a modellt újrapróbáljuk (backoff-fal)
     for (let tryNum = 1; tryNum <= MAX_TRANSIENT_RETRIES + 1; tryNum++) {
       try {
-        const response = await caller(prompt, model, { systemPrompt: sysWithLessons, maxTokens, jsonMode });
+        const response = await caller(prompt, model, { systemPrompt: sysWithLessons, maxTokens: effMaxTokens, jsonMode });
 
         // Safety check
         const safety = safetyFilter(response);

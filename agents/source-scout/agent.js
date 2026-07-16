@@ -188,7 +188,10 @@ async function getCandidateOrgs(coverage) {
       const start = text.indexOf('[');
       const end = text.lastIndexOf(']');
       if (start !== -1 && end !== -1) text = text.slice(start, end + 1);
-      const orgs = JSON.parse(text);
+      let orgs = JSON.parse(text);
+      // JSON-objektum-mód (GLM-4.7) borítékot adhat: {"sources":[...]} → kibontjuk
+      if (orgs && typeof orgs === 'object' && !Array.isArray(orgs))
+        orgs = Object.values(orgs).find(Array.isArray) || [];
       if (Array.isArray(orgs) && orgs.length > 0) return { orgs, cost: totalCost };
     } catch {
       if (attempt < 3) console.log(`   ↻ AI válasz csonka — újrapróbálom (${attempt}/3)...`);
