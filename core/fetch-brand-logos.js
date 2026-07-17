@@ -30,6 +30,14 @@ const SLUGS = {
   'NVIDIA': 'nvidia', 'GitHub': 'github', 'Suno.ai': 'suno', 'Suno': 'suno'
 };
 
+// Amelyik cég NINCS a simple-iconsban, de a szintén nyílt svgl-könyvtárban
+// igen (pl. Cohere) — onnan szedjük. Az svgl-logók néha színes fill-lel jönnek;
+// a normalize currentColorra semlegesíti, hogy a csempe márkaszínére fessen.
+const SVGL_SLUGS = {
+  'Cohere': 'cohere',
+  'xAI': 'xai_light'   // az svgl light/dark változatot ad; a light path szín nélküli → currentColorra fest
+};
+
 const companySlug = (c) => c.toLowerCase().replace(/[^a-z0-9]+/g, '-');
 
 // A letöltött SVG-t tintelhetővé + hozzáférhetővé tesszük:
@@ -38,6 +46,17 @@ const companySlug = (c) => c.toLowerCase().replace(/[^a-z0-9]+/g, '-');
 function normalize(svg) {
   return svg
     .replace(/<title>.*?<\/title>/s, '')
+    .replace(/<svg /, '<svg aria-hidden="true" focusable="false" fill="currentColor" ')
+    .trim();
+}
+
+// svgl-logók egyszínűsítése: a beégetett szín-fill-eket currentColorra cseréli,
+// hogy a csempe márkaszíne fesse (mint a simple-icons márkajeleit).
+function normalizeSvgl(svg) {
+  return svg
+    .replace(/<title>.*?<\/title>/s, '')
+    .replace(/fill:\s*#[0-9A-Fa-f]{3,8}/g, 'fill:currentColor')
+    .replace(/fill="#[0-9A-Fa-f]{3,8}"/g, 'fill="currentColor"')
     .replace(/<svg /, '<svg aria-hidden="true" focusable="false" fill="currentColor" ')
     .trim();
 }
@@ -56,6 +75,21 @@ async function main() {
       ok++;
     } catch (e) {
       console.log(`❌ ${company}: ${String(e.message || e).slice(0, 60)}`);
+      fail++;
+    }
+  }
+  // svgl-forrás (amit a simple-icons nem tud)
+  for (const [company, slug] of Object.entries(SVGL_SLUGS)) {
+    try {
+      const r = await fetch(`https://svgl.app/library/${slug}.svg`, { signal: AbortSignal.timeout(20000) });
+      if (!r.ok) { console.log(`❌ ${company} (svgl:${slug}): HTTP ${r.status}`); fail++; continue; }
+      const raw = await r.text();
+      if (!raw.includes('<path')) { console.log(`❌ ${company}: nem SVG-nek tűnik`); fail++; continue; }
+      writeFileSync(join(OUT, `${companySlug(company)}.svg`), normalizeSvgl(raw), 'utf-8');
+      console.log(`✅ ${company} → assets/logos/${companySlug(company)}.svg (svgl)`);
+      ok++;
+    } catch (e) {
+      console.log(`❌ ${company} (svgl): ${String(e.message || e).slice(0, 60)}`);
       fail++;
     }
   }
