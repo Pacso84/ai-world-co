@@ -1,0 +1,52 @@
+{
+  "started_at": "2026-07-17T01:49:27.456Z",
+  "total": 6,
+  "passed": 2,
+  "failed": 4,
+  "auto_check_failed": 3,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.016974,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-07-07T02-01-14-878Z_databricks_Contextual_Policies_in_Omnigent__Using_session_sta.json",
+      "rejected": "REJECTED_2026-07-07T02-01-14-878Z_databricks_Contextual_Policies_in_Omnigent__Using_session_sta.json",
+      "decision": "FAIL",
+      "score": 5,
+      "cost_usd": 0.0036301999999999997
+    },
+    {
+      "writer": "WRITER_2026-07-13T17-47-59-661Z_snowflake_Apache_Ossie__Incubating___The_New_Name_for_Open_S.json",
+      "decision": "FAIL",
+      "reason": "auto-check critical",
+      "skipped_ai": true
+    },
+    {
+      "writer": "WRITER_2026-07-14T01-22-26-177Z_aws-ml_OpenAI_GPT-5_6_Sol__Terra__and_Luna_are_now_genera.json",
+      "decision": "FAIL",
+      "reason": "auto-check critical",
+      "skipped_ai": true
+    },
+    {
+      "writer": "WRITER_2026-07-14T01-22-26-177Z_aws-ml_When_your_brain_works_differently__AI_isn_t_a_luxu.json",
+      "article": "ARTICLE_2026-07-14T01-22-26-177Z_aws-ml_When_your_brain_works_differently__AI_isn_t_a_luxu.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0033459
+    },
+    {
+      "writer": "WRITER_2026-07-14T17-02-21-043Z_openai-blog_How_to_manage_AI_investments_in_the_agentic_era.json",
+      "article": "ARTICLE_2026-07-14T17-02-21-043Z_openai-blog_How_to_manage_AI_investments_in_the_agentic_era.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.004698600000000001
+    },
+    {
+      "writer": "WRITER_2026-07-14T17-02-21-044Z_aws-ml_Scaling_UX_testing_with_Amazon_Nova_Act__A_new_app.json",
+      "decision": "FAIL",
+      "reason": "auto-check critical",
+      "skipped_ai": true
+    }
+  ],
+  "finished_at": "2026-07-17T01:49:51.777Z",
+  "duration_seconds": 24.321
+}

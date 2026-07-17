@@ -1,0 +1,62 @@
+{
+  "_meta": {
+    "written_at": "2026-07-17T01:48:48.665Z",
+    "writer_provider": "google",
+    "writer_model": "gemini-2.5-flash",
+    "writer_cost_usd": 0.0235041,
+    "original_draft": "2026-07-14T01-22-26-177Z_aws-ml_When_your_brain_works_differently__AI_isn_t_a_luxu.json",
+    "source_id": "aws-ml",
+    "source_name": "AWS Machine Learning (hivatalos)",
+    "source_link": "https://aws.amazon.com/blogs/machine-learning/when-your-brain-works-differently-ai-isnt-a-luxury-its-accessibility/",
+    "status": "published",
+    "rejected_at": "2026-07-17T01:43:29.471Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 776
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "This article is well-structured and clearly explains AI desktop assistants for an everyday audience, effectively defining technical terms and offering practical use cases. It adheres to all brand voice and style guidelines, including Australian English spelling.",
+      "_aiCost": 0.0033459,
+      "_provider": "google",
+      "_model": "gemini-2.5-flash",
+      "_attempts": 1
+    },
+    "reason": "Salvaged from a partial AI response.",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "ceo_rounds": 1,
+    "ceo_hint": "CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers. HONESTY RULE: name the REAL products/places/organisations from the source; NEVER invent generic UI steps (\"most platforms\", fictional menu names). If you add a \"try it yourself\" section, use typed example prompts only (2026-07-14 reader complaint lesson).",
+    "reworked_from": "REJECTED_2026-07-14T01-22-26-177Z_aws-ml_When_your_brain_works_differently__AI_isn_t_a_luxu.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-07-17T01:49:38.875Z",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-07-17T01:50:44.318Z",
+    "guide_worthy": false,
+    "pairing_reason": "The article is a generic explainer about the category of AI desktop assistants rather than a specific named tool or feature.",
+    "seo": {
+      "meta_description": "Boost productivity with AI desktop assistants. Learn how smart computer helpers can organize tasks and manage your schedule for a smoother workflow.",
+      "keywords": [
+        "AI desktop assistant",
+        "how to organize tasks with AI",
+        "productivity tools for computer",
+        "AI help for daily tasks",
+        "best AI assistant for PC",
+        "streamline work with AI"
+      ],
+      "seo_score": 6,
+      "suggestions": [
+        "Add specific examples of popular AI desktop assistants to give readers concrete options.",
+        "Include a 'How to' section with step-by-step instructions for setting up a basic assistant.",
+        "Use headers like 'Top Benefits' to break up text and improve readability for search engines."
+      ],
+      "optimised_at": "2026-07-17T01:54:26.070Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Understanding and Using AI Desktop Assistants for Daily Productivity\"\nsubtitle: \"Explore how AI-powered helpers can boost your organisation and streamline tasks on your computer.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"accessibility-ai\", \"productivity\", \"desktop-assistant\", \"getting-started\", \"executive-function\"]\n---\n\n# Understanding and Using AI Desktop Assistants for Daily Productivity\n\nJuggling a busy schedule of emails, meetings, and an ever-growing to-do list can feel overwhelming. What if you had a smart, ever-present helper right on your computer, ready to assist with those tasks that often slip through the cracks? That's exactly what an AI desktop assistant can offer.\n\n## What are AI Desktop Assistants?\n\nAI desktop assistants are software programs that run on your computer, using artificial intelligence to help you manage information, organise tasks, and automate routine actions. Unlike traditional voice assistants that might be tied to a smart speaker or phone, these tools integrate directly with your desktop environment, often sitting discreetly in your menu bar or as a sidebar application. Their increasing sophistication means they can understand complex commands and interact with various apps and documents on your system.\n\n## How these clever helpers work\n\nAt their core, AI desktop assistants use a powerful **large language model (LLM – the brain behind tools like ChatGPT)** to understand what you say or type. When you give them an instruction, known as a **prompt**, they process it, much like talking to a very smart colleague.\n\nFor example, when you ask your assistant to \"summarise today's meeting notes,\" it accesses the relevant document, uses its LLM to identify key points, and then presents them to you in a concise format. Some advanced assistants might also use **RAG (retrieval-augmented generation – think of it as the AI looking up information from your own files or the internet before answering)** to pull specific details from your documents or the web to give you accurate, contextual answers.\n\n## Key capabilities of AI desktop assistants\n\nThese assistants are designed to plug common gaps in daily organisation and focus. Here are a few ways they can help:\n\n*   **Smart Reminders:** Forget juggling multiple calendars or missing deadlines. You can tell your assistant, \"Remind me to send the budget report by 3pm tomorrow,\" and it will log it and alert you precisely when needed.\n*   **Information Summarisation:** Faced with a long email thread or a dense document? Simply highlight the text or share the file and ask your assistant to \"Summarise the key decisions\" or \"Give me the main points.\" It will quickly return a concise bullet-point summary.\n*   **Task Management:** Turn your scattered thoughts into organised action items. Dictate a list of tasks like \"I need to call Maya, draft the client proposal, and book travel,\" and the AI will create separate, trackable items for you.\n*   **Focus Assistance:** If you struggle with distractions, many assistants can help. You can activate a \"focus mode\" by saying, \"Start a 25-minute focus timer,\" and the AI can silence notifications or provide gentle reminders to stay on task.\n*   **Document Retrieval:** Spending too much time searching through folders? Ask your assistant, \"Where is the Q2 sales presentation?\" and it can swiftly locate and open the correct file for you.\n\n## What this means for you\n\n*   **In everyday life**: These assistants can free up valuable mental space. You can delegate tasks like organising shopping lists, setting personal reminders for appointments, or even drafting quick messages to friends or family. This helps reduce cognitive load, allowing you to focus on leisure and personal wellbeing.\n*   **At work or study**: Think of it as a virtual personal assistant. It can track project deadlines, help draft meeting agendas or minutes, and quickly retrieve relevant documents, making it easier to manage complex workloads and stay on top of your professional responsibilities without feeling overwhelmed.\n*   **If you're just getting started**: Don't try to use every feature at once. Pick one specific task that often causes you stress, like remembering deadlines, and use your AI assistant just for that for a week. Once that becomes a habit, gradually introduce another feature, such as email summarisation. Small, consistent steps build confidence and demonstrate the value of these tools.\n\n## Wrap-up\n\nThe increasing availability and power of AI desktop assistants mean they're becoming practical tools for enhancing daily productivity and accessibility for many. By understanding their capabilities and how they process information, you can begin to offload some of your mental burden. Start by trying a single, clear prompt for a task you usually find challenging. You might be surprised at how quickly you notice less mental clutter and more room for the work – or relaxation – you truly enjoy.\n\n---",
+  "original_title": "When your brain works differently, AI isn’t a luxury—it’s accessibility"
+}

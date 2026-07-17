@@ -2571,11 +2571,12 @@
       "audience": "both",
       "level": "beginner",
       "angle": "Create a personal quiz-maker for any topic in under 10 minutes",
-      "status": "todo",
+      "status": "done",
       "icon": "📚",
       "priority": "balance",
       "proposed_at": "2026-07-15T01:23:28.069Z",
-      "proposed_by": "guide-balance"
+      "proposed_by": "guide-balance",
+      "written_at": "2026-07-17T01:51:09.184Z"
     },
     {
       "id": "ask-alexa-to-explain-the-news-headlines-in-simple-terms-ever",
@@ -2585,11 +2586,12 @@
       "audience": "personal",
       "level": "beginner",
       "angle": "Get a 30-second plain-English news roundup without reading",
-      "status": "todo",
+      "status": "done",
       "icon": "📰",
       "priority": "balance",
       "proposed_at": "2026-07-15T01:23:28.069Z",
-      "proposed_by": "guide-balance"
+      "proposed_by": "guide-balance",
+      "written_at": "2026-07-17T01:51:28.646Z"
     },
     {
       "id": "verify-social-media-information-with-perplexity-s-source-che",
@@ -2599,11 +2601,12 @@
       "audience": "personal",
       "level": "beginner",
       "angle": "Use Perplexity to quickly fact-check online claims before you share them.",
-      "status": "todo",
+      "status": "done",
       "icon": "🤖",
       "priority": "balance",
       "proposed_at": "2026-07-16T01:35:24.291Z",
-      "proposed_by": "guide-balance"
+      "proposed_by": "guide-balance",
+      "written_at": "2026-07-17T01:51:45.430Z"
     },
     {
       "id": "compare-features-of-two-products-before-making-a-purchase-wi",
@@ -2613,11 +2616,12 @@
       "audience": "both",
       "level": "beginner",
       "angle": "Use Perplexity to get a side-by-side breakdown of product specifications and user reviews for informed shopping.",
-      "status": "todo",
+      "status": "done",
       "icon": "🤖",
       "priority": "balance",
       "proposed_at": "2026-07-16T01:35:24.291Z",
-      "proposed_by": "guide-balance"
+      "proposed_by": "guide-balance",
+      "written_at": "2026-07-17T01:52:01.978Z"
     },
     {
       "id": "create-a-personalized-learning-plan-for-a-new-hobby-with-gro",
@@ -2627,11 +2631,12 @@
       "audience": "personal",
       "level": "beginner",
       "angle": "Get a step-by-step guide from Grok to learn a new skill like baking or photography.",
-      "status": "todo",
+      "status": "done",
       "icon": "🤖",
       "priority": "balance",
       "proposed_at": "2026-07-16T01:35:24.291Z",
-      "proposed_by": "guide-balance"
+      "proposed_by": "guide-balance",
+      "written_at": "2026-07-17T01:52:16.072Z"
     },
     {
       "id": "summarise-a-long-news-article-into-key-bullet-points-using-g",
@@ -2641,11 +2646,12 @@
       "audience": "both",
       "level": "beginner",
       "angle": "Quickly get the main takeaways from lengthy online articles or reports to save reading time.",
-      "status": "todo",
+      "status": "done",
       "icon": "🤖",
       "priority": "balance",
       "proposed_at": "2026-07-16T01:35:24.291Z",
-      "proposed_by": "guide-balance"
+      "proposed_by": "guide-balance",
+      "written_at": "2026-07-17T01:53:40.927Z"
     },
     {
       "id": "draft-a-simple-cover-letter-for-a-job-application-with-deeps",
@@ -2655,11 +2661,12 @@
       "audience": "both",
       "level": "beginner",
       "angle": "Use DeepSeek's chat to quickly create a clear and concise cover letter tailored to a specific job.",
-      "status": "todo",
+      "status": "done",
       "icon": "🤖",
       "priority": "balance",
       "proposed_at": "2026-07-16T01:35:24.291Z",
-      "proposed_by": "guide-balance"
+      "proposed_by": "guide-balance",
+      "written_at": "2026-07-17T01:53:59.065Z"
     },
     {
       "id": "summarise-a-long-pdf-into-5-bullet-points-with-claude",
@@ -2716,6 +2723,90 @@
       "priority": "balance",
       "proposed_at": "2026-07-16T19:50:51.232Z",
       "proposed_by": "fact-check-reseed"
+    },
+    {
+      "id": "set-up-and-manage-daily-reminders-and-calendar-events-by-voi",
+      "company": "Amazon",
+      "tool": "Alexa+",
+      "title": "Set up and manage daily reminders and calendar events by voice with Alexa+",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "Organize your daily schedule effortlessly by adding and adjusting reminders and calendar entries using only your voice.",
+      "status": "todo",
+      "icon": "🤖",
+      "priority": "balance",
+      "proposed_at": "2026-07-17T01:53:21.848Z",
+      "proposed_by": "guide-balance"
+    },
+    {
+      "id": "use-alexa-to-guide-you-through-cooking-recipes-and-manage-mu",
+      "company": "Amazon",
+      "tool": "Alexa+",
+      "title": "Use Alexa+ to guide you through cooking recipes and manage multiple kitchen timers",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "Turn your Alexa+ into a hands-free kitchen assistant that reads out recipes and keeps track of all your cooking times.",
+      "status": "todo",
+      "icon": "🤖",
+      "priority": "balance",
+      "proposed_at": "2026-07-17T01:53:21.848Z",
+      "proposed_by": "guide-balance"
+    },
+    {
+      "id": "summarize-long-articles-and-reports-from-the-web-or-document",
+      "company": "DeepSeek",
+      "tool": "DeepSeek",
+      "title": "Summarize long articles and reports from the web or documents using DeepSeek",
+      "audience": "both",
+      "level": "beginner",
+      "angle": "Quickly grasp the main points of lengthy texts by having DeepSeek condense them into easy-to-read summaries.",
+      "status": "todo",
+      "icon": "🤖",
+      "priority": "balance",
+      "proposed_at": "2026-07-17T01:53:21.848Z",
+      "proposed_by": "guide-balance"
+    },
+    {
+      "id": "ask-deepseek-to-explain-complex-topics-and-concepts-in-simpl",
+      "company": "DeepSeek",
+      "tool": "DeepSeek",
+      "title": "Ask DeepSeek to explain complex topics and concepts in simple, easy-to-understand language",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "Break down complicated subjects into simple explanations, making learning new things straightforward and accessible.",
+      "status": "todo",
+      "icon": "🤖",
+      "priority": "balance",
+      "proposed_at": "2026-07-17T01:53:21.848Z",
+      "proposed_by": "guide-balance"
+    },
+    {
+      "id": "analyze-customer-reviews-or-social-media-comments-for-positi",
+      "company": "Hugging Face",
+      "tool": "Hugging Face",
+      "title": "Analyze customer reviews or social media comments for positive or negative sentiment using Hugging Face",
+      "audience": "business",
+      "level": "beginner",
+      "angle": "Quickly understand the overall mood of feedback or posts by identifying whether the sentiment is positive, negative, or neutral.",
+      "status": "todo",
+      "icon": "🤖",
+      "priority": "balance",
+      "proposed_at": "2026-07-17T01:53:21.848Z",
+      "proposed_by": "guide-balance"
+    },
+    {
+      "id": "generate-creative-descriptions-for-products-or-social-media-",
+      "company": "Hugging Face",
+      "tool": "Hugging Face",
+      "title": "Generate creative descriptions for products or social media posts using Hugging Face's text generation models",
+      "audience": "both",
+      "level": "beginner",
+      "angle": "Spark creativity by generating engaging and diverse textual descriptions for your online content or product listings.",
+      "status": "todo",
+      "icon": "🤖",
+      "priority": "balance",
+      "proposed_at": "2026-07-17T01:53:21.848Z",
+      "proposed_by": "guide-balance"
     }
   ]
 }

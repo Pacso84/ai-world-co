@@ -1,36 +1,42 @@
 {
   "_meta": {
-    "written_at": "2026-07-16T17:04:01.310Z",
+    "written_at": "2026-07-17T01:47:26.367Z",
     "writer_provider": "google",
     "writer_model": "gemini-2.5-flash",
-    "writer_cost_usd": 0.0118157,
+    "writer_cost_usd": 0.011458399999999999,
     "original_draft": "2026-07-07T02-01-14-878Z_databricks_Contextual_Policies_in_Omnigent__Using_session_sta.json",
     "source_id": "databricks",
     "source_name": "Databricks Blog (hivatalos)",
     "source_link": "https://www.databricks.com/blog/contextual-policies-omnigent-using-session-state-better-govern-ai-agents",
     "status": "rejected",
-    "rejected_at": "2026-07-16T17:05:47.573Z",
+    "rejected_at": "2026-07-17T01:49:32.811Z",
     "auto_check": {
-      "passed": false,
-      "issues": [
-        "MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!)",
-        "TOO_SHORT: Csak 67 szó (minimum 200 javasolt)"
-      ],
-      "wordCount": 67
+      "passed": true,
+      "issues": [],
+      "wordCount": 573
     },
     "ai_review": {
+      "overall_score": 5,
+      "clarity_score": null,
       "decision": "FAIL",
-      "verdict": "Critical auto-check failures: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!)",
-      "skipped_ai": true
+      "issues": [
+        "Incomplete 'What this means for you' section",
+        "Missing a wrap-up/conclusion"
+      ],
+      "verdict": "The article explains complex concepts well in a friendly tone but fails to provide a complete 'What this means for you' section and lacks a proper conclusion, leaving the reader hanging.",
+      "_aiCost": 0.0036301999999999997,
+      "_provider": "google",
+      "_model": "gemini-2.5-flash",
+      "_attempts": 1
     },
-    "reason": "Critical auto-check failures: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!)",
+    "reason": "The article explains complex concepts well in a friendly tone but fails to provide a complete 'What this means for you' section and lacks a proper conclusion, leaving the reader hanging.",
     "can_retry": true,
-    "rework_attempts": 1,
+    "rework_attempts": 2,
     "reworked_from": "REJECTED_2026-07-07T02-01-14-878Z_databricks_Contextual_Policies_in_Omnigent__Using_session_sta.json",
     "requeued_unchanged": false,
     "ceo_rounds": 2,
     "ceo_hint": "CEO instruction (fix ONLY the flaws listed, keep everything else): Add a single H1 heading at the very top of the article body (right after the front-matter) that matches the editorial title 'Contextual Policies in Omnigent: Using session state to better govern AI agents'. Do not rewrite the article — only add the missing H1 and adjust subsequent heading levels if needed."
   },
-  "article_markdown": "---\ntitle: \"AI Agents: What Guardrails Are and Why You Need Them\"\nsubtitle: \"Understand why setting boundaries for your AI tools is crucial for staying in control, whether for work or personal use.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"ai-agents\", \"control\", \"productivity\", \"getting-started\", \"safety\"]\n---\n\n# Contextual Policies in Omnigent: Using session state to better govern AI agents\n\nImagine your AI assistant, keen to help, takes",
+  "article_markdown": "---\ntitle: \"AI Agents: What Guardrails Are and Why You Need Them\"\nsubtitle: \"Understand why setting boundaries for your AI tools is crucial for staying in control, whether for work or personal use.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"ai-agents\", \"control\", \"productivity\", \"getting-started\", \"safety\"]\n---\n\n# Contextual Policies in Omnigent: Using session state to better govern AI agents\n\nImagine your AI assistant, keen to help, takes a simple request and runs with it a little too far, perhaps sharing sensitive details it shouldn't, or performing an action you didn't explicitly authorise. This is where AI agent \"guardrails\" come in handy – they're your way to keep AI tools on the right path and prevent unintended actions.\n\n## What Are AI Agents and Why They Need Boundaries\n\nFirst, let's talk about **AI agents**. Think of an AI agent as a smart assistant that can not only understand your instructions but also take action on its own. Unlike a simple chatbot that just responds to your typed questions, an agent can use different tools – like searching the internet, sending emails, or updating a calendar – to achieve a goal you've given it. For example, you might tell an agent, \"Organise my travel for next month,\" and it could then check flights, book hotels, and add them to your schedule.\n\nWhile powerful, this ability to act means agents need clear boundaries. These boundaries are what we call **guardrails**. Guardrails are like the rules of the road for your AI agent, making sure it stays within safe and appropriate limits. Without them, an agent might, for instance, accidentally book a flight using the wrong credit card, or share your itinerary with everyone in your contact list instead of just your travel companion.\n\n## How Contextual Policies Offer Smarter Control\n\nTraditional guardrails might be quite rigid: \"Never send an email to X.\" But what if you *do* want it to send an email to X, but only under very specific circumstances? This is where **contextual policies** become powerful.\n\nContextual policies are a more advanced type of guardrail that adapts its rules based on the specific situation or the ongoing conversation. They use something called **session state**. Think of **session state** as the AI's memory of your current interaction or \"session.\" It's everything you've discussed or instructed the AI within that single conversation.\n\nHere's how it works:\n1.  **Understanding the Situation:** When you're chatting with an AI agent, it remembers the conversation flow (the session state). If you just told it, \"My client's details are highly confidential,\" the session state now includes that critical piece of information.\n2.  **Applying Smart Rules:** A contextual policy might say, \"If the session state indicates sensitive information has been mentioned, then strictly prevent sharing data outside the immediate conversation.\"\n3.  **Dynamic Protection:** So, if you then accidentally ask the agent, \"Summarise this client information and send it to the team,\" the contextual policy, knowing the data is sensitive from the session state, would intervene and say, \"I cannot share this confidential client information with the team.\" This is much smarter than a blanket ban, as it allows the AI to perform other, non-sensitive tasks for the team.\n\nThis approach means your AI agent isn't just following a static list of do's and don'ts. It's making more informed decisions based on the immediate conversational context, ensuring it acts appropriately moment by moment.\n\n## What this means for you\n\n*   **In everyday life:**",
   "original_title": "Contextual Policies in Omnigent: Using session state to better govern AI agents"
 }

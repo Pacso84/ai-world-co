@@ -1,0 +1,60 @@
+{
+  "_meta": {
+    "written_at": "2026-07-17T01:49:01.617Z",
+    "writer_provider": "google",
+    "writer_model": "gemini-2.5-flash",
+    "writer_cost_usd": 0.011579299999999999,
+    "original_draft": "2026-07-14T17-02-21-043Z_openai-blog_How_to_manage_AI_investments_in_the_agentic_era.json",
+    "source_id": "openai-blog",
+    "source_name": "OpenAI Blog (hivatalos)",
+    "source_link": "https://openai.com/index/managing-ai-investments-in-agentic-era",
+    "status": "published",
+    "rejected_at": "2026-07-14T17:03:37.988Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1390
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "This article is well-written, clear, and provides an excellent step-",
+      "_salvaged": true,
+      "_aiCost": 0.004698600000000001,
+      "_provider": "google",
+      "_model": "gemini-2.5-flash",
+      "_attempts": 1
+    },
+    "reason": "Salvaged from a partial AI response.",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-07-14T17-02-21-043Z_openai-blog_How_to_manage_AI_investments_in_the_agentic_era.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-07-17T01:49:51.752Z",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-07-17T01:50:49.673Z",
+    "guide_worthy": false,
+    "pairing_reason": "The article is a generic overview of using AI agents with existing platforms, not an introduction of a specific new named feature or tool.",
+    "seo": {
+      "meta_description": "Streamline your day: automate daily tasks with AI agents without any coding. Set up smart helpers for emails and chores to reclaim your time.",
+      "keywords": [
+        "automate daily tasks with AI",
+        "AI agents for beginners",
+        "no code AI automation",
+        "how to use AI agents",
+        "digital AI assistant"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Include a specific real-world example workflow (e.g., saving email receipts) to make the 'how-to' concrete.",
+        "Add a brief section explaining the difference between a chatbot and an active agent to clarify user intent.",
+        "Keep headers action-oriented and simple, like 'How to Set Up Your Agent', to maintain accessibility."
+      ],
+      "optimised_at": "2026-07-17T01:54:28.564Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Automate Daily Tasks with AI Agents (No Coding Required)\"\nsubtitle: \"Discover how simple AI helpers can handle repetitive chores, freeing up your time for what matters most.\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"ai-agents\", \"automation\", \"productivity\", \"getting-started\"]\n---\n\n# Automate Daily Tasks with AI Agents (No Coding Required)\n\nImagine having a silent helper that tackles those endless little tasks that eat up your day – replying to routine emails, organising receipts, or even updating your calendar. What if you could set up this helper once and never think about it again?\n\nThat's the power of an AI agent. It's not just a chatbot you talk to; it's a small, smart program designed to act on your behalf, running in the background of your apps and services. Think of it like a digital assistant that knows exactly what to do when you're busy with other things. The best part? You don't need to write any code or understand complex programming. You simply tell it what you need, and it gets to work.\n\n## What are AI Agents and How Do They Help?\n\nAn **AI agent** is a program that can perform specific actions and make simple decisions for you, based on rules you set. Unlike a simple automation that just follows a fixed sequence, an AI agent often has a sprinkle of intelligence, letting it understand context, extract information, or even generate text.\n\nFor example, an agent could:\n*   Read incoming emails and automatically draft a polite \"Thanks, I'll get back to you\" reply.\n*   Monitor your calendar for meeting changes and send you a notification if a critical appointment shifts.\n*   Collect specific information (like order numbers or addresses) from emails and save it into a spreadsheet.\n\nAgents shine when they connect to the digital tools you already use, such as your email (like Gmail), communication apps (like Slack), or cloud storage (like Google Drive). They're not there to replace you, but to handle the repetitive, time-consuming parts of your day, so you can focus on more important, creative, or thoughtful work.\n\n## Setting Up Your First AI Agent in Minutes\n\nLet's walk through a practical example: creating an agent that automatically saves receipts from your emails into a cloud folder, extracting key details along the way.\n\n### Step 1: Choose an Automation Platform\nTo build an AI agent without coding, you'll use a platform that connects different apps and includes AI capabilities. Popular choices include:\n*   **Zapier:** A beginner-friendly platform known for \"Zaps\" (workflows) that connect apps. It now has built-in AI actions.\n*   **Make (formerly Integromat):** Offers more visual and complex workflow building.\n*   **Microsoft Copilot:** For those deeply integrated into Microsoft 365, Copilot can orchestrate tasks.\n*   **Google's AI tools:** Integrated within Google Workspace for specific automations.\n\nFor this guide, we'll use **Zapier** because it's designed for ease of use and integrates AI directly into its workflow builder.\n\n### Step 2: Build a New Workflow\n1.  Go to [zapier.com](https://zapier.com) and sign in. A free account is usually enough to get started.\n2.  Click \"Create Zap\" (Zapier's term for a workflow).\n3.  Give your Zap a clear name, like \"Automated Receipt Saver.\"\n\n### Step 3: Define the Trigger (What Starts the Agent)\nA **trigger** is the specific event that kicks off your AI agent's work. We want our agent to spring into action whenever a new email arrives that looks like a receipt.\n\n1.  In the Zap editor, search for and select **Gmail**.\n2.  Choose \"New Email Matching Search\" as the trigger event.\n3.  In the \"Search String\" field, type: `subject:receipt has:attachment` (This tells Zapier to look for emails with \"receipt\" in the subject and an attachment).\n4.  Click \"Continue\" and test the trigger to make sure it finds a sample email.\n\n### Step 4: Add the AI Step (Smart Processing)\nNow, let's bring in the AI to do some clever work with that email.\n\n1.  Click the **+** button to add an action, then search for **AI by Zapier**.\n2.  Select \"Extract Data from Text.\"\n3.  In the \"Text\" input box, use Zapier's mapping tool to select the \"Body Plain\" (the full text content) of the email from the previous Gmail step.\n4.  In the \"Prompt\" field, tell the AI exactly what you want it to find:\n    *“Extract the total amount, the name of the vendor (seller), and the date of the transaction from this email. Return the data in a clear, structured JSON format.”*\n5.  Click \"Continue\" and test this AI step.\n\nYou'll see the AI return the information cleanly, like this:\n```json\n{\n  \"amount\": \"$72.50\",\n  \"vendor\": \"Local Cafe\",\n  \"date\": \"2024-07-15\"\n}\n```\n\n### Step 5: Save the Processed Information\nFinally, we'll take that extracted data and save it as a PDF file in your chosen cloud storage.\n\n1.  Click the **+** button again to add another action, then search for **Google Drive**.\n2.  Select \"Upload File\" as the action event.\n3.  For the \"File\" field, select the attachment from the original Gmail trigger.\n4.  For the \"File Name,\" use the data extracted by the AI, for example:\n    `Receipt_${vendor}_${date}.pdf` (Zapier will automatically replace `${vendor}` and `${date}` with the actual extracted values.)\n5.  Choose the specific Google Drive folder where you want your receipts saved (e.g., \"My Receipts/2024\").\n6.  Click \"Continue\" and test the entire workflow.\n\nThat's it! Turn your Zap \"On,\" and your first AI agent is live. Now, every time an email containing \"receipt\" in the subject with an attachment lands in your inbox, your agent will automatically:\n*   Read the email.\n*   Use AI to extract key details.\n*   Save the attachment with a smart filename to your Google Drive.\nNo manual saving, no forgotten receipts—just seamless automation.\n\n## Beyond Receipts: More Ways to Use AI Agents Today\n\nOnce you've experienced the ease of automating one task, you'll start seeing opportunities everywhere. Here are three more practical ways to leverage AI agents:\n\n*   **Meeting Summary to Chat:** Connect your calendar to an AI agent that monitors your online meeting platform (like Zoom or Google Meet). After a call, it can use AI to transcribe the audio (or summarise provided notes) and then post a concise, bullet-point summary directly into a team chat channel (like Slack or Microsoft Teams).\n*   **Bill Payment Reminders:** Set up an agent to scan your inbox for utility bills, identify the due date and amount, and then send you a timely reminder a few days before the bill is due, helping you avoid late fees.\n*   **Social Media Content Assistant:** Use an AI agent to take a draft of your weekly blog post or article, extract key ideas, and then automatically generate several short social media posts, complete with relevant hashtags and a link to the full article. It can even schedule them for you.\n\nEach of these setups can take less than 10 minutes to configure and will run continuously, saving you mental effort and valuable time.\n\n## What this means for you\n\n*   **In everyday life:** You can reclaim hours currently spent on tedious admin tasks. Imagine never having to manually save another receipt, compile a shopping list from various notes, or remember to transfer information between different apps. Your digital life becomes smoother and less stressful.\n*   **For your business or work:** Even small teams or solo entrepreneurs can significantly boost productivity. Automate client onboarding emails, follow-up messages, or the organisation of project documents. This frees up staff to focus on higher-value activities like client engagement or strategic planning, effectively creating a 24/7 assistant without hiring extra help.\n*   **If you're just getting started:** Don't try to automate everything at once. Pick one simple, repetitive task that bothers you the most—like the receipt saver. Follow the steps, get it working, and build your confidence. Once you see it delivering real results, you'll naturally find more ways to integrate AI agents into your routine.\n\n## Wrap-up\n\nAI agents are a powerful, accessible tool that can significantly streamline your daily tasks, both personally and professionally. They're not a futuristic concept; they're here now, ready to quietly work for you behind the scenes. Start with one simple task today, set up your first agent in under 10 minutes, and let it run. You'll be amazed at how much lighter your mental load becomes. Pick that one annoying repetitive task, and make it your AI agent's first job!",
+  "original_title": "How to manage AI investments in the agentic era"
+}

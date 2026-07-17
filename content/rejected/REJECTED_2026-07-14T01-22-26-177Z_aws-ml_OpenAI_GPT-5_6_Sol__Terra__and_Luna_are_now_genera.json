@@ -1,35 +1,36 @@
 {
   "_meta": {
-    "written_at": "2026-07-14T01:22:30.141Z",
-    "writer_provider": "cerebras",
-    "writer_model": "gpt-oss-120b",
-    "writer_cost_usd": 0,
+    "written_at": "2026-07-17T01:48:19.769Z",
+    "writer_provider": "google",
+    "writer_model": "gemini-2.5-flash",
+    "writer_cost_usd": 0.011884700000000002,
     "original_draft": "2026-07-14T01-22-26-177Z_aws-ml_OpenAI_GPT-5_6_Sol__Terra__and_Luna_are_now_genera.json",
     "source_id": "aws-ml",
     "source_name": "AWS Machine Learning (hivatalos)",
     "source_link": "https://aws.amazon.com/blogs/machine-learning/openai-gpt-5-6-sol-terra-and-luna-are-now-generally-available-on-amazon-bedrock/",
     "status": "rejected",
-    "rejected_at": "2026-07-14T01:22:55.988Z",
+    "rejected_at": "2026-07-17T01:49:32.885Z",
     "auto_check": {
-      "passed": true,
-      "issues": [],
-      "wordCount": 943
+      "passed": false,
+      "issues": [
+        "MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!)",
+        "TOO_SHORT: Csak 104 szó (minimum 200 javasolt)"
+      ],
+      "wordCount": 104
     },
     "ai_review": {
-      "overall_score": 6,
-      "clarity_score": 5,
       "decision": "FAIL",
-      "issues": [],
-      "verdict": "Salvaged from a partial AI response.",
-      "_salvaged": true,
-      "_aiCost": 0.0045233999999999995,
-      "_provider": "google",
-      "_model": "gemini-2.5-flash",
-      "_attempts": 1
+      "verdict": "Critical auto-check failures: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!)",
+      "skipped_ai": true
     },
-    "reason": "Salvaged from a partial AI response.",
-    "can_retry": true
+    "reason": "Critical auto-check failures: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!)",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "ceo_rounds": 1,
+    "ceo_hint": "CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Provide concrete examples of how Sol, Terra, and Luna can be used in everyday tasks and small-business projects, and include step-by-step instructions for implementing the models in AWS HONESTY RULE: name the REAL products/places/organisations from the source; NEVER invent generic UI steps (\"most platforms\", fictional menu names). If you add a \"try it yourself\" section, use typed example prompts only (2026-07-14 reader complaint lesson).",
+    "reworked_from": "REJECTED_2026-07-14T01-22-26-177Z_aws-ml_OpenAI_GPT-5_6_Sol__Terra__and_Luna_are_now_genera.json",
+    "requeued_unchanged": false
   },
-  "article_markdown": "---\ntitle: \"How to Use OpenAI's New GPT‑5.6 Models on Amazon Bedrock\"\nsubtitle: \"A step‑by‑step guide to accessing Sol, Terra and Luna in AWS and putting them to work in everyday tasks and small‑business projects\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"openai\", \"gpt-5.6\", \"amazon-bedrock\", \"ai-automation\", \"productivity\"]\n---\n\n# How to Use OpenAI's New GPT‑5.6 Models on Amazon Bedrock\n\n**Hook:** Imagine drafting a quick email, summarising a long report, or creating a recipe for dinner with just a few keystrokes. The newest OpenAI models—Sol, Terra and Luna—are now available on Amazon Bedrock, meaning you can call on a very smart AI from the same place you already store your files and run your web apps.\n\n## 1. Get set up on Amazon Bedrock\n\n1. **Log in to the AWS Management Console** (the web portal where you manage all Amazon Web Services).  \n2. **Navigate to “Amazon Bedrock”** in the Services menu.  \n3. **Enable the service** if it isn’t already active – you’ll see a button that says “Enable Bedrock”.  \n4. **Find the OpenAI models** under the “Model provider” tab. You’ll see three new entries: **GPT‑5.6 Sol**, **GPT‑5.6 Terra**, and **GPT‑5.6 Luna**.  \n5. **Select a model** and click “Create model access”. This creates an **API (application‑programming interface) – a way for your software to talk to the AI**.  \n6. **Copy the generated access key**; you’ll need it for the next steps.\n\n> *Tip:* If you’re new to AWS, the free tier lets you try Bedrock with a modest amount of compute without any charge.\n\n## 2. Call the model from a simple script\n\nBelow is a tiny Python snippet that sends a **prompt (the instruction you give to the AI)** and prints the response. You can run it on your laptop or in an AWS Lambda function (a small piece of code that runs in the cloud).\n\n```python\nimport boto3\nimport json\n\n# Initialise a Bedrock client\nbedrock = boto3.client('bedrock-runtime', region_name='us-east-1')\n\n# Choose the model you want – try \"amazon/sol-5.6\" first\nmodel_id = \"amazon/sol-5.6\"\n\nprompt = \"Write a short, friendly reminder email about a meeting tomorrow at 10 am.\"\n\nresponse = bedrock.invoke_model(\n    modelId=model_id,\n    body=json.dumps({\"prompt\": prompt}),\n    accept='application/json',\n    contentType='application/json'\n)\n\nanswer = json.loads(response['body'].read())\nprint(answer['completion'])\n```\n\n**Explanation of key terms**\n\n- **Boto3** – the official Python library for talking to AWS services.  \n- **Lambda** – a serverless compute service; you can run the script without managing a server.  \n- **invoke_model** – the Bedrock command that actually asks the AI to generate text.  \n- **completion** – the part of the response that contains the AI’s generated answer.\n\nYou can swap `model_id` for `amazon/terra-5.6` or `amazon/luna-5.6` to see different behaviour. Sol is tuned for general‑purpose chat, Terra leans towards detailed reasoning, and Luna adds a bit of creative flair.\n\n## 3. Plug the model into everyday tools\n\n### a) Create a quick‑reply assistant in Gmail\n\n1. Install the **Google Workspace Add‑on “Custom Scripts”** (free from the Marketplace).  \n2. Paste the Python code above into a **Google Apps Script** (Google’s built‑in editor).  \n3. Bind the script to a Gmail button labelled “AI Reply”.  \n4. When you click the button, the selected email’s subject line is sent as a prompt, and the AI writes a draft reply you can edit before sending.\n\n### b) Summarise a long PDF in a few seconds\n\n1. Upload the PDF to **Amazon S3** (the storage service).  \n2. Use **Amazon Textract** to extract the raw text; it outputs a plain‑text file.  \n3. Send that text to the GPT‑5.6 Terra model with a prompt like “Summarise the key points in 3 bullet points”.  \n4. Return the summary to your desktop or a Slack channel.\n\n### c) Generate a recipe from whatever’s in the fridge\n\n1. Open a simple web form (HTML + JavaScript) that asks “What ingredients do you have?”  \n2. On submit, send the list to the GPT‑5.6 Luna model with a prompt such as “Create a dinner recipe using these items, under 30 minutes.”  \n3. Display the result on the page. No cooking‑book needed.\n\n## 4. Fine‑tune for a personal touch (optional)\n\nIf you have a recurring style—say, always using informal Aussie slang—you can **fine‑tune** (adjust the model’s behaviour on your own data) a small version of Sol. Upload a CSV of example prompts and ideal responses, then run Bedrock’s fine‑tuning wizard. The result is a model that writes exactly the way you prefer.\n\n> **Note:** Fine‑tuning consumes extra compute credits, so start with the base model and see if it meets your needs first.\n\n## What this means for you\n\n- **For personal use:**  \n  - Draft emails, texts, or social‑media posts in seconds.  \n  - Turn a pile of notes into a tidy summary for studying or budgeting.  \n  - Generate fun, creative content like jokes or short stories for a hobby project.\n\n- **For business or work:**  \n  - Automate routine customer‑service replies without hiring extra staff.  \n  - Build internal tools that quickly turn long reports into executive‑summary bullet points.  \n  - Create prototype chat‑bots for product pages, cutting development time dramatically.\n\n- **If you’re just getting started:**  \n  1. Sign up for an AWS free‑tier account.  \n  2. Follow the “Get set up on Amazon Bedrock” steps above.  \n  3. Run the sample Python script to see the AI in action within a few minutes.\n\n## Wrap‑up\n\nOpenAI’s GPT‑5.6 family on Amazon Bedrock opens a gateway to fast, reliable AI that you can call from familiar AWS services. Whether you want to speed up everyday chores or give your small business a productivity boost, the three models give you flexibility for chat, reasoning and creativity. **Try the simple script today, pick a use case that matters to you, and watch the time you’d normally spend writing or researching shrink dramatically.**",
+  "article_markdown": "---\ntitle: \"Unlock New AI Powers: OpenAI's Sol, Terra & Luna on Amazon Bedrock\"\nsubtitle: \"A practical guide to using OpenAI's latest models for everyday tasks and small business projects through AWS.\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"openai\", \"gpt-5.6\", \"amazon-bedrock\", \"ai-automation\", \"productivity\"]\n---\n\n# Unlock New AI Powers: OpenAI's Sol, Terra & Luna on Amazon Bedrock\n\nImagine quickly drafting an email, simplifying a complex report, or even generating a unique recipe based on what's in your fridge. OpenAI's newest models — Sol, Terra, and Luna — are now available through Amazon Bedrock, opening up powerful AI capabilities directly within your existing cloud",
   "original_title": "OpenAI GPT-5.6 Sol, Terra, and Luna are now generally available on Amazon Bedrock"
 }

@@ -1,0 +1,42 @@
+{
+  "started_at": "2026-07-17T01:52:16.236Z",
+  "total": 5,
+  "passed": 3,
+  "failed": 1,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.0398045,
+  "by_article": [
+    {
+      "writer": "WRITER_GUIDE_build-a-simple-ai-study-buddy-with-apple-intelligence-on-you.json",
+      "article": "ARTICLE_GUIDE_build-a-simple-ai-study-buddy-with-apple-intelligence-on-you.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0046261
+    },
+    {
+      "writer": "WRITER_GUIDE_compare-features-of-two-products-before-making-a-purchase-wi.json",
+      "article": "ARTICLE_GUIDE_compare-features-of-two-products-before-making-a-purchase-wi.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0046132
+    },
+    {
+      "writer": "WRITER_GUIDE_create-a-personalized-learning-plan-for-a-new-hobby-with-gro.json",
+      "article": "ARTICLE_GUIDE_create-a-personalized-learning-plan-for-a-new-hobby-with-gro.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0045984
+    },
+    {
+      "writer": "WRITER_GUIDE_verify-social-media-information-with-perplexity-s-source-che.json",
+      "rejected": "REJECTED_GUIDE_verify-social-media-information-with-perplexity-s-source-che.json",
+      "decision": "FAIL",
+      "score": 6,
+      "cost_usd": 0.0046728
+    }
+  ],
+  "truth_blocked": 1,
+  "finished_at": "2026-07-17T01:53:11.334Z",
+  "duration_seconds": 55.098
+}
