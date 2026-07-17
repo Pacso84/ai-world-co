@@ -1,6 +1,117 @@
 # AI World Co. — közösségi posztok
 
-*Generálva: 2026-07-17T10:03:32.406Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+*Generálva: 2026-07-17T17:08:02.695Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## Convert your Google Slides to videos in 7 additional languages 
+**🔗 https://aiworldhq.com/article/turn-your-google-slides-into-multilingual-videos-in-minutes.html**
+
+**Facebook:**
+Save heaps of time by turning your Google Slides into videos that speak French, German and more automatically. It’s a handy way to share your work with anyone, anywhere. https://aiworldhq.com/article/turn-your-google-slides-into-multilingual-videos-in-minutes.html #GoogleSlides #HowTo
+
+**Instagram:**
+Make your presentations talk in different languages 🗣️. We show you how to turn Google Slides into videos with AI voices, perfect for reaching a wider audience without re-recording.
+
+Link in bio.
+
+#GoogleSlides #AIVoice #VideoCreation #Productivity #TechTips
+
+*Kép-ötlet: A close-up of a laptop screen displaying a simple presentation slide next to a cup of tea.*
+
+---
+
+## Introducing Claude apps gateway for AWS
+**🔗 https://aiworldhq.com/article/how-to-manage-claude-ai-tools-on-aws-with-the-new-apps-gatew.html**
+
+**Facebook:**
+Want a simple way to keep an eye on your team's Claude AI usage and costs in AWS? Our quick guide shows how to set up the Claude Apps Gateway in just a few steps. https://aiworldhq.com/article/how-to-manage-claude-ai-tools-on-aws-with-the-new-apps-gatew.html #AWS #AI
+
+**Instagram:**
+Stop guessing who's using Claude AI in AWS
+Our step‑by‑step guide lets you see who’s running jobs, set budgets and apply policies from one dashboard.
+#AWS
+#ClaudeAI
+#AIGovernance
+#CloudTools
+Link in bio.
+
+*Kép-ötlet: A laptop screen displaying the Claude Apps Gateway dashboard, with a coffee mug beside it for a relaxed workspace feel.*
+
+---
+
+## Aurora 1.5: Extending open foundation models for weather and Earth-system applications
+**🔗 https://aiworldhq.com/article/how-to-use-ai-for-smarter-weather-and-energy-decisions-every.html**
+
+**Facebook:**
+Use AI to turn today’s forecast into a simple plan – like timing your heating or scheduling garden watering to save energy. Find out how in just 5 minutes. https://aiworldhq.com/article/how-to-use-ai-for-smarter-weather-and-energy-decisions-every.html #weatherAI #energysaving
+
+**Instagram:**
+Turn your weather app into a personal planner.
+With Aurora 1.5 you get AI‑driven tips – like when to run the dishwasher or close windows – to cut your energy bill. ☀️
+Link in bio.
+#weatherAI
+#energySaving
+#dailyPlanning
+#AIforEveryone
+
+*Kép-ötlet: A relaxed person checking a phone with a weather forecast while a garden hose is turned off in bright sunlight.*
+
+---
+
+## ChatGPT is now a partner for your most ambitious work
+**🔗 https://aiworldhq.com/article/how-to-turn-big-goals-into-finished-work-with-chatgpt-work.html**
+
+**Facebook:**
+Got a big project you’re not sure where to start? ChatGPT Work breaks it into tiny, doable steps and helps you keep moving forward. Give it a go and watch progress pile up. https://aiworldhq.com/article/how-to-turn-big-goals-into-finished-work-with-chatgpt-work.html #productivity #AI
+
+**Instagram:**
+Turn big goals into daily wins.
+ChatGPT Work splits your big project into simple steps and nudges you forward, so nothing stays stuck.
+#productivity
+#AIassist
+#timemanagement
+#AItools
+Link in bio.
+
+*Kép-ötlet: A person at a desk with a laptop, a sticky note showing a small task, and a larger project outline in the background.*
+
+---
+
+## GPT-5.6: Frontier intelligence that scales with your ambition
+**🔗 https://aiworldhq.com/article/how-to-use-ai-to-turn-your-rough-notes-into-polished-writing.html**
+
+**Facebook:**
+Tired of messy notes that need a rewrite? AI can tidy them up in minutes while keeping your voice. Learn the simple steps to get polished writing fast. https://aiworldhq.com/article/how-to-use-ai-to-turn-your-rough-notes-into-polished-writing.html #writing #productivity
+
+**Instagram:**
+From scribble to sleek in seconds
+Learn a step‑by‑step AI trick that cleans up drafts without losing your tone – great for emails, essays or quick texts.
+#AI
+#writingtips
+#productivity
+#Australia
+Link in bio.
+
+*Kép-ötlet: A tidy desk with a handwritten note on one side and a laptop screen showing the same note transformed into clean, polished text.*
+
+---
+
+## Enhancing enterprise inference on Amazon SageMaker HyperPod with data capture, Hugging Face, NVMe, and Route 53 integration
+**🔗 https://aiworldhq.com/article/how-to-use-ai-to-build-a-personal-knowledge-base-without-the.html**
+
+**Facebook:**
+Tired of scattered notes? Learn a simple AI‑powered way to turn your emails, voice memos and ideas into a searchable personal knowledge base. https://aiworldhq.com/article/how-to-use-ai-to-build-a-personal-knowledge-base-without-the.html #productivity #AI
+
+**Instagram:**
+Turn cluttered notes into a smart, searchable brain.
+Let AI organise your emails, voice memos and ideas so you always find what you need.
+#AI
+#productivity
+#knowledgebase
+Link in bio.
+
+*Kép-ötlet: A tidy desk with a laptop showing notes flowing into a single searchable cloud icon.*
 
 ---
 
