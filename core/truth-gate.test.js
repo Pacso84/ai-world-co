@@ -65,4 +65,11 @@ const g4 = await truthGate(draft('Menj a [Copilotra](https://copilot.microsoft.c
 assert.equal(g4.pass, true, 'hiteles cikk átmegy');
 assert.equal(g4.warnings.length, 1, 'timeout-link csak figyelmeztetés');
 
-console.log('✅ truth-gate.test: mind a 6 blokk átment');
+// --- 7. ellenőrzött-név lista bekerül a bíró promptjába (Alexa+ FP ellen) ---
+import { aiTruthVerdict } from './truth-gate.js';
+let seenPrompt = '';
+await aiTruthVerdict('Alexa+ is great.', { title: 't', knownNames: ['Alexa+', 'ChatGPT'] }, async (p) => { seenPrompt = p; return { text: '{"credible":true,"problems":[]}', costUsd: 0 }; });
+assert.ok(seenPrompt.includes('VERIFIED-REAL NAMES'), 'a bíró promptja tartalmazza az ellenőrzött-név blokkot');
+assert.ok(seenPrompt.includes('Alexa+'), 'Alexa+ a promptban van (nem minősül kitaláltnak)');
+
+console.log('✅ truth-gate.test: mind a 7 blokk átment');

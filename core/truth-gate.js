@@ -98,8 +98,25 @@ FLAG (credible=false) only these, and only when you are reasonably sure:
 
 DO NOT flag: general advice; example prompts the reader should type; honest hedged wording ("look for", "usually", "check the pricing page"); simplified but real flows; things you merely cannot verify. When unsure, let it pass — the quality reviewer already ran.
 
+VERIFIED-REAL product & company names are supplied to you below. NEVER flag the mere existence of a name on that list as invented, even if it looks new to you (e.g. recently launched products) — your training may predate it. You MAY still flag invented features, URLs, prices or UI attributed to those products.
+
 Respond ONLY with JSON:
 {"credible": true/false, "problems": ["specific fabricated claim + why", ...], "confidence": 1-10}`;
+
+// A projekt ELLENŐRZÖTT terméknév-listája (website/tool-links.json) — ezt
+// átadjuk a bírónak, hogy a friss, valós termékeket (pl. Alexa+, 2025.02.)
+// NE minősítse kitaláltnak a saját, elavuló tudása alapján (2026-07-17
+// tanulság: a Gemini "Alexa+ is invented"-et írt egy valós termékre).
+let _knownNamesCache = null;
+export function knownRealNames() {
+  if (_knownNamesCache) return _knownNamesCache;
+  try {
+    const tl = JSON.parse(readFileSync(join(ROOT, 'website', 'tool-links.json'), 'utf-8'));
+    const names = new Set([...Object.keys(tl.tools || {}), ...Object.keys(tl.companies || {})]);
+    _knownNamesCache = [...names].filter(Boolean).sort();
+  } catch { _knownNamesCache = []; }
+  return _knownNamesCache;
+}
 
 function parseVerdict(text) {
   let t = String(text || '').trim().replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/, '');
@@ -112,8 +129,10 @@ function parseVerdict(text) {
 
 export async function aiTruthVerdict(markdown, meta = {}, askFn) {
   const head = `Title: ${meta.title || ''}\nTool: ${meta.tool || '-'} | Company: ${meta.company || '-'} | Type: ${meta.type || 'news'}`;
+  const known = (meta.knownNames || knownRealNames());
+  const knownBlock = known.length ? `\n\n=== VERIFIED-REAL NAMES (do NOT flag their existence as invented) ===\n${known.join(', ')}` : '';
   const body = String(markdown || '').slice(0, 14000);
-  const response = await askFn(`${head}\n\n=== ARTICLE MARKDOWN ===\n${body}`, {
+  const response = await askFn(`${head}${knownBlock}\n\n=== ARTICLE MARKDOWN ===\n${body}`, {
     agentName: 'truth',
     systemPrompt: JUDGE_SYSTEM,
     maxTokens: 6000,          // Gemini gondolkodási tokenjei is ebből fogynak!
