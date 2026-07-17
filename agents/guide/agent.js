@@ -476,7 +476,10 @@ async function runCoverMode() {
 }
 
 async function loadLessons() {
-  const hits = await recallSemantic('guide structure clarity steps beginners common mistakes rejection', { scope: 'guide', limit: 6 });
+  // A lekérdezés a SZERKEZETI és az ŐSZINTESÉG-leckéket is lefedi, hogy a
+  // kitaláltság-tanulságok (pl. paper/vállalati funkció ≠ fogyasztói termék)
+  // is megbízhatóan előjöjjenek, ne csak a szerkezeti hibák (2026-07-18).
+  const hits = await recallSemantic('guide structure clarity steps beginners common mistakes rejection; honesty do not invent tools products apps URLs prices UI; fabricated product from research paper or enterprise feature', { scope: 'guide', limit: 8 });
   if (!hits.length) return '';
   const reasons = [...new Set(hits.map(h => h.text))].slice(0, 8);
   return `\n\nLESSONS FROM PAST FEEDBACK (avoid these):\n${reasons.map(r => `- ${r}`).join('\n')}`;

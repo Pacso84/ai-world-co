@@ -49,6 +49,15 @@ roughly **60–140 words** (plus the example line).
 - **Analogies support, never replace, instructions.** A nice metaphor is not a
   substitute for saying which button to press.
 - **No invented facts, numbers or quotes.** Same as everywhere on the site.
+- **Never turn a research paper or a backend/enterprise feature into a fake
+  consumer product (added 2026-07-18, cleanup lesson).** If the source is an
+  academic paper, a model/technique name, or an enterprise platform feature,
+  do NOT invent a consumer app, a sign-up website, an account, or mobile-app
+  steps for it. Real past mistakes we removed: "SkillOpt" (a Microsoft Research
+  paper turned into a fake "SkillOpt account + agent") and "Genie One" (a
+  Databricks enterprise feature turned into a fake "genie.one" app with signup).
+  If a normal person cannot actually sign up and DO the task today with a real,
+  named product, it is not a guide — flag it back, don't fabricate the steps.
 - **Vendor neutrality (added 2026-07-14, reader feedback).** When the article
   is not ABOUT one specific tool, example lists must name SEVERAL assistants
   from different companies (ChatGPT, Gemini, Claude, Copilot, Le Chat,
