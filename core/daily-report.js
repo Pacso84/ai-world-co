@@ -170,6 +170,13 @@ async function main() {
     const tf = flog[today()] || [];
     if (tf.length) lines.push(`🔧 Önjavító: ${tf.length} hibát magamtól kijavítottam (pl. ${tf[0].slice(0, 60)}…)`);
   } catch { /* még nincs javítás-napló */ }
+  // KÖZELI-TÉMA-ŐR összegzés (2026-07-18): hány ismétlődő útmutató-témát
+  // szűrtünk ki, mielőtt megíródott volna.
+  try {
+    const dlog = JSON.parse(readFileSync(join(ROOT, 'memory', 'topic-dedup-log.json'), 'utf-8'));
+    const dd = dlog[today()] || [];
+    if (dd.length) lines.push(`🔁 Ismétlődő téma kiszűrve: ${dd.length} (pl. „${(dd[0].rejected || '').slice(0, 45)}” ≈ „${(dd[0].closest || '').slice(0, 45)}”)`);
+  } catch { /* még nincs dedup-napló */ }
   // HITELESSÉG-KAPU összegzés (2026-07-16): mit fogott a publikálás előtti
   // hallucináció-szűrő — blokk = rejected-be ment, hold = bíró-hiba, várakozik.
   try {

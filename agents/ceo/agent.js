@@ -521,10 +521,17 @@ async function main() {
       // 2) KIEGYENLÍTÉS: a lemaradó cégeket felhozzuk a küszöbig (önkorlátozó:
       //    ha egy cég eléri a célt a backlogban, már nem ad többet hozzá).
       await runAgent('agents/guide/agent.js', ['--balance', String(slots + 4)]);
-      // 3) Ha még kevés a téma a slotokhoz, általános ötletelés (general útmutatók).
-      if (countTodoGuideTopics() < slots) {
-        console.log('   💡 Kevés a téma a slotokhoz — ötletelés (guide --ideas)…');
-        await runAgent('agents/guide/agent.js', ['--ideas', String(slots + 5)]);
+      // 3) TÉMA-PUFFER (2026-07-18, user: "az útmutatók sokasodjanak"): nem csak
+      //    az aznapi slotokra, hanem egy egészséges PUFFERRE töltünk fel, hogy a
+      //    téma-sor SOHA ne ürüljön ki (júl. 15-én csak 4 guide ment a 6 helyett,
+      //    mert kifogyott a téma). A közeli-téma-őr közben kiszűri az ismétlést,
+      //    ezért kicsit többet kérünk, mint a hiány (a dup-eldobás ne éheztessen).
+      const bufferTarget = LIMITS.guide_topic_buffer_target ?? 16;
+      const todoNow = countTodoGuideTopics();
+      if (todoNow < Math.max(slots, bufferTarget)) {
+        const need = Math.max(slots, bufferTarget) - todoNow;
+        console.log(`   💡 Téma-puffer feltöltése (van ${todoNow}, cél ${bufferTarget}) — ötletelés…`);
+        await runAgent('agents/guide/agent.js', ['--ideas', String(need + 3)]);
       }
       const todo = countTodoGuideTopics();
       const writeN = Math.min(slots, todo);

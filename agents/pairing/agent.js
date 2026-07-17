@@ -173,7 +173,10 @@ async function main() {
   console.log(`🔎 ${news.length} hír osztályozása${args.dry ? ' (DRY)' : ''}\n`);
 
   const topics = loadTopics();
-  let worthy = 0, linked = 0, skip = 0, cost = 0;
+  // KÖZELI-TÉMA-ŐR referencia: a témalista + a KÉSZ guide-ok címei (2026-07-18)
+  const { isNearDuplicateTitle, allExistingGuideTitles, logDedup } = await import('../../core/topic-dedup.js');
+  const existingTitles = allExistingGuideTitles();
+  let worthy = 0, linked = 0, skip = 0, cost = 0, nearDup = 0;
 
   for (const n of news) {
     const title = (n.data.original_title || n.file).slice(0, 55);
@@ -203,6 +206,20 @@ async function main() {
       continue;
     }
 
+    // KÖZELI-TÉMA-ŐR (2026-07-18): a szó szerinti egyezésen túl a JELENTÉSBEN
+    // közeli témát is kiszűrjük ("Clear Action Plans" ≈ "Action Plans") — a hír
+    // a legközelebbi meglévő guide-ra mutat, NEM születik ismétlődő téma.
+    const near = await isNearDuplicateTitle(parsed.title || n.data.original_title || '', existingTitles);
+    if (near.duplicate) {
+      console.log(`🔁 KÖZELI TÉMA már van, nem duplikálok: ${title}…\n     → hasonló: "${near.closest?.title?.slice(0, 50)}" (${(near.closest?.score || 0).toFixed(2)})`);
+      if (!args.dry) {
+        markNews(n, { guide_worthy: true, pairing_reason: `near-duplicate of: ${near.closest?.title || ''}`.slice(0, 120) });
+        logDedup({ source: 'pairing', rejected: (parsed.title || '').slice(0, 80), closest: near.closest?.title?.slice(0, 80), score: +(near.closest?.score || 0).toFixed(3) });
+      }
+      nearDup++;
+      continue;
+    }
+
     // Útmutatható, ÚJ → új téma + kereszthivatkozás
     const id = uniqueId(slugify(parsed.title || n.data.original_title), topics.topics);
     console.log(`📘 ÚTMUTATHATÓ (új): ${title}…\n     → új téma: "${(parsed.title || '').slice(0, 60)}" [${id}]`);
@@ -228,13 +245,13 @@ async function main() {
   if (!args.dry) saveTopics(topics);
 
   console.log('─'.repeat(60));
-  console.log(`📊 PÁROSÍTÁS: ${worthy} új téma, ${linked} meglévőre kötve, ${skip} nem útmutatható | költség $${cost.toFixed(4)}`);
+  console.log(`📊 PÁROSÍTÁS: ${worthy} új téma, ${linked} meglévőre kötve, ${nearDup} közeli-ismétlés kiszűrve, ${skip} nem útmutatható | költség $${cost.toFixed(4)}`);
   if (worthy > 0 && !args.dry) console.log(`✨ ${worthy} új téma a guide-topics.json-ban — az Útmutató-agent megírja: node agents/guide/agent.js --limit ${worthy}`);
 
   if (!args.dry) {
     if (!existsSync(LOGS_DIR)) mkdirSync(LOGS_DIR, { recursive: true });
     writeFileSync(join(LOGS_DIR, `pairing_${new Date().toISOString().replace(/[:.]/g, '-')}.json`),
-      JSON.stringify({ worthy, linked, skip, cost, at: new Date().toISOString() }, null, 2), 'utf-8');
+      JSON.stringify({ worthy, linked, skip, nearDup, cost, at: new Date().toISOString() }, null, 2), 'utf-8');
   }
 }
 

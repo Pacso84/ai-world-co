@@ -217,6 +217,10 @@ async function proposeCompanyTopics(needs, store, brandContext) {
   const existingByCompany = {};
   for (const t of store.topics) if (t.company) (existingByCompany[normCompany(t.company)] ||= []).push(t.title);
   const usedIds = new Set(store.topics.map(t => t.id).filter(Boolean));
+  // KÖZELI-TÉMA-ŐR (2026-07-18) — a cég-lefedettség témái se ismétlődjenek
+  const { isNearDuplicateTitle, allExistingGuideTitles, logDedup } = await import('../../core/topic-dedup.js');
+  const dedupRef = allExistingGuideTitles();
+  let nearDupSkipped = 0;
 
   const ask_lines = needs.map(n => {
     const have = (existingByCompany[normCompany(n.company)] || []).slice(0, 8).map(t => `"${t}"`).join(', ') || '(none yet)';
@@ -246,7 +250,14 @@ Return ONLY the JSON array (${total} items), each with the correct "company" and
     const title = (it.title || '').toString().trim();
     if (!title || title.length < 12) continue;
     if (seenTitles.has(normTitle(title))) continue;
+    const near = await isNearDuplicateTitle(title, dedupRef);
+    if (near.duplicate) {
+      nearDupSkipped++;
+      logDedup({ source: 'guide-balance', rejected: title.slice(0, 80), closest: near.closest?.title?.slice(0, 80), score: +(near.closest?.score || 0).toFixed(3) });
+      continue;
+    }
     seenTitles.add(normTitle(title));
+    dedupRef.push(title);
     const id = uniqueId(slugify(title), usedIds);
     store.topics.push({
       id,
@@ -261,7 +272,8 @@ Return ONLY the JSON array (${total} items), each with the correct "company" and
     });
     added++;
   }
-  return { added, cost: res.costUsd || 0 };
+  if (nearDupSkipped) console.log(`   🔁 ${nearDupSkipped} közeli-ismétlés cég-témát kiszűrtem.`);
+  return { added, cost: res.costUsd || 0, nearDupSkipped };
 }
 
 async function runBalanceMode(limit, brandContext) {
@@ -349,6 +361,11 @@ function uniqueId(base, used) {
 async function proposeNewTopics(count, store, brandContext) {
   const existingTitles = new Set(store.topics.map(t => normTitle(t.title)));
   const usedIds = new Set(store.topics.map(t => t.id).filter(Boolean));
+  // KÖZELI-TÉMA-ŐR (2026-07-18): a JELENTÉSBEN közeli ötleteket is kiszűrjük,
+  // nem csak a szó szerint azonosakat — a kész guide-ok címeivel is összevetve.
+  const { isNearDuplicateTitle, allExistingGuideTitles, logDedup } = await import('../../core/topic-dedup.js');
+  const dedupRef = allExistingGuideTitles();
+  let nearDupSkipped = 0;
   // A meglévő címek egy részét megmutatjuk, hogy NE ismételje őket
   const sample = store.topics.slice(-25).map(t => `- ${t.title}`).join('\n');
 
@@ -383,8 +400,16 @@ Return ONLY the JSON array (${count + 4} items).`;
   for (const it of raw) {
     const title = (it.title || '').toString().trim();
     if (!title || title.length < 12) continue;
-    if (existingTitles.has(normTitle(title))) continue;     // már van ilyen
+    if (existingTitles.has(normTitle(title))) continue;     // már van ilyen (szó szerint)
+    // JELENTÉSBEN közeli-e valamely meglévő guide-hoz? (dedupRef + a batch eddigi címei)
+    const near = await isNearDuplicateTitle(title, dedupRef);
+    if (near.duplicate) {
+      nearDupSkipped++;
+      logDedup({ source: 'guide-ideas', rejected: title.slice(0, 80), closest: near.closest?.title?.slice(0, 80), score: +(near.closest?.score || 0).toFixed(3) });
+      continue;
+    }
     existingTitles.add(normTitle(title));                    // a mostani batch-en belül se duplázzon
+    dedupRef.push(title);                                    // a batch új címei is referencia
     const id = uniqueId(slugify(title), usedIds);
     store.topics.push({
       id,
@@ -402,7 +427,8 @@ Return ONLY the JSON array (${count + 4} items).`;
     added++;
     if (added >= count) break;
   }
-  return { added, cost: res.costUsd || 0 };
+  if (nearDupSkipped) console.log(`   🔁 ${nearDupSkipped} közeli-ismétlés ötletet kiszűrtem (nem duplikálunk témát).`);
+  return { added, cost: res.costUsd || 0, nearDupSkipped };
 }
 
 async function runIdeasMode(count, brandContext) {

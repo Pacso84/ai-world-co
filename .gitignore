@@ -29,6 +29,10 @@ agents/*/memory.json.bak
 agents/*/cache/
 agents/*/output/
 
+# Közeli-téma-őr embedding-cache (2026-07-18): ingyen, inkrementálisan
+# újraépül; futásonként változna → ne szemetelje a git-történetet.
+guides/topic-embeddings.json
+
 # Build / dist (generált, újraépíthető)
 dist/
 build/
