@@ -10,6 +10,16 @@
 // NEM a pipeline része — kézzel futtatjuk, ha frissíteni kell:
 //   node core/fetch-brand-logos.js
 // A letöltött SVG-k STATIKUSAK (kis fájl), commitolva vannak.
+//
+// ── LOGÓ-SZABÁLY (2026-07-18, user: "ezt is szabályba a memóriába") ──
+// 1. Cég-logót SOHA nem rajzolunk kézzel / nem találunk ki (pontatlan lenne
+//    + védjegy). Csak hiteles, NYÍLT forrásból.
+// 2. Forrás-sorrend: (a) simple-icons (CC0 közkincs), (b) svgl (svgl.app) —
+//    ez utóbbit a normalizeSvgl() currentColorra semlegesíti.
+// 3. MINDIG helyben tároljuk + a build build-időben INLINE ágyazza → 0 külső
+//    hivatkozás futásidőben. Egyszínű, a csempe márkaszínére (--gc) festve.
+// 4. Ha egy cég EGYIK nyílt forrásban sincs → márkaszín-MONOGRAM a build.js
+//    companyGlyph()-ben (betű, nem logó-grafika), NEM kitalált logó.
 // ===================================================================
 
 import { writeFileSync, mkdirSync, existsSync } from 'fs';
