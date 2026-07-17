@@ -1358,13 +1358,14 @@
       "audience": "both",
       "level": "intermediate",
       "angle": "Focus on training AI agent skills using SkillOpt",
-      "status": "done",
+      "status": "removed",
       "icon": "🆕",
       "source_news": {
         "file": "ARTICLE_2026-06-30T18-26-47-624Z_microsoft-research_SkillOpt__Agent_skills_as_trainable_parameters.json",
         "title": "SkillOpt: Agent skills as trainable parameters"
       },
-      "written_at": "2026-07-03T01:56:01.577Z"
+      "written_at": "2026-07-03T01:56:01.577Z",
+      "removed_reason": "kitalált termék (genie.one app / SkillOpt fiók) — 2026-07-18 levéve"
     },
     {
       "id": "how-to-get-quick-summaries-from-long-documents-with-claude",
@@ -2510,13 +2511,14 @@
       "audience": "business",
       "level": "beginner",
       "angle": "Using Genie One's mobile app for quick data-driven decisions",
-      "status": "done",
+      "status": "removed",
       "icon": "🆕",
       "source_news": {
         "file": "ARTICLE_2026-07-15T01-19-07-585Z_databricks_Take_insights_anywhere_with_Genie_One_on_mobile.json",
         "title": "Take insights anywhere with Genie One on mobile"
       },
-      "written_at": "2026-07-15T01:21:41.757Z"
+      "written_at": "2026-07-15T01:21:41.757Z",
+      "removed_reason": "kitalált termék (genie.one app / SkillOpt fiók) — 2026-07-18 levéve"
     },
     {
       "id": "how-to-use-claude-to-draft-a-polite-work-email-in-5-minutes",
@@ -2807,6 +2809,34 @@
       "priority": "balance",
       "proposed_at": "2026-07-17T01:53:21.848Z",
       "proposed_by": "guide-balance"
+    },
+    {
+      "id": "create-your-own-custom-gpt-in-chatgpt-no-coding",
+      "company": "OpenAI",
+      "tool": "ChatGPT",
+      "title": "Create Your Own Custom GPT in ChatGPT (No Coding)",
+      "angle": "Give ChatGPT a specific job once and reuse it: build a simple custom GPT that follows your instructions every time — the real, no-code way to \"add a skill\".",
+      "audience": "both",
+      "level": "beginner",
+      "status": "todo",
+      "icon": "🤖",
+      "priority": "balance",
+      "proposed_at": "2026-07-17T19:37:17.427Z",
+      "proposed_by": "junk-tile-reseed"
+    },
+    {
+      "id": "analyse-a-spreadsheet-by-chatting-with-ai-on-your-phone",
+      "company": "",
+      "tool": "",
+      "title": "Analyse a Spreadsheet by Chatting with AI on Your Phone",
+      "angle": "Upload a CSV or spreadsheet to a free AI assistant on your phone and ask plain-English questions about your numbers — no formulas needed.",
+      "audience": "both",
+      "level": "beginner",
+      "status": "todo",
+      "icon": "🤖",
+      "priority": "balance",
+      "proposed_at": "2026-07-17T19:37:17.429Z",
+      "proposed_by": "junk-tile-reseed"
     }
   ]
 }
