@@ -542,8 +542,15 @@ body {
 .brandtile { display:flex; flex-direction:column; align-items:center; text-align:center; gap:9px; background:var(--card); border:1px solid var(--line); border-top:3px solid var(--gc); border-radius:var(--radius-sm); padding:18px 12px 15px; text-decoration:none; color:var(--ink); transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease; }
 .brandtile:hover { transform:translateY(-4px); box-shadow:0 18px 36px -22px color-mix(in srgb,var(--gc) 55%, rgba(28,26,22,.5)); }
 .brandtile__i { width:56px; height:56px; border-radius:16px; display:flex; align-items:center; justify-content:center; font-size:30px; line-height:1;
-  background:linear-gradient(135deg, color-mix(in srgb,var(--gc) 22%, #fff), color-mix(in srgb,var(--gc) 42%, #fff));
+  color:color-mix(in srgb,var(--gc) 82%, #23201c);   /* a márkajel (SVG) színe — kissé mélyítve a kontrasztért */
+  background:linear-gradient(135deg, color-mix(in srgb,var(--gc) 18%, #fff), color-mix(in srgb,var(--gc) 34%, #fff));
   border:1px solid color-mix(in srgb,var(--gc) 40%, transparent); box-shadow:0 8px 18px -10px color-mix(in srgb,var(--gc) 65%, transparent); }
+.brandtile__i svg { width:30px; height:30px; fill:currentColor; display:block; }
+.brandtile__mono { font-family:'Schibsted Grotesk',sans-serif; font-weight:800; font-size:19px; letter-spacing:-.5px; line-height:1; }
+.pill__i .brandtile__mono { font-size:.95em; }
+/* Szekció-fejléc pill: a beágyazott márkajel a szöveg méretére igazodik */
+.pill__i { display:inline-flex; align-items:center; }
+.pill__i svg { width:1.05em; height:1.05em; fill:currentColor; vertical-align:-0.15em; }
 .brandtile__n { font-family:'Schibsted Grotesk',sans-serif; font-weight:800; font-size:14px; }
 .brandtile__c { font-size:11px; font-weight:700; color:var(--gc); }
 @media(max-width:560px){ .gtiles{ grid-template-columns:repeat(2,1fr); } .guides-cta{ flex-wrap:wrap; } .brandtiles{ grid-template-columns:repeat(3,1fr); } }

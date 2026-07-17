@@ -1165,6 +1165,40 @@ const COMPANY_ICONS = {
   'Mistral': '🌀', 'DeepSeek': '🐋', 'Amazon': '🔊', 'Apple': '🍎',
   'Hugging Face': '🤗', 'NVIDIA': '🎮', 'GitHub': '🐙', 'Cohere': '🔵'
 };
+// HIVATALOS MÁRKAJEL (2026-07-18): a cégekhez letöltött egyszínű SVG-logót
+// build-időben BEÁGYAZZUK (currentColor → a csempe márkaszínére fest); amelyik
+// céghez nincs helyi logó (xAI, Cohere), ott az emoji-ikon marad. A logókat a
+// core/fetch-brand-logos.js tölti (CC0 simple-icons, védjegyek a tulajdonosoké).
+const LOGO_DIR = join(__dirname, 'assets', 'logos');
+const _logoCache = {};
+function companyLogoSvg(c) {
+  if (!c) return null;
+  if (c in _logoCache) return _logoCache[c];
+  const p = join(LOGO_DIR, companySlug(c) + '.svg');
+  let svg = null;
+  try { if (existsSync(p)) svg = readFileSync(p, 'utf-8').trim(); } catch { /* nincs logó */ }
+  _logoCache[c] = svg;
+  return svg;
+}
+// Tiszta MONOGRAM azoknak a cégeknek, amelyeknek nincs közkincs márkajele
+// (xAI, Cohere, egyedi kis cégek) — márkaszínű betűk, NEM emoji, így minden
+// csempe egységesen "logó-szerű". A monogram BETŰ (nem logó-rajz), tehát nem
+// reprodukál védett grafikát.
+const MONOGRAM_OVERRIDE = { 'xAI': 'xAI', 'Cohere': 'co', 'Perplexity AI': 'Px', 'Genie': 'Ge', 'SkillOpt': 'So' };
+function companyMonogram(c) {
+  if (MONOGRAM_OVERRIDE[c]) return MONOGRAM_OVERRIDE[c];
+  const t = String(c || '').trim();
+  if (!t) return 'AI';
+  if (t.length <= 3) return t;
+  const parts = t.split(/[\s.]+/).filter(Boolean);
+  if (parts.length >= 2) return (parts[0][0] + parts[1][0]).toUpperCase();
+  return t.slice(0, 2).replace(/^./, s => s.toUpperCase());
+}
+// A csempe/pill ikon-tartalma: hivatalos logó ha van, különben márkaszín-monogram.
+function companyGlyph(c) {
+  return companyLogoSvg(c) || `<span class="brandtile__mono">${escapeHtml(companyMonogram(c))}</span>`;
+}
+
 function guideIcon(a) {
   if (a.icon) return a.icon;                       // explicit (a témából)
   if (a.company && COMPANY_ICONS[a.company]) return COMPANY_ICONS[a.company];
@@ -1250,14 +1284,16 @@ function buildGuidesPage(generalGuides, counts) {
 
 // CÉGES (eszköz-specifikus) útmutatók — tools.html
 function buildToolsPage(companyGuides, counts) {
+  // Cég-alias: ugyanaz a cég két néven ne adjon két csempét (2026-07-18)
+  const COMPANY_ALIAS = { 'Perplexity AI': 'Perplexity', 'Suno': 'Suno.ai' };
   const groups = {};
-  for (const g of companyGuides) { const k = g.company || 'Other'; (groups[k] = groups[k] || []).push(g); }
+  for (const g of companyGuides) { const k = COMPANY_ALIAS[g.company] || g.company || 'Other'; (groups[k] = groups[k] || []).push(g); }
   const ORDER = ['OpenAI', 'Google', 'Anthropic', 'Microsoft', 'Meta', 'Perplexity', 'Alibaba', 'xAI', 'Mistral', 'DeepSeek', 'Amazon', 'Apple', 'Hugging Face', 'NVIDIA', 'GitHub', 'Cohere'];
   const companies = [...ORDER.filter(c => groups[c]), ...Object.keys(groups).filter(c => c && !ORDER.includes(c))];
   const cnt = n => `${n} ${n > 1 ? tr('guideWordMany') : tr('guideWordOne')}`;
 
   const brandTile = (c) => `<a class="brandtile" href="#c-${companySlug(c)}" style="--gc:${GUIDE_COVER_COLORS[c] || '#4f7a86'}">
-      <span class="brandtile__i">${COMPANY_ICONS[c] || '🤖'}</span>
+      <span class="brandtile__i">${companyGlyph(c)}</span>
       <span class="brandtile__n">${escapeHtml(c)}</span><span class="brandtile__c">${cnt(groups[c].length)}</span></a>`;
   const brandRow = companies.length ? `<section class="brandpick">
       <p class="section-note">${tr('pickTool')}</p>
@@ -1282,7 +1318,7 @@ function buildToolsPage(companyGuides, counts) {
     return chips.length ? `<p class="official-row"><span class="official-row__l">${tr('officialRow')}:</span> ${chips.join(' ')}</p>` : '';
   };
   const companySection = (c) => `<section class="grid-section" id="c-${companySlug(c)}">
-      <div class="section-head"><span class="pill">${COMPANY_ICONS[c] || '🤖'} ${escapeHtml(c)}</span>
+      <div class="section-head"><span class="pill"><span class="pill__i">${companyGlyph(c)}</span> ${escapeHtml(c)}</span>
         <h2 class="section-title">${tr('companyGuides').replace('{c}', escapeHtml(c))}</h2>${officialRow(c)}</div>
       <div class="gtiles">${groups[c].map(guideTile).join('')}</div></section>`;
 
