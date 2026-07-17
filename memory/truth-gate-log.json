@@ -7,6 +7,15 @@
       "reasons": [
         "The product name \"Alexa+\" is invented. Amazon's smart assistant is called Alexa, and the associated hardware devices are called Echo devices (e.g., Echo Dot, Echo Show). \"Alexa+\" is not an official product name or version."
       ]
+    },
+    {
+      "at": "2026-07-17T09:48:45.533Z",
+      "file": "WRITER_2026-07-14T01-22-26-177Z_aws-ml_OpenAI_GPT-5_6_Sol__Terra__and_Luna_are_now_genera.json",
+      "action": "block",
+      "reasons": [
+        "The article claims OpenAI has released new models named 'Sol,' 'Terra,' and 'Luna' and that these are available on Amazon Bedrock. These model names are fabricated; OpenAI's models are typically named GPT-x, DALL-E, or Whisper, and while OpenAI models (like GPT-4 and GPT-3.5 Turbo) are indeed on Bedrock, 'Sol', 'Terra', and 'Luna' do not exist as official OpenAI models.",
+        "The article describes UI elements in the Amazon Bedrock console, such as specific dropdown menu options to select 'OpenAI Sol,' 'OpenAI Terra,' or 'OpenAI Luna' models. Since these models do not exist, these specific UI elements and options would also not exist within the Bedrock console."
+      ]
     }
   ]
 }

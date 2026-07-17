@@ -1,0 +1,59 @@
+{
+  "_meta": {
+    "written_at": "2026-07-17T09:47:08.998Z",
+    "writer_provider": "google",
+    "writer_model": "gemini-2.5-flash",
+    "writer_cost_usd": 0.008591,
+    "original_draft": "2026-07-14T17-02-21-044Z_aws-ml_Scaling_UX_testing_with_Amazon_Nova_Act__A_new_app.json",
+    "source_id": "aws-ml",
+    "source_name": "AWS Machine Learning (hivatalos)",
+    "source_link": "https://aws.amazon.com/blogs/machine-learning/scaling-ux-testing-with-amazon-nova-act-a-new-approach-to-user-flow-analysis/",
+    "status": "published",
+    "rejected_at": "2026-07-17T01:49:51.756Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 979
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 8,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "The article effectively explains AI-powered user testing with a friendly, accessible tone and",
+      "_salvaged": true,
+      "_aiCost": 0.0044946000000000005,
+      "_provider": "google",
+      "_model": "gemini-2.5-flash",
+      "_attempts": 1
+    },
+    "reason": "Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben",
+    "can_retry": true,
+    "rework_attempts": 2,
+    "reworked_from": "REJECTED_2026-07-14T17-02-21-044Z_aws-ml_Scaling_UX_testing_with_Amazon_Nova_Act__A_new_app.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-07-17T09:48:54.693Z",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-07-17T09:51:06.495Z",
+    "guide_worthy": false,
+    "pairing_reason": "The article describes a generic methodology of AI-powered testing and mentions Amazon Nova Act as a case study; it does not introduce a specific, named feature/tool for everyday users to take a concrete action.",
+    "seo": {
+      "meta_description": "Improve user experience with AI-powered testing, automatically finding and fixing site issues without needing a large team",
+      "keywords": [
+        "AI user testing",
+        "website testing tools",
+        "user experience optimization",
+        "generative AI for website improvement"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more concrete examples of AI-powered testing in action",
+        "Use subheadings to break up the article and improve scannability",
+        "Include a brief summary or recap at the end to reinforce key takeaways"
+      ],
+      "optimised_at": "2026-07-17T09:51:29.971Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Transform Your Website with AI-Powered User Testing\"\nsubtitle: \"Discover how generative AI can automatically find and highlight user flow problems on your site.\"\ncategory: \"how-to\"\naudience: \"business\"\nread_time_minutes: 5\ntags: [\"ai-testing\", \"ux\", \"automation\", \"business-tools\"]\n---\n\n# Transform Your Website with AI-Powered User Testing\n\nHave you ever wondered why visitors leave your website without completing a purchase or signing up? You put in all that effort, but sometimes a small hiccup in the user journey can lead to lost opportunities. What if an intelligent system could automatically explore your site, spot these stumbling blocks, and even point you towards solutions? Generative AI is making this possible, allowing you to improve your website experience without needing a large team of human testers.\n\nThis guide will walk you through how these smart AI tools can help turn your website into a continuous testing environment. We'll explore how they work to simulate real user behaviour, identify issues, and give you clear insights to make your site more effective.\n\n## 1. Understanding AI-Powered Testing\n\nBefore diving into the steps, let's understand what AI-powered testing does. At its core, it uses **generative AI** (a type of artificial intelligence that can create new content or data) to simulate how actual people interact with your website. Instead of you manually clicking through every page, the AI can:\n\n*   **Generate realistic test scenarios:** The AI learns your site's purpose and can invent varied user journeys, like someone trying to buy a product, find information, or fill out a form.\n*   **Simulate user behaviour:** It acts like thousands of virtual users, clicking, scrolling, and navigating, much faster and more consistently than humans ever could.\n*   **Run in the cloud:** Most of these tools operate in a **cloud-based testing environment** (meaning they run on remote servers, not your own computer), allowing them to work 24/7 without you needing to install complex software or manage physical servers.\n\nThis approach lets you uncover issues you might never find through traditional testing.\n\n## 2. Setting Up Your AI Testing Tool\n\nGetting started often involves a few straightforward steps with your chosen AI testing platform:\n\n*   **Choose a platform:** Select an AI-powered testing tool that suits your needs. Many offer trial periods to explore their features.\n*   **Create a new project:** Once you've signed up, you'll typically start by creating a new project and simply pasting your website's main URL into the system. This tells the AI where to begin its exploration.\n*   **Opt for cloud deployment:** Most platforms offer \"cloud deployment\" as the default. This means the AI sets up a virtual testing space online, ready to start working in the background. Think of it as renting a digital lab where the AI handles all the technical heavy lifting, like spinning up virtual web browsers and recording activity.\n\n## 3. Guiding the AI on Your Site's Purpose\n\nFor the AI to test effectively, it needs a basic understanding of your website's structure and goals. You'll typically provide:\n\n*   **Your site map:** This is essentially a list of all the pages on your website and how they link together. It gives the AI a roadmap.\n*   **Key user goals:** You tell the AI what you want visitors to achieve. Examples might include \"complete a purchase,\" \"find the contact form,\" \"sign up for the newsletter,\" or \"download a whitepaper.\"\n\nYou can often upload these as simple text files or PDFs. The generative AI then uses this information to **automatically create realistic test scenarios**. It's like having an infinite number of highly focused, virtual users trying to accomplish specific tasks on your site, based on your instructions. You don't need to write a single line of code for these tests.\n\n## 4. Analysing Results and Making Improvements\n\nOnce the AI has its instructions, you can launch the tests. The AI will then:\n\n*   **Execute thousands of user flows in parallel:** This means it simulates many different user journeys at the same time, covering a vast number of potential interactions very quickly.\n*   **Record every step:** The AI logs where virtual users get stuck, hesitate, or abandon a task.\n*   **Generate an actionable report:** You'll receive clear insights, often highlighting critical issues like \"37% of users drop off at the payment step\" or \"The navigation menu is difficult to use on mobile devices.\"\n\nThese reports often include **heatmaps** (visual representations of where users click most), **session recordings** (playbacks of simulated user journeys), and **priority-ranked issues** (the AI tells you which problems are most urgent to fix). All of this is presented in plain language, not technical jargon, so you can easily understand what needs attention.\n\n## What this means for you\n\n*   **If you run an online store:** You can proactively fix annoying payment errors, unclear form fields, or slow loading times that cause customers to abandon their carts. The AI pinpoints these issues before they significantly impact your sales.\n*   **If you manage a digital product (like a SaaS platform):** Test every onboarding path for new users. The AI can highlight where new users get confused during setup, allowing you to refine instructions and reduce the number of people who leave shortly after signing up.\n*   **If you're just getting started with AI tools:** Begin by testing a single, high-traffic page, such as your homepage or a key landing page. This will give you quick, understandable results and build your confidence in using AI for website improvement.\n\n## Wrap-up\n\nFinding and fixing user experience problems on your website no longer requires a large, expensive team of human testers. With cloud-based AI testing tools, you can simulate thousands of realistic user journeys across your site automatically. This gives you clear, actionable insights into where visitors are struggling, helping you improve your site's performance and conversion rates. Start small by testing one important page this week, and then scale up as you see the positive impact.",
+  "original_title": "Scaling UX testing with Amazon Nova Act: A new approach to user flow analysis"
+}

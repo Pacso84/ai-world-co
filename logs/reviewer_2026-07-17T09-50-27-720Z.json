@@ -1,0 +1,34 @@
+{
+  "started_at": "2026-07-17T09:49:57.850Z",
+  "total": 3,
+  "passed": 2,
+  "failed": 1,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.0205991,
+  "by_article": [
+    {
+      "writer": "WRITER_GUIDE_ask-alexa-to-explain-the-news-headlines-in-simple-terms-ever.json",
+      "rejected": "REJECTED_GUIDE_ask-alexa-to-explain-the-news-headlines-in-simple-terms-ever.json",
+      "decision": "FAIL",
+      "score": 8,
+      "cost_usd": 0.0047069
+    },
+    {
+      "writer": "WRITER_GUIDE_draft-a-simple-cover-letter-for-a-job-application-with-deeps.json",
+      "article": "ARTICLE_GUIDE_draft-a-simple-cover-letter-for-a-job-application-with-deeps.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0046353
+    },
+    {
+      "writer": "WRITER_GUIDE_verify-social-media-information-with-perplexity-s-source-che.json",
+      "article": "ARTICLE_GUIDE_verify-social-media-information-with-perplexity-s-source-che.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0047564
+    }
+  ],
+  "finished_at": "2026-07-17T09:50:27.720Z",
+  "duration_seconds": 29.87
+}

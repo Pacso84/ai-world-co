@@ -1,0 +1,47 @@
+{
+  "started_at": "2026-07-17T09:48:25.821Z",
+  "total": 6,
+  "passed": 3,
+  "failed": 2,
+  "auto_check_failed": 2,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.0252235,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-07-13T17-47-59-661Z_snowflake_Apache_Ossie__Incubating___The_New_Name_for_Open_S.json",
+      "article": "ARTICLE_2026-07-13T17-47-59-661Z_snowflake_Apache_Ossie__Incubating___The_New_Name_for_Open_S.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0037911999999999998
+    },
+    {
+      "writer": "WRITER_2026-07-14T17-02-21-044Z_aws-ml_Scaling_UX_testing_with_Amazon_Nova_Act__A_new_app.json",
+      "article": "ARTICLE_2026-07-14T17-02-21-044Z_aws-ml_Scaling_UX_testing_with_Amazon_Nova_Act__A_new_app.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0044946000000000005
+    },
+    {
+      "writer": "WRITER_2026-07-14T17-02-21-044Z_openai-blog_How_data_science_teams_use_ChatGPT_Work.json",
+      "article": "ARTICLE_2026-07-14T17-02-21-044Z_openai-blog_How_data_science_teams_use_ChatGPT_Work.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.0045045
+    },
+    {
+      "writer": "WRITER_2026-07-14T17-02-21-044Z_openai-blog_How_sales_teams_use_ChatGPT_Work.json",
+      "decision": "FAIL",
+      "reason": "auto-check critical",
+      "skipped_ai": true
+    },
+    {
+      "writer": "WRITER_2026-07-14T17-02-21-767Z_apple-ml_Proactive_Agent_Research_Environment__Simulating_A.json",
+      "decision": "FAIL",
+      "reason": "auto-check critical",
+      "skipped_ai": true
+    }
+  ],
+  "truth_blocked": 1,
+  "finished_at": "2026-07-17T09:49:05.926Z",
+  "duration_seconds": 40.105
+}
