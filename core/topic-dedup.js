@@ -125,6 +125,21 @@ export function allExistingGuideTitles() {
   return [...titles];
 }
 
+// LEVETT TÉMA? (2026-07-19, SkillOpt-zombi tanulsága): amit audit/kézi
+// döntés levett (guide-topics status:'removed'), azt SEM a rework, SEM az
+// Ellenőrző nem élesztheti újra — a rejected-ben maradt példány különben
+// addig fogalmazódik át, míg átcsúszik a kapun (3. próbára megtörtént!).
+export function isRemovedTopic(meta = {}, title = '') {
+  try {
+    const t = JSON.parse(readFileSync(join(ROOT, 'guides', 'guide-topics.json'), 'utf-8'));
+    const removed = (t.topics || []).filter(x => x.status === 'removed');
+    if (!removed.length) return false;
+    const id = meta.guide_topic_id || '';
+    const nt = normTitle(title || meta.title || '');
+    return removed.some(x => (id && x.id === id) || (nt && normTitle(x.title) === nt));
+  } catch { return false; }
+}
+
 // Napló a napi riporthoz (nap-kulcsos, 14 nap)
 export function logDedup(entry) {
   let log = {};

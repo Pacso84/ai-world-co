@@ -48,4 +48,15 @@ assert.equal(d5.duplicate, false, 'üres referencia = nincs duplikátum');
 // 6) normTitle helyes
 assert.equal(normTitle('How to  DO-it!! Now'), 'how to do it now', 'normTitle összevon és tisztít');
 
-console.log('✅ topic-dedup.test: mind a 6 blokk átment');
+// --- 7. LEVETT TÉMA őr (SkillOpt-zombi tanulsága): id- ÉS cím-egyezésre fog ---
+import { isRemovedTopic } from './topic-dedup.js';
+import { readFileSync as rf } from 'fs';
+const topicsNow = JSON.parse(rf('guides/guide-topics.json', 'utf-8'));
+const removedNow = (topicsNow.topics || []).find(x => x.status === 'removed');
+if (removedNow) {
+  assert.equal(isRemovedTopic({ guide_topic_id: removedNow.id }, ''), true, 'levett téma id-ról felismerve');
+  assert.equal(isRemovedTopic({}, removedNow.title), true, 'levett téma címről felismerve');
+}
+assert.equal(isRemovedTopic({ guide_topic_id: 'no-such-topic-xyz' }, 'Totally Fresh Topic'), false, 'élő téma nem jelez');
+
+console.log('✅ topic-dedup.test: mind a 7 blokk átment');

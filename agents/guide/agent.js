@@ -664,6 +664,13 @@ function listRejectedGuidesForRework() {
     .filter(f => {
       try {
         const d = JSON.parse(readFileSync(join(REJECTED_DIR, f), 'utf-8'));
+        // ZOMBI-VÉDELEM (2026-07-19): LEVETT témájú guide-ot nem írunk újra —
+        // a maradványt töröljük, különben addig fogalmazódik, míg átcsúszik
+        // a kapun (SkillOpt 3. próbára visszapublikálódott a törlés után!).
+        if (isRemovedTopicSync(d)) {
+          try { unlinkSync(join(REJECTED_DIR, f)); console.log(`🧟 zombi törölve (levett téma): ${f.slice(0, 60)}`); } catch { /* nem kritikus */ }
+          return false;
+        }
         const attempts = d._meta?.rework_attempts || 0;
         // CSAK guide; a CEO végső döntése (ceo_decision) után már nem nyúlunk hozzá
         return d._meta?.type === 'guide' && !d._meta?.ceo_decision
@@ -671,6 +678,17 @@ function listRejectedGuidesForRework() {
       } catch { return false; }
     })
     .sort();
+}
+
+// szinkron burkoló a filterhez (a topic-dedup isRemovedTopic-ja szinkron logika)
+let _isRemovedTopicFn = null;
+function isRemovedTopicSync(d) {
+  if (!_isRemovedTopicFn) return false; // az import a rework-mód elején töltődik
+  const title = d.original_title || ((d.article_markdown || '').match(/^title:\s*["']?(.+?)["']?\s*$/m) || [])[1] || '';
+  return d._meta?.type === 'guide' && _isRemovedTopicFn(d._meta || {}, title);
+}
+async function loadRemovedTopicGuard() {
+  try { ({ isRemovedTopic: _isRemovedTopicFn } = await import('../../core/topic-dedup.js')); } catch { /* őr nélkül is megy */ }
 }
 
 async function reworkGuide(rejectedData, brandContext) {
@@ -735,6 +753,7 @@ function saveGuideBackToReview(rejectedFilename, rejectedData, { text, provider,
 }
 
 async function runGuideReworkMode(brandContext) {
+  await loadRemovedTopicGuard();   // zombi-védelem betöltése a lista ELŐTT
   const rejected = listRejectedGuidesForRework();
   console.log('🔁 ÚTMUTATÓ REWORK MÓD — visszaadott guide-ok javítása');
   if (rejected.length === 0) {

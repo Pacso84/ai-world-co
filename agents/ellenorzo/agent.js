@@ -539,6 +539,19 @@ async function main() {
     const writerData = JSON.parse(readFileSync(writerPath, 'utf-8'));
     const markdown = writerData.article_markdown;
 
+    // ZOMBI-VÉDELEM (2026-07-19, SkillOpt-tanulság): LEVETT témájú guide SOHA
+    // nem publikálható újra — bármilyen úton került is ide, töröljük.
+    try {
+      const { isRemovedTopic } = await import('../../core/topic-dedup.js');
+      const wTitle = writerData.original_title || ((markdown || '').match(/^title:\s*["']?(.+?)["']?\s*$/m) || [])[1] || '';
+      if (writerData._meta?.type === 'guide' && isRemovedTopic(writerData._meta || {}, wTitle)) {
+        unlinkSync(writerPath);
+        console.log('   🧟 LEVETT TÉMA — nem publikálható, piszkozat törölve.\n');
+        stats.removed_topic_dropped = (stats.removed_topic_dropped || 0) + 1;
+        continue;
+      }
+    } catch { /* őr-hiba nem állítja meg az ellenőrzést */ }
+
     // 4a. Auto check (ingyenes)
     const autoCheckResult = runAutoCheck(markdown, writerData._meta?.type);
     console.log(`   📐 Auto check: ${autoCheckResult.passed ? '✅ OK' : `❌ ${autoCheckResult.issues.length} probléma`}`);
