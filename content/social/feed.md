@@ -1,6 +1,115 @@
 # AI World Co. — közösségi posztok
 
-*Generálva: 2026-07-18T09:29:34.405Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+*Generálva: 2026-07-18T16:53:32.294Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## Getting started with ChatGPT
+**🔗 https://aiworldhq.com/article/how-to-start-your-first-chat-with-ai-in-plain-english.html**
+
+**Facebook:**
+Want to ask AI a question but not sure where to start? Our quick guide shows you how to type your first prompt and get useful answers in minutes. https://aiworldhq.com/article/how-to-start-your-first-chat-with-ai-in-plain-english.html #AIHelp #ChatGPT
+
+**Instagram:**
+Ready to chat with AI? 🗣️
+Learn the simple steps to send your first message and get clear answers – no tech jargon needed.
+Link in bio.
+#AIForEveryone
+#ChatGPTGuide
+#LearnAI
+
+*Kép-ötlet: A relaxed person sitting at a kitchen table with a laptop open, looking pleasantly surprised as text appears on screen.*
+
+---
+
+## Launching UI for generative AI inference recommendations in Amazon SageMaker AI
+**🔗 https://aiworldhq.com/article/how-to-use-amazon-sagemaker-s-new-inference-ui-without-writi.html**
+
+**Facebook:**
+Looking to run AI without the tech hassle? The new SageMaker UI guides you to the right cloud settings in minutes, no server skills needed. https://aiworldhq.com/article/how-to-use-amazon-sagemaker-s-new-inference-ui-without-writi.html #AI #AWS
+
+**Instagram:**
+No‑code AI setup made simple
+The SageMaker Inference UI walks you through the best cloud options for your model, step by step. Get your AI up and running fast, even if you’re not a server expert.
+#generativeAI
+#AWS
+#SageMaker
+#nocode
+#cloud
+Link in bio.
+
+*Kép-ötlet: A laptop screen displaying the SageMaker Inference UI recommendation panel, with a clean, minimal background.*
+
+---
+
+## Apache Ossie (Incubating): The New Name for Open Semantic Interchange
+**🔗 https://aiworldhq.com/article/make-your-notes-ai-ready-how-simple-structure-boosts-underst.html**
+
+**Facebook:**
+Want your notes to work better with AI tools? A few simple organising steps can make a big difference. https://aiworldhq.com/article/make-your-notes-ai-ready-how-simple-structure-boosts-underst.html #AItips #productivity
+
+**Instagram:**
+Turn messy notes into AI-friendly helpers.
+Add tiny structure – headings, bullet points or short sections – so ChatGPT gets your ideas faster. It’s a quick win for everyday tasks.
+#noteTaking
+#AItips
+#productivity
+Link in bio.
+
+*Kép-ötlet: A tidy desk with an open notebook showing headings and bullet points, alongside a laptop screen displaying an AI chat window.*
+
+---
+
+## Google Credential Provider for Windows (GCPW) now supports FIDO2-compliant physical security keys as a second factor for authentication
+**🔗 https://aiworldhq.com/article/how-to-use-physical-security-keys-with-your-work-computer-no.html**
+
+**Facebook:**
+Tired of typing in a code every time you log into Windows at work? Adding a tiny security key can make logins faster and safer. https://aiworldhq.com/article/how-to-use-physical-security-keys-with-your-work-computer-no.html #Security #Productivity
+
+**Instagram:**
+Leave the phone code behind.
+A USB security key lets you log into Windows with one tap, boosting your account protection without extra steps.
+Link in bio.
+#security
+#windows
+#productivity
+
+*Kép-ötlet: A close‑up of a hand inserting a small USB security key into a laptop, with a clean office background.*
+
+---
+
+## When your brain works differently, AI isn’t a luxury—it’s accessibility
+**🔗 https://aiworldhq.com/article/understanding-and-using-ai-desktop-assistants-for-daily-prod.html**
+
+**Facebook:**
+Need a steady hand to keep your inbox and calendar in order? An AI desktop assistant can help you stay on top of tasks without extra effort. #productivity #accessibility https://aiworldhq.com/article/understanding-and-using-ai-desktop-assistants-for-daily-prod.html
+
+**Instagram:**
+Imagine a quiet helper on your computer that keeps you organised.
+It can sort emails, set reminders and suggest next steps, freeing up mental space for what matters.
+#AIassist
+#productivity
+#accessibility
+#australia
+Link in bio.
+
+*Kép-ötlet: A tidy desk with a laptop screen showing a calm AI chat window beside a coffee mug.*
+
+---
+
+## Empowering India’s next generation of innovators with ATL Saathi
+**🔗 https://aiworldhq.com/article/how-to-bring-ai-into-your-school-robotics-lab-with-atl-saath.html**
+
+**Facebook:**
+Wondering how to make robotics classes easier for students? This guide shows how an AI helper can sort out wiring and coding issues in a flash. https://aiworldhq.com/article/how-to-bring-ai-into-your-school-robotics-lab-with-atl-saath.html #AIEducation #Robotics
+
+**Instagram:**
+Make school robotics lessons that much easier. 💡 See how ATL Saathi helps students fix tricky coding and wiring problems in real time.
+
+#EducationTech #AI #Robotics #TeachingTips
+Link in bio.
+
+*Kép-ötlet: A student looking at a laptop screen next to a small robot on a desk in a bright classroom.*
 
 ---
 

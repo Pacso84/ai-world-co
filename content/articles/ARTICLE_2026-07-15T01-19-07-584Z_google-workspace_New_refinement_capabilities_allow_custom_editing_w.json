@@ -1,0 +1,59 @@
+{
+  "_meta": {
+    "written_at": "2026-07-18T16:43:51.520Z",
+    "writer_provider": "google",
+    "writer_model": "gemini-2.5-flash",
+    "writer_cost_usd": 0.010533899999999999,
+    "original_draft": "2026-07-15T01-19-07-584Z_google-workspace_New_refinement_capabilities_allow_custom_editing_w.json",
+    "source_id": "google-workspace",
+    "source_name": "Google Workspace Updates (hivatalos)",
+    "source_link": "http://workspaceupdates.googleblog.com/2026/07/new-refinement-capabilities-allow-custom-editing-with-Help-me-write-in-Gmail.html",
+    "status": "published",
+    "rejected_at": "2026-07-18T09:17:14.457Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 870
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "The article is well-structured,",
+      "_salvaged": true,
+      "_aiCost": 0.0044691999999999996,
+      "_provider": "google",
+      "_model": "gemini-2.5-flash",
+      "_attempts": 1
+    },
+    "reason": "Salvaged from a partial AI response.",
+    "can_retry": true,
+    "rework_attempts": 2,
+    "reworked_from": "REJECTED_2026-07-15T01-19-07-584Z_google-workspace_New_refinement_capabilities_allow_custom_editing_w.json",
+    "requeued_unchanged": false,
+    "ceo_rounds": 1,
+    "ceo_hint": "CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers. HONESTY RULE: name the REAL products/places/organisations from the source; NEVER invent generic UI steps (\"most platforms\", fictional menu names). If you add a \"try it yourself\" section, use typed example prompts only (2026-07-14 reader complaint lesson).",
+    "published_at": "2026-07-18T16:45:01.250Z",
+    "seo": {
+      "meta_description": "Struggling to start emails? Learn how Gmail's 'Help me write' AI helps you draft and polish messages quickly and effectively in this simple guide.",
+      "keywords": [
+        "Gmail Help me write feature",
+        "how to use AI in Gmail",
+        "Gmail AI email assistant",
+        "writing emails with Gmail AI",
+        "Google AI email writing",
+        "Gmail AI tips for beginners"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add step-by-step examples of specific prompts users can try (e.g., 'write a polite decline').",
+        "Use H2 subheadings for specific tasks like 'refining drafts' or 'changing tone' to improve readability.",
+        "Simplify the LLM definition or link to a glossary strictly in plain language."
+      ],
+      "optimised_at": "2026-07-18T16:46:14.351Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Easier Email Drafts with Gmail's Help me write AI Feature\"\nsubtitle: \"Discover how Gmail's integrated AI can help you craft, refine, and perfect your messages quickly and effectively.\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"gmail\", \"ai-email\", \"productivity\", \"help-me-write\"]\n---\n\n# Easier Email Drafts with Gmail's Help me write AI Feature\n\nHave you ever stared at a blank email, unsure how to start, or struggled to find the right words to make your message clear and polite? Gmail's **Help me write** feature is here to make those moments a lot easier. It integrates artificial intelligence directly into your email drafting process, helping you generate new text or polish what you've already written.\n\n## What is Gmail's 'Help me write' and How it Works\n\nA while ago, Gmail introduced **Help me write**, a clever tool designed to assist you with email composition. It uses an **LLM (large language model — the kind of AI engine behind tools like ChatGPT)** to understand your instructions and generate text.\n\nWhen you're writing an email in Gmail, you'll see the **Help me write** button, usually marked with a sparkle icon, at the bottom of your compose window. Once you've typed a few words or a subject, this button becomes active. Clicking it gives you options to either create a first draft from scratch or refine an existing one. It's like having a writing assistant ready to lend a hand whenever you need it.\n\n## Your AI Email Assistant: Getting Started and Giving Instructions\n\nThe real power of **Help me write** comes from giving it clear instructions, also known as **prompts (the specific direction you give to an AI)**.\n\nHere’s a step-by-step guide to using it effectively:\n\n1.  **Open a new email in Gmail.** Start composing your message as you normally would. You can type a few keywords, a brief sentence, or even leave it mostly empty if you want the AI to generate a full draft.\n2.  **Click the 'Help me write' sparkle icon.** This button is usually found at the bottom of your compose window.\n3.  **Choose a preset option or type a custom instruction.**\n    *   If your email is almost empty, the AI might suggest options to \"Generate a draft\" based on your subject line or a short idea.\n    *   If you've already written some text, you'll see suggestions like \"Formalise,\" \"Elaborate,\" \"Shorten,\" or \"Rewrite.\"\n    *   For more precise changes, type your own specific prompt into the instruction bar.\n        *   **Example prompt for a new draft:** \"Write an email inviting neighbours to a BBQ on Saturday afternoon.\"\n        *   **Example prompt for refining:** \"Make this paragraph sound more confident and professional.\"\n        *   **Example prompt for adding detail:** \"Add a sentence explaining the benefits of early bird registration for the workshop.\"\n        *   **Example prompt for changing tone:** \"Rewrite the opening to be more empathetic about their situation.\"\n4.  **Review the AI's suggestions.** The AI will present a revised version or a new draft. You can then accept the changes, discard them, or undo them if you want to try a different prompt. Feel free to manually edit the AI's output or continue refining it with new instructions.\n\n## Tips for Getting the Best Results\n\nTo make the most of this AI tool, treat it like a helpful, but sometimes needs-guidance, assistant:\n\n*   **Be specific in your prompts:** Instead of \"Make it better,\" try \"Suggest three possible dates for our next meeting\" or \"Change the tone to be more encouraging.\"\n*   **Keep prompts concise:** Often, a short, direct sentence is all it needs. Avoid overly complex requests.\n*   **Use natural language:** Write your instructions as you would speak to a person. There's no special \"AI language\" to learn.\n*   **Iterate your requests:** If you have several changes in mind, tackle them one by one. This helps the AI focus on each request accurately and makes it easier to track changes.\n\n## What this means for you\n\n*   **In your everyday life**: Need to quickly RSVP to an event, write a polite note to a landlord, or draft an invitation to friends? **Help me write** can adjust the tone, add missing details like a specific time or location, or simplify complex explanations, ensuring your personal emails are always clear and appropriate.\n*   **For your business or work**: You can polish client emails to ensure they're professional and concise, draft internal communications that are unambiguous, or quickly rephrase a difficult message. It saves time on proofreading and ensures your professional correspondence always hits the right mark.\n*   **If you're just getting started**: The easiest way to begin is to draft a short email about a simple topic (like thanking a friend). Then, click the sparkle icon and try one of the preset options like \"Shorten\" or \"Elaborate\" to see how the AI works.\n\n## Wrap-up\n\nGmail's **Help me write** feature puts an intelligent assistant right inside your inbox, helping you craft better emails with less effort. Whether you're sending a quick personal message or a detailed professional update, this AI tool can help you find the right words, refine your tone, and ensure clarity. The next time you're composing an email, give the sparkle icon a click and see how it can simplify your writing process.",
+  "original_title": "New refinement capabilities allow custom editing with Help me write in Gmail "
+}

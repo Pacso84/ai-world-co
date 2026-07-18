@@ -1,0 +1,61 @@
+{
+  "_meta": {
+    "written_at": "2026-07-18T16:44:07.703Z",
+    "writer_provider": "google",
+    "writer_model": "gemini-2.5-flash",
+    "writer_cost_usd": 0.0118682,
+    "original_draft": "2026-07-15T17-04-30-279Z_nvidia-blog_NVIDIA_and_Japan_Bring_Full-Stack_AI_and_Robotics_.json",
+    "source_id": "nvidia-blog",
+    "source_name": "NVIDIA Blog (hivatalos)",
+    "source_link": "https://blogs.nvidia.com/blog/japan-ecosystem-2026/",
+    "status": "published",
+    "rejected_at": "2026-07-18T16:43:04.122Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 703
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "This article clearly explains Edge AI Vision for a general audience, using accessible language and relevant examples. It adheres to all brand guidelines and structural requirements.",
+      "_aiCost": 0.0032974000000000002,
+      "_provider": "google",
+      "_model": "gemini-2.5-flash",
+      "_attempts": 1
+    },
+    "reason": "Salvaged from a partial AI response.",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-07-15T17-04-30-279Z_nvidia-blog_NVIDIA_and_Japan_Bring_Full-Stack_AI_and_Robotics_.json",
+    "requeued_unchanged": false,
+    "ceo_rounds": 1,
+    "ceo_hint": "CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers. HONESTY RULE: name the REAL products/places/organisations from the source; NEVER invent generic UI steps (\"most platforms\", fictional menu names). If you add a \"try it yourself\" section, use typed example prompts only (2026-07-14 reader complaint lesson).",
+    "published_at": "2026-07-18T16:45:08.767Z",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-07-18T16:45:56.572Z",
+    "guide_worthy": false,
+    "pairing_reason": "The article is a general explainer about Edge AI Vision technology, not a specific named product feature users can activate.",
+    "seo": {
+      "meta_description": "Discover how Edge AI Vision gives everyday devices eyes. Learn how compact AI processes visuals locally to automate tasks at home and work.",
+      "keywords": [
+        "what is edge AI vision",
+        "how smart cameras see objects",
+        "edge AI for home automation",
+        "visual AI devices explained",
+        "offline AI vision technology"
+      ],
+      "seo_score": 9,
+      "suggestions": [
+        "Add a simple comparison explaining how on-device processing differs from cloud processing.",
+        "Include a concrete list of specific devices (like smart doorbells) to apply the rules.",
+        "Ensure you explain why 'seeing' locally helps with privacy and speed."
+      ],
+      "optimised_at": "2026-07-18T16:46:17.743Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Giving Everyday Devices 'Eyes': Understanding Edge AI Vision\"\nsubtitle: \"Discover how compact AI brains are making devices smarter, processing visual information on the spot to automate tasks at home and work.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"edge-ai\", \"ai-vision\", \"smart-devices\", \"getting-started\", \"home-automation\"]\n---\n\n# Giving Everyday Devices 'Eyes': Understanding Edge AI Vision\n\nImagine your home security camera not just recording, but actively understanding if a package has arrived, or a small device in your office automatically sorting items by recognising them. This isn't just for big tech companies anymore. Recent advancements mean everyday devices can now gain a form of \"sight\" and intelligence, opening up new possibilities for automation in our homes and small businesses.\n\n## The Rise of Edge AI Vision: What's Happening?\n\nFor a long time, if a computer needed to \"see\" and understand something (like identifying an object in a photo), it usually sent that information to powerful servers far away on the internet – often called \"the cloud.\" These servers would do the heavy lifting of artificial intelligence (AI) processing and send the results back.\n\nHowever, a significant shift is underway: **Edge AI**. This is when the AI processing happens *directly on the device itself*, at the \"edge\" of the network, rather than in the cloud. Think of it like a smart device gaining its own compact brain. What's making this possible now? Smaller, more energy-efficient computer boards, like the Nvidia Jetson Nano, have become powerful enough and affordable enough to handle complex AI tasks. Paired with easier-to-use software tools, this means AI vision is no longer just for labs or massive data centres; it's becoming accessible for practical, everyday applications.\n\nThis local processing offers big advantages: incredible speed (no internet delay), enhanced privacy (your data doesn't leave your device), and reliability (it works even without a Wi-Fi connection).\n\n## How These 'Smart Eyes' Work\n\nAt its core, edge AI vision involves two main things:\n\n1.  **The 'Eyes' (Camera):** This is simply a camera, much like the one on your phone or a webcam, that captures live images or video of the environment.\n2.  **The 'Brain' (Compact AI Computer):** This is the small computer board designed to run AI tasks. It receives the visual feed from the camera.\n\nInside this \"brain,\" specially designed software runs an **AI model** (a program trained to recognise patterns). This model has already \"learned\" to identify various objects, shapes, or movements by being shown countless examples. So, when the camera sees a cat, the AI model on the device immediately processes that image and recognises \"cat,\" without needing to ask a distant server for help. The device can then be programmed to react to what it sees – perhaps sending you an alert, or activating another function.\n\n## Everyday Impact: Where You Might See (or Build) This\n\nOnce a device can \"see\" and understand its environment, the possibilities multiply for making daily life more efficient:\n\n*   **Smart Security and Monitoring:** Your outdoor camera could identify specific animals entering your garden and deter them, or detect if a family member has arrived home, sending you a notification.\n*   **Automated Sorting and Organisation:** In a small home office or workshop, a simple camera-equipped device could recognise different types of packages or parts and direct them to the correct bins.\n*   **Assisted Living Aids:** A system could monitor for falls or unusual activity in a senior's home, alerting carers if an emergency occurs, enhancing safety and peace of mind.\n*   **Interactive Art or Displays:** Imagine a screen that changes its content based on who is standing in front of it, or a garden monitoring device that identifies specific plants or weeds.\n\nEach of these examples builds on the core concept: a camera captures visual data, an AI model on a compact computer processes it, and then the device takes a specific, helpful action.\n\n## What this means for you\n\n*   **In everyday life**: The growing accessibility of edge AI means you might soon encounter more devices that can \"see\" and respond to your world locally – from smart appliances to personalised home security. If you're tech-curious, exploring an AI computer board starter kit can be a fun way to bring these concepts to life",
+  "original_title": "NVIDIA and Japan Bring Full-Stack AI and Robotics to Every Industry"
+}
