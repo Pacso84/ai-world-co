@@ -1233,12 +1233,13 @@
       "audience": "personal",
       "level": "beginner",
       "angle": "Run ChatRTX locally to answer household questions, control smart devices, and keep a daily journal.",
-      "status": "done",
+      "status": "removed",
       "icon": "🤖",
       "priority": "balance",
       "proposed_at": "2026-06-28T21:17:54.907Z",
       "proposed_by": "guide-balance",
-      "written_at": "2026-07-04T01:53:55.637Z"
+      "written_at": "2026-07-04T01:53:55.637Z",
+      "removed_reason": "kitalált termék/képesség (2026-07-19 audit-takarítás)"
     },
     {
       "id": "automate-meeting-note-taking-with-microsoft-copilot-in-teams",
@@ -1840,12 +1841,13 @@
       "audience": "business",
       "level": "beginner",
       "angle": "Deploy a helpful AI chatbot that answers common client queries.",
-      "status": "done",
+      "status": "removed",
       "icon": "🤖",
       "priority": "balance",
       "proposed_at": "2026-07-05T20:31:11.137Z",
       "proposed_by": "guide-balance",
-      "written_at": "2026-07-11T01:31:38.867Z"
+      "written_at": "2026-07-11T01:31:38.867Z",
+      "removed_reason": "kitalált termék/képesség (2026-07-19 audit-takarítás)"
     },
     {
       "id": "how-to-use-le-chat-to-translate-a-whole-webpage-in-one-click",
@@ -2058,12 +2060,13 @@
       "audience": "personal",
       "level": "beginner",
       "angle": "one practical sentence",
-      "status": "done",
+      "status": "removed",
       "icon": "🌦️",
       "priority": "balance",
       "proposed_at": "2026-07-08T01:49:05.965Z",
       "proposed_by": "guide-balance",
-      "written_at": "2026-07-12T01:45:44.546Z"
+      "written_at": "2026-07-12T01:45:44.546Z",
+      "removed_reason": "kitalált termék/képesség (2026-07-19 audit-takarítás)"
     },
     {
       "id": "how-to-lock-in-lower-ai-costs-with-reserved-capacity",
@@ -2105,12 +2108,13 @@
       "audience": "personal",
       "level": "beginner",
       "angle": "one practical sentence",
-      "status": "done",
+      "status": "removed",
       "icon": "🖼️",
       "priority": "balance",
       "proposed_at": "2026-07-11T01:32:42.848Z",
       "proposed_by": "guide-balance",
-      "written_at": "2026-07-12T01:45:59.420Z"
+      "written_at": "2026-07-12T01:45:59.420Z",
+      "removed_reason": "kitalált termék/képesség (2026-07-19 audit-takarítás)"
     },
     {
       "id": "use-nvidia-chatrtx-to-build-a-personal-study-buddy-that-quiz",
@@ -2992,6 +2996,62 @@
       "icon": "🗣️",
       "proposed_at": "2026-07-18T01:30:04.222Z",
       "proposed_by": "guide-ideas"
+    },
+    {
+      "id": "draft-a-complete-faq-page-for-your-website-with-chatgpt",
+      "company": "OpenAI",
+      "tool": "ChatGPT",
+      "title": "Draft a Complete FAQ Page for Your Website with ChatGPT",
+      "angle": "Paste your product info and customer questions into ChatGPT and get a ready-to-publish FAQ page — the real, no-code way to answer customers.",
+      "audience": "both",
+      "level": "beginner",
+      "status": "todo",
+      "icon": "🤖",
+      "priority": "balance",
+      "proposed_at": "2026-07-18T18:33:16.790Z",
+      "proposed_by": "audit-reseed"
+    },
+    {
+      "id": "remove-distractions-from-photos-with-google-photos-magic-era",
+      "company": "Google",
+      "tool": "Google Photos",
+      "title": "Remove Distractions from Photos with Google Photos Magic Eraser",
+      "angle": "Use the Magic Eraser tool in Google Photos to brush away photobombers and clutter — a real AI editing feature on your phone.",
+      "audience": "both",
+      "level": "beginner",
+      "status": "todo",
+      "icon": "🤖",
+      "priority": "balance",
+      "proposed_at": "2026-07-18T18:33:17.357Z",
+      "proposed_by": "audit-reseed"
+    },
+    {
+      "id": "chat-with-your-own-documents-offline-using-nvidia-chatrtx",
+      "company": "NVIDIA",
+      "tool": "ChatRTX",
+      "title": "Chat with Your Own Documents Offline Using NVIDIA ChatRTX",
+      "angle": "Point ChatRTX at a folder of your notes and ask questions locally — what the tool actually does, on your own PC, no cloud.",
+      "audience": "both",
+      "level": "beginner",
+      "status": "todo",
+      "icon": "🤖",
+      "priority": "balance",
+      "proposed_at": "2026-07-18T18:33:21.102Z",
+      "proposed_by": "audit-reseed"
+    },
+    {
+      "id": "try-free-ai-demos-in-your-browser-with-hugging-face-spaces",
+      "company": "Hugging Face",
+      "tool": "Hugging Face",
+      "title": "Try Free AI Demos in Your Browser with Hugging Face Spaces",
+      "angle": "Browse Hugging Face Spaces and run community AI demos (image tools, summarisers, voice) free in your browser — no install, no code.",
+      "audience": "both",
+      "level": "beginner",
+      "status": "todo",
+      "icon": "🤖",
+      "priority": "balance",
+      "proposed_at": "2026-07-18T18:33:25.032Z",
+      "proposed_by": "audit-reseed"
     }
   ]
 }
