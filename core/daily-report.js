@@ -226,6 +226,14 @@ async function main() {
     const store = JSON.parse(readFileSync(join(ROOT, 'memory', 'store.json'), 'utf-8'));
     const todays = (store.items || []).filter(it => (it.created || '').startsWith(today())).length;
     if (todays) lines.push(`📖 Új tanulság ma: ${todays} — a cég minden tagja látja a következő munkájánál`);
+    // ♻️ ISMÉTLŐDŐ HIBA (2026-07-19, user: "ne forduljon elő még egyszer —
+    // nem költséghatékony"): ha egy hiba a MÁR MEGLÉVŐ lecke ellenére ma újra
+    // megtörtént, az a jel, hogy kemény kód-szabály kell — szólunk hangosan.
+    const rep = (store.items || []).filter(it => (it.lastRepeat || '').startsWith(today()));
+    if (rep.length) {
+      const worst = rep.sort((a, b) => (b.repeats || 0) - (a.repeats || 0))[0];
+      lines.push(`♻️ ISMÉTLŐDŐ hiba a lecke ellenére: ${rep.length} típus ma (legmakacsabb ${worst.repeats}×: [${worst.scope}] ${worst.text.slice(0, 60)}…) — kemény szabály kellhet, szólj a fejlesztőnek!`);
+    }
   } catch { /* könyv nélkül is megy */ }
   lines.push(``, `Minden megy magától. ✅`);
 

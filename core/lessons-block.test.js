@@ -29,6 +29,18 @@ try {
   assert.ok(iroBlock.includes('[cég]') && !iroBlock.includes('[saját]'), 'iro csak közös leckéket kap');
 
   assert.equal(lessonsBlock(''), '', 'agentName nélkül üres');
+
+  // ISMÉTLÉS-SZÁMLÁLÓ (2026-07-19): ugyanaz a stabil hiba-szöveg újra-remember-elve
+  // = a hiba megismétlődött → repeats nő, lastRepeat mai. (Első íráskor NINCS repeats.)
+  remember('zzteszt-agent', 'ZZTESZT-ismétlés: ugyanaz a hiba stabil szöveggel.');
+  remember('zzteszt-agent', 'ZZTESZT-ismétlés: ugyanaz a hiba stabil szöveggel.');
+  const st = JSON.parse(readFileSync(STORE, 'utf-8'));
+  const it = st.items.find(i => i.scope === 'zzteszt-agent' && /ZZTESZT-ismétlés/.test(i.text));
+  assert.equal(it.repeats, 1, 'második előfordulás = 1 ismétlés');
+  assert.ok((it.lastRepeat || '').startsWith(new Date().toISOString().slice(0, 10)), 'lastRepeat mai');
+  const first = st.items.find(i => /ZZTESZT-saját/.test(i.text));
+  assert.equal(first.repeats, undefined, 'első írásnál nincs repeats mező');
+
   console.log('✅ lessons-block.test: minden átment');
 } finally {
   writeFileSync(STORE, backup, 'utf-8');

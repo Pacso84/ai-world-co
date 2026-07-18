@@ -63,6 +63,13 @@ export function remember(scope, text, opts = {}) {
     existing.salience = Math.min(1, existing.salience + ACCESS_BOOST);
     existing.lastAccessed = new Date().toISOString();
     existing.accessCount++;
+    // ISMÉTLÉS-SZÁMLÁLÓ (2026-07-19, user: "minden hiba ne forduljon elő még
+    // egyszer — nem költséghatékony"): a hibapontok STABIL szöveggel írnak,
+    // így az újra-remember = UGYANAZ A HIBA ÚJRA megtörtént, a lecke ellenére.
+    // Ezt CSAK itt számoljuk (a recall-olvasás nem ismétlés!) — a napi riport
+    // ♻️ sora ebből jelzi: puha lecke helyett kemény kód-szabály kell.
+    existing.repeats = (existing.repeats || 0) + 1;
+    existing.lastRepeat = new Date().toISOString();
     existing.tier = tierOf(existing.salience);
   } else {
     const now = new Date().toISOString();
