@@ -28,6 +28,7 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { spawn } from 'child_process';
 import { addTask, setTaskStatus, notify } from '../../core/ops.js';
+import { meteredBlocked } from '../../core/budget.js';
 
 // ===================================================================
 // SETUP
@@ -292,7 +293,16 @@ function printReport(report) {
 // Sávonkénti kapuzás: a KÖLTSÉG kemény stop (valódi pénz), a darabszám-keretek
 // külön zárnak — a hír-keret betelése NEM állítja le az útmutató-írást.
 function checkLimits(report) {
+  // HAVI VÉSZFÉK (2026-07-19, user-döntés: "álljon le"): a monthly hard cap
+  // elérésekor a teljes tartalom-gyártás szünetel (nem vált gyenge modellre);
+  // hónapfordulón a havi számláló nullázódik → magától újraindul.
+  let hardCapBlocked = false, hardCapReason = '';
+  try {
+    const mb = meteredBlocked();
+    if (mb.blocked && mb.hard) { hardCapBlocked = true; hardCapReason = mb.reason; }
+  } catch { /* budget-őr hibája ne állítsa meg a döntést */ }
   return {
+    hardCapBlocked, hardCapReason,
     costBlocked: report.total_cost_today_usd >= LIMITS.daily_api_cost_usd_max,
     newsBlocked: report.articles_remaining <= 0,     // hír-sáv betelt
     guidesBlocked: report.guides_remaining <= 0      // útmutató-sáv betelt
@@ -343,6 +353,15 @@ async function main() {
   // 2. LIMIT ELLENŐRZÉS (sávonként). A KÖLTSÉG kemény stop; a darabszám-keretek
   //    külön zárnak, hogy a hír-keret betelése ne akadályozza az útmutatókat.
   const gate = checkLimits(preReport);
+  if (gate.hardCapBlocked) {
+    console.log('⛔ HAVI KÖLTSÉGKERET ELÉRVE — a cég a hónap végéig SZÜNETEL (user-döntés 2026-07-19):');
+    console.log(`   • ${gate.hardCapReason}`);
+    console.log('   • A kész oldal él és látogatható; hónapfordulón magától újraindulunk.');
+    session.blocked = true;
+    session.blockers = ['monthly-hard-cap'];
+    saveCeoLog(session);
+    return;
+  }
   if (gate.costBlocked) {
     console.log('🚫 KÖLTSÉG-LIMIT ELÉRVE — a teljes pipeline leáll (valódi pénz):');
     console.log(`   • $${preReport.total_cost_today_usd.toFixed(4)} / $${LIMITS.daily_api_cost_usd_max}`);

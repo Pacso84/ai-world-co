@@ -170,6 +170,16 @@ async function main() {
     const tf = flog[today()] || [];
     if (tf.length) lines.push(`🔧 Önjavító: ${tf.length} hibát magamtól kijavítottam (pl. ${tf[0].slice(0, 60)}…)`);
   } catch { /* még nincs javítás-napló */ }
+  // HAVI VÉSZFÉK-ÁLLAPOT (2026-07-19, user-döntés: cap-nél tiszta szünet):
+  // ha a havi keret betelt, a riport mondja meg, mi van és mikor indul újra.
+  try {
+    const { meteredBlocked } = await import('./budget.js');
+    const mb = meteredBlocked();
+    if (mb.blocked && mb.hard) {
+      const nextMonth = new Date(new Date().getFullYear(), new Date().getMonth() + 1, 1).toISOString().slice(0, 10);
+      lines.push(`⛔ Havi költségkeret elérve ($${HARD_CAP}) — a cég SZÜNETEL a hónap végéig. Az oldal él; ${nextMonth}-én magától újraindul (MiniMax-tervvel olcsóbban).`);
+    }
+  } catch { /* budget-őr nélkül is megy a riport */ }
   // KÖZELI-TÉMA-ŐR összegzés (2026-07-18): hány ismétlődő útmutató-témát
   // szűrtünk ki, mielőtt megíródott volna.
   try {

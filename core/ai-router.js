@@ -492,6 +492,21 @@ export async function ask(prompt, options = {}) {
   //                                  saját fizetős modellek → fizetős pool
   //   'paid-only'  (ellenorzo/boss/translator): CSAK fizetős — ingyenes SOHA
   const routing = agentConfig.routing || 'free-first';
+
+  // SZÁNDÉKOS HAVI STOP (2026-07-19, user: "hagyjuk — álljon le"): ha a HAVI
+  // hard cap telt be (hard:true), az a user TUDATOS kerete — ilyenkor a
+  // paid-only (minőség-kritikus) agentek NEM esnek át a gyenge ingyenes
+  // modellekre, hanem szünetelnek (null → a hívók draft-ban tartják a munkát;
+  // hónapfordulón magától újraindul). A VÉSZHÁLÓ (üzemzavar: 429/egyenleg-
+  // kifogyás, amikor a cap még NEM telt be) változatlanul él.
+  if (routing === 'paid-only') {
+    const mb = meteredBlocked();
+    if (mb.blocked && mb.hard) {
+      console.log(`   ⛔ [${agentName}] Havi költségkeret elérve (${mb.reason}) — minőség-kritikus agent SZÜNETEL (nem vált gyenge modellre).`);
+      return null;
+    }
+  }
+
   const own = [agentConfig.primary_model, agentConfig.fallback_model].filter(Boolean);
   const isPaidEntry = (a) => isMetered(a.provider, a.model);
   let raw;
