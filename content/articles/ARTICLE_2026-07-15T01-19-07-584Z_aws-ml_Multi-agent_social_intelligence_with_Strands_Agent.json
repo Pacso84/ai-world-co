@@ -1,0 +1,63 @@
+{
+  "_meta": {
+    "written_at": "2026-07-18T09:15:49.538Z",
+    "writer_provider": "google",
+    "writer_model": "gemini-2.5-flash",
+    "writer_cost_usd": 0.023214899999999997,
+    "original_draft": "2026-07-15T01-19-07-584Z_aws-ml_Multi-agent_social_intelligence_with_Strands_Agent.json",
+    "source_id": "aws-ml",
+    "source_name": "AWS Machine Learning (hivatalos)",
+    "source_link": "https://aws.amazon.com/blogs/machine-learning/multi-agent-social-intelligence-with-strands-agents-and-amazon-bedrock/",
+    "status": "published",
+    "rejected_at": "2026-07-18T09:15:06.092Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 888
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "This article is well-structured, explains technical concepts clearly for an everyday business audience, and adheres to all brand guidelines and Australian English spelling. It provides excellent examples and actionable advice.",
+      "_aiCost": 0.0039974,
+      "_provider": "google",
+      "_model": "gemini-2.5-flash",
+      "_attempts": 1
+    },
+    "reason": "Salvaged from a partial AI response.",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-07-15T01-19-07-584Z_aws-ml_Multi-agent_social_intelligence_with_Strands_Agent.json",
+    "requeued_unchanged": false,
+    "ceo_rounds": 1,
+    "ceo_hint": "CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers. HONESTY RULE: name the REAL products/places/organisations from the source; NEVER invent generic UI steps (\"most platforms\", fictional menu names). If you add a \"try it yourself\" section, use typed example prompts only (2026-07-14 reader complaint lesson).",
+    "published_at": "2026-07-18T09:17:07.761Z",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-07-18T09:20:09.964Z",
+    "guide_worthy": false,
+    "pairing_reason": "The article is a generic explainer about AI agents, not a specific named tool a user can access.",
+    "seo": {
+      "meta_description": "Learn how AI agents automate business tasks without writing code. Discover how these smart assistants save you time and boost efficiency easily.",
+      "keywords": [
+        "what are AI agents",
+        "automate business tasks without code",
+        "AI for small business automation",
+        "AI agent vs chatbot",
+        "no code AI tools for business",
+        "how to use AI agents",
+        "digital assistant for business"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Include concrete business examples (e.g., handling email leads) to help readers visualize the benefits.",
+        "Add a section on 'How to choose your first AI agent' to target high-intent search queries.",
+        "Optimize headers (H2/H3) with questions like 'What can an AI agent do?' to capture featured snippets."
+      ],
+      "optimised_at": "2026-07-18T09:20:32.417Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"AI Agents: Automating Business Tasks Without Writing Code\"\nsubtitle: \"Understand what AI agents are, why they're becoming accessible, and how they can free up your business time.\"\ncategory: \"explainer\"\naudience: \"business\"\nread_time_minutes: 5\ntags: [\"ai-agents\", \"automation\", \"business-tools\", \"productivity\"]\n---\n\n# AI Agents: Automating Business Tasks Without Writing Code\n\nImagine having a digital assistant that doesn't just answer your questions but proactively handles entire tasks for your business, from researching new leads to sending follow-up emails. This isn't just a chatbot; it's the power of AI agents, and they're becoming surprisingly accessible, even if you've never written a line of code.\n\n## What's the Big Deal with AI Agents?\n\nYou've probably used an AI chatbot like ChatGPT or Gemini to get answers or draft text. They're great at responding to your direct prompts. But a new wave of AI capabilities is emerging: **AI agents**. Think of an AI agent as a smart digital worker that goes a step further. Unlike a chatbot that waits for your every command, an agent has a degree of **autonomy** (meaning it can make some decisions on its own) and can use various **tools** (like connecting to your email, spreadsheet, or a web browser) to achieve a defined goal.\n\nThe big shift here is that AI agents can *act*. Instead of just giving you information, they can actually *do* things across different applications. This means they can:\n\n*   **Research**: Browse websites, find contact details, or gather market data.\n*   **Decide**: Apply rules you've set (e.g., \"only consider companies with over 50 employees\").\n*   **Act**: Draft emails, update records in a customer relationship management (CRM) system, or add tasks to your project management software.\n\nThis development is significant because it moves AI from being purely conversational to being a proactive assistant that can manage parts of your workflow, making it increasingly practical for everyday business operations without needing a team of developers.\n\n## Where AI Agents Can Help Your Business\n\nTo figure out if an AI agent can help you, look for tasks that fit these criteria:\n\n*   **Repetitive**: If you do it regularly – daily, weekly, or monthly – it's a candidate. Think of data entry, scheduling, or routine communications.\n*   **Rule-based**: The task should have clear, logical steps and criteria. For example, \"find all businesses in X industry, then filter by Y size, and then do Z.\"\n*   **Digital**: Agents thrive in digital environments, connecting to your existing online tools.\n\nSome common and highly effective ways businesses are starting to use AI agents include:\n\n*   **Lead Generation**: An agent can scour the web for potential client businesses, identify key contacts, and even draft initial outreach emails.\n*   **Customer Service Support**: They can draft responses to frequently asked questions, pull customer order details from a database, or schedule follow-up calls.\n*   **Market Research**: Gathering competitive pricing, tracking industry news, or monitoring social media mentions can be automated.\n*   **Data Processing**: Taking information from various sources and organising it into a spreadsheet or database.\n\n## How Businesses are Accessing AI Agents\n\nThe exciting part is that you don't need to be a tech expert to use these. Many user-friendly platforms are emerging that allow you to \"train\" an agent with simple instructions, often through a visual interface or by typing out clear steps.\n\nInstead of writing code, you essentially define the agent's \"mission.\" For example, you might tell it: \"Find five new businesses in the Sydney area that sell eco-friendly products, then draft a personalised email introducing our sustainable packaging solutions, including their company name and a specific product they sell.\"\n\nThe platform then acts as the agent's \"brain\" and \"hands,\" providing the AI model (the smart bit) and the connections (the integrations) to your other business apps like your email service or a Google Sheet. You outline the steps, link the necessary tools, and the agent gets to work.\n\n## What this means for you\n\n*   **If you're a small business owner**: This technology can be a massive time-saver. You can offload those administrative tasks that eat into your day – things like initial lead research, basic customer support follow-ups, or keeping your contact lists updated. It's like gaining an extra team member without the overheads.\n*   **If you manage a team**: Consider which repetitive tasks your team dreads or that take up valuable hours. Delegating these to an AI agent can boost team morale by freeing up staff for more creative or complex work, and it can significantly increase overall productivity.\n*   **If you're just getting started**: Don't feel overwhelmed. Start small. Pick one very simple, repetitive task you do each week that involves digital tools (like adding new contacts to a spreadsheet or drafting a specific type of routine email). Explore some of the emerging no-code agent platforms and see if you can set up a basic agent for that single task. It's a great way to learn without huge risk.\n\n## Wrap-up\n\nThe rise of accessible AI agents means that smart automation is no longer just for big corporations with large tech teams. Everyday businesses can now tap into AI that doesn't just chat, but actively works for them, streamlining workflows and freeing up valuable time. Start by identifying one repetitive, rule-based digital task in your business, then explore how an AI agent could take it off your plate.",
+  "original_title": "Multi-agent social intelligence with Strands Agents and Amazon Bedrock"
+}

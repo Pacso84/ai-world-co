@@ -1,158 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178425313608210",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-17T01:52:16.082Z",
-      "updated": "2026-07-17T01:53:11.340Z"
-    },
-    {
-      "id": "t178425319135949",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-17T01:53:11.359Z",
-      "updated": "2026-07-17T01:53:11.511Z"
-    },
-    {
-      "id": "t178425319151258",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-17T01:53:11.512Z",
-      "updated": "2026-07-17T01:53:21.889Z"
-    },
-    {
-      "id": "t178425320189220",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-17T01:53:21.892Z",
-      "updated": "2026-07-17T01:53:59.073Z"
-    },
-    {
-      "id": "t178425323907577",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-17T01:53:59.075Z",
-      "updated": "2026-07-17T01:54:08.645Z"
-    },
-    {
-      "id": "t178425324864766",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-17T01:54:08.647Z",
-      "updated": "2026-07-17T01:54:23.288Z"
-    },
-    {
-      "id": "t178425326329054",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-07-17T01:54:23.290Z",
-      "updated": "2026-07-17T01:54:41.932Z"
-    },
-    {
-      "id": "t178425328193462",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-17T01:54:41.934Z",
-      "updated": "2026-07-17T01:54:42.763Z"
-    },
-    {
-      "id": "t178425328276574",
-      "title": "Run translator",
-      "status": "done",
-      "agent": "translator",
-      "created": "2026-07-17T01:54:42.765Z",
-      "updated": "2026-07-17T02:05:21.998Z"
-    },
-    {
-      "id": "t178425392200091",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-07-17T02:05:22.000Z",
-      "updated": "2026-07-17T02:05:29.919Z"
-    },
-    {
-      "id": "t178428154625659",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-07-17T09:45:46.256Z",
-      "updated": "2026-07-17T09:45:46.513Z"
-    },
-    {
-      "id": "t178428154651540",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-07-17T09:45:46.515Z",
-      "updated": "2026-07-17T09:46:04.046Z"
-    },
-    {
-      "id": "t178428156405376",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-07-17T09:46:04.053Z",
-      "updated": "2026-07-17T09:46:04.293Z"
-    },
-    {
-      "id": "t178428156429854",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-07-17T09:46:04.298Z",
-      "updated": "2026-07-17T09:46:04.555Z"
-    },
-    {
-      "id": "t178428156455781",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-17T09:46:04.557Z",
-      "updated": "2026-07-17T09:46:04.783Z"
-    },
-    {
-      "id": "t17842815647876",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-07-17T09:46:04.787Z",
-      "updated": "2026-07-17T09:48:25.646Z"
-    },
-    {
-      "id": "t178428170564846",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-17T09:48:25.648Z",
-      "updated": "2026-07-17T09:49:05.934Z"
-    },
-    {
-      "id": "t17842817459401",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-17T09:49:05.940Z",
-      "updated": "2026-07-17T09:49:57.678Z"
-    },
-    {
-      "id": "t178428179768051",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-17T09:49:57.680Z",
-      "updated": "2026-07-17T09:50:27.728Z"
-    },
-    {
       "id": "t17842818277340",
       "title": "Run guide",
       "status": "done",
@@ -479,49 +327,161 @@
       "agent": "publisher",
       "created": "2026-07-18T01:46:17.193Z",
       "updated": "2026-07-18T01:46:25.032Z"
+    },
+    {
+      "id": "t178436610345734",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-07-18T09:15:03.457Z",
+      "updated": "2026-07-18T09:15:08.112Z"
+    },
+    {
+      "id": "t17843661081149",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-07-18T09:15:08.114Z",
+      "updated": "2026-07-18T09:15:17.656Z"
+    },
+    {
+      "id": "t178436611765863",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-07-18T09:15:17.658Z",
+      "updated": "2026-07-18T09:15:17.915Z"
+    },
+    {
+      "id": "t178436611791789",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-07-18T09:15:17.917Z",
+      "updated": "2026-07-18T09:15:18.146Z"
+    },
+    {
+      "id": "t178436611814897",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-18T09:15:18.148Z",
+      "updated": "2026-07-18T09:15:18.375Z"
+    },
+    {
+      "id": "t178436611837989",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-07-18T09:15:18.379Z",
+      "updated": "2026-07-18T09:16:56.511Z"
+    },
+    {
+      "id": "t178436621651384",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-18T09:16:56.513Z",
+      "updated": "2026-07-18T09:17:43.138Z"
+    },
+    {
+      "id": "t17843662631439",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-07-18T09:17:43.143Z",
+      "updated": "2026-07-18T09:18:31.302Z"
+    },
+    {
+      "id": "t178436631130417",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-18T09:18:31.304Z",
+      "updated": "2026-07-18T09:18:59.930Z"
+    },
+    {
+      "id": "t178436633993590",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-07-18T09:18:59.935Z",
+      "updated": "2026-07-18T09:19:21.137Z"
+    },
+    {
+      "id": "t178436636113976",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-18T09:19:21.139Z",
+      "updated": "2026-07-18T09:19:34.750Z"
+    },
+    {
+      "id": "t178436637475548",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-07-18T09:19:34.755Z",
+      "updated": "2026-07-18T09:19:51.639Z"
+    },
+    {
+      "id": "t178436639164139",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-18T09:19:51.641Z",
+      "updated": "2026-07-18T09:20:07.082Z"
+    },
+    {
+      "id": "t178436640708770",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-07-18T09:20:07.087Z",
+      "updated": "2026-07-18T09:20:15.178Z"
+    },
+    {
+      "id": "t178436641520278",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-18T09:20:15.202Z",
+      "updated": "2026-07-18T09:20:29.220Z"
+    },
+    {
+      "id": "t178436642922357",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-07-18T09:20:29.223Z",
+      "updated": "2026-07-18T09:20:39.045Z"
+    },
+    {
+      "id": "t178436643904783",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-18T09:20:39.047Z",
+      "updated": "2026-07-18T09:20:40.072Z"
+    },
+    {
+      "id": "t178436644007447",
+      "title": "Run translator",
+      "status": "done",
+      "agent": "translator",
+      "created": "2026-07-18T09:20:40.074Z",
+      "updated": "2026-07-18T09:28:37.879Z"
+    },
+    {
+      "id": "t178436691788157",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-07-18T09:28:37.881Z",
+      "updated": "2026-07-18T09:28:46.151Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178353162476627",
-      "level": "warn",
-      "text": "📨 pairing → guide: Új funkció-hír → kéne hozzá útmutató: \"How to Lock In Lower AI Costs with Reserved Capacity\"",
-      "agent": "pairing",
-      "at": "2026-07-08T17:27:04.766Z",
-      "loud": false
-    },
-    {
-      "id": "n178353168315030",
-      "level": "info",
-      "text": "SEO: 8 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-07-08T17:28:03.150Z",
-      "loud": false
-    },
-    {
-      "id": "n178353227097073",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). Our article line-up is ready to publish, offering a diverse range of practical AI applications for everyday people. I've reviewed each piece to ensure they're complete, on-brand, and free of errors, w",
-      "agent": "publisher",
-      "at": "2026-07-08T17:37:50.970Z",
-      "loud": false
-    },
-    {
-      "id": "n178353227496790",
-      "level": "success",
-      "text": "8 hír + 0 útmutató publikálva (költség: $0.1520).",
-      "agent": "ceo",
-      "at": "2026-07-08T17:37:54.967Z",
-      "loud": false
-    },
-    {
-      "id": "n178356207188780",
-      "level": "info",
-      "text": "SEO: 1 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-07-09T01:54:31.887Z",
-      "loud": false
-    },
     {
       "id": "n178356207369726",
       "level": "success",
@@ -1281,243 +1241,49 @@
       "agent": "ceo",
       "at": "2026-07-18T01:46:25.054Z",
       "loud": false
+    },
+    {
+      "id": "n178436636112256",
+      "level": "warn",
+      "text": "📨 guide → ceo: Kell még adat: \"How to Use SkillOpt to Train AI Agent Skills\" — az Ellenőrző tényt/forrást kér, amit nem találhatok ki: ",
+      "agent": "guide",
+      "at": "2026-07-18T09:19:21.122Z",
+      "loud": false
+    },
+    {
+      "id": "n178436639162891",
+      "level": "warn",
+      "text": "📨 guide → ceo: Kell még adat: \"How to Use SkillOpt to Train AI Agent Skills\" — az Ellenőrző tényt/forrást kér, amit nem találhatok ki: ",
+      "agent": "guide",
+      "at": "2026-07-18T09:19:51.628Z",
+      "loud": false
+    },
+    {
+      "id": "n178436643903188",
+      "level": "info",
+      "text": "SEO: 6 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-07-18T09:20:39.031Z",
+      "loud": false
+    },
+    {
+      "id": "n178436691886377",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). Our article line-up is coherent and ready for publication, covering a range of practical AI applications that everyday people can benefit from. I do note that the line-up is quite tech-heavy, so a gen",
+      "agent": "publisher",
+      "at": "2026-07-18T09:28:38.863Z",
+      "loud": false
+    },
+    {
+      "id": "n178436692617487",
+      "level": "success",
+      "text": "4 hír + 2 útmutató publikálva (költség: $0.0671).",
+      "agent": "ceo",
+      "at": "2026-07-18T09:28:46.174Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m17841957538063",
-      "from": "ceo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Főnöki újraindítás: \"Revisiting ASR Error Correction with Specialized Models\" — rewrite-explainer",
-      "ref": "2026-07-06T18-04-05-099Z_apple-ml_Revisiting_ASR_Error_Correction_with_Specialized_M.json",
-      "at": "2026-07-16T09:55:53.806Z"
-    },
-    {
-      "id": "m178419580260956",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Built Technologies builds an AI-powered document intelligence solution on AWS to power agents across real estate finance\" — mi a baj: NO_H1: Nincs H1 (# Cím) a cikkben",
-      "ref": "2026-07-16T09-56-08-755Z_aws-ml_Built_Technologies_builds_an_AI-powered_document_i.json",
-      "at": "2026-07-16T09:56:42.609Z"
-    },
-    {
-      "id": "m17841958026352",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"GPT-Red: Unlocking Self-Improvement for Robustness\" — mi a baj: NO_H1: Nincs H1 (# Cím) a cikkben",
-      "ref": "2026-07-16T09-56-08-755Z_openai-blog_GPT-Red__Unlocking_Self-Improvement_for_Robustness.json",
-      "at": "2026-07-16T09:56:42.635Z"
-    },
-    {
-      "id": "m178419581928086",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Presentation: Successful Implementation of the Enterprise AI Factory\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Replace the title and intro to match the existing 'Run AI Privately' content, OR rewrite the article as an explainer about Enterprise AI Factory implementation with a",
-      "ref": "2026-07-06T02-05-53-940Z_ntt-research_Presentation__Successful_Implementation_of_the_Ent.json",
-      "at": "2026-07-16T09:56:59.280Z"
-    },
-    {
-      "id": "m178419583278569",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"How Open Models Are Driving AI Research\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers. HONESTY RULE: name the REAL products/places/organisations from the source; NEVER invent generic UI steps (\"most",
-      "ref": "2026-07-06T18-04-05-097Z_nvidia-blog_How_Open_Models_Are_Driving_AI_Research.json",
-      "at": "2026-07-16T09:57:12.785Z"
-    },
-    {
-      "id": "m178419584838937",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Revisiting ASR Error Correction with Specialized Models\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers. HONESTY RULE: name the REAL products/places/organisations from the source; NEVER invent generic",
-      "ref": "2026-07-06T18-04-05-099Z_apple-ml_Revisiting_ASR_Error_Correction_with_Specialized_M.json",
-      "at": "2026-07-16T09:57:28.389Z"
-    },
-    {
-      "id": "m178419586335242",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Contextual Policies in Omnigent: Using session state to better govern AI agents\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers.; MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand s",
-      "ref": "2026-07-07T02-01-14-878Z_databricks_Contextual_Policies_in_Omnigent__Using_session_sta.json",
-      "at": "2026-07-16T09:57:43.352Z"
-    },
-    {
-      "id": "m178419587821664",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Salesforce Deepens Commitment to Switzerland with $1 Billion Investment to Accelerate Agentic AI Transformation\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers.; Reviewer verdict: Salvaged from a part",
-      "ref": "2026-07-07T10-44-55-042Z_salesforce_Salesforce_Deepens_Commitment_to_Switzerland_with_.json",
-      "at": "2026-07-16T09:57:58.216Z"
-    },
-    {
-      "id": "m178419589366875",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Build a serverless image editing agent with Amazon Bedrock AgentCore harness\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers.; Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
-      "ref": "2026-07-07T17-51-01-246Z_aws-ml_Build_a_serverless_image_editing_agent_with_Amazon.json",
-      "at": "2026-07-16T09:58:13.668Z"
-    },
-    {
-      "id": "m17841958939188",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Presentation: Successful Implementation of the Enterprise AI Factory\" — mi a baj: NO_H1: Nincs H1 (# Cím) a cikkben",
-      "ref": "2026-07-06T02-05-53-940Z_ntt-research_Presentation__Successful_Implementation_of_the_Ent.json",
-      "at": "2026-07-16T09:58:13.918Z"
-    },
-    {
-      "id": "m17841959009766",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"How Open Models Are Driving AI Research\" — mi a baj: CLICHE: Tiltott klisé találva: \"game-changer\"; Uses cliché 'game-changer'",
-      "ref": "2026-07-06T18-04-05-097Z_nvidia-blog_How_Open_Models_Are_Driving_AI_Research.json",
-      "at": "2026-07-16T09:58:20.976Z"
-    },
-    {
-      "id": "m178419590883091",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Revisiting ASR Error Correction with Specialized Models\" — mi a baj: CLICHE: Tiltott klisé találva: \"game-changer\"",
-      "ref": "2026-07-06T18-04-05-099Z_apple-ml_Revisiting_ASR_Error_Correction_with_Specialized_M.json",
-      "at": "2026-07-16T09:58:28.830Z"
-    },
-    {
-      "id": "m178419590885144",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Contextual Policies in Omnigent: Using session state to better govern AI agents\" — mi a baj: NO_H1: Nincs H1 (# Cím) a cikkben",
-      "ref": "2026-07-07T02-01-14-878Z_databricks_Contextual_Policies_in_Omnigent__Using_session_sta.json",
-      "at": "2026-07-16T09:58:28.851Z"
-    },
-    {
-      "id": "m178419591570558",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Salesforce Deepens Commitment to Switzerland with $1 Billion Investment to Accelerate Agentic AI Transformation\" (?/10)",
-      "ref": "2026-07-07T10-44-55-042Z_salesforce_Salesforce_Deepens_Commitment_to_Switzerland_with_.json",
-      "at": "2026-07-16T09:58:35.705Z"
-    },
-    {
-      "id": "m178419592327726",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Build a serverless image editing agent with Amazon Bedrock AgentCore harness\" (?/10)",
-      "ref": "2026-07-07T17-51-01-246Z_aws-ml_Build_a_serverless_image_editing_agent_with_Amazon.json",
-      "at": "2026-07-16T09:58:43.277Z"
-    },
-    {
-      "id": "m178419594447696",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Ask Gemini to explain a confusing work email in plain English before you reply\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; Reviewer verdict: Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben; újraküldöm.",
-      "ref": "GUIDE_ask-gemini-to-explain-a-confusing-work-email-in-plain-englis.json",
-      "at": "2026-07-16T09:59:04.476Z"
-    },
-    {
-      "id": "m178419596705559",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Use Apple Intelligence to clean up blurry photos in seconds on your iPhone\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; Reviewer verdict: Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben; újraküldöm.",
-      "ref": "GUIDE_use-apple-intelligence-to-clean-up-blurry-photos-in-seconds-.json",
-      "at": "2026-07-16T09:59:27.055Z"
-    },
-    {
-      "id": "m178419597471195",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Ask Gemini to explain a confusing work email in plain English before you reply\" (?/10)",
-      "ref": "GUIDE_ask-gemini-to-explain-a-confusing-work-email-in-plain-englis.json",
-      "at": "2026-07-16T09:59:34.711Z"
-    },
-    {
-      "id": "m178419598142771",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Use Apple Intelligence to clean up blurry photos in seconds on your iPhone\" (?/10)",
-      "ref": "GUIDE_use-apple-intelligence-to-clean-up-blurry-photos-in-seconds-.json",
-      "at": "2026-07-16T09:59:41.427Z"
-    },
-    {
-      "id": "m178419600385825",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-07-16T10:00:03.858Z"
-    },
-    {
-      "id": "m178419656949960",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "5 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
-      "ref": null,
-      "at": "2026-07-16T10:09:29.499Z"
-    },
-    {
-      "id": "m178422135386794",
-      "from": "ceo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Főnöki újraindítás: \"Contextual Policies in Omnigent: Using session state to bett\" — fix-only",
-      "ref": "2026-07-07T02-01-14-878Z_databricks_Contextual_Policies_in_Omnigent__Using_session_sta.json",
-      "at": "2026-07-16T17:02:33.867Z"
-    },
-    {
-      "id": "m178422138257153",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Presentation: Successful Implementation of the Enterprise AI Factory\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Replace the title and intro to match the existing 'Run AI Privately' content, OR rewrite the article as an explainer about Enterprise AI Factory implementation with a",
-      "ref": "2026-07-06T02-05-53-940Z_ntt-research_Presentation__Successful_Implementation_of_the_Ent.json",
-      "at": "2026-07-16T17:03:02.571Z"
-    },
-    {
-      "id": "m178422139499118",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"How Open Models Are Driving AI Research\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers. HONESTY RULE: name the REAL products/places/organisations from the source; NEVER invent generic UI steps (\"most",
-      "ref": "2026-07-06T18-04-05-097Z_nvidia-blog_How_Open_Models_Are_Driving_AI_Research.json",
-      "at": "2026-07-16T17:03:14.991Z"
-    },
-    {
-      "id": "m178422141197623",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Revisiting ASR Error Correction with Specialized Models\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers. HONESTY RULE: name the REAL products/places/organisations from the source; NEVER invent generic",
-      "ref": "2026-07-06T18-04-05-099Z_apple-ml_Revisiting_ASR_Error_Correction_with_Specialized_M.json",
-      "at": "2026-07-16T17:03:31.976Z"
-    },
-    {
-      "id": "m178422144131113",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Contextual Policies in Omnigent: Using session state to better govern AI agents\" — javítva: CEO instruction (fix ONLY the flaws listed, keep everything else): Add a single H1 heading at the very top of the article body (right after the front-matter) that matches the editorial title 'Contextual Policies in Omnigent: Using session state to better govern AI agents'. Do not rewrite the a",
-      "ref": "2026-07-07T02-01-14-878Z_databricks_Contextual_Policies_in_Omnigent__Using_session_sta.json",
-      "at": "2026-07-16T17:04:01.311Z"
-    },
     {
       "id": "m178422151222445",
       "from": "iro",
@@ -2639,6 +2405,244 @@
       "text": "6 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
       "ref": null,
       "at": "2026-07-18T01:47:13.480Z"
+    },
+    {
+      "id": "m178436610609347",
+      "from": "ceo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Főnöki újraindítás: \"Multi-agent social intelligence with Strands Agents and Amaz\" — rewrite-explainer",
+      "ref": "2026-07-15T01-19-07-584Z_aws-ml_Multi-agent_social_intelligence_with_Strands_Agent.json",
+      "at": "2026-07-18T09:15:06.093Z"
+    },
+    {
+      "id": "m178436610809935",
+      "from": "ceo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Főnöki újraindítás: \"New refinement capabilities allow custom editing with Help m\" — rewrite-explainer",
+      "ref": "2026-07-15T01-19-07-584Z_google-workspace_New_refinement_capabilities_allow_custom_editing_w.json",
+      "at": "2026-07-18T09:15:08.099Z"
+    },
+    {
+      "id": "m178436614954048",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Multi-agent social intelligence with Strands Agents and Amazon Bedrock\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers. HONESTY RULE: name the REAL products/places/organisations from the source; NEVER",
+      "ref": "2026-07-15T01-19-07-584Z_aws-ml_Multi-agent_social_intelligence_with_Strands_Agent.json",
+      "at": "2026-07-18T09:15:49.540Z"
+    },
+    {
+      "id": "m17843661740370",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"New refinement capabilities allow custom editing with Help me write in Gmail \" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers. HONESTY RULE: name the REAL products/places/organisations from the source",
+      "ref": "2026-07-15T01-19-07-584Z_google-workspace_New_refinement_capabilities_allow_custom_editing_w.json",
+      "at": "2026-07-18T09:16:14.037Z"
+    },
+    {
+      "id": "m178436618905418",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"NVIDIA and Japan Bring Full-Stack AI and Robotics to Every Industry\" — javítva: Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
+      "ref": "2026-07-15T17-04-30-279Z_nvidia-blog_NVIDIA_and_Japan_Bring_Full-Stack_AI_and_Robotics_.json",
+      "at": "2026-07-18T09:16:29.054Z"
+    },
+    {
+      "id": "m178436619945739",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"GPT-Red: Unlocking Self-Improvement for Robustness\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; Reviewer verdict: Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben; újraküldöm.",
+      "ref": "2026-07-16T09-56-08-755Z_openai-blog_GPT-Red__Unlocking_Self-Improvement_for_Robustness.json",
+      "at": "2026-07-18T09:16:39.457Z"
+    },
+    {
+      "id": "m178436620879028",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Why teens deserve access to safe AI\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; Reviewer verdict: Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben; újraküldöm.",
+      "ref": "2026-07-16T19-05-12-610Z_openai-blog_Why_teens_deserve_access_to_safe_AI.json",
+      "at": "2026-07-18T09:16:48.790Z"
+    },
+    {
+      "id": "m178436621649910",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"How Cars24 scales conversations and builds faster with OpenAI\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; Reviewer verdict: Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben; újraküldöm.",
+      "ref": "2026-07-16T19-05-12-611Z_openai-blog_How_Cars24_scales_conversations_and_builds_faster_.json",
+      "at": "2026-07-18T09:16:56.499Z"
+    },
+    {
+      "id": "m178436622776215",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Multi-agent social intelligence with Strands Agents and Amazon Bedrock\" (?/10)",
+      "ref": "2026-07-15T01-19-07-584Z_aws-ml_Multi-agent_social_intelligence_with_Strands_Agent.json",
+      "at": "2026-07-18T09:17:07.762Z"
+    },
+    {
+      "id": "m178436623448467",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"New refinement capabilities allow custom editing with Help me write in Gmail \" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "2026-07-15T01-19-07-584Z_google-workspace_New_refinement_capabilities_allow_custom_editing_w.json",
+      "at": "2026-07-18T09:17:14.484Z"
+    },
+    {
+      "id": "m178436624144054",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"NVIDIA and Japan Bring Full-Stack AI and Robotics to Every Industry\" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "2026-07-15T17-04-30-279Z_nvidia-blog_NVIDIA_and_Japan_Bring_Full-Stack_AI_and_Robotics_.json",
+      "at": "2026-07-18T09:17:21.440Z"
+    },
+    {
+      "id": "m178436624825878",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"GPT-Red: Unlocking Self-Improvement for Robustness\" (?/10)",
+      "ref": "2026-07-16T09-56-08-755Z_openai-blog_GPT-Red__Unlocking_Self-Improvement_for_Robustness.json",
+      "at": "2026-07-18T09:17:28.258Z"
+    },
+    {
+      "id": "m178436625425949",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Why teens deserve access to safe AI\" (?/10)",
+      "ref": "2026-07-16T19-05-12-610Z_openai-blog_Why_teens_deserve_access_to_safe_AI.json",
+      "at": "2026-07-18T09:17:34.259Z"
+    },
+    {
+      "id": "m178436626312559",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"How Cars24 scales conversations and builds faster with OpenAI\" (?/10)",
+      "ref": "2026-07-16T19-05-12-611Z_openai-blog_How_Cars24_scales_conversations_and_builds_faster_.json",
+      "at": "2026-07-18T09:17:43.125Z"
+    },
+    {
+      "id": "m178436628106036",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"How to Get AI Insights Anywhere with Genie One on Your Phone\" — javítva: NO_FRONTMATTER: A cikk nem YAML frontmatter-rel kezdődik; MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!); újraküldöm.",
+      "ref": "GUIDE_how-to-get-ai-insights-anywhere-with-genie-one-on-your-phone.json",
+      "at": "2026-07-18T09:18:01.060Z"
+    },
+    {
+      "id": "m178436631129028",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"How to Use SkillOpt to Train AI Agent Skills\" — javítva: GUIDE_TOO_SHORT: Csak 470 szó — az útmutató-szabály 700-1200 szó (guide-quality-rules.md); Reviewer verdict: Critical auto-check failures: GUIDE_TOO_SHORT: Csak 470 szó — az útmutató-szabály 700-1200 szó (guide-quality-rules.md); újraküldöm.",
+      "ref": "GUIDE_how-to-use-skillopt-to-train-ai-agent-skills.json",
+      "at": "2026-07-18T09:18:31.290Z"
+    },
+    {
+      "id": "m178436632472766",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"How to Get AI Insights Anywhere with Genie One on Your Phone\" (?/10)",
+      "ref": "GUIDE_how-to-get-ai-insights-anywhere-with-genie-one-on-your-phone.json",
+      "at": "2026-07-18T09:18:44.727Z"
+    },
+    {
+      "id": "m178436633987172",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"How to Use SkillOpt to Train AI Agent Skills\" — mi a baj: The metadata field \"tool: SkillOpt\" is inaccurate. While SkillOpt is a real Microsoft Research initiative, the article explicitly states, \"Even though you can't use SkillOpt directly,\" confirming it is not a user-facing tool for the audience of this guide. The article instead teaches how to use other AI assistants (Ch",
+      "ref": "GUIDE_how-to-use-skillopt-to-train-ai-agent-skills.json",
+      "at": "2026-07-18T09:18:59.871Z"
+    },
+    {
+      "id": "m178436636112010",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"How to Use SkillOpt to Train AI Agent Skills\" — javítva: The metadata field \"tool: SkillOpt\" is inaccurate. While SkillOpt is a real Microsoft Research initiative, the article explicitly states, \"Even though you can't use SkillOpt directly,\" confirming it is not a user-facing tool for the audience of this guide. The article instead teaches how to use other AI assistants (ChatGPT, Gem",
+      "ref": "GUIDE_how-to-use-skillopt-to-train-ai-agent-skills.json",
+      "at": "2026-07-18T09:19:21.120Z"
+    },
+    {
+      "id": "m178436636112224",
+      "from": "guide",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Kell még adat: \"How to Use SkillOpt to Train AI Agent Skills\" — az Ellenőrző tényt/forrást kér, amit nem találhatok ki: The metadata field \"tool: SkillOpt\" is inaccurate. While SkillOpt is a real Microsoft Research initiative, the article explicitly states, \"Even though you can't use SkillOpt directly,\" confirming it is not a user-facing tool for the audience of this guide. The article instead tea",
+      "ref": "GUIDE_how-to-use-skillopt-to-train-ai-agent-skills.json",
+      "open": false,
+      "at": "2026-07-18T09:19:21.122Z",
+      "resolved_at": "2026-07-18T09:20:07.072Z"
+    },
+    {
+      "id": "m178436637469150",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"How to Use SkillOpt to Train AI Agent Skills\" — mi a baj: The article repeatedly references \"Microsoft's SkillOpt initiative\" as a real cutting-edge research project in AI skill acquisition. A search for \"Microsoft SkillOpt\" yields no public or official initiative, research paper, or product by this name from Microsoft. This appears to be an invented name for a research init",
+      "ref": "GUIDE_how-to-use-skillopt-to-train-ai-agent-skills.json",
+      "at": "2026-07-18T09:19:34.691Z"
+    },
+    {
+      "id": "m178436639162662",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"How to Use SkillOpt to Train AI Agent Skills\" — javítva: The article repeatedly references \"Microsoft's SkillOpt initiative\" as a real cutting-edge research project in AI skill acquisition. A search for \"Microsoft SkillOpt\" yields no public or official initiative, research paper, or product by this name from Microsoft. This appears to be an invented name for a research initiative fal",
+      "ref": "GUIDE_how-to-use-skillopt-to-train-ai-agent-skills.json",
+      "at": "2026-07-18T09:19:51.627Z"
+    },
+    {
+      "id": "m178436639162870",
+      "from": "guide",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Kell még adat: \"How to Use SkillOpt to Train AI Agent Skills\" — az Ellenőrző tényt/forrást kér, amit nem találhatok ki: The article repeatedly references \"Microsoft's SkillOpt initiative\" as a real cutting-edge research project in AI skill acquisition. A search for \"Microsoft SkillOpt\" yields no public or official initiative, research paper, or product by this name from Microsoft. This appears to ",
+      "ref": "GUIDE_how-to-use-skillopt-to-train-ai-agent-skills.json",
+      "open": false,
+      "at": "2026-07-18T09:19:51.628Z",
+      "resolved_at": "2026-07-18T09:20:07.072Z"
+    },
+    {
+      "id": "m178436640707051",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"How to Use SkillOpt to Train AI Agent Skills\" (?/10)",
+      "ref": "GUIDE_how-to-use-skillopt-to-train-ai-agent-skills.json",
+      "at": "2026-07-18T09:20:07.070Z"
+    },
+    {
+      "id": "m178436644004029",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 18 → 6/3/3 oszlop.",
+      "ref": "mobile",
+      "at": "2026-07-18T09:20:40.040Z"
+    },
+    {
+      "id": "m17843669744077",
+      "from": "social",
+      "to": "team",
+      "kind": "info",
+      "text": "6 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
+      "ref": null,
+      "at": "2026-07-18T09:29:34.407Z"
     }
   ]
 }

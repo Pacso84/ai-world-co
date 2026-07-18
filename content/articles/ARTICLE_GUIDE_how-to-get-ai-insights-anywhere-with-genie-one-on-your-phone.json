@@ -1,0 +1,65 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "how-to-get-ai-insights-anywhere-with-genie-one-on-your-phone",
+    "company": "OpenAI",
+    "tool": "ChatGPT",
+    "icon": "🆕",
+    "level": "beginner",
+    "source_news": {
+      "file": "ARTICLE_2026-07-15T01-19-07-585Z_databricks_Take_insights_anywhere_with_Genie_One_on_mobile.json",
+      "title": "Take insights anywhere with Genie One on mobile"
+    },
+    "written_at": "2026-07-18T09:18:01.058Z",
+    "writer_provider": "google",
+    "writer_model": "gemini-2.5-flash",
+    "writer_cost_usd": 0.0124314,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "rejected_at": "2026-07-18T01:28:39.608Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1251
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "This guide is clear, well-structured, and perfectly fits the",
+      "_salvaged": true,
+      "_aiCost": 0.0045768,
+      "_provider": "google",
+      "_model": "gemini-2.5-flash",
+      "_attempts": 1
+    },
+    "reason": "Critical auto-check failures: NO_FRONTMATTER: A cikk nem YAML frontmatter-rel kezdődik; MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!); NO_H1: Nincs H1 (# Cím) a cikkben; GUIDE_TOO_SHORT: Csak 187 szó — az útmutató-szabály 700-1200 szó (guide-quality-rules.md)",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_GUIDE_how-to-get-ai-insights-anywhere-with-genie-one-on-your-phone.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-07-18T09:18:44.726Z",
+    "seo": {
+      "meta_description": "Learn to summarise long texts with ChatGPT, condensing emails, articles and documents into key points, saving time and increasing productivity",
+      "keywords": [
+        "summarise text with ChatGPT",
+        "condense long emails",
+        "AI for text summarisation",
+        "ChatGPT for everyday use"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add subheadings to break up the content and improve readability",
+        "Include concrete examples of how ChatGPT can be used for text summarisation",
+        "Optimise images with alt tags and descriptions to enhance search visibility"
+      ],
+      "optimised_at": "2026-07-18T09:20:37.883Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Summarise Any Text with ChatGPT for Everyday Use\"\nsubtitle: \"Learn how to quickly condense articles, emails, or documents into key points using ChatGPT, saving you time and helping you grasp information faster.\"\ncategory: \"guide\"\naudience: \"both\"\ncompany: \"OpenAI\"\ntool: \"ChatGPT\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"getting-started\", \"chatgpt\", \"summarising\"]\n---\n\n# Summarise Any Text with ChatGPT for Everyday Use\n\nDo you ever feel overwhelmed by long emails, articles, or reports? This guide will show you how to use an AI assistant, like ChatGPT, to quickly get the main points from any piece of text. By the end, you'll be able to condense lengthy information, making it easier to understand and manage, whether it's for work, study, or just keeping up with the news.\n\n## Before you start\n- An active **ChatGPT account**. You can create a free one at chat.openai.com.\n- A **web browser** (like Chrome, Edge, Safari) or the **ChatGPT mobile app** on your phone or tablet.\n- Access to the **free tier** of ChatGPT (this task doesn't require a paid subscription).\n- A piece of **text you want to summarise** – start with something short, like a news article paragraph or a recipe description.\n- Roughly **5-7 minutes** to follow along with the steps.\n\n## Step 1 — Open ChatGPT and log in\nFirst, open your web browser and go to the ChatGPT website (chat.openai.com) or launch the ChatGPT app on your device. You'll likely see a login screen asking for your email and password. If you're already logged in, you'll see your chat history on the left side of the screen and a main chat area in the centre. After entering your details, the system will verify your account and load the main chat interface. If it looks different, you might be prompted to complete a quick verification step, like checking a box to prove you're not a robot, or creating an account if you don't have one yet.\nYou'll know it worked when you see a blank message input box at the bottom of the screen, ready for you to type.\n\n## Step 2 — Start a fresh conversation\nNow that you're in ChatGPT, it's a good idea to start a new, clean conversation for your summarising task. Look for a \"New chat\" button, often located in the top-left corner of the screen or as a plus (+) icon. Tapping or clicking this will clear the previous conversation (if any) and give you a blank canvas. This helps the AI assistant, which is a computer program designed to understand and generate human-like text, focus purely on your new request without being influenced by past topics. If you can't find a \"New chat\" button, you might see a list of past conversations; just click on the very first option or the one that says \"New chat\" most clearly.\nYou'll know it worked when the main chat area becomes completely empty, with only the message input box visible at the bottom.\n\n## Step 3 — Paste the text you want to summarise\nNext, find the text you want ChatGPT to summarise. This could be anything from a paragraph in an email to a section of an online article. Copy this text to your device's clipboard. Then, click inside the message input box at the very bottom of the ChatGPT screen and paste your copied text there. You'll see the full block of text appear within the input area. This is the raw material the AI will work with. If your text is very long, it might take a moment to appear completely, and you might notice a scrollbar if it exceeds the visible area.\nYou'll know it worked when your chosen text is visible in the message input box, ready for you to add your instructions.\n\n## Step 4 — Give ChatGPT your summarising instructions (the \"prompt\")\nNow it's time to tell ChatGPT what to do with the text you've provided. Just before or after the pasted text (it doesn't usually matter which), type a clear instruction. This instruction is called a \"prompt,\" and it's how you guide the AI. Be specific about what kind of summary you need. For instance, do you want it short? For a child? With bullet points? Once you've typed your instruction, press the Enter key on your keyboard or click the send arrow icon (often looks like a paper aeroplane) next to the input box.\n💬 Example: `Summarise the following text in three bullet points, highlighting the main conclusions.`\nYou'll know it worked when ChatGPT starts generating a response directly above your input box, usually in a chat bubble, based on your instructions.\n\n## Step 5 — Review and refine the generated summary\nAfter a few moments, ChatGPT will display its summary of your text. Read through the generated response carefully. Does it capture the main points? Is it in the style you requested? Sometimes the first summary might not be exactly what you need. This is where the beauty of conversing with an AI assistant comes in: you can ask it to make changes. For example, you could type, \"Make it shorter,\" or \"Can you rephrase that for a general audience?\" The AI will then generate a new response, building on the previous conversation.\nYou'll know it worked when you see the summary text appear in the chat area, and you can then provide feedback or ask for further adjustments directly within the conversation.\n\n## Common mistakes\n-   **Pasting excessively long text:** ChatGPT has a \"context window\" (the amount of text it can remember and process at once). If your text is too long, it might cut off parts or get confused. The fix: Break very long documents into smaller sections, or use a tool that specifically handles larger files (which might be a paid feature).\n-   **Giving vague instructions:** Just typing \"Summarise this\" might give you a generic output. The fix: Be specific! Ask for \"a 100-word summary,\" \"key takeaways for a manager,\" or \"a summary for a year 6 student.\" The more detail you give, the better the result.\n-   **Not fact-checking the summary:** While AI is powerful, it can sometimes \"hallucinate\" (confidently make up information that isn't true) or misunderstand nuance. The fix: Always double-check critical details in the summary against the original text, especially for important documents. ChatGPT can draft the summary, but it cannot verify the accuracy of the original content or its own output for you.\n\n## What this means for you\n-   **In everyday life:** Quickly get the gist of long online articles, news reports, or complex recipes without having to read every single word. Use it to recap important family emails or summarise long holiday planning documents so everyone is on the same page.\n-   **For your business or work:** Condense lengthy reports, meeting minutes, or client briefs into actionable bullet points, helping you save time and focus on key decisions. It's also great for drafting executive summaries or preparing quick overviews for team members who need to catch up.\n-   **If you're just getting started:** Begin with summarising simple, short pieces of text that you already understand well. This will help you get a feel for how ChatGPT responds to different prompts and build your confidence in using AI for daily tasks.\n\n## Try it now\nOpen ChatGPT, start a new chat, and paste a paragraph from a news article about a topic you're interested in. Then, ask ChatGPT to summarise it \"in one short sentence, suitable for a social media post.\"",
+  "original_title": "How to Get AI Insights Anywhere with Genie One on Your Phone"
+}

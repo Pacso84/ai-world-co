@@ -37,6 +37,22 @@
         "The article claims: \"If you don't see it, look for a small lightning-bolt icon, which you can click to expand the AI assistant.\" The 'Help me write' feature is initiated by clicking a button (typically with a sparkle icon) at the bottom of the compose window; there isn't a lightning-bolt icon used to 'expand' a hidden AI assistant from below the subject line as described.",
         "The article provides a keyboard shortcut: \"After typing a prompt, press Ctrl + Enter (Windows) or Cmd + Enter (Mac) to apply it faster.\" This shortcut is not a documented or functional method for applying AI refinements within Gmail's 'Help me write' feature; Ctrl/Cmd + Enter is typically used to send the email itself."
       ]
+    },
+    {
+      "at": "2026-07-18T09:18:59.873Z",
+      "file": "WRITER_GUIDE_how-to-use-skillopt-to-train-ai-agent-skills.json",
+      "action": "block",
+      "reasons": [
+        "The metadata field \"tool: SkillOpt\" is inaccurate. While SkillOpt is a real Microsoft Research initiative, the article explicitly states, \"Even though you can't use SkillOpt directly,\" confirming it is not a user-facing tool for the audience of this guide. The article instead teaches how to use other AI assistants (ChatGPT, Gemini, Claude) to simulate SkillOpt principles, meaning SkillOpt is not the tool being demonstrated or used by the reader."
+      ]
+    },
+    {
+      "at": "2026-07-18T09:19:34.692Z",
+      "file": "WRITER_GUIDE_how-to-use-skillopt-to-train-ai-agent-skills.json",
+      "action": "block",
+      "reasons": [
+        "The article repeatedly references \"Microsoft's SkillOpt initiative\" as a real cutting-edge research project in AI skill acquisition. A search for \"Microsoft SkillOpt\" yields no public or official initiative, research paper, or product by this name from Microsoft. This appears to be an invented name for a research initiative falsely attributed to Microsoft."
+      ]
     }
   ]
 }
