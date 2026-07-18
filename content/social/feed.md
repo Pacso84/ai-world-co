@@ -1,6 +1,114 @@
 # AI World Co. — közösségi posztok
 
-*Generálva: 2026-07-17T17:08:02.695Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+*Generálva: 2026-07-18T01:47:13.478Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## CoFrGeNets replace the ‘bones’ of transformer-based models
+**🔗 https://aiworldhq.com/article/how-to-make-ai-models-smaller-faster-and-still-useful-at-hom.html**
+
+**Facebook:**
+Want AI that runs quickly on your laptop? Discover how CoFrGeNets shrink transformer models so you can use AI at home without a supercomputer. https://aiworldhq.com/article/how-to-make-ai-models-smaller-faster-and-still-useful-at-hom.html #lightweightAI #AItools
+
+**Instagram:**
+Fast AI on your coffee table.
+CoFrGeNets replace the heavy ‘bones’ of big transformer models, making them smaller and quicker – perfect for everyday devices.
+#lightweightAI
+#homeAI
+#everydaytech
+Link in bio.
+
+*Kép-ötlet: A neat home desk with a laptop open to a simple diagram of a compact AI model next to a coffee mug.*
+
+---
+
+## Your Prompts and Skills need a system of record.
+**🔗 https://aiworldhq.com/article/how-to-keep-your-ai-prompts-organised-so-you-don-t-start-fro.html**
+
+**Facebook:**
+Ever feel like you’re re‑writing the same AI prompts over and over? A quick, low‑effort system can store your best prompts so you can pull them out when you need them. https://aiworldhq.com/article/how-to-keep-your-ai-prompts-organised-so-you-don-t-start-fro.html #productivity #AI
+
+**Instagram:**
+Stop starting from scratch with AI prompts.
+Save your top prompts in a simple, searchable list and reuse them in seconds.
+#productivity
+#AItools
+#promptengineering
+Link in bio.
+
+*Kép-ötlet: A clean desk with a laptop open beside a notebook where a handwritten list of AI prompts is visible.*
+
+---
+
+## Own Your Context Layer with an AI Governance Framework
+**🔗 https://aiworldhq.com/article/how-to-protect-your-brand-s-voice-in-the-age-of-ai.html**
+
+**Facebook:**
+Want to keep your brand sounding like you, even when AI helps write content? A quick guide shows practical steps to protect your voice and strategy. https://aiworldhq.com/article/how-to-protect-your-brand-s-voice-in-the-age-of-ai.html #AIGovernance #BrandVoice
+
+**Instagram:**
+Keep your brand’s voice uniquely yours, AI or not.
+Simple steps to set up an AI governance framework that guards your tone across emails, reports and social posts.
+#AIGovernance
+#BrandVoice
+#BusinessStrategy
+Link in bio.
+
+*Kép-ötlet: A person at a desk reviewing a brand style guide on a laptop, with a faint AI circuitry overlay in the background, symbolising AI governance protecting the brand voice.*
+
+---
+
+## GPT-5.6 is now the preferred model in Microsoft 365 Copilot
+**🔗 https://aiworldhq.com/article/how-to-use-microsoft-365-copilot-s-new-ai-model-for-faster-w.html**
+
+**Facebook:**
+Tired of spending ages formatting docs and spreadsheets? The new AI model in Microsoft 365 Copilot can handle the busywork so you can focus on the important stuff. Give it a try and see the time saved. https://aiworldhq.com/article/how-to-use-microsoft-365-copilot-s-new-ai-model-for-faster-w.html #productivity #Microsoft365
+
+**Instagram:**
+Skip the formatting grind ✨
+Let the new Copilot AI in Word, Excel and Outlook do the heavy lifting, so you can get back to the work that matters.
+Link in bio.
+#aiatwork
+#productivitytips
+#Microsoft365
+#copilot
+#busylife
+
+*Kép-ötlet: A clean workspace showing a laptop screen with Word and Excel open, a subtle glow indicating AI assistance, and a coffee mug beside it.*
+
+---
+
+## Text match filters for agents
+**🔗 https://aiworldhq.com/article/how-to-filter-ai-search-results-so-you-actually-find-what-yo.html**
+
+**Facebook:**
+Ever feel like your AI assistant is spitting out too much info? These simple filters can cut the clutter and show you exactly what you need. https://aiworldhq.com/article/how-to-filter-ai-search-results-so-you-actually-find-what-yo.html #AIproductivity #HowTo
+
+**Instagram:**
+Skip the noise, find the answer.
+Use three easy filter tricks to trim AI results and get the info you really need, faster.
+#AIsearch
+#productivity
+#AItips
+Link in bio.
+
+*Kép-ötlet: A tidy laptop screen with a search bar and visible filter icons, a coffee mug beside it.*
+
+---
+
+## OpenAI GPT 5.6 on Snowflake Cortex AI
+**🔗 https://aiworldhq.com/article/getting-started-with-gpt-5-6-on-snowflake-cortex-ai-practica.html**
+
+**Facebook:**
+Ever wish you could just ask your computer to make sense of your grocery receipts? We look at how the new GPT-5.6 tool on Snowflake helps with everyday data tasks. https://aiworldhq.com/article/getting-started-with-gpt-5-6-on-snowflake-cortex-ai-practica.html #DataAI #Snowflake
+
+**Instagram:**
+Turn messy data into answers without the headache. 🛋️ Here’s how the new GPT-5.6 model on Snowflake can help you track spending or sort out work emails.
+
+#AIForEveryone #SnowflakeAI #TechTips #DataAnalysis
+Link in bio.
+
+*Kép-ötlet: A tidy home office desk with a cup of tea and an open laptop displaying a clean, colorful chart on the screen.*
 
 ---
 

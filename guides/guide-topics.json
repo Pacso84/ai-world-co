@@ -1358,13 +1358,13 @@
       "audience": "both",
       "level": "intermediate",
       "angle": "Focus on training AI agent skills using SkillOpt",
-      "status": "removed",
+      "status": "done",
       "icon": "🆕",
       "source_news": {
         "file": "ARTICLE_2026-06-30T18-26-47-624Z_microsoft-research_SkillOpt__Agent_skills_as_trainable_parameters.json",
         "title": "SkillOpt: Agent skills as trainable parameters"
       },
-      "written_at": "2026-07-03T01:56:01.577Z",
+      "written_at": "2026-07-18T01:27:14.041Z",
       "removed_reason": "kitalált termék (genie.one app / SkillOpt fiók) — 2026-07-18 levéve"
     },
     {
@@ -2511,13 +2511,13 @@
       "audience": "business",
       "level": "beginner",
       "angle": "Using Genie One's mobile app for quick data-driven decisions",
-      "status": "removed",
+      "status": "done",
       "icon": "🆕",
       "source_news": {
         "file": "ARTICLE_2026-07-15T01-19-07-585Z_databricks_Take_insights_anywhere_with_Genie_One_on_mobile.json",
         "title": "Take insights anywhere with Genie One on mobile"
       },
-      "written_at": "2026-07-15T01:21:41.757Z",
+      "written_at": "2026-07-18T01:27:28.206Z",
       "removed_reason": "kitalált termék (genie.one app / SkillOpt fiók) — 2026-07-18 levéve"
     },
     {
@@ -2678,11 +2678,12 @@
       "angle": "Upload a PDF to Claude and ask for a short, plain-English summary — no technical setup, works in the free chat.",
       "audience": "both",
       "level": "beginner",
-      "status": "todo",
+      "status": "done",
       "icon": "🤖",
       "priority": "balance",
       "proposed_at": "2026-07-16T19:50:51.232Z",
-      "proposed_by": "fact-check-reseed"
+      "proposed_by": "fact-check-reseed",
+      "written_at": "2026-07-18T01:27:45.943Z"
     },
     {
       "id": "write-a-polite-refund-request-email-with-chatgpt",
@@ -2692,11 +2693,12 @@
       "angle": "Describe your purchase problem to ChatGPT and get a firm but polite refund email you can copy straight into your mail app.",
       "audience": "both",
       "level": "beginner",
-      "status": "todo",
+      "status": "done",
       "icon": "🤖",
       "priority": "balance",
       "proposed_at": "2026-07-16T19:50:51.232Z",
-      "proposed_by": "fact-check-reseed"
+      "proposed_by": "fact-check-reseed",
+      "written_at": "2026-07-18T01:28:05.570Z"
     },
     {
       "id": "turn-a-messy-product-review-into-a-polished-testimonial-with",
@@ -2706,11 +2708,12 @@
       "angle": "Paste a rough customer review into Gemini and reshape the tone and length with follow-up prompts — no special tools needed.",
       "audience": "both",
       "level": "beginner",
-      "status": "todo",
+      "status": "done",
       "icon": "🤖",
       "priority": "balance",
       "proposed_at": "2026-07-16T19:50:51.232Z",
-      "proposed_by": "fact-check-reseed"
+      "proposed_by": "fact-check-reseed",
+      "written_at": "2026-07-18T01:28:19.556Z"
     },
     {
       "id": "summarise-a-long-chat-thread-into-3-bullet-points-with-copil",
@@ -2720,11 +2723,12 @@
       "angle": "Paste a long group-chat or email thread into Copilot in the browser and get just the decisions and action points.",
       "audience": "both",
       "level": "beginner",
-      "status": "todo",
+      "status": "done",
       "icon": "🤖",
       "priority": "balance",
       "proposed_at": "2026-07-16T19:50:51.232Z",
-      "proposed_by": "fact-check-reseed"
+      "proposed_by": "fact-check-reseed",
+      "written_at": "2026-07-18T01:28:39.403Z"
     },
     {
       "id": "set-up-and-manage-daily-reminders-and-calendar-events-by-voi",
@@ -2734,11 +2738,12 @@
       "audience": "personal",
       "level": "beginner",
       "angle": "Organize your daily schedule effortlessly by adding and adjusting reminders and calendar entries using only your voice.",
-      "status": "todo",
+      "status": "done",
       "icon": "🤖",
       "priority": "balance",
       "proposed_at": "2026-07-17T01:53:21.848Z",
-      "proposed_by": "guide-balance"
+      "proposed_by": "guide-balance",
+      "written_at": "2026-07-18T01:30:25.929Z"
     },
     {
       "id": "use-alexa-to-guide-you-through-cooking-recipes-and-manage-mu",
@@ -2748,11 +2753,12 @@
       "audience": "personal",
       "level": "beginner",
       "angle": "Turn your Alexa+ into a hands-free kitchen assistant that reads out recipes and keeps track of all your cooking times.",
-      "status": "todo",
+      "status": "done",
       "icon": "🤖",
       "priority": "balance",
       "proposed_at": "2026-07-17T01:53:21.848Z",
-      "proposed_by": "guide-balance"
+      "proposed_by": "guide-balance",
+      "written_at": "2026-07-18T01:30:42.907Z"
     },
     {
       "id": "summarize-long-articles-and-reports-from-the-web-or-document",
@@ -2837,6 +2843,155 @@
       "priority": "balance",
       "proposed_at": "2026-07-17T19:37:17.429Z",
       "proposed_by": "junk-tile-reseed"
+    },
+    {
+      "id": "categorize-customer-feedback-from-online-forms-with-cohere",
+      "company": "Cohere",
+      "tool": "Cohere",
+      "title": "Categorize customer feedback from online forms with Cohere",
+      "audience": "business",
+      "level": "beginner",
+      "angle": "Automatically sort new feedback to spot trends faster.",
+      "status": "todo",
+      "icon": "🤖",
+      "priority": "balance",
+      "proposed_at": "2026-07-18T01:29:37.869Z",
+      "proposed_by": "guide-balance"
+    },
+    {
+      "id": "brainstorm-creative-story-prompts-for-your-hobby-novel-using",
+      "company": "Cohere",
+      "tool": "Cohere",
+      "title": "Brainstorm creative story prompts for your hobby novel using Cohere",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "Get fresh ideas when you're stuck on your next story.",
+      "status": "todo",
+      "icon": "🤖",
+      "priority": "balance",
+      "proposed_at": "2026-07-18T01:29:38.316Z",
+      "proposed_by": "guide-balance"
+    },
+    {
+      "id": "map-out-a-weekly-social-media-content-calendar-with-meta-ai",
+      "company": "Meta",
+      "tool": "Meta AI",
+      "title": "Map out a weekly social media content calendar with Meta AI",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "Organise your online posts for the week ahead in minutes.",
+      "status": "todo",
+      "icon": "🤖",
+      "priority": "balance",
+      "proposed_at": "2026-07-18T01:29:39.279Z",
+      "proposed_by": "guide-balance"
+    },
+    {
+      "id": "translate-short-conversations-on-the-go-with-apple-intellige",
+      "company": "Apple",
+      "tool": "Apple Intelligence",
+      "title": "Translate short conversations on the go with Apple Intelligence's Siri",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "Get instant translations during everyday chats or while travelling.",
+      "status": "todo",
+      "icon": "🤖",
+      "priority": "balance",
+      "proposed_at": "2026-07-18T01:29:41.516Z",
+      "proposed_by": "guide-balance"
+    },
+    {
+      "id": "research-pros-and-cons-for-big-purchases-using-perplexity-s-",
+      "company": "Perplexity",
+      "tool": "Perplexity",
+      "title": "Research pros and cons for big purchases using Perplexity's source-backed answers",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "Make informed decisions on expensive items with verifiable information.",
+      "status": "todo",
+      "icon": "🤖",
+      "priority": "balance",
+      "proposed_at": "2026-07-18T01:29:42.287Z",
+      "proposed_by": "guide-balance"
+    },
+    {
+      "id": "break-down-complex-news-stories-into-easy-to-understand-poin",
+      "company": "xAI",
+      "tool": "Grok",
+      "title": "Break down complex news stories into easy-to-understand points with Grok",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "Quickly grasp the essentials of current events without jargon.",
+      "status": "todo",
+      "icon": "🤖",
+      "priority": "balance",
+      "proposed_at": "2026-07-18T01:29:43.154Z",
+      "proposed_by": "guide-balance"
+    },
+    {
+      "id": "generate-unique-profile-pictures-for-social-media-with-midjo",
+      "company": "Midjourney",
+      "tool": "Midjourney",
+      "title": "Generate unique profile pictures for social media with Midjourney",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "Create professional-looking profile pictures or social media banners that stand out using AI.",
+      "status": "todo",
+      "icon": "📸",
+      "proposed_at": "2026-07-18T01:30:02.637Z",
+      "proposed_by": "guide-ideas"
+    },
+    {
+      "id": "transcribe-spoken-meetings-or-interviews-into-text-with-ai-f",
+      "company": "",
+      "tool": "",
+      "title": "Transcribe spoken meetings or interviews into text with AI for notes",
+      "audience": "both",
+      "level": "beginner",
+      "angle": "Quickly convert spoken audio from meetings, lectures, or interviews into accurate text notes for easy review and sharing.",
+      "status": "todo",
+      "icon": "🎙️",
+      "proposed_at": "2026-07-18T01:30:03.121Z",
+      "proposed_by": "guide-ideas"
+    },
+    {
+      "id": "create-a-personalised-weekly-meal-plan-based-on-your-diet-wi",
+      "company": "Google",
+      "tool": "Gemini",
+      "title": "Create a personalised weekly meal plan based on your diet with Gemini",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "Generate customised weekly meal plans that fit your dietary needs, preferences, and available ingredients.",
+      "status": "todo",
+      "icon": "🍽️",
+      "proposed_at": "2026-07-18T01:30:04.218Z",
+      "proposed_by": "guide-ideas"
+    },
+    {
+      "id": "polish-your-emails-for-better-clarity-and-tone-using-chatgpt",
+      "company": "OpenAI",
+      "tool": "ChatGPT",
+      "title": "Polish your emails for better clarity and tone using ChatGPT",
+      "audience": "both",
+      "level": "beginner",
+      "angle": "Refine your drafted emails to improve clarity, adjust tone, and ensure conciseness before sending them.",
+      "status": "todo",
+      "icon": "📧",
+      "proposed_at": "2026-07-18T01:30:04.220Z",
+      "proposed_by": "guide-ideas"
+    },
+    {
+      "id": "practice-a-new-language-or-presentation-with-claude-for-inst",
+      "company": "Anthropic",
+      "tool": "Claude",
+      "title": "Practice a new language or presentation with Claude for instant feedback",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "Use AI to simulate conversations for language learning or get feedback on your presentation delivery and content.",
+      "status": "todo",
+      "icon": "🗣️",
+      "proposed_at": "2026-07-18T01:30:04.222Z",
+      "proposed_by": "guide-ideas"
     }
   ]
 }

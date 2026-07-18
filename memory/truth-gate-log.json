@@ -26,5 +26,17 @@
         "The steps described for 'Getting Started with OpenAI Models on AWS Bedrock,' particularly the parts about 'Enable Model Access' for OpenAI models and choosing 'GPT-4' or 'GPT-3.5 Turbo' from a dropdown in the Bedrock playground, are fabricated because these models are not offered on Bedrock."
       ]
     }
+  ],
+  "2026-07-18": [
+    {
+      "at": "2026-07-18T01:26:22.911Z",
+      "file": "WRITER_2026-07-15T01-19-07-584Z_google-workspace_New_refinement_capabilities_allow_custom_editing_w.json",
+      "action": "block",
+      "reasons": [
+        "The article states: \"Find the 'Help me write' bar. It usually appears just below the subject line once you've typed some text.\" In Gmail, the 'Help me write' button (with a sparkle icon) is located at the bottom of the compose window, not below the subject line. This is a fabricated description of a UI element's placement.",
+        "The article claims: \"If you don't see it, look for a small lightning-bolt icon, which you can click to expand the AI assistant.\" The 'Help me write' feature is initiated by clicking a button (typically with a sparkle icon) at the bottom of the compose window; there isn't a lightning-bolt icon used to 'expand' a hidden AI assistant from below the subject line as described.",
+        "The article provides a keyboard shortcut: \"After typing a prompt, press Ctrl + Enter (Windows) or Cmd + Enter (Mac) to apply it faster.\" This shortcut is not a documented or functional method for applying AI refinements within Gmail's 'Help me write' feature; Ctrl/Cmd + Enter is typically used to send the email itself."
+      ]
+    }
   ]
 }
