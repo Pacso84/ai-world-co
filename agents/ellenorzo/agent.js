@@ -219,11 +219,16 @@ STRICT OUTPUT RULES (important for reliability):
 
 PASS rules: overall_score >= 7 AND no prohibited content found AND (for guides) clarity_score >= 7. FAIL otherwise. When a guide fails on clarity, the "issues" must name the SPECIFIC steps/sentences that are vague or misleading, so the writer can fix them.`;
 
-async function aiReview(articleMarkdown, sourceInfo, brandContext) {
+async function aiReview(articleMarkdown, sourceInfo, brandContext, isBrief = false) {
   // FONTOS: a brandContext-et NEM küldjük el teljes egészében!
   // A REVIEWER_SYSTEM_PROMPT már tartalmazza az összes szabályt.
   // A teljes 30k karakteres kontextus összezavarta a modellt (JSON output csonkolt lett).
-  const userPrompt = `Review this article for publication.
+  // RÖVIDHÍR-TUDATOSSÁG (2026-07-19): az utolsó esélyes rövidhírt NEM a teljes
+  // cikk mélységéhez mérjük — őszinteség+érthetőség számít, a rövidség NEM hiba.
+  const briefNote = isBrief ? `
+
+NOTE: This is a LAST-RESORT NEWS BRIEF (deliberately short, ~200-250 words). Judge ONLY honesty, clarity and correct structure. Being short and lacking depth is BY DESIGN here — do NOT fail it for brevity or missing detail. Fail it only for dishonesty, confusion or broken structure.` : '';
+  const userPrompt = `Review this article for publication.${briefNote}
 
 SOURCE METADATA:
 ${sourceInfo}
@@ -590,7 +595,7 @@ URL: ${writerData._meta.source_link}
 Original title: ${writerData.original_title}
 `;
 
-    const aiReviewResult = await aiReview(markdown, sourceInfo, brandContext);
+    const aiReviewResult = await aiReview(markdown, sourceInfo, brandContext, writerData._meta?.brief_attempt === true);
 
     if (!aiReviewResult) {
       console.log(`   ⚠️  AI review failed — megőrizzük újra próbáláshoz\n`);

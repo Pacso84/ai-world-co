@@ -19,7 +19,7 @@
 // A hibája SOSEM dönti be a pipeline-t (exit 0 mindig).
 // ===================================================================
 import 'dotenv/config';
-import { readFileSync, writeFileSync, existsSync, readdirSync } from 'fs';
+import { readFileSync, writeFileSync, existsSync, readdirSync, unlinkSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { ask } from '../../core/ai-router.js';
@@ -31,12 +31,69 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..', '..');
 const REJECTED_DIR = join(ROOT, 'content', 'rejected');
 const ARTICLES_DIR = join(ROOT, 'content', 'articles');
+const DRAFTS_DIR = join(ROOT, 'content', 'drafts');
 const DESK_LOG = join(ROOT, 'memory', 'ceo-desk-log.json');
 const MAX_REWORK_ATTEMPTS = 2;      // az Íróéval azonos (agents/iro/agent.js)
 const MAX_CEO_ROUNDS = 2;           // ennyi főnöki újraindítás után: végleges döntés
 
 const testVerdictArg = process.argv.indexOf('--test-verdict');
 const TEST_VERDICT = testVerdictArg >= 0 ? JSON.parse(process.argv[testVerdictArg + 1]) : null;
+// --test-brief '<markdown>': a rövidhír-mentőöv ág AI-hívás nélküli tesztje
+const testBriefArg = process.argv.indexOf('--test-brief');
+const TEST_BRIEF = testBriefArg >= 0 ? process.argv[testBriefArg + 1] : null;
+
+// ===================================================================
+// RÖVIDHÍR-MENTŐÖV (2026-07-19, user: "kéne megoldás ha nem megy ki egy
+// cikk hiába két kör után") — a végleges lezárás ELŐTTI utolsó esély:
+// a hír MAGVA őszinte rövidhírként még kijuthat. A NORMÁL úton megy
+// (Ellenőrző + hitelesség-kapu), nincs kiskapu. Ha az is bukik →
+// brief_attempt jelöléssel VÉGLEG zárul (nincs kör).
+// Spec: docs/superpowers/specs/2026-07-19-rovidhir-mentoov-design.md
+// ===================================================================
+const BRIEF_SYSTEM = `You are the editor-in-chief of AI World Co. A full article failed every editing round. As a LAST RESORT, write a SHORT, honest news brief so readers still learn the news.
+
+STRICT FORMAT (the automated checks require ALL of these):
+---
+title: "<clear news-style title>"
+subtitle: "<one honest sentence on what happened>"
+category: "news"
+company: ""
+tool: ""
+read_time_minutes: 1
+tags: ["news-brief"]
+---
+
+# <same title>
+
+<3-5 plain sentences: WHAT happened, WHO announced it, WHY it matters. ONLY facts you can verify from the given title/source/core facts. If a detail is uncertain, LEAVE IT OUT.>
+
+## What this means for you
+
+<2-3 plain sentences for everyday readers.>
+
+Source: <source name> — <source link>
+
+STRICT RULES: 200-250 words total. FORBIDDEN: step-by-step instructions, UI elements/buttons/menus, prices/discounts/percentages not in the source title, invented product or model names, marketing fluff. NEVER mention the editorial process — no "failed rounds", "this brief", "last resort" or similar kitchen-talk anywhere (title, subtitle or body): the reader only sees a normal short news item. Plain English. Output ONLY the markdown.`;
+
+async function writeBrief(d) {
+  if (TEST_BRIEF) return { text: TEST_BRIEF, costUsd: 0 };
+  const m = d._meta || {};
+  const failedCore = (d.article_markdown || '').replace(/^---[\s\S]*?---/, '').trim().slice(0, 1500);
+  const prompt = `NEWS TITLE: ${d.original_title || ''}
+SOURCE: ${m.source_name || ''} — ${m.source_link || ''}
+
+CORE FACTS from the failed draft (extract ONLY the verifiable what/who/why — DROP every how-to step, UI detail and number you cannot verify):
+${failedCore}
+
+Write the news brief now.`;
+  return await ask(prompt, { agentName: 'rework', systemPrompt: BRIEF_SYSTEM, maxTokens: 6000 });
+}
+
+// Minimál-érvényesség: frontmatter + H1 + kötelező szekció + értelmes hossz
+function briefLooksValid(md) {
+  const t = (md || '').trim();
+  return t.startsWith('---') && /^#\s+.+$/m.test(t) && /what this means for you/i.test(t) && t.length > 700;
+}
 
 function deskLog(text) {
   let log = {}; try { log = JSON.parse(readFileSync(DESK_LOG, 'utf-8')); } catch { /* első futás */ }
@@ -114,12 +171,48 @@ async function decideNews(x) {
     return;
   }
   if (rounds >= MAX_CEO_ROUNDS) {
+    // RÖVIDHÍR-MENTŐÖV: végleges lezárás ELŐTT egy utolsó, rövid formátumú
+    // esély — a hír magva kijuthat lépések/felület-részletek nélkül.
+    if (!m.brief_attempt) {
+      const r = await writeBrief(d);
+      if (r === null) {
+        // AI nem elérhető (hard cap / üzemzavar) → NEM zárunk le, következő futás újrapróbálja
+        deskLog(`Rövidhír-mentőöv elhalasztva (AI nem elérhető): "${(d.original_title || f).slice(0, 60)}"`);
+        return;
+      }
+      if (briefLooksValid(r.text)) {
+        const writerName = f.replace(/^REJECTED_/, 'WRITER_');
+        const out = {
+          _meta: {
+            ...m,
+            brief_attempt: true,
+            // MAX-ra állítva: az Író rework-je NE fogja meg — ha a rövidhír is
+            // bukik, egyenesen az asztalra jön vissza, és VÉGLEG zárul.
+            rework_attempts: MAX_REWORK_ATTEMPTS,
+            can_retry: true,
+            status: 'draft',
+            briefed_at: new Date().toISOString()
+          },
+          original_title: d.original_title,
+          article_markdown: r.text.trim()
+        };
+        delete out._meta.ceo_hint;
+        delete out._meta.ceo_decision;
+        writeFileSync(join(DRAFTS_DIR, writerName), JSON.stringify(out, null, 2), 'utf-8');
+        unlinkSync(join(REJECTED_DIR, f));
+        remember('shared', 'Rövidhír-mentőöv: ha a teljes cikk minden kört elbukik, a hír magva őszinte rövidhírként még kijuthat — lépések és felület-részletek nélkül.');
+        deskLog(`Rövidhírként mentve (utolsó esély): "${(d.original_title || f).slice(0, 60)}" → Ellenőrzőre`);
+        return;
+      }
+      // formátum-hibás mentőöv-kísérlet → jelöljük, és átesünk a végleges lezárásba
+      m.brief_attempt = true;
+    }
     m.can_retry = false; m.ceo_decision = 'unsalvageable';
     writeFileSync(join(REJECTED_DIR, f), JSON.stringify(d, null, 2), 'utf-8');
     remember('shared', `Főnöki döntés: "${(d.original_title || '').slice(0, 50)}" ${MAX_CEO_ROUNDS} főnöki kör után sem ment át — az ilyen témához korábban kell jobb forrást választani.`);
     // Az ÍRÓ saját rekeszébe is, STABIL szöveggel (ismétlődésnél erősödik — 2026-07-16)
     remember(d._meta?.type === 'guide' ? 'guide' : 'iro', 'Egy cikk az összes újraírási és főnöki kört elbukta — ha a forrás sovány vagy zavaros, már az ELSŐ vázlatnál jelezd vissza, ne told tovább.', { tags: ['desk'] });
-    deskLog(`Menthetetlen (${MAX_CEO_ROUNDS} főnöki kör után), lezárva: "${(d.original_title || f).slice(0, 60)}"`);
+    deskLog(`Menthetetlen (${m.brief_attempt ? 'rövidhír-próba után' : MAX_CEO_ROUNDS + ' főnöki kör után'}), lezárva: "${(d.original_title || f).slice(0, 60)}"`);
     return;
   }
 

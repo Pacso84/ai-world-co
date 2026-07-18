@@ -1,0 +1,45 @@
+{
+  "_meta": {
+    "written_at": "2026-07-16T17:03:31.975Z",
+    "writer_provider": "google",
+    "writer_model": "gemini-2.5-flash",
+    "writer_cost_usd": 0.011702599999999999,
+    "original_draft": "2026-07-06T18-04-05-099Z_apple-ml_Revisiting_ASR_Error_Correction_with_Specialized_M.json",
+    "source_id": "apple-ml",
+    "source_name": "Apple Machine Learning Research (hivatalos)",
+    "source_link": "https://machinelearning.apple.com/research/asr-error-correction",
+    "status": "published",
+    "rejected_at": "2026-07-16T17:05:47.551Z",
+    "auto_check": {
+      "passed": false,
+      "issues": [
+        "MISSING_FIELD: Frontmatter hiányzó mező: subtitle",
+        "MISSING_FIELD: Frontmatter hiányzó mező: read_time_minutes",
+        "MISSING_FIELD: Frontmatter hiányzó mező: tags"
+      ],
+      "wordCount": 210
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "The article effectively communicates Apple's ASR advancements and their practical benefits for everyday users. It adheres to the brand voice and structure requirements, making it suitable for publication.",
+      "_aiCost": 0.0032845,
+      "_provider": "google",
+      "_model": "gemini-2.5-flash",
+      "_attempts": 1
+    },
+    "reason": "Salvaged from a partial AI response.",
+    "can_retry": true,
+    "rework_attempts": 2,
+    "reworked_from": "REJECTED_2026-07-06T18-04-05-099Z_apple-ml_Revisiting_ASR_Error_Correction_with_Specialized_M.json",
+    "requeued_unchanged": false,
+    "ceo_rounds": 2,
+    "brief_attempt": true,
+    "briefed_at": "2026-07-18T19:24:07.210Z",
+    "published_at": "2026-07-18T19:25:03.230Z"
+  },
+  "article_markdown": "---\ntitle: \"Revisiting ASR Error Correction with Specialized Models\"\nsubtitle: \"Apple researchers revisit how specialised models fix speech-recognition errors.\"\ncategory: \"news\"\ncompany: \"Apple\"\ntool: \"\"\n---\n\n# Revisiting ASR Error Correction with Specialized Models\n\nApple Machine Learning Research has announced new advancements in ASR (Automatic Speech Recognition) error correction, utilizing specialized models. This research aims to significantly improve how AI voice assistants handle and correct transcribed speech in real-time. The initiative directly addresses common user frustrations where voice assistants misinterpret key words, often forcing users to pause or re-record their input. By developing more flexible and responsive technology, Apple seeks to enable users to speak naturally and effortlessly fix any errors as they appear, without losing their train of thought. This focus on specialized models for error correction is expected to enhance the overall accuracy and user satisfaction with digital voice interfaces.\n\n## What this means for you\n\nYour digital voice assistants are set to become much more reliable and intuitive, making everyday interactions smoother. You can expect significantly improved accuracy when dictating messages or giving commands, as the system will be better at catching and fixing errors almost instantly. This development means fewer interruptions and a more natural experience, allowing you to interact with your devices more fluidly and efficiently than before.\n\nSource: Apple Machine Learning Research — https://machinelearning.apple.com/research/asr-error-correction",
+  "original_title": "Revisiting ASR Error Correction with Specialized Models"
+}

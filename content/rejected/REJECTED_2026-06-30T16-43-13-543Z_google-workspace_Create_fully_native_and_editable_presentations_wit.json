@@ -12,30 +12,31 @@
     "auto_check": {
       "passed": true,
       "issues": [],
-      "wordCount": 820
+      "wordCount": 241
     },
-    "can_retry": false,
+    "can_retry": true,
     "rework_attempts": 2,
     "reworked_from": "REJECTED_2026-06-30T16-43-13-543Z_google-workspace_Create_fully_native_and_editable_presentations_wit.json",
     "requeued_unchanged": false,
-    "rejected_at": "2026-07-15T01:21:12.115Z",
+    "rejected_at": "2026-07-18T19:28:42.824Z",
     "ai_review": {
-      "overall_score": 7,
-      "clarity_score": 4,
+      "overall_score": 8,
+      "clarity_score": null,
       "decision": "FAIL",
-      "issues": [],
-      "verdict": "Salvaged from a partial AI response.",
-      "_salvaged": true,
-      "_aiCost": 0.004431399999999999,
+      "issues": [
+        "The source URL provided, http://workspaceupdates.googleblog.com/2026/06/create-fully-native-and-editable-presentations-with-Gemini-in-Google-Slides.html, uses a future date (2026) for an alleged past or current announcement, making it an invented URL."
+      ],
+      "verdict": "Hitelesség-kapu blokkolta: The source URL provided, http://workspaceupdates.googleblog.com/2026/06/create-fully-native-and-editable-presentations-with-Gemini-in-Google-Slides.html, uses a future date (2026) for an alleged past ",
+      "_aiCost": 0.0031181,
       "_provider": "google",
       "_model": "gemini-2.5-flash",
       "_attempts": 1
     },
-    "reason": "Salvaged from a partial AI response.",
+    "reason": "Hitelesség-kapu blokkolta: The source URL provided, http://workspaceupdates.googleblog.com/2026/06/create-fully-native-and-editable-presentations-with-Gemini-in-Google-Slides.html, uses a future date (2026) for an alleged past ",
     "ceo_rounds": 2,
-    "ceo_hint": "CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers.",
-    "ceo_decision": "unsalvageable"
+    "briefed_at": "2026-07-18T19:27:55.990Z",
+    "brief_attempt": true
   },
-  "article_markdown": "---\ntitle: \"How to Turn Your Rough Notes into a Slide Deck in Minutes\"\nsubtitle: \"A simple way to turn messy ideas into clean, professional slides without spending hours on design\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"ai-tools\", \"presentations\", \"productivity\", \"getting-started\", \"google-slides\"]\n---\n\n# How to Turn Your Rough Notes into a Slide Deck in Minutes\n\nYou’ve got a presentation due tomorrow and your notes are a scribbled mess of ideas, half-finished sentences, and arrows pointing everywhere. Instead of staring at a blank slide deck, wondering where to even begin, imagine typing a few lines into a tool and watching a clean, professional slide deck appear in seconds.\n\nThis isn’t science fiction. A new feature in Google Slides can take your rough notes, bullet points, or even a voice memo and turn them into a polished slide deck without you needing to touch a single font or colour. It’s not about replacing your creativity — it’s about giving you a head start so you can focus on what matters: your message.\n\n---\n\n## Start with something simple — the AI needs clear instructions\n\nThink of your notes as the “raw material” for the AI. The clearer and more structured your starting point, the better the AI can turn it into slides.\n\nTry one of these:\n\n- A simple list of topics (e.g., “Remote Work Challenges,” “Tools,” “Best Practices”)\n- A short paragraph explaining your goal (e.g., “Help new team leads manage remote teams”)\n- A rough outline saved as a Google Doc\n\nIf you’re using a Google Doc, you can let the AI “read” it to make sure your slides stay accurate. Just look for an option like “Use a document for context” when you generate your slides.\n\n---\n\n## Generate your first draft — and don’t worry about perfection\n\nOnce you’ve given the AI your prompt or document, it will create a full slide deck in seconds. You’ll see slides with titles, bullet points, and even placeholder images or icons.\n\nThis is your starting point — not your final product. The AI gives you a clean, professional structure, but it’s up to you to:\n\n- Replace the placeholder text with your own words\n- Add real examples or stories from your experience\n- Adjust the layout, fonts, or colours to match your style\n\nYou’re not stuck with the AI’s first draft. You’re getting a head start — a fully editable outline you can shape into something unique.\n\n---\n\n## Make it your own — the AI is your assistant, not your boss\n\nNow it’s time to polish the slides. Here’s how to make them truly yours:\n\n- **Edit the text**: Swap out the AI’s suggestions with your own words. Add specific examples or data that make your points clearer.\n- **Add your voice**: The AI gives you structure, but your personal stories and insights make it engaging.\n- **Adjust the design**: Change fonts, colours, or layouts to match your brand or personal style. Google Slides keeps your branding consistent if you’ve set it up before.\n\nRemember: the AI is here to help you communicate, not replace your creativity. Use it to save time on the boring stuff, so you can focus on what matters — your message.\n\n---\n\n## What this means for you\n\nThis AI-powered tool isn’t just for experts — it’s for anyone who wants to turn their ideas into clear, professional slides without spending hours on design.\n\n- **In everyday life**: Students can turn essay outlines into slide decks in minutes, freeing up time for research and deeper analysis. Parents helping with school projects can quickly create engaging slides without needing design skills. Even planning a family trip recap becomes easier — just describe your itinerary, and the AI builds the slides.\n\n- **For your business or work**: Sales teams can generate client-ready pitch decks in minutes, tailored to each prospect’s needs. Project managers can turn meeting notes into clear internal updates. Trainers and educators can convert lesson plans into slide decks instantly. It’s a fast way to turn ideas into professional-looking materials.\n\n- **If you're just getting started**: Start with a simple topic you know well. Write a clear, specific prompt — the more detail you give, the better the AI’s output. Try generating a few different versions to see what works best. Remember, the AI is here to help you, not replace your creativity.\n\n---\n\n## Wrap-up\n\nUsing AI in Google Slides turns a task that often feels overwhelming into a quick, intuitive process. You begin with an idea, guide the AI with a clear prompt, and end up with a polished draft you can refine in minutes. It’s not about letting the AI do everything — it’s about giving yourself a powerful starting point so you can focus on what matters: your message, your stories, and your audience. Try it today with a small project and see how much time you save.",
+  "article_markdown": "---\ntitle: \"Create fully native and editable presentations with Gemini in Google Slides\"\nsubtitle: \"The original full article draft could not be finalized, so we are providing this brief summary of the key announcement.\"\ncategory: \"news\"\ncompany: \"Google\"\ntool: \"Gemini\"\nread_time_minutes: 1\ntags: [\"news-brief\"]\n---\n\n# Create fully native and editable presentations with Gemini in Google Slides\n\nGoogle has announced a significant update for Google Slides, integrating its Gemini AI to enable the creation of fully native and editable presentations. This new capability empowers users to transform rough notes, bullet points, or even unorganized ideas into a structured and polished slide deck directly within Slides. The system automatically generates initial slide drafts, competently handling much of the basic design and layout, allowing users to bypass manual adjustments to fonts or colors. This integration aims to provide a substantial head start in the presentation creation process, enabling users to focus their efforts primarily on crafting and refining their core message.\n\n## What this means for you\n\nFor everyday users, this translates into a much faster and more efficient path from a concept to a presentable first draft of a presentation. You can quickly generate a foundational slide deck from simple textual inputs, significantly reducing the time typically spent on initial formatting and arrangement. This enhanced efficiency frees you to dedicate more attention to the actual content and narrative, ultimately ensuring a more impactful and compelling delivery.\n\nSource: Google Workspace Updates — http://workspaceupdates.googleblog.com/2026/06/create-fully-native-and-editable-presentations-with-Gemini-in-Google-Slides.html",
   "original_title": "Create fully native and editable presentations with Gemini in Google Slides"
 }

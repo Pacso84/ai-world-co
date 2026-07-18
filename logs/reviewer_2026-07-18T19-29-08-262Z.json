@@ -1,0 +1,42 @@
+{
+  "started_at": "2026-07-18T19:28:15.805Z",
+  "total": 5,
+  "passed": 4,
+  "failed": 0,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.026022500000000004,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-06-27T02-07-24-542Z_aws-ml_How_Cara_pioneers_domain-specific_AI_for_enterpris.json",
+      "article": "ARTICLE_2026-06-27T02-07-24-542Z_aws-ml_How_Cara_pioneers_domain-specific_AI_for_enterpris.json",
+      "decision": "PASS",
+      "score": 7,
+      "cost_usd": 0.0027476999999999996
+    },
+    {
+      "writer": "WRITER_2026-06-29T02-29-25-987Z_microsoft-ai_Work_smarter_in_90_days__A_real-world_guide_to_usi.json",
+      "article": "ARTICLE_2026-06-29T02-29-25-987Z_microsoft-ai_Work_smarter_in_90_days__A_real-world_guide_to_usi.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0028641
+    },
+    {
+      "writer": "WRITER_2026-07-02T02-10-03-889Z_snowflake_Why_the_Data_Platform_Determines_Legal_AI_Outcomes.json",
+      "article": "ARTICLE_2026-07-02T02-10-03-889Z_snowflake_Why_the_Data_Platform_Determines_Legal_AI_Outcomes.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.0027753
+    },
+    {
+      "writer": "WRITER_2026-07-07T02-01-14-878Z_databricks_Contextual_Policies_in_Omnigent__Using_session_sta.json",
+      "article": "ARTICLE_2026-07-07T02-01-14-878Z_databricks_Contextual_Policies_in_Omnigent__Using_session_sta.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.0029441999999999997
+    }
+  ],
+  "truth_blocked": 1,
+  "finished_at": "2026-07-18T19:29:08.261Z",
+  "duration_seconds": 52.456
+}

@@ -1,7 +1,7 @@
 {
   "_meta": {
     "note": "AI World rétegzett memória (hot/warm/cold, salience decay).",
-    "updated": "2026-07-18T16:46:22.694Z"
+    "updated": "2026-07-18T19:28:42.893Z"
   },
   "items": [
     {
@@ -66276,8 +66276,8 @@
         "truth-gate"
       ],
       "created": "2026-07-17T09:48:45.563Z",
-      "lastAccessed": "2026-07-18T01:26:22.941Z",
-      "accessCount": 2,
+      "lastAccessed": "2026-07-18T19:28:42.893Z",
+      "accessCount": 4,
       "salience": 1,
       "tier": "hot",
       "embedding": [
@@ -67049,7 +67049,9 @@
         0.026075168,
         0.047149893,
         -0.015052891
-      ]
+      ],
+      "repeats": 2,
+      "lastRepeat": "2026-07-18T19:28:42.893Z"
     },
     {
       "id": "m1784307723565467",
@@ -74230,6 +74232,133 @@
       ],
       "created": "2026-07-18T16:43:38.198Z",
       "lastAccessed": "2026-07-18T16:43:38.198Z",
+      "accessCount": 0,
+      "salience": 1,
+      "tier": "hot"
+    },
+    {
+      "id": "m1784402595193346",
+      "scope": "shared",
+      "text": "Rövidhír-mentőöv: ha a teljes cikk minden kört elbukik, a hír magva őszinte rövidhírként még kijuthat — lépések és felület-részletek nélkül.",
+      "tags": [],
+      "created": "2026-07-18T19:23:15.193Z",
+      "lastAccessed": "2026-07-18T19:28:15.315Z",
+      "accessCount": 10,
+      "salience": 1,
+      "tier": "hot",
+      "repeats": 10,
+      "lastRepeat": "2026-07-18T19:28:15.315Z"
+    },
+    {
+      "id": "m1784402674015891",
+      "scope": "iro",
+      "text": "MISSING_FIELD",
+      "tags": [
+        "rejection",
+        "lesson",
+        "article"
+      ],
+      "created": "2026-07-18T19:24:34.015Z",
+      "lastAccessed": "2026-07-18T19:25:11.266Z",
+      "accessCount": 14,
+      "salience": 1,
+      "tier": "hot",
+      "repeats": 14,
+      "lastRepeat": "2026-07-18T19:25:11.266Z"
+    },
+    {
+      "id": "m1784402681620651",
+      "scope": "iro",
+      "text": "Content is too brief, acts as an announcement",
+      "tags": [
+        "rejection",
+        "lesson",
+        "article"
+      ],
+      "created": "2026-07-18T19:24:41.620Z",
+      "lastAccessed": "2026-07-18T19:24:41.620Z",
+      "accessCount": 0,
+      "salience": 1,
+      "tier": "hot"
+    },
+    {
+      "id": "m1784402686935147",
+      "scope": "iro",
+      "text": "American spelling: 'unorganized'",
+      "tags": [
+        "rejection",
+        "lesson",
+        "article"
+      ],
+      "created": "2026-07-18T19:24:46.935Z",
+      "lastAccessed": "2026-07-18T19:24:46.935Z",
+      "accessCount": 0,
+      "salience": 1,
+      "tier": "hot"
+    },
+    {
+      "id": "m1784402694036295",
+      "scope": "iro",
+      "text": "AMERICAN_SPELLING",
+      "tags": [
+        "rejection",
+        "lesson",
+        "article"
+      ],
+      "created": "2026-07-18T19:24:54.036Z",
+      "lastAccessed": "2026-07-18T19:24:54.036Z",
+      "accessCount": 0,
+      "salience": 1,
+      "tier": "hot"
+    },
+    {
+      "id": "m1784402711291983",
+      "scope": "iro",
+      "text": "The product 'Omnigent' by Databricks is invented. There is no official Databricks product or announcement by this name related to AI agents and contextual policies.",
+      "tags": [
+        "rejection",
+        "lesson",
+        "article"
+      ],
+      "created": "2026-07-18T19:25:11.291Z",
+      "lastAccessed": "2026-07-18T19:25:11.291Z",
+      "accessCount": 0,
+      "salience": 1,
+      "tier": "hot"
+    },
+    {
+      "id": "m1784402711321111",
+      "scope": "shared",
+      "text": "Hitelesség-kapu blokk: The product 'Omnigent' by Databricks is invented. There is no official Databricks product or announcement by this name related to AI agents and contex — kitalált felületet/linket/számot SOHA ne írj le tényként",
+      "tags": [],
+      "created": "2026-07-18T19:25:11.321Z",
+      "lastAccessed": "2026-07-18T19:25:11.321Z",
+      "accessCount": 0,
+      "salience": 1,
+      "tier": "hot"
+    },
+    {
+      "id": "m1784402922836465",
+      "scope": "iro",
+      "text": "The source URL provided, http://workspaceupdates.googleblog.com/2026/06/create-fully-native-and-editable-presentations-with-Gemini-in-Google-Slides.html, uses a future date (2026) for an alleged past or current announcement, making it an invented URL.",
+      "tags": [
+        "rejection",
+        "lesson",
+        "article"
+      ],
+      "created": "2026-07-18T19:28:42.836Z",
+      "lastAccessed": "2026-07-18T19:28:42.836Z",
+      "accessCount": 0,
+      "salience": 1,
+      "tier": "hot"
+    },
+    {
+      "id": "m1784402922867555",
+      "scope": "shared",
+      "text": "Hitelesség-kapu blokk: The source URL provided, http://workspaceupdates.googleblog.com/2026/06/create-fully-native-and-editable-presentations-with-Gemini-in-Google-Slides.ht — kitalált felületet/linket/számot SOHA ne írj le tényként",
+      "tags": [],
+      "created": "2026-07-18T19:28:42.867Z",
+      "lastAccessed": "2026-07-18T19:28:42.867Z",
       "accessCount": 0,
       "salience": 1,
       "tier": "hot"

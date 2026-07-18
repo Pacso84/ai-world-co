@@ -1,0 +1,49 @@
+{
+  "started_at": "2026-07-18T19:24:26.562Z",
+  "total": 6,
+  "passed": 1,
+  "failed": 4,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.0245575,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-06-27T02-07-24-542Z_aws-ml_How_Cara_pioneers_domain-specific_AI_for_enterpris.json",
+      "rejected": "REJECTED_2026-06-27T02-07-24-542Z_aws-ml_How_Cara_pioneers_domain-specific_AI_for_enterpris.json",
+      "decision": "FAIL",
+      "score": 6,
+      "cost_usd": 0.0041944
+    },
+    {
+      "writer": "WRITER_2026-06-29T02-29-25-987Z_microsoft-ai_Work_smarter_in_90_days__A_real-world_guide_to_usi.json",
+      "rejected": "REJECTED_2026-06-29T02-29-25-987Z_microsoft-ai_Work_smarter_in_90_days__A_real-world_guide_to_usi.json",
+      "decision": "FAIL",
+      "score": 4,
+      "cost_usd": 0.0037664
+    },
+    {
+      "writer": "WRITER_2026-06-30T16-43-13-543Z_google-workspace_Create_fully_native_and_editable_presentations_wit.json",
+      "rejected": "REJECTED_2026-06-30T16-43-13-543Z_google-workspace_Create_fully_native_and_editable_presentations_wit.json",
+      "decision": "FAIL",
+      "score": 6,
+      "cost_usd": 0.0030902
+    },
+    {
+      "writer": "WRITER_2026-07-02T02-10-03-889Z_snowflake_Why_the_Data_Platform_Determines_Legal_AI_Outcomes.json",
+      "rejected": "REJECTED_2026-07-02T02-10-03-889Z_snowflake_Why_the_Data_Platform_Determines_Legal_AI_Outcomes.json",
+      "decision": "FAIL",
+      "score": 5,
+      "cost_usd": 0.0041832
+    },
+    {
+      "writer": "WRITER_2026-07-06T18-04-05-099Z_apple-ml_Revisiting_ASR_Error_Correction_with_Specialized_M.json",
+      "article": "ARTICLE_2026-07-06T18-04-05-099Z_apple-ml_Revisiting_ASR_Error_Correction_with_Specialized_M.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.0032845
+    }
+  ],
+  "truth_blocked": 1,
+  "finished_at": "2026-07-18T19:25:11.362Z",
+  "duration_seconds": 44.8
+}

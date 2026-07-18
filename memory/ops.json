@@ -1285,110 +1285,6 @@
   ],
   "messages": [
     {
-      "id": "m178423123629194",
-      "from": "fact-check",
-      "to": "human",
-      "kind": "need",
-      "text": "Útmutató levéve, mert valótlanná vált: \"Summarise a 20-page PDF policy document into 5 bul\" — Cohere's free web summarization tool no longer supports PDF uploads, rendering the core premise of this guide false.. Dönts a sorsáról.",
-      "ref": "ARTICLE_GUIDE_summarise-a-20-page-pdf-policy-document-into-5-bullet-points.json",
-      "open": true,
-      "at": "2026-07-16T19:47:16.291Z"
-    },
-    {
-      "id": "m178423127063169",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "decision",
-      "text": "Levettem (tárgytalan): \"Summarise a long Slack thread into 3 bullet points\" — The entire guide is based on a specific Cohere summarization tool that is no longer available or accessible in the described manner.",
-      "ref": "ARTICLE_GUIDE_summarise-a-long-slack-thread-into-3-bullet-points-using-coh.json",
-      "at": "2026-07-16T19:47:50.631Z"
-    },
-    {
-      "id": "m178423127063411",
-      "from": "fact-check",
-      "to": "human",
-      "kind": "need",
-      "text": "Útmutató levéve, mert valótlanná vált: \"Summarise a long Slack thread into 3 bullet points\" — The entire guide is based on a specific Cohere summarization tool that is no longer available or accessible in the described manner.. Dönts a sorsáról.",
-      "ref": "ARTICLE_GUIDE_summarise-a-long-slack-thread-into-3-bullet-points-using-coh.json",
-      "open": true,
-      "at": "2026-07-16T19:47:50.634Z"
-    },
-    {
-      "id": "m178423132729497",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "decision",
-      "text": "Levettem (tárgytalan): \"Turn a messy product review into a polished custom\" — The guide describes a dedicated 'Rewrite tool' with specific style options (e.g., 'Customer testimonial') within the Cohere user interface, which is no longer available. While Cohere's models can perform rewriting via prompting in their Playground, the specific step-by-step UI described for a dedicated 'Rewrite' tool doe",
-      "ref": "ARTICLE_GUIDE_turn-a-messy-product-review-into-a-polished-customer-testimo.json",
-      "at": "2026-07-16T19:48:47.294Z"
-    },
-    {
-      "id": "m178423132729724",
-      "from": "fact-check",
-      "to": "human",
-      "kind": "need",
-      "text": "Útmutató levéve, mert valótlanná vált: \"Turn a messy product review into a polished custom\" — The guide describes a dedicated 'Rewrite tool' with specific style options (e.g., 'Customer testimonial') within the Cohere user interface, which is no longer available. While Cohere's models can perform rewriting via prompting in their Playground, the specific step-by-step UI described for a dedicated 'R",
-      "ref": "ARTICLE_GUIDE_turn-a-messy-product-review-into-a-polished-customer-testimo.json",
-      "open": true,
-      "at": "2026-07-16T19:48:47.297Z"
-    },
-    {
-      "id": "m178423133874797",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "decision",
-      "text": "Levettem (tárgytalan): \"Write a polite refund request email in 30 seconds \" — The core feature described in the guide – a consumer-facing 'Prompt Library' on Cohere's website with ready-made, fill-in-the-blank templates for specific tasks like writing refund requests – no longer exists on their current developer-focused platform.",
-      "ref": "ARTICLE_GUIDE_write-a-polite-refund-request-email-in-30-seconds-with-coher.json",
-      "at": "2026-07-16T19:48:58.747Z"
-    },
-    {
-      "id": "m178423133874942",
-      "from": "fact-check",
-      "to": "human",
-      "kind": "need",
-      "text": "Útmutató levéve, mert valótlanná vált: \"Write a polite refund request email in 30 seconds \" — The core feature described in the guide – a consumer-facing 'Prompt Library' on Cohere's website with ready-made, fill-in-the-blank templates for specific tasks like writing refund requests – no longer exists on their current developer-focused platform.. Dönts a sorsáról.",
-      "ref": "ARTICLE_GUIDE_write-a-polite-refund-request-email-in-30-seconds-with-coher.json",
-      "open": true,
-      "at": "2026-07-16T19:48:58.749Z"
-    },
-    {
-      "id": "m178423137783377",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "decision",
-      "text": "Levettem (tárgytalan): \"How to Use OpenAI GPT-5.6 in Snowflake Cortex AI f\" — The guide's core instruction set relies on a specific model ('GPT-5.6') and function ('CORTEX.GPT5_6') that do not appear to exist or be publicly available within Snowflake Cortex AI, rendering the entire guide misleading and unexecutable.",
-      "ref": "ARTICLE_GUIDE_how-to-use-openai-gpt-5-6-in-snowflake-cortex-ai-for-data-in.json",
-      "at": "2026-07-16T19:49:37.833Z"
-    },
-    {
-      "id": "m178423137783684",
-      "from": "fact-check",
-      "to": "human",
-      "kind": "need",
-      "text": "Útmutató levéve, mert valótlanná vált: \"How to Use OpenAI GPT-5.6 in Snowflake Cortex AI f\" — The guide's core instruction set relies on a specific model ('GPT-5.6') and function ('CORTEX.GPT5_6') that do not appear to exist or be publicly available within Snowflake Cortex AI, rendering the entire guide misleading and unexecutable.. Dönts a sorsáról.",
-      "ref": "ARTICLE_GUIDE_how-to-use-openai-gpt-5-6-in-snowflake-cortex-ai-for-data-in.json",
-      "open": true,
-      "at": "2026-07-16T19:49:37.836Z"
-    },
-    {
-      "id": "m178423145994173",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Build a simple chatbot for your small‑business site with Cohere\" — mi a baj: Beginner clarity too low (3/10): steps are vague or could mislead a first-time user",
-      "ref": "GUIDE_build-a-simple-chatbot-for-your-small-business-site-with-coh.json",
-      "at": "2026-07-16T19:50:59.941Z"
-    },
-    {
-      "id": "m17842525980703",
-      "from": "ceo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Főnöki újraindítás: \"Apache Ossie (Incubating): The New Name for Open Semantic In\" — rewrite-explainer",
-      "ref": "2026-07-13T17-47-59-661Z_snowflake_Apache_Ossie__Incubating___The_New_Name_for_Open_S.json",
-      "at": "2026-07-17T01:43:18.070Z"
-    },
-    {
       "id": "m178425260793254",
       "from": "ceo",
       "to": "iro",
@@ -1647,8 +1543,9 @@
       "kind": "need",
       "text": "Hiányos / kell még adat: \"Contextual Policies in Omnigent: Using session state to better govern AI agents\" — egészítsd ki: Incomplete 'What this means for you' section; Missing a wrap-up/conclusion",
       "ref": "2026-07-07T02-01-14-878Z_databricks_Contextual_Policies_in_Omnigent__Using_session_sta.json",
-      "open": true,
-      "at": "2026-07-17T01:49:32.852Z"
+      "open": false,
+      "at": "2026-07-17T01:49:32.852Z",
+      "resolved_at": "2026-07-18T19:29:08.260Z"
     },
     {
       "id": "m178425297288439",
@@ -2643,6 +2540,105 @@
       "text": "6 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
       "ref": null,
       "at": "2026-07-18T16:53:32.296Z"
+    },
+    {
+      "id": "m178440267412696",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"How Cara pioneers domain-specific AI for enterprise insurance brokerages with AWS\" — mi a baj: MISSING_FIELD: Frontmatter hiányzó mező: subtitle; MISSING_FIELD: Frontmatter hiányzó mező: read_time_minutes; MISSING_FIELD: Frontmatter hiányzó mező: tags",
+      "ref": "2026-06-27T02-07-24-542Z_aws-ml_How_Cara_pioneers_domain-specific_AI_for_enterpris.json",
+      "at": "2026-07-18T19:24:34.126Z"
+    },
+    {
+      "id": "m17844026816383",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Work smarter in 90 days: A real-world guide to using AI\" — mi a baj: MISSING_FIELD: Frontmatter hiányzó mező: subtitle; MISSING_FIELD: Frontmatter hiányzó mező: read_time_minutes; MISSING_FIELD: Frontmatter hiányzó mező: tags",
+      "ref": "2026-06-29T02-29-25-987Z_microsoft-ai_Work_smarter_in_90_days__A_real-world_guide_to_usi.json",
+      "at": "2026-07-18T19:24:41.638Z"
+    },
+    {
+      "id": "m178440268695224",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Create fully native and editable presentations with Gemini in Google Slides\" — mi a baj: MISSING_FIELD: Frontmatter hiányzó mező: subtitle; MISSING_FIELD: Frontmatter hiányzó mező: read_time_minutes; MISSING_FIELD: Frontmatter hiányzó mező: tags",
+      "ref": "2026-06-30T16-43-13-543Z_google-workspace_Create_fully_native_and_editable_presentations_wit.json",
+      "at": "2026-07-18T19:24:46.952Z"
+    },
+    {
+      "id": "m178440269405456",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Why the Data Platform Determines Legal AI Outcomes\" — mi a baj: MISSING_FIELD: Frontmatter hiányzó mező: subtitle; MISSING_FIELD: Frontmatter hiányzó mező: read_time_minutes; MISSING_FIELD: Frontmatter hiányzó mező: tags",
+      "ref": "2026-07-02T02-10-03-889Z_snowflake_Why_the_Data_Platform_Determines_Legal_AI_Outcomes.json",
+      "at": "2026-07-18T19:24:54.054Z"
+    },
+    {
+      "id": "m178440270323468",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Revisiting ASR Error Correction with Specialized Models\" (?/10)",
+      "ref": "2026-07-06T18-04-05-099Z_apple-ml_Revisiting_ASR_Error_Correction_with_Specialized_M.json",
+      "at": "2026-07-18T19:25:03.234Z"
+    },
+    {
+      "id": "m178440271130884",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Contextual Policies in Omnigent: Using session state to better govern AI agents\" — mi a baj: MISSING_FIELD: Frontmatter hiányzó mező: subtitle; MISSING_FIELD: Frontmatter hiányzó mező: read_time_minutes; MISSING_FIELD: Frontmatter hiányzó mező: tags",
+      "ref": "2026-07-07T02-01-14-878Z_databricks_Contextual_Policies_in_Omnigent__Using_session_sta.json",
+      "at": "2026-07-18T19:25:11.308Z"
+    },
+    {
+      "id": "m178440290343853",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"How Cara pioneers domain-specific AI for enterprise insurance brokerages with AWS\" (?/10)",
+      "ref": "2026-06-27T02-07-24-542Z_aws-ml_How_Cara_pioneers_domain-specific_AI_for_enterpris.json",
+      "at": "2026-07-18T19:28:23.438Z"
+    },
+    {
+      "id": "m178440291240058",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Work smarter in 90 days: A real-world guide to using AI\" (?/10)",
+      "ref": "2026-06-29T02-29-25-987Z_microsoft-ai_Work_smarter_in_90_days__A_real-world_guide_to_usi.json",
+      "at": "2026-07-18T19:28:32.400Z"
+    },
+    {
+      "id": "m178440292285424",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Create fully native and editable presentations with Gemini in Google Slides\" — mi a baj: The source URL provided, http://workspaceupdates.googleblog.com/2026/06/create-fully-native-and-editable-presentations-with-Gemini-in-Google-Slides.html, uses a future date (2026) for an alleged past or current announcement, making it an invented URL.",
+      "ref": "2026-06-30T16-43-13-543Z_google-workspace_Create_fully_native_and_editable_presentations_wit.json",
+      "at": "2026-07-18T19:28:42.854Z"
+    },
+    {
+      "id": "m178440293925868",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Why the Data Platform Determines Legal AI Outcomes\" (?/10)",
+      "ref": "2026-07-02T02-10-03-889Z_snowflake_Why_the_Data_Platform_Determines_Legal_AI_Outcomes.json",
+      "at": "2026-07-18T19:28:59.258Z"
+    },
+    {
+      "id": "m178440294825760",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Contextual Policies in Omnigent: Using session state to better govern AI agents\" (?/10)",
+      "ref": "2026-07-07T02-01-14-878Z_databricks_Contextual_Policies_in_Omnigent__Using_session_sta.json",
+      "at": "2026-07-18T19:29:08.257Z"
     }
   ]
 }
