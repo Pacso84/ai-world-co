@@ -1,6 +1,9 @@
 name = "aiworld-telegram"
 main = "src/worker.js"
 compatibility_date = "2024-11-01"
+# nodejs_compat: a mimetext csomag (email-ág, Task 6) a "mime-types" függőségén
+# keresztül node "path" beépített modult importál — enélkül a bundle nem épül.
+compatibility_flags = ["nodejs_compat"]
 
 # Nyilvános, nem-titkos változó. A titkokat NEM ide tesszük, hanem:
 #   wrangler secret put BOT_TOKEN

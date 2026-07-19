@@ -16,6 +16,7 @@
 // ===================================================================
 import { tg } from './tg.js';
 import { handleChat, handleContact, csCounters } from './cs-routes.js';
+import { handleEmail } from './cs-email.js';
 
 // ===================================================================
 // OLVASÓI 👍/👎 VISSZAJELZÉS (2026-07-07) — a weboldal cikkeiről érkezik.
@@ -161,5 +162,7 @@ export default {
     }
 
     return new Response('ok');
-  }
+  },
+
+  async email(message, env) { return handleEmail(message, env); }
 };
