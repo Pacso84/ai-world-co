@@ -14,6 +14,8 @@
 // VARS (wrangler.toml):
 //   GH_REPO         — pl. "Pacso84/ai-world-co"
 // ===================================================================
+import { tg } from './tg.js';
+import { handleChat, handleContact, csCounters } from './cs-routes.js';
 
 // ===================================================================
 // OLVASÓI 👍/👎 VISSZAJELZÉS (2026-07-07) — a weboldal cikkeiről érkezik.
@@ -94,6 +96,8 @@ async function handleFeedbackExport(request, env) {
   }
   // Hírlevél-jelentkezések száma a heti riportnak (2026-07-12)
   try { out.__nl_signups = parseInt(await env.FEEDBACK.get('nl:signups') || '0', 10); } catch { /* skip */ }
+  // Ügyfélszolgálat napi számlálói a riportoknak (2026-07-20)
+  try { out.__cs = await csCounters(env); } catch { /* skip */ }
   return new Response(JSON.stringify(out), { status: 200, headers: { 'Content-Type': 'application/json' } });
 }
 
@@ -104,6 +108,8 @@ export default {
     if (path === '/feedback') return handleFeedback(request, env);
     if (path === '/feedback-export') return handleFeedbackExport(request, env);
     if (path === '/subscribe') return handleSubscribe(request, env);
+    if (path === '/chat') return handleChat(request, env);
+    if (path === '/contact') return handleContact(request, env);
 
     // Egészség-ellenőrzés / böngészős megnyitás
     if (request.method !== 'POST') {
@@ -157,15 +163,3 @@ export default {
     return new Response('ok');
   }
 };
-
-async function tg(env, chatId, text) {
-  try {
-    await fetch(`https://api.telegram.org/bot${env.BOT_TOKEN}/sendMessage`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ chat_id: chatId, text })
-    });
-  } catch (e) {
-    console.log('Telegram küldés hiba', e);
-  }
-}
