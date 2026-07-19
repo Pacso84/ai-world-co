@@ -71,5 +71,31 @@
         "The source URL provided, http://workspaceupdates.googleblog.com/2026/06/create-fully-native-and-editable-presentations-with-Gemini-in-Google-Slides.html, uses a future date (2026) for an alleged past or current announcement, making it an invented URL."
       ]
     }
+  ],
+  "2026-07-19": [
+    {
+      "at": "2026-07-19T09:48:23.829Z",
+      "file": "WRITER_GUIDE_how-to-turn-a-blurry-photo-into-a-crisp-poster-with-nvidia-a.json",
+      "action": "block",
+      "reasons": [
+        "The article describes a workflow for AI image super-resolution, including UI elements like 'Image Tools', 'AI Enhancements', 'Super-Resolution' sections, 'Upload Image' buttons, and options to configure 'Upscale Factor' and 'Sharpening'. These features and UI elements are attributed to 'an AI image enhancement application'. However, the specified tool, ChatRTX, is a local large language model (LLM) chatbot and does not possess any image super-resolution capabilities or the described user interface for image processing."
+      ]
+    },
+    {
+      "at": "2026-07-19T09:48:57.598Z",
+      "file": "WRITER_GUIDE_summarize-long-articles-and-reports-from-the-web-or-document.json",
+      "action": "block",
+      "reasons": [
+        "The article claims that users can 'Continue as guest' or proceed without logging in to DeepSeek Chat. DeepSeek Chat (chat.deepseek.com) requires users to log in with a Google, GitHub, or email account and does not offer a guest or anonymous access option."
+      ]
+    },
+    {
+      "at": "2026-07-19T09:49:48.493Z",
+      "file": "WRITER_GUIDE_how-to-turn-a-blurry-photo-into-a-crisp-poster-with-nvidia-a.json",
+      "action": "block",
+      "reasons": [
+        "The article lists \"Lanzos\" as an AI model option within Upscayl's \"Models\" section. Lanzos resampling is a traditional image scaling algorithm, not an AI super-resolution model that users select in Upscayl's interface alongside models like Real-ESRGAN or Remacri."
+      ]
+    }
   ]
 }

@@ -1,0 +1,55 @@
+{
+  "started_at": "2026-07-19T09:45:18.607Z",
+  "total": 6,
+  "passed": 5,
+  "failed": 1,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.032327299999999996,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-07-16T19-05-14-341Z_google-workspace_Expanded_language_support_for_Gemini_in_Google_Doc.json",
+      "rejected": "REJECTED_2026-07-16T19-05-14-341Z_google-workspace_Expanded_language_support_for_Gemini_in_Google_Doc.json",
+      "decision": "FAIL",
+      "score": 7,
+      "cost_usd": 0.0044695
+    },
+    {
+      "writer": "WRITER_2026-07-16T19-05-14-349Z_google-workspace_Easily_control_the_emotions_and_pacing_of_AI_avata.json",
+      "article": "ARTICLE_2026-07-16T19-05-14-349Z_google-workspace_Easily_control_the_emotions_and_pacing_of_AI_avata.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0037137
+    },
+    {
+      "writer": "WRITER_2026-07-16T19-05-15-421Z_databricks_The_skills_gap_behind_agentic_AI___and_how_Databri.json",
+      "article": "ARTICLE_2026-07-16T19-05-15-421Z_databricks_The_skills_gap_behind_agentic_AI___and_how_Databri.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.002619
+    },
+    {
+      "writer": "WRITER_2026-07-16T19-05-15-422Z_databricks_Unified_context__The_missing_layer_for_enterprise_.json",
+      "article": "ARTICLE_2026-07-16T19-05-15-422Z_databricks_Unified_context__The_missing_layer_for_enterprise_.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0031481
+    },
+    {
+      "writer": "WRITER_2026-07-16T19-05-17-032Z_databricks_AI-Enabled_Advisory_Services_for_Higher_Education.json",
+      "article": "ARTICLE_2026-07-16T19-05-17-032Z_databricks_AI-Enabled_Advisory_Services_for_Higher_Education.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.004249
+    },
+    {
+      "writer": "WRITER_2026-07-17T01-43-42-624Z_google-workspace_New_Google_Meet__Take_notes_for_me__settings_for_a.json",
+      "article": "ARTICLE_2026-07-17T01-43-42-624Z_google-workspace_New_Google_Meet__Take_notes_for_me__settings_for_a.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0037994
+    }
+  ],
+  "finished_at": "2026-07-19T09:46:08.078Z",
+  "duration_seconds": 49.471
+}
