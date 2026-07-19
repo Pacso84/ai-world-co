@@ -58,4 +58,12 @@ const fakeFetch = async (url) => { fetchCount++; assert.ok(url.includes('/kb.jso
   assert.equal(r.text, '');
 }
 
+// 5) sikeres hívás, de ÜRES response → escalate:true (degradált kimenet nem "normál" válasz)
+{
+  const env = { FEEDBACK: fakeKv(), AI: { async run() { return { response: '' }; } } };
+  const r = await answer(env, { message: 'hello there', lang: 'en', fetchFn: fakeFetch });
+  assert.equal(r.escalate, true);
+  assert.equal(r.text, '');
+}
+
 console.log('✅ cs-engine.test: minden átment');

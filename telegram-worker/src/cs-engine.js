@@ -62,8 +62,11 @@ export async function answer(env, { message, lang, fetchFn = fetch }) {
       max_tokens: 600
     });
     let text = String(res.response || '').trim();
-    const escalate = text.startsWith('[ESCALATE]');
+    let escalate = text.startsWith('[ESCALATE]');
     text = text.replace(/^\[ESCALATE\]\s*/, '').trim();
+    // Üres AI-válasz (sikeres hívás, de nincs tartalom) = degradált kimenet →
+    // eszkaláció, hogy a hívó a fallback-útra tegye, ne üres buborék menjen ki.
+    if (!text) escalate = true;
     // Csak a kb-találatokban szereplő linkeket adjuk vissza kattinthatóként —
     // ha a modell mást írna, az a szövegben marad, de a UI-ban nem lesz gomb.
     const links = hits.filter(h => text.includes(h.u)).map(h => ({ t: h.t, u: h.u }));
