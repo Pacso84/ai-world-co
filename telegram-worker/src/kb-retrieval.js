@@ -3,14 +3,29 @@
 // NINCS embedding, NINCS függőség — offline tesztelhető (spec: 2026-07-19).
 // ===================================================================
 
-// Kisbetű + ékezet-levágás (é→e, ű→u…), 3+ karakteres egyedi szavak.
+// Gyakori funkciószavak (5 nyelv, ékezet-levágott alak) — cím-pontozásra
+// értéktelenek, kiszűrjük, különben pl. a "with" teljes találat-súlyt kapna.
+const STOP = new Set([
+  // en
+  'the','and','with','for','how','you','your','are','was','this','that','can','use','what','from','not','get','all','does','about',
+  // hu
+  'hogyan','hogy','egy','mit','nem','van','lehet','kell','mire','mivel','miert','ezt','azt','is',
+  // es
+  'como','para','con','que','los','las','del','por','una','uno','este','esta','puedo','hacer',
+  // de
+  'wie','und','mit','fur','der','die','das','den','ein','eine','ich','kann','was','auf',
+  // fr
+  'comment','pour','avec','les','des','une','dans','quoi','est','peut','faire','sur','mon','votre'
+]);
+
+// Kisbetű + ékezet-levágás (é→e, ű→u…), 3+ karakteres egyedi szavak, stopszavak kiszűrve.
 export function tokenize(str) {
   return [...new Set(
     String(str || '')
       .toLowerCase()
       .normalize('NFD').replace(/[̀-ͯ]/g, '')
       .split(/[^a-z0-9]+/)
-      .filter(w => w.length >= 3)
+      .filter(w => w.length >= 3 && !STOP.has(w))
   )];
 }
 

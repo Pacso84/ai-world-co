@@ -35,4 +35,8 @@ assert.deepEqual(searchKb('¤¤ !!', kb, 4), []);
 // topN tartva
 assert.ok(searchKb('writing AI guide tools', kb, 2).length <= 2);
 
+// stopszavak kiesnek (2026-07-20 review-fix): gyakori szó nem kaphat pontot
+assert.deepEqual(tokenize('how with the and für wie'), []);
+assert.deepEqual(searchKb('how with for that', kb, 4), [], 'csak-stopszavas kérdésre nincs találat');
+
 console.log('✅ kb-retrieval.test: minden átment');
