@@ -40,6 +40,7 @@ export async function handleEmail(message, env) {
   let engineResult = { text: '', escalate: true, links: [] };
   if (!(await globalLimitReached(env))) {
     engineResult = await answer(env, { message: `${subject}\n\n${text}`.slice(0, 1500), lang: 'auto' });
+    await bumpCs(env, 'global'); // a 300/nap sapka KÖZÖS: chat+email AI-hívás együtt számít
     await bumpCs(env, 'mail');
     if (engineResult.escalate) await bumpCs(env, 'esc');
   } else {
