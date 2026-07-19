@@ -1,6 +1,109 @@
 # AI World Co. — közösségi posztok
 
-*Generálva: 2026-07-19T10:10:17.328Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+*Generálva: 2026-07-19T16:49:57.976Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## Multi-agent social intelligence with Strands Agents and Amazon Bedrock
+**🔗 https://aiworldhq.com/article/ai-agents-automating-business-tasks-without-writing-code.html**
+
+**Facebook:**
+Need more time in your day? AI agents can handle routine tasks like researching leads or sending follow‑up emails, so you can focus on what matters. https://aiworldhq.com/article/ai-agents-automating-business-tasks-without-writing-code.html #AIproductivity #businessautomation
+
+**Instagram:**
+Imagine a digital assistant that works for you.
+It can research new leads, draft emails and schedule follow‑ups – all without you writing code. 
+#AIagents #automation #productivity
+Link in bio.
+
+*Kép-ötlet: A tidy workspace with a laptop displaying a simple flowchart of an AI agent managing a task, next to a steaming coffee cup.*
+
+---
+
+## New refinement capabilities allow custom editing with Help me write in Gmail 
+**🔗 https://aiworldhq.com/article/easier-email-drafts-with-gmail-s-help-me-write-ai-feature.html**
+
+**Facebook:**
+Ever feel stuck staring at a blank email? Gmail’s new AI feature can suggest and polish your words in seconds, helping you reply faster. https://aiworldhq.com/article/easier-email-drafts-with-gmail-s-help-me-write-ai-feature.html #productivity #gmail
+
+**Instagram:**
+Stuck writing an email?
+Gmail’s built‑in AI drafts and refines your message, so you can get it right and hit send quicker.
+#gmail
+#emailtips
+#aiassist
+#productivity
+Link in bio.
+
+*Kép-ötlet: A tidy desk with a laptop open to a Gmail compose window, a coffee mug nearby, and soft natural light.*
+
+---
+
+## Take insights anywhere with Genie One on mobile
+**🔗 https://aiworldhq.com/article/databricks-puts-genie-one-on-your-phone-ai-insights-on-the-g.html**
+
+**Facebook:**
+Need a quick data point while commuting? Genie One's mobile app lets you ask AI for insights on the go. https://aiworldhq.com/article/databricks-puts-genie-one-on-your-phone-ai-insights-on-the-g.html #aiproductivity #mobileai
+
+**Instagram:**
+Turn your phone into a data‑savvy assistant.
+Get instant AI insights anytime, even on the train, so you can finish reports without waiting.
+#aiassistant
+#productivity
+#mobileai
+Link in bio.
+
+*Kép-ötlet: A commuter holding a smartphone with a subtle glowing UI, looking out the window of a train.*
+
+---
+
+## Copilot vs ChatGPT: Which AI Helps More With Your Work Documents?
+**🔗 https://aiworldhq.com/article/copilot-vs-chatgpt-which-ai-helps-more-with-your-work-docume.html**
+
+**Facebook:**
+Looking to speed up Word, Excel or Outlook tasks? Our plain‑language guide shows how Copilot and ChatGPT compare so you can choose the helper that suits your workflow. https://aiworldhq.com/article/copilot-vs-chatgpt-which-ai-helps-more-with-your-work-docume.html #productivity #AI
+
+**Instagram:**
+Which AI will be your new office mate?
+We compare Copilot and ChatGPT on Word, Excel and Outlook, giving you clear takeaways to save time and boost confidence.
+#AIhelp
+#WorkSmart
+#Productivity
+Link in bio.
+
+*Kép-ötlet: A tidy desk with a laptop displaying two side‑by‑side chat windows, one labelled Copilot and the other ChatGPT.*
+
+---
+
+## Business Value of AI Is Spiking, Driven by Increased Adoption and Agentic Expectations, SAP Finds
+**🔗 https://aiworldhq.com/article/boosting-everyday-productivity-with-ai-agents-for-everyday-t.html**
+
+**Facebook:**
+Swamped with emails and appointments? An AI assistant can handle those routine tasks, freeing up time for the work that really matters. https://aiworldhq.com/article/boosting-everyday-productivity-with-ai-agents-for-everyday-t.html #AIproductivity #Automation
+
+**Instagram:**
+Imagine a digital helper that takes care of the boring bits.
+AI agents can sort your inbox, update project lists and keep your calendar tidy, giving you more time for what you enjoy.
+#AIagents
+#productivity
+#automation
+#everydayAI
+Link in bio.
+
+*Kép-ötlet: A tidy desk with a laptop displaying a simple calendar and email icons, subtly highlighted to suggest an unseen AI assistant at work.*
+
+---
+
+## NVIDIA and Japan Bring Full-Stack AI and Robotics to Every Industry
+**🔗 https://aiworldhq.com/article/giving-everyday-devices-eyes-understanding-edge-ai-vision.html**
+
+**Facebook:**
+Find out how devices are getting 'eyes' to spot things like packages at your door. It's a handy way to automate tasks at home. https://aiworldhq.com/article/giving-everyday-devices-eyes-understanding-edge-ai-vision.html #EdgeAI #SmartTech
+
+**Instagram:**
+Giving everyday devices 'eyes' to understand what they see. 👁️ Learn how compact AI helps cameras spot real events, like a delivery, right on the spot. #EdgeAI #SmartHome #AIExplained #TechTips #Automation
+
+*Kép-ötlet: A close-up of a small, sleek camera on a shelf, focusing on its lens in natural light.*
 
 ---
 

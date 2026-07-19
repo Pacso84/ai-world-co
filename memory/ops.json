@@ -1,110 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178436636113976",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-18T09:19:21.139Z",
-      "updated": "2026-07-18T09:19:34.750Z"
-    },
-    {
-      "id": "t178436637475548",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-18T09:19:34.755Z",
-      "updated": "2026-07-18T09:19:51.639Z"
-    },
-    {
-      "id": "t178436639164139",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-18T09:19:51.641Z",
-      "updated": "2026-07-18T09:20:07.082Z"
-    },
-    {
-      "id": "t178436640708770",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-07-18T09:20:07.087Z",
-      "updated": "2026-07-18T09:20:15.178Z"
-    },
-    {
-      "id": "t178436641520278",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-18T09:20:15.202Z",
-      "updated": "2026-07-18T09:20:29.220Z"
-    },
-    {
-      "id": "t178436642922357",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-07-18T09:20:29.223Z",
-      "updated": "2026-07-18T09:20:39.045Z"
-    },
-    {
-      "id": "t178436643904783",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-18T09:20:39.047Z",
-      "updated": "2026-07-18T09:20:40.072Z"
-    },
-    {
-      "id": "t178436644007447",
-      "title": "Run translator",
-      "status": "done",
-      "agent": "translator",
-      "created": "2026-07-18T09:20:40.074Z",
-      "updated": "2026-07-18T09:28:37.879Z"
-    },
-    {
-      "id": "t178436691788157",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-07-18T09:28:37.881Z",
-      "updated": "2026-07-18T09:28:46.151Z"
-    },
-    {
-      "id": "t17843929819772",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-07-18T16:43:01.977Z",
-      "updated": "2026-07-18T16:43:04.170Z"
-    },
-    {
-      "id": "t178439298417250",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-07-18T16:43:04.172Z",
-      "updated": "2026-07-18T16:43:14.756Z"
-    },
-    {
-      "id": "t178439299475876",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-07-18T16:43:14.758Z",
-      "updated": "2026-07-18T16:43:38.218Z"
-    },
-    {
-      "id": "t178439301822040",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-07-18T16:43:38.220Z",
-      "updated": "2026-07-18T16:43:38.490Z"
-    },
-    {
       "id": "t178439301849148",
       "title": "Run ellenorzo",
       "status": "done",
@@ -479,33 +375,113 @@
       "agent": "publisher",
       "created": "2026-07-19T10:08:04.543Z",
       "updated": "2026-07-19T10:08:15.063Z"
+    },
+    {
+      "id": "t178447940357384",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-07-19T16:43:23.573Z",
+      "updated": "2026-07-19T16:43:30.176Z"
+    },
+    {
+      "id": "t178447941017789",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-07-19T16:43:30.177Z",
+      "updated": "2026-07-19T16:43:39.289Z"
+    },
+    {
+      "id": "t178447941929148",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-07-19T16:43:39.291Z",
+      "updated": "2026-07-19T16:44:04.548Z"
+    },
+    {
+      "id": "t17844794445502",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-07-19T16:44:04.550Z",
+      "updated": "2026-07-19T16:44:04.706Z"
+    },
+    {
+      "id": "t178447944470846",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-19T16:44:04.708Z",
+      "updated": "2026-07-19T16:44:04.859Z"
+    },
+    {
+      "id": "t178447944486224",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-07-19T16:44:04.862Z",
+      "updated": "2026-07-19T16:45:02.855Z"
+    },
+    {
+      "id": "t17844795028579",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-19T16:45:02.857Z",
+      "updated": "2026-07-19T16:45:53.414Z"
+    },
+    {
+      "id": "t178447955341672",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-07-19T16:45:53.416Z",
+      "updated": "2026-07-19T16:46:02.451Z"
+    },
+    {
+      "id": "t178447956247083",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-19T16:46:02.470Z",
+      "updated": "2026-07-19T16:46:07.901Z"
+    },
+    {
+      "id": "t178447956790381",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-07-19T16:46:07.903Z",
+      "updated": "2026-07-19T16:46:14.255Z"
+    },
+    {
+      "id": "t178447957425775",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-19T16:46:14.257Z",
+      "updated": "2026-07-19T16:46:15.109Z"
+    },
+    {
+      "id": "t178447957511084",
+      "title": "Run translator",
+      "status": "done",
+      "agent": "translator",
+      "created": "2026-07-19T16:46:15.110Z",
+      "updated": "2026-07-19T16:49:07.941Z"
+    },
+    {
+      "id": "t178447974794328",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-07-19T16:49:07.943Z",
+      "updated": "2026-07-19T16:49:14.540Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178368061192065",
-      "level": "success",
-      "text": "1 hír + 2 útmutató publikálva (költség: $0.0103).",
-      "agent": "ceo",
-      "at": "2026-07-10T10:50:11.920Z",
-      "loud": false
-    },
-    {
-      "id": "n178370523592439",
-      "level": "info",
-      "text": "SEO: 2 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-07-10T17:40:35.924Z",
-      "loud": false
-    },
-    {
-      "id": "n178370534252921",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The line-up is coherent, practical, and ready—covering everyday AI tools in clear, beginner-friendly steps. One gentle tweak: add a short intro line to each article (e.g., *\"No tech skills needed—here",
-      "agent": "publisher",
-      "at": "2026-07-10T17:42:22.529Z",
-      "loud": false
-    },
     {
       "id": "n178370534684072",
       "level": "success",
@@ -1281,144 +1257,33 @@
       "agent": "ceo",
       "at": "2026-07-19T10:08:15.088Z",
       "loud": false
+    },
+    {
+      "id": "n178447957424693",
+      "level": "info",
+      "text": "SEO: 3 cikk optimalizálva (átlag 8.3/10).",
+      "agent": "seo",
+      "at": "2026-07-19T16:46:14.246Z",
+      "loud": false
+    },
+    {
+      "id": "n17844797489127",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). Our publication line-up is coherent and ready, offering a diverse range of practical AI applications for everyday tasks. I've noted that some articles may be tech-heavy, so a gentle introduction to AI",
+      "agent": "publisher",
+      "at": "2026-07-19T16:49:08.912Z",
+      "loud": false
+    },
+    {
+      "id": "n178447975455930",
+      "level": "success",
+      "text": "3 hír + 0 útmutató publikálva (költség: $0.0315).",
+      "agent": "ceo",
+      "at": "2026-07-19T16:49:14.559Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178428174592514",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Proactive Agent Research Environment: Simulating Active Users to Evaluate Proactive Assistants\" — mi a baj: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!); TOO_SHORT: Csak 70 szó (minimum 200 javasolt)",
-      "ref": "2026-07-14T17-02-21-767Z_apple-ml_Proactive_Agent_Research_Environment__Simulating_A.json",
-      "at": "2026-07-17T09:49:05.925Z"
-    },
-    {
-      "id": "m178428175903164",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Ask Alexa+ to explain the news headlines in simple terms every morning\" — javítva: The product name \"Alexa+\" is invented. Amazon's smart assistant is called Alexa, and the associated hardware devices are called Echo devices (e.g., Echo Dot, Echo Show). \"Alexa+\" is not an official product name or version.; Reviewer verdict: Hitelesség-kapu blokkolta: The product name \"Alexa+\" is inven",
-      "ref": "GUIDE_ask-alexa-to-explain-the-news-headlines-in-simple-terms-ever.json",
-      "at": "2026-07-17T09:49:19.031Z"
-    },
-    {
-      "id": "m178428177879653",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Draft a simple cover letter for a job application with DeepSeek\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; Reviewer verdict: Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben; újraküldöm.",
-      "ref": "GUIDE_draft-a-simple-cover-letter-for-a-job-application-with-deeps.json",
-      "at": "2026-07-17T09:49:38.796Z"
-    },
-    {
-      "id": "m178428179766949",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Verify social media information with Perplexity's source checking\" — javítva: Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
-      "ref": "GUIDE_verify-social-media-information-with-perplexity-s-source-che.json",
-      "at": "2026-07-17T09:49:57.669Z"
-    },
-    {
-      "id": "m178428180454522",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Ask Alexa+ to explain the news headlines in simple terms every morning\" — mi a baj: Salvaged from a partial AI response.",
-      "ref": "GUIDE_ask-alexa-to-explain-the-news-headlines-in-simple-terms-ever.json",
-      "at": "2026-07-17T09:50:04.545Z"
-    },
-    {
-      "id": "m178428181558620",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Draft a simple cover letter for a job application with DeepSeek\" (?/10)",
-      "ref": "GUIDE_draft-a-simple-cover-letter-for-a-job-application-with-deeps.json",
-      "at": "2026-07-17T09:50:15.586Z"
-    },
-    {
-      "id": "m178428182771927",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Verify social media information with Perplexity's source checking\" (?/10)",
-      "ref": "GUIDE_verify-social-media-information-with-perplexity-s-source-che.json",
-      "at": "2026-07-17T09:50:27.719Z"
-    },
-    {
-      "id": "m178428185024838",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Ask Alexa+ to explain the news headlines in simple terms every morning\" — javítva: Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
-      "ref": "GUIDE_ask-alexa-to-explain-the-news-headlines-in-simple-terms-ever.json",
-      "at": "2026-07-17T09:50:50.248Z"
-    },
-    {
-      "id": "m178428186205630",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Ask Alexa+ to explain the news headlines in simple terms every morning\" (?/10)",
-      "ref": "GUIDE_ask-alexa-to-explain-the-news-headlines-in-simple-terms-ever.json",
-      "at": "2026-07-17T09:51:02.056Z"
-    },
-    {
-      "id": "m178428189450154",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-07-17T09:51:34.501Z"
-    },
-    {
-      "id": "m178428261240843",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
-      "ref": null,
-      "at": "2026-07-17T10:03:32.408Z"
-    },
-    {
-      "id": "m178430751973158",
-      "from": "ceo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Főnöki újraindítás: \"OpenAI GPT-5.6 Sol, Terra, and Luna are now generally availa\" — rewrite-explainer",
-      "ref": "2026-07-14T01-22-26-177Z_aws-ml_OpenAI_GPT-5_6_Sol__Terra__and_Luna_are_now_genera.json",
-      "at": "2026-07-17T16:58:39.731Z"
-    },
-    {
-      "id": "m178430754855157",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"A scorecard for the AI age\" — mi a baj: NO_H1: Nincs H1 (# Cím) a cikkben",
-      "ref": "2026-07-17T16-58-56-118Z_openai-blog_A_scorecard_for_the_AI_age.json",
-      "at": "2026-07-17T16:59:08.551Z"
-    },
-    {
-      "id": "m178430758531958",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"OpenAI GPT-5.6 Sol, Terra, and Luna are now generally available on Amazon Bedrock\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers. HONESTY RULE: name the REAL products/places/organisations from the so",
-      "ref": "2026-07-14T01-22-26-177Z_aws-ml_OpenAI_GPT-5_6_Sol__Terra__and_Luna_are_now_genera.json",
-      "at": "2026-07-17T16:59:45.319Z"
-    },
-    {
-      "id": "m178430759609044",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"How sales teams use ChatGPT Work\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; Reviewer verdict: Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben; újraküldöm.",
-      "ref": "2026-07-14T17-02-21-044Z_openai-blog_How_sales_teams_use_ChatGPT_Work.json",
-      "at": "2026-07-17T16:59:56.090Z"
-    },
     {
       "id": "m178430761114969",
       "from": "iro",
@@ -2641,6 +2506,141 @@
       "text": "6 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
       "ref": null,
       "at": "2026-07-19T10:10:17.330Z"
+    },
+    {
+      "id": "m178447941016522",
+      "from": "ceo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Főnöki újraindítás: \"Expanded language support for Gemini in Google Docs\" — rewrite-explainer",
+      "ref": "2026-07-16T19-05-14-341Z_google-workspace_Expanded_language_support_for_Gemini_in_Google_Doc.json",
+      "at": "2026-07-19T16:43:30.165Z"
+    },
+    {
+      "id": "m178447945977851",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Expanded language support for Gemini in Google Docs\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers. HONESTY RULE: name the REAL products/places/organisations from the source; NEVER invent generic UI ",
+      "ref": "2026-07-16T19-05-14-341Z_google-workspace_Expanded_language_support_for_Gemini_in_Google_Doc.json",
+      "at": "2026-07-19T16:44:19.778Z"
+    },
+    {
+      "id": "m178447947014026",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Introducing Grok on Amazon Bedrock\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; Reviewer verdict: Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben; újraküldöm.",
+      "ref": "2026-07-17T01-43-42-625Z_aws-ml_Introducing_Grok_on_Amazon_Bedrock.json",
+      "at": "2026-07-19T16:44:30.140Z"
+    },
+    {
+      "id": "m178447947634466",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Cast yourself in AI video clips using your personal avatar with Gemini Omni in Vids\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; Reviewer verdict: Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben; újraküldöm.",
+      "ref": "2026-07-17T01-43-42-625Z_google-workspace_Cast_yourself_in_AI_video_clips_using_your_persona.json",
+      "at": "2026-07-19T16:44:36.344Z"
+    },
+    {
+      "id": "m178447948515955",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Generate higher quality AI video clips and edit any video with Gemini Omni in Vids\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; Reviewer verdict: Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben; újraküldöm.",
+      "ref": "2026-07-17T01-43-42-625Z_google-workspace_Generate_higher_quality_AI_video_clips_and_edit_an.json",
+      "at": "2026-07-19T16:44:45.159Z"
+    },
+    {
+      "id": "m178447949697362",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Simplify Sales: Unifying Data in Slack\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; Reviewer verdict: Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben; újraküldöm.",
+      "ref": "2026-07-17T01-43-42-625Z_salesforce_Simplify_Sales__Unifying_Data_in_Slack.json",
+      "at": "2026-07-19T16:44:56.973Z"
+    },
+    {
+      "id": "m178447950284639",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"A scorecard for the AI age\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; Reviewer verdict: Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben; újraküldöm.",
+      "ref": "2026-07-17T16-58-56-118Z_openai-blog_A_scorecard_for_the_AI_age.json",
+      "at": "2026-07-19T16:45:02.846Z"
+    },
+    {
+      "id": "m178447951219512",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Expanded language support for Gemini in Google Docs\" (?/10)",
+      "ref": "2026-07-16T19-05-14-341Z_google-workspace_Expanded_language_support_for_Gemini_in_Google_Doc.json",
+      "at": "2026-07-19T16:45:12.195Z"
+    },
+    {
+      "id": "m178447952029867",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Introducing Grok on Amazon Bedrock\" — mi a baj: The article repeatedly claims that Grok is available on Amazon Bedrock. As of now, Grok (from xAI) is not one of the foundation models offered by Amazon Bedrock. Bedrock provides access to models from Amazon, Anthropic, AI21 Labs, Cohere, Meta, Mistral AI, and Stability AI, but not Grok.",
+      "ref": "2026-07-17T01-43-42-625Z_aws-ml_Introducing_Grok_on_Amazon_Bedrock.json",
+      "at": "2026-07-19T16:45:20.298Z"
+    },
+    {
+      "id": "m178447952796788",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Cast yourself in AI video clips using your personal avatar with Gemini Omni in Vids\" — mi a baj: Salvaged from a partial AI response.",
+      "ref": "2026-07-17T01-43-42-625Z_google-workspace_Cast_yourself_in_AI_video_clips_using_your_persona.json",
+      "at": "2026-07-19T16:45:27.967Z"
+    },
+    {
+      "id": "m178447953897274",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Generate higher quality AI video clips and edit any video with Gemini Omni in Vids\" — mi a baj: The article refers to a specific AI capability within Google Vids as \"Gemini Omni.\" While Google Vids is a real product powered by Gemini, there is no publicly announced or recognized AI capability specifically *called* \"Gemini Omni\" associated with Google Vids or the broader Gemi",
+      "ref": "2026-07-17T01-43-42-625Z_google-workspace_Generate_higher_quality_AI_video_clips_and_edit_an.json",
+      "at": "2026-07-19T16:45:38.972Z"
+    },
+    {
+      "id": "m178447954715857",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Simplify Sales: Unifying Data in Slack\" (?/10)",
+      "ref": "2026-07-17T01-43-42-625Z_salesforce_Simplify_Sales__Unifying_Data_in_Slack.json",
+      "at": "2026-07-19T16:45:47.158Z"
+    },
+    {
+      "id": "m178447955340391",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"A scorecard for the AI age\" (?/10)",
+      "ref": "2026-07-17T16-58-56-118Z_openai-blog_A_scorecard_for_the_AI_age.json",
+      "at": "2026-07-19T16:45:53.403Z"
+    },
+    {
+      "id": "m178447957508340",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-07-19T16:46:15.083Z"
+    },
+    {
+      "id": "m17844797979785",
+      "from": "social",
+      "to": "team",
+      "kind": "info",
+      "text": "6 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
+      "ref": null,
+      "at": "2026-07-19T16:49:57.978Z"
     }
   ]
 }

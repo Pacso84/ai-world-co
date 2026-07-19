@@ -96,6 +96,22 @@
       "reasons": [
         "The article lists \"Lanzos\" as an AI model option within Upscayl's \"Models\" section. Lanzos resampling is a traditional image scaling algorithm, not an AI super-resolution model that users select in Upscayl's interface alongside models like Real-ESRGAN or Remacri."
       ]
+    },
+    {
+      "at": "2026-07-19T16:45:20.299Z",
+      "file": "WRITER_2026-07-17T01-43-42-625Z_aws-ml_Introducing_Grok_on_Amazon_Bedrock.json",
+      "action": "block",
+      "reasons": [
+        "The article repeatedly claims that Grok is available on Amazon Bedrock. As of now, Grok (from xAI) is not one of the foundation models offered by Amazon Bedrock. Bedrock provides access to models from Amazon, Anthropic, AI21 Labs, Cohere, Meta, Mistral AI, and Stability AI, but not Grok."
+      ]
+    },
+    {
+      "at": "2026-07-19T16:45:38.973Z",
+      "file": "WRITER_2026-07-17T01-43-42-625Z_google-workspace_Generate_higher_quality_AI_video_clips_and_edit_an.json",
+      "action": "block",
+      "reasons": [
+        "The article refers to a specific AI capability within Google Vids as \"Gemini Omni.\" While Google Vids is a real product powered by Gemini, there is no publicly announced or recognized AI capability specifically *called* \"Gemini Omni\" associated with Google Vids or the broader Gemini suite. The phrasing suggests a specific, named feature that does not exist."
+      ]
     }
   ]
 }
