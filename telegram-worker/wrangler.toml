@@ -9,8 +9,14 @@ compatibility_date = "2024-11-01"
 #   wrangler secret put WEBHOOK_SECRET
 [vars]
 GH_REPO = "Pacso84/ai-world-co"
+# Ügyfélszolgálat worker-oldali kill-switch (2026-07-20): "false" → /chat,/contact,email 503/eldob
+CS_ENABLED = "true"
 
 # Olvasói 👍/👎 visszajelzés tárolója (2026-07-07)
 [[kv_namespaces]]
 binding = "FEEDBACK"
 id = "3ec3cac8de4247d09ddac8b245f9b985"
+
+# Workers AI — az ügyfélszolgálat ingyenes válasz-motorja (env.AI)
+[ai]
+binding = "AI"
