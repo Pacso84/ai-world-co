@@ -34,7 +34,30 @@
     "ceo_rounds": 2,
     "briefed_at": "2026-07-18T19:28:15.301Z",
     "brief_attempt": true,
-    "published_at": "2026-07-18T19:29:08.254Z"
+    "published_at": "2026-07-18T19:29:08.254Z",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-07-19T01:32:06.326Z",
+    "guide_worthy": false,
+    "pairing_reason": "The article discusses a company's implementation of a feature for AI agent governance, not a specific named tool for everyday use.",
+    "seo": {
+      "meta_description": "Databricks introduces Contextual Policies in Omnigent for better AI agent governance. Learn how these guardrails keep AI tools safe and secure.",
+      "keywords": [
+        "Contextual Policies in Omnigent",
+        "Databricks AI agent governance",
+        "AI agent guardrails",
+        "how to secure AI agents",
+        "Omnigent security features",
+        "preventing AI unauthorized actions"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add a concrete example of a guardrail in action (e.g., stopping an agent from revealing private data) to make the benefit clearer.",
+        "Briefly explain 'Contextual Policies' in plain language as 'rules that change based on the current conversation' for better accessibility."
+      ],
+      "optimised_at": "2026-07-19T01:38:58.938Z"
+    },
+    "social": true,
+    "social_at": "2026-07-19T01:57:51.529Z"
   },
   "article_markdown": "---\ntitle: \"Contextual Policies in Omnigent: Better Governing AI Agents\"\nsubtitle: \"Databricks adds Contextual Policies to Omnigent to keep AI agents within safe limits.\"\ncategory: \"news\"\ncompany: \"\"\ntool: \"\"\nread_time_minutes: 1\ntags: [\"news-brief\"]\n---\n\n# Contextual Policies in Omnigent: Better Governing AI Agents\n\nDatabricks has announced the implementation of Contextual Policies within Omnigent, marking a significant advancement for AI agent governance. These AI agents, acting as smart assistants, are designed to understand instructions and take independent actions. The new Contextual Policies are specifically designed to leverage session state, establishing essential \"guardrails\" that precisely control how these powerful AI tools operate. This measure aims to prevent AI assistants from overstepping their intended scope, for example, by inadvertently sharing sensitive details or performing unauthorized actions. By ensuring AI agents adhere to safe and appropriate operational limits, Databricks seeks to greatly enhance their reliability and foster greater trust in their autonomous functions.\n\n## What this means for you\n\nFor individuals and businesses interacting with AI agents, this development promises enhanced security and improved predictability in daily operations. Users can now anticipate their AI assistants will operate within much clearer boundaries, significantly minimizing the risk of unintended outcomes or potential privacy concerns. Ultimately, this advancement helps ensure that AI technology serves its purpose responsibly and effectively, delivering more controlled and trustworthy automated assistance for everyone.\n\nSource: Databricks Blog — https://www.databricks.com/blog/contextual-policies-omnigent-using-session-state-better-govern-ai-agents",
   "original_title": "Contextual Policies in Omnigent: Using session state to better govern AI agents"

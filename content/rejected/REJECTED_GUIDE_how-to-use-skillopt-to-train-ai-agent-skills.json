@@ -1,0 +1,43 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "how-to-use-skillopt-to-train-ai-agent-skills",
+    "company": "",
+    "tool": "SkillOpt",
+    "icon": "🆕",
+    "level": "intermediate",
+    "source_news": {
+      "file": "ARTICLE_2026-06-30T18-26-47-624Z_microsoft-research_SkillOpt__Agent_skills_as_trainable_parameters.json",
+      "title": "SkillOpt: Agent skills as trainable parameters"
+    },
+    "written_at": "2026-07-19T01:32:46.739Z",
+    "writer_provider": "google",
+    "writer_model": "gemini-2.5-flash",
+    "writer_cost_usd": 0.0059358,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "rejected",
+    "rejected_at": "2026-07-19T01:36:03.272Z",
+    "auto_check": {
+      "passed": false,
+      "issues": [
+        "NO_FRONTMATTER: A cikk nem YAML frontmatter-rel kezdődik",
+        "MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!)",
+        "NO_H1: Nincs H1 (# Cím) a cikkben",
+        "GUIDE_TOO_SHORT: Csak 178 szó — az útmutató-szabály 700-1200 szó (guide-quality-rules.md)"
+      ],
+      "wordCount": 178
+    },
+    "ai_review": {
+      "decision": "FAIL",
+      "verdict": "Critical auto-check failures: NO_FRONTMATTER: A cikk nem YAML frontmatter-rel kezdődik; MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!); NO_H1: Nincs H1 (# Cím) a cikkben; GUIDE_TOO_SHORT: Csak 178 szó — az útmutató-szabály 700-1200 szó (guide-quality-rules.md)",
+      "skipped_ai": true
+    },
+    "reason": "Critical auto-check failures: NO_FRONTMATTER: A cikk nem YAML frontmatter-rel kezdődik; MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!); NO_H1: Nincs H1 (# Cím) a cikkben; GUIDE_TOO_SHORT: Csak 178 szó — az útmutató-szabály 700-1200 szó (guide-quality-rules.md)",
+    "can_retry": true
+  },
+  "article_markdown": "I cannot create a step-by-step guide for \"How to Use SkillOpt to Train AI Agent Skills\" as requested.\n\nMy instructions explicitly state: \"Never turn a research paper or a backend/enterprise feature into a fake consumer product... If a normal person cannot actually sign up and DO the task today with a real, named product, it is not a guide — flag it back, don't fabricate the steps.\"\n\nBased on my understanding, \"SkillOpt\" refers to a research concept (e.g., from a Microsoft Research paper on optimizing AI agent skills) rather than a publicly available, consumer-facing tool or platform that an everyday person can sign up for and use to train AI agent skills in a practical, step-by-step manner.\n\nCreating a guide for a non-existent or inaccessible consumer product would involve inventing UI details, sign-up processes, and features, which directly violates the core \"Honesty rules\" and \"Never invent UI details\" principles.\n\nTherefore, I am unable to fulfill this request. Please provide a topic that uses a real, accessible AI tool for which a beginner can genuinely follow a step-by-step tutorial.",
+  "original_title": "How to Use SkillOpt to Train AI Agent Skills"
+}

@@ -1,6 +1,117 @@
 # AI World Co. — közösségi posztok
 
-*Generálva: 2026-07-18T16:53:32.294Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+*Generálva: 2026-07-19T01:57:54.732Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## How Cara pioneers domain-specific AI for enterprise insurance brokerages with AWS
+**🔗 https://aiworldhq.com/article/how-cara-pioneers-domain-specific-ai-for-enterprise-insuranc.html**
+
+**Facebook:**
+Need quicker insurance quotes? Cara’s AI, built on AWS, helps large brokerages cut paperwork and speed up decisions. #InsuranceTech #AI https://aiworldhq.com/article/how-cara-pioneers-domain-specific-ai-for-enterprise-insuranc.html
+
+**Instagram:**
+AI that speaks insurance.
+Cara’s new AWS‑powered tool lets brokerages analyse risks in minutes, not hours.
+#Insurance
+#AI
+#AWS
+#BusinessTech
+Link in bio.
+
+*Kép-ötlet: A tidy office desk with a laptop displaying a cloud diagram next to a stack of insurance forms.*
+
+---
+
+## Work smarter in 90 days: A real-world guide to using AI
+**🔗 https://aiworldhq.com/article/work-smarter-in-90-days-a-real-world-guide-to-using-ai.html**
+
+**Facebook:**
+Want to make daily tasks a bit easier? This Microsoft guide shows simple AI tricks you can start using in 90 days. https://aiworldhq.com/article/work-smarter-in-90-days-a-real-world-guide-to-using-ai.html #AI #productivity
+
+**Instagram:**
+Boost your day with AI in just 90 days.
+Learn simple tricks like using voice assistants to batch chores and tidy your inbox.
+#AIforEveryday
+#ProductivityTips
+#MicrosoftGuide
+Link in bio.
+
+*Kép-ötlet: A relaxed home office with a laptop, a smart speaker, and a cup of tea, illustrating everyday AI use.*
+
+---
+
+## Why the Data Platform Determines Legal AI Outcomes
+**🔗 https://aiworldhq.com/article/snowflake-blog-explores-data-platform-s-impact-on-legal-ai-o.html**
+
+**Facebook:**
+A solid data platform can make legal AI tools more reliable – helping lawyers find the right info faster. Learn how the right foundation matters. https://aiworldhq.com/article/snowflake-blog-explores-data-platform-s-impact-on-legal-ai-o.html #LegalTech #Data
+
+**Instagram:**
+Better data, better legal AI.
+When the data platform is strong, AI can deliver accurate legal insights faster, saving time for busy professionals.
+#LegalTech
+#AI
+#DataPlatform
+#LawPractice
+#Productivity
+Link in bio.
+
+*Kép-ötlet: A lawyer at a desk reviewing a laptop screen showing a cloud data diagram, with shelves of legal books in the background.*
+
+---
+
+## Revisiting ASR Error Correction with Specialized Models
+**🔗 https://aiworldhq.com/article/revisiting-asr-error-correction-with-specialized-models.html**
+
+**Facebook:**
+Ever wish your voice assistant understood you the first time? Apple’s new research aims to cut down on mis‑heard commands, making daily tasks smoother. https://aiworldhq.com/article/revisiting-asr-error-correction-with-specialized-models.html #SpeechTech #AIHelp
+
+**Instagram:**
+Voice assistants that actually get it right.
+Apple’s specialised models could reduce those frustrating repeats, so your smart speaker hears you better.
+#SpeechRecognition
+#AI
+#TechTips
+#EverydayAI
+Link in bio.
+
+*Kép-ötlet: A person speaking naturally to a smart speaker in a cosy living room, with subtle sound‑wave graphics floating around.*
+
+---
+
+## Contextual Policies in Omnigent: Using session state to better govern AI agents
+**🔗 https://aiworldhq.com/article/contextual-policies-in-omnigent-better-governing-ai-agents.html**
+
+**Facebook:**
+Want AI helpers that stay on track? New contextual policies in Omnigent keep agents safe and focused, so they do what you expect. https://aiworldhq.com/article/contextual-policies-in-omnigent-better-governing-ai-agents.html #AIethics #Safety
+
+**Instagram:**
+Keeping AI agents in check.
+Databricks added contextual policies to Omnigent, letting you set limits that match each task. It means smarter, safer assistants that respect the rules you set.
+#AI
+#Safety
+#TechTips
+#Databricks
+#Omnigent
+Link in bio.
+
+*Kép-ötlet: A tidy desk with a laptop displaying a simple flowchart that shows an AI assistant following step‑by‑step rules.*
+
+---
+
+## How to manage AI investments in the agentic era
+**🔗 https://aiworldhq.com/article/automate-daily-tasks-with-ai-agents-no-coding-required.html**
+
+**Facebook:**
+Save time on the boring stuff by teaching AI agents to handle your daily chores like sorting emails. It's easier than you think to get started, even if you hate technology. https://aiworldhq.com/article/automate-daily-tasks-with-ai-agents-no-coding-required.html #AI #Productivity
+
+**Instagram:**
+Let AI handle the boring daily tasks for you. 🙌 Here is how to set up simple agents to organise your receipts and emails without knowing how to code.
+#AI #Productivity #Organise #LifeHacks #TechTips
+Link in bio.
+
+*Kép-ötlet: A relaxed person enjoying a coffee next to a laptop showing a clean, completed to-do list.*
 
 ---
 

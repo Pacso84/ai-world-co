@@ -1,0 +1,61 @@
+{
+  "_meta": {
+    "written_at": "2026-07-19T01:30:32.056Z",
+    "writer_provider": "google",
+    "writer_model": "gemini-2.5-flash",
+    "writer_cost_usd": 0.022759799999999997,
+    "original_draft": "2026-07-16T19-05-12-666Z_google-ai-blog_Connect_more_of_your_apps_to_Search.json",
+    "source_id": "google-ai-blog",
+    "source_name": "Google AI (hivatalos, blog.google)",
+    "source_link": "https://blog.google/products-and-platforms/products/search/connected-apps/",
+    "status": "published",
+    "rejected_at": "2026-07-18T16:45:27.376Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 921
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "The article is well-structured, clear, and perfectly aligns with the brand voice and",
+      "_salvaged": true,
+      "_aiCost": 0.004468199999999999,
+      "_provider": "google",
+      "_model": "gemini-2.5-flash",
+      "_attempts": 1
+    },
+    "reason": "Salvaged from a partial AI response.",
+    "can_retry": true,
+    "rework_attempts": 2,
+    "reworked_from": "REJECTED_2026-07-16T19-05-12-666Z_google-ai-blog_Connect_more_of_your_apps_to_Search.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-07-19T01:31:25.418Z",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-07-19T01:32:08.538Z",
+    "guide_worthy": false,
+    "pairing_reason": "The article is about a generic topic of connecting apps to AI, not a specific named feature or tool.",
+    "seo": {
+      "meta_description": "Discover how to securely link your apps to AI. Get personalised summaries and calendar updates to simplify daily tasks with smart integrations.",
+      "keywords": [
+        "personalise AI assistant",
+        "connect AI to apps",
+        "AI integrations guide",
+        "how to use AI plugins",
+        "AI for daily tasks",
+        "secure AI connections"
+      ],
+      "seo_score": 9,
+      "suggestions": [
+        "Include step-by-step examples for connecting a specific popular app like Google Calendar to demonstrate the process clearly.",
+        "Explain what data is shared to address security concerns mentioned in the article.",
+        "Add a FAQ section addressing common questions about privacy when linking tools."
+      ],
+      "optimised_at": "2026-07-19T01:39:02.267Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Personalise Your AI: Connect It to Your Everyday Apps\"\nsubtitle: \"Discover how securely linking your favourite digital tools to AI can give you smarter, more relevant answers and simplify daily tasks.\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"ai-search\", \"productivity\", \"app-integration\", \"personalisation\"]\n---\n\n# Personalise Your AI: Connect It to Your Everyday Apps\n\nImagine asking your AI, \"What meetings are on my calendar today?\" or \"Can you summarise that long email about next week's project?\" For a while, AI tools could only give you general information because they didn't know *your* specific details. Now, a powerful feature is becoming common: you can securely connect your personal and work apps directly to your AI, allowing it to provide truly personalised and helpful results.\n\n## How Your AI Connects to Your Digital Life\n\nThis capability, often called 'integrations' or 'plugins', lets your AI assistant safely peek into the other digital tools you use every day. Think of apps like your email, calendar, cloud storage, or even project management software. It’s like giving your AI a specific, controlled key to certain parts of your digital world, so it can answer questions and help with tasks using much more of *your* context.\n\nThis usually happens within a dedicated section of your AI tool, often labelled \"Connect Apps,\" \"Extensions,\" or \"Integrations.\" When you use your AI in this way, it can look across your connected apps to find information relevant to you, instead of just searching the general internet. You're always in charge of which apps it connects to and what kind of data it can access, thanks to **permissions** (your explicit approval for the AI to look at specific parts of your apps, like your calendar or certain documents).\n\n## Getting Started with App Connections\n\nConnecting your apps is typically a straightforward process, designed with your security and control in mind.\n\n1.  **Open your AI tool:** Head to the AI assistant or search tool you usually use, like ChatGPT, Gemini, or Copilot.\n2.  **Find the 'Connections' area:** Look for a settings or dedicated section often called \"Connect Apps,\" \"Plugins,\" \"Extensions,\" or \"Integrations.\"\n3.  **Choose the apps you want:** You'll see a list of popular services such as Gmail, Google Calendar, Microsoft Outlook, Slack, Dropbox, or various task managers. Pick the ones you'd like your AI to interact with.\n4.  **Grant permissions:** This is the most crucial step. Your AI tool will ask for specific **permissions** for each app. For instance, it might ask to \"read your calendar events\" or \"search your emails.\" Always take a moment to review these requests carefully and only grant access to what you're comfortable with. You're generally giving access to specific data, not your entire account.\n5.  **Confirm the connection:** Once you've approved the permissions, the app will be linked. From then on, your AI can use its data when you ask relevant questions.\n\nRemember, you can almost always remove these connections or adjust permissions at any time through the same \"Connections\" or \"Extensions\" menu in your AI tool.\n\n## Practical Ways to Use a Connected AI\n\nOnce your AI is connected, it transforms into a much more capable personal assistant.\n\n*   **Effortless Scheduling:** Instead of guessing, ask, \"When's my next available spot for a team catch-up next week?\" and your AI can check your calendar to suggest suitable times.\n*   **Quick Information Retrieval:** Need to find \"that proposal from David about the new marketing campaign\"? Your AI can scan your emails and cloud documents to locate it instantly.\n*   **Meeting Preparation:** Before a client call, you could prompt, \"Summarise my emails from Sarah at Acme Corp and pull up our last project brief.\" The AI will compile the key information for you.\n*   **Travel Planning:** Say, \"Find all my flight and hotel bookings for my trip to Perth in October.\" The AI can pull details straight from your email confirmations and calendar.\n*   **Daily Briefings:** Get a personalised \"good morning\" update that includes your top unread emails, today's schedule, and a summary of any urgent project updates from your connected work apps.\n\n## What this means for you\n\n*   **In everyday life**: This means less jumping between different apps to gather information. Your AI can give you a quick overview of your day, help you find personal documents, or even plan events by checking everyone's availability across shared calendars, all from one central place.\n*   **For your business or work**: You can significantly boost your productivity. Instead of manually searching through email threads, shared drives, and project boards, your AI can fetch precise information, summarise long discussions, and even help you draft responses, freeing up valuable time for more strategic tasks.\n*   **If you're just getting started**: Don't feel you need to connect everything at once. Begin by linking one or two apps you use frequently, such as your calendar or email. Pay close attention to the permissions requested and observe how this new capability enhances your daily workflow. You're always in control, and you can easily adjust or remove connections as needed.\n\n## Wrap-up\n\nThe ability to connect your AI tools directly to your personal and professional applications marks a big step towards a more personalised and efficient digital experience. By securely linking your digital life, your AI can provide smarter, context-aware answers and help you manage information more effectively. Take a moment today to explore the \"Connect Apps\" or \"Extensions\" options in your preferred AI tool and try linking just one app – you might be surprised at how much easier your daily tasks become.",
+  "original_title": "Connect more of your apps to Search"
+}

@@ -1,0 +1,39 @@
+{
+  "started_at": "2026-07-19T01:37:53.893Z",
+  "total": 4,
+  "passed": 2,
+  "failed": 2,
+  "auto_check_failed": 2,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.015379400000000001,
+  "by_article": [
+    {
+      "writer": "WRITER_GUIDE_ask-deepseek-to-explain-complex-topics-and-concepts-in-simpl.json",
+      "article": "ARTICLE_GUIDE_ask-deepseek-to-explain-complex-topics-and-concepts-in-simpl.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0045756
+    },
+    {
+      "writer": "WRITER_GUIDE_how-to-turn-a-blurry-photo-into-a-crisp-poster-with-nvidia-a.json",
+      "decision": "FAIL",
+      "reason": "auto-check critical",
+      "skipped_ai": true
+    },
+    {
+      "writer": "WRITER_GUIDE_summarize-long-articles-and-reports-from-the-web-or-document.json",
+      "decision": "FAIL",
+      "reason": "auto-check critical",
+      "skipped_ai": true
+    },
+    {
+      "writer": "WRITER_GUIDE_transcribe-spoken-meetings-or-interviews-into-text-with-ai-f.json",
+      "article": "ARTICLE_GUIDE_transcribe-spoken-meetings-or-interviews-into-text-with-ai-f.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0046575
+    }
+  ],
+  "finished_at": "2026-07-19T01:38:16.862Z",
+  "duration_seconds": 22.969
+}
