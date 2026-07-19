@@ -263,6 +263,58 @@ const UI_SUPPORT = {
 };
 for (const l of SITE_LANGS) Object.assign(UI[l], UI_SUPPORT[l] || {});
 
+// ===================================================================
+// ÜGYFÉLSZOLGÁLAT GYIK (2026-07-20) — a kb.json „site” szekciója.
+// A chat-motor CSAK innen + a guide-listából adhat linket (kitalált URL tilos).
+// ===================================================================
+const CS_FAQ = {
+  en: [
+    { q: 'What is AI World HQ?', a: 'An automated, independent news + guides site that helps everyday people use AI. Content is produced by an AI newsroom with honesty checks, in 5 languages.', p: '/about.html' },
+    { q: 'How do I subscribe to the newsletter?', a: 'Use the newsletter box at the bottom of any page — you will get a confirmation email first.', p: '/' },
+    { q: 'How do I report a mistake in an article?', a: 'Use the 👍/👎 buttons under the article, or send us a message — genuine errors get corrected and republished.', p: '/about.html' },
+    { q: 'Is the site free? How can I support it?', a: 'Everything is free. If you want, you can leave a voluntary tip on the Support page.', p: '/support.html' },
+    { q: 'Where do I find beginner guides?', a: 'The Start page lists the first 5 guides to read, and the Guides page has all of them by topic.', p: '/start.html' },
+    { q: 'What do AI words like prompt or token mean?', a: 'Our AI glossary explains the most common terms in plain language.', p: '/glossary.html' },
+    { q: 'Is there an RSS feed?', a: 'Yes — every language has its own feed.', p: '/feed.xml' }
+  ],
+  hu: [
+    { q: 'Mi az AI World HQ?', a: 'Automata, független hír- és útmutató-oldal, ami a hétköznapi AI-használatban segít. A tartalmat AI-szerkesztőség készíti őszinteség-ellenőrzéssel, 5 nyelven.', p: '/about.html' },
+    { q: 'Hogyan iratkozom fel a hírlevélre?', a: 'Bármelyik oldal alján a hírlevél-dobozzal — először megerősítő emailt kapsz.', p: '/' },
+    { q: 'Hogyan jelezhetek hibát egy cikkben?', a: 'A cikk alatti 👍/👎 gombokkal, vagy írj nekünk — a valódi hibákat javítjuk és újra kiadjuk.', p: '/about.html' },
+    { q: 'Ingyenes az oldal? Hogyan támogathatom?', a: 'Minden ingyenes. Ha szeretnéd, a Támogatás oldalon önkéntes borravalót adhatsz.', p: '/support.html' },
+    { q: 'Hol találom a kezdő útmutatókat?', a: 'A Kezdés oldal az első 5 ajánlott útmutatót mutatja, az Útmutatók oldalon pedig az összes megvan téma szerint.', p: '/start.html' },
+    { q: 'Mit jelentenek az AI-szavak, pl. prompt vagy token?', a: 'Az AI-kisszótárunk közérthetően elmagyarázza a leggyakoribb fogalmakat.', p: '/glossary.html' },
+    { q: 'Van RSS?', a: 'Igen — minden nyelvnek saját feedje van.', p: '/feed.xml' }
+  ],
+  es: [
+    { q: '¿Qué es AI World HQ?', a: 'Un sitio automático e independiente de noticias y guías que te ayuda a usar la IA en el día a día. El contenido lo produce una redacción de IA con controles de honestidad, en 5 idiomas.', p: '/about.html' },
+    { q: '¿Cómo me suscribo al boletín?', a: 'Con la caja de boletín al final de cualquier página — primero recibirás un correo de confirmación.', p: '/' },
+    { q: '¿Cómo aviso de un error en un artículo?', a: 'Con los botones 👍/👎 bajo el artículo, o escríbenos — los errores reales se corrigen y se vuelven a publicar.', p: '/about.html' },
+    { q: '¿El sitio es gratis? ¿Cómo puedo apoyarlo?', a: 'Todo es gratis. Si quieres, puedes dejar una propina voluntaria en la página de Apoyo.', p: '/support.html' },
+    { q: '¿Dónde están las guías para principiantes?', a: 'La página Empezar muestra las 5 primeras guías recomendadas, y en Guías están todas por tema.', p: '/start.html' },
+    { q: '¿Qué significan palabras como prompt o token?', a: 'Nuestro pequeño glosario de IA explica los términos más comunes en lenguaje claro.', p: '/glossary.html' },
+    { q: '¿Hay RSS?', a: 'Sí — cada idioma tiene su propio feed.', p: '/feed.xml' }
+  ],
+  de: [
+    { q: 'Was ist AI World HQ?', a: 'Eine automatische, unabhängige News- und Anleitungsseite, die dir hilft, KI im Alltag zu nutzen. Die Inhalte erstellt eine KI-Redaktion mit Ehrlichkeits-Checks, in 5 Sprachen.', p: '/about.html' },
+    { q: 'Wie abonniere ich den Newsletter?', a: 'Über die Newsletter-Box unten auf jeder Seite — du bekommst zuerst eine Bestätigungs-E-Mail.', p: '/' },
+    { q: 'Wie melde ich einen Fehler in einem Artikel?', a: 'Mit den 👍/👎-Buttons unter dem Artikel, oder schreib uns — echte Fehler werden korrigiert und neu veröffentlicht.', p: '/about.html' },
+    { q: 'Ist die Seite kostenlos? Wie kann ich sie unterstützen?', a: 'Alles ist kostenlos. Wenn du magst, kannst du auf der Unterstützen-Seite ein freiwilliges Trinkgeld geben.', p: '/support.html' },
+    { q: 'Wo finde ich Anleitungen für Einsteiger?', a: 'Die Start-Seite zeigt die ersten 5 empfohlenen Anleitungen, auf der Anleitungen-Seite findest du alle nach Thema.', p: '/start.html' },
+    { q: 'Was bedeuten KI-Wörter wie Prompt oder Token?', a: 'Unser kleines KI-Glossar erklärt die häufigsten Begriffe verständlich.', p: '/glossary.html' },
+    { q: 'Gibt es RSS?', a: 'Ja — jede Sprache hat ihren eigenen Feed.', p: '/feed.xml' }
+  ],
+  fr: [
+    { q: 'Qu’est-ce que AI World HQ ?', a: 'Un site automatique et indépendant d’actus et de guides qui vous aide à utiliser l’IA au quotidien. Le contenu est produit par une rédaction IA avec des contrôles d’honnêteté, en 5 langues.', p: '/about.html' },
+    { q: 'Comment s’abonner à la newsletter ?', a: 'Avec la boîte newsletter en bas de chaque page — vous recevrez d’abord un e-mail de confirmation.', p: '/' },
+    { q: 'Comment signaler une erreur dans un article ?', a: 'Avec les boutons 👍/👎 sous l’article, ou écrivez-nous — les vraies erreurs sont corrigées et republiées.', p: '/about.html' },
+    { q: 'Le site est-il gratuit ? Comment le soutenir ?', a: 'Tout est gratuit. Si vous le souhaitez, vous pouvez laisser un pourboire volontaire sur la page Soutenir.', p: '/support.html' },
+    { q: 'Où trouver les guides pour débutants ?', a: 'La page Commencer présente les 5 premiers guides recommandés, et la page Guides les regroupe tous par thème.', p: '/start.html' },
+    { q: 'Que signifient les mots comme prompt ou token ?', a: 'Notre petit glossaire IA explique les termes les plus courants en langage clair.', p: '/glossary.html' },
+    { q: 'Y a-t-il un flux RSS ?', a: 'Oui — chaque langue a son propre flux.', p: '/feed.xml' }
+  ]
+};
+
 // Folyamat-térkép feliratok (útmutató-oldal tetején lévő lépés-áttekintő)
 const UI_MAP = {
   en: { mapTitle: 'Your roadmap', mapSteps: 'steps' },
@@ -2244,6 +2296,19 @@ function main() {
       u: a.slug, g: a.isGuide ? 1 : 0
     }));
     writeFileSync(join(outBase, 'search.json'), JSON.stringify(searchIndex), 'utf-8');
+    // ÜGYFÉLSZOLGÁLAT kb.json (2026-07-20): guide-ok + GYIK + kisszótár — a
+    // Worker chat-motorja ebből keres és CSAK ebből linkel (kitalált URL tilos).
+    const kbGuides = loc.filter(a => a.isGuide).map(a => ({
+      t: a.title, s: a.subtitle || '', u: `${SITE.url}${LP}/article/${a.slug}`, c: a.company || ''
+    }));
+    const kbSite = (CS_FAQ[lang] || CS_FAQ.en).map(f => ({
+      q: f.q, a: f.a, u: `${SITE.url}${f.p === '/' ? (LP || '/') : LP + f.p}`
+    }));
+    const kbTerms = GLOSSARY.map(t => ({
+      t: (t[lang] || t.en).term, d: (t[lang] || t.en).def, u: `${SITE.url}${LP}/glossary.html`
+    }));
+    writeFileSync(join(outBase, 'kb.json'),
+      JSON.stringify({ v: 1, lang, site: kbSite, guides: kbGuides, terms: kbTerms }), 'utf-8');
     for (const a of loc) {
       const html = a.isGuide ? buildGuidePage(a) : buildArticlePage(a);
       writeFileSync(join(outArticle, `${a.slug}.html`), html, 'utf-8');
