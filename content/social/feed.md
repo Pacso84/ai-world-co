@@ -1,6 +1,100 @@
 # AI World Co. — közösségi posztok
 
-*Generálva: 2026-07-20T11:01:41.582Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+*Generálva: 2026-07-20T17:35:08.287Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## Building a restaurant telephony AI host with Amazon Bedrock AgentCore and Amazon Nova 2 Sonic
+**🔗 https://aiworldhq.com/article/how-an-ai-phone-host-can-transform-your-small-business.html**
+
+**Facebook:**
+Never miss a call again – an AI assistant can answer phones and take orders so your team can focus on serving diners. Find out how it works for small eateries. https://aiworldhq.com/article/how-an-ai-phone-host-can-transform-your-small-business.html #smallbusiness #AI
+
+**Instagram:**
+Your restaurant can answer every call, even when the kitchen's full.
+An AI phone host can take orders and answer FAQs, freeing your staff to focus on the dining floor. Simple set‑up, big impact.
+#restaurant
+#voiceAI
+#customerservice
+#efficiency
+Link in bio.
+
+*Kép-ötlet: A cozy restaurant table with a phone and a subtle soundwave illustration representing a virtual voice assistant.*
+
+---
+
+## Built Technologies builds an AI-powered document intelligence solution on AWS to power agents across real estate finance
+**🔗 https://aiworldhq.com/article/how-ai-can-organise-your-business-documents-effortlessly.html**
+
+**Facebook:**
+Tired of digging through piles of contracts? AI can organise your documents so you can focus on growing your business. https://aiworldhq.com/article/how-ai-can-organise-your-business-documents-effortlessly.html #AIproductivity #SmallBiz
+
+**Instagram:**
+Let AI do the paperwork for you.
+Turn invoices, contracts and reports into searchable files in seconds. Spend less time hunting and more time serving clients.
+#documentmanagement
+#AItools
+#workflowautomation
+#SmallBusiness
+#Productivity
+Link in bio.
+
+*Kép-ötlet: A tidy office desk with a laptop screen showing digital folders, while a small stack of papers subtly fades away.*
+
+---
+
+## Uncertainty Quantification for LLM Function-Calling
+**🔗 https://aiworldhq.com/article/when-your-ai-takes-action-understanding-its-confidence-befor.html**
+
+**Facebook:**
+Want your AI assistant to double‑check before it moves money or deletes files? This article shows how new tools gauge their confidence, so you can trust the outcome. https://aiworldhq.com/article/when-your-ai-takes-action-understanding-its-confidence-befor.html #AISafety #TrustworthyAI
+
+**Instagram:**
+Can your AI know when it's unsure?
+Learn how the latest models measure confidence before acting, keeping your data safe and your decisions sound.
+#AISafety
+#AItrust
+#TechExplained
+Link in bio.
+
+*Kép-ötlet: A friendly digital assistant icon with a thought bubble containing a checkmark and a question mark.*
+
+---
+
+## The skills gap behind agentic AI — and how Databricks is closing it with a new context engineer certification and agent trainings
+**🔗 https://aiworldhq.com/article/understanding-ai-agents-and-how-they-can-help-you-at-work.html**
+
+**Facebook:**
+Ever wish you had a helper that could actually finish a report or schedule meetings for you? Learn how AI agents can take on those multi‑step tasks and what Databricks is doing to train people to use them. https://aiworldhq.com/article/understanding-ai-agents-and-how-they-can-help-you-at-work.html #AIproductivity #WorkSmart
+
+**Instagram:**
+Your new AI assistant that does the heavy lifting
+
+Find out how AI agents can automate routine work and how you can get certified to make the most of them.
+
+#AIagents
+#Productivity
+Link in bio.
+
+*Kép-ötlet: A calm office desk with a laptop screen showing a simple flowchart of tasks being auto‑completed by an AI assistant.*
+
+---
+
+## Unified context: The missing layer for enterprise AI coworkers
+**🔗 https://aiworldhq.com/article/how-an-ai-with-unified-context-can-streamline-your-work.html**
+
+**Facebook:**
+Imagine an AI that remembers the context of all your projects, so you can get straight to the right answer without flipping through emails and docs. It could save you time each day. https://aiworldhq.com/article/how-an-ai-with-unified-context-can-streamline-your-work.html #productivity #AIassistants
+
+**Instagram:**
+What if your AI could see the whole picture?
+A unified‑context assistant links your emails, docs and chats, helping you finish tasks faster and with less juggling.
+#productivity
+#AIassistant
+#worksmarter
+Link in bio.
+
+*Kép-ötlet: A tidy desk with a computer screen showing icons for email, document and chat apps subtly linked together.*
 
 ---
 

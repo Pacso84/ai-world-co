@@ -1,0 +1,50 @@
+{
+  "started_at": "2026-07-20T17:23:28.847Z",
+  "total": 6,
+  "passed": 1,
+  "failed": 5,
+  "auto_check_failed": 5,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.005765300000000001,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-07-20T17-22-07-516Z_openai-blog_Safety_and_alignment_in_an_era_of_long-horizon_mod.json",
+      "decision": "FAIL",
+      "reason": "auto-check critical",
+      "skipped_ai": true
+    },
+    {
+      "writer": "WRITER_2026-07-20T17-22-07-517Z_aws-ml_Build_specialized_agent_workflows_for_your_busines.json",
+      "decision": "FAIL",
+      "reason": "auto-check critical",
+      "skipped_ai": true
+    },
+    {
+      "writer": "WRITER_2026-07-20T17-22-07-517Z_aws-ml_Evolving_from_legacy_BI_to_agentic_AI_at_Tradeshif.json",
+      "decision": "FAIL",
+      "reason": "auto-check critical",
+      "skipped_ai": true
+    },
+    {
+      "writer": "WRITER_2026-07-20T17-22-07-517Z_aws-ml_How_Couchbase_built_a_multi-model_AI_architecture_.json",
+      "article": "ARTICLE_2026-07-20T17-22-07-517Z_aws-ml_How_Couchbase_built_a_multi-model_AI_architecture_.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0033375
+    },
+    {
+      "writer": "WRITER_2026-07-20T17-22-07-517Z_nvidia-blog_At_SIGGRAPH__NVIDIA_Advances_Graphics_and_Simulati.json",
+      "decision": "FAIL",
+      "reason": "auto-check critical",
+      "skipped_ai": true
+    },
+    {
+      "writer": "WRITER_2026-07-20T17-22-07-518Z_databricks_The_three_ways_AI_unlocks_transformation_in_Retail.json",
+      "decision": "FAIL",
+      "reason": "auto-check critical",
+      "skipped_ai": true
+    }
+  ],
+  "finished_at": "2026-07-20T17:23:38.396Z",
+  "duration_seconds": 9.549
+}
