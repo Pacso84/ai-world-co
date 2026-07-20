@@ -12,8 +12,10 @@ compatibility_flags = ["nodejs_compat"]
 #   wrangler secret put WEBHOOK_SECRET
 [vars]
 GH_REPO = "Pacso84/ai-world-co"
-# Ügyfélszolgálat worker-oldali kill-switch (2026-07-20): "false" → /chat,/contact,email 503/eldob
-CS_ENABLED = "true"
+# Ügyfélszolgálat worker-oldali kill-switch (2026-07-20): "false" → /chat,/contact,email 503/eldob.
+# NYUGALMI ÁLLAPOT = "false" (végső review I1): a végpontok zárva; az élesítés
+# TUDATOS lépése ezt "true"-ra állítja + valódi Turnstile-secret + site-widget bekapcsolás.
+CS_ENABLED = "false"
 
 # Olvasói 👍/👎 visszajelzés tárolója (2026-07-07)
 [[kv_namespaces]]
