@@ -100,6 +100,10 @@ export async function handleChat(request, env) {
     if (!(await verifyTurnstile(env, body.token, ip))) return j({ error: 'turnstile' }, 403, h);
     sessionId = crypto.randomUUID();
     sess = '0';
+    // A munkamenetet AZONNAL rögzítjük (végső review I3): ha az első kérés
+    // limitbe ütközik, a visszaadott sessionId létező legyen — a retry NE
+    // kérjen újra Turnstile-t (az már elhasznált token → 403 lenne).
+    await env.FEEDBACK.put(`cs:sess:${sessionId}`, '0', { expirationTtl: 3600 });
   }
   const sessCount = parseInt(sess, 10);
   if (sessCount >= SESSION_MAX) return j({ limit: true, answer: LIMIT_MSG[lang], links: [], escalate: true, sessionId }, 429, h);
@@ -132,11 +136,17 @@ export async function handleContact(request, env) {
   const lang = LANGS.includes(body.lang) ? body.lang : 'en';
   const name = String(body.name || '').trim().slice(0, 80);
   const ip = request.headers.get('CF-Connecting-IP') || '0.0.0.0';
+  const iph = await hashIp(ip);
   if (!(await verifyTurnstile(env, body.token, ip))) return j({ error: 'turnstile' }, 403, h);
+  // Napi IP-limit (végső review I2): a kapcsolat-űrlap ugyanabból a napi
+  // IP-keretből fogyaszt, mint a chat — anti-flood a Telegram/KV felé.
+  const ipCount = parseInt(await env.FEEDBACK.get(`cs:ip:${iph}:${dayKey()}`) || '0', 10);
+  if (ipCount >= IP_DAILY_MAX) return j({ error: 'limit', ok: false }, 429, h);
 
   const ts = Date.now();
   await env.FEEDBACK.put(`cs:msg:${ts}`, JSON.stringify({ email, name, message, lang, ts }), { expirationTtl: 2592000 }); // 30 nap
   await bumpCs(env, 'esc');
   await tg(env, env.OWNER_CHAT_ID, `📝 ÚJ ÜGYFÉL-ÜZENET (űrlap, ${lang})\nFeladó: ${name ? name + ' — ' : ''}${email}\n\n${message.slice(0, 600)}\n\n(Válasz: sima email a feladónak.)`);
+  await bump(env, `cs:ip:${iph}:${dayKey()}`, 172800);
   return j({ ok: true }, 200, h);
 }

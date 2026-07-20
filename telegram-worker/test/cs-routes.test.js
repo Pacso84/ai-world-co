@@ -98,6 +98,30 @@ try {
     const r = await handleContact(req('/contact', { email: 'nem-email', message: 'x', lang: 'en', web: '', token: 'good-token' }), baseEnv());
     assert.equal(r.status, 400);
   }
+  // 8) I2: /contact napi IP-limit — 10 után 429, AI/Telegram nélkül
+  {
+    const env = baseEnv();
+    globalThis.__tgSent = 0;
+    let last;
+    for (let i = 0; i < 11; i++) {
+      last = await handleContact(req('/contact', { email: 'a@b.hu', message: 'm' + i, lang: 'hu', web: '', token: 'good-token' }), env);
+    }
+    assert.equal(last.status, 429, '11. contact ugyanarról az IP-ről = 429');
+  }
+  // 9) I3: limit-429 után a visszaadott sessionId LÉTEZIK — retry nem kér Turnstile-t (nem 403)
+  {
+    const env = baseEnv();
+    const day = new Date().toISOString().slice(0, 10);
+    await env.FEEDBACK.put(`cs:global:${day}`, '300');
+    const r1 = await handleChat(req('/chat', { message: 'hello', lang: 'en', token: 'good-token' }), env);
+    assert.equal(r1.status, 429);
+    const { sessionId } = await r1.json();
+    assert.ok(sessionId, 'kapott sessionId-t a 429-en');
+    // retry UGYANAZZAL a sessionId-vel, token NÉLKÜL → NEM 403 (a session létezik), marad 429
+    const r2 = await handleChat(req('/chat', { message: 'again', lang: 'en', sessionId }), env);
+    assert.notEqual(r2.status, 403, 'a perzisztált session miatt nincs Turnstile-403');
+    assert.equal(r2.status, 429, 'globális limit miatt marad 429');
+  }
   console.log('✅ cs-routes.test: minden átment');
 } finally {
   globalThis.fetch = realFetch;
