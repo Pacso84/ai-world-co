@@ -1108,7 +1108,7 @@ function pageShell({ title, description, bodyContent, isArticle = false, noIntro
     </div>
   </footer>
   ${CS.enabled ? `<button id="cs-fab" class="cs-fab" aria-label="${escapeHtml(tr('csOpen'))}">💬<span class="cs-fab__t">${escapeHtml(tr('csOpen'))}</span></button>
-  <script>window.__csCfg={base:'${CS.base}',key:'${CS.key}',lang:'${LANG}',ui:${JSON.stringify({ title: tr('csTitle'), hello: tr('csHello'), ph: tr('csPlaceholder'), send: tr('csSend'), human: tr('csHuman'), formT: tr('csFormT'), name: tr('csName'), email: tr('csEmail'), msg: tr('csMsg'), submit: tr('csSubmit'), ok: tr('csOk'), err: tr('csErr'), privacy: tr('csPrivacy'), thinking: tr('csThinking') })}};</script>
+  <script>window.__csCfg={base:'${CS.base}',key:'${CS.key}',lang:'${LANG}',ui:${JSON.stringify({ title: tr('csTitle'), hello: tr('csHello'), ph: tr('csPlaceholder'), send: tr('csSend'), human: tr('csHuman'), formT: tr('csFormT'), name: tr('csName'), email: tr('csEmail'), msg: tr('csMsg'), submit: tr('csSubmit'), ok: tr('csOk'), err: tr('csErr'), privacy: tr('csPrivacy'), thinking: tr('csThinking') }).replace(/</g, '\\u003c')}};</script>
   <script defer src="/assets/chat.js?v=${ASSET_V}"></script>` : ''}
   <script src="/assets/vendor/aos.js?v=${ASSET_V}"></script>
   <script src="/assets/app.js?v=${ASSET_V}"></script>

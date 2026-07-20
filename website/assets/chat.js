@@ -5,7 +5,11 @@
   'use strict';
   var cfg = window.__csCfg; if (!cfg) return;
   var fab = document.getElementById('cs-fab');
-  var panel = null, log = null, sessionId = sessionStorage.getItem('csSess') || '', tsToken = '', tsReady = false;
+  // Turnstile-tokenek EGYSZER használatosak (a Worker verifyTurnstile elfogyasztja
+  // az első /chat vagy /contact hívásnál) — ezért a chat-panel, a beépített
+  // about-űrlap és a panel-mini-űrlap MINDHÁROM a SAJÁT tokenjét tartja.
+  var panel = null, log = null, sessionId = sessionStorage.getItem('csSess') || '';
+  var tsToken = '', formTsToken = '', miniTsToken = '';
 
   function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text) e.textContent = text; return e; }
 
@@ -20,7 +24,7 @@
     loadTurnstile(function () {
       window.turnstile.render(container, {
         sitekey: cfg.key, appearance: 'interaction-only',
-        callback: function (t) { tsToken = t; tsReady = true; cb && cb(); }
+        callback: function (t) { cb && cb(t); }
       });
     });
   }
@@ -39,19 +43,24 @@
   }
 
   function showForm() {
+    // Idempotens: ha a mini-űrlap már létrejött, csak megmutatjuk — a MEGLÉVŐ
+    // (még fel nem használt) miniTsToken-t nem cseréljük, nem renderelünk újra Turnstile-t.
     var f = panel.querySelector('.cs-panel__form'); if (f) { f.hidden = false; return; }
     f = el('div', 'cs-panel__form');
     f.innerHTML = '<input type="email" placeholder="' + cfg.ui.email + '" maxlength="120">' +
       '<textarea placeholder="' + cfg.ui.msg + '" maxlength="2000" rows="3"></textarea>' +
+      '<input type="text" class="cs-hp" tabindex="-1" autocomplete="off" aria-hidden="true">' +
+      '<div class="cs-ts cs-mini-ts"></div>' +
       '<button type="button">' + cfg.ui.submit + '</button><p class="cs-status" aria-live="polite"></p>';
     panel.appendChild(f);
+    renderTs(f.querySelector('.cs-mini-ts'), function (t) { miniTsToken = t; });
     f.querySelector('button').addEventListener('click', function () {
       var email = f.querySelector('input').value.trim(), msg = f.querySelector('textarea').value.trim();
       var st = f.querySelector('.cs-status');
       if (!email || !msg) return;
       fetch(cfg.base + '/contact', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email, message: msg, lang: cfg.lang, web: '', token: tsToken })
+        body: JSON.stringify({ email: email, message: msg, lang: cfg.lang, web: f.querySelector('.cs-hp').value, token: miniTsToken })
       }).then(function (r) { st.textContent = r.ok ? cfg.ui.ok : cfg.ui.err; if (r.ok) { f.querySelector('textarea').value = ''; } })
         .catch(function () { st.textContent = cfg.ui.err; });
     });
@@ -93,7 +102,7 @@
     panel.appendChild(head); panel.appendChild(log); panel.appendChild(row); panel.appendChild(human); panel.appendChild(tsBox);
     document.body.appendChild(panel);
     addMsg('cs-msg--bot', cfg.ui.hello);
-    renderTs(tsBox);
+    renderTs(tsBox, function (t) { tsToken = t; });
     btn.addEventListener('click', function () { send(input); });
     input.addEventListener('keydown', function (e) { if (e.key === 'Enter') send(input); });
     human.addEventListener('click', showForm);
@@ -103,7 +112,7 @@
   // Az about-oldal beépített űrlapja (ha van az oldalon)
   var pf = document.getElementById('cs-form');
   if (pf) {
-    renderTs(document.getElementById('cs-form-ts'));
+    renderTs(document.getElementById('cs-form-ts'), function (t) { formTsToken = t; });
     pf.addEventListener('submit', function (e) {
       e.preventDefault();
       var st = pf.querySelector('.cs-status');
@@ -111,7 +120,7 @@
         method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           name: pf.name.value.trim(), email: pf.email.value.trim(),
-          message: pf.message.value.trim(), lang: cfg.lang, web: pf.web.value, token: tsToken
+          message: pf.message.value.trim(), lang: cfg.lang, web: pf.web.value, token: formTsToken
         })
       }).then(function (r) { st.textContent = r.ok ? cfg.ui.ok : cfg.ui.err; if (r.ok) pf.reset(); })
         .catch(function () { st.textContent = cfg.ui.err; });
