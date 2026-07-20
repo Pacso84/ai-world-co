@@ -113,5 +113,32 @@
         "The article refers to a specific AI capability within Google Vids as \"Gemini Omni.\" While Google Vids is a real product powered by Gemini, there is no publicly announced or recognized AI capability specifically *called* \"Gemini Omni\" associated with Google Vids or the broader Gemini suite. The phrasing suggests a specific, named feature that does not exist."
       ]
     }
+  ],
+  "2026-07-20": [
+    {
+      "at": "2026-07-20T01:57:21.895Z",
+      "file": "WRITER_2026-07-17T01-43-42-625Z_google-workspace_Generate_higher_quality_AI_video_clips_and_edit_an.json",
+      "action": "block",
+      "reasons": [
+        "The article implies that Google Vids directly 'generates a video clip' with 'better realism and even improved text rendering (how clearly words appear within the video)' from a simple text prompt. While Google Vids is an AI-powered video creation app that uses text prompts to generate storyboards, drafts, and voiceovers, it primarily assists in assembling and creating videos using existing or stock media and AI-generated elements, rather than generating novel, realistic video footage with embedded text from scratch as a pure text-to-video model would. This misrepresents its core generative capabilities for visual content."
+      ]
+    },
+    {
+      "at": "2026-07-20T02:00:10.176Z",
+      "file": "WRITER_GUIDE_create-your-own-custom-gpt-in-chatgpt-no-coding.json",
+      "action": "block",
+      "reasons": [
+        "The article describes a \"Preview\" tab on the right side of the screen in Step 2. In ChatGPT's custom GPT builder interface, there is a \"Preview\" *panel* on the right, not a tab.",
+        "In Step 2, the article states \"If it looks different: The two sections might be labelled 'Build' and 'Configure,' or simply 'Create' and 'Test.'\" While 'Create' and 'Configure' are the actual tab labels, 'Build' and 'Test' are not alternative labels for the main tabs in the custom GPT builder UI."
+      ]
+    },
+    {
+      "at": "2026-07-20T02:04:12.695Z",
+      "file": "WRITER_GUIDE_categorize-customer-feedback-from-online-forms-with-cohere.json",
+      "action": "block",
+      "reasons": [
+        "The article instructs users to \"Select the 'Generate' model\" within the Cohere Playground. 'Generate' is not a specific model name available for selection in the Cohere Playground/Workbench UI. Users typically select models like 'Command' or 'Command-R' to perform text generation tasks, including classification."
+      ]
+    }
   ]
 }

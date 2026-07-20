@@ -1,0 +1,58 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "analyse-a-spreadsheet-by-chatting-with-ai-on-your-phone",
+    "company": "",
+    "tool": "",
+    "icon": "🤖",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-07-20T01:59:14.187Z",
+    "writer_provider": "google",
+    "writer_model": "gemini-2.5-flash",
+    "writer_cost_usd": 0.0134902,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-07-20T01:59:42.033Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1248
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "This guide is exceptionally clear and well-structured, providing excellent instruction for",
+      "_salvaged": true,
+      "_aiCost": 0.004599300000000001,
+      "_provider": "google",
+      "_model": "gemini-2.5-flash",
+      "_attempts": 1
+    },
+    "seo": {
+      "meta_description": "Discover how to use AI on your phone to analyse spreadsheets effortlessly. Get insights from your data instantly without needing complex formulas.",
+      "keywords": [
+        "analyse spreadsheet with AI on phone",
+        "how to use AI for data analysis",
+        "AI read excel on phone",
+        "chat with spreadsheets mobile",
+        "free AI assistant for data analysis",
+        "understand data without formulas",
+        "upload spreadsheet to AI"
+      ],
+      "seo_score": 9,
+      "suggestions": [
+        "Add specific example questions users can ask the AI, such as 'What is my total monthly spend?', to help beginners start.",
+        "Clarify which file formats (like CSV or Excel) are supported by the assistants mentioned in the article."
+      ],
+      "optimised_at": "2026-07-20T02:04:54.685Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Analyse a Spreadsheet by Chatting with AI on Your Phone\"\nsubtitle: \"Effortlessly get insights from your data using a free AI assistant on your mobile, no complex formulas required.\"\ncategory: \"guide\"\naudience: \"both\"\ncompany: \"\"\ntool: \"\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"data analysis\", \"mobile AI\", \"spreadsheets\", \"getting-started\"]\n---\n\n# Analyse a Spreadsheet by Chatting with AI on Your Phone\n\nEver wished you could understand your sales figures or household budget without wrestling with complex formulas? This guide will show you how to upload a spreadsheet to a free AI assistant on your phone and ask plain-English questions about your numbers, turning data into easy-to-understand insights. It's perfect for anyone who wants to make sense of their information quickly, whether for work or personal life.\n\n## Before you start\n-   A smartphone or tablet with an internet connection.\n-   A free account with an AI assistant that supports file uploads, such as ChatGPT, Gemini, or Copilot. You can access these via their dedicated apps or your phone's web browser.\n-   A spreadsheet file you want to analyse, saved on your phone (e.g., a `.csv` or `.xlsx` file).\n-   Rough total time: 10-15 minutes.\n\n## Step 1 — Prepare your spreadsheet\nStart by making sure your spreadsheet is ready. Open the file on your phone (or a computer, if it's easier to edit there first). Look for clear headings at the top of each column, like \"Date,\" \"Item,\" or \"Amount.\" Also, check for any empty rows or columns that don't contain data, as these can confuse the AI. Ensure your numbers are formatted as numbers and not text if possible.\n\nYou'll know it worked when you have a clean spreadsheet, with a header row and no major gaps, saved as a `.csv` (Comma Separated Values — a simple text file that stores data in a table form, with commas separating each piece of information) or `.xlsx` (the standard file format for Microsoft Excel spreadsheets) file on your device.\n\n## Step 2 — Open your AI assistant\nNow, open your preferred AI assistant on your phone. You can usually do this by launching its dedicated app (like the ChatGPT app or Gemini app) or by opening your phone's web browser (like Chrome or Safari) and navigating to the assistant's website (e.g., chat.openai.com, gemini.google.com, copilot.microsoft.com). Look for the chat interface where you would normally type your questions.\n\nIf it looks different: Some AI apps might have a dedicated \"New Chat\" button or a blank conversation waiting. Just ensure you're in a fresh conversation where you can type.\nYou'll know it worked when you see a blank chat window, usually with a text box at the bottom, ready for you to type your first message.\n\n## Step 3 — Upload the spreadsheet\nNext, you need to send your spreadsheet to the AI. In the chat window, look for an attachment icon, often shaped like a paperclip or a plus (+) symbol, near the text input box. Tap this icon. Your phone's file picker will appear, allowing you to browse your device. Navigate to where you saved your spreadsheet file from Step 1 and select it.\n\nIf it looks different: Some assistants might have an \"Upload file\" button or a dedicated \"Data Analysis\" mode. Just look for any option that lets you attach a document.\nYou'll know it worked when you see the file name appear in the chat input area, perhaps with a small icon next to it, indicating it's ready to be sent.\n\n## Step 4 — Ask your first question\nWith your file uploaded, it's time to ask the AI about your data. Type a simple, clear question into the text box. This is your **prompt** (the instruction or question you give to an AI). The AI will process your spreadsheet and try to give you an answer. Start broad, then get specific. Remember, the AI can't take action on your data directly, like sending emails or updating other systems; it only analyses and summarises.\n\n💬 Example: `What is the total sales amount from this data?`\nYou'll know it worked when the AI starts typing a response, usually summarising or calculating based on your question, often within a few seconds.\n\n## Step 5 — Refine your questions\nOnce you have an initial answer, you can dig deeper. Continue the conversation by asking follow-up questions about the same spreadsheet. The AI remembers the context of your previous questions, so you don't need to re-upload the file. You can ask for averages, highest/lowest values, or even trends over time. This process is called **data analysis** (looking at data to find patterns, trends, or useful information).\n\n💬 Example: `Which product had the highest sales in Q1?` or `Can you show me the average price for each item?`\nYou'll know it worked when the AI provides more detailed or specific answers based on your new questions, building on the information it already extracted.\n\n## Step 6 — Interpret the results\nThe AI will present its findings in plain language, sometimes with bullet points or simple tables. Take a moment to read and understand the answers. If something isn't clear, don't hesitate to ask for clarification, like \"Can you explain what that means in simpler terms?\" or \"Can you break down the numbers for April?\" Remember that while AI is powerful, it can sometimes **hallucinate** (confidently make something up) or misinterpret complex data, so always double-check critical information, especially if you're making important decisions.\n\nYou'll know it worked when you feel you understand the insights the AI has provided, and can use that information effectively.\n\n## Common mistakes\n-   **Uploading messy data**: If your spreadsheet has inconsistent headings, empty rows, or mixed data types, the AI might struggle to understand it.\n    *   **Fix**: Always clean your spreadsheet first. Ensure consistent headers, remove blank rows, and format numbers correctly before uploading.\n-   **Asking vague questions**: Prompts like \"Tell me about this data\" are too broad for a useful response.\n    *   **Fix**: Be specific! Ask \"What is the average customer spending?\" or \"Which month had the most new sign-ups?\" The more precise your question, the better the answer.\n-   **Expecting 100% accuracy without verification**: AI is a tool to assist, but it can make mistakes, especially with complex numerical tasks or if the data itself is flawed.\n    *   **Fix**: Always review the AI's calculations and insights, especially for critical decisions. If a number seems off, ask the AI to re-explain its calculation or check the raw data yourself.\n\n## What this means for you\n-   **In everyday life:** You can easily track and understand your personal finances, like analysing your monthly expenses, comparing utility bills, or planning a holiday budget by uploading a simple list of costs.\n-   **For your business or work:** You can quickly get a pulse on key performance indicators (KPIs) from sales reports, customer feedback surveys, or inventory lists without needing advanced spreadsheet skills. Ask it to summarise customer reviews or identify top-selling products.\n-   **If you're just getting started:** Try uploading a simple shopping list with prices and ask the AI to calculate the total cost, or which item is the most expensive per unit.\n\n## Try it now\nGrab a simple list of items you bought last week and their prices, then put it into a basic spreadsheet (two columns: \"Item\" and \"Price\"). Upload it to your chosen AI assistant and ask: \"What was the total cost of my shopping last week, and which item was the most expensive?\"",
+  "original_title": "Analyse a Spreadsheet by Chatting with AI on Your Phone"
+}

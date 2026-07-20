@@ -1,6 +1,115 @@
 # AI World Co. — közösségi posztok
 
-*Generálva: 2026-07-19T16:49:57.976Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+*Generálva: 2026-07-20T02:18:35.561Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## Now available: group conversations with external collaborators in Google Chat
+**🔗 https://aiworldhq.com/article/how-to-set-up-group-chats-with-external-partners-in-google-c.html**
+
+**Facebook:**
+Simplify project updates by adding freelancers and clients to the same Google Chat group – no more juggling emails. Find out how in just a few minutes https://aiworldhq.com/article/how-to-set-up-group-chats-with-external-partners-in-google-c.html #GoogleChat #Collaboration
+
+**Instagram:**
+Tired of endless email threads? 
+Create a single Google Chat group that includes anyone outside your org and keep everyone on the same page.
+#googlechat
+#productivity
+#teamwork
+Link in bio.
+
+*Kép-ötlet: A laptop screen showing a Google Chat window with several participants, surrounded by a coffee cup and a notebook.*
+
+---
+
+## Built Technologies builds an AI-powered document intelligence solution on AWS to power agents across real estate finance
+**🔗 https://aiworldhq.com/article/transforming-paperwork-how-ai-can-understand-your-documents.html**
+
+**Facebook:**
+Swamped by contracts and invoices? AI can pull the key details for you, so you can focus on the client. https://aiworldhq.com/article/transforming-paperwork-how-ai-can-understand-your-documents.html #aitech #realestate
+
+**Instagram:**
+Paperwork piling up?
+Let AI read your documents and surface the important data, cutting hours of manual searching.
+#documentAI
+#businessproductivity
+#realestatefinance
+Link in bio.
+
+*Kép-ötlet: A tidy desk where a stack of papers gradually transforms into a digital cloud, hinting at AI‑driven document processing.*
+
+---
+
+## GPT-Red: Unlocking Self-Improvement for Robustness
+**🔗 https://aiworldhq.com/article/why-ais-are-getting-smarter-at-not-being-tricked.html**
+
+**Facebook:**
+Ever wonder why some AI replies feel off? New research shows how these systems are learning to test themselves, so they're less likely to be fooled and more reliable for everyday use. https://aiworldhq.com/article/why-ais-are-getting-smarter-at-not-being-tricked.html #AISafety #TrustworthyAI
+
+**Instagram:**
+AI that catches its own mistakes
+Developers are teaching models to spot prompt tricks, meaning you get safer, more reliable answers each time you ask.
+#AI
+#Safety
+#PromptInjection
+#TechTips
+Link in bio.
+
+*Kép-ötlet: A laptop screen displaying a chat with a friendly AI icon and a subtle shield symbol in the corner, suggesting protection.*
+
+---
+
+## Why teens deserve access to safe AI
+**🔗 https://aiworldhq.com/article/how-young-people-can-use-ai-safely-for-learning-and-creativi.html**
+
+**Facebook:**
+Want your teen to get a boost with school projects without the worry? Our guide shows simple steps to use AI safely at home. https://aiworldhq.com/article/how-young-people-can-use-ai-safely-for-learning-and-creativi.html #AISafety #Parenting
+
+**Instagram:**
+Safe AI for teens – they can create, you can relax.
+Quick tips to help your teen explore ideas responsibly, from brainstorming to hobby projects. Keep learning fun and secure.
+#AISafety
+#Teens
+#Education
+#ResponsibleAI
+Link in bio.
+
+*Kép-ötlet: A teen sitting at a desk with a laptop, looking curious, while a parent watches nearby.*
+
+---
+
+## How Cars24 scales conversations and builds faster with OpenAI
+**🔗 https://aiworldhq.com/article/how-ai-agents-are-streamlining-business-communication.html**
+
+**Facebook:**
+Tired of missing customer chats? AI agents can answer common questions instantly and help your team finish tasks faster. Find out how Cars24 did it. https://aiworldhq.com/article/how-ai-agents-are-streamlining-business-communication.html #AIProductivity #CustomerService
+
+**Instagram:**
+Never miss a customer query again 🌟
+Cars24 uses AI agents to reply instantly and speed up internal work, freeing up time for people.
+#AIagents
+#BusinessEfficiency
+#CustomerSupport
+Link in bio.
+
+*Kép-ötlet: A tidy office desk with a laptop showing a chat window and a subtle AI symbol beside it.*
+
+---
+
+## GPT-Red: Unlocking Self-Improvement for Robustness
+**🔗 https://aiworldhq.com/article/why-ai-is-getting-smarter-at-spotting-its-own-weaknesses.html**
+
+**Facebook:**
+It’s annoying when AI gets things wrong, but new tech is helping models find and fix their own mistakes. Read how this makes your AI tools much more reliable to use. https://aiworldhq.com/article/why-ai-is-getting-smarter-at-spotting-its-own-weaknesses.html #AISafety #AI
+
+**Instagram:**
+Imagine if AI could tell when it’s making a mistake and fix it before you even noticed. New developments are helping systems do just that, making them safer and more trustworthy for us all.
+
+#AISafety #TechExplained #AIUpdate #FutureTech
+
+Link in bio.
+
+*Kép-ötlet: A person smiling at their laptop screen in a sunlit room.*
 
 ---
 

@@ -1,0 +1,27 @@
+{
+  "started_at": "2026-07-20T02:04:01.296Z",
+  "total": 3,
+  "passed": 1,
+  "failed": 1,
+  "auto_check_failed": 1,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.0167983,
+  "by_article": [
+    {
+      "writer": "WRITER_GUIDE_brainstorm-creative-story-prompts-for-your-hobby-novel-using.json",
+      "decision": "FAIL",
+      "reason": "auto-check critical",
+      "skipped_ai": true
+    },
+    {
+      "writer": "WRITER_GUIDE_practice-a-new-language-or-presentation-with-claude-for-inst.json",
+      "article": "ARTICLE_GUIDE_practice-a-new-language-or-presentation-with-claude-for-inst.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0046858
+    }
+  ],
+  "truth_blocked": 1,
+  "finished_at": "2026-07-20T02:04:32.935Z",
+  "duration_seconds": 31.639
+}

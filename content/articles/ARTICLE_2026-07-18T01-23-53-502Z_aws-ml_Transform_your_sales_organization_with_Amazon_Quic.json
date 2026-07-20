@@ -1,0 +1,60 @@
+{
+  "_meta": {
+    "written_at": "2026-07-20T01:56:58.466Z",
+    "writer_provider": "google",
+    "writer_model": "gemini-2.5-flash",
+    "writer_cost_usd": 0.008460700000000002,
+    "original_draft": "2026-07-18T01-23-53-502Z_aws-ml_Transform_your_sales_organization_with_Amazon_Quic.json",
+    "source_id": "aws-ml",
+    "source_name": "AWS Machine Learning (hivatalos)",
+    "source_link": "https://aws.amazon.com/blogs/machine-learning/transform-your-sales-organization-with-amazon-quick-your-new-agentic-ai-teammate/",
+    "status": "published",
+    "rejected_at": "2026-07-18T01:24:20.603Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 742
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "This article is well-structured, engaging, and explains AI agents clearly for an everyday audience, aligning perfectly with our brand voice and Australian English standards.",
+      "_aiCost": 0.0031201999999999996,
+      "_provider": "google",
+      "_model": "gemini-2.5-flash",
+      "_attempts": 1
+    },
+    "reason": "Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-07-18T01-23-53-502Z_aws-ml_Transform_your_sales_organization_with_Amazon_Quic.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-07-20T01:57:28.448Z",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-07-20T01:57:40.823Z",
+    "guide_worthy": false,
+    "pairing_reason": "The article is a generic explainer about the concept of AI agents, not a specific named tool or feature available for use today.",
+    "seo": {
+      "meta_description": "Discover how AI agents work as your new digital teammate. Learn to automate routine tasks and save time with this simple guide to smart AI tools.",
+      "keywords": [
+        "what is an AI agent",
+        "AI agents for work",
+        "digital teammate",
+        "automate routine tasks",
+        "how AI agents work",
+        "AI assistant vs agent"
+      ],
+      "seo_score": 7,
+      "suggestions": [
+        "Add concrete examples of popular AI agents (like Zapier or AutoGPT) to help readers visualize the concept.",
+        "Explain the specific difference between a chatbot and an AI agent to clarify the term.",
+        "Include a practical list of daily tasks AI agents can handle for specific job roles."
+      ],
+      "optimised_at": "2026-07-20T02:04:47.916Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Understanding AI Agents: Your New Digital Teammate at Work\"\nsubtitle: \"Learn how these smart AI programs can handle routine tasks, keep you organised, and free up your time for important work.\"\ncategory: \"explainer\"\naudience: \"business\"\nread_time_minutes: 4\ntags: [\"ai-agents\", \"productivity\", \"work-automation\", \"business-ai\"]\n---\n\n# Understanding AI Agents: Your New Digital Teammate at Work\n\nImagine having a digital assistant that doesn't just respond to your commands but can actually *take initiative*, making sure your routine work tasks get done without you constantly reminding it. This isn't science fiction; it's the emerging world of AI agents, and they're set to transform how many of us approach our daily jobs.\n\n## What is an AI Agent?\n\nAt its core, an **AI agent** is a sophisticated artificial intelligence program that can understand complex goals, plan a series of steps to achieve them, and even use various tools and applications to execute those steps. Think of it less like a calculator that just gives you answers and more like a proactive assistant who knows what needs doing and then goes and does it.\n\nUnlike a standard **large language model (LLM)**, which is brilliant at generating text or answering questions but waits for your next prompt (the instruction you give to the AI), an AI agent is designed with an extra layer of capability. This \"agentic\" ability allows it to break down a bigger task into smaller, manageable sub-tasks, work through them, and even self-correct if it hits a roadblock, much like a human would.\n\n## How AI Agents are Changing the Way We Work\n\nThese clever programs are starting to take on tasks that typically eat into valuable human time, especially in professional settings. Here are a few ways they can help:\n\n*   **Automating Routine Admin**: Imagine an AI agent monitoring your inbox for specific requests, drafting replies, and even adding entries to your customer relationship management (CRM) system (a database used to manage customer interactions). This frees you from repetitive data entry.\n*   **Managing Information**: AI agents can sift through vast amounts of information – like market reports or client documents – to pull out key insights, summarise them, and even highlight potential opportunities or risks.\n*   **Proactive Scheduling and Follow-ups**: An agent could identify when a follow-up email is due, draft it based on previous conversations, and even suggest a meeting time, integrating with your calendar directly. It essentially becomes a digital \"nag\" (in the best possible way) to keep things moving.\n*   **Streamlining Workflows**: For complex processes involving multiple steps and different tools, an AI agent can act as an orchestrator, ensuring each step is completed in the right order and passing information between different software applications seamlessly.\n\nThe real power lies in their ability to *act* rather than just *react*. Instead of you instructing an AI to \"write this email,\" you might tell an agent to \"handle all client follow-ups for Q3,\" and it will intelligently manage that entire process.\n\n## What this means for you\n\n*   **For small business owners and entrepreneurs**: AI agents could feel like hiring a dedicated personal assistant without the significant overhead. They can help automate client communications, manage your leads, keep your records organised, and even assist with marketing tasks, allowing you to focus on growing your business.\n*   **For professionals in any field**: If you find yourself bogged down by administrative tasks, scheduling, research, or keeping multiple digital systems updated, an AI agent could be your secret weapon. It frees up your mental energy and time for strategic thinking, creative problem-solving, and direct client engagement – the parts of your job that truly require human insight.\n*   **If you're just getting started**: Don't feel you need to dive into complex agent setups immediately. Many existing AI tools are slowly integrating \"agentic\" capabilities. Start by exploring AI-powered features in your current software (like email or project management apps) that offer automation or proactive suggestions. As these capabilities evolve, you'll be well-positioned to leverage more advanced AI agents.\n\n## Wrap-up\n\nAI agents are poised to become indispensable digital teammates, tackling the busywork and allowing us to focus on what humans do best. By understanding their potential to automate, manage, and act proactively, you can start exploring how these intelligent programs can simplify your working life and boost your productivity today. Try looking for existing AI tools that offer advanced automation features or a proactive \"assistant\" mode to dip your toe into the world of AI agents.",
+  "original_title": "Transform your sales organization with Amazon Quick: your new agentic AI teammate"
+}
