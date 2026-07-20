@@ -38,8 +38,12 @@ let VERIFY = { google: '', bing: '' };
 // Cloudflare Web Analytics token (látogatás-számláló) — NYILVÁNOS by design
 // (minden oldal HTML-jében látszik), ezért mehet a configba. Ha üres, nincs mérés.
 let CF_BEACON = '';
+// Ügyfélszolgálati chat-doboz kapcsoló + Worker-végpont (Task 3 config: customer_service.*).
+// enabled csak akkor igaz, ha a config engedélyezi ÉS van Turnstile site-key.
+let CS = { enabled: false, base: '', key: '' };
 try {
-  const company = JSON.parse(readFileSync(join(PROJECT_ROOT, 'config.json'), 'utf-8')).company || {};
+  const rawConfig = JSON.parse(readFileSync(join(PROJECT_ROOT, 'config.json'), 'utf-8'));
+  const company = rawConfig.company || {};
   CF_BEACON = (company.cf_beacon_token || '').trim();
   SITE_URL = (company.website_url || SITE_URL).replace(/\/$/, '');
   SUPPORT = {
@@ -56,6 +60,12 @@ try {
     // IndexNow kulcs — SZÁNDÉKOSAN nyilvános (a protokoll így igazolja a
     // tulajdonjogot: a kulcsfájlt a webhelyen kell kiszolgálni). Nem titok!
     indexnow: (company.indexnow_key || '').trim()
+  };
+  const cs = rawConfig.customer_service || {};
+  CS = {
+    enabled: cs.enabled === true && !!cs.turnstile_site_key,
+    base: (cs.worker_base || '').replace(/\/$/, ''),
+    key: cs.turnstile_site_key || ''
   };
 } catch {}
 
@@ -314,6 +324,16 @@ const CS_FAQ = {
     { q: 'Y a-t-il un flux RSS ?', a: 'Oui — chaque langue a son propre flux.', p: '/feed.xml' }
   ]
 };
+
+// Chat-doboz + űrlap UI-szövegei (megszólítás-norma: hu=te, de=du, es=tú, fr=vous)
+const UI_CHAT = {
+  en: { csOpen: 'Questions? Chat with us', csTitle: 'AI World HQ assistant', csHello: 'Hi! Ask me about the site or any of our AI guides. 😊', csPlaceholder: 'Type your question…', csSend: 'Send', csHuman: 'I need a human', csFormT: 'Message the team', csName: 'Name (optional)', csEmail: 'Your email', csMsg: 'Your message', csSubmit: 'Send message', csOk: 'Thanks! We got your message and will reply by email.', csErr: 'Something went wrong — please try again or email support@aiworldhq.com.', csPrivacy: 'We only use your email to reply; messages are deleted after 30 days.', csThinking: 'Thinking…' },
+  hu: { csOpen: 'Kérdésed van? Írj nekünk', csTitle: 'AI World HQ asszisztens', csHello: 'Szia! Kérdezz az oldalról vagy bármelyik AI-útmutatónkról. 😊', csPlaceholder: 'Írd ide a kérdésed…', csSend: 'Küldés', csHuman: 'Emberi segítséget kérek', csFormT: 'Üzenet a csapatnak', csName: 'Név (nem kötelező)', csEmail: 'Email-címed', csMsg: 'Üzeneted', csSubmit: 'Üzenet küldése', csOk: 'Köszönjük! Megkaptuk az üzeneted, emailben válaszolunk.', csErr: 'Valami hiba történt — próbáld újra, vagy írj a support@aiworldhq.com címre.', csPrivacy: 'Az email-címedet csak a válaszhoz használjuk; az üzenetek 30 nap után törlődnek.', csThinking: 'Gondolkodom…' },
+  es: { csOpen: '¿Preguntas? Chatea con nosotros', csTitle: 'Asistente de AI World HQ', csHello: '¡Hola! Pregúntame sobre el sitio o cualquiera de nuestras guías de IA. 😊', csPlaceholder: 'Escribe tu pregunta…', csSend: 'Enviar', csHuman: 'Quiero hablar con una persona', csFormT: 'Mensaje al equipo', csName: 'Nombre (opcional)', csEmail: 'Tu correo', csMsg: 'Tu mensaje', csSubmit: 'Enviar mensaje', csOk: '¡Gracias! Recibimos tu mensaje y te responderemos por correo.', csErr: 'Algo salió mal — inténtalo de nuevo o escribe a support@aiworldhq.com.', csPrivacy: 'Solo usamos tu correo para responderte; los mensajes se borran a los 30 días.', csThinking: 'Pensando…' },
+  de: { csOpen: 'Fragen? Schreib uns', csTitle: 'AI World HQ Assistent', csHello: 'Hallo! Frag mich zur Seite oder zu unseren KI-Anleitungen. 😊', csPlaceholder: 'Deine Frage…', csSend: 'Senden', csHuman: 'Ich möchte einen Menschen', csFormT: 'Nachricht ans Team', csName: 'Name (optional)', csEmail: 'Deine E-Mail', csMsg: 'Deine Nachricht', csSubmit: 'Nachricht senden', csOk: 'Danke! Wir haben deine Nachricht und antworten per E-Mail.', csErr: 'Etwas ist schiefgelaufen — versuch es erneut oder schreib an support@aiworldhq.com.', csPrivacy: 'Deine E-Mail nutzen wir nur für die Antwort; Nachrichten werden nach 30 Tagen gelöscht.', csThinking: 'Denke nach…' },
+  fr: { csOpen: 'Des questions ? Écrivez-nous', csTitle: 'Assistant AI World HQ', csHello: 'Bonjour ! Posez-moi vos questions sur le site ou nos guides IA. 😊', csPlaceholder: 'Votre question…', csSend: 'Envoyer', csHuman: 'Je veux parler à un humain', csFormT: 'Message à l’équipe', csName: 'Nom (facultatif)', csEmail: 'Votre e-mail', csMsg: 'Votre message', csSubmit: 'Envoyer le message', csOk: 'Merci ! Nous avons bien reçu votre message et répondrons par e-mail.', csErr: 'Une erreur est survenue — réessayez ou écrivez à support@aiworldhq.com.', csPrivacy: 'Votre e-mail sert uniquement à vous répondre ; les messages sont supprimés après 30 jours.', csThinking: 'Je réfléchis…' }
+};
+for (const l of SITE_LANGS) Object.assign(UI[l], UI_CHAT[l] || {});
 
 // Folyamat-térkép feliratok (útmutató-oldal tetején lévő lépés-áttekintő)
 const UI_MAP = {
@@ -1087,6 +1107,9 @@ function pageShell({ title, description, bodyContent, isArticle = false, noIntro
       <p class="site-footer__fine">${T.footerNote} · © ${year} AI World HQ</p>
     </div>
   </footer>
+  ${CS.enabled ? `<button id="cs-fab" class="cs-fab" aria-label="${escapeHtml(tr('csOpen'))}">💬<span class="cs-fab__t">${escapeHtml(tr('csOpen'))}</span></button>
+  <script>window.__csCfg={base:'${CS.base}',key:'${CS.key}',lang:'${LANG}',ui:${JSON.stringify({ title: tr('csTitle'), hello: tr('csHello'), ph: tr('csPlaceholder'), send: tr('csSend'), human: tr('csHuman'), formT: tr('csFormT'), name: tr('csName'), email: tr('csEmail'), msg: tr('csMsg'), submit: tr('csSubmit'), ok: tr('csOk'), err: tr('csErr'), privacy: tr('csPrivacy'), thinking: tr('csThinking') })}};</script>
+  <script defer src="/assets/chat.js?v=${ASSET_V}"></script>` : ''}
   <script src="/assets/vendor/aos.js?v=${ASSET_V}"></script>
   <script src="/assets/app.js?v=${ASSET_V}"></script>
   ${CF_BEACON ? `<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "${CF_BEACON}"}'></script>` : ''}
@@ -2085,13 +2108,29 @@ function buildAboutPage() {
     ['🤝', 'aboutHonH', 'aboutHonP'],
     ['🔧', 'aboutFixH', 'aboutFixP']
   ].map(([icon, h, p]) => `<div class="gloss__card"><h2 class="gloss__term">${icon} ${escapeHtml(tr(h))}</h2><p class="gloss__def">${escapeHtml(tr(p))}</p></div>`).join('\n');
+  // Kapcsolat-űrlap (ügyfélszolgálat, 2026-07-20) — CSAK ha a chat-doboz engedélyezve van.
+  const csFormHtml = !CS.enabled ? '' : `
+  <section class="cs-formbox" id="contact">
+    <h2>${escapeHtml(tr('csFormT'))}</h2>
+    <form id="cs-form" autocomplete="off">
+      <input type="text" name="name" placeholder="${escapeHtml(tr('csName'))}" maxlength="80">
+      <input type="email" name="email" placeholder="${escapeHtml(tr('csEmail'))}" required maxlength="120">
+      <textarea name="message" placeholder="${escapeHtml(tr('csMsg'))}" required maxlength="2000" rows="4"></textarea>
+      <input type="text" name="web" class="cs-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="cs-ts" id="cs-form-ts"></div>
+      <button type="submit">${escapeHtml(tr('csSubmit'))}</button>
+      <p class="cs-note">${escapeHtml(tr('csPrivacy'))}</p>
+      <p class="cs-status" aria-live="polite"></p>
+    </form>
+  </section>`;
   const body = `<section class="guides-hero">
       <p class="intro__kicker">${escapeHtml(tr('aboutNav'))}</p>
       <h1 class="guides-hero__title">${escapeHtml(tr('aboutTitle'))}</h1>
       <p class="guides-hero__tag">${escapeHtml(tr('aboutTag'))}</p>
     </section>
     <div class="gloss__grid">${cards}</div>
-    <p class="start__wizcta"><a href="start.html">⭐ ${escapeHtml(tr('startTitle'))}</a></p>`;
+    <p class="start__wizcta"><a href="start.html">⭐ ${escapeHtml(tr('startTitle'))}</a></p>
+    ${csFormHtml}`;
   return pageShell({
     title: `${tr('aboutTitle')} — ${SITE.name}`,
     description: tr('aboutTag'),
@@ -2222,7 +2261,7 @@ function main() {
   mkdirSync(OUT_ASSETS_DIR, { recursive: true });
 
   // Asset-ek másolása (CSS + JS + logó + saját betű-CSS)
-  for (const asset of ['style.css', 'app.js', 'logo.svg', 'fonts.css']) {
+  for (const asset of ['style.css', 'app.js', 'logo.svg', 'fonts.css', 'chat.js']) {
     const src = join(ASSETS_SRC, asset);
     if (existsSync(src)) {
       copyFileSync(src, join(OUT_ASSETS_DIR, asset));
