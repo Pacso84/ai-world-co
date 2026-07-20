@@ -209,6 +209,19 @@ async function main() {
         lines.push('⛔ FB-POSZTOLÓ LEÁLLT (Make-forgatókönyv inaktív)! Kapcsold vissza: eu1.make.com → Scenarios → kapcsoló a sor végén.');
     }
   } catch { /* a Make-őr hibája nem állítja meg a jelentést */ }
+  // ÜGYFÉLSZOLGÁLAT (2026-07-20): napi darabszámok a Workerből (💬 sor).
+  // Csak akkor szól, ha volt forgalom — csendes, ha 0.
+  try {
+    if (process.env.FEEDBACK_EXPORT_KEY) {
+      const cr = await fetch('https://aiworld-telegram.pacsi84.workers.dev/feedback-export',
+        { headers: { 'X-Export-Key': process.env.FEEDBACK_EXPORT_KEY }, signal: AbortSignal.timeout(15000) });
+      if (cr.ok) {
+        const cs = (await cr.json()).__cs || {};
+        const total = (cs.chat || 0) + (cs.mail || 0);
+        if (total > 0) lines.push(`💬 Ügyfélszolgálat ma: ${cs.chat || 0} chat-válasz · ${cs.mail || 0} email · ${cs.esc || 0} emberi kézbe adva`);
+      }
+    }
+  } catch { /* a riport ettől még kimegy */ }
 
   // Hierarchia-műszerfal (2026-07-13): visszaadások + főnöki döntések + tanulságok
   try {
