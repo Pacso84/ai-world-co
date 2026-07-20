@@ -1,0 +1,37 @@
+{
+  "started_at": "2026-07-20T17:37:43.308Z",
+  "total": 4,
+  "passed": 0,
+  "failed": 4,
+  "auto_check_failed": 4,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-07-20T17-35-52-609Z_openai-blog_Safety_and_alignment_in_an_era_of_long-horizon_mod.json",
+      "decision": "FAIL",
+      "reason": "auto-check critical",
+      "skipped_ai": true
+    },
+    {
+      "writer": "WRITER_2026-07-20T17-35-52-610Z_aws-ml_Custom_OS_installation_now_available_on_AWS_DeepRa.json",
+      "decision": "FAIL",
+      "reason": "auto-check critical",
+      "skipped_ai": true
+    },
+    {
+      "writer": "WRITER_2026-07-20T17-35-52-610Z_nvidia-blog_At_SIGGRAPH__NVIDIA_Advances_Graphics_and_Simulati.json",
+      "decision": "FAIL",
+      "reason": "auto-check critical",
+      "skipped_ai": true
+    },
+    {
+      "writer": "WRITER_2026-07-20T17-35-53-034Z_together_Together_AI_and_Y_Combinator_partner_to_launch_the.json",
+      "decision": "FAIL",
+      "reason": "auto-check critical",
+      "skipped_ai": true
+    }
+  ],
+  "finished_at": "2026-07-20T17:37:43.444Z",
+  "duration_seconds": 0.136
+}
