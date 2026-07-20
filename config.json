@@ -485,10 +485,10 @@
     }
   },
   "customer_service": {
-    "_comment": "Automata ügyfélszolgálat (2026-07-20, spec: 2026-07-19-auto-ugyfelszolgalat-design.md). enabled=false → a build NEM teszi ki a chat-dobozt/űrlapot. A worker-oldali kill-switch KÜLÖN van: telegram-worker/wrangler.toml [vars] CS_ENABLED. turnstile_site_key PUBLIKUS by design (a secret párja CSAK wrangler secret!). Az itteni kulcs a Cloudflare TESZT-kulcs (mindig átenged) — élesítéskor a valódira cserélendő.",
-    "enabled": false,
+    "_comment": "Automata ügyfélszolgálat (ÉLES 2026-07-20). enabled=true → a build kiteszi a chat-dobozt/űrlapot. A worker-oldali kill-switch KÜLÖN van: telegram-worker/wrangler.toml [vars] CS_ENABLED (vészleállításnál MINDKETTŐT false-ra). turnstile_site_key PUBLIKUS by design (a secret párja CSAK wrangler secret!).",
+    "enabled": true,
     "worker_base": "https://aiworld-telegram.pacsi84.workers.dev",
-    "turnstile_site_key": "1x00000000000000000000AA"
+    "turnstile_site_key": "0x4AAAAAAD5-0_stUu2LQwDO"
   },
   "limits": {
     "daily_articles_max": 25,

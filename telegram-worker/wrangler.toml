@@ -13,9 +13,9 @@ compatibility_flags = ["nodejs_compat"]
 [vars]
 GH_REPO = "Pacso84/ai-world-co"
 # Ügyfélszolgálat worker-oldali kill-switch (2026-07-20): "false" → /chat,/contact,email 503/eldob.
-# NYUGALMI ÁLLAPOT = "false" (végső review I1): a végpontok zárva; az élesítés
-# TUDATOS lépése ezt "true"-ra állítja + valódi Turnstile-secret + site-widget bekapcsolás.
-CS_ENABLED = "false"
+# ÉLESÍTVE 2026-07-20: "true" (valódi Turnstile-secret + site-widget is bekapcsolva).
+# Vészleállítás = ezt "false"-ra + wrangler deploy (a végpontok azonnal 503).
+CS_ENABLED = "true"
 
 # Olvasói 👍/👎 visszajelzés tárolója (2026-07-07)
 [[kv_namespaces]]
