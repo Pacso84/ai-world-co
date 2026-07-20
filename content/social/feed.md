@@ -1,6 +1,100 @@
 # AI World Co. — közösségi posztok
 
-*Generálva: 2026-07-20T02:18:35.561Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+*Generálva: 2026-07-20T11:01:41.582Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## Connect more of your apps to Search
+**🔗 https://aiworldhq.com/article/personalise-your-ai-connect-it-to-your-everyday-apps.html**
+
+**Facebook:**
+Need quicker, more relevant answers from your AI? Connect your calendar, email and favourite tools – it’ll pull the right info for you. https://aiworldhq.com/article/personalise-your-ai-connect-it-to-your-everyday-apps.html #Productivity #AI
+
+**Instagram:**
+Turn your AI into a personal assistant
+Link your calendar and email so it can answer questions like “What meetings do I have today?” in a snap. Safe, simple steps keep your data private.
+#AI
+#Productivity
+#AppIntegration
+#SmartWork
+Link in bio.
+
+*Kép-ötlet: A tidy desk with a laptop showing a chat window and icons for a calendar and email, hinting at linked apps.*
+
+---
+
+## Create, edit and star in videos with two Google Vids updates
+**🔗 https://aiworldhq.com/article/create-engaging-videos-with-ai-even-featuring-a-digital-you.html**
+
+**Facebook:**
+Want to make a quick video without the hassle of editing or being on camera? Google Vids now lets AI help you create and even add a digital presenter, making video creation a breeze. https://aiworldhq.com/article/create-engaging-videos-with-ai-even-featuring-a-digital-you.html #AItools #VideoMadeEasy
+
+**Instagram:**
+Make videos without the stress.
+AI handles the editing and can add a digital you, so you can focus on the story – no fancy gear required.
+#videocreator
+#AIhelp
+#digitalavatar
+#productivity
+Link in bio.
+
+*Kép-ötlet: A relaxed person working at a laptop while a friendly digital avatar appears on the screen.*
+
+---
+
+## NVIDIA Introduces New Jetson Thor Computers to Advance Mainstream Robotics and Edge AI
+**🔗 https://aiworldhq.com/article/how-tiny-ai-brains-are-making-our-devices-smarter.html**
+
+**Facebook:**
+Ever wonder how your smart camera can spot a pet vs a person right on the spot? NVIDIA’s new Jetson Thor chips bring that kind of edge AI to everyday gadgets, so they run faster and keep your data private. https://aiworldhq.com/article/how-tiny-ai-brains-are-making-our-devices-smarter.html #edgeai #robotics
+
+**Instagram:**
+Your devices could think faster, right where they sit.
+NVIDIA’s Jetson Thor lets robots and smart gadgets process data locally, cutting lag and protecting your privacy.
+#edgeai
+#smartdevices
+#robotics
+Link in bio.
+
+*Kép-ötlet: A compact AI module (Jetson Thor) installed inside a modern home robot, shown in soft light to highlight its circuitry.*
+
+---
+
+## Expanded language support for Gemini in Google Docs
+**🔗 https://aiworldhq.com/article/ai-comes-to-google-docs-what-gemini-means-for-your-writing.html**
+
+**Facebook:**
+Need a hand drafting or translating a document? Google Docs now includes Gemini AI to suggest text and polish your writing, saving you time. https://aiworldhq.com/article/ai-comes-to-google-docs-what-gemini-means-for-your-writing.html #productivity #writing
+
+**Instagram:**
+Turn writer’s block into a breeze.
+Gemini in Google Docs can suggest first drafts, tighten up sentences, and translate on the fly, so you get more done with less stress.
+#GoogleDocs
+#GeminiAI
+#Productivity
+#WritingHelp
+#Multilingual
+Link in bio.
+
+*Kép-ötlet: A tidy desk with a laptop open to a Google Docs page, a subtle AI icon nearby, and a coffee mug to convey a relaxed, productive vibe.*
+
+---
+
+## Easily control the emotions and pacing of AI avatars and AI voiceovers in Google Vids
+**🔗 https://aiworldhq.com/article/guiding-ai-voices-how-to-add-emotion-and-pacing-to-your-scri.html**
+
+**Facebook:**
+Want your AI voiceovers to feel natural, not robotic? A few simple cues in your script can add emotion and pacing, making videos sound more engaging. https://aiworldhq.com/article/guiding-ai-voices-how-to-add-emotion-and-pacing-to-your-scri.html #AIvoice #ContentCreation
+
+**Instagram:**
+Give your AI voice a human touch
+Add simple cues like excitement or a pause right in your script and watch the speech flow naturally. It’s a quick way to make videos feel more personal.
+#AIvoice
+#VideoTips
+#ContentCreation
+Link in bio.
+
+*Kép-ötlet: A close‑up of a microphone beside a laptop screen displaying a script with highlighted cues such as [excited] and [pause].*
 
 ---
 
