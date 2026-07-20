@@ -98,15 +98,17 @@ try {
     const r = await handleContact(req('/contact', { email: 'nem-email', message: 'x', lang: 'en', web: '', token: 'good-token' }), baseEnv());
     assert.equal(r.status, 400);
   }
-  // 8) I2: /contact napi IP-limit — 10 után 429, AI/Telegram nélkül
+  // 8) I2: /contact SAJÁT napi IP-limit (CONTACT_DAILY_MAX=5, független a chat keretétől) — 5×200, 6. 429
   {
     const env = baseEnv();
     globalThis.__tgSent = 0;
     let last;
-    for (let i = 0; i < 11; i++) {
+    for (let i = 0; i < 5; i++) {
       last = await handleContact(req('/contact', { email: 'a@b.hu', message: 'm' + i, lang: 'hu', web: '', token: 'good-token' }), env);
+      assert.equal(last.status, 200, `${i + 1}. contact még 200`);
     }
-    assert.equal(last.status, 429, '11. contact ugyanarról az IP-ről = 429');
+    last = await handleContact(req('/contact', { email: 'a@b.hu', message: 'm5', lang: 'hu', web: '', token: 'good-token' }), env);
+    assert.equal(last.status, 429, '6. contact ugyanarról az IP-ről = 429 (CONTACT_DAILY_MAX)');
   }
   // 9) I3: limit-429 után a visszaadott sessionId LÉTEZIK — retry nem kér Turnstile-t (nem 403)
   {

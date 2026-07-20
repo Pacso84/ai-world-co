@@ -11,6 +11,7 @@ const ORIGINS = ['https://aiworldhq.com', 'https://www.aiworldhq.com'];
 const LANGS = ['en', 'hu', 'es', 'de', 'fr'];
 const SESSION_MAX = 10;      // üzenet / munkamenet
 const IP_DAILY_MAX = 10;     // üzenet / nap / látogató
+const CONTACT_DAILY_MAX = 5;  // kapcsolat-űrlap / nap / IP — KÜLÖN a chat keretétől
 const GLOBAL_DAILY_MAX = 300; // AI-hívás / nap összesen (chat+email)
 
 export const LIMIT_MSG = {
@@ -138,15 +139,16 @@ export async function handleContact(request, env) {
   const ip = request.headers.get('CF-Connecting-IP') || '0.0.0.0';
   const iph = await hashIp(ip);
   if (!(await verifyTurnstile(env, body.token, ip))) return j({ error: 'turnstile' }, 403, h);
-  // Napi IP-limit (végső review I2): a kapcsolat-űrlap ugyanabból a napi
-  // IP-keretből fogyaszt, mint a chat — anti-flood a Telegram/KV felé.
-  const ipCount = parseInt(await env.FEEDBACK.get(`cs:ip:${iph}:${dayKey()}`) || '0', 10);
-  if (ipCount >= IP_DAILY_MAX) return j({ error: 'limit', ok: false }, 429, h);
+  // Napi IP-limit (végső review I2, majd IGAZÍTÁS): a kapcsolat-űrlapnak
+  // SAJÁT napi kerete (nem a chatével közös), hogy a chat-limitet elért
+  // látogató is elérje az űrlapot.
+  const cipCount = parseInt(await env.FEEDBACK.get(`cs:cip:${iph}:${dayKey()}`) || '0', 10);
+  if (cipCount >= CONTACT_DAILY_MAX) return j({ error: 'limit', ok: false }, 429, h);
 
   const ts = Date.now();
   await env.FEEDBACK.put(`cs:msg:${ts}`, JSON.stringify({ email, name, message, lang, ts }), { expirationTtl: 2592000 }); // 30 nap
   await bumpCs(env, 'esc');
   await tg(env, env.OWNER_CHAT_ID, `📝 ÚJ ÜGYFÉL-ÜZENET (űrlap, ${lang})\nFeladó: ${name ? name + ' — ' : ''}${email}\n\n${message.slice(0, 600)}\n\n(Válasz: sima email a feladónak.)`);
-  await bump(env, `cs:ip:${iph}:${dayKey()}`, 172800);
+  await bump(env, `cs:cip:${iph}:${dayKey()}`, 172800);
   return j({ ok: true }, 200, h);
 }
