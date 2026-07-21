@@ -1,0 +1,29 @@
+{
+  "started_at": "2026-07-21T01:29:30.580Z",
+  "drafts_total": 2,
+  "articles_written": 2,
+  "articles_failed": 0,
+  "total_cost_usd": 0.0183254,
+  "by_article": [
+    {
+      "draft": "2026-07-21T01-29-30-132Z_microsoft-ai_Microsoft_expands_Azure_AI_and_HPC_infrastructure_.json",
+      "writer_output": "WRITER_2026-07-21T01-29-30-132Z_microsoft-ai_Microsoft_expands_Azure_AI_and_HPC_infrastructure_.json",
+      "success": true,
+      "cost_usd": 0.0090802,
+      "duration_ms": 11121,
+      "provider": "google",
+      "model": "gemini-2.5-flash"
+    },
+    {
+      "draft": "2026-07-21T01-29-30-132Z_databricks_Responsible_AI__Governance__Principles__and_Practi.json",
+      "writer_output": "WRITER_2026-07-21T01-29-30-132Z_databricks_Responsible_AI__Governance__Principles__and_Practi.json",
+      "success": true,
+      "cost_usd": 0.0092452,
+      "duration_ms": 11149,
+      "provider": "google",
+      "model": "gemini-2.5-flash"
+    }
+  ],
+  "finished_at": "2026-07-21T01:29:52.853Z",
+  "duration_seconds": 22.273
+}

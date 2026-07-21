@@ -1,6 +1,113 @@
 # AI World Co. — közösségi posztok
 
-*Generálva: 2026-07-20T17:47:38.740Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+*Generálva: 2026-07-21T01:51:03.630Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## New Google Meet 'Take notes for me' settings for admins and end users
+**🔗 https://aiworldhq.com/article/automate-your-meeting-notes-how-ai-can-help-you-stay-organis.html**
+
+**Facebook:**
+Want to stop scrambling for notes after a Google Meet call? The new ‘Take notes for me’ setting captures the key points automatically, so you can stay focused. https://aiworldhq.com/article/automate-your-meeting-notes-how-ai-can-help-you-stay-organis.html #productivity #AI
+
+**Instagram:**
+Let the AI handle the minutes.
+Google Meet now offers a ‘Take notes for me’ feature that records decisions and action items while you talk, giving you a tidy summary afterward.
+#meetingtips
+#AItools
+#productivity
+Link in bio.
+
+*Kép-ötlet: A relaxed person at a laptop with a Google Meet window, while a neat digital note summary appears beside the screen.*
+
+---
+
+## Introducing Grok on Amazon Bedrock
+**🔗 https://aiworldhq.com/article/how-businesses-can-leverage-advanced-ai-models-on-amazon-bed.html**
+
+**Facebook:**
+Want to free up time from routine tasks? Grok on Amazon Bedrock can analyse data, understand images and take actions, so you can focus on the decisions that matter. https://aiworldhq.com/article/how-businesses-can-leverage-advanced-ai-models-on-amazon-bed.html #AItools #BusinessHelp
+
+**Instagram:**
+Turn data into decisions with a smarter assistant
+Grok on Amazon Bedrock can read documents, spot patterns and act on your instructions, easing the everyday workload.
+#AI
+#Automation
+#AmazonBedrock
+Link in bio.
+
+*Kép-ötlet: A tidy desk with a laptop displaying a simple flowchart turning raw data into clear insights, complemented by a subtle AI icon.*
+
+---
+
+## Cast yourself in AI video clips using your personal avatar with Gemini Omni in Vids
+**🔗 https://aiworldhq.com/article/your-personal-ai-video-avatar-what-it-is-and-how-it-works.html**
+
+**Facebook:**
+Skip the camera and lighting – let a realistic AI avatar deliver your message whenever you need it. Save time and keep your message consistent. https://aiworldhq.com/article/your-personal-ai-video-avatar-what-it-is-and-how-it-works.html #AIavatars #VideoCreation
+
+**Instagram:**
+Your digital self can speak for you.
+Create a lifelike AI avatar that reads any script, no camera or lighting required – ideal for quick updates or tutorials.
+#AIavatar
+#VideoTips
+#DigitalCopy
+#AItools
+#ContentCreation
+Link in bio.
+
+*Kép-ötlet: A person sitting at a desk, watching a screen where a lifelike digital copy of themselves is delivering a video message.*
+
+---
+
+## Generate higher quality AI video clips and edit any video with Gemini Omni in Vids
+**🔗 https://aiworldhq.com/article/ai-for-video-creating-and-refining-with-text-commands.html**
+
+**Facebook:**
+Need a quick video but don’t want to learn complex editing software? Gemini Omni lets you describe what you want and it produces a polished clip in minutes. https://aiworldhq.com/article/ai-for-video-creating-and-refining-with-text-commands.html #AIvideo #Productivity
+
+**Instagram:**
+Turn words into video in seconds.
+Just type what you need and Gemini Omni creates or refines the clip, freeing up time for the things that matter.
+#AIvideo
+#CreativeTools
+#AIfriendly
+Link in bio.
+
+*Kép-ötlet: A laptop screen displaying a text prompt converting into a short video playback, with a coffee mug beside it.*
+
+---
+
+## Simplify Sales: Unifying Data in Slack
+**🔗 https://aiworldhq.com/article/how-ai-agents-supercharge-sales-workflows-in-your-messaging-.html**
+
+**Facebook:**
+Spend less time hunting for sales data and more time closing deals – AI agents can bring the info you need straight into Slack. Find out how it works. https://aiworldhq.com/article/how-ai-agents-supercharge-sales-workflows-in-your-messaging-.html #salesproductivity #AI
+
+**Instagram:**
+No more data hunting in chat.
+AI agents pull customer details, forecasts and next steps right into your Slack conversation, so your team can focus on selling.
+#sales
+#AI
+#productivity
+Link in bio.
+
+*Kép-ötlet: A relaxed sales team looking at a laptop with a Slack window showing a neatly organized customer data card.*
+
+---
+
+## A scorecard for the AI age
+**🔗 https://aiworldhq.com/article/measuring-the-real-value-of-ai-in-your-business.html**
+
+**Facebook:**
+Wondering if your AI tools are actually worth the time and money? This plain-English guide helps you look past the hype to see if you're getting a real return. https://aiworldhq.com/article/measuring-the-real-value-of-ai-in-your-business.html #Business #AI
+
+**Instagram:**
+Not sure if your AI tools are actually helping your bottom line? Here’s a simple way to measure the real results without getting caught up in the buzz.
+#smallbusiness #AI #productivity #businessgrowth
+Link in bio.
+
+*Kép-ötlet: A close-up of a hand holding a pen over a clean sheet of paper with a simple hand-drawn chart.*
 
 ---
 

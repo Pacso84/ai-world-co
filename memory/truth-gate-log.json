@@ -140,5 +140,24 @@
         "The article instructs users to \"Select the 'Generate' model\" within the Cohere Playground. 'Generate' is not a specific model name available for selection in the Cohere Playground/Workbench UI. Users typically select models like 'Command' or 'Command-R' to perform text generation tasks, including classification."
       ]
     }
+  ],
+  "2026-07-21": [
+    {
+      "at": "2026-07-21T01:33:34.257Z",
+      "file": "WRITER_GUIDE_break-down-complex-news-stories-into-easy-to-understand-poin.json",
+      "action": "block",
+      "reasons": [
+        "The article describes a 'New Chat' button or similar UI element (e.g., 'square with a pen icon', 'plus (+) sign') that clears previous conversations and history within Grok. Grok's interface operates as a continuous chat, where new prompts are simply typed into the existing conversation thread, and there is no dedicated 'New Chat' button for clearing chat history or starting a fresh, isolated conversation in the manner described.",
+        "The guide states that pasting a news article's web address (URL) into Grok is 'even easier' and 'ideally' how one should provide content 'so Grok can access all the details'. However, the 'Common mistakes' section explicitly states, 'Grok can't read articles behind paywalls... unless you manually paste the text into the chat.' This contradiction and the general presentation of URL pasting as a universally reliable and preferred method for fetching *all* article details, including potentially paywalled content, overstates Grok's current capabilities and reliability for such a feature."
+      ]
+    },
+    {
+      "at": "2026-07-21T01:34:41.217Z",
+      "file": "WRITER_GUIDE_translate-short-conversations-on-the-go-with-apple-intellige.json",
+      "action": "block",
+      "reasons": [
+        "The article describes a specific 'continuous translation mode' for Siri, activated by saying 'Continue translating' or 'Keep translating' after an initial translation, allowing users to speak new phrases directly and have them automatically translated into the last chosen language without reactivating Siri each time. This specific interaction flow and feature has not been announced or demonstrated as a capability of Siri, even with the enhancements of Apple Intelligence. While Siri has an 'Interpreter Mode' for two-way conversations, the described one-way, continuous input mode with these commands is not a known feature."
+      ]
+    }
   ]
 }

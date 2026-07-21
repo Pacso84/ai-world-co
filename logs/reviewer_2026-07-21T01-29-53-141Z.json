@@ -1,0 +1,25 @@
+{
+  "started_at": "2026-07-21T01:29:53.061Z",
+  "total": 2,
+  "passed": 0,
+  "failed": 2,
+  "auto_check_failed": 2,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-07-21T01-29-30-132Z_databricks_Responsible_AI__Governance__Principles__and_Practi.json",
+      "decision": "FAIL",
+      "reason": "auto-check critical",
+      "skipped_ai": true
+    },
+    {
+      "writer": "WRITER_2026-07-21T01-29-30-132Z_microsoft-ai_Microsoft_expands_Azure_AI_and_HPC_infrastructure_.json",
+      "decision": "FAIL",
+      "reason": "auto-check critical",
+      "skipped_ai": true
+    }
+  ],
+  "finished_at": "2026-07-21T01:29:53.141Z",
+  "duration_seconds": 0.08
+}

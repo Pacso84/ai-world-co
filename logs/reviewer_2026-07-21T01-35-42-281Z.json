@@ -1,0 +1,25 @@
+{
+  "started_at": "2026-07-21T01:35:42.210Z",
+  "total": 2,
+  "passed": 0,
+  "failed": 2,
+  "auto_check_failed": 2,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0,
+  "by_article": [
+    {
+      "writer": "WRITER_GUIDE_chat-with-your-own-documents-offline-using-nvidia-chatrtx.json",
+      "decision": "FAIL",
+      "reason": "auto-check critical",
+      "skipped_ai": true
+    },
+    {
+      "writer": "WRITER_GUIDE_try-free-ai-demos-in-your-browser-with-hugging-face-spaces.json",
+      "decision": "FAIL",
+      "reason": "auto-check critical",
+      "skipped_ai": true
+    }
+  ],
+  "finished_at": "2026-07-21T01:35:42.281Z",
+  "duration_seconds": 0.071
+}
