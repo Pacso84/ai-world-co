@@ -389,9 +389,12 @@ const FREE_TIER_POOL = [
 // 'flash-latest' (3.5 Flash, 5x ár!) és a Pro a végén, végső tartaléknak.
 // MINŐSÉG-ELŐSZÖR (2026-07-15, user): a gemini-2.0-flash (gyenge) és a
 // gemini-flash-latest (5x ár-CSAPDA) kikerült; MiniMax M3 a 2. erős láncszem.
+// Fizetős vég-tartalék sorrend. ÁTÁLLVA 2026-07-21: a MiniMax M3 került előre
+// (cikkenként ~fele ár), a Gemini 2.5 Flash mögé — a saját agent-modellek után
+// ez a lánc jön. (A 2.5-pro marad az utolsó, drága mentsvárnak.)
 const PAID_POOL = [
-  { provider: 'google', model: 'gemini-2.5-flash' },
   { provider: 'openrouter', model: 'minimax/minimax-m3' },
+  { provider: 'google', model: 'gemini-2.5-flash' },
   { provider: 'google', model: 'gemini-2.5-pro' }
 ];
 

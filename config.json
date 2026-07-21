@@ -82,16 +82,16 @@
   "agents": {
     "rework": {
       "primary_model": {
-        "provider": "google",
-        "model": "gemini-2.5-flash"
-      },
-      "fallback_model": {
         "provider": "openrouter",
         "model": "minimax/minimax-m3"
       },
+      "fallback_model": {
+        "provider": "google",
+        "model": "gemini-2.5-flash"
+      },
       "enabled": true,
       "routing": "paid-only",
-      "comment": "Javítókörök erős modellje. ÁTMENETI (2026-07-15): Gemini elöl, mert az OpenRouter-kredit még 0 — AUGUSZTUS 1-TŐL CSERE: MiniMax M3 elsődleges mindenhol (user-döntés, olcsóbb is: $1.20 vs $2.50 kimenet), Gemini tartalék."
+      "comment": "Javítókörök erős modellje. ÁTÁLLVA 2026-07-21: MiniMax M3 elsődleges (olcsóbb: $1.20 vs $2.50 kimenet), Gemini 2.5 Flash tartalék. A váltást a júliusi keret hozta előre aug. 1-ről (user-döntés); az OpenRouter fel van töltve."
     },
     "ceo": {
       "primary_model": {
@@ -123,15 +123,15 @@
     },
     "translator": {
       "primary_model": {
-        "provider": "google",
-        "model": "gemini-2.5-flash"
-      },
-      "fallback_model": {
         "provider": "openrouter",
         "model": "minimax/minimax-m3"
       },
+      "fallback_model": {
+        "provider": "google",
+        "model": "gemini-2.5-flash"
+      },
       "enabled": true,
-      "comment": "MINŐSÉG-ELŐSZÖR (user-döntés 2026-07-15): erős modellek — a gyenge modell hibája többe kerül (kézi javítás), mint az erős felára. Gemini 2.5 Flash → MiniMax M3; vég-tartalék a vészhálón át az erős-ingyenesek.",
+      "comment": "MINŐSÉG-ELŐSZÖR (user-döntés 2026-07-15): erős modellek — a gyenge modell hibája többe kerül (kézi javítás), mint az erős felára. ÁTÁLLVA 2026-07-21 (előrehozott MiniMax-váltás a keret miatt): MiniMax M3 elsődleges → Gemini 2.5 Flash tartalék; vég-tartalék a vészhálón át az erős-ingyenesek.",
       "routing": "paid-only",
       "_routing_comment": "CSAK fizetős: a fordítást senki nem ellenőrzi utólag — a nem-angol oldalak minősége múlik rajta (user-döntés 2026-07-05)"
     },
@@ -150,28 +150,28 @@
     },
     "iro": {
       "primary_model": {
-        "provider": "google",
-        "model": "gemini-2.5-flash"
-      },
-      "fallback_model": {
         "provider": "openrouter",
         "model": "minimax/minimax-m3"
       },
+      "fallback_model": {
+        "provider": "google",
+        "model": "gemini-2.5-flash"
+      },
       "enabled": true,
-      "comment": "MINŐSÉG-ELŐSZÖR (user-döntés 2026-07-15): erős modellek — a gyenge modell hibája többe kerül (kézi javítás), mint az erős felára. Gemini 2.5 Flash → MiniMax M3; vég-tartalék a vészhálón át az erős-ingyenesek.",
+      "comment": "MINŐSÉG-ELŐSZÖR (user-döntés 2026-07-15): erős modellek — a gyenge modell hibája többe kerül (kézi javítás), mint az erős felára. ÁTÁLLVA 2026-07-21 (előrehozott MiniMax-váltás a keret miatt): MiniMax M3 elsődleges → Gemini 2.5 Flash tartalék; vég-tartalék a vészhálón át az erős-ingyenesek.",
       "routing": "paid-only"
     },
     "ellenorzo": {
       "primary_model": {
-        "provider": "google",
-        "model": "gemini-2.5-flash"
-      },
-      "fallback_model": {
         "provider": "openrouter",
         "model": "minimax/minimax-m3"
       },
+      "fallback_model": {
+        "provider": "google",
+        "model": "gemini-2.5-flash"
+      },
       "enabled": true,
-      "comment": "MINŐSÉG-ELŐSZÖR (user-döntés 2026-07-15): erős modellek — a gyenge modell hibája többe kerül (kézi javítás), mint az erős felára. Gemini 2.5 Flash → MiniMax M3; vég-tartalék a vészhálón át az erős-ingyenesek.",
+      "comment": "MINŐSÉG-ELŐSZÖR (user-döntés 2026-07-15): erős modellek — a gyenge modell hibája többe kerül (kézi javítás), mint az erős felára. ÁTÁLLVA 2026-07-21 (előrehozott MiniMax-váltás a keret miatt): MiniMax M3 elsődleges → Gemini 2.5 Flash tartalék; vég-tartalék a vészhálón át az erős-ingyenesek.",
       "routing": "paid-only",
       "_routing_comment": "CSAK fizetős: minőség-kapu / főnök-agy — itt nem spórolunk (user-döntés 2026-07-05)"
     },
@@ -237,15 +237,15 @@
     },
     "guide": {
       "primary_model": {
-        "provider": "google",
-        "model": "gemini-2.5-flash"
-      },
-      "fallback_model": {
         "provider": "openrouter",
         "model": "minimax/minimax-m3"
       },
+      "fallback_model": {
+        "provider": "google",
+        "model": "gemini-2.5-flash"
+      },
       "enabled": true,
-      "comment": "MINŐSÉG-ELŐSZÖR (user-döntés 2026-07-15): erős modellek — a gyenge modell hibája többe kerül (kézi javítás), mint az erős felára. Gemini 2.5 Flash → MiniMax M3; vég-tartalék a vészhálón át az erős-ingyenesek.",
+      "comment": "MINŐSÉG-ELŐSZÖR (user-döntés 2026-07-15): erős modellek — a gyenge modell hibája többe kerül (kézi javítás), mint az erős felára. ÁTÁLLVA 2026-07-21 (előrehozott MiniMax-váltás a keret miatt): MiniMax M3 elsődleges → Gemini 2.5 Flash tartalék; vég-tartalék a vészhálón át az erős-ingyenesek.",
       "routing": "paid-only"
     },
     "api-expert": {
@@ -303,28 +303,28 @@
     },
     "digest": {
       "primary_model": {
-        "provider": "google",
-        "model": "gemini-2.5-flash"
-      },
-      "fallback_model": {
         "provider": "openrouter",
         "model": "minimax/minimax-m3"
       },
+      "fallback_model": {
+        "provider": "google",
+        "model": "gemini-2.5-flash"
+      },
       "enabled": true,
-      "comment": "MINŐSÉG-ELŐSZÖR (user-döntés 2026-07-15): erős modellek — a gyenge modell hibája többe kerül (kézi javítás), mint az erős felára. Gemini 2.5 Flash → MiniMax M3; vég-tartalék a vészhálón át az erős-ingyenesek.",
+      "comment": "MINŐSÉG-ELŐSZÖR (user-döntés 2026-07-15): erős modellek — a gyenge modell hibája többe kerül (kézi javítás), mint az erős felára. ÁTÁLLVA 2026-07-21 (előrehozott MiniMax-váltás a keret miatt): MiniMax M3 elsődleges → Gemini 2.5 Flash tartalék; vég-tartalék a vészhálón át az erős-ingyenesek.",
       "routing": "paid-only"
     },
     "compare": {
       "primary_model": {
-        "provider": "google",
-        "model": "gemini-2.5-flash"
-      },
-      "fallback_model": {
         "provider": "openrouter",
         "model": "minimax/minimax-m3"
       },
+      "fallback_model": {
+        "provider": "google",
+        "model": "gemini-2.5-flash"
+      },
       "enabled": true,
-      "comment": "MINŐSÉG-ELŐSZÖR (user-döntés 2026-07-15): erős modellek — a gyenge modell hibája többe kerül (kézi javítás), mint az erős felára. Gemini 2.5 Flash → MiniMax M3; vég-tartalék a vészhálón át az erős-ingyenesek.",
+      "comment": "MINŐSÉG-ELŐSZÖR (user-döntés 2026-07-15): erős modellek — a gyenge modell hibája többe kerül (kézi javítás), mint az erős felára. ÁTÁLLVA 2026-07-21 (előrehozott MiniMax-váltás a keret miatt): MiniMax M3 elsődleges → Gemini 2.5 Flash tartalék; vég-tartalék a vészhálón át az erős-ingyenesek.",
       "routing": "paid-only"
     },
     "video": {
@@ -341,15 +341,15 @@
     },
     "truth": {
       "primary_model": {
-        "provider": "google",
-        "model": "gemini-2.5-flash"
-      },
-      "fallback_model": {
         "provider": "openrouter",
         "model": "minimax/minimax-m3"
       },
+      "fallback_model": {
+        "provider": "google",
+        "model": "gemini-2.5-flash"
+      },
       "enabled": true,
-      "comment": "HITELESSÉG-KAPU (user-döntés 2026-07-16, 'mindig fizetős'): publikálás előtti hallucináció-bíró az Ellenőrzőben. AUGUSZTUS 1: a többi tartalmi agenttel együtt MiniMax-elsődlegesre vált.",
+      "comment": "HITELESSÉG-KAPU (user-döntés 2026-07-16, 'mindig fizetős'): publikálás előtti hallucináció-bíró az Ellenőrzőben. ÁTÁLLVA 2026-07-21: MiniMax M3 elsődleges, Gemini 2.5 Flash tartalék (a többi tartalmi agenttel együtt).",
       "routing": "paid-only",
       "_routing_comment": "CSAK fizetős: ez az utolsó kapu a olvasó előtt — itt nem spórolunk"
     }
