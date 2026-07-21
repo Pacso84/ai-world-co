@@ -52,6 +52,8 @@ const FORCE = ARGV.includes('--force');
 function argVal(flag, def) { const i = ARGV.indexOf(flag); return (i !== -1 && ARGV[i + 1]) ? ARGV[i + 1] : def; }
 const IF_STALE_DAYS = ARGV.includes('--if-stale') ? parseFloat(argVal('--if-stale', '3')) : null;
 const MIN_SCORE = parseInt(argVal('--min-score', '70'), 10);
+// Ennél régebben néma feed KIZÁRÓ okkal esik ki (pontszámtól függetlenül) — 2026-07-21.
+const DEAD_FEED_DAYS = parseInt(argVal('--dead-days', '365'), 10);
 
 const parser = new Parser({
   timeout: 12000,
@@ -277,6 +279,17 @@ function reliabilityCheck(org, hostname, feed, coverage) {
   else if (ageDays <= 180) { score += 18; reasons.push(`mérsékelten friss (${Math.round(ageDays)} napja)`); }
   else if (ageDays <= 365) { score += 8; reasons.push(`lassú (${Math.round(ageDays)} napja)`); }
   else { reasons.push(`⚠️ halottnak tűnik (${Math.round(ageDays)} napja nincs új cikk)`); }
+
+  // KIZÁRÓ OK (2026-07-21, user-észrevételből): a halott feed a többi szemponton
+  // (hivatalos + HTTPS + sok régi cikk) összeszedheti a 70 pontot és átcsúszhat a
+  // kapun — a VinAI 475 NAPJA néma forrás így lett "javaslat". Egy hírportálnak
+  // a néma forrás értéktelen: ez pontszámtól FÜGGETLENÜL kiesik.
+  if (ageDays !== null && ageDays > DEAD_FEED_DAYS) {
+    return {
+      ok: false, score, reasons, ageDays, itemCount: items.length,
+      hardFail: `halott feed — ${Math.round(ageDays)} napja nincs új cikk (limit: ${DEAD_FEED_DAYS})`
+    };
+  }
 
   // (2) Mennyiség — folyamatos forrás-e?
   if (items.length >= 10) { score += 20; reasons.push(`bő kínálat (${items.length} cikk)`); }
