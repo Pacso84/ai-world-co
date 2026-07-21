@@ -10,6 +10,10 @@ const STOP = new Set([
   'the','and','with','for','how','you','your','are','was','this','that','can','use','what','from','not','get','all','does','about',
   // hu
   'hogyan','hogy','egy','mit','nem','van','lehet','kell','mire','mivel','miert','ezt','azt','is',
+  // hu ESETRAGOK (2026-07-21 éles hiba): a kötőjeles alakokat ("AI-val", "AI-ról")
+  // a tokenizáló külön szóra vágja, és a puszta rag VÉLETLEN címegyezéseket okozott
+  // (a "képet generálni" kérdésre a "tartalomnaptár" útmutató jött ki).
+  'val','vel','ban','ben','bol','rol','tol','hoz','hez','nak','nek','ert','ig','ra','re','ban','ben',
   // es
   'como','para','con','que','los','las','del','por','una','uno','este','esta','puedo','hacer',
   // de
@@ -29,13 +33,33 @@ export function tokenize(str) {
   )];
 }
 
+// LAZA TŐ-EGYEZÉS (2026-07-21). A magyar (és német) ragoz/összetesz: a "képet"
+// és a "képgenerálás" PONTOS egyezéssel sosem találkozik, ezért a bot nem találta
+// meg a saját útmutatóját és eszkalált. Megoldás: ha a kérdés szava elég hosszú,
+// elég, ha a KEZDŐ 4 betűje BENNE VAN a másik szóban ("generalni" ⊂ "kepgeneralas").
+// Rövid szavakra NEM lazítunk — ott túl sok lenne a téves találat.
+const LOOSE_MIN = 5;     // ennél rövidebb kérdés-szóra nincs lazítás
+const LOOSE_PREFIX = 4;  // ennyi kezdőbetű egyezése = tő-találat
+
+function looseHit(t, tokens) {
+  if (t.length < LOOSE_MIN) return false;
+  const p = t.slice(0, LOOSE_PREFIX);
+  for (const k of tokens) {
+    if (k.length >= LOOSE_PREFIX && (k.includes(p) || t.startsWith(k.slice(0, LOOSE_PREFIX)))) return true;
+  }
+  return false;
+}
+
 // Egy kb-elem pontszáma a kérdés tokenjeihez képest.
-// Cím/kérdés-találat 3 pontot ér, törzs-találat 1-et — a cím a legerősebb jel.
+// Pontos cím-találat 3, pontos törzs 1; a laza (ragozott) cím-találat 2, törzs 1 —
+// így a pontos egyezés mindig erősebb marad, de a ragozott alak sem vész el.
 function scoreItem(qTokens, titleTokens, bodyTokens) {
   let s = 0;
   for (const t of qTokens) {
     if (titleTokens.includes(t)) s += 3;
     else if (bodyTokens.includes(t)) s += 1;
+    else if (looseHit(t, titleTokens)) s += 2;
+    else if (looseHit(t, bodyTokens)) s += 1;
   }
   return s;
 }

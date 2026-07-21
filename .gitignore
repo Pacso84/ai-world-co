@@ -46,3 +46,7 @@ core/model-health.json
 # Temporary
 tmp/
 temp/
+
+# Cloudflare Worker helyi fejlesztői változók (wrangler dev) — SOHA nem kerül repóba
+.dev.vars
+telegram-worker/.dev.vars

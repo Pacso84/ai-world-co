@@ -285,7 +285,8 @@ const CS_FAQ = {
     { q: 'Is the site free? How can I support it?', a: 'Everything is free. If you want, you can leave a voluntary tip on the Support page.', p: '/support.html' },
     { q: 'Where do I find beginner guides?', a: 'The Start page lists the first 5 guides to read, and the Guides page has all of them by topic.', p: '/start.html' },
     { q: 'What do AI words like prompt or token mean?', a: 'Our AI glossary explains the most common terms in plain language.', p: '/glossary.html' },
-    { q: 'Is there an RSS feed?', a: 'Yes — every language has its own feed.', p: '/feed.xml' }
+    { q: 'Is there an RSS feed?', a: 'Yes — every language has its own feed.', p: '/feed.xml' },
+    { q: 'How do I contact you / reach a human?', a: 'Use the message form at the bottom of the About page, or write to support@aiworldhq.com — a human reads every message.', p: '/about.html#contact' }
   ],
   hu: [
     { q: 'Mi az AI World HQ?', a: 'Automata, független hír- és útmutató-oldal, ami a hétköznapi AI-használatban segít. A tartalmat AI-szerkesztőség készíti őszinteség-ellenőrzéssel, 5 nyelven.', p: '/about.html' },
@@ -294,7 +295,8 @@ const CS_FAQ = {
     { q: 'Ingyenes az oldal? Hogyan támogathatom?', a: 'Minden ingyenes. Ha szeretnéd, a Támogatás oldalon önkéntes borravalót adhatsz.', p: '/support.html' },
     { q: 'Hol találom a kezdő útmutatókat?', a: 'A Kezdés oldal az első 5 ajánlott útmutatót mutatja, az Útmutatók oldalon pedig az összes megvan téma szerint.', p: '/start.html' },
     { q: 'Mit jelentenek az AI-szavak, pl. prompt vagy token?', a: 'Az AI-kisszótárunk közérthetően elmagyarázza a leggyakoribb fogalmakat.', p: '/glossary.html' },
-    { q: 'Van RSS?', a: 'Igen — minden nyelvnek saját feedje van.', p: '/feed.xml' }
+    { q: 'Van RSS?', a: 'Igen — minden nyelvnek saját feedje van.', p: '/feed.xml' },
+    { q: 'Hogyan tudlak elérni titeket / élő embert?', a: 'A Rólunk oldal alján lévő üzenet-űrlappal, vagy írj a support@aiworldhq.com címre — minden üzenetet elolvas egy ember.', p: '/about.html#contact' }
   ],
   es: [
     { q: '¿Qué es AI World HQ?', a: 'Un sitio automático e independiente de noticias y guías que te ayuda a usar la IA en el día a día. El contenido lo produce una redacción de IA con controles de honestidad, en 5 idiomas.', p: '/about.html' },
@@ -303,7 +305,8 @@ const CS_FAQ = {
     { q: '¿El sitio es gratis? ¿Cómo puedo apoyarlo?', a: 'Todo es gratis. Si quieres, puedes dejar una propina voluntaria en la página de Apoyo.', p: '/support.html' },
     { q: '¿Dónde están las guías para principiantes?', a: 'La página Empezar muestra las 5 primeras guías recomendadas, y en Guías están todas por tema.', p: '/start.html' },
     { q: '¿Qué significan palabras como prompt o token?', a: 'Nuestro pequeño glosario de IA explica los términos más comunes en lenguaje claro.', p: '/glossary.html' },
-    { q: '¿Hay RSS?', a: 'Sí — cada idioma tiene su propio feed.', p: '/feed.xml' }
+    { q: '¿Hay RSS?', a: 'Sí — cada idioma tiene su propio feed.', p: '/feed.xml' },
+    { q: '¿Cómo os contacto / hablo con una persona?', a: 'Usa el formulario al final de la página Sobre nosotros, o escribe a support@aiworldhq.com — una persona lee todos los mensajes.', p: '/about.html#contact' }
   ],
   de: [
     { q: 'Was ist AI World HQ?', a: 'Eine automatische, unabhängige News- und Anleitungsseite, die dir hilft, KI im Alltag zu nutzen. Die Inhalte erstellt eine KI-Redaktion mit Ehrlichkeits-Checks, in 5 Sprachen.', p: '/about.html' },
@@ -312,7 +315,8 @@ const CS_FAQ = {
     { q: 'Ist die Seite kostenlos? Wie kann ich sie unterstützen?', a: 'Alles ist kostenlos. Wenn du magst, kannst du auf der Unterstützen-Seite ein freiwilliges Trinkgeld geben.', p: '/support.html' },
     { q: 'Wo finde ich Anleitungen für Einsteiger?', a: 'Die Start-Seite zeigt die ersten 5 empfohlenen Anleitungen, auf der Anleitungen-Seite findest du alle nach Thema.', p: '/start.html' },
     { q: 'Was bedeuten KI-Wörter wie Prompt oder Token?', a: 'Unser kleines KI-Glossar erklärt die häufigsten Begriffe verständlich.', p: '/glossary.html' },
-    { q: 'Gibt es RSS?', a: 'Ja — jede Sprache hat ihren eigenen Feed.', p: '/feed.xml' }
+    { q: 'Gibt es RSS?', a: 'Ja — jede Sprache hat ihren eigenen Feed.', p: '/feed.xml' },
+    { q: 'Wie erreiche ich euch / einen Menschen?', a: 'Nutze das Nachrichten-Formular unten auf der Über-uns-Seite, oder schreib an support@aiworldhq.com — jede Nachricht liest ein Mensch.', p: '/about.html#contact' }
   ],
   fr: [
     { q: 'Qu’est-ce que AI World HQ ?', a: 'Un site automatique et indépendant d’actus et de guides qui vous aide à utiliser l’IA au quotidien. Le contenu est produit par une rédaction IA avec des contrôles d’honnêteté, en 5 langues.', p: '/about.html' },
@@ -321,7 +325,8 @@ const CS_FAQ = {
     { q: 'Le site est-il gratuit ? Comment le soutenir ?', a: 'Tout est gratuit. Si vous le souhaitez, vous pouvez laisser un pourboire volontaire sur la page Soutenir.', p: '/support.html' },
     { q: 'Où trouver les guides pour débutants ?', a: 'La page Commencer présente les 5 premiers guides recommandés, et la page Guides les regroupe tous par thème.', p: '/start.html' },
     { q: 'Que signifient les mots comme prompt ou token ?', a: 'Notre petit glossaire IA explique les termes les plus courants en langage clair.', p: '/glossary.html' },
-    { q: 'Y a-t-il un flux RSS ?', a: 'Oui — chaque langue a son propre flux.', p: '/feed.xml' }
+    { q: 'Y a-t-il un flux RSS ?', a: 'Oui — chaque langue a son propre flux.', p: '/feed.xml' },
+    { q: 'Comment vous contacter / parler à un humain ?', a: 'Utilisez le formulaire en bas de la page À propos, ou écrivez à support@aiworldhq.com — un humain lit chaque message.', p: '/about.html#contact' }
   ]
 };
 

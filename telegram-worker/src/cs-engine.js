@@ -39,9 +39,9 @@ function systemPrompt(lang, hits) {
     : '(no matching knowledge items)';
   return `You are the friendly automated support assistant of AI World HQ (${SITE}), a free news+guides site that helps everyday people use AI.
 
-SCOPE — you may ONLY discuss: (a) this website (content, newsletter, error reports, support page), (b) practical AI-tool questions covered by our guides. For ANYTHING else (personal data, payments, legal/medical advice, coding help, homework, politics, other companies' support), start your reply with the exact marker [ESCALATE] and add one polite sentence suggesting the contact form.
+SCOPE — you may discuss: (a) this website (content, newsletter, error reports, support page), and (b) everyday AI questions: what AI tools do, how beginners can start, which of our guides helps. Use the exact marker [ESCALATE] at the START of your reply ONLY for genuinely off-topic or personal matters: someone's account/payment/personal data, legal or medical advice, writing their homework or essays, politics, or another company's customer support. Add one polite sentence pointing to the contact form.
 
-HONESTY — answer ONLY from the KNOWLEDGE list below. NEVER invent tools, features, prices or URLs. Every link you give MUST be copied verbatim from the KNOWLEDGE list. If the list has no answer, start with [ESCALATE] and say honestly that you are not sure.
+HONESTY — this is the most important rule. Name an AI product ONLY if it appears in the KNOWLEDGE list below. Features, prices and links MUST also come from that list; NEVER invent a URL, a product, a price or a feature, and never guess a link's address — write a link only by copying it character-for-character from the list. If the KNOWLEDGE list has no specific answer, DO NOT escalate for that reason alone: give a short, genuinely useful general answer in plain language (no invented specifics), and point the visitor to our guides page ${SITE}/guides.html. Escalate only if the question is off-topic or you truly cannot help.
 
 STYLE — ${LANG_RULE[lang] || LANG_RULE.en} Max ~120 words. Plain, warm, beginner-friendly. When a guide is relevant, recommend it with its link.
 
@@ -49,11 +49,48 @@ KNOWLEDGE:
 ${kbBlock}`;
 }
 
+// ===================================================================
+// KITALÁLT-URL ŐR (2026-07-21, éles lelet a helyi próbán): a modell hihető, de
+// NEM LÉTEZŐ címet írt ("aiworldhq.com/contact"). A cég alapszabálya: kitalált
+// URL TILOS — a promptban kérni kevés, ezért determinisztikusan is kivágjuk.
+// Ami nincs benne a kb.json-ban, az nem mehet ki az olvasóhoz.
+// ===================================================================
+// Az oldal ÁLLANDÓ menüoldalai — ezeket a build mindig legyártja, tehát valódiak.
+// (Enélkül az őr a saját promptunk által ajánlott /guides.html-t is kivágta.)
+const SITE_PAGES = ['', '/guides.html', '/tools.html', '/start.html', '/glossary.html', '/wizard.html', '/about.html', '/archive.html', '/support.html', '/feed.xml'];
+
+function knownUrls(kb) {
+  const set = new Set();
+  for (const g of kb.guides || []) set.add(g.u);
+  for (const s of kb.site || []) set.add(s.u);
+  for (const t of kb.terms || []) set.add(t.u);
+  const lp = (kb.lang && kb.lang !== 'en') ? '/' + kb.lang : '';
+  for (const p of SITE_PAGES) {
+    set.add(SITE + lp + p);
+    if (p === '') set.add(SITE + lp + '/');
+  }
+  return set;
+}
+
+export function stripUnknownUrls(text, kb) {
+  const ok = knownUrls(kb);
+  return String(text || '')
+    .replace(/https?:\/\/[^\s<>()[\]"']+/g, (u) => {
+      const clean = u.replace(/[.,;:!?)]+$/, '');   // záró írásjel nem része a címnek
+      return ok.has(clean) || ok.has(u) ? u : '';
+    })
+    .replace(/[ \t]{2,}/g, ' ')
+    .replace(/\s+([.,;:!?])/g, '$1')
+    .trim();
+}
+
 // Fő belépő: {message, lang, fetchFn?} → {text, escalate, links}
 export async function answer(env, { message, lang, fetchFn = fetch }) {
   try {
     const kb = await loadKb(env, lang === 'auto' ? 'en' : lang, fetchFn);
-    const hits = searchKb(message, kb, 4);
+    // 6 jelölt (2026-07-21: 4 volt) — a modell maga szűri, mi releváns; a laza
+    // tő-egyezés miatt több a jelölt, és jobb, ha van miből válogatnia.
+    const hits = searchKb(message, kb, 6);
     const res = await env.AI.run(MODEL, {
       messages: [
         { role: 'system', content: systemPrompt(lang, hits) },
@@ -67,8 +104,11 @@ export async function answer(env, { message, lang, fetchFn = fetch }) {
     // Üres AI-válasz (sikeres hívás, de nincs tartalom) = degradált kimenet →
     // eszkaláció, hogy a hívó a fallback-útra tegye, ne üres buborék menjen ki.
     if (!text) escalate = true;
-    // Csak a kb-találatokban szereplő linkeket adjuk vissza kattinthatóként —
-    // ha a modell mást írna, az a szövegben marad, de a UI-ban nem lesz gomb.
+    // KITALÁLT URL kivágása MÉG a linkek számítása előtt (2026-07-21): ami nincs
+    // a kb.json-ban, az ki sem kerül a szövegbe — így gomb sem lesz belőle.
+    text = stripUnknownUrls(text, kb);
+    if (!text) escalate = true;
+    // Csak a kb-találatokban szereplő linkek lesznek kattintható gombok.
     const links = hits.filter(h => text.includes(h.u)).map(h => ({ t: h.t, u: h.u }));
     return { text, escalate, links };
   } catch (e) {

@@ -1,6 +1,6 @@
 // node telegram-worker/test/cs-engine.test.js — offline: fake KV + fake AI + fake fetch
 import { strict as assert } from 'assert';
-import { answer, loadKb, MODEL } from '../src/cs-engine.js';
+import { answer, loadKb, MODEL, stripUnknownUrls } from '../src/cs-engine.js';
 
 function fakeKv() {
   const store = new Map();
@@ -64,6 +64,31 @@ const fakeFetch = async (url) => { fetchCount++; assert.ok(url.includes('/kb.jso
   const r = await answer(env, { message: 'hello there', lang: 'en', fetchFn: fakeFetch });
   assert.equal(r.escalate, true);
   assert.equal(r.text, '');
+}
+
+// ===================================================================
+// KITALÁLT-URL ŐR (2026-07-21, éles próbán lelt hiba): a modell a nem létező
+// "aiworldhq.com/contact" címet írta. Ami nincs a kb.json-ban, ki kell esnie.
+// ===================================================================
+{
+  const kb2 = {
+    site: [{ q: 'x', a: 'y', u: 'https://aiworldhq.com/about.html' }],
+    guides: [{ t: 'g', s: 's', u: 'https://aiworldhq.com/article/real-guide', c: '' }],
+    terms: []
+  };
+  // valódi kb-linkek MEGMARADNAK (záró írásjellel is)
+  const keep = stripUnknownUrls('Nézd meg: https://aiworldhq.com/article/real-guide, és https://aiworldhq.com/about.html.', kb2);
+  assert.ok(keep.includes('https://aiworldhq.com/article/real-guide'), 'valódi guide-link megmarad');
+  assert.ok(keep.includes('https://aiworldhq.com/about.html'), 'valódi site-link megmarad');
+
+  // KITALÁLT cím eltűnik
+  const drop = stripUnknownUrls('Írj ide: https://aiworldhq.com/contact vagy https://example.com/fake', kb2);
+  assert.ok(!drop.includes('/contact'), 'kitalált /contact URL kivágva');
+  assert.ok(!drop.includes('example.com'), 'idegen URL kivágva');
+
+  // vegyes eset: a valódi marad, a kitalált megy
+  const mixed = stripUnknownUrls('Igazi: https://aiworldhq.com/article/real-guide Hamis: https://aiworldhq.com/nincs-ilyen', kb2);
+  assert.ok(mixed.includes('/article/real-guide') && !mixed.includes('nincs-ilyen'), 'vegyesen is jól szűr');
 }
 
 console.log('✅ cs-engine.test: minden átment');
