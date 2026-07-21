@@ -1,110 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178454446328822",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-20T10:47:43.288Z",
-      "updated": "2026-07-20T10:48:24.364Z"
-    },
-    {
-      "id": "t178454450436622",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-20T10:48:24.366Z",
-      "updated": "2026-07-20T10:48:50.940Z"
-    },
-    {
-      "id": "t178454453094330",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-07-20T10:48:50.943Z",
-      "updated": "2026-07-20T10:48:51.788Z"
-    },
-    {
-      "id": "t178454453183488",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-20T10:48:51.834Z",
-      "updated": "2026-07-20T10:49:02.518Z"
-    },
-    {
-      "id": "t17845445425200",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-07-20T10:49:02.520Z",
-      "updated": "2026-07-20T10:49:30.374Z"
-    },
-    {
-      "id": "t178454457037659",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-20T10:49:30.376Z",
-      "updated": "2026-07-20T10:49:31.468Z"
-    },
-    {
-      "id": "t178454457147158",
-      "title": "Run translator",
-      "status": "done",
-      "agent": "translator",
-      "created": "2026-07-20T10:49:31.471Z",
-      "updated": "2026-07-20T11:00:44.129Z"
-    },
-    {
-      "id": "t17845452441319",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-07-20T11:00:44.131Z",
-      "updated": "2026-07-20T11:00:52.580Z"
-    },
-    {
-      "id": "t178456894191247",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-07-20T17:35:41.912Z",
-      "updated": "2026-07-20T17:35:42.280Z"
-    },
-    {
-      "id": "t178456894228488",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-07-20T17:35:42.284Z",
-      "updated": "2026-07-20T17:35:53.048Z"
-    },
-    {
-      "id": "t178456895305096",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-07-20T17:35:53.050Z",
-      "updated": "2026-07-20T17:36:37.816Z"
-    },
-    {
-      "id": "t178456899782089",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-07-20T17:36:37.820Z",
-      "updated": "2026-07-20T17:37:43.101Z"
-    },
-    {
-      "id": "t17845690631030",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-20T17:37:43.103Z",
-      "updated": "2026-07-20T17:37:43.456Z"
-    },
-    {
       "id": "t178456906345957",
       "title": "Run iro",
       "status": "done",
@@ -479,33 +375,113 @@
       "agent": "publisher",
       "created": "2026-07-21T10:25:38.777Z",
       "updated": "2026-07-21T10:25:47.403Z"
+    },
+    {
+      "id": "t178465356972415",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-07-21T17:06:09.725Z",
+      "updated": "2026-07-21T17:06:09.936Z"
+    },
+    {
+      "id": "t178465356993836",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-07-21T17:06:09.938Z",
+      "updated": "2026-07-21T17:06:33.462Z"
+    },
+    {
+      "id": "t178465359346488",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-07-21T17:06:33.464Z",
+      "updated": "2026-07-21T17:06:33.683Z"
+    },
+    {
+      "id": "t178465359368545",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-07-21T17:06:33.685Z",
+      "updated": "2026-07-21T17:07:25.489Z"
+    },
+    {
+      "id": "t178465364549196",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-21T17:07:25.491Z",
+      "updated": "2026-07-21T17:07:26.110Z"
+    },
+    {
+      "id": "t178465364611953",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-07-21T17:07:26.119Z",
+      "updated": "2026-07-21T17:08:04.722Z"
+    },
+    {
+      "id": "t178465368472428",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-21T17:08:04.724Z",
+      "updated": "2026-07-21T17:08:39.367Z"
+    },
+    {
+      "id": "t178465371937090",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-07-21T17:08:39.370Z",
+      "updated": "2026-07-21T17:08:59.853Z"
+    },
+    {
+      "id": "t178465373987782",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-21T17:08:59.877Z",
+      "updated": "2026-07-21T17:09:26.515Z"
+    },
+    {
+      "id": "t178465376651725",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-07-21T17:09:26.517Z",
+      "updated": "2026-07-21T17:09:44.385Z"
+    },
+    {
+      "id": "t178465378438732",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-21T17:09:44.387Z",
+      "updated": "2026-07-21T17:09:45.398Z"
+    },
+    {
+      "id": "t178465378539986",
+      "title": "Run translator",
+      "status": "done",
+      "agent": "translator",
+      "created": "2026-07-21T17:09:45.399Z",
+      "updated": "2026-07-21T17:15:20.981Z"
+    },
+    {
+      "id": "t178465412098369",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-07-21T17:15:20.983Z",
+      "updated": "2026-07-21T17:15:29.145Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178393991574772",
-      "level": "warn",
-      "text": "📨 ceo → human: Emberi döntés kell: \"Quickly compare two Excel files side-by-side using NVIDIA ChatRTX to spot differences\" — CEO döntés",
-      "agent": "ceo",
-      "at": "2026-07-13T10:51:55.747Z",
-      "loud": false
-    },
-    {
-      "id": "n178393992380370",
-      "level": "info",
-      "text": "SEO: 3 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-07-13T10:52:03.803Z",
-      "loud": false
-    },
-    {
-      "id": "n178394020553525",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). Our line-up is coherent and ready to publish, with a great mix of practical articles that showcase AI's everyday applications. I do note that some topics may be more tech-heavy, so a gentle intro or g",
-      "agent": "publisher",
-      "at": "2026-07-13T10:56:45.535Z",
-      "loud": false
-    },
     {
       "id": "n178394021130921",
       "level": "success",
@@ -1281,137 +1257,33 @@
       "agent": "ceo",
       "at": "2026-07-21T10:25:47.430Z",
       "loud": false
+    },
+    {
+      "id": "n178465378437826",
+      "level": "info",
+      "text": "SEO: 4 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-07-21T17:09:44.378Z",
+      "loud": false
+    },
+    {
+      "id": "n178465412182619",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The article line-up is coherent and ready for publication, offering a variety of practical uses for AI tools like Qwen Chat, Claude, Perplexity AI, and ChatGPT. However, I do note that the tech-heavy ",
+      "agent": "publisher",
+      "at": "2026-07-21T17:15:21.826Z",
+      "loud": false
+    },
+    {
+      "id": "n178465412916992",
+      "level": "success",
+      "text": "4 hír + 0 útmutató publikálva (költség: $0.0613).",
+      "agent": "ceo",
+      "at": "2026-07-21T17:15:29.169Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178442497044720",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "need",
-      "text": "Hiányos / kell még adat: \"Set up a customer FAQ chatbot using DeepSeek on your website\" — egészítsd ki: Incomplete 'What this means for you' section",
-      "ref": "GUIDE_set-up-a-customer-faq-chatbot-using-deepseek-on-your-website.json",
-      "open": false,
-      "at": "2026-07-19T01:36:10.447Z",
-      "resolved_at": "2026-07-19T09:48:47.099Z"
-    },
-    {
-      "id": "m178442508455655",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"How to turn a blurry photo into a crisp poster with NVIDIA AI Image Super‑Resolution in 5 minutes\" — mi a baj: NO_H1: Nincs H1 (# Cím) a cikkben",
-      "ref": "GUIDE_how-to-turn-a-blurry-photo-into-a-crisp-poster-with-nvidia-a.json",
-      "at": "2026-07-19T01:38:04.556Z"
-    },
-    {
-      "id": "m178442508458382",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Summarize long articles and reports from the web or documents using DeepSeek\" — mi a baj: NO_H1: Nincs H1 (# Cím) a cikkben",
-      "ref": "GUIDE_summarize-long-articles-and-reports-from-the-web-or-document.json",
-      "at": "2026-07-19T01:38:04.583Z"
-    },
-    {
-      "id": "m178442515102740",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 18 → 6/3/3 oszlop.",
-      "ref": "mobile",
-      "at": "2026-07-19T01:39:11.027Z"
-    },
-    {
-      "id": "m178442627473499",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
-      "ref": null,
-      "at": "2026-07-19T01:57:54.734Z"
-    },
-    {
-      "id": "m178445426735791",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Expanded language support for Gemini in Google Docs\" — javítva: Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
-      "ref": "2026-07-16T19-05-14-341Z_google-workspace_Expanded_language_support_for_Gemini_in_Google_Doc.json",
-      "at": "2026-07-19T09:44:27.357Z"
-    },
-    {
-      "id": "m178445427898673",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Easily control the emotions and pacing of AI avatars and AI voiceovers in Google Vids\" — javítva: Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
-      "ref": "2026-07-16T19-05-14-349Z_google-workspace_Easily_control_the_emotions_and_pacing_of_AI_avata.json",
-      "at": "2026-07-19T09:44:38.986Z"
-    },
-    {
-      "id": "m178445429055414",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"The skills gap behind agentic AI — and how Databricks is closing it with a new context engineer certification and agent trainings\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; CLICHE: Tiltott klisé találva: \"game-changer\"; újraküldöm.",
-      "ref": "2026-07-16T19-05-15-421Z_databricks_The_skills_gap_behind_agentic_AI___and_how_Databri.json",
-      "at": "2026-07-19T09:44:50.554Z"
-    },
-    {
-      "id": "m178445429816863",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Unified context: The missing layer for enterprise AI coworkers\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; Reviewer verdict: Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben; újraküldöm.",
-      "ref": "2026-07-16T19-05-15-422Z_databricks_Unified_context__The_missing_layer_for_enterprise_.json",
-      "at": "2026-07-19T09:44:58.168Z"
-    },
-    {
-      "id": "m178445430908976",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"AI-Enabled Advisory Services for Higher Education\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; Reviewer verdict: Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben; újraküldöm.",
-      "ref": "2026-07-16T19-05-17-032Z_databricks_AI-Enabled_Advisory_Services_for_Higher_Education.json",
-      "at": "2026-07-19T09:45:09.089Z"
-    },
-    {
-      "id": "m178445431839250",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"New Google Meet 'Take notes for me' settings for admins and end users\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; CLICHE: Tiltott klisé találva: \"game-changer\"; újraküldöm.",
-      "ref": "2026-07-17T01-43-42-624Z_google-workspace_New_Google_Meet__Take_notes_for_me__settings_for_a.json",
-      "at": "2026-07-19T09:45:18.392Z"
-    },
-    {
-      "id": "m178445432651028",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Expanded language support for Gemini in Google Docs\" — mi a baj: Salvaged from a partial AI response.",
-      "ref": "2026-07-16T19-05-14-341Z_google-workspace_Expanded_language_support_for_Gemini_in_Google_Doc.json",
-      "at": "2026-07-19T09:45:26.510Z"
-    },
-    {
-      "id": "m178445433635211",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Easily control the emotions and pacing of AI avatars and AI voiceovers in Google Vids\" (?/10)",
-      "ref": "2026-07-16T19-05-14-349Z_google-workspace_Easily_control_the_emotions_and_pacing_of_AI_avata.json",
-      "at": "2026-07-19T09:45:36.352Z"
-    },
-    {
-      "id": "m178445434198584",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"The skills gap behind agentic AI — and how Databricks is closing it with a new context engineer certification and agent trainings\" (?/10)",
-      "ref": "2026-07-16T19-05-15-421Z_databricks_The_skills_gap_behind_agentic_AI___and_how_Databri.json",
-      "at": "2026-07-19T09:45:41.985Z"
-    },
     {
       "id": "m17844543512419",
       "from": "ellenorzo",
@@ -2646,6 +2518,132 @@
       "text": "6 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
       "ref": null,
       "at": "2026-07-21T10:26:41.680Z"
+    },
+    {
+      "id": "m178465364593331",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Introducing Gemini 3.5 Flash Cyber\" — mi a baj: NO_H1: Nincs H1 (# Cím) a cikkben",
+      "ref": "2026-07-21T17-06-28-504Z_google-deepmind_Introducing_Gemini_3_5_Flash_Cyber.json",
+      "at": "2026-07-21T17:07:25.933Z"
+    },
+    {
+      "id": "m178465364597048",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Introducing Gemini 3.6 Flash, 3.5 Flash-Lite, and 3.5 Flash Cyber\" — mi a baj: NO_H1: Nincs H1 (# Cím) a cikkben",
+      "ref": "2026-07-21T17-06-28-504Z_google-deepmind_Introducing_Gemini_3_6_Flash__3_5_Flash-Lite__and_.json",
+      "at": "2026-07-21T17:07:25.970Z"
+    },
+    {
+      "id": "m178465364600370",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Introducing the ChatGPT for small business program\" — mi a baj: NO_H1: Nincs H1 (# Cím) a cikkben",
+      "ref": "2026-07-21T17-06-28-504Z_openai-blog_Introducing_the_ChatGPT_for_small_business_program.json",
+      "at": "2026-07-21T17:07:26.003Z"
+    },
+    {
+      "id": "m178465364610121",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"How to build interactive experiences with canvases\" — mi a baj: NO_H1: Nincs H1 (# Cím) a cikkben; CLICHE: Tiltott klisé találva: \"game-changer\"",
+      "ref": "2026-07-21T17-06-28-505Z_github-ai_How_to_build_interactive_experiences_with_canvases.json",
+      "at": "2026-07-21T17:07:26.101Z"
+    },
+    {
+      "id": "m178465365885364",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Introducing Gemini 3.5 Flash Cyber\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; Reviewer verdict: Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben; újraküldöm.",
+      "ref": "2026-07-21T17-06-28-504Z_google-deepmind_Introducing_Gemini_3_5_Flash_Cyber.json",
+      "at": "2026-07-21T17:07:38.853Z"
+    },
+    {
+      "id": "m178465366896334",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Introducing Gemini 3.6 Flash, 3.5 Flash-Lite, and 3.5 Flash Cyber\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; Reviewer verdict: Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben; újraküldöm.",
+      "ref": "2026-07-21T17-06-28-504Z_google-deepmind_Introducing_Gemini_3_6_Flash__3_5_Flash-Lite__and_.json",
+      "at": "2026-07-21T17:07:48.963Z"
+    },
+    {
+      "id": "m178465367641092",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Introducing the ChatGPT for small business program\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; Reviewer verdict: Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben; újraküldöm.",
+      "ref": "2026-07-21T17-06-28-504Z_openai-blog_Introducing_the_ChatGPT_for_small_business_program.json",
+      "at": "2026-07-21T17:07:56.410Z"
+    },
+    {
+      "id": "m17846536847136",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"How to build interactive experiences with canvases\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; CLICHE: Tiltott klisé találva: \"game-changer\"; újraküldöm.",
+      "ref": "2026-07-21T17-06-28-505Z_github-ai_How_to_build_interactive_experiences_with_canvases.json",
+      "at": "2026-07-21T17:08:04.713Z"
+    },
+    {
+      "id": "m178465369235868",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Introducing Gemini 3.5 Flash Cyber\" (?/10)",
+      "ref": "2026-07-21T17-06-28-504Z_google-deepmind_Introducing_Gemini_3_5_Flash_Cyber.json",
+      "at": "2026-07-21T17:08:12.358Z"
+    },
+    {
+      "id": "m178465370112789",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Introducing Gemini 3.6 Flash, 3.5 Flash-Lite, and 3.5 Flash Cyber\" (?/10)",
+      "ref": "2026-07-21T17-06-28-504Z_google-deepmind_Introducing_Gemini_3_6_Flash__3_5_Flash-Lite__and_.json",
+      "at": "2026-07-21T17:08:21.127Z"
+    },
+    {
+      "id": "m178465370961118",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Introducing the ChatGPT for small business program\" (?/10)",
+      "ref": "2026-07-21T17-06-28-504Z_openai-blog_Introducing_the_ChatGPT_for_small_business_program.json",
+      "at": "2026-07-21T17:08:29.611Z"
+    },
+    {
+      "id": "m178465371935992",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"How to build interactive experiences with canvases\" (?/10)",
+      "ref": "2026-07-21T17-06-28-505Z_github-ai_How_to_build_interactive_experiences_with_canvases.json",
+      "at": "2026-07-21T17:08:39.359Z"
+    },
+    {
+      "id": "m178465378537941",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-07-21T17:09:45.379Z"
+    },
+    {
+      "id": "m178465418255485",
+      "from": "social",
+      "to": "team",
+      "kind": "info",
+      "text": "6 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
+      "ref": null,
+      "at": "2026-07-21T17:16:22.554Z"
     }
   ]
 }
