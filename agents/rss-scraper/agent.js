@@ -111,6 +111,13 @@ function saveSeenItems(seen) {
 // ===================================================================
 
 async function fetchFeed(feedConfig) {
+  // SITEMAP-FORRÁS (2026-07-22): néhány nagy cég (Anthropic, Cohere) nem ad RSS-t,
+  // de a hivatalos sitemap.xml-jéből ugyanúgy előállítható a hírfolyam. Innentől
+  // a cikk a MEGSZOKOTT úton megy tovább (kulcsszó → AI relevancia → író → kapu).
+  if (feedConfig.type === 'sitemap') {
+    const { fetchSitemapFeed } = await import('../../core/sitemap-feed.js');
+    return fetchSitemapFeed(feedConfig, { limit: 10 });
+  }
   try {
     const feed = await parser.parseURL(feedConfig.url);
     return { ok: true, items: feed.items || [] };

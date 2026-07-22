@@ -216,13 +216,17 @@
     {
       "id": "cohere-blog",
       "name": "Cohere (hivatalos)",
-      "url": "https://cohere.com/blog",
+      "url": "https://www.cohere.com/sitemap.xml",
       "category": "ai-company-official",
       "priority": 3,
       "language": "en",
       "country": "CA",
-      "comment": "HIVATALOS Cohere (vállalati AI), de nincs RSS (HTML, 2026-06-21). KIKAPCSOLVA (future).",
-      "enabled": false
+      "comment": "HIVATALOS Cohere (vállalati AI). RSS-t NEM ad (HTML), ezért SITEMAP-forrásként fut (2026-07-22): az angol /blog/ cikkek, dátum szerint (a japán/koreai/francia/német/spanyol/portugál változatok kizárva).",
+      "enabled": true,
+      "type": "sitemap",
+      "path_include": "/blog/",
+      "path_exclude": "/(ja|ko|fr|de|es|pt)/",
+      "max_age_days": 30
     },
     {
       "id": "reddit-artificial",
@@ -282,13 +286,16 @@
     {
       "id": "anthropic-blog",
       "name": "Anthropic (hivatalos)",
-      "url": "https://www.anthropic.com/news/rss.xml",
+      "url": "https://www.anthropic.com/sitemap.xml",
       "category": "ai-company-official",
       "priority": 1,
       "language": "en",
       "country": "US",
-      "comment": "HIVATALOS de NINCS RSS-ük (404). X-en aktívak - X integráció kell hozzá (future).",
-      "enabled": false
+      "comment": "HIVATALOS Anthropic (Claude). RSS-t NEM ad (404), ezért SITEMAP-forrásként fut (2026-07-22): a hivatalos sitemap.xml /news/ + /engineering/ útvonalai, dátum szerint. Első kezes forrás — a Claude-csempe hírei innen jönnek.",
+      "enabled": true,
+      "type": "sitemap",
+      "path_include": "/(news|engineering)/",
+      "max_age_days": 30
     },
     {
       "id": "techcrunch-ai",
