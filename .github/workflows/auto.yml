@@ -126,6 +126,14 @@ jobs:
           node agents/social/poster.js --limit 2 || true
 
       # Napi önjelentés a Főnöktől Telegramra (naponta 1x, a 7-15 UTC sávban)
+      # FORRÁS-BIZONYÍTVÁNY (2026-07-22): osztályozza a hírforrásokat (frissesség +
+      # termés + hitelesség-kapu blokkok). A halott/valótlant közlő forrást MAGÁTÓL
+      # kikapcsolja (enabled:false), a többiről csak javaslatot tesz a napi riportban.
+      # A riport ELŐTT fut, hogy a friss osztályzat kerüljön bele.
+      - name: Forrás-bizonyítvány (osztályozás + halott források kikapcsolása)
+        if: always()
+        run: node core/source-report-card.js || true
+
       # if: always() (2026-07-21 audit) — ha egy korábbi lépés elhasal, a riport
       # ENÉLKÜL sosem menne ki: a hiba NÉMA maradna (mint a 9 napos FB-leállásnál).
       - name: Napi önjelentés (Telegram)

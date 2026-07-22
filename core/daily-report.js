@@ -209,6 +209,14 @@ async function main() {
         lines.push('⛔ FB-POSZTOLÓ LEÁLLT (Make-forgatókönyv inaktív)! Kapcsold vissza: eu1.make.com → Scenarios → kapcsoló a sor végén.');
     }
   } catch { /* a Make-őr hibája nem állítja meg a jelentést */ }
+  // FORRÁS-BIZONYÍTVÁNY (2026-07-22): a külön lépés által kiírt osztályzatokból.
+  // Csendes, ha nincs teendő; hangos, ha forrást kapcsoltunk ki vagy elavultból írunk.
+  try {
+    const { reportLineFromFile } = await import('./source-report-card.js');
+    const srcLine = reportLineFromFile();
+    if (srcLine) lines.push(srcLine);
+  } catch { /* a riport ettől még kimegy */ }
+
   // ÜGYFÉLSZOLGÁLAT (2026-07-20): napi darabszámok a Workerből (💬 sor).
   // Csak akkor szól, ha volt forgalom — csendes, ha 0.
   try {
