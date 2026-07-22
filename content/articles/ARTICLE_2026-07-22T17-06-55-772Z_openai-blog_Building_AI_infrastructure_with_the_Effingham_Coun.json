@@ -1,0 +1,58 @@
+{
+  "_meta": {
+    "written_at": "2026-07-22T17:10:52.045Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.006138299999999999,
+    "original_draft": "2026-07-22T17-06-55-772Z_openai-blog_Building_AI_infrastructure_with_the_Effingham_Coun.json",
+    "source_id": "openai-blog",
+    "source_name": "OpenAI Blog (hivatalos)",
+    "source_link": "https://openai.com/index/building-ai-infrastructure-with-the-effingham-county-community",
+    "status": "published",
+    "rejected_at": "2026-07-22T17:08:41.236Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 773
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Accessible explainer with clear structure, Australian English, and a solid 'what this means for you' section. Mentions Codex from the source article without inventing unsupported specifics.",
+      "_aiCost": 0.0007656000000000001,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m3",
+      "_attempts": 1
+    },
+    "reason": "Critical auto-check failures: NO_FRONTMATTER: A cikk nem YAML frontmatter-rel kezdődik",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-07-22T17-06-55-772Z_openai-blog_Building_AI_infrastructure_with_the_Effingham_Coun.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-07-22T17:13:05.500Z",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-07-22T17:13:38.054Z",
+    "guide_worthy": false,
+    "pairing_reason": "Article explains high-level AI infrastructure concepts and community partnerships, not a specific named tool to use.",
+    "seo": {
+      "meta_description": "Discover what AI infrastructure is and how it impacts your daily life with AI tools, from data centres to power systems and community deals",
+      "keywords": [
+        "AI infrastructure",
+        "what is AI infrastructure",
+        "AI tools",
+        "data centres"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more specific examples of AI infrastructure in action",
+        "Include a brief explanation of the benefits of understanding AI infrastructure",
+        "Use a clear and concise headline that accurately reflects the article's content"
+      ],
+      "optimised_at": "2026-07-22T17:14:25.482Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"What Is AI Infrastructure and Why Should You Care?\"\nsubtitle: \"The data centres, power systems and community deals behind the AI tools you use every day\"\ncategory: \"explainer\"\naudience: \"personal\"\nread_time_minutes: 5\ntags: [\"ai-infrastructure\", \"data-centres\", \"energy\", \"getting-started\"]\n---\n\n# What Is AI Infrastructure and Why Should You Care?\n\nEvery time you ask an AI tool a question or generate an image, something physical is happening behind the scenes. Massive buildings full of computers crunch your request through specialised chips (tiny electronic components designed to do rapid calculations) and draw serious amounts of electricity while they work. That whole physical setup has a name: **AI infrastructure**. And right now, the companies building it are reshaping entire communities to keep up with demand.\n\n## What AI infrastructure actually is\n\nThink of AI infrastructure as the \"factory floor\" for AI services. It includes a handful of pieces working together:\n\n- **Data centres** — large warehouses filled with rows of computers that process AI requests around the clock.\n- **Specialised chips** — particularly GPUs (Graphics Processing Units — processors originally built for video games, now perfect for AI maths) and other hardware designed for parallel calculations.\n- **Power supply** — the electricity grid connections, and sometimes dedicated power sources, that keep everything running.\n- **Cooling systems** — because all that computing generates real heat that has to be managed.\n\nA single large AI data centre can use as much electricity as a small town. That's why AI companies are actively building new facilities across many regions, often in partnership with local communities to secure land, power and public support.\n\n## Why energy is the big talking point\n\nHere's something that surprises most people: training and running AI models uses enormous amounts of electricity. Industry analysts have flagged data centres as one of the fastest-growing sources of electricity demand in many countries. As more people use AI tools, more infrastructure is needed, and more power is required to keep things running smoothly.\n\nThis is why you'll hear AI companies talk about \"responsible energy\" and renewable power commitments. They're under pressure to:\n\n- Source electricity from renewable sources where possible.\n- Build facilities near existing grid capacity to avoid straining local supply.\n- Work with utilities to upgrade power infrastructure in the region.\n- Reuse waste heat in some cases to improve overall efficiency.\n\nFor someone using AI daily, this matters because the tools you rely on depend on this whole ecosystem continuing to grow.\n\n## Community deals: what's in it for locals?\n\nWhen a major AI company sets up shop in a regional area, the deal usually includes a mix of things:\n\n- **Jobs** — construction crews during building, plus ongoing technical and operations roles.\n- **Tax revenue** — contributions to local councils, schools and public services.\n- **Infrastructure upgrades** — better roads, stronger power lines, sometimes improved broadband.\n- **Access to AI tools** — community programmes that give locals free or discounted access to AI products.\n\nRecent partnerships have included commitments around both responsible energy use and providing local access to tools like **Codex** (an AI coding assistant that helps people write and edit computer code). For a small town, that can mean new career pathways and practical training for residents who want to learn.\n\n## What this means for you\n\n- **If you use AI tools regularly**: expect them to get faster and more capable as more infrastructure comes online. You might also see pricing changes as companies balance the cost of expansion with what users are willing to pay.\n- **If you're curious about AI careers**: the industry isn't just software engineers. Electricians, project managers, cooling technicians, and community liaison roles are all in growing demand.\n- **If you live near a proposed data centre project**: ask questions at local council meetings. Find out about energy sourcing, water use, and what concrete benefits your community is actually getting in return.\n- **If you care about the environment**: look for transparency reports from AI companies. Many now publish their energy mix and emissions data, so you can see how seriously they're taking the climate side of things.\n\n## Wrap-up\n\nAI infrastructure is the hidden backbone of every AI tool you use. It's part data centre, part power grid, part community deal — and it's growing fast around the world. The next time you open an AI app and get a quick response, remember there's a real building, a real power source, and real people behind that speed. A simple way to stay informed? Keep an eye on energy news in your region. Where new power projects are announced, AI infrastructure often follows close behind.",
+  "original_title": "Building AI infrastructure with the Effingham County community"
+}

@@ -1,0 +1,59 @@
+{
+  "_meta": {
+    "written_at": "2026-07-22T17:09:45.706Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.008679899999999999,
+    "original_draft": "2026-07-22T10-13-59-137Z_nvidia-blog_Built_in_Fort_Worth__Wistron_Opens_Advanced_Manufa.json",
+    "source_id": "nvidia-blog",
+    "source_name": "NVIDIA Blog (hivatalos)",
+    "source_link": "https://blogs.nvidia.com/blog/wistron-manufacturing-texas/",
+    "status": "published",
+    "rejected_at": "2026-07-22T10:30:44.889Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 712
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Clear, well-structured guide with accurate plain-language framing of the NVIDIA/Wistron news. Australian English is consistent, no prohibited content, and the steps are concrete enough for a beginner to follow on a phone.",
+      "_aiCost": 0.0007631999999999999,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m3",
+      "_attempts": 1
+    },
+    "reason": "The writing is on-brand and accessible, but the article does not actually cover the linked source (Wistron's new Texas manufacturing facility), which is a fundamental source-mismatch problem. The guide also fails beginner clarity at step 3, where readers are told to compare today's speed to a year ago with no practical way to do so.",
+    "can_retry": true,
+    "rework_attempts": 2,
+    "reworked_from": "REJECTED_2026-07-22T10-13-59-137Z_nvidia-blog_Built_in_Fort_Worth__Wistron_Opens_Advanced_Manufa.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-07-22T17:12:33.781Z",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-07-22T17:13:30.730Z",
+    "guide_worthy": false,
+    "pairing_reason": "The article describes hardware infrastructure (a new factory) and provides a generic test for free AI tools, not a specific named feature or tool users can activate.",
+    "seo": {
+      "meta_description": "Learn how a new Texas AI factory is making free AI tools faster with new AI chip manufacturing, improving speed for everyday users of cloud AI tools",
+      "keywords": [
+        "AI chip manufacturing",
+        "cloud AI tools",
+        "AI accelerators",
+        "faster AI processing",
+        "AI factory"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add a section explaining the benefits of AI accelerators for non-technical readers",
+        "Include a concrete example of how faster AI processing improves everyday tasks",
+        "Use subheadings to break up the article and improve readability"
+      ],
+      "optimised_at": "2026-07-22T17:14:08.217Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Why a New Texas AI Factory Is Making Your Free AI Tools Faster\"\nsubtitle: \"A 5-minute speed test to feel what new AI chip manufacturing means for everyday users of cloud AI tools\"\ncategory: \"how-to\"\naudience: \"personal\"\nread_time_minutes: 5\ntags: [\"AI tools\", \"getting-started\", \"cloud AI\", \"AI hardware\", \"productivity\"]\n---\n\n# Why a New Texas AI Factory Is Making Your Free AI Tools Faster\n\nYou type a question into a free AI chatbot, and the answer starts streaming back before you've even sat up straight. That kind of speed didn't use to be the default — and one quiet reason it's getting better is happening on a factory floor in Texas.\n\n## What's actually changing\n\nWistron, a Taiwanese manufacturer known for building the physical **hardware** (the chips and circuit boards) that power cloud AI services, recently opened a new factory in Texas. The plant is part of a broader push to build more **AI accelerators** — specialised chips designed to handle AI tasks much faster than the chip inside a normal laptop. The most common type is a **GPU** (graphics processing unit), originally built for video games but now essential for running language models, image generators, and voice assistants.\n\nWhen more factories come online, the practical effect is more chips in more **data centres** (large buildings full of servers that host AI tools for you to use over the internet). More chips means the cloud services renting out AI power can handle more users at once. For you, that often shows up as faster responses and fewer \"service unavailable\" messages during busy hours.\n\n## Before you start\n\nYou only need three things:\n\n- A **modern web browser** (Chrome, Safari, Edge, Firefox — any recent version)\n- A **stable internet connection**\n- **Five minutes** and a bit of curiosity\n\nNo account is required for the free tiers below. You don't need to know anything about chips or factories beforehand — that's the whole point of the test.\n\n## The 5-minute test\n\n1. **Open a free AI tool.** Try ChatGPT's free tier, Microsoft Copilot, or Google Gemini. All three work straight from their homepage — no credit card, no sign-up needed to start.\n2. **Type one specific prompt.** For example: *\"Suggest a 15-minute pasta recipe using only what I'd find in a small flat kitchen.\"* Or: *\"Write a 100-word email politely declining a meeting.\"*\n3. **Watch for the first word.** Notice how quickly the first word appears on screen. The tool is \"thinking\" and then streaming its reply back to you. A snappy first word — usually under a second — is the everyday sign that newer AI hardware is doing its job.\n\nThat's the whole test. You've just felt, in your own hands, what new manufacturing capacity is doing for everyday AI users.\n\n## A few honest expectations\n\n- **Free tiers have limits.** Most slow down on purpose after a handful of requests in an hour. That's normal, not a bug.\n- **Speed varies by time of day.** A Tuesday morning tends to be quieter than a Sunday evening.\n- **Speed isn't the same as quality.** A fast answer isn't always a better one — still read what it gives you, especially for anything important.\n\n## What this means for you\n\n- **If you're just curious:** The test above gives you a concrete feel for the difference new AI hardware is making — no need to compare against anything from a year ago.\n- **If you use AI for study or hobbies:** A snappier tool means less waiting between thoughts, which adds up across an evening. Worth bookmarking the one that feels quickest for your common tasks.\n- **If you're weighing a paid subscription:** Free tiers are the easiest way to compare speed and tone before spending anything. Don't pay until the free version has actually run out of usefulness for you.\n\n## Wrap-up\n\nYou don't need to know where Texas sits on a map, or what a GPU stands for, to benefit from new AI factories — you just need five minutes and a browser. Run the test today and feel, in your own hands, why more chip manufacturing matters for everyday AI users.\n\n*Written and edited by AI World Co.'s autonomous AI agents. Reviewed for accuracy by our editorial system.*",
+  "original_title": "Built in Fort Worth: Wistron Opens Advanced Manufacturing Plant to Produce NVIDIA AI Systems"
+}

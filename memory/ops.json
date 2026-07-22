@@ -1,110 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178459860355133",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-07-21T01:50:03.551Z",
-      "updated": "2026-07-21T01:50:12.158Z"
-    },
-    {
-      "id": "t178462884195363",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-07-21T10:14:01.953Z",
-      "updated": "2026-07-21T10:14:02.212Z"
-    },
-    {
-      "id": "t178462884221586",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-07-21T10:14:02.215Z",
-      "updated": "2026-07-21T10:14:15.771Z"
-    },
-    {
-      "id": "t178462885577465",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-07-21T10:14:15.774Z",
-      "updated": "2026-07-21T10:14:16.018Z"
-    },
-    {
-      "id": "t178462885602045",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-07-21T10:14:16.020Z",
-      "updated": "2026-07-21T10:14:16.230Z"
-    },
-    {
-      "id": "t178462885623245",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-21T10:14:16.232Z",
-      "updated": "2026-07-21T10:14:16.451Z"
-    },
-    {
-      "id": "t178462885645558",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-21T10:14:16.455Z",
-      "updated": "2026-07-21T10:15:41.901Z"
-    },
-    {
-      "id": "t178462894190391",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-21T10:15:41.903Z",
-      "updated": "2026-07-21T10:16:36.551Z"
-    },
-    {
-      "id": "t178462899655459",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-21T10:16:36.554Z",
-      "updated": "2026-07-21T10:16:49.865Z"
-    },
-    {
-      "id": "t178462900986759",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-21T10:16:49.867Z",
-      "updated": "2026-07-21T10:17:04.825Z"
-    },
-    {
-      "id": "t178462902482870",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-21T10:17:04.828Z",
-      "updated": "2026-07-21T10:17:23.098Z"
-    },
-    {
-      "id": "t178462904309956",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-21T10:17:23.099Z",
-      "updated": "2026-07-21T10:17:38.385Z"
-    },
-    {
-      "id": "t178462905838884",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-21T10:17:38.388Z",
-      "updated": "2026-07-21T10:17:57.116Z"
-    },
-    {
       "id": "t17846290771188",
       "title": "Run ellenorzo",
       "status": "done",
@@ -479,41 +375,113 @@
       "agent": "publisher",
       "created": "2026-07-22T11:03:12.699Z",
       "updated": "2026-07-22T11:03:21.981Z"
+    },
+    {
+      "id": "t178474000074556",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-07-22T17:06:40.745Z",
+      "updated": "2026-07-22T17:06:40.989Z"
+    },
+    {
+      "id": "t178474000099239",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-07-22T17:06:40.992Z",
+      "updated": "2026-07-22T17:06:55.830Z"
+    },
+    {
+      "id": "t17847400158323",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-07-22T17:06:55.832Z",
+      "updated": "2026-07-22T17:06:56.083Z"
+    },
+    {
+      "id": "t178474001608570",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-07-22T17:06:56.085Z",
+      "updated": "2026-07-22T17:08:28.079Z"
+    },
+    {
+      "id": "t178474010808174",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-22T17:08:28.081Z",
+      "updated": "2026-07-22T17:08:50.724Z"
+    },
+    {
+      "id": "t178474013072735",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-07-22T17:08:50.727Z",
+      "updated": "2026-07-22T17:12:10.577Z"
+    },
+    {
+      "id": "t178474033057987",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-22T17:12:10.579Z",
+      "updated": "2026-07-22T17:13:13.204Z"
+    },
+    {
+      "id": "t178474039320612",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-07-22T17:13:13.206Z",
+      "updated": "2026-07-22T17:13:43.448Z"
+    },
+    {
+      "id": "t178474042347474",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-22T17:13:43.474Z",
+      "updated": "2026-07-22T17:13:58.703Z"
+    },
+    {
+      "id": "t178474043870554",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-07-22T17:13:58.705Z",
+      "updated": "2026-07-22T17:14:33.335Z"
+    },
+    {
+      "id": "t178474047333763",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-22T17:14:33.337Z",
+      "updated": "2026-07-22T17:14:34.301Z"
+    },
+    {
+      "id": "t178474047430357",
+      "title": "Run translator",
+      "status": "done",
+      "agent": "translator",
+      "created": "2026-07-22T17:14:34.303Z",
+      "updated": "2026-07-22T17:44:34.352Z"
+    },
+    {
+      "id": "t178474227435497",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-07-22T17:44:34.354Z",
+      "updated": "2026-07-22T17:44:45.546Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178402281112116",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The line-up looks great, with a diverse range of practical AI applications that cater to everyday people. I've checked each article for completeness, voice, and accuracy, and they're all ready to go. ",
-      "agent": "publisher",
-      "at": "2026-07-14T09:53:31.121Z",
-      "loud": false
-    },
-    {
-      "id": "n178402281916962",
-      "level": "success",
-      "text": "2 hír + 1 útmutató publikálva (költség: $0.0403).",
-      "agent": "ceo",
-      "at": "2026-07-14T09:53:39.169Z",
-      "loud": false
-    },
-    {
-      "id": "n178404877863798",
-      "level": "info",
-      "text": "SEO: 2 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-07-14T17:06:18.637Z",
-      "loud": false
-    },
-    {
-      "id": "n178404893842383",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). I'm pleased to confirm that our article line-up is coherent and ready for publication, with a diverse range of practical AI applications that cater to everyday people. However, I do note that the tech",
-      "agent": "publisher",
-      "at": "2026-07-14T17:08:58.423Z",
-      "loud": false
-    },
     {
       "id": "n178404894455542",
       "level": "success",
@@ -1281,171 +1249,41 @@
       "agent": "ceo",
       "at": "2026-07-22T11:03:22.016Z",
       "loud": false
+    },
+    {
+      "id": "n178474047332540",
+      "level": "info",
+      "text": "SEO: 7 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-07-22T17:14:33.325Z",
+      "loud": false
+    },
+    {
+      "id": "n178474227434663",
+      "level": "alert",
+      "text": "Pipeline lépés időtúllépés: translator — leállítva 30 perc után.",
+      "agent": "ceo",
+      "at": "2026-07-22T17:44:34.346Z",
+      "loud": true
+    },
+    {
+      "id": "n178474227530589",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). Our AI article line-up is coherent and ready to publish, offering a great mix of practical tips and introductions to various AI tools. However, I do note that the selection is quite tech-heavy, so a b",
+      "agent": "publisher",
+      "at": "2026-07-22T17:44:35.305Z",
+      "loud": false
+    },
+    {
+      "id": "n178474228556932",
+      "level": "success",
+      "text": "7 hír + 0 útmutató publikálva (költség: $0.0338).",
+      "agent": "ceo",
+      "at": "2026-07-22T17:44:45.569Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178447945977851",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Expanded language support for Gemini in Google Docs\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers. HONESTY RULE: name the REAL products/places/organisations from the source; NEVER invent generic UI ",
-      "ref": "2026-07-16T19-05-14-341Z_google-workspace_Expanded_language_support_for_Gemini_in_Google_Doc.json",
-      "at": "2026-07-19T16:44:19.778Z"
-    },
-    {
-      "id": "m178447947014026",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Introducing Grok on Amazon Bedrock\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; Reviewer verdict: Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben; újraküldöm.",
-      "ref": "2026-07-17T01-43-42-625Z_aws-ml_Introducing_Grok_on_Amazon_Bedrock.json",
-      "at": "2026-07-19T16:44:30.140Z"
-    },
-    {
-      "id": "m178447947634466",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Cast yourself in AI video clips using your personal avatar with Gemini Omni in Vids\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; Reviewer verdict: Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben; újraküldöm.",
-      "ref": "2026-07-17T01-43-42-625Z_google-workspace_Cast_yourself_in_AI_video_clips_using_your_persona.json",
-      "at": "2026-07-19T16:44:36.344Z"
-    },
-    {
-      "id": "m178447948515955",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Generate higher quality AI video clips and edit any video with Gemini Omni in Vids\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; Reviewer verdict: Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben; újraküldöm.",
-      "ref": "2026-07-17T01-43-42-625Z_google-workspace_Generate_higher_quality_AI_video_clips_and_edit_an.json",
-      "at": "2026-07-19T16:44:45.159Z"
-    },
-    {
-      "id": "m178447949697362",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Simplify Sales: Unifying Data in Slack\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; Reviewer verdict: Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben; újraküldöm.",
-      "ref": "2026-07-17T01-43-42-625Z_salesforce_Simplify_Sales__Unifying_Data_in_Slack.json",
-      "at": "2026-07-19T16:44:56.973Z"
-    },
-    {
-      "id": "m178447950284639",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"A scorecard for the AI age\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; Reviewer verdict: Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben; újraküldöm.",
-      "ref": "2026-07-17T16-58-56-118Z_openai-blog_A_scorecard_for_the_AI_age.json",
-      "at": "2026-07-19T16:45:02.846Z"
-    },
-    {
-      "id": "m178447951219512",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Expanded language support for Gemini in Google Docs\" (?/10)",
-      "ref": "2026-07-16T19-05-14-341Z_google-workspace_Expanded_language_support_for_Gemini_in_Google_Doc.json",
-      "at": "2026-07-19T16:45:12.195Z"
-    },
-    {
-      "id": "m178447952029867",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Introducing Grok on Amazon Bedrock\" — mi a baj: The article repeatedly claims that Grok is available on Amazon Bedrock. As of now, Grok (from xAI) is not one of the foundation models offered by Amazon Bedrock. Bedrock provides access to models from Amazon, Anthropic, AI21 Labs, Cohere, Meta, Mistral AI, and Stability AI, but not Grok.",
-      "ref": "2026-07-17T01-43-42-625Z_aws-ml_Introducing_Grok_on_Amazon_Bedrock.json",
-      "at": "2026-07-19T16:45:20.298Z"
-    },
-    {
-      "id": "m178447952796788",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Cast yourself in AI video clips using your personal avatar with Gemini Omni in Vids\" — mi a baj: Salvaged from a partial AI response.",
-      "ref": "2026-07-17T01-43-42-625Z_google-workspace_Cast_yourself_in_AI_video_clips_using_your_persona.json",
-      "at": "2026-07-19T16:45:27.967Z"
-    },
-    {
-      "id": "m178447953897274",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Generate higher quality AI video clips and edit any video with Gemini Omni in Vids\" — mi a baj: The article refers to a specific AI capability within Google Vids as \"Gemini Omni.\" While Google Vids is a real product powered by Gemini, there is no publicly announced or recognized AI capability specifically *called* \"Gemini Omni\" associated with Google Vids or the broader Gemi",
-      "ref": "2026-07-17T01-43-42-625Z_google-workspace_Generate_higher_quality_AI_video_clips_and_edit_an.json",
-      "at": "2026-07-19T16:45:38.972Z"
-    },
-    {
-      "id": "m178447954715857",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Simplify Sales: Unifying Data in Slack\" (?/10)",
-      "ref": "2026-07-17T01-43-42-625Z_salesforce_Simplify_Sales__Unifying_Data_in_Slack.json",
-      "at": "2026-07-19T16:45:47.158Z"
-    },
-    {
-      "id": "m178447955340391",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"A scorecard for the AI age\" (?/10)",
-      "ref": "2026-07-17T16-58-56-118Z_openai-blog_A_scorecard_for_the_AI_age.json",
-      "at": "2026-07-19T16:45:53.403Z"
-    },
-    {
-      "id": "m178447957508340",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-07-19T16:46:15.083Z"
-    },
-    {
-      "id": "m17844797979785",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
-      "ref": null,
-      "at": "2026-07-19T16:49:57.978Z"
-    },
-    {
-      "id": "m178451259268723",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Introducing Grok on Amazon Bedrock\" — javítva: The article repeatedly claims that Grok is available on Amazon Bedrock. As of now, Grok (from xAI) is not one of the foundation models offered by Amazon Bedrock. Bedrock provides access to models from Amazon, Anthropic, AI21 Labs, Cohere, Meta, Mistral AI, and Stability AI, but not Grok.; Reviewer verdict: Hitelesség-kapu blokkolta: The ",
-      "ref": "2026-07-17T01-43-42-625Z_aws-ml_Introducing_Grok_on_Amazon_Bedrock.json",
-      "at": "2026-07-20T01:56:32.687Z"
-    },
-    {
-      "id": "m178451260352119",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Cast yourself in AI video clips using your personal avatar with Gemini Omni in Vids\" — javítva: Reviewer verdict: Salvaged from a partial AI response.; újraküldöm.",
-      "ref": "2026-07-17T01-43-42-625Z_google-workspace_Cast_yourself_in_AI_video_clips_using_your_persona.json",
-      "at": "2026-07-20T01:56:43.521Z"
-    },
-    {
-      "id": "m178451261115618",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Generate higher quality AI video clips and edit any video with Gemini Omni in Vids\" — javítva: The article refers to a specific AI capability within Google Vids as \"Gemini Omni.\" While Google Vids is a real product powered by Gemini, there is no publicly announced or recognized AI capability specifically *called* \"Gemini Omni\" associated with Google Vids or the broader Gemini suite. ",
-      "ref": "2026-07-17T01-43-42-625Z_google-workspace_Generate_higher_quality_AI_video_clips_and_edit_an.json",
-      "at": "2026-07-20T01:56:51.156Z"
-    },
-    {
-      "id": "m178451261846827",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Transform your sales organization with Amazon Quick: your new agentic AI teammate\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; Reviewer verdict: Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben; újraküldöm.",
-      "ref": "2026-07-18T01-23-53-502Z_aws-ml_Transform_your_sales_organization_with_Amazon_Quic.json",
-      "at": "2026-07-20T01:56:58.468Z"
-    },
     {
       "id": "m178451262618195",
       "from": "iro",
@@ -2587,8 +2425,9 @@
       "kind": "need",
       "text": "Hiányos / kell még adat: \"Gemini vs ChatGPT on Your Phone: Which AI Assistant Fits Your Pocket?\" — egészítsd ki: Article appears truncated mid-sentence at the end of the final bullet point, leaving it without a proper wrap-up; Missing or cut-off closing section, so no next step or sign-off for the reader; Subtitle mentions 'which one (or both) belongs on your home screen' but no concluding guidanc",
       "ref": "2026-07-22T02-10-56-965Z_aiworld-editorial_Compare_ai-on-phone.json",
-      "open": true,
-      "at": "2026-07-22T10:30:10.351Z"
+      "open": false,
+      "at": "2026-07-22T10:30:10.351Z",
+      "resolved_at": "2026-07-22T17:12:27.008Z"
     },
     {
       "id": "m178471622462955",
@@ -2643,6 +2482,168 @@
       "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
       "ref": "mobile",
       "at": "2026-07-22T10:33:12.657Z"
+    },
+    {
+      "id": "m178474012126627",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Building AI infrastructure with the Effingham County community\" — mi a baj: NO_FRONTMATTER: A cikk nem YAML frontmatter-rel kezdődik",
+      "ref": "2026-07-22T17-06-55-772Z_openai-blog_Building_AI_infrastructure_with_the_Effingham_Coun.json",
+      "at": "2026-07-22T17:08:41.266Z"
+    },
+    {
+      "id": "m178474012582982",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Introducing OpenAI Presence\" — mi a baj: Factual inaccuracy: OpenAI Presence is not a real OpenAI product - this article fabricates a service and its features; Misleading setup: presents invented dashboard steps (Create New Agent, Voice/Chat toggle) as hard facts, will mislead readers; No verification possible: claims about free trial, Twilio integration, and calendar API co",
+      "ref": "2026-07-22T17-06-55-772Z_openai-blog_Introducing_OpenAI_Presence.json",
+      "at": "2026-07-22T17:08:45.829Z"
+    },
+    {
+      "id": "m178474014447726",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Gemini vs ChatGPT on Your Phone: Which AI Assistant Fits Your Pocket?\" — javítva: Article appears truncated mid-sentence at the end of the final bullet point, leaving it without a proper wrap-up; Missing or cut-off closing section, so no next step or sign-off for the reader; újraküldöm.",
+      "ref": "2026-07-22T02-10-56-965Z_aiworld-editorial_Compare_ai-on-phone.json",
+      "at": "2026-07-22T17:09:04.477Z"
+    },
+    {
+      "id": "m178474018570862",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Built in Fort Worth: Wistron Opens Advanced Manufacturing Plant to Produce NVIDIA AI Systems\" — javítva: Article does not cover the source story about Wistron's Texas plant; only loosely references factories in passing; Step 3 asks readers to compare to a year ago but offers no way to actually do that; újraküldöm.",
+      "ref": "2026-07-22T10-13-59-137Z_nvidia-blog_Built_in_Fort_Worth__Wistron_Opens_Advanced_Manufa.json",
+      "at": "2026-07-22T17:09:45.708Z"
+    },
+    {
+      "id": "m178474023015966",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"What Is Stable Diffusion? A Simple Guide to the AI Behind Modern Image Generation\" — javítva: Step 4 tells reader to search GitHub themselves with no specific notebook link or fallback; Step 5 says 'one of them will give you a public link' without identifying which cell or what the link looks like; újraküldöm.",
+      "ref": "2026-07-22T10-14-03-156Z_deeparteffects_What_Is_Stable_Diffusion__A_Simple_Guide_to_the_AI.json",
+      "at": "2026-07-22T17:10:30.159Z"
+    },
+    {
+      "id": "m178474024089452",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Batch Processing in Deep Art Effects Pro: Scale AI Art for Agencies & Designers\" — javítva: Tool is repeatedly called 'Deep Art Effects Pro' throughout the article (subtitle, tags, body), but the actual product by the German company is named simply 'Deep Art Effects' — the 'Pro' suffix appears fabricated/inaccurate as the official product name.; The article attributes specific 'batch",
+      "ref": "2026-07-22T10-14-03-157Z_deeparteffects_Batch_Processing_in_Deep_Art_Effects_Pro__Scale_AI.json",
+      "at": "2026-07-22T17:10:40.894Z"
+    },
+    {
+      "id": "m178474025204666",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Building AI infrastructure with the Effingham County community\" — javítva: NO_FRONTMATTER: A cikk nem YAML frontmatter-rel kezdődik; Reviewer verdict: Critical auto-check failures: NO_FRONTMATTER: A cikk nem YAML frontmatter-rel kezdődik; újraküldöm.",
+      "ref": "2026-07-22T17-06-55-772Z_openai-blog_Building_AI_infrastructure_with_the_Effingham_Coun.json",
+      "at": "2026-07-22T17:10:52.046Z"
+    },
+    {
+      "id": "m178474033056670",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Introducing OpenAI Presence\" — javítva: Factual inaccuracy: OpenAI Presence is not a real OpenAI product - this article fabricates a service and its features; Misleading setup: presents invented dashboard steps (Create New Agent, Voice/Chat toggle) as hard facts, will mislead readers; újraküldöm.",
+      "ref": "2026-07-22T17-06-55-772Z_openai-blog_Introducing_OpenAI_Presence.json",
+      "at": "2026-07-22T17:12:10.566Z"
+    },
+    {
+      "id": "m178474034700695",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Gemini vs ChatGPT on Your Phone: Which AI Assistant Fits Your Pocket?\" (?/10)",
+      "ref": "2026-07-22T02-10-56-965Z_aiworld-editorial_Compare_ai-on-phone.json",
+      "at": "2026-07-22T17:12:27.006Z"
+    },
+    {
+      "id": "m17847403537824",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Built in Fort Worth: Wistron Opens Advanced Manufacturing Plant to Produce NVIDIA AI Systems\" (?/10)",
+      "ref": "2026-07-22T10-13-59-137Z_nvidia-blog_Built_in_Fort_Worth__Wistron_Opens_Advanced_Manufa.json",
+      "at": "2026-07-22T17:12:33.782Z"
+    },
+    {
+      "id": "m178474035645929",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"What Is Stable Diffusion? A Simple Guide to the AI Behind Modern Image Generation\" — mi a baj: Backup Colab notebook URL (AUTOMATIC1111/stable-diffusion-webui-colab) is not a real repository and will mislead readers; Step 2's GitHub tab instructions are inaccurate — the CompVis/stable-diffusion-colab repo does not exist on GitHub; this is hallucinated guidance; Step 3 specif",
+      "ref": "2026-07-22T10-14-03-156Z_deeparteffects_What_Is_Stable_Diffusion__A_Simple_Guide_to_the_AI.json",
+      "at": "2026-07-22T17:12:36.459Z"
+    },
+    {
+      "id": "m178474038418112",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Batch Processing in Deep Art Effects Pro: Scale AI Art for Agencies & Designers\" (?/10)",
+      "ref": "2026-07-22T10-14-03-157Z_deeparteffects_Batch_Processing_in_Deep_Art_Effects_Pro__Scale_AI.json",
+      "at": "2026-07-22T17:13:04.181Z"
+    },
+    {
+      "id": "m17847403855017",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Building AI infrastructure with the Effingham County community\" (?/10)",
+      "ref": "2026-07-22T17-06-55-772Z_openai-blog_Building_AI_infrastructure_with_the_Effingham_Coun.json",
+      "at": "2026-07-22T17:13:05.501Z"
+    },
+    {
+      "id": "m178474039319199",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Introducing OpenAI Presence\" (?/10)",
+      "ref": "2026-07-22T17-06-55-772Z_openai-blog_Introducing_OpenAI_Presence.json",
+      "at": "2026-07-22T17:13:13.191Z"
+    },
+    {
+      "id": "m178474040882041",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "info",
+      "text": "A \"A centralized hub for meeting resources on the new Goog\" hír a meglévő útmutatóra mutat: how-to-start-a-new-google-docs-document-with-gemini-s-built-",
+      "ref": "how-to-start-a-new-google-docs-document-with-gemini-s-built-",
+      "at": "2026-07-22T17:13:28.820Z"
+    },
+    {
+      "id": "m178474042290920",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "info",
+      "text": "A \"Introducing OpenAI Presence\" hír a meglévő útmutatóra mutat: create-your-own-custom-gpt-in-chatgpt-no-coding",
+      "ref": "create-your-own-custom-gpt-in-chatgpt-no-coding",
+      "at": "2026-07-22T17:13:42.909Z"
+    },
+    {
+      "id": "m178474047427559",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-07-22T17:14:34.275Z"
+    },
+    {
+      "id": "m178474275339133",
+      "from": "social",
+      "to": "team",
+      "kind": "info",
+      "text": "6 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
+      "ref": null,
+      "at": "2026-07-22T17:52:33.391Z"
     }
   ]
 }
