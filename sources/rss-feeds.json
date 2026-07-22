@@ -75,8 +75,9 @@
       "priority": 3,
       "language": "en",
       "country": "US/FR",
-      "comment": "HIVATALOS HF platform blog - új modellek, eszközök.",
-      "enabled": true
+      "comment": "KIKAPCSOLVA 2026-07-22 (forrás-bizonyítvány): a feed él és friss, de tartalma fejlesztői/kutatási (PyTorch-profilozás, vLLM backend) — a relevancia-szabály (\"hétköznapi embereknek, nem fejlesztőknek\") helyesen eldobja, így 30 nap alatt 0 cikk lett belőle. Felesleges lekérdezés.",
+      "enabled": false,
+      "disabled_at": "2026-07-22"
     },
     {
       "id": "nvidia-blog",
@@ -108,8 +109,9 @@
       "priority": 3,
       "language": "en",
       "country": "US",
-      "comment": "HIVATALOS Google Research - új AI képességek, áttörések.",
-      "enabled": true
+      "comment": "KIKAPCSOLVA 2026-07-22 (forrás-bizonyítvány): friss feed, de tiszta akadémiai kutatás (kvantumszámítógép, diffúziós modellek elmélete) — a relevancia-szabály eldobja, 30 nap alatt 0 cikk. Felesleges lekérdezés.",
+      "enabled": false,
+      "disabled_at": "2026-07-22"
     },
     {
       "id": "microsoft-research",
@@ -163,8 +165,9 @@
       "priority": 2,
       "language": "en",
       "country": "CN",
-      "comment": "HIVATALOS Alibaba Qwen blog. Tesztelve 2026-06-21: 200 FEED.",
-      "enabled": true
+      "comment": "KIKAPCSOLVA 2026-07-22 (forrás-bizonyítvány): a feed 303 NAPJA néma, mégis 5 \"friss\" cikk született belőle 30 nap alatt — 10 hónapos anyagot adtunk ki hírként. Hitelesség-kockázat. Ha újraindul a blog, visszakapcsolható.",
+      "enabled": false,
+      "disabled_at": "2026-07-22"
     },
     {
       "id": "apple-ml",
