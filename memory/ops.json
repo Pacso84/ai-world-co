@@ -1,110 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178456906345957",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-07-20T17:37:43.459Z",
-      "updated": "2026-07-20T17:38:51.305Z"
-    },
-    {
-      "id": "t178456913130696",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-20T17:38:51.306Z",
-      "updated": "2026-07-20T17:39:39.730Z"
-    },
-    {
-      "id": "t178456917973356",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-07-20T17:39:39.733Z",
-      "updated": "2026-07-20T17:40:03.246Z"
-    },
-    {
-      "id": "t178456920327161",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-20T17:40:03.271Z",
-      "updated": "2026-07-20T17:40:14.238Z"
-    },
-    {
-      "id": "t178456921424057",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-07-20T17:40:14.240Z",
-      "updated": "2026-07-20T17:40:34.961Z"
-    },
-    {
-      "id": "t17845692349648",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-20T17:40:34.964Z",
-      "updated": "2026-07-20T17:40:44.739Z"
-    },
-    {
-      "id": "t178456924474114",
-      "title": "Run translator",
-      "status": "done",
-      "agent": "translator",
-      "created": "2026-07-20T17:40:44.741Z",
-      "updated": "2026-07-20T17:46:40.991Z"
-    },
-    {
-      "id": "t178456960099332",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-07-20T17:46:40.993Z",
-      "updated": "2026-07-20T17:46:49.239Z"
-    },
-    {
-      "id": "t17845973607684",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-07-21T01:29:20.768Z",
-      "updated": "2026-07-21T01:29:21.018Z"
-    },
-    {
-      "id": "t178459736102082",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-07-21T01:29:21.020Z",
-      "updated": "2026-07-21T01:29:30.145Z"
-    },
-    {
-      "id": "t178459737014847",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-07-21T01:29:30.148Z",
-      "updated": "2026-07-21T01:29:30.389Z"
-    },
-    {
-      "id": "t178459737039179",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-07-21T01:29:30.391Z",
-      "updated": "2026-07-21T01:29:52.862Z"
-    },
-    {
-      "id": "t17845973928646",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-21T01:29:52.864Z",
-      "updated": "2026-07-21T01:29:53.153Z"
-    },
-    {
       "id": "t178459739315617",
       "title": "Run iro",
       "status": "done",
@@ -479,41 +375,113 @@
       "agent": "publisher",
       "created": "2026-07-21T17:15:20.983Z",
       "updated": "2026-07-21T17:15:29.145Z"
+    },
+    {
+      "id": "t178468371333590",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-07-22T01:28:33.335Z",
+      "updated": "2026-07-22T01:28:33.619Z"
+    },
+    {
+      "id": "t178468371362190",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-07-22T01:28:33.621Z",
+      "updated": "2026-07-22T01:29:00.066Z"
+    },
+    {
+      "id": "t178468374006846",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-07-22T01:29:00.068Z",
+      "updated": "2026-07-22T01:29:00.319Z"
+    },
+    {
+      "id": "t178468374032138",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-07-22T01:29:00.321Z",
+      "updated": "2026-07-22T01:29:00.522Z"
+    },
+    {
+      "id": "t178468374052480",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-22T01:29:00.524Z",
+      "updated": "2026-07-22T01:29:00.722Z"
+    },
+    {
+      "id": "t178468374072660",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-07-22T01:29:00.726Z",
+      "updated": "2026-07-22T01:29:00.956Z"
+    },
+    {
+      "id": "t178468374098150",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-07-22T01:29:00.981Z",
+      "updated": "2026-07-22T01:37:58.421Z"
+    },
+    {
+      "id": "t178468427842312",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-22T01:37:58.423Z",
+      "updated": "2026-07-22T01:39:15.902Z"
+    },
+    {
+      "id": "t178468435592562",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-22T01:39:15.925Z",
+      "updated": "2026-07-22T01:39:28.973Z"
+    },
+    {
+      "id": "t178468436897521",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-07-22T01:39:28.975Z",
+      "updated": "2026-07-22T01:39:48.203Z"
+    },
+    {
+      "id": "t178468438820579",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-22T01:39:48.205Z",
+      "updated": "2026-07-22T01:39:48.949Z"
+    },
+    {
+      "id": "t178468438895182",
+      "title": "Run translator",
+      "status": "done",
+      "agent": "translator",
+      "created": "2026-07-22T01:39:48.951Z",
+      "updated": "2026-07-22T02:09:48.979Z"
+    },
+    {
+      "id": "t178468618898175",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-07-22T02:09:48.981Z",
+      "updated": "2026-07-22T02:09:57.573Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178394021130921",
-      "level": "success",
-      "text": "0 hír + 3 útmutató publikálva (költség: $0.0359).",
-      "agent": "ceo",
-      "at": "2026-07-13T10:56:51.309Z",
-      "loud": false
-    },
-    {
-      "id": "n17839649678995",
-      "level": "info",
-      "text": "SEO: 2 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-07-13T17:49:27.899Z",
-      "loud": false
-    },
-    {
-      "id": "n178396510674730",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). Our publishing line-up looks coherent and ready to go, with a great mix of practical AI applications for everyday tasks. I do note that some articles may benefit from a brief introduction to AI basics",
-      "agent": "publisher",
-      "at": "2026-07-13T17:51:46.747Z",
-      "loud": false
-    },
-    {
-      "id": "n178396511335251",
-      "level": "success",
-      "text": "2 hír + 0 útmutató publikálva (költség: $0.0253).",
-      "agent": "ceo",
-      "at": "2026-07-13T17:51:53.352Z",
-      "loud": false
-    },
     {
       "id": "n178399229518045",
       "level": "warn",
@@ -1281,27 +1249,41 @@
       "agent": "ceo",
       "at": "2026-07-21T17:15:29.169Z",
       "loud": false
+    },
+    {
+      "id": "n178468438819543",
+      "level": "info",
+      "text": "SEO: 6 cikk optimalizálva (átlag 8.2/10).",
+      "agent": "seo",
+      "at": "2026-07-22T01:39:48.195Z",
+      "loud": false
+    },
+    {
+      "id": "n178468618897267",
+      "level": "alert",
+      "text": "Pipeline lépés időtúllépés: translator — leállítva 30 perc után.",
+      "agent": "ceo",
+      "at": "2026-07-22T02:09:48.972Z",
+      "loud": true
+    },
+    {
+      "id": "n178468618986717",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). Our article line-up is coherent and ready to publish, with a great mix of practical AI applications and helpful guides for everyday people. I did notice that the line-up is quite tech-heavy, so we may",
+      "agent": "publisher",
+      "at": "2026-07-22T02:09:49.867Z",
+      "loud": false
+    },
+    {
+      "id": "n178468619760261",
+      "level": "success",
+      "text": "0 hír + 6 útmutató publikálva (költség: $0.0672).",
+      "agent": "ceo",
+      "at": "2026-07-22T02:09:57.602Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m17844543512419",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Unified context: The missing layer for enterprise AI coworkers\" (?/10)",
-      "ref": "2026-07-16T19-05-15-422Z_databricks_Unified_context__The_missing_layer_for_enterprise_.json",
-      "at": "2026-07-19T09:45:51.241Z"
-    },
-    {
-      "id": "m178445435967332",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"AI-Enabled Advisory Services for Higher Education\" (?/10)",
-      "ref": "2026-07-16T19-05-17-032Z_databricks_AI-Enabled_Advisory_Services_for_Higher_Education.json",
-      "at": "2026-07-19T09:45:59.673Z"
-    },
     {
       "id": "m178445436807740",
       "from": "ellenorzo",
@@ -2644,6 +2626,24 @@
       "text": "6 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
       "ref": null,
       "at": "2026-07-21T17:16:22.554Z"
+    },
+    {
+      "id": "m178468438892530",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-07-22T01:39:48.925Z"
+    },
+    {
+      "id": "m178468699052449",
+      "from": "social",
+      "to": "team",
+      "kind": "info",
+      "text": "6 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
+      "ref": null,
+      "at": "2026-07-22T02:23:10.524Z"
     }
   ]
 }
