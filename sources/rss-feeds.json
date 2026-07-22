@@ -75,9 +75,8 @@
       "priority": 3,
       "language": "en",
       "country": "US/FR",
-      "comment": "KIKAPCSOLVA 2026-07-22 (forrás-bizonyítvány): a feed él és friss, de tartalma fejlesztői/kutatási (PyTorch-profilozás, vLLM backend) — a relevancia-szabály (\"hétköznapi embereknek, nem fejlesztőknek\") helyesen eldobja, így 30 nap alatt 0 cikk lett belőle. Felesleges lekérdezés.",
-      "enabled": false,
-      "disabled_at": "2026-07-22"
+      "comment": "HIVATALOS Hugging Face blog. VISSZAKAPCSOLVA 2026-07-22 (user: \"mindegyik csempéhez kell hírforrás\"): 12 útmutatónk van róluk. A tartalma túlnyomórészt fejlesztői, amit az AI relevancia-kapu kiszűr — de ha egyszer fogyasztói funkciót jelentenek be, ne maradjunk le róla.",
+      "enabled": true
     },
     {
       "id": "nvidia-blog",
@@ -483,6 +482,50 @@
       "country": "US",
       "comment": "JÓVÁHAGYVA a felhasználó által 2026-07-21 (source-scout javaslat, megbízhatóság 100/100). AI art- és design-eszközök, hétköznapi felhasználóknak. Felvételkor: utolsó cikk 4 napja, feed élő (HTTP 200).",
       "enabled": true
+    },
+    {
+      "id": "midjourney-updates",
+      "name": "Midjourney Updates (hivatalos)",
+      "url": "https://updates.midjourney.com/rss/",
+      "category": "ai-company-official",
+      "priority": 2,
+      "language": "en",
+      "country": "US",
+      "enabled": true,
+      "comment": "HIVATALOS Midjourney termék-hírek (saját updates RSS). Bekötve 2026-07-22: van 1 útmutatónk a Midjourney-ről, de eddig egyetlen hírforrás sem fedte le."
+    },
+    {
+      "id": "xai-news",
+      "name": "xAI (hivatalos, Google News szűrve)",
+      "url": "https://news.google.com/rss/search?q=site:x.ai&hl=en-US&gl=US&ceid=US:en",
+      "category": "ai-company-official",
+      "priority": 3,
+      "language": "en",
+      "country": "US",
+      "enabled": true,
+      "comment": "xAI/Grok hivatalos bejelentései. Sem RSS-t, sem sitemap-et nem ad (403), ezért Google News SAJÁT DOMAINRE szűrve (site:x.ai) — így is első kezes tartalom. Bekötve 2026-07-22: 10 Grok-útmutatónk van hírforrás nélkül. A státusz-oldal jellegű zajt az AI relevancia-kapu szűri."
+    },
+    {
+      "id": "perplexity-news",
+      "name": "Perplexity (hivatalos, Google News szűrve)",
+      "url": "https://news.google.com/rss/search?q=site:perplexity.ai&hl=en-US&gl=US&ceid=US:en",
+      "category": "ai-company-official",
+      "priority": 3,
+      "language": "en",
+      "country": "US",
+      "enabled": true,
+      "comment": "Perplexity hivatalos bejelentései. Nincs RSS (403), a sitemap al-fájljai üresek, ezért Google News site:perplexity.ai szűréssel. Bekötve 2026-07-22: 11 Perplexity-útmutatónk van hírforrás nélkül."
+    },
+    {
+      "id": "deepseek-news",
+      "name": "DeepSeek (hivatalos, Google News szűrve)",
+      "url": "https://news.google.com/rss/search?q=site:deepseek.com&hl=en-US&gl=US&ceid=US:en",
+      "category": "ai-company-official",
+      "priority": 3,
+      "language": "en",
+      "country": "CN",
+      "enabled": true,
+      "comment": "DeepSeek hivatalos bejelentései. Nincs használható RSS (a news.rss üres), ezért Google News site:deepseek.com szűréssel. Bekötve 2026-07-22: 11 DeepSeek-útmutatónk van hírforrás nélkül."
     }
   ],
   "categories": {
