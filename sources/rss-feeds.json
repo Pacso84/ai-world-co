@@ -526,6 +526,17 @@
       "country": "CN",
       "enabled": true,
       "comment": "DeepSeek hivatalos bejelentései. Nincs használható RSS (a news.rss üres), ezért Google News site:deepseek.com szűréssel. Bekötve 2026-07-22: 11 DeepSeek-útmutatónk van hírforrás nélkül."
+    },
+    {
+      "id": "qwen-news",
+      "name": "Qwen / Alibaba (hivatalos, Google News szűrve)",
+      "url": "https://news.google.com/rss/search?q=site:qwen.ai&hl=en-US&gl=US&ceid=US:en",
+      "category": "ai-company-official",
+      "priority": 3,
+      "language": "en",
+      "country": "CN",
+      "enabled": true,
+      "comment": "Qwen (Alibaba) hivatalos bejelentései. A régi qwenlm.github.io feed 2025-09 óta NÉMA (ezért lett kikapcsolva), de a qwen.ai domainen friss tartalom van → Google News site:qwen.ai szűréssel, első kezes. Bekötve 2026-07-22: 13 Qwen-útmutatónk volt hírforrás nélkül."
     }
   ],
   "categories": {
