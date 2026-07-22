@@ -501,8 +501,8 @@
     "weekly_deep_articles": 1,
     "daily_api_cost_usd_max": 3,
     "monthly_budget_usd_target": 30,
-    "_hard_cap_comment": "2026-07-21 (user-döntés): 40 → 45. Ok: a keret júl. 23-ra fogyott volna el, aug. 1-ig 10 nap volt hátra — a user a TELJES TEMPÓT választotta a 9 napos néma szünet helyett. A MiniMax-váltás (cikkenként ~fele ár) miatt a tényleges többlet ennél kisebb lesz. Augusztusban visszatérhet 40-re.",
-    "monthly_budget_usd_hard_cap": 45,
+    "_hard_cap_comment": "2026-07-22 (user-döntés): 45 → 50, TELJES TEMPÓ aug. 1-ig. Előzmény: 40→45 (07-21). A MiniMax-váltás feleződést hozott ($1.79→$0.89/nap), de a hó eleji drága napok miatt így is ~4 nap hiányzott; a user a keret-emelést választotta a lassítás/szünet helyett. AUGUSZTUSBAN vissza 40-re (akkor egész hónapban a MiniMax olcsóbb tempója fut, bőven elég).",
+    "monthly_budget_usd_hard_cap": 50,
     "_paid_strategy_comment": "ELV: a fizetős kulcsot (pl. Gemini paid) HASZNÁLJUK, amíg bírja; amikor eléri a saját rate/kvóta limitjét (429), a router AUTOMATIKUSAN a következő kulcsra vált (free pool: Cerebras/Groq/Mistral). NINCS napi dollár-plafon (a felhasználó sem tudja, meddig elég a csomag). A core/budget.js KÖVETI a költést (látható a 'mennyi a keret?' paranccsal), és a havi hard_cap a VÉGSŐ biztosíték egy elfutó számla ellen.",
     "_comment": "Ha eléri a hard_cap-et, az agentek leállnak és felhasználói jóváhagyás kell."
   },
