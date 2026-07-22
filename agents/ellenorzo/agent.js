@@ -621,8 +621,15 @@ Original title: ${writerData.original_title}
     const clarityOk = writerData._meta?.type !== 'guide'
       || aiReviewResult.clarity_score == null
       || aiReviewResult.clarity_score >= MIN_PASSING_SCORE;
-    if (!clarityOk && !aiReviewResult.issues?.length) {
-      aiReviewResult.issues = [`Beginner clarity too low (${aiReviewResult.clarity_score}/10): steps are vague or could mislead a first-time user`];
+    // 2026-07-22 audit: ez eddig CSAK akkor fűzte be az érthetőség-indokot, ha a
+    // bíráló nulla egyéb kifogást írt. Csakhogy ez a kapu pont az ELLENTMONDÓ
+    // válaszra való (PASS + jó összpontszám, de gyenge clarity) — ilyenkor a bíráló
+    // gyakran írt 1-2 apró, MÁS kifogást, így a VALÓDI elutasítási ok (érthetőség)
+    // sosem jutott el az átdolgozóhoz: a guide a rossz visszajelzés alapján javított,
+    // körbe-körbe, amíg el nem fogytak a próbái. Most mindig befűzzük.
+    if (!clarityOk) {
+      const clarityIssue = `Beginner clarity too low (${aiReviewResult.clarity_score}/10): steps are vague or could mislead a first-time user`;
+      aiReviewResult.issues = [clarityIssue, ...(aiReviewResult.issues || [])];
     }
     const finalPass = aiReviewResult.decision === 'PASS' && aiReviewResult.overall_score >= MIN_PASSING_SCORE && clarityOk;
 

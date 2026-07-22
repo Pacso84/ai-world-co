@@ -9,6 +9,7 @@
   // az első /chat vagy /contact hívásnál) — ezért a chat-panel, a beépített
   // about-űrlap és a panel-mini-űrlap MINDHÁROM a SAJÁT tokenjét tartja.
   var panel = null, log = null, sessionId = sessionStorage.getItem('csSess') || '';
+  var chatInput = null, sendBtn = null;   // a küldés-tiltáshoz (dupla-klikk elleni védelem)
   var tsToken = '', formTsToken = '', miniTsToken = '';
 
   function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text) e.textContent = text; return e; }
@@ -66,9 +67,22 @@
     });
   }
 
+  // ÚJRA-BELÉPÉS ELLEN (2026-07-22 audit): a küldés eddig nem tiltotta le magát,
+  // így gyors dupla-Enterrel több kérés indult EGYSZERRE. A szerver számlálói
+  // "olvas → ír" módon működnek, ezért a párhuzamos kérések mind a régi értéket
+  // látták → a napi limit megkerülhető volt. Amíg egy kérés fut, nem indítunk újat.
+  var sending = false;
+  function setBusy(on) {
+    sending = on;
+    if (sendBtn) sendBtn.disabled = on;
+    if (chatInput) chatInput.disabled = on;
+  }
+
   function send(input) {
+    if (sending) return;                       // fut egy kérés → nem indítunk másikat
     var text = input.value.trim(); if (!text) return;
     input.value = '';
+    setBusy(true);
     addMsg('cs-msg--me', text);
     var wait = addMsg('cs-msg--bot cs-msg--wait', cfg.ui.thinking);
     fetch(cfg.base + '/chat', {
@@ -80,9 +94,11 @@
         if (o.j.sessionId) { sessionId = o.j.sessionId; sessionStorage.setItem('csSess', sessionId); }
         addMsg('cs-msg--bot', o.j.answer || cfg.ui.err);
         addLinks(o.j.links);
-        if (o.j.escalate) showForm();
+        // 503 (kikapcsolva) / hálózati hiba esetén is kínáljuk az emberi utat
+        if (o.j.escalate || o.s === 503) showForm();
       })
-      .catch(function () { wait.remove(); addMsg('cs-msg--bot', cfg.ui.err); });
+      .catch(function () { wait.remove(); addMsg('cs-msg--bot', cfg.ui.err); showForm(); })
+      .then(function () { setBusy(false); if (chatInput) chatInput.focus(); });
   }
 
   function openPanel() {
@@ -94,8 +110,8 @@
     head.appendChild(x);
     log = el('div', 'cs-panel__log');
     var row = el('div', 'cs-panel__row');
-    var input = el('input', 'cs-panel__in'); input.placeholder = cfg.ui.ph; input.maxLength = 500;
-    var btn = el('button', 'cs-panel__send', cfg.ui.send);
+    var input = chatInput = el('input', 'cs-panel__in'); input.placeholder = cfg.ui.ph; input.maxLength = 500;
+    var btn = sendBtn = el('button', 'cs-panel__send', cfg.ui.send);
     var human = el('button', 'cs-panel__human', cfg.ui.human);
     var tsBox = el('div', 'cs-ts');
     row.appendChild(input); row.appendChild(btn);
@@ -119,8 +135,10 @@
       fetch(cfg.base + '/contact', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          name: pf.name.value.trim(), email: pf.email.value.trim(),
-          message: pf.message.value.trim(), lang: cfg.lang, web: pf.web.value, token: formTsToken
+          // pf.elements.name (NEM pf.name): a <form> beépített "name" tulajdonságát
+          // a mező csak a böngésző örökölt szabálya miatt írja felül — törékeny.
+          name: pf.elements.name.value.trim(), email: pf.elements.email.value.trim(),
+          message: pf.elements.message.value.trim(), lang: cfg.lang, web: pf.elements.web.value, token: formTsToken
         })
       }).then(function (r) { st.textContent = r.ok ? cfg.ui.ok : cfg.ui.err; if (r.ok) pf.reset(); })
         .catch(function () { st.textContent = cfg.ui.err; });

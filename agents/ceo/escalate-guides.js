@@ -194,6 +194,17 @@ async function main() {
     cost += response?.costUsd || 0;
 
     const title = data.original_title || filename;
+
+    // ÜZEMZAVAR ≠ ROSSZ VÁLASZ (2026-07-22 audit): ha az ask() NULL-t adott, akkor
+    // nem hibás LLM-válasz volt, hanem NEM VOLT válasz — havi keret-stop vagy teljes
+    // szolgáltató-kiesés. Ilyenkor TILOS véglegesen lezárni: a guide maradjon
+    // érintetlenül a rejected-ben, és a következő futás újrapróbálja.
+    // (A desk.js és minden más hívási hely is így kezeli a null-t.)
+    if (response === null) {
+      console.log('   ⏸️  Nincs AI-válasz (keret-stop vagy üzemzavar) → ÉRINTETLENÜL hagyom, jövő futáskor újra.\n');
+      continue;
+    }
+
     if (!decision) {
       // Ha a főnök válaszát nem tudjuk értelmezni: óvatosság → emberre bízzuk
       const reason = 'CEO döntés nem értelmezhető (LLM válasz hibás) — emberi ellenőrzés kell.';

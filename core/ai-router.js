@@ -200,6 +200,11 @@ function makeOpenAICaller({ provider, baseUrl, keyEnv, extraHeaders }) {
       ]
     };
     if (options.jsonMode) body.response_format = { type: 'json_object' };
+    // VALÓDI költség kérése (2026-07-22 audit): az OpenRouter normalizált token-számot
+    // ad vissza, a SZÁMLÁZÁS viszont a saját tokenizálóján és a gondolkodó-tokeneken
+    // alapul → a helyi ár-táblás becslés ~18%-kal alámérte a tényleges költést.
+    // Ezzel a kapcsolóval a válasz tartalmazza a ténylegesen felszámolt USD-t.
+    if (provider === 'openrouter') body.usage = { include: true };
 
     const res = await fetch(baseUrl, {
       method: 'POST',
@@ -211,9 +216,13 @@ function makeOpenAICaller({ provider, baseUrl, keyEnv, extraHeaders }) {
       throw new Error(`${provider} HTTP ${res.status}: ${errText.slice(0, 200)}`);
     }
     const j = await res.json();
+    // actualCostUsd: ha a szolgáltató megmondja a TÉNYLEGES árat, azt használjuk
+    // (mérvadó), különben marad a helyi ár-táblás becslés.
+    const actual = Number(j.usage?.cost);
     return {
       text: j.choices?.[0]?.message?.content || '',
       usage: { inputTokens: j.usage?.prompt_tokens || 0, outputTokens: j.usage?.completion_tokens || 0 },
+      actualCostUsd: Number.isFinite(actual) && actual > 0 ? actual : null,
       model, provider
     };
   };
@@ -381,7 +390,10 @@ const QUOTA_PATH = join(__dirname, 'quota-state.json');
 const FREE_TIER_POOL = [
   { provider: 'cerebras', model: 'gpt-oss-120b' },
   { provider: 'cerebras', model: 'zai-glm-4.7' },
-  { provider: 'openrouter', model: 'qwen/qwen3-next-80b-a3b-instruct:free' },
+  // 2026-07-22 audit: innen KIVÉVE a 'qwen/qwen3-next-80b-a3b-instruct:free' —
+  // az OpenRouteren NEM LÉTEZIK (élőben ellenőrizve: csak a fizetős változat van),
+  // így minden hívás felesleges 404-kör volt. Marad 3 VALÓDI ingyenes szolgáltató
+  // (Cerebras ×2 + Groq), ami két különböző cég = elég szolgáltató-szintű tartalék.
   { provider: 'groq', model: 'llama-3.3-70b-versatile' }
 ];
 
@@ -610,12 +622,18 @@ export async function ask(prompt, options = {}) {
         // Safety check
         const safety = safetyFilter(response);
         if (!safety.safe) {
-          logCall(agentName, provider, model, response.usage, 0, false, new Error(safety.reason));
+          // A tokeneket a szolgáltató AKKOR IS felszámolta, ha a választ eldobjuk
+          // (2026-07-22 audit): a gondolkodó modellek jellemzően így "égetik el" a
+          // keretet üres válasszal. Enélkül valódi pénz tűnt el a nyilvántartásból.
+          const wasted = response.actualCostUsd ?? calculateCost(model, response.usage);
+          logCall(agentName, provider, model, response.usage, wasted, false, new Error(safety.reason));
+          if (isMetered(provider, model) && wasted > 0) recordSpend(provider, wasted);
           break; // Tartalom-szabály blokk -> fallback (nem retry)
         }
 
-        // Költség számítás + log + költségkeret-rögzítés (csak a fizetős fogy)
-        const cost = calculateCost(model, response.usage);
+        // Költség: a szolgáltató által VISSZAIGAZOLT ár az elsődleges (OpenRouter),
+        // a helyi ár-tábla csak tartalék. (2026-07-22 audit: a becslés 18%-kal alámért.)
+        const cost = response.actualCostUsd ?? calculateCost(model, response.usage);
         logCall(agentName, provider, model, response.usage, cost, true);
         if (isMetered(provider, model)) recordSpend(provider, cost);
 

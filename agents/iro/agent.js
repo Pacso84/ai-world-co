@@ -468,7 +468,12 @@ function saveBackToReview(rejectedFilename, rejectedData, { text, provider, mode
       writer_provider: provider,
       writer_model: model,
       writer_cost_usd: costUsd,
-      rework_attempts: prevAttempts + 1,
+      // 2026-07-22 audit: ha a BÍRÁLÓ hibázott (nem a cikk), a cikket változatlanul
+      // küldjük vissza — ilyenkor NEM fogyaszthatja a 2 újraírási próbát. A guide
+      // agent már így csinálta (agent.js:741), az író viszont mindig növelte, így
+      // két bíráló-hiba után a cikk "kimerültként" a főnök asztalára esett úgy, hogy
+      // a tartalmát egyszer sem bírálták el érdemben.
+      rework_attempts: requeued ? prevAttempts : prevAttempts + 1,
       reworked_from: rejectedFilename,
       requeued_unchanged: !!requeued, // true = nem írtuk át, csak újraellenőrzésre küldtük
       status: 'awaiting-review'

@@ -91,6 +91,18 @@ export async function handleChat(request, env) {
   const lang = LANGS.includes(body.lang) ? body.lang : 'en';
   const message = String(body.message || '').trim().slice(0, 500);
   if (!message) return j({ error: 'empty' }, 400, h);
+  try {
+    return await chatFlow(request, env, h, lang, message, body);
+  } catch (e) {
+    // KV/hálózati hiba (2026-07-22 audit): enélkül a Worker NYERS hibát adott
+    // vissza — CORS-fejléc nélkül, így a böngésző csak egy értelmezhetetlen
+    // hibát látott. Most szabályos válasz megy, és a látogató az űrlapra kerül.
+    console.log('handleChat hiba', e && e.message);
+    return j({ error: 'temporary', answer: ESC_FALLBACK[lang], links: [], escalate: true }, 503, h);
+  }
+}
+
+async function chatFlow(request, env, h, lang, message, body) {
   const ip = request.headers.get('CF-Connecting-IP') || '0.0.0.0';
   const iph = await hashIp(ip);
 
@@ -136,9 +148,19 @@ export async function handleContact(request, env) {
   if (!message) return j({ error: 'empty' }, 400, h);
   const lang = LANGS.includes(body.lang) ? body.lang : 'en';
   const name = String(body.name || '').trim().slice(0, 80);
+  try {
+    return await contactFlow(request, env, h, { email, message, lang, name, token: body.token });
+  } catch (e) {
+    // Mint a chatnél: KV/Telegram-hiba se adjon nyers worker-hibát CORS nélkül.
+    console.log('handleContact hiba', e && e.message);
+    return j({ error: 'temporary', ok: false }, 503, h);
+  }
+}
+
+async function contactFlow(request, env, h, { email, message, lang, name, token }) {
   const ip = request.headers.get('CF-Connecting-IP') || '0.0.0.0';
   const iph = await hashIp(ip);
-  if (!(await verifyTurnstile(env, body.token, ip))) return j({ error: 'turnstile' }, 403, h);
+  if (!(await verifyTurnstile(env, token, ip))) return j({ error: 'turnstile' }, 403, h);
   // Napi IP-limit (végső review I2, majd IGAZÍTÁS): a kapcsolat-űrlapnak
   // SAJÁT napi kerete (nem a chatével közös), hogy a chat-limitet elért
   // látogató is elérje az űrlapot.

@@ -124,6 +124,27 @@ try {
     assert.notEqual(r2.status, 403, 'a perzisztált session miatt nincs Turnstile-403');
     assert.equal(r2.status, 429, 'globális limit miatt marad 429');
   }
+  // 10) KV-HIBA (2026-07-22 audit): eddig kezeletlenül szállt el → nyers worker-hiba
+  //     CORS-fejléc nélkül. Most szabályos 503 + eszkaláció (a látogató az űrlapra kerül).
+  {
+    const env = baseEnv();
+    env.FEEDBACK.get = async () => { throw new Error('KV down'); };
+    const r = await handleChat(req('/chat', { message: 'hello', lang: 'hu', token: 'good-token' }), env);
+    assert.equal(r.status, 503, 'KV-hiba → 503 (nem összeomlás)');
+    assert.ok(r.headers.get('Access-Control-Allow-Origin'), 'CORS-fejléc megvan (a böngésző értelmezni tudja)');
+    const j = await r.json();
+    assert.equal(j.escalate, true, 'eszkalál → a widget felkínálja az űrlapot');
+    assert.ok(j.answer && j.answer.length > 0, 'kap érthető üzenetet, nem üres hibát');
+  }
+  // 11) /contact is túléli a KV-hibát
+  {
+    const env = baseEnv();
+    env.FEEDBACK.get = async () => { throw new Error('KV down'); };
+    const r = await handleContact(req('/contact', { email: 'a@b.hu', message: 'x', lang: 'hu', web: '', token: 'good-token' }), env);
+    assert.equal(r.status, 503);
+    assert.ok(r.headers.get('Access-Control-Allow-Origin'), 'CORS-fejléc megvan');
+  }
+
   console.log('✅ cs-routes.test: minden átment');
 } finally {
   globalThis.fetch = realFetch;

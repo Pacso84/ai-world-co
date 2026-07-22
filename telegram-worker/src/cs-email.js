@@ -37,8 +37,14 @@ export async function handleEmail(message, env) {
   const gate = shouldAutoReply({ autoSubmitted: message.headers.get('Auto-Submitted') || '', from, todayCount });
   if (!gate.ok) { console.log('nincs auto-válasz:', gate.reason); return; }
 
+  // ÜRES/OLVASHATATLAN LEVÉL (2026-07-22 audit): ha a MIME-feldolgozás elhasalt,
+  // a tárgy és a törzs is üres marad — ilyenkor NINCS mit megválaszolni. Eddig
+  // mégis elment egy AI-hívás üres kontextussal (elpocsékolt napi keret + a feladó
+  // értelmetlen választ kapott). Most egyenesen a "továbbítottuk" sablon megy.
+  const unreadable = !subject.replace('(no subject)', '').trim() && !text.trim();
+
   let engineResult = { text: '', escalate: true, links: [] };
-  if (!(await globalLimitReached(env))) {
+  if (!unreadable && !(await globalLimitReached(env))) {
     engineResult = await answer(env, { message: `${subject}\n\n${text}`.slice(0, 1500), lang: 'auto' });
     await bumpCs(env, 'global'); // a 300/nap sapka KÖZÖS: chat+email AI-hívás együtt számít
     await bumpCs(env, 'mail');
