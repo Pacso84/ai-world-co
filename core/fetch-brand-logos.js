@@ -37,7 +37,10 @@ const SLUGS = {
   'Microsoft': 'microsoft', 'Meta': 'meta', 'Perplexity': 'perplexity',
   'Alibaba': 'alibabacloud', 'Mistral': 'mistralai', 'DeepSeek': 'deepseek',
   'Amazon': 'amazon', 'Apple': 'apple', 'Hugging Face': 'huggingface',
-  'NVIDIA': 'nvidia', 'GitHub': 'github', 'Suno.ai': 'suno', 'Suno': 'suno'
+  'NVIDIA': 'nvidia', 'GitHub': 'github', 'Suno.ai': 'suno', 'Suno': 'suno',
+  // 2026-07-22: a Databricks önálló csempe lett (a "Genie One" cég-címkéje
+  // javítva Databricksre), ezért kell neki hivatalos márkajel.
+  'Databricks': 'databricks'
 };
 
 // Amelyik cég NINCS a simple-iconsban, de a szintén nyílt svgl-könyvtárban
@@ -45,7 +48,9 @@ const SLUGS = {
 // a normalize currentColorra semlegesíti, hogy a csempe márkaszínére fessen.
 const SVGL_SLUGS = {
   'Cohere': 'cohere',
-  'xAI': 'xai_light'   // az svgl light/dark változatot ad; a light path szín nélküli → currentColorra fest
+  'xAI': 'xai_light',  // az svgl light/dark változatot ad; a light path szín nélküli → currentColorra fest
+  // 2026-07-22: a Midjourney nincs a simple-iconsban (404), az svgl-ben viszont igen.
+  'Midjourney': 'midjourney'
 };
 
 const companySlug = (c) => c.toLowerCase().replace(/[^a-z0-9]+/g, '-');
