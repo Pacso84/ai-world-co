@@ -59,26 +59,34 @@ ${kbBlock}`;
 // (Enélkül az őr a saját promptunk által ajánlott /guides.html-t is kivágta.)
 const SITE_PAGES = ['', '/guides.html', '/tools.html', '/start.html', '/glossary.html', '/wizard.html', '/about.html', '/archive.html', '/support.html', '/feed.xml'];
 
+// Egységes alak az összehasonlításhoz: kisbetű, záró írásjel/perjel nélkül,
+// www nélkül, hiányzó séma pótolva. (2026-07-21 audit: e nélkül a NAGYBETŰS
+// "HTTPS://…" és a séma nélküli "aiworldhq.com/contact" simán átcsúszott,
+// a valódi ".../about.html/" alakot pedig tévesen kivágta a záró perjel miatt.)
+function normUrl(u) {
+  let s = String(u).trim().toLowerCase().replace(/[.,;:!?)\]]+$/, '').replace(/\/+$/, '');
+  s = s.replace(/^https?:\/\//, '').replace(/^www\./, '');
+  return 'https://' + s;
+}
+
 function knownUrls(kb) {
   const set = new Set();
-  for (const g of kb.guides || []) set.add(g.u);
-  for (const s of kb.site || []) set.add(s.u);
-  for (const t of kb.terms || []) set.add(t.u);
+  const add = (u) => { if (u) set.add(normUrl(u)); };
+  for (const g of kb.guides || []) add(g.u);
+  for (const s of kb.site || []) add(s.u);
+  for (const t of kb.terms || []) add(t.u);
   const lp = (kb.lang && kb.lang !== 'en') ? '/' + kb.lang : '';
-  for (const p of SITE_PAGES) {
-    set.add(SITE + lp + p);
-    if (p === '') set.add(SITE + lp + '/');
-  }
+  for (const p of SITE_PAGES) add(SITE + lp + p);
   return set;
 }
+
+// Séma nélküli saját-domain hivatkozást is elkapunk — a modell így írta a kamu címet.
+const URL_RX = /(?:https?:\/\/[^\s<>()[\]"'*]+)|(?:(?:www\.)?aiworldhq\.com[^\s<>()[\]"'*]*)/gi;
 
 export function stripUnknownUrls(text, kb) {
   const ok = knownUrls(kb);
   return String(text || '')
-    .replace(/https?:\/\/[^\s<>()[\]"']+/g, (u) => {
-      const clean = u.replace(/[.,;:!?)]+$/, '');   // záró írásjel nem része a címnek
-      return ok.has(clean) || ok.has(u) ? u : '';
-    })
+    .replace(URL_RX, (u) => (ok.has(normUrl(u)) ? u : ''))
     .replace(/[ \t]{2,}/g, ' ')
     .replace(/\s+([.,;:!?])/g, '$1')
     .trim();

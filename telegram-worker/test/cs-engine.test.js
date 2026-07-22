@@ -89,6 +89,14 @@ const fakeFetch = async (url) => { fetchCount++; assert.ok(url.includes('/kb.jso
   // vegyes eset: a valódi marad, a kitalált megy
   const mixed = stripUnknownUrls('Igazi: https://aiworldhq.com/article/real-guide Hamis: https://aiworldhq.com/nincs-ilyen', kb2);
   assert.ok(mixed.includes('/article/real-guide') && !mixed.includes('nincs-ilyen'), 'vegyesen is jól szűr');
+
+  // AUDIT-LELETEK (2026-07-21): három megkerülési út, mindhárom lezárva
+  assert.ok(!stripUnknownUrls('Itt: HTTPS://aiworldhq.com/fake-page', kb2).includes('fake-page'),
+    'NAGYBETŰS séma sem menti meg a kitalált címet');
+  assert.ok(!stripUnknownUrls('Írj ide: aiworldhq.com/contact', kb2).includes('/contact'),
+    'séma NÉLKÜLI kitalált cím is kiesik (pont így írta a modell élesben)');
+  assert.ok(stripUnknownUrls('Lásd: https://aiworldhq.com/about.html/ itt.', kb2).includes('about.html'),
+    'a VALÓDI link záró perjellel is megmarad (nem vágjuk ki tévedésből)');
 }
 
 console.log('✅ cs-engine.test: minden átment');

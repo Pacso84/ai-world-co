@@ -39,27 +39,35 @@ export function tokenize(str) {
 // elég, ha a KEZDŐ 4 betűje BENNE VAN a másik szóban ("generalni" ⊂ "kepgeneralas").
 // Rövid szavakra NEM lazítunk — ott túl sok lenne a téves találat.
 const LOOSE_MIN = 5;     // ennél rövidebb kérdés-szóra nincs lazítás
-const LOOSE_PREFIX = 4;  // ennyi kezdőbetű egyezése = tő-találat
+// 3 betűs tő + ALACSONY súly (2026-07-21 audit után, méréssel hangolva):
+// a magyar összetett szóhoz rövid tő kell ("kép" ⊂ "képgenerálás"), viszont egyetlen
+// rövid egyezés önmagában NEM elég a bekerüléshez (laza=1 pont, küszöb=2) — így két
+// megerősítő szó kell. Ez egyszerre hozta vissza a képgenerálás-találatot ÉS szüntette
+// meg az "application"→"Apple" hamis találatot, 5 ms/kérés mellett.
+const LOOSE_PREFIX = 3;
 
-function looseHit(t, tokens) {
-  if (t.length < LOOSE_MIN) return false;
-  const p = t.slice(0, LOOSE_PREFIX);
-  for (const k of tokens) {
-    if (k.length >= LOOSE_PREFIX && (k.includes(p) || t.startsWith(k.slice(0, LOOSE_PREFIX)))) return true;
-  }
-  return false;
+// A tokenek végigjárása helyett a NORMALIZÁLT teljes szövegben keresünk (indexOf).
+// Audit-mérés: a token-ciklusos változat 204 útmutatón 39 ms volt kérésenként —
+// a Workers CPU-kerete ennél szűkebb lehet, és a túllépés NEM elkapható hiba.
+function looseHit(t, normStr) {
+  if (t.length < LOOSE_MIN || !normStr) return false;
+  return normStr.includes(t.slice(0, LOOSE_PREFIX));
+}
+
+// Kisbetű + ékezet-levágás (tokenizálás nélkül) — a laza egyezéshez.
+export function normText(s) {
+  return String(s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
 }
 
 // Egy kb-elem pontszáma a kérdés tokenjeihez képest.
 // Pontos cím-találat 3, pontos törzs 1; a laza (ragozott) cím-találat 2, törzs 1 —
 // így a pontos egyezés mindig erősebb marad, de a ragozott alak sem vész el.
-function scoreItem(qTokens, titleTokens, bodyTokens) {
+function scoreItem(qTokens, titleTokens, bodyTokens, titleNorm, bodyNorm) {
   let s = 0;
   for (const t of qTokens) {
     if (titleTokens.includes(t)) s += 3;
     else if (bodyTokens.includes(t)) s += 1;
-    else if (looseHit(t, titleTokens)) s += 2;
-    else if (looseHit(t, bodyTokens)) s += 1;
+    else if (looseHit(t, titleNorm) || looseHit(t, bodyNorm)) s += 1;
   }
   return s;
 }
@@ -70,15 +78,16 @@ export function searchKb(query, kb, topN = 4) {
   if (!qTokens.length) return [];
   const scored = [];
   for (const it of kb.site || []) {
-    const s = scoreItem(qTokens, tokenize(it.q), tokenize(it.a));
+    const s = scoreItem(qTokens, tokenize(it.q), tokenize(it.a), normText(it.q), normText(it.a));
     if (s >= 2) scored.push({ t: it.q, s: it.a, u: it.u, kind: 'site', score: s });
   }
   for (const it of kb.guides || []) {
-    const s = scoreItem(qTokens, tokenize(it.t + ' ' + (it.c || '')), tokenize(it.s));
+    const title = it.t + ' ' + (it.c || '');
+    const s = scoreItem(qTokens, tokenize(title), tokenize(it.s), normText(title), normText(it.s));
     if (s >= 2) scored.push({ t: it.t, s: it.s, u: it.u, c: it.c, kind: 'guide', score: s });
   }
   for (const it of kb.terms || []) {
-    const s = scoreItem(qTokens, tokenize(it.t), tokenize(it.d));
+    const s = scoreItem(qTokens, tokenize(it.t), tokenize(it.d), normText(it.t), normText(it.d));
     if (s >= 3) scored.push({ t: it.t, s: it.d, u: it.u, kind: 'term', score: s });
   }
   return scored.sort((a, b) => b.score - a.score).slice(0, topN);

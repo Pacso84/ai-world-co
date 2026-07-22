@@ -126,7 +126,10 @@ jobs:
           node agents/social/poster.js --limit 2 || true
 
       # Napi önjelentés a Főnöktől Telegramra (naponta 1x, a 7-15 UTC sávban)
+      # if: always() (2026-07-21 audit) — ha egy korábbi lépés elhasal, a riport
+      # ENÉLKÜL sosem menne ki: a hiba NÉMA maradna (mint a 9 napos FB-leállásnál).
       - name: Napi önjelentés (Telegram)
+        if: always()
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_OWNER_CHAT_ID: ${{ secrets.TELEGRAM_OWNER_CHAT_ID }}
@@ -147,7 +150,11 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: node core/search-report.js || true
 
+      # if: always() (2026-07-21 audit) — a költség-napló (core/budget-state.json)
+      # CSAK itt őrződik meg. Enélkül egy bukott lépés az egész futás elköltött
+      # pénzét ELDOBTA a nyilvántartásból → a havi plafon egyre kevesebbet mért.
       - name: Generált tartalom megőrzése (visszacommit)
+        if: always()
         run: |
           git config user.name "AI World Bot"
           git config user.email "bot@aiworld.local"

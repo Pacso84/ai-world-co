@@ -426,7 +426,17 @@ function markExhausted(model, daily) {
 // 429 = kvóta. PerDay = napi kimerülés; egyébként perces limit.
 function isQuotaError(error) {
   const m = (error?.message || '').toLowerCase();
-  return m.includes('429') || m.includes('resource_exhausted') || m.includes('quota');
+  return m.includes('429') || m.includes('resource_exhausted') || m.includes('quota')
+    // 2026-07-21: az OpenRouter a kifogyott egyenleget 402-vel jelzi, a Google
+    // "prepayment credits are depleted"-tel. Enélkül NEM jegyeztük meg kimerültként,
+    // és minden további hívás újra nekifutott (felesleges körök + néma minőség-esés).
+    || m.includes('402') || m.includes('insufficient credit') || m.includes('credits are depleted');
+}
+
+// Gondolkodó (reasoning) modellek — ezeknek token-padló kell, különben üres válasz.
+function isThinkingModel(model) {
+  const m = String(model || '').toLowerCase();
+  return m.includes('zai-glm') || m.includes('minimax');
 }
 function isDailyQuota(error) {
   const m = (error?.message || '').toLowerCase();
@@ -442,6 +452,34 @@ function isDailyQuota(error) {
 //   prompt    - mit kérdezünk az AI-tól (string)
 //   options   - { agentName, systemPrompt?, maxTokens? }
 //
+// ===================================================================
+// KÜLSŐ KÓD-KERÍTÉS LEHÁMOZÁSA (2026-07-21, MiniMax-váltás után derült ki)
+// A MiniMax M3 az EGÉSZ választ ```markdown ... ``` kerítésbe csomagolja.
+// Ettől a fordító looksValid()-ja elbukik (frontmatter nem a sor elején van),
+// és a cikk-írók frontmatter-e is olvashatatlanná válik → néma gyártás-leállás.
+// Központilag itt hámozzuk le, hogy MINDEN agent védve legyen — a szövegen
+// BELÜLI kódblokkokat nem bántjuk, csak a mindent körbeölelő külső kerítést.
+// ===================================================================
+// Csak DOKUMENTUM-burok jelölőnél hámozunk. A ```bash/```js/```python stb. valódi
+// kód-válasz lehet (az agent szándékosan kérte) — azt érintetlenül hagyjuk.
+const DOC_FENCE_TAGS = new Set(['', 'markdown', 'md', 'json', 'text', 'txt', 'yaml', 'yml', 'html']);
+
+export function unwrapOuterFence(text) {
+  if (typeof text !== 'string') return text;
+  const t = text.trim();
+  if (!t.startsWith('```')) return text;
+  const m = t.match(/^```([a-zA-Z0-9_-]*)[ \t]*\r?\n([\s\S]*?)\r?\n?```$/);
+  if (!m) return text;
+  const [, tag, inner] = m;
+  if (!DOC_FENCE_TAGS.has(tag.toLowerCase())) return text;
+  // A belső részben MARADT kerítéseknek párban kell lenniük. Páratlan szám azt
+  // jelenti, hogy nem egyetlen burkot bontottunk, hanem több különálló blokk
+  // elejét/végét téptük szét — ilyenkor inkább nem nyúlunk hozzá.
+  const innerFences = (inner.match(/^```/gm) || []).length;
+  if (innerFences % 2 !== 0) return text;
+  return inner;
+}
+
 // Visszaadja: { text, provider, model, costUsd } VAGY null ha minden elesett
 //
 // HIBAKEZELÉS:
@@ -556,7 +594,11 @@ export async function ask(prompt, options = {}) {
     // token-keretnél (pl. pairing 400, seo 500) a TELJES keretet elgondolkodja
     // és üres választ ad. $0-s modell, a ráhagyás ingyen van → padló alá.
     // (Ugyanaz a lecke, mint a Gemini thinking-tokenjeinél 2026-07-03.)
-    const effMaxTokens = model === 'zai-glm-4.7' ? Math.max(maxTokens || 2048, 4000) : maxTokens;
+    // GONDOLKODÓ-PADLÓ: a "gondolkodó" modellek a keret egy részét belső
+    // gondolkodásra költik — kis maxTokens mellett ÜRES válasz jön (07-16 GLM-eset).
+    // 2026-07-21: a MiniMax M3 is ilyen, és a váltással MINDEN tartalmi agent
+    // rákerült (a ceo-desk 300 tokenes hívása így némán elbukott volna).
+    const effMaxTokens = isThinkingModel(model) ? Math.max(maxTokens || 2048, 4000) : maxTokens;
 
     // Átmeneti hibákra ugyanazt a modellt újrapróbáljuk (backoff-fal)
     for (let tryNum = 1; tryNum <= MAX_TRANSIENT_RETRIES + 1; tryNum++) {
@@ -580,7 +622,7 @@ export async function ask(prompt, options = {}) {
         // elfogyott). Napi 1x szólunk Telegramon, hogy tudd, tölteni kell.
         if (routing === 'paid-only' && !isMetered(provider, model)) emergencyFallbackAlert(agentName, provider, model);
 
-        return { text: response.text, provider, model, costUsd: cost };
+        return { text: unwrapOuterFence(response.text), provider, model, costUsd: cost };
 
       } catch (error) {
         logCall(agentName, provider, model, null, 0, false, error);

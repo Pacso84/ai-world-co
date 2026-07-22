@@ -147,7 +147,10 @@ Article start: ${String(d.article_markdown || '').slice(0, 1200)}
 Our rule: SAVE, DON'T DROP — readers should read this story on OUR site, not elsewhere.
 Reply ONLY JSON: {"action":"fix-only"|"rewrite-explainer"|"drop","hint":"<one concrete instruction to the writer>","lesson":"<one generalisable lesson for the company>"}
 "drop" is allowed ONLY if the story is factually dead (retracted/wrong) or truly unsalvageable.`;
-  const r = await ask(prompt, { agentName: 'ceo', maxTokens: 300, jsonMode: true });
+  // maxTokens 300 → 2000 (2026-07-21): a MiniMax-váltás után a főnök-asztal is
+  // gondolkodó modellre került; 300 tokenen a modell mindent elgondolkodott és
+  // ÜRES választ adott → a desk némán "rewrite-explainer"-re esett minden esetnél.
+  const r = await ask(prompt, { agentName: 'ceo', maxTokens: 2000, jsonMode: true });
   try {
     const t = r.text.trim().replace(/^```(?:json)?/i, '').replace(/```$/, '').trim();
     return JSON.parse(t.slice(t.indexOf('{'), t.lastIndexOf('}') + 1));
