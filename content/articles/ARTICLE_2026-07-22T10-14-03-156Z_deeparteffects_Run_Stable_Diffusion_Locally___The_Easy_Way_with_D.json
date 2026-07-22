@@ -1,0 +1,56 @@
+{
+  "_meta": {
+    "written_at": "2026-07-22T10:18:28.598Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.016896599999999998,
+    "original_draft": "2026-07-22T10-14-03-156Z_deeparteffects_Run_Stable_Diffusion_Locally___The_Easy_Way_with_D.json",
+    "source_id": "deeparteffects",
+    "source_name": "Deep Art Effects Blog (hivatalos)",
+    "source_link": "https://www.deeparteffects.com/blog/stable-diffusion-local-install-easy/",
+    "status": "published",
+    "published_at": "2026-07-22T10:25:21.472Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 752
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [
+        "Mentions '2026' which is a future date and could mislead readers about current relevance",
+        "Does not name any specific desktop app, making the 'pick one tool' advice vague"
+      ],
+      "verdict": "Friendly, accessible explainer with clear structure, plain language, and a useful what-this-means section. Minor issues: an odd '2026' reference and no specific tool recommendation, but these don't warrant a fail.",
+      "_aiCost": 0.0008255999999999999,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m3",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-07-22T10:31:58.855Z",
+    "guide_worthy": false,
+    "pairing_reason": "the article is about a generic topic of running Stable Diffusion locally, not a specific named feature or tool",
+    "seo": {
+      "meta_description": "Run Stable Diffusion on your computer without coding knowledge, create custom AI images for personal or work use, made easy",
+      "keywords": [
+        "Stable Diffusion",
+        "run AI model locally",
+        "make custom images",
+        "AI for beginners",
+        "Stable Diffusion tutorial"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add a step-by-step guide with screenshots to help readers install and use Stable Diffusion",
+        "Include examples of custom images created with Stable Diffusion to inspire readers",
+        "Provide troubleshooting tips for common issues that may arise during the installation process"
+      ],
+      "optimised_at": "2026-07-22T10:33:00.199Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"How to Run Stable Diffusion on Your Computer (Without the Tech Headache)\"\nsubtitle: \"A friendly, jargon-free guide to making AI images locally — even if you've never touched code\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"stable-diffusion\", \"ai-images\", \"getting-started\", \"creativity\"]\n---\n\n# How to Run Stable Diffusion on Your Computer (Without the Tech Headache)\n\nYou wanted to make a custom image for a friend's birthday — something better than a generic card from the shop. Or you needed a quick illustration for a work presentation, and you didn't want to pay for yet another monthly subscription. The idea of typing a sentence and getting a picture back sounds perfect. Then someone mentioned Stable Diffusion, and you saw \"Python\", \"GitHub\" and \"CUDA\" in the same breath. That's usually where curious people quietly close the tab.\n\nHere's the good news: you don't need any of that anymore to give it a go.\n\n## What Stable Diffusion actually is\n\nStable Diffusion is an AI model (think of it as the \"brain\" behind a text-to-image tool) that turns written descriptions into pictures. You type a prompt — that's just the instruction you give the AI — like *\"a cosy bookshop at night, warm lighting, painted in watercolour style\"*, and it produces a few versions of that scene in seconds.\n\nThe original version was released as **open source**, which means the underlying code is free for anyone to use or build on. That's a big deal. Most AI image tools keep their technology locked behind a paywall. This one doesn't.\n\n## Why it used to be hard\n\nIf you tried installing Stable Diffusion yourself a couple of years ago, the typical experience looked like this:\n\n- Install Python (a programming language most people have never touched)\n- Set up a \"virtual environment\" (a separate sandbox for the software)\n- Download a model file weighing several gigabytes\n- Configure your graphics card drivers\n- Hope nothing breaks\n\nOne missing step and you'd stare at a wall of red error text. The technology was brilliant, but the setup was clearly built for developers, not curious humans.\n\n## The easier way in 2026\n\nA new wave of desktop applications has wrapped Stable Diffusion into a normal install. You download a file, double-click it, and a friendly window opens. No terminal. No code. You type your description, click a button, and your images appear.\n\nThese tools quietly handle all the technical plumbing for you:\n\n- **Model loading** — pulling in the trained AI \"brain\"\n- **GPU management** — using your computer's graphics chip efficiently\n- **Memory tuning** — adjusting settings so it doesn't crash mid-generation\n- **Style presets** — letting you pick between things like photorealistic, anime, or painted looks\n\nYou can swap between different installed \"models\" (different artistic styles, like switching between oil paints and pencil sketches) and adjust simple sliders for image size or how closely to follow your description.\n\n## A few things worth knowing\n\n- **Your computer matters a little**. Older laptops will be slower, but modern machines with a dedicated graphics card work well.\n- **The first generation is slow** as the software warms up. After that, images arrive quickly.\n- **You can keep everything private**. Unlike cloud tools, nothing leaves your computer. Your prompts and images stay on your device.\n- **It's free**, beyond the electricity your computer uses.\n\n## What this means for you\n\n- **If you're a curious everyday user**: Try it for personal projects — custom birthday cards, social media profile pictures, illustrations for a blog or a kid's story. You only need simple prompts and a bit of patience.\n- **If you run a small business or work in content**: Use it for quick mockups, social posts, blog hero images, or mood boards for client pitches. It's especially handy when you need many variations of the same idea fast.\n- **If you're just getting started**: Pick one desktop app, install the recommended starter model, and try a prompt like *\"a red apple on a wooden table, soft morning light\"*. Iterate from there.\n\n## Wrap-up\n\nRunning Stable Diffusion locally used to be a weekend project. Today it's closer to installing any other desktop program. If you've ever wanted to make AI images without paying a monthly fee, sending your ideas off to a remote server, or learning to code — this is your moment. Pick one tool this week, install it on a quiet evening, and type your first prompt. You'll be surprised how quickly it starts to feel normal.",
+  "original_title": "Run Stable Diffusion Locally – The Easy Way with Deep Art Creator Desktop"
+}

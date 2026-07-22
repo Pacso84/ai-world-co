@@ -1,0 +1,42 @@
+{
+  "_meta": {
+    "written_at": "2026-07-22T10:29:25.750Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.005688299999999999,
+    "original_draft": "2026-07-22T10-14-03-156Z_deeparteffects_What_Is_Stable_Diffusion__A_Simple_Guide_to_the_AI.json",
+    "source_id": "deeparteffects",
+    "source_name": "Deep Art Effects Blog (hivatalos)",
+    "source_link": "https://www.deeparteffects.com/blog/what-is-stable-diffusion-guide/",
+    "status": "rejected",
+    "rejected_at": "2026-07-22T10:31:11.196Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 858
+    },
+    "ai_review": {
+      "overall_score": 6,
+      "clarity_score": 5,
+      "decision": "FAIL",
+      "issues": [
+        "Step 4 tells reader to search GitHub themselves with no specific notebook link or fallback",
+        "Step 5 says 'one of them will give you a public link' without identifying which cell or what the link looks like",
+        "Generate button described as 'Below or beside' with no concrete location or fallback for differing interfaces",
+        "Audience mismatch: Colab + GitHub workflow is not truly beginner-friendly for everyday people despite the reassurance"
+      ],
+      "verdict": "The voice, structure, and Australian English are strong, but as a guide it fails beginner clarity: the core setup steps are too vague for a first-time user to follow without help.",
+      "_aiCost": 0.0031217999999999997,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m3",
+      "_attempts": 1
+    },
+    "reason": "The voice, structure, and Australian English are strong, but as a guide it fails beginner clarity: the core setup steps are too vague for a first-time user to follow without help.",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-07-22T10-14-03-156Z_deeparteffects_What_Is_Stable_Diffusion__A_Simple_Guide_to_the_AI.json",
+    "requeued_unchanged": false
+  },
+  "article_markdown": "---\ntitle: \"Getting Started with Stable Diffusion: Create Your Own AI Images in Minutes\"\nsubtitle: \"A friendly, step-by-step walkthrough to the AI engine that turns text into pictures — with exact clicks, no jargon, and no expensive hardware required.\"\ncategory: \"how-to\"\naudience: \"personal\"\nread_time_minutes: 5\ntags: [\"stable-diffusion\", \"ai-art\", \"image-generation\", \"how-to\"]\n---\n\n# Getting Started with Stable Diffusion\n\nEver seen a stunning picture of a dragon and thought, \"I could use that for a birthday card or a wall poster\"? With Stable Diffusion, you can turn a single sentence into a custom image in under a minute, no drawing skills needed.\n\n## What Stable Diffusion Actually Is\n\nStable Diffusion is a **generative diffusion model** — a type of artificial intelligence that learned to draw by studying millions of pictures. Imagine a photographer who starts with a blurry photo and, step by step, sharpens it until a clear image appears. That's roughly how the model works internally: it adds visual \"noise\" (random speckles), then learns to clean it back up into something recognisable.\n\nA few terms you'll see a lot:\n\n- **Prompt:** the text instruction you type to tell the AI what to create (e.g. *\"a koala sitting on a branch at sunset\"*).\n- **Inference:** the moment the AI actually processes your prompt and generates the image.\n- **Checkpoint:** the large file that contains the AI's \"learned knowledge\" — basically its brain.\n\n## Pick a Platform and Set It Up\n\nYou don't need a powerful computer. The easiest path for most people is a free online tool that runs everything in your browser.\n\n### Option 1: Google Colab (recommended for beginners)\n\nGoogle Colab is a free online notebook — think of it as a document that lives in your browser and can run code for you. It needs no installation, but it does require a Google account.\n\n1. Open your browser and go to `colab.research.google.com`.\n2. Sign in with your Google account.\n3. In the top-left, click **File → Open notebook**. A pop-up will appear.\n4. Click the **GitHub** tab, paste a Stable Diffusion notebook link (search \"Stable Diffusion Colab\" on GitHub to find a popular, well-maintained one), and press Enter.\n5. The notebook will load with grey boxes called **cells**. To run each cell, hover over it and click the **play button (▶)** on the left. Run the cells in order from top to bottom — the first few install the software, and one of them will give you a public link.\n6. Click that link to open the Stable Diffusion interface in a new tab.\n\n### Option 2: Automatic1111 (for tinkerers)\n\nAutomatic1111 is **community-built software** made by volunteers, not a commercial product. It gives you more control, but you'll need to install it on your own computer. It also requires a reasonably capable **GPU** (the graphics chip in your PC — basically the part that handles images and video). Without one, generation will be painfully slow or won't work at all. If your laptop is more than three years old or was a budget model, stick with Colab.\n\n## Write Your First Prompt\n\nOnce the interface is open, look for a **text box** near the top — usually labelled \"Prompt\" or \"Enter your prompt.\" Click inside it and type your description. Below or beside the box, you'll see a **Generate** button. Click it, wait 5–20 seconds, and your image appears in a preview area to the right or below.\n\nStart simple: *\"a koala sitting on a branch at sunset, watercolour style\"*.\n\n## Tips for Better Results\n\n- **Be specific, but not overly wordy.** Mention the subject, style, and mood.  \n  Good: *\"a vintage-style poster of a surfboard on a golden beach, 1970s colour palette\"*.  \n  Too long: *\"a picture of a surfboard with the sun and a wave and people and...\"*\n- **Use style words.** *\"Cinematic\"*, *\"watercolour\"*, *\"photorealistic\"* and *\"oil painting\"* all guide the look.\n- **Iterate.** If the first image isn't right, change one word and try again. Small tweaks often make a big difference.\n- **Respect the safety filters.** Most platforms block explicit or copyrighted content automatically. These limits keep the community safe and the tools available to everyone.\n\n## What This Means for You\n\n- **For personal projects:** Design custom greeting cards, decorate your home office, or create unique social-media posts without hiring a designer.\n- **For hobbies and learning:** Practise visual storytelling for a novel you're writing, or experiment with colour theory by generating the same scene in different styles.\n- **If you're just getting started:** Stick with Google Colab, use short prompts, and let the model surprise you. If you hit a daily limit, try a different Colab notebook the next day, or wait until your quota resets — both are free, low-risk ways to keep exploring.\n\n## Wrap-Up\n\nStable Diffusion puts a real image-creation engine in anyone's hands. By picking a beginner-friendly platform, typing a clear prompt, and clicking Generate, you can produce personalised artwork in seconds. Today, try generating one image for a project you've been pondering — a birthday card, a blog header, a poster for your wall. You'll see how quickly AI can become a regular part of your creative toolkit.",
+  "original_title": "What Is Stable Diffusion? A Simple Guide to the AI Behind Modern Image Generation"
+}

@@ -1,110 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178459739315617",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-07-21T01:29:53.156Z",
-      "updated": "2026-07-21T01:30:42.973Z"
-    },
-    {
-      "id": "t178459744297462",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-21T01:30:42.974Z",
-      "updated": "2026-07-21T01:31:25.654Z"
-    },
-    {
-      "id": "t178459748565758",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-07-21T01:31:25.657Z",
-      "updated": "2026-07-21T01:31:36.037Z"
-    },
-    {
-      "id": "t178459749606290",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-21T01:31:36.062Z",
-      "updated": "2026-07-21T01:33:15.374Z"
-    },
-    {
-      "id": "t178459759537657",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-21T01:33:15.376Z",
-      "updated": "2026-07-21T01:34:41.289Z"
-    },
-    {
-      "id": "t178459768131279",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-21T01:34:41.312Z",
-      "updated": "2026-07-21T01:34:41.520Z"
-    },
-    {
-      "id": "t178459768152217",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-21T01:34:41.522Z",
-      "updated": "2026-07-21T01:35:01.220Z"
-    },
-    {
-      "id": "t178459770122458",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-21T01:35:01.224Z",
-      "updated": "2026-07-21T01:35:42.016Z"
-    },
-    {
-      "id": "t178459774201898",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-21T01:35:42.018Z",
-      "updated": "2026-07-21T01:35:42.299Z"
-    },
-    {
-      "id": "t178459774230186",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-21T01:35:42.301Z",
-      "updated": "2026-07-21T01:36:01.452Z"
-    },
-    {
-      "id": "t178459776145595",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-07-21T01:36:01.455Z",
-      "updated": "2026-07-21T01:36:36.562Z"
-    },
-    {
-      "id": "t178459779656433",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-21T01:36:36.564Z",
-      "updated": "2026-07-21T01:36:37.533Z"
-    },
-    {
-      "id": "t178459779753576",
-      "title": "Run translator",
-      "status": "done",
-      "agent": "translator",
-      "created": "2026-07-21T01:36:37.535Z",
-      "updated": "2026-07-21T01:50:03.549Z"
-    },
-    {
       "id": "t178459860355133",
       "title": "Run publisher",
       "status": "done",
@@ -479,49 +375,113 @@
       "agent": "publisher",
       "created": "2026-07-22T02:09:48.981Z",
       "updated": "2026-07-22T02:09:57.573Z"
+    },
+    {
+      "id": "t178471521792058",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-07-22T10:13:37.920Z",
+      "updated": "2026-07-22T10:13:38.133Z"
+    },
+    {
+      "id": "t178471521813577",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-07-22T10:13:38.135Z",
+      "updated": "2026-07-22T10:14:03.166Z"
+    },
+    {
+      "id": "t178471524316815",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-07-22T10:14:03.168Z",
+      "updated": "2026-07-22T10:14:03.383Z"
+    },
+    {
+      "id": "t178471524338559",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-07-22T10:14:03.385Z",
+      "updated": "2026-07-22T10:23:38.810Z"
+    },
+    {
+      "id": "t178471581881216",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-22T10:23:38.812Z",
+      "updated": "2026-07-22T10:26:14.126Z"
+    },
+    {
+      "id": "t178471597412936",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-07-22T10:26:14.129Z",
+      "updated": "2026-07-22T10:30:07.901Z"
+    },
+    {
+      "id": "t178471620790362",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-22T10:30:07.903Z",
+      "updated": "2026-07-22T10:31:18.509Z"
+    },
+    {
+      "id": "t17847162785275",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-07-22T10:31:18.527Z",
+      "updated": "2026-07-22T10:32:00.842Z"
+    },
+    {
+      "id": "t178471632086943",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-22T10:32:00.869Z",
+      "updated": "2026-07-22T10:32:23.512Z"
+    },
+    {
+      "id": "t178471634351460",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-07-22T10:32:23.514Z",
+      "updated": "2026-07-22T10:33:11.554Z"
+    },
+    {
+      "id": "t178471639155757",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-22T10:33:11.557Z",
+      "updated": "2026-07-22T10:33:12.675Z"
+    },
+    {
+      "id": "t17847163926779",
+      "title": "Run translator",
+      "status": "done",
+      "agent": "translator",
+      "created": "2026-07-22T10:33:12.677Z",
+      "updated": "2026-07-22T11:03:12.697Z"
+    },
+    {
+      "id": "t178471819269999",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-07-22T11:03:12.699Z",
+      "updated": "2026-07-22T11:03:21.981Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178399229518045",
-      "level": "warn",
-      "text": "📨 pairing → guide: Új funkció-hír → kéne hozzá útmutató: \"How to Use Physical Security Keys with Your Work Computer\"",
-      "agent": "pairing",
-      "at": "2026-07-14T01:24:55.180Z",
-      "loud": false
-    },
-    {
-      "id": "n178399246489916",
-      "level": "info",
-      "text": "SEO: 7 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-07-14T01:27:44.899Z",
-      "loud": false
-    },
-    {
-      "id": "n178399315206050",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). Our line-up is looking great, with a good mix of practical AI applications that will resonate with our everyday audience. I do note that the topics are quite tech-heavy, so a gentle intro or beginner'",
-      "agent": "publisher",
-      "at": "2026-07-14T01:39:12.060Z",
-      "loud": false
-    },
-    {
-      "id": "n178399315781820",
-      "level": "success",
-      "text": "1 hír + 6 útmutató publikálva (költség: $0.1010).",
-      "agent": "ceo",
-      "at": "2026-07-14T01:39:17.818Z",
-      "loud": false
-    },
-    {
-      "id": "n178402251641048",
-      "level": "info",
-      "text": "SEO: 3 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-07-14T09:48:36.410Z",
-      "loud": false
-    },
     {
       "id": "n178402281112116",
       "level": "success",
@@ -1281,200 +1241,49 @@
       "agent": "ceo",
       "at": "2026-07-22T02:09:57.602Z",
       "loud": false
+    },
+    {
+      "id": "n17847162103517",
+      "level": "warn",
+      "text": "📨 ellenorzo → iro: Hiányos / kell még adat: \"Gemini vs ChatGPT on Your Phone: Which AI Assistant Fits Your Pocket?\" — egészítsd ki: Article",
+      "agent": "ellenorzo",
+      "at": "2026-07-22T10:30:10.351Z",
+      "loud": false
+    },
+    {
+      "id": "n178471639154647",
+      "level": "info",
+      "text": "SEO: 12 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-07-22T10:33:11.546Z",
+      "loud": false
+    },
+    {
+      "id": "n178471819269127",
+      "level": "alert",
+      "text": "Pipeline lépés időtúllépés: translator — leállítva 30 perc után.",
+      "agent": "ceo",
+      "at": "2026-07-22T11:03:12.691Z",
+      "loud": true
+    },
+    {
+      "id": "n178471819388662",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). Our line-up is coherent and ready to publish, featuring a range of practical articles that showcase AI's everyday applications. I do note that the list is quite tech-heavy, so we may want to consider ",
+      "agent": "publisher",
+      "at": "2026-07-22T11:03:13.886Z",
+      "loud": false
+    },
+    {
+      "id": "n178471820201639",
+      "level": "success",
+      "text": "12 hír + 0 útmutató publikálva (költség: $0.1396).",
+      "agent": "ceo",
+      "at": "2026-07-22T11:03:22.016Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178445436807740",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"New Google Meet 'Take notes for me' settings for admins and end users\" (?/10)",
-      "ref": "2026-07-17T01-43-42-624Z_google-workspace_New_Google_Meet__Take_notes_for_me__settings_for_a.json",
-      "at": "2026-07-19T09:46:08.077Z"
-    },
-    {
-      "id": "m178445439140536",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Generate unique profile pictures for social media with Midjourney\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; Reviewer verdict: Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben; újraküldöm.",
-      "ref": "GUIDE_generate-unique-profile-pictures-for-social-media-with-midjo.json",
-      "at": "2026-07-19T09:46:31.405Z"
-    },
-    {
-      "id": "m178445441533649",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"How to turn a blurry photo into a crisp poster with NVIDIA AI Image Super‑Resolution in 5 minutes\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; Reviewer verdict: Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben; újraküldöm.",
-      "ref": "GUIDE_how-to-turn-a-blurry-photo-into-a-crisp-poster-with-nvidia-a.json",
-      "at": "2026-07-19T09:46:55.336Z"
-    },
-    {
-      "id": "m178445443266674",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"How to Use SkillOpt to Train AI Agent Skills\" — javítva: NO_FRONTMATTER: A cikk nem YAML frontmatter-rel kezdődik; MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!); újraküldöm.",
-      "ref": "GUIDE_how-to-use-skillopt-to-train-ai-agent-skills.json",
-      "at": "2026-07-19T09:47:12.666Z"
-    },
-    {
-      "id": "m178445445052760",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Set up a customer FAQ chatbot using DeepSeek on your website\" — javítva: Incomplete 'What this means for you' section; Reviewer verdict: The guide is well-structured and clear in its steps, but the crucial 'What this means for you' section is unfinished.; újraküldöm.",
-      "ref": "GUIDE_set-up-a-customer-faq-chatbot-using-deepseek-on-your-website.json",
-      "at": "2026-07-19T09:47:30.527Z"
-    },
-    {
-      "id": "m178445446937539",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Summarize long articles and reports from the web or documents using DeepSeek\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; Reviewer verdict: Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben; újraküldöm.",
-      "ref": "GUIDE_summarize-long-articles-and-reports-from-the-web-or-document.json",
-      "at": "2026-07-19T09:47:49.375Z"
-    },
-    {
-      "id": "m178445448237398",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Generate unique profile pictures for social media with Midjourney\" (?/10)",
-      "ref": "GUIDE_generate-unique-profile-pictures-for-social-media-with-midjo.json",
-      "at": "2026-07-19T09:48:02.373Z"
-    },
-    {
-      "id": "m178445450382855",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"How to turn a blurry photo into a crisp poster with NVIDIA AI Image Super‑Resolution in 5 minutes\" — mi a baj: The article describes a workflow for AI image super-resolution, including UI elements like 'Image Tools', 'AI Enhancements', 'Super-Resolution' sections, 'Upload Image' buttons, and options to configure 'Upscale Factor' and 'Sharpening'. These features and UI elemen",
-      "ref": "GUIDE_how-to-turn-a-blurry-photo-into-a-crisp-poster-with-nvidia-a.json",
-      "at": "2026-07-19T09:48:23.828Z"
-    },
-    {
-      "id": "m178445451414098",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"How to Use SkillOpt to Train AI Agent Skills\" (?/10)",
-      "ref": "GUIDE_how-to-use-skillopt-to-train-ai-agent-skills.json",
-      "at": "2026-07-19T09:48:34.140Z"
-    },
-    {
-      "id": "m178445452709788",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Set up a customer FAQ chatbot using DeepSeek on your website\" (?/10)",
-      "ref": "GUIDE_set-up-a-customer-faq-chatbot-using-deepseek-on-your-website.json",
-      "at": "2026-07-19T09:48:47.097Z"
-    },
-    {
-      "id": "m178445453759776",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Summarize long articles and reports from the web or documents using DeepSeek\" — mi a baj: The article claims that users can 'Continue as guest' or proceed without logging in to DeepSeek Chat. DeepSeek Chat (chat.deepseek.com) requires users to log in with a Google, GitHub, or email account and does not offer a guest or anonymous access option.",
-      "ref": "GUIDE_summarize-long-articles-and-reports-from-the-web-or-document.json",
-      "at": "2026-07-19T09:48:57.597Z"
-    },
-    {
-      "id": "m178445456086849",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"How to turn a blurry photo into a crisp poster with NVIDIA AI Image Super‑Resolution in 5 minutes\" — javítva: The article describes a workflow for AI image super-resolution, including UI elements like 'Image Tools', 'AI Enhancements', 'Super-Resolution' sections, 'Upload Image' buttons, and options to configure 'Upscale Factor' and 'Sharpening'. These features and UI elements are att",
-      "ref": "GUIDE_how-to-turn-a-blurry-photo-into-a-crisp-poster-with-nvidia-a.json",
-      "at": "2026-07-19T09:49:20.868Z"
-    },
-    {
-      "id": "m178445456086949",
-      "from": "guide",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Kell még adat: \"How to turn a blurry photo into a crisp poster with NVIDIA AI Image Super‑Resolution in 5 minutes\" — az Ellenőrző tényt/forrást kér, amit nem találhatok ki: The article describes a workflow for AI image super-resolution, including UI elements like 'Image Tools', 'AI Enhancements', 'Super-Resolution' sections, 'Upload Image' buttons, and options to configure 'Upscale Factor' and 'Sh",
-      "ref": "GUIDE_how-to-turn-a-blurry-photo-into-a-crisp-poster-with-nvidia-a.json",
-      "open": false,
-      "at": "2026-07-19T09:49:20.869Z",
-      "resolved_at": "2026-07-19T09:50:32.520Z"
-    },
-    {
-      "id": "m178445457698789",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Summarize long articles and reports from the web or documents using DeepSeek\" — javítva: The article claims that users can 'Continue as guest' or proceed without logging in to DeepSeek Chat. DeepSeek Chat (chat.deepseek.com) requires users to log in with a Google, GitHub, or email account and does not offer a guest or anonymous access option.; Reviewer verdict: Hitelesség-kapu blokko",
-      "ref": "GUIDE_summarize-long-articles-and-reports-from-the-web-or-document.json",
-      "at": "2026-07-19T09:49:36.987Z"
-    },
-    {
-      "id": "m178445458849198",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"How to turn a blurry photo into a crisp poster with NVIDIA AI Image Super‑Resolution in 5 minutes\" — mi a baj: The article lists \"Lanzos\" as an AI model option within Upscayl's \"Models\" section. Lanzos resampling is a traditional image scaling algorithm, not an AI super-resolution model that users select in Upscayl's interface alongside models like Real-ESRGAN or Remacri.",
-      "ref": "GUIDE_how-to-turn-a-blurry-photo-into-a-crisp-poster-with-nvidia-a.json",
-      "at": "2026-07-19T09:49:48.492Z"
-    },
-    {
-      "id": "m178445460044285",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Summarize long articles and reports from the web or documents using DeepSeek\" (?/10)",
-      "ref": "GUIDE_summarize-long-articles-and-reports-from-the-web-or-document.json",
-      "at": "2026-07-19T09:50:00.442Z"
-    },
-    {
-      "id": "m178445461957449",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"How to turn a blurry photo into a crisp poster with NVIDIA AI Image Super‑Resolution in 5 minutes\" — javítva: The article lists \"Lanzos\" as an AI model option within Upscayl's \"Models\" section. Lanzos resampling is a traditional image scaling algorithm, not an AI super-resolution model that users select in Upscayl's interface alongside models like Real-ESRGAN or Remacri.; Reviewer ve",
-      "ref": "GUIDE_how-to-turn-a-blurry-photo-into-a-crisp-poster-with-nvidia-a.json",
-      "at": "2026-07-19T09:50:19.574Z"
-    },
-    {
-      "id": "m17844546325184",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"How to turn a blurry photo into a crisp poster with NVIDIA AI Image Super‑Resolution in 5 minutes\" (?/10)",
-      "ref": "GUIDE_how-to-turn-a-blurry-photo-into-a-crisp-poster-with-nvidia-a.json",
-      "at": "2026-07-19T09:50:32.518Z"
-    },
-    {
-      "id": "m178445470069119",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-07-19T09:51:40.691Z"
-    },
-    {
-      "id": "m178445581733038",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
-      "ref": null,
-      "at": "2026-07-19T10:10:17.330Z"
-    },
-    {
-      "id": "m178447941016522",
-      "from": "ceo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Főnöki újraindítás: \"Expanded language support for Gemini in Google Docs\" — rewrite-explainer",
-      "ref": "2026-07-16T19-05-14-341Z_google-workspace_Expanded_language_support_for_Gemini_in_Google_Doc.json",
-      "at": "2026-07-19T16:43:30.165Z"
-    },
     {
       "id": "m178447945977851",
       "from": "iro",
@@ -2644,6 +2453,196 @@
       "text": "6 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
       "ref": null,
       "at": "2026-07-22T02:23:10.524Z"
+    },
+    {
+      "id": "m178471582202876",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Gemini vs ChatGPT on Your Phone: Which AI Assistant Fits Your Pocket?\" — mi a baj: comparison framing slightly favours Gemini and may be seen as putting ChatGPT down; free version table row is identical and adds no info; no source links for claims like plugin counts or multimodal features",
+      "ref": "2026-07-22T02-10-56-965Z_aiworld-editorial_Compare_ai-on-phone.json",
+      "at": "2026-07-22T10:23:42.028Z"
+    },
+    {
+      "id": "m17847158444372",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"OpenAI and Hugging Face partner to address security incident during model evaluation\" — mi a baj: ChatGPT Playground 'restricted mode' toggle appears fabricated or inaccurate; Source reframe is loose: original is a specific incident, article is a general guide with thin connection; Step 3 prompt sanitisation has no actual method or tool, just a rule",
+      "ref": "2026-07-22T10-13-59-136Z_openai-blog_OpenAI_and_Hugging_Face_partner_to_address_securit.json",
+      "at": "2026-07-22T10:24:04.437Z"
+    },
+    {
+      "id": "m178471588339022",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Redesigned Google Classroom homepage with tailored views based on user’s role\" — mi a baj: The 60-second tour is presented as fact but not confirmed in the source; Pinning/favouriting classes stated as a current feature without source backing; Subtitle promises parent coverage but role breakdown omits parents",
+      "ref": "2026-07-22T10-13-59-137Z_google-workspace_Redesigned_Google_Classroom_homepage_with_tailored.json",
+      "at": "2026-07-22T10:24:43.390Z"
+    },
+    {
+      "id": "m178471588627399",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Built in Fort Worth: Wistron Opens Advanced Manufacturing Plant to Produce NVIDIA AI Systems\" — mi a baj: Article is category 'how-to' but contains no real step-by-step instructions — the 'simple first step' is vague (which platform?); Claims about Australian benefits (local servers, job opportunities) are unsupported by the Texas source; Mentions NVIDIA RTX series as if rec",
+      "ref": "2026-07-22T10-13-59-137Z_nvidia-blog_Built_in_Fort_Worth__Wistron_Opens_Advanced_Manufa.json",
+      "at": "2026-07-22T10:24:46.273Z"
+    },
+    {
+      "id": "m178471592428694",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"What Is Stable Diffusion? A Simple Guide to the AI Behind Modern Image Generation\" — mi a baj: Step 4 (write first prompt) lacks platform-specific UI detail so a beginner does not know where to type the prompt; Online notebook step omits Colab-specific instructions like opening the notebook and running cells; Free-tier daily limits stated as 'usually enough' without giving a",
+      "ref": "2026-07-22T10-14-03-156Z_deeparteffects_What_Is_Stable_Diffusion__A_Simple_Guide_to_the_AI.json",
+      "at": "2026-07-22T10:25:24.286Z"
+    },
+    {
+      "id": "m178471593050680",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"AI Video Colorization Offline: 1-Click Color for Black-and-White Footage (No Cloud)\" — mi a baj: NO_FRONTMATTER: A cikk nem YAML frontmatter-rel kezdődik",
+      "ref": "2026-07-22T10-14-03-157Z_deeparteffects_AI_Video_Colorization_Offline__1-Click_Color_for_B.json",
+      "at": "2026-07-22T10:25:30.506Z"
+    },
+    {
+      "id": "m178471595466354",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Batch Processing in Deep Art Effects Pro: Scale AI Art for Agencies & Designers\" — mi a baj: Tool is repeatedly called 'Deep Art Effects Pro' throughout the article (subtitle, tags, body), but the actual product by the German company is named simply 'Deep Art Effects' — the 'Pro' suffix appears fabricated/inaccurate as the official product name.; The article attributes speci",
+      "ref": "2026-07-22T10-14-03-157Z_deeparteffects_Batch_Processing_in_Deep_Art_Effects_Pro__Scale_AI.json",
+      "at": "2026-07-22T10:25:54.663Z"
+    },
+    {
+      "id": "m178471601815790",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Gemini vs ChatGPT on Your Phone: Which AI Assistant Fits Your Pocket?\" — javítva: comparison framing slightly favours Gemini and may be seen as putting ChatGPT down; free version table row is identical and adds no info; újraküldöm.",
+      "ref": "2026-07-22T02-10-56-965Z_aiworld-editorial_Compare_ai-on-phone.json",
+      "at": "2026-07-22T10:26:58.157Z"
+    },
+    {
+      "id": "m178471605278746",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"OpenAI and Hugging Face partner to address security incident during model evaluation\" — javítva: ChatGPT Playground 'restricted mode' toggle appears fabricated or inaccurate; Source reframe is loose: original is a specific incident, article is a general guide with thin connection; újraküldöm.",
+      "ref": "2026-07-22T10-13-59-136Z_openai-blog_OpenAI_and_Hugging_Face_partner_to_address_securit.json",
+      "at": "2026-07-22T10:27:32.787Z"
+    },
+    {
+      "id": "m178471606405888",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Redesigned Google Classroom homepage with tailored views based on user’s role\" — javítva: The 60-second tour is presented as fact but not confirmed in the source; Pinning/favouriting classes stated as a current feature without source backing; újraküldöm.",
+      "ref": "2026-07-22T10-13-59-137Z_google-workspace_Redesigned_Google_Classroom_homepage_with_tailored.json",
+      "at": "2026-07-22T10:27:44.058Z"
+    },
+    {
+      "id": "m178471614866880",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Built in Fort Worth: Wistron Opens Advanced Manufacturing Plant to Produce NVIDIA AI Systems\" — javítva: Article is category 'how-to' but contains no real step-by-step instructions — the 'simple first step' is vague (which platform?); Claims about Australian benefits (local servers, job opportunities) are unsupported by the Texas source; újraküldöm.",
+      "ref": "2026-07-22T10-13-59-137Z_nvidia-blog_Built_in_Fort_Worth__Wistron_Opens_Advanced_Manufa.json",
+      "at": "2026-07-22T10:29:08.668Z"
+    },
+    {
+      "id": "m178471616575236",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"What Is Stable Diffusion? A Simple Guide to the AI Behind Modern Image Generation\" — javítva: Step 4 (write first prompt) lacks platform-specific UI detail so a beginner does not know where to type the prompt; Online notebook step omits Colab-specific instructions like opening the notebook and running cells; újraküldöm.",
+      "ref": "2026-07-22T10-14-03-156Z_deeparteffects_What_Is_Stable_Diffusion__A_Simple_Guide_to_the_AI.json",
+      "at": "2026-07-22T10:29:25.752Z"
+    },
+    {
+      "id": "m17847162078933",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"AI Video Colorization Offline: 1-Click Color for Black-and-White Footage (No Cloud)\" — javítva: NO_FRONTMATTER: A cikk nem YAML frontmatter-rel kezdődik; Reviewer verdict: Critical auto-check failures: NO_FRONTMATTER: A cikk nem YAML frontmatter-rel kezdődik; újraküldöm.",
+      "ref": "2026-07-22T10-14-03-157Z_deeparteffects_AI_Video_Colorization_Offline__1-Click_Color_for_B.json",
+      "at": "2026-07-22T10:30:07.893Z"
+    },
+    {
+      "id": "m178471621035052",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Gemini vs ChatGPT on Your Phone: Which AI Assistant Fits Your Pocket?\" — mi a baj: Article appears truncated mid-sentence at the end of the final bullet point, leaving it without a proper wrap-up; Missing or cut-off closing section, so no next step or sign-off for the reader; Subtitle mentions 'which one (or both) belongs on your home screen' but no concluding guidance on in",
+      "ref": "2026-07-22T02-10-56-965Z_aiworld-editorial_Compare_ai-on-phone.json",
+      "at": "2026-07-22T10:30:10.350Z"
+    },
+    {
+      "id": "m178471621035129",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "need",
+      "text": "Hiányos / kell még adat: \"Gemini vs ChatGPT on Your Phone: Which AI Assistant Fits Your Pocket?\" — egészítsd ki: Article appears truncated mid-sentence at the end of the final bullet point, leaving it without a proper wrap-up; Missing or cut-off closing section, so no next step or sign-off for the reader; Subtitle mentions 'which one (or both) belongs on your home screen' but no concluding guidanc",
+      "ref": "2026-07-22T02-10-56-965Z_aiworld-editorial_Compare_ai-on-phone.json",
+      "open": true,
+      "at": "2026-07-22T10:30:10.351Z"
+    },
+    {
+      "id": "m178471622462955",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"OpenAI and Hugging Face partner to address security incident during model evaluation\" (?/10)",
+      "ref": "2026-07-22T10-13-59-136Z_openai-blog_OpenAI_and_Hugging_Face_partner_to_address_securit.json",
+      "at": "2026-07-22T10:30:24.629Z"
+    },
+    {
+      "id": "m178471622769429",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Redesigned Google Classroom homepage with tailored views based on user’s role\" (?/10)",
+      "ref": "2026-07-22T10-13-59-137Z_google-workspace_Redesigned_Google_Classroom_homepage_with_tailored.json",
+      "at": "2026-07-22T10:30:27.694Z"
+    },
+    {
+      "id": "m178471624514945",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Built in Fort Worth: Wistron Opens Advanced Manufacturing Plant to Produce NVIDIA AI Systems\" — mi a baj: Article does not cover the source story about Wistron's Texas plant; only loosely references factories in passing; Step 3 asks readers to compare to a year ago but offers no way to actually do that; Title promises 5 minutes but the test requires prior AI use for the comp",
+      "ref": "2026-07-22T10-13-59-137Z_nvidia-blog_Built_in_Fort_Worth__Wistron_Opens_Advanced_Manufa.json",
+      "at": "2026-07-22T10:30:45.149Z"
+    },
+    {
+      "id": "m178471627130668",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"What Is Stable Diffusion? A Simple Guide to the AI Behind Modern Image Generation\" — mi a baj: Step 4 tells reader to search GitHub themselves with no specific notebook link or fallback; Step 5 says 'one of them will give you a public link' without identifying which cell or what the link looks like; Generate button described as 'Below or beside' with no concrete location or ",
+      "ref": "2026-07-22T10-14-03-156Z_deeparteffects_What_Is_Stable_Diffusion__A_Simple_Guide_to_the_AI.json",
+      "at": "2026-07-22T10:31:11.306Z"
+    },
+    {
+      "id": "m178471627849975",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"AI Video Colorization Offline: 1-Click Color for Black-and-White Footage (No Cloud)\" (?/10)",
+      "ref": "2026-07-22T10-14-03-157Z_deeparteffects_AI_Video_Colorization_Offline__1-Click_Color_for_B.json",
+      "at": "2026-07-22T10:31:18.499Z"
+    },
+    {
+      "id": "m178471639265716",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-07-22T10:33:12.657Z"
     }
   ]
 }

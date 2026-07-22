@@ -1,0 +1,42 @@
+{
+  "_meta": {
+    "written_at": "2026-07-22T10:26:58.156Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.009156,
+    "original_draft": null,
+    "source_id": "aiworld-editorial",
+    "source_name": "AI World HQ Editorial",
+    "source_link": "https://aiworldhq.com",
+    "status": "rejected",
+    "rejected_at": "2026-07-22T10:30:10.196Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 650
+    },
+    "ai_review": {
+      "overall_score": 6,
+      "clarity_score": null,
+      "decision": "FAIL",
+      "issues": [
+        "Article appears truncated mid-sentence at the end of the final bullet point, leaving it without a proper wrap-up",
+        "Missing or cut-off closing section, so no next step or sign-off for the reader",
+        "Subtitle mentions 'which one (or both) belongs on your home screen' but no concluding guidance on installing or trying both apps",
+        "Some UI details are stated as hard facts (e.g. camera button on main screen) without acknowledging these change with updates"
+      ],
+      "verdict": "The article is clearly written and on-brand, but it is truncated mid-sentence and lacks the required wrap-up and next step, so it cannot be published as-is.",
+      "_aiCost": 0.000846,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m3",
+      "_attempts": 1
+    },
+    "reason": "The article is clearly written and on-brand, but it is truncated mid-sentence and lacks the required wrap-up and next step, so it cannot be published as-is.",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-07-22T02-10-56-965Z_aiworld-editorial_Compare_ai-on-phone.json",
+    "requeued_unchanged": false
+  },
+  "article_markdown": "---\ntitle: \"Gemini and ChatGPT on Your Phone: What Each One Can Do\"\nsubtitle: \"A plain-language walkthrough of two popular AI apps so you can decide which one (or both) belongs on your home screen\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"mobile-ai\", \"chatgpt\", \"gemini\", \"getting-started\"]\n---\n\n# Gemini and ChatGPT on Your Phone: What Each One Can Do\n\nYou're at the supermarket, halfway through the week, and you've forgotten what was in that lasagne recipe your sister sent last Tuesday. You could scroll through three weeks of messages — or ask the AI app already sitting on your phone. Two of the most popular options right now are Google's Gemini and OpenAI's ChatGPT. Here's a plain-language look at what each one does in your pocket, so you can choose what fits.\n\n## What Gemini offers\n\nGemini is made by Google and is designed to work closely with Google's other apps — Gmail, Calendar, Maps and YouTube. If your digital life already runs through Google, that built-in connection can save a lot of tapping and copying.\n\nIt also handles what the industry calls **multimodal** input, meaning it can understand text, voice and images at the same time. Point your phone camera at a handwritten shopping list and Gemini can read it back or turn it into a typed note. Voice conversations feel natural, and the camera button is right on the main screen.\n\n**Where it tends to work well**\n- Adding events to your calendar or pulling info from Gmail without copy-pasting\n- Quick image-to-text jobs like menus, signs or receipts\n- Voice-first use when your hands are full\n\n**Where it might fall short**\n- If you don't use Google's apps, some of the headline features feel less useful\n- A smaller library of third-party **plugins** (small add-ons that connect the assistant to other apps) compared with some alternatives\n\n## What ChatGPT offers\n\nChatGPT, made by OpenAI, began as a web chat tool and has grown into a full mobile app. It's known for clear, conversational replies and for remembering the flow of a longer chat — handy when you're refining a paragraph or working through an idea step by step.\n\nThe app accepts voice and images too, and OpenAI has built a wide range of plugins and **custom GPTs** (mini assistants made for specific tasks, like drafting slides or summarising articles). The full list lives on OpenAI's own product page and changes often.\n\n**Where it tends to work well**\n- Long back-and-forth writing or brainstorming sessions\n- A large, growing library of plugins and custom assistants\n- A familiar chat feel for anyone who's used the web version\n\n**Where it might fall short**\n- Google-app integration isn't its main focus\n- Some of the most useful features sit behind a paid subscription; the free tier is capable but more limited\n\n## A quick side-by-side\n\n| What matters to you | Gemini | ChatGPT |\n|---------------------|--------|---------|\n| Voice and camera on the main screen | Yes, front and centre | Available, accessed through a menu |\n| Works with Google apps (Gmail, Calendar, Maps) | Deep, built-in | Limited |\n| Plugins and add-ons | Smaller library, growing | Larger library, growing |\n| Free version | Generous, includes image and voice tools | Solid text chat; voice and image use is more limited on free |\n| Paid upgrade adds | Deeper research and Google integration | The newest model, more plugins, higher usage limits |\n\nFor current pricing and the latest feature list, check the official product pages of each app — these details change every few months.\n\n## What this means for you\n\n- **If you live inside Gmail, Calendar and Maps**: install Gemini first. Try asking it to add a calendar event, summarise an email thread, or read a photo of a receipt.\n- **If you write or think for a living**: try ChatGPT for a",
+  "original_title": "Gemini vs ChatGPT on Your Phone: Which AI Assistant Fits Your Pocket?"
+}

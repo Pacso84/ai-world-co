@@ -191,5 +191,16 @@
         "The description of a 'New Chat' button or icon (like a '+' symbol, speech bubble with a plus, or text 'New Chat'/'Start New Conversation') usually located in the top-left or top-right corner of the Grok chat interface is inaccurate. Grok, as integrated into X, typically does not feature such a prominent, dedicated 'New Chat' button in its main chat view. Users generally start new conversations by simply typing in the input field or navigating back to the Grok section, which initiates a fresh interaction."
       ]
     }
+  ],
+  "2026-07-22": [
+    {
+      "at": "2026-07-22T10:25:54.664Z",
+      "file": "WRITER_2026-07-22T10-14-03-157Z_deeparteffects_Batch_Processing_in_Deep_Art_Effects_Pro__Scale_AI.json",
+      "action": "block",
+      "reasons": [
+        "Tool is repeatedly called 'Deep Art Effects Pro' throughout the article (subtitle, tags, body), but the actual product by the German company is named simply 'Deep Art Effects' — the 'Pro' suffix appears fabricated/inaccurate as the official product name.",
+        "The article attributes specific 'batch processing' capabilities (drop a folder of inputs, apply same style to all, set output folder, hit start) to Deep Art Effects Pro as fact, but these specific batch-processing features cannot be verified as actually existing in the product — reads as content marketing for a tool whose capabilities are not confirmed."
+      ]
+    }
   ]
 }
