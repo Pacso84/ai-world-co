@@ -1701,7 +1701,27 @@ function parseGuideSections(bodyMd) {
 }
 
 // egy szekció HTML-je: a 💬 példákat (külön soron) kiemelt dobozba tesszük
+// Lépés-CÍMSOR: inline markdown (link, félkövér) → HTML. (2026-07-21 audit-lelet:
+// a címsor eddig csak escapeHtml volt, így a "[Hugging Face](https://…)" nyersen
+// látszott az olvasónak 6 oldalon.) A parseInline nem csinál blokk-szintű <p>-t.
+function inlineHeadingHtml(s) {
+  return marked.parseInline(String(s || ''));
+}
+// Ugyanaz TISZTA SZÖVEGKÉNT a JSON-LD HowToStep.name-hez (ott nem lehet HTML/markdown):
+// [szöveg](url) → szöveg, **x** → x, `x` → x.
+function stripInlineMd(s) {
+  return String(s || '')
+    .replace(/\[([^\]]+)\]\((?:[^)]+)\)/g, '$1')
+    .replace(/\*\*([^*]+)\*\*/g, '$1')
+    .replace(/[`*_]/g, '')
+    .trim();
+}
+
 function guideSectionHtml(bodyMd) {
+  // Fölösleges ön-hivatkozó markdown-link [X](X) → X (2026-07-21 audit): a modell
+  // néha "[https://x](https://x)" alakot ír, ami a példa-dobozban nyersen látszott.
+  // CSAK a szöveg==cím esetet vonjuk össze — a normál [szöveg](url) linket nem bántja.
+  bodyMd = String(bodyMd || '').replace(/\[([^\]]+)\]\(\1\)/g, '$1');
   // a 💬-vel kezdődő sorokat markdown ELŐTT blokk-szintű dobozzá alakítjuk
   // (0) 💬 címke + KÖZVETLEN kódblokk → TÖBBSOROS példa-doboz (2026-07-16,
   // user-lelet: a ```text jelölő szó szerint látszott a dobozban 152 oldalon —
@@ -1752,7 +1772,7 @@ function buildGuidePage(a) {
       const heading = t.replace(STEP_RX, '');
       return `<div class="g-step" id="step-${stepNo}"><div class="g-step__no">${stepNo}</div>
         <div class="g-step__grid">
-          <div class="g-step__body"><h3 class="g-step__h">${escapeHtml(heading)}</h3>${guideSectionHtml(s.body)}</div>
+          <div class="g-step__body"><h3 class="g-step__h">${inlineHeadingHtml(heading)}</h3>${guideSectionHtml(s.body)}</div>
           ${stepArtHtml(artKeys[stepNo - 1])}
         </div></div>`;
     }
@@ -1841,7 +1861,7 @@ function buildGuidePage(a) {
     image: ogImage || undefined,
     inLanguage: HTML_LANG[LANG] || 'en',
     // többnyelvű STEP_RX: a nem-angol oldalak HowTo jelölése eddig ÜRES volt
-    step: stepHeadings.map(h => ({ '@type': 'HowToStep', name: h }))
+    step: stepHeadings.map(h => ({ '@type': 'HowToStep', name: stripInlineMd(h) }))
   };
   return pageShell({
     title: `${a.title} — ${SITE.name}`,
