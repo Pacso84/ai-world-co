@@ -49,7 +49,11 @@ const LESSONS_PATH = join(PROJECT_ROOT, 'agents', 'iro', 'lessons.json');
 const AGENT_NAME = 'ellenorzo';
 
 // Minimum elfogadható összpontszám (1-10)
-const MIN_PASSING_SCORE = 7;
+// 2026-07-22 (user-döntés: "kevesebb cikk, de minőségiek!"): 7 → 8.
+// 215 valós bírálat eloszlása alapján állítva: 9 pont 111 db, 8 pont 41 db,
+// 7 pont mindössze 11 db — vagyis a 8-as küszöb PONTOSAN az "épphogy megfelelt"
+// sávot vágja le (a cikkek ~5%-át), a gyártást nem fojtja meg.
+const MIN_PASSING_SCORE = 8;
 
 // ===================================================================
 // PARANCSSORI ARGUMENTUMOK
