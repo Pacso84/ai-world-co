@@ -137,10 +137,13 @@ async function viaGemini(prompt) {
 }
 
 // Kép-router: sorra próbálja a backendeket (a legbőkezűbb ingyenes elöl)
+// 2026-07-22 (user-döntés: "nem fizetek a Geminiért"): a Gemini kép-backend KIVÉVE.
+// Ez volt a rejtett ~$37/hó szivárgás (a Flux-kvóta kimerülésekor a FIZETŐS Geminire
+// esett, a költség-plafon megkerülésével). Marad az INGYENES Cloudflare Flux (+HF, ha
+// van kulcs). Ha egyik sem ad képet: a cikk borító nélkül marad (a main() try/catch-eli).
 const IMAGE_BACKENDS = [
   { name: 'Cloudflare', fn: viaCloudflare },
-  { name: 'HuggingFace', fn: viaHuggingFace },
-  { name: 'Gemini', fn: viaGemini }
+  { name: 'HuggingFace', fn: viaHuggingFace }
 ];
 
 // Opcionális kép-tömörítés (sharp) — ha nincs telepítve, sima mentés.

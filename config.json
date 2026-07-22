@@ -86,8 +86,8 @@
         "model": "minimax/minimax-m3"
       },
       "fallback_model": {
-        "provider": "google",
-        "model": "gemini-2.5-flash"
+        "provider": "cerebras",
+        "model": "zai-glm-4.7"
       },
       "enabled": true,
       "routing": "paid-only",
@@ -109,15 +109,15 @@
     },
     "boss": {
       "primary_model": {
-        "provider": "google",
-        "model": "gemini-2.5-flash"
+        "provider": "cerebras",
+        "model": "zai-glm-4.7"
       },
       "fallback_model": {
         "provider": "groq",
         "model": "llama-3.3-70b-versatile"
       },
       "enabled": true,
-      "comment": "A Telegram-FŐNÖK beszélgető agya (instruct.js). Gemini 2.5-flash a jó magyar társalgásért; fallback groq/cerebras, ha a Gemini kimerül (a budget-guard/quota dönti). Csak a chat-választ generálja, nem a tartalmat.",
+      "comment": "A Telegram-FŐNÖK beszélgető agya (instruct.js). 2026-07-22 (user: nem fizetünk Geminiért): GLM-4.7 ($0) a magyar társalgásért, fallback groq. Csak a chat-választ generálja, nem a tartalmat.",
       "routing": "paid-only",
       "_routing_comment": "CSAK fizetős: minőség-kapu / főnök-agy — itt nem spórolunk (user-döntés 2026-07-05)"
     },
@@ -127,8 +127,8 @@
         "model": "minimax/minimax-m3"
       },
       "fallback_model": {
-        "provider": "google",
-        "model": "gemini-2.5-flash"
+        "provider": "cerebras",
+        "model": "zai-glm-4.7"
       },
       "enabled": true,
       "comment": "MINŐSÉG-ELŐSZÖR (user-döntés 2026-07-15): erős modellek — a gyenge modell hibája többe kerül (kézi javítás), mint az erős felára. ÁTÁLLVA 2026-07-21 (előrehozott MiniMax-váltás a keret miatt): MiniMax M3 elsődleges → Gemini 2.5 Flash tartalék; vég-tartalék a vészhálón át az erős-ingyenesek.",
@@ -154,8 +154,8 @@
         "model": "minimax/minimax-m3"
       },
       "fallback_model": {
-        "provider": "google",
-        "model": "gemini-2.5-flash"
+        "provider": "cerebras",
+        "model": "zai-glm-4.7"
       },
       "enabled": true,
       "comment": "MINŐSÉG-ELŐSZÖR (user-döntés 2026-07-15): erős modellek — a gyenge modell hibája többe kerül (kézi javítás), mint az erős felára. ÁTÁLLVA 2026-07-21 (előrehozott MiniMax-váltás a keret miatt): MiniMax M3 elsődleges → Gemini 2.5 Flash tartalék; vég-tartalék a vészhálón át az erős-ingyenesek.",
@@ -167,8 +167,8 @@
         "model": "minimax/minimax-m3"
       },
       "fallback_model": {
-        "provider": "google",
-        "model": "gemini-2.5-flash"
+        "provider": "cerebras",
+        "model": "zai-glm-4.7"
       },
       "enabled": true,
       "comment": "MINŐSÉG-ELŐSZÖR (user-döntés 2026-07-15): erős modellek — a gyenge modell hibája többe kerül (kézi javítás), mint az erős felára. ÁTÁLLVA 2026-07-21 (előrehozott MiniMax-váltás a keret miatt): MiniMax M3 elsődleges → Gemini 2.5 Flash tartalék; vég-tartalék a vészhálón át az erős-ingyenesek.",
@@ -193,8 +193,8 @@
         "model": "llama-3.3-70b-versatile"
       },
       "fallback_model": {
-        "provider": "google",
-        "model": "gemini-2.5-flash"
+        "provider": "cerebras",
+        "model": "zai-glm-4.7"
       },
       "enabled": true,
       "comment": "Designer: (1) art-director text lepes (Groq llama, megbizhato rovid valaszra) konkret jelenetet ir a cikkbol, (2) kep generalas hardkodolt backenddel (Cloudflare Flux -> HF -> Gemini image)."
@@ -229,8 +229,8 @@
         "model": "llama-3.3-70b-versatile"
       },
       "fallback_model": {
-        "provider": "google",
-        "model": "gemini-2.5-flash"
+        "provider": "cerebras",
+        "model": "zai-glm-4.7"
       },
       "enabled": true,
       "comment": "Publikalo: determinisztikus build (HTML) + AI FOSZERKESZTOI zaro-ellenorzes (kesz-e a kiadasra) + kiadasi osszefoglalo."
@@ -241,8 +241,8 @@
         "model": "minimax/minimax-m3"
       },
       "fallback_model": {
-        "provider": "google",
-        "model": "gemini-2.5-flash"
+        "provider": "cerebras",
+        "model": "zai-glm-4.7"
       },
       "enabled": true,
       "comment": "MINŐSÉG-ELŐSZÖR (user-döntés 2026-07-15): erős modellek — a gyenge modell hibája többe kerül (kézi javítás), mint az erős felára. ÁTÁLLVA 2026-07-21 (előrehozott MiniMax-váltás a keret miatt): MiniMax M3 elsődleges → Gemini 2.5 Flash tartalék; vég-tartalék a vészhálón át az erős-ingyenesek.",
@@ -263,12 +263,12 @@
     },
     "social": {
       "primary_model": {
-        "provider": "google",
-        "model": "gemini-2.5-flash"
+        "provider": "cerebras",
+        "model": "zai-glm-4.7"
       },
       "fallback_model": {
-        "provider": "google",
-        "model": "gemini-2.5-flash"
+        "provider": "cerebras",
+        "model": "zai-glm-4.7"
       },
       "enabled": true,
       "type": "custom",
@@ -307,8 +307,8 @@
         "model": "minimax/minimax-m3"
       },
       "fallback_model": {
-        "provider": "google",
-        "model": "gemini-2.5-flash"
+        "provider": "cerebras",
+        "model": "zai-glm-4.7"
       },
       "enabled": true,
       "comment": "MINŐSÉG-ELŐSZÖR (user-döntés 2026-07-15): erős modellek — a gyenge modell hibája többe kerül (kézi javítás), mint az erős felára. ÁTÁLLVA 2026-07-21 (előrehozott MiniMax-váltás a keret miatt): MiniMax M3 elsődleges → Gemini 2.5 Flash tartalék; vég-tartalék a vészhálón át az erős-ingyenesek.",
@@ -320,8 +320,8 @@
         "model": "minimax/minimax-m3"
       },
       "fallback_model": {
-        "provider": "google",
-        "model": "gemini-2.5-flash"
+        "provider": "cerebras",
+        "model": "zai-glm-4.7"
       },
       "enabled": true,
       "comment": "MINŐSÉG-ELŐSZÖR (user-döntés 2026-07-15): erős modellek — a gyenge modell hibája többe kerül (kézi javítás), mint az erős felára. ÁTÁLLVA 2026-07-21 (előrehozott MiniMax-váltás a keret miatt): MiniMax M3 elsődleges → Gemini 2.5 Flash tartalék; vég-tartalék a vészhálón át az erős-ingyenesek.",
@@ -333,8 +333,8 @@
         "model": "gpt-oss-120b"
       },
       "fallback_model": {
-        "provider": "google",
-        "model": "gemini-2.5-flash"
+        "provider": "cerebras",
+        "model": "zai-glm-4.7"
       },
       "enabled": false,
       "comment": "Orbit heti video-bemondo: ~150 szavas beszelt szkript a heti digestbol (vasarnap), TTS: ingyenes Edge en-AU Natasha. Free-first. enabled:false = FEJLESZTES ALATT (user 2026-07-11: 'nem menjen elesbe') — a felhoben kihagyja magat; helyi teszt --force-szal megy. Elesites: enabled:true."
@@ -345,8 +345,8 @@
         "model": "minimax/minimax-m3"
       },
       "fallback_model": {
-        "provider": "google",
-        "model": "gemini-2.5-flash"
+        "provider": "cerebras",
+        "model": "zai-glm-4.7"
       },
       "enabled": true,
       "comment": "HITELESSÉG-KAPU (user-döntés 2026-07-16, 'mindig fizetős'): publikálás előtti hallucináció-bíró az Ellenőrzőben. ÁTÁLLVA 2026-07-21: MiniMax M3 elsődleges, Gemini 2.5 Flash tartalék (a többi tartalmi agenttel együtt).",
