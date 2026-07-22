@@ -502,7 +502,10 @@ function emergencyFallbackAlert(agentName, provider, model) {
   _emergencyAlertedThisRun = true;
   console.log(`   🚨 VÉSZHÁLÓ: a(z) "${agentName}" fizetős helyett INGYENES kulccsal ment (${provider}) — Telegram-riasztás.`);
   import('./telegram.js').then(({ sendMessage }) => {
-    sendMessage(`⚠️ *Vészhelyzet — figyelj rám!*\n\nA fizetős AI (Google/Gemini) nem elérhető — valószínűleg *elfogyott az egyenleg*. Átváltottam az INGYENES kulcsokra, így a cég TOVÁBB dolgozik és nem áll le. 👍\n\nA prémium minőségért töltsd fel a Google-egyenleged: ai.studio → a projekted → Billing.`).catch(() => {});
+    // 2026-07-22: a szöveg eddig KŐBE VÉSVE a Google/Gemini feltöltésére küldött —
+    // a Gemini kivezetése után ez félrevezető lett volna. Most a TÉNYLEGES helyzetet
+    // mondjuk, és az egyetlen fizetős szolgáltatóra (OpenRouter) irányítunk.
+    sendMessage(`⚠️ *Vészhelyzet — figyelj rám!*\n\nA fizetős AI most nem volt elérhető, ezért a *${agentName}* INGYENES kulccsal dolgozott (${provider}/${model}). Így a cég TOVÁBB megy, nem áll le 👍 — de a szöveg minősége gyengébb lehet.\n\nValószínű ok: elfogyott az OpenRouter-egyenleg vagy kvóta-limit.\nEllenőrizd: openrouter.ai → Credits.`).catch(() => {});
   }).catch(() => {});
 }
 

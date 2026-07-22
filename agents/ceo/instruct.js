@@ -106,6 +106,18 @@ function gatherContext() {
     if (ds.length) pendingSources = ds.map(d => `${d.name.replace(/\s*\(hivatalos\)$/, '')} [${d.reliability_score}/100]`).join(', ');
   } catch { /* nincs fájl */ }
 
+  // VÉSZHÁLÓ-BIZONYÍTÉK (2026-07-22): ha egy CSAK-FIZETŐS agent ingyenes kulccsal
+  // ment, az kemény jel, hogy a fizetős provider elesett. Enélkül a főnök korábban
+  // azt válaszolta a tulajdonosnak, hogy "a fizetős kulcsok rendben működnek" —
+  // miközben a Google-egyenleg épp kimerült. Bizonyíték nélkül ne állítson ilyet.
+  let emergencyNote = 'no fallback recorded (no evidence of a paid-provider outage)';
+  try {
+    const em = JSON.parse(readFileSync(join(ROOT, 'memory', 'emergency-fallback-state.json'), 'utf-8'));
+    if (em?.last_alert) {
+      emergencyNote = `LAST ON ${em.last_alert}: agent "${em.agent}" ran on FREE ${em.provider}/${em.model}`;
+    }
+  } catch { /* nincs fájl = nem volt vészháló */ }
+
   return `Site: ${SITE_URL}
 Published — news: ${news}, guides: ${guides}, today: ${today}
 PENDING SOURCE SUGGESTIONS (found by Forráskutató, awaiting the owner's approval): ${pendingSources}
@@ -117,7 +129,9 @@ Daily limits: news ${CONFIG.limits?.daily_articles_max}, guides ${CONFIG.limits?
 Paid AI spend today: $${b.today.toFixed(2)} (by provider: ${provToday})
 Paid AI spend this month: $${b.month.toFixed(2)}
 Paid-key status: ${paidStatus}
-IMPORTANT: the paid Gemini plan is PAY-AS-YOU-GO — there is NO fixed "remaining quota" number we can see. We simply use it until it rate-limits, then auto-switch to the free keys. The $${b.monthHardCap}/month figure is ONLY a safety stop, not "how much is left".
+Emergency fallback (a PAID-only agent was forced onto a FREE key — strong evidence the paid provider failed): ${emergencyNote}
+IMPORTANT — paid setup as of 2026-07-22: the ONLY paid provider is OpenRouter (MiniMax M3), used by the 8 content agents. Gemini/Google was fully retired (the owner does not pay for it). Everything else runs on free keys. The $${b.monthHardCap}/month figure is ONLY a safety stop, not "how much is left"; top-ups happen at openrouter.ai → Credits.
+HONESTY RULE: you can NOT see provider balances. NEVER claim a key "works fine" or "has balance" — you have no such data. If the owner asks whether a balance ran out, answer from EVIDENCE only (today's spend per provider above + the emergency-fallback line). If there is no evidence either way, say plainly that you cannot check the balance from here and tell them where to look.
 
 Recently published:
 ${last || '(none yet)'}`;
@@ -212,7 +226,20 @@ async function think(text) {
     const parsed = parseJson(r?.text);
     if (parsed) return parsed;
   }
-  return { agent: 'ceo', action: 'none', reply: 'Bocs, ezt most nem értettem tisztán — átfogalmaznád? 🙂 (Kérhetsz: útmutatót, friss hírt, fordítást, forrás-kutatást, forrás-jóváhagyást, státuszt, keretet.)' };
+
+  // 3. PRÓBA JSON NÉLKÜL (2026-07-22, user-lelet a Telegram-előzményből): a
+  // "nem értettem" üzenet eddig NEM értés-hiba volt, hanem JSON-parse hiba —
+  // a bot értette a kérdést, csak a formátum bukott, és ezt a userre fogta.
+  // Ilyenkor inkább kérünk EGY SIMA MONDATOT: a user kapjon valódi választ.
+  const plain = await ask(
+    `${prompt}\n\nNow answer the owner in ONE short, friendly Hungarian message (plain text, no JSON, no markdown fences). Do not mention formats or errors.`,
+    { agentName: 'boss', systemPrompt: TEAM_PERSONA, maxTokens: 800 }
+  );
+  const txt = (plain?.text || '').trim();
+  if (txt) return { agent: 'ceo', action: 'none', reply: txt };
+
+  // Ha még ez sem ment: ŐSZINTE hibaüzenet — ne a userre fogjuk.
+  return { agent: 'ceo', action: 'none', reply: '😕 Most technikai hiba miatt nem tudtam válaszolni (nem veled van a baj). Próbáld újra egy perc múlva!' };
 }
 
 // ===================================================================
