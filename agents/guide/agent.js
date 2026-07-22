@@ -17,6 +17,7 @@
 //   node agents/guide/agent.js --limit 3       -- több téma egymás után
 //   node agents/guide/agent.js --ideas 8       -- NEM ír, csak ÚJ témákat ötletel
 //                                                 a guide-topics.json-ba (cég-lefedettség elöl)
+//   node agents/guide/agent.js --general 6   -- CSAK cégmentes (Hétköznapi AI készségek) témák
 //   node agents/guide/agent.js --cover         -- a HIÁNYZÓ cégekhez témát ad (ingyen, LLM nélkül)
 //   node agents/guide/agent.js --balance 8     -- a LEMARADÓ cégeket hozza fel a küszöbig (arányosság)
 //   node agents/guide/agent.js --upgrade [N]   -- a RÉGI publikált útmutatókat írja át a
@@ -51,7 +52,7 @@ const GUIDE_MAX_REWORK = 4;
 // ---- argumentumok ----
 function parseArgs() {
   const a = process.argv.slice(2);
-  const p = { id: null, title: null, limit: 1, rework: false, ideas: 0, cover: false, balance: 0, upgrade: false, upgradeLimit: 0 };
+  const p = { id: null, title: null, limit: 1, rework: false, ideas: 0, cover: false, balance: 0, general: 0, upgrade: false, upgradeLimit: 0 };
   for (let i = 0; i < a.length; i++) {
     if (a[i] === '--upgrade') { p.upgrade = true; if (a[i + 1] && /^\d+$/.test(a[i + 1])) p.upgradeLimit = parseInt(a[++i], 10); }
     else if (a[i] === '--id' && a[i + 1]) { p.id = a[++i]; }
@@ -60,6 +61,7 @@ function parseArgs() {
     else if (a[i] === '--rework') { p.rework = true; }
     else if (a[i] === '--cover') { p.cover = true; }
     else if (a[i] === '--ideas') { p.ideas = parseInt(a[i + 1], 10) || 6; if (a[i + 1] && /^\d+$/.test(a[i + 1])) i++; }
+    else if (a[i] === '--general') { p.general = parseInt(a[i + 1], 10) || 6; if (a[i + 1] && /^\d+$/.test(a[i + 1])) i++; }
     else if (a[i] === '--balance') { p.balance = parseInt(a[i + 1], 10) || 8; if (a[i + 1] && /^\d+$/.test(a[i + 1])) i++; }
   }
   return p;
@@ -191,6 +193,13 @@ const GUIDES_PER_COMPANY_TARGET = (() => {
   catch { return 4; }
 })();
 
+// Az új témák mekkora hányada legyen GARANTÁLTAN cégmentes ("Hétköznapi AI
+// készségek")? 2026-07-22: e nélkül a cég-lefedettség elvitte az egész keretet.
+const GENERAL_GUIDES_MIN_SHARE = (() => {
+  try { return JSON.parse(readFileSync(join(ROOT, 'config.json'), 'utf-8')).limits?.general_guides_min_share ?? 0.4; }
+  catch { return 0.4; }
+})();
+
 // Cégenkénti hiány a DINAMIKUS célig (deficit szerint csökkenő sorrend).
 // A cél = a LEGTÖBB útmutatóval bíró cég száma (min. a floor) — így ahogy a
 // vezető cégek bővülnek (pl. hír-párosításból), a lemaradók célja is NŐ, és a
@@ -256,12 +265,15 @@ Return ONLY the JSON array (${total} items), each with the correct "company" and
       logDedup({ source: 'guide-balance', rejected: title.slice(0, 80), closest: near.closest?.title?.slice(0, 80), score: +(near.closest?.score || 0).toFixed(3) });
       continue;
     }
+    // generalOnly: a modell néha mégis céghez köti az ötletet — az ilyet eldobjuk,
+    // különben a "Hétköznapi AI készségek" keret újra a cégekhez szivárogna át.
+    if (generalOnly && (it.company || '').toString().trim()) continue;
     seenTitles.add(normTitle(title));
     dedupRef.push(title);
     const id = uniqueId(slugify(title), usedIds);
     store.topics.push({
       id,
-      company: (it.company || '').toString().trim(),
+      company: generalOnly ? '' : (it.company || '').toString().trim(),
       tool: (it.tool || '').toString().trim(),
       title,
       audience: ['personal', 'business', 'both'].includes(it.audience) ? it.audience : 'both',
@@ -358,7 +370,7 @@ function uniqueId(base, used) {
   return id;
 }
 
-async function proposeNewTopics(count, store, brandContext) {
+async function proposeNewTopics(count, store, brandContext, { generalOnly = false } = {}) {
   const existingTitles = new Set(store.topics.map(t => normTitle(t.title)));
   const usedIds = new Set(store.topics.map(t => t.id).filter(Boolean));
   // KÖZELI-TÉMA-ŐR (2026-07-18): a JELENTÉSBEN közeli ötleteket is kiszűrjük,
@@ -376,8 +388,14 @@ async function proposeNewTopics(count, store, brandContext) {
     .map(c => ({ name: c.company, n: counts[normCompany(c.company)] || 0 }))
     .filter(c => c.n > 0 && c.n < 3)
     .map(c => c.name);
-  const coverageHint = underCovered.length
+  // generalOnly módban NEM tereljük a cégek felé — pont az a cél, hogy
+  // cégfüggetlen, "Hétköznapi AI készségek" témák szülessenek.
+  const coverageHint = (!generalOnly && underCovered.length)
     ? `\n\nThese tracked companies have only a FEW guides — please lean towards them (give at least some of your ideas to them): ${underCovered.join(', ')}.`
+    : '';
+
+  const generalRule = generalOnly
+    ? `\n\nCRITICAL — these must be COMPANY-FREE everyday-skill topics: each idea must work with ANY mainstream AI assistant (ChatGPT, Gemini, Claude, Copilot…). Do NOT build an idea around one product's unique feature, do NOT put a brand in the title, and set "company" to null for every item. Think: real-life tasks (letters, budgeting, studying, job hunting, travel, health admin, parenting, privacy, spotting scams).`
     : '';
 
   const userPrompt = `Propose ${count + 4} brand-new beginner guide topics for AI World Co.
@@ -385,7 +403,7 @@ async function proposeNewTopics(count, store, brandContext) {
 DO NOT repeat or lightly reword any of these EXISTING topics:
 ${sample}
 
-Pick fresh, genuinely useful angles people want (e.g. everyday tasks, study, small business, parents, job hunting, accessibility, safety/privacy, comparing tools, free vs paid, mobile apps, voice, images, spreadsheets, email). Aim for a healthy mix of general and company-specific.${coverageHint}
+Pick fresh, genuinely useful angles people want (e.g. everyday tasks, study, small business, parents, job hunting, accessibility, safety/privacy, comparing tools, free vs paid, mobile apps, voice, images, spreadsheets, email).${generalOnly ? '' : ' Aim for a healthy mix of general and company-specific.'}${coverageHint}${generalRule}
 
 BRAND CONTEXT:
 ${brandContext}
@@ -437,20 +455,40 @@ async function runIdeasMode(count, brandContext) {
   const store = loadTopics();
   let before = store.topics.length;
 
-  // 1) LEFEDETTSÉG ELŐSZÖR: a 0-útmutatós cégeket töltjük fel (ingyen, LLM nélkül)
-  const cov = addCompanyCoverage(store, count);
+  // GARANTÁLT HÉTKÖZNAPI KERET (2026-07-22, user: "Hétköznapi AI készségek… itt
+  // kéne még útmutató, ami le van maradva"). Előtte a cég-lefedettség ELŐSZÖR
+  // futott és elvitte az egész keretet, az általános ötletelés meg a maradékot
+  // kapta — ami gyakran 0 volt. Mérés: 181 eszköz-útmutató vs 29 hétköznapi,
+  // az utolsó héten 55 vs 2. Mostantól a keret egy RÉSZE eleve cégmentes.
+  const share = Math.min(0.8, Math.max(0, GENERAL_GUIDES_MIN_SHARE));
+  const generalSlots = Math.max(1, Math.round(count * share));
+  const covBudget = Math.max(0, count - generalSlots);
+
+  // 1) Cég-lefedettség — de CSAK a neki járó keretből (ingyen, LLM nélkül)
+  const cov = covBudget > 0 ? addCompanyCoverage(store, covBudget) : { added: 0 };
   if (cov.added > 0) {
     console.log(`   🏢 ${cov.added} hiányzó céghez coverage-téma:`);
     store.topics.slice(before).forEach(t => console.log(`      • ${t.title} [${t.company}]`));
     before = store.topics.length;
   }
 
-  // 2) MARADÉK helyre általános LLM-ötletelés (változatos témák)
   let llmAdded = 0, cost = 0;
-  const remaining = count - cov.added;
+
+  // 2) HÉTKÖZNAPI (cégmentes) témák — ez a rész NEM adható át a cégeknek
+  if (generalSlots > 0) {
+    const g = await proposeNewTopics(generalSlots, store, brandContext, { generalOnly: true });
+    llmAdded += g.added; cost += g.cost;
+    console.log(`   🏠 ${g.added} hétköznapi (cégmentes) téma:`);
+    store.topics.slice(before).forEach(t => console.log(`      • ${t.title}`));
+    before = store.topics.length;
+  }
+
+  // 3) Ami a cég-keretből megmaradt: vegyes ötletelés
+  const remaining = count - cov.added - llmAdded;
   if (remaining > 0) {
     const r = await proposeNewTopics(remaining, store, brandContext);
-    llmAdded = r.added; cost = r.cost;
+    llmAdded += r.added; cost += r.cost;
+    console.log(`   🎯 ${r.added} vegyes téma:`);
     store.topics.slice(before).forEach(t => console.log(`      • ${t.title}${t.company ? ` [${t.company}]` : ''}`));
   }
 
@@ -947,6 +985,22 @@ async function main() {
   }
 
   // ÖTLETELŐ MÓD: ÚJ témákat fűzünk a backloghoz (nem írunk cikket)
+  // CSAK cégmentes témák (2026-07-22): a "Hétköznapi AI készségek" szekció
+  // felzárkóztatására — a sort egyetlen paranccsal fel lehet tölteni.
+  if (args.general > 0) {
+    console.log('🏠 HÉTKÖZNAPI (cégmentes) TÉMA-ÖTLETELÉS');
+    console.log('─'.repeat(60));
+    const store = loadTopics();
+    const before = store.topics.length;
+    const r = await proposeNewTopics(args.general, store, loadBrandContext(), { generalOnly: true });
+    if (r.added > 0) {
+      saveTopics(store);
+      store.topics.slice(before).forEach(t => console.log(`   • ${t.title}`));
+    }
+    console.log(`✅ ${r.added} új hétköznapi téma | backlog: ${store.topics.length} | költség $${r.cost.toFixed(4)}`);
+    return;
+  }
+
   if (args.ideas > 0) {
     await runIdeasMode(args.ideas, loadBrandContext());
     return;

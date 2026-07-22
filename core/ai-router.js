@@ -612,7 +612,11 @@ export async function ask(prompt, options = {}) {
     // gondolkodásra költik — kis maxTokens mellett ÜRES válasz jön (07-16 GLM-eset).
     // 2026-07-21: a MiniMax M3 is ilyen, és a váltással MINDEN tartalmi agent
     // rákerült (a ceo-desk 300 tokenes hívása így némán elbukott volna).
-    const effMaxTokens = isThinkingModel(model) ? Math.max(maxTokens || 2048, 4000) : maxTokens;
+    // 2026-07-22: 4000 → 8000. Éles eset: a guide-ötletelő 14 600 tokenes promptján
+    // a MiniMax a teljes 4000-es keretet ELGONDOLKODTA és ÜRES választ adott (a lánc
+    // mentette meg). Nagy prompthoz nagyobb kimeneti keret kell. A max_tokens csak
+    // FELSŐ HATÁR — ha a modell nem használja ki, nem kerül többe.
+    const effMaxTokens = isThinkingModel(model) ? Math.max(maxTokens || 2048, 8000) : maxTokens;
 
     // Átmeneti hibákra ugyanazt a modellt újrapróbáljuk (backoff-fal)
     for (let tryNum = 1; tryNum <= MAX_TRANSIENT_RETRIES + 1; tryNum++) {
