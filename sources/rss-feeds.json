@@ -220,11 +220,11 @@
       "priority": 3,
       "language": "en",
       "country": "CA",
-      "comment": "HIVATALOS Cohere (vállalati AI). RSS-t NEM ad (HTML), ezért SITEMAP-forrásként fut (2026-07-22): az angol /blog/ cikkek, dátum szerint (a japán/koreai/francia/német/spanyol/portugál változatok kizárva).",
+      "comment": "HIVATALOS Cohere (vállalati AI). RSS-t NEM ad (HTML), ezért SITEMAP-forrásként fut (2026-07-22): az angol /blog/ cikkek, dátum szerint. 2026-07-23: a nyelv-kizárás fix listáról (ja|ko|fr|...) MINTÁRA váltott — az arab (/ar/) átcsúszott rajta; a 'cohere.com/xx/' alak minden jövőbeli nyelvet is kizár.",
       "enabled": true,
       "type": "sitemap",
       "path_include": "/blog/",
-      "path_exclude": "/(ja|ko|fr|de|es|pt)/",
+      "path_exclude": "cohere\\.com/[a-z]{2}/",
       "max_age_days": 30
     },
     {

@@ -35,14 +35,56 @@ export function titleFromUrl(url) {
   return words ? words.charAt(0).toUpperCase() + words.slice(1) : '';
 }
 
-// A HTML <title> és a leírás kinyerése (a kulcsszó-szűrőnek + az AI-nak)
+// ── VALÓDI MEGJELENÉSI DÁTUM AZ OLDALRÓL (2026-07-23) ──────────────
+// MIÉRT KELL: a sitemap <lastmod> azt jelenti, "ekkor VÁLTOZOTT a fájl",
+// NEM azt, hogy "ekkor jelent meg". Élesben mérve: az Anthropic 2026-07-22-i
+// részleges újraépítéskor 13 RÉGI hír-oldalra friss lastmod-ot írt, köztük a
+// "Claude Sonnet 4.5"-re (valódi dátuma 2025-09-29, tehát 10 HÓNAPOS) — így
+// azok átcsúsztak a 30 napos frissesség-szűrőn, és majdnem hírként jelentek
+// meg. Ez ugyanaz a hiba, amiért az alibaba-qwen forrást kikapcsoltuk.
+// A VALÓDI dátum viszont ott van az oldalon, és az oldalt a címért amúgy is
+// letöltjük → a kiolvasás gyakorlatilag ingyen van.
+const MONTHS = { jan: 0, feb: 1, mar: 2, apr: 3, may: 4, jun: 5, jul: 6, aug: 7, sep: 8, oct: 9, nov: 10, dec: 11 };
+
+export function extractPublishDate(html) {
+  const h = String(html || '');
+  // 1) Szabványos meta (a legtöbb blogmotor ezt adja)
+  const meta = (h.match(/<meta[^>]+(?:property|name)=["'](?:article:published_time|og:published_time|date|publish[-_]?date)["'][^>]+content=["']([^"']+)/i) || [])[1]
+    // 2) JSON-LD datePublished (pl. Cohere)
+    || (h.match(/"datePublished"\s*:\s*"([^"]+)"/i) || [])[1]
+    // 3) <time datetime="...">
+    || (h.match(/<time[^>]+datetime=["']([^"']+)/i) || [])[1];
+  if (meta) {
+    const t = Date.parse(meta);
+    if (!isNaN(t)) return new Date(t).toISOString();
+  }
+  // 4) Látható szöveges dátum a CÍMSOR UTÁN (pl. Anthropic:
+  //    <h1>…</h1><div class="body-3 agate">Sep 29, 2025</div>)
+  //    Csak a h1 utáni első 600 karakterben nézzük — a lábléc/ajánló
+  //    blokkok dátumai így nem tévesztenek meg minket.
+  const h1 = h.search(/<h1[\s>]/i);
+  const zone = h1 >= 0 ? h.slice(h1, h1 + 800) : '';
+  const m = zone.match(/\b(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\.?\s+(\d{1,2}),?\s+(20\d\d)\b/);
+  if (m) {
+    const d = Date.UTC(Number(m[3]), MONTHS[m[1].toLowerCase()], Number(m[2]));
+    if (!isNaN(d)) return new Date(d).toISOString();
+  }
+  return null;
+}
+
+// A HTML <title>, a leírás és a VALÓDI megjelenési dátum kinyerése
+// (az első kettő a kulcsszó-szűrőnek + az AI-nak, a dátum a frissesség-kapunak)
 export function extractPageMeta(html) {
   const h = String(html || '');
   const rawTitle = (h.match(/<title[^>]*>([\s\S]*?)<\/title>/i) || [])[1] || '';
   const og = (h.match(/<meta[^>]+property=["']og:description["'][^>]+content=["']([^"']+)/i) || [])[1];
   const desc = (h.match(/<meta[^>]+name=["']description["'][^>]+content=["']([^"']+)/i) || [])[1];
   const clean = (s) => String(s || '').replace(/\s+/g, ' ').replace(/&amp;/g, '&').replace(/&#39;/g, "'").trim();
-  return { title: clean(rawTitle).replace(/\s*[|\-–]\s*[^|\-–]{0,40}$/, ''), snippet: clean(og || desc) };
+  return {
+    title: clean(rawTitle).replace(/\s*[|\-–]\s*[^|\-–]{0,40}$/, ''),
+    snippet: clean(og || desc),
+    date: extractPublishDate(h)
+  };
 }
 
 // Melyik bejegyzések jöhetnek szóba? (útvonal-szűrő + frissesség + darabszám)
@@ -70,7 +112,12 @@ async function getText(url, fetchFn) {
 }
 
 // Fő belépő: a forrás-konfigból RSS-SZERŰ elemeket ad vissza.
-// Visszatérés: { ok, items:[{title, link, contentSnippet, isoDate}] , error? }
+// Visszatérés: { ok, items:[{title, link, contentSnippet, pubDate}], stale, error? }
+//
+// KÉT LÉPCSŐS FRISSESSÉG (2026-07-23): a lastmod csak ELŐSZŰRŐ (olcsó, hálózat
+// nélkül szűkít) — a DÖNTÉST az oldalról kiolvasott VALÓDI dátum hozza. Ezért
+// a jelöltlista szándékosan bővebb (limit×4): ha egy újraépítés régi oldalakat
+// tol a lista elejére, a tényleg friss hír ne szoruljon ki.
 export async function fetchSitemapFeed(source, { fetchFn = fetch, limit = 10 } = {}) {
   try {
     const first = await getText(source.url, fetchFn);
@@ -85,28 +132,45 @@ export async function fetchSitemapFeed(source, { fetchFn = fetch, limit = 10 } =
       }
     }
 
-    const picked = selectEntries(entries, {
+    const maxAgeDays = source.max_age_days ?? 21;
+    const cutoff = Date.now() - maxAgeDays * DAY;
+    const candidates = selectEntries(entries, {
       include: source.path_include,
       exclude: source.path_exclude,
-      maxAgeDays: source.max_age_days ?? 21,
-      limit
+      maxAgeDays,
+      limit: Math.min(40, limit * 4)
     });
 
-    // A kiválasztott (kevés, friss) oldal címét/leírását kiolvassuk — ez kell a
-    // kulcsszó-szűrőnek és az AI relevancia-döntésnek.
+    // A jelöltek oldalát letöltjük (cím + leírás + VALÓDI dátum). Kis kötegekben,
+    // hogy gyors legyen, és megállunk, amint megvan a kért darabszám.
     const items = [];
-    for (const e of picked) {
-      let meta = { title: '', snippet: '' };
-      try { meta = extractPageMeta(await getText(e.loc, fetchFn)); } catch { /* marad a slug-cím */ }
-      items.push({
-        title: meta.title || titleFromUrl(e.loc),
-        link: e.loc,
-        contentSnippet: meta.snippet || '',
-        isoDate: e.lastmod || null
-      });
+    let stale = 0;
+    for (let i = 0; i < candidates.length && items.length < limit; i += 4) {
+      const batch = candidates.slice(i, i + 4);
+      const metas = await Promise.all(batch.map(async (e) => {
+        try { return { e, meta: extractPageMeta(await getText(e.loc, fetchFn)) }; }
+        catch { return { e, meta: null }; }
+      }));
+      for (const { e, meta } of metas) {
+        if (items.length >= limit) break;
+        // Ha az oldalon VAN valódi dátum, az dönt — a lastmod nem elég bizonyíték.
+        // Ha nincs (nem minden oldal írja ki), marad a lastmod, mint eddig.
+        const real = meta?.date || null;
+        if (real && Date.parse(real) < cutoff) { stale++; continue; }
+        items.push({
+          title: meta?.title || titleFromUrl(e.loc),
+          link: e.loc,
+          contentSnippet: meta?.snippet || '',
+          // A mezőnév SZÁNDÉKOSAN pubDate: az rss-scraper ezt olvassa
+          // (item.pubDate → pub_date). Korábban isoDate volt → a sitemapos
+          // piszkozatok DÁTUM NÉLKÜL készültek.
+          pubDate: real || e.lastmod || null
+        });
+      }
     }
-    return { ok: true, items };
+    if (stale) console.log(`   🕰️ ${source.id || source.name}: ${stale} elavult oldal kiszűrve (friss lastmod, régi tartalom)`);
+    return { ok: true, items, stale };
   } catch (e) {
-    return { ok: false, items: [], error: String(e.message || e).slice(0, 120) };
+    return { ok: false, items: [], stale: 0, error: String(e.message || e).slice(0, 120) };
   }
 }

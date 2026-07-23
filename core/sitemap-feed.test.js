@@ -3,7 +3,7 @@
 // Tiszta függvények, hálózat nélkül (a fetch-es részt éles füst fedi).
 // ===================================================================
 import { strict as assert } from 'assert';
-import { parseSitemapXml, titleFromUrl, extractPageMeta, selectEntries } from './sitemap-feed.js';
+import { parseSitemapXml, titleFromUrl, extractPageMeta, selectEntries, extractPublishDate, fetchSitemapFeed } from './sitemap-feed.js';
 
 const DAY = 86400000;
 const iso = (d) => new Date(d).toISOString();
@@ -84,6 +84,73 @@ const iso = (d) => new Date(d).toISOString();
 {
   assert.equal(titleFromUrl('https://www.anthropic.com/news/claude-for-excel'), 'Claude for excel');
   assert.equal(titleFromUrl('https://x.com/news/'), 'News');
+}
+
+// ── 2026-07-23: VALÓDI megjelenési dátum (a lastmod hazudhat) ──────
+
+// 10) Szabványos meta-dátum
+{
+  assert.equal(extractPublishDate('<meta property="article:published_time" content="2026-07-01T10:00:00Z">'),
+    '2026-07-01T10:00:00.000Z');
+  assert.equal(extractPublishDate('<script type="application/ld+json">{"datePublished":"2026-03-16T16:28:39.000-04:00"}</script>'),
+    '2026-03-16T20:28:39.000Z', 'JSON-LD (Cohere) — időzóna átszámolva');
+  assert.equal(extractPublishDate('<time datetime="2026-05-05">x</time>'), '2026-05-05T00:00:00.000Z');
+}
+
+// 11) Anthropic-alak: látható dátum KÖZVETLENÜL a címsor után
+{
+  const html = '<h1 class="headline-1">Introducing Claude Sonnet 4.5</h1><div class="body-3 agate">Sep 29, 2025</div>';
+  assert.equal(extractPublishDate(html), '2025-09-29T00:00:00.000Z');
+}
+
+// 12) A LÁBLÉC/ajánló dátumai NEM tévesztenek meg (csak a h1 utáni sáv számít)
+{
+  const html = '<h1>Cím</h1><div>Feb 3, 2026</div>' + 'x'.repeat(2000) + '<footer>Jan 1, 2020</footer>';
+  assert.equal(extractPublishDate(html), '2026-02-03T00:00:00.000Z', 'a h1 utáni ELSŐ dátum nyer');
+  assert.equal(extractPublishDate('<p>Jan 1, 2020</p><h1>Cím</h1><p>nincs dátum</p>'), null,
+    'a címsor ELŐTTI dátumot nem vesszük figyelembe');
+}
+
+// 13) Nincs dátum → null (nem találunk ki semmit)
+{
+  assert.equal(extractPublishDate('<html><body>semmi</body></html>'), null);
+  assert.equal(extractPublishDate(''), null);
+  assert.equal(extractPublishDate('<meta property="article:published_time" content="kacat">'), null,
+    'olvashatatlan dátum → null, nem NaN');
+}
+
+// 14) ÉLES ESET: friss lastmod + RÉGI oldal-dátum → KISZŰRVE
+//     (ez a 2026-07-22-i Anthropic-újraépítés hibája)
+{
+  const recent = iso(Date.now() - 1 * DAY);
+  const sitemap = `<urlset>
+    <url><loc>https://a.com/news/regi-bejelentes</loc><lastmod>${recent}</lastmod></url>
+    <url><loc>https://a.com/news/tenyleg-friss</loc><lastmod>${recent}</lastmod></url>
+  </urlset>`;
+  const pages = {
+    'https://a.com/news/regi-bejelentes': '<h1>Régi</h1><div>Sep 29, 2025</div>',
+    'https://a.com/news/tenyleg-friss': `<h1>Friss</h1><meta property="article:published_time" content="${iso(Date.now() - 2 * DAY)}">`
+  };
+  const fakeFetch = async (url) => ({ ok: true, text: async () => (url.endsWith('.xml') ? sitemap : pages[url]) });
+  const r = await fetchSitemapFeed({ id: 'a', url: 'https://a.com/sitemap.xml', path_include: '/news/', max_age_days: 30 },
+    { fetchFn: fakeFetch, limit: 5 });
+  assert.equal(r.ok, true);
+  assert.deepEqual(r.items.map(i => i.link), ['https://a.com/news/tenyleg-friss'],
+    'a friss lastmod-dal álcázott RÉGI cikk kiesik');
+  assert.equal(r.stale, 1);
+  assert.ok(r.items[0].pubDate, 'a mezőnév pubDate (az rss-scraper ezt olvassa)');
+}
+
+// 15) Dátum nélküli oldal → marad a lastmod (nem esik ki, nem regresszió)
+{
+  const recent = iso(Date.now() - 1 * DAY);
+  const sitemap = `<urlset><url><loc>https://b.com/blog/x</loc><lastmod>${recent}</lastmod></url></urlset>`;
+  const fakeFetch = async (url) => ({ ok: true, text: async () => (url.endsWith('.xml') ? sitemap : '<title>Cím | B</title>') });
+  const r = await fetchSitemapFeed({ id: 'b', url: 'https://b.com/sitemap.xml', path_include: '/blog/', max_age_days: 30 },
+    { fetchFn: fakeFetch, limit: 5 });
+  assert.equal(r.items.length, 1);
+  assert.equal(r.items[0].pubDate, recent, 'oldal-dátum híján a lastmod marad');
+  assert.equal(r.items[0].title, 'Cím');
 }
 
 console.log('✅ sitemap-feed.test: minden átment');
