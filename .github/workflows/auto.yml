@@ -53,7 +53,15 @@ jobs:
         # oldalra). A munka SORALAPÚ: ami itt kimarad, a következő futás
         # folytatja — a kiadás viszont nem tűrhet halasztást.
         timeout-minutes: 34
-        run: node agents/ceo/agent.js
+        # --skip-translate (2026-07-23): a ceo-pipeline BEÉPÍTETT fordítást is
+        # csinál (5c lépés, limit 40), DE a munkafolyamatnak van rá KÜLÖN lépése
+        # (lentebb: "Fordítás", limit 80, if:always, 12 perc kerettel). Mérés a
+        # 07-23 reggeli futáson: a 34 perc = 13,8p ÍRÁS + 20,3p redundáns beépített
+        # FORDÍTÁS. A kihagyással a lépés ~14 percre esik (bőven a sapka alatt),
+        # és futásonként ~20 fizetős CI-percet spórol. A fordítás semmit nem veszít:
+        # a dedikált lépés a build ELŐTT fut, ugyanabban a futásban publikál.
+        # (Helyi `node agents/ceo/agent.js` VÁLTOZATLAN — kézi teszthez teljes flow.)
+        run: node agents/ceo/agent.js --skip-translate
 
       # Heti extrák (2026-07-08): vasárnap összefoglaló, szerdán összehasonlító.
       # Vázlatot írnak (WRITER_) — a KÖVETKEZŐ ceo-futás Ellenőrzője viszi át
