@@ -2252,15 +2252,15 @@ function buildWizardPage() {
 // A cím/leírás/elem-címek az adott nyelven (a fordítás-cache-ből).
 // ===================================================================
 const xmlEsc = (s) => String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-function feedXml(loc, lang) {
+
+// Közös RSS-építő (2026-07-23: a feed.xml mellé egy szűrt heti-feed is kell a
+// hírlevélhez, ezért kiemelve). items = már rendezett/szűrt cikklista.
+function buildRss(items, lang, { selfPath, title, desc }) {
   const lp = langPrefix(lang);
-  const items = loc.slice()
-    .sort((a, b) => (b.publishedAt || '').localeCompare(a.publishedAt || ''))
-    .slice(0, 40)
-    .map(a => {
-      const url = `${SITE.url}${lp}/article/${a.slug}.html`;
-      const pub = a.publishedAt ? new Date(a.publishedAt).toUTCString() : new Date().toUTCString();
-      return `    <item>
+  const rows = items.map(a => {
+    const url = `${SITE.url}${lp}/article/${a.slug}.html`;
+    const pub = a.publishedAt ? new Date(a.publishedAt).toUTCString() : new Date().toUTCString();
+    return `    <item>
       <title>${xmlEsc(a.title)}</title>
       <link>${url}</link>
       <guid isPermaLink="true">${url}</guid>
@@ -2268,19 +2268,36 @@ function feedXml(loc, lang) {
       <pubDate>${pub}</pubDate>
       <category>${a.isGuide ? 'Guide' : 'News'}</category>
     </item>`;
-    }).join('\n');
+  }).join('\n');
   return `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>${xmlEsc(SITE.name)} — ${xmlEsc(tr('tagline'))}</title>
+    <title>${xmlEsc(title)}</title>
     <link>${SITE.url}${lp}/</link>
-    <atom:link href="${SITE.url}${lp}/feed.xml" rel="self" type="application/rss+xml"/>
-    <description>${xmlEsc(tr('siteDesc'))}</description>
+    <atom:link href="${SITE.url}${lp}/${selfPath}" rel="self" type="application/rss+xml"/>
+    <description>${xmlEsc(desc)}</description>
     <language>${(HTML_LANG[lang] || 'en').toLowerCase()}</language>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
-${items}
+${rows}
   </channel>
 </rss>`;
+}
+
+function feedXml(loc, lang) {
+  const items = loc.slice()
+    .sort((a, b) => (b.publishedAt || '').localeCompare(a.publishedAt || ''))
+    .slice(0, 40);
+  return buildRss(items, lang, { selfPath: 'feed.xml', title: `${SITE.name} — ${tr('tagline')}`, desc: tr('siteDesc') });
+}
+
+// HÍRLEVÉL-FEED (2026-07-23): CSAK a heti összefoglalók (tags: weekly-digest) —
+// erre állítjuk a MailerLite RSS-kampányt, így hetente EGY tiszta, szerkesztett
+// e-mail megy ki (a "This Week in AI"), nem az összes cikk listája.
+function weeklyFeedXml(loc, lang) {
+  const items = loc.filter(a => (a.tags || []).includes('weekly-digest'))
+    .sort((a, b) => (b.publishedAt || '').localeCompare(a.publishedAt || ''))
+    .slice(0, 12);
+  return buildRss(items, lang, { selfPath: 'feed-weekly.xml', title: `${SITE.name} — Weekly Digest`, desc: tr('siteDesc') });
 }
 
 // ===================================================================
@@ -2365,6 +2382,7 @@ function main() {
     writeFileSync(join(outBase, 'about.html'), buildAboutPage(), 'utf-8');         // Rólunk (bizalmi oldal)
     writeFileSync(join(outBase, 'archive.html'), buildArchivePage(loc), 'utf-8');  // Minden hír (archívum)
     writeFileSync(join(outBase, 'feed.xml'), feedXml(loc, lang), 'utf-8');   // nyelvenkénti RSS
+    writeFileSync(join(outBase, 'feed-weekly.xml'), weeklyFeedXml(loc, lang), 'utf-8');  // hírlevél-feed (csak heti összefoglaló)
     // Kereső-index (villámkereső a navbarban): cím + alcím + márka + slug
     const searchIndex = loc.map(a => ({
       t: a.title, s: a.subtitle || '', b: [a.company, a.tool].filter(Boolean).join(' '),
