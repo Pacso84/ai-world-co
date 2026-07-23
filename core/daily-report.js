@@ -46,17 +46,23 @@ function collect() {
   const now = Date.now();
   const h24 = 24 * 3600e3;
 
-  // Új tartalom (24 óra) — a címeket MAGYARUL idézzük (a fordítás-cache-ből),
-  // mert a jelentés a magyar Főnöktől jön (user-kérés 2026-07-08)
+  // Új tartalom — NAPTÁRI NAP szerint (2026-07-23 fix, user: "nincs 16 hír mára").
+  // Régen 24 ÓRÁS gördülő ablak volt, ami "most"-hoz képest nézett vissza — így
+  // átnyúlt a TEGNAP ESTI futásba, és a napi 8-as plafon ellenére 16-ot mutatott
+  // (7 tegnap este + 9 ma). A user "Napi jelentés — MA" fejlécet olvas, tehát a
+  // szám a MAI napra vonatkozzon. (A dél körül futó jelentés a mai éjszakai +
+  // reggeli futást fogja; a délutáni futás tartalma az oldalon ott van.)
+  const dayStr = today();
   let news = 0, guides = 0; const titles = [];
   const artDir = join(ROOT, 'content', 'articles');
   if (existsSync(artDir)) {
     for (const f of readdirSync(artDir).filter(x => x.endsWith('.json'))) {
       try {
         const d = JSON.parse(readFileSync(join(artDir, f), 'utf-8'));
-        const pub = new Date(d._meta?.published_at || 0).getTime();
-        if (now - pub > h24) continue;
-        d._meta?.type === 'guide' ? guides++ : news++;
+        if ((d._meta?.published_at || '').slice(0, 10) !== dayStr) continue;
+        // Útmutató: a _meta.type MINDIG megbízható a guide-oknál; a hír-cikkeknek
+        // nincs type mezőjük — a fájlnév-előtag a biztos tartalék (2026-07-23).
+        (d._meta?.type === 'guide' || f.startsWith('ARTICLE_GUIDE')) ? guides++ : news++;
         if (titles.length < 3) {
           let title = d.original_title || f;
           try {
@@ -149,7 +155,7 @@ async function main() {
   const lines = [
     `📊 *Napi jelentés — ${today()}*`,
     ``,
-    `📰 Új tartalom (24h): ${r.news} hír + ${r.guides} útmutató`,
+    `📰 Új tartalom ma: ${r.news} hír + ${r.guides} útmutató`,
     ...r.titles.map(t => `   • ${t.slice(0, 60)}`),
     `📘 Facebook-poszt: ${r.fbPosts}`,
     `💰 Tegnap: $${r.spentYesterday.toFixed(2)} · e havi: $${r.spentMonth.toFixed(2)} / $${HARD_CAP}`,
