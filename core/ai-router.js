@@ -186,30 +186,52 @@ async function callGroq(prompt, model, options) {
 // SDK nélkül).
 // ===================================================================
 
+// KÜLÖN, tiszta függvény (tesztelhető): a kérés-törzs összeállítása
+export function buildOpenAIBody(provider, model, prompt, options) {
+  const body = {
+    model,
+    max_tokens: options.maxTokens || 2048,
+    messages: [
+      { role: 'system', content: options.systemPrompt || 'You are a helpful assistant.' },
+      { role: 'user', content: prompt }
+    ]
+  };
+  if (options.jsonMode) body.response_format = { type: 'json_object' };
+  // VALÓDI költség kérése (2026-07-22 audit): az OpenRouter normalizált token-számot
+  // ad vissza, a SZÁMLÁZÁS viszont a saját tokenizálóján és a gondolkodó-tokeneken
+  // alapul → a helyi ár-táblás becslés ~18%-kal alámérte a tényleges költést.
+  // Ezzel a kapcsolóval a válasz tartalmazza a ténylegesen felszámolt USD-t.
+  if (provider === 'openrouter') body.usage = { include: true };
+  // GONDOLKODÁS KI a mechanikus feladatoknál (2026-07-23): a MiniMax M3 a
+  // FORDÍTÁS előtt is 8-12 000 karakternyi belső gondolkodást termelt, amit
+  // ugyanúgy legenerál (idő) és kiszámláz (pénz). Éles A/B ugyanazon a cikken:
+  //   alap:          4736 tok, $0.0123
+  //   enabled:false: 1741 tok, $0.0025 (20%!) — a fordítás minősége UGYANOLYAN.
+  // Ez volt a fő oka, hogy a pipeline-lépés 10-22 percről 57 percre lassult
+  // (a futásidő ≈ kimenő tokenek / ~65 tok/mp). CSAK openrouteren küldjük
+  // (ott dokumentált a paraméter); a minőség-kritikus írás/bírálat agenteknél
+  // NEM kapcsoljuk ki — ott a gondolkodás minőséget vesz, nem időt éget.
+  if (options.reasoningOff && provider === 'openrouter') body.reasoning = { enabled: false };
+  return body;
+}
+
+// BERAGADÁS-VÉDELEM (2026-07-23): eddig EGYIK hívásnak sem volt időkorlátja —
+// egy néma hálózati beragadás a teljes CI-futást megölhette (a 60 perces
+// job-plafonig állt). A leghosszabb JOGOS hívás 377 mp volt → 8 perc bőven elég.
+const AI_CALL_TIMEOUT_MS = 8 * 60 * 1000;
+
 function makeOpenAICaller({ provider, baseUrl, keyEnv, extraHeaders }) {
   return async function (prompt, model, options) {
     const key = process.env[keyEnv];
     if (!key) throw new Error(`${keyEnv} nincs a .env fájlban!`);
 
-    const body = {
-      model,
-      max_tokens: options.maxTokens || 2048,
-      messages: [
-        { role: 'system', content: options.systemPrompt || 'You are a helpful assistant.' },
-        { role: 'user', content: prompt }
-      ]
-    };
-    if (options.jsonMode) body.response_format = { type: 'json_object' };
-    // VALÓDI költség kérése (2026-07-22 audit): az OpenRouter normalizált token-számot
-    // ad vissza, a SZÁMLÁZÁS viszont a saját tokenizálóján és a gondolkodó-tokeneken
-    // alapul → a helyi ár-táblás becslés ~18%-kal alámérte a tényleges költést.
-    // Ezzel a kapcsolóval a válasz tartalmazza a ténylegesen felszámolt USD-t.
-    if (provider === 'openrouter') body.usage = { include: true };
+    const body = buildOpenAIBody(provider, model, prompt, options);
 
     const res = await fetch(baseUrl, {
       method: 'POST',
       headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json', ...(extraHeaders || {}) },
-      body: JSON.stringify(body)
+      body: JSON.stringify(body),
+      signal: AbortSignal.timeout(AI_CALL_TIMEOUT_MS)
     });
     if (!res.ok) {
       const errText = await res.text().catch(() => '');
@@ -604,6 +626,12 @@ export async function ask(prompt, options = {}) {
       }
     }
 
+    // GONDOLKODÁS KI (2026-07-23): mechanikus agentnél (config.json
+    // agents.<név>.reasoning: "off") az openrouteres gondolkodó modellek
+    // belső gondolkodását kikapcsoljuk — fordításnál ez idő/pénz-égetés volt,
+    // minőség-haszon nélkül (éles A/B: ugyanolyan fordítás ötödannyiért).
+    const reasoningOff = agentConfig.reasoning === 'off' && provider === 'openrouter';
+
     // GONDOLKODÓ-PADLÓ (2026-07-16): a zai-glm-4.7 reasoning-modell — kis
     // token-keretnél (pl. pairing 400, seo 500) a TELJES keretet elgondolkodja
     // és üres választ ad. $0-s modell, a ráhagyás ingyen van → padló alá.
@@ -616,12 +644,13 @@ export async function ask(prompt, options = {}) {
     // a MiniMax a teljes 4000-es keretet ELGONDOLKODTA és ÜRES választ adott (a lánc
     // mentette meg). Nagy prompthoz nagyobb kimeneti keret kell. A max_tokens csak
     // FELSŐ HATÁR — ha a modell nem használja ki, nem kerül többe.
-    const effMaxTokens = isThinkingModel(model) ? Math.max(maxTokens || 2048, 8000) : maxTokens;
+    // Kikapcsolt gondolkodásnál a padló ÉRTELMETLEN (nincs mit elgondolkodni) → kihagyjuk.
+    const effMaxTokens = (isThinkingModel(model) && !reasoningOff) ? Math.max(maxTokens || 2048, 8000) : maxTokens;
 
     // Átmeneti hibákra ugyanazt a modellt újrapróbáljuk (backoff-fal)
     for (let tryNum = 1; tryNum <= MAX_TRANSIENT_RETRIES + 1; tryNum++) {
       try {
-        const response = await caller(prompt, model, { systemPrompt: sysWithLessons, maxTokens: effMaxTokens, jsonMode });
+        const response = await caller(prompt, model, { systemPrompt: sysWithLessons, maxTokens: effMaxTokens, jsonMode, reasoningOff });
 
         // Safety check
         const safety = safetyFilter(response);

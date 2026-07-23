@@ -131,7 +131,9 @@
       "enabled": true,
       "comment": "MINŐSÉG-ELŐSZÖR (user-döntés 2026-07-15): erős modellek — a gyenge modell hibája többe kerül (kézi javítás), mint az erős felára. ÁTÁLLVA 2026-07-21 (előrehozott MiniMax-váltás a keret miatt): MiniMax M3 elsődleges → Gemini 2.5 Flash tartalék; vég-tartalék a vészhálón át az erős-ingyenesek.",
       "routing": "paid-only",
-      "_routing_comment": "CSAK fizetős: a fordítást senki nem ellenőrzi utólag — a nem-angol oldalak minősége múlik rajta (user-döntés 2026-07-05)"
+      "_routing_comment": "CSAK fizetős: a fordítást senki nem ellenőrzi utólag — a nem-angol oldalak minősége múlik rajta (user-döntés 2026-07-05)",
+      "reasoning": "off",
+      "_reasoning_comment": "2026-07-23: a fordítás MECHANIKUS feladat — a MiniMax belső gondolkodása itt csak időt (57 perces pipeline!) és pénzt égetett. Éles A/B ugyanazon a cikken: ugyanolyan jó magyar fordítás, 20% költséggel. A modell UGYANAZ marad (minőség-először sértetlen), csak a gondolkodó-mód megy ki."
     },
     "rss-scraper": {
       "primary_model": {
