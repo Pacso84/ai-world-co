@@ -1002,7 +1002,7 @@ function xrefBox(a) {
 // HTML SABLONOK
 // ===================================================================
 
-function pageShell({ title, description, bodyContent, isArticle = false, noIntro = false, ogImage = '', keywords = '', jsonld = null, pagePath = '' }) {
+function pageShell({ title, description, bodyContent, isArticle = false, noIntro = false, ogImage = '', keywords = '', jsonld = null, pagePath = '', articleMeta = null }) {
   // ABSZOLÚT útvonalak (gyökértől) — így a /hu/article/... mélységnél is jók.
   const homePath = `${LP}/`;
   const supportPath = `${LP}/support.html`;
@@ -1022,6 +1022,14 @@ function pageShell({ title, description, bodyContent, isArticle = false, noIntro
   const langSwitcher = `<select class="lang-select" onchange="if(this.value)location.href=this.value" aria-label="${T.language}" style="background-color:var(--card);color:var(--ink);border:1px solid var(--line-strong);border-radius:8px;font:inherit;font-size:13px;padding:7px 6px;cursor:pointer;color-scheme:light dark">
         ${SITE_LANGS.map(l => `<option value="${SITE.url}${langPrefix(l)}/${pagePath}" ${l === LANG ? 'selected' : ''} style="background-color:var(--card);color:var(--ink)">${LANG_NAME[l]}</option>`).join('')}
       </select>`;
+  // OpenGraph cikk-meták (2026-07-23, Google News/aggregátor-felkészítés): a
+  // publikálás/módosítás ideje + rovat. A dátum a NewsArticle JSON-LD-ben már
+  // benne van; ez a hír-aggregátoroknak és közösségi felületeknek is szól.
+  const artMetaTags = (isArticle && articleMeta) ? [
+    articleMeta.published ? `<meta property="article:published_time" content="${escapeHtml(articleMeta.published)}">` : '',
+    articleMeta.modified ? `<meta property="article:modified_time" content="${escapeHtml(articleMeta.modified)}">` : '',
+    articleMeta.section ? `<meta property="article:section" content="${escapeHtml(articleMeta.section)}">` : ''
+  ].filter(Boolean).join('\n  ') : '';
   return `<!DOCTYPE html>
 <html lang="${HTML_LANG[LANG] || 'en'}">
 <head>
@@ -1042,6 +1050,7 @@ function pageShell({ title, description, bodyContent, isArticle = false, noIntro
   <meta property="og:image:width" content="1000">
   <meta property="og:image:height" content="563">
   <meta property="og:locale" content="${(HTML_LANG[LANG] || 'en').replace('-', '_')}">
+  ${artMetaTags}
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${escapeHtml(title)}">
@@ -1479,7 +1488,8 @@ function buildArticlePage(a) {
     description: a.seoDescription || a.subtitle,
     keywords: a.seoKeywords,
     ogImage, jsonld, pagePath: `article/${a.slug}.html`,
-    bodyContent: body, isArticle: true
+    bodyContent: body, isArticle: true,
+    articleMeta: { published: a.publishedAt, modified: a.publishedAt, section: cat.label }
   });
 }
 
@@ -1870,7 +1880,8 @@ function buildGuidePage(a) {
     // HowTo + FAQPage együtt (a JSON-LD tömböt is érti a Google)
     jsonld: faqSchema ? [jsonld, faqSchema] : jsonld,
     pagePath: `article/${a.slug}.html`,
-    bodyContent: body, isArticle: true
+    bodyContent: body, isArticle: true,
+    articleMeta: { published: a.publishedAt, modified: a.publishedAt }
   });
 }
 
