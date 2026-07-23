@@ -1,6 +1,101 @@
 # AI World Co. — közösségi posztok
 
-*Generálva: 2026-07-22T17:52:33.389Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+*Generálva: 2026-07-23T10:54:36.457Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## A centralized hub for meeting resources on the new Google Meet homepage
+**🔗 https://aiworldhq.com/article/how-to-organise-every-meeting-in-one-place-with-google-meet-.html**
+
+**Facebook:**
+Stop hunting through your inbox for meeting notes. Google Meet's new hub keeps your recordings and agendas all in one easy spot. https://aiworldhq.com/article/how-to-organise-every-meeting-in-one-place-with-google-meet-.html #GoogleMeet #Productivity
+
+**Instagram:**
+Finally, a simple way to organise your meetings.
+
+Say goodbye to losing track of files since everything is now in one tidy hub.
+
+Link in bio.
+
+#GoogleMeet #WorkSmarter #Productivity #RemoteWork
+
+*Kép-ötlet: A tidy desk setup with a laptop showing a neat, uncluttered dashboard on the screen.*
+
+---
+
+## Redesigned Google Classroom homepage with tailored views based on user’s role
+**🔗 https://aiworldhq.com/article/how-the-new-google-classroom-homepage-works-for-teachers-stu.html**
+
+**Facebook:**
+Managing schoolwork gets a bit easier now that Google Classroom shows you only the tools relevant to your role. Here’s a quick look at how the new layout helps teachers, students, and parents. https://aiworldhq.com/article/how-the-new-google-classroom-homepage-works-for-teachers-stu.html #GoogleClassroom #Productivity
+
+**Instagram:**
+School just got a little less cluttered. 📚 The new Google Classroom homepage is now tailored to show you exactly what you need, whether you’re teaching, learning, or helping out.
+
+#GoogleClassroom #EdTech #StudyTips #ParentingHacks
+
+Link in bio.
+
+*Kép-ötlet: A calm desk setup featuring a laptop open to a clean, minimalist interface in soft morning light.*
+
+---
+
+## Built in Fort Worth: Wistron Opens Advanced Manufacturing Plant to Produce NVIDIA AI Systems
+**🔗 https://aiworldhq.com/article/why-a-new-texas-ai-factory-is-making-your-free-ai-tools-fast.html**
+
+**Facebook:**
+Ever noticed your free AI tools answering questions faster lately? It's partly thanks to new factories building better chips. Here is why that matters to you. https://aiworldhq.com/article/why-a-new-texas-ai-factory-is-making-your-free-ai-tools-fast.html #AI #tech
+
+**Instagram:**
+Wondering why your AI chat is getting quicker? 🚀 New manufacturing plants have opened to produce chips that make cloud tools much faster for everyday use. Link in bio.
+#AItools #TechNews #Productivity #Hardware
+
+*Kép-ötlet: A close-up of a sleek microchip on a clean surface with soft blue lighting.*
+
+---
+
+## 90s AI Yearbook Photo Offline: Bring the Viral Trend to Your Desktop
+**🔗 https://aiworldhq.com/article/how-to-make-your-own-90s-ai-yearbook-photo-step-by-step-guid.html**
+
+**Facebook:**
+Ever wanted to see yourself in a 90s yearbook without the bad hair? It’s easy to make these viral photos at home, even if you aren’t a tech wiz. https://aiworldhq.com/article/how-to-make-your-own-90s-ai-yearbook-photo-step-by-step-guid.html #AIart #HowTo
+
+**Instagram:**
+Want a fun throwback for your profile pic? You can make those viral 90s yearbook photos on your own computer with AI, and it’s much easier than you think.
+Link in bio.
+#AIart #Nostalgia #HowTo #AIAustralia #Creativity
+
+*Kép-ötlet: A laptop on a wooden desk displaying a retro, grainy portrait on the screen.*
+
+---
+
+## Privacy-First AI Imaging: A Practical Offline Workflow for Client-Safe Art (From Prompt to Delivery)
+**🔗 https://aiworldhq.com/article/how-to-make-ai-images-without-uploading-anything-to-the-clou.html**
+
+**Facebook:**
+Worried about keeping client ideas private? Here’s a simple guide to creating AI images offline, so your work stays strictly on your computer. https://aiworldhq.com/article/how-to-make-ai-images-without-uploading-anything-to-the-clou.html #AIPrivacy #CreativeTools
+
+**Instagram:**
+Want to create AI art for clients without the security risks? Here’s how to do it all offline so your files never leave your computer.
+#AIArt #PrivacyFirst #OfflineTools #CreativeWorkflow
+Link in bio.
+
+*Kép-ötlet: A close-up of a person's hands typing on a laptop keyboard in a warm, dimly lit room, focusing on a calm and focused work atmosphere.*
+
+---
+
+## Run Stable Diffusion Locally – The Easy Way with Deep Art Creator Desktop
+**🔗 https://aiworldhq.com/article/how-to-run-stable-diffusion-on-your-computer-without-the-tec.html**
+
+**Facebook:**
+Ever wanted to create a unique birthday card or work illustration without the tech headache? Here’s a simple guide to running Stable Diffusion on your own computer, even if you’ve never touched code. https://aiworldhq.com/article/how-to-run-stable-diffusion-on-your-computer-without-the-tec.html #StableDiffusion #HowTo
+
+**Instagram:**
+Create your own AI art on your computer without touching a line of code. It is perfect for personalised gifts or work visuals, and you don't need to be a tech whiz to get started. Link in bio.
+
+#StableDiffusion #AIart #CreativeTips #TechMadeSimple
+
+*Kép-ötlet: A close-up of a laptop on a wooden table displaying a vibrant, artistic digital painting on the screen.*
 
 ---
 

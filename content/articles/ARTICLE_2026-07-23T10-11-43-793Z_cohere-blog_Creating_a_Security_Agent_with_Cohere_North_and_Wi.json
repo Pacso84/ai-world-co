@@ -1,0 +1,59 @@
+{
+  "_meta": {
+    "written_at": "2026-07-23T10:15:40.446Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.007596,
+    "original_draft": "2026-07-23T10-11-43-793Z_cohere-blog_Creating_a_Security_Agent_with_Cohere_North_and_Wi.json",
+    "source_id": "cohere-blog",
+    "source_name": "Cohere (hivatalos)",
+    "source_link": "https://cohere.com/blog/cohere-security-ai-agent-north-wiz",
+    "status": "published",
+    "rejected_at": "2026-07-23T10:12:49.263Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 791
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Clear, well-structured explainer with a strong hook, plain-language definitions, audience-specific takeaways, and a practical next step. No prohibited content, Australian English is consistent, and the source material is generalised appropriately without invented facts.",
+      "_aiCost": 0.000442992,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m3",
+      "_attempts": 1
+    },
+    "reason": "Critical auto-check failures: NO_FRONTMATTER: A cikk nem YAML frontmatter-rel kezdődik",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-07-23T10-11-43-793Z_cohere-blog_Creating_a_Security_Agent_with_Cohere_North_and_Wi.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-07-23T10:15:51.544Z",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-07-23T10:24:00.957Z",
+    "guide_worthy": false,
+    "pairing_reason": "This article explains the general concept of AI security agents and MCP protocol rather than providing steps to use a specific consumer product feature.",
+    "seo": {
+      "meta_description": "AI agents don't just chat—they take action. Learn how AI security agents protect your accounts automatically in this plain-English guide.",
+      "keywords": [
+        "what is an AI agent",
+        "AI security explained",
+        "automated cybersecurity",
+        "how AI agents work",
+        "AI vs chatbot"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add a visual comparison (like a checklist) showing the difference between a basic AI chatbot and an active AI agent to clarify the concept.",
+        "Include real-world names or categories of tools currently using these agents (e.g., banking apps) to make the examples concrete.",
+        "Expand on the 'Why it matters' section to briefly address privacy, as readers often worry about AI acting autonomously."
+      ],
+      "optimised_at": "2026-07-23T10:24:18.560Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"AI Security Agents Explained: What They Are and Why They Matter to You\"\nsubtitle: \"A plain-English guide to AI that takes action on your behalf, and why cybersecurity is the first place you'll notice it\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"ai-agents\", \"security\", \"automation\", \"mcp\"]\n---\n\n# AI Security Agents Explained\n\nImagine this: it's 11pm, you're halfway through a show, and your phone buzzes with a \"suspicious login\" alert from your bank. By the time you wake up the next morning, an AI has already investigated what happened, locked the affected account, and emailed you a clear summary. That's no longer science fiction — it's what AI agents are starting to do behind the scenes, every single day.\n\n## What is an \"AI agent\" anyway?\n\nYou've probably used AI like ChatGPT before — you type a question, it answers. That's helpful but limited. An **AI agent** goes a step further: it can actually *do things* on your behalf.\n\nThink of regular AI as a smart advisor who only gives you advice. An AI agent is more like a personal assistant who can also open your apps, check your files, send messages, and take action. The technical term for this is **tool use** — the agent's ability to connect to other pieces of software and ask them for information or to run tasks. Just as you might ask your accountant to check your bank balance, an agent can ask your security software what's happening on your network.\n\n## How agents reach into your other apps\n\nFor an AI to check your email, your files, or your security tools, it needs a way in. The system quickly becoming the standard for this is called **MCP**, short for **Model Context Protocol**. Don't worry about the acronym — just think of MCP as a universal translator between apps and AI.\n\nWithout MCP, every AI tool would need a custom connection to every app out there (one plug for Gmail, another for Slack, another for your bank's security logs — hundreds of different shapes). With MCP, anything that \"speaks MCP\" can plug into anything else that \"speaks MCP.\" It's the same idea as USB: one standard, thousands of compatible devices, no fuss.\n\nThis kind of setup is now being used to build agents that handle security incidents, chase routine workflow tasks, and summarise long email threads — work that used to need a person glued to a screen.\n\n## Why security is where this really shines\n\nSecurity is where agents make the biggest difference, because the work is mostly about speed. When something suspicious happens — a strange login, an unusual file download, a fake invoice landing in your inbox — every minute counts. A human analyst might take 15 minutes just to see the alert, then another hour to investigate.\n\nAn AI security agent can do the first pass in seconds:\n\n- Spot the alert the moment it arrives\n- Check the user's normal **behaviour patterns** (does this look like them?)\n- Pull related data from email, files, or system logs\n- Lock the account or block the action if something feels off\n- Write a tidy summary for a human to review\n\nIt's not replacing security teams. It's giving them a tireless assistant who never sleeps, never gets bored, and never misses a 3am alert.\n\n## What this means for you\n\n- **In everyday life**: Don't be surprised if your bank's fraud alerts get faster and more accurate over the coming months — agents are quietly doing the first pass in the background. You still want the basics in place: turn on **two-factor authentication** (a second code sent to your phone when you log in), never reuse passwords, and treat unexpected messages with a healthy dose of scepticism. Good habits still matter; agents just give them a head start.\n- **If you run a small business**: You probably can't afford a 24/7 security operations team — and you don't need one. Check the tools you already pay for (Microsoft 365, Google Workspace, your accounting software). Many are quietly adding agent features that handle the boring monitoring work for you.\n- **If you work in IT or security**: This is a great moment to learn the basics of how agents work — not to become an expert overnight, but to understand what's now possible so you can ask sharper questions of the vendors you use.\n\n## Try this today\n\nPick one of your accounts — email, banking, or social media — and turn on every security setting you can find right now: two-factor authentication, login alerts, app-specific passwords. AI agents work best when the basics are already locked down. Think of it as securing the front door before you install the alarm.",
+  "original_title": "Creating a Security Agent with Cohere North and Wiz"
+}

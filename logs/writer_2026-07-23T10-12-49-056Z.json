@@ -1,0 +1,29 @@
+{
+  "started_at": "2026-07-23T10:11:48.563Z",
+  "drafts_total": 2,
+  "articles_written": 2,
+  "articles_failed": 0,
+  "total_cost_usd": 0.01713432,
+  "by_article": [
+    {
+      "draft": "2026-07-23T10-11-43-793Z_cohere-blog_Cultural_Awareness_in_Global_AI.json",
+      "writer_output": "WRITER_2026-07-23T10-11-43-793Z_cohere-blog_Cultural_Awareness_in_Global_AI.json",
+      "success": true,
+      "cost_usd": 0.00792684,
+      "duration_ms": 23586,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-07-23T10-11-43-793Z_cohere-blog_Creating_a_Security_Agent_with_Cohere_North_and_Wi.json",
+      "writer_output": "WRITER_2026-07-23T10-11-43-793Z_cohere-blog_Creating_a_Security_Agent_with_Cohere_North_and_Wi.json",
+      "success": true,
+      "cost_usd": 0.00920748,
+      "duration_ms": 36905,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    }
+  ],
+  "finished_at": "2026-07-23T10:12:49.056Z",
+  "duration_seconds": 60.493
+}

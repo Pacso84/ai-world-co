@@ -1,7 +1,7 @@
 {
   "_meta": {
     "note": "Forrás-bizonyítvány: frissesség + termés + megbízhatóság forrásonként. Gyártja: core/source-report-card.js",
-    "updated": "2026-07-23T02:47:57.677Z",
+    "updated": "2026-07-23T10:54:52.007Z",
     "thresholds": {
       "DEAD_FEED_DAYS": 365,
       "MIN_SAMPLE": 4,
@@ -56,7 +56,7 @@
     },
     "microsoft-ai": {
       "name": "Microsoft AI (hivatalos)",
-      "feedAgeDays": 2,
+      "feedAgeDays": 3,
       "published30d": 10,
       "truthBlocks": 0,
       "totalAttempts": 10,
@@ -67,7 +67,7 @@
     },
     "huggingface-blog": {
       "name": "Hugging Face (hivatalos platform)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 0,
       "published30d": 0,
       "truthBlocks": 0,
       "totalAttempts": 0,
@@ -89,7 +89,7 @@
     },
     "google-workspace": {
       "name": "Google Workspace Updates (hivatalos)",
-      "feedAgeDays": 0,
+      "feedAgeDays": 1,
       "published30d": 22,
       "truthBlocks": 1,
       "totalAttempts": 23,
@@ -111,7 +111,7 @@
     },
     "microsoft-research": {
       "name": "Microsoft Research (hivatalos)",
-      "feedAgeDays": 9,
+      "feedAgeDays": 10,
       "published30d": 5,
       "truthBlocks": 0,
       "totalAttempts": 5,
@@ -122,7 +122,7 @@
     },
     "github-ai": {
       "name": "GitHub AI & ML (hivatalos)",
-      "feedAgeDays": 0,
+      "feedAgeDays": 1,
       "published30d": 4,
       "truthBlocks": 0,
       "totalAttempts": 4,
@@ -133,7 +133,7 @@
     },
     "aws-ml": {
       "name": "AWS Machine Learning (hivatalos)",
-      "feedAgeDays": 0,
+      "feedAgeDays": 1,
       "published30d": 40,
       "truthBlocks": 0,
       "totalAttempts": 41,
@@ -211,13 +211,13 @@
     "cohere-blog": {
       "name": "Cohere (hivatalos)",
       "feedAgeDays": null,
-      "published30d": 0,
+      "published30d": 2,
       "truthBlocks": 0,
-      "totalAttempts": 0,
+      "totalAttempts": 2,
       "alreadyDisabled": false,
-      "lastArticle": null,
-      "verdict": "no-yield",
-      "reason": "él, de 30 napja egy cikket sem adott — érdemes megnézni"
+      "lastArticle": "2026-07-23",
+      "verdict": "ok",
+      "reason": ""
     },
     "reddit-artificial": {
       "name": "Reddit r/artificial",
@@ -375,7 +375,7 @@
     },
     "salesforce": {
       "name": "Salesforce AI Blog (hivatalos)",
-      "feedAgeDays": 0,
+      "feedAgeDays": 1,
       "published30d": 10,
       "truthBlocks": 0,
       "totalAttempts": 10,
@@ -408,7 +408,7 @@
     },
     "snowflake": {
       "name": "Snowflake Blog (hivatalos)",
-      "feedAgeDays": 0,
+      "feedAgeDays": 1,
       "published30d": 15,
       "truthBlocks": 0,
       "totalAttempts": 15,
@@ -430,7 +430,7 @@
     },
     "pinecone": {
       "name": "Pinecone Blog (hivatalos)",
-      "feedAgeDays": 6,
+      "feedAgeDays": 7,
       "published30d": 3,
       "truthBlocks": 0,
       "totalAttempts": 3,
@@ -441,7 +441,7 @@
     },
     "ibm": {
       "name": "IBM Research (hivatalos)",
-      "feedAgeDays": 0,
+      "feedAgeDays": 1,
       "published30d": 2,
       "truthBlocks": 0,
       "totalAttempts": 2,
@@ -452,7 +452,7 @@
     },
     "ntt-research": {
       "name": "NTT Research (hivatalos)",
-      "feedAgeDays": 16,
+      "feedAgeDays": 17,
       "published30d": 6,
       "truthBlocks": 0,
       "totalAttempts": 6,
@@ -463,7 +463,7 @@
     },
     "deeparteffects": {
       "name": "Deep Art Effects Blog (hivatalos)",
-      "feedAgeDays": 6,
+      "feedAgeDays": 7,
       "published30d": 9,
       "truthBlocks": 0,
       "totalAttempts": 9,
@@ -474,7 +474,7 @@
     },
     "midjourney-updates": {
       "name": "Midjourney Updates (hivatalos)",
-      "feedAgeDays": 27,
+      "feedAgeDays": 28,
       "published30d": 2,
       "truthBlocks": 0,
       "totalAttempts": 3,
@@ -519,13 +519,13 @@
     "qwen-news": {
       "name": "Qwen / Alibaba (hivatalos, Google News szűrve)",
       "feedAgeDays": 2,
-      "published30d": 0,
+      "published30d": 1,
       "truthBlocks": 0,
       "totalAttempts": 2,
       "alreadyDisabled": false,
-      "lastArticle": null,
-      "verdict": "no-yield",
-      "reason": "él, de 30 napja egy cikket sem adott — érdemes megnézni"
+      "lastArticle": "2026-07-23",
+      "verdict": "ok",
+      "reason": ""
     }
   }
 }

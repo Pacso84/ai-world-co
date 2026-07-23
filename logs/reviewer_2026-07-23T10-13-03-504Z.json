@@ -1,0 +1,26 @@
+{
+  "started_at": "2026-07-23T10:12:49.261Z",
+  "total": 2,
+  "passed": 1,
+  "failed": 1,
+  "auto_check_failed": 1,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.00044352,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-07-23T10-11-43-793Z_cohere-blog_Creating_a_Security_Agent_with_Cohere_North_and_Wi.json",
+      "decision": "FAIL",
+      "reason": "auto-check critical",
+      "skipped_ai": true
+    },
+    {
+      "writer": "WRITER_2026-07-23T10-11-43-793Z_cohere-blog_Cultural_Awareness_in_Global_AI.json",
+      "article": "ARTICLE_2026-07-23T10-11-43-793Z_cohere-blog_Cultural_Awareness_in_Global_AI.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0
+    }
+  ],
+  "finished_at": "2026-07-23T10:13:03.504Z",
+  "duration_seconds": 14.243
+}
