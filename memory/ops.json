@@ -1,158 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t17846290771188",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-21T10:17:57.118Z",
-      "updated": "2026-07-21T10:18:13.137Z"
-    },
-    {
-      "id": "t17846290931393",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-07-21T10:18:13.139Z",
-      "updated": "2026-07-21T10:18:29.555Z"
-    },
-    {
-      "id": "t178462910955725",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-07-21T10:18:29.557Z",
-      "updated": "2026-07-21T10:18:29.805Z"
-    },
-    {
-      "id": "t178462910985384",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-21T10:18:29.853Z",
-      "updated": "2026-07-21T10:18:36.092Z"
-    },
-    {
-      "id": "t178462911609498",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-07-21T10:18:36.094Z",
-      "updated": "2026-07-21T10:18:53.896Z"
-    },
-    {
-      "id": "t178462913389977",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-21T10:18:53.899Z",
-      "updated": "2026-07-21T10:18:54.914Z"
-    },
-    {
-      "id": "t178462913491627",
-      "title": "Run translator",
-      "status": "done",
-      "agent": "translator",
-      "created": "2026-07-21T10:18:54.916Z",
-      "updated": "2026-07-21T10:25:38.775Z"
-    },
-    {
-      "id": "t178462953877741",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-07-21T10:25:38.777Z",
-      "updated": "2026-07-21T10:25:47.403Z"
-    },
-    {
-      "id": "t178465356972415",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-07-21T17:06:09.725Z",
-      "updated": "2026-07-21T17:06:09.936Z"
-    },
-    {
-      "id": "t178465356993836",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-07-21T17:06:09.938Z",
-      "updated": "2026-07-21T17:06:33.462Z"
-    },
-    {
-      "id": "t178465359346488",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-07-21T17:06:33.464Z",
-      "updated": "2026-07-21T17:06:33.683Z"
-    },
-    {
-      "id": "t178465359368545",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-07-21T17:06:33.685Z",
-      "updated": "2026-07-21T17:07:25.489Z"
-    },
-    {
-      "id": "t178465364549196",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-21T17:07:25.491Z",
-      "updated": "2026-07-21T17:07:26.110Z"
-    },
-    {
-      "id": "t178465364611953",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-07-21T17:07:26.119Z",
-      "updated": "2026-07-21T17:08:04.722Z"
-    },
-    {
-      "id": "t178465368472428",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-21T17:08:04.724Z",
-      "updated": "2026-07-21T17:08:39.367Z"
-    },
-    {
-      "id": "t178465371937090",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-07-21T17:08:39.370Z",
-      "updated": "2026-07-21T17:08:59.853Z"
-    },
-    {
-      "id": "t178465373987782",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-21T17:08:59.877Z",
-      "updated": "2026-07-21T17:09:26.515Z"
-    },
-    {
-      "id": "t178465376651725",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-07-21T17:09:26.517Z",
-      "updated": "2026-07-21T17:09:44.385Z"
-    },
-    {
-      "id": "t178465378438732",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-21T17:09:44.387Z",
-      "updated": "2026-07-21T17:09:45.398Z"
-    },
-    {
       "id": "t178465378539986",
       "title": "Run translator",
       "status": "done",
@@ -479,49 +327,161 @@
       "agent": "publisher",
       "created": "2026-07-22T17:44:34.354Z",
       "updated": "2026-07-22T17:44:45.546Z"
+    },
+    {
+      "id": "t178477125846949",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-07-23T01:47:38.469Z",
+      "updated": "2026-07-23T01:47:39.666Z"
+    },
+    {
+      "id": "t178477125970238",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-07-23T01:47:39.702Z",
+      "updated": "2026-07-23T01:48:57.932Z"
+    },
+    {
+      "id": "t178477133793491",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-07-23T01:48:57.934Z",
+      "updated": "2026-07-23T01:48:58.143Z"
+    },
+    {
+      "id": "t178477133814598",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-07-23T01:48:58.145Z",
+      "updated": "2026-07-23T01:59:00.877Z"
+    },
+    {
+      "id": "t178477194087961",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-23T01:59:00.879Z",
+      "updated": "2026-07-23T02:00:33.433Z"
+    },
+    {
+      "id": "t178477203343873",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-07-23T02:00:33.438Z",
+      "updated": "2026-07-23T02:02:51.511Z"
+    },
+    {
+      "id": "t178477217151363",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-23T02:02:51.513Z",
+      "updated": "2026-07-23T02:03:12.262Z"
+    },
+    {
+      "id": "t178477219226534",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-07-23T02:03:12.265Z",
+      "updated": "2026-07-23T02:03:16.488Z"
+    },
+    {
+      "id": "t178477219651769",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-07-23T02:03:16.517Z",
+      "updated": "2026-07-23T02:07:09.822Z"
+    },
+    {
+      "id": "t178477242982441",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-23T02:07:09.824Z",
+      "updated": "2026-07-23T02:07:30.099Z"
+    },
+    {
+      "id": "t178477245012579",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-07-23T02:07:30.125Z",
+      "updated": "2026-07-23T02:07:30.314Z"
+    },
+    {
+      "id": "t17847724503162",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-07-23T02:07:30.316Z",
+      "updated": "2026-07-23T02:09:15.559Z"
+    },
+    {
+      "id": "t178477255556346",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-07-23T02:09:15.563Z",
+      "updated": "2026-07-23T02:13:47.552Z"
+    },
+    {
+      "id": "t17847728275546",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-23T02:13:47.554Z",
+      "updated": "2026-07-23T02:13:51.152Z"
+    },
+    {
+      "id": "t178477283115452",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-23T02:13:51.154Z",
+      "updated": "2026-07-23T02:14:07.379Z"
+    },
+    {
+      "id": "t178477284738253",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-07-23T02:14:07.382Z",
+      "updated": "2026-07-23T02:14:34.249Z"
+    },
+    {
+      "id": "t178477287425138",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-23T02:14:34.251Z",
+      "updated": "2026-07-23T02:14:35.315Z"
+    },
+    {
+      "id": "t17847728753185",
+      "title": "Run translator",
+      "status": "done",
+      "agent": "translator",
+      "created": "2026-07-23T02:14:35.318Z",
+      "updated": "2026-07-23T02:44:35.331Z"
+    },
+    {
+      "id": "t17847746753343",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-07-23T02:44:35.334Z",
+      "updated": "2026-07-23T02:44:45.526Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178404894455542",
-      "level": "success",
-      "text": "2 hír + 0 útmutató publikálva (költség: $0.0752).",
-      "agent": "ceo",
-      "at": "2026-07-14T17:09:04.555Z",
-      "loud": false
-    },
-    {
-      "id": "n178407848941167",
-      "level": "warn",
-      "text": "📨 pairing → guide: Új funkció-hír → kéne hozzá útmutató: \"How to Get AI Insights Anywhere with Genie One on Your Phone\"",
-      "agent": "pairing",
-      "at": "2026-07-15T01:21:29.411Z",
-      "loud": false
-    },
-    {
-      "id": "n178407864938666",
-      "level": "info",
-      "text": "SEO: 8 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-07-15T01:24:09.386Z",
-      "loud": false
-    },
-    {
-      "id": "n178407941030391",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). Our article line-up is ready to publish, with a cohesive mix of practical AI applications for everyday tasks and study assistance. However, I do note that the tech-heavy content may benefit from a gen",
-      "agent": "publisher",
-      "at": "2026-07-15T01:36:50.303Z",
-      "loud": false
-    },
-    {
-      "id": "n178407941596735",
-      "level": "success",
-      "text": "2 hír + 6 útmutató publikálva (költség: $0.0993).",
-      "agent": "ceo",
-      "at": "2026-07-15T01:36:55.967Z",
-      "loud": false
-    },
     {
       "id": "n178410903155061",
       "level": "info",
@@ -1281,218 +1241,49 @@
       "agent": "ceo",
       "at": "2026-07-22T17:44:45.569Z",
       "loud": false
+    },
+    {
+      "id": "n178477219362514",
+      "level": "warn",
+      "text": "📨 pairing → guide: Új funkció-hír → kéne hozzá útmutató: \"How to Make AI Images with Stable Diffusion\"",
+      "agent": "pairing",
+      "at": "2026-07-23T02:03:13.625Z",
+      "loud": false
+    },
+    {
+      "id": "n178477287424072",
+      "level": "info",
+      "text": "SEO: 9 cikk optimalizálva (átlag 8.4/10).",
+      "agent": "seo",
+      "at": "2026-07-23T02:14:34.240Z",
+      "loud": false
+    },
+    {
+      "id": "n178477467532632",
+      "level": "alert",
+      "text": "Pipeline lépés időtúllépés: translator — leállítva 30 perc után.",
+      "agent": "ceo",
+      "at": "2026-07-23T02:44:35.326Z",
+      "loud": true
+    },
+    {
+      "id": "n178477467637814",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). Our publish line-up looks great, with a good mix of practical AI applications and helpful tools like Qwen Chat, Claude, and Cohere. I do note that the line-up is quite tech-heavy, so a gentle intro or",
+      "agent": "publisher",
+      "at": "2026-07-23T02:44:36.378Z",
+      "loud": false
+    },
+    {
+      "id": "n178477468556878",
+      "level": "success",
+      "text": "6 hír + 3 útmutató publikálva (költség: $0.1211).",
+      "agent": "ceo",
+      "at": "2026-07-23T02:44:45.568Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178451262618195",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Meta’s Spark Muse 1.1 is now available on Databricks, fully governed by Unity AI Gateway \" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; Reviewer verdict: Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben; újraküldöm.",
-      "ref": "2026-07-18T01-23-53-503Z_databricks_Meta_s_Spark_Muse_1_1_is_now_available_on_Databric.json",
-      "at": "2026-07-20T01:57:06.181Z"
-    },
-    {
-      "id": "m17845126264312",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Introducing Grok on Amazon Bedrock\" — mi a baj: NO_H1: Nincs H1 (# Cím) a cikkben",
-      "ref": "2026-07-17T01-43-42-625Z_aws-ml_Introducing_Grok_on_Amazon_Bedrock.json",
-      "at": "2026-07-20T01:57:06.431Z"
-    },
-    {
-      "id": "m178451262646126",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Cast yourself in AI video clips using your personal avatar with Gemini Omni in Vids\" — mi a baj: NO_H1: Nincs H1 (# Cím) a cikkben",
-      "ref": "2026-07-17T01-43-42-625Z_google-workspace_Cast_yourself_in_AI_video_clips_using_your_persona.json",
-      "at": "2026-07-20T01:57:06.461Z"
-    },
-    {
-      "id": "m178451264189441",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Generate higher quality AI video clips and edit any video with Gemini Omni in Vids\" — mi a baj: The article implies that Google Vids directly 'generates a video clip' with 'better realism and even improved text rendering (how clearly words appear within the video)' from a simple text prompt. While Google Vids is an AI-powered video creation app that uses text prompts to gene",
-      "ref": "2026-07-17T01-43-42-625Z_google-workspace_Generate_higher_quality_AI_video_clips_and_edit_an.json",
-      "at": "2026-07-20T01:57:21.894Z"
-    },
-    {
-      "id": "m178451264844930",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Transform your sales organization with Amazon Quick: your new agentic AI teammate\" (?/10)",
-      "ref": "2026-07-18T01-23-53-502Z_aws-ml_Transform_your_sales_organization_with_Amazon_Quic.json",
-      "at": "2026-07-20T01:57:28.449Z"
-    },
-    {
-      "id": "m178451265734632",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Meta’s Spark Muse 1.1 is now available on Databricks, fully governed by Unity AI Gateway \" (?/10)",
-      "ref": "2026-07-18T01-23-53-503Z_databricks_Meta_s_Spark_Muse_1_1_is_now_available_on_Databric.json",
-      "at": "2026-07-20T01:57:37.346Z"
-    },
-    {
-      "id": "m178451278206633",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Analyze customer reviews or social media comments for positive or negative sentiment using Hugging Face\" — mi a baj: NO_H1: Nincs H1 (# Cím) a cikkben",
-      "ref": "GUIDE_analyze-customer-reviews-or-social-media-comments-for-positi.json",
-      "at": "2026-07-20T01:59:42.066Z"
-    },
-    {
-      "id": "m178451281017558",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Create Your Own Custom GPT in ChatGPT (No Coding)\" — mi a baj: The article describes a \"Preview\" tab on the right side of the screen in Step 2. In ChatGPT's custom GPT builder interface, there is a \"Preview\" *panel* on the right, not a tab.; In Step 2, the article states \"If it looks different: The two sections might be labelled 'Build' and 'Configure,' or simply 'Create' an",
-      "ref": "GUIDE_create-your-own-custom-gpt-in-chatgpt-no-coding.json",
-      "at": "2026-07-20T02:00:10.175Z"
-    },
-    {
-      "id": "m178451281782277",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Generate creative descriptions for products or social media posts using Hugging Face's text generation models\" — mi a baj: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user",
-      "ref": "GUIDE_generate-creative-descriptions-for-products-or-social-media-.json",
-      "at": "2026-07-20T02:00:17.822Z"
-    },
-    {
-      "id": "m178451304133194",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Brainstorm creative story prompts for your hobby novel using Cohere\" — mi a baj: NO_H1: Nincs H1 (# Cím) a cikkben",
-      "ref": "GUIDE_brainstorm-creative-story-prompts-for-your-hobby-novel-using.json",
-      "at": "2026-07-20T02:04:01.331Z"
-    },
-    {
-      "id": "m178451305269439",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Categorize customer feedback from online forms with Cohere\" — mi a baj: The article instructs users to \"Select the 'Generate' model\" within the Cohere Playground. 'Generate' is not a specific model name available for selection in the Cohere Playground/Workbench UI. Users typically select models like 'Command' or 'Command-R' to perform text generation tasks, including classif",
-      "ref": "GUIDE_categorize-customer-feedback-from-online-forms-with-cohere.json",
-      "at": "2026-07-20T02:04:12.694Z"
-    },
-    {
-      "id": "m178451310382799",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-07-20T02:05:03.827Z"
-    },
-    {
-      "id": "m178451391556444",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
-      "ref": null,
-      "at": "2026-07-20T02:18:35.564Z"
-    },
-    {
-      "id": "m178454398229537",
-      "from": "ceo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Főnöki újraindítás: \"Introducing Grok on Amazon Bedrock\" — rewrite-explainer",
-      "ref": "2026-07-17T01-43-42-625Z_aws-ml_Introducing_Grok_on_Amazon_Bedrock.json",
-      "at": "2026-07-20T10:39:42.295Z"
-    },
-    {
-      "id": "m178454398423534",
-      "from": "ceo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Főnöki újraindítás: \"Cast yourself in AI video clips using your personal avatar w\" — rewrite-explainer",
-      "ref": "2026-07-17T01-43-42-625Z_google-workspace_Cast_yourself_in_AI_video_clips_using_your_persona.json",
-      "at": "2026-07-20T10:39:44.235Z"
-    },
-    {
-      "id": "m178454398596178",
-      "from": "ceo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Főnöki újraindítás: \"Generate higher quality AI video clips and edit any video wi\" — rewrite-explainer",
-      "ref": "2026-07-17T01-43-42-625Z_google-workspace_Generate_higher_quality_AI_video_clips_and_edit_an.json",
-      "at": "2026-07-20T10:39:45.961Z"
-    },
-    {
-      "id": "m178454406389846",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Introducing Grok on Amazon Bedrock\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers. HONESTY RULE: name the REAL products/places/organisations from the source; NEVER invent generic UI steps (\"most plat",
-      "ref": "2026-07-17T01-43-42-625Z_aws-ml_Introducing_Grok_on_Amazon_Bedrock.json",
-      "at": "2026-07-20T10:41:03.898Z"
-    },
-    {
-      "id": "m178454417929882",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Cast yourself in AI video clips using your personal avatar with Gemini Omni in Vids\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers. HONESTY RULE: name the REAL products/places/organisations from the ",
-      "ref": "2026-07-17T01-43-42-625Z_google-workspace_Cast_yourself_in_AI_video_clips_using_your_persona.json",
-      "at": "2026-07-20T10:42:59.298Z"
-    },
-    {
-      "id": "m178454419468874",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Generate higher quality AI video clips and edit any video with Gemini Omni in Vids\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers. HONESTY RULE: name the REAL products/places/organisations from the s",
-      "ref": "2026-07-17T01-43-42-625Z_google-workspace_Generate_higher_quality_AI_video_clips_and_edit_an.json",
-      "at": "2026-07-20T10:43:14.688Z"
-    },
-    {
-      "id": "m178454420660499",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Introducing Grok on Amazon Bedrock\" — mi a baj: Missing conclusion/wrap-up; Article ends mid-sentence",
-      "ref": "2026-07-17T01-43-42-625Z_aws-ml_Introducing_Grok_on_Amazon_Bedrock.json",
-      "at": "2026-07-20T10:43:26.604Z"
-    },
-    {
-      "id": "m178454420660655",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "need",
-      "text": "Hiányos / kell még adat: \"Introducing Grok on Amazon Bedrock\" — egészítsd ki: Missing conclusion/wrap-up; Article ends mid-sentence",
-      "ref": "2026-07-17T01-43-42-625Z_aws-ml_Introducing_Grok_on_Amazon_Bedrock.json",
-      "open": false,
-      "at": "2026-07-20T10:43:26.606Z",
-      "resolved_at": "2026-07-20T17:39:02.802Z"
-    },
-    {
-      "id": "m178454421466935",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Cast yourself in AI video clips using your personal avatar with Gemini Omni in Vids\" — mi a baj: Salvaged from a partial AI response.",
-      "ref": "2026-07-17T01-43-42-625Z_google-workspace_Cast_yourself_in_AI_video_clips_using_your_persona.json",
-      "at": "2026-07-20T10:43:34.669Z"
-    },
-    {
-      "id": "m178454422372579",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Generate higher quality AI video clips and edit any video with Gemini Omni in Vids\" (?/10)",
-      "ref": "2026-07-17T01-43-42-625Z_google-workspace_Generate_higher_quality_AI_video_clips_and_edit_an.json",
-      "at": "2026-07-20T10:43:43.725Z"
-    },
     {
       "id": "m178454424930861",
       "from": "guide",
@@ -2644,6 +2435,214 @@
       "text": "6 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
       "ref": null,
       "at": "2026-07-22T17:52:33.391Z"
+    },
+    {
+      "id": "m178477125964730",
+      "from": "ceo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Főnöki újraindítás: \"What Is Stable Diffusion? A Simple Guide to the AI Behind Mo\" — rewrite-explainer",
+      "ref": "2026-07-22T10-14-03-156Z_deeparteffects_What_Is_Stable_Diffusion__A_Simple_Guide_to_the_AI.json",
+      "at": "2026-07-23T01:47:39.647Z"
+    },
+    {
+      "id": "m178477197433184",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"V8 Alpha\" — mi a baj: Inaccurate claim that testing is 'for free' (requires subscription); Step 2 hides the paywall and account linking requirements; UI steps lack specific locations (where is the text box/button?)",
+      "ref": "2026-07-23T01-48-48-122Z_midjourney-updates_V8_Alpha.json",
+      "at": "2026-07-23T01:59:34.331Z"
+    },
+    {
+      "id": "m17847719743677",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Web Updates\" — mi a baj: NO_FRONTMATTER: A cikk nem YAML frontmatter-rel kezdődik",
+      "ref": "2026-07-23T01-48-48-122Z_midjourney-updates_Web_Updates.json",
+      "at": "2026-07-23T01:59:34.367Z"
+    },
+    {
+      "id": "m178477201811179",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Grok 2 Image 1212 - xAI Docs\" — mi a baj: missing prerequisite (need X account); step 2 vague icon location; no fallback if icon not visible",
+      "ref": "2026-07-23T01-48-52-576Z_xai-news_Grok_2_Image_1212_-_xAI_Docs.json",
+      "at": "2026-07-23T02:00:18.111Z"
+    },
+    {
+      "id": "m17847720259769",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Qwen-Image-3.0: Rich Content, Authentic Details, Deep Knowledge - Qwen\" — mi a baj: Accessible, well-structured beginner guide with a clear hook, plain-language explanations, a 'What this means for you' section, and an actionable wrap-up. No prohibited content, no clichés flagged, and Australian English is consistent.",
+      "ref": "2026-07-23T01-48-57-922Z_qwen-news_Qwen-Image-3_0__Rich_Content__Authentic_Details__D.json",
+      "at": "2026-07-23T02:00:25.976Z"
+    },
+    {
+      "id": "m178477203335292",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Qwen3.5: Towards Native Multimodal Agents - Qwen\" — mi a baj: Qwen 3.5 from Alibaba is referenced as a model name; the verified-real list contains \"Qwen\" and \"Alibaba\" but \"Qwen 3.5\" is not confirmed as an official product/version name. This appears to be an invented version number.",
+      "ref": "2026-07-23T01-48-57-922Z_qwen-news_Qwen3_5__Towards_Native_Multimodal_Agents_-_Qwen.json",
+      "at": "2026-07-23T02:00:33.352Z"
+    },
+    {
+      "id": "m178477206913324",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"What Is Stable Diffusion? A Simple Guide to the AI Behind Modern Image Generation\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Verify the existence and accuracy of all referenced external resources, such as GitHub repositories and Colab notebooks, before providing step-by-step in",
+      "ref": "2026-07-22T10-14-03-156Z_deeparteffects_What_Is_Stable_Diffusion__A_Simple_Guide_to_the_AI.json",
+      "at": "2026-07-23T02:01:09.133Z"
+    },
+    {
+      "id": "m178477208841315",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"V8 Alpha\" — javítva: Inaccurate claim that testing is 'for free' (requires subscription); Step 2 hides the paywall and account linking requirements; újraküldöm.",
+      "ref": "2026-07-23T01-48-48-122Z_midjourney-updates_V8_Alpha.json",
+      "at": "2026-07-23T02:01:28.413Z"
+    },
+    {
+      "id": "m178477209965858",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Web Updates\" — javítva: NO_FRONTMATTER: A cikk nem YAML frontmatter-rel kezdődik; Reviewer verdict: Critical auto-check failures: NO_FRONTMATTER: A cikk nem YAML frontmatter-rel kezdődik; újraküldöm.",
+      "ref": "2026-07-23T01-48-48-122Z_midjourney-updates_Web_Updates.json",
+      "at": "2026-07-23T02:01:39.658Z"
+    },
+    {
+      "id": "m178477212638569",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Grok 2 Image 1212 - xAI Docs\" — javítva: missing prerequisite (need X account); step 2 vague icon location; újraküldöm.",
+      "ref": "2026-07-23T01-48-52-576Z_xai-news_Grok_2_Image_1212_-_xAI_Docs.json",
+      "at": "2026-07-23T02:02:06.385Z"
+    },
+    {
+      "id": "m178477215838135",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Qwen-Image-3.0: Rich Content, Authentic Details, Deep Knowledge - Qwen\" — javítva: Reviewer verdict: Accessible, well-structured beginner guide with a clear hook, plain-language explanations, a 'What this means for you' section, and an actionable wrap-up. No prohibited content, no clichés flagged, and Australian English is consistent.; újraküldöm.",
+      "ref": "2026-07-23T01-48-57-922Z_qwen-news_Qwen-Image-3_0__Rich_Content__Authentic_Details__D.json",
+      "at": "2026-07-23T02:02:38.381Z"
+    },
+    {
+      "id": "m178477217150278",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Qwen3.5: Towards Native Multimodal Agents - Qwen\" — javítva: Qwen 3.5 from Alibaba is referenced as a model name; the verified-real list contains \"Qwen\" and \"Alibaba\" but \"Qwen 3.5\" is not confirmed as an official product/version name. This appears to be an invented version number.; Reviewer verdict: Hitelesség-kapu blokkolta: Qwen 3.5 from Alibaba is referenced as a model name; the ",
+      "ref": "2026-07-23T01-48-57-922Z_qwen-news_Qwen3_5__Towards_Native_Multimodal_Agents_-_Qwen.json",
+      "at": "2026-07-23T02:02:51.502Z"
+    },
+    {
+      "id": "m178477217625377",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"What Is Stable Diffusion? A Simple Guide to the AI Behind Modern Image Generation\" (?/10)",
+      "ref": "2026-07-22T10-14-03-156Z_deeparteffects_What_Is_Stable_Diffusion__A_Simple_Guide_to_the_AI.json",
+      "at": "2026-07-23T02:02:56.253Z"
+    },
+    {
+      "id": "m178477218044276",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"V8 Alpha\" (?/10)",
+      "ref": "2026-07-23T01-48-48-122Z_midjourney-updates_V8_Alpha.json",
+      "at": "2026-07-23T02:03:00.442Z"
+    },
+    {
+      "id": "m178477218156836",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Web Updates\" — mi a baj: Accessible Australian-English explainer with friendly tone, clear structure including a hook, plain-language definitions, and a practical next step. No prohibited content or fabricated specifics detected.",
+      "ref": "2026-07-23T01-48-48-122Z_midjourney-updates_Web_Updates.json",
+      "at": "2026-07-23T02:03:01.568Z"
+    },
+    {
+      "id": "m17847721874665",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Grok 2 Image 1212 - xAI Docs\" (?/10)",
+      "ref": "2026-07-23T01-48-52-576Z_xai-news_Grok_2_Image_1212_-_xAI_Docs.json",
+      "at": "2026-07-23T02:03:07.466Z"
+    },
+    {
+      "id": "m178477219221886",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Qwen-Image-3.0: Rich Content, Authentic Details, Deep Knowledge - Qwen\" — mi a baj: American spelling: 'cosy' should be 'cosy' (correct) but 'specialised' not used; 'color' not present but no Australian spellings verified — appears neutral; Title is misleading: Source material is about Qwen-Image-3.0 model release, but article is a generic how-to with no mention of Qwen; Vag",
+      "ref": "2026-07-23T01-48-57-922Z_qwen-news_Qwen-Image-3_0__Rich_Content__Authentic_Details__D.json",
+      "at": "2026-07-23T02:03:12.218Z"
+    },
+    {
+      "id": "m178477219225282",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Qwen3.5: Towards Native Multimodal Agents - Qwen\" — mi a baj: NO_FRONTMATTER: A cikk nem YAML frontmatter-rel kezdődik",
+      "ref": "2026-07-23T01-48-57-922Z_qwen-news_Qwen3_5__Towards_Native_Multimodal_Agents_-_Qwen.json",
+      "at": "2026-07-23T02:03:12.252Z"
+    },
+    {
+      "id": "m178477219362448",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "need",
+      "text": "Új funkció-hír → kéne hozzá útmutató: \"How to Make AI Images with Stable Diffusion\"",
+      "ref": "how-to-make-ai-images-with-stable-diffusion",
+      "open": true,
+      "at": "2026-07-23T02:03:13.624Z"
+    },
+    {
+      "id": "m178477219400570",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "info",
+      "text": "A \"V8.1 is now the default model on Midjourney!\" hír a meglévő útmutatóra mutat: generate-unique-profile-pictures-for-social-media-with-midjo",
+      "ref": "generate-unique-profile-pictures-for-social-media-with-midjo",
+      "at": "2026-07-23T02:03:14.005Z"
+    },
+    {
+      "id": "m178477219598411",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "info",
+      "text": "A \"Grok 2 Image 1212 - xAI Docs\" hír a meglévő útmutatóra mutat: create-a-personalized-learning-plan-for-a-new-hobby-with-gro",
+      "ref": "create-a-personalized-learning-plan-for-a-new-hobby-with-gro",
+      "at": "2026-07-23T02:03:15.984Z"
+    },
+    {
+      "id": "m17847728311418",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Adding clear comments to your existing code to make it easier to understand with GitHub Copilot\" — mi a baj: Beginner clarity too low (5/10): steps are vague or could mislead a first-time user; Step 1: Installer description is inaccurate — VS Code website has a prominent download button, but the installer does not 'extract files and launch welcome screen' as described, and '",
+      "ref": "GUIDE_adding-clear-comments-to-your-existing-code-to-make-it-easie.json",
+      "at": "2026-07-23T02:13:51.142Z"
+    },
+    {
+      "id": "m178477287530090",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-07-23T02:14:35.300Z"
     }
   ]
 }

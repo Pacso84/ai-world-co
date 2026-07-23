@@ -1,0 +1,47 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "adding-clear-comments-to-your-existing-code-to-make-it-easie",
+    "company": "GitHub",
+    "tool": "GitHub Copilot",
+    "icon": "🤖",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-07-23T02:13:47.540Z",
+    "writer_provider": "cerebras",
+    "writer_model": "gpt-oss-120b",
+    "writer_cost_usd": 0.01579998,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "rejected",
+    "rejected_at": "2026-07-23T02:13:51.007Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 975
+    },
+    "ai_review": {
+      "overall_score": 6,
+      "clarity_score": 5,
+      "decision": "FAIL",
+      "issues": [
+        "Beginner clarity too low (5/10): steps are vague or could mislead a first-time user",
+        "Step 1: Installer description is inaccurate — VS Code website has a prominent download button, but the installer does not 'extract files and launch welcome screen' as described, and 'colour-filled side bar' is a vague description of UI",
+        "Step 5: Tab key alone typically accepts inline ghost text, not generates a comment; Ctrl+Enter opens the Copilot panel which may not insert a comment above the cursor. The instruction mixes two different interactions and is misleading",
+        "Step 5: Note at end contradicts the step itself — the article says Copilot will generate a comment but then says it cannot automatically insert without acceptance, leaving the actual workflow unclear",
+        "Step 3: 'Get' button on the Extensions view in VS Code actually means the extension is not yet installed and is for Microsoft marketplace items; conflating it with 'Install' may confuse beginners"
+      ],
+      "verdict": "The guide contains multiple inaccurate or misleading UI descriptions, particularly in the core step (Step 5) where the keyboard shortcut behaviour and acceptance workflow are muddled. A beginner could easily get stuck or frustrated trying to follow these instructions.",
+      "_aiCost": 0.00085944,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m3",
+      "_attempts": 1
+    },
+    "reason": "The guide contains multiple inaccurate or misleading UI descriptions, particularly in the core step (Step 5) where the keyboard shortcut behaviour and acceptance workflow are muddled. A beginner could easily get stuck or frustrated trying to follow these instructions.",
+    "can_retry": true
+  },
+  "article_markdown": "---\ntitle: \"Adding clear comments to your existing code with GitHub Copilot\"\nsubtitle: \"Learn how to let GitHub Copilot automatically suggest helpful comments, so your code becomes easier to read for you and your teammates\"\ncategory: \"guide\"\naudience: \"business\"\ncompany: \"GitHub\"\ntool: \"Copilot\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"getting-started\", \"copilot\"]\n---\n\n# Adding clear comments to your existing code with GitHub Copilot\n\n**Hook:** By the end of this guide you’ll be able to ask GitHub Copilot to write clear, natural‑language comments for any piece of code you already have, making the codebase friendlier for both yourself and anyone else who reads it. This is aimed at anyone who works with code in their day‑to‑day role, even if you’re not a professional developer.\n\n## Before you start\n- A free GitHub account (you’ll need it to sign in to Copilot).  \n- Visual Studio Code installed on your computer (Windows, macOS or Linux).  \n- An internet connection (Copilot runs in the cloud).  \n- If you want more than the free trial, a paid Copilot subscription (optional).  \n- Roughly 10 minutes total to follow the steps.\n\n## Step 1 — Install Visual Studio Code\nDownload the Visual Studio Code installer from the official site and run it; the installer window shows a big **Download** button that matches your operating system. After you click it, the installer extracts files and then launches the VS Code welcome screen with a colour‑filled side bar. If you don’t see a button called “Download”, look for a link that says “Get VS Code for Windows/macOS/Linux”. 💬 Example: none needed – just click the button. You’ll know it worked when the VS Code icon appears on your desktop and the program opens with a clean editor window.\n\n## Step 2 — Sign in to GitHub from VS Code\nOpen VS Code, then click the **Accounts** icon (a tiny silhouette) at the bottom‑left of the window; a small panel slides up asking you to **Sign in with GitHub**. After entering your email and password, a green check‑mark appears and your avatar (or initials) shows in the status bar. If you don’t see the silhouette, look for a gear icon or the text “Sign in” under the **View → Command Palette** menu. 💬 Example: none needed – just follow the sign‑in prompts. You’ll know it worked when your GitHub username appears in the lower‑right corner of VS Code.\n\n## Step 3 — Install the GitHub Copilot extension\nClick the **Extensions** icon on the left sidebar (looks like four squares) to open the Extensions view, then type “GitHub Copilot” into the search bar. The first result will have an **Install** button; click it and wait a moment while the extension downloads and enables itself. If you see a button that says “Get” or a cloud arrow instead of “Install”, click that – it does the same thing. 💬 Example: none needed – just press **Install**. You’ll know it worked when a new Copilot icon (a stylised “C”) appears in the activity bar and the extension status reads “Enabled”.\n\n## Step 4 — Open the code file you want to comment\nIn the Explorer pane on the left, navigate through your folders until you find the file you’d like to document (for example, `utils.js`). Double‑click the file; its contents now fill the central editor area, showing plain‑text code with line numbers on the left. If the Explorer isn’t visible, open it via **View → Explorer** or press `Ctrl+Shift+E`. 💬 Example: none needed – just open the file. You’ll know it worked when you can see the code lines clearly in the editor.\n\n## Step 5 — Ask Copilot to add a comment\nPlace the cursor on a blank line directly above a function or block, type a short prompt such as `// Explain what this function does` and then press **Tab** (or use the shortcut `Ctrl+Enter`). Copilot will generate a comment block that explains the purpose, inputs and output of the code beneath it. If no comment appears, open the Command Palette (`Ctrl+Shift+P`) and run “GitHub Copilot: Explain code”. 💬 Example: `// Explain what this function does`. You’ll know it worked when a readable comment appears right above the selected code, summarising its behaviour in plain English. *Note:* Copilot can suggest comments but it cannot automatically insert them without your acceptance; you may need to confirm the suggestion.\n\n## Common mistakes\n- **Copy‑pasting the whole function instead of a prompt.** Copilot reacts to short prompts, not full code blocks. Fix: type a brief instruction like “// Summarise this method” and let Copilot fill in the comment.  \n- **Ignoring the suggestion and deleting it.** The generated comment is the output you want. Fix: after the suggestion appears, press **Enter** to accept it, or use the arrow keys to edit before confirming.  \n- **Expecting Copilot to comment every line perfectly.** Complex or very domain‑specific code may need a little extra guidance. Fix: add more detail to your prompt, e.g., “// Explain the algorithm for calculating tax brackets”.\n\n## What this means for you\n- **In everyday life:** You can quickly add self‑explanatory notes to scripts you copy‑paste for personal projects, saving time the next time you revisit them.  \n- **For your business or work:** Teams can use Copilot‑generated comments to onboard new staff faster, because the code becomes self‑documenting without a separate documentation sprint.  \n- **If you're just getting started:** The easiest first move is to try the “Explain this function” prompt on a small snippet you already own – it’s a low‑risk way to see Copilot in action.\n\n## Try it now\nOpen any small JavaScript file you have, place the cursor on a new line above a function, type `// Explain what this function does` and press **Tab**. In under two minutes you’ll see a clear comment appear, proving that Copilot can help you make code friendlier instantly.",
+  "original_title": "Adding clear comments to your existing code to make it easier to understand with GitHub Copilot"
+}

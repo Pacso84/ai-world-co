@@ -1,0 +1,54 @@
+{
+  "started_at": "2026-07-23T02:02:51.690Z",
+  "total": 6,
+  "passed": 3,
+  "failed": 3,
+  "auto_check_failed": 1,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.0034089240000000002,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-07-22T10-14-03-156Z_deeparteffects_What_Is_Stable_Diffusion__A_Simple_Guide_to_the_AI.json",
+      "article": "ARTICLE_2026-07-22T10-14-03-156Z_deeparteffects_What_Is_Stable_Diffusion__A_Simple_Guide_to_the_AI.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.000608832
+    },
+    {
+      "writer": "WRITER_2026-07-23T01-48-48-122Z_midjourney-updates_V8_Alpha.json",
+      "article": "ARTICLE_2026-07-23T01-48-48-122Z_midjourney-updates_V8_Alpha.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.000713664
+    },
+    {
+      "writer": "WRITER_2026-07-23T01-48-48-122Z_midjourney-updates_Web_Updates.json",
+      "rejected": "REJECTED_2026-07-23T01-48-48-122Z_midjourney-updates_Web_Updates.json",
+      "decision": "FAIL",
+      "score": 7,
+      "cost_usd": 0.00050334
+    },
+    {
+      "writer": "WRITER_2026-07-23T01-48-52-576Z_xai-news_Grok_2_Image_1212_-_xAI_Docs.json",
+      "article": "ARTICLE_2026-07-23T01-48-52-576Z_xai-news_Grok_2_Image_1212_-_xAI_Docs.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0
+    },
+    {
+      "writer": "WRITER_2026-07-23T01-48-57-922Z_qwen-news_Qwen-Image-3_0__Rich_Content__Authentic_Details__D.json",
+      "rejected": "REJECTED_2026-07-23T01-48-57-922Z_qwen-news_Qwen-Image-3_0__Rich_Content__Authentic_Details__D.json",
+      "decision": "FAIL",
+      "score": 6,
+      "cost_usd": 0.000713712
+    },
+    {
+      "writer": "WRITER_2026-07-23T01-48-57-922Z_qwen-news_Qwen3_5__Towards_Native_Multimodal_Agents_-_Qwen.json",
+      "decision": "FAIL",
+      "reason": "auto-check critical",
+      "skipped_ai": true
+    }
+  ],
+  "finished_at": "2026-07-23T02:03:12.253Z",
+  "duration_seconds": 20.563
+}

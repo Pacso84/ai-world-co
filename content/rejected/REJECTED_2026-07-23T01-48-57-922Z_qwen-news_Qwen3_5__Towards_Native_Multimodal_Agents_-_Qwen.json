@@ -1,0 +1,33 @@
+{
+  "_meta": {
+    "written_at": "2026-07-23T02:02:51.501Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00595068,
+    "original_draft": "2026-07-23T01-48-57-922Z_qwen-news_Qwen3_5__Towards_Native_Multimodal_Agents_-_Qwen.json",
+    "source_id": "qwen-news",
+    "source_name": "Qwen / Alibaba (hivatalos, Google News szűrve)",
+    "source_link": "https://news.google.com/rss/articles/CBMiRkFVX3lxTE5oMHAwcmp5RG83bnVJZ3VsNjU3ZzV3RjdDNnM4VGRPaG4wUkdIRlZLbURQUEE4QWx4bWI4M2JUblZsTTlYcGc?oc=5",
+    "status": "rejected",
+    "rejected_at": "2026-07-23T02:03:12.220Z",
+    "auto_check": {
+      "passed": false,
+      "issues": [
+        "NO_FRONTMATTER: A cikk nem YAML frontmatter-rel kezdődik"
+      ],
+      "wordCount": 773
+    },
+    "ai_review": {
+      "decision": "FAIL",
+      "verdict": "Critical auto-check failures: NO_FRONTMATTER: A cikk nem YAML frontmatter-rel kezdődik",
+      "skipped_ai": true
+    },
+    "reason": "Critical auto-check failures: NO_FRONTMATTER: A cikk nem YAML frontmatter-rel kezdődik",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-07-23T01-48-57-922Z_qwen-news_Qwen3_5__Towards_Native_Multimodal_Agents_-_Qwen.json",
+    "requeued_unchanged": false
+  },
+  "article_markdown": "\n\n---\ntitle: \"What Multimodal AI Agents Mean for Your Everyday Life\"\nsubtitle: \"Understanding the next wave of AI — what text, images, and voice working together means for your daily life and your job.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"multimodal-ai\", \"ai-agents\", \"explainer\", \"future-of-ai\"]\n---\n\n# What Multimodal AI Agents Mean for Your Everyday Life\n\nImagine sorting through a pile of receipts after a work trip. You snap a photo with your phone, and within seconds the AI has read the totals, sorted them by category, added them to a spreadsheet, and drafted an expense report. No typing. No copying. Just point, shoot, done. That's the kind of thing **multimodal AI agents** are starting to do — and it's closer than you might think.\n\n## What \"multimodal\" actually means\n\n\"Multimodal\" is a fancy word for a simple idea: instead of only reading text, the AI can look at pictures, listen to sound, and watch video too. Think of it like the difference between a friend who only reads books and a friend who can also watch films and listen to podcasts. The second friend just has more ways to take in the world.\n\nMost AI tools from a couple of years ago worked mostly with typed words. Send them a photo and they'd shrug. The new generation — being built by several major AI labs around the world — is designed **\"natively\" multimodal. \"Natively\"** here just means it was built from day one to handle all these formats together, not bolted on later as an extra feature.\n\nSo instead of being a text-only expert that someone stuck a camera onto, the AI genuinely understands a photo of a whiteboard, a voice message, and a paragraph of notes — all in the same chat.\n\n## And what is an \"agent\"?\n\nAn **\"agent\"** is what we call an AI that doesn't just chat back — it actually does things. It can open apps, run code, send emails, or book appointments on your behalf. The word comes from giving the AI permission to act for you, the way a real estate agent acts on your behalf when you're buying a house.\n\nA **\"native multimodal agent\"** combines both ideas. The AI can see, hear, and read — and then take action based on what it sees. So you could show it a photo of a broken tap, ask it to find a plumber, and watch it actually call one. That moves AI from being a clever conversation partner to being a real helper that touches the world.\n\n## Things you can already try today\n\nYou don't need to wait for this stuff. Several everyday tools already use pieces of it:\n\n- **Voice plus photo together**: Newer smartphones let you point your camera at a menu in another language and hear it read out loud in real time.\n- **Meeting helpers**: Some AI apps now join video calls, listen to the conversation, read shared slides, and write up a tidy summary afterwards.\n- **Shopping assistants**: Point your camera at a product on a shelf and the AI will compare prices across websites in seconds.\n\nThe \"native\" part is what makes the next leap bigger. Instead of three separate tools — one for vision, one for voice, one for text — you'll have one assistant that handles all three smoothly in the same conversation.\n\n## What this means for you\n\n- **If you use AI casually at home**: Expect your phone assistant to become genuinely useful — not just for setting timers, but for reading documents aloud, describing photos to you, and handling real chores while your hands are full.\n- **If you run a small business or work in a team**: Watch for tools that combine camera input, voice notes, and document reading. They can replace several apps you currently juggle, especially for field work, tradies, sales, and content creation.\n- **If you're cautious about AI**: The good news is multimodal AI is also a defence tool — it can spot fake images and deepfake voices (a deepfake is a fake video or audio clip made to look and sound like a real person) faster than text-only tools ever could, which is useful as scams get more sophisticated.\n\n## A small step to try today\n\nPick one task you currently do in three steps — read, copy, paste. Find an AI tool that lets you do it in one step, by talking to it, showing it a photo, or both. That's your first real taste of what these new native multimodal agents are built for, and a useful habit to build before the bigger versions arrive.",
+  "original_title": "Qwen3.5: Towards Native Multimodal Agents - Qwen"
+}

@@ -2650,7 +2650,11 @@
       "priority": "balance",
       "proposed_at": "2026-07-16T01:35:24.291Z",
       "proposed_by": "guide-balance",
-      "written_at": "2026-07-17T01:52:16.072Z"
+      "written_at": "2026-07-17T01:52:16.072Z",
+      "source_news": {
+        "file": "ARTICLE_2026-07-23T01-48-52-576Z_xai-news_Grok_2_Image_1212_-_xAI_Docs.json",
+        "title": "Grok 2 Image 1212 - xAI Docs"
+      }
     },
     {
       "id": "summarise-a-long-news-article-into-key-bullet-points-using-g",
@@ -2968,7 +2972,11 @@
       "icon": "📸",
       "proposed_at": "2026-07-18T01:30:02.637Z",
       "proposed_by": "guide-ideas",
-      "written_at": "2026-07-19T01:35:05.664Z"
+      "written_at": "2026-07-19T01:35:05.664Z",
+      "source_news": {
+        "file": "ARTICLE_2026-07-23T01-48-48-122Z_midjourney-updates_V8_1_is_now_the_default_model_on_Midjourney_.json",
+        "title": "V8.1 is now the default model on Midjourney!"
+      }
     },
     {
       "id": "transcribe-spoken-meetings-or-interviews-into-text-with-ai-f",
@@ -3184,11 +3192,12 @@
       "audience": "both",
       "level": "beginner",
       "angle": "Learn how GitHub Copilot can quickly suggest foundational code snippets for simple programming tasks, saving you time and effort.",
-      "status": "todo",
+      "status": "done",
       "icon": "🤖",
       "priority": "balance",
       "proposed_at": "2026-07-19T01:36:45.706Z",
-      "proposed_by": "guide-balance"
+      "proposed_by": "guide-balance",
+      "written_at": "2026-07-23T02:05:35.058Z"
     },
     {
       "id": "adding-clear-comments-to-your-existing-code-to-make-it-easie",
@@ -3198,11 +3207,12 @@
       "audience": "business",
       "level": "beginner",
       "angle": "Discover how GitHub Copilot can assist you in automatically adding helpful comments to your code, improving readability for yourself and others.",
-      "status": "todo",
+      "status": "done",
       "icon": "🤖",
       "priority": "balance",
       "proposed_at": "2026-07-19T01:36:46.294Z",
-      "proposed_by": "guide-balance"
+      "proposed_by": "guide-balance",
+      "written_at": "2026-07-23T02:13:47.541Z"
     },
     {
       "id": "how-to-use-copilot-to-plan-a-small-event-or-project",
@@ -3366,10 +3376,11 @@
       "audience": "both",
       "level": "beginner",
       "angle": "Get a tailored first draft you can edit, so you spend less time staring at a blank page and more time applying for the right jobs.",
-      "status": "todo",
+      "status": "done",
       "icon": "💼",
       "proposed_at": "2026-07-22T21:02:06.743Z",
-      "proposed_by": "guide-ideas"
+      "proposed_by": "guide-ideas",
+      "written_at": "2026-07-23T02:07:09.812Z"
     },
     {
       "id": "what-you-should-never-share-with-an-ai-assistant-a-privacy-g",
@@ -3539,6 +3550,22 @@
       "icon": "🎒",
       "proposed_at": "2026-07-22T21:05:48.884Z",
       "proposed_by": "guide-ideas"
+    },
+    {
+      "id": "how-to-make-ai-images-with-stable-diffusion",
+      "company": "Hugging Face",
+      "tool": "Stable Diffusion",
+      "title": "How to Make AI Images with Stable Diffusion",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "Using Stable Diffusion to generate images from text prompts",
+      "status": "done",
+      "icon": "🆕",
+      "source_news": {
+        "file": "ARTICLE_2026-07-22T10-14-03-156Z_deeparteffects_What_Is_Stable_Diffusion__A_Simple_Guide_to_the_AI.json",
+        "title": "What Is Stable Diffusion? A Simple Guide to the AI Behind Modern Image Generation"
+      },
+      "written_at": "2026-07-23T02:04:08.652Z"
     }
   ]
 }
