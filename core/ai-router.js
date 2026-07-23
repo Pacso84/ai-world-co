@@ -602,6 +602,13 @@ export async function ask(prompt, options = {}) {
   const attempts = raw.filter(a => { const k = a.provider + '|' + a.model; if (seen.has(k)) return false; seen.add(k); return true; });
 
   let budgetNotice = false;   // hogy a költségőr üzenetét csak egyszer írjuk ki
+  // VÉSZHÁLÓ-DIAGNÓZIS (2026-07-24): egy fizetős agent KÉTFÉLEképp eshet ingyenesre:
+  //  (1) VALÓDI kimerülés — a fizetős modell kvóta/402/keret miatt esett ki → BAJ,
+  //  (2) PILLANATNYI hiba — egy 500/időtúllépés/üres válasz → a tartalék elkapta, NEM baj.
+  // A riasztás eddig MINDKETTŐRE "elfogyott az egyenleg!"-et kiáltott (téves pánik,
+  // user: "ne küldjön hülyeségeket"). Ez a jelző CSAK a valódi kimerülést jegyzi meg;
+  // riasztás csak akkor megy ki, ha ez igaz.
+  let paidPathExhausted = false;
   for (const attempt of attempts) {
     const { provider, model } = attempt;
     const caller = providerCallers[provider];
@@ -612,6 +619,7 @@ export async function ask(prompt, options = {}) {
 
     // Kvóta kimerült ma? -> kihagyjuk, megyünk a következő modellre
     if (isExhausted(model)) {
+      if (isMetered(provider, model)) paidPathExhausted = true;  // egy FIZETŐS modell tényleg kimerült
       continue;
     }
 
@@ -621,6 +629,7 @@ export async function ask(prompt, options = {}) {
     if (isMetered(provider, model)) {
       const mb = meteredBlocked();
       if (mb.blocked) {
+        paidPathExhausted = true;  // a keret betelte VALÓDI ok a fallbackra
         if (!budgetNotice) { console.log(`   💰 Költségőr: ${mb.reason} — metered kulcsok kihagyva.`); budgetNotice = true; }
         continue;
       }
@@ -671,18 +680,24 @@ export async function ask(prompt, options = {}) {
         if (isMetered(provider, model)) recordSpend(provider, cost);
 
         // VÉSZHÁLÓ-RIASZTÁS: ha egy 'paid-only' agent INGYENES providerrel járt
-        // sikerrel, az azt jelenti, hogy minden fizetős elesett (pl. Google-egyenleg
-        // elfogyott). Napi 1x szólunk Telegramon, hogy tudd, tölteni kell.
-        if (routing === 'paid-only' && !isMetered(provider, model)) emergencyFallbackAlert(agentName, provider, model);
+        // sikerrel — DE csak akkor riasztunk, ha a fizetős út VALÓDI kimerülés miatt
+        // esett ki (kvóta/402/keret), NEM egy pillanatnyi hiba miatt (2026-07-24 fix:
+        // a téves "elfogyott az egyenleg!" pánik ellen). Pillanatnyi hibánál a tartalék
+        // csendben elvégezte a dolgát — erről elég egy napló-sor.
+        if (routing === 'paid-only' && !isMetered(provider, model)) {
+          if (paidPathExhausted) emergencyFallbackAlert(agentName, provider, model);
+          else console.log(`   ↩️ [${agentName}] pillanatnyi fizetős hiba — a tartalék (${provider}/${model}) elkapta, nincs riasztás (az egyenleg rendben).`);
+        }
 
         return { text: unwrapOuterFence(response.text), provider, model, costUsd: cost };
 
       } catch (error) {
         logCall(agentName, provider, model, null, 0, false, error);
 
-        // Kvóta-hiba (429) -> megjegyezzük (napi vagy perces), és átirányítunk másik modellre
+        // Kvóta-hiba (429/402) -> megjegyezzük (napi vagy perces), és átirányítunk másik modellre
         if (isQuotaError(error)) {
           markExhausted(model, isDailyQuota(error));
+          if (isMetered(provider, model)) paidPathExhausted = true;  // fizetős kvóta/egyenleg tényleg elfogyott → VALÓDI ok
           break; // tovább a következő (szabad) modellre
         }
         // Átmeneti hiba + van még próba -> várunk és újra ugyanazt a modellt
