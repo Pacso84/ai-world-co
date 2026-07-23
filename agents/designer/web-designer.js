@@ -265,7 +265,12 @@ async function main() {
   writeFileSync(DESIGN_PATH, JSON.stringify(out, null, 2), 'utf-8');
 
   console.log('📱 Mobil-first reszponzív blokk (mobileCss) kiírva: hamburger-menü, borító-fix, valódi 2-oszlopos gridek.');
-  remember('designer', `Applied layout: ${counts.companies} brand tiles → ${design.brandtiles.desktop}/${design.brandtiles.tablet}/${design.brandtiles.mobile} cols (even rows). Mobile-first responsive block (hamburger nav under 760px, 2-col tiles, cover-margin fix) emitted to design.json.`, { tags: ['design', 'layout', 'mobile'] });
+  // 2026-07-23: EDDIG itt egy remember('designer', 'Applied layout: ...') hívás volt —
+  // DE ez egy normál SIKER-státusz, nem tanulság egy hibából. A tanulság-tár a hibákból
+  // való tanulásra van (lessonsBlock a promptokba), és minden futáskor UGYANAZT a szöveget
+  // írta be → a tár ismétlésként számolta, és 13× után a napi jelentés "makacs ISMÉTLŐDŐ
+  // hibaként" riasztott miatta (user: téves zaj). A működési infót a fenti console.log, a
+  // lenti csapat-üzenet és a webdesign_*.json napló már közli — a remember() felesleges volt.
   message('designer', 'team', 'fix', `Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: ${counts.companies} → ${design.brandtiles.desktop}/${design.brandtiles.tablet}/${design.brandtiles.mobile} oszlop.`, { ref: 'mobile' });
 
   if (!existsSync(LOGS_DIR)) mkdirSync(LOGS_DIR, { recursive: true });
