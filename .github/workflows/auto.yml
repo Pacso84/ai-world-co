@@ -20,6 +20,10 @@ jobs:
     runs-on: ubuntu-latest
     # Biztonsági plafon: beragadás esetén max 1 órát égetünk, nem 6-ot
     # (2026-07-01: két 6 órás beragadás ~720 ingyen-percet vitt el).
+    # A repó PRIVÁT → az Actions-percek metertek (2000 ingyen/hó). 2026-07-23-i
+    # mérés: 1390 perc 23 nap alatt = ~1874 perc/hó vetítve, a keret 94%-a. Ezért
+    # kapott a hosszú lépések LÉPÉS-SZINTŰ korlátot (lásd lentebb) — így a job
+    # sosem fut bele ebbe a plafonba, ahol a kiadási lánc elveszne.
     timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
@@ -43,6 +47,12 @@ jobs:
           # A forrás-kutató Telegramon jelzi az új, jóváhagyható forrásokat:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_OWNER_CHAT_ID: ${{ secrets.TELEGRAM_OWNER_CHAT_ID }}
+        # LÉPÉS-SZINTŰ IDŐKORLÁT (2026-07-23): a 07-22/07-23 éjjeli futásokban ez
+        # a lépés 57 PERCET vitt el a 60-ból → a job-időkorlát megölte a futást,
+        # és a BUILD + DEPLOY ki sem futott (a friss cikkek nem kerültek ki az
+        # oldalra). A munka SORALAPÚ: ami itt kimarad, a következő futás
+        # folytatja — a kiadás viszont nem tűrhet halasztást.
+        timeout-minutes: 34
         run: node agents/ceo/agent.js
 
       # Heti extrák (2026-07-08): vasárnap összefoglaló, szerdán összehasonlító.
@@ -72,50 +82,74 @@ jobs:
         run: node agents/video/agent.js || true
 
       - name: Fordítás (többnyelvűség — backfill, mindig fut)
+        if: always()
         env:
           GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+        timeout-minutes: 12
         run: node agents/translator/agent.js --limit 80
+
+      # ── KIADÁSI LÁNC (2026-07-23) ────────────────────────────────────
+      # MIÉRT if: always() INNENTŐL: korábban ezek a lépések alapértelmezetten
+      # csak sikeres előzmény után futottak — így egyetlen elakadt/kifutott
+      # tartalmi lépés MEGAKADÁLYOZTA a kiadást, és a kész cikkek a repóban
+      # ragadtak (2026-07-23: 6 hír + 3 útmutató nem került ki az oldalra).
+      # A build a MEGLÉVŐ tartalomból dolgozik, tehát nyugodtan kiadható az is,
+      # ami félbehagyott futásból maradt.
 
       # Minőség-ÖNJAVÍTÓ (2026-07-13, "ne csak szóljon, javítsa is"): a
       # determinisztikus csempe-hibákat KIJAVÍTJA a build előtt (témalista +
       # cikkek _meta); a javítás-napló a napi Telegram-jelentésbe kerül.
       - name: Minőség-önjavító (csempék)
+        if: always()
         run: node core/quality-guard.js --fix || true
 
+      # id + outcome: a deploy CSAK sikeres build után mehet — a build.js
+      # ELŐSZÖR ÜRÍTI a website/public mappát, tehát egy bukott build után a
+      # deploy LETÖRÖLNÉ az élő oldalt. Ez a feltétel a védőháló.
       - name: Weboldal build
+        id: build
+        if: always()
         run: node website/build.js
 
       # i18n-őrszem: angol maradványok a nem-EN oldalakon → hangos figyelmeztetés
       # a naplóban (a deployt nem állítja meg)
       - name: i18n-őrszem (angol maradvány-vadász)
+        if: always()
         run: node website/check-i18n.js || true
 
       # Címes megosztás-képek a friss cikkekhez (FB-posztokhoz; 2026-07-08)
+      # FIGYELEM: a build ÜRÍTI a public/-ot, ezért ennek a build UTÁN kell futnia.
       - name: Megosztás-képek (címes borítók)
+        if: always() && steps.build.outcome == 'success'
         run: node core/share-images.js || true
 
       # Orbit heti videó összerakása (ffmpeg a runneren adott; mp4 nincs commitolva)
       - name: Orbit videó — összerakás (mp4)
+        if: always()
         run: node core/video-compose.js || true
 
       - name: Deploy — Cloudflare Pages
+        if: always() && steps.build.outcome == 'success'
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        timeout-minutes: 6
         run: npx --yes wrangler pages deploy website/public --project-name=aiworldco --branch=main --commit-dirty=true
 
       # IndexNow: a friss cikkeket AZONNAL bejelentjük a keresőknek (Bing =
       # a ChatGPT-kereső indexe). Hiba esetén nem dönti el a futást (|| true).
       - name: IndexNow — friss URL-ek bejelentése
+        if: always()
         run: node core/indexnow.js || true
 
       # Social: poszt-szöveg az új cikkekhez + kiküldés (Make webhook → FB oldal).
       # Max 2 poszt/futás (kulturált tempó); hiba nem dönti el a futást.
       - name: Social — poszt-gyártás + kiküldés
+        if: always()
         env:
           GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
