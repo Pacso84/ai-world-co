@@ -1,118 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178474227435497",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-07-22T17:44:34.354Z",
-      "updated": "2026-07-22T17:44:45.546Z"
-    },
-    {
-      "id": "t178477125846949",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-07-23T01:47:38.469Z",
-      "updated": "2026-07-23T01:47:39.666Z"
-    },
-    {
-      "id": "t178477125970238",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-07-23T01:47:39.702Z",
-      "updated": "2026-07-23T01:48:57.932Z"
-    },
-    {
-      "id": "t178477133793491",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-07-23T01:48:57.934Z",
-      "updated": "2026-07-23T01:48:58.143Z"
-    },
-    {
-      "id": "t178477133814598",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-07-23T01:48:58.145Z",
-      "updated": "2026-07-23T01:59:00.877Z"
-    },
-    {
-      "id": "t178477194087961",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-23T01:59:00.879Z",
-      "updated": "2026-07-23T02:00:33.433Z"
-    },
-    {
-      "id": "t178477203343873",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-07-23T02:00:33.438Z",
-      "updated": "2026-07-23T02:02:51.511Z"
-    },
-    {
-      "id": "t178477217151363",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-23T02:02:51.513Z",
-      "updated": "2026-07-23T02:03:12.262Z"
-    },
-    {
-      "id": "t178477219226534",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-07-23T02:03:12.265Z",
-      "updated": "2026-07-23T02:03:16.488Z"
-    },
-    {
-      "id": "t178477219651769",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-23T02:03:16.517Z",
-      "updated": "2026-07-23T02:07:09.822Z"
-    },
-    {
-      "id": "t178477242982441",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-23T02:07:09.824Z",
-      "updated": "2026-07-23T02:07:30.099Z"
-    },
-    {
-      "id": "t178477245012579",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-23T02:07:30.125Z",
-      "updated": "2026-07-23T02:07:30.314Z"
-    },
-    {
-      "id": "t17847724503162",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-23T02:07:30.316Z",
-      "updated": "2026-07-23T02:09:15.559Z"
-    },
-    {
-      "id": "t178477255556346",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-23T02:09:15.563Z",
-      "updated": "2026-07-23T02:13:47.552Z"
-    },
-    {
       "id": "t17847728275546",
       "title": "Run ellenorzo",
       "status": "done",
@@ -479,33 +367,121 @@
       "agent": "publisher",
       "created": "2026-07-24T02:11:06.330Z",
       "updated": "2026-07-24T02:11:16.643Z"
+    },
+    {
+      "id": "t178488759781256",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-07-24T10:06:37.812Z",
+      "updated": "2026-07-24T10:06:38.214Z"
+    },
+    {
+      "id": "t178488759821667",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-07-24T10:06:38.216Z",
+      "updated": "2026-07-24T10:08:06.411Z"
+    },
+    {
+      "id": "t178488768641315",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-07-24T10:08:06.413Z",
+      "updated": "2026-07-24T10:08:06.670Z"
+    },
+    {
+      "id": "t178488768667380",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-07-24T10:08:06.673Z",
+      "updated": "2026-07-24T10:10:29.128Z"
+    },
+    {
+      "id": "t178488782913013",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-24T10:10:29.130Z",
+      "updated": "2026-07-24T10:11:26.880Z"
+    },
+    {
+      "id": "t178488788688361",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-07-24T10:11:26.883Z",
+      "updated": "2026-07-24T10:15:23.926Z"
+    },
+    {
+      "id": "t178488812392820",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-24T10:15:23.928Z",
+      "updated": "2026-07-24T10:16:07.082Z"
+    },
+    {
+      "id": "t178488816708534",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-07-24T10:16:07.085Z",
+      "updated": "2026-07-24T10:16:58.939Z"
+    },
+    {
+      "id": "t178488821894152",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-24T10:16:58.941Z",
+      "updated": "2026-07-24T10:17:05.112Z"
+    },
+    {
+      "id": "t178488822511733",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-07-24T10:17:05.117Z",
+      "updated": "2026-07-24T10:17:14.913Z"
+    },
+    {
+      "id": "t178488823494162",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-24T10:17:14.941Z",
+      "updated": "2026-07-24T10:17:22.715Z"
+    },
+    {
+      "id": "t17848882427170",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-07-24T10:17:22.717Z",
+      "updated": "2026-07-24T10:17:32.658Z"
+    },
+    {
+      "id": "t17848882526612",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-24T10:17:32.661Z",
+      "updated": "2026-07-24T10:17:33.721Z"
+    },
+    {
+      "id": "t178488825372354",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-07-24T10:17:33.723Z",
+      "updated": "2026-07-24T10:17:43.221Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178419600286841",
-      "level": "info",
-      "text": "SEO: 4 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-07-16T10:00:02.868Z",
-      "loud": false
-    },
-    {
-      "id": "n178419648974123",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). Our article line-up is coherent and ready, with a good mix of practical uses for AI tools like Qwen Chat, NVIDIA ChatRTX, and Cohere. However, I do note that the line-up is quite tech-heavy, so a gent",
-      "agent": "publisher",
-      "at": "2026-07-16T10:08:09.741Z",
-      "loud": false
-    },
-    {
-      "id": "n178419649616165",
-      "level": "success",
-      "text": "2 hír + 2 útmutató publikálva (költség: $0.0460).",
-      "agent": "ceo",
-      "at": "2026-07-16T10:08:16.161Z",
-      "loud": false
-    },
     {
       "id": "n178422157880018",
       "level": "info",
@@ -1281,171 +1257,33 @@
       "agent": "ceo",
       "at": "2026-07-24T02:11:16.670Z",
       "loud": false
+    },
+    {
+      "id": "n178488825264829",
+      "level": "info",
+      "text": "SEO: 4 cikk optimalizálva (átlag 8.3/10).",
+      "agent": "seo",
+      "at": "2026-07-24T10:17:32.648Z",
+      "loud": false
+    },
+    {
+      "id": "n178488825450358",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). Our line-up is coherent and ready to publish, covering a range of practical AI applications for everyday people. I do note that the topics are quite tech-heavy, so a gentle introduction to AI basics m",
+      "agent": "publisher",
+      "at": "2026-07-24T10:17:34.503Z",
+      "loud": false
+    },
+    {
+      "id": "n178488826325025",
+      "level": "success",
+      "text": "3 hír + 1 útmutató publikálva (költség: $0.0426).",
+      "agent": "ceo",
+      "at": "2026-07-24T10:17:43.250Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178459745142473",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Evolving from legacy BI to agentic AI at Tradeshift with Amazon Quick\" (?/10)",
-      "ref": "2026-07-20T17-22-07-517Z_aws-ml_Evolving_from_legacy_BI_to_agentic_AI_at_Tradeshif.json",
-      "at": "2026-07-21T01:30:51.424Z"
-    },
-    {
-      "id": "m178459746094569",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"The three ways AI unlocks transformation in Retail, Travel, and Consumer Goods\" (?/10)",
-      "ref": "2026-07-20T17-22-07-518Z_databricks_The_three_ways_AI_unlocks_transformation_in_Retail.json",
-      "at": "2026-07-21T01:31:00.945Z"
-    },
-    {
-      "id": "m178459746852193",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Together AI and Y Combinator partner to launch the first dedicated GPU cluster for the YC community \" (?/10)",
-      "ref": "2026-07-20T17-35-53-034Z_together_Together_AI_and_Y_Combinator_partner_to_launch_the.json",
-      "at": "2026-07-21T01:31:08.521Z"
-    },
-    {
-      "id": "m178459747839926",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Responsible AI: Governance, Principles, and Practical Guide\" (?/10)",
-      "ref": "2026-07-21T01-29-30-132Z_databricks_Responsible_AI__Governance__Principles__and_Practi.json",
-      "at": "2026-07-21T01:31:18.399Z"
-    },
-    {
-      "id": "m17845974856437",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Microsoft expands Azure AI and HPC infrastructure with AMD\" (?/10)",
-      "ref": "2026-07-21T01-29-30-132Z_microsoft-ai_Microsoft_expands_Azure_AI_and_HPC_infrastructure_.json",
-      "at": "2026-07-21T01:31:25.643Z"
-    },
-    {
-      "id": "m178459761425683",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Break down complex news stories into easy-to-understand points with Grok\" — mi a baj: The article describes a 'New Chat' button or similar UI element (e.g., 'square with a pen icon', 'plus (+) sign') that clears previous conversations and history within Grok. Grok's interface operates as a continuous chat, where new prompts are simply typed into the existing conversation thr",
-      "ref": "GUIDE_break-down-complex-news-stories-into-easy-to-understand-poin.json",
-      "at": "2026-07-21T01:33:34.256Z"
-    },
-    {
-      "id": "m178459768121613",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Translate short conversations on the go with Apple Intelligence's Siri\" — mi a baj: The article describes a specific 'continuous translation mode' for Siri, activated by saying 'Continue translating' or 'Keep translating' after an initial translation, allowing users to speak new phrases directly and have them automatically translated into the last chosen language without rea",
-      "ref": "GUIDE_translate-short-conversations-on-the-go-with-apple-intellige.json",
-      "at": "2026-07-21T01:34:41.216Z"
-    },
-    {
-      "id": "m17845977422484",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Chat with Your Own Documents Offline Using NVIDIA ChatRTX\" — mi a baj: NO_H1: Nincs H1 (# Cím) a cikkben",
-      "ref": "GUIDE_chat-with-your-own-documents-offline-using-nvidia-chatrtx.json",
-      "at": "2026-07-21T01:35:42.248Z"
-    },
-    {
-      "id": "m178459774228065",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Try Free AI Demos in Your Browser with Hugging Face Spaces\" — mi a baj: NO_H1: Nincs H1 (# Cím) a cikkben",
-      "ref": "GUIDE_try-free-ai-demos-in-your-browser-with-hugging-face-spaces.json",
-      "at": "2026-07-21T01:35:42.280Z"
-    },
-    {
-      "id": "m178459779750853",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-07-21T01:36:37.508Z"
-    },
-    {
-      "id": "m178459866363212",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
-      "ref": null,
-      "at": "2026-07-21T01:51:03.632Z"
-    },
-    {
-      "id": "m178462887690546",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Break down complex news stories into easy-to-understand points with Grok\" — javítva: The article describes a 'New Chat' button or similar UI element (e.g., 'square with a pen icon', 'plus (+) sign') that clears previous conversations and history within Grok. Grok's interface operates as a continuous chat, where new prompts are simply typed into the existing conversation thread, and t",
-      "ref": "GUIDE_break-down-complex-news-stories-into-easy-to-understand-poin.json",
-      "at": "2026-07-21T10:14:36.905Z"
-    },
-    {
-      "id": "m178462890188347",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Chat with Your Own Documents Offline Using NVIDIA ChatRTX\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; Reviewer verdict: Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben; újraküldöm.",
-      "ref": "GUIDE_chat-with-your-own-documents-offline-using-nvidia-chatrtx.json",
-      "at": "2026-07-21T10:15:01.883Z"
-    },
-    {
-      "id": "m178462891899199",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Translate short conversations on the go with Apple Intelligence's Siri\" — javítva: The article describes a specific 'continuous translation mode' for Siri, activated by saying 'Continue translating' or 'Keep translating' after an initial translation, allowing users to speak new phrases directly and have them automatically translated into the last chosen language without reactivating ",
-      "ref": "GUIDE_translate-short-conversations-on-the-go-with-apple-intellige.json",
-      "at": "2026-07-21T10:15:18.991Z"
-    },
-    {
-      "id": "m178462894189051",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Try Free AI Demos in Your Browser with Hugging Face Spaces\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; Reviewer verdict: Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben; újraküldöm.",
-      "ref": "GUIDE_try-free-ai-demos-in-your-browser-with-hugging-face-spaces.json",
-      "at": "2026-07-21T10:15:41.890Z"
-    },
-    {
-      "id": "m178462895770949",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Break down complex news stories into easy-to-understand points with Grok\" — mi a baj: UI element: The article claims 'Grok's interface works like a continuous conversation, so there isn't a specific \"new chat\" button to clear previous discussions.' This is incorrect; Grok does have a 'New Chat' button or similar functionality to start a fresh conversation and clear previous ",
-      "ref": "GUIDE_break-down-complex-news-stories-into-easy-to-understand-poin.json",
-      "at": "2026-07-21T10:15:57.709Z"
-    },
-    {
-      "id": "m17846289731875",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Chat with Your Own Documents Offline Using NVIDIA ChatRTX\" (?/10)",
-      "ref": "GUIDE_chat-with-your-own-documents-offline-using-nvidia-chatrtx.json",
-      "at": "2026-07-21T10:16:13.188Z"
-    },
-    {
-      "id": "m178462898629389",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Translate short conversations on the go with Apple Intelligence's Siri\" (?/10)",
-      "ref": "GUIDE_translate-short-conversations-on-the-go-with-apple-intellige.json",
-      "at": "2026-07-21T10:16:26.293Z"
-    },
     {
       "id": "m178462899653923",
       "from": "ellenorzo",
@@ -2638,6 +2476,168 @@
       "text": "6 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
       "ref": null,
       "at": "2026-07-24T02:24:34.298Z"
+    },
+    {
+      "id": "m178488784693121",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Google Meet now organizes your meeting notes, transcripts, and recordings in your Google Drive\" — mi a baj: Google Meet recordings do not auto-collect into a top-level 'Google Meet' folder in Drive with subfolders per meeting — recordings still land in the host's Drive in the meeting owner's folder with no automatic per-meeting subfolder structure as described.; Google Meet ",
+      "ref": "2026-07-23T01-48-34-084Z_google-workspace_Google_Meet_now_organizes_your_meeting_notes__tran.json",
+      "at": "2026-07-24T10:10:46.931Z"
+    },
+    {
+      "id": "m178488787130399",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"NTT DATA Group cuts incident analysis to 30 minutes with Codex\" — mi a baj: Source story (NTT DATA cutting incident analysis to 30 minutes with Codex) is never referenced; the article reads as a generic explainer with no anchor to the source; Using 'AI codex' as a generic term risks confusion with OpenAI's specific Codex product, which is also the subject of the source; The ",
+      "ref": "2026-07-23T01-48-34-084Z_openai-blog_NTT_DATA_Group_cuts_incident_analysis_to_30_minute.json",
+      "at": "2026-07-24T10:11:11.303Z"
+    },
+    {
+      "id": "m178488790702725",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Google Meet now organizes your meeting notes, transcripts, and recordings in your Google Drive\" — javítva: Google Meet recordings do not auto-collect into a top-level 'Google Meet' folder in Drive with subfolders per meeting — recordings still land in the host's Drive in the meeting owner's folder with no automatic per-meeting subfolder structure as described.; Google Meet does not h",
+      "ref": "2026-07-23T01-48-34-084Z_google-workspace_Google_Meet_now_organizes_your_meeting_notes__tran.json",
+      "at": "2026-07-24T10:11:47.027Z"
+    },
+    {
+      "id": "m178488793426598",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"NTT DATA Group cuts incident analysis to 30 minutes with Codex\" — javítva: Source story (NTT DATA cutting incident analysis to 30 minutes with Codex) is never referenced; the article reads as a generic explainer with no anchor to the source; Using 'AI codex' as a generic term risks confusion with OpenAI's specific Codex product, which is also the subject of the source; újraküldöm.",
+      "ref": "2026-07-23T01-48-34-084Z_openai-blog_NTT_DATA_Group_cuts_incident_analysis_to_30_minute.json",
+      "at": "2026-07-24T10:12:14.265Z"
+    },
+    {
+      "id": "m178488805190647",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Introducing Claude Sonnet 5 \\ Anthropic\" — javítva: Claims Claude Sonnet 5 exists, but it does not; Factual hallucination of product capabilities; újraküldöm.",
+      "ref": "2026-07-23T01-48-42-426Z_anthropic-blog_Introducing_Claude_Sonnet_5___Anthropic.json",
+      "at": "2026-07-24T10:14:11.906Z"
+    },
+    {
+      "id": "m178488809441661",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Random  styles in draft mode\" — javítva: --sref random plausibly invented for draft mode; the cited source only mentions random styles in draft mode - the exact flag name and 24-image claim are not verifiable from the URL; colours should be colours (correct) but colourful in line 1 is correct Australian spelling - no issue, just verified; újraküldöm.",
+      "ref": "2026-07-23T01-48-48-121Z_midjourney-updates_Random__styles_in_draft_mode.json",
+      "at": "2026-07-24T10:14:54.416Z"
+    },
+    {
+      "id": "m178488810713033",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Relax mode for V8 Alpha\" — javítva: NO_FRONTMATTER: A cikk nem YAML frontmatter-rel kezdődik; Reviewer verdict: Critical auto-check failures: NO_FRONTMATTER: A cikk nem YAML frontmatter-rel kezdődik; újraküldöm.",
+      "ref": "2026-07-23T01-48-48-122Z_midjourney-updates_Relax_mode_for_V8_Alpha.json",
+      "at": "2026-07-24T10:15:07.130Z"
+    },
+    {
+      "id": "m178488812391654",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"V8.1 Updates\" — javítva: Midjourney V8.1 is fabricated — Midjourney's latest major version as of public knowledge is V6/V6.1 (with V7 in alpha at various points), not V8.1. The version number is invented.; Claim that SREFs and Moodboards are 'new-ish' features that V8.1 improves is unverifiable/fabricated as framed — these were introduced around V5/V6, not presented as new in a 'V8.1",
+      "ref": "2026-07-23T01-48-48-122Z_midjourney-updates_V8_1_Updates.json",
+      "at": "2026-07-24T10:15:23.916Z"
+    },
+    {
+      "id": "m178488814523360",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Google Meet now organizes your meeting notes, transcripts, and recordings in your Google Drive\" — mi a baj: Step 2 on transcripts is vague - says transcript is automatic but doesn't tell the user what to click; a beginner won't know how to start it; Path example uses yourname@gmail.com but recording/transcripts mostly need a paid Workspace account, which is only mentioned la",
+      "ref": "2026-07-23T01-48-34-084Z_google-workspace_Google_Meet_now_organizes_your_meeting_notes__tran.json",
+      "at": "2026-07-24T10:15:45.233Z"
+    },
+    {
+      "id": "m178488814526841",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"NTT DATA Group cuts incident analysis to 30 minutes with Codex\" — mi a baj: NO_FRONTMATTER: A cikk nem YAML frontmatter-rel kezdődik",
+      "ref": "2026-07-23T01-48-34-084Z_openai-blog_NTT_DATA_Group_cuts_incident_analysis_to_30_minute.json",
+      "at": "2026-07-24T10:15:45.268Z"
+    },
+    {
+      "id": "m178488815156027",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Introducing Claude Sonnet 5 \\ Anthropic\" (?/10)",
+      "ref": "2026-07-23T01-48-42-426Z_anthropic-blog_Introducing_Claude_Sonnet_5___Anthropic.json",
+      "at": "2026-07-24T10:15:51.560Z"
+    },
+    {
+      "id": "m178488815588940",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Random  styles in draft mode\" — mi a baj: Step 2 vague: 'find the prompt bar' doesn't describe screen or location; Step 4 vague: 'look in settings or prompt helpers' gives no concrete UI detail; Step 4 uncertain UI details stated as facts: ⚡ icon and 'draft' keyword",
+      "ref": "2026-07-23T01-48-48-121Z_midjourney-updates_Random__styles_in_draft_mode.json",
+      "at": "2026-07-24T10:15:55.889Z"
+    },
+    {
+      "id": "m178488816696599",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Relax mode for V8 Alpha\" — mi a baj: The article claims that Midjourney's `/settings` panel contains a 'mode row' with 'pill-shaped buttons labelled Fast, Relax, and sometimes Turbo' — this is fabricated. Midjourney's settings panel does not have this UI; mode toggles are handled differently (e.g., via the /relax and /fast commands or in the web app), and 'Turbo' is not a Mi",
+      "ref": "2026-07-23T01-48-48-122Z_midjourney-updates_Relax_mode_for_V8_Alpha.json",
+      "at": "2026-07-24T10:16:06.965Z"
+    },
+    {
+      "id": "m178488816705776",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"V8.1 Updates\" — mi a baj: NO_FRONTMATTER: A cikk nem YAML frontmatter-rel kezdődik",
+      "ref": "2026-07-23T01-48-48-122Z_midjourney-updates_V8_1_Updates.json",
+      "at": "2026-07-24T10:16:07.057Z"
+    },
+    {
+      "id": "m178488821892751",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Plan Your Next Holiday: Create a Custom Travel Itinerary with Meta AI\" — javítva: Beginner clarity too low (7/10): steps are vague or could mislead a first-time user; Step 1 hedges WhatsApp icon location as top or bottom of chats list; újraküldöm.",
+      "ref": "GUIDE_plan-your-next-holiday-create-a-custom-travel-itinerary-with.json",
+      "at": "2026-07-24T10:16:58.927Z"
+    },
+    {
+      "id": "m178488822508269",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Plan Your Next Holiday: Create a Custom Travel Itinerary with Meta AI\" (?/10)",
+      "ref": "GUIDE_plan-your-next-holiday-create-a-custom-travel-itinerary-with.json",
+      "at": "2026-07-24T10:17:05.082Z"
+    },
+    {
+      "id": "m178488825367095",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-07-24T10:17:33.670Z"
+    },
+    {
+      "id": "m178488881802629",
+      "from": "social",
+      "to": "team",
+      "kind": "info",
+      "text": "6 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
+      "ref": null,
+      "at": "2026-07-24T10:26:58.026Z"
     }
   ]
 }

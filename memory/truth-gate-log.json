@@ -234,6 +234,27 @@
         "The claim that Qwen-Image-3.0 is available with a 'free Qwen account' at 'chat.qwen.ai' for image generation attributes a specific UI capability to Qwen Chat that is not standard for text-to-image generation in that interface — Qwen Chat is primarily a chat assistant, not documented as a direct image generation portal for this model.",
         "The claim that 'ModelScope at modelscope.cn' lets users 'try different model versions' of Qwen-Image-3.0 implies a specific hosted version that doesn't appear to exist under that name."
       ]
+    },
+    {
+      "at": "2026-07-24T10:10:46.933Z",
+      "file": "WRITER_2026-07-23T01-48-34-084Z_google-workspace_Google_Meet_now_organizes_your_meeting_notes__tran.json",
+      "action": "block",
+      "reasons": [
+        "Google Meet recordings do not auto-collect into a top-level 'Google Meet' folder in Drive with subfolders per meeting — recordings still land in the host's Drive in the meeting owner's folder with no automatic per-meeting subfolder structure as described.",
+        "Google Meet does not have a 'Notes' feature powered by Gemini that 'joins the call as a note taker' — Gemini-powered 'Take notes for me' exists in Google Meet, but the article's description of the menu path (⋮ → Notes) and behavior is not accurately described as a separate folder-drop.",
+        "Google Meet captions are not saved as transcript files via the described menu path '⋮ → Captions → Save captions'; transcripts are generated from recorded meetings, not saved manually from a captions menu in this way.",
+        "Shortcuts appearing for attendees in their own 'Google Meet' folder is not a real feature — attendees get an email with a link to the recording in the host's Drive, not auto-created Drive shortcuts in a dedicated Meet folder."
+      ]
+    },
+    {
+      "at": "2026-07-24T10:16:06.967Z",
+      "file": "WRITER_2026-07-23T01-48-48-122Z_midjourney-updates_Relax_mode_for_V8_Alpha.json",
+      "action": "block",
+      "reasons": [
+        "The article claims that Midjourney's `/settings` panel contains a 'mode row' with 'pill-shaped buttons labelled Fast, Relax, and sometimes Turbo' — this is fabricated. Midjourney's settings panel does not have this UI; mode toggles are handled differently (e.g., via the /relax and /fast commands or in the web app), and 'Turbo' is not a Midjourney mode.",
+        "The article describes a specific web app UI: 'a small text label showing the current mode… usually with a little arrow or dropdown next to it' above/below the Generate button, and suggests looking under 'Job actions' or a three-dot menu — these UI elements are fabricated for Midjourney's web app.",
+        "The claim that Relax mode 'typically requires at least a Standard plan or higher' is presented as a specific tier fact without verification and may be wrong (Relax has historically been tied to Standard+ plans, but stating it as a definitive rule without hedging is risky)."
+      ]
     }
   ]
 }

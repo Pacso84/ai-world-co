@@ -1,7 +1,7 @@
 {
   "_meta": {
     "note": "Forrás-bizonyítvány: frissesség + termés + megbízhatóság forrásonként. Gyártja: core/source-report-card.js",
-    "updated": "2026-07-24T02:24:48.246Z",
+    "updated": "2026-07-24T10:27:13.383Z",
     "thresholds": {
       "DEAD_FEED_DAYS": 365,
       "MIN_SAMPLE": 4,
@@ -13,9 +13,9 @@
     "openai-blog": {
       "name": "OpenAI Blog (hivatalos)",
       "feedAgeDays": 1,
-      "published30d": 32,
+      "published30d": 33,
       "truthBlocks": 0,
-      "totalAttempts": 32,
+      "totalAttempts": 34,
       "alreadyDisabled": false,
       "lastArticle": "2026-07-24",
       "verdict": "ok",
@@ -56,7 +56,7 @@
     },
     "microsoft-ai": {
       "name": "Microsoft AI (hivatalos)",
-      "feedAgeDays": 3,
+      "feedAgeDays": 4,
       "published30d": 10,
       "truthBlocks": 0,
       "totalAttempts": 10,
@@ -78,21 +78,21 @@
     },
     "nvidia-blog": {
       "name": "NVIDIA Blog (hivatalos)",
-      "feedAgeDays": 1,
-      "published30d": 17,
+      "feedAgeDays": 0,
+      "published30d": 18,
       "truthBlocks": 0,
-      "totalAttempts": 17,
+      "totalAttempts": 18,
       "alreadyDisabled": false,
-      "lastArticle": "2026-07-22",
+      "lastArticle": "2026-07-24",
       "verdict": "ok",
       "reason": ""
     },
     "google-workspace": {
       "name": "Google Workspace Updates (hivatalos)",
-      "feedAgeDays": 0,
+      "feedAgeDays": 1,
       "published30d": 22,
       "truthBlocks": 1,
-      "totalAttempts": 23,
+      "totalAttempts": 24,
       "alreadyDisabled": false,
       "lastArticle": "2026-07-22",
       "verdict": "ok",
@@ -111,7 +111,7 @@
     },
     "microsoft-research": {
       "name": "Microsoft Research (hivatalos)",
-      "feedAgeDays": 10,
+      "feedAgeDays": 11,
       "published30d": 5,
       "truthBlocks": 0,
       "totalAttempts": 5,
@@ -122,7 +122,7 @@
     },
     "github-ai": {
       "name": "GitHub AI & ML (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 2,
       "published30d": 4,
       "truthBlocks": 0,
       "totalAttempts": 4,
@@ -277,13 +277,13 @@
     "anthropic-blog": {
       "name": "Anthropic (hivatalos)",
       "feedAgeDays": null,
-      "published30d": 0,
+      "published30d": 1,
       "truthBlocks": 0,
       "totalAttempts": 1,
       "alreadyDisabled": false,
-      "lastArticle": null,
-      "verdict": "no-yield",
-      "reason": "él, de 30 napja egy cikket sem adott — érdemes megnézni"
+      "lastArticle": "2026-07-24",
+      "verdict": "ok",
+      "reason": ""
     },
     "techcrunch-ai": {
       "name": "TechCrunch AI",
@@ -386,7 +386,7 @@
     },
     "sap": {
       "name": "SAP Innovation Blog (hivatalos)",
-      "feedAgeDays": 0,
+      "feedAgeDays": 1,
       "published30d": 6,
       "truthBlocks": 0,
       "totalAttempts": 6,
@@ -397,7 +397,7 @@
     },
     "databricks": {
       "name": "Databricks Blog (hivatalos)",
-      "feedAgeDays": 0,
+      "feedAgeDays": 1,
       "published30d": 15,
       "truthBlocks": 0,
       "totalAttempts": 15,
@@ -408,7 +408,7 @@
     },
     "snowflake": {
       "name": "Snowflake Blog (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 2,
       "published30d": 15,
       "truthBlocks": 0,
       "totalAttempts": 15,
@@ -419,7 +419,7 @@
     },
     "together": {
       "name": "Together AI Blog (hivatalos)",
-      "feedAgeDays": 0,
+      "feedAgeDays": 1,
       "published30d": 4,
       "truthBlocks": 0,
       "totalAttempts": 4,
@@ -430,7 +430,7 @@
     },
     "pinecone": {
       "name": "Pinecone Blog (hivatalos)",
-      "feedAgeDays": 7,
+      "feedAgeDays": 8,
       "published30d": 3,
       "truthBlocks": 0,
       "totalAttempts": 3,
@@ -452,7 +452,7 @@
     },
     "ntt-research": {
       "name": "NTT Research (hivatalos)",
-      "feedAgeDays": 17,
+      "feedAgeDays": 18,
       "published30d": 6,
       "truthBlocks": 0,
       "totalAttempts": 6,
@@ -463,7 +463,7 @@
     },
     "deeparteffects": {
       "name": "Deep Art Effects Blog (hivatalos)",
-      "feedAgeDays": 7,
+      "feedAgeDays": 8,
       "published30d": 9,
       "truthBlocks": 0,
       "totalAttempts": 9,
@@ -474,7 +474,7 @@
     },
     "midjourney-updates": {
       "name": "Midjourney Updates (hivatalos)",
-      "feedAgeDays": 28,
+      "feedAgeDays": 29,
       "published30d": 3,
       "truthBlocks": 1,
       "totalAttempts": 7,

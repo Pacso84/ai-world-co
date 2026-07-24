@@ -1,6 +1,102 @@
 # AI World Co. — közösségi posztok
 
-*Generálva: 2026-07-24T02:24:34.296Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+*Generálva: 2026-07-24T10:26:58.024Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## How news organizations are using AI to advance their vital missions
+**🔗 https://aiworldhq.com/article/how-ai-is-quietly-changing-the-way-news-gets-made-and-what-i.html**
+
+**Facebook:**
+AI is quietly changing how news is made, but it’s not always obvious. Here is a plain-English guide to how it works and how to spot it while reading. https://aiworldhq.com/article/how-ai-is-quietly-changing-the-way-news-gets-made-and-what-i.html #AILiteracy #Media
+
+**Instagram:**
+How is AI changing your news feed? ✋ It helps with transcribing and data behind the scenes. Learn how to spot it without losing the human touch.
+
+#AILiteracy #Journalism #MediaTips #AIAustralia
+Link in bio.
+
+*Kép-ötlet: A person sitting at a cafe table reading a digital news article on a tablet, with a warm coffee cup nearby.*
+
+---
+
+## Introducing Claude Sonnet 5 \ Anthropic
+**🔗 https://aiworldhq.com/article/how-to-use-claude-for-multi-step-daily-tasks.html**
+
+**Facebook:**
+Feeling overwhelmed by emails and admin? Here is how Claude can help you tackle your daily tasks step-by-step. https://aiworldhq.com/article/how-to-use-claude-for-multi-step-daily-tasks.html #AI #Productivity
+
+**Instagram:**
+Get your morning back on track. 🌿 Learn how Claude can help with emails, research and meeting prep in one go. Link in bio.
+
+#claudeai #anthropic #AIhelp #productivitytips #everydayAI
+
+*Kép-ötlet: A relaxed person enjoying a coffee at a laptop, suggesting a calm workflow.*
+
+---
+
+## V8 Alpha
+**🔗 https://aiworldhq.com/article/how-to-use-midjourney-on-the-web-a-step-by-step-guide.html**
+
+**Facebook:**
+Fancy having a go at making stunning images yourself? The new Midjourney website makes it really simple, so check out our easy beginner's guide. https://aiworldhq.com/article/how-to-use-midjourney-on-the-web-a-step-by-step-guide.html #AI #Midjourney
+
+**Instagram:**
+Want to create beautiful art right from your browser? 🖼️ We’ve put together a simple walkthrough to help you use the Midjourney website from scratch.
+
+#midjourney #aiart #creative #howto
+Link in bio.
+
+*Kép-ötlet: A close-up of a hand typing a creative prompt into a clean web browser bar.*
+
+---
+
+## Introducing the Voice Agent Builder - x.ai
+**🔗 https://aiworldhq.com/article/what-is-a-voice-agent-builder-and-could-it-help-your-small-b.html**
+
+**Facebook:**
+Wish you had extra hands to answer calls while running your business? New AI voice tools can handle enquiries and bookings while you get on with the real work. https://aiworldhq.com/article/what-is-a-voice-agent-builder-and-could-it-help-your-small-b.html #SmallBusiness #VoiceAI
+
+**Instagram:**
+Phone keeping you from the actual work you love? AI voice tools can answer calls, take bookings and free up your time.
+
+#SmallBusiness #VoiceAssistant #BusinessTips #SmartAutomation #TimeSaving
+Link in bio
+
+*Kép-ötlet: A calm shop owner peacefully closing up their café while a phone sits unringing in the background.*
+
+---
+
+## Grok 2 Image 1212 - xAI Docs
+**🔗 https://aiworldhq.com/article/how-to-create-your-own-images-with-grok-2-a-quick-start-guid.html**
+
+**Facebook:**
+Need a picture for a party invite or work post? Here’s how Grok 2 creates images in minutes, even if you're no artist. https://aiworldhq.com/article/how-to-create-your-own-images-with-grok-2-a-quick-start-guid.html #AI #HowTo
+
+**Instagram:**
+Turn your ideas into pictures without picking up a pencil 🌻 It's perfect for posters or funny memes, no design skills needed.
+
+#AIart #Grok2 #Creativity #TechTips
+Link in bio.
+
+*Kép-ötlet: A sunlit desk with a handwritten sketch next to a tablet displaying the finished, colourful digital artwork.*
+
+---
+
+## Comet Browser: a Personal AI Assistant - Perplexity
+**🔗 https://aiworldhq.com/article/ai-browsers-explained-how-a-smart-browser-can-help-you-every.html**
+
+**Facebook:**
+Struggling with too many tabs when you're trying to research or work? Find out how a smart browser like Perplexity can do the heavy lifting for you. https://aiworldhq.com/article/ai-browsers-explained-how-a-smart-browser-can-help-you-every.html #AIBrowser #Productivity
+
+**Instagram:**
+Stop drowning in open tabs. 🌊 A smart browser helps you study and work faster by answering questions directly, so you don't need ten different websites open at once. It's like having a clever research assistant built right in.
+
+#Perplexity #SmartBrowser #TechTips #AIAdvice #AussieTech
+
+Link in bio.
+
+*Kép-ötlet: A clean, well-lit desk scene showing a laptop with a minimalist browser interface, next to a steaming cup of tea.*
 
 ---
 
