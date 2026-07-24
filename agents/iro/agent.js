@@ -28,6 +28,7 @@ import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync, unlink
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { ask } from '../../core/ai-router.js';
+import { normalizeArticleMarkdown } from '../../core/markdown-normalize.js';
 import { recallSemantic } from '../../core/memory-manager.js';
 import { skillsBlock } from '../../core/skills.js';
 import { message } from '../../core/ops.js';
@@ -310,44 +311,6 @@ function hasRequiredSections(markdown) {
   const hasImpact = /what this means for you/i.test(markdown);
   const hasFrontmatter = markdown.trimStart().startsWith('---');
   return hasImpact && hasFrontmatter;
-}
-
-// ===================================================================
-// NORMALIZÁLÁS mentés előtt (2026-07-24)
-// ===================================================================
-// Az LLM néha apró FORMÁTUM-hibát vét, amitől az Ellenőrző egy egyébként JÓ
-// cikket eldob. A mai 7 elutasításból 3 pont ilyen volt. Ahelyett, hogy pénzt
-// égetnénk újraírásra, itt determinisztikusan (AI nélkül) kijavítjuk:
-//   1. Kódblokk-burok: a modell néha ```markdown ... ``` fence-be csomagolja az
-//      egész cikket → kibontjuk (a build/ellenőrzés nyers markdownt vár).
-//   2. Kezdő szóköz/sortörés a --- előtt → levágjuk. KRITIKUS: az Ellenőrző
-//      startsWith('---')-rel néz (nem trimStart), így egy vezető '\n' HAMIS
-//      NO_FRONTMATTER-t dobott jó cikkekre (07-24: 2 ilyen).
-//   3. Hiányzó H1: ha van frontmatter title, de a törzsben nincs "# Cím",
-//      beszúrjuk a title-ből (07-24: 1 ilyen). Determinisztikus, ingyen.
-function normalizeArticleMarkdown(md) {
-  if (!md || typeof md !== 'string') return md;
-  let out = md;
-
-  // 1. Kódblokk-burok eltávolítása (ha az EGÉSZ kimenet fence-be van csomagolva)
-  const fence = out.trim().match(/^```(?:markdown|md)?\s*\n([\s\S]*?)\n```$/);
-  if (fence) out = fence[1];
-
-  // 2. Vezető üres sorok/szóközök levágása (a --- kerüljön az abszolút elejére)
-  out = out.replace(/^\s+/, '');
-
-  // 3. Hiányzó H1 pótlása a frontmatter title-ből
-  const fm = out.match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/);
-  if (fm) {
-    const body = fm[2];
-    if (!/^#\s+.+$/m.test(body)) {
-      const tm = fm[1].match(/^title:\s*(.+)$/m);
-      const title = tm ? tm[1].trim().replace(/^["']|["']$/g, '') : '';
-      if (title) out = `---\n${fm[1]}\n---\n\n# ${title}\n\n${body.replace(/^\s+/, '')}`;
-    }
-  }
-
-  return out;
 }
 
 // ===================================================================

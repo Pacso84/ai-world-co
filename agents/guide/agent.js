@@ -31,6 +31,7 @@ import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync, unlink
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { ask } from '../../core/ai-router.js';
+import { normalizeArticleMarkdown } from '../../core/markdown-normalize.js';
 import { recallSemantic } from '../../core/memory-manager.js';
 import { skillsBlock } from '../../core/skills.js';
 import { message } from '../../core/ops.js';
@@ -552,6 +553,22 @@ every step without getting lost or misled; the Reviewer rejects guides that fail
 - "Before you start" lists EVERYTHING needed (account, app/website, device,
   free-or-paid plan, rough total time) so nobody hits a surprise blocker later.
 
+WORKED EXAMPLE — study this contrast, then write EVERY step like the ✅ version
+(this is the single most important thing; the Reviewer rejects vague steps):
+❌ TOO VAGUE (rejected): "Open the settings and turn on voice mode, then start talking."
+✅ CLEAR (do exactly this level of detail):
+"## Step 2 — Turn on voice mode
+Tap the **microphone icon** 🎤 at the bottom-right of the chat box. A round
+'Listening…' circle appears and the keyboard slides down out of the way. If you
+can't see a microphone, look for a **headphones or sound-wave icon** instead —
+some apps tuck it inside the top-right **⋯ menu**. Speak one short sentence, then
+pause for a second.
+💬 Example: say 'What's the weather in Sydney tomorrow?'
+You'll know it worked when your spoken words appear as text on the screen and the
+assistant answers out loud."
+Notice: an exact tappable target, what shows up, a fallback if it looks different,
+a copyable example, and a plain success check. Do that in every single step.
+
 OUTPUT FORMAT: Markdown with YAML frontmatter, then the guide body, in EXACTLY this shape:
 ---
 title: "Clear, descriptive title (60-80 chars)"
@@ -645,7 +662,7 @@ function saveGuide(topic, response) {
       source_id: 'guide', source_name: 'AI World Guide', source_link: '',
       status: 'awaiting-review'
     },
-    article_markdown: response.text,
+    article_markdown: normalizeArticleMarkdown(response.text),
     original_title: topic.title
   };
   writeFileSync(join(DRAFTS_DIR, filename), JSON.stringify(out, null, 2), 'utf-8');
@@ -781,7 +798,7 @@ function saveGuideBackToReview(rejectedFilename, rejectedData, { text, provider,
       requeued_unchanged: !!requeued,
       status: 'awaiting-review'
     },
-    article_markdown: text,
+    article_markdown: normalizeArticleMarkdown(text),
     original_title: rejectedData.original_title
   };
   if (!existsSync(DRAFTS_DIR)) mkdirSync(DRAFTS_DIR, { recursive: true });
@@ -940,7 +957,7 @@ async function runUpgradeMode(limit, brandContext, idFilter) {
         writer_cost_usd: response.costUsd,
         status: 'awaiting-review'
       },
-      article_markdown: response.text,
+      article_markdown: normalizeArticleMarkdown(response.text),
       original_title: data.original_title
     };
     if (!existsSync(DRAFTS_DIR)) mkdirSync(DRAFTS_DIR, { recursive: true });
