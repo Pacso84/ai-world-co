@@ -537,6 +537,39 @@
       "country": "CN",
       "enabled": true,
       "comment": "Qwen (Alibaba) hivatalos bejelentései. A régi qwenlm.github.io feed 2025-09 óta NÉMA (ezért lett kikapcsolva), de a qwen.ai domainen friss tartalom van → Google News site:qwen.ai szűréssel, első kezes. Bekötve 2026-07-22: 13 Qwen-útmutatónk volt hírforrás nélkül."
+    },
+    {
+      "id": "grammarly-blog",
+      "name": "Grammarly (hivatalos)",
+      "url": "https://www.grammarly.com/blog/feed/",
+      "category": "ai-company-official",
+      "priority": 2,
+      "language": "en",
+      "country": "US",
+      "comment": "HIVATALOS Grammarly — fogyasztói írás-segéd AI, hétköznapi közönségnek erős illeszkedés. Kézzel talált+ellenőrzött 2026-07-24 (feed él, ~10 friss tétel).",
+      "enabled": true
+    },
+    {
+      "id": "d-id-news",
+      "name": "D-ID (hivatalos)",
+      "url": "https://www.d-id.com/news/feed/",
+      "category": "ai-company-official",
+      "priority": 3,
+      "language": "en",
+      "country": "IL",
+      "comment": "HIVATALOS D-ID — AI avatar/beszélő-fej videó, fogyasztó-közeli kreatív eszköz. Forrás-kutató találta; ellenőrizve 2026-07-24 (feed él, de LASSÚ kadencia ~92 nap).",
+      "enabled": true
+    },
+    {
+      "id": "sony-ai",
+      "name": "Sony AI (hivatalos)",
+      "url": "https://ai.sony/blog/rss.xml",
+      "category": "ai-company-official",
+      "priority": 3,
+      "language": "en",
+      "country": "JP",
+      "comment": "HIVATALOS Sony AI — kutatás/kreatív AI (a meglévő IBM/NTT Research társa). Forrás-kutató találta; ellenőrizve 2026-07-24 (feed él, friss ~24 nap).",
+      "enabled": true
     }
   ],
   "categories": {
