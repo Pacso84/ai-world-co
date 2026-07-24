@@ -83,41 +83,41 @@
     "rework": {
       "primary_model": {
         "provider": "openrouter",
-        "model": "minimax/minimax-m3"
+        "model": "minimax/minimax-m2.7"
       },
       "fallback_model": {
-        "provider": "cerebras",
-        "model": "zai-glm-4.7"
+        "provider": "openrouter",
+        "model": "minimax/minimax-m3"
       },
       "enabled": true,
       "routing": "paid-only",
-      "comment": "Javítókörök erős modellje. ÁTÁLLVA 2026-07-21: MiniMax M3 elsődleges (olcsóbb: $1.20 vs $2.50 kimenet), Gemini 2.5 Flash tartalék. A váltást a júliusi keret hozta előre aug. 1-ről (user-döntés); az OpenRouter fel van töltve."
+      "comment": "MODELL-TIERING 2026-07-24 (user: minden fizetős). ERŐS-OLCSÓBB = MiniMax M2.7 — ítélet/vezetés/heti tartalom. Fallback M3, vég-tartalék az ingyenes VÉSZHÁLÓ."
     },
     "ceo": {
       "primary_model": {
-        "provider": "groq",
-        "model": "llama-3.3-70b-versatile"
+        "provider": "openrouter",
+        "model": "minimax/minimax-m3"
       },
       "fallback_model": {
-        "provider": "cerebras",
-        "model": "gpt-oss-120b"
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.7"
       },
       "enabled": true,
-      "comment": "Orkesztrálás egyszerű feladat. 2026-07-22 (user: spórolós mód): INGYENES (free-first) — groq/llama primary, gpt-oss tartalék. A szervezés nem igényel fizetős modellt, a pénz a cikkírásra megy.",
-      "routing": "free-first"
+      "comment": "MODELL-TIERING 2026-07-24 (user: minden fizetős, MiniMax-tiering). CSÚCS = MiniMax M3 — minőség/biztonság-kritikus (olvasó-látott írás / bíró / hitelesség / fő döntés). Fallback M2.7, majd PAID_POOL(M3), vég-tartalék az ingyenes VÉSZHÁLÓ (csak ha minden fizetős elhal).",
+      "routing": "paid-only"
     },
     "boss": {
       "primary_model": {
-        "provider": "cerebras",
-        "model": "zai-glm-4.7"
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.7"
       },
       "fallback_model": {
-        "provider": "groq",
-        "model": "llama-3.3-70b-versatile"
+        "provider": "openrouter",
+        "model": "minimax/minimax-m3"
       },
       "enabled": true,
-      "comment": "A Telegram-FŐNÖK beszélgető agya (instruct.js). 2026-07-22 (user: spórolós mód): INGYENES (free-first) GLM-4.7 ($0) a magyar társalgásért, fallback groq. Csak a chat-választ generálja, nem a tartalmat.",
-      "routing": "free-first"
+      "comment": "MODELL-TIERING 2026-07-24 (user: minden fizetős). ERŐS-OLCSÓBB = MiniMax M2.7 — ítélet/vezetés/heti tartalom. Fallback M3, vég-tartalék az ingyenes VÉSZHÁLÓ.",
+      "routing": "paid-only"
     },
     "translator": {
       "primary_model": {
@@ -125,28 +125,29 @@
         "model": "minimax/minimax-m3"
       },
       "fallback_model": {
-        "provider": "cerebras",
-        "model": "zai-glm-4.7"
+        "provider": "openrouter",
+        "model": "minimax/minimax-m3"
       },
       "enabled": true,
-      "comment": "MINŐSÉG-ELŐSZÖR (user-döntés 2026-07-15): erős modellek — a gyenge modell hibája többe kerül (kézi javítás), mint az erős felára. ÁTÁLLVA 2026-07-21 (előrehozott MiniMax-váltás a keret miatt): MiniMax M3 elsődleges → Gemini 2.5 Flash tartalék; vég-tartalék a vészhálón át az erős-ingyenesek.",
+      "comment": "MODELL-TIERING 2026-07-24: a fordító MARAD M3-on (nem M2.7!) — a reasoning-off a fő költség+idő-megtakarítás (mechanikus feladat), és CSAK az M3 engedi kikapcsolni a gondolkodást (M2.5/M2.7 → HTTP 400). Fallback M3, vég-tartalék az ingyenes VÉSZHÁLÓ (ott a reasoning-off flag figyelmen kívül marad).",
       "routing": "paid-only",
       "_routing_comment": "CSAK fizetős: a fordítást senki nem ellenőrzi utólag — a nem-angol oldalak minősége múlik rajta (user-döntés 2026-07-05)",
       "reasoning": "off",
-      "_reasoning_comment": "2026-07-23: a fordítás MECHANIKUS feladat — a MiniMax belső gondolkodása itt csak időt (57 perces pipeline!) és pénzt égetett. Éles A/B ugyanazon a cikken: ugyanolyan jó magyar fordítás, 20% költséggel. A modell UGYANAZ marad (minőség-először sértetlen), csak a gondolkodó-mód megy ki."
+      "_reasoning_comment": "2026-07-23: a fordítás MECHANIKUS — a belső gondolkodás csak időt (57 perces pipeline) és pénzt égetett. A/B: ugyanolyan jó fordítás 20% költséggel. 2026-07-24: reasoning-off CSAK M3-on lehetséges (a MiniMax többi modellje HTTP 400-at ad)."
     },
     "rss-scraper": {
       "primary_model": {
-        "provider": "cerebras",
-        "model": "zai-glm-4.7"
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.5"
       },
       "fallback_model": {
-        "provider": "cerebras",
-        "model": "gpt-oss-120b"
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.7"
       },
       "enabled": true,
       "schedule": "every 4 hours",
-      "comment": "INGYEN. gemini-flash-latest (sajat kvota) + fallback 2.5-flash. Strukturalatlan adat rendezese. || KÍNAI-ERŐS-INGYENES (2026-07-15, user): GLM-4.7 elsődleges (Zhipu csúcsmodell, $0 a Cerebrason), gpt-oss-120b tartalék — a gyengébb Llama-70B-t leváltotta."
+      "comment": "MODELL-TIERING 2026-07-24 (user: minden fizetős). KÖLTSÉG-OPTIMUM = MiniMax M2.5 — a legolcsóbb működő fizetős tier gépies munkára (parse/terv/formátum). MEGJEGYZÉS: az M2.5/M2.7 NEM engedi kikapcsolni a gondolkodást (HTTP 400), így reasoning marad ON. Fallback M2.7, vég-tartalék az ingyenes VÉSZHÁLÓ.",
+      "routing": "paid-only"
     },
     "iro": {
       "primary_model": {
@@ -154,86 +155,91 @@
         "model": "minimax/minimax-m3"
       },
       "fallback_model": {
-        "provider": "cerebras",
-        "model": "zai-glm-4.7"
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.7"
       },
       "enabled": true,
-      "comment": "MINŐSÉG-ELŐSZÖR (user-döntés 2026-07-15): erős modellek — a gyenge modell hibája többe kerül (kézi javítás), mint az erős felára. ÁTÁLLVA 2026-07-21 (előrehozott MiniMax-váltás a keret miatt): MiniMax M3 elsődleges → Gemini 2.5 Flash tartalék; vég-tartalék a vészhálón át az erős-ingyenesek.",
+      "comment": "MODELL-TIERING 2026-07-24 (user: minden fizetős, MiniMax-tiering). CSÚCS = MiniMax M3 — minőség/biztonság-kritikus (olvasó-látott írás / bíró / hitelesség / fő döntés). Fallback M2.7, majd PAID_POOL(M3), vég-tartalék az ingyenes VÉSZHÁLÓ (csak ha minden fizetős elhal).",
       "routing": "paid-only"
     },
     "ellenorzo": {
       "primary_model": {
         "provider": "openrouter",
-        "model": "minimax/minimax-m3"
+        "model": "minimax/minimax-m2.7"
       },
       "fallback_model": {
-        "provider": "cerebras",
-        "model": "zai-glm-4.7"
+        "provider": "openrouter",
+        "model": "minimax/minimax-m3"
       },
       "enabled": true,
-      "comment": "MINŐSÉG-ELŐSZÖR (user-döntés 2026-07-15): erős modellek — a gyenge modell hibája többe kerül (kézi javítás), mint az erős felára. ÁTÁLLVA 2026-07-21 (előrehozott MiniMax-váltás a keret miatt): MiniMax M3 elsődleges → Gemini 2.5 Flash tartalék; vég-tartalék a vészhálón át az erős-ingyenesek.",
+      "comment": "MODELL-TIERING 2026-07-24 (user: minden fizetős). ERŐS-OLCSÓBB = MiniMax M2.7 — ítélet/vezetés/heti tartalom. Fallback M3, vég-tartalék az ingyenes VÉSZHÁLÓ.",
       "routing": "paid-only",
       "_routing_comment": "CSAK fizetős: minőség-kapu / főnök-agy — itt nem spórolunk (user-döntés 2026-07-05)"
     },
     "source-scout": {
       "primary_model": {
-        "provider": "cerebras",
-        "model": "zai-glm-4.7"
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.5"
       },
       "fallback_model": {
-        "provider": "cerebras",
-        "model": "gpt-oss-120b"
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.7"
       },
       "enabled": true,
-      "comment": "Forras-kutato: uj HIVATALOS AI forrasokat keres, teszteli az RSS-t, javaslatot ir (ember donti el). || KÍNAI-ERŐS-INGYENES (2026-07-15, user): GLM-4.7 elsődleges (Zhipu csúcsmodell, $0 a Cerebrason), gpt-oss-120b tartalék — a gyengébb Llama-70B-t leváltotta."
+      "comment": "MODELL-TIERING 2026-07-24 (user: minden fizetős). KÖLTSÉG-OPTIMUM = MiniMax M2.5 — a legolcsóbb működő fizetős tier gépies munkára (parse/terv/formátum). MEGJEGYZÉS: az M2.5/M2.7 NEM engedi kikapcsolni a gondolkodást (HTTP 400), így reasoning marad ON. Fallback M2.7, vég-tartalék az ingyenes VÉSZHÁLÓ.",
+      "routing": "paid-only"
     },
     "designer": {
       "primary_model": {
-        "provider": "groq",
-        "model": "llama-3.3-70b-versatile"
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.5"
       },
       "fallback_model": {
-        "provider": "cerebras",
-        "model": "zai-glm-4.7"
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.7"
       },
       "enabled": true,
-      "comment": "Designer: (1) art-director text lepes (Groq llama, megbizhato rovid valaszra) konkret jelenetet ir a cikkbol, (2) kep generalas hardkodolt backenddel (Cloudflare Flux -> HF -> Gemini image)."
+      "comment": "MODELL-TIERING 2026-07-24 (user: minden fizetős). KÖLTSÉG-OPTIMUM = MiniMax M2.5 — a legolcsóbb működő fizetős tier gépies munkára (parse/terv/formátum). MEGJEGYZÉS: az M2.5/M2.7 NEM engedi kikapcsolni a gondolkodást (HTTP 400), így reasoning marad ON. Fallback M2.7, vég-tartalék az ingyenes VÉSZHÁLÓ.",
+      "routing": "paid-only"
     },
     "analyst": {
       "primary_model": {
-        "provider": "cerebras",
-        "model": "zai-glm-4.7"
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.5"
       },
       "fallback_model": {
-        "provider": "cerebras",
-        "model": "gpt-oss-120b"
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.7"
       },
       "enabled": true,
-      "comment": "Elemzo/Tanulas: forras-statisztika + onfejlesztesi javaslat (user dont). Az autonom tanulas: Ellenorzo->lessons.json->Iro. || KÍNAI-ERŐS-INGYENES (2026-07-15, user): GLM-4.7 elsődleges (Zhipu csúcsmodell, $0 a Cerebrason), gpt-oss-120b tartalék — a gyengébb Llama-70B-t leváltotta."
+      "comment": "MODELL-TIERING 2026-07-24 (user: minden fizetős). KÖLTSÉG-OPTIMUM = MiniMax M2.5 — a legolcsóbb működő fizetős tier gépies munkára (parse/terv/formátum). MEGJEGYZÉS: az M2.5/M2.7 NEM engedi kikapcsolni a gondolkodást (HTTP 400), így reasoning marad ON. Fallback M2.7, vég-tartalék az ingyenes VÉSZHÁLÓ.",
+      "routing": "paid-only"
     },
     "seo": {
       "primary_model": {
-        "provider": "cerebras",
-        "model": "zai-glm-4.7"
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.5"
       },
       "fallback_model": {
-        "provider": "cerebras",
-        "model": "gpt-oss-120b"
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.7"
       },
       "enabled": true,
-      "comment": "SEO szakerto: cikkenkent meta-leiras + kulcsszavak + SEO-pont (a cikk _meta.seo-ba). A build hasznalja (meta/OG/JSON-LD). || KÍNAI-ERŐS-INGYENES (2026-07-15, user): GLM-4.7 elsődleges (Zhipu csúcsmodell, $0 a Cerebrason), gpt-oss-120b tartalék — a gyengébb Llama-70B-t leváltotta."
+      "comment": "MODELL-TIERING 2026-07-24 (user: minden fizetős). KÖLTSÉG-OPTIMUM = MiniMax M2.5 — a legolcsóbb működő fizetős tier gépies munkára (parse/terv/formátum). MEGJEGYZÉS: az M2.5/M2.7 NEM engedi kikapcsolni a gondolkodást (HTTP 400), így reasoning marad ON. Fallback M2.7, vég-tartalék az ingyenes VÉSZHÁLÓ.",
+      "routing": "paid-only"
     },
     "publisher": {
       "primary_model": {
-        "provider": "groq",
-        "model": "llama-3.3-70b-versatile"
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.5"
       },
       "fallback_model": {
-        "provider": "cerebras",
-        "model": "zai-glm-4.7"
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.7"
       },
       "enabled": true,
-      "comment": "Publikalo: determinisztikus build (HTML) + AI FOSZERKESZTOI zaro-ellenorzes (kesz-e a kiadasra) + kiadasi osszefoglalo."
+      "comment": "MODELL-TIERING 2026-07-24 (user: minden fizetős). KÖLTSÉG-OPTIMUM = MiniMax M2.5 — a legolcsóbb működő fizetős tier gépies munkára (parse/terv/formátum). MEGJEGYZÉS: az M2.5/M2.7 NEM engedi kikapcsolni a gondolkodást (HTTP 400), így reasoning marad ON. Fallback M2.7, vég-tartalék az ingyenes VÉSZHÁLÓ.",
+      "routing": "paid-only"
     },
     "guide": {
       "primary_model": {
@@ -241,103 +247,109 @@
         "model": "minimax/minimax-m3"
       },
       "fallback_model": {
-        "provider": "cerebras",
-        "model": "zai-glm-4.7"
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.7"
       },
       "enabled": true,
-      "comment": "MINŐSÉG-ELŐSZÖR (user-döntés 2026-07-15): erős modellek — a gyenge modell hibája többe kerül (kézi javítás), mint az erős felára. ÁTÁLLVA 2026-07-21 (előrehozott MiniMax-váltás a keret miatt): MiniMax M3 elsődleges → Gemini 2.5 Flash tartalék; vég-tartalék a vészhálón át az erős-ingyenesek.",
+      "comment": "MODELL-TIERING 2026-07-24 (user: minden fizetős, MiniMax-tiering). CSÚCS = MiniMax M3 — minőség/biztonság-kritikus (olvasó-látott írás / bíró / hitelesség / fő döntés). Fallback M2.7, majd PAID_POOL(M3), vég-tartalék az ingyenes VÉSZHÁLÓ (csak ha minden fizetős elhal).",
       "routing": "paid-only"
     },
     "api-expert": {
       "deterministic": true,
       "enabled": true,
-      "comment": "API-szakerto: szabaly-alapu, tudja melyik modell mire jo, es a legjobb ELERHETO modellt rendeli minden agenthez. Futtasd uj kulcs utan: node agents/api-expert/agent.js || KÍNAI-ERŐS-INGYENES (2026-07-15, user): GLM-4.7 elsődleges (Zhipu csúcsmodell, $0 a Cerebrason), gpt-oss-120b tartalék — a gyengébb Llama-70B-t leváltotta.",
+      "comment": "MODELL-TIERING 2026-07-24 (user: minden fizetős). KÖLTSÉG-OPTIMUM = MiniMax M2.5 — a legolcsóbb működő fizetős tier gépies munkára (parse/terv/formátum). MEGJEGYZÉS: az M2.5/M2.7 NEM engedi kikapcsolni a gondolkodást (HTTP 400), így reasoning marad ON. Fallback M2.7, vég-tartalék az ingyenes VÉSZHÁLÓ.",
       "primary_model": {
-        "provider": "cerebras",
-        "model": "zai-glm-4.7"
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.5"
       },
       "fallback_model": {
-        "provider": "cerebras",
-        "model": "gpt-oss-120b"
-      }
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.7"
+      },
+      "routing": "paid-only"
     },
     "social": {
       "primary_model": {
-        "provider": "cerebras",
-        "model": "zai-glm-4.7"
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.5"
       },
       "fallback_model": {
-        "provider": "cerebras",
-        "model": "zai-glm-4.7"
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.7"
       },
       "enabled": true,
       "type": "custom",
       "name": "Social Media",
       "icon": "📱",
       "role": "Writes short social posts from articles",
-      "instructions": "You write ONE short, friendly social media post (max 280 chars) about the given AI article for everyday Australians. No hashtags spam, max 2 relevant hashtags. Australian English."
+      "instructions": "You write ONE short, friendly social media post (max 280 chars) about the given AI article for everyday Australians. No hashtags spam, max 2 relevant hashtags. Australian English.",
+      "routing": "paid-only",
+      "comment": "MODELL-TIERING 2026-07-24 (user: minden fizetős). KÖLTSÉG-OPTIMUM = MiniMax M2.5 — a legolcsóbb működő fizetős tier gépies munkára (parse/terv/formátum). MEGJEGYZÉS: az M2.5/M2.7 NEM engedi kikapcsolni a gondolkodást (HTTP 400), így reasoning marad ON. Fallback M2.7, vég-tartalék az ingyenes VÉSZHÁLÓ."
     },
     "fact-check": {
       "primary_model": {
-        "provider": "cerebras",
-        "model": "zai-glm-4.7"
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.5"
       },
       "fallback_model": {
-        "provider": "cerebras",
-        "model": "gpt-oss-120b"
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.7"
       },
       "enabled": true,
-      "comment": "Teny-ellenorzo / frissesseg-or: a publikalt utmutatokat ujraellenorzi, a valotlanna valt reszt eltavolitja/lagyitja, majd a guide visszamegy az Ellenorzo igazsag-kapujara. Nagy-kontextusu modell kell (teljes utmutato): gemini-flash + gemini-2.5-flash fallback (groq 12k limit keves). || KÍNAI-ERŐS-INGYENES (2026-07-15, user): GLM-4.7 elsődleges (Zhipu csúcsmodell, $0 a Cerebrason), gpt-oss-120b tartalék — a gyengébb Llama-70B-t leváltotta."
+      "comment": "MODELL-TIERING 2026-07-24 (user: minden fizetős). KÖLTSÉG-OPTIMUM = MiniMax M2.5 — a legolcsóbb működő fizetős tier gépies munkára (parse/terv/formátum). MEGJEGYZÉS: az M2.5/M2.7 NEM engedi kikapcsolni a gondolkodást (HTTP 400), így reasoning marad ON. Fallback M2.7, vég-tartalék az ingyenes VÉSZHÁLÓ.",
+      "routing": "paid-only"
     },
     "pairing": {
       "primary_model": {
-        "provider": "cerebras",
-        "model": "zai-glm-4.7"
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.5"
       },
       "fallback_model": {
-        "provider": "cerebras",
-        "model": "gpt-oss-120b"
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.7"
       },
       "enabled": true,
-      "comment": "Hir-utmutato parosito: eldonti, hogy egy hir UTMUTATHATO-e (uj, hasznalhato funkcio) vagy sem (szovetseg, tozsdere lepes, felvasarlas, vezetovaltas, jogi/uzleti hir = NEM). Csak az utmutathato hirhez keszit guide-temat es kereszthivatkozast. || KÍNAI-ERŐS-INGYENES (2026-07-15, user): GLM-4.7 elsődleges (Zhipu csúcsmodell, $0 a Cerebrason), gpt-oss-120b tartalék — a gyengébb Llama-70B-t leváltotta."
+      "comment": "MODELL-TIERING 2026-07-24 (user: minden fizetős). KÖLTSÉG-OPTIMUM = MiniMax M2.5 — a legolcsóbb működő fizetős tier gépies munkára (parse/terv/formátum). MEGJEGYZÉS: az M2.5/M2.7 NEM engedi kikapcsolni a gondolkodást (HTTP 400), így reasoning marad ON. Fallback M2.7, vég-tartalék az ingyenes VÉSZHÁLÓ.",
+      "routing": "paid-only"
     },
     "digest": {
       "primary_model": {
         "provider": "openrouter",
-        "model": "minimax/minimax-m3"
+        "model": "minimax/minimax-m2.5"
       },
       "fallback_model": {
-        "provider": "cerebras",
-        "model": "zai-glm-4.7"
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.7"
       },
       "enabled": true,
-      "comment": "MINŐSÉG-ELŐSZÖR (user-döntés 2026-07-15): erős modellek — a gyenge modell hibája többe kerül (kézi javítás), mint az erős felára. ÁTÁLLVA 2026-07-21 (előrehozott MiniMax-váltás a keret miatt): MiniMax M3 elsődleges → Gemini 2.5 Flash tartalék; vég-tartalék a vészhálón át az erős-ingyenesek.",
+      "comment": "MODELL-TIERING 2026-07-24 (user: minden fizetős). KÖLTSÉG-OPTIMUM = MiniMax M2.5 — a legolcsóbb működő fizetős tier gépies munkára (parse/terv/formátum). MEGJEGYZÉS: az M2.5/M2.7 NEM engedi kikapcsolni a gondolkodást (HTTP 400), így reasoning marad ON. Fallback M2.7, vég-tartalék az ingyenes VÉSZHÁLÓ.",
       "routing": "paid-only"
     },
     "compare": {
       "primary_model": {
         "provider": "openrouter",
-        "model": "minimax/minimax-m3"
+        "model": "minimax/minimax-m2.5"
       },
       "fallback_model": {
-        "provider": "cerebras",
-        "model": "zai-glm-4.7"
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.7"
       },
       "enabled": true,
-      "comment": "MINŐSÉG-ELŐSZÖR (user-döntés 2026-07-15): erős modellek — a gyenge modell hibája többe kerül (kézi javítás), mint az erős felára. ÁTÁLLVA 2026-07-21 (előrehozott MiniMax-váltás a keret miatt): MiniMax M3 elsődleges → Gemini 2.5 Flash tartalék; vég-tartalék a vészhálón át az erős-ingyenesek.",
+      "comment": "MODELL-TIERING 2026-07-24 (user: minden fizetős). KÖLTSÉG-OPTIMUM = MiniMax M2.5 — a legolcsóbb működő fizetős tier gépies munkára (parse/terv/formátum). MEGJEGYZÉS: az M2.5/M2.7 NEM engedi kikapcsolni a gondolkodást (HTTP 400), így reasoning marad ON. Fallback M2.7, vég-tartalék az ingyenes VÉSZHÁLÓ.",
       "routing": "paid-only"
     },
     "video": {
       "primary_model": {
-        "provider": "cerebras",
-        "model": "gpt-oss-120b"
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.5"
       },
       "fallback_model": {
-        "provider": "cerebras",
-        "model": "zai-glm-4.7"
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.7"
       },
       "enabled": false,
-      "comment": "Orbit heti video-bemondo: ~150 szavas beszelt szkript a heti digestbol (vasarnap), TTS: ingyenes Edge en-AU Natasha. Free-first. enabled:false = FEJLESZTES ALATT (user 2026-07-11: 'nem menjen elesbe') — a felhoben kihagyja magat; helyi teszt --force-szal megy. Elesites: enabled:true."
+      "comment": "MODELL-TIERING 2026-07-24 (user: minden fizetős). KÖLTSÉG-OPTIMUM = MiniMax M2.5 — a legolcsóbb működő fizetős tier gépies munkára (parse/terv/formátum). MEGJEGYZÉS: az M2.5/M2.7 NEM engedi kikapcsolni a gondolkodást (HTTP 400), így reasoning marad ON. Fallback M2.7, vég-tartalék az ingyenes VÉSZHÁLÓ.",
+      "routing": "paid-only"
     },
     "truth": {
       "primary_model": {
@@ -345,11 +357,11 @@
         "model": "minimax/minimax-m3"
       },
       "fallback_model": {
-        "provider": "cerebras",
-        "model": "zai-glm-4.7"
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.7"
       },
       "enabled": true,
-      "comment": "HITELESSÉG-KAPU (user-döntés 2026-07-16, 'mindig fizetős'): publikálás előtti hallucináció-bíró az Ellenőrzőben. ÁTÁLLVA 2026-07-21: MiniMax M3 elsődleges, Gemini 2.5 Flash tartalék (a többi tartalmi agenttel együtt).",
+      "comment": "MODELL-TIERING 2026-07-24 (user: minden fizetős, MiniMax-tiering). CSÚCS = MiniMax M3 — minőség/biztonság-kritikus (olvasó-látott írás / bíró / hitelesség / fő döntés). Fallback M2.7, majd PAID_POOL(M3), vég-tartalék az ingyenes VÉSZHÁLÓ (csak ha minden fizetős elhal).",
       "routing": "paid-only",
       "_routing_comment": "CSAK fizetős: ez az utolsó kapu a olvasó előtt — itt nem spórolunk"
     }

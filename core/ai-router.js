@@ -312,7 +312,12 @@ const PRICING = {
   'claude-opus-4-8': { input: 5.0, output: 25.0 },
   // MiniMax az OpenRouteren (2026-07-15, user kérése): a FŐNÖKI körös
   // újraírások erős modellje — olcsóbb kimenet, mint a gemini-2.5-flash.
+  // MODELL-TIERING (2026-07-24, user): minden agent fizetős, MiniMax-tiering.
+  // M3=csúcs (író/útmutató/bíró-szintű), M2.7=erős-olcsóbb, M2.5=költség-optimum
+  // (gépies, gondolkodás ki). Élőben ellenőrzött árak az OpenRouter API-ból.
   'minimax/minimax-m3': { input: 0.30, output: 1.20 },
+  'minimax/minimax-m2.7': { input: 0.25, output: 1.00 },
+  'minimax/minimax-m2.5': { input: 0.15, output: 0.90 },
   // Google — PAID TIER (2026-07-02-től számlázva!). FIGYELEM:
   // a 'gemini-flash-latest' alias a 3.5 Flash-re mutat = 5x drágább a 2.5-nél!
   'gemini-2.5-flash': { input: 0.30, output: 2.50 },
