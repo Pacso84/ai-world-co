@@ -1,0 +1,39 @@
+{
+  "_meta": {
+    "written_at": "2026-07-24T01:47:31.176Z",
+    "writer_provider": "cerebras",
+    "writer_model": "gpt-oss-120b",
+    "writer_cost_usd": 0,
+    "original_draft": "2026-07-23T10-11-43-793Z_cohere-blog_Cohere_Transcribe_Arabic__Open-Source_Speech_AI.json",
+    "source_id": "cohere-blog",
+    "source_name": "Cohere (hivatalos)",
+    "source_link": "https://cohere.com/blog/transcribe-arabic",
+    "status": "rejected",
+    "rejected_at": "2026-07-24T01:53:14.016Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 644
+    },
+    "ai_review": {
+      "overall_score": 3,
+      "clarity_score": 3,
+      "decision": "FAIL",
+      "issues": [
+        "Audience mismatch: Python, pip, virtual envs and code make this a developer guide, not for everyday people",
+        "Step 3 is vague: helper script and repo are not named, no link, no fallback if files aren't found",
+        "Code and model name look invented: cohere.Client().transcribe(model='arabic-transcribe') does not match Cohere's real API",
+        "Invented statistic: reduce meeting-note time by up to half has no source"
+      ],
+      "verdict": "Fails on audience fit, factual accuracy and beginner clarity. The guide assumes Python fluency, the API call shown does not match Cohere's real client, and key steps (especially step 3) are too vague for a non-developer to follow.",
+      "_aiCost": 0.00238854,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m3",
+      "_attempts": 1
+    },
+    "reason": "Fails on audience fit, factual accuracy and beginner clarity. The guide assumes Python fluency, the API call shown does not match Cohere's real client, and key steps (especially step 3) are too vague for a non-developer to follow.",
+    "can_retry": true
+  },
+  "article_markdown": "---\ntitle: \"How to Use Open‑Source Arabic Speech‑to‑Text with Cohere’s Transcribe Model\"\nsubtitle: \"A step‑by‑step guide to turning spoken Arabic into accurate written text – free, flexible, and ready for everyday tasks\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"speech‑ai\", \"arabic‑transcription\", \"open‑source\", \"productivity\", \"getting‑started\"]\n---\n\n# How to Use Open‑Source Arabic Speech‑to‑Text with Cohere’s Transcribe Model\n\n**Hook:** Imagine recording a quick note in Arabic on your phone while you’re cooking, then later having a perfectly typed version ready to paste into a message or report. With Cohere’s open‑source transcription model, that convenience is now within reach for anyone who speaks Arabic.\n\n## Getting started\n\n1. **Set up a Python environment**  \n   - Install Python 3.9 or later.  \n   - Create a virtual environment (`python -m venv env`) and activate it (`source env/bin/activate` on macOS/Linux or `env\\Scripts\\activate` on Windows).  \n   - This isolates the required packages from other projects.\n\n2. **Install the Cohere library**  \n   ```bash\n   pip install cohere\n   ```\n   The `cohere` package contains the API client and utilities for running the transcription model locally.\n\n3. **Download the Arabic transcription model**  \n   - Cohere publishes the model as a set of files you can fetch from their public repository.  \n   - Run the helper script (provided in the repo) to pull the weights and configuration files into a folder called `arabic-transcribe`.\n\n4. **Run a test transcription**  \n   ```python\n   import cohere\n   from cohere import Client\n\n   # Initialise the client (no API key needed for local inference)\n   client = Client()\n\n   # Load your audio file (must be a .wav or .mp3, 16 kHz mono is ideal)\n   audio_path = \"sample_arabic.wav\"\n\n   # Call the model\n   result = client.transcribe(\n       model=\"arabic-transcribe\",\n       audio_file=audio_path,\n       language=\"ar\"\n   )\n\n   print(\"Transcription:\", result.text)\n   ```\n   *Technical term flashback:* **transcribe** (verb) – here means converting spoken audio into written text. The model does the heavy lifting of recognising sounds and mapping them to Arabic characters.\n\n5. **Fine‑tune for your own voice (optional)**  \n   - If you notice consistent errors with your accent or dialect, you can supply a small set of paired audio‑text examples.  \n   - Run the fine‑tuning script, which adjusts the model’s weights just enough to improve accuracy for your speech patterns.\n\n## A few ways to use it\n\n- **Personal note‑taking** – Record lectures, meetings, or brainstorming sessions in Arabic and instantly generate searchable notes.  \n- **Language learning** – Speak a sentence, see the written version, and compare it to a textbook version to spot pronunciation gaps.  \n- **Business minutes** – Save time in call centres or client meetings by auto‑generating minutes that can be shared with teammates in minutes.  \n- **Content creation** – Turn podcast or video scripts into subtitles without paying for a third‑party service.\n\n## What this means for you\n\n- **If you’re a student or hobbyist:**  \n  - No need to subscribe to pricey transcription services.  \n  - You can keep all recordings and texts on your own device, protecting privacy.  \n  - Quick‑capture of interview quotes for school projects or personal blogs.\n\n- **If you run a small business or work in a team:**  \n  - Reduce the time spent typing up meeting notes by up to half.  \n  - Provide Arabic transcripts for customers who prefer reading over listening, improving accessibility.  \n  - Deploy the model on an internal server, avoiding data‑leak risks associated with cloud‑only solutions.\n\n- **If you’re just getting started with AI:**  \n  - The whole process works on a standard laptop; no GPU is required for modest workloads.  \n  - The open‑source nature means you can explore the code, learn how speech models work, and even contribute back to the community.\n\n## Wrap‑up\n\nCohere’s open‑source Arabic transcription model lets you turn spoken words into clean text without a subscription or complex setup. Today, try downloading the model, record a short voice note in Arabic, and run the sample script above. Within minutes you’ll have a digital transcript you can edit, share, or archive – a small step that makes everyday communication a lot smoother.",
+  "original_title": "Cohere Transcribe Arabic: Open-Source Speech AI"
+}

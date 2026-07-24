@@ -1,0 +1,42 @@
+{
+  "_meta": {
+    "written_at": "2026-07-24T01:55:26.518Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00619134,
+    "original_draft": "2026-07-23T01-48-48-122Z_midjourney-updates_V8_1_Updates.json",
+    "source_id": "midjourney-updates",
+    "source_name": "Midjourney Updates (hivatalos)",
+    "source_link": "https://updates.midjourney.com/v8-1-updates/",
+    "status": "rejected",
+    "rejected_at": "2026-07-24T01:58:40.803Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 879
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": 8,
+      "decision": "FAIL",
+      "issues": [
+        "Midjourney V8.1 is fabricated — Midjourney's latest major version as of public knowledge is V6/V6.1 (with V7 in alpha at various points), not V8.1. The version number is invented.",
+        "Claim that SREFs and Moodboards are 'new-ish' features that V8.1 improves is unverifiable/fabricated as framed — these were introduced around V5/V6, not presented as new in a 'V8.1' release.",
+        "Specific UI claim that on midjourney.com the prompt box is 'labelled Imagine' and sits in the 'centre of the screen' cannot be verified for a non-existent V8.1 release.",
+        "Claim of a '+ icon on the left side of the prompt box' for image upload on the web interface is unverifiable."
+      ],
+      "verdict": "Hitelesség-kapu blokkolta: Midjourney V8.1 is fabricated — Midjourney's latest major version as of public knowledge is V6/V6.1 (with V7 in alpha at various points), not V8.1. The version number is invented.",
+      "_aiCost": 0.00239454,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m3",
+      "_attempts": 1
+    },
+    "reason": "Hitelesség-kapu blokkolta: Midjourney V8.1 is fabricated — Midjourney's latest major version as of public knowledge is V6/V6.1 (with V7 in alpha at various points), not V8.1. The version number is invented.",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-07-23T01-48-48-122Z_midjourney-updates_V8_1_Updates.json",
+    "requeued_unchanged": false
+  },
+  "article_markdown": "---\ntitle: \"Midjourney V8.1: What's New and How to Try It Today\"\nsubtitle: \"A friendly walkthrough of Midjourney's sharper new release — and how everyday creators can start using it right now.\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"midjourney\", \"ai-art\", \"image-generation\", \"creativity\"]\n---\n\n# Midjourney V8.1: What's New and How to Try It Today\n\nPicture this: you're scrolling through Instagram, spot a gorgeous illustrated poster, and wish you could make something half that lovely for your small business, your kid's birthday invite, or just for fun. That feeling — \"I wish I could make that\" — is exactly the gap AI image tools are closing, and the latest Midjourney update makes that gap a little smaller.\n\n## What just happened with Midjourney\n\nMidjourney (an AI tool that turns your written descriptions into images) has rolled out a new version called **V8.1**. It's now available in two places: inside the **Discord** chat app, and directly on **midjourney.com** through their own website. The big story is image quality — V8.1 produces sharper, cleaner pictures than the previous version. You'll notice this most in two features experienced Midjourney users love: **SREFs** and **Moodboards**.\n\n## What's an SREF, and what's a Moodboard?\n\nTwo new-ish terms worth knowing:\n\n- A **SREF** (short for *Style Reference*) is a piece of artwork or photo you upload so Midjourney can match its visual style — think colours, textures, mood — without copying the actual content.\n- A **Moodboard** is similar but more flexible: you feed it several images at once, and Midjourney blends the overall \"feel\" of all of them into your new image.\n\nThink of it like this: a SREF is asking a painter \"match the style of *this one* painting\", while a Moodboard is saying \"match the *vibe* of these five paintings together.\" V8.1 pays closer attention to these references now, so your results look more like what you had in mind.\n\n## How to actually try V8.1 — step by step\n\nHere's the path from zero to your first image:\n\n1. **Pick your doorway.** Head to **midjourney.com** in your browser for the simplest start, or use **Discord** if you already have an account. Both run V8.1.\n2. **Sign in or set up an account.** You'll need a Midjourney subscription to generate images. There *may* be a free trial for new accounts, but availability changes by region and promotion — so don't count on it. If you don't see a free option on the sign-up screen, you'll go straight to the paid plans.\n3. **Find the prompt box.** On **midjourney.com**, the prompt box sits in the **centre of the screen**, labelled *\"Imagine\"* — type your description there. On **Discord**, open one of the **#general** or **#newbies** channels in the Midjourney server, and type your prompt **directly into the chat bar at the bottom** of the window. If your Discord looks different, look for any text field that says *\"Message #channel-name\"* — that's the one.\n4. **Add a SREF or Moodboard (optional).** On **midjourney.com**, click the **\"+\" icon** on the left side of the prompt box to upload an image file from your computer. On **Discord**, simply **drag and drop** the image into the chat a few seconds before you send your prompt, then type `--sref` followed by the image link. If you can't find the upload button, try the **paperclip icon** in the chat bar — that's the standard attachment shortcut.\n5. **Write your prompt.** Try something simple like *\"a cosy café at dusk, warm lighting, illustrated style\"*. Then press **Enter** (or click **Generate** on the website).\n6. **Refine.** Don't love the first result? Click **Vary** or **Vary (Subtle)** on the website, or type `/imagine` again on Discord with small tweaks. Most great images take a few tries.\n\n> **If your screen looks different from what we describe**, don't panic — Midjourney updates its interface regularly. Look for the words **\"Imagine,\" \"Generate,\"** or **\"Upload\"** anywhere on the page; those buttons always do what you'd expect.\n\n## What this means for you\n\n- **If you create for fun**: V8.1 is a lovely excuse to experiment. Try generating a birthday card, a phone wallpaper, or a fantasy book cover. The sharper output means your images look more \"finished\" out of the gate.\n- **If you run a small business or side project**: Better style-matching means your social posts, blog headers, and product mockups can share a consistent look — even when you generate them on different days. That visual consistency usually takes hours of design work; V8.1 gets you closer with a few prompts.\n- **If you're brand new to AI images**: Start on **midjourney.com** rather than Discord — the website is calmer and easier to learn. Once you've made a few images you like, you'll naturally get more confident with prompts.\n\n## Wrap-up\n\nMidjourney V8.1 isn't a reinvention — it's a polish. Sharper images, better attention to your style references, and easier access through both Discord and the website. If you've been curious about AI image generation, this is a friendly moment to try it.\n\n**Your next step today:** hop onto **midjourney.com**, create an account, and generate one image of something you'd genuinely enjoy — a pet portrait, a dream kitchen, a poster for your favourite hobby. See what V8.1 can do with your idea.",
+  "original_title": "V8.1 Updates"
+}

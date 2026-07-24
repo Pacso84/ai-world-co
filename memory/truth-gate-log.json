@@ -212,5 +212,28 @@
         "Qwen 3.5 from Alibaba is referenced as a model name; the verified-real list contains \"Qwen\" and \"Alibaba\" but \"Qwen 3.5\" is not confirmed as an official product/version name. This appears to be an invented version number."
       ]
     }
+  ],
+  "2026-07-24": [
+    {
+      "at": "2026-07-24T01:58:40.890Z",
+      "file": "WRITER_2026-07-23T01-48-48-122Z_midjourney-updates_V8_1_Updates.json",
+      "action": "block",
+      "reasons": [
+        "Midjourney V8.1 is fabricated — Midjourney's latest major version as of public knowledge is V6/V6.1 (with V7 in alpha at various points), not V8.1. The version number is invented.",
+        "Claim that SREFs and Moodboards are 'new-ish' features that V8.1 improves is unverifiable/fabricated as framed — these were introduced around V5/V6, not presented as new in a 'V8.1' release.",
+        "Specific UI claim that on midjourney.com the prompt box is 'labelled Imagine' and sits in the 'centre of the screen' cannot be verified for a non-existent V8.1 release.",
+        "Claim of a '+ icon on the left side of the prompt box' for image upload on the web interface is unverifiable."
+      ]
+    },
+    {
+      "at": "2026-07-24T01:58:47.570Z",
+      "file": "WRITER_2026-07-23T01-48-57-922Z_qwen-news_Qwen-Image-3_0__Rich_Content__Authentic_Details__D.json",
+      "action": "block",
+      "reasons": [
+        "The model name 'Qwen-Image-3.0' appears to be invented or incorrectly versioned. Alibaba's Qwen image model line is 'Qwen-Image' (released August 2025), not 'Qwen-Image-3.0'. No such version exists publicly.",
+        "The claim that Qwen-Image-3.0 is available with a 'free Qwen account' at 'chat.qwen.ai' for image generation attributes a specific UI capability to Qwen Chat that is not standard for text-to-image generation in that interface — Qwen Chat is primarily a chat assistant, not documented as a direct image generation portal for this model.",
+        "The claim that 'ModelScope at modelscope.cn' lets users 'try different model versions' of Qwen-Image-3.0 implies a specific hosted version that doesn't appear to exist under that name."
+      ]
+    }
   ]
 }

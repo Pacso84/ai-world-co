@@ -1,7 +1,7 @@
 {
   "_meta": {
     "note": "Forrás-bizonyítvány: frissesség + termés + megbízhatóság forrásonként. Gyártja: core/source-report-card.js",
-    "updated": "2026-07-23T17:14:03.261Z",
+    "updated": "2026-07-24T02:24:48.246Z",
     "thresholds": {
       "DEAD_FEED_DAYS": 365,
       "MIN_SAMPLE": 4,
@@ -13,17 +13,17 @@
     "openai-blog": {
       "name": "OpenAI Blog (hivatalos)",
       "feedAgeDays": 1,
-      "published30d": 31,
+      "published30d": 32,
       "truthBlocks": 0,
-      "totalAttempts": 31,
+      "totalAttempts": 32,
       "alreadyDisabled": false,
-      "lastArticle": "2026-07-22",
+      "lastArticle": "2026-07-24",
       "verdict": "ok",
       "reason": ""
     },
     "google-deepmind": {
       "name": "Google DeepMind (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 2,
       "published30d": 5,
       "truthBlocks": 0,
       "totalAttempts": 5,
@@ -34,7 +34,7 @@
     },
     "google-ai-blog": {
       "name": "Google AI (hivatalos, blog.google)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 2,
       "published30d": 12,
       "truthBlocks": 0,
       "totalAttempts": 12,
@@ -45,7 +45,7 @@
     },
     "meta-ai": {
       "name": "Meta Newsroom (hivatalos)",
-      "feedAgeDays": 10,
+      "feedAgeDays": 11,
       "published30d": 3,
       "truthBlocks": 0,
       "totalAttempts": 3,
@@ -78,7 +78,7 @@
     },
     "nvidia-blog": {
       "name": "NVIDIA Blog (hivatalos)",
-      "feedAgeDays": 0,
+      "feedAgeDays": 1,
       "published30d": 17,
       "truthBlocks": 0,
       "totalAttempts": 17,
@@ -144,7 +144,7 @@
     },
     "mistral-ai": {
       "name": "Mistral AI (hivatalos)",
-      "feedAgeDays": 14,
+      "feedAgeDays": 15,
       "published30d": 4,
       "truthBlocks": 0,
       "totalAttempts": 4,
@@ -211,11 +211,11 @@
     "cohere-blog": {
       "name": "Cohere (hivatalos)",
       "feedAgeDays": null,
-      "published30d": 2,
+      "published30d": 3,
       "truthBlocks": 0,
-      "totalAttempts": 2,
+      "totalAttempts": 4,
       "alreadyDisabled": false,
-      "lastArticle": "2026-07-23",
+      "lastArticle": "2026-07-24",
       "verdict": "ok",
       "reason": ""
     },
@@ -279,7 +279,7 @@
       "feedAgeDays": null,
       "published30d": 0,
       "truthBlocks": 0,
-      "totalAttempts": 0,
+      "totalAttempts": 1,
       "alreadyDisabled": false,
       "lastArticle": null,
       "verdict": "no-yield",
@@ -386,7 +386,7 @@
     },
     "sap": {
       "name": "SAP Innovation Blog (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 0,
       "published30d": 6,
       "truthBlocks": 0,
       "totalAttempts": 6,
@@ -419,7 +419,7 @@
     },
     "together": {
       "name": "Together AI Blog (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 0,
       "published30d": 4,
       "truthBlocks": 0,
       "totalAttempts": 4,
@@ -441,7 +441,7 @@
     },
     "ibm": {
       "name": "IBM Research (hivatalos)",
-      "feedAgeDays": 0,
+      "feedAgeDays": 1,
       "published30d": 2,
       "truthBlocks": 0,
       "totalAttempts": 2,
@@ -463,7 +463,7 @@
     },
     "deeparteffects": {
       "name": "Deep Art Effects Blog (hivatalos)",
-      "feedAgeDays": null,
+      "feedAgeDays": 7,
       "published30d": 9,
       "truthBlocks": 0,
       "totalAttempts": 9,
@@ -475,17 +475,17 @@
     "midjourney-updates": {
       "name": "Midjourney Updates (hivatalos)",
       "feedAgeDays": 28,
-      "published30d": 2,
-      "truthBlocks": 0,
-      "totalAttempts": 3,
+      "published30d": 3,
+      "truthBlocks": 1,
+      "totalAttempts": 7,
       "alreadyDisabled": false,
-      "lastArticle": "2026-07-23",
+      "lastArticle": "2026-07-24",
       "verdict": "ok",
       "reason": ""
     },
     "xai-news": {
       "name": "xAI (hivatalos, Google News szűrve)",
-      "feedAgeDays": 2,
+      "feedAgeDays": 0,
       "published30d": 2,
       "truthBlocks": 0,
       "totalAttempts": 2,
@@ -518,9 +518,9 @@
     },
     "qwen-news": {
       "name": "Qwen / Alibaba (hivatalos, Google News szűrve)",
-      "feedAgeDays": 2,
+      "feedAgeDays": 3,
       "published30d": 1,
-      "truthBlocks": 0,
+      "truthBlocks": 1,
       "totalAttempts": 2,
       "alreadyDisabled": false,
       "lastArticle": "2026-07-23",

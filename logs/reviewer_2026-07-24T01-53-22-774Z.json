@@ -1,0 +1,68 @@
+{
+  "started_at": "2026-07-24T01:51:52.277Z",
+  "total": 8,
+  "passed": 3,
+  "failed": 5,
+  "auto_check_failed": 1,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.013934196,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-07-23T01-48-39-244Z_cohere-blog_Tiny_Aya_Expedition_Drives_Multilingual_Innovation.json",
+      "article": "ARTICLE_2026-07-23T01-48-39-244Z_cohere-blog_Tiny_Aya_Expedition_Drives_Multilingual_Innovation.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.000622464
+    },
+    {
+      "writer": "WRITER_2026-07-23T01-48-42-426Z_anthropic-blog_Introducing_Claude_Sonnet_5___Anthropic.json",
+      "rejected": "REJECTED_2026-07-23T01-48-42-426Z_anthropic-blog_Introducing_Claude_Sonnet_5___Anthropic.json",
+      "decision": "FAIL",
+      "score": 6,
+      "cost_usd": 0.000672624
+    },
+    {
+      "writer": "WRITER_2026-07-23T01-48-48-121Z_midjourney-updates_Random__styles_in_draft_mode.json",
+      "decision": "FAIL",
+      "reason": "auto-check critical",
+      "skipped_ai": true
+    },
+    {
+      "writer": "WRITER_2026-07-23T01-48-48-122Z_midjourney-updates_Relax_mode_for_V8_Alpha.json",
+      "rejected": "REJECTED_2026-07-23T01-48-48-122Z_midjourney-updates_Relax_mode_for_V8_Alpha.json",
+      "decision": "FAIL",
+      "score": 7,
+      "cost_usd": 0.00408504
+    },
+    {
+      "writer": "WRITER_2026-07-23T01-48-48-122Z_midjourney-updates_V8_1_Alpha.json",
+      "article": "ARTICLE_2026-07-23T01-48-48-122Z_midjourney-updates_V8_1_Alpha.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.000638544
+    },
+    {
+      "writer": "WRITER_2026-07-23T01-48-48-122Z_midjourney-updates_V8_1_Updates.json",
+      "rejected": "REJECTED_2026-07-23T01-48-48-122Z_midjourney-updates_V8_1_Updates.json",
+      "decision": "FAIL",
+      "score": 6,
+      "cost_usd": 0.00245874
+    },
+    {
+      "writer": "WRITER_2026-07-23T10-11-43-793Z_cohere-blog_Cohere_Transcribe_Arabic__Open-Source_Speech_AI.json",
+      "rejected": "REJECTED_2026-07-23T10-11-43-793Z_cohere-blog_Cohere_Transcribe_Arabic__Open-Source_Speech_AI.json",
+      "decision": "FAIL",
+      "score": 3,
+      "cost_usd": 0.00238854
+    },
+    {
+      "writer": "WRITER_2026-07-24T01-44-57-701Z_openai-blog_Launching_Health_in_ChatGPT_.json",
+      "article": "ARTICLE_2026-07-24T01-44-57-701Z_openai-blog_Launching_Health_in_ChatGPT_.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.0007845
+    }
+  ],
+  "finished_at": "2026-07-24T01:53:22.774Z",
+  "duration_seconds": 90.497
+}
