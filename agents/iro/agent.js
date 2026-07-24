@@ -44,6 +44,15 @@ const REJECTED_DIR = join(PROJECT_ROOT, 'content', 'rejected');
 const LOGS_DIR = join(PROJECT_ROOT, 'logs');
 const SHARED_DIR = join(PROJECT_ROOT, 'shared');
 const AGENT_NAME = 'iro';
+// CSONKOLÁS-VÉDELEM (2026-07-24): a MiniMax M3 GONDOLKODÓ modell — a belső
+// gondolkodása is a maxTokens keretbe számít. A router 8000-re padlózza a
+// gondolkodó modelleket (effMaxTokens=max(maxTokens,8000)); a régi 3000 tehát
+// valójában 8000 volt, ÉS MÉG ÍGY IS csonkolt: a gondolkodás felemésztette a
+// keretet, mielőtt a cikk a végére ért → a "What this means for you" szakasz
+// (a 4-ből a 3.) lemaradt (MISSING_SECTION 678×) + "Salvaged from partial" (363×).
+// A magasabb keret látható-teret ad a gondolkodás UTÁN. Csak a ténylegesen
+// legenerált tokenekért fizetünk → a csonkolt-eldobott cikkek pazarlása szűnik meg.
+const WRITER_MAX_TOKENS = 10000;
 
 // Hányszor adhatja vissza az Ellenőrző ugyanazt a cikket átdolgozásra,
 // mielőtt kecsesen feladjuk (végtelen hurok elkerülése).
@@ -271,7 +280,7 @@ Now write the original article. Output the markdown only — no extra commentary
   let response = await ask(userPrompt, {
     agentName: AGENT_NAME,
     systemPrompt: WRITER_SYSTEM_PROMPT,
-    maxTokens: 3000
+    maxTokens: WRITER_MAX_TOKENS
   });
 
   // SELF-CHECK: kötelező szekciók megléte. Ha hiányzik -> 1 retry nyomatékkal.
@@ -283,7 +292,7 @@ Now write the original article. Output the markdown only — no extra commentary
     const retry = await ask(retryPrompt, {
       agentName: AGENT_NAME,
       systemPrompt: WRITER_SYSTEM_PROMPT,
-      maxTokens: 3000
+      maxTokens: WRITER_MAX_TOKENS
     });
     // A retry-t csak akkor fogadjuk el, ha tényleg jobb (megvan a szekció)
     if (retry && hasRequiredSections(retry.text)) {
@@ -301,6 +310,44 @@ function hasRequiredSections(markdown) {
   const hasImpact = /what this means for you/i.test(markdown);
   const hasFrontmatter = markdown.trimStart().startsWith('---');
   return hasImpact && hasFrontmatter;
+}
+
+// ===================================================================
+// NORMALIZÁLÁS mentés előtt (2026-07-24)
+// ===================================================================
+// Az LLM néha apró FORMÁTUM-hibát vét, amitől az Ellenőrző egy egyébként JÓ
+// cikket eldob. A mai 7 elutasításból 3 pont ilyen volt. Ahelyett, hogy pénzt
+// égetnénk újraírásra, itt determinisztikusan (AI nélkül) kijavítjuk:
+//   1. Kódblokk-burok: a modell néha ```markdown ... ``` fence-be csomagolja az
+//      egész cikket → kibontjuk (a build/ellenőrzés nyers markdownt vár).
+//   2. Kezdő szóköz/sortörés a --- előtt → levágjuk. KRITIKUS: az Ellenőrző
+//      startsWith('---')-rel néz (nem trimStart), így egy vezető '\n' HAMIS
+//      NO_FRONTMATTER-t dobott jó cikkekre (07-24: 2 ilyen).
+//   3. Hiányzó H1: ha van frontmatter title, de a törzsben nincs "# Cím",
+//      beszúrjuk a title-ből (07-24: 1 ilyen). Determinisztikus, ingyen.
+function normalizeArticleMarkdown(md) {
+  if (!md || typeof md !== 'string') return md;
+  let out = md;
+
+  // 1. Kódblokk-burok eltávolítása (ha az EGÉSZ kimenet fence-be van csomagolva)
+  const fence = out.trim().match(/^```(?:markdown|md)?\s*\n([\s\S]*?)\n```$/);
+  if (fence) out = fence[1];
+
+  // 2. Vezető üres sorok/szóközök levágása (a --- kerüljön az abszolút elejére)
+  out = out.replace(/^\s+/, '');
+
+  // 3. Hiányzó H1 pótlása a frontmatter title-ből
+  const fm = out.match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/);
+  if (fm) {
+    const body = fm[2];
+    if (!/^#\s+.+$/m.test(body)) {
+      const tm = fm[1].match(/^title:\s*(.+)$/m);
+      const title = tm ? tm[1].trim().replace(/^["']|["']$/g, '') : '';
+      if (title) out = `---\n${fm[1]}\n---\n\n# ${title}\n\n${body.replace(/^\s+/, '')}`;
+    }
+  }
+
+  return out;
 }
 
 // ===================================================================
@@ -324,7 +371,7 @@ function saveWrittenArticle(originalDraftFilename, draft, articleResponse) {
       source_link: draft.link,
       status: 'awaiting-review' // → Ellenőrző agent veszi fel
     },
-    article_markdown: articleResponse.text,
+    article_markdown: normalizeArticleMarkdown(articleResponse.text),
     original_title: draft.title
   };
 
@@ -423,7 +470,7 @@ Now output ONLY the corrected article markdown — no commentary, no notes about
   let response = await ask(userPrompt, {
     agentName: reworkAgent,
     systemPrompt: WRITER_SYSTEM_PROMPT,
-    maxTokens: 3000
+    maxTokens: WRITER_MAX_TOKENS
   });
 
   // Self-check: kötelező szekciók — ha hiányzik, egy nyomatékos retry
@@ -433,7 +480,7 @@ Now output ONLY the corrected article markdown — no commentary, no notes about
 ⚠️ CRITICAL: The corrected article MUST contain a "## What this means for you" H2 section and start with a YAML frontmatter (---). Output the full corrected article again.`, {
       agentName: reworkAgent,
       systemPrompt: WRITER_SYSTEM_PROMPT,
-      maxTokens: 3000
+      maxTokens: WRITER_MAX_TOKENS
     });
     if (retry && hasRequiredSections(retry.text)) {
       retry.costUsd += response.costUsd;
@@ -478,7 +525,7 @@ function saveBackToReview(rejectedFilename, rejectedData, { text, provider, mode
       requeued_unchanged: !!requeued, // true = nem írtuk át, csak újraellenőrzésre küldtük
       status: 'awaiting-review'
     },
-    article_markdown: text,
+    article_markdown: normalizeArticleMarkdown(text),
     original_title: rejectedData.original_title
   };
 

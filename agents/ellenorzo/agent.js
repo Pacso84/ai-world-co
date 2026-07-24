@@ -110,8 +110,10 @@ function listAwaitingReview(filter = null) {
 function runAutoCheck(articleMarkdown, type) {
   const issues = [];
 
-  // Van YAML frontmatter?
-  if (!articleMarkdown.startsWith('---')) {
+  // Van YAML frontmatter? (trimStart: egy vezető sortörés/szóköz NE dobjon HAMIS
+  // NO_FRONTMATTER-t egy jó cikkre — 2026-07-24. Az Író már normalizálva ment, ez
+  // védőháló a már sorban álló / más ágon készült cikkekre.)
+  if (!articleMarkdown.trimStart().startsWith('---')) {
     issues.push('NO_FRONTMATTER: A cikk nem YAML frontmatter-rel kezdődik');
   }
 
