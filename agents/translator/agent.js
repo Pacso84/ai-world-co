@@ -48,11 +48,17 @@ export const LANGS = {
 
 function parseArgs() {
   const a = process.argv.slice(2);
-  const p = { limit: 16, force: false, lang: null };
+  // maxMinutes: FALI-ÓRA keret. A darabszám-limit (80) mellé kell, mert egy nagy
+  // backfillnél a 80 pár átlépheti a CI 12 perces plafonját (fizetős→ingyenes
+  // esésnél lassabb a fordítás) → timeout → piros X → részleges fordítás → gyűlik.
+  // 9 perc: a fordító tiszta kilépéssel megáll, marad ~3 perc egy lassú utolsó
+  // fordításnak is a 12-es plafonig; a maradékot a következő futás viszi.
+  const p = { limit: 16, force: false, lang: null, maxMinutes: 9 };
   for (let i = 0; i < a.length; i++) {
     if (a[i] === '--limit' && a[i + 1]) p.limit = parseInt(a[++i], 10) || 16;
     else if (a[i] === '--force') p.force = true;
     else if (a[i] === '--lang' && a[i + 1]) p.lang = a[++i];
+    else if (a[i] === '--max-minutes' && a[i + 1]) p.maxMinutes = parseFloat(a[++i]) || 9;
   }
   return p;
 }
@@ -154,6 +160,8 @@ async function main() {
     .map(x => x.f);
 
   let done = 0, cost = 0, skipped = 0, failed = 0;
+  const startedAt = Date.now();
+  const maxMs = args.maxMinutes * 60 * 1000;
   outer:
   for (const file of files) {
     let data; try { data = JSON.parse(readFileSync(join(ARTICLES_DIR, file), 'utf-8')); } catch { continue; }
@@ -165,6 +173,9 @@ async function main() {
       if (!LANGS[code]) continue;
       if (cache[code] && !args.force) { skipped++; continue; }
       if (done >= args.limit) { console.log(`\n⏸️  Elértem a futás-limitet (${args.limit}). A többit a következő futás fordítja.`); break outer; }
+      // IDŐ-KERET: sose kezdjünk új fordítást, ha már túlléptük a keretet — így a
+      // lépés a CI 12 perces plafonja alatt marad, a maradék a következő futásé.
+      if (Date.now() - startedAt >= maxMs) { console.log(`\n⏱️  Elértem az idő-keretet (${args.maxMinutes} perc). A többit a következő futás fordítja.`); break outer; }
 
       process.stdout.write(`🔤 ${code} ← ${file.slice(0, 48)}… `);
       const res = await translateMarkdown(md, LANGS[code]);
