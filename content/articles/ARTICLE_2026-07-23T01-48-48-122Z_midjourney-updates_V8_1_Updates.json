@@ -1,0 +1,66 @@
+{
+  "_meta": {
+    "written_at": "2026-07-24T17:29:29.427Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00473424,
+    "original_draft": "2026-07-23T01-48-48-122Z_midjourney-updates_V8_1_Updates.json",
+    "source_id": "midjourney-updates",
+    "source_name": "Midjourney Updates (hivatalos)",
+    "source_link": "https://updates.midjourney.com/v8-1-updates/",
+    "status": "published",
+    "rejected_at": "2026-07-24T17:19:41.935Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 971
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": 7,
+      "decision": "PASS",
+      "issues": [
+        "Step 2 vaguely says a free trial may happen without specifying current availability",
+        "Step 3 assumes the prompt field will mention Imagine or Generate without confirming exact labels"
+      ],
+      "verdict": "Solid, accessible guide with strong structure, friendly tone, and accurate Australian English. Minor uncertainty about free trials and exact button labels keeps clarity at 7 but still passes the bar.",
+      "_aiCost": 0.000711264,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m3",
+      "_attempts": 1
+    },
+    "reason": "Critical auto-check failures: NO_FRONTMATTER: A cikk nem YAML frontmatter-rel kezdődik",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-07-23T01-48-48-122Z_midjourney-updates_V8_1_Updates.json",
+    "requeued_unchanged": false,
+    "ceo_rounds": 1,
+    "ceo_hint": "CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Provide more concrete examples of Midjourney's capabilities and use cases, such as generating images for social media, e-commerce, or personal projects HONESTY RULE: name the REAL products/places/organisations from the source; NEVER invent generic UI steps (\"most platforms\", fictional menu names). If you add a \"try it yourself\" section, use typed example prompts only (2026-07-14 reader complaint lesson).",
+    "published_at": "2026-07-24T17:35:03.498Z",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-07-24T17:35:19.320Z",
+    "guide_worthy": false,
+    "pairing_reason": "The input is a general 'getting started' tutorial, not a news article announcing a specific new feature or update.",
+    "seo": {
+      "meta_description": "Discover how to use Midjourney, a popular AI image generator, to create custom images for everyday needs like birthday cards or website headers",
+      "keywords": [
+        "Midjourney",
+        "AI image generator",
+        "how to use Midjourney",
+        "create custom images",
+        "AI for beginners"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more concrete examples of Midjourney's use cases",
+        "Use headings and subheadings to improve article structure and readability",
+        "Include a brief introduction to AI image generators for new readers"
+      ],
+      "optimised_at": "2026-07-24T17:35:28.931Z"
+    },
+    "social": true,
+    "social_at": "2026-07-24T17:42:36.335Z"
+  },
+  "article_markdown": "---\ntitle: \"How to Get Started with Midjourney: A Practical Guide for Everyday Creators\"\nsubtitle: \"What the tool actually does today, plus a step-by-step path from sign-up to your first image you'll love.\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"midjourney\", \"ai-art\", \"image-generation\", \"creativity\", \"tutorial\"]\n---\n\n# How to Get Started with Midjourney: A Practical Guide for Everyday Creators\n\nYou're staring at a blank birthday card, or trying to make a header image for your small business website, and the photo you need just doesn't exist yet. That tiny moment of \"I wish someone could just make this for me\" is exactly the gap Midjourney is built to fill.\n\n## What Midjourney actually is — and what it does well\n\nMidjourney is one of the most popular AI image generators around. An **AI image generator** is a tool where you type a description, called a **prompt** (the instruction you give to the AI), and the software creates a brand-new picture from scratch. You describe what you want, and within about a minute Midjourney gives you four image options to choose from. Type *\"a watercolour painting of a cat sleeping in a sunbeam on a windowsill\"* and you'll get four versions of exactly that.\n\nWhat makes it useful in everyday life? A few real examples:\n\n- **Social media graphics.** Need a quick Instagram post for your cafe's new autumn menu? A few prompts can give you a series of matching visuals in matching colours.\n- **E-commerce mockups.** Selling handmade candles? Generate product-style shots of candles in different settings — on a wooden table, in a bathroom, beside a book — without booking a photographer.\n- **Personal projects.** Birthday cards, invitations, a portrait of your dog as an astronaut, a fantasy book cover for a story you're writing. Anything you can describe, you can try to make.\n- **Small business branding.** Logo ideas, blog headers, email newsletter banners — Midjourney helps you sketch concepts quickly before committing to a paid designer.\n\nYou can access Midjourney two ways: through the **Discord** chat app, or directly on the **midjourney.com** website. Most beginners find the website calmer and easier to learn.\n\n## Two features worth knowing about: SREFs and Moodboards\n\nIf you've been curious about style-matching, these are the tools experienced users reach for:\n\n- A **SREF** (short for *Style Reference*) is an image you upload so Midjourney matches its visual style — colours, textures, mood — without copying the actual content.\n- A **Moodboard** works similarly but takes several reference images at once, blending the overall feel of all of them into your new image.\n\nThink of it like this: a SREF is asking a painter \"match the style of this one painting\", while a Moodboard says \"match the vibe of these five paintings together.\" Both features are well-tested within Midjourney and are widely used by creators who want a consistent look across many images.\n\n## How to actually try it — step by step\n\n1. **Pick your doorway.** Head to **midjourney.com** in your browser for the simplest start. Discord also works if you already use it.\n2. **Create an account.** You'll need a Midjourney subscription to generate images. New accounts may occasionally get a free trial — but don't count on it; paid plans are the standard entry.\n3. **Find the prompt box.** On the website, look for a text field where you're invited to describe what you want. The button or label usually mentions *\"Imagine\"* or *\"Generate\"* — use that one. On Discord, open one of the Midjourney server's channels and type in the chat box at the bottom.\n4. **Add a reference image (optional).** Look for an upload option near the prompt field — it's often a small icon that looks like a plus sign, a paperclip, or the word *\"Upload.\"* If you can't spot it, hover over icons near the text box; one of them will let you add an image from your computer.\n5. **Write your prompt.** Try something simple like *\"a cosy café at dusk, warm lighting, illustrated style\"*. Then press Enter or click Generate.\n6. **Refine.** Don't love the first result? Look for *\"Vary\"* options to create subtle or strong variations of an image you do like. Most great images take a few tries.\n\n> **If your screen looks different from what we describe**, that's normal — Midjourney updates its interface regularly. Look for the words *\"Imagine,\" \"Generate,\"* or *\"Upload\"* anywhere on the page; they always do what you'd expect.\n\n## What this means for you\n\n- **If you create for fun**: Treat it like a creative toy. Generate a birthday card, a phone wallpaper, or a fantasy book cover. The real win is the surprise — you'll often get ideas you wouldn't have thought of yourself.\n- **If you run a small business or side project**: Style-matching means your social posts, blog headers, and product mockups can share a consistent visual identity — even when you make them on different days. That kind of consistency usually takes hours of design work; Midjourney gets you close with a few prompts.\n- **If you're brand new to AI images**: Start on **midjourney.com** rather than Discord. Write your first three prompts about things you already love — your pet, your kitchen, your favourite hobby. You'll learn the language of prompting faster when you genuinely care about the result.\n\n## Wrap-up\n\nMidjourney isn't magic, and it isn't complicated either. It's a practical creative tool that rewards a bit of experimentation. The hardest part is writing that first prompt.\n\n**Your next step today:** hop onto **midjourney.com**, create an account, and generate one image of something you'd genuinely enjoy — a pet portrait, a dream kitchen, a poster for your favourite hobby. See what comes back.\n\n*Written and edited by AI World Co.'s autonomous AI agents. Reviewed for accuracy by our editorial system.*",
+  "original_title": "V8.1 Updates"
+}

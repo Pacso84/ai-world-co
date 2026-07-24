@@ -1,102 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t17847728275546",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-23T02:13:47.554Z",
-      "updated": "2026-07-23T02:13:51.152Z"
-    },
-    {
-      "id": "t178477283115452",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-23T02:13:51.154Z",
-      "updated": "2026-07-23T02:14:07.379Z"
-    },
-    {
-      "id": "t178477284738253",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-07-23T02:14:07.382Z",
-      "updated": "2026-07-23T02:14:34.249Z"
-    },
-    {
-      "id": "t178477287425138",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-23T02:14:34.251Z",
-      "updated": "2026-07-23T02:14:35.315Z"
-    },
-    {
-      "id": "t17847728753185",
-      "title": "Run translator",
-      "status": "done",
-      "agent": "translator",
-      "created": "2026-07-23T02:14:35.318Z",
-      "updated": "2026-07-23T02:44:35.331Z"
-    },
-    {
-      "id": "t17847746753343",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-07-23T02:44:35.334Z",
-      "updated": "2026-07-23T02:44:45.526Z"
-    },
-    {
-      "id": "t178480143531134",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-07-23T10:10:35.311Z",
-      "updated": "2026-07-23T10:10:35.600Z"
-    },
-    {
-      "id": "t17848014356014",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-07-23T10:10:35.601Z",
-      "updated": "2026-07-23T10:11:48.089Z"
-    },
-    {
-      "id": "t178480150809193",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-07-23T10:11:48.091Z",
-      "updated": "2026-07-23T10:11:48.338Z"
-    },
-    {
-      "id": "t178480150834191",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-07-23T10:11:48.341Z",
-      "updated": "2026-07-23T10:12:49.067Z"
-    },
-    {
-      "id": "t178480156907094",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-23T10:12:49.070Z",
-      "updated": "2026-07-23T10:13:03.517Z"
-    },
-    {
-      "id": "t17848015835205",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-07-23T10:13:03.520Z",
-      "updated": "2026-07-23T10:15:40.459Z"
-    },
-    {
       "id": "t17848017404618",
       "title": "Run ellenorzo",
       "status": "done",
@@ -479,33 +383,105 @@
       "agent": "publisher",
       "created": "2026-07-24T10:17:33.723Z",
       "updated": "2026-07-24T10:17:43.221Z"
+    },
+    {
+      "id": "t178491357972553",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-07-24T17:19:39.725Z",
+      "updated": "2026-07-24T17:19:41.973Z"
+    },
+    {
+      "id": "t178491358198639",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-07-24T17:19:41.986Z",
+      "updated": "2026-07-24T17:20:24.136Z"
+    },
+    {
+      "id": "t178491362413839",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-07-24T17:20:24.138Z",
+      "updated": "2026-07-24T17:20:24.324Z"
+    },
+    {
+      "id": "t17849136243261",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-07-24T17:20:24.327Z",
+      "updated": "2026-07-24T17:21:23.625Z"
+    },
+    {
+      "id": "t178491368362791",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-24T17:21:23.627Z",
+      "updated": "2026-07-24T17:21:35.917Z"
+    },
+    {
+      "id": "t178491369594322",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-07-24T17:21:35.943Z",
+      "updated": "2026-07-24T17:34:27.784Z"
+    },
+    {
+      "id": "t178491446778533",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-24T17:34:27.785Z",
+      "updated": "2026-07-24T17:35:06.997Z"
+    },
+    {
+      "id": "t178491450700195",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-07-24T17:35:07.001Z",
+      "updated": "2026-07-24T17:35:19.788Z"
+    },
+    {
+      "id": "t178491451981241",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-24T17:35:19.812Z",
+      "updated": "2026-07-24T17:35:26.457Z"
+    },
+    {
+      "id": "t178491452645820",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-07-24T17:35:26.459Z",
+      "updated": "2026-07-24T17:35:30.223Z"
+    },
+    {
+      "id": "t178491453022464",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-24T17:35:30.224Z",
+      "updated": "2026-07-24T17:35:31.175Z"
+    },
+    {
+      "id": "t17849145311779",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-07-24T17:35:31.177Z",
+      "updated": "2026-07-24T17:35:40.407Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178422157880018",
-      "level": "info",
-      "text": "SEO: 4 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-07-16T17:06:18.800Z",
-      "loud": false
-    },
-    {
-      "id": "n178422188106555",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). Our article line-up is coherent and ready to publish, with a great mix of practical AI applications for everyday tasks. However, I do note that some articles may benefit from a brief intro for newcome",
-      "agent": "publisher",
-      "at": "2026-07-16T17:11:21.065Z",
-      "loud": false
-    },
-    {
-      "id": "n178422188777650",
-      "level": "success",
-      "text": "4 hír + 0 útmutató publikálva (költség: $0.0187).",
-      "agent": "ceo",
-      "at": "2026-07-16T17:11:27.776Z",
-      "loud": false
-    },
     {
       "id": "n178423123628868",
       "level": "info",
@@ -1281,172 +1257,33 @@
       "agent": "ceo",
       "at": "2026-07-24T10:17:43.250Z",
       "loud": false
+    },
+    {
+      "id": "n178491453021581",
+      "level": "info",
+      "text": "SEO: 3 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-07-24T17:35:30.215Z",
+      "loud": false
+    },
+    {
+      "id": "n178491453215886",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). Our line-up is ready to publish, with a great mix of practical articles that showcase AI's everyday uses. I've done a final check to ensure each piece is complete, error-free, and written in our appro",
+      "agent": "publisher",
+      "at": "2026-07-24T17:35:32.158Z",
+      "loud": false
+    },
+    {
+      "id": "n178491454043063",
+      "level": "success",
+      "text": "3 hír + 0 útmutató publikálva (költség: $0.0197).",
+      "agent": "ceo",
+      "at": "2026-07-24T17:35:40.430Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178462899653923",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Try Free AI Demos in Your Browser with Hugging Face Spaces\" (?/10)",
-      "ref": "GUIDE_try-free-ai-demos-in-your-browser-with-hugging-face-spaces.json",
-      "at": "2026-07-21T10:16:36.539Z"
-    },
-    {
-      "id": "m178462900985598",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Break down complex news stories into easy-to-understand points with Grok\" — javítva: UI element: The article claims 'Grok's interface works like a continuous conversation, so there isn't a specific \"new chat\" button to clear previous discussions.' This is incorrect; Grok does have a 'New Chat' button or similar functionality to start a fresh conversation and clear previous context.; ",
-      "ref": "GUIDE_break-down-complex-news-stories-into-easy-to-understand-poin.json",
-      "at": "2026-07-21T10:16:49.855Z"
-    },
-    {
-      "id": "m17846290247445",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Break down complex news stories into easy-to-understand points with Grok\" — mi a baj: Step 2 describes a 'New Chat' button or a 'square with a plus sign inside it' icon for Grok. Grok's interface within X typically operates as a continuous chat where users type new queries into the same window, and it does not usually feature an explicit 'New Chat' button or icon to clear co",
-      "ref": "GUIDE_break-down-complex-news-stories-into-easy-to-understand-poin.json",
-      "at": "2026-07-21T10:17:04.744Z"
-    },
-    {
-      "id": "m178462904308712",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Break down complex news stories into easy-to-understand points with Grok\" — javítva: Step 2 describes a 'New Chat' button or a 'square with a plus sign inside it' icon for Grok. Grok's interface within X typically operates as a continuous chat where users type new queries into the same window, and it does not usually feature an explicit 'New Chat' button or icon to clear context like",
-      "ref": "GUIDE_break-down-complex-news-stories-into-easy-to-understand-poin.json",
-      "at": "2026-07-21T10:17:23.087Z"
-    },
-    {
-      "id": "m178462905830334",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Break down complex news stories into easy-to-understand points with Grok\" — mi a baj: The claim that \"there isn't a dedicated 'New Chat' button to clear everything away\" in Grok's interface is incorrect. Grok, like most chat-based AI tools, provides an option (often a '+' icon or a clear 'New Chat' button) to start a new conversation and clear the previous context.",
-      "ref": "GUIDE_break-down-complex-news-stories-into-easy-to-understand-poin.json",
-      "at": "2026-07-21T10:17:38.304Z"
-    },
-    {
-      "id": "m178462907710517",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Break down complex news stories into easy-to-understand points with Grok\" — javítva: The claim that \"there isn't a dedicated 'New Chat' button to clear everything away\" in Grok's interface is incorrect. Grok, like most chat-based AI tools, provides an option (often a '+' icon or a clear 'New Chat' button) to start a new conversation and clear the previous context.; Reviewer verdict: ",
-      "ref": "GUIDE_break-down-complex-news-stories-into-easy-to-understand-poin.json",
-      "at": "2026-07-21T10:17:57.105Z"
-    },
-    {
-      "id": "m178462909305818",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Break down complex news stories into easy-to-understand points with Grok\" — mi a baj: The description of a 'New Chat' button or icon (like a '+' symbol, speech bubble with a plus, or text 'New Chat'/'Start New Conversation') usually located in the top-left or top-right corner of the Grok chat interface is inaccurate. Grok, as integrated into X, typically does not feature suc",
-      "ref": "GUIDE_break-down-complex-news-stories-into-easy-to-understand-poin.json",
-      "at": "2026-07-21T10:18:13.058Z"
-    },
-    {
-      "id": "m178462910950130",
-      "from": "ceo",
-      "to": "human",
-      "kind": "need",
-      "text": "Emberi döntés kell: \"Break down complex news stories into easy-to-understand points with Grok\" — CEO döntés nem értelmezhető (LLM válasz hibás) — emberi ellenőrzés kell.",
-      "ref": "REJECTED_GUIDE_break-down-complex-news-stories-into-easy-to-understand-poin.json",
-      "open": true,
-      "at": "2026-07-21T10:18:29.501Z"
-    },
-    {
-      "id": "m178462913488917",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-07-21T10:18:54.889Z"
-    },
-    {
-      "id": "m178462960168013",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
-      "ref": null,
-      "at": "2026-07-21T10:26:41.680Z"
-    },
-    {
-      "id": "m178465364593331",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Introducing Gemini 3.5 Flash Cyber\" — mi a baj: NO_H1: Nincs H1 (# Cím) a cikkben",
-      "ref": "2026-07-21T17-06-28-504Z_google-deepmind_Introducing_Gemini_3_5_Flash_Cyber.json",
-      "at": "2026-07-21T17:07:25.933Z"
-    },
-    {
-      "id": "m178465364597048",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Introducing Gemini 3.6 Flash, 3.5 Flash-Lite, and 3.5 Flash Cyber\" — mi a baj: NO_H1: Nincs H1 (# Cím) a cikkben",
-      "ref": "2026-07-21T17-06-28-504Z_google-deepmind_Introducing_Gemini_3_6_Flash__3_5_Flash-Lite__and_.json",
-      "at": "2026-07-21T17:07:25.970Z"
-    },
-    {
-      "id": "m178465364600370",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Introducing the ChatGPT for small business program\" — mi a baj: NO_H1: Nincs H1 (# Cím) a cikkben",
-      "ref": "2026-07-21T17-06-28-504Z_openai-blog_Introducing_the_ChatGPT_for_small_business_program.json",
-      "at": "2026-07-21T17:07:26.003Z"
-    },
-    {
-      "id": "m178465364610121",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"How to build interactive experiences with canvases\" — mi a baj: NO_H1: Nincs H1 (# Cím) a cikkben; CLICHE: Tiltott klisé találva: \"game-changer\"",
-      "ref": "2026-07-21T17-06-28-505Z_github-ai_How_to_build_interactive_experiences_with_canvases.json",
-      "at": "2026-07-21T17:07:26.101Z"
-    },
-    {
-      "id": "m178465365885364",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Introducing Gemini 3.5 Flash Cyber\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; Reviewer verdict: Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben; újraküldöm.",
-      "ref": "2026-07-21T17-06-28-504Z_google-deepmind_Introducing_Gemini_3_5_Flash_Cyber.json",
-      "at": "2026-07-21T17:07:38.853Z"
-    },
-    {
-      "id": "m178465366896334",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Introducing Gemini 3.6 Flash, 3.5 Flash-Lite, and 3.5 Flash Cyber\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; Reviewer verdict: Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben; újraküldöm.",
-      "ref": "2026-07-21T17-06-28-504Z_google-deepmind_Introducing_Gemini_3_6_Flash__3_5_Flash-Lite__and_.json",
-      "at": "2026-07-21T17:07:48.963Z"
-    },
-    {
-      "id": "m178465367641092",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Introducing the ChatGPT for small business program\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; Reviewer verdict: Critical auto-check failures: NO_H1: Nincs H1 (# Cím) a cikkben; újraküldöm.",
-      "ref": "2026-07-21T17-06-28-504Z_openai-blog_Introducing_the_ChatGPT_for_small_business_program.json",
-      "at": "2026-07-21T17:07:56.410Z"
-    },
-    {
-      "id": "m17846536847136",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"How to build interactive experiences with canvases\" — javítva: NO_H1: Nincs H1 (# Cím) a cikkben; CLICHE: Tiltott klisé találva: \"game-changer\"; újraküldöm.",
-      "ref": "2026-07-21T17-06-28-505Z_github-ai_How_to_build_interactive_experiences_with_canvases.json",
-      "at": "2026-07-21T17:08:04.713Z"
-    },
     {
       "id": "m178465369235868",
       "from": "ellenorzo",
@@ -2638,6 +2475,168 @@
       "text": "6 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
       "ref": null,
       "at": "2026-07-24T10:26:58.026Z"
+    },
+    {
+      "id": "m178491358061618",
+      "from": "ceo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Főnöki újraindítás: \"Random  styles in draft mode\" — rewrite-explainer",
+      "ref": "2026-07-23T01-48-48-121Z_midjourney-updates_Random__styles_in_draft_mode.json",
+      "at": "2026-07-24T17:19:40.616Z"
+    },
+    {
+      "id": "m178491358144248",
+      "from": "ceo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Főnöki újraindítás: \"Relax mode for V8 Alpha\" — rewrite-explainer",
+      "ref": "2026-07-23T01-48-48-122Z_midjourney-updates_Relax_mode_for_V8_Alpha.json",
+      "at": "2026-07-24T17:19:41.442Z"
+    },
+    {
+      "id": "m178491358196581",
+      "from": "ceo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Főnöki újraindítás: \"V8.1 Updates\" — rewrite-explainer",
+      "ref": "2026-07-23T01-48-48-122Z_midjourney-updates_V8_1_Updates.json",
+      "at": "2026-07-24T17:19:41.965Z"
+    },
+    {
+      "id": "m178491369590961",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Qwen3.6-35B-A3B: Agentic Coding Power, Now Open to All - Qwen\" — mi a baj: vague step: Search for the latest Qwen model, install the software, and start a conversation; no detailed UI guidance for using LM Studio/Ollama/Hugging Face; no fallback if the model cannot be found or download fails",
+      "ref": "2026-07-24T17-20-24-128Z_qwen-news_Qwen3_6-35B-A3B__Agentic_Coding_Power__Now_Open_to.json",
+      "at": "2026-07-24T17:21:35.909Z"
+    },
+    {
+      "id": "m178491370609454",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Google Meet now organizes your meeting notes, transcripts, and recordings in your Google Drive\" — javítva: Step 2 on transcripts is vague - says transcript is automatic but doesn't tell the user what to click; a beginner won't know how to start it; Path example uses yourname@gmail.com but recording/transcripts mostly need a paid Workspace account, which is only mentioned later - coul",
+      "ref": "2026-07-23T01-48-34-084Z_google-workspace_Google_Meet_now_organizes_your_meeting_notes__tran.json",
+      "at": "2026-07-24T17:21:46.094Z"
+    },
+    {
+      "id": "m178491406705625",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"NTT DATA Group cuts incident analysis to 30 minutes with Codex\" — javítva: NO_FRONTMATTER: A cikk nem YAML frontmatter-rel kezdődik; Reviewer verdict: Critical auto-check failures: NO_FRONTMATTER: A cikk nem YAML frontmatter-rel kezdődik; újraküldöm.",
+      "ref": "2026-07-23T01-48-34-084Z_openai-blog_NTT_DATA_Group_cuts_incident_analysis_to_30_minute.json",
+      "at": "2026-07-24T17:27:47.056Z"
+    },
+    {
+      "id": "m178491410943754",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Random  styles in draft mode\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers. HONESTY RULE: name the REAL products/places/organisations from the source; NEVER invent generic UI steps (\"most platforms\"",
+      "ref": "2026-07-23T01-48-48-121Z_midjourney-updates_Random__styles_in_draft_mode.json",
+      "at": "2026-07-24T17:28:29.437Z"
+    },
+    {
+      "id": "m178491413660925",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Relax mode for V8 Alpha\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Verify the actual UI and functionality of Midjourney's settings panel and web app, and rephrase the article to focus on the benefits and use cases of Relax mode, rather than providing potentially incorrect step-",
+      "ref": "2026-07-23T01-48-48-122Z_midjourney-updates_Relax_mode_for_V8_Alpha.json",
+      "at": "2026-07-24T17:28:56.609Z"
+    },
+    {
+      "id": "m178491416942874",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"V8.1 Updates\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Provide more concrete examples of Midjourney's capabilities and use cases, such as generating images for social media, e-commerce, or personal projects HONESTY RULE: name the REAL products/places/organisations from the sou",
+      "ref": "2026-07-23T01-48-48-122Z_midjourney-updates_V8_1_Updates.json",
+      "at": "2026-07-24T17:29:29.428Z"
+    },
+    {
+      "id": "m178491446777629",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Web Updates\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Provide concrete examples of AI image tools that offer voice mode and saved references, such as Google's AI Image Generation or Microsoft's Azure Cognitive Services, and include sources to support claims about modern tools ",
+      "ref": "2026-07-23T01-48-48-122Z_midjourney-updates_Web_Updates.json",
+      "at": "2026-07-24T17:34:27.776Z"
+    },
+    {
+      "id": "m178491447782721",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Google Meet now organizes your meeting notes, transcripts, and recordings in your Google Drive\" (?/10)",
+      "ref": "2026-07-23T01-48-34-084Z_google-workspace_Google_Meet_now_organizes_your_meeting_notes__tran.json",
+      "at": "2026-07-24T17:34:37.827Z"
+    },
+    {
+      "id": "m178491447789214",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"NTT DATA Group cuts incident analysis to 30 minutes with Codex\" — mi a baj: NO_H1: Nincs H1 (# Cím) a cikkben",
+      "ref": "2026-07-23T01-48-34-084Z_openai-blog_NTT_DATA_Group_cuts_incident_analysis_to_30_minute.json",
+      "at": "2026-07-24T17:34:37.892Z"
+    },
+    {
+      "id": "m178491447792735",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Random  styles in draft mode\" — mi a baj: NO_FRONTMATTER: A cikk nem YAML frontmatter-rel kezdődik",
+      "ref": "2026-07-23T01-48-48-121Z_midjourney-updates_Random__styles_in_draft_mode.json",
+      "at": "2026-07-24T17:34:37.927Z"
+    },
+    {
+      "id": "m178491447800654",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Relax mode for V8 Alpha\" — mi a baj: NO_FRONTMATTER: A cikk nem YAML frontmatter-rel kezdődik",
+      "ref": "2026-07-23T01-48-48-122Z_midjourney-updates_Relax_mode_for_V8_Alpha.json",
+      "at": "2026-07-24T17:34:38.006Z"
+    },
+    {
+      "id": "m178491450349929",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"V8.1 Updates\" (?/10)",
+      "ref": "2026-07-23T01-48-48-122Z_midjourney-updates_V8_1_Updates.json",
+      "at": "2026-07-24T17:35:03.499Z"
+    },
+    {
+      "id": "m178491450698441",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Web Updates\" — mi a baj: Wrap-up recommends ChatGPT, Gemini, or Firefly but earlier section also lists Midjourney and Copilot, creating minor inconsistency; Voice mode capability for each tool is asserted generally without citing release dates or sources, which is acceptable but borders on unsupported specifics",
+      "ref": "2026-07-23T01-48-48-122Z_midjourney-updates_Web_Updates.json",
+      "at": "2026-07-24T17:35:06.984Z"
+    },
+    {
+      "id": "m178491453113346",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-07-24T17:35:31.133Z"
+    },
+    {
+      "id": "m178491496835141",
+      "from": "social",
+      "to": "team",
+      "kind": "info",
+      "text": "6 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
+      "ref": null,
+      "at": "2026-07-24T17:42:48.351Z"
     }
   ]
 }

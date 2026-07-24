@@ -1,6 +1,101 @@
 # AI World Co. — közösségi posztok
 
-*Generálva: 2026-07-24T10:26:58.024Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+*Generálva: 2026-07-24T17:42:48.348Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## Google Meet now organizes your meeting notes, transcripts, and recordings in your Google Drive
+**🔗 https://aiworldhq.com/article/how-to-find-your-google-meet-recordings-transcripts-and-note.html**
+
+**Facebook:**
+Ever spent ages hunting for a meeting recording? Here’s a simple guide to finding all your Google Meet files, including those handy AI notes, in one spot. https://aiworldhq.com/article/how-to-find-your-google-meet-recordings-transcripts-and-note.html #GoogleMeet #Productivity
+
+**Instagram:**
+Stop scrolling through Drive endlessly.
+
+Find your recordings and AI-generated meeting notes in a flash with our quick guide.
+
+Link in bio.
+#GoogleMeet #Productivity #WorkTips
+
+*Kép-ötlet: A calm, tidy home office desk with a laptop open showing a clean Google Drive folder structure.*
+
+---
+
+## V8.1 Updates
+**🔗 https://aiworldhq.com/article/how-to-get-started-with-midjourney-a-practical-guide-for-eve.html**
+
+**Facebook:**
+Need a special image for your small business website or birthday card? Our practical guide shows everyday folks how to create custom AI art in just minutes. https://aiworldhq.com/article/how-to-get-started-with-midjourney-a-practical-guide-for-eve.html #AIart #creativity
+
+**Instagram:**
+Create the perfect image that doesn't exist yet.
+
+Our simple guide helps you get started with Midjourney for personal projects, small business needs, and everyday creativity.
+
+#Midjourney #AIart #creativity #digitalart #tutorials
+Link in bio.
+
+*Kép-ötlet: A person smiling while looking at a computer screen showing colorful AI-generated artwork.*
+
+---
+
+## Qwen3.5: Towards Native Multimodal Agents - Qwen
+**🔗 https://aiworldhq.com/article/what-multimodal-ai-agents-mean-for-your-everyday-life.html**
+
+**Facebook:**
+Imagine snapping a photo of your fridge ingredients and getting a recipe suggestion instantly. We have a look at how seeing and hearing AI is making life easier. https://aiworldhq.com/article/what-multimodal-ai-agents-mean-for-your-everyday-life.html #EverydayAI #Multimodal
+
+**Instagram:**
+What if taking a photo of your fridge gave you tonight's dinner idea? 👀 We explore how AI that sees and hears is becoming a helpful hand around the house.
+Link in bio.
+#AIWorldCo #MultimodalAI #TechHelp #SmartLiving #AIForEveryone
+
+*Kép-ötlet: A smartphone displaying a clear photo of fresh groceries inside a refrigerator with warm kitchen lighting.*
+
+---
+
+## Creating a Security Agent with Cohere North and Wiz
+**🔗 https://aiworldhq.com/article/ai-security-agents-explained-what-they-are-and-why-they-matt.html**
+
+**Facebook:**
+Imagine an AI that handles a security scare while you sleep. We explain how these new agents work to keep you safe, in plain English. https://aiworldhq.com/article/ai-security-agents-explained-what-they-are-and-why-they-matt.html #AISecurity #TechExplained
+
+**Instagram:**
+What if an AI could lock a suspicious account while you sleep? It’s called an AI Security Agent, and it’s here to make your life easier. Here is the simple explanation. #AI #CyberSecurity #TechExplained #Cohere #Wiz 
+Link in bio.
+
+*Kép-ötlet: A smartphone resting on a wooden bedside table in a dark room, showing a soft, glowing lock icon.*
+
+---
+
+## Cultural Awareness in Global AI
+**🔗 https://aiworldhq.com/article/how-to-make-ai-understand-your-culture-and-why-it-often-does.html**
+
+**Facebook:**
+Ever noticed AI sometimes misses the mark on local customs? Here’s a quick guide on prompting the tool so it understands your culture and avoids awkward suggestions. https://aiworldhq.com/article/how-to-make-ai-understand-your-culture-and-why-it-often-does.html #AItips #CulturalAwareness
+
+**Instagram:**
+AI can be a bit clueless about local traditions, like suggesting the wrong food for a birthday. Here’s how to prompt it so the advice actually fits your culture. 🎂
+#AItips #LocalContext #TechHelp #EverydayAI
+Link in bio.
+
+*Kép-ötlet: A person smiling at a laptop screen in a bright, sunny kitchen.*
+
+---
+
+## Launching Health in ChatGPT 
+**🔗 https://aiworldhq.com/article/using-ai-to-understand-your-health-a-practical-guide-to-gett.html**
+
+**Facebook:**
+Confusing medical numbers can be tricky, but AI can help explain them in plain English. Here’s how to use these tools safely without skipping your GP. https://aiworldhq.com/article/using-ai-to-understand-your-health-a-practical-guide-to-gett.html #HealthAI #EverydayAI
+
+**Instagram:**
+Turn confusing blood test numbers into clear advice. AI can help explain what your results actually mean in plain language, as long as you keep your GP involved.
+#HealthAI #AIforGood #SmartHealth #TechTips #ChatGPT
+Link in bio.
+
+*Kép-ötlet: A person sitting at a kitchen table looking between a printed health report and a phone screen, with a cup of tea nearby.*
 
 ---
 

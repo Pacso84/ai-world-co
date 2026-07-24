@@ -1,0 +1,39 @@
+{
+  "_meta": {
+    "written_at": "2026-07-24T17:21:10.790Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00899784,
+    "original_draft": "2026-07-24T17-20-24-128Z_qwen-news_Qwen3_6-35B-A3B__Agentic_Coding_Power__Now_Open_to.json",
+    "source_id": "qwen-news",
+    "source_name": "Qwen / Alibaba (hivatalos, Google News szűrve)",
+    "source_link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE9GNUg4ak9DUVBYVlNNZy1iYnRZVnpWNkhOdXlubEh4NUJnbzVNUWRWVDN6WXBkT2l2ckhTeFB4UjFqT3YtUUZHVjl5Xzc3eXd0?oc=5",
+    "status": "rejected",
+    "rejected_at": "2026-07-24T17:21:35.746Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 783
+    },
+    "ai_review": {
+      "overall_score": 6,
+      "clarity_score": 3,
+      "decision": "FAIL",
+      "issues": [
+        "vague step: Search for the latest Qwen model, install the software, and start a conversation",
+        "no detailed UI guidance for using LM Studio/Ollama/Hugging Face",
+        "no fallback if the model cannot be found or download fails",
+        "steps are too high-level; lacks concrete actions for beginners"
+      ],
+      "verdict": "The article is friendly and well‑structured, but as a how‑to guide it lacks clear, step‑by‑step instructions a beginner could follow.",
+      "_aiCost": 0,
+      "_provider": "cerebras",
+      "_model": "gpt-oss-120b",
+      "_attempts": 1
+    },
+    "reason": "The article is friendly and well‑structured, but as a how‑to guide it lacks clear, step‑by‑step instructions a beginner could follow.",
+    "can_retry": true
+  },
+  "article_markdown": "---\ntitle: \"How to Try Qwen's Free Open-Source AI Coding Assistant\"\nsubtitle: \"A new open-weights model brings agentic coding to anyone curious enough to try — here's what that means in plain English.\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"open-source\", \"coding-ai\", \"qwen\", \"automation\"]\n---\n\n# How to Try Qwen's Free Open-Source AI Coding Assistant\n\nYou know that feeling when you're trying to wrangle a messy spreadsheet, automate a small weekly task, or just learn something new — and wish there was a patient helper sitting next to you, who never got tired or judgemental? That kind of \"sidekick\" moment is exactly what the latest release from Qwen (the AI model family from Alibaba) is aimed at. And the best bit: it's free for anyone to use.\n\n## What's actually been released\n\nQwen has put out a new large language model — that's an **LLM**, the same kind of \"engine\" that powers tools like ChatGPT. This one has been designed from the ground up for coding tasks. The most interesting part isn't the size of the model — it's that the **weights are open**.\n\nIn plain English: \"open-weights\" means the actual \"brain\" of the AI has been published for anyone to download. You can run it on your own computer, or use it through free services that host it for you. You don't need a monthly subscription, and no single company is the gatekeeper deciding who gets access.\n\nIf you've ever felt a bit uneasy about pasting your work files into a chatbot, this kind of release is worth paying attention to. The model is yours to inspect, modify, and run privately if you want to.\n\n## What \"agentic coding\" actually means\n\nYou've probably heard the word **agent** floating around in AI news. An AI agent isn't just a chatbot waiting patiently for your next message. It's an AI that can:\n\n- Plan a task in multiple steps\n- Use other tools (read files, run code, check results)\n- Spot its own mistakes and try again\n- Keep going until the job is actually done\n\nAdd \"coding\" to that, and you get something genuinely useful for everyday people: an AI that can take a goal like \"sort these photos into folders by date\" and figure out the steps to do it — not just hand you a code snippet and wish you luck.\n\nThis is different from the older pattern of \"ask the AI for code, copy it, paste it, debug it yourself for an hour.\" The agentic style lets you describe the outcome you want, then watch (or walk away while) the AI works through the steps.\n\n## How you can try it, even if you don't write code\n\nYou don't need a developer background. Here are three realistic starting points:\n\n- **Through a chat interface.** Tools like LM Studio, Ollama, or Hugging Face let you download and chat with open models without writing a single line of code. Search for the latest Qwen model, install the software, and start a conversation.\n- **For small automations at work or home.** Think: renaming files, reformatting a CSV, drafting a template, pulling public information from a website. These are the jobs that quietly eat an hour of your week, and an agent can chew through them in minutes.\n- **For learning.** Ask the AI to explain a script line by line, or to translate a snippet into something else. It's patient in a way most human tutors can't always be.\n\n## What this means for you\n\n- **If you're a curious everyday user:** the price of entry is dropping fast. You can experiment with capable AI without a monthly bill, and your data can stay on your own machine if you prefer.\n- **If you run a small business or freelance:** think about the boring, repetitive tasks on your plate. A local, free AI assistant might be the cheapest \"intern\" you've ever had — useful for first drafts, data tidying, and quick prototypes.\n- **If you're new to all of this:** don't worry about catching up. Pick one tiny task you do often, and ask an open-source model to help. Treat it like a curious friend who's happy to explain what they did.\n\n## Wrap-up\n\nOpen-weights models like Qwen's latest release are quietly shifting who gets to use powerful AI. You don't have to be a developer, and you don't have to pay a subscription fee. If you've been curious, today is a perfectly good day to download an open model, fire up a chat window, and ask it to do one small thing you usually handle by hand. Start with something low-stakes, see how it goes, and let curiosity drive the next step.",
+  "original_title": "Qwen3.6-35B-A3B: Agentic Coding Power, Now Open to All - Qwen"
+}

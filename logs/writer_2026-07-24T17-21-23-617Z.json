@@ -1,0 +1,29 @@
+{
+  "started_at": "2026-07-24T17:20:24.560Z",
+  "drafts_total": 2,
+  "articles_written": 2,
+  "articles_failed": 0,
+  "total_cost_usd": 0.013223664,
+  "by_article": [
+    {
+      "draft": "2026-07-24T17-20-24-128Z_qwen-news_Qwen3_6-35B-A3B__Agentic_Coding_Power__Now_Open_to.json",
+      "writer_output": "WRITER_2026-07-24T17-20-24-128Z_qwen-news_Qwen3_6-35B-A3B__Agentic_Coding_Power__Now_Open_to.json",
+      "success": true,
+      "cost_usd": 0.00899784,
+      "duration_ms": 46230,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-07-24T17-20-24-127Z_meta-ai_Meta_AI_Doesn_t_Just_Think__It_Acts.json",
+      "writer_output": "WRITER_2026-07-24T17-20-24-127Z_meta-ai_Meta_AI_Doesn_t_Just_Think__It_Acts.json",
+      "success": true,
+      "cost_usd": 0.004225824,
+      "duration_ms": 12826,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    }
+  ],
+  "finished_at": "2026-07-24T17:21:23.617Z",
+  "duration_seconds": 59.057
+}
