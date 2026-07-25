@@ -1,6 +1,112 @@
 # AI World Co. — közösségi posztok
 
-*Generálva: 2026-07-25T02:26:23.859Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+*Generálva: 2026-07-25T09:37:50.072Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## Observer: Built by and for People With Paralysis, This ALS Tech Gives A.I. a Human Voice
+**🔗 https://aiworldhq.com/article/ai-voice-cloning-for-accessibility-what-everyday-people-shou.html**
+
+**Facebook:**
+Imagine being able to speak again with a custom AI voice, even if you can't use your own voice. This new tech helps people with ALS keep their conversations natural. Learn how it works https://aiworldhq.com/article/ai-voice-cloning-for-accessibility-what-everyday-people-shou.html #Accessibility #VoiceAI
+
+**Instagram:**
+Your voice, your words — even if you can’t speak.
+AI voice cloning lets people with paralysis generate a digital copy of their own speech, keeping their personality alive in everyday chats.
+#Accessibility
+#VoiceAI
+#EverydayTech
+Link in bio.
+
+*Kép-ötlet: A person in a wheelchair smiling while looking at a tablet displaying a waveform, with soft lighting.*
+
+---
+
+## Gran Turismo Sophy™, Five Years On: From Nature Cover to Open Frontier
+**🔗 https://aiworldhq.com/article/how-ai-learns-to-race-and-what-that-teaches-you-about-daily-.html**
+
+**Facebook:**
+Ever wonder how AI gets so good at racing? Discover how a simple learning loop can help you improve everyday decisions. https://aiworldhq.com/article/how-ai-learns-to-race-and-what-that-teaches-you-about-daily-.html #reinforcementlearning #AIexplained
+
+**Instagram:**
+What can a racing game teach us about life?
+AI uses reinforcement learning – learning by trial, error and feedback, just like building new habits.
+#reinforcementlearning #AIexplained #gamingAI
+Link in bio.
+
+*Kép-ötlet: A sleek race car on a stylised circuit with a subtle digital overlay hinting at AI learning.*
+
+---
+
+## Introducing Woosh: Sony AI's Sound Effect Foundation Model
+**🔗 https://aiworldhq.com/article/how-to-create-custom-sound-effects-with-ai-even-if-you-re-no.html**
+
+**Facebook:**
+Need a quick whoosh or thunderclap for your video? Sony AI's new sound AI can turn a single word into a ready‑to‑use audio clip, saving you time and money. https://aiworldhq.com/article/how-to-create-custom-sound-effects-with-ai-even-if-you-re-no.html #audioAI #contentcreation
+
+**Instagram:**
+Turn a word into a sound effect in seconds.
+With Sony AI's Woosh you can type "whoosh" and get a polished audio clip, no studio needed.
+#sounddesign
+#aiforcreators
+#smallbusiness
+Link in bio.
+
+*Kép-ötlet: A laptop screen showing a typed word with a waveform appearing beside it, a coffee mug and notes nearby.*
+
+---
+
+## Ask Copilot to compare two product specs and list the differences
+**🔗 https://aiworldhq.com/article/ask-copilot-to-compare-two-product-specs-and-list-the-differ.html**
+
+**Facebook:**
+Need to decide between two product specs quickly? Ask Copilot to read both pages and highlight the key differences for you. https://aiworldhq.com/article/ask-copilot-to-compare-two-product-specs-and-list-the-differ.html #GitHubCopilot #ProductComparison
+
+**Instagram:**
+Skip the long read – let Copilot do the heavy lifting.
+Just paste the two product pages and Copilot will list the main differences in minutes, so you can choose the right tool faster.
+#GitHubCopilot
+#ProductComparison
+#AIHelp
+#BusinessTips
+Link in bio.
+
+*Kép-ötlet: A clean laptop screen showing two product spec pages side by side with a subtle AI icon above them.*
+
+---
+
+## Ask DeepSeek to explain complex topics and concepts in simple, easy-to-understand language
+**🔗 https://aiworldhq.com/article/unpack-complex-ideas-with-deepseek-s-simple-explanations.html**
+
+**Facebook:**
+Feeling stuck on a tricky subject? DeepSeek can turn it into plain language so you can get it fast. https://aiworldhq.com/article/unpack-complex-ideas-with-deepseek-s-simple-explanations.html #ai #learning
+
+**Instagram:**
+Make tough topics simple.
+Ask DeepSeek to break down complex ideas into easy‑to‑understand explanations – great for busy people who want to learn quickly.
+#ai
+#learning
+#deepseek
+#simpleexplanations
+Link in bio.
+
+*Kép-ötlet: A person smiling at a tablet displaying a clear, illustrated explanation, with a lightbulb icon above.*
+
+---
+
+## Ask Gemini to explain a confusing work email in plain English before you reply
+**🔗 https://aiworldhq.com/article/ask-gemini-to-explain-a-confusing-work-email-in-plain-englis.html**
+
+**Facebook:**
+Stuck on a confusing email? Let Gemini translate the jargon into plain English so you can reply with confidence. https://aiworldhq.com/article/ask-gemini-to-explain-a-confusing-work-email-in-plain-englis.html #WorkSmarter #Gemini
+
+**Instagram:**
+Stop staring at confusing emails. 💡 Ask Gemini to explain the tricky bits in plain English so you can reply clearly and quickly.
+
+#GoogleGemini #WorkspaceTips #AIAustralia #PlainEnglish
+Link in bio.
+
+*Kép-ötlet: A calm person sitting at a tidy desk with a coffee cup, smiling at their laptop screen.*
 
 ---
 
