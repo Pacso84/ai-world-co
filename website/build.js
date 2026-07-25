@@ -2335,8 +2335,11 @@ function main() {
   mkdirSync(OUT_ARTICLE_DIR, { recursive: true });
   mkdirSync(OUT_ASSETS_DIR, { recursive: true });
 
-  // Asset-ek másolása (CSS + JS + logó + saját betű-CSS)
-  for (const asset of ['style.css', 'app.js', 'logo.svg', 'fonts.css', 'chat.js']) {
+  // Asset-ek másolása (CSS + JS + logó + saját betű-CSS + OG-alapkép)
+  // og-default.jpg (2026-07-25): a kép nélküli oldalak OG-előnézete + a social/
+  // pinterest poszterek VÉGSŐ tartalék-képe. Eddig kimaradt a másolásból → 404
+  // élőben (kép nélküli megosztás/pin, ha valaha ez a tartalék jön).
+  for (const asset of ['style.css', 'app.js', 'logo.svg', 'fonts.css', 'chat.js', 'og-default.jpg']) {
     const src = join(ASSETS_SRC, asset);
     if (existsSync(src)) {
       copyFileSync(src, join(OUT_ASSETS_DIR, asset));
