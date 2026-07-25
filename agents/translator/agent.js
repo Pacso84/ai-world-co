@@ -126,6 +126,13 @@ async function translateMarkdown(markdown, langName) {
   // CSONKULÁS-VÉDELEM: ha a fordítás gyanúsan rövidebb az angolnál (kifutott
   // a token-keretből), NE mentsük el félbevágva — inkább következő körben újra.
   if (body.length < parts.body.length * 0.35) return null;
+  // NEM-FORDÍTÁS VÉDELEM (2026-07-25): a modell néha visszaadja az ANGOLT (nem
+  // fordít) → angol csúszna a fordítás-slotba (10 ilyen es/fr cikk volt). Az angol
+  // funkciószó-sűrűség jól elválik: JÓ fordítás ≤0.016, ANGOLUL-MARADT ~0.16 → a
+  // 0.06 küszöb bőven biztonságos. Ilyenkor NEM mentünk (null → következő futás
+  // újrapróbálja). A célnyelv itt mindig nem-angol (hu/es/de/fr).
+  const enWords = (body.match(/\b(the|and|with|your|you|for|this|that|what|when|from|will|can|how|are)\b/gi) || []).length;
+  if (enWords / (body.split(/\s+/).length || 1) > 0.06) return null;
 
   const fm = parts.fm
     .replace(/^title:\s*.*$/m, `title: "${title.replace(/"/g, '')}"`)
