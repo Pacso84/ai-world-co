@@ -1,0 +1,53 @@
+{
+  "_meta": {
+    "written_at": "2026-07-25T01:46:32.852Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.01034004,
+    "original_draft": "2026-07-25T01-45-20-126Z_sony-ai_Introducing_Woosh__Sony_AI_s_Sound_Effect_Foundati.json",
+    "source_id": "sony-ai",
+    "source_name": "Sony AI (hivatalos)",
+    "source_link": "https://ai.sony/blog/introducing-woosh-sony-ais-sound-effect-foundation-model",
+    "status": "published",
+    "published_at": "2026-07-25T01:53:14.259Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 913
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured explainer with friendly tone, clear explanations of technical terms (like 'model'), practical relatable examples, and a useful 'What this means for you' section with audience-specific takeaways. No American spellings, no clichés, no prohibited content, and no invented facts detected. The Sony AI source is verifiable and the article is honest about limitations.",
+      "_aiCost": 0.0016389,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-07-25T02:00:00.953Z",
+    "guide_worthy": false,
+    "pairing_reason": "The article introduces Woosh but uses future tense ('Soon, you might just type a sentence') and doesn't confirm it's publicly available or explain how to access it — it's more of an explainer piece than an actionable guide.",
+    "seo": {
+      "meta_description": "Create custom sound effects with AI in seconds. Sony AI's Woosh turns text like 'thunderclap' into audio—no sound design experience required.",
+      "keywords": [
+        "AI sound effects generator",
+        "how to create sound effects with AI",
+        "Sony AI Woosh",
+        "AI audio generation tools",
+        "text to sound effects"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more long-tail keywords like 'create sound effects from text' or 'AI sound generator for videos' to capture beginner search intent",
+        "Consider adding a comparison section with alternatives like ElevenLabs or Mureka for broader keyword coverage",
+        "Add FAQ section targeting 'is AI sound free' or 'best free AI sound generator' questions"
+      ],
+      "optimised_at": "2026-07-25T02:13:01.947Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"How to Create Custom Sound Effects with AI (Even If You're Not a Sound Designer)\"\nsubtitle: \"AI sound generators like Sony AI's Woosh can turn a sentence like 'thunderclap' into a finished audio clip. Here's how they work and what to do with them.\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"sound-effects\", \"audio-ai\", \"content-creation\", \"creative-tools\", \"sony-ai\"]\n---\n\n# How to Create Custom Sound Effects with AI (Even If You're Not a Sound Designer)\n\nPicture this: you're editing a 30-second reel for your small business, and you need a quick \"whoosh\" when the logo appears. Or you're putting together a school presentation and want a door creak for a dramatic reveal. Usually, you'd spend 20 minutes scrolling through royalty-free sound libraries. Soon, you might just type a sentence.\n\nThat's the promise of a new wave of AI sound effect generators. The latest is **Woosh**, a tool from Sony AI that turns plain English descriptions — \"heavy rain on a tin roof\", \"a laser gun charging up\" — into finished audio clips in seconds. It's part of a broader push to make sound design as easy as typing a message.\n\n## What's actually new here\n\nFor years, AI could write essays and generate images. Audio was a different story. Music generators got a lot of attention, but sound effects — the door slams, the footsteps, the explosions, the soft ambient hum of a forest — were largely left to humans. Sound designers built their sonic libraries clip by clip, layering and editing until the scene felt right.\n\nSony AI's research team looked at this and thought: why not treat sound effects the way image generators treat pictures? So they trained a **model** (the technical term for an AI that has learned patterns from huge amounts of example data — think of it like a chef who's tasted thousands of dishes and can now invent a new recipe on the spot) on a large collection of professionally recorded sound effects. Now, when you describe what you want, the model generates something that fits from scratch.\n\n## How AI sound effect generators work (in plain English)\n\nThe model has listened to a massive library of labelled sounds during training. When you write \"wooden door creaking open slowly\", it doesn't search for an existing clip. It builds a new sound based on what it learned wooden doors sound like — the creak pattern, the resonance, the slight scrape at the end.\n\nA few other tools work in similar ways. ElevenLabs offers a sound effects generator, and Stability AI has Stable Audio. The basic idea is the same: type a description, get a sound. The differences are in the small details — how long the clips can be, how natural they sound, and whether you can refine them after generation.\n\n## Practical ways you can use this\n\nHere's the fun part. Even if you don't work in audio, sound effects sneak into all kinds of projects:\n\n- **Social media videos** — a quick \"ding\" when a price drops, a \"whoosh\" for transitions, a heartbeat for dramatic pause.\n- **Podcasts** — intro stings, background atmosphere, a soft bell to signal a new segment.\n- **School or work presentations** — a coin drop when you reveal a stat, applause when a key point lands.\n- **Hobby game development** — footsteps, item pickups, ambient weather for your indie project.\n- **Short films and animations** — foley-style effects (the everyday sounds that make scenes feel real) without renting a studio.\n\nMost tools let you preview, download, and drop the result straight into your editing software.\n\n## What this means for you\n\n- **If you're a content creator or hobbyist**: This is one of those quiet time-savers that adds up. Instead of spending an afternoon hunting through a sound library, you can generate five options in a minute and pick the best. Try it on your next video project, even just for fun.\n- **If you run a small business**: Your marketing doesn't have to sound flat anymore. A few well-placed sound effects can make a product demo feel more polished, and you don't need to hire an audio engineer to get there.\n- **If you're a teacher, student, or just curious**: Think of these tools as a creative playground. Type a wild description — \"a dragon sipping tea\" — and see what comes back. It's a low-stakes way to see generative AI (tools that make new content from scratch) working in a different medium.\n- **A few honest limits**: AI sound effects are improving fast, but they still struggle with very specific real-world sounds. If you need a recording of *your* product's actual click, this won't replace a microphone. Also, check the licence before using clips in commercial work — most tools allow it, but the rules vary.\n\n## Wrap-up\n\nAI sound effect generators are one of those tools that sound niche — until you actually need a sound and realise how much time they save. Whether you're making a 30-second reel or a 20-minute podcast, the ability to type \"a heavy wooden door creaking open\" and get a usable clip in seconds is genuinely useful.\n\n**Your next step**: pick one short project you've been putting off — a social post, a quick presentation, a hobby video — and try generating one sound effect for it. You don't need a paid plan to experiment. Many tools offer a free tier. Just type what you want to hear and see what happens.",
+  "original_title": "Introducing Woosh: Sony AI's Sound Effect Foundation Model"
+}

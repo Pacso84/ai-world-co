@@ -256,5 +256,35 @@
         "The claim that Relax mode 'typically requires at least a Standard plan or higher' is presented as a specific tier fact without verification and may be wrong (Relax has historically been tied to Standard+ plans, but stating it as a definitive rule without hedging is risky)."
       ]
     }
+  ],
+  "2026-07-25": [
+    {
+      "at": "2026-07-25T01:56:18.048Z",
+      "file": "WRITER_2026-07-23T01-48-34-084Z_openai-blog_NTT_DATA_Group_cuts_incident_analysis_to_30_minute.json",
+      "action": "block",
+      "reasons": [
+        "The article attributes a specific case study to NTT DATA using \"GitHub's Codex\" to cut incident analysis time to around 30 minutes. While OpenAI's Codex exists as a legacy product, there is no verified public claim that NTT DATA uses 'GitHub's Codex' (a product not currently marketed under that name by GitHub) in this specific way. This is a fabricated specific claim presented as fact.",
+        "GPT-5.6 appears on the verified-real names list but is not mentioned in the article — however, this is not itself a problem. The fabricated 'GitHub's Codex' claim is the real issue."
+      ]
+    },
+    {
+      "at": "2026-07-25T02:02:36.157Z",
+      "file": "WRITER_GUIDE_learn-basic-phrases-in-a-new-language-using-alexa-s-ai-conve.json",
+      "action": "block",
+      "reasons": [
+        "The article describes a specific voice command 'Alexa, open Conversations' and a panel called 'Conversations' or 'AI Chat' on Echo Show home screens for accessing Alexa+'s language learning mode — these appear to be fabricated UI elements/voice commands. Alexa+'s conversational features are not launched via an 'open Conversations' command or an 'AI Chat' home screen panel.",
+        "The article states a specific wake phrase 'Alexa, are you the new Alexa?' to check if Alexa+ is enabled — this does not appear to be a documented Amazon phrase.",
+        "The article claims Alexa+ offers a language learning / pronunciation feedback / role-play conversation mode with level selection, which is not a documented feature of Alexa+. Alexa+ is a general AI assistant upgrade; there is no evidence it includes a structured language tutoring mode with beginner/intermediate levels, pronunciation scoring, and role-play scenarios."
+      ]
+    },
+    {
+      "at": "2026-07-25T02:03:06.640Z",
+      "file": "WRITER_GUIDE_master-your-inbox-summarise-and-draft-emails-faster-with-app.json",
+      "action": "block",
+      "reasons": [
+        "The article describes a 'Summarise' button in Mail as a UI element of Apple Intelligence. As of current knowledge, Apple Mail does not have a 'Summarise' button — Apple Intelligence email summarization in Mail works as automatic message summaries that appear at the top of emails in the inbox list, not as a tappable button labeled 'Summarise' that the user must tap.",
+        "The article describes a 'Compose' prompt option within Mail's Writing Tools. The Writing Tools panel in Mail offers Rewrite, Proofread, Summary, and tone options (Friendly, Professional, Concise), but the 'Compose' prompt-to-generate feature ('Type a short instruction... then tap the arrow or Send to compose button') is not a documented Mail Writing Tools option — that's a feature in some other contexts, not specifically Mail's Writing Tools panel as described."
+      ]
+    }
   ]
 }

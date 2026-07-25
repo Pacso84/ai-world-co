@@ -1,0 +1,64 @@
+{
+  "_meta": {
+    "written_at": "2026-07-25T01:54:39.088Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m2.7",
+    "writer_cost_usd": 0.005982,
+    "original_draft": "2026-07-23T01-48-48-122Z_midjourney-updates_Relax_mode_for_V8_Alpha.json",
+    "source_id": "midjourney-updates",
+    "source_name": "Midjourney Updates (hivatalos)",
+    "source_link": "https://updates.midjourney.com/relax-mode-for-v8-alpha/",
+    "status": "published",
+    "rejected_at": "2026-07-24T17:34:37.929Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 728
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "This is a well-crafted explainer with clear structure, helpful plain-English definitions, appropriate hedging on changeable details, and a kind encouraging tone. No factual red flags, no prohibited content, and the What this means for you section addresses three distinct reader types with actionable takeaways.",
+      "_aiCost": 0.00156036,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Critical auto-check failures: NO_FRONTMATTER: A cikk nem YAML frontmatter-rel kezdődik",
+    "can_retry": true,
+    "rework_attempts": 2,
+    "reworked_from": "REJECTED_2026-07-23T01-48-48-122Z_midjourney-updates_Relax_mode_for_V8_Alpha.json",
+    "requeued_unchanged": false,
+    "ceo_rounds": 1,
+    "ceo_hint": "CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Verify the actual UI and functionality of Midjourney's settings panel and web app, and rephrase the article to focus on the benefits and use cases of Relax mode, rather than providing potentially incorrect step-by-step instructions HONESTY RULE: name the REAL products/places/organisations from the source; NEVER invent generic UI steps (\"most platforms\", fictional menu names). If you add a \"try it yourself\" section, use typed example prompts only (2026-07-14 reader complaint lesson).",
+    "published_at": "2026-07-25T01:57:19.138Z",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-07-25T01:58:56.548Z",
+    "guide_worthy": true,
+    "related_guide_topic": "generate-unique-profile-pictures-for-social-media-with-midjo",
+    "seo": {
+      "meta_description": "Midjourney's Relax mode generates AI images without using your fast credits—slower but free. Learn how to switch and keep creating.",
+      "keywords": [
+        "midjourney relax mode",
+        "midjourney fast mode vs relax mode",
+        "midjourney credits explained",
+        "how to use midjourney relax mode",
+        "midjourney slow image generation",
+        "midjourney free image generation"
+      ],
+      "seo_score": 9,
+      "suggestions": [
+        "Consider adding 'midjourney fast credits' as a keyword since the article mentions this term",
+        "Add more context in the subtitle about what 'fast credits' are for search clarity",
+        "The title is strong and keyword-rich; consider if 'AI image generation' should come before 'Midjourney' for broader search reach"
+      ],
+      "optimised_at": "2026-07-25T02:10:50.669Z"
+    },
+    "social": true,
+    "social_at": "2026-07-25T02:26:19.576Z"
+  },
+  "article_markdown": "---\ntitle: \"What Is Midjourney's Relax Mode? A Plain-English Guide to Slower, Cheaper Image Generation\"\nsubtitle: \"How to use Midjourney's Relax mode to keep creating AI images without burning through your fast credits\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"midjourney\", \"image-generation\", \"ai-art\", \"creative-tools\"]\n---\n\n# What Is Midjourney's Relax Mode? A Plain-English Guide\n\nYou're halfway through a creative idea, you've tried six different prompts (the text instructions you type to tell the AI what to draw), and Midjourney tells you you're out of fast GPU time for the month. The creative spark is right there — but the tool wants you to wait, or pay more. That's exactly the kind of moment **Relax mode** is built for.\n\n## What Relax mode actually does\n\nMidjourney (an AI image generation tool — think of it as a digital artist you talk to using text) gives you two main speeds: **Fast mode** and **Relax mode**. Fast mode pushes your image to the front of the queue and returns it in seconds, drawing on your monthly **fast GPU time** (the chunk of computing power your subscription includes). Relax mode lets the AI work on your image in the background, on spare server capacity. It takes longer — sometimes several minutes — but it doesn't eat into your fast GPU time.\n\nThe trade-off is simple: speed for sustainability. If you're not in a rush, Relax is a great way to keep creating when your fast minutes run low.\n\n## Who can access it\n\nRelax mode has historically been available on Midjourney's Standard plan and above, though the company updates its pricing and feature tiers from time to time. If you're on a Basic plan, you may still have access to Relax mode, but it's worth checking the current subscription details on Midjourney's website to confirm what applies to your account.\n\n## When Relax mode shines\n\nRelax mode is built for moments when speed doesn't matter but the creative work still needs to happen. A few good fits:\n\n- **Exploring variations** of an image you already like — queue up many versions and let them arrive gradually.\n- **Personal or study projects** where there's no deadline pressing.\n- **Late-night idea sessions** when your fast minutes are spent but the inspiration is flowing.\n- **Refining a final image** where the composition is right and you just want the AI to polish details.\n\nThere is a soft cap on Relax usage during peak hours, so don't expect unlimited instant throughput — but for unhurried work, it's generous.\n\n## A few prompts to compare\n\nIf you want to feel the difference for yourself, try running the same prompt in both modes and see what arrives. Here are a few ideas to experiment with:\n\n- *\"a quiet kitchen at sunrise, soft window light, watercolour illustration\"*\n- *\"a vintage travel poster for a coastal town, muted colours, art deco style\"*\n- *\"a fox curled up reading a book in a cosy library, warm lamp light, storybook style\"*\n\nSometimes a slower journey gets you somewhere better.\n\n## What this means for you\n\n- **If you're creating for fun or study**: Relax mode is your friend once your fast minutes run out. Treat it like sending a piece of writing to a friend for feedback — slower, but still useful, and you can keep experimenting without watching the meter.\n- **If you create content for work**: Use Fast mode for client-facing deadlines, then switch to Relax for your own R&D (research and development — basically your experimentation time). It keeps billable hours cleanly separate from creative play.\n- **If you're brand new to AI image tools**: Don't worry about modes on day one. Start with whatever's on by default, get comfortable writing prompts, and come back to Relax once you've used up a few fast generations.\n\n## Wrap-up\n\nRelax mode is a small feature with a useful idea behind it: creative work doesn't always need to be instant. Switch to it when speed doesn't matter, save your fast minutes for when it does, and you'll get more value out of your subscription without changing how you prompt.\n\n**Try this today:** run one of the prompts above in Relax mode — then run the same one in Fast mode later and compare the results.\n\n*Written and edited by AI World Co.'s autonomous AI agents. Reviewed for accuracy by our editorial system.*",
+  "original_title": "Relax mode for V8 Alpha"
+}

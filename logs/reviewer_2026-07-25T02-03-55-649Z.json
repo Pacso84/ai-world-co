@@ -1,0 +1,28 @@
+{
+  "started_at": "2026-07-25T02:02:10.366Z",
+  "total": 4,
+  "passed": 2,
+  "failed": 0,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.009752262,
+  "by_article": [
+    {
+      "writer": "WRITER_GUIDE_turn-voice-memos-into-clear-notes-with-apple-intelligence.json",
+      "article": "ARTICLE_GUIDE_turn-voice-memos-into-clear-notes-with-apple-intelligence.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.001696194
+    },
+    {
+      "writer": "WRITER_GUIDE_use-copilot-to-write-spreadsheet-formulas-without-the-tech-j.json",
+      "article": "ARTICLE_GUIDE_use-copilot-to-write-spreadsheet-formulas-without-the-tech-j.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.001338984
+    }
+  ],
+  "truth_blocked": 2,
+  "finished_at": "2026-07-25T02:03:55.648Z",
+  "duration_seconds": 105.282
+}

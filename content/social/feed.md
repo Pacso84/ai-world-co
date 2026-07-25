@@ -1,6 +1,114 @@
 # AI World Co. — közösségi posztok
 
-*Generálva: 2026-07-24T20:30:58.536Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+*Generálva: 2026-07-25T02:26:23.859Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## Random  styles in draft mode
+**🔗 https://aiworldhq.com/article/how-midjourney-s-style-reference-feature-works-an-explainers.html**
+
+**Facebook:**
+Want consistent looks for your AI images without extra effort? Midjourney's Style Reference lets you apply a visual style in just a few clicks. https://aiworldhq.com/article/how-midjourney-s-style-reference-feature-works-an-explainers.html #aiart #midjourney
+
+**Instagram:**
+Give your AI art a signature style in seconds.
+Midjourney's Style Reference uses a reference picture to match that look across all your creations – great for busy creators.
+#aiart
+#midjourney
+#imagegeneration
+#creative
+Link in bio.
+
+*Kép-ötlet: A hand holding a sketchbook next to a laptop screen displaying an AI‑generated image with a distinct watercolor style.*
+
+---
+
+## Relax mode for V8 Alpha
+**🔗 https://aiworldhq.com/article/what-is-midjourney-s-relax-mode-a-plain-english-guide-to-slo.html**
+
+**Facebook:**
+Need more AI art without burning through your fast credits? Midjourney’s Relax mode lets you keep creating at a slower pace for free. Find out how to switch it on. https://aiworldhq.com/article/what-is-midjourney-s-relax-mode-a-plain-english-guide-to-slo.html #aiart #midjourney
+
+**Instagram:**
+Keep creating AI images without draining your fast credits.
+Relax mode slows generation but saves your GPU minutes, so you can explore more ideas cost‑free.
+#midjourney
+#aiart
+Link in bio.
+
+*Kép-ötlet: A relaxed home office with a computer screen displaying a Midjourney prompt and a steaming coffee mug nearby.*
+
+---
+
+## Web Updates
+**🔗 https://aiworldhq.com/article/voice-mode-and-saved-references-in-ai-image-tools-a-practica.html**
+
+**Facebook:**
+Ever had a creative spark while your hands are busy? Try voice mode in AI image tools – you can speak your idea and keep saved references for quick edits. https://aiworldhq.com/article/voice-mode-and-saved-references-in-ai-image-tools-a-practica.html #AIArt #Productivity
+
+**Instagram:**
+Hands full? Let your voice do the drawing.
+Voice mode means you can describe an image out loud, and saved references keep your favourite prompts ready for fast tweaks.
+#AIHelp
+#CreativeWorkflow
+#VoiceAI
+Link in bio.
+
+*Kép-ötlet: A person in a kitchen speaking to a smart speaker while a colourful AI‑generated picture appears on a laptop screen.*
+
+---
+
+## Qwen-Image-3.0: Rich Content, Authentic Details, Deep Knowledge - Qwen
+**🔗 https://aiworldhq.com/article/ai-image-generation-for-everyday-people-a-plain-english-guid.html**
+
+**Facebook:**
+Need a fresh hero image for a post but not a designer? This guide shows simple prompt tips to create realistic pictures in minutes. https://aiworldhq.com/article/ai-image-generation-for-everyday-people-a-plain-english-guid.html #AItools #CreativeHelp
+
+**Instagram:**
+Turn words into images in minutes.
+Learn easy prompt tips to get the exact picture you need for social posts, presentations, or fun projects.
+#AIart
+#PromptTips
+#EverydayAI
+#CreativeTools
+#SimpleGuide
+Link in bio.
+
+*Kép-ötlet: A laptop screen displaying a text prompt beside a vivid AI‑generated illustration of a beach scene.*
+
+---
+
+## D-ID Launches “Agentic Videos,” Turning Passive Content into Interactive AI Experiences
+**🔗 https://aiworldhq.com/article/talking-videos-how-interactive-ai-videos-work-and-why-they-m.html**
+
+**Facebook:**
+Ever wish a tutorial video could answer your questions on the spot? D-ID's new Agentic Videos let you chat with the video, making learning quicker. https://aiworldhq.com/article/talking-videos-how-interactive-ai-videos-work-and-why-they-m.html #AI #VideoTech
+
+**Instagram:**
+A video you can talk to
+Now you can ask a cooking or work tutorial video follow‑up questions and get instant replies – no need to hunt for extra info.
+#AI
+#InteractiveVideo
+#Learning
+Link in bio.
+
+*Kép-ötlet: A person watching a laptop screen where a friendly digital avatar appears to be listening and responding.*
+
+---
+
+## Forbes: How AI Is Restoring Voices Lost To Disability
+**🔗 https://aiworldhq.com/article/how-ai-voice-tech-helps-people-speak-in-their-own-voice-agai.html**
+
+**Facebook:**
+New AI tools are helping people speak in their own unique voice again. It’s a heartening look at how tech can bring back connection to everyday life. https://aiworldhq.com/article/how-ai-voice-tech-helps-people-speak-in-their-own-voice-agai.html #Accessibility #VoiceAI
+
+**Instagram:**
+Imagine getting your own voice back after losing it. Personalised AI is making this possible for many people right now. It’s a beautiful use of technology to help us stay connected.
+
+#AIAccessibility #TechForGood #AssistiveTech #VoiceAI
+Link in bio.
+
+*Kép-ötlet: A warm photo of a person smiling and chatting with a friend in a bright, modern cafe.*
 
 ---
 

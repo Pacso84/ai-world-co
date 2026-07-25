@@ -1,0 +1,49 @@
+{
+  "started_at": "2026-07-25T01:55:55.216Z",
+  "total": 6,
+  "passed": 4,
+  "failed": 1,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.014794398,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-07-23T01-48-48-121Z_midjourney-updates_Random__styles_in_draft_mode.json",
+      "article": "ARTICLE_2026-07-23T01-48-48-121Z_midjourney-updates_Random__styles_in_draft_mode.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.001277694
+    },
+    {
+      "writer": "WRITER_2026-07-23T01-48-48-122Z_midjourney-updates_Relax_mode_for_V8_Alpha.json",
+      "article": "ARTICLE_2026-07-23T01-48-48-122Z_midjourney-updates_Relax_mode_for_V8_Alpha.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.00156036
+    },
+    {
+      "writer": "WRITER_2026-07-23T01-48-48-122Z_midjourney-updates_Web_Updates.json",
+      "article": "ARTICLE_2026-07-23T01-48-48-122Z_midjourney-updates_Web_Updates.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.0015216
+    },
+    {
+      "writer": "WRITER_2026-07-23T01-48-57-922Z_qwen-news_Qwen-Image-3_0__Rich_Content__Authentic_Details__D.json",
+      "article": "ARTICLE_2026-07-23T01-48-57-922Z_qwen-news_Qwen-Image-3_0__Rich_Content__Authentic_Details__D.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.0019836
+    },
+    {
+      "writer": "WRITER_2026-07-23T10-11-43-793Z_cohere-blog_Cohere_Transcribe_Arabic__Open-Source_Speech_AI.json",
+      "rejected": "REJECTED_2026-07-23T10-11-43-793Z_cohere-blog_Cohere_Transcribe_Arabic__Open-Source_Speech_AI.json",
+      "decision": "FAIL",
+      "score": 6,
+      "cost_usd": 0.00200076
+    }
+  ],
+  "truth_blocked": 1,
+  "finished_at": "2026-07-25T01:58:46.882Z",
+  "duration_seconds": 171.666
+}
