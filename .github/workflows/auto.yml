@@ -171,9 +171,14 @@ jobs:
           # esik. Eddig ingyenes GLM-en futott, ezért nem volt itt.
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           MAKE_WEBHOOK_URL: ${{ secrets.MAKE_WEBHOOK_URL }}
+          # PINTEREST (2026-07-25, forgalom-szerzés): a pinterest-poster erre a
+          # webhookra POST-ol (Make → Create a Pin). Amíg a secret nincs beállítva,
+          # a poszter kecsesen kihagyja magát (dormant) — nem hibázik.
+          PINTEREST_MAKE_WEBHOOK_URL: ${{ secrets.PINTEREST_MAKE_WEBHOOK_URL }}
         run: |
           node agents/social/agent.js --limit 6 || true
           node agents/social/poster.js --limit 2 || true
+          node agents/social/pinterest-poster.js --limit 3 || true
 
       # Napi önjelentés a Főnöktől Telegramra (naponta 1x, a 7-15 UTC sávban)
       # FORRÁS-BIZONYÍTVÁNY (2026-07-22): osztályozza a hírforrásokat (frissesség +
