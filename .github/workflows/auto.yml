@@ -166,6 +166,10 @@ jobs:
           GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
+          # 2026-07-25: a social átállt fizetős MiniMaxra (M2.5) — kell az OpenRouter
+          # kulcs, különben minden fizetős hívása elhasal és a vészhálóra (ingyenes)
+          # esik. Eddig ingyenes GLM-en futott, ezért nem volt itt.
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           MAKE_WEBHOOK_URL: ${{ secrets.MAKE_WEBHOOK_URL }}
         run: |
           node agents/social/agent.js --limit 6 || true
