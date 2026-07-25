@@ -951,8 +951,11 @@ function buildXref(articles) {
 // EN-metaadatokból számoljuk EGYSZER; a címek renderkor lokalizálódnak.
 // ===================================================================
 let RELATED = new Map();
+const REL_MIN = 4, REL_MAX = 6;   // min/max belső "kapcsolódó" link oldalanként
 function buildRelated(articles) {
   RELATED = new Map();
+  // legfrissebbek elöl — a fallback-feltöltéshez (árva oldalak elkerülése)
+  const REL_BY_RECENT = [...articles].sort((a, b) => (b.publishedAt || '').localeCompare(a.publishedAt || ''));
   for (const a of articles) {
     const at = new Set(a.tags || []);
     const scored = [];
@@ -965,7 +968,26 @@ function buildRelated(articles) {
       if (s > 1) scored.push([s, b]);   // 1 pont (csak kategória) még nem rokonság
     }
     scored.sort((x, y) => y[0] - x[0] || (y[1].publishedAt || '').localeCompare(x[1].publishedAt || ''));
-    RELATED.set(a.file, scored.slice(0, 3).map(p => p[1]));
+    const picked = scored.slice(0, REL_MAX).map(p => p[1]);
+    // FALLBACK (2026-07-25, forgalom-szerzés): egyetlen oldal se maradjon belső
+    // link NÉLKÜL. Az árva oldal (0 kapcsolódó link) rosszabbul feltérképezhető/
+    // indexelhető — pont a fiatal oldal + sok URL crawl-gondjánál kritikus. Ha
+    // kevés az erős találat, feltöltjük friss AZONOS-KATEGÓRIÁS → friss útmutató →
+    // friss bármi cikkel, min. REL_MIN linkig.
+    if (picked.length < REL_MIN) {
+      const have = new Set(picked.map(x => x.file)); have.add(a.file);
+      const fill = [
+        ...REL_BY_RECENT.filter(b => b.category === a.category),
+        ...REL_BY_RECENT.filter(b => b.isGuide),
+        ...REL_BY_RECENT
+      ];
+      for (const b of fill) {
+        if (picked.length >= REL_MIN) break;
+        if (have.has(b.file)) continue;
+        picked.push(b); have.add(b.file);
+      }
+    }
+    RELATED.set(a.file, picked);
   }
 }
 function relatedBox(a) {
