@@ -1,6 +1,121 @@
 # AI World Co. — közösségi posztok
 
-*Generálva: 2026-07-25T09:37:50.072Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+*Generálva: 2026-07-25T16:46:39.698Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## Ask Le Chat to explain a news article like you're 12 years old
+**🔗 https://aiworldhq.com/article/ask-le-chat-to-explain-a-news-article-like-you-re-12.html**
+
+**Facebook:**
+Ever read a news story and felt lost in all the jargon? Le Chat can turn any complicated article into a simple explanation you actually understand — no confusing terms, just clear answers. https://aiworldhq.com/article/ask-le-chat-to-explain-a-news-article-like-you-re-12.html #AI #News
+
+**Instagram:**
+Make sense of complicated news in seconds
+
+Le Chat turns any article into plain, easy-to-understand explanations — like you're 12, no jargon required.
+
+#AI #News #Learning #Simplify #Beginner
+
+Link in bio.
+
+*Kép-ötlet: A person calmly reading news on their phone with simple, clear icons like lightbulbs and checkmarks around them representing understanding.*
+
+---
+
+## Ask Qwen Chat to compare two cities for your next holiday in simple terms
+**🔗 https://aiworldhq.com/article/quickly-compare-two-holiday-cities-using-qwen-chat.html**
+
+**Facebook:**
+Not sure where to go for your next trip? This easy guide shows you how to compare two cities side by side—in minutes—using Qwen Chat. Get weather, costs and top attractions without the research headache. https://aiworldhq.com/article/quickly-compare-two-holiday-cities-using-qwen-chat.html #TravelTips #HolidayPlanning
+
+**Instagram:**
+Struggling to pick your next holiday destination?
+
+This step-by-step guide shows how Qwen Chat compares two cities in plain language—no jargon, just clear info on weather, costs and must-sees.
+
+#TravelTips
+#HolidayPlanning
+#AITravel
+#TripIdeas
+#TravelHacks
+
+Link in bio.
+
+*Kép-ötlet: Two simple travel photos side by side—one beach scene, one city skyline—with a subtle comparison symbol between them, clean and uncluttered.*
+
+---
+
+## Ask Qwen Chat to write a polite complaint email about a delayed flight and get a refund
+**🔗 https://aiworldhq.com/article/draft-a-polite-complaint-email-with-qwen-chat-for-flight-del.html**
+
+**Facebook:**
+Dealing with a delayed flight is stressful enough — you shouldn't have to stress over what to write either. This quick guide shows you how to use Qwen to draft a polite, professional email asking for a refund in just minutes. https://aiworldhq.com/article/draft-a-polite-complaint-email-with-qwen-chat-for-flight-del.html #traveltips #airline
+
+**Instagram:**
+Writing a complaint email shouldn't be harder than the flight delay itself
+
+This beginner-friendly guide shows you how to use Qwen to draft a polite, professional refund request in minutes — no more staring at a blank screen.
+
+#traveltips #flightdelay #qwen #aicl工具 #旅行
+
+*Kép-ötlet: A simple, clean illustration of an airplane window with a clock showing a delayed time, viewed from above*
+
+---
+
+## Automate basic email replies in Outlook with Meta AI
+**🔗 https://aiworldhq.com/article/turn-a-short-note-into-a-polished-email-reply-with-meta-ai-i.html**
+
+**Facebook:**
+Spending too long on "Thanks for your email" replies? Here's how to turn a few bullet points into a polished email reply inside Outlook—without sounding like a robot. Less time in your inbox, more time for you. https://aiworldhq.com/article/turn-a-short-note-into-a-polished-email-reply-with-meta-ai-i.html #EmailTips #Productivity
+
+**Instagram:**
+Your inbox feeling like a second job?
+
+Meta AI inside Outlook can turn a quick bullet list into a polished reply in seconds. Faster responses, fewer hours wasted.
+
+#MetaAI #OutlookHacks #EmailProductivity #AIForBeginners #WorkSmart
+
+Link in bio.
+
+*Kép-ötlet: A clean close-up of a smartphone screen showing an Outlook email draft being completed, with a subtle AI sparkle icon suggesting automation.*
+
+---
+
+## Automate meeting minutes generation using Grok after a Zoom call
+**🔗 https://aiworldhq.com/article/turn-your-zoom-call-into-meeting-minutes-in-5-minutes-with-g.html**
+
+**Facebook:**
+Just finished a Zoom call and dread typing up the notes? Grok can listen to your recording and write up the minutes for you in about 5 minutes. Here's how to set it up so you never have to do it manually again. https://aiworldhq.com/article/turn-your-zoom-call-into-meeting-minutes-in-5-minutes-with-g.html #Productivity #WorkSmarter
+
+**Instagram:**
+Stop typing meeting notes manually.
+
+Grok listens to your Zoom recording and writes up the minutes for you in roughly 5 minutes. Simple setup, no tech skills needed.
+
+Link in bio.
+
+#MeetingMinutes #WorkHacks #ProductivityTips #AIBasics #ZoomTips
+
+*Kép-ötlet: A clean desk setup with headphones, a laptop showing a Zoom call, and a floating AI chat window with friendly, minimal design*
+
+---
+
+## Automate meeting note‑taking with Microsoft Copilot in Teams
+**🔗 https://aiworldhq.com/article/automate-meeting-note-taking-with-microsoft-copilot-in-teams.html**
+
+**Facebook:**
+Stop the post-meeting note scramble. Copilot in Teams can automatically capture key points and action items from your calls, then pop them straight into Outlook for easy follow‑up. Here's how to work smarter. https://aiworldhq.com/article/automate-meeting-note-taking-with-microsoft-copilot-in-teams.html #TeamsTips #Productivity
+
+**Instagram:**
+Meetings are way more useful when someone else takes the notes
+
+Copilot in Teams automatically captures key points and action items from your calls, then sends them to Outlook so nothing falls through the cracks. Try it out next time!
+
+#TeamsTips #MicrosoftTeams #ProductivityHacks #MeetingHacks #WorkSmarter
+Link in bio.
+
+*Kép-ötlet: A clean, minimal illustration of a computer screen showing Teams with a speech bubble containing a checklist, with an arrow pointing to Outlook.*
 
 ---
 
