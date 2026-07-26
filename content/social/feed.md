@@ -1,6 +1,115 @@
 # AI World Co. — közösségi posztok
 
-*Generálva: 2026-07-26T10:31:46.737Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+*Generálva: 2026-07-26T16:58:54.409Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## Brainstorm product names for a new startup using Grok on X
+**🔗 https://aiworldhq.com/article/brainstorm-startup-names-with-one-grok-prompt-on-x.html**
+
+**Facebook:**
+Starting a new business and need a great name? Here's a simple two-minute trick using AI to generate a list of catchy, brand-ready startup names. You'll walk away with ideas you can use today. https://aiworldhq.com/article/brainstorm-startup-names-with-one-grok-prompt-on-x.html #startup #business
+
+**Instagram:**
+Need a standout name for your startup?
+
+This quick AI trick gives you a list of catchy, brand-ready names in under two minutes. Perfect when you're stuck or just need fresh ideas.
+
+#startup #entrepreneur #smallbusiness #naming #branding
+
+*Kép-ötlet: A clean desk with a notebook, pen, and laptop showing the X app, with a warm cup of coffee in the corner*
+
+---
+
+## Brainstorming Fresh Ideas for Any Personal Project with Claude
+**🔗 https://aiworldhq.com/article/brainstorming-fresh-ideas-for-any-personal-project-with-clau.html**
+
+**Facebook:**
+Staring at a blank page trying to think of a birthday gift or a new hobby to try? This straightforward guide shows how to get unstuck and spark fresh ideas in just a few minutes. https://aiworldhq.com/article/brainstorming-fresh-ideas-for-any-personal-project-with-clau.html #brainstorming #creativity
+
+**Instagram:**
+Need a creativity boost?
+Whether it's a birthday gift, a new hobby, or a personal project you've been putting off — here's a simple way to use AI to brainstorm fresh ideas fast.
+
+Link in bio.
+
+#brainstorming #creativity #personalgrowth #ai #gettingstarted
+
+*Kép-ötlet: A person sitting at a desk looking thoughtfully at a blank notebook, with small lightbulb icons or sparkles around them suggesting new ideas forming.*
+
+---
+
+## Brainstorming quick ideas for home projects and hobbies with Le Chat
+**🔗 https://aiworldhq.com/article/brainstorming-quick-ideas-for-home-projects-and-hobbies-with.html**
+
+**Facebook:**
+Ever stare at a blank weekend with nothing planned? This quick guide shows you how to use Le Chat to brainstorm fun home projects and hobbies in just ten minutes. https://aiworldhq.com/article/brainstorming-quick-ideas-for-home-projects-and-hobbies-with.html #DIY #WeekendVibes
+
+**Instagram:**
+Got a free afternoon but no ideas? This easy guide shows you how to use Le Chat to spark fresh project and hobby ideas in minutes — no tech skills needed.
+
+Link in bio.
+
+#DIYProjects #CreativeIdeas #WeekendPlans #HobbyTips #MakingThings
+
+*Kép-ötlet: A cozy living room with natural light, a notebook and pen on a coffee table, suggesting creative planning at home*
+
+---
+
+## Build a personal study-buddy chatbot in 15 minutes using Hugging Face Spaces (no code)
+**🔗 https://aiworldhq.com/article/build-a-personal-study-buddy-chatbot-in-15-minutes-using-hug.html**
+
+**Facebook:**
+Fancy having a patient study buddy that never gets tired? You can build your own AI tutor in just 15 minutes — no coding required. It quizzes you, explains tricky concepts, and adjusts to how you learn. https://aiworldhq.com/article/build-a-personal-study-buddy-chatbot-in-15-minutes-using-hug.html #learning #studytips
+
+**Instagram:**
+Ever wished you had a tutor available 24/7?
+
+You can build your own AI study buddy in 15 minutes using Hugging Face Spaces — zero coding needed. It quizzes you, explains concepts at your pace, and helps you actually remember what you learn.
+
+Link in bio.
+
+#studytips
+aiforlearning
+#studylife
+#huggingface
+#onlinelearning
+
+*Kép-ötlet: A simple, friendly illustration of a person studying at a desk with a small helpful robot beside them*
+
+---
+
+## Build a quick project timeline outline using Grok on X
+**🔗 https://aiworldhq.com/article/build-a-quick-project-timeline-outline-using-grok-on-x.html**
+
+**Facebook:**
+Need your project milestones and dates mapped out in seconds? This beginner-friendly guide shows you how to use Grok to create a timeline you can copy straight into your planner – no complex tools required. https://aiworldhq.com/article/build-a-quick-project-timeline-outline-using-grok-on-x.html #Productivity #ProjectPlanning
+
+**Instagram:**
+Stop staring at a blank project plan.
+
+This quick guide walks you through prompting Grok to break your project into milestones with dates – then copy-paste straight into your planner. Five-minute read, instant clarity.
+
+#Productivity #ProjectManagement #WorkSmarter #TaskPlanning #GettingThingsDone
+
+*Kép-ötlet: A clean desk with a laptop open showing a simple timeline list beside a handwritten planner with calendar dates.*
+
+---
+
+## Build a simple AI study buddy with Apple Intelligence on your Mac
+**🔗 https://aiworldhq.com/article/build-a-simple-ai-study-buddy-with-apple-intelligence-on-you.html**
+
+**Facebook:**
+Want to test yourself on any topic without the hassle? This simple guide shows you how to create your own AI-powered quizzes in just a few minutes using your Mac - no tech skills required. Perfect for students, lifelong learners, or anyone wanting to brush up on facts. https://aiworldhq.com/article/build-a-simple-ai-study-buddy-with-apple-intelligence-on-you.html #Learning #StudyTips
+
+**Instagram:**
+Turn your Mac into your personal quiz master
+
+In minutes, you can build custom quizzes on any topic - whether you're studying for exams or learning something new. It's simple, interactive, and actually makes revision a bit less tedious
+
+#AppleIntelligence #MacTips #StudySmart #LearnAnywhere #StudentLife
+
+*Kép-ötlet: A person relaxed at a desk with a MacBook, looking thoughtful as if testing themselves, with floating question marks and lightbulb icons around them suggesting active learning.*
 
 ---
 
