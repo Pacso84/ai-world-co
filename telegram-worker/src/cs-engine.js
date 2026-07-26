@@ -8,7 +8,10 @@ import { searchKb } from './kb-retrieval.js';
 
 export const MODEL = '@cf/meta/llama-3.3-70b-instruct-fp8-fast';
 const SITE = 'https://aiworldhq.com';
-const KB_TTL = 21600; // 6 óra
+const KB_TTL = 900; // 15 perc — a chatbot MINDIG a legfrissebb híreket lássa (2026-07-26).
+// (Volt 6 óra; a kb.json minden pipeline-futáskor frissül a 40 legújabb hírrel, de
+// a hosszú cache akár 6 óráig régi verziót szolgált ki. 15 perc = gyakorlatilag
+// mindig friss, a chat kis forgalma mellett elhanyagolható extra kb.json-lekérés.)
 
 export async function loadKb(env, lang, fetchFn = fetch) {
   const l = ['en', 'hu', 'es', 'de', 'fr'].includes(lang) ? lang : 'en';
