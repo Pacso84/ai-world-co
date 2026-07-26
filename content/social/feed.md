@@ -1,6 +1,121 @@
 # AI World Co. — közösségi posztok
 
-*Generálva: 2026-07-26T19:22:16.398Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+*Generálva: 2026-07-26T19:41:14.786Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## Create a personalised weekly meal plan based on your diet with Gemini
+**🔗 https://aiworldhq.com/article/create-a-personalised-weekly-meal-plan-based-on-your-diet-wi.html**
+
+**Facebook:**
+Ever wonder what's for dinner every week? This guide shows you how to use Gemini to build a meal plan that fits your dietary needs, ingredients you actually like, and your cooking time. https://aiworldhq.com/article/create-a-personalised-weekly-meal-plan-based-on-your-diet-wi.html #mealplanning #aiforkitchen
+
+**Instagram:**
+Stop the weekly dinner scramble.
+
+This step-by-step guide shows you how to create a personalized weekly meal plan with Gemini—one that works with your diet, your preferences, and how much time you have.
+
+Link in bio.
+
+#mealplanning #aiforkitchen #weeknightdinners #healthyhabits #aiguide
+
+*Kép-ötlet: A clean kitchen counter with fresh vegetables, a mixing bowl, and a smartphone showing a weekly meal plan calendar on the screen.*
+
+---
+
+## Create a personalised workout plan using Le Chat in under 10 minutes
+**🔗 https://aiworldhq.com/article/create-your-own-weekly-workout-plan-in-10-minutes-with-le-ch.html**
+
+**Facebook:**
+Ever wanted a workout plan that actually fits your schedule? This simple guide shows you how to create a personalised weekly routine in under 10 minutes using Le Chat — no fitness expertise needed. https://aiworldhq.com/article/create-your-own-weekly-workout-plan-in-10-minutes-with-le-ch.html #fitness
+
+**Instagram:**
+Your personal workout plan, ready in minutes
+
+Le Chat helps you build a weekly exercise routine tailored to your goals, schedule and fitness level — no experience required. Just answer a few questions and you're set.
+
+#fitness #workoutplan #aiforbeginners #personaltraining #mistral
+
+*Kép-ötlet: A person smiling while stretching at home in a bright, uncluttered space, wearing comfortable activewear.*
+
+---
+
+## Create a personalized learning plan for a new hobby with Grok
+**🔗 https://aiworldhq.com/article/create-a-personalized-learning-plan-for-a-new-hobby-with-gro.html**
+
+**Facebook:**
+Ever wanted to pick up a new skill but felt lost on where to start? Grok can help you build a personalized learning plan tailored to your pace—whether it's photography, baking or a language. Here's how it works.
+
+https://aiworldhq.com/article/create-a-personalized-learning-plan-for-a-new-hobby-with-gro.html
+
+#learning #newskills
+
+**Instagram:**
+Ever felt overwhelmed starting something new? 🌱
+
+Grok can create a step-by-step learning plan that fits your pace—no more guesswork, just clear next steps for any hobby.
+
+Link in bio.
+
+#learning #newskills #hobby #beginnerfriendly #ai
+
+*Kép-ötlet: A person calmly writing in a notebook with a cup of tea, surrounded by items representing different hobbies like a camera, baking ingredients, and language books*
+
+---
+
+## Create a personalized workout routine with DeepSeek’s multilingual chat
+**🔗 https://aiworldhq.com/article/create-a-personalised-workout-routine-with-deepseek-s-multil.html**
+
+**Facebook:**
+Struggling to find a workout plan that actually fits your life? Just tell an AI about your goals and schedule, and it'll build you a personalised day-by-day plan you can start using right away — in your language. https://aiworldhq.com/article/create-a-personalised-workout-routine-with-deepseek-s-multil.html #FitnessTips #HealthyLiving
+
+**Instagram:**
+Build a workout plan that actually works for you
+
+Tell DeepSeek your fitness goals, how much time you have, and what equipment you own. It creates a day-by-day schedule you can follow — no more confusing generic plans. Link in bio.
+
+#FitnessTips #HealthyLiving #BeginnerWorkout #PersonalisedFitness #AILife
+
+*Kép-ötlet: A yoga mat unrolled on a wooden floor next to a water bottle, with soft natural light from a window.*
+
+---
+
+## Create a simple budget spreadsheet with Perplexity’s suggestion prompts
+**🔗 https://aiworldhq.com/article/create-a-simple-budget-spreadsheet-with-perplexity-s-suggest.html**
+
+**Facebook:**
+Ever opened a spreadsheet to budget and just... stared at the blank cells? There's a simpler way. Perplexity can suggest the right categories and formulas to track your money — no spreadsheet expertise needed. Try it here: https://aiworldhq.com/article/create-a-simple-budget-spreadsheet-with-perplexity-s-suggest.html #budgettips #aiforbeginners
+
+**Instagram:**
+Set up a budget spreadsheet in minutes — no formulas required
+
+Perplexity suggests the right categories and handles the math for you. Here's a simple step-by-step to get started.
+
+#budget #moneysavingtips #aiforbeginners #spreadsheet #perplexity
+Link in bio.
+
+*Kép-ötlet: A clean, uncluttered spreadsheet on a laptop screen with a cursor highlighting an empty row, surrounded by a cup of coffee and a notepad.*
+
+---
+
+## Create a smart‑home security alert with Alexa+ routines
+**🔗 https://aiworldhq.com/article/create-a-smart-home-security-alert-with-alexa-routines.html**
+
+**Facebook:**
+Ever wish you knew the moment someone opened your front door? This simple Alexa+ routine sends you an instant alert when a door opens — no expensive security system needed. Here's how to set it up in a few minutes.
+
+https://aiworldhq.com/article/create-a-smart-home-security-alert-with-alexa-routines.html
+
+#smarthome #securitytips
+
+**Instagram:**
+Get instant peace of mind — know the moment someone opens your door, even when you're not home.
+
+This easy Alexa+ routine sends you a voice or push alert in seconds. No pricey security system required.
+
+#smarthome #alexa #homesecurity #diysecurity #smartliving
+
+*Kép-ötlet: A clean close-up of a smart speaker next to an open front door, showing the connection between the two devices.*
 
 ---
 
