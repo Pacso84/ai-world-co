@@ -1,6 +1,109 @@
 # AI World Co. — közösségi posztok
 
-*Generálva: 2026-07-26T16:58:54.409Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+*Generálva: 2026-07-26T19:01:33.145Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## Build a simple chatbot for your small‑business site with Cohere
+**🔗 https://aiworldhq.com/article/build-a-simple-q-a-chatbot-for-your-website-with-cohere.html**
+
+**Facebook:**
+Ever wish you could clone yourself to answer customer questions while you focus on running your business? This step-by-step guide shows you how to build a simple AI chatbot for your website — perfect for answering FAQs around the clock. 👇 https://aiworldhq.com/article/build-a-simple-q-a-chatbot-for-your-website-with-cohere.html #SmallBusiness #AI
+
+**Instagram:**
+Get a helpful assistant for your website — without the cost of hiring one. This quick guide shows you how to build a Q&A chatbot in 7 minutes flat.
+
+#SmallBusiness #Chatbot #AIForBusiness #TechTips #Entrepreneur
+
+Link in bio.
+
+*Kép-ötlet: A clean illustration of a friendly chat bubble next to a simple laptop displaying a small business website*
+
+---
+
+## Build a smart recipe finder that suggests meals from ingredients in the Home app
+**🔗 https://aiworldhq.com/article/build-a-smart-recipe-finder-that-suggests-meals-from-ingredi.html**
+
+**Facebook:**
+Ever opened your fridge and thought "what can I actually make with this?" There's a simple trick in the Home app that suggests meals from ingredients you already have. Here's how to try it.https://aiworldhq.com/article/build-a-smart-recipe-finder-that-suggests-meals-from-ingredi.html #AI #HomeHacks
+
+**Instagram:**
+Stop wondering what's for dinner
+
+The Home app can now suggest meals based on what you already have in your pantry — no shopping needed. Simple step-by-step guide on the blog.
+
+#AI #SmartLiving #HomeHacks #RecipeIdeas #EverydayAI
+
+Link in bio.
+
+*Kép-ötlet: A neatly organized open fridge with fresh ingredients visible, viewed from above, warm natural lighting, simple and inviting*
+
+---
+
+## Build simple community event flyers with Meta AI’s design prompts
+**🔗 https://aiworldhq.com/article/build-simple-community-event-flyers-with-meta-ai-s-design-pr.html**
+
+**Facebook:**
+Got a community event coming up but dreading the design work? Meta AI generates eye-catching flyers in minutes — no design degree needed. Here's a simple step-by-step to make your own. https://aiworldhq.com/article/build-simple-community-event-flyers-with-meta-ai-s-design-pr.html #MetaAI #CommunityEvents
+
+**Instagram:**
+Design a pro-looking flyer in minutes — no experience needed
+
+This guide walks you through using Meta AI to create clear, bright posters for your next community event. It only takes a few clicks.
+
+#MetaAI #CommunityEvents #EventPlanning #DIYDesign #LocalEvents
+
+*Kép-ötlet: A clean, bright poster on a laptop screen next to a coffee cup, with simple geometric shapes and bold text showing a sample community event flyer*
+
+---
+
+## Catch Up Fast: Summarise Long Chats in WhatsApp and Messenger with Meta AI
+**🔗 https://aiworldhq.com/article/catch-up-fast-summarise-long-chats-in-whatsapp-and-messenger.html**
+
+**Facebook:**
+Ever scrolled past something important in a long chat? There's a built-in helper in WhatsApp and Messenger that can turn any conversation into a quick summary — no more endless scrolling. https://aiworldhq.com/article/catch-up-fast-summarise-long-chats-in-whatsapp-and-messenger.html #WhatsAppTips #Productivity
+
+**Instagram:**
+Missed something important in a long chat? 😤\n\nHere's how to turn any conversation into a short summary you can read in under a minute — simple and built right into the apps you already use.\n\n#WhatsApp #Messenger #MetaAI #ProductivityHacks #EverydayTech
+
+*Kép-ötlet: A simple, clean smartphone screen showing a chat list with a subtle sparkle icon next to one conversation, suggesting hidden smart features.*
+
+---
+
+## Categorize customer feedback from online forms with Cohere
+**🔗 https://aiworldhq.com/article/categorise-customer-feedback-from-online-forms-with-cohere.html**
+
+**Facebook:**
+Tired of manually sorting through customer feedback? This easy guide shows how AI can automatically organize it for you — so you spot trends and improve your service in minutes, not hours. https://aiworldhq.com/article/categorise-customer-feedback-from-online-forms-with-cohere.html #SmallBusiness #CustomerService
+
+**Instagram:**
+Stop drowning in feedback — here's a simple way to let AI sort it for you
+
+This beginner's guide walks you through using Cohere to automatically categorise incoming comments, so you can focus on actually improving your business.
+
+#CustomerFeedback #SmallBusiness #AI #BusinessTips #GettingStarted
+
+Link in bio.
+
+*Kép-ötlet: A clean desk with a laptop showing a simple dashboard with colour-coded feedback cards being automatically sorted into categories.*
+
+---
+
+## Chat with Your Own Documents Offline Using NVIDIA ChatRTX
+**🔗 https://aiworldhq.com/article/chat-with-your-own-documents-offline-using-nvidia-chatrtx.html**
+
+**Facebook:**
+Ever wish you could ask your own documents questions — without sending them to the cloud? Now you can chat privately with your files offline, right on your PC. Here's how 👇 https://aiworldhq.com/article/chat-with-your-own-documents-offline-using-nvidia-chatrtx.html #AI #Privacy
+
+**Instagram:**
+Want to ask your documents questions without uploading them anywhere? You can now do it privately on your own computer, offline.
+
+Our guide walks you through setting it up in a few simple steps.
+
+Link in bio.
+#AITools #Productivity #Privacy #LocalAI #HowTo
+
+*Kép-ötlet: A clean laptop screen showing a document with a chat bubble, symbolising private conversation with your files.*
 
 ---
 
