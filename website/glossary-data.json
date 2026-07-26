@@ -1,5 +1,5 @@
 {
-  "_comment": "AI-kisszótár adatai — 19 kezdőbarát fogalom 5 nyelven. A build.js buildGlossaryPage() olvassa. Kézzel karbantartott, örökzöld tartalom (2026-07-08). Új fogalom: ide vedd fel mind az 5 nyelven.",
+  "_comment": "AI-kisszótár adatai — 43 kezdőbarát fogalom 5 nyelven. A build.js buildGlossaryPage() olvassa. Kézzel karbantartott, örökzöld tartalom (2026-07-08, bővítve 2026-07-26). Új fogalom: ide vedd fel mind az 5 nyelven.",
   "terms": [
     {
       "id": "ai",
@@ -248,6 +248,102 @@
       "es": { "term": "Barreras de seguridad (guardrails)", "def": "Los límites integrados que impiden que una IA haga cosas dañinas — como rechazar instrucciones peligrosas. No son perfectos, pero por eso un asistente rechaza con educación ciertas peticiones." },
       "de": { "term": "Schutzplanken (Guardrails)", "def": "Die eingebauten Grenzen, die eine KI von schädlichem Handeln abhalten — etwa das Ablehnen gefährlicher Anweisungen. Sie sind nicht perfekt, aber deshalb weist ein Assistent manche Anfragen höflich zurück." },
       "fr": { "term": "Garde-fous (guardrails)", "def": "Les limites intégrées qui empêchent une IA de faire des choses nuisibles — comme refuser des instructions dangereuses. Ils ne sont pas parfaits, mais c’est pourquoi un assistant décline poliment certaines demandes." }
+    },
+    {
+      "id": "model",
+      "en": { "term": "AI model", "def": "The 'brain' behind an AI tool — the trained program that actually does the work, like writing text or making pictures. When you hear names like GPT, Gemini or Claude, those are AI models." },
+      "hu": { "term": "AI-modell", "def": "Az AI-eszköz 'agya' — a betanított program, ami a tényleges munkát végzi: szöveget ír, képet készít. Amikor olyan neveket hallasz, mint GPT, Gemini vagy Claude, azok AI-modellek." },
+      "es": { "term": "Modelo de IA", "def": "El 'cerebro' detrás de una herramienta de IA: el programa entrenado que hace el trabajo, como escribir textos o crear imágenes. Cuando oyes nombres como GPT, Gemini o Claude, son modelos de IA." },
+      "de": { "term": "KI-Modell", "def": "Das 'Gehirn' hinter einem KI-Tool — das trainierte Programm, das die eigentliche Arbeit macht, etwa Texte schreiben oder Bilder erstellen. Namen wie GPT, Gemini oder Claude sind solche KI-Modelle." },
+      "fr": { "term": "Modèle d’IA", "def": "Le « cerveau » derrière un outil d’IA : le programme entraîné qui fait le vrai travail, comme écrire des textes ou créer des images. Quand vous entendez des noms comme GPT, Gemini ou Claude, ce sont des modèles d’IA." }
+    },
+    {
+      "id": "algorithm",
+      "en": { "term": "Algorithm", "def": "A set of step-by-step rules a computer follows to decide or sort things — like what appears first in your social media feed. 'The algorithm' usually means the hidden rules that decide what you see online." },
+      "hu": { "term": "Algoritmus", "def": "Lépésről lépésre követett szabályok, amiket a számítógép betart egy döntéshez vagy rendezéshez — például mi jelenik meg elöl a közösségi médiában. 'Az algoritmus' általában a rejtett szabályokat jelenti, amik eldöntik, mit látsz online." },
+      "es": { "term": "Algoritmo", "def": "Un conjunto de reglas paso a paso que sigue un ordenador para decidir u ordenar cosas, como qué aparece primero en tu feed de redes sociales. 'El algoritmo' suele referirse a las reglas ocultas que deciden lo que ves en internet." },
+      "de": { "term": "Algorithmus", "def": "Eine Reihe von Schritt-für-Schritt-Regeln, denen ein Computer folgt, um zu entscheiden oder zu sortieren — etwa was in deinem Social-Media-Feed zuerst erscheint. 'Der Algorithmus' meint meist die verborgenen Regeln, die bestimmen, was du online siehst." },
+      "fr": { "term": "Algorithme", "def": "Un ensemble de règles étape par étape qu’un ordinateur suit pour décider ou trier — par exemple ce qui apparaît en premier dans votre fil d’actualité. « L’algorithme » désigne souvent les règles cachées qui décident ce que vous voyez en ligne." }
+    },
+    {
+      "id": "machine-translation",
+      "en": { "term": "Machine translation", "def": "When software automatically translates text or speech from one language to another, like Google Translate. It's fast and handy, but can still miss jokes, slang or fine nuance." },
+      "hu": { "term": "Gépi fordítás", "def": "Amikor egy szoftver automatikusan lefordít szöveget vagy beszédet egyik nyelvről a másikra, mint a Google Fordító. Gyors és hasznos, de a poénokat, a szlenget vagy a finom árnyalatokat még elvétheti." },
+      "es": { "term": "Traducción automática", "def": "Cuando un software traduce texto o voz de un idioma a otro de forma automática, como Google Translate. Es rápida y práctica, pero aún puede fallar con chistes, jerga o matices sutiles." },
+      "de": { "term": "Maschinelle Übersetzung", "def": "Wenn Software Text oder Sprache automatisch von einer Sprache in eine andere überträgt, etwa Google Übersetzer. Das ist schnell und praktisch, kann aber Witze, Slang oder feine Nuancen verfehlen." },
+      "fr": { "term": "Traduction automatique", "def": "Quand un logiciel traduit automatiquement du texte ou de la parole d’une langue à une autre, comme Google Traduction. C’est rapide et pratique, mais cela peut encore rater les blagues, l’argot ou les nuances." }
+    },
+    {
+      "id": "voice-assistant",
+      "en": { "term": "Voice assistant", "def": "An AI you talk to out loud that answers or does small tasks — like Siri, Alexa or Google Assistant. You speak, it listens, then replies, sets a timer or plays music." },
+      "hu": { "term": "Hangasszisztens", "def": "Egy AI, amivel hangosan beszélsz, és válaszol vagy kis feladatokat végez — mint a Siri, az Alexa vagy a Google Asszisztens. Te beszélsz, ő figyel, majd felel, időzítőt állít vagy zenét indít." },
+      "es": { "term": "Asistente de voz", "def": "Una IA con la que hablas en voz alta y que responde o hace pequeñas tareas, como Siri, Alexa o el Asistente de Google. Tú hablas, ella escucha y luego responde, pone un temporizador o reproduce música." },
+      "de": { "term": "Sprachassistent", "def": "Eine KI, mit der du laut sprichst und die antwortet oder kleine Aufgaben erledigt — wie Siri, Alexa oder Google Assistant. Du sprichst, sie hört zu und antwortet dann, stellt einen Timer oder spielt Musik." },
+      "fr": { "term": "Assistant vocal", "def": "Une IA à qui vous parlez à voix haute et qui répond ou effectue de petites tâches, comme Siri, Alexa ou l’Assistant Google. Vous parlez, elle écoute, puis répond, règle un minuteur ou lance de la musique." }
+    },
+    {
+      "id": "facial-recognition",
+      "en": { "term": "Facial recognition", "def": "Technology that identifies or verifies a person from their face, like unlocking your phone just by looking at it. It's convenient, but also raises privacy questions when used in public places." },
+      "hu": { "term": "Arcfelismerés", "def": "Technológia, amely az arc alapján azonosít vagy ellenőriz valakit — például így oldod fel a telefonodat egy pillantással. Kényelmes, de nyilvános helyeken adatvédelmi kérdéseket is felvet." },
+      "es": { "term": "Reconocimiento facial", "def": "Tecnología que identifica o verifica a una persona por su cara, como desbloquear el móvil con solo mirarlo. Es cómodo, pero también plantea dudas de privacidad cuando se usa en lugares públicos." },
+      "de": { "term": "Gesichtserkennung", "def": "Technik, die eine Person an ihrem Gesicht erkennt oder bestätigt — etwa wenn du dein Handy per Blick entsperrst. Das ist bequem, wirft aber in der Öffentlichkeit auch Datenschutzfragen auf." },
+      "fr": { "term": "Reconnaissance faciale", "def": "Une technologie qui identifie ou vérifie une personne grâce à son visage, comme déverrouiller votre téléphone d’un simple regard. C’est pratique, mais cela pose aussi des questions de vie privée dans les lieux publics." }
+    },
+    {
+      "id": "recommendation-system",
+      "en": { "term": "Recommendation system", "def": "The AI that suggests what you might like next — the 'Recommended for you' on Netflix, YouTube or online shops. It learns from what you (and others) watched or bought to guess your next pick." },
+      "hu": { "term": "Ajánlórendszer", "def": "Az az AI, amely megtippeli, mi tetszhet legközelebb — a Netflix, a YouTube vagy a webshopok 'Neked ajánljuk' része. Abból tanul, amit te (és mások) néztetek vagy vettetek, hogy kitalálja a következő választásod." },
+      "es": { "term": "Sistema de recomendación", "def": "La IA que sugiere lo que te puede gustar a continuación: el 'Recomendado para ti' de Netflix, YouTube o las tiendas online. Aprende de lo que tú (y otros) visteis o comprasteis para adivinar tu próxima elección." },
+      "de": { "term": "Empfehlungssystem", "def": "Die KI, die vorschlägt, was dir als Nächstes gefallen könnte — das 'Für dich empfohlen' bei Netflix, YouTube oder Onlineshops. Sie lernt aus dem, was du (und andere) angesehen oder gekauft habt, um deine nächste Wahl zu erraten." },
+      "fr": { "term": "Système de recommandation", "def": "L’IA qui suggère ce qui pourrait vous plaire ensuite : le « Recommandé pour vous » de Netflix, YouTube ou des boutiques en ligne. Elle apprend de ce que vous (et d’autres) avez regardé ou acheté pour deviner votre prochain choix." }
+    },
+    {
+      "id": "ai-avatar",
+      "en": { "term": "AI avatar", "def": "A digital character or lifelike video version of a person, created by AI — used for videos, presentations or virtual hosts. It can look and speak like a real person, with no camera crew." },
+      "hu": { "term": "AI-avatár", "def": "Egy digitális karakter vagy élethű videós mása egy személynek, AI-val készítve — videókhoz, prezentációkhoz vagy virtuális műsorvezetőhöz. Úgy nézhet ki és beszélhet, mint egy valódi ember, kamerastáb nélkül." },
+      "es": { "term": "Avatar de IA", "def": "Un personaje digital o una versión en vídeo muy realista de una persona, creado por IA, que se usa para vídeos, presentaciones o presentadores virtuales. Puede parecer y hablar como una persona real, sin equipo de cámara." },
+      "de": { "term": "KI-Avatar", "def": "Eine digitale Figur oder lebensechte Video-Version einer Person, von KI erstellt — für Videos, Präsentationen oder virtuelle Moderatoren. Sie kann aussehen und sprechen wie ein echter Mensch, ganz ohne Kamerateam." },
+      "fr": { "term": "Avatar IA", "def": "Un personnage numérique ou une version vidéo très réaliste d’une personne, créé par l’IA — utilisé pour des vidéos, des présentations ou des présentateurs virtuels. Il peut ressembler et parler comme une vraie personne, sans équipe de tournage." }
+    },
+    {
+      "id": "foundation-model",
+      "en": { "term": "Foundation model", "def": "A big, general-purpose AI trained on huge amounts of data that many tools are then built on top of. 'Frontier model' means the newest, most capable ones at the cutting edge." },
+      "hu": { "term": "Alapmodell (foundation model)", "def": "Egy nagy, általános célú AI, amelyet hatalmas adatmennyiségen tanítottak be, és sok eszköz épül rá. A 'frontier model' a legújabb, legfejlettebb modelleket jelenti, a technológia élén." },
+      "es": { "term": "Modelo base (foundation model)", "def": "Una IA grande y de propósito general, entrenada con enormes cantidades de datos, sobre la que luego se construyen muchas herramientas. 'Frontier model' se refiere a los más nuevos y capaces, en la vanguardia." },
+      "de": { "term": "Basismodell (Foundation Model)", "def": "Eine große, universell einsetzbare KI, die mit riesigen Datenmengen trainiert wurde und auf der viele Tools aufbauen. 'Frontier Model' bezeichnet die neuesten, leistungsfähigsten Modelle an der Spitze." },
+      "fr": { "term": "Modèle de fondation (foundation model)", "def": "Une IA vaste et polyvalente, entraînée sur d’énormes quantités de données, sur laquelle reposent ensuite de nombreux outils. « Frontier model » désigne les plus récents et les plus performants, à la pointe." }
+    },
+    {
+      "id": "rag",
+      "en": { "term": "RAG (retrieval-augmented generation)", "def": "A method that lets a chatbot look things up in a trusted source before answering, instead of relying only on memory. It's why some AI assistants can cite documents or give up-to-date facts." },
+      "hu": { "term": "RAG (forrásból kiegészített válasz)", "def": "Módszer, amely lehetővé teszi, hogy egy chatbot válasz előtt megbízható forrásban nézzen utána valaminek, ne csak a memóriájára hagyatkozzon. Ezért tud néhány AI-asszisztens dokumentumokra hivatkozni vagy naprakész tényeket adni." },
+      "es": { "term": "RAG (generación aumentada por recuperación)", "def": "Un método que permite a un chatbot buscar información en una fuente fiable antes de responder, en vez de fiarse solo de su memoria. Por eso algunos asistentes de IA pueden citar documentos o dar datos actualizados." },
+      "de": { "term": "RAG (abrufgestützte Generierung)", "def": "Eine Methode, mit der ein Chatbot vor dem Antworten in einer vertrauenswürdigen Quelle nachschlägt, statt sich nur auf sein Gedächtnis zu verlassen. Deshalb können manche KI-Assistenten Dokumente zitieren oder aktuelle Fakten liefern." },
+      "fr": { "term": "RAG (génération augmentée par récupération)", "def": "Une méthode qui permet à un chatbot de chercher des informations dans une source fiable avant de répondre, au lieu de se fier uniquement à sa mémoire. C’est pourquoi certains assistants IA peuvent citer des documents ou donner des faits à jour." }
+    },
+    {
+      "id": "nlp",
+      "en": { "term": "NLP (natural language processing)", "def": "The part of AI that deals with human language — understanding, writing and translating text or speech. It's what lets you type or talk to a computer in plain words instead of code." },
+      "hu": { "term": "NLP (természetesnyelv-feldolgozás)", "def": "Az AI azon területe, amely az emberi nyelvvel foglalkozik — szöveg vagy beszéd megértése, írása és fordítása. Ennek köszönhető, hogy hétköznapi szavakkal írhatsz vagy beszélhetsz a géphez, nem kóddal." },
+      "es": { "term": "PLN (procesamiento del lenguaje natural)", "def": "La parte de la IA que se ocupa del lenguaje humano: entender, escribir y traducir texto o voz. Es lo que te permite escribir o hablar a un ordenador con palabras normales en vez de código." },
+      "de": { "term": "NLP (Verarbeitung natürlicher Sprache)", "def": "Der Teil der KI, der sich mit menschlicher Sprache befasst — Text oder Sprache verstehen, schreiben und übersetzen. Dadurch kannst du mit normalen Worten statt mit Code an einen Computer schreiben oder sprechen." },
+      "fr": { "term": "TALN (traitement du langage naturel)", "def": "La partie de l’IA qui traite le langage humain : comprendre, écrire et traduire du texte ou de la parole. C’est ce qui vous permet d’écrire ou de parler à un ordinateur avec des mots simples plutôt qu’avec du code." }
+    },
+    {
+      "id": "computer-vision",
+      "en": { "term": "Computer vision", "def": "The part of AI that 'sees' — making sense of photos and video, like spotting a face, reading a sign or telling a cat from a dog. It powers things like photo search and self-driving car cameras." },
+      "hu": { "term": "Gépi látás (computer vision)", "def": "Az AI azon területe, amely 'lát' — fényképeket és videókat értelmez: arcot ismer fel, táblát olvas, vagy megkülönbözteti a macskát a kutyától. Ez működteti például a fotókeresést és az önvezető autók kameráit." },
+      "es": { "term": "Visión por computador", "def": "La parte de la IA que 've': entiende fotos y vídeos, como detectar una cara, leer un cartel o distinguir un gato de un perro. Está detrás de cosas como la búsqueda de fotos y las cámaras de los coches autónomos." },
+      "de": { "term": "Computer Vision (Bilderkennung)", "def": "Der Teil der KI, der 'sieht' — Fotos und Videos versteht: ein Gesicht erkennen, ein Schild lesen oder Katze und Hund unterscheiden. Das steckt hinter Foto-Suche und den Kameras selbstfahrender Autos." },
+      "fr": { "term": "Vision par ordinateur", "def": "La partie de l’IA qui « voit » : elle donne du sens aux photos et vidéos, comme repérer un visage, lire un panneau ou distinguer un chat d’un chien. Elle est derrière la recherche de photos et les caméras des voitures autonomes." }
+    },
+    {
+      "id": "superintelligence",
+      "en": { "term": "Superintelligence", "def": "A hypothetical future AI that would be far smarter than humans at almost everything. It doesn't exist today — it's a topic of research and debate about where AI might eventually lead." },
+      "hu": { "term": "Szuperintelligencia", "def": "Egy elméleti, jövőbeli AI, amely szinte mindenben messze okosabb lenne az embernél. Ma még nem létezik — kutatások és viták tárgya arról, hová vezethet végül az AI." },
+      "es": { "term": "Superinteligencia", "def": "Una IA futura e hipotética que sería mucho más inteligente que los humanos en casi todo. Hoy no existe: es un tema de investigación y debate sobre a dónde podría llevar la IA con el tiempo." },
+      "de": { "term": "Superintelligenz", "def": "Eine hypothetische zukünftige KI, die dem Menschen in fast allem weit überlegen wäre. Heute gibt es sie nicht — sie ist Thema von Forschung und Debatten darüber, wohin KI eines Tages führen könnte." },
+      "fr": { "term": "Superintelligence", "def": "Une IA future et hypothétique qui serait bien plus intelligente que les humains dans presque tout. Elle n’existe pas aujourd’hui : c’est un sujet de recherche et de débat sur ce vers quoi l’IA pourrait mener un jour." }
     }
   ]
 }
