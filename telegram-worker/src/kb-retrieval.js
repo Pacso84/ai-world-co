@@ -72,7 +72,7 @@ function scoreItem(qTokens, titleTokens, bodyTokens, titleNorm, bodyNorm) {
   return s;
 }
 
-// kb = {site:[{q,a,u}], guides:[{t,s,u,c}], terms:[{t,d,u}]} → top-N releváns elem.
+// kb = {site:[{q,a,u}], guides:[{t,s,u,c}], news:[{t,s,u,c}], terms:[{t,d,u}]} → top-N releváns elem.
 export function searchKb(query, kb, topN = 4) {
   const qTokens = tokenize(query);
   if (!qTokens.length) return [];
@@ -85,6 +85,11 @@ export function searchKb(query, kb, topN = 4) {
     const title = it.t + ' ' + (it.c || '');
     const s = scoreItem(qTokens, tokenize(title), tokenize(it.s), normText(title), normText(it.s));
     if (s >= 2) scored.push({ t: it.t, s: it.s, u: it.u, c: it.c, kind: 'guide', score: s });
+  }
+  for (const it of kb.news || []) {
+    const title = it.t + ' ' + (it.c || '');
+    const s = scoreItem(qTokens, tokenize(title), tokenize(it.s), normText(title), normText(it.s));
+    if (s >= 2) scored.push({ t: it.t, s: it.s, u: it.u, c: it.c, kind: 'news', score: s });
   }
   for (const it of kb.terms || []) {
     const s = scoreItem(qTokens, tokenize(it.t), tokenize(it.d), normText(it.t), normText(it.d));

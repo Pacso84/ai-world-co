@@ -2449,6 +2449,12 @@ function main() {
     const kbGuides = loc.filter(a => a.isGuide).map(a => ({
       t: a.title, s: a.subtitle || '', u: `${SITE.url}${LP}/article/${a.slug}`, c: a.company || ''
     }));
+    // FRISS HÍREK a chatbotnak (2026-07-26): a legutóbbi 40 hír (a hír nem
+    // evergreen, ezért csak a legfrissebbek — loc dátum szerint csökkenő). Így a
+    // chatbot a friss AI-fejleményekről is tud válaszolni és a cikkre linkelni.
+    const kbNews = loc.filter(a => !a.isGuide).slice(0, 40).map(a => ({
+      t: a.title, s: a.subtitle || '', u: `${SITE.url}${LP}/article/${a.slug}`, c: a.company || ''
+    }));
     const kbSite = (CS_FAQ[lang] || CS_FAQ.en).map(f => ({
       q: f.q, a: f.a, u: `${SITE.url}${f.p === '/' ? (LP || '/') : LP + f.p}`
     }));
@@ -2456,7 +2462,7 @@ function main() {
       t: (t[lang] || t.en).term, d: (t[lang] || t.en).def, u: `${SITE.url}${LP}/glossary.html`
     }));
     writeFileSync(join(outBase, 'kb.json'),
-      JSON.stringify({ v: 1, lang, site: kbSite, guides: kbGuides, terms: kbTerms }), 'utf-8');
+      JSON.stringify({ v: 1, lang, site: kbSite, guides: kbGuides, news: kbNews, terms: kbTerms }), 'utf-8');
     for (const a of loc) {
       const html = a.isGuide ? buildGuidePage(a) : buildArticlePage(a);
       writeFileSync(join(outArticle, `${a.slug}.html`), html, 'utf-8');

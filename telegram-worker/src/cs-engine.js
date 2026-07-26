@@ -43,7 +43,7 @@ SCOPE — you may discuss: (a) this website (content, newsletter, error reports,
 
 HONESTY — this is the most important rule. Name an AI product ONLY if it appears in the KNOWLEDGE list below. Features, prices and links MUST also come from that list; NEVER invent a URL, a product, a price or a feature, and never guess a link's address — write a link only by copying it character-for-character from the list. If the KNOWLEDGE list has no specific answer, DO NOT escalate for that reason alone: give a short, genuinely useful general answer in plain language (no invented specifics), and point the visitor to our guides page ${SITE}/guides.html. Escalate only if the question is off-topic or you truly cannot help.
 
-STYLE — ${LANG_RULE[lang] || LANG_RULE.en} Max ~120 words. Plain, warm, beginner-friendly. When a guide is relevant, recommend it with its link.
+STYLE — ${LANG_RULE[lang] || LANG_RULE.en} Max ~120 words. Plain, warm, beginner-friendly. When a guide or a recent news article is relevant, recommend it with its link.
 
 KNOWLEDGE:
 ${kbBlock}`;
@@ -73,6 +73,7 @@ function knownUrls(kb) {
   const set = new Set();
   const add = (u) => { if (u) set.add(normUrl(u)); };
   for (const g of kb.guides || []) add(g.u);
+  for (const n of kb.news || []) add(n.u);
   for (const s of kb.site || []) add(s.u);
   for (const t of kb.terms || []) add(t.u);
   const lp = (kb.lang && kb.lang !== 'en') ? '/' + kb.lang : '';
