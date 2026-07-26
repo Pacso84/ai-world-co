@@ -1,6 +1,115 @@
 # AI World Co. — közösségi posztok
 
-*Generálva: 2026-07-26T19:53:57.382Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+*Generálva: 2026-07-26T20:10:45.106Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## Design AI‑driven story prompts on Meta AI for your writing hobby
+**🔗 https://aiworldhq.com/article/design-ai-driven-story-prompts-on-meta-ai-for-your-writing-h.html**
+
+**Facebook:**
+Writer's block hitting hard? This beginner's guide walks you through using Meta AI to generate story prompts, character ideas and plot twists—so you can get back to writing. https://aiworldhq.com/article/design-ai-driven-story-prompts-on-meta-ai-for-your-writing-h.html #writingtips #creativewriting
+
+**Instagram:**
+That blank page doesn't stand a chance. Learn how to use Meta AI to create custom story prompts and character ideas—even if you're new to AI. Simple steps, real results.
+
+#writerlife #creativetips #writingcommunity #storywriting #aisimplified
+
+Link in bio.
+
+*Kép-ötlet: A clean, minimal flatlay with an open notebook, a pen, and a smartphone displaying Meta AI's chat interface with a creative writing prompt visible on screen.*
+
+---
+
+## Draft a Complete FAQ Page for Your Website with ChatGPT
+**🔗 https://aiworldhq.com/article/draft-a-complete-faq-page-for-your-website-with-chatgpt.html**
+
+**Facebook:**
+Save yourself hours of repeating the same answers to customers. This step-by-step guide shows you how to use AI to draft a complete FAQ page for your website—simple and free. https://aiworldhq.com/article/draft-a-complete-faq-page-for-your-website-with-chatgpt.html #SmallBusiness #WebsiteTips
+
+**Instagram:**
+Tired of answering the same questions over and over?
+
+Here's how to build a FAQ page in minutes using ChatGPT—so customers find answers instantly while you get back to work.
+
+#FAQPage #SmallBusinessTips #WebDesign #ChatGPTTips #BusinessTools
+
+Link in bio.
+
+*Kép-ötlet: A clean laptop screen showing a friendly FAQ page layout with a simple speech bubble icon next to it.*
+
+---
+
+## Draft a simple cover letter for a job application with DeepSeek
+**🔗 https://aiworldhq.com/article/draft-a-simple-cover-letter-for-a-job-application-with-deeps.html**
+
+**Facebook:**
+Writing a cover letter from scratch is nobody's favourite task. This quick guide shows you how to use DeepSeek to create one tailored to your dream job — in just a few minutes. https://aiworldhq.com/article/draft-a-simple-cover-letter-for-a-job-application-with-deeps.html #JobSearch #CoverLetterTips
+
+**Instagram:**
+Struggling to write yet another cover letter? This guide walks you through using DeepSeek to craft one that actually fits the job you're applying for — no more staring at a blank page. Link in bio.
+
+#JobSearch #CoverLetterTips #CareerAdvice #AIForGood #JobHunting
+
+*Kép-ötlet: A person typing confidently on a laptop with a clean cover letter template on screen, natural lighting, minimal and professional.*
+
+---
+
+## Draft a simple legal disclaimer text with DeepSeek’s chat
+**🔗 https://aiworldhq.com/article/create-a-simple-website-legal-disclaimer-using-deepseek-chat.html**
+
+**Facebook:**
+Running a website? You probably need a legal disclaimer but paying a lawyer feels like overkill. This simple guide shows you how to create one yourself in just a few minutes — no legal expertise needed. https://aiworldhq.com/article/create-a-simple-website-legal-disclaimer-using-deepseek-chat.html #smallbusiness #websitetips
+
+**Instagram:**
+Got a website? Here's how to create a legal disclaimer without the lawyer fees.
+
+This step-by-step guide walks you through generating a clear, copy-and-paste disclaimer in minutes using simple chat technology.
+
+#websitetips #smallbusiness #legal #onlinebusiness #diy
+Link in bio.
+
+*Kép-ötlet: A minimal flat lay showing a laptop screen with a disclaimer document next to a friendly chat bubble icon, symbolising simple AI assistance.*
+
+---
+
+## Draft marketing copy instantly with NVIDIA ChatRTX
+**🔗 https://aiworldhq.com/article/draft-marketing-copy-instantly-with-nvidia-chatrtx.html**
+
+**Facebook:**
+Need marketing copy in a hurry? This local AI tool can generate product descriptions, ad headlines and social posts right from your laptop - no internet required. https://aiworldhq.com/article/draft-marketing-copy-instantly-with-nvidia-chatrtx.html #MarketingTips #SmallBusiness
+
+**Instagram:**
+Quick marketing copy without the brain freeze.
+
+ChatRTX runs on your own laptop and whips up product descriptions, catchy headlines and social posts in seconds. Perfect when you're swamped.
+
+#MarketingTips
+#SmallBusinessHacks
+#AIForBeginners
+#ProductivityTips
+#LocalAI
+
+Link in bio.
+
+*Kép-ötlet: A clean laptop screen showing a simple chat window with the prompt 'Write a product description for a coffee mug' and a friendly, concise response appearing below it.*
+
+---
+
+## Draft meeting agendas with Mistral’s Le Chat for office teams
+**🔗 https://aiworldhq.com/article/draft-meeting-agendas-with-mistral-s-le-chat-for-office-team.html**
+
+**Facebook:**
+Sick of frantically pulling together a meeting agenda before every catch-up? This beginner's guide shows you how to turn a few rough bullet points into a clear, ready-to-send agenda in seconds—so your team always knows what's happening. https://aiworldhq.com/article/draft-meeting-agendas-with-mistral-s-le-chat-for-office-team.html #productivity #workhacks
+
+**Instagram:**
+Meeting agendas, done in seconds
+
+Turn your rough notes into a polished agenda your whole team will actually read. This quick guide shows you how—zero tech skills needed.
+
+#meetings #productivity #workhacks #everydayai #aussiework
+
+*Kép-ötlet: A clean desk with a laptop showing Le Chat, a coffee cup, and a handwritten to-do list next to it, natural light from a window*
 
 ---
 
