@@ -1,6 +1,120 @@
 # AI World Co. — közösségi posztok
 
-*Generálva: 2026-07-26T02:21:49.049Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+*Generálva: 2026-07-26T10:31:46.737Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## Computer Weekly: How digital twins are helping people with motor neurone disease speak
+**🔗 https://aiworldhq.com/article/what-is-an-ai-voice-twin-a-plain-english-guide-to-the-tech-t.html**
+
+**Facebook:**
+Imagine if your voice could be preserved before illness takes it away. That's what AI voice twins are doing for people with motor neurone disease — and the tech is more accessible than you might think. https://aiworldhq.com/article/what-is-an-ai-voice-twin-a-plain-english-guide-to-the-tech-t.html #AI #HealthTech
+
+**Instagram:**
+Your voice is uniquely yours — what if you could save it for later?
+
+AI voice cloning now lets people at risk of losing their speech (like those with motor neurone disease) preserve their own voice instead of using a generic robot one. Link in bio.
+
+#AITechnology #Accessibility #VoiceCloning #Innovation #MotorNeurone
+
+*Kép-ötlet: A warm, simple portrait of a person smiling gently, with soft sound wave patterns in the background suggesting their voice being captured and preserved.*
+
+---
+
+## D-ID Launches V4 Expressive Visual Agents for Real-Time, LLM-Connected Interaction at Enterprise Scale
+**🔗 https://aiworldhq.com/article/ai-avatars-explained-what-they-are-and-how-to-try-one.html**
+
+**Facebook:**
+Ever wish you could rehearse a job interview or presentation with someone who's patient and never runs out of time? New AI helpers that can see, hear and talk back are making this easier to try. https://aiworldhq.com/article/ai-avatars-explained-what-they-are-and-how-to-try-one.html #AITips #FutureSkills
+
+**Instagram:**
+Imagine having a practise partner who's available 24/7 and never gets tired of your questions.
+
+New AI avatars can now listen, think and respond in real time - great for job interview practise or testing ideas out loud.
+
+#ArtificialIntelligence #CareerGrowth #SpeakingSkills #LearningTech #EverydayAI
+
+Link in bio.
+
+*Kép-ötlet: A person sitting at home having a relaxed conversation with a friendly, lifelike AI figure on their laptop screen*
+
+---
+
+## xAI and El Salvador Pioneer the World's First Nationwide AI Education Program - X.AI
+**🔗 https://aiworldhq.com/article/ai-in-the-classroom-what-you-can-learn-from-a-nationwide-edu.html**
+
+**Facebook:**
+Whether you're helping the kids with homework or learning something new yourself, AI is now part of classroom life everywhere. Here's what this means for everyday learners at any age. https://aiworldhq.com/article/ai-in-the-classroom-what-you-can-learn-from-a-nationwide-edu.html #AIlearning #parents
+
+**Instagram:**
+AI is in classrooms now — here's what that means for you
+
+Whether you're a parent helping with maths homework or an adult picking up a new skill, AI education is changing how we all learn. Link in bio.
+
+#AIlearning #edtech #parentingtips #adultlearning #futureofeducation
+
+*Kép-ötlet: A simple, clean image of a kitchen table with school books, a tablet showing an AI learning app, and a coffee cup — warm and relatable, no text.*
+
+---
+
+## Automating repetitive Git commands using Copilot suggestions
+**🔗 https://aiworldhq.com/article/automate-git-commands-with-github-copilot-suggestions.html**
+
+**Facebook:**
+Ever forgotten a Git command and had to stop and Google it? GitHub Copilot can now suggest the right command as you work — no more pausing to look up syntax. Our beginner guide shows you how to set it up in minutes. https://aiworldhq.com/article/automate-git-commands-with-github-copilot-suggestions.html #git #codingtips
+
+**Instagram:**
+Git commands got you stuck?
+
+GitHub Copilot suggests the right command while you code — so you can keep your flow going. Check out our simple guide to set it up.
+
+#git #githubcopilot #codingtips #developertools
+
+Link in bio.
+
+*Kép-ötlet: A clean code editor window showing GitHub Copilot's suggestion pop-up next to a half-typed Git command, with a friendly, minimal aesthetic.*
+
+---
+
+## Boost Your Learning: Get Quick Explanations and Study Guides with Copilot
+**🔗 https://aiworldhq.com/article/boost-your-learning-get-quick-explanations-and-study-guides-.html**
+
+**Facebook:**
+Ever feel lost trying to understand something new? There's a simple way to get clear explanations and handy study guides in just a few minutes. This guide shows you how. https://aiworldhq.com/article/boost-your-learning-get-quick-explanations-and-study-guides-.html #learning #studytips
+
+**Instagram:**
+Turn confusing topics into clear answers in minutes
+
+This step-by-step guide shows you how to use Copilot to get plain-language summaries and simple study guides on anything you're learning. Perfect for students or curious minds.
+
+#learning #studytips #studymotivation #studentlife #aifeatures
+
+Link in bio.
+
+*Kép-ötlet: A person sitting at a desk with books and a laptop, looking relaxed while reading a clear, simple summary on screen.*
+
+---
+
+## Brainstorm creative story prompts for your hobby novel using Cohere
+**🔗 https://aiworldhq.com/article/brainstorm-creative-story-prompts-for-your-hobby-novel-using.html**
+
+**Facebook:**
+Stuck on your next story idea? This beginner's guide shows you how to use an AI tool to brainstorm creative prompts for your hobby novel — simple steps, fresh ideas. https://aiworldhq.com/article/brainstorm-creative-story-prompts-for-your-hobby-novel-using.html #writingtips #creativewriting
+
+**Instagram:**
+Ever stare at a blank page?
+
+This guide walks you through using AI to spark story ideas and beat writer's block — no writing experience needed.
+
+#writingtips
+#creativewriting
+#novelwriting
+#writerslife
+#hobbywriting
+
+Link in bio.
+
+*Kép-ötlet: A simple desk with an open notebook, a pen, and warm lamp lighting — no distractions, just a clean space waiting for ideas.*
 
 ---
 
