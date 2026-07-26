@@ -1,6 +1,111 @@
 # AI World Co. — közösségi posztok
 
-*Generálva: 2026-07-26T20:10:45.106Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+*Generálva: 2026-07-26T20:22:00.716Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## Draft quick text messages with Apple Intelligence’s predictive writing
+**🔗 https://aiworldhq.com/article/draft-quick-text-messages-with-apple-intelligence-s-predicti.html**
+
+**Facebook:**
+Ever wish your phone could finish your sentences? Now it can — Apple Intelligence suggests what to say next while you're texting, so you can send replies in just a tap. Less typing, more time back in your day. https://aiworldhq.com/article/draft-quick-text-messages-with-apple-intelligence-s-predicti.html #iPhoneTips #AppleIntelligence
+
+**Instagram:**
+Your iPhone can basically read your mind when you're texting.
+
+Apple Intelligence predicts what you want to say next — just tap to send a reply in seconds. It's like having a helpful assistant in your pocket.
+
+#iPhoneTips #AppleIntelligence #iPhoneHacks #ProductivityTips #TechForEveryone
+
+Link in bio.
+
+*Kép-ötlet: A close-up of a hand holding an iPhone with a text conversation on screen, showing a predictive suggestion bubble above the keyboard with the word 'Sounds good, see you there!'*
+
+---
+
+## Drafting clear instructions for a new team member using Le Chat
+**🔗 https://aiworldhq.com/article/drafting-clear-instructions-for-a-new-team-member-using-le-c.html**
+
+**Facebook:**
+Want to make your next team onboarding less stressful? Here's how to create a friendly guide your new colleague will actually use — drafted quickly with Le Chat. https://aiworldhq.com/article/drafting-clear-instructions-for-a-new-team-member-using-le-c.html #onboarding #workplace
+
+**Instagram:**
+Skip the awkward first-day scramble.
+Le Chat helps you build a clear, helpful onboarding guide your new team member will actually read.
+#onboarding #newcolleague #workplace #aussietech #gettingstarted
+Link in bio.
+
+*Kép-ötlet: A simple, clean photo of a welcoming workspace with a notebook and pen, showing a friendly team environment without any text overlay.*
+
+---
+
+## Drafting Professional Presentations from Scratch Using Microsoft Copilot in PowerPoint
+**🔗 https://aiworldhq.com/article/drafting-professional-presentations-from-scratch-using-micro.html**
+
+**Facebook:**
+Turn rough ideas into polished presentations in minutes instead of spending hours on them. This simple guide shows you how to use AI to build your slide deck, then make it your own. https://aiworldhq.com/article/drafting-professional-presentations-from-scratch-using-micro.html #Productivity
+
+**Instagram:**
+Stop dreading the blank slide
+
+Here's how to turn a rough idea into a ready-to-use presentation in minutes — then tweak it your way.
+
+#MicrosoftCopilot #PresentationTips #WorkSmarter #Productivity #PowerPoint
+
+*Kép-ötlet: A clean, minimal mockup of a PowerPoint slide on a laptop screen with a friendly AI chat prompt beside it*
+
+---
+
+## Find Reliable DIY Fixes for Common Household Problems with Perplexity's AI-Powered Q&A
+**🔗 https://aiworldhq.com/article/get-reliable-diy-fixes-at-home-with-perplexity-s-ai-answer-e.html**
+
+**Facebook:**
+Got a leaky tap or a washing machine showing an error code you don't understand? Perplexity gives you a clear, sourced answer in seconds — so you can try the fix yourself before calling a tradie. Here's how to get started. https://aiworldhq.com/article/get-reliable-diy-fixes-at-home-with-perplexity-s-ai-answer-e.html #DIY #HomeRepairs
+
+**Instagram:**
+Your tradie isn't always the first call — sometimes a quick answer is all you need
+
+This guide shows you how Perplexity finds reliable DIY fixes fast, so you spend less time scrolling forum threads and more time actually fixing things.
+
+Link in bio
+
+#DIY #HomeRepairs #PerplexityAI #LifeHacks #EverydaySolutions
+
+*Kép-ötlet: A clean, bright shot of basic DIY tools (a wrench, screwdriver and tape measure) sitting on a wooden bench, with a warm morning light glow.*
+
+---
+
+## Fix typos and grammar in your docs with Copilot in seconds
+**🔗 https://aiworldhq.com/article/polish-your-writing-instantly-with-github-copilot.html**
+
+**Facebook:**
+We've all done it—hit send on an email then spotted a typo a second too late. This beginner-friendly guide shows you how to use AI to clean up your writing in seconds, so those little mistakes don't slip through. https://aiworldhq.com/article/polish-your-writing-instantly-with-github-copilot.html #writingtips #productivity
+
+**Instagram:**
+That sinking feeling when you spot a typo AFTER you've hit send 😬
+
+Good news: Copilot can polish your emails, reports and posts in seconds—perfect for anyone who's not a natural proofreader.
+Link in bio.
+#writingtips #productivity #aiforbeginners #copilot #editing
+
+*Kép-ötlet: A clean desk with a laptop showing a document with a small green checkmark near the text, suggesting a finished and error-free piece of writing*
+
+---
+
+## Generate a quick FAQ page for a small business website using Perplexity
+**🔗 https://aiworldhq.com/article/generate-a-quick-faq-page-for-a-small-business-website-using.html**
+
+**Facebook:**
+Tired of writing FAQ pages from scratch? This simple guide shows you how to use Perplexity to pull together your most common customer questions into a polished FAQ page in under 10 minutes. It's easier than you think. https://aiworldhq.com/article/generate-a-quick-faq-page-for-a-small-business-website-using.html #smallbusiness #website
+
+**Instagram:**
+Ever wish FAQ pages wrote themselves? Let Perplexity gather and organise your customers' most common questions—then paste the result straight onto your website. Done in minutes, no writing required.
+
+#smallbusiness #faqpage #perplexity #websitetips #smallbiz
+
+Link in bio.
+
+*Kép-ötlet: A clean laptop screen displaying a simple, organized FAQ page with a coffee cup nearby, conveying a relaxed small business owner who finished quickly.*
 
 ---
 
