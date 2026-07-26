@@ -99,9 +99,12 @@ async function main() {
     if (!existsSync(src)) { noCover++; continue; }
     if (existsSync(out) && !FORCE) { skipped++; continue; }
     try {
-      await sharp(src)
-        .resize(W, H, { fit: 'cover', position: 'attention' })
-        .composite([{ input: overlaySvg(title) }])
+      // WEEKLY-DIGEST: a kabala-kép már kész, márkás kártya (saját felirattal) →
+      // NEM rakunk rá cím-overlay-t (dupla/kevert szöveg lenne). A többi cikknél
+      // marad a megszokott cím + márkasor overlay.
+      let pipe = sharp(src).resize(W, H, { fit: 'cover', position: isWeekly ? 'centre' : 'attention' });
+      if (!isWeekly) pipe = pipe.composite([{ input: overlaySvg(title) }]);
+      await pipe
         .jpeg({ quality: 82 })
         .toFile(out);
       made++;
