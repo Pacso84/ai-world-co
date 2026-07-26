@@ -1,134 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178485753593464",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-07-24T01:45:35.934Z",
-      "updated": "2026-07-24T01:51:52.085Z"
-    },
-    {
-      "id": "t178485791208741",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-24T01:51:52.087Z",
-      "updated": "2026-07-24T01:53:22.785Z"
-    },
-    {
-      "id": "t178485800278820",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-07-24T01:53:22.788Z",
-      "updated": "2026-07-24T01:58:06.587Z"
-    },
-    {
-      "id": "t178485828658841",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-24T01:58:06.588Z",
-      "updated": "2026-07-24T01:58:47.640Z"
-    },
-    {
-      "id": "t178485832764319",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-07-24T01:58:47.643Z",
-      "updated": "2026-07-24T01:58:53.618Z"
-    },
-    {
-      "id": "t178485833364482",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-24T01:58:53.644Z",
-      "updated": "2026-07-24T02:04:56.084Z"
-    },
-    {
-      "id": "t178485869608648",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-24T02:04:56.086Z",
-      "updated": "2026-07-24T02:05:40.611Z"
-    },
-    {
-      "id": "t178485874063470",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-24T02:05:40.634Z",
-      "updated": "2026-07-24T02:05:40.850Z"
-    },
-    {
-      "id": "t17848587408524",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-24T02:05:40.852Z",
-      "updated": "2026-07-24T02:05:52.326Z"
-    },
-    {
-      "id": "t178485875233155",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-24T02:05:52.331Z",
-      "updated": "2026-07-24T02:10:24.969Z"
-    },
-    {
-      "id": "t178485902497170",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-24T02:10:24.971Z",
-      "updated": "2026-07-24T02:10:37.283Z"
-    },
-    {
-      "id": "t178485903728533",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-24T02:10:37.285Z",
-      "updated": "2026-07-24T02:10:51.985Z"
-    },
-    {
-      "id": "t178485905198792",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-07-24T02:10:51.987Z",
-      "updated": "2026-07-24T02:11:05.205Z"
-    },
-    {
-      "id": "t178485906520738",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-24T02:11:05.207Z",
-      "updated": "2026-07-24T02:11:06.328Z"
-    },
-    {
-      "id": "t178485906633080",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-07-24T02:11:06.330Z",
-      "updated": "2026-07-24T02:11:16.643Z"
-    },
-    {
-      "id": "t178488759781256",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-07-24T10:06:37.812Z",
-      "updated": "2026-07-24T10:06:38.214Z"
-    },
-    {
       "id": "t178488759821667",
       "title": "Run rss-scraper",
       "status": "done",
@@ -479,41 +351,137 @@
       "agent": "publisher",
       "created": "2026-07-25T02:13:51.821Z",
       "updated": "2026-07-25T02:14:14.728Z"
+    },
+    {
+      "id": "t178503036800895",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-07-26T01:46:08.008Z",
+      "updated": "2026-07-26T01:46:08.280Z"
+    },
+    {
+      "id": "t178503036828257",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-07-26T01:46:08.282Z",
+      "updated": "2026-07-26T01:46:36.718Z"
+    },
+    {
+      "id": "t178503039672067",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-07-26T01:46:36.720Z",
+      "updated": "2026-07-26T01:46:36.978Z"
+    },
+    {
+      "id": "t178503039698080",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-07-26T01:46:36.980Z",
+      "updated": "2026-07-26T01:51:50.014Z"
+    },
+    {
+      "id": "t178503071001693",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-26T01:51:50.016Z",
+      "updated": "2026-07-26T01:54:13.088Z"
+    },
+    {
+      "id": "t178503085309157",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-07-26T01:54:13.091Z",
+      "updated": "2026-07-26T01:56:01.163Z"
+    },
+    {
+      "id": "t178503096116582",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-26T01:56:01.165Z",
+      "updated": "2026-07-26T01:58:15.799Z"
+    },
+    {
+      "id": "t178503109580378",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-07-26T01:58:15.803Z",
+      "updated": "2026-07-26T01:59:07.731Z"
+    },
+    {
+      "id": "t178503114773318",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-26T01:59:07.733Z",
+      "updated": "2026-07-26T01:59:38.614Z"
+    },
+    {
+      "id": "t178503117861796",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-07-26T01:59:38.617Z",
+      "updated": "2026-07-26T02:01:04.641Z"
+    },
+    {
+      "id": "t178503126466935",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-07-26T02:01:04.669Z",
+      "updated": "2026-07-26T02:02:13.567Z"
+    },
+    {
+      "id": "t178503133356962",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-26T02:02:13.569Z",
+      "updated": "2026-07-26T02:03:32.864Z"
+    },
+    {
+      "id": "t178503141289340",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-26T02:03:32.893Z",
+      "updated": "2026-07-26T02:05:52.024Z"
+    },
+    {
+      "id": "t178503155202616",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-07-26T02:05:52.026Z",
+      "updated": "2026-07-26T02:08:27.717Z"
+    },
+    {
+      "id": "t178503170771973",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-26T02:08:27.719Z",
+      "updated": "2026-07-26T02:08:42.355Z"
+    },
+    {
+      "id": "t178503172235721",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-07-26T02:08:42.357Z",
+      "updated": "2026-07-26T02:09:12.029Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178423127063462",
-      "level": "warn",
-      "text": "📨 fact-check → human: Útmutató levéve, mert valótlanná vált: \"Summarise a long Slack thread into 3 bullet points\" — The entire guide is based ",
-      "agent": "fact-check",
-      "at": "2026-07-16T19:47:50.634Z",
-      "loud": false
-    },
-    {
-      "id": "n178423132729421",
-      "level": "info",
-      "text": "📨 fact-check → team: Levettem (tárgytalan): \"Turn a messy product review into a polished custom\" — The guide describes a dedicated 'Rewrite t",
-      "agent": "fact-check",
-      "at": "2026-07-16T19:48:47.294Z",
-      "loud": false
-    },
-    {
-      "id": "n178423132729718",
-      "level": "warn",
-      "text": "📨 fact-check → human: Útmutató levéve, mert valótlanná vált: \"Turn a messy product review into a polished custom\" — The guide describes a dedi",
-      "agent": "fact-check",
-      "at": "2026-07-16T19:48:47.297Z",
-      "loud": false
-    },
-    {
-      "id": "n178423133874780",
-      "level": "info",
-      "text": "📨 fact-check → team: Levettem (tárgytalan): \"Write a polite refund request email in 30 seconds \" — The core feature described in the guide – ",
-      "agent": "fact-check",
-      "at": "2026-07-16T19:48:58.747Z",
-      "loud": false
-    },
     {
       "id": "n178423133874960",
       "level": "warn",
@@ -1281,216 +1249,41 @@
       "agent": "ceo",
       "at": "2026-07-25T02:14:14.754Z",
       "loud": false
+    },
+    {
+      "id": "n178503112586273",
+      "level": "warn",
+      "text": "📨 guide → ceo: Kell még adat: \"Learn Basic Phrases in a New Language Using Alexa+'s AI Conversation Mode\" — az Ellenőrző tényt/forrást ",
+      "agent": "guide",
+      "at": "2026-07-26T01:58:45.862Z",
+      "loud": false
+    },
+    {
+      "id": "n178503170770765",
+      "level": "info",
+      "text": "SEO: 13 cikk optimalizálva (átlag 8.1/10).",
+      "agent": "seo",
+      "at": "2026-07-26T02:08:27.707Z",
+      "loud": false
+    },
+    {
+      "id": "n178503173837183",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The line-up looks solid — you've got a nice mix of practical how-tos (study, emails, speeches) and helpful guides (privacy, what AI is good at), covering a good spread of tools like Qwen, Claude, Perp",
+      "agent": "publisher",
+      "at": "2026-07-26T02:08:58.371Z",
+      "loud": false
+    },
+    {
+      "id": "n178503175205411",
+      "level": "success",
+      "text": "9 hír + 4 útmutató publikálva (költség: $0.1215).",
+      "agent": "ceo",
+      "at": "2026-07-26T02:09:12.054Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178471627130668",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"What Is Stable Diffusion? A Simple Guide to the AI Behind Modern Image Generation\" — mi a baj: Step 4 tells reader to search GitHub themselves with no specific notebook link or fallback; Step 5 says 'one of them will give you a public link' without identifying which cell or what the link looks like; Generate button described as 'Below or beside' with no concrete location or ",
-      "ref": "2026-07-22T10-14-03-156Z_deeparteffects_What_Is_Stable_Diffusion__A_Simple_Guide_to_the_AI.json",
-      "at": "2026-07-22T10:31:11.306Z"
-    },
-    {
-      "id": "m178471627849975",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"AI Video Colorization Offline: 1-Click Color for Black-and-White Footage (No Cloud)\" (?/10)",
-      "ref": "2026-07-22T10-14-03-157Z_deeparteffects_AI_Video_Colorization_Offline__1-Click_Color_for_B.json",
-      "at": "2026-07-22T10:31:18.499Z"
-    },
-    {
-      "id": "m178471639265716",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-07-22T10:33:12.657Z"
-    },
-    {
-      "id": "m178474012126627",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Building AI infrastructure with the Effingham County community\" — mi a baj: NO_FRONTMATTER: A cikk nem YAML frontmatter-rel kezdődik",
-      "ref": "2026-07-22T17-06-55-772Z_openai-blog_Building_AI_infrastructure_with_the_Effingham_Coun.json",
-      "at": "2026-07-22T17:08:41.266Z"
-    },
-    {
-      "id": "m178474012582982",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Introducing OpenAI Presence\" — mi a baj: Factual inaccuracy: OpenAI Presence is not a real OpenAI product - this article fabricates a service and its features; Misleading setup: presents invented dashboard steps (Create New Agent, Voice/Chat toggle) as hard facts, will mislead readers; No verification possible: claims about free trial, Twilio integration, and calendar API co",
-      "ref": "2026-07-22T17-06-55-772Z_openai-blog_Introducing_OpenAI_Presence.json",
-      "at": "2026-07-22T17:08:45.829Z"
-    },
-    {
-      "id": "m178474014447726",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Gemini vs ChatGPT on Your Phone: Which AI Assistant Fits Your Pocket?\" — javítva: Article appears truncated mid-sentence at the end of the final bullet point, leaving it without a proper wrap-up; Missing or cut-off closing section, so no next step or sign-off for the reader; újraküldöm.",
-      "ref": "2026-07-22T02-10-56-965Z_aiworld-editorial_Compare_ai-on-phone.json",
-      "at": "2026-07-22T17:09:04.477Z"
-    },
-    {
-      "id": "m178474018570862",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Built in Fort Worth: Wistron Opens Advanced Manufacturing Plant to Produce NVIDIA AI Systems\" — javítva: Article does not cover the source story about Wistron's Texas plant; only loosely references factories in passing; Step 3 asks readers to compare to a year ago but offers no way to actually do that; újraküldöm.",
-      "ref": "2026-07-22T10-13-59-137Z_nvidia-blog_Built_in_Fort_Worth__Wistron_Opens_Advanced_Manufa.json",
-      "at": "2026-07-22T17:09:45.708Z"
-    },
-    {
-      "id": "m178474023015966",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"What Is Stable Diffusion? A Simple Guide to the AI Behind Modern Image Generation\" — javítva: Step 4 tells reader to search GitHub themselves with no specific notebook link or fallback; Step 5 says 'one of them will give you a public link' without identifying which cell or what the link looks like; újraküldöm.",
-      "ref": "2026-07-22T10-14-03-156Z_deeparteffects_What_Is_Stable_Diffusion__A_Simple_Guide_to_the_AI.json",
-      "at": "2026-07-22T17:10:30.159Z"
-    },
-    {
-      "id": "m178474024089452",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Batch Processing in Deep Art Effects Pro: Scale AI Art for Agencies & Designers\" — javítva: Tool is repeatedly called 'Deep Art Effects Pro' throughout the article (subtitle, tags, body), but the actual product by the German company is named simply 'Deep Art Effects' — the 'Pro' suffix appears fabricated/inaccurate as the official product name.; The article attributes specific 'batch",
-      "ref": "2026-07-22T10-14-03-157Z_deeparteffects_Batch_Processing_in_Deep_Art_Effects_Pro__Scale_AI.json",
-      "at": "2026-07-22T17:10:40.894Z"
-    },
-    {
-      "id": "m178474025204666",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Building AI infrastructure with the Effingham County community\" — javítva: NO_FRONTMATTER: A cikk nem YAML frontmatter-rel kezdődik; Reviewer verdict: Critical auto-check failures: NO_FRONTMATTER: A cikk nem YAML frontmatter-rel kezdődik; újraküldöm.",
-      "ref": "2026-07-22T17-06-55-772Z_openai-blog_Building_AI_infrastructure_with_the_Effingham_Coun.json",
-      "at": "2026-07-22T17:10:52.046Z"
-    },
-    {
-      "id": "m178474033056670",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Introducing OpenAI Presence\" — javítva: Factual inaccuracy: OpenAI Presence is not a real OpenAI product - this article fabricates a service and its features; Misleading setup: presents invented dashboard steps (Create New Agent, Voice/Chat toggle) as hard facts, will mislead readers; újraküldöm.",
-      "ref": "2026-07-22T17-06-55-772Z_openai-blog_Introducing_OpenAI_Presence.json",
-      "at": "2026-07-22T17:12:10.566Z"
-    },
-    {
-      "id": "m178474034700695",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Gemini vs ChatGPT on Your Phone: Which AI Assistant Fits Your Pocket?\" (?/10)",
-      "ref": "2026-07-22T02-10-56-965Z_aiworld-editorial_Compare_ai-on-phone.json",
-      "at": "2026-07-22T17:12:27.006Z"
-    },
-    {
-      "id": "m17847403537824",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Built in Fort Worth: Wistron Opens Advanced Manufacturing Plant to Produce NVIDIA AI Systems\" (?/10)",
-      "ref": "2026-07-22T10-13-59-137Z_nvidia-blog_Built_in_Fort_Worth__Wistron_Opens_Advanced_Manufa.json",
-      "at": "2026-07-22T17:12:33.782Z"
-    },
-    {
-      "id": "m178474035645929",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"What Is Stable Diffusion? A Simple Guide to the AI Behind Modern Image Generation\" — mi a baj: Backup Colab notebook URL (AUTOMATIC1111/stable-diffusion-webui-colab) is not a real repository and will mislead readers; Step 2's GitHub tab instructions are inaccurate — the CompVis/stable-diffusion-colab repo does not exist on GitHub; this is hallucinated guidance; Step 3 specif",
-      "ref": "2026-07-22T10-14-03-156Z_deeparteffects_What_Is_Stable_Diffusion__A_Simple_Guide_to_the_AI.json",
-      "at": "2026-07-22T17:12:36.459Z"
-    },
-    {
-      "id": "m178474038418112",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Batch Processing in Deep Art Effects Pro: Scale AI Art for Agencies & Designers\" (?/10)",
-      "ref": "2026-07-22T10-14-03-157Z_deeparteffects_Batch_Processing_in_Deep_Art_Effects_Pro__Scale_AI.json",
-      "at": "2026-07-22T17:13:04.181Z"
-    },
-    {
-      "id": "m17847403855017",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Building AI infrastructure with the Effingham County community\" (?/10)",
-      "ref": "2026-07-22T17-06-55-772Z_openai-blog_Building_AI_infrastructure_with_the_Effingham_Coun.json",
-      "at": "2026-07-22T17:13:05.501Z"
-    },
-    {
-      "id": "m178474039319199",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Introducing OpenAI Presence\" (?/10)",
-      "ref": "2026-07-22T17-06-55-772Z_openai-blog_Introducing_OpenAI_Presence.json",
-      "at": "2026-07-22T17:13:13.191Z"
-    },
-    {
-      "id": "m178474040882041",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "info",
-      "text": "A \"A centralized hub for meeting resources on the new Goog\" hír a meglévő útmutatóra mutat: how-to-start-a-new-google-docs-document-with-gemini-s-built-",
-      "ref": "how-to-start-a-new-google-docs-document-with-gemini-s-built-",
-      "at": "2026-07-22T17:13:28.820Z"
-    },
-    {
-      "id": "m178474042290920",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "info",
-      "text": "A \"Introducing OpenAI Presence\" hír a meglévő útmutatóra mutat: create-your-own-custom-gpt-in-chatgpt-no-coding",
-      "ref": "create-your-own-custom-gpt-in-chatgpt-no-coding",
-      "at": "2026-07-22T17:13:42.909Z"
-    },
-    {
-      "id": "m178474047427559",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-07-22T17:14:34.275Z"
-    },
-    {
-      "id": "m178474275339133",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
-      "ref": null,
-      "at": "2026-07-22T17:52:33.391Z"
-    },
-    {
-      "id": "m178477125964730",
-      "from": "ceo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Főnöki újraindítás: \"What Is Stable Diffusion? A Simple Guide to the AI Behind Mo\" — rewrite-explainer",
-      "ref": "2026-07-22T10-14-03-156Z_deeparteffects_What_Is_Stable_Diffusion__A_Simple_Guide_to_the_AI.json",
-      "at": "2026-07-23T01:47:39.647Z"
-    },
-    {
-      "id": "m178477197433184",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"V8 Alpha\" — mi a baj: Inaccurate claim that testing is 'for free' (requires subscription); Step 2 hides the paywall and account linking requirements; UI steps lack specific locations (where is the text box/button?)",
-      "ref": "2026-07-23T01-48-48-122Z_midjourney-updates_V8_Alpha.json",
-      "at": "2026-07-23T01:59:34.331Z"
-    },
     {
       "id": "m17847719743677",
       "from": "ellenorzo",
@@ -2635,6 +2428,215 @@
       "text": "6 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
       "ref": null,
       "at": "2026-07-25T16:46:39.701Z"
+    },
+    {
+      "id": "m178503074192530",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Introducing Claude Opus 5 \\ Anthropic\" — mi a baj: The article refers to 'Claude's New Opus Model' as a new top-tier Claude model, but the title attributes a specific model name 'Opus' to a new release without verification. While Claude Opus models exist (e.g., Claude Opus 4.5), describing it as 'new' and tying it to these specific features (long-running agent tasks, profess",
+      "ref": "2026-07-24T17-20-24-127Z_anthropic-blog_Introducing_Claude_Opus_5___Anthropic.json",
+      "at": "2026-07-26T01:52:21.925Z"
+    },
+    {
+      "id": "m178503076382925",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Introducing Claude Opus 5 on AWS: Anthropic’s most capable Opus model\" — mi a baj: \"Claude Opus 5\" appears to be an invented or incorrectly named model. Anthropic's naming convention uses the pattern \"Claude [version] Opus\" (e.g., Claude 3 Opus, Claude 3.5 Sonnet, Claude 4 Opus) — the version number precedes the variant name, not the other way around. No \"Claude Opus 5\" matc",
+      "ref": "2026-07-25T01-44-56-901Z_aws-ml_Introducing_Claude_Opus_5_on_AWS__Anthropic_s_most.json",
+      "at": "2026-07-26T01:52:43.829Z"
+    },
+    {
+      "id": "m178503079166373",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Version 8.2\" — mi a baj: Midjourney V8.2: this version number is not verified and is likely fabricated. Midjourney's current versioning uses numeric releases (V5, V5.1, V5.2, V6, V6.1, V7) as of the article context, not 'V8.2'. The article presents V8.2 features (widened aesthetic range, reduced failure rate, smarter personalisation) as established facts of a specific update",
+      "ref": "2026-07-25T01-44-56-902Z_midjourney-updates_Version_8_2.json",
+      "at": "2026-07-26T01:53:11.663Z"
+    },
+    {
+      "id": "m178503087641658",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"NTT DATA Group cuts incident analysis to 30 minutes with Codex\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Add a proper H1 heading at the top of the article body (e.g., '# AI Coding Assistants: What They Actually Do (And Why You Should Care)') and shift the existing intro H2 ('W",
+      "ref": "2026-07-23T01-48-34-084Z_openai-blog_NTT_DATA_Group_cuts_incident_analysis_to_30_minute.json",
+      "at": "2026-07-26T01:54:36.416Z"
+    },
+    {
+      "id": "m178503088862555",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Cohere Transcribe Arabic: Open-Source Speech AI\" — javítva: No actual step-by-step guide: readers aren't told which specific tool to use or how to access it; How-to guides need at least one concrete example showing the full process from start to finish; újraküldöm.",
+      "ref": "2026-07-23T10-11-43-793Z_cohere-blog_Cohere_Transcribe_Arabic__Open-Source_Speech_AI.json",
+      "at": "2026-07-26T01:54:48.625Z"
+    },
+    {
+      "id": "m178503090919150",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Introducing Claude Opus 5 \\ Anthropic\" — javítva: The article refers to 'Claude's New Opus Model' as a new top-tier Claude model, but the title attributes a specific model name 'Opus' to a new release without verification. While Claude Opus models exist (e.g., Claude Opus 4.5), describing it as 'new' and tying it to these specific features (long-running agent tasks, professional codi",
+      "ref": "2026-07-24T17-20-24-127Z_anthropic-blog_Introducing_Claude_Opus_5___Anthropic.json",
+      "at": "2026-07-26T01:55:09.191Z"
+    },
+    {
+      "id": "m178503092695935",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Qwen3.6-35B-A3B: Agentic Coding Power, Now Open to All - Qwen\" — javítva: vague step: Search for the latest Qwen model, install the software, and start a conversation; no detailed UI guidance for using LM Studio/Ollama/Hugging Face; újraküldöm.",
+      "ref": "2026-07-24T17-20-24-128Z_qwen-news_Qwen3_6-35B-A3B__Agentic_Coding_Power__Now_Open_to.json",
+      "at": "2026-07-26T01:55:26.959Z"
+    },
+    {
+      "id": "m178503094440775",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Introducing Claude Opus 5 on AWS: Anthropic’s most capable Opus model\" — javítva: \"Claude Opus 5\" appears to be an invented or incorrectly named model. Anthropic's naming convention uses the pattern \"Claude [version] Opus\" (e.g., Claude 3 Opus, Claude 3.5 Sonnet, Claude 4 Opus) — the version number precedes the variant name, not the other way around. No \"Claude Opus 5\" matches Anthro",
+      "ref": "2026-07-25T01-44-56-901Z_aws-ml_Introducing_Claude_Opus_5_on_AWS__Anthropic_s_most.json",
+      "at": "2026-07-26T01:55:44.407Z"
+    },
+    {
+      "id": "m178503096115330",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Version 8.2\" — javítva: Midjourney V8.2: this version number is not verified and is likely fabricated. Midjourney's current versioning uses numeric releases (V5, V5.1, V5.2, V6, V6.1, V7) as of the article context, not 'V8.2'. The article presents V8.2 features (widened aesthetic range, reduced failure rate, smarter personalisation) as established facts of a specific update that does",
+      "ref": "2026-07-25T01-44-56-902Z_midjourney-updates_Version_8_2.json",
+      "at": "2026-07-26T01:56:01.153Z"
+    },
+    {
+      "id": "m178503097914720",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"NTT DATA Group cuts incident analysis to 30 minutes with Codex\" (?/10)",
+      "ref": "2026-07-23T01-48-34-084Z_openai-blog_NTT_DATA_Group_cuts_incident_analysis_to_30_minute.json",
+      "at": "2026-07-26T01:56:19.147Z"
+    },
+    {
+      "id": "m178503100376535",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Cohere Transcribe Arabic: Open-Source Speech AI\" — mi a baj: The tool 'Cohere Transcribe Arabic' is invented — Cohere does not have a product called 'Cohere Transcribe Arabic' or a transcription feature specifically branded for Arabic on their dashboard. The article describes specific UI flows (dialect picker, upload, transcribe button) attributed to Cohere that do not exist",
+      "ref": "2026-07-23T10-11-43-793Z_cohere-blog_Cohere_Transcribe_Arabic__Open-Source_Speech_AI.json",
+      "at": "2026-07-26T01:56:43.765Z"
+    },
+    {
+      "id": "m178503103342041",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Introducing Claude Opus 5 \\ Anthropic\" (?/10)",
+      "ref": "2026-07-24T17-20-24-127Z_anthropic-blog_Introducing_Claude_Opus_5___Anthropic.json",
+      "at": "2026-07-26T01:57:13.420Z"
+    },
+    {
+      "id": "m178503105742774",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Qwen3.6-35B-A3B: Agentic Coding Power, Now Open to All - Qwen\" — mi a baj: Model name mismatch: article recommends 'qwen2.5-coder' but original source title is 'Qwen3.6-35B-A3B' — these are different models, potentially older vs newer; Article doesn't confirm if Qwen3.6-35B-A3B is available via Ollama or explain the relationship between the two model names; Reader could inst",
+      "ref": "2026-07-24T17-20-24-128Z_qwen-news_Qwen3_6-35B-A3B__Agentic_Coding_Power__Now_Open_to.json",
+      "at": "2026-07-26T01:57:37.427Z"
+    },
+    {
+      "id": "m178503107860587",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Introducing Claude Opus 5 on AWS: Anthropic’s most capable Opus model\" (?/10)",
+      "ref": "2026-07-25T01-44-56-901Z_aws-ml_Introducing_Claude_Opus_5_on_AWS__Anthropic_s_most.json",
+      "at": "2026-07-26T01:57:58.605Z"
+    },
+    {
+      "id": "m178503109578767",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Version 8.2\" (?/10)",
+      "ref": "2026-07-25T01-44-56-902Z_midjourney-updates_Version_8_2.json",
+      "at": "2026-07-26T01:58:15.787Z"
+    },
+    {
+      "id": "m178503112586080",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Learn Basic Phrases in a New Language Using Alexa+'s AI Conversation Mode\" — javítva: The article describes a specific voice command 'Alexa, open Conversations' and a panel called 'Conversations' or 'AI Chat' on Echo Show home screens for accessing Alexa+'s language learning mode — these appear to be fabricated UI elements/voice commands. Alexa+'s conversational features are not laun",
+      "ref": "GUIDE_learn-basic-phrases-in-a-new-language-using-alexa-s-ai-conve.json",
+      "at": "2026-07-26T01:58:45.860Z"
+    },
+    {
+      "id": "m178503112586224",
+      "from": "guide",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Kell még adat: \"Learn Basic Phrases in a New Language Using Alexa+'s AI Conversation Mode\" — az Ellenőrző tényt/forrást kér, amit nem találhatok ki: The article claims Alexa+ offers a language learning / pronunciation feedback / role-play conversation mode with level selection, which is not a documented feature of Alexa+. Alexa+ is a general AI assistant upgrade; there is no evidence it includes a",
+      "ref": "GUIDE_learn-basic-phrases-in-a-new-language-using-alexa-s-ai-conve.json",
+      "open": false,
+      "at": "2026-07-26T01:58:45.862Z",
+      "resolved_at": "2026-07-26T01:59:24.455Z"
+    },
+    {
+      "id": "m178503114772156",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Master Your Inbox: Summarise and Draft Emails Faster with Apple Intelligence\" — javítva: The article describes a 'Summarise' button in Mail as a UI element of Apple Intelligence. As of current knowledge, Apple Mail does not have a 'Summarise' button — Apple Intelligence email summarization in Mail works as automatic message summaries that appear at the top of emails in the inbox list",
+      "ref": "GUIDE_master-your-inbox-summarise-and-draft-emails-faster-with-app.json",
+      "at": "2026-07-26T01:59:07.721Z"
+    },
+    {
+      "id": "m178503116445481",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Learn Basic Phrases in a New Language Using Alexa+'s AI Conversation Mode\" (?/10)",
+      "ref": "GUIDE_learn-basic-phrases-in-a-new-language-using-alexa-s-ai-conve.json",
+      "at": "2026-07-26T01:59:24.454Z"
+    },
+    {
+      "id": "m178503117860354",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Master Your Inbox: Summarise and Draft Emails Faster with Apple Intelligence\" (?/10)",
+      "ref": "GUIDE_master-your-inbox-summarise-and-draft-emails-faster-with-app.json",
+      "at": "2026-07-26T01:59:38.603Z"
+    },
+    {
+      "id": "m178503121267735",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "info",
+      "text": "A \"Introducing Claude Opus 5 on AWS: Anthropic’s most capa\" hír a meglévő útmutatóra mutat: claude-getting-started",
+      "ref": "claude-getting-started",
+      "at": "2026-07-26T02:00:12.677Z"
+    },
+    {
+      "id": "m178503172234498",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-07-26T02:08:42.344Z"
+    },
+    {
+      "id": "m178503250905286",
+      "from": "social",
+      "to": "team",
+      "kind": "info",
+      "text": "6 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
+      "ref": null,
+      "at": "2026-07-26T02:21:49.052Z"
     }
   ]
 }

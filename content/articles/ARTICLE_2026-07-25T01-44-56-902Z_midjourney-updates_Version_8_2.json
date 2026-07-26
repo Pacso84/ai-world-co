@@ -1,0 +1,63 @@
+{
+  "_meta": {
+    "written_at": "2026-07-26T01:56:01.152Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.0078324,
+    "original_draft": "2026-07-25T01-44-56-902Z_midjourney-updates_Version_8_2.json",
+    "source_id": "midjourney-updates",
+    "source_name": "Midjourney Updates (hivatalos)",
+    "source_link": "https://updates.midjourney.com/version-8-2/",
+    "status": "published",
+    "rejected_at": "2026-07-26T01:53:11.596Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 613
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured how-to with a clear hook, good term explanations, and useful audience-specific takeaways. Australian English is correct and the tone is friendly and encouraging throughout.",
+      "_aiCost": 0.0013908,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Hitelesség-kapu blokkolta: Midjourney V8.2: this version number is not verified and is likely fabricated. Midjourney's current versioning uses numeric releases (V5, V5.1, V5.2, V6, V6.1, V7) as of the article context, not 'V8.2",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-07-25T01-44-56-902Z_midjourney-updates_Version_8_2.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-07-26T01:58:15.786Z",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-07-26T02:00:24.674Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is a general how-to article about multiple Midjourney features combined, not a single newly-introduced feature from a news story",
+    "seo": {
+      "meta_description": "Learn practical Midjourney prompt techniques to create more creative AI images. Simple tips and parameter tricks to transform basic text into stunning visuals.",
+      "keywords": [
+        "midjourney prompts",
+        "midjourney tips",
+        "how to use midjourney",
+        "midjourney creative images",
+        "ai image generation tips",
+        "midjourney prompt guide",
+        "midjourney better images"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add image alt text with descriptive midjourney-related phrases",
+        "Include internal links to other AI World Co. midjourney articles",
+        "Add a FAQ section addressing common midjourney prompt questions"
+      ],
+      "optimised_at": "2026-07-26T02:06:48.878Z"
+    },
+    "social": true,
+    "social_at": "2026-07-26T02:21:40.887Z"
+  },
+  "article_markdown": "---\ntitle: \"How to Get More Creative Images from Midjourney\"\nsubtitle: \"Practical prompt-writing tips and parameter tricks to spark better AI images for work and play\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"midjourney\", \"image-ai\", \"creative\", \"prompt-writing\", \"design-tips\"]\n---\n\n# How to Get More Creative Images from Midjourney\n\nYou're staring at a blank prompt box in Midjourney (an AI image generator that turns your text descriptions into pictures), and you've typed something quick like \"a cafe\". The four images that come back are fine — but they're the same cafe you could have imagined in five seconds. There's a better way.\n\n## Write prompts that give the AI somewhere to go\n\nThe biggest shift you can make is moving from keywords to brief-style prompts. Compare these:\n\n- **Keyword style**: `cafe, winter, warm light, photo`\n- **Brief style**: `a quiet country cafe at dusk, soft amber light spilling through frosted windows, worn wooden tables, a single cat asleep in the corner, editorial photography`\n\nBoth tell the AI the same thing on paper. The brief version gives it mood, lighting, composition (how elements are arranged inside the frame), and texture to work with. The keyword version gives it a shopping list and asks it to guess what you meant.\n\nTry writing prompts the way you'd brief a photographer: subject, mood, lighting, setting, then any style cues.\n\n## Use parameters to steer the result\n\nParameters are the little settings you tack onto the end of a prompt with two dashes. A few worth knowing:\n\n- `--ar 16:9` sets the **aspect ratio** (the shape of the image — widescreen, square, portrait). Great for blog headers, Instagram, or print.\n- `--s 50` or `--s 250` controls **stylize** — how much Midjourney leans into its own artistic taste. Lower numbers follow your prompt more literally; higher numbers give it more creative freedom.\n- `--no text, watermark` tells the AI to **avoid** certain things. Useful when it keeps adding unwanted details.\n\nYou don't need to memorise these. Just remember the rhythm: prompt first, parameters at the end.\n\n## Train the personalisation profile\n\nMidjourney has a personalisation feature that learns what you tend to like. After you've rated enough images, you can toggle it on with `--p` (or click the personalisation button in the web app). The first few sessions feel normal, but within a week or two the results start tilting towards your taste.\n\nThe trick is to **rate honestly** — pick the images you actually like, not the ones you think you should like. That's how the profile learns you.\n\n## What this means for you\n\n- **If you're creating for fun or social media**: Spend one session writing three brief-style prompts instead of keyword lists. Notice how different the images feel. Then rate your favourite from each batch — that's how personalisation starts to kick in.\n\n- **If you run a small business or create content**: Use `--ar` to match the platform you're posting to (1:1 for Instagram squares, 16:9 for YouTube thumbnails, 9:16 for Reels). It saves you resizing later, and the composition stays centred where you want it.\n\n- **If you're a designer or illustrator**: Treat Midjourney as a fast moodboard tool, not a finished-asset tool. Explore colour palettes, lighting moods, and composition ideas in minutes — then refine the keepers by hand in your usual software.\n\n## Wrap-up\n\nBetter Midjourney images aren't about typing more — they're about typing more *usefully*. A short brief beats a long keyword list. A parameter or two beats a vague instruction. And ten minutes of honest rating beats any single clever prompt. Try writing one brief-style prompt today, and add `--s 100` to see how it shifts the mood.",
+  "original_title": "Version 8.2"
+}

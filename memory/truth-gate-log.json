@@ -286,5 +286,40 @@
         "The article describes a 'Compose' prompt option within Mail's Writing Tools. The Writing Tools panel in Mail offers Rewrite, Proofread, Summary, and tone options (Friendly, Professional, Concise), but the 'Compose' prompt-to-generate feature ('Type a short instruction... then tap the arrow or Send to compose button') is not a documented Mail Writing Tools option — that's a feature in some other contexts, not specifically Mail's Writing Tools panel as described."
       ]
     }
+  ],
+  "2026-07-26": [
+    {
+      "at": "2026-07-26T01:52:21.926Z",
+      "file": "WRITER_2026-07-24T17-20-24-127Z_anthropic-blog_Introducing_Claude_Opus_5___Anthropic.json",
+      "action": "block",
+      "reasons": [
+        "The article refers to 'Claude's New Opus Model' as a new top-tier Claude model, but the title attributes a specific model name 'Opus' to a new release without verification. While Claude Opus models exist (e.g., Claude Opus 4.5), describing it as 'new' and tying it to these specific features (long-running agent tasks, professional coding focus) is presented as fact. Claude does have agent capabilities and coding strengths, but the framing as a brand-new release with specific feature attributions needs verification. The specific claims about it being 'new top-of-the-range' and designed specifically for 'long-running agent tasks and professional coding work' are presented as established fact without hedging."
+      ]
+    },
+    {
+      "at": "2026-07-26T01:52:43.831Z",
+      "file": "WRITER_2026-07-25T01-44-56-901Z_aws-ml_Introducing_Claude_Opus_5_on_AWS__Anthropic_s_most.json",
+      "action": "block",
+      "reasons": [
+        "\"Claude Opus 5\" appears to be an invented or incorrectly named model. Anthropic's naming convention uses the pattern \"Claude [version] Opus\" (e.g., Claude 3 Opus, Claude 3.5 Sonnet, Claude 4 Opus) — the version number precedes the variant name, not the other way around. No \"Claude Opus 5\" matches Anthropic's established naming scheme or is known to exist; the model name in the title and body is fabricated or wrong."
+      ]
+    },
+    {
+      "at": "2026-07-26T01:53:11.665Z",
+      "file": "WRITER_2026-07-25T01-44-56-902Z_midjourney-updates_Version_8_2.json",
+      "action": "block",
+      "reasons": [
+        "Midjourney V8.2: this version number is not verified and is likely fabricated. Midjourney's current versioning uses numeric releases (V5, V5.1, V5.2, V6, V6.1, V7) as of the article context, not 'V8.2'. The article presents V8.2 features (widened aesthetic range, reduced failure rate, smarter personalisation) as established facts of a specific update that does not appear to exist.",
+        "Midjourney does not have a documented '--style' parameter as described. The known parameters include --stylize (--s), --style (in limited form for Niji), but the article's specific framing and examples ('more editorial, more cinematic, or more photographic') as style values are not an accurate representation of how the --style parameter works in Midjourney."
+      ]
+    },
+    {
+      "at": "2026-07-26T01:56:43.766Z",
+      "file": "WRITER_2026-07-23T10-11-43-793Z_cohere-blog_Cohere_Transcribe_Arabic__Open-Source_Speech_AI.json",
+      "action": "block",
+      "reasons": [
+        "The tool 'Cohere Transcribe Arabic' is invented — Cohere does not have a product called 'Cohere Transcribe Arabic' or a transcription feature specifically branded for Arabic on their dashboard. The article describes specific UI flows (dialect picker, upload, transcribe button) attributed to Cohere that do not exist in this form."
+      ]
+    }
   ]
 }

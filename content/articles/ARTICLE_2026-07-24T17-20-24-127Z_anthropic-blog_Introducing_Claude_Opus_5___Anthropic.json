@@ -1,0 +1,62 @@
+{
+  "_meta": {
+    "written_at": "2026-07-26T01:55:09.189Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00763584,
+    "original_draft": "2026-07-24T17-20-24-127Z_anthropic-blog_Introducing_Claude_Opus_5___Anthropic.json",
+    "source_id": "anthropic-blog",
+    "source_name": "Anthropic (hivatalos)",
+    "source_link": "https://www.anthropic.com/news/claude-opus-5",
+    "status": "published",
+    "rejected_at": "2026-07-26T01:52:21.892Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 666
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Strong article with clear structure, good explanations of technical terms (agent, tiers, long-running tasks), practical actionable steps, and warm tone. Australian English is correct throughout. The What this means for you section is well-segmented by reader type. No prohibited content or clichés detected.",
+      "_aiCost": 0.00118716,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Hitelesség-kapu blokkolta: The article refers to 'Claude's New Opus Model' as a new top-tier Claude model, but the title attributes a specific model name 'Opus' to a new release without verification. While Claude Opus models ex",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-07-24T17-20-24-127Z_anthropic-blog_Introducing_Claude_Opus_5___Anthropic.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-07-26T01:57:13.419Z",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-07-26T01:59:51.938Z",
+    "guide_worthy": false,
+    "pairing_reason": "The article is already written as a practical how-to guide with specific instructions on using Claude Opus",
+    "seo": {
+      "meta_description": "Learn how to use Claude Opus for larger projects. A practical guide to Anthropic's top AI model for research, planning, and coding work.",
+      "keywords": [
+        "how to use Claude Opus",
+        "Claude Opus tutorial",
+        "Claude Opus vs Claude",
+        "Anthropic Claude Opus guide",
+        "Claude Opus features",
+        "using Claude for big projects"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add concrete examples of what Opus can do (research tasks, coding projects) to help readers understand its value",
+        "Include the official name 'Claude by Anthropic' once early in the article for better brand recognition",
+        "Add an FAQ section addressing common questions about Opus to capture more search intent"
+      ],
+      "optimised_at": "2026-07-26T02:06:10.133Z"
+    },
+    "social": true,
+    "social_at": "2026-07-26T02:21:11.222Z"
+  },
+  "article_markdown": "---\ntitle: \"How to Use Claude Opus for Bigger Projects and Longer Tasks\"\nsubtitle: \"A practical guide to using Claude's higher-tier model for research, planning, and coding work\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"claude\", \"anthropic\", \"ai-tools\", \"productivity\"]\n---\n\n# How to Use Claude Opus for Bigger Projects and Longer Tasks\n\nIt's 8am. You've got three deadlines on the go, your inbox is bursting, and you wish you had a research assistant who could just keep working while you handle everything else. Claude Opus — Anthropic's higher-tier model in the Claude family — is built for exactly that kind of morning.\n\n## What makes Opus different\n\nAnthropic makes Claude, an AI assistant you can chat with to write, research, brainstorm, and solve problems. They offer it in different **tiers** (think of them like different engine sizes — bigger engines can pull heavier loads). Opus sits at the top of the range, and it tends to shine on two kinds of work: **long-running agent tasks** and heavier **coding work**.\n\nThat phrase — **long-running agent tasks** — deserves a quick unpack. An **agent** is an AI that can use tools and take actions on its own, rather than only chatting back and forth. \"Long-running\" means it can keep working through a job that takes many steps or a lot of time. So instead of asking \"write me a short email,\" you can hand it something like \"research the top five competitors in my industry, summarise their pricing, and draft a one-page brief\" — and let it keep going until the job is done.\n\nThe other area Opus is known for is **coding** — writing and debugging computer code. Even if you have never written a line of code yourself, this still matters, because plenty of tools you use every day (forms, spreadsheets, simple automations) can now be built with a few lines of help from the AI.\n\n## How to actually use it\n\nOpus lives behind Anthropic's paid plans. If you are already using Claude, you will usually find it as a model option in the chat dropdown. If you are new to it, here is how to make the most of what it offers:\n\n1. **Give it a real, chunky brief.** Don't ask \"summarise this article.\" Ask \"compare these three articles, pull out the differences in opinion, and write me a 200-word summary I can share with my team.\" Opus shines on the bigger jobs.\n\n2. **Let it use tools.** Turn on features that let Claude open links, read files, or run code. These are the \"hands\" the agent uses to actually finish a task — without them, you are still just chatting.\n\n3. **Check in, don't hover.** The point of an agent is that it works while you do other things. Give it a task, walk away, come back to a draft.\n\n4. **Be specific about the finish line.** Tell it what \"done\" looks like — a spreadsheet, a one-pager, a list of options. Vague endings produce vague results.\n\n## What this means for you\n\n- **If you are juggling a busy work week**: hand off the background research tasks you keep postponing. Higher-tier models are built for the kind of multi-step work that usually eats your evening.\n- **If you run a small business or freelance**: think of it as a part-time research assistant. Brief it well, leave it alone, and review the output when it's done.\n- **If you are just curious about AI**: try one bigger task this week — a weekend recipe plan, a holiday research summary, a side-project brainstorm. You will feel the difference between \"chat mode\" and \"agent mode.\"\n\n## Wrap-up\n\nOpus isn't a flashy reinvention — it's a quieter, more useful option for the kind of work most of us never had time to start. Pick one task you've been putting off, brief it clearly, and see what comes back. That is the easiest way to know whether this kind of AI deserves a place in your week.",
+  "original_title": "Introducing Claude Opus 5 \\ Anthropic"
+}

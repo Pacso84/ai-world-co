@@ -1,6 +1,106 @@
 # AI World Co. — közösségi posztok
 
-*Generálva: 2026-07-25T16:46:39.698Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+*Generálva: 2026-07-26T02:21:49.049Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## NTT DATA Group cuts incident analysis to 30 minutes with Codex
+**🔗 https://aiworldhq.com/article/ai-coding-assistants-what-they-actually-do-and-why-you-shoul.html**
+
+**Facebook:**
+One tech team used an AI coding assistant to cut their incident analysis time down to just 30 minutes — no more losing whole days to tricky technical problems. If you've ever wished for a faster way to handle messy technical tasks, this story might give you some ideas. https://aiworldhq.com/article/ai-coding-assistants-what-they-actually-do-and-why-you-shoul.html #AITools #Productivity
+
+**Instagram:**
+What if you could finish incident reports in 30 minutes instead of a whole day?
+
+That's exactly what happened for one tech team using an AI coding tool — and it's changing how they work.
+
+#AITools #Productivity #TechTips #Automation #WorkSmarter
+
+*Kép-ötlet: A clean, modern laptop screen showing a simple code editor with a green checkmark indicating a completed task, set against a minimalist white background*
+
+---
+
+## Introducing Claude Opus 5 \ Anthropic
+**🔗 https://aiworldhq.com/article/how-to-use-claude-opus-for-bigger-projects-and-longer-tasks.html**
+
+**Facebook:**
+Got a big project on the go? Claude Opus can help you research, plan and code without getting stuck. Here's how to get the most out of this powerful AI tool. https://aiworldhq.com/article/how-to-use-claude-opus-for-bigger-projects-and-longer-tasks.html #AI #Productivity
+
+**Instagram:**
+When your to-do list feels overwhelming
+
+Claude Opus is built for bigger tasks — research, planning, even coding help that keeps up with your pace. Perfect when you need a smart assistant that doesn't quit.
+
+#AI #Productivity #Anthropic #Claude #TechTips
+
+*Kép-ötlet: A clean, minimal illustration of a person at a desk with multiple floating documents or tasks being organised by a subtle digital glow — representing AI assistance handling complex work.*
+
+---
+
+## Introducing Claude Opus 5 on AWS: Anthropic’s most capable Opus model
+**🔗 https://aiworldhq.com/article/what-claude-s-opus-models-mean-for-everyday-people-and-how-t.html**
+
+**Facebook:**
+Got a mountain of emails, a half-finished report, and a kid's science project due tomorrow? The new Claude Opus 5 is Anthropic's most capable AI yet — and this plain-English guide shows everyday people exactly how to start using it. https://aiworldhq.com/article/what-claude-s-opus-models-mean-for-everyday-people-and-how-t.html #Productivity #AIHelp
+
+**Instagram:**
+Your busy evenings just got a little easier.
+
+Anthropic's top-tier AI model can help knock out that report, summarise long emails, or even brainstorm a last-minute science project. Here's how to try it — no tech expertise needed.
+Link in bio.
+
+#ArtificialIntelligence #ProductivityHacks #AIFortheRestOfUs #TechForEveryone #EverydayAI
+
+*Kép-ötlet: A calm desk at evening with a laptop, a steaming coffee cup, and a child's craft project neatly in progress — conveying productive calm, no chaos.*
+
+---
+
+## A University of Florida Professor Stopped Fighting AI in His Classroom: A Peer-Reviewed Study Followed
+**🔗 https://aiworldhq.com/article/how-to-redesign-your-tasks-to-work-with-ai-instead-of-fighti.html**
+
+**Facebook:**
+A professor tried to ban AI in his classroom — then did a research study and changed his mind. The finding? Using AI the right way actually helps you learn more, not less. Here's what he discovered. https://aiworldhq.com/article/how-to-redesign-your-tasks-to-work-with-ai-instead-of-fighti.html #AI #Learning
+
+**Instagram:**
+What if AI could make you better at your work, not worse? This professor did the research — and found a practical way to use AI as a thinking partner that keeps the learning intact. Link in bio.
+
+#AI #Productivity #StudyTips #Learning #Workplace
+
+*Kép-ötlet: A clean shot of a person sitting at a desk with a laptop, looking thoughtfully at the screen as a subtle, friendly AI icon glows beside them — suggesting partnership rather than replacement.*
+
+---
+
+## Version 8.2
+**🔗 https://aiworldhq.com/article/how-to-get-more-creative-images-from-midjourney.html**
+
+**Facebook:**
+Want your AI images to look less generic? This simple guide shows you practical prompt tricks to get more creative, unique results every time. Perfect whether you're designing for work or just having fun. https://aiworldhq.com/article/how-to-get-more-creative-images-from-midjourney.html #AIArt #CreativeTips
+
+**Instagram:**
+Want your AI images to stand out from the crowd? Learn easy prompt tricks that turn basic ideas into stunning visuals. Whether you're creating for work or play, these tips actually work.
+
+#AIArt #MidjourneyTips #CreativeTools #ImageGeneration #DesignHacks
+Link in bio.
+
+*Kép-ötlet: A clean, minimalist close-up of someone's hands typing on a keyboard next to a vibrant, creative AI-generated artwork on a laptop screen, natural lighting from a window.*
+
+---
+
+## Announcing Claude Opus 5 on Snowflake Cortex AI
+**🔗 https://aiworldhq.com/article/how-smarter-ai-models-are-changing-your-daily-tools-and-what.html**
+
+**Facebook:**
+Ever wish your inbox could help you figure out what actually needs a reply? The new wave of reasoning AI can do exactly that — and it's already showing up in apps you use every day. Here's what to try first. https://aiworldhq.com/article/how-smarter-ai-models-are-changing-your-daily-tools-and-what.html #EverydayAI #ProductivityTips
+
+**Instagram:**
+Your email assistant is getting smarter — here's how to use it
+
+The new reasoning AI in your apps can actually understand context now, not just keywords. This guide shows you which features are worth your time.\n\n#AIForBeginners #EverydayAI #SmartProductivity #TechTips #LifeHacks
+
+Link in bio.
+
+*Kép-ötlet: A clean, minimal photo of a smartphone showing an email inbox with a friendly, subtle AI indicator icon, natural lighting, no text overlay.*
 
 ---
 

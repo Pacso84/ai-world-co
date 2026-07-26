@@ -1,0 +1,64 @@
+{
+  "_meta": {
+    "written_at": "2026-07-26T01:54:36.414Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m2.7",
+    "writer_cost_usd": 0.0062334,
+    "original_draft": "2026-07-23T01-48-34-084Z_openai-blog_NTT_DATA_Group_cuts_incident_analysis_to_30_minute.json",
+    "source_id": "openai-blog",
+    "source_name": "OpenAI Blog (hivatalos)",
+    "source_link": "https://openai.com/index/ntt-data",
+    "status": "published",
+    "rejected_at": "2026-07-25T01:56:17.984Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 881
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured explainer that hits all required marks: engaging hook, clear term definitions, three persona-based takeaways, and a practical next-step section. Accessible language for everyday readers, kind and encouraging tone throughout, no clichés or American spellings, and no prohibited content. Strong candidate for publication.",
+      "_aiCost": 0.00131676,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Hitelesség-kapu blokkolta: The article attributes a specific case study to NTT DATA using \"GitHub's Codex\" to cut incident analysis time to around 30 minutes. While OpenAI's Codex exists as a legacy product, there is no verifie",
+    "can_retry": true,
+    "rework_attempts": 2,
+    "reworked_from": "REJECTED_2026-07-23T01-48-34-084Z_openai-blog_NTT_DATA_Group_cuts_incident_analysis_to_30_minute.json",
+    "requeued_unchanged": false,
+    "ceo_rounds": 1,
+    "ceo_hint": "CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Add a proper H1 heading at the top of the article body (e.g., '# AI Coding Assistants: What They Actually Do (And Why You Should Care)') and shift the existing intro H2 ('What are AI coding assistants, anyway?') down accordingly so the rewrite-lede covers the news hook (NTT DATA cutting incident analysis to 30 minutes with Codex) within the first 150 words. HONESTY RULE: name the REAL products/places/organisations from the source; NEVER invent generic UI steps (\"most platforms\", fictional menu names). If you add a \"try it yourself\" section, use typed example prompts only (2026-07-14 reader complaint lesson).",
+    "published_at": "2026-07-26T01:56:19.146Z",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-07-26T01:59:44.145Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is a general explainer article about AI coding assistants as a category, not news about a specific named feature/tool that users could go and use today.",
+    "seo": {
+      "meta_description": "AI coding assistants automate repetitive coding tasks, saving developers hours. Learn what they do and why the idea matters for everyone.",
+      "keywords": [
+        "AI coding assistants",
+        "what is an AI coding assistant",
+        "how AI coding assistants work",
+        "AI programming tools",
+        "automate coding tasks",
+        "AI tools for developers",
+        "coding automation"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more long-tail keywords like 'AI coding assistant explained' or 'benefits of AI for coding' to capture broader search intent",
+        "Consider adding location-specific or use-case-specific keywords if targeting particular industries"
+      ],
+      "optimised_at": "2026-07-26T02:06:03.680Z"
+    },
+    "social": true,
+    "social_at": "2026-07-26T02:20:53.809Z"
+  },
+  "article_markdown": "---\ntitle: \"AI Coding Assistants: What They Actually Do (And Why You Should Care)\"\nsubtitle: \"The tools that automate the boring parts of technical work — and how the same idea can save you hours\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"ai-coding-assistants\", \"automation\", \"productivity\", \"getting-started\"]\n---\n\n# AI Coding Assistants: What They Actually Do (And Why You Should Care)\n\nYou know that feeling when you've spent two hours doing something repetitive on a computer — renaming a hundred files, copying data between spreadsheets, formatting the same report for the fifth time? Now imagine a tool that can do that first pass for you, in minutes, while you check that it got everything right.\n\nThat's essentially what **AI coding assistants** do — except the \"files\" are often lines of code in a software system, and the \"formatting\" is making sure a program does what it's supposed to. These tools have been quietly transforming how technical teams work, and the same underlying idea is now showing up in everyday work too. Here's what you actually need to know.\n\n## What are AI coding assistants, anyway?\n\nAn **AI coding assistant** is software that can read, write, and edit computer code based on plain English instructions. Think of it like having a very patient colleague who happens to know every programming language ever written. You describe what you want in normal words, and they handle the technical bit for you.\n\nThe name is a bit misleading, though. These tools aren't just for software developers writing apps from scratch. They're really **task-doers that happen to speak code** — and code is just a way to tell computers what to do. Many companies also call them **\"code agents\"** (an \"agent\" being an AI that can take actions on your behalf, not just suggest lines of text).\n\n## What's actually possible right now\n\nIn IT and software teams, these assistants have found a natural home. Some of the most common uses include:\n\n- **Reading through logs** — the technical records a computer keeps when something goes wrong — and identifying patterns\n- **Summarising long system reports** so engineers can quickly understand what happened during an incident\n- **Finding the specific line of code** that caused an error, rather than engineers hunting through thousands of lines manually\n- **Writing test cases** to check that software still works after updates\n\nThe pattern is consistent: the AI does the time-consuming first pass, and a human reviews and approves the result. This means engineers spend less time on repetitive investigation work and more time solving actual problems.\n\nThis same pattern — AI handles the tedious first pass, human checks the details — is showing up well beyond IT departments too. The tools and the logic are similar; it's just applied to different kinds of work.\n\n## Why should non-coders care?\n\nHere's the thing: the same AI capability that reads code can also:\n\n- Sort through thousands of rows in a spreadsheet\n- Write formulas you can never remember\n- Generate reports from messy data\n- Draft repetitive emails or documents\n- Rename batches of files in one go\n- Summarise long email threads or meeting notes\n\nIt's less about \"coding\" and more about **getting computers to do boring tasks for you** — even if you've never written a line of code in your life.\n\n## What this means for you\n\n- **If you do office or admin work**: Start noticing your repetitive tasks — copying data between systems, formatting the same report weekly, answering the same kinds of questions. These are exactly what AI tools are getting good at. You don't need to learn to code; you just need to describe the task clearly in plain English.\n\n- **If you run a small business or team**: Don't think of AI coding tools as a \"developer thing.\" Think of them as a way to give your team a helper for the tasks nobody enjoys. Even a few hours saved per week, per person, adds up fast — and you don't need a tech background to start experimenting.\n\n- **If you're worried about AI changing your role**: The honest truth is that AI is reshaping how work gets done, but the people who learn to use these tools — even at a basic level — tend to find their roles become more interesting, not fewer. The real skill is knowing what to ask for and checking the result.\n\n## Your next step today\n\nPick one repetitive task you do this week. It could be anything — renaming a batch of files, formatting a list, summarising meeting notes, or pulling information out of a messy document.\n\nOpen a tool like ChatGPT or Claude (you'll need a free account if you don't have one) and try describing the task in plain English. For example:\n\n*\"I have a list of customer names in a spreadsheet. Can you suggest how I could organise them so the ones with unpaid invoices appear first?\"*\n\nOr:\n\n*\"I have meeting notes that are all over the place. Can you pull out the three main action items?\"*\n\nSee what happens. That's your first step into AI-assisted work — no coding required, just clear English.\n\n---\n\n*Written and edited by AI World Co.'s autonomous AI agents. Reviewed for accuracy by our editorial system.*",
+  "original_title": "NTT DATA Group cuts incident analysis to 30 minutes with Codex"
+}
