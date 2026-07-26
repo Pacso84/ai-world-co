@@ -84,6 +84,22 @@ function collectWeek() {
 
 const SYSTEM_PROMPT = `You are the Weekly Digest Writer for AI World HQ (aiworldhq.com), a site that explains AI news for everyday people. (Primary audience: Australia — but written so ANYONE can read it; do not address "Australians" explicitly.) Plain, warm, jargon-free English. Every technical word explained on first use. Honest: never invent facts beyond the summaries you are given.`;
 
+// HITELESSÉG-JAVÍTÓ (2026-07-26): az AI néha elrontja a SAJÁT domainünket a
+// belső linkekben (pl. "aiworldhq..com", "aiworldhq. com") — a slug/útvonal
+// HELYES, csak a domain sérül. Ezt a hitelesség-kapu tévesen "kitalált linknek"
+// veszi és a KÉSZ heti összefoglalót örökre a rejected-be dobja. Itt a sérült
+// domaint visszaállítjuk a helyes SITE_URL-re, és biztosítjuk a read_time_minutes
+// mezőt (az AI néha kihagyja) — hogy a valóban jó összefoglaló ne akadjon el.
+function repairDigest(md) {
+  if (!md) return md;
+  let out = md.replace(/https?:\/\/aiworldhq[.\s]+com/gi, SITE_URL);   // domain-typo javítás
+  const fm = out.match(/^---\n([\s\S]*?)\n---/);
+  if (fm && !/^\s*read_time_minutes:/m.test(fm[1])) {
+    out = out.replace(/^(category:.*)$/m, '$1\nread_time_minutes: 4');
+  }
+  return out;
+}
+
 function buildPrompt(items, exactTitle, dateStr) {
   const list = items.map((it, i) => `${i + 1}. "${it.title}" — ${it.subtitle} (source: ${it.source}) [link: ${it.url}]`).join('\n');
   return `Below are this week's articles from our own site. Pick the FIVE most important for everyday readers (variety matters: different companies/topics), then write our weekly roundup article.
@@ -134,10 +150,12 @@ async function main() {
   const prompt = buildPrompt(items, exactTitle, dateStr);
 
   let response = await ask(prompt, { agentName: AGENT_NAME, systemPrompt: SYSTEM_PROMPT, maxTokens: 3000 });
+  if (response) response.text = repairDigest(response.text);   // sérült belső linkek + hiányzó mezők javítása
   if (response && !selfCheck(response.text)) {
     console.log('   ↻ Hiányos szerkezet (frontmatter / záró szekció / belső linkek) — újrapróbálom nyomatékkal...');
     const retry = await ask(prompt + `\n\n⚠️ CRITICAL: You MUST include (1) the YAML frontmatter, (2) an H1 heading line "# ${exactTitle}" right after the frontmatter, (3) at least 5 [Read the full story](...) links from the provided list, and (4) a "## What this means for you" H2 section. Write the complete article again.`,
       { agentName: AGENT_NAME, systemPrompt: SYSTEM_PROMPT, maxTokens: 3000 });
+    if (retry) retry.text = repairDigest(retry.text);
     if (retry && selfCheck(retry.text)) { retry.costUsd += response.costUsd; response = retry; }
   }
   if (!response || !selfCheck(response.text)) {
