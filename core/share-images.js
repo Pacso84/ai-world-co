@@ -90,7 +90,11 @@ async function main() {
     const title = ((d.article_markdown || '').match(/^title:\s*["']?(.+?)["']?\s*$/m) || [])[1] || d.original_title || '';
     if (!title) continue;
     const slug = slugify(title);
-    const src = join(IMG_DIR, slug + '.jpg');
+    // HETI ÖSSZEFOGLALÓ KABALA (2026-07-26): a weekly-digest OG/megosztás-kép is a
+    // fix kabala-borítóból készül (a cím ráíródik a bal sötét sávra), nem a slugból.
+    const isWeekly = /weekly-digest/.test((d.article_markdown || '').slice(0, 600));
+    const mascot = join(IMG_DIR, 'mascot-weekly.jpg');
+    const src = (isWeekly && existsSync(mascot)) ? mascot : join(IMG_DIR, slug + '.jpg');
     const out = join(OUT_DIR, slug + '.jpg');
     if (!existsSync(src)) { noCover++; continue; }
     if (existsSync(out) && !FORCE) { skipped++; continue; }

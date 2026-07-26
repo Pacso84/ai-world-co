@@ -893,13 +893,19 @@ function loadArticles() {
       const imgFile = ['jpg', 'png', 'jpeg', 'webp'].map(ext => `${slug}.${ext}`)
         .find(name => existsSync(join(ASSETS_SRC, 'images', name)));
 
+      // HETI ÖSSZEFOGLALÓ KABALA (2026-07-26): a weekly-digest cikkek FIX borítója
+      // a cég arca (mascot-weekly.jpg), nem az automata-generált kép. A slug hetente
+      // változik (dátumos cím), ezért a tag alapján irányítunk rá, nem slug szerint.
+      const isWeeklyDigest = (meta.tags || []).includes('weekly-digest');
+      const mascotCover = existsSync(join(ASSETS_SRC, 'images', 'mascot-weekly.jpg')) ? 'mascot-weekly.jpg' : null;
+
       articles.push({
         slug,
         file,
         guideTopicId: data._meta?.guide_topic_id || null,
         relatedGuideTopic: data._meta?.related_guide_topic || null,
         sourceNews: data._meta?.source_news || null,
-        image: imgFile || null,
+        image: (isWeeklyDigest && mascotCover) ? mascotCover : (imgFile || null),
         title: meta.title || data.original_title || 'Untitled',
         subtitle: meta.subtitle || '',
         category: meta.category || 'other',
