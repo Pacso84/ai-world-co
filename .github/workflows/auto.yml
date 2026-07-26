@@ -97,12 +97,16 @@ jobs:
           CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
-        timeout-minutes: 12
-        # --max-minutes 9: a fordító tiszta kilépéssel megáll a 12-es plafon ELŐTT
-        # (2026-07-24). A darabszám-limit (80) mellé kell: nagy backfillnél a 80 pár
-        # átléphette a 12 percet → timeout → részleges fordítás. Az idő-keret garantálja,
-        # hogy a lépés zölden zárul, a maradékot a következő futás fordítja.
-        run: node agents/translator/agent.js --limit 80 --max-minutes 9
+        timeout-minutes: 30
+        # 2026-07-26: a repó PUBLIKUS lett → GitHub Actions INGYEN+KORLÁTLAN, ezért
+        # a korábbi szűk plafonokat (limit 80 / 9 perc / 12 perc timeout) FELOLDOTTUK.
+        # Azok a privát repó havi 2000 ingyen perce miatt spóroltak, és rohamnál
+        # (új forrás + kvóta-reset = sok cikk egyszerre) a maradékot a KÖVETKEZŐ
+        # futásra halasztották (=látható fordítás-késés). Most egy roham is EGY
+        # futásban utoléri magát. Ugyanannyi AI-token (=ugyanannyi költség), csak
+        # gyorsabb; a --max-minutes 27 továbbra is tiszta kilépést garantál a 30-as
+        # timeout ELŐTT, a $50-os havi AI-cap pedig a valódi költség-védőháló.
+        run: node agents/translator/agent.js --limit 250 --max-minutes 27
 
       # ── KIADÁSI LÁNC (2026-07-23) ────────────────────────────────────
       # MIÉRT if: always() INNENTŐL: korábban ezek a lépések alapértelmezetten
