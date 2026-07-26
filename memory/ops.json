@@ -1285,15 +1285,6 @@
   ],
   "messages": [
     {
-      "id": "m178477203335292",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Qwen3.5: Towards Native Multimodal Agents - Qwen\" — mi a baj: Qwen 3.5 from Alibaba is referenced as a model name; the verified-real list contains \"Qwen\" and \"Alibaba\" but \"Qwen 3.5\" is not confirmed as an official product/version name. This appears to be an invented version number.",
-      "ref": "2026-07-23T01-48-57-922Z_qwen-news_Qwen3_5__Towards_Native_Multimodal_Agents_-_Qwen.json",
-      "at": "2026-07-23T02:00:33.352Z"
-    },
-    {
       "id": "m178477206913324",
       "from": "iro",
       "to": "ellenorzo",
@@ -2637,6 +2628,15 @@
       "text": "6 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
       "ref": null,
       "at": "2026-07-26T19:01:33.147Z"
+    },
+    {
+      "id": "m17850937364006",
+      "from": "social",
+      "to": "team",
+      "kind": "info",
+      "text": "6 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
+      "ref": null,
+      "at": "2026-07-26T19:22:16.400Z"
     }
   ]
 }

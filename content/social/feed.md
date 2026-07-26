@@ -1,6 +1,120 @@
 # AI World Co. — közösségi posztok
 
-*Generálva: 2026-07-26T19:01:33.145Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+*Generálva: 2026-07-26T19:22:16.398Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## This Week in AI: The 5 Stories That Matter (26 July 2026)
+**🔗 https://aiworldhq.com/article/this-week-in-ai-the-5-stories-that-matter-26-july-2026.html**
+
+**Facebook:**
+This week's AI is surprisingly practical — from tools that help kids study smarter to digital twins that can speak in your own voice. Here's what's actually worth knowing. https://aiworldhq.com/article/this-week-in-ai-the-5-stories-that-matter-26-july-2026.html #AI #TechNews
+
+**Instagram:**
+Your voice, digitally recreated. This week's AI news covers exactly that — plus study tools that adapt to how you learn and creative helpers that fit into apps you already use.
+
+#AI #ArtificialIntelligence #TechNews #FutureTech #Innovation
+
+*Kép-ötlet: A simple, clean illustration of a microphone transforming into a stylized human silhouette, symbolising voice cloning technology.*
+
+---
+
+## Compare features of two products before making a purchase with Perplexity
+**🔗 https://aiworldhq.com/article/compare-products-with-perplexity-before-you-buy.html**
+
+**Facebook:**
+Not sure which product is worth your money? This guide shows a quick way to compare features and reviews side-by-side so you can shop with confidence. https://aiworldhq.com/article/compare-products-with-perplexity-before-you-buy.html #shopping #smartbuying
+
+**Instagram:**
+Making a big purchase? Here's how to compare products the easy way.
+
+Use AI to see features and reviews side-by-side — so you know exactly what you're getting for your money.
+
+#shoppingtips #aintechnology #productreview #smartbuying #beginnerfriendly
+
+Link in bio.
+
+*Kép-ötlet: A simple, clean illustration of two product boxes side by side with a magnifying glass hovering over them, suggesting comparison and smart shopping.*
+
+---
+
+## Control TV and streaming apps using Alexa+ voice commands
+**🔗 https://aiworldhq.com/article/control-your-tv-and-streaming-apps-with-alexa-voice-commands.html**
+
+**Facebook:**
+No more hunting for the remote when you're sunk into the couch. This easy guide shows you how to control your TV and streaming apps just by asking. https://aiworldhq.com/article/control-your-tv-and-streaming-apps-with-alexa-voice-commands.html #smarthome #aussietech
+
+**Instagram:**
+Remote gone missing (again)? There's a fix.
+
+This beginner guide walks you through setting up voice control for your TV and streaming apps — so you can play, pause and switch shows without lifting a finger.
+
+#smarthome
+#aussietech
+#voicetech
+#livingmadeeasy
+#australianliving
+
+Link in bio.
+
+*Kép-ötlet: A person relaxing on a couch, speaking naturally to a small smart speaker on a coffee table, with a TV playing in the background*
+
+---
+
+## Create a custom recipe generator that only uses ingredients you already have with NVIDIA ChatRTX
+**🔗 https://aiworldhq.com/article/build-a-recipe-generator-that-only-uses-what-you-already-own.html**
+
+**Facebook:**
+Your fridge could actually tell you what to cook tonight. There's a free tool that helps you build your own AI recipe generator—one that suggests meals using only what you've already got. No waste, no stress. https://aiworldhq.com/article/build-a-recipe-generator-that-only-uses-what-you-already-own.html #mealplanning #homecooking
+
+**Instagram:**
+Your fridge is about to get a lot more useful.
+
+Build a free AI recipe generator that suggests meals using only ingredients you already have. No more wasted food, no more dinner stress.
+
+#mealplanning #aiforthehome #cookingtips #homemade #everydayai
+
+*Kép-ötlet: A kitchen bench with fresh ingredients and a laptop screen showing a simple recipe suggestion*
+
+---
+
+## Create a custom text summarizer with Hugging Face Transformers (no‑code)
+**🔗 https://aiworldhq.com/article/build-your-own-text-summariser-with-hugging-face-no-code.html**
+
+**Facebook:**
+Ever wish you could skim a long article in seconds flat? This step-by-step guide shows you how to build your own text summariser — no coding required, just a few clicks. Game on, right? https://aiworldhq.com/article/build-your-own-text-summariser-with-hugging-face-no-code.html #AI #Productivity
+
+**Instagram:**
+Turn long articles into bite-size summaries in seconds.
+
+This beginner's guide walks you through building your own text summariser on Hugging Face Spaces — no coding needed, just a few clicks.
+
+#ArtificialIntelligence
+#Productivity
+#NoCode
+#TechForEveryone
+#LearnOnline
+
+Link in bio.
+
+*Kép-ötlet: A clean, minimal smartphone screen showing a text summariser tool with a long article on one side and a short summary on the other*
+
+---
+
+## Create a multi‑room music playlist with Alexa+
+**🔗 https://aiworldhq.com/article/create-a-multi-room-music-playlist-with-alexa.html**
+
+**Facebook:**
+Ever wish your music could follow you from room to room without manually starting it in each one? Here's a simple way to set up your playlist so it plays everywhere with just one voice command. https://aiworldhq.com/article/create-a-multi-room-music-playlist-with-alexa.html #SmartHome #LifeHacks
+
+**Instagram:**
+Say goodbye to switching speakers on and off 🏠🎵
+
+One voice command starts your playlist in the kitchen, lounge and bedroom — no faffing about needed.
+
+#AlexaPlus #SmartHome #MusicLover #HomeAutomation #VoiceAssistant
+
+*Kép-ötlet: A peaceful living room with a smart speaker on a side table, music notes floating gently between two other rooms in the background.*
 
 ---
 
