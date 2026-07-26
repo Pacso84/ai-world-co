@@ -1206,7 +1206,19 @@ function buildIndex(articles) {
   // A régebbiek lekerülnek a főoldalról (de a saját oldaluk + sitemap megmarad).
   const DAY = 86400000;
   const cutoff = Date.now() - 7 * DAY;
-  let recent = articles.filter(a => { const t = new Date(a.publishedAt).getTime(); return t && t >= cutoff; });
+
+  // HETI ÖSSZEFOGLALÓ (2026-07-26): a legfrissebb weekly-digest MINDIG kiemelve
+  // marad a főoldalon (a 7 napos ablaktól függetlenül), amíg a következő le nem
+  // váltja — különben a heti recap egy hét után eltűnne a főoldalról (a user
+  // panasza: "nem látom a híreknél az összefoglalót").
+  const weeklyPin = articles
+    .filter(a => (a.tags || []).includes('weekly-digest'))
+    .sort((x, y) => (y.publishedAt || '').localeCompare(x.publishedAt || ''))[0] || null;
+
+  let recent = articles.filter(a => {
+    if (weeklyPin && a.slug === weeklyPin.slug) return false;   // a kiemelt digest ne duplázódjon a listában
+    const t = new Date(a.publishedAt).getTime(); return t && t >= cutoff;
+  });
   if (recent.length === 0) recent = articles.slice(0, 6);   // ne legyen üres nyugodt héten
 
   const [featured, ...rest] = recent;
@@ -1257,12 +1269,21 @@ function buildIndex(articles) {
     <span class="guides-cta__t"><strong>${tr('ctaTitle')}</strong><br>${tr('ctaText')}</span>
     <span class="guides-cta__arrow">→</span></a>`;
 
+  // Kiemelt HETI ÖSSZEFOGLALÓ blokk (a kabalával) — a hero UTÁN, mindig látszik.
+  const WEEKLY_LABEL = { en: 'This week in AI', hu: 'A hét összefoglalója', es: 'Esta semana en IA', de: 'Diese Woche in KI', fr: 'Cette semaine en IA' };
+  const weeklyHtml = weeklyPin ? `<section class="grid-section weekly-pin">
+    <div class="section-head">
+      <span class="pill">📅 ${escapeHtml(WEEKLY_LABEL[LANG] || WEEKLY_LABEL.en)}</span>
+    </div>
+    <div class="grid">${articleCard(weeklyPin, true)}</div>
+  </section>` : '';
+
   return pageShell({
     title: `${SITE.name} — ${tr('tagline')}`,
     description: SITE.description,
     ogImage: articles[0]?.image ? `${SITE.url}/assets/images/${articles[0].image}` : '',
     jsonld: { '@context': 'https://schema.org', '@type': 'WebSite', name: SITE.name, url: SITE.url, description: SITE.description },
-    bodyContent: featuredHtml + guidesCta + grid + nlBox()
+    bodyContent: featuredHtml + weeklyHtml + guidesCta + grid + nlBox()
       + `<p class="start__wizcta"><a href="archive.html">🗂️ ${escapeHtml(tr('archNav'))} →</a></p>`,
     pagePath: ''
   });
