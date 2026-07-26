@@ -1,7 +1,7 @@
 {
   "_meta": {
     "note": "Forrás-bizonyítvány: frissesség + termés + megbízhatóság forrásonként. Gyártja: core/source-report-card.js",
-    "updated": "2026-07-26T19:41:29.199Z",
+    "updated": "2026-07-26T19:54:08.514Z",
     "thresholds": {
       "DEAD_FEED_DAYS": 365,
       "MIN_SAMPLE": 4,
@@ -463,14 +463,14 @@
     },
     "deeparteffects": {
       "name": "Deep Art Effects Blog (hivatalos)",
-      "feedAgeDays": 10,
+      "feedAgeDays": 164,
       "published30d": 9,
       "truthBlocks": 0,
       "totalAttempts": 9,
       "alreadyDisabled": false,
       "lastArticle": "2026-07-23",
-      "verdict": "ok",
-      "reason": ""
+      "verdict": "stale",
+      "reason": "⚠️ a feed 164 napja néma, mégis 9 \"friss\" cikket írtunk belőle — régi anyag újdonságként!"
     },
     "midjourney-updates": {
       "name": "Midjourney Updates (hivatalos)",

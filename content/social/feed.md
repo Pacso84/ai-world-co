@@ -1,6 +1,115 @@
 # AI World Co. — közösségi posztok
 
-*Generálva: 2026-07-26T19:41:14.786Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+*Generálva: 2026-07-26T19:53:57.382Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## Create a tiny AI weather-helper widget for your blog with Hugging Face widgets
+**🔗 https://aiworldhq.com/article/create-a-tiny-ai-weather-helper-widget-for-your-blog-with-hu.html**
+
+**Facebook:**
+Want a cute little weather widget on your blog without touching code? This step-by-step shows you exactly how to add one using free AI tools. https://aiworldco.com/create-tiny-ai-weather-helper-widget-huggingface/ #AI # Blogging
+
+**Instagram:**
+Add a mini AI weather helper to your blog in minutes
+
+No coding required — just follow this simple guide and your visitors get real-time weather info at a glance.
+
+#AI #Weather #TechTips #Blogging #HuggingFace
+Link in bio
+
+*Kép-ötlet: A simple, clean mockup of a mini weather widget displayed on a laptop screen next to a small robot icon*
+
+---
+
+## Create AI‑generated grocery shopping lists from pantry photos using Meta AI
+**🔗 https://aiworldhq.com/article/create-ai-generated-grocery-shopping-lists-from-pantry-photo.html**
+
+**Facebook:**
+Ever forgotten what you needed at the shops? A quick photo of your pantry can now build your shopping list for you. Simple way to waste less food and save time. https://aiworldhq.com/article/create-ai-generated-grocery-shopping-lists-from-pantry-photo.html #productivity #everydaytips
+
+**Instagram:**
+Your pantry photo, but make it a shopping list.
+
+AI can now scan what you have and suggest what you're missing — so you buy only what you need. Less waste, less stress.
+
+#groceryshopping #aimadeeasy #foodwaste #smarthacks #dailylifeai
+
+*Kép-ötlet: A clean, bright photo of an open pantry with fresh produce and pantry items, with a smartphone displaying a shopping list overlaid on the screen.*
+
+---
+
+## Create AI‑generated meeting summaries directly in Apple Calendar
+**🔗 https://aiworldhq.com/article/summarise-apple-calendar-events-with-apple-intelligence.html**
+
+**Facebook:**
+Ever finish a meeting and forget the action items by the time you sit back at your desk? Your iPhone, iPad or Mac can now draft clear summaries straight from Apple Calendar — so the key points are always saved. Here's how to turn it on: https://aiworldhq.com/article/summarise-apple-calendar-events-with-apple-intelligence.html #AppleIntelligence #Productivity
+
+**Instagram:**
+Never forget a meeting action item again.
+
+Your Apple device can now automatically draft clear summaries of your calendar events, so you're never left scrambling to remember what was decided. Simple to set up, and completely free.
+
+#AppleIntelligence #Meetings #ProductivityTips #WorkSmarter #CalendarHacks
+
+Link in bio.
+
+*Kép-ötlet: A clean, minimal shot of an iPhone screen showing Apple Calendar with a calm AI-generated summary card appearing below a scheduled meeting event.*
+
+---
+
+## Create Your Own Custom GPT in ChatGPT (No Coding)
+**🔗 https://aiworldhq.com/article/create-your-own-custom-gpt-in-chatgpt-no-coding.html**
+
+**Facebook:**
+Imagine ChatGPT always knowing exactly how you like things done. You can set that up right now — no tech skills needed. Here's how to create your own custom helper. https://aiworldhq.com/article/create-your-own-custom-gpt-in-chatgpt-no-coding.html #ChatGPT #AI
+
+**Instagram:**
+Make ChatGPT feel like it was built just for you
+
+You can give it permanent instructions so it always behaves exactly how you need — no coding required. Simple setup, consistent results.
+
+#CustomGPT #ChatGPT #AI #NoCode #TechTips
+
+*Kép-ötlet: A person smiling at their phone screen showing a friendly ChatGPT conversation tailored to their needs*
+
+---
+
+## Creating a polished README with GitHub Copilot
+**🔗 https://aiworldhq.com/article/creating-a-polished-readme-with-github-copilot.html**
+
+**Facebook:**
+Writing project documentation shouldn't feel like a chore. This simple guide shows you how AI can help you create a polished README in minutes, so you can spend more time coding. #GitHubCopilot #DeveloperTips https://aiworldhq.com/article/creating-a-polished-readme-with-github-copilot.html
+
+**Instagram:**
+Tired of writing README files from scratch?
+
+GitHub Copilot can help you draft professional documentation in minutes — here's a simple step-by-step guide to get your projects looking great.
+
+#GitHubCopilot #DeveloperTips #Programming #Documentation
+
+Link in bio.
+
+*Kép-ötlet: A clean, minimal close-up of a laptop screen showing a nicely formatted README file with subtle code syntax highlighting.*
+
+---
+
+## Design a personalized weekly workout plan with Meta AI
+**🔗 https://aiworldhq.com/article/design-a-personalized-weekly-workout-plan-with-meta-ai.html**
+
+**Facebook:**
+Stop settling for generic workout plans that never quite fit your life. Meta AI can help you build a weekly fitness routine that actually works around YOUR schedule — whether you're at home or the gym. https://aiworldhq.com/article/design-a-personalized-weekly-workout-plan-with-meta-ai.html #fitness #aiforbeginners
+
+**Instagram:**
+Your workout plan should work FOR you, not against you.
+
+Meta AI can create a weekly routine tailored to your goals, your space, and your available time — in just a few minutes. Here's how.
+
+#personalfitness #workoutplan #aifitness #homeworkout #beginnerfriendly
+
+Link in bio.
+
+*Kép-ötlet: A person stretching peacefully in a bright, uncluttered living room with simple workout equipment visible in the background.*
 
 ---
 
