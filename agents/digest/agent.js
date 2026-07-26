@@ -100,6 +100,25 @@ function repairDigest(md) {
   return out;
 }
 
+// KÉP-GAZDAGÍTÓ (2026-07-26): a heti összefoglaló önmagában kopár volt (csak
+// szöveg + linkek). Minden sztori-szekció ELÉ beszúrjuk a hivatkozott cikk
+// borítóképét (kattintható → a cikkre), így magazinszerűbb. Nyelvfüggetlen:
+// bármilyen [szöveg](…/article/<slug>.html) linkre illeszkedik, ezért a
+// lefordított digestekben is működik (ahol a link-szöveg más nyelvű). Csak ha
+// tényleg van kép a slughoz (különben a szekció marad szöveges).
+function enrichWithImages(md) {
+  if (!md) return md;
+  const IMG_SRC = join(ROOT, 'website', 'assets', 'images');
+  return md.replace(
+    /(^##[^\n]+)\n\n([\s\S]*?)\n\n(\[[^\]]+\]\((https?:\/\/[^)]+\/article\/([^)]+?)\.html)\))/gm,
+    (full, heading, body, link, url, slug) => {
+      if (!existsSync(join(IMG_SRC, slug + '.jpg'))) return full;
+      const alt = heading.replace(/^##\s+/, '').replace(/["\[\]]/g, '').trim();
+      return `${heading}\n\n[![${alt}](/assets/images/${slug}.jpg)](${url})\n\n${body}\n\n${link}`;
+    }
+  );
+}
+
 function buildPrompt(items, exactTitle, dateStr) {
   const list = items.map((it, i) => `${i + 1}. "${it.title}" — ${it.subtitle} (source: ${it.source}) [link: ${it.url}]`).join('\n');
   return `Below are this week's articles from our own site. Pick the FIVE most important for everyday readers (variety matters: different companies/topics), then write our weekly roundup article.
@@ -176,6 +195,8 @@ async function main() {
     console.log(`\n💰 Költség: $${response.costUsd.toFixed(4)} | ${response.provider}/${response.model}`);
     return;
   }
+
+  response.text = enrichWithImages(response.text);   // sztori-borítóképek beszúrása (magazinszerűbb, kevésbé kopár)
 
   const ts = new Date().toISOString().replace(/[:.]/g, '-');
   const filename = `WRITER_${ts}_aiworld-editorial_This_Week_in_AI.json`;

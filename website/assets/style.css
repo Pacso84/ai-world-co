@@ -318,6 +318,12 @@ body {
 .article__body li { margin-bottom: 10px; }
 .article__body a { color: var(--accent-dark); text-decoration: underline; text-underline-offset: 3px; }
 .article__body strong { font-weight: 700; }
+/* Cikk-törzs képek (pl. heti összefoglaló sztori-borítók): teljes szélesség,
+   lekerekített; a képet burkoló link aláhúzás/baseline-rés NÉLKÜL, és a szöveg
+   szorosan a kép ALÁ kerül (ne legyen zavaró nagy hézag). */
+.article__body img { display: block; width: 100%; height: auto; border-radius: 14px; }
+.article__body a:has(img) { display: block; text-decoration: none; line-height: 0; }
+.article__body p:has(img) { margin-bottom: 12px; }
 .article__body blockquote {
   font-size: 24px; line-height: 1.35; font-weight: 500;
   margin: 32px 0; padding-left: 24px; border-left: 4px solid var(--accent); color: var(--ink);
