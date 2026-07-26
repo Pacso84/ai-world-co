@@ -99,6 +99,8 @@ try {
 // ===================================================================
 const TRANS_DIR = join(__dirname, '..', 'content', 'translations');
 const SITE_LANGS = ['en', 'hu', 'es', 'de', 'fr'];   // en = forrás/gyökér
+const FB_URL = 'https://www.facebook.com/profile.php?id=61591788804540';   // FB-oldal (követés + JSON-LD sameAs)
+const FOLLOW_FB = { en: 'Follow us on Facebook', hu: 'Kövess minket a Facebookon', es: 'Síguenos en Facebook', de: 'Folge uns auf Facebook', fr: 'Suivez-nous sur Facebook' };
 const HTML_LANG = { en: 'en-AU', hu: 'hu', es: 'es', de: 'de', fr: 'fr' };
 const LANG_NAME = { en: 'English', hu: 'Magyar', es: 'Español', de: 'Deutsch', fr: 'Français' };
 
@@ -1146,6 +1148,7 @@ function pageShell({ title, description, bodyContent, isArticle = false, noIntro
       <p class="site-footer__support"><a href="${LP}/about.html">${tr('aboutNav')}</a></p>
       ${SUPPORT.enabled ? `<p class="site-footer__support"><a href="${supportPath}">${T.support}</a></p>` : ''}
       <p class="site-footer__support"><a href="${LP}/feed.xml" title="RSS">📡 RSS</a></p>
+      <p class="site-footer__support"><a href="${FB_URL}" target="_blank" rel="noopener" title="${escapeHtml(FOLLOW_FB[LANG] || FOLLOW_FB.en)}" aria-label="${escapeHtml(FOLLOW_FB[LANG] || FOLLOW_FB.en)}"><svg class="fb-ico" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="currentColor"><path d="M24 12.07C24 5.4 18.63 0 12 0 5.37 0 0 5.4 0 12.07 0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.95.93-1.95 1.88v2.26h3.32l-.53 3.49h-2.79V24C19.61 23.1 24 18.1 24 12.07z"/></svg> Facebook</a></p>
       <p class="site-footer__fine">${T.footerNote} · © ${year} AI World HQ</p>
     </div>
   </footer>
@@ -2224,7 +2227,7 @@ function buildAboutPage() {
       '@context': 'https://schema.org', '@type': 'Organization',
       name: SITE.name, url: SITE.url, logo: `${SITE.url}/assets/logo.svg`,
       description: SITE.description,
-      sameAs: ['https://www.facebook.com/profile.php?id=61591788804540']
+      sameAs: [FB_URL]
     }
   });
 }
