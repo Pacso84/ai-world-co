@@ -10,7 +10,7 @@ assert.deepEqual(tokenize(''), []);
 
 const kb = {
   site: [
-    { q: 'How do I subscribe to the newsletter?', a: 'Use the box at the bottom of any page.', u: 'https://aiworldhq.com/#newsletter' },
+    { q: 'How do I report a mistake in an article?', a: 'Use the feedback buttons at the bottom of any page.', u: 'https://aiworldhq.com/support.html' },
     { q: 'How do I report a mistake?', a: 'Use the thumbs buttons or the contact form.', u: 'https://aiworldhq.com/about.html' }
   ],
   guides: [
@@ -28,7 +28,7 @@ assert.equal(hits[0].u, 'https://aiworldhq.com/article/chatgpt-writing', 'a cím
 assert.ok(!hits.some(h => h.u.includes('snowflake')), 'irreleváns guide nem kerül be');
 
 // GYIK-találat: kind==='site'
-const nlHits = searchKb('newsletter subscribe', kb, 4);
+const nlHits = searchKb('report mistake article', kb, 4);
 assert.equal(nlHits[0].kind, 'site');
 
 // üres/zaj kérdés → üres lista (nem hasraütés)

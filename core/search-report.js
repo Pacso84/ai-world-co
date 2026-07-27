@@ -2,8 +2,7 @@
 // HETI KERESŐ-RIPORT — Google Search Console + Bing → Telegram
 // ===================================================================
 //
-// User-kérés (2026-07-07): lássuk hetente, hogyan talál ránk a világ —
-// és a Főnök szóljon magától, amikor a forgalom eléri a hírlevél-küszöböt.
+// User-kérés (2026-07-07): lássuk hetente, hogyan talál ránk a világ.
 //
 // Vasárnaponként fut (a cron minden nap hívja, de csak vasárnap 7-15 UTC
 // közt küld, heti dedup-pal). Kulcsok (mind OPCIONÁLIS — ami hiányzik,
@@ -28,7 +27,6 @@ const STATE_PATH = join(ROOT, 'memory', 'search-report-state.json');
 const FORCE = process.argv.includes('--force');
 
 const SITE = 'https://aiworldhq.com/';               // GSC property (URL-prefix)
-const NEWSLETTER_DAILY_CLICKS = 50;                   // hírlevél-lámpa küszöb (napi átlag katt)
 
 function isoWeek(d = new Date()) {
   const t = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate()));
@@ -199,9 +197,7 @@ async function main() {
         { headers: { 'X-Export-Key': expKey }, signal: AbortSignal.timeout(15000) });
       if (fr.ok) {
         const fb = await fr.json();
-        const entries = Object.entries(fb).filter(([s]) => s !== 'proba-cikk' && s !== '__nl_signups');
-        // Hírlevél-jelentkezések (2026-07-12): a Worker KV-számlálója
-        if (fb.__nl_signups > 0) lines.push(`📬 Hírlevél-feliratkozás eddig összesen: *${fb.__nl_signups}*`);
+        const entries = Object.entries(fb).filter(([s]) => s !== 'proba-cikk');
         const votes = entries.reduce((n, [, v]) => n + (v.up || 0) + (v.down || 0), 0);
         if (votes > 0) {
           // slug → MAGYAR cím (a Főnök magyarul jelent — user-kérés 2026-07-08)
@@ -230,12 +226,6 @@ async function main() {
       }
     }
   } catch { /* a visszajelzés-blokk hibája ne állítsa meg a riportot */ }
-
-  // HÍRLEVÉL-LÁMPA: ha a napi átlag kattintás eléri a küszöböt, ideje hírlevelet indítani
-  const daily = Math.round(weeklyClicks / 7);
-  lines.push(``, daily >= NEWSLETTER_DAILY_CLICKS
-    ? `🟢 *HÍRLEVÉL-LÁMPA: ZÖLD!* Napi ~${daily} kattintás — megérett az idő a hírlevélre, szólj a fejlesztőnek! 📬`
-    : `🚦 Hírlevél-lámpa: még piros (napi ~${daily} katt, küszöb: ${NEWSLETTER_DAILY_CLICKS}) — türelem, gyűlik.`);
 
   await sendMessage(lines.join('\n'));
   try { writeFileSync(STATE_PATH, JSON.stringify({ last_week: isoWeek() }, null, 2), 'utf-8'); } catch { /* ok */ }

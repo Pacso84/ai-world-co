@@ -282,7 +282,6 @@ for (const l of SITE_LANGS) Object.assign(UI[l], UI_SUPPORT[l] || {});
 const CS_FAQ = {
   en: [
     { q: 'What is AI World HQ?', a: 'An automated, independent news + guides site that helps everyday people use AI. Content is produced by an AI newsroom with honesty checks, in 5 languages.', p: '/about.html' },
-    { q: 'How do I subscribe to the newsletter?', a: 'Use the newsletter box at the bottom of any page — you will get a confirmation email first.', p: '/' },
     { q: 'How do I report a mistake in an article?', a: 'Use the 👍/👎 buttons under the article, or send us a message — genuine errors get corrected and republished.', p: '/about.html' },
     { q: 'Is the site free? How can I support it?', a: 'Everything is free. If you want, you can leave a voluntary tip on the Support page.', p: '/support.html' },
     { q: 'Where do I find beginner guides?', a: 'The Start page lists the first 5 guides to read, and the Guides page has all of them by topic.', p: '/start.html' },
@@ -292,7 +291,6 @@ const CS_FAQ = {
   ],
   hu: [
     { q: 'Mi az AI World HQ?', a: 'Automata, független hír- és útmutató-oldal, ami a hétköznapi AI-használatban segít. A tartalmat AI-szerkesztőség készíti őszinteség-ellenőrzéssel, 5 nyelven.', p: '/about.html' },
-    { q: 'Hogyan iratkozom fel a hírlevélre?', a: 'Bármelyik oldal alján a hírlevél-dobozzal — először megerősítő emailt kapsz.', p: '/' },
     { q: 'Hogyan jelezhetek hibát egy cikkben?', a: 'A cikk alatti 👍/👎 gombokkal, vagy írj nekünk — a valódi hibákat javítjuk és újra kiadjuk.', p: '/about.html' },
     { q: 'Ingyenes az oldal? Hogyan támogathatom?', a: 'Minden ingyenes. Ha szeretnéd, a Támogatás oldalon önkéntes borravalót adhatsz.', p: '/support.html' },
     { q: 'Hol találom a kezdő útmutatókat?', a: 'A Kezdés oldal az első 5 ajánlott útmutatót mutatja, az Útmutatók oldalon pedig az összes megvan téma szerint.', p: '/start.html' },
@@ -302,7 +300,6 @@ const CS_FAQ = {
   ],
   es: [
     { q: '¿Qué es AI World HQ?', a: 'Un sitio automático e independiente de noticias y guías que te ayuda a usar la IA en el día a día. El contenido lo produce una redacción de IA con controles de honestidad, en 5 idiomas.', p: '/about.html' },
-    { q: '¿Cómo me suscribo al boletín?', a: 'Con la caja de boletín al final de cualquier página — primero recibirás un correo de confirmación.', p: '/' },
     { q: '¿Cómo aviso de un error en un artículo?', a: 'Con los botones 👍/👎 bajo el artículo, o escríbenos — los errores reales se corrigen y se vuelven a publicar.', p: '/about.html' },
     { q: '¿El sitio es gratis? ¿Cómo puedo apoyarlo?', a: 'Todo es gratis. Si quieres, puedes dejar una propina voluntaria en la página de Apoyo.', p: '/support.html' },
     { q: '¿Dónde están las guías para principiantes?', a: 'La página Empezar muestra las 5 primeras guías recomendadas, y en Guías están todas por tema.', p: '/start.html' },
@@ -312,7 +309,6 @@ const CS_FAQ = {
   ],
   de: [
     { q: 'Was ist AI World HQ?', a: 'Eine automatische, unabhängige News- und Anleitungsseite, die dir hilft, KI im Alltag zu nutzen. Die Inhalte erstellt eine KI-Redaktion mit Ehrlichkeits-Checks, in 5 Sprachen.', p: '/about.html' },
-    { q: 'Wie abonniere ich den Newsletter?', a: 'Über die Newsletter-Box unten auf jeder Seite — du bekommst zuerst eine Bestätigungs-E-Mail.', p: '/' },
     { q: 'Wie melde ich einen Fehler in einem Artikel?', a: 'Mit den 👍/👎-Buttons unter dem Artikel, oder schreib uns — echte Fehler werden korrigiert und neu veröffentlicht.', p: '/about.html' },
     { q: 'Ist die Seite kostenlos? Wie kann ich sie unterstützen?', a: 'Alles ist kostenlos. Wenn du magst, kannst du auf der Unterstützen-Seite ein freiwilliges Trinkgeld geben.', p: '/support.html' },
     { q: 'Wo finde ich Anleitungen für Einsteiger?', a: 'Die Start-Seite zeigt die ersten 5 empfohlenen Anleitungen, auf der Anleitungen-Seite findest du alle nach Thema.', p: '/start.html' },
@@ -322,7 +318,6 @@ const CS_FAQ = {
   ],
   fr: [
     { q: 'Qu’est-ce que AI World HQ ?', a: 'Un site automatique et indépendant d’actus et de guides qui vous aide à utiliser l’IA au quotidien. Le contenu est produit par une rédaction IA avec des contrôles d’honnêteté, en 5 langues.', p: '/about.html' },
-    { q: 'Comment s’abonner à la newsletter ?', a: 'Avec la boîte newsletter en bas de chaque page — vous recevrez d’abord un e-mail de confirmation.', p: '/' },
     { q: 'Comment signaler une erreur dans un article ?', a: 'Avec les boutons 👍/👎 sous l’article, ou écrivez-nous — les vraies erreurs sont corrigées et republiées.', p: '/about.html' },
     { q: 'Le site est-il gratuit ? Comment le soutenir ?', a: 'Tout est gratuit. Si vous le souhaitez, vous pouvez laisser un pourboire volontaire sur la page Soutenir.', p: '/support.html' },
     { q: 'Où trouver les guides pour débutants ?', a: 'La page Commencer présente les 5 premiers guides recommandés, et la page Guides les regroupe tous par thème.', p: '/start.html' },
@@ -500,35 +495,6 @@ try {
   const tl = JSON.parse(readFileSync(join(__dirname, 'tool-links.json'), 'utf-8'));
   TOOL_LINKS = tl.tools || {}; COMPANY_LINKS = tl.companies || {};
 } catch { /* térkép nélkül nincs gomb — a build attól még fut */ }
-// Hírlevél-feliratkozó doboz (2026-07-12) — a Worker /subscribe végpontjára
-// küld, a kulcs a Workerben marad. Double opt-in: a MailerLite megerősítő
-// emailt küld, ezt a szöveg őszintén jelzi.
-const UI_NL = {
-  en: { nlTitle: 'The week’s AI, in your inbox', nlText: 'One friendly email every Sunday — the 5 stories that mattered, in plain English. No spam, unsubscribe anytime.',
-        nlPh: 'your@email.com', nlBtn: 'Sign me up', nlThanks: 'Almost done! Check your inbox for a confirmation email. 💛', nlErr: 'That didn’t work — mind trying again?' },
-  hu: { nlTitle: 'A hét AI-hírei, egyenesen a postafiókodba', nlText: 'Hetente egy barátságos email vasárnaponként — az 5 sztori, ami számított, közérthetően. Semmi spam, bármikor leiratkozhatsz.',
-        nlPh: 'neved@email.hu', nlBtn: 'Feliratkozom', nlThanks: 'Már majdnem kész! Nézd meg a postafiókod — megerősítő emailt küldtünk. 💛', nlErr: 'Ez most nem sikerült — megpróbálod újra?' },
-  es: { nlTitle: 'La IA de la semana, en tu correo', nlText: 'Un email amable cada domingo: las 5 historias que importaron, en lenguaje claro. Sin spam, date de baja cuando quieras.',
-        nlPh: 'tu@email.com', nlBtn: 'Suscribirme', nlThanks: '¡Casi listo! Revisa tu correo: te enviamos un email de confirmación. 💛', nlErr: 'No ha funcionado — ¿lo intentas de nuevo?' },
-  de: { nlTitle: 'Die KI-Woche, direkt in dein Postfach', nlText: 'Jeden Sonntag eine freundliche E-Mail — die 5 wichtigsten Meldungen, klar erklärt. Kein Spam, jederzeit abbestellbar.',
-        nlPh: 'du@email.de', nlBtn: 'Anmelden', nlThanks: 'Fast geschafft! Schau in dein Postfach — wir haben eine Bestätigungs-E-Mail geschickt. 💛', nlErr: 'Das hat nicht geklappt — magst du es nochmal versuchen?' },
-  fr: { nlTitle: 'L’IA de la semaine, dans votre boîte mail', nlText: 'Un e-mail sympathique chaque dimanche — les 5 actus qui comptaient, en langage clair. Pas de spam, désinscription à tout moment.',
-        nlPh: 'vous@email.fr', nlBtn: 'Je m’abonne', nlThanks: 'Presque fini ! Vérifiez votre boîte mail — un e-mail de confirmation vous attend. 💛', nlErr: 'Ça n’a pas marché — vous réessayez ?' }
-};
-for (const l of SITE_LANGS) Object.assign(UI[l], UI_NL[l] || {});
-
-function nlBox() {
-  return `<section class="nl" data-thanks="${escapeHtml(tr('nlThanks'))}" data-err="${escapeHtml(tr('nlErr'))}">
-    <h2 class="nl__t">📬 ${escapeHtml(tr('nlTitle'))}</h2>
-    <p class="nl__p">${escapeHtml(tr('nlText'))}</p>
-    <form class="nl__form" data-lang="${LANG}">
-      <input type="text" name="web" class="nl__hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-      <input type="email" name="email" required placeholder="${escapeHtml(tr('nlPh'))}" aria-label="Email">
-      <button type="submit">${escapeHtml(tr('nlBtn'))}</button>
-    </form>
-  </section>`;
-}
-
 const UI_OFFICIAL = {
   en: { officialSite: 'Official site', officialRow: 'Official sites' },
   hu: { officialSite: 'Hivatalos oldal', officialRow: 'Hivatalos oldalak' },
@@ -1286,7 +1252,7 @@ function buildIndex(articles) {
     description: SITE.description,
     ogImage: articles[0]?.image ? `${SITE.url}/assets/images/${articles[0].image}` : '',
     jsonld: { '@context': 'https://schema.org', '@type': 'WebSite', name: SITE.name, url: SITE.url, description: SITE.description },
-    bodyContent: featuredHtml + weeklyHtml + guidesCta + grid + nlBox()
+    bodyContent: featuredHtml + weeklyHtml + guidesCta + grid
       + `<p class="start__wizcta"><a href="archive.html">🗂️ ${escapeHtml(tr('archNav'))} →</a></p>`,
     pagePath: ''
   });
@@ -1509,7 +1475,6 @@ function buildArticlePage(a) {
     ${xrefBox(a)}
     ${relatedBox(a)}
     <div class="article__foot">
-      ${nlBox()}
       <div class="fb" data-slug="${a.slug}" data-thanks="${escapeHtml(tr('fbThanks'))}"><span class="fb__q">${tr('fbQ')}</span><button class="fb__btn" data-vote="up" aria-label="👍">👍</button><button class="fb__btn" data-vote="down" aria-label="👎">👎</button></div>
       <p class="ai-disclosure">${tr('disclosureNews')}</p>
       <a href="../index.html" class="back-link">${tr('backStories')}</a>
@@ -1908,7 +1873,6 @@ function buildGuidePage(a) {
     ${xrefBox(a)}
     ${relatedBox(a)}
     <div class="article__foot">
-      ${nlBox()}
       <div class="fb" data-slug="${a.slug}" data-thanks="${escapeHtml(tr('fbThanks'))}"><span class="fb__q">${tr('fbQ')}</span><button class="fb__btn" data-vote="up" aria-label="👍">👍</button><button class="fb__btn" data-vote="down" aria-label="👎">👎</button></div>
       <p class="ai-disclosure">${tr('disclosureGuide')}</p>
       <a href="../index.html" class="back-link">${tr('backStories')}</a>
@@ -2305,8 +2269,9 @@ function buildWizardPage() {
 // ===================================================================
 const xmlEsc = (s) => String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
-// Közös RSS-építő (2026-07-23: a feed.xml mellé egy szűrt heti-feed is kell a
-// hírlevélhez, ezért kiemelve). items = már rendezett/szűrt cikklista.
+// Közös RSS-építő. items = már rendezett/szűrt cikklista.
+// (2026-07-23-tól paraméteres, mert akkor egy szűrt heti-feedet is épített a
+// hírlevélhez; a hírlevél 2026-07-27-én megszűnt, de a forma jó maradt.)
 function buildRss(items, lang, { selfPath, title, desc }) {
   const lp = langPrefix(lang);
   const rows = items.map(a => {
@@ -2342,15 +2307,6 @@ function feedXml(loc, lang) {
   return buildRss(items, lang, { selfPath: 'feed.xml', title: `${SITE.name} — ${tr('tagline')}`, desc: tr('siteDesc') });
 }
 
-// HÍRLEVÉL-FEED (2026-07-23): CSAK a heti összefoglalók (tags: weekly-digest) —
-// erre állítjuk a MailerLite RSS-kampányt, így hetente EGY tiszta, szerkesztett
-// e-mail megy ki (a "This Week in AI"), nem az összes cikk listája.
-function weeklyFeedXml(loc, lang) {
-  const items = loc.filter(a => (a.tags || []).includes('weekly-digest'))
-    .sort((a, b) => (b.publishedAt || '').localeCompare(a.publishedAt || ''))
-    .slice(0, 12);
-  return buildRss(items, lang, { selfPath: 'feed-weekly.xml', title: `${SITE.name} — Weekly Digest`, desc: tr('siteDesc') });
-}
 
 // ===================================================================
 // FŐ BUILD
@@ -2437,7 +2393,6 @@ function main() {
     writeFileSync(join(outBase, 'about.html'), buildAboutPage(), 'utf-8');         // Rólunk (bizalmi oldal)
     writeFileSync(join(outBase, 'archive.html'), buildArchivePage(loc), 'utf-8');  // Minden hír (archívum)
     writeFileSync(join(outBase, 'feed.xml'), feedXml(loc, lang), 'utf-8');   // nyelvenkénti RSS
-    writeFileSync(join(outBase, 'feed-weekly.xml'), weeklyFeedXml(loc, lang), 'utf-8');  // hírlevél-feed (csak heti összefoglaló)
     // Kereső-index (villámkereső a navbarban): cím + alcím + márka + slug
     const searchIndex = loc.map(a => ({
       t: a.title, s: a.subtitle || '', b: [a.company, a.tool].filter(Boolean).join(' '),

@@ -10,7 +10,7 @@ function fakeKv() {
     _store: store
   };
 }
-const KB = { v: 1, lang: 'en', site: [{ q: 'How do I subscribe to the newsletter?', a: 'Box at the bottom.', u: 'https://aiworldhq.com/#nl' }], guides: [{ t: 'Getting started with ChatGPT writing', s: 'Beginner writing guide.', u: 'https://aiworldhq.com/article/chatgpt-writing', c: 'OpenAI' }], terms: [] };
+const KB = { v: 1, lang: 'en', site: [{ q: 'How do I report a mistake in an article?', a: 'Feedback buttons at the bottom.', u: 'https://aiworldhq.com/support.html' }], guides: [{ t: 'Getting started with ChatGPT writing', s: 'Beginner writing guide.', u: 'https://aiworldhq.com/article/chatgpt-writing', c: 'OpenAI' }], terms: [] };
 let fetchCount = 0;
 const fakeFetch = async (url) => { fetchCount++; assert.ok(url.includes('/kb.json'), 'kb URL-t kér'); return { ok: true, json: async () => KB }; };
 
