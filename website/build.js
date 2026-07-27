@@ -2581,13 +2581,33 @@ Original content by ${SITE.name} — written and quality-checked by an autonomou
   // MINDKÉT alakra kell szabály: a Cloudflare csak LÉTEZŐ fájlnál vágja le a
   // .html-t 308-cal — egy megszűnt címnél nem, az simán 404. A Google pedig
   // mindkét formát indexelte (a GSC-példák közt .html-es és anélküli is van).
+  const rule = (from, to) => SITE_LANGS.flatMap(l => {
+    const lp = langPrefix(l);
+    return [`${lp}/article/${from} ${lp}/article/${to} 301`,
+            `${lp}/article/${from}.html ${lp}/article/${to} 301`];
+  });
+
+  // ELSŐ HELYEN a BIZONYÍTOTT régi címek: a content/slug-history.json a git
+  // -történetből gyűjtött CÍMEKBŐL készült, márpedig a build MINDIG a címből
+  // képezte az URL-t — tehát ezek tényleg ÉLTEK. (A GSC két valódi 404-es
+  // példáját is ez fedi le.) A fájlnév ezzel szemben sokszor csak belső
+  // téma-azonosító, ami sosem volt nyilvános cím — az csak "hátha" tipp,
+  // ezért kerül a lista VÉGÉRE: ha a plafon miatt vágni kell, az essen ki.
   const redirectLines = [];
-  for (const [from, to] of RENAMED_SLUGS) {
-    for (const l of SITE_LANGS) {
-      const lp = langPrefix(l);
-      redirectLines.push(`${lp}/article/${from} ${lp}/article/${to} 301`);
-      redirectLines.push(`${lp}/article/${from}.html ${lp}/article/${to} 301`);
+  const covered = new Set();
+  try {
+    const hist = JSON.parse(readFileSync(join(PROJECT_ROOT, 'content', 'slug-history.json'), 'utf-8'));
+    for (const [from, to] of Object.entries(hist)) {
+      if (from === to) continue;
+      redirectLines.push(...rule(from, to));
+      covered.add(from);
     }
+    console.log(`✅ ${Object.keys(hist).length} bizonyított régi cím a git-történetből`);
+  } catch { /* nincs slug-history — csak a fájlnév-alapú tippek mennek ki */ }
+
+  for (const [from, to] of RENAMED_SLUGS) {
+    if (covered.has(from)) continue;
+    redirectLines.push(...rule(from, to));
   }
   // Cloudflare Pages: 2100 statikus szabály a plafon. A slug mostantól RÖGZÍTETT
   // (_meta.slug), tehát ÚJ átnevezés nem keletkezik — ez a lista nem nő tovább.
