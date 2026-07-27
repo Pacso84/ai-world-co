@@ -1,6 +1,112 @@
 # AI World Co. — közösségi posztok
 
-*Generálva: 2026-07-27T02:49:31.778Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+*Generálva: 2026-07-27T11:35:25.762Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## Qwen3.6-35B-A3B: Agentic Coding Power, Now Open to All - Qwen
+**🔗 https://aiworldhq.com/article/how-to-run-a-free-ai-coding-helper-on-your-own-computer.html**
+
+**Facebook:**
+Got repetitive tasks you wish you could automate — like sorting files or cleaning up spreadsheets? This free tool runs on your own computer and can write small scripts to handle the boring stuff for you. No subscription needed. https://aiworldhq.com/article/how-to-run-a-free-ai-coding-helper-on-your-own-computer.html #Productivity #AIHelp
+
+**Instagram:**
+Tired of doing the same boring tasks every week?
+
+There's a free AI tool that runs on your computer and can write little scripts to automate the stuff you dread — no coding skills needed.
+
+#AI #ProductivityHacks #Automation #TechForEveryone #SimpleAI
+
+*Kép-ötlet: A clean desk with a laptop showing a friendly, minimal interface — simple and welcoming, no tech jargon visible.*
+
+---
+
+## How AI is expanding what people do at work
+**🔗 https://aiworldhq.com/article/how-ai-is-quietly-expanding-what-you-can-do-at-work.html**
+
+**Facebook:**
+Imagine finishing a task at work that's normally handled by someone else — with a bit of AI help. It's becoming more common than you'd think, and you might already have what you need to try it yourself. https://aiworldhq.com/article/how-ai-is-quietly-expanding-what-you-can-do-at-work.html #AIAtWork #Productivity
+
+**Instagram:**
+Your job description might be limiting you
+
+Everyday workers are using AI to take on tasks outside their usual role — no tech background needed. Here's what's actually happening in offices right now.
+
+#AIAtWork
+#Productivity
+#CareerSkills
+#WorkTips
+#FutureOfWork
+
+Link in bio.
+
+*Kép-ötlet: A person at a desk with simple visual icons floating around them representing different workplace tasks they can now tackle with AI assistance*
+
+---
+
+## Generate AI‑powered email replies using Hugging Face Inference API
+**🔗 https://aiworldhq.com/article/draft-ai-powered-email-replies-using-hugging-face.html**
+
+**Facebook:**
+Tired of spending ages on routine emails? This simple guide shows you how to use AI to draft quick, polite replies — so you can clear your inbox faster. [LINK] #EmailTips #AI
+
+**Instagram:**
+Stop dreading your inbox
+
+This beginner-friendly guide walks you through using AI to write polite email drafts in seconds. Because your time is worth more than endless back-and-forth.
+
+#AI #EmailTips #Productivity #TechForBeginners #WorkflowHacks
+
+Link in bio.
+
+*Kép-ötlet: A clean desktop scene showing an open email window with a friendly AI chat prompt visible, surrounded by a coffee cup and a clock to represent time saved.*
+
+---
+
+## Generate AI‑powered tweet threads on X with Grok
+**🔗 https://aiworldhq.com/article/generate-ai-powered-tweet-threads-on-x-with-grok.html**
+
+**Facebook:**
+Ever stare at a blank screen trying to turn one idea into a tweet thread? Grok can help you draft a whole series in seconds. This beginner-friendly guide shows you exactly how. https://aiworldhq.com/article/generate-ai-powered-tweet-threads-on-x-with-grok.html #XTips #SocialMedia
+
+**Instagram:**
+Turn one idea into a punchy tweet thread without the struggle.
+
+This beginner-friendly guide walks you through using Grok to generate and refine your posts in minutes.
+
+#AIWriting #XTips #SocialMediaTips #ContentCreation #Productivity
+
+*Kép-ötlet: A simple illustration of a lightbulb moment turning into a series of connected chat bubbles, representing effortless content creation*
+
+---
+
+## Generate creative descriptions for products or social media posts using Hugging Face's text generation models
+**🔗 https://aiworldhq.com/article/try-hugging-face-s-free-ai-text-generator-in-your-browser.html**
+
+**Facebook:**
+Stuck staring at a blank page? This free tool generates product descriptions, social captions and story starters in seconds — no signup needed. https://aiworldhq.com/article/try-hugging-face-s-free-ai-text-generator-in-your-browser.html #AITools #CreativeWriting
+
+**Instagram:**
+The blank page terror is real.\n\nThis free browser tool spins up real AI to help you write product descriptions, social captions and story openers — zero coding or account required.\n\n#CreativeWriting #AIToolsForBeginners #WritingTips #ProductDescription #SocialMediaTips\n\nLink in bio.
+
+*Kép-ötlet: A clean, minimal close-up of a laptop screen showing a friendly text input box with the words 'Write a catchy product description for...' and a glowing 'Generate' button.*
+
+---
+
+## Generate creative story ideas using DeepSeek’s chat interface
+**🔗 https://aiworldhq.com/article/generate-creative-story-ideas-using-deepseek-s-chat-interfac.html**
+
+**Facebook:**
+Staring at a blank page? This quick guide shows you how to get three ready-to-use story starters from DeepSeek in just 5 minutes. Perfect for jumpstarting your next creative project—no writing experience needed. https://aiworldhq.com/article/generate-creative-story-ideas-using-deepseek-s-chat-interfac.html #CreativeWriting #StoryIdeas
+
+**Instagram:**
+Stuck for story ideas? Here's how to get three ready-to-use story starters in minutes using DeepSeek Chat.
+
+Whether you need a plot twist, character bio or setting prompt, this beginner-friendly guide walks you through it step by step. Your next story starts here.
+
+#CreativeWriting #StoryIdeas #WritingTips #AIWriting #BlankPage
+
+*Kép-ötlet: A simple, clean illustration of an open laptop with a glowing chat bubble containing story elements like a character silhouette, a plot twist arrow and a small scene setting.*
 
 ---
 

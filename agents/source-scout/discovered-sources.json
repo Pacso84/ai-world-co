@@ -1,15 +1,43 @@
 {
   "_meta": {
-    "generated_at": "2026-07-24T01:45:35.399Z",
+    "generated_at": "2026-07-27T11:11:58.487Z",
     "generated_by": "source-scout agent v3.0 (megbízhatóság-kapu)",
     "note": "JAVASLATOK új, MEGBÍZHATÓ hivatalos forrásokra. A felhasználó/főnök dönti el, melyiket adjuk a sources/rss-feeds.json-hoz (enabled:true-val). Minden jelölt megbízhatósági pontszámmal + indoklással.",
     "min_score": 70,
     "checked_orgs": 18,
-    "newly_discovered": 5,
-    "rejected_count": 0,
-    "rejected_examples": []
+    "newly_discovered": 4,
+    "rejected_count": 1,
+    "rejected_examples": [
+      {
+        "name": "Atlassian Blog",
+        "host": "atlassian.com",
+        "reason": "halott feed — 5408 napja nincs új cikk (limit: 365)",
+        "score": 0
+      }
+    ]
   },
   "discovered_sources": [
+    {
+      "suggested_id": "datarobot",
+      "name": "DataRobot Blog (hivatalos)",
+      "url": "https://datarobot.com/feed/",
+      "category": "ai-company-official",
+      "priority": 3,
+      "language": "en",
+      "country": "US",
+      "reliability_score": 100,
+      "reliability_reasons": [
+        "friss (utolsó cikk 5 napja)",
+        "bő kínálat (10 cikk)",
+        "hivatalos forrásként jelölve",
+        "a domain/feed egyezik a cég nevével",
+        "HTTPS + érvényes RSS"
+      ],
+      "item_count_at_discovery": 10,
+      "last_post_age_days": 5,
+      "comment": "JAVASLAT (source-scout, megbízhatóság 100/100): American automated machine learning platform. Felhasználói jóváhagyás kell!",
+      "enabled": false
+    },
     {
       "suggested_id": "engineering",
       "name": "Grab Engineering (hivatalos)",
@@ -50,6 +78,27 @@
       "item_count_at_discovery": 5,
       "last_post_age_days": 5,
       "comment": "JAVASLAT (source-scout, megbízhatóság 94/100): MILA is a leading AI research institute. Felhasználói jóváhagyás kell!",
+      "enabled": false
+    },
+    {
+      "suggested_id": "writer",
+      "name": "Writer AI Blog (hivatalos)",
+      "url": "https://writer.com/blog/rss/",
+      "category": "ai-company-official",
+      "priority": 3,
+      "language": "en",
+      "country": "US",
+      "reliability_score": 70,
+      "reliability_reasons": [
+        "⚠️ nincs olvasható dátum a cikkeken",
+        "bő kínálat (10 cikk)",
+        "hivatalos forrásként jelölve",
+        "a domain/feed egyezik a cég nevével",
+        "HTTPS + érvényes RSS"
+      ],
+      "item_count_at_discovery": 10,
+      "last_post_age_days": null,
+      "comment": "JAVASLAT (source-scout, megbízhatóság 70/100): American AI writing platform for enterprises. Felhasználói jóváhagyás kell!",
       "enabled": false
     }
   ]

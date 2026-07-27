@@ -1,7 +1,7 @@
 {
   "_meta": {
     "note": "Forrás-bizonyítvány: frissesség + termés + megbízhatóság forrásonként. Gyártja: core/source-report-card.js",
-    "updated": "2026-07-27T02:49:46.662Z",
+    "updated": "2026-07-27T11:35:40.520Z",
     "thresholds": {
       "DEAD_FEED_DAYS": 365,
       "MIN_SAMPLE": 4,
@@ -12,12 +12,12 @@
   "sources": {
     "openai-blog": {
       "name": "OpenAI Blog (hivatalos)",
-      "feedAgeDays": 4,
-      "published30d": 34,
+      "feedAgeDays": 0,
+      "published30d": 35,
       "truthBlocks": 0,
-      "totalAttempts": 34,
+      "totalAttempts": 35,
       "alreadyDisabled": false,
-      "lastArticle": "2026-07-26",
+      "lastArticle": "2026-07-27",
       "verdict": "ok",
       "reason": ""
     },
@@ -45,7 +45,7 @@
     },
     "meta-ai": {
       "name": "Meta Newsroom (hivatalos)",
-      "feedAgeDays": 2,
+      "feedAgeDays": 3,
       "published30d": 4,
       "truthBlocks": 0,
       "totalAttempts": 4,
@@ -56,7 +56,7 @@
     },
     "microsoft-ai": {
       "name": "Microsoft AI (hivatalos)",
-      "feedAgeDays": 6,
+      "feedAgeDays": 7,
       "published30d": 10,
       "truthBlocks": 0,
       "totalAttempts": 10,
@@ -67,7 +67,7 @@
     },
     "huggingface-blog": {
       "name": "Hugging Face (hivatalos platform)",
-      "feedAgeDays": 4,
+      "feedAgeDays": 0,
       "published30d": 0,
       "truthBlocks": 0,
       "totalAttempts": 0,
@@ -89,7 +89,7 @@
     },
     "google-workspace": {
       "name": "Google Workspace Updates (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 2,
       "published30d": 23,
       "truthBlocks": 1,
       "totalAttempts": 24,
@@ -111,7 +111,7 @@
     },
     "microsoft-research": {
       "name": "Microsoft Research (hivatalos)",
-      "feedAgeDays": 13,
+      "feedAgeDays": 14,
       "published30d": 5,
       "truthBlocks": 0,
       "totalAttempts": 5,
@@ -122,7 +122,7 @@
     },
     "github-ai": {
       "name": "GitHub AI & ML (hivatalos)",
-      "feedAgeDays": 4,
+      "feedAgeDays": 5,
       "published30d": 3,
       "truthBlocks": 0,
       "totalAttempts": 4,
@@ -133,7 +133,7 @@
     },
     "aws-ml": {
       "name": "AWS Machine Learning (hivatalos)",
-      "feedAgeDays": 2,
+      "feedAgeDays": 3,
       "published30d": 41,
       "truthBlocks": 0,
       "totalAttempts": 42,
@@ -386,7 +386,7 @@
     },
     "sap": {
       "name": "SAP Innovation Blog (hivatalos)",
-      "feedAgeDays": 3,
+      "feedAgeDays": 4,
       "published30d": 6,
       "truthBlocks": 0,
       "totalAttempts": 6,
@@ -397,7 +397,7 @@
     },
     "databricks": {
       "name": "Databricks Blog (hivatalos)",
-      "feedAgeDays": 3,
+      "feedAgeDays": 4,
       "published30d": 15,
       "truthBlocks": 0,
       "totalAttempts": 15,
@@ -408,7 +408,7 @@
     },
     "snowflake": {
       "name": "Snowflake Blog (hivatalos)",
-      "feedAgeDays": 2,
+      "feedAgeDays": 3,
       "published30d": 16,
       "truthBlocks": 0,
       "totalAttempts": 16,
@@ -419,7 +419,7 @@
     },
     "together": {
       "name": "Together AI Blog (hivatalos)",
-      "feedAgeDays": 3,
+      "feedAgeDays": 1,
       "published30d": 4,
       "truthBlocks": 0,
       "totalAttempts": 4,
@@ -430,7 +430,7 @@
     },
     "pinecone": {
       "name": "Pinecone Blog (hivatalos)",
-      "feedAgeDays": 10,
+      "feedAgeDays": 11,
       "published30d": 3,
       "truthBlocks": 0,
       "totalAttempts": 3,
@@ -452,7 +452,7 @@
     },
     "ntt-research": {
       "name": "NTT Research (hivatalos)",
-      "feedAgeDays": 20,
+      "feedAgeDays": 21,
       "published30d": 6,
       "truthBlocks": 0,
       "totalAttempts": 6,
@@ -463,18 +463,18 @@
     },
     "deeparteffects": {
       "name": "Deep Art Effects Blog (hivatalos)",
-      "feedAgeDays": 164,
+      "feedAgeDays": 165,
       "published30d": 10,
       "truthBlocks": 0,
       "totalAttempts": 10,
       "alreadyDisabled": false,
       "lastArticle": "2026-07-27",
       "verdict": "stale",
-      "reason": "⚠️ a feed 164 napja néma, mégis 10 \"friss\" cikket írtunk belőle — régi anyag újdonságként!"
+      "reason": "⚠️ a feed 165 napja néma, mégis 10 \"friss\" cikket írtunk belőle — régi anyag újdonságként!"
     },
     "midjourney-updates": {
       "name": "Midjourney Updates (hivatalos)",
-      "feedAgeDays": 2,
+      "feedAgeDays": 3,
       "published30d": 8,
       "truthBlocks": 0,
       "totalAttempts": 8,
@@ -519,17 +519,17 @@
     "qwen-news": {
       "name": "Qwen / Alibaba (hivatalos, Google News szűrve)",
       "feedAgeDays": 6,
-      "published30d": 2,
-      "truthBlocks": 1,
+      "published30d": 3,
+      "truthBlocks": 0,
       "totalAttempts": 3,
       "alreadyDisabled": false,
-      "lastArticle": "2026-07-25",
+      "lastArticle": "2026-07-27",
       "verdict": "ok",
       "reason": ""
     },
     "grammarly-blog": {
       "name": "Grammarly (hivatalos)",
-      "feedAgeDays": 41,
+      "feedAgeDays": 42,
       "published30d": 1,
       "truthBlocks": 0,
       "totalAttempts": 1,
