@@ -4,7 +4,14 @@
 > step-by-step guide must be.** The Guide Agent loads it while writing; the
 > Reviewer enforces its spirit through the beginner-clarity check.
 > Core promise: **a complete beginner can follow every step without getting
-> lost or misled.** (Added 2026-07-03 after user feedback: guides were too
+> lost or misled.**
+>
+> **Scope (2026-07-27):** these rules are written for the Guide Agent, but the
+> *promise* they protect is not limited to guides. ANY article whose title
+> promises the reader can DO something ("How to…", "…in five minutes") must
+> deliver real numbered steps — see **style-guide.md § 3b (Ígéret-fedezet)**,
+> which applies to every writer. The Reviewer enforces it automatically
+> (HOWTO_TOO_THIN / HOWTO_NO_STEPS). (Added 2026-07-03 after user feedback: guides were too
 > vague and could mislead first-time users.)
 
 ---

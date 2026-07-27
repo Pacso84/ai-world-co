@@ -87,6 +87,54 @@
 
 ---
 
+## 3b. ÍGÉRET-FEDEZET — amit a cím ígér, azt a szöveg adja meg
+
+**Ez a szabály MINDEN cikkre vonatkozik, bármelyik agent írja** (hír, magyarázó,
+útmutató — mindegy). Nem a cikk *típusához* mérünk, hanem ahhoz, amit az
+olvasónak **ígértünk**: az olvasó nem a belső kategóriánkat látja, hanem a címet.
+
+*(Bekerült 2026-07-27-én, user-lelet nyomán: az „Így próbáld ki az AI-videó-
+avatárt a telefonodon öt perc alatt" cikk hírként íródott, ezért a részletes
+útmutató-szabályok nem vonatkoztak rá — 657 szó, egyetlen összevont bekezdés,
+nulla másolható példa. Akkor 76 ilyen cikkünk volt kint.)*
+
+### Mikor lép életbe
+
+Ha a cím vagy a felvezető azt ígéri, hogy az olvasó **meg tud csinálni** valamit:
+„Hogyan…", „Így…", „Öt perc alatt…", „Állítsd be…", „Az első…", „lépésről lépésre".
+
+### Ilyenkor KÖTELEZŐ
+
+1. **4-6 külön, számozott lépés-szakasz** (`## Step 1 — …`) — NEM egyetlen
+   összevont „lépésről lépésre" bekezdés.
+2. **Lépésenként 60-140 szó**, önmagában érthetően: mit kell megnyomni és **hol
+   találja**, mit fog **LÁTNI** utána, és egy konkrét, **másolható 💬 példa**
+   (prompt, beállítás-név, menü-útvonal), ahol értelmes.
+3. **Sikerellenőrzés** a lépés végén: „Akkor sikerült, ha…" — hogy az olvasó
+   tudja, jó úton jár-e, mielőtt továbbmegy.
+4. **Előfeltételek az ELSŐ lépés előtt** (fiók, alkalmazás, fizetős csomag,
+   telefon-verzió) — soha ne a 4. lépésnél derüljön ki, hogy nem tud továbbmenni.
+5. **„Common mistakes" szakasz**: legalább 3 tétel, mindegyik megnevezi a hibát
+   **ÉS a megoldást**.
+6. **Hossz: 700-1100 szó.** (A hír/magyarázó 400-700 szavas kerete ilyenkor nem
+   érvényes — az ígéret többet kíván.)
+
+### Ha nem tudsz valódi lépéseket írni
+
+**Akkor ne ígérd.** Kitalált menünév, gomb-felirat vagy képernyő **TILOS** — ez a
+cég alapszabálya (a hitelesség-kapu is ezt védi). Ilyenkor írd meg őszintén
+magyarázónak, és **adj olyan címet, amit a szöveg fedez** (pl. „Mi az X, és
+kinek való?"). Ez nem kudarc, hanem a helyes döntés.
+
+### Az ellenőrző automatikusan méri
+
+Az Ellenőrző AI nélkül, ingyen buktatja a fedezetlen ígéretet:
+`HOWTO_TOO_THIN` (600 szó alatt) és `HOWTO_NO_STEPS` (3-nál kevesebb számozott
+lépés-szakasz). Ha ezt látod a visszajelzésben, nem stilisztikai megjegyzés —
+az ígéret nincs fedezve.
+
+---
+
 ## 4. Mondatszerkezet
 
 ### Hossz változatosság

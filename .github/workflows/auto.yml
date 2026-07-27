@@ -77,6 +77,24 @@ jobs:
           node agents/digest/agent.js || true
           node agents/compare/agent.js || true
 
+      # ÍGÉRET-FEDEZET FELÚJÍTÓ (2026-07-27, user-döntés: fokozatosan).
+      # 76 régi cikkünk ígér a címében utasítást, de hírként íródott, ezért
+      # vékony maradt (a user egy ilyet olvasott: "nem túl részletes"). Az iro 4b
+      # szabálya + az ellenőrző kapuja a JÖVŐT rendezi; ez a MÚLTAT, futásonként
+      # 2 cikkel (~4 hét alatt mind, ~$0.01/cikk). A régi verzió mindig kint
+      # marad, amíg az új nem megy át ugyanazon az ellenőrzésen — nincs lyuk az
+      # oldalon. A FORDÍTÁS lépés ELŐTT fut, hogy a felújított szöveg még ebben
+      # a futásban kimenjen mind az 5 nyelven.
+      - name: Régi "hogyan"-cikkek felújítása (2/futás)
+        env:
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+        timeout-minutes: 10
+        run: node agents/iro/upgrade-howtos.js --limit 2 || true
+
       # Orbit heti videó: szkript + hang (vasárnap; a videót a compose rakja össze)
       - name: Orbit videó — szkript + hang (vasárnap)
         env:
