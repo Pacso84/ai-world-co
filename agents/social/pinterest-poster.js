@@ -64,6 +64,52 @@ function articleMap() {
   return map;
 }
 
+// ===================================================================
+// ELŐ-ELLENŐRZÉS (2026-07-27) — MIÉRT KELL:
+// A Make webhookja AKKOR IS HTTP 200-at ad, ha a forgatókönyv semmit nem
+// csinál a beérkező adattal. 2026-07-25 és 07-27 között 38 pin kapott
+// "posted_pin: true" jelölést anélkül, hogy VALAHA megjelent volna a
+// Pinteresten — a forgatókönyv (6701833) ugyanis CSAK a webhook-modult
+// tartalmazta, Pinterest-modul nélkül, és soha le sem futott. Mivel a
+// jelölés végleges, ezek a pinek örökre kiestek volna.
+//
+// A Make API `usedPackages` mezője pontosan megmutatja, MI van benne:
+//   ["gateway"]                       = csak a webhook  → NÉMÁN NYEL
+//   ["gateway","http","pinterest"]    = teljes lánc     → tényleg kimegy
+// Ha hiányzik a kimeneti modul, NEM küldünk semmit: a sor érintetlen marad,
+// és amint a forgatókönyv elkészül, minden pin szépen kimegy.
+//
+// TOKEN NÉLKÜL (helyi futás) nem tudunk ellenőrizni — ilyenkor átengedjük,
+// de kiírjuk, hogy az ellenőrzés kimaradt.
+// ===================================================================
+const MAKE_SCENARIO_ID = (process.env.PINTEREST_MAKE_SCENARIO_ID || '6701833').trim();
+const REQUIRED_PACKAGE = 'pinterest';
+
+async function scenarioReady() {
+  const token = (process.env.MAKE_API_TOKEN || '').trim();
+  if (!token) { console.log('   ⚠️  Nincs MAKE_API_TOKEN — a forgatókönyv-ellenőrzés kimarad.\n'); return true; }
+  try {
+    const r = await fetch(`https://eu1.make.com/api/v2/scenarios/${MAKE_SCENARIO_ID}`, {
+      headers: { Authorization: 'Token ' + token }, signal: AbortSignal.timeout(15000)
+    });
+    if (!r.ok) { console.log(`   ⚠️  Make API HTTP ${r.status} — az ellenőrzés kimarad, küldök.\n`); return true; }
+    const s = (await r.json()).scenario || {};
+    if (s.isActive === false || s.isPaused === true) {
+      console.log('   ⛔ A Make-forgatókönyv INAKTÍV — nem küldök (a sor érintetlen marad).');
+      console.log('      Kapcsold vissza: eu1.make.com → Scenarios → kapcsoló a sor végén.\n');
+      return false;
+    }
+    const pkgs = s.usedPackages || [];
+    if (!pkgs.includes(REQUIRED_PACKAGE)) {
+      console.log(`   ⛔ A Make-forgatókönyv (${MAKE_SCENARIO_ID}) NEM tartalmaz Pinterest-modult — csak: [${pkgs.join(', ')}]`);
+      console.log('      A webhook 200-at ad, de a pin SEHOVA nem kerül ki → nem küldök, a sor megmarad.');
+      console.log('      Javítás: eu1.make.com → a forgatókönyv → + → Pinterest → Create a Pin → mentés.\n');
+      return false;
+    }
+    return true;
+  } catch { console.log('   ⚠️  A Make-ellenőrzés hibára futott — küldök.\n'); return true; }
+}
+
 async function main() {
   console.log('📌 PINTEREST POSTER INDUL');
   console.log('─'.repeat(60));
@@ -71,6 +117,7 @@ async function main() {
   const hook = (process.env.PINTEREST_MAKE_WEBHOOK_URL || '').trim();
   if (!hook) { console.log('   ⏭️  Nincs PINTEREST_MAKE_WEBHOOK_URL — kihagyom (állítsd be a Make-scenario után GitHub Secrets-ben).'); return; }
   if (!existsSync(SOCIAL_DIR)) { console.log('   💤 Nincs social mappa.'); return; }
+  if (!(await scenarioReady())) return;
 
   const info = articleMap();
   const now = Date.now();

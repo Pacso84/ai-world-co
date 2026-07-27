@@ -207,12 +207,28 @@ async function main() {
   // MAKE-ŐRSZEM (2026-07-15, a 9 napos néma FB-leállás tanulsága): a webhook
   // válaszából NEM látszik, ha a Make-forgatókönyv áll (200-zal nyeli a sorba) —
   // ezért közvetlenül a Make API-tól kérdezzük. Csak BAJ esetén szól.
+  // 2026-07-27 BŐVÍTÉS: az "aktív?" kérdés NEM elég. A Pinterest-forgatókönyv
+  // AKTÍV volt, de CSAK a webhook-modult tartalmazta — a Make 200-zal nyelte a
+  // pineket, amiket mi "kiküldve"-nek jelöltünk, és 38 pin némán elveszett.
+  // A `usedPackages` mező elárulja, mi van benne: ["gateway"] = csak a webhook,
+  // kimeneti modul nélkül. Ezt is figyeljük, mindkét csatornán.
   try {
     if (process.env.MAKE_API_TOKEN) {
-      const mr = await fetch('https://eu1.make.com/api/v2/scenarios/6452490', { headers: { Authorization: 'Token ' + process.env.MAKE_API_TOKEN }, signal: AbortSignal.timeout(15000) });
-      const mj = await mr.json().catch(() => ({}));
-      if (mr.ok && mj.scenario && mj.scenario.isActive === false)
-        lines.push('⛔ FB-POSZTOLÓ LEÁLLT (Make-forgatókönyv inaktív)! Kapcsold vissza: eu1.make.com → Scenarios → kapcsoló a sor végén.');
+      const WATCH = [
+        { id: '6452490', pkg: 'facebook-pages', name: 'FB-POSZTOLÓ', fix: 'Facebook Pages → Upload a Photo' },
+        { id: process.env.PINTEREST_MAKE_SCENARIO_ID || '6701833', pkg: 'pinterest', name: 'PINTEREST-POSZTOLÓ', fix: 'Pinterest → Create a Pin' }
+      ];
+      for (const w of WATCH) {
+        const mr = await fetch(`https://eu1.make.com/api/v2/scenarios/${w.id}`, { headers: { Authorization: 'Token ' + process.env.MAKE_API_TOKEN }, signal: AbortSignal.timeout(15000) });
+        const mj = await mr.json().catch(() => ({}));
+        if (!mr.ok || !mj.scenario) continue;
+        const s = mj.scenario;
+        if (s.isActive === false || s.isPaused === true) {
+          lines.push(`⛔ ${w.name} LEÁLLT (Make-forgatókönyv inaktív)! Kapcsold vissza: eu1.make.com → Scenarios → kapcsoló a sor végén.`);
+        } else if (!(s.usedPackages || []).includes(w.pkg)) {
+          lines.push(`⛔ ${w.name}: a Make-forgatókönyv HIÁNYOS — nincs benne kimeneti modul (csak: ${(s.usedPackages || []).join(', ') || '—'}). A webhook 200-at ad, de SEMMI nem megy ki! Javítás: eu1.make.com → a forgatókönyv → + → ${w.fix} → mentés.`);
+        }
+      }
     }
   } catch { /* a Make-őr hibája nem állítja meg a jelentést */ }
   // FORRÁS-BIZONYÍTVÁNY (2026-07-22): a külön lépés által kiírt osztályzatokból.
