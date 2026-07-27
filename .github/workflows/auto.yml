@@ -164,6 +164,17 @@ jobs:
         if: always()
         run: node website/check-i18n.js || true
 
+      # SEO-ŐRSZEM (2026-07-27): a Search Console három NÉMA hibát jelzett —
+      # .html-es (átirányító) canonical/hreflang/og:url/sitemap, cím-átdolgozás
+      # miatt elköltözött oldalak (404 + elveszett rangsor-erő), és sitemap-URL
+      # kiszolgáló fájl nélkül. Mindhárom hónapokig rejtve maradt, mert a honlap
+      # közben tökéletesen működött. A build UTÁN, a deploy ELŐTT fut, hogy a
+      # visszaesés a NAPLÓBAN és a napi riportban derüljön ki, ne fél év múlva
+      # a Google-tól. A kiadást NEM állítja meg (|| true).
+      - name: SEO-őrszem (kanonikus URL + slug-védelem)
+        if: always() && steps.build.outcome == 'success'
+        run: node core/seo-guard.js || true
+
       # Címes megosztás-képek a friss cikkekhez (FB-posztokhoz; 2026-07-08)
       # FIGYELEM: a build ÜRÍTI a public/-ot, ezért ennek a build UTÁN kell futnia.
       - name: Megosztás-képek (címes borítók)

@@ -231,6 +231,16 @@ async function main() {
       }
     }
   } catch { /* a Make-őr hibája nem állítja meg a jelentést */ }
+  // SEO-ŐRSZEM (2026-07-27): a kanonikus URL / rögzített slug / sitemap
+  // visszaesését jelezzük. Csendes, ha nincs baj — a user így tudja, hogy a
+  // Search Console-ban jelzett hibák nem jönnek vissza észrevétlenül.
+  try {
+    const seo = JSON.parse(readFileSync(join(ROOT, 'memory', 'seo-guard.json'), 'utf-8'));
+    if (seo.problems?.length) {
+      lines.push(`🔍 SEO-ŐRSZEM: ${seo.problems.length} lelet — ${seo.problems.slice(0, 2).map(p => p.code).join(', ')}${seo.problems.length > 2 ? '…' : ''}. Részletek a futás naplójában.`);
+    }
+  } catch { /* még nincs SEO-lelet vagy nem futott — nem baj */ }
+
   // FORRÁS-BIZONYÍTVÁNY (2026-07-22): a külön lépés által kiírt osztályzatokból.
   // Csendes, ha nincs teendő; hangos, ha forrást kapcsoltunk ki vagy elavultból írunk.
   try {
