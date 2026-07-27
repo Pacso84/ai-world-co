@@ -106,7 +106,16 @@ jobs:
         # futásban utoléri magát. Ugyanannyi AI-token (=ugyanannyi költség), csak
         # gyorsabb; a --max-minutes 27 továbbra is tiszta kilépést garantál a 30-as
         # timeout ELŐTT, a $50-os havi AI-cap pedig a valódi költség-védőháló.
-        run: node agents/translator/agent.js --limit 250 --max-minutes 27
+        #
+        # --concurrency 5 (2026-07-27): a 27 perces keret ÖNMAGÁBAN nem volt elég.
+        # Mérés: a SOROS fordító ~91 mp/darab → 27 perc = ~18 fordítás, a valós
+        # futás pont 20-at ért el. Egy futás viszont 9-13 cikket ad ki = 36-52
+        # fordítás → a maradék a KÖVETKEZŐ futásra (8 óra!) csúszott, és addig a
+        # build angol fallbackot tett ki a hu/es/de/fr oldalakra ("a fordítások
+        # késnek"). 4 sávon mérve 1,76 fordítás/perc (2,7x) → 5 sáv ~59 fordítás
+        # / 27 perc, azaz a csúcs is elfér EGY futásban. A hívások száma és így a
+        # KÖLTSÉG változatlan — csak nem várnak egymásra.
+        run: node agents/translator/agent.js --limit 250 --max-minutes 27 --concurrency 5
 
       # ── KIADÁSI LÁNC (2026-07-23) ────────────────────────────────────
       # MIÉRT if: always() INNENTŐL: korábban ezek a lépések alapértelmezetten

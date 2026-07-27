@@ -13,6 +13,7 @@
 //   node agents/translator/agent.js --limit 30
 //   node agents/translator/agent.js --lang hu     -- csak egy nyelv
 //   node agents/translator/agent.js --force       -- meglévőket is újrafordít
+//   node agents/translator/agent.js --concurrency 4  -- egyszerre hány cikk (alap: 4)
 //
 // CÉL-NYELVEK: magyar + nagy világnyelvek (angol a FORRÁS, azt nem fordítjuk).
 // ===================================================================
@@ -53,12 +54,16 @@ function parseArgs() {
   // esésnél lassabb a fordítás) → timeout → piros X → részleges fordítás → gyűlik.
   // 9 perc: a fordító tiszta kilépéssel megáll, marad ~3 perc egy lassú utolsó
   // fordításnak is a 12-es plafonig; a maradékot a következő futás viszi.
-  const p = { limit: 16, force: false, lang: null, maxMinutes: 9 };
+  // concurrency: hány cikken dolgozunk EGYSZERRE (2026-07-27). 4 sáv a mért
+  // ~30-80 mp/fordítás mellett ~4x átbocsátást ad, így egy futás friss termése
+  // (36-52 fordítás) belefér az időkeretbe — nem csúszik át a következő futásra.
+  const p = { limit: 16, force: false, lang: null, maxMinutes: 9, concurrency: 4 };
   for (let i = 0; i < a.length; i++) {
     if (a[i] === '--limit' && a[i + 1]) p.limit = parseInt(a[++i], 10) || 16;
     else if (a[i] === '--force') p.force = true;
     else if (a[i] === '--lang' && a[i + 1]) p.lang = a[++i];
     else if (a[i] === '--max-minutes' && a[i + 1]) p.maxMinutes = parseFloat(a[++i]) || 9;
+    else if (a[i] === '--concurrency' && a[i + 1]) p.concurrency = Math.max(1, parseInt(a[++i], 10) || 4);
   }
   return p;
 }
@@ -169,22 +174,43 @@ async function main() {
   let done = 0, cost = 0, skipped = 0, failed = 0;
   const startedAt = Date.now();
   const maxMs = args.maxMinutes * 60 * 1000;
-  outer:
-  for (const file of files) {
-    let data; try { data = JSON.parse(readFileSync(join(ARTICLES_DIR, file), 'utf-8')); } catch { continue; }
+  let stopReason = null;   // 'limit' | 'time' — az első dolgozó állítja be, a többi látja
+
+  // ===================================================================
+  // PÁRHUZAMOS FELDOLGOZÁS (2026-07-27) — a friss cikkek fordítása 8-14 órát
+  // késett. Ok: egy futás 9-13 cikket ad ki (= 36-52 fordítás), a soros fordító
+  // viszont ~30-80 mp/darab tempóval 27 perc alatt csak ~20-at ért el; a maradék
+  // a KÖVETKEZŐ futásra (8 óra!) csúszott, és addig a build angol fallbackot
+  // tett ki a hu/es/de/fr oldalakra. A hívások SZÁMA (és a költség) változatlan,
+  // csak nem várnak egymásra.
+  //
+  // MIÉRT FÁJLONKÉNT osztunk, nem (fájl, nyelv) páronként: a fordítás-gyorsítótár
+  // fájlonként EGY json ({hu,es,de,fr}), amit a nyelvek között olvasunk-írunk.
+  // Ha két dolgozó ugyanannak a cikknek két nyelvét vinné, mindkettő a saját
+  // memóriabeli másolatát mentené vissza — a később végző FELÜLÍRNÁ a másik
+  // eredményét. Egy fájl = egy dolgozó → a cache-objektum sosem osztott.
+  // (A recordSpend és a bukás-számláló ezzel szemben szinkron olvas-ír await
+  // nélkül, tehát a Node egyszálú ciklusában oszthatatlan — azok biztonságosak.)
+  // ===================================================================
+  let cursor = 0;
+
+  async function processFile(file) {
+    let data; try { data = JSON.parse(readFileSync(join(ARTICLES_DIR, file), 'utf-8')); } catch { return; }
     const md = data.article_markdown;
-    if (!md) continue;
+    if (!md) return;
     const cache = loadCache(file);
 
     for (const code of targetLangs) {
       if (!LANGS[code]) continue;
       if (cache[code] && !args.force) { skipped++; continue; }
-      if (done >= args.limit) { console.log(`\n⏸️  Elértem a futás-limitet (${args.limit}). A többit a következő futás fordítja.`); break outer; }
+      if (stopReason) return;
+      if (done >= args.limit) { stopReason = 'limit'; return; }
       // IDŐ-KERET: sose kezdjünk új fordítást, ha már túlléptük a keretet — így a
-      // lépés a CI 12 perces plafonja alatt marad, a maradék a következő futásé.
-      if (Date.now() - startedAt >= maxMs) { console.log(`\n⏱️  Elértem az idő-keretet (${args.maxMinutes} perc). A többit a következő futás fordítja.`); break outer; }
+      // lépés a CI plafonja alatt marad, a maradék a következő futásé.
+      if (Date.now() - startedAt >= maxMs) { stopReason = 'time'; return; }
 
-      process.stdout.write(`🔤 ${code} ← ${file.slice(0, 48)}… `);
+      // EGY SOR / fordítás: párhuzamosan a régi "write … majd console.log" páros
+      // összekeveredne a dolgozók között, olvashatatlan naplót adva.
       const res = await translateMarkdown(md, LANGS[code]);
       if (res && looksValid(res.text)) {
         cache[code] = res.text.trim();
@@ -193,7 +219,7 @@ async function main() {
         // sikerült → a bukás-számláló törlődik erre a párra
         const fails = loadFails();
         if (fails[`${file}|${code}`]) { delete fails[`${file}|${code}`]; saveFails(fails); }
-        console.log(`✅ ($${res.cost.toFixed(4)})`);
+        console.log(`🔤 ${code} ← ${file.slice(0, 48)}… ✅ ($${res.cost.toFixed(4)})`);
       } else {
         failed++;
         const fails = loadFails();
@@ -208,14 +234,29 @@ async function main() {
           if (r.ok) {
             remember(AGENT_NAME, `Ha a forrás-cikk hibás (${defect}), NEM újrapróbálni kell, hanem visszaadni az Írónak.`);
             delete fails[key]; saveFails(fails);
-            console.log(`↩️  visszaadva az Írónak (${defect})`);
-          } else { console.log('❌ (sikertelen / érvénytelen)'); }
+            console.log(`🔤 ${code} ← ${file.slice(0, 48)}… ↩️  visszaadva az Írónak (${defect})`);
+          } else { console.log(`🔤 ${code} ← ${file.slice(0, 48)}… ❌ (sikertelen / érvénytelen)`); }
         } else {
-          console.log('❌ (sikertelen / érvénytelen)');
+          console.log(`🔤 ${code} ← ${file.slice(0, 48)}… ❌ (sikertelen / érvénytelen)`);
         }
       }
     }
   }
+
+  async function worker() {
+    while (!stopReason) {
+      const file = files[cursor++];
+      if (!file) return;
+      await processFile(file);
+    }
+  }
+
+  const lanes = Math.max(1, Math.min(args.concurrency, files.length || 1));
+  console.log(`⚙️  párhuzamos sávok: ${lanes} | limit: ${args.limit} | időkeret: ${args.maxMinutes} perc`);
+  await Promise.all(Array.from({ length: lanes }, () => worker()));
+
+  if (stopReason === 'limit') console.log(`\n⏸️  Elértem a futás-limitet (${args.limit}). A többit a következő futás fordítja.`);
+  if (stopReason === 'time') console.log(`\n⏱️  Elértem az idő-keretet (${args.maxMinutes} perc). A többit a következő futás fordítja.`);
 
   console.log('\n' + '─'.repeat(60));
   console.log(`📊 Fordítva: ${done} | már megvolt: ${skipped} | sikertelen: ${failed} | költség $${cost.toFixed(4)}`);
