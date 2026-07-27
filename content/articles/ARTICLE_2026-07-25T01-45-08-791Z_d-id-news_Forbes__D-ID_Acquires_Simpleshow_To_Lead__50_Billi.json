@@ -1,0 +1,62 @@
+{
+  "_meta": {
+    "written_at": "2026-07-27T01:59:31.417Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.01517208,
+    "original_draft": "2026-07-25T01-45-08-791Z_d-id-news_Forbes__D-ID_Acquires_Simpleshow_To_Lead__50_Billi.json",
+    "source_id": "d-id-news",
+    "source_name": "D-ID (hivatalos)",
+    "source_link": "https://www.d-id.com/news/forbes-d-id-acquires-simpleshow-to-lead-50-billion-interactive-ai-market/",
+    "status": "published",
+    "rejected_at": "2026-07-25T01:50:54.252Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 895
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Clean, well-structured explainer that hits all mandatory marks: friendly hook, clear term explanations, audience-segmented 'What this means for you', and an encouraging wrap-up with a low-barrier experiment. No clichés, no prohibited content, no obvious factual issues. Minor note: generic 'free AI video tool' reference at end is not a blocker but could be sharpened if writer wants extra polish.",
+      "_aiCost": 0.00147595,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Article is well-structured, friendly, and explains concepts clearly for everyday readers. However, it uses American spellings (behaviour, recognising, analysing, optimising) throughout. Fix these to Australian English and it will pass quality gate.",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-07-25T01-45-08-791Z_d-id-news_Forbes__D-ID_Acquires_Simpleshow_To_Lead__50_Billi.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-07-27T02:03:38.916Z",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-07-27T02:05:34.621Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is a generic explainer article about interactive AI avatars as a concept, not about any specific named tool or feature that users can go use today.",
+    "seo": {
+      "meta_description": "Interactive AI avatars let you talk to digital presenters instead of just watching. Learn what they are and how they work in this plain-language guide.",
+      "keywords": [
+        "what is an interactive AI avatar",
+        "digital humans explained",
+        "AI avatar video",
+        "conversational AI video",
+        "interactive avatar technology",
+        "how do AI avatars work"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add a location modifier if targeting local readers (e.g., 'for businesses in [city]')",
+        "Include the primary keyword 'interactive AI avatars' earlier in the first paragraph for better relevance",
+        "Consider adding a comparison to traditional video to reinforce the key differentiator"
+      ],
+      "optimised_at": "2026-07-27T02:16:48.663Z"
+    },
+    "social": true,
+    "social_at": "2026-07-27T02:48:41.650Z"
+  },
+  "article_markdown": "---\ntitle: \"Interactive AI Avatars: What They Are and How You Might Use Them\"\nsubtitle: \"A friendly, plain-language guide to digital humans and the new wave of explainer videos you can actually have a conversation with\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"ai-video\", \"digital-avatars\", \"interactive-ai\", \"explainer-videos\", \"training\"]\n---\n\n# Interactive AI Avatars: What They Are and How You Might Use Them\n\nYou've probably watched an explainer video today without really thinking about it. The animated presenter walking through a product demo. The cartoon host breaking down a tricky idea. The on-screen trainer taking you through workplace safety. They're everywhere — and most are one-sided: you watch, you nod, you move on.\n\nNow imagine that same presenter could look you in the eye, listen to your question, and answer it back. That's the promise of **interactive AI avatars**.\n\n## What is an interactive AI avatar?\n\nThink of it as a **digital human** — a realistic or stylised face on a screen, powered by AI. Behind the face, two engines work together:\n\n- A **video-generation model** (AI software that creates moving footage) that animates the face, mouth, and body so it speaks naturally.\n- A **conversational model** — the same kind of AI brain that powers ChatGPT — that listens, thinks, and decides what to say back.\n\nPut them together and you get a person on screen who can hold a real conversation. Ask a follow-up and they answer it. Ask them to slow down, repeat a point, or use plainer language, and they adjust. \"Interactive\" just means **two-way**: instead of pressing play and watching, you actually talk to it.\n\nThis is different from the old one-way explainer videos on YouTube, where the script is fixed and there's no way to ask a question. In a sense, the avatar is a small AI assistant wearing a face.\n\n## Why is everyone talking about this now?\n\nTwo shifts are combining.\n\n**First, AI video tools have got much better** at generating realistic talking faces. A couple of years ago the results were janky and obviously fake. Now the **lip-sync** (matching the mouth movement to the words), facial expressions, and voice quality are convincing enough for real business use.\n\n**Second, explainer videos have always been hugely popular** as a teaching format. For years, industry reports have pointed to the explainer-video market as one of the fastest-growing corners of online content, used for everything from onboarding new staff to selling products.\n\nCombine a realistic, conversational avatar with the explainer-video format and you get something new: a training or marketing video that can talk back. Instead of producing twenty versions of the same induction video for twenty different roles, a company could make one avatar that tailors itself to whoever is watching.\n\n## A few ways this could show up in your week\n\n- **Workplace training**: instead of sitting through a 40-minute compliance video, you chat with an on-screen trainer who quizzes you and answers questions in real time.\n- **Customer support on websites**: the polite \"How can I help you?\" window becomes a face, not just a chat box, and the avatar can point things out on screen while it explains.\n- **Learning a new topic**: imagine a digital tutor on a library website who walks you through a tricky tax form or a new piece of software, one question at a time.\n- **Marketing and product demos**: a brand's spokesperson can sit on the homepage and have a different conversation with every visitor, depending on what they want to know.\n\n## What this means for you\n\n- **If you just want to try this yourself**: start with the free tools already on the market. Some video platforms let you create a simple avatar from a photo in minutes — perfect for a fun experiment, a school project, or a polished intro on your professional profile.\n- **If you run a small business or work in training**: don't rip out your existing onboarding videos just yet. The technology is moving fast, but the best use cases right now are **narrow ones** — a single FAQ page that talks back, or one tricky form explained by a friendly face. Start small, measure whether people actually engage more, then expand.\n- **If you're worried about deepfakes or trust issues**: you're right to be cautious. Always check who is behind an avatar before you trust what it says, and remember that any realistic face on a screen could potentially be faked. Reputable companies clearly label their AI content.\n\n## A simple starting point to try today\n\nThe easiest way to understand this technology is to play with it. Pick a short topic you know well — how to make a good cup of coffee, how to change a tyre, the basics of a hobby you love — and use a free AI video tool to make a one-minute avatar explaining it. Watch it back. Notice what feels natural and what still feels off. That five-minute experiment will teach you more about where this technology really is in 2026 than any article online.\n\nInteractive AI avatars are no longer a sci-fi concept. They're a tool, with all the same upsides and rough edges as any new tool. The trick is to start small, stay curious, and watch for the moments when a face on a screen genuinely makes something easier — not just flashier.",
+  "original_title": "Forbes: D-ID Acquires Simpleshow To Lead $50 Billion Interactive AI Market"
+}

@@ -1,0 +1,65 @@
+{
+  "_meta": {
+    "written_at": "2026-07-27T01:56:25.225Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m2.7",
+    "writer_cost_usd": 0.006513777,
+    "original_draft": "2026-07-23T10-11-43-793Z_cohere-blog_Cohere_Transcribe_Arabic__Open-Source_Speech_AI.json",
+    "source_id": "cohere-blog",
+    "source_name": "Cohere (hivatalos)",
+    "source_link": "https://cohere.com/blog/transcribe-arabic",
+    "status": "published",
+    "rejected_at": "2026-07-27T01:53:21.440Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 844
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured explainer with strong hook, clear explanations of ASR technology, practical daily-life examples, and a helpful What this means for you section covering four distinct reader types. No factual red flags, respectful tone throughout, and no prohibited content. Minor note: article originated from Cohere blog but focuses on the broader market rather than direct product promotion.",
+      "_aiCost": 0.001594944,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Hitelesség-kapu blokkolta: The tool 'Cohere Transcribe Arabic' is invented — Cohere does not have a product called 'Cohere Transcribe Arabic' or a transcription feature specifically branded for Arabic on their dashboard. The ar",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-07-23T10-11-43-793Z_cohere-blog_Cohere_Transcribe_Arabic__Open-Source_Speech_AI.json",
+    "requeued_unchanged": false,
+    "ceo_rounds": 1,
+    "ceo_hint": "CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Replace 'Cohere Transcribe Arabic' references with a verified Arabic-capable transcription tool (e.g., OpenAI Whisper via its official interface, or another named product whose dialect picker + upload + transcribe flow you can confirm by checking their docs/dashboard yourself). Keep the step-by-step beginner framing and dialect-picker UI elements, just re-attribute them to the real product. HONESTY RULE: name the REAL products/places/organisations from the source; NEVER invent generic UI steps (\"most platforms\", fictional menu names). If you add a \"try it yourself\" section, use typed example prompts only (2026-07-14 reader complaint lesson).",
+    "published_at": "2026-07-27T02:02:25.359Z",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-07-27T02:05:25.373Z",
+    "guide_worthy": false,
+    "pairing_reason": "Article is a general explainer about Arabic transcription technology, not news about a specific named feature or tool that readers can go use",
+    "seo": {
+      "meta_description": "Learn how AI converts spoken Arabic into written text instantly. Simple tools you can use right now for calls, conversations, and stories.",
+      "keywords": [
+        "Arabic speech to text",
+        "Arabic transcription AI",
+        "convert Arabic voice to text",
+        "Arabic audio transcription tool",
+        "AI transcription Arabic",
+        "Arabic voice to text app",
+        "how to transcribe Arabic audio"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add a specific use case in the first paragraph (e.g., 'transcribe family calls, WhatsApp voice notes, or work meetings') to match search intent better",
+        "Include the exact phrase 'Arabic speech to text' naturally in the article body to strengthen topical relevance",
+        "Consider adding 'free' or 'best' to the title if the article covers pricing or recommends specific tools"
+      ],
+      "optimised_at": "2026-07-27T02:16:42.482Z"
+    },
+    "social": true,
+    "social_at": "2026-07-27T02:48:32.226Z"
+  },
+  "article_markdown": "---\ntitle: \"How AI Turns Spoken Arabic into Written Text — And Why That's Suddenly Useful\"\nsubtitle: \"A plain-English explainer on what Arabic speech-to-text tools can do for you right now\"\ncategory: \"explain\"\naudience: \"personal\"\nread_time_minutes: 5\ntags: [\"speech-ai\", \"arabic-transcription\", \"productivity\", \"getting-started\"]\n---\n\n# How AI Turns Spoken Arabic into Written Text — And Why That's Suddenly Useful\n\nImagine you've just finished a long phone call with family in Arabic. Your cousin told a story you want to remember, but the details are already getting fuzzy. You could replay the call and scribble notes — or you could have a clean written version ready in seconds. That's what modern AI transcription tools are now capable of for Arabic speakers, and you don't need any technical background to use them.\n\n## What AI transcription actually means\n\nTranscription is simply converting spoken words into written text. AI transcription uses a machine learning model — a program trained on thousands of hours of audio including Arabic speech — to listen to a recording and type out what it hears.\n\nArabic has its own quirks. Different dialects (Egyptian, Levantine, Gulf, Maghrebi, and others) sound quite different from each other, and everyday conversation often mixes Arabic with English or French words. Good Arabic transcription tools are built to handle that variety.\n\nThe technology behind these tools is called **automatic speech recognition (ASR)** — think of it as a very fast listener that has learned what Arabic words sound like across many different speakers and accents.\n\n## What's changed recently\n\nA few things have improved. Models like OpenAI's Whisper — an open-source speech recognition system — now handle Arabic quite well, including many regional dialects. You can access these models through various platforms, some offering web interfaces where you upload audio and get text back within seconds.\n\nSome services let you choose your dialect before you start, which helps the system give you more accurate results. Others work automatically and try to detect the variety of Arabic being spoken.\n\nThis means the barrier to getting a written record of your Arabic voice notes has dropped significantly. You no longer need specialised software or technical knowledge.\n\n## Where this fits in daily life\n\n- **Family conversations**: Record a voice note in Arabic on your phone, then turn it into text so relatives who prefer reading can follow along.\n- **Study and revision**: Record a lecture or tutorial, then search through the written version later when exams come around.\n- **Brainstorming**: Talk through your ideas out loud in Arabic, then let the AI give you a first draft you can clean up and edit.\n- **Interviews and quotes**: Capture what someone said accurately, without trying to type while they're still talking.\n- **Cross-lingual moments**: When someone switches between Arabic and English mid-sentence, the better tools now handle that transition more smoothly than they used to.\n\n## What to look for in a transcription service\n\nWhen you're deciding which tool suits you, consider these practical points:\n\n- **Dialect support**: Does it cover your specific dialect, or only Modern Standard Arabic (the formal version used in news)? Dialect-specific accuracy varies between tools.\n- **Privacy**: Where does your audio go? Some services process it on your own device, others send it to external servers. For sensitive personal conversations, this matters.\n- **Price**: Many services offer a free tier with limited transcription minutes per month — enough for a first test.\n- **Export options**: Can you save the text as a simple document, or does it stay locked inside the app?\n\nFeatures and pricing change often, so it's worth checking the official website of whatever service you're looking at for the most current details.\n\n## What this means for you\n\n- **If you speak Arabic at home**: Those voice notes from family members can finally become searchable and readable. No more replaying a three-minute message just to find one address someone mentioned.\n- **If you're learning Arabic**: Record yourself speaking, then read the transcript back. It's a simple way to notice pronunciation patterns and build vocabulary — like having a patient listener who never gets tired.\n- **If you work with Arabic-speaking clients or communities**: Transcripts make meetings, focus groups, and customer calls much easier to share with colleagues who don't speak Arabic.\n- **If you're just curious**: Look up a service that uses OpenAI Whisper or similar technology, sign up for a free account, and try transcribing a 30-second voice note. See how the result compares to what you actually said.\n\n## Wrap-up\n\nAI transcription for Arabic has quietly become good enough for everyday use. You don't need to be a tech person to take advantage of it. The easiest first step is to find a service with a free tier, upload a short voice note, and see what comes back. Once you see it work once, you'll start noticing all the small moments in your week where it could help. Your next step today: spend five minutes looking up a few Arabic-capable transcription services and pick one to try with your next voice note.",
+  "original_title": "Cohere Transcribe Arabic: Open-Source Speech AI"
+}

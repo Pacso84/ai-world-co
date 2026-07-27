@@ -1,158 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178488759821667",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-07-24T10:06:38.216Z",
-      "updated": "2026-07-24T10:08:06.411Z"
-    },
-    {
-      "id": "t178488768641315",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-07-24T10:08:06.413Z",
-      "updated": "2026-07-24T10:08:06.670Z"
-    },
-    {
-      "id": "t178488768667380",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-07-24T10:08:06.673Z",
-      "updated": "2026-07-24T10:10:29.128Z"
-    },
-    {
-      "id": "t178488782913013",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-24T10:10:29.130Z",
-      "updated": "2026-07-24T10:11:26.880Z"
-    },
-    {
-      "id": "t178488788688361",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-07-24T10:11:26.883Z",
-      "updated": "2026-07-24T10:15:23.926Z"
-    },
-    {
-      "id": "t178488812392820",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-24T10:15:23.928Z",
-      "updated": "2026-07-24T10:16:07.082Z"
-    },
-    {
-      "id": "t178488816708534",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-24T10:16:07.085Z",
-      "updated": "2026-07-24T10:16:58.939Z"
-    },
-    {
-      "id": "t178488821894152",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-24T10:16:58.941Z",
-      "updated": "2026-07-24T10:17:05.112Z"
-    },
-    {
-      "id": "t178488822511733",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-07-24T10:17:05.117Z",
-      "updated": "2026-07-24T10:17:14.913Z"
-    },
-    {
-      "id": "t178488823494162",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-24T10:17:14.941Z",
-      "updated": "2026-07-24T10:17:22.715Z"
-    },
-    {
-      "id": "t17848882427170",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-07-24T10:17:22.717Z",
-      "updated": "2026-07-24T10:17:32.658Z"
-    },
-    {
-      "id": "t17848882526612",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-24T10:17:32.661Z",
-      "updated": "2026-07-24T10:17:33.721Z"
-    },
-    {
-      "id": "t178488825372354",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-07-24T10:17:33.723Z",
-      "updated": "2026-07-24T10:17:43.221Z"
-    },
-    {
-      "id": "t178491357972553",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-07-24T17:19:39.725Z",
-      "updated": "2026-07-24T17:19:41.973Z"
-    },
-    {
-      "id": "t178491358198639",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-07-24T17:19:41.986Z",
-      "updated": "2026-07-24T17:20:24.136Z"
-    },
-    {
-      "id": "t178491362413839",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-07-24T17:20:24.138Z",
-      "updated": "2026-07-24T17:20:24.324Z"
-    },
-    {
-      "id": "t17849136243261",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-07-24T17:20:24.327Z",
-      "updated": "2026-07-24T17:21:23.625Z"
-    },
-    {
-      "id": "t178491368362791",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-24T17:21:23.627Z",
-      "updated": "2026-07-24T17:21:35.917Z"
-    },
-    {
-      "id": "t178491369594322",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-07-24T17:21:35.943Z",
-      "updated": "2026-07-24T17:34:27.784Z"
-    },
-    {
       "id": "t178491446778533",
       "title": "Run ellenorzo",
       "status": "done",
@@ -479,33 +327,161 @@
       "agent": "publisher",
       "created": "2026-07-26T02:08:42.357Z",
       "updated": "2026-07-26T02:09:12.029Z"
+    },
+    {
+      "id": "t178511719779919",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-07-27T01:53:17.799Z",
+      "updated": "2026-07-27T01:53:21.489Z"
+    },
+    {
+      "id": "t178511720149274",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-07-27T01:53:21.492Z",
+      "updated": "2026-07-27T01:53:54.779Z"
+    },
+    {
+      "id": "t17851172347817",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-07-27T01:53:54.781Z",
+      "updated": "2026-07-27T01:55:10.609Z"
+    },
+    {
+      "id": "t178511731061054",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-07-27T01:55:10.610Z",
+      "updated": "2026-07-27T01:55:50.812Z"
+    },
+    {
+      "id": "t178511735081451",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-27T01:55:50.814Z",
+      "updated": "2026-07-27T01:56:16.626Z"
+    },
+    {
+      "id": "t178511737662880",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-07-27T01:56:16.628Z",
+      "updated": "2026-07-27T02:01:50.173Z"
+    },
+    {
+      "id": "t178511771017510",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-27T02:01:50.175Z",
+      "updated": "2026-07-27T02:05:20.930Z"
+    },
+    {
+      "id": "t17851179209330",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-07-27T02:05:20.933Z",
+      "updated": "2026-07-27T02:06:17.420Z"
+    },
+    {
+      "id": "t178511797744450",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-07-27T02:06:17.444Z",
+      "updated": "2026-07-27T02:09:53.024Z"
+    },
+    {
+      "id": "t178511819302576",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-27T02:09:53.025Z",
+      "updated": "2026-07-27T02:11:25.097Z"
+    },
+    {
+      "id": "t178511828512186",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-07-27T02:11:25.121Z",
+      "updated": "2026-07-27T02:11:25.259Z"
+    },
+    {
+      "id": "t178511828526094",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-07-27T02:11:25.260Z",
+      "updated": "2026-07-27T02:11:43.143Z"
+    },
+    {
+      "id": "t178511830314521",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-07-27T02:11:43.145Z",
+      "updated": "2026-07-27T02:13:08.607Z"
+    },
+    {
+      "id": "t178511838860999",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-07-27T02:13:08.609Z",
+      "updated": "2026-07-27T02:13:55.557Z"
+    },
+    {
+      "id": "t178511843555945",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-27T02:13:55.559Z",
+      "updated": "2026-07-27T02:14:31.177Z"
+    },
+    {
+      "id": "t178511847117834",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-27T02:14:31.178Z",
+      "updated": "2026-07-27T02:16:30.773Z"
+    },
+    {
+      "id": "t178511859077572",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-07-27T02:16:30.775Z",
+      "updated": "2026-07-27T02:19:27.110Z"
+    },
+    {
+      "id": "t178511876711196",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-27T02:19:27.111Z",
+      "updated": "2026-07-27T02:19:42.025Z"
+    },
+    {
+      "id": "t178511878202691",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-07-27T02:19:42.026Z",
+      "updated": "2026-07-27T02:20:20.190Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178423133874960",
-      "level": "warn",
-      "text": "📨 fact-check → human: Útmutató levéve, mert valótlanná vált: \"Write a polite refund request email in 30 seconds \" — The core feature described",
-      "agent": "fact-check",
-      "at": "2026-07-16T19:48:58.749Z",
-      "loud": false
-    },
-    {
-      "id": "n178423137783381",
-      "level": "info",
-      "text": "📨 fact-check → team: Levettem (tárgytalan): \"How to Use OpenAI GPT-5.6 in Snowflake Cortex AI f\" — The guide's core instruction set relies on",
-      "agent": "fact-check",
-      "at": "2026-07-16T19:49:37.833Z",
-      "loud": false
-    },
-    {
-      "id": "n178423137783686",
-      "level": "warn",
-      "text": "📨 fact-check → human: Útmutató levéve, mert valótlanná vált: \"How to Use OpenAI GPT-5.6 in Snowflake Cortex AI f\" — The guide's core instructi",
-      "agent": "fact-check",
-      "at": "2026-07-16T19:49:37.836Z",
-      "loud": false
-    },
     {
       "id": "n178425297285284",
       "level": "warn",
@@ -1281,136 +1257,33 @@
       "agent": "ceo",
       "at": "2026-07-26T02:09:12.054Z",
       "loud": false
+    },
+    {
+      "id": "n178511876710242",
+      "level": "info",
+      "text": "SEO: 10 cikk optimalizálva (átlag 8.1/10).",
+      "agent": "seo",
+      "at": "2026-07-27T02:19:27.102Z",
+      "loud": false
+    },
+    {
+      "id": "n178511881082883",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The lineup looks solid — you have a good mix of practical study help, workplace tools, privacy guidance, and real-life writing tasks (refund emails, thank-you speeches). That variety hits the \"everyda",
+      "agent": "publisher",
+      "at": "2026-07-27T02:20:10.828Z",
+      "loud": false
+    },
+    {
+      "id": "n178511882021255",
+      "level": "success",
+      "text": "5 hír + 4 útmutató publikálva (költség: $0.0802).",
+      "agent": "ceo",
+      "at": "2026-07-27T02:20:20.212Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178477215838135",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Qwen-Image-3.0: Rich Content, Authentic Details, Deep Knowledge - Qwen\" — javítva: Reviewer verdict: Accessible, well-structured beginner guide with a clear hook, plain-language explanations, a 'What this means for you' section, and an actionable wrap-up. No prohibited content, no clichés flagged, and Australian English is consistent.; újraküldöm.",
-      "ref": "2026-07-23T01-48-57-922Z_qwen-news_Qwen-Image-3_0__Rich_Content__Authentic_Details__D.json",
-      "at": "2026-07-23T02:02:38.381Z"
-    },
-    {
-      "id": "m178477217150278",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Qwen3.5: Towards Native Multimodal Agents - Qwen\" — javítva: Qwen 3.5 from Alibaba is referenced as a model name; the verified-real list contains \"Qwen\" and \"Alibaba\" but \"Qwen 3.5\" is not confirmed as an official product/version name. This appears to be an invented version number.; Reviewer verdict: Hitelesség-kapu blokkolta: Qwen 3.5 from Alibaba is referenced as a model name; the ",
-      "ref": "2026-07-23T01-48-57-922Z_qwen-news_Qwen3_5__Towards_Native_Multimodal_Agents_-_Qwen.json",
-      "at": "2026-07-23T02:02:51.502Z"
-    },
-    {
-      "id": "m178477217625377",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"What Is Stable Diffusion? A Simple Guide to the AI Behind Modern Image Generation\" (?/10)",
-      "ref": "2026-07-22T10-14-03-156Z_deeparteffects_What_Is_Stable_Diffusion__A_Simple_Guide_to_the_AI.json",
-      "at": "2026-07-23T02:02:56.253Z"
-    },
-    {
-      "id": "m178477218044276",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"V8 Alpha\" (?/10)",
-      "ref": "2026-07-23T01-48-48-122Z_midjourney-updates_V8_Alpha.json",
-      "at": "2026-07-23T02:03:00.442Z"
-    },
-    {
-      "id": "m178477218156836",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Web Updates\" — mi a baj: Accessible Australian-English explainer with friendly tone, clear structure including a hook, plain-language definitions, and a practical next step. No prohibited content or fabricated specifics detected.",
-      "ref": "2026-07-23T01-48-48-122Z_midjourney-updates_Web_Updates.json",
-      "at": "2026-07-23T02:03:01.568Z"
-    },
-    {
-      "id": "m17847721874665",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Grok 2 Image 1212 - xAI Docs\" (?/10)",
-      "ref": "2026-07-23T01-48-52-576Z_xai-news_Grok_2_Image_1212_-_xAI_Docs.json",
-      "at": "2026-07-23T02:03:07.466Z"
-    },
-    {
-      "id": "m178477219221886",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Qwen-Image-3.0: Rich Content, Authentic Details, Deep Knowledge - Qwen\" — mi a baj: American spelling: 'cosy' should be 'cosy' (correct) but 'specialised' not used; 'color' not present but no Australian spellings verified — appears neutral; Title is misleading: Source material is about Qwen-Image-3.0 model release, but article is a generic how-to with no mention of Qwen; Vag",
-      "ref": "2026-07-23T01-48-57-922Z_qwen-news_Qwen-Image-3_0__Rich_Content__Authentic_Details__D.json",
-      "at": "2026-07-23T02:03:12.218Z"
-    },
-    {
-      "id": "m178477219225282",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Qwen3.5: Towards Native Multimodal Agents - Qwen\" — mi a baj: NO_FRONTMATTER: A cikk nem YAML frontmatter-rel kezdődik",
-      "ref": "2026-07-23T01-48-57-922Z_qwen-news_Qwen3_5__Towards_Native_Multimodal_Agents_-_Qwen.json",
-      "at": "2026-07-23T02:03:12.252Z"
-    },
-    {
-      "id": "m178477219362448",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "need",
-      "text": "Új funkció-hír → kéne hozzá útmutató: \"How to Make AI Images with Stable Diffusion\"",
-      "ref": "how-to-make-ai-images-with-stable-diffusion",
-      "open": true,
-      "at": "2026-07-23T02:03:13.624Z"
-    },
-    {
-      "id": "m178477219400570",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "info",
-      "text": "A \"V8.1 is now the default model on Midjourney!\" hír a meglévő útmutatóra mutat: generate-unique-profile-pictures-for-social-media-with-midjo",
-      "ref": "generate-unique-profile-pictures-for-social-media-with-midjo",
-      "at": "2026-07-23T02:03:14.005Z"
-    },
-    {
-      "id": "m178477219598411",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "info",
-      "text": "A \"Grok 2 Image 1212 - xAI Docs\" hír a meglévő útmutatóra mutat: create-a-personalized-learning-plan-for-a-new-hobby-with-gro",
-      "ref": "create-a-personalized-learning-plan-for-a-new-hobby-with-gro",
-      "at": "2026-07-23T02:03:15.984Z"
-    },
-    {
-      "id": "m17847728311418",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Adding clear comments to your existing code to make it easier to understand with GitHub Copilot\" — mi a baj: Beginner clarity too low (5/10): steps are vague or could mislead a first-time user; Step 1: Installer description is inaccurate — VS Code website has a prominent download button, but the installer does not 'extract files and launch welcome screen' as described, and '",
-      "ref": "GUIDE_adding-clear-comments-to-your-existing-code-to-make-it-easie.json",
-      "at": "2026-07-23T02:13:51.142Z"
-    },
-    {
-      "id": "m178477287530090",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-07-23T02:14:35.300Z"
-    },
-    {
-      "id": "m178480156930238",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Creating a Security Agent with Cohere North and Wiz\" — mi a baj: NO_FRONTMATTER: A cikk nem YAML frontmatter-rel kezdődik",
-      "ref": "2026-07-23T10-11-43-793Z_cohere-blog_Creating_a_Security_Agent_with_Cohere_North_and_Wi.json",
-      "at": "2026-07-23T10:12:49.302Z"
-    },
     {
       "id": "m178480163238683",
       "from": "iro",
@@ -2637,6 +2510,132 @@
       "text": "6 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
       "ref": null,
       "at": "2026-07-26T20:22:00.720Z"
+    },
+    {
+      "id": "m178511720146638",
+      "from": "ceo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Főnöki újraindítás: \"Cohere Transcribe Arabic: Open-Source Speech AI\" — rewrite-explainer",
+      "ref": "2026-07-23T10-11-43-793Z_cohere-blog_Cohere_Transcribe_Arabic__Open-Source_Speech_AI.json",
+      "at": "2026-07-27T01:53:21.466Z"
+    },
+    {
+      "id": "m178511738522659",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Cohere Transcribe Arabic: Open-Source Speech AI\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Replace 'Cohere Transcribe Arabic' references with a verified Arabic-capable transcription tool (e.g., OpenAI Whisper via its official interface, or another named product whose dialect pi",
+      "ref": "2026-07-23T10-11-43-793Z_cohere-blog_Cohere_Transcribe_Arabic__Open-Source_Speech_AI.json",
+      "at": "2026-07-27T01:56:25.226Z"
+    },
+    {
+      "id": "m178511739820343",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Qwen3.6-35B-A3B: Agentic Coding Power, Now Open to All - Qwen\" — javítva: Model name mismatch: article recommends 'qwen2.5-coder' but original source title is 'Qwen3.6-35B-A3B' — these are different models, potentially older vs newer; Article doesn't confirm if Qwen3.6-35B-A3B is available via Ollama or explain the relationship between the two model names; újraküldöm.",
+      "ref": "2026-07-24T17-20-24-128Z_qwen-news_Qwen3_6-35B-A3B__Agentic_Coding_Power__Now_Open_to.json",
+      "at": "2026-07-27T01:56:38.203Z"
+    },
+    {
+      "id": "m178511757141828",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Forbes: D-ID Acquires Simpleshow To Lead $50 Billion Interactive AI Market\" — javítva: American spellings throughout: behaviour (not behavior), recognising (not recognizing), analysing (not analyzing), optimising (not optimizing); Search full article for all American spellings and replace with Australian English equivalents; újraküldöm.",
+      "ref": "2026-07-25T01-45-08-791Z_d-id-news_Forbes__D-ID_Acquires_Simpleshow_To_Lead__50_Billi.json",
+      "at": "2026-07-27T01:59:31.418Z"
+    },
+    {
+      "id": "m178511768902233",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Tech Crunch: D-ID acquires Berlin-based video startup simpleshow\" — javítva: Step 1 vague: lists tools D-ID/Synthesia/HeyGen but gives no recommendation for which to try first or where to start; Step 2-4 vague: says 'most platforms' let you pick/choose/type but doesn't say what screen you'll see, what button to click, or what happens next; újraküldöm.",
+      "ref": "2026-07-25T01-45-20-126Z_d-id-news_Tech_Crunch__D-ID_acquires_Berlin-based_video_star.json",
+      "at": "2026-07-27T02:01:29.022Z"
+    },
+    {
+      "id": "m178511771016517",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Advancing AI: Highlights from April\" — javítva: Article doesn't name or link to the source (Sony AI) anywhere, only says 'a research team' — readers can't verify; Vague sourcing: 'published in one of the world's most respected science journals' should name the actual journal; újraküldöm.",
+      "ref": "2026-07-25T01-45-20-126Z_sony-ai_Advancing_AI__Highlights_from_April.json",
+      "at": "2026-07-27T02:01:50.165Z"
+    },
+    {
+      "id": "m178511774536048",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Cohere Transcribe Arabic: Open-Source Speech AI\" (?/10)",
+      "ref": "2026-07-23T10-11-43-793Z_cohere-blog_Cohere_Transcribe_Arabic__Open-Source_Speech_AI.json",
+      "at": "2026-07-27T02:02:25.360Z"
+    },
+    {
+      "id": "m178511777792216",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Qwen3.6-35B-A3B: Agentic Coding Power, Now Open to All - Qwen\" — mi a baj: Invented model name: 'Qwen3.6-35B-A3B' does not appear to exist. Qwen's known open coding models include Qwen2.5-Coder (in various sizes) and Qwen3-Coder. The 'Qwen3.6-35B-A3B' naming is fabricated and is repeated multiple times throughout the article as if it were a real, recently released model.; Po",
+      "ref": "2026-07-24T17-20-24-128Z_qwen-news_Qwen3_6-35B-A3B__Agentic_Coding_Power__Now_Open_to.json",
+      "at": "2026-07-27T02:02:57.922Z"
+    },
+    {
+      "id": "m178511781891624",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Forbes: D-ID Acquires Simpleshow To Lead $50 Billion Interactive AI Market\" (?/10)",
+      "ref": "2026-07-25T01-45-08-791Z_d-id-news_Forbes__D-ID_Acquires_Simpleshow_To_Lead__50_Billi.json",
+      "at": "2026-07-27T02:03:38.916Z"
+    },
+    {
+      "id": "m178511787668324",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Tech Crunch: D-ID acquires Berlin-based video startup simpleshow\" (?/10)",
+      "ref": "2026-07-25T01-45-20-126Z_d-id-news_Tech_Crunch__D-ID_acquires_Berlin-based_video_star.json",
+      "at": "2026-07-27T02:04:36.683Z"
+    },
+    {
+      "id": "m178511792092191",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Advancing AI: Highlights from April\" (?/10)",
+      "ref": "2026-07-25T01-45-20-126Z_sony-ai_Advancing_AI__Highlights_from_April.json",
+      "at": "2026-07-27T02:05:20.921Z"
+    },
+    {
+      "id": "m178511828503427",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Translate Foreign Documents and Everyday Signs with Gemini\" — mi a baj: The article states the Gemini app icon is 'a four-pointed star in blue, pink and white' — Gemini's app icon is a four-pointed spark/star shape, but it is described as blue and white (gradient blue), not 'blue, pink and white'. This appears to be an invented detail.; The article mentions specific UI eleme",
+      "ref": "GUIDE_translate-foreign-documents-and-everyday-signs-with-gemini.json",
+      "at": "2026-07-27T02:11:25.034Z"
+    },
+    {
+      "id": "m178511878201612",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-07-27T02:19:42.016Z"
+    },
+    {
+      "id": "m178512057178033",
+      "from": "social",
+      "to": "team",
+      "kind": "info",
+      "text": "6 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
+      "ref": null,
+      "at": "2026-07-27T02:49:31.780Z"
     }
   ]
 }

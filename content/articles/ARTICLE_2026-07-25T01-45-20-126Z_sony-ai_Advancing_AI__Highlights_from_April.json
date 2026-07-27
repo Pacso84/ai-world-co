@@ -1,0 +1,63 @@
+{
+  "_meta": {
+    "written_at": "2026-07-27T02:01:50.164Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.004390944,
+    "original_draft": "2026-07-25T01-45-20-126Z_sony-ai_Advancing_AI__Highlights_from_April.json",
+    "source_id": "sony-ai",
+    "source_name": "Sony AI (hivatalos)",
+    "source_link": "https://ai.sony/blog/advancing-ai-highlights-from-april-2026",
+    "status": "published",
+    "rejected_at": "2026-07-25T01:52:23.693Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 791
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured explainer with clear hook, plain-language technical explanations, inclusive what-this-means-for-you section with three reader personas, and a useful wrap-up with a simple next step. Australian English correct, no clichés, no prohibited content, and claims are appropriately sourced from Sony AI and Science Robotics.",
+      "_aiCost": 0.001522854,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Strong explanatory piece with good structure, friendly tone, and clear examples that make physical AI accessible. Minor sourcing gaps (unnamed research team, unnamed journal) but nothing fabricated or misleading. Publishable as-is.",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-07-25T01-45-20-126Z_sony-ai_Advancing_AI__Highlights_from_April.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-07-27T02:05:20.921Z",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-07-27T02:05:47.552Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is about a research project (Sony AI table tennis robot), not a consumer product people can use today — there is no specific named tool or feature for ordinary people to access.",
+    "seo": {
+      "meta_description": "AI can now play table tennis at amateur level—this breakthrough in physical AI signals major changes coming for everyday life.",
+      "keywords": [
+        "AI table tennis robot",
+        "what AI can do now",
+        "AI learning physical skills",
+        "how AI affects everyday life",
+        "Sony AI table tennis",
+        "physical AI applications",
+        "AI robotics everyday use",
+        "robots learning sports"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more specific long-tail keywords like 'AI in sports training' or 'robot table tennis practice partner' to capture niche search intent",
+        "Include the year or '2024' in the meta to improve recency signals for time-sensitive AI news"
+      ],
+      "optimised_at": "2026-07-27T02:17:50.145Z"
+    },
+    "social": true,
+    "social_at": "2026-07-27T02:49:03.171Z"
+  },
+  "article_markdown": "---\ntitle: \"When AI Learns to Play Table Tennis: What It Means for Everyday Life\"\nsubtitle: \"Robots mastering physical skills is a bigger deal than it sounds. Here's why it matters to you, even if you never pick up a paddle.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"ai-robotics\", \"physical-ai\", \"future-of-ai\", \"everyday-tech\"]\n---\n\n# When AI Learns to Play Table Tennis: What It Means for Everyday Life\n\nPicture this: you're at your local sports centre, knocking a ball back and forth with a training partner. Except your partner isn't a person. It's a robotic arm that reads your spin, predicts your shots, and keeps the rally going for as long as you want to play. Sounds like science fiction? It's already happening, and it tells us something important about where AI is heading next.\n\n## A new kind of AI breakthrough\n\nSony AI, the artificial intelligence research division of Sony, recently published the results of a five-year project: an AI system that can play table tennis at a competitive amateur level. It adjusts to your skill, changes its playing style mid-rally, and can even match your pace so the exchange stays fun. The work was published in *Science Robotics*, a peer-reviewed journal (meaning other independent scientists checked the results before they were released), which is a strong sign of the quality involved.\n\nBut here's the thing: this isn't really about table tennis. It's about AI leaving the screen and entering the physical world.\n\n## Why physical AI is different\n\nMost AI you use today (chatbots, image tools, voice assistants) lives entirely inside a computer. It deals with text, pixels, and sound. It never has to worry about gravity, friction, or a ball moving at 80 kilometres an hour.\n\nTable tennis is a brilliant test case because it forces AI to handle all of these at once. To return a serve, the system has to:\n\n- **See** the ball clearly, often in messy, real-world lighting\n- **Predict** where the ball will land in a fraction of a second\n- **Move** a physical arm with the right speed, angle, and spin\n- **Adapt** on the fly when the human does something unexpected\n\nThe technical term for this kind of learning is **reinforcement learning**. In plain English, that means the AI learns by trying things, seeing what works, and trying again. Think of it like learning to ride a bike: you wobble, you fall, you adjust, and eventually it clicks. The AI does the same thing, just millions of times faster.\n\n## What this trend really means\n\nIf AI can master a fast, physical sport, the same techniques can be used in plenty of other places. Researchers around the world are working on physical AI for:\n\n- Sorting packages in warehouses\n- Helping nurses lift and move patients safely\n- Assisting with kitchen tasks at home\n- Supporting surgeons in operating theatres\n- Tidying and cleaning in everyday environments\n\nEach of these is messier, slower, and harder than writing an email. That's exactly why progress here takes years. But it also explains why companies keep investing in it. The next wave of useful AI won't just answer your questions. It'll actually do things alongside you.\n\n## What this means for you\n\n- **If you play sports or have a hobby you love:** AI training partners and coaches are on the way. Imagine a tireless practice buddy who adjusts to your level and never gets bored. Within a few years, you may see them in your local sports centre or gym.\n- **If your work involves physical tasks (retail, hospitality, healthcare, trades):** Physical AI is coming, but slowly. The safety and testing phases are long. Don't panic about being replaced, but do start exploring how AI tools can take the boring parts off your plate, like scheduling, admin, or answering common questions.\n- **If you're simply curious about AI:** This is a great reminder that AI is moving well beyond chatbots. Keep an eye on \"physical AI\" as a phrase. The breakthroughs that change daily life over the next decade will likely come from this space.\n\n## Wrap-up\n\nAn AI that can rally with you at a table tennis club sounds like a fun novelty, but it actually points to a much bigger shift: AI learning to exist in the real world, not just on a screen. The same techniques that return a serve could eventually help in kitchens, hospitals, warehouses, and homes. Today's takeaway? Don't judge AI's progress by chatbots alone. The next chapter is being written in robotics labs right now, and it will reach your daily life sooner than you might expect. A simple first step: try asking a chatbot today what \"physical AI\" means, and see where the conversation takes you.",
+  "original_title": "Advancing AI: Highlights from April"
+}

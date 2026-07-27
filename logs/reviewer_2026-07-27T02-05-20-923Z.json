@@ -1,0 +1,42 @@
+{
+  "started_at": "2026-07-27T02:01:50.305Z",
+  "total": 5,
+  "passed": 4,
+  "failed": 0,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.01203121,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-07-23T10-11-43-793Z_cohere-blog_Cohere_Transcribe_Arabic__Open-Source_Speech_AI.json",
+      "article": "ARTICLE_2026-07-23T10-11-43-793Z_cohere-blog_Cohere_Transcribe_Arabic__Open-Source_Speech_AI.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.001594944
+    },
+    {
+      "writer": "WRITER_2026-07-25T01-45-08-791Z_d-id-news_Forbes__D-ID_Acquires_Simpleshow_To_Lead__50_Billi.json",
+      "article": "ARTICLE_2026-07-25T01-45-08-791Z_d-id-news_Forbes__D-ID_Acquires_Simpleshow_To_Lead__50_Billi.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.00147595
+    },
+    {
+      "writer": "WRITER_2026-07-25T01-45-20-126Z_d-id-news_Tech_Crunch__D-ID_acquires_Berlin-based_video_star.json",
+      "article": "ARTICLE_2026-07-25T01-45-20-126Z_d-id-news_Tech_Crunch__D-ID_acquires_Berlin-based_video_star.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.001940814
+    },
+    {
+      "writer": "WRITER_2026-07-25T01-45-20-126Z_sony-ai_Advancing_AI__Highlights_from_April.json",
+      "article": "ARTICLE_2026-07-25T01-45-20-126Z_sony-ai_Advancing_AI__Highlights_from_April.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.001522854
+    }
+  ],
+  "truth_blocked": 1,
+  "finished_at": "2026-07-27T02:05:20.922Z",
+  "duration_seconds": 210.617
+}

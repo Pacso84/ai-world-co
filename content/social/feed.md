@@ -1,6 +1,117 @@
 # AI World Co. — közösségi posztok
 
-*Generálva: 2026-07-26T20:22:00.716Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+*Generálva: 2026-07-27T02:49:31.778Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## Cohere Transcribe Arabic: Open-Source Speech AI
+**🔗 https://aiworldhq.com/article/how-ai-turns-spoken-arabic-into-written-text-and-why-that-s-.html**
+
+**Facebook:**
+Had a phone call with family overseas and wish you could save the good parts? New AI tools can now turn spoken Arabic into written text — so nothing gets lost. https://aiworldhq.com/article/how-ai-turns-spoken-arabic-into-written-text-and-why-that-s-.html #Arabic #Productivity
+
+**Instagram:**
+Never forget a family story again.
+
+Now there's an AI that turns your Arabic phone calls into written text — so the details don't fade away.
+
+#ArabicTranscription #SpeechAI #Productivity #FamilyStories #AITools
+
+Link in bio.
+
+*Kép-ötlet: A smartphone on a table with speech bubbles containing Arabic script gradually transforming into neat Arabic text, symbolising voice becoming written words*
+
+---
+
+## Forbes: D-ID Acquires Simpleshow To Lead $50 Billion Interactive AI Market
+**🔗 https://aiworldhq.com/article/interactive-ai-avatars-what-they-are-and-how-you-might-use-t.html**
+
+**Facebook:**
+Ever talked to a video? Interactive AI avatars are making explainer videos and training content way more useful — you can actually ask them questions now. Here's what's changing. https://aiworldhq.com/article/interactive-ai-avatars-what-they-are-and-how-you-might-use-t.html #AIRevolution #TechForEveryone
+
+**Instagram:**
+AI just got way more personal 🤝
+
+Interactive AI avatars are taking over explainer videos — and now you can actually have a conversation with them. Pretty handy for learning new stuff.
+
+Link in bio.
+
+#ArtificialIntelligence #InteractiveAI #DigitalAvatars #FutureOfWork #TechForEveryone
+
+*Kép-ötlet: A friendly, simple cartoon digital person with a warm smile standing next to a computer screen, soft blue and orange colors, welcoming and non-threatening*
+
+---
+
+## Tech Crunch: D-ID acquires Berlin-based video startup simpleshow
+**🔗 https://aiworldhq.com/article/how-to-try-an-ai-video-avatar-on-your-phone-in-five-minutes.html**
+
+**Facebook:**
+Ever wished a friendly face could explain things to you instead of reading another boring article? Now you can create your own digital talking head in just five minutes — no tech skills required. https://aiworldhq.com/article/how-to-try-an-ai-video-avatar-on-your-phone-in-five-minutes.html #AI #HowTo
+
+**Instagram:**
+Your own AI video avatar in five minutes — no tech skills needed.
+
+Imagine a friendly face explaining anything, right on your phone. Try it this weekend!
+
+#AI #DigitalAvatar #TechForEveryone #AIVideo #Tutorial
+
+*Kép-ötlet: A person holding a smartphone with a friendly, simple AI avatar face on the screen, smiling.*
+
+---
+
+## Advancing AI: Highlights from April
+**🔗 https://aiworldhq.com/article/when-ai-learns-to-play-table-tennis-what-it-means-for-everyd.html**
+
+**Facebook:**
+You might think a robot that plays table tennis is just a cool party trick. But the real breakthrough is what this means for machines that can help with everyday tasks — from aged care to warehouse work. Worth a read. https://aiworldhq.com/article/when-ai-learns-to-play-table-tennis-what-it-means-for-everyd.html #AIRobotics #EverydayTech
+
+**Instagram:**
+Why robots learning ping-pong matters more than you think 🤖
+
+When machines master physical skills like this, it opens doors for helping in real-world situations — not just factories, but places like aged care homes and hospitals. This tech is closer to your daily life than you realise.
+
+#AIRobotics #FutureTech #EverydayAI #TechForGood #Innovation
+
+Link in bio.
+
+*Kép-ötlet: A clean, modern photo of a robotic arm positioned next to a ping-pong table in a well-lit gym, with a blurred ball in motion — suggesting movement and innovation without any text overlay.*
+
+---
+
+## Deep Art Creator: Bridging Imagination And Image
+**🔗 https://aiworldhq.com/article/how-to-use-ai-to-turn-your-ideas-into-images-even-if-you-can.html**
+
+**Facebook:**
+Ever had a perfect image in your head but no way to get it on paper? This simple guide shows how anyone can turn their ideas into pictures using AI — perfect for party themes, presentations or just fun. https://aiworldhq.com/article/how-to-use-ai-to-turn-your-ideas-into-images-even-if-you-can.html #AI #Creativity
+
+**Instagram:**
+You don't need to be an artist to create amazing images.
+
+Here's a simple step-by-step for turning your ideas into pictures using AI — plus the prompt trick that actually works.
+
+#AI #ImageGeneration #Creativity #TechForEveryone #PromptTips
+
+Link in bio.
+
+*Kép-ötlet: A simple illustration showing a lightbulb moment — a hand holding a smartphone displaying a colourful AI-generated image of a friendly astronaut on the moon, with the word 'Imagine' in soft, modern typography.*
+
+---
+
+## Drafting a polite complaint letter for a faulty product with AI help
+**🔗 https://aiworldhq.com/article/drafting-a-polite-complaint-letter-with-ai-help.html**
+
+**Facebook:**
+Got a faulty product and not sure how to complain without sounding angry? This guide shows you how to use AI to draft a polite, professional letter that actually gets results. https://aiworldhq.com/article/drafting-a-polite-complaint-letter-with-ai-help.html #EverydayAI #Productivity
+
+**Instagram:**
+Complaint letters don't have to be stressful.
+
+This guide shows you how to use AI to draft a polite, professional letter for faulty products — so you get results without the anger.
+
+#AI #EverydayTech #Productivity #WritingTips #CustomerService
+Link in bio.
+
+*Kép-ötlet: A person sitting calmly at a desk, writing a neat letter with a pen, looking resolved rather than frustrated.*
 
 ---
 

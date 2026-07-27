@@ -1,0 +1,35 @@
+{
+  "started_at": "2026-07-27T02:09:53.153Z",
+  "total": 4,
+  "passed": 3,
+  "failed": 0,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.015195984,
+  "by_article": [
+    {
+      "writer": "WRITER_GUIDE_how-to-build-a-simple-personal-budget-spreadsheet-using-any-.json",
+      "article": "ARTICLE_GUIDE_how-to-build-a-simple-personal-budget-spreadsheet-using-any-.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0027903
+    },
+    {
+      "writer": "WRITER_GUIDE_plan-your-weekly-meals-and-shopping-list-with-any-ai-assista.json",
+      "article": "ARTICLE_GUIDE_plan-your-weekly-meals-and-shopping-list-with-any-ai-assista.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.00300654
+    },
+    {
+      "writer": "WRITER_GUIDE_practice-for-a-job-interview-using-chatgpt-as-your-mock-inte.json",
+      "article": "ARTICLE_GUIDE_practice-for-a-job-interview-using-chatgpt-as-your-mock-inte.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.0021864
+    }
+  ],
+  "truth_blocked": 1,
+  "finished_at": "2026-07-27T02:11:25.089Z",
+  "duration_seconds": 91.936
+}

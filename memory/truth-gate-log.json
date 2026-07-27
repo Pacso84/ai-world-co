@@ -321,5 +321,26 @@
         "The tool 'Cohere Transcribe Arabic' is invented — Cohere does not have a product called 'Cohere Transcribe Arabic' or a transcription feature specifically branded for Arabic on their dashboard. The article describes specific UI flows (dialect picker, upload, transcribe button) attributed to Cohere that do not exist in this form."
       ]
     }
+  ],
+  "2026-07-27": [
+    {
+      "at": "2026-07-27T02:02:57.923Z",
+      "file": "WRITER_2026-07-24T17-20-24-128Z_qwen-news_Qwen3_6-35B-A3B__Agentic_Coding_Power__Now_Open_to.json",
+      "action": "block",
+      "reasons": [
+        "Invented model name: 'Qwen3.6-35B-A3B' does not appear to exist. Qwen's known open coding models include Qwen2.5-Coder (in various sizes) and Qwen3-Coder. The 'Qwen3.6-35B-A3B' naming is fabricated and is repeated multiple times throughout the article as if it were a real, recently released model.",
+        "Possibly wrong Ollama model tag: the article suggests `ollama run qwen2.5-coder:1.5b` as a smaller alternative, which should be verified. The base `qwen2.5-coder` tag on Ollama may not exist exactly as written (actual variants are typically size-suffixed like 1.5b, 7b, etc.). This is borderline — flagging as low-confidence."
+      ]
+    },
+    {
+      "at": "2026-07-27T02:11:25.035Z",
+      "file": "WRITER_GUIDE_translate-foreign-documents-and-everyday-signs-with-gemini.json",
+      "action": "block",
+      "reasons": [
+        "The article states the Gemini app icon is 'a four-pointed star in blue, pink and white' — Gemini's app icon is a four-pointed spark/star shape, but it is described as blue and white (gradient blue), not 'blue, pink and white'. This appears to be an invented detail.",
+        "The article mentions specific UI elements like a 'waveform icon' near the bottom-right for Gemini Live with specific button placement ('waveform icon or a Live button near the bottom-right') — Gemini Live exists but the exact icon description and placement may be fabricated.",
+        "The article references paid plans 'Google AI Pro / Advanced' as plan names without verification — these plan names may not exactly match Google's current offerings (e.g., Google AI Plus, Google AI Pro exists but 'Advanced' is unclear)."
+      ]
+    }
   ]
 }
