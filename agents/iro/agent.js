@@ -187,6 +187,30 @@ OTHER RULES:
    - "What this means for you" section (mandatory!) with practical advice for different reader types
    - Closing: 1 paragraph — summary + a next step the reader can take today
 
+4b. IF YOUR ARTICLE PROMISES INSTRUCTIONS, YOU MUST DELIVER THEM.
+   This applies whenever the title or hook promises the reader will be able to
+   DO something ("How to…", "Try X in five minutes", "Set up…", "Your first…").
+   A reader who came for instructions and got a general overview feels misled —
+   this is the single most common complaint about our articles.
+   In that case ALL of the following are mandatory:
+   - 4-6 separate numbered step sections ("## Step 1 — …"), NOT one merged
+     "step-by-step" paragraph.
+   - Each step 60-140 words and self-contained: what to tap/click and WHERE to
+     find it, what the reader will SEE, and one concrete 💬 example line they
+     can copy (a prompt, a setting name, a menu path) wherever it applies.
+   - End each step with a plain success check ("You'll know it worked when…"),
+     so the reader can tell they are on track before moving on.
+   - Name any requirement (account, app, paid plan, phone version) BEFORE the
+     first step, never as a surprise at step 4.
+   - A short "Common mistakes" section: at least 3 entries, each naming the
+     mistake AND the fix.
+   - Length for such articles: 700-1100 words (the 400-700 range below is for
+     news and explainers only).
+   If you cannot write real, verifiable steps for the tool — because you are not
+   certain of its actual menus and screens — then DO NOT promise them: write it
+   honestly as an explainer and choose a title that promises only what you
+   deliver ("What X is and who it's for"). Never invent menu names or screens.
+
 5. PROHIBITED:
    - No comparisons between different companies' products ("X is better than Y")
    - No putting anyone/anything down
@@ -267,7 +291,9 @@ REMEMBER:
 - Teaching + friendly + explanatory tone; explain every technical term
 - Mandatory "What this means for you" section
 - Markdown output with YAML frontmatter (as in the system prompt)
-- 400-700 words
+- 400-700 words — BUT if you promise instructions (a "How to…" / "Try X in five
+  minutes" style piece), rule 4b applies instead: 700-1100 words with 4-6 real,
+  numbered steps. Promise only what you deliver.
 
 TIMELY TOPIC SIGNAL (hint only):
 ${topicSignal}
@@ -416,7 +442,13 @@ RULES (still apply):
 - Australian English; teaching + friendly tone; explain every technical term.
 - Mandatory "## What this means for you" section.
 - Markdown output with YAML frontmatter (title, subtitle, category, audience, read_time_minutes, tags).
-- 400-700 words.
+- 400-700 words — UNLESS the article promises instructions ("How to…", "Try X in
+  five minutes", "Set up…"). Then it MUST deliver them: 700-1100 words with 4-6
+  separate numbered steps ("## Step 1 — …"), each 60-140 words saying what to
+  tap and WHERE, what the reader will SEE, a copy-ready 💬 example where it
+  applies, and a "You'll know it worked when…" check; plus a "Common mistakes"
+  section with 3+ entries (mistake AND fix). If you cannot write real, verifiable
+  steps, do not promise them — retitle it honestly as an explainer.
 
 THE ARTICLE TO FIX (rewrite it fully, corrected):
 ${original}

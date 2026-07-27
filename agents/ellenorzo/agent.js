@@ -154,6 +154,31 @@ function runAutoCheck(articleMarkdown, type) {
     issues.push(`TOO_LONG: ${wordCount} szó — talán szét kéne bontani`);
   }
 
+  // ===================================================================
+  // ÍGÉRET-FEDEZET (2026-07-27, user-lelet): "Így próbáld ki az AI-videó-
+  // avatárt a telefonodon öt perc alatt" — a user elolvasta és csak
+  // nagyvonalakban írt róla. Kiderült: HÍRKÉNT íródott (d-id-news forrás),
+  // ezért a 700-1200 szavas útmutató-szabály NEM vonatkozott rá — 657 szó,
+  // egyetlen összevont "step-by-step" bekezdés, 0 másolható példa.
+  // 107 ilyen hírcikkünk volt a 299-ből (36%): a cím utasítást ígér, a
+  // szöveg áttekintést ad. A típus szerinti kapu nem elég — a CÍM ÍGÉRETÉT
+  // kell fedezni, bármelyik agent írta.
+  // ===================================================================
+  const titleLine = (articleMarkdown.match(/^title:\s*"?([^"\n]+)/m) || [])[1] || '';
+  const promisesSteps = /^(how to|your first|setting up|set up|step-by-step)\b/i.test(titleLine.trim())
+    || /\bin (five|5|four|4|three|3|ten|10) minutes\b/i.test(titleLine)
+    || /\bstep[- ]by[- ]step\b/i.test(titleLine);
+  if (promisesSteps) {
+    // Lépés-szakaszok: "## Step 3 — …" vagy "## 3. …" vagy "### Step …"
+    const stepSections = (articleMarkdown.match(/^#{2,3}\s+(step\s*\d|\d+[.)]\s)/gim) || []).length;
+    if (wordCount < 600) {
+      issues.push(`HOWTO_TOO_THIN: A cím utasítást ígér ("${titleLine.slice(0, 50)}"), de csak ${wordCount} szó — az ilyen cikk 700-1100 szó (iro 4b szabály).`);
+    }
+    if (stepSections < 3) {
+      issues.push(`HOWTO_NO_STEPS: A cím utasítást ígér, de csak ${stepSections} számozott lépés-szakasz van (kell 4-6, "## Step 1 — …" formában), nem egyetlen összevont bekezdés.`);
+    }
+  }
+
   // Amerikai angol szavak detektálása (popular ones)
   const americanWords = [
     { am: /\bcolor\b/g, au: 'colour' },
