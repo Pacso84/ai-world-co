@@ -712,6 +712,9 @@ let LP = '';            // útvonal-prefix: '' (en) vagy '/hu' stb.
 let T = UI.en;          // aktuális UI-szótár
 function tr(k) { return (T && T[k] != null) ? T[k] : (UI.en[k] != null ? UI.en[k] : ''); }
 
+// Átnevezett cikkek: EREDETI slug → MOSTANI slug (301-hez a _redirects-be)
+const RENAMED_SLUGS = new Map();
+
 function langPrefix(l) { return l === 'en' ? '' : `/${l}`; }
 
 // ===================================================================
@@ -879,7 +882,23 @@ function loadArticles() {
     try {
       const data = JSON.parse(readFileSync(join(ARTICLES_DIR, file), 'utf-8'));
       const { meta, body } = parseFrontmatter(data.article_markdown);
-      const slug = slugify(meta.title || data.original_title || file);
+      // ===================================================================
+      // RÖGZÍTETT SLUG (2026-07-27) — a megjelent URL ÖRÖKRE ugyanaz marad.
+      // ===================================================================
+      // Eddig az URL a CÍMBŐL készült, így valahányszor egy cikk címét
+      // átdolgoztuk, az oldal ÁTKÖLTÖZÖTT, a régi cím pedig 404 lett — a
+      // Google által már indexelt URL-lel együtt. A Search Console pontosan
+      // ilyeneket jelentett (pl. /hu/article/automate-basic-email-replies-in-
+      // outlook-with-meta-ai: a cikk ÉL, csak új címe lett). 232 útmutatóból
+      // 197-nek tért el a mostani címéből képzett URL az eredetitől.
+      // Mostantól a _meta.slug az igazság: ha egyszer megjelent, marad.
+      // (A régi címekről a _redirects állít be 301-et — lásd lentebb.)
+      const slug = data._meta?.slug || slugify(meta.title || data.original_title || file);
+      // Az EREDETI (fájlnévbe fagyott) slug: erről kell 301-et adni, ha eltér.
+      const bornSlug = file.replace(/^ARTICLE_(GUIDE_)?/, '').replace(/\.json$/, '');
+      if (bornSlug && bornSlug !== slug && /^[a-z0-9-]+$/.test(bornSlug)) {
+        RENAMED_SLUGS.set(bornSlug, slug);
+      }
 
       // Van valódi kép a slug-hoz? (Designer agent generálta)
       const imgFile = ['jpg', 'png', 'jpeg', 'webp'].map(ext => `${slug}.${ext}`)
@@ -2546,7 +2565,43 @@ Original content by ${SITE.name} — written and quality-checked by an autonomou
   // + A Google-igazoló fájlt a "szép URL" 308-as átirányítása ALÓL kivesszük
   //   (200-as rewrite önmagára): a Search Console pontos 200-at vár.
   const verifyRule = VERIFY.googleFile ? `/${VERIFY.googleFile} /google-verify.txt 200\n` : '';
-  writeFileSync(join(OUT_DIR, '_redirects'), `${verifyRule}https://aiworldco.pages.dev/* ${SITE.url}/:splat 301\n`, 'utf-8');
+
+  // ===================================================================
+  // ÁTNEVEZETT CIKKEK 301-e (2026-07-27) — a Search Console 404-jeinek oka.
+  // ===================================================================
+  // Az URL korábban a CÍMBŐL készült, ezért egy átdolgozás (új cím) némán
+  // ELKÖLTÖZTETTE az oldalt, és a Google által már indexelt régi cím 404 lett.
+  // Példa a GSC-ből: /hu/article/automate-basic-email-replies-in-outlook-with-
+  // meta-ai — a cikk ÉL, csak "Turn a short note into a polished email reply…"
+  // címmel. A 404 nem csak elveszett látogató: elveszett rangsor-erő is.
+  // Ezért minden EREDETI (fájlnévbe fagyott) slugról 301-et adunk a mostanira,
+  // mind az 5 nyelven. A .html-es alakot a Cloudflare előbb 308-cal levágja,
+  // úgyhogy elég a kiterjesztés nélküli szabály.
+  // (Cloudflare Pages korlát: 2100 statikus szabály — ezért figyeljük a számot.)
+  // MINDKÉT alakra kell szabály: a Cloudflare csak LÉTEZŐ fájlnál vágja le a
+  // .html-t 308-cal — egy megszűnt címnél nem, az simán 404. A Google pedig
+  // mindkét formát indexelte (a GSC-példák közt .html-es és anélküli is van).
+  const redirectLines = [];
+  for (const [from, to] of RENAMED_SLUGS) {
+    for (const l of SITE_LANGS) {
+      const lp = langPrefix(l);
+      redirectLines.push(`${lp}/article/${from} ${lp}/article/${to} 301`);
+      redirectLines.push(`${lp}/article/${from}.html ${lp}/article/${to} 301`);
+    }
+  }
+  // Cloudflare Pages: 2100 statikus szabály a plafon. A slug mostantól RÖGZÍTETT
+  // (_meta.slug), tehát ÚJ átnevezés nem keletkezik — ez a lista nem nő tovább.
+  // Biztonsági vágás mégis kell: inkább maradjon ki néhány régi átirányítás,
+  // mint hogy az EGÉSZ _redirects érvénytelen legyen (a pages.dev-szabállyal
+  // együtt, ami a domain-egyesítést végzi).
+  const CAP = 2000;
+  if (redirectLines.length > CAP) {
+    console.log(`   ⚠️  ${redirectLines.length} átirányítás > ${CAP} — a lista vágva (Cloudflare-korlát 2100).`);
+    redirectLines.length = CAP;
+  }
+  const renameRules = redirectLines.length ? redirectLines.join('\n') + '\n' : '';
+  if (RENAMED_SLUGS.size) console.log(`✅ ${RENAMED_SLUGS.size} átnevezett cikk 301-e (${redirectLines.length} szabály, 5 nyelv)`);
+  writeFileSync(join(OUT_DIR, '_redirects'), `${verifyRule}${renameRules}https://aiworldco.pages.dev/* ${SITE.url}/:splat 301\n`, 'utf-8');
   console.log('✅ _redirects generálva (pages.dev → saját domain, 301)');
 
   // _headers — biztonsági fejlécek (CF Security Center javaslat, 2026-07-11):
