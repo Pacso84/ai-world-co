@@ -281,49 +281,49 @@ for (const l of SITE_LANGS) Object.assign(UI[l], UI_SUPPORT[l] || {});
 // ===================================================================
 const CS_FAQ = {
   en: [
-    { q: 'What is AI World HQ?', a: 'An automated, independent news + guides site that helps everyday people use AI. Content is produced by an AI newsroom with honesty checks, in 5 languages.', p: '/about.html' },
-    { q: 'How do I report a mistake in an article?', a: 'Use the 👍/👎 buttons under the article, or send us a message — genuine errors get corrected and republished.', p: '/about.html' },
-    { q: 'Is the site free? How can I support it?', a: 'Everything is free. If you want, you can leave a voluntary tip on the Support page.', p: '/support.html' },
-    { q: 'Where do I find beginner guides?', a: 'The Start page lists the first 5 guides to read, and the Guides page has all of them by topic.', p: '/start.html' },
-    { q: 'What do AI words like prompt or token mean?', a: 'Our AI glossary explains the most common terms in plain language.', p: '/glossary.html' },
+    { q: 'What is AI World HQ?', a: 'An automated, independent news + guides site that helps everyday people use AI. Content is produced by an AI newsroom with honesty checks, in 5 languages.', p: '/about' },
+    { q: 'How do I report a mistake in an article?', a: 'Use the 👍/👎 buttons under the article, or send us a message — genuine errors get corrected and republished.', p: '/about' },
+    { q: 'Is the site free? How can I support it?', a: 'Everything is free. If you want, you can leave a voluntary tip on the Support page.', p: '/support' },
+    { q: 'Where do I find beginner guides?', a: 'The Start page lists the first 5 guides to read, and the Guides page has all of them by topic.', p: '/start' },
+    { q: 'What do AI words like prompt or token mean?', a: 'Our AI glossary explains the most common terms in plain language.', p: '/glossary' },
     { q: 'Is there an RSS feed?', a: 'Yes — every language has its own feed.', p: '/feed.xml' },
-    { q: 'How do I contact you / reach a human?', a: 'Use the message form at the bottom of the About page, or write to support@aiworldhq.com — a human reads every message.', p: '/about.html#contact' }
+    { q: 'How do I contact you / reach a human?', a: 'Use the message form at the bottom of the About page, or write to support@aiworldhq.com — a human reads every message.', p: '/about#contact' }
   ],
   hu: [
-    { q: 'Mi az AI World HQ?', a: 'Automata, független hír- és útmutató-oldal, ami a hétköznapi AI-használatban segít. A tartalmat AI-szerkesztőség készíti őszinteség-ellenőrzéssel, 5 nyelven.', p: '/about.html' },
-    { q: 'Hogyan jelezhetek hibát egy cikkben?', a: 'A cikk alatti 👍/👎 gombokkal, vagy írj nekünk — a valódi hibákat javítjuk és újra kiadjuk.', p: '/about.html' },
-    { q: 'Ingyenes az oldal? Hogyan támogathatom?', a: 'Minden ingyenes. Ha szeretnéd, a Támogatás oldalon önkéntes borravalót adhatsz.', p: '/support.html' },
-    { q: 'Hol találom a kezdő útmutatókat?', a: 'A Kezdés oldal az első 5 ajánlott útmutatót mutatja, az Útmutatók oldalon pedig az összes megvan téma szerint.', p: '/start.html' },
-    { q: 'Mit jelentenek az AI-szavak, pl. prompt vagy token?', a: 'Az AI-kisszótárunk közérthetően elmagyarázza a leggyakoribb fogalmakat.', p: '/glossary.html' },
+    { q: 'Mi az AI World HQ?', a: 'Automata, független hír- és útmutató-oldal, ami a hétköznapi AI-használatban segít. A tartalmat AI-szerkesztőség készíti őszinteség-ellenőrzéssel, 5 nyelven.', p: '/about' },
+    { q: 'Hogyan jelezhetek hibát egy cikkben?', a: 'A cikk alatti 👍/👎 gombokkal, vagy írj nekünk — a valódi hibákat javítjuk és újra kiadjuk.', p: '/about' },
+    { q: 'Ingyenes az oldal? Hogyan támogathatom?', a: 'Minden ingyenes. Ha szeretnéd, a Támogatás oldalon önkéntes borravalót adhatsz.', p: '/support' },
+    { q: 'Hol találom a kezdő útmutatókat?', a: 'A Kezdés oldal az első 5 ajánlott útmutatót mutatja, az Útmutatók oldalon pedig az összes megvan téma szerint.', p: '/start' },
+    { q: 'Mit jelentenek az AI-szavak, pl. prompt vagy token?', a: 'Az AI-kisszótárunk közérthetően elmagyarázza a leggyakoribb fogalmakat.', p: '/glossary' },
     { q: 'Van RSS?', a: 'Igen — minden nyelvnek saját feedje van.', p: '/feed.xml' },
-    { q: 'Hogyan tudlak elérni titeket / élő embert?', a: 'A Rólunk oldal alján lévő üzenet-űrlappal, vagy írj a support@aiworldhq.com címre — minden üzenetet elolvas egy ember.', p: '/about.html#contact' }
+    { q: 'Hogyan tudlak elérni titeket / élő embert?', a: 'A Rólunk oldal alján lévő üzenet-űrlappal, vagy írj a support@aiworldhq.com címre — minden üzenetet elolvas egy ember.', p: '/about#contact' }
   ],
   es: [
-    { q: '¿Qué es AI World HQ?', a: 'Un sitio automático e independiente de noticias y guías que te ayuda a usar la IA en el día a día. El contenido lo produce una redacción de IA con controles de honestidad, en 5 idiomas.', p: '/about.html' },
-    { q: '¿Cómo aviso de un error en un artículo?', a: 'Con los botones 👍/👎 bajo el artículo, o escríbenos — los errores reales se corrigen y se vuelven a publicar.', p: '/about.html' },
-    { q: '¿El sitio es gratis? ¿Cómo puedo apoyarlo?', a: 'Todo es gratis. Si quieres, puedes dejar una propina voluntaria en la página de Apoyo.', p: '/support.html' },
-    { q: '¿Dónde están las guías para principiantes?', a: 'La página Empezar muestra las 5 primeras guías recomendadas, y en Guías están todas por tema.', p: '/start.html' },
-    { q: '¿Qué significan palabras como prompt o token?', a: 'Nuestro pequeño glosario de IA explica los términos más comunes en lenguaje claro.', p: '/glossary.html' },
+    { q: '¿Qué es AI World HQ?', a: 'Un sitio automático e independiente de noticias y guías que te ayuda a usar la IA en el día a día. El contenido lo produce una redacción de IA con controles de honestidad, en 5 idiomas.', p: '/about' },
+    { q: '¿Cómo aviso de un error en un artículo?', a: 'Con los botones 👍/👎 bajo el artículo, o escríbenos — los errores reales se corrigen y se vuelven a publicar.', p: '/about' },
+    { q: '¿El sitio es gratis? ¿Cómo puedo apoyarlo?', a: 'Todo es gratis. Si quieres, puedes dejar una propina voluntaria en la página de Apoyo.', p: '/support' },
+    { q: '¿Dónde están las guías para principiantes?', a: 'La página Empezar muestra las 5 primeras guías recomendadas, y en Guías están todas por tema.', p: '/start' },
+    { q: '¿Qué significan palabras como prompt o token?', a: 'Nuestro pequeño glosario de IA explica los términos más comunes en lenguaje claro.', p: '/glossary' },
     { q: '¿Hay RSS?', a: 'Sí — cada idioma tiene su propio feed.', p: '/feed.xml' },
-    { q: '¿Cómo os contacto / hablo con una persona?', a: 'Usa el formulario al final de la página Sobre nosotros, o escribe a support@aiworldhq.com — una persona lee todos los mensajes.', p: '/about.html#contact' }
+    { q: '¿Cómo os contacto / hablo con una persona?', a: 'Usa el formulario al final de la página Sobre nosotros, o escribe a support@aiworldhq.com — una persona lee todos los mensajes.', p: '/about#contact' }
   ],
   de: [
-    { q: 'Was ist AI World HQ?', a: 'Eine automatische, unabhängige News- und Anleitungsseite, die dir hilft, KI im Alltag zu nutzen. Die Inhalte erstellt eine KI-Redaktion mit Ehrlichkeits-Checks, in 5 Sprachen.', p: '/about.html' },
-    { q: 'Wie melde ich einen Fehler in einem Artikel?', a: 'Mit den 👍/👎-Buttons unter dem Artikel, oder schreib uns — echte Fehler werden korrigiert und neu veröffentlicht.', p: '/about.html' },
-    { q: 'Ist die Seite kostenlos? Wie kann ich sie unterstützen?', a: 'Alles ist kostenlos. Wenn du magst, kannst du auf der Unterstützen-Seite ein freiwilliges Trinkgeld geben.', p: '/support.html' },
-    { q: 'Wo finde ich Anleitungen für Einsteiger?', a: 'Die Start-Seite zeigt die ersten 5 empfohlenen Anleitungen, auf der Anleitungen-Seite findest du alle nach Thema.', p: '/start.html' },
-    { q: 'Was bedeuten KI-Wörter wie Prompt oder Token?', a: 'Unser kleines KI-Glossar erklärt die häufigsten Begriffe verständlich.', p: '/glossary.html' },
+    { q: 'Was ist AI World HQ?', a: 'Eine automatische, unabhängige News- und Anleitungsseite, die dir hilft, KI im Alltag zu nutzen. Die Inhalte erstellt eine KI-Redaktion mit Ehrlichkeits-Checks, in 5 Sprachen.', p: '/about' },
+    { q: 'Wie melde ich einen Fehler in einem Artikel?', a: 'Mit den 👍/👎-Buttons unter dem Artikel, oder schreib uns — echte Fehler werden korrigiert und neu veröffentlicht.', p: '/about' },
+    { q: 'Ist die Seite kostenlos? Wie kann ich sie unterstützen?', a: 'Alles ist kostenlos. Wenn du magst, kannst du auf der Unterstützen-Seite ein freiwilliges Trinkgeld geben.', p: '/support' },
+    { q: 'Wo finde ich Anleitungen für Einsteiger?', a: 'Die Start-Seite zeigt die ersten 5 empfohlenen Anleitungen, auf der Anleitungen-Seite findest du alle nach Thema.', p: '/start' },
+    { q: 'Was bedeuten KI-Wörter wie Prompt oder Token?', a: 'Unser kleines KI-Glossar erklärt die häufigsten Begriffe verständlich.', p: '/glossary' },
     { q: 'Gibt es RSS?', a: 'Ja — jede Sprache hat ihren eigenen Feed.', p: '/feed.xml' },
-    { q: 'Wie erreiche ich euch / einen Menschen?', a: 'Nutze das Nachrichten-Formular unten auf der Über-uns-Seite, oder schreib an support@aiworldhq.com — jede Nachricht liest ein Mensch.', p: '/about.html#contact' }
+    { q: 'Wie erreiche ich euch / einen Menschen?', a: 'Nutze das Nachrichten-Formular unten auf der Über-uns-Seite, oder schreib an support@aiworldhq.com — jede Nachricht liest ein Mensch.', p: '/about#contact' }
   ],
   fr: [
-    { q: 'Qu’est-ce que AI World HQ ?', a: 'Un site automatique et indépendant d’actus et de guides qui vous aide à utiliser l’IA au quotidien. Le contenu est produit par une rédaction IA avec des contrôles d’honnêteté, en 5 langues.', p: '/about.html' },
-    { q: 'Comment signaler une erreur dans un article ?', a: 'Avec les boutons 👍/👎 sous l’article, ou écrivez-nous — les vraies erreurs sont corrigées et republiées.', p: '/about.html' },
-    { q: 'Le site est-il gratuit ? Comment le soutenir ?', a: 'Tout est gratuit. Si vous le souhaitez, vous pouvez laisser un pourboire volontaire sur la page Soutenir.', p: '/support.html' },
-    { q: 'Où trouver les guides pour débutants ?', a: 'La page Commencer présente les 5 premiers guides recommandés, et la page Guides les regroupe tous par thème.', p: '/start.html' },
-    { q: 'Que signifient les mots comme prompt ou token ?', a: 'Notre petit glossaire IA explique les termes les plus courants en langage clair.', p: '/glossary.html' },
+    { q: 'Qu’est-ce que AI World HQ ?', a: 'Un site automatique et indépendant d’actus et de guides qui vous aide à utiliser l’IA au quotidien. Le contenu est produit par une rédaction IA avec des contrôles d’honnêteté, en 5 langues.', p: '/about' },
+    { q: 'Comment signaler une erreur dans un article ?', a: 'Avec les boutons 👍/👎 sous l’article, ou écrivez-nous — les vraies erreurs sont corrigées et republiées.', p: '/about' },
+    { q: 'Le site est-il gratuit ? Comment le soutenir ?', a: 'Tout est gratuit. Si vous le souhaitez, vous pouvez laisser un pourboire volontaire sur la page Soutenir.', p: '/support' },
+    { q: 'Où trouver les guides pour débutants ?', a: 'La page Commencer présente les 5 premiers guides recommandés, et la page Guides les regroupe tous par thème.', p: '/start' },
+    { q: 'Que signifient les mots comme prompt ou token ?', a: 'Notre petit glossaire IA explique les termes les plus courants en langage clair.', p: '/glossary' },
     { q: 'Y a-t-il un flux RSS ?', a: 'Oui — chaque langue a son propre flux.', p: '/feed.xml' },
-    { q: 'Comment vous contacter / parler à un humain ?', a: 'Utilisez le formulaire en bas de la page À propos, ou écrivez à support@aiworldhq.com — un humain lit chaque message.', p: '/about.html#contact' }
+    { q: 'Comment vous contacter / parler à un humain ?', a: 'Utilisez le formulaire en bas de la page À propos, ou écrivez à support@aiworldhq.com — un humain lit chaque message.', p: '/about#contact' }
   ]
 };
 
@@ -714,6 +714,30 @@ function tr(k) { return (T && T[k] != null) ? T[k] : (UI.en[k] != null ? UI.en[k
 
 function langPrefix(l) { return l === 'en' ? '' : `/${l}`; }
 
+// ===================================================================
+// KANONIKUS ÚTVONAL (2026-07-27) — a .html NÉLKÜLI alak az igazi cím.
+// ===================================================================
+// A Cloudflare Pages MAGÁTÓL 308-cal átirányítja a /valami.html címet a
+// /valami alakra. Mi viszont a canonicalban, mind a 6 hreflangben, az
+// og:url-ben ÉS a sitemapban a .html-es alakot hirdettük — vagyis azt
+// állítottuk a Google-nak, hogy a végleges cím egy ÁTIRÁNYÍTÁS. A Search
+// Console pontosan ezt jelentette vissza: 314 "átirányítást tartalmazó
+// oldal", 109 "alternatív oldal kanonikus címkével", és nagyban ez rontja
+// az indexelési bizalmat is (1546 "feltérképezve, nincs indexelve").
+// Ez a függvény adja a VALÓDI, 200-at adó címet; a fájlok a lemezen
+// továbbra is .html végűek maradnak (azokat a Cloudflare szolgálja ki).
+//   'index.html'            → ''            (gyökér)
+//   'guides.html'           → '/guides'
+//   'article/foo-bar.html'  → '/article/foo-bar'
+// A visszatérési érték MINDIG per-jellel kezdődik (vagy üres), így
+// `${SITE.url}${langPrefix(l)}${canonicalPath(p)}` mindig ép URL-t ad.
+// ===================================================================
+function canonicalPath(pagePath) {
+  const p = String(pagePath || '').replace(/^\/+/, '');
+  if (p === '' || p === 'index.html') return '/';
+  return '/' + p.replace(/\.html$/, '');
+}
+
 // Egy cikk fordítás-cache-e (content/translations/<ARTICLE...>.json = { hu:"md", ... })
 function loadTranslation(file) {
   try { return JSON.parse(readFileSync(join(TRANS_DIR, file), 'utf-8')); } catch { return {}; }
@@ -969,7 +993,7 @@ function relatedBox(a) {
   if (!rel.length) return '';
   const items = rel.map(r => {
     const lr = localizeArticle(r, LANG);
-    return `<a class="rel__item" href="${r.slug}.html">
+    return `<a class="rel__item" href="${r.slug}">
       <span class="rel__ico">${r.isGuide ? '📘' : '📰'}</span>
       <span><span class="rel__t">${escapeHtml(lr.title)}</span>
       ${lr.subtitle ? `<span class="rel__s">${escapeHtml(lr.subtitle)}</span>` : ''}</span></a>`;
@@ -984,14 +1008,14 @@ function xrefBox(a) {
     if (!news) return '';
     const locNews = localizeArticle(news, LANG);
     return `<aside class="xref xref--news"><span class="xref__lbl">📰 ${tr('xrefNews')}</span>
-      <a class="xref__link" href="${news.slug}.html"><span class="xref__t">${escapeHtml(locNews.title)}</span><span class="xref__arrow">→</span></a></aside>`;
+      <a class="xref__link" href="${news.slug}"><span class="xref__t">${escapeHtml(locNews.title)}</span><span class="xref__arrow">→</span></a></aside>`;
   }
   // hír → kapcsolódó útmutató (fordított címmel)
   const guide = a.relatedGuideTopic ? XREF.guideByTopic.get(a.relatedGuideTopic) : null;
   if (!guide) return '';
   const locGuide = localizeArticle(guide, LANG);
   return `<aside class="xref xref--guide"><span class="xref__lbl">📘 ${tr('xrefGuide')}</span>
-    <a class="xref__link" href="${guide.slug}.html"><span class="xref__t">${escapeHtml(locGuide.title)}</span><span class="xref__arrow">→</span></a></aside>`;
+    <a class="xref__link" href="${guide.slug}"><span class="xref__t">${escapeHtml(locGuide.title)}</span><span class="xref__arrow">→</span></a></aside>`;
 }
 
 // ===================================================================
@@ -1001,22 +1025,23 @@ function xrefBox(a) {
 function pageShell({ title, description, bodyContent, isArticle = false, noIntro = false, ogImage = '', keywords = '', jsonld = null, pagePath = '', articleMeta = null }) {
   // ABSZOLÚT útvonalak (gyökértől) — így a /hu/article/... mélységnél is jók.
   const homePath = `${LP}/`;
-  const supportPath = `${LP}/support.html`;
-  const guidesPath = `${LP}/guides.html`;
-  const startPath = `${LP}/start.html`;
-  const toolsPath = `${LP}/tools.html`;
-  const glossaryPath = `${LP}/glossary.html`;
-  const aboutPath = `${LP}/about.html`;
-  const archivePath = `${LP}/archive.html`;
+  const supportPath = `${LP}/support`;
+  const guidesPath = `${LP}/guides`;
+  const startPath = `${LP}/start`;
+  const toolsPath = `${LP}/tools`;
+  const glossaryPath = `${LP}/glossary`;
+  const aboutPath = `${LP}/about`;
+  const archivePath = `${LP}/archive`;
   const year = new Date().getFullYear();
-  const url = `${SITE.url}${LP}/${pagePath}`;
+  const cp = canonicalPath(pagePath);
+  const url = `${SITE.url}${LP}${cp}`;
   // Tartalék megosztás-kép: JPG kell (az SVG-t a Facebook nem jeleníti meg!)
   const img = ogImage || (SITE.url + '/assets/og-default.jpg');
   // hreflang + nyelvváltó (minden oldalnak ugyanaz a pagePath-ja minden nyelven)
-  const hreflang = SITE_LANGS.map(l => `<link rel="alternate" hreflang="${l}" href="${SITE.url}${langPrefix(l)}/${pagePath}">`).join('\n  ')
-    + `\n  <link rel="alternate" hreflang="x-default" href="${SITE.url}/${pagePath}">`;
+  const hreflang = SITE_LANGS.map(l => `<link rel="alternate" hreflang="${l}" href="${SITE.url}${langPrefix(l)}${cp}">`).join('\n  ')
+    + `\n  <link rel="alternate" hreflang="x-default" href="${SITE.url}${cp}">`;
   const langSwitcher = `<select class="lang-select" onchange="if(this.value)location.href=this.value" aria-label="${T.language}" style="background-color:var(--card);color:var(--ink);border:1px solid var(--line-strong);border-radius:8px;font:inherit;font-size:13px;padding:7px 6px;cursor:pointer;color-scheme:light dark">
-        ${SITE_LANGS.map(l => `<option value="${SITE.url}${langPrefix(l)}/${pagePath}" ${l === LANG ? 'selected' : ''} style="background-color:var(--card);color:var(--ink)">${LANG_NAME[l]}</option>`).join('')}
+        ${SITE_LANGS.map(l => `<option value="${SITE.url}${langPrefix(l)}${cp}" ${l === LANG ? 'selected' : ''} style="background-color:var(--card);color:var(--ink)">${LANG_NAME[l]}</option>`).join('')}
       </select>`;
   // OpenGraph cikk-meták (2026-07-23, Google News/aggregátor-felkészítés): a
   // publikálás/módosítás ideje + rovat. A dátum a NewsArticle JSON-LD-ben már
@@ -1111,7 +1136,7 @@ function pageShell({ title, description, bodyContent, isArticle = false, noIntro
     <div class="wrap">
       <p class="site-footer__brand">${SITE.name}<span class="masthead__dot">.</span></p>
       <p class="site-footer__note">${escapeHtml(tr('siteDesc') || SITE.description)}</p>
-      <p class="site-footer__support"><a href="${LP}/about.html">${tr('aboutNav')}</a></p>
+      <p class="site-footer__support"><a href="${LP}/about">${tr('aboutNav')}</a></p>
       ${SUPPORT.enabled ? `<p class="site-footer__support"><a href="${supportPath}">${T.support}</a></p>` : ''}
       <p class="site-footer__support"><a href="${LP}/feed.xml" title="RSS">📡 RSS</a></p>
       <p class="site-footer__support"><a href="${FB_URL}" target="_blank" rel="noopener" title="${escapeHtml(FOLLOW_FB[LANG] || FOLLOW_FB.en)}" aria-label="${escapeHtml(FOLLOW_FB[LANG] || FOLLOW_FB.en)}"><svg class="fb-ico" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="currentColor"><path d="M24 12.07C24 5.4 18.63 0 12 0 5.37 0 0 5.4 0 12.07 0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.95.93-1.95 1.88v2.26h3.32l-.53 3.49h-2.79V24C19.61 23.1 24 18.1 24 12.07z"/></svg> Facebook</a></p>
@@ -1146,7 +1171,7 @@ function articleCard(a, featured = false) {
   const cls = featured ? 'card card--featured' : 'card';
   const aos = featured ? 'zoom-in' : 'fade-up';
   return `<article class="${cls}" data-audience="${a.audience}" data-category="${a.category}" data-aos="${aos}">
-    <a href="article/${a.slug}.html" class="card__link">
+    <a href="article/${a.slug}" class="card__link">
       ${coverHtml(a, '', 'card__cover', featured)}
       <div class="card__meta">
         <span class="aud ${aud.cls}">${aud.icon} ${tr(aud.key)}</span>
@@ -1233,7 +1258,7 @@ function buildIndex(articles) {
     </div>
   </section>` : '';
 
-  const guidesCta = `<a class="guides-cta" href="guides.html">
+  const guidesCta = `<a class="guides-cta" href="guides">
     <span class="guides-cta__i">📘</span>
     <span class="guides-cta__t"><strong>${tr('ctaTitle')}</strong><br>${tr('ctaText')}</span>
     <span class="guides-cta__arrow">→</span></a>`;
@@ -1253,7 +1278,7 @@ function buildIndex(articles) {
     ogImage: articles[0]?.image ? `${SITE.url}/assets/images/${articles[0].image}` : '',
     jsonld: { '@context': 'https://schema.org', '@type': 'WebSite', name: SITE.name, url: SITE.url, description: SITE.description },
     bodyContent: featuredHtml + weeklyHtml + guidesCta + grid
-      + `<p class="start__wizcta"><a href="archive.html">🗂️ ${escapeHtml(tr('archNav'))} →</a></p>`,
+      + `<p class="start__wizcta"><a href="archive">🗂️ ${escapeHtml(tr('archNav'))} →</a></p>`,
     pagePath: ''
   });
 }
@@ -1355,7 +1380,7 @@ function guideTile(a) {
   // (pl. "AI-powered customer service assistants") minden nyelven csúnya/angol.
   let brand = a.tool || a.company || tr('forEveryone');
   if (brand.length > 24) brand = a.company || tr('forEveryone');
-  return `<a class="gtile" href="article/${a.slug}.html" data-audience="${a.audience}" style="--gc:${color}">
+  return `<a class="gtile" href="article/${a.slug}" data-audience="${a.audience}" style="--gc:${color}">
     <span class="gtile__head">
       <span class="gtile__rings" aria-hidden="true"></span>
       <span class="gtile__chip">${guideIcon(a)}</span>
@@ -1384,7 +1409,7 @@ function buildGuidesPage(generalGuides, counts) {
     title: `Everyday AI guides — ${SITE.name}`,
     description: 'Plain-language, step-by-step guides to everyday AI skills: writing prompts, summarising, fact-checking, staying safe and more. Works with any assistant.',
     noIntro: true, pagePath: 'guides.html',
-    jsonld: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'Everyday AI Guides', url: `${SITE.url}/guides.html` },
+    jsonld: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'Everyday AI Guides', url: `${SITE.url}/guides` },
     bodyContent: body
   });
 }
@@ -1440,7 +1465,7 @@ function buildToolsPage(companyGuides, counts) {
     title: `AI tool guides — ${SITE.name}`,
     description: 'Step-by-step guides for specific AI tools: ChatGPT, Gemini, Claude, Copilot, Perplexity and more. Pick your tool and learn what you need.',
     noIntro: true, pagePath: 'tools.html',
-    jsonld: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'AI Tool Guides', url: `${SITE.url}/tools.html` },
+    jsonld: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'AI Tool Guides', url: `${SITE.url}/tools` },
     bodyContent: body
   });
 }
@@ -1477,11 +1502,11 @@ function buildArticlePage(a) {
     <div class="article__foot">
       <div class="fb" data-slug="${a.slug}" data-thanks="${escapeHtml(tr('fbThanks'))}"><span class="fb__q">${tr('fbQ')}</span><button class="fb__btn" data-vote="up" aria-label="👍">👍</button><button class="fb__btn" data-vote="down" aria-label="👎">👎</button></div>
       <p class="ai-disclosure">${tr('disclosureNews')}</p>
-      <a href="../index.html" class="back-link">${tr('backStories')}</a>
+      <a href="../index" class="back-link">${tr('backStories')}</a>
     </div>
   </article>`;
 
-  const canonical = `${SITE.url}${LP}/article/${a.slug}.html`;
+  const canonical = `${SITE.url}${LP}/article/${a.slug}`;
   const ogImage = a.image ? `${SITE.url}/assets/images/${a.image}` : '';
   // NewsArticle a híreknek (2026-07-14, Google News/Discover-felkészítés);
   // a szerző/kiadó az About-oldalra mutat (átlátható AI-szerkesztőség = E-E-A-T).
@@ -1504,7 +1529,7 @@ function buildArticlePage(a) {
     title: `${a.title} — ${SITE.name}`,
     description: a.seoDescription || a.subtitle,
     keywords: a.seoKeywords,
-    ogImage, jsonld, pagePath: `article/${a.slug}.html`,
+    ogImage, jsonld, pagePath: `article/${a.slug}`,
     bodyContent: body, isArticle: true,
     articleMeta: { published: a.publishedAt, modified: a.publishedAt, section: cat.label }
   });
@@ -1875,11 +1900,11 @@ function buildGuidePage(a) {
     <div class="article__foot">
       <div class="fb" data-slug="${a.slug}" data-thanks="${escapeHtml(tr('fbThanks'))}"><span class="fb__q">${tr('fbQ')}</span><button class="fb__btn" data-vote="up" aria-label="👍">👍</button><button class="fb__btn" data-vote="down" aria-label="👎">👎</button></div>
       <p class="ai-disclosure">${tr('disclosureGuide')}</p>
-      <a href="../index.html" class="back-link">${tr('backStories')}</a>
+      <a href="../index" class="back-link">${tr('backStories')}</a>
     </div>
   </article>`;
 
-  const canonical = `${SITE.url}${LP}/article/${a.slug}.html`;
+  const canonical = `${SITE.url}${LP}/article/${a.slug}`;
   const ogImage = a.image ? `${SITE.url}/assets/images/${a.image}` : '';
   const jsonld = {
     '@context': 'https://schema.org', '@type': 'HowTo',
@@ -1895,7 +1920,7 @@ function buildGuidePage(a) {
     keywords: a.seoKeywords, ogImage,
     // HowTo + FAQPage együtt (a JSON-LD tömböt is érti a Google)
     jsonld: faqSchema ? [jsonld, faqSchema] : jsonld,
-    pagePath: `article/${a.slug}.html`,
+    pagePath: `article/${a.slug}`,
     bodyContent: body, isArticle: true,
     articleMeta: { published: a.publishedAt, modified: a.publishedAt }
   });
@@ -1933,7 +1958,7 @@ function buildSupportPage() {
 
     <p class="support__note">${tr('supNote')}</p>
 
-    <a href="index.html" class="back-link">${tr('backStories')}</a>
+    <a href="index" class="back-link">${tr('backStories')}</a>
   </section>`;
 
   return pageShell({
@@ -1958,7 +1983,7 @@ function buildStartPage(allLoc) {
     if (picks.length >= 5) break;
     if (!picks.includes(g)) picks.push(g);
   }
-  const items = picks.map((g, i) => `<a class="start__pick" href="article/${g.slug}.html">
+  const items = picks.map((g, i) => `<a class="start__pick" href="article/${g.slug}">
       <span class="start__num">${i + 1}</span>
       <span><span class="rel__t">${escapeHtml(g.title)}</span>
       ${g.subtitle ? `<span class="rel__s">${escapeHtml(g.subtitle)}</span>` : ''}</span></a>`).join('');
@@ -1972,9 +1997,9 @@ function buildStartPage(allLoc) {
       <div class="start__card"><h2>👣 ${tr('startS2h')}</h2><p>${tr('startS2p')}</p></div>
       <div class="start__card"><h2>🛡️ ${tr('startS3h')}</h2><p>${tr('startS3p')}</p></div>
     </div>
-    <p class="start__wizcta"><a href="wizard.html">🧭 ${escapeHtml(tr('wizBanner'))}</a></p>
+    <p class="start__wizcta"><a href="wizard">🧭 ${escapeHtml(tr('wizBanner'))}</a></p>
     <section class="start__picks"><h2 class="rel__h">📘 ${tr('startPickH')}</h2>${items}
-      <p style="margin-top:18px"><a class="back-link" href="guides.html">${tr('startMore')} →</a></p></section>`;
+      <p style="margin-top:18px"><a class="back-link" href="guides">${tr('startMore')} →</a></p></section>`;
   return pageShell({
     title: `${tr('startTitle')} — ${SITE.name}`,
     description: tr('startTag'),
@@ -2081,7 +2106,7 @@ function glossAutolink(html, state) {
     let text = p;
     for (const f of accepted.sort((a, b) => b.idx - a.idx)) {
       text = text.slice(0, f.idx)
-        + `<a class="gloss-link" href="${LP}/glossary.html#${f.t.id}" title="${escapeHtml(f.t.def)}">${f.str}</a>`
+        + `<a class="gloss-link" href="${LP}/glossary#${f.t.id}" title="${escapeHtml(f.t.def)}">${f.str}</a>`
         + text.slice(f.idx + f.str.length);
       state.linked.add(f.t.id); state.count++;
     }
@@ -2104,7 +2129,7 @@ function buildGlossaryPage() {
       <p class="guides-hero__tag">${escapeHtml(tr('glossTag'))}</p>
     </section>
     <div class="gloss__grid">${cards}</div>
-    <p class="start__wizcta"><a href="wizard.html">🧭 ${escapeHtml(tr('wizBanner'))}</a></p>`;
+    <p class="start__wizcta"><a href="wizard">🧭 ${escapeHtml(tr('wizBanner'))}</a></p>`;
   return pageShell({
     title: `${tr('glossTitle')} — ${SITE.name}`,
     description: tr('glossTag'),
@@ -2132,7 +2157,7 @@ function buildArchivePage(loc) {
     ${g.items.map(a => {
       const cat = CATEGORIES[a.category] || CATEGORIES.other;
       const day = a.publishedAt ? new Date(a.publishedAt).toLocaleDateString(DATE_LOCALES[LANG] || 'en-AU', { day: 'numeric', month: 'short' }) : '';
-      return `<a class="arch__row" href="article/${a.slug}.html"><span class="arch__d">${escapeHtml(day)}</span><span class="arch__i">${cat.icon}</span><span class="arch__t">${escapeHtml(a.title)}</span></a>`;
+      return `<a class="arch__row" href="article/${a.slug}"><span class="arch__d">${escapeHtml(day)}</span><span class="arch__i">${cat.icon}</span><span class="arch__t">${escapeHtml(a.title)}</span></a>`;
     }).join('\n')}</section>`).join('\n');
   const body = `<section class="guides-hero">
       <p class="intro__kicker">🗂️</p>
@@ -2181,7 +2206,7 @@ function buildAboutPage() {
       <p class="guides-hero__tag">${escapeHtml(tr('aboutTag'))}</p>
     </section>
     <div class="gloss__grid">${cards}</div>
-    <p class="start__wizcta"><a href="start.html">⭐ ${escapeHtml(tr('startTitle'))}</a></p>
+    <p class="start__wizcta"><a href="start">⭐ ${escapeHtml(tr('startTitle'))}</a></p>
     ${csFormHtml}`;
   return pageShell({
     title: `${tr('aboutTitle')} — ${SITE.name}`,
@@ -2245,7 +2270,7 @@ function buildWizardPage() {
         card.innerHTML = '<p class="wiz__kicker">🎯 ' + esc(D.ui.resultH) + '</p>'
           + '<h2 class="wiz__winner">' + esc(top.n) + '</h2>'
           + '<p class="wiz__why">' + esc(top.w) + '</p>'
-          + '<p><a class="wiz__cta" href="tools.html">' + esc(D.ui.cta) + ' →</a></p>'
+          + '<p><a class="wiz__cta" href="tools">' + esc(D.ui.cta) + ' →</a></p>'
           + '<p class="wiz__also">' + esc(D.ui.also) + ': <strong>' + esc(second.n) + '</strong></p>'
           + '<p><button class="wiz__again" id="wizAgain">↺ ' + esc(D.ui.again) + '</button></p>';
         document.getElementById('wizAgain').addEventListener('click', function(){
@@ -2275,7 +2300,7 @@ const xmlEsc = (s) => String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;
 function buildRss(items, lang, { selfPath, title, desc }) {
   const lp = langPrefix(lang);
   const rows = items.map(a => {
-    const url = `${SITE.url}${lp}/article/${a.slug}.html`;
+    const url = `${SITE.url}${lp}/article/${a.slug}`;
     const pub = a.publishedAt ? new Date(a.publishedAt).toUTCString() : new Date().toUTCString();
     return `    <item>
       <title>${xmlEsc(a.title)}</title>
@@ -2414,7 +2439,7 @@ function main() {
       q: f.q, a: f.a, u: `${SITE.url}${f.p === '/' ? (LP || '/') : LP + f.p}`
     }));
     const kbTerms = GLOSSARY.map(t => ({
-      t: (t[lang] || t.en).term, d: (t[lang] || t.en).def, u: `${SITE.url}${LP}/glossary.html`
+      t: (t[lang] || t.en).term, d: (t[lang] || t.en).def, u: `${SITE.url}${LP}/glossary`
     }));
     writeFileSync(join(outBase, 'kb.json'),
       JSON.stringify({ v: 1, lang, site: kbSite, guides: kbGuides, news: kbNews, terms: kbTerms }), 'utf-8');
@@ -2427,15 +2452,15 @@ function main() {
     // sitemap (nyelvenként)
     const lp = langPrefix(lang);
     sitemapUrls.push({ loc: `${SITE.url}${lp}/`, date: today });
-    if (generalGuides.length) sitemapUrls.push({ loc: `${SITE.url}${lp}/guides.html`, date: today });
-    if (companyGuides.length) sitemapUrls.push({ loc: `${SITE.url}${lp}/tools.html`, date: today });
-    if (SUPPORT.enabled) sitemapUrls.push({ loc: `${SITE.url}${lp}/support.html`, date: today });
-    sitemapUrls.push({ loc: `${SITE.url}${lp}/start.html`, date: today });
-    sitemapUrls.push({ loc: `${SITE.url}${lp}/glossary.html`, date: today });
-    sitemapUrls.push({ loc: `${SITE.url}${lp}/wizard.html`, date: today });
-    sitemapUrls.push({ loc: `${SITE.url}${lp}/about.html`, date: today });
-    sitemapUrls.push({ loc: `${SITE.url}${lp}/archive.html`, date: today });
-    for (const a of loc) sitemapUrls.push({ loc: `${SITE.url}${lp}/article/${a.slug}.html`, date: (a.publishedAt || '').slice(0, 10) || today });
+    if (generalGuides.length) sitemapUrls.push({ loc: `${SITE.url}${lp}/guides`, date: today });
+    if (companyGuides.length) sitemapUrls.push({ loc: `${SITE.url}${lp}/tools`, date: today });
+    if (SUPPORT.enabled) sitemapUrls.push({ loc: `${SITE.url}${lp}/support`, date: today });
+    sitemapUrls.push({ loc: `${SITE.url}${lp}/start`, date: today });
+    sitemapUrls.push({ loc: `${SITE.url}${lp}/glossary`, date: today });
+    sitemapUrls.push({ loc: `${SITE.url}${lp}/wizard`, date: today });
+    sitemapUrls.push({ loc: `${SITE.url}${lp}/about`, date: today });
+    sitemapUrls.push({ loc: `${SITE.url}${lp}/archive`, date: today });
+    for (const a of loc) sitemapUrls.push({ loc: `${SITE.url}${lp}/article/${a.slug}`, date: (a.publishedAt || '').slice(0, 10) || today });
 
     console.log(`✅ [${lang}] ${loc.length + 3} oldal generálva (${outBase === OUT_DIR ? 'gyökér' : lang + '/'})`);
   }
@@ -2455,7 +2480,7 @@ ${sitemapUrls.map(u => `  <url><loc>${u.loc}</loc><lastmod>${u.date}</lastmod></
     (Date.now() - new Date(a.publishedAt).getTime()) < 48 * 3600e3);
   const newsSitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
-${newsArts.map(a => `  <url><loc>${SITE.url}/article/${a.slug}.html</loc><news:news><news:publication><news:name>${escapeHtml(SITE.name)}</news:name><news:language>en</news:language></news:publication><news:publication_date>${a.publishedAt}</news:publication_date><news:title>${escapeHtml(a.title)}</news:title></news:news></url>`).join('\n')}
+${newsArts.map(a => `  <url><loc>${SITE.url}/article/${a.slug}</loc><news:news><news:publication><news:name>${escapeHtml(SITE.name)}</news:name><news:language>en</news:language></news:publication><news:publication_date>${a.publishedAt}</news:publication_date><news:title>${escapeHtml(a.title)}</news:title></news:news></url>`).join('\n')}
 </urlset>`;
   writeFileSync(join(OUT_DIR, 'news-sitemap.xml'), newsSitemap, 'utf-8');
 
@@ -2472,7 +2497,7 @@ ${newsArts.map(a => `  <url><loc>${SITE.url}/article/${a.slug}.html</loc><news:n
     .filter(a => a.isGuide)
     .sort((a, b) => (b.publishedAt || '').localeCompare(a.publishedAt || ''))
     .slice(0, 15)
-    .map(a => `- [${a.title}](${SITE.url}/article/${a.slug}.html): ${a.subtitle}`)
+    .map(a => `- [${a.title}](${SITE.url}/article/${a.slug}): ${a.subtitle}`)
     .join('\n');
   const llms = `# ${SITE.name}
 
@@ -2481,8 +2506,8 @@ ${newsArts.map(a => `  <url><loc>${SITE.url}/article/${a.slug}.html</loc><news:n
 ## Main sections
 
 - [Latest AI news](${SITE.url}/): daily plain-language news about ChatGPT, Gemini, Claude, Copilot and other AI tools
-- [Everyday guides](${SITE.url}/guides.html): practical how-to guides for daily life (email, study, travel, safety, work)
-- [AI tool guides](${SITE.url}/tools.html): beginner guides organised by tool — ChatGPT, Gemini, Claude, Copilot, Perplexity and more
+- [Everyday guides](${SITE.url}/guides): practical how-to guides for daily life (email, study, travel, safety, work)
+- [AI tool guides](${SITE.url}/tools): beginner guides organised by tool — ChatGPT, Gemini, Claude, Copilot, Perplexity and more
 - [RSS feed](${SITE.url}/feed.xml)
 - [Sitemap](${SITE.url}/sitemap.xml)
 
@@ -2556,7 +2581,7 @@ Canonical: ${SITE.url}/.well-known/security.txt
     <h1 class="guides-hero__title">This page has wandered off</h1>
     <p class="guides-hero__tag">The link may be old, or the address has a typo. No worries — everything useful is one tap away.</p>
     <p style="margin-top:22px"><a class="support__btn" style="display:inline-block" href="/">← Back to the homepage</a></p>
-    <p style="margin-top:14px"><a href="/guides.html">Everyday guides</a> · <a href="/tools.html">AI tool guides</a></p>
+    <p style="margin-top:14px"><a href="/guides">Everyday guides</a> · <a href="/tools">AI tool guides</a></p>
     <p style="margin-top:26px;font-size:13px;color:var(--ink-soft)">
       <a href="/hu/">Magyar</a> · <a href="/es/">Español</a> · <a href="/de/">Deutsch</a> · <a href="/fr/">Français</a>
     </p>

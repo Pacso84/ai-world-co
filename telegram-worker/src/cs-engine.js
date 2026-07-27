@@ -59,8 +59,10 @@ ${kbBlock}`;
 // Ami nincs benne a kb.json-ban, az nem mehet ki az olvasóhoz.
 // ===================================================================
 // Az oldal ÁLLANDÓ menüoldalai — ezeket a build mindig legyártja, tehát valódiak.
+// (2026-07-27: .html NÉLKÜL — a Cloudflare a .html-es alakot átirányítja, a
+//  kanonikus cím a kiterjesztés nélküli; a kb.json is így adja a linkeket.)
 // (Enélkül az őr a saját promptunk által ajánlott /guides.html-t is kivágta.)
-const SITE_PAGES = ['', '/guides.html', '/tools.html', '/start.html', '/glossary.html', '/wizard.html', '/about.html', '/archive.html', '/support.html', '/feed.xml'];
+const SITE_PAGES = ['', '/guides', '/tools', '/start', '/glossary', '/wizard', '/about', '/archive', '/support', '/feed.xml'];
 
 // Egységes alak az összehasonlításhoz: kisbetű, záró írásjel/perjel nélkül,
 // www nélkül, hiányzó séma pótolva. (2026-07-21 audit: e nélkül a NAGYBETŰS
