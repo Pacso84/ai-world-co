@@ -1,86 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178494480099141",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-25T02:00:00.991Z",
-      "updated": "2026-07-25T02:02:10.196Z"
-    },
-    {
-      "id": "t178494493019846",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-25T02:02:10.198Z",
-      "updated": "2026-07-25T02:03:55.656Z"
-    },
-    {
-      "id": "t178494503568295",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-25T02:03:55.682Z",
-      "updated": "2026-07-25T02:03:55.864Z"
-    },
-    {
-      "id": "t17849450358660",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-25T02:03:55.866Z",
-      "updated": "2026-07-25T02:04:12.044Z"
-    },
-    {
-      "id": "t178494505204796",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-25T02:04:12.047Z",
-      "updated": "2026-07-25T02:06:47.579Z"
-    },
-    {
-      "id": "t178494520758250",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-25T02:06:47.582Z",
-      "updated": "2026-07-25T02:07:47.423Z"
-    },
-    {
-      "id": "t178494526742418",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-25T02:07:47.424Z",
-      "updated": "2026-07-25T02:08:46.353Z"
-    },
-    {
-      "id": "t178494532635588",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-25T02:08:46.355Z",
-      "updated": "2026-07-25T02:10:38.647Z"
-    },
-    {
-      "id": "t17849454386486",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-07-25T02:10:38.648Z",
-      "updated": "2026-07-25T02:13:44.542Z"
-    },
-    {
-      "id": "t178494562454420",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-25T02:13:44.544Z",
-      "updated": "2026-07-25T02:13:51.820Z"
-    },
-    {
       "id": "t178494563182157",
       "title": "Run publisher",
       "status": "done",
@@ -479,33 +399,89 @@
       "agent": "publisher",
       "created": "2026-07-27T11:16:44.472Z",
       "updated": "2026-07-27T11:17:20.392Z"
+    },
+    {
+      "id": "t178517332844159",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-07-27T17:28:48.441Z",
+      "updated": "2026-07-27T17:28:48.622Z"
+    },
+    {
+      "id": "t178517332862420",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-07-27T17:28:48.624Z",
+      "updated": "2026-07-27T17:29:48.123Z"
+    },
+    {
+      "id": "t17851733881258",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-07-27T17:29:48.125Z",
+      "updated": "2026-07-27T17:29:48.326Z"
+    },
+    {
+      "id": "t178517338832841",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-07-27T17:29:48.328Z",
+      "updated": "2026-07-27T17:30:42.338Z"
+    },
+    {
+      "id": "t178517344234021",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-27T17:30:42.340Z",
+      "updated": "2026-07-27T17:31:07.489Z"
+    },
+    {
+      "id": "t178517346749292",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-07-27T17:31:07.492Z",
+      "updated": "2026-07-27T17:31:11.388Z"
+    },
+    {
+      "id": "t178517347141791",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-27T17:31:11.417Z",
+      "updated": "2026-07-27T17:31:59.658Z"
+    },
+    {
+      "id": "t17851735196608",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-07-27T17:31:59.660Z",
+      "updated": "2026-07-27T17:32:08.184Z"
+    },
+    {
+      "id": "t178517352818638",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-27T17:32:08.186Z",
+      "updated": "2026-07-27T17:32:30.161Z"
+    },
+    {
+      "id": "t178517355016288",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-07-27T17:32:30.162Z",
+      "updated": "2026-07-27T17:32:48.466Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178428255761140",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). Our article line-up is coherent and ready for publication, with a great mix of practical uses for AI tools like Qwen Chat, NVIDIA ChatRTX, and Perplexity AI. I do note that some articles may benefit f",
-      "agent": "publisher",
-      "at": "2026-07-17T10:02:37.611Z",
-      "loud": false
-    },
-    {
-      "id": "n178428256453098",
-      "level": "success",
-      "text": "3 hír + 3 útmutató publikálva (költség: $0.0541).",
-      "agent": "ceo",
-      "at": "2026-07-17T10:02:44.530Z",
-      "loud": false
-    },
-    {
-      "id": "n178430777933297",
-      "level": "info",
-      "text": "SEO: 3 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-07-17T17:02:59.332Z",
-      "loud": false
-    },
     {
       "id": "n178430803387485",
       "level": "success",
@@ -1281,27 +1257,33 @@
       "agent": "ceo",
       "at": "2026-07-27T11:17:20.419Z",
       "loud": false
+    },
+    {
+      "id": "n178517352817581",
+      "level": "info",
+      "text": "SEO: 1 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-07-27T17:32:08.175Z",
+      "loud": false
+    },
+    {
+      "id": "n178517355625432",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The line-up looks solid and ready — you have a good mix of practical how-tos, privacy guidance, and everyday use cases across different AI tools. The mix of study, work, and personal tasks keeps it re",
+      "agent": "publisher",
+      "at": "2026-07-27T17:32:36.254Z",
+      "loud": false
+    },
+    {
+      "id": "n17851735684976",
+      "level": "success",
+      "text": "1 hír + 0 útmutató publikálva (költség: $0.0128).",
+      "agent": "ceo",
+      "at": "2026-07-27T17:32:48.497Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178480190248162",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Adding clear comments to your existing code to make it easier to understand with GitHub Copilot\" — javítva: Beginner clarity too low (5/10): steps are vague or could mislead a first-time user; Step 1: Installer description is inaccurate — VS Code website has a prominent download button, but the installer does not 'extract files and launch welcome screen' as described, and 'colour-fil",
-      "ref": "GUIDE_adding-clear-comments-to-your-existing-code-to-make-it-easie.json",
-      "at": "2026-07-23T10:18:22.481Z"
-    },
-    {
-      "id": "m17848019090064",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Adding clear comments to your existing code to make it easier to understand with GitHub Copilot\" — mi a baj: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user; Step 1: installer behaviour differs on macOS/Linux - the Windows-only filename example may mislead non-Windows readers; no fallback for those platforms; Step 5: Ctrl+Enter behaviour i",
-      "ref": "GUIDE_adding-clear-comments-to-your-existing-code-to-make-it-easie.json",
-      "at": "2026-07-23T10:18:29.006Z"
-    },
     {
       "id": "m178480206766034",
       "from": "guide",
@@ -2638,6 +2620,24 @@
       "text": "6 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
       "ref": null,
       "at": "2026-07-27T11:35:25.765Z"
+    },
+    {
+      "id": "m178517355015081",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-07-27T17:32:30.150Z"
+    },
+    {
+      "id": "m178517395569072",
+      "from": "social",
+      "to": "team",
+      "kind": "info",
+      "text": "6 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
+      "ref": null,
+      "at": "2026-07-27T17:39:15.690Z"
     }
   ]
 }
