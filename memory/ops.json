@@ -1,102 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178503155202616",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-07-26T02:05:52.026Z",
-      "updated": "2026-07-26T02:08:27.717Z"
-    },
-    {
-      "id": "t178503170771973",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-26T02:08:27.719Z",
-      "updated": "2026-07-26T02:08:42.355Z"
-    },
-    {
-      "id": "t178503172235721",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-07-26T02:08:42.357Z",
-      "updated": "2026-07-26T02:09:12.029Z"
-    },
-    {
-      "id": "t178511719779919",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-07-27T01:53:17.799Z",
-      "updated": "2026-07-27T01:53:21.489Z"
-    },
-    {
-      "id": "t178511720149274",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-07-27T01:53:21.492Z",
-      "updated": "2026-07-27T01:53:54.779Z"
-    },
-    {
-      "id": "t17851172347817",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-07-27T01:53:54.781Z",
-      "updated": "2026-07-27T01:55:10.609Z"
-    },
-    {
-      "id": "t178511731061054",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-07-27T01:55:10.610Z",
-      "updated": "2026-07-27T01:55:50.812Z"
-    },
-    {
-      "id": "t178511735081451",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-27T01:55:50.814Z",
-      "updated": "2026-07-27T01:56:16.626Z"
-    },
-    {
-      "id": "t178511737662880",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-07-27T01:56:16.628Z",
-      "updated": "2026-07-27T02:01:50.173Z"
-    },
-    {
-      "id": "t178511771017510",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-27T02:01:50.175Z",
-      "updated": "2026-07-27T02:05:20.930Z"
-    },
-    {
-      "id": "t17851179209330",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-07-27T02:05:20.933Z",
-      "updated": "2026-07-27T02:06:17.420Z"
-    },
-    {
-      "id": "t178511797744450",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-27T02:06:17.444Z",
-      "updated": "2026-07-27T02:09:53.024Z"
-    },
-    {
       "id": "t178511819302576",
       "title": "Run ellenorzo",
       "status": "done",
@@ -479,33 +383,105 @@
       "agent": "publisher",
       "created": "2026-07-28T02:08:03.516Z",
       "updated": "2026-07-28T02:08:15.771Z"
+    },
+    {
+      "id": "t178521165231311",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-07-28T04:07:32.313Z",
+      "updated": "2026-07-28T04:07:32.484Z"
+    },
+    {
+      "id": "t178521165248695",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-07-28T04:07:32.486Z",
+      "updated": "2026-07-28T04:07:51.197Z"
+    },
+    {
+      "id": "t178521167119945",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-07-28T04:07:51.199Z",
+      "updated": "2026-07-28T04:07:51.405Z"
+    },
+    {
+      "id": "t178521167140756",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-07-28T04:07:51.407Z",
+      "updated": "2026-07-28T04:07:51.590Z"
+    },
+    {
+      "id": "t178521167159190",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-28T04:07:51.591Z",
+      "updated": "2026-07-28T04:07:51.764Z"
+    },
+    {
+      "id": "t178521167176774",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-07-28T04:07:51.767Z",
+      "updated": "2026-07-28T04:10:07.906Z"
+    },
+    {
+      "id": "t178521180790824",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-28T04:10:07.908Z",
+      "updated": "2026-07-28T04:10:34.997Z"
+    },
+    {
+      "id": "t178521183499921",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-07-28T04:10:34.999Z",
+      "updated": "2026-07-28T04:10:43.712Z"
+    },
+    {
+      "id": "t178521184374161",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-28T04:10:43.741Z",
+      "updated": "2026-07-28T04:10:51.987Z"
+    },
+    {
+      "id": "t178521185198946",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-07-28T04:10:51.989Z",
+      "updated": "2026-07-28T04:11:05.463Z"
+    },
+    {
+      "id": "t178521186546595",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-28T04:11:05.465Z",
+      "updated": "2026-07-28T04:11:23.666Z"
+    },
+    {
+      "id": "t178521188366838",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-07-28T04:11:23.668Z",
+      "updated": "2026-07-28T04:11:42.399Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178433917829286",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). Our article line-up is coherent and ready to publish, with a great mix of practical AI applications for everyday tasks. I do note that the content is quite tech-heavy, so we may want to consider addin",
-      "agent": "publisher",
-      "at": "2026-07-18T01:46:18.292Z",
-      "loud": false
-    },
-    {
-      "id": "n178433918505455",
-      "level": "success",
-      "text": "2 hír + 6 útmutató publikálva (költség: $0.2014).",
-      "agent": "ceo",
-      "at": "2026-07-18T01:46:25.054Z",
-      "loud": false
-    },
-    {
-      "id": "n178436636112256",
-      "level": "warn",
-      "text": "📨 guide → ceo: Kell még adat: \"How to Use SkillOpt to Train AI Agent Skills\" — az Ellenőrző tényt/forrást kér, amit nem találhatok ki: ",
-      "agent": "guide",
-      "at": "2026-07-18T09:19:21.122Z",
-      "loud": false
-    },
     {
       "id": "n178436639162891",
       "level": "warn",
@@ -1281,45 +1257,33 @@
       "agent": "ceo",
       "at": "2026-07-28T02:08:15.794Z",
       "loud": false
+    },
+    {
+      "id": "n178521186545419",
+      "level": "info",
+      "text": "SEO: 1 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-07-28T04:11:05.454Z",
+      "loud": false
+    },
+    {
+      "id": "n17852118902395",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The lineup covers a solid mix of practical, everyday use cases — from study help and work tasks to emails and pet-sitting agreements — which fits your mission well. A few tool names need a quick doubl",
+      "agent": "publisher",
+      "at": "2026-07-28T04:11:30.239Z",
+      "loud": false
+    },
+    {
+      "id": "n178521190242667",
+      "level": "success",
+      "text": "1 hír + 0 útmutató publikálva (költség: $0.0022).",
+      "agent": "ceo",
+      "at": "2026-07-28T04:11:42.426Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178480226233422",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-07-23T10:24:22.334Z"
-    },
-    {
-      "id": "m178480407646031",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
-      "ref": null,
-      "at": "2026-07-23T10:54:36.460Z"
-    },
-    {
-      "id": "m178482682506461",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
-      "ref": null,
-      "at": "2026-07-23T17:13:45.064Z"
-    },
-    {
-      "id": "m178485742011426",
-      "from": "ceo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Főnöki újraindítás: \"Web Updates\" — rewrite-explainer",
-      "ref": "2026-07-23T01-48-48-122Z_midjourney-updates_Web_Updates.json",
-      "at": "2026-07-24T01:43:40.114Z"
-    },
     {
       "id": "m178485742078176",
       "from": "ceo",
@@ -2637,6 +2601,42 @@
       "text": "6 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
       "ref": null,
       "at": "2026-07-28T02:13:17.188Z"
+    },
+    {
+      "id": "m178521180789883",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Visual screenshots in Google Meet meeting notes will soon be generally available, pre-configure admin settings in advance\" — javítva: Article framing (focus on limitations) misses the news angle from source — screenshots are coming soon to Meet notes, which readers deserve to know; Subtitle 'what it misses' and 'limits worth knowing' could mislead readers into thinking screenshots ar",
+      "ref": "2026-07-27T17-29-42-209Z_google-workspace_Visual_screenshots_in_Google_Meet_meeting_notes_wi.json",
+      "at": "2026-07-28T04:10:07.898Z"
+    },
+    {
+      "id": "m178521183498643",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Visual screenshots in Google Meet meeting notes will soon be generally available, pre-configure admin settings in advance\" (?/10)",
+      "ref": "2026-07-27T17-29-42-209Z_google-workspace_Visual_screenshots_in_Google_Meet_meeting_notes_wi.json",
+      "at": "2026-07-28T04:10:34.986Z"
+    },
+    {
+      "id": "m178521188365785",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-07-28T04:11:23.657Z"
+    },
+    {
+      "id": "m178521239804576",
+      "from": "social",
+      "to": "team",
+      "kind": "info",
+      "text": "6 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
+      "ref": null,
+      "at": "2026-07-28T04:19:58.045Z"
     }
   ]
 }

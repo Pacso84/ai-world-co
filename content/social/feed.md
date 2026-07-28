@@ -1,6 +1,114 @@
 # AI World Co. — közösségi posztok
 
-*Generálva: 2026-07-28T02:13:17.186Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+*Generálva: 2026-07-28T04:19:58.043Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## Visual screenshots in Google Meet meeting notes will soon be generally available, pre-configure admin settings in advance
+**🔗 https://aiworldhq.com/article/google-meet-s-ai-notetaker-is-getting-screenshots-soon-what-.html**
+
+**Facebook:**
+Ever sat through a meeting trying to remember what was on slide seven? Google Meet's AI notetaker is getting visual screenshots soon, so you'll have a visual record of exactly what was shown. Here's what this means for your meetings.https://aiworldhq.com/article/google-meet-s-ai-notetaker-is-getting-screenshots-soon-what-.html #GoogleMeet #Productivity
+
+**Instagram:**
+Ever forgotten what was on slide seven? 🤯
+
+Google Meet's AI notetaker is getting visual screenshots soon — so you'll have a visual record of exactly what was shown in your meetings.
+
+#GoogleMeet #Productivity #Meetings #WorkSmarter #AITools
+
+Link in bio.
+
+*Kép-ötlet: A clean, minimal mockup of a Google Meet window showing the notetaker panel with a subtle screenshot preview icon.*
+
+---
+
+## Creating a weekly workout plan tailored to your fitness level using AI
+**🔗 https://aiworldhq.com/article/creating-a-weekly-workout-plan-tailored-to-your-fitness-leve.html**
+
+**Facebook:**
+Tired of workout plans that don't actually fit your life? AI can create a weekly exercise schedule that matches your fitness level, the equipment you have and how much free time you've got — no more guessing. https://aiworldhq.com/article/creating-a-weekly-workout-plan-tailored-to-your-fitness-leve.html #fitness #beginnerfriendly
+
+**Instagram:**
+Your perfect weekly workout plan, built in seconds.
+
+Just tell an AI assistant your goals, what equipment you have and how much time you can commit — it'll design a balanced plan that actually works for you.
+
+#fitness #workoutplan #AI #beginnerfitness #healthylifestyle
+
+Link in bio.
+
+*Kép-ötlet: A person comfortably stretching at home in soft morning light, no gym equipment visible, simple and approachable setting.*
+
+---
+
+## Generating a basic family‑tree outline or genealogy sketch with AI
+**🔗 https://aiworldhq.com/article/drafting-a-basic-family-tree-outline-with-ai-a-beginner-s-gu.html**
+
+**Facebook:**
+Ever wanted to map out your family tree but didn't know where to start? This beginner's guide shows you how to use any AI tool to turn what you already know about relatives into a simple sketch you can keep building on. https://aiworldhq.com/article/drafting-a-basic-family-tree-outline-with-ai-a-beginner-s-gu.html #familyhistory #genealogy
+
+**Instagram:**
+Turn family memories into a visual tree
+
+Use any AI to map what you already know about your relatives into a simple outline you can grow over timeLink in bio.
+
+#familyhistory #genealogy #aiforbeginners #familytree #roots
+
+*Kép-ötlet: A simple hand-drawn style family tree outline on paper with labelled name boxes connected by thin lines, viewed from above*
+
+---
+
+## Getting quick, easy-to-understand summaries of long policy documents with Qwen Chat
+**🔗 https://aiworldhq.com/article/use-qwen-to-summarise-long-policy-documents-in-plain-english.html**
+
+**Facebook:**
+Tired of wading through dense policy documents to find what matters to you? This simple method turns lengthy guidelines into clear, actionable summaries — without the headache. https://aiworldhq.com/article/use-qwen-to-summarise-long-policy-documents-in-plain-english.html #Productivity #HelpfulTips
+
+**Instagram:**
+Tired of getting lost in dense policy documents?
+
+Turn lengthy guidelines into clear, bite-sized summaries you can actually understand — without the headache.
+
+#Productivity #DocumentTips #SimplifyYourLife #HelpfulHints #EverydayAI
+
+Link in bio.
+
+*Kép-ötlet: Person at a desk looking relieved while reading a simple, neat one-page summary next to a laptop with coffee cup*
+
+---
+
+## How GitHub Copilot Can Write Unit Tests for Your Code
+**🔗 https://aiworldhq.com/article/how-github-copilot-can-write-unit-tests-for-your-code.html**
+
+**Facebook:**
+Writing tests doesn't have to feel like a chore. This beginner's guide shows you how to let GitHub Copilot write ready-to-run unit tests for your code with just a comment—so you can build with confidence. https://aiworldhq.com/article/how-github-copilot-can-write-unit-tests-for-your-code.html #coding #learning
+
+**Instagram:**
+Stop dreading unit tests
+
+GitHub Copilot can write them for you—just type a comment and get a ready-to-run test. This 6-minute guide walks you through it step by step.
+
+#coding #programming #learntocode #aifordevs #techskills
+
+*Kép-ötlet: A clean code editor screenshot showing a function with a comment above it and a test file appearing beside it, symbolising automated test generation*
+
+---
+
+## How to build a simple personal budget spreadsheet using any AI assistant
+**🔗 https://aiworldhq.com/article/build-a-simple-personal-budget-spreadsheet-using-any-ai-assi.html**
+
+**Facebook:**
+Want to get your money sorted but spreadsheets feel intimidating? Here's how to build a working monthly budget in under 15 minutes — just ask an AI assistant to create the template for you. Simple step-by-step guide inside. https://aiworldhq.com/article/build-a-simple-personal-budget-spreadsheet-using-any-ai-assi.html #budgeting #aihelper
+
+**Instagram:**
+Finally get your finances under control — without the spreadsheet stress
+
+Just ask any AI assistant to design a beginner-friendly budget template, then drop it into Excel or Google Sheets. 15 minutes, done.
+
+#budgeting #moneysaving #beginnerfriendly #aiforbeginners #personalfinance
+
+*Kép-ötlet: A clean, minimal view of a laptop screen showing a simple budget spreadsheet with friendly coloured categories, on a uncluttered desk with a coffee cup*
 
 ---
 
