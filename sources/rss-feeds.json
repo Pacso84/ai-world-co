@@ -143,7 +143,8 @@
       "language": "en",
       "country": "US",
       "comment": "HIVATALOS Amazon/AWS - vállalati AI, eszközök.",
-      "enabled": true
+      "enabled": true,
+      "audience_gate": "everyday"
     },
     {
       "id": "mistral-ai",
@@ -393,7 +394,8 @@
       "language": "en",
       "country": "US",
       "comment": "Telegramon JÓVÁHAGYVA (2026-07-01), megbízhatóság 100/100.",
-      "enabled": true
+      "enabled": true,
+      "audience_gate": "everyday"
     },
     {
       "id": "sap",
@@ -404,7 +406,8 @@
       "language": "en",
       "country": "DE",
       "comment": "Telegramon JÓVÁHAGYVA (2026-07-01), megbízhatóság 100/100.",
-      "enabled": true
+      "enabled": true,
+      "audience_gate": "everyday"
     },
     {
       "id": "databricks",
@@ -415,7 +418,8 @@
       "language": "en",
       "country": "US",
       "comment": "Telegramon JÓVÁHAGYVA (2026-07-01), megbízhatóság 100/100.",
-      "enabled": true
+      "enabled": true,
+      "audience_gate": "everyday"
     },
     {
       "id": "snowflake",
@@ -426,7 +430,8 @@
       "language": "en",
       "country": "US",
       "comment": "Telegramon JÓVÁHAGYVA (2026-07-01), megbízhatóság 100/100.",
-      "enabled": true
+      "enabled": true,
+      "audience_gate": "everyday"
     },
     {
       "id": "together",
@@ -437,7 +442,8 @@
       "language": "en",
       "country": "US",
       "comment": "Telegramon JÓVÁHAGYVA (2026-07-01), megbízhatóság 100/100.",
-      "enabled": true
+      "enabled": true,
+      "audience_gate": "everyday"
     },
     {
       "id": "pinecone",
@@ -448,7 +454,8 @@
       "language": "en",
       "country": "US",
       "comment": "Telegramon JÓVÁHAGYVA (2026-07-01), megbízhatóság 100/100.",
-      "enabled": true
+      "enabled": true,
+      "audience_gate": "everyday"
     },
     {
       "id": "ibm",
@@ -459,7 +466,8 @@
       "language": "en",
       "country": "US",
       "comment": "Telegramon JÓVÁHAGYVA (2026-07-01), megbízhatóság 100/100.",
-      "enabled": true
+      "enabled": true,
+      "audience_gate": "everyday"
     },
     {
       "id": "ntt-research",
@@ -470,7 +478,8 @@
       "language": "en",
       "country": "JP",
       "enabled": true,
-      "comment": "Felvéve user-jóváhagyással 2026-07-05 (source-scout, 100/100)"
+      "comment": "Felvéve user-jóváhagyással 2026-07-05 (source-scout, 100/100)",
+      "audience_gate": "everyday"
     },
     {
       "id": "deeparteffects",
@@ -480,8 +489,8 @@
       "priority": 3,
       "language": "en",
       "country": "US",
-      "comment": "JÓVÁHAGYVA a felhasználó által 2026-07-21 (source-scout javaslat, megbízhatóság 100/100). AI art- és design-eszközök, hétköznapi felhasználóknak. Felvételkor: utolsó cikk 4 napja, feed élő (HTTP 200).",
-      "enabled": true
+      "comment": "KIKAPCSOLVA 2026-07-28: a feed 166 napja néma (utolsó poszt 2026-02-12), és a sitemapjukban CSAK 2025-ös poszt-térkép van — a cég abbahagyta a publikálást, alternatíva nincs. Elavult anyagból \"friss hírt\" írni félrevezeti az olvasót. A már kiírt 10 cikk marad, új nem készül.",
+      "enabled": false
     },
     {
       "id": "midjourney-updates",
@@ -552,12 +561,12 @@
     {
       "id": "d-id-news",
       "name": "D-ID (hivatalos)",
-      "url": "https://www.d-id.com/news/feed/",
+      "url": "https://www.d-id.com/blog/feed/",
       "category": "ai-company-official",
       "priority": 3,
       "language": "en",
       "country": "IL",
-      "comment": "HIVATALOS D-ID — AI avatar/beszélő-fej videó, fogyasztó-közeli kreatív eszköz. Forrás-kutató találta; ellenőrizve 2026-07-24 (feed él, de LASSÚ kadencia ~92 nap).",
+      "comment": "HIVATALOS D-ID — AI avatar/beszélő-fej videó, fogyasztó-közeli kreatív. 2026-07-28: a /news/feed/ 96 napja néma volt, a cég a /blog/-ra költözött (ott 4 napos a legfrissebb) → URL átállítva.",
       "enabled": true
     },
     {

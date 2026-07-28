@@ -81,6 +81,43 @@ const AI_KEYWORDS = [
   'robot', 'autonomous', 'multimodal'
 ];
 
+
+// ===================================================================
+// KÖZÖNSÉG-KAPU (2026-07-28) — csak az audience_gate:"everyday" forrásokra.
+// ===================================================================
+// A vállalati/fejlesztői források (AWS ML, Snowflake, Databricks, SAP…)
+// bőven termelnek, de a hírek nagy része a MI olvasónknak nem szól.
+// Két mintacsoport a FORRÁS EREDETI CÍMÉN:
+//   DEV_MARKERS  — fejlesztői/üzemeltetői anyag (Bedrock, SageMaker, pipeline,
+//                  deployment, enterprise, compliance…)
+//   CORP_MARKERS — céges sajtóközlemény (partnerség, felvásárlás, milliárdos
+//                  beruházás, "Hogyan építette fel az X csapatunk…")
+// MÉRVE 107 megjelent, vállalati forrású cikken: 46%-ot fogott volna ki, és a
+// 41 tisztán üzletiből 23-at. Amit "tévesen" fogott, az mérés szerint szintén
+// fejlesztői anyag volt, csak az író rosszul címkézte hétköznapinak.
+// Ingyenes: nincs AI-hívás.
+// ===================================================================
+const DEV_MARKERS = /\b(bedrock|sagemaker|cortex|dataiku|kubernetes|terraform|vpc|iam|sdk|api|etl|mlops|llmops|pipeline|inference|endpoint|cluster|warehouse|lakehouse|orchestrat|deployment|deploy|provisioned|throughput|quantiz|fine-tun|embedding model|vector (database|store)|observability|multi-account|entitlement|governance|compliance|production-grade|at scale|enterprise|benchmark|latency|serverless|microservice|data lake|feature store|agentcore|langgraph|langchain|llamaindex|strands|mcp|guardrail|knowledge base|distillation|batch inference|prompt caching|spec|rag|nemotron|gpt oss)\b/i;
+const CORP_MARKERS = /\b(marketplace|partners? earn|strategic (multi-year )?agreement|q[1-4] (results|earnings)|acquisition|appoints?|names? new|summit \d{4}|deepens? commitment|new data:|case study|customer story|middle managers|(marketing|finance|sales|hr) teams?|is transforming|built an ai-native|inside the .*strateg|reclaimed .*hours|forecasting at the speed)\b|\$\d+([.,]\d+)? ?(billion|million|bn|m)\b|\bannounc\w+ .* on (snowflake|aws|azure|bedrock)\b/i;
+
+// ÖSSZEHASONLÍTÓ-LISTA KAPU (2026-07-28) — MINDEN forrásra, nem csak a
+// vállalatiakra. A cégblogok SEO-listákat gyártanak ("10 Best Sora
+// Alternatives", "5 Best Tavus Alternatives") — ezek versenytárs-összevetések,
+// amiket a márkaszabályunk KIFEJEZETTEN tilt ("No comparisons between different
+// companies' products"). Ha ilyen jut az Íróhoz, vagy megszegi a szabályt, vagy
+// kínlódva kerülgeti — jobb be sem engedni. A "N módszer/tipp" alakot NEM
+// fogja, csak a rangsorolót és az alternatíva-listát.
+const LISTICLE_MARKERS = /\b(\d+\s+best|best\s+\d+|top\s+\d+|\d+\s+top)\b|\bthe\s+(best|top)\b|\balternatives?\b|\bvs\.?\b|\bcomparison\b/i;
+
+export function isListicle(title) {
+  return LISTICLE_MARKERS.test(String(title || ''));
+}
+
+function everydayRelevant(title) {
+  const t = String(title || '');
+  return !DEV_MARKERS.test(t) && !CORP_MARKERS.test(t);
+}
+
 function keywordPrefilter(item) {
   const haystack = `${item.title || ''} ${item.contentSnippet || item.content || ''}`.toLowerCase();
   return AI_KEYWORDS.some(kw => haystack.includes(kw));
@@ -305,7 +342,7 @@ async function main() {
     // CSAK a legújabb N cikk!
     const recent = result.items.slice(0, maxPerFeed);
 
-    let newCount = 0, kwFiltered = 0, alreadySeen = 0;
+    let newCount = 0, kwFiltered = 0, alreadySeen = 0, audFiltered = 0;
     for (const item of recent) {
       if (!item.link) continue;
       if (seenLinks.has(item.link)) { alreadySeen++; continue; }
@@ -313,6 +350,31 @@ async function main() {
       if (!keywordPrefilter(item)) {
         // Nem AI téma - ingyen kiszűrjük ÉS megjelöljük látottként
         kwFiltered++;
+        seen[feedConfig.id].push(item.link);
+        continue;
+      }
+
+      // KÖZÖNSÉG-KAPU (2026-07-28): a vállalati/fejlesztői forrásoknál (AWS ML,
+      // Snowflake, Databricks, SAP…) a hírek nagy része a MI olvasónknak
+      // semmit nem mond — SageMaker-telepítés, Bedrock-jogosultságok, céges
+      // sajtóközlemény. Ezek a források a hírek 37%-át adták, és a legtöbbet
+      // termelő forrásunk (aws-ml, 41 cikk) is közéjük tartozik.
+      // A forrást NEM kapcsoljuk ki (user-döntés: "szűrés, ne kikapcsolás") —
+      // az igazán érdekes híreik (pl. "új Claude-modell elérhető") így is
+      // bejönnek. A kapu a FORRÁS EREDETI CÍMÉRE néz, mert az író utólagos
+      // közönség-címkéje megbízhatatlan: mért eset szerint a "Build an agentic
+      // healthcare claims pipeline with Bedrock" is "hétköznapi" címkét kapott.
+      // Ingyenes, AI nélküli szűrés. Mérve 107 megjelent cikken: 46%-ot fogott
+      // ki, és a 41 tisztán üzletiből 23-at.
+      if (feedConfig.audience_gate === 'everyday' && !everydayRelevant(item.title || '')) {
+        audFiltered++;
+        seen[feedConfig.id].push(item.link);
+        continue;
+      }
+
+      // Versenytárs-összehasonlító lista → a márkaszabály tiltja (MINDEN forrás).
+      if (isListicle(item.title || '')) {
+        audFiltered++;
         seen[feedConfig.id].push(item.link);
         continue;
       }
@@ -327,7 +389,7 @@ async function main() {
 
     stats.items_seen_before += alreadySeen;
     stats.items_keyword_filtered += kwFiltered;
-    console.log(`✅ ${feedConfig.name.padEnd(28)} ${newCount} jelölt | ${kwFiltered} kiszűrve | ${alreadySeen} régi`);
+    console.log(`✅ ${feedConfig.name.padEnd(28)} ${newCount} jelölt | ${kwFiltered} kiszűrve${audFiltered ? ` | ${audFiltered} közönség-kapu` : ''} | ${alreadySeen} régi`);
   }
 
   stats.candidates_for_ai = candidates.length;
