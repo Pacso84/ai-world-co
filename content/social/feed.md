@@ -1,6 +1,111 @@
 # AI World Co. — közösségi posztok
 
-*Generálva: 2026-07-28T04:19:58.043Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+*Generálva: 2026-07-28T10:34:55.342Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## How to craft a concise meeting agenda in minutes using AI
+**🔗 https://aiworldhq.com/article/how-to-craft-a-concise-meeting-agenda-in-minutes-using-ai.html**
+
+**Facebook:**
+Stop wasting time in meetings that go off the rails. This guide shows you how to use AI to build a clear, time-boxed agenda in just a few minutes — so your team actually stays focused. https://aiworldhq.com/article/how-to-craft-a-concise-meeting-agenda-in-minutes-using-ai.html
+
+**Instagram:**
+Your meetings need a plan. Here's how to prompt AI to create a clear agenda in under 5 minutes.
+
+No more rambling, no more lost time — just focused discussions that respect everyone's calendar.
+
+#aiproductivity #meetingtips #workhack #productivitytips
+
+*Kép-ötlet: A clean desk with a laptop, a handwritten to-do list, and a coffee cup — minimal and productive.*
+
+---
+
+## How to create a personalised study plan with Meta AI in 10 minutes
+**🔗 https://aiworldhq.com/article/build-a-simple-weekly-study-plan-with-meta-ai-in-10-minutes.html**
+
+**Facebook:**
+Ever feel like your exams are taking over your life? Imagine opening your calendar on Sunday and seeing everything colour-coded and clear — no more guesswork. Here's how to build your weekly study plan in 10 minutes using Meta AI. https://aiworldhq.com/article/build-a-simple-weekly-study-plan-with-meta-ai-in-10-minutes.html #studyhacks #aiforstudents
+
+**Instagram:**
+From exam chaos to calm — in just 10 minutes.
+
+Meta AI can help you build a colour-coded weekly study plan that shows you exactly what to study and when. No more last-minute cramming.
+Link in bio.
+
+#studyhacks #examprep #studentlife #productivitytips #aiforstudents
+
+*Kép-ötlet: A clean, partially filled weekly calendar viewed from above, with coloured blocks representing study sessions and a smartphone showing the Meta AI interface in the corner.*
+
+---
+
+## How to Get AI Insights Anywhere with Genie One on Your Phone
+**🔗 https://aiworldhq.com/article/how-to-get-ai-insights-anywhere-with-genie-one-on-your-phone.html**
+
+**Facebook:**
+Ever wished you could check your business numbers while away from your desk? This simple guide walks you through getting instant AI insights from your company data on your phone—so you can make informed decisions wherever you are. https://aiworldhq.com/article/how-to-get-ai-insights-anywhere-with-genie-one-on-your-phone.html #SmallBusiness #AIForBusiness
+
+**Instagram:**
+📱 Get business insights anywhere
+
+No need to be a data expert—this tool lets you analyse your company numbers right from your phone. Quick answers, anytime you need them.
+
+#BusinessIntelligence #MobileWork #DataDriven #AIForBusiness #SmallBizTips
+
+Link in bio
+
+*Kép-ötlet: A person holding a phone showing a simple data dashboard, sitting at a café, looking confident and relaxed.*
+
+---
+
+## How to Get Faster Help From AI-Powered Customer Service
+**🔗 https://aiworldhq.com/article/how-to-get-faster-help-from-ai-powered-customer-service-tool.html**
+
+**Facebook:**
+Want faster answers from AI chatbots? This simple 3-step guide shows you how to start a fresh chat, ask clear questions, and use shortcuts — so you get quick, accurate help without the back-and-forth. https://aiworldhq.com/article/how-to-get-faster-help-from-ai-powered-customer-service-tool.html #AIHelp #CustomerService
+
+**Instagram:**
+Tired of repeating yourself to chatbots? Learn 3 easy tricks to get faster, clearer answers from AI customer service tools — even if you've never used one before.
+#AIForEveryone #CustomerServiceTips #HelpfulTech #GettingStarted #AIBasics
+Link in bio.
+
+*Kép-ötlet: A person looking at their phone with a calm, confident expression next to a simple chat bubble icon*
+
+---
+
+## How to Get Quick Summaries from Long Documents with Claude
+**🔗 https://aiworldhq.com/article/how-to-get-quick-summaries-from-long-documents-with-claude.html**
+
+**Facebook:**
+Ever feel swamped by long documents? Here's a simple way to get the key points in seconds—so you can move on with your day. https://aiworldhq.com/article/how-to-get-quick-summaries-from-long-documents-with-claude.html #Productivity #AI
+
+**Instagram:**
+Tired of endless reading?
+
+Get the main ideas from any document in seconds with this easy method—without skim-reading forever.
+#AI #Productivity #WorkSmarter
+Link in bio.
+
+*Kép-ötlet: A clean photo of a neatly stacked pile of papers with a simple magnifying glass resting on top, symbolising quick discovery.*
+
+---
+
+## How to Lock In Lower AI Costs with Reserved Capacity
+**🔗 https://aiworldhq.com/article/how-to-lock-in-lower-ai-costs-with-reserved-capacity.html**
+
+**Facebook:**
+Big companies get discounts on AI by promising to use it regularly. The same idea can help you pay less — no corporate contract needed. This guide walks you through it step by step. https://aiworldhq.com/article/how-to-lock-in-lower-ai-costs-with-reserved-capacity.html #AISavings #CostCutting
+
+**Instagram:**
+Want to pay less for AI? Here's the trick big companies use.
+
+It's called reserved capacity — they commit to using lots of AI and get lower rates in return. The good news? You can apply similar thinking at home. This beginner guide shows you how, simple.
+
+#AI #CostSaving #TechTips #BeginnerGuide #AILearning
+
+Link in bio.
+
+*Kép-ötlet: A person looking satisfied while checking a lower price on their phone, warm natural lighting, simple and approachable.*
 
 ---
 
