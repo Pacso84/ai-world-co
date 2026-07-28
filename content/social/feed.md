@@ -1,6 +1,116 @@
 # AI World Co. — közösségi posztok
 
-*Generálva: 2026-07-28T10:34:55.342Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+*Generálva: 2026-07-28T17:28:51.197Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## Enterprise AI Security: Agentic Controls and MCP Governance
+**🔗 https://aiworldhq.com/article/what-agentic-ai-means-for-your-everyday-data-security.html**
+
+**Facebook:**
+AI is getting smarter at doing things for you — not just chatting back. The good news: new safety controls arriving in 2026 will help keep your data secure while AI works on your behalf. https://aiworldhq.com/article/what-agentic-ai-means-for-your-everyday-data-security.html #AISecurity #DataPrivacy
+
+**Instagram:**
+AI can now actually do tasks for you, not just answer questions.
+
+New safety controls in 2026 are being introduced to help protect your personal and work data as AI takes on more responsibilities.
+
+#AISecurity #DataPrivacy #TechExplained #FutureOfWork #SmartTools
+
+*Kép-ötlet: A simple, clean illustration of a friendly AI icon with a small shield, showing protection without being cluttered or technical.*
+
+---
+
+## How to Make AI Images with Stable Diffusion
+**🔗 https://aiworldhq.com/article/how-to-make-ai-images-with-stable-diffusion.html**
+
+**Facebook:**
+Ever wanted to create AI art but thought it looked too complicated? This free guide shows you exactly how to turn your words into images — no design skills needed. https://aiworldhq.com/article/how-to-make-ai-images-with-stable-diffusion.html #AI #Creativity
+
+**Instagram:**
+Turn your words into art in minutes — no design experience needed. This free guide walks you through it step by step.
+
+#AIArt #CreativeTools #StableDiffusion #Beginners
+
+Link in bio.
+
+*Kép-ötlet: A person typing on a laptop with a colorful AI-generated image appearing on the screen.*
+
+---
+
+## How to start a new Google Docs document with Gemini’s built-in help for beginners
+**🔗 https://aiworldhq.com/article/start-a-google-docs-document-with-gemini-s-help.html**
+
+**Facebook:**
+Staring at a blank page is the worst. Google's AI assistant Gemini can now help you get started right inside Docs — no tech skills needed. This beginner-friendly guide shows you exactly how. https://aiworldhq.com/article/start-a-google-docs-document-with-gemini-s-help.html #GoogleDocs #Productivity
+
+**Instagram:**
+No more struggling with a blank page
+
+Gemini's built into Docs and can help you draft emails, outlines or reports — even if you've never used AI. Here's a simple guide to get started:
+
+#GoogleDocs #AIForBeginners #WritingTips #ProductivityHacks #TechMadeSimple
+
+Link in bio.
+
+*Kép-ötlet: A person sitting at a desk looking at a laptop screen with a thoughtful expression, with a subtle Google Docs logo visible on the screen.*
+
+---
+
+## How to turn a blurry photo into a crisp poster with NVIDIA AI Image Super‑Resolution in 5 minutes
+**🔗 https://aiworldhq.com/article/sharpen-your-photos-with-ai-using-upscayl.html**
+
+**Facebook:**
+That blurry family photo from years ago could become a crisp print ready for your wall. This free guide shows you how — in just a few minutes. https://aiworldhq.com/article/sharpen-your-photos-with-ai-using-upscayl.html
+
+**Instagram:**
+Got a blurry photo you want to fix?
+
+A free AI tool can sharpen your old photos in minutes — no tech skills needed. Now your memories can look their best, ready to print or display.
+
+PhotoTips #AI #ImageEnhancement #Memories #DIY
+
+Link in bio.
+
+*Kép-ötlet: A split screen showing a faded, blurry portrait on the left and the same image sharp and vibrant on the right, with soft lighting.*
+
+---
+
+## How to turn a messy email into a clear bullet-point list with Hugging Face’s free summarizer
+**🔗 https://aiworldhq.com/article/turn-a-messy-email-into-a-clear-bullet-point-list-with-huggi.html**
+
+**Facebook:**
+Got a three-paragraph email you need to actually understand? Here's a free tool that turns messy messages into neat bullet points in seconds. Super handy for clearing your inbox without missing anything important. https://aiworldhq.com/article/turn-a-messy-email-into-a-clear-bullet-point-list-with-huggi.html #aihelper #productivitytips
+
+**Instagram:**
+That feeling when you open a massive email and just want the key points🤯
+
+This free tool pulls out the important bits and gives you a clean bullet list you can actually use. Takes 10 seconds.
+
+#aihelper #emailhacks #productivity #beginnerai #techforthe restofus
+
+Link in bio.
+
+*Kép-ötlet: A clean email envelope icon with neat bullet points emerging from it, on a soft neutral background.*
+
+---
+
+## How to turn messy meeting notes into a clear action plan with Microsoft Copilot in OneNote
+**🔗 https://aiworldhq.com/article/how-to-turn-messy-meeting-notes-into-a-clear-action-plan-wit.html**
+
+**Facebook:**
+Sick of forgetting who promised to do what after meetings? This simple guide shows you how to turn messy notes into a clear action list with owners and deadlines—in seconds. Your future self will thank you. https://aiworldhq.com/article/how-to-turn-messy-meeting-notes-into-a-clear-action-plan-wit.html #OneNote #Productivity
+
+**Instagram:**
+Never lose track of meeting promises again.
+
+With Copilot in OneNote, you can transform messy notes into a clear action list with owners and deadlines—in seconds. No more wondering what you were supposed to do.
+
+#OneNote #MicrosoftCopilot #ProductivityTips #MeetingHacks #WorkSmarter
+
+Link in bio.
+
+*Kép-ötlet: A clean desk with an open OneNote page showing neat bullet-point action items next to a coffee cup*
 
 ---
 

@@ -1,86 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178515056001373",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-07-27T11:09:20.013Z",
-      "updated": "2026-07-27T11:09:26.123Z"
-    },
-    {
-      "id": "t178515056612538",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-07-27T11:09:26.125Z",
-      "updated": "2026-07-27T11:10:14.287Z"
-    },
-    {
-      "id": "t178515061428970",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-07-27T11:10:14.289Z",
-      "updated": "2026-07-27T11:11:59.108Z"
-    },
-    {
-      "id": "t178515071911043",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-07-27T11:11:59.110Z",
-      "updated": "2026-07-27T11:12:33.433Z"
-    },
-    {
-      "id": "t178515075343529",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-27T11:12:33.435Z",
-      "updated": "2026-07-27T11:12:56.999Z"
-    },
-    {
-      "id": "t178515077700265",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-07-27T11:12:57.002Z",
-      "updated": "2026-07-27T11:13:24.851Z"
-    },
-    {
-      "id": "t178515080485357",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-27T11:13:24.853Z",
-      "updated": "2026-07-27T11:13:49.176Z"
-    },
-    {
-      "id": "t178515082917850",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-27T11:13:49.178Z",
-      "updated": "2026-07-27T11:14:33.160Z"
-    },
-    {
-      "id": "t178515087316213",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-27T11:14:33.162Z",
-      "updated": "2026-07-27T11:15:01.775Z"
-    },
-    {
-      "id": "t178515090177879",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-07-27T11:15:01.778Z",
-      "updated": "2026-07-27T11:15:24.271Z"
-    },
-    {
       "id": "t178515092430266",
       "title": "Run designer",
       "status": "done",
@@ -479,33 +399,89 @@
       "agent": "publisher",
       "created": "2026-07-28T10:24:27.819Z",
       "updated": "2026-07-28T10:25:09.508Z"
+    },
+    {
+      "id": "t178525905875112",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-07-28T17:17:38.751Z",
+      "updated": "2026-07-28T17:17:38.981Z"
+    },
+    {
+      "id": "t178525905898443",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-07-28T17:17:38.984Z",
+      "updated": "2026-07-28T17:18:38.195Z"
+    },
+    {
+      "id": "t178525911819799",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-07-28T17:18:38.197Z",
+      "updated": "2026-07-28T17:18:38.389Z"
+    },
+    {
+      "id": "t178525911839148",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-07-28T17:18:38.391Z",
+      "updated": "2026-07-28T17:18:52.524Z"
+    },
+    {
+      "id": "t178525913252671",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-28T17:18:52.526Z",
+      "updated": "2026-07-28T17:19:26.109Z"
+    },
+    {
+      "id": "t178525916611228",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-07-28T17:19:26.112Z",
+      "updated": "2026-07-28T17:19:35.042Z"
+    },
+    {
+      "id": "t178525917507099",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-28T17:19:35.070Z",
+      "updated": "2026-07-28T17:20:14.736Z"
+    },
+    {
+      "id": "t178525921473834",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-07-28T17:20:14.738Z",
+      "updated": "2026-07-28T17:20:26.164Z"
+    },
+    {
+      "id": "t178525922616595",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-28T17:20:26.165Z",
+      "updated": "2026-07-28T17:20:37.662Z"
+    },
+    {
+      "id": "t178525923766347",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-07-28T17:20:37.663Z",
+      "updated": "2026-07-28T17:20:59.011Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178436691886377",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). Our article line-up is coherent and ready for publication, covering a range of practical AI applications that everyday people can benefit from. I do note that the line-up is quite tech-heavy, so a gen",
-      "agent": "publisher",
-      "at": "2026-07-18T09:28:38.863Z",
-      "loud": false
-    },
-    {
-      "id": "n178436692617487",
-      "level": "success",
-      "text": "4 hír + 2 útmutató publikálva (költség: $0.0671).",
-      "agent": "ceo",
-      "at": "2026-07-18T09:28:46.174Z",
-      "loud": false
-    },
-    {
-      "id": "n178439318194820",
-      "level": "info",
-      "text": "SEO: 5 cikk optimalizálva (átlag 8.2/10).",
-      "agent": "seo",
-      "at": "2026-07-18T16:46:21.948Z",
-      "loud": false
-    },
     {
       "id": "n178439356189262",
       "level": "success",
@@ -1281,27 +1257,33 @@
       "agent": "ceo",
       "at": "2026-07-28T10:25:09.530Z",
       "loud": false
+    },
+    {
+      "id": "n178525922615623",
+      "level": "info",
+      "text": "SEO: 1 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-07-28T17:20:26.156Z",
+      "loud": false
+    },
+    {
+      "id": "n178525924640129",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The line-up looks solid—practical, varied, and covers study, work, and everyday life use cases with a good mix of beginners-first topics like privacy and \"what AI is great at.\" One small note: Le Chat",
+      "agent": "publisher",
+      "at": "2026-07-28T17:20:46.401Z",
+      "loud": false
+    },
+    {
+      "id": "n17852592590415",
+      "level": "success",
+      "text": "1 hír + 0 útmutató publikálva (költség: $0.0099).",
+      "agent": "ceo",
+      "at": "2026-07-28T17:20:59.041Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m17848579195301",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Random  styles in draft mode\" — mi a baj: NO_H1: Nincs H1 (# Cím) a cikkben",
-      "ref": "2026-07-23T01-48-48-121Z_midjourney-updates_Random__styles_in_draft_mode.json",
-      "at": "2026-07-24T01:51:59.530Z"
-    },
-    {
-      "id": "m178485795136876",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Relax mode for V8 Alpha\" — mi a baj: Web app step 'Open your job in the web interface' uses jargon and is vague for beginners; Discord step 'Look for the mode row at the top' lacks visual description of what the row looks like; Step 'Send your next prompt as normal' assumes reader knows what a prompt is",
-      "ref": "2026-07-23T01-48-48-122Z_midjourney-updates_Relax_mode_for_V8_Alpha.json",
-      "at": "2026-07-24T01:52:31.368Z"
-    },
     {
       "id": "m178485797300889",
       "from": "ellenorzo",
@@ -2637,6 +2619,24 @@
       "text": "6 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
       "ref": null,
       "at": "2026-07-28T10:34:55.344Z"
+    },
+    {
+      "id": "m178525923765234",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-07-28T17:20:37.652Z"
+    },
+    {
+      "id": "m178525973120041",
+      "from": "social",
+      "to": "team",
+      "kind": "info",
+      "text": "6 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
+      "ref": null,
+      "at": "2026-07-28T17:28:51.200Z"
     }
   ]
 }
