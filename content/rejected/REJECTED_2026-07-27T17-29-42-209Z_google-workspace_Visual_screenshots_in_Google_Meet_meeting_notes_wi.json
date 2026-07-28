@@ -1,0 +1,40 @@
+{
+  "_meta": {
+    "written_at": "2026-07-28T01:41:49.784Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00718128,
+    "original_draft": "2026-07-27T17-29-42-209Z_google-workspace_Visual_screenshots_in_Google_Meet_meeting_notes_wi.json",
+    "source_id": "google-workspace",
+    "source_name": "Google Workspace Updates (hivatalos)",
+    "source_link": "http://workspaceupdates.googleblog.com/2026/07/visual-screenshots-in-google-meet-meeting-notes-will-soon-be-generally-available-pre-configure-admin-settings-in-advance.html",
+    "status": "rejected",
+    "rejected_at": "2026-07-28T01:42:38.038Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 745
+    },
+    "ai_review": {
+      "overall_score": 7,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [
+        "Article framing (focus on limitations) misses the news angle from source — screenshots are coming soon to Meet notes, which readers deserve to know",
+        "Subtitle 'what it misses' and 'limits worth knowing' could mislead readers into thinking screenshots are permanently unavailable"
+      ],
+      "verdict": "Solid explainer with good structure, clear language, and useful practical advice, but it undersells the actual news by framing the story around limitations rather than the forthcoming screenshot feature that the Google source announces as the main news.",
+      "_aiCost": 0.001354536,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Solid explainer with good structure, clear language, and useful practical advice, but it undersells the actual news by framing the story around limitations rather than the forthcoming screenshot feature that the Google source announces as the main news.",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-07-27T17-29-42-209Z_google-workspace_Visual_screenshots_in_Google_Meet_meeting_notes_wi.json",
+    "requeued_unchanged": false
+  },
+  "article_markdown": "---\ntitle: \"What Google Meet's 'Take notes for me' Actually Captures — and Where It Stops\"\nsubtitle: \"A clear-eyed look at what Google's meeting AI does today, what it misses, and how to make the most of it right now.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"google-meet\", \"productivity\", \"meetings\", \"ai-tools\", \"note-taking\"]\n---\n\n# What Google Meet's 'Take notes for me' Actually Captures — and Where It Stops\n\nYou sat through a meeting, slides flashing past, and now you're trying to remember what was on slide seven. Sound familiar? Google Meet's **\"Take notes for me\"** feature was built for exactly this kind of moment — but it helps in ways you might not expect, and it has limits worth knowing about before you rely on it.\n\nHere's an honest look at what the feature does, what it misses, and how to get the most out of it today.\n\n## What \"Take notes for me\" actually does\n\n\"Take notes for me\" is an **AI notetaker** — think of it as a silent meeting assistant that listens along and writes things down. When someone turns it on at the start of a meeting, the AI:\n\n- Joins the call as a clearly labelled participant (everyone sees a notification)\n- **Transcribes** the conversation (writes out what was said, word for word)\n- Produces a short summary at the end, including suggested action items (tasks to follow up on)\n- Saves everything to a **Google Doc** (a cloud-based Word-style document) in the organiser's Drive\n\nThe feature is part of **Google Workspace** (the paid business and education version of Google's productivity tools), though some personal Google accounts also have access. It's powered by Google's Gemini AI (Google's family of AI models).\n\n## What it captures — and what it doesn't\n\nThis is the part worth being clear about.\n\n**It captures:** Spoken words. Every time someone speaks in the meeting, the AI is listening and transcribing. That transcript becomes the spine of your notes document.\n\n**It doesn't capture:** The visuals. If a presenter shares slides, charts, diagrams, or a screen, the AI might note that *\"Sarah showed the Q3 chart\"* — but it does not save the image itself. There is no verified, generally available feature today that embeds screenshots into the notes document.\n\nThis matters because most work meetings live in the visuals — the numbers on the slide, the mock-up, the flowchart. The AI can tell you *what* was discussed. It cannot show you *what was on screen*. If that visual content matters to you, you'll still need to grab the slide deck separately.\n\n## A few honest trade-offs\n\nA couple of things are worth knowing before you lean on the feature too heavily:\n\n- **Quality depends on audio.** Background noise, strong accents, people talking over each other — all of these reduce transcription accuracy.\n- **Summaries are useful, not perfect.** The summary is generated by AI and can miss nuance. Always treat it as a starting point, not a final record.\n- **It is opt-in.** Every participant is notified when the notetaker joins. You can't secretly record a meeting this way.\n\n## What this means for you\n\n- **If you attend lots of meetings:** Treat the notes as a reliable *spoken-word* record, not a complete one. Pair them with any slides or documents shared in the meeting — those still need a separate home.\n- **If you run or present meetings:** Know that your audience can re-read what you *said*, but not what you *showed*. Send the slide deck as a follow-up if the visuals matter.\n- **If you manage a team or Workspace:** Decide in advance whether your team uses the feature and when. It's worth a quick conversation about expectations and privacy.\n- **If you're just curious:** Try it once on a low-stakes meeting and read the notes afterwards. You'll learn more in five minutes than any article can tell you.\n\n## Wrap-up\n\n\"Take notes for me\" is a genuinely useful tool — for capturing what was *said*. It is not (yet) a tool for capturing what was *shown*, and pretending otherwise would be misleading. Knowing that line means you can use it confidently for what it does well, and plan around what it doesn't.\n\n**One small step to try today:** Open your last meeting notes doc, and notice what's missing. Spoken words — probably captured. The chart from slide 12 — almost certainly not. That gap is exactly where your own follow-up habits still matter.",
+  "original_title": "Visual screenshots in Google Meet meeting notes will soon be generally available, pre-configure admin settings in advance"
+}

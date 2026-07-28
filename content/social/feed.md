@@ -1,6 +1,118 @@
 # AI World Co. — közösségi posztok
 
-*Generálva: 2026-07-27T17:39:15.687Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+*Generálva: 2026-07-28T02:13:17.186Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## Introducing Gemini 3.6 Flash, 3.5 Flash-Lite, and 3.5 Flash Cyber
+**🔗 https://aiworldhq.com/article/how-to-read-google-s-gemini-model-names-without-the-jargon.html**
+
+**Facebook:**
+Gemini Pro, Flash, Flash Lite — feel like you're reading alphabet soup every time Google announces something new? Here's the simple pattern behind the names, explained in plain English. https://aiworldhq.com/article/how-to-read-google-s-gemini-model-names-without-the-jargon.html #Gemini #GoogleAI
+
+**Instagram:**
+Gemini Pro, Flash, Flash Lite — making sense of Google's AI model names
+
+It sounds more confusing than it is. Here's the straightforward way to understand what you're actually choosing between.
+
+#Gemini #GoogleAI #AIExplained #TechForEveryone
+
+Link in bio.
+
+*Kép-ötlet: A clean split image: on one side, a jumbled collection of model names like 'Gemini 3.6 Flash' on sticky notes; on the other, three simple icons labelled 'Pro', 'Flash', and 'Lite' — showing the confusion becoming clarity.*
+
+---
+
+## Announcing the AI Glasses Impact Grant Recipients: Helping People Work, Learn, and Live More Independently
+**🔗 https://aiworldhq.com/article/ai-smart-glasses-and-everyday-life-what-they-actually-do-and.html**
+
+**Facebook:**
+Imagine cooking dinner with messy hands while a voice reads your recipe — that's just one real way AI glasses are helping people work, learn and live more independently. Here's who's benefiting and what's actually possible now. https://aiworldhq.com/article/ai-smart-glasses-and-everyday-life-what-they-actually-do-and.html #AI #Accessibility
+
+**Instagram:**
+AI glasses aren't just for tech lovers — they're helping workers, students and people with disabilities with everyday tasks like reading, navigation and following instructions.
+
+Some pretty practical uses you might not expect 👇
+
+#SmartGlasses #AssistiveTech #AI #Accessibility #WearableAI
+
+Link in bio.
+
+*Kép-ötlet: A person wearing sleek, normal-looking glasses while cooking, with a warm, natural smile on their face.*
+
+---
+
+## Expanding our partnership with Cognizant
+**🔗 https://aiworldhq.com/article/30-000-people-just-got-trained-on-claude-at-work-here-s-what.html**
+
+**Facebook:**
+Your workplace is probably going to start using AI more. One of the world's biggest IT companies just showed us how — they trained 30,000 people on Claude. Here's what that means for your job. https://aiworldhq.com/article/30-000-people-just-got-trained-on-claude-at-work-here-s-what.html #AI #Work
+
+**Instagram:**
+Your workplace is about to change
+
+One of the world's biggest IT companies just trained 30,000 people on AI. Here's what that means for your job — and how you can get ahead too.
+
+Link in bio
+
+#AI #Workplace #FutureOfWork #CareerTips
+
+*Kép-ötlet: A clean, minimal photo of a modern office space with diverse people collaborating around a laptop, showing subtle AI elements like a gentle glow or abstract lines — no text, warm and professional.*
+
+---
+
+## Our position on open
+**🔗 https://aiworldhq.com/article/what-open-weights-ai-actually-means-and-why-the-debate-matte.html**
+
+**Facebook:**
+Ever wondered why some AI apps feel like a black box while others let you see how they work? This simple guide breaks down the open vs closed AI debate—and why it matters for the chatbots you use every day. https://aiworldhq.com/article/what-open-weights-ai-actually-means-and-why-the-debate-matte.html #AI #TechExplained
+
+**Instagram:**
+Why some AI keeps its secrets close while others share how they work
+
+Knowing the difference helps you understand what happens with your data when you use chatbots and assistants. Once you get it, you'll never look at AI the same way.
+
+#ArtificialIntelligence #TechForEveryone #AILearning #OpenWeights #DigitalSkills
+
+Link in bio.
+
+*Kép-ötlet: A split image showing an open door on one side and a closed door on the other, symbolising transparency versus hidden processes in AI systems.*
+
+---
+
+## Get Started with Genie One: Top AI Cowork Use Cases for Business Users
+**🔗 https://aiworldhq.com/article/ai-coworkers-explained-what-they-actually-do-at-work.html**
+
+**Facebook:**
+Ever feel like there aren't enough hours in the day? An AI coworker can help handle repetitive tasks like summarising meetings or drafting emails, so you can focus on the work that actually matters. This guide walks you through what they do and how to try one safely. https://aiworldhq.com/article/ai-coworkers-explained-what-they-actually-do-at-work.html #AI #Productivity
+
+**Instagram:**
+Your new work buddy?
+
+AI coworkers aren't here to replace you — they're here to take the busywork off your plate. Think of them as a helpful colleague who never gets tired of the repetitive stuff.
+
+Link in bio.
+
+#AI #WorkplaceProductivity #GettingStarted #AITools #FutureOfWork
+
+*Kép-ötlet: A clean, modern desk setup with a person working comfortably alongside a subtle, friendly abstract shape representing AI — nothing robotic or sci-fi, just simple and approachable.*
+
+---
+
+## Building AI Literacy: Frameworks, Tools, and Practices
+**🔗 https://aiworldhq.com/article/how-to-start-building-ai-literacy-5-practical-weekly-habits.html**
+
+**Facebook:**
+Ever feel like everyone's talking AI but you're not sure where to start? These 5 simple weekly habits help you get comfortable with AI tools — no tech background needed. https://aiworldhq.com/article/how-to-start-building-ai-literacy-5-practical-weekly-habits.html #AI #Learning
+
+**Instagram:**
+Feeling behind on the AI stuff? You don't need to be a tech wizard.
+
+Here are 5 easy weekly habits to build your AI confidence — one small step at a time.
+
+#AILiteracy #LearningNewThings #GettingStarted #TechForEveryone #Prompting
+
+*Kép-ötlet: A person sitting comfortably at a kitchen table with a laptop, smiling while looking at a simple checklist, natural morning light.*
 
 ---
 

@@ -1,0 +1,27 @@
+{
+  "started_at": "2026-07-28T01:41:49.913Z",
+  "total": 2,
+  "passed": 1,
+  "failed": 1,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.00351042,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-07-27T17-29-42-208Z_google-deepmind_Introducing_Gemini_3_6_Flash__3_5_Flash-Lite__and_.json",
+      "article": "ARTICLE_2026-07-27T17-29-42-208Z_google-deepmind_Introducing_Gemini_3_6_Flash__3_5_Flash-Lite__and_.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.00170694
+    },
+    {
+      "writer": "WRITER_2026-07-27T17-29-42-209Z_google-workspace_Visual_screenshots_in_Google_Meet_meeting_notes_wi.json",
+      "rejected": "REJECTED_2026-07-27T17-29-42-209Z_google-workspace_Visual_screenshots_in_Google_Meet_meeting_notes_wi.json",
+      "decision": "FAIL",
+      "score": 7,
+      "cost_usd": 0.001354536
+    }
+  ],
+  "finished_at": "2026-07-28T01:42:38.088Z",
+  "duration_seconds": 48.175
+}

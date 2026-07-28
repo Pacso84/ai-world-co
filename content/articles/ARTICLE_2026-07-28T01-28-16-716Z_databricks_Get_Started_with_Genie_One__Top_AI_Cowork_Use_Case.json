@@ -1,0 +1,57 @@
+{
+  "_meta": {
+    "written_at": "2026-07-28T01:30:32.032Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00860778,
+    "original_draft": "2026-07-28T01-28-16-716Z_databricks_Get_Started_with_Genie_One__Top_AI_Cowork_Use_Case.json",
+    "source_id": "databricks",
+    "source_name": "Databricks Blog (hivatalos)",
+    "source_link": "https://www.databricks.com/blog/get-started-genie-one-top-ai-cowork-use-cases-business-users",
+    "status": "published",
+    "published_at": "2026-07-28T01:36:06.179Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 755
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Solid explainer with good structure, clear language, and three practical audience segments. The 80/20 rule is a recognised general heuristic rather than a fabricated statistic, and the privacy/accuracy warnings are responsible. Australian English is correct throughout. Ready to publish.",
+      "_aiCost": 0.00146961,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-07-28T01:43:19.139Z",
+    "guide_worthy": false,
+    "pairing_reason": "Article is a generic explainer about AI coworkers conceptually with no specific named tool or feature that users can go use today — the title mentions Genie One but the article content never identifies or describes any specific product",
+    "seo": {
+      "meta_description": "What is an AI coworker? A plain guide to AI assistants at work — what they do and how they can help your daily tasks.",
+      "keywords": [
+        "what is an AI coworker",
+        "AI assistant at work",
+        "AI tools for office work",
+        "how to use AI at work",
+        "AI workplace productivity",
+        "ChatGPT for work tasks",
+        "AI helper for emails and meetings"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add 'how to use AI at work' as a secondary keyword earlier in the subtitle or intro to capture more search intent",
+        "Include a brief practical example or use case in the first paragraph — articles with concrete examples often rank better for 'how to' searches",
+        "The term 'AI coworker' is specific; also mention 'AI workplace assistant' or 'AI office assistant' to capture related search terms"
+      ],
+      "optimised_at": "2026-07-28T02:05:34.301Z"
+    },
+    "social": true,
+    "social_at": "2026-07-28T02:12:50.319Z"
+  },
+  "article_markdown": "---\ntitle: \"AI Coworkers Explained: What They Actually Do at Work\"\nsubtitle: \"A plain-language guide to AI assistants in the workplace — what they are, what they're good at, and a safe way to try one\"\ncategory: \"explainer\"\naudience: \"business\"\nread_time_minutes: 4\ntags: [\"ai-coworkers\", \"workplace-ai\", \"productivity\", \"getting-started\"]\n---\n\n# AI Coworkers Explained: What They Actually Do at Work\n\nYou've probably had one of those mornings — 30 unread emails before your first coffee, a meeting in 15 minutes, and three tasks you forgot about yesterday. An \"AI coworker\" is a newish idea in workplace tech: software that sits beside you and quietly helps with exactly this kind of mess.\n\n## What we mean by \"AI coworker\"\n\nAn AI coworker is an AI assistant — a chatbot-style tool powered by a **large language model (LLM)**, basically the same kind of engine that runs ChatGPT — that you can ask to handle chunks of your workday. It's not a robot at the next desk. It's more like a very fast helper who reads, writes, summarises, and looks things up, usually through the apps you already use, like your email, calendar, or document tools.\n\nThe \"coworker\" label comes from how these tools have started to *take actions*, not just answer questions. Some can draft an email for you to review. Some can pull data from a spreadsheet and turn it into a short summary. A few can even schedule meetings or post updates in a chat tool while you focus on something else.\n\n## The kinds of jobs people are already handing off\n\nA few practical examples that readers are already trying:\n\n- **Triage the inbox.** You ask the AI to read your unread messages and group them — urgent, needs a reply, just FYI. You decide what to do with each one.\n- **Meeting follow-ups.** After a video call, the tool turns the transcript into a short list of decisions and action items.\n- **First drafts.** You give it a topic and a rough outline; it writes a draft email, report, or proposal that you edit before sending.\n- **Research summaries.** Instead of opening 15 browser tabs, you ask for a one-paragraph summary of a long document or a topic.\n- **Spreadsheet help.** You describe what you want to know — \"which products sold best in NSW last month?\" — and the AI tries to write the formula or query for you.\n\nThese all follow a simple pattern: the AI does the first 80%, and you check and finish the last 20%.\n\n## A few honest things to consider\n\nBefore you start using one at work, a few practical points worth knowing:\n\n- **Privacy matters.** Anything you paste into an AI tool may be stored or used to improve the model. Don't paste customer data, private records, or anything covered by your employer's IT policy without checking first.\n- **It's not always right.** AI assistants can confidently give you the wrong number, miss a key detail, or invent a quote. Always read the output before you act on it — especially in work contexts.\n- **It changes the job, not the person.** In most roles, an AI coworker takes the boring, repetitive bits. The thinking, judgement, and creative parts still come from you.\n\n## What this means for you\n\n- **If you work in a small team or on your own:** Start with one task that eats your week — meeting notes, inbox triage, or first-draft writing. Pick a tool your workplace already provides (most office suites now include some form of AI helper) before paying for anything new.\n- **If you manage a team:** Think about which one or two workflows would genuinely save hours if automated. Don't roll AI out everywhere at once — pilot it with one team, set clear rules about what data is safe to share, and gather feedback before expanding.\n- **If you're worried about your role:** The pattern so far is that AI coworkers change *how* work gets done more than *whether* it gets done. People who learn to use them tend to get more done with less stress — that's a useful skill to build early.\n\n## Wrap-up\n\nAn AI coworker is best thought of as a capable assistant that handles the routine parts of your day, leaving you to focus on the parts only you can do. Pick one task you do every week, try a tool your workplace already supports, and spend 30 minutes this week seeing what it does well — and where it makes mistakes.",
+  "original_title": "Get Started with Genie One: Top AI Cowork Use Cases for Business Users"
+}

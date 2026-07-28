@@ -1,118 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178494563182157",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-07-25T02:13:51.821Z",
-      "updated": "2026-07-25T02:14:14.728Z"
-    },
-    {
-      "id": "t178503036800895",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-07-26T01:46:08.008Z",
-      "updated": "2026-07-26T01:46:08.280Z"
-    },
-    {
-      "id": "t178503036828257",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-07-26T01:46:08.282Z",
-      "updated": "2026-07-26T01:46:36.718Z"
-    },
-    {
-      "id": "t178503039672067",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-07-26T01:46:36.720Z",
-      "updated": "2026-07-26T01:46:36.978Z"
-    },
-    {
-      "id": "t178503039698080",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-07-26T01:46:36.980Z",
-      "updated": "2026-07-26T01:51:50.014Z"
-    },
-    {
-      "id": "t178503071001693",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-26T01:51:50.016Z",
-      "updated": "2026-07-26T01:54:13.088Z"
-    },
-    {
-      "id": "t178503085309157",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-07-26T01:54:13.091Z",
-      "updated": "2026-07-26T01:56:01.163Z"
-    },
-    {
-      "id": "t178503096116582",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-26T01:56:01.165Z",
-      "updated": "2026-07-26T01:58:15.799Z"
-    },
-    {
-      "id": "t178503109580378",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-26T01:58:15.803Z",
-      "updated": "2026-07-26T01:59:07.731Z"
-    },
-    {
-      "id": "t178503114773318",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-26T01:59:07.733Z",
-      "updated": "2026-07-26T01:59:38.614Z"
-    },
-    {
-      "id": "t178503117861796",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-07-26T01:59:38.617Z",
-      "updated": "2026-07-26T02:01:04.641Z"
-    },
-    {
-      "id": "t178503126466935",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-26T02:01:04.669Z",
-      "updated": "2026-07-26T02:02:13.567Z"
-    },
-    {
-      "id": "t178503133356962",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-26T02:02:13.569Z",
-      "updated": "2026-07-26T02:03:32.864Z"
-    },
-    {
-      "id": "t178503141289340",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-26T02:03:32.893Z",
-      "updated": "2026-07-26T02:05:52.024Z"
-    },
-    {
       "id": "t178503155202616",
       "title": "Run seo",
       "status": "done",
@@ -479,33 +367,121 @@
       "agent": "publisher",
       "created": "2026-07-27T17:32:30.162Z",
       "updated": "2026-07-27T17:32:48.466Z"
+    },
+    {
+      "id": "t17852020675527",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-07-28T01:27:47.552Z",
+      "updated": "2026-07-28T01:27:47.682Z"
+    },
+    {
+      "id": "t178520206768347",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-07-28T01:27:47.683Z",
+      "updated": "2026-07-28T01:28:16.726Z"
+    },
+    {
+      "id": "t178520209672888",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-07-28T01:28:16.728Z",
+      "updated": "2026-07-28T01:28:16.881Z"
+    },
+    {
+      "id": "t178520209688359",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-07-28T01:28:16.883Z",
+      "updated": "2026-07-28T01:33:58.167Z"
+    },
+    {
+      "id": "t178520243816840",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-28T01:33:58.168Z",
+      "updated": "2026-07-28T01:36:28.764Z"
+    },
+    {
+      "id": "t17852025887668",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-07-28T01:36:28.766Z",
+      "updated": "2026-07-28T01:41:49.792Z"
+    },
+    {
+      "id": "t178520290979337",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-28T01:41:49.793Z",
+      "updated": "2026-07-28T01:42:38.096Z"
+    },
+    {
+      "id": "t178520295809875",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-07-28T01:42:38.098Z",
+      "updated": "2026-07-28T01:43:25.401Z"
+    },
+    {
+      "id": "t178520300542468",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-07-28T01:43:25.424Z",
+      "updated": "2026-07-28T02:00:43.963Z"
+    },
+    {
+      "id": "t178520404396421",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-28T02:00:43.964Z",
+      "updated": "2026-07-28T02:01:59.846Z"
+    },
+    {
+      "id": "t178520411987092",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-28T02:01:59.870Z",
+      "updated": "2026-07-28T02:04:38.534Z"
+    },
+    {
+      "id": "t178520427853624",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-07-28T02:04:38.536Z",
+      "updated": "2026-07-28T02:06:43.554Z"
+    },
+    {
+      "id": "t178520440355654",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-28T02:06:43.556Z",
+      "updated": "2026-07-28T02:08:03.515Z"
+    },
+    {
+      "id": "t178520448351652",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-07-28T02:08:03.516Z",
+      "updated": "2026-07-28T02:08:15.771Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178430803387485",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). Our line-up is coherent and ready to publish, with a great mix of practical articles showcasing AI's everyday uses. I do note that some articles assume a basic understanding of AI tools, so a gentle i",
-      "agent": "publisher",
-      "at": "2026-07-17T17:07:13.874Z",
-      "loud": false
-    },
-    {
-      "id": "n178430803896095",
-      "level": "success",
-      "text": "3 hír + 0 útmutató publikálva (költség: $0.0414).",
-      "agent": "ceo",
-      "at": "2026-07-17T17:07:18.960Z",
-      "loud": false
-    },
-    {
-      "id": "n178433833015488",
-      "level": "info",
-      "text": "SEO: 8 cikk optimalizálva (átlag 8.4/10).",
-      "agent": "seo",
-      "at": "2026-07-18T01:32:10.154Z",
-      "loud": false
-    },
     {
       "id": "n178433917829286",
       "level": "success",
@@ -1281,82 +1257,33 @@
       "agent": "ceo",
       "at": "2026-07-27T17:32:48.497Z",
       "loud": false
+    },
+    {
+      "id": "n178520440354761",
+      "level": "info",
+      "text": "SEO: 10 cikk optimalizálva (átlag 8.2/10).",
+      "agent": "seo",
+      "at": "2026-07-28T02:06:43.547Z",
+      "loud": false
+    },
+    {
+      "id": "n17852044862683",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The line-up looks solid — practical, varied, and genuinely useful for everyday Australians. Just one note: we'd want to double-check tool names are shortened per our style guide (e.g., \"Perplexity\" in",
+      "agent": "publisher",
+      "at": "2026-07-28T02:08:06.268Z",
+      "loud": false
+    },
+    {
+      "id": "n178520449579423",
+      "level": "success",
+      "text": "6 hír + 4 útmutató publikálva (költség: $0.1373).",
+      "agent": "ceo",
+      "at": "2026-07-28T02:08:15.794Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178480206766034",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Adding clear comments to your existing code to make it easier to understand with GitHub Copilot\" — javítva: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user; Step 1: installer behaviour differs on macOS/Linux - the Windows-only filename example may mislead non-Windows readers; no fallback for those platforms; újraküldöm.",
-      "ref": "GUIDE_adding-clear-comments-to-your-existing-code-to-make-it-easie.json",
-      "at": "2026-07-23T10:21:07.660Z"
-    },
-    {
-      "id": "m178480206766252",
-      "from": "guide",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Kell még adat: \"Adding clear comments to your existing code to make it easier to understand with GitHub Copilot\" — az Ellenőrző tényt/forrást kér, amit nem találhatok ki: Step 5: Ctrl+Enter behaviour is inconsistent across Copilot versions - this is stated as hard fact without acknowledging alternatives or that inline chat (Ctrl+I) is often the actual command",
-      "ref": "GUIDE_adding-clear-comments-to-your-existing-code-to-make-it-easie.json",
-      "open": true,
-      "at": "2026-07-23T10:21:07.662Z"
-    },
-    {
-      "id": "m178480207252566",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Adding clear comments to your existing code to make it easier to understand with GitHub Copilot\" — mi a baj: Step 5 shortcut advice is uncertain: Ctrl+Enter, Ctrl+I and the command palette are presented as alternatives but it is unclear which one actually triggers comment suggestion in current VS Code; Australian English check: no obvious Americanisms but spellings are minim",
-      "ref": "GUIDE_adding-clear-comments-to-your-existing-code-to-make-it-easie.json",
-      "at": "2026-07-23T10:21:12.525Z"
-    },
-    {
-      "id": "m178480209861133",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Adding clear comments to your existing code to make it easier to understand with GitHub Copilot\" — javítva: Step 5 shortcut advice is uncertain: Ctrl+Enter, Ctrl+I and the command palette are presented as alternatives but it is unclear which one actually triggers comment suggestion in current VS Code; Australian English check: no obvious Americanisms but spellings are minimal so hard",
-      "ref": "GUIDE_adding-clear-comments-to-your-existing-code-to-make-it-easie.json",
-      "at": "2026-07-23T10:21:38.611Z"
-    },
-    {
-      "id": "m178480213555071",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Adding clear comments to your existing code to make it easier to understand with GitHub Copilot\" — mi a baj: Beginner clarity too low (4/10): steps are vague or could mislead a first-time user; Step 5 hallucinates 'Copilot: Generate Code' command line; Step 5 misses that typing // triggers ghost text automatically",
-      "ref": "GUIDE_adding-clear-comments-to-your-existing-code-to-make-it-easie.json",
-      "at": "2026-07-23T10:22:15.550Z"
-    },
-    {
-      "id": "m178480221837521",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Adding clear comments to your existing code to make it easier to understand with GitHub Copilot\" — javítva: Beginner clarity too low (4/10): steps are vague or could mislead a first-time user; Step 5 hallucinates 'Copilot: Generate Code' command line; újraküldöm.",
-      "ref": "GUIDE_adding-clear-comments-to-your-existing-code-to-make-it-easie.json",
-      "at": "2026-07-23T10:23:38.375Z"
-    },
-    {
-      "id": "m178480222136059",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Adding clear comments to your existing code to make it easier to understand with GitHub Copilot\" — mi a baj: Tool name should be the shortest official product name 'GitHub Copilot' rather than 'Copilot' alone in some places; Step 5 ghost-text trigger is uncertain; GitHub Copilot inline comment suggestions are not reliably invoked by typing '//' with a prompt",
-      "ref": "GUIDE_adding-clear-comments-to-your-existing-code-to-make-it-easie.json",
-      "at": "2026-07-23T10:23:41.360Z"
-    },
-    {
-      "id": "m178480222765813",
-      "from": "ceo",
-      "to": "team",
-      "kind": "decision",
-      "text": "Jóváhagytam (felülbíráltam az Ellenőrzőt) + rendet raktam benne: \"Adding clear comments to your existing code to make it easier to understand with GitHub Copilot\" — Guide is safe and useful; only minor naming and accuracy tweaks needed.",
-      "ref": "ARTICLE_GUIDE_adding-clear-comments-to-your-existing-code-to-make-it-easie.json",
-      "at": "2026-07-23T10:23:47.658Z"
-    },
     {
       "id": "m178480226233422",
       "from": "designer",
@@ -2638,6 +2565,78 @@
       "text": "6 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
       "ref": null,
       "at": "2026-07-27T17:39:15.690Z"
+    },
+    {
+      "id": "m178520246527118",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Introducing Gemini 3.6 Flash, 3.5 Flash-Lite, and 3.5 Flash Cyber\" — mi a baj: Article claims Google launched three specific new models: 'Gemini 3.6 Flash', '3.5 Flash-Lite', and '3.5 Flash Cyber' — these appear to be fabricated model names. Google's real Gemini family naming uses versions like Gemini 1.5 Flash, 2.0 Flash, 2.5 Flash, with 'Flash-Lite' as a real suffix, but '",
+      "ref": "2026-07-27T17-29-42-208Z_google-deepmind_Introducing_Gemini_3_6_Flash__3_5_Flash-Lite__and_.json",
+      "at": "2026-07-28T01:34:25.271Z"
+    },
+    {
+      "id": "m178520251179041",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Visual screenshots in Google Meet meeting notes will soon be generally available, pre-configure admin settings in advance\" — mi a baj: The article presents 'Take notes for me' capturing visual screenshots of slides/charts and embedding them into a Google Doc as an upcoming feature. I cannot verify that Google has officially announced this specific visual-screenshot functiona",
+      "ref": "2026-07-27T17-29-42-209Z_google-workspace_Visual_screenshots_in_Google_Meet_meeting_notes_wi.json",
+      "at": "2026-07-28T01:35:11.790Z"
+    },
+    {
+      "id": "m178520266006558",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Introducing Gemini 3.6 Flash, 3.5 Flash-Lite, and 3.5 Flash Cyber\" — javítva: Article claims Google launched three specific new models: 'Gemini 3.6 Flash', '3.5 Flash-Lite', and '3.5 Flash Cyber' — these appear to be fabricated model names. Google's real Gemini family naming uses versions like Gemini 1.5 Flash, 2.0 Flash, 2.5 Flash, with 'Flash-Lite' as a real suffix, but '3.5 Flash ",
+      "ref": "2026-07-27T17-29-42-208Z_google-deepmind_Introducing_Gemini_3_6_Flash__3_5_Flash-Lite__and_.json",
+      "at": "2026-07-28T01:37:40.065Z"
+    },
+    {
+      "id": "m178520290978482",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Visual screenshots in Google Meet meeting notes will soon be generally available, pre-configure admin settings in advance\" — javítva: The article presents 'Take notes for me' capturing visual screenshots of slides/charts and embedding them into a Google Doc as an upcoming feature. I cannot verify that Google has officially announced this specific visual-screenshot functionality for G",
+      "ref": "2026-07-27T17-29-42-209Z_google-workspace_Visual_screenshots_in_Google_Meet_meeting_notes_wi.json",
+      "at": "2026-07-28T01:41:49.784Z"
+    },
+    {
+      "id": "m178520292987816",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Introducing Gemini 3.6 Flash, 3.5 Flash-Lite, and 3.5 Flash Cyber\" (?/10)",
+      "ref": "2026-07-27T17-29-42-208Z_google-deepmind_Introducing_Gemini_3_6_Flash__3_5_Flash-Lite__and_.json",
+      "at": "2026-07-28T01:42:09.878Z"
+    },
+    {
+      "id": "m178520295808730",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Visual screenshots in Google Meet meeting notes will soon be generally available, pre-configure admin settings in advance\" — mi a baj: Article framing (focus on limitations) misses the news angle from source — screenshots are coming soon to Meet notes, which readers deserve to know; Subtitle 'what it misses' and 'limits worth knowing' could mislead readers into thinking scre",
+      "ref": "2026-07-27T17-29-42-209Z_google-workspace_Visual_screenshots_in_Google_Meet_meeting_notes_wi.json",
+      "at": "2026-07-28T01:42:38.087Z"
+    },
+    {
+      "id": "m178520448350622",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-07-28T02:08:03.506Z"
+    },
+    {
+      "id": "m178520479718877",
+      "from": "social",
+      "to": "team",
+      "kind": "info",
+      "text": "6 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
+      "ref": null,
+      "at": "2026-07-28T02:13:17.188Z"
     }
   ]
 }
