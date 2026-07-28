@@ -113,6 +113,31 @@ export function isListicle(title) {
   return LISTICLE_MARKERS.test(String(title || ''));
 }
 
+// ===================================================================
+// STATIKUS-LAP KAPU (2026-07-28) — a Google News "site:" forrásokhoz.
+// ===================================================================
+// A site:deepseek.com / site:perplexity.ai keresés nem csak hírt ad vissza,
+// hanem a weboldal ÁLLANDÓ lapjait is: "DeepSeek", "DeepSeek Platform",
+// "Connectors - Perplexity", "API Platform", "What is Perplexity?". Ezek
+// minden futásban AI relevancia-hívást égettek, aztán elbuktak. Mérve: a
+// DeepSeek feed első 5 eleméből 4, a Perplexityéből 4 ilyen volt.
+// Két jel árulja el őket:
+//   - a cím a " - Cégnév" levágása után 1-3 szó (nincs benne állítás)
+//   - vagy tipikus menüpont-név
+// Igazi hír ("DeepSeek V4 Preview Release", "Personal Computer is now
+// available on Windows") mindkettőn átmegy.
+// ===================================================================
+const NAV_PAGE = /^(home|about|pricing|contact|careers|docs?|documentation|platform|api|api platform|connectors?|blog|news|products?|features?|enterprise|login|sign ?up|download|help|support|faq|terms|privacy|what is .+\?)$/i;
+
+export function isStaticPage(title) {
+  // A Google News a forrás nevét " - Forrás" alakban fűzi a cím végére.
+  const bare = String(title || '').replace(/\s+-\s+[^-]+$/, '').trim();
+  if (!bare) return true;
+  if (NAV_PAGE.test(bare)) return true;
+  // 1-3 szavas cím állítás nélkül = szinte biztosan menüpont, nem hír.
+  return bare.split(/\s+/).length <= 3;
+}
+
 function everydayRelevant(title) {
   const t = String(title || '');
   return !DEV_MARKERS.test(t) && !CORP_MARKERS.test(t);
@@ -376,6 +401,14 @@ async function main() {
       if (isListicle(item.title || '')) {
         audFiltered++;
         seen[feedConfig.id].push(item.link);
+        continue;
+      }
+
+      // Statikus weboldal-lap a Google News "site:" keresésből — nem hír.
+      // (NEM jelöljük "látottnak": a menüpontok linkje állandó, és ha egyszer
+      // mégis valódi tartalom kerül rá, jöjjön be. Ingyen kiszűrni is elég.)
+      if (isStaticPage(item.title || '')) {
+        audFiltered++;
         continue;
       }
 
