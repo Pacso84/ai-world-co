@@ -132,12 +132,28 @@ async function main() {
     if (DRY) continue;
 
     const r = await ask(upgradePrompt(c.md, brandContext), { agentName: AGENT_NAME, systemPrompt: SYSTEM, maxTokens: 10000 });
-    const text = (r && r.text || '').trim();
+    let text = (r && r.text || '').trim();   // let: a frontmatter-javítás átírja
     cost += (r && r.costUsd) || 0;
+
+    // FRONTMATTER-JAVÍTÁS (2026-07-28): a modell néha sortörés NÉLKÜL írja a
+    // nyitó határolót ("---title: ..." egy sorban). Ez apró, de végzetes: a
+    // frontmatter-értelmezők (fordító, build) nem találják a mezőket, ezért a
+    // cikk MIND A 4 nyelven bukott, a címe pedig "undefined" lett. Kiszámítható
+    // elgépelés → kódból pótoljuk, nem az AI-ra bízzuk. (Ugyanaz az elv, mint a
+    // digest repairDigest()-jénél: a hosszú pontos szövegeket az AI
+    // megbízhatatlanul másolja, azt garanciával kell kikényszeríteni.)
+    if (/^---(?!\r?\n)/.test(text)) text = text.replace(/^---(?!\r?\n)/, '---\n');
 
     // A régi verzió CSAK akkor cserélődik, ha az új tényleg fedezi az ígéretet
     // ÉS megvan a kötelező brand-szekció. Bukásnál marad a régi.
-    const ok = text.startsWith('---')
+    // ÉP FRONTMATTER (2026-07-28): a korábbi startsWith('---') NEM volt elég —
+    // a "---title:" alak átment rajta, ráadásul a coversPromise ilyenkor NEM
+    // találta meg a címet, így "nincs ígéret → nincs mit fedezni" alapon
+    // TÉVESEN átengedte. Most nyitó ÉS záró határolót követelünk, saját sorban.
+    const validFrontmatter = /^---\r?\n[\s\S]*?\r?\n---/.test(text.trimStart());
+    const hasTitle = /^title:\s*\S/m.test(text);
+    const ok = validFrontmatter
+      && hasTitle
       && coversPromise(text)
       && /what this means for you/i.test(text);
     if (!ok) {
@@ -145,7 +161,7 @@ async function main() {
       c.data._meta = c.data._meta || {};
       c.data._meta.howto_upgrade_attempts = (c.data._meta.howto_upgrade_attempts || 0) + 1;
       writeFileSync(join(ARTICLES_DIR, c.file), JSON.stringify(c.data, null, 2), 'utf-8');
-      const why = !text.startsWith('---') ? 'nincs frontmatter' : (!coversPromise(text) ? `${text.split(/\s+/).length} szó / ${stepCount(text)} lépés` : 'hiányzik a brand-szekció');
+      const why = !validFrontmatter ? 'sérült frontmatter' : !hasTitle ? 'nincs title mező' : (!coversPromise(text) ? `${text.split(/\s+/).length} szó / ${stepCount(text)} lépés` : 'hiányzik a brand-szekció');
       console.log(`   ❌ nem felelt meg (${why}) — a RÉGI marad, próbálkozás ${c.data._meta.howto_upgrade_attempts}/${MAX_ATTEMPTS}\n`);
       continue;
     }
