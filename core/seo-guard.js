@@ -66,6 +66,28 @@ function checkSitemap() {
   return urls.length;
 }
 
+// ── 1b. A TÖBBI kimenet se hirdessen .html-es (átirányító) címet ─────
+// 2026-07-28: az őrszem eredetileg CSAK a sitemap.xml-t nézte. A Google
+// viszont a hír-sitemapból, az RSS-ből és az AI-kereső llms.txt-jéből is
+// vesz címeket, a kereső/chatbot pedig a search.json-ból és a kb.json-ból
+// linkel. Ha ezek bármelyike visszaesne .html-re, ugyanaz a 308-as
+// "átirányítást tartalmazó oldal" hiba jönne vissza, csak más kapun.
+function checkOtherOutputs() {
+  const targets = ['news-sitemap.xml', 'llms.txt'];
+  for (const l of ['', 'hu', 'es', 'de', 'fr']) {
+    for (const f of ['feed.xml', 'search.json', 'kb.json']) targets.push(l ? `${l}/${f}` : f);
+  }
+  const rx = /aiworldhq\.com[^"'<>)\s]*\.html/g;
+  for (const t of targets) {
+    const p = join(PUBLIC, t);
+    if (!existsSync(p)) continue;
+    const hits = readFileSync(p, 'utf-8').match(rx);
+    if (hits?.length) {
+      add('OUTPUT_HTML', `${t}: ${hits.length} db .html-es (átirányító) saját URL — pl. ${hits[0]}`);
+    }
+  }
+}
+
 // ── 2. A lap-szintű jelzések se hirdessenek átirányító címet ─────────
 // Mintát nézünk (nem mind a 2700 oldalt): gyökér + 1 cikk nyelvenként.
 function checkPageSignals() {
@@ -130,6 +152,7 @@ function main() {
   if (!existsSync(PUBLIC)) { console.log('   ⏭️  Nincs build kimenet — kihagyom.'); return; }
 
   const urlCount = checkSitemap();
+  checkOtherOutputs();
   checkPageSignals();
   checkPinnedSlugs();
   checkRedirects();
