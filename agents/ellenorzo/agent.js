@@ -391,11 +391,23 @@ function moveToArticles(writerFilename, writerData, autoCheckResult, aiReviewRes
   // DÁTUM MEGŐRZÉSE: ha ez a cikk MÁR publikálva volt korábban (újra-közzététel,
   // pl. átdolgozás után), tartsuk meg az EREDETI published_at-ot — különben a
   // dátum mindig "mára" ugrana, és a 7 napos archívumban minden egy napnak tűnne.
+  // ===================================================================
+  // RÖGZÍTETT SLUG (2026-07-28) — a megjelent URL ÖRÖKRE ugyanaz marad.
+  // ===================================================================
+  // Ugyanaz a logika, mint a published_at-nál: ha a cikk MÁR megjelent, a
+  // meglévő slug SÉRTHETETLEN. Enélkül egy cím-átdolgozás némán elköltöztetné
+  // az oldalt, és a Google által indexelt régi cím 404 lenne — pontosan ez volt
+  // a 2026-07-27-i Search Console-hiba (197 cikket érintett).
+  // A SEO-őrszem ELSŐ éles körében kiderült, hogy a visszamenőleges rögzítés
+  // csak a MEGLÉVŐ cikkeket fedte le: az újonnan megjelenők slug nélkül jöttek
+  // ki (UNPINNED_SLUG, 10 cikk). Ez a sor zárja be a rést a forrásánál.
   let publishedAt = new Date().toISOString();
+  let pinnedSlug = writerData._meta?.slug || null;
   try {
     if (existsSync(articlePath)) {
       const prev = JSON.parse(readFileSync(articlePath, 'utf-8'));
       if (prev?._meta?.published_at) publishedAt = prev._meta.published_at;
+      if (prev?._meta?.slug) pinnedSlug = prev._meta.slug;   // SOHA nem írjuk felül
       // FORDÍTÁS-INVALIDÁLÁS: ha a cikk SZÖVEGE megváltozott (upgrade/rework
       // utáni újra-publikálás), a régi fordítás-cache elavult → töröljük, a
       // fordító a következő körben újrafordítja. (Enélkül a nem-angol oldalak
@@ -410,12 +422,21 @@ function moveToArticles(writerFilename, writerData, autoCheckResult, aiReviewRes
     }
   } catch { /* marad az új dátum */ }
 
+  // Első megjelenés → a MOSTANI címből képezzük a slugot, és rögzítjük.
+  // (A build.js pontosan ezt a képletet használja, ezért egyeznie kell.)
+  if (!pinnedSlug) {
+    const t = (writerData.article_markdown || '').match(/^title:\s*"?([^"\n]+)/m);
+    pinnedSlug = (t?.[1] || writerData.original_title || articleFilename)
+      .toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 70);
+  }
+
   // Markdown formátumba mentjük a cikket (a meta + az AI review-val együtt)
   const finalArticle = {
     _meta: {
       ...writerData._meta,
       status: 'published',
       published_at: publishedAt,
+      slug: pinnedSlug,
       auto_check: autoCheckResult,
       ai_review: aiReviewResult
     },

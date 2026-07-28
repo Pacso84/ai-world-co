@@ -52,7 +52,12 @@ jobs:
         # és a BUILD + DEPLOY ki sem futott (a friss cikkek nem kerültek ki az
         # oldalra). A munka SORALAPÚ: ami itt kimarad, a következő futás
         # folytatja — a kiadás viszont nem tűrhet halasztást.
-        timeout-minutes: 34
+        # 2026-07-28: 34 → 45 perc. A 07-28 01:27-es futás PONTOSAN a 34 percnél
+        # bukott el (egy útmutató-írás beleszaladt a 8 perces beragadás-védőidőbe,
+        # és elvitte a keretet). A 34 perc még a PRIVÁT repó metered-perc korszakából
+        # maradt; a repó 07-26 óta PUBLIKUS → az Actions ingyenes és korlátlan, tehát
+        # a szűk keret már csak kárt okoz. A 60 perces job-plafon továbbra is véd.
+        timeout-minutes: 45
         # --skip-translate (2026-07-23): a ceo-pipeline BEÉPÍTETT fordítást is
         # csinál (5c lépés, limit 40), DE a munkafolyamatnak van rá KÜLÖN lépése
         # (lentebb: "Fordítás", limit 80, if:always, 12 perc kerettel). Mérés a
@@ -86,6 +91,11 @@ jobs:
       # oldalon. A FORDÍTÁS lépés ELŐTT fut, hogy a felújított szöveg még ebben
       # a futásban kimenjen mind az 5 nyelven.
       - name: Régi "hogyan"-cikkek felújítása (2/futás)
+        # if: always() — a 2026-07-28-i futáson a Pipeline lépés időtúllépéssel
+        # elbukott, és ez a lépés emiatt KIMARADT. A felújítás nem függ a
+        # Pipeline sikerétől (a MÁR KINT LÉVŐ cikkeket javítja), ezért fusson
+        # akkor is, ha az írás-ág megbotlott.
+        if: always()
         env:
           GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
