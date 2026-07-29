@@ -147,12 +147,28 @@ const IMAGE_BACKENDS = [
 ];
 
 // Opcionális kép-tömörítés (sharp) — ha nincs telepítve, sima mentés.
-// Így a friss képek is KICSIK (max 1000px, JPEG q72) → gyors oldalbetöltés.
+//
+// SZÉLESSÉG 1000 → 1280 (2026-07-29, Google Discover).
+//
+// A Discover — az a hírfolyam, ami magától tolja ki a cikkeket a telefonokra —
+// LEGALÁBB 1200 px széles képet kér, különben a cikk fel sem merül benne.
+// Eddig 1000 px-re vágtuk vissza sebesség-okokból, és ezzel önként kizártuk
+// magunkat egy ingyenes forgalmi forrásból.
+//
+// A GENERÁTOR EGYÉBKÉNT IS 1280×720-at ad (IMG_W/IMG_H fent) — vagyis a
+// nagy kép mindig megvolt, csak mi dobtuk el. Ezért itt UGYANAZT az IMG_W-t
+// használjuk: így a szokásos úton NINCS átméretezés (nincs újramintavétel =
+// élesebb kép), és egyetlen szám marad igazságforrásnak. A withoutEnlargement
+// biztosít arról, hogy kisebb forrást soha ne nagyítsunk fel — a felnagyítás
+// nem ad részletet, csak elmossa.
+//
+// A fájlméretet a q72 → q70 tartja kordában (nagyobb kép, közel azonos méret).
+const IMG_WIDTH = IMG_W;
 let _sharp = null, _sharpTried = false;
 async function compressImage(buf) {
   if (!_sharpTried) { _sharpTried = true; try { _sharp = (await import('sharp')).default; } catch { _sharp = null; } }
   if (!_sharp) return buf;
-  try { return await _sharp(buf).resize({ width: 1000, withoutEnlargement: true }).jpeg({ quality: 72, mozjpeg: true }).toBuffer(); }
+  try { return await _sharp(buf).resize({ width: IMG_WIDTH, withoutEnlargement: true }).jpeg({ quality: 70, mozjpeg: true }).toBuffer(); }
   catch { return buf; }
 }
 

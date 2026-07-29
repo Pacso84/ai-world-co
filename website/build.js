@@ -1041,6 +1041,49 @@ function xrefBox(a) {
 // HTML SABLONOK
 // ===================================================================
 
+// ===================================================================
+// KÉPMÉRET A VALÓDI FÁJLBÓL (2026-07-29)
+// ===================================================================
+// Az og:image:width/height eddig FIXEN 1000×563 volt beégetve. Amint a
+// képgyártó mérete megváltozik (most épp 1200-ra megy a Google Discover
+// miatt), ez NÉMÁN hazudott volna a keresőknek és a közösségi felületeknek
+// — pontosan az a hibafajta, ami hónapokig rejtve marad, mert "működik".
+//
+// Ezért a méretet a FÁJLBÓL olvassuk ki. A sharp csak aszinkron tud, a
+// build viszont szinkron, ezért a fejlécet magunk fejtjük vissza: JPEG-nél
+// az SOF-szegmensből, PNG-nél az IHDR-ből. Ez néhány bájt olvasása
+// képenként, gyorsítótárazva — mérhetetlen költség.
+const IMG_DIM_CACHE = new Map();
+function imageDims(absUrl) {
+  const rel = String(absUrl || '').replace(SITE.url, '');
+  if (!rel.startsWith('/assets/')) return null;
+  if (IMG_DIM_CACHE.has(rel)) return IMG_DIM_CACHE.get(rel);
+
+  let dim = null;
+  try {
+    const buf = readFileSync(join(__dirname, rel.replace(/^\/assets\//, 'assets/')));
+    if (buf[0] === 0xFF && buf[1] === 0xD8) {
+      // JPEG: végigugrálunk a szegmenseken az első SOF-ig (ott a méret)
+      let i = 2;
+      while (i < buf.length - 9) {
+        if (buf[i] !== 0xFF) { i++; continue; }
+        const m = buf[i + 1];
+        // SOF0-SOF3, SOF5-SOF7, SOF9-SOF11, SOF13-SOF15 = képméret-szegmensek
+        if (m >= 0xC0 && m <= 0xCF && m !== 0xC4 && m !== 0xC8 && m !== 0xCC) {
+          dim = { w: buf.readUInt16BE(i + 7), h: buf.readUInt16BE(i + 5) };
+          break;
+        }
+        i += 2 + buf.readUInt16BE(i + 2);      // ugrás a következő szegmensre
+      }
+    } else if (buf.readUInt32BE(0) === 0x89504E47) {
+      dim = { w: buf.readUInt32BE(16), h: buf.readUInt32BE(20) };   // PNG IHDR
+    }
+  } catch { /* nincs meg a fájl — kihagyjuk a méret-címkéket */ }
+
+  IMG_DIM_CACHE.set(rel, dim);
+  return dim;
+}
+
 function pageShell({ title, description, bodyContent, isArticle = false, noIntro = false, ogImage = '', keywords = '', jsonld = null, pagePath = '', articleMeta = null }) {
   // ABSZOLÚT útvonalak (gyökértől) — így a /hu/article/... mélységnél is jók.
   const homePath = `${LP}/`;
@@ -1079,6 +1122,16 @@ function pageShell({ title, description, bodyContent, isArticle = false, noIntro
   <meta name="description" content="${escapeHtml(description)}">
   ${keywords ? `<meta name="keywords" content="${escapeHtml(keywords)}">` : ''}
   <link rel="canonical" href="${escapeHtml(url)}">
+  <!-- GOOGLE DISCOVER (2026-07-29): a Discover az a hírfolyam, ami magától
+       tolja ki a cikkeket a telefonokra — nem a keresési helyezésen múlik.
+       KÉT feltétele van, és eddig EGYIK sem teljesült nálunk:
+         1) ez a jelzés (max-image-preview:large) — enélkül a Google csak
+            bélyegképet mutathat, és a Discover ki sem próbál minket;
+         2) legalább 1200 px széles kép (lásd agents/designer/agent.js).
+       A max-snippet:-1 és max-video-preview:-1 ugyanennek a családja: nem
+       korlátozzuk, mennyit mutathat belőlünk. Ez NEM noindex — indexelést
+       nem tilt, csak a megjelenítési korlátokat oldja fel. -->
+  <meta name="robots" content="max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   ${hreflang}
   <!-- Open Graph (közösségi megosztás) -->
   <meta property="og:type" content="${isArticle ? 'article' : 'website'}">
@@ -1087,8 +1140,7 @@ function pageShell({ title, description, bodyContent, isArticle = false, noIntro
   <meta property="og:description" content="${escapeHtml(description)}">
   <meta property="og:url" content="${escapeHtml(url)}">
   <meta property="og:image" content="${escapeHtml(img)}">
-  <meta property="og:image:width" content="1000">
-  <meta property="og:image:height" content="563">
+  ${(() => { const d = imageDims(img); return d ? `<meta property="og:image:width" content="${d.w}">\n  <meta property="og:image:height" content="${d.h}">` : ''; })()}
   <meta property="og:locale" content="${(HTML_LANG[LANG] || 'en').replace('-', '_')}">
   ${artMetaTags}
   <!-- Twitter Card -->

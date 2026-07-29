@@ -25,7 +25,7 @@
 // riport viszi ki a leletet (mint a minőség-őrnél és az i18n-őrszemnél).
 // ===================================================================
 
-import { readFileSync, existsSync, readdirSync, writeFileSync, mkdirSync } from 'fs';
+import { readFileSync, existsSync, readdirSync, writeFileSync, mkdirSync, statSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 
@@ -115,7 +115,53 @@ function checkPageSignals() {
     if (/name="robots"[^>]*noindex|noindex[^>]*name="robots"/i.test(html)) {
       add('NOINDEX', `noindex címke egy indexelendő oldalon: ${rel}`);
     }
+    // GOOGLE DISCOVER (2026-07-29): enélkül a Google csak bélyegképet mutathat,
+    // és a Discover — a telefonokra magától kitolt hírfolyam — ki sem próbál
+    // minket. Hónapokig észrevétlen volt, mert a honlap tökéletesen működött.
+    if (!/name="robots"[^>]*max-image-preview:\s*large/i.test(html)) {
+      add('NO_DISCOVER_META', `Hiányzik a max-image-preview:large (Google Discover kizárva): ${rel}`);
+    }
   }
+}
+
+// ── 2b. A Discover 1200 px-nél szélesebb képet kér ───────────────────
+// A jelzés önmagában nem elég: ha a borítókép kisebb, a cikk ugyanúgy
+// kimarad a Discoverből. A generátor 1280-at ad, de ezt eddig 1000-re
+// vágtuk vissza — a LEGFRISSEBB képeket nézzük, mert a Discover úgyis
+// csak a friss tartalommal foglalkozik.
+function checkDiscoverImages() {
+  const dir = join(ROOT, 'website', 'assets', 'images');
+  if (!existsSync(dir)) return;
+  const files = readdirSync(dir).filter(f => /\.jpe?g$/i.test(f));
+  if (!files.length) return;
+  // a 12 legfrissebb kép (módosítás szerint)
+  const recent = files
+    .map(f => ({ f, t: statSync(join(dir, f)).mtimeMs }))
+    .sort((a, b) => b.t - a.t).slice(0, 12);
+  const small = [];
+  for (const { f } of recent) {
+    const w = jpegWidth(join(dir, f));
+    if (w && w < 1200) small.push(`${f} (${w}px)`);
+  }
+  if (small.length) {
+    add('DISCOVER_IMG_SMALL', `${small.length}/${recent.length} friss borítókép 1200 px alatt (Discover-kizáró) — pl. ${small[0]}`);
+  }
+}
+
+// JPEG-szélesség a fájl fejlécéből (néhány bájt, nincs hozzá csomag)
+function jpegWidth(path) {
+  try {
+    const buf = readFileSync(path);
+    if (buf[0] !== 0xFF || buf[1] !== 0xD8) return null;
+    let i = 2;
+    while (i < buf.length - 9) {
+      if (buf[i] !== 0xFF) { i++; continue; }
+      const m = buf[i + 1];
+      if (m >= 0xC0 && m <= 0xCF && m !== 0xC4 && m !== 0xC8 && m !== 0xCC) return buf.readUInt16BE(i + 7);
+      i += 2 + buf.readUInt16BE(i + 2);
+    }
+  } catch { /* olvashatatlan fájl */ }
+  return null;
 }
 
 // ── 3. Rögzített slug — enélkül egy cím-átdolgozás elköltözteti az oldalt ──
@@ -154,6 +200,7 @@ function main() {
   const urlCount = checkSitemap();
   checkOtherOutputs();
   checkPageSignals();
+  checkDiscoverImages();
   checkPinnedSlugs();
   checkRedirects();
 
