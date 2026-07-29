@@ -94,9 +94,24 @@ async function main() {
   for (const it of items) {
     const md = it.data.article_markdown || '';
     const title = it.data.original_title || frontTitle(md) || it.file;
-    const slug = slugify(frontTitle(md) || title);
+    // ===================================================================
+    // A RÖGZÍTETT SLUG AZ IGAZSÁG (2026-07-29) — KÉT HIBA EGY SORBAN
+    // ===================================================================
+    // 1) A címből számolt slug 60 karakterre vágott, a build viszont 70-re
+    //    (és 2026-07-27 óta a RÖGZÍTETT _meta.slug-ot használja). A 10 karakter
+    //    különbség miatt 407 közösségi posztból 210 NEM LÉTEZŐ oldalra mutatott
+    //    — élőben ellenőrizve: HTTP 404. Minden Facebook-poszt és Pinterest-pin
+    //    ezekhez a cikkekhez a semmibe vitte az olvasót.
+    // 2) A .html végződést a Cloudflare 308-cal átirányítja. A 07-27-i nagy
+    //    kanonikus-javítás minden más kimenetet rendbe tett (sitemap, canonical,
+    //    hreflang, IndexNow), de EZ A FÁJL KIMARADT.
+    //
+    // MIÉRT MARADT REJTVE: a poszt kiment, a webhook 200-at adott, a napi riport
+    // "kiküldve"-t írt. Minden réteg sikert jelentett — csak a láncot senki nem
+    // követte végig a linkig. Ugyanaz a minta, mint a Pinterest-modul hiányánál.
     const isGuide = it.data._meta?.type === 'guide';
-    const url = `${base}/article/${slug}.html`;
+    const slug = it.data._meta?.slug || slugify(frontTitle(md) || title);
+    const url = `${base}/article/${slug}`;
 
     const prompt = `TYPE: ${isGuide ? 'step-by-step guide' : 'news article'}
 TITLE: ${title}

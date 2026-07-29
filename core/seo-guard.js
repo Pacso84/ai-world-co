@@ -179,6 +179,41 @@ function checkPinnedSlugs() {
   }
 }
 
+// ── 3b. A KÖZÖSSÉGI posztok LÉTEZŐ oldalra mutassanak ────────────────
+// 2026-07-29: kiderült, hogy 407 Facebook/Pinterest posztból 210 NEM LÉTEZŐ
+// oldalra mutatott (élőben HTTP 404), és MIND a 407 .html-es (átirányító) volt.
+// Ok: a közösségi agent a CÍMBŐL számolta a slugot 60 karakterre vágva, a build
+// viszont a RÖGZÍTETT _meta.slug-ot használja 70-ig.
+//
+// MIÉRT MARADT REJTVE HETEKIG: a poszt kiment, a webhook 200-at adott, a napi
+// riport "kiküldve"-t írt. Minden réteg sikert jelentett — a láncot a LINKIG
+// senki nem követte végig. Ugyanaz a minta, mint a hiányzó Pinterest-modulnál:
+// az utolsó láncszemet kell mérni, nem a köztes visszajelzéseket.
+function checkSocialLinks() {
+  const dir = join(ROOT, 'content', 'social');
+  if (!existsSync(dir)) return;
+  const real = new Set();
+  if (existsSync(ARTICLES)) {
+    for (const f of readdirSync(ARTICLES).filter(x => x.endsWith('.json'))) {
+      try { const s = JSON.parse(readFileSync(join(ARTICLES, f), 'utf-8'))._meta?.slug; if (s) real.add(s); } catch { /* skip */ }
+    }
+  }
+  if (!real.size) return;
+
+  let withExt = 0; const dead = [];
+  for (const f of readdirSync(dir).filter(x => x.endsWith('.json'))) {
+    let p; try { p = JSON.parse(readFileSync(join(dir, f), 'utf-8')); } catch { continue; }
+    if (!p.url) continue;
+    if (p.url.endsWith('.html')) withExt++;
+    const slug = p.url.replace(/^.*\/article\//, '').replace(/\.html$/, '');
+    if (!real.has(slug)) dead.push(slug);
+  }
+  if (withExt) add('SOCIAL_HTML', `${withExt} közösségi poszt .html-es (átirányító) linkkel`);
+  if (dead.length) {
+    add('SOCIAL_404', `${dead.length} közösségi poszt NEM LÉTEZŐ cikkre mutat (az olvasó 404-et kap) — pl. ${dead[0]}`);
+  }
+}
+
 // ── 4. Az átirányítás-lista férjen bele a Cloudflare-korlátba ────────
 function checkRedirects() {
   const p = join(PUBLIC, '_redirects');
@@ -201,6 +236,7 @@ function main() {
   checkOtherOutputs();
   checkPageSignals();
   checkDiscoverImages();
+  checkSocialLinks();
   checkPinnedSlugs();
   checkRedirects();
 
