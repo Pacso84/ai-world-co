@@ -1,6 +1,116 @@
 # AI World Co. — közösségi posztok
 
-*Generálva: 2026-07-29T10:42:57.345Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+*Generálva: 2026-07-29T17:12:29.181Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## How to use Le Chat to translate a whole webpage in one click
+**🔗 https://aiworldhq.com/article/how-to-use-le-chat-to-translate-a-whole-webpage-in-one-click.html**
+
+**Facebook:**
+Ever wanted to read a foreign website but the copy-paste hassle put you off? Now you can translate any webpage in one click — no tools needed, no faff. https://aiworldhq.com/article/how-to-use-le-chat-to-translate-a-whole-webpage-in-one-click.html #translation #everydayai
+
+**Instagram:**
+One click, any language
+
+Now you can read foreign websites in your own tongue — Le Chat handles it all for you instantly. No copy-pasting, no extra tools.
+
+#translation #aiforbetter #lechat #productivity #howto
+
+*Kép-ötlet: A clean browser window showing a foreign webpage on one side and its translated version on the other, with a simple "translate" button between them*
+
+---
+
+## How to Use Physical Security Keys with Your Work Computer
+**🔗 https://aiworldhq.com/article/how-to-use-physical-security-keys-with-your-work-computer.html**
+
+**Facebook:**
+What if someone stole your password tomorrow? A physical security key adds an extra lock that keeps thieves out even when they know your code. Here's how to set it up on your Windows work computer. https://aiworldhq.com/article/how-to-use-physical-security-keys-with-your-work-computer.html #securitytips #worklife
+
+**Instagram:**
+What if someone stole your password?
+
+A physical key adds a second lock to your work computer — thieves can't get in even if they know your password. Here's the simple setup guide.
+
+#computer security #onlinesafety #twofactor #worktips #dailytech
+
+*Kép-ötlet: A close-up of a small USB security key sitting next to a sleek laptop on a clean desk, natural lighting.*
+
+---
+
+## How to use Qwen Chat to create personalised study flashcards for any subject
+**🔗 https://aiworldhq.com/article/how-to-use-qwen-chat-to-create-personalised-study-flashcards.html**
+
+**Facebook:**
+Tired of manually writing flashcards? This quick guide shows you how to turn any study notes into quiz-ready flashcards in minutes—no writing grind required. https://aiworldhq.com/article/how-to-use-qwen-chat-to-create-personalised-study-flashcards.html #studytips
+
+**Instagram:**
+Turn your notes into flashcards in minutes
+
+Paste your study material, ask Qwen to make Q&A pairs, and start quizzing yourself instantly. No more hours of writing by hand.
+
+#studyhacks #studytips #examprep #aistudy #studysmart
+
+Link in bio.
+
+*Kép-ötlet: A neat stack of colourful flashcards next to a smartphone displaying a chat conversation, with a cup of coffee in the background.*
+
+---
+
+## How to use Qwen Chat to plan a weekend road trip in Australia without getting lost
+**🔗 https://aiworldhq.com/article/how-to-use-qwen-chat-to-plan-a-weekend-road-trip-in-australi.html**
+
+**Facebook:**
+Planning a weekend road trip but not sure where to start? This step-by-step guide shows you how to use Qwen Chat to build a complete travel plan with routes, stops and backup ideas—even if you've never planned a trip before. https://aiworldhq.com/article/how-to-use-qwen-chat-to-plan-a-weekend-road-trip-in-australi.html #travel #australia
+
+**Instagram:**
+Weekend road trip plans sorted ✈️
+
+Learn how Qwen Chat can create a full travel plan with routes, stops and backup options—even for beginners. Simple step-by-step guide inside.
+
+#roadtrip #travelplanning #qwen #australia #weekendgetaway
+
+*Kép-ötlet: A car's dashboard with a scenic Australian highway view through the windscreen, suggesting travel freedom and adventure.*
+
+---
+
+## How to Use SkillOpt to Train AI Agent Skills
+**🔗 https://aiworldhq.com/article/brainstorming-brilliant-ideas-with-chatgpt.html**
+
+**Facebook:**
+Ever stare at a blank page needing fresh ideas? ChatGPT can help you brainstorm anything from dinner ideas to business names — no more staring at nothing. Give it a try and see what you come up with. https://aiworldhq.com/article/brainstorming-brilliant-ideas-with-chatgpt.html #ChatGPT #Creativity
+
+**Instagram:**
+Your personal idea generator, no waiting required.
+
+ChatGPT makes brainstorming easy — just ask it questions and watch the ideas flow. Perfect when you need a spark.
+
+#AIAssistant
+#Brainstorming
+#CreativeIdeas
+#ChatGPT
+#GettingStarted
+
+Link in bio.
+
+*Kép-ötlet: A simple illustration of a lightbulb connected to a friendly chat bubble, suggesting AI-powered idea generation.*
+
+---
+
+## How to Write a Cover Letter That Stands Out Using Any AI Assistant
+**🔗 https://aiworldhq.com/article/how-to-write-a-cover-letter-with-any-ai-assistant.html**
+
+**Facebook:**
+Sick of staring at a blank page when you need to write a cover letter? This quick guide shows you how to use any AI tool to create a tailored first draft in about 15 minutes—so you can spend less time writing and more time applying for jobs you actually want. https://aiworldhq.com/article/how-to-write-a-cover-letter-with-any-ai-assistant.html #jobsearch #careertips
+
+**Instagram:**
+Cover letter writer's block, solved.
+
+Turn a blank page into a tailored first draft in about 15 minutes using any AI assistant—even if you've never used one before. Then edit and send.
+
+#coverlettertips #jobsearchhacks #aiassistant #careergoals #hustlehardy
+
+*Kép-ötlet: A person looking relieved while typing on a laptop, with the words 'Cover Letter' clearly visible on the screen in a clean, modern document.*
 
 ---
 
