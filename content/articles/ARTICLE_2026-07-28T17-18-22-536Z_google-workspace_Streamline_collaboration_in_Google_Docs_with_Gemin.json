@@ -1,0 +1,59 @@
+{
+  "_meta": {
+    "written_at": "2026-07-29T01:34:17.560Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.004911264,
+    "original_draft": "2026-07-28T17-18-22-536Z_google-workspace_Streamline_collaboration_in_Google_Docs_with_Gemin.json",
+    "source_id": "google-workspace",
+    "source_name": "Google Workspace Updates (hivatalos)",
+    "source_link": "http://workspaceupdates.googleblog.com/2026/07/streamline-collaboration-in-google-docs-with-Gemini-powered-comment-workflows.html",
+    "status": "published",
+    "published_at": "2026-07-29T01:34:54.171Z",
+    "slug": "how-to-use-gemini-in-google-docs-to-tame-your-comment-threads",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1095
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Excellent guide that meets all quality gates — friendly tone, clear structure with hook and What this means for you section, practical step-by-step prompts with You'll know it worked checkpoints, responsible privacy note, and no clichés or invented facts. Ready to publish.",
+      "_aiCost": 0.00158949,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-07-29T01:39:21.280Z",
+    "guide_worthy": true,
+    "related_guide_topic": "how-to-start-a-new-google-docs-document-with-gemini-s-built-",
+    "seo": {
+      "meta_description": "How to use Gemini in Google Docs to summarize comments, search feedback instantly, and reply faster. Practical AI tips for managing shared documents.",
+      "keywords": [
+        "Gemini in Google Docs",
+        "how to use Gemini in Google Docs",
+        "Google Docs AI comments",
+        "summarize Google Docs comments",
+        "Gemini Docs tutorial",
+        "AI document collaboration",
+        "manage Google Docs feedback",
+        "reply to comments faster"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add 'how to' in the title for better search intent matching (e.g., 'How to Use Gemini in Google Docs to Tame Comment Threads')",
+        "Include the phrase 'step by step' or 'tutorial' in the subtitle to improve ranking for how-to searches",
+        "Add an FAQ section targeting 'what is Gemini in Google Docs' or 'is Gemini free in Docs' for featured snippet opportunities"
+      ],
+      "optimised_at": "2026-07-29T01:50:30.204Z"
+    },
+    "social": true,
+    "social_at": "2026-07-29T02:11:30.168Z"
+  },
+  "article_markdown": "---\ntitle: \"How to Use Gemini in Google Docs to Tame Your Comment Threads\"\nsubtitle: \"Practical ways to summarise, search, and reply to feedback faster in shared documents\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 7\ntags: [\"google-docs\", \"gemini\", \"collaboration\", \"productivity\", \"getting-started\"]\n---\n\n# How to Use Gemini in Google Docs to Tame Your Comment Threads\n\nPicture this: you open a shared document on Monday morning, scroll down, and see forty-seven comments. Some are resolved, some contradict each other, and three different teammates have left notes on the same paragraph. Sound familiar?\n\nGoogle's AI helper **Gemini** (think of it as a built-in assistant that can read, summarise, and write inside your Docs) now has comment-aware features that turn that pile of feedback into something you can actually act on. Let's walk through how to use them.\n\n**What you'll need:** A Google account, a Google Docs file you can edit, and the Gemini in Docs panel turned on. If you see a sparkle ✨ icon in the top-right corner of your doc, you're good to go. If not, ask your workspace admin to enable Gemini, or check the Google support page for activation steps.\n\n## Step 1 — Open the Gemini panel and ask it to summarise the comments\n\nClick the ✨ **Gemini** icon at the top-right of your document, or go to **Tools → Gemini in Docs** from the menu.\n\nIn the side panel that opens, type a request in plain English. There's no special syntax; just talk to it like a colleague.\n\n💬 **Try this prompt:**\n> *\"Summarise all the comments in this document and group them by topic.\"*\n\nYou'll see Gemini read through every comment thread and return a short, grouped summary — usually within a few seconds.\n\n**You'll know it worked when:** the side panel shows a few bullet points grouped by topic (for example, \"Tone of voice\", \"Missing statistics\", \"Section 3 needs rewrite\") rather than a wall of individual comments.\n\n## Step 2 — Pull out just one person's feedback\n\nWhen a teammate like Sarah has left a trail of comments across a long doc, you don't want to scroll forever. Ask Gemini to filter.\n\n💬 **Try this prompt:**\n> *\"Summarise all unresolved comments from Sarah.\"*\n\nSwap the name for whoever you need. If multiple teammates share a name, add an email or section reference for clarity.\n\n**You'll know it worked when:** the panel returns only Sarah's comments, marked as open/resolved, so you can act on them without losing your place.\n\n## Step 3 — Find what is actually blocking your project\n\nNot every comment needs a reply today. The ones that block progress do. Use Gemini to spot them.\n\n💬 **Try this prompt:**\n> *\"Based on the comments in this doc, what are the unresolved issues blocking the launch?\"*\n\nGemini works through the thread list and flags the suggestions, disagreements, or open questions that nobody has responded to yet.\n\n**You'll know it worked when:** the response includes a short list with the *blocking* items flagged up-front, rather than a general summary of all feedback.\n\n## Step 4 — Draft a reply without leaving the doc\n\nOnce you know what to respond to, let Gemini write a first draft you can edit. This works inside any open comment thread.\n\nOpen a comment, then in the reply box type your instruction. You can also use the side panel and tell Gemini to \"draft a reply to the comment on Section 2.\"\n\n💬 **Try this prompt:**\n> *\"Draft a polite reply agreeing with the suggestion and confirming I'll update the section by Friday.\"*\n\n**You'll know it worked when:** a reply appears in the comment box that you can tweak, shorten, or send as-is. Always read it before posting — AI drafts are a starting point, not a finished reply.\n\n## Step 5 — Ask Gemini to add a comment for you\n\nIf you want to leave a note yourself but can't quite phrase it, you can ask Gemini to drop the comment in the right spot.\n\nHighlight the passage you want to comment on, then either click the **Add comment** button (💬 in the margin) and use Gemini there, or ask in the side panel:\n\n💬 **Try this prompt:**\n> *\"Add a comment on the highlighted paragraph asking for a source for the 2024 figure.\"*\n\n**You'll know it worked when:** the comment appears in the right margin, anchored to your selected text, signed as you.\n\n## Common mistakes to avoid\n\n- **Skimming the summary without checking the source.** Gemini's summary is helpful, but click into the threads it flagged before you act. AI can occasionally miss nuance (a comment marked \"resolved\" that was only partially addressed).\n- **Trusting a draft reply too quickly.** Always read it. Phrasing from AI can sound robotic, and some replies need a human tone — apologies especially.\n- **Forgetting privacy.** Your document content is sent to Google's AI to generate these answers. Avoid using this on documents with sensitive personal or financial information you wouldn't want processed by an AI service. Check your workspace's data-handling settings if in doubt.\n- **Ignoring comment notifications.** Gemini summarises what's already in the doc; it doesn't replace your normal comment alerts. People still expect replies through the usual channels.\n\n## What this means for you\n\n- **In everyday life:** If you co-manage things like a shared household planner, a school group project, or a club newsletter, these features let one person catch up on weeks of feedback in a couple of minutes — no more \"I didn't see your comment\" excuses.\n- **For your business or work:** For anyone reviewing draft reports, marketing copy, or policy docs with multiple stakeholders, Gemini turns comment triage from a 30-minute chore into a 3-minute skim. Try it on your next round of team edits before your next review meeting.\n- **If you're just getting started:** Pick a doc that's been sitting with a few unresolved comments for a while. Run Step 1, then Step 3. You'll see the value in under five minutes — no setup, no learning curve.\n\n## Wrap-up\n\nGemini's comment-aware features in Google Docs are less about flashy AI and more about removing the boring part of collaboration: the slog of reading 47 comments before you can do anything useful. Try the summarise-then-find-blockers combo on your next shared document and notice how much mental energy you get back.\n\nYour next step today: open any shared Google Doc you've been avoiding, click the ✨ icon, and type **\"Summarise all the comments in this document\"**. Two minutes from now you'll know exactly what needs your attention.",
+  "original_title": "Streamline collaboration in Google Docs with Gemini-powered comment workflows"
+}

@@ -1,6 +1,117 @@
 # AI World Co. — közösségi posztok
 
-*Generálva: 2026-07-28T17:28:51.197Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+*Generálva: 2026-07-29T02:12:22.154Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## Streamline collaboration in Google Docs with Gemini-powered comment workflows
+**🔗 https://aiworldhq.com/article/how-to-use-gemini-in-google-docs-to-tame-your-comment-thread.html**
+
+**Facebook:**
+Got a document full of comments that makes you want to close the tab? This guide shows you how to use AI to sort through feedback faster and actually enjoy collaborating. https://aiworldhq.com/article/how-to-use-gemini-in-google-docs-to-tame-your-comment-thread.html #GoogleDocs #Productivity
+
+**Instagram:**
+Stop drowning in comment threads 🫠
+
+Gemini can help you quickly summarize feedback, find key points, and reply to colleagues in a fraction of the time. Monday mornings just got easier.
+
+#GoogleDocs #Productivity #AI #Collaboration #WorkSmarter
+Link in bio.
+
+*Kép-ötlet: A clean, minimal overhead shot of a laptop screen showing a Google Doc with comment bubbles, with a subtle AI sparkle effect on the cursor*
+
+---
+
+## Shopping’s New First Step: Agentic Search Grows 200% as Purchase Journeys Start in AI Chats
+**🔗 https://aiworldhq.com/article/how-ai-is-becoming-your-first-stop-before-you-buy-anything.html**
+
+**Facebook:**
+Next time you're about to buy something, you might be surprised how many people are now asking AI first. Here's why agentic search grew 200% this year — and how it could make your shopping easier. https://aiworldhq.com/article/how-ai-is-becoming-your-first-stop-before-you-buy-anything.html #AIShopping #ConsumerTech
+
+**Instagram:**
+Skip the hours of research?
+
+More shoppers are now asking AI before they buy anything — and it's changing how we make decisions. Here's what to know.
+
+#AIShopping #SmartShopping #ConsumerTech #AIRevolution #TechTips
+
+Link in bio.
+
+*Kép-ötlet: Hands holding a smartphone with a friendly AI chat interface on screen, next to a shopping bag*
+
+---
+
+## How Many AI Agents Are Too Many? NTT Research and Harvard University Research Reveals Key Insights for Using Agentic AI in the Workplace
+**🔗 https://aiworldhq.com/article/why-more-ai-agents-don-t-always-mean-better-work.html**
+
+**Facebook:**
+More AI tools don't always mean more productivity. New research from NTT Research and Harvard looks at what's actually helpful in the workplace — and it's not about how many AI agents you use. https://aiworldhq.com/article/why-more-ai-agents-don-t-always-mean-better-work.html #AI #productivity
+
+**Instagram:**
+Is your team using too many AI tools?
+
+New research shows it's not about having more AI helpers — it's about using them strategically. Here's what actually works.
+
+#AI #workplace #productivity #agenticAI #futureofwork
+
+Link in bio.
+
+*Kép-ötlet: A simple, clean illustration of one friendly robot helping someone at a desk, with a few other powered-down robots in the background*
+
+---
+
+## From prototype to production: High QPS for Databricks AI Search
+**🔗 https://aiworldhq.com/article/how-modern-ai-search-handles-millions-of-questions-a-second.html**
+
+**Facebook:**
+When you type a quick search or ask your phone a question, there's a whole lot of smart tech working behind the scenes to get you answers fast. This is quietly changing how our apps and voice assistants work — and it's pretty cool. https://aiworldhq.com/article/how-modern-ai-search-handles-millions-of-questions-a-second.html #EverydayAI #TechExplained
+
+**Instagram:**
+Your apps are getting way smarter and faster
+
+Modern AI search can now handle millions of questions every second — making your shopping, searching and voice assistants feel snappier than ever.
+
+#AI #EverydayTech #SmartApps #TechExplained #FutureTech
+Link in bio.
+
+*Kép-ötlet: A simple icon of a magnifying glass with multiple signal waves, showing search queries flowing through quickly and smoothly.*
+
+---
+
+## AI customer service: strategy, agents, and solutions guide
+**🔗 https://aiworldhq.com/article/ai-customer-service-explained-how-small-businesses-are-using.html**
+
+**Facebook:**
+Think AI is just for big companies? This plain English guide shows how small businesses — even your local plumber — use chatbots to book jobs and answer questions 24/7, without hiring extra staff. https://aiworldhq.com/article/ai-customer-service-explained-how-small-businesses-are-using.html #SmallBusiness #AITools
+
+**Instagram:**
+Ever wished you could clone yourself to answer every customer question? Small businesses are using AI chatbots to handle bookings and FAQs — so you can focus on the actual work. Link in bio.
+#SmallBusiness
+#AITools
+#CustomerService
+#BusinessTips
+#TechForEveryone
+
+*Kép-ötlet: A friendly illustration of a small shop owner smiling while a chatbot icon handles incoming messages on their phone screen*
+
+---
+
+## Personal Computer is now available on Windows - Perplexity
+**🔗 https://aiworldhq.com/article/perplexity-s-comet-comes-to-windows-what-it-does-and-who-it-.html**
+
+**Facebook:**
+Too many tabs open? Perplexity just launched on Windows — it's an AI browser that searches, summarises and organises your stuff so you don't have to juggle ten tabs at once. https://aiworldhq.com/article/perplexity-s-comet-comes-to-windows-what-it-does-and-who-it-.html #Productivity #AI
+
+**Instagram:**
+Tired of tab overload? 🤯
+
+Perplexity's new Windows app is an AI browser that searches, summarises and organises info — helping you find what you need without the mess.
+
+#AI #Productivity #WindowsApps #GettingStuffDone #TechTips
+
+Link in bio.
+
+*Kép-ötlet: A clean, minimal desktop screenshot showing a tidy browser window with a simple search bar, representing clarity and organisation.*
 
 ---
 

@@ -1,0 +1,62 @@
+{
+  "_meta": {
+    "written_at": "2026-07-29T01:38:46.205Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00922794,
+    "original_draft": "2026-07-28T19-10-59-408Z_perplexity-news_Personal_Computer_is_now_available_on_Windows_-_Pe.json",
+    "source_id": "perplexity-news",
+    "source_name": "Perplexity (hivatalos, Google News szűrve)",
+    "source_link": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBjNUdwZ0tqTmtlcDJzUzJLYnpBT3ZucWg0Si0zZGdpYXBZVUtLUFc3VzJtdDh0Q3FFSFhNNF8tSEpWdEItTkRkQXNCTUJmdG05am5fa2Z3dXRLdTdXd2Y4eHBzSUd1ZHp6SjZGRlF6eFU?oc=5",
+    "status": "published",
+    "rejected_at": "2026-07-29T01:37:14.892Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 711
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-crafted explainer with a relatable hook, clear plain-English explanations of technical terms, practical use cases, appropriate pricing caveats, a strong 'What this means for you' section, and a helpful next-step close. No prohibited content, no clichés, no invented facts, and the tone is kind and accessible throughout. Minor note: the article leans slightly American in neutral spellings but doesn't misuse British forms — acceptable for this publication.",
+      "_aiCost": 0.0013833,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Hitelesség-kapu blokkolta: The product is named 'Personal Computer' and described as Perplexity's AI-powered browser for Windows. Perplexity's actual AI browser is called 'Comet' — 'Personal Computer' is not a real product name",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-07-28T19-10-59-408Z_perplexity-news_Personal_Computer_is_now_available_on_Windows_-_Pe.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-07-29T01:39:11.035Z",
+    "slug": "perplexity-s-comet-comes-to-windows-what-it-does-and-who-it-s-for",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-07-29T01:40:17.925Z",
+    "guide_worthy": true,
+    "related_guide_topic": "perplexity-getting-started",
+    "seo": {
+      "meta_description": "Perplexity's AI browser Comet comes to Windows. Learn what it does, how much it costs, and who'll benefit most from its built-in AI assistant.",
+      "keywords": [
+        "Perplexity Comet Windows",
+        "AI browser for Windows",
+        "Perplexity browser review",
+        "Comet AI assistant features",
+        "AI search browser Windows 2024"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add a clear pricing section in the article — price is mentioned as one of the three key points but not visible in the excerpt, and it's a common search factor",
+        "Consider mentioning system requirements or how it compares to Edge/Chrome to capture 'best Windows browser' type searches",
+        "The title could benefit from a secondary keyword like 'review' or 'guide' for clearer search intent"
+      ],
+      "optimised_at": "2026-07-29T01:52:00.609Z"
+    },
+    "social": true,
+    "social_at": "2026-07-29T02:12:22.153Z"
+  },
+  "article_markdown": "---\ntitle: \"Perplexity's Comet Comes to Windows: What It Does and Who It's For\"\nsubtitle: \"A plain-English guide to Perplexity's AI browser on Windows — what it can do, what it costs, and who'll find it useful.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"perplexity\", \"comet\", \"ai-browser\", \"productivity\", \"getting-started\"]\n---\n\n# Perplexity's Comet Comes to Windows: What It Does and Who It's For\n\nYou know that feeling — eleven tabs open, three half-written emails, and a calendar invite you still haven't sorted. That's the everyday mess most of us live in online. Perplexity, the AI search company, has made their AI-powered browser called **Comet** available on Windows. Here's what it actually does, in plain English.\n\n## What Comet actually is\n\nComet is Perplexity's web browser, with an AI assistant (think of it as a clever helper that lives next to your screen) built directly into the side of every page you open. You install it much like Chrome or Edge, but the assistant can read the page with you, answer questions about it, summarise long articles, and even click around on websites to handle small jobs on your behalf.\n\nIt's built on top of Perplexity's own search engine — the same one that gives you cited answers (small numbered footnotes showing exactly where each piece of information came from) instead of just a wall of links. So instead of opening ten tabs to compare products, you can ask one question and get a single, sourced answer back.\n\n## What it can do day-to-day\n\nSome real things people use it for:\n\n- **Summarise long pages** — drop a hefty article into the side panel and ask \"give me the three main points\". Done in seconds.\n- **Compare things across tabs** — shopping for a new laptop? Ask the assistant to pull the specs from each tab into one simple table.\n- **Draft emails and replies** — based on context it can read from a webpage or thread.\n- **Fill in forms** — booking a haircut, ordering supplies, registering for something tedious.\n- **Answer questions with sources** — every answer comes with little numbered citations, so you can check the source yourself.\n\nYou don't need to write fancy **prompts** (the technical word for the instruction you give to an AI). You can just talk to it in normal sentences: *\"What's the cheapest way to get from the city to the airport on Friday afternoon?\"*\n\n## The honest bit on pricing\n\nComet is free to download and try. There's also a paid subscription tier (sometimes called Comet Plus) that unlocks extra features and access to the more capable models. What's included in the free version versus the paid tier has changed since launch and will likely keep changing, so it's worth checking Perplexity's website for the latest details before you sign up. The free version is enough for most people to decide whether the experience works for them.\n\n## What this means for you\n\n- **If you do a lot of research at work** — for reports, customer questions, market checks — Comet can cut the time you spend bouncing between tabs and search engines.\n- **If you shop online or plan travel** — comparing products, reading reviews, finding the best deal across multiple sites becomes a single conversation.\n- **If you help family members with tech** — they can ask *\"how do I cancel this subscription?\"* and the assistant can navigate to the right page for them.\n- **If you're privacy-conscious** — read the data policy before you install. AI browsers see more of what you do than a normal browser does, so it's worth knowing what's collected and how to switch things off.\n\n## Wrap-up\n\nComet is one of the first serious attempts at a browser where the AI isn't a separate app — it's part of how you move around the web. It's available on Windows, and the free version gives you a low-risk way to see whether this style of browsing fits how you work and how you live.\n\nA small next step to try today: install Comet, open a long article you've been meaning to read, and ask the side panel for a three-bullet summary. That's the easiest way to see whether this kind of browsing is for you.",
+  "original_title": "Personal Computer is now available on Windows - Perplexity"
+}

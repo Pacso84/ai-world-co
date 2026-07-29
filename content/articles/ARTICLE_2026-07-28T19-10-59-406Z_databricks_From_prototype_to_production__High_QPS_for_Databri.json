@@ -1,0 +1,58 @@
+{
+  "_meta": {
+    "written_at": "2026-07-29T01:33:00.530Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00834744,
+    "original_draft": "2026-07-28T19-10-59-406Z_databricks_From_prototype_to_production__High_QPS_for_Databri.json",
+    "source_id": "databricks",
+    "source_name": "Databricks Blog (hivatalos)",
+    "source_link": "https://www.databricks.com/blog/prototype-production-high-qps-databricks-ai-search",
+    "status": "published",
+    "published_at": "2026-07-29T01:36:14.454Z",
+    "slug": "how-modern-ai-search-handles-millions-of-questions-a-second",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 751
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured explainer with clear hooks, good analogies, and accessible language that makes AI infrastructure relatable to everyday readers. All technical terms are explained, structure matches requirements, and no clichés or prohibited content detected.",
+      "_aiCost": 0.00131436,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-07-29T01:39:44.181Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is an explainer article about AI search infrastructure concepts (semantic search, vector search, QPS) rather than introducing a specific named feature or tool that users can use.",
+    "seo": {
+      "meta_description": "Explore how modern AI search handles millions of questions per second, making your apps, shopping, and voice assistants faster and smarter than ever.",
+      "keywords": [
+        "how does AI search work",
+        "AI search infrastructure",
+        "how fast is AI search",
+        "search technology explained",
+        "modern search engine technology",
+        "AI search vs traditional search",
+        "how search works in milliseconds"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more specific examples of AI search technologies or company names (like vector search or embedding models) to boost topical relevance",
+        "Include concrete performance metrics or real-world use cases in the article to increase E-E-A-T signals",
+        "Consider adding FAQ-style headers to target more long-tail search queries about AI search functionality"
+      ],
+      "optimised_at": "2026-07-29T01:51:19.657Z"
+    },
+    "social": true,
+    "social_at": "2026-07-29T02:12:08.051Z"
+  },
+  "article_markdown": "---\ntitle: \"How Modern AI Search Handles Millions of Questions a Second\"\nsubtitle: \"The quiet infrastructure race that's making your apps, shops and voice assistants feel faster and smarter\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"ai-search\", \"vector-search\", \"semantic-search\", \"infrastructure\", \"everyday-ai\"]\n---\n\n# How Modern AI Search Handles Millions of Questions a Second\n\nWhen you tap \"search\" on your favourite shopping app, type a question into your phone, or ask a smart speaker about the weather, something happens in the background that most people never think about. The system has to find a good answer in a fraction of a second. And lately, that system has been getting noticeably smarter and faster, thanks to a quiet race in AI search infrastructure being led by companies like Databricks.\n\n## What's actually changing behind the curtain\n\nTraditional search worked a bit like looking up words in a giant dictionary. It matched your words to documents and returned the closest match. AI-powered search works differently. It tries to understand what you *mean*, not just what you typed.\n\nThink of it this way. With old search, asking *\"What's a warm jacket for rainy walks?\"* might return results that only mention the words \"jacket\" and \"rainy\" somewhere on the page. With modern AI search, the system can return genuinely useful products even when the listing doesn't use those exact words. It understands the connection between \"warm,\" \"rainy\" and the kind of clothing you'd actually want.\n\nThis smarter way of searching goes by a few names. You'll hear **semantic search** (search that focuses on meaning rather than exact words) and **vector search** (a technique that turns text into numbers, called *vectors*, so the system can compare ideas mathematically instead of just matching letters).\n\nThe catch? This kind of \"understanding\" used to be slow. Each query took a lot of computing power (your computer's brain power), which meant the system could only handle so many searches at once. That's the QPS challenge: **QPS** stands for *queries per second* — basically, how many questions the system can answer in one second before it slows down or breaks.\n\nWhen you read about companies improving \"high QPS\" performance, it means they've figured out how to deliver that smarter, meaning-based search at a much faster pace. So instead of being a clever but slow novelty, AI search is now ready to power real-world experiences at the speed modern life demands.\n\n## Where you'll notice it\n\nYou probably won't see a banner saying \"AI search now running at high QPS.\" You'll just notice that things feel smoother and more relevant.\n\n- **Shopping online** — you can type a vague, natural description and get useful results instead of a wall of products that don't match.\n- **Customer support chatbots** — when companies use AI to search their knowledge bases (their internal library of help articles and guides), the bot can pull up the right answer to your specific question instead of giving you a generic script.\n- **Voice assistants** — asking your phone a multi-part question like *\"What's a good Italian place near the train station that's open now?\"* requires the system to combine several searches very quickly.\n- **Workplace tools** — searching inside company documents, chat messages and shared drives is getting much better at finding the exact thing you need, even when you don't remember the right keywords.\n\n## What this means for you\n\n- **If you shop or search online**: try typing natural, conversational descriptions instead of single keywords. On platforms that use AI search, you'll likely get noticeably better results.\n- **If you run a small business or work in retail**: when choosing tools for your website, help centre or customer support, ask vendors whether they use AI-powered search. It's a meaningful upgrade in how customers find what they need.\n- **If you're just curious about AI**: this is a good example of how AI often improves in the background, not through flashy announcements. Faster, smarter search is one of the most quietly useful applications of the technology.\n\n## Wrap-up\n\nThe race to make AI search handle more queries per second isn't just an engineering story — it's the reason the next generation of online experiences will feel quicker, more natural and more useful. Next time you ask your phone a tricky question and get a surprisingly good answer, you'll know there's a lot going on behind that one little search bar. Try it today: phrase a question naturally, the way you'd ask a friend, and see what comes back.",
+  "original_title": "From prototype to production: High QPS for Databricks AI Search"
+}
