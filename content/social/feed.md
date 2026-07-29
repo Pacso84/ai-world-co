@@ -1,6 +1,117 @@
 # AI World Co. — közösségi posztok
 
-*Generálva: 2026-07-29T02:12:22.154Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+*Generálva: 2026-07-29T10:42:57.345Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## How D-ID’s LiveKit Plug-in Turns AI Agents into Real-Time Visual Experiences
+**🔗 https://aiworldhq.com/article/real-time-ai-avatars-what-they-are-and-why-you-re-about-to-s.html**
+
+**Facebook:**
+You can now talk to AI agents you can actually see. Real-time AI avatars are rolling out in customer service first — think calling your bank and getting help from someone who looks right back at you. https://aiworldhq.com/article/real-time-ai-avatars-what-they-are-and-why-you-re-about-to-s.html #AI #Tech
+
+**Instagram:**
+The AI you can see and talk to is here.
+Real-time avatars are starting to appear in customer service — soon you might have a friendly face helping you when you call a company. Link in bio.
+#AI #RealTimeAvatars #TechTrends #FutureOfWork #Innovation
+
+*Kép-ötlet: A split-screen showing a person on a video call with a friendly, natural-looking AI avatar on the other side, with a warm and professional aesthetic*
+
+---
+
+## Memory Efficient Audio Synthesis with Decoupled Temporal Depth Diffusion Transformers
+**🔗 https://aiworldhq.com/article/how-your-phone-is-learning-to-sound-more-human-the-quiet-rev.html**
+
+**Facebook:**
+You've probably noticed Siri sounds way more pleasant lately — not robotic anymore. There's actual technology behind why your phone's voice is starting to sound more human, and it's making everyday things like having articles read aloud actually enjoyable.https://aiworldhq.com/article/how-your-phone-is-learning-to-sound-more-human-the-quiet-rev.html#AI #VoiceAssistant
+
+**Instagram:**
+Your phone's voice is changing — and you'll actually enjoy listening to it now.
+
+New tech is helping AI assistants sound more natural, with real pauses and tone. It's not just nicer to hear — it makes using your phone smoother for everyone.
+
+Link in bio.
+
+#VoiceAI #AIAssistant #Accessibility #Smartphones #EverydayTech
+
+*Kép-ötlet: A smartphone with soft, curved sound waves emanating from it, in warm, natural colours like soft blue and gentle orange, suggesting friendly and pleasant interaction.*
+
+---
+
+## Creating a travel packing list for any trip with AI guidance
+**🔗 https://aiworldhq.com/article/creating-a-travel-packing-list-for-any-trip-with-ai-guidance.html**
+
+**Facebook:**
+Ever arrived at your destination only to realised you've forgotten something obvious? This simple guide shows you how to use AI to build a packing list tailored to your specific trip in about five minutes — destination, length, activities and all. No more generic lists that don't apply to you.
+
+https://aiworldhq.com/article/creating-a-travel-packing-list-for-any-trip-with-ai-guidance.html
+
+#travelhacks #productivity
+
+**Instagram:**
+Never forget the essentials again
+
+AI can help you create a personalized packing checklist in about five minutes — based on your destination, trip length and planned activities. It's way quicker than scrolling through generic lists that don't actually fit your trip.
+
+#traveltips #aiforbeginners #packinglist #smarttravel #travelhack
+
+Link in bio.
+
+*Kép-ötlet: A neatly organized open suitcase on a bed with a smartphone displaying a checklist next to it, natural light from a window.*
+
+---
+
+## How to Use AI to Help Your Child with Homework at the Right Level
+**🔗 https://aiworldhq.com/article/how-to-use-ai-to-help-your-child-with-homework-at-the-right-.html**
+
+**Facebook:**
+Homework battles are real. This guide shows how AI can explain school topics in a way your child actually gets — no more bedtime stress. https://aiworldhq.com/article/how-to-use-ai-to-help-your-child-with-homework-at-the-right-.html #Parenting #HomeworkHelp
+
+**Instagram:**
+Tired of homework battles?
+
+This guide shows how any AI assistant can explain school topics in a way your child actually understands — no more bedtime stress.
+
+#Parenting #HomeworkHelp #AITips #SchoolLife #KidsAndLearning
+Link in bio.
+
+*Kép-ötlet: A parent and child sitting side by side at a kitchen table, looking at a tablet together with smiling faces*
+
+---
+
+## How to use Claude to draft a polite work email in 5 minutes
+**🔗 https://aiworldhq.com/article/how-to-use-claude-to-draft-a-polite-work-email-in-5-minutes.html**
+
+**Facebook:**
+Ever struggled to find the right words for a tricky work email? This simple guide shows you how to draft a polite, professional message in about 5 minutes. Your future self will thank you. https://aiworldhq.com/article/how-to-use-claude-to-draft-a-polite-work-email-in-5-minutes.html #WorkTips #Productivity
+
+**Instagram:**
+Blank screen syndrome? There's a better way.
+
+This quick guide walks you through drafting polished work emails in just 5 minutes—no more staring at a cursor, wondering how to sound professional without being stiff.
+
+#WorkProductivity #EmailTips #AIForWork #CareerHacks #WorkLife
+
+*Kép-ötlet: A clean, minimal close-up of a laptop screen showing a friendly chat interface with a partially written professional email draft.*
+
+---
+
+## How to Use Copilot to Plan a Small Event or Project
+**🔗 https://aiworldhq.com/article/how-to-use-copilot-to-plan-a-small-event-or-project.html**
+
+**Facebook:**
+Stop wrestling with scattered notes and endless to-do lists. Copilot helps turn your messy ideas into a clear plan with tasks, owners and deadlines — no spreadsheet expertise needed. Here's how to make it work for your next project or event.
+#Productivity #MicrosoftCopilot
+https://aiworldhq.com/article/how-to-use-copilot-to-plan-a-small-event-or-project.html
+
+**Instagram:**
+Turn chaos into clarity
+
+Copilot helps you break down any project or event into organized tasks with owners and deadlines — so you can stop stressing and start doing.
+#EventPlanning #ProjectTips #Copilot #MicrosoftCopilot #ProductivityHacks
+Link in bio
+
+*Kép-ötlet: A clean desk with a laptop showing Copilot next to a handwritten to-do list and a calendar, natural light from a window.*
 
 ---
 
