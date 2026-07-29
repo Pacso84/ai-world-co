@@ -125,7 +125,7 @@ const UI = {
         guidesTitle: 'Habilidades de <em>IA cotidiana</em>', guidesTag: 'Guías en lenguaje claro que funcionan con cualquier asistente — ChatGPT, Gemini, Claude y más.',
         toolsTitle: 'Guías por <em>herramienta de IA</em>', toolsTag: 'Elige tu asistente para guías específicas.',
         footerNote: 'Escrito y curado por agentes de IA autónomos · Revisado para mayor precisión', back: '← Volver', language: 'Idioma' },
-  de: { news: 'News', guides: 'Anleitungen', tools: 'KI-Tools', support: 'Unterstützen',
+  de: { news: 'Nachrichten', guides: 'Anleitungen', tools: 'KI-Tools', support: 'Unterstützen',
         heroKicker: 'Ausgabe 01', heroTitle: 'Alltags-KI, <em>einfach erklärt.</em>',
         minRead: 'Min. Lesezeit', stepByStep: 'Schritt für Schritt',
         guidesTitle: 'Alltags-<em>KI-Können</em>', guidesTag: 'Verständliche Anleitungen für jeden Assistenten — ChatGPT, Gemini, Claude und mehr.',
@@ -757,7 +757,7 @@ function localizeArticle(a, lang) {
     title: meta.title || a.title,
     subtitle: meta.subtitle || a.subtitle,
     seoDescription: meta.subtitle || a.seoDescription,
-    bodyHtml: wrapTables(wrapImpactSection(marked.parse(body))),
+    bodyHtml: wrapTables(wrapInShort(wrapImpactSection(marked.parse(body)))),
     bodyMd: body
   };
 }
@@ -844,6 +844,24 @@ function parseFrontmatter(markdown) {
 }
 
 // A "What this means for you" szekciót kiemelt dobozba csomagolja
+// ===================================================================
+// RÖVIDEN-DOBOZ (2026-07-29) — a cikk elején álló egyenes válasz kiemelése
+// ===================================================================
+// A cikkek elbeszélő felütéssel indulnak ("Ott ültél egy megbeszélésen…").
+// Embernek jó, DE a ChatGPT, a Perplexity és a Google kivonat-doboza az
+// oldal TETEJÉT nézi — ha ott csak hangulatkeltés van, mást idéznek.
+// Az írók ezért mostantól egy 1-2 mondatos egyenes választ tesznek a főcím
+// után (shared/style-guide.md 2a); ez a függvény azt emeli ki vizuálisan.
+//
+// SZERKEZETRE illesztünk, NEM a címke szövegére ("In short"). Azt ugyanis a
+// fordító lefordítja, és akkor a magyar/spanyol/német oldalon néma módon
+// kimaradna a kiemelés. Ugyanez a hiba élt a HowTo-lépéseknél is, amíg a
+// mintát nem tettük többnyelvűvé — ne csináljuk meg újra.
+function wrapInShort(html) {
+  return html.replace(/(<\/h1>\s*)<blockquote>([\s\S]*?)<\/blockquote>/,
+    (_m, head, inner) => `${head}<aside class="lede">${inner}</aside>`);
+}
+
 function wrapImpactSection(html) {
   // h2 "What this means for you" -> a következő h2-ig (vagy végéig) aside-ba
   const re = /<h2[^>]*>\s*What this means for you\s*<\/h2>([\s\S]*?)(?=<h2|<hr|$)/i;
@@ -925,7 +943,7 @@ function loadArticles() {
         tags: meta.tags || [],
         seoDescription: data._meta?.seo?.description || meta.subtitle || '',
         seoKeywords: (data._meta?.seo?.keywords || meta.tags || []).join(', '),
-        bodyHtml: wrapTables(wrapImpactSection(marked.parse(body))),
+        bodyHtml: wrapTables(wrapInShort(wrapImpactSection(marked.parse(body)))),
         bodyMd: body,
         isGuide: (data._meta?.type === 'guide') || meta.category === 'guide',
         // Frontmatter az elsődleges (az író VÉGSŐ eszköz-választása), a _meta
@@ -962,6 +980,34 @@ function buildXref(articles) {
     if (!a.isGuide && a.file) XREF.newsByFile.set(a.file, a);
   }
 }
+// ===================================================================
+// MORZSAMENÜ (BreadcrumbList) — 2026-07-29
+// ===================================================================
+// MIÉRT: a Google a találati listában a csupasz URL helyett tagolt útvonalat
+// mutat, ha megkapja ezt a jelölést:
+//     aiworldhq.com › Útmutatók › ChatGPT…    helyett a hosszú nyers cím
+// Ugyanannyi megjelenésből több kattintás — és a Google is jobban érti a
+// szerkezetünket (mi tartozik hova), ami a fiatal domain indexelésénél számít.
+//
+// SZINTEK: Főoldal › Hírek (/archive) vagy Útmutatók (/guides) › a cikk címe.
+// A középső szint LÉTEZŐ oldalra mutat — kitalált URL-t itt sem hirdetünk
+// (ugyanaz az elv, mint a hitelesség-kapunál).
+//
+// NYELVHELYES: a nevek a nyelvi szótárból jönnek (tr), az URL-ek a nyelvi
+// előtaggal (LP) — így a magyar oldalon "Főoldal › Útmutatók › …" lesz.
+function breadcrumbSchema(a, canonical) {
+  const listPath = a.isGuide ? `${LP}/guides` : `${LP}/archive`;
+  const listName = a.isGuide ? tr('guides') : tr('news');
+  return {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: tr('home') || SITE.name, item: `${SITE.url}${LP}/` },
+      { '@type': 'ListItem', position: 2, name: listName, item: `${SITE.url}${listPath}` },
+      { '@type': 'ListItem', position: 3, name: a.title, item: canonical }
+    ]
+  };
+}
+
 // ===================================================================
 // KAPCSOLÓDÓ CIKKEK (2026-07-07) — cikk alji "olvass tovább" ajánló.
 // Rokonság: azonos cég (+3), közös címke (+1/db), azonos kategória (+1).
@@ -1600,7 +1646,7 @@ function buildArticlePage(a) {
     title: `${a.title} — ${SITE.name}`,
     description: a.seoDescription || a.subtitle,
     keywords: a.seoKeywords,
-    ogImage, jsonld, pagePath: `article/${a.slug}`,
+    ogImage, jsonld: [jsonld, breadcrumbSchema(a, canonical)], pagePath: `article/${a.slug}`,
     bodyContent: body, isArticle: true,
     articleMeta: { published: a.publishedAt, modified: a.publishedAt, section: cat.label }
   });
@@ -1989,8 +2035,8 @@ function buildGuidePage(a) {
     title: `${a.title} — ${SITE.name}`,
     description: a.seoDescription || a.subtitle,
     keywords: a.seoKeywords, ogImage,
-    // HowTo + FAQPage együtt (a JSON-LD tömböt is érti a Google)
-    jsonld: faqSchema ? [jsonld, faqSchema] : jsonld,
+    // HowTo + FAQPage + morzsamenü együtt (a JSON-LD tömböt is érti a Google)
+    jsonld: [jsonld, ...(faqSchema ? [faqSchema] : []), breadcrumbSchema(a, canonical)],
     pagePath: `article/${a.slug}`,
     bodyContent: body, isArticle: true,
     articleMeta: { published: a.publishedAt, modified: a.publishedAt }

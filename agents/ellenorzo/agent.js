@@ -117,6 +117,30 @@ function runAutoCheck(articleMarkdown, type) {
     issues.push('NO_FRONTMATTER: A cikk nem YAML frontmatter-rel kezdődik');
   }
 
+  // RÖVIDEN-DOBOZ (2026-07-29) — a főcím után álló egyenes válasz.
+  //
+  // MIÉRT MÉRJÜK: a ChatGPT, a Perplexity és a Google kivonat-doboza az oldal
+  // TETEJÉT olvassa. Ha ott csak elbeszélő felütés van, mást idéznek helyettünk.
+  // A szabály: shared/style-guide.md 2a + iro/guide promptok.
+  //
+  // NEM AZONNALI ELUTASÍTÁS (szándékosan): ez a lista csak a NO_FRONTMATTER /
+  // NO_H1 / MISSING_SECTION / GUIDE_TOO_SHORT hibáknál dob azonnal. Egy friss
+  // szabálynál a puha jelzés a helyes: az AI-ellenőrző megkapja visszajelzésként,
+  // de egyetlen kész cikket sem lövünk le miatta az első napokban.
+  //
+  // SZERKEZETRE mérünk, nem a címke szövegére ("In short") — azt a fordító
+  // lefordítja, és a nem-angol ágon némán hamis riasztást adna.
+  const afterH1 = articleMarkdown.match(/^#\s+.+?$\r?\n+([\s\S]{0,400})/m);
+  if (afterH1 && !/^\s*>/.test(afterH1[1])) {
+    issues.push('NO_LEDE: Hiányzik a RÖVIDEN-doboz (> **In short:** …) közvetlenül a főcím után — az AI-keresők és a Google kivonat-doboza ezt olvassák (style-guide 2a).');
+  } else if (afterH1) {
+    const lede = (afterH1[1].match(/^\s*((?:>.*\r?\n?)+)/) || [])[1] || '';
+    const words = lede.replace(/[>*]/g, '').trim().split(/\s+/).filter(Boolean).length;
+    if (words > 60) {
+      issues.push(`LEDE_TOO_LONG: A RÖVIDEN-doboz ${words} szó (max ~45) — ami hosszú, az már nem "röviden".`);
+    }
+  }
+
   // Kötelező frontmatter mezők
   const frontmatterMatch = articleMarkdown.match(/^---\n([\s\S]*?)\n---/);
   if (frontmatterMatch) {

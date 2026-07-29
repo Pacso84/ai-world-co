@@ -80,6 +80,14 @@ function saveCache(file, data) {
 
 const SYSTEM = `You are a professional translator for a friendly AI-news + how-to website for everyday people. Translate faithfully and naturally (warm, clear — not robotic). Do NOT translate brand/product names (ChatGPT, Gemini, Claude, Copilot, etc.) or REAL program code (commands, code with actual syntax, API endpoints, JSON keys, file names). HOWEVER: example prompts and messages that a user would TYPE TO AN AI ASSISTANT are human text — ALWAYS translate them, even when they appear inside quotes, after a 💬 marker, or inside backticks/code fences. In the BODY keep all Markdown intact (## headings, lists, **bold**, emojis, line breaks) and translate only the human text.
 
+THE "IN SHORT" BOX (2026-07-29): every article now opens with a blockquote right
+after the # title, like "> **In short:** …". TRANSLATE BOTH THE LABEL AND THE
+SENTENCE — the label is human text, not a brand name. Keep the "> " and the bold
+markers exactly as they are. Natural local equivalents:
+  Hungarian "**Röviden:**" · Spanish "**En resumen:**" · German "**Kurz gesagt:**"
+  · French "**En bref:**"
+Never leave "In short" in English on a non-English page.
+
 TITLES AND SUBTITLES: never translate word-for-word. Rewrite them as a NATIVE headline a local journalist would write — natural word order, correct grammar, instantly understandable. Watch out for English "your X" in generic statements: in many languages the natural form is the plain definite noun, not a possessive (e.g. Hungarian: "Your Cloud Services" → "a felhőszolgáltatások", NOT "felhőszolgáltatásaid(at)"). If a literal translation sounds odd or ambiguous, rephrase the meaning instead.
 
 READER ADDRESS — MANDATORY, SITE-WIDE CONVENTION (2026-07-14, never mix within one article):

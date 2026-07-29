@@ -26,12 +26,50 @@
 
 ## 2. Cikk struktúra
 
+### 2a. RÖVIDEN-DOBOZ — a cikk ELSŐ eleme, kötelező (2026-07-29)
+
+Minden cikk a főcím után **azonnal** egy rövid, egyenes válasszal kezdődik,
+és csak UTÁNA jön a figyelemfelkeltő felütés:
+
+```markdown
+# A cikk címe
+
+> **In short:** Egy-két mondat, ami a CÍMBEN feltett kérdésre válaszol:
+> mi történt / mit csinál a dolog, és mit jelent ez az olvasónak.
+> Semmi felvezetés, semmi „ebben a cikkben megnézzük".
+
+[utána jön a szokásos felütés…]
+```
+
+**Miért kell:** két különböző olvasó jön az oldalra.
+
+1. **Az ember**, aki elolvassa a történetet — neki a felütés szól, az marad.
+2. **A gép** — a ChatGPT, a Perplexity és a Google kivonat-doboza. Ezek a
+   cikk ELEJÉT nézik, és ha ott csak hangulatkeltés van („Ott ültél egy
+   megbeszélésen…"), akkor nem minket idéznek, hanem valaki mást.
+   Márpedig az AI-asszisztensekből érkező forgalom gyorsan nő, és ingyen van.
+
+**Szabályok:**
+- Idézet-blokk (`>`), közvetlenül a `#` főcím után, üres sorral elválasztva.
+- 1-2 mondat, **legfeljebb 45 szó**. Ha hosszabb, már nem „röviden".
+- A CÍM kérdésére válaszol, nem a cikk témáját ismétli meg.
+- Konkrét: névvel, számmal, ténnyel. „Sok újdonság érkezik" → semmit nem ér.
+- Kitalált tényt itt sem írunk (a hitelesség-kapu erre is vonatkozik).
+
+**Rossz:** `> **In short:** In this article we look at Google Meet's new features.`
+**Jó:** `> **In short:** Google Meet's AI notetaker will soon paste screenshots
+of shared screens straight into your notes, so you no longer have to guess what
+was on a slide. It's part of "Take notes for me", and no date has been given yet.`
+
 ### Rövid cikk (300-600 szó) — alap formátum
 
 ```
 ┌─────────────────────────────────────────┐
 │ HEADLINE (cím)                          │  ← 60-80 karakter
 │ Subhead (alcím — 1 mondat összefoglaló) │  ← 100-150 karakter
+├─────────────────────────────────────────┤
+│ RÖVIDEN-doboz (> **In short:** …)       │  ← KÖTELEZŐ, lásd 2a
+│ A cím kérdésére EGYENES válasz          │
 ├─────────────────────────────────────────┤
 │ HOOK (1. bekezdés — figyelemfelkeltő)   │  ← 2-3 mondat
 │ Megválaszolja: MI történt? MIÉRT fontos?│

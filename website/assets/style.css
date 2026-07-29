@@ -347,6 +347,27 @@ body {
 .impact p { margin-bottom: 12px; }
 .impact p::first-letter { all: unset; }
 
+/* RÖVIDEN-doboz (2026-07-29) — a cikk elején álló egyenes válasz.
+   MIÉRT: a ChatGPT, a Perplexity és a Google kivonat-doboza az oldal TETEJÉT
+   olvassa. Az íróink ezért a főcím után rögtön egy 1-2 mondatos egyenes
+   választ adnak (shared/style-guide.md 2a); ez a doboz emeli ki, hogy az
+   olvasó is egy pillantással megkapja a lényeget.
+   Szándékosan VILÁGOS és visszafogott — a sötét .impact doboz a cikk VÉGÉN
+   van, két nagy sötét blokk egy oldalon már sok lenne. */
+.lede {
+  border-left: 4px solid var(--accent);
+  background: var(--card);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 18px 22px;
+  margin: 0 0 30px;
+  line-height: 1.6;
+}
+.lede p { margin: 0; }
+.lede p + p { margin-top: 10px; }
+/* az iniciálé (nagy kezdőbetű) maradjon a FELÜTÉSÉ, ne a dobozé */
+.lede p::first-letter { all: unset; }
+[data-theme="dark"] .lede { background: rgba(255, 255, 255, 0.05); }
+
 /* tags + footer */
 .article__tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 36px 0; justify-content: center; }
 .minitag { font-size: 13px; color: var(--muted); background: var(--paper-2); padding: 5px 12px; border-radius: 100px; }

@@ -182,6 +182,14 @@ OTHER RULES:
    - Right: "a transformer (think of it as the AI's internal structure for paying attention to important words)"
 
 4. STRUCTURE (mandatory):
+   - "IN SHORT" BLOCK — the FIRST thing after the # title, before the hook:
+       > **In short:** one or two sentences (max 45 words) that answer the
+       > HEADLINE directly — what happened / what the thing does, and what it
+       > means for the reader. Concrete: names, numbers, facts.
+     No preamble ("In this article we look at…") and no invented facts.
+     WHY: humans read the hook, but ChatGPT, Perplexity and Google's snippet
+     box read the TOP of the page. If the top is only atmosphere, they quote
+     someone else instead of us.
    - Hook: 1-2 sentences — why this is useful to know
    - Main content: practical, step-by-step or example-driven (2-4 short sections)
    - "What this means for you" section (mandatory!) with practical advice for different reader types

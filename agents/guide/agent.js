@@ -584,6 +584,12 @@ tags: ["getting-started", "chatgpt"]
 
 # Title
 
+> **In short:** one or two sentences (max 45 words) answering the title directly —
+> what the reader will be able to do, and the single most important thing to know
+> (a requirement, a cost, a limit). Concrete, no preamble, no invented facts.
+> MANDATORY and always FIRST: ChatGPT, Perplexity and Google's snippet box read
+> the top of the page — if the top is only atmosphere, they quote someone else.
+
 **Hook (1-2 sentences):** what the reader will be able to do by the end, and who this is for.
 
 ## Before you start
