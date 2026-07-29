@@ -236,7 +236,13 @@ jobs:
         run: |
           node agents/social/agent.js --limit 6 || true
           node agents/social/poster.js --limit 2 || true
-          node agents/social/pinterest-poster.js --limit 3 || true
+          # Pinterest 3 → 5 / futás (2026-07-29, = 15/nap).
+          # Ok: 73 EVERGREEN útmutató került vissza a sorba (a Pinterest 07-25-én
+          # épült be, ezek a cikkek KORÁBBAN kaptak "skipped-old" jelölést — de a
+          # Pinterestnél az útmutató nem évül el). A sor ~187-re nőtt; 9/nappal
+          # 21 nap, 15/nappal ~12 nap. Óvatosan emelünk: a fiók fiatal, a hirtelen
+          # nagy ütem levélszemétnek látszhat.
+          node agents/social/pinterest-poster.js --limit 5 || true
 
       # Napi önjelentés a Főnöktől Telegramra (naponta 1x, a 7-15 UTC sávban)
       # FORRÁS-BIZONYÍTVÁNY (2026-07-22): osztályozza a hírforrásokat (frissesség +
