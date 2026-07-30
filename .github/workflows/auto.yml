@@ -160,6 +160,22 @@ jobs:
         if: always()
         run: node core/quality-guard.js --fix || true
 
+      # HÁZMESTER (2026-07-30): halott adat takarítása, MINDIG a build ELŐTT,
+      # hogy a törölt képek fel se menjenek a Cloudflare-re.
+      #
+      # MIÉRT KELLETT: a user kérésére átvilágítottam a központot. A legnagyobb
+      # tétel a memory/store.json volt — 2,2 MB, ebből 93% halott "embedding"
+      # vektor egy KIVEZETETT szolgáltatástól. Ez a fájl MINDEN futásnál újra
+      # bekerült a git-történetbe (133 példány), napi 3 futással évi ~2,2 GB.
+      # Mellette 594 régi napló, 97 árva borítókép, 5 árva fordítás.
+      #
+      # Csak azt törli, amiről BIZONYÍTHATÓ, hogy nincs rá hivatkozás; ha bármi
+      # bizonytalan, hozzá sem nyúl. Beépített őrszem szól, ha valami újra hízni
+      # kezd — hogy ne fél év múlva, a lassú klónozásból derüljön ki.
+      - name: Házmester (halott adat takarítása)
+        if: always()
+        run: node core/housekeeping.js || true
+
       # id + outcome: a deploy CSAK sikeres build után mehet — a build.js
       # ELŐSZÖR ÜRÍTI a website/public mappát, tehát egy bukott build után a
       # deploy LETÖRÖLNÉ az élő oldalt. Ez a feltétel a védőháló.

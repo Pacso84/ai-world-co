@@ -241,6 +241,17 @@ async function main() {
     }
   } catch { /* még nincs SEO-lelet vagy nem futott — nem baj */ }
 
+  // HÁZMESTER (2026-07-30): mit takarított el, és hízik-e valami vissza.
+  // CSENDES a hétköznapokon: napi pár régi napló törlése nem hír. Csak akkor
+  // szólal meg, ha ÉRDEMI takarítás történt (kép/fordítás/embedding), vagy ha
+  // a beépített őrszem szerint valami újra nőni kezdett — ez utóbbi a fontos,
+  // mert pont az a hiba, ami fél évig észrevétlen marad.
+  try {
+    const hk = JSON.parse(readFileSync(join(ROOT, 'memory', 'housekeeping.json'), 'utf-8'));
+    const worth = (hk.actions || []).filter(a => !a.startsWith('📄'));
+    if (worth.length) lines.push('🧹 HÁZMESTER: ' + worth.join(' · '));
+  } catch { /* nem futott — nem baj */ }
+
   // FORRÁS-BIZONYÍTVÁNY (2026-07-22): a külön lépés által kiírt osztályzatokból.
   // Csendes, ha nincs teendő; hangos, ha forrást kapcsoltunk ki vagy elavultból írunk.
   try {
