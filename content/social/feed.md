@@ -1,6 +1,116 @@
 # AI World Co. — közösségi posztok
 
-*Generálva: 2026-07-29T17:12:29.181Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+*Generálva: 2026-07-30T02:07:58.562Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## 5 ways AI Mode in Search helps you enjoy the real world
+**🔗 https://aiworldhq.com/article/how-google-s-ai-mode-in-search-helps-you-plan-a-better-weekend**
+
+**Facebook:**
+Tired of opening tabs to plan a simple weekend outing? AI Mode in Google Search lets you find local cafes, compare options and get directions in one conversation—so you spend less time clicking and more time actually enjoying yourself. https://aiworldhq.com/article/how-google-s-ai-mode-in-search-helps-you-plan-a-better-weekend #weekendplans #productivitytips
+
+**Instagram:**
+AI Mode in Google Search plans your weekend in one conversation
+
+Find spots, settle debates and get directions without endless clicking.
+
+#WeekendPlans #AITips #GoogleSearch #WeekendVibes #LocalFinds
+
+Link in bio.
+
+*Kép-ötlet: A person relaxing at an outdoor cafe on a sunny weekend, smiling at their phone, with the city visible in the background*
+
+---
+
+## 5 ways to host the ultimate dinner party with Google Search
+**🔗 https://aiworldhq.com/article/how-to-plan-a-dinner-party-using-ai-menu-tablescape-and-more**
+
+**Facebook:**
+Planning a dinner party doesn't have to mean stress and last-minute panic. Google's AI can help you figure out the menu, set the table and time your cooking — so you can actually enjoy your guests. https://aiworldhq.com/article/how-to-plan-a-dinner-party-using-ai-menu-tablescape-and-more #dinnerparty #everydayai
+
+**Instagram:**
+Dinner party stress? Here's the hack.
+
+Google's AI can now help you plan the whole thing — menu, tablescape, cooking schedule. You're the host, not a chef.
+
+#dinnerparty #aihelper #hostingtips #everydayai #planner
+
+*Kép-ötlet: A beautifully set dining table with warm candlelight, fresh flowers and plates of food, suggesting an inviting dinner party scene without any people shown.*
+
+---
+
+## Generate and edit visuals with Gemini in Google Docs
+**🔗 https://aiworldhq.com/article/create-images-right-inside-google-docs-with-gemini-a-practical-guide**
+
+**Facebook:**
+Tired of stopping your writing flow to hunt for images? Gemini now lets you create diagrams and visuals straight inside Google Docs — just describe what you need in plain English. https://aiworldhq.com/article/create-images-right-inside-google-docs-with-gemini-a-practical-guide #GoogleDocs #Productivity
+
+**Instagram:**
+Add visuals to your docs without leaving the page
+
+Gemini now generates images, diagrams and infographics right inside Google Docs — just type what you want and watch it appear. Your documents just got more colourful.
+
+#Gemini
+#GoogleDocs
+#ImageGeneration
+#ProductivityTips
+#WritingTools
+
+Link in bio.
+
+*Kép-ötlet: A clean laptop screen showing an open Google Doc with a glowing AI sparkle icon next to a colourful diagram being created*
+
+---
+
+## Accelerating scientific discovery with ChatGPT for Academic Researchers
+**🔗 https://aiworldhq.com/article/openai-is-giving-researchers-free-chatgpt-access-what-it-means-for-you**
+
+**Facebook:**
+Smart researchers just got free access to powerful AI tools — and there's a lot we can learn from how they're using it. Here's what this means for students and anyone who loves learning.https://aiworldhq.com/article/openai-is-giving-researchers-free-chatgpt-access-what-it-means-for-you #AI #Learning
+
+**Instagram:**
+Researchers now have free access to advanced AI tools. Here's what students and curious learners can take away from how they're using it.
+
+Link in bio.
+
+#AI #Learning #StudyTools #Research #ChatGPT
+
+*Kép-ötlet: A clean desk with textbooks, a laptop, and a coffee cup, with a subtle digital glow suggesting AI assistance without showing any text or logos*
+
+---
+
+## How enabling two settings tripled our scores on the ARC-AGI-3 benchmark
+**🔗 https://aiworldhq.com/article/ai-s-think-harder-button-what-reasoning-mode-does-and-when-you-need-it**
+
+**Facebook:**
+There's a hidden 'think harder' mode in your AI assistant that makes it take more time on tough questions — but the answers are way better. Here's when it's worth switching on (and when it's not worth the wait). https://aiworldhq.com/article/ai-s-think-harder-button-what-reasoning-mode-does-and-when-you-need-it #AI #Productivity
+
+**Instagram:**
+Your AI can actually think harder when you ask it to.
+
+It takes longer and needs a paid plan, but for complex problems, the answers are noticeably stronger. Here's how to use it wisely.
+
+#AI #Productivity #ChatGPT #Claude #Gemini #TechTips
+
+Link in bio.
+
+*Kép-ötlet: A clean graphic showing a simple toggle switch or settings menu with the words 'Extended Thinking' next to a subtle brain icon, on a soft coloured background.*
+
+---
+
+## Qwen3-TTS Family is Now Open Sourced: Voice Design, Clone, and Generation! - qwen.ai
+**🔗 https://aiworldhq.com/article/open-source-voice-ai-just-got-a-major-upgrade-here-s-what-that-means-f**
+
+**Facebook:**
+Text-to-speech is getting a big upgrade — and that means the apps you use every day could soon sound way more natural. Here's what the new open-source voice AI actually does. https://aiworldhq.com/article/open-source-voice-ai-just-got-a-major-upgrade-here-s-what-that-means-f #VoiceAI #AI
+
+**Instagram:**
+Ever wished your apps sounded more... human? New open-source voice AI can design, clone and generate voices — and it's now available for free. This could change how apps sound everywhere.
+
+#VoiceAI #TextToSpeech #OpenSource #AI #TechInnovation
+
+*Kép-ötlet: A clean, modern smartphone screen showing a speech waveform with a subtle microphone icon, against a soft gradient background.*
 
 ---
 

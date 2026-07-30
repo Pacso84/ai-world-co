@@ -1,0 +1,35 @@
+{
+  "started_at": "2026-07-30T01:38:52.032Z",
+  "total": 4,
+  "passed": 3,
+  "failed": 0,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.014150164,
+  "by_article": [
+    {
+      "writer": "WRITER_GUIDE_drafting-a-polite-but-firm-resignation-letter-from-your-job.json",
+      "article": "ARTICLE_GUIDE_drafting-a-polite-but-firm-resignation-letter-from-your-job.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.0019899
+    },
+    {
+      "writer": "WRITER_GUIDE_how-to-break-down-an-australian-government-form-in-plain-eng.json",
+      "article": "ARTICLE_GUIDE_how-to-break-down-an-australian-government-form-in-plain-eng.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.0019245
+    },
+    {
+      "writer": "WRITER_GUIDE_how-to-plan-an-australian-camping-trip-with-any-ai-assistant.json",
+      "article": "ARTICLE_GUIDE_how-to-plan-an-australian-camping-trip-with-any-ai-assistant.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.00300766
+    }
+  ],
+  "truth_blocked": 1,
+  "finished_at": "2026-07-30T01:40:02.089Z",
+  "duration_seconds": 70.057
+}

@@ -1,0 +1,55 @@
+{
+  "started_at": "2026-07-30T01:26:19.587Z",
+  "total": 6,
+  "passed": 5,
+  "failed": 1,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.015364672,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-07-28T17-18-22-535Z_google-ai-blog_5_ways_AI_Mode_in_Search_helps_you_enjoy_the_real_.json",
+      "article": "ARTICLE_2026-07-28T17-18-22-535Z_google-ai-blog_5_ways_AI_Mode_in_Search_helps_you_enjoy_the_real_.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.0020058
+    },
+    {
+      "writer": "WRITER_2026-07-28T17-18-22-535Z_google-ai-blog_5_ways_to_host_the_ultimate_dinner_party_with_Goog.json",
+      "article": "ARTICLE_2026-07-28T17-18-22-535Z_google-ai-blog_5_ways_to_host_the_ultimate_dinner_party_with_Goog.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.0022539
+    },
+    {
+      "writer": "WRITER_2026-07-28T17-18-22-535Z_google-workspace_Generate_and_edit_visuals_with_Gemini_in_Google_Do.json",
+      "article": "ARTICLE_2026-07-28T17-18-22-535Z_google-workspace_Generate_and_edit_visuals_with_Gemini_in_Google_Do.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.00126066
+    },
+    {
+      "writer": "WRITER_2026-07-30T01-21-35-633Z_openai-blog_Accelerating_scientific_discovery_with_ChatGPT_for.json",
+      "rejected": "REJECTED_2026-07-30T01-21-35-633Z_openai-blog_Accelerating_scientific_discovery_with_ChatGPT_for.json",
+      "decision": "FAIL",
+      "score": 7,
+      "cost_usd": 0.00247852
+    },
+    {
+      "writer": "WRITER_2026-07-30T01-21-35-633Z_openai-blog_How_enabling_two_settings_tripled_our_scores_on_th.json",
+      "article": "ARTICLE_2026-07-30T01-21-35-633Z_openai-blog_How_enabling_two_settings_tripled_our_scores_on_th.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.0015468
+    },
+    {
+      "writer": "WRITER_2026-07-30T01-21-55-640Z_qwen-news_Qwen3-TTS_Family_is_Now_Open_Sourced__Voice_Design.json",
+      "article": "ARTICLE_2026-07-30T01-21-55-640Z_qwen-news_Qwen3-TTS_Family_is_Now_Open_Sourced__Voice_Design.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0015786
+    }
+  ],
+  "finished_at": "2026-07-30T01:28:02.767Z",
+  "duration_seconds": 103.18
+}

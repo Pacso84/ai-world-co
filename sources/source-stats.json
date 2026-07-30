@@ -1,7 +1,7 @@
 {
   "_meta": {
     "note": "Forrás-bizonyítvány: frissesség + termés + megbízhatóság forrásonként. Gyártja: core/source-report-card.js",
-    "updated": "2026-07-29T17:12:42.613Z",
+    "updated": "2026-07-30T02:08:10.241Z",
     "thresholds": {
       "DEAD_FEED_DAYS": 365,
       "MIN_SAMPLE": 4,
@@ -13,18 +13,18 @@
     "openai-blog": {
       "name": "OpenAI Blog (hivatalos)",
       "feedAgeDays": 0,
-      "published30d": 34,
+      "published30d": 35,
       "truthBlocks": 0,
-      "totalAttempts": 35,
+      "totalAttempts": 37,
       "alreadyDisabled": false,
-      "lastArticle": "2026-07-27",
+      "lastArticle": "2026-07-30",
       "verdict": "ok",
       "reason": ""
     },
     "google-deepmind": {
       "name": "Google DeepMind (hivatalos)",
       "feedAgeDays": 0,
-      "published30d": 6,
+      "published30d": 5,
       "truthBlocks": 0,
       "totalAttempts": 6,
       "alreadyDisabled": false,
@@ -35,17 +35,17 @@
     "google-ai-blog": {
       "name": "Google AI (hivatalos, blog.google)",
       "feedAgeDays": 1,
-      "published30d": 12,
+      "published30d": 13,
       "truthBlocks": 0,
-      "totalAttempts": 12,
+      "totalAttempts": 14,
       "alreadyDisabled": false,
-      "lastArticle": "2026-07-19",
+      "lastArticle": "2026-07-30",
       "verdict": "ok",
       "reason": ""
     },
     "meta-ai": {
       "name": "Meta Newsroom (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 2,
       "published30d": 5,
       "truthBlocks": 0,
       "totalAttempts": 5,
@@ -57,7 +57,7 @@
     "microsoft-ai": {
       "name": "Microsoft AI (hivatalos)",
       "feedAgeDays": 2,
-      "published30d": 10,
+      "published30d": 9,
       "truthBlocks": 0,
       "totalAttempts": 10,
       "alreadyDisabled": false,
@@ -79,7 +79,7 @@
     "nvidia-blog": {
       "name": "NVIDIA Blog (hivatalos)",
       "feedAgeDays": 1,
-      "published30d": 18,
+      "published30d": 17,
       "truthBlocks": 0,
       "totalAttempts": 18,
       "alreadyDisabled": false,
@@ -90,11 +90,11 @@
     "google-workspace": {
       "name": "Google Workspace Updates (hivatalos)",
       "feedAgeDays": 0,
-      "published30d": 24,
+      "published30d": 25,
       "truthBlocks": 1,
-      "totalAttempts": 26,
+      "totalAttempts": 27,
       "alreadyDisabled": false,
-      "lastArticle": "2026-07-29",
+      "lastArticle": "2026-07-30",
       "verdict": "ok",
       "reason": ""
     },
@@ -144,8 +144,8 @@
     },
     "mistral-ai": {
       "name": "Mistral AI (hivatalos)",
-      "feedAgeDays": 20,
-      "published30d": 4,
+      "feedAgeDays": 21,
+      "published30d": 2,
       "truthBlocks": 0,
       "totalAttempts": 4,
       "alreadyDisabled": false,
@@ -156,7 +156,7 @@
     "alibaba-qwen": {
       "name": "Alibaba Qwen (hivatalos)",
       "feedAgeDays": null,
-      "published30d": 5,
+      "published30d": 2,
       "truthBlocks": 0,
       "totalAttempts": 5,
       "alreadyDisabled": true,
@@ -386,7 +386,7 @@
     },
     "sap": {
       "name": "SAP Innovation Blog (hivatalos)",
-      "feedAgeDays": 0,
+      "feedAgeDays": 1,
       "published30d": 6,
       "truthBlocks": 0,
       "totalAttempts": 6,
@@ -397,7 +397,7 @@
     },
     "databricks": {
       "name": "Databricks Blog (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 0,
       "published30d": 19,
       "truthBlocks": 0,
       "totalAttempts": 19,
@@ -408,7 +408,7 @@
     },
     "snowflake": {
       "name": "Snowflake Blog (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 0,
       "published30d": 18,
       "truthBlocks": 0,
       "totalAttempts": 18,
@@ -441,7 +441,7 @@
     },
     "ibm": {
       "name": "IBM Research (hivatalos)",
-      "feedAgeDays": 6,
+      "feedAgeDays": 7,
       "published30d": 2,
       "truthBlocks": 0,
       "totalAttempts": 2,
@@ -485,7 +485,7 @@
     },
     "xai-news": {
       "name": "xAI (hivatalos, Google News szűrve)",
-      "feedAgeDays": 2,
+      "feedAgeDays": 3,
       "published30d": 3,
       "truthBlocks": 0,
       "totalAttempts": 3,
@@ -518,12 +518,12 @@
     },
     "qwen-news": {
       "name": "Qwen / Alibaba (hivatalos, Google News szűrve)",
-      "feedAgeDays": 1,
-      "published30d": 3,
+      "feedAgeDays": 2,
+      "published30d": 4,
       "truthBlocks": 0,
-      "totalAttempts": 3,
+      "totalAttempts": 4,
       "alreadyDisabled": false,
-      "lastArticle": "2026-07-27",
+      "lastArticle": "2026-07-30",
       "verdict": "ok",
       "reason": ""
     },
@@ -540,7 +540,7 @@
     },
     "d-id-news": {
       "name": "D-ID (hivatalos)",
-      "feedAgeDays": 5,
+      "feedAgeDays": 6,
       "published30d": 8,
       "truthBlocks": 0,
       "totalAttempts": 8,
