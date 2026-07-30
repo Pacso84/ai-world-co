@@ -32,11 +32,34 @@ export function isMetered(provider, model = '') {
   return false;
 }
 
-const MONTH_HARD_CAP = Number(LIMITS.monthly_budget_usd_hard_cap ?? 80);
-const MONTH_TARGET = Number(LIMITS.monthly_budget_usd_target ?? 30);
-
 function today() { return new Date().toISOString().slice(0, 10); }       // YYYY-MM-DD
 function month() { return new Date().toISOString().slice(0, 7); }        // YYYY-MM
+
+// ===================================================================
+// IDŐZÍTETT KERET-VÁLTÁS (2026-07-30)
+// ===================================================================
+// A hard cap a FUTÓ HÓNAP költésével van összevetve. Ezért egy tervezett
+// csökkentést (júl. 50 → aug. 40) NEM lehet előre beírni: ha ma állítanám
+// 40-re, július pedig már $41,91-nél tart, a cég AZONNAL LEÁLLNA a hónap
+// hátralévő részére.
+//
+// Eddig ez emberi emlékezeten múlt ("augusztus 1-jén állítsd át"). Most a
+// config megadhatja HÓNAPRA BONTVA is (monthly_budget_usd_hard_cap_by_month),
+// és a váltás magától megtörténik a hónapfordulón — senkinek nem kell rá
+// emlékeznie, és nincs az a veszély, hogy túl korán lép életbe.
+function capForMonth(m) {
+  const byMonth = LIMITS.monthly_budget_usd_hard_cap_by_month;
+  if (byMonth && typeof byMonth === 'object') {
+    // A LEGKÉSŐBBI olyan bejegyzés, ami már életbe lépett (így elég egyszer
+    // beírni: onnantól minden későbbi hónapra az érvényes, amíg nincs újabb).
+    const keys = Object.keys(byMonth).filter(k => k <= m).sort();
+    if (keys.length) return Number(byMonth[keys[keys.length - 1]]);
+  }
+  return Number(LIMITS.monthly_budget_usd_hard_cap ?? 80);
+}
+
+const MONTH_HARD_CAP = capForMonth(month());
+const MONTH_TARGET = Number(LIMITS.monthly_budget_usd_target ?? 30);
 
 function load() {
   if (!existsSync(STATE_PATH)) return { days: {} };

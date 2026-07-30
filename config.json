@@ -517,7 +517,11 @@
     "_paid_strategy_comment": "ELV: a fizetős kulcsot (pl. Gemini paid) HASZNÁLJUK, amíg bírja; amikor eléri a saját rate/kvóta limitjét (429), a router AUTOMATIKUSAN a következő kulcsra vált (free pool: Cerebras/Groq/Mistral). NINCS napi dollár-plafon (a felhasználó sem tudja, meddig elég a csomag). A core/budget.js KÖVETI a költést (látható a 'mennyi a keret?' paranccsal), és a havi hard_cap a VÉGSŐ biztosíték egy elfutó számla ellen.",
     "_comment": "Ha eléri a hard_cap-et, az agentek leállnak és felhasználói jóváhagyás kell.",
     "general_guides_min_share": 0.4,
-    "_general_guides_comment": "Az UJ guide-temak mekkora hanyada legyen garantaltan CEGMENTES (Hetkoznapi AI keszsegek). 2026-07-22 (user: itt kene meg utmutato, ami le van maradva): a ceg-lefedettseg ELOSZOR futott es elvitte a teljes keretet, az altalanos otletelés a maradekot kapta - meres: 181 eszkoz-utmutato vs 29 hetkoznapi, az utolso heten 55 vs 2. 0.4 = a keret 40%-a eleve cegmentes."
+    "_general_guides_comment": "Az UJ guide-temak mekkora hanyada legyen garantaltan CEGMENTES (Hetkoznapi AI keszsegek). 2026-07-22 (user: itt kene meg utmutato, ami le van maradva): a ceg-lefedettseg ELOSZOR futott es elvitte a teljes keretet, az altalanos otletelés a maradekot kapta - meres: 181 eszkoz-utmutato vs 29 hetkoznapi, az utolso heten 55 vs 2. 0.4 = a keret 40%-a eleve cegmentes.",
+    "monthly_budget_usd_hard_cap_by_month": {
+      "2026-08": 40
+    },
+    "_by_month_comment": "IDŐZÍTETT VÁLTÁS (2026-07-30): a hard cap a FUTÓ hónap költésével számol, ezért a tervezett júl.50→aug.40 csökkentést nem lehetett előre beírni — július 1,91-nél tartott, azonnal leállt volna a cég. Ez a mező hónapra bontva adja meg a keretet: a legkésőbbi már életbe lépett bejegyzés érvényes. Augusztus 1-jén MAGÁTÓL 40 lesz, senkinek nem kell rá emlékeznie."
   },
   "fallback_strategy": {
     "rule_1": "Ha primary provider rate limit -> automatikusan fallback model",
