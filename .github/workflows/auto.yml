@@ -105,6 +105,30 @@ jobs:
         timeout-minutes: 10
         run: node agents/iro/upgrade-howtos.js --limit 2 || true
 
+      # BORÍTÓKÉP-FELÚJÍTÁS (2026-07-30, user: "az útmutató képek is a
+      # leírásból származzanak").
+      #
+      # A 2026-07-30 előtti képek úgy készültek, hogy az "art director" CSAK a
+      # címet és az alcímet látta — a cikk szövegét soha. Ebből félrevezető
+      # borítók lettek. Mért példa ugyanarra az útmutatóra:
+      #   RÉGI: "áttetsző ROBOT-KOPONYA elektródákkal, világító CPU-agy"
+      #   ÚJ:   "laptop az OpenAI Playground felülettel, chat-buborékok"
+      # (a cikk arról szól, hogyan jelentkezz be és kérj API-kulcsot).
+      #
+      # ÚTMUTATÓK ELŐRE: azok evergreenek, azokat pineljük, és a user
+      # kifejezetten őket kérte — 245 db ~28 nap alatt. A hír borítója amúgy is
+      # elavul. A kép-generálás INGYENES (Cloudflare Flux), a jelenet-leírás
+      # ~$0,0005/db → az egész felújítás ~$0,28.
+      - name: Borítóképek felújítása (3/futás, útmutatók előre)
+        if: always()
+        timeout-minutes: 10
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          CLOUDFLARE_FLUX_TOKEN: ${{ secrets.CLOUDFLARE_FLUX_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          HF_API_KEY: ${{ secrets.HF_API_KEY }}
+        run: node agents/designer/agent.js --refresh 3 || true
+
       # TÉNY-ELLENŐRZŐ (2026-07-30): a MÁR KINT LÉVŐ útmutatók frissesség-őre.
       #
       # MIÉRT KELLETT: a hitelesség-kapu (core/truth-gate.js) CSAK publikálás

@@ -39,6 +39,9 @@ const FORCE = args.includes('--force');
 // --only <részlet>: csak az egyező slugú cikkek képét generálja újra (force-szal)
 const onlyIdx = args.indexOf('--only');
 const ONLY = onlyIdx !== -1 && args[onlyIdx + 1] ? args[onlyIdx + 1].toLowerCase() : null;
+// --refresh N: N db RÉGI borítókép cseréje az új (szövegből dolgozó) módszerrel
+const refreshIdx = args.indexOf('--refresh');
+const REFRESH = refreshIdx !== -1 && args[refreshIdx + 1] ? (parseInt(args[refreshIdx + 1], 10) || 0) : 0;
 
 // Ugyanaz a slug-képzés mint a build.js-ben (egyezniük kell!)
 function slugify(text) {
@@ -211,7 +214,32 @@ async function main() {
   if (!existsSync(IMAGES_DIR)) mkdirSync(IMAGES_DIR, { recursive: true });
   if (!existsSync(ARTICLES_DIR)) { console.log('Nincs cikk.'); return; }
 
-  const files = readdirSync(ARTICLES_DIR).filter(f => f.startsWith('ARTICLE_') && f.endsWith('.json'));
+  let files = readdirSync(ARTICLES_DIR).filter(f => f.startsWith('ARTICLE_') && f.endsWith('.json'));
+
+  // ── FOKOZATOS BORÍTÓKÉP-FELÚJÍTÁS (--refresh N, 2026-07-30) ──────────
+  // A 2026-07-30 előtti képek úgy készültek, hogy az "art director" CSAK a
+  // címet és az alcímet látta. Ebből félrevezető borítók lettek: egy
+  // "Chatbot Brain" című útmutatóhoz robot-KOPONYA elektródákkal, pedig a
+  // cikk arról szól, hogyan jelentkezz be és kérj API-kulcsot.
+  //
+  // Az új képek már a cikk SZÖVEGÉBŐL készülnek. A régieket fokozatosan
+  // cseréljük (a kép-generálás ingyenes, a jelenet-leírás ~$0,0005/db),
+  // ÚTMUTATÓKKAL KEZDVE: azok evergreenek, azokat pineljük, és a user
+  // kifejezetten őket kérte. A hír borítója amúgy is elavul.
+  if (REFRESH > 0) {
+    files = files
+      .map(f => { try { return { f, d: JSON.parse(readFileSync(join(ARTICLES_DIR, f), 'utf-8')) }; } catch { return null; } })
+      .filter(x => x && x.d._meta?.published_at && (x.d._meta.image_v || 0) < 2)
+      .sort((a, b) => {
+        const ag = a.d._meta.type === 'guide' ? 0 : 1;   // útmutató előre
+        const bg = b.d._meta.type === 'guide' ? 0 : 1;
+        return ag - bg || String(a.d._meta.published_at).localeCompare(String(b.d._meta.published_at));
+      })
+      .slice(0, REFRESH)
+      .map(x => x.f);
+    console.log(`♻️  FELÚJÍTÁS: ${files.length} borítókép cseréje a cikk szövegéből (útmutatók előre)`);
+  }
+
   let generated = 0, skipped = 0, failed = 0;
 
   for (const file of files) {
@@ -228,7 +256,7 @@ async function main() {
     const imgPath = join(IMAGES_DIR, `${slug}.jpg`);
 
     if (ONLY && !slug.includes(ONLY)) { skipped++; continue; }
-    if (existsSync(imgPath) && !FORCE && !ONLY) {
+    if (existsSync(imgPath) && !FORCE && !ONLY && !REFRESH) {
       skipped++;
       continue;
     }
@@ -240,6 +268,12 @@ async function main() {
     try {
       const { size, backend } = await generateImage(prompt, imgPath);
       console.log(`   ✅ Kép mentve: ${slug}.jpg (${(size/1024).toFixed(0)} KB, ${backend})`);
+      // Megjelöljük, hogy ez a kép MÁR a cikk szövegéből készült (image_v: 2).
+      // Enélkül a felújító körbe-körbe ugyanazokat cserélgetné.
+      try {
+        data._meta = { ...data._meta, image_v: 2, image_at: new Date().toISOString() };
+        writeFileSync(join(ARTICLES_DIR, file), JSON.stringify(data, null, 2), 'utf-8');
+      } catch { /* a kép akkor is megvan */ }
       generated++;
     } catch (e) {
       const short = e.message.includes('429') ? 'KVÓTA elfogyott (próbáld később)' : e.message.slice(0, 60);
