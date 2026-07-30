@@ -1,102 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178521167176774",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-07-28T04:07:51.767Z",
-      "updated": "2026-07-28T04:10:07.906Z"
-    },
-    {
-      "id": "t178521180790824",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-28T04:10:07.908Z",
-      "updated": "2026-07-28T04:10:34.997Z"
-    },
-    {
-      "id": "t178521183499921",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-07-28T04:10:34.999Z",
-      "updated": "2026-07-28T04:10:43.712Z"
-    },
-    {
-      "id": "t178521184374161",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-28T04:10:43.741Z",
-      "updated": "2026-07-28T04:10:51.987Z"
-    },
-    {
-      "id": "t178521185198946",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-07-28T04:10:51.989Z",
-      "updated": "2026-07-28T04:11:05.463Z"
-    },
-    {
-      "id": "t178521186546595",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-28T04:11:05.465Z",
-      "updated": "2026-07-28T04:11:23.666Z"
-    },
-    {
-      "id": "t178521188366838",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-07-28T04:11:23.668Z",
-      "updated": "2026-07-28T04:11:42.399Z"
-    },
-    {
-      "id": "t178523420113927",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-07-28T10:23:21.139Z",
-      "updated": "2026-07-28T10:23:21.279Z"
-    },
-    {
-      "id": "t178523420128153",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-07-28T10:23:21.281Z",
-      "updated": "2026-07-28T10:23:42.716Z"
-    },
-    {
-      "id": "t17852342227178",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-07-28T10:23:42.717Z",
-      "updated": "2026-07-28T10:23:42.874Z"
-    },
-    {
-      "id": "t178523422287691",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-07-28T10:23:42.876Z",
-      "updated": "2026-07-28T10:23:43.004Z"
-    },
-    {
-      "id": "t17852342230058",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-28T10:23:43.005Z",
-      "updated": "2026-07-28T10:23:43.136Z"
-    },
-    {
       "id": "t178523422313828",
       "title": "Run pairing",
       "status": "done",
@@ -479,33 +383,105 @@
       "agent": "publisher",
       "created": "2026-07-30T01:50:44.760Z",
       "updated": "2026-07-30T01:51:36.047Z"
+    },
+    {
+      "id": "t17854062787939",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-07-30T10:11:18.793Z",
+      "updated": "2026-07-30T10:11:18.935Z"
+    },
+    {
+      "id": "t178540627893684",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-07-30T10:11:18.936Z",
+      "updated": "2026-07-30T10:11:52.759Z"
+    },
+    {
+      "id": "t178540631276021",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-07-30T10:11:52.760Z",
+      "updated": "2026-07-30T10:11:52.900Z"
+    },
+    {
+      "id": "t17854063129024",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-07-30T10:11:52.902Z",
+      "updated": "2026-07-30T10:11:53.030Z"
+    },
+    {
+      "id": "t178540631303154",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-30T10:11:53.031Z",
+      "updated": "2026-07-30T10:11:53.161Z"
+    },
+    {
+      "id": "t178540631316460",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-07-30T10:11:53.164Z",
+      "updated": "2026-07-30T10:12:25.487Z"
+    },
+    {
+      "id": "t178540634548835",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-30T10:12:25.488Z",
+      "updated": "2026-07-30T10:12:53.140Z"
+    },
+    {
+      "id": "t17854063731420",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-07-30T10:12:53.142Z",
+      "updated": "2026-07-30T10:12:53.298Z"
+    },
+    {
+      "id": "t178540637332117",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-30T10:12:53.321Z",
+      "updated": "2026-07-30T10:13:05.991Z"
+    },
+    {
+      "id": "t178540638599356",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-07-30T10:13:05.993Z",
+      "updated": "2026-07-30T10:13:48.142Z"
+    },
+    {
+      "id": "t178540642814357",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-30T10:13:48.143Z",
+      "updated": "2026-07-30T10:14:07.758Z"
+    },
+    {
+      "id": "t178540644776089",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-07-30T10:14:07.760Z",
+      "updated": "2026-07-30T10:14:37.973Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178445456086990",
-      "level": "warn",
-      "text": "📨 guide → ceo: Kell még adat: \"How to turn a blurry photo into a crisp poster with NVIDIA AI Image Super‑Resolution in 5 minutes\" — az ",
-      "agent": "guide",
-      "at": "2026-07-19T09:49:20.869Z",
-      "loud": false
-    },
-    {
-      "id": "n178445469371483",
-      "level": "info",
-      "text": "SEO: 11 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-07-19T09:51:33.714Z",
-      "loud": false
-    },
-    {
-      "id": "n178445568546035",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). Our article line-up is coherent and ready to publish, with a great mix of practical uses for AI tools like Qwen Chat, Claude, and Cohere. I do note that the topics are quite tech-focused, so we may wa",
-      "agent": "publisher",
-      "at": "2026-07-19T10:08:05.460Z",
-      "loud": false
-    },
     {
       "id": "n17844556950882",
       "level": "success",
@@ -1281,45 +1257,33 @@
       "agent": "ceo",
       "at": "2026-07-30T01:51:36.073Z",
       "loud": false
+    },
+    {
+      "id": "n178540642813412",
+      "level": "info",
+      "text": "SEO: 1 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-07-30T10:13:48.134Z",
+      "loud": false
+    },
+    {
+      "id": "n17854064686960",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The lineup looks great—practical, varied, and genuinely useful with a nice mix of work, study, and personal life topics. It balances tool-specific guides (Perplexity, ChatGPT, Cohere, Qwen) with gener",
+      "agent": "publisher",
+      "at": "2026-07-30T10:14:28.696Z",
+      "loud": false
+    },
+    {
+      "id": "n178540647799595",
+      "level": "success",
+      "text": "0 hír + 1 útmutató publikálva (költség: $0.0036).",
+      "agent": "ceo",
+      "at": "2026-07-30T10:14:37.995Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178488787130399",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"NTT DATA Group cuts incident analysis to 30 minutes with Codex\" — mi a baj: Source story (NTT DATA cutting incident analysis to 30 minutes with Codex) is never referenced; the article reads as a generic explainer with no anchor to the source; Using 'AI codex' as a generic term risks confusion with OpenAI's specific Codex product, which is also the subject of the source; The ",
-      "ref": "2026-07-23T01-48-34-084Z_openai-blog_NTT_DATA_Group_cuts_incident_analysis_to_30_minute.json",
-      "at": "2026-07-24T10:11:11.303Z"
-    },
-    {
-      "id": "m178488790702725",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Google Meet now organizes your meeting notes, transcripts, and recordings in your Google Drive\" — javítva: Google Meet recordings do not auto-collect into a top-level 'Google Meet' folder in Drive with subfolders per meeting — recordings still land in the host's Drive in the meeting owner's folder with no automatic per-meeting subfolder structure as described.; Google Meet does not h",
-      "ref": "2026-07-23T01-48-34-084Z_google-workspace_Google_Meet_now_organizes_your_meeting_notes__tran.json",
-      "at": "2026-07-24T10:11:47.027Z"
-    },
-    {
-      "id": "m178488793426598",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"NTT DATA Group cuts incident analysis to 30 minutes with Codex\" — javítva: Source story (NTT DATA cutting incident analysis to 30 minutes with Codex) is never referenced; the article reads as a generic explainer with no anchor to the source; Using 'AI codex' as a generic term risks confusion with OpenAI's specific Codex product, which is also the subject of the source; újraküldöm.",
-      "ref": "2026-07-23T01-48-34-084Z_openai-blog_NTT_DATA_Group_cuts_incident_analysis_to_30_minute.json",
-      "at": "2026-07-24T10:12:14.265Z"
-    },
-    {
-      "id": "m178488805190647",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Introducing Claude Sonnet 5 \\ Anthropic\" — javítva: Claims Claude Sonnet 5 exists, but it does not; Factual hallucination of product capabilities; újraküldöm.",
-      "ref": "2026-07-23T01-48-42-426Z_anthropic-blog_Introducing_Claude_Sonnet_5___Anthropic.json",
-      "at": "2026-07-24T10:14:11.906Z"
-    },
     {
       "id": "m178488809441661",
       "from": "iro",
@@ -2637,6 +2601,42 @@
       "text": "6 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
       "ref": null,
       "at": "2026-07-30T02:07:58.565Z"
+    },
+    {
+      "id": "m178540634547730",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"How to Plan a Kid's Birthday Party on a Budget Using Any AI Assistant\" — javítva: The example prompt in Step 1 contains Chinese characters '海洋' mixed into an otherwise English sentence, which is a clear formatting/translation error that appears fabricated or corrupted rather than intentional content.; Reviewer verdict: Hitelesség-kapu blokkolta: The example prompt in Step 1 contains ",
+      "ref": "GUIDE_how-to-plan-a-kid-s-birthday-party-on-a-budget-using-any-ai-.json",
+      "at": "2026-07-30T10:12:25.477Z"
+    },
+    {
+      "id": "m178540637312934",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"How to Plan a Kid's Birthday Party on a Budget Using Any AI Assistant\" (?/10)",
+      "ref": "GUIDE_how-to-plan-a-kid-s-birthday-party-on-a-budget-using-any-ai-.json",
+      "at": "2026-07-30T10:12:53.129Z"
+    },
+    {
+      "id": "m178540644774929",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-07-30T10:14:07.749Z"
+    },
+    {
+      "id": "m178540704656215",
+      "from": "social",
+      "to": "team",
+      "kind": "info",
+      "text": "6 közösségi poszt megírva (Facebook). content/social/feed.md",
+      "ref": null,
+      "at": "2026-07-30T10:24:06.562Z"
     }
   ]
 }

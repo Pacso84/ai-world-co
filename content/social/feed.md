@@ -1,6 +1,66 @@
 # AI World Co. — közösségi posztok
 
-*Újraépítve a poszt-fájlokból: 2026-07-30T04:07:06.061Z. A Facebook- és Pinterest-kiküldés automata (Make). Ez a lap kézi átnézéshez van.*
+*Generálva: 2026-07-30T10:24:06.560Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## Add an AI chatbot to your small business site using Alibaba Cloud
+**🔗 https://aiworldhq.com/article/how-to-add-an-alibaba-cloud-ai-chatbot-to-your-wordpress-site**
+
+**Facebook:**
+Repeating the same answers to customers over and over? An AI chatbot on your site can help — it chats with visitors anytime, even when you're offline. This step-by-step guide shows WordPress users how to add one in minutes. https://aiworldhq.com/article/how-to-add-an-alibaba-cloud-ai-chatbot-to-your-wordpress-site #SmallBusiness #AI
+
+*Kép-ötlet: A simple chat bubble icon on a clean WordPress website background*
+
+---
+
+## The main AI assistants explained simply (and what each is best at)
+**🔗 https://aiworldhq.com/article/the-main-ai-assistants-explained-simply-and-what-each-is-best-at**
+
+**Facebook:**
+Trying to figure out which AI assistant to use? This simple guide walks you through the main options and what each does best—no tech jargon, just helpful comparisons. https://aiworldhq.com/article/the-main-ai-assistants-explained-simply-and-what-each-is-best-at #AI #GettingStarted
+
+*Kép-ötlet: A clean, simple illustration of a friendly guide holding a tablet showing different AI icons*
+
+---
+
+## How to write a standout cover letter with AI
+**🔗 https://aiworldhq.com/article/how-to-write-a-standout-cover-letter-with-ai**
+
+**Facebook:**
+Cover letters don't have to be a dreaded chore. This straightforward guide walks you through using AI to draft one that sounds genuinely like you – specific, honest and ready in minutes. https://aiworldhq.com/article/how-to-write-a-standout-cover-letter-with-ai
+
+*Kép-ötlet: A clean workspace with a laptop and a handwritten note, simple and professional.*
+
+---
+
+## How to use AI to write quick, polite emails and replies
+**🔗 https://aiworldhq.com/article/how-to-use-ai-to-write-quick-polite-emails-and-replies**
+
+**Facebook:**
+Sick of staring at a blank inbox? This quick guide shows you how to use AI to draft polite emails in under two minutes—while still sounding like you. Plus: how to check it before you hit send. #Productivity #AIForBeginners https://aiworldhq.com/article/how-to-use-ai-to-write-quick-polite-emails-and-replies
+
+*Kép-ötlet: A clean, simple inbox on a laptop screen with a friendly, approachable feel*
+
+---
+
+## AI made simple: a gentle first guide for older beginners
+**🔗 https://aiworldhq.com/article/ai-made-simple-a-gentle-first-guide-for-beginners**
+
+**Facebook:**
+Feeling overwhelmed by new tech? This gentle guide shows you how to use AI for everyday things—drafting emails, brainstorming ideas, answering questions—at your own pace. No jargon, no pressure. 👋 https://aiworldhq.com/article/ai-made-simple-a-gentle-first-guide-for-beginners #AIForBeginners #TechHelp
+
+*Kép-ötlet: A warm, welcoming illustration of a person feeling comfortable and curious while looking at a simple, friendly computer screen.*
+
+---
+
+## How to create images with AI: a beginner first try
+**🔗 https://aiworldhq.com/article/how-to-create-images-with-ai-a-beginner-s-first-try**
+
+**Facebook:**
+Ever wished you could create custom images but can't draw to save your life? You actually can — no artistic skills needed. This simple guide shows you how to turn your words into unique pictures in just a few clicks. https://aiworldhq.com/article/how-to-create-images-with-ai-a-beginner-s-first-try #GettingStarted #AIImages
+
+*Kép-ötlet: A person smiling at their laptop screen showing a colorful, unique AI-generated image they created.*
 
 ---
 
