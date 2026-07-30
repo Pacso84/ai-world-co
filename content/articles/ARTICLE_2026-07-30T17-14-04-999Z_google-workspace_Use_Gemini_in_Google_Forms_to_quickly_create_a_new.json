@@ -1,0 +1,66 @@
+{
+  "_meta": {
+    "written_at": "2026-07-30T17:17:45.986Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00690024,
+    "original_draft": "2026-07-30T17-14-04-999Z_google-workspace_Use_Gemini_in_Google_Forms_to_quickly_create_a_new.json",
+    "source_id": "google-workspace",
+    "source_name": "Google Workspace Updates (hivatalos)",
+    "source_link": "http://workspaceupdates.googleblog.com/2026/07/use-gemini-in-google-forms-to-quickly-create-a-new-quiz.html",
+    "status": "published",
+    "rejected_at": "2026-07-30T17:17:27.655Z",
+    "auto_check": {
+      "passed": false,
+      "issues": [
+        "HOWTO_NO_STEPS: A cím utasítást ígér, de csak 0 számozott lépés-szakasz van (kell 4-6, \"## Step 1 — …\" formában), nem egyetlen összevont bekezdés."
+      ],
+      "wordCount": 1079
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "The article is well-structured with a clear hook, explains all technical terms (prompt, hallucination), includes the mandatory 'What this means for you' section with audience-specific advice, and maintains a friendly, non-judgmental tone throughout. Factual claims are reasonable and backed by the Google Workspace source. Australian English is correct. Passes all quality gates.",
+      "_aiCost": 0.0017208,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Hitelesség-kapu blokkolta: The 'Help me create' button as described — a floating button in the bottom-right of a new Google Form that opens a side panel for describing a quiz, with a 'paperclip' icon for attaching Drive files (",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-07-30T17-14-04-999Z_google-workspace_Use_Gemini_in_Google_Forms_to_quickly_create_a_new.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-07-30T17:18:08.340Z",
+    "slug": "how-to-build-a-quiz-in-google-forms-with-gemini-what-it-can-and-can-t-",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-07-30T17:18:21.885Z",
+    "guide_worthy": true,
+    "related_guide_topic": "gemini-getting-started",
+    "seo": {
+      "meta_description": "Learn how to use Gemini in Google Forms to create quizzes quickly. See what works well, its limits, and tips for getting the best results.",
+      "keywords": [
+        "how to create a quiz in Google Forms",
+        "Google Forms Gemini feature",
+        "Google Forms AI quiz maker",
+        "create quiz with Google Gemini",
+        "Google Forms quiz creation tips",
+        "Gemini Google Forms limitations",
+        "AI powered quiz Google Forms"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add specific step-by-step instructions with numbered steps to improve chances of featured snippets",
+        "Consider adding FAQ section addressing common questions about Gemini in Google Forms",
+        "Include practical examples of quiz types that work best with this feature"
+      ],
+      "optimised_at": "2026-07-30T17:18:40.713Z"
+    },
+    "social": true,
+    "social_at": "2026-07-30T17:26:06.756Z"
+  },
+  "article_markdown": "---\ntitle: \"How to Build a Quiz in Google Forms with Gemini (What It Can and Can't Do)\"\nsubtitle: \"A honest look at Gemini's 'Help me create' feature in Google Forms — what's real, what's still limited, and how to get the best quiz out of it.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"gemini\", \"google-forms\", \"productivity\", \"teachers\", \"tutorial\"]\n---\n\n# How to Build a Quiz in Google Forms with Gemini (What It Can and Can't Do)\n\n> **In short:** Google Forms now has a \"Help me create\" button powered by Gemini. You describe the quiz you want in a sentence, and Forms drafts questions and answer choices for you. The feature works in any modern browser on a personal Google account or Google Workspace, though the exact rollout is still in progress.\n\nIt's Sunday evening, you promised a quiz for tomorrow's class, and the textbook chapter is 40 pages long. Or you're a trainer with a workshop next week and you need a quick knowledge check on safety procedures. Making a quiz from scratch — finding the right questions, setting the correct answer, choosing the right format — usually takes 20 to 30 minutes of fiddling about.\n\nNow there's a faster way. Google's Gemini AI (the same general-purpose assistant that powers many of Google's tools) is built right into Google Forms under a \"Help me create\" feature. You describe what you want in plain English, and Forms drafts a quiz for you. Here's what to expect — and where the limits still are.\n\n## What \"Help me create\" actually does\n\nWhen you open a new form in Google Forms, you'll see a **\"Help me create\"** button. Clicking it opens a small side panel where you type a description of the quiz you want. Gemini then drafts questions and answer choices directly into your form.\n\nThe feature works best when your **prompt** (the instruction you give to an AI) is specific. A clear brief — topic, year level, number of questions, difficulty — produces a much better draft than a vague one. Think of it like briefing a new colleague: the more context you give, the less editing you'll do afterwards.\n\n**What it does well today:**\n\n- Drafts multiple-choice, checkbox, and short-answer questions on a wide range of topics\n- Marks a suggested correct answer for each question\n- Mixes difficulty levels when you ask it to\n- Generates a full quiz in under a minute\n\n## What it doesn't do (yet)\n\nHere's the honest part. The current \"Help me create\" panel does **not** let you attach a Google Doc, Slide, or PDF from your Drive as a source for the questions. It works from general knowledge, not from your own files. So if you want questions drawn from a specific textbook chapter or a slide deck you've written, you'll need to paste the relevant text into the prompt itself, or write the questions manually.\n\nThis is the single biggest limitation to know about. A few other small things to be aware of:\n\n- Gemini doesn't always set the question type you want. It defaults to multiple choice, but you can change any question's **type** (multiple choice, checkboxes, short answer, dropdown) using the dropdown on the bottom-right of each question after insertion.\n- It can mark a wrong answer as correct. This is a **hallucination** (when an AI confidently makes something up), and even Gemini does it occasionally. Always review.\n- It's rolling out gradually through 2026. If you don't see the button yet, give it a few days.\n\n## How to get a good result\n\nBecause you can't upload source files, the trick is to **paste the key information into your prompt** instead. If you've got a chapter summary in a Doc, copy the most important paragraphs into the \"Help me create\" box along with your instructions.\n\n💬 **Example prompt:**\n*Based on the following notes about the water cycle — evaporation, condensation, precipitation, collection — create an 8-question multiple-choice quiz for Year 4 students. Mix easy and harder questions. Mark the correct answer for each one.*\n\nThe more relevant text you include, the closer the questions will be to what you actually want to teach. After insertion, take two minutes to:\n\n- Spot-check every correct answer\n- Rewrite any question that's awkwardly worded\n- Delete any question that doesn't fit your lesson\n- Tweak the marked answer if Gemini got it wrong\n\n## Turning it into a proper quiz\n\nOnce the draft is in your form, head to the **Settings** tab (the cog icon at the top) and turn on **\"Make this a quiz\"** if it isn't already. This is what unlocks automatic marking and the correct-answer fields.\n\nAfter that, you can:\n\n- Toggle **\"Required question\"** on or off for each question\n- Re-order questions by dragging the six-dot handle on the right\n- Click **Preview** (the eye icon, top-right) to test the quiz yourself before sharing\n\nTo share it, click **Send** (top-right) and choose email, a shortened link, or Google Classroom if you teach in a school.\n\n## What this means for you\n\n- **If you're a teacher or trainer:** This can cut your quiz-making time in half for general knowledge topics. The trick is to write a clear brief and treat the draft as a starting point — your professional judgement is still what makes the quiz good. For curriculum-specific questions, paste the relevant text into the prompt.\n- **If you run a small business or community group:** Use it for quick knowledge checks — workplace safety refreshers, onboarding quizzes, volunteer training. You don't need to be a quiz expert; describe the topic and let Gemini handle the structure.\n- **If you're a student or self-learner:** Paste your revision notes into the prompt and ask Gemini to quiz you on them. It's a surprisingly effective study tool, and you can regenerate fresh questions any time.\n\n## Wrap-up\n\nGemini in Google Forms is genuinely useful for general-knowledge quizzes, and the drafts are usually good enough to edit rather than write from scratch. The honest limitation is that it doesn't yet read your uploaded files — so for now, paste the source text directly into your prompt. Try it once: open Forms, click **\"Help me create\"**, and type a sentence about any topic you know well. Once you've seen the draft appear, you'll find plenty of excuses to use it again.\n\n*Written and edited by AI World Co.'s autonomous AI agents. Reviewed for accuracy by our editorial system.*",
+  "original_title": "Use Gemini in Google Forms to quickly create a new quiz"
+}

@@ -1,6 +1,66 @@
 # AI World Co. — közösségi posztok
 
-*Generálva: 2026-07-30T10:24:06.560Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+*Generálva: 2026-07-30T17:26:52.740Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## Use Gemini in Google Forms to quickly create a new quiz
+**🔗 https://aiworldhq.com/article/how-to-build-a-quiz-in-google-forms-with-gemini-what-it-can-and-can-t-**
+
+**Facebook:**
+Tired of spending ages writing quiz questions? Google Forms can now draft them for you using AI. Here's what works well — and where you'll still need to double-check. https://aiworldhq.com/article/how-to-build-a-quiz-in-google-forms-with-gemini-what-it-can-and-can-t-
+
+*Kép-ötlet: A clean screenshot of a Google Form with the 'Help me create' button highlighted, showing a simple quiz being generated.*
+
+---
+
+## How to prepare for a job interview with AI
+**🔗 https://aiworldhq.com/article/how-to-prepare-for-your-next-job-interview-using-free-ai-tools**
+
+**Facebook:**
+Nervous about your next job interview? This free guide shows you how to use AI as a practice partner - think of it as a patient, non-judgemental mock interviewer that helps you prep on your own schedule. https://aiworldhq.com/article/how-to-prepare-for-your-next-job-interview-using-free-ai-tools #interviewtips #careergrowth
+
+*Kép-ötlet: A person sitting at a desk with a laptop, looking calm and prepared*
+
+---
+
+## How to plan meals and a grocery budget with AI
+**🔗 https://aiworldhq.com/article/how-to-plan-meals-and-a-grocery-budget-with-ai**
+
+**Facebook:**
+Got three ingredients and no dinner ideas? This simple guide shows you how to use AI to turn whatever's already in your kitchen into a week's meals, a smart shopping list and a realistic budget. Less waste, less stress, more savings. https://aiworldhq.com/article/how-to-plan-meals-and-a-grocery-budget-with-ai #MealPlanning #BudgetTips
+
+*Kép-ötlet: A neatly organized fridge with fresh produce and a smartphone showing a meal plan list next to it*
+
+---
+
+## How to turn a meeting into clear notes and action items with AI
+**🔗 https://aiworldhq.com/article/how-to-turn-a-meeting-into-clear-notes-and-action-items-with-ai**
+
+**Facebook:**
+Ever walked out of a meeting with scribbled notes and no idea what you're actually supposed to do? This simple guide shows you how to use AI to turn messy notes into clear action items — so nothing slips through the cracks. https://aiworldhq.com/article/how-to-turn-a-meeting-into-clear-notes-and-action-items-with-ai #Productivity #MeetingTips
+
+*Kép-ötlet: A messy notepad transforming into a clean, organised checklist on a desk*
+
+---
+
+## How to use AI safely with your personal information
+**🔗 https://aiworldhq.com/article/how-to-use-ai-safely-with-your-personal-information**
+
+**Facebook:**
+Want to use AI assistants without accidentally spilling your private details? This simple guide shows you exactly how to keep your personal info secure while still getting helpful results. 🙌 https://aiworldhq.com/article/how-to-use-ai-safely-with-your-personal-information #AI #Privacy
+
+*Kép-ötlet: A simple illustration of a friendly padlock protecting a smartphone from curious eyes*
+
+---
+
+## How to build or improve your CV with AI
+**🔗 https://aiworldhq.com/article/how-to-build-or-improve-your-cv-with-ai**
+
+**Facebook:**
+Ever feel like your CV doesn't really show what you can do? This simple guide walks you through turning your work history into a clear, professional CV and adapting it for each job — all in under 20 minutes. https://aiworldhq.com/article/how-to-build-or-improve-your-cv-with-ai
+
+*Kép-ötlet: A clean, minimal desk setup with a laptop and a printed CV on a flat surface, natural lighting*
 
 ---
 

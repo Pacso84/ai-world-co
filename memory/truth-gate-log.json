@@ -382,6 +382,16 @@
       "reasons": [
         "The example prompt in Step 1 contains Chinese characters '海洋' mixed into an otherwise English sentence, which is a clear formatting/translation error that appears fabricated or corrupted rather than intentional content."
       ]
+    },
+    {
+      "at": "2026-07-30T17:17:27.747Z",
+      "file": "WRITER_2026-07-30T17-14-04-999Z_google-workspace_Use_Gemini_in_Google_Forms_to_quickly_create_a_new.json",
+      "action": "block",
+      "reasons": [
+        "The 'Help me create' button as described — a floating button in the bottom-right of a new Google Form that opens a side panel for describing a quiz, with a 'paperclip' icon for attaching Drive files (Docs, Slides, PDFs) as source materials, and that drafts questions with marked correct answers — does not match the known functionality of Gemini in Google Forms. As of current knowledge, Gemini in Google Forms (the 'Help me create' feature) does not support attaching source documents from Drive to ground quiz generation, and the described paperclip/file-attach workflow within the panel is not a documented feature.",
+        "The claim that the source-attachment feature is 'one of the most useful bits' allowing Gemini to base questions on an uploaded Google Doc/Slide/PDF appears to be fabricated, as this capability is not a verified part of the Gemini-in-Google Forms feature.",
+        "The specific UI element descriptions (floating 'Help me create' button in bottom-right, side panel with 'Generate'/'Insert' button, paperclip icon inside the panel, 'Draft ready' message) are presented as definitive product UI but cannot be verified and read as invented specifics rather than honest hedged guidance."
+      ]
     }
   ]
 }

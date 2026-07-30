@@ -1,102 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178523422313828",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-07-28T10:23:43.138Z",
-      "updated": "2026-07-28T10:23:43.304Z"
-    },
-    {
-      "id": "t178523422332976",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-28T10:23:43.329Z",
-      "updated": "2026-07-28T10:24:03.307Z"
-    },
-    {
-      "id": "t178523424330896",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-07-28T10:24:03.308Z",
-      "updated": "2026-07-28T10:24:03.473Z"
-    },
-    {
-      "id": "t178523424347560",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-28T10:24:03.475Z",
-      "updated": "2026-07-28T10:24:27.818Z"
-    },
-    {
-      "id": "t178523426781982",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-07-28T10:24:27.819Z",
-      "updated": "2026-07-28T10:25:09.508Z"
-    },
-    {
-      "id": "t178525905875112",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-07-28T17:17:38.751Z",
-      "updated": "2026-07-28T17:17:38.981Z"
-    },
-    {
-      "id": "t178525905898443",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-07-28T17:17:38.984Z",
-      "updated": "2026-07-28T17:18:38.195Z"
-    },
-    {
-      "id": "t178525911819799",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-07-28T17:18:38.197Z",
-      "updated": "2026-07-28T17:18:38.389Z"
-    },
-    {
-      "id": "t178525911839148",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-07-28T17:18:38.391Z",
-      "updated": "2026-07-28T17:18:52.524Z"
-    },
-    {
-      "id": "t178525913252671",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-28T17:18:52.526Z",
-      "updated": "2026-07-28T17:19:26.109Z"
-    },
-    {
-      "id": "t178525916611228",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-07-28T17:19:26.112Z",
-      "updated": "2026-07-28T17:19:35.042Z"
-    },
-    {
-      "id": "t178525917507099",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-28T17:19:35.070Z",
-      "updated": "2026-07-28T17:20:14.736Z"
-    },
-    {
       "id": "t178525921473834",
       "title": "Run seo",
       "status": "done",
@@ -479,41 +383,105 @@
       "agent": "publisher",
       "created": "2026-07-30T10:14:07.760Z",
       "updated": "2026-07-30T10:14:37.973Z"
+    },
+    {
+      "id": "t178543161430092",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-07-30T17:13:34.300Z",
+      "updated": "2026-07-30T17:13:34.530Z"
+    },
+    {
+      "id": "t178543161453324",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-07-30T17:13:34.533Z",
+      "updated": "2026-07-30T17:14:11.864Z"
+    },
+    {
+      "id": "t178543165186699",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-07-30T17:14:11.866Z",
+      "updated": "2026-07-30T17:16:38.737Z"
+    },
+    {
+      "id": "t178543179874099",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-07-30T17:16:38.740Z",
+      "updated": "2026-07-30T17:17:01.251Z"
+    },
+    {
+      "id": "t178543182125347",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-30T17:17:01.253Z",
+      "updated": "2026-07-30T17:17:27.823Z"
+    },
+    {
+      "id": "t178543184782598",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-07-30T17:17:27.825Z",
+      "updated": "2026-07-30T17:17:45.998Z"
+    },
+    {
+      "id": "t178543186600066",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-30T17:17:46.000Z",
+      "updated": "2026-07-30T17:18:08.353Z"
+    },
+    {
+      "id": "t178543188835593",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-07-30T17:18:08.355Z",
+      "updated": "2026-07-30T17:18:21.929Z"
+    },
+    {
+      "id": "t178543190196137",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-30T17:18:21.961Z",
+      "updated": "2026-07-30T17:18:37.580Z"
+    },
+    {
+      "id": "t178543191758247",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-07-30T17:18:37.582Z",
+      "updated": "2026-07-30T17:18:40.775Z"
+    },
+    {
+      "id": "t178543192077725",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-30T17:18:40.777Z",
+      "updated": "2026-07-30T17:18:59.630Z"
+    },
+    {
+      "id": "t178543193963127",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-07-30T17:18:59.631Z",
+      "updated": "2026-07-30T17:19:27.696Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n17844556950882",
-      "level": "success",
-      "text": "6 hír + 5 útmutató publikálva (költség: $0.1097).",
-      "agent": "ceo",
-      "at": "2026-07-19T10:08:15.088Z",
-      "loud": false
-    },
-    {
-      "id": "n178447957424693",
-      "level": "info",
-      "text": "SEO: 3 cikk optimalizálva (átlag 8.3/10).",
-      "agent": "seo",
-      "at": "2026-07-19T16:46:14.246Z",
-      "loud": false
-    },
-    {
-      "id": "n17844797489127",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). Our publication line-up is coherent and ready, offering a diverse range of practical AI applications for everyday tasks. I've noted that some articles may be tech-heavy, so a gentle introduction to AI",
-      "agent": "publisher",
-      "at": "2026-07-19T16:49:08.912Z",
-      "loud": false
-    },
-    {
-      "id": "n178447975455930",
-      "level": "success",
-      "text": "3 hír + 0 útmutató publikálva (költség: $0.0315).",
-      "agent": "ceo",
-      "at": "2026-07-19T16:49:14.559Z",
-      "loud": false
-    },
     {
       "id": "n178451310285432",
       "level": "info",
@@ -1281,63 +1249,41 @@
       "agent": "ceo",
       "at": "2026-07-30T10:14:37.995Z",
       "loud": false
+    },
+    {
+      "id": "n178543179812437",
+      "level": "info",
+      "text": "🧭 Forráskutató: 6 ÚJ megbízható forrás-javaslat (küszöb 70).\n• [100] SambaNova (hivatalos)\n• [100] DataRobot Blog (hivatalos)\n• [100] Grab Engineering (hivatalos)\n• [94] Université de Montréal - MILA Blog (hivatalos)\n• [78] AI Singapore (hivatalos)\nJóváhagyod valamelyiket?",
+      "agent": "source-scout",
+      "at": "2026-07-30T17:16:38.124Z",
+      "loud": false
+    },
+    {
+      "id": "n178543192073649",
+      "level": "info",
+      "text": "SEO: 1 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-07-30T17:18:40.736Z",
+      "loud": false
+    },
+    {
+      "id": "n178543195456528",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The line-up looks great — it balances practical how-tos (study help, emails, workplace terms) with important guardrails (privacy, what AI isn't great at), plus some lovely creative uses like thank-you",
+      "agent": "publisher",
+      "at": "2026-07-30T17:19:14.565Z",
+      "loud": false
+    },
+    {
+      "id": "n178543196772846",
+      "level": "success",
+      "text": "1 hír + 0 útmutató publikálva (költség: $0.0120).",
+      "agent": "ceo",
+      "at": "2026-07-30T17:19:27.728Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178488809441661",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Random  styles in draft mode\" — javítva: --sref random plausibly invented for draft mode; the cited source only mentions random styles in draft mode - the exact flag name and 24-image claim are not verifiable from the URL; colours should be colours (correct) but colourful in line 1 is correct Australian spelling - no issue, just verified; újraküldöm.",
-      "ref": "2026-07-23T01-48-48-121Z_midjourney-updates_Random__styles_in_draft_mode.json",
-      "at": "2026-07-24T10:14:54.416Z"
-    },
-    {
-      "id": "m178488810713033",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Relax mode for V8 Alpha\" — javítva: NO_FRONTMATTER: A cikk nem YAML frontmatter-rel kezdődik; Reviewer verdict: Critical auto-check failures: NO_FRONTMATTER: A cikk nem YAML frontmatter-rel kezdődik; újraküldöm.",
-      "ref": "2026-07-23T01-48-48-122Z_midjourney-updates_Relax_mode_for_V8_Alpha.json",
-      "at": "2026-07-24T10:15:07.130Z"
-    },
-    {
-      "id": "m178488812391654",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"V8.1 Updates\" — javítva: Midjourney V8.1 is fabricated — Midjourney's latest major version as of public knowledge is V6/V6.1 (with V7 in alpha at various points), not V8.1. The version number is invented.; Claim that SREFs and Moodboards are 'new-ish' features that V8.1 improves is unverifiable/fabricated as framed — these were introduced around V5/V6, not presented as new in a 'V8.1",
-      "ref": "2026-07-23T01-48-48-122Z_midjourney-updates_V8_1_Updates.json",
-      "at": "2026-07-24T10:15:23.916Z"
-    },
-    {
-      "id": "m178488814523360",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Google Meet now organizes your meeting notes, transcripts, and recordings in your Google Drive\" — mi a baj: Step 2 on transcripts is vague - says transcript is automatic but doesn't tell the user what to click; a beginner won't know how to start it; Path example uses yourname@gmail.com but recording/transcripts mostly need a paid Workspace account, which is only mentioned la",
-      "ref": "2026-07-23T01-48-34-084Z_google-workspace_Google_Meet_now_organizes_your_meeting_notes__tran.json",
-      "at": "2026-07-24T10:15:45.233Z"
-    },
-    {
-      "id": "m178488814526841",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"NTT DATA Group cuts incident analysis to 30 minutes with Codex\" — mi a baj: NO_FRONTMATTER: A cikk nem YAML frontmatter-rel kezdődik",
-      "ref": "2026-07-23T01-48-34-084Z_openai-blog_NTT_DATA_Group_cuts_incident_analysis_to_30_minute.json",
-      "at": "2026-07-24T10:15:45.268Z"
-    },
-    {
-      "id": "m178488815156027",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Introducing Claude Sonnet 5 \\ Anthropic\" (?/10)",
-      "ref": "2026-07-23T01-48-42-426Z_anthropic-blog_Introducing_Claude_Sonnet_5___Anthropic.json",
-      "at": "2026-07-24T10:15:51.560Z"
-    },
     {
       "id": "m178488815588940",
       "from": "ellenorzo",
@@ -2637,6 +2583,60 @@
       "text": "6 közösségi poszt megírva (Facebook). content/social/feed.md",
       "ref": null,
       "at": "2026-07-30T10:24:06.562Z"
+    },
+    {
+      "id": "m178543184774693",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Use Gemini in Google Forms to quickly create a new quiz\" — mi a baj: The 'Help me create' button as described — a floating button in the bottom-right of a new Google Form that opens a side panel for describing a quiz, with a 'paperclip' icon for attaching Drive files (Docs, Slides, PDFs) as source materials, and that drafts questions with marked correct answers — does not ma",
+      "ref": "2026-07-30T17-14-04-999Z_google-workspace_Use_Gemini_in_Google_Forms_to_quickly_create_a_new.json",
+      "at": "2026-07-30T17:17:27.746Z"
+    },
+    {
+      "id": "m178543186598756",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Use Gemini in Google Forms to quickly create a new quiz\" — javítva: The 'Help me create' button as described — a floating button in the bottom-right of a new Google Form that opens a side panel for describing a quiz, with a 'paperclip' icon for attaching Drive files (Docs, Slides, PDFs) as source materials, and that drafts questions with marked correct answers — does not match the kn",
+      "ref": "2026-07-30T17-14-04-999Z_google-workspace_Use_Gemini_in_Google_Forms_to_quickly_create_a_new.json",
+      "at": "2026-07-30T17:17:45.987Z"
+    },
+    {
+      "id": "m178543188834258",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Use Gemini in Google Forms to quickly create a new quiz\" (?/10)",
+      "ref": "2026-07-30T17-14-04-999Z_google-workspace_Use_Gemini_in_Google_Forms_to_quickly_create_a_new.json",
+      "at": "2026-07-30T17:18:08.342Z"
+    },
+    {
+      "id": "m178543190191880",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "info",
+      "text": "A \"Use Gemini in Google Forms to quickly create a new quiz\" hír a meglévő útmutatóra mutat: gemini-getting-started",
+      "ref": "gemini-getting-started",
+      "at": "2026-07-30T17:18:21.918Z"
+    },
+    {
+      "id": "m178543193961949",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-07-30T17:18:59.619Z"
+    },
+    {
+      "id": "m17854324127421",
+      "from": "social",
+      "to": "team",
+      "kind": "info",
+      "text": "6 közösségi poszt megírva (Facebook). content/social/feed.md",
+      "ref": null,
+      "at": "2026-07-30T17:26:52.742Z"
     }
   ]
 }
