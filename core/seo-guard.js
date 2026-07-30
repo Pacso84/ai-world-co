@@ -200,17 +200,34 @@ function checkSocialLinks() {
   }
   if (!real.size) return;
 
-  let withExt = 0; const dead = [];
+  let withExt = 0; const dead = []; const textMismatch = [];
+  const URL_RX = /https:\/\/aiworldhq\.com\/article\/[A-Za-z0-9\-]+(?:\.html)?/g;
+
   for (const f of readdirSync(dir).filter(x => x.endsWith('.json'))) {
     let p; try { p = JSON.parse(readFileSync(join(dir, f), 'utf-8')); } catch { continue; }
     if (!p.url) continue;
     if (p.url.endsWith('.html')) withExt++;
     const slug = p.url.replace(/^.*\/article\//, '').replace(/\.html$/, '');
     if (!real.has(slug)) dead.push(slug);
+
+    // A POSZT SZÖVEGÉBEN LÉVŐ LINK IS SZÁMÍT (2026-07-29).
+    // Ezt először KIHAGYTAM: csak az url mezőt javítottam, a Facebook-szövegbe
+    // viszont generáláskor BELE VAN ÉGETVE a link. A poszter így dolgozik:
+    //     message = post.facebook.split(post.url).join('')
+    // vagyis a szövegből a post.url-t vágja ki. Ha a kettő eltér, a kivágás
+    // NEM TALÁL, és a régi (törött) link bennragad a kiküldött posztban —
+    // ráadásul a helyes link is odakerül a végére, tehát KÉT link megy ki,
+    // az egyik halott. Az adatjavítás fele nem javítás.
+    for (const u of (String(p.facebook || '').match(URL_RX) || [])) {
+      if (u !== p.url) { textMismatch.push(f); break; }
+    }
   }
   if (withExt) add('SOCIAL_HTML', `${withExt} közösségi poszt .html-es (átirányító) linkkel`);
   if (dead.length) {
     add('SOCIAL_404', `${dead.length} közösségi poszt NEM LÉTEZŐ cikkre mutat (az olvasó 404-et kap) — pl. ${dead[0]}`);
+  }
+  if (textMismatch.length) {
+    add('SOCIAL_TEXT_URL', `${textMismatch.length} poszt SZÖVEGÉBEN más link van, mint az url mezőben (a poszter nem tudja kivágni → törött link megy ki) — pl. ${textMismatch[0]}`);
   }
 }
 

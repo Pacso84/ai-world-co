@@ -1,18 +1,22 @@
 // ===================================================================
-// SOCIAL AGENT (Facebook + Instagram poszt-gyártó)
+// SOCIAL AGENT (Facebook + Pinterest poszt-gyártó)
 // ===================================================================
 //
 // FELADAT:
-//   Minden PUBLIKÁLT cikkhez/útmutatóhoz platform-specifikus posztot ír:
+//   Minden PUBLIKÁLT cikkhez/útmutatóhoz posztot ír:
 //     • Facebook: 1-2 mondatos, barátságos, link + max 2 hashtag
-//     • Instagram: hook + érték + 3-5 hashtag + "link in bio"
+//   A szöveget a Pinterest-poszter is ebből veszi.
 //   Eredmény: content/social/<slug>.json (gépi) + content/social/feed.md
 //   (ember által olvasható, kézzel is kiposztolható). A cikk _meta-ját
 //   social:true-ra állítja, hogy ne dolgozzon kétszer (inkrementális).
 //
-//   FONTOS: ez csak MEGÍRJA a posztokat. A tényleges KIKÜLDÉS (Meta Graph
-//   API) az ÉLESÍTÉSNÉL jön — ahhoz Facebook oldal + Instagram üzleti fiók
-//   + Meta app + token + élő cikk-URL kell (a felhasználó adja meg).
+// ── INSTAGRAM KIVEZETVE (2026-07-29, user: "instagramot vegyük ki") ──
+//   407 Instagram-szöveg készült el, és EGYETLENEGY sem ment ki soha —
+//   nem volt, ami kiküldje. Ráadásul az Instagram gyenge forgalomforrás
+//   egy honlapnak: a posztban NEM lehet kattintható link (a saját
+//   szövegeink is "Link in bio"-val végződtek). Márkajelenlétnek jó,
+//   látogatószerzésnek nem — a cél pedig a forgalom.
+//   A már legyártott mezőket is töröltük az adatfájlokból.
 //
 // FUTTATÁS:
 //   node agents/social/agent.js            (csak ahol még nincs poszt)
@@ -50,10 +54,9 @@ function frontTitle(md) {
 
 const SYS = `You are the social media writer for AI World Co. — AI news & how-to in plain language for everyday people (Australian English). Write posts that are warm, useful and NOT clickbait or spammy.
 
-Given an article, return TWO platform-specific posts. Output ONLY JSON (no markdown, no code fence):
+Given an article, return the Facebook post. Output ONLY JSON (no markdown, no code fence):
 {
   "facebook": "1-2 friendly sentences that make a busy person want to read it. End with the link placeholder {LINK}. Max 2 relevant hashtags.",
-  "instagram": "A short hook line, then 1-2 lines of value, then 3-5 relevant hashtags on their own line. Instagram can't use links in captions, so end with: Link in bio.",
   "image_idea": "one short sentence describing a simple, tasteful image for the post (no text-in-image)."
 }
 Rules: Australian English. Plain language. No ALL CAPS, no 'game-changer'/'revolutionary' hype, no emoji spam (1-3 max). Be specific about the benefit.`;
@@ -80,7 +83,7 @@ function parseJson(text) {
 }
 
 async function main() {
-  console.log('📣 SOCIAL AGENT — Facebook + Instagram poszt-gyártó');
+  console.log('📣 SOCIAL AGENT — Facebook + Pinterest poszt-gyártó');
   console.log('─'.repeat(60));
   const items = loadArticles();
   if (!items.length) { console.log('💤 Nincs poszt nélküli cikk (--all az újrageneráláshoz).'); return; }
@@ -117,7 +120,7 @@ async function main() {
 TITLE: ${title}
 EXCERPT: ${md.replace(/[#*>\-]/g, ' ').replace(/\s+/g, ' ').slice(0, 600)}
 ${skillsBlock('social')}
-Write the two posts. Output the JSON only.`;
+Write the post. Output the JSON only.`;
 
     // 1200 token: a "gondolkodó" fallback modelleknek (gemini-2.5-flash) is elég legyen a kimenetre
     const r = await ask(prompt, { agentName: AGENT_NAME, systemPrompt: SYS, maxTokens: 1200, jsonMode: true });
@@ -126,17 +129,17 @@ Write the two posts. Output the JSON only.`;
     // Néhány modell beágyazza (pl. facebook:{post:...}) — string-re normalizáljuk
     const str = v => typeof v === 'string' ? v : (v && (v.post || v.text || v.caption || v.content)) || (v && typeof v === 'object' ? Object.values(v).filter(x => typeof x === 'string').join(' ') : '') || '';
     if (!p || !str(p.facebook)) { console.log(`⚠️  ${title.slice(0, 45)}… — nem sikerült`); continue; }
-    p.facebook = str(p.facebook); p.instagram = str(p.instagram); p.image_idea = str(p.image_idea);
+    p.facebook = str(p.facebook); p.image_idea = str(p.image_idea);
 
     const fb = (p.facebook || '').replace('{LINK}', url);
-    const pack = { slug, title, url, type: isGuide ? 'guide' : 'news', facebook: fb, instagram: p.instagram || '', image_idea: p.image_idea || '', generated_at: new Date().toISOString() };
+    const pack = { slug, title, url, type: isGuide ? 'guide' : 'news', facebook: fb, image_idea: p.image_idea || '', generated_at: new Date().toISOString() };
     writeFileSync(join(SOCIAL_DIR, `${slug}.json`), JSON.stringify(pack, null, 2), 'utf-8');
 
     // a cikket megjelöljük (inkrementális)
     it.data._meta = { ...it.data._meta, social: true, social_at: new Date().toISOString() };
     writeFileSync(join(ARTICLES_DIR, it.file), JSON.stringify(it.data, null, 2), 'utf-8');
 
-    feed.push(`## ${title}\n**🔗 ${url}**\n\n**Facebook:**\n${fb}\n\n**Instagram:**\n${p.instagram || ''}\n\n*Kép-ötlet: ${p.image_idea || '—'}*\n`);
+    feed.push(`## ${title}\n**🔗 ${url}**\n\n**Facebook:**\n${fb}\n\n*Kép-ötlet: ${p.image_idea || '—'}*\n`);
     done++;
     console.log(`✅ ${title.slice(0, 50)}…`);
   }
@@ -150,7 +153,7 @@ Write the two posts. Output the JSON only.`;
     writeFileSync(feedPath, header + feed.join('\n---\n\n') + (existing ? '\n---\n\n' + existing : ''), 'utf-8');
   }
 
-  if (done) message('social', 'team', 'info', `${done} közösségi poszt megírva (Facebook + Instagram). content/social/feed.md`);
+  if (done) message('social', 'team', 'info', `${done} közösségi poszt megírva (Facebook). content/social/feed.md`);
   console.log('\n' + '─'.repeat(60));
   console.log(`📊 ${done} poszt-csomag megírva | költség $${cost.toFixed(4)}`);
   console.log(`📄 Olvasható gyűjtemény: content/social/feed.md  (kézzel posztolható)`);
