@@ -1,6 +1,66 @@
 # AI World Co. — közösségi posztok
 
-*Újraépítve a poszt-fájlokból: 2026-07-29T19:46:36.811Z. A Facebook- és Pinterest-kiküldés automata (Make). Ez a lap kézi átnézéshez van.*
+*Újraépítve a poszt-fájlokból: 2026-07-30T04:07:06.061Z. A Facebook- és Pinterest-kiküldés automata (Make). Ez a lap kézi átnézéshez van.*
+
+---
+
+## Qwen3-TTS Family is Now Open Sourced: Voice Design, Clone, and Generation! - qwen.ai
+**🔗 https://aiworldhq.com/article/open-source-voice-ai-just-got-a-major-upgrade-here-s-what-that-means-f**
+
+**Facebook:**
+Text-to-speech is getting a big upgrade — and that means the apps you use every day could soon sound way more natural. Here's what the new open-source voice AI actually does. https://aiworldhq.com/article/open-source-voice-ai-just-got-a-major-upgrade-here-s-what-that-means-f #VoiceAI #AI
+
+*Kép-ötlet: A clean, modern smartphone screen showing a speech waveform with a subtle microphone icon, against a soft gradient background.*
+
+---
+
+## How enabling two settings tripled our scores on the ARC-AGI-3 benchmark
+**🔗 https://aiworldhq.com/article/ai-s-think-harder-button-what-reasoning-mode-does-and-when-you-need-it**
+
+**Facebook:**
+There's a hidden 'think harder' mode in your AI assistant that makes it take more time on tough questions — but the answers are way better. Here's when it's worth switching on (and when it's not worth the wait). https://aiworldhq.com/article/ai-s-think-harder-button-what-reasoning-mode-does-and-when-you-need-it #AI #Productivity
+
+*Kép-ötlet: A clean graphic showing a simple toggle switch or settings menu with the words 'Extended Thinking' next to a subtle brain icon, on a soft coloured background.*
+
+---
+
+## Accelerating scientific discovery with ChatGPT for Academic Researchers
+**🔗 https://aiworldhq.com/article/openai-is-giving-researchers-free-chatgpt-access-what-it-means-for-you**
+
+**Facebook:**
+Smart researchers just got free access to powerful AI tools — and there's a lot we can learn from how they're using it. Here's what this means for students and anyone who loves learning.https://aiworldhq.com/article/openai-is-giving-researchers-free-chatgpt-access-what-it-means-for-you #AI #Learning
+
+*Kép-ötlet: A clean desk with textbooks, a laptop, and a coffee cup, with a subtle digital glow suggesting AI assistance without showing any text or logos*
+
+---
+
+## Generate and edit visuals with Gemini in Google Docs
+**🔗 https://aiworldhq.com/article/create-images-right-inside-google-docs-with-gemini-a-practical-guide**
+
+**Facebook:**
+Tired of stopping your writing flow to hunt for images? Gemini now lets you create diagrams and visuals straight inside Google Docs — just describe what you need in plain English. https://aiworldhq.com/article/create-images-right-inside-google-docs-with-gemini-a-practical-guide #GoogleDocs #Productivity
+
+*Kép-ötlet: A clean laptop screen showing an open Google Doc with a glowing AI sparkle icon next to a colourful diagram being created*
+
+---
+
+## 5 ways to host the ultimate dinner party with Google Search
+**🔗 https://aiworldhq.com/article/how-to-plan-a-dinner-party-using-ai-menu-tablescape-and-more**
+
+**Facebook:**
+Planning a dinner party doesn't have to mean stress and last-minute panic. Google's AI can help you figure out the menu, set the table and time your cooking — so you can actually enjoy your guests. https://aiworldhq.com/article/how-to-plan-a-dinner-party-using-ai-menu-tablescape-and-more #dinnerparty #everydayai
+
+*Kép-ötlet: A beautifully set dining table with warm candlelight, fresh flowers and plates of food, suggesting an inviting dinner party scene without any people shown.*
+
+---
+
+## 5 ways AI Mode in Search helps you enjoy the real world
+**🔗 https://aiworldhq.com/article/how-google-s-ai-mode-in-search-helps-you-plan-a-better-weekend**
+
+**Facebook:**
+Tired of opening tabs to plan a simple weekend outing? AI Mode in Google Search lets you find local cafes, compare options and get directions in one conversation—so you spend less time clicking and more time actually enjoying yourself. https://aiworldhq.com/article/how-google-s-ai-mode-in-search-helps-you-plan-a-better-weekend #weekendplans #productivitytips
+
+*Kép-ötlet: A person relaxing at an outdoor cafe on a sunny weekend, smiling at their phone, with the city visible in the background*
 
 ---
 
