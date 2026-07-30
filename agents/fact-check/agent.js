@@ -18,6 +18,22 @@
 //      állításokat lágyítja ("ha elérhető, keresd a…").
 //   ALAPELV: amit nem tud biztosan, azt INKÁBB lágyítja, sosem talál ki.
 //
+// ── 2026-07-30: BEKÖTVE ÉS BIZTONSÁGOSSÁ TÉVE ──────────────────────
+// Az agent 2026-06-22 óta készen állt, de SOHA nem kötötték be — pedig
+// valódi lyukat fed le: a hitelesség-kapu CSAK publikálás ELŐTT ellenőriz,
+// a 240 már kint lévő útmutatót azóta senki nem nézte újra. Ha egy cég
+// kivesz egy funkciót, a mi útmutatónk némán hazuggá válik.
+//
+// A BEKÖTÉS ELŐTT ÁT KELLETT ÉPÍTENI: az eredeti terv a javításnál és a
+// levételnél is TÖRÖLTE a publikált cikket (404 + elveszett rangsor-erő,
+// elutasításnál végleges tartalom-vesztés). Most:
+//   • a javítás HELYBEN történik, ugyanazzal a rögzített sluggal → az URL
+//     nem mozdul, az oldal végig él;
+//   • ha a javítás nem elég ép, A RÉGI MARAD;
+//   • "tárgytalan" ítéletnél NEM törlünk, csak MEGJELÖLÜNK és szólunk —
+//     egy oldal levétele emberi döntés.
+// Heti kör, futásonként kevés útmutató, a legrégebben ellenőrzöttel kezdve.
+//
 // FUTTATÁS:
 //   node agents/fact-check/agent.js --claim "OpenAI removed image editing from ChatGPT free tier" --company OpenAI
 //   node agents/fact-check/agent.js --id chatgpt-voice
@@ -85,6 +101,28 @@ function loadGuides(args) {
     const mentioned = [...new Set(guides.map(g => g.data._meta?.company).filter(Boolean))]
       .filter(c => claimLc.includes(c.toLowerCase()));
     if (mentioned.length) list = list.filter(g => mentioned.includes(g.data._meta?.company));
+  }
+
+  // ── AUTOMATA KÖR (2026-07-30): "a legrégebben ellenőrzött megy előre" ──
+  // Kézi indításnál (--claim/--id/--company/--tool) a user tudja, mit akar —
+  // ott nem szűrünk. A HETI automata körnél viszont:
+  //   1) friss útmutatóhoz NEM nyúlunk (30 napnál fiatalabb: a hitelesség-kapu
+  //      épp most engedte át, nincs mit újraellenőrizni rajta);
+  //   2) a legrégebben ellenőrzött kerül előre, hogy körbeérjünk a 240-en;
+  //   3) az emberre váró (megjelölt) útmutatót kihagyjuk — már döntésre vár.
+  if (!args.claim && !args.id && !args.company && !args.tool) {
+    const monthAgo = Date.now() - 30 * 86400e3;
+    list = list
+      .filter(g => !g.data._meta?.fact_check_flag)
+      .filter(g => {
+        const pub = new Date(g.data._meta?.published_at || 0).getTime();
+        return pub && pub < monthAgo;
+      })
+      .sort((a, b) => {
+        const av = a.data._meta?.fact_checked_at || '';   // sosem ellenőrzött = '' → elöl
+        const bv = b.data._meta?.fact_checked_at || '';
+        return av.localeCompare(bv);
+      });
   }
   return list.slice(0, args.limit);
 }
@@ -157,31 +195,64 @@ Remove or soften anything false/removed/unverifiable. Output ONLY the JSON.`;
   return { response, decision: parseJson(response?.text) };
 }
 
-// Javított útmutató VISSZA a drafts-ba (Ellenőrzőre vár), a régi publikált TÖRÖLVE
-function sendBackForRecheck(guide, fixedMarkdown, reason) {
-  const writerFile = guide.file.replace(/^ARTICLE_/, 'WRITER_');
-  const out = {
-    _meta: {
-      ...guide.data._meta,
-      status: 'awaiting-review',
-      fact_checked: true,
-      fact_check_reason: reason,
-      fact_checked_at: new Date().toISOString(),
-      rework_attempts: 0,
-      can_retry: true,
-      ceo_decision: undefined
-    },
-    article_markdown: fixedMarkdown,
-    original_title: guide.data.original_title
-  };
-  if (!existsSync(DRAFTS_DIR)) mkdirSync(DRAFTS_DIR, { recursive: true });
-  writeFileSync(join(DRAFTS_DIR, writerFile), JSON.stringify(out, null, 2), 'utf-8');
-  unlinkSync(join(ARTICLES_DIR, guide.file)); // a valótlan verziót LEVESSZÜK az oldalról
-  return writerFile;
+// ===================================================================
+// BIZTONSÁGOS CSERE (2026-07-30-i átépítés)
+// ===================================================================
+// AZ EREDETI TERV VESZÉLYES VOLT. Két helyen unlinkSync-elte a PUBLIKÁLT
+// cikket:
+//   • "fix"-nél levette az oldalról és vázlatként visszaküldte ellenőrzésre
+//     → az URL 404 lett, amíg (ha egyáltalán) átment; elutasításnál VÉGLEG
+//     elveszett volna a cikk;
+//   • "unpublish"-nál azonnal törölte, 301 nélkül.
+// Épp ezt a kárt (404 + elveszett rangsor-erő) javítottuk napokig a Search
+// Console jelzései után. Ezért a végrehajtást átépítettem a MÁR BEVÁLT
+// mintára (agents/iro/upgrade-howtos.js): A RÉGI VERZIÓ KINT MARAD, amíg az
+// ÚJ nem bizonyít — az oldalon soha nincs lyuk.
+//
+// A JAVÍTÁS HELYBEN történik, UGYANAZZAL a fájllal és rögzített sluggal,
+// tehát az URL sem mozdul.
+
+/** Az új szöveg csak akkor cserélheti le a régit, ha épebb nála. */
+function isSafeReplacement(fixed, original) {
+  if (!fixed || !hasGuideStructure(fixed)) return 'nincs meg az útmutató-szerkezet';
+  const fw = fixed.split(/\s+/).length, ow = (original || '').split(/\s+/).length;
+  // A lágyítás rövidíthet, de a felére zsugorodás már tartalom-vesztés.
+  if (ow && fw < ow * 0.5) return `túl rövid lett (${fw} szó a ${ow}-ből)`;
+  if (!/^title:\s*\S/m.test(fixed)) return 'nincs title mező';
+  return null;   // rendben
 }
 
-function unpublish(guide, reason) {
-  unlinkSync(join(ARTICLES_DIR, guide.file));
+/** HELYBEN javít — az URL és a slug változatlan, az oldal végig él. */
+function applyFix(guide, fixedMarkdown, reason, claims) {
+  guide.data.article_markdown = fixedMarkdown;
+  guide.data._meta = {
+    ...guide.data._meta,
+    fact_checked_at: new Date().toISOString(),
+    fact_check_reason: reason,
+    fact_check_removed: claims || undefined,
+    fact_check_count: (guide.data._meta?.fact_check_count || 0) + 1
+  };
+  writeFileSync(join(ARTICLES_DIR, guide.file), JSON.stringify(guide.data, null, 2), 'utf-8');
+  // A fordítások elavultak → töröljük, hogy a következő futás újrafordítsa
+  try {
+    const t = join(ROOT, 'content', 'translations', guide.file);
+    if (existsSync(t)) unlinkSync(t);
+  } catch { /* marad a régi fordítás — nem kritikus */ }
+}
+
+/**
+ * "unpublish" ítélet: MEGJELÖLÉS, NEM TÖRLÉS.
+ * Egy oldal levétele emberi döntés: 404-et okoz, rangsor-erőt veszít, és
+ * 301-et kellene hozzá írni. A gép csak JELEZ, a user dönt.
+ */
+function flagForHuman(guide, reason) {
+  guide.data._meta = {
+    ...guide.data._meta,
+    fact_check_flag: 'may-be-obsolete',
+    fact_check_reason: reason,
+    fact_checked_at: new Date().toISOString()
+  };
+  writeFileSync(join(ARTICLES_DIR, guide.file), JSON.stringify(guide.data, null, 2), 'utf-8');
 }
 
 async function main() {
@@ -212,27 +283,33 @@ async function main() {
 
     const claims = (decision.removed_claims || []).slice(0, 3).join('; ');
     if (decision.verdict === 'unpublish') {
-      console.log(`⛔ LEVÉTEL: ${title}… — ${decision.reason}`);
+      // NEM TÖRLÜNK. Egy oldal levétele emberi döntés (404 + elveszett rangsor
+      // + 301 kellene hozzá). A gép megjelöl és szól — a user dönt.
+      console.log(`🙋 MEGJELÖLVE (levételre javasolt): ${title}… — ${decision.reason}`);
       if (!args.dry) {
-        unpublish(guide, decision.reason);
-        message('fact-check', 'team', 'decision', `Levettem (tárgytalan): "${title}" — ${decision.reason}`, { ref: guide.file });
-        message('fact-check', 'human', 'need', `Útmutató levéve, mert valótlanná vált: "${title}" — ${decision.reason}. Dönts a sorsáról.`, { ref: guide.file });
-        remember('guide', `Do not claim this exists (removed): ${decision.reason}`.slice(0, 200), { tags: ['fact-check', 'removed'] });
+        flagForHuman(guide, decision.reason);
+        message('fact-check', 'human', 'need', `Ez az útmutató talán tárgytalanná vált: "${title}" — ${decision.reason}. NEM vettem le (az törölné az URL-t is) — dönts róla.`, { ref: guide.file });
+        remember('guide', `Do not claim this exists (may be removed): ${decision.reason}`.slice(0, 200), { tags: ['fact-check', 'removed'] });
       }
       removed++;
       continue;
     }
 
-    // verdict === 'fix'
-    if (decision.fixed_markdown && hasGuideStructure(decision.fixed_markdown)) {
+    // verdict === 'fix' — HELYBEN javítunk, az URL nem mozdul, az oldal végig él
+    const why = decision.fixed_markdown ? isSafeReplacement(decision.fixed_markdown, guide.data.article_markdown) : 'nincs javított szöveg';
+    if (!why) {
       console.log(`🔧 JAVÍTÁS: ${title}… — eltávolítva/lágyítva: ${claims || decision.reason}`);
       if (!args.dry) {
-        const w = sendBackForRecheck(guide, decision.fixed_markdown, decision.reason);
-        message('fact-check', 'ellenorzo', 'problem', `Valótlan rész egy publikált útmutatóban: "${title}" — ${claims || decision.reason}`, { ref: guide.file.replace(/^ARTICLE_/, '') });
-        message('fact-check', 'ellenorzo', 'fix', `Eltávolítottam/lágyítottam a valótlan részt: "${title}" → visszaküldöm igazság-ellenőrzésre.`, { ref: w.replace(/^WRITER_/, '') });
+        applyFix(guide, decision.fixed_markdown, decision.reason, claims);
+        message('fact-check', 'team', 'fix', `Valótlanná vált részt lágyítottam egy publikált útmutatóban: "${title}" — ${claims || decision.reason}`, { ref: guide.file });
         if (claims) remember('guide', `Avoid stating (may be removed/false): ${claims}`.slice(0, 200), { tags: ['fact-check', 'lesson'] });
       }
-      fixed++; needRecheck++;
+      fixed++;
+    } else if (decision.fixed_markdown) {
+      // Van javaslat, de nem elég ép → A RÉGI MARAD. Inkább a régi jó szöveg,
+      // mint egy megcsonkított új.
+      console.log(`⏭️  ${title}… — a javítás nem elég ép (${why}), a RÉGI marad`);
+      if (!args.dry) message('fact-check', 'ceo', 'need', `Gyanús állítás, de a javítás nem volt elég ép (${why}): "${title}" — ${decision.reason}`, { ref: guide.file });
     } else {
       // Talált gondot, de nincs jó javítás → jelez, nem törlünk vakon
       console.log(`🙋 JELZÉS: ${title}… — gyanús állítás, de nincs biztos javítás: ${decision.reason}`);

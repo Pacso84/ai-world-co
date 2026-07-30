@@ -105,6 +105,34 @@ jobs:
         timeout-minutes: 10
         run: node agents/iro/upgrade-howtos.js --limit 2 || true
 
+      # TÉNY-ELLENŐRZŐ (2026-07-30): a MÁR KINT LÉVŐ útmutatók frissesség-őre.
+      #
+      # MIÉRT KELLETT: a hitelesség-kapu (core/truth-gate.js) CSAK publikálás
+      # ELŐTT ellenőriz. A 240 kint lévő útmutatót azóta senki nem nézte újra —
+      # ha egy cég kivesz vagy átnevez egy funkciót, a mi útmutatónk NÉMÁN
+      # hazuggá válik, és ezt ma semmi nem venné észre. Az agent 2026-06-22 óta
+      # készen állt, csak sosem kötötték be.
+      #
+      # BIZTONSÁG (a bekötés ELŐTT átépítve): SOHA nem töröl publikált oldalt.
+      # Helyben javít (az URL nem mozdul); ha a javítás nem elég ép, a RÉGI
+      # marad; "tárgytalan" ítéletnél csak MEGJELÖL és szól — egy oldal levétele
+      # emberi döntés (404 + elveszett rangsor-erő + 301 kellene hozzá).
+      #
+      # ÜTEM: 2/futás = 6/nap → a 240 útmutató ~40 naponta körbeér. ~$0,005
+      # útmutatónként, azaz ~$0,9/hó egy valódi hitelességi védőhálóért.
+      # 30 napnál fiatalabbhoz nem nyúl (azt a kapu épp most engedte át).
+      - name: Tény-ellenőrző (kint lévő útmutatók frissessége)
+        if: always()
+        timeout-minutes: 10
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
+          MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_OWNER_CHAT_ID: ${{ secrets.TELEGRAM_OWNER_CHAT_ID }}
+        run: node agents/fact-check/agent.js --limit 2 || true
+
       # Orbit heti videó: szkript + hang (vasárnap; a videót a compose rakja össze)
       - name: Orbit videó — szkript + hang (vasárnap)
         env:

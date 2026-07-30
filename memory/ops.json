@@ -1285,15 +1285,6 @@
   ],
   "messages": [
     {
-      "id": "m178488815588940",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Random  styles in draft mode\" — mi a baj: Step 2 vague: 'find the prompt bar' doesn't describe screen or location; Step 4 vague: 'look in settings or prompt helpers' gives no concrete UI detail; Step 4 uncertain UI details stated as facts: ⚡ icon and 'draft' keyword",
-      "ref": "2026-07-23T01-48-48-121Z_midjourney-updates_Random__styles_in_draft_mode.json",
-      "at": "2026-07-24T10:15:55.889Z"
-    },
-    {
       "id": "m178488816696599",
       "from": "ellenorzo",
       "to": "iro",
@@ -2637,6 +2628,15 @@
       "text": "6 közösségi poszt megírva (Facebook). content/social/feed.md",
       "ref": null,
       "at": "2026-07-30T17:26:52.742Z"
+    },
+    {
+      "id": "m178543884854661",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Add an AI chatbot to your small business site usin\" — The specific button name \"Create Robot\" in Step 1; The exact menu label \"Greetings\" in Step 2; The specific alternative label \"Chat Prompt\" in Step 2",
+      "ref": "ARTICLE_GUIDE_add-an-ai-chatbot-to-your-small-business-site-using-alibaba-.json",
+      "at": "2026-07-30T19:14:08.546Z"
     }
   ]
 }

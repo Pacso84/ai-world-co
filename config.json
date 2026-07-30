@@ -211,9 +211,10 @@
         "provider": "openrouter",
         "model": "minimax/minimax-m2.7"
       },
-      "enabled": true,
+      "enabled": false,
       "comment": "MODELL-TIERING 2026-07-24 (user: minden fizetős). KÖLTSÉG-OPTIMUM = MiniMax M2.5 — a legolcsóbb működő fizetős tier gépies munkára (parse/terv/formátum). MEGJEGYZÉS: az M2.5/M2.7 NEM engedi kikapcsolni a gondolkodást (HTTP 400), így reasoning marad ON. Fallback M2.7, vég-tartalék az ingyenes VÉSZHÁLÓ.",
-      "routing": "paid-only"
+      "routing": "paid-only",
+      "retired_2026_07_30": "KIVEZETVE: szerepét a core/source-report-card.js vette át (2026-07-22) — ugyanazt a sources/source-stats.json fájlt írja, csak jobban (3 jegy + auto-kikapcsolás). A kód a történetben marad."
     },
     "seo": {
       "primary_model": {
@@ -256,7 +257,7 @@
     },
     "api-expert": {
       "deterministic": true,
-      "enabled": true,
+      "enabled": false,
       "comment": "MODELL-TIERING 2026-07-24 (user: minden fizetős). KÖLTSÉG-OPTIMUM = MiniMax M2.5 — a legolcsóbb működő fizetős tier gépies munkára (parse/terv/formátum). MEGJEGYZÉS: az M2.5/M2.7 NEM engedi kikapcsolni a gondolkodást (HTTP 400), így reasoning marad ON. Fallback M2.7, vég-tartalék az ingyenes VÉSZHÁLÓ.",
       "primary_model": {
         "provider": "openrouter",
@@ -266,7 +267,8 @@
         "provider": "openrouter",
         "model": "minimax/minimax-m2.7"
       },
-      "routing": "paid-only"
+      "routing": "paid-only",
+      "retired_2026_07_30": "KIVEZETVE: modellt választott volna az agenteknek, de a user 2026-07-24-én KÉZZEL döntött a MiniMax-tiering felállásról. Emberi döntést gép nem írhat felül. A kód a történetben marad."
     },
     "social": {
       "primary_model": {
@@ -297,7 +299,8 @@
       },
       "enabled": true,
       "comment": "MODELL-TIERING 2026-07-24 (user: minden fizetős). KÖLTSÉG-OPTIMUM = MiniMax M2.5 — a legolcsóbb működő fizetős tier gépies munkára (parse/terv/formátum). MEGJEGYZÉS: az M2.5/M2.7 NEM engedi kikapcsolni a gondolkodást (HTTP 400), így reasoning marad ON. Fallback M2.7, vég-tartalék az ingyenes VÉSZHÁLÓ.",
-      "routing": "paid-only"
+      "routing": "paid-only",
+      "wired_2026_07_30": "BEKÖTVE. 2026-06-22 óta készen állt, de semmi nem hívta — pedig valódi lyukat fed le: a hitelesség-kapu CSAK publikálás előtt ellenőriz, a kint lévő útmutatókat senki nem nézte újra. Bekötés előtt át kellett építeni: az eredeti terv TÖRÖLTE a publikált cikket (404). Most helyben javít, és levételnél csak megjelöl."
     },
     "pairing": {
       "primary_model": {
