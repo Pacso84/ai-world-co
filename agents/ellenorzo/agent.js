@@ -141,6 +141,21 @@ function runAutoCheck(articleMarkdown, type) {
     }
   }
 
+  // SABLON-CÍMKE SZIVÁRGÁS (2026-07-30) — AZONNALI ELUTASÍTÁS.
+  //
+  // 137 MEGJELENT cikk kezdődött szó szerint így: "**Hook:** You've probably…".
+  // A címke az író- és guide-prompt PÉLDÁJÁBÓL másolódott a szövegbe, és kint
+  // volt az élő oldalon. Semmi nem hat gépiesebbnek egy olvasónak, mint egy
+  // látható sablon-felirat — a user épp "emberibb cikkeket" kért.
+  //
+  // Ez MISSING_SECTION-ként megy, tehát AZONNAL elutasít, AI-hívás nélkül:
+  // olcsó, egyértelmű, és sosem kérdés, hogy hiba-e.
+  const LABEL_LEAK = /^[ \t]*\*{0,2}(hook|intro|introduction|body|conclusion|outro|cta)\b[^\n]{0,24}[:.]\*{0,2}/im;
+  const leak = articleMarkdown.match(LABEL_LEAK);
+  if (leak) {
+    issues.push(`MISSING_SECTION: SABLON-CÍMKE a szövegben ("${leak[0].trim().slice(0, 30)}") — ez a prompt utasítása, nem az olvasónak szól. Írd sima mondatként.`);
+  }
+
   // Kötelező frontmatter mezők
   const frontmatterMatch = articleMarkdown.match(/^---\n([\s\S]*?)\n---/);
   if (frontmatterMatch) {

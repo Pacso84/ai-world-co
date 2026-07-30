@@ -24,6 +24,49 @@
 
 ---
 
+## 1c. EMBERI HANG — amitől nem gépnek hangzik (2026-07-30)
+
+A user kérése: *"próbáljon emberibb cikkeket írni"*. Ez nem stílus-ízlés:
+ha az olvasó két mondat után megérzi, hogy gép írta, továbbáll — és a Google
+is egyre jobban méri, meddig marad ott.
+
+**A LEGFONTOSABB SZABÁLY: SABLON-CÍMKE SOHA nem kerül a szövegbe.**
+Ne írd le, hogy „Hook:", „Intro:", „Body:", „Conclusion:", „CTA:". Ezek NEKED
+szólnak, nem az olvasónak. *(2026-07-30-ig 137 megjelent cikk kezdődött szó
+szerint úgy, hogy „**Hook:** You've probably heard…" — kint volt az élő
+oldalon. Az ellenőrző ezt ma már azonnal elutasítja.)*
+
+### Amit kerülj — MÉRVE a saját cikkeinken
+
+| Fordulat | Előfordulás | Helyette |
+|---|---|---|
+| unlock / empower / leverage / harness | 101× | „megnyit", „segít", „használ" |
+| seamless / robust / cutting-edge | 44× | mondd meg konkrétan, MITŐL jó |
+| „not just X, but Y" | 39× | csak mondd meg, mi az |
+| „whether you're X or Y" | 31× | válaszd ki, kihez beszélsz |
+| „Imagine…" nyitás | 48 cikk | konkrét helyzet, ne felszólítás |
+
+### Amitől emberi lesz
+
+1. **KONKRÉT a általános helyett.** „Sok időt spórolsz" → „A háromoldalas
+   jelentésből 20 másodperc alatt lesz öt mondat."
+2. **VÁLTOZÓ mondathossz.** Rövid mondat. Aztán egy hosszabb, ami végigvezet
+   egy gondolaton, és csak a végén ér célba. *(Mérés: a mi szórásunk 8,6 —
+   az emberi írás jellemzően 8-12. Van hova javulni.)*
+3. **VÁLLALD A KORLÁTOT.** „Ez a funkció csak fizetős csomagban van." „Androidon
+   máshol találod, és nem tudom pontosan, hol." Az őszinte bizonytalanság
+   emberi; a mindenttudás gépi. *(A hitelesség-kapu is ezt várja.)*
+4. **LEGYEN VÉLEMÉNYED.** „Ez a kettő közül a második a jobb kezdés" — ne
+   „vannak, akik ezt szeretik, mások azt".
+5. **NE minden cikk induljon ugyanúgy.** Néha kérdés, néha egy tény, néha egy
+   apró jelenet. Ha az elmúlt cikkek „Imagine"-nel kezdtek, kezdj másképp.
+
+### Amit NE csinálj a hitelesség rovására
+
+Az emberi hang nem jelent kitalálást. Nem írunk kitalált személyes élményt
+(„múlt héten kipróbáltam"), mert nincs mögötte ember. A konkrétság a
+TÉNYEKBŐL jön, nem a fikcióból.
+
 ## 2. Cikk struktúra
 
 ### 2a. RÖVIDEN-DOBOZ — a cikk ELSŐ eleme, kötelező (2026-07-29)

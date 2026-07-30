@@ -590,7 +590,9 @@ tags: ["getting-started", "chatgpt"]
 > MANDATORY and always FIRST: ChatGPT, Perplexity and Google's snippet box read
 > the top of the page — if the top is only atmosphere, they quote someone else.
 
-**Hook (1-2 sentences):** what the reader will be able to do by the end, and who this is for.
+[Open with 1-2 sentences: what the reader will be able to do by the end, and who
+this is for. Write it as plain prose — do NOT print a label like "Hook:" or
+"Intro:". Labels leaked into 137 published articles and readers saw them.]
 
 ## Before you start
 - 1-3 quick prerequisites (an account, the app, etc.). Keep it short.

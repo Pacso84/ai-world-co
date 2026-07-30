@@ -63,9 +63,24 @@ function parseMeta(markdown) {
 }
 
 // ART DIRECTOR: a cikkből konkrét vizuális jelenetet ír (hogy a kép kapcsolódjon a tartalomhoz)
-async function describeScene(title, subtitle) {
+//
+// 2026-07-30 (user: "jó lenne, ha a képek az aktuális cikkről szólnának"):
+// EDDIG CSAK A CÍMET ÉS AZ ALCÍMET LÁTTA. A cikk törzsét soha nem olvasta,
+// ezért egy általános című cikkhez ("Mit jelent az AI a munkádban?") csak
+// általános jelenetet tudott kitalálni. Most kap egy kivonatot a SZÖVEGBŐL is:
+// abban ott vannak a konkrét eszköznevek, képernyők, műveletek — vagyis épp
+// az, amiből felismerhető kép lesz.
+async function describeScene(title, subtitle, body = '') {
+  // A törzs eleje + a lépés-címsorok: ezekben vannak a kézzelfogható dolgok.
+  const plain = String(body).replace(/^---[\s\S]*?---/, '').replace(/[#*>`]/g, ' ').replace(/\s+/g, ' ').trim();
+  const steps = (String(body).match(/^##\s+.+$/gm) || []).slice(0, 6).map(s => s.replace(/^##\s*/, '')).join(' · ');
+  const excerpt = plain.slice(0, 700);
+
   const prompt = `Article title: "${title}"
 Subtitle: "${subtitle}"
+${steps ? `Sections: ${steps}\n` : ''}${excerpt ? `Article opening: ${excerpt}\n` : ''}
+Base the scene on what the article ACTUALLY talks about (the tools, screens and
+actions named above) — not on the title alone.
 
 Describe ONE concrete visual scene for the cover image. STRICT RULES:
 - The scene MUST show the article's actual SUBJECT as instantly recognizable objects
@@ -205,7 +220,11 @@ async function main() {
     catch { continue; }
 
     const meta = parseMeta(data.article_markdown);
-    const slug = slugify(meta.title || data.original_title || file);
+    // A RÖGZÍTETT slug az igazság (2026-07-30) — ugyanaz a hiba, mint a
+    // közösségi agentnél volt: a CÍMBŐL számolt név egy újracímzés után
+    // ELTÉR attól, amit a build keres (`${slug}.jpg`), és a cikk NÉMÁN
+    // borítókép nélkül marad. Mérve: 567-ből 7 cikknél már ma is eltérne.
+    const slug = data._meta?.slug || slugify(meta.title || data.original_title || file);
     const imgPath = join(IMAGES_DIR, `${slug}.jpg`);
 
     if (ONLY && !slug.includes(ONLY)) { skipped++; continue; }
@@ -215,7 +234,7 @@ async function main() {
     }
 
     console.log(`🖼️  ${meta.title.slice(0, 55)}...`);
-    const scene = await describeScene(meta.title, meta.subtitle);
+    const scene = await describeScene(meta.title, meta.subtitle, data.article_markdown);
     console.log(`   🎬 Jelenet: ${scene.slice(0, 70)}`);
     const prompt = buildPrompt(scene);
     try {

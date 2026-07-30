@@ -190,7 +190,9 @@ OTHER RULES:
      WHY: humans read the hook, but ChatGPT, Perplexity and Google's snippet
      box read the TOP of the page. If the top is only atmosphere, they quote
      someone else instead of us.
-   - Hook: 1-2 sentences — why this is useful to know
+   - Opening: 1-2 sentences — why this is useful to know. Plain prose; NEVER
+     print a structural label ("Hook:", "Intro:") into the article — those words
+     are for you, not for the reader.
    - Main content: practical, step-by-step or example-driven (2-4 short sections)
    - "What this means for you" section (mandatory!) with practical advice for different reader types
    - Closing: 1 paragraph — summary + a next step the reader can take today
@@ -249,7 +251,9 @@ tags: ["voice-ai", "productivity", "getting-started"]
 
 # How to Use AI Voice Assistants in Your Daily Routine
 
-**Hook paragraph.** Why this is handy for everyday life.
+One or two plain sentences that make a busy person want to keep reading — a real
+situation, not a label. (Never print words like "Hook:", "Intro:" or "Body:" in
+the article itself; those are instructions to you, not text for the reader.)
 
 ## Getting started
 
