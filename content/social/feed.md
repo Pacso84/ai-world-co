@@ -1,6 +1,66 @@
 # AI World Co. — közösségi posztok
 
-*Generálva: 2026-07-31T05:00:55.660Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+*Generálva: 2026-07-31T11:07:56.480Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## Univé builds an AI-ready workforce
+**🔗 https://aiworldhq.com/article/how-to-build-an-ai-ready-team-without-scaring-anyone**
+
+**Facebook:**
+Getting your team comfortable with AI is easier than you think. These five practical steps help leaders and teams build confidence without the stress. Worth a read if you've been putting it off. https://aiworldhq.com/article/how-to-build-an-ai-ready-team-without-scaring-anyone #AIatWork #Leadership
+
+*Kép-ötlet: Clean desk with a laptop, a notebook, and a plant — simple and professional*
+
+---
+
+## How to plan a trip with AI: itinerary, budget and tips
+**🔗 https://aiworldhq.com/article/how-to-plan-a-trip-with-ai-itinerary-budget-and-tips**
+
+**Facebook:**
+Planning your next Aussie holiday just got easier — turn any vague travel idea into a day-by-day plan with real costs in Australian dollars and local tips you'd otherwise miss. https://aiworldhq.com/article/how-to-plan-a-trip-with-ai-itinerary-budget-and-tips #TravelTips #BudgetTravel
+
+*Kép-ötlet: A clean travel notebook next to a coffee with a simple destination map visible in the background*
+
+---
+
+## How to set up smart routines with Alexa+
+**🔗 https://aiworldhq.com/article/set-up-an-alexa-routine-to-automate-your-everyday-tasks**
+
+**Facebook:**
+Your mornings might get a whole lot easier. This simple guide shows you how to set up Alexa+ so one phrase can turn on your lights, play your music and kick off your day. https://aiworldhq.com/article/set-up-an-alexa-routine-to-automate-your-everyday-tasks #smarthome #alexa
+
+*Kép-ötlet: A cozy morning scene with warm smart lighting in a living room, no text*
+
+---
+
+## Using Amazon's new conversational Alexa+ at home
+**🔗 https://aiworldhq.com/article/how-to-use-amazon-s-conversational-alexa-at-home**
+
+**Facebook:**
+Ever wish you could just talk to your smart speaker like a real assistant? The new Alexa+ lets you have natural back-and-forth conversations without repeating her name every few seconds. Here's how to make it work for you. https://aiworldhq.com/article/how-to-use-amazon-s-conversational-alexa-at-home
+
+*Kép-ötlet: A cozy living room with a smart speaker on a shelf, giving a warm and approachable feel.*
+
+---
+
+## Getting started with Apple Intelligence on your iPhone
+**🔗 https://aiworldhq.com/article/activate-apple-intelligence-on-your-iphone-a-beginner-s-step-by-step-g**
+
+**Facebook:**
+Tired of wading through long emails? Your iPhone can now summarise them for you — plus help draft quick replies. Here's how to switch it on. https://aiworldhq.com/article/activate-apple-intelligence-on-your-iphone-a-beginner-s-step-by-step-g #iPhoneTips #Productivity
+
+*Kép-ötlet: A clean, close-up shot of an iPhone settings screen showing the Apple Intelligence toggle being turned on*
+
+---
+
+## How to use Apple Intelligence Writing Tools
+**🔗 https://aiworldhq.com/article/master-apple-intelligence-writing-tools-with-ease**
+
+**Facebook:**
+Your writing just got a helpful sidekick. Apple Intelligence can polish, rephrase or shorten your messages right inside the apps you already use — no extra apps needed. Here's how to find and use these handy tools. https://aiworldhq.com/article/master-apple-intelligence-writing-tools-with-ease #AppleTips #WritingTools
+
+*Kép-ötlet: A clean smartphone screen showing a text message with subtle AI-powered writing suggestions highlighted*
 
 ---
 
