@@ -1,7 +1,7 @@
 {
   "_meta": {
     "note": "Forrás-bizonyítvány: frissesség + termés + megbízhatóság forrásonként. Gyártja: core/source-report-card.js",
-    "updated": "2026-07-31T17:58:40.848Z",
+    "updated": "2026-07-31T19:01:23.846Z",
     "thresholds": {
       "DEAD_FEED_DAYS": 365,
       "MIN_SAMPLE": 4,
@@ -91,7 +91,7 @@
       "name": "Google Workspace Updates (hivatalos)",
       "feedAgeDays": 0,
       "published30d": 24,
-      "truthBlocks": 1,
+      "truthBlocks": 2,
       "totalAttempts": 29,
       "alreadyDisabled": false,
       "lastArticle": "2026-07-30",
@@ -485,7 +485,7 @@
     },
     "xai-news": {
       "name": "xAI (hivatalos, Google News szűrve)",
-      "feedAgeDays": 3,
+      "feedAgeDays": 4,
       "published30d": 3,
       "truthBlocks": 0,
       "totalAttempts": 3,

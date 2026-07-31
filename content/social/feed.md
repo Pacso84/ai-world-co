@@ -1,6 +1,66 @@
 # AI World Co. — közösségi posztok
 
-*Generálva: 2026-07-31T17:58:29.346Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+*Generálva: 2026-07-31T19:01:12.786Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## How to use ChatGPT's memory so it remembers your preferences
+**🔗 https://aiworldhq.com/article/how-to-use-chatgpt-s-memory-to-remember-your-unique-preferences**
+
+**Facebook:**
+Tell ChatGPT your preferences once and it'll remember. From writing style to spelling habits, you can teach it what matters to you — so every chat feels personal. Here's how to set it up. https://aiworldhq.com/article/how-to-use-chatgpt-s-memory-to-remember-your-unique-preferences
+
+*Kép-ötlet: A simple illustration of a lightbulb or brain icon connected to a chat bubble, symbolising memory*
+
+---
+
+## Using ChatGPT Voice for hands-free everyday tasks
+**🔗 https://aiworldhq.com/article/a-beginner-s-guide-to-using-chatgpt-voice-for-hands-free-tasks**
+
+**Facebook:**
+Imagine having a helpful voice in your ear while you cook, drive, or tidy up – no need to stop and type. This beginner's guide walks you through using ChatGPT Voice for hands-free help. https://aiworldhq.com/article/a-beginner-s-guide-to-using-chatgpt-voice-for-hands-free-tasks #AI #EverydayTech
+
+*Kép-ötlet: A person cooking in a kitchen with their phone on the counter, speaking to it hands-free while stirring a pot.*
+
+---
+
+## How to use Claude Artifacts to create and preview your work
+**🔗 https://aiworldhq.com/article/how-to-use-claude-artifacts-to-create-and-preview-your-work**
+
+**Facebook:**
+Ever wish you could see your document or tiny app appear live while you chat with AI? Now you can — Claude Artifacts shows your work side-by-side as it's created, so you get instant feedback and can tweak it right away. https://aiworldhq.com/article/how-to-use-claude-artifacts-to-create-and-preview-your-work
+
+*Kép-ötlet: A split-screen illustration showing a chat conversation on one side and a live document or app preview on the other, with a friendly arrow pointing between them.*
+
+---
+
+## Getting started with Claude for clear, careful help
+**🔗 https://aiworldhq.com/article/getting-started-with-claude-for-clear-careful-help**
+
+**Facebook:**
+Ever wished you had a patient helper to make sense of long documents or explain tricky ideas clearly? This simple guide shows you how to get started with an AI tool that takes its time to give thoughtful answers. https://aiworldhq.com/article/getting-started-with-claude-for-clear-careful-help #AI #HowTo
+
+*Kép-ötlet: A person calmly reading on their laptop at a kitchen table, natural light from a window, no text anywhere.*
+
+---
+
+## How to use Claude Projects to keep your work organised
+**🔗 https://aiworldhq.com/article/organise-your-work-with-claude-projects-a-step-by-step-beginner-s-guid**
+
+**Facebook:**
+Ever wish all your related chats and files stayed in one place? A Claude Project does exactly that – create one tidy workspace for each task and let Claude work across everything. https://aiworldhq.com/article/organise-your-work-with-claude-projects-a-step-by-step-beginner-s-guid #AI #Productivity
+
+*Kép-ötlet: A clean, simple workspace on a desk with a laptop, a notebook, and a coffee cup – organised and clutter-free.*
+
+---
+
+## How to use Claude for clear, careful writing and editing
+**🔗 https://aiworldhq.com/article/how-to-use-claude-for-clear-careful-writing-and-editing-in-everyday-ta**
+
+**Facebook:**
+Ever wish your emails or reports sounded clearer? This step-by-step guide shows you how to use Claude to draft, polish and perfect your writing – no tech experience needed. https://aiworldhq.com/article/how-to-use-claude-for-clear-careful-writing-and-editing-in-everyday-ta#AIWriting #Productivity
+
+*Kép-ötlet: A clean desk with a laptop and a steaming coffee cup, suggesting a productive writing session*
 
 ---
 
