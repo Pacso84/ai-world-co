@@ -1,6 +1,66 @@
 # AI World Co. — közösségi posztok
 
-*Generálva: 2026-07-31T19:01:12.786Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+*Generálva: 2026-07-31T19:18:29.350Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## Prevent accidental disclosures with new Reply All BCC warnings in Gmail
+**🔗 https://aiworldhq.com/article/why-hitting-reply-all-when-you-were-bcc-d-is-so-awkward**
+
+**Facebook:**
+There's nothing worse than hitting Reply All by accident when you were BCC'd — suddenly everyone knows you shouldn't have been there. Gmail's added new warnings to help, plus one simple habit that stops it happening. https://aiworldhq.com/article/why-hitting-reply-all-when-you-were-bcc-d-is-so-awkward #email #productivity
+
+*Kép-ötlet: A clean icon of an email envelope with a small shield symbol, simple and professional*
+
+---
+
+## How to use Claude Projects to keep your work organised
+**🔗 https://aiworldhq.com/article/organise-your-work-with-claude-projects-a-step-by-step-beginner-s-guid**
+
+**Facebook:**
+Ever lose track of important AI chats and files? This beginner's guide shows you how to create one tidy workspace where everything stays organised – no more hunting for that one conversation. https://aiworldhq.com/article/organise-your-work-with-claude-projects-a-step-by-step-beginner-s-guid #AI #Productivity
+
+*Kép-ötlet: A clean, minimal desktop with a single folder icon surrounded by floating chat bubbles and document icons, all neatly arranged*
+
+---
+
+## Getting started with Microsoft Copilot in everyday apps
+**🔗 https://aiworldhq.com/article/getting-started-with-microsoft-copilot-in-everyday-apps**
+
+**Facebook:**
+Tired of spending ages tidying up emails? Your PC has a built-in helper that can do it for you in seconds — no tech skills needed. Here's how to find it. https://aiworldhq.com/article/getting-started-with-microsoft-copilot-in-everyday-apps #MicrosoftCopilot #ProductivityTips
+
+*Kép-ötlet: A clean, minimal illustration of a person working relaxed at a laptop with a friendly, simple Copilot chat bubble on screen.*
+
+---
+
+## How to use Microsoft Copilot in Word, Excel and Outlook
+**🔗 https://aiworldhq.com/article/start-using-microsoft-copilot-in-word-excel-and-outlook**
+
+**Facebook:**
+Tired of spending hours drafting documents, wrestling with spreadsheets, or drowning in emails? This simple guide shows you how Copilot can help with all three — even if you've never used AI before. https://aiworldhq.com/article/start-using-microsoft-copilot-in-word-excel-and-outlook
+
+*Kép-ötlet: A clean workspace with a laptop showing Word, Excel or Outlook, with a subtle glowing AI element suggesting intelligent help, no text.*
+
+---
+
+## How to use Copilot on Windows for everyday tasks
+**🔗 https://aiworldhq.com/article/how-to-use-microsoft-copilot-on-windows-for-everyday-tasks**
+
+**Facebook:**
+Windows has a built-in AI helper that can change your settings or summarise content for you – just by asking. This beginner-friendly guide shows you how to use it step by step. https://aiworldhq.com/article/how-to-use-microsoft-copilot-on-windows-for-everyday-tasks #WindowsTips #AIBasics
+
+*Kép-ötlet: A clean, simple screenshot of the Copilot sidebar on a Windows desktop, showing a friendly chat prompt with a dark mode toggle.*
+
+---
+
+## Create catchy Instagram captions using AI in minutes – a beginner’s guide
+**🔗 https://aiworldhq.com/article/create-catchy-instagram-captions-using-ai-in-minutes-a-beginner-s-guid**
+
+**Facebook:**
+Ever stared at your Instagram post, not knowing what to write? This simple guide shows you how to type a quick photo description into Meta AI and get a polished caption ready to post – in just minutes. No writing experience needed. https://aiworldhq.com/article/create-catchy-instagram-captions-using-ai-in-minutes-a-beginner-s-guid
+
+*Kép-ötlet: A hand holding a phone with a simple AI prompt on screen and an Instagram post appearing above it.*
 
 ---
 
