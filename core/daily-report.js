@@ -241,6 +241,17 @@ async function main() {
     }
   } catch { /* még nincs SEO-lelet vagy nem futott — nem baj */ }
 
+  // ÉLŐ-ŐRSZEM (2026-07-31): a kintről-befelé nézés leletei. Csendes, ha
+  // minden rendben; hangos, ha az ÉLŐ oldal máshogy viselkedik, mint amit
+  // gyártottunk (www/http, 404, canonical, H1, sitemap). Ez a réteg fogja
+  // meg a kiszolgálói-beállítás szintű hibákat, amiket a fájl-alapú őrök nem.
+  try {
+    const lg = JSON.parse(readFileSync(join(ROOT, 'memory', 'live-guard.json'), 'utf-8'));
+    if (lg.problems?.length) {
+      lines.push(`🌐 ÉLŐ-ŐRSZEM: ${lg.problems.length} lelet — ${lg.problems.slice(0, 2).map(p => p.code).join(', ')}${lg.problems.length > 2 ? '…' : ''}`);
+    }
+  } catch { /* még nem futott — nem baj */ }
+
   // HÁZMESTER (2026-07-30): mit takarított el, és hízik-e valami vissza.
   // CSENDES a hétköznapokon: napi pár régi napló törlése nem hír. Csak akkor
   // szólal meg, ha ÉRDEMI takarítás történt (kép/fordítás/embedding), vagy ha

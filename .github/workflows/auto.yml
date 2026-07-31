@@ -326,6 +326,18 @@ jobs:
 
       # IndexNow: a friss cikkeket AZONNAL bejelentjük a keresőknek (Bing =
       # a ChatGPT-kereső indexe). Hiba esetén nem dönti el a futást (|| true).
+      # ÉLŐ-ŐRSZEM (2026-07-31, a user kérdése után: "ezt hogy nem vettük
+      # észre?"). A Google-audit 3 hibát talált, és mind azért maradt rejtve
+      # hetekig, mert minden őrszemünk a SAJÁT fájljainkat nézi — kintről, a
+      # Google szemével SENKI nem kérte le az oldalt. Ez a lépés a deploy után
+      # valódi HTTP-kérésekkel ellenőrzi az ÉLŐ oldalt: www/http átirányítás,
+      # valódi 404, kivezetett nyelvek, canonical/H1/Discover-jelzés a
+      # legfrissebb cikken, sitemap épsége. Bizonyítottan tüzel: első futásán
+      # elkapta a www-duplikációt. Lelet → napi Telegram-riport (🌐).
+      - name: Élő-őrszem (kintről befelé nézés)
+        if: always() && steps.build.outcome == 'success'
+        run: node core/live-guard.js || true
+
       - name: IndexNow — friss URL-ek bejelentése
         if: always()
         run: node core/indexnow.js || true
