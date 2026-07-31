@@ -18,13 +18,26 @@ concurrency:
 jobs:
   run:
     runs-on: ubuntu-latest
-    # Biztonsági plafon: beragadás esetén max 1 órát égetünk, nem 6-ot
+    # Biztonsági plafon: beragadás esetén ne égessünk órákat
     # (2026-07-01: két 6 órás beragadás ~720 ingyen-percet vitt el).
-    # A repó PRIVÁT → az Actions-percek metertek (2000 ingyen/hó). 2026-07-23-i
-    # mérés: 1390 perc 23 nap alatt = ~1874 perc/hó vetítve, a keret 94%-a. Ezért
-    # kapott a hosszú lépések LÉPÉS-SZINTŰ korlátot (lásd lentebb) — így a job
-    # sosem fut bele ebbe a plafonba, ahol a kiadási lánc elveszne.
-    timeout-minutes: 60
+    #
+    # 60 → 120 PERC (2026-07-31). A 07-31 01:47-es futás 65 percnél BELEFUTOTT
+    # a 60-as plafonba, és a job MEGSZAKADT a Deploy közben. A mérés:
+    #     Pipeline 29,5p + Fordítás 29,5p + felújító 2,9p + a többi ~3p
+    # A lépések SAJÁT korlátainak összege 111 perc (45+30+10+10+10+6) — vagyis
+    # a 60-as job-plafon SOHA nem fért volna hozzájuk. Eddig csak azért nem
+    # derült ki, mert a lépések ritkán merítették ki a keretüket.
+    #
+    # MIÉRT SÚLYOS EZ: egy MEGSZAKÍTOTT (cancelled) jobnál a GitHub az
+    # `if: always()` lépéseket is KIHAGYJA — nem csak a hibásakat. Így a
+    # "Generált tartalom megőrzése (visszacommit)" nem futott le, és a futás
+    # EGÉSZ MUNKÁJA elveszett: a megírt cikkek, a felújítások ÉS a költség-napló
+    # is. Az `if: always()` védelem tehát a job-időtúllépés ellen NEM véd.
+    #
+    # A 120 perc nem pazarlás: a repó 2026-07-26 óta PUBLIKUS → az Actions
+    # INGYENES ÉS KORLÁTLAN. A régi 60-as érték a privát repó 2000 perces
+    # havi kerete miatt volt szűk; az az ok megszűnt, a kockázat maradt.
+    timeout-minutes: 120
     steps:
       - uses: actions/checkout@v4
 
@@ -168,6 +181,34 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_OWNER_CHAT_ID: ${{ secrets.TELEGRAM_OWNER_CHAT_ID }}
         run: node agents/video/agent.js || true
+
+      # ── KÖZBENSŐ MENTÉS (2026-07-31) ─────────────────────────────────
+      # MIÉRT: a 07-31 01:47-es futás a 60 perces job-plafonba futott, és a
+      # GitHub MEGSZAKÍTOTTA. Megszakított jobnál az `if: always()` lépések is
+      # KIMARADNAK — így a záró visszacommit sem futott le, és a futás EGÉSZ
+      # munkája elveszett: a megírt cikkek, a felújítások és a költség-napló is.
+      #
+      # A job-plafont felemeltük (60 → 120), de az `always()` gyengesége attól
+      # még ott van: bármilyen megszakadás (plafon, futtató-hiba, kézi leállítás)
+      # ugyanígy mindent eldobna. Ezért itt, a leghosszabb lépés (Fordítás,
+      # 30 perc) ELŐTT lementjük, ami addig elkészült.
+      #
+      # Így a legrosszabb eset is csak a fordítás-munkát veszti el (az amúgy is
+      # utolér magát a következő futásban) — a MEGÍRT TARTALMAT soha.
+      # A záró visszacommit változatlanul megmarad; ez csak egy korábbi mentőpont.
+      - name: Közbenső mentés (a hosszú fordítás ELŐTT)
+        if: always()
+        run: |
+          git config user.name "AI World Bot"
+          git config user.email "bot@aiworld.local"
+          git add -A
+          git commit -m "auto: közbenső mentés $(date -u +%FT%TZ)" || { echo "nincs mentenivaló"; exit 0; }
+          for i in 1 2 3; do
+            git push && exit 0
+            git pull --rebase -X theirs || { git rebase --abort 2>/dev/null || true; }
+            sleep 5
+          done
+          echo "⚠️ közbenső mentés nem ment fel — a záró commit még megpróbálja"
 
       - name: Fordítás (többnyelvűség — backfill, mindig fut)
         if: always()
