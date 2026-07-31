@@ -1,32 +1,4 @@
 {
-  "2026-07-17": [
-    {
-      "at": "2026-07-17T01:52:26.952Z",
-      "file": "WRITER_GUIDE_ask-alexa-to-explain-the-news-headlines-in-simple-terms-ever.json",
-      "action": "block",
-      "reasons": [
-        "The product name \"Alexa+\" is invented. Amazon's smart assistant is called Alexa, and the associated hardware devices are called Echo devices (e.g., Echo Dot, Echo Show). \"Alexa+\" is not an official product name or version."
-      ]
-    },
-    {
-      "at": "2026-07-17T09:48:45.533Z",
-      "file": "WRITER_2026-07-14T01-22-26-177Z_aws-ml_OpenAI_GPT-5_6_Sol__Terra__and_Luna_are_now_genera.json",
-      "action": "block",
-      "reasons": [
-        "The article claims OpenAI has released new models named 'Sol,' 'Terra,' and 'Luna' and that these are available on Amazon Bedrock. These model names are fabricated; OpenAI's models are typically named GPT-x, DALL-E, or Whisper, and while OpenAI models (like GPT-4 and GPT-3.5 Turbo) are indeed on Bedrock, 'Sol', 'Terra', and 'Luna' do not exist as official OpenAI models.",
-        "The article describes UI elements in the Amazon Bedrock console, such as specific dropdown menu options to select 'OpenAI Sol,' 'OpenAI Terra,' or 'OpenAI Luna' models. Since these models do not exist, these specific UI elements and options would also not exist within the Bedrock console."
-      ]
-    },
-    {
-      "at": "2026-07-17T17:02:03.732Z",
-      "file": "WRITER_2026-07-14T01-22-26-177Z_aws-ml_OpenAI_GPT-5_6_Sol__Terra__and_Luna_are_now_genera.json",
-      "action": "block",
-      "reasons": [
-        "The article claims that OpenAI's GPT models, specifically GPT-4 and GPT-3.5 Turbo, are available on Amazon Bedrock. This is incorrect. Amazon Bedrock offers foundation models from various providers like Anthropic, AI21 Labs, Cohere, Meta, Stability AI, and Amazon's own Titan models, but it does not include OpenAI's GPT models. OpenAI's models are primarily accessible through OpenAI's own API or Microsoft Azure OpenAI Service.",
-        "The steps described for 'Getting Started with OpenAI Models on AWS Bedrock,' particularly the parts about 'Enable Model Access' for OpenAI models and choosing 'GPT-4' or 'GPT-3.5 Turbo' from a dropdown in the Bedrock playground, are fabricated because these models are not offered on Bedrock."
-      ]
-    }
-  ],
   "2026-07-18": [
     {
       "at": "2026-07-18T01:26:22.911Z",
@@ -391,6 +363,16 @@
         "The 'Help me create' button as described — a floating button in the bottom-right of a new Google Form that opens a side panel for describing a quiz, with a 'paperclip' icon for attaching Drive files (Docs, Slides, PDFs) as source materials, and that drafts questions with marked correct answers — does not match the known functionality of Gemini in Google Forms. As of current knowledge, Gemini in Google Forms (the 'Help me create' feature) does not support attaching source documents from Drive to ground quiz generation, and the described paperclip/file-attach workflow within the panel is not a documented feature.",
         "The claim that the source-attachment feature is 'one of the most useful bits' allowing Gemini to base questions on an uploaded Google Doc/Slide/PDF appears to be fabricated, as this capability is not a verified part of the Gemini-in-Google Forms feature.",
         "The specific UI element descriptions (floating 'Help me create' button in bottom-right, side panel with 'Generate'/'Insert' button, paperclip icon inside the panel, 'Draft ready' message) are presented as definitive product UI but cannot be verified and read as invented specifics rather than honest hedged guidance."
+      ]
+    }
+  ],
+  "2026-07-31": [
+    {
+      "at": "2026-07-31T04:09:15.167Z",
+      "file": "WRITER_2026-07-31T04-08-41-143Z_openai-blog_How_avatarin_built_a_24_7_retail_agent_with_GPT-Re.json",
+      "action": "block",
+      "reasons": [
+        "GPT-Realtime is not a verified model name — OpenAI's real-time voice API product is 'Realtime API' (or 'gpt-4o-realtime-preview' model). 'GPT-Realtime' as a model name appears fabricated."
       ]
     }
   ]

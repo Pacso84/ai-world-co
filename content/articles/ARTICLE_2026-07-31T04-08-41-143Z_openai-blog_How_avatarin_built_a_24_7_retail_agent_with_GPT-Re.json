@@ -1,0 +1,64 @@
+{
+  "_meta": {
+    "written_at": "2026-07-31T04:09:40.418Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.0052992,
+    "original_draft": "2026-07-31T04-08-41-143Z_openai-blog_How_avatarin_built_a_24_7_retail_agent_with_GPT-Re.json",
+    "source_id": "openai-blog",
+    "source_name": "OpenAI Blog (hivatalos)",
+    "source_link": "https://openai.com/index/avatarin",
+    "status": "published",
+    "rejected_at": "2026-07-31T04:09:15.163Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 860
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured explainer with solid hooks, plain-language definitions, and a useful 'What this means for you' section covering all reader types. No clichés, Australian English is correct, and no prohibited content. Minor note: the Japanese electronics chain figure is sourced from the OpenAI blog itself — ideally future articles would cite independent sources for statistics, but this is acceptable given the article is explicitly about OpenAI's technology.",
+      "_aiCost": 0.0013042,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Hitelesség-kapu blokkolta: GPT-Realtime is not a verified model name — OpenAI's real-time voice API product is 'Realtime API' (or 'gpt-4o-realtime-preview' model). 'GPT-Realtime' as a model name appears fabricated.",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-07-31T04-08-41-143Z_openai-blog_How_avatarin_built_a_24_7_retail_agent_with_GPT-Re.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-07-31T04:09:54.321Z",
+    "slug": "ai-voice-agents-are-now-answering-shoppers-around-the-clock",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-07-31T04:10:21.049Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is a case study/explainer about retail AI agents, not a specific feature launch for consumers to use",
+    "image_v": 2,
+    "image_at": "2026-07-31T04:20:40.873Z",
+    "seo": {
+      "meta_description": "AI voice agents now answer shopper calls 24/7. See how real-time voice AI changes customer service and what it means for you.",
+      "keywords": [
+        "AI voice agents customer service",
+        "real time voice AI shopping",
+        "OpenAI Realtime API businesses",
+        "AI phone answering service",
+        "24/7 AI customer support",
+        "voice AI for retail",
+        "Google real time voice AI"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more specific use cases or examples to the excerpt to increase content depth for better rankings",
+        "Consider adding FAQ schema markup for voice AI questions people commonly search",
+        "Include exact brand names (like GPT-4o) if mentioned in full article for more keyword targeting"
+      ],
+      "optimised_at": "2026-07-31T04:21:37.451Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"AI Voice Agents Are Now Answering Shoppers Around the Clock\"\nsubtitle: \"Real-time voice AI is moving from novelty to everyday customer service — here's what that actually means for you.\"\ncategory: \"explainer\"\naudience: \"personal\"\nread_time_minutes: 5\ntags: [\"voice-ai\", \"customer-service\", \"ai-tools\", \"getting-started\"]\n---\n\n# AI Voice Agents Are Now Answering Shoppers Around the Clock\n\n> **In short:** Real-time AI voice assistants — the kind that listen, think and reply out loud in seconds — are now answering calls and helping shoppers 24/7. OpenAI's Realtime API powers this for some businesses, while Google offers similar real-time voice tools.\n\nYou know that moment when you ring a shop at 8pm, hear hold music for ten minutes, then finally give up? That moment is changing. Some of the voices you'll soon hear on the phone — and increasingly in physical stores — aren't people. They're AI voice agents, and they're getting good enough that you might not notice for the first few sentences.\n\n## What's actually new\n\nFor years, the automated voices on phone systems were rigid. Press 1 for sales, press 2 for support. They couldn't really listen.\n\nWhat changed recently is the arrival of real-time voice AI. The most prominent example is **OpenAI's Realtime API** (a tool that lets businesses build apps where the AI listens and talks back instantly), which uses the **gpt-4o-realtime-preview** model under the hood. Google offers similar real-time voice capabilities through Gemini. These systems can:\n\n- Hear you speak naturally, with no \"press 1\" menus\n- Understand what you mean, even when you mumble, pause or change your mind halfway through\n- Reply out loud in a human-sounding voice\n- Switch languages mid-conversation (English to Japanese to Mandarin, for example)\n- Wait patiently while you think, then pick up exactly where you left off\n\nThe technology has already been deployed at scale. A Japanese electronics chain reportedly had around 30,000 shoppers interact with an AI voice helper in a short period, with the vast majority of survey feedback being positive. The agent worked around the clock, in multiple languages, on the shop floor.\n\n## Where you'll actually meet one\n\nYou don't need to wait for the news to catch up. These systems are already showing up in places you probably use:\n\n- **Phone support** at banks, telcos and airlines — the calm \"how can I help you today?\" voice is increasingly AI\n- **In-store kiosks** at electronics shops and tourism centres — small screens with a face that talks back\n- **Delivery and ride apps** — voice helpers that help you book or track\n- **Healthcare booking** — some clinics use voice AI to handle appointment requests\n\nThe voice is calm, patient and never tired. It also doesn't get offended, doesn't have a bad day, and never puts you on hold.\n\n## What this means for you\n\n- **If you're a shopper or caller**: the next time you ring a business and the voice sounds unusually natural — pauses where you'd pause, replies to your exact words — it may well be AI. Be patient. Speak clearly, and if it misunderstands, rephrase rather than shouting. These systems are improving fast but still stumble on thick accents, background noise and unusual requests.\n- **If you're curious to try it yourself**: turn on voice mode in **ChatGPT** or **Gemini** on your phone. Talk to it like you'd talk to a friend. Ask it to explain a recipe, practise a job interview, or read you the news while you cook dinner. It's the same underlying technology, just pointed at you instead of a shop floor.\n- **If you run a small business**: voice AI assistants that handle the boring calls — bookings, opening hours, basic troubleshooting — are becoming more accessible through platforms that offer ready-made voice agents. Several AI platforms now let you configure one with a few **prompts** (the plain-language instructions you give an AI), without needing to code. Whether it's the right fit for your business depends on your call volume and the complexity of the questions you get.\n- **If you're worried about jobs**: real-time voice AI is genuinely changing phone-based customer service roles. But it's also creating new ones — people who design, train and supervise these systems. Knowing how to write a clear prompt is becoming a practical skill, even outside tech work.\n\n## Wrap-up\n\nReal-time voice AI has quietly moved from \"interesting demo\" to tools that thousands of people interact with daily, often without realising. The clearest takeaway: the next time you hear a voice on the phone that sounds a bit too calm and patient, you're probably talking to an AI. And the next time you want to try the technology yourself, it's already on your phone — you just need to switch it on.\n\n**Try this today:** Open ChatGPT or Gemini on your phone, tap the voice or microphone icon, and ask one real question out loud — about a recipe, a holiday plan, or what to cook from leftovers in the fridge. That's the same technology those shop assistants are built on.\n\n*Written and edited by AI World Co.'s autonomous AI agents. Reviewed for accuracy by our editorial system.*",
+  "original_title": "How avatarin built a 24/7 retail agent with GPT-Realtime"
+}

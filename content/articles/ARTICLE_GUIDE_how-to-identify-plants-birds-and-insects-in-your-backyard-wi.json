@@ -1,0 +1,64 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "how-to-identify-plants-birds-and-insects-in-your-backyard-wi",
+    "company": "Google",
+    "tool": "Gemini",
+    "icon": "🌿",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-07-31T04:13:48.840Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.0134277,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-07-31T04:19:48.700Z",
+    "slug": "how-to-identify-plants-birds-and-insects-in-your-backyard-with-gemini",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1406
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": 8,
+      "decision": "PASS",
+      "issues": [
+        "The iOS upload description (step 2 'If it looks different') could confuse readers — it implies tapping a plus (+) button to access the camera, but step 2 already described the photo/paperclip icon as the upload entry point; clarify whether these are the same or different actions",
+        "iNaturalist and Merlin Bird ID are product names and should be bolded like the other named apps/services in the article"
+      ],
+      "verdict": "Strong guide with excellent beginner-friendly structure, warm tone, practical examples in every step, good use of 'If it looks different' fallbacks, and an Australian context that resonates with the audience. Minor issues are the iOS upload description which could mislead, and two product names lacking formatting — both fixable without major rework.",
+      "_aiCost": 0.002559,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "image_v": 2,
+    "image_at": "2026-07-31T04:21:02.902Z",
+    "seo": {
+      "meta_description": "Use Gemini to identify plants, birds and insects in your backyard. Snap a photo to get instant species identification, origin info and care tips.",
+      "keywords": [
+        "how to identify plants with AI",
+        "identify birds by photo",
+        "backyard wildlife identification",
+        "Gemini plant identification",
+        "insect identification app",
+        "AI nature identification",
+        "garden plant care guide"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add 'Google AI' or 'Google Gemini' to the title or subtitle to capture brand search traffic",
+        "Include 'AI identification' as a secondary keyword in the first paragraph",
+        "Consider adding a numbered step-by-step structure (e.g., 'Step 1: Take a photo') for better SEO and readability"
+      ],
+      "optimised_at": "2026-07-31T04:22:19.079Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"How to Identify Plants, Birds and Insects in Your Backyard with Gemini\"\nsubtitle: \"Snap a photo of any plant, bird or insect and Gemini will suggest what it is, where it comes from and how to care for it\"\ncategory: \"guide\"\naudience: \"personal\"\ncompany: \"Google\"\ntool: \"Gemini\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"getting-started\", \"gemini\", \"gardening\"]\n---\n\n# How to Identify Plants, Birds and Insects in Your Backyard with Gemini\n\n> **In short:** Snap a photo of something in your garden and Gemini will suggest what it is, whether it's native to your area, and how to care for it. Treat the answer as a starting point — Gemini guesses from the image, so double-check anything risky before acting on it.\n\nThere's a strange kind of joy in noticing the small things growing and visiting your garden — the spiky-leaf plant you can't name, the bird that sits on the fence at dawn, the beetle that showed up overnight. Figuring out what they are used to mean flipping through books or posting on a forum. Now you can ask an AI assistant (a chatbot that reads your image and writes back in plain English) in seconds, and Gemini is a handy one to have in your pocket for exactly this kind of question.\n\n## Before you start\n- A **Google account** and the **Gemini app** installed on your phone (free on iOS and Android), or the **gemini.google.com** website open in a browser on a computer.\n- A working camera on your device, or a few photos already saved in your gallery.\n- About **5 minutes** for your first identification.\n- A realistic expectation: Gemini is a generalist assistant, not a dedicated nature-ID app. It will give you its best guess, but it sometimes mixes up similar-looking species — especially baby insects or plants out of flower. For anything poisonous, edible or legally protected, verify with a second source before you act.\n\n## Step 1 — Open Gemini and start a fresh chat\nOpen the **Gemini app** on your phone — the icon looks like a four-pointed spark or star in Google's blue gradient — or visit **gemini.google.com** in a browser. If you've used it before, tap **\"New chat\"** near the top (often a small **plus (+)** or **pencil** icon). A clean conversation box opens, ready for your message. Starting fresh keeps the assistant from getting confused by earlier questions, so the new photo and answer stay focused.\n**If it looks different:** on the desktop site, the **\"New chat\"** button sits in the left-hand sidebar.\n**You'll know it worked when** you see a blank message box with no previous messages above it.\n\n## Step 2 — Take a clear photo of the plant, bird or insect\nHold your phone steady, get close enough to fill the frame, and shoot in good daylight. For plants, try to include a leaf plus any flower. For birds, a still side-view works best. For insects, focus on the back or wings. Then tap the **photo or paperclip icon** 📎 inside the chat box and choose **Camera** or **Gallery**. On the website, look for an **upload** or **plus (+)** button instead.\n**If it looks different:** on iOS, tap the **plus (+)** button first, then choose **Photos** or **Camera**. On Android, the camera icon often sits right next to the message field. If your photo is already in your gallery, just pick it rather than re-shooting.\n💬 Example: a single close-up photo of a silvery-leafed shrub with small purple flowers.\n**You'll know it worked when** the photo thumbnail appears in the message box, ready to send.\n\n## Step 3 — Ask Gemini to identify what it is\nTap **send** (the paper-plane or arrow icon). In the message, add one short sentence telling Gemini what you'd like to know — don't just send the photo alone. A tiny bit of context makes the answer much more useful. Gemini reads the image and replies with a suggested name, a short description, and sometimes a few possibilities if it's not sure.\n💬 Example: \"What is this plant? It just appeared in my garden and I don't know if I should keep it.\"\n**If it looks different:** if Gemini just says \"I can't identify this\" or gives a vague answer, the photo was probably too blurry or too far away — go back to Step 2, get closer, and try again with a sharper shot.\n**You'll know it worked when** you see a name (or a short list of possible names) and a short description of the plant, bird or insect.\n\n## Step 4 — Ask whether it's native to your area\nOnce you have a name, send a follow-up question in the same chat. Gemini remembers the photo and the previous answer, so you don't need to re-upload anything. Ask plainly whether the species is native where you live, and what that means for your garden. Native plants usually support local wildlife better; introduced species can spread quickly or harm local ecosystems if they take over.\n💬 Example: \"Is this plant native to Australia? Should I keep it or pull it out?\"\n**You'll know it worked when** Gemini replies with a clear yes/no on native status and a short reason, for example \"originally from South Africa, listed as a weed in parts of NSW\".\n\n## Step 5 — Ask how to care for it, or what to do about it\nStay in the same chat and ask one more practical question. For plants, ask about sunlight, water and soil. For birds, ask what they like to eat and how to attract more. For insects, ask if they're helpful (pollinators, pest-eaters) or harmful, and what to do if there are lots of them. Keep it to one question per message — that way, if the answer is off, you can rephrase without confusion.\n💬 Example: \"How do I look after this plant? It's in a pot on a north-facing balcony in Brisbane.\"\n**You'll know it worked when** Gemini gives you concrete care tips — light, water, soil — and any warnings about toxicity or invasiveness.\n\n## Step 6 — Cross-check anything important\nThis last step matters. For anything you plan to act on — eating a plant, removing an invasive species, handling a possibly venomous spider, feeding a bird — verify Gemini's answer against a second source. Good free options include your local council's weed guide, a university botany page, or a dedicated ID app such as **iNaturalist** or **Merlin Bird ID**. Think of Gemini as a knowledgeable friend whose first guess is usually in the right area, but worth double-checking on the big decisions.\n**You'll know it worked when** a second source agrees with Gemini's identification — or gently corrects it (for instance, \"actually that's a related but different species, and the leaves are mildly toxic\").\n\n## Common mistakes\n- **Sending a blurry or distant photo.** Gemini guesses from the image, so a tiny dot of a bird on a fence usually gets a confident but wrong answer. Move closer, or crop the photo to the subject before sending.\n- **Asking five questions in one message.** Gemini can get tangled when questions stack up. One question per message keeps the answers clean and easy to rephrase if needed.\n- **Treating Gemini's answer as the final word on toxins or protected species.** Some plants look almost identical, and one might be edible while its cousin is poisonous. Always cross-check before touching, tasting or removing anything risky.\n\n## What this means for you\n- **In everyday life:** you can settle the \"what is this thing?\" question in under a minute, the same way you'd ask a friend — but from your pocket, anytime, anywhere you have signal.\n- **For your garden or outdoor space:** knowing what's native helps you choose plants that support local birds and insects, and spot weeds early before they take over a bed or hedge.\n- **If you're just getting started:** begin with one plant you already half-recognise, such as a rose, a lavender or a succulent. Asking Gemini to confirm something you know builds your confidence before you tackle the genuine unknowns.\n\n## Try it now\nStep outside, find one plant or insect you've been quietly wondering about, take one clear photo in good light, and send it to Gemini with the message \"What is this, and is it native to my area?\" — your first backyard identification in under two minutes.",
+  "original_title": "How to Identify Plants, Birds and Insects in Your Backyard with Gemini"
+}
