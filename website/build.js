@@ -2760,16 +2760,19 @@ Original content by ${SITE.name} — written and quality-checked by an autonomou
   // A régi (301-es) címek így SOSEM adnak 404-et, és a linkerő is átmegy.
   const retiredLangRules = RETIRED_LANGS.map(l => `/${l}/* /:splat 301`).join('\n') + '\n';
 
-  // WWW → FŐ DOMAIN 301 (2026-07-31, Google-megfelelőségi audit lelete):
-  // a https://www.aiworldhq.com HTTP 200-zal KISZOLGÁLTA ugyanazt a tartalmat
-  // átirányítás nélkül — vagyis minden oldalunk KÉT címen élt. A canonical
-  // ugyan a fő domainre mutat (a Google emiatt összevonja), de a GSC
-  // "Alternatív oldal megfelelő kanonikus címkével" tételeit részben pont ez
-  // termelte, és feltérképezési keretet is égetett. Ugyanaz a joker-minta,
-  // mint a pages.dev-nél, ami bizonyítottan működik.
-  const wwwRule = `https://www.aiworldhq.com/* ${SITE.url}/:splat 301\n`;
-
-  writeFileSync(join(OUT_DIR, '_redirects'), `${verifyRule}${renameRules}${retiredLangRules}${wwwRule}https://aiworldco.pages.dev/* ${SITE.url}/:splat 301\n`, 'utf-8');
+  // HOST-EGYESÍTÉS (www + pages.dev → fő domain): NEM ITT történik!
+  //
+  // 2026-07-31, KINTRŐL MÉRVE derült ki: a Cloudflare Pages az ABSZOLÚT CÍMES
+  // forrás-szabályt (https://www.… /* → …) NÉMÁN FIGYELMEN KÍVÜL HAGYJA.
+  // A régi "https://aiworldco.pages.dev/* → …" sorunk is halott volt a
+  // kezdetektől — a pages.dev végig 200-zal szolgált ki, csak senki nem mérte
+  // meg kintről. A szabály megléte nem bizonyíték; csak a mért 301 az.
+  //
+  // A MŰKÖDŐ út: functions/_middleware.js (a repó gyökerében) — minden nem
+  // fő-domaines kérést 301-gyel átküld. A halott sorokat kivettük, hogy ne
+  // keltsenek hamis biztonságérzetet. Az őrszem: core/live-guard.js kintről
+  // méri a www-t ÉS a pages.dev-et minden futásban.
+  writeFileSync(join(OUT_DIR, '_redirects'), `${verifyRule}${renameRules}${retiredLangRules}`, 'utf-8');
   console.log('✅ _redirects generálva (pages.dev → saját domain, 301)');
 
   // _headers — biztonsági fejlécek (CF Security Center javaslat, 2026-07-11):

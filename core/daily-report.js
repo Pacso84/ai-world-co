@@ -313,6 +313,15 @@ async function main() {
   } catch { /* könyv nélkül is megy */ }
   lines.push(``, `Minden megy magától. ✅`);
 
+  // A TELJES riport a CI-naplóba is (2026-07-31, user: "te is olvasd el
+  // mindig a telegramot, ne csak a rendszert ellenőrizd"). Eddig csak az
+  // "elküldve" sor látszott a naplóban — a fejlesztő-asszisztens a nyers
+  // állapotfájlokat nézte, nem azt, amit a user TÉNYLEGESEN kap. Mostantól
+  // a napló őrzi a szó szerinti üzenetet, így visszaolvasható.
+  console.log('── A MA KIKÜLDÖTT RIPORT ──────────────────────────');
+  console.log(lines.join('\n'));
+  console.log('───────────────────────────────────────────────────');
+
   await sendMessage(lines.join('\n'));
   try { writeFileSync(STATE_PATH, JSON.stringify({ last_sent: today() }, null, 2), 'utf-8'); } catch { /* nem kritikus */ }
   console.log('✅ Napi jelentés elküldve.');

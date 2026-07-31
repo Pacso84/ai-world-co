@@ -115,7 +115,12 @@ jobs:
           CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
-        timeout-minutes: 10
+        # 10 → 15 perc (2026-07-31): a 18:51-es futásban a lépés PONT a 10
+        # percnél halt el — a || true a lépés-timeout ellen NEM véd (a GitHub
+        # a timeoutot a shell-től függetlenül üti). 2 cikk × max 8 perces
+        # beragadás-védő hívás elméletben 16 perc is lehet; a 15 a reális
+        # csúcsot fedi, a maradékot a következő futás úgyis folytatja.
+        timeout-minutes: 15
         run: node agents/iro/upgrade-howtos.js --limit 2 || true
 
       # BORÍTÓKÉP-FELÚJÍTÁS (2026-07-30, user: "az útmutató képek is a

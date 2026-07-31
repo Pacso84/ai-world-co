@@ -239,8 +239,14 @@ function checkRedirects() {
   if (lines.length > 2100) {
     add('REDIRECT_LIMIT', `${lines.length} átirányítás > 2100 (Cloudflare-plafon) — a fájl VÉGE érvénytelen lehet!`);
   }
-  if (!lines.some(l => l.includes('pages.dev'))) {
-    add('NO_DOMAIN_MERGE', 'Hiányzik a pages.dev → saját domain 301 — duplikált tartalom a Google szemében!');
+  // HOST-EGYESÍTÉS (2026-07-31-től): NEM a _redirects-ben van! Kintről mérve
+  // kiderült, hogy a Cloudflare az abszolút címes forrás-szabályt némán
+  // eldobja — a régi pages.dev-sor halott volt a kezdetektől. A működő út a
+  // functions/_middleware.js; itt azt őrizzük, hogy LÉTEZIK és a fő domainre
+  // kanonizál. (Hogy élesben tényleg 301-et ad-e, azt a live-guard méri.)
+  const mw = join(ROOT, 'functions', '_middleware.js');
+  if (!existsSync(mw) || !readFileSync(mw, 'utf-8').includes("'aiworldhq.com'")) {
+    add('NO_DOMAIN_MERGE', 'Hiányzik/sérült a functions/_middleware.js — a www és a pages.dev duplán szolgálná ki az oldalt!');
   }
 }
 

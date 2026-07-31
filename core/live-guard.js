@@ -55,6 +55,11 @@ async function main() {
   const http = await probe(`http://aiworldhq.com/${bust()}`);
   if (http.status !== 301 && http.status !== 308) add('HTTP_NO_REDIRECT', `a http:// nem irányít át (HTTP ${http.status})`);
 
+  // A pages.dev "ál-domain" is tereljen (2026-07-31 óta a middleware dolga —
+  // a régi _redirects-szabályról kintről mérve derült ki, hogy SOSEM működött)
+  const pd = await probe(`https://aiworldco.pages.dev/${bust()}`);
+  if (pd.status === 200) add('PAGESDEV_DUPLICATE', 'a pages.dev 200-zal KISZOLGÁL átirányítás helyett — duplikált tartalom');
+
   // ── 2. A 404 LEGYEN VALÓDI 404 (a soft-404 indexelési méreg) ──────
   const nf = await probe(`${SITE}/article/nincs-ilyen-oldal-elo-orszem-${Date.now()}`);
   if (nf.status !== 404) add('SOFT_404', `nem létező oldal HTTP ${nf.status}-at ad 404 helyett`);
