@@ -218,7 +218,18 @@ jobs:
           CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
-        timeout-minutes: 30
+        # 30 → 35 PERC (2026-07-31). A 04:07-es futásban a fordító RENDESEN
+        # dolgozott (154 fordítás), tisztán ki is lépett a saját 27 perces
+        # keretén, kiírta az összegzést — és a lépés-korlát UGYANABBAN A
+        # MÁSODPERCBEN ütött. A tiszta kilépés versenyzett a külső korláttal.
+        #
+        # Miért csúszott túl: a 27 perc a fordítási MUNKA kerete, de utána még
+        # be kell fejeződnie a folyamatban lévő hívásnak (max 8 perces
+        # beragadás-védőidő), plusz az indulás. 27 + ráhagyás > 30.
+        #
+        # A 35 perc így a VALÓDI vészfék marad, a 27 perces belső keret pedig
+        # a rendes szabályozó — ez utóbbi az, ami menti a munkát és jelent.
+        timeout-minutes: 35
         # 2026-07-26: a repó PUBLIKUS lett → GitHub Actions INGYEN+KORLÁTLAN, ezért
         # a korábbi szűk plafonokat (limit 80 / 9 perc / 12 perc timeout) FELOLDOTTUK.
         # Azok a privát repó havi 2000 ingyen perce miatt spóroltak, és rohamnál
