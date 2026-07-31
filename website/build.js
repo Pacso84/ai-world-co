@@ -98,7 +98,24 @@ try {
 // TÖBBNYELVŰSÉG (i18n) — angol a forrás, a többit a fordító agent adja
 // ===================================================================
 const TRANS_DIR = join(__dirname, '..', 'content', 'translations');
-const SITE_LANGS = ['en', 'hu', 'es', 'de', 'fr'];   // en = forrás/gyökér
+// ===================================================================
+// NYELVEK (2026-07-31: német és francia KIVEZETVE)
+// ===================================================================
+// MÉRÉS 8 hét után: hu 290 · en 150 · es 20 · de 0 · fr 0 látogató.
+// A német és a francia együtt 1158 oldal volt — a honlap 40%-a — NULLA
+// látogatóért. Közben a Search Console szerint 1546 oldalunk "feltérképezve,
+// de nincs indexelve": vagyis a Google-nak túl sok, egymáshoz hasonló oldalt
+// adtunk. Kevesebb, de erősebb oldallal könnyebb bizalmat építeni.
+//
+// A spanyol MARAD: 20 látogató kevés, DE NEM NULLA — a Google egyáltalán
+// megmutat minket spanyolul. A német/franciánál nyolc hét alatt egyszer sem.
+//
+// NEM TÖRLÜNK: a /de/ és /fr/ címek 301-gyel az angol cikkre mennek (joker-
+// szabály a _redirects végén), tehát nulla 404. A meglévő fordítások a
+// lemezen MARADNAK — ez a döntés percek alatt visszafordítható: elég ide
+// visszaírni a két nyelvet.
+const SITE_LANGS = ['en', 'hu', 'es'];   // en = forrás/gyökér
+const RETIRED_LANGS = ['de', 'fr'];      // 301 az angol változatra
 const FB_URL = 'https://www.facebook.com/profile.php?id=61591788804540';   // FB-oldal (követés + JSON-LD sameAs)
 const FOLLOW_FB = { en: 'Follow us on Facebook', hu: 'Kövess minket a Facebookon', es: 'Síguenos en Facebook', de: 'Folge uns auf Facebook', fr: 'Suivez-nous sur Facebook' };
 const HTML_LANG = { en: 'en-AU', hu: 'hu', es: 'es', de: 'de', fr: 'fr' };
@@ -2719,7 +2736,15 @@ Original content by ${SITE.name} — written and quality-checked by an autonomou
   }
   const renameRules = redirectLines.length ? redirectLines.join('\n') + '\n' : '';
   if (RENAMED_SLUGS.size) console.log(`✅ ${RENAMED_SLUGS.size} átnevezett cikk 301-e (${redirectLines.length} szabály, 5 nyelv)`);
-  writeFileSync(join(OUT_DIR, '_redirects'), `${verifyRule}${renameRules}https://aiworldco.pages.dev/* ${SITE.url}/:splat 301\n`, 'utf-8');
+  // KIVEZETETT NYELVEK (2026-07-31): a /de/… és /fr/… címek az ANGOL cikkre
+  // mennek. Joker-szabállyal, tehát 1158 oldal helyett KÉT sor — ez fontos,
+  // mert a Cloudflare-korlát 2100, és a slug-történet már 2000-et elvisz.
+  // A ":splat" a csillag helyére illeszkedő részt teszi vissza, így
+  // /de/article/valami → /article/valami.
+  // A régi (301-es) címek így SOSEM adnak 404-et, és a linkerő is átmegy.
+  const retiredLangRules = RETIRED_LANGS.map(l => `/${l}/* /:splat 301`).join('\n') + '\n';
+
+  writeFileSync(join(OUT_DIR, '_redirects'), `${verifyRule}${renameRules}${retiredLangRules}https://aiworldco.pages.dev/* ${SITE.url}/:splat 301\n`, 'utf-8');
   console.log('✅ _redirects generálva (pages.dev → saját domain, 301)');
 
   // _headers — biztonsági fejlécek (CF Security Center javaslat, 2026-07-11):

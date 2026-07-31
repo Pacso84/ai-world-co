@@ -21,7 +21,7 @@ import { dirname, join } from 'path';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const OUT = join(__dirname, 'public');
-const LANGS = ['hu', 'es', 'de', 'fr'];
+const LANGS = ['hu', 'es'];   // 2026-07-31: de/fr kivezetve (0 látogató)
 
 // 1) Tiltott angol UI-frázisok nem-EN oldalon (kisbetűsítve hasonlítjuk).
 //    Szándékosan NEM szerepel: márkanevek, "AI", eszköznevek.

@@ -40,11 +40,15 @@ function loadFails() { try { return JSON.parse(readFileSync(FAILS_PATH, 'utf-8')
 function saveFails(f) { writeFileSync(FAILS_PATH, JSON.stringify(f, null, 2), 'utf-8'); }
 
 // Cél-nyelvek (kód → emberi név az LLM-promptnak). Az 'en' a forrás.
+// 2026-07-31: a NÉMET és a FRANCIA kivezetve. Nyolc hét alatt NULLA látogató
+// jött róluk, miközben együtt 1158 oldalt jelentettek — a honlap 40%-át —, és
+// terhelték a Google feltérképezési keretét (1546 oldalunk "feltérképezve, de
+// nincs indexelve"). A meglévő fordítások a lemezen MARADNAK, csak újat nem
+// gyártunk: a döntés visszafordítható, elég ide visszaírni a két nyelvet.
+// Megtakarítás: a fordítási költség fele, kb. 11 dollár havonta.
 export const LANGS = {
   hu: 'Hungarian',
-  es: 'Spanish',
-  de: 'German',
-  fr: 'French'
+  es: 'Spanish'
 };
 
 function parseArgs() {

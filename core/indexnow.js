@@ -24,7 +24,10 @@ import { dirname, join } from 'path';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
 const ARTICLES_DIR = join(ROOT, 'content', 'articles');
-const LANGS = ['', '/hu', '/es', '/de', '/fr'];   // '' = angol gyökér
+// 2026-07-31: a /de és /fr kivezetve (301 az angol cikkre). NE jelentsük be
+// őket a keresőknek — különben ÁTIRÁNYÍTÓ címeket hirdetnénk, ami pontosan az
+// a hiba, amit július 27-én javítottunk ki mindenhonnan.
+const LANGS = ['', '/hu', '/es'];   // '' = angol gyökér
 const FRESH_HOURS = 48;                            // a 8 órás cron mellé bő ráhagyás
 
 function slugify(text) {
