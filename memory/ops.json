@@ -1,86 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178528981067790",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-07-29T01:50:10.677Z",
-      "updated": "2026-07-29T01:54:49.610Z"
-    },
-    {
-      "id": "t17852900896121",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-29T01:54:49.612Z",
-      "updated": "2026-07-29T01:55:06.666Z"
-    },
-    {
-      "id": "t17852901066686",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-07-29T01:55:06.668Z",
-      "updated": "2026-07-29T01:55:37.943Z"
-    },
-    {
-      "id": "t17853744737659",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-07-30T01:21:13.766Z",
-      "updated": "2026-07-30T01:21:13.959Z"
-    },
-    {
-      "id": "t178537447396173",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-07-30T01:21:13.961Z",
-      "updated": "2026-07-30T01:21:55.649Z"
-    },
-    {
-      "id": "t178537451565046",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-07-30T01:21:55.650Z",
-      "updated": "2026-07-30T01:21:55.847Z"
-    },
-    {
-      "id": "t178537451584963",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-07-30T01:21:55.849Z",
-      "updated": "2026-07-30T01:26:19.415Z"
-    },
-    {
-      "id": "t178537477941628",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-30T01:26:19.416Z",
-      "updated": "2026-07-30T01:28:02.777Z"
-    },
-    {
-      "id": "t178537488277967",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-07-30T01:28:02.779Z",
-      "updated": "2026-07-30T01:28:15.568Z"
-    },
-    {
-      "id": "t178537489557055",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-30T01:28:15.570Z",
-      "updated": "2026-07-30T01:28:29.204Z"
-    },
-    {
       "id": "t178537490920719",
       "title": "Run pairing",
       "status": "done",
@@ -479,33 +399,89 @@
       "agent": "publisher",
       "created": "2026-07-31T04:23:58.079Z",
       "updated": "2026-07-31T04:24:28.139Z"
+    },
+    {
+      "id": "t178549368144896",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-07-31T10:28:01.448Z",
+      "updated": "2026-07-31T10:28:01.630Z"
+    },
+    {
+      "id": "t17854936816311",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-07-31T10:28:01.631Z",
+      "updated": "2026-07-31T10:28:29.334Z"
+    },
+    {
+      "id": "t178549370933688",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-07-31T10:28:29.336Z",
+      "updated": "2026-07-31T10:28:29.551Z"
+    },
+    {
+      "id": "t178549370955475",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-07-31T10:28:29.554Z",
+      "updated": "2026-07-31T10:29:06.720Z"
+    },
+    {
+      "id": "t178549374672230",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-31T10:29:06.722Z",
+      "updated": "2026-07-31T10:29:23.418Z"
+    },
+    {
+      "id": "t178549376342139",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-07-31T10:29:23.421Z",
+      "updated": "2026-07-31T10:29:31.312Z"
+    },
+    {
+      "id": "t178549377134584",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-31T10:29:31.345Z",
+      "updated": "2026-07-31T10:29:44.086Z"
+    },
+    {
+      "id": "t17854937840883",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-07-31T10:29:44.088Z",
+      "updated": "2026-07-31T10:29:46.736Z"
+    },
+    {
+      "id": "t178549378673812",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-31T10:29:46.738Z",
+      "updated": "2026-07-31T10:29:55.171Z"
+    },
+    {
+      "id": "t178549379517246",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-07-31T10:29:55.172Z",
+      "updated": "2026-07-31T10:30:17.005Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178454420660693",
-      "level": "warn",
-      "text": "📨 ellenorzo → iro: Hiányos / kell még adat: \"Introducing Grok on Amazon Bedrock\" — egészítsd ki: Missing conclusion/wrap-up; Article ends m",
-      "agent": "ellenorzo",
-      "at": "2026-07-20T10:43:26.606Z",
-      "loud": false
-    },
-    {
-      "id": "n178454431208471",
-      "level": "warn",
-      "text": "📨 guide → ceo: Kell még adat: \"Create Your Own Custom GPT in ChatGPT (No Coding)\" — az Ellenőrző tényt/forrást kér, amit nem találhatok",
-      "agent": "guide",
-      "at": "2026-07-20T10:45:12.084Z",
-      "loud": false
-    },
-    {
-      "id": "n178454447879016",
-      "level": "warn",
-      "text": "📨 guide → ceo: Kell még adat: \"Categorize customer feedback from online forms with Cohere\" — az Ellenőrző tényt/forrást kér, amit nem t",
-      "agent": "guide",
-      "at": "2026-07-20T10:47:58.790Z",
-      "loud": false
-    },
     {
       "id": "n178454457036391",
       "level": "info",
@@ -1281,27 +1257,33 @@
       "agent": "ceo",
       "at": "2026-07-31T04:24:28.165Z",
       "loud": false
+    },
+    {
+      "id": "n178549378669635",
+      "level": "info",
+      "text": "SEO: 1 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-07-31T10:29:46.696Z",
+      "loud": false
+    },
+    {
+      "id": "n178549380473970",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). Great variety across work, study, and personal writing tasks — covers 5 different AI tools with a nice mix of practical how-tos and smart cautions. Ready to go.\n\nOne quick note: article 7 mentions \"Co",
+      "agent": "publisher",
+      "at": "2026-07-31T10:30:04.739Z",
+      "loud": false
+    },
+    {
+      "id": "n178549381703976",
+      "level": "success",
+      "text": "1 hír + 0 útmutató publikálva (költség: $0.0107).",
+      "agent": "ceo",
+      "at": "2026-07-31T10:30:17.039Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178488881802629",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
-      "ref": null,
-      "at": "2026-07-24T10:26:58.026Z"
-    },
-    {
-      "id": "m178491358061618",
-      "from": "ceo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Főnöki újraindítás: \"Random  styles in draft mode\" — rewrite-explainer",
-      "ref": "2026-07-23T01-48-48-121Z_midjourney-updates_Random__styles_in_draft_mode.json",
-      "at": "2026-07-24T17:19:40.616Z"
-    },
     {
       "id": "m178491358144248",
       "from": "ceo",
@@ -2637,6 +2619,24 @@
       "text": "6 közösségi poszt megírva (Facebook). content/social/feed.md",
       "ref": null,
       "at": "2026-07-31T05:00:55.663Z"
+    },
+    {
+      "id": "m178549379516133",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-07-31T10:29:55.161Z"
+    },
+    {
+      "id": "m178549422374664",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"The main AI assistants explained simply (and what \" — Le Chat (from Mistral AI) — Mistral AI discontinued Le Chat in early 2025 and pivoted to enterprise/API services",
+      "ref": "ARTICLE_GUIDE_ai-assistants-overview.json",
+      "at": "2026-07-31T10:37:03.747Z"
     }
   ]
 }
