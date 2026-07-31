@@ -774,7 +774,7 @@ function localizeArticle(a, lang) {
     title: meta.title || a.title,
     subtitle: meta.subtitle || a.subtitle,
     seoDescription: meta.subtitle || a.seoDescription,
-    bodyHtml: wrapTables(wrapInShort(wrapImpactSection(marked.parse(body)))),
+    bodyHtml: wrapTables(wrapInShort(wrapImpactSection(stripLeadH1(marked.parse(body))))),
     bodyMd: body
   };
 }
@@ -875,8 +875,24 @@ function parseFrontmatter(markdown) {
 // kimaradna a kiemelés. Ugyanez a hiba élt a HowTo-lépéseknél is, amíg a
 // mintát nem tettük többnyelvűvé — ne csináljuk meg újra.
 function wrapInShort(html) {
-  return html.replace(/(<\/h1>\s*)<blockquote>([\s\S]*?)<\/blockquote>/,
+  // A doboz vagy a (törzsbeli) h1 után áll, vagy — a dupla-H1 javítás óta,
+  // amikor a törzs h1-ét leszedjük — a törzs LEGELEJÉN. Mindkettőt kezeljük.
+  const afterH1 = html.replace(/(<\/h1>\s*)<blockquote>([\s\S]*?)<\/blockquote>/,
     (_m, head, inner) => `${head}<aside class="lede">${inner}</aside>`);
+  if (afterH1 !== html) return afterH1;
+  return html.replace(/^(\s*)<blockquote>([\s\S]*?)<\/blockquote>/,
+    (_m, lead, inner) => `${lead}<aside class="lede">${inner}</aside>`);
+}
+
+// DUPLA H1 (2026-07-31, Google-megfelelőségi audit lelete): a cikk címe
+// KÉTSZER volt H1-ként minden oldalon — egyszer a sablon fejlécében, egyszer
+// a markdown-törzsből ("# Cím") renderelve. 150 mintából 55-ön látszott
+// (a többinél a cím írásjelei miatt nem egyezett a minta, de ott is dupla).
+// A Google nem büntet több H1-ért, de az AZONOS szövegű dupla cím zavaros
+// jelzés + a lapon vizuálisan is ismétlődött. A sablon H1-e marad (az a
+// stílusozott), a TÖRZS elejéről vesszük le.
+function stripLeadH1(html) {
+  return html.replace(/^\s*<h1[^>]*>[\s\S]*?<\/h1>\s*/, '');
 }
 
 function wrapImpactSection(html) {
@@ -960,7 +976,7 @@ function loadArticles() {
         tags: meta.tags || [],
         seoDescription: data._meta?.seo?.description || meta.subtitle || '',
         seoKeywords: (data._meta?.seo?.keywords || meta.tags || []).join(', '),
-        bodyHtml: wrapTables(wrapInShort(wrapImpactSection(marked.parse(body)))),
+        bodyHtml: wrapTables(wrapInShort(wrapImpactSection(stripLeadH1(marked.parse(body))))),
         bodyMd: body,
         isGuide: (data._meta?.type === 'guide') || meta.category === 'guide',
         // Frontmatter az elsődleges (az író VÉGSŐ eszköz-választása), a _meta
@@ -2744,7 +2760,16 @@ Original content by ${SITE.name} — written and quality-checked by an autonomou
   // A régi (301-es) címek így SOSEM adnak 404-et, és a linkerő is átmegy.
   const retiredLangRules = RETIRED_LANGS.map(l => `/${l}/* /:splat 301`).join('\n') + '\n';
 
-  writeFileSync(join(OUT_DIR, '_redirects'), `${verifyRule}${renameRules}${retiredLangRules}https://aiworldco.pages.dev/* ${SITE.url}/:splat 301\n`, 'utf-8');
+  // WWW → FŐ DOMAIN 301 (2026-07-31, Google-megfelelőségi audit lelete):
+  // a https://www.aiworldhq.com HTTP 200-zal KISZOLGÁLTA ugyanazt a tartalmat
+  // átirányítás nélkül — vagyis minden oldalunk KÉT címen élt. A canonical
+  // ugyan a fő domainre mutat (a Google emiatt összevonja), de a GSC
+  // "Alternatív oldal megfelelő kanonikus címkével" tételeit részben pont ez
+  // termelte, és feltérképezési keretet is égetett. Ugyanaz a joker-minta,
+  // mint a pages.dev-nél, ami bizonyítottan működik.
+  const wwwRule = `https://www.aiworldhq.com/* ${SITE.url}/:splat 301\n`;
+
+  writeFileSync(join(OUT_DIR, '_redirects'), `${verifyRule}${renameRules}${retiredLangRules}${wwwRule}https://aiworldco.pages.dev/* ${SITE.url}/:splat 301\n`, 'utf-8');
   console.log('✅ _redirects generálva (pages.dev → saját domain, 301)');
 
   // _headers — biztonsági fejlécek (CF Security Center javaslat, 2026-07-11):

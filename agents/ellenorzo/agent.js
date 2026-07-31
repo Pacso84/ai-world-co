@@ -156,6 +156,16 @@ function runAutoCheck(articleMarkdown, type) {
     issues.push(`MISSING_SECTION: SABLON-CÍMKE a szövegben ("${leak[0].trim().slice(0, 30)}") — ez a prompt utasítása, nem az olvasónak szól. Írd sima mondatként.`);
   }
 
+  // HELYI/PRIVÁT CÍM LINKKÉNT (2026-07-31, Google-audit lelete): egy megjelent
+  // útmutatóban kattintható http://localhost:5000 link volt — az író egy
+  // README-példamondatot írt, és a renderelő linkké tette. Az olvasónál az
+  // ilyen link a SAJÁT gépére mutat (semmit nem nyit meg), a truth-gate
+  // link-vadásza pedig nem tudja tesztelni. Példaként EMLÍTENI szabad, de
+  // kódformázásban (backtick), nem élő linkként. Puha jelzés az AI-bírónak.
+  if (/\]\(https?:\/\/(localhost|127\.0\.0\.1|192\.168\.|10\.)[^)]*\)|(?<!\`)https?:\/\/(localhost|127\.0\.0\.1)[:\/][^\s\`]*(?!\`)/.test(articleMarkdown)) {
+    issues.push('LOCAL_URL: helyi/privát cím (localhost, 127.0.0.1…) él linkként a szövegben — példaként backtick-ek közé való, élő linkként a semmibe mutat.');
+  }
+
   // Kötelező frontmatter mezők
   const frontmatterMatch = articleMarkdown.match(/^---\n([\s\S]*?)\n---/);
   if (frontmatterMatch) {
