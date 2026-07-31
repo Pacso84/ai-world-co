@@ -1,0 +1,39 @@
+{
+  "_meta": {
+    "written_at": "2026-07-31T17:20:11.201Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.0086124,
+    "original_draft": "2026-07-31T17-18-49-790Z_google-workspace_Prevent_accidental_disclosures_with_new_Reply_All_.json",
+    "source_id": "google-workspace",
+    "source_name": "Google Workspace Updates (hivatalos)",
+    "source_link": "http://workspaceupdates.googleblog.com/2026/07/prevent-accidental-disclosures-with-new-Reply-All-BCC-warnings-in-Gmail.html",
+    "status": "rejected",
+    "rejected_at": "2026-07-31T17:20:27.904Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 741
+    },
+    "ai_review": {
+      "overall_score": 7,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [
+        "Article doesn't mention the new Gmail BCC Reply All warnings from the source — misses the news hook entirely"
+      ],
+      "verdict": "Solid explainer with good structure, clear explanations of email terms, friendly tone, and useful actionable advice. Fails to reference the actual Google announcement it was sourced from, making it feel like generic advice rather than timely news. Consider adding a line about the new Gmail warning feature to anchor it to the source.",
+      "_aiCost": 0.001602,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Solid explainer with good structure, clear explanations of email terms, friendly tone, and useful actionable advice. Fails to reference the actual Google announcement it was sourced from, making it feel like generic advice rather than timely news. Consider adding a line about the new Gmail warning feature to anchor it to the source.",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-07-31T17-18-49-790Z_google-workspace_Prevent_accidental_disclosures_with_new_Reply_All_.json",
+    "requeued_unchanged": false
+  },
+  "article_markdown": "---\ntitle: \"How Reply All Can Accidentally Reveal You Were BCC'd — And What To Do Instead\"\nsubtitle: \"BCC is meant to be invisible. One careless click on Reply All can undo that in a heartbeat.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"gmail\", \"email-privacy\", \"work-tools\", \"email-etiquette\"]\n---\n\n# How Reply All Can Accidentally Reveal You Were BCC'd — And What To Do Instead\n\n> **In short:** BCC lets someone read an email without others knowing — but hitting Reply All on that thread can accidentally expose you. The fix isn't a button; it's a one-second pause before you send.\n\nSomeone quietly copies you onto a thread about a sensitive workplace matter. You skim the messages, then hit Reply All to ask a quick question. Suddenly your name lands in the inbox of every person on the thread — including people who never knew you were watching. The sender thought they were giving you a private look. You've just told the whole room.\n\nIt's the kind of slip that happens in a flash, and once it's sent, it's sent.\n\n## What To, CC, BCC and Reply All actually mean\n\nIf these terms ever felt a bit muddled, here's the plain version.\n\n- **To** — the main people the email is addressed to. Everyone sees their name.\n- **CC** (carbon copy) — extra people who should see the email. Everyone knows they're on it.\n- **BCC** (blind carbon copy) — extra people who should see the email, but **nobody else sees their names**. It's the quiet seat at the table.\n- **Reply All** — sends your reply to everyone in the To, CC and BCC fields, not just the sender.\n\nThe danger is the last two together. If someone BCC's you onto a thread and you reply to everyone, you blow your own cover. You reveal not only that you were on the thread, but also that someone wanted you there secretly.\n\n## Why this slips past most people\n\nMost email apps don't warn you. The Reply All button sits right next to Reply, easy to mash, especially on a phone. Your eye sees the thread, your brain fills in \"reply to the sender\", and your thumb lands a centimetre to the right. The message arrives in dozens of inboxes before you've finished your coffee.\n\nIt isn't just an office thing. School group projects, volunteer committees, family updates — anywhere you've been quietly added to a thread, the same risk is there.\n\n## The habit that protects everyone\n\nThere's no magic button that does the thinking for you. The protection is a one-second pause, and three small habits that make the pause automatic.\n\n- **Before you tap Reply, ask: was I added in CC or BCC?** If BCC, your answer goes to the sender only — Reply, not Reply All.\n- **Treat Reply All as the exception, not the default.** Most replies genuinely only need to go to one person.\n- **If you're the one BCC'ing people**, think about whether the message is appropriate for them to see at all. Email is rarely the right tool for genuinely private things — a quick chat in person is usually safer.\n\n## What this means for you\n\n- **If you use email for personal stuff**: get into the habit of hitting Reply first, then adding people manually only if you really need to. The \"To\" field starts with just the sender — that's usually enough.\n- **If you work in a team or office**: a quick five-minute team reminder about Reply All etiquette goes a long way. Most embarrassing email moments in workplaces trace back to exactly this slip.\n- **If you're the one sending sensitive threads**: think hard before you BCC someone. Ask yourself whether they'd actually want to be on the thread if everyone knew — and whether they can be trusted with Reply All discipline. If not, pick up the phone instead.\n- **If you want a broader email tidy-up**: spend ten minutes this week unsubscribing from newsletters you never read. The unsubscribe link sits at the top of every marketing email.\n\n## Wrap-up\n\nBCC is a useful tool, but it only works if everyone on the thread respects the quietness of it. There's no clever app setting that will think for you — just a small pause, a habit, and the right reflex when your thumb is hovering over Reply All. Two seconds of caution beats an awkward apology later.",
+  "original_title": "Prevent accidental disclosures with new Reply All BCC warnings in Gmail"
+}
