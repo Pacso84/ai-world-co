@@ -1,0 +1,66 @@
+{
+  "_meta": {
+    "written_at": "2026-07-31T19:03:03.352Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m2.7",
+    "writer_cost_usd": 0.0071472,
+    "original_draft": "2026-07-31T17-18-49-790Z_google-workspace_Prevent_accidental_disclosures_with_new_Reply_All_.json",
+    "source_id": "google-workspace",
+    "source_name": "Google Workspace Updates (hivatalos)",
+    "source_link": "http://workspaceupdates.googleblog.com/2026/07/prevent-accidental-disclosures-with-new-Reply-All-BCC-warnings-in-Gmail.html",
+    "status": "published",
+    "rejected_at": "2026-07-31T19:02:02.694Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 990
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured explainer that covers all required elements — hook, term explanations, three audience segments in the impact section, and a practical wrap-up. Factual claims align with the Gmail feature described in the source. Australian English is consistent. Friendly, non-judgmental tone throughout. Minor note: the article title is slightly dramatic but acceptable for engagement.",
+      "_aiCost": 0.0016164,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Hitelesség-kapu blokkolta: Article describes a specific 'new Reply All warning for BCC'd threads' as a current Gmail feature. I am not reasonably sure this specific feature (a Reply All warning triggered specifically when you w",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-07-31T17-18-49-790Z_google-workspace_Prevent_accidental_disclosures_with_new_Reply_All_.json",
+    "requeued_unchanged": false,
+    "ceo_rounds": 1,
+    "ceo_hint": "CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as an evergreen etiquette/habits piece about the risks of replying-all when you were BCC'd. Do not claim a specific new Gmail BCC-detection warning exists; instead, frame Gmail's existing generic Reply All warnings (when many recipients are present) as a partial safety net, and focus on user habits and manual checks. HONESTY RULE: name the REAL products/places/organisations from the source; NEVER invent generic UI steps (\"most platforms\", fictional menu names). If you add a \"try it yourself\" section, use typed example prompts only (2026-07-14 reader complaint lesson).",
+    "published_at": "2026-07-31T19:03:22.813Z",
+    "slug": "why-hitting-reply-all-when-you-were-bcc-d-is-so-awkward",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-07-31T19:03:26.608Z",
+    "guide_worthy": false,
+    "pairing_reason": "Article describes no new BCC-specific feature — Gmail only has generic Reply All warnings for large recipient lists, not BCC detection",
+    "image_v": 2,
+    "image_at": "2026-07-31T19:03:30.697Z",
+    "seo": {
+      "meta_description": "Discover why replying all after being BCC'd exposes you and the sender — and the simple habit that stops this common email mistake.",
+      "keywords": [
+        "reply all when BCC'd",
+        "what is BCC email",
+        "accidentally reply all email",
+        "email BCC mistake",
+        "how to avoid reply all",
+        "workplace email etiquette",
+        "BCC vs CC email"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add a concrete example showing the exact moment this happens (e.g., a manager BCC's an employee on a sensitive thread)",
+        "Include a brief screenshot or description of Gmail's Reply All warning feature",
+        "Mention other email clients (Outlook, Apple Mail) and whether they have similar protections"
+      ],
+      "optimised_at": "2026-07-31T19:03:33.533Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Why Hitting Reply All When You Were BCC'd Is So Awkward\"\nsubtitle: \"The hidden email mistake that exposes you and your sender — and the simple habit that stops it happening.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"gmail\", \"email-privacy\", \"work-tools\", \"email-etiquette\"]\n---\n\n# Why Hitting Reply All When You Were BCC'd Is So Awkward\n\n> **In short:** Gmail has generic Reply All warnings that appear when you reply to a thread with many recipients — they offer some protection, but they don't specifically flag whether you were BCC'd. The real safeguard is a quick habit: check the recipient list before you tap Reply All.\n\nYou got quietly copied on a workplace thread. You're reading along, then tap Reply All to ask one quick question. Suddenly your name lands in dozens of inboxes — including in front of people who never knew you were watching. The sender thought they were giving you a private look. You've just told the whole room.\n\nIt's the kind of slip that happens in a flash, and once it's sent, it's sent.\n\n## To, CC, BCC and Reply All — what they actually mean\n\nIf these terms ever felt a bit muddled, here's the plain version.\n\n- **To** — the main people the email is addressed to. Everyone sees their name.\n- **CC** (carbon copy) — extra people who should see the email. Everyone knows they're on it.\n- **BCC** (blind carbon copy) — extra people who should see the email, but **nobody else sees their names**. It's the quiet seat at the table.\n- **Reply All** — sends your reply to everyone in the To, CC and BCC fields, not just the sender.\n\nThe danger is the last two together. If someone BCC'd you onto a thread and you reply to everyone, you blow your own cover — and you reveal that someone wanted you there secretly too.\n\n## Does Gmail warn you?\n\nGmail has had Reply All warnings for some time. If you reply to a thread with a large number of recipients — say, 10 or more — Gmail may pause and ask whether you really meant to reply to everyone. That's a useful nudge, and it's been around.\n\nWhat Gmail does *not* specifically tell you, in that warning, is whether you were added via BCC. The system isn't designed to flag that distinction. So the warning will fire if there are lots of people on the thread, but it won't specifically say \"heads up, you were quietly added here.\"\n\nThat's a meaningful gap. The BCC recipient list is hidden by design — and the Reply All button doesn't distinguish between a thread where you were openly CC'd and one where you were smuggled in quietly.\n\n## The habit that protects you\n\nThere is no magic button that does the thinking for you. The real protection is a one-second pause before you tap Reply All.\n\nBefore you reply, ask yourself two things:\n\n**1. How was I added to this thread?** Were you in the To field, the CC field, or nowhere visible at all? If your name doesn't appear anywhere in the recipient list, you were likely added via BCC — which means replying to all will expose you.\n\n**2. Does everyone here need to see my reply?** Most replies genuinely only need to go to one person — usually the sender. If your question is for one person, Reply is almost always the right choice.\n\nHere's a simple check you can make before replying to any thread you're unsure about: look at who received the original message. If you can see everyone's names and you were listed among them, Reply All is usually fine. If the recipient list is blank or partial — and you're somehow still reading the thread — that's the BCC signal.\n\n> 💬 **Try this:** Next time you're about to hit Reply All on a work thread, glance at the top of the email first. Ask: \"Was my name visible when this came in?\" If no, Reply only — not Reply All.\n\n## Why this matters more than a warning\n\nGmail's warning is genuinely helpful when it's there. But warnings only work if you read them — and they don't cover every situation. Workplaces running Outlook, Apple Mail, or older email clients won't give you any warning at all. Even in Gmail, a busy thumb can dismiss a warning without thinking.\n\nThe deeper fix is the habit: a two-second glance at the recipient list before you reply.\n\n## What this means for you\n\n- **If you use Gmail for everyday email**: the existing Reply All warning will appear when a thread has many recipients — take it seriously when it does, but don't rely on it alone. The real check is manual: look at the original email's recipient list before you reply.\n- **If you're in a workplace or team**: a quick five-minute reminder about BCC and Reply All etiquette goes a long way. Most embarrassing email moments trace back to exactly this slip. If you're in a management role, mentioning it once in a team meeting or a quick Slack message can save everyone some pain.\n- **If you're the one sending sensitive threads**: think carefully before you BCC someone. Ask yourself whether they'd actually want to be on the thread if everyone knew — and whether they can be trusted to use Reply only. If you're not sure, a quick phone call or in-person chat is usually the safer call.\n\n## Wrap-up\n\nBCC is a useful tool, but it only works if everyone on the thread respects the quietness of it. Gmail's existing Reply All warnings offer a partial safety net — but they're not a guarantee. The real protection is a small pause and a simple habit: check the recipient list before you reply, and choose Reply only when you were added invisibly. Two seconds of caution beats an awkward apology later.",
+  "original_title": "Prevent accidental disclosures with new Reply All BCC warnings in Gmail"
+}
