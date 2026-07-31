@@ -382,6 +382,14 @@
       "reasons": [
         "The article claims Gmail has rolled out a warning when hitting Reply All on a thread where you were BCC'd, but no such feature is documented in any official Google release notes or Workspace updates. This is a fabricated product feature attributed to Gmail."
       ]
+    },
+    {
+      "at": "2026-07-31T18:41:40.795Z",
+      "file": "WRITER_2026-07-31T17-18-49-790Z_google-workspace_Prevent_accidental_disclosures_with_new_Reply_All_.json",
+      "action": "block",
+      "reasons": [
+        "Article describes a specific 'new Reply All warning for BCC'd threads' as a current Gmail feature. I am not reasonably sure this specific feature (a Reply All warning triggered specifically when you were BCC'd) exists as described in Gmail. Gmail has had generic Reply All warnings (e.g., when replying to large recipient lists), but the claim of a specific BCC-detection warning being rolled out is presented as fact without sourcing and may be fabricated or inaccurate."
+      ]
     }
   ]
 }

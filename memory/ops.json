@@ -1,102 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t17854062787939",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-07-30T10:11:18.793Z",
-      "updated": "2026-07-30T10:11:18.935Z"
-    },
-    {
-      "id": "t178540627893684",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-07-30T10:11:18.936Z",
-      "updated": "2026-07-30T10:11:52.759Z"
-    },
-    {
-      "id": "t178540631276021",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-07-30T10:11:52.760Z",
-      "updated": "2026-07-30T10:11:52.900Z"
-    },
-    {
-      "id": "t17854063129024",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-07-30T10:11:52.902Z",
-      "updated": "2026-07-30T10:11:53.030Z"
-    },
-    {
-      "id": "t178540631303154",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-30T10:11:53.031Z",
-      "updated": "2026-07-30T10:11:53.161Z"
-    },
-    {
-      "id": "t178540631316460",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-07-30T10:11:53.164Z",
-      "updated": "2026-07-30T10:12:25.487Z"
-    },
-    {
-      "id": "t178540634548835",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-30T10:12:25.488Z",
-      "updated": "2026-07-30T10:12:53.140Z"
-    },
-    {
-      "id": "t17854063731420",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-07-30T10:12:53.142Z",
-      "updated": "2026-07-30T10:12:53.298Z"
-    },
-    {
-      "id": "t178540637332117",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-30T10:12:53.321Z",
-      "updated": "2026-07-30T10:13:05.991Z"
-    },
-    {
-      "id": "t178540638599356",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-07-30T10:13:05.993Z",
-      "updated": "2026-07-30T10:13:48.142Z"
-    },
-    {
-      "id": "t178540642814357",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-30T10:13:48.143Z",
-      "updated": "2026-07-30T10:14:07.758Z"
-    },
-    {
-      "id": "t178540644776089",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-07-30T10:14:07.760Z",
-      "updated": "2026-07-30T10:14:37.973Z"
-    },
-    {
       "id": "t178543161430092",
       "title": "Run ceo",
       "status": "done",
@@ -479,25 +383,105 @@
       "agent": "publisher",
       "created": "2026-07-31T17:20:40.860Z",
       "updated": "2026-07-31T17:21:05.412Z"
+    },
+    {
+      "id": "t178552308149965",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-07-31T18:38:01.499Z",
+      "updated": "2026-07-31T18:38:01.683Z"
+    },
+    {
+      "id": "t178552308168585",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-07-31T18:38:01.685Z",
+      "updated": "2026-07-31T18:38:25.257Z"
+    },
+    {
+      "id": "t178552310525931",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-07-31T18:38:25.259Z",
+      "updated": "2026-07-31T18:38:25.459Z"
+    },
+    {
+      "id": "t178552310546185",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-07-31T18:38:25.461Z",
+      "updated": "2026-07-31T18:38:25.638Z"
+    },
+    {
+      "id": "t178552310563918",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-31T18:38:25.639Z",
+      "updated": "2026-07-31T18:38:25.816Z"
+    },
+    {
+      "id": "t178552310581894",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-07-31T18:38:25.819Z",
+      "updated": "2026-07-31T18:41:24.751Z"
+    },
+    {
+      "id": "t178552328475261",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-07-31T18:41:24.752Z",
+      "updated": "2026-07-31T18:41:40.808Z"
+    },
+    {
+      "id": "t178552330081130",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-07-31T18:41:40.811Z",
+      "updated": "2026-07-31T18:41:41.018Z"
+    },
+    {
+      "id": "t178552330104917",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-31T18:41:41.049Z",
+      "updated": "2026-07-31T18:41:41.273Z"
+    },
+    {
+      "id": "t17855233012748",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-07-31T18:41:41.275Z",
+      "updated": "2026-07-31T18:41:41.489Z"
+    },
+    {
+      "id": "t178552330149132",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-07-31T18:41:41.491Z",
+      "updated": "2026-07-31T18:41:58.801Z"
+    },
+    {
+      "id": "t178552331880327",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-07-31T18:41:58.803Z",
+      "updated": "2026-07-31T18:42:08.588Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178454525260615",
-      "level": "success",
-      "text": "1 hír + 5 útmutató publikálva (költség: $0.0570).",
-      "agent": "ceo",
-      "at": "2026-07-20T11:00:52.606Z",
-      "loud": false
-    },
-    {
-      "id": "n178456899730563",
-      "level": "info",
-      "text": "🧭 Forráskutató: 4 ÚJ megbízható forrás-javaslat (küszöb 70).\n• [100] Deep Art Effects Blog (hivatalos)\n• [94] D-ID Blog (hivatalos)\n• [94] Université de Montréal - MILA Blog (hivatalos)\n• [70] VinAI Research Blog (hivatalos)\nJóváhagyod valamelyiket?",
-      "agent": "source-scout",
-      "at": "2026-07-20T17:36:37.305Z",
-      "loud": false
-    },
     {
       "id": "n178456917971845",
       "level": "warn",
@@ -1281,45 +1265,25 @@
       "agent": "ceo",
       "at": "2026-07-31T17:21:05.441Z",
       "loud": false
+    },
+    {
+      "id": "n178552332136424",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The line-up looks solid — you've got a nice mix of practical uses (study, work emails, pet-sitting agreements) and helpful guidance (privacy, what AI is/isn't good at), plus some lovely emotional supp",
+      "agent": "publisher",
+      "at": "2026-07-31T18:42:01.364Z",
+      "loud": false
+    },
+    {
+      "id": "n178552332861980",
+      "level": "info",
+      "text": "Pipeline lefutott — ma nem volt publikálható új tartalom.",
+      "agent": "ceo",
+      "at": "2026-07-31T18:42:08.619Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178491413660925",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Relax mode for V8 Alpha\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Verify the actual UI and functionality of Midjourney's settings panel and web app, and rephrase the article to focus on the benefits and use cases of Relax mode, rather than providing potentially incorrect step-",
-      "ref": "2026-07-23T01-48-48-122Z_midjourney-updates_Relax_mode_for_V8_Alpha.json",
-      "at": "2026-07-24T17:28:56.609Z"
-    },
-    {
-      "id": "m178491416942874",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"V8.1 Updates\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Provide more concrete examples of Midjourney's capabilities and use cases, such as generating images for social media, e-commerce, or personal projects HONESTY RULE: name the REAL products/places/organisations from the sou",
-      "ref": "2026-07-23T01-48-48-122Z_midjourney-updates_V8_1_Updates.json",
-      "at": "2026-07-24T17:29:29.428Z"
-    },
-    {
-      "id": "m178491446777629",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Web Updates\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Provide concrete examples of AI image tools that offer voice mode and saved references, such as Google's AI Image Generation or Microsoft's Azure Cognitive Services, and include sources to support claims about modern tools ",
-      "ref": "2026-07-23T01-48-48-122Z_midjourney-updates_Web_Updates.json",
-      "at": "2026-07-24T17:34:27.776Z"
-    },
-    {
-      "id": "m178491447782721",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Google Meet now organizes your meeting notes, transcripts, and recordings in your Google Drive\" (?/10)",
-      "ref": "2026-07-23T01-48-34-084Z_google-workspace_Google_Meet_now_organizes_your_meeting_notes__tran.json",
-      "at": "2026-07-24T17:34:37.827Z"
-    },
     {
       "id": "m178491447789214",
       "from": "ellenorzo",
@@ -2637,6 +2601,42 @@
       "text": "6 közösségi poszt megírva (Facebook). content/social/feed.md",
       "ref": null,
       "at": "2026-07-31T17:58:29.349Z"
+    },
+    {
+      "id": "m178552328474289",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Prevent accidental disclosures with new Reply All BCC warnings in Gmail\" — javítva: Article doesn't mention the new Gmail BCC Reply All warnings from the source — misses the news hook entirely; Reviewer verdict: Solid explainer with good structure, clear explanations of email terms, friendly tone, and useful actionable advice. Fails to reference the actual Google announcement it was ",
+      "ref": "2026-07-31T17-18-49-790Z_google-workspace_Prevent_accidental_disclosures_with_new_Reply_All_.json",
+      "at": "2026-07-31T18:41:24.742Z"
+    },
+    {
+      "id": "m17855233007933",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Prevent accidental disclosures with new Reply All BCC warnings in Gmail\" — mi a baj: Article describes a specific 'new Reply All warning for BCC'd threads' as a current Gmail feature. I am not reasonably sure this specific feature (a Reply All warning triggered specifically when you were BCC'd) exists as described in Gmail. Gmail has had generic Reply All warnings (e.g., whe",
+      "ref": "2026-07-31T17-18-49-790Z_google-workspace_Prevent_accidental_disclosures_with_new_Reply_All_.json",
+      "at": "2026-07-31T18:41:40.793Z"
+    },
+    {
+      "id": "m178552331879230",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-07-31T18:41:58.792Z"
+    },
+    {
+      "id": "m17855236346262",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"How to use AI to write quick, polite emails and re\" — under two minutes (specific time claim - too precise, varies by user)",
+      "ref": "ARTICLE_GUIDE_ai-email-replies.json",
+      "at": "2026-07-31T18:47:14.626Z"
     }
   ]
 }
