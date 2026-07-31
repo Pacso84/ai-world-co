@@ -1,6 +1,69 @@
 # AI World Co. — közösségi posztok
 
-*Generálva: 2026-07-31T11:07:56.480Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+*Generálva: 2026-07-31T17:58:29.346Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## Build a basic AI chatbot for your website using OpenAI’s API – quick start
+**🔗 https://aiworldhq.com/article/build-a-basic-ai-chatbot-brain-using-openai-s-api-quick-start**
+
+**Facebook:**
+Want a helpful chat assistant on your website but think it's too technical? This beginner-friendly guide shows you how to build your own AI chatbot brain using OpenAI's API — no coding needed. https://aiworldhq.com/article/build-a-basic-ai-chatbot-brain-using-openai-s-api-quick-start
+
+*Kép-ötlet: A simple, clean illustration of a friendly chat bubble with a small lightbulb inside, suggesting built-in intelligence.*
+
+---
+
+## How to set ChatGPT custom instructions so it answers your way
+**🔗 https://aiworldhq.com/article/how-to-set-chatgpt-custom-instructions-so-it-answers-your-way**
+
+**Facebook:**
+Tired of telling ChatGPT the same things over and over? There's a simple setting that makes it remember your preferences — like your job, your writing style, or dietary needs — so every answer fits you perfectly. Here's how to set it up in under a minute. https://aiworldhq.com/article/how-to-set-chatgpt-custom-instructions-so-it-answers-your-way #ChatGPT #AI
+
+*Kép-ötlet: A clean smartphone screen showing the custom instructions menu in ChatGPT settings*
+
+---
+
+## How to analyse files and spreadsheets with ChatGPT
+**🔗 https://aiworldhq.com/article/how-to-analyse-files-and-spreadsheets-with-chatgpt**
+
+**Facebook:**
+Got a complex PDF or spreadsheet you need to understand quickly? Just upload it to ChatGPT and ask for a plain summary, pull out the numbers you need, or generate a simple chart. Super handy for work or study. https://aiworldhq.com/article/how-to-analyse-files-and-spreadsheets-with-chatgpt
+
+*Kép-ötlet: A clean desk with a laptop showing a simple chart next to a printed spreadsheet and coffee mug*
+
+---
+
+## Getting started with ChatGPT: your first 15 minutes
+**🔗 https://aiworldhq.com/article/getting-started-with-chatgpt-your-first-15-minutes**
+
+**Facebook:**
+Curious about AI but not sure where to start? This 15-minute guide walks you through creating a free account, typing your first prompt, and keeping the conversation going — simple, straightforward and judgment-free. https://aiworldhq.com/article/getting-started-with-chatgpt-your-first-15-minutes #AIForBeginners #GettingStarted
+
+*Kép-ötlet: A clean illustration of a friendly chat bubble on a laptop screen next to a steaming cup of coffee*
+
+---
+
+## How to use custom GPTs (and build a simple one)
+**🔗 https://aiworldhq.com/article/how-to-use-custom-gpts-and-build-your-own-without-coding**
+
+**Facebook:**
+Imagine an AI helper that already knows your household budget or business style—without a explain it each time. You can build one in minutes with no coding needed. Here's how. https://aiworldhq.com/article/how-to-use-custom-gpts-and-build-your-own-without-coding
+
+*Kép-ötlet: A simple, clean illustration of a friendly digital assistant on a computer screen with a customizable settings icon*
+
+---
+
+## How to create and edit images in ChatGPT
+**🔗 https://aiworldhq.com/article/how-to-create-and-edit-images-in-chatgpt**
+
+**Facebook:**
+Turn your ideas into images without needing design skills. Just describe what you want in plain English, and ChatGPT creates it – then tweak with simple instructions. No Photoshop required.
+https://aiworldhq.com/article/how-to-create-and-edit-images-in-chatgpt
+
+#AI #Creativity
+
+*Kép-ötlet: A person smiling at their phone screen showing a colorful, AI-generated image they created with just a few words.*
 
 ---
 
