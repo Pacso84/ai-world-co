@@ -1,0 +1,41 @@
+{
+  "started_at": "2026-08-01T01:54:42.081Z",
+  "total": 4,
+  "passed": 3,
+  "failed": 1,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.012131258,
+  "by_article": [
+    {
+      "writer": "WRITER_GUIDE_how-to-build-a-simple-debt-payoff-tracker-with-any-ai-assist.json",
+      "rejected": "REJECTED_GUIDE_how-to-build-a-simple-debt-payoff-tracker-with-any-ai-assist.json",
+      "decision": "FAIL",
+      "score": 7,
+      "cost_usd": 0.00297112
+    },
+    {
+      "writer": "WRITER_GUIDE_how-to-draft-a-polite-follow-up-email-after-a-job-interview.json",
+      "article": "ARTICLE_GUIDE_how-to-draft-a-polite-follow-up-email-after-a-job-interview.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.00281782
+    },
+    {
+      "writer": "WRITER_GUIDE_how-to-spot-ai-generated-scam-messages-before-you-click-or-r.json",
+      "article": "ARTICLE_GUIDE_how-to-spot-ai-generated-scam-messages-before-you-click-or-r.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.00199476
+    },
+    {
+      "writer": "WRITER_GUIDE_how-to-summarise-a-long-article-or-pdf-into-key-bullet-point.json",
+      "article": "ARTICLE_GUIDE_how-to-summarise-a-long-article-or-pdf-into-key-bullet-point.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.00198531
+    }
+  ],
+  "finished_at": "2026-08-01T01:55:56.734Z",
+  "duration_seconds": 74.653
+}
