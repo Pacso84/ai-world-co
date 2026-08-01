@@ -1,86 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178551837235133",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-07-31T17:19:32.351Z",
-      "updated": "2026-07-31T17:20:11.211Z"
-    },
-    {
-      "id": "t178551841121373",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-07-31T17:20:11.213Z",
-      "updated": "2026-07-31T17:20:27.917Z"
-    },
-    {
-      "id": "t178551842792067",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-07-31T17:20:27.920Z",
-      "updated": "2026-07-31T17:20:28.128Z"
-    },
-    {
-      "id": "t17855184281596",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-31T17:20:28.159Z",
-      "updated": "2026-07-31T17:20:28.369Z"
-    },
-    {
-      "id": "t178551842837080",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-07-31T17:20:28.370Z",
-      "updated": "2026-07-31T17:20:28.569Z"
-    },
-    {
-      "id": "t178551842857114",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-31T17:20:28.571Z",
-      "updated": "2026-07-31T17:20:40.858Z"
-    },
-    {
-      "id": "t178551844086086",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-07-31T17:20:40.860Z",
-      "updated": "2026-07-31T17:21:05.412Z"
-    },
-    {
-      "id": "t178552308149965",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-07-31T18:38:01.499Z",
-      "updated": "2026-07-31T18:38:01.683Z"
-    },
-    {
-      "id": "t178552308168585",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-07-31T18:38:01.685Z",
-      "updated": "2026-07-31T18:38:25.257Z"
-    },
-    {
-      "id": "t178552310525931",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-07-31T18:38:25.259Z",
-      "updated": "2026-07-31T18:38:25.459Z"
-    },
-    {
       "id": "t178552310546185",
       "title": "Run iro",
       "status": "done",
@@ -479,25 +399,89 @@
       "agent": "publisher",
       "created": "2026-08-01T09:55:07.892Z",
       "updated": "2026-08-01T09:55:19.470Z"
+    },
+    {
+      "id": "t178560280912993",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-08-01T16:46:49.129Z",
+      "updated": "2026-08-01T16:46:49.316Z"
+    },
+    {
+      "id": "t178560280931760",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-08-01T16:46:49.317Z",
+      "updated": "2026-08-01T16:47:12.784Z"
+    },
+    {
+      "id": "t178560283278668",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-08-01T16:47:12.786Z",
+      "updated": "2026-08-01T16:47:12.984Z"
+    },
+    {
+      "id": "t178560283298598",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-01T16:47:12.985Z",
+      "updated": "2026-08-01T16:47:13.155Z"
+    },
+    {
+      "id": "t178560283315635",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-01T16:47:13.156Z",
+      "updated": "2026-08-01T16:47:13.329Z"
+    },
+    {
+      "id": "t178560283333214",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-08-01T16:47:13.332Z",
+      "updated": "2026-08-01T16:47:13.532Z"
+    },
+    {
+      "id": "t178560283356337",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-01T16:47:13.563Z",
+      "updated": "2026-08-01T16:47:13.783Z"
+    },
+    {
+      "id": "t178560283378591",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-08-01T16:47:13.785Z",
+      "updated": "2026-08-01T16:47:13.992Z"
+    },
+    {
+      "id": "t178560283399447",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-01T16:47:13.994Z",
+      "updated": "2026-08-01T16:47:30.492Z"
+    },
+    {
+      "id": "t178560285049486",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-08-01T16:47:30.494Z",
+      "updated": "2026-08-01T16:47:46.530Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178465378437826",
-      "level": "info",
-      "text": "SEO: 4 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-07-21T17:09:44.378Z",
-      "loud": false
-    },
-    {
-      "id": "n178465412182619",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The article line-up is coherent and ready for publication, offering a variety of practical uses for AI tools like Qwen Chat, Claude, Perplexity AI, and ChatGPT. However, I do note that the tech-heavy ",
-      "agent": "publisher",
-      "at": "2026-07-21T17:15:21.826Z",
-      "loud": false
-    },
     {
       "id": "n178465412916992",
       "level": "success",
@@ -1281,18 +1265,25 @@
       "agent": "ceo",
       "at": "2026-08-01T09:55:19.500Z",
       "loud": false
+    },
+    {
+      "id": "n178560285868489",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The line-up looks solid — you've got a practical mix of real-world AI uses (study help, writing, privacy smarts) across different tools, which should appeal to everyday readers. One note: with five di",
+      "agent": "publisher",
+      "at": "2026-08-01T16:47:38.684Z",
+      "loud": false
+    },
+    {
+      "id": "n17856028665622",
+      "level": "info",
+      "text": "Pipeline lefutott — ma nem volt publikálható új tartalom.",
+      "agent": "ceo",
+      "at": "2026-08-01T16:47:46.562Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178494445394387",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Random  styles in draft mode\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as a clear explainer: what happened and what it means for everyday readers. HONESTY RULE: name the REAL products/places/organisations from the source; NEVER invent generic UI steps (\"most platforms\"",
-      "ref": "2026-07-23T01-48-48-121Z_midjourney-updates_Random__styles_in_draft_mode.json",
-      "at": "2026-07-25T01:54:13.943Z"
-    },
     {
       "id": "m178494447908925",
       "from": "iro",
@@ -2641,6 +2632,15 @@
       "text": "6 közösségi poszt megírva (Facebook). content/social/feed.md",
       "ref": null,
       "at": "2026-08-01T10:08:00.795Z"
+    },
+    {
+      "id": "m178560285048318",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-08-01T16:47:30.483Z"
     }
   ]
 }
