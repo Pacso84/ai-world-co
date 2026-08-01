@@ -61,6 +61,27 @@ function capForMonth(m) {
 const MONTH_HARD_CAP = capForMonth(month());
 const MONTH_TARGET = Number(LIMITS.monthly_budget_usd_target ?? 30);
 
+// ── NAPI HARD CAP (2026-08-01, user: "legyen egy napi korlát ami 1 dollár,
+// ez sokba kerül ezek a javítások így") ─────────────────────────────
+// ELŐZMÉNY: 07-31-én a napi költés $0,60-ról $2,51-re ugrott, mert egy
+// tömeges cikkjavítás 136 cikk fordítás-gyorsítótárát törölte → 544
+// újrafordítás. A havi keret ezt nem fogta meg: $2,51 még bőven belefér
+// $40-ba, csak épp EGY NAP alatt viszi el a havi keret 6%-át.
+//
+// A KORÁBBI ELV ("nincs napi plafon") ezzel felülírva — user-döntés.
+// A napi és a havi keret KÜLÖNBÖZŐ dolog ellen véd: a havi a hónap végi
+// számla ellen, a napi egy hirtelen elszabaduló nap ellen. $1/nap × 31 =
+// $31, ami pont a $30-as havi CÉL körül van, tehát a kettő összhangban van.
+//
+// MI TÖRTÉNIK A KORLÁTNÁL: ugyanaz, mint a havinál — a fizetős agentek
+// SZÜNETELNEK (nem esnek gyenge ingyenes modellre, mert az rontaná a
+// minőséget), a munka a következő napra csúszik. A napi számláló éjfélkor
+// (UTC) magától nullázódik, tehát nem kell semmit visszakapcsolni.
+//
+// SORREND-SZERENCSE: a drága fordítás a futásban a cikkírás UTÁN van, így
+// ha a keret betelik, az a fordítást állítja meg, nem a napi tartalmat.
+const DAY_HARD_CAP = Number(LIMITS.daily_budget_usd_hard_cap ?? 0) || null;
+
 function load() {
   if (!existsSync(STATE_PATH)) return { days: {} };
   try { return JSON.parse(readFileSync(STATE_PATH, 'utf-8')); } catch { return { days: {} }; }
@@ -104,6 +125,12 @@ export function byProviderToday() {
 export function meteredBlocked() {
   const month = spentThisMonth();
   if (month >= MONTH_HARD_CAP) return { blocked: true, reason: `havi hard cap elérve ($${month.toFixed(2)}/$${MONTH_HARD_CAP}) — végső biztosíték`, hard: true };
+  // A NAPI keret a szűkebb: egy elszabaduló nap ellen véd (lásd DAY_HARD_CAP).
+  // Éjfélkor (UTC) magától felenged — nincs mit visszakapcsolni.
+  if (DAY_HARD_CAP) {
+    const day = spentToday();
+    if (day >= DAY_HARD_CAP) return { blocked: true, reason: `napi keret elérve ($${day.toFixed(2)}/$${DAY_HARD_CAP}) — a munka holnap folytatódik`, hard: true, daily: true };
+  }
   return { blocked: false };
 }
 
@@ -111,7 +138,7 @@ export function meteredBlocked() {
 export function budgetStatus() {
   const day = spentToday(), mon = spentThisMonth();
   return {
-    today: +day.toFixed(4),
+    today: +day.toFixed(4), dayHardCap: DAY_HARD_CAP,
     month: +mon.toFixed(4), monthTarget: MONTH_TARGET, monthHardCap: MONTH_HARD_CAP,
     byProviderToday: byProviderToday(),
     meteredBlocked: meteredBlocked()

@@ -33,8 +33,12 @@ const FORCE = process.argv.includes('--force');
 // TANULSÁG: ha egy értéknek van kiszámított, hiteles forrása, a jelentés NE
 // számolja ki újra — kérdezze meg. A duplikált logika addig néma, amíg a két
 // eredmény véletlenül egyezik, és pont a váltás pillanatában hazudik.
-let HARD_CAP = 40;
-try { HARD_CAP = (await import('./budget.js')).budgetStatus().monthHardCap ?? HARD_CAP; } catch { /* marad az alap */ }
+let HARD_CAP = 40, DAY_CAP = null;
+try {
+  const bs = (await import('./budget.js')).budgetStatus();
+  HARD_CAP = bs.monthHardCap ?? HARD_CAP;
+  DAY_CAP = bs.dayHardCap ?? null;
+} catch { /* marad az alap */ }
 
 function today() { return new Date().toISOString().slice(0, 10); }
 
@@ -121,13 +125,14 @@ function collect() {
   }
 
   // Költés (budget-state: days)
-  let spentYesterday = 0, spentMonth = 0;
+  let spentYesterday = 0, spentMonth = 0, spentToday = 0;
   try {
     const b = JSON.parse(readFileSync(join(ROOT, 'core', 'budget-state.json'), 'utf-8'));
     const days = b.days || {};
     const y = new Date(now - h24).toISOString().slice(0, 10);
     const month = today().slice(0, 7);
     spentYesterday = days[y]?.total || 0;
+    spentToday = days[today()]?.total || 0;        // a napi kerethez (2026-08-01)
     for (const [d, v] of Object.entries(days)) if (d.startsWith(month)) spentMonth += v.total || 0;
   } catch { /* skip */ }
 
@@ -183,7 +188,7 @@ function collect() {
     pendingSources = (JSON.parse(readFileSync(join(ROOT, 'agents', 'source-scout', 'discovered-sources.json'), 'utf-8')).discovered_sources || []).length;
   } catch { /* skip */ }
 
-  return { news, guides, titles, fbPosts, spentYesterday, spentMonth, missing, bans, pendingSources, missingLinks };
+  return { news, guides, titles, fbPosts, spentYesterday, spentToday, spentMonth, missing, bans, pendingSources, missingLinks };
 }
 
 async function main() {
@@ -196,7 +201,11 @@ async function main() {
     `📰 Új tartalom ma: ${r.news} hír + ${r.guides} útmutató`,
     ...r.titles.map(t => `   • ${t.slice(0, 60)}`),
     `📘 Facebook-poszt: ${r.fbPosts}`,
-    `💰 Tegnap: $${r.spentYesterday.toFixed(2)} · e havi: $${r.spentMonth.toFixed(2)} / $${HARD_CAP}`,
+    // A NAPI keret is látszik (2026-08-01) — a user maga kérte a korlátot,
+    // tehát látnia kell, hol tart benne, ne csak akkor derüljön ki, ha betelt.
+    // A keret a MAI költés mellé kerül, nem a tegnapi mellé: a "$2.51 / $1"
+    // úgy olvasódna, mintha tegnap megsértettük volna a keretet.
+    `💰 Tegnap: $${r.spentYesterday.toFixed(2)} · ma: $${r.spentToday.toFixed(2)}${DAY_CAP ? ` / $${DAY_CAP}` : ''} · e havi: $${r.spentMonth.toFixed(2)} / $${HARD_CAP}`,
     `🌍 Fordítás-hiány: ${r.missing} pár${r.bans ? ` · 🚦 kvóta-tiltás: ${r.bans}` : ''}${translationForecast(r.missing)}`,
   ];
   if (r.pendingSources > 0) lines.push(`🔭 Jóváhagyásra váró forrás-javaslat: ${r.pendingSources} (írd: "mik a javaslatok?")`);
@@ -220,8 +229,16 @@ async function main() {
     const { meteredBlocked } = await import('./budget.js');
     const mb = meteredBlocked();
     if (mb.blocked && mb.hard) {
-      const nextMonth = new Date(new Date().getFullYear(), new Date().getMonth() + 1, 1).toISOString().slice(0, 10);
-      lines.push(`⛔ Havi költségkeret elérve ($${HARD_CAP}) — a cég SZÜNETEL a hónap végéig. Az oldal él; ${nextMonth}-én magától újraindul (MiniMax-tervvel olcsóbban).`);
+      // KÉTFÉLE STOP, KÉTFÉLE ÜZENET (2026-08-01). A napi keret bevezetéséig
+      // minden hard-block havi volt, ezért a riport egy NAPI stopra is azt
+      // írta volna, hogy "a cég SZÜNETEL a hónap végéig" — hamis és ijesztő.
+      // Egy órányi várakozás és egy hónapnyi leállás nem ugyanaz.
+      if (mb.daily) {
+        lines.push(`⏸️ Napi keret elérve ($${DAY_CAP}) — a mai munka szünetel, holnap magától folytatódik. Az oldal él, semmi nem veszett el.`);
+      } else {
+        const nextMonth = new Date(new Date().getFullYear(), new Date().getMonth() + 1, 1).toISOString().slice(0, 10);
+        lines.push(`⛔ Havi költségkeret elérve ($${HARD_CAP}) — a cég SZÜNETEL a hónap végéig. Az oldal él; ${nextMonth}-én magától újraindul (MiniMax-tervvel olcsóbban).`);
+      }
     }
   } catch { /* budget-őr nélkül is megy a riport */ }
   // KÖZELI-TÉMA-ŐR összegzés (2026-07-18): hány ismétlődő útmutató-témát
