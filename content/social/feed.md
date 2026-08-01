@@ -1,6 +1,66 @@
 # AI World Co. — közösségi posztok
 
-*Generálva: 2026-08-01T02:10:12.716Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+*Generálva: 2026-08-01T10:08:00.792Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## How to use Gemini Deep Research for thorough reports
+**🔗 https://aiworldhq.com/article/how-to-use-gemini-deep-research-for-thorough-reports**
+
+**Facebook:**
+Ever wished you had a research assistant who could dig through dozens of sources and pull together a clean report for you? This step-by-step guide shows how Gemini Deep Research does the heavy lifting—so you can focus on the insights. https://aiworldhq.com/article/how-to-use-gemini-deep-research-for-thorough-reports #AI #Research
+
+*Kép-ötlet: A person looking at a clean, organised research report on a laptop with a thoughtful expression*
+
+---
+
+## Getting started with Google Gemini for everyday life
+**🔗 https://aiworldhq.com/article/getting-started-with-google-gemini-for-everyday-life**
+
+**Facebook:**
+Ever wish you had a helper who could plan dinner, draft tricky emails, or explain confusing topics in plain English? That's basically what this AI assistant does — here's a simple guide to get started.https://aiworldhq.com/article/getting-started-with-google-gemini-for-everyday-life
+
+*Kép-ötlet: A person sitting comfortably at a desk, looking relaxed while viewing something helpful on their laptop screen.*
+
+---
+
+## How to generate images with Google Gemini
+**🔗 https://aiworldhq.com/article/how-to-generate-images-with-google-gemini-a-beginner-s-guide**
+
+**Facebook:**
+Wish you could create custom images just by describing them? This free tool lets anyone make beautiful visuals for presentations, invitations or fun projects — no design skills needed. https://aiworldhq.com/article/how-to-generate-images-with-google-gemini-a-beginner-s-guide #AI #HowTo
+
+*Kép-ötlet: A person smiling at a laptop screen with colourful, abstract shapes floating around it*
+
+---
+
+## How to use Gemini on your Android phone
+**🔗 https://aiworldhq.com/article/how-to-use-google-gemini-on-your-android-phone-for-daily-tasks**
+
+**Facebook:**
+Your phone can actually help you draft messages and understand what's on your screen — no tech expertise needed. This beginner's guide walks you through using Google Gemini on Android, step by step. https://aiworldhq.com/article/how-to-use-google-gemini-on-your-android-phone-for-daily-tasks #AndroidTips #Gemini
+
+*Kép-ötlet: Someone holding an Android phone with a friendly, helpful AI assistant interface on the screen, showing a simple conversation.*
+
+---
+
+## Using Gemini in Gmail and Docs to save time
+**🔗 https://aiworldhq.com/article/using-gemini-in-gmail-and-docs-to-save-time**
+
+**Facebook:**
+Long email threads eating your time? Gemini can now summarise them, draft replies and polish your Docs – right inside the tools you already use. Here's a beginner-friendly guide to get started. https://aiworldhq.com/article/using-gemini-in-gmail-and-docs-to-save-time
+
+*Kép-ötlet: A clean, minimal image of a Gmail inbox next to a Google Doc, with small sparkle icons suggesting AI assistance – simple and uncluttered.*
+
+---
+
+## Getting started with Cohere: a beginner's guide
+**🔗 https://aiworldhq.com/article/getting-started-with-cohere-a-beginner-s-guide**
+
+**Facebook:**
+Ever wished you had a helper to quickly draft emails, summaries or posts for you? This beginner's guide shows you how AI tools can do just that—even if you've never used AI before. https://aiworldhq.com/article/getting-started-with-cohere-a-beginner-s-guide #AI #Productivity
+
+*Kép-ötlet: A simple, clean illustration of a person typing on a laptop with a friendly, helpful robot assistant nearby*
 
 ---
 
