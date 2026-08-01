@@ -67,6 +67,49 @@ function translationForecast(missing) {
   } catch { return ''; }
 }
 
+// ── EGYENLEG-ŐR (2026-08-01) ────────────────────────────────────────
+// User: "ennyi a keretünk, most töltöttem fel, és vidd le a havi keretet
+// 25-re, ez kb elég lesz egy hónapra" — majd: "az egyenleg minden hónap
+// elsején újra kezdődik" (havonta tölt fel).
+//
+// A HAVI KERET ÉS AZ EGYENLEG NEM UGYANAZ A KORLÁT. A keret egy szabály,
+// amit mi tartunk be; az egyenleg fizikai valóság. Ha a költés megugrik,
+// a pénz elfogy, és a havi keret SOSEM sül el — a cég némán elhallgat
+// (a fizetős hívások elhasalnak, a vészháló gyengébb ingyenes modellekre
+// esik, a minőség leromlik) anélkül, hogy bármi szólna róla.
+//
+// AMIT KÉRDEZÜNK: nem az, hogy "hány napra elég" — az absztrakt szám nem
+// mond semmit. Havi feltöltésnél a valódi kérdés, hogy ELÉR-E A KÖVETKEZŐ
+// FELTÖLTÉSIG. Egy hó eleji "20 napra elég" nyugtatónak hangzik, pedig ha
+// 30 nap van hátra, akkor baj van; egy hó végi "3 napra elég" ijesztő,
+// pedig épp elég. Ezért a hónap végéhez mérünk.
+//
+// Read-only hívás, $0. Kulcs nélkül (helyi futás) csendben kimarad.
+async function openrouterBalance(burnPerDay) {
+  const key = process.env.OPENROUTER_API_KEY;
+  if (!key) return '';
+  try {
+    const r = await fetch('https://openrouter.ai/api/v1/credits', {
+      headers: { Authorization: 'Bearer ' + key }, signal: AbortSignal.timeout(15000)
+    });
+    if (!r.ok) return '';
+    const d = (await r.json()).data || {};
+    const left = Number(d.total_credits) - Number(d.total_usage);
+    if (!isFinite(left)) return '';
+    if (!(burnPerDay > 0.005)) return `🏦 Egyenleg: $${left.toFixed(2)}`;
+
+    const days = Math.floor(left / burnPerDay);
+    const n = new Date();
+    const nextTopUp = Date.UTC(n.getUTCFullYear(), n.getUTCMonth() + 1, 1);
+    const daysLeft = Math.ceil((nextTopUp - n.getTime()) / 86400000);
+    const short = daysLeft - days;
+    const verdict = short > 0
+      ? ` ⚠️ NEM ÉRI EL a hónap végét — kb. ${short} nap hiányzik (${daysLeft} van hátra, ${days} napra futja)`
+      : ` ✅ kitart a hónap végéig (${daysLeft} nap van hátra, ${days} napra futja)`;
+    return `🏦 Egyenleg: $${left.toFixed(2)}${verdict}`;
+  } catch { return ''; }
+}
+
 function guard() {
   if (FORCE) return true;
   const h = new Date().getUTCHours();
@@ -125,7 +168,7 @@ function collect() {
   }
 
   // Költés (budget-state: days)
-  let spentYesterday = 0, spentMonth = 0, spentToday = 0;
+  let spentYesterday = 0, spentMonth = 0, spentToday = 0, burnPerDay = 0;
   try {
     const b = JSON.parse(readFileSync(join(ROOT, 'core', 'budget-state.json'), 'utf-8'));
     const days = b.days || {};
@@ -134,6 +177,16 @@ function collect() {
     spentYesterday = days[y]?.total || 0;
     spentToday = days[today()]?.total || 0;        // a napi kerethez (2026-08-01)
     for (const [d, v] of Object.entries(days)) if (d.startsWith(month)) spentMonth += v.total || 0;
+    // Napi tempó a 7 LEGUTÓBBI TELJES napból (a mai félkész nap kihagyva).
+    // KÖZÉPÉRTÉK, NEM ÁTLAG: egyetlen rendellenes nap az átlagot elviszi —
+    // a 07-31-i $2,51 (tömeges újrafordítás) a hetes átlagot $0,40-ról
+    // $0,85-re emelte, vagyis a maradék pénzt feleannyi napra becsülte
+    // volna. A középértéket egy kilengő nap nem mozdítja el.
+    const full = Object.entries(days).filter(([d]) => d < today()).sort().slice(-7);
+    if (full.length) {
+      const v = full.map(([, x]) => x.total || 0).sort((a, b) => a - b);
+      burnPerDay = v.length % 2 ? v[(v.length - 1) / 2] : (v[v.length / 2 - 1] + v[v.length / 2]) / 2;
+    }
   } catch { /* skip */ }
 
   // Fordítás-hiány
@@ -188,7 +241,7 @@ function collect() {
     pendingSources = (JSON.parse(readFileSync(join(ROOT, 'agents', 'source-scout', 'discovered-sources.json'), 'utf-8')).discovered_sources || []).length;
   } catch { /* skip */ }
 
-  return { news, guides, titles, fbPosts, spentYesterday, spentToday, spentMonth, missing, bans, pendingSources, missingLinks };
+  return { news, guides, titles, fbPosts, spentYesterday, spentToday, spentMonth, burnPerDay, missing, bans, pendingSources, missingLinks };
 }
 
 async function main() {
@@ -208,6 +261,8 @@ async function main() {
     `💰 Tegnap: $${r.spentYesterday.toFixed(2)} · ma: $${r.spentToday.toFixed(2)}${DAY_CAP ? ` / $${DAY_CAP}` : ''} · e havi: $${r.spentMonth.toFixed(2)} / $${HARD_CAP}`,
     `🌍 Fordítás-hiány: ${r.missing} pár${r.bans ? ` · 🚦 kvóta-tiltás: ${r.bans}` : ''}${translationForecast(r.missing)}`,
   ];
+  const bal = await openrouterBalance(r.burnPerDay);
+  if (bal) lines.push(bal);
   if (r.pendingSources > 0) lines.push(`🔭 Jóváhagyásra váró forrás-javaslat: ${r.pendingSources} (írd: "mik a javaslatok?")`);
   if (r.missingLinks?.length) lines.push(`🔗 Hivatalos link nélküli új eszköz: ${r.missingLinks.join(', ')} — a fejlesztő 1 sorral pótolja (tool-links.json)`);
   // Minőség-őr összegzés (chip-szabályok + duplikált linkek) — ha talál valamit
