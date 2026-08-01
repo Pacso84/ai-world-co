@@ -1,6 +1,68 @@
 # AI World Co. — közösségi posztok
 
-*Generálva: 2026-07-31T19:18:29.350Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+*Generálva: 2026-08-01T02:10:12.716Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## Google Workspace Weekly Recap - July 31, 2026
+**🔗 https://aiworldhq.com/article/how-to-get-visual-screenshots-in-google-meet-notes-when-your-it-admin-**
+
+**Facebook:**
+Meeting notes are getting smarter. If your workplace uses Google Meet, your IT admin can now enable automatic screenshots of slides and diagrams in your notes — no more copying them manually. Here's how to check if it's available for you. https://aiworldhq.com/article/how-to-get-visual-screenshots-in-google-meet-notes-when-your-it-admin- #GoogleMeet #WorkTips
+
+*Kép-ötlet: A clean, minimal illustration of digital meeting notes with small slide thumbnails appearing alongside the text*
+
+---
+
+## Create royalty‑free AI music loops for podcasts and videos – beginner tutorial
+**🔗 https://aiworldhq.com/article/create-royalty-free-ai-music-loops-for-podcasts-and-videos**
+
+**Facebook:**
+Podcasts and videos sound so much better with custom background music — and now you can create your own royalty-free tracks in minutes, even without any music experience. This beginner's guide shows you how. https://aiworldhq.com/article/create-royalty-free-ai-music-loops-for-podcasts-and-videos #MusicCreation #Podcasting
+
+*Kép-ötlet: A person smiling at a laptop screen showing a simple music waveform, with soft musical notes floating in the background.*
+
+---
+
+## Getting started with DeepSeek for everyday help
+**🔗 https://aiworldhq.com/article/getting-started-with-deepseek-for-everyday-help**
+
+**Facebook:**
+Ever wish you had someone patient who thinks through your problems out loud with you? This free AI tool does exactly that—breaking down tricky tasks step by step. Worth a look. https://aiworldhq.com/article/getting-started-with-deepseek-for-everyday-help #AIHelp
+
+*Kép-ötlet: A person sitting at a desk with a laptop, looking thoughtful and calm, with a cup of coffee nearby*
+
+---
+
+## Digitize handwritten notes with AI and turn them into editable text
+**🔗 https://aiworldhq.com/article/digitise-handwritten-notes-into-editable-text-with-ai**
+
+**Facebook:**
+Stop losing great ideas written on paper. This guide walks you through turning messy handwritten notes into searchable, editable text using AI — so everything's easy to find. https://aiworldhq.com/article/digitise-handwritten-notes-into-editable-text-with-ai
+
+*Kép-ötlet: A hand holding a pen over a notebook with digital text appearing above it*
+
+---
+
+## Drafting a Polite but Firm Resignation Letter from Your Job
+**🔗 https://aiworldhq.com/article/drafting-a-polite-but-firm-resignation-letter-from-your-job**
+
+**Facebook:**
+Want to leave your job without burning bridges? This simple guide shows you how to write a resignation letter that stays professional, keeps doors open and makes handover easy. https://aiworldhq.com/article/drafting-a-polite-but-firm-resignation-letter-from-your-job #Career #WorkTips
+
+*Kép-ötlet: A clean, minimal shot of a person calmly writing at a desk with a cup of coffee nearby — simple and professional, no text.*
+
+---
+
+## How to fact-check an AI answer in under a minute
+**🔗 https://aiworldhq.com/article/how-to-quickly-fact-check-any-ai-answer-in-under-one-minute**
+
+**Facebook:**
+Been caught out by an AI that seemed confident but was totally wrong? Here's a simple 3-step trick to verify any AI answer before you act on it — takes less than a minute. No tech skills needed. https://aiworldhq.com/article/how-to-quickly-fact-check-any-ai-answer-in-under-one-minute
+
+#AI #FactCheck
+
+*Kép-ötlet: A person holding a magnifying glass over a smartphone screen, symbolising quick verification of AI content*
 
 ---
 
