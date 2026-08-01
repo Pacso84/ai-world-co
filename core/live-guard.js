@@ -75,15 +75,42 @@ async function main() {
   // canonical kiterjesztés nélkül + PONTOSAN 1 H1 + Discover-jelzés.
   // (A dupla H1 nyolc hétig volt kint — a build-oldali őr mellett az élő
   // oldalt is nézzük, mert a kettő között ott a deploy meg a gyorsítótár.)
-  let slug = null;
+  // FRISS vs. BEÁLLT (2026-08-01): a legfrissebb cikk ÉPP MOST került ki, és
+  // a Cloudflare-nek percek kellenek, hogy a világ minden él-szerverére
+  // szétossza. Az őrszem emiatt 404-et mért egy TÖKÉLETESEN élő cikkre, és a
+  // napi riport hibát jelentett a usernek — pár perccel később ugyanaz a cím
+  // már 200 volt. Ezért KÉT cikket nézünk, más-más céllal:
+  //   • BEÁLLT (>60 perce kint): ezen mérjük a HTML-t (canonical/H1/Discover),
+  //     mert itt a 404 sosem lehet terjedési késés → a lelet mindig valódi.
+  //   • FRISS: csak azt kérdezzük, kint van-e — türelemmel, újrapróbálva.
+  // Tanulság: ha egy mérés ismert késleltetésű rendszert néz, a késleltetést
+  // a MÉRÉSBE kell beépíteni, különben az őrszem farkast kiált.
+  let slug = null, freshSlug = null;
   try {
     const A = join(ROOT, 'content', 'articles');
-    let newest = '';
+    const cutoff = new Date(Date.now() - 60 * 60 * 1000).toISOString();
+    let newestStable = '', newestAny = '';
     for (const f of readdirSync(A).filter(x => x.startsWith('ARTICLE_') && x.endsWith('.json'))) {
       const d = JSON.parse(readFileSync(join(A, f), 'utf-8'));
-      if (d._meta?.published_at && d._meta?.slug && d._meta.published_at > newest) { newest = d._meta.published_at; slug = d._meta.slug; }
+      const at = d._meta?.published_at;
+      if (!at || !d._meta?.slug) continue;
+      if (at > newestAny) { newestAny = at; freshSlug = d._meta.slug; }
+      if (at < cutoff && at > newestStable) { newestStable = at; slug = d._meta.slug; }
     }
+    if (!slug) slug = freshSlug;   // vadonatúj honlapnál nincs még beállt cikk
   } catch { /* lentebb kezelve */ }
+
+  // A FRISS cikk létezés-próbája: 3 próbálkozás, 15 mp szünettel. Ha ennyi
+  // idő alatt sem jelenik meg, az már nem terjedési késés, hanem valódi baj.
+  if (freshSlug && freshSlug !== slug) {
+    let ok = false;
+    for (let i = 0; i < 3 && !ok; i++) {
+      if (i) await new Promise(r => setTimeout(r, 15000));
+      const p = await probe(`${SITE}/article/${freshSlug}${bust()}`, { redirect: 'follow' });
+      ok = p.status === 200;
+    }
+    if (!ok) add('FRESH_ARTICLE_DOWN', `a ma kiadott cikk 45 mp után sincs kint (${freshSlug.slice(0, 40)})`);
+  }
 
   if (slug) {
     try {

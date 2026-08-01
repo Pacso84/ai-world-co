@@ -48,6 +48,38 @@ function visibleText(html) {
     .replace(/&[a-z]+;/gi, ' ');
 }
 
+// A FORDÍTATLAN-SZKEN CSAK A SAJÁT PRÓZÁNKAT NÉZHETI (2026-08-01).
+// Az útmutatókban a 💬 példadobozok (.g-prompt), a kód- és idézetblokkok
+// SZÁNDÉKOSAN angolok: bemásolható promptok, képernyőn megjelenő gomb-
+// feliratok ("Try Copilot for free"), README-részletek. Egy prompt attól
+// prompt, hogy SZÓ SZERINT az van benne, amit a felhasználó begépel.
+//
+// MIÉRT SZÜLETETT: az őrszem 4 TÖKÉLETESEN lefordított cikkre riasztott
+// (hu ×1, es ×3). Mérve: a próza 0 angol jelet tartalmazott, a találatok
+// 100%-a a példadobozokból jött. A javítás NEM a küszöb emelése volt —
+// az a valódi EN-fallbackot is elrejtené —, hanem a mérés szűkítése arra,
+// amiről a jelzés valójában szól. Egy igazi fallbacknál a próza maga
+// angol, ott a 30-as küszöb bőven megmarad (több száz találat).
+// HORGONY: <article>…</article>. NEM .article__body — az útmutató-oldalakon
+// az az osztály CSAK a CSS-ben létezik, a törzs máshogy épül fel. (Egyszer
+// már megvezetett: a nem illeszkedő regex üres stringet ad, abban meg 0 a
+// találat — ami "bizonyítéknak" látszik, pedig csak a mérés hibája.)
+function proseText(html) {
+  const body = (html.match(/<article[\s>][\s\S]*?<\/article>/i) || [])[0] || html;
+  return visibleText(
+    body
+      .replace(/<div class="g-prompt">[\s\S]*?<\/div>/gi, ' ')          // 💬 példadoboz (lapos: csak span-ok)
+      .replace(/<(code|pre|blockquote)[^>]*>[\s\S]*?<\/\1>/gi, ' ')     // kód, parancs, idézet
+  )
+    // IDÉZETT SZÖVEG: „Írd ezt: »Turn these messy notes into…«" — a prompt
+    // egy része nem dobozban, hanem a mondaton BELÜL, idézőjelben szerepel.
+    // Az idézet definíció szerint szó szerinti, tehát nem fordítandó; egy
+    // valódi EN-fallback viszont idézőjeleken KÍVÜL angol, úgyhogy ez a
+    // kivétel nem rejt el valódi hibát.
+    .replace(/[“”„"«»][^“”„"«»]{10,}[“”„"«»]/g, ' ')
+    .toLowerCase();
+}
+
 let chromeHits = 0, bodyHits = 0;
 
 for (const lang of LANGS) {
@@ -61,7 +93,8 @@ for (const lang of LANGS) {
   const articles = existsSync(artDir) ? readdirSync(artDir).map(f => join(artDir, f)) : [];
 
   for (const p of [...pages, ...articles]) {
-    const text = visibleText(readFileSync(p, 'utf-8')).toLowerCase();
+    const raw = readFileSync(p, 'utf-8');
+    const text = visibleText(raw).toLowerCase();
     const short = p.replace(OUT, '').replace(/\\/g, '/');
 
     for (const phrase of CHROME_PHRASES) {
@@ -76,7 +109,7 @@ for (const lang of LANGS) {
 
     // --- 2) fordítatlan tartalom (csak cikkeken számoljuk) ---
     if (p.includes('article')) {
-      const hits = (text.match(EN_RX) || []).length;
+      const hits = (proseText(raw).match(EN_RX) || []).length;   // példadobozok NÉLKÜL — lásd proseText()
       if (hits >= BODY_THRESHOLD) {
         console.log(`⚠️  [${lang}] FORDÍTATLAN TARTALOM GYANÚ (${hits} angol jel): ${short}`);
         bodyHits++;

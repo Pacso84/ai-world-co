@@ -137,7 +137,17 @@ jobs:
       # kifejezetten őket kérte — 245 db ~28 nap alatt. A hír borítója amúgy is
       # elavul. A kép-generálás INGYENES (Cloudflare Flux), a jelenet-leírás
       # ~$0,0005/db → az egész felújítás ~$0,28.
-      - name: Borítóképek felújítása (3/futás, útmutatók előre)
+      # ÜTEM 3 → 8 (2026-08-01). Mérve: 581 borítóképből 48 kész, 533 hátra;
+      # 3/futás × 3 futás/nap = 9/nap → 60 NAP. Mivel addig a Google Discover
+      # a cikkek 92%-át kizárja, az ütem maga volt a szűk keresztmetszet.
+      # MIÉRT BIZTONSÁGOS: a kép INGYENES (Cloudflare Flux, 10 000 neuron/nap;
+      # egy 1280×720-as kép nagyságrendileg ~70 neuron → napi ~140 fér bele,
+      # most ~12-nél tartunk). 8/futás = 24/nap + az új cikkek ~6 → ~30/nap,
+      # tehát a szabad keret negyede. Idő: ~7 mp/kép → +35 mp futásonként.
+      # Költség: a jelenet-leírás ~$0,0007/db → a TELJES hátralék ~$0,37.
+      # FIGYELENDŐ: ha Flux-kvótahiba jönne, ELŐSZÖR ezt vidd vissza 3-ra —
+      # az új cikkek borítója fontosabb, mint a régiek felújítása.
+      - name: Borítóképek felújítása (8/futás, útmutatók előre)
         if: always()
         timeout-minutes: 10
         env:
@@ -145,7 +155,7 @@ jobs:
           CLOUDFLARE_FLUX_TOKEN: ${{ secrets.CLOUDFLARE_FLUX_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           HF_API_KEY: ${{ secrets.HF_API_KEY }}
-        run: node agents/designer/agent.js --refresh 3 || true
+        run: node agents/designer/agent.js --refresh 8 || true
 
       # TÉNY-ELLENŐRZŐ (2026-07-30): a MÁR KINT LÉVŐ útmutatók frissesség-őre.
       #

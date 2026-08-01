@@ -25,9 +25,16 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
 const STATE_PATH = join(ROOT, 'memory', 'daily-report-state.json');
 const FORCE = process.argv.includes('--force');
-// Havi vész-stop a configból (ne legyen beégetve — user 2026-07-11: 80→40)
+// Havi vész-stop — A BUDGET.JS-TŐL kérdezzük, nem a nyers config-mezőből.
+// 2026-08-01: a riport a `monthly_budget_usd_hard_cap`-et olvasta közvetlenül
+// (=50), miközben a cég valójában 40-nél áll le, mert a hónapra bontott
+// felülírás (`..._by_month`) augusztus 1-jén életbe lépett. A user tehát egy
+// olyan keretet látott, ami nem az, ami tényleg megállítja a céget.
+// TANULSÁG: ha egy értéknek van kiszámított, hiteles forrása, a jelentés NE
+// számolja ki újra — kérdezze meg. A duplikált logika addig néma, amíg a két
+// eredmény véletlenül egyezik, és pont a váltás pillanatában hazudik.
 let HARD_CAP = 40;
-try { HARD_CAP = Number(JSON.parse(readFileSync(join(ROOT, 'config.json'), 'utf-8')).limits?.monthly_budget_usd_hard_cap ?? HARD_CAP); } catch { /* marad az alap */ }
+try { HARD_CAP = (await import('./budget.js')).budgetStatus().monthHardCap ?? HARD_CAP; } catch { /* marad az alap */ }
 
 function today() { return new Date().toISOString().slice(0, 10); }
 
@@ -105,7 +112,13 @@ function collect() {
     for (const f of readdirSync(artDir).filter(x => x.endsWith('.json'))) {
       let t = {};
       try { t = JSON.parse(readFileSync(join(ROOT, 'content', 'translations', f), 'utf-8')); } catch { /* nincs */ }
-      for (const l of ['hu', 'es', 'de', 'fr']) if (!t[l]) missing++;
+      // CSAK AZ ÉLŐ NYELVEK (2026-08-01). A de/fr 2026-07-31-én kivezetve —
+      // a számláló viszont tovább kereste őket, és minden reggel 86-90 "hiányzó
+      // párt" jelentett a usernek. Mérve: az élő nyelveken a hiány NULLA volt,
+      // vagyis a riport hónapokig létező lemaradást mutatott volna ott, ahol a
+      // munka valójában hibátlan. Forrás: agents/translator/agent.js LANGS
+      // (onnan importálni nem lehet: a modul betöltéskor elindítja a fordítást).
+      for (const l of ['hu', 'es']) if (!t[l]) missing++;
     }
   }
 
