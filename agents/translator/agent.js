@@ -272,6 +272,32 @@ async function main() {
 
   console.log('\n' + '─'.repeat(60));
   console.log(`📊 Fordítva: ${done} | már megvolt: ${skipped} | sikertelen: ${failed} | költség $${cost.toFixed(4)}`);
+
+  // ── EGY FORDÍTÁS ÁRA — gördülő átlag (2026-08-01) ─────────────────
+  // MIÉRT: a user kérdezte, miért ugrott a napi költés $0,60-ról $2,51-re.
+  // Ok: egy tömeges cikkjavítás (137 szivárgó sablon-címke) TÖRÖLTE 136 cikk
+  // fordítás-gyorsítótárát — helyesen, mert az angol szöveg megváltozott —,
+  // ezzel 544 újrafordítást indítva. SEMMI nem jelezte ezt előre.
+  // Ez a fájl teszi lehetővé, hogy a napi riport a hátralékból ELŐRE
+  // megmondja a várható költséget. Mért érték: ~$0,004/fordítás.
+  // Miért gördülő átlag és nem beégetett szám: a modell-árak és a cikkhossz
+  // változnak; egy beégetett konstans némán elavulna, és pont akkor
+  // hazudna, amikor számítana. (Lásd a havi keret esetét ugyanezen a napon.)
+  if (done > 0) {
+    try {
+      const P = join(__dirname, '..', '..', 'memory', 'translation-cost.json');
+      let s = { runs: [] };
+      try { s = JSON.parse(readFileSync(P, 'utf-8')); } catch { /* első futás */ }
+      s.runs.push({ at: new Date().toISOString(), n: done, usd: Number(cost.toFixed(6)) });
+      s.runs = s.runs.slice(-20);                       // csak a legutóbbi 20 futás
+      const n = s.runs.reduce((a, r) => a + r.n, 0);
+      const u = s.runs.reduce((a, r) => a + r.usd, 0);
+      s.avg_usd_per_translation = n ? Number((u / n).toFixed(6)) : null;
+      s._comment = 'Gördülő átlag egy fordítás árára (utolsó 20 futás). A core/daily-report.js ebből jelzi előre a hátralék várható költségét.';
+      writeFileSync(P, JSON.stringify(s, null, 2), 'utf-8');
+      console.log(`   💵 egy fordítás átlagos ára: $${s.avg_usd_per_translation.toFixed(5)} (utolsó ${s.runs.length} futás)`);
+    } catch { /* a könyvelés hibája ne állítsa meg a fordítást */ }
+  }
 }
 
 main().catch(e => { console.error('💥 FORDÍTÓ HIBA:', e); process.exit(1); });

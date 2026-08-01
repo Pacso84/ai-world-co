@@ -38,6 +38,31 @@ try { HARD_CAP = (await import('./budget.js')).budgetStatus().monthHardCap ?? HA
 
 function today() { return new Date().toISOString().slice(0, 10); }
 
+// ── FORDÍTÁSI HÁTRALÉK VÁRHATÓ KÖLTSÉGE (2026-08-01) ────────────────
+// User kérdése: "miért volt tegnap a napi költés az átlaghoz képest drasztikus?"
+// Válasz: egy tömeges cikkjavítás (137 szivárgó sablon-címke) TÖRÖLTE 136 cikk
+// fordítás-gyorsítótárát — helyesen, hiszen az angol szöveg megváltozott —,
+// és ezzel 544 újrafordítást indított. A napi költés $0,60-ról $2,51-re ugrott,
+// és SEMMI nem szólt előre. A riport eddig csak a darabszámot mutatta ("86 pár"),
+// ami egy nem-technikus olvasónak nem mond semmit a pénzről.
+//
+// Mostantól: ha a hátralék szokatlanul nagy, a riport odaírja, mibe fog kerülni.
+// Az egy fordításra jutó árat a fordító méri (memory/translation-cost.json,
+// gördülő átlag) — beégetett konstans némán elavulna.
+//
+// KÜSZÖB: a napi rendes termés ~35 fordítás (2 élő nyelv × ~17 cikk). A 100
+// fölötti hátralék tehát már nem a szokásos menet, hanem valami tömeges dolog.
+const FORECAST_MIN = 100;
+function translationForecast(missing) {
+  if (!missing || missing < FORECAST_MIN) return '';
+  try {
+    const s = JSON.parse(readFileSync(join(ROOT, 'memory', 'translation-cost.json'), 'utf-8'));
+    const avg = s.avg_usd_per_translation;
+    if (!avg) return '';
+    return ` · ⏳ várható költség kb. $${(missing * avg).toFixed(2)}`;
+  } catch { return ''; }
+}
+
 function guard() {
   if (FORCE) return true;
   const h = new Date().getUTCHours();
@@ -172,7 +197,7 @@ async function main() {
     ...r.titles.map(t => `   • ${t.slice(0, 60)}`),
     `📘 Facebook-poszt: ${r.fbPosts}`,
     `💰 Tegnap: $${r.spentYesterday.toFixed(2)} · e havi: $${r.spentMonth.toFixed(2)} / $${HARD_CAP}`,
-    `🌍 Fordítás-hiány: ${r.missing} pár${r.bans ? ` · 🚦 kvóta-tiltás: ${r.bans}` : ''}`,
+    `🌍 Fordítás-hiány: ${r.missing} pár${r.bans ? ` · 🚦 kvóta-tiltás: ${r.bans}` : ''}${translationForecast(r.missing)}`,
   ];
   if (r.pendingSources > 0) lines.push(`🔭 Jóváhagyásra váró forrás-javaslat: ${r.pendingSources} (írd: "mik a javaslatok?")`);
   if (r.missingLinks?.length) lines.push(`🔗 Hivatalos link nélküli új eszköz: ${r.missingLinks.join(', ')} — a fejlesztő 1 sorral pótolja (tool-links.json)`);

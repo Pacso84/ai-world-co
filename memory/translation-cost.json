@@ -1,0 +1,21 @@
+{
+  "_comment": "Gördülő átlag egy fordítás árára (utolsó 20 futás). A core/daily-report.js ebből jelzi előre a hátralék várható költségét. Az első 3 bejegyzés a 2026-07-30/31 és 08-01 CI-naplóiból visszamérve, hogy az előrejelzés azonnal működjön.",
+  "runs": [
+    {
+      "at": "2026-07-30T23:59:00.000Z",
+      "n": 69,
+      "usd": 0.2701
+    },
+    {
+      "at": "2026-07-31T23:59:00.000Z",
+      "n": 689,
+      "usd": 2.8805
+    },
+    {
+      "at": "2026-08-01T16:51:56.000Z",
+      "n": 4,
+      "usd": 0.0191
+    }
+  ],
+  "avg_usd_per_translation": 0.00416
+}
