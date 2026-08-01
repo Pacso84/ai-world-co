@@ -75,8 +75,8 @@
       "priority": 3,
       "language": "en",
       "country": "US/FR",
-      "comment": "HIVATALOS Hugging Face blog. VISSZAKAPCSOLVA 2026-07-22 (user: \"mindegyik csempéhez kell hírforrás\"): 12 útmutatónk van róluk. A tartalma túlnyomórészt fejlesztői, amit az AI relevancia-kapu kiszűr — de ha egyszer fogyasztói funkciót jelentenek be, ne maradjunk le róla.",
-      "enabled": true
+      "comment": "KIKAPCSOLVA 2026-08-01: a hírfolyam ÉL (834 tétel), de mérnöki ML-tartalmat ad (\"GPU Management\", \"LFM2.5-Encoders for CPU inference\") – 30 nap alatt 0 cikk lett belőle, mert a minőség-kapunk helyesen elutasítja. Nem hibás forrás, csak nem a mi olvasóinknak szól. | Eredeti megjegyzés: HIVATALOS Hugging Face blog. VISSZAKAPCSOLVA 2026-07-22 (user: \"mindegyik csempéhez kell hírforrás\"): 12 útmutatónk van róluk. A tartalma túlnyomórészt fejlesztői, amit az AI relevancia-kapu kiszűr — de ha egyszer fogyasztói funkciót jelentenek be, ne maradjunk le róla.",
+      "enabled": false
     },
     {
       "id": "nvidia-blog",
@@ -533,8 +533,8 @@
       "priority": 3,
       "language": "en",
       "country": "CN",
-      "enabled": true,
-      "comment": "DeepSeek hivatalos bejelentései. Nincs használható RSS (a news.rss üres), ezért Google News site:deepseek.com szűréssel. Bekötve 2026-07-22: 11 DeepSeek-útmutatónk van hírforrás nélkül."
+      "enabled": false,
+      "comment": "KIKAPCSOLVA 2026-08-01: a Google News site:-keresés nem híreket ad, hanem API-DOKUMENTÁCIÓT (\"Using the Responses API\", \"Integrate with Codex\"). 30 nap alatt 0 cikk. Ha kell a DeepSeek, valódi hírfolyamot vagy sitemap-forrást kell keresni. | Eredeti megjegyzés: DeepSeek hivatalos bejelentései. Nincs használható RSS (a news.rss üres), ezért Google News site:deepseek.com szűréssel. Bekötve 2026-07-22: 11 DeepSeek-útmutatónk van hírforrás nélkül."
     },
     {
       "id": "qwen-news",
@@ -578,6 +578,28 @@
       "language": "en",
       "country": "JP",
       "comment": "HIVATALOS Sony AI — kutatás/kreatív AI (a meglévő IBM/NTT Research társa). Forrás-kutató találta; ellenőrizve 2026-07-24 (feed él, friss ~24 nap).",
+      "enabled": true
+    },
+    {
+      "id": "notion-releases",
+      "name": "Notion – Mi újság (hivatalos)",
+      "url": "https://www.notion.com/releases/rss.xml",
+      "category": "ai-company-official",
+      "priority": 2,
+      "language": "en",
+      "country": "US",
+      "comment": "HIVATALOS Notion termék-frissítések. A Google Workspace mintája: hétköznapi eszköz, minden új funkció kész útmutató-téma. Megbízhatóság 100/100 (2026-08-01, élőben mérve: 146 tétel, 2 napos frissesség).",
+      "enabled": true
+    },
+    {
+      "id": "microsoft-365",
+      "name": "Microsoft 365 Insider (hivatalos)",
+      "url": "https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=Microsoft365InsiderBlog",
+      "category": "ai-company-official",
+      "priority": 2,
+      "language": "en",
+      "country": "US",
+      "comment": "HIVATALOS Microsoft termék-frissítések (Word, Excel, Outlook, Copilot) – a Workspace Microsoft-párja. Megbízhatóság 100/100 (2026-08-01, élőben mérve: 20 tétel, 2 napos frissesség). A RÉGI cég-szintű duplikátum-szabály kizárta volna a microsoft-ai mellett; a szabály azóta termék-szintű.",
       "enabled": true
     }
   ],

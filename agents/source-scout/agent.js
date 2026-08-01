@@ -51,7 +51,13 @@ const ARGV = process.argv.slice(2);
 const FORCE = ARGV.includes('--force');
 function argVal(flag, def) { const i = ARGV.indexOf(flag); return (i !== -1 && ARGV[i + 1]) ? ARGV[i + 1] : def; }
 const IF_STALE_DAYS = ARGV.includes('--if-stale') ? parseFloat(argVal('--if-stale', '3')) : null;
-const MIN_SCORE = parseInt(argVal('--min-score', '70'), 10);
+// KÜSZÖB 70 → 100 (2026-08-01, user: "csak olyanokat nézz, ami 100 százalékos
+// és hasznos számunkra"). Előzmény: a 70-es kapun átment 6 javaslat MIND
+// hiteles volt (100/100/100/94/78/70) és MIND haszontalan — a pontszám ugyanis
+// azt méri, VALÓDI-e a forrás, nem azt, hogy KELL-e nekünk. A 100 megköveteli
+// mind az öt feltételt egyszerre: friss + bő kínálat + hivatalos + a domain
+// tényleg a cégé + érvényes RSS. A "hasznos-e" külön szűrő: lásd SCOUT_NICHES.
+const MIN_SCORE = parseInt(argVal('--min-score', '100'), 10);
 // Ennél régebben néma feed KIZÁRÓ okkal esik ki (pontszámtól függetlenül) — 2026-07-21.
 const DEAD_FEED_DAYS = parseInt(argVal('--dead-days', '365'), 10);
 
@@ -118,15 +124,22 @@ function getCoverage() {
   const config = JSON.parse(readFileSync(FEEDS_PATH, 'utf-8'));
   const domains = new Set();
   const brands = new Set();
+  // Cégenkénti DARABSZÁM is (2026-08-01) — lásd a kizárásnál: egy cégtől a
+  // 2-3. TERMÉK-hírfolyam értékes lehet, csak a végtelen ismétlés nem.
+  const brandCount = new Map();
+  const bump = b => { if (b) brandCount.set(b, (brandCount.get(b) || 0) + 1); };
   for (const s of config.sources) {
+    let label = '';
     try {
       const host = new URL(s.url).hostname.replace(/^www\./, '');
       domains.add(host);
-      brands.add(hostFirstLabel(host));
+      label = hostFirstLabel(host);
+      brands.add(label);
     } catch { /* skip */ }
     for (const t of tokensFromName(s.name)) brands.add(t);
+    bump(label);
   }
-  return { domains, brands };
+  return { domains, brands, brandCount };
 }
 
 // ===================================================================
@@ -151,21 +164,41 @@ Give 15-25 entries. type must be "official". Prefer a global mix (US, EU, Asia, 
 // FORGÓ VADÁSZMEZŐK (2026-07-05, user-jelzés: "nem küld új forrásokat"):
 // a fix példa-lista kimerült — futásonként 2 VÉLETLEN fülkéből kérünk
 // jelölteket, így mindig új területen kutat, nem ugyanazt a 18 nevet rágja.
+// ══ ÚJ VADÁSZMEZŐK (2026-08-01) ══════════════════════════════════════
+// User: "csak olyanokat nézz, ami 100 százalékos ÉS HASZNOS SZÁMUNKRA."
+//
+// MÉRÉS, ami ezt kiváltotta (581 cikk forrásonkénti útmutató-aránya):
+//   Google Workspace (termék-frissítések)  29 cikk → 17 útmutató = 59%  🏆
+//   AWS ML                                 41 →  12 = 29%
+//   Nvidia / Databricks / Apple ML         18 →   2 = 5-11%
+//   17 forrás (kutatólab, chip, vállalati) 66 →   0 =  0%
+//
+// A minta: HÉTKÖZNAPI EMBER ÁLTAL HASZNÁLT TERMÉK frissítés-híréből lesz
+// útmutató. Modellről, chipről, kutatásról szóló hírből SOHA.
+//
+// A RÉGI LISTA 14 mezőjéből 13 pont a 0%-os fajtára célzott (kutatólabok,
+// chipgyártók, robotika, szabványügy, vállalati platformok), és futásonként
+// csak 2-t húzott véletlenül — ezért hozott hónapokig használhatatlan
+// javaslatokat 100/100-as megbízhatósággal. Nem a kapu volt rossz: rossz
+// mezőn vadászott. Az EGYETLEN jó sor a régi listából ("consumer app
+// companies…") itt több, konkrétabb mezőre bomlik.
+//
+// AMI SZÁNDÉKOSAN KIMARADT: kutatóintézet, chip/hardver, vállalati-only
+// platform, MLOps, robotika, szabvány/policy. Ezek hitelesek, de az
+// olvasóinknak nem használhatók. Ha egyszer mégis kellenének, ide vissza.
 const SCOUT_NICHES = [
-  'AI video, image and creative-media tool companies',
-  'voice, speech and music AI companies',
-  'AI coding-assistant and developer-tool companies',
-  'open-source AI labs, foundations and model builders',
-  'university and non-profit AI research labs',
-  'Australian and New Zealand technology / AI organisations',
-  'European AI companies and research labs',
-  'Japanese, Korean, Indian and Southeast-Asian tech-giant AI research divisions',
-  'robotics and embodied-AI companies',
-  'AI safety, standards and policy organisations',
-  'enterprise software companies with major AI products',
-  'AI hardware, chip and infrastructure companies',
-  'health, science and climate AI research groups',
-  'consumer app companies with strong AI features (design, productivity, education)'
+  'note-taking, document and productivity app companies (product release notes)',
+  'photo, video and design app companies for non-professionals',
+  'consumer AI assistant and chatbot products (consumer-facing update feeds)',
+  'education, language-learning and study app companies',
+  'smart-home, wearable and consumer-device makers with AI features',
+  'chat, email, calendar and video-meeting app companies',
+  'personal finance, shopping, travel and everyday-life app companies',
+  'writing, music and podcast creation tools for everyday users',
+  'photo/file storage, notes and personal-cloud services',
+  'web browser, search and mobile-OS makers (consumer feature announcements)',
+  'small-business and freelancer software with AI features (invoicing, scheduling, CRM)',
+  'health, fitness and cooking app companies with AI features'
 ];
 
 async function getCandidateOrgs(coverage) {
@@ -173,7 +206,20 @@ async function getCandidateOrgs(coverage) {
   // 2 véletlen fülke — minden futás máshol vadászik
   const niches = [...SCOUT_NICHES].sort(() => Math.random() - 0.5).slice(0, 2);
   console.log(`🎯 Mai vadászmezők: ${niches.join('  +  ')}`);
-  const prompt = `List 18 official blogs/newsrooms of: (a) ${niches[0]}, and (b) ${niches[1]}. First-party sources only, no news media. Do NOT include any of these already-covered orgs: ${known}. Return a complete, valid JSON array only.${skillsBlock('source-scout')}`;
+  // A KÉRÉS IS TERMÉK-KÖZPONTÚ (2026-08-01). Korábban "official blogs/newsrooms"-ot
+  // kértünk — arra a cégek KUTATÁSI és SAJTÓ-blogját kaptuk, amiből 0 útmutató lesz.
+  // Most kifejezetten a "mi újság a termékben" típusú hírfolyamot kérjük: pontosan
+  // ilyen a Google Workspace Updates, a legjobb forrásunk (59% útmutató).
+  const prompt = `List 18 official PRODUCT-UPDATE feeds (release notes, changelogs, "what's new" or product newsroom) from: (a) ${niches[0]}, and (b) ${niches[1]}.
+
+HARD REQUIREMENTS:
+- First-party official sources only. No news media, no aggregators, no review sites.
+- The product must be one ORDINARY, NON-TECHNICAL PEOPLE actually use themselves.
+- Prefer feeds announcing new FEATURES users can try, over corporate//research news.
+- EXCLUDE: research labs, universities, chip/hardware makers, MLOps and developer
+  infrastructure, and enterprise-only platforms an ordinary person never touches.
+
+Do NOT include any of these already-covered feeds: ${known}. Return a complete, valid JSON array only.${skillsBlock('source-scout')}`;
   let totalCost = 0;
 
   for (let attempt = 1; attempt <= 3; attempt++) {
@@ -258,11 +304,24 @@ function reliabilityCheck(org, hostname, feed, coverage) {
   if (coverage.domains.has(hostname)) {
     return { ok: false, hardFail: 'ezt a domaint már követjük', score: 0, reasons };
   }
-  // CÉG-SZINTŰ deduplikáció: ha a domain-címke vagy a név egy MÁR követett cégre utal
+  // ══ CÉG-SZINTŰ → TERMÉK-SZINTŰ deduplikáció (2026-08-01) ═══════════
+  // A régi szabály MINDEN olyan forrást kizárt, aminek a cégét már követtük.
+  // Csakhogy egy cégnek több, TELJESEN KÜLÖNBÖZŐ hírfolyama van, és épp a
+  // "második" a jó: a Google AI-blogja 29%-nyi útmutatót ad, a Google
+  // WORKSPACE-frissítései 59%-ot — ez a LEGJOBB forrásunk. Ha a kereső agent
+  // találta volna meg, a saját szabályunk dobta volna ki "duplikátumként".
+  // (Ugyanígy esett ki a Microsoft 365 Insider a microsoft-ai mellett.)
+  // A pontos domain-egyezés természetesen továbbra is kizáró (fent).
+  // Marad viszont a MÉRTÉK: cégenként legfeljebb 3 hírfolyam, hogy egyetlen
+  // nagy cég ne nyelje el a forrás-listát.
   const candBrand = hostFirstLabel(hostname);
   const nameToks = tokensFromName(org.name);
-  if (coverage.brands.has(candBrand) || nameToks.some(t => coverage.brands.has(t))) {
-    return { ok: false, hardFail: `ezt a céget már lefedjük (${candBrand || nameToks[0]})`, score: 0, reasons };
+  const already = Math.max(
+    coverage.brandCount?.get(candBrand) || 0,
+    ...nameToks.map(t => coverage.brandCount?.get(t) || 0)
+  );
+  if (already >= 3) {
+    return { ok: false, hardFail: `ettől a cégtől már ${already} hírfolyamot követünk (${candBrand || nameToks[0]})`, score: 0, reasons };
   }
   if (items.length < 3) {
     return { ok: false, hardFail: `túl kevés cikk (${items.length}) — nem folyamatos forrás`, score: 0, reasons };
@@ -369,6 +428,13 @@ async function main() {
   const rejected = [];
   let checked = 0;
 
+  // A user által véglegesen elutasított hostok (a javaslat-fájlból)
+  let userRejected = new Set();
+  try {
+    userRejected = new Set(JSON.parse(readFileSync(OUTPUT_PATH, 'utf-8')).user_rejected_hosts || []);
+    if (userRejected.size) console.log(`🚫 Véglegesen elutasítva korábban: ${userRejected.size} forrás\n`);
+  } catch { /* nincs korábbi fájl */ }
+
   for (const org of orgs) {
     checked++;
     if (!org.domain || !org.domain.startsWith('http')) continue;
@@ -379,6 +445,11 @@ async function main() {
 
     // Gyors elő-kizárás (AI-hívás nélkül): már követjük / feketelista
     if (coverage.domains.has(hostname)) { console.log(`⏭️  ${org.name} (${hostname}) — már a listában`); continue; }
+    // AMIT A USER EGYSZER VISSZADOBOTT, TÖBBÉ NE JÖJJÖN VISSZA (2026-08-01).
+    // Enélkül minden futás újra felajánlaná ugyanazokat a 100 pontos, de
+    // számunkra haszontalan forrásokat, és a user újra és újra dönthetne
+    // ugyanarról. A lista a javaslat-fájlban él, kézzel bővíthető.
+    if (userRejected.has(hostname)) { console.log(`🚫 ${org.name} (${hostname}) — a user korábban elutasította`); continue; }
 
     const found = await discoverFeedForDomain(org.domain);
     if (!found) { console.log(`❌ ${org.name} (${hostname}) — nincs működő RSS`); continue; }
@@ -414,13 +485,22 @@ async function main() {
   // még nincs se lefedve, se az új listában, azt nem dobjuk el (már átment
   // a megbízhatóság-kapun). Így egy újrafuttatás nem "felejti el" a várólistát.
   try {
-    const prev = JSON.parse(readFileSync(OUTPUT_PATH, 'utf-8')).discovered_sources || [];
+    const prevFile = JSON.parse(readFileSync(OUTPUT_PATH, 'utf-8'));
+    const prev = prevFile.discovered_sources || [];
     const newHosts = new Set(discovered.map(d => { try { return new URL(d.url).hostname.replace(/^www\./, ''); } catch { return ''; } }));
     for (const p of prev) {
       let host = '';
       try { host = new URL(p.url).hostname.replace(/^www\./, ''); } catch { continue; }
       if (newHosts.has(host) || coverage.domains.has(host)) continue;
-      if (coverage.brands.has(hostFirstLabel(host))) continue;
+      // A KÜSZÖBÖT ÚJRA MÉRJÜK a megőrzöttekre is (2026-08-01). Enélkül a
+      // szigorítás csak az ÚJ jelöltekre hatna, a régi, alacsonyabb pontszámmal
+      // átcsúszott javaslatok pedig örökre a várólistán maradnának — a user
+      // meg olyan listát látna, ami már nem felel meg a saját szabályának.
+      if ((p.reliability_score ?? 0) < MIN_SCORE) {
+        console.log(`🧹 Elavult javaslat eldobva: ${p.name} [${p.reliability_score} < ${MIN_SCORE}]`);
+        continue;
+      }
+      if ((coverage.brandCount?.get(hostFirstLabel(host)) || 0) >= 3) continue;
       discovered.push(p);
       newHosts.add(host);
       console.log(`♻️  Megőrizve a korábbi kutatásból: ${p.name} [${p.reliability_score}]`);
@@ -442,6 +522,9 @@ async function main() {
       rejected_count: rejected.length,
       rejected_examples: rejected.slice(0, 8)
     },
+    // ÁT KELL VINNI minden futáson, különben a végleges elutasítás elveszne
+    // és a rendszer újra felajánlaná ugyanazokat.
+    user_rejected_hosts: [...userRejected].sort(),
     discovered_sources: discovered
   };
   writeFileSync(OUTPUT_PATH, JSON.stringify(output, null, 2), 'utf-8');
