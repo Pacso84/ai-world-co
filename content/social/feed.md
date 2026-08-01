@@ -1,6 +1,66 @@
 # AI World Co. — közösségi posztok
 
-*Generálva: 2026-08-01T10:08:00.792Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+*Generálva: 2026-08-01T16:53:24.343Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## Getting started with GitHub Copilot: a beginner's guide
+**🔗 https://aiworldhq.com/article/getting-started-with-github-copilot-a-beginner-s-guide**
+
+**Facebook:**
+I wrote my first bit of code today and it only took a few minutes — no memorisation required. Here's a simple guide to get started with AI coding help. https://aiworldhq.com/article/getting-started-with-github-copilot-a-beginner-s-guide #coding #beginners
+
+*Kép-ötlet: A clean laptop screen showing code suggestions appearing in a code editor*
+
+---
+
+## Getting started with Hugging Face: a beginner's guide
+**🔗 https://aiworldhq.com/article/getting-started-with-hugging-face-explore-ai-models-and-demos**
+
+**Facebook:**
+Ever wondered what all the AI hype is about? You can actually try thousands of AI models straight from your browser – no installation or coding required. This beginner's guide shows you exactly how to get started. https://aiworldhq.com/article/getting-started-with-hugging-face-explore-ai-models-and-demos
+
+*Kép-ötlet: A clean, minimalist laptop screen showing a simple, friendly interface with a clearly labelled search bar and thumbnail images of different AI tools.*
+
+---
+
+## Getting started with NVIDIA ChatRTX: a beginner's guide
+**🔗 https://aiworldhq.com/article/getting-started-with-nvidia-chatrtx-a-beginner-s-guide**
+
+**Facebook:**
+Ever wished you could use an AI helper without worrying about where your data goes? This step-by-step guide shows you how to run your own private AI assistant on your PC — simple setup, total privacy. https://aiworldhq.com/article/getting-started-with-nvidia-chatrtx-a-beginner-s-guide #AI #TechTips
+
+*Kép-ötlet: A clean, simple illustration of a personal computer with a friendly, minimal AI chat bubble, conveying privacy and simplicity.*
+
+---
+
+## Getting started with xAI’s Grok to draft professional emails in seconds
+**🔗 https://aiworldhq.com/article/get-started-with-xai-s-grok-to-draft-professional-emails-in-seconds**
+
+**Facebook:**
+Tired of spending ages on work emails? This guide shows how to turn rough notes into polished, professional messages in seconds using AI. Perfect for busy people who want to sound polished. https://aiworldhq.com/article/get-started-with-xai-s-grok-to-draft-professional-emails-in-seconds
+
+*Kép-ötlet: A person at a desk typing on a laptop with a satisfied expression, coffee cup nearby*
+
+---
+
+## Getting started with Grok (xAI) for everyday questions
+**🔗 https://aiworldhq.com/article/getting-started-with-grok-your-guide-to-everyday-ai-answers**
+
+**Facebook:**
+Ever wish you had a quick way to understand the day's news or explain tricky topics in plain language? This simple guide shows you how to use Grok for exactly that. 📱✨ https://aiworldhq.com/article/getting-started-with-grok-your-guide-to-everyday-ai-answers #AITips #EverydayTech
+
+*Kép-ötlet: A person peacefully reading on their phone at a café, with a warm and simple aesthetic*
+
+---
+
+## How to use Grok on X for real-time answers
+**🔗 https://aiworldhq.com/article/unlock-real-time-insights-with-grok-on-x**
+
+**Facebook:**
+Want to understand what's happening online without scrolling through hundreds of posts? Grok on X can give you instant summaries of the latest conversations. Here's a simple guide to try it. https://aiworldhq.com/article/unlock-real-time-insights-with-grok-on-x #AI #HowTo
+
+*Kép-ötlet: A clean phone screen showing the X app with a simple AI chat interface*
 
 ---
 
