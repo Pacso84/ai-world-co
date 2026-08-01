@@ -987,6 +987,13 @@ function loadArticles() {
         level: data._meta?.level || '',
         icon: data._meta?.icon || '',
         publishedAt: data._meta?.published_at || '',
+        // VALÓDI módosítás-dátum (2026-08-01, kereső-barátság átvilágítás).
+        // Eddig a dateModified = datePublished volt, vagyis a Google szerint
+        // egyetlen cikkünk sem frissült SOHA — pedig a felújító (upgrade-howtos)
+        // és a tény-ellenőrző rendszeresen újraírja őket. A frissesség a
+        // rangsorolás egyik jelzése; a saját munkánkat titkoltuk el vele.
+        modifiedAt: [data._meta?.published_at, data._meta?.howto_upgraded_at, data._meta?.fact_checked_at]
+          .filter(Boolean).sort().pop() || data._meta?.published_at || '',
         sourceName: data._meta?.source_name || '',
         sourceLink: data._meta?.source_link || '',
         reviewScore: data._meta?.ai_review?.overall_score || null
@@ -1161,6 +1168,25 @@ function imageDims(absUrl) {
 
   IMG_DIM_CACHE.set(rel, dim);
   return dim;
+}
+
+// ── CÍM A MÁRKANÉVVEL, HA VAN RÁ HELY (2026-08-01) ──────────────────
+// A Google a találati címet ~60 karakternél elvágja. Nálunk MINDEN cikkcím
+// megkapta a " — AI WORLD HQ" toldalékot (14 karakter), és élőben mérve
+// 24/24 cikk címe túllógott: az átlag 77 karakter volt, vagyis a vágás nem
+// a márkanevet nyeste le, hanem a CÍM VÉGÉT, gyakran szó közepén.
+//
+// MÉRÉS 580 cikken: márkanév nélkül a címek 43%-a fér ki teljesen, vele
+// csak 15%. A toldalék elhagyása tehát majdnem megháromszorozza a teljesen
+// látható címeket — a márka pedig nem vész el, mert a Google a találat
+// fölött amúgy is kiírja a domaint.
+//
+// SZÁNDÉKOSAN NEM mindig hagyjuk el: ahol a cím rövid, ott a márkanév
+// ingyen van és segít a felismerésben. Csak ott esik ki, ahol ára lenne.
+const SERP_TITLE_MAX = 60;
+function withBrand(title) {
+  const full = `${title} — ${SITE.name}`;
+  return full.length <= SERP_TITLE_MAX ? full : title;
 }
 
 function pageShell({ title, description, bodyContent, isArticle = false, noIntro = false, ogImage = '', keywords = '', jsonld = null, pagePath = '', articleMeta = null }) {
@@ -1665,7 +1691,7 @@ function buildArticlePage(a) {
     headline: a.title, description: a.seoDescription || a.subtitle,
     image: ogImage || undefined,
     datePublished: a.publishedAt || undefined,
-    dateModified: a.publishedAt || undefined,
+    dateModified: a.modifiedAt || a.publishedAt || undefined,   // VALÓDI frissítés (2026-08-01)
     inLanguage: HTML_LANG[LANG] || 'en',
     author: { '@type': 'Organization', name: SITE.name, url: `${SITE.url}/about` },
     publisher: {
@@ -1676,12 +1702,12 @@ function buildArticlePage(a) {
     keywords: a.seoKeywords || undefined
   };
   return pageShell({
-    title: `${a.title} — ${SITE.name}`,
+    title: withBrand(a.title),
     description: a.seoDescription || a.subtitle,
     keywords: a.seoKeywords,
     ogImage, jsonld: [jsonld, breadcrumbSchema(a, canonical)], pagePath: `article/${a.slug}`,
     bodyContent: body, isArticle: true,
-    articleMeta: { published: a.publishedAt, modified: a.publishedAt, section: cat.label }
+    articleMeta: { published: a.publishedAt, modified: a.modifiedAt || a.publishedAt, section: cat.label }
   });
 }
 
@@ -2060,19 +2086,36 @@ function buildGuidePage(a) {
     '@context': 'https://schema.org', '@type': 'HowTo',
     name: a.title, description: a.seoDescription || a.subtitle,
     image: ogImage || undefined,
+    // DÁTUM + SZERZŐ + KIADÓ (2026-08-01, kereső-barátság átvilágítás).
+    // Ezek eddig CSAK a hír-cikkeken (NewsArticle) voltak meg; az útmutatókon
+    // — vagyis a fő forgalomszerzőnkön, 254 cikken — nem. Élőben mérve:
+    // 24 véletlen cikkből 10 volt dátum és szerző NÉLKÜL, és mind a 10 útmutató.
+    // A HowTo a schema.org szerint CreativeWork, tehát mindezt szabályosan viszi.
+    // Miért számít: a dátum a frissesség-jelzés (és ez jelenik meg a találatban),
+    // a szerző/kiadó pedig az E-E-A-T jelzés — 100%-ban AI-tartalomnál a
+    // hitelesség kimondottan fontos. A szerző SZÁNDÉKOSAN a szervezet, nem
+    // kitalált ember: kamu emberi név helyett vállalt AI-szerkesztőség.
+    datePublished: a.publishedAt || undefined,
+    dateModified: a.modifiedAt || a.publishedAt || undefined,
+    author: { '@type': 'Organization', name: SITE.name, url: `${SITE.url}/about` },
+    publisher: {
+      '@type': 'Organization', name: SITE.name, url: SITE.url,
+      logo: { '@type': 'ImageObject', url: `${SITE.url}/assets/logo.svg` }
+    },
+    mainEntityOfPage: canonical,
     inLanguage: HTML_LANG[LANG] || 'en',
     // többnyelvű STEP_RX: a nem-angol oldalak HowTo jelölése eddig ÜRES volt
     step: stepHeadings.map(h => ({ '@type': 'HowToStep', name: stripInlineMd(h) }))
   };
   return pageShell({
-    title: `${a.title} — ${SITE.name}`,
+    title: withBrand(a.title),
     description: a.seoDescription || a.subtitle,
     keywords: a.seoKeywords, ogImage,
     // HowTo + FAQPage + morzsamenü együtt (a JSON-LD tömböt is érti a Google)
     jsonld: [jsonld, ...(faqSchema ? [faqSchema] : []), breadcrumbSchema(a, canonical)],
     pagePath: `article/${a.slug}`,
     bodyContent: body, isArticle: true,
-    articleMeta: { published: a.publishedAt, modified: a.publishedAt }
+    articleMeta: { published: a.publishedAt, modified: a.modifiedAt || a.publishedAt }
   });
 }
 

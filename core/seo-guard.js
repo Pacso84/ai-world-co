@@ -124,6 +124,51 @@ function checkPageSignals() {
   }
 }
 
+// ── 2c. SZERKEZETT ADAT (JSON-LD) TELJESSÉGE ────────────────────────
+// 2026-08-01, a "mennyire kereső-barát a munkánk?" átvilágításból.
+// LELET VOLT: a hír-cikkek teljes NewsArticle-jelölést kaptak (dátum,
+// szerző, kiadó), az ÚTMUTATÓK viszont — 254 cikk, a fő forgalomszerzőnk —
+// dátum és szerző NÉLKÜL mentek ki. Élőben mérve 24 véletlen cikkből 10
+// volt hiányos, és mind a 10 útmutató. A hiba azért maradt rejtve, mert a
+// két oldaltípust két külön függvény építi: a hír ága jó volt, a másik nem.
+//
+// Miért fontos: a dátum a frissesség-jelzés (ez látszik a találatban is),
+// a szerző/kiadó az E-E-A-T jelzés. 100%-ban AI-írt tartalomnál a
+// hitelesség-jelzés nem díszítés.
+//
+// Az ELROMLOTT JSON-LD-t is fogja: egy hibás séma rosszabb a hiányzónál,
+// mert a Google az egész blokkot eldobja — némán.
+function checkSchema() {
+  const SAMPLE = 40;
+  const adir = join(PUBLIC, 'article');
+  if (!existsSync(adir)) return;
+  const files = readdirSync(adir).filter(f => f.endsWith('.html'));
+  // Egyenletes mintavétel a teljes listából (nem csak az első néhány):
+  // az útmutatók és a hírek keverve vannak, egy elejéről vett minta
+  // kihagyhatná az egyik típust — pont ezt a hibát kerestük.
+  const step = Math.max(1, Math.floor(files.length / SAMPLE));
+  const pick = files.filter((_, i) => i % step === 0).slice(0, SAMPLE);
+  const miss = { date: [], author: [], broken: [] };
+  for (const f of pick) {
+    const html = readFileSync(join(adir, f), 'utf-8');
+    const blocks = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map(m => m[1]);
+    if (!blocks.length) { miss.date.push(f); miss.author.push(f); continue; }
+    let all = [];
+    for (const b of blocks) {
+      try { const j = JSON.parse(b); all = all.concat(Array.isArray(j) ? j : [j]); }
+      catch { miss.broken.push(f); }
+    }
+    const main = all.find(o => /HowTo|NewsArticle|Article|BlogPosting/.test(o?.['@type'] || ''));
+    if (!main) continue;
+    if (!main.datePublished) miss.date.push(f);
+    if (!main.author) miss.author.push(f);
+  }
+  const n = pick.length;
+  if (miss.broken.length) add('SCHEMA_BROKEN', `${miss.broken.length}/${n} cikk JSON-LD-je ELROMLOTT (a Google az egész blokkot eldobja) — pl. ${miss.broken[0]}`);
+  if (miss.date.length) add('SCHEMA_NO_DATE', `${miss.date.length}/${n} cikk szerkezett adatában nincs datePublished (a Google nem látja a frissességet) — pl. ${miss.date[0]}`);
+  if (miss.author.length) add('SCHEMA_NO_AUTHOR', `${miss.author.length}/${n} cikk szerkezett adatában nincs author (E-E-A-T jelzés hiányzik) — pl. ${miss.author[0]}`);
+}
+
 // ── 2b. A Discover 1200 px-nél szélesebb képet kér ───────────────────
 // A jelzés önmagában nem elég: ha a borítókép kisebb, a cikk ugyanúgy
 // kimarad a Discoverből. A generátor 1280-at ad, de ezt eddig 1000-re
@@ -258,6 +303,7 @@ function main() {
   const urlCount = checkSitemap();
   checkOtherOutputs();
   checkPageSignals();
+  checkSchema();
   checkDiscoverImages();
   checkSocialLinks();
   checkPinnedSlugs();
