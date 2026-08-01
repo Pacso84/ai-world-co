@@ -2184,6 +2184,15 @@ const AUTOLINK_KW = {
   'voice-cloning': { en: ['voice cloning'], hu: ['hangklónozás'], es: ['clonación de voz'], de: ['Stimmklonen'], fr: ['clonage de voix'] },
   'image-generator': { en: ['image generator'], hu: ['képgenerátor'], es: ['generador de imágenes'], de: ['Bildgenerator'], fr: ['générateur d’images', "générateur d'images"] },
   'ai-agent': { en: ['AI agent'], hu: ['AI-ügynök'], es: ['agente de IA', 'agentes de IA'], de: ['KI-Agent', 'KI-Agenten'], fr: ['agent IA', 'agents IA'] },
+  // 2026-08-01 (user: "szótárat bővítsük agent skill plugin"). SZÁNDÉKOSAN nem a
+  // puszta "skill" a kulcsszó: a minta `(?<![\p{L}])kw[\p{L}]*` kis-nagybetűre
+  // érzéketlen, tehát a "skill" ráugrana az "improve your skills"-re is, és a
+  // szótárba vinné az olvasót egy teljesen hétköznapi szóról. A "plugin"
+  // viszont önmagában is egyértelmű (a toldalékos "pluginek" is illeszkedik).
+  // Az MCP betűszó → kis-nagybetű-érzékeny ág, magyar toldalékkal (MCP-t) is jó.
+  'ai-skill': { en: ['AI skill'], hu: ['AI-készség'], es: ['habilidad de IA'], de: ['KI-Fähigkeit'], fr: ['compétence IA'] },
+  'plugin': { en: ['plugin'], hu: ['plugin'], es: ['plugin'], de: ['Plugin'], fr: ['plugin'] },
+  'mcp': { en: ['MCP'], hu: ['MCP'], es: ['MCP'], de: ['MCP'], fr: ['MCP'] },
   'fine-tuning': { en: ['fine-tuning', 'fine-tuned', 'fine-tune'], hu: ['finomhangolás'], es: ['ajuste fino'], de: ['Feinabstimmung', 'Fine-Tuning'], fr: ['ajustement fin', 'fine-tuning'] },
   'multimodal': { en: ['multimodal'], hu: ['multimodális'], es: ['multimodal'], de: ['multimodal'], fr: ['multimodal', 'multimodale'] },
   'hallucination': { en: ['hallucination'], hu: ['hallucináció'], es: ['alucinación'], de: ['Halluzination'], fr: ['hallucination'] },
