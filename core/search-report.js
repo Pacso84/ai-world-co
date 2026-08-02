@@ -162,9 +162,15 @@ async function getVisitors() {
 async function main() {
   if (!guard()) return;
 
-  let g = null, b = null;
-  try { g = await getGoogle(); } catch (e) { console.log('⚠️ GSC: ' + e.message.slice(0, 80)); }
-  try { b = await getBing(); } catch (e) { console.log('⚠️ Bing: ' + e.message.slice(0, 80)); }
+  // A HIBA OKÁT IS MEGJEGYEZZÜK (2026-08-02). Eddig a riport minden hiányzó
+  // adatra azt írta, hogy "nincs kulcs beállítva" — akkor is, ha a kulcs
+  // megvolt, csak a hívás dőlt el. Ez félrevezető: a Bing 2026-08-31-én
+  // kivezeti a régi SOAP/POX API-t, és ha emiatt elnémulna az adat, azt hinnénk,
+  // elfelejtettünk egy kulcsot, ahelyett hogy javítanánk a címet.
+  let g = null, b = null, gErr = '', bErr = '';
+  try { g = await getGoogle(); } catch (e) { gErr = e.message.slice(0, 80); console.log('⚠️ GSC: ' + gErr); }
+  try { b = await getBing(); } catch (e) { bErr = e.message.slice(0, 80); console.log('⚠️ Bing: ' + bErr); }
+  const why = (err, key) => err ? `⚠️ HIBA — ${err}` : (process.env[key] || '').trim() ? '⚠️ nincs adat' : 'nincs kulcs beállítva';
 
   if (!g && !b) { console.log('⏭️  Kereső-riport: nincs beállított kulcs (GSC_SA_JSON / BING_WM_API_KEY) — kihagyom.'); return; }
 
@@ -174,11 +180,11 @@ async function main() {
     weeklyClicks += g.clicks;
     lines.push(`🔍 Google: *${g.clicks} kattintás* (${pct(g.clicks, g.prevClicks)}) · ${g.impressions} megjelenés`);
     if (g.top.length) lines.push(`   top keresések: ${g.top.join(' · ')}`);
-  } else lines.push('🔍 Google: nincs kulcs beállítva');
+  } else lines.push(`🔍 Google: ${why(gErr, 'GSC_SA_JSON')}`);
   if (b) {
     weeklyClicks += b.clicks;
     lines.push(`🔎 Bing: *${b.clicks} kattintás* · ${b.impressions} megjelenés`);
-  } else lines.push('🔎 Bing: nincs kulcs beállítva');
+  } else lines.push(`🔎 Bing: ${why(bErr, 'BING_WM_API_KEY')}`);
 
   // ÖSSZES látogató (Cloudflare Web Analytics) — nem csak a keresőkből!
   try {
