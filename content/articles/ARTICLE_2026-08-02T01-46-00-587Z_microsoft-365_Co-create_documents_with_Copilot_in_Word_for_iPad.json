@@ -1,0 +1,58 @@
+{
+  "_meta": {
+    "written_at": "2026-08-02T01:49:59.019Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00728034,
+    "original_draft": "2026-08-02T01-46-00-587Z_microsoft-365_Co-create_documents_with_Copilot_in_Word_for_iPad.json",
+    "source_id": "microsoft-365",
+    "source_name": "Microsoft 365 Insider (hivatalos)",
+    "source_link": "https://techcommunity.microsoft.com/t5/microsoft-365-insider-blog/co-create-documents-with-copilot-in-word-for-ipad/ba-p/4534191",
+    "status": "published",
+    "published_at": "2026-08-02T01:50:23.401Z",
+    "slug": "how-to-use-copilot-in-word-on-ipad-a-step-by-step-guide",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1510
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Excellent guide — every step is specific and actionable, technical terms are explained plainly (OneDrive, styles, Copilot pane), the Before you start section sets clear prerequisites, and common mistakes are addressed with honest limitations. Warm and encouraging tone throughout. Minor note: the OneDrive metaphor could be tighter but it's clear and harmless. No issues that warrant rejection.",
+      "_aiCost": 0.0024927,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-08-02T01:51:12.175Z",
+    "guide_worthy": true,
+    "related_guide_topic": "copilot-office",
+    "image_v": 2,
+    "image_at": "2026-08-02T01:59:58.060Z",
+    "seo": {
+      "meta_description": "Learn how to use Copilot in Word on iPad with this step-by-step guide — AI writing, editing and restructuring documents straight from your tablet.",
+      "keywords": [
+        "how to use Copilot in Word on iPad",
+        "Microsoft Copilot Word iPad tutorial",
+        "Copilot iPad writing AI",
+        "Word iPad AI features",
+        "Microsoft 365 Copilot iPad",
+        "AI writing assistant iPad",
+        "Copilot Word app iPad"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Meta description effectively captures the step-by-step guide intent and includes primary keywords",
+        "Consider adding the word 'free' or clarifying subscription requirement in meta to set accurate expectations",
+        "Article excerpt could include more specific Copilot commands or features to improve ranking potential"
+      ],
+      "optimised_at": "2026-08-02T02:01:13.717Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"How to Use Copilot in Word on iPad: A Step-by-Step Guide\"\nsubtitle: \"Get AI help writing, editing and restructuring your document — straight from your iPad, no laptop needed.\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 7\ntags: [\"microsoft-copilot\", \"word\", \"ipad\", \"productivity\", \"mobile-work\"]\n---\n\n# How to Use Copilot in Word on iPad: A Step-by-Step Guide\n\n> **In short:** Microsoft has added Copilot directly inside Word for iPad, so you can draft, edit and restructure documents with AI without leaving the app — or your tablet. You'll need a Microsoft 365 subscription with Copilot, plus the latest Word for iPad update.\n\nSitting on the train with a half-finished report. Pulling out the iPad to finish the last paragraph before a meeting. Reaching for a tab on the train home to polish a memo you started on the laptop that morning. Word on iPad used to be fine for reading, less fine for actually writing — the moment you needed real help, you ended up reaching for a computer. Microsoft has now put **Copilot** (its built-in AI assistant) directly inside Word on iPad, so the tablet can do most of what the desktop can.\n\nHere's how to get started, step by step.\n\n## Before you start: what you need\n\nBefore opening the app, check that you have these in place. Nothing worse than getting to step 4 and finding out you're stuck.\n\n- **An iPad running a recent version of iPadOS.** Microsoft doesn't always spell out the minimum, so update iPadOS if you can — this avoids weird glitches.\n- **The latest version of Microsoft Word for iPad.** Open the App Store, tap your profile icon in the top right, and update Word if it appears in the list. The new Copilot features need the most recent build.\n- **A Microsoft 365 subscription that includes Copilot.** Copilot isn't part of the free tier. You typically get it through a **Microsoft 365 Personal** or **Family** plan with Copilot added, or through many **business/work** plans (Microsoft 365 Business Premium, for example). If you only see a \"Try Copilot\" prompt with a paywall, that's why.\n- **A document saved to OneDrive.** Copilot works best on documents stored in the cloud (OneDrive is Microsoft's online storage — think of it as a hard drive that lives on the internet), because that's where the AI can safely make changes without breaking things on your device.\n\nOnce those four are sorted, you're ready.\n\n## Step 1 — Open your document and find the Copilot button\n\nOpen Word on your iPad, then open the document you want to work on. Look at the **Home tab** (it's the first icon along the bottom ribbon on iPad — the row of buttons at the bottom of the screen). You'll see a new **Copilot** icon, usually a stylised four-pointed star or sparkle shape, depending on your version.\n\nTap it once. A side panel slides in from the right — this is the **Copilot pane** (a chat-style sidebar where the AI lives while you work). You'll know it worked when you see a text box at the bottom of the panel with a prompt like *\"What would you like Copilot to do?\"*\n\n## Step 2 — Try a quick rewrite first\n\nBefore tackling anything big, run a small test so you can see how Copilot handles your document. In the Copilot pane, tap the text box and type something like:\n\n💬 *\"Rewrite the second paragraph in a more conversational tone.\"*\n\nHit send. Copilot will read the paragraph and offer a rewritten version directly in your document — usually highlighted or underlined so you can see what changed. Tap **Keep it** if you like the rewrite, or **Discard** if you don't. You can also leave it for now and decide later.\n\nA good first test teaches you how the AI handles your particular writing style — some are more chatty by default, some are quite formal.\n\n## Step 3 — Generate new content from a prompt\n\nThis is where Copilot really earns its keep: drafting something from scratch based on a few sentences from you. Tap inside the document where you want the new text to appear, then open the Copilot pane.\n\nType a clear instruction. For example:\n\n💬 *\"Write a 150-word introduction for a project update to the leadership team. Cover the main goal, current progress and next steps. Keep it professional but not stiff.\"*\n\nCopilot will draft the text right into the document at your cursor. Read it through, keep the bits you like, and edit the rest. The trick is to treat the first draft as a starting point, not a finished product — you'll always want to add your own voice.\n\nYou'll know it worked when new paragraphs appear at your cursor, and Copilot shows you options to **Keep**, **Regenerate** (try a new version) or **Discard**.\n\n## Step 4 — Use Copilot to restructure a messy draft\n\nMost documents don't need more writing — they need reorganising. Tap into a document you've been struggling with, open the Copilot pane, and try:\n\n💬 *\"Suggest a clearer structure for this document. Add headings where it makes sense and group related points together.\"*\n\nCopilot reads the whole document and proposes a new outline, applying Word's built-in **styles** (named formatting presets like \"Heading 1\" or \"Body Text\" that control how text looks) so your formatting doesn't break. It won't move sentences around without telling you — it'll usually show you the proposed structure first, and you decide whether to accept.\n\nThis step alone has saved many people an hour of fiddling with bullet points.\n\n## Step 5 — Ask questions about your own document\n\nSometimes you don't want Copilot to *write* — you want it to *summarise*. Open the Copilot pane and ask:\n\n💬 *\"Summarise this 8-page report into 5 bullet points for the executive team.\"*\n\nOr:\n\n💬 *\"What are the key risks mentioned in this document?\"*\n\nCopilot reads the file and answers in the chat pane. The summary doesn't replace reading the document, but it's a fast way to refresh before a meeting or pull the main points into a separate note.\n\nYou'll know it worked when the answer appears as plain text in the chat panel, referencing what's actually in your document rather than general knowledge.\n\n## Step 6 — Refine the tone of an existing section\n\nTone is the hardest thing to get right on a phone or tablet, because you can't easily bounce a paragraph off a colleague. Try this:\n\n💬 *\"Make this section sound more confident without being aggressive. Keep the length roughly the same.\"*\n\nCopilot rewrites the section in place. Compare the before and after, keep what works, and adjust the rest. Over a few rounds, you'll start to learn which prompts produce the tone you actually want.\n\n## Common mistakes to avoid\n\n- **Skipping the OneDrive step.** If your document is stored only on the iPad, Copilot may not be able to edit it in place. Move it to OneDrive first.\n- **Accepting the first draft blindly.** Copilot writes quickly, but it doesn't know your reader. Always read what it produces and adjust.\n- **Forgetting the formatting.** Copilot preserves Word's **styles** (the named formatting presets that control headings, body text, lists and so on) when you ask it to restructure, so your document should still look right. If formatting looks off afterwards, check that your styles are still applied — sometimes a long document with manual formatting confuses the AI.\n- **Asking for things Copilot can't do.** It can read your document, but it can't reach out to email, your calendar, or the web from inside the iPad Word app the way it can on desktop. Keep your requests to what's actually in the file.\n\n## What this means for you\n\n- **If you use Word for personal writing** — letters, journaling, planning documents, school assignments — Copilot on iPad means you can draft and polish from the couch, the café or the bus without waiting until you're back at a laptop. Start with a small rewrite to get a feel for its style.\n- **If you work on the go** — sales, consulting, teaching, healthcare, field work — the restructure and summarise steps are where you'll save the most time. A 20-page report can become five bullets before a meeting in under a minute.\n- **If you're new to AI writing tools** — begin with a single, contained task like \"rewrite this paragraph\" before you trust it with anything important. The more you use it, the better your prompts become.\n\n## Wrap-up\n\nCopilot inside Word for iPad turns the tablet into a more capable writing tool than it's been before — not because the AI is doing the writing for you, but because it handles the slow parts (reformatting, summarising, drafting first versions) so you can spend your attention on the parts only you can do. Pick one document, run through the steps above, and see how it feels. The first ten minutes will tell you whether it earns a permanent spot in your workflow.",
+  "original_title": "Co-create documents with Copilot in Word for iPad"
+}

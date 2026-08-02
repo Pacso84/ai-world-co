@@ -1,0 +1,62 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "how-to-triage-and-clean-up-an-overwhelming-inbox-with-copilo",
+    "company": "Microsoft",
+    "tool": "Copilot",
+    "icon": "📧",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-08-02T01:59:36.878Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.01400208,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-08-02T01:59:53.702Z",
+    "slug": "how-to-triage-and-clean-up-an-overwhelming-inbox-with-copilot",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1646
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": 8,
+      "decision": "PASS",
+      "issues": [
+        "Step 4: \"Draft a reply\" button not available on all Outlook versions — earlier text says Copilot may not exist on older versions, but Step 4 doesn't repeat this caveat before describing the button, risking reader confusion",
+        "Step 5: \"one-click unsubscribe\" is vague — doesn't say what the button looks like or where to find it if not obvious"
+      ],
+      "verdict": "Solid guide with strong structure, beginner-friendly tone, and useful specific examples. Minor clarity gap on \"Draft a reply\" button availability and unsubscribe button appearance, but these don't prevent a smart beginner from following the guide successfully. Recommend minor fix to Step 4 to clarify the feature availability before describing it.",
+      "_aiCost": 0.00177895,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "image_v": 2,
+    "image_at": "2026-08-02T02:01:05.018Z",
+    "seo": {
+      "meta_description": "Learn to use Copilot in Outlook to triage an overflowing inbox, summarise emails and prioritise what matters. Quick 20-minute guide.",
+      "keywords": [
+        "how to use Copilot in Outlook",
+        "Outlook Copilot email management",
+        "triage overwhelming inbox with AI",
+        "Copilot email summary Microsoft 365",
+        "clean up inbox with AI assistant"
+      ],
+      "seo_score": 7,
+      "suggestions": [
+        "Add 'Microsoft 365 Copilot' as the full product name in the article body for clarity",
+        "Consider adding the required subscription detail (Copilot Pro or Copilot for Microsoft 365) to the title or subtitle",
+        "Include the specific Outlook app name in the article for better topical relevance"
+      ],
+      "optimised_at": "2026-08-02T02:02:21.016Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"How to Triage and Clean Up an Overwhelming Inbox with Copilot\"\nsubtitle: \"Use Copilot inside Outlook to summarise, prioritise and draft replies so a 500-message inbox shrinks to the five emails that matter today.\"\ncategory: \"guide\"\naudience: \"business\"\ncompany: \"Microsoft\"\ntool: \"Copilot\"\nlevel: \"beginner\"\nread_time_minutes: 7\ntags: [\"getting-started\", \"copilot\", \"productivity\", \"email\"]\n---\n\n# How to Triage and Clean Up an Overwhelming Inbox with Copilot\n\n> **In short:** Copilot can turn a 500-message inbox into five emails that actually need your attention today, but you need a Microsoft 365 plan with Copilot included, and Copilot drafts your replies rather than sending them on your behalf.\n\nIf your inbox feels like a mountain and you're scared to open Outlook, this guide is for you. In about 20 minutes, you'll turn a clogged inbox into a short list of real priorities — and you won't need to read every single message to do it. This works best for people who handle a mix of work email and personal mail in Microsoft 365.\n\n## Before you start\n\n- A **Microsoft 365 account** with a **Copilot licence**. Copilot is included with some Microsoft 365 business and enterprise plans, and is also available as **Copilot Pro** for personal Microsoft 365 subscriptions (around $20 AUD per month, billed by Microsoft). Free personal Outlook accounts don't include Copilot features.\n- The **new Outlook** — on the web at outlook.com (or your work sign-in page), the **new Outlook for Windows** (the toggle near the top-right says \"Try the new Outlook\"), Outlook for Mac, or the Outlook mobile app. The classic Outlook for Windows doesn't have the full Copilot experience.\n- **About 20–30 minutes** for the first clean-up. After that, around **five minutes a day** keeps it tidy.\n\n## Step 1 — Open Outlook and find the Copilot button\n\nOpen Outlook on whichever device you prefer. If you're on the web, sign in at outlook.com or your work's Microsoft 365 sign-in page. If you're on a computer, open the **new Outlook for Windows** or **Outlook for Mac**. The new Outlook has a cleaner ribbon at the top and a more obvious Copilot button.\n\nLook for a button labelled **Copilot** with a small four-pane colourful icon, usually near the top-right of the screen. Clicking it opens a chat-style panel on the right-hand side. On mobile, the Copilot entry point is sometimes tucked inside an **Apps** or **Tools** menu — tap your profile icon to find it.\n\nIf you can't see the Copilot button at all, two things are usually true: you're on the classic Outlook for Windows (toggle to \"Try the new Outlook\" at the top-right), or your account doesn't have a Copilot licence yet (check with your IT team or your Microsoft 365 subscription page).\n\nYou'll know it worked when you can click the Copilot button and a panel slides open on the right side of the screen, ready for you to type.\n\n## Step 2 — Ask Copilot to summarise your unread emails\n\nNow you're in the Copilot panel. At the bottom is a text box where you type a request. Press **Enter** or click the send arrow.\n\nCopilot scans your unread mail and returns a short summary grouped by sender or topic — for example, \"3 from your manager, 2 from a client, 14 newsletters\". You'll see this as a few bulleted points inside the Copilot panel, not as new emails in your inbox. The summary updates each time you ask, so you can re-run it after cleaning up.\n\nIf the text box is labelled differently on your version — \"Message Copilot\" or behind a chat icon — that's fine, the behaviour is the same. On mobile, the panel usually takes the full screen. If nothing appears after 15 seconds, refresh and try once more — Copilot occasionally needs a moment to load on first use.\n\n💬 Example: *\"Summarise my unread emails from today and group them by sender.\"*\n\nYou'll know it worked when a short, structured list appears in the Copilot panel, with names, topics and rough counts.\n\n## Step 3 — Spot the emails that actually need a reply\n\nThis is the heart of the triage. Stay in the Copilot panel and ask a follow-up question that filters the summary down to what really matters. Copilot ranks using signals like who sent it, urgency words in the subject line, and time-sensitive phrases such as \"by Friday\" or \"ASAP\".\n\nYou should now see a much shorter list — usually three to five emails Copilot considers the most important. Each one comes with a short reason next to it, like \"from your manager, mentions a deadline\" or \"client waiting on a quote\". This is the list you'll actually act on today.\n\nIf the list is too long, be more specific. If it's too short, ask for more. Vague requests give vague results — the more you tell Copilot about what \"important\" means to you, the better the ranking.\n\n💬 Example: *\"From my unread emails, which 5 are most urgent today, and why?\"*\n\nYou'll know it worked when you can glance at the Copilot panel and immediately name the three to five emails that deserve your real attention.\n\n## Step 4 — Draft replies in your own tone\n\nOpen the first email that needs a reply. Look inside the message for a Copilot button — usually labelled **Draft a reply** or shown as a small Copilot icon near the reply arrow. Click it. A reply window opens with Copilot's suggested text already filled in.\n\nRead the draft carefully. Copilot usually matches the tone of the original email and pulls in useful context from the thread, but it can still sound stiff or miss a personal detail. Edit the draft to add anything specific, soften the tone, or remove anything you'd rather not say.\n\nIf the \"Draft a reply\" button isn't there, look for it inside the **⋯** menu near the reply arrow, or right-click the email. On older Outlook versions this feature may not exist — work from the Copilot summary and write the reply yourself.\n\n💬 Example: click **Draft a reply**, then add to Copilot's suggestion: *\"Make it warmer and add: I'll send the report by 5pm today.\"*\n\nYou'll know it worked when the reply box contains a complete draft that mostly says what you want, with your edits on top. **Important:** Copilot never sends anything without you pressing Send.\n\n## Step 5 — Sweep the noise: archive, delete, unsubscribe\n\nNow for the easy wins. Ask Copilot to list the newsletters, automated notifications and marketing emails sitting in your inbox. It pulls them out into a single view, so you can see the noise without scrolling through real mail.\n\nGo through the list. For each item, either **archive** it (moves it out of the inbox but keeps it searchable), **delete** it, or, if it's a recurring sender you don't want, look for the **unsubscribe** link Copilot usually highlights. Most legitimate newsletters include a one-click unsubscribe at the bottom of the email.\n\nIf unsubscribe links aren't showing, your reading pane may be hiding them — open one email in its own window and look at the very bottom. Copilot sometimes surfaces the unsubscribe link directly inside its panel so you don't have to open each one.\n\n💬 Example: *\"List all the newsletters and automated emails in my inbox from the last 7 days.\"*\n\nYou'll know it worked when your inbox looks visibly smaller and the only messages left are the ones you genuinely need to act on.\n\n## Step 6 — Set up an ongoing triage habit\n\nMake this a five-minute daily habit. Tomorrow morning, before opening any individual email, open Copilot and ask for a fresh summary. Spend two minutes reading the priority list, then reply, archive or delete each item before moving on. The big weekly panic becomes a small daily check-in.\n\nIf your work generates a flood of mail, ask Copilot to build a simple Outlook rule — for example, moving every email from your manager into a folder called **Priority** and flagging it. Copilot can create these without any coding.\n\nIf the rule option isn't available on your version, set up Outlook rules manually: **Settings → Mail → Rules**. Copilot will suggest what to add, and you confirm and save each one.\n\n💬 Example: *\"Create a rule that moves every email from my manager into a folder called 'Manager' and marks it as important.\"*\n\nYou'll know it worked when tomorrow's inbox takes you five minutes, not an hour.\n\n## Common mistakes\n\n- **Letting Copilot send replies on its own.** Copilot drafts — it never sends unless you press Send yourself. Always read the draft before clicking.\n- **Trusting the priority list blindly.** Copilot ranks using sender, keywords and timing, but it can miss context. An email from your child's school may look low-priority to an algorithm and still be the most important one today.\n- **Asking vague questions.** \"Help with my email\" gets a vague answer. Specific prompts like \"which 5 emails need a reply today\" give focused, useful results.\n\n## What this means for you\n\n- **In everyday life:** A weekly 30-minute inbox reset becomes a daily five-minute habit. Less stress on Sunday night, fewer missed messages from people who matter.\n- **For your business or work:** You stop reacting to email and start choosing what to respond to. The five important emails get your full attention instead of getting buried under 500 others.\n- **If you're just getting started:** Try Step 2 on its own first — just open Copilot and ask for a summary. Once you see it work, the rest of the steps feel natural.\n\n## Try it now\n\nOpen Outlook, find the Copilot button, and type: *\"Summarise my unread emails from today and tell me which ones need a reply.\"* Five minutes, one prompt, and you'll see your inbox shrink in front of you.",
+  "original_title": "How to Triage and Clean Up an Overwhelming Inbox with Copilot"
+}

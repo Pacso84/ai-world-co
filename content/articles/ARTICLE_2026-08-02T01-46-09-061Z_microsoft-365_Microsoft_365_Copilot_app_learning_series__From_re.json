@@ -1,0 +1,56 @@
+{
+  "_meta": {
+    "written_at": "2026-08-02T01:47:07.987Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.0105387,
+    "original_draft": "2026-08-02T01-46-09-061Z_microsoft-365_Microsoft_365_Copilot_app_learning_series__From_re.json",
+    "source_id": "microsoft-365",
+    "source_name": "Microsoft 365 Insider (hivatalos)",
+    "source_link": "https://techcommunity.microsoft.com/t5/microsoft-365-insider-blog/microsoft-365-copilot-app-learning-series-from-research-to/ba-p/4527906",
+    "status": "published",
+    "published_at": "2026-08-02T01:51:05.542Z",
+    "slug": "microsoft-365-copilot-s-workflow-tools-explained-in-plain-english",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 812
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Excellent explainer with clear tool explanations, logical workflow framing, and well-matched audience personas in What this means for you. Friendly tone throughout, no clichés, no prohibited content, and Australian English is correct. The one thing to try this week provides a concrete, low-barrier action step. Ready to publish.",
+      "_aiCost": 0.00184776,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-08-02T01:51:36.213Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is an explainer article describing four existing Copilot tools in a workflow, not an announcement of one new specific feature for everyday users to act on",
+    "image_v": 2,
+    "image_at": "2026-08-02T02:00:32.884Z",
+    "seo": {
+      "meta_description": "Microsoft 365 Copilot includes four workflow tools: Researcher, Pages, Notebooks, and Create. Learn what each does and how to pick the right one for your project.",
+      "keywords": [
+        "Microsoft 365 Copilot workflow tools explained",
+        "Copilot Pages vs Notebooks",
+        "how to use Microsoft 365 Copilot tools",
+        "Microsoft Copilot Researcher tutorial",
+        "Copilot Create feature guide"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more specific use case examples in the article body to improve long-tail search relevance",
+        "Consider adding FAQ section targeting questions like 'which Copilot tool should I start with'",
+        "Include brief comparisons or a simple chart showing when to use each tool"
+      ],
+      "optimised_at": "2026-08-02T02:01:40.585Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Microsoft 365 Copilot's Workflow Tools Explained in Plain English\"\nsubtitle: \"What Researcher, Copilot Pages, Notebooks, and Create actually do — and which one to open first depending on where you are in your project\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"microsoft-365\", \"copilot\", \"productivity\", \"research\"]\n---\n\n# Microsoft 365 Copilot's Workflow Tools Explained in Plain English\n\n> **In short:** Microsoft 365 Copilot now includes four connected tools — Researcher, Copilot Pages, Copilot Notebooks, and Create — built to take an idea from scattered research through to a finished, shareable document. Each has a specific job, and knowing which one to open saves a lot of trial and error.\n\nYou've got a half-formed idea, a folder of mixed notes, and a deadline breathing down your neck. The newest wave of Microsoft 365 Copilot tools is built around that exact moment — moving work from \"scattered\" to \"polished\" without you babysitting every step.\n\n## The shape of the workflow\n\nThe four tools are designed to hand work to each other. Researcher pulls information in from your files, the web, and your work apps. Copilot Pages holds the raw findings somewhere you and others can shape them. Notebooks gives you a workspace to think out loud with the AI. Create turns the shaped idea into something you can actually share.\n\nYou don't need to use all four every time. The point is they fit together, and skipping the right one is what slows people down.\n\n## Researcher — your starting point\n\nResearcher is the tool you open when you're staring at a topic and don't know what's in your own files about it. Ask it something like *\"what do we actually know about customer complaints this quarter?\"* and it searches your email, Teams chats, SharePoint documents, and the web at the same time. It returns a draft answer with the sources listed, so you can see where each claim came from.\n\nIt's most useful when your question spans more than one place. If the answer is sitting in a single document you already know about, just open that document.\n\n## Copilot Pages — where the draft lives\n\nThink of Pages as a shared canvas (a digital workspace you and others can write on together) that Copilot helps fill in. Once Researcher has produced a draft, you can send it straight into a Page. There, you edit the wording, drop in your own notes, and invite teammates to add their bits alongside yours.\n\nThe shift here matters: the AI gives you a starting point, but the final document is yours to shape. You're not handing over the work — you're handing over the blank-page problem.\n\n## Copilot Notebooks — thinking out loud\n\nNotebooks is closer to a research diary. You dump in source material — PDFs, meeting notes, web links, slides — and then ask questions across all of it at once. *\"What did we actually decide about the launch date?\"* or *\"summarise the customer interviews about pricing\"* both work.\n\nThis is the tool for the messy middle of a project, before you know what shape the output should take.\n\n## Create — turning the idea into something real\n\nCreate is the step where the document, slide, or other output actually gets built. Give it a prompt like *\"turn this Page into a 5-slide deck for the leadership meeting\"* and it generates a draft you can then edit and polish.\n\nThe honesty check: the polish still needs a human. The AI gets you most of the way there; the rest is your judgement, your voice, and the small details only you know.\n\n## What this means for you\n\n- **If you're a knowledge worker**: Researcher is the biggest time-saver. Try it on your next cross-team question — *\"what's our policy on X?\"* — and see how much searching it removes from your day.\n- **If you're a student or independent researcher**: Start with Notebooks. Loading your sources into one Notebook and asking questions across them turns a pile of PDFs into something you can actually think with.\n- **If you lead a team or a project**: Pages is built for collaboration. Once you have a draft, invite two or three teammates to edit it with you — the result is usually better than one person's solo pass.\n- **If you're just curious**: You don't need all four on day one. Pick the one that matches your current pain point and learn that first.\n\n## One thing to try this week\n\nIf you've got a Microsoft 365 Copilot licence, open Researcher on the next question that lives across more than one app — a meeting recap, a policy lookup, a summary of customer feedback. See what it pulls together. That's the smallest possible test of the workflow, and it's the one most likely to surprise you with how much of the busywork it quietly removes.",
+  "original_title": "Microsoft 365 Copilot app learning series: From research to polished outputs"
+}
