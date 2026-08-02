@@ -1,6 +1,66 @@
 # AI World Co. — közösségi posztok
 
-*Generálva: 2026-08-02T09:57:40.053Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+*Generálva: 2026-08-02T16:52:33.517Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## How to Draft a Polite Follow-up Email After a Job Interview
+**🔗 https://aiworldhq.com/article/how-to-draft-a-polite-follow-up-email-after-a-job-interview**
+
+**Facebook:**
+Just had a job interview? A short, specific thank-you email sent within 24 hours can genuinely set you apart — here's a simple 3-sentence template that sounds warm, not desperate. https://aiworldhq.com/article/how-to-draft-a-polite-follow-up-email-after-a-job-interview #JobSearch #CareerTips
+
+*Kép-ötlet: A clean workspace with a laptop, a pen, and a simple handwritten note on a desk.*
+
+---
+
+## How to Get Honest Feedback on Your Resume Using Any AI Assistant
+**🔗 https://aiworldhq.com/article/how-to-get-honest-feedback-on-your-resume-using-any-ai-assistant**
+
+**Facebook:**
+Stuck wondering if your resume is any good? Pop it into any AI chat and ask for recruiter-style feedback — here's the exact prompt that gets you honest, useful tips. https://aiworldhq.com/article/how-to-get-honest-feedback-on-your-resume-using-any-ai-assistant #CareerAdvice
+
+*Kép-ötlet: A clean, simple graphic showing a resume document with a speech bubble containing constructive feedback symbols*
+
+---
+
+## How to Identify Plants, Birds and Insects in Your Backyard with Gemini
+**🔗 https://aiworldhq.com/article/how-to-identify-plants-birds-and-insects-in-your-backyard-with-gemini**
+
+**Facebook:**
+Ever wondered what that strange plant in your garden is, or which bird keeps visiting your feeder? Snap a photo and find out what it is, whether it's native to your area and how to look after it. https://aiworldhq.com/article/how-to-identify-plants-birds-and-insects-in-your-backyard-with-gemini #BackyardLife #Nature
+
+*Kép-ötlet: A close-up photo of a leafy plant in a sunny backyard garden, showing natural green tones and soft daylight.*
+
+---
+
+## How to Plan a Kid's Birthday Party on a Budget Using Any AI Assistant
+**🔗 https://aiworldhq.com/article/how-to-plan-a-kid-s-birthday-party-on-a-budget-using-any-ai-assistant**
+
+**Facebook:**
+Planning your kid's birthday party doesn't have to be stressful or expensive. This simple guide shows you how to use any AI assistant to create a complete party plan — theme, budget, guest list and run sheet — in under 20 minutes. Less panic, more fun. https://aiworldhq.com/article/how-to-plan-a-kid-s-birthday-party-on-a-budget-using-any-ai-assistant #parentinghacks #birthdayparty
+
+*Kép-ötlet: A cheerful, simple illustration of party decorations like balloons and streamers with a warm, inviting colour palette.*
+
+---
+
+## How to Plan a Week's Meals from What's Already in Your Fridge
+**🔗 https://aiworldhq.com/article/plan-a-week-s-meals-from-what-s-already-in-your-fridge**
+
+**Facebook:**
+Stop tossing money in the bin with wilted veg you forgot about. This simple 7-day plan uses whatever's already in your fridge — no extra shopping needed. https://aiworldhq.com/article/plan-a-week-s-meals-from-what-s-already-in-your-fridge #mealplanning #foodwaste
+
+*Kép-ötlet: An open fridge filled with fresh vegetables and a handwritten meal plan checklist on the door*
+
+---
+
+## How to Plan an Australian Camping Trip with Any AI Assistant
+**🔗 https://aiworldhq.com/article/how-to-plan-an-australian-camping-trip-with-any-ai-assistant**
+
+**Facebook:**
+Want a camping trip planned in minutes? Just tell your AI assistant where you're going, the dates and who's coming along — it can build your gear checklist, suggest routes and plan meals. Here's a simple way to do it. https://aiworldhq.com/article/how-to-plan-an-australian-camping-trip-with-any-ai-assistant #camping #australiantravel
+
+*Kép-ötlet: A peaceful Australian campsite at dusk with a tent pitched near trees and gentle hills in the background*
 
 ---
 
