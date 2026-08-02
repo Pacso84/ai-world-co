@@ -39,19 +39,39 @@ function slugify(text) {
   return (text || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 70);
 }
 
-// slug → published_at térkép a cikkekből (a frissesség-szűréshez)
+// slug → { published_at, guide } térkép a cikkekből.
+//
+// A KULCS A RÖGZÍTETT _meta.slug (2026-08-02). Korábban a CÍMBŐL képeztük
+// újra a slugot — csakhogy a cikkek 2026-07-27 óta rögzített slugot kapnak,
+// és a social-fájlokban maradt egy régi, 60 karakterre CSONKÍTOTT változat.
+// Ha a keresés nem talált egyezést, a kor "végtelen" lett, és a posztoló
+// AZONNAL elavultnak jelölte — akkor is, ha a cikk aznap jelent meg.
+// Mérve: 210 social-fájl slugja nem felelt meg egyetlen élő cikknek sem;
+// emiatt 18 FRISS poszt némán elveszett. A slugify-os visszafejtés tehát
+// nem csak felesleges, hanem kártékony volt.
+// Tartaléknak a címből képzett kulcsot is felvesszük (régi fájlokhoz).
 function publishedMap() {
   const map = {};
   if (!existsSync(ARTICLES_DIR)) return map;
   for (const f of readdirSync(ARTICLES_DIR).filter(x => x.startsWith('ARTICLE_') && x.endsWith('.json'))) {
     try {
       const d = JSON.parse(readFileSync(join(ARTICLES_DIR, f), 'utf-8'));
+      const isGuide = d._meta?.type === 'guide' || f.startsWith('ARTICLE_GUIDE');
+      const rec = { at: d._meta?.published_at || '', guide: isGuide };
+      if (d._meta?.slug) map[d._meta.slug] = rec;
       const m = (d.article_markdown || '').match(/^---\n[\s\S]*?^title:\s*["']?(.+?)["']?\s*$/m);
-      const slug = slugify((m && m[1]) || d.original_title || f);
-      map[slug] = d._meta?.published_at || '';
+      const legacy = slugify((m && m[1]) || d.original_title || f);
+      if (legacy && !map[legacy]) map[legacy] = rec;
     } catch { /* kihagyjuk */ }
   }
   return map;
+}
+
+// A social-fájl VALÓDI slugja: elsődlegesen az url-ből, mert az a
+// publikált cím — a `slug` mező lehet régi/csonka maradvány.
+function realSlug(post) {
+  const fromUrl = String(post.url || '').split('/article/')[1];
+  return (fromUrl || post.slug || '').replace(/\.html$/, '').replace(/[?#].*$/, '');
 }
 
 async function main() {
@@ -73,19 +93,37 @@ async function main() {
     if (post.posted_fb) continue;                       // már kiment / lezárva
     if (!post.facebook || !post.url) continue;
 
-    const pubAt = pub[post.slug] || '';
-    const age = pubAt ? (now - new Date(pubAt).getTime()) : Infinity;
-    if (age > FRESH_DAYS * 24 * 3600e3) {
-      // Régi cikk: lezárjuk, hogy sose árassza el az oldalt az archívum
-      post.posted_fb = 'skipped-stale';
-      writeFileSync(path, JSON.stringify(post, null, 2), 'utf-8');
-      continue;
+    const rec = pub[realSlug(post)] || pub[post.slug];
+    const pubAt = rec?.at || '';
+    const isGuide = !!rec?.guide;
+    // HÍR: csak friss (az archívum ne árassza el az oldalt).
+    // ÚTMUTATÓ: EVERGREEN — nincs vágás (2026-08-02). Ugyanaz a szabály,
+    // amit a Pinterestnél már 07-29-én bevezettünk; a Facebook oldalán
+    // ottfelejtettük, és emiatt 131 évelő útmutató esett ki "elavultként"
+    // arról a csatornáról, ami a mérés szerint a forgalmunk zömét hozza.
+    // Ha nincs találat a térképben, NEM dobjuk el: inkább kihagyjuk erre a
+    // körre. A néma eldobás visszafordíthatatlan, a várakozás nem.
+    if (!rec) continue;
+    if (!isGuide) {
+      const age = pubAt ? (now - new Date(pubAt).getTime()) : Infinity;
+      if (age > FRESH_DAYS * 24 * 3600e3) {
+        post.posted_fb = 'skipped-stale';
+        writeFileSync(path, JSON.stringify(post, null, 2), 'utf-8');
+        continue;
+      }
     }
-    queue.push({ path, post, pubAt });
+    queue.push({ path, post, pubAt, isGuide });
   }
 
   if (!queue.length) { console.log('   💤 Nincs kiküldendő friss poszt.'); return; }
-  queue.sort((a, b) => (b.pubAt || '').localeCompare(a.pubAt || ''));   // legfrissebb előre
+  // FRISS TARTALOM ELŐL, az évelő útmutató tölti ki a maradék helyet.
+  // (A Pinterestnél fordítva van — ott az útmutató a fő fogás. A Facebook
+  // hírfolyam: ott a frissesség számít, az oldal ne archívumnak látsszon.)
+  const freshCut = now - FRESH_DAYS * 24 * 3600e3;
+  const isFresh = x => x.pubAt && new Date(x.pubAt).getTime() >= freshCut;
+  queue.sort((a, b) =>
+    (isFresh(b) - isFresh(a)) ||
+    (b.pubAt || '').localeCompare(a.pubAt || ''));
   const batch = queue.slice(0, LIMIT);
   console.log(`   📋 Friss poszt a sorban: ${queue.length} | most kiküldendő: ${batch.length}${DRY ? ' (PRÓBA — nem küldöm)' : ''}\n`);
 
