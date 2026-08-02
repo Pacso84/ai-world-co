@@ -601,6 +601,28 @@
       "country": "US",
       "comment": "HIVATALOS Microsoft termék-frissítések (Word, Excel, Outlook, Copilot) – a Workspace Microsoft-párja. Megbízhatóság 100/100 (2026-08-01, élőben mérve: 20 tétel, 2 napos frissesség). A RÉGI cég-szintű duplikátum-szabály kizárta volna a microsoft-ai mellett; a szabály azóta termék-szintű.",
       "enabled": true
+    },
+    {
+      "id": "pixlr",
+      "name": "Pixlr Blog (hivatalos)",
+      "url": "https://pixlr.com/blog/feed/",
+      "category": "ai-company-official",
+      "priority": 3,
+      "language": "en",
+      "country": "US",
+      "comment": "HIVATALOS Pixlr blog (online fotoszerkeszto). Megbizhatosag 100/100, ELOBEN ujramerve 2026-08-02: HTTP 200, application/rss+xml, 10 tetel, 3 napos frissesseg, 12/12 link a sajat domainre (nincs affiliate/idegen link), 3/3 mintacikk el. HASZNOSSAG: a 11 cimbol 8 AI-s (73%) - pl. Camera Angle Prompts, AI Camera Tracking Image. Fogyasztoi kreativitas = kesz utmutato-temak.",
+      "enabled": true
+    },
+    {
+      "id": "picsart",
+      "name": "PicsArt Blog (hivatalos)",
+      "url": "https://picsart.com/blog/feed/",
+      "category": "ai-company-official",
+      "priority": 3,
+      "language": "en",
+      "country": "US",
+      "comment": "HIVATALOS PicsArt blog (mobil foto/video szerkeszto). Megbizhatosag 100/100, ELOBEN ujramerve 2026-08-02: HTTP 200, application/rss+xml, 18 tetel, 2 napos frissesseg, 20/20 link a sajat domainre, 3/3 mintacikk el. HASZNOSSAG: a 19 cimbol 5 AI-s (26%) - a hozam kisebb, de eros (AI Playground, szoveg-beszed); a tobbit a parosito kiszuri.",
+      "enabled": true
     }
   ],
   "categories": {
