@@ -108,7 +108,8 @@ async function main() {
       const age = pubAt ? (now - new Date(pubAt).getTime()) : Infinity;
       if (age > FRESH_DAYS * 24 * 3600e3) {
         post.posted_fb = 'skipped-stale';
-        // A PRÓBA NE ÍRJON (2026-08-02) — lásd instagram-poster.js
+        // A PRÓBA NE ÍRJON (2026-08-02): enélkül a --dry végleges jelölést írt a
+        // fájlokba. Ártalmatlanul, de a "próba" azt ígéri, hogy semmi nem történik.
         if (!DRY) writeFileSync(path, JSON.stringify(post, null, 2), 'utf-8');
         continue;
       }

@@ -30,15 +30,20 @@ const FORCE = args.includes('--force');
 const di = args.indexOf('--days');
 const DAYS = di !== -1 && args[di + 1] ? parseInt(args[di + 1], 10) || 7 : 7;
 
-// KÉT FORMÁTUM (2026-08-02):
-//   share/  1200x630 fekvő — Facebook, Pinterest, og:image (a régi, változatlan)
-//   ig/     1080x1350 álló — Instagram. A hírfolyamban az álló (4:5) tölti ki a
-//           legtöbb képernyőt; a fekvő kép ott bélyegképnyire zsugorodik.
-// A rajzolás mérete a SZÉLESSÉGGEL arányos (k = W/1200), így ugyanaz a kód
-// mindkét formátumot helyesen tördeli — nem kell külön elrendezést karbantartani.
+// FORMÁTUMOK:
+//   share/  1200x630 fekvő — Facebook, Pinterest, og:image
+//
+// A rajzolás mérete a SZÉLESSÉGGEL arányos (k = W/1200) és a sorok száma a
+// képaránytól függ, ezért új formátumot elég egy sorral felvenni ide — nem kell
+// külön elrendezést karbantartani.
+//
+// VOLT ITT EGY `ig` (1080x1350 álló) formátum is az Instagramhoz, 2026-08-02-én
+// néhány órán át. A user úgy döntött, hogy Instagram nem kell, ezért kivettük —
+// fölösleges képeket gyártani és deployolni, amit senki nem néz meg.
+// Visszahozni egyetlen sor:
+//   { key: 'ig', w: 1080, h: 1350, grad: [0.55, 0.80] }
 const FORMATS = [
-  { key: 'share', w: 1200, h: 630, grad: [0.35, 0.72] },
-  { key: 'ig', w: 1080, h: 1350, grad: [0.55, 0.80] }   // magasabb képen lejjebb kezdjen a sötétedés
+  { key: 'share', w: 1200, h: 630, grad: [0.35, 0.72] }
 ];
 
 function slugify(t) { return (t || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 70); }
@@ -65,8 +70,8 @@ function overlaySvg(title, fmt) {
   const { w: W, h: H, grad } = fmt;
   const k = W / 1200;                                     // minden méret a szélességgel arányos
   const r = n => Math.round(n * k);
-  // Álló képen van függőleges hely 4 sorra — a fekvőn nincs. Enélkül a
-  // hosszabb címek "…"-tal csonkultak az Instagramon is, feleslegesen.
+  // Álló képen van függőleges hely 4 sorra — a fekvőn nincs. (Most csak fekvő
+  // formátumunk van, tehát ez mindig 3; a szabály akkor él, ha új arány jön.)
   const lines = wrapTitle(title, 26, H > W ? 4 : 3);
   const fs = r(lines.length >= 3 ? 56 : 62);              // 3+ sornál kicsit kisebb betű
   const lh = Math.round(fs * 1.18);
