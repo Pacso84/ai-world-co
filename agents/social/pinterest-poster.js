@@ -136,7 +136,8 @@ async function main() {
       const age = meta.publishedAt ? (now - new Date(meta.publishedAt).getTime()) : Infinity;
       if (age > NEWS_FRESH_DAYS * 24 * 3600e3) {
         post.posted_pin = 'skipped-stale-news';
-        writeFileSync(path, JSON.stringify(post, null, 2), 'utf-8');
+        // A PRÓBA NE ÍRJON (2026-08-02) — lásd instagram-poster.js
+        if (!DRY) writeFileSync(path, JSON.stringify(post, null, 2), 'utf-8');
         continue;
       }
     }

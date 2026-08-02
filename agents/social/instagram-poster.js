@@ -207,7 +207,10 @@ async function main() {
       const age = meta.publishedAt ? (now - new Date(meta.publishedAt).getTime()) : Infinity;
       if (age > NEWS_FRESH_DAYS * 24 * 3600e3) {
         post.posted_ig = 'skipped-stale-news';
-        writeFileSync(path, JSON.stringify(post, null, 2), 'utf-8');
+        // A PRÓBA NE ÍRJON. Enélkül a --dry 289 fájlt módosított (2026-08-02) —
+        // ártalmatlanul, de a "próba" szó pont azt ígéri, hogy semmi nem történik.
+        // Egy próbafutás, ami közben állapotot ír, csapda a következő embernek.
+        if (!DRY) writeFileSync(path, JSON.stringify(post, null, 2), 'utf-8');
         continue;
       }
     }
