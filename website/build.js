@@ -2621,10 +2621,32 @@ function main() {
     writeFileSync(join(outBase, 'archive.html'), buildArchivePage(loc), 'utf-8');  // Minden hír (archívum)
     writeFileSync(join(outBase, 'feed.xml'), feedXml(loc, lang), 'utf-8');   // nyelvenkénti RSS
     // Kereső-index (villámkereső a navbarban): cím + alcím + márka + slug
-    const searchIndex = loc.map(a => ({
+    //
+    // A KISSZÓTÁR IS BENNE VAN (2026-08-02). A user kétszer jelezte, hogy nem
+    // találja a "skill" leírását — és igaza volt, csak nem úgy, ahogy hittem:
+    // a fogalom OTT VAN a szótár-oldalon (46-ból a 13.), de a keresőmező, ami
+    // ugyanazon az oldalon van, KIZÁRÓLAG cikkek közt keresett. Aki rákeresett,
+    // két találomra vett cikket kapott — az egyik a SkillOpt, a levett kitalált
+    // termék. Vagyis a szótár tartalma megvolt, csak megtalálhatatlan volt.
+    // (Korábban tévesen a kb.json-t néztem bizonyítéknak: az a CHATBOT
+    // tudásbázisa, nem a honlap keresője. Két külön fájl, két külön út.)
+    //
+    // A `p` mező = kész útvonal a horgonyra (a szótár-kártyáknak van id-juk),
+    // az app.js ezt használja, ha van; enélkül marad a régi /article/<slug>.
+    //
+    // A SZÓTÁR VAN ELÖL, és ez szándékos. A pontozó (app.js) csak akkor ad
+    // 0 pontot, ha a cím a keresett szóval KEZDŐDIK; az "AI-ügynök (agent)"
+    // nem kezdődik az "ügynök" szóval, ezért ugyanannyi pontot kap, mint egy
+    // cikk. Holtversenynél a sort megtartja az eredeti sorrendet — így ha a
+    // szótár hátul volna, EGY szómagyarázat sem nyerne, hacsak nem pont a
+    // keresett szó kezdi. Aki egyetlen szóra keres, a jelentését akarja.
+    const searchIndex = GLOSSARY.map(t => {
+      const g = t[lang] || t.en;
+      return { t: g.term, s: g.def, b: '', u: '', g: 0, p: `/glossary#${t.id}` };
+    }).concat(loc.map(a => ({
       t: a.title, s: a.subtitle || '', b: [a.company, a.tool].filter(Boolean).join(' '),
       u: a.slug, g: a.isGuide ? 1 : 0
-    }));
+    })));
     writeFileSync(join(outBase, 'search.json'), JSON.stringify(searchIndex), 'utf-8');
     // ÜGYFÉLSZOLGÁLAT kb.json (2026-07-20): guide-ok + GYIK + kisszótár — a
     // Worker chat-motorja ebből keres és CSAK ebből linkel (kitalált URL tilos).

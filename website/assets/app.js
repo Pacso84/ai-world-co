@@ -150,8 +150,8 @@
     if (!top.length) { res.innerHTML = '<p class="search-empty">' + esc(res.getAttribute('data-noresults') || 'No results') + '</p>'; return; }
     res.innerHTML = top.map(function (p) {
       var a = p[1];
-      return '<a class="search-hit" href="' + pref + '/article/' + a.u + '.html">' +
-        '<span class="search-hit__ico">' + (a.g ? '📘' : '📰') + '</span>' +
+      return '<a class="search-hit" href="' + pref + (a.p ? a.p : '/article/' + a.u + '.html') + '">' +
+        '<span class="search-hit__ico">' + (a.p ? '📖' : a.g ? '📘' : '📰') + '</span>' +
         '<span><span class="search-hit__t">' + esc(a.t) + '</span>' +
         (a.s ? '<span class="search-hit__s">' + esc(a.s) + '</span>' : '') + '</span></a>';
     }).join('');
