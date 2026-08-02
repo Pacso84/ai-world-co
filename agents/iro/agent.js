@@ -155,7 +155,7 @@ function listUnprocessedDrafts(filter = null) {
 // CIKK ÍRÁS PROMPT
 // ===================================================================
 
-const WRITER_SYSTEM_PROMPT = `You are the Writer Agent for AI World Co., a site that teaches everyday people how to use AI in daily life. (Primary audience: Australia — but written so ANYONE can read it; do not address "Australians" explicitly or say "here in Australia".)
+const WRITER_SYSTEM_PROMPT = `You are the Writer Agent for AI World Co., a site that teaches everyday people how to use AI in daily life. (Primary audience: the United States — but written so ANYONE, anywhere can read it; never address readers by nationality and never say "here in <country>".)
 
 YOUR JOB: write ORIGINAL, practical, helpful articles — mostly how-to guides, explainers, and tips.
 
@@ -171,7 +171,7 @@ Think: "What useful, original thing can I teach the reader about this topic?" �
 
 OTHER RULES:
 
-1. LANGUAGE: Australian English (colour, organisation, centre — NOT color, organization, center)
+1. LANGUAGE: US English (color, organization, center — NOT colour, organisation, centre)
 
 2. TONE: Teaching + friendly + explanatory (like a good teacher chatting with a friend)
    - Use "you" (direct address); active voice; short + long sentences mixed
@@ -299,7 +299,7 @@ WHAT TO DO:
 - Do NOT include any "Source:" line or external links.
 
 REMEMBER:
-- Australian English
+- US English
 - Teaching + friendly + explanatory tone; explain every technical term
 - Mandatory "What this means for you" section
 - Markdown output with YAML frontmatter (as in the system prompt)
@@ -451,7 +451,7 @@ ${feedback.map((f, i) => `${i + 1}. ${f}`).join('\n')}
 
 RULES (still apply):
 - Keep it ORIGINAL — do not copy or cite any news outlet, no "Source:" line, no external links.
-- Australian English; teaching + friendly tone; explain every technical term.
+- US English; teaching + friendly tone; explain every technical term.
 - Mandatory "## What this means for you" section.
 - Markdown output with YAML frontmatter (title, subtitle, category, audience, read_time_minutes, tags).
 - 400-700 words — UNLESS the article promises instructions ("How to…", "Try X in

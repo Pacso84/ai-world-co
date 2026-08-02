@@ -118,7 +118,7 @@ const SITE_LANGS = ['en', 'hu', 'es'];   // en = forrás/gyökér
 const RETIRED_LANGS = ['de', 'fr'];      // 301 az angol változatra
 const FB_URL = 'https://www.facebook.com/profile.php?id=61591788804540';   // FB-oldal (követés + JSON-LD sameAs)
 const FOLLOW_FB = { en: 'Follow us on Facebook', hu: 'Kövess minket a Facebookon', es: 'Síguenos en Facebook', de: 'Folge uns auf Facebook', fr: 'Suivez-nous sur Facebook' };
-const HTML_LANG = { en: 'en-AU', hu: 'hu', es: 'es', de: 'de', fr: 'fr' };
+const HTML_LANG = { en: 'en-US', hu: 'hu', es: 'es', de: 'de', fr: 'fr' };
 const LANG_NAME = { en: 'English', hu: 'Magyar', es: 'Español', de: 'Deutsch', fr: 'Français' };
 
 // UI-szótár (a honlap "váza" — menü, hero, feliratok). A cikkek tartalmát a
@@ -913,11 +913,11 @@ function wrapTables(html) {
     .replace(/<\/table>/g, '</table></div>');
 }
 
-const DATE_LOCALES = { en: 'en-AU', hu: 'hu-HU', es: 'es-ES', de: 'de-DE', fr: 'fr-FR' };
+const DATE_LOCALES = { en: 'en-US', hu: 'hu-HU', es: 'es-ES', de: 'de-DE', fr: 'fr-FR' };
 function formatDate(iso) {
   if (!iso) return '';
   const d = new Date(iso);
-  return d.toLocaleDateString(DATE_LOCALES[LANG] || 'en-AU', { day: 'numeric', month: 'long', year: 'numeric' });
+  return d.toLocaleDateString(DATE_LOCALES[LANG] || 'en-US', { day: 'numeric', month: 'long', year: 'numeric' });
 }
 
 // ===================================================================
@@ -2351,14 +2351,14 @@ function buildArchivePage(loc) {
     const key = (a.publishedAt || '').slice(0, 7) || '????-??';
     if (!byMonth.has(key)) {
       const d = new Date((a.publishedAt || Date.now()));
-      byMonth.set(key, { label: d.toLocaleDateString(DATE_LOCALES[LANG] || 'en-AU', { year: 'numeric', month: 'long' }), items: [] });
+      byMonth.set(key, { label: d.toLocaleDateString(DATE_LOCALES[LANG] || 'en-US', { year: 'numeric', month: 'long' }), items: [] });
     }
     byMonth.get(key).items.push(a);
   }
   const groups = [...byMonth.values()].map(g => `<section class="arch__month"><h2 class="arch__mh">${escapeHtml(g.label)}</h2>
     ${g.items.map(a => {
       const cat = CATEGORIES[a.category] || CATEGORIES.other;
-      const day = a.publishedAt ? new Date(a.publishedAt).toLocaleDateString(DATE_LOCALES[LANG] || 'en-AU', { day: 'numeric', month: 'short' }) : '';
+      const day = a.publishedAt ? new Date(a.publishedAt).toLocaleDateString(DATE_LOCALES[LANG] || 'en-US', { day: 'numeric', month: 'short' }) : '';
       return `<a class="arch__row" href="article/${a.slug}"><span class="arch__d">${escapeHtml(day)}</span><span class="arch__i">${cat.icon}</span><span class="arch__t">${escapeHtml(a.title)}</span></a>`;
     }).join('\n')}</section>`).join('\n');
   const body = `<section class="guides-hero">

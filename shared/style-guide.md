@@ -7,19 +7,26 @@
 
 ## 1. Nyelv és helyesírás
 
-### Ausztrál angol (NEM amerikai!)
+### Amerikai angol (NEM brit/ausztrál!)
 
-- ✅ **colour**, behaviour, favour, neighbour (-our végződés)
-- ✅ **organisation**, realise, analyse (-ise végződés)
-- ✅ **centre**, theatre, metre (-re végződés)
-- ✅ **defence**, licence (főnév), license (ige)
-- ✅ **travelled**, cancelled (-ll- duplázás)
-- ❌ NEM: color, organization, center, defense, traveled
+2026-08-02-ig ausztrál angolt írtunk elő. A mérés viszont mást mondott: 30 nap
+alatt US 300, HU 110, SE 60, IE 20 latogato — **Ausztráliából nulla**. Ausztrál
+híroldalt írtunk amerikaiaknak. A user döntése: igazodjunk azokhoz, akik
+tényleg olvasnak minket.
 
-### Helyi szavak (ahol releváns)
-- "**Aussie**" inkább pozitív kontextusban, óvatosan
-- "**mate**" csak nagyon laza cikkekben, normál esetben ne
-- "**arvo**" (afternoon), "**brekkie**" (breakfast) — kerüld, túl szleng
+- ✅ **color**, behavior, favor, neighbor (-or végződés)
+- ✅ **organization**, realize, analyze (-ize végződés)
+- ✅ **center**, theater, meter (-er végződés)
+- ✅ **defense**, license (főnév és ige is)
+- ✅ **traveled**, canceled (egy -l-)
+- ❌ NEM: colour, organisation, centre, defence, travelled
+
+### Nemzeti utalások
+- A szöveg SOHA ne szólítsa meg az olvasót nemzetiség szerint ("Aussies",
+  "Americans"), és ne mondja, hogy "here in <ország>". Az olvasóink fele nem
+  onnan van, ahonnan hisszük — ez pont most derült ki.
+- Ország-specifikus példa (kormányzati űrlap, helyi szolgáltatás) csak akkor,
+  ha a téma tényleg arról szól; egyébként válassz semleges példát.
 - Cégnevek mindig **eredeti írásmóddal** (OpenAI, ChatGPT, Anthropic)
 
 ---

@@ -326,7 +326,7 @@ async function runBalanceMode(limit, brandContext) {
 // csak új 'todo' témákat fűz a guide-topics.json-hoz — duplikátum-szűréssel.
 // ===================================================================
 
-const IDEAS_SYSTEM_PROMPT = `You are the editorial planner for AI World Co., a site that teaches everyday people how to use AI in daily life (primary audience: Australia, but written for anyone).
+const IDEAS_SYSTEM_PROMPT = `You are the editorial planner for AI World Co., a site that teaches everyday people how to use AI in daily life (primary audience: the United States, but written for anyone).
 
 Propose NEW, EVERGREEN, beginner-friendly guide topics — practical "how to…" tutorials people genuinely search for. Mix GENERAL topics (not tied to one company) with COMPANY/TOOL-specific ones (ChatGPT, Gemini, Claude, Copilot, Midjourney, etc.). Favour useful, timeless skills over news.
 
@@ -524,14 +524,14 @@ async function loadLessons() {
   return `\n\nLESSONS FROM PAST FEEDBACK (avoid these):\n${reasons.map(r => `- ${r}`).join('\n')}`;
 }
 
-const GUIDE_SYSTEM_PROMPT = `You are the Guide Agent for AI World Co., a site that teaches everyday people how to use AI in daily life. (Primary audience: Australia — but written so ANYONE can read it; do not address "Australians" or say "here in Australia".)
+const GUIDE_SYSTEM_PROMPT = `You are the Guide Agent for AI World Co., a site that teaches everyday people how to use AI in daily life. (Primary audience: the United States — but written so ANYONE, anywhere can read it; never address readers by nationality and never say "here in <country>".)
 
 YOUR JOB: write an ORIGINAL, practical, STEP-BY-STEP guide (a mini tutorial/presentation) that a complete beginner can follow.
 
 ⚠️ ORIGINALITY (most important): You may name the real tool/company you are teaching about (e.g. ChatGPT, Gemini, Claude). But DO NOT copy, paraphrase or quote any company's documentation, help pages or marketing. Write our OWN clear, friendly explanation from scratch. No "Source:" line, no external links.
 
 TONE & RULES:
-- Australian English (colour, organise, centre). Warm, encouraging, teaching voice. No clichés.
+- US English (color, organize, center). Warm, encouraging, teaching voice. No clichés.
 - Explain EVERY technical term the first time, in plain words with a relatable analogy.
 - Be concrete and practical. Every step should be something the reader can actually DO.
 - NEVER put any company or product down. Be neutral and kind, especially in comparisons.
@@ -563,7 +563,7 @@ Tap the **microphone icon** 🎤 at the bottom-right of the chat box. A round
 can't see a microphone, look for a **headphones or sound-wave icon** instead —
 some apps tuck it inside the top-right **⋯ menu**. Speak one short sentence, then
 pause for a second.
-💬 Example: say 'What's the weather in Sydney tomorrow?'
+💬 Example: say 'What's the weather in Chicago tomorrow?'
 You'll know it worked when your spoken words appear as text on the screen and the
 assistant answers out loud."
 Notice: an exact tappable target, what shows up, a fallback if it looks different,
@@ -768,7 +768,7 @@ ${feedback.map((f, i) => `${i + 1}. ${f}`).join('\n')}
 KEEP THE GUIDE FORMAT (this is a guide, NOT a news article):
 - YAML frontmatter with category: "guide".
 - "## Before you start", then 3-6 "## Step N — …" headings, then "## Common mistakes", "## What this means for you", "## Try it now".
-- 💬 Example lines where helpful. Australian English, warm teaching tone, explain every term.
+- 💬 Example lines where helpful. US English, warm teaching tone, explain every term.
 - ORIGINAL writing only — never copy company docs, no "Source:" line, no external links.
 
 THE GUIDE TO FIX (rewrite it fully, corrected):

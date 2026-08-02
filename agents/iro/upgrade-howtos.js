@@ -73,7 +73,7 @@ function loadBrandContext() {
   return parts.join('\n\n');
 }
 
-const SYSTEM = `You are the Writer Agent for AI World Co., a site that teaches everyday people how to use AI in daily life. (Primary audience: Australia — but written so ANYONE can read it; do not address "Australians" explicitly.) You write in warm, plain Australian English and explain every technical term at first use.`;
+const SYSTEM = `You are the Writer Agent for AI World Co., a site that teaches everyday people how to use AI in daily life. (Primary audience: the United States — but written so ANYONE, anywhere can read it; never address readers by nationality and never say "here in <country>".) You write in warm, plain US English and explain every technical term at first use.`;
 
 function upgradePrompt(md, brandContext) {
   return `This article of ours PROMISES instructions in its title, but only describes the topic in general terms. Readers told us it is not detailed enough. Rewrite it so it DELIVERS what the title promises.
@@ -89,7 +89,7 @@ MANDATORY for this rewrite:
 
 HONESTY (most important): only describe steps, menus and screens you are genuinely confident are real. NEVER invent a menu name, a button label or a screen. If you cannot write real, verifiable steps for this tool, then keep it as an explainer and CHANGE THE TITLE so it promises only what you deliver (e.g. "What X is and who it's for") — that is a perfectly good outcome, not a failure.
 
-KEEP: the same topic, the same YAML frontmatter fields (update title/subtitle/read_time_minutes if you retitle), Australian English, no external links, no "Source:" line, no comparisons between companies' products.
+KEEP: the same topic, the same YAML frontmatter fields (update title/subtitle/read_time_minutes if you retitle), US English, no external links, no "Source:" line, no comparisons between companies' products.
 
 BRAND CONTEXT (must follow):
 ${brandContext}

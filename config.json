@@ -7,10 +7,10 @@
   },
   "company": {
     "name": "AI World Co.",
-    "tagline": "Australian AI News, Curated by Agents",
-    "target_audience": "Australia",
-    "language": "en-AU",
-    "timezone": "Australia/Sydney",
+    "tagline": "AI News in Plain Language, Curated by Agents",
+    "target_audience": "United States (primary) - written so anyone, anywhere can read it",
+    "language": "en-US",
+    "timezone": "UTC",
     "website_url": "https://aiworldhq.com",
     "google_site_verification_file": "google9b2bbe4d952e2ff5.html",
     "indexnow_key": "298959409ebe114f91438741847c244119439a5c90bbe550",
@@ -284,7 +284,7 @@
       "name": "Social Media",
       "icon": "📱",
       "role": "Writes short social posts from articles",
-      "instructions": "You write ONE short, friendly social media post (max 280 chars) about the given AI article for everyday Australians. No hashtags spam, max 2 relevant hashtags. Australian English.",
+      "instructions": "You write ONE short, friendly social media post (max 280 chars) about the given AI article for everyday readers. No hashtags spam, max 2 relevant hashtags. US English.",
       "routing": "paid-only",
       "comment": "MODELL-TIERING 2026-07-24 (user: minden fizetős). KÖLTSÉG-OPTIMUM = MiniMax M2.5 — a legolcsóbb működő fizetős tier gépies munkára (parse/terv/formátum). MEGJEGYZÉS: az M2.5/M2.7 NEM engedi kikapcsolni a gondolkodást (HTTP 400), így reasoning marad ON. Fallback M2.7, vég-tartalék az ingyenes VÉSZHÁLÓ."
     },

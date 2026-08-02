@@ -232,7 +232,7 @@ function extractJsonArray(text) {
 // BATCH RELEVANCIA ELLENŐRZÉS (több cikk EGY AI hívásban!)
 // ===================================================================
 
-const RELEVANCE_SYSTEM_PROMPT = `You are a content curator for AI World Co., an Australian AI news portal for everyday people (not developers).
+const RELEVANCE_SYSTEM_PROMPT = `You are a content curator for AI World Co., an AI news portal for everyday people (not developers).
 
 RELEVANT topics: AI company news (OpenAI, Anthropic, Google, Meta, etc.), new AI features and how to use them, AI in daily life, AI and work/learning/safety, practical AI usage.
 

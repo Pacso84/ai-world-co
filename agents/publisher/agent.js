@@ -112,7 +112,7 @@ async function editorialReview() {
     return;
   }
 
-  const prompt = `You are the editor-in-chief of AI World Co. (Australian AI news for everyday people).
+  const prompt = `You are the editor-in-chief of AI World Co. (AI news for everyday people).
 The site is about to be published with these articles:
 ${titles.map((t, i) => `${i + 1}. ${t}`).join('\n')}
 

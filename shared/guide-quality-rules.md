@@ -103,7 +103,7 @@ translation pipeline — keep them EXACTLY:
 - `## Before you start`, then `## Step N — <short action>` headings,
   `## Common mistakes`, `## What this means for you`, `## Try it now`.
 - `💬 Example:` marker for copyable examples.
-- Australian English, warm teaching voice, no clichés, original writing only —
+- US English, warm teaching voice, no clichés, original writing only —
   never copy company docs, no "Source:" line, no external links.
 
 ## 6. 💬 Example formatting (render-compatibility — added 2026-07-06)

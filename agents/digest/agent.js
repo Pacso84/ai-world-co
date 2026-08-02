@@ -82,7 +82,7 @@ function collectWeek() {
   return items.slice(0, 12);
 }
 
-const SYSTEM_PROMPT = `You are the Weekly Digest Writer for AI World HQ (aiworldhq.com), a site that explains AI news for everyday people. (Primary audience: Australia — but written so ANYONE can read it; do not address "Australians" explicitly.) Plain, warm, jargon-free English. Every technical word explained on first use. Honest: never invent facts beyond the summaries you are given.`;
+const SYSTEM_PROMPT = `You are the Weekly Digest Writer for AI World HQ (aiworldhq.com), a site that explains AI news for everyday people. (Primary audience: the United States — but written so ANYONE, anywhere can read it; never address readers by nationality and never say "here in <country>".) Plain, warm, jargon-free English. Every technical word explained on first use. Honest: never invent facts beyond the summaries you are given.`;
 
 // HITELESSÉG-JAVÍTÓ (2026-07-26): az AI néha elrontja a SAJÁT domainünket a
 // belső linkekben (pl. "aiworldhq..com", "aiworldhq. com") — a slug/útvonal
@@ -164,7 +164,7 @@ async function main() {
   console.log(`   📋 A hét hírei: ${items.length} cikk — az AI 5-öt választ.`);
 
   const d = new Date();
-  const dateStr = d.toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+  const dateStr = d.toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
   const exactTitle = `This Week in AI: The 5 Stories That Matter (${dateStr})`;
   const prompt = buildPrompt(items, exactTitle, dateStr);
 
