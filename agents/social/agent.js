@@ -6,9 +6,8 @@
 //   Minden PUBLIKÁLT cikkhez/útmutatóhoz posztot ír:
 //     • Facebook: 1-2 mondatos, barátságos, link + max 2 hashtag
 //   A szöveget a Pinterest-poszter is ebből veszi.
-//   Eredmény: content/social/<slug>.json (gépi) + content/social/feed.md
-//   (ember által olvasható, kézzel is kiposztolható). A cikk _meta-ját
-//   social:true-ra állítja, hogy ne dolgozzon kétszer (inkrementális).
+//   Eredmény: content/social/<slug>.json — ezt használják a poszterek.
+//   A cikk _meta-ját social:true-ra állítja, hogy ne dolgozzon kétszer.
 //
 // ── INSTAGRAM KIVEZETVE (2026-07-29, user: "instagramot vegyük ki") ──
 //   407 Instagram-szöveg készült el, és EGYETLENEGY sem ment ki soha —
@@ -92,7 +91,6 @@ async function main() {
   if (!existsSync(SOCIAL_DIR)) mkdirSync(SOCIAL_DIR, { recursive: true });
   const base = siteUrl() || 'https://example.com';
   let done = 0, cost = 0;
-  const feed = [];
 
   for (const it of items) {
     const md = it.data.article_markdown || '';
@@ -139,24 +137,25 @@ Write the post. Output the JSON only.`;
     it.data._meta = { ...it.data._meta, social: true, social_at: new Date().toISOString() };
     writeFileSync(join(ARTICLES_DIR, it.file), JSON.stringify(it.data, null, 2), 'utf-8');
 
-    feed.push(`## ${title}\n**🔗 ${url}**\n\n**Facebook:**\n${fb}\n\n*Kép-ötlet: ${p.image_idea || '—'}*\n`);
     done++;
     console.log(`✅ ${title.slice(0, 50)}…`);
   }
 
-  // ember által olvasható, kézzel posztolható gyűjtemény
-  if (feed.length) {
-    const header = `# AI World Co. — közösségi posztok\n\n*Generálva: ${new Date().toISOString()}. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*\n\n---\n\n`;
-    let existing = '';
-    const feedPath = join(SOCIAL_DIR, 'feed.md');
-    if (existsSync(feedPath) && !ALL) existing = readFileSync(feedPath, 'utf-8').replace(/^#[\s\S]*?---\n\n/, '');
-    writeFileSync(feedPath, header + feed.join('\n---\n\n') + (existing ? '\n---\n\n' + existing : ''), 'utf-8');
-  }
+  // ── feed.md KIVEZETVE (2026-08-02) ────────────────────────────────
+  // Ez egy ember által olvasható gyűjtemény volt, "kézzel kiposztolható"
+  // céllal — abból az időből, amikor még nem volt automata kiküldés. Azóta
+  // a Facebook és a Pinterest magától posztol, és a napi Telegram-riport
+  // megmondja, mi ment ki. A fájlt SENKI nem olvasta (egyetlen kód sem
+  // hivatkozott rá), viszont ÖRÖKKÉ NŐTT: minden futás elé fűzte az újakat
+  // és megtartotta a régit — 4936 sor / 300 KB, és a TELJES fájl újraíródott
+  // futásonként háromszor, vagyis minden nap ~1 MB-nyi új adat a git-be,
+  // amit soha senki nem nézett meg.
+  // A gépi (JSON) posztokat ez nem érinti: azok külön fájlban vannak, és
+  // azokat használják a poszterek.
 
-  if (done) message('social', 'team', 'info', `${done} közösségi poszt megírva (Facebook). content/social/feed.md`);
+  if (done) message('social', 'team', 'info', `${done} közösségi poszt megírva (Facebook)`);
   console.log('\n' + '─'.repeat(60));
   console.log(`📊 ${done} poszt-csomag megírva | költség $${cost.toFixed(4)}`);
-  console.log(`📄 Olvasható gyűjtemény: content/social/feed.md  (kézzel posztolható)`);
   if (!siteUrl() || siteUrl().includes('example.com'))
     console.log(`ℹ️  A linkek a config.company.website_url-t használják — élesítéskor állítsd a valódi domainre.`);
 }
