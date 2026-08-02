@@ -1,102 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178552460669795",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-31T19:03:26.697Z",
-      "updated": "2026-07-31T19:03:30.733Z"
-    },
-    {
-      "id": "t178552461073437",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-07-31T19:03:30.734Z",
-      "updated": "2026-07-31T19:03:33.560Z"
-    },
-    {
-      "id": "t178552461356213",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-07-31T19:03:33.562Z",
-      "updated": "2026-07-31T19:03:44.731Z"
-    },
-    {
-      "id": "t178552462473378",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-07-31T19:03:44.733Z",
-      "updated": "2026-07-31T19:03:59.460Z"
-    },
-    {
-      "id": "t178554895856484",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-08-01T01:49:18.564Z",
-      "updated": "2026-08-01T01:49:18.764Z"
-    },
-    {
-      "id": "t178554895876632",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-08-01T01:49:18.766Z",
-      "updated": "2026-08-01T01:49:48.295Z"
-    },
-    {
-      "id": "t178554898829758",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-08-01T01:49:48.297Z",
-      "updated": "2026-08-01T01:49:48.501Z"
-    },
-    {
-      "id": "t178554898850331",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-01T01:49:48.503Z",
-      "updated": "2026-08-01T01:50:18.758Z"
-    },
-    {
-      "id": "t178554901876080",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-01T01:50:18.760Z",
-      "updated": "2026-08-01T01:50:43.695Z"
-    },
-    {
-      "id": "t178554904369830",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-08-01T01:50:43.698Z",
-      "updated": "2026-08-01T01:50:47.004Z"
-    },
-    {
-      "id": "t178554904703443",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-01T01:50:47.034Z",
-      "updated": "2026-08-01T01:54:41.905Z"
-    },
-    {
-      "id": "t178554928190718",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-01T01:54:41.907Z",
-      "updated": "2026-08-01T01:55:56.743Z"
-    },
-    {
       "id": "t178554935677288",
       "title": "Run guide",
       "status": "done",
@@ -479,41 +383,105 @@
       "agent": "publisher",
       "created": "2026-08-02T02:02:30.876Z",
       "updated": "2026-08-02T02:02:47.548Z"
+    },
+    {
+      "id": "t178566406084693",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-08-02T09:47:40.846Z",
+      "updated": "2026-08-02T09:47:41.010Z"
+    },
+    {
+      "id": "t178566406101276",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-08-02T09:47:41.012Z",
+      "updated": "2026-08-02T09:48:07.274Z"
+    },
+    {
+      "id": "t178566408727555",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-08-02T09:48:07.275Z",
+      "updated": "2026-08-02T09:48:07.450Z"
+    },
+    {
+      "id": "t178566408745236",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-02T09:48:07.452Z",
+      "updated": "2026-08-02T09:48:07.604Z"
+    },
+    {
+      "id": "t178566408760664",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-02T09:48:07.606Z",
+      "updated": "2026-08-02T09:48:27.557Z"
+    },
+    {
+      "id": "t178566410756131",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-02T09:48:27.561Z",
+      "updated": "2026-08-02T09:48:56.952Z"
+    },
+    {
+      "id": "t178566413695422",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-02T09:48:56.954Z",
+      "updated": "2026-08-02T09:49:28.073Z"
+    },
+    {
+      "id": "t178566416807570",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-08-02T09:49:28.075Z",
+      "updated": "2026-08-02T09:49:40.713Z"
+    },
+    {
+      "id": "t178566418074737",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-02T09:49:40.747Z",
+      "updated": "2026-08-02T09:50:01.820Z"
+    },
+    {
+      "id": "t178566420182223",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-08-02T09:50:01.822Z",
+      "updated": "2026-08-02T09:50:30.187Z"
+    },
+    {
+      "id": "t178566423018919",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-02T09:50:30.189Z",
+      "updated": "2026-08-02T09:50:40.816Z"
+    },
+    {
+      "id": "t178566424081864",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-08-02T09:50:40.818Z",
+      "updated": "2026-08-02T09:50:56.241Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178468619760261",
-      "level": "success",
-      "text": "0 hír + 6 útmutató publikálva (költség: $0.0672).",
-      "agent": "ceo",
-      "at": "2026-07-22T02:09:57.602Z",
-      "loud": false
-    },
-    {
-      "id": "n17847162103517",
-      "level": "warn",
-      "text": "📨 ellenorzo → iro: Hiányos / kell még adat: \"Gemini vs ChatGPT on Your Phone: Which AI Assistant Fits Your Pocket?\" — egészítsd ki: Article",
-      "agent": "ellenorzo",
-      "at": "2026-07-22T10:30:10.351Z",
-      "loud": false
-    },
-    {
-      "id": "n178471639154647",
-      "level": "info",
-      "text": "SEO: 12 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-07-22T10:33:11.546Z",
-      "loud": false
-    },
-    {
-      "id": "n178471819269127",
-      "level": "alert",
-      "text": "Pipeline lépés időtúllépés: translator — leállítva 30 perc után.",
-      "agent": "ceo",
-      "at": "2026-07-22T11:03:12.691Z",
-      "loud": true
-    },
     {
       "id": "n178471819388662",
       "level": "success",
@@ -1281,45 +1249,41 @@
       "agent": "ceo",
       "at": "2026-08-02T02:02:47.567Z",
       "loud": false
+    },
+    {
+      "id": "n178566413694519",
+      "level": "warn",
+      "text": "📨 guide → ceo: Kell még adat: \"How to Plan a Week's Meals from What's Already in Your Fridge\" — az Ellenőrző tényt/forrást kér, amit ne",
+      "agent": "guide",
+      "at": "2026-08-02T09:48:56.945Z",
+      "loud": false
+    },
+    {
+      "id": "n178566423018083",
+      "level": "info",
+      "text": "SEO: 2 cikk optimalizálva (átlag 8.5/10).",
+      "agent": "seo",
+      "at": "2026-08-02T09:50:30.180Z",
+      "loud": false
+    },
+    {
+      "id": "n178566424889194",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The lineup looks strong and ready — you have a nice mix of practical use cases (study, work, personal writing) across different AI tools (Perplexity, ChatGPT, Cohere, Le Chat, Qwen), plus that essenti",
+      "agent": "publisher",
+      "at": "2026-08-02T09:50:48.891Z",
+      "loud": false
+    },
+    {
+      "id": "n178566425627574",
+      "level": "success",
+      "text": "1 hír + 1 útmutató publikálva (költség: $0.0061).",
+      "agent": "ceo",
+      "at": "2026-08-02T09:50:56.275Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178494463913954",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Relax mode for V8 Alpha\" (?/10)",
-      "ref": "2026-07-23T01-48-48-122Z_midjourney-updates_Relax_mode_for_V8_Alpha.json",
-      "at": "2026-07-25T01:57:19.139Z"
-    },
-    {
-      "id": "m178494467808487",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Web Updates\" (?/10)",
-      "ref": "2026-07-23T01-48-48-122Z_midjourney-updates_Web_Updates.json",
-      "at": "2026-07-25T01:57:58.084Z"
-    },
-    {
-      "id": "m178494470080693",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Qwen-Image-3.0: Rich Content, Authentic Details, Deep Knowledge - Qwen\" (?/10)",
-      "ref": "2026-07-23T01-48-57-922Z_qwen-news_Qwen-Image-3_0__Rich_Content__Authentic_Details__D.json",
-      "at": "2026-07-25T01:58:20.806Z"
-    },
-    {
-      "id": "m178494472688170",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Cohere Transcribe Arabic: Open-Source Speech AI\" — mi a baj: No actual step-by-step guide: readers aren't told which specific tool to use or how to access it; How-to guides need at least one concrete example showing the full process from start to finish; Suggest adding 2-3 numbered steps with a specific tool like Cohere Transcribe Arabic to demonstrate the workflow",
-      "ref": "2026-07-23T10-11-43-793Z_cohere-blog_Cohere_Transcribe_Arabic__Open-Source_Speech_AI.json",
-      "at": "2026-07-25T01:58:46.881Z"
-    },
     {
       "id": "m178494473257964",
       "from": "pairing",
@@ -2641,6 +2605,44 @@
       "text": "6 közösségi poszt megírva (Facebook). content/social/feed.md",
       "ref": null,
       "at": "2026-08-02T02:12:12.577Z"
+    },
+    {
+      "id": "m178566413694355",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"How to Plan a Week's Meals from What's Already in Your Fridge\" — javítva: $1,500 AUD/year savings claim in 'What this means for you' has no source and reads as invented — remove or attribute to a credible source (e.g. Choice, Foodwise, or government food waste report); '1 in 5 bags of food' and '1 in 10 within a month' are also unsourced statistics — either cite the source or soften ",
+      "ref": "GUIDE_how-to-plan-a-week-s-meals-from-what-s-already-in-your-fridg.json",
+      "at": "2026-08-02T09:48:56.943Z"
+    },
+    {
+      "id": "m178566413694524",
+      "from": "guide",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Kell még adat: \"How to Plan a Week's Meals from What's Already in Your Fridge\" — az Ellenőrző tényt/forrást kér, amit nem találhatok ki: $1,500 AUD/year savings claim in 'What this means for you' has no source and reads as invented — remove or attribute to a credible source (e.g. Choice, Foodwise, or government food waste report)",
+      "ref": "GUIDE_how-to-plan-a-week-s-meals-from-what-s-already-in-your-fridg.json",
+      "open": false,
+      "at": "2026-08-02T09:48:56.945Z",
+      "resolved_at": "2026-08-02T09:49:28.065Z"
+    },
+    {
+      "id": "m178566416806340",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"How to Plan a Week's Meals from What's Already in Your Fridge\" (?/10)",
+      "ref": "GUIDE_how-to-plan-a-week-s-meals-from-what-s-already-in-your-fridg.json",
+      "at": "2026-08-02T09:49:28.063Z"
+    },
+    {
+      "id": "m178566424080976",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-08-02T09:50:40.809Z"
     }
   ]
 }
