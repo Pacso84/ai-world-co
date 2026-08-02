@@ -25,7 +25,7 @@
 // riport viszi ki a leletet (mint a minőség-őrnél és az i18n-őrszemnél).
 // ===================================================================
 
-import { readFileSync, existsSync, readdirSync, writeFileSync, mkdirSync, statSync } from 'fs';
+import { readFileSync, existsSync, readdirSync, writeFileSync, mkdirSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 
@@ -174,18 +174,38 @@ function checkSchema() {
 // kimarad a Discoverből. A generátor 1280-at ad, de ezt eddig 1000-re
 // vágtuk vissza — a LEGFRISSEBB képeket nézzük, mert a Discover úgyis
 // csak a friss tartalommal foglalkozik.
+// A "FRISS" A CIKK MEGJELENÉSÉBŐL JÖN, NEM A FÁJL MTIME-JÁBÓL (2026-08-02).
+//
+// Ugyanaz a csapda, mint a házmester naplótörlésénél: a git nem tárolja a
+// módosítási időt, a GitHub Actions friss klónja mindennek a klónozás idejét
+// adja. Így élesben a "12 legfrissebb kép" gyakorlatilag véletlen merítés volt
+// — bizonyíték: a 2026-08-02-i futás egy 2026-07-08-i (25 napos) képet jelentett
+// frissként. Az egyetlen, git-en átélő frissesség-jelzés a cikk published_at-je.
 function checkDiscoverImages() {
   const dir = join(ROOT, 'website', 'assets', 'images');
-  if (!existsSync(dir)) return;
-  const files = readdirSync(dir).filter(f => /\.jpe?g$/i.test(f));
-  if (!files.length) return;
-  // a 12 legfrissebb kép (módosítás szerint)
-  const recent = files
-    .map(f => ({ f, t: statSync(join(dir, f)).mtimeMs }))
-    .sort((a, b) => b.t - a.t).slice(0, 12);
+  if (!existsSync(dir) || !existsSync(ARTICLES)) return;
+
+  const arts = [];
+  for (const f of readdirSync(ARTICLES).filter(x => x.endsWith('.json'))) {
+    try {
+      const m = JSON.parse(readFileSync(join(ARTICLES, f), 'utf-8'))._meta || {};
+      if (m.slug && m.published_at) arts.push({ slug: m.slug, at: m.published_at });
+    } catch { /* kihagyjuk */ }
+  }
+  if (!arts.length) return;
+  arts.sort((a, b) => b.at.localeCompare(a.at));
+
+  const recent = [];
+  for (const a of arts) {
+    if (recent.length >= 12) break;
+    const p = join(dir, `${a.slug}.jpg`);
+    if (existsSync(p)) recent.push({ f: `${a.slug}.jpg`, p });
+  }
+  if (!recent.length) return;
+
   const small = [];
-  for (const { f } of recent) {
-    const w = jpegWidth(join(dir, f));
+  for (const { f, p } of recent) {
+    const w = jpegWidth(p);
     if (w && w < 1200) small.push(`${f} (${w}px)`);
   }
   if (small.length) {

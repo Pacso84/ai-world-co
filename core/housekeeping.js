@@ -102,15 +102,36 @@ async function stripEmbeddings() {
 }
 
 // ── 2. RÉGI NAPLÓK ───────────────────────────────────────────────────
+// A KOR A FÁJLNÉVBŐL JÖN, NEM AZ MTIME-BÓL (2026-08-02).
+//
+// A git NEM tárolja a módosítási időt. A GitHub Actions minden futásnál friss
+// klónt csinál → MINDEN fájl mtime-ja a klónozás pillanata lesz. Vagyis élesben
+// egyetlen napló sem volt soha "14 napnál régebbi", és ez a takarító a
+// megírása óta EGYETLEN fájlt sem törölt — közben némán "rendben"-t jelentett.
+// (Mérve: 99 napló volt 14 napnál régebbi a fájlnév-dátuma szerint, és a git
+// történet szerint naplót egyedül egy KÉZI, helyi futás törölt, 2026-07-30-án.)
+//
+// Minden naplónk nevében ott a dátum (`scrape_2026-08-02T09-48-07-266Z.json`) —
+// ez a git-en át is túléli, tehát ez az egyetlen megbízható kor-jelzés.
+// Az mtime csak tartalék, ha valaha dátum nélküli naplófajta jelenne meg.
+function logAgeMs(name, st) {
+  const m = name.match(/(\d{4})-(\d{2})-(\d{2})/);
+  if (m) {
+    const t = Date.parse(`${m[1]}-${m[2]}-${m[3]}T00:00:00Z`);
+    if (!Number.isNaN(t)) return Date.now() - t;
+  }
+  return Date.now() - st.mtimeMs;
+}
+
 function pruneLogs() {
   if (!existsSync(LOGS)) return;
-  const cutoff = Date.now() - KEEP_DAYS * 86400e3;
+  const maxAge = KEEP_DAYS * 86400e3;
   let n = 0, bytes = 0;
   for (const f of readdirSync(LOGS)) {
     if (!f.endsWith('.json')) continue;          // README.md és társai maradnak
     const p = join(LOGS, f);
     let st; try { st = statSync(p); } catch { continue; }
-    if (st.mtimeMs >= cutoff) continue;
+    if (logAgeMs(f, st) <= maxAge) continue;
     bytes += st.size; n++;
     if (!DRY) { try { unlinkSync(p); } catch { /* zárolt fájl — jövő körben */ } }
   }
