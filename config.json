@@ -503,6 +503,8 @@
     "daily_articles_max": 8,
     "_daily_articles_comment": "A HIR napi kerete. 2026-07-22 (user-dontes: \"kevesebb cikk de minosegiek\"): 25 -> 8. Ok: 30 nap alatt 460 oldalletoltes jutott napi 25 cikkre - a mennyiseg messze meghaladta a keresletet, es a koltseg 2/3-a a forditasra ment. Kevesebb, de gondosabb cikk a keresoknek is jobb. Az atmeno-kuszob ezzel egyutt 7-rol 8-ra emelve (agents/ellenorzo MIN_PASSING_SCORE).",
     "daily_articles_min": 0,
+    "news_keep_days": 90,
+    "_news_keep_days_comment": "HÍR-MEGŐRZÉS (user-döntés 2026-08-02): a hírt 3 hónapig tároljuk, utána a házmester törli (cikk + fordítás + borítókép + közösségi poszt). AZ ÚTMUTATÓRA ÉS AZ ÖSSZEHASONLÍTÁSRA NEM VONATKOZIK — azok örökzöldek, soha nem törlődnek. A heti összefoglaló LEJÁR (dátumos tartalom). Ok: a hír romlandó, egy fél éves 'új funkció' cikk gyakran már nem igaz; napi ~11 hírrel a 90 napos ablak ~1000 cikkes állandósult állapotot jelent, enélkül a tár örökké nő. Biztosíték: dátum nélküli cikket sosem törlünk, és egy futásban legfeljebb 200-at (dátumhiba ellen).",
     "daily_guides_max": 4,
     "_daily_guides_comment": "Az UTMUTATO napi kerete: 6 -> 4 (2026-07-22). Az utmutato orokzold tartalom, ezert aranyaiban tobbet hagyunk belole, mint a hirbol.",
     "guide_topic_buffer_target": 16,

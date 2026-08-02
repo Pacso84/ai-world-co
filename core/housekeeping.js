@@ -46,6 +46,18 @@ const STORE = join(ROOT, 'memory', 'store.json');
 const STATE = join(ROOT, 'memory', 'housekeeping.json');
 
 const DRY = process.argv.includes('--dry');
+// A HÍR MEGŐRZÉSI IDEJE (user-döntés 2026-08-02): 3 hónap. Az útmutatóra és az
+// összehasonlításra NEM vonatkozik — azok örökzöldek.
+// Sorrend: parancssori kapcsoló > config.json > 90. A configban azért van,
+// hogy a szabály ott legyen, ahol a többi — kód nélkül átírható.
+const NEWS_KEEP_DAYS = (() => {
+  const i = process.argv.indexOf('--news-days');
+  if (i >= 0 && process.argv[i + 1]) return parseInt(process.argv[i + 1], 10) || 90;
+  try {
+    const c = JSON.parse(readFileSync(join(ROOT, 'config.json'), 'utf-8'));
+    return Number(c.limits?.news_keep_days) || 90;
+  } catch { return 90; }
+})();
 const KEEP_DAYS = (() => {
   const i = process.argv.indexOf('--days');
   return i >= 0 && process.argv[i + 1] ? parseInt(process.argv[i + 1], 10) : 14;
@@ -138,6 +150,68 @@ function pruneLogs() {
   if (n) report.push(`📄 régi napló törölve: ${n} fájl · ${kb(bytes)} KB (${KEEP_DAYS} napnál régebbi)`);
 }
 
+// ── 2b. LEJÁRT HÍREK ─────────────────────────────────────────────────
+// User-döntés (2026-08-02): "a híreket csak három hónapra tároljuk, ez nem
+// vonatkozik az útmutatókra".
+//
+// MIÉRT: a hír romlandó. Egy fél éves "új funkció" cikk gyakran már NEM IGAZ,
+// és a keresőnek is gyenge jelzés. Napi ~11 hírrel a 90 napos ablak ~1000
+// cikkes állandósult állapotot jelent — enélkül a tár és a build örökké nő.
+//
+// ÖRÖKZÖLD, SOHA NEM TÖRLŐDIK:
+//   - útmutató (a user kifejezett kérése)
+//   - összehasonlítás ("X vagy Y") — ez sem évül el, ugyanaz a fajta tartalom
+// LEJÁR:
+//   - sima hír
+//   - heti összefoglaló (dátumos: "This Week in AI, 21 June 2026" — három
+//     hónap múlva értéktelen; a főoldal amúgy is csak a legfrissebbet emeli ki)
+//
+// KÉT BIZTOSÍTÉK, mert a néma, tömeges törlés visszafordíthatatlan:
+//   1. Dátum nélküli vagy értelmezhetetlen dátumú cikket SOHA nem törlünk.
+//   2. Egy futásban legfeljebb MAX_DELETE cikk mehet — ha egy óra- vagy
+//      dátumhiba miatt hirtelen "minden lejárt", az első futás megáll és
+//      szól, ahelyett hogy kiürítené a honlapot.
+// A törölt cikk képét és fordítását a lenti árva-takarítók viszik el
+// ugyanebben a futásban (ezért fut ez ELŐTTÜK).
+const MAX_DELETE = 200;
+
+function isEvergreen(file, data) {
+  if (data._meta?.type === 'guide' || file.startsWith('ARTICLE_GUIDE')) return true;
+  return /^tags:.*\bcomparison\b/m.test(data.article_markdown || '');
+}
+
+function pruneOldNews() {
+  if (!existsSync(ARTICLES)) return;
+  const cutoff = Date.now() - NEWS_KEEP_DAYS * 86400e3;
+  const doomed = [];
+  for (const f of readdirSync(ARTICLES).filter(x => x.startsWith('ARTICLE_') && x.endsWith('.json'))) {
+    let d; try { d = JSON.parse(readFileSync(join(ARTICLES, f), 'utf-8')); } catch { continue; }
+    if (isEvergreen(f, d)) continue;
+    const t = Date.parse(d._meta?.published_at || '');
+    if (!Number.isFinite(t)) continue;          // dátum nélkülit nem bántunk
+    if (t >= cutoff) continue;
+    doomed.push({ f, slug: d._meta?.slug || '' });
+  }
+  if (!doomed.length) return;
+
+  if (doomed.length > MAX_DELETE) {
+    report.push(`🛑 LEJÁRT HÍR: ${doomed.length} cikk esne ki egyszerre (határ ${MAX_DELETE}) — NEM TÖRLÖK. Ez dátumhibára utal; nézd meg, mielőtt folytatjuk.`);
+    return;
+  }
+
+  let bytes = 0, social = 0;
+  for (const { f, slug } of doomed) {
+    const p = join(ARTICLES, f);
+    try { bytes += statSync(p).size; } catch { /* mindegy */ }
+    if (!DRY) { try { unlinkSync(p); } catch { /* jövő körben */ } }
+    if (slug) {
+      const s = join(ROOT, 'content', 'social', `${slug}.json`);
+      if (existsSync(s)) { social++; if (!DRY) { try { unlinkSync(s); } catch { /* jövő körben */ } } }
+    }
+  }
+  report.push(`📰 lejárt hír törölve: ${doomed.length} cikk · ${kb(bytes)} KB (${NEWS_KEEP_DAYS} napnál régebbi)${social ? ` + ${social} közösségi poszt` : ''} — az útmutatók és összehasonlítások érintetlenek`);
+}
+
 // ── 3. ÁRVA BORÍTÓKÉPEK ──────────────────────────────────────────────
 // A kép a cikk SLUGJÁHOZ tartozik (build.js: `${slug}.jpg`). Ami mögött
 // nincs élő cikk, az törölt vagy átnevezett cikk maradványa.
@@ -194,11 +268,17 @@ async function main() {
   console.log('🧹 HÁZMESTER' + (DRY ? ' — PRÓBA (nem törlök)' : ''));
   console.log('─'.repeat(60));
 
-  const { files, slugs } = liveArticles();
+  let { files, slugs } = liveArticles();     // let: a lejárt hírek után újraolvassuk
   if (!files.size) { console.log('   ⏭️  Nincs cikk — kihagyom (óvatosságból nem törlök semmit).'); return; }
 
   await stripEmbeddings();
   pruneLogs();
+  pruneOldNews();
+  // ÚJRAOLVASSUK az élő cikkeket: a lejárt hírek most tűntek el, és a lenti
+  // árva-takarítók csak így viszik el a képüket és a fordításukat UGYANEBBEN
+  // a futásban. E nélkül egy körrel később takarítanánk — vagy soha, ha
+  // közben a lista megint feltöltődik.
+  ({ files, slugs } = liveArticles());
   pruneImages(slugs);
   pruneTranslations(files);
   const { logCount } = watchGrowth();
