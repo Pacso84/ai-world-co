@@ -21,6 +21,29 @@ tényleg olvasnak minket.
 - ✅ **traveled**, canceled (egy -l-)
 - ❌ NEM: colour, organisation, centre, defence, travelled
 
+### Vállalati zsargon → hétköznapi szó
+
+A hír-forrásaink sajtóközleményt írnak, és az író átveszi a hangjukat. Mérve
+(2026-08-02, 585 cikk): a vállalati/technikai forrásoknál 32-80% az érintett
+cikk (aws-ml, databricks, alibaba-qwen, deepmind), a fogyasztóiaknál 14%.
+Nem tiltás — ha nincs jobb szó, maradhat. De alapból a jobb oldalt írd:
+
+| Kerüld | Írd inkább |
+|---|---|
+| seamless, seamlessly | smooth, simple, without extra steps |
+| streamline | simplify, speed up |
+| unlock (a feature) | open up, let you, give you |
+| harness, leverage | use |
+| delve into, dive into | look at, go through |
+| landscape (the AI landscape) | world, field |
+| journey (your AI journey) | *rendszerint törölhető* |
+| embrace, foster | start using, help |
+| tapestry, testament, pinnacle | *soha* |
+
+(A szólista alapja: nanxstats/llm-cliches, MIT. FONTOS: a lista sok szava
+— "ensure", "crucial", "discover" — teljesen normális angol; a mérésünk
+szerint ezek nálunk nem jelentenek gondot, ne kerüld őket mesterségesen.)
+
 ### Nemzeti utalások
 - A szöveg SOHA ne szólítsa meg az olvasót nemzetiség szerint ("Aussies",
   "Americans"), és ne mondja, hogy "here in <ország>". Az olvasóink fele nem
