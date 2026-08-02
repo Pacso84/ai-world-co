@@ -98,15 +98,28 @@ async function openrouterBalance(burnPerDay) {
     if (!isFinite(left)) return '';
     if (!(burnPerDay > 0.005)) return `🏦 Egyenleg: $${left.toFixed(2)}`;
 
+    // A SÜRGŐSSÉGHEZ IGAZODÓ HANG (2026-08-02).
+    //
+    // Eddig a mérce az volt, hogy "eléri-e a hónap végét" — ezért MINDEN NAP
+    // ugyanazt kiabálta ("NEM ÉRI EL"), akkor is, amikor még 19 nap volt hátra.
+    // Egy figyelmeztetés, ami mindennap szól, egy hét alatt láthatatlanná válik,
+    // és pont azon a napon nem nézzük meg, amikor tényleg számít.
+    //
+    // Az új mérce a HÁTRALÉVŐ NAPOK SZÁMA, három hangerővel — és a DÁTUM is
+    // kimegy, mert a user azt tudja összevetni a fizetése napjával; a "19 nap"
+    // ehhez fejben számolást kér, a "augusztus 21." nem.
     const days = Math.floor(left / burnPerDay);
-    const n = new Date();
-    const nextTopUp = Date.UTC(n.getUTCFullYear(), n.getUTCMonth() + 1, 1);
-    const daysLeft = Math.ceil((nextTopUp - n.getTime()) / 86400000);
-    const short = daysLeft - days;
-    const verdict = short > 0
-      ? ` ⚠️ NEM ÉRI EL a hónap végét — kb. ${short} nap hiányzik (${daysLeft} van hátra, ${days} napra futja)`
-      : ` ✅ kitart a hónap végéig (${daysLeft} nap van hátra, ${days} napra futja)`;
-    return `🏦 Egyenleg: $${left.toFixed(2)}${verdict}`;
+    const out = new Date(Date.now() + days * 86400000);
+    const HU_MONTH = ['jan.', 'febr.', 'márc.', 'ápr.', 'máj.', 'jún.', 'júl.', 'aug.', 'szept.', 'okt.', 'nov.', 'dec.'];
+    const when = `${HU_MONTH[out.getMonth()]} ${out.getDate()}.`;
+
+    if (days <= 5) {
+      return `🚨 *EGYENLEG: $${left.toFixed(2)} — kb. ${days} nap múlva ELFOGY (${when})*, utána megáll a termelés. Tölts fel!`;
+    }
+    if (days <= 13) {
+      return `⚠️ Egyenleg: $${left.toFixed(2)} — kb. ${days} napra elég (${when}), érdemes feltölteni.`;
+    }
+    return `🏦 Egyenleg: $${left.toFixed(2)} — kb. ${days} napra elég (${when}).`;
   } catch { return ''; }
 }
 
