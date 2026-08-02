@@ -374,6 +374,13 @@ jobs:
           # webhookra POST-ol (Make → Create a Pin). Amíg a secret nincs beállítva,
           # a poszter kecsesen kihagyja magát (dormant) — nem hibázik.
           PINTEREST_MAKE_WEBHOOK_URL: ${{ secrets.PINTEREST_MAKE_WEBHOOK_URL }}
+          # INSTAGRAM (2026-08-02, user-kérés: "csináljunk instagramot mint a
+          # facebook"). Ugyanaz a Make-minta. Amíg a secret nincs beállítva, a
+          # poszter kecsesen kihagyja magát — nem hibázik, és nem is jelöl meg
+          # semmit kiküldöttként. FIGYELEM: az Instagram NEM enged kattintható
+          # linket a képaláírásban, ezért ez márkajelenlét-csatorna, nem
+          # forgalom-csatorna; a képaláírás a bio linkjére irányít.
+          INSTAGRAM_MAKE_WEBHOOK_URL: ${{ secrets.INSTAGRAM_MAKE_WEBHOOK_URL }}
           # 2026-07-27: a poszter ELŐ-ELLENŐRZI a Make-forgatókönyvet ezzel a
           # tokennel. Kellett, mert a webhook 200-at ad akkor is, ha a
           # forgatókönyvben nincs Pinterest-modul — így 38 pin "kiküldve"
@@ -390,6 +397,10 @@ jobs:
           # 21 nap, 15/nappal ~12 nap. Óvatosan emelünk: a fiók fiatal, a hirtelen
           # nagy ütem levélszemétnek látszhat.
           node agents/social/pinterest-poster.js --limit 5 || true
+          # Instagram 2 / futás (= 6/nap). Szándékosan óvatos: új fiók, és a
+          # hirtelen nagy ütem levélszemétnek látszhat. A poszter magától
+          # megtagadja a küldést, ha a Make-forgatókönyvben nincs Instagram-modul.
+          node agents/social/instagram-poster.js --limit 2 || true
 
       # Napi önjelentés a Főnöktől Telegramra (naponta 1x, a 7-15 UTC sávban)
       # FORRÁS-BIZONYÍTVÁNY (2026-07-22): osztályozza a hírforrásokat (frissesség +

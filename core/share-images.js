@@ -23,14 +23,23 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
 const ARTICLES_DIR = join(ROOT, 'content', 'articles');
 const IMG_DIR = join(ROOT, 'website', 'public', 'assets', 'images');
-const OUT_DIR = join(ROOT, 'website', 'public', 'assets', 'share');
+const OUT_BASE = join(ROOT, 'website', 'public', 'assets');
 
 const args = process.argv.slice(2);
 const FORCE = args.includes('--force');
 const di = args.indexOf('--days');
 const DAYS = di !== -1 && args[di + 1] ? parseInt(args[di + 1], 10) || 7 : 7;
 
-const W = 1200, H = 630;
+// KÉT FORMÁTUM (2026-08-02):
+//   share/  1200x630 fekvő — Facebook, Pinterest, og:image (a régi, változatlan)
+//   ig/     1080x1350 álló — Instagram. A hírfolyamban az álló (4:5) tölti ki a
+//           legtöbb képernyőt; a fekvő kép ott bélyegképnyire zsugorodik.
+// A rajzolás mérete a SZÉLESSÉGGEL arányos (k = W/1200), így ugyanaz a kód
+// mindkét formátumot helyesen tördeli — nem kell külön elrendezést karbantartani.
+const FORMATS = [
+  { key: 'share', w: 1200, h: 630, grad: [0.35, 0.72] },
+  { key: 'ig', w: 1080, h: 1350, grad: [0.55, 0.80] }   // magasabb képen lejjebb kezdjen a sötétedés
+];
 
 function slugify(t) { return (t || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 70); }
 function xmlEsc(s) { return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
@@ -52,25 +61,32 @@ function wrapTitle(title, maxChars = 26, maxLines = 3) {
   return lines;
 }
 
-function overlaySvg(title) {
-  const lines = wrapTitle(title);
-  const fs = lines.length >= 3 ? 56 : 62;                 // 3 sornál kicsit kisebb betű
+function overlaySvg(title, fmt) {
+  const { w: W, h: H, grad } = fmt;
+  const k = W / 1200;                                     // minden méret a szélességgel arányos
+  const r = n => Math.round(n * k);
+  // Álló képen van függőleges hely 4 sorra — a fekvőn nincs. Enélkül a
+  // hosszabb címek "…"-tal csonkultak az Instagramon is, feleslegesen.
+  const lines = wrapTitle(title, 26, H > W ? 4 : 3);
+  const fs = r(lines.length >= 3 ? 56 : 62);              // 3+ sornál kicsit kisebb betű
   const lh = Math.round(fs * 1.18);
-  const baseY = H - 58 - (lines.length - 1) * lh - 44;    // 44 = márkasor helye
+  const pad = r(60);
+  const brandY = H - r(48);
+  const baseY = H - r(58) - (lines.length - 1) * lh - r(44);   // 44 = márkasor helye
   const tspans = lines.map((l, i) =>
-    `<tspan x="60" y="${baseY + i * lh}">${xmlEsc(l)}</tspan>`).join('');
+    `<tspan x="${pad}" y="${baseY + i * lh}">${xmlEsc(l)}</tspan>`).join('');
   return Buffer.from(`<svg width="${W}" height="${H}" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0.35" stop-color="#0d0f14" stop-opacity="0"/>
-      <stop offset="0.72" stop-color="#0d0f14" stop-opacity="0.72"/>
+      <stop offset="${grad[0]}" stop-color="#0d0f14" stop-opacity="0"/>
+      <stop offset="${grad[1]}" stop-color="#0d0f14" stop-opacity="0.72"/>
       <stop offset="1" stop-color="#0d0f14" stop-opacity="0.94"/>
     </linearGradient>
   </defs>
   <rect width="${W}" height="${H}" fill="url(#g)"/>
   <text font-family="Arial, Helvetica, 'DejaVu Sans', sans-serif" font-size="${fs}" font-weight="800" fill="#ffffff">${tspans}</text>
-  <text x="60" y="${H - 48}" font-family="Arial, Helvetica, 'DejaVu Sans', sans-serif" font-size="26" font-weight="700" fill="#e8c15a">AI WORLD HQ</text>
-  <text x="252" y="${H - 48}" font-family="Arial, Helvetica, 'DejaVu Sans', sans-serif" font-size="26" fill="#c9c4ba">· aiworldhq.com</text>
+  <text x="${pad}" y="${brandY}" font-family="Arial, Helvetica, 'DejaVu Sans', sans-serif" font-size="${r(26)}" font-weight="700" fill="#e8c15a">AI WORLD HQ</text>
+  <text x="${r(252)}" y="${brandY}" font-family="Arial, Helvetica, 'DejaVu Sans', sans-serif" font-size="${r(26)}" fill="#c9c4ba">· aiworldhq.com</text>
 </svg>`);
 }
 
@@ -78,7 +94,7 @@ async function main() {
   console.log('🖼️  MEGOSZTÁS-KÉP GENERÁTOR INDUL');
   console.log('─'.repeat(60));
   if (!existsSync(IMG_DIR)) { console.log('   ⏭️  Nincs website/public/assets/images — előbb futtasd a buildet.'); return; }
-  mkdirSync(OUT_DIR, { recursive: true });
+  for (const f of FORMATS) mkdirSync(join(OUT_BASE, f.key), { recursive: true });
 
   const now = Date.now();
   let made = 0, skipped = 0, noCover = 0;
@@ -95,23 +111,33 @@ async function main() {
     const isWeekly = /weekly-digest/.test((d.article_markdown || '').slice(0, 600));
     const mascot = join(IMG_DIR, 'mascot-weekly.jpg');
     const src = (isWeekly && existsSync(mascot)) ? mascot : join(IMG_DIR, slug + '.jpg');
-    const out = join(OUT_DIR, slug + '.jpg');
     if (!existsSync(src)) { noCover++; continue; }
-    if (existsSync(out) && !FORCE) { skipped++; continue; }
-    try {
-      // WEEKLY-DIGEST: a kabala-kép már kész, márkás kártya (saját felirattal) →
-      // NEM rakunk rá cím-overlay-t (dupla/kevert szöveg lenne). A többi cikknél
-      // marad a megszokott cím + márkasor overlay.
-      let pipe = sharp(src).resize(W, H, { fit: 'cover', position: isWeekly ? 'centre' : 'attention' });
-      if (!isWeekly) pipe = pipe.composite([{ input: overlaySvg(title) }]);
-      await pipe
-        .jpeg({ quality: 82 })
-        .toFile(out);
-      made++;
-      console.log(`   ✅ ${slug.slice(0, 60)}`);
-    } catch (e) {
-      console.log(`   ⚠️ ${slug.slice(0, 40)}: ${e.message.slice(0, 60)}`);
+
+    let didWork = false;
+    for (const fmt of FORMATS) {
+      const out = join(OUT_BASE, fmt.key, slug + '.jpg');
+      if (existsSync(out) && !FORCE) continue;
+      try {
+        // WEEKLY-DIGEST: a kabala-kép már kész, márkás kártya (saját felirattal) →
+        // NEM rakunk rá cím-overlay-t (dupla/kevert szöveg lenne). A többi cikknél
+        // marad a megszokott cím + márkasor overlay.
+        //
+        // A kabalát ÁLLÓ formátumban NEM vágjuk (2026-08-02): a kép fekvő, és a
+        // rajta lévő "AIWORLDHQ" feliratot egy 4:5-ös vágás levágná. Inkább
+        // sötét háttérre illesztjük teljes egészében — a user saját rajza sértetlen.
+        const portrait = fmt.h > fmt.w;
+        let pipe = sharp(src).resize(fmt.w, fmt.h, (isWeekly && portrait)
+          ? { fit: 'contain', background: { r: 13, g: 15, b: 20 } }
+          : { fit: 'cover', position: isWeekly ? 'centre' : 'attention' });
+        if (!isWeekly) pipe = pipe.composite([{ input: overlaySvg(title, fmt) }]);
+        await pipe.jpeg({ quality: 82 }).toFile(out);
+        didWork = true;
+      } catch (e) {
+        console.log(`   ⚠️ ${slug.slice(0, 40)} [${fmt.key}]: ${e.message.slice(0, 50)}`);
+      }
     }
+    if (didWork) { made++; console.log(`   ✅ ${slug.slice(0, 60)}`); }
+    else skipped++;
   }
   console.log('─'.repeat(60));
   console.log(`📊 Kész: ${made} új | megvolt: ${skipped} | borító nélkül: ${noCover}`);
