@@ -1,6 +1,66 @@
 # AI World Co. — közösségi posztok
 
-*Generálva: 2026-08-02T02:12:12.575Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+*Generálva: 2026-08-02T09:57:40.053Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## This Week in AI: The 5 Stories That Matter (2 August 2026)
+**🔗 https://aiworldhq.com/article/this-week-in-ai-the-5-stories-that-matter-2-august-2026**
+
+**Facebook:**
+AI just keeps getting more useful — and this week's biggest stories show why that matters for your daily work. Open source models just levelled up, and workplace tools are getting smarter at handling meetings and team tasks. https://aiworldhq.com/article/this-week-in-ai-the-5-stories-that-matter-2-august-2026
+
+*Kép-ötlet: A clean, minimal illustration of a desk with a laptop showing a simple meeting interface, with a subtle thought bubble icon suggesting smart assistance*
+
+---
+
+## How to Brainstorm Thoughtful Gift Ideas for Someone You Know
+**🔗 https://aiworldhq.com/article/how-to-brainstorm-thoughtful-gift-ideas-for-someone-you-know**
+
+**Facebook:**
+Struggling to find the right gift? Here's a simple way to use any AI assistant as a thinking partner — just explain the person and the occasion, and it'll help you brainstorm ideas that actually suit them. Tap through to see how it works. https://aiworldhq.com/article/how-to-brainstorm-thoughtful-gift-ideas-for-someone-you-know #GiftIdeas #EverydayAI
+
+*Kép-ötlet: A simple illustration of a person holding a small wrapped gift with a question mark, looking thoughtful and hopeful.*
+
+---
+
+## How to Break Down an Australian Government Form in Plain English
+**🔗 https://aiworldhq.com/article/how-to-break-down-an-australian-government-form-in-plain-english**
+
+**Facebook:**
+Ever stared at a Centrelink or ATO form and thought 'what does this actually mean?' You can use a free AI tool to rewrite confusing paperwork into plain English before you submit anything. It's a simple way to make sure you're filling things in correctly — no more guesswork. https://aiworldhq.com/article/how-to-break-down-an-australian-government-form-in-plain-english
+
+*Kép-ötlet: A person looking relieved at their phone screen next to a government form, with simple clear text displayed.*
+
+---
+
+## How to Build a Household Chore Rota the Whole Family Will Follow
+**🔗 https://aiworldhq.com/article/how-to-build-a-household-chore-rota-the-whole-family-will-follow**
+
+**Facebook:**
+Tired of the sameArguments about who does what? This step-by-step guide shows you how to create a family chore rota that actually works — fair, flexible, and tailored to everyone's schedule. No more nagging, just a plan that adjusts when life gets busy. https://aiworldhq.com/article/how-to-build-a-household-chore-rota-the-whole-family-will-follow
+
+*Kép-ötlet: A family sitting around a kitchen table looking at a simple chart together, smiling and pointing at tasks*
+
+---
+
+## How to Build a Simple Debt-Payoff Tracker with Any AI Assistant
+**🔗 https://aiworldhq.com/article/how-to-build-a-simple-debt-payoff-tracker-with-any-ai-assistant**
+
+**Facebook:**
+Ever wished you could see exactly when you'll be debt-free? Just tell any AI assistant what you owe, and it'll build a simple spreadsheet with your monthly payments and a clear payoff date. No spreadsheet skills needed. https://aiworldhq.com/article/how-to-build-a-simple-debt-payoff-tracker-with-any-ai-assistant #PersonalFinance #AIHelpers
+
+*Kép-ötlet: A clean, simple spreadsheet on a laptop screen showing debt amounts in one column and a final row highlighting a target payoff date in green.*
+
+---
+
+## How to create voice‑activated shopping lists with Amazon Alexa and AI
+**🔗 https://aiworldhq.com/article/how-to-build-voice-activated-shopping-lists-with-amazon-alexa-and-ai**
+
+**Facebook:**
+Never forget the milk again – just tell Alexa what you need as you think of it, and your shopping list updates everywhere automatically. Simple 2-minute guide inside. https://aiworldhq.com/article/how-to-build-voice-activated-shopping-lists-with-amazon-alexa-and-ai #ShoppingTips #VoiceAssistant
+
+*Kép-ötlet: A clean kitchen counter with a phone showing a shopping list next to a smart speaker, with fresh groceries in the background.*
 
 ---
 
