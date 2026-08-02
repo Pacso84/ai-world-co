@@ -28,7 +28,7 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { spawn } from 'child_process';
 import { addTask, setTaskStatus, notify } from '../../core/ops.js';
-import { meteredBlocked } from '../../core/budget.js';
+import { meteredBlocked, budgetStatus } from '../../core/budget.js';
 
 // ===================================================================
 // SETUP
@@ -46,6 +46,22 @@ const CONFIG_PATH = join(PROJECT_ROOT, 'config.json');
 const config = JSON.parse(readFileSync(CONFIG_PATH, 'utf-8'));
 
 const LIMITS = config.limits;
+
+// ── A NAPI KERET EGYETLEN FORRÁSA (2026-08-02) ──────────────────────
+// A főnöki asztal a config `daily_api_cost_usd_max` mezőjét (3) mutatta,
+// miközben a cég valójában a `daily_budget_usd_hard_cap`-nél (1) áll le.
+// A user tehát "$0.00 / $3.00"-t olvasott a vezérlőtáblán egy $1-es
+// keretnél, és a lenti costBlocked kapu SOSEM sülhetett volna el, mert a
+// budget.js már 1-nél megállítja a fizetős hívásokat.
+// Ugyanaz a hiba-fajta, mint a havi keretnél 2026-08-01-én: ha egy értéket
+// két helyen számolunk, a kettő előbb-utóbb szétcsúszik — és pont akkor,
+// amikor a szám végre számítana. A tényleges leállítás egyébként HELYES
+// volt (a hardCapBlocked a budget.js-t kérdezi); csak a KIJELZETT szám és
+// a másodlagos kapu hazudott.
+const DAY_CAP = (() => {
+  try { return budgetStatus().dayHardCap || LIMITS.daily_api_cost_usd_max; }
+  catch { return LIMITS.daily_api_cost_usd_max; }
+})();
 const TODAY = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
 
 // ===================================================================
@@ -207,6 +223,18 @@ function countTodayArticles() {
   return t.news + t.guides;
 }
 
+// A TELJES mai költés — a KERETHEZ ezt kell mérni (2026-08-02).
+// A lenti calculateTodayCost() CSAK a főnök saját pipeline-jának naplóit
+// összegzi; a fordító, a képfelújító, a tény-ellenőrző és a forráskutató
+// külön munkafolyamat-lépésként futnak, azok költése ott nem jelenik meg.
+// Mérve: a főnök $0,12-t látott, a könyvelés $0,28-at — vagyis a napi
+// keretet a valóság FELÉNÉL is kevesebbhez mérte volna, és azt hihette,
+// van még hely, amikor már nincs. A keret az EGÉSZ cégre szól, tehát a
+// kapunak is az egészet kell néznie.
+function trueTodayCost(fallback) {
+  try { return budgetStatus().today; } catch { return fallback; }
+}
+
 function calculateTodayCost() {
   if (!existsSync(LOGS_DIR)) return 0;
   const files = readdirSync(LOGS_DIR);
@@ -257,11 +285,12 @@ function generateReport() {
     drafts_awaiting_writer: drafts.scraper,
     drafts_awaiting_review: drafts.writer,
     rejected_today: rejectedToday,
-    total_cost_today_usd: todayCost,
+    total_cost_today_usd: todayCost,                    // a FŐNÖK saját pipeline-ja
+    day_cost_all_usd: trueTodayCost(todayCost),          // az EGÉSZ cég (ehhez mérjük a keretet)
     daily_limit_articles: LIMITS.daily_articles_max,
     daily_limit_guides: GUIDES_MAX,
-    daily_limit_cost_usd: LIMITS.daily_api_cost_usd_max,
-    cost_remaining_usd: Math.max(0, LIMITS.daily_api_cost_usd_max - todayCost),
+    daily_limit_cost_usd: DAY_CAP,
+    cost_remaining_usd: Math.max(0, DAY_CAP - trueTodayCost(todayCost)),
     // HÍR-sáv szabad helyei (a hírírás ezt kapja limitként):
     articles_remaining: Math.max(0, LIMITS.daily_articles_max - byType.news),
     // ÚTMUTATÓ-sáv szabad helyei (az idle-fill ezt használja) — a MÁR MEGÍRT,
@@ -279,7 +308,7 @@ function printReport(report) {
   console.log(`║  ✅ Hír publikálva ma: ${String(report.news_published_today).padEnd(3)} / ${LIMITS.daily_articles_max} cikk                       ║`);
   console.log(`║  📘 Útmutató ma:       ${String(report.guides_published_today).padEnd(3)} / ${GUIDES_MAX} útmutató                   ║`);
   console.log(`║  ❌ Elutasítva ma:     ${String(report.rejected_today).padEnd(3)} cikk                                ║`);
-  console.log(`║  💰 Költség ma:        $${report.total_cost_today_usd.toFixed(4)} / $${LIMITS.daily_api_cost_usd_max.toFixed(2)}                ║`);
+  console.log(`║  💰 Költség ma:        $${(report.day_cost_all_usd ?? report.total_cost_today_usd).toFixed(4)} / $${DAY_CAP.toFixed(2)} (egész cég)  ║`);
   console.log('║                                                            ║');
   console.log(`║  📥 Draft (Scraper-ből):  ${String(report.drafts_awaiting_writer).padEnd(3)} vár az Íróra                ║`);
   console.log(`║  📝 Draft (Író-ból):      ${String(report.drafts_awaiting_review).padEnd(3)} vár az Ellenőrzőre          ║`);
@@ -303,7 +332,7 @@ function checkLimits(report) {
   } catch { /* budget-őr hibája ne állítsa meg a döntést */ }
   return {
     hardCapBlocked, hardCapReason,
-    costBlocked: report.total_cost_today_usd >= LIMITS.daily_api_cost_usd_max,
+    costBlocked: (report.day_cost_all_usd ?? report.total_cost_today_usd) >= DAY_CAP,
     newsBlocked: report.articles_remaining <= 0,     // hír-sáv betelt
     guidesBlocked: report.guides_remaining <= 0      // útmutató-sáv betelt
   };
@@ -364,7 +393,7 @@ async function main() {
   }
   if (gate.costBlocked) {
     console.log('🚫 KÖLTSÉG-LIMIT ELÉRVE — a teljes pipeline leáll (valódi pénz):');
-    console.log(`   • $${preReport.total_cost_today_usd.toFixed(4)} / $${LIMITS.daily_api_cost_usd_max}`);
+    console.log(`   • $${preReport.total_cost_today_usd.toFixed(4)} / $${DAY_CAP}`);
     console.log('\n💡 Holnap újra próbálkozhatunk.');
     session.blocked = true;
     session.blockers = ['cost'];
