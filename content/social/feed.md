@@ -1,6 +1,66 @@
 # AI World Co. — közösségi posztok
 
-*Generálva: 2026-08-01T16:53:24.343Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+*Generálva: 2026-08-02T02:12:12.575Z. Ezeket kézzel kiposztolhatod, vagy élesítés után a Meta-publisher auto-küldi.*
+
+---
+
+## Co-create documents with Copilot in Word for iPad
+**🔗 https://aiworldhq.com/article/how-to-use-copilot-in-word-on-ipad-a-step-by-step-guide**
+
+**Facebook:**
+Writing docs on the go just got easier. Now you can get AI help to draft, edit and restructure your Word documents straight from your iPad — no laptop required. Here's how to set it up. https://aiworldhq.com/article/how-to-use-copilot-in-word-on-ipad-a-step-by-step-guide #MicrosoftWord #Productivity
+
+*Kép-ötlet: Someone working comfortably on a document using an iPad, showing the Word app with Copilot available.*
+
+---
+
+## Kimi K3: The Complete Developer Guide
+**🔗 https://aiworldhq.com/article/a-new-open-3-trillion-parameter-ai-model-what-it-means-for-you**
+
+**Facebook:**
+Powerful AI is getting more accessible. A new open AI model with roughly 3 trillion parameters means anyone can download, study or run it themselves — no tech degree required. Here's why it matters for everyday people and small businesses. https://aiworldhq.com/article/a-new-open-3-trillion-parameter-ai-model-what-it-means-for-you
+
+*Kép-ötlet: A simple, clean illustration of an open door with glowing light, representing accessible technology*
+
+---
+
+## Choosing the right AI model in Microsoft 365: flexibility, control, and confidence
+**🔗 https://aiworldhq.com/article/microsoft-365-copilot-now-lets-you-pick-your-ai-what-to-know**
+
+**Facebook:**
+Good news — you can now pick which AI brain Copilot uses for each task. Quick model for simple stuff, reasoning model when you need to dig deeper. Here's how to choose. https://aiworldhq.com/article/microsoft-365-copilot-now-lets-you-pick-your-ai-what-to-know #AI #Productivity
+
+*Kép-ötlet: Two simple icons side by side — one small lightning bolt for quick tasks, one gear for complex thinking, showing you can choose the right AI for the job*
+
+---
+
+## Microsoft 365 Copilot app learning series: From research to polished outputs
+**🔗 https://aiworldhq.com/article/microsoft-365-copilot-s-workflow-tools-explained-in-plain-english**
+
+**Facebook:**
+Ever started a project and felt lost about which AI tool to reach for first? This guide breaks down Microsoft's four Copilot tools into plain English — so you know exactly what to use when you're researching, drafting or polishing your work. https://aiworldhq.com/article/microsoft-365-copilot-s-workflow-tools-explained-in-plain-english #Microsoft365 #Productivity
+
+*Kép-ötlet: A simple icon showing four connected steps representing the different Copilot workflow tools*
+
+---
+
+## Host a simple AI web app on Hugging Face Spaces without coding
+**🔗 https://aiworldhq.com/article/launch-your-own-free-ai-web-app-with-hugging-face-spaces**
+
+**Facebook:**
+Want to share a fun AI tool with friends or try one out on your own custom web address? You can do this for free in under 10 minutes — no coding required. https://aiworldhq.com/article/launch-your-own-free-ai-web-app-with-hugging-face-spaces #AI #HowTo
+
+*Kép-ötlet: A simple laptop and phone side by side, both showing the same friendly AI demo running in a web browser.*
+
+---
+
+## How to automate daily email replies with AI for faster inbox management
+**🔗 https://aiworldhq.com/article/automate-email-drafts-with-ai-for-faster-inbox-management**
+
+**Facebook:**
+Imagine cutting your email reply time from minutes to seconds. This beginner-friendly guide walks you through setting up AI to draft routine replies, so you can actually empty your inbox. https://aiworldhq.com/article/automate-email-drafts-with-ai-for-faster-inbox-management #EmailTips #Productivity
+
+*Kép-ötlet: A clean, uncluttered inbox on a laptop screen with a subtle AI glow effect in the corner*
 
 ---
 
