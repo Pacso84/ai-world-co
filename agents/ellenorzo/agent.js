@@ -228,18 +228,27 @@ function runAutoCheck(articleMarkdown, type) {
     }
   }
 
-  // Amerikai angol szavak detektálása (popular ones)
-  const americanWords = [
-    { am: /\bcolor\b/g, au: 'colour' },
-    { am: /\borganization\b/g, au: 'organisation' },
-    { am: /\brealize\b/g, au: 'realise' },
-    { am: /\banalyze\b/g, au: 'analyse' },
-    { am: /\bcenter\b/g, au: 'centre' },
-    { am: /\bbehavior\b/g, au: 'behaviour' }
+  // HELYESÍRÁS — MEGFORDÍTVA 2026-08-02.
+  //
+  // Ez a kapu eddig az AMERIKAI alakokat jelölte hibának ("color → colour"),
+  // mert ausztrál angolt írtunk. A közönség-mérés után (US 300 / AU 0) amerikaira
+  // váltottunk — a promptokat átírtam, de EZT A NÉHÁNY SORT majdnem elnéztem.
+  // Így minden új, helyesen amerikai cikk hamis hibalistával ment volna az
+  // AI-bíróhoz: nem utasította volna el (a spelling nem kritikus hiba), de
+  // rontotta volna a pontszámot és fölösleges átdolgozást szült volna — az pedig
+  // pénz. TANULSÁG: egy szabály átírásakor a PROMPT csak a fele; a gépi kapukat
+  // külön kell megkeresni, mert azok némán dolgoznak.
+  const britishWords = [
+    { br: /\bcolour\b/g, us: 'color' },
+    { br: /\borganisation\b/g, us: 'organization' },
+    { br: /\brealise\b/g, us: 'realize' },
+    { br: /\banalyse\b/g, us: 'analyze' },
+    { br: /\bcentre\b/g, us: 'center' },
+    { br: /\bbehaviour\b/g, us: 'behavior' }
   ];
-  for (const { am, au } of americanWords) {
-    if (am.test(articleMarkdown)) {
-      issues.push(`AMERICAN_SPELLING: "${am.source.replace(/\\b/g, '')}" — Ausztrál: ${au}`);
+  for (const { br, us } of britishWords) {
+    if (br.test(articleMarkdown)) {
+      issues.push(`BRITISH_SPELLING: "${br.source.replace(/\\b/g, '')}" — amerikaiul: ${us}`);
     }
   }
 
