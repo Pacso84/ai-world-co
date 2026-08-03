@@ -593,6 +593,20 @@ body {
 .xref__arrow { font-size:18px; color:var(--accent); flex-shrink:0; }
 .xref__link:hover .xref__t { text-decoration:underline; }
 
+/* BEÉKELT TOVÁBBVEZETÉS (2026-08-03) — a cikk KÖZEPÉN, mert a végi ajánló
+   a HTML 79%-ánál van, és a félúton abbahagyó olvasó sosem látta.
+   Halványabb, mint az .xref: ez BEÉKELÉS a szövegbe, nem lezárás — nem
+   szabad úgy hatnia, mintha a cikk itt véget érne. */
+.midread { display:block; margin:30px 0; padding:14px 16px; border-left:3px solid var(--accent);
+  background:color-mix(in srgb,var(--accent) 5%,var(--paper)); border-radius:0 10px 10px 0; }
+.midread__lbl { display:block; font-size:11px; font-weight:700; letter-spacing:.05em; text-transform:uppercase;
+  color:var(--muted); margin-bottom:5px; }
+.midread__link { display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--ink);
+  font-family:'Schibsted Grotesk',sans-serif; font-weight:700; font-size:15.5px; line-height:1.35; }
+.midread__arrow { color:var(--accent); flex-shrink:0; }
+.midread__link:hover { text-decoration:underline; }
+@media (max-width:640px){ .midread { margin:24px 0; padding:12px 14px; } .midread__link { font-size:15px; } }
+
 /* ===== Táblázatok (cikkekben + útmutatókban) ===== */
 .table-wrap { overflow-x:auto; margin:22px 0; border:1px solid var(--line); border-radius:12px; -webkit-overflow-scrolling:touch; }
 .table-wrap table { width:100%; border-collapse:collapse; font-size:14.5px; min-width:480px; }

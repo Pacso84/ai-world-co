@@ -378,11 +378,11 @@ for (const l of SITE_LANGS) Object.assign(UI[l], UI_STEPTIP[l] || {});
 // Kereső feliratok (navbar kereső-overlay, 2026-07-07)
 // Kapcsolódó cikkek + Kezdd itt feliratok
 const UI_REL = {
-  en: { relatedTitle: 'Keep reading', startHere: 'Start here' },
-  hu: { relatedTitle: 'Olvass tovább', startHere: 'Kezdd itt!' },
-  es: { relatedTitle: 'Sigue leyendo', startHere: 'Empieza aquí' },
-  de: { relatedTitle: 'Weiterlesen', startHere: 'Starte hier' },
-  fr: { relatedTitle: 'À lire ensuite', startHere: 'Commencez ici' }
+  en: { relatedTitle: 'Keep reading', startHere: 'Start here', midRead: 'Read this next' },
+  hu: { relatedTitle: 'Olvass tovább', startHere: 'Kezdd itt!', midRead: 'Ezt olvasd utána' },
+  es: { relatedTitle: 'Sigue leyendo', startHere: 'Empieza aquí', midRead: 'Lee esto después' },
+  de: { relatedTitle: 'Weiterlesen', startHere: 'Starte hier', midRead: 'Lies das als Nächstes' },
+  fr: { relatedTitle: 'À lire ensuite', startHere: 'Commencez ici', midRead: 'À lire ensuite' }
 };
 for (const l of SITE_LANGS) Object.assign(UI[l], UI_REL[l] || {});
 
@@ -1106,6 +1106,61 @@ function relatedBox(a) {
   return `<section class="rel"><h2 class="rel__h">${tr('relatedTitle')}</h2><div class="rel__grid">${items}</div></section>`;
 }
 
+// ===================================================================
+// BEÉKELT TOVÁBBVEZETÉS (2026-08-03) — a user: "miért nem olvasnak tovább"
+// ===================================================================
+// A MÉRÉS, ami kiváltotta: a hétvégén 42 amerikai látogató 43 oldalt nézett
+// meg (1,02 oldal/fő), és a Cloudflare szerint NULLA belső átkattintás volt
+// (refererHost aiworldhq.com = 0). Az ok nem az volt, hogy nincs ajánlónk —
+// van "Keep reading" blokk 6 cikkel, élő linkekkel. Az ok a HELYE:
+//   • a cikk törzse ~1400 szó (≈6 perc olvasás),
+//   • a törzsben NULLA link mutat másik cikkünkre (csak szótár-szavak),
+//   • az első ajánlat a HTML 79%-ánál kezdődik.
+// Aki félúton abbahagyja — a Facebookról érkező mobilos olvasó tipikusan ott
+// hagyja abba — SOHA nem lát egyetlen továbbvezetést sem.
+//
+// Ez a doboz a szöveg KÖZEPÉN kínál EGY továbblépést. Szándékosan egyet:
+// a törzsbe ékelt hirdetés-szerű blokk-lista rontaná az olvasást.
+// SZEKCIÓ-HATÁRRA kerül (h2 elé), hogy ne vágjon ketté egy gondolatot.
+const MIDREAD_MIN_WORDS = 600;   // rövid cikket nem szakítunk meg
+
+function midReadBox(a) {
+  const rel = RELATED.get(a.file) || [];
+  if (!rel.length) return '';
+  const r = rel[0];                       // a legerősebb kapcsolat
+  const lr = localizeArticle(r, LANG);
+  return `<aside class="midread"><span class="midread__lbl">${r.isGuide ? '📘' : '📰'} ${tr('midRead')}</span>`
+    + `<a class="midread__link" href="${r.slug}">${escapeHtml(lr.title)}<span class="midread__arrow">→</span></a></aside>`;
+}
+
+// A törzs felénél lévő SZEKCIÓ-HATÁRRA szúrja be a dobozt.
+// Ha nincs alkalmas h2 (rövid vagy tagolatlan cikk), NEM szúr be semmit —
+// jobb kihagyni, mint a mondat közepén megtörni a szöveget.
+function withMidRead(bodyHtml, a) {
+  const box = midReadBox(a);
+  if (!box || !bodyHtml) return bodyHtml;
+  const plain = bodyHtml.replace(/<[^>]+>/g, ' ');
+  if (plain.split(/\s+/).filter(Boolean).length < MIDREAD_MIN_WORDS) return bodyHtml;
+
+  const heads = [...bodyHtml.matchAll(/<h2\b/gi)].map(m => m.index);
+  if (heads.length < 2) return bodyHtml;
+  // Az ELSŐ h2-t kihagyjuk (túl korán jönne), az utolsót is (túl közel a
+  // végi ajánlóhoz — ott már úgyis ott a "Keep reading").
+  const usable = heads.slice(1, -1);
+  if (!usable.length) return bodyHtml;
+
+  // A felezőpontot a LÁTHATÓ SZÖVEG szerint keressük, NEM a HTML hossza
+  // szerint. A tagek sűrűsége szakaszonként eltér (táblázat, kép, idézet),
+  // ezért a HTML-felezés rendszeresen későbbre csúszik — az első változat
+  // mediánja így 64% lett 50% helyett, vagyis a doboz épp azoknak maradt
+  // láthatatlan, akiknek szól.
+  const wordsUpTo = i => bodyHtml.slice(0, i).replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length;
+  const half = wordsUpTo(bodyHtml.length) / 2;
+  const at = usable.reduce((best, i) =>
+    Math.abs(wordsUpTo(i) - half) < Math.abs(wordsUpTo(best) - half) ? i : best, usable[0]);
+  return bodyHtml.slice(0, at) + box + bodyHtml.slice(at);
+}
+
 function xrefBox(a) {
   if (a.isGuide) {
     // útmutató → forrás-hír (a hivatkozott cikk CÍME is az aktuális nyelven!)
@@ -1670,7 +1725,7 @@ function buildArticlePage(a) {
     </div>
     ${videoBlock(a)}
     <div class="article__body">
-      ${glossAutolink(a.bodyHtml, { linked: new Set(), count: 0 })}
+      ${withMidRead(glossAutolink(a.bodyHtml, { linked: new Set(), count: 0 }), a)}
     </div>
     ${tagsHtml}
     ${xrefBox(a)}
