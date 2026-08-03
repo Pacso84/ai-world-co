@@ -1,5 +1,8 @@
 # AI World Co. — Jogi szabályok
 
+> ⚠️ **A PROMPTOKBA a tömör változat megy**: `shared/legal-rules-ai.md` (2026-08-03
+> óta, token-spórolás). Ha itt szabály változik, OTT IS át kell vezetni!
+
 > **Ez az Ellenőrző-Agent legfontosabb ellenőrzési pontja.**
 > Minden cikk megjelenés előtt ezen átmegy.
 > Ha bármelyik szabály sérül → automatikus elutasítás, javítás kérése.

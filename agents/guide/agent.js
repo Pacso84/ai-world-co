@@ -72,7 +72,7 @@ function loadBrandContext() {
   const parts = [];
   // A guide-quality-rules.md a KEZDŐ-ÉRTHETŐSÉGI szabálykönyv (2026-07-03):
   // minden lépés 6 kötelező eleme + őszinteségi szabályok + mélység-előírás.
-  for (const f of ['company-info.md', 'style-guide.md', 'legal-rules.md', 'guide-quality-rules.md']) {
+  for (const f of ['company-info.md', 'style-guide.md', 'legal-rules-ai.md', 'guide-quality-rules.md']) {
     const path = join(SHARED_DIR, f);
     if (existsSync(path)) parts.push(`=== ${f} ===\n${readFileSync(path, 'utf-8')}`);
   }

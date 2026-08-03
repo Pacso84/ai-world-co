@@ -40,7 +40,7 @@ const AGENT_NAME = 'ceo';
 
 function loadBrandContext() {
   const parts = [];
-  for (const f of ['company-info.md', 'style-guide.md', 'legal-rules.md']) {
+  for (const f of ['company-info.md', 'style-guide.md', 'legal-rules-ai.md']) {
     const p = join(SHARED_DIR, f);
     if (existsSync(p)) parts.push(`=== ${f} ===\n${readFileSync(p, 'utf-8')}`);
   }

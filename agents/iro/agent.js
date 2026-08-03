@@ -105,7 +105,7 @@ function parseArgs() {
 // ===================================================================
 
 function loadBrandContext() {
-  const files = ['company-info.md', 'style-guide.md', 'legal-rules.md'];
+  const files = ['company-info.md', 'style-guide.md', 'legal-rules-ai.md'];
   const parts = [];
   for (const f of files) {
     const path = join(SHARED_DIR, f);

@@ -80,7 +80,7 @@ function parseArgs() {
 // ===================================================================
 
 function loadBrandContext() {
-  const files = ['company-info.md', 'style-guide.md', 'legal-rules.md'];
+  const files = ['company-info.md', 'style-guide.md', 'legal-rules-ai.md'];
   const parts = [];
   for (const f of files) {
     const path = join(SHARED_DIR, f);
@@ -593,8 +593,15 @@ function recordLesson(aiReviewResult, autoCheckResult, title, type) {
   if (aiReviewResult?.verdict && reasons.length === 0) reasons.push(aiReviewResult.verdict);
 
   const scope = type === 'guide' ? 'guide' : 'iro';
+  // GÉPI ZAJ-SZŰRŐ (2026-08-03): a technikai hibaüzenet NEM lecke. Korábban
+  // "AI response JSON parse error at position 237" típusú sorok kerültek a
+  // tanulság-tárba, és SZÁZSZOR olvasódtak vissza az író promptjába
+  // (accessCount 305!) — az írót semmire nem tanítják, csak hígítják a
+  // valódi leckéket. Az ilyen hibát a napló rögzíti, a memória nem.
+  const MACHINE_NOISE = /JSON parse error|Unterminated string|Unexpected token|at position \d+|ReferenceError|TypeError|SyntaxError|ECONN|ETIMEDOUT|AbortError|AI router null/i;
   // A rétegzett MEMÓRIÁBA mentjük (az adott agent innen hívja elő) — minden ok külön emlék
   for (const reason of reasons.slice(0, 4)) {
+    if (MACHINE_NOISE.test(reason)) continue;
     remember(scope, reason, { tags: ['rejection', 'lesson', type === 'guide' ? 'guide' : 'article'] });
   }
 }

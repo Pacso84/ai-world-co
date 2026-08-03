@@ -476,6 +476,11 @@ function isThinkingModel(model) {
   const m = String(model || '').toLowerCase();
   return m.includes('zai-glm') || m.includes('minimax');
 }
+// Melyik modell TUDJA kikapcsolni a gondolkodást? CSAK az M3 — az M2.5/M2.7
+// HTTP 400-zal ("Reasoning is mandatory") utasítja el (2026-07-24 mérés).
+function canDisableReasoning(model) {
+  return /minimax-m3/i.test(String(model || ''));
+}
 function isDailyQuota(error) {
   const m = (error?.message || '').toLowerCase();
   return m.includes('perday') || m.includes('per day') || m.includes('free_tier');
@@ -659,12 +664,14 @@ export async function ask(prompt, options = {}) {
     // mentette meg). Nagy prompthoz nagyobb kimeneti keret kell. A max_tokens csak
     // FELSŐ HATÁR — ha a modell nem használja ki, nem kerül többe.
     // Kikapcsolt gondolkodásnál a padló ÉRTELMETLEN (nincs mit elgondolkodni) → kihagyjuk.
-    const effMaxTokens = (isThinkingModel(model) && !reasoningOff) ? Math.max(maxTokens || 2048, 8000) : maxTokens;
+    // `noThink` PRÓBÁNKÉNT változhat (gondolkodás-mentő, lásd lent), ezért let.
+    let noThink = reasoningOff;
 
     // Átmeneti hibákra ugyanazt a modellt újrapróbáljuk (backoff-fal)
     for (let tryNum = 1; tryNum <= MAX_TRANSIENT_RETRIES + 1; tryNum++) {
+      const effMaxTokens = (isThinkingModel(model) && !noThink) ? Math.max(maxTokens || 2048, 8000) : maxTokens;
       try {
-        const response = await caller(prompt, model, { systemPrompt: sysWithLessons, maxTokens: effMaxTokens, jsonMode, reasoningOff });
+        const response = await caller(prompt, model, { systemPrompt: sysWithLessons, maxTokens: effMaxTokens, jsonMode, reasoningOff: noThink });
 
         // Safety check
         const safety = safetyFilter(response);
@@ -675,6 +682,22 @@ export async function ask(prompt, options = {}) {
           const wasted = response.actualCostUsd ?? calculateCost(model, response.usage);
           logCall(agentName, provider, model, response.usage, wasted, false, new Error(safety.reason));
           if (isMetered(provider, model) && wasted > 0) recordSpend(provider, wasted);
+
+          // GONDOLKODÁS-MENTŐ (2026-08-03). Éles minta a 08-03 01:47-es futásból:
+          // 4 hívás, egyenként ~$0.017, kimenet PONTOSAN a plafonon (10000 tok),
+          // szöveg ÜRES — a modell a teljes keretet elgondolkodta, a pénz elment,
+          // az eredmény semmi (a futás pénzének 14%-a). Mielőtt GYENGÉBB modellre
+          // esnénk (M2.7), UGYANEZT a modellt egyszer újrapróbáljuk gondolkodás
+          // NÉLKÜL: M3 gondolkodás nélkül > M2.7, és a válasz így biztosan a
+          // keretbe fér. Csak az M3 tudja (M2.5/M2.7: "Reasoning is mandatory").
+          if (safety.reason === 'Üres válasz' && !noThink
+            && provider === 'openrouter' && canDisableReasoning(model)
+            && (response.usage?.outputTokens || 0) >= effMaxTokens * 0.98) {
+            noThink = true;
+            tryNum--;   // ez nem átmeneti-hiba próba, ne fogyassza azt a keretet
+            console.log(`   🧯 [${agentName}] a gondolkodás elette a teljes keretet (${response.usage?.outputTokens} tok, üres szöveg) — újra UGYANEZZEL a modellel, gondolkodás nélkül.`);
+            continue;
+          }
           break; // Tartalom-szabály blokk -> fallback (nem retry)
         }
 

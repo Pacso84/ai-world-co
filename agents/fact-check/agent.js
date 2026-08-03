@@ -73,7 +73,7 @@ function parseArgs() {
 
 function loadBrandContext() {
   const parts = [];
-  for (const f of ['style-guide.md', 'legal-rules.md']) {
+  for (const f of ['style-guide.md', 'legal-rules-ai.md']) {
     const path = join(SHARED_DIR, f);
     if (existsSync(path)) parts.push(`=== ${f} ===\n${readFileSync(path, 'utf-8')}`);
   }

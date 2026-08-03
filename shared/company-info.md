@@ -7,7 +7,7 @@
 
 ## 1. Mit csinálunk? (egy mondatban)
 
-> **Független AI hírportál Ausztrália célközönségnek, ami a globális AI újításokat mindennapi nézőpontból elemzi.**
+> **Független AI hírportál elsősorban amerikai (és nemzetközi) közönségnek, ami a globális AI újításokat mindennapi nézőpontból elemzi.**
 
 *Kulcsszó: "mindennapi nézőpont" — nem CTO-knak/fejlesztőknek írunk, hanem átlagembereknek. Mindent érthetően magyarázunk.*
 
@@ -15,7 +15,7 @@
 
 ## 2. Kinek írunk? (célközönség)
 
-**20-55 éves ausztrál olvasó**, aki dolgozik VAGY iskolába jár (bárhol — irodában, boltban, otthon, iskolában). A hírekből hallja, hogy "mindenhol AI", de nem érti pontosan mit jelent. Kíváncsi, kicsit aggódik (állást fenyeget?), és gyakorlati válaszokat keres: *"mit jelent ez számomra holnap reggel?"*
+**20-55 éves amerikai (és nemzetközi) olvasó**, aki dolgozik VAGY iskolába jár (bárhol — irodában, boltban, otthon, iskolában). A hírekből hallja, hogy "mindenhol AI", de nem érti pontosan mit jelent. Kíváncsi, kicsit aggódik (állást fenyeget?), és gyakorlati válaszokat keres: *"mit jelent ez számomra holnap reggel?"*
 
 **Nem fejlesztő**, de **kellhet neki kód** is (pl. copy-paste prompt-ok, egyszerű automatizációk).
 
@@ -42,14 +42,14 @@ Az összes nagy AI cég (OpenAI, Anthropic, Google, Meta, Mistral stb.) legújab
 Lépést tartunk **minden újítással**, de **azonnal lefordítjuk** hétköznapi nyelvre.
 Agentek 24/7 dolgoznak — nem szerkesztőség, nem alszanak.
 
-### 3. 🇦🇺 **Ausztrál nézőpont**
-Mit jelent ez **számunkra**, Ausztráliában? Helyi szabályozás (Privacy Act), helyi cégek, helyi piac.
-Nem amerikai hírek vakon átvéve — saját kommentárral, helyi kontextussal.
+### 3. 🌍 **Hétköznapi nézőpont**
+Mit jelent ez a MINDENNAPOKBAN — pénztárcára, munkára, családra lefordítva?
+Nem PR-hírek vakon átvéve — saját kommentárral, gyakorlati kontextussal. Országspecifikus szolgáltatásokra (hivatalok, bankok, telekom-cégek) NE építs cikket — a példa legyen bárhol érvényes.
 
 ---
 
 ### Egy mondatban a pozíciónk:
-> *"AI hírek és tutorialok hétköznapi embereknek, naprakészen, ausztrál nézőpontból."*
+> *"AI hírek és tutorialok hétköznapi embereknek, naprakészen, gyakorlati nézőpontból."*
 
 ---
 
@@ -66,7 +66,7 @@ Nem amerikai hírek vakon átvéve — saját kommentárral, helyi kontextussal.
    - Pl: *"Új Claude funkció: hangos beszélgetés — így indítsd el lépésről lépésre"*
 
 3. 💼 **AI és munka** (új szakmák, állásokat fenyeget?)
-   - Helyi (ausztrál) szakmák átalakulása
+   - Hétköznapi szakmák átalakulása
    - Tippek olvasónak: hogyan készülj fel
 
 4. 💰 **AI üzleti hírek** (befektetések, partnerségek, IPO-k)
@@ -246,7 +246,7 @@ Bevezetjük a következőket:
 
 **Az AI World Co. röviden:**
 
-> Független AI hírportál Ausztrália célközönségnek, ami a globális AI újításokat **mindennapi nézőpontból** elemzi, **hétköznapi embereknek** (nem fejlesztőknek), **naprakészen**, **ausztrál nézőponttal**.
+> Független AI hírportál elsősorban amerikai (és nemzetközi) közönségnek, ami a globális AI újításokat **mindennapi nézőpontból** elemzi, **hétköznapi embereknek** (nem fejlesztőknek), **naprakészen**.
 
 **Olvasó**: 20-55 éves, dolgozik vagy tanul, kíváncsi az AI-ra, gyakorlati válaszokat keres.
 
