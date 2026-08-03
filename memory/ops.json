@@ -1285,15 +1285,6 @@
   ],
   "messages": [
     {
-      "id": "m178503105742774",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Qwen3.6-35B-A3B: Agentic Coding Power, Now Open to All - Qwen\" — mi a baj: Model name mismatch: article recommends 'qwen2.5-coder' but original source title is 'Qwen3.6-35B-A3B' — these are different models, potentially older vs newer; Article doesn't confirm if Qwen3.6-35B-A3B is available via Ollama or explain the relationship between the two model names; Reader could inst",
-      "ref": "2026-07-24T17-20-24-128Z_qwen-news_Qwen3_6-35B-A3B__Agentic_Coding_Power__Now_Open_to.json",
-      "at": "2026-07-26T01:57:37.427Z"
-    },
-    {
       "id": "m178503107860587",
       "from": "ellenorzo",
       "to": "iro",
@@ -2643,6 +2634,15 @@
       "text": "6 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-08-03T11:19:55.064Z"
+    },
+    {
+      "id": "m178577941379471",
+      "from": "social",
+      "to": "team",
+      "kind": "info",
+      "text": "6 közösségi poszt megírva (Facebook)",
+      "ref": null,
+      "at": "2026-08-03T17:50:13.794Z"
     }
   ]
 }
