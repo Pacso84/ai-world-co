@@ -1725,7 +1725,7 @@ function buildArticlePage(a) {
     </div>
     ${videoBlock(a)}
     <div class="article__body">
-      ${withMidRead(glossAutolink(a.bodyHtml, { linked: new Set(), count: 0 }), a)}
+      ${withMidRead(guideAutolink(glossAutolink(a.bodyHtml, { linked: new Set(), count: 0 }), a), a)}
     </div>
     ${tagsHtml}
     ${xrefBox(a)}
@@ -2307,6 +2307,133 @@ const AUTOLINK_KW = {
   'gpt': { en: ['GPT'], hu: ['GPT'], es: ['GPT'], de: ['GPT'], fr: ['GPT'] }
 };
 const AUTOLINK_MAX = 8;
+
+// ===================================================================
+// ÚTMUTATÓ-AUTOLINK (2026-08-03) — a user: "ne csak egy oldalt nézzenek meg"
+// ===================================================================
+// MÉRÉS, ami kiváltotta (7 nap, oldalanként): MINDEN cikknél a letöltés-szám
+// PONTOSAN egyenlő a belépő-számmal, vagyis a cikkről SENKI nem lép tovább.
+// A 122 "továbblapozott" megnyitás szinte mind a /hu/ ágról jött — az a
+// tulajdonos saját böngészése. A külső olvasó tehát 1,00 oldalt néz meg.
+// A cikk törzsében NULLA link mutatott másik cikkünkre (csak szótár-szavak).
+//
+// AMIT CSINÁLUNK: ha a szöveg megemlít egy terméket (ChatGPT, Copilot…),
+// amiről VAN publikált útmutatónk, a terméknevet a szövegben odalinkeljük.
+// Olvasás KÖZBEN kattinthat, nem a végén — oda ugyanis nem ér el.
+// Mérve: 602 cikkből 272 (45%) említ legalább egy ilyen terméket.
+//
+// KORLÁTOK (szándékosan szigorúak, hogy ne linkfarm legyen):
+//  • cikkenként max 2 útmutató-link, terméknevenként EGYSZER (az első említés)
+//  • címsor / kód / meglévő link / szótár-link belseje KIMARAD (a glossAutolink
+//    ugyanazt a skipDepth-védelmet használja — ez utána fut, így a szótár-link
+//    szövegébe sem írunk bele)
+//  • ÖNMAGÁRA SOHA: a ChatGPT-útmutató nem linkel ChatGPT-útmutatóra
+//  • hosszabb név előbb: "GitHub Copilot" nyer a "Copilot" ellen
+const GUIDE_LINK_MAX = 2;
+let _guideLinkMap = null;
+
+// Terméknév → a hozzá tartozó LEGJOBB útmutató. Prioritás: "kezdő/getting
+// started" jellegű (az az általános belépő), különben a legfrissebb.
+// A buildXref/buildRelated mintáját követi: EGYSZER épül, a fő belépésből.
+function buildGuideLinks(articles) {
+  _guideLinkMap = null;
+  const byTool = new Map();
+  for (const a of articles) {
+    if (!a.isGuide || !a.slug) continue;
+    const tool = String(a.tool || '').trim();
+    // A túl rövid és a mondatszerű "terméknév" nem alkalmas horgonynak
+    if (tool.length < 4 || tool.split(/\s+/).length > 3) continue;
+    if (!byTool.has(tool)) byTool.set(tool, []);
+    byTool.get(tool).push(a);
+  }
+  const out = [];
+  for (const [tool, list] of byTool) {
+    list.sort((x, y) => {
+      const starter = s => /getting-started|beginner|first|basics/.test(s.slug || '') ? 0 : 1;
+      return starter(x) - starter(y) || String(y.publishedAt).localeCompare(String(x.publishedAt));
+    });
+    const esc = tool.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    // HOVA VIGYEN? (mérési megfontolás)
+    //  • 3+ útmutatónál a /tools GYŰJTŐ-szekciójába (cég-horgony): ott az
+    //    olvasó VÁLASZT — és a mérés szerint a gyűjtő-oldalakról tényleg
+    //    kattintanak tovább (főoldal 17%, cikkoldal 0%). Ráadásul nálunk
+    //    NINCS általános "ChatGPT kezdőknek" útmutató, csak 15 szűk témájú;
+    //    egy véletlenszerűen kiválasztott ("hands-free voice") gyengébb
+    //    találat, mint a teljes választék.
+    //  • 1-2 útmutatónál nincs mit válogatni → egyenesen a cikkre.
+    const company = list[0].company || '';
+    const useHub = list.length >= 3 && company;
+    out.push({
+      tool,
+      count: list.length,
+      hub: useHub ? `/tools#c-${companySlug(company)}` : null,
+      target: list[0],
+      // Szóhatáron, kis-nagybetűre ÉRZÉKENYEN (a márkanevek nagybetűsek, és
+      // így a "grok"/"claude" köznévi előfordulás nem lesz link).
+      rx: new RegExp(`(?<![\\p{L}\\p{N}])${esc}(?![\\p{L}\\p{N}])`, 'u')
+    });
+  }
+  // Hosszabb terméknév ELŐRE: enélkül a "GitHub Copilot"-ból csak a "Copilot"
+  // linkelődne, és rossz útmutatóra vinne.
+  out.sort((a, b) => b.tool.length - a.tool.length);
+  _guideLinkMap = out;
+  return out;
+}
+
+function guideAutolink(html, article) {
+  if (!html || !_guideLinkMap) return html;
+  const targets = _guideLinkMap;
+  if (!targets.length) return html;
+  const selfTool = String(article?.tool || '').trim();
+  const parts = html.split(/(<[^>]+>)/);
+  const OPEN = /^<(a|h[1-6]|code|pre|button|script|style)\b/i;
+  const CLOSE = /^<\/(a|h[1-6]|code|pre|button|script|style)>/i;
+  let skipDepth = 0, count = 0;
+  const used = new Set();
+  for (let i = 0; i < parts.length; i++) {
+    const p = parts[i];
+    if (p.startsWith('<')) {
+      if (CLOSE.test(p)) skipDepth = Math.max(0, skipDepth - 1);
+      else if (OPEN.test(p)) skipDepth++;
+      continue;
+    }
+    if (skipDepth > 0 || count >= GUIDE_LINK_MAX || p.trim().length < 4) continue;
+    const found = [];
+    for (const t of targets) {
+      if (used.has(t.tool)) continue;
+      if (t.tool === selfTool) continue;                 // önmagára nem
+      if (t.target.slug === article?.slug) continue;      // ugyanaz az oldal
+      const m = t.rx.exec(p);
+      if (m) found.push({ t, idx: m.index, str: m[0] });
+    }
+    if (!found.length) continue;
+    found.sort((a, b) => a.idx - b.idx);
+    const accepted = []; let lastEnd = -1;
+    for (const f of found) {
+      if (f.idx < lastEnd) continue;
+      if (count + accepted.length >= GUIDE_LINK_MAX) break;
+      accepted.push(f); lastEnd = f.idx + f.str.length;
+    }
+    let text = p;
+    for (const f of accepted.sort((a, b) => b.idx - a.idx)) {
+      const href = f.t.hub
+        ? `${LP}${f.t.hub}`
+        : `${LP}/article/${f.t.target.slug}`;
+      // A title MEGMONDJA, hova visz — gyűjtőnél a darabszámmal, hogy az
+      // olvasó tudja: választék vár, nem egyetlen cikk.
+      const title = f.t.hub
+        ? `${f.t.count} ${f.t.count > 1 ? tr('guideWordMany') : tr('guideWordOne')} — ${f.t.tool}`
+        : localizeArticle(f.t.target, LANG).title;
+      text = text.slice(0, f.idx)
+        + `<a class="guide-link" href="${href}" title="${escapeHtml(title)}">${f.str}</a>`
+        + text.slice(f.idx + f.str.length);
+      used.add(f.t.tool); count++;
+    }
+    parts[i] = text;
+  }
+  return parts.join('');
+}
+
 const _autolinkCache = {};
 function getAutolinkTerms() {
   if (_autolinkCache[LANG]) return _autolinkCache[LANG];
@@ -2645,6 +2772,7 @@ function main() {
   const articles = loadArticles();
   buildXref(articles);
   buildRelated(articles);
+  buildGuideLinks(articles);   // terméknév → útmutató térkép a szövegbeli linkeléshez
   // VALÓDI lapszám: ahány külön napon jelent meg tartalom
   ISSUE_NO = new Set(articles.map(a => (a.publishedAt || '').slice(0, 10)).filter(Boolean)).size || 1;
   console.log(`📰 ${articles.length} publikált cikk/útmutató — generálás ${SITE_LANGS.length} nyelven`);

@@ -780,6 +780,15 @@ body {
 .gloss-link { color: inherit; text-decoration: underline dotted var(--accent); text-decoration-thickness: 1.5px; text-underline-offset: 3px; cursor: help; }
 .gloss-link:hover { color: var(--accent-dark); text-decoration-style: solid; }
 
+/* ÚTMUTATÓ-LINK a szövegben (2026-08-03) — a terméknév a gyakorlati
+   útmutatónkra visz. SZÁNDÉKOSAN más, mint a .gloss-link (az pontozott,
+   "magyarázat" jelentésű, kurzora help): ez FOLYTONOS aláhúzás + 📘 jel,
+   mert ez ELVISZ egy másik oldalra. A kettőt nem szabad összekeverni. */
+.guide-link { color: var(--accent-dark); text-decoration: underline; text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px; font-weight: 600; }
+.guide-link::after { content: " F4D8"; font-size: .85em; opacity: .75; }
+.guide-link:hover { background: color-mix(in srgb, var(--accent) 12%, transparent); border-radius: 3px; }
+
 /* ============ GYIK-BLOKK az útmutatókon (2026-07-11) ============ */
 .g-faq { margin: 26px 0; }
 .g-faq__h { font-family: 'Schibsted Grotesk', sans-serif; font-size: 20px; font-weight: 800; margin-bottom: 12px; }
