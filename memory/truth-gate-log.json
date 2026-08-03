@@ -1,49 +1,4 @@
 {
-  "2026-07-18": [
-    {
-      "at": "2026-07-18T01:26:22.911Z",
-      "file": "WRITER_2026-07-15T01-19-07-584Z_google-workspace_New_refinement_capabilities_allow_custom_editing_w.json",
-      "action": "block",
-      "reasons": [
-        "The article states: \"Find the 'Help me write' bar. It usually appears just below the subject line once you've typed some text.\" In Gmail, the 'Help me write' button (with a sparkle icon) is located at the bottom of the compose window, not below the subject line. This is a fabricated description of a UI element's placement.",
-        "The article claims: \"If you don't see it, look for a small lightning-bolt icon, which you can click to expand the AI assistant.\" The 'Help me write' feature is initiated by clicking a button (typically with a sparkle icon) at the bottom of the compose window; there isn't a lightning-bolt icon used to 'expand' a hidden AI assistant from below the subject line as described.",
-        "The article provides a keyboard shortcut: \"After typing a prompt, press Ctrl + Enter (Windows) or Cmd + Enter (Mac) to apply it faster.\" This shortcut is not a documented or functional method for applying AI refinements within Gmail's 'Help me write' feature; Ctrl/Cmd + Enter is typically used to send the email itself."
-      ]
-    },
-    {
-      "at": "2026-07-18T09:18:59.873Z",
-      "file": "WRITER_GUIDE_how-to-use-skillopt-to-train-ai-agent-skills.json",
-      "action": "block",
-      "reasons": [
-        "The metadata field \"tool: SkillOpt\" is inaccurate. While SkillOpt is a real Microsoft Research initiative, the article explicitly states, \"Even though you can't use SkillOpt directly,\" confirming it is not a user-facing tool for the audience of this guide. The article instead teaches how to use other AI assistants (ChatGPT, Gemini, Claude) to simulate SkillOpt principles, meaning SkillOpt is not the tool being demonstrated or used by the reader."
-      ]
-    },
-    {
-      "at": "2026-07-18T09:19:34.692Z",
-      "file": "WRITER_GUIDE_how-to-use-skillopt-to-train-ai-agent-skills.json",
-      "action": "block",
-      "reasons": [
-        "The article repeatedly references \"Microsoft's SkillOpt initiative\" as a real cutting-edge research project in AI skill acquisition. A search for \"Microsoft SkillOpt\" yields no public or official initiative, research paper, or product by this name from Microsoft. This appears to be an invented name for a research initiative falsely attributed to Microsoft."
-      ]
-    },
-    {
-      "at": "2026-07-18T19:25:11.310Z",
-      "file": "WRITER_2026-07-07T02-01-14-878Z_databricks_Contextual_Policies_in_Omnigent__Using_session_sta.json",
-      "action": "block",
-      "reasons": [
-        "The product 'Omnigent' by Databricks is invented. There is no official Databricks product or announcement by this name related to AI agents and contextual policies.",
-        "The URL 'https://www.databricks.com/blog/contextual-policies-omnigent-using-session-state-better-govern-ai-agents' is invented. The blog post described does not exist on the Databricks website."
-      ]
-    },
-    {
-      "at": "2026-07-18T19:28:42.856Z",
-      "file": "WRITER_2026-06-30T16-43-13-543Z_google-workspace_Create_fully_native_and_editable_presentations_wit.json",
-      "action": "block",
-      "reasons": [
-        "The source URL provided, http://workspaceupdates.googleblog.com/2026/06/create-fully-native-and-editable-presentations-with-Gemini-in-Google-Slides.html, uses a future date (2026) for an alleged past or current announcement, making it an invented URL."
-      ]
-    }
-  ],
   "2026-07-19": [
     {
       "at": "2026-07-19T09:48:23.829Z",
@@ -389,6 +344,44 @@
       "action": "block",
       "reasons": [
         "Article describes a specific 'new Reply All warning for BCC'd threads' as a current Gmail feature. I am not reasonably sure this specific feature (a Reply All warning triggered specifically when you were BCC'd) exists as described in Gmail. Gmail has had generic Reply All warnings (e.g., when replying to large recipient lists), but the claim of a specific BCC-detection warning being rolled out is presented as fact without sourcing and may be fabricated or inaccurate."
+      ]
+    }
+  ],
+  "2026-08-03": [
+    {
+      "at": "2026-08-03T02:03:36.775Z",
+      "file": "WRITER_2026-08-03T01-49-28-320Z_pixlr_AI_Visual_Storytelling_Trends_to_Watch_This_Spring.json",
+      "action": "block",
+      "reasons": [
+        "References 'GPT-5.6' in verified list but article does not mention it — no problem there. However, article mentions 'Adobe Firefly' as if it's a real product offering image generation alongside the listed names — Adobe Firefly is real, so this is fine. Wait, let me re-check: The article mentions 'OpenAI's Sora', 'Runway', and 'Google's Veo' as video generators. Sora, Runway (Gen-3/4), and Veo are real products. The article also mentions 'Adobe Firefly' which is a real product. No fabricated UI elements, URLs, prices, or model versions. The claims about free tiers are hedged ('Most platforms have free trials or low-cost tiers') rather than stated as specific facts. The mention of ChatGPT, Copilot, and Gemini including some image generation is generally accurate. No invented specific features."
+      ]
+    },
+    {
+      "at": "2026-08-03T02:05:32.829Z",
+      "file": "WRITER_2026-08-03T01-49-35-027Z_picsart_Wan_2_7_prompt_guide__the_formula_plus_24_ready-to.json",
+      "action": "block",
+      "reasons": [
+        "Wan 2.7 is not described as Picsart's AI video model in the article — but more importantly, the article claims Wan 2.7 is a Picsart product with 'native audio generation' and 'multi-reference inputs'. Wan (通义万相) is Alibaba's AI video model family, not Picsart's. Picsart is a separate photo/video editing platform. This is a fabricated attribution of the Wan model to the wrong company, and the specific feature claims (native audio, multi-reference inputs for Wan 2.7) cannot be verified."
+      ]
+    },
+    {
+      "at": "2026-08-03T02:06:24.418Z",
+      "file": "WRITER_2026-08-03T01-49-35-028Z_picsart_How_to_use_Kling_AI_to_create_cinematic_AI_videos.json",
+      "action": "block",
+      "reasons": [
+        "Picsart's AI Video Generator offering Kling as a selectable model is not verifiable and likely fabricated — Picsart is a real photo/design platform, but I cannot confirm they offer Kling video generation as described (model selector dropdown, specific 'AI Video Generator' tool)",
+        "The article presents the Picsart + Kling integration as a simple factual flow ('Go to picsart.com... look for the AI Video Generator... choose Kling from the dropdown') without any hedging, but this specific integration is not a verified, widely-known feature and may be invented or misrepresented",
+        "Kling being 'built by Kuaishou' is roughly accurate (Kuaishou developed the Kling model), so not flagged, but the specific claim that Picsart has integrated Kling as a selectable model in their video generator is presented as fact without verification"
+      ]
+    },
+    {
+      "at": "2026-08-03T02:22:21.371Z",
+      "file": "WRITER_GUIDE_how-to-practise-a-job-interview-out-loud-with-chatgpt-s-voic.json",
+      "action": "block",
+      "reasons": [
+        "The article claims Voice Mode 'does not work on a desktop browser' — this is fabricated/wrong; Voice Mode is available on the ChatGPT web/desktop interface as well, not only on mobile.",
+        "The article states ChatGPT Plus costs '$20/month' — this is an invented/incorrect price stated as fact; current ChatGPT Plus pricing should be verified on OpenAI's pricing page rather than asserted as a specific dollar amount.",
+        "The article describes a very specific UI: 'Just above that bar, in the bottom-right corner, look for a small headphones or sound-wave icon' for Voice Mode. This UI detail (headphones icon location) is not accurately described for the current ChatGPT mobile app interface and reads as a fabricated UI element."
       ]
     }
   ]

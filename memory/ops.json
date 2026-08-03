@@ -1,158 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178557771048412",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-08-01T09:48:30.484Z",
-      "updated": "2026-08-01T09:49:05.810Z"
-    },
-    {
-      "id": "t178557774581117",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-08-01T09:49:05.811Z",
-      "updated": "2026-08-01T09:49:06.020Z"
-    },
-    {
-      "id": "t178557774602254",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-01T09:49:06.022Z",
-      "updated": "2026-08-01T09:49:06.197Z"
-    },
-    {
-      "id": "t178557774619999",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-01T09:49:06.199Z",
-      "updated": "2026-08-01T09:49:06.377Z"
-    },
-    {
-      "id": "t178557774638034",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-01T09:49:06.380Z",
-      "updated": "2026-08-01T09:54:18.889Z"
-    },
-    {
-      "id": "t178557805889054",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-01T09:54:18.890Z",
-      "updated": "2026-08-01T09:54:24.901Z"
-    },
-    {
-      "id": "t178557806490481",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-08-01T09:54:24.904Z",
-      "updated": "2026-08-01T09:54:25.112Z"
-    },
-    {
-      "id": "t178557806514348",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-01T09:54:25.143Z",
-      "updated": "2026-08-01T09:54:41.710Z"
-    },
-    {
-      "id": "t178557808171277",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-08-01T09:54:41.712Z",
-      "updated": "2026-08-01T09:54:51.285Z"
-    },
-    {
-      "id": "t178557809128761",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-01T09:54:51.287Z",
-      "updated": "2026-08-01T09:55:07.890Z"
-    },
-    {
-      "id": "t178557810789269",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-08-01T09:55:07.892Z",
-      "updated": "2026-08-01T09:55:19.470Z"
-    },
-    {
-      "id": "t178560280912993",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-08-01T16:46:49.129Z",
-      "updated": "2026-08-01T16:46:49.316Z"
-    },
-    {
-      "id": "t178560280931760",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-08-01T16:46:49.317Z",
-      "updated": "2026-08-01T16:47:12.784Z"
-    },
-    {
-      "id": "t178560283278668",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-08-01T16:47:12.786Z",
-      "updated": "2026-08-01T16:47:12.984Z"
-    },
-    {
-      "id": "t178560283298598",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-01T16:47:12.985Z",
-      "updated": "2026-08-01T16:47:13.155Z"
-    },
-    {
-      "id": "t178560283315635",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-01T16:47:13.156Z",
-      "updated": "2026-08-01T16:47:13.329Z"
-    },
-    {
-      "id": "t178560283333214",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-08-01T16:47:13.332Z",
-      "updated": "2026-08-01T16:47:13.532Z"
-    },
-    {
-      "id": "t178560283356337",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-01T16:47:13.563Z",
-      "updated": "2026-08-01T16:47:13.783Z"
-    },
-    {
-      "id": "t178560283378591",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-08-01T16:47:13.785Z",
-      "updated": "2026-08-01T16:47:13.992Z"
-    },
-    {
       "id": "t178560283399447",
       "title": "Run designer",
       "status": "done",
@@ -479,33 +327,161 @@
       "agent": "publisher",
       "created": "2026-08-02T16:45:19.558Z",
       "updated": "2026-08-02T16:45:34.093Z"
+    },
+    {
+      "id": "t17857216828046",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-08-03T01:48:02.804Z",
+      "updated": "2026-08-03T01:48:02.979Z"
+    },
+    {
+      "id": "t178572168298138",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-08-03T01:48:02.981Z",
+      "updated": "2026-08-03T01:49:35.040Z"
+    },
+    {
+      "id": "t178572177504216",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-08-03T01:49:35.042Z",
+      "updated": "2026-08-03T01:49:35.234Z"
+    },
+    {
+      "id": "t178572177523617",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-03T01:49:35.236Z",
+      "updated": "2026-08-03T02:02:38.740Z"
+    },
+    {
+      "id": "t178572255874233",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-03T02:02:38.742Z",
+      "updated": "2026-08-03T02:06:24.430Z"
+    },
+    {
+      "id": "t178572278443323",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-03T02:06:24.433Z",
+      "updated": "2026-08-03T02:11:01.391Z"
+    },
+    {
+      "id": "t178572306139285",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-03T02:11:01.392Z",
+      "updated": "2026-08-03T02:13:11.622Z"
+    },
+    {
+      "id": "t178572319162412",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-08-03T02:13:11.624Z",
+      "updated": "2026-08-03T02:14:17.492Z"
+    },
+    {
+      "id": "t178572325752429",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-03T02:14:17.524Z",
+      "updated": "2026-08-03T02:21:45.962Z"
+    },
+    {
+      "id": "t178572370596496",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-03T02:21:45.964Z",
+      "updated": "2026-08-03T02:23:04.770Z"
+    },
+    {
+      "id": "t178572378480078",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-03T02:23:04.800Z",
+      "updated": "2026-08-03T02:23:04.974Z"
+    },
+    {
+      "id": "t17857237849753",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-03T02:23:04.975Z",
+      "updated": "2026-08-03T02:23:23.509Z"
+    },
+    {
+      "id": "t178572380351279",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-03T02:23:23.512Z",
+      "updated": "2026-08-03T02:25:28.038Z"
+    },
+    {
+      "id": "t178572392804125",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-03T02:25:28.041Z",
+      "updated": "2026-08-03T02:28:01.925Z"
+    },
+    {
+      "id": "t178572408192787",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-03T02:28:01.927Z",
+      "updated": "2026-08-03T02:28:33.811Z"
+    },
+    {
+      "id": "t178572411381310",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-03T02:28:33.813Z",
+      "updated": "2026-08-03T02:30:58.559Z"
+    },
+    {
+      "id": "t178572425856167",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-08-03T02:30:58.561Z",
+      "updated": "2026-08-03T02:32:58.223Z"
+    },
+    {
+      "id": "t178572437822440",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-03T02:32:58.224Z",
+      "updated": "2026-08-03T02:33:29.776Z"
+    },
+    {
+      "id": "t178572440977829",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-08-03T02:33:29.778Z",
+      "updated": "2026-08-03T02:33:42.078Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178474047332540",
-      "level": "info",
-      "text": "SEO: 7 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-07-22T17:14:33.325Z",
-      "loud": false
-    },
-    {
-      "id": "n178474227434663",
-      "level": "alert",
-      "text": "Pipeline lépés időtúllépés: translator — leállítva 30 perc után.",
-      "agent": "ceo",
-      "at": "2026-07-22T17:44:34.346Z",
-      "loud": true
-    },
-    {
-      "id": "n178474227530589",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). Our AI article line-up is coherent and ready to publish, offering a great mix of practical tips and introductions to various AI tools. However, I do note that the selection is quite tech-heavy, so a b",
-      "agent": "publisher",
-      "at": "2026-07-22T17:44:35.305Z",
-      "loud": false
-    },
     {
       "id": "n178474228556932",
       "level": "success",
@@ -1281,144 +1257,33 @@
       "agent": "ceo",
       "at": "2026-08-02T16:45:34.127Z",
       "loud": false
+    },
+    {
+      "id": "n17857243782153",
+      "level": "info",
+      "text": "SEO: 12 cikk optimalizálva (átlag 7.9/10).",
+      "agent": "seo",
+      "at": "2026-08-03T02:32:58.215Z",
+      "loud": false
+    },
+    {
+      "id": "n178572441464343",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The lineup looks solid and ready — it covers practical how-to guides, privacy awareness, and everyday use cases with a nice mix of AI tools. One small note: article 7 mentions \"Cohere's text generatio",
+      "agent": "publisher",
+      "at": "2026-08-03T02:33:34.643Z",
+      "loud": false
+    },
+    {
+      "id": "n178572442210885",
+      "level": "success",
+      "text": "8 hír + 4 útmutató publikálva (költség: $0.1846).",
+      "agent": "ceo",
+      "at": "2026-08-03T02:33:42.108Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178494498663971",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Master Your Inbox: Summarise and Draft Emails Faster with Apple Intelligence\" — mi a baj: The article describes a 'Summarise' button in Mail as a UI element of Apple Intelligence. As of current knowledge, Apple Mail does not have a 'Summarise' button — Apple Intelligence email summarization in Mail works as automatic message summaries that appear at the top of emails in the ",
-      "ref": "GUIDE_master-your-inbox-summarise-and-draft-emails-faster-with-app.json",
-      "at": "2026-07-25T02:03:06.639Z"
-    },
-    {
-      "id": "m178494563181071",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-07-25T02:13:51.810Z"
-    },
-    {
-      "id": "m178494638386225",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
-      "ref": null,
-      "at": "2026-07-25T02:26:23.862Z"
-    },
-    {
-      "id": "m178497227007596",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
-      "ref": null,
-      "at": "2026-07-25T09:37:50.075Z"
-    },
-    {
-      "id": "m178499799970134",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
-      "ref": null,
-      "at": "2026-07-25T16:46:39.701Z"
-    },
-    {
-      "id": "m178503074192530",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Introducing Claude Opus 5 \\ Anthropic\" — mi a baj: The article refers to 'Claude's New Opus Model' as a new top-tier Claude model, but the title attributes a specific model name 'Opus' to a new release without verification. While Claude Opus models exist (e.g., Claude Opus 4.5), describing it as 'new' and tying it to these specific features (long-running agent tasks, profess",
-      "ref": "2026-07-24T17-20-24-127Z_anthropic-blog_Introducing_Claude_Opus_5___Anthropic.json",
-      "at": "2026-07-26T01:52:21.925Z"
-    },
-    {
-      "id": "m178503076382925",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Introducing Claude Opus 5 on AWS: Anthropic’s most capable Opus model\" — mi a baj: \"Claude Opus 5\" appears to be an invented or incorrectly named model. Anthropic's naming convention uses the pattern \"Claude [version] Opus\" (e.g., Claude 3 Opus, Claude 3.5 Sonnet, Claude 4 Opus) — the version number precedes the variant name, not the other way around. No \"Claude Opus 5\" matc",
-      "ref": "2026-07-25T01-44-56-901Z_aws-ml_Introducing_Claude_Opus_5_on_AWS__Anthropic_s_most.json",
-      "at": "2026-07-26T01:52:43.829Z"
-    },
-    {
-      "id": "m178503079166373",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Version 8.2\" — mi a baj: Midjourney V8.2: this version number is not verified and is likely fabricated. Midjourney's current versioning uses numeric releases (V5, V5.1, V5.2, V6, V6.1, V7) as of the article context, not 'V8.2'. The article presents V8.2 features (widened aesthetic range, reduced failure rate, smarter personalisation) as established facts of a specific update",
-      "ref": "2026-07-25T01-44-56-902Z_midjourney-updates_Version_8_2.json",
-      "at": "2026-07-26T01:53:11.663Z"
-    },
-    {
-      "id": "m178503087641658",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"NTT DATA Group cuts incident analysis to 30 minutes with Codex\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Add a proper H1 heading at the top of the article body (e.g., '# AI Coding Assistants: What They Actually Do (And Why You Should Care)') and shift the existing intro H2 ('W",
-      "ref": "2026-07-23T01-48-34-084Z_openai-blog_NTT_DATA_Group_cuts_incident_analysis_to_30_minute.json",
-      "at": "2026-07-26T01:54:36.416Z"
-    },
-    {
-      "id": "m178503088862555",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Cohere Transcribe Arabic: Open-Source Speech AI\" — javítva: No actual step-by-step guide: readers aren't told which specific tool to use or how to access it; How-to guides need at least one concrete example showing the full process from start to finish; újraküldöm.",
-      "ref": "2026-07-23T10-11-43-793Z_cohere-blog_Cohere_Transcribe_Arabic__Open-Source_Speech_AI.json",
-      "at": "2026-07-26T01:54:48.625Z"
-    },
-    {
-      "id": "m178503090919150",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Introducing Claude Opus 5 \\ Anthropic\" — javítva: The article refers to 'Claude's New Opus Model' as a new top-tier Claude model, but the title attributes a specific model name 'Opus' to a new release without verification. While Claude Opus models exist (e.g., Claude Opus 4.5), describing it as 'new' and tying it to these specific features (long-running agent tasks, professional codi",
-      "ref": "2026-07-24T17-20-24-127Z_anthropic-blog_Introducing_Claude_Opus_5___Anthropic.json",
-      "at": "2026-07-26T01:55:09.191Z"
-    },
-    {
-      "id": "m178503092695935",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Qwen3.6-35B-A3B: Agentic Coding Power, Now Open to All - Qwen\" — javítva: vague step: Search for the latest Qwen model, install the software, and start a conversation; no detailed UI guidance for using LM Studio/Ollama/Hugging Face; újraküldöm.",
-      "ref": "2026-07-24T17-20-24-128Z_qwen-news_Qwen3_6-35B-A3B__Agentic_Coding_Power__Now_Open_to.json",
-      "at": "2026-07-26T01:55:26.959Z"
-    },
-    {
-      "id": "m178503094440775",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Introducing Claude Opus 5 on AWS: Anthropic’s most capable Opus model\" — javítva: \"Claude Opus 5\" appears to be an invented or incorrectly named model. Anthropic's naming convention uses the pattern \"Claude [version] Opus\" (e.g., Claude 3 Opus, Claude 3.5 Sonnet, Claude 4 Opus) — the version number precedes the variant name, not the other way around. No \"Claude Opus 5\" matches Anthro",
-      "ref": "2026-07-25T01-44-56-901Z_aws-ml_Introducing_Claude_Opus_5_on_AWS__Anthropic_s_most.json",
-      "at": "2026-07-26T01:55:44.407Z"
-    },
-    {
-      "id": "m178503096115330",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Version 8.2\" — javítva: Midjourney V8.2: this version number is not verified and is likely fabricated. Midjourney's current versioning uses numeric releases (V5, V5.1, V5.2, V6, V6.1, V7) as of the article context, not 'V8.2'. The article presents V8.2 features (widened aesthetic range, reduced failure rate, smarter personalisation) as established facts of a specific update that does",
-      "ref": "2026-07-25T01-44-56-902Z_midjourney-updates_Version_8_2.json",
-      "at": "2026-07-26T01:56:01.153Z"
-    },
-    {
-      "id": "m178503097914720",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"NTT DATA Group cuts incident analysis to 30 minutes with Codex\" (?/10)",
-      "ref": "2026-07-23T01-48-34-084Z_openai-blog_NTT_DATA_Group_cuts_incident_analysis_to_30_minute.json",
-      "at": "2026-07-26T01:56:19.147Z"
-    },
     {
       "id": "m178503100376535",
       "from": "ellenorzo",
@@ -2643,6 +2508,141 @@
       "text": "6 közösségi poszt megírva (Facebook). content/social/feed.md",
       "ref": null,
       "at": "2026-08-02T16:52:33.520Z"
+    },
+    {
+      "id": "m178572260972882",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"AI Prompts for Football Fan Images: The Ultimate 2026 Guide\" — mi a baj: LEDE_TOO_LONG: A RÖVIDEN-doboz 64 szó (max ~45) — ami hosszú, az már nem \"röviden\".; US English: 'flavor' should be 'flavour' (British/Australian spelling); Step 6 is vague on how exactly to ask for edits — specify that you type the correction in the same chat",
+      "ref": "2026-08-03T01-49-28-320Z_pixlr_AI_Prompts_for_Football_Fan_Images__The_Ultimate_2.json",
+      "at": "2026-08-03T02:03:29.729Z"
+    },
+    {
+      "id": "m178572261677371",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"AI Visual Storytelling Trends to Watch This Spring\" — mi a baj: References 'GPT-5.6' in verified list but article does not mention it — no problem there. However, article mentions 'Adobe Firefly' as if it's a real product offering image generation alongside the listed names — Adobe Firefly is real, so this is fine. Wait, let me re-check: The article mentions 'OpenAI's Sora',",
+      "ref": "2026-08-03T01-49-28-320Z_pixlr_AI_Visual_Storytelling_Trends_to_Watch_This_Spring.json",
+      "at": "2026-08-03T02:03:36.773Z"
+    },
+    {
+      "id": "m178572273282898",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Wan 2.7 prompt guide: the formula plus 24 ready-to-use prompts\" — mi a baj: HOWTO_NO_STEPS: A cím utasítást ígér, de csak 0 számozott lépés-szakasz van (kell 4-6, \"## Step 1 — …\" formában), nem egyetlen összevont bekezdés.; Wan 2.7 is not described as Picsart's AI video model in the article — but more importantly, the article claims Wan 2.7 is a Picsart product with 'native ",
+      "ref": "2026-08-03T01-49-35-027Z_picsart_Wan_2_7_prompt_guide__the_formula_plus_24_ready-to.json",
+      "at": "2026-08-03T02:05:32.828Z"
+    },
+    {
+      "id": "m178572278441748",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"How to use Kling AI to create cinematic AI videos\" — mi a baj: Picsart's AI Video Generator offering Kling as a selectable model is not verifiable and likely fabricated — Picsart is a real photo/design platform, but I cannot confirm they offer Kling video generation as described (model selector dropdown, specific 'AI Video Generator' tool); The article presents the Picsart +",
+      "ref": "2026-08-03T01-49-35-028Z_picsart_How_to_use_Kling_AI_to_create_cinematic_AI_videos.json",
+      "at": "2026-08-03T02:06:24.417Z"
+    },
+    {
+      "id": "m178572280707482",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"AI Prompts for Football Fan Images: The Ultimate 2026 Guide\" — javítva: LEDE_TOO_LONG: A RÖVIDEN-doboz 64 szó (max ~45) — ami hosszú, az már nem \"röviden\".; US English: 'flavor' should be 'flavour' (British/Australian spelling); újraküldöm.",
+      "ref": "2026-08-03T01-49-28-320Z_pixlr_AI_Prompts_for_Football_Fan_Images__The_Ultimate_2.json",
+      "at": "2026-08-03T02:06:47.074Z"
+    },
+    {
+      "id": "m178572299601080",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"AI Visual Storytelling Trends to Watch This Spring\" — javítva: References 'GPT-5.6' in verified list but article does not mention it — no problem there. However, article mentions 'Adobe Firefly' as if it's a real product offering image generation alongside the listed names — Adobe Firefly is real, so this is fine. Wait, let me re-check: The article mentions 'OpenAI's Sora', 'Runway',",
+      "ref": "2026-08-03T01-49-28-320Z_pixlr_AI_Visual_Storytelling_Trends_to_Watch_This_Spring.json",
+      "at": "2026-08-03T02:09:56.010Z"
+    },
+    {
+      "id": "m178572304172346",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Wan 2.7 prompt guide: the formula plus 24 ready-to-use prompts\" — javítva: HOWTO_NO_STEPS: A cím utasítást ígér, de csak 0 számozott lépés-szakasz van (kell 4-6, \"## Step 1 — …\" formában), nem egyetlen összevont bekezdés.; Wan 2.7 is not described as Picsart's AI video model in the article — but more importantly, the article claims Wan 2.7 is a Picsart product with 'native audio gene",
+      "ref": "2026-08-03T01-49-35-027Z_picsart_Wan_2_7_prompt_guide__the_formula_plus_24_ready-to.json",
+      "at": "2026-08-03T02:10:41.723Z"
+    },
+    {
+      "id": "m178572306138142",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"How to use Kling AI to create cinematic AI videos\" — javítva: Picsart's AI Video Generator offering Kling as a selectable model is not verifiable and likely fabricated — Picsart is a real photo/design platform, but I cannot confirm they offer Kling video generation as described (model selector dropdown, specific 'AI Video Generator' tool); The article presents the Picsart + Kling int",
+      "ref": "2026-08-03T01-49-35-028Z_picsart_How_to_use_Kling_AI_to_create_cinematic_AI_videos.json",
+      "at": "2026-08-03T02:11:01.381Z"
+    },
+    {
+      "id": "m178572309901341",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"AI Prompts for Football Fan Images: The Ultimate 2026 Guide\" (?/10)",
+      "ref": "2026-08-03T01-49-28-320Z_pixlr_AI_Prompts_for_Football_Fan_Images__The_Ultimate_2.json",
+      "at": "2026-08-03T02:11:39.013Z"
+    },
+    {
+      "id": "m178572312936635",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"AI Visual Storytelling Trends to Watch This Spring\" (?/10)",
+      "ref": "2026-08-03T01-49-28-320Z_pixlr_AI_Visual_Storytelling_Trends_to_Watch_This_Spring.json",
+      "at": "2026-08-03T02:12:09.366Z"
+    },
+    {
+      "id": "m178572316102878",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Wan 2.7 prompt guide: the formula plus 24 ready-to-use prompts\" (?/10)",
+      "ref": "2026-08-03T01-49-35-027Z_picsart_Wan_2_7_prompt_guide__the_formula_plus_24_ready-to.json",
+      "at": "2026-08-03T02:12:41.028Z"
+    },
+    {
+      "id": "m178572319161370",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"How to use Kling AI to create cinematic AI videos\" (?/10)",
+      "ref": "2026-08-03T01-49-35-028Z_picsart_How_to_use_Kling_AI_to_create_cinematic_AI_videos.json",
+      "at": "2026-08-03T02:13:11.613Z"
+    },
+    {
+      "id": "m178572320005390",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "info",
+      "text": "A \"How to generate speech from text with Picsart AI Playgr\" hír a meglévő útmutatóra mutat: turn-a-voice-memo-into-a-polished-meeting-summary-with-huggi",
+      "ref": "turn-a-voice-memo-into-a-polished-meeting-summary-with-huggi",
+      "at": "2026-08-03T02:13:20.053Z"
+    },
+    {
+      "id": "m178572374136993",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"How to Practise a Job Interview Out Loud with ChatGPT's Voice Mode\" — mi a baj: The article claims Voice Mode 'does not work on a desktop browser' — this is fabricated/wrong; Voice Mode is available on the ChatGPT web/desktop interface as well, not only on mobile.; The article states ChatGPT Plus costs '$20/month' — this is an invented/incorrect price stated as fact; current",
+      "ref": "GUIDE_how-to-practise-a-job-interview-out-loud-with-chatgpt-s-voic.json",
+      "at": "2026-08-03T02:22:21.369Z"
+    },
+    {
+      "id": "m178572440976890",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-08-03T02:33:29.768Z"
     }
   ]
 }

@@ -1,0 +1,49 @@
+{
+  "started_at": "2026-08-03T02:02:38.910Z",
+  "total": 8,
+  "passed": 4,
+  "failed": 1,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.022408532000000005,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-08-03T01-49-28-320Z_picsart_How_to_generate_speech_from_text_with_Picsart_AI_P.json",
+      "article": "ARTICLE_2026-08-03T01-49-28-320Z_picsart_How_to_generate_speech_from_text_with_Picsart_AI_P.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.00154629
+    },
+    {
+      "writer": "WRITER_2026-08-03T01-49-28-320Z_pixlr_AI_Prompts_for_Football_Fan_Images__The_Ultimate_2.json",
+      "rejected": "REJECTED_2026-08-03T01-49-28-320Z_pixlr_AI_Prompts_for_Football_Fan_Images__The_Ultimate_2.json",
+      "decision": "FAIL",
+      "score": 8,
+      "cost_usd": 0.00196992
+    },
+    {
+      "writer": "WRITER_2026-08-03T01-49-28-320Z_pixlr_Best_AI_Summer_Prompts_for_Photos_Travel_Beach_and.json",
+      "article": "ARTICLE_2026-08-03T01-49-28-320Z_pixlr_Best_AI_Summer_Prompts_for_Photos_Travel_Beach_and.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0025155
+    },
+    {
+      "writer": "WRITER_2026-08-03T01-49-35-027Z_picsart_How_to_make_money_creating_AI_content.json",
+      "article": "ARTICLE_2026-08-03T01-49-35-027Z_picsart_How_to_make_money_creating_AI_content.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.001823094
+    },
+    {
+      "writer": "WRITER_2026-08-03T01-49-35-027Z_picsart_Seed_Audio_1_0_explained__one_prompt_for_voice__ef.json",
+      "article": "ARTICLE_2026-08-03T01-49-35-027Z_picsart_Seed_Audio_1_0_explained__one_prompt_for_voice__ef.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.00154602
+    }
+  ],
+  "truth_blocked": 3,
+  "finished_at": "2026-08-03T02:06:24.422Z",
+  "duration_seconds": 225.512
+}
