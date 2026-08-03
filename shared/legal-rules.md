@@ -9,24 +9,37 @@
 
 ---
 
-## 1. Ausztrál jogi keret (amit ismernünk kell)
+## 1. Jogi keret (amit ismernünk kell)
 
-### Fő törvények amik vonatkoznak ránk:
+> **Frissítve 2026-08-03** (a közönség-váltás után). Korábban ausztrál
+> törvényekre hivatkoztunk (Privacy Act 1988, Australian Consumer Law,
+> Spam Act 2003…) — az olvasóink 2026-07-31 óta **túlnyomórészt amerikaiak**,
+> az üzemeltető pedig **EU-ban (Magyarország)**. Az ausztrál keret ezért már
+> nem vonatkozik ránk.
 
-| Törvény | Mire vonatkozik |
-|---|---|
-| **Privacy Act 1988** (2024 módosítás) | Személyes adatok kezelése |
-| **Australian Consumer Law (ACL)** | Megtévesztő tartalom, hamis állítások |
-| **Spam Act 2003** | Email marketing, hírlevél |
-| **Online Safety Act 2021** | Káros tartalom, kiskorúak védelme |
-| **Copyright Act 1968** | Tartalom-másolás, idézés |
-| **Defamation Act (állam-specifikus)** | Rágalmazás, becsületsértés |
+**KÉT jogrendszer érint minket egyszerre:**
 
-### A mi főkockázatunk: 3 dolog
+| Hol | Mi | Mire vonatkozik |
+|---|---|---|
+| 🇺🇸 az OLVASÓINK | **FTC** megtévesztő-reklám szabályok | Hamis/megalapozatlan állítás, rejtett hirdetés |
+| 🇺🇸 | **FTC Endorsement Guides** | Ha valaha fizetett ajánlást teszünk közzé, JELÖLNI kell |
+| 🇺🇸 | **DMCA** (szerzői jog) | Más szövegének/képének átvétele |
+| 🇺🇸 | **COPPA** | 13 év alattiak adatai — nálunk nincs regisztráció, de figyelni kell |
+| 🇺🇸 | tagállami rágalmazási jog | Cégekről/emberekről tett valótlan állítás |
+| 🇪🇺 az ÜZEMELTETŐ | **GDPR** | A visszajelzés/chat adatai, IP-cím kezelése |
+| 🇪🇺 | EU fogyasztóvédelem | Megtévesztő kereskedelmi gyakorlat |
 
-1. **Megtévesztő tartalom** (ACL) — AI hibás állítást ír, olvasó kárt szenved
-2. **Rágalmazás** (Defamation) — valakiről írunk valami sértőt vagy hamisat
-3. **Szerzői jog** (Copyright) — más cikkét lemásoljuk
+### A mi főkockázatunk változatlanul 3 dolog
+
+A jogi keret más lett, a VESZÉLY ugyanaz — ezért a gyakorlati szabályok
+(2-6. szakasz) érvényben maradnak:
+
+1. **Megtévesztő tartalom** (FTC / EU fogyasztóvédelem) — az AI hibás
+   állítást ír, az olvasó kárt szenved. Ez a leggyakoribb és legvalósabb
+   kockázatunk; a hitelesség-kapu (core/truth-gate.js) pontosan ez ellen véd.
+2. **Rágalmazás** — valakiről vagy egy cégről valótlant/sértőt írunk.
+3. **Szerzői jog** (DMCA) — más cikkét lemásoljuk vagy közel szó szerint
+   átfogalmazzuk.
 
 ---
 
@@ -69,7 +82,7 @@ Ha az AI nem 100%-ban biztos egy tényben:
 ### Mit **NEM SZABAD** (kockázatos):
 
 - ❌ **"X cég csaló"** — rágalmazás, perelhető
-- ❌ **"Y termék rosszabb mint Z"** — összehasonlító állítás, az ACL hatálya
+- ❌ **"Y termék rosszabb mint Z"** — összehasonlító állítás, megalapozatlanul megtévesztő
 - ❌ **"X cég pénzügyileg bukik"** — befektetési tanácsadás határa
 - ❌ **Belső infók** idézése ("a leaked email shows...") — kivéve nagy hírek megerősített forrással
 - ❌ **Magánéleti dolgok** CEO-król, alkalmazottakról
@@ -142,7 +155,7 @@ Ha olvasói reakciókat idézünk:
 
 ### Affiliate linkek
 
-Az **ACCC** (Ausztrál fogyasztóvédelmi hatóság) szigorú:
+Az **FTC** (amerikai fogyasztóvédelmi hatóság) szigorú — az Endorsement Guides szerint a fizetett ajánlást EGYÉRTELMŰEN jelölni kell:
 - ✅ **Cikk elején** kötelező jelölés: *"This article contains affiliate links."*
 - ✅ Minden affiliate link mellett: *"(affiliate)"* vagy ikon
 - ❌ **TILOS** rejteni a kapcsolatot
@@ -164,39 +177,49 @@ Az **ACCC** (Ausztrál fogyasztóvédelmi hatóság) szigorú:
 
 ## 7. AI által írt — Transzparencia szabályok
 
-### 2026-ban Ausztráliában ez fejlődő terület. Mi proaktívak vagyunk:
+### 2026-ban ez világszerte fejlődő terület (US és EU egyaránt). Mi proaktívak vagyunk:
 
 - ✅ **Minden cikk alján**: *"Written and edited by AI World Co.'s autonomous AI agents."*
 - ✅ **About oldalon**: részletes leírás hogyan dolgoznak az agentek
 - ✅ **Forrás transzparencia**: minden hír forrása linkelve
 
 ### Miért fontos?
-- Az **Online Safety Act** módosítások (2025+) egyre szigorúbbak a generált tartalomra
-- A **EU AI Act** is hat ausztrál cégekre amik EU-ba szolgáltatnak
+- Az AI-tartalom jelölése egyre szigorúbb elvárás (US állami törvények, platform-szabályok)
+- Az **EU AI Act** KÖZVETLENÜL vonatkozik ránk: az üzemeltető EU-ban van
 - Az **olvasói bizalom** alapja
 
 ---
 
-## 8. Felhasználói adatok — Privacy Act
+## 8. Felhasználói adatok — GDPR (az üzemeltető EU-ban van)
 
-### Mi NEM gyűjtünk személyes adatot (egyelőre)
+> **Frissítve 2026-08-03.** A régi szöveg ausztrál Privacy Act-re és Google
+> Analyticsre hivatkozott, és azt írta, hogy "nincs semmilyen adatgyűjtés" —
+> ez azóta nem pontos. Az alábbi a MOSTANI állapot.
 
-A 0-3. hónapban **csak statikus weboldal** vagyunk:
-- Nincs regisztráció
+### Amink VAN, és mit kezel
+
+| Mi | Adat | Hogyan |
+|---|---|---|
+| **Cloudflare Web Analytics** | oldalletöltés, ország, hivatkozó | süti NÉLKÜL, nem személyazonosít |
+| **👍/👎 visszajelzés** | szavazat + cikk-azonosító | névtelen |
+| **Ügyfélszolgálat** (chat / űrlap / support@) | amit a látogató ír + **hashelt** IP | az IP csak a napi limit miatt, hasítva |
+
+### Amink NINCS (és ez tudatos)
+
+- Nincs regisztráció, nincs felhasználói fiók
 - Nincs komment szekció
-- Nincs hírlevél (csak később)
-- Csak **Google Analytics** (anonim forgalmi adatok)
+- **Nincs hírlevél** — 2026-07-27-én teljesen kivezettük
+- Nincs Google Analytics, nincs hirdetési követő
+- Nincs sütiket használó nyomkövetés → **cookie-banner sem kell**
 
-### Ha LESZ regisztráció / hírlevél (4+. hónap):
+### Amire figyelni kell (GDPR)
 
-Akkor szükséges lesz:
-- **Privacy Policy** oldal (mit gyűjtünk, miért, meddig)
-- **Cookie consent banner** (EU+AU szabály)
-- **Double opt-in** email feliratkozásnál (Spam Act)
-- **Unsubscribe link** minden emailben (kötelező!)
-- **Adattörlési kérés** lehetősége
-
-### **Most még NEM kell ezzel foglalkozni**, csak amikor odaérünk.
+- A chatben a látogató **véletlenül is írhat személyes adatot** — ezt nem
+  hasznosítjuk, nem adjuk tovább
+- **Adattörlési kérés**: a support@ címen kérhető, teljesíteni kell
+- Ha valaha LESZ regisztráció vagy hírlevél: adatvédelmi tájékoztató,
+  kifejezett hozzájárulás és leiratkozási lehetőség KÖTELEZŐ (GDPR + a
+  US-oldalon a CAN-SPAM)
 
 ---
 
@@ -205,7 +228,7 @@ Akkor szükséges lesz:
 ### Mi a hallucináció?
 Az AI **magabiztosan kitalál** dolgokat — pl. nem létező idézetet, hamis számot, nem létező papírt idéz.
 
-### Ez Ausztráliában **megtévesztő tartalom** = ACL megszegése!
+### Ez **megtévesztő tartalom** — FTC-ügy az olvasóink, EU-ügy a mi oldalunkon!
 
 ### Ellenőrző-Agent **kötelező** ellenőrzései:
 
@@ -244,7 +267,7 @@ Minden cikkre az Ellenőrző-Agent **kötelezően** lefuttatja:
 - [ ] Nincs összehasonlító negatív állítás más cégről?
 - [ ] Nincs híres személyről pletyka?
 - [ ] Nincs orvosi / pénzügyi / jogi tanács?
-- [ ] Ausztrál angol használva?
+- [ ] Amerikai angol használva? (color/organize/center — NEM colour/organise/centre)
 
 ### ✅ Jelölések:
 - [ ] Affiliate link → jelölve cikk tetején + linkek mellett?

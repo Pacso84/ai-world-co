@@ -613,7 +613,7 @@ const WIZ_DATA = {
     r: {
       chatgpt: { n: 'ChatGPT (OpenAI)', w: 'The most popular all-rounder: strong at writing, brainstorming and everyday questions, with a generous free version and endless tutorials online. If you want the AI everyone talks about, start here.' },
       gemini:  { n: 'Gemini (Google)', w: 'Built right into the Google world: it plays nicely with Gmail and Google Docs, has a strong free version, and comes ready to use on many Android phones. A natural pick if you live in Google apps.' },
-      claude:  { n: 'Claude (Anthropic)', w: 'Loved for thoughtful, careful writing and for handling long documents. A great companion for summarising, drafting and getting honest, nuanced answers.' },
+      claude:  { n: 'Claude (Anthropic)', w: 'Loved for thoughtful, careful writing and for handling long documents. A great companion for summarizing, drafting and getting honest, nuanced answers.' },
       copilot: { n: 'Copilot (Microsoft)', w: 'Lives inside Word, Excel and Outlook. If your day already runs on Microsoft Office, Copilot puts AI right where you work — no new app to learn.' }
     }
   },
@@ -1638,7 +1638,7 @@ function buildGuidesPage(generalGuides, counts) {
   const body = designStyleBlock() + header + tiles;
   return pageShell({
     title: `Everyday AI guides — ${SITE.name}`,
-    description: 'Plain-language, step-by-step guides to everyday AI skills: writing prompts, summarising, fact-checking, staying safe and more. Works with any assistant.',
+    description: 'Plain-language, step-by-step guides to everyday AI skills: writing prompts, summarizing, fact-checking, staying safe and more. Works with any assistant.',
     noIntro: true, pagePath: 'guides.html',
     jsonld: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'Everyday AI Guides', url: `${SITE.url}/guides` },
     bodyContent: body
@@ -2786,7 +2786,7 @@ ${newsArts.map(a => `  <url><loc>${SITE.url}/article/${a.slug}</loc><news:news><
 
 - [Latest AI news](${SITE.url}/): daily plain-language news about ChatGPT, Gemini, Claude, Copilot and other AI tools
 - [Everyday guides](${SITE.url}/guides): practical how-to guides for daily life (email, study, travel, safety, work)
-- [AI tool guides](${SITE.url}/tools): beginner guides organised by tool — ChatGPT, Gemini, Claude, Copilot, Perplexity and more
+- [AI tool guides](${SITE.url}/tools): beginner guides organized by tool — ChatGPT, Gemini, Claude, Copilot, Perplexity and more
 - [RSS feed](${SITE.url}/feed.xml)
 - [Sitemap](${SITE.url}/sitemap.xml)
 

@@ -148,18 +148,18 @@ function getCoverage() {
 
 const SCOUT_SYSTEM_PROMPT = `You are a research assistant finding OFFICIAL primary sources about AI for a news site.
 
-We ONLY want OFFICIAL, first-party sources — a company's / organisation's / research-lab's OWN blog or newsroom.
+We ONLY want OFFICIAL, first-party sources — a company's / organization's / research-lab's OWN blog or newsroom.
 We do NOT want: news media, magazines, aggregators, anyone reporting on others (TechCrunch, The Verge, VentureBeat, ZDNet, Hacker News, Reddit, Medium, Substack, etc.).
 
 We ALREADY cover the big ones (OpenAI, Google, Anthropic, Microsoft, Meta, Mistral, Alibaba/Qwen, Apple, NVIDIA, Hugging Face, AWS, GitHub, Perplexity, xAI, DeepSeek, Cohere) and many well-known second-tier ones.
-=> Suggest GENUINELY DIFFERENT, still reputable organisations with a REAL AI product or research output and an ACTIVE official blog. Focus on the SPECIFIC NICHES the user asks for, and prefer names that are NOT the first ones everyone thinks of — dig deeper into those niches.
+=> Suggest GENUINELY DIFFERENT, still reputable organizations with a REAL AI product or research output and an ACTIVE official blog. Focus on the SPECIFIC NICHES the user asks for, and prefer names that are NOT the first ones everyone thinks of — dig deeper into those niches.
 
 For each, give the blog's base domain (https://...), with NO path.
 
 Respond ONLY with a JSON array (no markdown):
 [{"name": "Company Official Blog", "domain": "https://example.com", "type": "official", "country": "US", "note": "what they make / cover"}]
 
-Give 15-25 entries. type must be "official". Prefer a global mix (US, EU, Asia, Australia if any). Do NOT include any organisation we already cover.`;
+Give 15-25 entries. type must be "official". Prefer a global mix (US, EU, Asia, Australia if any). Do NOT include any organization we already cover.`;
 
 // FORGÓ VADÁSZMEZŐK (2026-07-05, user-jelzés: "nem küld új forrásokat"):
 // a fix példa-lista kimerült — futásonként 2 VÉLETLEN fülkéből kérünk

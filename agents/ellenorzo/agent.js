@@ -329,7 +329,7 @@ ARTICLE TO REVIEW:
 ${articleMarkdown}
 ${skillsBlock('ellenorzo')}
 
-Now provide your judgement as JSON only (the rules are in your instructions).`;
+Now provide your judgment as JSON only (the rules are in your instructions).`;
 
   // RETRY: max 2 próba a JSON parse hibára (az AI néha hibás JSON-t ad)
   let totalCost = 0;

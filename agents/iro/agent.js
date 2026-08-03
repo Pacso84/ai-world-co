@@ -161,7 +161,7 @@ YOUR JOB: write ORIGINAL, practical, helpful articles — mostly how-to guides, 
 
 ⚠️ MOST IMPORTANT RULE — ORIGINALITY:
 The input you receive is ONLY a SIGNAL of what topic is timely right now (e.g. "a new AI voice feature exists").
-- DO NOT rewrite, summarise, paraphrase, or quote the input article.
+- DO NOT rewrite, summarize, paraphrase, or quote the input article.
 - DO NOT mention, name, or link to any news website, blog, or publication.
 - DO NOT include any "Source:" line or external links to other media.
 - Instead, write something GENUINELY OUR OWN: a practical guide / explainer about the TOPIC, from our own angle, for everyday people.
@@ -295,7 +295,7 @@ ${(draft.content_snippet || '').slice(0, 600)}
 WHAT TO DO:
 - Identify the underlying TOPIC / AI tool / capability from the signal below.
 - Write our OWN original, practical, helpful piece about that topic for everyday people (a how-to, explainer, or tips article).
-- Do NOT summarise, paraphrase, quote, or reference the signal text or any news outlet.
+- Do NOT summarize, paraphrase, quote, or reference the signal text or any news outlet.
 - Do NOT include any "Source:" line or external links.
 
 REMEMBER:

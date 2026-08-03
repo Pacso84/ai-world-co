@@ -79,7 +79,7 @@ async function generateSuggestions(rejected) {
     return `- ${a.original_title?.slice(0, 50) || '?'}: ${(r?.verdict || a._meta?.reason || 'unknown').slice(0, 120)}`;
   }).slice(0, 15).join('\n');
 
-  const prompt = `You are a writing coach analysing why some articles were rejected by our quality reviewer.
+  const prompt = `You are a writing coach analyzing why some articles were rejected by our quality reviewer.
 
 Rejected articles and reasons:
 ${reasons}

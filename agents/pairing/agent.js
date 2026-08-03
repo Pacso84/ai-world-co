@@ -113,7 +113,7 @@ Say guide_worthy = FALSE (there is nothing for a normal user to "do") for:
 
 If unsure, choose FALSE. Output ONLY JSON (no prose, no code fence):
 {"guide_worthy":true|false,"reason":"one short sentence","title":"How to ... (only if worthy)","company":"OpenAI or empty","tool":"ChatGPT or empty","angle":"one sentence on what to focus on","audience":"personal|business|both","level":"beginner|intermediate"}
-IMPORTANT about "tool": it must be the CORE OFFICIAL PRODUCT NAME users recognise, in its SHORTEST form (ChatGPT, Copilot, Gemini, Claude, Le Chat, Alexa+, Hugging Face). NEVER: generic feature/technology phrases ("Reserved Capacity", "AI-powered assistants"), sub-feature suffixes ("Claude Projects" → "Claude"; "Gemini in Workspace" → "Gemini"; "ChatGPT API" → "ChatGPT"), parentheses ("Le Chat (Mistral)" → "Le Chat"), or comma lists. If there is no single clear product, leave "tool" EMPTY. (The site shows this as a brand chip on translated pages — anything beyond a pure brand name looks like an untranslated leftover. 2026-07-12)`;
+IMPORTANT about "tool": it must be the CORE OFFICIAL PRODUCT NAME users recognize, in its SHORTEST form (ChatGPT, Copilot, Gemini, Claude, Le Chat, Alexa+, Hugging Face). NEVER: generic feature/technology phrases ("Reserved Capacity", "AI-powered assistants"), sub-feature suffixes ("Claude Projects" → "Claude"; "Gemini in Workspace" → "Gemini"; "ChatGPT API" → "ChatGPT"), parentheses ("Le Chat (Mistral)" → "Le Chat"), or comma lists. If there is no single clear product, leave "tool" EMPTY. (The site shows this as a brand chip on translated pages — anything beyond a pure brand name looks like an untranslated leftover. 2026-07-12)`;
 
 async function classify(news) {
   const md = news.data.article_markdown || '';
