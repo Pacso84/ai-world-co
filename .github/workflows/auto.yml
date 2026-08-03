@@ -70,7 +70,19 @@ jobs:
         # és elvitte a keretet). A 34 perc még a PRIVÁT repó metered-perc korszakából
         # maradt; a repó 07-26 óta PUBLIKUS → az Actions ingyenes és korlátlan, tehát
         # a szűk keret már csak kárt okoz. A 60 perces job-plafon továbbra is véd.
-        timeout-minutes: 45
+        #
+        # 2026-08-03: 45 → 55 perc, ÉS a pipeline saját PUHA kerete 42 perc
+        # (--max-minutes lentebb). ÖV ÉS NADRÁGTARTÓ:
+        #   • a puha keret a NORMÁL működés — 42 percnél a CEO maga hagyja ki a
+        #     díszítő fázisokat (idle-fill, designer, seo, layout), és rendben
+        #     befejezi. Amit kihagy, azt a következő futás elvégzi.
+        #   • az 55 perc a VÉGSŐ háló, ha valami a puha keret ELLENÉRE elhúzódik
+        #     (pl. egyetlen agent beragad a 8 perces védőidejéig).
+        # Kiváltó eset: a 08-03 01:47-es futás pontosan 45:13-nál esett ki — a két
+        # új forrás (Pixlr, PicsArt) 19 jelöltet adott a szokásos 0-5 helyett.
+        # A tartalom nem veszett el (a kiadási lánc if:always()), de a futás
+        # "failure" lett, és egy MENET KÖZBEN elvágott lépés kockázatos.
+        timeout-minutes: 55
         # --skip-translate (2026-07-23): a ceo-pipeline BEÉPÍTETT fordítást is
         # csinál (5c lépés, limit 40), DE a munkafolyamatnak van rá KÜLÖN lépése
         # (lentebb: "Fordítás", limit 80, if:always, 12 perc kerettel). Mérés a
@@ -79,7 +91,7 @@ jobs:
         # és futásonként ~20 fizetős CI-percet spórol. A fordítás semmit nem veszít:
         # a dedikált lépés a build ELŐTT fut, ugyanabban a futásban publikál.
         # (Helyi `node agents/ceo/agent.js` VÁLTOZATLAN — kézi teszthez teljes flow.)
-        run: node agents/ceo/agent.js --skip-translate
+        run: node agents/ceo/agent.js --skip-translate --max-minutes 42
 
       # Heti extrák (2026-07-08): vasárnap összefoglaló, szerdán összehasonlító.
       # Vázlatot írnak (WRITER_) — a KÖVETKEZŐ ceo-futás Ellenőrzője viszi át

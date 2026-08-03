@@ -266,15 +266,17 @@ Return ONLY the JSON array (${total} items), each with the correct "company" and
       logDedup({ source: 'guide-balance', rejected: title.slice(0, 80), closest: near.closest?.title?.slice(0, 80), score: +(near.closest?.score || 0).toFixed(3) });
       continue;
     }
-    // generalOnly: a modell néha mégis céghez köti az ötletet — az ilyet eldobjuk,
-    // különben a "Hétköznapi AI készségek" keret újra a cégekhez szivárogna át.
-    if (generalOnly && (it.company || '').toString().trim()) continue;
+    // (2026-08-03) Itt korábban egy `generalOnly` hivatkozás állt, átmásolva a
+    // proposeNewTopics-ból — ahol az valódi paraméter. ITT nem létezik, ezért
+    // futás közben ReferenceError-t dobott, és a cég-kiegyenlítés NÉMÁN elveszett.
+    // A fogalom ebben a függvényben értelmetlen is: ez a cég-hiányt tölti fel,
+    // minden téma DEFINÍCIÓ SZERINT céghez tartozik (a needs listából jön).
     seenTitles.add(normTitle(title));
     dedupRef.push(title);
     const id = uniqueId(slugify(title), usedIds);
     store.topics.push({
       id,
-      company: generalOnly ? '' : (it.company || '').toString().trim(),
+      company: (it.company || '').toString().trim(),
       tool: (it.tool || '').toString().trim(),
       title,
       audience: ['personal', 'business', 'both'].includes(it.audience) ? it.audience : 'both',

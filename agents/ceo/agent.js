@@ -82,7 +82,14 @@ function parseArgs() {
     skipPublish: args.includes('--skip-publish'),
     skipTranslate: args.includes('--skip-translate'),
     reportOnly: args.includes('--report'),
-    dryRun: args.includes('--dry-run')
+    dryRun: args.includes('--dry-run'),
+    // PUHA IDŐ-KERET (2026-08-03). A GitHub-lépés kemény korlátja 55 perc;
+    // ez itt 42-nél már elkezdi kihagyni a NEM KRITIKUS fázisokat, hogy a
+    // futás SAJÁT MAGA fejezze be rendben, ne a GitHub vágja el.
+    maxMinutes: (() => {
+      const i = args.indexOf('--max-minutes');
+      return (i >= 0 && +args[i + 1]) ? +args[i + 1] : 42;
+    })()
   };
 }
 
@@ -357,6 +364,27 @@ function saveCeoLog(sessionData) {
 async function main() {
   const args = parseArgs();
 
+  // ── PUHA IDŐ-KERET ────────────────────────────────────────────────
+  // Éles esetből (2026-08-03, futás 30777726558): a két új forrás (Pixlr,
+  // PicsArt) 19 jelöltet adott, a Pipeline 45 percbe futott, és a GitHub
+  // MENET KÖZBEN vágta el. Kár nem lett — a tartalom addigra lemezen volt,
+  // és a kiadási lánc if:always() —, de a futás "failure" lett, és egy
+  // félbevágott lépés bármikor okozhat féllábon álló állapotot.
+  //
+  // MIT RANGSOROLUNK: a MÁR MEGÍRT tartalom kiadása fontosabb, mint az
+  // EXTRA tartalom gyártása. Ezért az idő fogytán a díszítő és a
+  // kapacitás-kitöltő fázisok maradnak ki ELŐSZÖR — az írás, ellenőrzés
+  // és publikálás soha.
+  const startedAt = Date.now();
+  const minutesLeft = () => args.maxMinutes - (Date.now() - startedAt) / 60000;
+  const haveTime = (needMin, label) => {
+    const left = minutesLeft();
+    if (left >= needMin) return true;
+    console.log(`\n⏱️  IDŐ-KERET: „${label}" KIHAGYVA — ${left.toFixed(1)} perc maradt `
+      + `(${needMin} kellene). A már kész tartalom megy tovább, ez a lépés a következő futásé.`);
+    return false;
+  };
+
   console.log('╔══════════════════════════════════════════════════════════╗');
   console.log('║  👔 CEO AGENT — AI World Co. Orchestrator                 ║');
   console.log('╚══════════════════════════════════════════════════════════╝');
@@ -553,7 +581,9 @@ async function main() {
   //     van (daily_guides_max), így a hír-keret betelése NEM akadályozza őket.
   //     Ha üres a téma-backlog, előbb ÖTLETELÜNK (guide --ideas), hogy SOHA
   //     ne fogyjon ki a téma.
-  if (!args.skipGuides && !gate.guidesBlocked) {
+  // Az idle-fill EXTRA tartalmat gyárt a maradék keretből — ez a legelső,
+  // ami elmaradhat, ha fogy az idő: a mai termés kiadása fontosabb nála.
+  if (!args.skipGuides && !gate.guidesBlocked && haveTime(8, '3j. IDLE-FILL')) {
     const now = generateReport();                       // FRISS útmutató-keret
     const slots = now.guides_remaining;                 // napi útmutató-limit − ma írt útmutató
     const budgetOk = now.cost_remaining_usd > 0.01;     // van-e még költségkeret
@@ -596,26 +626,34 @@ async function main() {
   }
 
   // 4d. Designer (fejlécképek)
+  // A borítókép hiánya nem tartja vissza a cikket: a build ad tartalékot, és
+  // a "Borítóképek felújítása" külön lépés utólag pótolja.
   if (!args.skipDesign) {
-    console.log('\n━━━ 4. LÉPÉS: DESIGNER AGENT ━━━');
-    const result = await runAgent('agents/designer/agent.js');
-    session.stages.designer = { exit_code: result.code };
+    if (haveTime(4, '4. DESIGNER')) {
+      console.log('\n━━━ 4. LÉPÉS: DESIGNER AGENT ━━━');
+      const result = await runAgent('agents/designer/agent.js');
+      session.stages.designer = { exit_code: result.code };
+    }
   } else {
     console.log('⏭️  Designer kihagyva (--skip-design)');
   }
 
   // 4e. SEO (meta-leírás, kulcsszavak)
   if (!args.skipSeo) {
-    console.log('\n━━━ 5. LÉPÉS: SEO AGENT ━━━');
-    const result = await runAgent('agents/seo/agent.js');
-    session.stages.seo = { exit_code: result.code };
+    if (haveTime(3, '5. SEO')) {
+      console.log('\n━━━ 5. LÉPÉS: SEO AGENT ━━━');
+      const result = await runAgent('agents/seo/agent.js');
+      session.stages.seo = { exit_code: result.code };
+    }
   } else {
     console.log('⏭️  SEO kihagyva (--skip-seo)');
   }
 
   // 4e+. Honlap-szerkesztő (LAYOUT) — a publikálás ELŐTT fusson, mert a
   //      website/design.json-t írja, amit a build (publisher) beolvas.
-  if (!args.skipPublish) {
+  //      Ha kimarad, a build az ELŐZŐ design.json-nal épül — a honlap ép
+  //      marad, csak az elrendezés nem frissül ebben a körben.
+  if (!args.skipPublish && haveTime(2, '5b. HONLAP-SZERKESZTŐ')) {
     console.log('\n━━━ 5b. LÉPÉS: HONLAP-SZERKESZTŐ AGENT (layout) ━━━');
     const result = await runAgent('agents/designer/web-designer.js');
     session.stages.web_designer = { exit_code: result.code };

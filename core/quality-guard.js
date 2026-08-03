@@ -19,6 +19,7 @@
 import { readFileSync, readdirSync, existsSync, writeFileSync } from 'fs';
 import { fileURLToPath, pathToFileURL } from 'url';
 import { dirname, join } from 'path';
+import { toUS } from './us-spelling.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
@@ -203,39 +204,66 @@ export async function applyQualityFixes() {
     if (dirty) writeFileSync(TOPICS_PATH, JSON.stringify(topics, null, 2), 'utf-8');
   } catch { /* nincs témalista */ }
   // 2) cikkek + piszkozatok — _meta szinkron a kész cikk frontmatterével
+  //    + AMERIKAI HELYESÍRÁS (2026-08-03): ez MINDEN cikkre vonatkozik, nem
+  //    csak az útmutatókra, ezért a guide-szűrő beljebb került egy ággal.
   for (const dir of [ARTICLES_DIR, join(ROOT, 'content', 'drafts')]) {
     if (!existsSync(dir)) continue;
     for (const f of readdirSync(dir).filter(x => x.endsWith('.json'))) {
       try {
         const p = join(dir, f);
         const d = JSON.parse(readFileSync(p, 'utf-8'));
-        if (d._meta?.type !== 'guide' || !d._meta?.tool) continue;
-        const md = d.article_markdown || '';
-        const fmCompany = strip((md.match(/^company:\s*(.*)$/m) || [])[1]);
-        const fmTool = strip((md.match(/^tool:\s*(.*)$/m) || [])[1]);
-        const wantCompany = fmCompany || strip(d._meta.company);
-        const wantTool = fixedChip(fmTool || d._meta.tool, wantCompany);
         let dirty = false;
-        if (wantTool !== strip(d._meta.tool)) {
-          fixes.push(`cikk ${f.slice(14, 55)}: tool "${d._meta.tool}" → "${wantTool || '(nincs chip)'}"`);
-          d._meta.tool = wantTool; dirty = true;
+
+        // 2a) HELYESÍRÁS — hírre és útmutatóra egyaránt, AI nélkül, $0.
+        // A cím is a markdownban van, tehát az is javul; az URL-t a rögzített
+        // _meta.slug védi, így a javítás SOHA nem költöztet el egy oldalt.
+        // A fordításokat nem érinti: a gyorsítótár fájl+nyelv kulcsú (nem
+        // tartalom-lenyomat), és a colour/color magyarul úgyis ugyanaz a szó.
+        const spelled = toUS(d.article_markdown || '');
+        if (spelled.fixed.length) {
+          d.article_markdown = spelled.text;
+          fixes.push(`helyesírás ${f.slice(14, 50)}: ${spelled.fixed.join(', ')}`);
+          dirty = true;
         }
-        if (wantCompany && wantCompany !== strip(d._meta.company)) {
-          fixes.push(`cikk ${f.slice(14, 55)}: company "${d._meta.company}" → "${wantCompany}"`);
-          d._meta.company = wantCompany; dirty = true;
+
+        // 2b) CSEMPE-SZABÁLY — csak útmutatóra értelmes
+        if (d._meta?.type === 'guide' && d._meta?.tool) {
+          const md = d.article_markdown || '';
+          const fmCompany = strip((md.match(/^company:\s*(.*)$/m) || [])[1]);
+          const fmTool = strip((md.match(/^tool:\s*(.*)$/m) || [])[1]);
+          const wantCompany = fmCompany || strip(d._meta.company);
+          const wantTool = fixedChip(fmTool || d._meta.tool, wantCompany);
+          if (wantTool !== strip(d._meta.tool)) {
+            fixes.push(`cikk ${f.slice(14, 55)}: tool "${d._meta.tool}" → "${wantTool || '(nincs chip)'}"`);
+            d._meta.tool = wantTool; dirty = true;
+          }
+          if (wantCompany && wantCompany !== strip(d._meta.company)) {
+            fixes.push(`cikk ${f.slice(14, 55)}: company "${d._meta.company}" → "${wantCompany}"`);
+            d._meta.company = wantCompany; dirty = true;
+          }
         }
+
         if (dirty) writeFileSync(p, JSON.stringify(d, null, 2), 'utf-8');
       } catch { /* sérült fájl — az őr úgyis jelzi */ }
     }
   }
   // Tanulság a közös könyvbe (2026-07-13): ha javítani kellett, arról a cég
   // MINDEN munkatársa tanul (a router minden promptba befűzi).
-  if (fixes.length) {
-    try {
-      const { remember } = await import('./memory-manager.js');
-      remember('shared', `Csempe-szabály emlékeztető: a tool mindig a legrövidebb hivatalos terméknév (ma ${fixes.length} javítás kellett, pl. ${fixes[0].slice(0, 60)}).`);
-    } catch { /* tanulság nélkül is megy */ }
-  }
+  // KÉT KÜLÖN TANULSÁG (2026-08-03): a csempe- és a helyesírás-javítás más
+  // hibából jön, ezért külön is kell tanulni belőlük. Ha egybemosnánk, a
+  // promptba olyan mondat kerülne, hogy "csempe-szabály… pl. colour→color",
+  // ami félrevezeti az írót.
+  const chipFixes = fixes.filter(x => !x.startsWith('helyesírás '));
+  const spellFixes = fixes.filter(x => x.startsWith('helyesírás '));
+  try {
+    const { remember } = await import('./memory-manager.js');
+    if (chipFixes.length) {
+      remember('shared', `Csempe-szabály emlékeztető: a tool mindig a legrövidebb hivatalos terméknév (ma ${chipFixes.length} javítás kellett, pl. ${chipFixes[0].slice(0, 60)}).`);
+    }
+    if (spellFixes.length) {
+      remember('shared', `Amerikai helyesírás: ma ${spellFixes.length} cikkben kellett gépi javítás (color, organize, center — NEM colour/organise/centre). Írás közben mindjárt amerikaiul írd.`);
+    }
+  } catch { /* tanulság nélkül is megy */ }
   logFixes(fixes);
   return fixes;
 }

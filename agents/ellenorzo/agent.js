@@ -29,6 +29,7 @@ import { ask } from '../../core/ai-router.js';
 import { remember } from '../../core/memory-manager.js';
 import { truthGate, logGate } from '../../core/truth-gate.js';
 import { message, resolveNeed } from '../../core/ops.js';
+import { findBritish } from '../../core/us-spelling.js';
 import { skillsBlock } from '../../core/skills.js';
 
 // ===================================================================
@@ -238,18 +239,20 @@ function runAutoCheck(articleMarkdown, type) {
   // rontotta volna a pontszámot és fölösleges átdolgozást szült volna — az pedig
   // pénz. TANULSÁG: egy szabály átírásakor a PROMPT csak a fele; a gépi kapukat
   // külön kell megkeresni, mert azok némán dolgoznak.
-  const britishWords = [
-    { br: /\bcolour\b/g, us: 'color' },
-    { br: /\borganisation\b/g, us: 'organization' },
-    { br: /\brealise\b/g, us: 'realize' },
-    { br: /\banalyse\b/g, us: 'analyze' },
-    { br: /\bcentre\b/g, us: 'center' },
-    { br: /\bbehaviour\b/g, us: 'behavior' }
-  ];
-  for (const { br, us } of britishWords) {
-    if (br.test(articleMarkdown)) {
-      issues.push(`BRITISH_SPELLING: "${br.source.replace(/\\b/g, '')}" — amerikaiul: ${us}`);
-    }
+  // HELYESÍRÁS (2026-08-03 óta MUNKAMEGOSZTÁS):
+  //   • a KISBETŰS brit alakot a core/quality-guard.js --fix INGYEN, gépileg
+  //     kijavítja a build előtt — ezért itt NEM jelezzük. Ha jeleznénk, az
+  //     ellenőrző visszaküldhetné a cikket ÁTDOLGOZÁSRA (fizetős AI-hívás)
+  //     egy olyan hiba miatt, amit egy szócsere ingyen megold. Az író ettől
+  //     még tanul belőle: a quality-guard tanulságot ír a közös könyvbe,
+  //     amit a router MINDEN prompthoz hozzáfűz.
+  //   • a NAGYBETŰS alakot viszont a gép SZÁNDÉKOSAN nem bántja (lehet
+  //     tulajdonnév: "Centre for AI Safety", "Cohere Summarise"), ezért itt
+  //     jelezzük — ez az a döntés, amihez tényleg ítélet kell.
+  const capitalBritish = findBritish(articleMarkdown);
+  if (capitalBritish.length) {
+    issues.push(`BRITISH_SPELLING_NAME: nagybetűs brit alak — ${capitalBritish.join(', ')}. `
+      + 'Ha közszó, írd amerikaiul; ha VALÓDI tulajdonnév (szervezet/termék neve), hagyd.');
   }
 
   // Click-bait klisé szavak
