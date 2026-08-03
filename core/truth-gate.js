@@ -100,6 +100,10 @@ DO NOT flag: general advice; example prompts the reader should type; honest hedg
 
 VERIFIED-REAL product & company names are supplied to you below. NEVER flag the mere existence of a name on that list as invented, even if it looks new to you (e.g. recently launched products) — your training may predate it. You MAY still flag invented features, URLs, prices or UI attributed to those products.
 
+OUTPUT DISCIPLINE (2026-08-03 — a real failure): "problems" must contain ONLY the fabrications you are actually flagging. Do NOT narrate your checking process, do NOT list items you examined and found acceptable, and do NOT include phrases like "this is fine", "no problem there" or "wait, let me re-check". If, after checking, you are flagging nothing, return credible=true with an EMPTY problems array. A previous verdict listed a full self-check that concluded "No invented specific features" — yet still returned credible=false, which sent a correct article back for a pointless paid rewrite.
+
+"confidence" = how sure you are that the flagged items are REAL fabrications (1 = guessing, 10 = certain).
+
 Respond ONLY with JSON:
 {"credible": true/false, "problems": ["specific fabricated claim + why", ...], "confidence": 1-10}`;
 
@@ -162,8 +166,13 @@ export async function truthGate(writerData, { ask, fetcher = fetch } = {}) {
   // 2. réteg: AI-bíró (paid-only lánc)
   const v = await aiTruthVerdict(md, meta, ask);
   if (v.error) return { pass: false, hold: true, blockers: [`AI-bíró nem elérhető (${v.error}) — visszatartva a következő futásig`], warnings: links.warnings, cost: v.cost };
-  if (!v.credible) return { pass: false, hold: false, blockers: v.problems.length ? v.problems : ['Az AI-bíró kitalált állítást talált (részletek nélkül)'], warnings: links.warnings, cost: v.cost };
-  return { pass: true, hold: false, blockers: [], warnings: links.warnings, cost: v.cost };
+  // A `confidence` MOST CSAK MÉRÉS (2026-08-03). A bíró régóta visszaadja, de a
+  // döntés eddig nem használta. Küszöböt SZÁNDÉKOSAN nem vezetünk be adat
+  // nélkül: előbb naplózzuk pár napig, és ha kiderül, hogy az alacsony
+  // magabiztosságú blokkolások a téves riasztások, AKKOR lesz küszöb.
+  // (Vakon beállított küszöb valódi kitalációkat engedne ki.)
+  if (!v.credible) return { pass: false, hold: false, blockers: v.problems.length ? v.problems : ['Az AI-bíró kitalált állítást talált (részletek nélkül)'], warnings: links.warnings, cost: v.cost, confidence: v.confidence };
+  return { pass: true, hold: false, blockers: [], warnings: links.warnings, cost: v.cost, confidence: v.confidence };
 }
 
 // ---------------------------------------------------------------

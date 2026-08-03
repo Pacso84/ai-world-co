@@ -756,7 +756,7 @@ Original title: ${writerData.original_title}
       if (!gate.pass && gate.hold) {
         console.log(`   ⏸️  VISSZATARTVA (hitelesség-bíró nem elérhető): ${gate.blockers[0] || ''}\n`);
         stats.truth_held = (stats.truth_held || 0) + 1;
-        logGate({ file: writerFilename, action: 'hold', reasons: gate.blockers });
+        logGate({ file: writerFilename, action: 'hold', reasons: gate.blockers, confidence: gate.confidence });
         continue; // marad a drafts-ban
       }
       if (!gate.pass) {
@@ -766,7 +766,7 @@ Original title: ${writerData.original_title}
         const rejectedName = moveToRejected(writerFilename, writerData, autoCheckResult, aiReviewResult);
         console.log(`   🛡️  HITELESSÉG-BLOKK: ${rejectedName} — ${gate.blockers[0]?.slice(0, 90)}\n`);
         stats.truth_blocked = (stats.truth_blocked || 0) + 1;
-        logGate({ file: writerFilename, action: 'block', reasons: gate.blockers });
+        logGate({ file: writerFilename, action: 'block', reasons: gate.blockers, confidence: gate.confidence });
         // Lecke a KÖZÖSBE (mindenki lássa) + a SZERZŐ saját rekeszébe STABIL
         // szöveggel (2026-07-16, user: "külön memóriája... ne essenek bele
         // mindig ugyanabba a hibába") — ismétlődéskor erősödik, nem duplikálódik.
