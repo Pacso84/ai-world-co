@@ -1,0 +1,58 @@
+{
+  "_meta": {
+    "written_at": "2026-08-04T01:27:46.957Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00528354,
+    "original_draft": "2026-08-04T01-24-10-084Z_google-workspace_Visual_screenshots_now_included_in_Google_Meet_mee.json",
+    "source_id": "google-workspace",
+    "source_name": "Google Workspace Updates (hivatalos)",
+    "source_link": "http://workspaceupdates.googleblog.com/2026/08/visual-screenshots-now-included-in-Google-Meet-meeting-notes.html",
+    "status": "published",
+    "published_at": "2026-08-04T01:28:08.847Z",
+    "slug": "google-meet-s-ai-notes-will-soon-show-screenshots-of-shared-slides",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 692
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured explainer that teaches readers about the feature without talking down to them, explains key terms (AI, transcription) in plain language, covers the practical impact across different audiences, and maintains a friendly non-judgmental tone throughout. No cliches, no prohibited content, and the factual claims align with an official source.",
+      "_aiCost": 0.0014748,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-08-04T01:31:56.962Z",
+    "guide_worthy": false,
+    "pairing_reason": "The screenshot capture feature is not yet released - Google only announced it coming soon, with rollout to certain Workspace plans first",
+    "image_v": 2,
+    "image_at": "2026-08-04T01:37:16.998Z",
+    "seo": {
+      "meta_description": "Google Meet's 'Take notes for me' will soon capture screenshots of shared slides directly in your meeting notes. No more guessing which chart was shown.",
+      "keywords": [
+        "google meet ai notes",
+        "take notes for me feature",
+        "google meet automatic meeting notes",
+        "ai meeting notes with screenshots",
+        "google meet shared screen capture",
+        "meeting notes ai tool",
+        "google meet visual notes"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Consider shortening the title — 'Google Meet AI Notes Will Capture Slide Screenshots' is more concise and keyword-friendly",
+        "Add a specific timeline or availability info (e.g., 'coming soon' or 'rolling out this month') to increase click urgency",
+        "Include the exact feature name 'Take notes for me' in the first paragraph for better keyword prominence"
+      ],
+      "optimised_at": "2026-08-04T01:38:19.962Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Google Meet's AI Notes Will Soon Show Screenshots of Shared Slides\"\nsubtitle: \"The 'Take notes for me' feature is learning to capture visuals — here's what that means for your next meeting\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"google-meet\", \"meeting-notes\", \"ai-assistants\", \"productivity\"]\n---\n\n# Google Meet's AI Notes Will Soon Show Screenshots of Shared Slides\n\n> **In short:** Google Meet's \"Take notes for me\" feature is getting an upgrade that automatically saves screenshots of whatever was on someone's shared screen during the meeting, right inside the notes document. No more guessing which chart the speaker was talking about.\n\nIf you've ever left a meeting and stared at the AI-generated notes thinking, \"This mentions a slide, but I have no idea which one\" — this update is for you. Google Meet (Google's video calling tool, the one many workplaces and schools use) is teaching its notetaking assistant to grab pictures of shared content and drop them into the notes.\n\n## What's actually changing\n\nToday, \"Take notes for me\" writes down what people *say*. It uses a transcription (a written record of the spoken conversation) and an AI (a computer program that can summarize and rephrase text) to pull out the key points. The problem: when someone shares a chart, a diagram, or a screenshot, the notes might say \"the team reviewed the Q3 numbers\" — but the actual numbers are gone.\n\nThe new version captures those visuals too. If a presenter shares their screen and walks through a chart, a snapshot of that chart ends up in the notes file, right next to the paragraph that mentions it.\n\n## How it works behind the scenes\n\nYou don't need to do anything different. When \"Take notes for me\" is running, the AI is already listening to the call and writing. With this update, it's also watching for the moments when someone is presenting — and taking a picture of the current screen. That image is then placed in the notes document.\n\nA small but useful detail: this happens automatically. The presenter doesn't have to click anything, and the note-taker doesn't have to remember to screenshot. The AI just notices when the screen is being shared and does the work.\n\n## What this means for you\n\n- **If you join a lot of work meetings**: You'll get a much more complete record. When your manager says \"look at slide 4,\" the notes will actually have slide 4. When you reference a meeting two weeks later, the visuals are right there — useful for decisions, audits, or onboarding someone new.\n- **If you're a student or teacher**: Classroom recordings used to lose the whiteboard drawings or the slide being explained. Now the notes will include what was shown, so a student who missed class can catch up on the visual material too.\n- **If you're worried about privacy**: Screenshots only happen during screen-sharing, not the whole time. Google has also said workspace admins can control whether the feature is on, off, or limited to certain people. If you're using Meet through work, your IT team decides what's allowed.\n- **If you just want a simple takeaway**: Meetings are about to leave you with notes that actually make sense on their own — words *and* pictures, linked together, no extra effort on your part.\n\n## A small honest note\n\nGoogle has shared what the feature will do, but hasn't given a specific date for when it rolls out to everyone. It will arrive first to certain Google Workspace plans (the paid business versions of Google's apps) and then expand. So if you don't see it tomorrow, that's normal — it takes a few weeks to reach all accounts.\n\n## Wrap-up\n\nMeeting notes used to be like a summary of a movie without any of the scenes. Soon, Google Meet's notetaker will hand you both the summary and the stills. Until it arrives at your account, the simplest thing you can do today is turn on \"Take notes for me\" in your next call — just so you can see what the current version looks like, and notice the difference once screenshots start showing up.",
+  "original_title": "Visual screenshots now included in Google Meet meeting notes"
+}

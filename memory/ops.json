@@ -1,150 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178560283399447",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-01T16:47:13.994Z",
-      "updated": "2026-08-01T16:47:30.492Z"
-    },
-    {
-      "id": "t178560285049486",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-08-01T16:47:30.494Z",
-      "updated": "2026-08-01T16:47:46.530Z"
-    },
-    {
-      "id": "t178563512703420",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-08-02T01:45:27.034Z",
-      "updated": "2026-08-02T01:45:27.138Z"
-    },
-    {
-      "id": "t17856351271393",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-08-02T01:45:27.139Z",
-      "updated": "2026-08-02T01:46:09.069Z"
-    },
-    {
-      "id": "t178563516907063",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-08-02T01:46:09.070Z",
-      "updated": "2026-08-02T01:46:09.202Z"
-    },
-    {
-      "id": "t178563516920335",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-02T01:46:09.203Z",
-      "updated": "2026-08-02T01:49:59.026Z"
-    },
-    {
-      "id": "t178563539902752",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-02T01:49:59.027Z",
-      "updated": "2026-08-02T01:51:05.550Z"
-    },
-    {
-      "id": "t178563546555233",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-08-02T01:51:05.552Z",
-      "updated": "2026-08-02T01:51:36.222Z"
-    },
-    {
-      "id": "t178563549624362",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-02T01:51:36.243Z",
-      "updated": "2026-08-02T01:55:28.973Z"
-    },
-    {
-      "id": "t17856357289751",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-02T01:55:28.975Z",
-      "updated": "2026-08-02T01:56:49.931Z"
-    },
-    {
-      "id": "t178563580995263",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-02T01:56:49.952Z",
-      "updated": "2026-08-02T01:56:50.060Z"
-    },
-    {
-      "id": "t178563581006157",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-02T01:56:50.061Z",
-      "updated": "2026-08-02T01:57:00.366Z"
-    },
-    {
-      "id": "t178563582036849",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-02T01:57:00.368Z",
-      "updated": "2026-08-02T01:58:33.324Z"
-    },
-    {
-      "id": "t178563591332661",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-02T01:58:33.326Z",
-      "updated": "2026-08-02T01:59:36.888Z"
-    },
-    {
-      "id": "t178563597688938",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-02T01:59:36.889Z",
-      "updated": "2026-08-02T01:59:53.709Z"
-    },
-    {
-      "id": "t178563599371159",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-02T01:59:53.711Z",
-      "updated": "2026-08-02T02:01:05.031Z"
-    },
-    {
-      "id": "t178563606503234",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-08-02T02:01:05.032Z",
-      "updated": "2026-08-02T02:02:21.028Z"
-    },
-    {
-      "id": "t178563614105231",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-02T02:02:21.052Z",
-      "updated": "2026-08-02T02:02:30.875Z"
-    },
-    {
       "id": "t17856361508760",
       "title": "Run publisher",
       "status": "done",
@@ -479,41 +335,153 @@
       "agent": "publisher",
       "created": "2026-08-03T02:33:29.778Z",
       "updated": "2026-08-03T02:33:42.078Z"
+    },
+    {
+      "id": "t178580662435072",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-08-04T01:23:44.350Z",
+      "updated": "2026-08-04T01:23:44.533Z"
+    },
+    {
+      "id": "t178580662453525",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-08-04T01:23:44.535Z",
+      "updated": "2026-08-04T01:24:26.509Z"
+    },
+    {
+      "id": "t178580666651113",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-08-04T01:24:26.511Z",
+      "updated": "2026-08-04T01:24:26.715Z"
+    },
+    {
+      "id": "t17858066667173",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-04T01:24:26.717Z",
+      "updated": "2026-08-04T01:27:46.966Z"
+    },
+    {
+      "id": "t178580686696716",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-04T01:27:46.967Z",
+      "updated": "2026-08-04T01:29:24.926Z"
+    },
+    {
+      "id": "t178580696492969",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-04T01:29:24.929Z",
+      "updated": "2026-08-04T01:30:22.592Z"
+    },
+    {
+      "id": "t178580702259451",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-04T01:30:22.594Z",
+      "updated": "2026-08-04T01:30:37.174Z"
+    },
+    {
+      "id": "t178580703717690",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-04T01:30:37.176Z",
+      "updated": "2026-08-04T01:30:55.675Z"
+    },
+    {
+      "id": "t178580705567745",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-04T01:30:55.677Z",
+      "updated": "2026-08-04T01:31:12.849Z"
+    },
+    {
+      "id": "t178580707285136",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-04T01:31:12.851Z",
+      "updated": "2026-08-04T01:31:29.022Z"
+    },
+    {
+      "id": "t178580708902477",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-04T01:31:29.024Z",
+      "updated": "2026-08-04T01:31:47.912Z"
+    },
+    {
+      "id": "t178580710791425",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-08-04T01:31:47.914Z",
+      "updated": "2026-08-04T01:32:26.633Z"
+    },
+    {
+      "id": "t178580714666738",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-04T01:32:26.667Z",
+      "updated": "2026-08-04T01:36:10.700Z"
+    },
+    {
+      "id": "t178580737070228",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-04T01:36:10.702Z",
+      "updated": "2026-08-04T01:37:10.691Z"
+    },
+    {
+      "id": "t17858074307211",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-04T01:37:10.721Z",
+      "updated": "2026-08-04T01:38:11.760Z"
+    },
+    {
+      "id": "t178580749176132",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-08-04T01:38:11.761Z",
+      "updated": "2026-08-04T01:39:48.062Z"
+    },
+    {
+      "id": "t178580758806478",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-04T01:39:48.064Z",
+      "updated": "2026-08-04T01:39:52.482Z"
+    },
+    {
+      "id": "t17858075924837",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-08-04T01:39:52.483Z",
+      "updated": "2026-08-04T01:40:07.553Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178474228556932",
-      "level": "success",
-      "text": "7 hír + 0 útmutató publikálva (költség: $0.0338).",
-      "agent": "ceo",
-      "at": "2026-07-22T17:44:45.569Z",
-      "loud": false
-    },
-    {
-      "id": "n178477219362514",
-      "level": "warn",
-      "text": "📨 pairing → guide: Új funkció-hír → kéne hozzá útmutató: \"How to Make AI Images with Stable Diffusion\"",
-      "agent": "pairing",
-      "at": "2026-07-23T02:03:13.625Z",
-      "loud": false
-    },
-    {
-      "id": "n178477287424072",
-      "level": "info",
-      "text": "SEO: 9 cikk optimalizálva (átlag 8.4/10).",
-      "agent": "seo",
-      "at": "2026-07-23T02:14:34.240Z",
-      "loud": false
-    },
-    {
-      "id": "n178477467532632",
-      "level": "alert",
-      "text": "Pipeline lépés időtúllépés: translator — leállítva 30 perc után.",
-      "agent": "ceo",
-      "at": "2026-07-23T02:44:35.326Z",
-      "loud": true
-    },
     {
       "id": "n178477467637814",
       "level": "success",
@@ -1281,83 +1249,41 @@
       "agent": "ceo",
       "at": "2026-08-03T02:33:42.108Z",
       "loud": false
+    },
+    {
+      "id": "n178580702258382",
+      "level": "warn",
+      "text": "📨 guide → ceo: Kell még adat: \"How to Practise a Job Interview Out Loud with ChatGPT's Voice Mode\" — az Ellenőrző tényt/forrást kér, am",
+      "agent": "guide",
+      "at": "2026-08-04T01:30:22.583Z",
+      "loud": false
+    },
+    {
+      "id": "n178580758805438",
+      "level": "info",
+      "text": "SEO: 9 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-08-04T01:39:48.054Z",
+      "loud": false
+    },
+    {
+      "id": "n178580759905766",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The line-up looks strong — mix of practical how-tos, privacy awareness, and heartfelt use cases. Just a quick note: Articles 2 and 7 need minor tool-name fixes per our style guide (keep them as \"Perpl",
+      "agent": "publisher",
+      "at": "2026-08-04T01:39:59.057Z",
+      "loud": false
+    },
+    {
+      "id": "n178580760758477",
+      "level": "success",
+      "text": "5 hír + 4 útmutató publikálva (költség: $0.0924).",
+      "agent": "ceo",
+      "at": "2026-08-04T01:40:07.584Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178503107860587",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Introducing Claude Opus 5 on AWS: Anthropic’s most capable Opus model\" (?/10)",
-      "ref": "2026-07-25T01-44-56-901Z_aws-ml_Introducing_Claude_Opus_5_on_AWS__Anthropic_s_most.json",
-      "at": "2026-07-26T01:57:58.605Z"
-    },
-    {
-      "id": "m178503109578767",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Version 8.2\" (?/10)",
-      "ref": "2026-07-25T01-44-56-902Z_midjourney-updates_Version_8_2.json",
-      "at": "2026-07-26T01:58:15.787Z"
-    },
-    {
-      "id": "m178503112586080",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Learn Basic Phrases in a New Language Using Alexa+'s AI Conversation Mode\" — javítva: The article describes a specific voice command 'Alexa, open Conversations' and a panel called 'Conversations' or 'AI Chat' on Echo Show home screens for accessing Alexa+'s language learning mode — these appear to be fabricated UI elements/voice commands. Alexa+'s conversational features are not laun",
-      "ref": "GUIDE_learn-basic-phrases-in-a-new-language-using-alexa-s-ai-conve.json",
-      "at": "2026-07-26T01:58:45.860Z"
-    },
-    {
-      "id": "m178503112586224",
-      "from": "guide",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Kell még adat: \"Learn Basic Phrases in a New Language Using Alexa+'s AI Conversation Mode\" — az Ellenőrző tényt/forrást kér, amit nem találhatok ki: The article claims Alexa+ offers a language learning / pronunciation feedback / role-play conversation mode with level selection, which is not a documented feature of Alexa+. Alexa+ is a general AI assistant upgrade; there is no evidence it includes a",
-      "ref": "GUIDE_learn-basic-phrases-in-a-new-language-using-alexa-s-ai-conve.json",
-      "open": false,
-      "at": "2026-07-26T01:58:45.862Z",
-      "resolved_at": "2026-07-26T01:59:24.455Z"
-    },
-    {
-      "id": "m178503114772156",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Master Your Inbox: Summarise and Draft Emails Faster with Apple Intelligence\" — javítva: The article describes a 'Summarise' button in Mail as a UI element of Apple Intelligence. As of current knowledge, Apple Mail does not have a 'Summarise' button — Apple Intelligence email summarization in Mail works as automatic message summaries that appear at the top of emails in the inbox list",
-      "ref": "GUIDE_master-your-inbox-summarise-and-draft-emails-faster-with-app.json",
-      "at": "2026-07-26T01:59:07.721Z"
-    },
-    {
-      "id": "m178503116445481",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Learn Basic Phrases in a New Language Using Alexa+'s AI Conversation Mode\" (?/10)",
-      "ref": "GUIDE_learn-basic-phrases-in-a-new-language-using-alexa-s-ai-conve.json",
-      "at": "2026-07-26T01:59:24.454Z"
-    },
-    {
-      "id": "m178503117860354",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Master Your Inbox: Summarise and Draft Emails Faster with Apple Intelligence\" (?/10)",
-      "ref": "GUIDE_master-your-inbox-summarise-and-draft-emails-faster-with-app.json",
-      "at": "2026-07-26T01:59:38.603Z"
-    },
-    {
-      "id": "m178503121267735",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "info",
-      "text": "A \"Introducing Claude Opus 5 on AWS: Anthropic’s most capa\" hír a meglévő útmutatóra mutat: claude-getting-started",
-      "ref": "claude-getting-started",
-      "at": "2026-07-26T02:00:12.677Z"
-    },
     {
       "id": "m178503172234498",
       "from": "designer",
@@ -2643,6 +2569,80 @@
       "text": "6 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-08-03T17:50:13.794Z"
+    },
+    {
+      "id": "m178580702258298",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"How to Practise a Job Interview Out Loud with ChatGPT's Voice Mode\" — javítva: The article claims Voice Mode 'does not work on a desktop browser' — this is fabricated/wrong; Voice Mode is available on the ChatGPT web/desktop interface as well, not only on mobile.; The article states ChatGPT Plus costs '$20/month' — this is an invented/incorrect price stated as fact; current ChatGPT P",
+      "ref": "GUIDE_how-to-practise-a-job-interview-out-loud-with-chatgpt-s-voic.json",
+      "at": "2026-08-04T01:30:22.582Z"
+    },
+    {
+      "id": "m178580702258327",
+      "from": "guide",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Kell még adat: \"How to Practise a Job Interview Out Loud with ChatGPT's Voice Mode\" — az Ellenőrző tényt/forrást kér, amit nem találhatok ki: The article states ChatGPT Plus costs '$20/month' — this is an invented/incorrect price stated as fact; current ChatGPT Plus pricing should be verified on OpenAI's pricing page rather than asserted as a specific dollar amount.",
+      "ref": "GUIDE_how-to-practise-a-job-interview-out-loud-with-chatgpt-s-voic.json",
+      "open": false,
+      "at": "2026-08-04T01:30:22.583Z",
+      "resolved_at": "2026-08-04T01:31:47.903Z"
+    },
+    {
+      "id": "m178580703716211",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"How to Practise a Job Interview Out Loud with ChatGPT's Voice Mode\" — mi a baj: BRITISH_SPELLING_NAME: nagybetűs brit alak — Practising, Practise (3×). Ha közszó, írd amerikaiul; ha VALÓDI tulajdonnév (szervezet/termék neve), hagyd.; British spellings: 'behavioural' should be 'behavioral' (US English); British spelling: 'organisation' should be 'organization' (US English)",
+      "ref": "GUIDE_how-to-practise-a-job-interview-out-loud-with-chatgpt-s-voic.json",
+      "at": "2026-08-04T01:30:37.162Z"
+    },
+    {
+      "id": "m178580705566680",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"How to Practise a Job Interview Out Loud with ChatGPT's Voice Mode\" — javítva: BRITISH_SPELLING_NAME: nagybetűs brit alak — Practising, Practise (3×). Ha közszó, írd amerikaiul; ha VALÓDI tulajdonnév (szervezet/termék neve), hagyd.; British spellings: 'behavioural' should be 'behavioral' (US English); újraküldöm.",
+      "ref": "GUIDE_how-to-practise-a-job-interview-out-loud-with-chatgpt-s-voic.json",
+      "at": "2026-08-04T01:30:55.666Z"
+    },
+    {
+      "id": "m178580707283944",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"How to Practise a Job Interview Out Loud with ChatGPT's Voice Mode\" — mi a baj: Title uses British spelling 'Practise' — should be US 'Practice'; Inconsistent spelling: title says 'Practise' but body says 'Practicing'",
+      "ref": "GUIDE_how-to-practise-a-job-interview-out-loud-with-chatgpt-s-voic.json",
+      "at": "2026-08-04T01:31:12.839Z"
+    },
+    {
+      "id": "m178580708901367",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"How to Practise a Job Interview Out Loud with ChatGPT's Voice Mode\" — javítva: Title uses British spelling 'Practise' — should be US 'Practice'; Inconsistent spelling: title says 'Practise' but body says 'Practicing'; újraküldöm.",
+      "ref": "GUIDE_how-to-practise-a-job-interview-out-loud-with-chatgpt-s-voic.json",
+      "at": "2026-08-04T01:31:29.013Z"
+    },
+    {
+      "id": "m178580710790189",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"How to Practise a Job Interview Out Loud with ChatGPT's Voice Mode\" (?/10)",
+      "ref": "GUIDE_how-to-practise-a-job-interview-out-loud-with-chatgpt-s-voic.json",
+      "at": "2026-08-04T01:31:47.901Z"
+    },
+    {
+      "id": "m178580759247172",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-08-04T01:39:52.471Z"
     }
   ]
 }

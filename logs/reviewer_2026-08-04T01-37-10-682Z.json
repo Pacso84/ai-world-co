@@ -1,0 +1,34 @@
+{
+  "started_at": "2026-08-04T01:36:10.866Z",
+  "total": 3,
+  "passed": 3,
+  "failed": 0,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.009152364,
+  "by_article": [
+    {
+      "writer": "WRITER_GUIDE_how-to-plan-a-simple-weekly-workout-routine-that-fits-your-r.json",
+      "article": "ARTICLE_GUIDE_how-to-plan-a-simple-weekly-workout-routine-that-fits-your-r.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0024204
+    },
+    {
+      "writer": "WRITER_GUIDE_plan-a-family-weekend-getaway-with-deepseek.json",
+      "article": "ARTICLE_GUIDE_plan-a-family-weekend-getaway-with-deepseek.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0021429
+    },
+    {
+      "writer": "WRITER_GUIDE_write-a-polite-complaint-email-to-a-company-with-deepseek.json",
+      "article": "ARTICLE_GUIDE_write-a-polite-complaint-email-to-a-company-with-deepseek.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0020388
+    }
+  ],
+  "finished_at": "2026-08-04T01:37:10.682Z",
+  "duration_seconds": 59.816
+}

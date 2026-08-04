@@ -1,0 +1,58 @@
+{
+  "_meta": {
+    "written_at": "2026-08-04T01:25:02.743Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00463992,
+    "original_draft": "2026-08-04T01-24-26-497Z_picsart_All_about_the_Grok_text_to_speech_model_and_how_to.json",
+    "source_id": "picsart",
+    "source_name": "PicsArt Blog (hivatalos)",
+    "source_link": "https://picsart.com/blog/all-about-grok-tts/",
+    "status": "published",
+    "published_at": "2026-08-04T01:29:24.916Z",
+    "slug": "grok-text-to-speech-explained-how-ai-voices-with-inline-tags-work",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1005
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Solid explainer with friendly tone, good plain-English definitions, a clear hook and wrap-up, and a practical next-step suggestion. The 'What this means for you' section addresses three distinct audiences thoughtfully. No prohibited content, no fabricated facts, and the one mild phrase ('thing that changes the game') is appropriately hedged. This is ready to publish.",
+      "_aiCost": 0.0016974,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-08-04T01:32:26.623Z",
+    "guide_worthy": false,
+    "pairing_reason": "Grok TTS is developer-only via API, not accessible to everyday users directly",
+    "image_v": 2,
+    "image_at": "2026-08-04T01:37:44.675Z",
+    "seo": {
+      "meta_description": "Learn how xAI's Grok text to speech uses inline tags like [laugh] and [whisper] to control exactly how AI voices sound.",
+      "keywords": [
+        "Grok text to speech",
+        "Grok TTS inline tags",
+        "xAI voice model",
+        "how to control AI voice delivery",
+        "text to speech with emotions",
+        "Grok voice features",
+        "AI voice tags tutorial"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more long-tail keywords like 'Grok text to speech tutorial' or 'how to use Grok TTS' to capture search intent",
+        "Consider mentioning the API aspect in the meta description as developers may search for that",
+        "The title could include 'xAI' explicitly for better keyword alignment"
+      ],
+      "optimised_at": "2026-08-04T01:38:55.531Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Grok Text to Speech Explained: How AI Voices With Inline Tags Work\"\nsubtitle: \"A plain-English look at xAI's voice model that lets you whisper, laugh, and pause exactly where you want.\"\ncategory: \"explainer\"\naudience: \"personal\"\nread_time_minutes: 5\ntags: [\"grok\", \"text-to-speech\", \"voice-ai\", \"xai\", \"getting-started\"]\n---\n\n# Grok Text to Speech Explained: How AI Voices With Inline Tags Work\n\n> **In short:** Grok's text-to-speech model turns written words into spoken audio through one API call, and lets you drop inline tags like `[laugh]` or `[whisper]` straight into your text to control how each line is delivered.\n\nPicture this: you've recorded the same voiceover three times because the AI kept reading your script in a flat, robotic tone. The script is fine. The words are right. But the delivery sounds like a GPS giving directions. With inline speech tags, you stop hoping the voice gets the mood right — you tell it.\n\nThat's the part worth understanding about Grok's text-to-speech (TTS) model from xAI, the company behind the Grok chatbot.\n\n## What \"text to speech\" actually means here\n\nTTS is the technology that turns written words into spoken audio. Every time a GPS reads a street name out loud, that's TTS at work. Modern AI versions sound far more human than the old robotic ones — they breathe, they pace themselves, and they handle questions with a rising tone.\n\nGrok's TTS is built on a model called **Orb** (also referred to internally as `grok-tts`). You send it text, and it sends back an audio file. The interesting part is the second feature: you can mark up the text itself with little instructions, and the voice follows them.\n\n## The thing that changes the game: inline speech tags\n\nMost voice generators give you a global setting — pick a voice, pick a style, hope for the best. Grok's approach is different. You write the tags directly inside the text, in square brackets, like stage directions in a script:\n\n> \"So I told him the meeting was moved [`pause`] to Thursday [`laugh`] and he just stared at me.\"\n\nThe model reads those brackets and adjusts: a small silence where you wrote `pause`, a short laugh where you wrote `laugh`. Other supported tags include `whisper` (quieter, breathier delivery) and `shout`, among others.\n\nThis is why the feature matters. You're not picking a preset \"happy voice\" or \"serious voice.\" You're directing the performance line by line, the same way you'd annotate a script for a human narrator.\n\n## Where you'd actually use this\n\nThis is mostly a developer-facing tool today (you access it through xAI's **API**, which is just a way for two programs to talk to each other), but the use cases travel well beyond coding:\n\n- **Audiobooks and short stories.** A narrator who can laugh at the right moment, drop to a whisper for the scary part, and pause before a reveal is closer to a real performance than a flat read-through.\n- **Product demos and explainer videos.** You can write the script once and let the model handle the inflection, instead of recording it yourself or hiring voice talent for a 90-second clip.\n- **Language learning apps.** A language tutor voice that pauses naturally and emphasizes the right syllable sounds less like software and more like a patient teacher.\n- **Game characters and prototypes.** Indie creators can prototype dialogue without booking a studio session.\n- **Accessibility tools.** Apps that read articles aloud can use tags to make the listening experience easier on the ears.\n\n## What this means for you\n\n- **If you're a curious everyday user:** You probably won't open an API yourself, but you may hear the results soon. Tools that already use Grok, or app developers who build on top of it, can now ship voices that sound more alive. When you do try it, the practical tip is simple: write your script as if you were directing an actor, not as if you were writing an email. Add a `[pause]` before any line that needs weight. Add `[laugh]` only where a laugh actually fits — overusing it makes everything sound like a comedy special.\n- **If you build things — apps, videos, prototypes:** This is worth a test run. The control you get from inline tags means you can ship decent audio without a recording session. xAI publishes its API documentation and pricing on its developer portal, and there's typically a free trial tier so you can experiment before paying.\n- **If you're worried about AI voices getting too convincing:** That's a fair concern. Voice cloning and realistic TTS do raise real questions about scams and impersonation. The good news is that most platforms that publish AI-generated audio now label it as such, and tools for detecting synthetic voices are improving. If a phone call from a \"loved one in trouble\" sounds slightly off — a pause in a strange place, a laugh that comes at the wrong moment — trust the weirdness and call them back on a number you already have.\n\n## A note on what we don't know\n\nxAI has been quiet about which voices are available, how many languages are supported, and what the audio sounds like at the edges (very long passages, heavy emotion, multilingual code-switching). I haven't tested every combination, so if you're building something serious, run your own tests on real scripts before committing.\n\n## Wrap-up\n\nGrok's TTS isn't the first AI voice generator, and it won't be the last. The thing worth knowing is the idea behind it: control moves from a global setting into the text itself, line by line. That's a small change in interface and a meaningful one in what you can produce.\n\nA good next step today: if you make any kind of audio content — a podcast intro, a YouTube explainer, a language lesson — spend ten minutes writing a short script with three or four inline tags. Even without access to Grok, the exercise of marking up pauses and emphasis will make whatever voice tool you use sound better.",
+  "original_title": "All about the Grok text to speech model and how to use it"
+}

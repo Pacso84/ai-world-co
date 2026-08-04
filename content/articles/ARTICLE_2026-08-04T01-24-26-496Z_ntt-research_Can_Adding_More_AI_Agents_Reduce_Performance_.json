@@ -1,0 +1,56 @@
+{
+  "_meta": {
+    "written_at": "2026-08-04T01:26:04.568Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.0079833,
+    "original_draft": "2026-08-04T01-24-26-496Z_ntt-research_Can_Adding_More_AI_Agents_Reduce_Performance_.json",
+    "source_id": "ntt-research",
+    "source_name": "NTT Research (hivatalos)",
+    "source_link": "https://ntt-research.com/can-adding-more-ai-agents-reduce-performance/",
+    "status": "published",
+    "published_at": "2026-08-04T01:28:36.582Z",
+    "slug": "why-adding-more-ai-agents-can-actually-make-things-worse",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 623
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Solid explainer that meets all structural requirements with friendly, accessible language. AI agent defined clearly for newcomers, soup metaphor works well, and the three audience personas in 'What this means for you' are practical. Minor note: 'one published benchmark' could be more specific if sources are available, but the claim is appropriately hedged and not fabricated.",
+      "_aiCost": 0.00129006,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-08-04T01:32:09.637Z",
+    "guide_worthy": false,
+    "pairing_reason": "Article discusses a research finding about AI agents in general, but does not introduce any specific named feature or tool that users can go use today",
+    "image_v": 2,
+    "image_at": "2026-08-04T01:37:25.908Z",
+    "seo": {
+      "meta_description": "New research shows adding more AI agents can worsen results. Here's why simpler AI setups often beat complex multi-agent systems for everyday tasks.",
+      "keywords": [
+        "what is an AI agent",
+        "AI agent vs chatbot",
+        "multiple AI agents",
+        "multi-agent AI systems",
+        "AI agent performance",
+        "too many AI agents"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "The title is strong but consider adding a more specific long-tail phrase like 'research' or 'findings' to capture search intent for the study itself",
+        "Add more context in the meta about what readers will learn (e.g., optimal agent numbers, when to use single vs multi-agent) to increase click-through rate"
+      ],
+      "optimised_at": "2026-08-04T01:38:39.279Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Why Adding More AI Agents Can Actually Make Things Worse\"\nsubtitle: \"A counterintuitive finding from recent agent research — and what it means for the tools you actually use\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"ai-agents\", \"multi-agent-systems\", \"ai-tools\", \"ai-strategy\"]\n---\n\n# Why Adding More AI Agents Can Actually Make Things Worse\n\n> **In short:** Recent research suggests stacking more AI agents on a task doesn't always improve results — past a certain number, the agents start contradicting each other and performance drops. The takeaway for everyday users: simpler AI setups often beat complicated ones.\n\nYou asked a chatbot to summarize a meeting. It worked fine. Then you heard about \"multi-agent systems\" where several AIs collaborate on the same problem. Wouldn't five AIs do the job five times better? Not always.\n\n## What an AI agent actually is\n\nAn **AI agent** is more than a chatbot. A regular AI waits for your question, answers, and stops. An agent can plan a multi-step task, open files, browse the web, call other software, and decide what to do next — without you telling it each step. Think of it as a small intern with a laptop and a checklist, instead of a person who only answers questions in text.\n\nWhen one agent isn't enough, the obvious move is to add more: split the work, have them check each other, run them in parallel. That's the idea behind newer tools from companies like OpenAI, Anthropic, and Google, all of which now ship features built around \"teams\" of agents handling bigger jobs than one alone could.\n\n## The surprising finding\n\nBut a growing body of research points to a counter-intuitive pattern. When you stack too many agents on a single task, performance can drop. In one published benchmark, going from one agent to a larger team actually *cut* accuracy instead of raising it. The agents contradict each other, repeat work, or pull the final answer in opposite directions.\n\nThe simplest way to picture it: imagine four coworkers in a kitchen, each told to \"improve the soup\" without a clear plan. One adds salt. Another adds sugar. The third dilutes it with water. The fourth waits because they aren't sure what the others did. You end up with worse soup, not better. AI agents hit the same wall when their roles overlap and their shared context is thin. The time they spend \"talking\" to each other eats into the time spent actually doing the task.\n\n## What this means for you\n\n- **If you use AI for everyday tasks:** You don't need the most complicated setup. A single, well-written prompt to one AI often beats a chain of five agents — especially for personal work like drafting emails, planning a trip, or summarizing documents. Start simple. Add complexity only when simple clearly fails.\n\n- **If you work with AI tools at your job:** When a colleague pitches an \"agentic workflow\" with five specialized AIs, ask a sharp question: what's the simplest version that could work? The research suggests smaller, well-defined teams are more reliable than larger, loosely-defined ones. Two agents with clear jobs usually beat five with vague ones.\n\n- **If you're evaluating AI tools or vendors:** Be skeptical of marketing that promises \"teams of agents\" without showing measured results. Ask for benchmarks, not just demos. The trend is real, but the rough edges are real too.\n\n## Wrap-up\n\nThe lesson isn't that AI agents are overhyped — they're genuinely useful for the right job. The lesson is that *more* doesn't mean *better*. A small team of focused agents, doing one clear task, usually outperforms a swarm of them guessing at each other. Next time someone proposes a six-agent setup, ask first whether two would do.",
+  "original_title": "Can Adding More AI Agents Reduce Performance?"
+}

@@ -1,0 +1,57 @@
+{
+  "_meta": {
+    "written_at": "2026-08-04T01:25:19.076Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00525024,
+    "original_draft": "2026-08-04T01-24-26-497Z_d-id-news_How_AI_Video_Upscaler_Technology_Is_Transforming_V.json",
+    "source_id": "d-id-news",
+    "source_name": "D-ID (hivatalos)",
+    "source_link": "https://www.d-id.com/blog/ai-video-upscaler-transforming-video-production/",
+    "status": "published",
+    "published_at": "2026-08-04T01:28:46.042Z",
+    "slug": "ai-video-upscaling-how-to-make-old-footage-look-new-again",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 638
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Excellent beginner-friendly explainer with clear hooks, good structure, and practical guidance. Accurately explains technical concepts without jargon. The 'What this means for you' section covers different reader types well. Minor note: '480p' is described as 'standard definition' which is slightly off (SD is typically 480i/576i, and 480p is progressive scan), but the broader point about low-resolution footage is correct and unlikely to confuse the audience.",
+      "_aiCost": 0.00105366,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-08-04T01:32:20.882Z",
+    "guide_worthy": false,
+    "pairing_reason": "Article covers generic AI video upscaling technology rather than introducing ONE specific named feature/tool that was announced",
+    "image_v": 2,
+    "image_at": "2026-08-04T01:37:35.384Z",
+    "seo": {
+      "meta_description": "AI video upscaling explained: transform blurry old videos into HD or 4K using free browser tools. No technical skills needed.",
+      "keywords": [
+        "AI video upscaling",
+        "how to upscale video quality",
+        "make old videos look new",
+        "improve video resolution AI",
+        "low resolution video fix",
+        "video enhancement tools"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more specific tool names in the article body to improve keyword relevance",
+        "Include practical step-by-step instructions for at least one upscaling tool",
+        "Consider adding comparison examples (before/after) to increase engagement and time on page"
+      ],
+      "optimised_at": "2026-08-04T01:38:47.419Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"AI Video Upscaling: How to Make Old Footage Look New Again\"\nsubtitle: \"A practical, plain-language guide to sharpening low-resolution videos without reshooting a single frame\"\ncategory: \"how-to\"\naudience: \"personal\"\nread_time_minutes: 5\ntags: [\"video-ai\", \"creators\", \"editing\", \"getting-started\"]\n---\n\n# AI Video Upscaling: How to Make Old Footage Look New Again\n\n> **In short:** AI video upscaling uses machine learning to enlarge low-resolution video (think old home movies, 480p clips, fuzzy screen recordings) and add realistic detail, so it looks closer to HD or 4K without you having to reshoot anything. Several consumer-friendly tools now do this in minutes from your browser.\n\nYou pull up a video from a family trip ten years ago, and it looks soft and blocky on your new phone. Or you find the perfect clip for a presentation, and it's only 480p (the old \"standard definition\" size — about the resolution of a DVD). Reshooting isn't an option. That's where AI upscaling earns its keep.\n\n## What \"upscaling\" actually means\n\nTraditional upscaling stretches the pixels (the tiny colored dots that make up a digital image) and blurs the gaps. It makes the video bigger, but not sharper.\n\nAI upscaling works differently. A model has been trained on millions of pairs of low-res and high-res images, so it has learned what realistic detail looks like — the curve of an eyelash, the texture of brick, the edge of a leaf. When you feed it a fuzzy clip, it doesn't just stretch the pixels. It *imagines* the missing detail and fills it in. The result looks closer to what the original scene probably looked like in person.\n\nIt's not magic. AI can invent plausible texture, but it cannot recover a face that's truly lost. The improvement is real, though, especially for clips that are slightly soft rather than catastrophically low-res.\n\n## A few situations where it shines\n\n- **Family videos shot on older phones or cameras.** 720p home footage that looked fine on a 2012 TV looks rough on a 4K screen. Upscaling brings it back into the present.\n- **Screen recordings for work or study.** Old tutorials recorded at low resolution become readable again.\n- **Stock footage for a project.** A clip you love but in the wrong resolution.\n- **Gameplay captures.** Older console captures that look pixelated on modern monitors.\n\n## What this means for you\n\n- **If you're saving personal memories:** Start with a 1–2 minute test clip before uploading hours of footage. Different tools handle faces, landscapes, and text differently — and what works for a child's birthday may look odd on a sunset. Most services let you preview a few seconds for free.\n- **If you're a creator or small business owner:** Upscaling is cheaper than a reshoot, and often faster than color grading. It works best as one step in a small workflow: clean up the original, upscale, then do any final edits in your usual editor.\n- **If you care about authenticity:** Be aware that AI upscaling *invents* detail. For documentaries, journalism, or anything that needs to be verifiable, treat the output as enhanced — not as recovered truth.\n- **If you're just curious:** Try a free tier first. Topaz Video AI, CapCut (which now includes an AI upscaler), and the open-source Video2X are common starting points. Pricing and limits change, so check the current page before you commit.\n\n## Wrap-up\n\nAI video upscaling is one of those quietly useful tools that solves a problem most people have but don't have a name for. Pick a short test clip, try one tool, and compare the before-and-after on the largest screen you have. Once you see what a few minutes of processing can do to a ten-year-old video, you'll know whether it's worth doing for the rest of your archive — and you'll have a workflow you actually trust.",
+  "original_title": "How AI Video Upscaler Technology Is Transforming Video Production"
+}
