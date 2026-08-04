@@ -786,7 +786,7 @@ body {
    mert ez ELVISZ egy másik oldalra. A kettőt nem szabad összekeverni. */
 .guide-link { color: var(--accent-dark); text-decoration: underline; text-decoration-thickness: 1.5px;
   text-underline-offset: 3px; font-weight: 600; }
-.guide-link::after { content: " F4D8"; font-size: .85em; opacity: .75; }
+.guide-link::after { content: " 📘"; font-size: .85em; opacity: .75; }
 .guide-link:hover { background: color-mix(in srgb, var(--accent) 12%, transparent); border-radius: 3px; }
 
 /* ============ GYIK-BLOKK az útmutatókon (2026-07-11) ============ */
