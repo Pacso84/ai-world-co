@@ -1,0 +1,58 @@
+{
+  "_meta": {
+    "written_at": "2026-08-04T17:30:15.662Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m2.7",
+    "writer_cost_usd": 0.0060417,
+    "original_draft": "2026-08-04T17-28-44-206Z_openai-blog_New_ways_to_learn_and_teach_with_ChatGPT_Work_and_.json",
+    "source_id": "openai-blog",
+    "source_name": "OpenAI Blog (hivatalos)",
+    "source_link": "https://openai.com/index/learn-teach-chatgpt-work-codex",
+    "status": "published",
+    "published_at": "2026-08-04T17:38:47.364Z",
+    "slug": "how-students-and-teachers-can-use-ai-to-learn-and-teach-better",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 993
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Solid educational article with clear structure, friendly tone, and practical advice for students, teachers, and parents. Well-sourced from OpenAI Blog, explains key concepts like Socratic questioning and hallucination accessibly, includes required What this means for you section with audience-specific takeaways, and ends with an actionable next step.",
+      "_aiCost": 0.00223774,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-08-04T17:39:04.614Z",
+    "guide_worthy": false,
+    "pairing_reason": "Article is a generic how-to guide itself rather than news about a specific new feature",
+    "image_v": 2,
+    "image_at": "2026-08-04T17:39:21.318Z",
+    "seo": {
+      "meta_description": "Discover how students and teachers can use AI tools like ChatGPT to study smarter and plan lessons faster — without replacing real learning.",
+      "keywords": [
+        "how to use AI for studying",
+        "AI tools for students",
+        "AI lesson planning for teachers",
+        "ChatGPT for homework help",
+        "how to use AI in the classroom",
+        "AI study tools for students",
+        "ChatGPT for teachers"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more specific examples of AI tools beyond ChatGPT to broaden search reach",
+        "Include real classroom scenarios or user testimonials to increase engagement metrics",
+        "Add schema markup for articles to help search engines understand the content structure"
+      ],
+      "optimised_at": "2026-08-04T17:39:33.979Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"How Students and Teachers Can Use AI to Learn and Teach Better\"\nsubtitle: \"Practical ways AI tools can support studying, lesson planning, and classroom work — without doing the learning for you\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"education\", \"chatgpt\", \"learning\", \"teaching\", \"ai-tools\"]\n---\n\n# How Students and Teachers Can Use AI to Learn and Teach Better\n\n> **In short:** AI tools like ChatGPT and Codex now include specific features designed for classrooms — helping students understand tough concepts and letting teachers build lesson plans faster. Here's how to use them without replacing the actual learning.\n\n---\n\nYou're stuck on a homework problem. Maybe it's a chemistry equation that just won't click, or a history essay where you can't figure out where to start. You've always had to figure it out alone — or wait until the next class. That situation is starting to change.\n\nAI tools are increasingly being designed with education in mind. ChatGPT, OpenAI's conversational AI, and Codex — a system that helps write and understand code — now include capabilities that go beyond simple questions and answers. They can act more like a patient tutor or a helpful teaching assistant, depending on who is using them.\n\nBut there's an important distinction worth making upfront. These tools are meant to *support* learning and teaching, not replace the work itself. A student still needs to do the reading. A teacher still needs to bring their expertise and judgment to the classroom. The AI is a tool in the toolkit — useful, but not the whole toolkit.\n\n## What these tools can do for students\n\nIf you're a student, AI can help in a few specific ways that are genuinely useful for learning.\n\n**Explaining concepts you didn't catch in class.** You can paste a confusing passage from a textbook or lecture notes and ask the AI to break it down in simpler terms. A question like \"Can you explain this paragraph like I'm 13?\" often works better than just asking \"What does this mean?\"\n\n**Generating practice questions.** If you want to test yourself before an exam, you can ask AI to create practice questions from your notes. This is a study method called active recall — instead of just re-reading, you're forcing yourself to produce answers, which helps information stick better.\n\n**Checking your work on math and science problems.** For subjects like algebra or physics, you can show your steps and ask the AI to spot where you went wrong. The AI can point out the error without just giving you the answer, which keeps you in the learning loop.\n\n## What these tools can do for teachers\n\nIf you're an educator, AI can handle some of the time-consuming prep work that takes away from actually teaching.\n\n**Drafting lesson plans.** You can give the AI a topic, the grade level, and how much time you have — then ask it to draft a basic lesson outline. You'll still want to review and adjust it for your specific students, but it gives you a starting point instead of a blank page.\n\n**Creating differentiated materials.** If your class has students at different levels, AI can help generate modified versions of a worksheet or reading — simplifying text for some students or adding extension questions for others who need more challenge.\n\n**Generating quiz and test questions.** Instead of spending time creating multiple-choice or short-answer questions from scratch, you can paste in your lesson content and ask the AI to generate draft questions. You'll review and edit them before using them.\n\n## One approach that works well: Socratic questioning\n\nWhether you're a student using AI to study or a teacher preparing materials, one technique stands out: asking AI to use Socratic questioning. That's when you work through a problem by asking a series of leading questions, rather than just getting the answer handed to you.\n\nYou can ask the AI something like: \"Don't give me the answer — instead, ask me questions to help me figure this out myself.\" This keeps you actively thinking instead of passively receiving information. It's the difference between having someone explain how to ride a bike versus someone placing training wheels on your actual bike and spotting you.\n\n## What this means for you\n\n- **If you're a student:** Try using AI to explain a concept you're struggling with — but then close the chat and try to explain it back in your own words. That second step is where real learning happens.\n\n- **If you're a teacher or educator:** Start small. Use AI to draft one lesson plan this week, then see what parts are useful and what you need to change. These tools get better when you give them specific feedback about what worked.\n\n- **If you're a parent helping with homework:** AI can help you understand a concept you need to explain — so you're not stuck on a problem you learned 20 years ago and have forgotten.\n\n## The honest truth\n\nAI tools make mistakes. They can confidently give you wrong information, a phenomenon researchers call hallucination — when an AI produces something that sounds right but isn't. For students, this means always double-checking facts, especially for subjects like history or science where accuracy matters. For teachers, it means reviewing any AI-generated content before using it with students.\n\nThese tools are also changing fast. The features available today may look different in six months. What stays consistent is the core purpose: helping people learn and teach more effectively, not replacing the humans who do the learning and teaching.\n\n---\n\n*Start small this week. If you're a student, try explaining a confusing topic to the AI and asking it to question you — just like a tutor would. If you're a teacher, paste one lesson's worth of content into an AI tool and ask it to draft five quiz questions. You'll quickly see what this technology does well and where it still needs your expertise.*",
+  "original_title": "New ways to learn and teach with ChatGPT Work and Codex"
+}
