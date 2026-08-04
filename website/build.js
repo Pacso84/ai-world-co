@@ -129,30 +129,43 @@ const UI = {
         minRead: 'min read', stepByStep: 'Step-by-step',
         guidesTitle: 'Everyday AI <em>skills</em>', guidesTag: 'Plain-language how-tos that work with any assistant — ChatGPT, Gemini, Claude or others.',
         toolsTitle: 'Guides by <em>AI tool</em>', toolsTag: 'Pick your assistant for tool-specific how-tos.',
+        // KERESŐ-LEÍRÁS (2026-08-04): a Google találatban a cím alatti mondat.
+        // Külön kulcs a *Tag-tól, mert az oldalon látszó alcím rövidebb lehet,
+        // a keresőnek viszont 120-160 karakter a hasznos hossz.
+        guidesMetaDesc: 'Plain-language, step-by-step guides to everyday AI skills: writing prompts, summarizing, fact-checking, staying safe and more. Works with any assistant.',
+        toolsMetaDesc: 'Step-by-step guides for specific AI tools: ChatGPT, Gemini, Claude, Copilot, Perplexity and more. Pick your tool and learn what you need.',
         footerNote: 'Written and curated by autonomous AI agents · Reviewed for accuracy', back: '← Back', language: 'Language' },
   hu: { news: 'Hírek', guides: 'Útmutatók', tools: 'AI eszközök', support: 'Támogatás',
         heroKicker: '01. szám', heroTitle: 'A hétköznapi AI, <em>érthetően.</em>',
         minRead: 'perc olvasás', stepByStep: 'Lépésről lépésre',
         guidesTitle: 'Hétköznapi AI <em>készségek</em>', guidesTag: 'Közérthető útmutatók, amelyek bármelyik asszisztenssel működnek — ChatGPT, Gemini, Claude és társai.',
         toolsTitle: 'Útmutatók <em>AI eszköz</em> szerint', toolsTag: 'Válaszd ki az asszisztensed az eszköz-specifikus útmutatókhoz.',
+        guidesMetaDesc: 'Közérthető, lépésről lépésre útmutatók a hétköznapi AI-hoz: promptírás, összefoglalás, tényellenőrzés, biztonság. Bármelyik asszisztenssel működik.',
+        toolsMetaDesc: 'Lépésről lépésre útmutatók konkrét AI-eszközökhöz: ChatGPT, Gemini, Claude, Copilot, Perplexity és társaik. Válaszd ki az eszközöd, és vágj bele.',
         footerNote: 'Önálló AI-ügynökök írják és gondozzák · Pontosságra ellenőrizve', back: '← Vissza', language: 'Nyelv' },
   es: { news: 'Noticias', guides: 'Guías', tools: 'Herramientas IA', support: 'Apóyanos',
         heroKicker: 'Número 01', heroTitle: 'La IA cotidiana, <em>explicada fácil.</em>',
         minRead: 'min de lectura', stepByStep: 'Paso a paso',
         guidesTitle: 'Habilidades de <em>IA cotidiana</em>', guidesTag: 'Guías en lenguaje claro que funcionan con cualquier asistente — ChatGPT, Gemini, Claude y más.',
         toolsTitle: 'Guías por <em>herramienta de IA</em>', toolsTag: 'Elige tu asistente para guías específicas.',
+        guidesMetaDesc: 'Guías paso a paso en lenguaje claro sobre IA cotidiana: escribir prompts, resumir, verificar datos y usarla con seguridad. Funciona con cualquier asistente.',
+        toolsMetaDesc: 'Guías paso a paso para herramientas de IA concretas: ChatGPT, Gemini, Claude, Copilot, Perplexity y más. Elige tu herramienta y aprende lo que necesitas.',
         footerNote: 'Escrito y curado por agentes de IA autónomos · Revisado para mayor precisión', back: '← Volver', language: 'Idioma' },
   de: { news: 'Nachrichten', guides: 'Anleitungen', tools: 'KI-Tools', support: 'Unterstützen',
         heroKicker: 'Ausgabe 01', heroTitle: 'Alltags-KI, <em>einfach erklärt.</em>',
         minRead: 'Min. Lesezeit', stepByStep: 'Schritt für Schritt',
         guidesTitle: 'Alltags-<em>KI-Können</em>', guidesTag: 'Verständliche Anleitungen für jeden Assistenten — ChatGPT, Gemini, Claude und mehr.',
         toolsTitle: 'Anleitungen nach <em>KI-Tool</em>', toolsTag: 'Wähle deinen Assistenten für tool-spezifische Anleitungen.',
+        guidesMetaDesc: 'Verständliche Schritt-für-Schritt-Anleitungen zu alltäglichen KI-Fähigkeiten: Prompts schreiben, zusammenfassen, Fakten prüfen, sicher bleiben und mehr. Funktioniert mit jedem Assistenten.',
+        toolsMetaDesc: 'Schritt-für-Schritt-Anleitungen für konkrete KI-Tools: ChatGPT, Gemini, Claude, Copilot, Perplexity und mehr. Wähle dein Tool und lerne, was du brauchst.',
         footerNote: 'Geschrieben und kuratiert von autonomen KI-Agenten · Auf Richtigkeit geprüft', back: '← Zurück', language: 'Sprache' },
   fr: { news: 'Actus', guides: 'Guides', tools: 'Outils IA', support: 'Soutenir',
         heroKicker: 'Numéro 01', heroTitle: "L'IA au quotidien, <em>expliquée simplement.</em>",
         minRead: 'min de lecture', stepByStep: 'Pas à pas',
         guidesTitle: 'Compétences <em>IA du quotidien</em>', guidesTag: 'Des guides clairs qui marchent avec tout assistant — ChatGPT, Gemini, Claude et autres.',
         toolsTitle: 'Guides par <em>outil IA</em>', toolsTag: 'Choisissez votre assistant pour des guides dédiés.',
+        guidesMetaDesc: 'Des guides clairs, pas à pas, sur les usages quotidiens de l’IA : écrire des prompts, résumer, vérifier les faits, rester prudent et bien plus. Compatible avec tout assistant.',
+        toolsMetaDesc: 'Des guides pas à pas pour des outils IA précis : ChatGPT, Gemini, Claude, Copilot, Perplexity et d’autres. Choisissez votre outil et apprenez l’essentiel.',
         footerNote: 'Écrit et curé par des agents IA autonomes · Vérifié pour l’exactitude', back: '← Retour', language: 'Langue' }
 };
 
@@ -833,6 +846,13 @@ function escapeHtml(s) {
   return (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 
+// A lokalizált fejléc-szövegekben <em> van a kiemeléshez. A <title> tagbe és
+// a JSON-LD-be CSAK sima szöveg mehet — a pageShell escapeHtml-t hív, ami a
+// jelöléssel együtt a &lt;em&gt;-et is kiírná a böngésző fülére. (2026-08-04)
+function plainText(s) {
+  return (s || '').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+}
+
 // Egyszerű frontmatter parser (--- ... --- blokk a markdown tetején)
 function parseFrontmatter(markdown) {
   const fm = { title: '', subtitle: '', category: 'other', audience: 'both', read_time_minutes: 3, tags: [] };
@@ -1505,9 +1525,12 @@ function buildIndex(articles) {
 
   return pageShell({
     title: `${SITE.name} — ${tr('tagline')}`,
-    description: SITE.description,
+    // A siteDesc MINDEN nyelven le van fordítva (UI_SUPPORT) — a főoldal
+    // mégis a SITE.description angol konstansát használta, így a magyar és
+    // spanyol találatban angol mondat állt a magyar cím alatt. (2026-08-04)
+    description: tr('siteDesc') || SITE.description,
     ogImage: articles[0]?.image ? `${SITE.url}/assets/images/${articles[0].image}` : '',
-    jsonld: { '@context': 'https://schema.org', '@type': 'WebSite', name: SITE.name, url: SITE.url, description: SITE.description },
+    jsonld: { '@context': 'https://schema.org', '@type': 'WebSite', name: SITE.name, url: SITE.url, description: tr('siteDesc') || SITE.description },
     bodyContent: featuredHtml + weeklyHtml + guidesCta + grid
       + `<p class="start__wizcta"><a href="archive">🗂️ ${escapeHtml(tr('archNav'))} →</a></p>`,
     pagePath: ''
@@ -1637,10 +1660,14 @@ function buildGuidesPage(generalGuides, counts) {
   </section>`;
   const body = designStyleBlock() + header + tiles;
   return pageShell({
-    title: `Everyday AI guides — ${SITE.name}`,
-    description: 'Plain-language, step-by-step guides to everyday AI skills: writing prompts, summarizing, fact-checking, staying safe and more. Works with any assistant.',
+    // LOKALIZÁLT CÍM + LEÍRÁS (2026-08-04): eddig beégetett ANGOL szöveg ment
+    // ki a magyar és spanyol változatra is — a Google találatban a cím és az
+    // alatta lévő mondat is angolul jelent meg. A H1 már fordítva volt, a
+    // keresőnek szóló jelzések nem. Ugyanez a /tools-on és a főoldalon.
+    title: `${plainText(tr('guidesTitle'))} — ${SITE.name}`,
+    description: tr('guidesMetaDesc'),
     noIntro: true, pagePath: 'guides.html',
-    jsonld: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'Everyday AI Guides', url: `${SITE.url}/guides` },
+    jsonld: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: plainText(tr('guidesTitle')), url: `${SITE.url}/guides` },
     bodyContent: body
   });
 }
@@ -1693,10 +1720,10 @@ function buildToolsPage(companyGuides, counts) {
   const empty = `<p class="muted" style="color:var(--ink-soft)">${tr('comingSoon')}</p>`;
   const body = designStyleBlock() + header + (companyGuides.length ? (brandRow + companies.map(companySection).join('')) : empty);
   return pageShell({
-    title: `AI tool guides — ${SITE.name}`,
-    description: 'Step-by-step guides for specific AI tools: ChatGPT, Gemini, Claude, Copilot, Perplexity and more. Pick your tool and learn what you need.',
+    title: `${plainText(tr('toolsTitle'))} — ${SITE.name}`,
+    description: tr('toolsMetaDesc'),
     noIntro: true, pagePath: 'tools.html',
-    jsonld: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'AI Tool Guides', url: `${SITE.url}/tools` },
+    jsonld: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: plainText(tr('toolsTitle')), url: `${SITE.url}/tools` },
     bodyContent: body
   });
 }
