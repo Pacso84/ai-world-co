@@ -23,6 +23,7 @@ import 'dotenv/config';
 import { readFileSync, writeFileSync, readdirSync, existsSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
+import { selectSocialBatch } from '../../core/social-queue.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..', '..');
@@ -118,16 +119,17 @@ async function main() {
   }
 
   if (!queue.length) { console.log('   💤 Nincs kiküldendő friss poszt.'); return; }
-  // FRISS TARTALOM ELŐL, az évelő útmutató tölti ki a maradék helyet.
-  // (A Pinterestnél fordítva van — ott az útmutató a fő fogás. A Facebook
-  // hírfolyam: ott a frissesség számít, az oldal ne archívumnak látsszon.)
+  // FRISS TARTALOM ELŐL — DE a helyek fele az örökzöld útmutatóé (2026-08-04).
+  // A régi rangsor tisztán kor szerint ment, és mivel napi 12 megosztható
+  // tartalom készül 6 hely mellett, a friss sor SOSEM fogyott el: a 7 napnál
+  // öregebb útmutató örökre a sor végén maradt (mérve: 156 db). Részletek és
+  // a fenntartás logikája: core/social-queue.js.
   const freshCut = now - FRESH_DAYS * 24 * 3600e3;
-  const isFresh = x => x.pubAt && new Date(x.pubAt).getTime() >= freshCut;
-  queue.sort((a, b) =>
-    (isFresh(b) - isFresh(a)) ||
-    (b.pubAt || '').localeCompare(a.pubAt || ''));
-  const batch = queue.slice(0, LIMIT);
-  console.log(`   📋 Friss poszt a sorban: ${queue.length} | most kiküldendő: ${batch.length}${DRY ? ' (PRÓBA — nem küldöm)' : ''}\n`);
+  for (const x of queue) x.isFresh = !!(x.pubAt && new Date(x.pubAt).getTime() >= freshCut);
+  const batch = selectSocialBatch(queue, LIMIT);
+  const evergreenWaiting = queue.filter(x => !x.isFresh && x.isGuide).length;
+  const nEver = batch.filter(x => !x.isFresh).length;
+  console.log(`   📋 Sorban: ${queue.length} (ebből örökzöld útmutató: ${evergreenWaiting}) | most kiküldendő: ${batch.length} (${batch.length - nEver} friss + ${nEver} örökzöld)${DRY ? ' (PRÓBA — nem küldöm)' : ''}\n`);
 
   let sent = 0, failed = 0;
   for (const { path, post } of batch) {
