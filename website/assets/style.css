@@ -782,11 +782,20 @@ body {
 
 /* ÚTMUTATÓ-LINK a szövegben (2026-08-03) — a terméknév a gyakorlati
    útmutatónkra visz. SZÁNDÉKOSAN más, mint a .gloss-link (az pontozott,
-   "magyarázat" jelentésű, kurzora help): ez FOLYTONOS aláhúzás + 📘 jel,
-   mert ez ELVISZ egy másik oldalra. A kettőt nem szabad összekeverni. */
+   "magyarázat" jelentésű, kurzora help): ez KIEMELT SZÍN + FOLYTONOS
+   aláhúzás + FÉLKÖVÉR, mert ez ELVISZ egy másik oldalra.
+
+   NINCS ::after ikon, és ez SZÁNDÉKOS (2026-08-04) — ne tedd vissza:
+   • A megkülönböztetést már HÁROM jel viszi (szín, aláhúzás-stílus,
+     vastagság). Egy ikon negyedik jelzés ugyanarra.
+   • Mondat KÖZEPÉN álló emoji a törzsszövegben hirdetés-szerűvé teszi a
+     linket. Ennek a funkciónak épp az a célja, hogy TOVÁBBVEZESSE az
+     olvasót — a reklám-hatás ez ellen dolgozna.
+   • Az emoji a legkevésbé megbízható elem eszközök között, és a forgalom
+     82%-a mobil. Az eredeti ikon el is romlott: egy elrontott CSS-escape
+     miatt 21 órán át "doboz + F4D8" jelent meg a cikkek 40%-án. */
 .guide-link { color: var(--accent-dark); text-decoration: underline; text-decoration-thickness: 1.5px;
   text-underline-offset: 3px; font-weight: 600; }
-.guide-link::after { content: " 📘"; font-size: .85em; opacity: .75; }
 .guide-link:hover { background: color-mix(in srgb, var(--accent) 12%, transparent); border-radius: 3px; }
 
 /* ============ GYIK-BLOKK az útmutatókon (2026-07-11) ============ */
