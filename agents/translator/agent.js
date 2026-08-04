@@ -23,6 +23,7 @@ import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync } from 
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { ask } from '../../core/ai-router.js';
+import { titleLooksUntranslated } from '../../core/translation-guard.js';
 import { fileHandback, sourceDefect } from '../../core/handback.js';
 import { remember } from '../../core/memory-manager.js';
 
@@ -150,6 +151,13 @@ async function translateMarkdown(markdown, langName) {
   // újrapróbálja). A célnyelv itt mindig nem-angol (hu/es/de/fr).
   const enWords = (body.match(/\b(the|and|with|your|you|for|this|that|what|when|from|will|can|how|are)\b/gi) || []).length;
   if (enWords / (body.split(/\s+/).length || 1) > 0.06) return null;
+  // UGYANEZ A CÍMRE (2026-08-04): a fenti védelem csak a TÖRZSET nézte, a cím
+  // viszont külön úton jön (TITLE: sor), és ha az hiányzik a válaszból, a
+  // fenti `tm ? tm[1] : enTitle` NÉMÁN az angolt menti. Élesben 3 spanyol cím
+  // maradt így angolul — és egy ilyen cím a kapcsolódó-cikk dobozokon
+  // keresztül 47 spanyol oldalra ült ki. A törzzsel azonos kezelés: nem
+  // mentünk, a következő futás újrapróbálja.
+  if (titleLooksUntranslated(enTitle, title)) return null;
 
   const fm = parts.fm
     .replace(/^title:\s*.*$/m, `title: "${title.replace(/"/g, '')}"`)

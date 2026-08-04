@@ -241,10 +241,19 @@ function makeOpenAICaller({ provider, baseUrl, keyEnv, extraHeaders }) {
     // actualCostUsd: ha a szolgáltató megmondja a TÉNYLEGES árat, azt használjuk
     // (mérvadó), különben marad a helyi ár-táblás becslés.
     const actual = Number(j.usage?.cost);
+    const choice = j.choices?.[0] || {};
     return {
-      text: j.choices?.[0]?.message?.content || '',
+      text: choice.message?.content || '',
       usage: { inputTokens: j.usage?.prompt_tokens || 0, outputTokens: j.usage?.completion_tokens || 0 },
       actualCostUsd: Number.isFinite(actual) && actual > 0 ? actual : null,
+      // ÜRES-VÁLASZ DIAGNOSZTIKA (2026-08-04): eddig CSAK annyit tudtunk, hogy
+      // "Üres válasz" — sem azt, hogy elvágta-e a keret, sem azt, hogy a
+      // szöveg a gondolkodó-csatornába ment-e. Egy napi ellenőrzés emiatt
+      // vakon keresgélt. Élesben elkapott minta: content 0 kar, reasoning
+      // 5200 kar, finish_reason "length" → a modell végig gondolkodott.
+      finishReason: choice.finish_reason || null,
+      reasoningChars: (choice.message?.reasoning || '').length,
+      reasoningTokens: j.usage?.completion_tokens_details?.reasoning_tokens ?? null,
       model, provider
     };
   };
@@ -481,6 +490,29 @@ function isThinkingModel(model) {
 function canDisableReasoning(model) {
   return /minimax-m3/i.test(String(model || ''));
 }
+
+// KIMENETI KERET — KÜLÖN, tiszta függvény (tesztelhető): core/token-ceiling.test.js
+// Két szabályt fog össze:
+//  • GONDOLKODÓ-PADLÓ: a gondolkodó modellek a keret egy részét belső
+//    gondolkodásra költik, ezért kis maxTokens mellett ÜRES válasz jön
+//    (07-16 GLM-eset, 07-22 guide-ötletelő). Kikapcsolt gondolkodásnál a
+//    padló értelmetlen → kimarad.
+//  • MENTŐÖV-RÁHAGYÁS (2026-08-04): ha az előző hívás azért bukott, mert a
+//    gondolkodás elvitte a TELJES keretet, az újrapróba nem kaphat kevesebb
+//    (se ugyanannyi) helyet — élesben bizonyítva, hogy különben ugyanabba a
+//    falba fut: 10000 → 🧯 → 9999 → megint üres, kétszer kifizetve.
+//    A max_tokens FELSŐ HATÁR: a ráhagyás csak akkor kerül pénzbe, ha a
+//    modell tényleg felhasználja (ezt a padló 4000→8000 emelésekor,
+//    2026-07-22-én már megállapítottuk).
+const RESCUE_HEADROOM = 1.5;
+const RESCUE_CEILING_MAX = 24000;
+
+export function effectiveMaxTokens({ model, maxTokens, noThink = false, prevCeiling = 0 }) {
+  const base = maxTokens || 2048;
+  const floored = (isThinkingModel(model) && !noThink) ? Math.max(base, 8000) : base;
+  if (!prevCeiling) return floored;
+  return Math.max(floored, Math.min(RESCUE_CEILING_MAX, Math.ceil(prevCeiling * RESCUE_HEADROOM)));
+}
 function isDailyQuota(error) {
   const m = (error?.message || '').toLowerCase();
   return m.includes('perday') || m.includes('per day') || m.includes('free_tier');
@@ -666,10 +698,13 @@ export async function ask(prompt, options = {}) {
     // Kikapcsolt gondolkodásnál a padló ÉRTELMETLEN (nincs mit elgondolkodni) → kihagyjuk.
     // `noThink` PRÓBÁNKÉNT változhat (gondolkodás-mentő, lásd lent), ezért let.
     let noThink = reasoningOff;
+    // MENTŐÖV-KÖNYVELÉS: melyik keretbe fulladt bele az előző próba. Amíg 0,
+    // a keret-számítás a megszokott (a meglévő utak viselkedése változatlan).
+    let prevCeiling = 0;
 
     // Átmeneti hibákra ugyanazt a modellt újrapróbáljuk (backoff-fal)
     for (let tryNum = 1; tryNum <= MAX_TRANSIENT_RETRIES + 1; tryNum++) {
-      const effMaxTokens = (isThinkingModel(model) && !noThink) ? Math.max(maxTokens || 2048, 8000) : maxTokens;
+      const effMaxTokens = effectiveMaxTokens({ model, maxTokens, noThink, prevCeiling });
       try {
         const response = await caller(prompt, model, { systemPrompt: sysWithLessons, maxTokens: effMaxTokens, jsonMode, reasoningOff: noThink });
 
@@ -683,6 +718,13 @@ export async function ask(prompt, options = {}) {
           logCall(agentName, provider, model, response.usage, wasted, false, new Error(safety.reason));
           if (isMetered(provider, model) && wasted > 0) recordSpend(provider, wasted);
 
+          // MIÉRT volt üres? A puszta "Üres válasz" nem elég a diagnózishoz:
+          // a "length" azt jelenti, hogy a KERET vágta el, a reasoning-hossz
+          // pedig megmutatja, hogy a modell a gondolkodó-csatornába írt-e.
+          if (safety.reason === 'Üres válasz' && response.finishReason) {
+            console.log(`   🔬 [${agentName}] üres válasz — finish: ${response.finishReason} · gondolkodás: ${response.reasoningTokens ?? '?'} tok / ${response.reasoningChars} kar · kimenő: ${response.usage?.outputTokens}/${effMaxTokens} tok`);
+          }
+
           // GONDOLKODÁS-MENTŐ (2026-08-03). Éles minta a 08-03 01:47-es futásból:
           // 4 hívás, egyenként ~$0.017, kimenet PONTOSAN a plafonon (10000 tok),
           // szöveg ÜRES — a modell a teljes keretet elgondolkodta, a pénz elment,
@@ -690,12 +732,26 @@ export async function ask(prompt, options = {}) {
           // esnénk (M2.7), UGYANEZT a modellt egyszer újrapróbáljuk gondolkodás
           // NÉLKÜL: M3 gondolkodás nélkül > M2.7, és a válasz így biztosan a
           // keretbe fér. Csak az M3 tudja (M2.5/M2.7: "Reasoning is mandatory").
+          // A KERET VÁGTA EL? Két jel bármelyike elég: a szolgáltató maga
+          // mondja ("length"), vagy a kimenő token a plafonon áll. A
+          // finish_reason a közvetlenebb — a token-alapú becslés csak
+          // tartalék, ha a provider nem küld finish_reason-t.
+          const cutByCeiling = response.finishReason === 'length'
+            || (response.usage?.outputTokens || 0) >= effMaxTokens * 0.98;
           if (safety.reason === 'Üres válasz' && !noThink
             && provider === 'openrouter' && canDisableReasoning(model)
-            && (response.usage?.outputTokens || 0) >= effMaxTokens * 0.98) {
+            && cutByCeiling) {
             noThink = true;
+            // 2026-08-04: a zászló ÖNMAGÁBAN kevés — az OpenRouter/MiniMax
+            // párosnál nem mindig hat (élesben mérve: guide-nál hatott,
+            // iro-nál nem). Ha nem hat, és a keret UGYANANNYI marad, az
+            // újrapróba ugyanabba a falba fut, és másodszor is fizetünk.
+            // Ezért a hellyel is bővítünk (a max_tokens felső határ: a
+            // ráhagyás csak akkor kerül pénzbe, ha tényleg kell).
+            prevCeiling = effMaxTokens;
             tryNum--;   // ez nem átmeneti-hiba próba, ne fogyassza azt a keretet
-            console.log(`   🧯 [${agentName}] a gondolkodás elette a teljes keretet (${response.usage?.outputTokens} tok, üres szöveg) — újra UGYANEZZEL a modellel, gondolkodás nélkül.`);
+            const nextCeiling = effectiveMaxTokens({ model, maxTokens, noThink: true, prevCeiling });
+            console.log(`   🧯 [${agentName}] a gondolkodás elette a teljes keretet (${response.usage?.outputTokens} tok, üres szöveg) — újra UGYANEZZEL a modellel, gondolkodás nélkül, ${effMaxTokens} → ${nextCeiling} tokenes kerettel.`);
             continue;
           }
           break; // Tartalom-szabály blokk -> fallback (nem retry)
