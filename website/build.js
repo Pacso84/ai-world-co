@@ -19,6 +19,7 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { marked } from 'marked';
 import { canonicalChip } from '../core/quality-guard.js';
+import { toolRegex } from '../core/tool-regex.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = join(__dirname, '..');
@@ -2387,7 +2388,6 @@ function buildGuideLinks(articles) {
       const starter = s => /getting-started|beginner|first|basics/.test(s.slug || '') ? 0 : 1;
       return starter(x) - starter(y) || String(y.publishedAt).localeCompare(String(x.publishedAt));
     });
-    const esc = tool.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     // HOVA VIGYEN? (mérési megfontolás)
     //  • 3+ útmutatónál a /tools GYŰJTŐ-szekciójába (cég-horgony): ott az
     //    olvasó VÁLASZT — és a mérés szerint a gyűjtő-oldalakról tényleg
@@ -2405,7 +2405,12 @@ function buildGuideLinks(articles) {
       target: list[0],
       // Szóhatáron, kis-nagybetűre ÉRZÉKENYEN (a márkanevek nagybetűsek, és
       // így a "grok"/"claude" köznévi előfordulás nem lesz link).
-      rx: new RegExp(`(?<![\\p{L}\\p{N}])${esc}(?![\\p{L}\\p{N}])`, 'u')
+      // KÉT minta épül, mert a magyar toldalék kötőjel nélkül tapad
+      // ("Geminit", "Copilotot") — a szigorú szóhatár ezeket elvágta, és
+      // ezzel a magyar linkek 12%-át (835 előfordulás). Részletek és
+      // raglista: core/tool-regex.js. Nyelvenként EGYSZER épül, itt.
+      rx: toolRegex(tool, 'en'),
+      rxHu: toolRegex(tool, 'hu')
     });
   }
   // Hosszabb terméknév ELŐRE: enélkül a "GitHub Copilot"-ból csak a "Copilot"
@@ -2438,7 +2443,9 @@ function guideAutolink(html, article) {
       if (used.has(t.tool)) continue;
       if (t.tool === selfTool) continue;                 // önmagára nem
       if (t.target.slug === article?.slug) continue;      // ugyanaz az oldal
-      const m = t.rx.exec(p);
+      // Magyarul a tapadó toldalékot is elfogadó mintát használjuk; a
+      // TALÁLAT így is csak a terméknév, a rag a linken kívül marad.
+      const m = (LANG === 'hu' ? t.rxHu : t.rx).exec(p);
       if (m) found.push({ t, idx: m.index, str: m[0] });
     }
     if (!found.length) continue;
