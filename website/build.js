@@ -1293,6 +1293,18 @@ function pageShell({ title, description, bodyContent, isArticle = false, noIntro
     articleMeta.modified ? `<meta property="article:modified_time" content="${escapeHtml(articleMeta.modified)}">` : '',
     articleMeta.section ? `<meta property="article:section" content="${escapeHtml(articleMeta.section)}">` : ''
   ].filter(Boolean).join('\n  ') : '';
+
+  // AOS (Animate On Scroll) KIVÉVE — 2026-08-05.
+  // A scroll-animáció díszítés volt, de az ára a teljes tartalom lehetett:
+  // az aos.css a [data-aos^=fade] és [data-aos^=zoom] elemeket opacity:0-ra
+  // tette, és KIZÁRÓLAG az aos.js tette őket láthatóvá (.aos-animate osztály).
+  // Ha az a 15 KB nem tölt be — lassú mobilháló, Facebook in-app böngésző,
+  // JS-hiba —, a főoldal MIND A 40 kártyája láthatatlan maradt. Fejetlen
+  // böngészővel igazolva: a "COVER STORY" felirat alatt üres oldal.
+  // A forgalom 82%-a mobil, nagyrészt a Facebook alkalmazásból.
+  // A sebesség-nyereséget NEM sikerült kimérni (a helyi Lighthouse szórása
+  // ±20 pont volt, nagyobb mint a keresett hatás) — a döntés a KOCKÁZATON
+  // múlt, nem a sebességen.
   return `<!DOCTYPE html>
 <html lang="${HTML_LANG[LANG] || 'en'}">
 <head>
@@ -1328,13 +1340,11 @@ function pageShell({ title, description, bodyContent, isArticle = false, noIntro
   <meta name="twitter:title" content="${escapeHtml(title)}">
   <meta name="twitter:description" content="${escapeHtml(description)}">
   <meta name="twitter:image" content="${escapeHtml(img)}">
-  <!-- SEBESSÉG (2026-07-10): betűtípusok + AOS saját kiszolgálásból — nincs
-       külső DNS/kapcsolat, gyorsabb első festés (Core Web Vitals) -->
+  <!-- Betűtípusok saját kiszolgálásból: nincs külső DNS/kapcsolat -->
   <link rel="preload" href="/assets/fonts/schibsted-grotesk-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/hanken-grotesk-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/assets/fonts.css?v=${ASSET_V}">
   <link rel="icon" type="image/svg+xml" href="/assets/logo.svg">
-  <link rel="stylesheet" href="/assets/vendor/aos.css?v=${ASSET_V}">
   <link rel="stylesheet" href="/assets/style.css?v=${ASSET_V}">
   <link rel="alternate" type="application/rss+xml" title="${escapeHtml(SITE.name)} RSS" href="${LP}/feed.xml">
   ${VERIFY.google ? `<meta name="google-site-verification" content="${escapeHtml(VERIFY.google)}">` : ''}
@@ -1397,7 +1407,6 @@ function pageShell({ title, description, bodyContent, isArticle = false, noIntro
   ${CS.enabled ? `<button id="cs-fab" class="cs-fab" aria-label="${escapeHtml(tr('csOpen'))}">💬<span class="cs-fab__t">${escapeHtml(tr('csOpen'))}</span></button>
   <script>window.__csCfg={base:'${CS.base}',key:'${CS.key}',lang:'${LANG}',ui:${JSON.stringify({ title: tr('csTitle'), hello: tr('csHello'), ph: tr('csPlaceholder'), send: tr('csSend'), human: tr('csHuman'), formT: tr('csFormT'), name: tr('csName'), email: tr('csEmail'), msg: tr('csMsg'), submit: tr('csSubmit'), ok: tr('csOk'), err: tr('csErr'), privacy: tr('csPrivacy'), thinking: tr('csThinking') }).replace(/</g, '\\u003c')}};</script>
   <script defer src="/assets/chat.js?v=${ASSET_V}"></script>` : ''}
-  <script src="/assets/vendor/aos.js?v=${ASSET_V}"></script>
   <script src="/assets/app.js?v=${ASSET_V}"></script>
   ${CF_BEACON ? `<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "${CF_BEACON}"}'></script>` : ''}
 </body>
@@ -1420,8 +1429,7 @@ function articleCard(a, featured = false) {
   const cat = CATEGORIES[a.category] || CATEGORIES.other;
   const aud = AUDIENCES[a.audience] || AUDIENCES.both;
   const cls = featured ? 'card card--featured' : 'card';
-  const aos = featured ? 'zoom-in' : 'fade-up';
-  return `<article class="${cls}" data-audience="${a.audience}" data-category="${a.category}" data-aos="${aos}">
+  return `<article class="${cls}" data-audience="${a.audience}" data-category="${a.category}">
     <a href="article/${a.slug}" class="card__link">
       ${coverHtml(a, '', 'card__cover', featured)}
       <div class="card__meta">
@@ -2771,8 +2779,9 @@ function main() {
     }
   }
 
-  // Saját kiszolgálású betűtípusok + vendor (AOS) mappák (2026-07-10, sebesség)
-  for (const dir of ['fonts', 'vendor']) {
+  // Saját kiszolgálású betűtípusok (2026-07-10, sebesség). A vendor/ mappa
+  // 2026-08-05-ig az AOS-t vitte; azzal együtt kikerült.
+  for (const dir of ['fonts']) {
     const p = join(ASSETS_SRC, dir);
     if (existsSync(p)) {
       cpSync(p, join(OUT_ASSETS_DIR, dir), { recursive: true });

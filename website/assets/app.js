@@ -1,6 +1,5 @@
 // ===================================================================
 // AI WORLD — Front-end interakciók (vanilla JS, könyvtár nélkül)
-// + AOS (Animate On Scroll) inicializálás
 // ===================================================================
 
 (function () {
@@ -15,17 +14,7 @@
     return;
   }
 
-  // ---------- 1. AOS scroll-animációk inicializálás ----------
-  if (window.AOS) {
-    AOS.init({
-      duration: 650,
-      easing: 'ease-out-cubic',
-      once: true,
-      offset: 60
-    });
-  }
-
-  // ---------- 2. SÖTÉT MÓD kapcsoló (localStorage-ba menti) ----------
+  // ---------- 1. SÖTÉT MÓD kapcsoló (localStorage-ba menti) ----------
   const root = document.documentElement;
   const toggle = document.getElementById('themeToggle');
 
