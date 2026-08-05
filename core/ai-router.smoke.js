@@ -1,13 +1,19 @@
 // ===================================================================
-// AI ROUTER TESZT FÁJL
+// AI ROUTER FÜST-TESZT  —  ⚠️  PÉNZBE KERÜL
 // ===================================================================
 //
 // Hogyan futtasd:
 //   1. Töltsd ki a .env fájlt API kulcsokkal
-//   2. PowerShell-ben: npm run router-test
+//   2. PowerShell-ben: npm run router-smoke
 //
 // Mit csinál: meghív minden agent-et egy egyszerű kérdéssel,
 // és kiírja a választ + költséget.
+//
+// ⚠️  EZ NEM EGYSÉGTESZT. Valódi, FIZETŐS hívásokat küld (~$0.0005
+// futásonként), és a recordSpend()-en át beleír a core/budget-state.json
+// éles költség-nyilvántartásba. Ezért NEM `.test.js` a neve: az `npm test`
+// (core/run-tests.js) csak a `*.test.js` fájlokat futtatja, azok ingyenesek.
+// Kézzel futtasd, akkor, amikor tényleg az élő útválasztóra vagy kíváncsi.
 // ===================================================================
 
 import { ask } from './ai-router.js';

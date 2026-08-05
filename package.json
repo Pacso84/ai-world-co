@@ -5,7 +5,8 @@
   "type": "module",
   "main": "core/orchestrator.js",
   "scripts": {
-    "router-test": "node core/ai-router.test.js",
+    "router-smoke": "node core/ai-router.smoke.js",
+    "test": "node core/run-tests.js",
     "scrape": "node scheduled/morning-scrape.js"
   },
   "keywords": [
