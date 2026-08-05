@@ -441,6 +441,17 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: node core/search-report.js || true
 
+      # FORGALOM-NAPLÓ (2026-08-05): cikkenkénti napi látogatottság.
+      # A Cloudflare a ~7 napnál régebbi napokat TÍZESRE KEREKÍTI, tehát amit
+      # nem mentünk el naponta, az véglegesen elveszik. E nélkül nem dönthető
+      # el, hogy a napok közti háromszoros szórás a TARTALOMBÓL jön-e vagy a
+      # napból. Read-only Cloudflare-hívás, $0, nincs benne AI.
+      - name: Forgalom-napló (cikkenkénti)
+        env:
+          CF_ANALYTICS_TOKEN: ${{ secrets.CF_ANALYTICS_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: node core/traffic-log.js || true
+
       # if: always() (2026-07-21 audit) — a költség-napló (core/budget-state.json)
       # CSAK itt őrződik meg. Enélkül egy bukott lépés az egész futás elköltött
       # pénzét ELDOBTA a nyilvántartásból → a havi plafon egyre kevesebbet mért.
