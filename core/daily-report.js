@@ -20,6 +20,7 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { sendMessage } from './telegram.js';
 import { canonicalChip } from './quality-guard.js';
+import { summarizeRuns, describeFailures } from './make-health.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
@@ -351,6 +352,25 @@ async function main() {
         } else if (!(s.usedPackages || []).includes(w.pkg)) {
           lines.push(`⛔ ${w.name}: a Make-forgatókönyv HIÁNYOS — nincs benne kimeneti modul (csak: ${(s.usedPackages || []).join(', ') || '—'}). A webhook 200-at ad, de SEMMI nem megy ki! Javítás: eu1.make.com → a forgatókönyv → + → ${w.fix} → mentés.`);
         }
+
+        // 2026-08-05 BŐVÍTÉS: a FUTÓ forgatókönyv is veszíthet posztot.
+        // A Pinterest 8 pint bukott el egyetlen napon ("could not fetch the
+        // image"), miközben aktív volt ÉS megvolt benne a kimeneti modul —
+        // az "áll-e?" és a "teljes-e?" kérdés egyikre sem világít rá.
+        // Mi mindet "kiküldve"-nek jelöltük, tehát soha nem próbáljuk újra.
+        // A napi bukás-számot ezért külön nézzük, a futási naplóból.
+        try {
+          const lr = await fetch(`https://eu1.make.com/api/v2/scenarios/${w.id}/logs`, {
+            headers: { Authorization: 'Token ' + process.env.MAKE_API_TOKEN },
+            signal: AbortSignal.timeout(15000)
+          });
+          if (lr.ok) {
+            const lj = await lr.json().catch(() => ({}));
+            const since = new Date(Date.now() - 24 * 3600e3).toISOString();
+            const line = describeFailures(w.name, summarizeRuns(lj.scenarioLogs || lj.logs || [], since));
+            if (line) lines.push(line);
+          }
+        } catch { /* a napló hiánya nem némítja el a többi őrszemet */ }
       }
     }
   } catch { /* a Make-őr hibája nem állítja meg a jelentést */ }
