@@ -1,14 +1,32 @@
 {
   "_meta": {
-    "generated_at": "2026-08-01T19:55:17.387Z",
+    "generated_at": "2026-08-05T01:30:22.074Z",
     "generated_by": "source-scout agent v3.0 (megbízhatóság-kapu)",
     "note": "JAVASLATOK új, MEGBÍZHATÓ hivatalos forrásokra. A felhasználó/főnök dönti el, melyiket adjuk a sources/rss-feeds.json-hoz (enabled:true-val). Minden jelölt megbízhatósági pontszámmal + indoklással.",
     "min_score": 100,
-    "checked_orgs": 18,
-    "newly_discovered": 4,
-    "rejected_count": 0,
-    "rejected_examples": [],
-    "last_user_decision": "2026-08-02: Pixlr + PicsArt JOVAHAGYVA (eloben ujramerve 100/100). Toggl ELUTASITVA (0/12 AI-cim, 38 napja all). Simplenote ELUTASITVA (30 napja all; ami AI-tartalma van - MCP-szerver - fejlesztoi tema, nem a mi fogyasztoi kozonsegunk)."
+    "checked_orgs": 27,
+    "newly_discovered": 0,
+    "rejected_count": 3,
+    "rejected_examples": [
+      {
+        "name": "Xero",
+        "host": "xero.com",
+        "reason": "pont 69 < 100",
+        "score": 69
+      },
+      {
+        "name": "Discord",
+        "host": "discord.com",
+        "reason": "pont 75 < 100",
+        "score": 75
+      },
+      {
+        "name": "Zoho",
+        "host": "zoho.com",
+        "reason": "pont 75 < 100",
+        "score": 75
+      }
+    ]
   },
   "user_rejected_hosts": [
     "aisingapore.org",
@@ -16,9 +34,9 @@
     "engineering.grab.com",
     "mila.quebec",
     "sambanova.ai",
-    "writer.com",
+    "simplenote.com",
     "toggl.com",
-    "simplenote.com"
+    "writer.com"
   ],
   "discovered_sources": []
 }

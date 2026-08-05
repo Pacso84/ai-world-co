@@ -1,0 +1,61 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "draft-a-clear-project-status-update-for-your-team-with-deeps",
+    "company": "DeepSeek",
+    "tool": "DeepSeek",
+    "icon": "📋",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-08-05T01:36:18.086Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00940674,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-08-05T01:36:33.745Z",
+    "slug": "draft-a-clear-project-status-update-for-your-team-with-deepseek",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1236
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "The guide is well-structured with clear steps, real examples, fallbacks when UI elements may differ, and plain explanations of terms like 'prompt.' It matches the brand voice (teaching + friendly) and provides a solid 'What this means for you' section with a useful wrap-up.",
+      "_aiCost": 0.00133165,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "image_v": 2,
+    "image_at": "2026-08-05T01:37:50.910Z",
+    "seo": {
+      "meta_description": "Learn how to use DeepSeek to write clear project status updates in minutes. Turn messy weekly notes into a done, blocked, next format other team members will actually read.",
+      "keywords": [
+        "how to write a project status update",
+        "DeepSeek AI project status update",
+        "AI team update generator",
+        "weekly project update template",
+        "done blocked next project update",
+        "quick status update for team",
+        "AI for project management"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add 'how to' to the title for better search intent: 'How to draft a clear project status update for your team with DeepSeek'",
+        "Include the three-section format (done, blocked, next) earlier in the article to match search intent",
+        "Add a practical example with real sample notes and the resulting update to increase article value"
+      ],
+      "optimised_at": "2026-08-05T01:38:48.074Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Draft a clear project status update for your team with DeepSeek\"\nsubtitle: \"Turn a week of messy notes into a three-section update your team will actually read — done, blocked, next.\"\ncategory: \"guide\"\naudience: \"business\"\ncompany: \"DeepSeek\"\ntool: \"DeepSeek\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"getting-started\", \"deepseek\", \"productivity\"]\n---\n\n# Draft a clear project status update for your team with DeepSeek\n\n> **In short:** DeepSeek can turn a messy pile of weekly notes into a tidy project status update in three sections — what got done, what's blocked, and what's next. You paste the notes, give one clear instruction, then edit the draft before sending it to your team.\n\nEvery Friday you tell yourself you'll write the update. Every Friday you stare at a half-empty doc, hunt through Slack, and write the same three paragraphs from scratch. DeepSeek (a free AI chat assistant from the company DeepSeek) is good at exactly this kind of structured rewriting — give it the raw material, tell it the shape you want, and it produces a draft you can polish in minutes. You stay in charge of the tone and the facts; DeepSeek does the typing.\n\n## Before you start\n- A free DeepSeek account, signed in at **chat.deepseek.com** on any modern browser.\n- A rough collection of this week's notes — bullet points, Slack quotes, half-sentences, whatever you have.\n- About **10 minutes** of focused time.\n\n## Step 1 — Open DeepSeek and start a fresh chat\nGo to **chat.deepseek.com** in your browser and sign in, or sign up with an email if you don't have an account yet (it's free). Once you're on the main screen, look for a **\"New Chat\"** button, usually near the top of the chat list on the left side, and click it. A blank chat box opens on the right — that's your workspace. Starting fresh matters because older conversations can leak context into your draft and confuse the assistant. If you don't see \"New Chat,\" look for a **\"+\" icon**, a **pencil icon**, or a button labeled **\"Start new\"** instead.\n\n💬 Example: just type the word \"Status\" into the empty box to confirm it accepts input.\n\nYou'll know it worked when you see a clean chat box with no earlier messages above it and the cursor blinking inside.\n\n## Step 2 — Paste your messy notes and ask for the first draft\nClick inside the empty chat box and paste your rough notes — every bullet, half-thought, and Slack quote you've collected this week. Underneath the pasted notes, type one clear instruction explaining what shape you want the result in. A \"prompt\" (the instruction you give an AI) works best when it names the sections, the tone, and the length. Press **Enter** or click the **send/arrow** button to send it. DeepSeek usually starts writing the draft within a few seconds.\n\n💬 Example: \"Please turn these notes into a short project status update. Use three sections: Done this week, Blocked, and Next week. Keep the tone friendly and direct, around 200 words.\"\n\nYou'll know it worked when a structured reply appears with three labeled headings and your scattered notes have been rewritten as clean sentences.\n\n## Step 3 — Expand the \"Blocked\" and \"Next week\" sections if they're thin\nRead the draft carefully. If the \"Blocked\" or \"Next week\" sections are missing, vague, or just one line each, type a follow-up message in the same chat. DeepSeek still remembers your pasted notes from Step 2, so you don't have to re-paste anything — just add the new context and ask for those sections to grow. Be specific about what belongs in each section so the assistant doesn't have to invent facts.\n\n💬 Example: \"Now expand the Blocked and Next week sections. In Blocked, mention we're waiting on design mockups before finishing checkout. In Next week, list: launch the beta, fix the login bug, and review the analytics.\"\n\nYou'll know it worked when each of those two sections has at least two concrete points that match what really happened in your project.\n\n## Step 4 — Read the draft critically and fix what feels off\nTake 60 seconds to read the whole update like a teammate seeing it for the first time. Watch for two things: sentences that sound too formal to be from you, and sentences that are vague (\"we made progress\" — progress how?). You can edit the text directly in the chat by clicking and typing, or send a short follow-up asking DeepSeek to rewrite just the lines that bother you. Repeat this once or twice until the voice sounds like yours.\n\n💬 Example: \"Rewrite the first paragraph in a more casual tone. We never say 'stakeholders' — say 'the team' or just name the people involved.\"\n\nYou'll know it worked when you can read the whole update out loud and it sounds like something you'd actually send — not like a press release.\n\n## Step 5 — Copy the final version and post it to your team\nHighlight the polished draft in the chat (click and drag, or try **Ctrl+A / Cmd+A** inside the message), then copy it. Open your team's update channel — Slack, Microsoft Teams, email, Notion, wherever updates live — and paste it in. Add a one-line greeting or sign-off if your team expects one, then hit send. Close the DeepSeek tab once you're done. The whole thing — notes to sent message — usually fits inside 10 minutes.\n\n💬 Example: paste the draft as-is, or wrap it with \"Quick update from this week 👇\" on top and \"Any questions, ping me!\" at the bottom.\n\nYou'll know it worked when a teammate can read the message in under a minute and walk away knowing exactly what shipped, what's stuck, and what's coming next.\n\n## Common mistakes\n- **Pasting sensitive info by accident.** Customer names, salaries, unreleased product details — these shouldn't go into any AI chat. Fix: before you paste, scan your notes and replace real names with role labels (\"the lead engineer,\" \"our biggest customer\") if needed.\n- **Sending the draft without reading it.** DeepSeek can sound confident even when it's slightly wrong. Fix: always do a 60-second read-through before posting, and check that every fact matches your real notes.\n- **Asking for \"a more professional tone.\"** That's too vague and you'll bounce between drafts. Fix: name the tone you actually want — \"casual,\" \"to the point,\" \"warm,\" \"like a Slack message\" — and DeepSeek will land on it faster.\n\n## What this means for you\n- **In everyday life:** the same trick works for weekly recaps with a volunteer group, a class project, or a household planner — anything where you have messy notes and need a clean summary.\n- **For your business or work:** the real time-saver is reusing the prompt. Save your Step 2 instruction in a notes app, and every Friday you'll go from notes to sent update in minutes instead of fighting a blank doc.\n- **If you're just getting started:** DeepSeek can't actually send the update for you, and it can't know what really happened this week — you stay the source of truth. Treat it as a fast first draft, not a finished message.\n\n## Try it now\nOpen **chat.deepseek.com**, paste the last three bullet points from your team channel this week, and send the Step 2 prompt as-is. You'll have a first draft in under two minutes.",
+  "original_title": "Draft a clear project status update for your team with DeepSeek"
+}
