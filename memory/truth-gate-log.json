@@ -1,46 +1,4 @@
 {
-  "2026-07-19": [
-    {
-      "at": "2026-07-19T09:48:23.829Z",
-      "file": "WRITER_GUIDE_how-to-turn-a-blurry-photo-into-a-crisp-poster-with-nvidia-a.json",
-      "action": "block",
-      "reasons": [
-        "The article describes a workflow for AI image super-resolution, including UI elements like 'Image Tools', 'AI Enhancements', 'Super-Resolution' sections, 'Upload Image' buttons, and options to configure 'Upscale Factor' and 'Sharpening'. These features and UI elements are attributed to 'an AI image enhancement application'. However, the specified tool, ChatRTX, is a local large language model (LLM) chatbot and does not possess any image super-resolution capabilities or the described user interface for image processing."
-      ]
-    },
-    {
-      "at": "2026-07-19T09:48:57.598Z",
-      "file": "WRITER_GUIDE_summarize-long-articles-and-reports-from-the-web-or-document.json",
-      "action": "block",
-      "reasons": [
-        "The article claims that users can 'Continue as guest' or proceed without logging in to DeepSeek Chat. DeepSeek Chat (chat.deepseek.com) requires users to log in with a Google, GitHub, or email account and does not offer a guest or anonymous access option."
-      ]
-    },
-    {
-      "at": "2026-07-19T09:49:48.493Z",
-      "file": "WRITER_GUIDE_how-to-turn-a-blurry-photo-into-a-crisp-poster-with-nvidia-a.json",
-      "action": "block",
-      "reasons": [
-        "The article lists \"Lanzos\" as an AI model option within Upscayl's \"Models\" section. Lanzos resampling is a traditional image scaling algorithm, not an AI super-resolution model that users select in Upscayl's interface alongside models like Real-ESRGAN or Remacri."
-      ]
-    },
-    {
-      "at": "2026-07-19T16:45:20.299Z",
-      "file": "WRITER_2026-07-17T01-43-42-625Z_aws-ml_Introducing_Grok_on_Amazon_Bedrock.json",
-      "action": "block",
-      "reasons": [
-        "The article repeatedly claims that Grok is available on Amazon Bedrock. As of now, Grok (from xAI) is not one of the foundation models offered by Amazon Bedrock. Bedrock provides access to models from Amazon, Anthropic, AI21 Labs, Cohere, Meta, Mistral AI, and Stability AI, but not Grok."
-      ]
-    },
-    {
-      "at": "2026-07-19T16:45:38.973Z",
-      "file": "WRITER_2026-07-17T01-43-42-625Z_google-workspace_Generate_higher_quality_AI_video_clips_and_edit_an.json",
-      "action": "block",
-      "reasons": [
-        "The article refers to a specific AI capability within Google Vids as \"Gemini Omni.\" While Google Vids is a real product powered by Gemini, there is no publicly announced or recognized AI capability specifically *called* \"Gemini Omni\" associated with Google Vids or the broader Gemini suite. The phrasing suggests a specific, named feature that does not exist."
-      ]
-    }
-  ],
   "2026-07-20": [
     {
       "at": "2026-07-20T01:57:21.895Z",
@@ -383,6 +341,17 @@
         "The article states ChatGPT Plus costs '$20/month' — this is an invented/incorrect price stated as fact; current ChatGPT Plus pricing should be verified on OpenAI's pricing page rather than asserted as a specific dollar amount.",
         "The article describes a very specific UI: 'Just above that bar, in the bottom-right corner, look for a small headphones or sound-wave icon' for Voice Mode. This UI detail (headphones icon location) is not accurately described for the current ChatGPT mobile app interface and reads as a fabricated UI element."
       ]
+    }
+  ],
+  "2026-08-05": [
+    {
+      "at": "2026-08-05T17:22:38.078Z",
+      "file": "WRITER_2026-08-05T17-19-17-047Z_google-workspace_Streamlining_rubric_generation_in_Google_Classroom.json",
+      "action": "block",
+      "reasons": [
+        "The article asserts that 'Google Classroom now lets teachers draft rubrics with Gemini... right in the assignment page' and describes specific UI ('Generate with Gemini' / 'Draft with AI' button, Rubrics section with Gemini option) as if this feature exists in Google Classroom. There is no widely known/verified feature in Google Classroom that integrates Gemini to generate rubrics on the assignment creation page. This is likely a fabricated product feature."
+      ],
+      "confidence": 7
     }
   ]
 }

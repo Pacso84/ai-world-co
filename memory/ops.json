@@ -1,102 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178580662435072",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-08-04T01:23:44.350Z",
-      "updated": "2026-08-04T01:23:44.533Z"
-    },
-    {
-      "id": "t178580662453525",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-08-04T01:23:44.535Z",
-      "updated": "2026-08-04T01:24:26.509Z"
-    },
-    {
-      "id": "t178580666651113",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-08-04T01:24:26.511Z",
-      "updated": "2026-08-04T01:24:26.715Z"
-    },
-    {
-      "id": "t17858066667173",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-04T01:24:26.717Z",
-      "updated": "2026-08-04T01:27:46.966Z"
-    },
-    {
-      "id": "t178580686696716",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-04T01:27:46.967Z",
-      "updated": "2026-08-04T01:29:24.926Z"
-    },
-    {
-      "id": "t178580696492969",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-04T01:29:24.929Z",
-      "updated": "2026-08-04T01:30:22.592Z"
-    },
-    {
-      "id": "t178580702259451",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-04T01:30:22.594Z",
-      "updated": "2026-08-04T01:30:37.174Z"
-    },
-    {
-      "id": "t178580703717690",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-04T01:30:37.176Z",
-      "updated": "2026-08-04T01:30:55.675Z"
-    },
-    {
-      "id": "t178580705567745",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-04T01:30:55.677Z",
-      "updated": "2026-08-04T01:31:12.849Z"
-    },
-    {
-      "id": "t178580707285136",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-04T01:31:12.851Z",
-      "updated": "2026-08-04T01:31:29.022Z"
-    },
-    {
-      "id": "t178580708902477",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-04T01:31:29.024Z",
-      "updated": "2026-08-04T01:31:47.912Z"
-    },
-    {
-      "id": "t178580710791425",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-08-04T01:31:47.914Z",
-      "updated": "2026-08-04T01:32:26.633Z"
-    },
-    {
       "id": "t178580714666738",
       "title": "Run guide",
       "status": "done",
@@ -479,33 +383,105 @@
       "agent": "publisher",
       "created": "2026-08-05T10:24:37.870Z",
       "updated": "2026-08-05T10:24:56.125Z"
+    },
+    {
+      "id": "t178595032520719",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-08-05T17:18:45.207Z",
+      "updated": "2026-08-05T17:18:45.387Z"
+    },
+    {
+      "id": "t178595032538936",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-08-05T17:18:45.389Z",
+      "updated": "2026-08-05T17:19:17.059Z"
+    },
+    {
+      "id": "t178595035706183",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-08-05T17:19:17.061Z",
+      "updated": "2026-08-05T17:19:17.257Z"
+    },
+    {
+      "id": "t178595035725928",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-05T17:19:17.259Z",
+      "updated": "2026-08-05T17:20:46.980Z"
+    },
+    {
+      "id": "t178595044698247",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-05T17:20:46.982Z",
+      "updated": "2026-08-05T17:21:04.873Z"
+    },
+    {
+      "id": "t178595046487645",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-05T17:21:04.876Z",
+      "updated": "2026-08-05T17:22:06.946Z"
+    },
+    {
+      "id": "t178595052694888",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-05T17:22:06.948Z",
+      "updated": "2026-08-05T17:22:38.093Z"
+    },
+    {
+      "id": "t17859505580958",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-08-05T17:22:38.095Z",
+      "updated": "2026-08-05T17:22:38.305Z"
+    },
+    {
+      "id": "t178595055834181",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-05T17:22:38.341Z",
+      "updated": "2026-08-05T17:22:38.566Z"
+    },
+    {
+      "id": "t178595055856851",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-08-05T17:22:38.568Z",
+      "updated": "2026-08-05T17:22:38.782Z"
+    },
+    {
+      "id": "t17859505587844",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-05T17:22:38.784Z",
+      "updated": "2026-08-05T17:22:54.533Z"
+    },
+    {
+      "id": "t178595057453472",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-08-05T17:22:54.534Z",
+      "updated": "2026-08-05T17:23:10.056Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178485907667060",
-      "level": "success",
-      "text": "3 hír + 4 útmutató publikálva (költség: $0.1508).",
-      "agent": "ceo",
-      "at": "2026-07-24T02:11:16.670Z",
-      "loud": false
-    },
-    {
-      "id": "n178488825264829",
-      "level": "info",
-      "text": "SEO: 4 cikk optimalizálva (átlag 8.3/10).",
-      "agent": "seo",
-      "at": "2026-07-24T10:17:32.648Z",
-      "loud": false
-    },
-    {
-      "id": "n178488825450358",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). Our line-up is coherent and ready to publish, covering a range of practical AI applications for everyday people. I do note that the topics are quite tech-heavy, so a gentle introduction to AI basics m",
-      "agent": "publisher",
-      "at": "2026-07-24T10:17:34.503Z",
-      "loud": false
-    },
     {
       "id": "n178488826325025",
       "level": "success",
@@ -1281,54 +1257,33 @@
       "agent": "ceo",
       "at": "2026-08-05T10:24:56.161Z",
       "loud": false
+    },
+    {
+      "id": "n178595046486418",
+      "level": "warn",
+      "text": "📨 ellenorzo → iro: Hiányos / kell még adat: \"Streamlining rubric generation in Google Classroom with Gemini \" — egészítsd ki: Wrap-up secti",
+      "agent": "ellenorzo",
+      "at": "2026-08-05T17:21:04.864Z",
+      "loud": false
+    },
+    {
+      "id": "n178595058099672",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). A solid, diverse line-up — mix of tool-specific how-tos (Perplexity, DeepSeek, ChatGPT, Cohere, Qwen) with practical everyday use cases, plus helpful general guides on privacy and AI limits. Ready to ",
+      "agent": "publisher",
+      "at": "2026-08-05T17:23:00.996Z",
+      "loud": false
+    },
+    {
+      "id": "n178595059008938",
+      "level": "info",
+      "text": "Pipeline lefutott — ma nem volt publikálható új tartalom.",
+      "agent": "ceo",
+      "at": "2026-08-05T17:23:10.089Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178511720146638",
-      "from": "ceo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Főnöki újraindítás: \"Cohere Transcribe Arabic: Open-Source Speech AI\" — rewrite-explainer",
-      "ref": "2026-07-23T10-11-43-793Z_cohere-blog_Cohere_Transcribe_Arabic__Open-Source_Speech_AI.json",
-      "at": "2026-07-27T01:53:21.466Z"
-    },
-    {
-      "id": "m178511738522659",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Cohere Transcribe Arabic: Open-Source Speech AI\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Replace 'Cohere Transcribe Arabic' references with a verified Arabic-capable transcription tool (e.g., OpenAI Whisper via its official interface, or another named product whose dialect pi",
-      "ref": "2026-07-23T10-11-43-793Z_cohere-blog_Cohere_Transcribe_Arabic__Open-Source_Speech_AI.json",
-      "at": "2026-07-27T01:56:25.226Z"
-    },
-    {
-      "id": "m178511739820343",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Qwen3.6-35B-A3B: Agentic Coding Power, Now Open to All - Qwen\" — javítva: Model name mismatch: article recommends 'qwen2.5-coder' but original source title is 'Qwen3.6-35B-A3B' — these are different models, potentially older vs newer; Article doesn't confirm if Qwen3.6-35B-A3B is available via Ollama or explain the relationship between the two model names; újraküldöm.",
-      "ref": "2026-07-24T17-20-24-128Z_qwen-news_Qwen3_6-35B-A3B__Agentic_Coding_Power__Now_Open_to.json",
-      "at": "2026-07-27T01:56:38.203Z"
-    },
-    {
-      "id": "m178511757141828",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Forbes: D-ID Acquires Simpleshow To Lead $50 Billion Interactive AI Market\" — javítva: American spellings throughout: behaviour (not behavior), recognising (not recognizing), analysing (not analyzing), optimising (not optimizing); Search full article for all American spellings and replace with Australian English equivalents; újraküldöm.",
-      "ref": "2026-07-25T01-45-08-791Z_d-id-news_Forbes__D-ID_Acquires_Simpleshow_To_Lead__50_Billi.json",
-      "at": "2026-07-27T01:59:31.418Z"
-    },
-    {
-      "id": "m178511768902233",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Tech Crunch: D-ID acquires Berlin-based video startup simpleshow\" — javítva: Step 1 vague: lists tools D-ID/Synthesia/HeyGen but gives no recommendation for which to try first or where to start; Step 2-4 vague: says 'most platforms' let you pick/choose/type but doesn't say what screen you'll see, what button to click, or what happens next; újraküldöm.",
-      "ref": "2026-07-25T01-45-20-126Z_d-id-news_Tech_Crunch__D-ID_acquires_Berlin-based_video_star.json",
-      "at": "2026-07-27T02:01:29.022Z"
-    },
     {
       "id": "m178511771016517",
       "from": "iro",
@@ -2643,6 +2598,52 @@
       "text": "6 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-08-05T10:31:02.411Z"
+    },
+    {
+      "id": "m178595046486276",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Streamlining rubric generation in Google Classroom with Gemini \" — mi a baj: Wrap-up section cuts off mid-sentence at 'adjusting' — article appears truncated; Step 5 mentions 'a toggle in the rubric settings' without specifying where it is — add brief direction like 'look in the rubric sidebar or settings menu'",
+      "ref": "2026-08-05T17-19-17-047Z_google-workspace_Streamlining_rubric_generation_in_Google_Classroom.json",
+      "at": "2026-08-05T17:21:04.862Z"
+    },
+    {
+      "id": "m178595046486495",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "need",
+      "text": "Hiányos / kell még adat: \"Streamlining rubric generation in Google Classroom with Gemini \" — egészítsd ki: Wrap-up section cuts off mid-sentence at 'adjusting' — article appears truncated; Step 5 mentions 'a toggle in the rubric settings' without specifying where it is — add brief direction like 'look in the rubric sidebar or settings menu'",
+      "ref": "2026-08-05T17-19-17-047Z_google-workspace_Streamlining_rubric_generation_in_Google_Classroom.json",
+      "open": true,
+      "at": "2026-08-05T17:21:04.864Z"
+    },
+    {
+      "id": "m178595052693766",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Streamlining rubric generation in Google Classroom with Gemini \" — javítva: Wrap-up section cuts off mid-sentence at 'adjusting' — article appears truncated; Step 5 mentions 'a toggle in the rubric settings' without specifying where it is — add brief direction like 'look in the rubric sidebar or settings menu'; újraküldöm.",
+      "ref": "2026-08-05T17-19-17-047Z_google-workspace_Streamlining_rubric_generation_in_Google_Classroom.json",
+      "at": "2026-08-05T17:22:06.937Z"
+    },
+    {
+      "id": "m178595055807765",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Streamlining rubric generation in Google Classroom with Gemini \" — mi a baj: The article asserts that 'Google Classroom now lets teachers draft rubrics with Gemini... right in the assignment page' and describes specific UI ('Generate with Gemini' / 'Draft with AI' button, Rubrics section with Gemini option) as if this feature exists in Google Classroom. There is no widely kn",
+      "ref": "2026-08-05T17-19-17-047Z_google-workspace_Streamlining_rubric_generation_in_Google_Classroom.json",
+      "at": "2026-08-05T17:22:38.077Z"
+    },
+    {
+      "id": "m178595057452320",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-08-05T17:22:54.523Z"
     }
   ]
 }
