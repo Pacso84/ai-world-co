@@ -42,8 +42,14 @@ const DAYS = di !== -1 && args[di + 1] ? parseInt(args[di + 1], 10) || 7 : 7;
 // fölösleges képeket gyártani és deployolni, amit senki nem néz meg.
 // Visszahozni egyetlen sor:
 //   { key: 'ig', w: 1080, h: 1350, grad: [0.55, 0.80] }
+// PIN (2026-08-06): a Pinterest FÜGGŐLEGES, 2:3 arányú képekre épül — egy
+// fekvő 1200x630 pin apró csíkként jelenik meg a feedben. 30 nap alatt 144
+// pint küldtünk ki, és a Cloudflare szerint PONTOSAN 0 látogató érkezett
+// Pinterestről; a fekvő kép a legvalószínűbb (bár nem bizonyított) ok.
+// 1000x1500 a Pinterest hivatalos ajánlása.
 const FORMATS = [
-  { key: 'share', w: 1200, h: 630, grad: [0.35, 0.72] }
+  { key: 'share', w: 1200, h: 630, grad: [0.35, 0.72] },
+  { key: 'pin', w: 1000, h: 1500, grad: [0.50, 0.78] }
 ];
 
 function slugify(t) { return (t || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 70); }

@@ -156,9 +156,14 @@ async function main() {
   let sent = 0, failed = 0;
   for (const { path, post, meta } of batch) {
     const site = post.url.replace(/(https?:\/\/[^/]+).*/, '$1');
-    // Kép KÖTELEZŐ a pinhez: címes megosztás-kép → sima borító → og-default
+    // Kép KÖTELEZŐ a pinhez. SORREND (2026-08-06): ÁLLÓ pin-kép → címes
+    // megosztás-kép → sima borító → og-default.
+    // A Pinterest feedje 2:3 arányú ÁLLÓ képekre épül; a fekvő 1200x630 apró
+    // csíkként jelenik meg. 30 nap alatt 144 pin ment ki, és a Cloudflare
+    // szerint PONTOSAN 0 látogató érkezett Pinterestről — a képarány a
+    // legvalószínűbb ok. A pin-képet a core/share-images.js gyártja.
     let image = `${site}/assets/og-default.jpg`;
-    for (const cand of [`${site}/assets/share/${post.slug}.jpg`, `${site}/assets/images/${post.slug}.jpg`]) {
+    for (const cand of [`${site}/assets/pin/${post.slug}.jpg`, `${site}/assets/share/${post.slug}.jpg`, `${site}/assets/images/${post.slug}.jpg`]) {
       try { const h = await fetch(cand, { method: 'HEAD', signal: AbortSignal.timeout(10000) }); if (h.ok) { image = cand; break; } }
       catch { /* következő jelölt */ }
     }
