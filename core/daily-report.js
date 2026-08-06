@@ -21,6 +21,7 @@ import { dirname, join } from 'path';
 import { sendMessage } from './telegram.js';
 import { canonicalChip } from './quality-guard.js';
 import { summarizeRuns, describeFailures } from './make-health.js';
+import { describePosts, describeRepeat } from './report-lines.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
@@ -258,16 +259,34 @@ function collect() {
   return { news, guides, titles, fbPosts, spentYesterday, spentToday, spentMonth, burnPerDay, missing, bans, pendingSources, missingLinks };
 }
 
+// Hány FB-poszt MENT KI valóban az elmúlt 24 órában? A saját jelölésünk
+// (posted_fb) csak annyit tud, hogy a Make ÁTVETTE a kérést — a tényleges
+// megjelenést a Make futási naplója mondja meg. null = nincs adat.
+async function deliveredPosts(scenarioId) {
+  const token = (process.env.MAKE_API_TOKEN || '').trim();
+  if (!token) return null;
+  try {
+    const r = await fetch(`https://eu1.make.com/api/v2/scenarios/${scenarioId}/logs`, {
+      headers: { Authorization: 'Token ' + token }, signal: AbortSignal.timeout(15000)
+    });
+    if (!r.ok) return null;
+    const j = await r.json().catch(() => ({}));
+    const since = new Date(Date.now() - 24 * 3600e3).toISOString();
+    return summarizeRuns(j.scenarioLogs || j.logs || [], since).ok;
+  } catch { return null; }
+}
+
 async function main() {
   if (!guard()) return;
   const r = collect();
+  const fbDelivered = await deliveredPosts('6452490');
 
   const lines = [
     `📊 *Napi jelentés — ${today()}*`,
     ``,
     `📰 Új tartalom ma: ${r.news} hír + ${r.guides} útmutató`,
     ...r.titles.map(t => `   • ${t.slice(0, 60)}`),
-    `📘 Facebook-poszt: ${r.fbPosts}`,
+    describePosts(r.fbPosts, fbDelivered),
     // A NAPI keret is látszik (2026-08-01) — a user maga kérte a korlátot,
     // tehát látnia kell, hol tart benne, ne csak akkor derüljön ki, ha betelt.
     // A keret a MAI költés mellé kerül, nem a tegnapi mellé: a "$2.51 / $1"
@@ -448,11 +467,15 @@ async function main() {
     // ♻️ ISMÉTLŐDŐ HIBA (2026-07-19, user: "ne forduljon elő még egyszer —
     // nem költséghatékony"): ha egy hiba a MÁR MEGLÉVŐ lecke ellenére ma újra
     // megtörtént, az a jel, hogy kemény kód-szabály kell — szólunk hangosan.
+    // 2026-08-06 (user: "ne küldjön valótlan adatokat"): a régi sor a lecke
+    // TELJES élettartamára vonatkozó ismétlés-számot írta ki úgy, mintha az
+    // MA történt volna ("legmakacsabb 4×"), és minden alkalommal kemény
+    // szabályt sürgetett. Élesben: 4 előfordulás 34 nap alatt — az a
+    // minőségkapu normál működése, nem vészhelyzet. Most az IDŐTÁV is
+    // kimegy, a sürgetés pedig heti ütemhez kötött.
     const rep = (store.items || []).filter(it => (it.lastRepeat || '').startsWith(today()));
-    if (rep.length) {
-      const worst = rep.sort((a, b) => (b.repeats || 0) - (a.repeats || 0))[0];
-      lines.push(`♻️ ISMÉTLŐDŐ hiba a lecke ellenére: ${rep.length} típus ma (legmakacsabb ${worst.repeats}×: [${worst.scope}] ${worst.text.slice(0, 60)}…) — kemény szabály kellhet, szólj a fejlesztőnek!`);
-    }
+    const repLine = describeRepeat(rep, rep.length, today());
+    if (repLine) lines.push(repLine);
   } catch { /* könyv nélkül is megy */ }
   lines.push(``, `Minden megy magától. ✅`);
 
