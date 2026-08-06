@@ -1,0 +1,64 @@
+{
+  "_meta": {
+    "written_at": "2026-08-06T01:28:38.309Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.0088395,
+    "original_draft": "2026-08-05T17-19-17-047Z_google-workspace_Streamlining_rubric_generation_in_Google_Classroom.json",
+    "source_id": "google-workspace",
+    "source_name": "Google Workspace Updates (hivatalos)",
+    "source_link": "http://workspaceupdates.googleblog.com/2026/08/streamlining-rubric-generation-in-Google-Classroom-with-Gemini.html",
+    "status": "published",
+    "rejected_at": "2026-08-05T17:22:38.073Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 718
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Excellent explainer that hits all structural marks, explains concepts accessibly for teachers and parents, maintains a friendly encouraging tone throughout, and provides a genuinely useful AI workflow with a copyable prompt. Minor title/summary tension about AI features doesn't undermine the article's accuracy.",
+      "_aiCost": 0.00112515,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Hitelesség-kapu blokkolta: The article asserts that 'Google Classroom now lets teachers draft rubrics with Gemini... right in the assignment page' and describes specific UI ('Generate with Gemini' / 'Draft with AI' button, Rubr",
+    "can_retry": true,
+    "rework_attempts": 2,
+    "reworked_from": "REJECTED_2026-08-05T17-19-17-047Z_google-workspace_Streamlining_rubric_generation_in_Google_Classroom.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-08-06T01:28:51.908Z",
+    "slug": "writing-rubrics-faster-with-ai-what-google-classroom-gives-teachers-to",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-08-06T01:28:58.730Z",
+    "guide_worthy": false,
+    "pairing_reason": "Article describes a generic workflow (use AI to draft rubrics then paste into Classroom) rather than introducing a specific named feature; Classroom itself doesn't have AI rubric generation yet.",
+    "image_v": 2,
+    "image_at": "2026-08-06T01:38:47.239Z",
+    "seo": {
+      "meta_description": "Create grading rubrics faster with AI using Google Classroom and Gemini. Simple workflow that saves teachers hours on rubric writing.",
+      "keywords": [
+        "Google Classroom rubrics AI",
+        "how to create rubrics with AI",
+        "AI for teachers grading",
+        "Gemini for teachers",
+        "Google Classroom grading rubrics",
+        "write rubrics faster with AI",
+        "AI rubric generator"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more specific keyword variations like 'Google Classroom AI features 2024' or 'Gemini AI writing help' to capture broader search traffic",
+        "Include the exact word count or time savings (e.g., 'in 5 minutes instead of 30') in the subtitle for better SERP appeal",
+        "Add schema markup for FAQ or HowTo to improve rich result eligibility"
+      ],
+      "optimised_at": "2026-08-06T01:39:50.807Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Writing Rubrics Faster with AI: What Google Classroom Gives Teachers Today\"\nsubtitle: \"An honest look at the rubrics tools Classroom actually offers, plus a simple AI workflow you can use tonight\"\ncategory: \"explainer\"\naudience: \"personal\"\nread_time_minutes: 5\ntags: [\"google-classroom\", \"gemini\", \"teachers\", \"education-ai\", \"rubrics\"]\n---\n\n# Writing Rubrics Faster with AI: What Google Classroom Gives Teachers Today\n\n> **In short:** Google Classroom has a rubrics feature for attaching grading criteria to assignments, but Classroom itself doesn't generate rubric drafts with AI. To get an AI-drafted rubric, you create it in Gemini (Google's AI assistant) or another AI tool, then paste the result into Classroom.\n\nIt's 10 pm the night before an assignment is due. You're staring at a blank rubric template, trying to remember if \"thesis clarity\" should be worth 5 points or 10. That blank-page moment is exactly where an AI assistant can step in — even though Classroom itself isn't doing the drafting for most teachers yet.\n\n## What Google Classroom actually offers for rubrics\n\nGoogle Classroom has had a native rubrics feature for a while now. When you're creating an assignment, you can build a rubric with rows (criteria) and columns (performance levels), reuse it across assignments, share it with students so they see how they'll be graded before they submit, and grade student work directly against the rubric. That part is real, widely available, and works without any AI at all.\n\nIf you've never tried it, it's worth opening the assignment creation screen in Classroom and scrolling down to the rubric section just to see what's there.\n\nWhere things get less clear: AI-generated rubric drafts inside that flow. Google has been adding Gemini features across Workspace for Education — search, side panels, and writing helpers — but whether your specific Classroom view shows an AI option depends on your account type, your school admin's settings, and which Workspace edition your district uses. Some teachers see AI helpers; some don't.\n\n## A simple AI workflow that works today\n\nHere's the most reliable path right now, even if your Classroom doesn't show any AI buttons:\n\n1. Open Gemini (gemini.google.com) or another AI assistant in a separate browser tab.\n2. Describe your assignment in a few sentences.\n3. Ask the AI for a draft, then edit it to match your standards.\n4. Paste the finished rubric into Classroom's rubric builder.\n\nA prompt you can copy and adapt:\n\n> *\"I'm a middle-school English teacher. Draft a 4-row rubric for a 5-paragraph persuasive essay. Use a 4-point scale (4 = exceeds, 1 = needs improvement), and make each criterion specific and observable.\"*\n\nMost teachers find this takes about ten minutes total instead of the 45 a from-scratch rubric usually eats. You'll still do the editing — that's the part that matters most — but the blank page is gone.\n\n## What this means for you\n\n- **If you're a classroom teacher with a Workspace for Education account:** Open an assignment in Classroom, scroll to rubrics, and look around for any Gemini or AI option. If it's there, try it. If not, the workflow above works the same way for everyone.\n- **If you're a homeschool parent or tutor:** You may not use Classroom at all, and that's fine. Gemini, ChatGPT, or Claude can help you draft rubrics for writing, science projects, or presentations — then you paste the result into whatever tool you grade with.\n- **If your school blocks AI tools:** Talk to your admin first. Many districts now have approved ways to use AI assistants for planning tasks like rubrics. Knowing the policy saves you a headache later.\n\n## Wrap-up\n\nThe honest answer is this: Classroom has solid rubric tools, and AI assistants can absolutely help you draft the content — but the seamless \"AI writes it inside Classroom\" flow isn't something every teacher can count on yet. The most reliable approach today is to draft with AI in a separate tab, edit until it fits your class, then attach it in Classroom.\n\nTry this tonight: open Gemini, paste the prompt above with one of your real assignments, and see what comes back. Even if you only use one row from the AI's draft, you've saved yourself a few minutes of staring at a blank page — and those minutes add up over a school year.",
+  "original_title": "Streamlining rubric generation in Google Classroom with Gemini "
+}

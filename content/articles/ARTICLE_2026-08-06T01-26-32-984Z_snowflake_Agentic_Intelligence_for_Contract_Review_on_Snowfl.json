@@ -1,0 +1,58 @@
+{
+  "_meta": {
+    "written_at": "2026-08-06T01:27:34.286Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00834678,
+    "original_draft": "2026-08-06T01-26-32-984Z_snowflake_Agentic_Intelligence_for_Contract_Review_on_Snowfl.json",
+    "source_id": "snowflake",
+    "source_name": "Snowflake Blog (hivatalos)",
+    "source_link": "https://www.snowflake.com/content/snowflake-site/global/en/blog/agentic-intelligence-contract-review-snowflake",
+    "status": "published",
+    "published_at": "2026-08-06T01:27:48.661Z",
+    "slug": "what-agentic-ai-means-for-document-work-even-if-you-re-not-a-lawyer",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 691
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Strong explainer with excellent structure, clear language, and well-traced claims to Snowflake's official source. The hook is effective, the agentic AI concept is explained with fresh analogies, the everyday examples are relatable, and the What this means for you section gives readers actionable takeaways. Minor note: consider tightening the heading on agentic AI to avoid a slight stutter.",
+      "_aiCost": 0.00132195,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-08-06T01:29:04.010Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is a case study about how Snowflake internally used agentic AI — not an announcement of a specific named product for everyday users to use",
+    "image_v": 2,
+    "image_at": "2026-08-06T01:38:58.237Z",
+    "seo": {
+      "meta_description": "Snowflake used agentic AI to review contracts 70% faster. See what this means for your everyday document work—not just for lawyers.",
+      "keywords": [
+        "agentic AI explained",
+        "AI contract review",
+        "AI for documents",
+        "what is agentic AI",
+        "everyday AI tools",
+        "AI paperwork automation",
+        "agentic AI for business"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add the year to the title to boost recency signals (e.g., '2024' or '2025')",
+        "Consider adding 'beginner' or 'simple guide' to the title to capture informational search intent",
+        "The subtitle is strong—consider if it can be incorporated more directly into the H1"
+      ],
+      "optimised_at": "2026-08-06T01:39:57.220Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"What Agentic AI Means for Document Work — Even If You're Not a Lawyer\"\nsubtitle: \"Snowflake used agentic AI to review contracts 70% faster. Here's what that actually means for everyday work.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"agentic-ai\", \"ai-at-work\", \"automation\", \"documents\"]\n---\n\n# What Agentic AI Means for Document Work — Even If You're Not a Lawyer\n\n> **In short:** Snowflake used agentic AI to cut contract review time by about 70%, letting its team review far more contracts each week. Agentic AI is AI that doesn't just answer — it acts on documents, runs checks, and asks follow-up questions on its own.\n\nMost of us don't read contracts for a living. But we do sign them, fill out forms, and deal with paperwork that always seems to multiply. The same kind of AI that helped one company's legal team speed up contract review is starting to show up in smaller, everyday tools — and it's worth knowing what's going on.\n\n## What \"agentic AI\" actually means\n\nYou've probably used an AI assistant that answers questions or drafts an email. That kind of AI waits for you, then responds.\n\n**Agentic AI** goes one step further. You give it a goal, and it plans the steps, uses tools like reading a file or running a search, and checks its own work before it finishes. Think of it like the difference between asking a friend for directions versus giving your friend the destination and letting them drive.\n\nIn Snowflake's setup, the AI is pointed at a stack of contracts. The agent reads each one, pulls out the key terms, flags anything unusual, and only loops in a human reviewer when something looks off.\n\n## Why the 70% number matters\n\nCutting review time by 70% isn't just about speed. It's about where the freed-up hours go. When the routine checking is handled, the people who used to do it can spend more time on the messy cases — the ones that actually need human judgment.\n\nFor everyday readers, the bigger lesson is this: AI is moving from \"draft this for me\" to \"do this and tell me when it's done.\" That's a real shift in what these tools can do at work.\n\n## How this might show up in your own week\n\nYou don't need to work at a big tech company to feel the effect. A few everyday situations where this kind of AI is starting to land:\n\n- **Lease agreements and rental forms**: tools that highlight unusual clauses before you sign\n- **Job offer letters**: agents that compare an offer to a baseline so you don't miss anything weird\n- **Small business paperwork**: an agent pulling key dates from invoices so you don't miss a renewal\n\nThe common thread: an AI that reads, checks, and points things out — instead of you squinting at page three at 11pm.\n\n## What this means for you\n\n- **If you sign contracts as part of your job**: ask whether your team already uses any AI review tool. Most large companies are testing or rolling these out this year.\n- **If you're a small business owner or freelancer**: look for document-AI features already inside apps you pay for — many email and accounting suites are quietly adding them.\n- **If you're just curious about AI**: \"agentic\" is the word you'll hear most this year. Now you know what it actually means.\n- **If you're worried about jobs**: the pattern so far is that AI handles the boring first pass, and humans handle the judgment calls. The boring part is what people are usually happiest to give up.\n\n## Wrap-up\n\nAgentic AI is one of the more practical shifts happening in how we work with documents. Snowflake's contract example is just one case, but the pattern is clear: AI is learning to do the routine checking so we can focus on the parts that need a human. Next time you open a contract, an offer letter, or even a long form, there's a good chance a tool that \"reads like a person\" will be there to help — sooner than most people expect.",
+  "original_title": "Agentic Intelligence for Contract Review on Snowflake"
+}

@@ -1,150 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178580714666738",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-04T01:32:26.667Z",
-      "updated": "2026-08-04T01:36:10.700Z"
-    },
-    {
-      "id": "t178580737070228",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-04T01:36:10.702Z",
-      "updated": "2026-08-04T01:37:10.691Z"
-    },
-    {
-      "id": "t17858074307211",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-04T01:37:10.721Z",
-      "updated": "2026-08-04T01:38:11.760Z"
-    },
-    {
-      "id": "t178580749176132",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-08-04T01:38:11.761Z",
-      "updated": "2026-08-04T01:39:48.062Z"
-    },
-    {
-      "id": "t178580758806478",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-04T01:39:48.064Z",
-      "updated": "2026-08-04T01:39:52.482Z"
-    },
-    {
-      "id": "t17858075924837",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-08-04T01:39:52.483Z",
-      "updated": "2026-08-04T01:40:07.553Z"
-    },
-    {
-      "id": "t17858391816747",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-08-04T10:26:21.674Z",
-      "updated": "2026-08-04T10:26:21.867Z"
-    },
-    {
-      "id": "t178583918187029",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-08-04T10:26:21.870Z",
-      "updated": "2026-08-04T10:26:43.555Z"
-    },
-    {
-      "id": "t17858392035577",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-08-04T10:26:43.557Z",
-      "updated": "2026-08-04T10:26:43.772Z"
-    },
-    {
-      "id": "t178583920377463",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-04T10:26:43.774Z",
-      "updated": "2026-08-04T10:32:56.119Z"
-    },
-    {
-      "id": "t178583957612170",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-04T10:32:56.121Z",
-      "updated": "2026-08-04T10:33:07.082Z"
-    },
-    {
-      "id": "t178583958708517",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-08-04T10:33:07.085Z",
-      "updated": "2026-08-04T10:33:13.015Z"
-    },
-    {
-      "id": "t178583959304843",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-04T10:33:13.048Z",
-      "updated": "2026-08-04T10:33:20.762Z"
-    },
-    {
-      "id": "t178583960076337",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-08-04T10:33:20.763Z",
-      "updated": "2026-08-04T10:33:31.902Z"
-    },
-    {
-      "id": "t178583961190519",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-04T10:33:31.905Z",
-      "updated": "2026-08-04T10:33:49.964Z"
-    },
-    {
-      "id": "t178583962996588",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-08-04T10:33:49.965Z",
-      "updated": "2026-08-04T10:34:05.972Z"
-    },
-    {
-      "id": "t178586449004337",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-08-04T17:28:10.043Z",
-      "updated": "2026-08-04T17:28:10.213Z"
-    },
-    {
-      "id": "t178586449021543",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-08-04T17:28:10.215Z",
-      "updated": "2026-08-04T17:28:48.522Z"
-    },
-    {
       "id": "t178586452852476",
       "title": "Run source-scout",
       "status": "done",
@@ -479,33 +335,153 @@
       "agent": "publisher",
       "created": "2026-08-05T17:22:54.534Z",
       "updated": "2026-08-05T17:23:10.056Z"
+    },
+    {
+      "id": "t178597956747574",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-08-06T01:26:07.475Z",
+      "updated": "2026-08-06T01:26:07.667Z"
+    },
+    {
+      "id": "t178597956766957",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-08-06T01:26:07.669Z",
+      "updated": "2026-08-06T01:26:33.001Z"
+    },
+    {
+      "id": "t178597959300384",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-08-06T01:26:33.003Z",
+      "updated": "2026-08-06T01:26:33.201Z"
+    },
+    {
+      "id": "t178597959320314",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-06T01:26:33.203Z",
+      "updated": "2026-08-06T01:27:34.296Z"
+    },
+    {
+      "id": "t178597965429728",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-06T01:27:34.297Z",
+      "updated": "2026-08-06T01:27:48.670Z"
+    },
+    {
+      "id": "t178597966867340",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-06T01:27:48.673Z",
+      "updated": "2026-08-06T01:28:38.319Z"
+    },
+    {
+      "id": "t178597971832029",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-06T01:28:38.320Z",
+      "updated": "2026-08-06T01:28:51.920Z"
+    },
+    {
+      "id": "t178597973192318",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-08-06T01:28:51.923Z",
+      "updated": "2026-08-06T01:29:04.020Z"
+    },
+    {
+      "id": "t178597974405310",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-06T01:29:04.053Z",
+      "updated": "2026-08-06T01:35:18.841Z"
+    },
+    {
+      "id": "t17859801188431",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-06T01:35:18.843Z",
+      "updated": "2026-08-06T01:36:19.781Z"
+    },
+    {
+      "id": "t178598017981152",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-06T01:36:19.811Z",
+      "updated": "2026-08-06T01:36:19.991Z"
+    },
+    {
+      "id": "t178598017999264",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-06T01:36:19.992Z",
+      "updated": "2026-08-06T01:36:41.098Z"
+    },
+    {
+      "id": "t178598020110246",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-06T01:36:41.102Z",
+      "updated": "2026-08-06T01:38:04.725Z"
+    },
+    {
+      "id": "t178598028472634",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-06T01:38:04.726Z",
+      "updated": "2026-08-06T01:38:37.929Z"
+    },
+    {
+      "id": "t178598031793191",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-06T01:38:37.931Z",
+      "updated": "2026-08-06T01:39:34.849Z"
+    },
+    {
+      "id": "t178598037485039",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-08-06T01:39:34.850Z",
+      "updated": "2026-08-06T01:41:09.321Z"
+    },
+    {
+      "id": "t178598046932340",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-06T01:41:09.323Z",
+      "updated": "2026-08-06T01:41:23.563Z"
+    },
+    {
+      "id": "t178598048356443",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-08-06T01:41:23.564Z",
+      "updated": "2026-08-06T01:41:41.965Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178488826325025",
-      "level": "success",
-      "text": "3 hír + 1 útmutató publikálva (költség: $0.0426).",
-      "agent": "ceo",
-      "at": "2026-07-24T10:17:43.250Z",
-      "loud": false
-    },
-    {
-      "id": "n178491453021581",
-      "level": "info",
-      "text": "SEO: 3 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-07-24T17:35:30.215Z",
-      "loud": false
-    },
-    {
-      "id": "n178491453215886",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). Our line-up is ready to publish, with a great mix of practical articles that showcase AI's everyday uses. I've done a final check to ensure each piece is complete, error-free, and written in our appro",
-      "agent": "publisher",
-      "at": "2026-07-24T17:35:32.158Z",
-      "loud": false
-    },
     {
       "id": "n178491454043063",
       "level": "success",
@@ -1281,45 +1257,33 @@
       "agent": "ceo",
       "at": "2026-08-05T17:23:10.089Z",
       "loud": false
+    },
+    {
+      "id": "n178598046931350",
+      "level": "info",
+      "text": "SEO: 6 cikk optimalizálva (átlag 8.3/10).",
+      "agent": "seo",
+      "at": "2026-08-06T01:41:09.313Z",
+      "loud": false
+    },
+    {
+      "id": "n178598049304655",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The lineup looks solid — mix of practical how-tos, privacy guidance, and everyday use cases. A couple of things to flag: articles 5 and 6 both cover formal email writing (complaint + refund), and 9 an",
+      "agent": "publisher",
+      "at": "2026-08-06T01:41:33.046Z",
+      "loud": false
+    },
+    {
+      "id": "n178598050199653",
+      "level": "success",
+      "text": "2 hír + 4 útmutató publikálva (költség: $0.0861).",
+      "agent": "ceo",
+      "at": "2026-08-06T01:41:41.996Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178511774536048",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Cohere Transcribe Arabic: Open-Source Speech AI\" (?/10)",
-      "ref": "2026-07-23T10-11-43-793Z_cohere-blog_Cohere_Transcribe_Arabic__Open-Source_Speech_AI.json",
-      "at": "2026-07-27T02:02:25.360Z"
-    },
-    {
-      "id": "m178511777792216",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Qwen3.6-35B-A3B: Agentic Coding Power, Now Open to All - Qwen\" — mi a baj: Invented model name: 'Qwen3.6-35B-A3B' does not appear to exist. Qwen's known open coding models include Qwen2.5-Coder (in various sizes) and Qwen3-Coder. The 'Qwen3.6-35B-A3B' naming is fabricated and is repeated multiple times throughout the article as if it were a real, recently released model.; Po",
-      "ref": "2026-07-24T17-20-24-128Z_qwen-news_Qwen3_6-35B-A3B__Agentic_Coding_Power__Now_Open_to.json",
-      "at": "2026-07-27T02:02:57.922Z"
-    },
-    {
-      "id": "m178511781891624",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Forbes: D-ID Acquires Simpleshow To Lead $50 Billion Interactive AI Market\" (?/10)",
-      "ref": "2026-07-25T01-45-08-791Z_d-id-news_Forbes__D-ID_Acquires_Simpleshow_To_Lead__50_Billi.json",
-      "at": "2026-07-27T02:03:38.916Z"
-    },
-    {
-      "id": "m178511787668324",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Tech Crunch: D-ID acquires Berlin-based video startup simpleshow\" (?/10)",
-      "ref": "2026-07-25T01-45-20-126Z_d-id-news_Tech_Crunch__D-ID_acquires_Berlin-based_video_star.json",
-      "at": "2026-07-27T02:04:36.683Z"
-    },
     {
       "id": "m178511792092191",
       "from": "ellenorzo",
@@ -2606,8 +2570,9 @@
       "kind": "need",
       "text": "Hiányos / kell még adat: \"Streamlining rubric generation in Google Classroom with Gemini \" — egészítsd ki: Wrap-up section cuts off mid-sentence at 'adjusting' — article appears truncated; Step 5 mentions 'a toggle in the rubric settings' without specifying where it is — add brief direction like 'look in the rubric sidebar or settings menu'",
       "ref": "2026-08-05T17-19-17-047Z_google-workspace_Streamlining_rubric_generation_in_Google_Classroom.json",
-      "open": true,
-      "at": "2026-08-05T17:21:04.864Z"
+      "open": false,
+      "at": "2026-08-05T17:21:04.864Z",
+      "resolved_at": "2026-08-06T01:28:51.910Z"
     },
     {
       "id": "m178595052693766",
@@ -2644,6 +2609,42 @@
       "text": "6 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-08-05T17:35:46.303Z"
+    },
+    {
+      "id": "m178597971831051",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Streamlining rubric generation in Google Classroom with Gemini \" — javítva: The article asserts that 'Google Classroom now lets teachers draft rubrics with Gemini... right in the assignment page' and describes specific UI ('Generate with Gemini' / 'Draft with AI' button, Rubrics section with Gemini option) as if this feature exists in Google Classroom. There is no widely known/verifi",
+      "ref": "2026-08-05T17-19-17-047Z_google-workspace_Streamlining_rubric_generation_in_Google_Classroom.json",
+      "at": "2026-08-06T01:28:38.310Z"
+    },
+    {
+      "id": "m178597973190993",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Streamlining rubric generation in Google Classroom with Gemini \" (?/10)",
+      "ref": "2026-08-05T17-19-17-047Z_google-workspace_Streamlining_rubric_generation_in_Google_Classroom.json",
+      "at": "2026-08-06T01:28:51.909Z"
+    },
+    {
+      "id": "m178598013918876",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"How to Build a Smart Packing List for Any Trip in Just a Few Minutes\" — mi a baj: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user; Step 4 is vague: 'Open the list' assumes readers know where to find it — clarify whether they edit it in the chat, copy it to notes, or something else; Step 2 could help a complete beginner more: what if they d",
+      "ref": "GUIDE_how-to-build-a-smart-packing-list-for-any-trip-in-just-a-few.json",
+      "at": "2026-08-06T01:35:39.188Z"
+    },
+    {
+      "id": "m178598048355381",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-08-06T01:41:23.554Z"
     }
   ]
 }
