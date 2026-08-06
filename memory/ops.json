@@ -1,102 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178586452852476",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-08-04T17:28:48.524Z",
-      "updated": "2026-08-04T17:28:48.711Z"
-    },
-    {
-      "id": "t17858645287137",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-04T17:28:48.713Z",
-      "updated": "2026-08-04T17:38:14.322Z"
-    },
-    {
-      "id": "t178586509432356",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-04T17:38:14.323Z",
-      "updated": "2026-08-04T17:38:47.374Z"
-    },
-    {
-      "id": "t178586512737719",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-08-04T17:38:47.377Z",
-      "updated": "2026-08-04T17:39:04.624Z"
-    },
-    {
-      "id": "t178586514465990",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-04T17:39:04.659Z",
-      "updated": "2026-08-04T17:39:21.355Z"
-    },
-    {
-      "id": "t178586516135673",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-08-04T17:39:21.357Z",
-      "updated": "2026-08-04T17:39:34.006Z"
-    },
-    {
-      "id": "t17858651740080",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-04T17:39:34.008Z",
-      "updated": "2026-08-04T17:39:41.149Z"
-    },
-    {
-      "id": "t178586518115167",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-08-04T17:39:41.151Z",
-      "updated": "2026-08-04T17:40:12.034Z"
-    },
-    {
-      "id": "t178589333022859",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-08-05T01:28:50.228Z",
-      "updated": "2026-08-05T01:28:50.417Z"
-    },
-    {
-      "id": "t178589333041923",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-08-05T01:28:50.419Z",
-      "updated": "2026-08-05T01:29:22.158Z"
-    },
-    {
-      "id": "t178589336216073",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-08-05T01:29:22.160Z",
-      "updated": "2026-08-05T01:30:22.104Z"
-    },
-    {
-      "id": "t178589342210663",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-05T01:30:22.106Z",
-      "updated": "2026-08-05T01:33:20.077Z"
-    },
-    {
       "id": "t178589360007966",
       "title": "Run ellenorzo",
       "status": "done",
@@ -479,33 +383,105 @@
       "agent": "publisher",
       "created": "2026-08-06T01:41:23.564Z",
       "updated": "2026-08-06T01:41:41.965Z"
+    },
+    {
+      "id": "t178601199390732",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-08-06T10:26:33.907Z",
+      "updated": "2026-08-06T10:26:34.093Z"
+    },
+    {
+      "id": "t178601199409560",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-08-06T10:26:34.095Z",
+      "updated": "2026-08-06T10:26:52.560Z"
+    },
+    {
+      "id": "t178601201256225",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-08-06T10:26:52.562Z",
+      "updated": "2026-08-06T10:26:52.754Z"
+    },
+    {
+      "id": "t178601201275626",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-06T10:26:52.756Z",
+      "updated": "2026-08-06T10:26:52.919Z"
+    },
+    {
+      "id": "t178601201292128",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-06T10:26:52.921Z",
+      "updated": "2026-08-06T10:26:53.092Z"
+    },
+    {
+      "id": "t178601201309661",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-06T10:26:53.096Z",
+      "updated": "2026-08-06T10:28:40.802Z"
+    },
+    {
+      "id": "t178601212080496",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-06T10:28:40.804Z",
+      "updated": "2026-08-06T10:29:12.215Z"
+    },
+    {
+      "id": "t178601215221779",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-08-06T10:29:12.217Z",
+      "updated": "2026-08-06T10:29:12.421Z"
+    },
+    {
+      "id": "t178601215245726",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-06T10:29:12.457Z",
+      "updated": "2026-08-06T10:29:20.510Z"
+    },
+    {
+      "id": "t178601216051155",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-08-06T10:29:20.511Z",
+      "updated": "2026-08-06T10:29:36.741Z"
+    },
+    {
+      "id": "t178601217674340",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-06T10:29:36.743Z",
+      "updated": "2026-08-06T10:29:49.655Z"
+    },
+    {
+      "id": "t178601218965698",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-08-06T10:29:49.656Z",
+      "updated": "2026-08-06T10:30:04.866Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178491454043063",
-      "level": "success",
-      "text": "3 hír + 0 útmutató publikálva (költség: $0.0197).",
-      "agent": "ceo",
-      "at": "2026-07-24T17:35:40.430Z",
-      "loud": false
-    },
-    {
-      "id": "n178494562453584",
-      "level": "info",
-      "text": "SEO: 13 cikk optimalizálva (átlag 8.1/10).",
-      "agent": "seo",
-      "at": "2026-07-25T02:13:44.535Z",
-      "loud": false
-    },
-    {
-      "id": "n17849456451896",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The lineup looks solid and ready — it's a practical mix of study tools, work helpers, and everyday tasks (including privacy and email templates). Great variety that shows real value for everyday peopl",
-      "agent": "publisher",
-      "at": "2026-07-25T02:14:05.189Z",
-      "loud": false
-    },
     {
       "id": "n178494565475476",
       "level": "success",
@@ -1281,36 +1257,33 @@
       "agent": "ceo",
       "at": "2026-08-06T01:41:41.996Z",
       "loud": false
+    },
+    {
+      "id": "n178601217673237",
+      "level": "info",
+      "text": "SEO: 1 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-08-06T10:29:36.732Z",
+      "loud": false
+    },
+    {
+      "id": "n178601219534872",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The lineup looks solid and ready — practical, varied, and beginner-friendly, covering everything from study help to privacy awareness and emotional support. Nice mix of how-tos, what-not-to-dos, and r",
+      "agent": "publisher",
+      "at": "2026-08-06T10:29:55.348Z",
+      "loud": false
+    },
+    {
+      "id": "n178601220490180",
+      "level": "success",
+      "text": "0 hír + 1 útmutató publikálva (költség: $0.0038).",
+      "agent": "ceo",
+      "at": "2026-08-06T10:30:04.901Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178511828503427",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Translate Foreign Documents and Everyday Signs with Gemini\" — mi a baj: The article states the Gemini app icon is 'a four-pointed star in blue, pink and white' — Gemini's app icon is a four-pointed spark/star shape, but it is described as blue and white (gradient blue), not 'blue, pink and white'. This appears to be an invented detail.; The article mentions specific UI eleme",
-      "ref": "GUIDE_translate-foreign-documents-and-everyday-signs-with-gemini.json",
-      "at": "2026-07-27T02:11:25.034Z"
-    },
-    {
-      "id": "m178511878201612",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-07-27T02:19:42.016Z"
-    },
-    {
-      "id": "m178512057178033",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook + Instagram). content/social/feed.md",
-      "ref": null,
-      "at": "2026-07-27T02:49:31.780Z"
-    },
     {
       "id": "m178515056610947",
       "from": "ceo",
@@ -2645,6 +2618,33 @@
       "text": "6 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-08-06T01:55:21.196Z"
+    },
+    {
+      "id": "m17860121207933",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"How to Build a Smart Packing List for Any Trip in Just a Few Minutes\" — javítva: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user; Step 4 is vague: 'Open the list' assumes readers know where to find it — clarify whether they edit it in the chat, copy it to notes, or something else; újraküldöm.",
+      "ref": "GUIDE_how-to-build-a-smart-packing-list-for-any-trip-in-just-a-few.json",
+      "at": "2026-08-06T10:28:40.793Z"
+    },
+    {
+      "id": "m178601215220523",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"How to Build a Smart Packing List for Any Trip in Just a Few Minutes\" (?/10)",
+      "ref": "GUIDE_how-to-build-a-smart-packing-list-for-any-trip-in-just-a-few.json",
+      "at": "2026-08-06T10:29:12.205Z"
+    },
+    {
+      "id": "m178601218964552",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-08-06T10:29:49.645Z"
     }
   ]
 }
