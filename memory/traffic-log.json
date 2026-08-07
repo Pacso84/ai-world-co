@@ -1,7 +1,7 @@
 {
   "_meta": {
     "note": "Cikkenkénti napi forgalom. Írja: core/traffic-log.js a CI-ban. Helyben CSAK olvasd.",
-    "updated": "2026-08-06T10:41:27.396Z"
+    "updated": "2026-08-07T02:56:42.966Z"
   },
   "days": {
     "2026-08-04": [
@@ -289,6 +289,78 @@
       {
         "path": "/hu/guides",
         "visits": 0,
+        "views": 1
+      }
+    ],
+    "2026-08-06": [
+      {
+        "path": "/article/getting-started-with-claude-for-clear-careful-help",
+        "visits": 13,
+        "views": 13
+      },
+      {
+        "path": "/article/build-a-smart-packing-list-for-any-trip-in-just-a-few-minutes",
+        "visits": 12,
+        "views": 13
+      },
+      {
+        "path": "/article/how-to-quickly-fact-check-any-ai-answer-in-under-one-minute",
+        "visits": 10,
+        "views": 10
+      },
+      {
+        "path": "/hu/",
+        "visits": 0,
+        "views": 4
+      },
+      {
+        "path": "/hu/about",
+        "visits": 1,
+        "views": 2
+      },
+      {
+        "path": "/",
+        "visits": 2,
+        "views": 2
+      },
+      {
+        "path": "/article/creating-a-travel-packing-list-for-any-trip-with-ai-guidance",
+        "visits": 0,
+        "views": 1
+      },
+      {
+        "path": "/article/plan-your-weekly-meals-and-shopping-list-with-any-ai-assistant",
+        "visits": 1,
+        "views": 1
+      },
+      {
+        "path": "/article/chatgpt-vs-gemini-vs-claude-which-ai-chatbot-should-you-choose",
+        "visits": 1,
+        "views": 1
+      },
+      {
+        "path": "/hu/glossary",
+        "visits": 0,
+        "views": 1
+      },
+      {
+        "path": "/hu/tools",
+        "visits": 0,
+        "views": 1
+      },
+      {
+        "path": "/article/turn-voice-memos-into-clear-notes-with-apple-intelligence",
+        "visits": 1,
+        "views": 1
+      },
+      {
+        "path": "/article/how-to-write-a-polite-but-firm-complaint-letter-about-bad-service",
+        "visits": 1,
+        "views": 1
+      },
+      {
+        "path": "/article/how-to-use-gemini-s-voice-and-camera-features-in-your-daily-life",
+        "visits": 1,
         "views": 1
       }
     ]
