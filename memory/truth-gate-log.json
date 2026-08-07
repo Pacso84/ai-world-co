@@ -1,31 +1,4 @@
 {
-  "2026-07-20": [
-    {
-      "at": "2026-07-20T01:57:21.895Z",
-      "file": "WRITER_2026-07-17T01-43-42-625Z_google-workspace_Generate_higher_quality_AI_video_clips_and_edit_an.json",
-      "action": "block",
-      "reasons": [
-        "The article implies that Google Vids directly 'generates a video clip' with 'better realism and even improved text rendering (how clearly words appear within the video)' from a simple text prompt. While Google Vids is an AI-powered video creation app that uses text prompts to generate storyboards, drafts, and voiceovers, it primarily assists in assembling and creating videos using existing or stock media and AI-generated elements, rather than generating novel, realistic video footage with embedded text from scratch as a pure text-to-video model would. This misrepresents its core generative capabilities for visual content."
-      ]
-    },
-    {
-      "at": "2026-07-20T02:00:10.176Z",
-      "file": "WRITER_GUIDE_create-your-own-custom-gpt-in-chatgpt-no-coding.json",
-      "action": "block",
-      "reasons": [
-        "The article describes a \"Preview\" tab on the right side of the screen in Step 2. In ChatGPT's custom GPT builder interface, there is a \"Preview\" *panel* on the right, not a tab.",
-        "In Step 2, the article states \"If it looks different: The two sections might be labelled 'Build' and 'Configure,' or simply 'Create' and 'Test.'\" While 'Create' and 'Configure' are the actual tab labels, 'Build' and 'Test' are not alternative labels for the main tabs in the custom GPT builder UI."
-      ]
-    },
-    {
-      "at": "2026-07-20T02:04:12.695Z",
-      "file": "WRITER_GUIDE_categorize-customer-feedback-from-online-forms-with-cohere.json",
-      "action": "block",
-      "reasons": [
-        "The article instructs users to \"Select the 'Generate' model\" within the Cohere Playground. 'Generate' is not a specific model name available for selection in the Cohere Playground/Workbench UI. Users typically select models like 'Command' or 'Command-R' to perform text generation tasks, including classification."
-      ]
-    }
-  ],
   "2026-07-21": [
     {
       "at": "2026-07-21T01:33:34.257Z",
@@ -350,6 +323,28 @@
       "action": "block",
       "reasons": [
         "The article asserts that 'Google Classroom now lets teachers draft rubrics with Gemini... right in the assignment page' and describes specific UI ('Generate with Gemini' / 'Draft with AI' button, Rubrics section with Gemini option) as if this feature exists in Google Classroom. There is no widely known/verified feature in Google Classroom that integrates Gemini to generate rubrics on the assignment creation page. This is likely a fabricated product feature."
+      ],
+      "confidence": 7
+    }
+  ],
+  "2026-08-07": [
+    {
+      "at": "2026-08-07T02:19:46.084Z",
+      "file": "WRITER_2026-08-07T02-05-03-922Z_apple-ml_Locking_Pretrained_Weights_via_Deep_Low-Rank_Resid.json",
+      "action": "block",
+      "reasons": [
+        "The article cites a specific technical paper titled 'Locking Pretrained Weights via Deep Low-Rank Residual Distillation' as introducing 'weight locking' — this appears to be an invented/incorrect title used to substantiate a technique that may not exist under that exact name, presenting fabricated academic provenance as fact."
+      ],
+      "confidence": 4
+    },
+    {
+      "at": "2026-08-07T02:21:34.583Z",
+      "file": "WRITER_2026-08-07T02-05-16-309Z_xai-news_Grok_4_20_Multi_Agent_Beta_0309_-_xAI_Docs.json",
+      "action": "block",
+      "reasons": [
+        "Article states 'the current public test is labeled \"Grok 4.20\" with a multi-agent build tagged \"0309\"' — 'Grok 4.20' is not a known publicly released xAI version (xAI's known Grok versions are Grok-1, Grok-2, Grok-3, Grok-4), and a build tag '0309' for a multi-agent beta is not documented in any verifiable xAI public material.",
+        "Article states 'According to xAI's own documentation, the multi-agent beta is in early testing' as if citing real xAI docs — no public xAI documentation describing a 'multi-agent beta' mode for Grok is known to exist; the citation appears invented.",
+        "The article is presented as news of a real xAI product/beta, but the core specific claims (multi-agent beta program, Grok 4.20 version, 0309 build tag) appear to be fabricated product details."
       ],
       "confidence": 7
     }

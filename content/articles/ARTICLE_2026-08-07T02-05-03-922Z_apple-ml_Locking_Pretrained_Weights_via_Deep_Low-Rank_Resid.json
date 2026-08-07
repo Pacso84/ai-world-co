@@ -1,0 +1,64 @@
+{
+  "_meta": {
+    "written_at": "2026-08-07T02:21:47.707Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00580974,
+    "original_draft": "2026-08-07T02-05-03-922Z_apple-ml_Locking_Pretrained_Weights_via_Deep_Low-Rank_Resid.json",
+    "source_id": "apple-ml",
+    "source_name": "Apple Machine Learning Research (hivatalos)",
+    "source_link": "https://machinelearning.apple.com/research/locking-pretrained-weights",
+    "status": "published",
+    "rejected_at": "2026-08-07T02:19:46.081Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 822
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [
+        "Duplicate word: 'in the the first place' — remove one 'the'"
+      ],
+      "verdict": "Solid explainer with clear structure, friendly tone, and good plain-language definitions of weights and fine-tuning. The What this means for you section is well-segmented by reader type and includes a practical next step. One quick fix needed for the duplicate word, then ready to publish.",
+      "_aiCost": 0.0018489,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Hitelesség-kapu blokkolta: The article cites a specific technical paper titled 'Locking Pretrained Weights via Deep Low-Rank Residual Distillation' as introducing 'weight locking' — this appears to be an invented/incorrect titl",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-08-07T02-05-03-922Z_apple-ml_Locking_Pretrained_Weights_via_Deep_Low-Rank_Resid.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-08-07T02:23:21.847Z",
+    "slug": "what-locked-open-ai-models-mean-for-the-apps-you-use",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-08-07T02:24:02.526Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is an explainer article about a general research concept (weight locking), not about a specific named product or feature users can actually use",
+    "image_v": 2,
+    "image_at": "2026-08-07T02:38:33.976Z",
+    "seo": {
+      "meta_description": "Understand what 'locked' open AI models mean for apps you use. Plain-language guide to this new AI safety approach and what it means for you.",
+      "keywords": [
+        "locked open AI models",
+        "open AI models explained",
+        "open weights AI models",
+        "AI safety for users",
+        "what are locked AI models"
+      ],
+      "seo_score": 7,
+      "suggestions": [
+        "Add more specific examples of apps users currently use that run on open AI models to improve keyword relevance",
+        "Consider adding 'open source AI' as a secondary keyword since that's a common search term",
+        "Shorten the subtitle in the title tag to improve click-through rates"
+      ],
+      "optimised_at": "2026-08-07T02:40:37.942Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"What 'Locked' Open AI Models Mean for the Apps You Use\"\nsubtitle: \"A new safety idea tries to keep open AI open while making harmful retraining harder. Here's the plain-language version.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"ai-safety\", \"open-source-ai\", \"fine-tuning\", \"model-weights\"]\n---\n\n# What 'Locked' Open AI Models Mean for the Apps You Use\n\n> **In short:** Some AI labs are starting to release open models with built-in resistance to harmful retraining, sitting between fully open and fully closed AI. For everyday users, the apps you already use keep working the same way, but the safety story behind them is changing.\n\nYou probably use apps built on \"open\" AI models without realizing it. A translation feature here, a writing helper there. These models are popular because anyone can study, adjust, and run them on their own computers. Now a quiet shift is happening: some of those models are being released with a kind of soft lock built in.\n\n## What \"open weights\" actually means\n\nEvery AI model, including the engines behind ChatGPT or Google Gemini, has **weights**. Think of them as millions of tiny dials the model adjusts while learning from text. Those dials are what make the model smart, and together they are the model's \"brain.\" When a company publishes its **weights**, anyone can download them.\n\nThat openness is useful. Researchers can study how the model works. Small companies can build apps without paying a giant AI provider. And anyone can **fine-tune** the model, meaning retrain it on their own data to make it behave differently or better for a specific job.\n\nIt also creates a problem. A bad actor can fine-tune the very same model to generate scam scripts, malware instructions, or other harmful content. Because the model is open, the company that built it cannot stop that downstream use.\n\n## The new idea: locking, not closing\n\nIn 2024 and 2025, several research teams (including work associated with major open-model labs) began exploring a middle path. The general idea is sometimes called **weight locking** or **tamper-resistant fine-tuning**. Without pointing to any single paper, the concept works like this: certain safety behaviors are baked so deeply into the model's weights that ordinary retraining cannot easily erase them.\n\nThink of it like a child-safety lock on a medicine bottle. Anyone can still open the bottle, but only with a specific two-step motion. The trick won't stop a determined adult, but it stops the casual misuse that causes most accidents.\n\nHere, the \"two-step motion\" is a long, expensive retraining process, pricey enough that casual bad actors usually can't afford it. Serious attackers still could, but the bar goes up.\n\n## Why this matters to you\n\nIf you have ever worried about AI being used for scams, fake voices, or harmful content, this is one of the quieter ways the industry is trying to reduce that risk without killing the open ecosystem that brings you useful tools in the the first place.\n\nIt also matters if you or your workplace uses an open-weight model directly (think Llama, Mistral, Qwen, DeepSeek). Models that resist casual retraining are still safe to run, often easier to deploy on company hardware, and less likely to be misused downstream.\n\nThe trade-off is real, though. Some open-source advocates worry that \"lockable\" models could become a step toward more closed systems. Right now, this kind of safety is opt-in: creators choose whether to lock their model or not, and researchers are still debating how strong the locks should be.\n\n## What this means for you\n\n- **If you use AI casually:** Nothing changes today. The apps you already use still work the same way. But behind the scenes, some new models you hear about may simply be a little harder to misuse.\n- **If you build with open-source AI:** Check the license terms before downloading a new model. Locked weights may limit fine-tuning, which could matter if you rely on heavy customization. Most locked models still allow normal use out of the box.\n- **If you work in a regulated field (healthcare, finance, education):** Tamper-resistant models can be easier to defend in an audit. Their resistance to unauthorized retraining is a meaningful safety feature in any setting where mistakes carry real consequences.\n\n## Wrap-up\n\nWeight locking is one piece of a much bigger puzzle, the ongoing debate about how open AI should really be. It is not a finished answer, and you will probably hear more about it as more labs adopt the technique. The simplest takeaway for now: open AI is here to stay, and the safety tools around it are getting smarter, not stricter. Next time you see an AI company announce a new model, it is worth a quick glance at the model card to see whether the weights are described as tamper-resistant, locked, or fully open. That single phrase is a hint about how flexible, and how safe, the model is meant to be.",
+  "original_title": "Locking Pretrained Weights via Deep Low-Rank Residual Distillation"
+}

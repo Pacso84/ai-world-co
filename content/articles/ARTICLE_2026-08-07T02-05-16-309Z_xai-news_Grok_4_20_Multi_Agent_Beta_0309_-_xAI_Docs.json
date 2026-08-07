@@ -1,0 +1,63 @@
+{
+  "_meta": {
+    "written_at": "2026-08-07T02:22:49.833Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.0077907,
+    "original_draft": "2026-08-07T02-05-16-309Z_xai-news_Grok_4_20_Multi_Agent_Beta_0309_-_xAI_Docs.json",
+    "source_id": "xai-news",
+    "source_name": "xAI (hivatalos, Google News szűrve)",
+    "source_link": "https://news.google.com/rss/articles/CBMidkFVX3lxTFAtaS1UMmRWeDl1ZGJ5NnBJUW1LWHVxektneFZVRl9pb21HMWtIX0lWc3NCLWk2LUc1c0p3Tlc1ZlctUW9xek5uYUZ1OGk5bEhhUW03TkRkOXZrLVpYaTc2RVU1eVVRVGtjeno3eTVLSms2SXpSSEE?oc=5",
+    "status": "published",
+    "rejected_at": "2026-08-07T02:21:34.577Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 866
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Excellent explainer that meets all quality standards — clear hook, helpful analogies, responsible hedging on speculative claims, and a practical wrap-up with a next step. No factual issues detected.",
+      "_aiCost": 0.001145124,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Hitelesség-kapu blokkolta: Article states 'the current public test is labeled \"Grok 4.20\" with a multi-agent build tagged \"0309\"' — 'Grok 4.20' is not a known publicly released xAI version (xAI's known Grok versions are Grok-1,",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-08-07T02-05-16-309Z_xai-news_Grok_4_20_Multi_Agent_Beta_0309_-_xAI_Docs.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-08-07T02:23:47.003Z",
+    "slug": "what-multi-agent-ai-means-and-why-it-s-worth-knowing",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-08-07T02:24:32.347Z",
+    "guide_worthy": false,
+    "pairing_reason": "Explains the general concept of multi-agent AI rather than introducing a specific usable feature or tool",
+    "image_v": 2,
+    "image_at": "2026-08-07T02:39:27.295Z",
+    "seo": {
+      "meta_description": "Learn what multi-agent AI means: when multiple AI assistants work together on complex tasks. Simple explanation with real examples.",
+      "keywords": [
+        "what is multi-agent AI",
+        "multi-agent AI explained",
+        "how does multi-agent AI work",
+        "AI agents working together",
+        "multi agent artificial intelligence",
+        "future of AI assistants"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add the year in the title or meta to boost freshness signal (e.g., '2025 guide')",
+        "Consider adding a FAQ schema markup for common multi-agent AI questions",
+        "Include the phrase 'beginner-friendly' or 'for beginners' to attract searchers explicitly looking for easy explanations"
+      ],
+      "optimised_at": "2026-08-07T02:41:37.118Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"What 'Multi-Agent AI' Means and Why It's Worth Knowing\"\nsubtitle: \"Several AI companies are testing setups where multiple AI assistants team up on one task. Here's the idea in plain language — no jargon required.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"multi-agent-ai\", \"ai-assistants\", \"grok\", \"xai\", \"how-ai-works\"]\n---\n\n# What 'Multi-Agent AI' Means and Why It's Worth Knowing\n\n> **In short:** \"Multi-agent\" AI means several AI assistants working together on one task instead of a single model answering alone. It's a design approach several AI companies are actively exploring, and it tends to produce better answers on hard, multi-step problems.\n\nPicture this: you ask one friend for restaurant advice, another for the driving route, and a third for a movie to watch. Each one knows a different corner of the answer. Now imagine an AI assistant that quietly builds the same kind of small team behind the scenes before it replies to you.\n\nThat's the basic idea behind multi-agent AI. And it's the direction a growing number of AI companies are exploring right now.\n\n## What is \"multi-agent\" AI?\n\nWhen you chat with an AI today, you're usually talking to one model — a **large language model** (think of it as the engine behind ChatGPT, Gemini, and similar assistants). You type a **prompt** (the instruction you give the AI), and that one model gives you an answer. Simple, fast, and good for most everyday questions.\n\nA multi-agent setup is different. Instead of one model handling your request end-to-end, the system spins up several specialized AI assistants at once, each with a slightly different job. Think of it like a small project team:\n\n- One agent breaks the question into steps\n- Another researches the topic\n- A third checks the work for errors or missing details\n- A fourth writes the final answer in plain language\n\nYou still see one reply, but several assistants collaborated to build it.\n\n## Why companies are testing this\n\nSingle-model assistants are powerful, but they struggle when a question needs planning, research, and checking all at once — the kind of work a small team of humans handles better than one person. Multi-agent designs try to split the job the same way.\n\nSeveral AI companies have shown this kind of approach publicly in recent months. If you follow AI news, you've probably seen the term \"multi-agent\" attached to beta tests (limited public trials of unfinished features) at one company or another. Specific version numbers, build tags, and rollout details change quickly and aren't always clearly documented — so it's safest to think of this as an active area of experimentation rather than a finished product you can buy today.\n\n## How it feels different in everyday use\n\nIf a multi-agent mode ever shows up in an assistant you already use, you'll probably notice it without having to do anything special. The interface may look the same — you type a question, you get an answer. The difference is what happens behind the curtain:\n\n- Longer, more complex tasks may finish with more accurate results\n- Simple chat-style questions may take a tiny bit longer, because several models are working\n- You may see the assistant \"thinking out loud\" or showing its plan, depending on the product\n\nFor most people, the change is invisible plumbing — you just notice better answers.\n\n## What this means for you\n\n- **If you're just curious about AI:** this is one of the more interesting shifts happening in how assistants are built. It's not a single new product — it's a design pattern, and it will keep showing up across many tools in the coming year.\n\n- **If you use an AI assistant at work:** pay attention to which tools offer team-style thinking. These setups tend to shine on research-heavy tasks — comparing options, drafting reports, planning a project — rather than quick one-line answers.\n\n- **If you're a student or self-learner:** multi-agent modes are great for breaking down a topic into smaller pieces. A team of AI assistants can outline, explain, and quiz you on the same subject more thoroughly than a single model.\n\n- **If you don't want to keep up with every new acronym:** don't worry. You don't need to learn the term \"multi-agent\" to use the assistants you already have. The technology will meet you where you are.\n\n## Wrap-up\n\nThe short version: multi-agent AI is when several AI assistants quietly team up to answer one question, instead of a single model going it alone. It's an approach several companies are exploring, and it tends to shine on tasks that need planning, research, and checking. You don't need to do anything special — when these features reach the assistant you already use, you'll likely just notice the answers getting better.\n\nIf you want to start noticing this yourself, try one of the assistants you already have (ChatGPT, Gemini, Claude, or whichever you prefer) on a task that has multiple parts — like \"plan a 3-day trip to a city I've never visited.\" See how well it handles the planning, the research, and the booking ideas in one shot. That's exactly the kind of problem multi-agent designs are trying to solve.",
+  "original_title": "Grok 4.20 Multi Agent Beta 0309 - xAI Docs"
+}

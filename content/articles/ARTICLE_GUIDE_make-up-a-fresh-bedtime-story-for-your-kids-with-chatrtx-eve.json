@@ -1,0 +1,61 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "make-up-a-fresh-bedtime-story-for-your-kids-with-chatrtx-eve",
+    "company": "NVIDIA",
+    "tool": "ChatRTX",
+    "icon": "🌙",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-08-07T02:35:57.301Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00722244,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-08-07T02:36:49.527Z",
+    "slug": "make-a-fresh-bedtime-story-every-night-with-chatrtx",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1526
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "This guide hits all the marks — warm brand voice, clear explanations of technical terms (model = brain in a box, driver = communication program), excellent step-by-step structure with 'you'll know it worked' checkpoints throughout, practical real-world examples, and a strong What this means for you section. No clichés, no invented quotes, no prohibited content, and US English throughout. Beginner clarity is excellent: every step has a concrete action, fallback options where screens may differ, and no vague instructions that would leave a first-time user guessing. Ready to publish.",
+      "_aiCost": 0.0023022,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "image_v": 2,
+    "image_at": "2026-08-07T02:39:51.677Z",
+    "seo": {
+      "meta_description": "Use NVIDIA's free ChatRTX to create unique bedtime stories for your kids in seconds. No internet needed—just ask for a fresh tale nightly.",
+      "keywords": [
+        "how to use ChatRTX",
+        "ChatRTX bedtime stories",
+        "AI story generator for kids",
+        "NVIDIA ChatRTX tutorial",
+        "create bedtime stories with AI",
+        "local AI for parents",
+        "ChatRTX how to"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add 'how to' in the title to match search intent better — current title reads more like a listicle headline",
+        "Include the exact product name 'ChatRTX' earlier in the first paragraph for better keyword prominence",
+        "Consider adding a subheading with 'setup' or 'installation' to capture users searching for tutorial content"
+      ],
+      "optimised_at": "2026-08-07T02:41:52.878Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Make a Fresh Bedtime Story Every Night with ChatRTX\"\nsubtitle: \"Use NVIDIA's local ChatRTX assistant to invent a brand-new bedtime tale for your kids, so you never re-read the same book twice.\"\ncategory: \"guide\"\naudience: \"personal\"\ncompany: \"NVIDIA\"\ntool: \"ChatRTX\"\nlevel: \"beginner\"\nread_time_minutes: 7\ntags: [\"getting-started\", \"chatrtx\", \"parents\", \"kids\"]\n---\n\n# Make a Fresh Bedtime Story Every Night with ChatRTX\n\n> **In short:** ChatRTX is a free, local AI chatbot from NVIDIA that runs on your Windows PC, and you can ask it to invent a brand-new bedtime story for your kids in seconds. It needs a recent NVIDIA RTX graphics card and a short setup the first time; after that, every night is one fresh story.\n\nEvery parent hits the same wall around bedtime: the bookshelf is memorized, the toddler wants \"another one,\" and your brain is empty. ChatRTX is a small, private AI assistant that lives on your computer and writes a fresh story whenever you ask — character, setting, tiny detail, all invented on the spot. Here's how to set it up once, then turn it into your nightly routine.\n\n## Before you start\n- A Windows 10 or Windows 11 PC with a **dedicated NVIDIA RTX 30-series, 40-series, or 50-series graphics card** (a discrete GPU — meaning a separate graphics chip, not the one built into the processor). ChatRTX will not install without one.\n- About **8 GB of free disk space** for the AI model files.\n- Roughly **30–45 minutes** the first time (most of it is downloading the model — a single large file that holds the AI's \"brain\"). After setup, each story takes about 10–30 seconds.\n- The ChatRTX installer, which is **free** from NVIDIA. No subscription, no account, no internet needed once it's installed — your stories never leave your computer.\n- A rough idea of the kind of story your child likes (animals, space, dragons, trucks — anything works).\n\n## Step 1 — Download and install ChatRTX\nOpen your web browser and go to NVIDIA's official site, then look for the **ChatRTX** page. On the page, find a button that says something like **\"Download Now\"** or **\"Get ChatRTX.\"** Tap it, save the installer file, and double-click it once it finishes downloading. A setup wizard opens; accept the default options and let it finish. It will also ask you to download a **model** — think of a model as the AI's brain in a box, and you can pick which one to install. The installer usually suggests one to start with; the default is a fine choice for short stories.\n💬 Example: when the installer asks which model to download, choose the recommended default unless your PC is short on disk space.\nYou'll know it worked when a **ChatRTX icon** appears on your desktop or in your Start menu.\n\n## Step 2 — Open ChatRTX and wait for it to load\nDouble-click the ChatRTX icon you just made. The first launch takes a minute or two because the AI is loading itself into your graphics card. You'll see a chat window with a text box at the bottom, similar to a messaging app. The left side may show a list of your downloaded models — pick the one you installed if it isn't already selected. If you see a message about your graphics card or drivers, follow the on-screen link to update your **driver** (the small program that lets your operating system talk to your graphics card); an old driver is the most common reason ChatRTX won't start.\n💬 Example: if a yellow warning says \"update GPU driver,\" click the link it gives you and let NVIDIA's installer finish before returning to ChatRTX.\nYou'll know it worked when the chat box is active, the typing cursor is blinking, and there's no warning banner at the top.\n\n## Step 3 — Give the AI a simple \"story recipe\" the first time\nClick inside the text box at the bottom of the window. Type a short instruction that tells the AI what kind of story you want tonight — a character, a setting, and one small detail. A good recipe has three pieces: **who** the story is about, **where** it happens, and **one tiny thing** (a lost mitten, a talking cat, a single star). Keep it to one or two sentences. The AI is good at filling in the rest. Press **Enter** to send.\n💬 Example: *\"Write a bedtime story for a 4-year-old about a small fox who loses his red mitten in a snowy village. Make it gentle, with a happy ending, about 250 words.\"*\nYou'll know it worked when a paragraph (or several) appears in the chat within a few seconds, beginning with a title or the first line of the tale.\n\n## Step 4 — Read it, then ask for tweaks if you need them\nRead the story out loud — that part stays the same as any other bedtime book. If the story is too long, too scary, or your kid wants a dinosaur instead of a fox, just type a quick follow-up. The AI remembers the conversation, so you can say things like \"make it shorter,\" \"add a friendly dragon,\" or \"end with the fox finding the mitten.\" Think of it like texting a friend who's standing by to revise: short, kind, specific instructions work best.\n💬 Example: *\"Shorter, please — about 120 words. And can the fox be a little girl fox? Her name is Mira.\"*\nYou'll know it worked when a new version of the story appears below your last message, and you can read it straight through without hitting a wall.\n\n## Step 5 — Save the stories your kids loved\nFound one your child wants to hear again tomorrow? Scroll up in the chat, click and drag to select the story text, and copy it into a simple note on your computer — Notepad, Word, Google Docs, anything. Give the file a name like \"Mira the Fox — Tuesday.\" Over time you'll build a little folder of favorites you can re-read on nights when you're too tired to invent a new one. If your version of ChatRTX has a **\"copy\"** or **\"save\"** button next to the AI's reply, use that instead — it's the same idea in one click.\n💬 Example: save the file as `bedtime-stories/mira-the-fox.md` so you can find it quickly later.\nYou'll know it worked when you have a small, named file on your computer that you can open and read any time, even without ChatRTX running.\n\n## Step 6 — Make it a nightly habit with a 30-second prompt\nThe real magic is the routine. Before bed, open ChatRTX (it loads much faster after the first time), and send one short prompt based on the day — what your kid wore, what they ate, what scared them at the playground. Feeding the AI those tiny real-life details makes each story feel new even when the character is the same. Spend ten seconds typing, ten seconds waiting, then read. Total time: about two minutes, and you never tell the same story twice.\n💬 Example: *\"Write a bedtime story about the little boy in the blue raincoat who fed the ducks at the pond today. Include his toy truck. Gentle, happy ending, about 200 words.\"*\nYou'll know it worked when your kid asks \"can we have a new one tomorrow night?\" — because they will.\n\n## Common mistakes\n- **Mistake:** Assuming ChatRTX will run on any computer. **Fix:** It needs a dedicated NVIDIA RTX 30-series card or newer. If you only have integrated graphics (the chip built into the processor), the installer will refuse — there's no workaround.\n- **Mistake:** Asking for a story with no details at all (\"Tell me a bedtime story\"). **Fix:** The AI does better with at least one character, one place, and one small thing. Two sentences of direction beats a vague one-liner every time.\n- **Mistake:** Worrying that the AI made up something inappropriate. **Fix:** Read the story before you read it to your child. ChatRTX is usually gentle when you ask it to be, but it can occasionally add a surprise twist — skim first, then read aloud.\n\n## What this means for you\n- **In everyday life:** Bedtime stops being a fight. You have a private, offline storyteller on your computer that costs nothing and never repeats itself, and your kids start to look forward to \"the new one.\"\n- **For your business or work:** The same habit — typing a short, specific prompt and getting a custom draft in seconds — is the foundation of using AI for emails, reports, and ideas. Bedtime stories are practice.\n- **If you're just getting started:** Skip everything fancy. One character, one place, one small object. Send the prompt. Read the reply. That's the whole trick.\n\n## Try it now\nOpen ChatRTX, and send this exact prompt tonight: *\"Write a bedtime story for a 5-year-old about a little girl named Lily who finds a glowing pebble in her backyard. Gentle, happy ending, about 200 words.\"* Read the result out loud — and watch what happens when your kid asks for another one tomorrow.",
+  "original_title": "Make up a fresh bedtime story for your kids with ChatRTX every night"
+}
