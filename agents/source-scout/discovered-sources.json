@@ -1,32 +1,13 @@
 {
   "_meta": {
-    "generated_at": "2026-08-05T01:30:22.074Z",
+    "generated_at": "2026-08-08T08:28:14.559Z",
     "generated_by": "source-scout agent v3.0 (megbízhatóság-kapu)",
     "note": "JAVASLATOK új, MEGBÍZHATÓ hivatalos forrásokra. A felhasználó/főnök dönti el, melyiket adjuk a sources/rss-feeds.json-hoz (enabled:true-val). Minden jelölt megbízhatósági pontszámmal + indoklással.",
     "min_score": 100,
-    "checked_orgs": 27,
-    "newly_discovered": 0,
-    "rejected_count": 3,
-    "rejected_examples": [
-      {
-        "name": "Xero",
-        "host": "xero.com",
-        "reason": "pont 69 < 100",
-        "score": 69
-      },
-      {
-        "name": "Discord",
-        "host": "discord.com",
-        "reason": "pont 75 < 100",
-        "score": 75
-      },
-      {
-        "name": "Zoho",
-        "host": "zoho.com",
-        "reason": "pont 75 < 100",
-        "score": 75
-      }
-    ]
+    "checked_orgs": 18,
+    "newly_discovered": 2,
+    "rejected_count": 0,
+    "rejected_examples": []
   },
   "user_rejected_hosts": [
     "aisingapore.org",
@@ -38,5 +19,48 @@
     "toggl.com",
     "writer.com"
   ],
-  "discovered_sources": []
+  "discovered_sources": [
+    {
+      "suggested_id": "airbnb",
+      "name": "Airbnb Newsroom (hivatalos)",
+      "url": "https://news.airbnb.com/feed/",
+      "category": "ai-company-official",
+      "priority": 3,
+      "language": "en",
+      "country": "US",
+      "reliability_score": 100,
+      "reliability_reasons": [
+        "friss (utolsó cikk 2 napja)",
+        "bő kínálat (10 cikk)",
+        "hivatalos forrásként jelölve",
+        "a domain/feed egyezik a cég nevével",
+        "HTTPS + érvényes RSS"
+      ],
+      "item_count_at_discovery": 10,
+      "last_post_age_days": 2,
+      "comment": "JAVASLAT (source-scout, megbízhatóság 100/100): Travel accommodation app - new features for hosts/guests. Felhasználói jóváhagyás kell!",
+      "enabled": false
+    },
+    {
+      "suggested_id": "notion",
+      "name": "Notion Release Notes (hivatalos)",
+      "url": "https://www.notion.so/releases/rss.xml",
+      "category": "ai-company-official",
+      "priority": 3,
+      "language": "en",
+      "country": "US",
+      "reliability_score": 100,
+      "reliability_reasons": [
+        "friss (utolsó cikk 1 napja)",
+        "bő kínálat (147 cikk)",
+        "hivatalos forrásként jelölve",
+        "a domain/feed egyezik a cég nevével",
+        "HTTPS + érvényes RSS"
+      ],
+      "item_count_at_discovery": 147,
+      "last_post_age_days": 1,
+      "comment": "JAVASLAT (source-scout, megbízhatóság 100/100): Note-taking and productivity app - new features. Felhasználói jóváhagyás kell!",
+      "enabled": false
+    }
+  ]
 }

@@ -1,86 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178597974405310",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-06T01:29:04.053Z",
-      "updated": "2026-08-06T01:35:18.841Z"
-    },
-    {
-      "id": "t17859801188431",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-06T01:35:18.843Z",
-      "updated": "2026-08-06T01:36:19.781Z"
-    },
-    {
-      "id": "t178598017981152",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-06T01:36:19.811Z",
-      "updated": "2026-08-06T01:36:19.991Z"
-    },
-    {
-      "id": "t178598017999264",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-06T01:36:19.992Z",
-      "updated": "2026-08-06T01:36:41.098Z"
-    },
-    {
-      "id": "t178598020110246",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-06T01:36:41.102Z",
-      "updated": "2026-08-06T01:38:04.725Z"
-    },
-    {
-      "id": "t178598028472634",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-06T01:38:04.726Z",
-      "updated": "2026-08-06T01:38:37.929Z"
-    },
-    {
-      "id": "t178598031793191",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-06T01:38:37.931Z",
-      "updated": "2026-08-06T01:39:34.849Z"
-    },
-    {
-      "id": "t178598037485039",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-08-06T01:39:34.850Z",
-      "updated": "2026-08-06T01:41:09.321Z"
-    },
-    {
-      "id": "t178598046932340",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-06T01:41:09.323Z",
-      "updated": "2026-08-06T01:41:23.563Z"
-    },
-    {
-      "id": "t178598048356443",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-08-06T01:41:23.564Z",
-      "updated": "2026-08-06T01:41:41.965Z"
-    },
-    {
       "id": "t178601199390732",
       "title": "Run ceo",
       "status": "done",
@@ -479,41 +399,89 @@
       "agent": "publisher",
       "created": "2026-08-08T01:08:49.515Z",
       "updated": "2026-08-08T01:09:07.762Z"
+    },
+    {
+      "id": "t178617762345318",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-08-08T08:27:03.453Z",
+      "updated": "2026-08-08T08:27:03.607Z"
+    },
+    {
+      "id": "t178617762360899",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-08-08T08:27:03.608Z",
+      "updated": "2026-08-08T08:27:28.248Z"
+    },
+    {
+      "id": "t178617764825049",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-08-08T08:27:28.250Z",
+      "updated": "2026-08-08T08:28:15.044Z"
+    },
+    {
+      "id": "t178617769504679",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-08T08:28:15.046Z",
+      "updated": "2026-08-08T08:28:15.473Z"
+    },
+    {
+      "id": "t17861776954753",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-08T08:28:15.475Z",
+      "updated": "2026-08-08T08:28:27.702Z"
+    },
+    {
+      "id": "t17861777077051",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-08-08T08:28:27.705Z",
+      "updated": "2026-08-08T08:28:27.903Z"
+    },
+    {
+      "id": "t178617770794213",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-08T08:28:27.942Z",
+      "updated": "2026-08-08T08:28:43.000Z"
+    },
+    {
+      "id": "t178617772300219",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-08-08T08:28:43.002Z",
+      "updated": "2026-08-08T08:29:05.648Z"
+    },
+    {
+      "id": "t178617774565066",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-08T08:29:05.650Z",
+      "updated": "2026-08-08T08:29:22.461Z"
+    },
+    {
+      "id": "t178617776246318",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-08-08T08:29:22.463Z",
+      "updated": "2026-08-08T08:29:36.658Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178515087315011",
-      "level": "warn",
-      "text": "📨 guide → ceo: Kell még adat: \"Translate Foreign Documents and Everyday Signs with Gemini\" — az Ellenőrző tényt/forrást kér, amit nem t",
-      "agent": "guide",
-      "at": "2026-07-27T11:14:33.150Z",
-      "loud": false
-    },
-    {
-      "id": "n178515100122921",
-      "level": "info",
-      "text": "SEO: 3 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-07-27T11:16:41.229Z",
-      "loud": false
-    },
-    {
-      "id": "n178515102830372",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). A lineup remekül lefedi a tanulást, munkát és mindennapi feladatokat, miközben különböző MI-eszközöket mutat be egyszerű, barátságos módon. Egy apró javítás kell: a 9. cikkben a \"Cohere'**s** text gen",
-      "agent": "publisher",
-      "at": "2026-07-27T11:17:08.303Z",
-      "loud": false
-    },
-    {
-      "id": "n178515104041938",
-      "level": "success",
-      "text": "2 hír + 1 útmutató publikálva (költség: $0.0156).",
-      "agent": "ceo",
-      "at": "2026-07-27T11:17:20.419Z",
-      "loud": false
-    },
     {
       "id": "n178517352817581",
       "level": "info",
@@ -1281,27 +1249,41 @@
       "agent": "ceo",
       "at": "2026-08-08T01:09:07.794Z",
       "loud": false
+    },
+    {
+      "id": "n178617769456134",
+      "level": "info",
+      "text": "🧭 Forráskutató: 2 ÚJ megbízható forrás-javaslat (küszöb 100).\n• [100] Airbnb Newsroom (hivatalos)\n• [100] Notion Release Notes (hivatalos)\nJóváhagyod valamelyiket?",
+      "agent": "source-scout",
+      "at": "2026-08-08T08:28:14.561Z",
+      "loud": false
+    },
+    {
+      "id": "n178617774564046",
+      "level": "info",
+      "text": "SEO: 1 cikk optimalizálva (átlag 9.0/10).",
+      "agent": "seo",
+      "at": "2026-08-08T08:29:05.640Z",
+      "loud": false
+    },
+    {
+      "id": "n178617776743052",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). A solid, useful line-up — you've got practical how-tos, privacy guidance, and heartfelt use cases all covered. Just one note: articles 4, 5, and 6 are quite similar (all complaint/refund emails). Cons",
+      "agent": "publisher",
+      "at": "2026-08-08T08:29:27.430Z",
+      "loud": false
+    },
+    {
+      "id": "n178617777669787",
+      "level": "success",
+      "text": "0 hír + 1 útmutató publikálva (költség: $0.0043).",
+      "agent": "ceo",
+      "at": "2026-08-08T08:29:36.697Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178521180789883",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Visual screenshots in Google Meet meeting notes will soon be generally available, pre-configure admin settings in advance\" — javítva: Article framing (focus on limitations) misses the news angle from source — screenshots are coming soon to Meet notes, which readers deserve to know; Subtitle 'what it misses' and 'limits worth knowing' could mislead readers into thinking screenshots ar",
-      "ref": "2026-07-27T17-29-42-209Z_google-workspace_Visual_screenshots_in_Google_Meet_meeting_notes_wi.json",
-      "at": "2026-07-28T04:10:07.898Z"
-    },
-    {
-      "id": "m178521183498643",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Visual screenshots in Google Meet meeting notes will soon be generally available, pre-configure admin settings in advance\" (?/10)",
-      "ref": "2026-07-27T17-29-42-209Z_google-workspace_Visual_screenshots_in_Google_Meet_meeting_notes_wi.json",
-      "at": "2026-07-28T04:10:34.986Z"
-    },
     {
       "id": "m178521188365785",
       "from": "designer",
@@ -2643,6 +2625,24 @@
       "text": "6 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-08-08T01:16:48.269Z"
+    },
+    {
+      "id": "m178617776245469",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-08-08T08:29:22.454Z"
+    },
+    {
+      "id": "m178617818397037",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"AI made simple: a gentle first guide for older beg\" — AI \"cannot send emails, make purchases, or perform any actions in the real world\" — modern AI agents like OpenAI Operator, Anthropic Computer Use, and Google DeepMind Project Mariner can now perform real-world actions including web browsing, form filling, and interacting with applica",
+      "ref": "ARTICLE_GUIDE_ai-for-seniors.json",
+      "at": "2026-08-08T08:36:23.970Z"
     }
   ]
 }
