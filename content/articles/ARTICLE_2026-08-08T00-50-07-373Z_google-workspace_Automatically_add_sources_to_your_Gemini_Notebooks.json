@@ -1,0 +1,58 @@
+{
+  "_meta": {
+    "written_at": "2026-08-08T00:53:53.358Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.007515024,
+    "original_draft": "2026-08-08T00-50-07-373Z_google-workspace_Automatically_add_sources_to_your_Gemini_Notebooks.json",
+    "source_id": "google-workspace",
+    "source_name": "Google Workspace Updates (hivatalos)",
+    "source_link": "http://workspaceupdates.googleblog.com/2026/08/automatically-add-sources-to-your-Gemini-Notebooks-in-Workspace-Studio.html",
+    "status": "published",
+    "published_at": "2026-08-08T00:54:12.845Z",
+    "slug": "google-s-new-gemini-notebook-automation-keeps-your-ai-research-fresh",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 710
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured explainer with clear hooks, friendly tone, and appropriate audience segmentation. The honest caveat about button names builds trust. Factual accuracy is solid based on the Google source. No prohibited content or clichés detected.",
+      "_aiCost": 0.0015138,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-08-08T00:56:20.105Z",
+    "guide_worthy": true,
+    "related_guide_topic": "gemini-getting-started",
+    "image_v": 2,
+    "image_at": "2026-08-08T01:06:31.762Z",
+    "seo": {
+      "meta_description": "Google's new Gemini Notebook automation in Workspace automatically adds sources to your AI research on a schedule — keeping your work current without manual effort.",
+      "keywords": [
+        "Google Gemini Notebook automation",
+        "Gemini Notebooks Workspace",
+        "automate AI research workflow",
+        "Google Workspace AI tools",
+        "Gemini Notebook scheduled updates",
+        "AI research automation tools",
+        "Google AI research features"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add the product name 'Gemini' earlier in the title for better keyword placement",
+        "Include a concrete use case example (e.g., market research, competitor analysis) to boost relevance for long-tail searches",
+        "Add FAQ-style subheadings covering 'how to set up' and 'what sources work' with Gemini Notebooks"
+      ],
+      "optimised_at": "2026-08-08T01:07:33.132Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Google's New Gemini Notebook Automation Keeps Your AI Research Fresh\"\nsubtitle: \"A new step lets you automatically add sources to Gemini Notebooks in Workspace, so your research stays current without manual work.\"\ncategory: \"explainer\"\naudience: \"business\"\nread_time_minutes: 4\ntags: [\"gemini\", \"google-workspace\", \"automation\", \"ai-productivity\"]\n---\n\n# Google's New Gemini Notebook Automation Keeps Your AI Research Fresh\n\n> **In short:** Google now lets you automate adding sources to Gemini Notebooks in Workspace through a recurring workflow. Your AI's research folder can refresh itself with new files and links on a schedule — no more re-uploading each time. Most useful for people who research the same topic week after week.\n\nPicture a Monday morning. You open your work AI to ask about last week's project status, but the document you need landed in Drive on Friday afternoon and was never added to the AI's \"memory.\" Now you're uploading it by hand, re-explaining the context, and rerunning the question you thought you'd already answered.\n\nThat small annoyance — a research folder that's quietly out of date — is exactly the gap Google is trying to close with a new automation step for Gemini Notebooks.\n\n## What Gemini Notebooks are, in plain English\n\nA Gemini Notebook is a workspace inside Google's AI where you collect sources — Google Drive files, website links, YouTube videos, or pasted text — and then ask the AI questions about them. Think of it as a curated reading pile that the AI can reference every time you open the notebook.\n\nUntil now, every time you found a new doc, article, or video you wanted the AI to \"remember,\" you had to add it by hand. For a single project, that's fine. For a topic you track week after week, it's a chore.\n\n## What's changing with the new automation\n\nGoogle has added a new step you can drop into a recurring workflow — it pulls fresh sources into a notebook on a schedule, instead of waiting for you to do it. The sources can be Drive files, web URLs, or YouTube links, depending on what your workflow can deliver.\n\nI don't have the exact button names in front of me, so I'd rather be honest than guess at menus you won't find. The practical takeaway is simpler: if you already run recurring workflows in Google Workspace, you now have a way to feed a notebook without babysitting it.\n\n## Where this saves real time\n\nA few situations where automatically refreshed sources pay off right away:\n\n- **Weekly project digests.** Drop every status doc and meeting note into a notebook, and the AI always has the full picture when you ask, *\"What changed this week?\"*\n- **Client or account research.** Have the notebook pull in news, public reports, or social posts about a customer on a set cadence.\n- **Industry monitoring.** Feed it trade publications or competitor sites, and ask trend questions whenever you sit down to think.\n- **Onboarding libraries.** Keep a notebook of \"everything a new hire needs to read,\" and let new sources join automatically as the team adds them.\n\nThe common thread: anything where your research pile keeps growing, and the AI's answers used to lag behind reality.\n\n## What this means for you\n\n- **If you work on a small team or solo:** Start with one notebook for your highest-frequency topic — your own role, your biggest client, your main project. Curate sources manually for a couple of weeks first so you can see which updates actually matter; then automate those.\n- **If you run a larger team:** This is a good moment to standardize one or two team notebooks so everyone asks the AI questions from the same sources. Consistent inputs mean fewer contradictory answers across the group.\n- **If you're new to AI tools:** Don't start with automation. Get comfortable uploading a few documents and asking questions about them first. Recurring workflows are a layer on top, not a place to begin.\n\n## Wrap-up\n\nRecurring source updates turn a Gemini Notebook from a snapshot into a living research file. You spend less time collecting and more time asking the questions that actually move your week forward. Pick one recurring question you already ask at work — that's the notebook to build first.",
+  "original_title": "Automatically add sources to your Gemini Notebooks in Workspace Studio"
+}
