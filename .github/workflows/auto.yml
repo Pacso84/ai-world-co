@@ -386,6 +386,10 @@ jobs:
           # webhookra POST-ol (Make → Create a Pin). Amíg a secret nincs beállítva,
           # a poszter kecsesen kihagyja magát (dormant) — nem hibázik.
           PINTEREST_MAKE_WEBHOOK_URL: ${{ secrets.PINTEREST_MAKE_WEBHOOK_URL }}
+          # ÚJ CSATORNÁK (2026-08-09). Amíg ezek a titkok üresek, a poszterek
+          # alszanak — a lépés akkor is hibátlanul lefut.
+          THREADS_MAKE_WEBHOOK_URL: ${{ secrets.THREADS_MAKE_WEBHOOK_URL }}
+          X_MAKE_WEBHOOK_URL: ${{ secrets.X_MAKE_WEBHOOK_URL }}
           # 2026-07-27: a poszter ELŐ-ELLENŐRZI a Make-forgatókönyvet ezzel a
           # tokennel. Kellett, mert a webhook 200-at ad akkor is, ha a
           # forgatókönyvben nincs Pinterest-modul — így 38 pin "kiküldve"
@@ -395,13 +399,42 @@ jobs:
         run: |
           node agents/social/agent.js --limit 6 || true
           node agents/social/poster.js --limit 2 || true
-          # Pinterest 3 → 5 / futás (2026-07-29, = 15/nap).
-          # Ok: 73 EVERGREEN útmutató került vissza a sorba (a Pinterest 07-25-én
-          # épült be, ezek a cikkek KORÁBBAN kaptak "skipped-old" jelölést — de a
-          # Pinterestnél az útmutató nem évül el). A sor ~187-re nőtt; 9/nappal
-          # 21 nap, 15/nappal ~12 nap. Óvatosan emelünk: a fiók fiatal, a hirtelen
-          # nagy ütem levélszemétnek látszhat.
-          node agents/social/pinterest-poster.js --limit 5 || true
+          # ⛔ PINTEREST LEÁLLÍTVA (2026-08-09, USER-DÖNTÉS). NE kapcsold vissza
+          # kérdés nélkül.
+          #
+          # KÉT MÉRÉS EGYÜTT hozta a döntést:
+          #   1) HOZAM: 30+ nap alatt 189 pin ment ki, és a Cloudflare szerint
+          #      PONTOSAN 0 látogató érkezett Pinterestről. Az álló pin-kép
+          #      (2026-08-07) sem változtatott: 3 nap, ~44 álló pin → 0.
+          #   2) ÁR: a Make művelet-keretének 62%-át vitte (aug 1-9: 254 a 407-ből),
+          #      napi 15 pin × 2 művelet. A teljes fogyás napi 45 → havi 1402
+          #      vetítés, az ingyenes csomag 1000/hó — a keret aug 23. körül
+          #      elfogyott volna, és MAGÁVAL RÁNTOTTA VOLNA A FACEBOOKOT is,
+          #      ami a forgalmunk ~90%-át adja.
+          #
+          # Nem pénzbe került tehát, hanem KISZORÍTÁSBA: pont azt a keretet
+          # foglalta, ami az új csatornáknak kell. A felszabaduló ~930 művelet/hó
+          # a Threads + X forgatókönyveké.
+          #
+          # A poszter KÓDJA MEGMARAD, csak nem hívjuk. Visszakapcsolás = ez az
+          # egy sor. A Make-forgatókönyvet is érdemes kikapcsolni a felületen
+          # (eu1.make.com), de amíg nem POST-olunk a webhookjára, nem fut.
+          # node agents/social/pinterest-poster.js --limit 5 || true
+
+          # ÚJ CSATORNÁK (2026-08-09) — a Pinteresttől felszabadult ~930
+          # művelet/hó helyén. Mindkettő ALSZIK, amíg a webhook-titok nincs
+          # beállítva: nem hibáznak, nem fogyasztanak, nem jelölnek meg semmit.
+          #
+          # A KIVÁLASZTÁS OKA: a Pinterest 189 pinből 0 látogatót hozott, mert
+          # ott egy 0 követős fiókot senki nem lát. A Facebook viszont 3 (!)
+          # követővel is napi ~26 látogatót hoz — mert a Meta ajánlómotorja
+          # IDEGENEKNEK is kiteszi a posztjainkat. A Threads ugyanazt a motort
+          # használja. Az X gyengébb (a külső linket visszafogja), de olcsó.
+          #
+          # Napi 2×3 = 6 poszt csatornánként, ugyanaz a kulturált tempó, mint
+          # a Facebooknál. Ha beválik, lehet emelni.
+          node agents/social/multi-poster.js --channel threads --limit 2 || true
+          node agents/social/multi-poster.js --channel x --limit 2 || true
 
       # Napi önjelentés a Főnöktől Telegramra (naponta 1x, a 7-15 UTC sávban)
       # FORRÁS-BIZONYÍTVÁNY (2026-07-22): osztályozza a hírforrásokat (frissesség +
@@ -421,6 +454,12 @@ jobs:
           TELEGRAM_OWNER_CHAT_ID: ${{ secrets.TELEGRAM_OWNER_CHAT_ID }}
           # Make-őrszem (2026-07-15): a FB-posztoló forgatókönyv állapotát figyeli
           MAKE_API_TOKEN: ${{ secrets.MAKE_API_TOKEN }}
+          # ÚJ CSATORNÁK ŐRZÉSE (2026-08-09): ha meg van adva a forgatókönyv
+          # azonosítója, a riport ezt is figyeli (él-e, van-e benne kimeneti
+          # modul, buktak-e posztok). Üresen a csatorna egyszerűen kimarad —
+          # így nem küld vészjelzést olyasmiről, ami még nem is létezik.
+          THREADS_MAKE_SCENARIO_ID: ${{ secrets.THREADS_MAKE_SCENARIO_ID }}
+          X_MAKE_SCENARIO_ID: ${{ secrets.X_MAKE_SCENARIO_ID }}
           # EGYENLEG-ŐR (2026-08-01): a riport lekérdezi a VALÓDI OpenRouter-
           # egyenleget. A havi keret csak egy szabály, amit mi tartunk be; a
           # feltöltött pénz viszont fizikai korlát — ha az fogy el, a cég

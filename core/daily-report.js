@@ -357,9 +357,18 @@ async function main() {
   // kimeneti modul nélkül. Ezt is figyeljük, mindkét csatornán.
   try {
     if (process.env.MAKE_API_TOKEN) {
+      // A PINTEREST KIKERÜLT INNEN (2026-08-09): a csatornát leállítottuk
+      // (0 látogató 189 pinből, miközben a Make-keret 62%-át vitte). Ha itt
+      // maradt volna, a riport MINDEN NAP "⛔ PINTEREST-POSZTOLÓ LEÁLLT"
+      // vészjelzést küldött volna egy szándékosan kikapcsolt csatornáról —
+      // pontosan az a fajta valótlan sor, amit 08-06-án kigyomláltunk.
+      // Új csatorna felvétele ide: egy sor, ha megvan a Make-forgatókönyv azonosítója.
       const WATCH = [
         { id: '6452490', pkg: 'facebook-pages', name: 'FB-POSZTOLÓ', fix: 'Facebook Pages → Upload a Photo' },
-        { id: process.env.PINTEREST_MAKE_SCENARIO_ID || '6701833', pkg: 'pinterest', name: 'PINTEREST-POSZTOLÓ', fix: 'Pinterest → Create a Pin' }
+        ...(process.env.THREADS_MAKE_SCENARIO_ID
+          ? [{ id: process.env.THREADS_MAKE_SCENARIO_ID, pkg: 'threads', name: 'THREADS-POSZTOLÓ', fix: 'Threads → Create a Thread' }] : []),
+        ...(process.env.X_MAKE_SCENARIO_ID
+          ? [{ id: process.env.X_MAKE_SCENARIO_ID, pkg: 'twitter', name: 'X-POSZTOLÓ', fix: 'X (Twitter) → Create a Post' }] : [])
       ];
       for (const w of WATCH) {
         const mr = await fetch(`https://eu1.make.com/api/v2/scenarios/${w.id}`, { headers: { Authorization: 'Token ' + process.env.MAKE_API_TOKEN }, signal: AbortSignal.timeout(15000) });
