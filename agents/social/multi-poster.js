@@ -37,6 +37,7 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { selectSocialBatch } from '../../core/social-queue.js';
 import { composePost, CHANNELS } from '../../core/social-text.js';
+import { scenarioVerdict } from '../../core/scenario-guard.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..', '..');
@@ -48,9 +49,40 @@ const FRESH_DAYS = 7;
 // vágnak: a Threads mobil-első, függőleges hírfolyam (4:5 tölti ki), az X
 // idővonala viszont fekvő képekre van szabva — ott az 1,91:1 néz ki jobban.
 const CHANNEL_CFG = {
-  threads: { envHook: 'THREADS_MAKE_WEBHOOK_URL', icon: '🧵', imgOrder: ['fb', 'share', 'images'] },
-  x: { envHook: 'X_MAKE_WEBHOOK_URL', icon: '𝕏', imgOrder: ['share', 'fb', 'images'] }
+  threads: {
+    envHook: 'THREADS_MAKE_WEBHOOK_URL', envScenario: 'THREADS_MAKE_SCENARIO_ID',
+    pkg: 'threads', icon: '🧵', imgOrder: ['fb', 'share', 'images']
+  },
+  x: {
+    envHook: 'X_MAKE_WEBHOOK_URL', envScenario: 'X_MAKE_SCENARIO_ID',
+    pkg: 'twitter', icon: '𝕏', imgOrder: ['share', 'fb', 'images']
+  }
 };
+
+// ELŐ-ELLENŐRZÉS: tényleg kijut-e a poszt? (core/scenario-guard.js)
+// A Make webhookja MINDIG "Accepted" 200-at ad, ha a cím létezik — akkor is,
+// ha a forgatókönyv nincs elmentve, ki van kapcsolva, vagy nincs benne
+// kimeneti modul. 2026-08-09-én élesben pont ezt láttuk: friss webhook-cím,
+// "Accepted", és a fiókban EGYETLEN forgatókönyv sem volt mögötte.
+// Enélkül a poszter sikernek venné, `posted_*: true` jelölést írna, és a
+// cikk soha többé nem kerülne sorra. Így veszett el 38 pin júliusban.
+async function checkScenario(cfg) {
+  const id = (process.env[cfg.envScenario] || '').trim();
+  const token = (process.env.MAKE_API_TOKEN || '').trim();
+  let scenario = null, apiFailed = false;
+  if (id && token) {
+    try {
+      const r = await fetch(`https://eu1.make.com/api/v2/scenarios/${id}`, {
+        headers: { Authorization: 'Token ' + token }, signal: AbortSignal.timeout(15000)
+      });
+      if (r.ok) scenario = (await r.json()).scenario || null;
+      else apiFailed = true;
+    } catch { apiFailed = true; }
+  }
+  return scenarioVerdict({
+    scenario, requiredPackage: cfg.pkg, hasId: !!id, apiFailed, noToken: !token
+  });
+}
 
 const args = process.argv.slice(2);
 const DRY = args.includes('--dry');
@@ -115,6 +147,13 @@ async function main() {
   const hook = (process.env[cfg.envHook] || '').trim();
   if (!hook) { console.log(`   ⏭️  Nincs ${cfg.envHook} — alszom (állítsd be a .env-ben / GitHub Secrets-ben).`); return; }
   if (!existsSync(SOCIAL_DIR)) { console.log('   💤 Nincs social mappa.'); return; }
+
+  const verdict = await checkScenario(cfg);
+  if (!verdict.send) {
+    console.log(`   ⛔ NEM KÜLDÖK: ${verdict.reason}`);
+    console.log('      A sor ÉRINTETLEN marad — semmi nem vész el, javítás után magától továbbmegy.\n');
+    return;
+  }
 
   const pub = publishedMap();
   const now = Date.now();
