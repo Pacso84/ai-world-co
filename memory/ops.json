@@ -1,102 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178601217674340",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-06T10:29:36.743Z",
-      "updated": "2026-08-06T10:29:49.655Z"
-    },
-    {
-      "id": "t178601218965698",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-08-06T10:29:49.656Z",
-      "updated": "2026-08-06T10:30:04.866Z"
-    },
-    {
-      "id": "t178606825272020",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-08-07T02:04:12.720Z",
-      "updated": "2026-08-07T02:04:12.822Z"
-    },
-    {
-      "id": "t17860682528233",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-08-07T02:04:12.823Z",
-      "updated": "2026-08-07T02:05:16.320Z"
-    },
-    {
-      "id": "t178606831632199",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-08-07T02:05:16.321Z",
-      "updated": "2026-08-07T02:05:16.442Z"
-    },
-    {
-      "id": "t178606831644329",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-07T02:05:16.443Z",
-      "updated": "2026-08-07T02:18:46.877Z"
-    },
-    {
-      "id": "t178606912687822",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-07T02:18:46.878Z",
-      "updated": "2026-08-07T02:21:34.592Z"
-    },
-    {
-      "id": "t178606929459461",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-07T02:21:34.594Z",
-      "updated": "2026-08-07T02:22:49.841Z"
-    },
-    {
-      "id": "t178606936984199",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-07T02:22:49.841Z",
-      "updated": "2026-08-07T02:23:47.011Z"
-    },
-    {
-      "id": "t178606942701211",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-08-07T02:23:47.012Z",
-      "updated": "2026-08-07T02:24:32.355Z"
-    },
-    {
-      "id": "t178606947237662",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-07T02:24:32.376Z",
-      "updated": "2026-08-07T02:35:57.310Z"
-    },
-    {
-      "id": "t178607015731193",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-07T02:35:57.311Z",
-      "updated": "2026-08-07T02:38:10.843Z"
-    },
-    {
       "id": "t178607029086334",
       "title": "Run designer",
       "status": "done",
@@ -479,33 +383,105 @@
       "agent": "publisher",
       "created": "2026-08-08T16:20:19.406Z",
       "updated": "2026-08-08T16:20:32.134Z"
+    },
+    {
+      "id": "t178623675888317",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-08-09T00:52:38.883Z",
+      "updated": "2026-08-09T00:52:39.078Z"
+    },
+    {
+      "id": "t178623675907957",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-08-09T00:52:39.079Z",
+      "updated": "2026-08-09T00:52:57.617Z"
+    },
+    {
+      "id": "t178623677761915",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-08-09T00:52:57.619Z",
+      "updated": "2026-08-09T00:52:57.821Z"
+    },
+    {
+      "id": "t178623677782351",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-09T00:52:57.823Z",
+      "updated": "2026-08-09T00:52:57.995Z"
+    },
+    {
+      "id": "t178623677799661",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-09T00:52:57.996Z",
+      "updated": "2026-08-09T00:52:58.175Z"
+    },
+    {
+      "id": "t178623677817882",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-08-09T00:52:58.178Z",
+      "updated": "2026-08-09T00:52:58.385Z"
+    },
+    {
+      "id": "t178623677842080",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-09T00:52:58.420Z",
+      "updated": "2026-08-09T01:03:42.114Z"
+    },
+    {
+      "id": "t178623742211531",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-09T01:03:42.115Z",
+      "updated": "2026-08-09T01:05:13.667Z"
+    },
+    {
+      "id": "t178623751369934",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-09T01:05:13.699Z",
+      "updated": "2026-08-09T01:05:49.628Z"
+    },
+    {
+      "id": "t178623754963029",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-08-09T01:05:49.630Z",
+      "updated": "2026-08-09T01:06:29.569Z"
+    },
+    {
+      "id": "t178623758957189",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-09T01:06:29.571Z",
+      "updated": "2026-08-09T01:06:46.924Z"
+    },
+    {
+      "id": "t178623760692540",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-08-09T01:06:46.925Z",
+      "updated": "2026-08-09T01:07:02.297Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n17851735684976",
-      "level": "success",
-      "text": "1 hír + 0 útmutató publikálva (költség: $0.0128).",
-      "agent": "ceo",
-      "at": "2026-07-27T17:32:48.497Z",
-      "loud": false
-    },
-    {
-      "id": "n178520440354761",
-      "level": "info",
-      "text": "SEO: 10 cikk optimalizálva (átlag 8.2/10).",
-      "agent": "seo",
-      "at": "2026-07-28T02:06:43.547Z",
-      "loud": false
-    },
-    {
-      "id": "n17852044862683",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The line-up looks solid — practical, varied, and genuinely useful for everyday Australians. Just one note: we'd want to double-check tool names are shortened per our style guide (e.g., \"Perplexity\" in",
-      "agent": "publisher",
-      "at": "2026-07-28T02:08:06.268Z",
-      "loud": false
-    },
     {
       "id": "n178520449579423",
       "level": "success",
@@ -1281,18 +1257,33 @@
       "agent": "ceo",
       "at": "2026-08-08T16:20:32.156Z",
       "loud": false
+    },
+    {
+      "id": "n178623758956247",
+      "level": "info",
+      "text": "SEO: 4 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-08-09T01:06:29.562Z",
+      "loud": false
+    },
+    {
+      "id": "n178623761304472",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The lineup is solid and practical — a good mix of practical how-tos, helpful guidance, and clear safety reminders that will serve readers well. Two minor notes: **Articles 4 and 5** both cover complai",
+      "agent": "publisher",
+      "at": "2026-08-09T01:06:53.044Z",
+      "loud": false
+    },
+    {
+      "id": "n178623762233080",
+      "level": "success",
+      "text": "0 hír + 4 útmutató publikálva (költség: $0.0521).",
+      "agent": "ceo",
+      "at": "2026-08-09T01:07:02.330Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178525923765234",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-07-28T17:20:37.652Z"
-    },
     {
       "id": "m178525973120041",
       "from": "social",
@@ -2643,6 +2634,15 @@
       "text": "6 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-08-08T16:31:19.371Z"
+    },
+    {
+      "id": "m178623760691524",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-08-09T01:06:46.915Z"
     }
   ]
 }
