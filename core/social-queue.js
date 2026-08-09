@@ -1,26 +1,32 @@
 // ===================================================================
-// SOCIAL SOR — kit küldünk ki a következő körben (2026-08-04)
-//
-// MIÉRT KELLETT: a Facebook-poszter kor szerint rangsorolt (friss előre),
-// és futásonként 2 posztot küld — napi 6-ot. Közben napi 12 megosztható
-// tartalom készül (8 hír + 4 útmutató). A friss sor tehát gyorsabban
-// töltődik, mint ürül, és ami 7 napnál öregebb, az SOHA nem jut előre.
-//
-// MÉRT KÖVETKEZMÉNY (2026-08-04, 526 social-fájl):
-//   HÍR      346 → 230 "skipped-stale" (SOSEM ment ki, lejárt) · 103 kiment
-//   ÚTMUTATÓ 180 → 156 sorban ragadt (mind 7 napnál régebbi) · 23 kiment
-//
-// A 156 útmutató azért fáj, mert a forgalom ~82%-a Facebookról jön, és a
-// mérés szerint az ÚTMUTATÓ hozza a látogatót, nem a hír.
-//
-// A MEGOLDÁS NEM a limit emelése: a "kulturált oldal-tempó" tudatos döntés
-// volt. Helyette FENNTARTOTT HELY — a körönkénti helyek fele az örökzöld
-// útmutatóé, ha van ilyen a sorban. A posztolás MENNYISÉGE nem változik,
-// csak az összetétele.
-//
-// Az örökzöldek közül a LEGRÉGEBBI megy előbb (FIFO): így a hátralék
-// kiszámíthatóan leürül, és minden útmutató sorra kerül egyszer.
+// SOCIAL SOR — kit küldünk ki a következő körben
 // ===================================================================
+//
+// ── ELŐZMÉNY (2026-08-04) ──
+// A poszter kor szerint rangsorolt (friss előre), és futásonként 2 posztot
+// küldött. Közben napi ~8,5 megosztható tartalom készült, tehát a friss sor
+// gyorsabban töltődött, mint ürült, és ami 7 napnál öregebb lett, az SOHA
+// nem jutott előre. Mérve: 156 útmutató ragadt a sorban, 230 hír elévült.
+// Megoldás volt: a helyek FELE fenntartva az örökzöld útmutatónak, FIFO-ban.
+//
+// ── MOSTANI VÁLTOZÁS (2026-08-09, USER-DÖNTÉS) ──
+// „Mindig a friss kerüljön előre" + „mivel nincs Pinterest, azt forgasd bele,
+// hogy minél előbb kimenjen."
+//
+// ⚠️ A KÉT KÉRÉS ÖNMAGÁBAN KIOLTJA EGYMÁST — ezt méréssel mutattuk ki:
+//     napi termés 8,5 · napi hely 9 · hátralék 191 útmutató
+//     ha a friss MINDIG nyer, a hátraléknak 0,5 hely/nap marad → 382 nap
+// Ezért a megoldás: a friss viszi a helyek nagy részét, DE egy hely fixen a
+// hátraléké (a LEGRÉGEBBI megy oda). Így a friss gyorsan kimegy, a régiek
+// pedig kiszámíthatóan fogynak ahelyett, hogy örökre beragadnának.
+//
+// A napi 9 poszt (3/futás × 3 futás) a Pinteresttől felszabadult Make-
+// keretből telik ki: 9 × 3 művelet × 31 nap = 837/hó, az ingyenes 1000 alatt.
+// ===================================================================
+
+// A hátralék-hely csak ettől a limittől él. 1-2 posztos körben nincs mit
+// felezni — ott a friss viszi, különben a hírfolyam megöregedne.
+export const DRAIN_SLOT_FROM = 3;
 
 /**
  * @param {Array<{pubAt:string, isGuide:boolean, isFresh:boolean}>} items
@@ -30,38 +36,44 @@
 export function selectSocialBatch(items, limit) {
   if (!Array.isArray(items) || limit <= 0) return [];
 
-  // FRISS: 7 napon belül publikált — hír ÉS útmutató egyaránt. Ezek
-  // egymással kor szerint versenyeznek (legújabb elöl), ahogy eddig is.
-  const fresh = items.filter(x => x.isFresh)
-    .sort((a, b) => String(b.pubAt || '').localeCompare(String(a.pubAt || '')));
+  const ujElol = (a, b) => String(b.pubAt || '').localeCompare(String(a.pubAt || ''));
+  const regiElol = (a, b) => String(a.pubAt || '').localeCompare(String(b.pubAt || ''));
 
-  // ÖRÖKZÖLD: 7 napnál régebbi ÚTMUTATÓ. (A régi HÍR ide nem juthat — azt a
-  // hívó már 'skipped-stale'-lel lezárta.) Legrégebbi elöl = a hátralék ürül.
-  const evergreen = items.filter(x => !x.isFresh && x.isGuide)
-    .sort((a, b) => String(a.pubAt || '').localeCompare(String(b.pubAt || '')));
+  // FRISS: 7 napon belül publikált — hír ÉS útmutató egyaránt, legújabb elöl.
+  const fresh = items.filter(x => x.isFresh).sort(ujElol);
 
-  // FENNTARTOTT HELY: a helyek fele az örökzöldé. 1-es limitnél nincs mit
-  // felezni — ott a friss viszi (a CI 2-vel fut, tehát 1 hely marad fenn).
-  const reserved = limit >= 2 ? Math.floor(limit / 2) : 0;
+  // HÁTRALÉK: 7 napnál régebbi ÚTMUTATÓ. (Régi HÍR ide nem juthat — azt a
+  // hívó már lezárta.) A garantált helyre a LEGRÉGEBBI megy, hogy a sor
+  // vége is elfogyjon; a további helyekre viszont a frissebb.
+  const backlog = items.filter(x => !x.isFresh && x.isGuide);
+  const legregebbi = backlog.slice().sort(regiElol);
+  const legujabb = backlog.slice().sort(ujElol);
 
   const picked = [];
-  const takeEvergreen = Math.min(reserved, evergreen.length);
-  // Előbb a frisset töltjük a maradék helyre, hogy a hírfolyam ne öregedjen.
-  picked.push(...fresh.slice(0, limit - takeEvergreen));
-  picked.push(...evergreen.slice(0, takeEvergreen));
+  const add = x => { if (x && !picked.includes(x)) picked.push(x); };
 
-  // MARADÉK HELY NEM VESZHET EL: ha az egyik forrás kifogyott, a másik tölti
-  // fel — így a fenntartás sosem csökkenti a kiküldött posztok számát.
-  if (picked.length < limit) {
-    const usedFresh = picked.filter(x => x.isFresh).length;
-    const usedEver = picked.length - usedFresh;
-    picked.push(...fresh.slice(usedFresh, usedFresh + (limit - picked.length)));
-  }
-  if (picked.length < limit) {
-    const usedEver = picked.filter(x => !x.isFresh).length;
-    picked.push(...evergreen.slice(usedEver, usedEver + (limit - picked.length)));
-  }
-  return picked.slice(0, limit);
+  // 1) A GARANTÁLT HÁTRALÉK-HELY. Ez megy be először, hogy a friss bősége
+  //    soha ne tudja kiszorítani — ez a különbség a 382 nap és a ~60 között.
+  if (limit >= DRAIN_SLOT_FROM) add(legregebbi[0]);
+
+  // 2) A TÖBBI HELYRE A FRISS, legújabb elöl (user-szabály).
+  for (const x of fresh) { if (picked.length >= limit) break; add(x); }
+
+  // 3) MARADÉK HELY NEM VESZHET EL: ha kevés a friss, a hátralék tölti fel —
+  //    ide már a FRISSEBB régi megy, mert a friss elsőbbsége itt is él.
+  for (const x of legujabb) { if (picked.length >= limit) break; add(x); }
+
+  // 4) Ha még mindig maradt hely (pl. a drain-hely üres volt), a legrégebbi
+  //    oldalról töltünk — így egyetlen kör sem megy ki félig üresen.
+  for (const x of legregebbi) { if (picked.length >= limit) break; add(x); }
+
+  // KIVÁLASZTÁS ≠ SORREND. Fent azért került be a hátralék-elem ELSŐNEK, hogy
+  // a friss bősége ne szoríthassa ki. A KIKÜLDÉS sorrendje viszont a user
+  // szabálya szerint megy: elöl a friss, azon belül a legújabb.
+  return picked.slice(0, limit).sort((a, b) => {
+    if (!!a.isFresh !== !!b.isFresh) return a.isFresh ? -1 : 1;
+    return ujElol(a, b);
+  });
 }
 
-export default { selectSocialBatch };
+export default { selectSocialBatch, DRAIN_SLOT_FROM };

@@ -398,7 +398,14 @@ jobs:
           MAKE_API_TOKEN: ${{ secrets.MAKE_API_TOKEN }}
         run: |
           node agents/social/agent.js --limit 6 || true
-          node agents/social/poster.js --limit 2 || true
+          # 2 → 3 POSZT/FUTÁS (2026-08-09, user-döntés: "mivel nincs Pinterest,
+          # azt forgasd bele, hogy minél előbb kimenjen"). Napi 9 poszt.
+          # A KERET A PINTERESTTŐL SZABADULT FEL: 9 × 3 művelet × 31 nap =
+          # 837/hó, az ingyenes Make-csomag 1000-es keretén belül. (A Pinterest
+          # egyedül 930-at vitt volna havonta, 0 látogatóért.)
+          # ⚠️ Emelés előtt SZÁMOLD ÚJRA a keretet — a Facebook 3 műveletet
+          # fogyaszt posztonként (webhook + képletöltés + feltöltés).
+          node agents/social/poster.js --limit 3 || true
           # ⛔ PINTEREST LEÁLLÍTVA (2026-08-09, USER-DÖNTÉS). NE kapcsold vissza
           # kérdés nélkül.
           #
