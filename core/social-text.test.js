@@ -5,7 +5,7 @@
 // ===================================================================
 
 import assert from 'assert/strict';
-import { composePost, stripUrl, CHANNELS } from './social-text.js';
+import { composePost, stripUrl, followCta, CHANNELS } from './social-text.js';
 
 const URL = 'https://aiworldhq.com/article/getting-started-with-deepseek-for-everyday-help';
 
@@ -82,5 +82,27 @@ assert.equal(composePost({ text: '', url: URL, channel: 'x' }), null,
   'üres szövegből nincs poszt');
 assert.equal(composePost({ text: 'a', url: '', channel: 'x' }), null,
   'link nélkül nincs poszt');
+
+// --- követésre hívás: determinisztikus, de váltakozó -----------------
+{
+  // Ugyanaz a cikk MINDIG ugyanazt kapja — enélkül egy újraposztolás más
+  // szöveget adna, és nem lehetne se kiszámítani, se tesztelni.
+  assert.equal(followCta('valami-slug'), followCta('valami-slug'), 'ugyanarra a slugra ugyanaz');
+
+  // De a hírfolyamban váltakozzon: három egyforma poszt egymás után gépies.
+  const slugs = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l'];
+  const seen = new Set(slugs.map(followCta));
+  assert.ok(seen.size >= 2, '12 cikkre legalább kétféle szöveg jut, nem mindig ugyanaz');
+
+  // Nem lájkvadászat: a Meta a "lájkolj és oszd meg!" felszólítást bünteti.
+  for (const s of slugs) {
+    const c = followCta(s);
+    assert.ok(c.length > 0 && c.length < 80, 'rövid marad: ' + c);
+    assert.ok(!/\blike\b|\bshare\b|\btag\b|\bcomment\b/i.test(c),
+      'nem kér lájkot/megosztást/címkézést: ' + c);
+  }
+
+  assert.equal(followCta(''), followCta(''), 'üres slug sem borul fel');
+}
 
 console.log('✅ social-text: minden teszt átment');

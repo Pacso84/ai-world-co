@@ -24,6 +24,7 @@ import { readFileSync, writeFileSync, readdirSync, existsSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { selectSocialBatch } from '../../core/social-queue.js';
+import { followCta } from '../../core/social-text.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..', '..');
@@ -155,7 +156,13 @@ async function main() {
       try { const h = await fetch(cand, { method: 'HEAD', signal: AbortSignal.timeout(10000) }); if (h.ok) { image = cand; break; } }
       catch { /* következő jelölt */ }
     }
-    const caption = `${message}\n\n👉 ${post.url}`;
+    // KÖVETÉSRE HÍVÁS a link UTÁN (2026-08-09). Mérve: 3 követőnk van, de
+    // napi ~26 látogatónk a Facebookról — vagyis idegenek látnak minket az
+    // ajánlómotoron át, kattintanak, és elmennek. Eddig egyetlen sor sem
+    // hívta őket követésre. A hívás a végére kerül, hogy ne tolja el a
+    // mondanivalót. Kikapcsolás: core/social-text.js → FOLLOW_CTAS = [].
+    const cta = followCta(post.slug);
+    const caption = `${message}\n\n👉 ${post.url}${cta ? `\n\n${cta}` : ''}`;
     console.log(`📘 ${String(post.title).slice(0, 55)}...`);
     if (DRY) { console.log(`   (próba) caption: ${caption.slice(0, 70)}…`); continue; }
     try {

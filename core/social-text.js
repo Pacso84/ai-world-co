@@ -26,6 +26,38 @@ export const CHANNELS = {
 const SEP = '\n\n';
 const ELLIPSIS = '…';
 
+// ---------- KÖVETÉSRE HÍVÁS (2026-08-09) ----------
+//
+// A PROBLÉMA, MÉRVE: az oldalnak 3 követője van, mégis napi ~26 látogatót
+// hoz. 3 követő ezt nem tudja előállítani → a teljes elérésünket a Meta
+// ajánlómotorja adja, IDEGENEKNEK. Aki így lát minket, először találkozik
+// az oldallal, rákattint a linkre, és elhagyja a Facebookot — a lájk és a
+// követés ott maradt volna. Egyetlen sor sem hívta eddig követésre.
+//
+// ⚠️ ŐSZINTÉN A VÁRHATÓ HATÁSRÓL: ez kicsi. Az ajánlott posztból ritkán lesz
+// követés, és a követő-építés azt igényelné (idő/pénz), amit a user kizárt.
+// Azért érdemes mégis, mert INGYEN van és nem ront semmit.
+//
+// KOCKÁZAT-KEZELÉS: a hívás a caption VÉGÉRE kerül, a link UTÁN — így nem
+// tolja el a mondanivalót, és nem néz ki lájkvadászatnak (a Meta a
+// "lájkolj és oszd meg!" típusú felszólítást bünteti; a szolgáltatás-jellegű
+// "több tipp itt" nem ilyen). Kikapcsolás: FOLLOW_CTAS = [].
+const FOLLOW_CTAS = [
+  'More plain-English AI tips: follow AI World HQ.',
+  'We post practical AI guides daily — follow AI World HQ.',
+  'Follow AI World HQ for everyday AI help, no jargon.'
+];
+
+// Determinisztikus váltogatás a slug alapján: ugyanaz a cikk mindig ugyanazt
+// kapja (kiszámítható és tesztelhető), de a hírfolyamban váltakozik a szöveg
+// — három egyforma poszt egymás után gépiesnek látszana.
+export function followCta(slug) {
+  if (!FOLLOW_CTAS.length) return '';
+  let h = 0;
+  for (const ch of String(slug || '')) h = (h * 31 + ch.charCodeAt(0)) >>> 0;
+  return FOLLOW_CTAS[h % FOLLOW_CTAS.length];
+}
+
 // A link kiszedése a szövegtörzsből. Ugyanaz a szabály, mint az
 // agents/social/poster.js-ben — a kettő ne szakadjon el egymástól.
 export function stripUrl(text, url) {
