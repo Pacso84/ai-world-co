@@ -2732,6 +2732,25 @@ const xmlEsc = (s) => String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;
 // A length attribútum az RSS 2.0-ban KÖTELEZŐ és bájtban értendő — lemezről
 // olvassuk. A 0 sok validátornál hibát ad, ezért ha nem tudjuk a méretet,
 // inkább nem adunk ki enclosure-t.
+// TELJES SZÖVEG A FEEDBE (2026-08-09) — a Flipboard három felvételi
+// követelményének EGYIKE: „a feed legyen TELJES, ne csak cím vagy kivonat".
+// Nálunk eddig a <description> az ALCÍM volt (átlag 116 karakter), ami
+// kivonatnak számít → a beküldést elutasították volna.
+//
+// A <description> MARAD rövid: azt használják a listanézetek beharangozónak.
+// A teljes szöveg a <content:encoded>-be megy — ez a bevett RSS-szokás.
+//
+// ⚠️ A relatív linkeket ABSZOLÚTRA kell írni: a hírolvasóban a cikk a saját
+// domainjükön jelenik meg, ott a "/tools" a Flipboardra mutatna, nem ránk.
+function feedContent(a) {
+  const html = String(a?.bodyHtml || '');
+  if (!html) return '';
+  const abs = html.replace(/\b(href|src)="\/([^"]*)"/g, `$1="${SITE.url}/$2"`);
+  // A CDATA-szakaszt a "]]>" zárja le. Ha ez a karakterhármas előfordul a
+  // szövegben (pl. kódrészletben), kettévágjuk, különben eltörik az XML.
+  return abs.split(']]>').join(']]]]><![CDATA[>');
+}
+
 const IMG_BYTES_CACHE = new Map();
 function feedImage(a) {
   if (!a?.image) return null;
@@ -2755,6 +2774,7 @@ function buildRss(items, lang, { selfPath, title, desc }) {
     const pub = a.publishedAt ? new Date(a.publishedAt).toUTCString() : new Date().toUTCString();
     const img = feedImage(a);
     const mime = /\.png$/i.test(a.image || '') ? 'image/png' : 'image/jpeg';
+    const content = feedContent(a);
     return `    <item>
       <title>${xmlEsc(a.title)}</title>
       <link>${url}</link>
@@ -2763,11 +2783,12 @@ function buildRss(items, lang, { selfPath, title, desc }) {
       <pubDate>${pub}</pubDate>
       <category>${a.isGuide ? 'Guide' : 'News'}</category>${img ? `
       <enclosure url="${xmlEsc(img.url)}" type="${mime}" length="${img.bytes}"/>
-      <media:content url="${xmlEsc(img.url)}" type="${mime}" medium="image"/>` : ''}
+      <media:content url="${xmlEsc(img.url)}" type="${mime}" medium="image"/>` : ''}${content ? `
+      <content:encoded><![CDATA[${content}]]></content:encoded>` : ''}
     </item>`;
   }).join('\n');
   return `<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>${xmlEsc(title)}</title>
     <link>${SITE.url}${lp}/</link>
