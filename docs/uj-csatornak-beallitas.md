@@ -2,8 +2,13 @@
 
 **Készült:** 2026-08-09 · **Állapot:** a kód kész és él, a fiókok hiányoznak
 
-A kód mindhárom csatornára megvan. Amíg a titkok nincsenek beállítva, a
+Két csatorna maradt: **Threads** és **X**. Amíg a titkok nincsenek beállítva, a
 poszterek **alszanak**: nem hibáznak, nem fogyasztanak, nem jelölnek meg semmit.
+
+**A Make-fiókban jelenleg 1 forgatókönyv van** (Facebook, aktív). A Pinterestet
+2026-08-09-én a user törölte — ellenőrizve a scenario-listán, nem csak a
+`GET /scenarios/<id>` válaszán (az törölt forgatókönyvre 403-at ad, nem 404-et,
+ami félrevezet).
 
 ---
 
@@ -21,28 +26,44 @@ minket. A Pinterestnek nincs ilyen motorja kezdő fiókokhoz.
 
 | Csatorna | Idegeneknek is mutat? | Make-művelet |
 |---|---|---|
-| **Flipboard** | Igen (téma-magazinok, RSS-ből) | **0** |
 | **Threads** | Igen — ugyanaz a Meta-motor | ~2-3 / poszt |
 | **X** | Részben (a külső linket visszafogja) | ~2-3 / poszt |
+| ~~Flipboard~~ | *elvetve — lásd lent* | — |
 
 ---
 
-## 1. Flipboard — 5 perc, nulla művelet
+## ⛔ Flipboard — ELVETVE (2026-08-09), ne fuss neki újra
 
-Ez a legolcsóbb: nincs se forgatókönyv, se webhook, se művelet. A Flipboard
-magát az RSS-t olvassa.
+Azért választottuk, mert nulla kódba és nulla Make-műveletbe került volna:
+tisztán RSS. **Az ingyenes önkiszolgáló RSS-beküldés viszont megszűnt.**
 
-1. `flipboard.com` → regisztráció
-2. Új magazin (pl. „AI World HQ")
-3. A magazinban: **Add RSS feed** → `https://aiworldhq.com/feed.xml`
+Amit élesben ellenőriztem:
 
-**Kész.** A feed 40 tételes, és 2026-08-09 óta **minden tételben van kép**
-(`<enclosure>` + `<media:content>`) — enélkül a Flipboard szürke szövegdobozként
-mutatna minket.
+- `flipboard.com/publishers` → **301 egy FIZETŐS programra**
+  („Publishers Paid Content Program"), nem az „Add your Content" űrlapra
+- a magazin szerkesztőjében **nincs „sources" szakasz**, csak
+  „URL hozzáadása" — azaz cikkenkénti KÉZI hozzáadás
+- a Flipboard saját blogbejegyzései még a régi utat írják → **elavultak**
+
+Napi 12 cikk kézi feltöltése nem fér bele („se időt, se pénzt" user-szabály),
+ezért a csatorna kimarad. A user a fiókot törölte.
+
+> **TANULSÁG:** ha egy szolgáltatás a SAJÁT dokumentációjától eltérő helyre
+> irányít át, a funkció rendszerint megszűnt — a blogbejegyzést csak nem
+> törölték. Ezt egyetlen `curl -L` megmutatja, mielőtt bárki fiókot csinál.
+
+### Ami ebből MEGMARADT és értékes
+
+A feed-javítások a helyükön maradnak, mert **minden hírolvasónak** jók
+(Feedly, Inoreader, böngésző-kiegészítők), és egy valódi hiányt szüntettek meg:
+
+- **kép minden tételben** (`<enclosure>` + `<media:content>`, valódi bájtmérettel)
+- **teljes cikkszöveg** (`<content:encoded>`) — eddig csak az alcím ment ki,
+  átlag 116 karakter; most 7 324
 
 ---
 
-## 2. Threads — a legjobb esélyünk
+## 1. Threads — a legjobb esélyünk
 
 **Fiók:** a Threads a meglévő Instagram/Facebook-fiókhoz köthető. Ha nincs
 Instagram, a Threads regisztráció közben létrehozza.
@@ -74,7 +95,7 @@ forgatókönyv él-e és van-e benne kimeneti modul.
 
 ---
 
-## 3. X (Twitter)
+## 2. X (Twitter)
 
 Ugyanaz a menet, két eltéréssel:
 
@@ -107,7 +128,15 @@ node agents/social/multi-poster.js --channel x --limit 2 --dry
 
 A `--dry` semmit nem ír és nem küld — csak megmutatja, mi menne ki.
 
-## Ha vissza kell kapcsolni a Pinterestet
+## Ha valaha vissza kellene hozni a Pinterestet
 
-Egy sor a `.github/workflows/auto.yml`-ben (a kód érintetlen maradt). De előbb
-nézd meg a művelet-keretet: a Pinterest napi 15 pinnel a keret 62%-át vitte.
+⚠️ **Már nem elég egy sor.** A poszter KÓDJA megvan (`agents/social/pinterest-poster.js`,
+a hívása kikommentelve az `auto.yml`-ben), **de a Make-forgatókönyvet a user
+törölte 2026-08-09-én** — azt újra fel kellene építeni, és új webhook-címet
+beállítani a `PINTEREST_MAKE_WEBHOOK_URL` titokba.
+
+Mielőtt bárki nekifutna, két szám: 189 pin → **0 látogató**, miközben a
+művelet-keret **62%-át** vitte. Előbb a keretet nézd meg.
+
+*(A régi `PINTEREST_MAKE_WEBHOOK_URL` GitHub-titok halott webhookra mutat.
+Ártalmatlan — a posztert nem hívjuk —, de nyugodtan törölhető.)*
