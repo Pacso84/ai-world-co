@@ -14,7 +14,7 @@
 //   website/public/assets/style.css    - stílus (másolva)
 // ===================================================================
 
-import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync, copyFileSync, rmSync, cpSync } from 'fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync, copyFileSync, rmSync, cpSync, statSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { marked } from 'marked';
@@ -2720,6 +2720,31 @@ function buildWizardPage() {
 // ===================================================================
 const xmlEsc = (s) => String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
+// KÉP A FEEDBE (2026-08-09): a Flipboard és a hírolvasók (Feedly stb.) képes
+// kártyát mutatnak — kép nélkül a cikkeink szürke szövegdobozként jelennek meg.
+// A <enclosure> a szabvány RSS 2.0 mező, a <media:content> a szélesebb körben
+// támogatott Media RSS; mindkettőt kiadjuk, mert az olvasók eltérőt néznek.
+//
+// A SIMA borítót (assets/images/) adjuk, NEM a címes share/ képet: a Flipboard
+// a saját címét írja a képre, a mi feliratunk ott dupla szöveg lenne. Ráadásul
+// a share/ csak a 7 napnál frissebb cikkekhez létezik, a feedben 40 van.
+//
+// A length attribútum az RSS 2.0-ban KÖTELEZŐ és bájtban értendő — lemezről
+// olvassuk. A 0 sok validátornál hibát ad, ezért ha nem tudjuk a méretet,
+// inkább nem adunk ki enclosure-t.
+const IMG_BYTES_CACHE = new Map();
+function feedImage(a) {
+  if (!a?.image) return null;
+  if (IMG_BYTES_CACHE.has(a.image)) return IMG_BYTES_CACHE.get(a.image);
+  let out = null;
+  try {
+    const bytes = statSync(join(__dirname, 'assets', 'images', a.image)).size;
+    if (bytes > 0) out = { url: `${SITE.url}/assets/images/${a.image}`, bytes };
+  } catch { /* nincs meg a fájl: kép nélküli tétel, nem hiba */ }
+  IMG_BYTES_CACHE.set(a.image, out);
+  return out;
+}
+
 // Közös RSS-építő. items = már rendezett/szűrt cikklista.
 // (2026-07-23-tól paraméteres, mert akkor egy szűrt heti-feedet is épített a
 // hírlevélhez; a hírlevél 2026-07-27-én megszűnt, de a forma jó maradt.)
@@ -2728,17 +2753,21 @@ function buildRss(items, lang, { selfPath, title, desc }) {
   const rows = items.map(a => {
     const url = `${SITE.url}${lp}/article/${a.slug}`;
     const pub = a.publishedAt ? new Date(a.publishedAt).toUTCString() : new Date().toUTCString();
+    const img = feedImage(a);
+    const mime = /\.png$/i.test(a.image || '') ? 'image/png' : 'image/jpeg';
     return `    <item>
       <title>${xmlEsc(a.title)}</title>
       <link>${url}</link>
       <guid isPermaLink="true">${url}</guid>
       <description>${xmlEsc(a.subtitle)}</description>
       <pubDate>${pub}</pubDate>
-      <category>${a.isGuide ? 'Guide' : 'News'}</category>
+      <category>${a.isGuide ? 'Guide' : 'News'}</category>${img ? `
+      <enclosure url="${xmlEsc(img.url)}" type="${mime}" length="${img.bytes}"/>
+      <media:content url="${xmlEsc(img.url)}" type="${mime}" medium="image"/>` : ''}
     </item>`;
   }).join('\n');
   return `<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/">
   <channel>
     <title>${xmlEsc(title)}</title>
     <link>${SITE.url}${lp}/</link>
