@@ -141,10 +141,17 @@ async function main() {
     // (A link-kártyás módban a Facebook az új domain képét megbízhatatlanul
     // töltötte be — a fotós poszt mindig nagy, szép képpel jelenik meg.)
     const site = post.url.replace(/(https?:\/\/[^/]+).*/, '$1');
-    // Kép-prioritás: CÍMES megosztás-kép (share/) → sima borító → og-default
-    // (a share-képet a core/share-images.js gyártja build után, 2026-07-08)
+    // Kép-prioritás: 4:5 ÁLLÓ (fb/) → címes fekvő (share/) → sima borító → og-default
+    // (mindet a core/share-images.js gyártja build után, 2026-07-08)
+    //
+    // AZ ÁLLÓ KÉP ELSŐ (2026-08-09): ez FÉNYKÉP-poszt, nem link-előnézet, tehát
+    // az arányt mi választjuk. A mobil hírfolyamban a 4:5 kb. kétszer annyi
+    // függőleges helyet foglal, mint az 1,91:1 — és a forgalmunk 82%-a mobil.
+    // A share/ marad tartaléknak: a 7 napnál régebbi cikkekhez már nem készül
+    // új kép, de a régiek megvannak, és az örökzöld útmutatók fenntartott
+    // helyen mennek ki (core/social-queue.js) — nekik az images/ a hálójuk.
     let image = `${site}/assets/og-default.jpg`;
-    for (const cand of [`${site}/assets/share/${post.slug}.jpg`, `${site}/assets/images/${post.slug}.jpg`]) {
+    for (const cand of [`${site}/assets/fb/${post.slug}.jpg`, `${site}/assets/share/${post.slug}.jpg`, `${site}/assets/images/${post.slug}.jpg`]) {
       try { const h = await fetch(cand, { method: 'HEAD', signal: AbortSignal.timeout(10000) }); if (h.ok) { image = cand; break; } }
       catch { /* következő jelölt */ }
     }

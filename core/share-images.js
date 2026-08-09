@@ -18,10 +18,12 @@ import { readFileSync, readdirSync, existsSync, mkdirSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import sharp from 'sharp';
+import { selectFormats, queuedSlugs } from './image-targets.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
 const ARTICLES_DIR = join(ROOT, 'content', 'articles');
+const SOCIAL_DIR = join(ROOT, 'content', 'social');
 const IMG_DIR = join(ROOT, 'website', 'public', 'assets', 'images');
 const OUT_BASE = join(ROOT, 'website', 'public', 'assets');
 
@@ -47,9 +49,27 @@ const DAYS = di !== -1 && args[di + 1] ? parseInt(args[di + 1], 10) || 7 : 7;
 // pint küldtünk ki, és a Cloudflare szerint PONTOSAN 0 látogató érkezett
 // Pinterestről; a fekvő kép a legvalószínűbb (bár nem bizonyított) ok.
 // 1000x1500 a Pinterest hivatalos ajánlása.
+//
+// FB (2026-08-09): a Facebook-poszt FÉNYKÉP-feltöltés (Make: facebook-pages ·
+// UploadPhoto), nem link-előnézet — tehát a kép arányát MI választjuk meg, és
+// a mobil hírfolyamban az 1,91:1 fekvő kép vékony csík. A Meta ajánlása 4:5.
+//
+// MIÉRT ÉPP MOST: 2026-08-09-én megmértük, hogy az oldalnak 3 KÖVETŐJE van,
+// miközben napi ~26 látogató érkezik a Facebookról. 3 követő ezt nem tudja
+// előállítani → a teljes elérésünket a Meta ajánlómotorja adja, idegeneknek.
+// Ilyenkor a kép mérete közvetlenül a figyelemért versenyez.
+//
+// ⚠️ ŐSZINTÉN A VÁRHATÓ HATÁSRÓL: ugyanez a javítás a Pinteresten eddig 0
+// mérhető eredményt hozott (3 nap, ~44 álló pin → 0 látogató). A Facebook
+// azért más eset, mert ott MÁR VAN elérésünk — a kép azoknak a posztoknak a
+// teljesítményét javítja, amiket a rendszer amúgy is megmutat. Nem garancia.
+//
+// Az og:image MARAD az 1200x630-as share/ kép: azt a link-előnézeti kártya
+// használja, ott az 1,91:1 a helyes arány. A két formátum két külön célra van.
 const FORMATS = [
   { key: 'share', w: 1200, h: 630, grad: [0.35, 0.72] },
-  { key: 'pin', w: 1000, h: 1500, grad: [0.50, 0.78] }
+  { key: 'pin', w: 1000, h: 1500, grad: [0.50, 0.78] },
+  { key: 'fb', w: 1080, h: 1350, grad: [0.55, 0.80] }
 ];
 
 function slugify(t) { return (t || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 70); }
@@ -107,16 +127,37 @@ async function main() {
   if (!existsSync(IMG_DIR)) { console.log('   ⏭️  Nincs website/public/assets/images — előbb futtasd a buildet.'); return; }
   for (const f of FORMATS) mkdirSync(join(OUT_BASE, f.key), { recursive: true });
 
+  // Melyik cikkre vár még kiküldés? Azoknak a 7 napos ablakon kívül is kell kép.
+  let queued = new Set();
+  try {
+    queued = queuedSlugs(readdirSync(SOCIAL_DIR).filter(x => x.endsWith('.json'))
+      .map(x => { try { return JSON.parse(readFileSync(join(SOCIAL_DIR, x), 'utf-8')); } catch { return null; } })
+      .filter(Boolean));
+    console.log(`   📮 ${queued.size} cikk vár még kiküldésre — nekik a koruktól függetlenül kell kép`);
+  } catch { /* nincs social mappa: marad a puszta 7 napos ablak */ }
+
   const now = Date.now();
   let made = 0, skipped = 0, noCover = 0;
   for (const f of readdirSync(ARTICLES_DIR).filter(x => x.startsWith('ARTICLE_') && x.endsWith('.json'))) {
     let d;
     try { d = JSON.parse(readFileSync(join(ARTICLES_DIR, f), 'utf-8')); } catch { continue; }
-    const pub = new Date(d._meta?.published_at || 0).getTime();
-    if (now - pub > DAYS * 24 * 3600e3) continue;
     const title = ((d.article_markdown || '').match(/^title:\s*["']?(.+?)["']?\s*$/m) || [])[1] || d.original_title || '';
     if (!title) continue;
-    const slug = slugify(title);
+    // A KANONIKUS slug a mérvadó, NEM a címből képzett (2026-08-09).
+    // Mérve: 654 cikkből 72-nél (11%) eltért a kettő — a brit→amerikai
+    // helyesírás-javítás ("organise"→"organize") és a cím-átírások miatt.
+    // A borítók viszont a kanonikus néven állnak az images/ mappában, ezért a
+    // generátor ezt a 72-t MEG SEM TALÁLTA (ez volt a "borító nélkül" tétel),
+    // és a posztjuk cím nélküli sima borítóval ment ki.
+    const slug = d._meta?.slug || slugify(title);
+    const pub = new Date(d._meta?.published_at || 0).getTime();
+    const formats = selectFormats({
+      ageDays: (now - pub) / 86400e3,
+      freshDays: DAYS,
+      isQueued: queued.has(slug),
+      all: FORMATS
+    });
+    if (!formats.length) continue;
     // HETI ÖSSZEFOGLALÓ KABALA (2026-07-26): a weekly-digest OG/megosztás-kép is a
     // fix kabala-borítóból készül (a cím ráíródik a bal sötét sávra), nem a slugból.
     const isWeekly = /weekly-digest/.test((d.article_markdown || '').slice(0, 600));
@@ -125,7 +166,7 @@ async function main() {
     if (!existsSync(src)) { noCover++; continue; }
 
     let didWork = false;
-    for (const fmt of FORMATS) {
+    for (const fmt of formats) {
       const out = join(OUT_BASE, fmt.key, slug + '.jpg');
       if (existsSync(out) && !FORCE) continue;
       try {
