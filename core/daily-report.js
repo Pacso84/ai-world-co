@@ -21,7 +21,8 @@ import { dirname, join } from 'path';
 import { sendMessage } from './telegram.js';
 import { canonicalChip } from './quality-guard.js';
 import { summarizeRuns, describeFailures } from './make-health.js';
-import { describePosts, describeRepeat } from './report-lines.js';
+import { describePosts, describeRepeat, describeTranslationGaps } from './report-lines.js';
+import { bodyLooksUntranslated } from './translation-guard.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
@@ -205,18 +206,36 @@ function collect() {
   } catch { /* skip */ }
 
   // Fordítás-hiány
+  // 2026-08-10: a szám mellé a NEVEK is kellenek. A 08-09-i heti összefoglaló
+  // magyarul üresen maradt és angolul ment ki; a riport ezt "1 pár"-ként írta
+  // le, és a hibát végül a user vette észre az oldalon, nem a rendszer.
+  // Azóta a TARTALMAT is nézzük: a megléte nem jelenti, hogy le is fordult.
   let missing = 0;
+  const gaps = [];
   if (existsSync(artDir)) {
     for (const f of readdirSync(artDir).filter(x => x.endsWith('.json'))) {
       let t = {};
       try { t = JSON.parse(readFileSync(join(ROOT, 'content', 'translations', f), 'utf-8')); } catch { /* nincs */ }
+      let slug = f, kiemelt = false;
+      try {
+        const en = JSON.parse(readFileSync(join(artDir, f), 'utf-8'));
+        slug = en._meta?.slug || f;
+        kiemelt = /weekly-digest/.test(en.article_markdown || '');
+      } catch { /* a fájlnév is elég azonosítónak */ }
       // CSAK AZ ÉLŐ NYELVEK (2026-08-01). A de/fr 2026-07-31-én kivezetve —
       // a számláló viszont tovább kereste őket, és minden reggel 86-90 "hiányzó
       // párt" jelentett a usernek. Mérve: az élő nyelveken a hiány NULLA volt,
       // vagyis a riport hónapokig létező lemaradást mutatott volna ott, ahol a
       // munka valójában hibátlan. Forrás: agents/translator/agent.js LANGS
       // (onnan importálni nem lehet: a modul betöltéskor elindítja a fordítást).
-      for (const l of ['hu', 'es']) if (!t[l]) missing++;
+      for (const l of ['hu', 'es']) {
+        const md = t[l];
+        if (!md) { missing++; gaps.push({ slug, lang: l, ok: 'ÜRES', kiemelt }); continue; }
+        const body = String(md).replace(/^---[\s\S]*?---/, '');
+        if (bodyLooksUntranslated(body)) {
+          missing++; gaps.push({ slug, lang: l, ok: 'angolul maradt', kiemelt });
+        }
+      }
     }
   }
 
@@ -256,7 +275,7 @@ function collect() {
     pendingSources = (JSON.parse(readFileSync(join(ROOT, 'agents', 'source-scout', 'discovered-sources.json'), 'utf-8')).discovered_sources || []).length;
   } catch { /* skip */ }
 
-  return { news, guides, titles, fbPosts, spentYesterday, spentToday, spentMonth, burnPerDay, missing, bans, pendingSources, missingLinks };
+  return { news, guides, titles, fbPosts, spentYesterday, spentToday, spentMonth, burnPerDay, missing, gaps, bans, pendingSources, missingLinks };
 }
 
 // Hány FB-poszt MENT KI valóban az elmúlt 24 órában? A saját jelölésünk
@@ -292,7 +311,11 @@ async function main() {
     // A keret a MAI költés mellé kerül, nem a tegnapi mellé: a "$2.51 / $1"
     // úgy olvasódna, mintha tegnap megsértettük volna a keretet.
     `💰 Tegnap: $${r.spentYesterday.toFixed(2)} · ma: $${r.spentToday.toFixed(2)}${DAY_CAP ? ` / $${DAY_CAP}` : ''} · e havi: $${r.spentMonth.toFixed(2)} / $${HARD_CAP}`,
-    `🌍 Fordítás-hiány: ${r.missing} pár${r.bans ? ` · 🚦 kvóta-tiltás: ${r.bans}` : ''}${translationForecast(r.missing)}`,
+    // A hiányzó fordításokat MEGNEVEZZÜK (2026-08-10) — a puszta szám nem
+    // mondja meg, mit kell megnézni, és így csúszott ki egy angol heti
+    // összefoglaló a magyar főoldal tetejére.
+    (describeTranslationGaps(r.gaps) || '🌍 Fordítás: hiánytalan')
+      + `${r.bans ? ` · 🚦 kvóta-tiltás: ${r.bans}` : ''}${translationForecast(r.missing)}`,
   ];
   const bal = await openrouterBalance(r.burnPerDay);
   if (bal) lines.push(bal);

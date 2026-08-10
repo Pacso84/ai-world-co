@@ -76,3 +76,44 @@ export function describeRepeat(repeated, types, today) {
     ? head + ' — ez sűrű, kemény szabály kellhet!'
     : head;
 }
+
+// ===================================================================
+// 3. "🌍 Fordítás-hiány: 1 pár"  (2026-08-10)
+//
+//    A 2026-08-09-i heti összefoglaló magyar fordítása ÜRESEN maradt (a
+//    fordító hatszor bukott el rajta némán), és a cikk magyarul ANGOLUL
+//    ment ki — a főoldal tetején, ahol a legtöbben látják. A riportban ez
+//    egyetlen "1 pár" volt: igaz szám, használhatatlan üzenet. A hibát
+//    végül a user vette észre az oldalon, nem a rendszer a riportban.
+//
+//    Egy hiányzó fordítás nem statisztika. Meg kell nevezni, MELYIK cikk
+//    az, és mi a baja — különben nincs mit kezdeni a sorral.
+// ===================================================================
+
+// Efölött már listát nem írunk, csak példát: a riport egy Telegram-üzenet.
+const GAP_EXAMPLES = 3;
+
+/**
+ * A fordítás-hiány sora: melyik cikk, milyen nyelven, mi a baja.
+ *
+ * @param {Array<{slug:string, lang:string, ok:string, kiemelt?:boolean}>} gaps
+ * @returns {string} a riport-sor, vagy '' ha nincs hiány
+ */
+export function describeTranslationGaps(gaps) {
+  if (!gaps || !gaps.length) return '';
+
+  // A KIEMELT tartalom (heti összefoglaló) előre: az ül a főoldal tetején
+  // minden nyelven, tehát ott a legdrágább egy angolul maradt cikk.
+  const sorrend = [...gaps].sort((a, b) => (b.kiemelt ? 1 : 0) - (a.kiemelt ? 1 : 0));
+  const pelda = sorrend.slice(0, GAP_EXAMPLES)
+    .map(g => `${g.lang}: ${g.slug} (${g.ok})`)
+    .join(' · ');
+
+  const fej = `🌍 Fordítás-hiány: ${gaps.length} pár`;
+  const kiemelt = sorrend.find(g => g.kiemelt);
+  const figyelem = kiemelt
+    ? ` ⚠️ ebből a HETI ÖSSZEFOGLALÓ (${kiemelt.lang}) — az a főoldal tetején van!`
+    : '';
+
+  return `${fej} — ${pelda}${gaps.length > GAP_EXAMPLES ? ' …' : ''}${figyelem}`;
+}

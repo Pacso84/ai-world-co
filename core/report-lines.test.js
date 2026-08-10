@@ -9,7 +9,9 @@
 // ===================================================================
 
 import assert from 'assert/strict';
-import { describePosts, describeRepeat, REPEAT_URGENT_PER_WEEK } from './report-lines.js';
+import {
+  describePosts, describeRepeat, REPEAT_URGENT_PER_WEEK, describeTranslationGaps
+} from './report-lines.js';
 
 let pass = 0;
 const t = (name, fn) => { fn(); pass++; console.log('  ✅ ' + name); };
@@ -102,6 +104,51 @@ t('a leghosszabb ideje makacs típust emeli ki', () => {
   const s = describeRepeat([lesson(2, 30), lesson(9, 30)], 2, '2026-08-06');
   assert.match(s, /9/, 'a nagyobb ismétlés-számú kerül a példába');
   assert.match(s, /2 típus/);
+});
+
+// ---------- fordítás-hiány: MELYIK cikk, ne csak hány ----------
+// 2026-08-10: a 08-09-i heti összefoglaló magyarul ÜRESEN maradt, és angolul
+// ment ki. A riport ezt "Fordítás-hiány: 1 pár"-ként írta le — egy szám, ami
+// elvész a napi zajban. A user vette észre, nem a rendszer. Egy hiányzó
+// fordítás nem statisztika: meg kell nevezni, MELYIK cikk az.
+console.log('\n🧪 fordítás-hiány sora\n');
+
+t('hiánytalan állapotban nincs sor', () => {
+  assert.equal(describeTranslationGaps([]), '');
+  assert.equal(describeTranslationGaps(null), '');
+});
+
+t('egyetlen hiányt MEGNEVEZ, okkal együtt', () => {
+  const s = describeTranslationGaps([
+    { slug: 'this-week-in-ai-august-9-2026', lang: 'hu', ok: 'ÜRES' }
+  ]);
+  assert.match(s, /this-week-in-ai-august-9-2026/, 'a cikk neve benne van');
+  assert.match(s, /hu/, 'a nyelv benne van');
+  assert.match(s, /ÜRES/, 'az ok benne van');
+});
+
+t('a heti összefoglalót KIEMELI', () => {
+  // Ez a cikk a főoldal tetején ül minden nyelven, és a kabala-kép is
+  // hozzá tartozik — ha ez angol, az a legláthatóbb hiba az oldalon.
+  const s = describeTranslationGaps([
+    { slug: 'this-week-in-ai', lang: 'hu', ok: 'ÜRES', kiemelt: true }
+  ]);
+  assert.match(s, /heti összefoglaló/i, 'külön szól a heti összefoglalóról');
+});
+
+t('sok hiánynál számot ad és példát mutat', () => {
+  const sok = Array.from({ length: 9 }, (_, i) => ({ slug: 'cikk-' + i, lang: 'es', ok: 'ÜRES' }));
+  const s = describeTranslationGaps(sok);
+  assert.match(s, /9/, 'a teljes szám benne van');
+  assert.match(s, /cikk-0/, 'az első példa benne van');
+  assert.ok(!s.includes('cikk-8'), 'nem sorolja fel mind a kilencet');
+});
+
+t('az angolul maradt fordítás más ok, mint az üres', () => {
+  const s = describeTranslationGaps([
+    { slug: 'valami-cikk', lang: 'es', ok: 'angolul maradt' }
+  ]);
+  assert.match(s, /angolul maradt/);
 });
 
 console.log('\n✅ report-lines.test: mind a ' + pass + ' eset rendben');
