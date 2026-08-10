@@ -1,86 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178620600601917",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-08T16:20:06.019Z",
-      "updated": "2026-08-08T16:20:06.120Z"
-    },
-    {
-      "id": "t178620600612140",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-08-08T16:20:06.121Z",
-      "updated": "2026-08-08T16:20:06.251Z"
-    },
-    {
-      "id": "t178620600627398",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-08T16:20:06.273Z",
-      "updated": "2026-08-08T16:20:06.405Z"
-    },
-    {
-      "id": "t178620600640644",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-08-08T16:20:06.406Z",
-      "updated": "2026-08-08T16:20:06.531Z"
-    },
-    {
-      "id": "t178620600653261",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-08T16:20:06.532Z",
-      "updated": "2026-08-08T16:20:19.405Z"
-    },
-    {
-      "id": "t178620601940653",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-08-08T16:20:19.406Z",
-      "updated": "2026-08-08T16:20:32.134Z"
-    },
-    {
-      "id": "t178623675888317",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-08-09T00:52:38.883Z",
-      "updated": "2026-08-09T00:52:39.078Z"
-    },
-    {
-      "id": "t178623675907957",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-08-09T00:52:39.079Z",
-      "updated": "2026-08-09T00:52:57.617Z"
-    },
-    {
-      "id": "t178623677761915",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-08-09T00:52:57.619Z",
-      "updated": "2026-08-09T00:52:57.821Z"
-    },
-    {
-      "id": "t178623677782351",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-09T00:52:57.823Z",
-      "updated": "2026-08-09T00:52:57.995Z"
-    },
-    {
       "id": "t178623677799661",
       "title": "Run ellenorzo",
       "status": "done",
@@ -479,25 +399,89 @@
       "agent": "publisher",
       "created": "2026-08-10T01:09:43.295Z",
       "updated": "2026-08-10T01:10:02.139Z"
+    },
+    {
+      "id": "t178635277326194",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-08-10T09:06:13.261Z",
+      "updated": "2026-08-10T09:06:13.461Z"
+    },
+    {
+      "id": "t178635277346310",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-08-10T09:06:13.463Z",
+      "updated": "2026-08-10T09:06:32.176Z"
+    },
+    {
+      "id": "t178635279217857",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-08-10T09:06:32.178Z",
+      "updated": "2026-08-10T09:06:32.369Z"
+    },
+    {
+      "id": "t178635279237263",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-10T09:06:32.372Z",
+      "updated": "2026-08-10T09:06:32.546Z"
+    },
+    {
+      "id": "t178635279254873",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-10T09:06:32.548Z",
+      "updated": "2026-08-10T09:06:32.718Z"
+    },
+    {
+      "id": "t178635279272135",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-08-10T09:06:32.721Z",
+      "updated": "2026-08-10T09:06:32.940Z"
+    },
+    {
+      "id": "t178635279297835",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-10T09:06:32.978Z",
+      "updated": "2026-08-10T09:06:33.203Z"
+    },
+    {
+      "id": "t178635279320512",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-08-10T09:06:33.205Z",
+      "updated": "2026-08-10T09:06:33.417Z"
+    },
+    {
+      "id": "t178635279341967",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-10T09:06:33.419Z",
+      "updated": "2026-08-10T09:06:59.375Z"
+    },
+    {
+      "id": "t178635281937638",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-08-10T09:06:59.376Z",
+      "updated": "2026-08-10T09:07:14.523Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178529012603812",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The lineup looks solid—practical, varied, and genuinely useful for everyday people. Good mix of study help, workplace tasks, and real-life scenarios like pet-sitting agreements. One small note: since ",
-      "agent": "publisher",
-      "at": "2026-07-29T01:55:26.038Z",
-      "loud": false
-    },
-    {
-      "id": "n178529013797197",
-      "level": "success",
-      "text": "8 hír + 4 útmutató publikálva (költség: $0.1520).",
-      "agent": "ceo",
-      "at": "2026-07-29T01:55:37.971Z",
-      "loud": false
-    },
     {
       "id": "n178537622683073",
       "level": "info",
@@ -1281,18 +1265,25 @@
       "agent": "ceo",
       "at": "2026-08-10T01:10:02.172Z",
       "loud": false
+    },
+    {
+      "id": "n178635282485771",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). A kínai mesterséges intelligencia oldal line-upja összhangban van és készen áll a megjelenésre — a cikkek gyakorlatiasak, barátságos hangnemben íródtak, és jól lefedik a mindennapi AI-használatot: tén",
+      "agent": "publisher",
+      "at": "2026-08-10T09:07:04.857Z",
+      "loud": false
+    },
+    {
+      "id": "n178635283456234",
+      "level": "info",
+      "text": "Pipeline lefutott — ma nem volt publikálható új tartalom.",
+      "agent": "ceo",
+      "at": "2026-08-10T09:07:14.562Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178537489555925",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Accelerating scientific discovery with ChatGPT for Academic Researchers\" — javítva: Unverified claim: 100,000 researchers exact figure cannot be confirmed from the OpenAI blog source which announces a program/initiative rather than confirming a specific headcount deployment; The article frames the announcement as a concrete program but the source describes an initiative launch — the ",
-      "ref": "2026-07-30T01-21-35-633Z_openai-blog_Accelerating_scientific_discovery_with_ChatGPT_for.json",
-      "at": "2026-07-30T01:28:15.559Z"
-    },
     {
       "id": "m178537490919467",
       "from": "ellenorzo",
@@ -2643,6 +2634,15 @@
       "text": "6 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-08-10T01:20:47.510Z"
+    },
+    {
+      "id": "m178635281936525",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-08-10T09:06:59.365Z"
     }
   ]
 }
