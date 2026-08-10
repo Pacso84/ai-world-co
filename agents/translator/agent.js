@@ -201,7 +201,8 @@ async function main() {
         } catch { /* skip */ }
         return { file: f, pub, kiemelt };
       }),
-    failsNow
+    failsNow,
+    Object.keys(LANGS)          // csak az ÉLŐ nyelvek bukása sorol előre
   ).map(x => x.file);
 
   let done = 0, cost = 0, skipped = 0, failed = 0;
@@ -301,7 +302,9 @@ async function main() {
   // vagy a forrás hibás, és emberi szem kell rá.
   try {
     const makacs = Object.entries(loadFails())
-      .filter(([, n]) => n >= 3)
+      // Csak ÉLŐ nyelvre figyelmeztetünk: a de/fr számlálója ott maradt a
+      // kivezetés után, és mivel nem próbáljuk újra, örökké villogna.
+      .filter(([k, n]) => n >= 3 && LANGS[k.slice(k.lastIndexOf('|') + 1)])
       .sort((a, b) => b[1] - a[1]);
     if (makacs.length) {
       console.log(`\n⚠️  MAKACS FORDÍTÁS-BUKÁS — ${makacs.length} pár, itt emberi szem kell:`);

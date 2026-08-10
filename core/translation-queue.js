@@ -30,19 +30,27 @@ export const PINNED_BONUS = 100;
  * @param {Array<{file:string, pub?:string, kiemelt?:boolean}>} items
  * @param {Object<string, number>} fails  a "fájl|nyelv" → bukásszám térkép
  *                                        (memory/translation-failures.json)
+ * @param {string[]} [langs]  az ÉLŐ nyelvek. Megadva csak ezek bukásai
+ *                            számítanak — a de/fr 2026-07-31-én kivezetve, de
+ *                            a számlálójuk ott maradt, és mivel soha nem
+ *                            próbáljuk újra, soha nem is törlődik. Enélkül egy
+ *                            holt fr-bukás örökre a sor elejére ültetne egy
+ *                            különben kész cikket.
  * @returns {Array} ugyanazok az elemek, fordítási sorrendben
  */
-export function orderForTranslation(items, fails) {
+export function orderForTranslation(items, fails, langs) {
   if (!Array.isArray(items)) return [];
   const f = fails && typeof fails === 'object' ? fails : {};
+  const elo = Array.isArray(langs) && langs.length ? new Set(langs) : null;
 
-  // Fájlonként összegezzük a bukásokat — bármelyik nyelven történt.
+  // Fájlonként összegezzük a bukásokat — bármelyik ÉLŐ nyelven történt.
   // A kulcs "fájl|nyelv", és a fájlnévre PONTOSAN illesztünk: egy laza
   // egyezés más cikk bukása miatt sorolna előre valamit.
   const bukas = new Map();
   for (const [kulcs, n] of Object.entries(f)) {
     const i = String(kulcs).lastIndexOf('|');
     if (i < 1) continue;
+    if (elo && !elo.has(kulcs.slice(i + 1))) continue;
     const file = kulcs.slice(0, i);
     bukas.set(file, (bukas.get(file) || 0) + (Number(n) || 0));
   }

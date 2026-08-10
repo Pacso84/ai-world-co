@@ -86,6 +86,34 @@ t('más fájl bukása nem húzza előre ezt', () => {
   assert.deepEqual(nev(s), ['friss.json', 'masik.json']);
 });
 
+t('a KIVEZETETT nyelv bukása nem sorol előre', () => {
+  // A de/fr 2026-07-31-én kivezetve, de a bukás-számlálójuk ott maradt
+  // (soha nem próbáljuk újra, tehát soha nem is törlődik). E nélkül a szűrés
+  // nélkül egy fr-bukás miatt egy kész cikk örökre a sor elején ülne — és a
+  // makacs-jelzés is olyan nyelvre figyelmeztetne, amit nem is fordítunk.
+  const s = orderForTranslation([
+    { file: 'friss.json', pub: '2026-08-10' },
+    { file: 'fr-bukott.json', pub: '2026-08-01' }
+  ], { 'fr-bukott.json|fr': 2 }, ['hu', 'es']);
+  assert.deepEqual(nev(s), ['friss.json', 'fr-bukott.json'], 'a holt fr-bukás nem számít');
+});
+
+t('élő nyelv bukása a szűrés mellett is előre visz', () => {
+  const s = orderForTranslation([
+    { file: 'friss.json', pub: '2026-08-10' },
+    { file: 'hu-bukott.json', pub: '2026-08-01' }
+  ], { 'hu-bukott.json|hu': 2 }, ['hu', 'es']);
+  assert.equal(nev(s)[0], 'hu-bukott.json');
+});
+
+t('nyelvlista nélkül minden bukás számít (visszafelé kompatibilis)', () => {
+  const s = orderForTranslation([
+    { file: 'friss.json', pub: '2026-08-10' },
+    { file: 'fr-bukott.json', pub: '2026-08-01' }
+  ], { 'fr-bukott.json|fr': 2 });
+  assert.equal(nev(s)[0], 'fr-bukott.json');
+});
+
 t('rossz bemenetre nem esik szét', () => {
   assert.deepEqual(orderForTranslation(null, {}), []);
   assert.deepEqual(orderForTranslation([], null), []);
