@@ -25,6 +25,7 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { selectSocialBatch } from '../../core/social-queue.js';
 import { followCta } from '../../core/social-text.js';
+import { postsPerRun, sumMonthOps, untrackedOps } from '../../core/make-budget.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..', '..');
@@ -39,6 +40,48 @@ const LIMIT = li !== -1 && args[li + 1] ? parseInt(args[li + 1], 10) || 2 : 2;
 
 function slugify(text) {
   return (text || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 70);
+}
+
+// ===================================================================
+// MŰVELET-ŐR (2026-08-10) — a keret ne fusson ki a hónap végén
+// ===================================================================
+// A Make ingyenes csomagja havi 1000 műveletet ad, egy poszt hármat visz.
+// Ha a keret betelik, a Make nem futtatja a forgatókönyvet — a webhook ettől
+// még 200-at ad, mi "kiküldve"-nek jelöljük a posztot, és soha nem próbáljuk
+// újra. Nem lassulás lenne, hanem NÉMA VESZTESÉG.
+//
+// A Facebook-forgatókönyv azonosítója. Nem titok (a token az), és a
+// core/daily-report.js is így hivatkozik rá — egy helyen tartani félrevezetőbb
+// lenne, mint két helyen ugyanazt a konstanst látni.
+const FB_SCENARIO_ID = '6452490';
+
+// A döntés logikája (tesztelve): core/make-budget.js.
+// Itt csak az adatot szerezzük be — és ha az nem jön, NEM fékezünk: egy
+// API-hiba miatti visszavétel biztos kár, a kifutás bizonytalan és hó végi.
+async function havonEddigElhasznalt(scenarioId) {
+  const token = (process.env.MAKE_API_TOKEN || '').trim();
+  if (!token || !scenarioId) return null;
+  const honap = new Date().toISOString().slice(0, 7);
+  let osszes = 0, offset = 0;
+  try {
+    // Lapozva: a végpont legfeljebb 50 sort ad (100-ra HTTP 400). Egy hónap
+    // ~90 futás, tehát 4 oldal bőven elég — a régebbi sorok már más hónapé.
+    for (let oldal = 0; oldal < 4; oldal++) {
+      const r = await fetch(
+        `https://eu1.make.com/api/v2/scenarios/${scenarioId}/logs?pg[limit]=50&pg[offset]=${offset}&pg[sortDir]=desc`,
+        { headers: { Authorization: 'Token ' + token }, signal: AbortSignal.timeout(15000) });
+      if (!r.ok) return null;
+      const sorok = (await r.json().catch(() => ({}))).scenarioLogs || [];
+      if (!sorok.length) break;
+      osszes += sumMonthOps(sorok, honap);
+      offset += sorok.length;
+      // Ha az oldal legrégebbi sora már az előző hónapé, nincs mit tovább lapozni.
+      if (String(sorok[sorok.length - 1]?.timestamp || '') < honap) break;
+      if (sorok.length < 50) break;
+    }
+  } catch { return null; }
+  // A naplóban nem szereplő, de elhasznált műveletek (törölt Pinterest).
+  return osszes + untrackedOps(honap);
 }
 
 // slug → { published_at, guide } térkép a cikkekből.
@@ -127,7 +170,22 @@ async function main() {
   // a fenntartás logikája: core/social-queue.js.
   const freshCut = now - FRESH_DAYS * 24 * 3600e3;
   for (const x of queue) x.isFresh = !!(x.pubAt && new Date(x.pubAt).getTime() >= freshCut);
-  const batch = selectSocialBatch(queue, LIMIT);
+
+  // MŰVELET-ŐR: a havi Make-keret vetítése alapján visszaveszünk, ha kifutnánk.
+  const elhasznalt = DRY ? null : await havonEddigElhasznalt(FB_SCENARIO_ID);
+  const limit = postsPerRun({
+    used: elhasznalt, day: new Date().toISOString().slice(0, 10), defaultLimit: LIMIT
+  });
+  if (limit !== LIMIT) {
+    console.log(elhasznalt === null
+      ? `   ⚙️  Make-keret: ismeretlen — maradok a teljes tempón (${LIMIT})`
+      : `   🚦 Make-keret: ${elhasznalt}/1000 elhasználva ebben a hónapban → ${LIMIT} helyett ${limit} poszt megy ki`);
+  }
+  if (limit === 0) {
+    console.log('   ⛔ A havi Make-keret elfogyott — NEM küldök, mert a poszt némán elveszne.');
+    return;
+  }
+  const batch = selectSocialBatch(queue, limit);
   const evergreenWaiting = queue.filter(x => !x.isFresh && x.isGuide).length;
   const nEver = batch.filter(x => !x.isFresh).length;
   console.log(`   📋 Sorban: ${queue.length} (ebből örökzöld útmutató: ${evergreenWaiting}) | most kiküldendő: ${batch.length} (${batch.length - nEver} friss + ${nEver} örökzöld)${DRY ? ' (PRÓBA — nem küldöm)' : ''}\n`);
