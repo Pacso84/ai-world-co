@@ -39,4 +39,66 @@ export function titleLooksUntranslated(enTitle, trTitle) {
   return overlap >= UNTRANSLATED_TITLE_THRESHOLD;
 }
 
-export default { titleLooksUntranslated, UNTRANSLATED_TITLE_THRESHOLD };
+// ===================================================================
+// FORDÍTÁS-VÉDELEM — a TÖRZS oldalán (2026-08-10)
+//
+// A szűrő maga 2026-07-25 óta él a fordítóban: ha a lefordított törzsben túl
+// sűrűn állnak angol funkciószavak, a modell nem fordított, és NEM mentünk.
+// Itt csak KÖLTÖZIK (tesztelhető helyre) és PONTOSABB lesz.
+//
+// MIÉRT: a 2026-08-09-i heti összefoglaló magyar fordítása hatszor bukott el
+// némán, és a cikk magyarul angolul ment ki. A szűrő a saját URL-jeinket is
+// szövegnek vette — a slugjaink pedig angol szavakból állnak:
+//     /article/how-people-are-really-using-chatgpt-and-what-that-means
+// Élesben mérve a spanyol digesten: 54 angol találat, MIND az URL-ekből;
+// a tényleges spanyol prózában NULLA. A spanyol 0.0584-gyel épp elcsúszott
+// a küszöb alatt, a magyar (tömörebb, ugyanannyi URL) fölé ment.
+//
+// Az URL nem próza: egyetlen fordítás sem fordítja le. Ha kivesszük, a mérce
+// azt méri, amit mérni akar — és MINDKÉT irányban élesebb lesz, mert a
+// nevezőből is kikerül a nem-fordítható zaj.
+// ===================================================================
+
+// A küszöb a 2026-07-25-ös éles kalibrációból: jó fordítás ≤0.016,
+// angolul-maradt ~0.16. Nem nyúlunk hozzá — csak azt tisztítjuk, amit mér.
+export const UNTRANSLATED_BODY_THRESHOLD = 0.06;
+
+// 40 szó alatt a hányados zajos: néhány terméknév is átbillentheti.
+// A fordító amúgy is eldobja a 80 karakternél rövidebb törzset.
+const MIN_WORDS = 40;
+
+const EN_FUNCTION_WORDS = /\b(the|and|with|your|you|for|this|that|what|when|from|will|can|how|are)\b/gi;
+
+/**
+ * Kiveszi a szövegből azt, amit egyetlen fordítás sem fordít le: URL-eket,
+ * képútvonalakat, kódot. A link SZÖVEGE bent marad — az fordítandó tartalom,
+ * és ha kivennénk, egy angolul hagyott linkgyűjtemény átcsúszna a szűrőn.
+ */
+export function stripNonProse(md) {
+  return String(md || '')
+    .replace(/```[\s\S]*?```/g, ' ')                          // kódblokk
+    .replace(/`[^`\n]*`/g, ' ')                               // soron belüli kód
+    .replace(/\]\([^)]*\)/g, '] ')                            // [szöveg](CÉL) → a cél megy
+    .replace(/^\s*\[[^\]]*\]:\s*\S+$/gm, ' ')                 // referencia-link definíció
+    .replace(/https?:\/\/\S+/g, ' ')                          // csupasz URL
+    .replace(/\/\S*\.(?:jpg|jpeg|png|webp|svg|gif)\b/gi, ' ') // képútvonal
+    .replace(/<[^>]+>/g, ' ');                                // beágyazott HTML
+}
+
+/**
+ * Angolul maradt-e a lefordított TÖRZS?
+ * @param {string} body  a fordító által adott törzsszöveg (frontmatter nélkül)
+ * @returns {boolean} true, ha a modell nem fordított (NE mentsük el)
+ */
+export function bodyLooksUntranslated(body) {
+  const proza = stripNonProse(body);
+  const szavak = proza.split(/\s+/).filter(Boolean);
+  if (szavak.length < MIN_WORDS) return false;
+  const talalat = (proza.match(EN_FUNCTION_WORDS) || []).length;
+  return talalat / szavak.length > UNTRANSLATED_BODY_THRESHOLD;
+}
+
+export default {
+  titleLooksUntranslated, UNTRANSLATED_TITLE_THRESHOLD,
+  bodyLooksUntranslated, stripNonProse, UNTRANSLATED_BODY_THRESHOLD
+};

@@ -8,7 +8,12 @@
 // és mit NEM SZABAD.
 // ===================================================================
 import { strict as assert } from 'assert';
-import { titleLooksUntranslated } from './translation-guard.js';
+import {
+  titleLooksUntranslated,
+  bodyLooksUntranslated,
+  stripNonProse,
+  UNTRANSLATED_BODY_THRESHOLD
+} from './translation-guard.js';
 
 // ── 1) ANGOLUL MARADT — ezeket MEG KELL fognia (élő esetek) ──────────
 const UNTRANSLATED = [
@@ -62,5 +67,98 @@ for (const [en, tr] of TRANSLATED) {
     'Turn on two-factor authentication on your phone',
     'Kapcsold be a kétlépcsős azonosítást a telefonodon'), false);
 }
+
+// ===================================================================
+// TÖRZS-OLDAL — 2026-08-10
+// ===================================================================
+// A 2026-08-09-i heti összefoglaló magyar fordítása HATSZOR bukott el
+// némán (memory/translation-failures.json: "…This_Week_in_AI.json|hu": 6),
+// és a cikk magyarul ANGOLUL ment ki. A spanyol átment.
+//
+// OK: a nem-fordítás védelem (2026-07-25) a saját URL-jeinket is beleszámolta
+// a szövegbe. A slugjaink angol szavakból állnak:
+//     /article/how-people-are-really-using-chatgpt-and-what-that-means
+// Élesben mérve a spanyol digesten: 54 angol találat — MIND az URL-ekből,
+// a tényleges spanyol prózában NULLA. A spanyol 0.0584-gyel épp elcsúszott
+// a 0.06 alatt; a magyar tömörebb (kevesebb szó, ugyanannyi URL), így a
+// hányados fölé ment, és a JÓ fordítást dobta el.
+//
+// A heti összefoglaló a legsérülékenyebb: 10 belső link van benne.
+// ===================================================================
+
+// A valódi digest szerkezete: minden hírhez egy kép és egy "teljes cikk" link,
+// a linkek célja pedig mindig ANGOL slug — bármelyik nyelven olvassuk.
+const DIGEST_LINKEK = `
+![Your Teen and AI Chatbots](/assets/images/ai-and-your-teen-what-families-should-know.jpg)
+[Olvasd el a teljes cikket](https://aiworldhq.com/article/ai-and-your-teen-what-families-should-know)
+![What People Actually Use ChatGPT For](/assets/images/how-people-are-really-using-chatgpt.jpg)
+[Olvasd el a teljes cikket](https://aiworldhq.com/article/how-people-are-really-using-chatgpt-and-what-that-means)
+![AI Video Tools Are Getting Real](/assets/images/ai-video-generators-like-seedance.jpg)
+[Olvasd el a teljes cikket](https://aiworldhq.com/article/ai-video-generators-like-seedance-in-pictures)
+`;
+
+// ── 5) A JÓ MAGYAR FORDÍTÁST NEM SZABAD ELDOBNI ──────────────────────
+{
+  const magyarProza = `
+Ezen a héten öt olyan hír történt, ami tényleg számít neked. Nem a szokásos
+szakzsargon, hanem az, ami a mindennapjaidra hatással lehet. Végigvesszük,
+hogy melyik eszköz mit tud most, és melyiket érdemes kipróbálnod, ha eddig
+csak nézelődtél. Az első téma a tinédzserek és a csevegőrobotok kapcsolata,
+mert egyre több szülő kérdezi, hogy ez mennyire biztonságos. Utána megnézzük,
+mire használják az emberek valójában a mesterséges intelligenciát, és ez
+meglepő lehet. A harmadik hír a videókészítő eszközökről szól, amelyek most
+értek el oda, hogy hétköznapi felhasználóként is van értelme elindítani őket.
+A negyedik téma a munkahelyeket érinti, az ötödik pedig azt, hogyan védheted
+meg a saját adataidat. Minden szakaszban megtalálod a teljes cikkre mutató
+linket, ha valamelyik téma közelebbről is érdekel téged.
+`;
+  assert.equal(bodyLooksUntranslated(magyarProza + DIGEST_LINKEK), false,
+    'a tiszta magyar próza nem bukhat el a saját URL-jeinktől');
+}
+
+// ── 6) A VÉDELEM TOVÁBBRA IS FOG ─────────────────────────────────────
+// Enélkül a javítás kinyitná a kaput, amit 2026-07-25-ben pont azért
+// zártunk be, mert 10 cikk angolul csúszott a fordítás-helyre.
+{
+  const angolulMaradt = `
+Every week we look at the five stories that matter for you and your family.
+This is what you can expect from the tools that are changing how you work.
+The first story is about teenagers and chatbots, and what parents should know
+when their children are using them. Then we look at what people are really
+doing with these assistants, and how that differs from what you would think.
+The third story is about video tools that are finally good enough for you to
+try at home, and the fourth is about how this will change the work that you do.
+` + DIGEST_LINKEK;
+  assert.equal(bodyLooksUntranslated(angolulMaradt), true,
+    'a valóban angolul maradt törzs továbbra is elbukik');
+}
+
+// ── 7) Az URL-kivágás a link SZÖVEGÉT megtartja ──────────────────────
+// A link szövege fordítandó tartalom. Ha azt is kivágnánk, egy angolul
+// hagyott linkgyűjtemény észrevétlenül átcsúszna a szűrőn.
+{
+  const t = stripNonProse('Nézd meg [ezt a friss cikket](https://aiworldhq.com/article/how-to-use-ai) ma.');
+  assert.ok(t.includes('ezt a friss cikket'), 'a link szövege bent marad');
+  assert.ok(!t.includes('how-to-use-ai'), 'a link CÉLJA kikerül');
+  assert.ok(!t.includes('https'), 'a csupasz URL is kikerül');
+}
+
+// ── 8) Képútvonal és kódblokk sem próza ──────────────────────────────
+{
+  const t = stripNonProse('Kép: ![alt](/assets/images/what-you-can-do-with-ai.jpg)\n\n```\nconst the = "and";\n```\n');
+  assert.ok(!t.includes('/assets/'), 'a képútvonal kikerül');
+  assert.ok(!t.includes('const the'), 'a kódblokk kikerül');
+}
+
+// ── 9) Rövid szövegre nem ítélünk ────────────────────────────────────
+{
+  assert.equal(bodyLooksUntranslated('The AI tool that you can use.'), false,
+    'rövid szövegnél nincs ítélet');
+  assert.equal(bodyLooksUntranslated(''), false, 'üres szöveg nem ítélhető');
+  assert.equal(bodyLooksUntranslated(null), false, 'hiányzó szöveg nem ítélhető');
+}
+
+// ── 10) A küszöb marad, ahol a 2026-07-25-ös kalibráció hagyta ───────
+assert.equal(UNTRANSLATED_BODY_THRESHOLD, 0.06);
 
 console.log('✅ translation-guard.test: minden átment');
