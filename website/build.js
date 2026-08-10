@@ -20,6 +20,7 @@ import { dirname, join } from 'path';
 import { marked } from 'marked';
 import { canonicalChip } from '../core/quality-guard.js';
 import { toolRegex } from '../core/tool-regex.js';
+import { absolutizeFeedLinks } from '../core/feed-links.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = join(__dirname, '..');
@@ -2742,13 +2743,11 @@ const xmlEsc = (s) => String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;
 //
 // ⚠️ A relatív linkeket ABSZOLÚTRA kell írni: a hírolvasóban a cikk a saját
 // domainjükön jelenik meg, ott a "/tools" a Flipboardra mutatna, nem ránk.
+// A linkek abszolutizálása + a saját cikk-URL-ek kanonizálása (.html le):
+// core/feed-links.js — 2026-08-10-ig itt .html-es, átirányító URL-ek mentek
+// ki a feedbe, mert a lemezen a törzs linkjei .html-esek.
 function feedContent(a) {
-  const html = String(a?.bodyHtml || '');
-  if (!html) return '';
-  const abs = html.replace(/\b(href|src)="\/([^"]*)"/g, `$1="${SITE.url}/$2"`);
-  // A CDATA-szakaszt a "]]>" zárja le. Ha ez a karakterhármas előfordul a
-  // szövegben (pl. kódrészletben), kettévágjuk, különben eltörik az XML.
-  return abs.split(']]>').join(']]]]><![CDATA[>');
+  return absolutizeFeedLinks(a?.bodyHtml, SITE.url);
 }
 
 const IMG_BYTES_CACHE = new Map();
