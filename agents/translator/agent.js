@@ -24,6 +24,7 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { ask } from '../../core/ai-router.js';
 import { titleLooksUntranslated, bodyLooksUntranslated } from '../../core/translation-guard.js';
+import { orderForTranslation } from '../../core/translation-queue.js';
 import { fileHandback, sourceDefect } from '../../core/handback.js';
 import { remember } from '../../core/memory-manager.js';
 
@@ -182,15 +183,26 @@ async function main() {
   // így a címlapon lévő friss HÍREK minden nyelven hamar megjelennek.
   // (A korábbi fájlnév-rendezés az ARTICLE_GUIDE_* fájlokat vette mindig előre
   // — 'G' > '2026' — ezért a hírek SOSEM kerültek sorra. 2026-07-01 tanulság.)
-  const files = readdirSync(ARTICLES_DIR)
-    .filter(f => f.startsWith('ARTICLE_') && f.endsWith('.json'))
-    .map(f => {
-      let pub = '';
-      try { pub = JSON.parse(readFileSync(join(ARTICLES_DIR, f), 'utf-8'))._meta?.published_at || ''; } catch { /* skip */ }
-      return { f, pub };
-    })
-    .sort((a, b) => (b.pub || '').localeCompare(a.pub || ''))
-    .map(x => x.f);
+  //
+  // 2026-08-10 óta a KORÁBBAN ELBUKOTT párok és a heti összefoglaló előre
+  // kerülnek: a tisztán kor szerinti sorban egy elbukott cikk minden nap
+  // hátrébb csúszott, és így ment ki angolul a 08-09-i digest. A rendezés
+  // logikája és tesztjei: core/translation-queue.js.
+  const failsNow = loadFails();
+  const files = orderForTranslation(
+    readdirSync(ARTICLES_DIR)
+      .filter(f => f.startsWith('ARTICLE_') && f.endsWith('.json'))
+      .map(f => {
+        let pub = '', kiemelt = false;
+        try {
+          const d = JSON.parse(readFileSync(join(ARTICLES_DIR, f), 'utf-8'));
+          pub = d._meta?.published_at || '';
+          kiemelt = /weekly-digest/.test(d.article_markdown || '');
+        } catch { /* skip */ }
+        return { file: f, pub, kiemelt };
+      }),
+    failsNow
+  ).map(x => x.file);
 
   let done = 0, cost = 0, skipped = 0, failed = 0;
   const startedAt = Date.now();
@@ -281,6 +293,25 @@ async function main() {
 
   console.log('\n' + '─'.repeat(60));
   console.log(`📊 Fordítva: ${done} | már megvolt: ${skipped} | sikertelen: ${failed} | költség $${cost.toFixed(4)}`);
+
+  // MAKACS BUKÁS — hangosan (2026-08-10). A 08-09-i heti összefoglaló HATSZOR
+  // bukott el egymás után, és ez sehol nem tűnt fel: a számláló csendben nőtt
+  // a memory/translation-failures.json-ban, a cikk meg angolul ment ki.
+  // Egy pár, ami háromnál többször elbukott, már nem véletlen — ott a szűrő
+  // vagy a forrás hibás, és emberi szem kell rá.
+  try {
+    const makacs = Object.entries(loadFails())
+      .filter(([, n]) => n >= 3)
+      .sort((a, b) => b[1] - a[1]);
+    if (makacs.length) {
+      console.log(`\n⚠️  MAKACS FORDÍTÁS-BUKÁS — ${makacs.length} pár, itt emberi szem kell:`);
+      for (const [kulcs, n] of makacs.slice(0, 5)) {
+        const i = kulcs.lastIndexOf('|');
+        console.log(`     ${n}× ${kulcs.slice(i + 1)} ← ${kulcs.slice(0, i).slice(0, 64)}`);
+      }
+      console.log('     (ezek a következő futásban ELÖL lesznek — core/translation-queue.js)');
+    }
+  } catch { /* a jelzés hibája ne állítsa meg a fordítást */ }
 
   // ── EGY FORDÍTÁS ÁRA — gördülő átlag (2026-08-01) ─────────────────
   // MIÉRT: a user kérdezte, miért ugrott a napi költés $0,60-ról $2,51-re.
