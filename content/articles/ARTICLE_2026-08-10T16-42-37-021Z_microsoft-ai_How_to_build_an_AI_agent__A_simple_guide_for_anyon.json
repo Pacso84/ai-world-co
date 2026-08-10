@@ -1,0 +1,57 @@
+{
+  "_meta": {
+    "written_at": "2026-08-10T16:42:57.933Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00545484,
+    "original_draft": "2026-08-10T16-42-37-021Z_microsoft-ai_How_to_build_an_AI_agent__A_simple_guide_for_anyon.json",
+    "source_id": "microsoft-ai",
+    "source_name": "Microsoft AI (hivatalos)",
+    "source_link": "https://news.microsoft.com/signal/articles/how-to-build-an-ai-agent-guide/",
+    "status": "published",
+    "published_at": "2026-08-10T16:52:56.291Z",
+    "slug": "what-is-an-ai-agent-really-a-plain-english-guide-for-the-curious",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 798
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Excellent explainer that hits all marks: friendly and explanatory tone, relatable analogies (knowledgeable friend, new intern), clear breakdown of what agents do without condescension, proper structure with hook and What this means for you, and a concrete next step at the end. No prohibited content, no clichés, no invented facts. Minor note: the article wisely avoids naming specific tools or companies without need, keeping the focus on the concept itself.",
+      "_aiCost": 0.0014388,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-08-10T16:53:30.271Z",
+    "guide_worthy": false,
+    "pairing_reason": "Generic explainer about AI agents concept with no specific named product or feature users can actually use",
+    "image_v": 2,
+    "image_at": "2026-08-10T16:54:51.876Z",
+    "seo": {
+      "meta_description": "Learn what AI agents really are in plain English — simple examples showing how they do more than chat, and whether you can build one without coding.",
+      "keywords": [
+        "what is an AI agent",
+        "AI agent explained",
+        "how do AI agents work",
+        "AI agents for beginners",
+        "build AI agent without coding",
+        "AI agent vs chatbot"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more long-tail keyword variations throughout the body (e.g., 'use AI agent for email', 'AI automation for non-coders')",
+        "Include a FAQ section targeting common search queries like 'do I need to code to use AI agents'",
+        "Add more concrete use-case examples to strengthen topical relevance"
+      ],
+      "optimised_at": "2026-08-10T16:55:53.747Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"What Is an AI Agent, Really? A Plain-English Guide for the Curious\"\nsubtitle: \"You keep hearing the term, but what does it actually do — and can you build one without being a coder?\"\ncategory: \"explainer\"\naudience: \"personal\"\nread_time_minutes: 5\ntags: [\"ai-agents\", \"beginner\", \"concepts\"]\n---\n\n# What Is an AI Agent, Really? A Plain-English Guide for the Curious\n\n> **In short:** An AI agent is a chatbot-style assistant that doesn't just answer questions — it can take steps for you, like opening a browser, sending an email, or pulling data from a spreadsheet. You don't have to build one to use them, but knowing the concept helps you see what's coming.\n\nYou asked your phone's assistant for the weather, and it told you. Then you asked a chatbot to \"write me a polite email to reschedule Tuesday's meeting,\" and it did. The next step is already here: AI that doesn't just talk back, but actually *does the thing*. That's what people mean when they say \"AI agent.\"\n\n## So, what is one?\n\nA regular AI chatbot (like ChatGPT or Gemini) waits for your question, writes a reply, and stops. An **AI agent** goes further. Give it a goal — \"find three flights under $300 to Lisbon next month\" — and it can plan the steps, click around the web, compare the results, and come back with a shortlist. You supervise; it acts.\n\nThink of the difference this way: a chatbot is a knowledgeable friend you text for advice. An agent is that same friend, but you've also handed them your laptop and said, \"go ahead and book it if it looks good.\"\n\n## What's actually happening under the hood?\n\nThree things, working together:\n\n- **A language model** (the same engine behind ChatGPT or Claude) that reads your request and decides what to do next.\n- **A list of tools** it can reach — a web browser, your calendar, a calculator, an email app, a file on your computer. The agent chooses which tool to use, when.\n- **A loop** that lets it check its own work. It tries something, looks at the result, and tries again if needed. That's why agents feel less \"stuck\" than a chatbot that gives one answer and moves on.\n\nThe word you'll hear for this is **agentic** — meaning \"able to take initiative step by step.\" When a product says it has \"agentic features,\" that's usually what they mean.\n\n## Where you'll bump into agents in real life\n\nYou may already be using one without the label:\n\n- **Email helpers** that read an inbox, draft replies, and file messages into folders for your approval.\n- **Shopping assistants** that compare prices across sites and add the best deal to a cart, then pause for you to confirm.\n- **Travel planners** that watch flight prices and message you when a route drops.\n- **Workplace copilots** that join your meeting (with permission), take notes, and then schedule the follow-up tasks into your calendar.\n\nA common pattern: the agent does the busywork, but a human clicks \"yes\" before anything important goes out. That last step matters.\n\n## What this means for you\n\n- **If you're just curious:** You don't need to \"build\" anything. The AI tools you already use are quietly gaining agent features. The next time one asks, \"Want me to actually send that?\" — that's the moment to pay attention. Say yes if you trust it; say no if you don't.\n- **If you want to experiment:** Start small. Ask a chatbot to draft something, then ask it to put that draft into a specific format or file. You're training your own intuition for what these tools are good at, and where they still need a human eye.\n- **If you worry about privacy and mistakes:** That's healthy. Agents are new, and they will get things wrong. Keep your address book, bank logins, and anything sensitive out of their reach for now. Treat anything an agent *does* the way you'd treat a new intern: helpful, but worth double-checking.\n- **If you don't code:** Good news — you don't need to. The big AI companies are building agents you point-and-click into existence. Building a fully custom agent from scratch is a developer hobby right now, not a daily-life skill.\n\n## Wrap-up\n\nAn AI agent is just a chatbot with a longer leash: it can use tools, check its work, and take real actions on your behalf. The technology is young, so the safest habit is to let it draft, and let yourself approve. Try one small thing this week — let an AI assistant schedule a meeting or sort a list — and see how it goes. That's the easiest way to learn what this whole \"agent\" thing actually means in your own life.",
+  "original_title": "How to build an AI agent: A simple guide for anyone"
+}
