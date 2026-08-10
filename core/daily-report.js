@@ -446,6 +446,22 @@ async function main() {
     }
   } catch { /* még nem futott — nem baj */ }
 
+  // I18N-ŐRSZEM (2026-08-10). Ez az őrszem 2026-07-06 óta fut, és 08-09-én
+  // PONTOSAN azt látta, amit kellett: a magyar heti összefoglaló 161 angol
+  // jellel ment ki. Csakhogy egyedül a CI naplójába írt, oda pedig senki nem
+  // néz — a hibát a user vette észre az oldalon, egy nappal később.
+  // A "FORDITATLAN_CIKK" a legdrágább lelet: egy TELJES cikk idegen nyelven.
+  try {
+    const i18n = JSON.parse(readFileSync(join(ROOT, 'memory', 'i18n-guard.json'), 'utf-8'));
+    const p = i18n.problems || [];
+    if (p.length) {
+      const cikkek = p.filter(x => x.code === 'FORDITATLAN_CIKK');
+      lines.push(cikkek.length
+        ? `🈳 I18N-ŐRSZEM: ${cikkek.length} cikk ANGOLUL ment ki — ${cikkek.slice(0, 2).map(x => `${x.lang}: ${x.page.split('/').pop()}`).join(', ')}${cikkek.length > 2 ? '…' : ''}`
+        : `🈳 I18N-ŐRSZEM: ${p.length} felület-folt — ${p.slice(0, 2).map(x => `${x.lang}: ${x.detail}`).join(', ')}${p.length > 2 ? '…' : ''}`);
+    }
+  } catch { /* még nem futott — nem baj */ }
+
   // HÁZMESTER (2026-07-30): mit takarított el, és hízik-e valami vissza.
   // CSENDES a hétköznapokon: napi pár régi napló törlése nem hír. Csak akkor
   // szólal meg, ha ÉRDEMI takarítás történt (kép/fordítás/embedding), vagy ha

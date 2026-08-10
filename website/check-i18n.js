@@ -15,7 +15,7 @@
 // hangosan látszik. FUTTATÁS: node website/check-i18n.js  (build után!)
 // ===================================================================
 
-import { readFileSync, readdirSync, existsSync } from 'fs';
+import { readFileSync, readdirSync, existsSync, writeFileSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 
@@ -82,6 +82,14 @@ function proseText(html) {
 
 let chromeHits = 0, bodyHits = 0;
 
+// A LELETEK a napi riportnak (2026-08-10). Eddig ez az őrszem CSAK a konzolra
+// írt — és 2026-08-09-én pontosan azt látta, amit látnia kellett: a magyar
+// heti összefoglaló 161 angol jellel ment ki. A jelzés a CI naplójában maradt,
+// oda pedig senki nem néz; a hibát végül a user vette észre az oldalon.
+// A többi őrszem (seo-guard, live-guard) régóta állapotfájlt ír, és a riport
+// beolvassa — ez az egy maradt ki, épp az, amelyiknek a területe volt.
+const problems = [];
+
 for (const lang of LANGS) {
   const base = join(OUT, lang);
   if (!existsSync(base)) continue;
@@ -104,6 +112,7 @@ for (const lang of LANGS) {
       if (rx.test(text)) {
         console.log(`⚠️  [${lang}] ANGOL FELIRAT: "${phrase}" — ${short}`);
         chromeHits++;
+        problems.push({ code: 'ANGOL_FELIRAT', lang, page: short, detail: phrase });
       }
     }
 
@@ -113,6 +122,8 @@ for (const lang of LANGS) {
       if (hits >= BODY_THRESHOLD) {
         console.log(`⚠️  [${lang}] FORDÍTATLAN TARTALOM GYANÚ (${hits} angol jel): ${short}`);
         bodyHits++;
+        // Ez a legdrágább lelet: egy TELJES cikk ment ki idegen nyelven.
+        problems.push({ code: 'FORDITATLAN_CIKK', lang, page: short, detail: `${hits} angol jel` });
       }
       // --- 2b) MEGSZÓLÍTÁS-VADÁSZ (2026-07-14): a márka-norma hu=tegezés,
       // de=du, es=tú, fr=vous — az ettől eltérő megszólítás stílustörés.
@@ -131,6 +142,7 @@ for (const lang of LANGS) {
       if (mHits >= 2) {
         console.log(`⚠️  [${lang}] MEGSZÓLÍTÁS-TÖRÉS GYANÚ (${mHits} jel — norma: hu=tegezés/de=du/es=tú/fr=vous): ${short}`);
         chromeHits++;
+        problems.push({ code: 'MEGSZOLITAS_TORES', lang, page: short, detail: `${mHits} jel` });
         // A Fordító SAJÁT leckéje (stabil szöveg nyelvenkénti változatban,
         // ismétlődésnél erősödik — 2026-07-16, "külön memória minden agentnek")
         try {
@@ -151,6 +163,14 @@ try {
   for (const f of findings) console.log('⚠️  [minőség-őr] ' + f);
   qualityHits = findings.length;
 } catch (e) { console.log('⚠️  minőség-őr nem futott: ' + e.message.slice(0, 60)); }
+
+// A LELETEK LEÍRÁSA A NAPI RIPORTNAK (2026-08-10).
+// Ugyanaz a szerződés, mint a seo-guard/live-guard esetében: { at, problems }.
+// A riport ebből szólal meg — a CI naplója nem jut el senkihez.
+try {
+  const STATE = join(__dirname, '..', 'memory', 'i18n-guard.json');
+  writeFileSync(STATE, JSON.stringify({ at: new Date().toISOString(), problems }, null, 2), 'utf-8');
+} catch { /* az őrszem könyvelése ne állítsa meg a pipeline-t */ }
 
 console.log('─'.repeat(60));
 if (chromeHits + bodyHits + qualityHits === 0) {
