@@ -3158,7 +3158,7 @@ Canonical: ${SITE.url}/.well-known/security.txt
     <p style="margin-top:22px"><a class="support__btn" style="display:inline-block" href="/">← Back to the homepage</a></p>
     <p style="margin-top:14px"><a href="/guides">Everyday guides</a> · <a href="/tools">AI tool guides</a></p>
     <p style="margin-top:26px;font-size:13px;color:var(--ink-soft)">
-      <a href="/hu/">Magyar</a> · <a href="/es/">Español</a> · <a href="/de/">Deutsch</a> · <a href="/fr/">Français</a>
+      ${SITE_LANGS.filter(l => l !== 'en').map(l => `<a href="/${l}/">${LANG_NAME[l]}</a>`).join(' · ')}
     </p>
   </section>`;
   writeFileSync(join(OUT_DIR, '404.html'), pageShell({
