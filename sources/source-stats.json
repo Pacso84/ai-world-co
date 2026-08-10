@@ -1,7 +1,7 @@
 {
   "_meta": {
     "note": "Forrás-bizonyítvány: frissesség + termés + megbízhatóság forrásonként. Gyártja: core/source-report-card.js",
-    "updated": "2026-08-10T01:20:57.845Z",
+    "updated": "2026-08-10T09:20:37.278Z",
     "thresholds": {
       "DEAD_FEED_DAYS": 365,
       "MIN_SAMPLE": 4,
@@ -12,7 +12,7 @@
   "sources": {
     "openai-blog": {
       "name": "OpenAI Blog (hivatalos)",
-      "feedAgeDays": 2,
+      "feedAgeDays": 3,
       "published30d": 35,
       "truthBlocks": 0,
       "totalAttempts": 48,
@@ -23,7 +23,7 @@
     },
     "google-deepmind": {
       "name": "Google DeepMind (hivatalos)",
-      "feedAgeDays": 3,
+      "feedAgeDays": 4,
       "published30d": 4,
       "truthBlocks": 0,
       "totalAttempts": 6,
@@ -45,7 +45,7 @@
     },
     "meta-ai": {
       "name": "Meta Newsroom (hivatalos)",
-      "feedAgeDays": 3,
+      "feedAgeDays": 4,
       "published30d": 2,
       "truthBlocks": 0,
       "totalAttempts": 5,
@@ -56,7 +56,7 @@
     },
     "microsoft-ai": {
       "name": "Microsoft AI (hivatalos)",
-      "feedAgeDays": 5,
+      "feedAgeDays": 6,
       "published30d": 4,
       "truthBlocks": 0,
       "totalAttempts": 10,
@@ -89,7 +89,7 @@
     },
     "google-workspace": {
       "name": "Google Workspace Updates (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 2,
       "published30d": 22,
       "truthBlocks": 1,
       "totalAttempts": 34,
@@ -111,7 +111,7 @@
     },
     "microsoft-research": {
       "name": "Microsoft Research (hivatalos)",
-      "feedAgeDays": 6,
+      "feedAgeDays": 7,
       "published30d": 0,
       "truthBlocks": 0,
       "totalAttempts": 5,
@@ -122,7 +122,7 @@
     },
     "github-ai": {
       "name": "GitHub AI & ML (hivatalos)",
-      "feedAgeDays": 3,
+      "feedAgeDays": 4,
       "published30d": 2,
       "truthBlocks": 0,
       "totalAttempts": 5,
@@ -133,7 +133,7 @@
     },
     "aws-ml": {
       "name": "AWS Machine Learning (hivatalos)",
-      "feedAgeDays": 2,
+      "feedAgeDays": 3,
       "published30d": 19,
       "truthBlocks": 0,
       "totalAttempts": 42,
@@ -408,7 +408,7 @@
     },
     "snowflake": {
       "name": "Snowflake Blog (hivatalos)",
-      "feedAgeDays": 4,
+      "feedAgeDays": 5,
       "published30d": 6,
       "truthBlocks": 0,
       "totalAttempts": 19,
@@ -419,7 +419,7 @@
     },
     "together": {
       "name": "Together AI Blog (hivatalos)",
-      "feedAgeDays": 2,
+      "feedAgeDays": 3,
       "published30d": 4,
       "truthBlocks": 0,
       "totalAttempts": 5,
@@ -452,7 +452,7 @@
     },
     "ntt-research": {
       "name": "NTT Research (hivatalos)",
-      "feedAgeDays": 6,
+      "feedAgeDays": 7,
       "published30d": 4,
       "truthBlocks": 0,
       "totalAttempts": 8,
@@ -529,7 +529,7 @@
     },
     "grammarly-blog": {
       "name": "Grammarly (hivatalos)",
-      "feedAgeDays": 55,
+      "feedAgeDays": 56,
       "published30d": 1,
       "truthBlocks": 0,
       "totalAttempts": 1,
@@ -573,7 +573,7 @@
     },
     "microsoft-365": {
       "name": "Microsoft 365 Insider (hivatalos)",
-      "feedAgeDays": 2,
+      "feedAgeDays": 1,
       "published30d": 3,
       "truthBlocks": 0,
       "totalAttempts": 3,
