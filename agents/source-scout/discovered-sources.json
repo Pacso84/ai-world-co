@@ -24,140 +24,20 @@
   },
   "user_rejected_hosts": [
     "aisingapore.org",
+    "blog.coursera.org",
+    "blog.khanacademy.org",
     "datarobot.com",
     "engineering.grab.com",
+    "memrise.com",
     "mila.quebec",
+    "news.airbnb.com",
+    "notion.so",
     "sambanova.ai",
     "simplenote.com",
     "toggl.com",
-    "writer.com"
+    "writer.com",
+    "zoho.com"
   ],
-  "discovered_sources": [
-    {
-      "suggested_id": "khanacademy",
-      "name": "Khan Academy Updates (hivatalos)",
-      "url": "https://blog.khanacademy.org/feed/",
-      "category": "ai-company-official",
-      "priority": 3,
-      "language": "en",
-      "country": "US",
-      "reliability_score": 100,
-      "reliability_reasons": [
-        "friss (utolsó cikk 5 napja)",
-        "bő kínálat (10 cikk)",
-        "hivatalos forrásként jelölve",
-        "a domain/feed egyezik a cég nevével",
-        "HTTPS + érvényes RSS"
-      ],
-      "item_count_at_discovery": 10,
-      "last_post_age_days": 5,
-      "comment": "JAVASLAT (source-scout, megbízhatóság 100/100): Free online education platform with courses, blog covers new features and learning tools. Felhasználói jóváhagyás kell!",
-      "enabled": false
-    },
-    {
-      "suggested_id": "coursera",
-      "name": "Coursera Blog (hivatalos)",
-      "url": "https://blog.coursera.org/feed/",
-      "category": "ai-company-official",
-      "priority": 3,
-      "language": "en",
-      "country": "US",
-      "reliability_score": 100,
-      "reliability_reasons": [
-        "friss (utolsó cikk 14 napja)",
-        "bő kínálat (10 cikk)",
-        "hivatalos forrásként jelölve",
-        "a domain/feed egyezik a cég nevével",
-        "HTTPS + érvényes RSS"
-      ],
-      "item_count_at_discovery": 10,
-      "last_post_age_days": 14,
-      "comment": "JAVASLAT (source-scout, megbízhatóság 100/100): Online course platform with certificates, blog covers new courses and platform features. Felhasználói jóváhagyás kell!",
-      "enabled": false
-    },
-    {
-      "suggested_id": "memrise",
-      "name": "Memrise Blog (hivatalos)",
-      "url": "https://www.memrise.com/blog/rss.xml",
-      "category": "ai-company-official",
-      "priority": 3,
-      "language": "en",
-      "country": "UK",
-      "reliability_score": 100,
-      "reliability_reasons": [
-        "friss (utolsó cikk 7 napja)",
-        "bő kínálat (10 cikk)",
-        "hivatalos forrásként jelölve",
-        "a domain/feed egyezik a cég nevével",
-        "HTTPS + érvényes RSS"
-      ],
-      "item_count_at_discovery": 10,
-      "last_post_age_days": 7,
-      "comment": "JAVASLAT (source-scout, megbízhatóság 100/100): Language learning with video natives, blog covers new features and learning tools. Felhasználói jóváhagyás kell!",
-      "enabled": false
-    },
-    {
-      "suggested_id": "zoho",
-      "name": "Zoho Blog (hivatalos)",
-      "url": "https://www.zoho.com/blog/feed/",
-      "category": "ai-company-official",
-      "priority": 3,
-      "language": "en",
-      "country": "IN",
-      "reliability_score": 100,
-      "reliability_reasons": [
-        "friss (utolsó cikk 1 napja)",
-        "bő kínálat (10 cikk)",
-        "hivatalos forrásként jelölve",
-        "a domain/feed egyezik a cég nevével",
-        "HTTPS + érvényes RSS"
-      ],
-      "item_count_at_discovery": 10,
-      "last_post_age_days": 1,
-      "comment": "JAVASLAT (source-scout, megbízhatóság 100/100): Business software suite with CRM and AI, blog covers product updates across apps. Felhasználói jóváhagyás kell!",
-      "enabled": false
-    },
-    {
-      "suggested_id": "airbnb",
-      "name": "Airbnb Newsroom (hivatalos)",
-      "url": "https://news.airbnb.com/feed/",
-      "category": "ai-company-official",
-      "priority": 3,
-      "language": "en",
-      "country": "US",
-      "reliability_score": 100,
-      "reliability_reasons": [
-        "friss (utolsó cikk 2 napja)",
-        "bő kínálat (10 cikk)",
-        "hivatalos forrásként jelölve",
-        "a domain/feed egyezik a cég nevével",
-        "HTTPS + érvényes RSS"
-      ],
-      "item_count_at_discovery": 10,
-      "last_post_age_days": 2,
-      "comment": "JAVASLAT (source-scout, megbízhatóság 100/100): Travel accommodation app - new features for hosts/guests. Felhasználói jóváhagyás kell!",
-      "enabled": false
-    },
-    {
-      "suggested_id": "notion",
-      "name": "Notion Release Notes (hivatalos)",
-      "url": "https://www.notion.so/releases/rss.xml",
-      "category": "ai-company-official",
-      "priority": 3,
-      "language": "en",
-      "country": "US",
-      "reliability_score": 100,
-      "reliability_reasons": [
-        "friss (utolsó cikk 1 napja)",
-        "bő kínálat (147 cikk)",
-        "hivatalos forrásként jelölve",
-        "a domain/feed egyezik a cég nevével",
-        "HTTPS + érvényes RSS"
-      ],
-      "item_count_at_discovery": 147,
-      "last_post_age_days": 1,
-      "comment": "JAVASLAT (source-scout, megbízhatóság 100/100): Note-taking and productivity app - new features. Felhasználói jóváhagyás kell!",
-      "enabled": false
-    }
-  ]
+  "discovered_sources": [],
+  "rejection_note": "User-döntés 2026-08-11: \"csak 100 százalékosakat használjuk\". A hat javaslat mind 100/100 MEGBÍZHATÓSÁGÚ volt, de a mért AI-tartalmuk: khanacademy 10% · coursera 70% · memrise 0% · zoho 30% · airbnb 0% · notion 50%. A megbízhatóság azt méri, valódi-e a forrás; a hasznosságot 2026-08-11 óta a core/source-usefulness.js kapuja méri (küszöb 60%, éles adatra kalibrálva)."
 }

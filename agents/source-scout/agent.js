@@ -38,6 +38,7 @@ import { ask } from '../../core/ai-router.js';
 import { skillsBlock } from '../../core/skills.js';
 import { notify } from '../../core/ops.js';
 import { sendMessage } from '../../core/telegram.js';
+import { aiContentRatio, usefulnessVerdict } from '../../core/source-usefulness.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = join(__dirname, '..', '..');
@@ -139,7 +140,10 @@ function getCoverage() {
     for (const t of tokensFromName(s.name)) brands.add(t);
     bump(label);
   }
-  return { domains, brands, brandCount };
+  // A TELJES URL-ek is kellenek: a duplikátum-szűrés domain-variánst is néz
+  // (a scout a notion.so-t javasolta, miközben a notion.com már futott).
+  const urls = config.sources.map(s => s.url).filter(Boolean);
+  return { domains, brands, brandCount, urls };
 }
 
 // ===================================================================
@@ -462,9 +466,25 @@ async function main() {
       continue;
     }
 
-    console.log(`✅ MEGBÍZHATÓ [${verdict.score}/100]: ${org.name} — ${found.url}`);
+    // ── HASZNOSSÁG-KAPU (2026-08-11) ────────────────────────────────
+    // A megbízhatóság azt méri, VALÓDI-e a forrás; azt nem, hogy KELL-e
+    // nekünk. 2026-08-11-én hat javaslat állt a várólistán 100/100-zal, és
+    // NÉGY közülük semmit nem írt AI-ról (Airbnb: "Q2 financial results",
+    // Memrise: "How to learn Russian"). A user szabálya: "csak 100
+    // százalékosakat használjuk". A küszöb éles adatra kalibrálva:
+    // core/source-usefulness.js.
+    const aiRatio = aiContentRatio(found.feed?.items || []);
+    const hasznos = usefulnessVerdict({ aiRatio, url: found.url, existingUrls: coverage.urls });
+    if (!hasznos.ok) {
+      console.log(`🚫 ${org.name} (${hostname}) — NEM NEKÜNK VALÓ: ${hasznos.reason}`);
+      rejected.push({ name: org.name, host: hostname, reason: hasznos.reason, score: verdict.score });
+      continue;
+    }
+
+    console.log(`✅ MEGBÍZHATÓ [${verdict.score}/100] + HASZNOS (${aiRatio}% AI): ${org.name} — ${found.url}`);
     console.log(`     ↳ ${verdict.reasons.join(' · ')}`);
     discovered.push({
+      ai_content_ratio: aiRatio,
       suggested_id: hostFirstLabel(hostname),
       name: org.name + ' (hivatalos)',
       url: found.url,
