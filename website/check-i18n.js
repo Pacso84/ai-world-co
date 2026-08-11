@@ -16,6 +16,7 @@
 // ===================================================================
 
 import { readFileSync, readdirSync, existsSync, writeFileSync } from 'fs';
+import { chromePhraseHits, decodeEntities } from '../core/ui-phrases.js';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 
@@ -41,11 +42,17 @@ const EN_RX = /\b(the|and|with|your|you|for|this|that|how to|what|when|from|will
 const BODY_THRESHOLD = 30;   // ennyi találat felett szinte biztos EN-fallback
 
 function visibleText(html) {
-  return html
-    .replace(/<script[\s\S]*?<\/script>/gi, ' ')
-    .replace(/<style[\s\S]*?<\/style>/gi, ' ')
-    .replace(/<[^>]+>/g, ' ')
-    .replace(/&[a-z]+;/gi, ' ');
+  return decodeEntities(
+    html
+      .replace(/<script[\s\S]*?<\/script>/gi, ' ')
+      .replace(/<style[\s\S]*?<\/style>/gi, ' ')
+      .replace(/<[^>]+>/g, ' ')
+  )
+    // Az IDÉZŐJELEKET meg kell őrizni (decodeEntities már visszaadta őket):
+    // enélkül nem dönthető el, hogy egy angol frázis idézett GOMBNÉV-e vagy a
+    // mi lefordítatlan feliratunk. 2026-08-11-ig ez a sor minden entitást
+    // szóközre cserélt, és a „Try it now&quot; így vesztette el a záróját.
+    .replace(/&(?:[a-z]+|#\d+);/gi, ' ');
 }
 
 // A FORDÍTATLAN-SZKEN CSAK A SAJÁT PRÓZÁNKAT NÉZHETI (2026-08-01).
@@ -105,15 +112,13 @@ for (const lang of LANGS) {
     const text = visibleText(raw).toLowerCase();
     const short = p.replace(OUT, '').replace(/\\/g, '/');
 
-    for (const phrase of CHROME_PHRASES) {
-      // szóhatárral, hogy pl. a német "advanced..." összetételekre ne ugorjon rá
-      // (?<![a-z#]) — a #hashtag-címkék (pl. #advanced) nem számítanak feliratnak
-      const rx = new RegExp('(?<![a-z#])' + phrase.replace(/[-\s]/g, '[-\\s]') + '(?![a-z])', 'i');
-      if (rx.test(text)) {
-        console.log(`⚠️  [${lang}] ANGOL FELIRAT: "${phrase}" — ${short}`);
-        chromeHits++;
-        problems.push({ code: 'ANGOL_FELIRAT', lang, page: short, detail: phrase });
-      }
+    // A szóhatár-kezelés és az IDÉZETT gombnevek kihagyása: core/ui-phrases.js
+    // (2026-08-11: a "Try it now" idézőjelben egy idegen termék gombjának a
+    // neve — épp hogy nem szabad lefordítani.)
+    for (const phrase of chromePhraseHits(text, CHROME_PHRASES)) {
+      console.log(`⚠️  [${lang}] ANGOL FELIRAT: "${phrase}" — ${short}`);
+      chromeHits++;
+      problems.push({ code: 'ANGOL_FELIRAT', lang, page: short, detail: phrase });
     }
 
     // --- 2) fordítatlan tartalom (csak cikkeken számoljuk) ---
