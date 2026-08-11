@@ -1,0 +1,59 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "turn-a-meeting-transcript-into-a-to-do-list-with-owners-and-",
+    "company": "Cohere",
+    "tool": "Cohere",
+    "icon": "📝",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-08-11T01:10:06.894Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.0164874,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-08-11T01:20:51.124Z",
+    "slug": "turn-a-meeting-transcript-into-a-to-do-list-with-owners-and-deadlines-",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1421
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured guide with clear steps, friendly tone, and practical examples. No prohibited content, factual claims are defensible, and the structure meets all requirements including the What this means for you section and actionable wrap-up.",
+      "_aiCost": 0.001746,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "image_v": 2,
+    "image_at": "2026-08-11T01:22:13.556Z",
+    "seo": {
+      "meta_description": "Learn to use Cohere to turn meeting transcripts into actionable to-do lists with owners and deadlines in 5 minutes. Simple guide.",
+      "keywords": [
+        "convert meeting transcript to to-do list",
+        "extract action items from meeting",
+        "Cohere meeting transcript tasks",
+        "meeting notes to task list",
+        "AI extract meeting action items"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add 'action items' to the title for better search intent matching — this is the exact phrase people search for",
+        "Verify Cohere's current interface steps in the article to ensure accuracy",
+        "Consider adding 'free' or 'free trial' to the title/meta to address pricing-related searches"
+      ],
+      "optimised_at": "2026-08-11T01:22:54.581Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Turn a meeting transcript into a to-do list with owners and deadlines using Cohere\"\nsubtitle: \"Paste your meeting transcript into Cohere's chat and get a clean list of who owns what by when — in about five minutes.\"\ncategory: \"guide\"\naudience: \"business\"\ncompany: \"Cohere\"\ntool: \"Cohere\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"getting-started\", \"cohere\", \"productivity\"]\n---\n\n# Turn a meeting transcript into a to-do list with owners and deadlines using Cohere\n\n> **In short:** Cohere can read a meeting transcript and pull out every action item, the person responsible, and the deadline — you just paste the text and ask. You need a Cohere account (free trial or paid plan) and your meeting transcript ready as plain text.\n\nIf your meetings end with a long transcript and a fuzzy sense of \"someone should follow up on that,\" this guide is for you. In about five minutes you'll have a clean, assignable list of tasks — names and dates included — ready to drop into whatever project tool your team uses. One honest note up front: Cohere will write the list for you, but it can't actually open Asana or send email on your behalf. The final copy-paste into your task tool is still a 30-second step you do yourself.\n\n## Before you start\n- A Cohere account at cohere.com — there is a free starting tier, and paid plans if you run a lot of transcripts through it. Sign in before you start so you don't hit a wall mid-task.\n- A meeting transcript as plain text. Most meeting tools (Zoom, Google Meet, Teams, Otter, Fireflies, Read.ai) have a \"Copy transcript\" or \"Download\" button. If you only have audio, you'll need to transcribe it first — that's a separate step.\n- About 5 minutes for a typical 30–60 minute meeting.\n\n## Step 1 — Get your transcript into one clean block\nOpen your meeting tool and find the transcript. Look for a button labeled something like \"Copy transcript,\" \"Download,\" or three dots (⋯) next to the recording. Paste everything into a plain text file, a Notes app, or an email draft. Strip out timestamps and speaker labels if they're noisy, but keep them if they help you remember who said what — names are the hardest part for any AI to get right, so context helps.\n\n💬 Example: a short cleaned block looks like \"Maria: We need to finalize the Q3 budget by Friday. John: I'll draft the client email. Sarah: I'll book the follow-up meeting for next Tuesday.\"\n\nYou'll know it worked when the text reads as a continuous conversation with no audio markers, system messages, or \"[inaudible]\" notes left in.\n\n## Step 2 — Open Cohere's chat\nGo to cohere.com and sign in, then look for the chat or playground option in your dashboard. You're looking for a screen with a large text box where you can type a message and send it. If you land on the API dashboard by mistake, look for a tab labeled \"playground\" — that's the same chat experience, just framed for developers. If Cohere shows you an assistant named Coral or similar, that's the right place too.\n\n💬 Example: this step doesn't involve typing anything new — just sign in and find the empty input area.\n\nYou'll know it worked when you see a blank chat box with a send button (often a paper-plane ⬆ or arrow icon) ready to receive your message.\n\n## Step 3 — Paste the transcript and ask for action items\nClick into the chat box and paste your entire transcript. Then, on a new line, type your instruction. The clearest prompts name the format you want and the three fields you care about: task, owner, and deadline. Vague prompts get vague answers; specific prompts get specific lists.\n\n💬 Example: paste the transcript, then add — \"From the transcript above, list every action item. For each one, give: the task, the person who agreed to do it (owner), and the deadline or target date. If an owner or deadline is not stated, write 'unclear'. Format as a numbered list.\"\n\nHit send and wait a few seconds. Cohere will return a numbered list, usually one task per line. You'll know it worked when you see tasks that mirror the commitments people actually made in the meeting — not a generic summary of the topic.\n\n## Step 4 — Ask for anything it missed\nRead the list carefully. If owners or deadlines are missing on some tasks, send a short follow-up. This gives Cohere a second pass at the same text, now focused on the specific gap. If the first response was too long or skipped a topic, ask it to redo it with tighter rules. Don't be polite about it — be specific, the same way you would with a colleague.\n\n💬 Example: type — \"Add an owner for item 3 — it sounds like Maria mentioned she'd take it. Also give me a deadline for item 5, or mark it as unclear if none was given. Keep the same numbered format.\"\n\nYou'll know it worked when every action item has a name attached and a date, or an honest \"unclear\" label rather than a guess.\n\n## Step 5 — Copy the final list into your task tool\nHighlight Cohere's reply and copy it. Open whatever tool your team uses for tasks — Asana, Trello, ClickUp, Notion, a shared spreadsheet, even an email. Paste the list as the starting point for new tasks. Most task tools let you turn each line into its own card, ticket, or row.\n\n💬 Example: paste as the description for a parent task called \"Marketing sync — Oct 14,\" then create one subtask per numbered item, each with the owner and date filled in.\n\nYou'll know it worked when each task lives as its own item, has an owner assigned, and shows a due date — not buried in a single paragraph.\n\n## Step 6 — Send it to attendees for a quick confirm\nBefore you treat the list as final, send it to the people who were in the meeting. A short message — \"Here's what I captured as next steps, let me know if I missed anything\" — catches misheard names and dates. This step is quick but it prevents the most common failure mode: a confident-looking task list that quietly misnames a person or invents a deadline nobody agreed to.\n\n💬 Example: \"Hi all — pulled these action items from today's call: 1) Maria finalizes the budget by Fri 10/17; 2) John drafts the email by Wed; 3) Sarah books the follow-up. Let me know if anything's off.\"\n\nYou'll know it worked when the team replies (or silently doesn't object) and you can lock the tasks into your shared system with confidence.\n\n## Common mistakes\n- **Pasting a summary instead of the full transcript.** The cleaner and shorter your input, the more you'll get a generic answer. Use the actual transcript — the model needs the raw conversation to spot who said yes to what.\n- **Asking for \"a summary\" instead of action items.** A summary is what the meeting was about; action items are who owes what by when. Be explicit, as in Step 3 — those three words (\"action items,\" \"owner,\" \"deadline\") are the difference between a useful list and a vague recap.\n- **Skipping the confirm-with-attendees step.** Even a great extract can mishear a name (\"Marie / Maria\") or invent a date that wasn't said. The 30-second confirmation message saves you from tasks going to the wrong person or landing on a phantom date.\n\n## What this means for you\n- **In everyday work:** any meeting — team syncs, client calls, one-on-ones — can end with a clean, assignable list instead of a \"I'll send notes later\" promise that never quite gets done.\n- **For your business or work:** if your team runs a lot of recurring meetings, doing this once or twice will quickly show you where ownership is unclear in real time. That's a process finding, not just an AI trick.\n- **If you're just getting started:** try it on one short meeting this week. Don't aim for perfection — aim for a list that's 80% right and faster than doing it by hand. You can tighten the rest.\n\n## Try it now\nOpen your last meeting transcript, copy it into Cohere's chat, and paste the prompt from Step 3. Two minutes from now you'll have a first draft of your action items sitting on screen.",
+  "original_title": "Turn a meeting transcript into a to-do list with owners and deadlines using Cohere"
+}

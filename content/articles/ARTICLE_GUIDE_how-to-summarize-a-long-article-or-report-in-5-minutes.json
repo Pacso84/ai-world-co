@@ -1,0 +1,60 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "how-to-summarize-a-long-article-or-report-in-5-minutes",
+    "company": "",
+    "tool": "",
+    "icon": "📄",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-08-11T01:18:47.853Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.01351758,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-08-11T01:19:50.556Z",
+    "slug": "how-to-summarize-a-long-article-or-report-in-5-minutes",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1290
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured guide with clear step-by-step instructions, appropriate fallbacks for each step, and a friendly tone that makes AI accessible to beginners. The prompt examples are reusable, the common mistakes section addresses hallucination risks, and the What this means for you section grounds the skill in real-life use cases. No issues found.",
+      "_aiCost": 0.001713,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "image_v": 2,
+    "image_at": "2026-08-11T01:21:37.766Z",
+    "seo": {
+      "meta_description": "Learn how to summarize any long article or report in just 5 minutes using one reusable AI prompt. Turn dense documents into 5 clear bullets.",
+      "keywords": [
+        "how to summarize a long article quickly",
+        "AI summarize document free",
+        "quick article summary tool",
+        "summarize long reports with AI",
+        "use AI to summarize text",
+        "reusable AI prompt for summarization"
+      ],
+      "seo_score": 9,
+      "suggestions": [
+        "Add 'how-to' to the title to match search intent better — currently it's implied but not explicit",
+        "Include the target word 'summarize' earlier in the first paragraph for better keyword prominence",
+        "Consider adding estimated time to read in the article body to improve E-E-A-T signals"
+      ],
+      "optimised_at": "2026-08-11T01:22:32.452Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"How to Summarize a Long Article or Report in 5 Minutes\"\nsubtitle: \"Turn a 30-page report or a 5,000-word article into five plain-language bullets with one copy-paste prompt you can reuse.\"\ncategory: \"guide\"\naudience: \"both\"\ncompany: \"\"\ntool: \"\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"getting-started\", \"productivity\", \"prompting\"]\n---\n\n# How to Summarize a Long Article or Report in 5 Minutes\n\n> **In short:** Copy the text, open any AI assistant, paste it with one short instruction, and ask for five plain-language bullets. Two minutes later you have the gist of a long article, paper, or email — using the same prompt again and again, on a free plan.\n\nLong reads don't have to eat your afternoon. With one reusable prompt and any modern AI assistant — ChatGPT, Gemini, Claude, Copilot, Le Chat, DeepSeek, or whichever you already have an account with — you can pull the main points out of a 30-page report, a dense journal paper, or a rambling work email in just a few minutes. This guide shows you the exact words to paste so the result is useful every single time.\n\n## Before you start\n- A free account with at least one AI assistant (ChatGPT, Gemini, Claude, Copilot, Le Chat, or DeepSeek — any of them works for this).\n- A device with a browser or the assistant's app: phone, tablet, or computer.\n- The article, PDF, or email open somewhere so you can copy from it.\n- About 5 minutes total — most of which is the AI typing.\n\n## Step 1 — Copy the text you want summarized\nOpen the article, report, or email and select all the text (Ctrl+A on Windows, Cmd+A on Mac, or long-press and choose \"Select all\" on a phone). Then copy it (Ctrl+C, Cmd+C, or the Copy button). The text now lives in your clipboard, ready to paste anywhere.\nIf you're working from a **PDF**, open it in a reader that lets you select text (most do), or use a free online \"PDF to text\" tool — search \"PDF to text converter\" and you'll find several. If the article is **behind a paywall** you can't get past, copy what you can see; the AI can only summarize what it actually receives, and it can't reach past login screens on its own.\nYou'll know it worked when you can paste the words somewhere else and they appear unchanged.\n\n## Step 2 — Open any AI assistant in a fresh chat\nOpen your assistant of choice in a browser or app, and start a **new chat** (look for a button labeled \"New chat\", \"New conversation\", or a small **+** or pencil icon, usually at the top-left or top-right). A blank message box appears with the cursor blinking inside.\nIf you don't have an account yet, any of the major assistants will let you sign up with an email address in about a minute. The free tier is enough for this task — you don't need to pay for anything to get a useful summary of a few thousand words.\nYou'll know it worked when you see an empty text box with no previous conversation visible above it.\n\n## Step 3 — Paste the text and add one clear instruction\nClick inside the empty box, paste the copied text (Ctrl+V, Cmd+V, or the Paste button on a phone), then press **Enter** to add a new line. Below the pasted article, type a short instruction telling the AI what you want. Keep it simple and direct.\n💬 Example: `Summarize the text I pasted above into 5 bullet points. Use plain language a smart 12-year-old could understand. Skip background I likely already know. Focus on the most important facts, decisions, numbers, and conclusions.`\nIf the pasted text is **very long** and the assistant refuses or cuts it off, paste it in two or three chunks, send each one with a quick \"continue\", then run the prompt at the end. Many assistants also have a **paperclip icon** near the text box that lets you upload a PDF or document directly — look for it.\nYou'll know it worked when the assistant starts writing and produces roughly five short bullets.\n\n## Step 4 — Refine with one follow-up if anything is unclear\nRead the five bullets. If one is fuzzy, too vague, or misses what you cared about, ask one short follow-up before you stop. This is where the summary becomes genuinely useful — the AI now knows the article and your question, so the second answer is usually the one you'll keep.\n💬 Example: `Now explain point 3 in two sentences, and tell me what data they used to support that claim.`\nIf the summary feels **too short** and you want more depth, ask: `Add one more bullet about the limitations or counter-arguments the article mentions.` If it's too long, ask: `Cut each bullet to one sentence max.` Keep going one question at a time until the summary matches what you actually need.\nYou'll know it worked when you could explain the article's main point to a friend in under a minute without re-reading it.\n\n## Step 5 — Save the prompt so you never rewrite it\nHighlight the prompt you used in Step 3, copy it, and save it somewhere you'll find again — a notes app, an email draft to yourself, or a single text file called \"My prompts\". The same wording works for news articles, journal papers, long Slack threads, and work emails. You only have to write it once.\nIf you want a **shorter version** for quick reads, save this one too: `Give me the 3 most important takeaways from the text above in plain English.` If you want a **deeper version** for school or work, save: `Summarize the text above in 7 bullets, then list 3 questions the article doesn't answer.`\nYou'll know it worked when you can summarize your next long read in under three minutes without thinking about what to type.\n\n## Common mistakes\n- **Pasting without an instruction.** The AI will summarize, but in its own format — which often means a long, dense paragraph. Always add the \"5 plain-language bullets\" line so the output is scannable in seconds.\n- **Trusting a summary you didn't read.** AIs sometimes invent details that aren't in the original (this is called a **hallucination** — when the AI confidently makes something up). Glance at the source for any fact you'll quote or repeat to someone else.\n- **Forgetting to start a new chat.** If you paste a long article into an existing conversation, the assistant may get confused by older messages and lose track. A fresh chat gives cleaner, more focused results.\n\n## What this means for you\n- **In everyday life:** when a 3,000-word news piece lands in your feed, you decide in two minutes whether it's worth the full read — instead of bouncing off the wall of text and never returning.\n- **For your business or work:** a long weekly report from a colleague, a dense client email, or a vendor contract becomes five bullets you can scan before a meeting, and you can ask the AI to pull out specific numbers on demand.\n- **If you're just getting started:** open your usual assistant, paste the first long thing sitting in your inbox right now, and run the Step 3 prompt. That's the whole skill — the prompt does the heavy lifting.\n\n## Try it now\nFind the longest unread email or article in your inbox, copy the text, paste it into your AI assistant with the Step 3 prompt, and read the five bullets. Two minutes from now you'll know whether it deserved your attention — and you'll have a prompt you can reuse forever.",
+  "original_title": "How to Summarize a Long Article or Report in 5 Minutes"
+}

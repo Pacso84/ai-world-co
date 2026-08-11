@@ -1,0 +1,62 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "translate-a-product-description-into-spanish-and-french-with",
+    "company": "Cohere",
+    "tool": "Cohere",
+    "icon": "🌐",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-08-11T01:07:53.418Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.0113589,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-08-11T01:20:37.715Z",
+    "slug": "translate-a-product-description-into-spanish-and-french-with-cohere",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1601
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [
+        "British spelling 'behaviour' appears in Step 5 — use 'behavior' for US English"
+      ],
+      "verdict": "Well-structured guide with clear step-by-step instructions, useful examples, and appropriate fallbacks for UI variations. The tone is friendly and encouraging for beginners. One US spelling fix needed: change 'behaviour' to 'behavior' in Step 5.",
+      "_aiCost": 0.0021228,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "image_v": 2,
+    "image_at": "2026-08-11T01:22:02.275Z",
+    "seo": {
+      "meta_description": "Learn to translate product descriptions into Spanish and French using Cohere's free AI tool. Fast first drafts for your online store.",
+      "keywords": [
+        "translate product description to Spanish",
+        "translate product description to French",
+        "Cohere translation tool",
+        "AI translate product descriptions",
+        "e-commerce translation",
+        "free AI translation for business"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more specific long-tail keywords in the article body like 'bulk translate product descriptions' and 'online store localization'",
+        "Include the word 'how-to' or 'tutorial' in the first heading to match search intent better",
+        "Add a brief comparison or mention of alternative tools to increase E-E-A-T signals"
+      ],
+      "optimised_at": "2026-08-11T01:22:47.312Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Translate a product description into Spanish and French with Cohere\"\nsubtitle: \"Paste your English product copy and get clean Spanish and French versions you can drop straight into your online store.\"\ncategory: \"guide\"\naudience: \"business\"\ncompany: \"Cohere\"\ntool: \"Cohere\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"getting-started\", \"cohere\", \"translation\"]\n---\n\n# Translate a product description into Spanish and French with Cohere\n\n> **In short:** Use Cohere's free Playground to turn one English product description into Spanish and French in a single prompt. You'll need a Cohere account (free to start), and the result is a strong first draft — you should still read it through before publishing.\n\nBy the end of this guide, you'll have two ready-to-use product descriptions — one in Spanish, one in French — sitting in your store or in a backup doc. This walkthrough is for small business owners and marketers who want a fast, good-enough first draft without hiring a translator for every product.\n\n## Before you start\n- **A free Cohere account.** Sign-up takes about 2 minutes at the official Cohere site.\n- **Your English product description.** Copy it from your store or product sheet and have it ready to paste.\n- **Roughly 10 minutes.** Most of that is reading and double-checking the AI's answer.\n- **A free plan is enough** for this task. Cohere may limit how many messages you can send per minute, but a single product description easily fits inside the free tier.\n\nA quick note on what Cohere **cannot** do for this task: it won't catch every specialist word (a fabric name, a regulatory phrase, a brand-specific term) and it isn't a substitute for a sworn legal translation. Treat its output as a polished first draft, not a final one.\n\n## Step 1 — Create your free Cohere account\nOpen your browser and go to Cohere's homepage. Click the button in the top-right corner — it's usually labeled \"Sign up\", \"Get started\", or \"Try for free\". You'll land on a sign-up page. You can register with your email and a password, or click the Google or GitHub button to skip the form. After signing up, Cohere may send a confirmation email; open it and click the verification link inside before you continue.\n\n💬 Example: use your real work email so future receipts, API keys, and account-recovery messages all reach you.\n\nIf the button wording looks different (\"Get API key\" or \"Start building\"), click that instead — it leads to the same dashboard. Cohere updates its labels often.\n\nYou'll know it worked when you see a screen that greets you by name, or a dashboard page that lists \"Playground\" as one of the options.\n\n## Step 2 — Open the Playground\nOnce you're signed in, look at the left-hand navigation menu and click the item labeled \"Playground\" (it may also be called \"Try it now\" or sit under a \"Tools\" header). A new screen opens with two big text boxes side by side: a prompt box on the left where you type your request, and a response box on the right where the AI's answer will appear. At the top of the panel there's a dropdown menu for choosing which AI model to use — leave it on the default for now.\n\n💬 Example: Cohere's \"Command\" family of models handles everyday translation tasks well; no need to change it for a product description.\n\nIf you don't see a left-hand menu, look in the top-left corner for a \"hamburger\" button — three horizontal lines — and click it. On a smaller screen or a narrow window, the menu hides behind that icon.\n\nYou'll know it worked when you see two empty boxes labeled something like \"Prompt\" (left) and \"Response\" or \"Output\" (right), with a \"Generate\" button near the bottom of the prompt box.\n\n## Step 3 — Paste your English copy and write a clear instruction\nClick inside the prompt box on the left. Press Ctrl+V (Windows) or Cmd+V (Mac) to paste your English product description directly into the box — don't retype it, that introduces typos. Now add a short instruction above or below the pasted text, telling the AI exactly what you want: which languages, what tone, and how to label the answer.\n\n💬 Example prompt: \"Translate the following product description into natural, shopper-friendly Spanish and natural, shopper-friendly French. Label each version clearly. Match the warm, persuasive tone of the original. Here is the description: [your English copy here]\"\n\nIf your description has unusual characters (curly quotes, em dashes), don't worry — they paste fine. If the box only shows part of your text, that's normal; the AI can still read the whole input.\n\nYou'll know it worked when the pasted English text shows up inside the prompt box, with the same line breaks as in your original.\n\n## Step 4 — Generate both translations\nClick the button at the bottom of the prompt box — look for \"Generate\", or a play-arrow icon (▶). The right-hand box will start filling with the AI's answer. Most product descriptions finish in under 30 seconds; longer ones may take up to a minute. When it's done, you'll see two clearly separated blocks: one Spanish version, one French version, each labeled.\n\n💬 Example of what a good output looks like: \"Spanish: ... [paragraph] ... French: ... [paragraph] ...\"\n\nIf nothing appears after a minute, click the button once more — the first click sometimes doesn't register. If you only get one language, the prompt may have been cut off; see Step 5.\n\nYou'll know it worked when you can read two separate paragraphs, one Spanish and one French, each with its own label.\n\n## Step 5 — Ask for a redo if anything feels off\nIf a translation sounds too stiff, too long, or just doesn't read like something your customers would say, you don't have to start over. In the same playground panel, click at the end of the previous answer (or in a new prompt box that appears below it) and type what you'd like changed. The model treats the new message as a follow-up, so it knows what you're reacting to.\n\n💬 Example follow-up: \"Make the Spanish version about 20% shorter and a bit warmer — like a friend recommending the product. Keep the French version unchanged.\"\n\nIf the playground doesn't keep a chat history, paste the previous answer back into the prompt box and ask for the rewrite from scratch — slower, but it still works.\n\nYou'll know it worked when the new reply shows the changed version, and any language you asked to keep untouched is still there in the right language.\n\n## Step 6 — Copy each version into your store\nHighlight the Spanish text in the response box, copy it (Ctrl+C or Cmd+C), and paste it into your store's Spanish-language product page or into a translations spreadsheet. Then go back and do the same with the French text. Save the originals somewhere you'll find again — a Google Doc, a Notion page, or a spreadsheet with one row per product and one column per language.\n\n💬 Example spreadsheet columns: English | Español | Français — one row per product, so any future edit stays in sync across all three languages.\n\nIf your store only has a single language field, save the translations in a notes app or a Google Doc titled with the product name, so you can find them later.\n\nYou'll know it worked when both Spanish and French versions sit in your store (or in your backup doc), readable, with no garbled characters, no English words left over, and a clear label on each.\n\n## Common mistakes\n- **Pasting the description alone.** If you only paste the description with no instruction, you may get stiff, word-for-word translations. Always tell the AI the tone (friendly, professional, playful) and who's reading (shoppers, parents, professionals).\n- **Trusting the output blindly.** Cohere is strong at everyday language but can mistranslate specialist words (a specific fabric, a regulatory term, a brand name). Read both versions out loud — anything you wouldn't say yourself is worth fixing.\n- **Forgetting to save your English source.** If you close the playground and come back later, the original prompt may be gone. Keep your best English wording in a doc alongside the translations, so future edits have a single source of truth.\n- **Mixing up the labels.** The AI sometimes merges Spanish and French into one block, or swaps the order. Always scan for the \"Spanish:\" and \"French:\" headers before you copy — that's how you know which version is which.\n\n## What this means for you\n- **In everyday life:** If you ever need to email a French-speaking friend or read a Spanish recipe at a friend's house, the same Playground prompt works — paste the text, ask for a translation, done.\n- **For your business or work:** A team of one can keep a small product catalog in three languages without paying a translator per product. You stay in control of the wording, and you ship faster.\n- **If you're just getting started:** Pick your best-selling product today. Translate just that one. See how the result reads, then decide whether to roll the workflow out across the rest of your catalog.\n\n## Try it now\nOpen Cohere's Playground, paste this exact prompt, and replace the bracketed text with your own description: \"Translate the following product description into natural Spanish and natural French. Label each version clearly. Here is the description: [paste your English product copy here].\" Hit Generate, read the result out loud, and save the two versions somewhere you'll find them again.",
+  "original_title": "Translate a product description into Spanish and French with Cohere"
+}

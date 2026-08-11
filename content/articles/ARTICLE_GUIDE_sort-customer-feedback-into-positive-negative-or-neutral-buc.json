@@ -1,0 +1,62 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "sort-customer-feedback-into-positive-negative-or-neutral-buc",
+    "company": "Cohere",
+    "tool": "Cohere",
+    "icon": "🏷️",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-08-11T01:19:33.870Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00988038,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-08-11T01:20:11.720Z",
+    "slug": "sort-customer-feedback-into-positive-negative-or-neutral-buckets-with-",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1398
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 8,
+      "decision": "PASS",
+      "issues": [
+        "Step 1: \"says something like 'Sign in' or 'Get started'\" is vague for a beginner who might not recognize either phrasing — be more specific about what to look for on Cohere's homepage",
+        "Step 2: \"Some Cohere plans put classify behind an API\" may confuse beginners who don't know what an API is — consider briefly explaining this or simplifying to just the playground fallback"
+      ],
+      "verdict": "Well-structured beginner guide with friendly tone, clear step-by-step instructions, useful examples in each step, and practical fallbacks when the UI may differ. Minor vagueness in two spots (button naming in Step 1, API mention in Step 2) slightly reduces clarity for true beginners but does not break the guide.",
+      "_aiCost": 0.00216744,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "image_v": 2,
+    "image_at": "2026-08-11T01:21:52.959Z",
+    "seo": {
+      "meta_description": "Learn to automatically sort customer reviews into Positive, Negative, or Neutral buckets using Cohere's free Classify tool — no coding needed.",
+      "keywords": [
+        "sort customer feedback with Cohere",
+        "Cohere Classify tool tutorial",
+        "sentiment analysis for beginners",
+        "analyze customer reviews without code",
+        "categorize feedback positive negative neutral"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more context about what Cohere is in the first paragraph to improve relevance for first-time users",
+        "Consider adding section headings with target keywords like 'How to Use Cohere Classify' for better SEO structure",
+        "Include an example output or screenshot description to increase engagement and time on page"
+      ],
+      "optimised_at": "2026-08-11T01:22:42.518Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Sort Customer Feedback into Positive, Negative, or Neutral Buckets with Cohere\"\nsubtitle: \"A beginner-friendly way to count happy and unhappy customers using Cohere's Classify tool — no code required.\"\ncategory: \"guide\"\naudience: \"business\"\ncompany: \"Cohere\"\ntool: \"Cohere\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"getting-started\", \"cohere\", \"customer-feedback\"]\n---\n\n# Sort Customer Feedback into Positive, Negative, or Neutral Buckets with Cohere\n\n> **In short:** Cohere's Classify tool reads batches of customer reviews and labels each one as Positive, Negative, or Neutral. You set up three example categories, paste in your reviews, and get a count back — usually in under a minute. You'll need a free Cohere account to start.\n\nIf you collect reviews through email, surveys, or a contact form, you already have the raw material. The hard part is reading every one and counting the moods. Cohere's Classify tool does that quick tally for you, even when you have hundreds of comments to get through.\n\n## Before you start\n- A **free Cohere account** — sign up at the Cohere dashboard with an email address; new accounts usually get a small amount of free trial credit to start.\n- A device with a browser (desktop works best, but the dashboard also loads on a phone).\n- **At least 8 to 10 customer reviews** ready to paste in. You can pull them from email, a spreadsheet, or your review platform.\n- Roughly **10–15 minutes** total for the first run. After that, each new batch takes only a couple of minutes.\n\n## Step 1 — Sign in and reach the dashboard\nOpen your browser and go to Cohere's dashboard (look for a button on Cohere's homepage that says something like \"Sign in\" or \"Get started\"). Type the email and password you used when you signed up, then submit. You should land on a workspace page with tiles or a side menu listing the available tools — chat, embed, classify, and others. If you only see a sign-up screen, click the small \"Already have an account? Sign in\" link near the form. Once you see your account name or workspace name at the top of the page, you're in.\n💬 Example: N/A — you're just logging in.\nYou'll know it worked when you can see the main workspace page and your name or company name in the top corner.\n\n## Step 2 — Open the Classify tool\nFrom the side menu or the workspace tiles, look for an option labeled **Classify** or **Classification** and click it. A panel opens with two empty sections: one for examples (sample texts that teach the model what each category means) and one for the texts you want to classify. If you don't see Classify on the first screen, try opening a **Playground** or **Try it out** area instead — Classify is usually listed there. Some Cohere plans put classify behind an API, in which case you can still follow this guide by pasting the same prompts into the API playground.\n💬 Example: N/A — you're just opening a panel.\nYou'll know it worked when you see two clearly labeled input areas, one for examples and one for your reviews.\n\n## Step 3 — Add two or three example reviews for each bucket\nIn the examples section, you'll find three fields (or tabs) named something like **Positive**, **Negative**, and **Neutral**. Paste two or three short example reviews into each one. The model learns from these — so write them the way real customers actually write. A simple sentence is enough. Cover the different tones you see: a thrilled 5-star comment, a polite complaint, and a factual product question for neutral. If your interface only has one big text box, label each example clearly with the category name on its own line (\"Positive: …\", \"Negative: …\").\n💬 Example: Positive — \"Honestly the best purchase I made this year.\" Negative — \"Arrived broken and customer service took a week to reply.\" Neutral — \"Does this come in a black version?\"\nYou'll know it worked when every category has at least two example lines and the panel accepts them without an error.\n\n## Step 4 — Paste in the reviews you want sorted\nOpen a document or spreadsheet where your real customer reviews live. Copy a batch of about 10 to 30 reviews and paste them into the second input area, one review per line. Keep each line short — a sentence or two — so the model can read each one cleanly. If your dashboard has a \"Single text\" mode, switch it to a batch or list mode first; the option is usually a dropdown or a toggle near the input box. Try not to mix reviews in different languages in the same batch, since the model performs best when everything is one language.\n💬 Example: \"Great battery life but the screen scratches easily.\" / \"Shipping took forever, very disappointed.\" / \"What's the warranty period on this model?\"\nYou'll know it worked when every line of pasted text shows up as its own row in the input area, ready to be processed.\n\n## Step 5 — Run the classification\nLook for a button near the input area labeled **Run**, **Classify**, or **Submit** and click it. Within a few seconds, each review should come back with a label — Positive, Negative, or Neutral — and usually a confidence score next to it. If nothing happens after 30 seconds, check that all three example categories are filled in (an empty category stops the run on most setups) and try again. If your interface returns JSON instead of neat labels, that's normal for API mode — copy the output into a spreadsheet to read it more easily.\n💬 Example: N/A — you're clicking the run button.\nYou'll know it worked when every pasted review appears in a results list with one of your three labels attached.\n\n## Step 6 — Tally the results and use the numbers\nRead down the results and count how many reviews landed in each category. That gives you three numbers: happy, unhappy, and unsure. Drop those into a one-line summary for your team, a slide, or your weekly report. If your dashboard has an **Export to CSV** or **Copy** button, use it to paste the labeled reviews into a spreadsheet so you can filter and sort later. One honest limitation: the tool sorts tone, not reasoning — sarcasm, irony, or very subtle complaints can land in the wrong bucket, so skim a handful before you trust the totals.\n💬 Example: \"Out of 24 reviews this week: 14 Positive, 7 Negative, 3 Neutral.\"\nYou'll know it worked when you can name, in one sentence, how your customers felt this week.\n\n## Common mistakes\n- **Filling in only one or two categories.** If you skip Neutral, every so-so review gets forced into Positive or Negative, and your \"neutral\" count will look suspiciously low. Add at least two examples to all three buckets.\n- **Using identical example phrasing for every category.** If all three \"Positive\" examples start with \"I love this…\", the model may learn that phrase instead of the sentiment. Vary the wording — short, long, polite, excited.\n- **Expecting it to catch sarcasm or jokes.** A review that says \"Oh great, another broken cable\" will probably be labeled Positive. Read the bottom of your results once before you share the numbers.\n- **Pasting a thousand reviews at once on the free tier.** Trial accounts often cap batch size. Start with 10 to 20, confirm it works, then scale up.\n\n## What this means for you\n- **In everyday life:** The same approach works on any pile of short opinions — survey responses, app store reviews, social comments — so you can quickly spot how a group feels about anything.\n- **For your business or work:** A weekly 5-minute run turns into a trend line. Over a month you'll see whether product changes, customer service tweaks, or marketing pushes actually moved the needle on customer mood.\n- **If you're just getting started:** Run it on 10 reviews from last week today. The numbers themselves matter less than building the habit of looking at them every week.\n\n## Try it now\nOpen your email or review platform, copy your last 10 customer messages, and run them through the Classify tool using the three categories from Step 3. You'll have your first customer-mood tally before your coffee gets cold.",
+  "original_title": "Sort customer feedback into positive, negative, or neutral buckets with Cohere"
+}
