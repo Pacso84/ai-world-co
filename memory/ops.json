@@ -1,86 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178630155491429",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-08-09T18:52:34.914Z",
-      "updated": "2026-08-09T18:52:35.121Z"
-    },
-    {
-      "id": "t178630155512396",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-09T18:52:35.123Z",
-      "updated": "2026-08-09T18:52:54.909Z"
-    },
-    {
-      "id": "t178630157491145",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-08-09T18:52:54.911Z",
-      "updated": "2026-08-09T18:53:09.735Z"
-    },
-    {
-      "id": "t17863232659864",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-08-10T00:54:25.986Z",
-      "updated": "2026-08-10T00:54:26.155Z"
-    },
-    {
-      "id": "t178632326615792",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-08-10T00:54:26.157Z",
-      "updated": "2026-08-10T00:54:43.852Z"
-    },
-    {
-      "id": "t178632328385457",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-08-10T00:54:43.854Z",
-      "updated": "2026-08-10T00:54:44.055Z"
-    },
-    {
-      "id": "t178632328405760",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-10T00:54:44.057Z",
-      "updated": "2026-08-10T00:54:44.235Z"
-    },
-    {
-      "id": "t178632328423688",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-10T00:54:44.236Z",
-      "updated": "2026-08-10T00:54:44.408Z"
-    },
-    {
-      "id": "t178632328441197",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-08-10T00:54:44.411Z",
-      "updated": "2026-08-10T00:54:44.630Z"
-    },
-    {
-      "id": "t17863232846666",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-10T00:54:44.666Z",
-      "updated": "2026-08-10T01:06:07.639Z"
-    },
-    {
       "id": "t178632396764097",
       "title": "Run ellenorzo",
       "status": "done",
@@ -479,33 +399,89 @@
       "agent": "publisher",
       "created": "2026-08-11T08:45:45.205Z",
       "updated": "2026-08-11T08:46:06.881Z"
+    },
+    {
+      "id": "t17864667158452",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-08-11T16:45:15.845Z",
+      "updated": "2026-08-11T16:45:16.056Z"
+    },
+    {
+      "id": "t178646671605810",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-08-11T16:45:16.058Z",
+      "updated": "2026-08-11T16:45:56.976Z"
+    },
+    {
+      "id": "t178646675697826",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-08-11T16:45:56.978Z",
+      "updated": "2026-08-11T16:45:57.171Z"
+    },
+    {
+      "id": "t178646675717352",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-11T16:45:57.173Z",
+      "updated": "2026-08-11T16:46:42.140Z"
+    },
+    {
+      "id": "t178646680214233",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-11T16:46:42.142Z",
+      "updated": "2026-08-11T16:46:57.476Z"
+    },
+    {
+      "id": "t178646681747987",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-08-11T16:46:57.479Z",
+      "updated": "2026-08-11T16:48:40.610Z"
+    },
+    {
+      "id": "t178646692064980",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-11T16:48:40.649Z",
+      "updated": "2026-08-11T16:48:44.819Z"
+    },
+    {
+      "id": "t178646692482127",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-08-11T16:48:44.821Z",
+      "updated": "2026-08-11T16:48:58.454Z"
+    },
+    {
+      "id": "t178646693845649",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-11T16:48:58.456Z",
+      "updated": "2026-08-11T16:49:15.166Z"
+    },
+    {
+      "id": "t178646695516795",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-08-11T16:49:15.167Z",
+      "updated": "2026-08-11T16:49:35.047Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178543196772846",
-      "level": "success",
-      "text": "1 hír + 0 útmutató publikálva (költség: $0.0120).",
-      "agent": "ceo",
-      "at": "2026-07-30T17:19:27.728Z",
-      "loud": false
-    },
-    {
-      "id": "n178547182417480",
-      "level": "info",
-      "text": "SEO: 5 cikk optimalizálva (átlag 8.2/10).",
-      "agent": "seo",
-      "at": "2026-07-31T04:23:44.174Z",
-      "loud": false
-    },
-    {
-      "id": "n178547185748872",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). A solid, ready-to-launch lineup — practical, varied, and hits real everyday needs from work emails to community kindness. One note: Qwen Chat is probably the least familiar tool for Australian readers",
-      "agent": "publisher",
-      "at": "2026-07-31T04:24:17.488Z",
-      "loud": false
-    },
     {
       "id": "n178547186816584",
       "level": "success",
@@ -1281,27 +1257,33 @@
       "agent": "ceo",
       "at": "2026-08-11T08:46:06.915Z",
       "loud": false
+    },
+    {
+      "id": "n178646693844431",
+      "level": "info",
+      "text": "SEO: 1 cikk optimalizálva (átlag 7.0/10).",
+      "agent": "seo",
+      "at": "2026-08-11T16:48:58.444Z",
+      "loud": false
+    },
+    {
+      "id": "n178646696531816",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). A mix of practical how-tos and helpful templates — ez jól lefedi, amit az olvasók keresnek. Egy apró javítás: a 7. cikknél a Cohere helyett a tool hivatalos neve kell (Command), és az 1.-nél is Perple",
+      "agent": "publisher",
+      "at": "2026-08-11T16:49:25.318Z",
+      "loud": false
+    },
+    {
+      "id": "n178646697508240",
+      "level": "success",
+      "text": "1 hír + 0 útmutató publikálva (költség: $0.0140).",
+      "agent": "ceo",
+      "at": "2026-08-11T16:49:35.082Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178540644774929",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-07-30T10:14:07.749Z"
-    },
-    {
-      "id": "m178540704656215",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook). content/social/feed.md",
-      "ref": null,
-      "at": "2026-07-30T10:24:06.562Z"
-    },
     {
       "id": "m178543184774693",
       "from": "ellenorzo",
@@ -2643,6 +2625,24 @@
       "text": "6 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-08-11T08:58:33.228Z"
+    },
+    {
+      "id": "m178646695515653",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-08-11T16:49:15.156Z"
+    },
+    {
+      "id": "m178646717763565",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"How to build or improve your CV with AI\" — The example prompt in Step 3 specifies Australian English, which conflicts with the current style guide (US English required since August 2026). This is outdated guidance that should be corrected to American English.",
+      "ref": "ARTICLE_GUIDE_ai-resume-cv.json",
+      "at": "2026-08-11T16:52:57.635Z"
     }
   ]
 }
