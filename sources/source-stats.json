@@ -1,7 +1,7 @@
 {
   "_meta": {
     "note": "Forrás-bizonyítvány: frissesség + termés + megbízhatóság forrásonként. Gyártja: core/source-report-card.js",
-    "updated": "2026-08-12T09:15:33.880Z",
+    "updated": "2026-08-12T17:10:14.949Z",
     "thresholds": {
       "DEAD_FEED_DAYS": 365,
       "MIN_SAMPLE": 4,
@@ -12,23 +12,23 @@
   "sources": {
     "openai-blog": {
       "name": "OpenAI Blog (hivatalos)",
-      "feedAgeDays": 1,
-      "published30d": 39,
+      "feedAgeDays": 0,
+      "published30d": 40,
       "truthBlocks": 0,
-      "totalAttempts": 52,
+      "totalAttempts": 53,
       "alreadyDisabled": false,
-      "lastArticle": "2026-08-11",
+      "lastArticle": "2026-08-12",
       "verdict": "ok",
       "reason": ""
     },
     "google-deepmind": {
       "name": "Google DeepMind (hivatalos)",
-      "feedAgeDays": 6,
-      "published30d": 4,
+      "feedAgeDays": 0,
+      "published30d": 5,
       "truthBlocks": 0,
-      "totalAttempts": 6,
+      "totalAttempts": 7,
       "alreadyDisabled": false,
-      "lastArticle": "2026-07-28",
+      "lastArticle": "2026-08-12",
       "verdict": "ok",
       "reason": ""
     },
@@ -111,7 +111,7 @@
     },
     "microsoft-research": {
       "name": "Microsoft Research (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 0,
       "published30d": 0,
       "truthBlocks": 0,
       "totalAttempts": 5,
@@ -166,7 +166,7 @@
     },
     "apple-ml": {
       "name": "Apple Machine Learning Research (hivatalos)",
-      "feedAgeDays": 5,
+      "feedAgeDays": 6,
       "published30d": 5,
       "truthBlocks": 0,
       "totalAttempts": 15,
@@ -386,7 +386,7 @@
     },
     "sap": {
       "name": "SAP Innovation Blog (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 0,
       "published30d": 1,
       "truthBlocks": 0,
       "totalAttempts": 6,
@@ -398,11 +398,11 @@
     "databricks": {
       "name": "Databricks Blog (hivatalos)",
       "feedAgeDays": 0,
-      "published30d": 17,
+      "published30d": 18,
       "truthBlocks": 0,
-      "totalAttempts": 21,
+      "totalAttempts": 22,
       "alreadyDisabled": false,
-      "lastArticle": "2026-08-07",
+      "lastArticle": "2026-08-12",
       "verdict": "ok",
       "reason": ""
     },
@@ -430,7 +430,7 @@
     },
     "pinecone": {
       "name": "Pinecone Blog (hivatalos)",
-      "feedAgeDays": 6,
+      "feedAgeDays": 0,
       "published30d": 0,
       "truthBlocks": 0,
       "totalAttempts": 3,
@@ -441,7 +441,7 @@
     },
     "ibm": {
       "name": "IBM Research (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 0,
       "published30d": 1,
       "truthBlocks": 0,
       "totalAttempts": 2,
@@ -474,7 +474,7 @@
     },
     "midjourney-updates": {
       "name": "Midjourney Updates (hivatalos)",
-      "feedAgeDays": 18,
+      "feedAgeDays": 19,
       "published30d": 8,
       "truthBlocks": 0,
       "totalAttempts": 8,
@@ -551,7 +551,7 @@
     },
     "sony-ai": {
       "name": "Sony AI (hivatalos)",
-      "feedAgeDays": 42,
+      "feedAgeDays": 43,
       "published30d": 3,
       "truthBlocks": 0,
       "totalAttempts": 3,
@@ -562,7 +562,7 @@
     },
     "notion-releases": {
       "name": "Notion – Mi újság (hivatalos)",
-      "feedAgeDays": 5,
+      "feedAgeDays": 6,
       "published30d": 0,
       "truthBlocks": 0,
       "totalAttempts": 0,
@@ -573,7 +573,7 @@
     },
     "microsoft-365": {
       "name": "Microsoft 365 Insider (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 0,
       "published30d": 3,
       "truthBlocks": 0,
       "totalAttempts": 3,
@@ -596,9 +596,9 @@
     "picsart": {
       "name": "PicsArt Blog (hivatalos)",
       "feedAgeDays": 0,
-      "published30d": 9,
+      "published30d": 10,
       "truthBlocks": 0,
-      "totalAttempts": 9,
+      "totalAttempts": 10,
       "alreadyDisabled": false,
       "lastArticle": "2026-08-12",
       "verdict": "ok",
