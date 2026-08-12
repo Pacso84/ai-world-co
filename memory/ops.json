@@ -1,86 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178640966727616",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-11T00:54:27.276Z",
-      "updated": "2026-08-11T00:55:15.849Z"
-    },
-    {
-      "id": "t178640971585112",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-11T00:55:15.851Z",
-      "updated": "2026-08-11T00:55:34.042Z"
-    },
-    {
-      "id": "t178640973404543",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-08-11T00:55:34.045Z",
-      "updated": "2026-08-11T00:55:42.650Z"
-    },
-    {
-      "id": "t178640974272312",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-11T00:55:42.723Z",
-      "updated": "2026-08-11T00:55:42.874Z"
-    },
-    {
-      "id": "t178640974287528",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-11T00:55:42.875Z",
-      "updated": "2026-08-11T00:58:45.872Z"
-    },
-    {
-      "id": "t178640992587571",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-11T00:58:45.875Z",
-      "updated": "2026-08-11T01:06:23.530Z"
-    },
-    {
-      "id": "t178641038353427",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-11T01:06:23.534Z",
-      "updated": "2026-08-11T01:19:33.879Z"
-    },
-    {
-      "id": "t178641117388154",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-11T01:19:33.881Z",
-      "updated": "2026-08-11T01:20:51.131Z"
-    },
-    {
-      "id": "t178641125113388",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-11T01:20:51.133Z",
-      "updated": "2026-08-11T01:22:13.568Z"
-    },
-    {
-      "id": "t178641133356943",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-08-11T01:22:13.569Z",
-      "updated": "2026-08-11T01:22:54.593Z"
-    },
-    {
       "id": "t178641137459496",
       "title": "Run designer",
       "status": "done",
@@ -479,33 +399,89 @@
       "agent": "publisher",
       "created": "2026-08-12T09:06:29.397Z",
       "updated": "2026-08-12T09:06:48.396Z"
+    },
+    {
+      "id": "t178655310743868",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-08-12T16:45:07.438Z",
+      "updated": "2026-08-12T16:45:07.629Z"
+    },
+    {
+      "id": "t178655310763127",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-08-12T16:45:07.631Z",
+      "updated": "2026-08-12T16:45:38.875Z"
+    },
+    {
+      "id": "t178655313887784",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-08-12T16:45:38.877Z",
+      "updated": "2026-08-12T16:45:39.069Z"
+    },
+    {
+      "id": "t178655313907171",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-12T16:45:39.071Z",
+      "updated": "2026-08-12T16:51:44.392Z"
+    },
+    {
+      "id": "t178655350439446",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-12T16:51:44.394Z",
+      "updated": "2026-08-12T16:52:42.119Z"
+    },
+    {
+      "id": "t178655356212271",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-08-12T16:52:42.122Z",
+      "updated": "2026-08-12T16:53:16.724Z"
+    },
+    {
+      "id": "t178655359676569",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-12T16:53:16.765Z",
+      "updated": "2026-08-12T16:54:05.258Z"
+    },
+    {
+      "id": "t178655364525952",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-08-12T16:54:05.259Z",
+      "updated": "2026-08-12T16:55:05.244Z"
+    },
+    {
+      "id": "t178655370524655",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-12T16:55:05.246Z",
+      "updated": "2026-08-12T16:55:15.993Z"
+    },
+    {
+      "id": "t178655371599512",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-08-12T16:55:15.995Z",
+      "updated": "2026-08-12T16:55:32.292Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178552332861980",
-      "level": "info",
-      "text": "Pipeline lefutott — ma nem volt publikálható új tartalom.",
-      "agent": "ceo",
-      "at": "2026-07-31T18:42:08.619Z",
-      "loud": false
-    },
-    {
-      "id": "n178552461354969",
-      "level": "info",
-      "text": "SEO: 1 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-07-31T19:03:33.549Z",
-      "loud": false
-    },
-    {
-      "id": "n178552463172256",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The line-up looks solid — practical, varied, and covers real everyday needs from study help to polite emails. A few quick checks: confirm the tool names are the shortest official versions (I noticed a",
-      "agent": "publisher",
-      "at": "2026-07-31T19:03:51.722Z",
-      "loud": false
-    },
     {
       "id": "n178552463949481",
       "level": "success",
@@ -1281,18 +1257,33 @@
       "agent": "ceo",
       "at": "2026-08-12T09:06:48.430Z",
       "loud": false
+    },
+    {
+      "id": "n178655370523431",
+      "level": "info",
+      "text": "SEO: 4 cikk optimalizálva (átlag 7.8/10).",
+      "agent": "seo",
+      "at": "2026-08-12T16:55:05.234Z",
+      "loud": false
+    },
+    {
+      "id": "n178655372215194",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). A cohesive, practical line-up covering everyday AI use — from writing help (complaint emails, speeches, agreements) to privacy and fact-checking. The mix of \"what AI is great at\" and \"what to avoid\" k",
+      "agent": "publisher",
+      "at": "2026-08-12T16:55:22.151Z",
+      "loud": false
+    },
+    {
+      "id": "n178655373233120",
+      "level": "success",
+      "text": "4 hír + 0 útmutató publikálva (költség: $0.0388).",
+      "agent": "ceo",
+      "at": "2026-08-12T16:55:32.331Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178549422374664",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"The main AI assistants explained simply (and what \" — Le Chat (from Mistral AI) — Mistral AI discontinued Le Chat in early 2025 and pivoted to enterprise/API services",
-      "ref": "ARTICLE_GUIDE_ai-assistants-overview.json",
-      "at": "2026-07-31T10:37:03.747Z"
-    },
     {
       "id": "m178549607648351",
       "from": "social",
@@ -2645,6 +2636,15 @@
       "text": "6 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-08-12T09:15:23.225Z"
+    },
+    {
+      "id": "m178655371598489",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-08-12T16:55:15.984Z"
     }
   ]
 }

@@ -1,0 +1,57 @@
+{
+  "_meta": {
+    "written_at": "2026-08-12T16:49:42.193Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00598098,
+    "original_draft": "2026-08-12T16-45-38-863Z_databricks_The_Future_of_Data_Analytics__Why_AI_is_rewriting_.json",
+    "source_id": "databricks",
+    "source_name": "Databricks Blog (hivatalos)",
+    "source_link": "https://www.databricks.com/blog/future-data-analytics-why-ai-rewriting-analysts-job-description",
+    "status": "published",
+    "published_at": "2026-08-12T16:52:37.883Z",
+    "slug": "how-ai-is-changing-data-work-and-what-that-means-for-you",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 847
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Solid explainer with good structure, friendly tone, and useful explanations of technical terms (SQL, hallucination, BI tools). The three audience segments in the 'What this means for you' section are clear and actionable. No clichés, no prohibited content, no invented facts. Minor opportunity: the mechanical-to-thinking-work transition could use one more concrete example, but this doesn't prevent publication.",
+      "_aiCost": 0.0014499,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-08-12T16:53:07.225Z",
+    "guide_worthy": false,
+    "pairing_reason": "Generic explainer about AI in data work, not a specific named feature/tool introduction",
+    "image_v": 2,
+    "image_at": "2026-08-12T16:53:50.641Z",
+    "seo": {
+      "meta_description": "AI is changing data work — tools now write SQL, spot spreadsheet trends, and explain charts. Here's what this shift means for your job and how to adapt.",
+      "keywords": [
+        "how AI is changing data analysis",
+        "AI tools for data analysts",
+        "will AI replace data analysts",
+        "AI in data analysis 2026",
+        "how to use AI for spreadsheet analysis",
+        "data analyst skills needed AI era"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add the phrase 'data analysis' earlier in the title or subtitle to improve keyword prominence for search",
+        "Consider adding a practical example or tool name in the subtitle to increase click-through rate",
+        "The article could benefit from including specific AI tool names that readers can search for (e.g., ChatGPT for Excel, Microsoft Copilot)"
+      ],
+      "optimised_at": "2026-08-12T16:54:55.515Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"How AI Is Changing Data Work — and What That Means for You\"\nsubtitle: \"AI isn't replacing data analysts — it's changing what they do. Here's how to keep up, whether you live in spreadsheets or just opened Excel yesterday.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"data-analytics\", \"ai-and-work\", \"career\", \"productivity\"]\n---\n\n# How AI Is Changing Data Work — and What That Means for You\n\n> **In short:** AI tools can now write SQL queries, spot trends in spreadsheets, and explain charts in plain English. For data workers, that means less time on repetitive tasks and more time on judgment — but the job itself is shifting fast.\n\nThat stack of pivot tables you built last week? An AI could have drafted the first version in under a minute. Three hours saved, more or less — and that shift is quietly reshaping what \"data work\" actually means in 2026.\n\n## What AI is doing in data work today\n\nA few years ago, \"data analysis\" meant writing SQL queries (a way to ask databases questions in a special language), wrestling with Excel formulas, and building charts by hand. Today, AI can:\n\n- **Write the first draft of a SQL query** from a plain-English question like *\"show me last month's sales by region\"*\n- **Generate Excel formulas** from a description of what you want\n- **Summarize a 50-page report** into five bullet points\n- **Spot outliers** — the weird data points that don't fit the pattern — and flag them for you\n- **Explain a chart** in plain language, so the non-technical person in the meeting can finally follow along\n\nNone of this is science fiction. It's what tools like ChatGPT, Claude, and Gemini can already do, often built right into the spreadsheet or BI tool (business intelligence — software that turns raw data into dashboards and reports) you already use.\n\n## What's NOT changing (the human part)\n\nHere's the part that gets overlooked in the panic: AI is great at the mechanical work, not so much at the actual thinking.\n\nA human still has to:\n\n- **Ask the right question.** \"Sales are down\" isn't a question. \"Why did sales drop in the Midwest last quarter, while other regions held steady?\" is — and only a person who understands the business can frame it that way.\n- **Decide what the data means.** Numbers don't interpret themselves. Does a 12% drop mean a real problem, or did we change how we count?\n- **Catch the mistakes.** AI tools can confidently invent a number that doesn't exist — in the field, this is called a **hallucination**, when the AI makes something up but presents it as fact. You need to check.\n- **Handle the messy stuff** — bad data, missing fields, ethical questions about who the data is actually about.\n\nIn other words: the grunt work is fading. The thinking work is rising.\n\n## A new rhythm for data work\n\nThe workflow is shifting from \"build, then think\" to \"think, then review.\" You spend more time framing the question upfront, less time grinding through the mechanics. A typical afternoon might look like this:\n\n1. You describe what you want in plain English to an AI assistant.\n2. The AI drafts the query, the formula, or the chart.\n3. You check it, fix the parts that are wrong, and add the business context no model could have guessed.\n\nThe skills that matter now are judgment, communication, and knowing enough about the data to spot when something is off. The skills that matter less are memorizing formula syntax or debugging a query for 45 minutes.\n\n## What this means for you\n\n- **If you work with data professionally:** Start using AI on the boring parts of your job today. Don't wait for a formal training program. Pick one task — maybe a recurring report, maybe a tedious cleanup — and let an AI draft it. Your value is moving up the stack, toward questions and interpretation.\n- **If you use data sometimes but it's not your main job:** You're actually in a great spot. AI can fill in the technical gaps you don't have time to learn. Use it to write the formula you couldn't remember, or to explain a chart you don't fully understand.\n- **If you're worried about your job:** The data analyst role isn't disappearing — it's evolving. The people most at risk are the ones whose entire job is mechanical work. The people most in demand are the ones who can ask sharp questions, translate between data and decision-makers, and use AI to do more in less time.\n\n## Wrap-up\n\nAI is changing data work the way calculators changed accounting: less time on the mechanics, more time on what the numbers actually mean. The job title might shift, the tools will keep changing, but the need for people who can think clearly with data isn't going anywhere. A good next step today: pick one small data task you do regularly and ask an AI to do the first draft. See how much time you get back.",
+  "original_title": "The Future of Data Analytics: Why AI is rewriting the Analyst’s Job Description"
+}

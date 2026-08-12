@@ -1,0 +1,61 @@
+{
+  "_meta": {
+    "written_at": "2026-08-12T16:46:12.343Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00863208,
+    "original_draft": "2026-08-12T16-45-38-863Z_picsart_Which_AI_generation_tool_should_you_use_.json",
+    "source_id": "picsart",
+    "source_name": "PicsArt Blog (hivatalos)",
+    "source_link": "https://picsart.com/blog/which-ai-generation-tool-should-you-use/",
+    "status": "published",
+    "published_at": "2026-08-12T16:52:42.107Z",
+    "slug": "how-to-pick-the-right-ai-image-or-video-tool",
+    "auto_check": {
+      "passed": false,
+      "issues": [
+        "HOWTO_NO_STEPS: A cím utasítást ígér, de csak 0 számozott lépés-szakasz van (kell 4-6, \"## Step 1 — …\" formában), nem egyetlen összevont bekezdés."
+      ],
+      "wordCount": 815
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured explainer that covers tool types clearly, explains technical terms in plain language, and includes all required sections with actionable advice for different user types.",
+      "_aiCost": 0.00166714,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-08-12T16:53:16.714Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is a general explainer/guide about choosing between AI tool categories, not news about a specific named feature introduced in this article",
+    "image_v": 2,
+    "image_at": "2026-08-12T16:54:05.221Z",
+    "seo": {
+      "meta_description": "Learn how to pick the right AI image or video tool for your project. Compare chat assistants, web apps, and standalone creative tools to find what fits best.",
+      "keywords": [
+        "how to choose AI image generator",
+        "best AI image tool for beginners",
+        "AI video generation tools",
+        "chat assistant vs app for AI images",
+        "which AI tool should I use",
+        "AI image generator types",
+        "picking AI creative tools"
+      ],
+      "seo_score": 7,
+      "suggestions": [
+        "Add primary keyword 'AI image tool' earlier in the title for better ranking signals",
+        "Include more long-tail keywords like 'AI video tool comparison' naturally throughout the content",
+        "Add an H2 heading with a keyword phrase like 'Types of AI Image and Video Tools' to improve topical relevance"
+      ],
+      "optimised_at": "2026-08-12T16:55:05.215Z"
+    },
+    "howto_upgrade_attempts": 1
+  },
+  "article_markdown": "---\ntitle: \"How to Pick the Right AI Image or Video Tool\"\nsubtitle: \"A practical guide to choosing between chat assistants, web apps, and standalone creative tools\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"ai-tools\", \"image-generation\", \"video-generation\", \"creative-ai\", \"getting-started\"]\n---\n\n# How to Pick the Right AI Image or Video Tool\n\n> **In short:** You can now generate AI images and videos from a website, an app, or inside a chat assistant — and each option fits a different kind of project. The trick is matching the tool to what you actually want to make.\n\nThere was a time when \"AI image generation\" meant opening one website, typing a sentence, and saving the result. That time is over. The same is true for AI video. Today, you can find generation tools inside chat assistants, in standalone apps, on your phone, and — if you happen to be technical — through a code editor or a command line. So which one should you actually use?\n\nThe honest answer is: it depends on what you're making. Here's a simple way to think about it.\n\n## Start with the question, not the tool\n\nBefore you pick anything, name what you want. A picture for a birthday card? A short video for social media? A poster with text on it? A photo-realistic scene? A cartoon? Each of these is a slightly different job, and different tools are tuned (trained and adjusted) for different jobs.\n\nAsk yourself three things:\n\n- **What is this for?** A quick personal project, something for work, or just experimenting?\n- **How polished does it need to look?** A draft you might fix later, or something close to finished?\n- **How much time do you want to spend learning?** Some tools are one-click. Others reward people who enjoy writing detailed instructions (called **prompts** — the instructions you type to the AI).\n\nIf you know the answers, the right tool usually reveals itself.\n\n## Where you can generate images and videos today\n\nHere are the main places people create AI visuals right now. None of them is \"the best\" — each is shaped for a different kind of user.\n\n- **Web apps** (you open them in a browser): the most common starting point. Good for one-off projects, no installation needed.\n- **Phone and tablet apps**: many companies offer mobile versions, plus standalone apps from smaller studios. Good for quick edits on the go.\n- **Chat assistants** (like ChatGPT, Claude, or Gemini): these now generate images or video right inside the conversation. Good if you're already writing prompts there for other reasons.\n- **Desktop software**: heavier, more feature-rich programs that run on your computer. Good for serious projects where you want more control and faster generation.\n- **Coding assistants and developer tools**: a programmer can ask for an image or video straight from their code editor. Skip this if code is not your thing.\n\nYou'll also see terms like **MCP server** (a way to connect an AI assistant to other apps, like your photo library) or **API** (a way for programs to talk to each other). Those are how tools can pass images between each other, but you don't need to understand them to make something good today.\n\n## A few practical questions to ask any tool\n\nBefore you sign up or pay, check:\n\n- **Is there a free tier?** Most tools let you try a few generations before asking for money.\n- **Who owns the images?** Some tools restrict how you can use what you make, especially for commercial work. Read the small print.\n- **Can you undo or refine results?** The best tools let you adjust a generation rather than start over.\n- **Does it keep your prompts?** Worth knowing if you're working on something private.\n\n## What this means for you\n\n- **If you're just curious**: open the image or video tool inside a chat assistant you already use. You probably won't need to install anything.\n- **If you make content regularly**: try two or three standalone tools and see which one matches your style. Most offer a free trial.\n- **If you work on a team or for a client**: check the usage rules first. Some free tiers don't allow commercial use.\n- **If you're a developer or tinkerer**: explore the API and command-line options — but only after you've used the simpler versions and know what you want.\n\n## Wrap-up\n\nThere is no single \"right\" AI generation tool anymore. The right one is the one that fits your project, your skill level, and your budget. Pick the smallest, simplest option that gets the job done — you can always switch later, and your prompts will travel with you.\n\nYour next step: pick one image you wish existed and try making it today. Use the tool you already have an account with. You'll learn more from one real attempt than from reading ten reviews.",
+  "original_title": "Which AI generation tool should you use?"
+}

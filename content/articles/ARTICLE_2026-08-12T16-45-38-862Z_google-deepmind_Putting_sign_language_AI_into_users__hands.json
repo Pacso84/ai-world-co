@@ -1,0 +1,56 @@
+{
+  "_meta": {
+    "written_at": "2026-08-12T16:51:44.383Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00820854,
+    "original_draft": "2026-08-12T16-45-38-862Z_google-deepmind_Putting_sign_language_AI_into_users__hands.json",
+    "source_id": "google-deepmind",
+    "source_name": "Google DeepMind (hivatalos)",
+    "source_link": "https://deepmind.google/blog/putting-sign-language-ai-into-users-hands/",
+    "status": "published",
+    "published_at": "2026-08-12T16:52:00.146Z",
+    "slug": "sign-language-ai-how-computers-are-learning-to-read-hand-signs",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 830
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured explainer with friendly tone, clear explanations of technical terms (computer vision, language model), respectful treatment of the Deaf community, and a useful 'What this means for you' section with practical advice for different audiences. No prohibited content, no clichés, no US English issues. The source attribution could be stronger in the body text, but the content is grounded in official Google DeepMind material.",
+      "_aiCost": 0.0015459,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-08-12T16:52:46.648Z",
+    "guide_worthy": false,
+    "pairing_reason": "General explainer about sign language AI as a category, no specific named product or feature that users can use today",
+    "image_v": 2,
+    "image_at": "2026-08-12T16:53:30.011Z",
+    "seo": {
+      "meta_description": "This AI watches sign language and converts hand signs into text. See how it works, real-world uses, and what limitations exist.",
+      "keywords": [
+        "sign language AI",
+        "AI reads sign language",
+        "sign language to text",
+        "hand sign recognition AI",
+        "AI for deaf people",
+        "computer understanding sign language"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Consider adding more specific, searchable phrases like 'how does sign language AI work' to capture question-based searches",
+        "Add the year or product name if this refers to a specific new model — timeless content ranks harder without a news hook"
+      ],
+      "optimised_at": "2026-08-12T16:54:31.927Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Sign Language AI: How Computers Are Learning to Read Hand Signs\"\nsubtitle: \"A new AI model turns sign language video into text — here's what it does, where it helps, and what it can't do yet.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"sign-language-ai\", \"accessibility\", \"ai-explainer\", \"communication\"]\n---\n\n# Sign Language AI: How Computers Are Learning to Read Hand Signs\n\n> **In short:** A new kind of AI watches a person signing and turns those hand movements into written words on a screen. It aims to make everyday communication easier for Deaf and hard of hearing people — from video calls to a quick chat at a store counter.\n\nThink about the last time you waved at someone across a noisy room, or used your hands to explain a route to a stranger on the street. Hand gestures are a normal part of how we communicate. But for millions of Deaf and hard of hearing people, sign language isn't a side tool — it's the main one. A new generation of AI is now learning to read those hand movements and turn them into typed-out words.\n\n## What sign language AI actually does\n\nThe technology usually goes by the name \"sign language recognition,\" or sometimes SL2T, short for sign-language-to-text. The core idea is simple: point a camera at someone signing, and the AI watches the shape of their hands, where they move, and the expressions on their face. Then it translates all of that into sentences.\n\nTo do this, the AI uses computer vision (just a phrase for \"teaching a computer to see and understand images or video\") combined with a language model — the same kind of AI brain that powers ChatGPT. One part looks at the visual movements; another part figures out what those movements mean as words. Together they can produce something like: *\"Where is the nearest pharmacy?\"*\n\nResearchers have been working on this for years. What's different now is that the AI is getting good enough to run on everyday devices — a phone, a laptop webcam, maybe a smart TV — without needing a giant computer in the background.\n\n## Where it could help in everyday life\n\nA few real situations where this kind of AI could matter:\n\n- **Video calls.** Imagine joining a work meeting and having captions appear automatically when a Deaf colleague signs. Today, that usually needs a human interpreter booked ahead of time. With AI, it could happen by default.\n- **Doctor visits.** Health care has been one of the hardest places for Deaf patients to communicate without an interpreter in the room. A sign language AI on a tablet could give more independence.\n- **School and learning.** Students who sign could get instant captions of their own words, making note-taking and group projects easier.\n- **Quick everyday conversations.** A chat at a shop counter or in a hotel lobby — moments that today often fall back on paper notes or phone typing.\n\n## Where the limits still are\n\nIt's worth being honest: this is hard for the AI. Sign languages aren't universal — American Sign Language, British Sign Language, Japanese Sign Language, and dozens of others are all different languages, with their own grammar. Many systems today only recognize one. Lighting needs to be good, the hands clearly visible, and the signer needs to be using a style the AI was trained on.\n\nSo no, sign language AI isn't yet a replacement for a skilled human interpreter in serious settings like legal or medical conversations. But it can help fill the gaps where no interpreter is available at all — and that's already a real improvement.\n\n## What this means for you\n\n- **If you're hearing and just curious:** Next time you see a video call with sign language captions, give it a moment — the captions may be a little slow or awkward at first. That's normal. The technology is still learning.\n- **If you're Deaf or hard of hearing:** Watch for these features rolling out in apps you already use. A good first test is a low-stakes situation, like a casual call with family. Be ready for it to miss words occasionally.\n- **If you work in customer service, education, or health care:** It's worth asking your software provider whether they plan to add sign language recognition. Even basic captioning support can be a big step toward more accessible service.\n\n## A simple takeaway\n\nAI isn't going to learn sign language perfectly overnight. But the fact that it can read hand movements at all, on a phone, in real time, is a quiet but real shift. For Deaf and hard of hearing people, every bit of easier communication makes everyday life a little more level.\n\nTry one thing this week: notice how often you gesture with your hands when you talk. Then look for the new sign language features appearing in your video call apps — several are already available to test in beta right now.",
+  "original_title": "Putting sign language AI into users’ hands"
+}

@@ -1,0 +1,57 @@
+{
+  "_meta": {
+    "written_at": "2026-08-12T16:51:21.822Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m2.7",
+    "writer_cost_usd": 0.0059853,
+    "original_draft": "2026-08-12T16-45-38-862Z_openai-blog_From_assistance_to_execution__How_enterprises_put_.json",
+    "source_id": "openai-blog",
+    "source_name": "OpenAI Blog (hivatalos)",
+    "source_link": "https://openai.com/index/how-enterprises-put-ai-to-work",
+    "status": "published",
+    "published_at": "2026-08-12T16:52:15.776Z",
+    "slug": "what-agentic-ai-means-for-your-work-and-why-it-matters-now",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 970
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured explainer with a friendly tone, clear hook, good plain-language definitions of agentic AI, concrete industry examples, and a useful 'What this means for you' section with differentiated advice for different reader types. No cliches, no prohibited content, US English throughout. The OpenAI research source adds credibility. Ready to publish.",
+      "_aiCost": 0.0016014,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-08-12T16:52:53.574Z",
+    "guide_worthy": false,
+    "pairing_reason": "Article explains a general concept (agentic AI) rather than introducing one specific named feature/tool that users can go use today",
+    "image_v": 2,
+    "image_at": "2026-08-12T16:53:40.399Z",
+    "seo": {
+      "meta_description": "Discover what agentic AI means for your work—AI that actually does tasks for you, not just answers questions. Learn why it matters now.",
+      "keywords": [
+        "what is agentic AI",
+        "agentic AI examples",
+        "AI that does tasks for you",
+        "AI automation for work",
+        "how agentic AI works",
+        "AI agents vs chatbots"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add a concrete example of agentic AI in action (e.g., AI booking a meeting or sending an email) to improve snippet appeal",
+        "Include 'AI agents' as a secondary term alongside 'agentic AI' to capture more search variations",
+        "Consider adding a definition line early in the article with the main keyword for better topical relevance"
+      ],
+      "optimised_at": "2026-08-12T16:54:41.068Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"What 'Agentic AI' Means for Your Work — And Why It Matters Now\"\nsubtitle: \"AI that doesn't just answer questions, but actually does tasks for you is quietly changing how jobs get done\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"agentic-ai\", \"ai-at-work\", \"automation\", \"chatgpt\", \"future-of-work\"]\n---\n\n# What 'Agentic AI' Means for Your Work — And Why It Matters Now\n\n> **In short:** A new wave of AI — called \"agentic AI\" — can now take action on your behalf, not just respond to questions. Research shows leading companies are using these AI agents with ChatGPT and coding tools to automate multi-step tasks, pulling ahead of businesses still using AI only as a chatbot.\n\n---\n\nYou probably know how to ask ChatGPT a question. You type something in, you get an answer back. That's been AI for most people so far: a really fast search engine that writes.\n\nBut something is shifting. The next phase of AI doesn't wait for you to ask — it can actually do things for you. Book a meeting. Send an email. Update a spreadsheet. Run a piece of code. It's like the difference between having an assistant who answers questions and one who goes ahead and handles the work.\n\nThis is what people in the tech world call \"agentic AI.\" The word \"agentic\" just means the AI can take action, not only think and respond. Think of it like giving someone a task and a set of permissions to get it done, rather than asking them questions along the way.\n\n## What's actually changing\n\nThe most common AI tools you've probably used — like ChatGPT or Gemini — are what you might call \"responsive.\" You give them a prompt, they generate text. You can ask them to write a draft or summarize something, but they can't actually go into your email, your calendar, or your files to do anything.\n\nAgentic AI is different. It can be connected to tools — email, databases, code editors, web browsers — and then be pointed at a goal. \"Go through these 50 customer emails, categorize them by urgency, and draft a response for each one.\" The AI handles the steps itself.\n\nThis is exactly what OpenAI's research has been tracking in enterprise settings. Companies using these connected AI systems are automating workflows that previously required someone to break them into smaller tasks and supervise each step. The AI does the connecting work.\n\nThe coding world shows this clearly. Tools like GitHub Copilot (which runs on AI models) can now write and test code autonomously. Instead of a developer asking for a function and getting a snippet back, they can ask the AI to build an entire feature, test it, and report back what broke. The AI acts like a junior developer who can handle the routine parts.\n\n## Why this matters for your industry\n\nYou might be thinking: \"That sounds like something for tech companies, not for me.\" But agentic AI is spreading into all kinds of work.\n\n- **Customer service**: AI agents can handle entire support tickets — looking up order history, processing refunds, and sending confirmation emails — without a human in the loop for routine cases.\n- **HR and recruiting**: AI can screen resumes, schedule interviews, and send follow-up emails based on criteria you set.\n- **Marketing**: AI agents can pull data from multiple sources, generate a report, and post it to your content calendar.\n- **Finance**: AI can reconcile invoices, flag discrepancies, and generate summary reports.\n\nThe pattern is the same across all these examples: tasks that used to require someone to manually move information between systems are now being automated end-to-end.\n\nOpenAI's findings suggest the gap between companies adopting these tools and those still on the sidelines is growing. The businesses moving fastest aren't just saving time on individual tasks — they're redesigning entire workflows around what AI can now handle.\n\n## What this means for you\n\n- **If you're a knowledge worker (office, admin, creative, HR)**: Expect more AI tools that connect directly to your workday. Rather than copying and pasting between ChatGPT and your actual work apps, the next wave will do the connecting for you. The skill shifts from \"using AI\" to \"directing AI\" — knowing what to ask it to handle.\n- **If you're in a specialized field (legal, medical, finance, education)**: These tools are coming, but the most reliable deployments will be in clearly defined, rule-based tasks — like sorting documents, drafting routine correspondence, or pulling data. High-stakes decisions still need human oversight.\n- **If you're looking for your next job or promotion**: Understanding how to work with AI agents — setting goals, reviewing outputs, catching errors — is becoming a valued skill. You don't need to code. You need to know what these tools can and can't do.\n\n## The honest picture\n\nAgentic AI is powerful, but it's not magic. The biggest current limitations are reliability and error-checking. AI agents can make mistakes, and when they're running many steps on their own, errors can compound. The businesses pulling ahead aren't just handing work to AI — they're building in review steps and clear instructions.\n\nThe other honest truth: not every task suits this model. Complex judgment calls, creative breakthroughs, sensitive interpersonal situations — these still need a human. Think of agentic AI as handling the structured, repetitive work so you have more time for the parts that actually need you.\n\nIf you've been using AI mainly for brainstorming or drafting, it might be worth paying attention to how your tools are starting to connect to your other apps. That's where the next wave is landing — and it's changing what \"working with AI\" actually means.\n\nThe question isn't really whether this arrives at your job. It's how quickly you'll be ready to work with it.",
+  "original_title": "From assistance to execution: How enterprises put AI to work"
+}
