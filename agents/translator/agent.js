@@ -24,7 +24,7 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { ask } from '../../core/ai-router.js';
 import { titleLooksUntranslated, bodyLooksUntranslated } from '../../core/translation-guard.js';
-import { orderForTranslation } from '../../core/translation-queue.js';
+import { orderForTranslation, pruneFails } from '../../core/translation-queue.js';
 import { fileHandback, sourceDefect } from '../../core/handback.js';
 import { remember } from '../../core/memory-manager.js';
 
@@ -188,7 +188,31 @@ async function main() {
   // kerülnek: a tisztán kor szerinti sorban egy elbukott cikk minden nap
   // hátrébb csúszott, és így ment ki angolul a 08-09-i digest. A rendezés
   // logikája és tesztjei: core/translation-queue.js.
-  const failsNow = loadFails();
+  // A BUKÁS-NAPLÓ TAKARÍTÁSA a rendezés előtt (2026-08-12). A számláló csak
+  // sikeres ÚJRAfordításkor törlődik (lentebb) — a már kész pár bejegyzése
+  // ezért örökre bent ragad, hiszen a kész fordítást a ciklus KIHAGYJA, a
+  // kivezetett nyelvét (de/fr) pedig soha nem próbáljuk újra. Márpedig 2
+  // bukásnál VISSZAADJUK a cikket az Írónak: a publikált cikk átkerül
+  // rejected/-be és fizetős újraírásra megy. Egy hamis 1-es tehát a következő
+  // EGYETLEN átmeneti hibánál (429, timeout) kiváltana egy fölösleges kört.
+  //
+  // ⚠️ liveLangs = MINDEN élő nyelv, NEM a targetLangs: egy `--lang hu` futás
+  // különben letörölné az összes spanyol bukás-nyomot.
+  // ⚠️ A "kész" TARTALMI kérdés, nem fájl-létezés (2026-08-10 lecke): a mező
+  // üresen is ott lehet, és az angolul hagyott szöveg is kész fordításnak néz ki.
+  const { fails: failsNow, removed: takaritott } = pruneFails(loadFails(), {
+    liveLangs: Object.keys(LANGS),
+    isDone: (file, lang) => {
+      const md = loadCache(file)[lang];
+      return !!md && looksValid(md) && !bodyLooksUntranslated(md);
+    }
+  });
+  if (takaritott.length) {
+    saveFails(failsNow);
+    console.log(`🧹 bukás-napló: ${takaritott.length} elavult bejegyzés törölve — `
+      + takaritott.slice(0, 3).map(x => `${x.key.slice(-28)} (${x.reason})`).join(' · '));
+  }
+
   const files = orderForTranslation(
     readdirSync(ARTICLES_DIR)
       .filter(f => f.startsWith('ARTICLE_') && f.endsWith('.json'))

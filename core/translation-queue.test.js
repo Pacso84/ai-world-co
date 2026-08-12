@@ -12,7 +12,7 @@
 // ===================================================================
 
 import assert from 'assert/strict';
-import { orderForTranslation, FAILED_BONUS, PINNED_BONUS } from './translation-queue.js';
+import { orderForTranslation, pruneFails, FAILED_BONUS, PINNED_BONUS } from './translation-queue.js';
 
 let pass = 0;
 const t = (name, fn) => { fn(); pass++; console.log('  ✅ ' + name); };
@@ -119,6 +119,97 @@ t('rossz bemenetre nem esik szét', () => {
   assert.deepEqual(orderForTranslation([], null), []);
   const s = orderForTranslation([{ file: 'a.json' }, { file: 'b.json', pub: '2026-08-01' }], null);
   assert.equal(s.length, 2, 'a hiányzó dátum nem ejti ki a cikket');
+});
+
+// ===================================================================
+// BUKÁS-SZÁMLÁLÓ TAKARÍTÁSA (2026-08-12)
+// ===================================================================
+// A számláló jelentése: "ennyiszer bukott EGYMÁS UTÁN ez a (cikk, nyelv) pár".
+// Törölni azonban CSAK egy sikeres újrafordítás törli (agents/translator/
+// agent.js:255). Két úton ragad be örökre:
+//   (a) a pár már kész → a fordító a gyorsítótár láttán KIHAGYJA (agent.js:239),
+//       tehát a törlő ág le sem fut;
+//   (b) a nyelv kivezetett (de/fr) → soha nem próbáljuk újra, tehát soha nem is
+//       törlődik.
+// Élesben MINDKETTŐ megvolt: a snowflake|es pár spanyolja 4319 karakteren kész
+// és érvényes, a le-chat|fr pedig kivezetett nyelv.
+//
+// MIÉRT BAJ: 2 bukásnál a fordító VISSZAADJA a cikket az Írónak (agent.js:264) —
+// a publikált cikk átkerül content/rejected/-be és FIZETŐS újraírásra megy.
+// Egy beragadt 1-es tehát a következő EGYETLEN átmeneti hibánál (429, timeout)
+// kiváltja ezt, pedig a pár valójában rendben van.
+// ===================================================================
+
+t('a KÉSZ fordítás bukás-bejegyzését kitakarítja', () => {
+  const { fails, removed } = pruneFails(
+    { 'kesz.json|es': 1, 'tenyleg-bukott.json|hu': 2 },
+    { liveLangs: ['hu', 'es'], isDone: (f) => f === 'kesz.json' }
+  );
+  assert.deepEqual(fails, { 'tenyleg-bukott.json|hu': 2 }, 'a valódi bukás MARAD');
+  assert.equal(removed.length, 1);
+  assert.match(removed[0].reason, /kész/i, 'az indok megmondja, miért törölt');
+});
+
+t('a KIVEZETETT nyelv bejegyzését kitakarítja', () => {
+  // Ez a le-chat|fr eset: soha nem próbáljuk újra, tehát örök szemét.
+  const { fails, removed } = pruneFails(
+    { 'a.json|fr': 2, 'a.json|de': 1, 'a.json|hu': 1 },
+    { liveLangs: ['hu', 'es'], isDone: () => false }
+  );
+  assert.deepEqual(fails, { 'a.json|hu': 1 });
+  assert.equal(removed.length, 2);
+});
+
+t('a VALÓDI, még nyitott bukást nem bántja', () => {
+  const be = { 'bukott.json|hu': 1, 'makacs.json|es': 3 };
+  const { fails, removed } = pruneFails(be, { liveLangs: ['hu', 'es'], isDone: () => false });
+  assert.deepEqual(fails, be, 'egyetlen nyitott bukás sem veszhet el');
+  assert.equal(removed.length, 0);
+});
+
+t('ha az ellenőrzés HIBÁRA fut, a bejegyzés MARAD', () => {
+  // Óvatosság: egy fájlrendszer-hiba nem törölhet valódi bukás-nyomot. Inkább
+  // maradjon bent egy fölösleges sor, mint hogy elvesszen egy igazi jelzés.
+  const { fails, removed } = pruneFails(
+    { 'a.json|hu': 1 },
+    { liveLangs: ['hu', 'es'], isDone: () => { throw new Error('lemez-hiba'); } }
+  );
+  assert.deepEqual(fails, { 'a.json|hu': 1 });
+  assert.equal(removed.length, 0);
+});
+
+t('a szemét-kulcsokat eldobja', () => {
+  const { fails } = pruneFails(
+    { 'nincs-benne-fuggoleges-vonal': 3, 'a.json|hu': 0, 'b.json|hu': -2, 'c.json|hu': 1 },
+    { liveLangs: ['hu', 'es'], isDone: () => false }
+  );
+  assert.deepEqual(fails, { 'c.json|hu': 1 }, 'csak az értelmes, pozitív számláló marad');
+});
+
+t('nyelvlista nélkül nem szűr nyelvre (visszafelé kompatibilis)', () => {
+  const { fails } = pruneFails({ 'a.json|fr': 2 }, { isDone: () => false });
+  assert.deepEqual(fails, { 'a.json|fr': 2 });
+});
+
+t('rossz bemenetre nem esik szét', () => {
+  assert.deepEqual(pruneFails(null).fails, {});
+  assert.deepEqual(pruneFails(undefined).fails, {});
+  assert.deepEqual(pruneFails({ 'a.json|hu': 1 }).fails, { 'a.json|hu': 1 }, 'isDone nélkül csak szemetet dob');
+});
+
+t('a takarítás után a sorrend a valóságot tükrözi', () => {
+  // Együtt a két függvény: a kitakarított pár NEM ül többé a sor elején.
+  const nyers = { 'kesz.json|es': 1 };
+  const elotte = orderForTranslation(
+    [{ file: 'friss.json', pub: '2026-08-12' }, { file: 'kesz.json', pub: '2026-08-01' }],
+    nyers, ['hu', 'es']);
+  assert.equal(nev(elotte)[0], 'kesz.json', 'takarítás ELŐTT a kész cikk ül elöl — ez a hiba');
+
+  const { fails } = pruneFails(nyers, { liveLangs: ['hu', 'es'], isDone: f => f === 'kesz.json' });
+  const utana = orderForTranslation(
+    [{ file: 'friss.json', pub: '2026-08-12' }, { file: 'kesz.json', pub: '2026-08-01' }],
+    fails, ['hu', 'es']);
+  assert.equal(nev(utana)[0], 'friss.json', 'takarítás UTÁN a friss megy előre');
 });
 
 console.log('\n✅ translation-queue.test: mind a ' + pass + ' eset rendben');

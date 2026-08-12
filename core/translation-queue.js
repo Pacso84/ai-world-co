@@ -67,4 +67,65 @@ export function orderForTranslation(items, fails, langs) {
   });
 }
 
-export default { orderForTranslation, FAILED_BONUS, PINNED_BONUS };
+// ===================================================================
+// A BUKÁS-TÉRKÉP TAKARÍTÁSA (2026-08-12)
+// ===================================================================
+//
+// A számláló jelentése: "ennyiszer bukott EGYMÁS UTÁN ez a (cikk, nyelv) pár".
+// Törölni azonban CSAK egy sikeres újrafordítás törli (agents/translator/
+// agent.js:255) — és két úton ez soha nem következik be:
+//   (a) a pár MÁR KÉSZ → a fordító a gyorsítótár láttán kihagyja (agent.js:239),
+//       a törlő ág le sem fut;
+//   (b) a nyelv KIVEZETETT (de/fr) → soha nem próbáljuk újra.
+// Élesben mindkettő megtörtént: a snowflake|es spanyolja kész és érvényes volt,
+// a le-chat|fr pedig holt nyelv.
+//
+// MIÉRT NEM ELÉG A SORREND-SZŰRÉS: az orderForTranslation már figyelmen kívül
+// hagyja a holt nyelvek bukásait, de a SZÁM ott marad — és a fordító 2 bukásnál
+// VISSZAADJA a cikket az Írónak (agent.js:264): a publikált cikk átkerül
+// content/rejected/-be és FIZETŐS újraírásra megy. Egy beragadt 1-es tehát a
+// következő EGYETLEN átmeneti hibánál (429, timeout) kiváltja ezt. A sorrend
+// tüneti kezelés volt; a szám igazzá tétele a gyökér.
+//
+// ÓVATOSSÁG: ha az "kész-e" ellenőrzés hibára fut, a bejegyzés MARAD. Inkább
+// üljön bent egy fölösleges sor, mint hogy egy lemez-hiba elnyeljen egy valódi
+// bukás-nyomot.
+// ===================================================================
+
+/**
+ * @param {Object<string, number>} fails  "fájl|nyelv" → bukásszám
+ * @param {{liveLangs?: string[], isDone?: (file:string, lang:string)=>boolean}} [opts]
+ *        liveLangs: az ÉLŐ nyelvek (megadva a többi bejegyzés törlődik)
+ *        isDone:    igaz, ha a pár fordítása MEGVAN ÉS ÉRVÉNYES. A hívó dönti
+ *                   el, mit jelent ez — a fordító a tartalmi nyelv-őrrel felel,
+ *                   NEM a fájl puszta meglétével (2026-08-10 lecke).
+ * @returns {{fails: Object<string, number>, removed: Array<{key:string, reason:string}>}}
+ */
+export function pruneFails(fails, opts = {}) {
+  const be = fails && typeof fails === 'object' ? fails : {};
+  const { liveLangs, isDone } = opts || {};
+  const elo = Array.isArray(liveLangs) && liveLangs.length ? new Set(liveLangs) : null;
+
+  const ki = {};
+  const removed = [];
+  for (const [kulcs, ertek] of Object.entries(be)) {
+    const i = String(kulcs).lastIndexOf('|');
+    const n = Number(ertek);
+    // Szemét: értelmezhetetlen kulcs vagy nem pozitív számláló.
+    if (i < 1 || !Number.isFinite(n) || n <= 0) { removed.push({ key: kulcs, reason: 'értelmezhetetlen bejegyzés' }); continue; }
+
+    const file = kulcs.slice(0, i), lang = kulcs.slice(i + 1);
+    if (elo && !elo.has(lang)) { removed.push({ key: kulcs, reason: `kivezetett nyelv (${lang})` }); continue; }
+
+    if (typeof isDone === 'function') {
+      let kesz = false, hiba = false;
+      try { kesz = !!isDone(file, lang); } catch { hiba = true; }
+      if (hiba) { ki[kulcs] = n; continue; }             // óvatosság: marad
+      if (kesz) { removed.push({ key: kulcs, reason: 'a fordítás kész és érvényes' }); continue; }
+    }
+    ki[kulcs] = n;
+  }
+  return { fails: ki, removed };
+}
+
+export default { orderForTranslation, pruneFails, FAILED_BONUS, PINNED_BONUS };
