@@ -1,102 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178638011535269",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-08-10T16:41:55.352Z",
-      "updated": "2026-08-10T16:42:37.034Z"
-    },
-    {
-      "id": "t178638015703634",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-08-10T16:42:37.036Z",
-      "updated": "2026-08-10T16:42:37.235Z"
-    },
-    {
-      "id": "t178638015723779",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-10T16:42:37.237Z",
-      "updated": "2026-08-10T16:50:33.450Z"
-    },
-    {
-      "id": "t178638063345242",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-10T16:50:33.452Z",
-      "updated": "2026-08-10T16:52:56.300Z"
-    },
-    {
-      "id": "t178638077630339",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-08-10T16:52:56.303Z",
-      "updated": "2026-08-10T16:53:30.280Z"
-    },
-    {
-      "id": "t178638081031795",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-10T16:53:30.317Z",
-      "updated": "2026-08-10T16:54:51.913Z"
-    },
-    {
-      "id": "t178638089191569",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-08-10T16:54:51.915Z",
-      "updated": "2026-08-10T16:55:53.784Z"
-    },
-    {
-      "id": "t178638095378794",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-10T16:55:53.787Z",
-      "updated": "2026-08-10T16:56:09.084Z"
-    },
-    {
-      "id": "t178638096908631",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-08-10T16:56:09.086Z",
-      "updated": "2026-08-10T16:56:31.724Z"
-    },
-    {
-      "id": "t178640962606459",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-08-11T00:53:46.064Z",
-      "updated": "2026-08-11T00:53:46.294Z"
-    },
-    {
-      "id": "t178640962633831",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-08-11T00:53:46.338Z",
-      "updated": "2026-08-11T00:54:27.108Z"
-    },
-    {
-      "id": "t178640966710930",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-08-11T00:54:27.109Z",
-      "updated": "2026-08-11T00:54:27.274Z"
-    },
-    {
       "id": "t178640966727616",
       "title": "Run iro",
       "status": "done",
@@ -479,41 +383,105 @@
       "agent": "publisher",
       "created": "2026-08-12T01:19:49.955Z",
       "updated": "2026-08-12T01:20:08.227Z"
+    },
+    {
+      "id": "t178652521551999",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-08-12T09:00:15.519Z",
+      "updated": "2026-08-12T09:00:15.704Z"
+    },
+    {
+      "id": "t178652521570577",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-08-12T09:00:15.705Z",
+      "updated": "2026-08-12T09:00:35.003Z"
+    },
+    {
+      "id": "t178652523500596",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-08-12T09:00:35.005Z",
+      "updated": "2026-08-12T09:00:35.202Z"
+    },
+    {
+      "id": "t178652523520420",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-12T09:00:35.204Z",
+      "updated": "2026-08-12T09:00:35.378Z"
+    },
+    {
+      "id": "t178652523537950",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-12T09:00:35.379Z",
+      "updated": "2026-08-12T09:00:35.555Z"
+    },
+    {
+      "id": "t178652523555890",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-12T09:00:35.558Z",
+      "updated": "2026-08-12T09:03:30.758Z"
+    },
+    {
+      "id": "t178652541076012",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-12T09:03:30.760Z",
+      "updated": "2026-08-12T09:05:01.108Z"
+    },
+    {
+      "id": "t178652550111013",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-08-12T09:05:01.110Z",
+      "updated": "2026-08-12T09:05:01.321Z"
+    },
+    {
+      "id": "t17865255013927",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-12T09:05:01.392Z",
+      "updated": "2026-08-12T09:05:24.039Z"
+    },
+    {
+      "id": "t178652552404061",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-08-12T09:05:24.040Z",
+      "updated": "2026-08-12T09:06:09.957Z"
+    },
+    {
+      "id": "t178652556995950",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-12T09:06:09.959Z",
+      "updated": "2026-08-12T09:06:29.395Z"
+    },
+    {
+      "id": "t178652558939798",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-08-12T09:06:29.397Z",
+      "updated": "2026-08-12T09:06:48.396Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178549381703976",
-      "level": "success",
-      "text": "1 hír + 0 útmutató publikálva (költség: $0.0107).",
-      "agent": "ceo",
-      "at": "2026-07-31T10:30:17.039Z",
-      "loud": false
-    },
-    {
-      "id": "n178551845252145",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The line-up is solid and ready — it's a well-balanced mix of practical guides, privacy awareness, and everyday AI how-tos that will resonate with everyday people. **Before publish**, please verify met",
-      "agent": "publisher",
-      "at": "2026-07-31T17:20:52.521Z",
-      "loud": false
-    },
-    {
-      "id": "n178551846544115",
-      "level": "info",
-      "text": "Pipeline lefutott — ma nem volt publikálható új tartalom.",
-      "agent": "ceo",
-      "at": "2026-07-31T17:21:05.441Z",
-      "loud": false
-    },
-    {
-      "id": "n178552332136424",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The line-up looks solid — you've got a nice mix of practical uses (study, work emails, pet-sitting agreements) and helpful guidance (privacy, what AI is/isn't good at), plus some lovely emotional supp",
-      "agent": "publisher",
-      "at": "2026-07-31T18:42:01.364Z",
-      "loud": false
-    },
     {
       "id": "n178552332861980",
       "level": "info",
@@ -1281,63 +1249,41 @@
       "agent": "ceo",
       "at": "2026-08-12T01:20:08.261Z",
       "loud": false
+    },
+    {
+      "id": "n178652541075028",
+      "level": "warn",
+      "text": "📨 guide → ceo: Kell még adat: \"Rewrite a confusing workplace email into a clear, friendly message with Cohere\" — az Ellenőrző tényt/for",
+      "agent": "guide",
+      "at": "2026-08-12T09:03:30.750Z",
+      "loud": false
+    },
+    {
+      "id": "n178652556994819",
+      "level": "info",
+      "text": "SEO: 2 cikk optimalizálva (átlag 7.5/10).",
+      "agent": "seo",
+      "at": "2026-08-12T09:06:09.948Z",
+      "loud": false
+    },
+    {
+      "id": "n178652559835060",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The line-up looks solid — practical how-tos, helpful privacy guidance, and everyday use cases. One small note: articles 4-6 are all complaint-related; consider adding subheadings so readers can quickl",
+      "agent": "publisher",
+      "at": "2026-08-12T09:06:38.350Z",
+      "loud": false
+    },
+    {
+      "id": "n178652560843073",
+      "level": "success",
+      "text": "0 hír + 2 útmutató publikálva (költség: $0.0072).",
+      "agent": "ceo",
+      "at": "2026-08-12T09:06:48.430Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178543884854661",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Add an AI chatbot to your small business site usin\" — The specific button name \"Create Robot\" in Step 1; The exact menu label \"Greetings\" in Step 2; The specific alternative label \"Chat Prompt\" in Step 2",
-      "ref": "ARTICLE_GUIDE_add-an-ai-chatbot-to-your-small-business-site-using-alibaba-.json",
-      "at": "2026-07-30T19:14:08.546Z"
-    },
-    {
-      "id": "m178547095516671",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"How avatarin built a 24/7 retail agent with GPT-Realtime\" — mi a baj: GPT-Realtime is not a verified model name — OpenAI's real-time voice API product is 'Realtime API' (or 'gpt-4o-realtime-preview' model). 'GPT-Realtime' as a model name appears fabricated.",
-      "ref": "2026-07-31T04-08-41-143Z_openai-blog_How_avatarin_built_a_24_7_retail_agent_with_GPT-Re.json",
-      "at": "2026-07-31T04:09:15.166Z"
-    },
-    {
-      "id": "m178547098042068",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"How avatarin built a 24/7 retail agent with GPT-Realtime\" — javítva: GPT-Realtime is not a verified model name — OpenAI's real-time voice API product is 'Realtime API' (or 'gpt-4o-realtime-preview' model). 'GPT-Realtime' as a model name appears fabricated.; Reviewer verdict: Hitelesség-kapu blokkolta: GPT-Realtime is not a verified model name — OpenAI's real-time voice API product is",
-      "ref": "2026-07-31T04-08-41-143Z_openai-blog_How_avatarin_built_a_24_7_retail_agent_with_GPT-Re.json",
-      "at": "2026-07-31T04:09:40.420Z"
-    },
-    {
-      "id": "m178547099432346",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"How avatarin built a 24/7 retail agent with GPT-Realtime\" (?/10)",
-      "ref": "2026-07-31T04-08-41-143Z_openai-blog_How_avatarin_built_a_24_7_retail_agent_with_GPT-Re.json",
-      "at": "2026-07-31T04:09:54.323Z"
-    },
-    {
-      "id": "m178547183806988",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-07-31T04:23:58.069Z"
-    },
-    {
-      "id": "m178547405566362",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook). content/social/feed.md",
-      "ref": null,
-      "at": "2026-07-31T05:00:55.663Z"
-    },
     {
       "id": "m178549379516133",
       "from": "designer",
@@ -2643,6 +2589,62 @@
       "text": "6 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-08-12T01:34:42.535Z"
+    },
+    {
+      "id": "m178652529996088",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Pull names, emails, and phone numbers out of a messy block of text with Cohere\" — javítva: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!); GUIDE_TOO_SHORT: Csak 473 szó — az útmutató-szabály 700-1200 szó (guide-quality-rules.md); újraküldöm.",
+      "ref": "GUIDE_pull-names-emails-and-phone-numbers-out-of-a-messy-block-of-.json",
+      "at": "2026-08-12T09:01:39.960Z"
+    },
+    {
+      "id": "m178652541074830",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Rewrite a confusing workplace email into a clear, friendly message with Cohere\" — javítva: Beginner clarity too low (7/10): steps are vague or could mislead a first-time user; Step 1 mentions Shift+click selection but gives no fallback for desktop email clients like Outlook where this method may not work; újraküldöm.",
+      "ref": "GUIDE_rewrite-a-confusing-workplace-email-into-a-clear-friendly-me.json",
+      "at": "2026-08-12T09:03:30.748Z"
+    },
+    {
+      "id": "m178652541075057",
+      "from": "guide",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Kell még adat: \"Rewrite a confusing workplace email into a clear, friendly message with Cohere\" — az Ellenőrző tényt/forrást kér, amit nem találhatok ki: Article claims Cohere is free but provides no source or link to verify current pricing model",
+      "ref": "GUIDE_rewrite-a-confusing-workplace-email-into-a-clear-friendly-me.json",
+      "open": false,
+      "at": "2026-08-12T09:03:30.750Z",
+      "resolved_at": "2026-08-12T09:05:01.097Z"
+    },
+    {
+      "id": "m178652544704930",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Pull names, emails, and phone numbers out of a messy block of text with Cohere\" (?/10)",
+      "ref": "GUIDE_pull-names-emails-and-phone-numbers-out-of-a-messy-block-of-.json",
+      "at": "2026-08-12T09:04:07.049Z"
+    },
+    {
+      "id": "m17865255010963",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Rewrite a confusing workplace email into a clear, friendly message with Cohere\" (?/10)",
+      "ref": "GUIDE_rewrite-a-confusing-workplace-email-into-a-clear-friendly-me.json",
+      "at": "2026-08-12T09:05:01.096Z"
+    },
+    {
+      "id": "m178652558938691",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-08-12T09:06:29.386Z"
     }
   ]
 }
