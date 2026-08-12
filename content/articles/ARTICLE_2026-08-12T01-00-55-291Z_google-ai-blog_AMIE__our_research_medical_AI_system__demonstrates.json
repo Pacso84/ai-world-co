@@ -1,0 +1,56 @@
+{
+  "_meta": {
+    "written_at": "2026-08-12T01:02:08.776Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00880488,
+    "original_draft": "2026-08-12T01-00-55-291Z_google-ai-blog_AMIE__our_research_medical_AI_system__demonstrates.json",
+    "source_id": "google-ai-blog",
+    "source_name": "Google AI (hivatalos, blog.google)",
+    "source_link": "https://blog.google/innovation-and-ai/models-and-research/google-research/amie-video-consultations/",
+    "status": "published",
+    "published_at": "2026-08-12T01:03:16.495Z",
+    "slug": "google-s-medical-ai-amie-just-took-a-video-visit-here-s-what-that-matt",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 776
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured explainer with clear hook, good plain-language definitions of technical terms like AMIE and multimodal AI, helpful reader-specific takeaways, and appropriate factual caveats throughout. Factual claims trace back to the source. No cliches or prohibited content. Ready to publish.",
+      "_aiCost": 0.0014445,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-08-12T01:03:45.941Z",
+    "guide_worthy": false,
+    "pairing_reason": "AMIE is a research-only system not available to the public - no concrete action for everyday users",
+    "image_v": 2,
+    "image_at": "2026-08-12T01:18:09.032Z",
+    "seo": {
+      "meta_description": "Google's experimental medical AI AMIE just held a real video visit. Here's what this means for the future of AI healthcare.",
+      "keywords": [
+        "Google AMIE medical AI",
+        "AI doctor video visit",
+        "Google medical AI telehealth",
+        "future of AI healthcare",
+        "AMIE artificial intelligence doctor",
+        "AI medical diagnosis video call"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Consider adding a more specific long-tail keyword like 'Google AMIE video visit' to capture search intent better",
+        "The title is strong but could include '2024' or 'research' to improve recency signals for SEO"
+      ],
+      "optimised_at": "2026-08-12T01:19:01.575Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Google's Medical AI AMIE Just Took a Video Visit. Here's What That Matters\"\nsubtitle: \"An experimental AI held a real-time, multimodal conversation with simulated patients. Here's what it means for the future of seeing a doctor.\"\ncategory: \"explainer\"\naudience: \"personal\"\nread_time_minutes: 4\ntags: [\"ai-healthcare\", \"medical-ai\", \"google-amie\", \"telemedicine\", \"future-of-health\"]\n---\n\n# Google's Medical AI AMIE Just Took a Video Visit. Here's What That Matters\n\n> **In short:** Google researchers showed AMIE, an experimental medical AI, can hold a real-time video conversation with a patient — similar to a telehealth visit. The study used simulated scenarios, and AMIE is not available to the public. It hints at where AI-assisted doctor visits may be headed.\n\nImagine you open a video call to talk to your doctor. Instead of a person, an AI greets you, asks how you've been feeling, and follows up about your symptoms — the way a real visit usually starts. That's roughly what a new research study from Google showed their medical AI can now do.\n\nThe system is called **AMIE** (Articulate Medical Intelligence Explorer). It's a research project, not a product you can sign up for. But the latest study pushed it into territory most medical AIs haven't reached: a real-time, back-and-forth conversation with visual cues.\n\n## What AMIE actually did in the study\n\nIn the new research, AMIE was tested in simulated video consultations. The AI:\n\n- **Listened to the patient's description** of symptoms in natural language — speaking or typing the way you normally would to a doctor\n- **Saw the patient via video**, picking up on visual clues like a rash or swelling (using **multimodal AI**, which means handling text, images, and audio together instead of just one type of input)\n- **Asked clarifying questions in real time**, the way a doctor would during a history-taking session\n- **Suggested possible diagnoses** for a clinician to review\n\nThe study compared AMIE's clinical reasoning against that of real doctors working from the same transcripts. It didn't replace doctors — it was measured against them.\n\n## Important limits to know about\n\nA few things keep this firmly in the research lab, not in your doctor's office:\n\n- **The patients were simulated** — actors playing roles, not real people seeking care\n- **A human clinician was always in the loop** for any actual diagnosis\n- **AMIE is not approved** by any medical regulator and isn't available anywhere\n- **No prescription, treatment, or test was ever ordered** by the AI alone\n\nThis is a proof of concept — a way to show the technology works under controlled conditions. Years of clinical trials and regulatory review would still be needed before anything like this could see real patients.\n\n## What's genuinely new here\n\nMost medical AI tools today do one thing well: read a scan, summarize a chart, or answer a typed question. AMIE went further by handling a **multi-turn conversation** — asking and answering, like a real telehealth visit. That kind of back-and-forth is harder than it sounds. The AI has to remember earlier answers, follow up meaningfully, and not lose the thread of the conversation.\n\nIt also processed what it saw on the video, not just what was typed. That combination — real-time conversation plus visual understanding — is what makes this demonstration notable.\n\n## What this means for you\n\n- **If you see a doctor regularly**: don't expect to meet AMIE on a video call anytime soon. The realistic near-term version of this is AI tools that help your doctor — drafting notes, suggesting questions, summarizing your history — while a human stays in charge.\n- **If you're curious about telemedicine**: the direction is clear. Medical AI is moving from text-only chatbots to full conversations. Your next video visit may feel a little more interactive, but the person on the other end will still be a licensed clinician for a long time.\n- **If you're worried about AI replacing doctors**: this study is a useful reality check. Even the researchers designed it so that a human stayed in the loop. The hard part of medicine — judgment, accountability, trust — isn't what the AI is being tested on.\n\n## Wrap-up\n\nGoogle's AMIE study is one of the clearest signals yet that medical AI is moving beyond typed text toward something closer to a real conversation. It's also a good reminder that a clever demo isn't the same as a tool you can use. For now, the most useful thing you can do is pay attention to how AI features show up in your actual healthcare apps — and ask what a tool is approved to do, and what role a human still plays.",
+  "original_title": "AMIE, our research medical AI system, demonstrates real-time clinical video consultation capabilities in a first-of-its-kind study."
+}

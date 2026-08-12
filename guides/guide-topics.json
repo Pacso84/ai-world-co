@@ -4422,11 +4422,12 @@
       "audience": "both",
       "level": "beginner",
       "angle": "Give Cohere your bakery name, vibe, and opening date and get back a week's worth of post ideas you can edit and schedule.",
-      "status": "todo",
+      "status": "done",
       "icon": "📱",
       "priority": "balance",
       "proposed_at": "2026-08-11T00:58:45.073Z",
-      "proposed_by": "guide-balance"
+      "proposed_by": "guide-balance",
+      "written_at": "2026-08-12T01:05:41.002Z"
     },
     {
       "id": "turn-your-class-notes-into-study-flashcards-with-cohere",
@@ -4436,11 +4437,12 @@
       "audience": "personal",
       "level": "beginner",
       "angle": "Paste in your lecture or textbook notes and get back ready-to-use flashcards so you spend less time making them and more time studying.",
-      "status": "todo",
+      "status": "done",
       "icon": "📚",
       "priority": "balance",
       "proposed_at": "2026-08-11T00:58:45.550Z",
-      "proposed_by": "guide-balance"
+      "proposed_by": "guide-balance",
+      "written_at": "2026-08-12T01:07:34.477Z"
     },
     {
       "id": "rewrite-a-confusing-workplace-email-into-a-clear-friendly-me",
@@ -4450,11 +4452,12 @@
       "audience": "business",
       "level": "beginner",
       "angle": "Take that long, tangled message from a coworker and turn it into a short, polite reply without losing the important bits.",
-      "status": "todo",
+      "status": "done",
       "icon": "✉️",
       "priority": "balance",
       "proposed_at": "2026-08-11T00:58:45.657Z",
-      "proposed_by": "guide-balance"
+      "proposed_by": "guide-balance",
+      "written_at": "2026-08-12T01:10:48.977Z"
     },
     {
       "id": "pull-names-emails-and-phone-numbers-out-of-a-messy-block-of-",
@@ -4464,11 +4467,12 @@
       "audience": "business",
       "level": "beginner",
       "angle": "Copy a chunk of text full of mixed-up contact info and get back a clean list of names, emails, and phone numbers.",
-      "status": "todo",
+      "status": "done",
       "icon": "🔍",
       "priority": "balance",
       "proposed_at": "2026-08-11T00:58:45.758Z",
-      "proposed_by": "guide-balance"
+      "proposed_by": "guide-balance",
+      "written_at": "2026-08-12T01:18:03.869Z"
     },
     {
       "id": "ask-alexa-to-read-your-calendar-aloud-and-remind-you-about-t",
@@ -4506,10 +4510,11 @@
       "audience": "personal",
       "level": "beginner",
       "angle": "Paste the suspicious message and ask the AI to act as a fraud detector — it will point out the red flags normal humans miss in a hurry, and tell you whether it's safe to reply.",
-      "status": "todo",
+      "status": "done",
       "icon": "🛡️",
       "proposed_at": "2026-08-11T00:59:36.580Z",
-      "proposed_by": "guide-ideas"
+      "proposed_by": "guide-ideas",
+      "written_at": "2026-08-12T01:08:30.520Z"
     },
     {
       "id": "how-to-turn-voice-memos-into-clean-searchable-notes",
@@ -4627,6 +4632,76 @@
       "icon": "📄",
       "proposed_at": "2026-08-11T01:06:23.521Z",
       "proposed_by": "guide-ideas"
+    },
+    {
+      "id": "use-copilot-to-explain-code-you-found-online-in-plain-englis",
+      "company": "GitHub",
+      "tool": "GitHub Copilot",
+      "title": "Use Copilot to explain code you found online in plain English",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "Paste a snippet you don't understand into Copilot Chat and get a line-by-line breakdown of what it does, so you can decide whether to use it.",
+      "status": "todo",
+      "icon": "💬",
+      "priority": "balance",
+      "proposed_at": "2026-08-12T01:14:22.223Z",
+      "proposed_by": "guide-balance"
+    },
+    {
+      "id": "turn-a-messy-spreadsheet-export-into-clean-data-with-copilot",
+      "company": "GitHub",
+      "tool": "GitHub Copilot",
+      "title": "Turn a messy spreadsheet export into clean data with Copilot",
+      "audience": "both",
+      "level": "beginner",
+      "angle": "Drop a CSV file with inconsistent dates, names, and columns into Copilot and get back a tidy version you can actually use.",
+      "status": "todo",
+      "icon": "📊",
+      "priority": "balance",
+      "proposed_at": "2026-08-12T01:14:22.329Z",
+      "proposed_by": "guide-balance"
+    },
+    {
+      "id": "plan-a-week-long-trip-itinerary-with-copilot-from-a-simple-d",
+      "company": "GitHub",
+      "tool": "GitHub Copilot",
+      "title": "Plan a week-long trip itinerary with Copilot from a simple destination list",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "Give Copilot the cities you want to visit and the dates you're free, and get back a day-by-day plan with travel time between stops.",
+      "status": "todo",
+      "icon": "✈️",
+      "priority": "balance",
+      "proposed_at": "2026-08-12T01:14:22.442Z",
+      "proposed_by": "guide-balance"
+    },
+    {
+      "id": "generate-sql-queries-by-describing-what-you-want-in-plain-en",
+      "company": "GitHub",
+      "tool": "GitHub Copilot",
+      "title": "Generate SQL queries by describing what you want in plain English",
+      "audience": "business",
+      "level": "beginner",
+      "angle": "Ask Copilot Chat for a SELECT, UPDATE, or COUNT statement using everyday language, then verify the result against a sample row.",
+      "status": "todo",
+      "icon": "🗄️",
+      "priority": "balance",
+      "proposed_at": "2026-08-12T01:14:22.556Z",
+      "proposed_by": "guide-balance"
+    },
+    {
+      "id": "build-a-simple-leave-a-review-form-for-your-small-business-s",
+      "company": "GitHub",
+      "tool": "GitHub Copilot",
+      "title": "Build a simple 'Leave a review' form for your small business site with Copilot",
+      "audience": "business",
+      "level": "beginner",
+      "angle": "Have Copilot write the HTML, CSS, and JavaScript for a basic review form so you don't have to start from scratch.",
+      "status": "todo",
+      "icon": "🌐",
+      "priority": "balance",
+      "proposed_at": "2026-08-12T01:14:22.664Z",
+      "proposed_by": "guide-balance"
     }
   ]
 }
