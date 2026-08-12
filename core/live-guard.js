@@ -100,16 +100,26 @@ async function main() {
     if (!slug) slug = freshSlug;   // vadonatúj honlapnál nincs még beállt cikk
   } catch { /* lentebb kezelve */ }
 
-  // A FRISS cikk létezés-próbája: 3 próbálkozás, 15 mp szünettel. Ha ennyi
-  // idő alatt sem jelenik meg, az már nem terjedési késés, hanem valódi baj.
+  // A FRISS cikk létezés-próbája.
+  //
+  // ⚠️ 2026-08-12: a korábbi 3×15 mp (45 mp) HAMIS riasztást adott — a cikk
+  // kint volt, csak később. A Cloudflare Pages terjedése MÉRVE 1-2 perc:
+  // 2026-08-10-én a feed-javítás után az éles válasz ÖT próbálkozáson át
+  // ingadozott (10 → 0 → 10 → 0 → 0), mire stabil lett. Több él-szerver
+  // frissül eltérő ütemben, tehát a "még nincs kint" pillanatkép megtévesztő.
+  //
+  // A hamis riasztás itt drága: a lelet a napi riportba megy, a user pedig
+  // kimondott szabálya szerint valós adatot vár ott (2026-08-06).
+  const FRESH_TRIES = 6, FRESH_WAIT_MS = 20000;   // max ~100 mp várakozás
   if (freshSlug && freshSlug !== slug) {
     let ok = false;
-    for (let i = 0; i < 3 && !ok; i++) {
-      if (i) await new Promise(r => setTimeout(r, 15000));
+    for (let i = 0; i < FRESH_TRIES && !ok; i++) {
+      if (i) await new Promise(r => setTimeout(r, FRESH_WAIT_MS));
       const p = await probe(`${SITE}/article/${freshSlug}${bust()}`, { redirect: 'follow' });
       ok = p.status === 200;
     }
-    if (!ok) add('FRESH_ARTICLE_DOWN', `a ma kiadott cikk 45 mp után sincs kint (${freshSlug.slice(0, 40)})`);
+    const varakozas = Math.round((FRESH_TRIES - 1) * FRESH_WAIT_MS / 1000);
+    if (!ok) add('FRESH_ARTICLE_DOWN', `a ma kiadott cikk ${varakozas} mp után sincs kint (${freshSlug.slice(0, 40)})`);
   }
 
   if (slug) {
