@@ -320,6 +320,15 @@
         "The article states Alexa+ has a built-in ability to read attendees and 'names of the people joining' from calendar events with a dedicated command flow — this level of granular attendee-reading behavior by Alexa+ is not verified and may be fabricated."
       ],
       "confidence": 4
+    },
+    {
+      "at": "2026-08-13T16:45:06.656Z",
+      "file": "WRITER_2026-08-13T16-44-20-017Z_aws-ml_Amazon_Quick_for_Microsoft_365__Agentic_AI_where_y.json",
+      "action": "block",
+      "reasons": [
+        "The article repeatedly refers to 'Amazon Quick' as a Microsoft 365 add-in available in Word, Excel, PowerPoint, and Outlook. Amazon's enterprise AI assistant is called 'Amazon Q' (and 'Amazon Q for QuickSight'), not 'Amazon Quick'. 'Amazon Quick' is not a real AWS product name."
+      ],
+      "confidence": 8
     }
   ]
 }

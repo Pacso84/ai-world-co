@@ -1,0 +1,62 @@
+{
+  "_meta": {
+    "written_at": "2026-08-13T16:45:24.323Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00686568,
+    "original_draft": "2026-08-13T16-44-20-017Z_aws-ml_Amazon_Quick_for_Microsoft_365__Agentic_AI_where_y.json",
+    "source_id": "aws-ml",
+    "source_name": "AWS Machine Learning (hivatalos)",
+    "source_link": "https://aws.amazon.com/blogs/machine-learning/amazon-quick-for-microsoft-365-agentic-ai-where-you-work/",
+    "status": "published",
+    "rejected_at": "2026-08-13T16:45:06.651Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 970
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured explainer with good hook, clear explanations of technical terms (agentic AI, add-in, AWS), appropriate audience fit for business users, and a useful 'What this means for you' section with differentiated guidance. Factual caution is appropriate, and the tone is friendly and non-judgmental throughout.",
+      "_aiCost": 0.0014829,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Hitelesség-kapu blokkolta: The article repeatedly refers to 'Amazon Quick' as a Microsoft 365 add-in available in Word, Excel, PowerPoint, and Outlook. Amazon's enterprise AI assistant is called 'Amazon Q' (and 'Amazon Q for Qu",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-08-13T16-44-20-017Z_aws-ml_Amazon_Quick_for_Microsoft_365__Agentic_AI_where_y.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-08-13T16:46:02.925Z",
+    "slug": "amazon-q-comes-to-microsoft-365-what-it-does-and-who-it-s-for",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-08-13T16:46:18.445Z",
+    "guide_worthy": false,
+    "pairing_reason": "Amazon Q for Microsoft 365 requires enterprise AWS infrastructure and IT team setup — regular users cannot access it directly, and it's not available for personal Microsoft 365 accounts",
+    "image_v": 2,
+    "image_at": "2026-08-13T16:46:25.585Z",
+    "seo": {
+      "meta_description": "Amazon Q brings AI assistance into Microsoft 365 apps—Word, Excel, PowerPoint, Outlook. Learn what AWS's enterprise assistant does and who it's for.",
+      "keywords": [
+        "Amazon Q Microsoft 365 integration",
+        "AWS enterprise AI assistant",
+        "Amazon Q features business",
+        "AI in Microsoft 365 apps",
+        "Amazon Q Word Excel PowerPoint Outlook"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add 'explainer' or 'guide' to the title to signal content type and boost clarity for searchers",
+        "Include the target audience (AWS users/enterprise) more prominently in the intro to improve relevance signaling",
+        "Consider adding a practical use case example (e.g., 'ask Excel questions in plain English') to match high-intent search queries"
+      ],
+      "optimised_at": "2026-08-13T16:46:38.061Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Amazon Q Comes to Microsoft 365 — What It Does and Who It's For\"\nsubtitle: \"An explainer on AWS's enterprise AI assistant and what it means when it shows up inside Word, Excel, PowerPoint, and Outlook.\"\ncategory: \"explainer\"\naudience: \"business\"\nread_time_minutes: 4\ntags: [\"amazon-q\", \"microsoft-365\", \"aws\", \"enterprise-ai\", \"productivity\"]\n---\n\n# Amazon Q Comes to Microsoft 365 — What It Does and Who It's For\n\n> **In short:** Amazon Q, AWS's enterprise AI assistant, now plugs into Word, Excel, PowerPoint, and Outlook as an add-in, so teams can ask questions of company data and draft documents without leaving the Microsoft apps they already use. It's built for companies that keep their data on AWS — not for personal Microsoft 365 accounts.\n\nYou've probably opened Excel this week, stared at a pivot table, and wished you could just *ask* it a question in plain English instead of writing the formula yourself. That feeling is exactly what a new wave of workplace AI is trying to fix — and AWS is the latest to jump in, this time bringing its Q assistant straight into the Microsoft 365 apps your team already works in.\n\n## What Amazon Q actually is\n\nAmazon Q is AWS's (Amazon Web Services — Amazon's cloud computing arm, used by lots of companies to store and analyze their data) AI helper for working with business information. Imagine an analyst who sits inside your company's data, understands the numbers, and can answer questions or draft documents on demand.\n\nThere's also a related product called **Amazon Q for QuickSight**, which focuses on charts, dashboards, and visual reports. The two are part of the same family, but the one reaching into Microsoft 365 is mainly Amazon Q Business.\n\nThe \"agentic\" part is the new bit. An *agentic AI* (an AI that can take actions for you, not only chat back answers) can pull live data, fill in spreadsheet cells, write a draft email referencing that data, or build a chart — all from a request like *\"show me last quarter's sales by region.\"*\n\nBefore this update, you'd use Q mostly through the AWS console or a web page. Now AWS is offering it as an *add-in* (a small extension that plugs into another program, the same way browser extensions plug into Chrome) inside the four Microsoft 365 apps most knowledge workers live in.\n\n## What it does in each app\n\nThe general idea is that Q lives where you already work, so you stop copying numbers between tabs:\n\n- **In Excel**: ask questions about your company's data in plain language and get answers without writing formulas yourself. It can also summarize what's already in a sheet.\n- **In Word**: pull in live numbers, charts, or text from your data sources while drafting a report. You describe what you want, and Q updates the document for you.\n- **In PowerPoint**: build or edit slides using company data as the source. Tell it the story you want the deck to tell, and it can pull in the right charts.\n- **In Outlook**: summarize long customer or internal threads, and draft replies that reference specific data points from your systems.\n\nThe catch — and it matters — is that the answers come from data sources your IT team has connected to Q inside AWS, not from your personal files. Q isn't reading your OneDrive on its own. For most readers, that's a very different setup from consumer AI tools.\n\nI'm describing the general capabilities here based on what AWS has announced. Exact menu names and screens may shift as the add-in rolls out, so check the latest AWS documentation or your IT team for the precise setup.\n\n## What this means for you\n\n- **If you work in operations, finance, or sales**: this is the everyday use case. Tasks that used to mean asking an analyst and waiting a day — *\"which region is behind quota?\"* or *\"what was our churn last month?\"* — can become self-serve. Spot-check the numbers anyway, because an AI writing on top of business data can still get things wrong, and spot-checking is just good hygiene.\n- **If you manage a team or department**: the real question is whether your company already uses AWS for its data warehouse. If yes, this is worth trying. If you're on a different cloud (Microsoft Azure, Google Cloud), the value drops sharply, since Q pulls from AWS-based sources rather than any spreadsheet you happen to open.\n- **If you're an everyday Office user without an enterprise setup**: you likely won't see this at all for now. Personal Microsoft 365 plans don't include Amazon Q, and there isn't a personal install path worth chasing. Worth asking IT whether your company plans a rollout, and what that means for your workflow.\n- **For privacy and access**: data shown inside Q is whatever your IT admin has connected to it. Don't paste sensitive customer data into random prompts. And because the assistant actually writes into your documents, give the first outputs a careful read before forwarding them on.\n\n## Wrap-up\n\nAmazon Q inside Microsoft 365 is essentially an attempt to put an enterprise data analyst next to you in every Office app. If your company already lives in AWS, the next step is small: ask your IT or data team whether the add-in is enabled for your account, and try one real task first — say, getting Q to summarize a working report inside Word.\n\nIf your company isn't on AWS or hasn't connected its data yet, this won't change your week, so don't go chasing it. The thing worth watching over the next few months is how AWS prices this for smaller teams; they've been trying to push beyond the largest enterprise customers, but I don't have confirmed pricing for personal or small-business use yet.",
+  "original_title": "Amazon Quick for Microsoft 365: Agentic AI where you work"
+}

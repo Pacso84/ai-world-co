@@ -1,102 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178649722578490",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-12T01:13:45.784Z",
-      "updated": "2026-08-12T01:13:45.958Z"
-    },
-    {
-      "id": "t178649722596075",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-12T01:13:45.960Z",
-      "updated": "2026-08-12T01:14:22.675Z"
-    },
-    {
-      "id": "t17864972626789",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-12T01:14:22.678Z",
-      "updated": "2026-08-12T01:18:03.878Z"
-    },
-    {
-      "id": "t178649748387957",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-12T01:18:03.879Z",
-      "updated": "2026-08-12T01:18:04.073Z"
-    },
-    {
-      "id": "t178649748407544",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-12T01:18:04.075Z",
-      "updated": "2026-08-12T01:18:54.848Z"
-    },
-    {
-      "id": "t178649753485013",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-08-12T01:18:54.850Z",
-      "updated": "2026-08-12T01:19:40.134Z"
-    },
-    {
-      "id": "t178649758013630",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-12T01:19:40.136Z",
-      "updated": "2026-08-12T01:19:49.954Z"
-    },
-    {
-      "id": "t178649758995516",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-08-12T01:19:49.955Z",
-      "updated": "2026-08-12T01:20:08.227Z"
-    },
-    {
-      "id": "t178652521551999",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-08-12T09:00:15.519Z",
-      "updated": "2026-08-12T09:00:15.704Z"
-    },
-    {
-      "id": "t178652521570577",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-08-12T09:00:15.705Z",
-      "updated": "2026-08-12T09:00:35.003Z"
-    },
-    {
-      "id": "t178652523500596",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-08-12T09:00:35.005Z",
-      "updated": "2026-08-12T09:00:35.202Z"
-    },
-    {
-      "id": "t178652523520420",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-12T09:00:35.204Z",
-      "updated": "2026-08-12T09:00:35.378Z"
-    },
-    {
       "id": "t178652523537950",
       "title": "Run ellenorzo",
       "status": "done",
@@ -479,33 +383,105 @@
       "agent": "publisher",
       "created": "2026-08-13T09:04:12.692Z",
       "updated": "2026-08-13T09:04:38.089Z"
+    },
+    {
+      "id": "t178663942936673",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-08-13T16:43:49.366Z",
+      "updated": "2026-08-13T16:43:49.560Z"
+    },
+    {
+      "id": "t178663942956250",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-08-13T16:43:49.562Z",
+      "updated": "2026-08-13T16:44:20.029Z"
+    },
+    {
+      "id": "t17866394600319",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-08-13T16:44:20.031Z",
+      "updated": "2026-08-13T16:44:20.234Z"
+    },
+    {
+      "id": "t178663946023550",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-13T16:44:20.235Z",
+      "updated": "2026-08-13T16:44:51.982Z"
+    },
+    {
+      "id": "t178663949198468",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-13T16:44:51.984Z",
+      "updated": "2026-08-13T16:45:06.670Z"
+    },
+    {
+      "id": "t17866395066723",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-13T16:45:06.672Z",
+      "updated": "2026-08-13T16:45:24.333Z"
+    },
+    {
+      "id": "t178663952433557",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-13T16:45:24.335Z",
+      "updated": "2026-08-13T16:46:02.937Z"
+    },
+    {
+      "id": "t178663956293947",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-08-13T16:46:02.939Z",
+      "updated": "2026-08-13T16:46:18.454Z"
+    },
+    {
+      "id": "t178663957849322",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-13T16:46:18.493Z",
+      "updated": "2026-08-13T16:46:25.625Z"
+    },
+    {
+      "id": "t178663958562635",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-08-13T16:46:25.626Z",
+      "updated": "2026-08-13T16:46:38.088Z"
+    },
+    {
+      "id": "t178663959809058",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-13T16:46:38.090Z",
+      "updated": "2026-08-13T16:46:43.240Z"
+    },
+    {
+      "id": "t178663960324143",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-08-13T16:46:43.241Z",
+      "updated": "2026-08-13T16:47:00.211Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178557811158772",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The line-up is solid and ready — practical, everyday use cases that cover productivity, learning, privacy, and communication. One note: it's fairly tool-heavy, so a gentle \"getting started\" intro for ",
-      "agent": "publisher",
-      "at": "2026-08-01T09:55:11.587Z",
-      "loud": false
-    },
-    {
-      "id": "n178557811950089",
-      "level": "success",
-      "text": "0 hír + 1 útmutató publikálva (költség: $0.0051).",
-      "agent": "ceo",
-      "at": "2026-08-01T09:55:19.500Z",
-      "loud": false
-    },
-    {
-      "id": "n178560285868489",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The line-up looks solid — you've got a practical mix of real-world AI uses (study help, writing, privacy smarts) across different tools, which should appeal to everyday readers. One note: with five di",
-      "agent": "publisher",
-      "at": "2026-08-01T16:47:38.684Z",
-      "loud": false
-    },
     {
       "id": "n17856028665622",
       "level": "info",
@@ -1281,47 +1257,33 @@
       "agent": "ceo",
       "at": "2026-08-13T09:04:38.129Z",
       "loud": false
+    },
+    {
+      "id": "n17866395980802",
+      "level": "info",
+      "text": "SEO: 1 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-08-13T16:46:38.080Z",
+      "loud": false
+    },
+    {
+      "id": "n178663961041970",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The line-up is solid and ready — it covers privacy, practical how-tos, and real-world writing tasks, giving everyday readers a useful mix. Articles 4, 5, and 6 are closely related (complaint letter, c",
+      "agent": "publisher",
+      "at": "2026-08-13T16:46:50.419Z",
+      "loud": false
+    },
+    {
+      "id": "n178663962024811",
+      "level": "success",
+      "text": "1 hír + 0 útmutató publikálva (költség: $0.0170).",
+      "agent": "ceo",
+      "at": "2026-08-13T16:47:00.248Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178552462472233",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-07-31T19:03:44.722Z"
-    },
-    {
-      "id": "m178552550935353",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook). content/social/feed.md",
-      "ref": null,
-      "at": "2026-07-31T19:18:29.353Z"
-    },
-    {
-      "id": "m178554928713987",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"How to Build a Simple Debt-Payoff Tracker with Any AI Assistant\" — mi a baj: Article is truncated - the 'Try it now' section cuts off mid-sentence; Step 5 formula example is vague - 'where B is the balance column' should name the actual cell column letter used in the pasted table; Step 1 says Afterpay minimum 'depends on plan' but doesn't explain how to find this number",
-      "ref": "GUIDE_how-to-build-a-simple-debt-payoff-tracker-with-any-ai-assist.json",
-      "at": "2026-08-01T01:54:47.139Z"
-    },
-    {
-      "id": "m17855492871406",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "need",
-      "text": "Hiányos / kell még adat: \"How to Build a Simple Debt-Payoff Tracker with Any AI Assistant\" — egészítsd ki: Article is truncated - the 'Try it now' section cuts off mid-sentence; Step 5 formula example is vague - 'where B is the balance column' should name the actual cell column letter used in the pasted table; Step 1 says Afterpay minimum 'depends on plan' but doesn't explain how to find this numb",
-      "ref": "GUIDE_how-to-build-a-simple-debt-payoff-tracker-with-any-ai-assist.json",
-      "open": false,
-      "at": "2026-08-01T01:54:47.140Z",
-      "resolved_at": "2026-08-01T09:54:24.891Z"
-    },
     {
       "id": "m178554962669720",
       "from": "designer",
@@ -2647,6 +2609,42 @@
       "text": "6 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-08-13T09:14:56.426Z"
+    },
+    {
+      "id": "m178663950665443",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Amazon Quick for Microsoft 365: Agentic AI where you work\" — mi a baj: The article repeatedly refers to 'Amazon Quick' as a Microsoft 365 add-in available in Word, Excel, PowerPoint, and Outlook. Amazon's enterprise AI assistant is called 'Amazon Q' (and 'Amazon Q for QuickSight'), not 'Amazon Quick'. 'Amazon Quick' is not a real AWS product name.",
+      "ref": "2026-08-13T16-44-20-017Z_aws-ml_Amazon_Quick_for_Microsoft_365__Agentic_AI_where_y.json",
+      "at": "2026-08-13T16:45:06.654Z"
+    },
+    {
+      "id": "m178663952432489",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Amazon Quick for Microsoft 365: Agentic AI where you work\" — javítva: The article repeatedly refers to 'Amazon Quick' as a Microsoft 365 add-in available in Word, Excel, PowerPoint, and Outlook. Amazon's enterprise AI assistant is called 'Amazon Q' (and 'Amazon Q for QuickSight'), not 'Amazon Quick'. 'Amazon Quick' is not a real AWS product name.; Reviewer verdict: Hitelesség-kapu bl",
+      "ref": "2026-08-13T16-44-20-017Z_aws-ml_Amazon_Quick_for_Microsoft_365__Agentic_AI_where_y.json",
+      "at": "2026-08-13T16:45:24.324Z"
+    },
+    {
+      "id": "m178663956292797",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Amazon Quick for Microsoft 365: Agentic AI where you work\" (?/10)",
+      "ref": "2026-08-13T16-44-20-017Z_aws-ml_Amazon_Quick_for_Microsoft_365__Agentic_AI_where_y.json",
+      "at": "2026-08-13T16:46:02.927Z"
+    },
+    {
+      "id": "m178663960322952",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-08-13T16:46:43.229Z"
     }
   ]
 }
