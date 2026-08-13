@@ -21,6 +21,7 @@ import { marked } from 'marked';
 import { canonicalChip } from '../core/quality-guard.js';
 import { toolRegex } from '../core/tool-regex.js';
 import { absolutizeFeedLinks } from '../core/feed-links.js';
+import { buildMetaDescription } from '../core/meta-description.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = join(__dirname, '..');
@@ -1780,7 +1781,7 @@ function buildArticlePage(a) {
   // a szerző/kiadó az About-oldalra mutat (átlátható AI-szerkesztőség = E-E-A-T).
   const jsonld = {
     '@context': 'https://schema.org', '@type': 'NewsArticle',
-    headline: a.title, description: a.seoDescription || a.subtitle,
+    headline: a.title, description: buildMetaDescription(a.seoDescription || a.subtitle, a.bodyMd),
     image: ogImage || undefined,
     datePublished: a.publishedAt || undefined,
     dateModified: a.modifiedAt || a.publishedAt || undefined,   // VALÓDI frissítés (2026-08-01)
@@ -1795,7 +1796,7 @@ function buildArticlePage(a) {
   };
   return pageShell({
     title: withBrand(a.title),
-    description: a.seoDescription || a.subtitle,
+    description: buildMetaDescription(a.seoDescription || a.subtitle, a.bodyMd),
     keywords: a.seoKeywords,
     ogImage, jsonld: [jsonld, breadcrumbSchema(a, canonical)], pagePath: `article/${a.slug}`,
     bodyContent: body, isArticle: true,
@@ -2176,7 +2177,7 @@ function buildGuidePage(a) {
   const ogImage = a.image ? `${SITE.url}/assets/images/${a.image}` : '';
   const jsonld = {
     '@context': 'https://schema.org', '@type': 'HowTo',
-    name: a.title, description: a.seoDescription || a.subtitle,
+    name: a.title, description: buildMetaDescription(a.seoDescription || a.subtitle, a.bodyMd),
     image: ogImage || undefined,
     // DÁTUM + SZERZŐ + KIADÓ (2026-08-01, kereső-barátság átvilágítás).
     // Ezek eddig CSAK a hír-cikkeken (NewsArticle) voltak meg; az útmutatókon
@@ -2201,7 +2202,7 @@ function buildGuidePage(a) {
   };
   return pageShell({
     title: withBrand(a.title),
-    description: a.seoDescription || a.subtitle,
+    description: buildMetaDescription(a.seoDescription || a.subtitle, a.bodyMd),
     keywords: a.seoKeywords, ogImage,
     // HowTo + FAQPage + morzsamenü együtt (a JSON-LD tömböt is érti a Google)
     jsonld: [jsonld, ...(faqSchema ? [faqSchema] : []), breadcrumbSchema(a, canonical)],
@@ -2287,7 +2288,10 @@ function buildStartPage(allLoc) {
       <p style="margin-top:18px"><a class="back-link" href="guides">${tr('startMore')} →</a></p></section>`;
   return pageShell({
     title: `${tr('startTitle')} — ${SITE.name}`,
-    description: tr('startTag'),
+    // A LÁTHATÓ mottó (startTag) változatlan marad — csak a meta leírás
+    // egészül ki a már meglévő, MINDEN nyelvre lefordított bevezetőből.
+    // Így egyetlen új szöveget sem kell írni egyik nyelven sem.
+    description: buildMetaDescription(tr('startTag'), tr('startS1p')),
     noIntro: true, pagePath: 'start.html', bodyContent: body
   });
 }
@@ -2594,7 +2598,9 @@ function buildArchivePage(loc) {
     <div class="arch">${groups}</div>`;
   return pageShell({
     title: `${tr('archTitle')} — ${SITE.name}`,
-    description: tr('archTag'),
+    // Ugyanaz az elv, mint a "Kezdd itt" oldalnál: a látható mottó marad,
+    // a meta leírás a meglévő oldal-bemutatóból egészül ki.
+    description: buildMetaDescription(tr('archTag'), tr('startS1p')),
     noIntro: true, pagePath: 'archive.html', bodyContent: body
   });
 }
