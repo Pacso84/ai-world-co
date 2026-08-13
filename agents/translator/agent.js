@@ -23,7 +23,10 @@ import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync } from 
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { ask } from '../../core/ai-router.js';
-import { titleLooksUntranslated, bodyLooksUntranslated } from '../../core/translation-guard.js';
+import {
+  titleLooksUntranslated, bodyLooksUntranslated,
+  FAIL, shouldRetryTranslation, retryTokenFrame
+} from '../../core/translation-guard.js';
 import { orderForTranslation, pruneFails } from '../../core/translation-queue.js';
 import { fileHandback, sourceDefect } from '../../core/handback.js';
 import { remember } from '../../core/memory-manager.js';
@@ -122,17 +125,25 @@ function fmValue(fm, key) {
 // Egy cikk fordítása: cím+alcím+törzs LLM-mel, de a FRONTMATTERT MI állítjuk
 // össze (az angolból, lecserélt title/subtitle-lel) → a záró --- mindig megvan,
 // így a build mindig ki tudja olvasni a fordított címet.
-async function translateMarkdown(markdown, langName) {
+// Az alap token-keret. 16000: a "gondolkodási" tokenek IS ebbe számítanak.
+const BASE_TOKENS = 16000;
+
+// A visszatérés MINDIG objektum: sikernél {text, cost}, bukásnál {reason, cost}.
+// 2026-08-13-ig hat különböző ok adott csupasz null-t, és a hívó mindet
+// ugyanannak látta ("❌ sikertelen / érvénytelen") — amikor élesben elbukott
+// két magyar fordítás, UTÓLAG NEM LEHETETT MEGMONDANI, melyik ok volt.
+// Az indok most a naplóba is kimegy, és az újrapróba-döntést is ez hozza.
+async function translateMarkdown(markdown, langName, { maxTokens = BASE_TOKENS } = {}) {
   const parts = splitFrontmatter(markdown);
-  if (!parts) return null;
+  if (!parts) return { reason: FAIL.NO_FRONTMATTER, cost: 0 };
   const enTitle = fmValue(parts.fm, 'title');
   const enSub = fmValue(parts.fm, 'subtitle');
 
   const prompt = `Translate the following into ${langName}. Use the exact output format (TITLE / SUBTITLE / BODY).\n\nTITLE: ${enTitle}\nSUBTITLE: ${enSub}\nBODY:\n${parts.body}`;
   // 16000: a gemini-2.5-flash "gondolkodási" tokenjei IS ebbe a keretbe számítanak —
   // 6000-nél a hosszú (1200 szavas) útmutatóknál a látható fordítás csonkult (2026-07-03).
-  const r = await ask(prompt, { agentName: AGENT_NAME, systemPrompt: SYSTEM, maxTokens: 16000 });
-  if (!r || !r.text) return null;
+  const r = await ask(prompt, { agentName: AGENT_NAME, systemPrompt: SYSTEM, maxTokens });
+  if (!r || !r.text) return { reason: FAIL.NO_RESPONSE, cost: r?.costUsd || 0 };
 
   const t = r.text;
   const tm = t.match(/TITLE:\s*(.+)/);
@@ -141,10 +152,10 @@ async function translateMarkdown(markdown, langName) {
   const title = (tm ? tm[1] : enTitle).trim().replace(/^["']|["']$/g, '');
   const sub = (sm ? sm[1] : enSub).trim().replace(/^["']|["']$/g, '');
   const body = (bm ? bm[1] : '').trim();
-  if (body.length < 80) return null;
+  if (body.length < 80) return { reason: FAIL.TOO_SHORT, cost: r.costUsd || 0 };
   // CSONKULÁS-VÉDELEM: ha a fordítás gyanúsan rövidebb az angolnál (kifutott
   // a token-keretből), NE mentsük el félbevágva — inkább következő körben újra.
-  if (body.length < parts.body.length * 0.35) return null;
+  if (body.length < parts.body.length * 0.35) return { reason: FAIL.TRUNCATED, cost: r.costUsd || 0 };
   // NEM-FORDÍTÁS VÉDELEM (2026-07-25): a modell néha visszaadja az ANGOLT (nem
   // fordít) → angol csúszna a fordítás-slotba (10 ilyen es/fr cikk volt). Az angol
   // funkciószó-sűrűség jól elválik: JÓ fordítás ≤0.016, ANGOLUL-MARADT ~0.16.
@@ -152,14 +163,14 @@ async function translateMarkdown(markdown, langName) {
   // 2026-08-10 óta a mérce a core/translation-guard.js-ben lakik, és az URL-eket
   // kihagyja: a saját angol slugjaink miatt a heti összefoglaló magyar fordítása
   // hatszor bukott el némán, és a cikk angolul ment ki.
-  if (bodyLooksUntranslated(body)) return null;
+  if (bodyLooksUntranslated(body)) return { reason: FAIL.ENGLISH_BODY, cost: r.costUsd || 0 };
   // UGYANEZ A CÍMRE (2026-08-04): a fenti védelem csak a TÖRZSET nézte, a cím
   // viszont külön úton jön (TITLE: sor), és ha az hiányzik a válaszból, a
   // fenti `tm ? tm[1] : enTitle` NÉMÁN az angolt menti. Élesben 3 spanyol cím
   // maradt így angolul — és egy ilyen cím a kapcsolódó-cikk dobozokon
   // keresztül 47 spanyol oldalra ült ki. A törzzsel azonos kezelés: nem
   // mentünk, a következő futás újrapróbálja.
-  if (titleLooksUntranslated(enTitle, title)) return null;
+  if (titleLooksUntranslated(enTitle, title)) return { reason: FAIL.ENGLISH_TITLE, cost: r.costUsd || 0 };
 
   const fm = parts.fm
     .replace(/^title:\s*.*$/m, `title: "${title.replace(/"/g, '')}"`)
@@ -269,8 +280,23 @@ async function main() {
 
       // EGY SOR / fordítás: párhuzamosan a régi "write … majd console.log" páros
       // összekeveredne a dolgozók között, olvashatatlan naplót adva.
-      const res = await translateMarkdown(md, LANGS[code]);
-      if (res && looksValid(res.text)) {
+      // AZONNALI ÚJRAPRÓBA (2026-08-13). Enélkül egy pillanatnyi modell-hiba
+      // a KÖVETKEZŐ ÜTEMEZETT FUTÁSIG (8 óra) angol szöveget tart kint a
+      // magyar/spanyol oldalon. Élesben pontosan ez történt: két cikk elbukott,
+      // ugyanabból a forrásból a spanyol lefordult, és kézzel újrafuttatva
+      // MINDKETTŐ elsőre sikerült. Az újrapróba EMELT kerettel megy: a mért
+      // eset 14039 kimeneti tokent evett a 16000-ből (a többi gondolkodás).
+      let res = await translateMarkdown(md, LANGS[code], { maxTokens: BASE_TOKENS });
+      let retryCost = 0;
+      if (res?.reason && shouldRetryTranslation(res.reason)) {
+        retryCost = res.cost || 0;
+        console.log(`🔁 ${code} ← ${file.slice(0, 40)}… újrapróba emelt kerettel (${res.reason})`);
+        res = await translateMarkdown(md, LANGS[code], { maxTokens: retryTokenFrame(BASE_TOKENS) });
+      }
+      // Az ELBUKOTT kísérletet is kifizettük — a futás-riport lássa.
+      if (retryCost) cost += retryCost;
+
+      if (res?.text && looksValid(res.text)) {
         cache[code] = res.text.trim();
         saveCache(file, cache);
         cost += res.cost; done++;
@@ -293,9 +319,9 @@ async function main() {
             remember(AGENT_NAME, `Ha a forrás-cikk hibás (${defect}), NEM újrapróbálni kell, hanem visszaadni az Írónak.`);
             delete fails[key]; saveFails(fails);
             console.log(`🔤 ${code} ← ${file.slice(0, 48)}… ↩️  visszaadva az Írónak (${defect})`);
-          } else { console.log(`🔤 ${code} ← ${file.slice(0, 48)}… ❌ (sikertelen / érvénytelen)`); }
+          } else { console.log(`🔤 ${code} ← ${file.slice(0, 48)}… ❌ ${res?.reason || "ismeretlen ok"}`); }
         } else {
-          console.log(`🔤 ${code} ← ${file.slice(0, 48)}… ❌ (sikertelen / érvénytelen)`);
+          console.log(`🔤 ${code} ← ${file.slice(0, 48)}… ❌ ${res?.reason || "ismeretlen ok"}`);
         }
       }
     }

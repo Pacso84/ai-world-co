@@ -98,7 +98,53 @@ export function bodyLooksUntranslated(body) {
   return talalat / szavak.length > UNTRANSLATED_BODY_THRESHOLD;
 }
 
+// ===================================================================
+// AZONNALI ÚJRAPRÓBA (2026-08-13)
+// ===================================================================
+//
+// 2026-08-13 hajnalban két friss cikk magyar fordítása elbukott, és a magyar
+// oldalra ANGOL szöveg került. Ugyanabból a forrásból a SPANYOL hibátlanul
+// lefordult — a forrás tehát ép volt. Kézzel újrafuttatva MINDKETTŐ elsőre
+// sikerült ($0,0219). A bukás átmeneti volt; a rendszer mégis 8 órán át
+// (a következő ütemezett futásig) angol szöveget tartott kint.
+//
+// A MECHANIZMUS a saját naplónkból: ugyanabban a futásban, ugyanazzal a
+// modellel az egyik cikk 3 629, a másik 14 039 kimeneti tokent használt —
+// pedig a magyar szöveg ~3 000-et igényel. A többi GONDOLKODÁS, a 16 000-es
+// kereten belül. Ha az kicsit többet visz, a fordítás csonkul. Ez a memóriában
+// rögzített jelenség: a reasoning-off zászló NEM megbízható (ugyanazon a
+// prompton 0 vs 1323 token). Ezért az újrapróba EMELT kerettel megy.
+//
+// MIÉRT NEM MINDEN BUKÁST PRÓBÁLUNK ÚJRA: ha a FORRÁSNAK nincs frontmatter-e,
+// az újrapróba pontosan ugyanúgy elbukik — az csak pénz. A többi ok a modell
+// pillanatnyi viselkedése, azon az újrapróba segít.
+// ===================================================================
+
+/** A fordítás elbukásának okai. A napló ÉS az újrapróba-döntés ezt használja. */
+export const FAIL = {
+  NO_FRONTMATTER: 'a forrásnak nincs frontmatter-e',
+  NO_RESPONSE: 'a modell nem adott szöveget',
+  TOO_SHORT: 'gyanúsan rövid törzs',
+  TRUNCATED: 'csonkult fordítás (kifutott a keretből)',
+  ENGLISH_BODY: 'a törzs angolul maradt',
+  ENGLISH_TITLE: 'a cím angolul maradt'
+};
+
+/** Érdemes-e AZONNAL, ugyanabban a futásban újrapróbálni? */
+export function shouldRetryTranslation(reason) {
+  return !!reason && reason !== FAIL.NO_FRONTMATTER;
+}
+
+/** Az újrapróba kerete: 1,5× ráhagyás, kemény plafonnal. */
+export const RETRY_TOKEN_CAP = 24000;
+export function retryTokenFrame(base) {
+  const n = Number(base);
+  if (!Number.isFinite(n) || n <= 0) return RETRY_TOKEN_CAP;
+  return Math.min(Math.round(n * 1.5), RETRY_TOKEN_CAP);
+}
+
 export default {
   titleLooksUntranslated, UNTRANSLATED_TITLE_THRESHOLD,
-  bodyLooksUntranslated, stripNonProse, UNTRANSLATED_BODY_THRESHOLD
+  bodyLooksUntranslated, stripNonProse, UNTRANSLATED_BODY_THRESHOLD,
+  FAIL, shouldRetryTranslation, retryTokenFrame, RETRY_TOKEN_CAP
 };

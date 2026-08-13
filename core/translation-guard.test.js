@@ -12,7 +12,11 @@ import {
   titleLooksUntranslated,
   bodyLooksUntranslated,
   stripNonProse,
-  UNTRANSLATED_BODY_THRESHOLD
+  UNTRANSLATED_BODY_THRESHOLD,
+  FAIL,
+  shouldRetryTranslation,
+  retryTokenFrame,
+  RETRY_TOKEN_CAP
 } from './translation-guard.js';
 
 // ── 1) ANGOLUL MARADT — ezeket MEG KELL fognia (élő esetek) ──────────
@@ -160,5 +164,40 @@ try at home, and the fourth is about how this will change the work that you do.
 
 // ── 10) A küszöb marad, ahol a 2026-07-25-ös kalibráció hagyta ───────
 assert.equal(UNTRANSLATED_BODY_THRESHOLD, 0.06);
+
+// ── 11) AZONNALI ÚJRAPRÓBA (2026-08-13) ──────────────────────────────
+// Két friss cikk magyar fordítása elbukott, a magyar oldalra ANGOL került.
+// Ugyanabból a forrásból a spanyol lefordult; kézzel újrafuttatva mindkettő
+// ELSŐRE sikerült. A bukás átmeneti volt — a rendszer mégis 8 órán át tartott
+// kint angol szöveget, mert nem próbálta újra a futáson belül.
+{
+  // Forrás-hibán az újrapróba nem segít, csak pénz.
+  assert.equal(shouldRetryTranslation(FAIL.NO_FRONTMATTER), false,
+    'a hiányzó frontmatter a FORRÁS hibája — újrapróba nem javítja');
+
+  // Minden más ok a modell pillanatnyi viselkedése.
+  for (const ok of [FAIL.NO_RESPONSE, FAIL.TOO_SHORT, FAIL.TRUNCATED, FAIL.ENGLISH_BODY, FAIL.ENGLISH_TITLE]) {
+    assert.equal(shouldRetryTranslation(ok), true, `újrapróbálandó: ${ok}`);
+  }
+
+  // Nincs ok = nincs bukás = nincs újrapróba.
+  assert.equal(shouldRetryTranslation(null), false);
+  assert.equal(shouldRetryTranslation(''), false);
+  assert.equal(shouldRetryTranslation(undefined), false);
+
+  // Az emelt keret: 1,5× ráhagyás, kemény plafonnal. A 16000-es alapkeretből
+  // 24000 lesz — a mért eset 14039 kimeneti tokent használt a 16000-ből.
+  assert.equal(retryTokenFrame(16000), 24000, 'a fordító alapkeretéből 24000');
+  assert.equal(retryTokenFrame(8000), 12000, '1,5x a plafon alatt');
+  assert.equal(retryTokenFrame(20000), RETRY_TOKEN_CAP, 'a plafont nem lépi túl');
+  assert.equal(retryTokenFrame(0), RETRY_TOKEN_CAP, 'rossz bemenetre a plafon');
+  assert.equal(retryTokenFrame(null), RETRY_TOKEN_CAP);
+  assert.ok(retryTokenFrame(16000) > 16000, 'az újrapróba SOSEM szűkebb kerettel megy');
+
+  // Az okok emberi szövegek — a naplóba mennek, ott kell érteni őket.
+  for (const [kulcs, szoveg] of Object.entries(FAIL)) {
+    assert.ok(szoveg.length > 8, `a(z) ${kulcs} indoka mondja is meg, mi történt`);
+  }
+}
 
 console.log('✅ translation-guard.test: minden átment');
