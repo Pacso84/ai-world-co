@@ -1,102 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178646692064980",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-11T16:48:40.649Z",
-      "updated": "2026-08-11T16:48:44.819Z"
-    },
-    {
-      "id": "t178646692482127",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-08-11T16:48:44.821Z",
-      "updated": "2026-08-11T16:48:58.454Z"
-    },
-    {
-      "id": "t178646693845649",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-11T16:48:58.456Z",
-      "updated": "2026-08-11T16:49:15.166Z"
-    },
-    {
-      "id": "t178646695516795",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-08-11T16:49:15.167Z",
-      "updated": "2026-08-11T16:49:35.047Z"
-    },
-    {
-      "id": "t178649642052021",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-08-12T01:00:20.520Z",
-      "updated": "2026-08-12T01:00:20.717Z"
-    },
-    {
-      "id": "t178649642071915",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-08-12T01:00:20.719Z",
-      "updated": "2026-08-12T01:00:55.304Z"
-    },
-    {
-      "id": "t178649645530556",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-08-12T01:00:55.305Z",
-      "updated": "2026-08-12T01:00:55.511Z"
-    },
-    {
-      "id": "t178649645551349",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-12T01:00:55.513Z",
-      "updated": "2026-08-12T01:02:08.786Z"
-    },
-    {
-      "id": "t178649652878758",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-12T01:02:08.787Z",
-      "updated": "2026-08-12T01:03:34.259Z"
-    },
-    {
-      "id": "t178649661426281",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-08-12T01:03:34.262Z",
-      "updated": "2026-08-12T01:04:31.882Z"
-    },
-    {
-      "id": "t178649667191961",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-12T01:04:31.919Z",
-      "updated": "2026-08-12T01:10:48.986Z"
-    },
-    {
-      "id": "t178649704898796",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-12T01:10:48.987Z",
-      "updated": "2026-08-12T01:13:45.751Z"
-    },
-    {
       "id": "t178649722578490",
       "title": "Run guide",
       "status": "done",
@@ -479,41 +383,105 @@
       "agent": "publisher",
       "created": "2026-08-13T01:21:21.051Z",
       "updated": "2026-08-13T01:21:41.102Z"
+    },
+    {
+      "id": "t178661172486267",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-08-13T09:02:04.862Z",
+      "updated": "2026-08-13T09:02:05.020Z"
+    },
+    {
+      "id": "t178661172502280",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-08-13T09:02:05.022Z",
+      "updated": "2026-08-13T09:02:30.199Z"
+    },
+    {
+      "id": "t17866117502000",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-08-13T09:02:30.200Z",
+      "updated": "2026-08-13T09:02:30.374Z"
+    },
+    {
+      "id": "t178661175037517",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-13T09:02:30.375Z",
+      "updated": "2026-08-13T09:02:30.529Z"
+    },
+    {
+      "id": "t178661175053025",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-13T09:02:30.530Z",
+      "updated": "2026-08-13T09:02:30.678Z"
+    },
+    {
+      "id": "t178661175068129",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-13T09:02:30.681Z",
+      "updated": "2026-08-13T09:03:10.065Z"
+    },
+    {
+      "id": "t178661179007736",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-13T09:03:10.077Z",
+      "updated": "2026-08-13T09:03:31.139Z"
+    },
+    {
+      "id": "t178661181114277",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-08-13T09:03:31.142Z",
+      "updated": "2026-08-13T09:03:31.345Z"
+    },
+    {
+      "id": "t178661181138882",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-13T09:03:31.388Z",
+      "updated": "2026-08-13T09:03:38.343Z"
+    },
+    {
+      "id": "t178661181834553",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-08-13T09:03:38.345Z",
+      "updated": "2026-08-13T09:03:59.791Z"
+    },
+    {
+      "id": "t178661183979223",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-13T09:03:59.792Z",
+      "updated": "2026-08-13T09:04:12.685Z"
+    },
+    {
+      "id": "t178661185269262",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-08-13T09:04:12.692Z",
+      "updated": "2026-08-13T09:04:38.089Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178554963596995",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The line-up looks strong — you've got a nice mix of practical work tools, study help, privacy guidance, and everyday life tasks (pet-sitting, speeches, sympathy messages) across real AI tools Australi",
-      "agent": "publisher",
-      "at": "2026-08-01T02:00:35.969Z",
-      "loud": false
-    },
-    {
-      "id": "n178554964387386",
-      "level": "success",
-      "text": "1 hír + 4 útmutató publikálva (költség: $0.0735).",
-      "agent": "ceo",
-      "at": "2026-08-01T02:00:43.873Z",
-      "loud": false
-    },
-    {
-      "id": "n178557805888079",
-      "level": "warn",
-      "text": "📨 guide → ceo: Kell még adat: \"How to Build a Simple Debt-Payoff Tracker with Any AI Assistant\" — az Ellenőrző tényt/forrást kér, amit ",
-      "agent": "guide",
-      "at": "2026-08-01T09:54:18.880Z",
-      "loud": false
-    },
-    {
-      "id": "n178557809127533",
-      "level": "info",
-      "text": "SEO: 1 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-08-01T09:54:51.275Z",
-      "loud": false
-    },
     {
       "id": "n178557811158772",
       "level": "success",
@@ -1281,54 +1249,41 @@
       "agent": "ceo",
       "at": "2026-08-13T01:21:41.139Z",
       "loud": false
+    },
+    {
+      "id": "n178661179005871",
+      "level": "warn",
+      "text": "📨 guide → ceo: Kell még adat: \"Ask Alexa+ to read your calendar aloud and remind you about today's meetings\" — az Ellenőrző tényt/forrá",
+      "agent": "guide",
+      "at": "2026-08-13T09:03:10.058Z",
+      "loud": false
+    },
+    {
+      "id": "n178661183978452",
+      "level": "info",
+      "text": "SEO: 1 cikk optimalizálva (átlag 9.0/10).",
+      "agent": "seo",
+      "at": "2026-08-13T09:03:59.784Z",
+      "loud": false
+    },
+    {
+      "id": "n178661186842699",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). A lineup egységes és kész a publikálásra: a cikkek kiegyensúlyozottan mixelik a praktikus AI használati tippeket (e-mailek, panaszlevelek, pet-sitting megállapodás) a fontos óvatossági témákkal (priva",
+      "agent": "publisher",
+      "at": "2026-08-13T09:04:28.426Z",
+      "loud": false
+    },
+    {
+      "id": "n178661187812929",
+      "level": "success",
+      "text": "0 hír + 1 útmutató publikálva (költség: $0.0024).",
+      "agent": "ceo",
+      "at": "2026-08-13T09:04:38.129Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m17855233007933",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Prevent accidental disclosures with new Reply All BCC warnings in Gmail\" — mi a baj: Article describes a specific 'new Reply All warning for BCC'd threads' as a current Gmail feature. I am not reasonably sure this specific feature (a Reply All warning triggered specifically when you were BCC'd) exists as described in Gmail. Gmail has had generic Reply All warnings (e.g., whe",
-      "ref": "2026-07-31T17-18-49-790Z_google-workspace_Prevent_accidental_disclosures_with_new_Reply_All_.json",
-      "at": "2026-07-31T18:41:40.793Z"
-    },
-    {
-      "id": "m178552331879230",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-07-31T18:41:58.792Z"
-    },
-    {
-      "id": "m17855236346262",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"How to use AI to write quick, polite emails and re\" — under two minutes (specific time claim - too precise, varies by user)",
-      "ref": "ARTICLE_GUIDE_ai-email-replies.json",
-      "at": "2026-07-31T18:47:14.626Z"
-    },
-    {
-      "id": "m178552452269758",
-      "from": "ceo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Főnöki újraindítás: \"Prevent accidental disclosures with new Reply All BCC warnin\" — rewrite-explainer",
-      "ref": "2026-07-31T17-18-49-790Z_google-workspace_Prevent_accidental_disclosures_with_new_Reply_All_.json",
-      "at": "2026-07-31T19:02:02.697Z"
-    },
-    {
-      "id": "m178552458335441",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Prevent accidental disclosures with new Reply All BCC warnings in Gmail\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite as an evergreen etiquette/habits piece about the risks of replying-all when you were BCC'd. Do not claim a specific new Gmail BCC-detection warning exists;",
-      "ref": "2026-07-31T17-18-49-790Z_google-workspace_Prevent_accidental_disclosures_with_new_Reply_All_.json",
-      "at": "2026-07-31T19:03:03.354Z"
-    },
     {
       "id": "m178552460281462",
       "from": "ellenorzo",
@@ -2645,6 +2600,53 @@
       "text": "6 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-08-13T01:34:22.043Z"
+    },
+    {
+      "id": "m178661179005772",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Ask Alexa+ to read your calendar aloud and remind you about today's meetings\" — javítva: The price claim that Alexa+ standalone plan costs 'around $19.99/month' appears to be invented. Amazon has not publicly listed Alexa+ at this price point as a standard standalone figure in the way the article states it as a near-fact.; The article states Alexa+ has a built-in ability to read atte",
+      "ref": "GUIDE_ask-alexa-to-read-your-calendar-aloud-and-remind-you-about-t.json",
+      "at": "2026-08-13T09:03:10.057Z"
+    },
+    {
+      "id": "m178661179005822",
+      "from": "guide",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Kell még adat: \"Ask Alexa+ to read your calendar aloud and remind you about today's meetings\" — az Ellenőrző tényt/forrást kér, amit nem találhatok ki: The price claim that Alexa+ standalone plan costs 'around $19.99/month' appears to be invented. Amazon has not publicly listed Alexa+ at this price point as a standard standalone figure in the way the article states it as a near-fact.",
+      "ref": "GUIDE_ask-alexa-to-read-your-calendar-aloud-and-remind-you-about-t.json",
+      "open": false,
+      "at": "2026-08-13T09:03:10.058Z",
+      "resolved_at": "2026-08-13T09:03:31.131Z"
+    },
+    {
+      "id": "m178661181113065",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Ask Alexa+ to read your calendar aloud and remind you about today's meetings\" (?/10)",
+      "ref": "GUIDE_ask-alexa-to-read-your-calendar-aloud-and-remind-you-about-t.json",
+      "at": "2026-08-13T09:03:31.130Z"
+    },
+    {
+      "id": "m178661185267865",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-08-13T09:04:12.678Z"
+    },
+    {
+      "id": "m178661199982795",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"How to prepare for a job interview with AI\" — The guide lacks the mandatory 'In short' box after the title (Section 2a of style guide) and the term 'hallucinations' is used in Common mistakes without explanation (Section 5 requires all technical terms to be defined on first use)",
+      "ref": "ARTICLE_GUIDE_ai-job-interview.json",
+      "at": "2026-08-13T09:06:39.827Z"
     }
   ]
 }
