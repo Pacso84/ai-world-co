@@ -1,0 +1,27 @@
+{
+  "started_at": "2026-08-13T01:09:14.010Z",
+  "total": 2,
+  "passed": 1,
+  "failed": 1,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.005547336,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-08-13T01-02-12-509Z_github-ai_Write_your_first_prompt_with_the_GitHub_Copilot_ap.json",
+      "rejected": "REJECTED_2026-08-13T01-02-12-509Z_github-ai_Write_your_first_prompt_with_the_GitHub_Copilot_ap.json",
+      "decision": "FAIL",
+      "score": 7,
+      "cost_usd": 0.002973
+    },
+    {
+      "writer": "WRITER_2026-08-13T01-02-12-509Z_openai-blog_How_RingCentral_builds_AI-native_work_from_enginee.json",
+      "article": "ARTICLE_2026-08-13T01-02-12-509Z_openai-blog_How_RingCentral_builds_AI-native_work_from_enginee.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.00159936
+    }
+  ],
+  "finished_at": "2026-08-13T01:10:07.085Z",
+  "duration_seconds": 53.075
+}

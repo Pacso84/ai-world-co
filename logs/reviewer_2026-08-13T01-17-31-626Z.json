@@ -1,0 +1,35 @@
+{
+  "started_at": "2026-08-13T01:15:49.596Z",
+  "total": 4,
+  "passed": 3,
+  "failed": 0,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.014566789999999998,
+  "by_article": [
+    {
+      "writer": "WRITER_GUIDE_how-to-turn-voice-memos-into-clean-searchable-notes.json",
+      "article": "ARTICLE_GUIDE_how-to-turn-voice-memos-into-clean-searchable-notes.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0024144
+    },
+    {
+      "writer": "WRITER_GUIDE_turn-a-messy-spreadsheet-export-into-clean-data-with-copilot.json",
+      "article": "ARTICLE_GUIDE_turn-a-messy-spreadsheet-export-into-clean-data-with-copilot.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.0034755
+    },
+    {
+      "writer": "WRITER_GUIDE_use-copilot-to-explain-code-you-found-online-in-plain-englis.json",
+      "article": "ARTICLE_GUIDE_use-copilot-to-explain-code-you-found-online-in-plain-englis.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0017895
+    }
+  ],
+  "truth_blocked": 1,
+  "finished_at": "2026-08-13T01:17:31.626Z",
+  "duration_seconds": 102.03
+}

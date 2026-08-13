@@ -1,15 +1,4 @@
 {
-  "2026-07-22": [
-    {
-      "at": "2026-07-22T10:25:54.664Z",
-      "file": "WRITER_2026-07-22T10-14-03-157Z_deeparteffects_Batch_Processing_in_Deep_Art_Effects_Pro__Scale_AI.json",
-      "action": "block",
-      "reasons": [
-        "Tool is repeatedly called 'Deep Art Effects Pro' throughout the article (subtitle, tags, body), but the actual product by the German company is named simply 'Deep Art Effects' — the 'Pro' suffix appears fabricated/inaccurate as the official product name.",
-        "The article attributes specific 'batch processing' capabilities (drop a folder of inputs, apply same style to all, set output folder, hit start) to Deep Art Effects Pro as fact, but these specific batch-processing features cannot be verified as actually existing in the product — reads as content marketing for a tool whose capabilities are not confirmed."
-      ]
-    }
-  ],
   "2026-07-23": [
     {
       "at": "2026-07-23T02:00:33.353Z",
@@ -319,6 +308,18 @@
       "reasons": [
         "AI-bíró nem elérhető (érthetetlen AI-válasz: credible mező hiányzik) — visszatartva a következő futásig"
       ]
+    }
+  ],
+  "2026-08-13": [
+    {
+      "at": "2026-08-13T01:16:12.810Z",
+      "file": "WRITER_GUIDE_ask-alexa-to-read-your-calendar-aloud-and-remind-you-about-t.json",
+      "action": "block",
+      "reasons": [
+        "The price claim that Alexa+ standalone plan costs 'around $19.99/month' appears to be invented. Amazon has not publicly listed Alexa+ at this price point as a standard standalone figure in the way the article states it as a near-fact.",
+        "The article states Alexa+ has a built-in ability to read attendees and 'names of the people joining' from calendar events with a dedicated command flow — this level of granular attendee-reading behavior by Alexa+ is not verified and may be fabricated."
+      ],
+      "confidence": 4
     }
   ]
 }

@@ -1,0 +1,62 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "plan-a-week-long-trip-itinerary-with-copilot-from-a-simple-d",
+    "company": "GitHub",
+    "tool": "GitHub Copilot",
+    "icon": "✈️",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-08-13T01:19:02.882Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.01293708,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-08-13T01:19:22.217Z",
+    "slug": "plan-a-week-long-trip-itinerary-with-copilot-from-a-simple-destination",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1358
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Clear, friendly beginner guide with strong structure including hook, step-by-step actions with success indicators, practical caveats about verification, and useful What this means for you section. Excellent use of If it looks different fallbacks and You'll know it worked checkpoints throughout. Minor note: Markdown table in Step 6 is mentioned without explicit explanation, but context makes it clear enough.",
+      "_aiCost": 0.0020637,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "image_v": 2,
+    "image_at": "2026-08-13T01:19:49.722Z",
+    "seo": {
+      "meta_description": "Use AI to plan your week-long trip itinerary in minutes with GitHub Copilot. Simply list your cities and dates for a day-by-day travel plan.",
+      "keywords": [
+        "how to plan a trip with AI",
+        "AI travel planner",
+        "GitHub Copilot travel planning",
+        "use AI for itinerary",
+        "plan trip with copilot",
+        "travel itinerary generator",
+        "week trip planner AI",
+        "create travel itinerary with AI"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more specific long-tail keywords like 'how to use copilot for travel planning'",
+        "Include the word 'tutorial' or 'guide' to match informational search intent",
+        "Consider adding a secondary keyword like 'AI trip planner' which has higher search volume"
+      ],
+      "optimised_at": "2026-08-13T01:20:53.385Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Plan a week-long trip itinerary with Copilot from a simple destination list\"\nsubtitle: \"Turn a short list of cities and dates into a day-by-day plan with travel times, using GitHub Copilot Chat in your browser\"\ncategory: \"guide\"\naudience: \"personal\"\ncompany: \"GitHub\"\ntool: \"Copilot\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"getting-started\", \"copilot\", \"travel\"]\n---\n\n# Plan a week-long trip itinerary with Copilot from a simple destination list\n\n> **In short:** Tell Copilot Chat the cities you want to visit and the dates you're free, and it will draft a day-by-day plan that includes travel time between stops. You need a free GitHub account, and you should double-check train, bus and opening-hour details yourself before booking anything.\n\nPlanning a one-week itinerary is one of those tasks that feels simple but turns into a long spreadsheet. GitHub Copilot — the AI assistant made for code — also has a chat mode (think of it as a chat box inside GitHub or VS Code) that handles everyday questions like this. It's a slightly off-label use, but it works well for first drafts. Here's how to use it for a trip.\n\n## Before you start\n- A **GitHub account** (free at github.com — sign-up takes about two minutes).\n- A way to reach **Copilot Chat**: in a browser at github.com/copilot, or inside VS Code if you already use it. The free tier has a monthly usage limit that's usually plenty for a one-off planning chat; if you hit it, you'll see a clear message.\n- A short list of the places you want to visit — even rough is fine.\n- Your travel dates and a general sense of pace (relaxed vs packed).\n- About **15 minutes** from first click to a printable plan.\n\n## Step 1 — Open Copilot Chat in your browser\n\nGo to **github.com/copilot** and sign in with your GitHub account. After signing in, look for a chat box — usually labeled \"Ask Copilot\" or something similar — at the top or side of the page. Click inside it. The cursor blinks in an empty text field, and the rest of the page fades back slightly to show the chat is the active area. If you use VS Code, the same chat lives in the sidebar under the Copilot icon; the steps below work the same way. **If it looks different:** the exact label and position of the chat box change often, so look for a rounded rectangle that says \"Ask\", \"Chat\", or \"Copilot\". A new chat session is now active and waiting for your first message.\n\n💬 Example: type a single word first to confirm it works, like \"hi\".\nYou'll know it worked when Copilot replies with a short greeting.\n\n## Step 2 — Set the scene with one short sentence\n\nBefore you paste your list, write a one-line brief so Copilot knows the tone you want. Treat it like briefing a friend who's helping you plan. State who's traveling, how long you have, and what kind of trip it is. A line of context up front usually gives you a more useful first answer than jumping straight into the city list. The reply may simply acknowledge — that's fine; the goal is to set expectations before the real ask.\n\n💬 Example: \"I'm planning a relaxed 7-day trip for two adults in October, and we love food, walking, and quiet neighborhoods.\"\nYou'll know it worked when later replies reference your tone or pace, not just generic tourist spots.\n\n## Step 3 — Hand over your destination list and dates\n\nNow paste the city list in plain English. The clearer your dates and the order you'd like to visit in, the more accurate the plan. You don't need exact addresses — cities, regions or neighborhoods are fine. If you already have a rough order, say so (\"I'd like to start in X and end in Y\"). Copilot reads the whole message as one go and starts building a structure from it, so put everything you want considered in this single message.\n\n💬 Example: \"Cities I'd like to visit: Lisbon, Sintra, Porto, Coimbra. Dates: 5 to 11 October. Start in Lisbon, end in Porto. We have a rental car.\"\nYou'll know it worked when the next reply is a numbered day-by-day breakdown, not a single clarifying question back to you.\n\n## Step 4 — Ask for travel time between each stop\n\nAfter the first draft, send a follow-up that explicitly asks for **travel time between stops**. This is the part most people forget, and it's where Copilot is genuinely useful — it can roughly estimate drive, train or bus times so you don't accidentally schedule a six-hour drive into a half-day stop. Be clear about how you'll actually travel, because the same two cities can be 30 minutes apart by train and three hours by road.\n\n💬 Example: \"Can you add the approximate travel time between each city by car, and flag any day where the drive eats more than 3 hours? Suggest a faster option if one exists.\"\nYou'll know it worked when each transition line now includes something like \"≈ 1h by train\" or \"≈ 2h30 drive\".\n\n## Step 5 — Refine with your real preferences\n\nThe first draft will be generic — that's normal. Now ask for the changes that matter to you: pace, food, kid-friendliness, walking limits, budget, time of year. One preference at a time works best; long \"and also…\" lists tend to produce messy replies. Think of it like editing a draft document with a colleague: small, focused comments in sequence.\n\n💬 Example: \"Please slow down Day 3 — one museum, one long lunch, and a sunset walk. We don't want to be on our feet for more than four hours.\"\nYou'll know it worked when the revised day fits the new constraint and doesn't just pile on more activities.\n\n## Step 6 — Save the plan and double-check the moving parts\n\nOnce you're happy, ask Copilot to format the final itinerary as a clean list or table so you can copy it into Notes, Google Docs or an email. Then **always verify anything that moves or costs money**: train times, museum opening hours, restaurant reservations. Copilot can guess these, but it doesn't have real-time schedules, so the plan is a first draft, not a travel agent. One last sanity-check question helps: ask for the slowest day in the plan and confirm it actually feels relaxed.\n\n💬 Example: \"Can you give me the final itinerary as a Markdown table with columns for Day, Morning, Afternoon, Evening, and Travel Time?\"\nYou'll know it worked when you can paste the output straight into another app without cleanup, and when every transit line has a number you can sanity-check online.\n\n## Common mistakes\n- **Asking for too many cities at once.** Six cities in seven days usually produces a rushed, joyless plan. Cap it at four or five for a relaxed trip; let Copilot spread them out.\n- **Trusting train times and opening hours blindly.** Copilot drafts plausible schedules — they may be wrong. Cross-check with the operator's website before you book.\n- **Forgetting to mention how you'll travel.** The plan changes a lot between \"by car\", \"by train\" and \"on foot\". Add this in Step 3, not later, or the travel times will be invented.\n\n## What this means for you\n- **In everyday life:** A weekend getaway, a road trip with friends, or a family visit across two or three cities — same process, smaller scale and faster results.\n- **For your business or work:** Conference travel, offsite planning, or a multi-stop client visit where you want a structured agenda before you start booking hotels and trains.\n- **If you're just getting started:** Try a small one first. A 48-hour plan for two cities is the easiest way to see how Copilot handles this kind of task before you trust it with a bigger trip.\n\n## Try it now\nOpen github.com/copilot, sign in, and ask: \"Plan a relaxed 2-day weekend in [your nearest big city] for someone who likes coffee, books and walking.\" See what it gives you in one reply — that's your baseline.",
+  "original_title": "Plan a week-long trip itinerary with Copilot from a simple destination list"
+}

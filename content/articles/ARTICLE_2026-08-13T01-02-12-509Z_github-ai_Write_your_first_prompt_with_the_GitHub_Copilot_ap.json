@@ -1,0 +1,64 @@
+{
+  "_meta": {
+    "written_at": "2026-08-13T01:10:20.601Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00712752,
+    "original_draft": "2026-08-13T01-02-12-509Z_github-ai_Write_your_first_prompt_with_the_GitHub_Copilot_ap.json",
+    "source_id": "github-ai",
+    "source_name": "GitHub AI & ML (hivatalos)",
+    "source_link": "https://github.blog/ai-and-ml/github-copilot/write-your-first-prompt-with-the-github-copilot-app/",
+    "status": "published",
+    "rejected_at": "2026-08-13T01:09:42.905Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1338
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 8,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Excellent beginner guide with clear step-by-step instructions, relatable examples (Excel formulas, desk jobs), friendly tone, and proper structure including hook, detailed steps, What this means for you section, and wrap-up. All technical terms are explained, no clichés or prohibited content, and the guide is specific enough for a first-time user to follow without getting lost.",
+      "_aiCost": 0.0020676,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Good how-to guide with friendly tone, clear template prompts, and a useful 'What this means for you' section. The main weaknesses are in Steps 1 and 2, where UI navigation is vague enough that a true beginner could get stuck finding the app or locating the model selector. These are fixable with 1-2 extra sentences per step.",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-08-13T01-02-12-509Z_github-ai_Write_your_first_prompt_with_the_GitHub_Copilot_ap.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-08-13T01:10:39.682Z",
+    "slug": "how-to-write-your-first-prompt-in-the-github-copilot-app",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-08-13T01:10:44.148Z",
+    "guide_worthy": false,
+    "pairing_reason": "This article is already a complete step-by-step how-to guide for GitHub Copilot — no additional guide needed",
+    "image_v": 2,
+    "image_at": "2026-08-13T01:19:28.661Z",
+    "seo": {
+      "meta_description": "Learn to write your first GitHub Copilot prompt in minutes — no coding experience needed. Get help with code, formulas, and technical questions on any device.",
+      "keywords": [
+        "how to use GitHub Copilot",
+        "GitHub Copilot app tutorial",
+        "GitHub Copilot for beginners",
+        "first prompt GitHub Copilot",
+        "GitHub Copilot mobile app",
+        "how to write AI prompts",
+        "GitHub Copilot free"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more long-tail keywords like 'GitHub Copilot on phone' or 'GitHub Copilot for Excel formulas' to capture non-developer search intent",
+        "Include the word 'free' early in the content since many users search for free AI tools",
+        "Consider adding a subheading with the exact keyword phrase 'how to write a prompt in GitHub Copilot' for better topical relevance"
+      ],
+      "optimised_at": "2026-08-13T01:20:11.621Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"How to Write Your First Prompt in the GitHub Copilot App\"\nsubtitle: \"A beginner-friendly walkthrough to your first conversation with GitHub's AI helper — no coding background needed\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 6\ntags: [\"github-copilot\", \"ai-coding\", \"getting-started\", \"prompts\"]\n---\n\n# How to Write Your First Prompt in the GitHub Copilot App\n\n> **In short:** GitHub Copilot is GitHub's AI helper, available as a free mobile and web app. Sign in with your GitHub account, start a new chat, pick a model, type a clear instruction, and you can get help with code, formulas, and explanations — even with no coding background.\n\nIt's a Tuesday afternoon and you're stuck on an Excel formula that won't return what you expect. You could keep googling variations of the same question, or you could open the GitHub Copilot app and just ask. GitHub's AI helper isn't only for software developers anymore — it works just as well for the small technical questions that come up in any desk job.\n\nThis guide walks you through your very first prompt, from signing in to getting an answer you can actually use.\n\n## Before you start\n\nYou'll need three things in place before your first prompt:\n\n- **A GitHub account.** Free at github.com. If you've ever signed up for GitHub, you already have one. New sign-ups take about two minutes.\n- **The GitHub Copilot app.** You can use it on the web at github.com/copilot, or download the mobile app on iOS or Android. Both work for chatting.\n- **A free Copilot plan.** There's a free tier that lets you send a limited number of messages each month. Paid plans are available if you need more, but you don't need a credit card to try it.\n\n## Step 1 — Sign in and land on the chat\n\nOn the web, open your browser and go to **github.com/copilot**. The sign-in screen loads automatically. On mobile, after downloading the app from the App Store or Google Play, tap the Copilot icon on your home screen (it's a dark square with a small rocket-style symbol). If you can't spot it, swipe down and search \"Copilot\" in your phone's search bar.\n\nSign in with your GitHub username and password — the same ones you'd use for github.com. Two-factor authentication (a one-time code from your phone) may pop up if you've turned it on.\n\nAfter signing in, you'll land on the main chat screen, where every prompt begins.\n\n**You'll know it worked when** you see a chat input box near the bottom of the screen with a blinking cursor and a placeholder like \"Ask Copilot\" or similar.\n\n## Step 2 — Pick an AI model\n\nMost versions of the app let you choose which AI model (the underlying \"brain\") answers your question. Different models handle tasks a little differently — one might be faster, another more detailed. For your first try, the default model is perfectly fine.\n\nLook at the **top of the chat screen**, just above the message box. You'll usually see the current model name in a small pill-shaped label, a dropdown menu, or a chip-style button. **Tap or click that label** to open a list of available models. If you don't see anything at the top, check inside the app's settings (usually a gear icon in a corner) for a \"Model\" or \"Default model\" option.\n\n**You'll know it worked when** the model name appears at the top of the chat, just above where you type.\n\n## Step 3 — Open a fresh conversation\n\nLook for an option to start a new conversation — usually a plus (+) icon, a \"New chat\" label, or both, in a corner menu. Starting fresh keeps the AI focused on your exact question, without mixing in old context.\n\n💬 Example: you might see labels like *\"New conversation,\"* *\"New chat,\"* or just a *\"+\"* button.\n\n**You'll know it worked when** the chat area is empty and ready for your first message.\n\n## Step 4 — Write a clear, specific first prompt\n\nThis is the part that matters most: the **prompt**, which is just the instruction you type to the AI. A good prompt has three pieces:\n\n- **What you want** — the goal\n- **What you're working with** — the inputs (paste a formula, a snippet, a description)\n- **How you want the answer** — the format (a one-line fix, a step-by-step walkthrough, plain English)\n\nTry this starter prompt — copy and paste it, then fill in the blanks:\n\n> 💬 *\"I'm a beginner. I'm trying to [your task, e.g. 'sort a column of names from Z to A']. I'm using [your tool, e.g. 'Excel 365 on Windows']. Please explain step by step in plain English.\"*\n\n**You'll know it worked when** the AI responds with a structured answer — a few sentences or steps that address your actual situation, not a one-line non-answer.\n\n## Step 5 — Add context if the first answer isn't quite right\n\nIf the AI's answer is close but not perfect, don't start over. Reply with more detail, the way you'd clarify with a helpful colleague. This is called **iterating** — asking again with more context.\n\n💬 Try a follow-up like:\n\n> *\"That helps, but I'm working with 2,000 rows, not 10. Will this still work? And can you show me what to click, not just the formula?\"*\n\n**You'll know it worked when** the AI adjusts its answer to your new details instead of repeating the same generic advice.\n\n## Step 6 — Save or copy the result you like\n\nOnce you get a useful answer, copy it with your device's usual copy command (long-press on mobile, or Ctrl/Cmd+C on the web). The app may also let you keep chats in a history list so you can come back later.\n\n**You'll know it worked when** the answer is on your clipboard or visible in your saved chats, ready to paste into Excel, a document, or wherever you need it.\n\n## Common mistakes to avoid\n\n- **Vague prompts.** *\"Help me with code\"* gives the AI nothing to work with. Always say what tool you're using, what file or data is involved, and what you're trying to do. The fix: always name the tool and paste a small sample of what you have.\n- **Skipping the model selector.** If your answers feel off, you may be on a model that's not great for your task. The fix: open the model picker and try a different one — they each have different strengths.\n- **Giving up after one try.** If the first answer is off, reply with more detail instead of closing the chat. The fix: one thoughtful follow-up often gets you exactly what you needed.\n- **Pasting sensitive data.** Avoid pasting passwords, personal IDs, or private company information. The fix: replace real data with fake examples before sharing.\n\n## What this means for you\n\n- **If you're learning something new (Excel, a formula, a small script):** Treat Copilot like a patient tutor who never gets tired. Paste your problem, ask for a plain-English explanation, and keep asking follow-up questions until it clicks.\n- **If you handle small automations at work:** Use the free tier to test ideas first. Renaming files, cleaning up spreadsheets, drafting email templates — Copilot can draft the small scripts in seconds, and you just copy the result.\n- **If you've never written code before:** You're not \"behind.\" The chat is built for people who don't code. Start with one task from your actual day and let the AI carry the heavy lifting.\n\n## Wrap-up\n\nYour first prompt doesn't have to be perfect. The trick is to start small, give the AI something concrete to work with, and treat the chat as a back-and-forth conversation, not a one-shot search. Pick one task from your day — an Excel formula you always forget, a folder of files you want to rename — open the Copilot app, and send your first message. Five minutes from now, you'll have an answer you couldn't easily get from a search engine.",
+  "original_title": "Write your first prompt with the GitHub Copilot app"
+}

@@ -1,150 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178641137459496",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-11T01:22:54.594Z",
-      "updated": "2026-08-11T01:23:13.199Z"
-    },
-    {
-      "id": "t178641139320119",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-08-11T01:23:13.201Z",
-      "updated": "2026-08-11T01:23:27.806Z"
-    },
-    {
-      "id": "t178643776062596",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-08-11T08:42:40.625Z",
-      "updated": "2026-08-11T08:42:40.749Z"
-    },
-    {
-      "id": "t178643776075034",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-08-11T08:42:40.750Z",
-      "updated": "2026-08-11T08:44:05.649Z"
-    },
-    {
-      "id": "t178643784565124",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-08-11T08:44:05.651Z",
-      "updated": "2026-08-11T08:45:14.407Z"
-    },
-    {
-      "id": "t178643791440854",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-11T08:45:14.408Z",
-      "updated": "2026-08-11T08:45:14.538Z"
-    },
-    {
-      "id": "t178643791453923",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-11T08:45:14.539Z",
-      "updated": "2026-08-11T08:45:14.665Z"
-    },
-    {
-      "id": "t178643791466894",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-08-11T08:45:14.668Z",
-      "updated": "2026-08-11T08:45:14.837Z"
-    },
-    {
-      "id": "t178643791487169",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-11T08:45:14.871Z",
-      "updated": "2026-08-11T08:45:15.050Z"
-    },
-    {
-      "id": "t178643791505278",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-08-11T08:45:15.052Z",
-      "updated": "2026-08-11T08:45:15.219Z"
-    },
-    {
-      "id": "t178643791522181",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-11T08:45:15.221Z",
-      "updated": "2026-08-11T08:45:45.203Z"
-    },
-    {
-      "id": "t178643794520519",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-08-11T08:45:45.205Z",
-      "updated": "2026-08-11T08:46:06.881Z"
-    },
-    {
-      "id": "t17864667158452",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-08-11T16:45:15.845Z",
-      "updated": "2026-08-11T16:45:16.056Z"
-    },
-    {
-      "id": "t178646671605810",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-08-11T16:45:16.058Z",
-      "updated": "2026-08-11T16:45:56.976Z"
-    },
-    {
-      "id": "t178646675697826",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-08-11T16:45:56.978Z",
-      "updated": "2026-08-11T16:45:57.171Z"
-    },
-    {
-      "id": "t178646675717352",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-11T16:45:57.173Z",
-      "updated": "2026-08-11T16:46:42.140Z"
-    },
-    {
-      "id": "t178646680214233",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-11T16:46:42.142Z",
-      "updated": "2026-08-11T16:46:57.476Z"
-    },
-    {
-      "id": "t178646681747987",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-08-11T16:46:57.479Z",
-      "updated": "2026-08-11T16:48:40.610Z"
-    },
-    {
       "id": "t178646692064980",
       "title": "Run designer",
       "status": "done",
@@ -479,33 +335,153 @@
       "agent": "publisher",
       "created": "2026-08-12T16:55:15.995Z",
       "updated": "2026-08-12T16:55:32.292Z"
+    },
+    {
+      "id": "t178658289985437",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-08-13T01:01:39.854Z",
+      "updated": "2026-08-13T01:01:40.081Z"
+    },
+    {
+      "id": "t178658290008227",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-08-13T01:01:40.082Z",
+      "updated": "2026-08-13T01:02:12.522Z"
+    },
+    {
+      "id": "t178658293252430",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-08-13T01:02:12.524Z",
+      "updated": "2026-08-13T01:02:12.723Z"
+    },
+    {
+      "id": "t178658293272482",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-13T01:02:12.724Z",
+      "updated": "2026-08-13T01:09:13.838Z"
+    },
+    {
+      "id": "t178658335384036",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-13T01:09:13.840Z",
+      "updated": "2026-08-13T01:10:07.093Z"
+    },
+    {
+      "id": "t178658340709523",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-13T01:10:07.095Z",
+      "updated": "2026-08-13T01:10:20.610Z"
+    },
+    {
+      "id": "t178658342061295",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-13T01:10:20.612Z",
+      "updated": "2026-08-13T01:10:39.694Z"
+    },
+    {
+      "id": "t178658343969617",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-08-13T01:10:39.696Z",
+      "updated": "2026-08-13T01:11:07.221Z"
+    },
+    {
+      "id": "t178658346725813",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-13T01:11:07.258Z",
+      "updated": "2026-08-13T01:15:49.428Z"
+    },
+    {
+      "id": "t178658374942927",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-13T01:15:49.429Z",
+      "updated": "2026-08-13T01:17:31.634Z"
+    },
+    {
+      "id": "t178658385167031",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-13T01:17:31.670Z",
+      "updated": "2026-08-13T01:17:31.845Z"
+    },
+    {
+      "id": "t178658385184751",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-13T01:17:31.847Z",
+      "updated": "2026-08-13T01:17:47.625Z"
+    },
+    {
+      "id": "t178658386762912",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-13T01:17:47.629Z",
+      "updated": "2026-08-13T01:19:02.891Z"
+    },
+    {
+      "id": "t178658394289385",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-13T01:19:02.893Z",
+      "updated": "2026-08-13T01:19:22.226Z"
+    },
+    {
+      "id": "t178658396222773",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-13T01:19:22.227Z",
+      "updated": "2026-08-13T01:20:01.855Z"
+    },
+    {
+      "id": "t178658400185792",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-08-13T01:20:01.857Z",
+      "updated": "2026-08-13T01:21:11.613Z"
+    },
+    {
+      "id": "t178658407161564",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-13T01:21:11.615Z",
+      "updated": "2026-08-13T01:21:21.049Z"
+    },
+    {
+      "id": "t17865840810510",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-08-13T01:21:21.051Z",
+      "updated": "2026-08-13T01:21:41.102Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178552463949481",
-      "level": "success",
-      "text": "1 hír + 0 útmutató publikálva (költség: $0.0021).",
-      "agent": "ceo",
-      "at": "2026-07-31T19:03:59.494Z",
-      "loud": false
-    },
-    {
-      "id": "n178554928714017",
-      "level": "warn",
-      "text": "📨 ellenorzo → guide: Hiányos / kell még adat: \"How to Build a Simple Debt-Payoff Tracker with Any AI Assistant\" — egészítsd ki: Article is tr",
-      "agent": "ellenorzo",
-      "at": "2026-08-01T01:54:47.140Z",
-      "loud": false
-    },
-    {
-      "id": "n178554962263328",
-      "level": "info",
-      "text": "SEO: 5 cikk optimalizálva (átlag 8.2/10).",
-      "agent": "seo",
-      "at": "2026-08-01T02:00:22.633Z",
-      "loud": false
-    },
     {
       "id": "n178554963596995",
       "level": "success",
@@ -1281,54 +1257,33 @@
       "agent": "ceo",
       "at": "2026-08-12T16:55:32.331Z",
       "loud": false
+    },
+    {
+      "id": "n178658407160688",
+      "level": "info",
+      "text": "SEO: 6 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-08-13T01:21:11.606Z",
+      "loud": false
+    },
+    {
+      "id": "n178658409128291",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). A cohesive, practical lineup that shows real AI value — from privacy awareness to everyday writing help. Good mix of educational pieces and hands-on tutorials. One note: we're heavy on tool-specific h",
+      "agent": "publisher",
+      "at": "2026-08-13T01:21:31.282Z",
+      "loud": false
+    },
+    {
+      "id": "n17865841011398",
+      "level": "success",
+      "text": "2 hír + 4 útmutató publikálva (költség: $0.1078).",
+      "agent": "ceo",
+      "at": "2026-08-13T01:21:41.139Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m17855183723342",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Prevent accidental disclosures with new Reply All BCC warnings in Gmail\" — mi a baj: The article claims Gmail has rolled out a warning when hitting Reply All on a thread where you were BCC'd, but no such feature is documented in any official Google release notes or Workspace updates. This is a fabricated product feature attributed to Gmail.",
-      "ref": "2026-07-31T17-18-49-790Z_google-workspace_Prevent_accidental_disclosures_with_new_Reply_All_.json",
-      "at": "2026-07-31T17:19:32.334Z"
-    },
-    {
-      "id": "m178551841120359",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Prevent accidental disclosures with new Reply All BCC warnings in Gmail\" — javítva: The article claims Gmail has rolled out a warning when hitting Reply All on a thread where you were BCC'd, but no such feature is documented in any official Google release notes or Workspace updates. This is a fabricated product feature attributed to Gmail.; Reviewer verdict: Hitelesség-kapu blokkolta",
-      "ref": "2026-07-31T17-18-49-790Z_google-workspace_Prevent_accidental_disclosures_with_new_Reply_All_.json",
-      "at": "2026-07-31T17:20:11.203Z"
-    },
-    {
-      "id": "m178551842790711",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Prevent accidental disclosures with new Reply All BCC warnings in Gmail\" — mi a baj: Article doesn't mention the new Gmail BCC Reply All warnings from the source — misses the news hook entirely",
-      "ref": "2026-07-31T17-18-49-790Z_google-workspace_Prevent_accidental_disclosures_with_new_Reply_All_.json",
-      "at": "2026-07-31T17:20:27.907Z"
-    },
-    {
-      "id": "m178551844084958",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-07-31T17:20:40.849Z"
-    },
-    {
-      "id": "m178552070934958",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook). content/social/feed.md",
-      "ref": null,
-      "at": "2026-07-31T17:58:29.349Z"
-    },
     {
       "id": "m178552328474289",
       "from": "iro",
@@ -2645,6 +2600,51 @@
       "text": "6 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-08-12T17:10:02.154Z"
+    },
+    {
+      "id": "m178658338291198",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Write your first prompt with the GitHub Copilot app\" — mi a baj: Step 1: 'Open the GitHub Copilot app' lacks guidance on where to find the app icon after downloading or how to navigate to github.com/copilot on web — a first-time mobile user may not know to look on their home screen; Step 2: 'Look near the top of the chat screen' is vague — should specify if it appears in a t",
+      "ref": "2026-08-13T01-02-12-509Z_github-ai_Write_your_first_prompt_with_the_GitHub_Copilot_ap.json",
+      "at": "2026-08-13T01:09:42.912Z"
+    },
+    {
+      "id": "m178658342060266",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Write your first prompt with the GitHub Copilot app\" — javítva: Step 1: 'Open the GitHub Copilot app' lacks guidance on where to find the app icon after downloading or how to navigate to github.com/copilot on web — a first-time mobile user may not know to look on their home screen; Step 2: 'Look near the top of the chat screen' is vague — should specify if it appears in a toolbar, he",
+      "ref": "2026-08-13T01-02-12-509Z_github-ai_Write_your_first_prompt_with_the_GitHub_Copilot_ap.json",
+      "at": "2026-08-13T01:10:20.602Z"
+    },
+    {
+      "id": "m178658343968326",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Write your first prompt with the GitHub Copilot app\" (?/10)",
+      "ref": "2026-08-13T01-02-12-509Z_github-ai_Write_your_first_prompt_with_the_GitHub_Copilot_ap.json",
+      "at": "2026-08-13T01:10:39.683Z"
+    },
+    {
+      "id": "m178658377280860",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Ask Alexa+ to read your calendar aloud and remind you about today's meetings\" — mi a baj: The price claim that Alexa+ standalone plan costs 'around $19.99/month' appears to be invented. Amazon has not publicly listed Alexa+ at this price point as a standard standalone figure in the way the article states it as a near-fact.; The article states Alexa+ has a built-in ability to",
+      "ref": "GUIDE_ask-alexa-to-read-your-calendar-aloud-and-remind-you-about-t.json",
+      "at": "2026-08-13T01:16:12.808Z"
+    },
+    {
+      "id": "m178658408104017",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-08-13T01:21:21.040Z"
     }
   ]
 }
