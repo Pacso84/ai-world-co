@@ -390,6 +390,9 @@ jobs:
           # alszanak — a lépés akkor is hibátlanul lefut.
           THREADS_MAKE_WEBHOOK_URL: ${{ secrets.THREADS_MAKE_WEBHOOK_URL }}
           X_MAKE_WEBHOOK_URL: ${{ secrets.X_MAKE_WEBHOOK_URL }}
+          # BUFFER (2026-08-14) — X / Threads / Instagram. Amíg üres, a
+          # buffer-poster alszik: nem hibázik, nem jelöl meg semmit.
+          BUFFER_ACCESS_TOKEN: ${{ secrets.BUFFER_ACCESS_TOKEN }}
           # 2026-07-27: a poszter ELŐ-ELLENŐRZI a Make-forgatókönyvet ezzel a
           # tokennel. Kellett, mert a webhook 200-at ad akkor is, ha a
           # forgatókönyvben nincs Pinterest-modul — így 38 pin "kiküldve"
@@ -438,10 +441,26 @@ jobs:
           # IDEGENEKNEK is kiteszi a posztjainkat. A Threads ugyanazt a motort
           # használja. Az X gyengébb (a külső linket visszafogja), de olcsó.
           #
-          # Napi 2×3 = 6 poszt csatornánként, ugyanaz a kulturált tempó, mint
-          # a Facebooknál. Ha beválik, lehet emelni.
-          node agents/social/multi-poster.js --channel threads --limit 2 || true
-          node agents/social/multi-poster.js --channel x --limit 2 || true
+          # ── BUFFER-POSZTER (2026-08-14) ────────────────────────────────
+          # A régi multi-poster (közvetlen X/Threads API) ELVETVE: az X saját
+          # API-ja fizetős ($0,200 egy linkes poszt = $56/hó, a teljes keretünk
+          # kétszerese). Helyette Buffer, aminek SAJÁT ingyenes kerete van
+          # (250 kérés/nap) — vagyis NEM eszik a Make 1000-es keretéből, tehát
+          # a Facebookot nem szorítja ki. Ez a lényegi különbség a Pinteresthez
+          # képest, ami 189 pinért a Make-keret 62%-át vitte el.
+          #
+          # A csatornákat a Buffertől kérdezi le, nem hardcode-olt lista —
+          # most Threads + Instagram megy, az X bekötése után magától bővül.
+          #
+          # LIMIT 2 (nem 3), SZÁNDÉKOSAN: a fiókok VADONATÚJAK, 0 követővel.
+          # Napi 3 futás × 2 poszt = 6/nap csatornánként. Egy friss fiók napi
+          # 9 posztja spamnek látszik, és az Instagram vissza is foghatja.
+          # Emelés csak MÉRÉS után — és a mérésünk szerint a poszt-szám és a
+          # látogató közti korreláció amúgy is csak 0,30.
+          #
+          # ALSZIK, amíg a BUFFER_ACCESS_TOKEN nincs beállítva: nem hibázik,
+          # nem fogyaszt, nem jelöl meg semmit.
+          node agents/social/buffer-poster.js --limit 2 || true
 
       # Napi önjelentés a Főnöktől Telegramra (naponta 1x, a 7-15 UTC sávban)
       # FORRÁS-BIZONYÍTVÁNY (2026-07-22): osztályozza a hírforrásokat (frissesség +
