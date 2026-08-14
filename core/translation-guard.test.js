@@ -16,7 +16,8 @@ import {
   FAIL,
   shouldRetryTranslation,
   retryTokenFrame,
-  RETRY_TOKEN_CAP
+  RETRY_TOKEN_CAP,
+  RETRY_WAIT_MS
 } from './translation-guard.js';
 
 // ── 1) ANGOLUL MARADT — ezeket MEG KELL fognia (élő esetek) ──────────
@@ -198,6 +199,16 @@ assert.equal(UNTRANSLATED_BODY_THRESHOLD, 0.06);
   for (const [kulcs, szoveg] of Object.entries(FAIL)) {
     assert.ok(szoveg.length > 8, `a(z) ${kulcs} indoka mondja is meg, mi történt`);
   }
+
+  // VÁRAKOZÁS az újrapróba előtt (2026-08-14). Az azonnali újrapróba ELSŐ éles
+  // próbáján mindkét kísérlet elbukott; órákkal később ugyanaz elsőre sikerült,
+  // 1033 kimeneti tokennel — tehát nem a keret volt szűk, hanem a szolgáltatónak
+  // volt egy rossz perce. Két másodpercekre lévő hívás ugyanabba fut bele.
+  assert.ok(RETRY_WAIT_MS >= 15000, 'legyen érdemi szünet, ne csak formalitás');
+  assert.ok(RETRY_WAIT_MS <= 60000, 'de ne egye meg a futás időkeretét (9 perc)');
+  // A legrosszabb eset se boruljon: ha egy futásban 4 pár bukik, a várakozás
+  // összesen se vigyen el többet a keret negyedénél.
+  assert.ok(4 * RETRY_WAIT_MS < 9 * 60 * 1000 / 4, 'négy bukás várakozása is belefér');
 }
 
 console.log('✅ translation-guard.test: minden átment');

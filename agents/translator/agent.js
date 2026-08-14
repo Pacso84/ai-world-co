@@ -25,7 +25,7 @@ import { dirname, join } from 'path';
 import { ask } from '../../core/ai-router.js';
 import {
   titleLooksUntranslated, bodyLooksUntranslated,
-  FAIL, shouldRetryTranslation, retryTokenFrame
+  FAIL, shouldRetryTranslation, retryTokenFrame, RETRY_WAIT_MS
 } from '../../core/translation-guard.js';
 import { orderForTranslation, pruneFails } from '../../core/translation-queue.js';
 import { fileHandback, sourceDefect } from '../../core/handback.js';
@@ -290,7 +290,12 @@ async function main() {
       let retryCost = 0;
       if (res?.reason && shouldRetryTranslation(res.reason)) {
         retryCost = res.cost || 0;
-        console.log(`🔁 ${code} ← ${file.slice(0, 40)}… újrapróba emelt kerettel (${res.reason})`);
+        console.log(`🔁 ${code} ← ${file.slice(0, 40)}… újrapróba ${RETRY_WAIT_MS / 1000} mp múlva, emelt kerettel (${res.reason})`);
+        // VÁRAKOZÁS (2026-08-14): az azonnali újrapróba első éles próbáján
+        // MINDKÉT kísérlet elbukott, órákkal később viszont elsőre sikerült.
+        // A szolgáltatónak rossz perce volt — két másodpercekre lévő hívás
+        // ugyanabba fut bele.
+        await new Promise(r => setTimeout(r, RETRY_WAIT_MS));
         res = await translateMarkdown(md, LANGS[code], { maxTokens: retryTokenFrame(BASE_TOKENS) });
       }
       // Az ELBUKOTT kísérletet is kifizettük — a futás-riport lássa.

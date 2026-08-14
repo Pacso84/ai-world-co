@@ -135,6 +135,21 @@ export function shouldRetryTranslation(reason) {
   return !!reason && reason !== FAIL.NO_FRONTMATTER;
 }
 
+// VÁRAKOZÁS AZ ÚJRAPRÓBA ELŐTT (2026-08-14) — mérésre javítva.
+//
+// A 08-13-án bevezetett újrapróba AZONNAL futott. Az első éles próbája
+// (08-14 01:42, egy spanyol pár) MEGBUKOTT: mindkét kísérlet elhasalt. Néhány
+// órával később ugyanaz a fordítás elsőre sikerült, mindössze 1033 kimeneti
+// tokennel — tehát NEM a keret volt szűk, hanem a szolgáltatónak volt egy
+// rossz pillanata, ami két másodpercekre lévő hívást is átfogott.
+//
+// ⚠️ ŐSZINTÉN: nem tudom, meddig tartott a kiesés, tehát azt sem tudom
+// bizonyítani, hogy 25 másodperc elég lett volna. Azt viszont tudom, hogy egy
+// szünet SEMMIVEL nem rosszabb a nullánál, és az ára elhanyagolható (4 sávból
+// egy áll, napi 1-2 bukásnál). A biztos háló továbbra is a sor: a bukott pár
+// a következő futásban ELSŐKÉNT megy.
+export const RETRY_WAIT_MS = 25000;
+
 /** Az újrapróba kerete: 1,5× ráhagyás, kemény plafonnal. */
 export const RETRY_TOKEN_CAP = 24000;
 export function retryTokenFrame(base) {
@@ -146,5 +161,5 @@ export function retryTokenFrame(base) {
 export default {
   titleLooksUntranslated, UNTRANSLATED_TITLE_THRESHOLD,
   bodyLooksUntranslated, stripNonProse, UNTRANSLATED_BODY_THRESHOLD,
-  FAIL, shouldRetryTranslation, retryTokenFrame, RETRY_TOKEN_CAP
+  FAIL, shouldRetryTranslation, retryTokenFrame, RETRY_TOKEN_CAP, RETRY_WAIT_MS
 };
