@@ -1285,15 +1285,6 @@
   ],
   "messages": [
     {
-      "id": "m178566466005671",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook). content/social/feed.md",
-      "ref": null,
-      "at": "2026-08-02T09:57:40.056Z"
-    },
-    {
       "id": "m178568911950356",
       "from": "designer",
       "to": "team",
@@ -2642,6 +2633,15 @@
       "text": "6 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-08-14T01:41:52.046Z"
+    },
+    {
+      "id": "m178669801995460",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"How to summarise a long document or article with A\" — A few claims are now outdated or too broad: free AI tools' context windows have grown significantly, and free tier limitations are more nuanced than described.",
+      "ref": "ARTICLE_GUIDE_ai-summarise-long.json",
+      "at": "2026-08-14T09:00:19.954Z"
     }
   ]
 }
