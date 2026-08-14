@@ -232,9 +232,26 @@ async function imageExists(url) {
 //    SchedulingType = automatic | notification
 // A `notification` az a kézi-tolós mód, amit nem-profi Instagram-fióknál
 // kapnánk; nekünk `automatic` kell — a fiók `business` típusú, tehát mehet.
-async function createPost({ channelId, text, image }) {
+// ⚠️ A VÁLASZ UNIÓ TÍPUS (PostActionPayload) — és ez élesben MEGVEZETETT:
+// az első változatom csak `__typename`-et kért, és mivel GraphQL-szintű hiba
+// nem jött, MINDEN variánst sikernek vett. A Threadsnél véletlenül igaz volt,
+// az Instagramnál viszont a poszt LÉTRE SEM JÖTT, miközben a naplóm ✅-t írt.
+// Variánsok: PostActionSuccess | NotFoundError | UnauthorizedError |
+//            UnexpectedError | RestProxyError | LimitReachedError |
+//            InvalidInputError
+// Ezért MINDEGYIKET lekérdezzük, és csak a Success számít sikernek.
+async function createPost({ channelId, text, image, channelKey }) {
   const mutation = `mutation ($input: CreatePostInput!) {
-    createPost(input: $input) { __typename }
+    createPost(input: $input) {
+      __typename
+      ... on PostActionSuccess { post { id status } }
+      ... on NotFoundError { message }
+      ... on UnauthorizedError { message }
+      ... on UnexpectedError { message }
+      ... on RestProxyError { code message }
+      ... on LimitReachedError { message }
+      ... on InvalidInputError { message }
+    }
   }`;
   const input = {
     channelId,
@@ -246,7 +263,26 @@ async function createPost({ channelId, text, image }) {
     schedulingType: 'automatic',
     needsApproval: false
   };
-  return gql(mutation, { input });
+
+  // AZ INSTAGRAM KÜLÖN METAADATOT KÖVETEL. Enélkül a mutáció így felel:
+  //    InvalidInputError: Instagram posts require a type (post, story, or reel)
+  // — és ez a hibaüzenet CSAK azért látszik, mert az unió-variánsokat is
+  // lekérdezzük. Korábban némán "sikernek" tűnt, miközben a poszt létre sem jött.
+  //    PostType = carousel | event | ghost_post | offer | post | reel | short
+  //               | story | thread | whats_new
+  // Nekünk `post` (feed-poszt) kell; a shouldShareToFeed kötelező.
+  if (channelKey === 'instagram') {
+    input.metadata = { instagram: { type: 'post', shouldShareToFeed: true } };
+  }
+
+  const r = await gql(mutation, { input });
+  if (r.error) return r;
+  const p = r.data?.createPost;
+  // A "nem Success" variáns HIBA, akkor is, ha a HTTP-válasz 200 volt.
+  if (p?.__typename !== 'PostActionSuccess') {
+    return { error: `${p?.__typename || 'ismeretlen válasz'}: ${p?.message || '(nincs üzenet)'}` };
+  }
+  return { data: p.post };
 }
 
 async function main() {
@@ -323,7 +359,7 @@ async function main() {
         continue;
       }
 
-      const r = await createPost({ channelId: ch.id, text: szoveg, image: vanKep ? kep : null });
+      const r = await createPost({ channelId: ch.id, channelKey: ch.key, text: szoveg, image: vanKep ? kep : null });
       keres++;
       if (r.error) { console.log(`   ❌ ${slug.slice(0, 40)} — ${r.error}`); continue; }
 
