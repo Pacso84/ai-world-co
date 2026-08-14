@@ -20,11 +20,26 @@ export const CHANNELS = {
   // fölöslegesen vágnánk le 55 karakternyi mondanivalót.
   x: { limit: 280, urlWeight: 23, field: 'posted_x', label: 'X' },
   // A Threads a link teljes hosszát beleszámolja az 500-ba.
-  threads: { limit: 500, urlWeight: null, field: 'posted_threads', label: 'Threads' }
+  threads: { limit: 500, urlWeight: null, field: 'posted_threads', label: 'Threads' },
+  // ── INSTAGRAM (2026-08-14) ──────────────────────────────────────────
+  // A caption 2200 karakter, DE a link NEM KATTINTHATÓ benne. Ezt 08-11-én
+  // mérve rögzítettük: a 2026-03-i "kattintható link" teszt csak Meta
+  // Verified + creator fióknak szólt, havi 10 posztra, és asztali gépen sem
+  // működött. Egy nyers URL a caption végén tehát NEM visz sehová — csak
+  // helyet foglal és elrontottnak látszik. Ezért `linkMode: 'bio'`.
+  // ⚠️ Az Instagram KÉPET is követel; azt a poszter adja (/assets/fb/<slug>.jpg,
+  // 4:5 álló — pont az IG feed ideális aránya).
+  instagram: { limit: 2200, urlWeight: null, field: 'posted_instagram', label: 'Instagram', linkMode: 'bio' }
 };
 
 const SEP = '\n\n';
 const ELLIPSIS = '…';
+
+/**
+ * Az Instagram-poszt zárósora. A domaint KIÍRJUK, mert az olvasó be tudja
+ * gépelni; a valódi, kattintható link a profilban ("link in bio") van.
+ */
+export const BIO_LINE = 'Full guide → link in bio · aiworldhq.com';
 
 // ---------- KÖVETÉSRE HÍVÁS (2026-08-09) ----------
 //
@@ -88,15 +103,20 @@ export function composePost({ text, url, channel }) {
   const body = stripUrl(text, url);
   if (!body) return null;
 
-  // A link súlya a csatorna szabálya szerint (X: fix 23, Threads: valós hossz).
-  const urlCost = cfg.urlWeight ?? String(url).length;
-  const room = cfg.limit - SEP.length - urlCost;
+  // A ZÁRÓ RÉSZ csatornafüggő: ahol a link kattintható, oda a link megy;
+  // az Instagramon egy nyers URL semmit nem érne (nem kattintható), ezért
+  // ott a "link in bio" sor a záradék. Mindkettő SZENT: sosem eshet ki, mert
+  // enélkül a poszt nem visz sehová.
+  const tail = cfg.linkMode === 'bio' ? BIO_LINE : String(url);
+  // A link súlya a csatorna szabálya szerint (X: fix 23, egyébként valós hossz).
+  const tailCost = cfg.urlWeight ?? tail.length;
+  const room = cfg.limit - SEP.length - tailCost;
   if (room <= 0) return null;                       // ilyen csatornára nem posztolunk
 
   const fitted = trimToWords(body, room);
   return {
-    body: fitted + SEP + url,
-    weight: fitted.length + SEP.length + urlCost,   // ahogy a CSATORNA számolja
+    body: fitted + SEP + tail,
+    weight: fitted.length + SEP.length + tailCost,  // ahogy a CSATORNA számolja
     truncated: fitted.length < body.length,
     field: cfg.field,
     label: cfg.label

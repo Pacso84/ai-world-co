@@ -5,7 +5,7 @@
 // ===================================================================
 
 import assert from 'assert/strict';
-import { composePost, stripUrl, followCta, CHANNELS } from './social-text.js';
+import { composePost, stripUrl, followCta, CHANNELS, BIO_LINE } from './social-text.js';
 
 const URL = 'https://aiworldhq.com/article/getting-started-with-deepseek-for-everyday-help';
 
@@ -103,6 +103,49 @@ assert.equal(composePost({ text: 'a', url: '', channel: 'x' }), null,
   }
 
   assert.equal(followCta(''), followCta(''), 'üres slug sem borul fel');
+}
+
+// --- INSTAGRAM: a link NEM kattintható, ezért nem is tesszük ki -------
+// Mérve 2026-08-11: a feed-poszt szövegében az Instagram nem tesz élő linket
+// (a 2026-03-i teszt csak Meta Verified + creator fióknak szólt, havi 10
+// posztra, és asztali gépen sem működött). Egy nyers URL a caption végén
+// tehát NEM visz sehová: csak helyet foglal, és elrontottnak látszik.
+// Helyette a bevált "link in bio" forma megy, a domainnel kiírva — azt a
+// olvasó be tudja gépelni, és a profilban ott a valódi link.
+{
+  const text = 'Így írd meg az első promptodat.';
+  const r = composePost({ text, url: URL, channel: 'instagram' });
+
+  assert.ok(r, 'az Instagram ismert csatorna');
+  assert.ok(!r.body.includes(URL), 'a NYERS cikk-URL nem kerül a caption-be');
+  assert.ok(!/https?:\/\//.test(r.body), 'semmilyen http(s) link nincs a szövegben');
+  assert.ok(r.body.includes(BIO_LINE), 'a "link in bio" sor viszont ott van');
+  assert.ok(r.body.startsWith(text), 'a mondanivaló marad elöl');
+  assert.equal(r.label, 'Instagram');
+
+  // A caption-korlát 2200 — bőven elég, de a csonkítás itt is működjön.
+  assert.equal(CHANNELS.instagram.limit, 2200);
+  const hosszu = 'szó '.repeat(900);                     // ~3600 kar
+  const h = composePost({ text: hosszu, url: URL, channel: 'instagram' });
+  assert.ok(h.body.length <= 2200, 'a 2200-as korlátot nem lépi túl: ' + h.body.length);
+  assert.ok(h.truncated, 'jelzi, hogy csonkított');
+  assert.ok(h.body.includes(BIO_LINE), 'csonkításnál SEM eshet ki a bio-sor');
+}
+
+// --- A LINK SOHA nem eshet ki egyik csatornán sem ---------------------
+// A poszt egyetlen célja, hogy olvasót hozzon (az Instagramon a bio-n át).
+{
+  const hosszu = 'szó '.repeat(400);
+  for (const ch of Object.keys(CHANNELS)) {
+    const r = composePost({ text: hosszu, url: URL, channel: ch });
+    assert.ok(r, ch + ': születik poszt');
+    const vanUt = r.body.includes(URL) || r.body.includes(BIO_LINE);
+    assert.ok(vanUt, ch + ': marad út az olvasónak a cikkhez');
+    // ⚠️ A KORLÁTOT a `weight` méri, NEM a body.length: az X minden linket
+    // 23 karakternek számol, hiába 78 a miénk. Az első változatom a nyers
+    // hosszt nézte, és emiatt HAMISAN bukott el az X-en.
+    assert.ok(r.weight <= CHANNELS[ch].limit, ch + ': a csatorna szerint belefér (' + r.weight + ')');
+  }
 }
 
 console.log('✅ social-text: minden teszt átment');
