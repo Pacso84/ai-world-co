@@ -332,6 +332,16 @@ jobs:
         if: always() && steps.build.outcome == 'success'
         run: node core/seo-guard.js || true
 
+      # BORÍTÓKÉP-ŐRSZEM (2026-08-14): van-e képe a friss cikkeknek. A user
+      # vette észre a főoldalon, hogy a CÍMLAPSZTORI borítója üres — a designer
+      # 3 db HTTP 400-at kapott, és azt csak a CI naplójába írta.
+      # A SZIMPTÓMÁT nézi (nincs kép), nem az okot: így bármilyen jövőbeli ok
+      # (API-változás, kvóta, hálózat) ugyanúgy kiderül. A lelet a napi
+      # riportba megy, nem ide a naplóba.
+      - name: Borítókép-őrszem
+        if: always()
+        run: node core/image-guard.js || true
+
       # Címes megosztás-képek a friss cikkekhez (FB-posztokhoz; 2026-07-08)
       # FIGYELEM: a build ÜRÍTI a public/-ot, ezért ennek a build UTÁN kell futnia.
       - name: Megosztás-képek (címes borítók)

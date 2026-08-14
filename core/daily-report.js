@@ -462,6 +462,21 @@ async function main() {
     }
   } catch { /* még nem futott — nem baj */ }
 
+  // BORÍTÓKÉP-ŐRSZEM (2026-08-14). A user vette észre a főoldalon, hogy a
+  // CÍMLAPSZTORI borítója üres bézs felület — a képfájl nem létezett, mert a
+  // Cloudflare kivezette a width/height paramétert, és a designer 400-at kapott.
+  // A designer ezt BE IS ÍRTA: a CI naplójába, ahová senki nem néz.
+  // A címlapsztori külön kiemelve: azt MINDEN látogató elsőként látja.
+  try {
+    const ig = JSON.parse(readFileSync(join(ROOT, 'memory', 'image-guard.json'), 'utf-8'));
+    const p = ig.problems || [];
+    if (p.length) {
+      const cimlap = p.find(x => x.cimlap);
+      lines.push(`🖼️ BORÍTÓKÉP-ŐRSZEM: ${p.length} friss cikknek nincs képe — ${p.slice(0, 2).map(x => x.slug.slice(0, 34)).join(', ')}${p.length > 2 ? '…' : ''}`
+        + (cimlap ? ' ⚠️ ebből a CÍMLAPSZTORI — az a főoldal tetején van!' : ''));
+    }
+  } catch { /* még nem futott — nem baj */ }
+
   // HÁZMESTER (2026-07-30): mit takarított el, és hízik-e valami vissza.
   // CSENDES a hétköznapokon: napi pár régi napló törlése nem hír. Csak akkor
   // szólal meg, ha ÉRDEMI takarítás történt (kép/fordítás/embedding), vagy ha
