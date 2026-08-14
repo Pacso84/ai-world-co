@@ -126,8 +126,15 @@ async function viaCloudflare(prompt) {
   const token = process.env.CLOUDFLARE_FLUX_TOKEN, acct = process.env.CLOUDFLARE_ACCOUNT_ID;
   if (!token || !acct) return null;
   const url = `https://api.cloudflare.com/client/v4/accounts/${acct}/ai/run/@cf/black-forest-labs/flux-1-schnell`;
-  const r = await fetch(url, { method: 'POST', headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' }, body: JSON.stringify({ prompt, width: IMG_W, height: IMG_H }) });
-  if (!r.ok) throw new Error('Cloudflare HTTP ' + r.status);
+  // ⚠️ 2026-08-14: a width/height paramétert a Cloudflare KIVEZETTE —
+  //    "Additional properties '/width, /height' not allowed" (HTTP 400).
+  // A kivezetés fokozatos volt: ugyanaz a kérés az egyik node-on átment, a
+  // másikon 400-at kapott — ezért tűnt átmenetinek. A modell négyzetes képet
+  // ad; a 16:9-et a compressImage vágja ki (fit:'cover'), így BÁRMELYIK
+  // backend bármilyen arányt ad, a keret stimmel.
+  const r = await fetch(url, { method: 'POST', headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' }, body: JSON.stringify({ prompt }) });
+  // A törzset IS olvassuk: a puszta "HTTP 400" miatt ma vakon találgattunk.
+  if (!r.ok) throw new Error('Cloudflare HTTP ' + r.status + ': ' + (await r.text().catch(() => '')).slice(0, 120));
   const j = await r.json();
   const b64 = j?.result?.image;
   if (!b64) throw new Error('Cloudflare: nincs kép');
@@ -186,7 +193,9 @@ let _sharp = null, _sharpTried = false;
 async function compressImage(buf) {
   if (!_sharpTried) { _sharpTried = true; try { _sharp = (await import('sharp')).default; } catch { _sharp = null; } }
   if (!_sharp) return buf;
-  try { return await _sharp(buf).resize({ width: IMG_WIDTH, withoutEnlargement: true }).jpeg({ quality: 70, mozjpeg: true }).toBuffer(); }
+  // fit:'cover' — KÖZÉPRE vágja a 16:9-et bármilyen forrás-arányból (2026-08-14:
+  // a Cloudflare Flux már csak négyzetes képet ad, a méret-paramétert kivezette).
+  try { return await _sharp(buf).resize(IMG_W, IMG_H, { fit: 'cover' }).jpeg({ quality: 70, mozjpeg: true }).toBuffer(); }
   catch { return buf; }
 }
 
