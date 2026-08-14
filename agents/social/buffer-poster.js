@@ -45,7 +45,10 @@ const SOCIAL_DIR = join(ROOT, 'content', 'social');
 const ARTICLES_DIR = join(ROOT, 'content', 'articles');
 const SITE = 'https://aiworldhq.com';
 
-const ENDPOINT = 'https://graph.buffer.com/';
+// ⚠️ A HELYES CÍM az api.buffer.com (2026-08-14). A graph.buffer.com is él és
+// introspektálható, de az adat-lekérdezéseknél maga a Buffer szól rá:
+//     {"errors":[{"message":"Please use api.buffer.com"}]}
+const ENDPOINT = 'https://api.buffer.com/';
 const FRESH_DAYS = 7;
 
 // A Buffer ingyenes kerete: 250 kérés/nap, 3000/30 nap, 3 csatorna.
@@ -60,6 +63,10 @@ const VERIFY = args.includes('--verify');
 const LIST_CHANNELS = args.includes('--channels');
 const li = args.indexOf('--limit');
 const LIMIT = li !== -1 && args[li + 1] ? parseInt(args[li + 1], 10) || 3 : 3;
+// Egyetlen csatornára szűkítés — az ELSŐ ÉLES próbához kell: előbb egy poszt
+// egy csatornára, kézzel ellenőrizve, csak utána a többi.
+const oi = args.indexOf('--only');
+const ONLY = oi !== -1 && args[oi + 1] ? String(args[oi + 1]).toLowerCase() : null;
 
 const token = () => (process.env.BUFFER_ACCESS_TOKEN || '').trim();
 
@@ -107,14 +114,28 @@ async function verifySchema() {
 // A Buffer csatorna-AZONOSÍTÓval dolgozik, nem névvel. Ez listázza ki őket,
 // hogy a .env-be tehessük — így a poszter nem függ attól, hány csatorna van
 // bekötve (most 2, az X után 3).
+// ⚠️ A csatorna-lekérdezés KÖTELEZŐEN kér szervezet-azonosítót, és az
+// `account.currentOrganization` út FORBIDDEN ezzel a tokennel — az
+// `account.organizations` viszont működik. (Mindkettőt élesben mértem.)
+async function orgId() {
+  const r = await gql(`{ account { organizations { id } } }`);
+  if (r.error) return { error: r.error };
+  const id = r.data?.account?.organizations?.[0]?.id;
+  return id ? { id } : { error: 'nincs szervezet a fiókhoz' };
+}
+
 async function listChannels() {
-  console.log('📡 BEKÖTÖTT CSATORNÁK');
-  const r = await gql(`{ account { channels { id service serviceUsername } } }`);
+  const o = await orgId();
+  if (o.error) { console.log('   ❌ ' + o.error); return null; }
+  const r = await gql(
+    `query($i: ChannelsInput!){ channels(input:$i){ id service name isDisconnected isLocked } }`,
+    { i: { organizationId: o.id } });
   if (r.error) { console.log('   ❌ ' + r.error); return null; }
-  const ch = r.data?.account?.channels || [];
-  if (!ch.length) { console.log('   ⚠️ egy csatorna sincs bekötve'); return []; }
-  for (const c of ch) console.log(`   ${String(c.service).padEnd(11)} @${c.serviceUsername || '?'}   id: ${c.id}`);
-  return ch;
+  const ch = (r.data?.channels || []).filter(c => !c.isDisconnected && !c.isLocked);
+  console.log('📡 BEKÖTÖTT CSATORNÁK');
+  if (!ch.length) { console.log('   ⚠️ egy használható csatorna sincs'); return []; }
+  for (const c of ch) console.log(`   ${String(c.service).padEnd(11)} ${c.name || '?'}   id: ${c.id}`);
+  return ch.map(c => ({ ...c, serviceUsername: c.name }));
 }
 
 // A Buffer `service` neve → a mi csatorna-kulcsunk a social-text.js-ben.
@@ -200,16 +221,31 @@ async function imageExists(url) {
 }
 
 // ---------- 4. A POSZTOLÁS ----------
-// ⚠️ EZ AZ EGYETLEN RÉSZ, AMI MÉG NINCS ÉLESBEN IGAZOLVA. Szándékosan rövid
-// és elkülönített: ha a `--verify` mást mutat, CSAK ez a függvény változik.
+// A séma ÉLESBEN LEKÉRDEZVE (2026-08-14) — az első tippem HÁROM ponton tévedett
+// volna, és a poszt elbukott volna:
+//    tippem: channelIds:[id]      valóság: channelId (EGYES SZÁM), kötelező
+//    tippem: assets opcionális    valóság: assets KÖTELEZŐ
+//    tippem: —                    valóság: mode + needsApproval +
+//                                          schedulingType MIND kötelező
+// Az értékkészletek is a szerverről:
+//    ShareMode      = addToQueue | customScheduled | shareNext | shareNow
+//    SchedulingType = automatic | notification
+// A `notification` az a kézi-tolós mód, amit nem-profi Instagram-fióknál
+// kapnánk; nekünk `automatic` kell — a fiók `business` típusú, tehát mehet.
 async function createPost({ channelId, text, image }) {
-  const mutation = `mutation ($input: PostCreateInput!) {
-    createPost(input: $input) { id status }
+  const mutation = `mutation ($input: CreatePostInput!) {
+    createPost(input: $input) { __typename }
   }`;
-  const input = { channelIds: [channelId], text };
-  // A Buffer dokumentációja szerint a kép és a link-előnézet KIZÁRJA egymást;
-  // nekünk a KÉP kell (a linket a szövegbe tesszük), ezért csak assets megy.
-  if (image) input.assets = [{ type: 'image', url: image }];
+  const input = {
+    channelId,
+    text,
+    // Az assets NON_NULL: kép nélkül ÜRES lista megy (X/Threads elfogadja,
+    // az Instagramot kép nélkül fentebb már kihagytuk).
+    assets: image ? [{ image: { url: image } }] : [],
+    mode: 'shareNow',
+    schedulingType: 'automatic',
+    needsApproval: false
+  };
   return gql(mutation, { input });
 }
 
@@ -224,10 +260,21 @@ async function main() {
 
   // Melyik csatornákra dolgozunk? Élesben a Buffertől kérdezzük (így az X
   // bekötése után magától bővül); próbában mind a hármat mutatjuk.
-  let channels;
-  if (DRY || !token()) {
+  let channels;   // eslint-disable-line prefer-const
+  if (!token()) {
+    // Token nélkül nincs mit lekérdezni — a beépített lista csak a szöveg
+    // formázását mutatja meg.
     channels = Object.keys(CHANNELS).map(k => ({ key: k, id: `(próba-${k})`, user: '?' }));
-    console.log('   🧪 PRÓBA — nincs kiküldés' + (token() ? '' : ' (nincs token sem)'));
+    console.log('   🧪 PRÓBA — nincs token, csak a szövegformázást mutatom');
+  } else if (DRY) {
+    // ⚠️ PRÓBÁBAN IS A VALÓDI CSATORNÁKAT kérdezzük le. Az első változat a
+    // beépített listát mutatta, és ezért mind a HÁRMAT kiírta, pedig csak
+    // kettő van bekötve — egy próba, ami nem a valóságot mutatja, félrevezet.
+    const list = await listChannels();
+    channels = (list || [])
+      .map(c => ({ key: SERVICE_MAP[String(c.service).toLowerCase()], id: c.id, user: c.serviceUsername }))
+      .filter(c => c.key && CHANNELS[c.key]);
+    console.log('   🧪 PRÓBA — nincs kiküldés');
   } else {
     const list = await listChannels();
     if (!list) { console.log('   ⏭️  A csatornákat nem sikerült lekérdezni — kihagyom.'); return; }
@@ -235,6 +282,12 @@ async function main() {
       .map(c => ({ key: SERVICE_MAP[String(c.service).toLowerCase()], id: c.id, user: c.serviceUsername }))
       .filter(c => c.key && CHANNELS[c.key]);
     if (!channels.length) { console.log('   ⚠️ egyik bekötött csatornát sem ismerem.'); return; }
+  }
+
+  if (ONLY) {
+    channels = channels.filter(c => c.key === ONLY);
+    console.log(`   🎯 csak a(z) ${ONLY} csatorna`);
+    if (!channels.length) { console.log('   ⚠️ ilyen bekötött csatorna nincs.'); return; }
   }
 
   const pub = publishedMap();
