@@ -1,0 +1,64 @@
+{
+  "_meta": {
+    "written_at": "2026-08-14T01:13:01.253Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00810798,
+    "original_draft": "2026-08-14T01-01-38-197Z_picsart_Flux_3_in_Picsart__video_and_audio_in_one_pass.json",
+    "source_id": "picsart",
+    "source_name": "PicsArt Blog (hivatalos)",
+    "source_link": "https://picsart.com/blog/flux-3-in-picsart/",
+    "status": "published",
+    "rejected_at": "2026-08-14T01:10:41.653Z",
+    "auto_check": {
+      "passed": false,
+      "issues": [
+        "LEDE_TOO_LONG: A RÖVIDEN-doboz 62 szó (max ~45) — ami hosszú, az már nem \"röviden\"."
+      ],
+      "wordCount": 789
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Clear, friendly explainer that defines terms in plain language and covers multimodal AI without condescension or clichés. Structure is solid with hook, explanation, honest capability assessment, audience-segmented 'What this means for you', and actionable wrap-up. No prohibited content, no invented facts, and no product-bashing.",
+      "_aiCost": 0.0015759,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Hitelesség-kapu blokkolta: Flux 3 in Picsart: I cannot verify that Picsart has a product or feature called 'Flux 3' that generates image, video, and audio from a single prompt. Picsart is a real company, but this specific featu",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-08-14T01-01-38-197Z_picsart_Flux_3_in_Picsart__video_and_audio_in_one_pass.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-08-14T01:14:12.039Z",
+    "slug": "multimodal-ai-tools-when-one-prompt-makes-an-image-video-and-sound",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-08-14T01:15:00.727Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is a general explainer about multimodal AI concepts, not a how-to for a specific named tool — no concrete action for users to take",
+    "seo": {
+      "meta_description": "Discover multimodal AI tools that create images, videos, and sound from one prompt. Learn what's real, what's hype, and how to use them as an everyday person.",
+      "keywords": [
+        "multimodal AI tools",
+        "AI image video generator",
+        "create video from text AI",
+        "AI audio from text",
+        "multimodal AI explained",
+        "one prompt AI content generator",
+        "AI creative tools for beginners"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more specific long-tail keywords like 'how to use AI for content creation' to capture beginner search intent",
+        "Consider adding a question-based subheading (e.g., 'Can AI really create video and audio from one prompt?') to improve featured snippet potential",
+        "Include the current year in the title or article to signal freshness for time-sensitive AI content"
+      ],
+      "optimised_at": "2026-08-14T01:28:19.387Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Multimodal AI Tools: When One Prompt Makes an Image, Video, and Sound\"\nsubtitle: \"What's real, what's hype, and how to think about all-in-one creative AI as an everyday person.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"creative-ai\", \"multimodal-ai\", \"video-generation\", \"ai-tools\"]\n---\n\n# Multimodal AI Tools: When One Prompt Makes an Image, Video, and Sound\n\n> **In short:** A new wave of AI creative tools aims to turn one written prompt into an image, a short video, and matching audio at the same time. Picsart and other creative apps have been adding AI features, but the exact capabilities of any specific new release change quickly — so always check what the app actually does before trusting the headlines.\n\nYou're scrolling on your phone and see an ad for a custom 15-second birthday video, complete with original piano music. The fine print says it was made from a single sentence by an AI tool inside a design app. A year ago, that ad would have sounded fake. Today it's a real direction the industry is heading.\n\n## What \"multimodal\" actually means\n\nYou've probably met AI tools that each do one thing well: one writes text, one makes images, one generates music, one edits video. The results often don't match in style, and you end up stitching them together yourself.\n\nThe newer idea is called **multimodal AI**. \"Modal\" just means a type of content — text, image, video, and audio are all different modes. \"Multimodal\" means one system can handle several of them together. In theory, you describe a scene once — picture, motion, mood, music — and the tool returns a coherent package instead of three loose pieces.\n\nIn practice, the picture, video, and sound are usually generated by separate models under the hood (think of \"models\" as different AI specialists, each trained for one job), then combined. Whether they truly feel \"made together\" or just \"placed together\" depends on how well the team behind the tool tuned that integration.\n\n## Why this matters inside apps you already use\n\nThe interesting part isn't the tech demo — it's where the tools live. Picsart, Canva, Adobe, and similar creative apps have all been layering AI features into editors that millions of people already know. That matters because most people won't open a brand-new AI tool, but they will tap a button in an app they use every week.\n\nThe same thing happened with filters about fifteen years ago. Nobody downloaded a separate \"filter app\" — Instagram just added filters, and suddenly everyone was using them. AI features follow the same pattern: they show up where people already are.\n\n## What's genuinely useful right now\n\nBe honest about what's actually good today, versus what's still a marketing promise.\n\n**Already solid:** short AI-generated video clips from a text prompt (a few seconds long, decent quality, often stylistically consistent). AI image generation inside design apps is mature enough for moodboards, social posts, and quick drafts.\n\n**Still rough:** audio that truly matches the picture without sounding generic. Realistic human faces and voices — they often look or sound slightly off. Long videos with consistent characters across multiple scenes.\n\n**The honest middle:** treat any all-in-one AI output as a creative starting point. A 15-second clip with matching music is a real win for a birthday reel. A polished brand commercial with custom dialogue? Not yet — and any tool claiming otherwise deserves a healthy dose of skepticism.\n\n## What this means for you\n\n- **If you make content for fun**: short AI clips with sound are now good enough for personal posts, group projects, and quick surprises. Try them with low expectations — you'll be pleasantly surprised more often than not.\n- **If you run a small business or side hustle**: speed is the real win. A first-draft promo video that takes 10 minutes instead of 3 hours changes how often you can post. Just budget time to polish the result.\n- **If you're cautious about AI media**: the rules haven't changed. Don't pass generated clips off as real footage, get consent before using someone's likeness, and remember that audio can be cloned too.\n- **If you're just curious**: open Picsart (or whatever creative app you already use) and look for the AI generation button. Type one descriptive sentence and see what comes back. That single test tells you more than any review.\n\n## Wrap-up\n\nMultimodal AI creative tools are real, they live inside apps you probably already have, and they're good enough for everyday projects — but the marketing tends to oversell what's actually ready today. The smart move: try them with a real task, treat the first output as a draft, and check the app's current features yourself, since these tools update weekly.",
+  "original_title": "Flux 3 in Picsart: video and audio in one pass"
+}

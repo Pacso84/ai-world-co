@@ -1,0 +1,56 @@
+{
+  "_meta": {
+    "written_at": "2026-08-14T01:06:28.511Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.0078882,
+    "original_draft": "2026-08-14T01-01-26-376Z_grammarly-blog_Grammarly_Authorship_Is_Now_Available_in_Blackboar.json",
+    "source_id": "grammarly-blog",
+    "source_name": "Grammarly (hivatalos)",
+    "source_link": "https://www.grammarly.com/blog/product/grammarly-authorship-is-now-available-in-blackboard/",
+    "status": "published",
+    "published_at": "2026-08-14T01:10:18.412Z",
+    "slug": "ai-authorship-tracking-is-coming-to-classrooms-what-students-and-teach",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 705
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured, friendly explainer that covers all required sections with accurate, grounded information. The hook is relatable, terms are explained in plain English, and the actionable advice for students, teachers, and parents gives readers a clear next step. No prohibited content, no cliches, no invented facts. Minor note: the article mentions Grammarly Authorship as the example tool but keeps it balanced by noting other platforms have similar features — this is appropriate for an explainer. Ready to publish.",
+      "_aiCost": 0.0020091,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-08-14T01:14:44.865Z",
+    "guide_worthy": false,
+    "pairing_reason": "Article is an explainer about AI authorship tracking as a category, not a how-to for using Grammarly Authorship in Blackboard",
+    "seo": {
+      "meta_description": "AI authorship tracking is coming to classrooms. Learn how these tools work, what they mean for students and teachers, and why schools are adopting them.",
+      "keywords": [
+        "AI authorship tracking schools",
+        "how AI detection works in classrooms",
+        "student AI writing detection",
+        "AI writing tools education policy",
+        "academic integrity AI tools",
+        "teachers AI authorship tools",
+        "students AI writing guidelines"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add the keyword 'AI detection tools for students' earlier in the article to improve relevance for search",
+        "Consider adding a section on specific tool names (e.g., GPTZero, Turnitin AI detection) to capture branded search traffic",
+        "Include a FAQ section addressing common questions like 'Can teachers tell if I used AI?' to capture long-tail voice search queries"
+      ],
+      "optimised_at": "2026-08-14T01:27:53.800Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"AI Authorship Tracking Is Coming to Classrooms — What Students and Teachers Should Know\"\nsubtitle: \"Schools are starting to use tools that show what students typed versus what AI wrote. Here's the plain-English guide.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"ai-education\", \"writing-transparency\", \"academic-integrity\", \"ai-tools\"]\n---\n\n# AI Authorship Tracking Is Coming to Classrooms — What Students and Teachers Should Know\n\n> **In short:** Schools are starting to use AI authorship tools — software that quietly records what students typed themselves versus what came from AI or copy-paste. The goal is to give students credit for the work they actually did, and to help teachers trust the work they receive.\n\nYou've probably been there: it's 11pm, the essay is due tomorrow, and the cursor blinks at an empty page. Maybe you used an AI assistant to outline your argument. Maybe you pasted in a paragraph to \"polish\" something you drafted last week. Either way, you handed in the work — but is the grade really for *your* thinking?\n\nTeachers are asking the same question from the other side. They open a beautifully written paper and honestly can't tell whether the student understood the material or whether an AI tool did most of the heavy lifting. Both sides want something fair, and that's the gap a new category of tools is trying to close.\n\n## What is \"AI authorship tracking\"?\n\nAn authorship tool is a small piece of software that runs while you write. It quietly keeps a record of three things:\n\n- **What you typed yourself**, keystroke by keystroke.\n- **What you pasted in** from another source — a paragraph from a website, a sentence from a note app, or text from an AI assistant.\n- **What an AI generated for you**, when the tool can detect it.\n\nWhen you finish, the tool produces a short report. A teacher can see that, say, 60% of the essay was typed in the document, 30% was pasted from elsewhere, and 10% came from AI. It doesn't grade the writing — it just shows what happened. The teacher still makes the judgment call.\n\nA few companies are building these tools. Grammarly Authorship is one example, and it's the kind of feature that is now appearing directly inside learning platforms like Blackboard (a popular learning management system used at many colleges and K-12 schools). Other writing platforms are adding similar features too.\n\n## Why now?\n\nA few years ago, an essay was almost certainly written by hand. Today, that is no longer true. A typical student's draft might bounce between their own typing, a chatbot outline, a grammar suggestion, and a Wikipedia quote — sometimes in a single paragraph. Without a record of how the work was made, teachers are guessing, and students can't easily prove what they did.\n\nThat's why schools are paying attention. The tools aren't trying to catch cheaters. They're trying to make the writing process visible, so trust can return to both sides.\n\n## What this means for you\n\n- **If you're a student**: Use AI as a study partner, not a ghostwriter. Outline with it, ask it to explain a confusing concept, or check your grammar — but write the actual arguments yourself. If your school uses one of these tools, hiding AI use is getting harder anyway. The strongest position is to be honest about how you used it.\n- **If you're a teacher or professor**: Pick a tool and explain it to your students before the first assignment. Tell them what gets tracked and what doesn't. Most plagiarism conversations get easier when the process is transparent on day one, not surprising on grading day.\n- **If you're a parent**: Ask your student's school what their AI policy is. A clear, written policy is a good sign; a \"we'll figure it out when it happens\" is a red flag.\n\n## Wrap-up\n\nAI authorship tools are not a passing fad. They're becoming part of how schools handle the new reality of AI-assisted writing. The best move — student, teacher, or parent — is to learn how they work now, while policies are still being written. Talk to the people in your life about it this week, before the next assignment is due.",
+  "original_title": "Grammarly Authorship Is Now Available in Blackboard"
+}

@@ -1,0 +1,58 @@
+{
+  "_meta": {
+    "written_at": "2026-08-14T01:03:10.098Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.01442328,
+    "original_draft": "2026-08-14T01-01-38-197Z_picsart_How_to_run_competitor_ad_analysis_and_create_on-br.json",
+    "source_id": "picsart",
+    "source_name": "PicsArt Blog (hivatalos)",
+    "source_link": "https://picsart.com/blog/analyze-competitors-and-create-ads-with-ai/",
+    "status": "published",
+    "published_at": "2026-08-14T01:10:50.448Z",
+    "slug": "how-to-use-ai-for-competitor-ad-analysis-and-on-brand-ad-creation",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1248
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "A well-structured, friendly how-to guide that clearly explains AI tools and workflows for small business marketers. The 5-step process is concrete, example prompts are specific and actionable, and the differentiation in 'What this means for you' adds nice variety for different reader types. Minor formatting suggestion only.",
+      "_aiCost": 0.00150875,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-08-14T01:15:23.158Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is already a how-to article teaching a generic workflow with existing chat AI tools — no new named feature or tool is being introduced",
+    "image_v": 2,
+    "image_at": "2026-08-14T01:26:19.159Z",
+    "seo": {
+      "meta_description": "Use AI to study competitor ads, spot what works, and create on-brand ads in your voice—no design background required, just good prompts.",
+      "keywords": [
+        "how to use AI for competitor ad analysis",
+        "AI ad creation for small business",
+        "create ads using ChatGPT or Claude",
+        "AI tools for marketing ads",
+        "on-brand ad creation with AI",
+        "how to analyze competitor ads with AI",
+        "AI ad generator no design skills"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more specific AI tool names in the article (like 'Claude, ChatGPT') to improve relevance for branded searches",
+        "Include a step-by-step numbered list in the article body to target 'how to' search intent",
+        "Add FAQ section addressing common pain points like 'how long does this take' or 'which AI tool is best'"
+      ],
+      "optimised_at": "2026-08-14T01:28:27.123Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"How to Use AI for Competitor Ad Analysis and On-Brand Ad Creation\"\nsubtitle: \"A practical workflow for small business owners and marketers who want to learn from competitors and ship fresh ads in less time.\"\ncategory: \"how-to\"\naudience: \"business\"\nread_time_minutes: 5\ntags: [\"competitor-analysis\", \"ad-creation\", \"small-business\", \"marketing-ai\", \"chatgpt\", \"claude\"]\n---\n\n# How to Use AI for Competitor Ad Analysis and On-Brand Ad Creation\n\n> **In short:** You can use a chat AI like Claude or ChatGPT to study 5–10 competitor ads, find the patterns that work, and draft new ad ideas that match your own brand voice. No design background needed — just a clear brief and a few good prompts.\n\nYou scroll past a competitor's ad on your phone and pause. The hook is sharp, the offer is clear, and you can almost feel why it's working. Then comes the familiar thought: \"I could never make something like that.\" With AI, you probably can — and on a Tuesday afternoon.\n\n## Why this works\n\nEvery brand you admire is running the same experiment over and over: hook, offer, visual, call to action. AI is great at spotting the patterns behind that experiment. It's also great at combining those patterns with your voice — as long as you give it something to work with. The trick is to use it as a thinking partner, not a copy machine.\n\n## What you'll need\n\nBefore you start, set up these basics:\n\n- **A chat AI account.** Free tiers of Claude or ChatGPT both work. Paid plans give you longer chats and image generation, but aren't required for Steps 1–4.\n- **A way to save ads.** Screenshots on your phone, a bookmark folder, or a simple shared doc.\n- **About 30 minutes.** Block the time so you don't rush the thinking part.\n\n## Step 1 — Collect 5–10 competitor ads\n\nPick ads from competitors or brands you admire. Aim for variety: a few short hooks, a few longer stories, some with people, some with product shots. Don't overthink it — if it stopped your scroll, save it.\n\n💬 Where to find them: search the brand on Meta Ad Library (a free, public archive of ads running on Facebook and Instagram), browse their Instagram and TikTok, or save ads that show up in your own feed.\n\nYou'll know it worked when you have a folder of 5–10 examples you can point to in the next step.\n\n## Step 2 — Ask the AI to find the patterns\n\nOpen your chat AI and upload the screenshots or paste the links. Ask it to summarize what these ads have in common across a few specific categories.\n\n💬 Example prompt:\n*\"Analyze these 8 ads. List the patterns you see in (1) the opening hook, (2) the offer or product framing, (3) the visual style, and (4) the call to action. Give me 3 patterns for each.\"*\n\nYou'll know it worked when you have a short, repeatable list — not a vague \"they're all polished\" answer. If the AI gives you fluff, push back: *\"Be specific. Give me the actual phrases they use.\"*\n\n## Step 3 — Write a one-page brand brief\n\nBefore you ask the AI to write ads for you, you need to tell it who you are. A **brand brief** (a short document that describes your business, tone, and audience) is just one page that includes:\n\n- One sentence on what your business does\n- One sentence on who you serve\n- 3–5 words that describe your tone (e.g., direct, warm, playful, expert)\n- A short list of words you use and words you avoid\n- A short description of your visual style (colors, mood, type of imagery)\n\nSave it as a note. You'll paste it into every AI request from here on.\n\nYou'll know it worked when a stranger could read the page and describe your brand without seeing your logo.\n\n## Step 4 — Draft ad concepts with the AI\n\nGo back to your chat. Paste your brand brief, then ask the AI to write 5 ad concepts that use the patterns from Step 2 but sound like you.\n\n💬 Example prompt:\n*\"Here is my brand brief: [paste]. Using the patterns you found earlier, write 5 short ad concepts. Each one should include a headline (under 8 words), a body line (1–2 sentences), and a call to action. Avoid these words: [list]. Keep the tone direct and warm.\"*\n\nYou'll know it worked when the ideas feel like something you'd actually post. If any of them feel off-brand, tell the AI why (*\"this sounds too salesy\"* or *\"the body is too long\"*) and ask for a revision.\n\n## Step 5 — Generate the visuals\n\nFor images and short videos, you have three solid paths:\n\n- Use an AI image tool (Midjourney, DALL·E, or the image feature inside ChatGPT or Claude) and feed it your winning concept.\n- Use a design platform with AI features, then drop your AI-written copy into a template.\n- Hand the concept to a designer on your team, with the AI's draft as the starting brief.\n\n💬 Example prompt for an image tool:\n*\"A flat-lay photo of a ceramic coffee mug on a wooden desk, morning light, soft shadows, brand colors warm beige and terracotta. Minimal, calm, no text.\"*\n\nYou'll know it worked when you have a finished image and matching copy ready to upload to your ad account.\n\n## Common mistakes\n\n- **Asking the AI to \"make a viral ad.\"** Virality isn't a recipe. Patterns are. Be specific about what you want.\n- **Skipping the brand brief.** Without it, the AI defaults to a generic tone that sounds like every other brand in your category.\n- **Looking at only one competitor.** One ad is just a vibe. Five to ten is a pattern.\n- **Publishing the AI's first draft.** AI gives you a starting point. Always edit for accuracy, brand fit, and any claims that might overpromise.\n- **Forgetting to check claims.** If the AI writes \"our customers save 5 hours a week,\" that's a claim — make sure you can back it up.\n\n## What this means for you\n\n- **If you run a small business**: This workflow can replace a few hours of agency research. Set aside one afternoon a month to refresh your ad bank.\n- **If you're a freelancer or marketer**: The pattern-finding step alone is a great client deliverable — a \"what's working in your category\" report is genuinely valuable.\n- **If you're new to AI**: The prompts in this article are safe starting points. The free versions of major chat tools will run them.\n- **If you worry about copying**: You won't, as long as your brand brief is in place. The AI blends patterns with your voice — it doesn't paste a competitor's ad.\n\n## Wrap-up\n\nStudying competitors and creating your own ads is one of the most useful things AI can do for a small marketing team — or a team of one. The recipe is simple: collect 5–10 ads, ask a chat AI what they have in common, write down your brand voice in one page, and let the AI draft concepts you can edit. Your first batch won't be perfect. By the third round, you'll have a library of ads that genuinely feel like you.\n\nNext step: open your chat AI today, paste in three competitor ads, and try the Step 2 prompt. Twenty minutes is all you need to see how useful this can be.",
+  "original_title": "How to run competitor ad analysis and create on-brand ads with AI"
+}

@@ -1,0 +1,62 @@
+{
+  "_meta": {
+    "written_at": "2026-08-14T01:12:16.145Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00872394,
+    "original_draft": "2026-08-14T01-01-26-376Z_google-ai-blog_Bring_your_spreadsheet_data_to_life_with_Sheets_ca.json",
+    "source_id": "google-ai-blog",
+    "source_name": "Google AI (hivatalos, blog.google)",
+    "source_link": "https://blog.google/products-and-platforms/products/workspace/sheets-canvas-for-google-sheets-spreadsheets/",
+    "status": "published",
+    "rejected_at": "2026-08-14T01:10:00.489Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 759
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured explainer that hits all required elements: hook, plain-language explanations of technical terms (pivot table, running average), differentiated audience sections in 'What this means for you', and a practical wrap-up. Friendly, respectful tone throughout. Factual claims are general and defensible. No cliches, no prohibited content, no competitor put-downs. Minor note: Gemini is introduced as 'Google's AI helper' rather than a formal product name, which works for accessibility.",
+      "_aiCost": 0.0015786,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Hitelesség-kapu blokkolta: \"Sheets canvas\" is described as a real Google product/feature, but no such product exists. Google Sheets does not have a 'Canvas' feature or workspace — this appears to be fabricated.",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-08-14T01-01-26-376Z_google-ai-blog_Bring_your_spreadsheet_data_to_life_with_Sheets_ca.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-08-14T01:13:36.649Z",
+    "slug": "how-ai-can-help-you-actually-see-your-spreadsheet-data",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-08-14T01:14:27.768Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is an explainer article about AI capabilities in spreadsheets generally, not a specific feature guide with actionable steps",
+    "image_v": 2,
+    "image_at": "2026-08-14T01:25:44.905Z",
+    "seo": {
+      "meta_description": "Discover how AI assistants like Gemini in Google Sheets can analyze your data, answer questions, and suggest charts — no formulas needed.",
+      "keywords": [
+        "AI spreadsheet assistant",
+        "how to use AI in Google Sheets",
+        "analyze spreadsheet data with AI",
+        "Google Sheets AI helper",
+        "ask questions about spreadsheet data"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add a primary keyword phrase in the first 100 words of the article body to strengthen topical relevance",
+        "Include the exact phrase 'AI in spreadsheets' or 'spreadsheet AI' to target the most common search query",
+        "Consider adding an FAQ section addressing beginner questions about spreadsheet AI capabilities"
+      ],
+      "optimised_at": "2026-08-14T01:27:32.204Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"How AI Can Help You Actually See Your Spreadsheet Data\"\nsubtitle: \"What today's AI assistants can do with the rows of numbers you already have — and how to ask the right questions\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"google-sheets\", \"gemini\", \"data-visualization\", \"spreadsheets\", \"getting-started\"]\n---\n\n# How AI Can Help You Actually See Your Spreadsheet Data\n\n> **In short:** AI assistants built into spreadsheet apps — like Gemini in Google Sheets — can answer plain-English questions about your data and suggest charts you might not have thought of. They won't replace learning the basics, but they can turn a sheet you ignore into a sheet you actually use.\n\nYou've got a spreadsheet somewhere. Maybe it's a budget, a workout log, a list of books you've read, or a small inventory of things you sell. The data is there, but you haven't really *looked* at it — you've just been adding rows. AI assistants built into today's spreadsheet apps can help change that.\n\n## What AI in a spreadsheet actually does\n\nWhen people hear \"AI in a spreadsheet,\" they sometimes picture a magic button that builds a beautiful dashboard from any data. The reality is more modest — and more useful.\n\nModern AI assistants, like **Gemini in Google Sheets** (Google's AI helper, built into some Google Workspace plans), can do a few real things today:\n\n- **Answer questions about your data in plain English.** Things like \"Which month had the highest spending?\" or \"Which product sold most often?\"\n- **Suggest the right chart for what you're trying to see.** Sometimes a bar chart tells the story; sometimes a line chart does. The AI can recommend one and explain why.\n- **Write formulas for you.** No more Googling \"how do I count cells that match two conditions.\"\n\nThe honest catch: these features are usually part of a paid plan (Workspace add-ons or specific AI tiers), and the AI works best when your data is clean — clear column headers, consistent formatting, no merged cells in strange places.\n\n## The kind of questions worth asking\n\nThe biggest leap comes when you stop thinking of the AI as a chart-builder and start using it as a thinking partner. Try questions like:\n\n- *\"What's the trend in my spending over the last six months?\"*\n- *\"Which category grew the fastest this quarter?\"*\n- *\"Group these customers by how often they bought from me.\"*\n\nYou don't need to know the technical name for the answer — a **pivot table** (a summary table that groups and totals your data in a new way) or a **running average** (the average of the last few values, recalculated as new data comes in). Just describe what you want to learn.\n\n## A few things AI in a spreadsheet can't do (yet)\n\nBeing honest saves you time:\n\n- **It won't redesign your whole layout.** It's good at answering one focused question, not at building a full interactive dashboard.\n- **It can't see what's not in your data.** If you forgot to log something, the AI won't know.\n- **It's not always right.** Treat its answers as a starting point, especially for numbers that matter — anything involving money, taxes, or legal decisions still needs a human eye.\n\n## What this means for you\n\n- **If you use spreadsheets for personal stuff** — a household budget, a reading log, a fitness tracker — ask the AI the one question you've been avoiding. *\"Where is my money actually going?\"* is a great first try.\n- **If you handle data at a small business or team** — a sales log, an event signup list, a customer roster — AI can save you from learning formula syntax. Describe the question, check the answer, move on.\n- **If you're new to AI in general** — a spreadsheet is a low-risk place to start. Your data is private to you, mistakes are easy to undo, and the lessons translate to other tools.\n\n## A quick tip on prompting\n\nBe specific. *\"Make a chart\"* gets you a generic chart. *\"Make a chart showing how my spending in each category changed month over month\"* gets you something useful. The more your question sounds like a real question a person would ask, the better the AI tends to do.\n\n## Wrap-up\n\nAI in your spreadsheet isn't going to read your mind — but it can save you from the part everyone hates: figuring out which formula, which chart, which click. Pick one spreadsheet you've been ignoring, ask it one real question, and see what comes back.",
+  "original_title": "Bring your spreadsheet data to life with Sheets canvas"
+}

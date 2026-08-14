@@ -1,0 +1,62 @@
+{
+  "_meta": {
+    "written_at": "2026-08-14T01:12:39.626Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00903678,
+    "original_draft": "2026-08-14T01-01-26-376Z_picsart_All_about_Kling_2_6__AI_video_model_with_sound__vo.json",
+    "source_id": "picsart",
+    "source_name": "PicsArt Blog (hivatalos)",
+    "source_link": "https://picsart.com/blog/all-about-kling-2-6-video-model/",
+    "status": "published",
+    "rejected_at": "2026-08-14T01:10:32.327Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 662
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Solid explainer that hits all structural marks, explains key terms accessibly (prompt, ambient noise), uses appropriate hedging for forward-looking claims, and maintains a friendly non-judgmental tone. No prohibited content, no cliches, US English throughout.",
+      "_aiCost": 0.001083834,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Hitelesség-kapu blokkolta: Kling is not on the VERIFIED-REAL NAMES list, so its existence cannot be assumed verified. However, Kling is a real AI video generator by Kuaishou. The article makes specific claims about Kling 2.6's ",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-08-14T01-01-26-376Z_picsart_All_about_Kling_2_6__AI_video_model_with_sound__vo.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-08-14T01:13:52.079Z",
+    "slug": "ai-video-tools-are-starting-to-generate-sound-alongside-their-clips",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-08-14T01:14:56.888Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is a trend/explainer article about AI video generating sound across multiple tools, not a specific feature introduction with concrete action steps",
+    "image_v": 2,
+    "image_at": "2026-08-14T01:26:09.576Z",
+    "seo": {
+      "meta_description": "New AI video tools now generate dialogue, sound effects, and ambient audio in one step — replacing separate editing. What creators need to know.",
+      "keywords": [
+        "AI video tools with sound",
+        "AI video generator audio",
+        "AI video creation for beginners",
+        "Kling AI video tool",
+        "how to make AI videos with audio"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Consider adding more specific long-tail keywords like 'AI video tools that generate sound automatically'",
+        "The meta description is strong but could test a version with 'everyday creators' to match search intent more directly",
+        "Add internal links to related AI video articles on the site to boost topical authority"
+      ],
+      "optimised_at": "2026-08-14T01:28:06.250Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"AI Video Tools Are Starting to Generate Sound Alongside Their Clips\"\nsubtitle: \"A new wave of AI video generators is producing dialogue and ambient audio in one step — here's what that trend means for everyday creators\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"ai-video\", \"creative-ai\", \"video-generation\", \"kling\"]\n---\n\n# AI Video Tools Are Starting to Generate Sound Alongside Their Clips\n\n> **In short:** AI video generators like Kling are starting to produce dialogue, sound effects, and ambient noise in the same step as the video itself — replacing the old workflow of adding audio separately in an editing tool.\n\nThink about the last short video you watched online and noticed it sounded real — the clink of a coffee cup, a voice that matched the lips, the soft hum of a café in the background. That kind of polish used to take hours of editing. Now some AI tools are starting to bake the audio in from the very first generation.\n\n## What changed in AI video\n\nMost AI video generators — tools that turn a written description into a short video clip — have shipped **silent** since they first appeared. You'd describe a scene in a few words, called a **prompt** (the instruction you give the AI), and get back a beautiful but quiet five-second clip. Adding sound meant opening a second tool, paying for a second subscription, and spending extra time lining the audio up with the visual.\n\nThat's the gap the newest wave of video models is trying to close. Instead of producing silent footage and asking you to score it later, they aim to generate the audio at the same time as the video: spoken words, sound effects that match the action, and the quiet **ambient noise** that makes a scene feel like a real place rather than a staged one.\n\nKling, an AI video generator made by Kuaishou (a Chinese tech company), is one example of a tool working in this direction. The broader trend — sound and video coming out of the same model in one go — is showing up across multiple video AI projects in 2026, though the exact features and limits vary from tool to tool and from version to version.\n\n## Why this shift is interesting\n\nGenerating sound alongside video is more than a small convenience. When two separate systems make the picture and the audio, small mismatches creep in: a door closes a beat too early, the voice tone doesn't quite fit the mood, the street noise sounds generic. Combining the two into a single **generation pass** — one trip through the AI rather than two — usually means tighter timing and a more cohesive feel.\n\nIt also lowers the floor for casual users. You no longer need video editing skills to make a clip that sounds finished — you just need a good description of what you want.\n\n## What this means for you\n\n- **If you make short videos for fun or social media**: A written idea can become a sound-equipped clip in minutes, which is useful for quick posts, story ads, or personal projects.\n- **If you work in marketing or content creation**: Faster rough drafts. You can test a concept with sound and visuals before anyone opens an editing timeline.\n- **If you're just curious about AI video**: This is one of the first moments where sound and video come out of the same tool, which makes the results feel less like a prototype and more like a real clip.\n\n## Wrap-up\n\nAI video is moving from silent clips toward sound-equipped ones, and Kling is one of the tools working on that problem. The practical takeaway: if you've been waiting for AI video to feel less like a rough draft, this is a good moment to try one out and see what your own prompts can produce.\n\n*Written and edited by AI World Co.'s autonomous AI agents. Reviewed for accuracy by our editorial system.*",
+  "original_title": "All about Kling 2.6: AI video model with sound, voices, and motion"
+}

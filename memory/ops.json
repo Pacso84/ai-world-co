@@ -1,118 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178652523537950",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-12T09:00:35.379Z",
-      "updated": "2026-08-12T09:00:35.555Z"
-    },
-    {
-      "id": "t178652523555890",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-12T09:00:35.558Z",
-      "updated": "2026-08-12T09:03:30.758Z"
-    },
-    {
-      "id": "t178652541076012",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-12T09:03:30.760Z",
-      "updated": "2026-08-12T09:05:01.108Z"
-    },
-    {
-      "id": "t178652550111013",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-08-12T09:05:01.110Z",
-      "updated": "2026-08-12T09:05:01.321Z"
-    },
-    {
-      "id": "t17865255013927",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-12T09:05:01.392Z",
-      "updated": "2026-08-12T09:05:24.039Z"
-    },
-    {
-      "id": "t178652552404061",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-08-12T09:05:24.040Z",
-      "updated": "2026-08-12T09:06:09.957Z"
-    },
-    {
-      "id": "t178652556995950",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-12T09:06:09.959Z",
-      "updated": "2026-08-12T09:06:29.395Z"
-    },
-    {
-      "id": "t178652558939798",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-08-12T09:06:29.397Z",
-      "updated": "2026-08-12T09:06:48.396Z"
-    },
-    {
-      "id": "t178655310743868",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-08-12T16:45:07.438Z",
-      "updated": "2026-08-12T16:45:07.629Z"
-    },
-    {
-      "id": "t178655310763127",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-08-12T16:45:07.631Z",
-      "updated": "2026-08-12T16:45:38.875Z"
-    },
-    {
-      "id": "t178655313887784",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-08-12T16:45:38.877Z",
-      "updated": "2026-08-12T16:45:39.069Z"
-    },
-    {
-      "id": "t178655313907171",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-12T16:45:39.071Z",
-      "updated": "2026-08-12T16:51:44.392Z"
-    },
-    {
-      "id": "t178655350439446",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-12T16:51:44.394Z",
-      "updated": "2026-08-12T16:52:42.119Z"
-    },
-    {
-      "id": "t178655356212271",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-08-12T16:52:42.122Z",
-      "updated": "2026-08-12T16:53:16.724Z"
-    },
-    {
       "id": "t178655359676569",
       "title": "Run designer",
       "status": "done",
@@ -479,41 +367,121 @@
       "agent": "publisher",
       "created": "2026-08-13T16:46:43.241Z",
       "updated": "2026-08-13T16:47:00.211Z"
+    },
+    {
+      "id": "t178666925440619",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-08-14T01:00:54.406Z",
+      "updated": "2026-08-14T01:00:54.578Z"
+    },
+    {
+      "id": "t178666925458046",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-08-14T01:00:54.580Z",
+      "updated": "2026-08-14T01:01:38.210Z"
+    },
+    {
+      "id": "t178666929821134",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-08-14T01:01:38.211Z",
+      "updated": "2026-08-14T01:01:38.405Z"
+    },
+    {
+      "id": "t178666929840719",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-14T01:01:38.407Z",
+      "updated": "2026-08-14T01:09:27.973Z"
+    },
+    {
+      "id": "t178666976797553",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-14T01:09:27.975Z",
+      "updated": "2026-08-14T01:11:15.364Z"
+    },
+    {
+      "id": "t178666987536650",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-14T01:11:15.366Z",
+      "updated": "2026-08-14T01:13:01.263Z"
+    },
+    {
+      "id": "t178666998126520",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-14T01:13:01.265Z",
+      "updated": "2026-08-14T01:14:12.049Z"
+    },
+    {
+      "id": "t17866700520518",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-08-14T01:14:12.051Z",
+      "updated": "2026-08-14T01:15:36.165Z"
+    },
+    {
+      "id": "t178667013620325",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-14T01:15:36.203Z",
+      "updated": "2026-08-14T01:24:05.646Z"
+    },
+    {
+      "id": "t17866706456484",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-14T01:24:05.648Z",
+      "updated": "2026-08-14T01:25:33.177Z"
+    },
+    {
+      "id": "t17866707332107",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-14T01:25:33.210Z",
+      "updated": "2026-08-14T01:27:03.271Z"
+    },
+    {
+      "id": "t178667082327357",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-08-14T01:27:03.273Z",
+      "updated": "2026-08-14T01:29:50.111Z"
+    },
+    {
+      "id": "t178667099011237",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-14T01:29:50.112Z",
+      "updated": "2026-08-14T01:30:00.170Z"
+    },
+    {
+      "id": "t178667100017246",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-08-14T01:30:00.172Z",
+      "updated": "2026-08-14T01:30:21.296Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n17856028665622",
-      "level": "info",
-      "text": "Pipeline lefutott — ma nem volt publikálható új tartalom.",
-      "agent": "ceo",
-      "at": "2026-08-01T16:47:46.562Z",
-      "loud": false
-    },
-    {
-      "id": "n17856141173903",
-      "level": "info",
-      "text": "🧭 Forráskutató: 4 ÚJ megbízható forrás-javaslat (küszöb 100).\n• [100] Pixlr Blog (hivatalos)\n• [100] PicsArt Blog (hivatalos)\n• [100] Toggl Track Blog (hivatalos)\n• [100] Simplenote Blog (hivatalos)\nJóváhagyod valamelyiket?",
-      "agent": "source-scout",
-      "at": "2026-08-01T19:55:17.390Z",
-      "loud": false
-    },
-    {
-      "id": "n178563614102142",
-      "level": "info",
-      "text": "SEO: 8 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-08-02T02:02:21.021Z",
-      "loud": false
-    },
-    {
-      "id": "n178563616273628",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The line-up looks solid — practical, varied, and hits both work and personal life use cases. Good mix of how-tos with the privacy guide and \"what to avoid\" piece, which keeps things balanced and respo",
-      "agent": "publisher",
-      "at": "2026-08-02T02:02:42.736Z",
-      "loud": false
-    },
     {
       "id": "n17856361675670",
       "level": "success",
@@ -1281,157 +1249,41 @@
       "agent": "ceo",
       "at": "2026-08-13T16:47:00.248Z",
       "loud": false
+    },
+    {
+      "id": "n178667013615545",
+      "level": "warn",
+      "text": "📨 pairing → guide: Új funkció-hír → kéne hozzá útmutató: \"How to Use Picsart AI Playground on Your Desktop\"",
+      "agent": "pairing",
+      "at": "2026-08-14T01:15:36.155Z",
+      "loud": false
+    },
+    {
+      "id": "n17866709901037",
+      "level": "info",
+      "text": "SEO: 12 cikk optimalizálva (átlag 8.3/10).",
+      "agent": "seo",
+      "at": "2026-08-14T01:29:50.103Z",
+      "loud": false
+    },
+    {
+      "id": "n178667101142024",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). A solid, varied lineup! The mix of practical guides (complaints, refunds, pet-sitting agreements) with personal writing (sympathy messages, thank-you speeches) works well — it shows everyday people th",
+      "agent": "publisher",
+      "at": "2026-08-14T01:30:11.420Z",
+      "loud": false
+    },
+    {
+      "id": "n178667102133421",
+      "level": "success",
+      "text": "8 hír + 4 útmutató publikálva (költség: $0.2110).",
+      "agent": "ceo",
+      "at": "2026-08-14T01:30:21.334Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m17855502127197",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook). content/social/feed.md",
-      "ref": null,
-      "at": "2026-08-01T02:10:12.719Z"
-    },
-    {
-      "id": "m178557805887988",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"How to Build a Simple Debt-Payoff Tracker with Any AI Assistant\" — javítva: Article is truncated - the 'Try it now' section cuts off mid-sentence; Step 5 formula example is vague - 'where B is the balance column' should name the actual cell column letter used in the pasted table; újraküldöm.",
-      "ref": "GUIDE_how-to-build-a-simple-debt-payoff-tracker-with-any-ai-assist.json",
-      "at": "2026-08-01T09:54:18.879Z"
-    },
-    {
-      "id": "m178557805888052",
-      "from": "guide",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Kell még adat: \"How to Build a Simple Debt-Payoff Tracker with Any AI Assistant\" — az Ellenőrző tényt/forrást kér, amit nem találhatok ki: Step 1 says Afterpay minimum 'depends on plan' but doesn't explain how to find this number",
-      "ref": "GUIDE_how-to-build-a-simple-debt-payoff-tracker-with-any-ai-assist.json",
-      "open": false,
-      "at": "2026-08-01T09:54:18.880Z",
-      "resolved_at": "2026-08-01T09:54:24.891Z"
-    },
-    {
-      "id": "m178557806489065",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"How to Build a Simple Debt-Payoff Tracker with Any AI Assistant\" (?/10)",
-      "ref": "GUIDE_how-to-build-a-simple-debt-payoff-tracker-with-any-ai-assist.json",
-      "at": "2026-08-01T09:54:24.890Z"
-    },
-    {
-      "id": "m178557810788226",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-08-01T09:55:07.882Z"
-    },
-    {
-      "id": "m178557888079571",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook). content/social/feed.md",
-      "ref": null,
-      "at": "2026-08-01T10:08:00.795Z"
-    },
-    {
-      "id": "m178560285048318",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-08-01T16:47:30.483Z"
-    },
-    {
-      "id": "m17856032043468",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook). content/social/feed.md",
-      "ref": null,
-      "at": "2026-08-01T16:53:24.346Z"
-    },
-    {
-      "id": "m178563547218773",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "info",
-      "text": "A \"Co-create documents with Copilot in Word for iPad\" hír a meglévő útmutatóra mutat: copilot-office",
-      "ref": "copilot-office",
-      "at": "2026-08-02T01:51:12.187Z"
-    },
-    {
-      "id": "m17856354903235",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "info",
-      "text": "A \"Choosing the right AI model in Microsoft 365: flexibili\" hír a meglévő útmutatóra mutat: copilot-getting-started",
-      "ref": "copilot-getting-started",
-      "at": "2026-08-02T01:51:30.323Z"
-    },
-    {
-      "id": "m178563577300218",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"How to Plan a Week's Meals from What's Already in Your Fridge\" — mi a baj: $1,500 AUD/year savings claim in 'What this means for you' has no source and reads as invented — remove or attribute to a credible source (e.g. Choice, Foodwise, or government food waste report); '1 in 5 bags of food' and '1 in 10 within a month' are also unsourced statistics — either cite the source ",
-      "ref": "GUIDE_how-to-plan-a-week-s-meals-from-what-s-already-in-your-fridg.json",
-      "at": "2026-08-02T01:56:13.002Z"
-    },
-    {
-      "id": "m178563615086732",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-08-02T02:02:30.867Z"
-    },
-    {
-      "id": "m178563673257788",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook). content/social/feed.md",
-      "ref": null,
-      "at": "2026-08-02T02:12:12.577Z"
-    },
-    {
-      "id": "m178566413694355",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"How to Plan a Week's Meals from What's Already in Your Fridge\" — javítva: $1,500 AUD/year savings claim in 'What this means for you' has no source and reads as invented — remove or attribute to a credible source (e.g. Choice, Foodwise, or government food waste report); '1 in 5 bags of food' and '1 in 10 within a month' are also unsourced statistics — either cite the source or soften ",
-      "ref": "GUIDE_how-to-plan-a-week-s-meals-from-what-s-already-in-your-fridg.json",
-      "at": "2026-08-02T09:48:56.943Z"
-    },
-    {
-      "id": "m178566413694524",
-      "from": "guide",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Kell még adat: \"How to Plan a Week's Meals from What's Already in Your Fridge\" — az Ellenőrző tényt/forrást kér, amit nem találhatok ki: $1,500 AUD/year savings claim in 'What this means for you' has no source and reads as invented — remove or attribute to a credible source (e.g. Choice, Foodwise, or government food waste report)",
-      "ref": "GUIDE_how-to-plan-a-week-s-meals-from-what-s-already-in-your-fridg.json",
-      "open": false,
-      "at": "2026-08-02T09:48:56.945Z",
-      "resolved_at": "2026-08-02T09:49:28.065Z"
-    },
-    {
-      "id": "m178566416806340",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"How to Plan a Week's Meals from What's Already in Your Fridge\" (?/10)",
-      "ref": "GUIDE_how-to-plan-a-week-s-meals-from-what-s-already-in-your-fridg.json",
-      "at": "2026-08-02T09:49:28.063Z"
-    },
     {
       "id": "m178566424080976",
       "from": "designer",
@@ -2645,6 +2497,151 @@
       "text": "5 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-08-13T16:54:07.369Z"
+    },
+    {
+      "id": "m178666978354039",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"The builder’s guide to GPT‑5.6\" — mi a baj: GPT-5.6 does not exist — this appears to be fabricated product naming; current OpenAI models include GPT-4, GPT-4o, o1, and o3, not GPT-5.6; Source URL references a non-existent OpenAI page (openai.com/index/builders-guide-to-gpt-5-6)",
+      "ref": "2026-08-14T01-01-26-375Z_openai-blog_The_builder_s_guide_to_GPT_5_6.json",
+      "at": "2026-08-14T01:09:43.540Z"
+    },
+    {
+      "id": "m178666980049353",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Bring your spreadsheet data to life with Sheets canvas\" — mi a baj: \"Sheets canvas\" is described as a real Google product/feature, but no such product exists. Google Sheets does not have a 'Canvas' feature or workspace — this appears to be fabricated.",
+      "ref": "2026-08-14T01-01-26-376Z_google-ai-blog_Bring_your_spreadsheet_data_to_life_with_Sheets_ca.json",
+      "at": "2026-08-14T01:10:00.493Z"
+    },
+    {
+      "id": "m178666983233285",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"All about Kling 2.6: AI video model with sound, voices, and motion\" — mi a baj: Kling is not on the VERIFIED-REAL NAMES list, so its existence cannot be assumed verified. However, Kling is a real AI video generator by Kuaishou. The article makes specific claims about Kling 2.6's features (integrated dialogue, sound effects, room tone in one step; sound only activates at 1080",
+      "ref": "2026-08-14T01-01-26-376Z_picsart_All_about_Kling_2_6__AI_video_model_with_sound__vo.json",
+      "at": "2026-08-14T01:10:32.332Z"
+    },
+    {
+      "id": "m178666984165650",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Flux 3 in Picsart: video and audio in one pass\" — mi a baj: Flux 3 in Picsart: I cannot verify that Picsart has a product or feature called 'Flux 3' that generates image, video, and audio from a single prompt. Picsart is a real company, but this specific feature name and its claimed capabilities (single prompt producing a 20-second video with matching audio) appear fabricate",
+      "ref": "2026-08-14T01-01-38-197Z_picsart_Flux_3_in_Picsart__video_and_audio_in_one_pass.json",
+      "at": "2026-08-14T01:10:41.656Z"
+    },
+    {
+      "id": "m178666991208625",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"The builder’s guide to GPT‑5.6\" — javítva: GPT-5.6 does not exist — this appears to be fabricated product naming; current OpenAI models include GPT-4, GPT-4o, o1, and o3, not GPT-5.6; Source URL references a non-existent OpenAI page (openai.com/index/builders-guide-to-gpt-5-6); újraküldöm.",
+      "ref": "2026-08-14T01-01-26-375Z_openai-blog_The_builder_s_guide_to_GPT_5_6.json",
+      "at": "2026-08-14T01:11:52.086Z"
+    },
+    {
+      "id": "m178666993614726",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Bring your spreadsheet data to life with Sheets canvas\" — javítva: \"Sheets canvas\" is described as a real Google product/feature, but no such product exists. Google Sheets does not have a 'Canvas' feature or workspace — this appears to be fabricated.; Reviewer verdict: Hitelesség-kapu blokkolta: \"Sheets canvas\" is described as a real Google product/feature, but no such product exists",
+      "ref": "2026-08-14T01-01-26-376Z_google-ai-blog_Bring_your_spreadsheet_data_to_life_with_Sheets_ca.json",
+      "at": "2026-08-14T01:12:16.147Z"
+    },
+    {
+      "id": "m178666995962774",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"All about Kling 2.6: AI video model with sound, voices, and motion\" — javítva: Kling is not on the VERIFIED-REAL NAMES list, so its existence cannot be assumed verified. However, Kling is a real AI video generator by Kuaishou. The article makes specific claims about Kling 2.6's features (integrated dialogue, sound effects, room tone in one step; sound only activates at 1080p resoluti",
+      "ref": "2026-08-14T01-01-26-376Z_picsart_All_about_Kling_2_6__AI_video_model_with_sound__vo.json",
+      "at": "2026-08-14T01:12:39.627Z"
+    },
+    {
+      "id": "m178666998125446",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Flux 3 in Picsart: video and audio in one pass\" — javítva: Flux 3 in Picsart: I cannot verify that Picsart has a product or feature called 'Flux 3' that generates image, video, and audio from a single prompt. Picsart is a real company, but this specific feature name and its claimed capabilities (single prompt producing a 20-second video with matching audio) appear fabricated or unver",
+      "ref": "2026-08-14T01-01-38-197Z_picsart_Flux_3_in_Picsart__video_and_audio_in_one_pass.json",
+      "at": "2026-08-14T01:13:01.254Z"
+    },
+    {
+      "id": "m178667000092119",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"The builder’s guide to GPT‑5.6\" (?/10)",
+      "ref": "2026-08-14T01-01-26-375Z_openai-blog_The_builder_s_guide_to_GPT_5_6.json",
+      "at": "2026-08-14T01:13:20.921Z"
+    },
+    {
+      "id": "m178667001665077",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Bring your spreadsheet data to life with Sheets canvas\" (?/10)",
+      "ref": "2026-08-14T01-01-26-376Z_google-ai-blog_Bring_your_spreadsheet_data_to_life_with_Sheets_ca.json",
+      "at": "2026-08-14T01:13:36.650Z"
+    },
+    {
+      "id": "m178667003208098",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"All about Kling 2.6: AI video model with sound, voices, and motion\" (?/10)",
+      "ref": "2026-08-14T01-01-26-376Z_picsart_All_about_Kling_2_6__AI_video_model_with_sound__vo.json",
+      "at": "2026-08-14T01:13:52.080Z"
+    },
+    {
+      "id": "m17866700520392",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Flux 3 in Picsart: video and audio in one pass\" (?/10)",
+      "ref": "2026-08-14T01-01-38-197Z_picsart_Flux_3_in_Picsart__video_and_audio_in_one_pass.json",
+      "at": "2026-08-14T01:14:12.039Z"
+    },
+    {
+      "id": "m17866700743033",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "info",
+      "text": "A \"Take Notes for me for in-person meetings is now availab\" hír a meglévő útmutatóra mutat: transcribe-spoken-meetings-or-interviews-into-text-with-ai-f",
+      "ref": "transcribe-spoken-meetings-or-interviews-into-text-with-ai-f",
+      "at": "2026-08-14T01:14:34.303Z"
+    },
+    {
+      "id": "m178667013615552",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "need",
+      "text": "Új funkció-hír → kéne hozzá útmutató: \"How to Use Picsart AI Playground on Your Desktop\"",
+      "ref": "how-to-use-picsart-ai-playground-on-your-desktop",
+      "open": true,
+      "at": "2026-08-14T01:15:36.155Z"
+    },
+    {
+      "id": "m178667100016118",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 20 → 5/4/2 oszlop.",
+      "ref": "mobile",
+      "at": "2026-08-14T01:30:00.161Z"
+    },
+    {
+      "id": "m178667110867891",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"How to study and learn faster with AI\" — Mobile voice input via microphone icon - the current ChatGPT mobile app does not have a prominent microphone icon for voice input in the way described",
+      "ref": "ARTICLE_GUIDE_ai-study-learn.json",
+      "at": "2026-08-14T01:31:48.678Z"
     }
   ]
 }
