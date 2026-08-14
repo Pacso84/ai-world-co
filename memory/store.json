@@ -1,7 +1,7 @@
 {
   "_meta": {
     "note": "AI World rétegzett memória (hot/warm/cold, salience decay).",
-    "updated": "2026-08-14T01:38:09.920Z"
+    "updated": "2026-08-14T16:41:44.491Z"
   },
   "items": [
     {
@@ -5916,6 +5916,20 @@
       "tags": [],
       "created": "2026-08-14T01:38:09.920Z",
       "lastAccessed": "2026-08-14T01:38:09.920Z",
+      "accessCount": 0,
+      "salience": 1,
+      "tier": "hot"
+    },
+    {
+      "id": "m1786725704491169",
+      "scope": "guide",
+      "text": "Avoid stating (may be removed/false): The specific 300-500 word chunking recommendation is now outdated - modern AI models like Claude (200K tokens) and GPT-4 (128K tokens) can handle much larger text",
+      "tags": [
+        "fact-check",
+        "lesson"
+      ],
+      "created": "2026-08-14T16:41:44.491Z",
+      "lastAccessed": "2026-08-14T16:41:44.491Z",
       "accessCount": 0,
       "salience": 1,
       "tier": "hot"

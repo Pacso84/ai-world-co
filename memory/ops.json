@@ -1285,15 +1285,6 @@
   ],
   "messages": [
     {
-      "id": "m178568955352022",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook). content/social/feed.md",
-      "ref": null,
-      "at": "2026-08-02T16:52:33.520Z"
-    },
-    {
       "id": "m178572260972882",
       "from": "ellenorzo",
       "to": "iro",
@@ -2642,6 +2633,15 @@
       "text": "6 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-08-14T09:08:49.072Z"
+    },
+    {
+      "id": "m178672570448954",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"How to translate and understand other languages wi\" — The specific 300-500 word chunking recommendation is now outdated - modern AI models like Claude (200K tokens) and GPT-4 (128K tokens) can handle much larger texts",
+      "ref": "ARTICLE_GUIDE_ai-translate.json",
+      "at": "2026-08-14T16:41:44.489Z"
     }
   ]
 }
