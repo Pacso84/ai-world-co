@@ -127,8 +127,58 @@ export const FAIL = {
   TOO_SHORT: 'gyanúsan rövid törzs',
   TRUNCATED: 'csonkult fordítás (kifutott a keretből)',
   ENGLISH_BODY: 'a törzs angolul maradt',
-  ENGLISH_TITLE: 'a cím angolul maradt'
+  ENGLISH_TITLE: 'a cím angolul maradt',
+  PROMPT_LEAK: 'a válasz a promptot vagy a modell gondolkodását tartalmazza'
 };
+
+// ===================================================================
+// PROMPT-SZIVÁRGÁS (2026-08-14)
+// ===================================================================
+//
+// Élesben megtörtént: a modell a SAJÁT UTASÍTÁSÁT és a hangos gondolkodását
+// mentette el cikk-tartalomként. 2026-06-24 óta EZ volt kint a magyar oldalon
+// (ARTICLE_GUIDE_ai-summarise-long):
+//    cím  : "Summarize Any Long Document or Article with AI → Hungarian native headline"
+//    törzs: "<the full translated body in Markdown>
+//            And I need to add the »Röviden:« blockquote after the # title.
+//            Let me also double check the brand name rule…"
+//
+// MIÉRT NEM FOGTA MEG EGYIK MEGLÉVŐ KAPU SEM:
+//   • nyelv-őr    : a törzs TÖBBSÉGE valódi magyar volt → alacsony angol sűrűség
+//   • cím-őr      : a hozzátoldott "→ Hungarian native headline" HÍGÍTOTTA az
+//                   átfedést 6/9 = 0,67-re, a 0,85-ös küszöb ALÁ
+//   • csonkulás-őr: a szöveg HOSSZABB lett, nem rövidebb
+// Vagyis mindhárom mérce a "túl kevés fordítás" irányra volt élezve; ez a hiba
+// a MÁSIK irányból jött: TÖBB szöveg, mint kellett volna.
+//
+// ⚠️ A MINTÁK SZÁNDÉKOSAN SZŰKEK. A honlapunk AI-ról szól, tehát a "prompt",
+// "model", "AI" szavak sűrűn és JOGOSAN szerepelnek a cikkekben — általános
+// szóra ütni katasztrófa lenne. Csak olyasmit keresünk, ami a SAJÁT
+// rendszer-promptunkból vagy a modell belső monológjából származhat.
+//
+// KALIBRÁCIÓ: az ÖSSZES élő fordításon lefuttatva (1400 pár) pontosan EGY
+// találat volt — a valódi hibás. Nulla hamis pozitív.
+// ===================================================================
+
+const LEAK_PATTERNS = [
+  /<the (?:full )?translated body in Markdown>/i,           // a saját helykitöltőnk
+  /<the full translated [a-z]+>/i,                          // rokon alakjai
+  /→\s*(?:Hungarian|Spanish|German|French|English)\s+native\s+headline/i,
+  /^\s*(?:TITLE|SUBTITLE|BODY):\s*$/m,                      // a kimeneti formátum címkéi
+  /\b(?:Let me (?:also|now|first|check|double)|I need to add|I should (?:also|check))\b/,
+  /\bEXACTLY this format\b/i
+];
+
+/**
+ * A prompt vagy a modell gondolkodása szivárgott-e a válaszba?
+ * @param {string} text a fordító által adott szöveg (cím vagy törzs)
+ * @returns {boolean} true → NE mentsük el
+ */
+export function looksLikePromptLeak(text) {
+  const s = String(text || '');
+  if (!s) return false;
+  return LEAK_PATTERNS.some(re => re.test(s));
+}
 
 /** Érdemes-e AZONNAL, ugyanabban a futásban újrapróbálni? */
 export function shouldRetryTranslation(reason) {
@@ -161,5 +211,5 @@ export function retryTokenFrame(base) {
 export default {
   titleLooksUntranslated, UNTRANSLATED_TITLE_THRESHOLD,
   bodyLooksUntranslated, stripNonProse, UNTRANSLATED_BODY_THRESHOLD,
-  FAIL, shouldRetryTranslation, retryTokenFrame, RETRY_TOKEN_CAP, RETRY_WAIT_MS
+  FAIL, shouldRetryTranslation, retryTokenFrame, RETRY_TOKEN_CAP, RETRY_WAIT_MS, looksLikePromptLeak
 };

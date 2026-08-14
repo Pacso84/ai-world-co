@@ -25,7 +25,7 @@ import { dirname, join } from 'path';
 import { ask } from '../../core/ai-router.js';
 import {
   titleLooksUntranslated, bodyLooksUntranslated,
-  FAIL, shouldRetryTranslation, retryTokenFrame, RETRY_WAIT_MS
+  FAIL, shouldRetryTranslation, retryTokenFrame, RETRY_WAIT_MS, looksLikePromptLeak
 } from '../../core/translation-guard.js';
 import { orderForTranslation, pruneFails } from '../../core/translation-queue.js';
 import { fileHandback, sourceDefect } from '../../core/handback.js';
@@ -171,6 +171,15 @@ async function translateMarkdown(markdown, langName, { maxTokens = BASE_TOKENS }
   // keresztül 47 spanyol oldalra ült ki. A törzzsel azonos kezelés: nem
   // mentünk, a következő futás újrapróbálja.
   if (titleLooksUntranslated(enTitle, title)) return { reason: FAIL.ENGLISH_TITLE, cost: r.costUsd || 0 };
+
+  // PROMPT-SZIVÁRGÁS (2026-08-14): a modell néha a SAJÁT UTASÍTÁSÁT és a hangos
+  // gondolkodását adja vissza tartalomként. Élesben ez 2026-06-24 óta kint volt
+  // egy magyar oldalon, és a fenti három kapu MIND átengedte — mert azok a "túl
+  // kevés fordítás" irányra vannak élezve, ez a hiba pedig a másikból jött:
+  // TÖBB szöveg, mint kellett volna. A címet és a törzset is nézzük.
+  if (looksLikePromptLeak(title) || looksLikePromptLeak(sub) || looksLikePromptLeak(body)) {
+    return { reason: FAIL.PROMPT_LEAK, cost: r.costUsd || 0 };
+  }
 
   const fm = parts.fm
     .replace(/^title:\s*.*$/m, `title: "${title.replace(/"/g, '')}"`)

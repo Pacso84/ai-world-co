@@ -17,7 +17,8 @@ import {
   shouldRetryTranslation,
   retryTokenFrame,
   RETRY_TOKEN_CAP,
-  RETRY_WAIT_MS
+  RETRY_WAIT_MS,
+  looksLikePromptLeak
 } from './translation-guard.js';
 
 // ── 1) ANGOLUL MARADT — ezeket MEG KELL fognia (élő esetek) ──────────
@@ -209,6 +210,51 @@ assert.equal(UNTRANSLATED_BODY_THRESHOLD, 0.06);
   // A legrosszabb eset se boruljon: ha egy futásban 4 pár bukik, a várakozás
   // összesen se vigyen el többet a keret negyedénél.
   assert.ok(4 * RETRY_WAIT_MS < 9 * 60 * 1000 / 4, 'négy bukás várakozása is belefér');
+}
+
+// ── 12) PROMPT-SZIVÁRGÁS (2026-08-14) ────────────────────────────────
+// Élesben megtörtént: a modell a SAJÁT UTASÍTÁSÁT és a hangos gondolkodását
+// mentette el cikk-tartalomként, és 2026-06-24 óta ez volt kint a magyar
+// oldalon (ARTICLE_GUIDE_ai-summarise-long):
+//    cím  : "Summarize Any Long Document or Article with AI → Hungarian native headline"
+//    törzs: "<the full translated body in Markdown>\n\nAnd I need to add the
+//            »Röviden:« blockquote after the # title. Let me also double check…"
+//
+// MIÉRT NEM FOGTA MEG EGYIK KAPU SEM:
+//   • a nyelv-őr: a törzs TÖBBSÉGE valódi magyar volt → az angol sűrűség alacsony
+//   • a cím-őr:   a hozzátoldott "→ Hungarian native headline" HÍGÍTOTTA az
+//                 átfedést 6/9 = 0,67-re, a 0,85-ös küszöb ALÁ
+//   • a csonkulás-őr: a szöveg HOSSZABB lett, nem rövidebb
+//
+// KALIBRÁCIÓ: a minták az ÖSSZES élő fordításon lefuttatva (1400 pár) pontosan
+// EGY találatot adtak — a valódi hibásat. Nulla hamis pozitív.
+{
+  assert.equal(looksLikePromptLeak('<the full translated body in Markdown>\n\nValami szöveg.'), true,
+    'a rendszer-prompt helykitöltője');
+  assert.equal(looksLikePromptLeak('Summarize Any Long Document with AI → Hungarian native headline'), true,
+    'a cím-utasítás visszaírva');
+  assert.equal(looksLikePromptLeak('Szöveg.\n\nBODY:\n\nMás szöveg.'), true,
+    'a kimeneti formátum címkéje a törzsben');
+  assert.equal(looksLikePromptLeak('And I need to add the blockquote. Let me also double check the brand name rule.'), true,
+    'a modell hangos gondolkodása');
+
+  // NE fogjon meg valódi cikkszöveget. A honlapunk AI-ról szól, tehát a
+  // "prompt", "AI", "model" szavak SŰRŰN szerepelnek jogosan — ezekre tilos ütni.
+  const valodi = [
+    'Írd be a promptot: "Foglald össze ezt a cikket három mondatban." Ez a legjobb kezdés.',
+    'A modell néha téved, ezért mindig ellenőrizd a fontos tényeket egy másik forrásból.',
+    'Az AI-asszisztensek a következő szót jósolják meg, ezért hangzanak magabiztosnak.',
+    'Escribe este prompt: "Resume este artículo en tres frases." Funciona en ChatGPT y Gemini.',
+    '## Mit írj a chatbe\n\nMásold be a szöveget, majd kérd meg: foglalja össze pontokba.'
+  ];
+  for (const v of valodi) {
+    assert.equal(looksLikePromptLeak(v), false, 'valódi cikkszöveg NEM szivárgás: ' + v.slice(0, 40));
+  }
+
+  assert.equal(looksLikePromptLeak(''), false);
+  assert.equal(looksLikePromptLeak(null), false);
+  assert.ok(FAIL.PROMPT_LEAK, 'van hozzá indok a naplóhoz');
+  assert.equal(shouldRetryTranslation(FAIL.PROMPT_LEAK), true, 'ezt érdemes újrapróbálni — modell-hiba');
 }
 
 console.log('✅ translation-guard.test: minden átment');
