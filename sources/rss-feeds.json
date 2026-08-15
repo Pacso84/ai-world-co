@@ -2,7 +2,7 @@
   "_meta": {
     "description": "Forrasok az AI World Co. Scraper-Agent szamara - CSAK ELSODLEGES FORRASOK",
     "version": "3.2",
-    "last_updated": "2026-06-21",
+    "last_updated": "2026-08-15",
     "strategy": "CSAK HIVATALOS cég-források, MINDEN nagy LLM-cég lefedve a hitelességért: OpenAI, Google (DeepMind/AI/Research/Workspace), Anthropic, Microsoft, Meta, Mistral, Alibaba (Qwen), Apple, NVIDIA, Hugging Face, AWS, GitHub. Akiknek NINCS nyilvános RSS-ük (Anthropic, Perplexity, xAI, DeepSeek, Cohere) -> felvéve de kikapcsolva, hírhez X/HTML integráció kell (future). SEMMI hírmagazin/aggregátor. Minden feed tesztelve (működik-e).",
     "max_items_per_feed": 10,
     "priority_legend": {
@@ -622,6 +622,39 @@
       "language": "en",
       "country": "US",
       "comment": "HIVATALOS PicsArt blog (mobil foto/video szerkeszto). Megbizhatosag 100/100, ELOBEN ujramerve 2026-08-02: HTTP 200, application/rss+xml, 18 tetel, 2 napos frissesseg, 20/20 link a sajat domainre, 3/3 mintacikk el. HASZNOSSAG: a 19 cimbol 5 AI-s (26%) - a hozam kisebb, de eros (AI Playground, szoveg-beszed); a tobbit a parosito kiszuri.",
+      "enabled": true
+    },
+    {
+      "id": "zapier-blog",
+      "name": "Zapier Blog (hivatalos)",
+      "url": "https://zapier.com/blog/feeds/latest/",
+      "category": "ai-company-official",
+      "priority": 3,
+      "language": "en",
+      "country": "US",
+      "comment": "HIVATALOS Zapier blog (munkafolyamat-automatizalas). ELOBEN MERVE 2026-08-15: HTTP 200, text/xml, 25 tetel, 2 napos frissesseg, 25/25 link a sajat domainre, 3/3 mintacikk el. HASZNOSSAG: 8/25 cim AI-s (32%) - a legjobb arany az osszes vizsgalt jeloltbol (viszonyitas: a picsart 26%-kal lett befogadva). MIERT ILLIK: hetkoznapi feladat-automatizalas, pont amirol az utmutatoink szolnak (pl. \"The 4 primary roles of AI in automated workflows\"). BEKOTVE mert a napi hir-keret csak 57%-ban volt kihasznalva (atlag 4,6 hir a 8-bol).",
+      "enabled": true
+    },
+    {
+      "id": "dropbox-blog",
+      "name": "Dropbox Blog (hivatalos)",
+      "url": "https://blog.dropbox.com/feed",
+      "category": "ai-company-official",
+      "priority": 3,
+      "language": "en",
+      "country": "US",
+      "comment": "HIVATALOS Dropbox blog (Dropbox Dash = AI-kereso, Claude-integracio). ELOBEN MERVE 2026-08-15: HTTP 200, text/xml, 10 tetel, 10/10 link a sajat domainre, 3/3 mintacikk el. HASZNOSSAG: 3/10 cim AI-s (30%). FENNTARTAS: LASSU FORRAS - az utolso bejegyzes 34 NAPOS. Keveset ad, de amit ad, az on-topic (pl. \"Work seamlessly with Dropbox in Claude\"). Ha elnemul, a forras-bizonyitvany magatol kikapcsolja (>365 nap).",
+      "enabled": true
+    },
+    {
+      "id": "samsung-newsroom",
+      "name": "Samsung Newsroom (hivatalos)",
+      "url": "https://news.samsung.com/global/feed",
+      "category": "ai-company-official",
+      "priority": 3,
+      "language": "en",
+      "country": "KR",
+      "comment": "HIVATALOS Samsung Newsroom (Galaxy AI - a fogyasztoi telefon-AI). ELOBEN MERVE 2026-08-15: HTTP 200, text/xml, 50 tetel, 2 napos frissesseg, 50/50 link a sajat domainre. HASZNOSSAG: 10/50 cim AI-s (20%). ⚠️ AZ ARANY ONMAGABAN FELREVEZET: 50 tetel 20%-a ugyanannyi hasznalhato cikk, mint a picsart 19 tetelenek 26%-a - a HOZAMOT abszolut szamban kell nezni, a zajt a parosito ugyis kiszuri, ingyen. ⚠️ MERESI CSAPDA: a samsung a HEAD-kerest 403-mal tiltja, ezert a \"mintacikk el\" probam elsore 0/3-at adott; GET-tel mind a 3 cikk 200, 143-171 KB valodi tartalommal. Ha egy nap ujrameritek: NE HEAD-del.",
       "enabled": true
     }
   ],
