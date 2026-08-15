@@ -1,118 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178658400185792",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-08-13T01:20:01.857Z",
-      "updated": "2026-08-13T01:21:11.613Z"
-    },
-    {
-      "id": "t178658407161564",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-13T01:21:11.615Z",
-      "updated": "2026-08-13T01:21:21.049Z"
-    },
-    {
-      "id": "t17865840810510",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-08-13T01:21:21.051Z",
-      "updated": "2026-08-13T01:21:41.102Z"
-    },
-    {
-      "id": "t178661172486267",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-08-13T09:02:04.862Z",
-      "updated": "2026-08-13T09:02:05.020Z"
-    },
-    {
-      "id": "t178661172502280",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-08-13T09:02:05.022Z",
-      "updated": "2026-08-13T09:02:30.199Z"
-    },
-    {
-      "id": "t17866117502000",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-08-13T09:02:30.200Z",
-      "updated": "2026-08-13T09:02:30.374Z"
-    },
-    {
-      "id": "t178661175037517",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-13T09:02:30.375Z",
-      "updated": "2026-08-13T09:02:30.529Z"
-    },
-    {
-      "id": "t178661175053025",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-13T09:02:30.530Z",
-      "updated": "2026-08-13T09:02:30.678Z"
-    },
-    {
-      "id": "t178661175068129",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-13T09:02:30.681Z",
-      "updated": "2026-08-13T09:03:10.065Z"
-    },
-    {
-      "id": "t178661179007736",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-13T09:03:10.077Z",
-      "updated": "2026-08-13T09:03:31.139Z"
-    },
-    {
-      "id": "t178661181114277",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-08-13T09:03:31.142Z",
-      "updated": "2026-08-13T09:03:31.345Z"
-    },
-    {
-      "id": "t178661181138882",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-13T09:03:31.388Z",
-      "updated": "2026-08-13T09:03:38.343Z"
-    },
-    {
-      "id": "t178661181834553",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-08-13T09:03:38.345Z",
-      "updated": "2026-08-13T09:03:59.791Z"
-    },
-    {
-      "id": "t178661183979223",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-13T09:03:59.792Z",
-      "updated": "2026-08-13T09:04:12.685Z"
-    },
-    {
       "id": "t178661185269262",
       "title": "Run publisher",
       "status": "done",
@@ -479,33 +367,121 @@
       "agent": "publisher",
       "created": "2026-08-15T01:11:56.394Z",
       "updated": "2026-08-15T01:12:16.169Z"
+    },
+    {
+      "id": "t178678167753644",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-08-15T08:14:37.536Z",
+      "updated": "2026-08-15T08:14:37.689Z"
+    },
+    {
+      "id": "t178678167769195",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-08-15T08:14:37.691Z",
+      "updated": "2026-08-15T08:14:59.942Z"
+    },
+    {
+      "id": "t178678169994329",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-08-15T08:14:59.943Z",
+      "updated": "2026-08-15T08:15:17.192Z"
+    },
+    {
+      "id": "t178678171719486",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-15T08:15:17.194Z",
+      "updated": "2026-08-15T08:15:17.346Z"
+    },
+    {
+      "id": "t178678171734860",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-15T08:15:17.348Z",
+      "updated": "2026-08-15T08:15:17.499Z"
+    },
+    {
+      "id": "t178678171750169",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-15T08:15:17.501Z",
+      "updated": "2026-08-15T08:15:35.738Z"
+    },
+    {
+      "id": "t178678173574048",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-15T08:15:35.740Z",
+      "updated": "2026-08-15T08:15:45.699Z"
+    },
+    {
+      "id": "t178678174571732",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-15T08:15:45.717Z",
+      "updated": "2026-08-15T08:16:23.426Z"
+    },
+    {
+      "id": "t178678178345674",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-15T08:16:23.456Z",
+      "updated": "2026-08-15T08:16:37.846Z"
+    },
+    {
+      "id": "t178678179784819",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-08-15T08:16:37.848Z",
+      "updated": "2026-08-15T08:16:45.580Z"
+    },
+    {
+      "id": "t178678180562460",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-15T08:16:45.624Z",
+      "updated": "2026-08-15T08:17:02.970Z"
+    },
+    {
+      "id": "t178678182297141",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-08-15T08:17:02.971Z",
+      "updated": "2026-08-15T08:17:39.745Z"
+    },
+    {
+      "id": "t17867818597472",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-15T08:17:39.747Z",
+      "updated": "2026-08-15T08:17:50.293Z"
+    },
+    {
+      "id": "t178678187029597",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-08-15T08:17:50.295Z",
+      "updated": "2026-08-15T08:18:09.001Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178566424889194",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The lineup looks strong and ready — you have a nice mix of practical use cases (study, work, personal writing) across different AI tools (Perplexity, ChatGPT, Cohere, Le Chat, Qwen), plus that essenti",
-      "agent": "publisher",
-      "at": "2026-08-02T09:50:48.891Z",
-      "loud": false
-    },
-    {
-      "id": "n178566425627574",
-      "level": "success",
-      "text": "1 hír + 1 útmutató publikálva (költség: $0.0061).",
-      "agent": "ceo",
-      "at": "2026-08-02T09:50:56.275Z",
-      "loud": false
-    },
-    {
-      "id": "n178568912631414",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The line-up looks solid and ready to go—practical how-tos, everyday life uses, and the important privacy piece all work well together. One quick note: Perplexity should just be \"Perplexity\" (not \"Perp",
-      "agent": "publisher",
-      "at": "2026-08-02T16:45:26.314Z",
-      "loud": false
-    },
     {
       "id": "n178568913412789",
       "level": "info",
@@ -1281,54 +1257,33 @@
       "agent": "ceo",
       "at": "2026-08-15T01:12:16.208Z",
       "loud": false
+    },
+    {
+      "id": "n178678185973819",
+      "level": "info",
+      "text": "SEO: 2 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-08-15T08:17:39.738Z",
+      "loud": false
+    },
+    {
+      "id": "n178678187896616",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The lineup looks solid — practical, everyday use cases that show AI as a helpful tool without overpromising. Good mix of productivity (emails, complaints), real-world help (pet-sitting, privacy), and ",
+      "agent": "publisher",
+      "at": "2026-08-15T08:17:58.966Z",
+      "loud": false
+    },
+    {
+      "id": "n178678188903988",
+      "level": "success",
+      "text": "1 hír + 1 útmutató publikálva (költség: $0.0047).",
+      "agent": "ceo",
+      "at": "2026-08-15T08:18:09.039Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178572312936635",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"AI Visual Storytelling Trends to Watch This Spring\" (?/10)",
-      "ref": "2026-08-03T01-49-28-320Z_pixlr_AI_Visual_Storytelling_Trends_to_Watch_This_Spring.json",
-      "at": "2026-08-03T02:12:09.366Z"
-    },
-    {
-      "id": "m178572316102878",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Wan 2.7 prompt guide: the formula plus 24 ready-to-use prompts\" (?/10)",
-      "ref": "2026-08-03T01-49-35-027Z_picsart_Wan_2_7_prompt_guide__the_formula_plus_24_ready-to.json",
-      "at": "2026-08-03T02:12:41.028Z"
-    },
-    {
-      "id": "m178572319161370",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"How to use Kling AI to create cinematic AI videos\" (?/10)",
-      "ref": "2026-08-03T01-49-35-028Z_picsart_How_to_use_Kling_AI_to_create_cinematic_AI_videos.json",
-      "at": "2026-08-03T02:13:11.613Z"
-    },
-    {
-      "id": "m178572320005390",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "info",
-      "text": "A \"How to generate speech from text with Picsart AI Playgr\" hír a meglévő útmutatóra mutat: turn-a-voice-memo-into-a-polished-meeting-summary-with-huggi",
-      "ref": "turn-a-voice-memo-into-a-polished-meeting-summary-with-huggi",
-      "at": "2026-08-03T02:13:20.053Z"
-    },
-    {
-      "id": "m178572374136993",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"How to Practise a Job Interview Out Loud with ChatGPT's Voice Mode\" — mi a baj: The article claims Voice Mode 'does not work on a desktop browser' — this is fabricated/wrong; Voice Mode is available on the ChatGPT web/desktop interface as well, not only on mobile.; The article states ChatGPT Plus costs '$20/month' — this is an invented/incorrect price stated as fact; current",
-      "ref": "GUIDE_how-to-practise-a-job-interview-out-loud-with-chatgpt-s-voic.json",
-      "at": "2026-08-03T02:22:21.369Z"
-    },
     {
       "id": "m178572440976890",
       "from": "designer",
@@ -2642,6 +2597,51 @@
       "text": "6 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-08-15T01:22:27.438Z"
+    },
+    {
+      "id": "m178678173573194",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Previewing Ultrafast mode: GPT-5.6 Sol at up to 14X the speed\" — javítva: GPT-5.6 is listed as a verified-real name, but as of my knowledge there is no public OpenAI model named 'GPT-5.6'. It is presented as a current, released product ('OpenAI's GPT-5.6 is one of the reasons why'), which is a fabricated specific claim.; Reviewer verdict: Hitelesség-kapu blokkolta: GPT-5.6 is listed ",
+      "ref": "2026-08-14T01-01-26-375Z_openai-blog_Previewing_Ultrafast_mode__GPT-5_6_Sol_at_up_to_14.json",
+      "at": "2026-08-15T08:15:35.731Z"
+    },
+    {
+      "id": "m178678174569040",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Previewing Ultrafast mode: GPT-5.6 Sol at up to 14X the speed\" (?/10)",
+      "ref": "2026-08-14T01-01-26-375Z_openai-blog_Previewing_Ultrafast_mode__GPT-5_6_Sol_at_up_to_14.json",
+      "at": "2026-08-15T08:15:45.690Z"
+    },
+    {
+      "id": "m178678178341842",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Plan a 3‑day weekend road trip with Meta AI in 15 minutes\" — javítva: British spelling: 'favour' in the What this means for you section — change to 'favor' for US English compliance; Reviewer verdict: Nearly publication-ready guide with excellent structure, beginner-friendly clarity, and strong brand voice. One quick fix needed: change the British spelling 'favour' to 'favor' in the ",
+      "ref": "GUIDE_plan-a-3-day-weekend-road-trip-with-meta-ai-in-15-minutes.json",
+      "at": "2026-08-15T08:16:23.418Z"
+    },
+    {
+      "id": "m178678179783717",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Plan a 3‑day weekend road trip with Meta AI in 15 minutes\" (?/10)",
+      "ref": "GUIDE_plan-a-3-day-weekend-road-trip-with-meta-ai-in-15-minutes.json",
+      "at": "2026-08-15T08:16:37.837Z"
+    },
+    {
+      "id": "m178678187028663",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 20 → 5/4/2 oszlop.",
+      "ref": "mobile",
+      "at": "2026-08-15T08:17:50.286Z"
     }
   ]
 }

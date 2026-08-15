@@ -1,0 +1,67 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "plan-a-3-day-weekend-road-trip-with-meta-ai-in-15-minutes",
+    "company": "Meta",
+    "tool": "Meta AI",
+    "icon": "🚗",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-08-15T08:16:23.416Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.01063698,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "rejected_at": "2026-08-15T00:58:26.882Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1810
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": 8,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Friendly, well-structured guide with clear steps and practical advice. Minor clarity gap in Step 4 where it says 'just type a follow-up request' without clarifying where to type it, but the preceding context makes this recoverable for most beginners.",
+      "_aiCost": 0.0012974,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Nearly publication-ready guide with excellent structure, beginner-friendly clarity, and strong brand voice. One quick fix needed: change the British spelling 'favour' to 'favor' in the Plain language for everyone section to comply with US English requirements.",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_GUIDE_plan-a-3-day-weekend-road-trip-with-meta-ai-in-15-minutes.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-08-15T08:16:37.836Z",
+    "slug": "plan-a-3-day-weekend-road-trip-with-meta-ai-in-15-minutes",
+    "image_v": 2,
+    "image_at": "2026-08-15T08:17:02.954Z",
+    "seo": {
+      "meta_description": "Learn to use Meta AI to plan a 3-day road trip in 15 minutes. Enter your start city and vibe — get a full day-by-day itinerary with driving times.",
+      "keywords": [
+        "Meta AI road trip planning",
+        "how to plan a road trip with AI",
+        "Meta AI travel itinerary generator",
+        "AI trip planner free",
+        "3 day weekend road trip planner",
+        "road trip planning with AI assistant",
+        "Meta AI itinerary free"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Consider adding location-specific examples in subheadings (e.g., 'Plan a Denver to Boulder road trip') to capture local search traffic",
+        "Include the exact prompt template in the article so readers can copy-paste it directly, improving practical value",
+        "Add a section on limitations (can't book hotels) to build trust and match search intent for realistic planning help"
+      ],
+      "optimised_at": "2026-08-15T08:17:39.731Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Plan a 3‑day weekend road trip with Meta AI in 15 minutes\"\nsubtitle: \"Turn a starting city and a rough vibe into a day‑by‑day itinerary with stops and driving times.\"\ncategory: \"guide\"\naudience: \"personal\"\ncompany: \"Meta\"\ntool: \"Meta AI\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"getting-started\", \"road-trip\", \"planning\", \"meta-ai\"]\n---\n\n# Plan a 3‑day weekend road trip with Meta AI in 15 minutes\n\n> **In short:** Meta AI (the free AI assistant built into Facebook, Instagram, and WhatsApp, or on meta.ai) can draft a complete 3‑day road‑trip itinerary in under a minute. You provide the starting city and what you want — lakes, good food, nothing touristy — and it fills in the rest. It cannot book hotels or reservations for you.\n\nYou've got a free weekend, a car, and a vague urge to get out of town — but the thought of hours of Googling stops, routes, and restaurant hours makes your eyes glaze over. Here's the good news: Meta AI can turn a single sentence like \"I'm starting in Denver, I want mountains, good tacos, and scenic drives\" into a full three‑day schedule with driving times and meal ideas. It won't buy your hotel or reserve your table, but it will do the brainstorming heavy lifting so you're not staring at a blank spreadsheet at 10 pm on a Thursday. Here's how to use it step by step.\n\n## Before you start\n\n- **Access to Meta AI:** You need a Facebook, Instagram, or WhatsApp account (all free), or you can go directly to **meta.ai** in any browser — no app download needed.\n- **No paid plan required:** Meta AI is completely free to use.\n- **Time needed:** About 15 minutes total — a few minutes to type your request, a minute to read the result, and a few more to ask for changes.\n- **What you'll need in your head:** Your starting city, roughly how many days, and a one‑sentence feeling about what you want (peaceful? food‑forward? scenic drives?).\n\n## Step 1 — Open Meta AI\n\nThe easiest way is to go to **meta.ai** in any web browser on your phone, tablet, or computer. The page opens straight to a chat box — no account creation needed if you're already signed in through Facebook or Instagram in that browser.\n\nIf you prefer your phone, open **Facebook** or **Instagram**, tap the search bar at the top, and look for a small **Meta AI icon** (a blue circle with sparkles, often near the search field). Tap it and the chat opens inside the app.\n\nOn **WhatsApp**, open any chat, tap the **+ (attachment) button** next to the text field, then tap **Meta AI** from the menu that slides up. A chat thread with Meta AI opens in the same app.\n\nIf you can't find a Meta AI icon in the search bar, look inside the **Chats** section for a dedicated \"Meta AI\" conversation, or check for an update in your app store — Meta AI's placement changes as the apps are updated.\n\nYou'll know it worked when a chat window appears with a blue‑and‑white Meta AI logo at the top, ready for you to type.\n\n## Step 2 — Write your first prompt\n\nThink of a prompt as a short email to a very well‑read travel‑buddy who plans fast. You don't need to be detailed — Meta AI can work with surprisingly little. Include your starting city, roughly how many days you have, and one or two words about the vibe you're after. The vaguer you are, the more general the result — so a few specifics help.\n\nKeep your prompt to one or two sentences. You can always ask for changes after you see the first draft. Don't worry about being polite or formal — Meta AI doesn't need a greeting; it just reads the instruction and starts planning.\n\n💬 Example: *\"I'm starting in Asheville, North Carolina, and I have three days. I want scenic mountain drives, good local food — nothing chain restaurants — and mostly quiet, not too touristy spots. Can you give me a day‑by‑day itinerary with approximate driving times between stops?\"*\n\nYou'll know it worked when a detailed reply appears below your message — usually a paragraph or a formatted list with Day 1, Day 2, and Day 3 headings, each with stops and timing.\n\n## Step 3 — Read the first draft and check it\n\nMeta AI will usually respond with a formatted plan. It tends to include a suggested route order, a few specific stops (restaurant names, viewpoints, small towns), and estimated driving time between each point. Look it over and ask yourself: does it mention my starting city? Are the days roughly the right length? Are there any stops that sound wrong or too touristy?\n\nHere's a real thing to know: Meta AI can occasionally suggest a restaurant or attraction that sounds plausible but has closed or moved. Treat the names it gives you as a starting point, then double‑check any specific place you're excited about with a quick Google search — it takes 20 seconds and saves frustration.\n\nIf the plan looks roughly right but a day feels too packed or too empty, move on to Step 4.\n\nYou'll know it worked when you've scanned the whole itinerary, made a quick mental note of one or two places you want to verify later, and picked the one thing you'd most like to change.\n\n## Step 4 — Ask for one specific change\n\nMost people need at least one adjustment. Maybe the driving times feel too tight, or you realize you don't want to backtrack the way Meta AI suggested, or a day sounds great but you wish it included a specific type of stop (a farmers' market, a scenic overlook, a coffee shop). That's fine — just type a follow‑up request as a normal sentence.\n\nMeta AI can adjust one section at a time, so you don't need to re‑explain everything. Just ask for the one thing that bothered you most. If the first change worked, you can ask for the next one in a new message — that keeps each request small and easy for the assistant to handle.\n\n💬 Example: *\"Day 2 looks good but I don't want to drive more than 2 hours between stops — can you tighten it up?\"*\n\nOr: *\"Can you swap out the afternoon on Day 1 for something outdoorsy instead of the museum?\"*\n\nYou'll know it worked when the revised plan appears and the specific issue you mentioned has been addressed — for example, the driving times are shorter, or a new stop has replaced the one you flagged.\n\n## Step 5 — Save or screenshot the final plan\n\nMeta AI doesn't have a built‑in \"save my trip\" button, so a screenshot is the quickest way to keep the plan. On a phone, take a screenshot (usually power + volume‑up at the same time). On a computer, you can screenshot the chat window or copy the text and paste it into notes, email, or a Google Doc.\n\nSome people copy the text into a notes app and then add links to specific places they want to verify — that becomes your trip plan that you can actually use on the road.\n\nIf your phone or browser doesn't take screenshots easily, try the \"share\" button inside the chat (look for an arrow or three dots) — many versions now let you copy the full conversation in one tap, which is even faster than screenshotting piece by piece.\n\nYou'll know it worked when you have the itinerary saved somewhere you can open during your drive (notes app, email to yourself, or a screenshot you can pinch‑to‑zoom).\n\n## Step 6 — Check one or two key stops before you go\n\nBefore you leave, open Google Maps or Google Search and type in the name of any restaurant or attraction Meta AI suggested. Look for two things: is it still open, and are the hours listed on a recent review? This takes about two minutes per stop and means you're not pulling into a closed parking lot on Saturday morning.\n\nMeta AI cannot look up real‑time hours, read current reviews, or confirm that a place hasn't moved — it draws on information up to a certain point, not today's conditions. That's why this quick check matters.\n\n💬 Example: search *\"Blue Ridge Bakery Asheville hours\"* to see if it opens early enough for your planned breakfast stop.\n\nYou'll know it worked when you can confirm at least your top two or three stops are open and reachable on the days you planned.\n\n## Common mistakes\n\n- **Vague prompts that give you a generic result.** \"I want a fun road trip\" might get you a list of famous national parks across the country — exciting, but not a 3‑day weekend plan. Add your starting city and a rough direction (e.g., \"starting from Austin, within a 4‑hour drive\") to keep it grounded.\n- **Accepting the first draft without checking.** Meta AI sometimes suggests restaurants or attractions that sound plausible but have closed. A 20‑second Google search on the names you care about most prevents a wasted detour.\n- **Asking for too much at once.** If you pile on six changes in one message (\"make it cheaper, add hiking, remove the museum, find a dog‑friendly hotel\"), Meta AI may lose the thread and miss one or two. Ask for one change, read the result, then ask for the next — it's faster in the end.\n\n## What this means for you\n\n- **In everyday life:** Instead of spending an evening doom‑scrolling travel blogs, you can spend 15 minutes with Meta AI drafting a real plan, then spend 5 minutes confirming the stops you care about. That's an evening back in your pocket.\n- **For your business or work:** If you occasionally need to plan a short work retreat, a team offsite, or a client site visit across a few days, the same workflow works — just swap the vibe description for \"not too formal\" or \"close to the airport.\"\n- **If you're just getting started:** Your very first prompt can be as simple as \"I'm starting in [your city]. Give me a 3‑day road trip itinerary. I like [one or two things].\" That's it. See what comes back, then ask for one change. You'll learn how the tool thinks by watching what it gives you.\n\n## Try it now\n\nOpen **meta.ai** in your browser right now, or tap Meta AI inside Facebook, Instagram, or WhatsApp. Type in your starting city, say you have a free weekend, and describe one thing you want from the trip — a type of scenery, a type of food, a pace (busy or relaxed). Hit send and watch what appears. It takes less than a minute, and you'll have a real plan to build from.",
+  "original_title": "Plan a 3‑day weekend road trip with Meta AI in 15 minutes"
+}

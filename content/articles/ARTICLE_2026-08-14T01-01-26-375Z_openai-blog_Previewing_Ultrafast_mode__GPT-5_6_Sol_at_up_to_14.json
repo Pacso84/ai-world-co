@@ -1,0 +1,63 @@
+{
+  "_meta": {
+    "written_at": "2026-08-15T08:15:35.730Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00733308,
+    "original_draft": "2026-08-14T01-01-26-375Z_openai-blog_Previewing_Ultrafast_mode__GPT-5_6_Sol_at_up_to_14.json",
+    "source_id": "openai-blog",
+    "source_name": "OpenAI Blog (hivatalos)",
+    "source_link": "https://openai.com/index/previewing-ultrafast",
+    "status": "published",
+    "rejected_at": "2026-08-15T00:48:43.128Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 681
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured explainer with clear hooks, good plain-language definitions (token explained well), helpful audience-specific take-aways, and a practical wrap-up step. No prohibited content, no clichés, respectful tone, and US English throughout.",
+      "_aiCost": 0.0012725,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Hitelesség-kapu blokkolta: GPT-5.6 is listed as a verified-real name, but as of my knowledge there is no public OpenAI model named 'GPT-5.6'. It is presented as a current, released product ('OpenAI's GPT-5.6 is one of the reaso",
+    "can_retry": true,
+    "rework_attempts": 2,
+    "reworked_from": "REJECTED_2026-08-14T01-01-26-375Z_openai-blog_Previewing_Ultrafast_mode__GPT-5_6_Sol_at_up_to_14.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-08-15T08:15:45.689Z",
+    "slug": "why-ai-chatbots-are-about-to-get-much-faster",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-08-15T08:16:45.571Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is a trend/explainer article about AI speed improvements in general, not a guide to a specific named feature users can access",
+    "image_v": 2,
+    "image_at": "2026-08-15T08:16:56.831Z",
+    "seo": {
+      "meta_description": "New AI models and custom-built chips are making chatbots respond almost instantly. Here's why the wait time is finally getting shorter for users.",
+      "keywords": [
+        "AI chatbot speed",
+        "AI response time faster",
+        "custom AI chips",
+        "AI latency reduction",
+        "next generation AI models",
+        "AI chatbots getting faster"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Consider adding more specific long-tail keywords like 'how to make AI chatbots respond faster' to capture more search traffic",
+        "The title could benefit from a year reference (e.g., '2024') to improve recency signals in search results",
+        "Add internal links to related AI beginner guides to build topical authority"
+      ],
+      "optimised_at": "2026-08-15T08:17:14.368Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Why AI Chatbots Are About to Get Much Faster\"\nsubtitle: \"A new generation of models and custom-built AI chips is cutting the wait before answers appear\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 3\ntags: [\"ai-speed\", \"ai-hardware\", \"ai-trends\"]\n---\n\n# Why AI Chatbots Are About to Get Much Faster\n\n> **In short:** Newer AI models answer more quickly than the previous generation, and behind the scenes custom-built chips are being designed to make responses feel almost instant. For most people, the visible change will be simple: less waiting.\n\nYou know that moment when you ask an AI a question, hit enter, and watch the little cursor blink... blink... and blink again before any words appear?\n\nThat pause — the gap between your question and the first word of the answer — has been the most annoying part of AI for most people. A short question takes a few seconds. A long one takes many more.\n\nThat is starting to change, and there are two reasons why.\n\n## What \"faster\" actually means here\n\nSpeed in AI works differently than you might think. Most AI doesn't write its answer the way you type a sentence — it generates it one small piece of text at a time. Each piece is called a *token*, and it's roughly a word, or a short fragment of a word, that the AI produces one after another. When people say AI is getting faster, they usually mean more tokens are appearing per second on your screen.\n\nNewer models are tuned to push that number higher than the previous generation.\n\nThe reason is partly better software, but a lot of it is hardware. Behind the scenes, the companies running large AI services are shifting from generic graphics chips to custom processors built for one specific job: feeding AI models as quickly as possible. These custom chips cost a lot to design, but they make responses feel almost instant.\n\n## What changes when the pause disappears\n\nWhen the first word of an answer arrives almost immediately, the whole feeling of using AI shifts. It feels less like filling out a form and more like texting someone who types back quickly.\n\nThat sounds small. It isn't. People tend to ask follow-up questions when the AI keeps up. They drop an idea into the conversation instead of waiting five seconds to see if it's worth it.\n\nThree practical shifts worth noticing:\n\n- **Voice assistants become more useful.** When AI can answer fast enough to match human speech, real-time translation and live conversation stop feeling like tech demos.\n- **Longer answers feel less like a commitment.** A 200-word reply that arrives in a few seconds feels lighter than the same reply that takes much longer.\n- **Free tools eventually catch up.** Speed upgrades usually land in paid plans first, then trickle down to free tiers over the following months.\n\n## What this means for you\n\n- **If you use AI casually a few times a week:** The biggest change you'll notice isn't a new feature — it's the absence of the pause. Expect your current tools to feel snappier over the coming months, even without you changing anything.\n- **If you use AI at work:** Tasks where speed mattered most — drafting a quick reply, summarizing a long document, generating a code snippet — become much less of an interruption. The pause was the friction; less pause, more flow.\n- **If you're cost-conscious:** Speed upgrades typically arrive first in paid plans. Free tiers get faster too, but lag behind. Watch for \"instant\" or \"fast\" labels appearing in your AI tools — they're the visible sign of what's happening quietly in the chip labs.\n\n## Wrap-up\n\nAI getting faster isn't a technical footnote — it changes the feel of using it. Tools that respond instantly feel less like search boxes and more like real conversation partners. Try this tonight: open your favorite AI tool and send a short follow-up question the moment it finishes answering, rather than waiting to see if the reply was good. Notice whether the speed encourages you to keep talking.",
+  "original_title": "Previewing Ultrafast mode: GPT-5.6 Sol at up to 14X the speed"
+}

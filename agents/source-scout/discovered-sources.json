@@ -1,23 +1,23 @@
 {
   "_meta": {
-    "generated_at": "2026-08-11T08:45:13.817Z",
+    "generated_at": "2026-08-15T08:15:17.184Z",
     "generated_by": "source-scout agent v3.0 (megbízhatóság-kapu)",
     "note": "JAVASLATOK új, MEGBÍZHATÓ hivatalos forrásokra. A felhasználó/főnök dönti el, melyiket adjuk a sources/rss-feeds.json-hoz (enabled:true-val). Minden jelölt megbízhatósági pontszámmal + indoklással.",
     "min_score": 100,
-    "checked_orgs": 18,
-    "newly_discovered": 6,
+    "checked_orgs": 6,
+    "newly_discovered": 0,
     "rejected_count": 2,
     "rejected_examples": [
       {
-        "name": "Preply Blog",
-        "host": "preply.com",
-        "reason": "túl kevés cikk (1) — nem folyamatos forrás",
-        "score": 0
+        "name": "Brave Browser Blog",
+        "host": "brave.com",
+        "reason": "a friss cikkeinek csak 50%-a szól AI-ról (kell: 60%)",
+        "score": 100
       },
       {
-        "name": "Trello Blog",
-        "host": "blog.trello.com",
-        "reason": "halott feed — 5422 napja nincs új cikk (limit: 365)",
+        "name": "Vivaldi Blog",
+        "host": "vivaldi.com",
+        "reason": "halott feed — 488 napja nincs új cikk (limit: 365)",
         "score": 0
       }
     ]
@@ -38,6 +38,5 @@
     "writer.com",
     "zoho.com"
   ],
-  "discovered_sources": [],
-  "rejection_note": "User-döntés 2026-08-11: \"csak 100 százalékosakat használjuk\". A hat javaslat mind 100/100 MEGBÍZHATÓSÁGÚ volt, de a mért AI-tartalmuk: khanacademy 10% · coursera 70% · memrise 0% · zoho 30% · airbnb 0% · notion 50%. A megbízhatóság azt méri, valódi-e a forrás; a hasznosságot 2026-08-11 óta a core/source-usefulness.js kapuja méri (küszöb 60%, éles adatra kalibrálva)."
+  "discovered_sources": []
 }
