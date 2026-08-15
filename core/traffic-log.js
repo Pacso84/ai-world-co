@@ -69,6 +69,47 @@ export function topPages(rows, n) {
     .slice(0, n);
 }
 
+// ===================================================================
+// OLVASÁSI MÉLYSÉG (2026-08-15) — hány oldalt néz meg EGY belépő?
+// ===================================================================
+// MIÉRT EZ A SZÁM: mérve 1,25 oldal/látogató, vagyis négyből három ember
+// egyetlen cikket olvas és távozik. A forgalmunk 82%-a a Facebookról jön egy
+// konkrét cikkre; ha ott nincs értelmes következő lépés, a látogató elmegy.
+// Ez az EGYETLEN forgalmi szám, ami új közönség NÉLKÜL is mozgatható —
+// és pont ezért ezt kell tudnunk követni.
+//
+// ⚠️ AZ ADAT MÁR ITT VOLT: a napló kezdettől rögzíti a `views` mezőt, csak
+// soha nem számoltunk belőle arányt. Nem új gyűjtés kell, csak elosztás.
+//
+// A `visits` a KÍVÜLRŐL érkezőt jelenti, a `views` minden oldalletöltést.
+// views/visits = 1,00 → mindenki egy oldalt néz és távozik.
+
+/** Egy nap (vagy bármely sorhalmaz) olvasási mélysége. 0, ha nincs belépő. */
+export function depth(rows) {
+  const list = Array.isArray(rows) ? rows : [];
+  let visits = 0, views = 0;
+  for (const r of list) { visits += Number(r?.visits) || 0; views += Number(r?.views) || 0; }
+  return visits > 0 ? views / visits : 0;
+}
+
+/**
+ * Mélység-trend: a legutóbbi `win` nap a megelőző `win` naphoz mérve.
+ * Ebből derül ki, hogy egy változtatás (pl. jobb kapcsolódó linkek) HATOTT-E.
+ * Ha nincs elég nap az összevetéshez, `previous` null — akkor NE hasonlítsunk.
+ */
+export function depthTrend(days, win = 7) {
+  const keys = Object.keys(days || {}).sort();
+  const w = Math.max(1, Number(win) || 7);
+  const sorok = k => k.flatMap(d => days[d] || []);
+  const utolso = keys.slice(-w);
+  const elozo = keys.slice(-2 * w, -w);
+  return {
+    recent: depth(sorok(utolso)),
+    previous: elozo.length >= w ? depth(sorok(elozo)) : null,
+    days: utolso.length
+  };
+}
+
 // ---------- I/O ----------
 
 export function loadLog() {
@@ -133,8 +174,19 @@ function report(days) {
     const rows = days[d];
     const v = rows.reduce((s, r) => s + (r.visits || 0), 0);
     console.log('  ' + d + '  ' + String(v).padStart(3) + ' belépő · '
-      + String(rows.length).padStart(3) + ' oldal  ' + '█'.repeat(Math.min(40, Math.round(v / 2))));
+      + String(rows.length).padStart(3) + ' oldal · ' + depth(rows).toFixed(2) + ' o/l  '
+      + '█'.repeat(Math.min(40, Math.round(v / 2))));
   }
+
+  // OLVASÁSI MÉLYSÉG — a legfontosabb mozgatható szám (lásd a depth() fejlécét).
+  const tr = depthTrend(days, 7);
+  console.log('\n=== OLVASÁSI MÉLYSÉG (oldal / látogató) ===');
+  console.log('  utolsó ' + tr.days + ' nap: ' + tr.recent.toFixed(2)
+    + (tr.previous !== null
+      ? '   ·   megelőző 7 nap: ' + tr.previous.toFixed(2)
+        + '   ·   változás: ' + (tr.recent >= tr.previous ? '+' : '') + (tr.recent - tr.previous).toFixed(2)
+      : '   (a megelőző héthez még nincs elég adat)'));
+  console.log('  1,00 = mindenki EGY oldalt néz meg és távozik.');
 
   // Cikkenkénti összesítés a teljes naplóból: mennyit hozott, hány napon át.
   const byPath = new Map();

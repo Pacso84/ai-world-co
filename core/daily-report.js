@@ -511,6 +511,20 @@ async function main() {
     if (srcLine) lines.push(srcLine);
   } catch { /* a riport ettől még kimegy */ }
 
+  // OLVASÁSI MÉLYSÉG (2026-08-15) — hány oldalt néz meg egy belépő?
+  // Mérve 1,17: négyből három ember EGY cikket olvas és távozik. Ez az
+  // egyetlen forgalmi szám, amit új közönség nélkül is tudunk mozgatni, ezért
+  // kikerül oda, ahol a user nézi. Az irány fontosabb, mint az abszolút érték.
+  try {
+    const { loadLog, depthTrend } = await import('./traffic-log.js');
+    const tr = depthTrend(loadLog(), 7);
+    if (tr.days >= 3) {
+      const d = tr.previous !== null ? tr.recent - tr.previous : null;
+      lines.push(`📖 Olvasási mélység: ${tr.recent.toFixed(2)} oldal/látogató (${tr.days} nap)`
+        + (d !== null ? ` · előző hét: ${tr.previous.toFixed(2)} (${d >= 0 ? '+' : ''}${d.toFixed(2)})` : ''));
+    }
+  } catch { /* a riport ettől még kimegy */ }
+
   // ÜGYFÉLSZOLGÁLAT (2026-07-20): napi darabszámok a Workerből (💬 sor).
   // Csak akkor szól, ha volt forgalom — csendes, ha 0.
   try {

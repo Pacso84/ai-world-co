@@ -23,6 +23,7 @@ import { toolRegex } from '../core/tool-regex.js';
 import { absolutizeFeedLinks } from '../core/feed-links.js';
 import { buildMetaDescription } from '../core/meta-description.js';
 import { legacyRedirect } from '../core/legacy-urls.js';
+import { rankRelated } from '../core/related.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = join(__dirname, '..');
@@ -1087,44 +1088,12 @@ function breadcrumbSchema(a, canonical) {
 // EN-metaadatokból számoljuk EGYSZER; a címek renderkor lokalizálódnak.
 // ===================================================================
 let RELATED = new Map();
-const REL_MIN = 4, REL_MAX = 6;   // min/max belső "kapcsolódó" link oldalanként
+// A rangsorolás a core/related.js-ben él, tesztelve. Régen itt, helyben, a
+// CÍMKE-ÁTFEDÉST pontoztuk — és élesben egy deepfake-csalásokról szóló cikk alá
+// hétvégi autós utat és szülinapi ajándékötleteket tett, mert a két rokon cikk
+// EGYETLEN címkén sem osztozott. Az indoklás és a mérés a modul fejlécében.
 function buildRelated(articles) {
-  RELATED = new Map();
-  // legfrissebbek elöl — a fallback-feltöltéshez (árva oldalak elkerülése)
-  const REL_BY_RECENT = [...articles].sort((a, b) => (b.publishedAt || '').localeCompare(a.publishedAt || ''));
-  for (const a of articles) {
-    const at = new Set(a.tags || []);
-    const scored = [];
-    for (const b of articles) {
-      if (b === a) continue;
-      let s = 0;
-      if (a.company && b.company === a.company) s += 3;
-      for (const t of (b.tags || [])) if (at.has(t)) s += 1;
-      if (a.category === b.category) s += 1;
-      if (s > 1) scored.push([s, b]);   // 1 pont (csak kategória) még nem rokonság
-    }
-    scored.sort((x, y) => y[0] - x[0] || (y[1].publishedAt || '').localeCompare(x[1].publishedAt || ''));
-    const picked = scored.slice(0, REL_MAX).map(p => p[1]);
-    // FALLBACK (2026-07-25, forgalom-szerzés): egyetlen oldal se maradjon belső
-    // link NÉLKÜL. Az árva oldal (0 kapcsolódó link) rosszabbul feltérképezhető/
-    // indexelhető — pont a fiatal oldal + sok URL crawl-gondjánál kritikus. Ha
-    // kevés az erős találat, feltöltjük friss AZONOS-KATEGÓRIÁS → friss útmutató →
-    // friss bármi cikkel, min. REL_MIN linkig.
-    if (picked.length < REL_MIN) {
-      const have = new Set(picked.map(x => x.file)); have.add(a.file);
-      const fill = [
-        ...REL_BY_RECENT.filter(b => b.category === a.category),
-        ...REL_BY_RECENT.filter(b => b.isGuide),
-        ...REL_BY_RECENT
-      ];
-      for (const b of fill) {
-        if (picked.length >= REL_MIN) break;
-        if (have.has(b.file)) continue;
-        picked.push(b); have.add(b.file);
-      }
-    }
-    RELATED.set(a.file, picked);
-  }
+  RELATED = rankRelated(articles);
 }
 function relatedBox(a) {
   const rel = RELATED.get(a.file) || [];

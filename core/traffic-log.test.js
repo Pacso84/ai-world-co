@@ -6,7 +6,7 @@
 // ===================================================================
 
 import assert from 'assert/strict';
-import { mergeDay, pruneOld, topPages, RECENT_DAYS, KEEP_DAYS } from './traffic-log.js';
+import { mergeDay, pruneOld, topPages, depth, depthTrend, RECENT_DAYS, KEEP_DAYS } from './traffic-log.js';
 
 let pass = 0;
 const t = (name, fn) => { fn(); pass++; console.log('  ✅ ' + name); };
@@ -89,6 +89,52 @@ t('a 0 belépős oldalak kimaradnak', () => {
 
 t('üres bemenet üres rangsort ad', () => {
   assert.deepEqual(topPages([], 3), []);
+});
+
+// ===================================================================
+// OLVASÁSI MÉLYSÉG (2026-08-15)
+// ===================================================================
+// Élesben 1,17–1,25 oldal/látogató: négyből három ember egy cikket olvas és
+// távozik. Ez az egyetlen forgalmi szám, amit új közönség NÉLKÜL mozgatni
+// tudunk — ezért kell tudnunk követni, mielőtt bármit átalakítunk.
+
+t('a mélység views/visits', () => {
+  assert.equal(depth([{ visits: 10, views: 12 }, { visits: 10, views: 13 }]), 1.25);
+  assert.equal(depth([{ visits: 5, views: 5 }]), 1, '1,00 = mindenki egy oldalt néz');
+});
+
+t('belépő nélkül 0, nem osztunk nullával', () => {
+  assert.equal(depth([{ visits: 0, views: 9 }]), 0);
+  assert.equal(depth([]), 0);
+  assert.equal(depth(null), 0);
+  assert.equal(depth([{ visits: 'x', views: null }]), 0, 'szemét bemenetre sem NaN');
+});
+
+t('a trend a legutóbbi hetet a megelőzőhöz méri', () => {
+  const days = {};
+  // megelőző 7 nap: 1,00 · legutóbbi 7 nap: 2,00
+  for (let i = 1; i <= 7; i++) days['2026-08-0' + i] = [{ visits: 10, views: 10 }];
+  for (let i = 8; i <= 14; i++) days['2026-08-' + i] = [{ visits: 10, views: 20 }];
+  const tr = depthTrend(days, 7);
+  assert.equal(tr.recent, 2);
+  assert.equal(tr.previous, 1);
+  assert.equal(tr.days, 7);
+});
+
+t('fél adatból NEM hasonlítunk', () => {
+  // Óvatosság: hiányos megelőző hétre a `previous` null, hogy a riport ne
+  // írjon ki hamis "javult/romlott" különbséget. Élesben pont ez volt a
+  // helyzet: 13 nap napló, tehát a 14 napos összevetés még nem áll össze.
+  const days = {};
+  for (let i = 1; i <= 9; i++) days['2026-08-0' + String(i)] = [{ visits: 10, views: 12 }];
+  const tr = depthTrend(days, 7);
+  assert.equal(tr.previous, null, 'nincs elég nap → nincs összevetés');
+  assert.ok(tr.recent > 0, 'a friss érték attól még megvan');
+});
+
+t('üres naplóra sem esik szét', () => {
+  assert.deepEqual(depthTrend({}, 7), { recent: 0, previous: null, days: 0 });
+  assert.equal(depthTrend(undefined).recent, 0);
 });
 
 console.log('\n✅ traffic-log.test: mind a ' + pass + ' eset rendben');
