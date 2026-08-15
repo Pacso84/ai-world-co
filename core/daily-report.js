@@ -477,6 +477,21 @@ async function main() {
     }
   } catch { /* még nem futott — nem baj */ }
 
+  // ÁTIRÁNYÍTÁS-ŐRSZEM (2026-08-15). A _redirects a Cloudflare 2100-as kemény
+  // plafonja felé kúszott (1755-nél tartott, napi +22 sorral), és a build
+  // vágás-figyelmeztetése CSAK a CI naplójába ment volna. Itt 75%-nál szólal
+  // meg, nem a szakadéknál — a lényeg, hogy legyen idő reagálni.
+  try {
+    const rg = JSON.parse(readFileSync(join(ROOT, 'memory', 'redirect-guard.json'), 'utf-8'));
+    for (const p of rg.problems || []) {
+      if (p.code === 'REDIRECTS_TRUNCATED') {
+        lines.push(`🔀 ÁTIRÁNYÍTÁS-ŐRSZEM: ${p.count} szabály > ${p.cap} — a lista VÁGVA, a leggyengébb 301-ek kimaradtak.`);
+      } else {
+        lines.push(`🔀 ÁTIRÁNYÍTÁS-ŐRSZEM: ${p.count}/${p.cap} szabály (${p.pct}%) — közelít a Cloudflare-plafonhoz.`);
+      }
+    }
+  } catch { /* még nem futott — nem baj */ }
+
   // HÁZMESTER (2026-07-30): mit takarított el, és hízik-e valami vissza.
   // CSENDES a hétköznapokon: napi pár régi napló törlése nem hír. Csak akkor
   // szólal meg, ha ÉRDEMI takarítás történt (kép/fordítás/embedding), vagy ha

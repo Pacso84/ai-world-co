@@ -22,6 +22,7 @@ import { canonicalChip } from '../core/quality-guard.js';
 import { toolRegex } from '../core/tool-regex.js';
 import { absolutizeFeedLinks } from '../core/feed-links.js';
 import { buildMetaDescription } from '../core/meta-description.js';
+import { legacyRedirect } from '../core/legacy-urls.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = join(__dirname, '..');
@@ -968,11 +969,20 @@ function loadArticles() {
       // Mostantól a _meta.slug az igazság: ha egyszer megjelent, marad.
       // (A régi címekről a _redirects állít be 301-et — lásd lentebb.)
       const slug = data._meta?.slug || slugify(meta.title || data.original_title || file);
-      // Az EREDETI (fájlnévbe fagyott) slug: erről kell 301-et adni, ha eltér.
+      // Az EREDETI (fájlnévbe fagyott) azonosító: erről CSAK AKKOR kell 301,
+      // ha valaha nyilvános cím LEHETETT — vagyis pontosan a cím slugja.
+      // ⚠️ 2026-08-15: eddig MINDEN eltérésre gyártottunk 301-et, és ezzel a
+      // _redirects 1755 sorra hízott (a 2100-as Cloudflare-plafon 83%-a), napi
+      // +22 sorral. A sorok ~85%-a téma-azonosítóra mutatott (`ai-cover-letter`)
+      // vagy csonkolt fájlnévre (`...using-alibaba-`) — olyan címekre, amiket
+      // a régi, CÍMBŐL képző séma elő sem tudott állítani. Részletes indoklás
+      // és a Search Console-os megerősítés: core/legacy-urls.js.
+      // ⚠️ Az EREDETI cím kell (`original_title`), NEM a `meta.title`: azt a
+      // minőségi körök átírják, és a mostani címmel mérve 0 találat jön ki —
+      // vagyis kidobnánk 18 VALÓDI 301-et. Lásd core/legacy-urls.js.
       const bornSlug = file.replace(/^ARTICLE_(GUIDE_)?/, '').replace(/\.json$/, '');
-      if (bornSlug && bornSlug !== slug && /^[a-z0-9-]+$/.test(bornSlug)) {
-        RENAMED_SLUGS.set(bornSlug, slug);
-      }
+      const legacy = legacyRedirect({ bornSlug, slug, originalTitle: data.original_title });
+      if (legacy) RENAMED_SLUGS.set(legacy.from, legacy.to);
 
       // Van valódi kép a slug-hoz? (Designer agent generálta)
       const imgFile = ['jpg', 'png', 'jpeg', 'webp'].map(ext => `${slug}.${ext}`)
@@ -3095,16 +3105,30 @@ Original content by ${SITE.name} — written and quality-checked by an autonomou
     if (covered.has(from)) continue;
     redirectLines.push(...rule(from, to));
   }
-  // Cloudflare Pages: 2100 statikus szabály a plafon. A slug mostantól RÖGZÍTETT
-  // (_meta.slug), tehát ÚJ átnevezés nem keletkezik — ez a lista nem nő tovább.
-  // Biztonsági vágás mégis kell: inkább maradjon ki néhány régi átirányítás,
-  // mint hogy az EGÉSZ _redirects érvénytelen legyen (a pages.dev-szabállyal
-  // együtt, ami a domain-egyesítést végzi).
+  // Cloudflare Pages: 2100 statikus szabály a plafon. Biztonsági vágás kell:
+  // inkább maradjon ki néhány régi átirányítás, mint hogy az EGÉSZ _redirects
+  // érvénytelen legyen (a pages.dev-szabállyal együtt, ami a domain-egyesítést
+  // végzi). A BIZONYÍTOTT címek elöl vannak, tehát a vágás a tippeket éri.
   const CAP = 2000;
-  if (redirectLines.length > CAP) {
-    console.log(`   ⚠️  ${redirectLines.length} átirányítás > ${CAP} — a lista vágva (Cloudflare-korlát 2100).`);
+  const nyers = redirectLines.length;
+  if (nyers > CAP) {
+    console.log(`   ⚠️  ${nyers} átirányítás > ${CAP} — a lista vágva (Cloudflare-korlát 2100).`);
     redirectLines.length = CAP;
   }
+  // ŐRSZEM (2026-08-15). Ez a szám egyszer már ÉSZREVÉTLENÜL kúszott a plafon
+  // 83%-áig, napi +22 sorral. A vágás figyelmeztetése CSAK a CI naplójába ment
+  // volna — ugyanaz a minta, mint a 08-10-i i18n-őrszemnél: **az őrszem csak
+  // akkor őr, ha oda szól, ahol a user néz.** Ezért állapotfájl megy a napi
+  // riportba, és NEM a szakadéknál szólal meg, hanem 75%-nál — hogy legyen idő.
+  try {
+    const arany = nyers / CAP;
+    const problems = [];
+    if (nyers > CAP) problems.push({ code: 'REDIRECTS_TRUNCATED', count: nyers, cap: CAP });
+    else if (arany >= 0.75) problems.push({ code: 'REDIRECTS_NEAR_CAP', count: nyers, cap: CAP, pct: Math.round(arany * 100) });
+    mkdirSync(join(PROJECT_ROOT, 'memory'), { recursive: true });
+    writeFileSync(join(PROJECT_ROOT, 'memory', 'redirect-guard.json'),
+      JSON.stringify({ at: new Date().toISOString(), count: nyers, cap: CAP, problems }, null, 2), 'utf-8');
+  } catch { /* a build ettől soha ne bukjon el */ }
   const renameRules = redirectLines.length ? redirectLines.join('\n') + '\n' : '';
   if (RENAMED_SLUGS.size) console.log(`✅ ${RENAMED_SLUGS.size} átnevezett cikk 301-e (${redirectLines.length} szabály, 5 nyelv)`);
   // KIVEZETETT NYELVEK (2026-07-31): a /de/… és /fr/… címek az ANGOL cikkre
