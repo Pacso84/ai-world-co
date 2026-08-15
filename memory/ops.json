@@ -1,158 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178655359676569",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-12T16:53:16.765Z",
-      "updated": "2026-08-12T16:54:05.258Z"
-    },
-    {
-      "id": "t178655364525952",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-08-12T16:54:05.259Z",
-      "updated": "2026-08-12T16:55:05.244Z"
-    },
-    {
-      "id": "t178655370524655",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-12T16:55:05.246Z",
-      "updated": "2026-08-12T16:55:15.993Z"
-    },
-    {
-      "id": "t178655371599512",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-08-12T16:55:15.995Z",
-      "updated": "2026-08-12T16:55:32.292Z"
-    },
-    {
-      "id": "t178658289985437",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-08-13T01:01:39.854Z",
-      "updated": "2026-08-13T01:01:40.081Z"
-    },
-    {
-      "id": "t178658290008227",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-08-13T01:01:40.082Z",
-      "updated": "2026-08-13T01:02:12.522Z"
-    },
-    {
-      "id": "t178658293252430",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-08-13T01:02:12.524Z",
-      "updated": "2026-08-13T01:02:12.723Z"
-    },
-    {
-      "id": "t178658293272482",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-13T01:02:12.724Z",
-      "updated": "2026-08-13T01:09:13.838Z"
-    },
-    {
-      "id": "t178658335384036",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-13T01:09:13.840Z",
-      "updated": "2026-08-13T01:10:07.093Z"
-    },
-    {
-      "id": "t178658340709523",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-13T01:10:07.095Z",
-      "updated": "2026-08-13T01:10:20.610Z"
-    },
-    {
-      "id": "t178658342061295",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-13T01:10:20.612Z",
-      "updated": "2026-08-13T01:10:39.694Z"
-    },
-    {
-      "id": "t178658343969617",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-08-13T01:10:39.696Z",
-      "updated": "2026-08-13T01:11:07.221Z"
-    },
-    {
-      "id": "t178658346725813",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-13T01:11:07.258Z",
-      "updated": "2026-08-13T01:15:49.428Z"
-    },
-    {
-      "id": "t178658374942927",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-13T01:15:49.429Z",
-      "updated": "2026-08-13T01:17:31.634Z"
-    },
-    {
-      "id": "t178658385167031",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-13T01:17:31.670Z",
-      "updated": "2026-08-13T01:17:31.845Z"
-    },
-    {
-      "id": "t178658385184751",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-13T01:17:31.847Z",
-      "updated": "2026-08-13T01:17:47.625Z"
-    },
-    {
-      "id": "t178658386762912",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-13T01:17:47.629Z",
-      "updated": "2026-08-13T01:19:02.891Z"
-    },
-    {
-      "id": "t178658394289385",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-13T01:19:02.893Z",
-      "updated": "2026-08-13T01:19:22.226Z"
-    },
-    {
-      "id": "t178658396222773",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-13T01:19:22.227Z",
-      "updated": "2026-08-13T01:20:01.855Z"
-    },
-    {
       "id": "t178658400185792",
       "title": "Run seo",
       "status": "done",
@@ -479,33 +327,161 @@
       "agent": "publisher",
       "created": "2026-08-14T01:30:00.172Z",
       "updated": "2026-08-14T01:30:21.296Z"
+    },
+    {
+      "id": "t17867541681217",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-08-15T00:36:08.121Z",
+      "updated": "2026-08-15T00:36:08.304Z"
+    },
+    {
+      "id": "t178675416830522",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-08-15T00:36:08.305Z",
+      "updated": "2026-08-15T00:37:23.478Z"
+    },
+    {
+      "id": "t178675424347928",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-08-15T00:37:23.479Z",
+      "updated": "2026-08-15T00:38:09.271Z"
+    },
+    {
+      "id": "t178675428927345",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-15T00:38:09.273Z",
+      "updated": "2026-08-15T00:45:43.742Z"
+    },
+    {
+      "id": "t178675474374447",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-15T00:45:43.744Z",
+      "updated": "2026-08-15T00:47:18.497Z"
+    },
+    {
+      "id": "t178675483850073",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-15T00:47:18.500Z",
+      "updated": "2026-08-15T00:48:28.180Z"
+    },
+    {
+      "id": "t178675490818165",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-15T00:48:28.181Z",
+      "updated": "2026-08-15T00:48:56.718Z"
+    },
+    {
+      "id": "t178675493672117",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-08-15T00:48:56.721Z",
+      "updated": "2026-08-15T00:49:55.080Z"
+    },
+    {
+      "id": "t178675499511855",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-15T00:49:55.118Z",
+      "updated": "2026-08-15T00:57:59.272Z"
+    },
+    {
+      "id": "t178675547927380",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-15T00:57:59.273Z",
+      "updated": "2026-08-15T00:59:04.060Z"
+    },
+    {
+      "id": "t178675554409450",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-15T00:59:04.094Z",
+      "updated": "2026-08-15T00:59:04.272Z"
+    },
+    {
+      "id": "t178675554427321",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-15T00:59:04.273Z",
+      "updated": "2026-08-15T00:59:36.836Z"
+    },
+    {
+      "id": "t178675557683918",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-15T00:59:36.839Z",
+      "updated": "2026-08-15T01:01:09.294Z"
+    },
+    {
+      "id": "t178675566929646",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-15T01:01:09.296Z",
+      "updated": "2026-08-15T01:07:38.149Z"
+    },
+    {
+      "id": "t17867560581518",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-15T01:07:38.151Z",
+      "updated": "2026-08-15T01:08:05.646Z"
+    },
+    {
+      "id": "t178675608564868",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-15T01:08:05.648Z",
+      "updated": "2026-08-15T01:09:29.679Z"
+    },
+    {
+      "id": "t178675616968139",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-08-15T01:09:29.681Z",
+      "updated": "2026-08-15T01:11:44.175Z"
+    },
+    {
+      "id": "t178675630417650",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-15T01:11:44.177Z",
+      "updated": "2026-08-15T01:11:56.393Z"
+    },
+    {
+      "id": "t178675631639451",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-08-15T01:11:56.394Z",
+      "updated": "2026-08-15T01:12:16.169Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n17856361675670",
-      "level": "success",
-      "text": "4 hír + 4 útmutató publikálva (költség: $0.1232).",
-      "agent": "ceo",
-      "at": "2026-08-02T02:02:47.567Z",
-      "loud": false
-    },
-    {
-      "id": "n178566413694519",
-      "level": "warn",
-      "text": "📨 guide → ceo: Kell még adat: \"How to Plan a Week's Meals from What's Already in Your Fridge\" — az Ellenőrző tényt/forrást kér, amit ne",
-      "agent": "guide",
-      "at": "2026-08-02T09:48:56.945Z",
-      "loud": false
-    },
-    {
-      "id": "n178566423018083",
-      "level": "info",
-      "text": "SEO: 2 cikk optimalizálva (átlag 8.5/10).",
-      "agent": "seo",
-      "at": "2026-08-02T09:50:30.180Z",
-      "loud": false
-    },
     {
       "id": "n178566424889194",
       "level": "success",
@@ -1281,81 +1257,33 @@
       "agent": "ceo",
       "at": "2026-08-14T01:30:21.334Z",
       "loud": false
+    },
+    {
+      "id": "n178675630416690",
+      "level": "info",
+      "text": "SEO: 9 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-08-15T01:11:44.166Z",
+      "loud": false
+    },
+    {
+      "id": "n178675632567868",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). A line-up készen áll — a cikkek coherent mixöt alkotnak: praktikus AI-segítség mindennapi feladatokra (személyes levelezés, háziállat-őrzés, köszönetnyilvánítás) és fontos tudnivalók (adatvédelem, tén",
+      "agent": "publisher",
+      "at": "2026-08-15T01:12:05.678Z",
+      "loud": false
+    },
+    {
+      "id": "n178675633620813",
+      "level": "success",
+      "text": "5 hír + 4 útmutató publikálva (költség: $0.1348).",
+      "agent": "ceo",
+      "at": "2026-08-15T01:12:16.208Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178572260972882",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"AI Prompts for Football Fan Images: The Ultimate 2026 Guide\" — mi a baj: LEDE_TOO_LONG: A RÖVIDEN-doboz 64 szó (max ~45) — ami hosszú, az már nem \"röviden\".; US English: 'flavor' should be 'flavour' (British/Australian spelling); Step 6 is vague on how exactly to ask for edits — specify that you type the correction in the same chat",
-      "ref": "2026-08-03T01-49-28-320Z_pixlr_AI_Prompts_for_Football_Fan_Images__The_Ultimate_2.json",
-      "at": "2026-08-03T02:03:29.729Z"
-    },
-    {
-      "id": "m178572261677371",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"AI Visual Storytelling Trends to Watch This Spring\" — mi a baj: References 'GPT-5.6' in verified list but article does not mention it — no problem there. However, article mentions 'Adobe Firefly' as if it's a real product offering image generation alongside the listed names — Adobe Firefly is real, so this is fine. Wait, let me re-check: The article mentions 'OpenAI's Sora',",
-      "ref": "2026-08-03T01-49-28-320Z_pixlr_AI_Visual_Storytelling_Trends_to_Watch_This_Spring.json",
-      "at": "2026-08-03T02:03:36.773Z"
-    },
-    {
-      "id": "m178572273282898",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Wan 2.7 prompt guide: the formula plus 24 ready-to-use prompts\" — mi a baj: HOWTO_NO_STEPS: A cím utasítást ígér, de csak 0 számozott lépés-szakasz van (kell 4-6, \"## Step 1 — …\" formában), nem egyetlen összevont bekezdés.; Wan 2.7 is not described as Picsart's AI video model in the article — but more importantly, the article claims Wan 2.7 is a Picsart product with 'native ",
-      "ref": "2026-08-03T01-49-35-027Z_picsart_Wan_2_7_prompt_guide__the_formula_plus_24_ready-to.json",
-      "at": "2026-08-03T02:05:32.828Z"
-    },
-    {
-      "id": "m178572278441748",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"How to use Kling AI to create cinematic AI videos\" — mi a baj: Picsart's AI Video Generator offering Kling as a selectable model is not verifiable and likely fabricated — Picsart is a real photo/design platform, but I cannot confirm they offer Kling video generation as described (model selector dropdown, specific 'AI Video Generator' tool); The article presents the Picsart +",
-      "ref": "2026-08-03T01-49-35-028Z_picsart_How_to_use_Kling_AI_to_create_cinematic_AI_videos.json",
-      "at": "2026-08-03T02:06:24.417Z"
-    },
-    {
-      "id": "m178572280707482",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"AI Prompts for Football Fan Images: The Ultimate 2026 Guide\" — javítva: LEDE_TOO_LONG: A RÖVIDEN-doboz 64 szó (max ~45) — ami hosszú, az már nem \"röviden\".; US English: 'flavor' should be 'flavour' (British/Australian spelling); újraküldöm.",
-      "ref": "2026-08-03T01-49-28-320Z_pixlr_AI_Prompts_for_Football_Fan_Images__The_Ultimate_2.json",
-      "at": "2026-08-03T02:06:47.074Z"
-    },
-    {
-      "id": "m178572299601080",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"AI Visual Storytelling Trends to Watch This Spring\" — javítva: References 'GPT-5.6' in verified list but article does not mention it — no problem there. However, article mentions 'Adobe Firefly' as if it's a real product offering image generation alongside the listed names — Adobe Firefly is real, so this is fine. Wait, let me re-check: The article mentions 'OpenAI's Sora', 'Runway',",
-      "ref": "2026-08-03T01-49-28-320Z_pixlr_AI_Visual_Storytelling_Trends_to_Watch_This_Spring.json",
-      "at": "2026-08-03T02:09:56.010Z"
-    },
-    {
-      "id": "m178572304172346",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Wan 2.7 prompt guide: the formula plus 24 ready-to-use prompts\" — javítva: HOWTO_NO_STEPS: A cím utasítást ígér, de csak 0 számozott lépés-szakasz van (kell 4-6, \"## Step 1 — …\" formában), nem egyetlen összevont bekezdés.; Wan 2.7 is not described as Picsart's AI video model in the article — but more importantly, the article claims Wan 2.7 is a Picsart product with 'native audio gene",
-      "ref": "2026-08-03T01-49-35-027Z_picsart_Wan_2_7_prompt_guide__the_formula_plus_24_ready-to.json",
-      "at": "2026-08-03T02:10:41.723Z"
-    },
-    {
-      "id": "m178572306138142",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"How to use Kling AI to create cinematic AI videos\" — javítva: Picsart's AI Video Generator offering Kling as a selectable model is not verifiable and likely fabricated — Picsart is a real photo/design platform, but I cannot confirm they offer Kling video generation as described (model selector dropdown, specific 'AI Video Generator' tool); The article presents the Picsart + Kling int",
-      "ref": "2026-08-03T01-49-35-028Z_picsart_How_to_use_Kling_AI_to_create_cinematic_AI_videos.json",
-      "at": "2026-08-03T02:11:01.381Z"
-    },
     {
       "id": "m178572309901341",
       "from": "ellenorzo",
@@ -2642,6 +2570,78 @@
       "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"How to translate and understand other languages wi\" — The specific 300-500 word chunking recommendation is now outdated - modern AI models like Claude (200K tokens) and GPT-4 (128K tokens) can handle much larger texts",
       "ref": "ARTICLE_GUIDE_ai-translate.json",
       "at": "2026-08-14T16:41:44.489Z"
+    },
+    {
+      "id": "m178675475744852",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Previewing Ultrafast mode: GPT-5.6 Sol at up to 14X the speed\" — mi a baj: GPT-5.6 is listed as a verified-real name in the provided list, but the article does not reference it. However, I should check: The article mentions Cerebras as a company making custom AI chips, but Cerebras is NOT on the verified-real names list. While Cerebras is a real company, the article attribut",
+      "ref": "2026-08-14T01-01-26-375Z_openai-blog_Previewing_Ultrafast_mode__GPT-5_6_Sol_at_up_to_14.json",
+      "at": "2026-08-15T00:45:57.448Z"
+    },
+    {
+      "id": "m178675480050526",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Co-create slides with Copilot in PowerPoint for iPad\" — mi a baj: The article states 'Microsoft has rolled out its Copilot assistant ... into the iPad version of PowerPoint' and presents it as a new, recent development. As of available information, Microsoft 365 Copilot is not generally available in the PowerPoint iPad app in the manner described (a sparkly ribbon Copilot ic",
+      "ref": "2026-08-15T00-37-12-118Z_microsoft-365_Co-create_slides_with_Copilot_in_PowerPoint_for_iP.json",
+      "at": "2026-08-15T00:46:40.505Z"
+    },
+    {
+      "id": "m17867548765069",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Previewing Ultrafast mode: GPT-5.6 Sol at up to 14X the speed\" — javítva: GPT-5.6 is listed as a verified-real name in the provided list, but the article does not reference it. However, I should check: The article mentions Cerebras as a company making custom AI chips, but Cerebras is NOT on the verified-real names list. While Cerebras is a real company, the article attributes specifi",
+      "ref": "2026-08-14T01-01-26-375Z_openai-blog_Previewing_Ultrafast_mode__GPT-5_6_Sol_at_up_to_14.json",
+      "at": "2026-08-15T00:47:56.506Z"
+    },
+    {
+      "id": "m178675490817184",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Co-create slides with Copilot in PowerPoint for iPad\" — javítva: The article states 'Microsoft has rolled out its Copilot assistant ... into the iPad version of PowerPoint' and presents it as a new, recent development. As of available information, Microsoft 365 Copilot is not generally available in the PowerPoint iPad app in the manner described (a sparkly ribbon Copilot icon with a ",
+      "ref": "2026-08-15T00-37-12-118Z_microsoft-365_Co-create_slides_with_Copilot_in_PowerPoint_for_iP.json",
+      "at": "2026-08-15T00:48:28.171Z"
+    },
+    {
+      "id": "m17867549231325",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Previewing Ultrafast mode: GPT-5.6 Sol at up to 14X the speed\" — mi a baj: GPT-5.6 is listed as a verified-real name, but as of my knowledge there is no public OpenAI model named 'GPT-5.6'. It is presented as a current, released product ('OpenAI's GPT-5.6 is one of the reasons why'), which is a fabricated specific claim.",
+      "ref": "2026-08-14T01-01-26-375Z_openai-blog_Previewing_Ultrafast_mode__GPT-5_6_Sol_at_up_to_14.json",
+      "at": "2026-08-15T00:48:43.132Z"
+    },
+    {
+      "id": "m178675493670840",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Co-create slides with Copilot in PowerPoint for iPad\" (?/10)",
+      "ref": "2026-08-15T00-37-12-118Z_microsoft-365_Co-create_slides_with_Copilot_in_PowerPoint_for_iP.json",
+      "at": "2026-08-15T00:48:56.708Z"
+    },
+    {
+      "id": "m178675550688641",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Plan a 3‑day weekend road trip with Meta AI in 15 minutes\" — mi a baj: British spelling: 'favour' in the What this means for you section — change to 'favor' for US English compliance",
+      "ref": "GUIDE_plan-a-3-day-weekend-road-trip-with-meta-ai-in-15-minutes.json",
+      "at": "2026-08-15T00:58:26.886Z"
+    },
+    {
+      "id": "m178675631638527",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 20 → 5/4/2 oszlop.",
+      "ref": "mobile",
+      "at": "2026-08-15T01:11:56.385Z"
     }
   ]
 }

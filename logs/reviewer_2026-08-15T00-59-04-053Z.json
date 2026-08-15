@@ -1,0 +1,41 @@
+{
+  "started_at": "2026-08-15T00:57:59.435Z",
+  "total": 4,
+  "passed": 3,
+  "failed": 1,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.010804398000000002,
+  "by_article": [
+    {
+      "writer": "WRITER_GUIDE_draft-a-polite-out-of-office-reply-with-meta-ai-before-your-.json",
+      "article": "ARTICLE_GUIDE_draft-a-polite-out-of-office-reply-with-meta-ai-before-your-.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.00193887
+    },
+    {
+      "writer": "WRITER_GUIDE_plan-a-3-day-weekend-road-trip-with-meta-ai-in-15-minutes.json",
+      "rejected": "REJECTED_GUIDE_plan-a-3-day-weekend-road-trip-with-meta-ai-in-15-minutes.json",
+      "decision": "FAIL",
+      "score": 9,
+      "cost_usd": 0.00148415
+    },
+    {
+      "writer": "WRITER_GUIDE_translate-a-foreign-language-message-in-messenger-with-meta-.json",
+      "article": "ARTICLE_GUIDE_translate-a-foreign-language-message-in-messenger-with-meta-.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.00183249
+    },
+    {
+      "writer": "WRITER_GUIDE_turn-a-rough-brainstorm-into-a-clean-to-do-list.json",
+      "article": "ARTICLE_GUIDE_turn-a-rough-brainstorm-into-a-clean-to-do-list.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0026352
+    }
+  ],
+  "finished_at": "2026-08-15T00:59:04.053Z",
+  "duration_seconds": 64.618
+}

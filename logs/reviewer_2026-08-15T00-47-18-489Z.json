@@ -1,0 +1,42 @@
+{
+  "started_at": "2026-08-15T00:45:43.917Z",
+  "total": 6,
+  "passed": 4,
+  "failed": 0,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.01240291,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-08-15T00-37-12-117Z_nvidia-blog_Universitas_Gadjah_Mada__Indosat_and_NVIDIA_Open_I.json",
+      "article": "ARTICLE_2026-08-15T00-37-12-117Z_nvidia-blog_Universitas_Gadjah_Mada__Indosat_and_NVIDIA_Open_I.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.001496
+    },
+    {
+      "writer": "WRITER_2026-08-15T00-37-12-118Z_anthropic-blog_How_Claude__x27_s_text_watermarking_works___Anthro.json",
+      "article": "ARTICLE_2026-08-15T00-37-12-118Z_anthropic-blog_How_Claude__x27_s_text_watermarking_works___Anthro.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.001121904
+    },
+    {
+      "writer": "WRITER_2026-08-15T00-37-23-464Z_picsart_AI_color_grading_video_workflow__match_any_referen.json",
+      "article": "ARTICLE_2026-08-15T00-37-23-464Z_picsart_AI_color_grading_video_workflow__match_any_referen.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.00142695
+    },
+    {
+      "writer": "WRITER_2026-08-15T00-37-23-464Z_picsart_How_to_make_AI_fight_videos_with_one_workflow.json",
+      "article": "ARTICLE_2026-08-15T00-37-23-464Z_picsart_How_to_make_AI_fight_videos_with_one_workflow.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.00111486
+    }
+  ],
+  "truth_blocked": 2,
+  "finished_at": "2026-08-15T00:47:18.488Z",
+  "duration_seconds": 94.571
+}

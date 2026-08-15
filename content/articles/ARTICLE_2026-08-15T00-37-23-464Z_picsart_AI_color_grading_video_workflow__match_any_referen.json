@@ -1,0 +1,58 @@
+{
+  "_meta": {
+    "written_at": "2026-08-15T00:41:38.172Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.021404147999999998,
+    "original_draft": "2026-08-15T00-37-23-464Z_picsart_AI_color_grading_video_workflow__match_any_referen.json",
+    "source_id": "picsart",
+    "source_name": "PicsArt Blog (hivatalos)",
+    "source_link": "https://picsart.com/blog/ai-video-color-grading-workflow/",
+    "status": "published",
+    "published_at": "2026-08-15T00:47:05.281Z",
+    "slug": "ai-color-grading-from-a-reference-picture-what-it-actually-does",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 826
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Solid explainer that hits all structural marks — hook, plain-language definitions of technical terms (color grading, midtones, highlights), practical \"What this means for you\" section, and a wrap-up with a next step. The brand voice is friendly and non-judgmental throughout, the language is accessible to everyday creators, and no clichés or prohibited content detected. Factual claims are general and reasonable. Passes quality gate.",
+      "_aiCost": 0.00142695,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-08-15T00:49:45.594Z",
+    "guide_worthy": false,
+    "pairing_reason": "Article explains reference color grading as a general concept/category rather than introducing one specific named feature that users can go use",
+    "image_v": 2,
+    "image_at": "2026-08-15T01:08:32.951Z",
+    "seo": {
+      "meta_description": "AI color grading from a reference picture matches your video to any look—no manual editing required. See how it works.",
+      "keywords": [
+        "AI color grading",
+        "how to match video colors to a picture",
+        "video color grading AI",
+        "color grading from reference image",
+        "AI video editing tools",
+        "automatic video color correction",
+        "match video to reference photo"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Consider adding 'how to' in the title for better search intent match: 'How to Use AI Color Grading From a Reference Picture'",
+        "The article mentions 'Picsart Flow' - this brand name could be added as a keyword since users may search for it specifically",
+        "Add more long-tail keywords like 'beginner video color grading' to capture less technical searchers"
+      ],
+      "optimised_at": "2026-08-15T01:10:23.182Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"AI Color Grading From a Reference Picture: What It Actually Does\"\nsubtitle: \"A plain-English guide to one of the fastest new ways to make your videos match a look\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"video-editing\", \"color-grading\", \"ai-creative-tools\", \"picsart\"]\n---\n\n# AI Color Grading From a Reference Picture: What It Actually Does\n\n> **In short:** AI video editors can now match your footage's colors to a single reference picture, no slider tweaking required. Picsart Flow's video color grading workflow is one of the latest examples of this kind of tool.\n\nYou've shot something on your phone — daylight, decent but flat — and you want it to feel like a moody film scene. Five years ago that meant hours in editing software, slowly nudging sliders. Today you can hand the AI a screenshot of the look you want and let it figure out the rest.\n\n## What reference color grading actually means\n\nColor grading is the part of video editing where you change the colors, contrast, and overall mood of your footage. Traditionally it's done by adjusting a long list of manual sliders — things like lift, gamma, gain, temperature, and saturation — trying to match a specific look by eye.\n\nReference-based color grading flips the process. Instead of describing the look in words or tweaking sliders one by one, you give the editor a single picture that already looks the way you want. The AI studies that picture — its colors, contrast, shadow tone, highlight roll-off, overall warmth — and applies the same \"feel\" to your video.\n\nThink of it like handing a tailor a photo of a suit you like and saying \"make me one like this.\" The tailor doesn't need you to describe every detail; they can see it.\n\n## How the AI does it in plain English\n\nMost reference-matching tools follow the same general pattern:\n\n- **You pick a reference image** — a still frame from a film, a photograph, or a screenshot of a look you like.\n- **You pick the video you want to grade.**\n- **The AI studies both** — it pulls out the color palette, the contrast curve, and the mood.\n- **It applies a single grade** across your footage in one go.\n\nThe clever part is what happens in step three. The AI is not simply copying colors from the reference. It's learning the *relationship* between shadows, midtones (the middle brightness range), and highlights (the brightest parts), and recreating that relationship inside your video. This is why a single reference often works across many clips, even when they were shot in different lighting.\n\n## Why this is a bigger deal than it sounds\n\nThe shift is mostly about **speed**. A grade that used to eat up a big chunk of editing time can now take about as long as uploading two files. For anyone making short-form video, social content, or even short films, that changes what a one-person creator can realistically do in an afternoon:\n\n- Keep a consistent visual style across dozens of clips\n- Try out different \"looks\" without learning color theory\n- Rescue footage shot in flat lighting and give it character\n\n## A few habits that get better results\n\nThese come from how reference matching generally behaves, across Picsart Flow and similar editors:\n\n- **Match the lighting setup, not just the style.** A sunset reference applied to a flat-lit noon clip will produce muddy, washed-out results.\n- **Use a screenshot, not a photo of a screen.** You want accurate color information, not a picture the camera has already recolored.\n- **Start with your best-exposed footage.** The AI can polish; it cannot rescue something badly clipped.\n- **One reference is usually enough.** Layering multiple references tends to confuse the match rather than improve it.\n\n## What this means for you\n\n- **If you make videos for fun:** This is the easiest moment in years to start experimenting with cinematic looks. Pick a still from a movie you love and see what your phone footage looks like through that filter.\n- **If you run a small business or create content professionally:** Reference grading is one of the fastest ways to keep a consistent visual style across a whole batch of videos. Shoot once, grade fast, post often.\n- **If you're trying to decide whether to try an AI video editor:** A feature like this is a good sign that the tool is aimed at creators, not just engineers. If reference grading exists, the tool likely has other time-saving AI features worth exploring.\n\n## Wrap-up\n\nReference-based AI color grading is one of those small features that quietly removes a whole category of work. You no longer need to study color theory to make your footage look intentional — you just need a picture of how you want it to feel. Pick a tool that has the workflow, find a still frame you love, and see what your footage looks like through that lens.",
+  "original_title": "AI color grading video workflow: match any reference look"
+}

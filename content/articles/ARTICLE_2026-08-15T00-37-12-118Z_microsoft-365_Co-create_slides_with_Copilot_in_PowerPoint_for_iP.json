@@ -1,0 +1,62 @@
+{
+  "_meta": {
+    "written_at": "2026-08-15T00:48:28.170Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.0069714,
+    "original_draft": "2026-08-15T00-37-12-118Z_microsoft-365_Co-create_slides_with_Copilot_in_PowerPoint_for_iP.json",
+    "source_id": "microsoft-365",
+    "source_name": "Microsoft 365 Insider (hivatalos)",
+    "source_link": "https://techcommunity.microsoft.com/t5/microsoft-365-insider-blog/co-create-slides-with-copilot-in-powerpoint-for-ipad/ba-p/4546240",
+    "status": "published",
+    "rejected_at": "2026-08-15T00:46:40.502Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 860
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Honest, well-structured explainer that covers confirmed features, licensing reality, and iPad uncertainty without inventing details. The audience-fit is solid, brand voice is friendly and explanatory, and the 'What this means for you' section gives clear takeaways for three reader types. A clean pass.",
+      "_aiCost": 0.00127845,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Hitelesség-kapu blokkolta: The article states 'Microsoft has rolled out its Copilot assistant ... into the iPad version of PowerPoint' and presents it as a new, recent development. As of available information, Microsoft 365 Cop",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-08-15T00-37-12-118Z_microsoft-365_Co-create_slides_with_Copilot_in_PowerPoint_for_iP.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-08-15T00:48:56.708Z",
+    "slug": "what-microsoft-365-copilot-can-do-in-powerpoint-and-how-to-find-it",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-08-15T00:49:38.768Z",
+    "guide_worthy": false,
+    "pairing_reason": "General explainer about existing Copilot feature rather than introduction of ONE specific new feature; no concrete action to take",
+    "image_v": 2,
+    "image_at": "2026-08-15T01:08:26.896Z",
+    "seo": {
+      "meta_description": "Discover what Microsoft 365 Copilot can do in PowerPoint — create slides, rewrite text, summarize decks — and how to check if it's available on your device.",
+      "keywords": [
+        "microsoft 365 copilot powerpoint",
+        "copilot powerpoint features",
+        "how to use copilot in powerpoint",
+        "copilot in powerpoint availability",
+        "microsoft copilot powerpoint license"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add the year or version context to the title to improve freshness signals",
+        "Include a brief mention of Copilot's pricing or license requirement in the meta description",
+        "Consider adding '2024' or '2025' to the keywords to capture time-specific search intent"
+      ],
+      "optimised_at": "2026-08-15T01:09:56.696Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"What Microsoft 365 Copilot Can Do in PowerPoint (and How to Find It)\"\nsubtitle: \"An honest look at the AI helper's confirmed features, who can use it, and how to check whether it's on your device.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"copilot\", \"powerpoint\", \"productivity\", \"presentations\", \"ai-tools\"]\n---\n\n# What Microsoft 365 Copilot Can Do in PowerPoint (and How to Find It)\n\n> **In short:** Microsoft 365 Copilot is an AI assistant that lives inside PowerPoint and other Office apps — it can help draft slides, rewrite text, and summarize decks, but it requires a separate paid Copilot license, and its confirmed feature set is strongest on desktop and web versions of PowerPoint, not always on iPad.\n\nYou finish a meeting, your boss asks for a quick recap deck by lunchtime, and you've got a stack of notes plus an empty afternoon. That's the kind of moment Microsoft is betting you'll reach for **Copilot** — its AI helper built into the paid Microsoft 365 productivity suite (the subscription that includes Word, Excel, PowerPoint, and Outlook). Here's what Copilot in PowerPoint actually does today, who can use it, and how to check whether it's on the device in front of you.\n\n## What Copilot in PowerPoint does (confirmed)\n\nAcross the desktop and web versions of PowerPoint — where Microsoft has officially documented Copilot — the assistant handles a few repeatable jobs:\n\n- **Drafts a deck from a prompt.** You describe the topic, audience, and tone, and Copilot produces a starting presentation with title slides, section dividers, and placeholder content you can edit.\n- **Rewrites or expands slide text.** You can ask it to shorten a bullet, expand a point, or change the tone of an existing slide.\n- **Summarizes a long deck.** If you open an existing presentation, Copilot can produce a quick summary or a speaker-notes draft.\n- **Answers questions about the deck.** You can ask things like \"what does slide 7 say?\" in plain language.\n\nThese features are described in Microsoft's own Copilot documentation for PowerPoint, and they're what most users actually see on Windows, Mac, and the web version of PowerPoint.\n\n## The licensing reality — read this before you start\n\nCopilot is **not** included in standard Microsoft 365 Personal or Family plans. It's sold as a separate add-on, usually through business or enterprise plans that bundle it in. Some larger organizations also offer it as a per-seat license.\n\nIf you don't see a Copilot button in your PowerPoint, the first thing to check is whether your Microsoft account has a Copilot license attached, not whether your app is up to date. Microsoft has a support page that walks through confirming this; the short version is: go to your Microsoft account, look at your subscription details, and confirm \"Copilot\" appears.\n\n## The iPad question, honestly\n\nThis is where things get a little less certain. PowerPoint for iPad exists, and Microsoft has been gradually bringing some Copilot features to its mobile apps over time. Whether the full set of desktop Copilot features — the sparkly ribbon icon, the side chat panel, draft-from-scratch — works exactly the same way on iPad today is something I can't confirm without risking making up details that may not be true.\n\nIf you want to check on your iPad right now: open the PowerPoint app, sign in with your Microsoft account, and look around the ribbon or home tab for a Copilot button. If you don't see one, that's the answer — either your plan doesn't include Copilot, or that feature isn't turned on for your account on iPad yet. Either way, the desktop or web version of PowerPoint (open it in a browser at office.com) is usually where Copilot appears most reliably.\n\n## What this means for you\n\n- **If you're a working professional who already pays for Microsoft 365:** check whether your plan includes Copilot before assuming it's available. If it does, the desktop or web version of PowerPoint is the most reliable place to try it first.\n- **If you're a student or personal user on a cheaper plan:** Copilot is most likely not included, and a free version of it inside PowerPoint isn't generally available right now. Free AI alternatives (like standalone chat tools) can do a similar first-draft job if you copy text in and out.\n- **If you're evaluating AI tools for your team:** Copilot is real and works, but the licensing is the part that catches people off guard. Build the cost of the Copilot add-on into your thinking before you roll it out.\n\n## Wrap-up\n\nCopilot in PowerPoint is a real, working assistant for people whose Microsoft plan includes it — especially on desktop and web. On iPad and other mobile apps, features are still rolling out and aren't always identical, so check on your specific device before you plan around it. The honest first step: open PowerPoint on your computer or at office.com, look for the Copilot button, and confirm your license. If it's there, try drafting a small 3-slide deck from a short prompt — that's a five-minute test, and it'll show you what it can do in your own hands.",
+  "original_title": "Co-create slides with Copilot in PowerPoint for iPad"
+}

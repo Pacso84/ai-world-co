@@ -1,0 +1,58 @@
+{
+  "_meta": {
+    "written_at": "2026-08-15T00:42:24.430Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00287688,
+    "original_draft": "2026-08-15T00-37-12-118Z_anthropic-blog_How_Claude__x27_s_text_watermarking_works___Anthro.json",
+    "source_id": "anthropic-blog",
+    "source_name": "Anthropic (hivatalos)",
+    "source_link": "https://www.anthropic.com/news/claude-text-watermark",
+    "status": "published",
+    "published_at": "2026-08-15T00:46:20.393Z",
+    "slug": "how-ai-text-watermarks-will-work-and-why-it-matters",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 705
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Clean, well-structured explainer that meets all criteria. The hook is relatable, technical terms are explained in plain English (statistical fingerprint, detector), the EU AI Act is referenced neutrally as context rather than politics, and the What this means for you section offers practical guidance for four distinct reader types. No clichés, no invented facts, no bias. A solid publication.",
+      "_aiCost": 0.001121904,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-08-15T00:49:32.079Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is an explainer about text watermarking as a concept, not a specific feature users can use — the article states rollout is just beginning with no concrete action for ordinary people.",
+    "image_v": 2,
+    "image_at": "2026-08-15T01:08:18.067Z",
+    "seo": {
+      "meta_description": "Learn how AI tools like Claude embed invisible signatures in text — and why it matters for detecting AI-generated content in your daily life.",
+      "keywords": [
+        "ai text watermark",
+        "how to detect AI written text",
+        "AI generated content detection",
+        "what is AI watermark",
+        "identify AI written text",
+        "EU AI Act text watermarking",
+        "invisible AI signatures"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more concrete examples of how these watermarks actually work in practice",
+        "Include specific use cases showing when and why readers would want to detect AI text",
+        "Consider mentioning specific detection tools readers could try"
+      ],
+      "optimised_at": "2026-08-15T01:09:49.510Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"How AI Text Watermarks Will Work — And Why It Matters\"\nsubtitle: \"AI assistants are starting to embed invisible signatures in their text. Here's the plain-English guide to what that means for you.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"ai-watermarking\", \"claude\", \"ai-detection\", \"eu-ai-act\"]\n---\n\n# How AI Text Watermarks Will Work — And Why It Matters\n\n> **In short:** AI assistants, including Anthropic's Claude, are starting to embed invisible patterns into the text they generate. A separate tool can read that pattern and tell you the text was likely AI-written. The shift is partly driven by the EU AI Act.\n\nYou just finished reading a long LinkedIn post. Something about it felt a little too polished — but you can't quite put your finger on it. Did a person write this, or did an AI help?\n\nThat's exactly the question invisible \"signatures\" inside AI text are being designed to answer.\n\n## What is a text watermark, really?\n\nThink of it like the watermark you see on a banknote — except this one is hidden inside the words themselves.\n\nWhen an AI writes a sentence, it has many small choices to make: should the next word be \"big\" or \"large\"? \"However\" or \"but\"? A watermarked AI deliberately picks certain words more often than others, following a secret pattern only a matching detector (a small program built to spot the pattern) can recognize.\n\nThe text reads normally. There's no special font, no extra characters, no visible stamp. But buried in the statistical fingerprint of the word choices is a quiet \"yes, an AI made this.\"\n\n## Why is this happening now?\n\nThe biggest reason is the EU AI Act — a wide set of European rules about artificial intelligence, one part of which asks that AI-generated content be clearly identifiable. Watermarking is one of the cleanest ways to do that.\n\nThere's a practical reason too. Most free \"AI detectors\" today make a lot of mistakes — they flag real human writing as AI, and they miss real AI writing. A watermark is more reliable because it's added on purpose, not guessed after the fact.\n\n## What changes for you — and what doesn't\n\nThe change will be quiet. When you ask an AI to draft an email, summarize a meeting, or write a story, the output will still read the same. You won't see anything different on the screen.\n\nWhat you will see, eventually, is more honest answers when someone asks \"Was this written by an AI?\" A detector built to read the watermark will give a much more confident answer than today's guesswork.\n\nOne thing that won't change: the watermark only works for text produced by AIs that chose to add it. Older outputs, AIs from companies that don't watermark, and human writing all look the same to a detector — un-watermarked.\n\n## What this means for you\n\n- **If you're a student or writer**: Using AI as a helper is still fine in most contexts. The watermark mainly helps when there's a real question about authorship, not when you're honestly using AI as a tool.\n- **If you teach or edit**: This is good news. Today's AI detectors are noisy. A real watermark is more reliable, but wait until detectors for your specific AI are actually available before relying on them.\n- **If you use AI at work**: Keep using it for drafts, summaries, and ideas. The watermark lives in the background. You don't need to change how you work.\n- **If you just read things online**: Treat the watermark as another tool, not a verdict. It tells you a text was likely AI-assisted, not whether the information is true or useful.\n\n## Wrap-up\n\nText watermarks are a small, quiet change with a big purpose: making AI writing easier to identify, without putting a visible stamp on every paragraph. The rollout is just beginning, partly nudged along by the EU AI Act, and most users won't notice anything different in their daily work.\n\nA good next step: the next time you open your favorite AI assistant, check its version notes or release updates. That's where companies will tell you if the model you're using now adds an invisible signature to its output.",
+  "original_title": "How Claude&#x27;s text watermarking works \\ Anthropic"
+}

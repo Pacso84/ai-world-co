@@ -1,0 +1,60 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "turn-a-rough-brainstorm-into-a-clean-to-do-list",
+    "company": "",
+    "tool": "",
+    "icon": "📝",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-08-15T00:57:42.931Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00342552,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-08-15T00:59:04.052Z",
+    "slug": "turn-a-rough-brainstorm-into-a-clean-to-do-list-with-any-ai-assistant",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1632
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Excellent beginner guide with clear steps, helpful fallbacks for different devices and apps, and practical examples throughout. Tone is friendly and encouraging, structure is complete with all required sections, and US English is used correctly. Only minor improvement possible would be adding an explicit note about checking the extracted names/dates with meeting participants before sharing the list.",
+      "_aiCost": 0.0026352,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "image_v": 2,
+    "image_at": "2026-08-15T01:09:29.666Z",
+    "seo": {
+      "meta_description": "Learn how to use any AI assistant to turn messy meeting notes into organized to-do lists with owners and deadlines in under 5 minutes.",
+      "keywords": [
+        "how to turn notes into todo list with AI",
+        "AI to-do list from meeting notes",
+        "organize notes with AI assistant",
+        "convert brainstorm to action items AI",
+        "AI task management from messy notes",
+        "ChatGPT to-do list from notes"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add the phrase 'AI assistant' more prominently in the first paragraph to reinforce the main keyword",
+        "Consider mentioning specific prompt examples readers can copy-paste",
+        "Include a brief comparison of different AI assistants for this specific use case"
+      ],
+      "optimised_at": "2026-08-15T01:11:44.162Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Turn a rough brainstorm into a clean to-do list with any AI assistant\"\nsubtitle: \"Paste messy notes into any AI assistant and walk away with a structured list of who does what by when — no extra app needed.\"\ncategory: \"guide\"\naudience: \"both\"\ncompany: \"\"\ntool: \"\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"productivity\", \"getting-started\", \"prompting\"]\n---\n\n# Turn a rough brainstorm into a clean to-do list with any AI assistant\n\n> **In short:** Paste your messy meeting notes, voice memo, or brainstorm scribbles into any AI assistant with a clear instruction, and it pulls out a structured to-do list with owners and deadlines. You'll still need to double-check names and dates.\n\nBy the end of this guide, you'll be able to turn a chaotic page of notes into a tidy, shareable action list in under five minutes — using any AI assistant you already have access to. This is for anyone who's ever left a meeting (or a rambling voice memo) thinking, \"wait, what did I just agree to do?\"\n\n## Before you start\n- **An AI assistant you can sign into.** ChatGPT, Gemini, Claude, Copilot, Le Chat, and DeepSeek all work for this. A free account is enough; a paid plan just gives you longer inputs and faster replies.\n- **Your messy source material.** Copy-paste meeting notes, the transcript of a voice memo, or a long email thread. Aim for 50-2,000 words — that's the sweet spot.\n- **About 5 minutes.** The whole thing takes less time than rewriting your notes by hand.\n\n## Step 1 — Gather your messy notes in one place\nPull together whatever you have from the meeting, the brainstorm, or the voice memo. That can be a screenshot of a whiteboard, a voice memo transcript, bullet-point scribbles in a notes app, or a forwarded email chain. The messier the input, the more useful this trick becomes — you don't need to clean anything up first. Just dump it all into one chunk you can copy.\n\n**If it looks different on your device:** if your voice memo didn't auto-transcribe, open the Recorder or Voice Memos app, tap the clip, and look for a \"Transcript\" or \"Share\" option. If you only have a recording and no transcript, you can paste the audio file directly into some AI tools — or transcribe it first with a free tool like Whisper.\n\n💬 Example: *\"We had a 30-minute team sync. John said he'd send the updated deck by Wednesday. Maria worried the budget needs another pass. Sarah will book a follow-up with the design team. Someone needs to email the client about the new timeline, but nobody owned it. The launch is mid-October. We forgot to assign the QA checklist.\"*\n\nYou'll know it worked when you have one block of text (or one transcript) you can select and copy with Ctrl+C (Cmd+C on a Mac).\n\n## Step 2 — Open a fresh chat in any AI assistant\nOpen the AI tool of your choice and start a new, empty conversation. Don't paste this into a chat where you've been talking about something else — old messages can distract the assistant and confuse the output. The \"new chat\" button is usually at the top-left, sometimes inside a **+** or a pencil icon. After clicking, you'll see a blank text box with a Send button (often a paper-airplane or up-arrow) on the right.\n\n**If it looks different:** if you can't find a \"new chat\" button, look for a **+** near the top, or a sidebar on the left where each conversation is listed — your newest empty chat is usually the first item. On a phone app, the button might be hidden inside a **☰** menu.\n\nYou'll know it worked when you see a blinking text cursor inside an empty chat box, with no prior messages above it.\n\n## Step 3 — Paste your notes and ask for action items\nClick inside the empty chat box, paste your notes (Ctrl+V or Cmd+V), and then on a new line write a short, clear instruction telling the assistant what you want. The instruction is the secret ingredient — vague prompts give vague results. Be specific: ask for action items, owners (the person responsible), and deadlines.\n\n**If it looks different:** if pasting only pastes the first line, look for a paperclip or \"+\" icon next to the text box and choose \"Paste from clipboard\" or just paste again — most tools only accept plain text, so rich formatting (bold, colors) will be stripped, which is fine.\n\n💬 Example prompt to paste below your notes: *\"From the messy notes above, extract every action item as a bullet list. For each one, write: the action, the person who owns it (use their name from the notes; write 'unassigned' if unclear), and the deadline (use the date from the notes; write 'no deadline set' if missing). Skip anything that isn't a task.\"*\n\nYou'll know it worked when the assistant replies with a clean, structured list — usually within 10-30 seconds.\n\n## Step 4 — Read the list and check for missing pieces\nRead the assistant's reply slowly. The list usually looks something like a heading, then bullet points where each line is one action. Look for two things: action items the AI missed (especially soft commitments like \"we should…\" or \"someone ought to…\"), and any item where the owner or the deadline looks wrong. The AI guesses from context, so it can swap names or invent dates that sound plausible but aren't real — that's the main risk, and it's the one thing this trick can't fix on its own.\n\n**If it looks different:** some tools return their answer in a numbered list, others in a table, and a few return plain paragraphs. Any of those is fine — the format doesn't change whether the information is right.\n\nYou'll know it worked when you can read the list and say, out loud, \"yes, that's everything we agreed on\" — or you can point at the line that's wrong and tell the AI which fix to make.\n\n## Step 5 — Ask the AI to fill the gaps\nIf anything is missing or wrong, type a follow-up question in the same chat. The AI remembers the original notes and the list it just made, so you can ask for specific changes without re-pasting anything. This is where the list really gets clean. Common asks: \"add an action for the client email\", \"mark the QA checklist as unassigned\", or \"move the launch date to October 17\".\n\n**If it looks different:** if the AI gives a long apology and re-writes everything from scratch, just say \"no, only change the lines I mentioned\" — most assistants respect that on the second try.\n\n💬 Example: *\"Add one more action: 'Send updated timeline to client' — owner is unassigned, deadline is end of this week. Don't change anything else in the list.\"*\n\nYou'll know it worked when the revised list matches your memory of the meeting, and every line has either a real name or the word \"unassigned\".\n\n## Step 6 — Copy the clean list into your task app\nNow move the finished list to wherever you actually track work. That might be a project tool like Asana, Trello, or Notion, a shared Google Doc, or even a sticky note — the destination doesn't matter as long as the people named in the list will see it. Click into the AI's reply, select the list, copy, and paste it into the destination. From there, each person can be tagged or @-mentioned so the owners and deadlines don't get lost.\n\n**If it looks different:** if your task app supports importing text files, you can ask the AI to \"format this list as a CSV\" and then upload it. Some tools also offer an \"export\" or \"copy\" button in the corner of the reply — that's a faster way to grab just the list without extra paragraph text.\n\nYou'll know it worked when your task app shows the same list, with each line assigned to a person and a date, and the original messy notes are no longer needed.\n\n## Common mistakes\n- **Pasting without an instruction.** The AI will likely just summarize the notes instead of pulling out tasks. Always add the instruction line, or you'll get a recap, not a list.\n- **Trusting the owners and dates blindly.** The AI invents plausible names or deadlines when the notes are vague. Always skim the list with the people who were in the room (or on the call) before publishing.\n- **Stuffing in 20,000 words at once.** Most free AI tools cut off long inputs. If your notes are huge, split them into chunks by topic — one chunk per meeting — and run the same prompt on each separately, then merge the results.\n\n## What this means for you\n- **In everyday life:** you can turn a rambling voice memo from yourself — \"remind me to call Mom, pay the electricity, water the plants, book the dentist\" — into a tidy checklist in under a minute.\n- **For your business or work:** after every meeting, the same trick replaces 15 minutes of re-typing notes. It's especially useful for project retros and one-on-ones where actions often slip through.\n- **If you're just getting started:** try the prompt in Step 3 on the last email thread you sent — that's the easiest small example, and it proves the pattern works before you try a full meeting.\n\n## Try it now\nOpen your AI assistant, paste the example notes from Step 1 (or your own), and add the prompt from Step 3. Within a minute you'll have a structured action list you can copy into your task app — that's the whole trick, end to end.",
+  "original_title": "Turn a rough brainstorm into a clean to-do list"
+}

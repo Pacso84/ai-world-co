@@ -1,48 +1,4 @@
 {
-  "2026-07-24": [
-    {
-      "at": "2026-07-24T01:58:40.890Z",
-      "file": "WRITER_2026-07-23T01-48-48-122Z_midjourney-updates_V8_1_Updates.json",
-      "action": "block",
-      "reasons": [
-        "Midjourney V8.1 is fabricated — Midjourney's latest major version as of public knowledge is V6/V6.1 (with V7 in alpha at various points), not V8.1. The version number is invented.",
-        "Claim that SREFs and Moodboards are 'new-ish' features that V8.1 improves is unverifiable/fabricated as framed — these were introduced around V5/V6, not presented as new in a 'V8.1' release.",
-        "Specific UI claim that on midjourney.com the prompt box is 'labelled Imagine' and sits in the 'centre of the screen' cannot be verified for a non-existent V8.1 release.",
-        "Claim of a '+ icon on the left side of the prompt box' for image upload on the web interface is unverifiable."
-      ]
-    },
-    {
-      "at": "2026-07-24T01:58:47.570Z",
-      "file": "WRITER_2026-07-23T01-48-57-922Z_qwen-news_Qwen-Image-3_0__Rich_Content__Authentic_Details__D.json",
-      "action": "block",
-      "reasons": [
-        "The model name 'Qwen-Image-3.0' appears to be invented or incorrectly versioned. Alibaba's Qwen image model line is 'Qwen-Image' (released August 2025), not 'Qwen-Image-3.0'. No such version exists publicly.",
-        "The claim that Qwen-Image-3.0 is available with a 'free Qwen account' at 'chat.qwen.ai' for image generation attributes a specific UI capability to Qwen Chat that is not standard for text-to-image generation in that interface — Qwen Chat is primarily a chat assistant, not documented as a direct image generation portal for this model.",
-        "The claim that 'ModelScope at modelscope.cn' lets users 'try different model versions' of Qwen-Image-3.0 implies a specific hosted version that doesn't appear to exist under that name."
-      ]
-    },
-    {
-      "at": "2026-07-24T10:10:46.933Z",
-      "file": "WRITER_2026-07-23T01-48-34-084Z_google-workspace_Google_Meet_now_organizes_your_meeting_notes__tran.json",
-      "action": "block",
-      "reasons": [
-        "Google Meet recordings do not auto-collect into a top-level 'Google Meet' folder in Drive with subfolders per meeting — recordings still land in the host's Drive in the meeting owner's folder with no automatic per-meeting subfolder structure as described.",
-        "Google Meet does not have a 'Notes' feature powered by Gemini that 'joins the call as a note taker' — Gemini-powered 'Take notes for me' exists in Google Meet, but the article's description of the menu path (⋮ → Notes) and behavior is not accurately described as a separate folder-drop.",
-        "Google Meet captions are not saved as transcript files via the described menu path '⋮ → Captions → Save captions'; transcripts are generated from recorded meetings, not saved manually from a captions menu in this way.",
-        "Shortcuts appearing for attendees in their own 'Google Meet' folder is not a real feature — attendees get an email with a link to the recording in the host's Drive, not auto-created Drive shortcuts in a dedicated Meet folder."
-      ]
-    },
-    {
-      "at": "2026-07-24T10:16:06.967Z",
-      "file": "WRITER_2026-07-23T01-48-48-122Z_midjourney-updates_Relax_mode_for_V8_Alpha.json",
-      "action": "block",
-      "reasons": [
-        "The article claims that Midjourney's `/settings` panel contains a 'mode row' with 'pill-shaped buttons labelled Fast, Relax, and sometimes Turbo' — this is fabricated. Midjourney's settings panel does not have this UI; mode toggles are handled differently (e.g., via the /relax and /fast commands or in the web app), and 'Turbo' is not a Midjourney mode.",
-        "The article describes a specific web app UI: 'a small text label showing the current mode… usually with a little arrow or dropdown next to it' above/below the Generate button, and suggests looking under 'Job actions' or a three-dot menu — these UI elements are fabricated for Midjourney's web app.",
-        "The claim that Relax mode 'typically requires at least a Standard plan or higher' is presented as a specific tier fact without verification and may be wrong (Relax has historically been tied to Standard+ plans, but stating it as a definitive rule without hedging is risky)."
-      ]
-    }
-  ],
   "2026-07-25": [
     {
       "at": "2026-07-25T01:56:18.048Z",
@@ -347,6 +303,36 @@
       "action": "block",
       "reasons": [
         "Flux 3 in Picsart: I cannot verify that Picsart has a product or feature called 'Flux 3' that generates image, video, and audio from a single prompt. Picsart is a real company, but this specific feature name and its claimed capabilities (single prompt producing a 20-second video with matching audio) appear fabricated or unverified."
+      ],
+      "confidence": 6
+    }
+  ],
+  "2026-08-15": [
+    {
+      "at": "2026-08-15T00:45:57.449Z",
+      "file": "WRITER_2026-08-14T01-01-26-375Z_openai-blog_Previewing_Ultrafast_mode__GPT-5_6_Sol_at_up_to_14.json",
+      "action": "block",
+      "reasons": [
+        "GPT-5.6 is listed as a verified-real name in the provided list, but the article does not reference it. However, I should check: The article mentions Cerebras as a company making custom AI chips, but Cerebras is NOT on the verified-real names list. While Cerebras is a real company, the article attributes specific features to it ('processors designed for one thing only: feeding AI models as quickly as possible') - this is a real characterization of Cerebras but not a fabricated feature. The article doesn't really fabricate here. Let me reconsider.",
+        "Wait - re-reading the output discipline: I should only flag actual fabrications and not narrate my checking. Let me focus on what is actually fabricated in this article. The claims about 750 tokens per second and 14x faster speeds are presented as facts from 'recent previews' but I cannot verify these specific numbers. However, I cannot be sure these are fabricated either. The article is fairly hedged throughout. I don't see clear fabrications of UI elements, URLs, invented model names, invented prices, or features attributed to named tools that don't exist. The article doesn't even name a specific product feature that doesn't exist - it speaks generally about 'AI providers like OpenAI'. I'll mark this as credible=true."
+      ],
+      "confidence": 3
+    },
+    {
+      "at": "2026-08-15T00:46:40.506Z",
+      "file": "WRITER_2026-08-15T00-37-12-118Z_microsoft-365_Co-create_slides_with_Copilot_in_PowerPoint_for_iP.json",
+      "action": "block",
+      "reasons": [
+        "The article states 'Microsoft has rolled out its Copilot assistant ... into the iPad version of PowerPoint' and presents it as a new, recent development. As of available information, Microsoft 365 Copilot is not generally available in the PowerPoint iPad app in the manner described (a sparkly ribbon Copilot icon with a chat panel, draft-from-scratch, restyle whole deck, reorder slides by command). This describes functionality not confirmed to exist on the iPad PowerPoint client, attributing fabricated features to a named Microsoft product."
+      ],
+      "confidence": 7
+    },
+    {
+      "at": "2026-08-15T00:48:43.134Z",
+      "file": "WRITER_2026-08-14T01-01-26-375Z_openai-blog_Previewing_Ultrafast_mode__GPT-5_6_Sol_at_up_to_14.json",
+      "action": "block",
+      "reasons": [
+        "GPT-5.6 is listed as a verified-real name, but as of my knowledge there is no public OpenAI model named 'GPT-5.6'. It is presented as a current, released product ('OpenAI's GPT-5.6 is one of the reasons why'), which is a fabricated specific claim."
       ],
       "confidence": 6
     }
