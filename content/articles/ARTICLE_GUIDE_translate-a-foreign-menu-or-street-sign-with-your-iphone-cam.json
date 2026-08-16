@@ -1,0 +1,69 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "translate-a-foreign-menu-or-street-sign-with-your-iphone-cam",
+    "company": "Apple",
+    "tool": "Apple Intelligence",
+    "icon": "🌐",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-08-16T08:23:55.644Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.012011568,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "rejected_at": "2026-08-16T00:49:20.046Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1488
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [
+        "Live Text is the shortest official Apple tool name — use it consistently throughout rather than describing it by function"
+      ],
+      "verdict": "Solid guide with excellent step-by-step clarity and friendly tone. One minor issue: the intro says you tap only once but the actual flow requires two taps (Live Text icon + Translate). Minor inaccuracy but does not block publication.",
+      "_aiCost": 0.0013149,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Hitelesség-kapu blokkolta: The article claims iOS 16 supports the basic Camera translation (Live Text translation), but the in-camera Translate feature requires iOS 16 and the specific Translate app integration that Apple added",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_GUIDE_translate-a-foreign-menu-or-street-sign-with-your-iphone-cam.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-08-16T08:25:20.362Z",
+    "slug": "translate-a-foreign-menu-or-sign-right-from-your-iphone-camera",
+    "image_v": 2,
+    "image_at": "2026-08-16T08:25:47.890Z",
+    "seo": {
+      "meta_description": "Learn how to translate any foreign menu or sign using your iPhone camera in seconds—no typing or apps needed. Works with iOS 16+.",
+      "keywords": [
+        "how to translate foreign menu with iPhone",
+        "iPhone camera translate foreign text",
+        "Live Text translate feature iOS",
+        "translate sign with iPhone camera",
+        "translate menu without typing",
+        "Apple Translate foreign text camera",
+        "iOS 16 translate foreign language"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add the year or version number to the title for better freshness signals (e.g., '2024' or 'iOS 17'), which can help with time-sensitive searches",
+        "Include a brief list of supported languages in the first paragraph to capture language-specific search queries",
+        "Consider adding a section on common issues or tips for best results, as these often rank for 'how to' long-tail queries"
+      ],
+      "optimised_at": "2026-08-16T08:26:15.523Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Translate a Foreign Menu or Sign Right from Your iPhone Camera\"\nsubtitle: \"Point your iPhone camera at any foreign text and read it in English in seconds — no typing, no app downloads\"\ncategory: \"guide\"\naudience: \"personal\"\ncompany: \"Apple\"\ntool: \"\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"iphone\", \"translation\", \"travel\", \"camera\", \"live-text\"]\n---\n\n# Translate a Foreign Menu or Sign Right from Your iPhone Camera\n\n> **In short:** Open the Camera app, point at the text, tap the Live Text icon, then tap Translate — the English version appears in seconds, no typing required. You need iOS 16 or newer and the preinstalled Camera and Translate apps.\n\nStanding in a small restaurant in Tokyo, you hold the menu upside down and smile apologetically. Sound familiar? Your iPhone can read it for you, right now, in your pocket — you just need to know which button to press. One honest note before we start: this trick works because **Live Text** (Apple's built-in feature that reads words in photos) and **Translate** (a separate preinstalled app that turns text from one language to another) talk to each other. The Camera app won't auto-translate anything — you have to tap, but only once.\n\n## Before you start\n\n- An **iPhone running iOS 16 or newer** for the in-camera Translate feature (most iPhones from the last few years).\n- The **Camera** app and the **Translate** app — both come preinstalled on every iPhone, no downloads needed.\n- A working **internet connection** the first time you translate a new language; several common languages then work offline.\n- About **30 seconds per translation** once you get the hang of it.\n\n## Step 1 — Open the Camera app\n\nFind the **Camera** app on your Home Screen — the icon looks like a small gray camera lens. Tap it once. The viewfinder opens, showing whatever is in front of your rear camera. If your phone is locked, you can also **swipe left on the Lock Screen** to open Camera without typing your passcode.\n\nIf you accidentally open the front-facing (selfie) camera, look for a small **curved arrow icon** 🔄 near the shutter button and tap it to flip back to the rear lens — the rear lens is the one that \"reads\" text well, because it has a higher-resolution sensor.\n\nIf you can't find Camera on your Home Screen, swipe down from the middle of any Home Screen page and search \"Camera,\" or check the App Library by swiping right past your last Home Screen page.\n\nYou'll know it worked when the live view fills the screen and shows the scene in front of you.\n\n## Step 2 — Aim your iPhone at the foreign text\n\nHold the phone steady, about **6–12 inches (15–30 cm)** from the words you want translated. A menu, a street sign, a book page, a museum placard — all of these work. Slowly tilt the phone or move a little closer until the words look crisp on screen.\n\nIf the text is small, on a curve (a coffee cup, a bottle), or behind glass, move a bit closer. If the image looks shaky or blurry, **tap once directly on the words** — that forces the camera to focus on them and sharpens the picture for reading.\n\nYou'll know it worked when the text on screen looks sharp and a small icon appears in the bottom-right corner that looks like **three lines of text inside a square**.\n\n💬 Example: aim at a French menu line that reads \"Soupe à l'oignon, 8€\" — once the camera focuses, the Live Text icon pops up.\n\n## Step 3 — Tap the Live Text icon\n\nThat little **lines-of-text-in-a-square icon** is Apple's way of saying: \"I see words here, and I can read them.\" Tap it once. The text on screen highlights in a soft yellow or blue color, as if someone ran a highlighter across each word. At this point the phone has only **recognized** the letters — it has not translated them yet. That happens in the next step.\n\nIf no icon appears, try moving the camera an inch closer or farther, or tap the words directly to wake up the detection. If the icon still doesn't show up, your software may be out of date — go to **Settings → General → Software Update** and install the latest iOS version.\n\nYou'll know it worked when the words on screen light up in color.\n\n## Step 4 — Choose Translate from the pop-up menu\n\nOnce the words are highlighted, a small menu appears near your finger. It usually shows options like **Copy**, **Look Up**, **Share**, and — the one you want — **Translate**. Tap **Translate**.\n\nA translation panel slides up from the bottom of the screen. The original text sits on top; the English version appears just below it. If your phone's main language is something other than English, the panel might show that language first — tap the **small language name at the top** of the panel to switch the output to English.\n\nIf you don't see \"Translate\" in the menu, look in the same pop-up but scroll sideways; on some iPhones the option sits a swipe away from the visible choices.\n\nYou'll know it worked when you see two versions of the same text — the original and the English — stacked together.\n\n💬 Example: pointing at \"Soupe à l'oignon, 8€\" should give you \"Onion soup, €8\" in well under a second.\n\n## Step 5 — Read the translation at your own pace\n\nThe English text stays on screen as long as you keep the Camera app open and pointed at the original. Read it slowly. Tilt the phone a little to compare the original and the translation side by side. If the camera loses focus, just point back at the text and the translation reappears.\n\nTwo honest limits worth knowing: very stylized fonts (the fancy cursive on wedding invitations), handwriting, and faded old signs can confuse the camera and produce no icon. And the translation is excellent for everyday language — restaurant dishes, signs, simple instructions — but it can stumble on poetry, slang, or very technical medical or legal terms.\n\nYou'll know it worked when you can read the English meaning clearly without typing a single word.\n\n## Step 6 — Save a photo if you want to keep the translation\n\nIf you'd like a permanent copy — for a trip diary, to share with a friend, or to look up later — press the **round white shutter button** at the bottom of the screen. The photo saves to your Photos app, and a small thumbnail appears in the bottom-left corner of the Camera screen.\n\nLater, when you open that photo in Photos, you'll see the same Live Text icon in the corner. Tap it, choose **Translate**, and the English version pops up again — even without internet, for languages already cached on your phone.\n\nIf you only needed the translation for right now, just **swipe up from the bottom** to close the Camera app, or press the Home button. Nothing is saved, nothing to delete later.\n\nYou'll know it worked when a small thumbnail appears in the bottom-left corner — or when the app closes and you're back on your Home Screen.\n\n## Common mistakes\n\n- **Holding the phone too far away.** Live Text needs to see the letters clearly. If no icon appears, move closer — about the distance between your hand and a paperback book is usually right.\n- **Pointing at glossy or curved surfaces.** Text on a wine bottle, a coffee cup, or behind glass can be hard to read. Try straightening the angle or moving the phone a few inches to one side to kill the glare.\n- **Expecting the camera to translate automatically.** Unlike some translation apps that overlay text in real time, the iPhone Camera app requires you to tap the Live Text icon first. If a translation never appears without tapping, that's normal — it's how this flow is designed.\n\n## What this means for you\n\n- **In everyday life:** you can read signs, instructions, and labels on the go — at airports, train stations, pharmacies, and grocery stores — without typing or copy-pasting anything.\n- **For your travel or work:** if you travel, host visitors, or work with people who speak another language, this turns your iPhone into a quiet, polite translator. Show the translation on the screen instead of fumbling with phrasebooks.\n- **If you're just getting started:** try the easiest thing first — point at one piece of text in a book, magazine, or product label, and watch it turn into English. That's the whole trick.\n\n## Try it now\n\nGrab any book, magazine, or product label with words on it. Open the Camera app, point at the words, and tap the little **lines-in-a-square** icon when it appears in the corner. You'll have a translation in under five seconds.",
+  "original_title": "Translate a foreign menu or street sign with your iPhone camera"
+}

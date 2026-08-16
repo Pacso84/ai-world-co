@@ -1,118 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178667100017246",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-08-14T01:30:00.172Z",
-      "updated": "2026-08-14T01:30:21.296Z"
-    },
-    {
-      "id": "t17867541681217",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-08-15T00:36:08.121Z",
-      "updated": "2026-08-15T00:36:08.304Z"
-    },
-    {
-      "id": "t178675416830522",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-08-15T00:36:08.305Z",
-      "updated": "2026-08-15T00:37:23.478Z"
-    },
-    {
-      "id": "t178675424347928",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-08-15T00:37:23.479Z",
-      "updated": "2026-08-15T00:38:09.271Z"
-    },
-    {
-      "id": "t178675428927345",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-15T00:38:09.273Z",
-      "updated": "2026-08-15T00:45:43.742Z"
-    },
-    {
-      "id": "t178675474374447",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-15T00:45:43.744Z",
-      "updated": "2026-08-15T00:47:18.497Z"
-    },
-    {
-      "id": "t178675483850073",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-15T00:47:18.500Z",
-      "updated": "2026-08-15T00:48:28.180Z"
-    },
-    {
-      "id": "t178675490818165",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-15T00:48:28.181Z",
-      "updated": "2026-08-15T00:48:56.718Z"
-    },
-    {
-      "id": "t178675493672117",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-08-15T00:48:56.721Z",
-      "updated": "2026-08-15T00:49:55.080Z"
-    },
-    {
-      "id": "t178675499511855",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-15T00:49:55.118Z",
-      "updated": "2026-08-15T00:57:59.272Z"
-    },
-    {
-      "id": "t178675547927380",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-15T00:57:59.273Z",
-      "updated": "2026-08-15T00:59:04.060Z"
-    },
-    {
-      "id": "t178675554409450",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-15T00:59:04.094Z",
-      "updated": "2026-08-15T00:59:04.272Z"
-    },
-    {
-      "id": "t178675554427321",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-15T00:59:04.273Z",
-      "updated": "2026-08-15T00:59:36.836Z"
-    },
-    {
-      "id": "t178675557683918",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-15T00:59:36.839Z",
-      "updated": "2026-08-15T01:01:09.294Z"
-    },
-    {
       "id": "t178675566929646",
       "title": "Run guide",
       "status": "done",
@@ -479,41 +367,121 @@
       "agent": "publisher",
       "created": "2026-08-16T00:54:44.890Z",
       "updated": "2026-08-16T00:55:04.887Z"
+    },
+    {
+      "id": "t17868681383793",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-08-16T08:15:38.379Z",
+      "updated": "2026-08-16T08:15:38.560Z"
+    },
+    {
+      "id": "t178686813856234",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-08-16T08:15:38.562Z",
+      "updated": "2026-08-16T08:15:56.917Z"
+    },
+    {
+      "id": "t178686815691983",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-08-16T08:15:56.919Z",
+      "updated": "2026-08-16T08:15:57.120Z"
+    },
+    {
+      "id": "t178686815712242",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-16T08:15:57.122Z",
+      "updated": "2026-08-16T08:15:57.294Z"
+    },
+    {
+      "id": "t178686815729575",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-16T08:15:57.295Z",
+      "updated": "2026-08-16T08:16:11.167Z"
+    },
+    {
+      "id": "t178686817117016",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-16T08:16:11.170Z",
+      "updated": "2026-08-16T08:16:37.409Z"
+    },
+    {
+      "id": "t178686819741130",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-16T08:16:37.411Z",
+      "updated": "2026-08-16T08:16:45.259Z"
+    },
+    {
+      "id": "t178686820526299",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-16T08:16:45.262Z",
+      "updated": "2026-08-16T08:23:55.653Z"
+    },
+    {
+      "id": "t178686863565598",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-16T08:23:55.655Z",
+      "updated": "2026-08-16T08:25:20.373Z"
+    },
+    {
+      "id": "t178686872037597",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-08-16T08:25:20.375Z",
+      "updated": "2026-08-16T08:25:20.586Z"
+    },
+    {
+      "id": "t178686872065527",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-16T08:25:20.655Z",
+      "updated": "2026-08-16T08:25:47.905Z"
+    },
+    {
+      "id": "t178686874790668",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-08-16T08:25:47.906Z",
+      "updated": "2026-08-16T08:26:15.535Z"
+    },
+    {
+      "id": "t178686877553788",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-16T08:26:15.537Z",
+      "updated": "2026-08-16T08:26:22.322Z"
+    },
+    {
+      "id": "t178686878232365",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-08-16T08:26:22.323Z",
+      "updated": "2026-08-16T08:26:40.461Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178580758805438",
-      "level": "info",
-      "text": "SEO: 9 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-08-04T01:39:48.054Z",
-      "loud": false
-    },
-    {
-      "id": "n178580759905766",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The line-up looks strong — mix of practical how-tos, privacy awareness, and heartfelt use cases. Just a quick note: Articles 2 and 7 need minor tool-name fixes per our style guide (keep them as \"Perpl",
-      "agent": "publisher",
-      "at": "2026-08-04T01:39:59.057Z",
-      "loud": false
-    },
-    {
-      "id": "n178580760758477",
-      "level": "success",
-      "text": "5 hír + 4 útmutató publikálva (költség: $0.0924).",
-      "agent": "ceo",
-      "at": "2026-08-04T01:40:07.584Z",
-      "loud": false
-    },
-    {
-      "id": "n178583961189477",
-      "level": "info",
-      "text": "SEO: 1 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-08-04T10:33:31.894Z",
-      "loud": false
-    },
     {
       "id": "n178583963685131",
       "level": "success",
@@ -1281,108 +1249,41 @@
       "agent": "ceo",
       "at": "2026-08-16T00:55:04.922Z",
       "loud": false
+    },
+    {
+      "id": "n178686850980659",
+      "level": "warn",
+      "text": "📨 guide → ceo: Kell még adat: \"Get a quick summary of unread emails with Apple Mail's priority messages\" — az Ellenőrző tényt/forrást k",
+      "agent": "guide",
+      "at": "2026-08-16T08:21:49.806Z",
+      "loud": false
+    },
+    {
+      "id": "n178686877552741",
+      "level": "info",
+      "text": "SEO: 3 cikk optimalizálva (átlag 8.3/10).",
+      "agent": "seo",
+      "at": "2026-08-16T08:26:15.527Z",
+      "loud": false
+    },
+    {
+      "id": "n178686878902981",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The line-up looks solid and ready — you have a nice mix of practical how-tos (fact-checking, privacy, pet-sitting agreements) and everyday writing tasks (complaint emails, speeches, sympathy messages)",
+      "agent": "publisher",
+      "at": "2026-08-16T08:26:29.029Z",
+      "loud": false
+    },
+    {
+      "id": "n17868688005009",
+      "level": "success",
+      "text": "0 hír + 3 útmutató publikálva (költség: $0.0124).",
+      "agent": "ceo",
+      "at": "2026-08-16T08:26:40.500Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178580707283944",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"How to Practise a Job Interview Out Loud with ChatGPT's Voice Mode\" — mi a baj: Title uses British spelling 'Practise' — should be US 'Practice'; Inconsistent spelling: title says 'Practise' but body says 'Practicing'",
-      "ref": "GUIDE_how-to-practise-a-job-interview-out-loud-with-chatgpt-s-voic.json",
-      "at": "2026-08-04T01:31:12.839Z"
-    },
-    {
-      "id": "m178580708901367",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"How to Practise a Job Interview Out Loud with ChatGPT's Voice Mode\" — javítva: Title uses British spelling 'Practise' — should be US 'Practice'; Inconsistent spelling: title says 'Practise' but body says 'Practicing'; újraküldöm.",
-      "ref": "GUIDE_how-to-practise-a-job-interview-out-loud-with-chatgpt-s-voic.json",
-      "at": "2026-08-04T01:31:29.013Z"
-    },
-    {
-      "id": "m178580710790189",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"How to Practise a Job Interview Out Loud with ChatGPT's Voice Mode\" (?/10)",
-      "ref": "GUIDE_how-to-practise-a-job-interview-out-loud-with-chatgpt-s-voic.json",
-      "at": "2026-08-04T01:31:47.901Z"
-    },
-    {
-      "id": "m178580759247172",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-08-04T01:39:52.471Z"
-    },
-    {
-      "id": "m178580866537112",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-08-04T01:57:45.371Z"
-    },
-    {
-      "id": "m178583962995473",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-08-04T10:33:49.954Z"
-    },
-    {
-      "id": "m178584018849735",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-08-04T10:43:08.497Z"
-    },
-    {
-      "id": "m178586518113852",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-08-04T17:39:41.138Z"
-    },
-    {
-      "id": "m178586633395671",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-08-04T17:58:53.957Z"
-    },
-    {
-      "id": "m178589364951525",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "info",
-      "text": "A \"Gemini in Google Classroom is expanding to users of all\" hír a meglévő útmutatóra mutat: gemini-getting-started",
-      "ref": "gemini-getting-started",
-      "at": "2026-08-05T01:34:09.515Z"
-    },
-    {
-      "id": "m178589399391978",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-08-05T01:39:53.919Z"
-    },
     {
       "id": "m178589446597678",
       "from": "social",
@@ -2640,6 +2541,107 @@
       "text": "6 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-08-16T01:04:22.024Z"
+    },
+    {
+      "id": "m178686817115744",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"This Week in AI: The 5 Stories That Matter (August 16, 2026)\" — mi a baj: NO_LEDE: Hiányzik a RÖVIDEN-doboz (> **In short:** …) közvetlenül a főcím után — az AI-keresők és a Google kivonat-doboza ezt olvassák (style-guide 2a).; '透明度' is Chinese characters in an English article — use 'transparency' instead; untranslated text breaks the reading experience for English-only read",
+      "ref": "2026-08-16T00-55-15-136Z_aiworld-editorial_This_Week_in_AI.json",
+      "at": "2026-08-16T08:16:11.157Z"
+    },
+    {
+      "id": "m178686819740045",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"This Week in AI: The 5 Stories That Matter (August 16, 2026)\" — javítva: NO_LEDE: Hiányzik a RÖVIDEN-doboz (> **In short:** …) közvetlenül a főcím után — az AI-keresők és a Google kivonat-doboza ezt olvassák (style-guide 2a).; '透明度' is Chinese characters in an English article — use 'transparency' instead; újraküldöm.",
+      "ref": "2026-08-16T00-55-15-136Z_aiworld-editorial_This_Week_in_AI.json",
+      "at": "2026-08-16T08:16:37.400Z"
+    },
+    {
+      "id": "m178686820524879",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"This Week in AI: The 5 Stories That Matter (August 16, 2026)\" — mi a baj: One headline mentions both ChatGPT and Claude, but the linked article URL only references ChatGPT—verify that both assistants connect to Dropbox, or adjust the wording; The Samsung sleep-tracker claim has no named source or link—consider adding a brief attribution note for reader trust",
+      "ref": "2026-08-16T00-55-15-136Z_aiworld-editorial_This_Week_in_AI.json",
+      "at": "2026-08-16T08:16:45.248Z"
+    },
+    {
+      "id": "m178686850980533",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Get a quick summary of unread emails with Apple Mail's priority messages\" — javítva: The article claims Apple Mail has a dedicated 'Priority Messages' section at the top of the inbox that is generated by Apple Intelligence. This is not a real feature in Apple Mail — Apple Mail does have a Priority inbox (an older Gmail-style feature predating Apple Intelligence), but it is not an App",
+      "ref": "GUIDE_get-a-quick-summary-of-unread-emails-with-apple-mail-s-prior.json",
+      "at": "2026-08-16T08:21:49.805Z"
+    },
+    {
+      "id": "m178686850980686",
+      "from": "guide",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Kell még adat: \"Get a quick summary of unread emails with Apple Mail's priority messages\" — az Ellenőrző tényt/forrást kér, amit nem találhatok ki: iOS 18.1 / iPadOS 18.1 / macOS Sequoia 15.1 version numbers as the launch point for these specific Apple Intelligence Mail features may not be accurate (Apple Intelligence Mail summarization launched with iOS 18.2 in some regions, not 18.1).",
+      "ref": "GUIDE_get-a-quick-summary-of-unread-emails-with-apple-mail-s-prior.json",
+      "open": false,
+      "at": "2026-08-16T08:21:49.806Z",
+      "resolved_at": "2026-08-16T08:24:29.558Z"
+    },
+    {
+      "id": "m178686852924012",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Transcribe and summarize a voice memo on your iPhone with Apple Intelligence\" — javítva: LEDE_TOO_LONG: A RÖVIDEN-doboz 66 szó (max ~45) — ami hosszú, az már nem \"röviden\".; The article claims Apple Intelligence's summary step works inside the Voice Memos app or via Writing Tools on a pasted transcript in Notes. In reality, Apple Intelligence's Writing Tools / Summarize operate on se",
+      "ref": "GUIDE_transcribe-and-summarize-a-voice-memo-on-your-iphone-with-ap.json",
+      "at": "2026-08-16T08:22:09.240Z"
+    },
+    {
+      "id": "m178686863564542",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Translate a foreign menu or street sign with your iPhone camera\" — javítva: The article claims iOS 16 supports the basic Camera translation (Live Text translation), but the in-camera Translate feature requires iOS 16 and the specific Translate app integration that Apple added later; more importantly, the article attributes an automatic hands-free \"Live Translation\" feature to Apple I",
+      "ref": "GUIDE_translate-a-foreign-menu-or-street-sign-with-your-iphone-cam.json",
+      "at": "2026-08-16T08:23:55.645Z"
+    },
+    {
+      "id": "m17868686695575",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Get a quick summary of unread emails with Apple Mail's priority messages\" (?/10)",
+      "ref": "GUIDE_get-a-quick-summary-of-unread-emails-with-apple-mail-s-prior.json",
+      "at": "2026-08-16T08:24:29.557Z"
+    },
+    {
+      "id": "m17868687023141",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Transcribe and summarize a voice memo on your iPhone with Apple Intelligence\" (?/10)",
+      "ref": "GUIDE_transcribe-and-summarize-a-voice-memo-on-your-iphone-with-ap.json",
+      "at": "2026-08-16T08:25:02.314Z"
+    },
+    {
+      "id": "m178686872036329",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Translate a foreign menu or street sign with your iPhone camera\" (?/10)",
+      "ref": "GUIDE_translate-a-foreign-menu-or-street-sign-with-your-iphone-cam.json",
+      "at": "2026-08-16T08:25:20.363Z"
+    },
+    {
+      "id": "m178686878231249",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 20 → 5/4/2 oszlop.",
+      "ref": "mobile",
+      "at": "2026-08-16T08:26:22.312Z"
     }
   ]
 }
