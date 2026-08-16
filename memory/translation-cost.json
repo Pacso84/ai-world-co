@@ -2,11 +2,6 @@
   "_comment": "Gördülő átlag egy fordítás árára (utolsó 20 futás). A core/daily-report.js ebből jelzi előre a hátralék várható költségét.",
   "runs": [
     {
-      "at": "2026-08-10T17:06:57.090Z",
-      "n": 15,
-      "usd": 0.070522
-    },
-    {
       "at": "2026-08-10T18:41:52.398Z",
       "n": 1,
       "usd": 0.003485
@@ -100,7 +95,12 @@
       "at": "2026-08-15T08:23:12.690Z",
       "n": 6,
       "usd": 0.01905
+    },
+    {
+      "at": "2026-08-16T00:59:40.568Z",
+      "n": 20,
+      "usd": 0.058692
     }
   ],
-  "avg_usd_per_translation": 0.004939
+  "avg_usd_per_translation": 0.004687
 }
