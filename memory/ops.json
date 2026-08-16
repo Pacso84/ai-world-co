@@ -1,102 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178675566929646",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-15T01:01:09.296Z",
-      "updated": "2026-08-15T01:07:38.149Z"
-    },
-    {
-      "id": "t17867560581518",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-15T01:07:38.151Z",
-      "updated": "2026-08-15T01:08:05.646Z"
-    },
-    {
-      "id": "t178675608564868",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-15T01:08:05.648Z",
-      "updated": "2026-08-15T01:09:29.679Z"
-    },
-    {
-      "id": "t178675616968139",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-08-15T01:09:29.681Z",
-      "updated": "2026-08-15T01:11:44.175Z"
-    },
-    {
-      "id": "t178675630417650",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-15T01:11:44.177Z",
-      "updated": "2026-08-15T01:11:56.393Z"
-    },
-    {
-      "id": "t178675631639451",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-08-15T01:11:56.394Z",
-      "updated": "2026-08-15T01:12:16.169Z"
-    },
-    {
-      "id": "t178678167753644",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-08-15T08:14:37.536Z",
-      "updated": "2026-08-15T08:14:37.689Z"
-    },
-    {
-      "id": "t178678167769195",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-08-15T08:14:37.691Z",
-      "updated": "2026-08-15T08:14:59.942Z"
-    },
-    {
-      "id": "t178678169994329",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-08-15T08:14:59.943Z",
-      "updated": "2026-08-15T08:15:17.192Z"
-    },
-    {
-      "id": "t178678171719486",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-15T08:15:17.194Z",
-      "updated": "2026-08-15T08:15:17.346Z"
-    },
-    {
-      "id": "t178678171734860",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-15T08:15:17.348Z",
-      "updated": "2026-08-15T08:15:17.499Z"
-    },
-    {
-      "id": "t178678171750169",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-15T08:15:17.501Z",
-      "updated": "2026-08-15T08:15:35.738Z"
-    },
-    {
       "id": "t178678173574048",
       "title": "Run ellenorzo",
       "status": "done",
@@ -479,33 +383,105 @@
       "agent": "publisher",
       "created": "2026-08-16T08:26:22.323Z",
       "updated": "2026-08-16T08:26:40.461Z"
+    },
+    {
+      "id": "t17868967243225",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-08-16T16:12:04.322Z",
+      "updated": "2026-08-16T16:12:04.493Z"
+    },
+    {
+      "id": "t178689672449495",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-08-16T16:12:04.494Z",
+      "updated": "2026-08-16T16:13:10.249Z"
+    },
+    {
+      "id": "t178689679025172",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-08-16T16:13:10.251Z",
+      "updated": "2026-08-16T16:13:10.449Z"
+    },
+    {
+      "id": "t178689679045187",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-16T16:13:10.451Z",
+      "updated": "2026-08-16T16:13:10.616Z"
+    },
+    {
+      "id": "t178689679061863",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-16T16:13:10.618Z",
+      "updated": "2026-08-16T16:13:10.784Z"
+    },
+    {
+      "id": "t178689679078633",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-16T16:13:10.786Z",
+      "updated": "2026-08-16T16:13:21.247Z"
+    },
+    {
+      "id": "t178689680124825",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-16T16:13:21.248Z",
+      "updated": "2026-08-16T16:13:34.275Z"
+    },
+    {
+      "id": "t178689681427710",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-08-16T16:13:34.277Z",
+      "updated": "2026-08-16T16:13:41.265Z"
+    },
+    {
+      "id": "t178689682130759",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-16T16:13:41.307Z",
+      "updated": "2026-08-16T16:13:51.437Z"
+    },
+    {
+      "id": "t178689683143941",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-08-16T16:13:51.439Z",
+      "updated": "2026-08-16T16:14:10.203Z"
+    },
+    {
+      "id": "t178689685020545",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-16T16:14:10.205Z",
+      "updated": "2026-08-16T16:14:21.971Z"
+    },
+    {
+      "id": "t178689686197327",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-08-16T16:14:21.973Z",
+      "updated": "2026-08-16T16:14:40.680Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178583963685131",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). A line-up egységes és kész a publikálásra – a cikkek kellemesen ötvözik az általános AI-útmutatókat konkrét felhasználási esetekkel. Egy dologra érdemes figyelni: a márkanevek nem egységesek (Perplexi",
-      "agent": "publisher",
-      "at": "2026-08-04T10:33:56.851Z",
-      "loud": false
-    },
-    {
-      "id": "n178583964600282",
-      "level": "success",
-      "text": "1 hír + 0 útmutató publikálva (költség: $0.0111).",
-      "agent": "ceo",
-      "at": "2026-08-04T10:34:06.002Z",
-      "loud": false
-    },
-    {
-      "id": "n178586517399722",
-      "level": "info",
-      "text": "SEO: 2 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-08-04T17:39:33.997Z",
-      "loud": false
-    },
     {
       "id": "n178586520317758",
       "level": "success",
@@ -1281,36 +1257,33 @@
       "agent": "ceo",
       "at": "2026-08-16T08:26:40.500Z",
       "loud": false
+    },
+    {
+      "id": "n178689685019413",
+      "level": "info",
+      "text": "SEO: 1 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-08-16T16:14:10.194Z",
+      "loud": false
+    },
+    {
+      "id": "n178689686895479",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The lineup looks solid — practical, varied, and genuinely useful for everyday readers. One small note: Article 7 mentions \"Cohere's text generation\" and Article 4 uses \"ChatRTX\" — both check out as th",
+      "agent": "publisher",
+      "at": "2026-08-16T16:14:28.954Z",
+      "loud": false
+    },
+    {
+      "id": "n178689688072215",
+      "level": "success",
+      "text": "1 hír + 0 útmutató publikálva (költség: $0.0020).",
+      "agent": "ceo",
+      "at": "2026-08-16T16:14:40.722Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178592547785788",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-08-05T10:24:37.858Z"
-    },
-    {
-      "id": "m178592586241150",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-08-05T10:31:02.411Z"
-    },
-    {
-      "id": "m178595046486276",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Streamlining rubric generation in Google Classroom with Gemini \" — mi a baj: Wrap-up section cuts off mid-sentence at 'adjusting' — article appears truncated; Step 5 mentions 'a toggle in the rubric settings' without specifying where it is — add brief direction like 'look in the rubric sidebar or settings menu'",
-      "ref": "2026-08-05T17-19-17-047Z_google-workspace_Streamlining_rubric_generation_in_Google_Classroom.json",
-      "at": "2026-08-05T17:21:04.862Z"
-    },
     {
       "id": "m178595046486495",
       "from": "ellenorzo",
@@ -2642,6 +2615,33 @@
       "text": "6 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-08-16T08:36:30.447Z"
+    },
+    {
+      "id": "m178689680123740",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"This Week in AI: The 5 Stories That Matter (August 16, 2026)\" — javítva: One headline mentions both ChatGPT and Claude, but the linked article URL only references ChatGPT—verify that both assistants connect to Dropbox, or adjust the wording; The Samsung sleep-tracker claim has no named source or link—consider adding a brief attribution note for reader trust; újraküldöm.",
+      "ref": "2026-08-16T00-55-15-136Z_aiworld-editorial_This_Week_in_AI.json",
+      "at": "2026-08-16T16:13:21.237Z"
+    },
+    {
+      "id": "m178689681426457",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"This Week in AI: The 5 Stories That Matter (August 16, 2026)\" (?/10)",
+      "ref": "2026-08-16T00-55-15-136Z_aiworld-editorial_This_Week_in_AI.json",
+      "at": "2026-08-16T16:13:34.264Z"
+    },
+    {
+      "id": "m178689686196257",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 20 → 5/4/2 oszlop.",
+      "ref": "mobile",
+      "at": "2026-08-16T16:14:21.962Z"
     }
   ]
 }
