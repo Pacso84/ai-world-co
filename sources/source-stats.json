@@ -1,7 +1,7 @@
 {
   "_meta": {
     "note": "Forrás-bizonyítvány: frissesség + termés + megbízhatóság forrásonként. Gyártja: core/source-report-card.js",
-    "updated": "2026-08-16T08:37:16.560Z",
+    "updated": "2026-08-16T16:21:48.040Z",
     "thresholds": {
       "DEAD_FEED_DAYS": 365,
       "MIN_SAMPLE": 4,
@@ -89,7 +89,7 @@
     },
     "google-workspace": {
       "name": "Google Workspace Updates (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 0,
       "published30d": 20,
       "truthBlocks": 1,
       "totalAttempts": 35,
@@ -166,7 +166,7 @@
     },
     "apple-ml": {
       "name": "Apple Machine Learning Research (hivatalos)",
-      "feedAgeDays": 3,
+      "feedAgeDays": 4,
       "published30d": 5,
       "truthBlocks": 0,
       "totalAttempts": 15,
@@ -397,7 +397,7 @@
     },
     "databricks": {
       "name": "Databricks Blog (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 2,
       "published30d": 16,
       "truthBlocks": 0,
       "totalAttempts": 22,
@@ -474,7 +474,7 @@
     },
     "midjourney-updates": {
       "name": "Midjourney Updates (hivatalos)",
-      "feedAgeDays": 22,
+      "feedAgeDays": 23,
       "published30d": 8,
       "truthBlocks": 0,
       "totalAttempts": 8,
@@ -485,7 +485,7 @@
     },
     "xai-news": {
       "name": "xAI (hivatalos, Google News szűrve)",
-      "feedAgeDays": 2,
+      "feedAgeDays": null,
       "published30d": 4,
       "truthBlocks": 0,
       "totalAttempts": 4,
@@ -496,7 +496,7 @@
     },
     "perplexity-news": {
       "name": "Perplexity (hivatalos, Google News szűrve)",
-      "feedAgeDays": 0,
+      "feedAgeDays": null,
       "published30d": 2,
       "truthBlocks": 0,
       "totalAttempts": 2,
@@ -518,7 +518,7 @@
     },
     "qwen-news": {
       "name": "Qwen / Alibaba (hivatalos, Google News szűrve)",
-      "feedAgeDays": 9,
+      "feedAgeDays": null,
       "published30d": 4,
       "truthBlocks": 0,
       "totalAttempts": 4,
@@ -529,7 +529,7 @@
     },
     "grammarly-blog": {
       "name": "Grammarly (hivatalos)",
-      "feedAgeDays": 2,
+      "feedAgeDays": 3,
       "published30d": 2,
       "truthBlocks": 0,
       "totalAttempts": 2,
@@ -551,7 +551,7 @@
     },
     "sony-ai": {
       "name": "Sony AI (hivatalos)",
-      "feedAgeDays": 46,
+      "feedAgeDays": 47,
       "published30d": 3,
       "truthBlocks": 0,
       "totalAttempts": 3,
@@ -562,7 +562,7 @@
     },
     "notion-releases": {
       "name": "Notion – Mi újság (hivatalos)",
-      "feedAgeDays": 2,
+      "feedAgeDays": 3,
       "published30d": 0,
       "truthBlocks": 0,
       "totalAttempts": 0,
@@ -595,7 +595,7 @@
     },
     "picsart": {
       "name": "PicsArt Blog (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 2,
       "published30d": 16,
       "truthBlocks": 0,
       "totalAttempts": 16,
@@ -617,7 +617,7 @@
     },
     "dropbox-blog": {
       "name": "Dropbox Blog (hivatalos)",
-      "feedAgeDays": 34,
+      "feedAgeDays": 35,
       "published30d": 3,
       "truthBlocks": 0,
       "totalAttempts": 3,
