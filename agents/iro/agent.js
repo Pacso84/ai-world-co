@@ -32,6 +32,8 @@ import { normalizeArticleMarkdown } from '../../core/markdown-normalize.js';
 import { recallSemantic } from '../../core/memory-manager.js';
 import { skillsBlock } from '../../core/skills.js';
 import { message } from '../../core/ops.js';
+import { HOWTO_RANGE } from '../../core/article-length.js';
+import { blockingIssues } from '../../core/auto-check-codes.js';
 
 // ===================================================================
 // SETUP
@@ -214,7 +216,7 @@ OTHER RULES:
      first step, never as a surprise at step 4.
    - A short "Common mistakes" section: at least 3 entries, each naming the
      mistake AND the fix.
-   - Length for such articles: 700-1100 words (the 400-700 range below is for
+   - Length for such articles: ${HOWTO_RANGE} words (the 400-700 range below is for
      news and explainers only).
    If you cannot write real, verifiable steps for the tool — because you are not
    certain of its actual menus and screens — then DO NOT promise them: write it
@@ -304,7 +306,7 @@ REMEMBER:
 - Mandatory "What this means for you" section
 - Markdown output with YAML frontmatter (as in the system prompt)
 - 400-700 words — BUT if you promise instructions (a "How to…" / "Try X in five
-  minutes" style piece), rule 4b applies instead: 700-1100 words with 4-6 real,
+  minutes" style piece), rule 4b applies instead: ${HOWTO_RANGE} words with 4-6 real,
   numbered steps. Promise only what you deliver.
 
 TIMELY TOPIC SIGNAL (hint only):
@@ -455,7 +457,7 @@ RULES (still apply):
 - Mandatory "## What this means for you" section.
 - Markdown output with YAML frontmatter (title, subtitle, category, audience, read_time_minutes, tags).
 - 400-700 words — UNLESS the article promises instructions ("How to…", "Try X in
-  five minutes", "Set up…"). Then it MUST deliver them: 700-1100 words with 4-6
+  five minutes", "Set up…"). Then it MUST deliver them: ${HOWTO_RANGE} words with 4-6
   separate numbered steps ("## Step 1 — …"), each 60-140 words saying what to
   tap and WHERE, what the reader will SEE, a copy-ready 💬 example where it
   applies, and a "You'll know it worked when…" check; plus a "Common mistakes"
@@ -501,7 +503,12 @@ Now output ONLY the corrected article markdown — no commentary, no notes about
 // (pl. JSON-parse hiba az AI válaszában)? Akkor a jó cikket NEM írjuk át,
 // csak visszatesszük újraellenőrzésre.
 function isReviewerSideFailure(meta) {
-  const autoOk = !(meta?.auto_check?.issues?.length);
+  // CSAK az ELUTASÍTÓ jelzés számít (2026-08-16, kódellenőrzés). Korábban
+  // bármelyik auto-jelzés hamisra billentette ezt — és amikor bejöttek a
+  // TANÁCSADÓ jelzések (túl hosszú, egyforma kezdés), a bíró JSON-hibája után
+  // az INGYENES visszasorolás helyett FIZETŐS újraírás indult. A lista a
+  // core/auto-check-codes.js-ben él, egy helyen, az Ellenőrzővel közösen.
+  const autoOk = !blockingIssues(meta?.auto_check?.issues).length;
   const reviewerGlitch = /could not parse|parse error|json/i.test(
     [meta?.reason, meta?.ai_review?.verdict, ...(meta?.ai_review?.issues || [])].join(' ')
   );

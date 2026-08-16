@@ -227,8 +227,11 @@ Ha a cím vagy a felvezető azt ígéri, hogy az olvasó **meg tud csinálni** v
    telefon-verzió) — soha ne a 4. lépésnél derüljön ki, hogy nem tud továbbmenni.
 5. **„Common mistakes" szakasz**: legalább 3 tétel, mindegyik megnevezi a hibát
    **ÉS a megoldást**.
-6. **Hossz: 700-1100 szó.** (A hír/magyarázó 400-700 szavas kerete ilyenkor nem
-   érvényes — az ígéret többet kíván.)
+6. **Hossz: 1000-1400 szó** (≈5-7 perc olvasás). A hír/magyarázó 400-700 szavas
+   kerete ilyenkor nem érvényes — az ígéret többet kíván.
+   *A szám EGY helyen él: `core/article-length.js`. Ide NE írj konkrét értéket,
+   mert szétcsúszik — 2026-08-16-ig tíz helyen szerepelt, két különböző
+   értékkel (700-1100 és 700-1200), és a rendszer egyiket sem tartotta.*
 
 ### Ha nem tudsz valódi lépéseket írni
 

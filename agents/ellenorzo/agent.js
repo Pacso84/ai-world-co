@@ -29,6 +29,9 @@ import { ask } from '../../core/ai-router.js';
 import { remember } from '../../core/memory-manager.js';
 import { truthGate, logGate } from '../../core/truth-gate.js';
 import { message, resolveNeed } from '../../core/ops.js';
+import { lengthIssue, HOWTO_MIN, HOWTO_MAX, GATE_MAX } from '../../core/article-length.js';
+import { repetitionIssue, firstParagraph, WINDOW as OPENING_WINDOW } from '../../core/opening-variety.js';
+import { blockingIssues, advisoryIssues, lessonFor } from '../../core/auto-check-codes.js';
 import { findBritish } from '../../core/us-spelling.js';
 import { skillsBlock } from '../../core/skills.js';
 
@@ -102,6 +105,56 @@ function listAwaitingReview(filter = null) {
   const writers = allFiles.filter(f => f.startsWith('WRITER_') && f.endsWith('.json'));
   if (filter) return writers.filter(f => f === filter);
   return writers.sort();
+}
+
+// ===================================================================
+// FRISS NYITÁSOK — FUTÁSONKÉNT EGYSZER (2026-08-16, kódellenőrzés)
+// ===================================================================
+// A nyitómondat-kapunak látnia kell a legutóbbi cikkek kezdését. Ez a lista
+// minden draftnál UGYANAZ, az első változat mégis DRAFTONKÉNT olvasta be és
+// parse-olta mind a 725 cikket (~6,5 MB, ~100 ms) — méghozzá az "ingyenes"
+// auto-kapuban, ami épp azért van, hogy ne kerüljön semmibe.
+//
+// ⚠️ AMI KÉZENFEKVŐ LENNE, DE NEM MŰKÖDIK: a fájlnévre rendezés és onnan a
+// 20 legújabb. Az ARTICLE_GUIDE_* fájlok neve SLUG, nem időbélyeg, tehát nem
+// hordoz sorrendet. Az mtime sem járható: a CI friss checkoutot csinál, ott
+// minden fájl mtime-ja azonos. Marad a valódi megoldás: egyszer olvassuk be.
+//
+// Csak a NYITÓ BEKEZDÉST tartjuk meg, nem a teljes markdownt — ennyi kell az
+// ujjlenyomathoz, és a gyorsítótár így néhány kB, nem 6,5 MB.
+let frissNyitasokCache = null;
+
+function frissNyitasok() {
+  if (frissNyitasokCache) return frissNyitasokCache;
+  try {
+    frissNyitasokCache = readdirSync(ARTICLES_DIR)
+      .filter(f => f.startsWith('ARTICLE_') && f.endsWith('.json'))
+      .map(f => {
+        try {
+          const d = JSON.parse(readFileSync(join(ARTICLES_DIR, f), 'utf-8'));
+          return { pub: d._meta?.published_at || '', md: d.article_markdown || '' };
+        } catch { return null; }
+      })
+      .filter(x => x && x.pub && x.md)
+      .sort((a, b) => String(b.pub).localeCompare(String(a.pub)))
+      .slice(0, OPENING_WINDOW)
+      .map(x => firstParagraph(x.md))
+      .filter(Boolean);
+  } catch {
+    frissNyitasokCache = [];   // nem tudjuk beolvasni → nem ítélünk, de nem is bukunk
+  }
+  return frissNyitasokCache;
+}
+
+/**
+ * Az ÉPP MOST publikált cikk kezdése is számítson a következő draftnál.
+ * Enélkül a gyorsítótár azt jelentené, hogy egy futáson belül három egyforma
+ * kezdés simán átmegy — pont az, amit a kapu meg akar fogni.
+ */
+function jegyezdAKezdest(articleMarkdown) {
+  if (!frissNyitasokCache) return;      // még be sem olvastuk — az olvasás úgyis látni fogja
+  const nyitas = firstParagraph(articleMarkdown);
+  if (nyitas) frissNyitasokCache.unshift(nyitas);   // frissek elöl
 }
 
 // ===================================================================
@@ -195,10 +248,10 @@ function runAutoCheck(articleMarkdown, type) {
   if (wordCount < 150) {
     issues.push(`TOO_SHORT: Csak ${wordCount} szó (minimum 200 javasolt)`);
   }
-  // GUIDE-oknál a guide-quality-rules.md 700-1200 szót ír elő — 550 alatt
-  // biztosan túl vékony a kezdőknek → ingyen (AI nélkül) buktatjuk.
+  // GUIDE-oknál a hossz-szabály a core/article-length.js-ben él (EGY helyen) —
+  // 550 alatt biztosan túl vékony a kezdőknek → ingyen (AI nélkül) buktatjuk.
   if (type === 'guide' && wordCount < 550) {
-    issues.push(`GUIDE_TOO_SHORT: Csak ${wordCount} szó — az útmutató-szabály 700-1200 szó (guide-quality-rules.md)`);
+    issues.push(`GUIDE_TOO_SHORT: Csak ${wordCount} szó — az útmutató-szabály ${HOWTO_MIN}-${HOWTO_MAX} szó (core/article-length.js)`);
   }
   if (wordCount > 2500) {
     issues.push(`TOO_LONG: ${wordCount} szó — talán szét kéne bontani`);
@@ -218,12 +271,42 @@ function runAutoCheck(articleMarkdown, type) {
   const promisesSteps = /^(how to|your first|setting up|set up|step-by-step)\b/i.test(titleLine.trim())
     || /\bin (five|5|four|4|three|3|ten|10) minutes\b/i.test(titleLine)
     || /\bstep[- ]by[- ]step\b/i.test(titleLine);
+  // ===================================================================
+  // A HOSSZ-KAPU KÖRE — a cím ígérete VAGY a típus (2026-08-16, kódellenőrzés)
+  // ===================================================================
+  // A hossz MINDKÉT IRÁNYBAN őriz (2026-08-16). Eddig csak lefelé őriztünk, és
+  // emiatt a "How to" cikkek 95%-a a felső határ FÖLÖTT volt, észrevétlenül.
+  // Ugyanaz az alak, mint a 08-14-i prompt-szivárgásnál: a mérce iránya számít.
+  //
+  // ⚠️ ÉS A KÖRE IS. Az első változatban a FELSŐ határ a `promisesSteps`
+  // címregex mögé került, az ALSÓ viszont a `type === 'guide'` mögé — ugyanarra
+  // a fogalomra két különböző feltétel. Mérve: az útmutatóknak csak 32%-a esik
+  // a regexbe, így az 52 túl hosszú útmutatóból 33-nak (63%) NEM volt felső
+  // határa. Ezért a hossz-kapu köre most: a cím ígér lépéseket VAGY guide.
+  //
+  // A jelzés TANÁCSADÓ (nem szerepel a core/auto-check-codes.js blokkoló
+  // listáján): nem utasít el és nem indít fizetős újraírást — leckét ír az
+  // Írónak a következő cikkhez, akkor is, ha ez a cikk átment.
+  const hosszKapuAlatt = promisesSteps || type === 'guide';
+  if (hosszKapuAlatt) {
+    const hossz = lengthIssue(wordCount);
+    // A GUIDE_TOO_SHORT (kritikus) ugyanerről szól — ne mondjuk el kétszer.
+    const marSzoltARovidrol = issues.some(i => i.startsWith('GUIDE_TOO_SHORT'));
+    if (hossz?.code === 'TOO_THIN' && !marSzoltARovidrol) {
+      const miert = promisesSteps
+        ? `A cím utasítást ígér ("${titleLine.slice(0, 50)}"), de csak ${wordCount} szó`
+        : `Útmutató, de csak ${wordCount} szó`;
+      issues.push(`HOWTO_TOO_THIN: ${miert} — az ilyen cikk ${HOWTO_MIN}-${HOWTO_MAX} szó (core/article-length.js).`);
+    }
+    if (hossz?.code === 'TOO_LONG') {
+      issues.push(`HOWTO_TOO_LONG: ${wordCount} szó (~${hossz.minutes.toFixed(1)} perc olvasás) — a cél ${HOWTO_MIN}-${HOWTO_MAX} szó, a felső kapu ${GATE_MAX}. A Facebookról érkező mobilolvasó ennyit ritkán olvas végig.`);
+    }
+  }
+
+  // A LÉPÉS-FEDEZET viszont tényleg a CÍM ígéretéről szól — az marad a regexnél.
   if (promisesSteps) {
     // Lépés-szakaszok: "## Step 3 — …" vagy "## 3. …" vagy "### Step …"
     const stepSections = (articleMarkdown.match(/^#{2,3}\s+(step\s*\d|\d+[.)]\s)/gim) || []).length;
-    if (wordCount < 600) {
-      issues.push(`HOWTO_TOO_THIN: A cím utasítást ígér ("${titleLine.slice(0, 50)}"), de csak ${wordCount} szó — az ilyen cikk 700-1100 szó (iro 4b szabály).`);
-    }
     if (stepSections < 3) {
       issues.push(`HOWTO_NO_STEPS: A cím utasítást ígér, de csak ${stepSections} számozott lépés-szakasz van (kell 4-6, "## Step 1 — …" formában), nem egyetlen összevont bekezdés.`);
     }
@@ -269,6 +352,22 @@ function runAutoCheck(articleMarkdown, type) {
       issues.push(`CLICHE: Tiltott klisé találva: "${cliche}"`);
     }
   }
+
+  // ===================================================================
+  // NYITÓMONDAT-MODOR (2026-08-16) — a szokást mérjük, nem szavakat tiltunk
+  // ===================================================================
+  // A 07-30-i tiltás az „Imagine…" nyitást kiirtotta (23,6% → 0,6%), de
+  // részben rokon fordulatok léptek a helyére. A modell a SZÓT kerüli meg,
+  // nem a SZOKÁST — szavakat tiltani végtelen macska-egér játék.
+  // Ezért azt nézzük, hogy a friss termés EGYFORMÁN kezd-e; így minden
+  // JÖVŐBELI divatszó is fennakad, nem csak a mai.
+  // NEM kritikus hiba: nem utasít el, csak szól az AI-bírónak és leckét ír.
+  try {
+    const modor = repetitionIssue(articleMarkdown, frissNyitasok(), { window: OPENING_WINDOW });
+    if (modor) {
+      issues.push(`OPENING_REPETITIVE: A legutóbbi ${modor.window} cikkből ${modor.count} kezdődik ugyanígy ("${modor.signature}…"). Kezdj másképp — kérdéssel, ténnyel vagy egy konkrét helyzettel.`);
+    }
+  } catch { /* ha nem tudjuk beolvasni a friss cikkeket, ettől nem bukik az ellenőrzés */ }
 
   return { passed: issues.length === 0, issues, wordCount };
 }
@@ -585,12 +684,28 @@ function moveToRejected(writerFilename, writerData, autoCheckResult, aiReviewRes
 // kerülnek — így a guide-agent loadLessons()-je (scope:'guide') tényleg
 // LÁTJA a saját korábbi bukásait, és nem ismétli meg őket. (Automatikus
 // tanulás: minden elutasítás → lecke → következő íráskor + rework-nél előjön.)
-function recordLesson(aiReviewResult, autoCheckResult, title, type) {
-  // A konkrét hibák (auto + AI) tömör formában
-  const reasons = [];
-  if (autoCheckResult?.issues?.length) reasons.push(...autoCheckResult.issues.map(i => i.split(':')[0]));
-  if (aiReviewResult?.issues?.length) reasons.push(...aiReviewResult.issues.slice(0, 3));
-  if (aiReviewResult?.verdict && reasons.length === 0) reasons.push(aiReviewResult.verdict);
+// A `published: true` az ÁTMENŐ cikk útja (2026-08-16, kódellenőrzés): ilyenkor
+// csak a TANÁCSADÓ auto-jelzésekből lesz lecke, AI-ítélet nélkül. Enélkül a
+// HOWTO_TOO_LONG és az OPENING_REPETITIVE néma volt: a recordLesson KIZÁRÓLAG
+// a moveToRejected()-ből futott, tehát a publikált cikk hibájából senki nem
+// tanult — a kapu be volt kötve, de a gyakorlatban nem csinált semmit.
+function recordLesson(aiReviewResult, autoCheckResult, title, type, opts = {}) {
+  const publikalt = !!opts.published;
+
+  // A jelzés VÁLTOZÓ része (szószám, ujjlenyomat) a naplóé; a LECKE állandó —
+  // különben minden elutasítás ÚJ emléket hozna létre a meglévő erősítése
+  // helyett. A szöveg a core/auto-check-codes.js-ben él, angolul, mert az
+  // Író promptjába kerül vissza.
+  const autoIssues = publikalt
+    ? advisoryIssues(autoCheckResult?.issues)
+    : (autoCheckResult?.issues || []);
+  const reasons = autoIssues.map(lessonFor);
+
+  // Átmenő cikknél nincs AI-ítélet, amiből tanulni kéne — az átment.
+  if (!publikalt) {
+    if (aiReviewResult?.issues?.length) reasons.push(...aiReviewResult.issues.slice(0, 3));
+    if (aiReviewResult?.verdict && reasons.length === 0) reasons.push(aiReviewResult.verdict);
+  }
 
   const scope = type === 'guide' ? 'guide' : 'iro';
   // GÉPI ZAJ-SZŰRŐ (2026-08-03): a technikai hibaüzenet NEM lecke. Korábban
@@ -600,9 +715,12 @@ function recordLesson(aiReviewResult, autoCheckResult, title, type) {
   // valódi leckéket. Az ilyen hibát a napló rögzíti, a memória nem.
   const MACHINE_NOISE = /JSON parse error|Unterminated string|Unexpected token|at position \d+|ReferenceError|TypeError|SyntaxError|ECONN|ETIMEDOUT|AbortError|AI router null/i;
   // A rétegzett MEMÓRIÁBA mentjük (az adott agent innen hívja elő) — minden ok külön emlék
-  for (const reason of reasons.slice(0, 4)) {
-    if (MACHINE_NOISE.test(reason)) continue;
-    remember(scope, reason, { tags: ['rejection', 'lesson', type === 'guide' ? 'guide' : 'article'] });
+  const tags = publikalt
+    ? ['advisory', 'lesson', type === 'guide' ? 'guide' : 'article']
+    : ['rejection', 'lesson', type === 'guide' ? 'guide' : 'article'];
+  for (const reason of [...new Set(reasons)].slice(0, 4)) {
+    if (!reason || MACHINE_NOISE.test(reason)) continue;
+    remember(scope, reason, { tags });
   }
 }
 
@@ -684,10 +802,10 @@ async function main() {
       autoCheckResult.issues.slice(0, 3).forEach(i => console.log(`      • ${i}`));
     }
 
-    // Ha az auto check elbukik komoly hibákkal, nem is hívunk AI-t (spórolunk)
-    const criticalAutoFailures = autoCheckResult.issues.filter(i =>
-      i.startsWith('NO_FRONTMATTER') || i.startsWith('NO_H1') || i.startsWith('MISSING_SECTION') || i.startsWith('GUIDE_TOO_SHORT')
-    );
+    // Ha az auto check elbukik komoly hibákkal, nem is hívunk AI-t (spórolunk).
+    // A LISTA a core/auto-check-codes.js-ben él — EGY helyen, mert az Író és az
+    // Útmutató is ugyanezt kérdezi, és korábban másképp válaszolt (2026-08-16).
+    const criticalAutoFailures = blockingIssues(autoCheckResult.issues);
 
     if (criticalAutoFailures.length > 0) {
       // Azonnal elutasítjuk, nem hívunk AI-t
@@ -790,7 +908,31 @@ Original title: ${writerData.original_title}
       }
       if (gate.warnings.length) console.log(`   ⚠️  kapu-figyelmeztetés (nem blokkol): ${gate.warnings[0].slice(0, 90)}`);
       const articleName = moveToArticles(writerFilename, writerData, autoCheckResult, aiReviewResult);
-      console.log(`   ✅ PUBLIKÁLVA: ${articleName}\n`);
+      console.log(`   ✅ PUBLIKÁLVA: ${articleName}`);
+
+      // ===================================================================
+      // TANULÁS ÁTMENŐ CIKKNÉL IS (2026-08-16, user-döntés)
+      // ===================================================================
+      // A tanácsadó jelzések (túl hosszú, egyforma kezdés) SZÁNDÉKOSAN nem
+      // utasítanak el — a user döntése: "tanuljon, de ne utasítson el".
+      // Eddig viszont a recordLesson CSAK a moveToRejected()-ből futott, így
+      // az átmenő cikk jelzése nyomtalanul elveszett: a kapu be volt kötve,
+      // és mégsem csinált semmit (52/321 útmutató, mérve).
+      //
+      // ⚠️ MIÉRT NEM AZ AI-BÍRÓNAK ADJUK ODA: a bíró PASS/FAIL-t mond. Ha elé
+      // tennénk, hogy "ez a cikk túl hosszú", levihetné a pontszámot 7 alá —
+      // abból elutasítás, abból FIZETŐS újraírás lenne. Épp az, amit a user
+      // elvetett. A lecke-könyv ingyenes, és a KÖVETKEZŐ cikket javítja.
+      const tanacsok = advisoryIssues(autoCheckResult.issues);
+      if (tanacsok.length) {
+        try {
+          recordLesson(null, autoCheckResult, writerData.original_title, writerData._meta?.type, { published: true });
+          console.log(`   📎 lecke a következő cikkhez: ${tanacsok.map(i => i.split(':')[0]).join(', ')}`);
+        } catch { /* a lecke-hiba SOHA ne állítsa meg a publikálást */ }
+      }
+      // A frissen publikált kezdés számítson a következő draftnál is.
+      jegyezdAKezdest(markdown);
+      console.log('');
       stats.passed++;
       stats.by_article.push({
         writer: writerFilename,

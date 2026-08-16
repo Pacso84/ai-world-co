@@ -73,9 +73,15 @@ roughly **60–140 words** (plus the example line).
 
 ## 3. Depth requirements
 
-- **700–1200 words** (was 450–800 — that produced guides too thin to follow).
+- **1000–1400 words** — about **5–7 minutes** to read at 200 words per minute.
+  *(Was 450–800: too thin to follow. Then 700–1200, which CONTRADICTED the 5–7
+  minute target below — 700 words is 3.5 minutes. The writer resolved the
+  contradiction by following the reading time, and 95% of guides ended up above
+  the word cap, median 1475. Measured 2026-08-16.)*
+  **The number lives in ONE place: `core/article-length.js`.** Do not hardcode it
+  here or in any prompt — it drifted across ten locations before.
 - **4–7 steps**, each following the six parts above.
-- `read_time_minutes`: set to 5–7 to match the fuller length.
+- `read_time_minutes`: set to 5–7 — this and the word count must always agree.
 - **"Before you start" lists EVERYTHING needed** — account, app or website,
   device, plan, and roughly how long the whole thing takes — so nobody
   discovers a blocker at Step 4.

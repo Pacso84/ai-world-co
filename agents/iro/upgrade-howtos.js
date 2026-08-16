@@ -31,6 +31,7 @@ import { readFileSync, writeFileSync, existsSync, readdirSync, unlinkSync } from
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { ask } from '../../core/ai-router.js';
+import { HOWTO_RANGE } from '../../core/article-length.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..', '..');
@@ -85,7 +86,7 @@ MANDATORY for this rewrite:
 - Name any requirement (account, app, paid plan, phone version) BEFORE the first step — never as a surprise at step 4.
 - A "## Common mistakes" section with at least 3 entries, each naming the mistake AND the fix.
 - Keep the mandatory "## What this means for you" section.
-- 700-1100 words total.
+- ${HOWTO_RANGE} words total.
 
 HONESTY (most important): only describe steps, menus and screens you are genuinely confident are real. NEVER invent a menu name, a button label or a screen. If you cannot write real, verifiable steps for this tool, then keep it as an explainer and CHANGE THE TITLE so it promises only what you deliver (e.g. "What X is and who it's for") — that is a perfectly good outcome, not a failure.
 

@@ -35,6 +35,8 @@ import { normalizeArticleMarkdown } from '../../core/markdown-normalize.js';
 import { recallSemantic } from '../../core/memory-manager.js';
 import { skillsBlock } from '../../core/skills.js';
 import { message } from '../../core/ops.js';
+import { HOWTO_RANGE } from '../../core/article-length.js';
+import { blockingIssues } from '../../core/auto-check-codes.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..', '..');
@@ -618,7 +620,7 @@ it looks different on your device + "You'll know it worked when …" (60-140 wor
 ## Try it now
 One concrete action the reader can take in the next 2 minutes.
 
-Write 700-1200 words. Output ONLY the markdown — no commentary.`;
+Write ${HOWTO_RANGE} words. Output ONLY the markdown — no commentary.`;
 
 function buildUserPrompt(topic, brandContext, lessons, skills) {
   const subject = topic.company || topic.tool
@@ -715,7 +717,10 @@ function collectFeedback(meta) {
 
 // Nem a guide hibája, hanem az Ellenőrző akadt meg (pl. JSON-parse hiba)?
 function isReviewerSideFailure(meta) {
-  const autoOk = !(meta?.auto_check?.issues?.length);
+  // CSAK az ELUTASÍTÓ jelzés számít (2026-08-16, kódellenőrzés) — lásd a
+  // core/auto-check-codes.js fejlécét. A tanácsadó jelzés (túl hosszú,
+  // egyforma kezdés) nem tehet fizetőssé egy egyébként ingyenes visszasorolást.
+  const autoOk = !blockingIssues(meta?.auto_check?.issues).length;
   const glitch = /could not parse|parse error|json/i.test(
     [meta?.reason, meta?.ai_review?.verdict, ...(meta?.ai_review?.issues || [])].join(' ')
   );
@@ -916,7 +921,7 @@ WHAT TO KEEP:
 WHAT TO IMPROVE (this is the point):
 - EXPAND every step to the six mandatory parts: exact action, what you see on screen, what happens next, an "if it looks different" fallback, a 💬 Example where the reader types something, and a "You'll know it worked when …" success check. Each step 60-140 words.
 - Fix anything vague ("find the settings") or potentially misleading (uncertain UI details stated as fact, over-promises, hidden paywalls, missing prerequisites).
-- "Before you start" must list EVERYTHING needed. "Common mistakes" gets 3 points, each with mistake AND fix. Total 700-1200 words.
+- "Before you start" must list EVERYTHING needed. "Common mistakes" gets 3 points, each with mistake AND fix. Total ${HOWTO_RANGE} words.
 
 THE PUBLISHED GUIDE TO UPGRADE:
 ${original}
