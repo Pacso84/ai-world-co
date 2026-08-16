@@ -1,0 +1,55 @@
+{
+  "_meta": {
+    "written_at": "2026-08-16T00:42:42.520Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00855288,
+    "original_draft": "2026-08-16T00-38-45-861Z_dropbox-blog__The_context_layer_for_AI__Bringing_trusted_Dropbo.json",
+    "source_id": "dropbox-blog",
+    "source_name": "Dropbox Blog (hivatalos)",
+    "source_link": "  https://blog.dropbox.com/topics/news/trusted-dropbox-content-into-openai-workflows ",
+    "status": "published",
+    "published_at": "2026-08-16T00:42:55.930Z",
+    "slug": "your-dropbox-files-can-now-feed-chatgpt-what-that-means-for-your-work",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 791
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Solid explainer that clearly defines 'context layer' in plain language, offers practical work use cases, and ends with a tiered 'What this means for you' section for different reader types. No clichés, no prohibited content, friendly and encouraging tone throughout.",
+      "_aiCost": 0.00117408,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-08-16T00:44:34.548Z",
+    "guide_worthy": false,
+    "pairing_reason": "The article describes a Dropbox-OpenAI partnership integration in general terms but doesn't name the specific feature users should look for, clarify which plans offer it, or provide concrete steps to enable it — it's more of an explainer about a concept than a usable product.",
+    "image_v": 2,
+    "image_at": "2026-08-16T00:51:20.809Z",
+    "seo": {
+      "meta_description": "Dropbox now connects to ChatGPT so AI reads your team files directly—no copy-pasting needed. Learn how this integration saves time on summaries.",
+      "keywords": [
+        "Dropbox ChatGPT integration",
+        "how to connect Dropbox to ChatGPT",
+        "ChatGPT read my documents",
+        "AI file summarization",
+        "ChatGPT access my files"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Consider adding 'how to' in the title to match search intent better",
+        "Include practical step-by-step instructions in the article for higher ranking potential"
+      ],
+      "optimised_at": "2026-08-16T00:53:13.860Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Your Dropbox Files Can Now Feed ChatGPT — What That Means for Your Work\"\nsubtitle: \"A new connection between Dropbox and ChatGPT lets the AI read your own documents, so answers come from your team's real knowledge.\"\ncategory: \"explainer\"\naudience: \"business\"\nread_time_minutes: 4\ntags: [\"dropbox\", \"chatgpt\", \"ai-workflows\", \"productivity\", \"context-ai\"]\n---\n\n# Your Dropbox Files Can Now Feed ChatGPT — What That Means for Your Work\n\n> **In short:** Dropbox now connects to ChatGPT, so the AI can read your team's files directly instead of relying only on what you paste into the chat. Answers come from documents that actually exist in your workspace — your company knowledge stays where it already lives.\n\nYou're three pages into a 30-page report, and you need a one-paragraph summary by 5 PM. The old move was to skim the document, copy-paste the key bits into ChatGPT, and ask for a summary. The new move is simpler: point ChatGPT at the file in Dropbox and ask. The AI reads it for you.\n\nThat's the practical shift behind Dropbox's new connection with OpenAI's products, including ChatGPT.\n\n## What \"context layer for AI\" actually means\n\nWhen an AI answers a question, it normally relies on what it learned during training — a huge amount of public text. That's useful, but it doesn't know about *your* company, *your* projects, or *yesterday's* meeting notes.\n\nA **context layer** is a way to fix that. In plain terms, it means giving the AI access to a specific set of files it can read while answering you. Think of it as handing the AI a stack of reference notes before it speaks.\n\nIn this case, Dropbox provides that stack. Instead of opening PDFs and copying text into ChatGPT, your team's files become the source the AI reads from. That's why people describe this as \"grounding\" the AI — the answers are tied to documents that actually exist, not just to what the AI remembers from training.\n\n## What changes in a normal workday\n\nA few things that used to take copying and pasting can now happen in one step:\n\n- **Summarizing a long report.** Ask ChatGPT to read a file from your Dropbox folder and give you the three main points.\n- **Drafting from past work.** Pull up a folder of previous proposals and ask the AI to write a new one in the same style and tone.\n- **Onboarding a new teammate.** Point the AI at a \"getting started\" folder and ask it to build a checklist for the new hire.\n- **Answering questions about a project.** Ask \"what did we decide about pricing last month?\" and the AI checks the relevant documents instead of guessing.\n\nThe common thread: less time shuffling files, more time thinking about what to do with the information.\n\n## What this is — and what it isn't\n\nIt's worth being clear-eyed. The AI doesn't magically know everything in your Dropbox. It only reads the files you point it at, and only when you give it permission to. It won't reorganize your folders or invent new documents. It also can still make mistakes — \"grounded\" answers are more reliable, but they're not perfect. Always check the source when something matters.\n\nThere's a privacy side to think about too. The integration is mainly built for workplaces that already use Dropbox for team content. Whether personal Dropbox accounts can connect, and which ChatGPT plan unlocks the feature, varies — check Dropbox's current page before assuming you can use it today.\n\n## What this means for you\n\n- **If you lead a team:** the practical payoff is fewer \"where is that file?\" moments. Your people can ask the AI a question and get an answer tied to documents they trust. Start by picking one folder — meeting notes, say — and try it on a small task before rolling it out wider.\n- **If you're an individual contributor:** the day-to-day win is time. Summarizing, drafting, and \"remind me what we decided\" tasks get shorter. Pick one repetitive task you do each week and try doing it through the AI-with-Dropbox workflow instead.\n- **If you're new to AI tools:** don't worry about mastering everything at once. The simplest starting point is to open ChatGPT, connect your Dropbox account, pick one file, and ask the AI to summarize it. That's it. You can decide later whether to do more.\n\n## Wrap-up\n\nThe headline is small but the shift is real: AI gets more useful when it can read your own files. Dropbox's connection with ChatGPT turns your existing document library into something the AI can use as a reference. Try it on one small task this week — a single report, one folder, one summary — and see how it feels.",
+  "original_title": " The context layer for AI: Bringing trusted Dropbox content into OpenAI workflows "
+}

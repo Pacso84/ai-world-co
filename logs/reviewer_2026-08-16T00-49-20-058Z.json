@@ -1,0 +1,28 @@
+{
+  "started_at": "2026-08-16T00:48:04.767Z",
+  "total": 4,
+  "passed": 2,
+  "failed": 0,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.011651759999999999,
+  "by_article": [
+    {
+      "writer": "WRITER_GUIDE_ask-perplexity-to-find-and-cite-sources-for-a-topic-you-re-r.json",
+      "article": "ARTICLE_GUIDE_ask-perplexity-to-find-and-cite-sources-for-a-topic-you-re-r.json",
+      "decision": "PASS",
+      "score": 10,
+      "cost_usd": 0.00174906
+    },
+    {
+      "writer": "WRITER_GUIDE_practice-answers-for-your-next-job-interview-with-meta-ai.json",
+      "article": "ARTICLE_GUIDE_practice-answers-for-your-next-job-interview-with-meta-ai.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.002457
+    }
+  ],
+  "truth_blocked": 2,
+  "finished_at": "2026-08-16T00:49:20.058Z",
+  "duration_seconds": 75.291
+}

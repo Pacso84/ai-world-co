@@ -1,134 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178663958562635",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-08-13T16:46:25.626Z",
-      "updated": "2026-08-13T16:46:38.088Z"
-    },
-    {
-      "id": "t178663959809058",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-13T16:46:38.090Z",
-      "updated": "2026-08-13T16:46:43.240Z"
-    },
-    {
-      "id": "t178663960324143",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-08-13T16:46:43.241Z",
-      "updated": "2026-08-13T16:47:00.211Z"
-    },
-    {
-      "id": "t178666925440619",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-08-14T01:00:54.406Z",
-      "updated": "2026-08-14T01:00:54.578Z"
-    },
-    {
-      "id": "t178666925458046",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-08-14T01:00:54.580Z",
-      "updated": "2026-08-14T01:01:38.210Z"
-    },
-    {
-      "id": "t178666929821134",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-08-14T01:01:38.211Z",
-      "updated": "2026-08-14T01:01:38.405Z"
-    },
-    {
-      "id": "t178666929840719",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-14T01:01:38.407Z",
-      "updated": "2026-08-14T01:09:27.973Z"
-    },
-    {
-      "id": "t178666976797553",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-14T01:09:27.975Z",
-      "updated": "2026-08-14T01:11:15.364Z"
-    },
-    {
-      "id": "t178666987536650",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-14T01:11:15.366Z",
-      "updated": "2026-08-14T01:13:01.263Z"
-    },
-    {
-      "id": "t178666998126520",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-14T01:13:01.265Z",
-      "updated": "2026-08-14T01:14:12.049Z"
-    },
-    {
-      "id": "t17866700520518",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-08-14T01:14:12.051Z",
-      "updated": "2026-08-14T01:15:36.165Z"
-    },
-    {
-      "id": "t178667013620325",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-14T01:15:36.203Z",
-      "updated": "2026-08-14T01:24:05.646Z"
-    },
-    {
-      "id": "t17866706456484",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-14T01:24:05.648Z",
-      "updated": "2026-08-14T01:25:33.177Z"
-    },
-    {
-      "id": "t17866707332107",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-14T01:25:33.210Z",
-      "updated": "2026-08-14T01:27:03.271Z"
-    },
-    {
-      "id": "t178667082327357",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-08-14T01:27:03.273Z",
-      "updated": "2026-08-14T01:29:50.111Z"
-    },
-    {
-      "id": "t178667099011237",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-14T01:29:50.112Z",
-      "updated": "2026-08-14T01:30:00.170Z"
-    },
-    {
       "id": "t178667100017246",
       "title": "Run publisher",
       "status": "done",
@@ -479,33 +351,137 @@
       "agent": "publisher",
       "created": "2026-08-15T16:12:00.295Z",
       "updated": "2026-08-15T16:12:23.343Z"
+    },
+    {
+      "id": "t178684067621295",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-08-16T00:37:56.212Z",
+      "updated": "2026-08-16T00:37:56.400Z"
+    },
+    {
+      "id": "t178684067640281",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-08-16T00:37:56.402Z",
+      "updated": "2026-08-16T00:38:53.752Z"
+    },
+    {
+      "id": "t178684073375471",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-08-16T00:38:53.754Z",
+      "updated": "2026-08-16T00:38:53.944Z"
+    },
+    {
+      "id": "t17868407339466",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-16T00:38:53.946Z",
+      "updated": "2026-08-16T00:42:42.529Z"
+    },
+    {
+      "id": "t178684096253020",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-16T00:42:42.530Z",
+      "updated": "2026-08-16T00:44:25.986Z"
+    },
+    {
+      "id": "t178684106598970",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-08-16T00:44:25.989Z",
+      "updated": "2026-08-16T00:45:19.326Z"
+    },
+    {
+      "id": "t17868411193653",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-16T00:45:19.365Z",
+      "updated": "2026-08-16T00:48:04.599Z"
+    },
+    {
+      "id": "t178684128460185",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-16T00:48:04.601Z",
+      "updated": "2026-08-16T00:49:20.067Z"
+    },
+    {
+      "id": "t178684136010139",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-16T00:49:20.101Z",
+      "updated": "2026-08-16T00:49:20.275Z"
+    },
+    {
+      "id": "t17868413602766",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-16T00:49:20.276Z",
+      "updated": "2026-08-16T00:49:44.298Z"
+    },
+    {
+      "id": "t178684138430260",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-16T00:49:44.302Z",
+      "updated": "2026-08-16T00:50:44.270Z"
+    },
+    {
+      "id": "t178684144427161",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-16T00:50:44.271Z",
+      "updated": "2026-08-16T00:51:11.044Z"
+    },
+    {
+      "id": "t178684147104526",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-16T00:51:11.045Z",
+      "updated": "2026-08-16T00:53:04.888Z"
+    },
+    {
+      "id": "t178684158488930",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-08-16T00:53:04.889Z",
+      "updated": "2026-08-16T00:54:38.449Z"
+    },
+    {
+      "id": "t178684167845160",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-16T00:54:38.451Z",
+      "updated": "2026-08-16T00:54:44.888Z"
+    },
+    {
+      "id": "t17868416848901",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-08-16T00:54:44.890Z",
+      "updated": "2026-08-16T00:55:04.887Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178572441464343",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The lineup looks solid and ready — it covers practical how-to guides, privacy awareness, and everyday use cases with a nice mix of AI tools. One small note: article 7 mentions \"Cohere's text generatio",
-      "agent": "publisher",
-      "at": "2026-08-03T02:33:34.643Z",
-      "loud": false
-    },
-    {
-      "id": "n178572442210885",
-      "level": "success",
-      "text": "8 hír + 4 útmutató publikálva (költség: $0.1846).",
-      "agent": "ceo",
-      "at": "2026-08-03T02:33:42.108Z",
-      "loud": false
-    },
-    {
-      "id": "n178580702258382",
-      "level": "warn",
-      "text": "📨 guide → ceo: Kell még adat: \"How to Practise a Job Interview Out Loud with ChatGPT's Voice Mode\" — az Ellenőrző tényt/forrást kér, am",
-      "agent": "guide",
-      "at": "2026-08-04T01:30:22.583Z",
-      "loud": false
-    },
     {
       "id": "n178580758805438",
       "level": "info",
@@ -1281,56 +1257,33 @@
       "agent": "ceo",
       "at": "2026-08-15T16:12:23.378Z",
       "loud": false
+    },
+    {
+      "id": "n178684167844193",
+      "level": "info",
+      "text": "SEO: 10 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-08-16T00:54:38.441Z",
+      "loud": false
+    },
+    {
+      "id": "n178684169346841",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The lineup looks strong and ready — it's a practical mix of AI how-tos, privacy guidance, and everyday writing helpers (complaint emails, pet-sitting agreements, sympathy messages). This variety will ",
+      "agent": "publisher",
+      "at": "2026-08-16T00:54:53.468Z",
+      "loud": false
+    },
+    {
+      "id": "n178684170492288",
+      "level": "success",
+      "text": "7 hír + 3 útmutató publikálva (költség: $0.1979).",
+      "agent": "ceo",
+      "at": "2026-08-16T00:55:04.922Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178575599506429",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-08-03T11:19:55.064Z"
-    },
-    {
-      "id": "m178577941379471",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-08-03T17:50:13.794Z"
-    },
-    {
-      "id": "m178580702258298",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"How to Practise a Job Interview Out Loud with ChatGPT's Voice Mode\" — javítva: The article claims Voice Mode 'does not work on a desktop browser' — this is fabricated/wrong; Voice Mode is available on the ChatGPT web/desktop interface as well, not only on mobile.; The article states ChatGPT Plus costs '$20/month' — this is an invented/incorrect price stated as fact; current ChatGPT P",
-      "ref": "GUIDE_how-to-practise-a-job-interview-out-loud-with-chatgpt-s-voic.json",
-      "at": "2026-08-04T01:30:22.582Z"
-    },
-    {
-      "id": "m178580702258327",
-      "from": "guide",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Kell még adat: \"How to Practise a Job Interview Out Loud with ChatGPT's Voice Mode\" — az Ellenőrző tényt/forrást kér, amit nem találhatok ki: The article states ChatGPT Plus costs '$20/month' — this is an invented/incorrect price stated as fact; current ChatGPT Plus pricing should be verified on OpenAI's pricing page rather than asserted as a specific dollar amount.",
-      "ref": "GUIDE_how-to-practise-a-job-interview-out-loud-with-chatgpt-s-voic.json",
-      "open": false,
-      "at": "2026-08-04T01:30:22.583Z",
-      "resolved_at": "2026-08-04T01:31:47.903Z"
-    },
-    {
-      "id": "m178580703716211",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"How to Practise a Job Interview Out Loud with ChatGPT's Voice Mode\" — mi a baj: BRITISH_SPELLING_NAME: nagybetűs brit alak — Practising, Practise (3×). Ha közszó, írd amerikaiul; ha VALÓDI tulajdonnév (szervezet/termék neve), hagyd.; British spellings: 'behavioural' should be 'behavioral' (US English); British spelling: 'organisation' should be 'organization' (US English)",
-      "ref": "GUIDE_how-to-practise-a-job-interview-out-loud-with-chatgpt-s-voic.json",
-      "at": "2026-08-04T01:30:37.162Z"
-    },
     {
       "id": "m178580705566680",
       "from": "guide",
@@ -2642,6 +2595,51 @@
       "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 20 → 5/4/2 oszlop.",
       "ref": "mobile",
       "at": "2026-08-15T16:12:00.284Z"
+    },
+    {
+      "id": "m178684108322987",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "info",
+      "text": "A \" Work seamlessly with Dropbox in Claude \" hír a meglévő útmutatóra mutat: claude-getting-started",
+      "ref": "claude-getting-started",
+      "at": "2026-08-16T00:44:43.229Z"
+    },
+    {
+      "id": "m178684134148923",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Transcribe and summarize a voice memo on your iPhone with Apple Intelligence\" — mi a baj: LEDE_TOO_LONG: A RÖVIDEN-doboz 66 szó (max ~45) — ami hosszú, az már nem \"röviden\".; The article claims Apple Intelligence's summary step works inside the Voice Memos app or via Writing Tools on a pasted transcript in Notes. In reality, Apple Intelligence's Writing Tools / Summarize ope",
+      "ref": "GUIDE_transcribe-and-summarize-a-voice-memo-on-your-iphone-with-ap.json",
+      "at": "2026-08-16T00:49:01.489Z"
+    },
+    {
+      "id": "m178684136005354",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Translate a foreign menu or street sign with your iPhone camera\" — mi a baj: The article claims iOS 16 supports the basic Camera translation (Live Text translation), but the in-camera Translate feature requires iOS 16 and the specific Translate app integration that Apple added later; more importantly, the article attributes an automatic hands-free \"Live Translation\" feature ",
+      "ref": "GUIDE_translate-a-foreign-menu-or-street-sign-with-your-iphone-cam.json",
+      "at": "2026-08-16T00:49:20.053Z"
+    },
+    {
+      "id": "m178684147102969",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Get a quick summary of unread emails with Apple Mail's priority messages\" — mi a baj: The article claims Apple Mail has a dedicated 'Priority Messages' section at the top of the inbox that is generated by Apple Intelligence. This is not a real feature in Apple Mail — Apple Mail does have a Priority inbox (an older Gmail-style feature predating Apple Intelligence), but it is ",
+      "ref": "GUIDE_get-a-quick-summary-of-unread-emails-with-apple-mail-s-prior.json",
+      "at": "2026-08-16T00:51:11.030Z"
+    },
+    {
+      "id": "m178684168487829",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 20 → 5/4/2 oszlop.",
+      "ref": "mobile",
+      "at": "2026-08-16T00:54:44.878Z"
     }
   ]
 }

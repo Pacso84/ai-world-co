@@ -1,0 +1,58 @@
+{
+  "_meta": {
+    "written_at": "2026-08-16T00:39:33.684Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.01581601,
+    "original_draft": "2026-08-16T00-38-53-740Z_samsung-newsroom_From_Biosignals_to_Health_Insights__Samsung_Resear.json",
+    "source_id": "samsung-newsroom",
+    "source_name": "Samsung Newsroom (hivatalos)",
+    "source_link": "https://news.samsung.com/global/from-biosignals-to-health-insights-samsung-researchs-work-on-health-foundation-models",
+    "status": "published",
+    "published_at": "2026-08-16T00:44:25.977Z",
+    "slug": "what-ai-on-your-wrist-actually-knows-about-your-health",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 646
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Solid explainer with clear hook, strong plain-language definitions of biosignals and health foundation models, and a useful What this means for you section covering three reader types. No prohibited content, US English spellings, or clichés. The Samsung research context adds credibility.",
+      "_aiCost": 0.00152976,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-08-16T00:45:19.316Z",
+    "guide_worthy": false,
+    "pairing_reason": "Article describes Samsung's general research on health foundation models but names no specific consumer product, feature, or tool a user can actually access or use today",
+    "image_v": 2,
+    "image_at": "2026-08-16T00:52:29.340Z",
+    "seo": {
+      "meta_description": "AI smartwatches can now analyze your sleep, heart rate, and movement to reveal health patterns. Find out what health insights your wearable can actually provide.",
+      "keywords": [
+        "smartwatch health tracking explained",
+        "AI health insights wearable",
+        "smartwatch sleep score meaning",
+        "how smartwatches measure health",
+        "smartwatch heart rate accuracy",
+        "AI health monitoring smartwatch",
+        "Samsung health AI smartwatch"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more specific health metrics (like SpO2, ECG) to the content to target more long-tail keywords",
+        "Include the term 'wearable health tech' alongside AI to capture broader search intent",
+        "Add a section answering common questions people search for, like 'is smartwatch health data accurate'"
+      ],
+      "optimised_at": "2026-08-16T00:54:03.550Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"What AI on Your Wrist Actually Knows About Your Health\"\nsubtitle: \"How smartwatches are starting to spot patterns in your sleep, heart rate, and movement — and what those insights mean for everyday people\"\ncategory: \"explainer\"\naudience: \"personal\"\nread_time_minutes: 4\ntags: [\"wearables\", \"health-ai\", \"smartwatches\"]\n---\n\n# What AI on Your Wrist Actually Knows About Your Health\n\n> **In short:** New AI systems trained on health data from wearables can spot subtle patterns in your sleep, heart rate, and movement — and turn them into plain-language suggestions you can act on. Samsung has been researching this approach, and the technology is starting to reach consumer devices.\n\nYou went to bed at eleven, slept eight hours, and still feel tired. Your watch says your sleep score was 78. That's the moment a lot of people start wondering: what is my watch actually measuring, and what is it missing?\n\n## What your watch is actually tracking\n\nModern smartwatches collect a steady stream of small readings. A **biosignal** is just a fancy word for any signal your body gives off that a sensor can pick up. Heart rate, blood oxygen, skin temperature, movement, even tiny changes in sweat. Most of these readings are noisy on their own. A single heart rate number at 3 a.m. tells you very little.\n\nWhat's changed is that AI is now being trained to look at thousands of those readings together, across days and weeks, instead of one number at a time.\n\n## How the AI actually reads you\n\nResearchers at companies like Samsung have been working on **health foundation models** — large AI systems trained on huge pools of wearable data, the same way a language model is trained on huge amounts of text. The idea is that once an AI has seen enough patterns from enough people, it can spot meaningful changes in yours.\n\nThink of it like this: you can tell a song is playing by hearing one note, because you've heard thousands before. A foundation model learns the \"shape\" of healthy sleep, normal recovery, and unusual stress — and then notices when your week stops fitting that shape.\n\nThat lets the AI do things simple rules can't. Instead of \"your resting heart rate is 62,\" you might get \"your resting heart rate has been climbing for nine days — your body might be fighting something off.\"\n\n## What kind of insights tend to show up\n\n- Trends across days or weeks that you'd never notice in the raw numbers\n- Connections between poor sleep, stress markers, and skipped workouts\n- Early hints that something is off, before you feel symptoms yourself\n\n## What it doesn't do\n\nThese systems aren't doctors. They don't diagnose. A pattern that looks unusual to an AI can still be totally normal for you, or it can be a sensor reading glitch. Treat the suggestions like a friend who noticed something — worth bringing up, not the final word.\n\n## What this means for you\n\n- **If you wear a smartwatch already**: look past the daily score. The interesting stuff is usually in the trends view — what changed over weeks, not what happened last night.\n- **If you're skeptical of wearables**: the new AI layer doesn't replace medical care, but it does make the device more useful for spotting patterns you'd otherwise miss.\n- **If you're privacy-conscious**: much of this analysis now runs on-device, meaning your health data stays on your phone or watch. Still worth checking your device's privacy settings once.\n\n## Wrap-up\n\nYour watch has always had the data. What's new is an AI that can read it like a trained eye would — quietly, across days, connecting dots you wouldn't. You don't need to act on every nudge, but knowing it's there is reason enough to peek at your trends this week and see what it has already noticed about you.",
+  "original_title": "From Biosignals to Health Insights: Samsung Research’s Work on Health Foundation Models"
+}

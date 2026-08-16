@@ -1,0 +1,57 @@
+{
+  "_meta": {
+    "written_at": "2026-08-16T00:40:09.538Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.0083247,
+    "original_draft": "2026-08-16T00-38-45-862Z_dropbox-blog__Move_your_work_forward_with_new_Dropbox_apps_in_C.json",
+    "source_id": "dropbox-blog",
+    "source_name": "Dropbox Blog (hivatalos)",
+    "source_link": "  https://blog.dropbox.com/topics/news/move-your-work-forward-with-new-dropbox-apps-in-chatgpt ",
+    "status": "published",
+    "published_at": "2026-08-16T00:44:09.989Z",
+    "slug": "chatgpt-can-now-search-your-dropbox-and-calendar-what-that-means-for-y",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 693
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Excellent explainer with a strong hook, clear explanations of technical concepts (apps/connectors), relatable real-world scenarios, and a well-structured 'What this means for you' section with audience-specific guidance. No clichés, US English throughout, respectful tone, and ends with an actionable two-minute test readers can try. Ready to publish.",
+      "_aiCost": 0.0015624,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-08-16T00:45:12.659Z",
+    "guide_worthy": false,
+    "pairing_reason": "Multiple separate apps (Dropbox, Dropbox Dash, Reclaim AI) announced together rather than one specific named feature",
+    "image_v": 2,
+    "image_at": "2026-08-16T00:52:18.873Z",
+    "seo": {
+      "meta_description": "ChatGPT now connects to Dropbox and your calendar—find files, search apps, check schedules without leaving chat. See how it streamlines your workday.",
+      "keywords": [
+        "ChatGPT Dropbox integration",
+        "ChatGPT calendar integration",
+        "ChatGPT file search",
+        "ChatGPT productivity apps",
+        "AI assistant for work",
+        "ChatGPT workflow automation"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add the words 'how to' in the title or subtitle to capture more question-based search intent",
+        "Consider mentioning 'OpenAI' or 'ChatGPT plugins' in the meta description for additional relevance",
+        "The keyword 'ChatGPT Dropbox integration' could be expanded to 'ChatGPT Dropbox integration 2024' for more timely search"
+      ],
+      "optimised_at": "2026-08-16T00:53:58.206Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"ChatGPT Can Now Search Your Dropbox and Calendar — What That Means for Your Work\"\nsubtitle: \"Three new Dropbox-built apps inside ChatGPT turn it into a one-stop helper for files, search, and scheduling\"\ncategory: \"explainer\"\naudience: \"work\"\nread_time_minutes: 4\ntags: [\"chatgpt\", \"dropbox\", \"productivity\", \"work-tools\"]\n---\n\n# ChatGPT Can Now Search Your Dropbox and Calendar — What That Means for Your Work\n\n> **In short:** ChatGPT now connects directly to Dropbox, Dropbox Dash, and Reclaim AI's calendar. You can ask ChatGPT to find a file in your Dropbox, search across your work apps, or check your schedule — without leaving the chat window.\n\nWe all know the moment. You're halfway through a chat about a project, you suddenly need the version of the plan from last month, and you find yourself jumping between four tabs: Slack, Dropbox, your email, your calendar. Each one needs its own search bar. By the time you find the right file, the conversation has already moved on.\n\nThat's the friction OpenAI is trying to remove. ChatGPT has been turning into something more than a chat box — it's becoming a place where the AI can talk to the other tools you already use, so you can ask once and get an answer from all of them.\n\n## What's actually new\n\nThree new Dropbox-built apps are now available inside ChatGPT:\n\n- **Dropbox** — lets ChatGPT pull up files from your Dropbox account based on a description you give.\n- **Dropbox Dash** — Dropbox's own search tool that looks across many apps at once. With it connected, ChatGPT can search Gmail, Slack, Notion, and others from a single prompt.\n- **Reclaim AI** — a calendar app focused on scheduling. Once connected, ChatGPT can see your week, find a free slot, or block time for you.\n\nEach one is an \"app\" in the ChatGPT sense — a small connector that gives the AI permission to read (and in some cases, write to) another service on your behalf. In plain terms: you turn the connector on, you grant access once, and then you mostly forget about it.\n\n## Why this matters\n\nUntil recently, ChatGPT only knew what you typed into the chat. Anything you wanted it to use — a file, an email, a calendar event — had to be pasted in by hand. Now it can ask your tools directly.\n\nA few everyday moments this changes:\n\n- *\"Find the slide deck I sent Sarah last Thursday\"* — ChatGPT searches your Dropbox and links the file.\n- *\"What does my Tuesday look like?\"* — ChatGPT reads your Reclaim calendar and answers in plain English.\n- *\"Where's the latest version of the Q3 plan?\"* — Dash searches across your connected apps at once.\n\nYou don't have to remember filenames, dates, or which app stores what. You describe what you need.\n\n## What this means for you\n\n- **If you already use Dropbox for work:** you can stop remembering folder structures and exact file names. Describe what you need; ChatGPT does the searching.\n- **If your work lives across many apps:** the Dash connection could save you the most time. One prompt instead of five separate searches.\n- **If you're cautious about AI seeing your data:** every app is opt-in — you decide what to connect, you can disconnect at any time, and you can review what ChatGPT accessed. Read the permissions screen carefully before turning anything on.\n- **If you're on a free ChatGPT plan:** access to some apps may be limited to paid subscribers — check the ChatGPT apps directory to see what's available for your account.\n\n## Wrap-up\n\nChatGPT is quietly becoming a single window into your work life — files, calendar, search, all reachable through a plain question. The three new Dropbox-built apps are the latest example of that direction. The simplest way to find out if it helps you is to connect one app, ask one real question from your actual workday, and see how the answer compares to your usual five-tab dance.\n\nThat takes about two minutes, and it's the best way to know whether this kind of integration is useful for the way you actually work.",
+  "original_title": " Move your work forward with new Dropbox apps in ChatGPT "
+}

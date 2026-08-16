@@ -1,0 +1,58 @@
+{
+  "_meta": {
+    "written_at": "2026-08-16T00:42:09.810Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00841824,
+    "original_draft": "2026-08-16T00-38-45-861Z_dropbox-blog__Work_seamlessly_with_Dropbox_in_Claude_.json",
+    "source_id": "dropbox-blog",
+    "source_name": "Dropbox Blog (hivatalos)",
+    "source_link": "  https://blog.dropbox.com/topics/news/work-seamlessly-with-dropbox-in-claude ",
+    "status": "published",
+    "published_at": "2026-08-16T00:43:07.598Z",
+    "slug": "your-ai-assistant-can-now-read-your-dropbox-here-s-what-that-actually-",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 813
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-crafted explainer with a relatable hook, clear explanations of technical terms (integration, opt-in) using simple metaphors, balanced coverage including privacy caveats, and a practical wrap-up giving readers their next step. No cliches, no prohibited content, and respectful tone throughout.",
+      "_aiCost": 0.00145422,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-08-16T00:44:43.190Z",
+    "guide_worthy": true,
+    "related_guide_topic": "claude-getting-started",
+    "image_v": 2,
+    "image_at": "2026-08-16T00:51:33.009Z",
+    "seo": {
+      "meta_description": "Claude can now search your Dropbox files in plain English — no more scrolling through folders to find that one document. Here's how it works.",
+      "keywords": [
+        "Claude Dropbox integration",
+        "how to connect AI to Dropbox",
+        "Claude AI file search",
+        "Anthropic Claude Dropbox",
+        "ask AI about my files",
+        "find files faster with AI",
+        "AI assistant cloud storage"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add the primary keyword 'Claude Dropbox' closer to the beginning of the title for better relevance",
+        "Include a brief mention of other cloud storage options (Google Drive, OneDrive) in the article to capture broader search intent",
+        "Consider adding an FAQ section targeting common questions like 'Is my data safe when connecting AI to Dropbox?'"
+      ],
+      "optimised_at": "2026-08-16T00:53:22.829Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Your AI Assistant Can Now Read Your Dropbox — Here's What That Actually Means\"\nsubtitle: \"A plain-language look at connecting Claude to your cloud files, and why it matters for everyday work\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"claude\", \"dropbox\", \"ai-integrations\", \"productivity\", \"file-management\"]\n---\n\n# Your AI Assistant Can Now Read Your Dropbox — Here's What That Actually Means\n\n> **In short:** Anthropic's Claude can now connect to Dropbox so you can ask questions about your stored files in plain English — no more opening every document one by one to find what you need.\n\nYou've spent twenty minutes scrolling through Dropbox folders trying to find that one contract from March. The file name is something like `Final_FINAL_v3.pdf` and you have six of those. Sound familiar?\n\nA new kind of connection between AI assistants and cloud storage is starting to fix exactly this kind of friction. Claude — the AI assistant made by Anthropic — can now work with files stored in Dropbox directly. The AI can look through folders, read documents, and answer questions about them, all through a normal chat conversation.\n\n## What this kind of integration actually does\n\nWhen an AI connects to a service like Dropbox, it gains what developers call an **integration** — a secure bridge that lets the AI see and use files in your account when you ask it to. Think of it like giving a smart assistant a temporary key to your filing cabinet, but only when you specifically ask them to look.\n\nFor Dropbox specifically, this kind of connection typically helps with:\n\n- **Finding a specific file** by describing what you remember, like \"that spreadsheet with last quarter's expenses\"\n- **Summarizing a long document** without you opening it first\n- **Comparing two files** to spot what changed between versions\n- **Pulling answers from a PDF** without copying and pasting chunks into a chat\n\nThe integration is opt-in — you connect your accounts and give permission. Claude doesn't quietly browse your Dropbox in the background.\n\n## Why this matters more than it sounds\n\nSearch inside cloud storage has been the same for years: type a file name (that you hopefully remember) into a search box. That works fine for tidy folders with clear names. It falls apart for everyone else.\n\nWhen an AI understands the *content* of your files, the question you ask can be natural-language, not filename-based. \"What did I write in that client proposal about pricing?\" becomes a normal question, not a 15-minute hunt.\n\nIt also shifts how teams work. Instead of forwarding a document to a coworker and asking them to read it, you could ask the AI to extract the part you need and paste the answer into Slack yourself.\n\n## What this means for you\n\n- **If you handle a lot of files at work**: this kind of integration can replace a chunk of the boring \"open file, scroll, find the paragraph\" routine. Start with one recurring task — like pulling data from weekly reports — and see if it actually saves time before you trust it with anything sensitive.\n- **If you're a student or researcher**: searching a pile of PDFs and notes for a single concept becomes a one-line question instead of an afternoon of reading.\n- **If you're worried about privacy**: integrations are opt-in, and reputable services like Claude and Dropbox are built around the idea that you control what the AI sees. Don't connect anything you're not comfortable sharing — and remember that sending sensitive files to any AI service is a decision worth thinking about.\n- **If you're just curious**: try the connection with non-sensitive files first — old drafts, public documents, a folder of recipes. Get a feel for what it can and can't do before relying on it for real work.\n\n## A few honest caveats\n\nThe exact features available in any Claude–Dropbox connection can change, and Anthropic tends to roll these out gradually. Pricing and availability of advanced features may depend on which Claude plan you use — the free tier is usually more limited than paid plans.\n\nAlso, an AI reading your files is not the same as an AI understanding them perfectly. It can miss context, summarize the wrong section, or confidently give you the wrong answer if the source material is messy. Treat its output the way you'd treat a quick summary from a tired coworker — useful as a starting point, worth double-checking before you act on it.\n\n## Wrap-up\n\nConnecting an AI assistant to your cloud storage turns a pile of files into something you can actually *talk to*. For most people, the practical win isn't dramatic — it's that the boring 20-minute hunts get shorter, one question at a time. Pick one task you do every week, try the connection on something low-stakes, and see if it earns its place in your routine.",
+  "original_title": " Work seamlessly with Dropbox in Claude "
+}
