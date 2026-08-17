@@ -86,6 +86,7 @@ const IMAGE_NAMES = [
   // cégek
   'Midjourney', 'Picsart',
   // eszközök
+  'Image Playground',   // Apple Intelligence képgenerátora — nem chat (2026-08-17)
   'Project Genie',      // Google DeepMind világ-/videómodell — nem chat
   'Stable Diffusion',   // Hugging Face-en futtatva, de képmodell
   'Upscayl'             // AI-képfelnagyító
