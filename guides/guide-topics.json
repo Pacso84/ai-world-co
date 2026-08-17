@@ -4585,10 +4585,11 @@
       "audience": "personal",
       "level": "beginner",
       "angle": "Step-by-step guide to custom instructions — what to write so ChatGPT stops asking the same questions every chat.",
-      "status": "todo",
+      "status": "done",
       "icon": "⚙️",
       "proposed_at": "2026-08-11T01:06:23.209Z",
-      "proposed_by": "guide-ideas"
+      "proposed_by": "guide-ideas",
+      "written_at": "2026-08-17T00:41:52.970Z"
     },
     {
       "id": "use-gemini-to-plan-a-trip-across-multiple-google-apps",
@@ -4876,11 +4877,12 @@
       "audience": "both",
       "level": "beginner",
       "angle": "Make a one-of-a-kind image for a work slide or school project in seconds, without searching through stock photo sites.",
-      "status": "todo",
+      "status": "done",
       "icon": "🎨",
       "priority": "balance",
       "proposed_at": "2026-08-15T00:59:36.826Z",
-      "proposed_by": "guide-balance"
+      "proposed_by": "guide-balance",
+      "written_at": "2026-08-17T00:38:10.961Z"
     },
     {
       "id": "how-to-tailor-your-resume-to-a-specific-job-posting-in-15-mi",
@@ -4968,11 +4970,12 @@
       "audience": "personal",
       "level": "beginner",
       "angle": "Use a simple voice phrase to call a contact by name, or instantly Drop In on the kitchen Echo to tell the kids dinner is ready — no phone required.",
-      "status": "todo",
+      "status": "done",
       "icon": "📞",
       "priority": "balance",
       "proposed_at": "2026-08-16T00:49:44.042Z",
-      "proposed_by": "guide-balance"
+      "proposed_by": "guide-balance",
+      "written_at": "2026-08-17T00:40:11.724Z"
     },
     {
       "id": "use-alexa-to-schedule-meetings-and-hear-your-calendar-read-a",
@@ -4982,11 +4985,12 @@
       "audience": "both",
       "level": "beginner",
       "angle": "Say 'Alexa, add a standup with the team at 10am tomorrow' or ask 'what's on my calendar today' and get your meetings read back while your hands stay on the keyboard.",
-      "status": "todo",
+      "status": "done",
       "icon": "📅",
       "priority": "balance",
       "proposed_at": "2026-08-16T00:49:44.114Z",
-      "proposed_by": "guide-balance"
+      "proposed_by": "guide-balance",
+      "written_at": "2026-08-17T00:43:35.066Z"
     },
     {
       "id": "set-up-medication-and-pill-reminders-with-alexa-for-yourself",
@@ -4996,11 +5000,12 @@
       "audience": "personal",
       "level": "beginner",
       "angle": "Create named reminders like 'Alexa, remind Mom to take her blood pressure pill at 8am' so the right person hears the right nudge at the right time.",
-      "status": "todo",
+      "status": "done",
       "icon": "💊",
       "priority": "balance",
       "proposed_at": "2026-08-16T00:49:44.194Z",
-      "proposed_by": "guide-balance"
+      "proposed_by": "guide-balance",
+      "written_at": "2026-08-17T00:45:34.728Z"
     },
     {
       "id": "turn-alexa-into-a-sleep-sounds-machine-and-gentle-sunrise-al",
@@ -5042,6 +5047,76 @@
       "icon": "💡",
       "priority": "balance",
       "proposed_at": "2026-08-16T00:49:44.289Z",
+      "proposed_by": "guide-balance"
+    },
+    {
+      "id": "plan-a-weekend-getaway-itinerary-with-grok-in-10-minutes",
+      "company": "xAI",
+      "tool": "Grok",
+      "title": "Plan a weekend getaway itinerary with Grok in 10 minutes",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "Tell Grok your city, dates and interests, and it drafts a day-by-day plan you can tweak before you book anything.",
+      "status": "todo",
+      "icon": "🗺️",
+      "priority": "balance",
+      "proposed_at": "2026-08-17T00:45:12.421Z",
+      "proposed_by": "guide-balance"
+    },
+    {
+      "id": "use-grok-to-explain-a-confusing-news-article-in-plain-englis",
+      "company": "xAI",
+      "tool": "Grok",
+      "title": "Use Grok to explain a confusing news article in plain English",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "Paste a long article into Grok and ask for a plain-English summary, and it walks you through what actually happened.",
+      "status": "todo",
+      "icon": "📰",
+      "priority": "balance",
+      "proposed_at": "2026-08-17T00:45:12.500Z",
+      "proposed_by": "guide-balance"
+    },
+    {
+      "id": "build-a-simple-weekly-meal-plan-with-grok-based-on-what-s-in",
+      "company": "xAI",
+      "tool": "Grok",
+      "title": "Build a simple weekly meal plan with Grok based on what's in your fridge",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "List the ingredients you have at home, ask Grok for dinner ideas, and it builds a 7-day plan with a shopping list.",
+      "status": "todo",
+      "icon": "🍳",
+      "priority": "balance",
+      "proposed_at": "2026-08-17T00:45:12.575Z",
+      "proposed_by": "guide-balance"
+    },
+    {
+      "id": "prepare-for-a-job-interview-with-practice-questions-from-gro",
+      "company": "xAI",
+      "tool": "Grok",
+      "title": "Prepare for a job interview with practice questions from Grok",
+      "audience": "business",
+      "level": "beginner",
+      "angle": "Tell Grok the job title and you get a list of likely questions plus sample answers you can rehearse out loud.",
+      "status": "todo",
+      "icon": "💼",
+      "priority": "balance",
+      "proposed_at": "2026-08-17T00:45:12.641Z",
+      "proposed_by": "guide-balance"
+    },
+    {
+      "id": "write-a-polite-complaint-email-with-grok-that-actually-gets-",
+      "company": "xAI",
+      "tool": "Grok",
+      "title": "Write a polite complaint email with Grok that actually gets results",
+      "audience": "both",
+      "level": "beginner",
+      "angle": "Describe what went wrong and how you want it fixed, and Grok drafts a firm-but-polite email you can send as-is or tweak.",
+      "status": "todo",
+      "icon": "✍️",
+      "priority": "balance",
+      "proposed_at": "2026-08-17T00:45:12.704Z",
       "proposed_by": "guide-balance"
     }
   ]

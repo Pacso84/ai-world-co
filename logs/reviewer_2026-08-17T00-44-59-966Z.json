@@ -1,0 +1,35 @@
+{
+  "started_at": "2026-08-17T00:43:35.188Z",
+  "total": 4,
+  "passed": 2,
+  "failed": 1,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.011671164000000001,
+  "by_article": [
+    {
+      "writer": "WRITER_GUIDE_generate-a-custom-illustration-for-a-slide-or-document-with-.json",
+      "rejected": "REJECTED_GUIDE_generate-a-custom-illustration-for-a-slide-or-document-with-.json",
+      "decision": "FAIL",
+      "score": 6,
+      "cost_usd": 0.0030327
+    },
+    {
+      "writer": "WRITER_GUIDE_make-hands-free-phone-calls-and-drop-in-on-family-echo-devic.json",
+      "article": "ARTICLE_GUIDE_make-hands-free-phone-calls-and-drop-in-on-family-echo-devic.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0022176
+    },
+    {
+      "writer": "WRITER_GUIDE_set-up-custom-instructions-so-chatgpt-remembers-your-prefere.json",
+      "article": "ARTICLE_GUIDE_set-up-custom-instructions-so-chatgpt-remembers-your-prefere.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.00188586
+    }
+  ],
+  "truth_held": 1,
+  "finished_at": "2026-08-17T00:44:59.966Z",
+  "duration_seconds": 84.778
+}

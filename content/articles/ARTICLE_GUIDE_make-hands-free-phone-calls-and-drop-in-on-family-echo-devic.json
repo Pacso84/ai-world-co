@@ -1,0 +1,61 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "make-hands-free-phone-calls-and-drop-in-on-family-echo-devic",
+    "company": "Amazon",
+    "tool": "Alexa+",
+    "icon": "📞",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-08-17T00:40:11.724Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.02780976,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-08-17T00:44:23.014Z",
+    "slug": "make-hands-free-calls-and-drop-in-on-echo-devices-with-alexa",
+    "auto_check": {
+      "passed": false,
+      "issues": [
+        "LEDE_TOO_LONG: A RÖVIDEN-doboz 63 szó (max ~45) — ami hosszú, az már nem \"röviden\"."
+      ],
+      "wordCount": 1646
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Excellent beginner guide with a warm, relatable hook scenario, clear step-by-step instructions with fallbacks for different app versions, practical examples in every step, and a thoughtful 'What this means for you' section. Minor title-inconsistency: title says 'Alexa+' but body uses 'Alexa' throughout — should be consistent, though this doesn't impact usability.",
+      "_aiCost": 0.0022176,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "image_v": 2,
+    "image_at": "2026-08-17T00:46:32.531Z",
+    "seo": {
+      "meta_description": "Learn to make hands-free calls and Drop In on Amazon Echo devices using simple Alexa voice commands — no phone required.",
+      "keywords": [
+        "how to make hands-free calls on Echo",
+        "Alexa Drop In feature",
+        "Echo device calling without phone",
+        "Alexa voice commands for calling",
+        "Amazon Echo Drop In setup"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add the specific wake words and exact phrases users can say (e.g., 'Alexa, call Mom') to capture voice search intent",
+        "Include a brief setup requirement list in the article intro to improve featured snippet potential",
+        "Consider adding 'Echo' as a keyword since it's a common branded search term"
+      ],
+      "optimised_at": "2026-08-17T00:47:14.388Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Make hands-free calls and Drop In on Echo devices with Alexa\"\nsubtitle: \"Use simple voice commands to call any contact or instantly connect to a family Echo — no phone required\"\ncategory: \"guide\"\naudience: \"personal\"\ncompany: \"Amazon\"\ntool: \"Alexa+\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"getting-started\", \"alexa\", \"echo\"]\n---\n\n# Make hands-free calls and Drop In on Echo devices with Alexa\n\n> **In short:** With an Amazon Echo speaker and the Alexa app, you can call any saved contact hands-free by saying \"Alexa, call [name]\" — or instantly connect to another Echo in your home with \"Alexa, drop in on [device name].\" You need an Amazon account, Wi-Fi, and the Alexa app on a phone, and Drop In is free in the US and Canada.\n\nPicture this: your hands are covered in cookie dough, dinner is almost ready, and three kids are scattered across different rooms with headphones on. Instead of yelling up the stairs, you say one short sentence to the Echo on the counter — and your voice comes through the Echo in the living room, the kitchen speaker, and the Dot in the playroom. That's Drop In, and it turns your Echo devices into a built-in home intercom. Voice calling works the same way: no phone, no dialing, just your voice.\n\n## Before you start\n- **An Amazon account** — the same one you used to set up your Echo.\n- **The Alexa app** installed on a phone (iOS or Android). You'll do the setup here, even though the calls themselves happen hands-free.\n- **At least two Echo devices** if you want to try Drop In. Calling works with just one Echo if the other person has the Alexa app or their own Echo.\n- **A contact saved in the Alexa app** — either imported from your phone's address book or added by hand.\n- **Drop In turned on** for each Echo you want to reach (it's off by default — we'll cover that in Step 4).\n- **Roughly 5–7 minutes** for the first setup, then it's seconds per call.\n\n## Step 1 — Open the Alexa app and turn on Contacts\nTap the **Alexa app icon** on your phone. The home screen opens with a row of icons along the bottom — **Home**, **Communicate**, **Play**, **Devices**, and **More**. Tap **Communicate**, then tap the small **person icon** (or your profile picture) in the top-right corner. A menu slides up with options like **Contacts**, **Call History**, and **Settings**. Tap **Contacts** — if Alexa asks permission to read your phone's address book, tap **Allow**. Your phone contacts appear as a list inside the Alexa app.\n\nIf your app looks different — Amazon updates the layout often — look for a **Contacts** section inside the **Settings** gear, or under the **hamburger menu** (three lines, top-left). Older versions of the app put it under **More → Settings → Alexa Account → Contacts**.\n\n💬 Example: tap **Allow** when the popup asks \"Alexa would like to access your contacts.\"\n\nYou'll know it worked when you see familiar names with little phone icons next to them inside **Communicate → Contacts**.\n\n## Step 2 — Make a hands-free voice call\nStand within about 10 feet of your Echo and say the wake word — by default it's **\"Alexa\"** — followed by your call command. The light ring on top of the Echo turns **blue with a spinning cyan** section; that swirling blue means Alexa is listening and connecting. You hear ringing through the speaker; when the other person picks up, just talk as you normally would. The mic on the Echo picks up your voice from across the room.\n\nIf the ring glows solid blue and nothing happens, the contact may not have an Echo or the Alexa app set up. Alexa can only call people whose devices are linked to the Alexa service — it cannot call regular phone numbers on every device, and capabilities vary by region and device generation. Try a contact who has the Alexa app on their phone, or another Echo in your home.\n\n💬 Example: **\"Alexa, call Mom.\"** — say it as one natural sentence. Pause a beat after the wake word, then continue.\n\nYou'll know it worked when you hear ringing through the Echo and the light ring pulses blue (a slow, rhythmic pulse while connected).\n\n## Step 3 — Drop In on a family Echo instantly\nDrop In turns your Echoes into a home intercom — it connects in seconds without anyone having to answer. Say the wake word, then name the device you want to reach. The Echo announces **\"Dropping in on [device name]\"**, plays a brief chime, and you're connected. You can speak right away, and the people in that room hear you through their Echo.\n\nThis is fast by design — that's also why it can surprise people. The first time you Drop In on someone, give them a heads-up so they're ready for it. Drop In only works between Echoes (or the Alexa app) that are signed in to the same Amazon account, OR between accounts that have explicitly granted each other permission.\n\n💬 Example: **\"Alexa, drop in on the Kitchen Echo.\"** — use whatever name you gave the device when you first set it up. If you're not sure of the name, ask \"Alexa, what are my devices?\" and she'll list them.\n\nYou'll know it worked when you hear the chime and the device name announced, then silence on your end — that silence means the other Echo is open and listening.\n\n## Step 4 — Turn Drop In on (and choose who can reach you)\nDrop In is **off by default** for every Echo — which is the safe starting point. When you're ready to use it, open the Alexa app, tap **Devices** at the bottom, then select the specific Echo you want to configure (for example, **Echo Dot — Living Room**). Scroll down to **Settings** (look for a gear icon) and tap **Drop In**. You'll see options like **On**, **Only during certain hours**, and **Off**, plus a dropdown for **which contacts** can Drop In on this device.\n\nPick **My Household** for a typical family setup — that means only Echoes signed in to your own Amazon account can drop in. Choose **All My Contacts** only if you want friends and extended family with their own Alexa devices to be able to connect to that Echo without anyone answering — which can feel intrusive, especially in bedrooms or home offices. Stick to **My Household** until you're comfortable with how it works.\n\nIf your app doesn't show a \"Drop In\" toggle, look under **Device Settings → General → Communications** or check for an Alexa app update — older versions don't include this control.\n\n💬 Example: select **My Household** from the dropdown, then tap **Save** or **Done**.\n\nYou'll know it worked when the toggle reflects your choice and you can test it from another Echo in your home.\n\n## Step 5 — End the call or Drop In\nWhen you're done, say the wake word followed by **\"hang up\"** or **\"end the call.\"** The blue light ring switches off and the Echo goes back to its normal state — ready for the next question or command. The other side disconnects at the same time.\n\nIf voice commands aren't working (for example, the music is too loud to hear you), press the **microphone off button** on top of the Echo — it's the circle with a slash through it. Tapping it once ends the active call on most Echo models; tapping it again un-mutes the mic for future requests. You can also just say **\"Alexa, stop\"** to end most things quickly.\n\n💬 Example: **\"Alexa, hang up.\"**\n\nYou'll know it worked when the blue ring disappears, the speaker goes quiet, and you can ask Alexa something new — like the time or a recipe — without any error beep.\n\n## Common mistakes\n- **Saying \"Alexa, call John\" when John isn't in your Alexa contacts.** Alexa won't dial a random person by name — she only calls contacts you've added or imported. **Fix:** open the app, go to **Communicate → Contacts**, and either import from your phone or tap the **+** icon to add someone by hand.\n- **Drop In feels like eavesdropping the first time.** Because it auto-connects, it can startle people. **Fix:** keep Drop In on **My Household** only, tell family members you're testing it, and avoid enabling it on devices in bedrooms or private spaces.\n- **The Echo doesn't respond when you speak.** The wake word might be changed, the mic might be muted, or the room might be too noisy. **Fix:** check that the wake word is **Alexa** (or whatever you set it to) in **Devices → [your Echo] → Wake Word**, make sure the red mute light is **off**, and try again from a quieter spot a bit closer to the Echo.\n\n## What this means for you\n- **In everyday life:** you can call a partner or grandparent hands-free while cooking, working out, or carrying groceries — no phone in your hand, no fumbling with numbers.\n- **For your home and family:** Drop In turns your Echoes into a quick intercom. Announce dinner from the kitchen, check on a baby in the nursery, or remind kids about homework without leaving what you're doing.\n- **If you're just getting started:** try Step 3 first with a device in your own room — Drop In on your own Echo to hear how it sounds, then expand to the rest of the house once everyone is comfortable.\n\n## Try it now\nPick one Echo in your home and say, out loud right now: **\"Alexa, drop in on [the name of another Echo in your house].\"** Listen for the chime, then say \"dinner's almost ready\" — and you'll have used your first Drop In call in under 10 seconds.",
+  "original_title": "Make hands-free phone calls and Drop In on family Echo devices with Alexa+"
+}

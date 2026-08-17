@@ -1,0 +1,61 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "set-up-custom-instructions-so-chatgpt-remembers-your-prefere",
+    "company": "OpenAI",
+    "tool": "ChatGPT",
+    "icon": "⚙️",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-08-17T00:41:52.969Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.01127178,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-08-17T00:44:41.972Z",
+    "slug": "set-up-chatgpt-custom-instructions-so-it-stops-asking-the-same-questio",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1581
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 10,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Excellent guide that hits all marks: clear structure with 6 numbered steps, good UI descriptions with fallback guidance, concrete real-world examples in every step, warm and encouraging tone, and a helpful distinction between Custom Instructions and Memory. The 'Try it now' section gives readers an immediate payoff. Minor note: the ~1,500 character limit per box could shift over time, but the guidance is reasonable and clearly approximate.",
+      "_aiCost": 0.00188586,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "image_v": 2,
+    "image_at": "2026-08-17T00:46:43.041Z",
+    "seo": {
+      "meta_description": "Set up ChatGPT custom instructions in 5 minutes. Tell ChatGPT about yourself once — no more repeating your background in every new chat. Free guide.",
+      "keywords": [
+        "how to set up ChatGPT custom instructions",
+        "ChatGPT custom instructions tutorial",
+        "ChatGPT remember my preferences",
+        "personalize ChatGPT responses",
+        "ChatGPT settings for everyday use",
+        "ChatGPT custom instructions vs Memory",
+        "make ChatGPT know me"
+      ],
+      "seo_score": 9,
+      "suggestions": [
+        "Add primary keyword 'how to set up ChatGPT custom instructions' earlier in the title for better ranking",
+        "Consider adding '2024' or 'guide' to the title tag to match current search patterns",
+        "Keep meta description at 150-160 chars — current version is optimal"
+      ],
+      "optimised_at": "2026-08-17T00:47:29.111Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Set up ChatGPT custom instructions so it stops asking the same questions\"\nsubtitle: \"Tell ChatGPT about yourself once and skip the same intro in every new chat — a five-minute setup for your personal assistant.\"\ncategory: \"guide\"\naudience: \"personal\"\ncompany: \"OpenAI\"\ntool: \"ChatGPT\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"getting-started\", \"chatgpt\", \"personalization\"]\n---\n\n# Set up ChatGPT custom instructions so it stops asking the same questions\n\n> **In short:** Custom Instructions is a free ChatGPT setting where you write facts about yourself and how you want replies to sound. Once saved, every new chat starts with that context — so you stop typing the same intro over and over. It is different from ChatGPT's Memory, which works automatically.\n\nBy the end of this guide, ChatGPT will already know your basics — your job, your family setup, your tone preferences — the moment you open a new chat. This is for anyone who uses ChatGPT for everyday tasks and is tired of re-explaining themselves in every conversation.\n\n## Before you start\n- A free ChatGPT account works. The feature is also available on paid plans (Plus, Team, Pro, Enterprise), and the steps look the same.\n- You can do this on a phone or a computer — both are fine. The screenshots in your head may look a little different, but the words on the buttons are usually the same.\n- Total time: about 5–10 minutes. You'll type two short paragraphs, save, and you're done.\n- You do NOT need any technical skill. If you can write a text message, you can set this up.\n\n## Step 1 — Open ChatGPT and find your settings\nOpen ChatGPT in your browser or app. Look for a small circle with your initials or profile picture — usually in the **bottom-left** on the web version, or the **top-left** on the mobile app. Click or tap it once. A short menu slides open with options like **Settings**, **Help**, and **Log out**. From that menu, choose **Settings** (it may show a small gear icon ⚙️ next to it). If you don't see a profile circle, look for a **⋯ (three dots)** menu or a **☰ (three lines)** icon instead — those open the same menu on some devices. You'll know it worked when a Settings panel fills most of your screen, with a list of options down the side or stacked vertically.\n\n💬 Example: nothing to type here — just clicking and tapping.\n\n## Step 2 — Find the Custom Instructions area\nInside Settings, scan the list for a section called **Personalization** or a link that says **Custom Instructions**. OpenAI has moved this menu a few times, so if you don't see it right away, try **Beta features**, or scroll through the entire Settings list. On older accounts, you may need to flip a toggle called **Custom Instructions** to **on** before any boxes show up. When you find the right screen, you'll see **two text boxes** stacked on top of each other, each with a short label above it. You'll know it worked when both boxes are visible and ready to type into.\n\n💬 Example: nothing to type here either — just locating the right screen.\n\n## Step 3 — Tell ChatGPT about yourself\nClick or tap into the **first box** — the one with a label like *\"What would you like ChatGPT to know about you to provide better responses?\"* This is where you write the facts ChatGPT should keep in mind: your job, your family situation, your skill level, your location, anything that comes up often. There is a soft character limit (roughly 1,500 characters per box), so pick the three or four facts that show up most in your chats. As you type, a small character counter at the bottom of the box will let you know how much room you have left. If you don't see a counter, just aim for 3–5 sentences.\n\n💬 Example: \"I'm a high school math teacher in my 12th year. I tutor after school twice a week. I have two kids, ages 7 and 10. I prefer American English and metric units when measuring. I'm not a developer.\"\n\nIf you find yourself writing a whole biography, stop and trim. The instructions should be **specific**, not exhaustive. Saying *\"I work in marketing\"* is more useful than *\"I have worked in many fields over my career.\"*\n\nYou'll know it worked when your details are visible in the box and the character counter (if shown) is well under the limit.\n\n## Step 4 — Tell ChatGPT how you want it to respond\nNow click into the **second box** — the one with a label like *\"How would you like ChatGPT to respond?\"* This is where you shape the tone, length, and format of every future reply. Think of it as giving ChatGPT a small style guide. The more concrete you are, the more consistent the replies will be. Treat vague wishes like *\"be helpful\"* as a starting point, not the final answer. *\"Short paragraphs, no emojis, give me the answer first and then the explanation\"* will travel much further.\n\n💬 Example: \"Be friendly and direct. Skip the apologies. Use short paragraphs and bullet points when listing things. Give me a short answer first, then a longer explanation if I ask for it. Don't use emojis unless I do. Use American English.\"\n\nIf you're not sure what to write, start with one sentence — *\"be friendly and brief\"* — and come back later to add more. You'll know it worked when your style preferences appear in the second box.\n\n## Step 5 — Save and turn it on\nLook for a **Save** button at the bottom of the panel, or a **Done** button on the mobile app. Click or tap it once. Some accounts also have a toggle labeled **Enable custom instructions for new chats** — if you see it, make sure it's switched on (it usually glows or turns blue when active). If you don't see a toggle, the Save button is enough. A small confirmation may appear at the top, sometimes just a checkmark. From this moment on, ChatGPT will quietly read both boxes at the start of every new conversation.\n\n💬 Example: nothing to type — just one click or tap.\n\nYou'll know it worked when you close the Settings panel, reopen it, and your two boxes are still filled in. If they are empty, the save didn't stick — try again.\n\n## Step 6 — Open a fresh chat and test it\nClose the Settings panel and click the **New chat** button (usually a pencil icon ✏️ or a \"New chat\" label at the top). Ask a small, everyday question — the kind where your saved facts should clearly show up. The reply should feel like it was written for someone who already knows you, not a stranger who just met you.\n\n💬 Example: type \"Can you suggest a weeknight dinner for a family of four, kid-friendly, ready in 30 minutes?\" — a well-tuned reply will quietly use your family facts, prefer short paragraphs, and skip emojis if you said no emojis.\n\nIf the answer ignores your instructions, the wording is probably too vague. Rewrite it to be more specific — *\"15-minute dinners\"* instead of *\"quick dinners.\"* You'll know it worked when the reply sounds like the ChatGPT you wanted all along.\n\n## Common mistakes\n- **Writing too much.** Both boxes have a soft character limit (around 1,500 characters each). If you overflow, ChatGPT may quietly cut off the end. Be specific, not exhaustive.\n- **Confusing Custom Instructions with Memory.** **Memory** is automatic — ChatGPT remembers useful facts from your past chats on its own. **Custom Instructions** are things you set on purpose. They are two different settings, and you can use both.\n- **Never updating them.** Your life changes — a new job, a new kid, a new hobby. Set a reminder to revisit your instructions every few months. They are easy to edit in the same place where you set them up.\n- **Putting secrets in there.** Custom Instructions are not a safe place for passwords, addresses, or anything sensitive. ChatGPT will read them on every new chat, and you can't fully control where that text travels.\n\n## What this means for you\n- **In everyday life:** Once set, you don't have to repeat *\"I'm vegetarian, allergic to nuts, prefer short answers\"* every chat. Family dinners, trip ideas, weekend plans — all start with the right context.\n- **For your work or side projects:** A freelancer can tell ChatGPT their industry, typical clients, and the writing tone they want, and every new chat starts with that context. A small business owner can specify *\"answers in plain English, no jargon, no more than three paragraphs.\"*\n- **If you're just getting started:** Pick ONE fact about you and ONE style preference. Save. Open a new chat. Ask a question. You can always add more later — the box is not a one-time form.\n\n## Try it now\nOpen ChatGPT, find Settings, and in the first box type: *\"I'm a beginner at SQL but I work in marketing.\"* In the second box type: *\"Explain things step by step, use everyday examples, avoid jargon.\"* Save. Open a new chat and ask: *\"How do I count how many customers came back last month?\"* Notice how the reply speaks to a marketing beginner, not a database engineer. That's the whole point — and you only had to set it up once.",
+  "original_title": "Set up custom instructions so ChatGPT remembers your preferences"
+}
