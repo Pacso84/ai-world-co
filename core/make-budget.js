@@ -103,12 +103,50 @@ export function postsPerRun({ used, day, defaultLimit = 3 }) {
   // A keret tényleg elfogyott: küldeni innentől néma veszteség.
   if (used >= MONTHLY_CAP) return 0;
 
-  for (let n = defaultLimit; n >= 1; n--) {
-    if (used + hatra * RUNS_PER_DAY * n * OPS_PER_POST <= SAFETY_CAP) return n;
-  }
-  // A legszűkebb tempó sem fér bele a fékig — de a keret még nem fogyott el.
-  // Jobb lassan posztolni, mint megállni: a fék tartalék, nem plafon.
-  return 1;
+  // ===================================================================
+  // A MARADÉK IS MENJEN KI (2026-08-17, user: „szerintem sok várakozik")
+  // ===================================================================
+  // Az első változat EGYENLETES EGÉSZ tempót keresett: a legnagyobb n, ami
+  // minden hátralévő körre belefér. Ez elpazarolja a törtrészt. Élesben mérve
+  // 08-17-én: 592 elhasználva, 45 kör hátra, 102 poszt férne bele — de a
+  // 2/kör-ös fokozat csak 90-et küld ki, és 46 posztnyi keret HASZNÁLATLANUL
+  // vész el a hónap végén. Közben 267 poszt várt sorára.
+  //
+  // Most a MARADÉK KERETBŐL számolunk, nem tempót keresünk: ennyi poszt fér
+  // még bele összesen, ezt osztjuk el a hátralévő körökre, és a törtrészt az
+  // ELSŐ körök kapják meg. Mivel az őr MINDEN futásnál a VALÓDI fogyásból
+  // számol újra, ez önkorrigáló: ahogy a maradék elfogy, a tempó magától
+  // visszaáll az egyenletesre.
+  //
+  // ⚠️ A BIZTONSÁG NEM CSÖKKENT: a SAFETY_CAP változatlanul 900, és egy kör
+  // SOSEM küld többet, mint amennyi a fékig még belefér (`fer`). A legrosszabb
+  // eset túllépése így legfeljebb OPS_PER_POST-1 művelet — a 100 műveletes
+  // tartalékon belül.
+  // ⚠️ KEMÉNY PLAFON — a user szabálya: „véletlenül se fogyjon el" (08-17).
+  // Ez a sor egy VALÓDI hibát javít, amit a hónap-szimuláció talált meg: a
+  // „fék fölött lassan megyünk tovább" ág addig küldött, amíg a `used` el nem
+  // érte az 1000-et — csakhogy az UTOLSÓ poszt átvitte rajta (950-ből indulva
+  // 1001 lett a vége). A `used >= MONTHLY_CAP` feltétel későn kapcsol: a
+  // poszt ÁRÁT is bele kell számolni, nem csak az induló állást.
+  const ferPlafonig = Math.floor((MONTHLY_CAP - used) / OPS_PER_POST);
+  if (ferPlafonig <= 0) return 0;
+
+  const korokHatra = hatra * RUNS_PER_DAY;
+  const keret = SAFETY_CAP - used;
+
+  // A fék fölött, de a valódi plafon alatt: lassan megyünk tovább, nem állunk
+  // meg. A fék tartalék, nem plafon — ez a döntés 2026-08-10 óta áll.
+  if (keret <= 0) return Math.min(1, ferPlafonig);
+
+  const fer = Math.floor(keret / OPS_PER_POST);        // ennyi poszt fér még bele ÖSSZESEN
+  if (fer <= 0) return Math.min(1, ferPlafonig);
+
+  const alap = Math.floor(fer / korokHatra);
+  const maradek = fer - alap * korokHatra;             // a törtrész, körökben
+  const n = alap + (maradek > 0 ? 1 : 0);
+
+  // Soha többet, mint amennyi ÖSSZESEN belefér — sem a fékig, sem a plafonig.
+  return Math.min(defaultLimit, Math.max(1, n), fer, ferPlafonig);
 }
 
 export default {

@@ -52,11 +52,45 @@ t('bőséges keretnél a teljes tempó megy', () => {
 });
 
 t('szoros keretnél VISSZAVESZ, de nem áll le', () => {
-  // 430 elhasználva, aug 10 (22 nap hátra):
-  //   3 poszt/futás → 430 + 22*3*3*3 = 1024  ❌ a 900-as fék fölött
-  //   2 poszt/futás → 430 + 22*3*2*3 =  826  ✅
+  // 430 elhasználva, aug 10 (22 nap = 66 kör hátra). A maradék keretből
+  // (900-430=470) 156 poszt fér bele, ami 66 körre 2,36/kör — tehát az ELSŐ
+  // körök 3-at kapnak, a törtrész nem vész el, aztán 2-re simul.
+  // ⚠️ EZ A TESZT KORÁBBAN 2-t VÁRT: az egyenletes egész tempó a hónap végén
+  // 46 posztnyi keretet HASZNÁLATLANUL hagyott, miközben 267 poszt várt sorára.
   const n = postsPerRun({ used: 430, day: '2026-08-10', defaultLimit: 3 });
-  assert.equal(n, 2, 'egy fokozattal lejjebb, nem nullára');
+  assert.equal(n, 3, 'a törtrészt az első körök kapják');
+  // De szorosabb keretnél tényleg visszavesz (700 elhasználva, 14 nap hátra:
+  // a maradék 200 műveletből 66 poszt fér, 42 körre = 1,57/kör → 2):
+  assert.equal(postsPerRun({ used: 700, day: '2026-08-18', defaultLimit: 3 }), 2);
+  // És a legszűkebb sávban 1-re megy le:
+  assert.equal(postsPerRun({ used: 750, day: '2026-08-15', defaultLimit: 3 }), 1);
+});
+
+t('🛑 SOHA nem viszi a valódi plafon FÖLÉ (user: „véletlenül se fogyjon el")', () => {
+  // EZT A HIBÁT A HÓNAP-SZIMULÁCIÓ TALÁLTA (2026-08-17). A „fék fölött lassan
+  // megyünk tovább" ág addig küldött, amíg a used el nem érte az 1000-et —
+  // csakhogy az UTOLSÓ poszt ÁTVITTE rajta: 950-ből indulva 1001 lett a vége.
+  // A poszt ÁRÁT is bele kell számolni, nem elég az induló állást nézni.
+  for (const used of [994, 996, 998, 999]) {
+    const n = postsPerRun({ used, day: '2026-08-20', defaultLimit: 3 });
+    assert.ok(used + n * OPS_PER_POST <= MONTHLY_CAP,
+      `used=${used} → ${n} poszt = ${used + n * OPS_PER_POST} > ${MONTHLY_CAP}`);
+  }
+  // 998-ból egyetlen poszt (3 művelet) sem fér be:
+  assert.equal(postsPerRun({ used: 998, day: '2026-08-20', defaultLimit: 3 }), 0);
+});
+
+t('🔁 a teljes hónapot végigjátszva sem futja túl a keretet', () => {
+  // Nem állítás, hanem VÉGIGJÁTSZÁS: körről körre, a valódi fogyásból
+  // újraszámolva — mert az őr önkorrigálására épül az egész logika.
+  for (const [kezdo, nap] of [[100, 1], [430, 10], [592, 17], [880, 20], [950, 25]]) {
+    let used = kezdo;
+    for (let d = nap; d <= 31; d++) {
+      const day = `2026-08-${String(d).padStart(2, '0')}`;
+      for (let k = 0; k < 3; k++) used += postsPerRun({ used, day, defaultLimit: 3 }) * OPS_PER_POST;
+    }
+    assert.ok(used <= MONTHLY_CAP, `${kezdo}-ból indulva ${used} lett — túlfutott!`);
+  }
 });
 
 t('a hónap vége felé magától visszaáll a teljes tempó', () => {
@@ -119,8 +153,24 @@ t('a korrekcióval a mai állapot ténylegesen fékez', () => {
   // nem a becslés óvatosságán múlik.
   const used = 186 + untrackedOps('2026-08');
   assert.ok(used + 22 * RUNS_PER_DAY * 3 * OPS_PER_POST > MONTHLY_CAP,
-    'a teljes tempó tényleg kifutna a keretből');
-  assert.equal(postsPerRun({ used, day: '2026-08-10', defaultLimit: 3 }), 2);
+    'a teljes tempó VÉGIG tényleg kifutna a keretből');
+
+  // ⚠️ A MÉRŐPONT ÁTKERÜLT (2026-08-17). A teszt korábban azt nézte, hogy az
+  // ELSŐ kör azonnal visszavesz-e. Az új őr viszont a maradék keretből számol:
+  // előbb kiküldi a törtrészt teljes tempón, és CSAK UTÁNA fékez. A kérdés
+  // tehát nem az, hogy mikor vesz vissza, hanem hogy a HÓNAP VÉGÉN belefér-e —
+  // és hogy egyáltalán fékezett-e valahol.
+  let u = used, fekezett = false;
+  for (let d = 10; d <= 31; d++) {
+    const day = `2026-08-${String(d).padStart(2, '0')}`;
+    for (let k = 0; k < RUNS_PER_DAY; k++) {
+      const n = postsPerRun({ used: u, day, defaultLimit: 3 });
+      if (n < 3) fekezett = true;
+      u += n * OPS_PER_POST;
+    }
+  }
+  assert.ok(fekezett, 'a korrekció miatt valahol vissza KELLETT vennie');
+  assert.ok(u <= MONTHLY_CAP, `a hónap ${u} művelettel zárt — a keret fölött!`);
 });
 
 t('szeptemberben a teljes tempó belefér', () => {
