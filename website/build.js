@@ -1698,7 +1698,24 @@ function buildToolsPage(companyGuides, counts) {
   const groups = {};
   for (const g of companyGuides) { const k = COMPANY_ALIAS[g.company] || g.company || 'Other'; (groups[k] = groups[k] || []).push(g); }
   const ORDER = ['OpenAI', 'Google', 'Anthropic', 'Microsoft', 'Meta', 'Perplexity', 'Alibaba', 'xAI', 'Mistral', 'DeepSeek', 'Amazon', 'Apple', 'Hugging Face', 'NVIDIA', 'GitHub', 'Cohere'];
-  const companies = [...ORDER.filter(c => groups[c]), ...Object.keys(groups).filter(c => c && !ORDER.includes(c))];
+  // ===================================================================
+  // ⚠️ USER-SZABÁLY (2026-08-17): ITT CSAK LLM-ASSZISZTENS LEHET.
+  // ===================================================================
+  // Az első változat a nem-chat eszközöket (Midjourney, Picsart, Hugging
+  // Face) külön csoport-fejléc alá tette. A user pontosított: nem külön
+  // csoportba — EGYÁLTALÁN NE legyenek itt.
+  //
+  // Miért helyes ez: az oldal ígérete „válaszd ki az asszisztensed". Egy
+  // képgenerátor ott akkor is hamis ígéret, ha szépen fel van címkézve —
+  // a csoportosítás a tünetet kezelte, nem az okot.
+  //
+  // A kizárt eszközök útmutatói NEM tűnnek el: a /guides oldalon, a
+  // keresésben és a kapcsolódó-dobozokban ugyanúgy ott vannak. Csak ez az
+  // EGY oldal szűkül arra, amit a címe ígér.
+  const mindenCeg = [...ORDER.filter(c => groups[c]), ...Object.keys(groups).filter(c => c && !ORDER.includes(c))];
+  const companies = mindenCeg.filter(c => kindOf(c) === KINDS.ASSISTANT);
+  const kihagyva = mindenCeg.filter(c => kindOf(c) !== KINDS.ASSISTANT);
+  if (kihagyva.length) console.log(`   ℹ️  /tools: ${kihagyva.length} nem-asszisztens eszköz kihagyva (${kihagyva.join(', ')})`);
   const cnt = n => `${n} ${n > 1 ? tr('guideWordMany') : tr('guideWordOne')}`;
 
   const brandTile = (c) => `<a class="brandtile" href="#c-${companySlug(c)}" style="--gc:${GUIDE_COVER_COLORS[c] || '#4f7a86'}">
@@ -2441,7 +2458,12 @@ function buildGuideLinks(articles) {
     //    találat, mint a teljes választék.
     //  • 1-2 útmutatónál nincs mit válogatni → egyenesen a cikkre.
     const company = list[0].company || '';
-    const useHub = list.length >= 3 && company;
+    // ⚠️ A hub-link CSAK oda mutathat, ami a /tools oldalon TÉNYLEG ott van.
+    // 2026-08-17 óta az az oldal kizárólag LLM-asszisztenseket listáz, tehát
+    // egy képgenerátor cég-horgonya (#c-midjourney) már nem létezik — az oda
+    // mutató link a lap tetejére dobná az olvasót, némán. Ezért nem-asszisztens
+    // eszköznél egyenesen a cikkre megyünk, ahogy 1-2 útmutatónál is.
+    const useHub = list.length >= 3 && company && kindOf(company) === KINDS.ASSISTANT;
     out.push({
       tool,
       count: list.length,
