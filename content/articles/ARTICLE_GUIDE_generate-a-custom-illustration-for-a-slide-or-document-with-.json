@@ -1,0 +1,68 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "generate-a-custom-illustration-for-a-slide-or-document-with-",
+    "company": "Apple",
+    "tool": "Apple Intelligence",
+    "icon": "🎨",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-08-17T08:33:22.987Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.01265628,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "rejected_at": "2026-08-17T00:44:03.689Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1674
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 10,
+      "decision": "PASS",
+      "issues": [
+        "Verify that the standalone Image Playground app exists on iOS 18.1/iPadOS 18.1 as a Home screen icon — Apple has been rolling out AI features gradually, and this was initially only available inside other apps (Messages, Keynote, etc.). The standalone app may have arrived in a later update, but if the writer's testing was on a newer OS than stated, this claim needs a footnote or qualifier."
+      ],
+      "verdict": "Excellent guide with clear step-by-step instructions, warm and encouraging tone, practical examples, and solid 'What this means for you' coverage. Minor concern: verify the standalone app availability claim against iOS 18.1 release notes before publishing.",
+      "_aiCost": 0.0027309,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Strong clarity and beginner-friendly structure overall, but the article fails on two counts: it uses British spelling ('colours') which violates US English requirements, and the mandatory 'What this means for you' section is empty — readers need to see the impact and a next step. Fix the spelling and fill in that section, and this will pass.",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_GUIDE_generate-a-custom-illustration-for-a-slide-or-document-with-.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-08-17T08:34:22.810Z",
+    "slug": "generate-a-custom-illustration-for-a-slide-or-document-with-image-play",
+    "image_v": 2,
+    "image_at": "2026-08-17T08:34:53.048Z",
+    "seo": {
+      "meta_description": "Learn to use Apple Image Playground to generate custom stylized illustrations for Keynote slides, Pages docs, or school handouts—in about a minute.",
+      "keywords": [
+        "how to use Image Playground",
+        "Image Playground tutorial",
+        "Apple Image Playground generate illustrations",
+        "create custom illustrations for slides",
+        "AI illustration generator Apple",
+        "Image Playground iPhone iPad Mac"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "The title is quite long at 66 characters—consider a shorter version like 'How to Use Image Playground for Custom Illustrations' to improve click-through rates",
+        "Add more specific long-tail keywords like 'Image Playground not photorealistic' or 'Apple Intelligence illustration app' to capture niche searches",
+        "The current title doesn't mention it's a how-to guide—adding 'how-to' can improve visibility for tutorial searches"
+      ],
+      "optimised_at": "2026-08-17T08:35:19.164Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Generate a Custom Illustration for a Slide or Document with Image Playground\"\nsubtitle: \"Turn a one-line idea into a stylized picture you can drop into a Keynote slide, Pages report, or school handout in about a minute.\"\ncategory: \"guide\"\naudience: \"both\"\ncompany: \"Apple\"\ntool: \"Image Playground\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"getting-started\", \"image-playground\", \"apple-intelligence\"]\n---\n\n# Generate a Custom Illustration for a Slide or Document with Image Playground\n\n> **In short:** Image Playground, part of Apple Intelligence, turns a short description into a stylized illustration (Animation, Illustration, or Sketch) you can drop into Keynote, Pages, or a school handout. It only runs on recent Apple devices and never produces realistic photos.\n\nIf you have ever spent 20 minutes hunting stock-photo sites for \"the right icon\" to put on a slide, Image Playground is the shortcut. Type what you want, pick a look, and you walk away with something original you don't have to license or attribute. This guide walks you through it on iPhone, iPad, and Mac, and shows how to get the result onto a slide in Keynote or a page in Pages.\n\n## Before you start\n- A recent Apple device: iPhone 15 Pro, iPhone 15 Pro Max, any iPhone 16 model, an iPad with M1 or newer, or a Mac with M1 or newer. Older devices cannot run Apple Intelligence.\n- Your system updated to at least iOS 18.1, iPadOS 18.1, or macOS Sequoia 15.1 — earlier versions do not include Image Playground.\n- Apple Intelligence turned on in **Settings → Apple Intelligence & Siri**. It is included free with a supported device, but you may need to wait briefly the first time Apple finishes preparing it for your account.\n- About 5 minutes for your first picture.\n\n## Step 1 — Open Image Playground\nTap the **Image Playground** app on your Home screen (iPhone or iPad) or open it from the Applications folder on a Mac. The app opens to a writing box with a few example prompts underneath, like \"Astronaut on a horse\" or \"Birthday cake\". If you can't find the standalone app, you can also open it from inside **Keynote, Pages, Numbers, Freeform, or Messages** by tapping the **Image Playground button** (it usually looks like a small bubble with a smile) — it pops out as a side panel. On a Mac, the fastest way in is **Spotlight**: press Cmd + Space, type \"Image Playground\", then press Return.\n\n💬 Example: if you don't see the app on the Home screen, try Spotlight or the App Library search bar before assuming it is missing.\n\nYou'll know it worked when you see a writing box, a \"+\" button to add ideas, and a small set of example prompts already loaded in.\n\n## Step 2 — Describe the picture you want\nTap inside the writing box and type a short description of the image you want. Keep it to a sentence or two — think of it like writing a caption, not an essay. Focus on the subject (\"a paper boat on a desk\"), the mood (\"bright and cheerful\"), or the use (\"for a slide about teamwork\"). Avoid naming specific real people or branded characters (Image Playground will refuse or give vague results); describe them instead (\"a teacher with curly grey hair\"). If your keyboard does not have a clear confirm button, just tap somewhere outside the box to close the keyboard.\n\n💬 Example: type **\"a paper boat floating on a calm blue ocean, bright and cheerful, for a slide about starting something new\"** and tap a return or \"done\" key on your keyboard.\n\nYou'll know it worked when suggested keywords appear as small grey chips above the box (such as \"paper boat\", \"ocean\", \"bright\") — that means Image Playground has read your description and is ready to draw.\n\n## Step 3 — Pick a style\nLook near the top of the screen for Apple's three style names: **Animation**, **Illustration**, and **Sketch**. Tap each one in turn to preview the same idea in that look. Animation is 3D and slightly cartoony; Illustration is flat and clean (usually the safest choice for slides); Sketch looks like a hand-drawn pencil drawing. You can switch as many times as you want — nothing is locked in until you save. If you don't see all three labels at once, swipe left on the style row or look for a small \"…\" menu that hides the extras.\n\n💬 Example: for a clean slide-friendly look, choose **Illustration** first — it tends to read clearly from the back of a meeting room.\n\nYou'll know it worked when the preview image changes appearance to match the style you tapped, and the highlighted label at the top updates to match.\n\n## Step 4 — Generate, then tweak\nLook for a generate button (Apple usually shows it as an upward arrow near the writing box) and tap it. You'll usually see two or three image previews appear in a row. If none feel right, edit your description (remove a word, add a color like \"warm yellow\") or look for a refresh/regenerate option — Apple changes the icon over time, often something that looks like dice 🎲 or a sparkle. You can iterate as many times as you like; if you generate a lot in a row, the app may slow down briefly to cool off.\n\n💬 Example: change **\"bright and cheerful\"** to **\"warm autumn colors\"** and tap the regenerate icon to see fresh variations in the same style.\n\nYou'll know it worked when at least two distinct image previews are visible and you can swipe through them, with a heart ♡ on the one you want to keep.\n\n## Step 5 — Save or send your illustration\nTap the version you like best, then look for a **share** button (the square with an arrow pointing up on iPhone/iPad, or a share toolbar on Mac). Choose **Save Image** to drop it into your Photos library on iPhone/iPad, or **Save to Downloads** on Mac. To send the picture straight into a slide, pick **Keynote**, **Pages**, or **Freeform** from the share sheet — the image lands on the page or slide you currently have open, and you can drag its corner handles to resize it. If \"Save Image\" is not at the top of the share sheet, scroll down — it often sits in a \"More\" section.\n\n💬 Example: tap **Save Image**, then open Keynote and drag the new picture straight from Photos onto your slide.\n\nYou'll know it worked when a picture file shows up in your Photos (or Downloads) folder and you can drag, paste, or insert it into your document without an error message.\n\n## Step 6 — (Optional) Use a photo for inspiration\nTap the **+** button next to the writing box and look for an option to add a photo (Apple calls this choosing a reference photo). Pick a picture from your library — Image Playground will not copy it, but it will borrow the colors, mood, or general vibe, and may suggest things it sees as new keyword chips. This is helpful when you want the illustration to match an existing slide's color scheme, or when you have a quick sketch on paper and want the AI to redraw it in one of the three styles. If the + menu does not show a photo option, close and reopen Image Playground as its own app — the standalone version tends to expose the most controls.\n\n💬 Example: pick a sunset photo from a recent trip, then type **\"a friendly fox\"** — the fox will appear in warm sunset colors without the photo itself being reproduced.\n\nYou'll know it worked when new keyword chips appear that include things from your photo (such as \"sunset\", \"silhouette\") alongside the words you typed.\n\n## Common mistakes\n- **Naming real people or copyrighted characters.** Image Playground will refuse or give you a vague result. Describe the idea instead (\"a teacher with curly grey hair\", \"a friendly cartoon fox\").\n- **Asking for a photorealistic image.** It cannot do that — only Animation, Illustration, or Sketch. If you need a real-looking photo, this is the wrong tool; use a stock-photo site or take a real picture.\n- **Expecting readable text inside the image.** Image Playground cannot reliably render words in pictures. Add any labels or titles in Keynote or Pages on top of the illustration after dropping it in.\n\n## What this means for you\n- **In everyday life:** A custom illustration is the small thing that makes a school handout, a birthday invite, or a family newsletter look like you cared. Instead of grabbing the same tired clip-art everyone uses, you can type \"a cat in a party hat\" and get something new in about a minute — no design skills needed, and no licensing to worry about.\n- **For your business or work:** A clean Illustration-style image is perfect for a one-page report cover, a section divider in a deck, or a small icon next to a help-desk article. You stop hunting stock-photo sites and stop settling for the same three options everyone else has. For a quick social-media post or an internal training slide, this is often the difference between \"fine\" and \"looks like we tried\".\n- **If you're just getting started:** Open the app, type one short sentence, pick the Illustration style, and save whatever comes out. Don't try to make it perfect on the first try. The point is to learn what the tool is good at, and the easiest way to do that is to make three quick pictures in five minutes and see which one surprises you.\n\n## Try it now\nOpen Image Playground and generate a small illustration for the next thing on your to-do list — a header for tomorrow's class notes, an icon for a slide you're working on, or a friendly picture to send a family member. Spend two minutes on it, save what you like, and notice how the result feels compared to the same slide with no image at all.",
+  "original_title": "Generate a custom illustration for a slide or document with Image Playground"
+}

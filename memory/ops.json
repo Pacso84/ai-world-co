@@ -1,102 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178681030849145",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-15T16:11:48.491Z",
-      "updated": "2026-08-15T16:12:00.294Z"
-    },
-    {
-      "id": "t178681032029538",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-08-15T16:12:00.295Z",
-      "updated": "2026-08-15T16:12:23.343Z"
-    },
-    {
-      "id": "t178684067621295",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-08-16T00:37:56.212Z",
-      "updated": "2026-08-16T00:37:56.400Z"
-    },
-    {
-      "id": "t178684067640281",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-08-16T00:37:56.402Z",
-      "updated": "2026-08-16T00:38:53.752Z"
-    },
-    {
-      "id": "t178684073375471",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-08-16T00:38:53.754Z",
-      "updated": "2026-08-16T00:38:53.944Z"
-    },
-    {
-      "id": "t17868407339466",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-16T00:38:53.946Z",
-      "updated": "2026-08-16T00:42:42.529Z"
-    },
-    {
-      "id": "t178684096253020",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-16T00:42:42.530Z",
-      "updated": "2026-08-16T00:44:25.986Z"
-    },
-    {
-      "id": "t178684106598970",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-08-16T00:44:25.989Z",
-      "updated": "2026-08-16T00:45:19.326Z"
-    },
-    {
-      "id": "t17868411193653",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-16T00:45:19.365Z",
-      "updated": "2026-08-16T00:48:04.599Z"
-    },
-    {
-      "id": "t178684128460185",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-16T00:48:04.601Z",
-      "updated": "2026-08-16T00:49:20.067Z"
-    },
-    {
-      "id": "t178684136010139",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-16T00:49:20.101Z",
-      "updated": "2026-08-16T00:49:20.275Z"
-    },
-    {
-      "id": "t17868413602766",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-16T00:49:20.276Z",
-      "updated": "2026-08-16T00:49:44.298Z"
-    },
-    {
       "id": "t178684138430260",
       "title": "Run guide",
       "status": "done",
@@ -479,41 +383,105 @@
       "agent": "publisher",
       "created": "2026-08-17T00:48:03.821Z",
       "updated": "2026-08-17T00:48:21.307Z"
+    },
+    {
+      "id": "t178695543028647",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-08-17T08:30:30.286Z",
+      "updated": "2026-08-17T08:30:30.467Z"
+    },
+    {
+      "id": "t178695543047076",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-08-17T08:30:30.470Z",
+      "updated": "2026-08-17T08:31:00.034Z"
+    },
+    {
+      "id": "t178695546003569",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-08-17T08:31:00.035Z",
+      "updated": "2026-08-17T08:31:00.226Z"
+    },
+    {
+      "id": "t178695546022887",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-17T08:31:00.228Z",
+      "updated": "2026-08-17T08:32:00.848Z"
+    },
+    {
+      "id": "t178695552084925",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-17T08:32:00.849Z",
+      "updated": "2026-08-17T08:32:21.272Z"
+    },
+    {
+      "id": "t178695554127565",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-17T08:32:21.275Z",
+      "updated": "2026-08-17T08:33:23.000Z"
+    },
+    {
+      "id": "t178695560300174",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-17T08:33:23.001Z",
+      "updated": "2026-08-17T08:34:22.823Z"
+    },
+    {
+      "id": "t178695566282535",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-08-17T08:34:22.825Z",
+      "updated": "2026-08-17T08:34:30.404Z"
+    },
+    {
+      "id": "t178695567044666",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-17T08:34:30.446Z",
+      "updated": "2026-08-17T08:34:53.074Z"
+    },
+    {
+      "id": "t178695569307674",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-08-17T08:34:53.076Z",
+      "updated": "2026-08-17T08:35:19.186Z"
+    },
+    {
+      "id": "t178695571918820",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-17T08:35:19.188Z",
+      "updated": "2026-08-17T08:35:44.226Z"
+    },
+    {
+      "id": "t178695574422736",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-08-17T08:35:44.227Z",
+      "updated": "2026-08-17T08:36:08.736Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178589399874724",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). A készülő cikkek összhangban vannak: hasznos ismeretterjesztés (AI-eszközök bemutatása, mit tilos megosztani) és gyakorlatias útmutatók (e-mailek, beszédek, megállapodások) keveréke. Egy javítás kellh",
-      "agent": "publisher",
-      "at": "2026-08-05T01:39:58.747Z",
-      "loud": false
-    },
-    {
-      "id": "n178589400783225",
-      "level": "success",
-      "text": "3 hír + 4 útmutató publikálva (költség: $0.0734).",
-      "agent": "ceo",
-      "at": "2026-08-05T01:40:07.832Z",
-      "loud": false
-    },
-    {
-      "id": "n178592548692698",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). A kínálat kiváló – a cikkek jól lefedik a mindennapi használatot (tanulás, tényellenőrzés, e-mailek, privát szféra) és az emberi pillanatokat (köszönet, részvét). Egy apró észrevétel: a Perplexity két",
-      "agent": "publisher",
-      "at": "2026-08-05T10:24:46.926Z",
-      "loud": false
-    },
-    {
-      "id": "n178592549616120",
-      "level": "info",
-      "text": "Pipeline lefutott — ma nem volt publikálható új tartalom.",
-      "agent": "ceo",
-      "at": "2026-08-05T10:24:56.161Z",
-      "loud": false
-    },
     {
       "id": "n178595046486418",
       "level": "warn",
@@ -1281,45 +1249,41 @@
       "agent": "ceo",
       "at": "2026-08-17T00:48:21.333Z",
       "loud": false
+    },
+    {
+      "id": "n178695560299093",
+      "level": "warn",
+      "text": "📨 guide → ceo: Kell még adat: \"Generate a custom illustration for a slide or document with Image Playground\" — az Ellenőrző tényt/forrá",
+      "agent": "guide",
+      "at": "2026-08-17T08:33:22.990Z",
+      "loud": false
+    },
+    {
+      "id": "n178695571917714",
+      "level": "info",
+      "text": "SEO: 2 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-08-17T08:35:19.177Z",
+      "loud": false
+    },
+    {
+      "id": "n178695575700047",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The lineup looks solid and ready to publish! You've got a nice mix of practical how-tos, essential privacy guidance, and emotionally supportive content—plus article 2 serves as a friendly on-ramp for ",
+      "agent": "publisher",
+      "at": "2026-08-17T08:35:57.000Z",
+      "loud": false
+    },
+    {
+      "id": "n178695576877465",
+      "level": "success",
+      "text": "1 hír + 1 útmutató publikálva (költség: $0.0176).",
+      "agent": "ceo",
+      "at": "2026-08-17T08:36:08.774Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178595134630390",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-08-05T17:35:46.303Z"
-    },
-    {
-      "id": "m178597971831051",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Streamlining rubric generation in Google Classroom with Gemini \" — javítva: The article asserts that 'Google Classroom now lets teachers draft rubrics with Gemini... right in the assignment page' and describes specific UI ('Generate with Gemini' / 'Draft with AI' button, Rubrics section with Gemini option) as if this feature exists in Google Classroom. There is no widely known/verifi",
-      "ref": "2026-08-05T17-19-17-047Z_google-workspace_Streamlining_rubric_generation_in_Google_Classroom.json",
-      "at": "2026-08-06T01:28:38.310Z"
-    },
-    {
-      "id": "m178597973190993",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Streamlining rubric generation in Google Classroom with Gemini \" (?/10)",
-      "ref": "2026-08-05T17-19-17-047Z_google-workspace_Streamlining_rubric_generation_in_Google_Classroom.json",
-      "at": "2026-08-06T01:28:51.909Z"
-    },
-    {
-      "id": "m178598013918876",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"How to Build a Smart Packing List for Any Trip in Just a Few Minutes\" — mi a baj: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user; Step 4 is vague: 'Open the list' assumes readers know where to find it — clarify whether they edit it in the chat, copy it to notes, or something else; Step 2 could help a complete beginner more: what if they d",
-      "ref": "GUIDE_how-to-build-a-smart-packing-list-for-any-trip-in-just-a-few.json",
-      "at": "2026-08-06T01:35:39.188Z"
-    },
     {
       "id": "m178598048355381",
       "from": "designer",
@@ -2640,6 +2604,44 @@
       "text": "4 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-08-17T00:55:19.473Z"
+    },
+    {
+      "id": "m178695560298981",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Generate a custom illustration for a slide or document with Image Playground\" — javítva: LEDE_TOO_LONG: A RÖVIDEN-doboz 70 szó (max ~45) — ami hosszú, az már nem \"röviden\".; US English violation: 'colours' appears twice (Steps 4-5) — must be 'colors'; újraküldöm.",
+      "ref": "GUIDE_generate-a-custom-illustration-for-a-slide-or-document-with-.json",
+      "at": "2026-08-17T08:33:22.989Z"
+    },
+    {
+      "id": "m178695560299053",
+      "from": "guide",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Kell még adat: \"Generate a custom illustration for a slide or document with Image Playground\" — az Ellenőrző tényt/forrást kér, amit nem találhatok ki: Step 4 hedging: 'Apple has not published a strict daily cap' — this is a factual claim; either verify with a source or remove it",
+      "ref": "GUIDE_generate-a-custom-illustration-for-a-slide-or-document-with-.json",
+      "open": false,
+      "at": "2026-08-17T08:33:22.990Z",
+      "resolved_at": "2026-08-17T08:34:22.813Z"
+    },
+    {
+      "id": "m178695566281168",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Generate a custom illustration for a slide or document with Image Playground\" (?/10)",
+      "ref": "GUIDE_generate-a-custom-illustration-for-a-slide-or-document-with-.json",
+      "at": "2026-08-17T08:34:22.811Z"
+    },
+    {
+      "id": "m178695574421730",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-08-17T08:35:44.217Z"
     }
   ]
 }
