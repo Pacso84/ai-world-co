@@ -1,102 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178684138430260",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-16T00:49:44.302Z",
-      "updated": "2026-08-16T00:50:44.270Z"
-    },
-    {
-      "id": "t178684144427161",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-16T00:50:44.271Z",
-      "updated": "2026-08-16T00:51:11.044Z"
-    },
-    {
-      "id": "t178684147104526",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-16T00:51:11.045Z",
-      "updated": "2026-08-16T00:53:04.888Z"
-    },
-    {
-      "id": "t178684158488930",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-08-16T00:53:04.889Z",
-      "updated": "2026-08-16T00:54:38.449Z"
-    },
-    {
-      "id": "t178684167845160",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-16T00:54:38.451Z",
-      "updated": "2026-08-16T00:54:44.888Z"
-    },
-    {
-      "id": "t17868416848901",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-08-16T00:54:44.890Z",
-      "updated": "2026-08-16T00:55:04.887Z"
-    },
-    {
-      "id": "t17868681383793",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-08-16T08:15:38.379Z",
-      "updated": "2026-08-16T08:15:38.560Z"
-    },
-    {
-      "id": "t178686813856234",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-08-16T08:15:38.562Z",
-      "updated": "2026-08-16T08:15:56.917Z"
-    },
-    {
-      "id": "t178686815691983",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-08-16T08:15:56.919Z",
-      "updated": "2026-08-16T08:15:57.120Z"
-    },
-    {
-      "id": "t178686815712242",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-16T08:15:57.122Z",
-      "updated": "2026-08-16T08:15:57.294Z"
-    },
-    {
-      "id": "t178686815729575",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-16T08:15:57.295Z",
-      "updated": "2026-08-16T08:16:11.167Z"
-    },
-    {
-      "id": "t178686817117016",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-16T08:16:11.170Z",
-      "updated": "2026-08-16T08:16:37.409Z"
-    },
-    {
       "id": "t178686819741130",
       "title": "Run ellenorzo",
       "status": "done",
@@ -479,33 +383,105 @@
       "agent": "publisher",
       "created": "2026-08-17T08:35:44.227Z",
       "updated": "2026-08-17T08:36:08.736Z"
+    },
+    {
+      "id": "t178698325369810",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-08-17T16:14:13.698Z",
+      "updated": "2026-08-17T16:14:13.882Z"
+    },
+    {
+      "id": "t178698325388490",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-08-17T16:14:13.884Z",
+      "updated": "2026-08-17T16:15:19.716Z"
+    },
+    {
+      "id": "t178698331971760",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-08-17T16:15:19.717Z",
+      "updated": "2026-08-17T16:15:19.930Z"
+    },
+    {
+      "id": "t178698331993249",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-17T16:15:19.932Z",
+      "updated": "2026-08-17T16:16:06.751Z"
+    },
+    {
+      "id": "t178698336675364",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-17T16:16:06.753Z",
+      "updated": "2026-08-17T16:16:31.095Z"
+    },
+    {
+      "id": "t17869833910976",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-17T16:16:31.097Z",
+      "updated": "2026-08-17T16:17:03.446Z"
+    },
+    {
+      "id": "t178698342344856",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-17T16:17:03.448Z",
+      "updated": "2026-08-17T16:17:19.177Z"
+    },
+    {
+      "id": "t178698343918083",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-08-17T16:17:19.180Z",
+      "updated": "2026-08-17T16:17:51.733Z"
+    },
+    {
+      "id": "t178698347177350",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-17T16:17:51.773Z",
+      "updated": "2026-08-17T16:18:18.206Z"
+    },
+    {
+      "id": "t178698349820849",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-08-17T16:18:18.208Z",
+      "updated": "2026-08-17T16:18:46.532Z"
+    },
+    {
+      "id": "t178698352653434",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-17T16:18:46.534Z",
+      "updated": "2026-08-17T16:19:01.579Z"
+    },
+    {
+      "id": "t178698354158139",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-08-17T16:19:01.581Z",
+      "updated": "2026-08-17T16:19:21.184Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178595046486418",
-      "level": "warn",
-      "text": "📨 ellenorzo → iro: Hiányos / kell még adat: \"Streamlining rubric generation in Google Classroom with Gemini \" — egészítsd ki: Wrap-up secti",
-      "agent": "ellenorzo",
-      "at": "2026-08-05T17:21:04.864Z",
-      "loud": false
-    },
-    {
-      "id": "n178595058099672",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). A solid, diverse line-up — mix of tool-specific how-tos (Perplexity, DeepSeek, ChatGPT, Cohere, Qwen) with practical everyday use cases, plus helpful general guides on privacy and AI limits. Ready to ",
-      "agent": "publisher",
-      "at": "2026-08-05T17:23:00.996Z",
-      "loud": false
-    },
-    {
-      "id": "n178595059008938",
-      "level": "info",
-      "text": "Pipeline lefutott — ma nem volt publikálható új tartalom.",
-      "agent": "ceo",
-      "at": "2026-08-05T17:23:10.089Z",
-      "loud": false
-    },
     {
       "id": "n178598046931350",
       "level": "info",
@@ -1281,45 +1257,33 @@
       "agent": "ceo",
       "at": "2026-08-17T08:36:08.774Z",
       "loud": false
+    },
+    {
+      "id": "n178698352652292",
+      "level": "info",
+      "text": "SEO: 2 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-08-17T16:18:46.522Z",
+      "loud": false
+    },
+    {
+      "id": "n178698354923062",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The lineup looks solid and ready — practical, varied, and exactly what everyday people need: useful tasks, smart boundaries, and kind guidance. One small note: articles 4-6 all cover complaint writing",
+      "agent": "publisher",
+      "at": "2026-08-17T16:19:09.230Z",
+      "loud": false
+    },
+    {
+      "id": "n178698356122653",
+      "level": "success",
+      "text": "2 hír + 0 útmutató publikálva (költség: $0.0188).",
+      "agent": "ceo",
+      "at": "2026-08-17T16:19:21.226Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178598132119676",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-08-06T01:55:21.196Z"
-    },
-    {
-      "id": "m17860121207933",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"How to Build a Smart Packing List for Any Trip in Just a Few Minutes\" — javítva: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user; Step 4 is vague: 'Open the list' assumes readers know where to find it — clarify whether they edit it in the chat, copy it to notes, or something else; újraküldöm.",
-      "ref": "GUIDE_how-to-build-a-smart-packing-list-for-any-trip-in-just-a-few.json",
-      "at": "2026-08-06T10:28:40.793Z"
-    },
-    {
-      "id": "m178601215220523",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"How to Build a Smart Packing List for Any Trip in Just a Few Minutes\" (?/10)",
-      "ref": "GUIDE_how-to-build-a-smart-packing-list-for-any-trip-in-just-a-few.json",
-      "at": "2026-08-06T10:29:12.205Z"
-    },
-    {
-      "id": "m178601218964552",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-08-06T10:29:49.645Z"
-    },
     {
       "id": "m178601287364048",
       "from": "social",
@@ -2642,6 +2606,42 @@
       "text": "2 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-08-17T08:46:06.712Z"
+    },
+    {
+      "id": "m178698339107879",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"OpenAI joins PORTS-Pike project\" — mi a baj: The 'PORTS-Pike' initiative is an invented partnership/project name with no verifiable basis, presented as fact throughout the article.; The claim that OpenAI is joining a partnership bringing AI infrastructure and 'thousands of jobs' to Southern Ohio is presented as factual news but appears to be fabricated — there is no verifiab",
+      "ref": "2026-08-17T16-15-19-703Z_openai-blog_OpenAI_joins_PORTS-Pike_project.json",
+      "at": "2026-08-17T16:16:31.078Z"
+    },
+    {
+      "id": "m178698342343799",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"OpenAI joins PORTS-Pike project\" — javítva: The 'PORTS-Pike' initiative is an invented partnership/project name with no verifiable basis, presented as fact throughout the article.; The claim that OpenAI is joining a partnership bringing AI infrastructure and 'thousands of jobs' to Southern Ohio is presented as factual news but appears to be fabricated — there is no verifiable record ",
+      "ref": "2026-08-17T16-15-19-703Z_openai-blog_OpenAI_joins_PORTS-Pike_project.json",
+      "at": "2026-08-17T16:17:03.437Z"
+    },
+    {
+      "id": "m178698343916662",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"OpenAI joins PORTS-Pike project\" (?/10)",
+      "ref": "2026-08-17T16-15-19-703Z_openai-blog_OpenAI_joins_PORTS-Pike_project.json",
+      "at": "2026-08-17T16:17:19.166Z"
+    },
+    {
+      "id": "m178698354157019",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-08-17T16:19:01.570Z"
     }
   ]
 }

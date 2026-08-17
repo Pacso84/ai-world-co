@@ -1,0 +1,29 @@
+{
+  "started_at": "2026-08-17T16:15:20.092Z",
+  "drafts_total": 2,
+  "articles_written": 2,
+  "articles_failed": 0,
+  "total_cost_usd": 0.011882952,
+  "by_article": [
+    {
+      "draft": "2026-08-17T16-15-19-703Z_openai-blog_OpenAI_joins_PORTS-Pike_project.json",
+      "writer_output": "WRITER_2026-08-17T16-15-19-703Z_openai-blog_OpenAI_joins_PORTS-Pike_project.json",
+      "success": true,
+      "cost_usd": 0.004540512,
+      "duration_ms": 20630,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-08-17T16-15-19-703Z_github-ai_How_canvases_make_agentic_workflows_visible__steer.json",
+      "writer_output": "WRITER_2026-08-17T16-15-19-703Z_github-ai_How_canvases_make_agentic_workflows_visible__steer.json",
+      "success": true,
+      "cost_usd": 0.00734244,
+      "duration_ms": 26017,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    }
+  ],
+  "finished_at": "2026-08-17T16:16:06.741Z",
+  "duration_seconds": 46.649
+}

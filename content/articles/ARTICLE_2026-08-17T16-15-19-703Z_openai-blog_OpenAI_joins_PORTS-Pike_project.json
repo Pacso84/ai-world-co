@@ -1,0 +1,63 @@
+{
+  "_meta": {
+    "written_at": "2026-08-17T16:17:03.436Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.0079482,
+    "original_draft": "2026-08-17T16-15-19-703Z_openai-blog_OpenAI_joins_PORTS-Pike_project.json",
+    "source_id": "openai-blog",
+    "source_name": "OpenAI Blog (hivatalos)",
+    "source_link": "https://openai.com/index/openai-joins-ports-pike-project",
+    "status": "published",
+    "rejected_at": "2026-08-17T16:16:31.068Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 806
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured explainer that meets all quality gates: explains technical terms accessibly, uses a friendly teaching tone, covers all required sections including What this means for you and a practical wrap-up, stays factual with hedging language, avoids clichés, and contains no prohibited content. Ready to publish.",
+      "_aiCost": 0.001539,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Hitelesség-kapu blokkolta: The 'PORTS-Pike' initiative is an invented partnership/project name with no verifiable basis, presented as fact throughout the article.",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-08-17T16-15-19-703Z_openai-blog_OpenAI_joins_PORTS-Pike_project.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-08-17T16:17:19.165Z",
+    "slug": "what-ai-infrastructure-investments-actually-mean-for-local-communities",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-08-17T16:17:51.722Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is a general explainer about AI data center infrastructure and community impact, not about a specific named AI product or feature that users can use.",
+    "image_v": 2,
+    "image_at": "2026-08-17T16:18:18.171Z",
+    "seo": {
+      "meta_description": "AI companies are building data centers in smaller towns, bringing jobs and economic ripple effects. Here's what it means for your community and how to track projects nearby.",
+      "keywords": [
+        "AI data center local community impact",
+        "how to find AI data center near me",
+        "AI infrastructure investment small town",
+        "data center construction jobs local area",
+        "AI company building project my region",
+        "what do AI data centers bring to communities"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add your specific US state or region in the article metadata to capture local search intent",
+        "Include specific job types (construction, technical, maintenance roles) in subheadings to attract job-seeking readers",
+        "Consider adding a 'how to track' section with resources like local planning department records or news archives"
+      ],
+      "optimised_at": "2026-08-17T16:18:46.503Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"What AI Infrastructure Investments Actually Mean for Local Communities\"\nsubtitle: \"When an AI companies build data centers in smaller regions, here's the typical pattern — and how to find out if one is happening near you\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"ai-infrastructure\", \"data-centers\", \"community-impact\", \"ai-jobs\"]\n---\n\n# What AI Infrastructure Investments Actually Mean for Local Communities\n\n> **In short:** When AI companies build data centers (the big buildings full of computers that power services like ChatGPT), the projects usually bring construction jobs, ongoing technical roles, and smaller ripple effects in the local economy. Here's the typical pattern — and how to spot one in your own region.\n\nA new AI data center can transform a quiet stretch of rural land into a busy construction site within months, and a steady employer within a few years. These projects have been landing in unexpected places — small towns across several US states — and most people outside those towns have never heard about them. If you've ever wondered whether the AI boom is creating jobs near *you* (or for people you know), the answer is increasingly: probably yes, somewhere nearby, even if the news hasn't reached your local paper yet.\n\n## What these projects usually look like\n\nA typical AI infrastructure project follows a few predictable stages. First comes land and power — the buildings need huge amounts of electricity and access to water for cooling the machines. Then construction: electricians, HVAC technicians (people who install and repair heating and cooling systems), concrete crews, security fencing, fiber optic cabling (the physical lines that carry internet data), and general labor.\n\nOnce the building is operational, the staffing shifts to long-term roles: facilities maintenance, on-site security, network operations, and increasingly, people doing **data labeling** — the work of reviewing and tagging examples that help train AI systems — along with customer support. Many of these jobs don't require a four-year degree. Community colleges in regions hosting data centers have built short training programs, often called **workforce development**, specifically to prepare people for these roles.\n\n## Why this matters even if you live nowhere near a data center\n\nTwo reasons. First, the pattern is repeating: every few months, another region announces a similar project. Second, the surrounding economic effects are real and well-documented in general terms. Construction crews need places to eat and sleep. Local contractors get new bids. Internet service often improves for nearby towns because new fiber is being laid through the area. None of this requires you to be an engineer.\n\n## How to find out if one is happening near you\n\nHonest note: announcements like these change weekly and aren't always covered by national news, so I can't tell you what's in your area right this second. But here's what usually works:\n\n- Search **\"[your state] data center project\"** or **\"[your region] AI infrastructure\"** in Google News, filtered to the past 90 days.\n- Check your local **community college's workforce page** — if a project is being planned nearby, training programs are usually being set up before the big announcement.\n- Watch your **county or city economic development office** website. These offices actively recruit data center projects, so they often announce them first.\n\n## What this means for you\n\n- **If you live in or near a region hosting data centers:** Look into your community college's workforce development programs. Electricians, HVAC techs, and fiber optic technicians are in demand *before* any AI-specific roles appear. Many of these programs are short, often free, and lead directly to hiring.\n- **If you run a small business in the area:** Construction phases bring predictable demand for catering, lodging, supplies, and transportation. Your local **chamber of commerce** (a business association that supports local companies) sometimes runs supplier-readiness workshops to help small businesses qualify for larger contracts — worth asking about.\n- **If you're curious but live nowhere near one:** Treat this as a template. Other regions will follow the same pattern: announcement, construction, hiring, training programs. Search your state every few months to stay ahead of the news.\n- **If you're worried AI will eliminate jobs:** This is the other side of that story. AI doesn't run on air — it runs on buildings, wiring, and people. The jobs being created in these regions are largely physical and hard to automate.\n\n## Wrap-up\n\nAI infrastructure projects are landing in places that don't usually get tech investment, and the pattern is consistent enough to be worth following. Even if you don't live near one today, knowing how these projects work helps you spot the next one before it shows up in your local news. A simple starting move: search your state's name plus \"data center project\" and skim the last three months of results. That's usually all it takes to know whether one is heading to your region.",
+  "original_title": "OpenAI joins PORTS-Pike project"
+}
