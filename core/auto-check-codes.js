@@ -105,9 +105,11 @@ const LESSON_TEXT = Object.freeze({
     + 'so nothing could check them. Open the official page and read the interface, or write it the honest way: '
     + '"if you do not see X, look for …". Never name a button you have not seen.',
   PRICE_CLAIM_UNSOURCED:
-    'A price or free-access claim went out with no source next to it. Money facts expire: trials end, '
-    + 'plans change, amounts move. Either link the official pricing page in the same breath, or leave the number out. '
-    + 'One guide promised a free trial that had not existed for years.',
+    'A guide named a price for a tool. Guides are evergreen but prices are not: trials end, plans are '
+    + 'retired, amounts move — and nobody comes back to correct the sentence. Do not print the number at all. '
+    + 'Name the plan and send the reader to the official pricing page instead. Two real failures: one guide '
+    + 'promised a free trial that had not existed for years, another told readers to buy a product that had '
+    + 'already been discontinued.',
   ACCESS_NOT_SELF_SERVE:
     'The guide needed company, IT or enterprise access that our reader does not have. We write for everyday people: '
     + 'if a tool has to be switched on by an employer, say so in the opening lines — or pick a tool the reader can '

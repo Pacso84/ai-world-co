@@ -52,6 +52,27 @@ szerint ezek nálunk nem jelentenek gondot, ne kerüld őket mesterségesen.)
   ha a téma tényleg arról szól; egyébként válassz semleges példát.
 - Cégnevek mindig **eredeti írásmóddal** (OpenAI, ChatGPT, Anthropic)
 
+### 💵 ÁR: az útmutató SOHA ne mondjon összeget (2026-08-17, user-döntés)
+
+**A szabály:** útmutatóban tilos konkrét termékárat leírni ("$10/hó", "20 dollár
+havonta"). Nevezd meg a csomagot, és küldd az olvasót a hivatalos árlapra:
+
+> ❌ „A legolcsóbb, Basic csomag nagyjából 10 dollár/hónap."
+> ✅ „A legolcsóbb csomag neve Basic — az aktuális árat a hivatalos árlapon nézd meg."
+
+**Miért:** az útmutató **örökzöld**, az ár **romlandó**. A hírnél nincs baj — az
+90 nap múlva törlődik, tehát az ára együtt évül el vele. Az útmutatóban viszont
+ugyanaz a mondat évekig ott marad, változatlanul, és senki nem jön vissza
+kijavítani. Két valódi bukásunk volt ebből: az egyik útmutató olyan ingyenes
+próbát ígért, ami **2023 óta nem létezik**, a másik egy olyan termék
+megvásárlását ajánlotta (Copilot Pro), amit **közben kivezettek**.
+
+**Ami MARADHAT:** az olvasó SAJÁT példaszámai — ajándék-keret, albérleti díj,
+adósság, bevásárlólista. Azok nem évülnek el, mert nem állítanak semmit a
+világról. A tiltás csak a MEGNEVEZETT TERMÉK árára vonatkozik.
+
+Kapu: `PRICE_CLAIM_UNSOURCED` (tanácsadó — leckét ír, nem utasít el).
+
 ---
 
 ## 1c. EMBERI HANG — amitől nem gépnek hangzik (2026-07-30)
