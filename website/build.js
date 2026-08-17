@@ -1698,24 +1698,12 @@ function buildToolsPage(companyGuides, counts) {
   const groups = {};
   for (const g of companyGuides) { const k = COMPANY_ALIAS[g.company] || g.company || 'Other'; (groups[k] = groups[k] || []).push(g); }
   const ORDER = ['OpenAI', 'Google', 'Anthropic', 'Microsoft', 'Meta', 'Perplexity', 'Alibaba', 'xAI', 'Mistral', 'DeepSeek', 'Amazon', 'Apple', 'Hugging Face', 'NVIDIA', 'GitHub', 'Cohere'];
-  // ===================================================================
-  // ⚠️ USER-SZABÁLY (2026-08-17): ITT CSAK LLM-ASSZISZTENS LEHET.
-  // ===================================================================
-  // Az első változat a nem-chat eszközöket (Midjourney, Picsart, Hugging
-  // Face) külön csoport-fejléc alá tette. A user pontosított: nem külön
-  // csoportba — EGYÁLTALÁN NE legyenek itt.
-  //
-  // Miért helyes ez: az oldal ígérete „válaszd ki az asszisztensed". Egy
-  // képgenerátor ott akkor is hamis ígéret, ha szépen fel van címkézve —
-  // a csoportosítás a tünetet kezelte, nem az okot.
-  //
-  // A kizárt eszközök útmutatói NEM tűnnek el: a /guides oldalon, a
-  // keresésben és a kapcsolódó-dobozokban ugyanúgy ott vannak. Csak ez az
-  // EGY oldal szűkül arra, amit a címe ígér.
-  const mindenCeg = [...ORDER.filter(c => groups[c]), ...Object.keys(groups).filter(c => c && !ORDER.includes(c))];
-  const companies = mindenCeg.filter(c => kindOf(c) === KINDS.ASSISTANT);
-  const kihagyva = mindenCeg.filter(c => kindOf(c) !== KINDS.ASSISTANT);
-  if (kihagyva.length) console.log(`   ℹ️  /tools: ${kihagyva.length} nem-asszisztens eszköz kihagyva (${kihagyva.join(', ')})`);
+  // ⚠️ USER-SZABÁLY (2026-08-17): ITT CSAK LLM-ASSZISZTENS LEHET. A szűrés
+  // NEM itt történik, hanem a hívónál, ahol a /guides–/tools szétosztás egyben
+  // eldől — különben KÉT hely döntene ugyanarról, és pont ebből lett a baj:
+  // az első változat itt szűrt, a szétosztás nem tudott róla, és 17 útmutató
+  // egyik oldalra sem került. Ide már csak asszisztens-cég érkezik.
+  const companies = [...ORDER.filter(c => groups[c]), ...Object.keys(groups).filter(c => c && !ORDER.includes(c))];
   const cnt = n => `${n} ${n > 1 ? tr('guideWordMany') : tr('guideWordOne')}`;
 
   const brandTile = (c) => `<a class="brandtile" href="#c-${companySlug(c)}" style="--gc:${GUIDE_COVER_COLORS[c] || '#4f7a86'}">
@@ -2949,9 +2937,48 @@ function main() {
     const loc = articles.map(a => localizeArticle(a, lang));
     const news = loc.filter(a => !a.isGuide);
     const guides = loc.filter(a => a.isGuide);
-    const generalGuides = guides.filter(g => !g.company);
-    const companyGuides = guides.filter(g => g.company);
+    // ===================================================================
+    // A KÉT ÚTMUTATÓ-OLDAL SZÉTOSZTÁSA — itt, EGY helyen
+    // ===================================================================
+    // A /guides és a /tools KIZÁRJA egymást: ami az egyiken van, a másikon
+    // nincs. Ezért ennek a két sornak EGYÜTT le kell fednie MINDEN útmutatót.
+    //
+    // ⚠️ 2026-08-17: amikor a /tools-t leszűkítettem LLM-asszisztensekre, ezt
+    // a szétosztást elfelejtettem hozzáigazítani — így a 17 nem-asszisztens
+    // útmutató (Hugging Face, Midjourney, Picsart, Suno) EGYIK oldalra sem
+    // került. Élt és elérhető volt közvetlen címen, de SEHONNAN nem lehetett
+    // rákattintani. A user vette észre: „nem volt elérhető linkje sem."
+    //
+    // A helyes szabály: a /tools CSAK asszisztens-cég útmutatóit viszi, MINDEN
+    // MÁS a /guides-ra megy — a cég nélküliek ÉS a nem-asszisztens cégeké is.
+    // Így egy útmutató PONTOSAN az egyik oldalon van, sosem nullán.
+    const toolsCeg = (c) => !!c && kindOf(c) === KINDS.ASSISTANT;
+    const generalGuides = guides.filter(g => !toolsCeg(g.company));
+    const companyGuides = guides.filter(g => toolsCeg(g.company));
     const guideCounts = { everyday: generalGuides.length, tool: companyGuides.length };
+
+    // ŐRSZEM: MINDEN útmutató PONTOSAN EGY oldalon (2026-08-17).
+    // Ez az invariáns némán dőlt meg — 17 útmutató sehonnan sem volt
+    // elérhető, csak közvetlen címen, és a build ezt egy szóval sem jelezte.
+    // A user vette észre. Mostantól hangosan szól, és állapotfájlba is megy,
+    // mert a CI naplója senkihez nem jut el.
+    if (lang === 'en') {
+      const arva = generalGuides.length + companyGuides.length - guides.length;
+      const problems = [];
+      if (arva !== 0) {
+        const hol = guides.filter(g => !generalGuides.includes(g) && !companyGuides.includes(g));
+        problems.push({ code: 'GUIDES_ORPHANED', count: hol.length, slugs: hol.slice(0, 10).map(g => g.slug) });
+        console.log(`   ⚠️  ${hol.length} ÚTMUTATÓ EGYIK OLDALON SINCS — sehonnan nem kattintható!`);
+        for (const g of hol.slice(0, 10)) console.log(`        ${g.slug}`);
+      } else {
+        console.log(`   ✅ útmutató-lefedés: ${generalGuides.length} /guides + ${companyGuides.length} /tools = ${guides.length}`);
+      }
+      try {
+        mkdirSync(join(PROJECT_ROOT, 'memory'), { recursive: true });
+        writeFileSync(join(PROJECT_ROOT, 'memory', 'guide-coverage-guard.json'),
+          JSON.stringify({ at: new Date().toISOString(), guides: guides.length, general: generalGuides.length, tools: companyGuides.length, problems }, null, 2), 'utf-8');
+      } catch { /* a build ettől soha ne bukjon el */ }
+    }
 
     writeFileSync(join(outBase, 'index.html'), buildIndex(news), 'utf-8');
     writeFileSync(join(outBase, 'guides.html'), buildGuidesPage(generalGuides, guideCounts), 'utf-8');
