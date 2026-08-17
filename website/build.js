@@ -24,6 +24,7 @@ import { absolutizeFeedLinks } from '../core/feed-links.js';
 import { buildMetaDescription } from '../core/meta-description.js';
 import { legacyRedirect } from '../core/legacy-urls.js';
 import { rankRelated } from '../core/related.js';
+import { kindOf, KIND_ORDER, KINDS } from '../core/tool-kinds.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = join(__dirname, '..');
@@ -133,7 +134,11 @@ const UI = {
         heroKicker: 'Issue 01', heroTitle: 'Everyday AI, <em>explained simply.</em>',
         minRead: 'min read', stepByStep: 'Step-by-step',
         guidesTitle: 'Everyday AI <em>skills</em>', guidesTag: 'Plain-language how-tos that work with any assistant — ChatGPT, Gemini, Claude or others.',
-        toolsTitle: 'Guides by <em>AI tool</em>', toolsTag: 'Pick your assistant for tool-specific how-tos.',
+        // ⚠️ A TAGLINE NEM ÍGÉRHET ASSZISZTENST (2026-08-17, user jelezte): eddig
+        // "Pick your assistant" állt itt, miközben az oldalon a Midjourney (kép)
+        // és a Hugging Face (tárhely) is szerepelt. Az "asszisztens" szó lement
+        // oda, ahol IGAZ: a fajta-fejlécbe (kindAssistant). Lásd core/tool-kinds.js.
+        toolsTitle: 'Guides by <em>AI tool</em>', toolsTag: 'Pick your AI tool for step-by-step, tool-specific how-tos.',
         // KERESŐ-LEÍRÁS (2026-08-04): a Google találatban a cím alatti mondat.
         // Külön kulcs a *Tag-tól, mert az oldalon látszó alcím rövidebb lehet,
         // a keresőnek viszont 120-160 karakter a hasznos hossz.
@@ -144,7 +149,7 @@ const UI = {
         heroKicker: '01. szám', heroTitle: 'A hétköznapi AI, <em>érthetően.</em>',
         minRead: 'perc olvasás', stepByStep: 'Lépésről lépésre',
         guidesTitle: 'Hétköznapi AI <em>készségek</em>', guidesTag: 'Közérthető útmutatók, amelyek bármelyik asszisztenssel működnek — ChatGPT, Gemini, Claude és társai.',
-        toolsTitle: 'Útmutatók <em>AI eszköz</em> szerint', toolsTag: 'Válaszd ki az asszisztensed az eszköz-specifikus útmutatókhoz.',
+        toolsTitle: 'Útmutatók <em>AI eszköz</em> szerint', toolsTag: 'Válaszd ki az AI-eszközöd az eszköz-specifikus, lépésről lépésre útmutatókhoz.',
         guidesMetaDesc: 'Közérthető, lépésről lépésre útmutatók a hétköznapi AI-hoz: promptírás, összefoglalás, tényellenőrzés, biztonság. Bármelyik asszisztenssel működik.',
         toolsMetaDesc: 'Lépésről lépésre útmutatók konkrét AI-eszközökhöz: ChatGPT, Gemini, Claude, Copilot, Perplexity és társaik. Válaszd ki az eszközöd, és vágj bele.',
         footerNote: 'Önálló AI-ügynökök írják és gondozzák · Pontosságra ellenőrizve', back: '← Vissza', language: 'Nyelv' },
@@ -152,7 +157,7 @@ const UI = {
         heroKicker: 'Número 01', heroTitle: 'La IA cotidiana, <em>explicada fácil.</em>',
         minRead: 'min de lectura', stepByStep: 'Paso a paso',
         guidesTitle: 'Habilidades de <em>IA cotidiana</em>', guidesTag: 'Guías en lenguaje claro que funcionan con cualquier asistente — ChatGPT, Gemini, Claude y más.',
-        toolsTitle: 'Guías por <em>herramienta de IA</em>', toolsTag: 'Elige tu asistente para guías específicas.',
+        toolsTitle: 'Guías por <em>herramienta de IA</em>', toolsTag: 'Elige tu herramienta de IA para guías paso a paso específicas.',
         guidesMetaDesc: 'Guías paso a paso en lenguaje claro sobre IA cotidiana: escribir prompts, resumir, verificar datos y usarla con seguridad. Funciona con cualquier asistente.',
         toolsMetaDesc: 'Guías paso a paso para herramientas de IA concretas: ChatGPT, Gemini, Claude, Copilot, Perplexity y más. Elige tu herramienta y aprende lo que necesitas.',
         footerNote: 'Escrito y curado por agentes de IA autónomos · Revisado para mayor precisión', back: '← Volver', language: 'Idioma' },
@@ -160,7 +165,7 @@ const UI = {
         heroKicker: 'Ausgabe 01', heroTitle: 'Alltags-KI, <em>einfach erklärt.</em>',
         minRead: 'Min. Lesezeit', stepByStep: 'Schritt für Schritt',
         guidesTitle: 'Alltags-<em>KI-Können</em>', guidesTag: 'Verständliche Anleitungen für jeden Assistenten — ChatGPT, Gemini, Claude und mehr.',
-        toolsTitle: 'Anleitungen nach <em>KI-Tool</em>', toolsTag: 'Wähle deinen Assistenten für tool-spezifische Anleitungen.',
+        toolsTitle: 'Anleitungen nach <em>KI-Tool</em>', toolsTag: 'Wähle dein KI-Tool für tool-spezifische Schritt-für-Schritt-Anleitungen.',
         guidesMetaDesc: 'Verständliche Schritt-für-Schritt-Anleitungen zu alltäglichen KI-Fähigkeiten: Prompts schreiben, zusammenfassen, Fakten prüfen, sicher bleiben und mehr. Funktioniert mit jedem Assistenten.',
         toolsMetaDesc: 'Schritt-für-Schritt-Anleitungen für konkrete KI-Tools: ChatGPT, Gemini, Claude, Copilot, Perplexity und mehr. Wähle dein Tool und lerne, was du brauchst.',
         footerNote: 'Geschrieben und kuratiert von autonomen KI-Agenten · Auf Richtigkeit geprüft', back: '← Zurück', language: 'Sprache' },
@@ -168,7 +173,7 @@ const UI = {
         heroKicker: 'Numéro 01', heroTitle: "L'IA au quotidien, <em>expliquée simplement.</em>",
         minRead: 'min de lecture', stepByStep: 'Pas à pas',
         guidesTitle: 'Compétences <em>IA du quotidien</em>', guidesTag: 'Des guides clairs qui marchent avec tout assistant — ChatGPT, Gemini, Claude et autres.',
-        toolsTitle: 'Guides par <em>outil IA</em>', toolsTag: 'Choisissez votre assistant pour des guides dédiés.',
+        toolsTitle: 'Guides par <em>outil IA</em>', toolsTag: 'Choisissez votre outil IA pour des guides pas à pas dédiés.',
         guidesMetaDesc: 'Des guides clairs, pas à pas, sur les usages quotidiens de l’IA : écrire des prompts, résumer, vérifier les faits, rester prudent et bien plus. Compatible avec tout assistant.',
         toolsMetaDesc: 'Des guides pas à pas pour des outils IA précis : ChatGPT, Gemini, Claude, Copilot, Perplexity et d’autres. Choisissez votre outil et apprenez l’essentiel.',
         footerNote: 'Écrit et curé par des agents IA autonomes · Vérifié pour l’exactitude', back: '← Retour', language: 'Langue' }
@@ -191,6 +196,14 @@ const UI_GUIDES = {
         guideWordOne: 'guide', guideWordMany: 'guides',
         pickTool: 'Pick the AI tool you use to jump to its step-by-step guides.',
         companyGuides: '{c} <span class="muted-word">guides</span>',
+        // ESZKÖZ-FAJTA FEJLÉCEK (2026-08-17) — a fajtákat a core/tool-kinds.js
+        // dönti el. Az "asszisztens" szó CSAK a kindAssistant alatt igaz, ezért
+        // került le ide a lap tagline-jából; a többi fejléc szándékosan NEM
+        // mondja, hogy asszisztens lenne.
+        kindAssistant: 'AI assistants you <span class="muted-word">chat with</span>',
+        kindImage: 'Image and video <span class="muted-word">generators</span>',
+        kindData: 'Data and analytics <span class="muted-word">platforms</span>',
+        kindOther: 'Other <span class="muted-word">AI tools</span>',
         comingSoon: 'Guides are on their way — check back shortly.',
         audPersonal: 'Everyday life', audBusiness: 'Business', audBoth: 'Life & Business',
         aiSkills: 'AI skills', coverSub: 'For everyday people', exampleLabel: 'Example', tryTyping: 'Try typing this', xrefNews: 'What prompted this guide', xrefGuide: 'Want to try it? Step-by-step guide',
@@ -201,6 +214,10 @@ const UI_GUIDES = {
         guideWordOne: 'útmutató', guideWordMany: 'útmutató',
         pickTool: 'Válaszd ki az AI-eszközt, amit használsz — és ugorj a lépésről lépésre útmutatóihoz.',
         companyGuides: '{c} <span class="muted-word">útmutatók</span>',
+        kindAssistant: 'AI-asszisztensek, <span class="muted-word">amikkel beszélgetsz</span>',
+        kindImage: 'Kép- és videó<span class="muted-word">generátorok</span>',
+        kindData: 'Adat- és <span class="muted-word">elemzőplatformok</span>',
+        kindOther: 'Egyéb <span class="muted-word">AI-eszközök</span>',
         comingSoon: 'Az útmutatók úton vannak — nézz vissza hamarosan.',
         audPersonal: 'Hétköznapok', audBusiness: 'Üzlet', audBoth: 'Otthon és munka',
         aiSkills: 'AI-készségek', coverSub: 'Hétköznapi embereknek', exampleLabel: 'Példa', tryTyping: 'Írd be ezt', xrefNews: 'Ebből a hírből született az útmutató', xrefGuide: 'Kipróbálnád? Lépésről lépésre útmutató',
@@ -211,6 +228,10 @@ const UI_GUIDES = {
         guideWordOne: 'guía', guideWordMany: 'guías',
         pickTool: 'Elige la herramienta de IA que usas para ir a sus guías paso a paso.',
         companyGuides: '<span class="muted-word">Guías de</span> {c}',
+        kindAssistant: 'Asistentes de IA <span class="muted-word">para chatear</span>',
+        kindImage: '<span class="muted-word">Generadores de</span> imagen y vídeo',
+        kindData: '<span class="muted-word">Plataformas de</span> datos y analítica',
+        kindOther: 'Otras <span class="muted-word">herramientas de IA</span>',
         comingSoon: 'Las guías están en camino — vuelve pronto.',
         audPersonal: 'Día a día', audBusiness: 'Negocios', audBoth: 'Vida y negocios',
         aiSkills: 'Habilidades de IA', coverSub: 'Para el día a día', exampleLabel: 'Ejemplo', tryTyping: 'Escribe esto', xrefNews: 'La noticia detrás de esta guía', xrefGuide: '¿Quieres probarlo? Guía paso a paso',
@@ -221,6 +242,10 @@ const UI_GUIDES = {
         guideWordOne: 'Anleitung', guideWordMany: 'Anleitungen',
         pickTool: 'Wähle dein KI-Tool und spring direkt zu seinen Schritt-für-Schritt-Anleitungen.',
         companyGuides: '{c}-<span class="muted-word">Anleitungen</span>',
+        kindAssistant: 'KI-Assistenten <span class="muted-word">zum Chatten</span>',
+        kindImage: 'Bild- und Video-<span class="muted-word">Generatoren</span>',
+        kindData: 'Daten- und <span class="muted-word">Analyse-Plattformen</span>',
+        kindOther: 'Weitere <span class="muted-word">KI-Tools</span>',
         comingSoon: 'Die Anleitungen sind unterwegs — schau bald wieder vorbei.',
         audPersonal: 'Alltag', audBusiness: 'Business', audBoth: 'Alltag & Business',
         aiSkills: 'KI-Können', coverSub: 'Für den Alltag', exampleLabel: 'Beispiel', tryTyping: 'Tipp das ein', xrefNews: 'Die News hinter dieser Anleitung', xrefGuide: 'Ausprobieren? Schritt-für-Schritt-Anleitung',
@@ -231,6 +256,10 @@ const UI_GUIDES = {
         guideWordOne: 'guide', guideWordMany: 'guides',
         pickTool: "Choisissez l'outil IA que vous utilisez pour accéder à ses guides pas à pas.",
         companyGuides: '<span class="muted-word">Guides</span> {c}',
+        kindAssistant: 'Assistants IA <span class="muted-word">pour discuter</span>',
+        kindImage: '<span class="muted-word">Générateurs</span> d’images et de vidéos',
+        kindData: '<span class="muted-word">Plateformes</span> de données et d’analyse',
+        kindOther: 'Autres <span class="muted-word">outils IA</span>',
         comingSoon: 'Les guides arrivent — revenez bientôt.',
         audPersonal: 'Quotidien', audBusiness: 'Pro', audBoth: 'Perso & pro',
         aiSkills: 'Compétences IA', coverSub: 'Pour tous les jours', exampleLabel: 'Exemple', tryTyping: 'Essayez ceci', xrefNews: "L'actu derrière ce guide", xrefGuide: "Envie d'essayer ? Guide pas à pas",
@@ -1697,10 +1726,41 @@ function buildToolsPage(companyGuides, counts) {
     if (cu && !seen.has(norm(cu))) chips.push(`<a href="${cu}" target="_blank" rel="noopener">${escapeHtml(c)} ↗</a>`);
     return chips.length ? `<p class="official-row"><span class="official-row__l">${tr('officialRow')}:</span> ${chips.join(' ')}</p>` : '';
   };
+  // A cég-szekció H3 (2026-08-17): fölé fajta-fejléc (H2) került, és a
+  // címsor-sorrend nem ugorhat H1 → H2 → H2. A stílus osztály-alapú
+  // (.section-title), ezért a kinézet változatlan.
   const companySection = (c) => `<section class="grid-section" id="c-${companySlug(c)}">
       <div class="section-head"><span class="pill"><span class="pill__i">${companyGlyph(c)}</span> ${escapeHtml(c)}</span>
-        <h2 class="section-title">${tr('companyGuides').replace('{c}', escapeHtml(c))}</h2>${officialRow(c)}</div>
+        <h3 class="section-title">${tr('companyGuides').replace('{c}', escapeHtml(c))}</h3>${officialRow(c)}</div>
       <div class="gtiles">${groups[c].map(guideTile).join('')}</div></section>`;
+
+  // ===================================================================
+  // FAJTA SZERINTI CSOPORTOSÍTÁS (2026-08-17, user: "az llm-nél nem lehet
+  // csak llm modellek")
+  // ===================================================================
+  // Eddig a lap "Pick your assistant"-ot ígért, és a ChatGPT/Gemini/Claude
+  // MELLETT hozta a Midjourney-t (képgenerátor) és a Hugging Face-t (tárhely).
+  // A besorolás EGY helyen él: core/tool-kinds.js. Ismeretlen cég → `other`,
+  // SOHA nem `assistant` — különben csendben visszajönne ugyanez a hiba.
+  //
+  // ⚠️ A `#c-<cégslug>` HORGONY NEM MOZDULHAT: a cikkeken belüli "hub" linkek
+  // (`/tools#c-openai`, lásd guideLinkMap) és élő, megosztott URL-ek mutatnak
+  // rá. Ezért a szekciók VÁLTOZATLANUL maradnak, csak ÁTRENDEZZÜK őket a
+  // fajta-fejlécek alá — a horgony és a szekció tartalma ugyanaz.
+  const KIND_LABEL_KEY = {
+    [KINDS.ASSISTANT]: 'kindAssistant', [KINDS.IMAGE]: 'kindImage',
+    [KINDS.DATA]: 'kindData', [KINDS.OTHER]: 'kindOther'
+  };
+  const byKind = new Map(KIND_ORDER.map(k => [k, []]));
+  for (const c of companies) byKind.get(kindOf(c) || KINDS.OTHER).push(c);
+  const kindBlock = (k) => {
+    const list = byKind.get(k);
+    if (!list.length) return '';
+    return `<div class="kindgroup" id="k-${k}">
+      <h2 class="kindgroup__t">${tr(KIND_LABEL_KEY[k])}</h2>
+    </div>${list.map(companySection).join('')}`;
+  };
+  const sections = KIND_ORDER.map(kindBlock).join('');
 
   const header = `<section class="guides-hero">
     <p class="intro__kicker">${tr('stepByStep')}</p>
@@ -1708,7 +1768,7 @@ function buildToolsPage(companyGuides, counts) {
     <p class="guides-hero__tag">${tr('toolsTag')}</p>
   </section>`;
   const empty = `<p class="muted" style="color:var(--ink-soft)">${tr('comingSoon')}</p>`;
-  const body = designStyleBlock() + header + (companyGuides.length ? (brandRow + companies.map(companySection).join('')) : empty);
+  const body = designStyleBlock() + header + (companyGuides.length ? (brandRow + sections) : empty);
   return pageShell({
     title: `${plainText(tr('toolsTitle'))} — ${SITE.name}`,
     description: tr('toolsMetaDesc'),

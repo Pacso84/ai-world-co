@@ -582,7 +582,17 @@ body {
 .pill__i svg { width:1.05em; height:1.05em; fill:currentColor; vertical-align:-0.15em; }
 .brandtile__n { font-family:'Schibsted Grotesk',sans-serif; font-weight:800; font-size:14px; }
 .brandtile__c { font-size:11px; font-weight:700; color:var(--gc); }
-@media(max-width:560px){ .gtiles{ grid-template-columns:repeat(2,1fr); } .guides-cta{ flex-wrap:wrap; } .brandtiles{ grid-template-columns:repeat(3,1fr); } }
+/* Eszköz-fajta fejléc a /tools oldalon (2026-08-17) — a user jelezte, hogy az
+   "asszisztens" ígéret alatt képgenerátor is állt (Midjourney). A szó lement
+   ide, ahol IGAZ; a fajtákat a core/tool-kinds.js dönti el. Elválasztó-vonalas
+   fejléc: halkabb, mint a cég-szekciók címe, hogy ne vigye el a figyelmet. */
+.kindgroup { display:flex; align-items:center; gap:16px; margin:46px 0 26px; }
+.kindgroup::before, .kindgroup::after { content:''; flex:1; height:1px; background:var(--line-strong); }
+.kindgroup__t { margin:0; text-align:center; color:var(--ink);
+  font-family:'Schibsted Grotesk',sans-serif; font-weight:800;
+  font-size:clamp(19px,2.6vw,26px); letter-spacing:-.02em; line-height:1.15; }
+@media(max-width:560px){ .gtiles{ grid-template-columns:repeat(2,1fr); } .guides-cta{ flex-wrap:wrap; } .brandtiles{ grid-template-columns:repeat(3,1fr); }
+  .kindgroup{ gap:10px; margin:34px 0 20px; } }
 
 /* ===== Kereszthivatkozás (hír ↔ útmutató) ===== */
 .xref { display:block; margin:26px 0 8px; padding:16px 18px; border:1px solid var(--line-strong); border-radius:14px; background:var(--paper-2); }

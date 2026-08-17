@@ -32,6 +32,7 @@ import { message, resolveNeed } from '../../core/ops.js';
 import { lengthIssue, HOWTO_MIN, HOWTO_MAX, GATE_MAX } from '../../core/article-length.js';
 import { repetitionIssue, firstParagraph, WINDOW as OPENING_WINDOW } from '../../core/opening-variety.js';
 import { blockingIssues, advisoryIssues, lessonFor } from '../../core/auto-check-codes.js';
+import { guideClaimIssues } from '../../core/guide-claims.js';
 import { findBritish } from '../../core/us-spelling.js';
 import { skillsBlock } from '../../core/skills.js';
 
@@ -161,7 +162,7 @@ function jegyezdAKezdest(articleMarkdown) {
 // 1. SZINT: AUTOMATA STRUKTÚRA ELLENŐRZÉS (ingyenes!)
 // ===================================================================
 
-function runAutoCheck(articleMarkdown, type) {
+function runAutoCheck(articleMarkdown, type, meta = {}) {
   const issues = [];
 
   // Van YAML frontmatter? (trimStart: egy vezető sortörés/szóköz NE dobjon HAMIS
@@ -368,6 +369,28 @@ function runAutoCheck(articleMarkdown, type) {
       issues.push(`OPENING_REPETITIVE: A legutóbbi ${modor.window} cikkből ${modor.count} kezdődik ugyanígy ("${modor.signature}…"). Kezdj másképp — kérdéssel, ténnyel vagy egy konkrét helyzettel.`);
     }
   } catch { /* ha nem tudjuk beolvasni a friss cikkeket, ettől nem bukik az ellenőrzés */ }
+
+  // ===================================================================
+  // FORRÁS NÉLKÜLI ÁLLÍTÁSOK (2026-08-17, user-lelet) — core/guide-claims.js
+  // ===================================================================
+  // Három élő útmutatóban volt hamis tartalom, MIND ugyanabból a gyökérből:
+  // az útmutató forrás nélkül készül, tehát a modell olyan felületet ír le,
+  // amit sosem látott (kitalált gombnevek; Discord-gombok a webes leírásban;
+  // rég megszűnt ingyenes próba). Mérve: 324/324 (100%) útmutatónak nincs
+  // `_meta.source_link`-je, és 155-nek (48%) van konkrét felület-említése.
+  //
+  // A KAPU MAGÁT SZŰKÍTI: csak akkor szól, ha NINCS használható forráslink.
+  // Mérve ez ma pontosan a 324 útmutatót jelenti és a 404 hírből NULLÁT —
+  // vagyis ha az útmutatók egyszer forrást kapnak, ez magától elhallgat.
+  //
+  // MIND A HÁROM TANÁCSADÓ (nincs a BLOCKING_CODES listán): nem utasít el és
+  // nem indít fizetős újraírást — leckét ír a következő cikkhez. Tüzelési
+  // arány a valós korpuszon (ÚJRAMÉRVE 2026-08-17, két javítás után):
+  // UI 62/324 (19%), ár 49/324 (15%), hozzáférés 3/324 (1%);
+  // együtt 101/324 (31%), vagyis az útmutatók 69%-a egyetlen jelzést sem kap.
+  try {
+    issues.push(...guideClaimIssues(articleMarkdown, meta));
+  } catch { /* az állítás-kapu hibája SOHA ne buktassa el az ellenőrzést */ }
 
   return { passed: issues.length === 0, issues, wordCount };
 }
@@ -796,7 +819,7 @@ async function main() {
     } catch { /* őr-hiba nem állítja meg az ellenőrzést */ }
 
     // 4a. Auto check (ingyenes)
-    const autoCheckResult = runAutoCheck(markdown, writerData._meta?.type);
+    const autoCheckResult = runAutoCheck(markdown, writerData._meta?.type, writerData._meta || {});
     console.log(`   📐 Auto check: ${autoCheckResult.passed ? '✅ OK' : `❌ ${autoCheckResult.issues.length} probléma`}`);
     if (!autoCheckResult.passed) {
       autoCheckResult.issues.slice(0, 3).forEach(i => console.log(`      • ${i}`));

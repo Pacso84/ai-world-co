@@ -32,6 +32,13 @@ import { HOWTO_RANGE } from './article-length.js';
  * Minden más jelzés TANÁCSADÓ: nem buktat, nem indít fizetős újraírást,
  * csak leckét ír a következő íráshoz.
  */
+// ⚠️ A 2026-08-17-i HÁROM ÚJ JELZÉS (UI_CLAIMS_UNSOURCED, PRICE_CLAIM_UNSOURCED,
+// ACCESS_NOT_SELF_SERVE) SZÁNDÉKOSAN NINCS ITT. A user szabálya erre az
+// osztályra: „tanuljon, de ne utasítson el" — a forrás nélküli felület-leírás
+// nem szerkezeti hiba, hanem szokás, és a szokást lecke javítja, nem elutasítás.
+// Az elutasítás FIZETŐS újraírást indít; egy 19%-on tüzelő kapu havonta több
+// tucat ilyet hozna. Aki ezt a listát bővíteni akarja velük, előbb számolja ki
+// az árát.
 export const BLOCKING_CODES = Object.freeze([
   'NO_FRONTMATTER',
   'NO_H1',
@@ -87,6 +94,24 @@ const LESSON_TEXT = Object.freeze({
   OPENING_REPETITIVE:
     'Recent articles keep opening the same way. Start differently — with a question, '
     + 'a concrete fact, or a specific situation. Do not reach for a stock opening formula.',
+  // ---------------------------------------------------------------
+  // 2026-08-17 — a FORRÁS NÉLKÜLI ÚTMUTATÓ három leckéje.
+  // A szöveg SZÁM NÉLKÜL van megírva (nincs benne "4 felirat", "$10"),
+  // hogy két különböző cikk UGYANAZT az emléket erősítse, ne kettőt hozzon
+  // létre. A konkrét felirat/összeg a jelzésben és a naplóban marad.
+  // ---------------------------------------------------------------
+  UI_CLAIMS_UNSOURCED:
+    'The guide stated specific on-screen labels as hard fact, but it was written with no source, '
+    + 'so nothing could check them. Open the official page and read the interface, or write it the honest way: '
+    + '"if you do not see X, look for …". Never name a button you have not seen.',
+  PRICE_CLAIM_UNSOURCED:
+    'A price or free-access claim went out with no source next to it. Money facts expire: trials end, '
+    + 'plans change, amounts move. Either link the official pricing page in the same breath, or leave the number out. '
+    + 'One guide promised a free trial that had not existed for years.',
+  ACCESS_NOT_SELF_SERVE:
+    'The guide needed company, IT or enterprise access that our reader does not have. We write for everyday people: '
+    + 'if a tool has to be switched on by an employer, say so in the opening lines — or pick a tool the reader can '
+    + 'sign up for alone.',
   TOO_SHORT:
     'The article was too short to be useful. Add a concrete example or a worked-through case, not filler.',
   TOO_LONG:
