@@ -379,32 +379,68 @@ function loadPublishedSourceKeys() {
 }
 ```
 
-- [ ] **2. lépés: Ejtsd a már megírt drafteket a ciklus elején**
+- [ ] **2. lépés: Szűrd ki a már megírt drafteket a ciklus ELŐTT**
 
-A `main()`-ben, közvetlenül a `const toProcess = …` sor UTÁN:
+⚠️ **A zár a cikluson KÍVÜL fut, nem belül.** Ez szándékos: a Task 7 ide teszi
+majd az összevonást is, aminek már a megtisztított listát kell látnia. Így a
+Task 7-nek nem kell semmit visszabontania.
+
+A `main()`-ben a jelenlegi kód ebben a sorrendben áll:
 
 ```js
-  const sourceKeys = loadPublishedSourceKeys();
+  const toProcess = args.limit ? drafts.slice(0, args.limit) : drafts;
+  console.log(`📋 ${drafts.length} feldolgozatlan draft található`);
+  console.log(`🎯 Most feldolgozandó: ${toProcess.length}\n`);
+
+  // 3. Statisztika
+  const stats = {
+    started_at: new Date().toISOString(),
+    drafts_total: toProcess.length,
+    articles_written: 0,
+    articles_failed: 0,
+    total_cost_usd: 0,
+    by_article: []
+  };
 ```
 
-A `for (const draftFilename of toProcess) {` cikluson belül, közvetlenül a
-`const draft = JSON.parse(readFileSync(draftPath, 'utf-8'));` sor UTÁN:
+⚠️ A `stats` a `toProcess` UTÁN jön létre, a szűrésnek viszont már írnia kell
+bele. Ezért a `stats` felkerül a szűrés ELÉ. Cseréld le a fenti EGÉSZ blokkot
+erre:
 
 ```js
-    // FORRÁS-ZÁR: erről a hírről már van cikkünk. Nem írjuk meg újra — sem
-    // más szemszögből. (2026-08-18: öt sztoriról volt két-két cikkünk.)
-    if (isAlreadyWritten(draft, sourceKeys)) {
-      console.log(`   ⏭️  Már írtunk erről a hírről — eldobom (nem költünk rá).\n`);
+  // 3. Statisztika (FELJEBB KERÜLT: a forrás-zár már ír bele)
+  const stats = {
+    started_at: new Date().toISOString(),
+    drafts_total: 0,
+    articles_written: 0,
+    articles_failed: 0,
+    skipped_duplicate: 0,
+    total_cost_usd: 0,
+    by_article: []
+  };
+
+  // FORRÁS-ZÁR: amiről már van cikkünk, azt nem írjuk meg újra — sem más
+  // szemszögből. (2026-08-18: öt sztoriról volt két-két cikkünk.) A szűrés a
+  // ciklus ELŐTT fut, hogy a már megírt hír AI-hívásig se jusson el, és hogy a
+  // Task 7 összevonása már a megtisztított listát lássa.
+  const sourceKeys = loadPublishedSourceKeys();
+  const elo = [];
+  for (const f of drafts) {
+    let d;
+    try { d = JSON.parse(readFileSync(join(DRAFTS_DIR, f), 'utf-8')); } catch { continue; }
+    if (isAlreadyWritten(d, sourceKeys)) {
+      console.log(`   ⏭️  Már írtunk erről a hírről — eldobom: ${f.slice(0, 50)}`);
       stats.skipped_duplicate++;
-      try { unlinkSync(draftPath); } catch { /* már nincs ott */ }
+      try { unlinkSync(join(DRAFTS_DIR, f)); } catch { /* már nincs ott */ }
       continue;
     }
-```
+    elo.push(f);
+  }
 
-A `stats` objektumhoz (a `articles_failed: 0,` sor után):
-
-```js
-    skipped_duplicate: 0,
+  const toProcess = args.limit ? elo.slice(0, args.limit) : elo;
+  stats.drafts_total = toProcess.length;
+  console.log(`📋 ${drafts.length} draft · ${elo.length} a zár után`);
+  console.log(`🎯 Most feldolgozandó: ${toProcess.length}\n`);
 ```
 
 - [ ] **3. lépés: Ellenőrizd, hogy a fájl szintaktikailag ép**
@@ -465,17 +501,17 @@ Az `agents/ceo/desk.js`-ben a teljes `function isDuplicate(d) { … }` helyére:
 // Korábban itt volt egy saját változat, ami szó szerint (===) hasonlított,
 // tehát a „https://x.com/a" és a „https://x.com/a/" különbözőnek látszott.
 // Két, egymástól eltérően normalizáló duplikátum-fogalom rosszabb, mint egy.
-let _kulcsCache = null;
+//
+// ⚠️ SZÁNDÉKOSAN NINCS GYORSÍTÓTÁR: a desk futása közben ÚJ cikk publikálódhat,
+// és a következő hívásnak azt is látnia kell. Az eredeti változat is minden
+// híváskor frissen olvasott — a sebességért nem cserélünk helyességet.
 function isDuplicate(d) {
   if (!existsSync(ARTICLES_DIR)) return false;
-  if (!_kulcsCache) {
-    const cikkek = [];
-    for (const f of readdirSync(ARTICLES_DIR).filter(x => x.endsWith('.json'))) {
-      try { cikkek.push(JSON.parse(readFileSync(join(ARTICLES_DIR, f), 'utf-8'))); } catch { /* skip */ }
-    }
-    _kulcsCache = publishedSourceKeys(cikkek);
+  const cikkek = [];
+  for (const f of readdirSync(ARTICLES_DIR).filter(x => x.endsWith('.json'))) {
+    try { cikkek.push(JSON.parse(readFileSync(join(ARTICLES_DIR, f), 'utf-8'))); } catch { /* skip */ }
   }
-  return isAlreadyWritten(d, _kulcsCache);
+  return isAlreadyWritten(d, publishedSourceKeys(cikkek));
 }
 ```
 
@@ -1183,27 +1219,22 @@ a `--limit N`-t adja át, az író pedig `drafts.slice(0, args.limit)`-tel DRAFT
 vág. Összevonás után ez kevesebb cikket eredményezne — pont az ellenkezőjét
 annak, amit akarunk.
 
-Az `agents/iro/agent.js` `main()`-jében a `const toProcess = args.limit ? drafts.slice(0, args.limit) : drafts;`
-sortól a cikluson át cseréld erre:
+A Task 2 már létrehozta a `sourceKeys` szűrést és az `elo` listát a ciklus
+előtt — **azokhoz ne nyúlj.** Csak az utánuk következő három sort cseréld:
+
+```js
+  const toProcess = args.limit ? elo.slice(0, args.limit) : elo;
+  stats.drafts_total = toProcess.length;
+  console.log(`📋 ${drafts.length} draft · ${elo.length} a zár után`);
+  console.log(`🎯 Most feldolgozandó: ${toProcess.length}\n`);
+```
+
+erre (és utána a teljes `for` ciklust az alábbi ciklusra):
 
 ```js
   // A --limit CIKKET jelent, nem draftot (2026-08-18). A CEO amúgy is így érti:
   // agents/ceo/agent.js articles_remaining = 8 − a ma megírt hírek száma.
-  const maxCikk = args.limit || drafts.length;
-  const sourceKeys = loadPublishedSourceKeys();
-
-  // FORRÁS-ZÁR ELŐSZÖR: a már megírt hírek ne is menjenek be a csoportosításba.
-  const elo = [];
-  for (const f of drafts) {
-    let d; try { d = JSON.parse(readFileSync(join(DRAFTS_DIR, f), 'utf-8')); } catch { continue; }
-    if (isAlreadyWritten(d, sourceKeys)) {
-      console.log(`   ⏭️  Már írtunk erről a hírről — eldobom: ${f.slice(0, 50)}`);
-      stats.skipped_duplicate++;
-      try { unlinkSync(join(DRAFTS_DIR, f)); } catch { /* */ }
-      continue;
-    }
-    elo.push(f);
-  }
+  const maxCikk = args.limit || elo.length;
 
   // ÖSSZEVONÁS: melyik hírek szólnak ugyanarról?
   const { groups, costUsd: clusterCost } = await clusterDrafts(elo);
@@ -1215,6 +1246,7 @@ sortól a cikluson át cseréld erre:
   }
 
   const terv = planWriteOrder(elo, groups).slice(0, maxCikk);
+  stats.drafts_total = terv.reduce((s, e) => s + e.ids.length, 0);
   console.log(`📋 ${drafts.length} draft · ${elo.length} zár után · ${terv.length} cikk készül\n`);
 
   for (const egyseg of terv) {
@@ -1260,16 +1292,15 @@ sortól a cikluson át cseréld erre:
 ```
 
 ⚠️ A `stats` objektumhoz vedd fel: `clusters_found: 0,` és `merged_total: 0,`.
-⚠️ A Task 2-ben beírt, cikluson belüli zár-blokk innentől **felesleges** —
-töröld, mert a zár most a ciklus ELŐTT fut (különben kétszer futna).
 
-- [ ] **4. lépés: Ellenőrizd a szintaxist és a maradékot**
+- [ ] **4. lépés: Ellenőrizd a szintaxist és a zár épségét**
 
 Futtasd: `node --check agents/iro/agent.js`
 Várt: nincs kimenet.
 
 Futtasd: `grep -c "isAlreadyWritten" agents/iro/agent.js`
-Várt: `2` (egy import, egy hívás). Ha 3, maradt a Task 2-es duplikált blokk.
+Várt: `2` — egy import, egy hívás. Ha **1**, véletlenül kitörölted a Task 2
+forrás-zárát; ha **3**, kétszer fut.
 
 - [ ] **5. lépés: Futtasd a teljes tesztsort**
 
