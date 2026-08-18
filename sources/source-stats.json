@@ -1,7 +1,7 @@
 {
   "_meta": {
     "note": "Forrás-bizonyítvány: frissesség + termés + megbízhatóság forrásonként. Gyártja: core/source-report-card.js",
-    "updated": "2026-08-18T01:13:03.800Z",
+    "updated": "2026-08-18T08:42:14.104Z",
     "thresholds": {
       "DEAD_FEED_DAYS": 365,
       "MIN_SAMPLE": 4,
@@ -23,7 +23,7 @@
     },
     "google-deepmind": {
       "name": "Google DeepMind (hivatalos)",
-      "feedAgeDays": 4,
+      "feedAgeDays": 5,
       "published30d": 4,
       "truthBlocks": 0,
       "totalAttempts": 7,
@@ -56,7 +56,7 @@
     },
     "microsoft-ai": {
       "name": "Microsoft AI (hivatalos)",
-      "feedAgeDays": 7,
+      "feedAgeDays": 8,
       "published30d": 2,
       "truthBlocks": 0,
       "totalAttempts": 11,
@@ -111,7 +111,7 @@
     },
     "microsoft-research": {
       "name": "Microsoft Research (hivatalos)",
-      "feedAgeDays": 5,
+      "feedAgeDays": 6,
       "published30d": 0,
       "truthBlocks": 0,
       "totalAttempts": 5,
@@ -122,7 +122,7 @@
     },
     "github-ai": {
       "name": "GitHub AI & ML (hivatalos)",
-      "feedAgeDays": 0,
+      "feedAgeDays": 1,
       "published30d": 4,
       "truthBlocks": 0,
       "totalAttempts": 7,
@@ -133,7 +133,7 @@
     },
     "aws-ml": {
       "name": "AWS Machine Learning (hivatalos)",
-      "feedAgeDays": 0,
+      "feedAgeDays": 1,
       "published30d": 11,
       "truthBlocks": 0,
       "totalAttempts": 43,
@@ -375,7 +375,7 @@
     },
     "salesforce": {
       "name": "Salesforce AI Blog (hivatalos)",
-      "feedAgeDays": 4,
+      "feedAgeDays": 5,
       "published30d": 2,
       "truthBlocks": 0,
       "totalAttempts": 11,
@@ -408,7 +408,7 @@
     },
     "snowflake": {
       "name": "Snowflake Blog (hivatalos)",
-      "feedAgeDays": 0,
+      "feedAgeDays": 1,
       "published30d": 4,
       "truthBlocks": 0,
       "totalAttempts": 19,
@@ -430,7 +430,7 @@
     },
     "pinecone": {
       "name": "Pinecone Blog (hivatalos)",
-      "feedAgeDays": 5,
+      "feedAgeDays": 6,
       "published30d": 0,
       "truthBlocks": 0,
       "totalAttempts": 3,
@@ -452,7 +452,7 @@
     },
     "ntt-research": {
       "name": "NTT Research (hivatalos)",
-      "feedAgeDays": 0,
+      "feedAgeDays": 1,
       "published30d": 2,
       "truthBlocks": 0,
       "totalAttempts": 8,
@@ -573,7 +573,7 @@
     },
     "microsoft-365": {
       "name": "Microsoft 365 Insider (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 0,
       "published30d": 4,
       "truthBlocks": 0,
       "totalAttempts": 4,
