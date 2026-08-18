@@ -26,6 +26,7 @@ import { ask } from '../../core/ai-router.js';
 import { remember } from '../../core/memory-manager.js';
 import { message } from '../../core/ops.js';
 import { escalateStale, listEscalated, closeCase } from '../../core/handback.js';
+import { publishedSourceKeys, isAlreadyWritten } from '../../core/source-lock.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..', '..');
@@ -121,19 +122,21 @@ function stuckNews() {
     });
 }
 
+// A duplikátum-fogalom EGY helyen él: core/source-lock.js (2026-08-18).
+// Korábban itt volt egy saját változat, ami szó szerint (===) hasonlított,
+// tehát a „https://x.com/a" és a „https://x.com/a/" különbözőnek látszott.
+// Két, egymástól eltérően normalizáló duplikátum-fogalom rosszabb, mint egy.
+//
+// ⚠️ SZÁNDÉKOSAN NINCS GYORSÍTÓTÁR: a desk futása közben ÚJ cikk publikálódhat,
+// és a következő hívásnak azt is látnia kell. Az eredeti változat is minden
+// híváskor frissen olvasott — a sebességért nem cserélünk helyességet.
 function isDuplicate(d) {
-  // Már van publikált cikkünk ugyanarról? (azonos forrás-link vagy cím-egyezés)
   if (!existsSync(ARTICLES_DIR)) return false;
-  const link = d._meta?.source_link || '';
-  const title = (d.original_title || '').toLowerCase();
+  const cikkek = [];
   for (const f of readdirSync(ARTICLES_DIR).filter(x => x.endsWith('.json'))) {
-    try {
-      const a = JSON.parse(readFileSync(join(ARTICLES_DIR, f), 'utf-8'));
-      if (link && a._meta?.source_link === link) return true;
-      if (title && (a.original_title || '').toLowerCase() === title) return true;
-    } catch { /* skip */ }
+    try { cikkek.push(JSON.parse(readFileSync(join(ARTICLES_DIR, f), 'utf-8'))); } catch { /* skip */ }
   }
-  return false;
+  return isAlreadyWritten(d, publishedSourceKeys(cikkek));
 }
 
 async function verdictFor(d, context) {
