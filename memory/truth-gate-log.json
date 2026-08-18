@@ -318,6 +318,15 @@
         "Claims that Gemini can 'tap into Google Maps data to recommend restaurants, attractions, and routes' and that place names in replies include 'clickable links that opens Google Maps directly' are fabricated — Gemini does not have direct Maps integration of this kind in its standard capabilities."
       ],
       "confidence": 7
+    },
+    {
+      "at": "2026-08-18T16:21:14.885Z",
+      "file": "WRITER_2026-08-18T16-19-17-295Z_openai-blog_Introducing_ChatGPT_for_Teens__Built_for_learning_.json",
+      "action": "block",
+      "reasons": [
+        "The article repeatedly describes a 'ChatGPT for Teens' product with specific features (age-based response filtering, healthy-use break nudges, parent-linked controls with usage summaries, memory visibility, alerts) and presents them as facts about an existing product. As of the article's framing this is written as if it has launched, but this specific named product offering and its claimed feature set cannot be verified as a real, shipping OpenAI product — these look like invented specifics attributed to ChatGPT/OpenAI."
+      ],
+      "confidence": 6
     }
   ]
 }

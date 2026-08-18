@@ -1,0 +1,62 @@
+{
+  "_meta": {
+    "written_at": "2026-08-18T16:21:54.845Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00689617,
+    "original_draft": "2026-08-18T16-19-17-295Z_openai-blog_Introducing_ChatGPT_for_Teens__Built_for_learning_.json",
+    "source_id": "openai-blog",
+    "source_name": "OpenAI Blog (hivatalos)",
+    "source_link": "https://openai.com/index/chatgpt-for-teens",
+    "status": "published",
+    "rejected_at": "2026-08-18T16:21:14.880Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 656
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-crafted explainer with a warm, non-judgmental tone that respects parents' intelligence. The structure hits all marks: engaging hook, honest coverage of what ChatGPT does well and poorly, clear section on what parents can and cannot control, helpful 'What this means for you' with audience segments, and a practical wrap-up with a conversation prompt. Factual hedging is appropriate — stating the legal age floor and being honest that specific protections cannot be confirmed. No prohibited content, no clichés, accessible language throughout.",
+      "_aiCost": 0.0016833,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Hitelesség-kapu blokkolta: The article repeatedly describes a 'ChatGPT for Teens' product with specific features (age-based response filtering, healthy-use break nudges, parent-linked controls with usage summaries, memory visib",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-08-18T16-19-17-295Z_openai-blog_Introducing_ChatGPT_for_Teens__Built_for_learning_.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-08-18T16:22:21.526Z",
+    "slug": "chatgpt-and-teens-what-parents-actually-need-to-know",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-08-18T16:22:26.709Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is a parental guidance explainer article about teens using ChatGPT in general, not news about a specific new feature or tool that users can go use today",
+    "seo": {
+      "meta_description": "ChatGPT and teens: What parents need to know about safety, age requirements, parental controls, and homework help before saying yes or no.",
+      "keywords": [
+        "ChatGPT age requirement teenagers",
+        "is ChatGPT safe for teens",
+        "ChatGPT parental controls",
+        "ChatGPT homework help kids",
+        "should kids use ChatGPT",
+        "OpenAI age policy minors",
+        "ChatGPT screen time teens"
+      ],
+      "seo_score": 7,
+      "suggestions": [
+        "Add more specific OpenAI policy details or official age references to strengthen E-E-A-T signals",
+        "Include a clear FAQ or Q&A format to capture 'people also ask' featured snippets",
+        "Add schema markup for FAQ or Article to improve SERP visibility"
+      ],
+      "optimised_at": "2026-08-18T16:23:03.103Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"ChatGPT and Teens: What Parents Actually Need to Know\"\nsubtitle: \"Before your kid signs up, here are the honest questions to ask — about safety, accuracy, screen time, and what you can actually control.\"\ncategory: \"explainer\"\naudience: \"personal\"\nread_time_minutes: 4\ntags: [\"chatgpt\", \"teens\", \"parenting\", \"ai-safety\", \"family\"]\n---\n\n# ChatGPT and Teens: What Parents Actually Need to Know\n\n> **In short:** ChatGPT's terms of service set a minimum age, and OpenAI has discussed extra safeguards for younger users — but the specific protections, what they cover, and how parent controls work aren't something we can confirm in detail. Here's how to think through the question for your own family.\n\nYour 14-year-old just asked if they can use ChatGPT for homework help. Maybe you've heard mixed things — too much screen time, accuracy worries, content concerns. Before you say yes, no, or \"ask me later,\" it helps to know what's actually in your control and what isn't.\n\n## The age question, first\n\nChatGPT's official terms set a minimum age — 13 in most regions, and higher in some places. Anyone younger isn't supposed to have an account. That's the legal floor, and your household rules can absolutely be stricter. If your child is under the minimum, the answer is simply \"not yet,\" regardless of what a friend at school is doing.\n\nFor older teens, the question shifts from \"is it allowed\" to \"is it a good idea in our family.\"\n\n## What ChatGPT does well — and badly\n\nWorth knowing before any conversation with your kid:\n\n- It's good at explaining concepts, summarizing long texts, and brainstorming ideas.\n- It confidently makes things up — wrong dates, fake citations, invented quotes. Anything that matters (a grade, a paper, a fact in an argument) should be double-checked elsewhere.\n- It can still produce content that isn't appropriate for younger users, even with built-in filters. No filter is perfect.\n- It doesn't replace real conversation. For mental health, friendships, or tough decisions, it should never be the only voice in the room.\n\n## What you can and can't control\n\nThis is the part parents most often ask about, and honesty matters here:\n\n- **Account-level controls are limited.** ChatGPT does not currently offer the kind of detailed parent dashboard some other apps do. You can't see every prompt your teen types from your own phone.\n- **Family conversations matter more than settings.** Agreeing on what it's for — homework, not emotional advice — and when it's off-limits (late at night, during meals) tends to work better than any technical lock.\n- **OpenAI has talked about stronger protections for younger users.** Whether those are rolled out, what they include, and how parents opt in is something to check directly on OpenAI's site before assuming they're available.\n\n## What this means for you\n\n- **If you're a parent of a teen (roughly 13–17)**: Treat ChatGPT like any other tool with real upsides and real risks. The most useful thing you can do is stay curious about how your teen is using it, rather than ban it or ignore it.\n- **If you're a parent of a younger child**: The minimum age isn't a suggestion. When the time comes, kid-focused AI tools built for younger children will be a better fit.\n- **If you're a teen reading this**: Use it for what it's actually good at — homework explanations, brainstorming, learning new things. Tell a real person if it ever says something that bothers you.\n- **If you're an educator or librarian**: Worth introducing students to both the capabilities and the limits, including the habit of double-checking facts.\n\n## Wrap-up\n\nThe honest answer is that no tool replaces your judgment as the adult in the room. The next step that helps most families: spend ten minutes with your teen asking what they'd actually use ChatGPT for, and decide together what your house rules will be. That conversation matters more than any setting.",
+  "original_title": "Introducing ChatGPT for Teens: Built for learning, backed by protections"
+}

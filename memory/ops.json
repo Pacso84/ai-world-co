@@ -1,102 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178692749999969",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-17T00:44:59.999Z",
-      "updated": "2026-08-17T00:45:00.123Z"
-    },
-    {
-      "id": "t17869275001240",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-17T00:45:00.124Z",
-      "updated": "2026-08-17T00:45:12.711Z"
-    },
-    {
-      "id": "t178692751271497",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-17T00:45:12.714Z",
-      "updated": "2026-08-17T00:45:34.735Z"
-    },
-    {
-      "id": "t178692753473761",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-17T00:45:34.737Z",
-      "updated": "2026-08-17T00:46:19.876Z"
-    },
-    {
-      "id": "t17869275798779",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-17T00:46:19.877Z",
-      "updated": "2026-08-17T00:47:03.243Z"
-    },
-    {
-      "id": "t178692762324596",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-08-17T00:47:03.245Z",
-      "updated": "2026-08-17T00:47:50.015Z"
-    },
-    {
-      "id": "t178692767004372",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-17T00:47:50.043Z",
-      "updated": "2026-08-17T00:48:03.819Z"
-    },
-    {
-      "id": "t178692768382153",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-08-17T00:48:03.821Z",
-      "updated": "2026-08-17T00:48:21.307Z"
-    },
-    {
-      "id": "t178695543028647",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-08-17T08:30:30.286Z",
-      "updated": "2026-08-17T08:30:30.467Z"
-    },
-    {
-      "id": "t178695543047076",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-08-17T08:30:30.470Z",
-      "updated": "2026-08-17T08:31:00.034Z"
-    },
-    {
-      "id": "t178695546003569",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-08-17T08:31:00.035Z",
-      "updated": "2026-08-17T08:31:00.226Z"
-    },
-    {
-      "id": "t178695546022887",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-17T08:31:00.228Z",
-      "updated": "2026-08-17T08:32:00.848Z"
-    },
-    {
       "id": "t178695552084925",
       "title": "Run ellenorzo",
       "status": "done",
@@ -479,33 +383,105 @@
       "agent": "publisher",
       "created": "2026-08-18T08:30:01.102Z",
       "updated": "2026-08-18T08:30:20.299Z"
+    },
+    {
+      "id": "t178706992633426",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-08-18T16:18:46.334Z",
+      "updated": "2026-08-18T16:18:46.514Z"
+    },
+    {
+      "id": "t178706992651655",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-08-18T16:18:46.516Z",
+      "updated": "2026-08-18T16:19:17.307Z"
+    },
+    {
+      "id": "t178706995730943",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-08-18T16:19:17.309Z",
+      "updated": "2026-08-18T16:19:17.510Z"
+    },
+    {
+      "id": "t17870699575123",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-18T16:19:17.512Z",
+      "updated": "2026-08-18T16:20:34.102Z"
+    },
+    {
+      "id": "t178707003410486",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-18T16:20:34.104Z",
+      "updated": "2026-08-18T16:21:39.257Z"
+    },
+    {
+      "id": "t178707009925945",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-18T16:21:39.259Z",
+      "updated": "2026-08-18T16:21:54.855Z"
+    },
+    {
+      "id": "t178707011485680",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-18T16:21:54.856Z",
+      "updated": "2026-08-18T16:22:21.538Z"
+    },
+    {
+      "id": "t178707014154084",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-08-18T16:22:21.540Z",
+      "updated": "2026-08-18T16:22:28.796Z"
+    },
+    {
+      "id": "t178707014883684",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-18T16:22:28.836Z",
+      "updated": "2026-08-18T16:22:48.600Z"
+    },
+    {
+      "id": "t178707016860229",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-08-18T16:22:48.602Z",
+      "updated": "2026-08-18T16:23:13.793Z"
+    },
+    {
+      "id": "t178707019379413",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-18T16:23:13.794Z",
+      "updated": "2026-08-18T16:23:27.585Z"
+    },
+    {
+      "id": "t178707020758797",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-08-18T16:23:27.587Z",
+      "updated": "2026-08-18T16:23:53.634Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178607056112498",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). A kínálat kerek és barátságos – a cikkek szépen lefedik a hétköznapi segítséget (panaszlevelek, e-mailek, privát szféra) és a hasznos AI-tippeket egyaránt. Egyvalami: a \"ChatRTX\" helyett NVIDIA termék",
-      "agent": "publisher",
-      "at": "2026-08-07T02:42:41.124Z",
-      "loud": false
-    },
-    {
-      "id": "n178607056645375",
-      "level": "success",
-      "text": "7 hír + 4 útmutató publikálva (költség: $0.1438).",
-      "agent": "ceo",
-      "at": "2026-08-07T02:42:46.453Z",
-      "loud": false
-    },
-    {
-      "id": "n17860924866040",
-      "level": "info",
-      "text": "SEO: 1 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-08-07T08:48:06.604Z",
-      "loud": false
-    },
     {
       "id": "n178609250872895",
       "level": "success",
@@ -1281,45 +1257,33 @@
       "agent": "ceo",
       "at": "2026-08-18T08:30:20.329Z",
       "loud": false
+    },
+    {
+      "id": "n178707019378472",
+      "level": "info",
+      "text": "SEO: 2 cikk optimalizálva (átlag 7.5/10).",
+      "agent": "seo",
+      "at": "2026-08-18T16:23:13.784Z",
+      "loud": false
+    },
+    {
+      "id": "n178707022209154",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The lineup looks solid and ready — it balances practical how-tos (complaint letters, emails, pet agreements) with essential guidance on safety and privacy, plus a few heartwarming use cases. Coherent ",
+      "agent": "publisher",
+      "at": "2026-08-18T16:23:42.091Z",
+      "loud": false
+    },
+    {
+      "id": "n178707023367919",
+      "level": "success",
+      "text": "2 hír + 0 útmutató publikálva (költség: $0.0251).",
+      "agent": "ceo",
+      "at": "2026-08-18T16:23:53.679Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178615051814652",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Seedance 2.5 in Picsart: cinematic video, one take\" — mi a baj: Claimed that Seedance 2.5 generates 'up to 30 seconds of cinematic video' in Picsart — this is an invented feature/technical specification attributed to a specific tool version.; Claimed that Seedance 2.5 produces 'native 4K' video — this is an invented technical specification attributed to a specific tool versi",
-      "ref": "2026-08-08T00-50-18-674Z_picsart_Seedance_2_5_in_Picsart__cinematic_video__one_take.json",
-      "at": "2026-08-08T00:55:18.146Z"
-    },
-    {
-      "id": "m178615055610497",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Seedance 2.5 in Picsart: cinematic video, one take\" — javítva: Claimed that Seedance 2.5 generates 'up to 30 seconds of cinematic video' in Picsart — this is an invented feature/technical specification attributed to a specific tool version.; Claimed that Seedance 2.5 produces 'native 4K' video — this is an invented technical specification attributed to a specific tool version.; újrak",
-      "ref": "2026-08-08T00-50-18-674Z_picsart_Seedance_2_5_in_Picsart__cinematic_video__one_take.json",
-      "at": "2026-08-08T00:55:56.104Z"
-    },
-    {
-      "id": "m178615057088367",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Seedance 2.5 in Picsart: cinematic video, one take\" (?/10)",
-      "ref": "2026-08-08T00-50-18-674Z_picsart_Seedance_2_5_in_Picsart__cinematic_video__one_take.json",
-      "at": "2026-08-08T00:56:10.883Z"
-    },
-    {
-      "id": "m178615058013757",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "info",
-      "text": "A \"Automatically add sources to your Gemini Notebooks in W\" hír a meglévő útmutatóra mutat: gemini-getting-started",
-      "ref": "gemini-getting-started",
-      "at": "2026-08-08T00:56:20.137Z"
-    },
     {
       "id": "m178615132950486",
       "from": "designer",
@@ -2644,6 +2608,42 @@
       "text": "4 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-08-18T08:41:12.869Z"
+    },
+    {
+      "id": "m178707007488427",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Introducing ChatGPT for Teens: Built for learning, backed by protections\" — mi a baj: The article repeatedly describes a 'ChatGPT for Teens' product with specific features (age-based response filtering, healthy-use break nudges, parent-linked controls with usage summaries, memory visibility, alerts) and presents them as facts about an existing product. As of the article's fr",
+      "ref": "2026-08-18T16-19-17-295Z_openai-blog_Introducing_ChatGPT_for_Teens__Built_for_learning_.json",
+      "at": "2026-08-18T16:21:14.884Z"
+    },
+    {
+      "id": "m178707011484648",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Introducing ChatGPT for Teens: Built for learning, backed by protections\" — javítva: The article repeatedly describes a 'ChatGPT for Teens' product with specific features (age-based response filtering, healthy-use break nudges, parent-linked controls with usage summaries, memory visibility, alerts) and presents them as facts about an existing product. As of the article's framing this",
+      "ref": "2026-08-18T16-19-17-295Z_openai-blog_Introducing_ChatGPT_for_Teens__Built_for_learning_.json",
+      "at": "2026-08-18T16:21:54.846Z"
+    },
+    {
+      "id": "m178707014152840",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Introducing ChatGPT for Teens: Built for learning, backed by protections\" (?/10)",
+      "ref": "2026-08-18T16-19-17-295Z_openai-blog_Introducing_ChatGPT_for_Teens__Built_for_learning_.json",
+      "at": "2026-08-18T16:22:21.528Z"
+    },
+    {
+      "id": "m178707020757729",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-08-18T16:23:27.577Z"
     }
   ]
 }
