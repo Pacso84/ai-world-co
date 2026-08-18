@@ -28,6 +28,7 @@
 import { readFileSync, existsSync, readdirSync, writeFileSync, mkdirSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
+import { linkState, slugOf, CLOSED, DEAD, REDIRECT } from './social-link-state.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
@@ -265,15 +266,27 @@ function checkSocialLinks() {
   }
   if (!real.size) return;
 
-  let withExt = 0; const dead = []; const textMismatch = [];
+  // Az átirányítás-lista: enélkül az átnevezett cikk "404"-nek látszana.
+  let hist = {};
+  try { hist = JSON.parse(readFileSync(join(ROOT, 'content', 'slug-history.json'), 'utf-8')); } catch { /* nincs lista */ }
+
+  let withExt = 0; const dead = []; const stale = []; const textMismatch = [];
   const URL_RX = /https:\/\/aiworldhq\.com\/article\/[A-Za-z0-9\-]+(?:\.html)?/g;
 
   for (const f of readdirSync(dir).filter(x => x.endsWith('.json'))) {
     let p; try { p = JSON.parse(readFileSync(join(dir, f), 'utf-8')); } catch { continue; }
     if (!p.url) continue;
+    // A LEZÁRT BEJEGYZÉS OLVASÓHOZ NEM JUT (2026-08-18): mindkét poszter
+    // `if (post[field]) continue` alapon szűr, tehát amit minden csatornán
+    // lezártunk, azt már senki nem küldi ki. Ha ezek riasztanak, az őr ÖRÖKRE
+    // panaszkodik valamire, amit nem lehet megjavítani — és pont ettől szokik
+    // le az ember az őrszemről.
+    const allapot = linkState(p, real, hist);
+    if (allapot === CLOSED) continue;
     if (p.url.endsWith('.html')) withExt++;
-    const slug = p.url.replace(/^.*\/article\//, '').replace(/\.html$/, '');
-    if (!real.has(slug)) dead.push(slug);
+    const slug = slugOf(p);
+    if (allapot === DEAD) dead.push(slug);
+    else if (allapot === REDIRECT) stale.push(slug);
 
     // A POSZT SZÖVEGÉBEN LÉVŐ LINK IS SZÁMÍT (2026-07-29).
     // Ezt először KIHAGYTAM: csak az url mezőt javítottam, a Facebook-szövegbe
@@ -290,6 +303,9 @@ function checkSocialLinks() {
   if (withExt) add('SOCIAL_HTML', `${withExt} közösségi poszt .html-es (átirányító) linkkel`);
   if (dead.length) {
     add('SOCIAL_404', `${dead.length} közösségi poszt NEM LÉTEZŐ cikkre mutat (az olvasó 404-et kap) — pl. ${dead[0]}`);
+  }
+  if (stale.length) {
+    add('SOCIAL_STALE', `${stale.length} közösségi poszt ÁTNEVEZETT cikkre mutat: a link 301-en át ÉL, de a poszter a rögzített slugra illeszt, ezért SOHA nem küldi ki — a cikk némán kiesik a terjesztésből — pl. ${stale[0]}`);
   }
   if (textMismatch.length) {
     add('SOCIAL_TEXT_URL', `${textMismatch.length} poszt SZÖVEGÉBEN más link van, mint az url mezőben (a poszter nem tudja kivágni → törött link megy ki) — pl. ${textMismatch[0]}`);
