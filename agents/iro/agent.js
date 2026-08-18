@@ -34,6 +34,7 @@ import { skillsBlock } from '../../core/skills.js';
 import { message } from '../../core/ops.js';
 import { HOWTO_RANGE } from '../../core/article-length.js';
 import { blockingIssues } from '../../core/auto-check-codes.js';
+import { publishedSourceKeys, isAlreadyWritten } from '../../core/source-lock.js';
 
 // ===================================================================
 // SETUP
@@ -127,6 +128,21 @@ function loadBrandContext() {
 // ===================================================================
 
 const DRAFT_MAX_AGE_DAYS = 7;   // a hír romlandó: ennél régebbi, meg nem írt draftot eldobunk
+
+// A PUBLIKÁLT cikkek forrás-kulcsai. Miért innen és nem a scraper
+// seen-items.json-jából: az azonnal írt draft és a csak futás VÉGÉN mentett
+// „látott" lista között van egy rés — félbeszakadt futás után a draftok ott
+// vannak, de egy link sem számít látottnak, és a következő futás újra lementi
+// őket. A publikált cikkekből épített kulcshalmaz ettől független.
+function loadPublishedSourceKeys() {
+  const dir = join(PROJECT_ROOT, 'content', 'articles');
+  if (!existsSync(dir)) return publishedSourceKeys([]);
+  const cikkek = [];
+  for (const f of readdirSync(dir).filter(x => x.endsWith('.json'))) {
+    try { cikkek.push(JSON.parse(readFileSync(join(dir, f), 'utf-8'))); } catch { /* skip */ }
+  }
+  return publishedSourceKeys(cikkek);
+}
 
 function listUnprocessedDrafts(filter = null) {
   if (!existsSync(DRAFTS_DIR)) return [];
@@ -638,19 +654,39 @@ async function main() {
     return;
   }
 
-  const toProcess = args.limit ? drafts.slice(0, args.limit) : drafts;
-  console.log(`📋 ${drafts.length} feldolgozatlan draft található`);
-  console.log(`🎯 Most feldolgozandó: ${toProcess.length}\n`);
-
-  // 3. Statisztika
+  // 3. Statisztika (FELJEBB KERÜLT: a forrás-zár már ír bele)
   const stats = {
     started_at: new Date().toISOString(),
-    drafts_total: toProcess.length,
+    drafts_total: 0,
     articles_written: 0,
     articles_failed: 0,
+    skipped_duplicate: 0,
     total_cost_usd: 0,
     by_article: []
   };
+
+  // FORRÁS-ZÁR: amiről már van cikkünk, azt nem írjuk meg újra — sem más
+  // szemszögből. (2026-08-18: öt sztoriról volt két-két cikkünk.) A szűrés a
+  // ciklus ELŐTT fut, hogy a már megírt hír AI-hívásig se jusson el, és hogy a
+  // Task 7 összevonása már a megtisztított listát lássa.
+  const sourceKeys = loadPublishedSourceKeys();
+  const elo = [];
+  for (const f of drafts) {
+    let d;
+    try { d = JSON.parse(readFileSync(join(DRAFTS_DIR, f), 'utf-8')); } catch { continue; }
+    if (isAlreadyWritten(d, sourceKeys)) {
+      console.log(`   ⏭️  Már írtunk erről a hírről — eldobom: ${f.slice(0, 50)}`);
+      stats.skipped_duplicate++;
+      try { unlinkSync(join(DRAFTS_DIR, f)); } catch { /* már nincs ott */ }
+      continue;
+    }
+    elo.push(f);
+  }
+
+  const toProcess = args.limit ? elo.slice(0, args.limit) : elo;
+  stats.drafts_total = toProcess.length;
+  console.log(`📋 ${drafts.length} draft · ${elo.length} a zár után`);
+  console.log(`🎯 Most feldolgozandó: ${toProcess.length}\n`);
 
   // 4. Cikkek írása egyenként
   for (const draftFilename of toProcess) {
