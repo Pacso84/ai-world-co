@@ -372,6 +372,25 @@ export function guideClaimIssues(markdown, meta = {}) {
 //    hiba pedig a U1–U4 gombnév — annak Discord-voltát csak TERMÉKISMERETBŐL
 //    lehet tudni, kódból nem. Az a hiba a UI_CLAIMS_UNSOURCED-be esik, ahol
 //    a helye van.
+//
+// 3) KITALÁLT PÉLDA-DOMAIN (2026-08-18). A valódi kár megvolt: a csalás-
+//    felismerő útmutató az `auspost-track.com`-ot nevezte adathalász linknek,
+//    az pedig VALÓDI, Cloudflare mögött futó oldal — egy létező oldalt
+//    vádoltunk meg. Mégsem építettem kaput, mert MEGMÉRTEM és MEGBUKOTT:
+//    • A mérce, amit terveztem („domain csalás-szavas mondatban, és nem
+//      example.*"), a JAVÍTÁS ELŐTTI cikken is 0 esetet fogott. A hibás
+//      mondat ugyanis így tördelődik: „…the link is 'auspost-track.com/
+//      pay-now'." — ebben NINCS csalás-szó, az („suspicious") a KÖVETKEZŐ
+//      mondatban áll. Mondat-szinten tehát vak.
+//    • Bekezdés-szintre tágítva viszont ráülne a 72 valódi termék-domainre
+//      (chatgpt.com, claude.ai, huggingface.co…), amiket az útmutatók
+//      jogosan említenek — sok hamis riasztás egyetlen valódi esetért.
+//    • DNS-ellenőrzés nem jöhet szóba: az auto-check INGYENES és hálózat
+//      nélküli, ez a két tulajdonsága teszi minden futásban vállalhatóvá.
+//    Amit ehelyett teszünk: a szabály a shared/style-guide.md-be került
+//    (§ „PÉLDA-DOMAIN"), tehát MINDEN író- és ellenőrző-prompt része. A
+//    gyakorlat egyébként már élt: 328 útmutatóból 11 helyesen example.com-ot
+//    használ — nem új szokást vezetünk be, hanem a meglévőt tesszük kötelezővé.
 // ===================================================================
 
 export default {

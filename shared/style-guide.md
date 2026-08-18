@@ -75,6 +75,33 @@ Kapu: `PRICE_CLAIM_UNSOURCED` (tanácsadó — leckét ír, nem utasít el).
 
 ---
 
+### 🌐 PÉLDA-DOMAIN: kitalált cím SOHA (2026-08-18)
+
+**A szabály:** ha a szöveg példaként domaint vagy webcímet ír le — tipikusan
+adathalászat-felismerő útmutatóban, „így néz ki egy hamis link" felkiáltással —,
+az KIZÁRÓLAG `example.com` (vagy `.net` / `.org`), esetleg annak aldomainje lehet.
+
+> ❌ „a link `auspost-track.com/pay-now`"
+> ✅ „a link `usps-tracking.example.com/pay-now`"
+
+**Miért:** az `example.com`-ot az RFC 2606 dokumentációs célra **fenntartja**, az
+IANA üzemelteti — az aldomainjét harmadik fél nem szerezheti meg. Kitalált,
+„nyilvánvalóan hamis" névre viszont semmilyen garancia nincs. Pont ez bukott meg:
+egy élő útmutatónk az `auspost-track.com`-ot nevezte csalás-linknek, az pedig
+**valódi, Cloudflare mögött futó oldal** (nyers nslookup: 104.21.16.53). Vagyis egy
+létező oldalt vádoltunk adathalászattal. Ez nem stílushiba, hanem jogi kockázat.
+
+**A tanulság MARAD az example.com-mal is:** a márkanév-utánzás — ami a felismerés
+lényege — belefér (`usps-tracking.example.com` ugyanúgy „majdnem a márka, de mégsem"),
+csak a cím nem lehet senkié. A gyakorlat egyébként már él: 11 útmutatónk használja.
+
+**Ami MARADHAT:** VALÓDI termékek valódi címei (chatgpt.com, claude.ai) — azok
+nem példák, hanem tények, és a link-vadász úgyis ellenőrzi őket.
+
+Kapu: NINCS — és ez szándékos, lásd `core/guide-claims.js` végén a mérést.
+
+---
+
 ## 1c. EMBERI HANG — amitől nem gépnek hangzik (2026-07-30)
 
 A user kérése: *"próbáljon emberibb cikkeket írni"*. Ez nem stílus-ízlés:
