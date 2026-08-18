@@ -1,102 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178689682130759",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-16T16:13:41.307Z",
-      "updated": "2026-08-16T16:13:51.437Z"
-    },
-    {
-      "id": "t178689683143941",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-08-16T16:13:51.439Z",
-      "updated": "2026-08-16T16:14:10.203Z"
-    },
-    {
-      "id": "t178689685020545",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-16T16:14:10.205Z",
-      "updated": "2026-08-16T16:14:21.971Z"
-    },
-    {
-      "id": "t178689686197327",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-08-16T16:14:21.973Z",
-      "updated": "2026-08-16T16:14:40.680Z"
-    },
-    {
-      "id": "t178692699970060",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-08-17T00:36:39.700Z",
-      "updated": "2026-08-17T00:36:39.805Z"
-    },
-    {
-      "id": "t178692699980652",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-08-17T00:36:39.806Z",
-      "updated": "2026-08-17T00:37:15.401Z"
-    },
-    {
-      "id": "t178692703540236",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-08-17T00:37:15.402Z",
-      "updated": "2026-08-17T00:37:15.528Z"
-    },
-    {
-      "id": "t178692703553078",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-17T00:37:15.530Z",
-      "updated": "2026-08-17T00:37:15.638Z"
-    },
-    {
-      "id": "t178692703563961",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-17T00:37:15.639Z",
-      "updated": "2026-08-17T00:37:15.749Z"
-    },
-    {
-      "id": "t178692703575158",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-08-17T00:37:15.751Z",
-      "updated": "2026-08-17T00:37:15.895Z"
-    },
-    {
-      "id": "t17869270359206",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-17T00:37:15.920Z",
-      "updated": "2026-08-17T00:43:35.076Z"
-    },
-    {
-      "id": "t178692741507792",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-17T00:43:35.077Z",
-      "updated": "2026-08-17T00:44:59.973Z"
-    },
-    {
       "id": "t178692749999969",
       "title": "Run guide",
       "status": "done",
@@ -479,41 +383,105 @@
       "agent": "publisher",
       "created": "2026-08-18T01:04:06.256Z",
       "updated": "2026-08-18T01:04:25.520Z"
+    },
+    {
+      "id": "t178704137042732",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-08-18T08:22:50.427Z",
+      "updated": "2026-08-18T08:22:50.559Z"
+    },
+    {
+      "id": "t178704137056067",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-08-18T08:22:50.560Z",
+      "updated": "2026-08-18T08:23:34.064Z"
+    },
+    {
+      "id": "t178704141406560",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-08-18T08:23:34.065Z",
+      "updated": "2026-08-18T08:24:55.808Z"
+    },
+    {
+      "id": "t17870414958102",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-18T08:24:55.810Z",
+      "updated": "2026-08-18T08:24:55.941Z"
+    },
+    {
+      "id": "t178704149594264",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-18T08:24:55.942Z",
+      "updated": "2026-08-18T08:24:56.076Z"
+    },
+    {
+      "id": "t178704149607939",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-18T08:24:56.079Z",
+      "updated": "2026-08-18T08:27:04.390Z"
+    },
+    {
+      "id": "t17870416243915",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-18T08:27:04.391Z",
+      "updated": "2026-08-18T08:28:16.484Z"
+    },
+    {
+      "id": "t178704169648665",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-08-18T08:28:16.486Z",
+      "updated": "2026-08-18T08:28:16.658Z"
+    },
+    {
+      "id": "t178704169669230",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-18T08:28:16.692Z",
+      "updated": "2026-08-18T08:28:38.959Z"
+    },
+    {
+      "id": "t178704171896089",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-08-18T08:28:38.960Z",
+      "updated": "2026-08-18T08:29:45.387Z"
+    },
+    {
+      "id": "t178704178538832",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-18T08:29:45.388Z",
+      "updated": "2026-08-18T08:30:01.100Z"
+    },
+    {
+      "id": "t178704180110225",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-08-18T08:30:01.102Z",
+      "updated": "2026-08-18T08:30:20.299Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178601217673237",
-      "level": "info",
-      "text": "SEO: 1 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-08-06T10:29:36.732Z",
-      "loud": false
-    },
-    {
-      "id": "n178601219534872",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The lineup looks solid and ready — practical, varied, and beginner-friendly, covering everything from study help to privacy awareness and emotional support. Nice mix of how-tos, what-not-to-dos, and r",
-      "agent": "publisher",
-      "at": "2026-08-06T10:29:55.348Z",
-      "loud": false
-    },
-    {
-      "id": "n178601220490180",
-      "level": "success",
-      "text": "0 hír + 1 útmutató publikálva (költség: $0.0038).",
-      "agent": "ceo",
-      "at": "2026-08-06T10:30:04.901Z",
-      "loud": false
-    },
-    {
-      "id": "n178607053779993",
-      "level": "info",
-      "text": "SEO: 11 cikk optimalizálva (átlag 8.1/10).",
-      "agent": "seo",
-      "at": "2026-08-07T02:42:17.799Z",
-      "loud": false
-    },
     {
       "id": "n178607056112498",
       "level": "success",
@@ -1281,63 +1249,41 @@
       "agent": "ceo",
       "at": "2026-08-18T01:04:25.551Z",
       "loud": false
+    },
+    {
+      "id": "n178704162438319",
+      "level": "warn",
+      "text": "📨 guide → ceo: Kell még adat: \"Use Gemini to plan a trip across multiple Google apps\" — az Ellenőrző tényt/forrást kér, amit nem találh",
+      "agent": "guide",
+      "at": "2026-08-18T08:27:04.383Z",
+      "loud": false
+    },
+    {
+      "id": "n178704178538034",
+      "level": "info",
+      "text": "SEO: 2 cikk optimalizálva (átlag 9.0/10).",
+      "agent": "seo",
+      "at": "2026-08-18T08:29:45.380Z",
+      "loud": false
+    },
+    {
+      "id": "n178704181110976",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The line-up looks solid and ready — practical articles like complaint letters and pet-sitting agreements give readers real value, while privacy and everyday use guides build trust. One small note: art",
+      "agent": "publisher",
+      "at": "2026-08-18T08:30:11.109Z",
+      "loud": false
+    },
+    {
+      "id": "n178704182032937",
+      "level": "success",
+      "text": "0 hír + 2 útmutató publikálva (költség: $0.0073).",
+      "agent": "ceo",
+      "at": "2026-08-18T08:30:20.329Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m17860694018485",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Locking Pretrained Weights via Deep Low-Rank Residual Distillation\" (?/10)",
-      "ref": "2026-08-07T02-05-03-922Z_apple-ml_Locking_Pretrained_Weights_via_Deep_Low-Rank_Resid.json",
-      "at": "2026-08-07T02:23:21.848Z"
-    },
-    {
-      "id": "m178606942700320",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Grok 4.20 Multi Agent Beta 0309 - xAI Docs\" (?/10)",
-      "ref": "2026-08-07T02-05-16-309Z_xai-news_Grok_4_20_Multi_Agent_Beta_0309_-_xAI_Docs.json",
-      "at": "2026-08-07T02:23:47.003Z"
-    },
-    {
-      "id": "m178607055222515",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-08-07T02:42:32.225Z"
-    },
-    {
-      "id": "m178607137706638",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-08-07T02:56:17.066Z"
-    },
-    {
-      "id": "m178609250000731",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-08-07T08:48:20.007Z"
-    },
-    {
-      "id": "m178609310343572",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-08-07T08:58:23.435Z"
-    },
     {
       "id": "m178612143111355",
       "from": "social",
@@ -2642,6 +2588,62 @@
       "text": "6 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-08-18T01:12:09.961Z"
+    },
+    {
+      "id": "m178704154108585",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Turn Alexa+ into a sleep sounds machine and gentle sunrise alarm\" — javítva: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!); NO_H1: Nincs H1 (# Cím) a cikkben; újraküldöm.",
+      "ref": "GUIDE_turn-alexa-into-a-sleep-sounds-machine-and-gentle-sunrise-al.json",
+      "at": "2026-08-18T08:25:41.085Z"
+    },
+    {
+      "id": "m178704162438216",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Use Gemini to plan a trip across multiple Google apps\" — javítva: HOWTO_TOO_LONG: 2083 szó (~10.4 perc olvasás) — a cél 1000-1400 szó, a felső kapu 1700. A Facebookról érkező mobilolvasó ennyit ritkán olvas végig.; In Step 1, claims about specific UI elements like 'Settings → Extensions → Google apps' menu path are fabricated — Gemini's actual settings interface uses different termin",
+      "ref": "GUIDE_use-gemini-to-plan-a-trip-across-multiple-google-apps.json",
+      "at": "2026-08-18T08:27:04.382Z"
+    },
+    {
+      "id": "m178704162438372",
+      "from": "guide",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Kell még adat: \"Use Gemini to plan a trip across multiple Google apps\" — az Ellenőrző tényt/forrást kér, amit nem találhatok ki: Claims that Gemini can 'tap into Google Maps data to recommend restaurants, attractions, and routes' and that place names in replies include 'clickable links that opens Google Maps directly' are fabricated — Gemini does not have direct Maps integration of this kind in it",
+      "ref": "GUIDE_use-gemini-to-plan-a-trip-across-multiple-google-apps.json",
+      "open": false,
+      "at": "2026-08-18T08:27:04.383Z",
+      "resolved_at": "2026-08-18T08:28:16.473Z"
+    },
+    {
+      "id": "m178704166403516",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Turn Alexa+ into a sleep sounds machine and gentle sunrise alarm\" (?/10)",
+      "ref": "GUIDE_turn-alexa-into-a-sleep-sounds-machine-and-gentle-sunrise-al.json",
+      "at": "2026-08-18T08:27:44.035Z"
+    },
+    {
+      "id": "m17870416964725",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Use Gemini to plan a trip across multiple Google apps\" (?/10)",
+      "ref": "GUIDE_use-gemini-to-plan-a-trip-across-multiple-google-apps.json",
+      "at": "2026-08-18T08:28:16.472Z"
+    },
+    {
+      "id": "m17870418010935",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-08-18T08:30:01.093Z"
     }
   ]
 }
