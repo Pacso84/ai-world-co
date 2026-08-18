@@ -673,7 +673,7 @@ export default { extractJsonArray };
 Futtasd: `node core/extract-json.test.js`
 Várt: PASS, „mind a 6 eset rendben".
 
-- [ ] **5. lépés: Állítsd át a két meglévő hívót**
+- [ ] **5. lépés: Állítsd át a `rss-scraper`-t (a `guide`-ot NEM)**
 
 `agents/rss-scraper/agent.js`: töröld a helyi `function extractJsonArray(text) { … }`
 definíciót (a fölötte lévő magyarázó kommenttel együtt), és tedd az import-blokkba:
@@ -682,15 +682,33 @@ definíciót (a fölötte lévő magyarázó kommenttel együtt), és tedd az im
 import { extractJsonArray } from '../../core/extract-json.js';
 ```
 
-Ugyanez `agents/guide/agent.js`-ben a helyi másolattal.
+⚠️ **A `agents/guide/agent.js` másolatához NE nyúlj — ez döntés, nem feledékenység**
+(2026-08-18, átvizsgálással kimérve). Az ottani változat MÁS SZERZŐDÉS, nem másolat:
 
-- [ ] **6. lépés: Ellenőrizd, hogy egy másolat sem maradt**
+1. csonkolt válasznál (token-limit) az utolsó teljes `}`-ig menti a részleges eredményt,
+   a közös változat viszont ilyenkor dob;
+2. hiba esetén `[]`-t ad, sosem dob — és a **hívási helyein nincs `try/catch`**, tehát a
+   dobás a fájl végi `main().catch()`-en át az EGÉSZ guide-futást leállítaná.
+
+A közös modul szerződése SZÁNDÉKOSAN a dobás, mert a hívói arra esnek vissza. Két
+ellentmondó szerződést egy függvénybe gyúrni rosszabb, mint két külön függvény.
+
+Mindkét helyre magyarázó komment kell, hogy a következő „takarítás" ne okozzon néma
+regressziót:
+- `agents/guide/agent.js` — a saját függvénye fölé: miért nem a közös, a két konkrét
+  eltérés, a hiányzó `try/catch` következménye, és a dátum;
+- `core/extract-json.js` — a fejlécbe egy sor: a guide szándékosan saját, engedékenyebb
+  változatot tart; ez nem elfelejtett duplikátum.
+
+- [ ] **6. lépés: Ellenőrizd az állapotot**
 
 Futtasd:
 ```bash
 grep -rn "function extractJsonArray" --include=*.js core/ agents/
 ```
-Várt: pontosan EGY találat, `core/extract-json.js`-ben.
+Várt: **KÉT** találat — `core/extract-json.js` és `agents/guide/agent.js`. A második a
+fenti döntés miatt marad, és a kommentje megmagyarázza. Ha HÁROM van, a scraper másolata
+bennragadt; ha EGY, valaki elvégezte a tiltott migrációt.
 
 Futtasd: `node --check agents/rss-scraper/agent.js && node --check agents/guide/agent.js`
 Várt: nincs kimenet.
