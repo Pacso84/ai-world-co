@@ -347,6 +347,28 @@ Return ONLY a JSON array, no prose, in this exact shape:
   }
 ]`;
 
+// ===================================================================
+// SAJÁT, ENGEDÉKENY JSON-KINYERÉS — SZÁNDÉKOSAN NEM core/extract-json.js
+// ===================================================================
+// 2026-08-18-i átvizsgáláskor mérték ki (hir-osszevonas Task 4): ez a
+// függvény HASONLÍT a core/extract-json.js-re, de a SZERZŐDÉSE más, ezért
+// NEM lett arra lecserélve. Ne "takarítsd ki" duplikátumként!
+//
+// Két konkrét eltérés a közös modultól:
+//   1. Csonkolás-tűrő mentés: ha a válasz a token-limit miatt félbeszakad
+//      (a hívó oldalakon maxTokens: 4000), az utolsó TELJES }-ig vágva,
+//      ]-lal lezárva menti a már megírt elemeket. A core/extract-json.js
+//      ezt nem tudja — ott a csonka tömb JSON.parse hibát dob.
+//   2. Hiba esetén [] -t ad vissza, SOHA nem dob. A core/extract-json.js
+//      szándékosan az ellenkezőjét csinálja (dob), mert AZ Ő hívói erre
+//      esnek vissza.
+//
+// Miért nem cserélhető simán: a hívási helyein (proposeCompanyTopics,
+// proposeNewTopics — lásd lejjebb) NINCS try/catch az extractJsonArray()
+// körül. Egy dobó verzióra váltás a main().catch()-en át az EGÉSZ
+// guide-agent futást megállítaná (exit 1) egy csonkolt/hibás LLM-válasz
+// miatt, ahelyett hogy csendben 0 (vagy részleges) témával folytatná.
+//
 // Laza, CSONKOLÁS-TŰRŐ JSON-kinyerés: kódkeret le, az első [-tól indul, és ha
 // a tömb a token-limit miatt félbeszakadt, az utolsó teljes }-ig vágva zárjuk.
 function extractJsonArray(text) {

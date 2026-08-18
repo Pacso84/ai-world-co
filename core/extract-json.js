@@ -10,6 +10,12 @@
 // sehol — tehát tesztje sem volt. A 2026-07-16-i „results is not iterable"
 // hiba 3 napra megállította a hírbeszerzést; egy közös, tesztelt függvényben
 // az ilyen javítás egyszer kell.
+//
+// ⚠️ Az agents/guide/agent.js SZÁNDÉKOSAN megtartja a SAJÁT, engedékenyebb
+// változatát (csonkolt válaszból is ment, hiba esetén [] -t ad, nem dob) —
+// ez NEM elfelejtett duplikátum, hanem MÁS szerződés, mert az ottani hívók
+// nincsenek try/catch-csel védve. Indoklás: agents/guide/agent.js, a
+// extractJsonArray fölötti kommentblokkban.
 // ===================================================================
 
 /**
