@@ -1,0 +1,63 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "control-all-your-smart-lights-plugs-and-thermostats-with-one",
+    "company": "Amazon",
+    "tool": "Alexa+",
+    "icon": "💡",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-08-18T00:56:21.775Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.01213938,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-08-18T00:56:35.433Z",
+    "slug": "control-all-your-smart-lights-plugs-and-thermostats-with-one-alexa-com",
+    "auto_check": {
+      "passed": false,
+      "issues": [
+        "UI_CLAIMS_UNSOURCED: 7 konkrét képernyő-feliratot állít tényként forrás nélkül (\"devices\", \"living room lamp\", \"off\", \"routines\", …). Vagy nézd meg a hivatalos oldalon, vagy írd hedge-elve (\"if you don't see…\")."
+      ],
+      "wordCount": 1568
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 8,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Excellent beginner guide with clear step-by-step instructions, helpful examples in each step, a practical common mistakes section, and an encouraging tone throughout. The language is accessible, the structure is complete with hook, steps, common mistakes, what this means for you, and a try-it-now wrap-up. Minor note: Step 2's fallback for finding Routines is solid.",
+      "_aiCost": 0.00170775,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "image_v": 2,
+    "image_at": "2026-08-18T01:00:50.325Z",
+    "seo": {
+      "meta_description": "Learn how to control smart lights, plugs, and thermostats with one Alexa+ command. Set up a simple routine in 10 minutes for hands-free home comfort.",
+      "keywords": [
+        "alexa+ routine multiple devices",
+        "how to control smart home with alexa",
+        "alexa movie mode setup",
+        "group smart devices alexa",
+        "alexa routine guide",
+        "control smart lights plugs thermostat",
+        "alexa+ smart home automation"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add 'alexa+ routines' as a primary keyword earlier in the title or subtitle",
+        "Include a brief intro paragraph with the exact search phrase 'how to control multiple smart devices with alexa+'",
+        "Consider adding FAQ schema markup for voice search compatibility"
+      ],
+      "optimised_at": "2026-08-18T01:03:03.926Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Control All Your Smart Lights, Plugs, and Thermostats With One Alexa+ Command\"\nsubtitle: \"Group a lamp, a plug, and a thermostat under one routine so one voice phrase dims the lights, fires up the fan, and warms the room\"\ncategory: \"guide\"\naudience: \"personal\"\ncompany: \"Amazon\"\ntool: \"Alexa+\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"smart-home\", \"alexa-plus\", \"routines\"]\n---\n\n# Control All Your Smart Lights, Plugs, and Thermostats With One Alexa+ Command\n\n> **In short:** With Alexa+, you can group compatible smart lights, plugs, and thermostats under one routine so a single phrase like \"movie mode\" runs them all together. Setup takes about ten minutes inside the Alexa app, and any device that says \"Works with Alexa\" on the box should qualify.\n\nBy the end of this guide, you'll be able to build a custom Alexa+ routine that controls several smart-home devices with a single spoken phrase. This is for anyone who already owns a couple of smart bulbs, a smart plug, or a smart thermostat and is tired of opening three apps or saying three separate commands before settling in for the evening. We will stay honest about what Alexa+ can and cannot do — it can fire the actions in your routine, but it cannot, for example, invent device behaviors that the hardware itself doesn't support, like dimming a lamp that only knows on and off.\n\n## Before you start\n\n- An Amazon account and the Alexa app installed on your phone (free, available in the major app stores).\n- At least two or three smart devices already working on their own — smart bulbs, smart plugs, or a smart thermostat. Look for the **\"Works with Alexa\"** label on the box or in the product listing.\n- Roughly ten to fifteen minutes of quiet time.\n- An Echo speaker, an Echo Show, or simply the Alexa app itself to issue the voice command. Some advanced Alexa+ features may require a paid subscription — the app will tell you if a feature is gated when you tap it.\n\n## Step 1 — Confirm every device already shows up in the Alexa app\n\nBefore you build a routine, every device you want to control needs to be talking to Alexa on its own. Open the Alexa app on your phone and tap the **Devices** icon along the bottom — it usually looks like a little house or a lightbulb. You'll see a list grouped by category: Lights, Plugs, Thermostats and more. Tap each device once and use the on-screen buttons to turn it on or off, change brightness, or nudge the temperature. This proves Alexa can already reach it.\n💬 Example: tap \"Living Room Lamp,\" drag the brightness slider to 50%, then tap \"Off\" to confirm it responds.\nYou'll know it worked when every device reacts from inside the app. If one doesn't show up at all, you need to add it first through the manufacturer's own app (such as the Philips Hue or TP-Link Kasa app), then come back to the Alexa app.\n\n## Step 2 — Open the Routines section\n\nNow find the place where routines live. From the Alexa app's home screen, tap **More** in the bottom-right corner — it usually looks like three dots or three little lines. Scroll until you see **Routines**, sometimes under \"Things to Try\" or inside a \"Settings\" group, depending on your app version. When it opens, you'll see any routines you've already made, plus a prominent **+ Create Routine** button — usually a plus sign in the top-right or a colored circle at the bottom of the screen.\n💬 Example: if Routines is hard to find, tap the magnifying-glass icon at the top of the More tab and search \"Routines.\"\nYou'll know it worked when the routine creation screen appears, showing an empty **\"When this happens\"** prompt and an **\"Add action\"** section below.\n\n## Step 3 — Name your routine and pick a voice trigger\n\nThis is where you decide what phrase will fire everything. Tap the **Routine Name** field at the top and type something short and easy to say out loud — two or three words is the sweet spot. Then look for the **\"When this happens\"** section and choose **Voice** as the trigger. Type the exact phrase you want to say to Alexa. You can also schedule it for a specific time or trigger it from another smart-home event, but voice is what makes this feel like a magic word.\n💬 Example: name the routine \"Movie mode\" and set the voice phrase to \"movie mode.\"\nYou'll know it worked when your chosen name appears at the top of the routine and your phrase is saved. Alexa will repeat the phrase back to you the first time you use it, just to confirm it heard you correctly.\n\n## Step 4 — Add one action for each device\n\nScroll down to **\"Add action\"** — this is the heart of the routine. Each action tells one specific device what to do. Tap **Add action**, choose **Smart Home**, then pick a device. For each device, set the exact state you want — full brightness for one lamp, thirty percent for another, the fan plug switched on, the thermostat set to a specific temperature. Add as many actions as you like; the app will run them in the order they appear, top to bottom. You can drag to rearrange them later if the order matters.\n💬 Example: Living Room Lamp → 30% brightness; Bedroom Lamp → Off; Fan Plug → On; Thermostat → 72°F.\nYou'll know it worked when every device shows up as a separate action tile inside the routine, each carrying the right state. If a device is missing, go back to Step 1 and add it through the manufacturer's app first.\n\n## Step 5 — Save and test your routine\n\nHit **Save** in the top-right corner and your routine is live. Now the real test: stand near your Echo, or open the Alexa app and tap the blue microphone button, and say your trigger phrase exactly as you typed it. Alexa should repeat the phrase back and then start firing your actions one by one. Within a couple of seconds, the lights should dim, the fan should spin up, and the thermostat should start warming the room. If only some devices respond, open the routine again and check that each device is listed with the correct state.\n💬 Example: \"Alexa, movie mode.\"\nYou'll know it worked when every device reacts together at the same time. From now on, that one phrase is all you need.\n\n## Common mistakes\n\n- **Picking a routine name that already means something to Alexa.** Phrases like \"bedtime\" or \"goodnight\" can collide with built-in commands and confuse the assistant. Fix: choose a unique two-word phrase, such as \"movie mode\" or \"focus time.\"\n- **Skipping the per-device test in Step 1.** If a device wasn't really connected, the routine will silently skip it. Fix: tap each device inside the Alexa app once before you build the routine, and confirm it responds.\n- **Saying the phrase differently than you typed it.** Saying \"start movie mode\" when you typed \"movie mode\" means nothing happens. Fix: keep your spoken phrase and your typed phrase identical, including small words like \"the\" or \"my.\"\n- **Forgetting that not every device supports every state.** A basic smart plug can only turn on or off — it can't dim. A smart bulb that only supports on and off can't be set to \"30%.\" Fix: check what each device actually offers inside its own action tile, and don't ask for more than the hardware can do.\n- **Expecting Alexa+ to plan the routine for you without asking.** Some AI-assisted suggestions are available in Alexa+, but the basic routine builder is still manual. Fix: if a feature looks hidden, look for a sparkle icon or an \"AI suggestions\" toggle — and remember that some AI helpers may sit behind a paid plan.\n\n## What this means for you\n\n- **In everyday life:** one short phrase replaces a dozen taps before bed, before a movie, or when you walk in the door. That's minutes saved every evening, plus the small joy of feeling like you live in a slightly smarter home.\n- **For your work or home office:** a \"focus mode\" routine can dim the overhead light, turn on your desk lamp, fire up a fan, and nudge the thermostat to a comfortable temperature — all by saying one phrase when you sit down to write.\n- **If you're just getting started:** start small with two devices you already own — for example, a lamp and a smart plug — and build a simple routine called \"good evening.\" Once that one feels reliable, add a third device and a second routine. You can grow the system at your own pace without ever re-doing earlier work.\n\n## Try it now\n\nRight now, before you close this guide: pick two devices you already own, open the Alexa app, and create a routine called \"good evening.\" Set the trigger phrase to \"good evening,\" add one action that turns on your lamp and another that switches on your smart plug. Save it, say \"Alexa, good evening,\" and watch what happens. Once you've felt that small moment of magic, you'll know exactly how to add a third device and a fancier phrase like \"movie mode\" the next time you sit down.",
+  "original_title": "Control all your smart lights, plugs, and thermostats with one Alexa+ voice command"
+}

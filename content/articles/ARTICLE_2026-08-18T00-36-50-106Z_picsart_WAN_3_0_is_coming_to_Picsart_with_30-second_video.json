@@ -1,0 +1,63 @@
+{
+  "_meta": {
+    "written_at": "2026-08-18T00:37:42.011Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.004653744,
+    "original_draft": "2026-08-18T00-36-50-106Z_picsart_WAN_3_0_is_coming_to_Picsart_with_30-second_video.json",
+    "source_id": "picsart",
+    "source_name": "PicsArt Blog (hivatalos)",
+    "source_link": "https://picsart.com/blog/wan-3-0-picsart-integration/",
+    "status": "published",
+    "published_at": "2026-08-18T00:39:28.521Z",
+    "slug": "ai-video-generators-just-got-longer-what-30-second-clips-mean-for-you",
+    "auto_check": {
+      "passed": false,
+      "issues": [
+        "LEDE_TOO_LONG: A RÖVIDEN-doboz 65 szó (max ~45) — ami hosszú, az már nem \"röviden\"."
+      ],
+      "wordCount": 952
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [
+        "No source links or citations for claims about 30-second capability or document-to-video features — readers have no way to verify",
+        "Vague reference to 'most popular AI video families' without naming any could read as unsupported assertion"
+      ],
+      "verdict": "The article is well-structured with a clear hook, good term explanations (e.g., defining 'prompt'), friendly tone, and an actionable 'What this means for you' section. No prohibited content, no cliches, and US English is correct throughout. The main concern is a lack of sourcing — claims about clip-length doubling and the document-input feature would be stronger with named sources or links to back them up.",
+      "_aiCost": 0.0016965,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-08-18T00:40:19.906Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is a general explainer about 30-second AI video capability arriving across multiple tools, not a specific named feature introduction with a concrete action for users.",
+    "image_v": 2,
+    "image_at": "2026-08-18T01:00:17.741Z",
+    "seo": {
+      "meta_description": "AI video tools now create 30-second clips from text or documents — no camera or editing skills needed. See what's possible.",
+      "keywords": [
+        "AI video generator 30 seconds",
+        "make AI video from text",
+        "free AI video maker for social media",
+        "create video from document AI",
+        "how long can AI videos be now",
+        "AI video tools for beginners 2024",
+        "no editing AI video creator"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more specific tool names (like Runway, Pika, Sora) in the article for better topical relevance",
+        "Include a comparison table or list of current 30-second AI video tools to boost SEO value",
+        "Add internal links to related AI video how-to articles if available on the site"
+      ],
+      "optimised_at": "2026-08-18T01:02:42.652Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"AI Video Generators Just Got Longer: What 30-Second Clips Mean for You\"\nsubtitle: \"New tools can now stitch half a minute of video from a single prompt or a document — here's what that opens up.\"\ncategory: \"explainer\"\naudience: \"personal\"\nread_time_minutes: 5\ntags: [\"ai-video\", \"video-generation\", \"creative-tools\", \"getting-started\"]\n---\n\n# AI Video Generators Just Got Longer: What 30-Second Clips Mean for You\n\n> **In short:** The newest wave of AI video tools can now produce a single unbroken 30-second clip — double the length of a few months ago — and some can read a document or webpage as their starting point. For everyday people, that means short social posts, simple explainers, and rough storyboards are now within reach without a camera, an editor, or a big budget.\n\nYou've probably seen those six-second AI videos pop up on your feed — the dreamy cat astronaut, the cinnamon-roll breakfast that looks almost real. Now imagine getting a clip five times longer, in one go, from a single instruction. That's the new frontier of AI video generation, and it's arriving fast in consumer apps.\n\n## What's actually new\n\nTwo things have changed at the same time, and they matter together.\n\nFirst, the **clip length** has roughly doubled. The latest models in the most popular AI video families can now produce a single, unbroken shot of about **30 seconds**. Earlier generations topped out around 10 to 15 seconds, which forced you to stitch several clips together and hope the lighting and characters stayed consistent. A half-minute run in one go removes most of that headache.\n\nSecond, the **inputs** are more flexible. Older video tools mainly accepted a short text **prompt** (the instruction you type to the AI — think of it as a one-line brief for a film crew). The newer ones can also accept a document, an article, or a webpage. You paste in a blog post or a PDF page, and the model reads it, then visualizes the content as a short video. It's not perfect — the model has to \"interpret\" the text into scenes, so it works best for simple, descriptive writing — but it turns a research brief into a first-draft storyboard in a couple of minutes.\n\n## Why this matters outside the tech bubble\n\nA 30-second clip is a useful length. It's the duration of a TikTok, an Instagram Reel, a YouTube Short, and most of the explainer videos you watch at work. Until recently, getting an AI to produce something in that exact length meant either accepting obvious cuts between multiple generations, or paying for a pro tool with a steep learning curve.\n\nNow the same job is moving into apps that ordinary people already use for photo editing. The barrier to entry is dropping the same way it did for AI image generation two years ago: from \"designer-only\" to \"anyone with a phone.\"\n\nThe document-to-video trick is the part most people miss. If you maintain a small business, run a class, or just want to share notes with family, you can now hand the AI a short write-up and walk away with a visual summary. It's not going to replace a real video editor, but it's a solid starting point.\n\n## A few honest limits\n\nThese tools are still young. A 30-second clip from a single prompt is impressive, but you'll likely see:\n\n- **Small inconsistencies** — a character's earring changes, a hand gets an extra finger, the background shifts subtly between seconds.\n- **Limited audio control** — many generators produce silent clips by default, with sound added as a separate step.\n- **Variable resolution** — longer clips sometimes export at lower quality to keep file sizes manageable.\n\nTreat the first output as a draft, not a finished product. The practical workflow right now is: generate, watch, regenerate with a more specific prompt if something's off, and edit in a phone app.\n\n## What this means for you\n\n- **If you run a small business, side project, or online shop**: a 30-second clip is enough for a weekly product teaser or a \"behind the scenes\" post. You can draft five clips in an afternoon, pick the best, and post — no camera, no studio.\n- **If you're a student or teacher**: paste a chapter summary or a lesson plan into a video tool and you'll get a quick visual recap. Use it for study aids, not as a replacement for explaining things yourself.\n- **If you just want to play and learn**: pick a consumer app that includes the new model, start with a one-sentence prompt describing a simple scene, and see what you get. Treat the first ten attempts as practice — the tool rewards specific, concrete descriptions.\n- **If you're worried about misuse**: longer, more believable clips also mean longer, more believable fakes. The same tech that helps a baker advertise a new cake can be used to clone a voice or fabricate a scene. Use the tools openly, and stay skeptical of any video that triggers a strong emotional reaction — pause, then verify.\n\n## Wrap-up\n\nAI video has jumped from \"cute six-second trick\" to \"half-minute storyboard in one shot\" in about a year, and the tools are landing in apps regular people already use. You don't need a film background to try this — just a clear idea of what you want to see. Pick an app that advertises a 30-second generation mode, start with a short, concrete description of one scene, and iterate. The most useful habit you can build right now is describing what you want in plain, specific language — that's the one skill every AI video tool rewards, and it transfers to every other AI you'll use later.",
+  "original_title": "WAN 3.0 is coming to Picsart with 30-second video"
+}

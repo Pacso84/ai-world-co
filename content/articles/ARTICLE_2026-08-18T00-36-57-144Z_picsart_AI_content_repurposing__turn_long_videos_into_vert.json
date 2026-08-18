@@ -1,0 +1,58 @@
+{
+  "_meta": {
+    "written_at": "2026-08-18T00:37:19.274Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.0243222,
+    "original_draft": "2026-08-18T00-36-57-144Z_picsart_AI_content_repurposing__turn_long_videos_into_vert.json",
+    "source_id": "picsart",
+    "source_name": "PicsArt Blog (hivatalos)",
+    "source_link": "https://picsart.com/blog/ai-content-repurposing-for-videos/",
+    "status": "published",
+    "published_at": "2026-08-18T00:39:55.645Z",
+    "slug": "from-long-video-to-vertical-clip-how-ai-repurposing-works",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 912
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured explainer with friendly tone, clear explanations of technical terms (MCP, aspect ratio, auto-reframing), practical hooks for everyday users, and a useful 'What this means for you' section that addresses different reader types. No prohibited content, no clichés, no British spellings. Minor opportunity to add a specific tool example, but the current approach of staying tool-agnostic is acceptable for this category.",
+      "_aiCost": 0.0019632,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-08-18T00:40:25.326Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is a category explainer about AI video-repurposing tools in general, not an announcement of a specific named product. No single tool is introduced that readers could go use today.",
+    "image_v": 2,
+    "image_at": "2026-08-18T01:00:42.688Z",
+    "seo": {
+      "meta_description": "Discover how AI repurposing tools automatically convert long horizontal videos into vertical social media clips with auto captions — no editor needed.",
+      "keywords": [
+        "AI video repurposing",
+        "how to turn long video into short clip",
+        "horizontal to vertical video converter",
+        "auto captions video AI",
+        "AI video clipping tool",
+        "video to TikTok Reels converter",
+        "no editor video editing AI"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add the target keyword 'AI video repurposing' earlier in the article's first paragraph for better relevance",
+        "Consider adding a brief section listing specific AI tool names to improve topical authority",
+        "The subtitle already contains good secondary keywords — ensure the H2/H3 headers naturally incorporate them"
+      ],
+      "optimised_at": "2026-08-18T01:02:52.126Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"From Long Video to Vertical Clip: How AI Repurposing Works\"\nsubtitle: \"A practical look at how today's AI tools turn long footage into scrollable social clips — no manual editing needed\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"video-ai\", \"content-creation\", \"social-media\", \"productivity\"]\n---\n\n# From Long Video to Vertical Clip: How AI Repurposing Works\n\n> **In short:** AI video-repurposing tools can now scan a long video, pick out the most engaging moments, reframe them from horizontal to vertical (9:16), and add auto-captions — all from a single text prompt. You no longer need a video editor to keep multiple social feeds fed.\n\nYou filmed your kid's soccer game for forty minutes. Or you recorded a one-hour podcast interview. Or you shot a product demo for your small business. The footage is sitting on your phone — long, horizontal, and basically unusable for the vertical scroll of TikTok, Reels, or Shorts.\n\nFor years, that meant paying an editor. Today, AI tools can do a surprisingly large chunk of the work for you.\n\n## What \"AI repurposing\" actually does\n\nWhen you upload a long video to one of these tools, three things typically happen behind the scenes:\n\n**1. It picks the highlights.** The AI watches your video and looks for moments with strong audio cues, scene changes, or visual energy — basically the spots a human editor would cut to. You can usually tell it what kind of moments to look for: a question someone answered well, a product reveal, a goal celebration.\n\n**2. It reframes the visuals.** Long videos are usually shot in a wide 16:9 frame (think of a TV screen). Social feeds want 9:16 (think of a phone screen held tall). The AI doesn't just crop — it tracks the action. If the speaker moves left, the crop moves with them. If two people are talking, it can switch between them.\n\n**3. It adds captions and trims to fit.** Auto-captioning is now standard — the AI listens, transcribes, and burns the text onto the video with stylish fonts. It also trims each clip to a target length (often 60 seconds for Reels, 30 for Shorts) and sometimes picks a thumbnail frame.\n\nThe whole pipeline is driven by a prompt — the text instruction you type to the AI. Something like: *\"Find three moments where the founder explains the pricing and turn them into 30-second vertical clips with captions.\"*\n\n## The mechanics, in plain words\n\nA few terms you'll bump into:\n\n- **MCP (Model Context Protocol)** — a way for an AI assistant like Claude to reach into another app and use it as a tool. Think of it as letting the AI press buttons inside your video editor.\n- **Aspect ratio** — the shape of the frame. Horizontal video is 16:9; vertical is 9:16. Older footage has the wrong shape for newer platforms, which is exactly why reframing exists.\n- **Auto-reframing** — the AI's job of moving the crop window to follow the important action around the frame.\n- **Burned-in captions** — text that lives inside the video itself, not a separate subtitle file. AI captions aren't perfect, so most tools still let you click and fix typos before exporting.\n\n## Where this fits in your week\n\nThis isn't just for influencers. If you run a small business, the practical upside is huge: one good podcast episode can become ten social posts. A long product demo can become a week of short clips. The math works because the old bottleneck was an editor's hourly rate — and that bottleneck has basically disappeared.\n\nThe technology isn't perfect, though. Auto-captions still need a quick proofread pass. Reframing sometimes loses a hand gesture or cuts off a second speaker. And \"interesting moments\" is still partly a judgment call — the AI doesn't know your dog did something hilarious at second 14:32 unless you tell it what kind of moments to look for.\n\n## What this means for you\n\n- **If you create content for work**: one long recording can now feed a whole week of short-form posts. Set aside an hour to record well, then a few minutes of prompt-writing — that is your entire pipeline. Always budget a caption-proofreading pass; skipping that step is the most common reason a clip looks sloppy.\n- **If you run a small business or side hustle**: turn your next customer interview, product demo, or tutorial into three to five short clips the same day you record it. The cost of staying silent on social just dropped dramatically.\n- **If you're a casual home user**: family events, vacations, school recitals — AI can pull a forty-minute home video down to a few highlight clips you will actually share, instead of dumping the whole file in a group chat and hoping people watch.\n- **If you're just curious**: try one tool before committing. Most offer a short free trial or a watermarked export. Upload ten minutes of anything and see what the AI chooses — that is the fastest way to learn what it's good at, and where it falls short.\n\n## Wrap-up\n\nAI video repurposing won't replace a skilled editor for high-stakes brand work, but for everyday jobs like turning one long video into five scrollable clips, it is already useful enough to be worth your time. Pick a tool, run a test on footage you don't care about, and let it surprise you. Your next post is probably hiding in a file you already have.",
+  "original_title": "AI content repurposing: turn long videos into vertical cuts for any feed"
+}

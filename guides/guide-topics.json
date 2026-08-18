@@ -4599,10 +4599,11 @@
       "audience": "personal",
       "level": "beginner",
       "angle": "How Gemini connects to Gmail, Maps and Drive to pull together flights, hotels and itinerary notes in one place.",
-      "status": "todo",
+      "status": "done",
       "icon": "🗺️",
       "proposed_at": "2026-08-11T01:06:23.311Z",
-      "proposed_by": "guide-ideas"
+      "proposed_by": "guide-ideas",
+      "written_at": "2026-08-18T00:55:01.696Z"
     },
     {
       "id": "scale-a-recipe-up-or-down-using-an-ai-assistant",
@@ -5015,11 +5016,12 @@
       "audience": "personal",
       "level": "beginner",
       "angle": "Replace a separate white-noise gadget with an Echo that plays rain, ocean, or fan sounds on a timer, then fades a smart light up to ease you out of sleep.",
-      "status": "todo",
+      "status": "done",
       "icon": "🌙",
       "priority": "balance",
       "proposed_at": "2026-08-16T00:49:44.196Z",
-      "proposed_by": "guide-balance"
+      "proposed_by": "guide-balance",
+      "written_at": "2026-08-18T00:42:21.514Z"
     },
     {
       "id": "use-alexa-as-a-meeting-timer-and-pomodoro-helper-during-work",
@@ -5029,11 +5031,12 @@
       "audience": "business",
       "level": "beginner",
       "angle": "Ask Alexa+ to set a 25-minute focus block and a 5-minute break, then get a spoken nudge when each one ends — useful for solo work-from-home days.",
-      "status": "todo",
+      "status": "done",
       "icon": "⏱️",
       "priority": "balance",
       "proposed_at": "2026-08-16T00:49:44.199Z",
-      "proposed_by": "guide-balance"
+      "proposed_by": "guide-balance",
+      "written_at": "2026-08-18T00:52:10.332Z"
     },
     {
       "id": "control-all-your-smart-lights-plugs-and-thermostats-with-one",
@@ -5043,11 +5046,12 @@
       "audience": "personal",
       "level": "beginner",
       "angle": "Group a lamp, a plug, and a thermostat under one name like 'movie mode' so a single phrase dims the lights, turns on the fan, and warms the room.",
-      "status": "todo",
+      "status": "done",
       "icon": "💡",
       "priority": "balance",
       "proposed_at": "2026-08-16T00:49:44.289Z",
-      "proposed_by": "guide-balance"
+      "proposed_by": "guide-balance",
+      "written_at": "2026-08-18T00:56:21.775Z"
     },
     {
       "id": "plan-a-weekend-getaway-itinerary-with-grok-in-10-minutes",
@@ -5057,11 +5061,12 @@
       "audience": "personal",
       "level": "beginner",
       "angle": "Tell Grok your city, dates and interests, and it drafts a day-by-day plan you can tweak before you book anything.",
-      "status": "todo",
+      "status": "done",
       "icon": "🗺️",
       "priority": "balance",
       "proposed_at": "2026-08-17T00:45:12.421Z",
-      "proposed_by": "guide-balance"
+      "proposed_by": "guide-balance",
+      "written_at": "2026-08-18T00:58:25.640Z"
     },
     {
       "id": "use-grok-to-explain-a-confusing-news-article-in-plain-englis",
@@ -5071,11 +5076,12 @@
       "audience": "personal",
       "level": "beginner",
       "angle": "Paste a long article into Grok and ask for a plain-English summary, and it walks you through what actually happened.",
-      "status": "todo",
+      "status": "done",
       "icon": "📰",
       "priority": "balance",
       "proposed_at": "2026-08-17T00:45:12.500Z",
-      "proposed_by": "guide-balance"
+      "proposed_by": "guide-balance",
+      "written_at": "2026-08-18T00:59:09.056Z"
     },
     {
       "id": "build-a-simple-weekly-meal-plan-with-grok-based-on-what-s-in",
@@ -5117,6 +5123,90 @@
       "icon": "✍️",
       "priority": "balance",
       "proposed_at": "2026-08-17T00:45:12.704Z",
+      "proposed_by": "guide-balance"
+    },
+    {
+      "id": "plan-a-weekend-trip-with-le-chat-a-4-step-itinerary-for-any-",
+      "company": "Mistral",
+      "tool": "Le Chat",
+      "title": "Plan a weekend trip with Le Chat: a 4-step itinerary for any city",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "Use Le Chat to build a balanced two-day sightseeing, food, and transit plan for a city you've never visited.",
+      "status": "todo",
+      "icon": "🗺️",
+      "priority": "balance",
+      "proposed_at": "2026-08-18T00:57:45.729Z",
+      "proposed_by": "guide-balance"
+    },
+    {
+      "id": "write-a-friendly-out-of-office-reply-with-le-chat-in-under-3",
+      "company": "Mistral",
+      "tool": "Le Chat",
+      "title": "Write a friendly out-of-office reply with Le Chat in under 3 minutes",
+      "audience": "both",
+      "level": "beginner",
+      "angle": "Draft a polite, customizable out-of-office email that covers dates, contact person, and tone — without sounding robotic.",
+      "status": "todo",
+      "icon": "📧",
+      "priority": "balance",
+      "proposed_at": "2026-08-18T00:57:45.816Z",
+      "proposed_by": "guide-balance"
+    },
+    {
+      "id": "use-le-chat-to-turn-a-long-recipe-into-a-simple-shopping-lis",
+      "company": "Mistral",
+      "tool": "Le Chat",
+      "title": "Use Le Chat to turn a long recipe into a simple shopping list",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "Paste a recipe with twelve ingredients and let Le Chat organize it into a clean, grouped grocery list you can check off in the store.",
+      "status": "todo",
+      "icon": "🛒",
+      "priority": "balance",
+      "proposed_at": "2026-08-18T00:57:45.954Z",
+      "proposed_by": "guide-balance"
+    },
+    {
+      "id": "practice-a-job-interview-with-le-chat-5-common-questions-and",
+      "company": "Mistral",
+      "tool": "Le Chat",
+      "title": "Practice a job interview with Le Chat: 5 common questions and instant feedback",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "Run a short mock interview in the chat, get a sample strong answer for each question, and improve it with one quick follow-up prompt.",
+      "status": "todo",
+      "icon": "💼",
+      "priority": "balance",
+      "proposed_at": "2026-08-18T00:57:46.051Z",
+      "proposed_by": "guide-balance"
+    },
+    {
+      "id": "brainstorm-birthday-gift-ideas-with-le-chat-for-any-budget-a",
+      "company": "Mistral",
+      "tool": "Le Chat",
+      "title": "Brainstorm birthday gift ideas with Le Chat for any budget and personality",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "Describe the person once and get ten thoughtful gift ideas grouped by price, so you stop scrolling online stores for an hour.",
+      "status": "todo",
+      "icon": "🎁",
+      "priority": "balance",
+      "proposed_at": "2026-08-18T00:57:46.142Z",
+      "proposed_by": "guide-balance"
+    },
+    {
+      "id": "turn-a-rambling-voice-memo-transcript-into-a-clear-to-do-lis",
+      "company": "Mistral",
+      "tool": "Le Chat",
+      "title": "Turn a rambling voice-memo transcript into a clear to-do list with Le Chat",
+      "audience": "both",
+      "level": "beginner",
+      "angle": "Paste a messy, half-finished transcript from your phone and let Le Chat pull out the actual tasks, owners, and deadlines.",
+      "status": "todo",
+      "icon": "✅",
+      "priority": "balance",
+      "proposed_at": "2026-08-18T00:57:46.227Z",
       "proposed_by": "guide-balance"
     }
   ]

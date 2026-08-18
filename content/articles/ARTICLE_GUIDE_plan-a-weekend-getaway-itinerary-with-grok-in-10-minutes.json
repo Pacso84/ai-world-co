@@ -1,0 +1,59 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "plan-a-weekend-getaway-itinerary-with-grok-in-10-minutes",
+    "company": "xAI",
+    "tool": "Grok",
+    "icon": "🗺️",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-08-18T00:58:25.640Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.01157874,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-08-18T00:59:23.220Z",
+    "slug": "plan-a-weekend-getaway-itinerary-with-grok-in-10-minutes",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1572
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "This guide hits the mark for everyday readers with clear step-by-step instructions, helpful UI fallbacks for changing app layouts, and confidence-checking checkpoints at each step. The structure is solid with a strong hook, practical examples, common mistakes, and a useful 'What this means for you' section. No prohibited content, no clichés, and US English is consistent throughout.",
+      "_aiCost": 0.0020046,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "image_v": 2,
+    "image_at": "2026-08-18T01:01:25.558Z",
+    "seo": {
+      "meta_description": "Learn to use Grok for a weekend getaway itinerary in 10 minutes. Simple steps to create a day-by-day plan you can actually use.",
+      "keywords": [
+        "how to use Grok for travel planning",
+        "AI weekend trip planner",
+        "quick travel itinerary generator",
+        "Grok AI travel guide",
+        "plan weekend trip with AI"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more long-tail keywords like 'how to plan a weekend trip in minutes' to capture easier search rankings",
+        "Consider mentioning the specific platform (X/Twitter) where Grok lives in the article for better topical relevance",
+        "The title could benefit from adding 'step-by-step' to match search intent for how-to content"
+      ],
+      "optimised_at": "2026-08-18T01:03:18.847Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Plan a Weekend Getaway Itinerary with Grok in 10 Minutes\"\nsubtitle: \"Tell Grok where you're going, who's coming and what you love — get a day-by-day plan you can actually use\"\ncategory: \"guide\"\naudience: \"personal\"\ncompany: \"xAI\"\ntool: \"Grok\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"getting-started\", \"grok\", \"travel-planning\"]\n---\n\n# Plan a Weekend Getaway Itinerary with Grok in 10 Minutes\n\n> **In short:** Give Grok your city, dates, travel companions and a few interests, and it drafts a day-by-day itinerary in under a minute. You stay in charge of bookings — Grok suggests, you decide.\n\nBy the end of this guide you'll have a clean, printable weekend plan you can open on your phone the morning you leave, even if you've never opened Grok before. It's built for short trips, where one good plan beats ten open browser tabs.\n\n## Before you start\n- A free xAI account (or an X account, since Grok lives inside X too) — sign-up takes about two minutes.\n- A phone or laptop with the Grok website or the X app installed.\n- About 10 minutes total: 2 minutes to open the chat, 5 minutes to chat, 3 minutes to tidy the plan.\n- A rough idea of where you want to go and when — even \"somewhere coastal in October\" is plenty.\n\n## Step 1 — Open Grok in a fresh chat\nOpen **grok.com** in your browser, or tap the Grok icon inside the X app (usually near the center of the bottom menu bar). If you're already logged in, you land straight in a chat window with an empty text box at the bottom and a placeholder like \"Ask Grok\" or \"What do you want to know?\" above it. If you see your previous chats instead, tap **\"New chat\"** or the **pencil icon** so Grok starts with a clean slate. A blank thread means it won't get confused by old questions.\n\nIf you can't spot Grok inside the X app, look for a sparkle ✨ icon or a search bar that says \"Ask Grok\" — its placement shifts with app updates. On a desktop, you can also reach Grok through **x.com/i/grok** if the main site isn't loading for you.\n\n💬 Example: type nothing yet — just open the chat and confirm the text box is ready.\n\nYou'll know it worked when you see an empty chat box with a blinking cursor and a send arrow at the right.\n\n## Step 2 — Tell Grok the basics of your trip\nTap inside the text box and type a short paragraph that covers four things in plain language: **where you're starting from**, **where you're going**, **the dates**, and **who's traveling with you**. Think of it like leaving a note for a friend who's never met you — clear and friendly beats clever. After you press the send arrow (or the Return key), Grok usually replies in a few seconds with a short acknowledgment or a clarifying question. That reply tells you it understood the basics.\n\nIf you're on a phone and the keyboard hides the send button, look for a paper-airplane icon ➤ or an up-arrow ↑ at the right edge of the input bar — they do the same thing.\n\n💬 Example: \"I'm in Boston, planning a weekend trip to Portland, Maine, October 18-20. It's me and my partner, no kids. We like cozy coffee shops, short coastal walks and one really good dinner out.\"\n\nYou'll know it worked when Grok replies with a sentence that mentions your destination and dates, confirming it understood.\n\n## Step 3 — Add your interests, pace and limits\nSend a second message that layers in what you actually enjoy: hobbies, food preferences, mobility limits, a budget vibe, or one \"must-do\" item. The more specific you are, the less generic the plan becomes. Grok reads both messages together, so you don't have to repeat yourself — just keep adding context. After you send, the model usually responds with a follow-up question or jumps straight into suggestions. Either is fine.\n\nIf you'd rather skip the back-and-forth, fold everything into one long first message — Grok handles long prompts well. If it asks too many questions, just say \"skip the questions, give me a draft plan\" and it will move on.\n\n💬 Example: \"Add: we don't mind driving up to 30 minutes for a view. We love bookstores and seafood but hate tourist-trap lobster rolls. Budget is casual — fancy once, cheap the rest. Must-do: a lighthouse.\"\n\nYou'll know it worked when Grok's next reply reflects your new details — you'll see your \"lighthouse\" or \"bookstore\" word come back in the text.\n\n## Step 4 — Ask for a full day-by-day draft\nNow ask Grok to put it all together as a structured itinerary — day by day, morning to evening. The phrase \"day-by-day\" is the magic trigger: it pushes the model away from vague lists and into a usable schedule. You'll typically see a reply come back with bold day headings (Friday, Saturday, Sunday) and time blocks underneath, plus a few suggested restaurants or stops. Reading time is about 15 seconds — that's your draft.\n\nIf the reply is one big wall of text, reply with \"format that as a numbered list with times\" and try again. If it ignores one of your must-dos, point that out — see Common mistakes below.\n\n💬 Example: \"Great. Now draft a full weekend itinerary, day by day, with morning, afternoon and evening suggestions. Include the lighthouse. Keep each day walkable, no back-to-back driving.\"\n\nYou'll know it worked when you see something like \"**Saturday morning**\" and \"**Saturday afternoon**\" as clear headings, with 2–4 concrete suggestions under each.\n\n## Step 5 — Tweak the plan until it fits\nThis is the fun part. Read the draft and tell Grok what to change — too much driving, swap dinner for lunch, add a Sunday breakfast, drop the museum. Treat the chat like a texting friend: short, specific edits work best. Each time you send an edit, Grok usually rewrites the affected sections rather than starting over, so the plan gets tighter with every turn. Two or three rounds is usually enough.\n\nIf Grok suggests something you've already done or doesn't interest you, just say \"swap that for X\" and move on. If you want a printable summary, ask: \"give me a one-page bullet list I can screenshot.\"\n\n💬 Example: \"Drop the brewery tour — neither of us drinks. Swap the Saturday afternoon museum for a 2-hour bookstore browse. Move the lighthouse to Sunday morning so we can catch the sunrise.\"\n\nYou'll know it worked when the updated plan reflects every edit and nothing from the old version contradicts the new one.\n\n## Step 6 — Save the plan off your screen\nOnce the plan feels right, get it off the chat and onto something you'll actually open on the trip. The easiest move is to ask Grok for a clean, copy-paste-friendly version, then paste it into your Notes app, a Google Doc or a message to yourself. You can also screenshot the chat, but text is easier to search and edit later. Grok cannot book hotels, flights or restaurants for you — that's still your job, and worth knowing upfront so you don't expect it to.\n\nIf you want it extra tidy, ask: \"rewrite this as a plain text checklist, no markdown, no emoji.\" That version pastes into almost anything without breaking.\n\n💬 Example: \"Perfect. Now give me the final plan as a clean plain-text list — day by day, time, place, one sentence on why. No markdown, no emoji, ready to paste into Notes.\"\n\nYou'll know it worked when you have a clean text list you can read in 30 seconds the morning of the trip, without scrolling back through chat history.\n\n## Common mistakes\n- **Sending a one-liner like \"plan my weekend.\"** Grok will guess everything and most of it will be wrong. Fix: spend 60 seconds on Steps 2 and 3 — destination, dates, who, what you like. Specificity saves you twenty minutes later.\n- **Trusting suggestions as bookable facts.** Restaurants close, hours change, prices shift. Fix: cross-check any place you'd actually visit in five minutes on Google Maps before you go.\n- **Asking for too many cities in one trip.** \"Boston, NYC and Philly in 48 hours\" produces a rushing plan nobody enjoys. Fix: keep one home base and treat day trips as optional add-ons.\n\n## What this means for you\n- **In everyday life:** A weekend plan that used to take an evening of browser tabs and group-chat messages now takes one short conversation — and the result is shaped by what *you* actually like.\n- **For your work or business:** The same \"give me a day-by-day draft, then tweak\" pattern works for client visits, conference schedules, offsite agendas and even family reunions — anything with a time, a place and a few people.\n- **If you're just getting started:** Try this first with a trip you already half-planned. You won't be starting from zero, so it's easier to spot where Grok helps and where your own knowledge does the heavy lifting.\n\n## Try it now\nOpen Grok and type one sentence: \"I'm in [your city], planning a weekend trip to [somewhere 1-3 hours away], dates [when]. It's me and [who]. I like [one interest] and I want to avoid [one thing].\" See what comes back. Ninety seconds, no booking required.",
+  "original_title": "Plan a weekend getaway itinerary with Grok in 10 minutes"
+}

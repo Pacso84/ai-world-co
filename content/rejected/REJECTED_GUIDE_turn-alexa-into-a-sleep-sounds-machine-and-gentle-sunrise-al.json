@@ -1,0 +1,40 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "turn-alexa-into-a-sleep-sounds-machine-and-gentle-sunrise-al",
+    "company": "Amazon",
+    "tool": "Alexa+",
+    "icon": "🌙",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-08-18T00:42:21.513Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.01711638,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "rejected",
+    "rejected_at": "2026-08-18T00:56:35.440Z",
+    "auto_check": {
+      "passed": false,
+      "issues": [
+        "MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!)",
+        "NO_H1: Nincs H1 (# Cím) a cikkben",
+        "TOO_SHORT: Csak 36 szó (minimum 200 javasolt)",
+        "GUIDE_TOO_SHORT: Csak 36 szó — az útmutató-szabály 1000-1400 szó (core/article-length.js)"
+      ],
+      "wordCount": 36
+    },
+    "ai_review": {
+      "decision": "FAIL",
+      "verdict": "Critical auto-check failures: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!); NO_H1: Nincs H1 (# Cím) a cikkben; GUIDE_TOO_SHORT: Csak 36 szó — az útmutató-szabály 1000-1400 szó (core/article-length.js)",
+      "skipped_ai": true
+    },
+    "reason": "Critical auto-check failures: MISSING_SECTION: Hiányzik a \"What this means for you\" szekció (brand szabály!); NO_H1: Nincs H1 (# Cím) a cikkben; GUIDE_TOO_SHORT: Csak 36 szó — az útmutató-szabály 1000-1400 szó (core/article-length.js)",
+    "can_retry": true
+  },
+  "article_markdown": "---\ntitle: \"Turn Alexa+ into a Sleep Sounds Machine and Gentle Sunrise Alarm\"\nsubtitle: \"Use an Echo device and a smart bulb to fall asleep to rain and wake up to a slow sunrise light —",
+  "original_title": "Turn Alexa+ into a sleep sounds machine and gentle sunrise alarm"
+}

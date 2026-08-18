@@ -1,0 +1,58 @@
+{
+  "_meta": {
+    "written_at": "2026-08-18T00:38:19.392Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.03053295,
+    "original_draft": "2026-08-18T00-36-50-105Z_picsart_How_to_use_AI_motion_control_for_character_animati.json",
+    "source_id": "picsart",
+    "source_name": "PicsArt Blog (hivatalos)",
+    "source_link": "https://picsart.com/blog/how-to-use-ai-motion-control/",
+    "status": "published",
+    "published_at": "2026-08-18T00:39:17.287Z",
+    "slug": "ai-motion-control-for-character-animation-what-it-is-and-how-it-works",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 866
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured explainer that hits all mandatory checkpoints: engaging hook, plain-language definitions of motion transfer and keyframe, balanced view of limits, clear audience segmentation in What This Means For You, and a practical next-step wrap-up. No clichés, no prohibited content, and the tone is friendly without being condescending.",
+      "_aiCost": 0.0014379,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-08-18T00:40:12.652Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is a generic explainer about AI motion control technology, not an introduction of a specific named tool or feature that users can go use today",
+    "image_v": 2,
+    "image_at": "2026-08-18T01:00:11.207Z",
+    "seo": {
+      "meta_description": "Learn how AI motion control lets you animate any still character using video reference—now popular among creators for social media clips.",
+      "keywords": [
+        "AI motion control animation",
+        "how to animate a still image with AI",
+        "turn photo into video AI",
+        "AI character animation tool",
+        "motion transfer animation",
+        "animate still pictures",
+        "AI animation for social media"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Shorten title tag to under 60 characters for full display in SERPs, e.g., 'AI Motion Control for Animation: How It Works'",
+        "Add more long-tail keywords in the article body like 'animate still character from video reference'",
+        "Consider adding an FAQ schema markup to target voice search queries about this technology"
+      ],
+      "optimised_at": "2026-08-18T01:02:27.552Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"AI Motion Control for Character Animation: What It Is and How It Works\"\nsubtitle: \"A plain-language look at the technology that lets a still picture move to any video you choose\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"ai-video\", \"character-animation\", \"motion-control\", \"creative-tools\"]\n---\n\n# AI Motion Control for Character Animation: What It Is and How It Works\n\n> **In short:** AI motion control takes a still photo of a character and a video of any movement, then produces a clip where your character performs the same motion. It tracks faces, hands, and pose, and is now used by small creators and short-form video teams.\n\nPicture the kind of short video you see on your phone a dozen times a day: an illustrated mascot blinks, tilts its head, and gestures while someone off-camera talks about a product. Five years ago, that took a video editor, an animator, and probably a few thousand dollars. Today, you can pull it off in an evening with a tool that did not exist in this form two years ago. The technology behind it is called **AI motion control** for character animation.\n\n## What it actually does\n\nAt its core, the workflow is simple. You give the AI two things:\n\n- A **still image** of the character you want to animate — a portrait, an illustration, a logo with a face, your own headshot.\n- A **reference video** of any movement you want that character to copy. You could film yourself waving, dancing, or just sitting and talking. The AI does not care about the subject of the video, only how the person in it moves.\n\nThe model then generates a new clip where your static character performs roughly the same actions — same head tilt, same hand position, same timing. The result looks as if your character was actually filmed, even though the AI built it frame by frame.\n\nThe technical name for the underlying idea is **motion transfer** — moving a performance from a source actor onto a target character. Older animation software forced animators to set every **keyframe** (each drawing, or each captured moment of the motion) by hand. This newer approach lets the **motion data** (the math describing where each body part moves, second by second) drive the picture instead.\n\n## Why people are excited about it\n\nFour things make this useful in everyday creative work:\n\n- **You do not have to animate.** If you can film yourself and pick a character image, you can produce a moving clip. No storyboarding, no rigging, no frame-by-frame work.\n- **It works across styles.** Photorealistic faces, cartoon mascots, anime characters, even painted illustrations can each become the target.\n- **It pairs with text and voice.** Once you have a moving character, you can drop it onto a voiceover, a song, or a slideshow with surprisingly little editing.\n- **It is fast.** Most tools render a 5–10 second clip in a few minutes, which is hours faster than traditional animation for the same length.\n\n## Where the limits still are\n\nIt is not magic, and the rough edges matter when you plan a project:\n\n- **Hands and fingers** still misbehave often. Watch any sample and you will likely spot a thumb bending the wrong way or a finger that disappears for a beat.\n- **Long clips lose coherence.** Most tools output a few seconds at a time, and stitching them together can produce small jumps in lighting or pose.\n- **The character style can drift.** A flat cartoon fed a video with dramatic lighting may come back with shadows your original never had.\n- **You still need a clean reference video.** Shake the camera, slouch, or walk out of frame, and the AI faithfully copies all of it.\n\n## What this means for you\n\n- **If you make content as a hobby:** You can bring your own characters, your pet's face, or your friend's illustrated avatar to life for a YouTube short, a TikTok, or a custom birthday video — without learning animation software.\n- **If you run a small business or brand:** A static logo mascot can become the host of your weekly video update. It is a low-cost way to test whether a recurring video format works for you before committing to a real production.\n- **If you work in marketing or social media:** Short looping clips of a friendly character delivering your message often outperform plain text posts in most feeds. This is the cheapest way to try that format.\n- **If you're a teacher or trainer:** You can animate a historical portrait to deliver a short lesson, which students tend to remember better than a still image on a slide.\n\n## Wrap-up\n\nAI motion control takes a still image and a video, and returns a new video where the image moves like the person in the source. It is not going to replace a Pixar animator, but it is the easiest way anyone has ever had to make a character move without learning to animate. A simple starter project: take one of your own photos and pair it with a 10-second clip of you waving. See what the AI does — that is your starting line.",
+  "original_title": "How to use AI motion control for character animation"
+}

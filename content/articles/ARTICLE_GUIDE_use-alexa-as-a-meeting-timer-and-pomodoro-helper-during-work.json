@@ -1,0 +1,61 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "use-alexa-as-a-meeting-timer-and-pomodoro-helper-during-work",
+    "company": "Amazon",
+    "tool": "Alexa+",
+    "icon": "⏱️",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-08-18T00:52:10.331Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00741618,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-08-18T00:57:22.556Z",
+    "slug": "use-alexa-as-a-meeting-timer-and-pomodoro-helper-on-work-breaks",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1488
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Excellent guide with clear step-by-step instructions, honest limitations noted upfront, specific voice commands with success indicators for each step, helpful troubleshooting section, and a practical What this means for you section. No clichés, US English throughout, kind tone. Passes all quality gates.",
+      "_aiCost": 0.00197046,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "image_v": 2,
+    "image_at": "2026-08-18T01:01:43.663Z",
+    "seo": {
+      "meta_description": "Learn how to use Alexa+ as a voice-activated Pomodoro timer. Set focus blocks and breaks hands-free, and get spoken reminders when each ends.",
+      "keywords": [
+        "Alexa+ Pomodoro timer",
+        "Alexa voice timer for work",
+        "how to use Alexa for productivity",
+        "Alexa focus timer",
+        "Pomodoro technique with Alexa",
+        "Alexa work break timer",
+        "hands-free timer for remote work"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add the exact voice command phrase users should say to activate the timer",
+        "Include a brief mention of which Echo devices are compatible",
+        "Consider adding tips for customizing timer lengths beyond the default 25/5 minutes"
+      ],
+      "optimised_at": "2026-08-18T01:03:30.088Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Use Alexa+ as a Meeting Timer and Pomodoro Helper on Work Breaks\"\nsubtitle: \"Set a 25-minute focus block and a 5-minute break with your voice, and get a spoken nudge when each one ends.\"\ncategory: \"guide\"\naudience: \"business\"\ncompany: \"Amazon\"\ntool: \"Alexa+\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"getting-started\", \"alexa-plus\", \"productivity\"]\n---\n\n# Use Alexa+ as a Meeting Timer and Pomodoro Helper on Work Breaks\n\n> **In short:** Ask Alexa+ to set a 25-minute focus block, then a 5-minute break, and it will speak a nudge when each one ends. You need an Amazon account and a compatible Echo or Alexa-enabled device, and the feature works best when your device language is set to US English.\n\nWorking from home on a solo day often turns into one long, fuzzy block of \"stuff I should be doing.\" A simple timer can change that — not a productivity app, just a voice you can talk to when your hands are on a keyboard. That's what Alexa+ is for here. Think of it as a patient kitchen timer that also understands plain English, so you can say \"give me a 25-minute focus block\" and then \"start my 5-minute break\" when you're done.\n\nThe idea comes from a method called **Pomodoro** — a way of working in short, focused chunks (usually 25 minutes) followed by short breaks (usually 5 minutes). You don't need an app for it; you need a timer that doesn't mind being interrupted. Below is the step-by-step setup.\n\n## Before you start\n\n- **An Amazon account** — the same one you use to shop on Amazon, or a free one you can make in a few minutes at amazon.com.\n- **A compatible Alexa device** — an Echo Dot, Echo, Echo Show, or any speaker with Alexa+ built in. If you only use the Alexa app on your phone, the same voice commands work there too.\n- **A quiet place to talk to the device** during a focus block. Alexa+ listens for the wake word (\"Alexa\") across the room, but a noisy kitchen can confuse it.\n- **Roughly 5 minutes** to set things up the first time, then a few seconds each time you start a focus block.\n- **Honest heads-up:** Alexa+ can time your blocks and announce them, but it can't *track* how many Pomodoros you did today or push a summary to your calendar on its own — for that you'd need a separate routine or a third-party skill.\n\n## Step 1 — Make sure Alexa+ is set up and listening\n\nSay the wake word out loud — \"Alexa\" — from a normal speaking distance. The light ring on top of the device turns blue (on Echo Show, a cyan bar appears at the bottom of the screen) and stays lit while Alexa+ is listening. If the light doesn't come on, the microphone may be muted: look for a button with a microphone icon on top of the device and press it once so the red ring turns off.\n\n💬 Example: \"Alexa, what time is it?\" — a quick way to confirm the device can hear you and respond.\n\nYou'll know it worked when Alexa+ answers your question out loud. If you hear silence or a short error sound (\"sorry, I didn't catch that\"), try again a little louder and closer to the device.\n\n## Step 2 — Set your first 25-minute focus block\n\nWith Alexa+ awake, say a plain-English command that names the length and the purpose. The simpler the phrasing, the better Alexa+ understands. You can name the block, or just give the length.\n\n💬 Example: \"Alexa, set a 25-minute focus timer.\" — the most reliable form, because it uses the exact words \"focus timer.\"\n\nYou'll know it worked when Alexa+ says something like \"25 minutes, starting now\" and the light ring turns into a spinning blue-white pattern that means a timer is running. You can keep working; you don't need to look at the device.\n\n## Step 3 — Use a Pomodoro phrasing if you prefer\n\nAlexa+ understands the word \"Pomodoro\" the same way it understands \"focus timer\" — it just kicks off a 25-minute countdown. If you say the word, it helps you remember the method you meant.\n\n💬 Example: \"Alexa, start a Pomodoro.\" — this starts the classic 25-minute block without you naming a number.\n\nYou'll know it worked when the timer chime sounds and Alexa+ confirms the length out loud (usually \"25 minutes, starting now\"). If you'd rather start with a custom length — say, 15 minutes for a quick writing sprint — use the version from Step 2 and just swap the number.\n\n## Step 4 — Ask for a spoken nudge at the end\n\nBy default, Alexa+ plays a short chime when a timer ends, which is easy to miss when you're deep in a document. You can ask for a spoken announcement instead, or layer a second timer on top that tells you what to do next.\n\n💬 Example: \"Alexa, when the timer ends, tell me to stand up and stretch.\" — Alexa+ will speak your custom phrase at the end of the countdown.\n\nYou'll know it worked when Alexa+ repeats your phrase back so you can hear what it stored. If it sounds wrong, say \"cancel that\" and try the command again with simpler wording.\n\n## Step 5 — Start a 5-minute break\n\nWhen the focus chime sounds, ask for a short break. This is where the Pomodoro rhythm locks in: focus, then rest, then focus again. Keeping the break short is the point — it's enough to refill a water glass, not enough to fall into your phone.\n\n💬 Example: \"Alexa, set a 5-minute break timer.\" — exactly the same command as Step 2, just with a different number and label.\n\nYou'll know it worked when Alexa+ confirms \"5 minutes, starting now\" and the ring spins again. When the chime sounds a second time, you're back at Step 2 for the next focus block.\n\n## Step 6 — Save the pair as a routine (optional, but nice)\n\nIf you'll do this every workday, ask Alexa+ to remember the sequence as a routine — a named shortcut you trigger with one phrase. This lives in the Alexa app under **More → Routines → Create Routine**. Give it a name like \"Morning Pomodoro\", add an action of type \"Set Timer\" with 25 minutes, then a second action \"Set Timer\" with 5 minutes. Save and you're done.\n\n💬 Example: \"Alexa, start my Morning Pomodoro routine.\" — fires both timers in a row without you re-stating each length.\n\nYou'll know it worked when the app shows your routine as enabled, and saying the trigger phrase out loud starts both timers back-to-back. If only one timer starts, open the routine and check that the second action is enabled (the toggle is blue, not gray).\n\n## Common mistakes\n\n- **Saying \"set a focus block\" instead of \"focus timer.\"** Alexa+ matches on the noun. Say \"timer\" and the command is reliable; say \"block\" or \"session\" and it may not understand. **Fix:** stick to the wording in Step 2.\n- **Letting the device's microphone get muted by accident.** A red light ring on top of the device means Alexa+ can't hear you at all, and your voice commands will fail silently. **Fix:** press the mic button on top once, then watch the ring turn blue.\n- **Asking Alexa+ to *count* your Pomodoros for the day.** It can time them one at a time, but it doesn't keep a daily tally on its own. **Fix:** keep a tally on a sticky note, or use the routine from Step 6 to make the start command consistent and add a checklist habit.\n- **Starting a 5-minute break right after a focus block, but forgetting to say \"5 minutes.\"** A bare \"start a break\" can default to a longer time on some devices. **Fix:** always say the number — \"5-minute break\" — the way Step 5 does.\n\n## What this means for you\n\n- **In everyday life:** Even on days without work, the same pair of timers works for chores — a 25-minute cleanup, a 5-minute reward — without picking up a phone.\n- **For your business or work:** On solo work-from-home days, the spoken chime at the end of each block gives you a built-in reason to look up, blink, and rest your eyes, which most remote workers skip until the afternoon headache hits.\n- **If you're just getting started:** Try one Pomodoro pair — 25 minutes on, 5 minutes off — before lunch tomorrow. That's all it takes to see whether voice timing fits your day.\n\n## Try it now\n\nSay \"Alexa, set a 25-minute focus timer\" out loud, then keep working until the chime. When it sounds, say \"Alexa, set a 5-minute break timer\" and stand up for those five minutes. That's the whole method, and it takes about ten seconds to set in motion.",
+  "original_title": "Use Alexa+ as a meeting timer and Pomodoro helper during work breaks"
+}
