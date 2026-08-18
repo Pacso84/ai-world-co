@@ -54,6 +54,19 @@ nem szóegyezésből.
 
 **Ezért: a rokonság eldöntéséhez AI-ítélet kell. A duplikátum kiszűréséhez nem.**
 
+### Hogyan keletkeztek a duplikátumok (mechanizmus, nem bizonyított ok)
+
+A scraper `saveDraft()`-ja **azonnal** lemezre ír (`agents/rss-scraper/agent.js:305`),
+a `saveSeenItems()` viszont **csak a teljes futás végén** hívódik (`:476`), és a link
+megjelölése is csak sikeres AI-döntés után történik (`:458`). Ha a futás félbeszakad
+a batch-ek között, a draftok már ott vannak, de **egyetlen link sem lesz „látott"** —
+a következő futás újra lementi őket.
+
+Ez illeszkedik a leletre: a 07-20-i pár két scrape-futásból származik 13 perc
+különbséggel (`17-22-07` vs `17-35-52`), a 07-16-i 9 óra különbséggel. Egyben ez a
+legerősebb érv a terv mellett: **a publikált cikkekből épített zár robusztusabb,
+mint a `seen-items.json`**, mert nem függ attól, sikerült-e a futás végén menteni.
+
 ## 2. Cél és nem-cél
 
 **Cél**
@@ -83,16 +96,40 @@ Két **független** mechanizmus. Ha a második elromlik, az első akkor is véd.
 `core/source-lock.js` — tiszta függvények, hálózat nélkül, tesztelhető.
 
 ```
-normalizeSourceUrl(url)       → protokoll, www., záró per, ?query és #horgony nélkül
-publishedSourceKeys(articles) → Set az összes felhasznált forrás-kulcsból
-isAlreadyWritten(url, keys)   → boolean
+normalizeSourceUrl(url)        → protokoll, www., záró per, ?query, #horgony nélkül
+normalizeSourceTitle(title)    → kisbetű, csak betű/szám, egy szóköz
+publishedSourceKeys(articles)  → { urls: Set, titles: Set }
+isAlreadyWritten(draft, keys)  → boolean
 ```
 
 Az író a draft feldolgozása előtt kérdez. Ha a válasz igen: a draft **eldobásra
 kerül** (nem íródik meg, nem költünk rá), és a naplóba egy sor megy.
 
+**⚠️ A URL önmagában nem elég — a cím is kell.** A Gemini-pár két forrás-URL-je
+`…gemini-36-flash-35-flash-lite…` és `…gemini-3-6-flash-3-5-flash-lite…`: a
+különbség magában az útvonalban van, azt semmilyen ésszerű URL-normalizálás nem
+hozza közös kulcsra. Ezért a zár **kétkulcsos**: normalizált URL **vagy**
+normalizált eredeti cím. Ez nem új ötlet — az `agents/ceo/desk.js:124-136`
+`isDuplicate()` már ma is így dolgozik.
+
+**⚠️ A saját domaint ki kell hagyni a kulcsokból.** Kilenc szerkesztőségi cikk
+(heti digest, összehasonlítás) `source_link`-je `https://aiworldhq.com`
+(`agents/digest/agent.js:212`, `agents/compare/agent.js:147`). Ha ez bekerül a
+zárolt kulcsok közé, a digest önmagát zárná ki.
+
 ⚠️ A kulcshalmaz a `_meta.source_link` **és** a `_meta.source_links[]` mezőkből
 épül — különben egy összevont cikkbe olvasztott hír később újra megíródna.
+
+**⚠️ A draftban a mező neve `link`, nem `source_link`** — az utóbbi nevet az író
+adja neki (`agents/iro/agent.js:374`: `source_link: draft.link`).
+
+### A meglévő zárat át kell állítani, nem mellé építeni
+
+`agents/ceo/desk.js:124-136` `isDuplicate()` gyakorlatilag ugyanez a függvény, de
+(a) csak a beragadt/elutasított hírekre fut (`:168`), a normál írási útvonalon nem,
+és (b) **nem normalizál** — szó szerinti `===`-szel hasonlít. A `desk.js`-t a
+`core/source-lock.js`-re kell átállítani, különben két, egymástól eltérően
+normalizáló duplikátum-fogalom él majd a rendszerben.
 
 ### B) Összevonás — AI-ítélet
 
@@ -115,6 +152,14 @@ Az AI-hívás magában az íróban, a draft-választás után, az írás előtt.
   csoportba, az marad magában.
 - *Modell:* M2.5 (a gépi agentek modellje). A bemenet csak cím + kivonat, tehát
   pár száz token; napi ~1,3 csoportnyi forgalom. Nagyságrend: tized-cent/nap.
+
+**A követendő minta már megvan:** `agents/rss-scraper/agent.js`
+`checkRelevanceBatch()` (`:248-273`) — számozott lista bemenet → `ask(…, { jsonMode:
+true })` → `extractJsonArray()` (`:209-227`) → hibánál `{ ok:false }`, és a hívó
+(`:449-454`) a mai viselkedésre esik vissza. Az összevonó ítéletnek ezt kell
+követnie. ⚠️ Az `extractJsonArray` ma **kétszer van lemásolva**
+(`agents/rss-scraper/agent.js:209` és `agents/guide/agent.js:352`), core-ban nincs —
+a harmadik másolat helyett `core/`-ba kerül, és a két meglévő hívó is arra vált.
 
 **Korlátok**
 
@@ -145,14 +190,42 @@ Az összevont cikk `_meta`-jában:
 }
 ```
 
-`source_link` szándékosan marad egyértékű: a truth-gate, a SEO-őr és a
-90 napos házmester erre épül, azokhoz nem nyúlunk.
+`source_link` szándékosan marad egyértékű, hogy a mai olvasói ne törjenek el.
+**Kik olvassák valójában** (ellenőrizve — a terv első változata rossz fájlokat
+nevezett meg):
+
+| olvasó | mire |
+|---|---|
+| `agents/ceo/desk.js:127-132` | a mai duplikátum-zár |
+| `agents/ellenorzo/agent.js:855` | prompt-kontextus |
+| `core/guide-claims.js:300-315` `hasUsableSource()` | az útmutató UI-állítás kapuja |
+| `website/build.js:1061` | beolvassa, de sehol nem használja — **holt adat** |
+
+A truth-gate, a SEO-őr és a 90 napos házmester **NEM** használja: a truth-gate a
+markdown törzséből szedi a linkeket, a másik kettő a `_meta.slug`-ra és a
+`_meta.published_at`-ra épül.
 
 ## 5. Számvitel
 
-A napi keret (`limits.daily_articles_max = 8`) **cikket** számol, nem hírt. Az
-összevonás tehát nem csökkenti a napi cikkszámot — ugyanaz a 8 cikk születik, csak
-mindegyik több hírt dolgoz fel. Ez a kívánt hatás: több anyag, kevesebb ismétlés.
+> **A terv első változata itt tévedett, és ez fordította volna a visszájára az
+> egész ígéretet.** Az állítás az volt, hogy „a keret cikket számol, tehát ugyanaz
+> a 8 cikk születik". A *számláló* valóban cikket számol
+> (`agents/ceo/agent.js:215-226`), **de a keret az író draft-számára van ráadva**:
+> `agents/ceo/agent.js:495` → `--limit N` → `agents/iro/agent.js:645`
+> `drafts.slice(0, args.limit)`. Ma a kettő egybeesik, mert 1 draft = 1 cikk.
+> Összevonás után **nem**: 8 draftból 5 cikk lenne, vagyis az összevonás
+> **csökkentené** a napi cikkszámot.
+
+**A javítás:** az író `--limit` kapcsolójának jelentése draftról **cikkre** vált.
+Az író addig vesz draftokat, amíg `N` cikket meg nem írt — egy 3-as csoport egy
+cikknek számít, és három draftot fogyaszt. A `--limit` így azt jelenti, amit a
+CEO amúgy is ért rajta („ennyi cikk fér még ma bele").
+
+Következmény: **több hír dolgozódik fel ugyanannyi cikk alatt**. Pontosan ez a
+kívánt hatás — több anyag, kevesebb ismétlés.
+
+⚠️ A draft-készlet ettől gyorsabban fogy. Ha egy nap kevés a draft, az író
+kevesebb cikket ír — ez ma is így van, nem új kockázat.
 
 Terjesztésre nincs hatása: a közösségi sorban jelenleg 265 poszt vár, napi 9 megy
 ki — a szűk keresztmetszet a sor, nem a cikkellátás.
@@ -163,8 +236,9 @@ Ingyenes, hálózat nélküli tesztek (`core/*.test.js`), a **valódi** esetekke
 
 | próbaeset | elvárás |
 |---|---|
-| az 5 duplikátum-pár azonos URL-je | a második megíródása **megelőzve** |
-| Gemini-pár (a forrás átírta a kötőjelezést) | a normalizálás után **ugyanaz a kulcs** |
+| a 4 azonos URL-ű duplikátum-pár | a második megíródása **megelőzve** (URL-kulcs) |
+| Gemini-pár: `gemini-36-flash` vs `gemini-3-6-flash` | a **CÍM-kulcs** fogja meg — az URL-kulcs itt bizonyítottan nem elég |
+| `https://aiworldhq.com` mint forrás | **NEM** kerül a zárolt kulcsok közé |
 | összevont cikk `source_links` mezője | mindegyik URL zárolva |
 | Midjourney 07-23, öt frissítés | **összevonandó** |
 | **OpenAI 07-22, öt független bejelentés** | **NEM vonható össze** |
@@ -183,6 +257,8 @@ ami független témákat gyúr egybe, rosszabb a jelenlegi állapotnál.
 | az ítélet sosem von össze semmit | mérhető: `merged_from` a napi riportban |
 | a beolvasztott hír később újra megíródik | a zár a `source_links[]`-et is nézi (teszt őrzi) |
 | egy összevont cikk gyengébb, mint két külön | a meglévő minőségi kapuk változatlanul futnak |
+| két, egymástól eltérően normalizáló duplikátum-fogalom él egyszerre | a `desk.js` is a `core/source-lock.js`-re áll át, nem marad saját `isDuplicate()` |
+| a `--limit` jelentésváltása elrontja a napi keretet | teszt a cikk-számlálásra; a napi riport cikkszáma az élő ellenőrzés |
 
 ## 8. Utólagos mérés
 
