@@ -1,7 +1,7 @@
 {
   "_meta": {
     "note": "Forrás-bizonyítvány: frissesség + termés + megbízhatóság forrásonként. Gyártja: core/source-report-card.js",
-    "updated": "2026-08-18T08:42:14.104Z",
+    "updated": "2026-08-18T16:31:28.987Z",
     "thresholds": {
       "DEAD_FEED_DAYS": 365,
       "MIN_SAMPLE": 4,
@@ -12,12 +12,12 @@
   "sources": {
     "openai-blog": {
       "name": "OpenAI Blog (hivatalos)",
-      "feedAgeDays": 1,
-      "published30d": 35,
+      "feedAgeDays": 0,
+      "published30d": 37,
       "truthBlocks": 0,
-      "totalAttempts": 57,
+      "totalAttempts": 59,
       "alreadyDisabled": false,
-      "lastArticle": "2026-08-17",
+      "lastArticle": "2026-08-18",
       "verdict": "ok",
       "reason": ""
     },
@@ -89,7 +89,7 @@
     },
     "google-workspace": {
       "name": "Google Workspace Updates (hivatalos)",
-      "feedAgeDays": 0,
+      "feedAgeDays": 1,
       "published30d": 19,
       "truthBlocks": 1,
       "totalAttempts": 35,
@@ -133,7 +133,7 @@
     },
     "aws-ml": {
       "name": "AWS Machine Learning (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 0,
       "published30d": 11,
       "truthBlocks": 0,
       "totalAttempts": 43,
@@ -166,7 +166,7 @@
     },
     "apple-ml": {
       "name": "Apple Machine Learning Research (hivatalos)",
-      "feedAgeDays": 5,
+      "feedAgeDays": 1,
       "published30d": 3,
       "truthBlocks": 0,
       "totalAttempts": 15,
@@ -386,7 +386,7 @@
     },
     "sap": {
       "name": "SAP Innovation Blog (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 0,
       "published30d": 0,
       "truthBlocks": 0,
       "totalAttempts": 6,
@@ -408,7 +408,7 @@
     },
     "snowflake": {
       "name": "Snowflake Blog (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 0,
       "published30d": 4,
       "truthBlocks": 0,
       "totalAttempts": 19,
@@ -419,7 +419,7 @@
     },
     "together": {
       "name": "Together AI Blog (hivatalos)",
-      "feedAgeDays": 0,
+      "feedAgeDays": 1,
       "published30d": 2,
       "truthBlocks": 0,
       "totalAttempts": 5,
@@ -474,7 +474,7 @@
     },
     "midjourney-updates": {
       "name": "Midjourney Updates (hivatalos)",
-      "feedAgeDays": 24,
+      "feedAgeDays": 25,
       "published30d": 8,
       "truthBlocks": 0,
       "totalAttempts": 8,
@@ -518,7 +518,7 @@
     },
     "qwen-news": {
       "name": "Qwen / Alibaba (hivatalos, Google News szűrve)",
-      "feedAgeDays": 11,
+      "feedAgeDays": 12,
       "published30d": 4,
       "truthBlocks": 0,
       "totalAttempts": 4,
@@ -529,7 +529,7 @@
     },
     "grammarly-blog": {
       "name": "Grammarly (hivatalos)",
-      "feedAgeDays": 4,
+      "feedAgeDays": 5,
       "published30d": 2,
       "truthBlocks": 0,
       "totalAttempts": 2,
@@ -540,7 +540,7 @@
     },
     "d-id-news": {
       "name": "D-ID (hivatalos)",
-      "feedAgeDays": 18,
+      "feedAgeDays": 4,
       "published30d": 9,
       "truthBlocks": 0,
       "totalAttempts": 9,
@@ -551,7 +551,7 @@
     },
     "sony-ai": {
       "name": "Sony AI (hivatalos)",
-      "feedAgeDays": 48,
+      "feedAgeDays": 49,
       "published30d": 3,
       "truthBlocks": 0,
       "totalAttempts": 3,
@@ -562,7 +562,7 @@
     },
     "notion-releases": {
       "name": "Notion – Mi újság (hivatalos)",
-      "feedAgeDays": 4,
+      "feedAgeDays": 5,
       "published30d": 0,
       "truthBlocks": 0,
       "totalAttempts": 0,
@@ -595,7 +595,7 @@
     },
     "picsart": {
       "name": "PicsArt Blog (hivatalos)",
-      "feedAgeDays": 0,
+      "feedAgeDays": 1,
       "published30d": 20,
       "truthBlocks": 0,
       "totalAttempts": 20,
@@ -606,7 +606,7 @@
     },
     "zapier-blog": {
       "name": "Zapier Blog (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 0,
       "published30d": 3,
       "truthBlocks": 0,
       "totalAttempts": 3,
@@ -617,7 +617,7 @@
     },
     "dropbox-blog": {
       "name": "Dropbox Blog (hivatalos)",
-      "feedAgeDays": 36,
+      "feedAgeDays": 37,
       "published30d": 3,
       "truthBlocks": 0,
       "totalAttempts": 3,
