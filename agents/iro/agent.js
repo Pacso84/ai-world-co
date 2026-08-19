@@ -35,6 +35,8 @@ import { message } from '../../core/ops.js';
 import { HOWTO_RANGE } from '../../core/article-length.js';
 import { blockingIssues } from '../../core/auto-check-codes.js';
 import { publishedSourceKeys, isAlreadyWritten } from '../../core/source-lock.js';
+import { extractJsonArray } from '../../core/extract-json.js';
+import { parseClusterReply, planWriteOrder, MAX_CLUSTER } from '../../core/draft-clusters.js';
 
 // ===================================================================
 // SETUP
@@ -291,6 +293,61 @@ Practical, original guidance. Explain any technical term immediately.
 ## Wrap-up
 
 One paragraph: summary + a next step to try today.`;
+
+// ===================================================================
+// ÖSSZEVONÓ ÍTÉLET — melyik függőben lévő hírek szólnak ugyanarról?
+// ===================================================================
+// A rokonságot AI dönti el, mert gépi mércével nem megy (a ROKON
+// Midjourney-ötös cím-hasonlósága 0,056, a FÜGGETLEN OpenAI-ötösé 0,022).
+// MINDEN forrás draftja EGYSZERRE megy be: a Claude Opus 5-öt három forrás is
+// bejelentette ugyanazon a napon, abból három cikkünk lett.
+//
+// ⚠️ HIBÁNÁL ÜRES TÖMB — vagyis a mai viselkedés: minden hír külön cikk.
+const CLUSTER_SYSTEM_PROMPT = `You group tech-news items that are about THE SAME underlying story or product release.
+
+Group items ONLY when a single article could cover them together without losing focus.
+Do NOT group items just because they come from the same company or the same day.
+Five unrelated announcements from one company are FIVE topics, not one.
+
+Respond with {"groups": [...]}. Each group: {"theme": "<short specific shared topic>", "ids": ["<id>", ...]}.
+- "theme" must name the actual shared subject (e.g. "Midjourney V8 release"), never a section name like "AI news".
+- Include at most ${MAX_CLUSTER} ids per group, at least 2.
+- Items that do not clearly belong with another item MUST be left out entirely.
+- If nothing belongs together, respond with {"groups": []}.`;
+
+async function clusterDrafts(draftFilenames) {
+  if (!Array.isArray(draftFilenames) || draftFilenames.length < 2) {
+    return { groups: [], costUsd: 0 };
+  }
+
+  const tetelek = [];
+  for (const f of draftFilenames) {
+    try {
+      const d = JSON.parse(readFileSync(join(DRAFTS_DIR, f), 'utf-8'));
+      tetelek.push({ id: f, title: d.title || '', snippet: (d.content_snippet || '').slice(0, 180),
+                     source: d._meta?.source_name || '' });
+    } catch { /* olvashatatlan draft: kihagyjuk a csoportosításból */ }
+  }
+  if (tetelek.length < 2) return { groups: [], costUsd: 0 };
+
+  const lista = tetelek.map(it =>
+    `id: ${it.id}\n  source: ${it.source}\n  title: ${it.title}\n  summary: ${it.snippet}`
+  ).join('\n\n');
+
+  const response = await ask(
+    `Group these ${tetelek.length} news items.\n\n${lista}`,
+    { agentName: 'cluster', systemPrompt: CLUSTER_SYSTEM_PROMPT, maxTokens: 2000, jsonMode: true }
+  );
+  if (!response) return { groups: [], costUsd: 0 };
+
+  try {
+    const groups = parseClusterReply(extractJsonArray(response.text), tetelek.map(t => t.id));
+    return { groups, costUsd: response.costUsd };
+  } catch {
+    // Értelmezhetetlen válasz: NEM okoskodunk, a mai viselkedésre esünk vissza.
+    return { groups: [], costUsd: response.costUsd };
+  }
+}
 
 // ===================================================================
 // EGY DRAFT CIKKÉ ÍRÁSA
