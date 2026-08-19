@@ -1,86 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178701341715513",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-08-18T00:36:57.155Z",
-      "updated": "2026-08-18T00:36:57.313Z"
-    },
-    {
-      "id": "t178701341731432",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-18T00:36:57.314Z",
-      "updated": "2026-08-18T00:38:51.564Z"
-    },
-    {
-      "id": "t178701353156653",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-18T00:38:51.566Z",
-      "updated": "2026-08-18T00:39:55.653Z"
-    },
-    {
-      "id": "t17870135956569",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-08-18T00:39:55.656Z",
-      "updated": "2026-08-18T00:40:25.335Z"
-    },
-    {
-      "id": "t178701362536768",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-18T00:40:25.367Z",
-      "updated": "2026-08-18T00:56:21.783Z"
-    },
-    {
-      "id": "t178701458178532",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-18T00:56:21.785Z",
-      "updated": "2026-08-18T00:57:38.255Z"
-    },
-    {
-      "id": "t178701465828563",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-18T00:57:38.285Z",
-      "updated": "2026-08-18T00:57:38.420Z"
-    },
-    {
-      "id": "t178701465842168",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-18T00:57:38.421Z",
-      "updated": "2026-08-18T00:57:46.237Z"
-    },
-    {
-      "id": "t178701466624053",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-18T00:57:46.240Z",
-      "updated": "2026-08-18T00:59:09.064Z"
-    },
-    {
-      "id": "t178701474906635",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-18T00:59:09.066Z",
-      "updated": "2026-08-18T00:59:41.364Z"
-    },
-    {
       "id": "t178701478136550",
       "title": "Run designer",
       "status": "done",
@@ -479,33 +399,89 @@
       "agent": "publisher",
       "created": "2026-08-19T08:27:39.399Z",
       "updated": "2026-08-19T08:27:55.165Z"
+    },
+    {
+      "id": "t178715630254595",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-08-19T16:18:22.545Z",
+      "updated": "2026-08-19T16:18:22.729Z"
+    },
+    {
+      "id": "t178715630273066",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-08-19T16:18:22.730Z",
+      "updated": "2026-08-19T16:19:08.152Z"
+    },
+    {
+      "id": "t178715634815321",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-08-19T16:19:08.154Z",
+      "updated": "2026-08-19T16:19:08.357Z"
+    },
+    {
+      "id": "t178715634835977",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-19T16:19:08.359Z",
+      "updated": "2026-08-19T16:25:26.798Z"
+    },
+    {
+      "id": "t178715672679992",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-19T16:25:26.799Z",
+      "updated": "2026-08-19T16:25:47.251Z"
+    },
+    {
+      "id": "t17871567472548",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-08-19T16:25:47.254Z",
+      "updated": "2026-08-19T16:26:00.858Z"
+    },
+    {
+      "id": "t178715676089929",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-19T16:26:00.899Z",
+      "updated": "2026-08-19T16:26:16.412Z"
+    },
+    {
+      "id": "t178715677641416",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-08-19T16:26:16.414Z",
+      "updated": "2026-08-19T16:26:57.860Z"
+    },
+    {
+      "id": "t178715681786237",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-19T16:26:57.862Z",
+      "updated": "2026-08-19T16:27:09.936Z"
+    },
+    {
+      "id": "t178715682993782",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-08-19T16:27:09.937Z",
+      "updated": "2026-08-19T16:27:30.107Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178617774564046",
-      "level": "info",
-      "text": "SEO: 1 cikk optimalizálva (átlag 9.0/10).",
-      "agent": "seo",
-      "at": "2026-08-08T08:29:05.640Z",
-      "loud": false
-    },
-    {
-      "id": "n178617776743052",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). A solid, useful line-up — you've got practical how-tos, privacy guidance, and heartfelt use cases all covered. Just one note: articles 4, 5, and 6 are quite similar (all complaint/refund emails). Cons",
-      "agent": "publisher",
-      "at": "2026-08-08T08:29:27.430Z",
-      "loud": false
-    },
-    {
-      "id": "n178617777669787",
-      "level": "success",
-      "text": "0 hír + 1 útmutató publikálva (költség: $0.0043).",
-      "agent": "ceo",
-      "at": "2026-08-08T08:29:36.697Z",
-      "loud": false
-    },
     {
       "id": "n178620602617460",
       "level": "success",
@@ -1281,27 +1257,33 @@
       "agent": "ceo",
       "at": "2026-08-19T08:27:55.201Z",
       "loud": false
+    },
+    {
+      "id": "n178715681785016",
+      "level": "info",
+      "text": "SEO: 1 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-08-19T16:26:57.850Z",
+      "loud": false
+    },
+    {
+      "id": "n178715683813832",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). A lineup mostly works but has one notable overlap: three complaint email guides (DeepSeek, Grok, ChatGPT) feel repetitive—consider merging or differentiating them (e.g., by tone or situation). Otherwi",
+      "agent": "publisher",
+      "at": "2026-08-19T16:27:18.138Z",
+      "loud": false
+    },
+    {
+      "id": "n178715685014264",
+      "level": "success",
+      "text": "1 hír + 0 útmutató publikálva (költség: $0.0155).",
+      "agent": "ceo",
+      "at": "2026-08-19T16:27:30.142Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178620601939869",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-08-08T16:20:19.398Z"
-    },
-    {
-      "id": "m178620633913724",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"How to create images with AI: a beginner first try\" — The specific claim that Microsoft Copilot uses a chat interface where you 'simply need to ask it to create an image' by typing 'create an image' or 'generate a picture'; The specific claim that Canva has a 'Magic Media' or 'Text to Image' feature that can be found via search or in th",
-      "ref": "ARTICLE_GUIDE_ai-image-basics.json",
-      "at": "2026-08-08T16:25:39.137Z"
-    },
     {
       "id": "m178620667937169",
       "from": "social",
@@ -2644,6 +2626,24 @@
       "text": "4 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-08-19T08:43:31.004Z"
+    },
+    {
+      "id": "m178715682992675",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-08-19T16:27:09.926Z"
+    },
+    {
+      "id": "m178715698374339",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"How to plan a trip with AI: itinerary, budget and \" — Twelve Apostles is mentioned as a destination on the Pacific Coast Highway near Portland",
+      "ref": "ARTICLE_GUIDE_ai-trip-planning.json",
+      "at": "2026-08-19T16:29:43.743Z"
     }
   ]
 }
