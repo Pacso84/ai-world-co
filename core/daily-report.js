@@ -519,9 +519,11 @@ async function main() {
   } catch { /* a riport ettől még kimegy */ }
 
   // OLVASÁSI MÉLYSÉG (2026-08-15) — hány oldalt néz meg egy belépő?
-  // Mérve 1,17: négyből három ember EGY cikket olvas és távozik. Ez az
-  // egyetlen forgalmi szám, amit új közönség nélkül is tudunk mozgatni, ezért
-  // kikerül oda, ahol a user nézi. Az irány fontosabb, mint az abszolút érték.
+  // Mérve 1,04 a VALÓDI olvasókra: gyakorlatilag mindenki EGY cikket olvas és
+  // távozik. Ez az egyetlen forgalmi szám, amit új közönség nélkül is tudunk
+  // mozgatni, ezért kikerül oda, ahol a user nézi. Az irány fontosabb, mint az
+  // abszolút érték. ⚠️ 2026-08-19-ig 1,17-et írt ide, mert a saját magyar
+  // böngészésünket is beleszámolta (core/traffic-log.js → NEM_KOZONSEG).
   try {
     const { loadLog, depthTrend } = await import('./traffic-log.js');
     const tr = depthTrend(loadLog(), 7);

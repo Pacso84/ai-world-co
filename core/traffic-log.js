@@ -72,11 +72,16 @@ export function topPages(rows, n) {
 // ===================================================================
 // OLVASÁSI MÉLYSÉG (2026-08-15) — hány oldalt néz meg EGY belépő?
 // ===================================================================
-// MIÉRT EZ A SZÁM: mérve 1,25 oldal/látogató, vagyis négyből három ember
-// egyetlen cikket olvas és távozik. A forgalmunk 82%-a a Facebookról jön egy
-// konkrét cikkre; ha ott nincs értelmes következő lépés, a látogató elmegy.
-// Ez az EGYETLEN forgalmi szám, ami új közönség NÉLKÜL is mozgatható —
-// és pont ezért ezt kell tudnunk követni.
+// MIÉRT EZ A SZÁM: a valódi olvasókra mérve 1,04 oldal/látogató, vagyis
+// GYAKORLATILAG MINDENKI egyetlen cikket olvas és távozik. A forgalmunk 82%-a
+// a Facebookról jön egy konkrét cikkre; ha ott nincs értelmes következő lépés,
+// a látogató elmegy. Ez az EGYETLEN forgalmi szám, ami új közönség NÉLKÜL is
+// mozgatható — és pont ezért ezt kell tudnunk követni.
+//
+// ⚠️ A KORÁBBI 1,25 / 1,17 SZÁM HAMIS VOLT (javítva 2026-08-19): a saját
+// magyar nyelvű böngészésünket is beleszámolta. Lásd a NEM_KOZONSEG
+// szűrőt lentebb. A 17 napos naplóra: 1,24 szűrés nélkül, 1,04 szűréssel.
+// A riport „+0,04 javulása" ennek az ingadozása volt, nem trend.
 //
 // ⚠️ AZ ADAT MÁR ITT VOLT: a napló kezdettől rögzíti a `views` mezőt, csak
 // soha nem számoltunk belőle arányt. Nem új gyűjtés kell, csak elosztás.
@@ -85,8 +90,30 @@ export function topPages(rows, n) {
 // views/visits = 1,00 → mindenki egy oldalt néz és távozik.
 
 /** Egy nap (vagy bármely sorhalmaz) olvasási mélysége. 0, ha nincs belépő. */
+// A SAJÁT BÖNGÉSZÉSÜNK ÚTVONALAI (2026-08-19, mérve).
+// A /hu/ 17 nap alatt 5 belépőt hozott és 148 oldalmegtekintést — az 29,6
+// oldal/látogató. Ez nem közönség: a forgalmunk 82%-a a Facebookról jön,
+// amerikai olvasóknak, és minden egyes napon volt magyar oldalmegtekintés,
+// a legtöbbön 0 rögzített belépővel (vagyis folytatódó munkamenet).
+// A belépők 1,7%-a, DE az oldalmegtekintések 17,5%-a — és pont az
+// oldalmegtekintés a mélység SZÁMLÁLÓJA. Emiatt mutatott a riport 1,24-et
+// ott, ahol a valódi olvasók 1,04-en állnak, és emiatt látszott „+0,04
+// javulásnak" az, ami a saját kattintgatásunk ingadozása volt.
+//
+// ⚠️ A SPANYOL BENT MARAD: a /es/ mért értéke 1,43 oldal/látogató — normális
+// olvasói minta. Kizárni annyi lenne, mint letagadni egy valódi közönséget.
+// A látogatószámokhoz sem nyúlunk: egy belépő attól még belépő. CSAK a
+// mélység-mutató torzult.
+const NEM_KOZONSEG = /^\/hu(\/|$)/;
+
+/** Beleszámít-e ez az útvonal az olvasói mélységbe? Ismeretlen útvonal: IGEN. */
+export function isAudiencePath(path) {
+  if (typeof path !== 'string' || !path) return true;
+  return !NEM_KOZONSEG.test(path);
+}
+
 export function depth(rows) {
-  const list = Array.isArray(rows) ? rows : [];
+  const list = (Array.isArray(rows) ? rows : []).filter(r => isAudiencePath(r?.path));
   let visits = 0, views = 0;
   for (const r of list) { visits += Number(r?.visits) || 0; views += Number(r?.views) || 0; }
   return visits > 0 ? views / visits : 0;

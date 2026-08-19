@@ -6,7 +6,7 @@
 // ===================================================================
 
 import assert from 'assert/strict';
-import { mergeDay, pruneOld, topPages, depth, depthTrend, RECENT_DAYS, KEEP_DAYS } from './traffic-log.js';
+import { mergeDay, pruneOld, topPages, depth, depthTrend, isAudiencePath, RECENT_DAYS, KEEP_DAYS } from './traffic-log.js';
 
 let pass = 0;
 const t = (name, fn) => { fn(); pass++; console.log('  ✅ ' + name); };
@@ -135,6 +135,51 @@ t('fél adatból NEM hasonlítunk', () => {
 t('üres naplóra sem esik szét', () => {
   assert.deepEqual(depthTrend({}, 7), { recent: 0, previous: null, days: 0 });
   assert.equal(depthTrend(undefined).recent, 0);
+});
+
+t('📖 a magyar oldalak nem torzíthatják el a mélységet', () => {
+  // MÉRT ESET (2026-08-19): 17 nap alatt a /hu/ 5 belépőt hozott és 148
+  // oldalmegtekintést — 29,6 oldal/látogató. Ez nem közönség, hanem a saját
+  // böngészésünk. A belépők 1,7%-a, de az oldalmegtekintések 17,5%-a, és pont
+  // az oldalmegtekintés a mélység SZÁMLÁLÓJA. Emiatt mutatott a riport 1,24-et
+  // ott, ahol a valódi olvasók 1,04-en állnak.
+  const sorok = [
+    { path: '/article/how-to-spot-a-deepfake', visits: 10, views: 10 },
+    { path: '/hu/', visits: 1, views: 26 }
+  ];
+  assert.equal(depth(sorok), 1, 'a magyar munkamenet nem emelheti meg a számot');
+});
+
+t('a spanyol olvasó VALÓDI olvasó — bent marad', () => {
+  // A /es/ mért értéke 1,43 oldal/látogató: normális olvasói minta, nem
+  // saját kattintgatás. Kizárni annyi lenne, mint letagadni egy közönséget.
+  assert.equal(depth([{ path: '/es/article/x', visits: 2, views: 3 }]), 1.5);
+});
+
+t('az útvonal nélküli sor bent marad (visszafelé kompatibilitás)', () => {
+  assert.equal(depth([{ visits: 4, views: 8 }]), 2);
+});
+
+t('isAudiencePath: a /hu ki, minden más be', () => {
+  assert.equal(isAudiencePath('/hu/'), false);
+  assert.equal(isAudiencePath('/hu'), false);
+  assert.equal(isAudiencePath('/hu/tools'), false);
+  assert.equal(isAudiencePath('/article/valami'), true);
+  assert.equal(isAudiencePath('/es/article/valami'), true);
+  assert.equal(isAudiencePath('/'), true);
+  assert.equal(isAudiencePath('/humans.txt'), true, 'a "hu" ELŐTAG nem elég — a szóhatár számít');
+  assert.equal(isAudiencePath(undefined), true, 'ismeretlen útvonalat nem dobunk el');
+});
+
+t('a trend is a megtisztított számot adja', () => {
+  const days = {};
+  for (let i = 1; i <= 7; i++) {
+    days['2026-08-0' + i] = [
+      { path: '/article/x', visits: 10, views: 10 },
+      { path: '/hu/', visits: 0, views: 40 }
+    ];
+  }
+  assert.equal(depthTrend(days, 7).recent, 1, 'a saját böngészés a trendbe se szivárogjon be');
 });
 
 console.log('\n✅ traffic-log.test: mind a ' + pass + ' eset rendben');
