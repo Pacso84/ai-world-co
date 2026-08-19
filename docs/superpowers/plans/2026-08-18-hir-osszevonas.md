@@ -53,7 +53,7 @@ futtató `node core/run-tests.js` (`npm test`), `assert/strict`.
   - `isAlreadyWritten(draft: object, keys: {urls,titles}) => boolean`
   - `MIN_TITLE_KEY_LEN: number`
 
-- [ ] **1. lépés: Írd meg a bukó tesztet**
+- [x] **1. lépés: Írd meg a bukó tesztet**
 
 Hozd létre: `core/source-lock.test.js`
 
@@ -193,12 +193,12 @@ t('hiányzó adat nem borít fel semmit', () => {
 console.log('\n✅ source-lock.test: mind a ' + pass + ' eset rendben');
 ```
 
-- [ ] **2. lépés: Futtasd, hogy lásd a bukást**
+- [x] **2. lépés: Futtasd, hogy lásd a bukást**
 
 Futtasd: `node core/source-lock.test.js`
 Várt: `ERR_MODULE_NOT_FOUND` — nincs `core/source-lock.js`.
 
-- [ ] **3. lépés: Írd meg a minimális megvalósítást**
+- [x] **3. lépés: Írd meg a minimális megvalósítást**
 
 Hozd létre: `core/source-lock.js`
 
@@ -308,17 +308,17 @@ export default {
 };
 ```
 
-- [ ] **4. lépés: Futtasd a tesztet**
+- [x] **4. lépés: Futtasd a tesztet**
 
 Futtasd: `node core/source-lock.test.js`
 Várt: PASS, „mind a 11 eset rendben".
 
-- [ ] **5. lépés: Futtasd a teljes tesztsort**
+- [x] **5. lépés: Futtasd a teljes tesztsort**
 
 Futtasd: `npm test`
 Várt: 36 teszt, mind zöld (35 volt + az új).
 
-- [ ] **6. lépés: Commit**
+- [x] **6. lépés: Commit**
 
 ```bash
 git add core/source-lock.js core/source-lock.test.js
@@ -352,7 +352,7 @@ EOF
 - Fogyaszt: `publishedSourceKeys`, `isAlreadyWritten` a `core/source-lock.js`-ből (Task 1)
 - Előállít: `stats.skipped_duplicate` szám a futás-naplóban
 
-- [ ] **1. lépés: Add hozzá az importot és a betöltő segédfüggvényt**
+- [x] **1. lépés: Add hozzá az importot és a betöltő segédfüggvényt**
 
 Az `agents/iro/agent.js` import-blokkjához (a többi `core/` import mellé):
 
@@ -379,47 +379,83 @@ function loadPublishedSourceKeys() {
 }
 ```
 
-- [ ] **2. lépés: Ejtsd a már megírt drafteket a ciklus elején**
+- [x] **2. lépés: Szűrd ki a már megírt drafteket a ciklus ELŐTT**
 
-A `main()`-ben, közvetlenül a `const toProcess = …` sor UTÁN:
+⚠️ **A zár a cikluson KÍVÜL fut, nem belül.** Ez szándékos: a Task 7 ide teszi
+majd az összevonást is, aminek már a megtisztított listát kell látnia. Így a
+Task 7-nek nem kell semmit visszabontania.
+
+A `main()`-ben a jelenlegi kód ebben a sorrendben áll:
 
 ```js
-  const sourceKeys = loadPublishedSourceKeys();
+  const toProcess = args.limit ? drafts.slice(0, args.limit) : drafts;
+  console.log(`📋 ${drafts.length} feldolgozatlan draft található`);
+  console.log(`🎯 Most feldolgozandó: ${toProcess.length}\n`);
+
+  // 3. Statisztika
+  const stats = {
+    started_at: new Date().toISOString(),
+    drafts_total: toProcess.length,
+    articles_written: 0,
+    articles_failed: 0,
+    total_cost_usd: 0,
+    by_article: []
+  };
 ```
 
-A `for (const draftFilename of toProcess) {` cikluson belül, közvetlenül a
-`const draft = JSON.parse(readFileSync(draftPath, 'utf-8'));` sor UTÁN:
+⚠️ A `stats` a `toProcess` UTÁN jön létre, a szűrésnek viszont már írnia kell
+bele. Ezért a `stats` felkerül a szűrés ELÉ. Cseréld le a fenti EGÉSZ blokkot
+erre:
 
 ```js
-    // FORRÁS-ZÁR: erről a hírről már van cikkünk. Nem írjuk meg újra — sem
-    // más szemszögből. (2026-08-18: öt sztoriról volt két-két cikkünk.)
-    if (isAlreadyWritten(draft, sourceKeys)) {
-      console.log(`   ⏭️  Már írtunk erről a hírről — eldobom (nem költünk rá).\n`);
+  // 3. Statisztika (FELJEBB KERÜLT: a forrás-zár már ír bele)
+  const stats = {
+    started_at: new Date().toISOString(),
+    drafts_total: 0,
+    articles_written: 0,
+    articles_failed: 0,
+    skipped_duplicate: 0,
+    total_cost_usd: 0,
+    by_article: []
+  };
+
+  // FORRÁS-ZÁR: amiről már van cikkünk, azt nem írjuk meg újra — sem más
+  // szemszögből. (2026-08-18: öt sztoriról volt két-két cikkünk.) A szűrés a
+  // ciklus ELŐTT fut, hogy a már megírt hír AI-hívásig se jusson el, és hogy a
+  // Task 7 összevonása már a megtisztított listát lássa.
+  const sourceKeys = loadPublishedSourceKeys();
+  const elo = [];
+  for (const f of drafts) {
+    let d;
+    try { d = JSON.parse(readFileSync(join(DRAFTS_DIR, f), 'utf-8')); } catch { continue; }
+    if (isAlreadyWritten(d, sourceKeys)) {
+      console.log(`   ⏭️  Már írtunk erről a hírről — eldobom: ${f.slice(0, 50)}`);
       stats.skipped_duplicate++;
-      try { unlinkSync(draftPath); } catch { /* már nincs ott */ }
+      try { unlinkSync(join(DRAFTS_DIR, f)); } catch { /* már nincs ott */ }
       continue;
     }
+    elo.push(f);
+  }
+
+  const toProcess = args.limit ? elo.slice(0, args.limit) : elo;
+  stats.drafts_total = toProcess.length;
+  console.log(`📋 ${drafts.length} draft · ${elo.length} a zár után`);
+  console.log(`🎯 Most feldolgozandó: ${toProcess.length}\n`);
 ```
 
-A `stats` objektumhoz (a `articles_failed: 0,` sor után):
-
-```js
-    skipped_duplicate: 0,
-```
-
-- [ ] **3. lépés: Ellenőrizd, hogy a fájl szintaktikailag ép**
+- [x] **3. lépés: Ellenőrizd, hogy a fájl szintaktikailag ép**
 
 Futtasd: `node --check agents/iro/agent.js`
 Várt: nincs kimenet (ez CSAK szintaxis-ellenőrzés, NEM futtatja a fájlt).
 
 ⚠️ SOHA ne futtasd `node agents/iro/agent.js`-ként — az valódi pénzt költene.
 
-- [ ] **4. lépés: Futtasd a teljes tesztsort**
+- [x] **4. lépés: Futtasd a teljes tesztsort**
 
 Futtasd: `npm test`
 Várt: 36 teszt, mind zöld.
 
-- [ ] **5. lépés: Commit**
+- [x] **5. lépés: Commit**
 
 ```bash
 git add agents/iro/agent.js
@@ -448,7 +484,7 @@ EOF
 - Fogyaszt: `publishedSourceKeys`, `isAlreadyWritten` a `core/source-lock.js`-ből (Task 1)
 - Előállít: semmit (a `isDuplicate(d)` szignatúra változatlan marad)
 
-- [ ] **1. lépés: Add hozzá az importot**
+- [x] **1. lépés: Add hozzá az importot**
 
 Az `agents/ceo/desk.js` import-blokkjához:
 
@@ -456,7 +492,7 @@ Az `agents/ceo/desk.js` import-blokkjához:
 import { publishedSourceKeys, isAlreadyWritten } from '../../core/source-lock.js';
 ```
 
-- [ ] **2. lépés: Cseréld le az `isDuplicate` törzsét**
+- [x] **2. lépés: Cseréld le az `isDuplicate` törzsét**
 
 Az `agents/ceo/desk.js`-ben a teljes `function isDuplicate(d) { … }` helyére:
 
@@ -465,17 +501,17 @@ Az `agents/ceo/desk.js`-ben a teljes `function isDuplicate(d) { … }` helyére:
 // Korábban itt volt egy saját változat, ami szó szerint (===) hasonlított,
 // tehát a „https://x.com/a" és a „https://x.com/a/" különbözőnek látszott.
 // Két, egymástól eltérően normalizáló duplikátum-fogalom rosszabb, mint egy.
-let _kulcsCache = null;
+//
+// ⚠️ SZÁNDÉKOSAN NINCS GYORSÍTÓTÁR: a desk futása közben ÚJ cikk publikálódhat,
+// és a következő hívásnak azt is látnia kell. Az eredeti változat is minden
+// híváskor frissen olvasott — a sebességért nem cserélünk helyességet.
 function isDuplicate(d) {
   if (!existsSync(ARTICLES_DIR)) return false;
-  if (!_kulcsCache) {
-    const cikkek = [];
-    for (const f of readdirSync(ARTICLES_DIR).filter(x => x.endsWith('.json'))) {
-      try { cikkek.push(JSON.parse(readFileSync(join(ARTICLES_DIR, f), 'utf-8'))); } catch { /* skip */ }
-    }
-    _kulcsCache = publishedSourceKeys(cikkek);
+  const cikkek = [];
+  for (const f of readdirSync(ARTICLES_DIR).filter(x => x.endsWith('.json'))) {
+    try { cikkek.push(JSON.parse(readFileSync(join(ARTICLES_DIR, f), 'utf-8'))); } catch { /* skip */ }
   }
-  return isAlreadyWritten(d, _kulcsCache);
+  return isAlreadyWritten(d, publishedSourceKeys(cikkek));
 }
 ```
 
@@ -483,17 +519,17 @@ function isDuplicate(d) {
 `d._meta.source_link` és a címe `d.original_title` — az `isAlreadyWritten`
 mindkét mezőnevet ismeri.
 
-- [ ] **3. lépés: Ellenőrizd a szintaxist**
+- [x] **3. lépés: Ellenőrizd a szintaxist**
 
 Futtasd: `node --check agents/ceo/desk.js`
 Várt: nincs kimenet.
 
-- [ ] **4. lépés: Futtasd a teljes tesztsort**
+- [x] **4. lépés: Futtasd a teljes tesztsort**
 
 Futtasd: `npm test`
 Várt: 36 teszt, mind zöld.
 
-- [ ] **5. lépés: Commit**
+- [x] **5. lépés: Commit**
 
 ```bash
 git add agents/ceo/desk.js
@@ -522,7 +558,7 @@ EOF
 - Fogyaszt: semmit
 - Előállít: `extractJsonArray(text: string) => any[]` (hibánál `throw`)
 
-- [ ] **1. lépés: Írd meg a bukó tesztet**
+- [x] **1. lépés: Írd meg a bukó tesztet**
 
 Hozd létre: `core/extract-json.test.js`
 
@@ -578,12 +614,12 @@ t('szemétre HIBÁT dob (a hívó erre esik vissza)', () => {
 console.log('\n✅ extract-json.test: mind a ' + pass + ' eset rendben');
 ```
 
-- [ ] **2. lépés: Futtasd, hogy lásd a bukást**
+- [x] **2. lépés: Futtasd, hogy lásd a bukást**
 
 Futtasd: `node core/extract-json.test.js`
 Várt: `ERR_MODULE_NOT_FOUND`.
 
-- [ ] **3. lépés: Hozd létre a modult**
+- [x] **3. lépés: Hozd létre a modult**
 
 Hozd létre: `core/extract-json.js`
 
@@ -632,12 +668,12 @@ export default { extractJsonArray };
 
 ⚠️ A `JSON.parse('')` magától dob — ez a kívánt viselkedés, nem kell külön ág.
 
-- [ ] **4. lépés: Futtasd a tesztet**
+- [x] **4. lépés: Futtasd a tesztet**
 
 Futtasd: `node core/extract-json.test.js`
 Várt: PASS, „mind a 6 eset rendben".
 
-- [ ] **5. lépés: Állítsd át a két meglévő hívót**
+- [x] **5. lépés: Állítsd át a `rss-scraper`-t (a `guide`-ot NEM)**
 
 `agents/rss-scraper/agent.js`: töröld a helyi `function extractJsonArray(text) { … }`
 definíciót (a fölötte lévő magyarázó kommenttel együtt), és tedd az import-blokkba:
@@ -646,25 +682,43 @@ definíciót (a fölötte lévő magyarázó kommenttel együtt), és tedd az im
 import { extractJsonArray } from '../../core/extract-json.js';
 ```
 
-Ugyanez `agents/guide/agent.js`-ben a helyi másolattal.
+⚠️ **A `agents/guide/agent.js` másolatához NE nyúlj — ez döntés, nem feledékenység**
+(2026-08-18, átvizsgálással kimérve). Az ottani változat MÁS SZERZŐDÉS, nem másolat:
 
-- [ ] **6. lépés: Ellenőrizd, hogy egy másolat sem maradt**
+1. csonkolt válasznál (token-limit) az utolsó teljes `}`-ig menti a részleges eredményt,
+   a közös változat viszont ilyenkor dob;
+2. hiba esetén `[]`-t ad, sosem dob — és a **hívási helyein nincs `try/catch`**, tehát a
+   dobás a fájl végi `main().catch()`-en át az EGÉSZ guide-futást leállítaná.
+
+A közös modul szerződése SZÁNDÉKOSAN a dobás, mert a hívói arra esnek vissza. Két
+ellentmondó szerződést egy függvénybe gyúrni rosszabb, mint két külön függvény.
+
+Mindkét helyre magyarázó komment kell, hogy a következő „takarítás" ne okozzon néma
+regressziót:
+- `agents/guide/agent.js` — a saját függvénye fölé: miért nem a közös, a két konkrét
+  eltérés, a hiányzó `try/catch` következménye, és a dátum;
+- `core/extract-json.js` — a fejlécbe egy sor: a guide szándékosan saját, engedékenyebb
+  változatot tart; ez nem elfelejtett duplikátum.
+
+- [x] **6. lépés: Ellenőrizd az állapotot**
 
 Futtasd:
 ```bash
 grep -rn "function extractJsonArray" --include=*.js core/ agents/
 ```
-Várt: pontosan EGY találat, `core/extract-json.js`-ben.
+Várt: **KÉT** találat — `core/extract-json.js` és `agents/guide/agent.js`. A második a
+fenti döntés miatt marad, és a kommentje megmagyarázza. Ha HÁROM van, a scraper másolata
+bennragadt; ha EGY, valaki elvégezte a tiltott migrációt.
 
 Futtasd: `node --check agents/rss-scraper/agent.js && node --check agents/guide/agent.js`
 Várt: nincs kimenet.
 
-- [ ] **7. lépés: Futtasd a teljes tesztsort**
+- [x] **7. lépés: Futtasd a teljes tesztsort**
 
 Futtasd: `npm test`
 Várt: 37 teszt, mind zöld.
 
-- [ ] **8. lépés: Commit**
+- [x] **8. lépés: Commit**
 
 ```bash
 git add core/extract-json.js core/extract-json.test.js agents/rss-scraper/agent.js agents/guide/agent.js
@@ -695,7 +749,7 @@ EOF
   - `parseClusterReply(parsed: any, validIds: string[]) => {theme: string, ids: string[]}[]`
   - `planWriteOrder(allIds: string[], groups: {theme,ids}[]) => {theme: string|null, ids: string[]}[]`
 
-- [ ] **1. lépés: Írd meg a bukó tesztet**
+- [x] **1. lépés: Írd meg a bukó tesztet**
 
 Hozd létre: `core/draft-clusters.test.js`
 
@@ -817,12 +871,12 @@ t('a csoportok elöl vannak a tervben', () => {
 console.log('\n✅ draft-clusters.test: mind a ' + pass + ' eset rendben');
 ```
 
-- [ ] **2. lépés: Futtasd, hogy lásd a bukást**
+- [x] **2. lépés: Futtasd, hogy lásd a bukást**
 
 Futtasd: `node core/draft-clusters.test.js`
 Várt: `ERR_MODULE_NOT_FOUND`.
 
-- [ ] **3. lépés: Írd meg a modult**
+- [x] **3. lépés: Írd meg a modult**
 
 Hozd létre: `core/draft-clusters.js`
 
@@ -917,17 +971,17 @@ export default {
 };
 ```
 
-- [ ] **4. lépés: Futtasd a tesztet**
+- [x] **4. lépés: Futtasd a tesztet**
 
 Futtasd: `node core/draft-clusters.test.js`
 Várt: PASS, „mind a 12 eset rendben".
 
-- [ ] **5. lépés: Futtasd a teljes tesztsort**
+- [x] **5. lépés: Futtasd a teljes tesztsort**
 
 Futtasd: `npm test`
 Várt: 38 teszt, mind zöld.
 
-- [ ] **6. lépés: Commit**
+- [x] **6. lépés: Commit**
 
 ```bash
 git add core/draft-clusters.js core/draft-clusters.test.js
@@ -959,7 +1013,7 @@ EOF
   `ask` a `core/ai-router.js`-ből
 - Előállít: `async clusterDrafts(draftFilenames: string[]) => {groups, costUsd}`
 
-- [ ] **1. lépés: Vedd fel a `cluster` agentet a configba**
+- [x] **1. lépés: Vedd fel a `cluster` agentet a configba**
 
 A `config.json` `agents` objektumába, a `rss-scraper` mellé:
 
@@ -979,7 +1033,7 @@ A `config.json` `agents` objektumába, a `rss-scraper` mellé:
     },
 ```
 
-- [ ] **2. lépés: Ellenőrizd, hogy a config ép maradt**
+- [x] **2. lépés: Ellenőrizd, hogy a config ép maradt**
 
 Futtasd:
 ```bash
@@ -987,7 +1041,7 @@ node -e "const c=require('./config.json'); console.log('cluster modell:', c.agen
 ```
 Várt: `cluster modell: minimax/minimax-m2.5`
 
-- [ ] **3. lépés: Írd meg a `clusterDrafts()` függvényt**
+- [x] **3. lépés: Írd meg a `clusterDrafts()` függvényt**
 
 Az `agents/iro/agent.js` import-blokkjához:
 
@@ -1059,17 +1113,17 @@ async function clusterDrafts(draftFilenames) {
 (`grep -n "import.*ai-router" agents/iro/agent.js`) — a `writeArticle` már
 használja, tehát ott kell lennie.
 
-- [ ] **4. lépés: Ellenőrizd a szintaxist**
+- [x] **4. lépés: Ellenőrizd a szintaxist**
 
 Futtasd: `node --check agents/iro/agent.js`
 Várt: nincs kimenet.
 
-- [ ] **5. lépés: Futtasd a teljes tesztsort**
+- [x] **5. lépés: Futtasd a teljes tesztsort**
 
 Futtasd: `npm test`
 Várt: 38 teszt, mind zöld.
 
-- [ ] **6. lépés: Commit**
+- [x] **6. lépés: Commit**
 
 ```bash
 git add config.json agents/iro/agent.js
@@ -1099,7 +1153,7 @@ EOF
 - Fogyaszt: `clusterDrafts` (Task 6), `planWriteOrder` (Task 5), `isAlreadyWritten` (Task 1)
 - Előállít: `_meta.source_links: string[]`, `_meta.merged_from: number` a `WRITER_*` fájlokban
 
-- [ ] **1. lépés: Alakítsd át a `writeArticle`-t több draftra**
+- [x] **1. lépés: Alakítsd át a `writeArticle`-t több draftra**
 
 Az `agents/iro/agent.js`-ben a `async function writeArticle(draft, brandContext) {`
 szignatúrát cseréld erre, és a `topicSignal` felépítését is:
@@ -1134,7 +1188,7 @@ ${kozos}${jelzesek}
 
 A függvény többi része változatlan (a `topicSignal` innentől ugyanúgy használódik).
 
-- [ ] **2. lépés: Bővítsd a `saveWrittenArticle`-t**
+- [x] **2. lépés: Bővítsd a `saveWrittenArticle`-t**
 
 Az `agents/iro/agent.js` `saveWrittenArticle` függvényét cseréld erre:
 
@@ -1176,34 +1230,29 @@ function saveWrittenArticle(originalDraftFilename, drafts, articleResponse, them
 }
 ```
 
-- [ ] **3. lépés: Írd át a `main()` ciklusát: a `--limit` CIKKET jelent**
+- [x] **3. lépés: Írd át a `main()` ciklusát: a `--limit` CIKKET jelent**
 
 ⚠️ **Ez a terv legfontosabb viselkedés-változása.** Ma az `agents/ceo/agent.js:495`
 a `--limit N`-t adja át, az író pedig `drafts.slice(0, args.limit)`-tel DRAFTOT
 vág. Összevonás után ez kevesebb cikket eredményezne — pont az ellenkezőjét
 annak, amit akarunk.
 
-Az `agents/iro/agent.js` `main()`-jében a `const toProcess = args.limit ? drafts.slice(0, args.limit) : drafts;`
-sortól a cikluson át cseréld erre:
+A Task 2 már létrehozta a `sourceKeys` szűrést és az `elo` listát a ciklus
+előtt — **azokhoz ne nyúlj.** Csak az utánuk következő három sort cseréld:
+
+```js
+  const toProcess = args.limit ? elo.slice(0, args.limit) : elo;
+  stats.drafts_total = toProcess.length;
+  console.log(`📋 ${drafts.length} draft · ${elo.length} a zár után`);
+  console.log(`🎯 Most feldolgozandó: ${toProcess.length}\n`);
+```
+
+erre (és utána a teljes `for` ciklust az alábbi ciklusra):
 
 ```js
   // A --limit CIKKET jelent, nem draftot (2026-08-18). A CEO amúgy is így érti:
   // agents/ceo/agent.js articles_remaining = 8 − a ma megírt hírek száma.
-  const maxCikk = args.limit || drafts.length;
-  const sourceKeys = loadPublishedSourceKeys();
-
-  // FORRÁS-ZÁR ELŐSZÖR: a már megírt hírek ne is menjenek be a csoportosításba.
-  const elo = [];
-  for (const f of drafts) {
-    let d; try { d = JSON.parse(readFileSync(join(DRAFTS_DIR, f), 'utf-8')); } catch { continue; }
-    if (isAlreadyWritten(d, sourceKeys)) {
-      console.log(`   ⏭️  Már írtunk erről a hírről — eldobom: ${f.slice(0, 50)}`);
-      stats.skipped_duplicate++;
-      try { unlinkSync(join(DRAFTS_DIR, f)); } catch { /* */ }
-      continue;
-    }
-    elo.push(f);
-  }
+  const maxCikk = args.limit || elo.length;
 
   // ÖSSZEVONÁS: melyik hírek szólnak ugyanarról?
   const { groups, costUsd: clusterCost } = await clusterDrafts(elo);
@@ -1215,6 +1264,7 @@ sortól a cikluson át cseréld erre:
   }
 
   const terv = planWriteOrder(elo, groups).slice(0, maxCikk);
+  stats.drafts_total = terv.reduce((s, e) => s + e.ids.length, 0);
   console.log(`📋 ${drafts.length} draft · ${elo.length} zár után · ${terv.length} cikk készül\n`);
 
   for (const egyseg of terv) {
@@ -1260,23 +1310,22 @@ sortól a cikluson át cseréld erre:
 ```
 
 ⚠️ A `stats` objektumhoz vedd fel: `clusters_found: 0,` és `merged_total: 0,`.
-⚠️ A Task 2-ben beírt, cikluson belüli zár-blokk innentől **felesleges** —
-töröld, mert a zár most a ciklus ELŐTT fut (különben kétszer futna).
 
-- [ ] **4. lépés: Ellenőrizd a szintaxist és a maradékot**
+- [x] **4. lépés: Ellenőrizd a szintaxist és a zár épségét**
 
 Futtasd: `node --check agents/iro/agent.js`
 Várt: nincs kimenet.
 
 Futtasd: `grep -c "isAlreadyWritten" agents/iro/agent.js`
-Várt: `2` (egy import, egy hívás). Ha 3, maradt a Task 2-es duplikált blokk.
+Várt: `2` — egy import, egy hívás. Ha **1**, véletlenül kitörölted a Task 2
+forrás-zárát; ha **3**, kétszer fut.
 
-- [ ] **5. lépés: Futtasd a teljes tesztsort**
+- [x] **5. lépés: Futtasd a teljes tesztsort**
 
 Futtasd: `npm test`
 Várt: 38 teszt, mind zöld.
 
-- [ ] **6. lépés: Commit**
+- [x] **6. lépés: Commit**
 
 ```bash
 git add agents/iro/agent.js
@@ -1311,7 +1360,7 @@ EOF
 - Fogyaszt: `_meta.merged_from` a publikált cikkekből
 - Előállít: `mergeLine(articles: object[], days: number) => string`
 
-- [ ] **1. lépés: Írd meg a bukó tesztet**
+- [x] **1. lépés: Írd meg a bukó tesztet**
 
 A `core/report-lines.test.js` végére, a záró `console.log` ELÉ:
 
@@ -1344,12 +1393,12 @@ t('hiányzó adatra nem borul', () => {
 
 Az import-sort a fájl tetején egészítsd ki `mergeLine`-nal.
 
-- [ ] **2. lépés: Futtasd, hogy lásd a bukást**
+- [x] **2. lépés: Futtasd, hogy lásd a bukást**
 
 Futtasd: `node core/report-lines.test.js`
 Várt: FAIL — `mergeLine is not a function`.
 
-- [ ] **3. lépés: Írd meg a `mergeLine`-t**
+- [x] **3. lépés: Írd meg a `mergeLine`-t**
 
 A `core/report-lines.js` végére, az `export default` ELÉ:
 
@@ -1379,12 +1428,12 @@ export function mergeLine(articles, days = 1) {
 }
 ```
 
-- [ ] **4. lépés: Futtasd a tesztet**
+- [x] **4. lépés: Futtasd a tesztet**
 
 Futtasd: `node core/report-lines.test.js`
 Várt: PASS.
 
-- [ ] **5. lépés: Illeszd be a sort a napi riportba**
+- [x] **5. lépés: Illeszd be a sort a napi riportba**
 
 A `core/daily-report.js` **24. során** egészítsd ki a meglévő importot:
 
@@ -1419,12 +1468,12 @@ számok visszaadódnak — a függvény `return` objektumához vedd fel:
 ⚠️ Ha a `r` objektum neve a te kódrészletedben más, használd az ott érvényeset —
 a `grep -n "r.pendingSources" core/daily-report.js` megmutatja.
 
-- [ ] **6. lépés: Futtasd a teljes tesztsort**
+- [x] **6. lépés: Futtasd a teljes tesztsort**
 
 Futtasd: `npm test`
 Várt: 38 teszt, mind zöld.
 
-- [ ] **7. lépés: Commit**
+- [x] **7. lépés: Commit**
 
 ```bash
 git add core/report-lines.js core/report-lines.test.js core/daily-report.js

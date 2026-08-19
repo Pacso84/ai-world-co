@@ -27,6 +27,7 @@ import { dirname, join } from 'path';
 import Parser from 'rss-parser';
 import { ask } from '../../core/ai-router.js';
 import { skillsBlock } from '../../core/skills.js';
+import { extractJsonArray } from '../../core/extract-json.js';
 
 // ===================================================================
 // SETUP
@@ -197,35 +198,6 @@ async function fetchFeed(feedConfig) {
       return { ok: false, error: error.message, items: [] };
     }
   }
-}
-
-// ===================================================================
-// ROBOSZTUS JSON TÖMB KINYERÉS
-// ===================================================================
-// Az AI néha markdown-ba teszi (```json), néha szöveget ír köré.
-// Ez kinyeri az első [ és utolsó ] közti részt és parse-olja.
-// ===================================================================
-
-function extractJsonArray(text) {
-  let t = text.trim();
-  // Markdown ``` blokkok eltávolítása
-  t = t.replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/, '');
-  // Első [ és utolsó ] közti rész
-  const start = t.indexOf('[');
-  const end = t.lastIndexOf(']');
-  if (start !== -1 && end !== -1 && end > start) {
-    t = t.slice(start, end + 1);
-  }
-  const parsed = JSON.parse(t);
-  if (Array.isArray(parsed)) return parsed;
-  // JSON-objektum-mód (Cerebras/GLM-4.7) legfelül objektumot kényszerít:
-  // {"decisions":[...]} borítékból vagy egyetlen döntés-objektumból is
-  // ki kell tudni szedni a tömböt (2026-07-16: "results is not iterable").
-  if (parsed && typeof parsed === 'object') {
-    for (const v of Object.values(parsed)) if (Array.isArray(v)) return v;
-    if ('index' in parsed) return [parsed];
-  }
-  throw new Error('A válaszban nincs JSON-tömb');
 }
 
 // ===================================================================

@@ -50,3 +50,8 @@ temp/
 # Cloudflare Worker helyi fejlesztői változók (wrangler dev) — SOHA nem kerül repóba
 .dev.vars
 telegram-worker/.dev.vars
+
+# Munkaterületek (git worktree) — SOHA nem kerulhet a repoba: a teljes
+# munkamasolatot commitolna be. A .claude/worktrees/ alatt a natív worktree-
+# eszkoz dolgozik; a tartalma mar amugy is verziokovetett a sajat agan.
+.claude/worktrees/

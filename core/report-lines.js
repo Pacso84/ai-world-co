@@ -117,3 +117,30 @@ export function describeTranslationGaps(gaps) {
 
   return `${fej} — ${pelda}${gaps.length > GAP_EXAMPLES ? ' …' : ''}${figyelem}`;
 }
+/**
+ * 🔗 Hír-összevonás — hány cikk készült több hírből az elmúlt N napban.
+ *
+ * MIÉRT KELL EZ A SOR: az összevonás legvalószínűbb csendes hibája nem az,
+ * hogy rosszul csoportosít, hanem hogy SOSEM csoportosít. Az ítélet
+ * visszaeshet üres válaszra, a korlátok lehetnek túl szigorúak — és minden
+ * „működni" látszana, mert a cikkek elkészülnek. Ez a szám a különbség az
+ * „elkészült" és a „működik" között.
+ *
+ * ⚠️ AZ ABLAK SZÁMÍT: csak a MAI (N napos) cikkeket nézzük. A teljes élettartam
+ * összege akkor is szép számot mutatna, amikor az ítélet ma már nem von össze
+ * semmit — ez a hiba egyszer már megtörtént az „ISMÉTLŐDŐ hiba" sorral.
+ */
+export function mergeLine(articles, days = 1) {
+  const lista = Array.isArray(articles) ? articles : [];
+  const hatar = Date.now() - days * 86400000;
+  let cikk = 0, hir = 0;
+  for (const a of lista) {
+    const at = Date.parse(a?._meta?.published_at || '');
+    if (!Number.isFinite(at) || at < hatar) continue;
+    const n = Number(a?._meta?.merged_from) || 1;
+    if (n > 1) { cikk++; hir += n; }
+  }
+  return cikk
+    ? `🔗 Összevonás: ${cikk} cikk ${hir} hírből (${days} nap)`
+    : `🔗 Összevonás: nem volt (0 cikk, ${days} nap)`;
+}

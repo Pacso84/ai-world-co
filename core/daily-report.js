@@ -21,7 +21,7 @@ import { dirname, join } from 'path';
 import { sendMessage } from './telegram.js';
 import { canonicalChip } from './quality-guard.js';
 import { summarizeRuns, describeFailures } from './make-health.js';
-import { describePosts, describeRepeat, describeTranslationGaps } from './report-lines.js';
+import { describePosts, describeRepeat, describeTranslationGaps, mergeLine } from './report-lines.js';
 import { bodyLooksUntranslated } from './translation-guard.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -148,13 +148,16 @@ function collect() {
   // szám a MAI napra vonatkozzon. (A dél körül futó jelentés a mai éjszakai +
   // reggeli futást fogja; a délutáni futás tartalma az oldalon ott van.)
   const dayStr = today();
-  let news = 0, guides = 0; const titles = [];
+  let news = 0, guides = 0; const titles = []; const maiCikkek = [];
   const artDir = join(ROOT, 'content', 'articles');
   if (existsSync(artDir)) {
     for (const f of readdirSync(artDir).filter(x => x.endsWith('.json'))) {
       try {
         const d = JSON.parse(readFileSync(join(artDir, f), 'utf-8'));
         if ((d._meta?.published_at || '').slice(0, 10) !== dayStr) continue;
+        // ÖSSZEVONÁS-SOR (2026-08-18): ugyanebből a ciklusból gyűjtjük, hogy a
+        // 744 cikk NE olvasódjon be másodszor is.
+        maiCikkek.push(d);
         // Útmutató: a _meta.type MINDIG megbízható a guide-oknál; a hír-cikkeknek
         // nincs type mezőjük — a fájlnév-előtag a biztos tartalék (2026-07-23).
         (d._meta?.type === 'guide' || f.startsWith('ARTICLE_GUIDE')) ? guides++ : news++;
@@ -275,7 +278,7 @@ function collect() {
     pendingSources = (JSON.parse(readFileSync(join(ROOT, 'agents', 'source-scout', 'discovered-sources.json'), 'utf-8')).discovered_sources || []).length;
   } catch { /* skip */ }
 
-  return { news, guides, titles, fbPosts, spentYesterday, spentToday, spentMonth, burnPerDay, missing, gaps, bans, pendingSources, missingLinks };
+  return { news, guides, titles, maiCikkek, fbPosts, spentYesterday, spentToday, spentMonth, burnPerDay, missing, gaps, bans, pendingSources, missingLinks };
 }
 
 // Hány FB-poszt MENT KI valóban az elmúlt 24 órában? A saját jelölésünk
@@ -359,6 +362,10 @@ async function main() {
     const dd = dlog[today()] || [];
     if (dd.length) lines.push(`🔁 Ismétlődő téma kiszűrve: ${dd.length} (pl. „${(dd[0].rejected || '').slice(0, 45)}” ≈ „${(dd[0].closest || '').slice(0, 45)}”)`);
   } catch { /* még nincs dedup-napló */ }
+  // 🔗 HÍR-ÖSSZEVONÁS (2026-08-18): AKKOR IS kimegy, ha nem volt összevonás —
+  // a néma hiba pont az lenne, hogy az ítélet sosem csoportosít, és a hiányzó
+  // sorból ez nem derülne ki. Az őrszem csak akkor őr, ha odaszól, ahol nézed.
+  lines.push(mergeLine(r.maiCikkek, 1));
   // HITELESSÉG-KAPU összegzés (2026-07-16): mit fogott a publikálás előtti
   // hallucináció-szűrő — blokk = rejected-be ment, hold = bíró-hiba, várakozik.
   try {

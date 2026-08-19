@@ -10,7 +10,7 @@
 
 import assert from 'assert/strict';
 import {
-  describePosts, describeRepeat, REPEAT_URGENT_PER_WEEK, describeTranslationGaps
+  describePosts, describeRepeat, REPEAT_URGENT_PER_WEEK, describeTranslationGaps, mergeLine
 } from './report-lines.js';
 
 let pass = 0;
@@ -149,6 +149,41 @@ t('az angolul maradt fordítás más ok, mint az üres', () => {
     { slug: 'valami-cikk', lang: 'es', ok: 'angolul maradt' }
   ]);
   assert.match(s, /angolul maradt/);
+});
+
+t('🔗 az összevonás száma kimegy a riportba', () => {
+  // MIÉRT KELL: ha az ítélet sosem von össze semmit, azt CSAK ebből lehet
+  // észrevenni. A szám nélkül az „elkészült" és a „működik" nem különbözik.
+  const most = Date.now();
+  const cikkek = [
+    { _meta: { merged_from: 3, published_at: new Date(most - 3600e3).toISOString() } },
+    { _meta: { merged_from: 1, published_at: new Date(most - 7200e3).toISOString() } },
+    { _meta: { published_at: new Date(most - 10800e3).toISOString() } }
+  ];
+  const sor = mergeLine(cikkek, 1);
+  assert.match(sor, /🔗/);
+  assert.match(sor, /1 cikk/, 'egy összevont cikk');
+  assert.match(sor, /3 hírből/, 'három hírből');
+});
+
+t('a régi cikk nem számít bele az ablakba', () => {
+  // AZ IRÁNY SZÁMÍT: ha a régi összevonásokat is beleszámolnánk, a sor akkor is
+  // szép számot mutatna, amikor az ítélet MA már nem von össze semmit.
+  const regi = new Date(Date.now() - 5 * 86400e3).toISOString();
+  const sor = mergeLine([{ _meta: { merged_from: 4, published_at: regi } }], 1);
+  assert.match(sor, /nem volt/);
+});
+
+t('összevonás nélkül is ad értelmes sort', () => {
+  const sor = mergeLine([{ _meta: { published_at: new Date().toISOString() } }], 1);
+  assert.ok(typeof sor === 'string' && sor.length > 0);
+  assert.match(sor, /nem volt|0/);
+});
+
+t('hiányzó adatra nem borul', () => {
+  assert.ok(typeof mergeLine(null, 1) === 'string');
+  assert.ok(typeof mergeLine([], 1) === 'string');
+  assert.ok(typeof mergeLine([{}, { _meta: null }], 1) === 'string');
 });
 
 console.log('\n✅ report-lines.test: mind a ' + pass + ' eset rendben');

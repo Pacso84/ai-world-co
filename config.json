@@ -149,6 +149,19 @@
       "comment": "MODELL-TIERING 2026-07-24 (user: minden fizetős). KÖLTSÉG-OPTIMUM = MiniMax M2.5 — a legolcsóbb működő fizetős tier gépies munkára (parse/terv/formátum). MEGJEGYZÉS: az M2.5/M2.7 NEM engedi kikapcsolni a gondolkodást (HTTP 400), így reasoning marad ON. Fallback M2.7, vég-tartalék az ingyenes VÉSZHÁLÓ.",
       "routing": "paid-only"
     },
+    "cluster": {
+      "primary_model": {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.5"
+      },
+      "fallback_model": {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.7"
+      },
+      "enabled": true,
+      "comment": "HIR-OSSZEVONAS (2026-08-18, user: 'tobb hirbol egy cikk'). Gepies dontes: melyik fuggoben levo hirek szolnak ugyanarrol. Ezert M2.5, a legolcsobb mukodo fizetos tier. A bemenet csak cim + kivonat, par szaz token; napi ~1,3 csoportnyi forgalom. HIBA ESETEN NINCS CSOPORT: minden hir kulon cikk lesz, ahogy ma.",
+      "routing": "paid-only"
+    },
     "iro": {
       "primary_model": {
         "provider": "openrouter",
