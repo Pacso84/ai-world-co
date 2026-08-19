@@ -1,0 +1,59 @@
+{
+  "_meta": {
+    "written_at": "2026-08-19T00:40:10.853Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00984138,
+    "original_draft": "2026-08-19T00-37-28-596Z_openai-blog_Asana_cleared_5_years_of_engineering_work_in_2_wee.json",
+    "source_id": "openai-blog",
+    "source_name": "OpenAI Blog (hivatalos)",
+    "source_link": "https://openai.com/index/asana",
+    "status": "published",
+    "published_at": "2026-08-19T00:40:29.948Z",
+    "slug": "ai-finished-5-years-of-coding-work-in-2-weeks-what-that-means-for-the-",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 771
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [
+        "British spellings need US English conversion: reorganising → reorganizing, behaviour → behavior",
+        "Verify $12,000 cost figure and specific timeline claims against OpenAI source"
+      ],
+      "verdict": "Well-structured explainer with good hooks and clear audience segmentation. The three 'What this means for you' sections are strong and actionable. Main concern is British spellings that need conversion to US English, plus one factual claim ($12,000) that should be verified against the original OpenAI source before publishing.",
+      "_aiCost": 0.00129303,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-08-19T00:41:30.730Z",
+    "guide_worthy": false,
+    "pairing_reason": "Codex is an enterprise/API product, not accessible to everyday users, and the article only vaguely suggests trying unnamed Codex-powered tools without concrete steps",
+    "image_v": 2,
+    "image_at": "2026-08-19T00:46:18.312Z",
+    "seo": {
+      "meta_description": "AI finished 5 years of coding work in just 2 weeks using OpenAI's Codex at Asana. Here's what this breakthrough means for the future of work.",
+      "keywords": [
+        "AI coding assistant",
+        "OpenAI Codex Asana",
+        "AI completed years of work",
+        "what AI means for workers",
+        "AI coding tool 2024"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Consider adding the specific timeframe '5 years to 2 weeks' to the meta for higher CTR",
+        "The keyword 'OpenAI Codex' is accurate but search volume may be low — consider adding 'AI programmer' or 'AI code writer'",
+        "Title is strong and clickable; no changes needed there"
+      ],
+      "optimised_at": "2026-08-19T00:47:30.637Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"AI Finished 5 Years of Coding Work in 2 Weeks — What That Means for the Rest of Us\"\nsubtitle: \"OpenAI's Codex helped Asana clear a backlog in days. Here's the plain-language version of what happened, and where you fit in.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"ai-coding\", \"openai-codex\", \"workplace-ai\", \"automation\"]\n---\n\n# AI Finished 5 Years of Coding Work in 2 Weeks — What That Means for the Rest of Us\n\n> **In short:** Asana's engineers used OpenAI's Codex to replace an outdated testing system in about two weeks — work that would normally have taken close to five years. It shows AI coding assistants are now tackling messy legacy projects, not just writing snippets.\n\nPicture someone on a software team staring at a pile of old testing code that nobody wants to touch. It is the kind of project that lives forever on \"someday.\" Then one afternoon, an AI assistant finishes it. Roughly that is what just happened at Asana.\n\n## What actually happened at Asana\n\nAsana is the work-management tool many teams already use to track tasks and projects. Internally, the company had a testing system — software that automatically checks whether a new feature accidentally breaks something older — that had grown old, slow, and painful to maintain.\n\nThe team's estimate: about five years of engineering work to rebuild it the normal way. With help from OpenAI's **Codex** (an AI model tuned to read, write, and modify code), they finished the rebuild in roughly two weeks, at a cost around $12,000.\n\nThat gap — five years versus two weeks — is the headline. But the real story is what kind of work the AI was asked to do.\n\n## So what is Codex, in plain language?\n\nA **model** in AI is the trained \"brain\" that produces answers. Codex is OpenAI's model specifically tuned for programming. It belongs to the same family of technology that powers GitHub Copilot, the helpful autocomplete you may have already seen inside a code editor.\n\nWhat changed recently is the size of job these assistants can take on. A few years ago, Codex-style tools mostly wrote small functions when you asked. Now they can take on an entire messy legacy project: reading old code, suggesting rewrites, running checks, and even validating their own work before handing it back.\n\nA few terms you will see around this:\n\n- **Code** is just instructions written in a language humans can also read. It tells software what to do.\n- **Testing** is code that checks other code automatically — a stand-in for a careful human reviewer.\n- **Refactoring** means cleaning up old code without changing what it does for the user. Think of it as reorganising a kitchen so you can actually find the spices.\n\n## Why this reaches beyond software teams\n\nThe lesson is not really about coding. It is about the pattern: AI is getting good at the tedious backlog work that nobody enjoys.\n\nIf a model can rewrite five-year-old testing code in two weeks, the same shape of job — long, dull, and structured — exists in writing, customer support, accounting, legal research, and data cleanup. The tools are catching up across the board, at different speeds.\n\nThat does not mean whole jobs vanish overnight. It means the boring part of many jobs is moving first.\n\n## What this means for you\n\n- **If you don't write code:** Notice the pattern in your own work. The part of your job that is repetitive, structured, and well documented is the part most likely to be automated first. Start by handing small, well-defined tasks to an AI assistant — drafts, summaries, lists — and keep your judgment for the rest.\n- **If you occasionally work with code or scripts:** Try a Codex-powered tool on a small, contained task this week. The fastest way to learn what these assistants are good at is to give them something boring and see how far they get.\n- **If you're wondering about jobs:** The shift is away from tedious tasks and toward judgment, accountability, and trust — the parts AI cannot sign its name to. That is the skill worth investing in next.\n\n## Wrap-up\n\nA five-year project cleared in two weeks is striking, but the more useful takeaway is the pattern behind it. AI assistants are moving up the stack, from writing a snippet to running an entire project. Pick one repetitive task in your own week and hand it to an AI today — that is the smallest realistic starting point, and it will tell you more about where this is heading than any headline.",
+  "original_title": "Asana cleared 5 years of engineering work in 2 weeks with Codex"
+}

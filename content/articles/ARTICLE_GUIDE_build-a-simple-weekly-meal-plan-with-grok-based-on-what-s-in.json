@@ -1,0 +1,63 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "build-a-simple-weekly-meal-plan-with-grok-based-on-what-s-in",
+    "company": "xAI",
+    "tool": "Grok",
+    "icon": "🍳",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-08-19T00:42:25.016Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.01245911,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-08-19T00:44:44.346Z",
+    "slug": "build-a-simple-weekly-meal-plan-with-grok-based-on-what-s-in-your-frid",
+    "auto_check": {
+      "passed": false,
+      "issues": [
+        "HOWTO_TOO_LONG: 1794 szó (~9.0 perc olvasás) — a cél 1000-1400 szó, a felső kapu 1700. A Facebookról érkező mobilolvasó ennyit ritkán olvas végig."
+      ],
+      "wordCount": 1794
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured beginner guide with friendly tone, clear step-by-step instructions, helpful 'you'll know it worked when' checkpoints, and a useful 'What this means for you' section. No prohibited content, no clichés, no invented facts. Passes all quality gates.",
+      "_aiCost": 0.0022134,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "image_v": 2,
+    "image_at": "2026-08-19T00:46:58.522Z",
+    "seo": {
+      "meta_description": "Learn how to use Grok to build a free 7-day meal plan from ingredients you already have, plus a smart shopping list. No cooking skills needed.",
+      "keywords": [
+        "how to use Grok for meal planning",
+        "weekly meal plan with AI",
+        "meal plan from fridge ingredients",
+        "Grok meal planning tool",
+        "what to cook with ingredients I have",
+        "AI meal planner free",
+        "free meal planning assistant"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add 'how-to' in the URL slug for better search intent matching",
+        "Consider adding schema markup for 'HowTo' to appear in rich search results",
+        "Include the exact phrase 'meal planning' earlier in the first paragraph for better topical relevance"
+      ],
+      "optimised_at": "2026-08-19T00:48:05.459Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Build a Simple Weekly Meal Plan With Grok Based on What's in Your Fridge\"\nsubtitle: \"Tell Grok what ingredients you have on hand and get a personalized 7-day dinner plan plus a smart shopping list in minutes.\"\ncategory: \"guide\"\naudience: \"personal\"\ncompany: \"xAI\"\ntool: \"Grok\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"meal-planning\", \"grok\", \"beginner\", \"groceries\"]\n---\n\n# Build a Simple Weekly Meal Plan With Grok Based on What's in Your Fridge\n\n> **In short:** Open Grok, list what's actually in your fridge, and ask for a 7-day dinner plan with a shopping list. You'll get dinner ideas matched to your real ingredients in one chat — no paid plan or cooking skill required.\n\nBy the end of this guide, you'll have a real 7-day dinner plan built around what's already sitting in your fridge, plus a shopping list for what you're missing. This is for anyone who keeps opening the fridge at 6pm and feeling stuck — no fancy equipment, just a free Grok account and about ten minutes.\n\nOne honest note up front: Grok can draft the plan and the list, but it can't go shopping for you, and it can't tell if your chicken is actually still good. That part is still on you.\n\n## Before you start\n- A free Grok account (sign up through the Grok website or the X app — both work)\n- Three minutes to peek inside your fridge, freezer, and pantry\n- Optional: a notes app open so you can paste the final plan into it\n- Total time: about 10 minutes, mostly for the food peek and saving\n\n## Step 1 — Open Grok and start a fresh chat\n\nOpen Grok on your phone or computer. On a computer, go to the Grok website and sign in. On a phone, open the Grok app — or open X and look for a small ⚡ icon somewhere in the menu. Once you're signed in, you'll see a chat box at the bottom of the screen with a placeholder like \"Ask Grok anything.\" A fresh chat keeps the assistant focused on your meal plan instead of mixing it up with old conversations.\n\nIf you don't see a chat box right away, look for a button labeled \"New chat\" or a + icon in a corner. The Grok entry point inside X moves around as the app updates, so try the menu or the search bar if it's not where you expect.\n\n💬 Example: type \"Hi\" to test the connection, or jump straight to Step 2 with your list ready.\n\nYou'll know it worked when you see an empty chat box and a blinking cursor, waiting for your first message.\n\n## Step 2 — Take quick stock of your fridge and pantry\n\nBefore opening Grok, spend two or three minutes looking through your fridge, freezer, and pantry. Write down what you actually have — not what you wish you had. Include basics like rice, pasta, canned beans, and any half-used vegetables. Note proteins too: chicken, eggs, tofu, ground meat, or fish. Spices and condiments matter as well, because they change what meals are possible.\n\nGroup items roughly by type — vegetables, proteins, grains, dairy, pantry staples — so the list is easy to scan. Also jot down how many people you're feeding. Grok uses the serving size to scale recipes up or down.\n\n💬 Example:\n\"Fridge: 2 chicken breasts, half a head of broccoli, 4 eggs, a wedge of cheddar. Pantry: rice, canned chickpeas, soy sauce, olive oil, garlic. Freezer: frozen peas. Serving 2 adults.\"\n\nYou'll know it worked when you have a written list of 8–20 ingredients plus a serving size, ready to paste into the chat.\n\n## Step 3 — Paste your list and ask for a 7-day plan\n\nPaste your ingredient list into the Grok chat box and add a clear request. Be specific about the timeframe, the number of meals, and any restrictions. Grok answers best when you spell out exactly what you want — for example, \"dinners for 7 nights, no seafood, weeknight meals under 30 minutes, vegetarian on Fridays.\" More context means a closer first answer.\n\nAfter you hit send, wait a few seconds. Grok usually replies with a day-by-day breakdown: meal name, short description, and a rough cooking method. The first answer is rarely perfect — that's normal, not a failure.\n\nIf you don't see a typed reply within 15 seconds, check your connection and try again. The chat often shows a small \"thinking\" indicator before the answer appears.\n\n💬 Example:\n\"Here's what I have: [paste your list]. Build me a 7-day dinner plan for 2 adults. No seafood. Keep weeknight meals under 30 minutes. Use what I already have first, then suggest what to buy.\"\n\nYou'll know it worked when Grok returns a numbered list of seven meals, each tied to ingredients from your fridge.\n\n## Step 4 — Adjust the plan to your taste and schedule\n\nLook over Grok's first answer. Anything you don't like? Speak up — that's the easiest part of using a chatbot. Reply in plain language and tell it what to swap. Maybe Tuesday's curry doesn't fit your weeknight energy. Maybe Saturday feels too involved for a relaxed weekend. Ask for replacements, and Grok will rewrite just those days.\n\nThis is also the moment to mention things you forgot: a picky eater, a slow cooker you want to use, or leftovers for lunch the next day. The more you iterate, the more the plan feels like yours rather than a generic template.\n\nIf a meal keeps coming back that you really don't want, say so directly. The chat remembers your earlier messages in the same conversation, so a clear \"no mushrooms anywhere\" once is usually enough.\n\n💬 Example:\n\"Swap Tuesday's curry for something quicker — under 20 minutes. Add a slow-cooker recipe for Sunday. And please skip mushrooms entirely; nobody here eats them.\"\n\nYou'll know it worked when the updated plan reflects your changes and you can imagine actually cooking each meal.\n\n## Step 5 — Ask Grok to build a shopping list of missing items\n\nOnce the plan feels right, ask Grok to compile the shopping list. Specifically, request only the items you don't already have — otherwise you'll end up buying things already sitting in your pantry. A good prompt names the servings and asks Grok to group the list by aisle or category, which makes the actual shopping trip faster.\n\nGrok will usually return a checklist sorted into sections like produce, dairy, pantry, and frozen. Some answers even estimate quantities. If the list looks too long, ask it to shrink by reusing ingredients across two or three meals — that's both cheaper and faster to cook.\n\nIf you want a printable version, ask Grok to format it as a simple numbered list or a table — then copy and paste it into your notes app.\n\n💬 Example:\n\"Great. Now give me a shopping list of only what I'm missing, grouped by aisle (produce, dairy, pantry, frozen, meat). Quantities for 2 adults. Keep it under 25 items if you can.\"\n\nYou'll know it worked when you have a clean, grouped shopping list of just the items you don't already have at home.\n\n## Step 6 — Save the plan somewhere easy to find\n\nNow save your meal plan and shopping list before the chat scrolls away. Open your phone's notes app, email, or any list tool you already use, and paste both lists in. Give the note a clear name like \"Week of June 8 — Meal Plan\" so you can find it next week.\n\nIf you're on a computer, you can print the shopping list straight from the browser. Most grocery apps also let you email yourself a list — copy from Grok, paste into the app, and check items off as you walk the aisles.\n\nTwo more things worth doing now: star or pin the chat in Grok so you can come back next week and ask for a new plan in seconds. And skim the plan once more for anything you actually dislike — easier to swap a meal now than at 6pm on a Wednesday.\n\n💬 Example:\n\"OK, I'm ready to save this. Can you format the final 7-day plan and the shopping list as plain text I can copy into my notes app?\"\n\nYou'll know it worked when both lists are saved in your notes app and the fridge chat is bookmarked for next week.\n\n## Common mistakes\n\n- **Asking Grok to invent ingredients you don't have.** If you say \"what can I make?\" without listing what's actually in your fridge, you'll get random recipes — not a plan that uses your food. Fix: always paste your real inventory first, then ask for ideas.\n- **Accepting the first plan without iterating.** Grok's first answer is a draft, not a final menu. If a meal feels wrong, just say so. Fix: reply with swaps (\"Tuesday's too spicy — give me something milder\") until the plan matches your week.\n- **Forgetting to mention dietary needs or picky eaters.** The assistant can only work with what you tell it. Fix: spell out allergies, vegetarians in the household, and \"no fish\" rules at the start, so the plan fits your family from the first reply.\n- **Saving the chat but losing the shopping list.** It's easy to skim past the second reply. Fix: ask for the shopping list as a separate, grouped message and paste it into your notes app or grocery list right away.\n\n## What this means for you\n\n- **In everyday life:** You spend less time staring at the fridge and less money on food that quietly goes bad. A good plan turns \"what's for dinner?\" from a daily decision into a quick glance at your phone.\n- **For your work:** If you cook for a team, a book club, or a shared household, the same workflow scales — just bump the servings in your prompt and ask for batch-cooking tips. Grok can suggest what to make ahead on Sunday for the rest of the week.\n- **If you're just getting started:** Don't aim for perfection on your first try. Make a list, send a quick prompt, and accept a rough plan you can fix later. Each week gets easier, and your fridge will start feeling a lot less random.\n\n## Try it now\n\nOpen your fridge right now, take a quick mental photo of what's inside, and paste this into Grok:\n\n\"Here's what's in my fridge and pantry: [your list]. Make me a 3-day dinner plan for [number] people. Use what I have first. No [food you dislike].\"\n\nSee what comes back. If it sparks an idea, you've just made your week easier in under two minutes.",
+  "original_title": "Build a simple weekly meal plan with Grok based on what's in your fridge"
+}
