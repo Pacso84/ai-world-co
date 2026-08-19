@@ -853,7 +853,15 @@ async function main() {
   // 6. Összefoglaló
   console.log('─'.repeat(60));
   console.log('📊 ÖSSZEFOGLALÓ:');
-  console.log(`   Cikkek megírva: ${stats.articles_written}/${stats.drafts_total}`);
+  // ⚠️ NEM „megírt/összes" TÖRTKÉNT írjuk ki. Az összevonás óta a drafts_total a
+  // FELHASZNÁLT HÍREK száma, nem a célszám — az „5/8" tévesen 3 bukást sugallna.
+  console.log(`   Cikkek megírva: ${stats.articles_written} (${stats.drafts_total} hírből)`);
+  if (stats.clusters_found) {
+    console.log(`   Összevonva: ${stats.merged_total} cikk · ${stats.clusters_found} téma-csoport`);
+  }
+  if (stats.skipped_duplicate) {
+    console.log(`   Forrás-zár eldobta: ${stats.skipped_duplicate} (már írtunk róla)`);
+  }
   console.log(`   Sikertelen: ${stats.articles_failed}`);
   console.log(`   Teljes költség: $${stats.total_cost_usd.toFixed(4)}`);
   console.log(`   Időtartam: ${stats.duration_seconds.toFixed(1)}s`);
