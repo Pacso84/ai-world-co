@@ -350,17 +350,33 @@ async function clusterDrafts(draftFilenames) {
 }
 
 // ===================================================================
-// EGY DRAFT CIKKÉ ÍRÁSA
+// EGY VAGY TÖBB DRAFTBÓL EGY CIKK
 // ===================================================================
 
-async function writeArticle(draft, brandContext) {
+async function writeArticle(drafts, brandContext, theme = null) {
+  // TÖBB HÍRBŐL EGY CIKK (2026-08-18, user-kérés). A `drafts` mindig tömb —
+  // egyelemű is lehet, akkor a viselkedés pontosan a régi.
+  const lista = Array.isArray(drafts) ? drafts : [drafts];
+  const fo = lista[0];
+
   // A scraped cikk CSAK témajelzés — NEM átírandó forrás!
-  const topicSignal = `
-Topic area: ${draft._meta.relevance?.category || 'AI'}
-What is currently timely (use ONLY as a hint of the subject — do NOT rewrite it):
-"${draft.title}"
+  const jelzesek = lista.map((d, i) => `
+[${i + 1}] What is currently timely (use ONLY as a hint of the subject — do NOT rewrite it):
+"${d.title}"
 Extra context to understand the subject (background only, never copy):
-${(draft.content_snippet || '').slice(0, 600)}
+${(d.content_snippet || '').slice(0, 600)}`).join('\n');
+
+  const kozos = lista.length > 1 ? `
+⚠️ THESE ${lista.length} SIGNALS ARE ABOUT ONE SHARED SUBJECT: "${theme}".
+Write ONE article about that shared subject — a single arc with one lesson.
+Do NOT write a section per signal, and do NOT list them as separate news items.
+The signals are evidence that this subject matters right now; the article is still
+our own original, practical piece for everyday people.
+` : '';
+
+  const topicSignal = `
+Topic area: ${fo._meta.relevance?.category || 'AI'}
+${kozos}${jelzesek}
 `;
 
   const lessons = await loadLessons();   // szemantikus memória (async)
@@ -430,7 +446,9 @@ function hasRequiredSections(markdown) {
 // CIKK MENTÉSE
 // ===================================================================
 
-function saveWrittenArticle(originalDraftFilename, draft, articleResponse) {
+function saveWrittenArticle(originalDraftFilename, drafts, articleResponse, theme = null) {
+  const lista = Array.isArray(drafts) ? drafts : [drafts];
+  const fo = lista[0];
   // Az új fájlnév: WRITER_ + eredeti név (hogy összetartozzanak)
   const newFilename = 'WRITER_' + originalDraftFilename;
   const newPath = join(DRAFTS_DIR, newFilename);
@@ -442,21 +460,29 @@ function saveWrittenArticle(originalDraftFilename, draft, articleResponse) {
       writer_model: articleResponse.model,
       writer_cost_usd: articleResponse.costUsd,
       original_draft: originalDraftFilename,
-      source_id: draft._meta.source_id,
-      source_name: draft._meta.source_name,
-      source_link: draft.link,
+      source_id: fo._meta.source_id,
+      source_name: fo._meta.source_name,
+      source_link: fo.link,
+      // ÖSSZEVONÁS (2026-08-18): MINDEN felhasznált forrás. A forrás-zár ezt is
+      // nézi — enélkül a beolvasztott hír később külön cikként újra megíródna.
+      source_links: lista.map(d => d.link).filter(Boolean),
+      merged_from: lista.length,
+      merged_theme: theme || null,
       status: 'awaiting-review' // → Ellenőrző agent veszi fel
     },
     article_markdown: normalizeArticleMarkdown(articleResponse.text),
-    original_title: draft.title
+    original_title: fo.title
   };
 
   writeFileSync(newPath, JSON.stringify(writerOutput, null, 2), 'utf-8');
 
-  // FONTOS: a megírt scraper-draftot TÖRÖLJÜK, hogy ne írjuk meg újra minden
-  // futáskor (ez ragasztotta be a hírt a legrégebbi 25 cikkre). Így a sor halad,
-  // és minden draft pontosan EGYSZER lesz cikké.
-  try { unlinkSync(join(DRAFTS_DIR, originalDraftFilename)); } catch { /* már nincs ott */ }
+  // FONTOS: a megírt scraper-draftokat TÖRÖLJÜK — MINDET, amiből a cikk készült.
+  // Enélkül újra megíródnának minden futáskor (ez ragasztotta be a hírt a
+  // legrégebbi 25 cikkre). Így a sor halad, és minden draft pontosan EGYSZER
+  // lesz cikké — összevonásnál is.
+  for (const d of lista) {
+    try { unlinkSync(join(DRAFTS_DIR, d.__filename)); } catch { /* már nincs ott */ }
+  }
 
   return newFilename;
 }
@@ -718,6 +744,8 @@ async function main() {
     articles_written: 0,
     articles_failed: 0,
     skipped_duplicate: 0,
+    clusters_found: 0,
+    merged_total: 0,
     total_cost_usd: 0,
     by_article: []
   };
@@ -740,49 +768,76 @@ async function main() {
     elo.push(f);
   }
 
-  const toProcess = args.limit ? elo.slice(0, args.limit) : elo;
-  stats.drafts_total = toProcess.length;
-  console.log(`📋 ${drafts.length} draft · ${elo.length} a zár után`);
-  console.log(`🎯 Most feldolgozandó: ${toProcess.length}\n`);
+  // A --limit CIKKET jelent, nem draftot (2026-08-18). A CEO amúgy is így érti:
+  // agents/ceo/agent.js articles_remaining = 8 − a ma megírt hírek száma.
+  // Ha draftot vágnánk, az összevonás CSÖKKENTENÉ a napi cikkszámot.
+  const maxCikk = args.limit || elo.length;
 
-  // 4. Cikkek írása egyenként
-  for (const draftFilename of toProcess) {
-    console.log(`📰 Feldolgozás: ${draftFilename.slice(0, 60)}...`);
+  // ÖSSZEVONÁS: melyik hírek szólnak ugyanarról?
+  const { groups, costUsd: clusterCost } = await clusterDrafts(elo);
+  stats.total_cost_usd += clusterCost;
+  stats.clusters_found = groups.length;
+  if (groups.length) {
+    console.log(`🔗 ${groups.length} téma-csoport: ` +
+      groups.map(g => `"${g.theme}" (${g.ids.length})`).join(', '));
+  }
 
-    const draftPath = join(DRAFTS_DIR, draftFilename);
-    const draft = JSON.parse(readFileSync(draftPath, 'utf-8'));
+  const terv = planWriteOrder(elo, groups).slice(0, maxCikk);
+  stats.drafts_total = terv.reduce((s, e) => s + e.ids.length, 0);
+  console.log(`📋 ${drafts.length} draft · ${elo.length} zár után · ${terv.length} cikk készül\n`);
+
+  // 4. Cikkek írása egységenként (egy egység = egy cikk, 1..N hírből)
+  for (const egyseg of terv) {
+    const lista = [];
+    for (const f of egyseg.ids) {
+      try {
+        const d = JSON.parse(readFileSync(join(DRAFTS_DIR, f), 'utf-8'));
+        d.__filename = f;                       // a törléshez kell
+        lista.push(d);
+      } catch { /* közben eltűnt */ }
+    }
+    if (!lista.length) continue;
+
+    console.log(lista.length > 1
+      ? `🔗 ${lista.length} hír egy cikkbe: "${egyseg.theme}"`
+      : `📰 Feldolgozás: ${egyseg.ids[0].slice(0, 60)}...`);
 
     const startTime = Date.now();
-    const response = await writeArticle(draft, brandContext);
+    const response = await writeArticle(lista, brandContext, egyseg.theme);
     const elapsedMs = Date.now() - startTime;
 
     if (!response) {
       console.log(`   ❌ Sikertelen (AI router nem válaszolt)\n`);
       stats.articles_failed++;
       stats.by_article.push({
-        draft: draftFilename,
+        draft: egyseg.ids[0],
         success: false,
         error: 'AI router returned null'
       });
       continue;
     }
 
-    const writerFilename = saveWrittenArticle(draftFilename, draft, response);
+    const writerFilename = saveWrittenArticle(egyseg.ids[0], lista, response, egyseg.theme);
     stats.total_cost_usd += response.costUsd;
     stats.articles_written++;
+    if (lista.length > 1) stats.merged_total++;
 
     // A cikk első sorának kinyerése (frontmatter után)
     const previewMatch = response.text.match(/^#\s+(.+)$/m);
     const previewTitle = previewMatch ? previewMatch[1] : '(no title found)';
 
     console.log(`   ✅ Cikk megírva: "${previewTitle.slice(0, 70)}..."`);
-    console.log(`   💰 Költség: $${response.costUsd.toFixed(4)} | ⏱️  ${(elapsedMs / 1000).toFixed(1)}s`);
+    console.log(`   💰 Költség: ${response.costUsd.toFixed(4)} | ⏱️  ${(elapsedMs / 1000).toFixed(1)}s`);
     console.log(`   💾 Mentve: ${writerFilename}\n`);
 
+    // A bő bejegyzés SZÁNDÉKOS: a futás-napló az egyetlen hely, ahol utólag
+    // kideríthető, melyik modell mennyibe került. A költés csendes.
     stats.by_article.push({
-      draft: draftFilename,
+      draft: egyseg.ids[0],
       writer_output: writerFilename,
       success: true,
+      merged_from: lista.length,
+      merged_theme: egyseg.theme || null,
       cost_usd: response.costUsd,
       duration_ms: elapsedMs,
       provider: response.provider,
