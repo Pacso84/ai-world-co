@@ -35,8 +35,8 @@ import { message } from '../../core/ops.js';
 import { HOWTO_RANGE } from '../../core/article-length.js';
 import { blockingIssues } from '../../core/auto-check-codes.js';
 import { publishedSourceKeys, isAlreadyWritten } from '../../core/source-lock.js';
-import { extractJsonArray } from '../../core/extract-json.js';
-import { parseClusterReply, planWriteOrder, MAX_CLUSTER } from '../../core/draft-clusters.js';
+import { planWriteOrder } from '../../core/draft-clusters.js';
+import { clusterDrafts } from '../../core/cluster-runner.js';
 
 // ===================================================================
 // SETUP
@@ -50,6 +50,18 @@ const REJECTED_DIR = join(PROJECT_ROOT, 'content', 'rejected');
 const LOGS_DIR = join(PROJECT_ROOT, 'logs');
 const SHARED_DIR = join(PROJECT_ROOT, 'shared');
 const AGENT_NAME = 'iro';
+
+// 🔌 ÖSSZEVONÁS-VÉSZKAPCSOLÓ (2026-08-19). MIÉRT KELL KÉZZEL BEKÖTNI: a
+// core/ai-router.js NEM nézi az agents.<név>.enabled mezőt — a config
+// „enabled: false"-a magától SEMMIT nem kapcsol ki. A háznál minden kill-switch
+// így él (vö. agents/video/agent.js:49). Config-hiba esetén BEKAPCSOLVA
+// maradunk: a hiányzó config ne némítson le egy működő funkciót.
+function clusterEnabled() {
+  try {
+    const cfg = JSON.parse(readFileSync(join(PROJECT_ROOT, 'config.json'), 'utf-8'));
+    return cfg.agents?.cluster?.enabled !== false;
+  } catch { return true; }
+}
 // CSONKOLÁS-VÉDELEM (2026-07-24): a MiniMax M3 GONDOLKODÓ modell — a belső
 // gondolkodása is a maxTokens keretbe számít. A router 8000-re padlózza a
 // gondolkodó modelleket (effMaxTokens=max(maxTokens,8000)); a régi 3000 tehát
@@ -293,61 +305,6 @@ Practical, original guidance. Explain any technical term immediately.
 ## Wrap-up
 
 One paragraph: summary + a next step to try today.`;
-
-// ===================================================================
-// ÖSSZEVONÓ ÍTÉLET — melyik függőben lévő hírek szólnak ugyanarról?
-// ===================================================================
-// A rokonságot AI dönti el, mert gépi mércével nem megy (a ROKON
-// Midjourney-ötös cím-hasonlósága 0,056, a FÜGGETLEN OpenAI-ötösé 0,022).
-// MINDEN forrás draftja EGYSZERRE megy be: a Claude Opus 5-öt három forrás is
-// bejelentette ugyanazon a napon, abból három cikkünk lett.
-//
-// ⚠️ HIBÁNÁL ÜRES TÖMB — vagyis a mai viselkedés: minden hír külön cikk.
-const CLUSTER_SYSTEM_PROMPT = `You group tech-news items that are about THE SAME underlying story or product release.
-
-Group items ONLY when a single article could cover them together without losing focus.
-Do NOT group items just because they come from the same company or the same day.
-Five unrelated announcements from one company are FIVE topics, not one.
-
-Respond with {"groups": [...]}. Each group: {"theme": "<short specific shared topic>", "ids": ["<id>", ...]}.
-- "theme" must name the actual shared subject (e.g. "Midjourney V8 release"), never a section name like "AI news".
-- Include at most ${MAX_CLUSTER} ids per group, at least 2.
-- Items that do not clearly belong with another item MUST be left out entirely.
-- If nothing belongs together, respond with {"groups": []}.`;
-
-async function clusterDrafts(draftFilenames) {
-  if (!Array.isArray(draftFilenames) || draftFilenames.length < 2) {
-    return { groups: [], costUsd: 0 };
-  }
-
-  const tetelek = [];
-  for (const f of draftFilenames) {
-    try {
-      const d = JSON.parse(readFileSync(join(DRAFTS_DIR, f), 'utf-8'));
-      tetelek.push({ id: f, title: d.title || '', snippet: (d.content_snippet || '').slice(0, 180),
-                     source: d._meta?.source_name || '' });
-    } catch { /* olvashatatlan draft: kihagyjuk a csoportosításból */ }
-  }
-  if (tetelek.length < 2) return { groups: [], costUsd: 0 };
-
-  const lista = tetelek.map(it =>
-    `id: ${it.id}\n  source: ${it.source}\n  title: ${it.title}\n  summary: ${it.snippet}`
-  ).join('\n\n');
-
-  const response = await ask(
-    `Group these ${tetelek.length} news items.\n\n${lista}`,
-    { agentName: 'cluster', systemPrompt: CLUSTER_SYSTEM_PROMPT, maxTokens: 2000, jsonMode: true }
-  );
-  if (!response) return { groups: [], costUsd: 0 };
-
-  try {
-    const groups = parseClusterReply(extractJsonArray(response.text), tetelek.map(t => t.id));
-    return { groups, costUsd: response.costUsd };
-  } catch {
-    // Értelmezhetetlen válasz: NEM okoskodunk, a mai viselkedésre esünk vissza.
-    return { groups: [], costUsd: response.costUsd };
-  }
-}
 
 // ===================================================================
 // EGY VAGY TÖBB DRAFTBÓL EGY CIKK
@@ -773,8 +730,16 @@ async function main() {
   // Ha draftot vágnánk, az összevonás CSÖKKENTENÉ a napi cikkszámot.
   const maxCikk = args.limit || elo.length;
 
-  // ÖSSZEVONÁS: melyik hírek szólnak ugyanarról?
-  const { groups, costUsd: clusterCost } = await clusterDrafts(elo);
+  // ÖSSZEVONÁS: melyik hírek szólnak ugyanarról? A döntés a core/cluster-runner.js-ben
+  // él (ott tesztelhető); az író csak a lemezolvasást és az AI-hívót adja hozzá.
+  // 🔌 A VÉSZKAPCSOLÓ VALÓDI: config.json → agents.cluster.enabled = false, és
+  // egyetlen AI-hívás sem indul. (Az ai-router MAGÁTÓL nem nézi ezt a mezőt.)
+  const { groups, costUsd: clusterCost } = await clusterDrafts({
+    ids: elo,
+    readDraft: f => JSON.parse(readFileSync(join(DRAFTS_DIR, f), 'utf-8')),
+    ask,
+    enabled: clusterEnabled()
+  });
   stats.total_cost_usd += clusterCost;
   stats.clusters_found = groups.length;
   if (groups.length) {
