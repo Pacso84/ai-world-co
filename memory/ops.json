@@ -1,86 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178704169669230",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-18T08:28:16.692Z",
-      "updated": "2026-08-18T08:28:38.959Z"
-    },
-    {
-      "id": "t178704171896089",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-08-18T08:28:38.960Z",
-      "updated": "2026-08-18T08:29:45.387Z"
-    },
-    {
-      "id": "t178704178538832",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-18T08:29:45.388Z",
-      "updated": "2026-08-18T08:30:01.100Z"
-    },
-    {
-      "id": "t178704180110225",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-08-18T08:30:01.102Z",
-      "updated": "2026-08-18T08:30:20.299Z"
-    },
-    {
-      "id": "t178706992633426",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-08-18T16:18:46.334Z",
-      "updated": "2026-08-18T16:18:46.514Z"
-    },
-    {
-      "id": "t178706992651655",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-08-18T16:18:46.516Z",
-      "updated": "2026-08-18T16:19:17.307Z"
-    },
-    {
-      "id": "t178706995730943",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-08-18T16:19:17.309Z",
-      "updated": "2026-08-18T16:19:17.510Z"
-    },
-    {
-      "id": "t17870699575123",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-18T16:19:17.512Z",
-      "updated": "2026-08-18T16:20:34.102Z"
-    },
-    {
-      "id": "t178707003410486",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-18T16:20:34.104Z",
-      "updated": "2026-08-18T16:21:39.257Z"
-    },
-    {
-      "id": "t178707009925945",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-18T16:21:39.259Z",
-      "updated": "2026-08-18T16:21:54.855Z"
-    },
-    {
       "id": "t178707011485680",
       "title": "Run ellenorzo",
       "status": "done",
@@ -479,33 +399,89 @@
       "agent": "publisher",
       "created": "2026-08-20T00:48:01.080Z",
       "updated": "2026-08-20T00:48:17.315Z"
+    },
+    {
+      "id": "t178721426417326",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-08-20T08:24:24.173Z",
+      "updated": "2026-08-20T08:24:24.349Z"
+    },
+    {
+      "id": "t17872142643519",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-08-20T08:24:24.351Z",
+      "updated": "2026-08-20T08:24:59.949Z"
+    },
+    {
+      "id": "t17872142999517",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-08-20T08:24:59.951Z",
+      "updated": "2026-08-20T08:25:00.148Z"
+    },
+    {
+      "id": "t178721430015042",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-20T08:25:00.150Z",
+      "updated": "2026-08-20T08:25:00.323Z"
+    },
+    {
+      "id": "t17872143003249",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-20T08:25:00.324Z",
+      "updated": "2026-08-20T08:25:00.498Z"
+    },
+    {
+      "id": "t178721430050161",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-08-20T08:25:00.501Z",
+      "updated": "2026-08-20T08:25:00.714Z"
+    },
+    {
+      "id": "t178721430075818",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-20T08:25:00.758Z",
+      "updated": "2026-08-20T08:25:00.980Z"
+    },
+    {
+      "id": "t178721430098280",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-08-20T08:25:00.982Z",
+      "updated": "2026-08-20T08:25:01.200Z"
+    },
+    {
+      "id": "t178721430120229",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-20T08:25:01.202Z",
+      "updated": "2026-08-20T08:25:12.635Z"
+    },
+    {
+      "id": "t178721431263791",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-08-20T08:25:12.637Z",
+      "updated": "2026-08-20T08:25:31.212Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178623761304472",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The lineup is solid and practical — a good mix of practical how-tos, helpful guidance, and clear safety reminders that will serve readers well. Two minor notes: **Articles 4 and 5** both cover complai",
-      "agent": "publisher",
-      "at": "2026-08-09T01:06:53.044Z",
-      "loud": false
-    },
-    {
-      "id": "n178623762233080",
-      "level": "success",
-      "text": "0 hír + 4 útmutató publikálva (költség: $0.0521).",
-      "agent": "ceo",
-      "at": "2026-08-09T01:07:02.330Z",
-      "loud": false
-    },
-    {
-      "id": "n178626423271687",
-      "level": "info",
-      "text": "SEO: 1 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-08-09T08:30:32.716Z",
-      "loud": false
-    },
     {
       "id": "n178626425327918",
       "level": "success",
@@ -1281,27 +1257,33 @@
       "agent": "ceo",
       "at": "2026-08-20T00:48:17.355Z",
       "loud": false
+    },
+    {
+      "id": "n17872143194581",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). A lineup kész és cohérens – a mix szépen lefedi a praktikus AI-utasításokat (panaszlevelek, e-mailek) és a személyes helyzeteket (gyászköszöntő, háziállat-őrzés), plusz a fontos adatvédelmi témát. Egy",
+      "agent": "publisher",
+      "at": "2026-08-20T08:25:19.458Z",
+      "loud": false
+    },
+    {
+      "id": "n178721433124940",
+      "level": "info",
+      "text": "Pipeline lefutott — ma nem volt publikálható új tartalom.",
+      "agent": "ceo",
+      "at": "2026-08-20T08:25:31.249Z",
+      "loud": false
+    },
+    {
+      "id": "n178721443963077",
+      "level": "warn",
+      "text": "📨 fact-check → human: Ez az útmutató talán tárgytalanná vált: \"Using Amazon's new conversational Alexa+ at home\" — Amazon's Alexa+ (the genera",
+      "agent": "fact-check",
+      "at": "2026-08-20T08:27:19.630Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178629250631970",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-08-09T16:21:46.319Z"
-    },
-    {
-      "id": "m178629278827528",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"How to write a standout cover letter with AI\" — hallucination without explanation",
-      "ref": "ARTICLE_GUIDE_ai-cover-letter.json",
-      "at": "2026-08-09T16:26:28.275Z"
-    },
     {
       "id": "m178629306964049",
       "from": "social",
@@ -2644,6 +2626,25 @@
       "text": "6 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-08-20T00:57:12.180Z"
+    },
+    {
+      "id": "m17872143126265",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-08-20T08:25:12.626Z"
+    },
+    {
+      "id": "m178721443963086",
+      "from": "fact-check",
+      "to": "human",
+      "kind": "need",
+      "text": "Ez az útmutató talán tárgytalanná vált: \"Using Amazon's new conversational Alexa+ at home\" — Amazon's Alexa+ (the generative AI upgrade) has not been widely released — the provided company headlines contain no Alexa+ news, indicating it's still unreleased or delayed. NEM vettem le (az törölné az URL-t is) — dönts róla.",
+      "ref": "ARTICLE_GUIDE_amazon-alexa-plus.json",
+      "open": true,
+      "at": "2026-08-20T08:27:19.630Z"
     }
   ]
 }
