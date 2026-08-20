@@ -106,6 +106,37 @@ function overlaySvg(title, fmt) {
   const baseY = H - r(58) - (lines.length - 1) * lh - r(44);   // 44 = márkasor helye
   const tspans = lines.map((l, i) =>
     `<tspan x="${pad}" y="${baseY + i * lh}">${xmlEsc(l)}</tspan>`).join('');
+
+  // A tömör sáv CSAK a Facebook-formátumon (lásd az indoklást lentebb).
+  const sav = fmt.key === 'fb';
+  // A sáv teteje a legfelső címsor fölé kerül, egy sornyi levegővel.
+  const savMagas = H - (baseY - fs - r(30));
+  // KÖVETÉSRE HÍVÁS A KÉPEN (2026-08-20). MIÉRT ITT: a caption-be épített
+  // hívás a ~358. karakternél kezdődik, a Facebook viszont mobilon 125-180
+  // karakter után levág — a forgalmunk 82%-a mobil, tehát azt gyakorlatilag
+  // SENKI nem látja. A kép soha nem vágódik le.
+  const masodikSor = sav ? '· Follow for daily AI tips' : '· aiworldhq.com';
+  // ⚠️ TÖMÖR SÁV, NEM LÁGY ÁTMENET — a Facebook-formátumon (2026-08-20).
+  //
+  // MIÉRT: a borítóink gépi képek, és az aljukon gyakran GÉPI ZAGYVASÁG van —
+  // egy élő posztunkon a telefon képernyőjén ez állt: „Voice Create", „Voice
+  // trigger", „93 %", „Thermostat 0 0". Ez a leggyakoribb árulkodó jel, amiről
+  // az emberek felismerik az AI-képet, és „tartalomgyárat" olvasnak ki belőle.
+  // A lágy átmenet ezt átengedte, ráadásul a cím RÁÚSZOTT a kép tartalmára
+  // (a „Thermostat" szó átütött rajta).
+  //
+  // A tömör sáv egyszerre három dolgot old meg: a cím élesen olvasható, a
+  // zagyva alsó sáv eltűnik, és az egész MEGTERVEZETTNEK látszik — miközben a
+  // fotó felső, valóban figyelemfogó része megmarad.
+  //
+  // A `share` (link-előnézet) és a `pin` formátum marad átmenetes: ott a kép
+  // más szerepet tölt be, és nincs meg ez a hiba-minta.
+  const savTeteje = sav ? H - savMagas : 0;
+  const hatter = sav
+    ? `<rect x="0" y="${savTeteje}" width="${W}" height="${savMagas}" fill="#14120f"/>
+  <rect x="0" y="${savTeteje - r(6)}" width="${W}" height="${r(6)}" fill="#14120f" opacity="0.55"/>
+  <rect x="0" y="${savTeteje}" width="${W}" height="${r(4)}" fill="#e8c15a"/>`
+    : `<rect width="${W}" height="${H}" fill="url(#g)"/>`;
   return Buffer.from(`<svg width="${W}" height="${H}" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
@@ -114,10 +145,10 @@ function overlaySvg(title, fmt) {
       <stop offset="1" stop-color="#0d0f14" stop-opacity="0.94"/>
     </linearGradient>
   </defs>
-  <rect width="${W}" height="${H}" fill="url(#g)"/>
+  ${hatter}
   <text font-family="Arial, Helvetica, 'DejaVu Sans', sans-serif" font-size="${fs}" font-weight="800" fill="#ffffff">${tspans}</text>
   <text x="${pad}" y="${brandY}" font-family="Arial, Helvetica, 'DejaVu Sans', sans-serif" font-size="${r(26)}" font-weight="700" fill="#e8c15a">AI WORLD HQ</text>
-  <text x="${r(252)}" y="${brandY}" font-family="Arial, Helvetica, 'DejaVu Sans', sans-serif" font-size="${r(26)}" fill="#c9c4ba">· aiworldhq.com</text>
+  <text x="${r(252)}" y="${brandY}" font-family="Arial, Helvetica, 'DejaVu Sans', sans-serif" font-size="${r(26)}" fill="#c9c4ba">${xmlEsc(masodikSor)}</text>
 </svg>`);
 }
 
