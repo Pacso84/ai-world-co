@@ -446,8 +446,28 @@ body {
 .site-footer__support { margin: 10px 0 4px; font-size: 14px; color: var(--ink-soft); }
 .site-footer__support a { color: var(--accent-dark); font-weight: 700; }
 .site-footer__support a:hover { text-decoration: underline; }
-.site-footer__support a .fb-ico { vertical-align: -4px; margin-right: 6px; transition: color .15s; }
-.site-footer__support a:hover .fb-ico { color: #1877F2; }   /* Facebook-kék hover */
+
+/* ---------- KÖZÖSSÉGI PROFILOK (2026-08-20) ----------
+   Mindhárom profil IGAZOLVA, mielőtt kikerült: a Buffer API szerint bekötve
+   (instagram/threads @aiworldhq), és az og:title mindkettőn „AI WORLD HQ
+   (@aiworldhq)". Kontrollnak egy nem létező felhasználónév más választ ad.
+   X/Twitter szándékosan nincs: nem létező profilra nem linkelünk.
+
+   ⚠️ A LÁBLÉC MINDIG SÖTÉT (background: var(--ink)), világos módban is.
+   Ezért a Threads FEKETE márkajele hoverre FEHÉR — a márkaszín ott
+   láthatatlan lenne. A jel megvan, csak nem látszana: néma hiba. */
+.site-footer__socialt { margin: 20px 0 10px; font-size: 13px; color: #948d80; }
+.site-footer__social { display: flex; gap: 14px; margin: 0 0 4px; }
+.site-footer__social a {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px; border-radius: 999px;
+  color: #c9c2b4; border: 1px solid rgba(255, 255, 255, 0.18);
+  transition: color .15s ease, border-color .15s ease;
+}
+.site-footer__social a:hover { border-color: currentColor; }
+.site-footer__social a[title="Facebook"]:hover { color: #1877F2; }
+.site-footer__social a[title="Instagram"]:hover { color: #E4405F; }
+.site-footer__social a[title="Threads"]:hover { color: #fff; }
 
 .support { max-width: 760px; margin: 0 auto; padding: 56px 0 24px; text-align: center; }
 .support__title {
