@@ -58,6 +58,13 @@ t('a frontmatter mezőnevei kimaradnak, a CÍM viszont nem', () => {
   assert.deepEqual(r.map(x => x.word), ['hetodból']);
 });
 
+t('🔗 a KÖTŐJELES összetétel EGY szó, nem kettő', () => {
+  // Enélkül a „PDF-jéből"-ből „jéből" töredék lesz, és a bíró arra ítél —
+  // az ítélet pedig a szöveg elrontásához vezetne (éles lelet, 2026-08-20).
+  const r = extractCandidates('A PDF-jéből másoltam.', { isKnownWord: w => w === 'másoltam' });
+  assert.ok(!r.some(x => x.word === 'jéből'), 'a töredék NEM lehet jelölt');
+});
+
 t('a rövid szó kimarad (túl zajos)', () => {
   const r = extractCandidates('az ez de ha', { isKnownWord: () => false });
   assert.deepEqual(r.map(x => x.word), []);

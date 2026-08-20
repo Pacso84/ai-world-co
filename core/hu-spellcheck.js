@@ -27,7 +27,10 @@
 // ===================================================================
 
 const BETU = 'A-Za-zÁÉÍÓÖŐÚÜŰáéíóöőúüű';
-const SZO = new RegExp(`[${BETU}]+`, 'g');
+// ⚠️ A KÖTŐJELES ÖSSZETÉTEL EGY SZÓ (2026-08-20, éles lelet): kötőjelnél vágva
+// a „PDF-jéből"-ből „jéből" töredék lett, a bíró arra ítélt, és a javítás
+// „PDF-PDF-ből"-t csinált volna. Belső kötőjel megengedett, záró nem.
+const SZO = new RegExp(`[${BETU}]+(?:-[${BETU}]+)*`, 'g');
 const NAGYBETUVEL = /^[A-ZÁÉÍÓÖŐÚÜŰ]/;
 
 /** Ennél rövidebb szót nem nézünk: a kötőszavak zaja elnyomná a jelet. */

@@ -187,9 +187,16 @@ export function needsReview(store) {
   return Object.entries(store?.review || {}).map(([word, d]) => ({ word, correct: d?.correct || '' }));
 }
 
-/** Betű-e? A magyar ékezetes betűk IS azok — enélkül a szóhatár félrevágna. */
+/**
+ * Szó része-e ez a karakter?
+ *
+ * A magyar ékezetes betűk IS azok — enélkül a szóhatár félrevágna.
+ * ⚠️ A KÖTŐJEL IS SZÓ RÉSZE (2026-08-20, éles lelet): a bíró a „PDF-jéből"
+ * szóból a „jéből" TÖREDÉKET kapta, és arra azt mondta, „PDF-ből". Ha a
+ * kötőjelet szóhatárnak vennénk, a javítás „PDF-PDF-ből"-t csinálna belőle.
+ */
 function betu(ch) {
-  return !!ch && /[A-Za-zÁÉÍÓÖŐÚÜŰáéíóöőúüű]/.test(ch);
+  return !!ch && /[-A-Za-zÁÉÍÓÖŐÚÜŰáéíóöőúüű]/.test(ch);
 }
 
 export default {

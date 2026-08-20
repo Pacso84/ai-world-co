@@ -145,6 +145,21 @@ t('applyFixes minden előfordulást javít, nem csak az elsőt', () => {
   assert.equal(applyFixes('hetodból és hetodból', s).text, 'hetedből és hetedből');
 });
 
+t('🔗 applyFixes NEM nyúl KÖTŐJELES összetétel belsejébe', () => {
+  // ÉLES LELET (2026-08-20): a bíró a „PDF-jéből" szóból a „jéből" TÖREDÉKET
+  // kapta meg (a tokenizáló a kötőjelnél vágott), és arra azt mondta:
+  // „jéből → PDF-ből". Ha ez lefut, a szövegből „PDF-PDF-ből" lesz.
+  // A kötőjel tehát SZÓ RÉSZE, nem szóhatár.
+  const s = applyVerdicts(emptyStore(), [{ word: 'jéből', ok: false, correct: 'PDF-ből', fixable: true }]);
+  assert.equal(applyFixes('A PDF-jéből másoltam ki.', s).text, 'A PDF-jéből másoltam ki.');
+  assert.equal(applyFixes('e-mailjéből idéztem.', s).text, 'e-mailjéből idéztem.');
+});
+
+t('a kötőjeles szó ÖNMAGÁBAN viszont javítható marad', () => {
+  const s = applyVerdicts(emptyStore(), [{ word: 'e-mailt', ok: false, correct: 'e-mailt', fixable: true }]);
+  assert.ok(typeof applyFixes('Küldök egy e-mailt.', s).text === 'string');
+});
+
 t('applyFixes üres tárra és hiányzó szövegre sem borul', () => {
   assert.deepEqual(applyFixes('valami', emptyStore()).fixed, []);
   assert.equal(applyFixes(null, emptyStore()).text, '');
