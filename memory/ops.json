@@ -1,102 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178707011485680",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-18T16:21:54.856Z",
-      "updated": "2026-08-18T16:22:21.538Z"
-    },
-    {
-      "id": "t178707014154084",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-08-18T16:22:21.540Z",
-      "updated": "2026-08-18T16:22:28.796Z"
-    },
-    {
-      "id": "t178707014883684",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-18T16:22:28.836Z",
-      "updated": "2026-08-18T16:22:48.600Z"
-    },
-    {
-      "id": "t178707016860229",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-08-18T16:22:48.602Z",
-      "updated": "2026-08-18T16:23:13.793Z"
-    },
-    {
-      "id": "t178707019379413",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-18T16:23:13.794Z",
-      "updated": "2026-08-18T16:23:27.585Z"
-    },
-    {
-      "id": "t178707020758797",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-08-18T16:23:27.587Z",
-      "updated": "2026-08-18T16:23:53.634Z"
-    },
-    {
-      "id": "t17870997688509",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-08-19T00:36:08.850Z",
-      "updated": "2026-08-19T00:36:09.018Z"
-    },
-    {
-      "id": "t178709976901955",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-08-19T00:36:09.019Z",
-      "updated": "2026-08-19T00:37:28.609Z"
-    },
-    {
-      "id": "t178709984861177",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-08-19T00:37:28.611Z",
-      "updated": "2026-08-19T00:37:28.806Z"
-    },
-    {
-      "id": "t178709984880894",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-19T00:37:28.808Z",
-      "updated": "2026-08-19T00:40:10.862Z"
-    },
-    {
-      "id": "t178710001086493",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-19T00:40:10.864Z",
-      "updated": "2026-08-19T00:41:18.588Z"
-    },
-    {
-      "id": "t17871000785914",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-08-19T00:41:18.591Z",
-      "updated": "2026-08-19T00:41:51.380Z"
-    },
-    {
       "id": "t178710011141933",
       "title": "Run guide",
       "status": "done",
@@ -479,25 +383,105 @@
       "agent": "publisher",
       "created": "2026-08-20T08:25:12.637Z",
       "updated": "2026-08-20T08:25:31.212Z"
+    },
+    {
+      "id": "t17872428831465",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-08-20T16:21:23.146Z",
+      "updated": "2026-08-20T16:21:23.325Z"
+    },
+    {
+      "id": "t178724288332783",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-08-20T16:21:23.327Z",
+      "updated": "2026-08-20T16:22:23.776Z"
+    },
+    {
+      "id": "t178724294377842",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-08-20T16:22:23.778Z",
+      "updated": "2026-08-20T16:22:23.976Z"
+    },
+    {
+      "id": "t17872429439783",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-20T16:22:23.978Z",
+      "updated": "2026-08-20T16:23:02.464Z"
+    },
+    {
+      "id": "t178724298246613",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-20T16:23:02.466Z",
+      "updated": "2026-08-20T16:23:23.736Z"
+    },
+    {
+      "id": "t178724300373955",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-20T16:23:23.739Z",
+      "updated": "2026-08-20T16:23:37.924Z"
+    },
+    {
+      "id": "t178724301792617",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-20T16:23:37.926Z",
+      "updated": "2026-08-20T16:24:00.413Z"
+    },
+    {
+      "id": "t178724304041543",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-08-20T16:24:00.415Z",
+      "updated": "2026-08-20T16:24:00.642Z"
+    },
+    {
+      "id": "t178724304068373",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-20T16:24:00.683Z",
+      "updated": "2026-08-20T16:24:00.919Z"
+    },
+    {
+      "id": "t178724304092162",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-08-20T16:24:00.921Z",
+      "updated": "2026-08-20T16:24:01.149Z"
+    },
+    {
+      "id": "t178724304115125",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-20T16:24:01.151Z",
+      "updated": "2026-08-20T16:24:18.219Z"
+    },
+    {
+      "id": "t178724305822169",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-08-20T16:24:18.221Z",
+      "updated": "2026-08-20T16:24:39.136Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178626425327918",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The lineup is solid — it flows nicely from AI literacy (fact-checking, what's AI good at, privacy) into practical, task-based how-tos. The variety of tools and everyday scenarios (complaints, refunds,",
-      "agent": "publisher",
-      "at": "2026-08-09T08:30:53.279Z",
-      "loud": false
-    },
-    {
-      "id": "n178626426098638",
-      "level": "success",
-      "text": "1 hír + 0 útmutató publikálva (költség: $0.0028).",
-      "agent": "ceo",
-      "at": "2026-08-09T08:31:00.986Z",
-      "loud": false
-    },
     {
       "id": "n178629252516189",
       "level": "success",
@@ -1281,45 +1265,25 @@
       "agent": "fact-check",
       "at": "2026-08-20T08:27:19.630Z",
       "loud": false
+    },
+    {
+      "id": "n178724306692912",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). A solid, practical lineup that covers real everyday needs — from privacy to pet-sitting to sympathy notes. Just one note: we have four complaint/refund email how-tos (items 3-6), which might feel repe",
+      "agent": "publisher",
+      "at": "2026-08-20T16:24:26.929Z",
+      "loud": false
+    },
+    {
+      "id": "n178724307917234",
+      "level": "info",
+      "text": "Pipeline lefutott — ma nem volt publikálható új tartalom.",
+      "agent": "ceo",
+      "at": "2026-08-20T16:24:39.172Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178629306964049",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-08-09T16:31:09.640Z"
-    },
-    {
-      "id": "m178630157490068",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-08-09T18:52:54.900Z"
-    },
-    {
-      "id": "m178630184673769",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"How to plan meals and a grocery budget with AI\" — Minor UI detail: ChatGPT's send button changed from a paper-plane icon to an upward arrow icon",
-      "ref": "ARTICLE_GUIDE_ai-meal-budget.json",
-      "at": "2026-08-09T18:57:26.737Z"
-    },
-    {
-      "id": "m178630213888236",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-08-09T19:02:18.882Z"
-    },
     {
       "id": "m178632418328275",
       "from": "designer",
@@ -2645,6 +2609,42 @@
       "ref": "ARTICLE_GUIDE_amazon-alexa-plus.json",
       "open": true,
       "at": "2026-08-20T08:27:19.630Z"
+    },
+    {
+      "id": "m178724300372495",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"How ChatGPT Work helps Stampli move ideas to market\" — mi a baj: Opening productivity claim has no source citation — consider linking to the Stampli case study or softening to 'Some teams report...'; Codex is mentioned in Step 4 but the tool name could use the short official form (Codex) and a brief clarification on how to access it for readers who may not have an account",
+      "ref": "2026-08-20T16-22-15-024Z_openai-blog_How_ChatGPT_Work_helps_Stampli_move_ideas_to_marke.json",
+      "at": "2026-08-20T16:23:23.724Z"
+    },
+    {
+      "id": "m178724301791446",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"How ChatGPT Work helps Stampli move ideas to market\" — javítva: Opening productivity claim has no source citation — consider linking to the Stampli case study or softening to 'Some teams report...'; Codex is mentioned in Step 4 but the tool name could use the short official form (Codex) and a brief clarification on how to access it for readers who may not have an account; újraküldöm.",
+      "ref": "2026-08-20T16-22-15-024Z_openai-blog_How_ChatGPT_Work_helps_Stampli_move_ideas_to_marke.json",
+      "at": "2026-08-20T16:23:37.914Z"
+    },
+    {
+      "id": "m178724304040488",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"How ChatGPT Work helps Stampli move ideas to market\" — mi a baj: Opening claims about compressing multi-week launches lack a specific source or citation; Step 4 says Codex access is 'currently through' developer tools without telling readers how to actually find or request it",
+      "ref": "2026-08-20T16-22-15-024Z_openai-blog_How_ChatGPT_Work_helps_Stampli_move_ideas_to_marke.json",
+      "at": "2026-08-20T16:24:00.404Z"
+    },
+    {
+      "id": "m178724305821086",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-08-20T16:24:18.210Z"
     }
   ]
 }
