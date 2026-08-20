@@ -144,3 +144,22 @@ export function mergeLine(articles, days = 1) {
     ? `🔗 Összevonás: ${cikk} cikk ${hir} hírből (${days} nap)`
     : `🔗 Összevonás: nem volt (0 cikk, ${days} nap)`;
 }
+/**
+ * 📝 Magyar helyesírás — mi kér EMBERI DÖNTÉST?
+ *
+ * MIÉRT CSAK EZ MEGY KI: az auto-javított szóalakkal nincs teendőd, azt a gép
+ * már rendbe tette a szövegben. A riportba az való, amihez a gép nem nyúlhatott
+ * magától — mert a bíró javaslata nem volt egyszerű behelyettesítés
+ * (élesben: «askolsz vagy „túl tág kérdéseket teszel fel»).
+ *
+ * ⚠️ CSENDES, ha nincs teendő. A napi jelentés hosszú; ami nem kér tőled
+ * semmit, az ne foglaljon benne sort.
+ */
+export function huSpellingLine(store) {
+  const review = store?.review;
+  if (!review || typeof review !== 'object') return '';
+  const lista = Object.entries(review);
+  if (!lista.length) return '';
+  const pelda = lista.slice(0, 3).map(([w, d]) => `${w} → ${String(d?.correct || '').slice(0, 24)}`).join(' · ');
+  return `📝 Magyar szóalak átnézésre: ${lista.length} — ${pelda}${lista.length > 3 ? ' …' : ''}`;
+}

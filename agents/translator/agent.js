@@ -27,6 +27,8 @@ import {
   titleLooksUntranslated, bodyLooksUntranslated,
   FAIL, shouldRetryTranslation, retryTokenFrame, RETRY_WAIT_MS, looksLikePromptLeak
 } from '../../core/translation-guard.js';
+import { applyFixes } from '../../core/hu-proofread.js';
+import { loadStore as loadHuStore } from '../../core/hu-review.js';
 import { orderForTranslation, pruneFails } from '../../core/translation-queue.js';
 import { fileHandback, sourceDefect } from '../../core/handback.js';
 import { remember } from '../../core/memory-manager.js';
@@ -311,7 +313,21 @@ async function main() {
       if (retryCost) cost += retryCost;
 
       if (res?.text && looksValid(res.text)) {
-        cache[code] = res.text.trim();
+        let szoveg = res.text.trim();
+        // MAGYAR HELYESÍRÁS-JAVÍTÁS (2026-08-20). A már MEGÍTÉLT hibás
+        // szóalakokat itt cseréljük ki — ingyen, AI nélkül, idempotensen.
+        // MIÉRT JAVÍTUNK ÉS NEM BUKTATUNK: a bukás újrapróbát jelent, és ha az
+        // is elbukik, ANGOL szöveg marad kint a magyar oldalon. Az rosszabb.
+        if (code === 'hu') {
+          try {
+            const r = applyFixes(szoveg, loadHuStore());
+            if (r.fixed.length) {
+              szoveg = r.text;
+              console.log(`   🔧 hu helyesírás: ${r.fixed.map(x => x.word + '→' + x.correct).join(', ')}`);
+            }
+          } catch { /* a javítás sosem akadályozhatja meg a mentést */ }
+        }
+        cache[code] = szoveg;
         saveCache(file, cache);
         cost += res.cost; done++;
         // sikerült → a bukás-számláló törlődik erre a párra

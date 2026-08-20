@@ -10,7 +10,7 @@
 
 import assert from 'assert/strict';
 import {
-  describePosts, describeRepeat, REPEAT_URGENT_PER_WEEK, describeTranslationGaps, mergeLine
+  describePosts, describeRepeat, REPEAT_URGENT_PER_WEEK, describeTranslationGaps, mergeLine, huSpellingLine
 } from './report-lines.js';
 
 let pass = 0;
@@ -184,6 +184,34 @@ t('hiányzó adatra nem borul', () => {
   assert.ok(typeof mergeLine(null, 1) === 'string');
   assert.ok(typeof mergeLine([], 1) === 'string');
   assert.ok(typeof mergeLine([{}, { _meta: null }], 1) === 'string');
+});
+
+t('📝 a magyar helyesírás-sor az EMBERI SZEMET kérőket emeli ki', () => {
+  // MIÉRT EZT: az auto-javítottal nincs teendőd — az már rendben van. Ami
+  // döntést kér, az az, amit a gép NEM javíthatott magától.
+  const s = huSpellingLine({
+    ok: ['alma', 'körte'],
+    fix: { 'többiünknek': { correct: 'többieknek' } },
+    review: { 'asksz': { correct: 'askolsz vagy valami' } }
+  });
+  assert.match(s, /📝/);
+  assert.match(s, /asksz/, 'a döntést kérő szó látszódjon');
+  assert.match(s, /1/);
+});
+
+t('ha nincs átnézendő, a sor CSENDES', () => {
+  // A napi riport hosszú; ami nem kér tőled semmit, az ne foglaljon sort.
+  assert.equal(huSpellingLine({ ok: ['a'], fix: { x: { correct: 'y' } }, review: {} }), '');
+  assert.equal(huSpellingLine(null), '');
+  assert.equal(huSpellingLine({}), '');
+});
+
+t('sok átnézendőnél számot ad és néhány példát', () => {
+  const review = {};
+  for (let i = 0; i < 9; i++) review['szo' + i] = { correct: 'jó' + i };
+  const s = huSpellingLine({ ok: [], fix: {}, review });
+  assert.match(s, /9/);
+  assert.ok(s.length < 220, 'a riport-sor ne fusson szét');
 });
 
 console.log('\n✅ report-lines.test: mind a ' + pass + ' eset rendben');

@@ -21,7 +21,7 @@ import { dirname, join } from 'path';
 import { sendMessage } from './telegram.js';
 import { canonicalChip } from './quality-guard.js';
 import { summarizeRuns, describeFailures } from './make-health.js';
-import { describePosts, describeRepeat, describeTranslationGaps, mergeLine } from './report-lines.js';
+import { describePosts, describeRepeat, describeTranslationGaps, mergeLine, huSpellingLine } from './report-lines.js';
 import { bodyLooksUntranslated } from './translation-guard.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -366,6 +366,13 @@ async function main() {
   // a néma hiba pont az lenne, hogy az ítélet sosem csoportosít, és a hiányzó
   // sorból ez nem derülne ki. Az őrszem csak akkor őr, ha odaszól, ahol nézed.
   lines.push(mergeLine(r.maiCikkek, 1));
+  // 📝 MAGYAR HELYESÍRÁS (2026-08-20): csak az kerül ide, amit a gép nem
+  // javíthatott magától. Az őrszem csak akkor őr, ha odaszól, ahol nézed.
+  try {
+    const { loadStore } = await import('./hu-review.js');
+    const sor = huSpellingLine(loadStore());
+    if (sor) lines.push(sor);
+  } catch { /* a riport ettől még kimegy */ }
   // HITELESSÉG-KAPU összegzés (2026-07-16): mit fogott a publikálás előtti
   // hallucináció-szűrő — blokk = rejected-be ment, hold = bíró-hiba, várakozik.
   try {

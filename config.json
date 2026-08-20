@@ -149,6 +149,19 @@
       "comment": "MODELL-TIERING 2026-07-24 (user: minden fizetős). KÖLTSÉG-OPTIMUM = MiniMax M2.5 — a legolcsóbb működő fizetős tier gépies munkára (parse/terv/formátum). MEGJEGYZÉS: az M2.5/M2.7 NEM engedi kikapcsolni a gondolkodást (HTTP 400), így reasoning marad ON. Fallback M2.7, vég-tartalék az ingyenes VÉSZHÁLÓ.",
       "routing": "paid-only"
     },
+    "proofread": {
+      "primary_model": {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.5"
+      },
+      "fallback_model": {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.7"
+      },
+      "enabled": true,
+      "comment": "MAGYAR HELYESIRAS-BIRO (2026-08-20, user: 'ne forduljon elo tobbet ez a hiba'). A user egy elo oldalon vette eszre a 'tobbiunknek' alakot; ugyanabban a cikkben meg ket hiba volt. KETLEPCSOS: a hunspell (core/hu-dictionaries.js) INGYEN szukiti a 2325 szavas cikket ~4 jeloltre, ez a biro pedig CSAK azt a nehany szot latja a mondataval — par szaz token, ezert M2.5 is boven eleg. Amit egyszer megitelt, az a dontes-tarba kerul es tobbe nem kerul penzbe. HIBA ESETEN NINCS ITELET: inkabb atengedunk egy hibat, mint hogy egy jo forditast eldobjunk es ANGOL szoveg maradjon kint.",
+      "routing": "paid-only"
+    },
     "cluster": {
       "primary_model": {
         "provider": "openrouter",

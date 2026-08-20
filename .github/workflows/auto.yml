@@ -527,6 +527,22 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: node core/traffic-log.js || true
 
+      # MAGYAR HELYESÍRÁS (2026-08-20). A user egy ÉLŐ oldalon vette észre a
+      # „többiünknek" alakot; ugyanabban a cikkben még két hiba volt.
+      # KÉT LÉPCSŐ: a hunspell INGYEN szűkíti a ~2300 szavas cikket néhány
+      # jelöltre, a bíró pedig csak azt a néhány szót nézi meg — ezért olcsó.
+      # A --fix a MÁR MEGÍTÉLT hibákat javítja a régi cikkekben is, $0.
+      # Sorrend: előbb ítélet (új szavak), aztán javítás (a friss ítéletekkel is).
+      - name: Magyar helyesírás — ítélet az új fordításokra
+        if: always()
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: node core/hu-review.js || true
+
+      - name: Magyar helyesírás — a megítélt hibák javítása ($0)
+        if: always()
+        run: node core/hu-review.js --fix || true
+
       # if: always() (2026-07-21 audit) — a költség-napló (core/budget-state.json)
       # CSAK itt őrződik meg. Enélkül egy bukott lépés az egész futás elköltött
       # pénzét ELDOBTA a nyilvántartásból → a havi plafon egyre kevesebbet mért.
