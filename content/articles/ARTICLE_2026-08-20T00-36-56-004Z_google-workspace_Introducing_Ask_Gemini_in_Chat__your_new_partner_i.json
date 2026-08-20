@@ -1,0 +1,61 @@
+{
+  "_meta": {
+    "written_at": "2026-08-20T00:38:32.133Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.01032948,
+    "original_draft": "2026-08-20T00-36-56-004Z_google-workspace_Introducing_Ask_Gemini_in_Chat__your_new_partner_i.json",
+    "source_id": "google-workspace",
+    "source_name": "Google Workspace Updates (hivatalos)",
+    "source_link": "http://workspaceupdates.googleblog.com/2026/08/ask-gemini-in-chat.html",
+    "source_links": [
+      "http://workspaceupdates.googleblog.com/2026/08/ask-gemini-in-chat.html"
+    ],
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "published_at": "2026-08-20T00:39:01.508Z",
+    "slug": "ask-gemini-in-google-chat-what-google-s-new-workspace-helper-does",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 759
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Good explanatory piece with clear structure, friendly tone, and useful examples. Explains technical terms (LLM, prompt, Workspace) in plain language. The 'What this means for you' section serves different reader types well, and the wrap-up offers a practical first step. No prohibited content, no clichés, no factual red flags.",
+      "_aiCost": 0.0017604,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-08-20T00:39:40.949Z",
+    "guide_worthy": true,
+    "related_guide_topic": "gemini-getting-started",
+    "image_v": 2,
+    "image_at": "2026-08-20T00:45:44.560Z",
+    "seo": {
+      "meta_description": "Discover Ask Gemini in Google Chat—an AI helper that searches Gmail, Drive, Calendar, summarizes chats, and drafts replies without leaving the app.",
+      "keywords": [
+        "Ask Gemini in Google Chat",
+        "Google Chat AI assistant",
+        "Gemini Google Workspace",
+        "Google Chat AI features",
+        "how to use AI in Google Chat",
+        "Google Workspace AI helper"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Shorten meta description to exactly 150-160 characters for optimal SEO; current is 171",
+        "Add more long-tail keywords like 'Google Chat AI assistant' and 'Gemini Google Workspace' throughout the article"
+      ],
+      "optimised_at": "2026-08-20T00:46:48.688Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Ask Gemini in Google Chat: What Google's New Workspace Helper Does\"\nsubtitle: \"A plain-language look at the new AI assistant built into Google Chat, and what it can do for your daily work\"\ncategory: \"how-to\"\naudience: \"business\"\nread_time_minutes: 4\ntags: [\"gemini\", \"google-workspace\", \"google-chat\", \"productivity\"]\n---\n\n# Ask Gemini in Google Chat: What Google's New Workspace Helper Does\n\n> **In short:** Google is adding \"Ask Gemini in Chat\" to Google Chat on August 26, 2026 — an AI assistant that searches your Gmail, Drive, and Calendar, summarizes conversations, and drafts replies, all without leaving your chat window.\n\nPicture your typical Tuesday: 14 unread emails, a meeting invite you're not sure you can make, and a teammate just pinged you in chat asking for \"that file from last week.\" You open three tabs, scroll through your inbox, hunt in Drive, check your calendar. By the time you reply, fifteen minutes are gone.\n\nThat's exactly the friction Google is trying to remove with Ask Gemini in Chat.\n\n## What it actually is\n\nAsk Gemini in Chat is a new AI assistant that lives inside Google Chat — Google's messaging app for teams, similar to Slack. Instead of opening a separate AI tool in another tab, you type a question or request into the same chat window where you already talk to your team.\n\nThe \"AI\" part is Gemini, Google's family of large language models, or LLMs (the same general technology that powers ChatGPT and Claude). It can read and write text, summarize information, and answer questions in plain English.\n\nWhat makes this version different is what it can reach. It's connected to your Workspace — Google's bundle of work apps, which usually includes Gmail, Drive (for files), Calendar, and Docs. So when you ask it something, it can pull answers from your actual work data, not just general knowledge.\n\n## What you can ask it\n\nGoogle describes Ask Gemini as a \"command line for your work\" — meaning a single place to handle many small tasks. The kinds of things you can do include:\n\n- **Catch up on a chat thread.** \"Summarize what I missed in #project-x today.\"\n- **Find a file or an email.** \"Find the contract Amy sent me last week.\"\n- **Check your schedule.** \"What meetings do I have tomorrow afternoon?\"\n- **Draft a quick message.** \"Write a reply telling Sam I'll join the meeting at 3.\"\n- **Pull scattered info together.** \"What did the team decide about the launch date in last week's emails?\"\n\nYou write the request in normal English — that's called a prompt (just the instruction you give the AI). The assistant reads what you typed, searches the relevant Workspace apps, and answers back inside the chat.\n\n## What this means for you\n\n- **If you spend your day switching between Gmail, Calendar, and Chat:** This is built for you. The biggest win is fewer context switches — instead of opening five tabs to piece together an answer, you ask once and get a single reply. Most people don't realize how much time those small switches actually cost over a week.\n\n- **If you lead a team or run a project:** Think about onboarding. A new hire could ask \"What did we decide about pricing last month?\" and get a real answer pulled from your team's emails and shared docs, instead of bothering a busy colleague.\n\n- **If you're cautious about AI in the workplace:** The data stays inside your Workspace environment. Nothing is shared publicly. It's worth checking with your IT or admin team about whether the feature is enabled on your account and what your organization's privacy rules are.\n\n- **If your team uses Slack, Teams, or another chat app:** This specific feature won't apply to you. Google is building it into its own Chat product, so if your workplace runs on a different platform, you'd want a similar AI add-on there — many already exist.\n\n## Wrap-up\n\nAsk Gemini in Chat is part of a bigger shift: AI assistants are moving out of separate apps and into the tools you already use all day. You don't have to learn a new system — you just type a question in the same place where you'd message a teammate.\n\nA practical first step when this rolls out: try it on something low-stakes. Next time you can't find a file, or you're catching up on a busy thread, ask Gemini instead of digging manually. Ten minutes of experimenting will tell you whether it actually saves you time — and where it falls short.",
+  "original_title": "Introducing Ask Gemini in Chat: your new partner in productivity "
+}

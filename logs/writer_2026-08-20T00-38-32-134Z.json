@@ -1,0 +1,36 @@
+{
+  "started_at": "2026-08-20T00:36:56.340Z",
+  "drafts_total": 2,
+  "articles_written": 2,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 0,
+  "merged_total": 0,
+  "total_cost_usd": 0.01981811,
+  "by_article": [
+    {
+      "draft": "2026-08-20T00-36-56-004Z_openai-blog_Offering_Zero_Data_Retention_for_frontier_models.json",
+      "writer_output": "WRITER_2026-08-20T00-36-56-004Z_openai-blog_Offering_Zero_Data_Retention_for_frontier_models.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.00916103,
+      "duration_ms": 26290,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-08-20T00-36-56-004Z_google-workspace_Introducing_Ask_Gemini_in_Chat__your_new_partner_i.json",
+      "writer_output": "WRITER_2026-08-20T00-36-56-004Z_google-workspace_Introducing_Ask_Gemini_in_Chat__your_new_partner_i.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.01032948,
+      "duration_ms": 65329,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    }
+  ],
+  "finished_at": "2026-08-20T00:38:32.134Z",
+  "duration_seconds": 95.794
+}
