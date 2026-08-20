@@ -38,6 +38,26 @@ Respond with {"words": [{"word": "<exact word as given>", "ok": true|false, "cor
 Include "correct" ONLY when ok is false. Judge every word you were given, and no others.
 When unsure, answer ok: true — a wrong "invalid" verdict throws away a good translation.`;
 
+/**
+ * Csak az ÉKEZETEKBEN tér el a két alak?
+ *
+ * ⚠️ EZ A LEGSZIGORÚBB ZÁR, és ez dönti el, mihez nyúlhat a gép magától.
+ * Az ékezet-helyreállítás bizonyíthatóan ártalmatlan: ugyanaz a szó, ugyanaz a
+ * rag, csak a vesszők hiányoztak („kezdo" → „kezdő"). Bármi más a MONDATOT is
+ * érintheti, és a bíró csak a szót látja — élesben ilyet adott:
+ *   „anny" → „annyit"   → „annyit ideig tartott" (rossz)
+ *   „biokra" → „biogra" → nem is szó
+ * A fordítónk mért fő hibája épp az ékezet-vesztés, tehát ez a szűk kapu a
+ * valódi hibák 59%-át fedi le.
+ */
+export function isAccentOnly(a, b) {
+  const le = w => String(w == null ? '' : w).toLowerCase()
+    .replace(/[áa]/g, 'a').replace(/[ée]/g, 'e').replace(/[íi]/g, 'i')
+    .replace(/[óöőo]/g, 'o').replace(/[úüűu]/g, 'u');
+  const x = le(a), y = le(b);
+  return !!x && x === y;
+}
+
 /** Üres döntés-tár. `fix` = biztonsággal cserélhető, `review` = emberi szem kell. */
 export function emptyStore() { return { ok: [], fix: {}, review: {} }; }
 
@@ -129,7 +149,11 @@ export function applyVerdicts(store, verdicts) {
       continue;
     }
     if (!v.correct) continue;
-    const cel = v.fixable === true ? s.fix : s.review;
+    // ⚠️ CSAK az ékezet-helyreállítás javul MAGÁTÓL. Minden más emberi szemet kér.
+    // Élesben, MIELŐTT lefutott volna: „anny" → „annyit" a mondatból
+    // „annyit ideig tartott"-ot csinált volna, a „biokra" → „biogra" pedig
+    // nem is szó. A bíró a SZÓT nézi, a nyelvtan viszont a MONDATÉ.
+    const cel = (v.fixable === true && isAccentOnly(v.word, v.correct)) ? s.fix : s.review;
     cel[w] = { correct: String(v.correct), at: ma };
     const i = s.ok.indexOf(w);
     if (i >= 0) s.ok.splice(i, 1);        // egy szó nem lehet egyszerre jó és rossz
@@ -200,6 +224,6 @@ function betu(ch) {
 }
 
 export default {
-  BATCH, HU_JUDGE_PROMPT, emptyStore, isFixable,
+  BATCH, HU_JUDGE_PROMPT, emptyStore, isFixable, isAccentOnly,
   judgeWords, applyVerdicts, applyFixes, needsReview
 };

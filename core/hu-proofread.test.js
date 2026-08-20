@@ -7,7 +7,7 @@
 // ===================================================================
 
 import assert from 'assert/strict';
-import { judgeWords, applyVerdicts, applyFixes, needsReview, isFixable, emptyStore } from './hu-proofread.js';
+import { judgeWords, applyVerdicts, applyFixes, needsReview, isFixable, isAccentOnly, emptyStore } from './hu-proofread.js';
 
 let pass = 0;
 const t = (n, f) => { f(); pass++; console.log('  ✅ ' + n); };
@@ -76,14 +76,25 @@ await at('a "rossz" ítélet JAVÍTÁS nélkül nem ér semmit — eldobjuk', as
   assert.deepEqual(r.verdicts, [], 'javaslat nélkül nem tudunk mit kezdeni vele');
 });
 
-t('applyVerdicts: a jó szó engedélylistára, a javítható a fix-térképbe', () => {
+t('applyVerdicts: a jó szó engedélylistára, az ékezetes a fix-térképbe', () => {
   const s = applyVerdicts(emptyStore(), [
     { word: 'refaktorálás', ok: true },
-    { word: 'többiünknek', ok: false, correct: 'többieknek', fixable: true }
+    { word: 'kezdo', ok: false, correct: 'kezdő', fixable: true }
   ]);
   assert.ok(s.ok.includes('refaktorálás'));
-  assert.equal(s.fix['többiünknek'].correct, 'többieknek');
-  assert.ok(!s.ok.includes('többiünknek'), 'egy szó nem lehet egyszerre jó és rossz');
+  assert.equal(s.fix['kezdo'].correct, 'kezdő');
+  assert.ok(!s.ok.includes('kezdo'), 'egy szó nem lehet egyszerre jó és rossz');
+});
+
+t('⚠️ még a BIZONYOSAN helyes nyelvtani javítás sem megy magától', () => {
+  // A „többiünknek" → „többieknek" javítás HELYES — a user és én együtt
+  // igazoltuk. A gép mégsem nyúlhat hozzá magától: nem tudja megkülönböztetni
+  // ettől: „biokra" → „biogra". Amit ember igazolt, azt ember írja át.
+  const s = applyVerdicts(emptyStore(), [
+    { word: 'többiünknek', ok: false, correct: 'többieknek', fixable: true }
+  ]);
+  assert.equal(s.fix['többiünknek'], undefined);
+  assert.equal(s.review['többiünknek'].correct, 'többieknek');
 });
 
 t('⚠️ a NEM behelyettesíthető javaslat NEM a fix-térképbe megy', () => {
@@ -107,6 +118,31 @@ t('isFixable: csak az egyszavas, tiszta alak cserélhető', () => {
   assert.equal(isFixable(null), false);
 });
 
+t('🔤 CSAK az ékezet-helyreállítás javul magától', () => {
+  // ÉLES LELET (2026-08-20), MIELŐTT lefutott volna: a bíró egyszavas
+  // javaslatai gyakran nem illenek a mondatba —
+  //   „anny ideig" → „annyit ideig"   (nyelvtanilag rossz)
+  //   „biokra"     → „biogra"          (nem is szó)
+  // Az ékezet-helyreállítás viszont BIZONYÍTHATÓAN ártalmatlan: ugyanaz a szó,
+  // ugyanaz a rag, csak a vesszők hiányoztak.
+  const s = applyVerdicts(emptyStore(), [
+    { word: 'kezdo', ok: false, correct: 'kezdő', fixable: true },
+    { word: 'anny', ok: false, correct: 'annyit', fixable: true }
+  ]);
+  assert.equal(s.fix['kezdo'].correct, 'kezdő', 'ékezet: javítjuk');
+  assert.equal(s.fix['anny'], undefined, 'nem ékezet: a gép NEM nyúl hozzá');
+  assert.equal(s.review['anny'].correct, 'annyit', 'de jelezni kell');
+});
+
+t('isAccentOnly: a magyar ékezet-párokat ismeri', () => {
+  assert.equal(isAccentOnly('kezdo', 'kezdő'), true);
+  assert.equal(isAccentOnly('egyszeru', 'egyszerű'), true);
+  assert.equal(isAccentOnly('lepesrol', 'lépésről'), true);
+  assert.equal(isAccentOnly('anny', 'annyit'), false, 'hosszabb lett: nem ékezet');
+  assert.equal(isAccentOnly('biokra', 'biogra'), false, 'más betű: nem ékezet');
+  assert.equal(isAccentOnly('szövezdoboz', 'szövegdoboz'), false, 'z→g nem ékezet');
+});
+
 t('applyVerdicts nem duplikál és nem borul hiányos bemenetre', () => {
   let s = applyVerdicts(emptyStore(), [{ word: 'alma', ok: true }]);
   s = applyVerdicts(s, [{ word: 'ALMA', ok: true }, null, { ok: true }]);
@@ -114,35 +150,35 @@ t('applyVerdicts nem duplikál és nem borul hiányos bemenetre', () => {
 });
 
 t('🔧 applyFixes: az EGYSZER megítélt hiba ingyen, AI nélkül javul', () => {
-  const s = applyVerdicts(emptyStore(), [{ word: 'többiünknek', ok: false, correct: 'többieknek', fixable: true }]);
-  const r = applyFixes('Mit jelent ez a többiünknek?', s);
-  assert.equal(r.text, 'Mit jelent ez a többieknek?');
-  assert.deepEqual(r.fixed, [{ word: 'többiünknek', correct: 'többieknek' }]);
+  const s = applyVerdicts(emptyStore(), [{ word: 'kezdo', ok: false, correct: 'kezdő', fixable: true }]);
+  const r = applyFixes('Ez egy kezdo útmutató.', s);
+  assert.equal(r.text, 'Ez egy kezdő útmutató.');
+  assert.deepEqual(r.fixed, [{ word: 'kezdo', correct: 'kezdő' }]);
 });
 
 t('applyFixes IDEMPOTENS — a már javított szövegen nincs mit tenni', () => {
-  const s = applyVerdicts(emptyStore(), [{ word: 'többiünknek', ok: false, correct: 'többieknek', fixable: true }]);
-  const egyszer = applyFixes('Ez a többiünknek szól.', s);
+  const s = applyVerdicts(emptyStore(), [{ word: 'kezdo', ok: false, correct: 'kezdő', fixable: true }]);
+  const egyszer = applyFixes('Ez a kezdo útmutató.', s);
   const ketszer = applyFixes(egyszer.text, s);
   assert.equal(ketszer.text, egyszer.text);
   assert.deepEqual(ketszer.fixed, []);
 });
 
 t('applyFixes megtartja a NAGY kezdőbetűt', () => {
-  const s = applyVerdicts(emptyStore(), [{ word: 'hetodból', ok: false, correct: 'hetedből', fixable: true }]);
-  assert.equal(applyFixes('Hetodból választok.', s).text, 'Hetedből választok.');
+  const s = applyVerdicts(emptyStore(), [{ word: 'hetedbol', ok: false, correct: 'hetedből', fixable: true }]);
+  assert.equal(applyFixes('Hetedbol választok.', s).text, 'Hetedből választok.');
 });
 
 t('applyFixes SZÓHATÁRON cserél — nem előtagra', () => {
   // A helyesírás-szótár csapdája KÉTSZER megfogott (analysis→analyzis).
-  const s = applyVerdicts(emptyStore(), [{ word: 'alma', ok: false, correct: 'körte', fixable: true }]);
-  assert.equal(applyFixes('Az almafa virágzik.', s).text, 'Az almafa virágzik.');
-  assert.equal(applyFixes('Az alma piros.', s).text, 'Az körte piros.');
+  const s = applyVerdicts(emptyStore(), [{ word: 'kezdo', ok: false, correct: 'kezdő', fixable: true }]);
+  assert.equal(applyFixes('A kezdodik szó érintetlen.', s).text, 'A kezdodik szó érintetlen.');
+  assert.equal(applyFixes('Egy kezdo lépés.', s).text, 'Egy kezdő lépés.');
 });
 
 t('applyFixes minden előfordulást javít, nem csak az elsőt', () => {
-  const s = applyVerdicts(emptyStore(), [{ word: 'hetodból', ok: false, correct: 'hetedből', fixable: true }]);
-  assert.equal(applyFixes('hetodból és hetodból', s).text, 'hetedből és hetedből');
+  const s = applyVerdicts(emptyStore(), [{ word: 'hetedbol', ok: false, correct: 'hetedből', fixable: true }]);
+  assert.equal(applyFixes('hetedbol és hetedbol', s).text, 'hetedből és hetedből');
 });
 
 t('🔗 applyFixes NEM nyúl KÖTŐJELES összetétel belsejébe', () => {
@@ -150,9 +186,9 @@ t('🔗 applyFixes NEM nyúl KÖTŐJELES összetétel belsejébe', () => {
   // kapta meg (a tokenizáló a kötőjelnél vágott), és arra azt mondta:
   // „jéből → PDF-ből". Ha ez lefut, a szövegből „PDF-PDF-ből" lesz.
   // A kötőjel tehát SZÓ RÉSZE, nem szóhatár.
-  const s = applyVerdicts(emptyStore(), [{ word: 'jéből', ok: false, correct: 'PDF-ből', fixable: true }]);
-  assert.equal(applyFixes('A PDF-jéből másoltam ki.', s).text, 'A PDF-jéből másoltam ki.');
-  assert.equal(applyFixes('e-mailjéből idéztem.', s).text, 'e-mailjéből idéztem.');
+  const s = applyVerdicts(emptyStore(), [{ word: 'jebol', ok: false, correct: 'jéből', fixable: true }]);
+  assert.equal(applyFixes('A PDF-jebol másoltam ki.', s).text, 'A PDF-jebol másoltam ki.');
+  assert.equal(applyFixes('e-mailjebol idéztem.', s).text, 'e-mailjebol idéztem.');
 });
 
 t('a kötőjeles szó ÖNMAGÁBAN viszont javítható marad', () => {
