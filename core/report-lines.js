@@ -159,7 +159,19 @@ export function huSpellingLine(store) {
   const review = store?.review;
   if (!review || typeof review !== 'object') return '';
   const lista = Object.entries(review);
-  if (!lista.length) return '';
+
+  // ⚠️ A LEFEDETTSÉG AKKOR IS KIMEGY, HA NINCS TEENDŐ (2026-08-21, éles lelet).
+  // Az őrszem egy elrontott fájlválasztás miatt 773 cikkből 12-t nézett —
+  // mindig ugyanazt a 12-t —, és erre „0 megítélendő szóalak"-ot jelentett.
+  // Zöld volt a naplóban. A néma siker és a néma vakság ugyanúgy néz ki, ezért
+  // a SZÁM kimegy: a „0 szóalak 773 cikkből" megnyugtató, a „0 szóalak 12
+  // cikkből" viszont azonnal szemet szúr.
+  const db = Number(store?.scan?.files);
+  const fedes = Number.isFinite(db) && db > 0 ? `${db} cikk átnézve` : '';
+
+  if (!lista.length) return fedes ? `📝 Helyesírás: ${fedes} · nincs átnézendő` : '';
+
   const pelda = lista.slice(0, 3).map(([w, d]) => `${w} → ${String(d?.correct || '').slice(0, 24)}`).join(' · ');
-  return `📝 Magyar szóalak átnézésre: ${lista.length} — ${pelda}${lista.length > 3 ? ' …' : ''}`;
+  const fej = fedes ? `📝 Helyesírás (${fedes}) — átnézésre: ` : '📝 Magyar szóalak átnézésre: ';
+  return `${fej}${lista.length} — ${pelda}${lista.length > 3 ? ' …' : ''}`;
 }

@@ -3,9 +3,9 @@
 // ===================================================================
 //
 // FUTTATÁS:
-//   node core/hu-review.js                   a legutóbbi 12 fordítás átnézése
-//   node core/hu-review.js --all             mind a 760
-//   node core/hu-review.js --all --dry       csak a jelöltek száma, $0
+//   node core/hu-review.js                   MINDEN magyar fordítás átnézése
+//   node core/hu-review.js --dry             csak a jelöltek száma, $0
+//   node core/hu-review.js --limit=5         legfeljebb 5 köteg (5×40 szó) AI-ba
 //   node core/hu-review.js --fix             a MEGÍTÉLT hibák javítása, $0
 //   node core/hu-review.js --report          a tár állapota, $0
 //
@@ -26,15 +26,22 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const TRANS_DIR = join(ROOT, 'content', 'translations');
 export const STORE_PATH = join(ROOT, 'memory', 'hu-word-verdicts.json');
 
-export function loadStore() {
+// ⚠️ A `scan` BÉLYEGNEK MINDKÉT IRÁNYBAN ÁT KELL JUTNIA (2026-08-21).
+// Elsőre csak a mentést kötöttem be, az olvasás viszont `{ok, fix, review}`-ra
+// normalizált — a bélyeg némán elveszett volna, a riport pedig visszaesett
+// volna a régi, szám nélküli sorra. Tesztelhetőség miatt az útvonal kívülről
+// is megadható: a teszt így nem nyúl az éles tárhoz.
+export function loadStore(path = STORE_PATH) {
   try {
-    const s = JSON.parse(readFileSync(STORE_PATH, 'utf-8'));
-    return { ok: s.ok || [], fix: s.fix || {}, review: s.review || {} };
+    const s = JSON.parse(readFileSync(path, 'utf-8'));
+    return { ...s, ok: s.ok || [], fix: s.fix || {}, review: s.review || {} };
   } catch { return emptyStore(); }
 }
-export function saveStore(s) {
-  writeFileSync(STORE_PATH,
-    JSON.stringify({ ok: [...s.ok].sort(), fix: s.fix, review: s.review }, null, 2), 'utf-8');
+export function saveStore(s, path = STORE_PATH) {
+  // A `scan` bélyeg (mit néztünk át legutóbb) a napi riport LEFEDETTSÉG-sorát
+  // táplálja — enélkül a néma vakság ugyanúgy néz ki, mint a néma siker.
+  const ki = { ...s, ok: [...s.ok].sort(), fix: s.fix, review: s.review };
+  writeFileSync(path, JSON.stringify(ki, null, 2), 'utf-8');
 }
 
 /** A config vészkapcsolója. Config-hiba esetén BEKAPCSOLVA maradunk. */
@@ -79,14 +86,28 @@ async function main() {
   }
   if (args.includes('--fix')) { javit(store); return; }
 
-  const mind = args.includes('--all');
-  const limit = Number((args.find(a => a.startsWith('--limit=')) || '').split('=')[1]) || Infinity;
+  const limitBol = args.find(a => a.startsWith('--limit='));
+  const limit = Number((limitBol || '').split('=')[1]) || Infinity;
   const dry = args.includes('--dry');
   const { isKnownWord } = await loadHuChecker();
 
   // A jelöltek a TELJES halmazon egyszer: ugyanaz a szó több cikkben is
   // előfordul, a bírót ne fizessük ki érte többször.
-  const fajlok = mind ? magyarFajlok() : magyarFajlok().slice(-12);
+  // ⚠️ MINDIG MINDEN CIKKET PÁSZTÁZUNK — és ez nem pazarlás, hanem a javítás.
+  //
+  // ELŐTTE (2026-08-20 … 08-21) itt `magyarFajlok().slice(-12)` állt, „a 12
+  // legfrissebb" szándékával. A readdirSync viszont NÉVSORRENDET ad, nem
+  // időrendet: mérve 0/12 volt az átfedés a valóban legfrissebb 12-vel. Az
+  // őrszem minden futásban ugyanazt a 12, „v"/„w" betűs cikket nézte — azokat
+  // már megítéltük —, ezért büszkén jelentett „0 megítélendő szóalak"-ot,
+  // miközben SOHA nem látott friss cikket. 404 szóalak gyűlt fel így.
+  //
+  // Időrendre javítani csábító, de zsákutca: a CI-ban az mtime a CHECKOUT
+  // ideje (lásd a hír-megőrzés ugyanezt a leckét). A rendezés helyes iránya
+  // tehát az, hogy ne kelljen rendezni. A hunspell ingyenes és hálózat nélküli
+  // (mérve: 773 cikk = 12 másodperc), a döntés-tár pedig kiszűri, amit már
+  // megítéltünk — így AI-hívás CSAK tényleg új szóalakra megy.
+  const fajlok = magyarFajlok();
   const jeloltek = new Map();
   for (const f of fajlok) {
     const d = olvas(f);
@@ -98,7 +119,16 @@ async function main() {
   }
   const lista = [...jeloltek.values()];
   console.log('🔎 ' + fajlok.length + ' magyar cikk · ' + lista.length + ' megítélendő szóalak');
+
+  // A --dry SZÁNDÉKOSAN nem ír semmit: próba, nem futás. (A tárat a CI is
+  // írja, egy helyi mellékhatás git-ütközést okozna.)
   if (dry) { console.log('   (--dry: itt megállunk, AI-hívás nem volt)'); return; }
+
+  // A bélyeg még az AI-hívás ELŐTT mentődik: ha a bíró elhasal, a riport akkor
+  // is meg tudja mondani, hogy a pásztázás lefutott és mekkora volt. Ez a
+  // különbség a „nem volt hiba" és a „nem is néztünk oda" között.
+  store.scan = { at: new Date().toISOString().slice(0, 10), files: fajlok.length, candidates: lista.length };
+  saveStore(store);
   if (!lista.length) { console.log('✅ nincs új megítélendő szó.'); return; }
   if (!proofreadEnabled()) { console.log('⏸️  Helyesírás-bíró: KIKAPCSOLVA (config) — kihagyom.'); return; }
 

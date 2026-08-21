@@ -135,7 +135,13 @@ export async function judgeWords({ candidates, ask, enabled = true, batch = BATC
  * ha a javaslat nem behelyettesíthető — az emberi szemet kérő listára.
  */
 export function applyVerdicts(store, verdicts) {
+  // ⚠️ A SZÉTSZÓRÁS SZÁNDÉKOS (2026-08-21). Három függvény építi újra a tár
+  // alakját — loadStore, saveStore és ez —, és a `scan` bélyeg MINDHÁROMBÓL
+  // kiesett, mert mindegyik csak a három ismert mezőt sorolta fel. A CLAUDE.md
+  // szabálya („ami több helyre van kimásolva, szétcsúszik") itt nem számra,
+  // hanem ADATALAKRA érvényes. Így a KÖVETKEZŐ mező is túléli, magától.
   const s = {
+    ...(store || {}),
     ok: [...new Set((store?.ok || []).map(w => String(w).toLowerCase()))],
     fix: { ...(store?.fix || {}) },
     review: { ...(store?.review || {}) }

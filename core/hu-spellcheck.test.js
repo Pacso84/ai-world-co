@@ -97,6 +97,46 @@ t('toProse: a markdown-jelölők eltűnnek, a szöveg marad', () => {
   assert.ok(!p.includes('##'), 'a fejléc-jelölő kiesik');
 });
 
+// ── KÖTŐJELES ÖSSZETÉTEL ────────────────────────────────────────────
+// MIÉRT (2026-08-21, mérve): a kötőjel-javítás után az „e-mail-címedet"
+// típusú, TELJESEN HELYES összetételek is jelöltté váltak — a hunspell
+// egyben nem ismeri őket. A felgyűlt 404 jelölt 51%-a ilyen volt.
+
+t('🔗 a kötőjeles összetétel RENDBEN, ha minden tagja ismert szó', () => {
+  const r = extractCandidates('Küldd az e-mail-címedet.', { isKnownWord: ismer('e-mail-címedet') });
+  assert.deepEqual(r.map(x => x.word), [], 'mail + címedet ismert → az összetétel is az');
+});
+
+t('🔗 de ha EGY tag hibás, a jelölés megmarad', () => {
+  // „cimedet" ékezet nélkül — pont az a hibafajta, amit keresünk.
+  const r = extractCandidates('Küldd az e-mail-cimedet.',
+    { isKnownWord: ismer('e-mail-cimedet', 'cimedet') });
+  assert.deepEqual(r.map(x => x.word), ['e-mail-cimedet']);
+});
+
+t('🔗 a betűszó+toldalék NEM ússza meg (a PDF-jéből-csapda)', () => {
+  // Sem a „pdf", sem a „jéből" nem ismert szó → marad jelölt.
+  const r = extractCandidates('Másold ki a pdf-jéből.', { isKnownWord: () => false });
+  assert.deepEqual(r.map(x => x.word), ['pdf-jéből']);
+});
+
+t('🔗 az egybetűs tag nem dönt (az „e-mail" e-je)', () => {
+  const r = extractCandidates('Nézd az e-könyveket.', { isKnownWord: ismer('e-könyveket') });
+  assert.deepEqual(r.map(x => x.word), [], 'egyetlen betű nem bizonyíték semmire');
+});
+
+t('🔗 a kötőjel nélküli hibát a szabály NEM takarja el', () => {
+  // Ez a kiinduló eset: a user ezt vette észre az élő oldalon.
+  const r = extractCandidates('Ez a többiünknek szól.', { isKnownWord: ismer('többiünknek') });
+  assert.deepEqual(r.map(x => x.word), ['többiünknek']);
+});
+
+t('🔗 az engedélylistás tag is ismertnek számít', () => {
+  const r = extractCandidates('A tech-szakértőnek szól.',
+    { isKnownWord: ismer('tech-szakértőnek', 'tech'), allowlist: new Set(['tech']) });
+  assert.deepEqual(r.map(x => x.word), []);
+});
+
 t('hiányzó bemenetre nem borul', () => {
   assert.deepEqual(extractCandidates(null, { isKnownWord: () => true }), []);
   assert.deepEqual(extractCandidates('', { isKnownWord: () => true }), []);

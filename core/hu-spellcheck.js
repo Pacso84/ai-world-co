@@ -61,6 +61,30 @@ export function toProse(md) {
     .replace(/[*_~>#|]/g, ' ');                 // kiemelés-jelölők
 }
 
+/**
+ * KÖTŐJELES ÖSSZETÉTEL: rendben van-e a tagjai alapján?
+ *
+ * MIÉRT KELL (2026-08-21, mérve): a kötőjel-egyben-tartás — ami a
+ * „PDF-PDF-ből" elrontást előzte meg — mellékhatásként az „e-mail-címedet"
+ * típusú, teljesen helyes összetételeket is gyanússá tette: a hunspell
+ * EGYBEN nem ismeri őket. A felgyűlt 404 jelölt 51%-a ilyen volt.
+ *
+ * A szabály a magyar helyesírás mechanikáját követi: az összetétel akkor jó,
+ * ha a tagjai jók. Egy hibás tag (pl. „e-mail-cimedet") tehát ÁTENGEDI a szót
+ * a bíróhoz — a szabály szűkít, nem takar.
+ *
+ * ⚠️ Az egybetűs tag („e-könyv" e-je) nem bizonyít semmit, ezért kimarad a
+ * döntésből. A betűszó+toldalék („pdf-jéből") viszont bent marad jelöltnek:
+ * ott EGYIK tag sem ismert szó.
+ */
+export function osszetettTagjaiOk(word, isKnownWord, enged) {
+  const w = String(word == null ? '' : word);
+  if (!w.includes('-')) return false;              // nem összetétel — nem ránk tartozik
+  const tagok = w.split('-').filter(r => r.length >= 2);
+  if (!tagok.length) return false;                 // csupa egybetűs tag: nem döntünk
+  return tagok.every(r => enged.has(r.toLowerCase()) || isKnownWord(r));
+}
+
 /** A szót tartalmazó mondat — ennyi kell a bírónak a döntéshez. */
 function mondat(proza, szo) {
   const i = proza.toLowerCase().indexOf(szo.toLowerCase());
@@ -101,9 +125,10 @@ export function extractCandidates(md, o = {}) {
     latott.add(kulcs);
     if (enged.has(kulcs)) continue;
     if (o.isKnownWord(w)) continue;
+    if (osszetettTagjaiOk(w, o.isKnownWord, enged)) continue;
     out.push({ word: w, context: mondat(proza, w) });
   }
   return out;
 }
 
-export default { toProse, extractCandidates, MIN_SZO_HOSSZ };
+export default { toProse, extractCandidates, osszetettTagjaiOk, MIN_SZO_HOSSZ };

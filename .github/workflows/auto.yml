@@ -284,6 +284,30 @@ jobs:
       # A build a MEGLÉVŐ tartalomból dolgozik, tehát nyugodtan kiadható az is,
       # ami félbehagyott futásból maradt.
 
+      # MAGYAR HELYESÍRÁS (2026-08-20). A user egy ÉLŐ oldalon vette észre a
+      # „többiünknek" alakot; ugyanabban a cikkben még két hiba volt.
+      # KÉT LÉPCSŐ: a hunspell INGYEN szűkíti a ~2300 szavas cikket néhány
+      # jelöltre, a bíró pedig csak azt a néhány szót nézi meg — ezért olcsó.
+      #
+      # ⚠️ EZ A HELY SZÁMÍT (2026-08-21): a FORDÍTÁS UTÁN, de a BUILD ELŐTT.
+      # Előtte a két lépés a deploy UTÁN futott, így a kijavított magyar szöveg
+      # csak a KÖVETKEZŐ futással, ~8 óra késéssel jutott ki az oldalra — és a
+      # napi jelentés is az előző futás tárállapotát mutatta.
+      # Sorrend: előbb ítélet (új szavak), aztán javítás (a friss ítéletekkel is).
+      #
+      # A --limit=5 felső korlát, nem cél: 5 köteg × 40 szó ≈ $0,02 egy futásra.
+      # Napi új anyagra ennek töredéke kell; a korlát egy elszabadult futás ellen
+      # véd, és a felgyűlt hátralék így pár futás alatt ledolgozódik.
+      - name: Magyar helyesírás — ítélet az új szóalakokra
+        if: always()
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: node core/hu-review.js --limit=5 || true
+
+      - name: Magyar helyesírás — a megítélt hibák javítása ($0)
+        if: always()
+        run: node core/hu-review.js --fix || true
+
       # Minőség-ÖNJAVÍTÓ (2026-07-13, "ne csak szóljon, javítsa is"): a
       # determinisztikus csempe-hibákat KIJAVÍTJA a build előtt (témalista +
       # cikkek _meta); a javítás-napló a napi Telegram-jelentésbe kerül.
@@ -526,22 +550,6 @@ jobs:
           CF_ANALYTICS_TOKEN: ${{ secrets.CF_ANALYTICS_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: node core/traffic-log.js || true
-
-      # MAGYAR HELYESÍRÁS (2026-08-20). A user egy ÉLŐ oldalon vette észre a
-      # „többiünknek" alakot; ugyanabban a cikkben még két hiba volt.
-      # KÉT LÉPCSŐ: a hunspell INGYEN szűkíti a ~2300 szavas cikket néhány
-      # jelöltre, a bíró pedig csak azt a néhány szót nézi meg — ezért olcsó.
-      # A --fix a MÁR MEGÍTÉLT hibákat javítja a régi cikkekben is, $0.
-      # Sorrend: előbb ítélet (új szavak), aztán javítás (a friss ítéletekkel is).
-      - name: Magyar helyesírás — ítélet az új fordításokra
-        if: always()
-        env:
-          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
-        run: node core/hu-review.js || true
-
-      - name: Magyar helyesírás — a megítélt hibák javítása ($0)
-        if: always()
-        run: node core/hu-review.js --fix || true
 
       # if: always() (2026-07-21 audit) — a költség-napló (core/budget-state.json)
       # CSAK itt őrződik meg. Enélkül egy bukott lépés az egész futás elköltött

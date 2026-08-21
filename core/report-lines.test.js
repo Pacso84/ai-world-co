@@ -199,6 +199,34 @@ t('📝 a magyar helyesírás-sor az EMBERI SZEMET kérőket emeli ki', () => {
   assert.match(s, /1/);
 });
 
+// ── PÁSZTÁZÁS-LEFEDETTSÉG ───────────────────────────────────────────
+// MIÉRT (2026-08-21, éles lelet): a helyesírás-őrszem egy elrontott
+// fájlválasztás miatt 773 cikkből 12-t nézett — mindig ugyanazt a 12-t —, és
+// erre büszkén „0 megítélendő szóalak"-ot jelentett. A CI-naplóban ez zöld
+// volt. Ha a napi riport KIÍRJA, hány cikket néztünk át, a hiba az első napon
+// szemet szúr: a „12" a 773 mellett hangosan hamis.
+
+t('📝 a riport kiírja, HÁNY cikket néztünk át — enélkül a vakság zöldnek látszik', () => {
+  const s = huSpellingLine({
+    ok: [], fix: {}, review: { asksz: { correct: 'kérdezel' } },
+    scan: { at: '2026-08-21', files: 773, candidates: 192 }
+  });
+  assert.match(s, /773/, 'a lefedettség a riportban legyen ott');
+});
+
+t('📝 a lefedettség akkor is látszik, ha NINCS átnézendő szó', () => {
+  // Pont ez a veszélyes eset: a néma siker és a néma vakság megkülönböztethető
+  // legyen. „0 szóalak 773 cikkből" megnyugtató; „0 szóalak 12 cikkből" nem.
+  const s = huSpellingLine({ ok: [], fix: {}, review: {}, scan: { files: 773, candidates: 0 } });
+  assert.match(s, /773/);
+});
+
+t('📝 régi tár (scan nélkül) nem borítja fel a riportot', () => {
+  const s = huSpellingLine({ ok: [], fix: {}, review: { asksz: { correct: 'kérdezel' } } });
+  assert.match(s, /asksz/);
+  assert.ok(!s.includes('undefined'), 'hiányzó mező ne szivárogjon ki a riportba');
+});
+
 t('ha nincs átnézendő, a sor CSENDES', () => {
   // A napi riport hosszú; ami nem kér tőled semmit, az ne foglaljon sort.
   assert.equal(huSpellingLine({ ok: ['a'], fix: { x: { correct: 'y' } }, review: {} }), '');
