@@ -1,0 +1,64 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "turn-a-rambling-voice-memo-transcript-into-a-clear-to-do-lis",
+    "company": "Mistral",
+    "tool": "Le Chat",
+    "icon": "✅",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-08-21T00:52:39.503Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.01212168,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-08-21T00:53:40.621Z",
+    "slug": "turn-a-rambling-voice-memo-transcript-into-a-clear-to-do-list-with-le-",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1662
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": 8,
+      "decision": "PASS",
+      "issues": [
+        "20-to-2-minute time claim is illustrative but unsubstantiated — consider softening to 'significantly faster' or citing a source",
+        "Step 6 mentions 'project-management tool' without naming a common example — add one or say 'whatever tool you use'"
+      ],
+      "verdict": "A well-structured, friendly guide that hits all required elements: clear hook, explained terms, helpful examples, and a strong 'What this means for you' section. Minor issues are a loose time estimate and one underspecified reference, but neither blocks publication.",
+      "_aiCost": 0.00199557,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "image_v": 2,
+    "image_at": "2026-08-21T01:02:35.065Z",
+    "seo": {
+      "meta_description": "Learn how to use Le Chat to turn messy voice memo transcripts into organized to-do lists with tasks, owners, and deadlines in minutes.",
+      "keywords": [
+        "voice memo to todo list",
+        "Le Chat Mistral",
+        "organize voice memos",
+        "AI to-do list from transcript",
+        "convert voice notes to tasks",
+        "Mistral AI assistant",
+        "voice memo transcription tips"
+      ],
+      "seo_score": 9,
+      "suggestions": [
+        "Add the word 'how-to' or a tutorial phrase in the title to boost search visibility for instructional queries",
+        "Include the specific prompt template or example prompt in the article that readers can copy and use",
+        "Mention the time savings (20 min to 2 min) as a bold statistic in the first paragraph for better engagement"
+      ],
+      "optimised_at": "2026-08-21T01:04:08.932Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Turn a Rambling Voice-Memo Transcript into a Clear To-Do List with Le Chat\"\nsubtitle: \"Paste a messy, half-finished transcript into Le Chat and let it pull out the actual tasks, owners, and deadlines in under a minute.\"\ncategory: \"guide\"\naudience: \"both\"\ncompany: \"Mistral\"\ntool: \"Le Chat\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"getting-started\", \"le-chat\", \"productivity\", \"voice-memo\"]\n---\n\n# Turn a Rambling Voice-Memo Transcript into a Clear To-Do List with Le Chat\n\n> **In short:** Paste your messy voice-memo transcript into Le Chat with a short prompt, and it will pull out a clean to-do list with the tasks, owners, and deadlines you mentioned. You'll still need to double-check it, but the cleanup work drops from 20 minutes to about two.\n\nYou know that feeling — you record a voice memo during a meeting or a half-awake brainstorm, and later you open the transcript expecting a clear list of \"do this, ask her, send that.\" Instead you get a wall of half-finished sentences, three digressions about lunch, and one forgotten task. Le Chat, the AI assistant made by Mistral, can turn that mess into a usable to-do list in about a minute, and you don't need any technical skills to do it.\n\n## Before you start\n- A free Le Chat account. Sign up at **chat.mistral.ai** if you haven't already — the basic plan is enough for this task.\n- A voice-memo transcript copied to your clipboard. If you only have audio, see Step 1 for the quickest ways to turn it into text first.\n- A phone or a computer with a browser. Either works.\n- About 5 minutes total, most of which is reading the original transcript once.\n\n## Step 1 — Get your transcript ready\nThe first job is to turn the audio into text that Le Chat can read. Voice memos come out as audio — a transcript is just the typed-out words. Most phones now have a built-in way to do this: look in your Voice Memos or Notes settings for a **Transcribe** toggle, or play the audio back through your phone's keyboard dictation so it types as it listens. The exact button name depends on your phone and OS version, so if you can't find it, search your phone's help for \"transcribe voice memo\" — it usually walks you through it. Once the words are typed out, tap and hold the text, choose **Select All**, then **Copy**.\n\n💬 Example: a messy paragraph like \"ok so umm I was thinking we should probably call the dentist next week and also Sam said something about the budget review and I need to send the slides to Maria before Friday and oh I almost forgot we need new batteries for the kitchen smoke detector\" — yes, that level of messy on purpose.\n\nYou'll know it worked when the transcript text is highlighted and copied, and you can paste it into any other app as a quick test.\n\n## Step 2 — Open Le Chat in a fresh chat\nGo to **chat.mistral.ai** in your browser, or open the Le Chat app on your phone if you've installed it. Look for a button that starts a new conversation — usually a **New chat** label or a small **pencil icon** at the top of the sidebar on desktop, or a **plus sign** on mobile. The exact icon varies by version, so if you don't see one of those, look for any button that says \"new,\" \"start,\" or shows a blank message box. Click or tap it so you're starting with an empty conversation. A clean chat matters here: Le Chat reads the previous messages in a thread, and you don't want it getting distracted by earlier work.\n\n💬 Example: there's nothing to type here — just confirm the message box is empty and the page title says something like \"New chat\" at the top.\n\nYou'll know it worked when you see a blank text box with no previous messages in the conversation.\n\n## Step 3 — Paste the transcript and tell Le Chat what to do\nTap inside the message box and paste your transcript — long-press on mobile, or **Ctrl+V** on Windows / **Cmd+V** on Mac. The pasted text will fill the box. Below it, on a new line, add a short instruction telling Le Chat what you want. A prompt is just the instruction you give an AI — think of it as telling a colleague, \"here's the meeting, pull out the action items.\" Keep it short and direct. Le Chat will start typing a reply almost immediately, and within a few seconds you'll see a numbered list of tasks it pulled from your transcript.\n\n💬 Example: paste the messy paragraph from Step 1, then on a new line write: \"Pull out every task, decision, and deadline from the transcript above. Format as a numbered list. If no deadline was mentioned, write 'no deadline given'.\"\n\nYou'll know it worked when Le Chat replies with a numbered list that mentions calling the dentist, sending the slides, the budget review, and the smoke-detector batteries — not a paragraph summary of the whole thing.\n\n## Step 4 — Add a second pass for owners and dates\nTasks are only useful if you know who's doing them and when. If your transcript mentioned names or specific dates (even loosely, like \"next week\" or \"by Friday\"), send a follow-up message in the same chat asking Le Chat to add that detail. Le Chat will rewrite the list with owners and deadlines next to each task. If it can't find a name or date for something, it should say so plainly — that's fine, you can fill in the gap yourself. This second pass is what turns a generic summary into something you can actually hand to people.\n\n💬 Example: \"Now go back through the list and add, where you can, who is responsible and when it should happen. If the transcript doesn't say, leave a '?' so I know to fill it in.\"\n\nYou'll know it worked when each line in the list has a name or a question mark, plus a date or a clear \"no deadline given.\"\n\n## Step 5 — Ask for a clean copy-paste version\nLists that come back from AI are nice to read, but they're even more useful if you can paste them straight into your notes, your email, or your task app. Send one more short message asking Le Chat to give you the list in a plain format — one task per line, with the owner and date in a simple structure. Once it answers, tap and hold the response on mobile (or drag to select on desktop) and copy it. Now you have a tidy to-do list ready for wherever you keep your tasks.\n\n💬 Example: \"Rewrite the list as plain text, one task per line, in this format: 'Task — Owner — Deadline'. No markdown, no bullets, no extra explanation.\"\n\nYou'll know it worked when you can paste the result into another app and it stays readable, with each task on its own line and no stray formatting symbols.\n\n## Step 6 — Move the list where you'll actually see it\nThe point of all this is to have the list somewhere useful. Paste it into your phone's Reminders or Notes app, your email draft, your project-management tool, or even a quick message to yourself. Once it's there, glance through it once more — Le Chat usually gets it right, but it can mishear a name (\"Sam\" becomes \"Sarah\") or miss a quiet mention of a deadline. Tidy up anything it missed, then close the chat. If the transcript contained anything sensitive, you can delete the conversation from the sidebar; Le Chat keeps a list of your past chats unless you remove them.\n\n💬 Example: a final version might read \"Call dentist — me — next week; Send slides to Maria — me — Friday; Follow up with Sam on budget review — Sam — ?; Buy smoke-detector batteries — me — this week.\"\n\nYou'll know it worked when you have a clean list, in the place where you normally track tasks, that matches what you remember from the original recording.\n\n## Common mistakes\n- **Pasting the audio file instead of the transcript.** Le Chat works with text — if you drop an audio file in, it won't listen to it. Make sure you have the typed-out version first (see Step 1).\n- **Asking Le Chat to \"summarize\" instead of \"extract tasks.\"** A summary is still a wall of paragraphs. Be specific in your prompt: \"pull out the action items, owners, and deadlines.\"\n- **Trusting the list without reading it.** AI is good but not perfect — it can mix up names or skip a task that was buried in a tangent. Always skim once before sending it to anyone else.\n\n## What this means for you\n- **In everyday life:** those rambling reminders you record while walking, driving, or half-asleep can become a real list you can act on, instead of audio files you'll never re-listen to.\n- **For your business or work:** after a meeting, a phone call, or a voice note to yourself, you'll have a clean set of next steps to share with your team in seconds — no more re-listening at 1.5x speed trying to catch what Sam actually said.\n- **If you're just getting started:** try it once on a short, low-stakes voice memo — maybe a grocery list you spoke into your phone this morning. Once you see how much cleaner the result is, you'll start using it for everything.\n\n## Try it now\nOpen your phone's Voice Memos app, pick a recent recording, transcribe it, and paste it into Le Chat with the prompt \"Pull out every task, decision, and deadline from the transcript above. Format as a numbered list.\" Do it once — and you'll never look at a wall of audio the same way again.",
+  "original_title": "Turn a rambling voice-memo transcript into a clear to-do list with Le Chat"
+}

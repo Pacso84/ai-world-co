@@ -1,23 +1,4 @@
 {
-  "2026-07-28": [
-    {
-      "at": "2026-07-28T01:34:25.272Z",
-      "file": "WRITER_2026-07-27T17-29-42-208Z_google-deepmind_Introducing_Gemini_3_6_Flash__3_5_Flash-Lite__and_.json",
-      "action": "block",
-      "reasons": [
-        "Article claims Google launched three specific new models: 'Gemini 3.6 Flash', '3.5 Flash-Lite', and '3.5 Flash Cyber' — these appear to be fabricated model names. Google's real Gemini family naming uses versions like Gemini 1.5 Flash, 2.0 Flash, 2.5 Flash, with 'Flash-Lite' as a real suffix, but '3.5 Flash Cyber' and 'Gemini 3.6 Flash' as described do not correspond to known real product names and the 'Cyber' cybersecurity-tuned variant appears invented."
-      ]
-    },
-    {
-      "at": "2026-07-28T01:35:11.791Z",
-      "file": "WRITER_2026-07-27T17-29-42-209Z_google-workspace_Visual_screenshots_in_Google_Meet_meeting_notes_wi.json",
-      "action": "block",
-      "reasons": [
-        "The article presents 'Take notes for me' capturing visual screenshots of slides/charts and embedding them into a Google Doc as an upcoming feature. I cannot verify that Google has officially announced this specific visual-screenshot functionality for Google Meet's 'Take notes for me' feature. This appears to be a fabricated feature/announcement rather than a verified news report.",
-        "Specific implementation details are stated as fact (e.g., screenshots placed 'right next to the relevant summary line', a Google Doc saved to organizer's Drive with screenshots, a copy emailed to participants, a new Workspace admin setting to toggle the visual screenshot feature) without sourcing — these read as invented specifics rather than reported facts."
-      ]
-    }
-  ],
   "2026-07-29": [
     {
       "at": "2026-07-29T01:37:14.988Z",
@@ -325,6 +306,47 @@
       "action": "block",
       "reasons": [
         "The article repeatedly describes a 'ChatGPT for Teens' product with specific features (age-based response filtering, healthy-use break nudges, parent-linked controls with usage summaries, memory visibility, alerts) and presents them as facts about an existing product. As of the article's framing this is written as if it has launched, but this specific named product offering and its claimed feature set cannot be verified as a real, shipping OpenAI product — these look like invented specifics attributed to ChatGPT/OpenAI."
+      ],
+      "confidence": 6
+    }
+  ],
+  "2026-08-21": [
+    {
+      "at": "2026-08-21T00:42:55.015Z",
+      "file": "WRITER_2026-08-21T00-39-46-760Z_google-workspace_Record_presentations_in_Google_Slides_with_Google_.json",
+      "action": "block",
+      "reasons": [
+        "The article describes a 'Record button' added to Google Slides' right-hand menu that launches a recording workflow, but this is not a real feature. Google Slides does not have a Record button in its side menu, nor does Google Vids integrate recording functionality into the Slides interface as described.",
+        "The article describes 'transcript-based editing' and 'AI voiceover' as features of a Google Slides recording flow, but these specific integration capabilities are not a documented feature of Google Slides or Google Vids as presented.",
+        "The article presents these features as if they currently exist ('Google Slides now lets you record yourself presenting'), when no such public, generally available integration of Google Vids recording inside Google Slides has been announced. The described workflow (Record button in Slides menu → guided recording → shareable video link with transcript editing and AI voiceover) is fabricated."
+      ],
+      "confidence": 7
+    },
+    {
+      "at": "2026-08-21T00:43:16.723Z",
+      "file": "WRITER_2026-08-21T00-39-46-760Z_picsart_30_Gemini_Omni_prompts_to_copy_and_paste_for_AI_vi.json",
+      "action": "block",
+      "reasons": [
+        "\"Gemini Omni\" is not in the verified-real names list and does not appear to be a real Google product — the article repeatedly treats it as a named, existing video model",
+        "The claim that Gemini has a 'video generation' feature with audio/dialogue/on-screen text rendering rolled out to users is presented as fact without verification — I am not aware this exists in this form"
+      ],
+      "confidence": 6
+    },
+    {
+      "at": "2026-08-21T00:45:52.033Z",
+      "file": "WRITER_2026-08-20T16-22-15-024Z_openai-blog_How_ChatGPT_Work_helps_Stampli_move_ideas_to_marke.json",
+      "action": "block",
+      "reasons": [
+        "\"OpenAI's published case study with Stampli, an accounts-payable software company, showed a small team using ChatGPT and Codex to compress a multi-week product launch into a few days\" — fabricated case study attributed to OpenAI and Stampli; I cannot verify such a published case study exists."
+      ],
+      "confidence": 6
+    },
+    {
+      "at": "2026-08-21T00:53:58.871Z",
+      "file": "WRITER_GUIDE_use-claude-to-read-and-explain-a-long-contract-or-legal-docu.json",
+      "action": "block",
+      "reasons": [
+        "The article states paid Claude plans have an \"Artifacts\" feature that can read a directly uploaded PDF in one go via a paperclip or upload button near the message box. Artifacts is a feature for rendering code/documents in the chat output, not a PDF-reading/uploading feature. Claude's PDF upload capability exists on its own (the document handling/uploading feature), and conflating it with Artifacts or claiming Artifacts specifically lets Claude read uploaded PDFs is an inaccurate UI/feature attribution to Claude."
       ],
       "confidence": 6
     }

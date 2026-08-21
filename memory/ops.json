@@ -1,158 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178710011141933",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-19T00:41:51.419Z",
-      "updated": "2026-08-19T00:44:25.516Z"
-    },
-    {
-      "id": "t178710026551869",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-19T00:44:25.518Z",
-      "updated": "2026-08-19T00:45:57.175Z"
-    },
-    {
-      "id": "t178710035721152",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-19T00:45:57.211Z",
-      "updated": "2026-08-19T00:47:20.923Z"
-    },
-    {
-      "id": "t178710044092522",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-08-19T00:47:20.925Z",
-      "updated": "2026-08-19T00:48:51.437Z"
-    },
-    {
-      "id": "t178710053143965",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-19T00:48:51.439Z",
-      "updated": "2026-08-19T00:49:01.085Z"
-    },
-    {
-      "id": "t178710054108737",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-08-19T00:49:01.087Z",
-      "updated": "2026-08-19T00:49:22.062Z"
-    },
-    {
-      "id": "t178712780546180",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-08-19T08:23:25.461Z",
-      "updated": "2026-08-19T08:23:25.642Z"
-    },
-    {
-      "id": "t178712780564356",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-08-19T08:23:25.643Z",
-      "updated": "2026-08-19T08:23:54.526Z"
-    },
-    {
-      "id": "t178712783452842",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-08-19T08:23:54.528Z",
-      "updated": "2026-08-19T08:23:54.730Z"
-    },
-    {
-      "id": "t17871278347328",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-19T08:23:54.732Z",
-      "updated": "2026-08-19T08:25:12.470Z"
-    },
-    {
-      "id": "t178712791247214",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-19T08:25:12.472Z",
-      "updated": "2026-08-19T08:26:14.490Z"
-    },
-    {
-      "id": "t178712797449237",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-08-19T08:26:14.492Z",
-      "updated": "2026-08-19T08:26:31.366Z"
-    },
-    {
-      "id": "t178712799140744",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-19T08:26:31.407Z",
-      "updated": "2026-08-19T08:26:55.520Z"
-    },
-    {
-      "id": "t178712801552171",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-08-19T08:26:55.521Z",
-      "updated": "2026-08-19T08:27:24.779Z"
-    },
-    {
-      "id": "t178712804478192",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-19T08:27:24.781Z",
-      "updated": "2026-08-19T08:27:39.397Z"
-    },
-    {
-      "id": "t178712805939912",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-08-19T08:27:39.399Z",
-      "updated": "2026-08-19T08:27:55.165Z"
-    },
-    {
-      "id": "t178715630254595",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-08-19T16:18:22.545Z",
-      "updated": "2026-08-19T16:18:22.729Z"
-    },
-    {
-      "id": "t178715630273066",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-08-19T16:18:22.730Z",
-      "updated": "2026-08-19T16:19:08.152Z"
-    },
-    {
-      "id": "t178715634815321",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-08-19T16:19:08.154Z",
-      "updated": "2026-08-19T16:19:08.357Z"
-    },
-    {
       "id": "t178715634835977",
       "title": "Run iro",
       "status": "done",
@@ -479,33 +327,161 @@
       "agent": "publisher",
       "created": "2026-08-20T16:24:18.221Z",
       "updated": "2026-08-20T16:24:39.136Z"
+    },
+    {
+      "id": "t178727274772540",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-08-21T00:39:07.725Z",
+      "updated": "2026-08-21T00:39:07.946Z"
+    },
+    {
+      "id": "t178727274794870",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-08-21T00:39:07.948Z",
+      "updated": "2026-08-21T00:39:46.770Z"
+    },
+    {
+      "id": "t178727278677137",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-08-21T00:39:46.771Z",
+      "updated": "2026-08-21T00:39:46.899Z"
+    },
+    {
+      "id": "t178727278690095",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-21T00:39:46.900Z",
+      "updated": "2026-08-21T00:42:39.382Z"
+    },
+    {
+      "id": "t178727295938486",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-21T00:42:39.384Z",
+      "updated": "2026-08-21T00:43:29.047Z"
+    },
+    {
+      "id": "t178727300904939",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-21T00:43:29.049Z",
+      "updated": "2026-08-21T00:45:31.784Z"
+    },
+    {
+      "id": "t178727313178555",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-21T00:45:31.785Z",
+      "updated": "2026-08-21T00:46:23.322Z"
+    },
+    {
+      "id": "t17872731833240",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-08-21T00:46:23.324Z",
+      "updated": "2026-08-21T00:46:53.481Z"
+    },
+    {
+      "id": "t178727321350671",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-21T00:46:53.506Z",
+      "updated": "2026-08-21T00:52:39.512Z"
+    },
+    {
+      "id": "t178727355951371",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-21T00:52:39.513Z",
+      "updated": "2026-08-21T00:53:58.882Z"
+    },
+    {
+      "id": "t17872736389056",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-21T00:53:58.905Z",
+      "updated": "2026-08-21T00:53:59.015Z"
+    },
+    {
+      "id": "t17872736390164",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-21T00:53:59.016Z",
+      "updated": "2026-08-21T00:55:02.002Z"
+    },
+    {
+      "id": "t178727370200437",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-21T00:55:02.004Z",
+      "updated": "2026-08-21T00:57:49.462Z"
+    },
+    {
+      "id": "t178727386946470",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-21T00:57:49.464Z",
+      "updated": "2026-08-21T01:00:28.839Z"
+    },
+    {
+      "id": "t178727402884083",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-21T01:00:28.840Z",
+      "updated": "2026-08-21T01:00:53.626Z"
+    },
+    {
+      "id": "t178727405362834",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-21T01:00:53.628Z",
+      "updated": "2026-08-21T01:02:35.077Z"
+    },
+    {
+      "id": "t178727415507823",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-08-21T01:02:35.078Z",
+      "updated": "2026-08-21T01:04:08.942Z"
+    },
+    {
+      "id": "t178727424894480",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-21T01:04:08.944Z",
+      "updated": "2026-08-21T01:04:19.783Z"
+    },
+    {
+      "id": "t178727425978421",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-08-21T01:04:19.784Z",
+      "updated": "2026-08-21T01:04:41.468Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178629252516189",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The line-up has solid variety — practical how-tos, privacy guidance, and everyday use cases are all covered. Most articles mention specific tools, which is useful but could feel overwhelming for AI ne",
-      "agent": "publisher",
-      "at": "2026-08-09T16:22:05.161Z",
-      "loud": false
-    },
-    {
-      "id": "n178629253512513",
-      "level": "info",
-      "text": "Pipeline lefutott — ma nem volt publikálható új tartalom.",
-      "agent": "ceo",
-      "at": "2026-08-09T16:22:15.125Z",
-      "loud": false
-    },
-    {
-      "id": "n178630158004124",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). A line-up jól összeállt – a cikkek a mindennapi élet különböző helyzeteit fedik le, a tényellenőrzéstől a személyes üzenetekig. Egy apróbb észrevétel: a 4-5-6. cikk (panaszlevél, panasz-email, visszat",
-      "agent": "publisher",
-      "at": "2026-08-09T18:53:00.042Z",
-      "loud": false
-    },
     {
       "id": "n178630158977633",
       "level": "info",
@@ -1281,108 +1257,33 @@
       "agent": "ceo",
       "at": "2026-08-20T16:24:39.172Z",
       "loud": false
+    },
+    {
+      "id": "n178727424893572",
+      "level": "info",
+      "text": "SEO: 7 cikk optimalizálva (átlag 8.3/10).",
+      "agent": "seo",
+      "at": "2026-08-21T01:04:08.935Z",
+      "loud": false
+    },
+    {
+      "id": "n178727427317414",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). A line-up egységes és készen áll a megjelenésre – a cikkek jól lefedik a mindennapi AI-használatot, a magánéleti kérdésektől a személyes üzenetekig. Egy apró észrevétel: a 3., 4., 5. és 6. cikk hasonl",
+      "agent": "publisher",
+      "at": "2026-08-21T01:04:33.174Z",
+      "loud": false
+    },
+    {
+      "id": "n178727428149330",
+      "level": "success",
+      "text": "3 hír + 4 útmutató publikálva (költség: $0.1463).",
+      "agent": "ceo",
+      "at": "2026-08-21T01:04:41.493Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178632418328275",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-08-10T01:09:43.282Z"
-    },
-    {
-      "id": "m178632484751022",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-08-10T01:20:47.510Z"
-    },
-    {
-      "id": "m178635281936525",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-08-10T09:06:59.365Z"
-    },
-    {
-      "id": "m178635362377969",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-08-10T09:20:23.779Z"
-    },
-    {
-      "id": "m178638096907488",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-08-10T16:56:09.074Z"
-    },
-    {
-      "id": "m178638184786521",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-08-10T17:10:47.865Z"
-    },
-    {
-      "id": "m178641139319231",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-08-11T01:23:13.192Z"
-    },
-    {
-      "id": "m178641162557991",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"How to turn a meeting into clear notes and action \" — The URL chat.openai.com still works via redirect but the current standard URL is chatgpt.com. One minor update needed to show the modern correct URL.",
-      "ref": "ARTICLE_GUIDE_ai-meeting-notes.json",
-      "at": "2026-08-11T01:27:05.579Z"
-    },
-    {
-      "id": "m178641230297194",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-08-11T01:38:22.971Z"
-    },
-    {
-      "id": "m178643794519752",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-08-11T08:45:45.197Z"
-    },
-    {
-      "id": "m178643816898082",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"How to use AI safely with your personal informatio\" — ChatGPT specific UI path: \"tap your profile picture in the bottom-left. Select 'Settings'. Then, tap 'Data Controls'. Toggle off the switch next to 'Improve the model for everyone'\" — This exact UI path and toggle name has changed. OpenAI updated their privacy controls in 2024 and th",
-      "ref": "ARTICLE_GUIDE_ai-privacy-basics.json",
-      "at": "2026-08-11T08:49:28.980Z"
-    },
     {
       "id": "m178643871322856",
       "from": "social",
@@ -2645,6 +2546,105 @@
       "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
       "ref": "mobile",
       "at": "2026-08-20T16:24:18.210Z"
+    },
+    {
+      "id": "m178727297501434",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Record presentations in Google Slides with Google Vids\" — mi a baj: The article describes a 'Record button' added to Google Slides' right-hand menu that launches a recording workflow, but this is not a real feature. Google Slides does not have a Record button in its side menu, nor does Google Vids integrate recording functionality into the Slides interface as described.; The",
+      "ref": "2026-08-21T00-39-46-760Z_google-workspace_Record_presentations_in_Google_Slides_with_Google_.json",
+      "at": "2026-08-21T00:42:55.014Z"
+    },
+    {
+      "id": "m178727299672350",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"30 Gemini Omni prompts to copy and paste for AI video\" — mi a baj: \"Gemini Omni\" is not in the verified-real names list and does not appear to be a real Google product — the article repeatedly treats it as a named, existing video model; The claim that Gemini has a 'video generation' feature with audio/dialogue/on-screen text rendering rolled out to users is presented as fact",
+      "ref": "2026-08-21T00-39-46-760Z_picsart_30_Gemini_Omni_prompts_to_copy_and_paste_for_AI_vi.json",
+      "at": "2026-08-21T00:43:16.723Z"
+    },
+    {
+      "id": "m178727304836970",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"How ChatGPT Work helps Stampli move ideas to market\" — javítva: Opening claims about compressing multi-week launches lack a specific source or citation; Step 4 says Codex access is 'currently through' developer tools without telling readers how to actually find or request it; újraküldöm.",
+      "ref": "2026-08-20T16-22-15-024Z_openai-blog_How_ChatGPT_Work_helps_Stampli_move_ideas_to_marke.json",
+      "at": "2026-08-21T00:44:08.369Z"
+    },
+    {
+      "id": "m178727309829234",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Record presentations in Google Slides with Google Vids\" — javítva: The article describes a 'Record button' added to Google Slides' right-hand menu that launches a recording workflow, but this is not a real feature. Google Slides does not have a Record button in its side menu, nor does Google Vids integrate recording functionality into the Slides interface as described.; The article d",
+      "ref": "2026-08-21T00-39-46-760Z_google-workspace_Record_presentations_in_Google_Slides_with_Google_.json",
+      "at": "2026-08-21T00:44:58.292Z"
+    },
+    {
+      "id": "m17872731317768",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"30 Gemini Omni prompts to copy and paste for AI video\" — javítva: \"Gemini Omni\" is not in the verified-real names list and does not appear to be a real Google product — the article repeatedly treats it as a named, existing video model; The claim that Gemini has a 'video generation' feature with audio/dialogue/on-screen text rendering rolled out to users is presented as fact without v",
+      "ref": "2026-08-21T00-39-46-760Z_picsart_30_Gemini_Omni_prompts_to_copy_and_paste_for_AI_vi.json",
+      "at": "2026-08-21T00:45:31.776Z"
+    },
+    {
+      "id": "m178727315203295",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"How ChatGPT Work helps Stampli move ideas to market\" — mi a baj: \"OpenAI's published case study with Stampli, an accounts-payable software company, showed a small team using ChatGPT and Codex to compress a multi-week product launch into a few days\" — fabricated case study attributed to OpenAI and Stampli; I cannot verify such a published case study exists.",
+      "ref": "2026-08-20T16-22-15-024Z_openai-blog_How_ChatGPT_Work_helps_Stampli_move_ideas_to_marke.json",
+      "at": "2026-08-21T00:45:52.032Z"
+    },
+    {
+      "id": "m178727316726568",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Record presentations in Google Slides with Google Vids\" (?/10)",
+      "ref": "2026-08-21T00-39-46-760Z_google-workspace_Record_presentations_in_Google_Slides_with_Google_.json",
+      "at": "2026-08-21T00:46:07.265Z"
+    },
+    {
+      "id": "m178727318331355",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"30 Gemini Omni prompts to copy and paste for AI video\" (?/10)",
+      "ref": "2026-08-21T00-39-46-760Z_picsart_30_Gemini_Omni_prompts_to_copy_and_paste_for_AI_vi.json",
+      "at": "2026-08-21T00:46:23.313Z"
+    },
+    {
+      "id": "m178727319180189",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "info",
+      "text": "A \"Record presentations in Google Slides with Google Vids\" hír a meglévő útmutatóra mutat: gemini-getting-started",
+      "ref": "gemini-getting-started",
+      "at": "2026-08-21T00:46:31.801Z"
+    },
+    {
+      "id": "m17872736388705",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Use Claude to read and explain a long contract or legal document\" — mi a baj: HOWTO_TOO_LONG: 1754 szó (~8.8 perc olvasás) — a cél 1000-1400 szó, a felső kapu 1700. A Facebookról érkező mobilolvasó ennyit ritkán olvas végig.; The article states paid Claude plans have an \"Artifacts\" feature that can read a directly uploaded PDF in one go via a paperclip or upload button near ",
+      "ref": "GUIDE_use-claude-to-read-and-explain-a-long-contract-or-legal-docu.json",
+      "at": "2026-08-21T00:53:58.870Z"
+    },
+    {
+      "id": "m178727425977665",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-08-21T01:04:19.776Z"
     }
   ]
 }

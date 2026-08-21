@@ -1,0 +1,35 @@
+{
+  "started_at": "2026-08-21T00:52:39.616Z",
+  "total": 4,
+  "passed": 3,
+  "failed": 0,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.012038316,
+  "by_article": [
+    {
+      "writer": "WRITER_GUIDE_brainstorm-birthday-gift-ideas-with-le-chat-for-any-budget-a.json",
+      "article": "ARTICLE_GUIDE_brainstorm-birthday-gift-ideas-with-le-chat-for-any-budget-a.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.00230175
+    },
+    {
+      "writer": "WRITER_GUIDE_practice-a-job-interview-with-le-chat-5-common-questions-and.json",
+      "article": "ARTICLE_GUIDE_practice-a-job-interview-with-le-chat-5-common-questions-and.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0022143
+    },
+    {
+      "writer": "WRITER_GUIDE_turn-a-rambling-voice-memo-transcript-into-a-clear-to-do-lis.json",
+      "article": "ARTICLE_GUIDE_turn-a-rambling-voice-memo-transcript-into-a-clear-to-do-lis.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.00199557
+    }
+  ],
+  "truth_blocked": 1,
+  "finished_at": "2026-08-21T00:53:58.874Z",
+  "duration_seconds": 79.258
+}

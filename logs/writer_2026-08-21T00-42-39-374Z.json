@@ -1,0 +1,47 @@
+{
+  "started_at": "2026-08-21T00:39:47.021Z",
+  "drafts_total": 3,
+  "articles_written": 3,
+  "articles_failed": 0,
+  "skipped_duplicate": 1,
+  "clusters_found": 0,
+  "merged_total": 0,
+  "total_cost_usd": 0.038898539999999995,
+  "by_article": [
+    {
+      "draft": "2026-08-21T00-39-46-760Z_picsart_How_to_use_AI_for_interior_design__4_looks_from_on.json",
+      "writer_output": "WRITER_2026-08-21T00-39-46-760Z_picsart_How_to_use_AI_for_interior_design__4_looks_from_on.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.01428258,
+      "duration_ms": 91319,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-08-21T00-39-46-760Z_picsart_30_Gemini_Omni_prompts_to_copy_and_paste_for_AI_vi.json",
+      "writer_output": "WRITER_2026-08-21T00-39-46-760Z_picsart_30_Gemini_Omni_prompts_to_copy_and_paste_for_AI_vi.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.01441158,
+      "duration_ms": 45283,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-08-21T00-39-46-760Z_google-workspace_Record_presentations_in_Google_Slides_with_Google_.json",
+      "writer_output": "WRITER_2026-08-21T00-39-46-760Z_google-workspace_Record_presentations_in_Google_Slides_with_Google_.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.00939228,
+      "duration_ms": 29253,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    }
+  ],
+  "finished_at": "2026-08-21T00:42:39.374Z",
+  "duration_seconds": 172.353
+}

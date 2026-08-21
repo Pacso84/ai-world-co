@@ -1,0 +1,68 @@
+{
+  "_meta": {
+    "written_at": "2026-08-21T00:44:58.292Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.0098877,
+    "original_draft": "2026-08-21T00-39-46-760Z_google-workspace_Record_presentations_in_Google_Slides_with_Google_.json",
+    "source_id": "google-workspace",
+    "source_name": "Google Workspace Updates (hivatalos)",
+    "source_link": "http://workspaceupdates.googleblog.com/2026/08/record-presentations-in-google-slides-with-Google-Vids.html",
+    "source_links": [
+      "http://workspaceupdates.googleblog.com/2026/08/record-presentations-in-google-slides-with-Google-Vids.html"
+    ],
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "rejected_at": "2026-08-21T00:42:55.006Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 812
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured explainer that hits all marks: clear hook, plain-language definitions, honest caveats about feature availability, balanced audience-specific guidance in the 'What this means for you' section, and a useful wrap-up with a concrete next step. No prohibited content, no clichés, no fabricated facts, and the language is respectful throughout.",
+      "_aiCost": 0.0016323,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Hitelesség-kapu blokkolta: The article describes a 'Record button' added to Google Slides' right-hand menu that launches a recording workflow, but this is not a real feature. Google Slides does not have a Record button in its s",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-08-21T00-39-46-760Z_google-workspace_Record_presentations_in_Google_Slides_with_Google_.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-08-21T00:46:07.264Z",
+    "slug": "what-google-s-vids-app-does-and-who-it-s-really-for",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-08-21T00:46:31.773Z",
+    "guide_worthy": true,
+    "related_guide_topic": "gemini-getting-started",
+    "image_v": 2,
+    "image_at": "2026-08-21T01:01:08.408Z",
+    "seo": {
+      "meta_description": "Google Vids is an AI video tool in Google Workspace for creating work videos with templates and AI assistance. Learn what it does and who it's for.",
+      "keywords": [
+        "what is Google Vids",
+        "Google Vids app",
+        "Google Vids vs Google Slides",
+        "Google Workspace video tool",
+        "how to use Google Vids",
+        "AI video tool for work"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add a brief how-to section explaining the steps to create a video in Google Vids",
+        "Include specific use cases like employee onboarding or product updates to improve relevance for search intent",
+        "Consider adding comparison points with other video tools to capture more long-tail searches"
+      ],
+      "optimised_at": "2026-08-21T01:02:57.214Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"What Google's Vids App Does (and Who It's Really For)\"\nsubtitle: \"Google's AI video tool lives inside Workspace — here's a plain-language look at what it is, what it does, and who'll actually use it.\"\ncategory: \"explainer\"\naudience: \"business\"\nread_time_minutes: 4\ntags: [\"google-vids\", \"google-workspace\", \"video-creation\", \"productivity\", \"ai-tools\"]\n---\n\n# What Google's Vids App Does (and Who It's Really For)\n\n> **In short:** Google Vids is a separate Workspace app for making simple work videos using templates, your own clips, and AI help. It is not a button inside Google Slides — it's its own tool, aimed at teams that need to share videos quickly.\n\nYou've watched a colleague's screen-recorded walkthrough that looked like a polished training video. Or you've tried to record a presentation yourself and ended up with a messy file you never shared. Google's answer to that everyday frustration is an app called **Vids** — and it's worth understanding what it actually is, because the name shows up in product news a lot.\n\n## What Vids actually is\n\nVids is a video creation app built by Google for people who use **Google Workspace** (Google's paid suite of tools like Gmail, Docs, Drive, and Slides). It lives in the same family as Slides and Docs — you'll find it as its own app in the Workspace sidebar, the same way you'd open Google Sheets.\n\nThe big idea is simple: most people at work don't need a Hollywood video. They need a clear explainer, a quick product demo, or a recorded update they can share in chat. Vids is built for that middle ground — more capable than a screen recorder, simpler than a full editing suite.\n\n## What you can do with it\n\nBased on Google's own descriptions and demos, Vids is built around a few core activities. Exact menus and screen names can change as Google updates the product, so think of these as the main ideas rather than step-by-step instructions:\n\n- **Start from a template.** Vids comes with pre-built templates for common work videos — announcements, training clips, project updates. You pick one and fill it in.\n- **Record your screen and yourself.** You can capture your screen, your webcam, or both at the same time — useful for product walkthroughs and quick tutorials.\n- **Bring in your slides.** If you already have a Google Slides deck, Vids can import it so the slides appear in your video, one at a time.\n- **Use AI helpers.** Google has shown features like AI-written scripts, AI voiceover (a computer-generated voice reading your script aloud), and the ability to trim parts of a video by editing the transcript. Treat these as features that exist in some form — availability may depend on your plan, your region, and whether your Workspace admin has turned them on.\n- **Share like any Google file.** When you're done, the finished video lives in Drive, and you share it the same way you'd share a Doc — by sending a link.\n\n## Why this is different from \"just use Slides\"\n\nIt's tempting to think of Vids as \"Slides plus video.\" It isn't. Slides is for presenting slides to a live audience in the room. Vids is for producing a video file that stands on its own. The output of Vids is a video someone watches later — not a presentation they click through live.\n\nIf you've ever needed to send a \"video version\" of a slide deck to a colleague who couldn't attend a meeting, Vids is designed for exactly that gap.\n\n## What this means for you\n\n- **If you're part of a team that already uses Google Workspace:** Vids is worth a serious look. Ask your Workspace admin whether it's enabled for your account — many organizations keep it turned off by default, and access often depends on your plan.\n- **If you make training or onboarding videos:** the screen-and-webcam recording, where it's available, can save you from juggling separate tools. Where transcript editing exists, it also means you don't have to re-record every time you stumble on a sentence.\n- **If you mostly present live to a room:** Slides is still your tool. Vids is for the times the audience is watching later, on their own schedule.\n- **If you don't pay for Workspace:** Vids is generally a paid feature. For personal projects, free options like Google Meet's built-in recording or your phone's screen recorder may be enough.\n\n## Wrap-up\n\nVids is a real Google product with a real job: helping non-video people at work make decent videos without learning a complex editor. If your team lives in Google Workspace, it's worth opening once and seeing what your plan actually includes. If you don't use Workspace, you can safely skip it for now — the everyday recording jobs most people have can still be handled by simpler tools you probably already own.",
+  "original_title": "Record presentations in Google Slides with Google Vids"
+}
