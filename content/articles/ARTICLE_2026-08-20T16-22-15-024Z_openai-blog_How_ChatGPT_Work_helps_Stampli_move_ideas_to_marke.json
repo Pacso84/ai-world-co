@@ -1,0 +1,74 @@
+{
+  "_meta": {
+    "written_at": "2026-08-21T08:29:24.442Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m2.7",
+    "writer_cost_usd": 0.0076215,
+    "original_draft": "2026-08-20T16-22-15-024Z_openai-blog_How_ChatGPT_Work_helps_Stampli_move_ideas_to_marke.json",
+    "source_id": "openai-blog",
+    "source_name": "OpenAI Blog (hivatalos)",
+    "source_link": "https://openai.com/index/stampli",
+    "source_links": [
+      "https://openai.com/index/stampli"
+    ],
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "rejected_at": "2026-08-21T08:26:17.694Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1361
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [
+        "Step 4: Codex access description may be outdated—Access is now via ChatGPT interface, not just sidebar. Consider specifying: 'In ChatGPT, select the Codex mode or look for the Developer option in model selector'"
+      ],
+      "verdict": "Solid, actionable guide with excellent beginner clarity and friendly tone. Structure is complete with hook, steps, What this means for you, and wrap-up. One minor issue: the Step 4 instructions for finding Codex could be more specific since OpenAI has consolidated features into ChatGPT.",
+      "_aiCost": 0.001566,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Hitelesség-kapu blokkolta: \"OpenAI's published case study with Stampli, an accounts-payable software company, showed a small team using ChatGPT and Codex to compress a multi-week product launch into a few days\" — fabricated cas",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-08-20T16-22-15-024Z_openai-blog_How_ChatGPT_Work_helps_Stampli_move_ideas_to_marke.json",
+    "requeued_unchanged": false,
+    "ceo_rounds": 1,
+    "ceo_hint": "CEO instruction (fix ONLY the flaws listed, keep everything else): Replace the fabricated 'OpenAI/Stampli case study' lede with a generic but truthful framing: e.g., 'Small teams are using ChatGPT and Codex to compress multi-week launches into days — here's the five-step workflow they're following.' Then deliver the five practical steps the article promises.",
+    "published_at": "2026-08-21T08:29:45.046Z",
+    "slug": "how-to-use-ai-to-ship-a-project-faster-at-work",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-08-21T08:31:13.588Z",
+    "guide_worthy": false,
+    "pairing_reason": "Article is a generic how-to workflow using existing tools (ChatGPT, Codex), not introducing a new specific named feature",
+    "image_v": 2,
+    "image_at": "2026-08-21T08:31:55.103Z",
+    "seo": {
+      "meta_description": "Learn how small teams use AI to ship projects faster. A practical 5-step workflow for marketers and designers compressing multi-week launches into days.",
+      "keywords": [
+        "how to use AI at work",
+        "AI project management",
+        "speed up workflow with AI",
+        "ChatGPT for marketers",
+        "AI tools for small teams",
+        "faster project delivery",
+        "AI workflow for designers",
+        "using AI to ship projects faster"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add specific AI tool names to the title (e.g., 'with ChatGPT and Claude') to improve keyword relevance",
+        "Include concrete outcome metrics in the subtitle (e.g., 'cut launch time from 3 weeks to 3 days') for higher click-through rates",
+        "Make the 'five-step' process more prominent in the title to target '5 step workflow' searches"
+      ],
+      "optimised_at": "2026-08-21T08:32:26.876Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"How to Use AI to Ship a Project Faster at Work\"\nsubtitle: \"A practical five-step workflow for marketers, designers, and product teams turning a multi-week launch into a few days\"\ncategory: \"how-to\"\naudience: \"business\"\nread_time_minutes: 8\ntags: [\"productivity\", \"chatgpt\", \"codex\", \"workflow\", \"launch\"]\n---\n\n# How to Use AI to Ship a Project Faster at Work\n\n> **In short:** Small teams are using ChatGPT and Codex to compress multi-week launches into days — the trick isn't one magic tool but running five steps in parallel. Here's the workflow.\n\nYou've got a launch deadline, a small team, and about fourteen things on your to-do list. Sound familiar? A few years ago, the only way to ship faster was to work longer hours. Now there's another option — and it doesn't require anyone to work through the night.\n\nAI assistants have quietly changed what a small team can produce in a week. The shift isn't about replacing anyone — it's about collapsing the back-and-forth between drafting, designing, and coding. Marketers, designers, product managers, and founders are reporting the same thing: projects that used to take three weeks now wrap in a few days, not because they cut corners, but because they removed waiting time.\n\n## Before you start\n\nYou'll need a few things in place before opening any AI tool:\n\n- **A ChatGPT account.** The free tier covers most of these steps. Paid plans unlock image generation, longer conversations, and the newest models.\n- **An image generation tool.** DALL·E is built into ChatGPT on paid plans. You can also use Midjourney, Ideogram, or a similar service.\n- **A clear idea of what you're launching.** The clearer your goal, the better the output.\n- **For Step 4 only: Codex access.** Codex is OpenAI's coding agent — think of it as an AI pair-programmer (a helper that writes or edits code from plain-English instructions). Codex has rolled out in waves, so if you don't have access yet, skip Step 4 and ask a teammate with coding skills to handle that piece.\n\n## Step 1 — Scope the launch in one conversation\n\nOpen ChatGPT and start a fresh conversation (or a new **Project**, if your plan supports it — Projects keep files and notes together for one initiative). Tell the AI who you are, what you're launching, who it's for, and what success looks like. Then ask for a one-paragraph launch brief the whole team can align on. This single conversation becomes the source of truth for every later step.\n\n💬 Prompt to copy:\n\"You're my launch partner. I'm shipping [product name] on [date]. Target audience: [who]. Goal: [what success looks like]. Write a one-paragraph launch brief covering positioning, the three messages we need to land, and the channels we should use.\"\n\n**You'll know it worked when** the brief is short enough to read in 60 seconds and your team agrees on the goal without a long meeting.\n\n## Step 2 — Draft the words in batches\n\nOnce the brief exists, move into copy. Email subject lines, social posts, landing page headlines, ad variations — ask for all of them in one message rather than one at a time. Batched requests let you compare options side by side and pick what works, instead of going back and forth in five separate chats. This is where most people leave time on the table.\n\n💬 Prompt to copy:\n\"Based on the brief above, give me: 5 email subject lines (under 50 characters each), 3 LinkedIn posts (under 150 words each), and 1 landing page headline. Match a [friendly / professional / playful] tone.\"\n\n**You'll know it worked when** you have a usable first draft of each asset within minutes, not days.\n\n## Step 3 — Generate the visuals in parallel\n\nWhile you're refining the copy, open your image tool and start generating in a separate window. Hero images, social cards, mockups, and background illustrations can all be drafted in the time it takes to write a paragraph of feedback. Most tools let you iterate quickly — keep what works, regenerate what doesn't. The trick is to let the image work run alongside your writing instead of after it.\n\n💬 Prompt to copy:\n\"A flat illustration of [scene] in [minimalist / bold / watercolor] style, with [color palette]. Square format. No text in the image.\"\n\n**You'll know it worked when** you have 2-3 visual options per asset and can pick favorites in a single review session.\n\n## Step 4 — Use Codex to handle the code\n\nFor anything technical — a landing page, a script, an integration, a bug fix — Codex is where the biggest time savings usually show up. It's designed to write and edit code from plain-English instructions, which is especially valuable for teams without a dedicated engineer on the project. Open ChatGPT and look for the coding or developer option in the sidebar. If Codex isn't available in your account yet, skip this step and send the prompt below to a teammate who can run it.\n\n💬 Prompt to copy:\n\"Write an HTML page with a hero section, three feature blocks, and a sign-up form. Use the copy from the brief above. Keep the CSS simple and inline.\"\n\n**You'll know it worked when** you have a working draft you can open in a browser and refine, instead of starting from a blank file.\n\n## Step 5 — Review, polish, and ship\n\nThe last 20% of any launch is usually where things slow down: proofreading, accessibility checks (making sure the site works for people using screen readers or keyboards), last-minute feedback rounds. Use AI as a final reviewer — paste your copy and ask for grammar, tone, and clarity feedback, then paste your code and ask for accessibility or performance notes. This compresses the polishing pass from hours into minutes, leaving the human review focused on judgment, not copy-editing.\n\n💬 Prompt to copy:\n\"Review the landing page copy above for clarity, grammar, and tone. Flag anything that sounds off-brand, awkward, or unclear. Don't rewrite — just list the issues.\"\n\n**You'll know it worked when** the human review pass is short and focused on judgment calls, not copy-editing.\n\n## Common mistakes to avoid\n\n- **Skipping the brief.** If you jump straight to \"write me an email,\" you'll get generic output. Spend 10 minutes on the brief — everything downstream improves.\n- **Accepting the first draft.** AI output is a starting point, not a finished product. Always edit for your voice, your audience, and your facts.\n- **Using AI for things you don't understand.** If you can't tell whether the code is correct, don't ship it. AI is fast, but you still own the outcome.\n- **Hiding AI use from your team.** Be transparent. AI is a tool — using it well is the skill.\n- **Running steps sequentially instead of in parallel.** The whole point of this workflow is that copy, visuals, and code happen at the same time. If you finish one before starting the next, you'll lose the speed advantage.\n\n## What this means for you\n\n- **If you lead a small team or a side project:** this workflow lets one person do the work of three, but only if the goal is clear. Write the brief first, then let AI fill in the gaps.\n- **If you work in marketing or product:** batching your requests (Step 2) is the single biggest time-saver. Stop asking for one thing at a time — ask for five.\n- **If you're worried about quality:** the AI doesn't replace your taste — it replaces the blank page. The judgment calls (does this match our brand? is this true?) are still yours.\n- **If you're just getting started:** try Step 1 on your next project. Ten minutes spent writing a clear brief will change everything that follows.\n\n## Wrap-up\n\nThe pattern behind every fast AI-assisted launch is the same: a clear brief, batched requests, parallel workstreams, and a focused final review. You don't need every AI tool — one chat assistant and one image model will carry most projects. Pick the next thing on your calendar, run it through the five steps above, and time how long it takes.",
+  "original_title": "How ChatGPT Work helps Stampli move ideas to market"
+}

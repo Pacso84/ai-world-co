@@ -1,19 +1,13 @@
 {
   "_meta": {
-    "generated_at": "2026-08-18T08:24:55.780Z",
+    "generated_at": "2026-08-21T08:27:32.562Z",
     "generated_by": "source-scout agent v3.0 (megbízhatóság-kapu)",
     "note": "JAVASLATOK új, MEGBÍZHATÓ hivatalos forrásokra. A felhasználó/főnök dönti el, melyiket adjuk a sources/rss-feeds.json-hoz (enabled:true-val). Minden jelölt megbízhatósági pontszámmal + indoklással.",
     "min_score": 100,
     "checked_orgs": 18,
     "newly_discovered": 0,
-    "rejected_count": 3,
+    "rejected_count": 2,
     "rejected_examples": [
-      {
-        "name": "Oura Blog",
-        "host": "ouraring.com",
-        "reason": "a friss cikkeinek csak 8%-a szól AI-ról (kell: 60%)",
-        "score": 100
-      },
       {
         "name": "Sync.com Blog",
         "host": "sync.com",
@@ -21,10 +15,10 @@
         "score": 100
       },
       {
-        "name": "IDrive Blog",
-        "host": "idrive.com",
-        "reason": "pont 94 < 100",
-        "score": 94
+        "name": "Quip Product News",
+        "host": "quip.com",
+        "reason": "halott feed — 1477 napja nincs új cikk (limit: 365)",
+        "score": 0
       }
     ]
   },
