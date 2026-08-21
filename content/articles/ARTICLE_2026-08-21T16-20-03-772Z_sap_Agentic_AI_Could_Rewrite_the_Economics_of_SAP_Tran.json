@@ -1,0 +1,63 @@
+{
+  "_meta": {
+    "written_at": "2026-08-21T16:21:03.193Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.01215828,
+    "original_draft": "2026-08-21T16-20-03-772Z_sap_Agentic_AI_Could_Rewrite_the_Economics_of_SAP_Tran.json",
+    "source_id": "sap",
+    "source_name": "SAP Innovation Blog (hivatalos)",
+    "source_link": "https://news.sap.com/2026/08/agentic-ai-could-rewrite-economics-of-sap-transformation/",
+    "source_links": [
+      "https://news.sap.com/2026/08/agentic-ai-could-rewrite-economics-of-sap-transformation/"
+    ],
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "published_at": "2026-08-21T16:24:01.150Z",
+    "slug": "what-is-agentic-ai-a-plain-english-guide-for-everyday-people",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 825
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured explainer with a relatable hook, clear term definitions, balanced audience segmentation in the impact section, and an encouraging wrap-up with a concrete next step. Language is fresh and accessible throughout.",
+      "_aiCost": 0.0016374,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-08-21T16:24:25.222Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is a conceptual explainer about 'agentic AI' as a category, not an article introducing one specific named feature/tool that users can go use today.",
+    "image_v": 2,
+    "image_at": "2026-08-21T16:25:39.028Z",
+    "seo": {
+      "meta_description": "Agentic AI acts instead of just answering — handling tasks like scheduling and emails. A plain-English guide explains what this means for you.",
+      "keywords": [
+        "what is agentic AI",
+        "agentic AI explained",
+        "AI that takes action",
+        "agentic AI vs chatbots",
+        "AI automation for beginners",
+        "how agentic AI works",
+        "AI that does tasks for you"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add a clear subheading with 'what is agentic AI' to reinforce the main topic for search engines",
+        "Consider adding an FAQ section targeting common questions like 'is agentic AI safe' or 'when will agentic AI be available'",
+        "Include 1-2 specific tool names or examples mentioned in the full article to improve topical relevance"
+      ],
+      "optimised_at": "2026-08-21T16:26:11.942Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"What Is Agentic AI? A Plain-English Guide for Everyday People\"\nsubtitle: \"The next wave of AI doesn't just answer questions — it takes action. Here's what that means for you.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"agentic-ai\", \"ai-explained\", \"productivity\", \"ai-basics\"]\n---\n\n# What Is Agentic AI? A Plain-English Guide for Everyday People\n\n> **In short:** Agentic AI is software that takes real actions for you — opening apps, sending messages, scheduling tasks — instead of only answering questions. It's a step beyond chatbots like ChatGPT, and it's already starting to show up in tools you may use.\n\nYou finish lunch and look at your to-do list. Twenty small things: three follow-up emails, a calendar reshuffle, a report draft, a research summary. Today you'd do them yourself, one at a time. The promise of agentic AI is that one day — and in some tools, today — an AI handles the whole batch while you focus on the part that needs a human.\n\n## What \"agentic\" actually means\n\n**Agentic AI** is an AI that doesn't just chat back. It can plan a sequence of steps, use other software to carry them out, and adjust when something goes wrong. Think of it less like a knowledgeable stranger you ask questions, and more like a junior assistant you delegate a task to — one that opens the right tabs, clicks the right buttons, and reports back.\n\nThe word **agent** here simply means \"something that acts on your behalf.\" A travel agent books your trip. An AI agent books your trip — by actually using the booking sites.\n\n## How it differs from the AI you already know\n\nIf you've used ChatGPT, Claude, or Gemini, you've used an AI that produces text. You ask, it answers. You're still the one doing the clicking, copying, sending, and scheduling.\n\nAgentic AI adds a layer on top: a loop. The AI sets a goal, breaks it into sub-tasks, takes an action (open a file, run a search, send a message), checks the result, and decides the next step. If an email bounces, it doesn't stop — it tries another address or tells you what happened.\n\nThe engine underneath is still a large language model (LLM — the same kind of system behind ChatGPT). The difference is what it can do with what it knows: read your inbox, query a database, fill a form, run code, place an order.\n\n## Where it's already showing up\n\nYou may have used an agentic feature without naming it that way:\n\n- A coding assistant that not only suggests lines of code but submits the change, runs the tests, and reports the failures.\n- An email tool that drafts three replies, ranks them by urgency, and archives the rest.\n- A scheduling helper that negotiates a meeting time across two calendars without you in the loop.\n- A research assistant that opens ten tabs, reads them, writes a summary, and saves the file to your drive.\n\nIn each case, the AI is moving through your tools on your behalf, with permission.\n\n## What this means for you\n\n- **If you use AI casually at home**: Don't expect a robot butler tomorrow. The agents you can use today are narrow — good at one or two jobs, like summarizing your inbox or planning a trip. Start small: try one agentic feature in a tool you already pay for, and see how it handles the boring half of your weekend planning.\n- **If you work in any job with repetitive digital tasks**: This is the part worth paying attention to. Email triage, data entry between systems, report assembly, calendar juggling — these are exactly the jobs agentic AI is built for. You don't need to learn to code; you need to learn to delegate clearly. A useful skill now is writing a brief, specific instruction for an AI the way you'd brief a new assistant.\n- **If you're worried about your job or your safety**: Two honest notes. Some tasks will be automated, and an agent still needs a person to set the goal, define what's acceptable, and handle surprises. The people who work well *with* these tools are likely to be the ones shaping what they do. And because an agent acts on your accounts, look for tools that let you approve each sensitive step (sending, paying, deleting) and that log what the agent did. If a tool can't show its work, don't give it the keys.\n\n## Wrap-up\n\nAgentic AI is the same large language model technology, with one big addition: the ability to actually do things in the apps you already use. You don't need to be technical to benefit from it — but you do benefit from starting small, learning to brief an AI well, and choosing tools that show their work. Pick one repetitive task this week, find a tool that can take it on with your supervision, and try it.",
+  "original_title": "Agentic AI Could Rewrite the Economics of SAP Transformation"
+}

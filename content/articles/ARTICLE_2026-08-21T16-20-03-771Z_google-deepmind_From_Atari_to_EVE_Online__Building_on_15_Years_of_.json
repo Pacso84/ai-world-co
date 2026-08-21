@@ -1,0 +1,63 @@
+{
+  "_meta": {
+    "written_at": "2026-08-21T16:23:00.584Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00929748,
+    "original_draft": "2026-08-21T16-20-03-771Z_google-deepmind_From_Atari_to_EVE_Online__Building_on_15_Years_of_.json",
+    "source_id": "google-deepmind",
+    "source_name": "Google DeepMind (hivatalos)",
+    "source_link": "https://deepmind.google/blog/from-atari-to-eve-online-building-on-15-years-of-ai-research-in-games/",
+    "source_links": [
+      "https://deepmind.google/blog/from-atari-to-eve-online-building-on-15-years-of-ai-research-in-games/"
+    ],
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "published_at": "2026-08-21T16:23:17.115Z",
+    "slug": "how-ai-learned-to-play-games-and-why-it-matters-for-you",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 710
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured explainer with clear hook, solid historical progression from Atari to EVE Online, accessible reinforcement learning analogy, and a useful What this means for you section covering different reader types. Factual claims about AI milestones check out. Writing is fresh with no clichés, and the wrap-up invites readers to experience the concept firsthand. Ready to publish.",
+      "_aiCost": 0.0014751,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-08-21T16:24:06.422Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is a historical explainer about 15 years of AI research in games, not an introduction of a specific named product or feature people can use today.",
+    "image_v": 2,
+    "image_at": "2026-08-21T16:24:49.311Z",
+    "seo": {
+      "meta_description": "How AI evolved from mastering Atari in 2013 to shaping today's tools — and why the future of AI matters for you.",
+      "keywords": [
+        "how AI learns to play video games",
+        "AI gaming history timeline",
+        "reinforcement learning video games",
+        "AI beyond gaming applications",
+        "artificial intelligence game development",
+        "why tech companies use games for AI",
+        "AI assistants from game AI"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more specific keywords like 'reinforcement learning' naturally in the article body",
+        "Include a clear practical takeaway or 'what this means for you' section to increase reader engagement",
+        "Consider adding more recent real-world examples of AI applications beyond gaming"
+      ],
+      "optimised_at": "2026-08-21T16:25:49.913Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"How AI Learned to Play Games — And Why It Matters for You\"\nsubtitle: \"Fifteen years of teaching AI to master Atari, StarCraft, and now EVE Online has shaped more than just gaming.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"ai-research\", \"gaming\", \"reinforcement-learning\", \"deepmind\"]\n---\n\n# How AI Learned to Play Games — And Why It Matters for You\n\n> **In short:** AI research labs have spent 15 years using video games as training grounds, starting with Atari in 2013 and now reaching complex worlds like EVE Online. The same techniques that help AI master games are quietly shaping the assistants and tools you use every day.\n\nRemember the first time you played a video game against a computer and felt like it was actually thinking ahead? That feeling has become a lot more real over the last decade and a half — and the way AI learned to play games is starting to shape tools far beyond the gaming world.\n\n## From Atari to a space economy\n\nThe story really starts to take off in 2013, when a research lab called DeepMind showed that an AI could teach itself to play 49 different Atari games from scratch. The AI didn't know the rules. It just saw the pixels on the screen, tried things, and got a small reward whenever its score went up. After enough practice, it could beat human players on most of those games.\n\nThat was the breakthrough moment. The technique behind it has a name: **reinforcement learning**. Think of it like training a dog with treats. The AI tries an action, sees if it gets a \"treat\" (a higher score or a winning move), and slowly figures out which actions lead to more treats. Do that a few million times, and the AI starts to make smart-looking choices without anyone ever writing down the rules.\n\nIn 2016, the same basic idea helped AI beat a world champion at Go — a board game so complex that humans had played it for thousands of years without computers catching up. Then came StarCraft II in 2019, a real-time strategy game where players juggle armies, build bases, and make dozens of decisions every second. AI reached Grandmaster rank, the top tier of human players.\n\nNow researchers are aiming at even messier challenges: games like EVE Online, where thousands of human players run their own spaceships, trade resources, and form alliances in a single shared universe. There are no \"right\" answers here, no fixed board. Just a living economy that runs around the clock.\n\n## Why games, and why now?\n\nGames make a perfect training ground for three reasons. First, they give clear feedback — you win, you lose, or you score. Second, you can run millions of practice rounds quickly without real-world consequences. Third, the skills that win games (planning ahead, adapting to surprises, coordinating with others) are exactly the skills that AI assistants need to be useful in your life.\n\n## What this means for you\n\n- **If you play games:** AI is moving from \"predictable opponent\" to \"creative partner\" — one that can suggest strategies, generate quests, or even design new levels on the fly.\n- **If you don't play games:** The same trial-and-error learning is being applied to logistics, chip design, and language assistants. When an AI tool seems to plan ahead or handle a tricky multi-step task, reinforcement learning is often part of the reason.\n- **If you're just curious:** You don't need to play a single game to appreciate this. AI gets better by practicing, the same way a person does — and games are the cheapest, safest place for it to practice millions of hours.\n\n## Wrap-up\n\nFifteen years of teaching AI to play has taught us something simple: intelligence improves with lots of practice, clear feedback, and the freedom to experiment. The next time you read about an AI that \"thinks\" or \"plans,\" there's a good chance it got there the same way — by playing, failing, and trying again. If you want a feel for the trail it leaves behind, try playing one round of any strategy game and notice how many small decisions you make without thinking. That is exactly the skill AI has spent fifteen years learning.",
+  "original_title": "From Atari to EVE Online: Building on 15 Years of AI Research in Games"
+}

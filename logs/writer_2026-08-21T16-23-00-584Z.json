@@ -1,0 +1,47 @@
+{
+  "started_at": "2026-08-21T16:20:04.152Z",
+  "drafts_total": 3,
+  "articles_written": 3,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 0,
+  "merged_total": 0,
+  "total_cost_usd": 0.03411027,
+  "by_article": [
+    {
+      "draft": "2026-08-21T16-20-03-772Z_sap_Agentic_AI_Could_Rewrite_the_Economics_of_SAP_Tran.json",
+      "writer_output": "WRITER_2026-08-21T16-20-03-772Z_sap_Agentic_AI_Could_Rewrite_the_Economics_of_SAP_Tran.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.01215828,
+      "duration_ms": 55962,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-08-21T16-20-03-772Z_d-id-news_Internal_Communications_Videos__5_AI_Use_Cases_and.json",
+      "writer_output": "WRITER_2026-08-21T16-20-03-772Z_d-id-news_Internal_Communications_Videos__5_AI_Use_Cases_and.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.012192,
+      "duration_ms": 80385,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-08-21T16-20-03-771Z_google-deepmind_From_Atari_to_EVE_Online__Building_on_15_Years_of_.json",
+      "writer_output": "WRITER_2026-08-21T16-20-03-771Z_google-deepmind_From_Atari_to_EVE_Online__Building_on_15_Years_of_.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.00929748,
+      "duration_ms": 37004,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    }
+  ],
+  "finished_at": "2026-08-21T16:23:00.584Z",
+  "duration_seconds": 176.432
+}

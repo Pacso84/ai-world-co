@@ -1,86 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178718664462027",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-20T00:44:04.620Z",
-      "updated": "2026-08-20T00:45:30.592Z"
-    },
-    {
-      "id": "t178718673063341",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-20T00:45:30.633Z",
-      "updated": "2026-08-20T00:46:39.724Z"
-    },
-    {
-      "id": "t178718679972587",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-08-20T00:46:39.725Z",
-      "updated": "2026-08-20T00:47:43.849Z"
-    },
-    {
-      "id": "t178718686385018",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-20T00:47:43.850Z",
-      "updated": "2026-08-20T00:48:01.078Z"
-    },
-    {
-      "id": "t178718688108092",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-08-20T00:48:01.080Z",
-      "updated": "2026-08-20T00:48:17.315Z"
-    },
-    {
-      "id": "t178721426417326",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-08-20T08:24:24.173Z",
-      "updated": "2026-08-20T08:24:24.349Z"
-    },
-    {
-      "id": "t17872142643519",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-08-20T08:24:24.351Z",
-      "updated": "2026-08-20T08:24:59.949Z"
-    },
-    {
-      "id": "t17872142999517",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-08-20T08:24:59.951Z",
-      "updated": "2026-08-20T08:25:00.148Z"
-    },
-    {
-      "id": "t178721430015042",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-20T08:25:00.150Z",
-      "updated": "2026-08-20T08:25:00.323Z"
-    },
-    {
-      "id": "t17872143003249",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-20T08:25:00.324Z",
-      "updated": "2026-08-20T08:25:00.498Z"
-    },
-    {
       "id": "t178721430050161",
       "title": "Run pairing",
       "status": "done",
@@ -479,33 +399,89 @@
       "agent": "publisher",
       "created": "2026-08-21T08:33:05.723Z",
       "updated": "2026-08-21T08:33:25.457Z"
+    },
+    {
+      "id": "t178732917226247",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-08-21T16:19:32.262Z",
+      "updated": "2026-08-21T16:19:32.459Z"
+    },
+    {
+      "id": "t178732917246138",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-08-21T16:19:32.461Z",
+      "updated": "2026-08-21T16:20:03.785Z"
+    },
+    {
+      "id": "t17873292037878",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-08-21T16:20:03.787Z",
+      "updated": "2026-08-21T16:20:03.986Z"
+    },
+    {
+      "id": "t178732920398895",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-21T16:20:03.988Z",
+      "updated": "2026-08-21T16:23:00.594Z"
+    },
+    {
+      "id": "t178732938059535",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-21T16:23:00.595Z",
+      "updated": "2026-08-21T16:24:01.160Z"
+    },
+    {
+      "id": "t178732944116350",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-08-21T16:24:01.163Z",
+      "updated": "2026-08-21T16:24:25.233Z"
+    },
+    {
+      "id": "t17873294652808",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-21T16:24:25.280Z",
+      "updated": "2026-08-21T16:25:39.067Z"
+    },
+    {
+      "id": "t17873295390691",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-08-21T16:25:39.069Z",
+      "updated": "2026-08-21T16:26:11.972Z"
+    },
+    {
+      "id": "t178732957197427",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-21T16:26:11.974Z",
+      "updated": "2026-08-21T16:26:27.515Z"
+    },
+    {
+      "id": "t178732958751693",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-08-21T16:26:27.516Z",
+      "updated": "2026-08-21T16:26:48.802Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178635282485771",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). A kínai mesterséges intelligencia oldal line-upja összhangban van és készen áll a megjelenésre — a cikkek gyakorlatiasak, barátságos hangnemben íródtak, és jól lefedik a mindennapi AI-használatot: tén",
-      "agent": "publisher",
-      "at": "2026-08-10T09:07:04.857Z",
-      "loud": false
-    },
-    {
-      "id": "n178635283456234",
-      "level": "info",
-      "text": "Pipeline lefutott — ma nem volt publikálható új tartalom.",
-      "agent": "ceo",
-      "at": "2026-08-10T09:07:14.562Z",
-      "loud": false
-    },
-    {
-      "id": "n178638095376826",
-      "level": "info",
-      "text": "SEO: 5 cikk optimalizálva (átlag 8.2/10).",
-      "agent": "seo",
-      "at": "2026-08-10T16:55:53.768Z",
-      "loud": false
-    },
     {
       "id": "n178638098229228",
       "level": "success",
@@ -1281,18 +1257,33 @@
       "agent": "ceo",
       "at": "2026-08-21T08:33:25.493Z",
       "loud": false
+    },
+    {
+      "id": "n178732957196375",
+      "level": "info",
+      "text": "SEO: 3 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-08-21T16:26:11.963Z",
+      "loud": false
+    },
+    {
+      "id": "n178732959610376",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). A lineup erősen gyakorlatias és mindenki számára érthető – ez tetszik. Egy apró észrevétel: a 3., 4., 5. és 6. cikk mind panaszlevelekről/emailekről szól, ami Repetitív lehet olvasóként. Érdemes lehet",
+      "agent": "publisher",
+      "at": "2026-08-21T16:26:36.103Z",
+      "loud": false
+    },
+    {
+      "id": "n178732960885246",
+      "level": "success",
+      "text": "3 hír + 0 útmutató publikálva (költség: $0.0420).",
+      "agent": "ceo",
+      "at": "2026-08-21T16:26:48.852Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178652541074830",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Rewrite a confusing workplace email into a clear, friendly message with Cohere\" — javítva: Beginner clarity too low (7/10): steps are vague or could mislead a first-time user; Step 1 mentions Shift+click selection but gives no fallback for desktop email clients like Outlook where this method may not work; újraküldöm.",
-      "ref": "GUIDE_rewrite-a-confusing-workplace-email-into-a-clear-friendly-me.json",
-      "at": "2026-08-12T09:03:30.748Z"
-    },
     {
       "id": "m178652541075057",
       "from": "guide",
@@ -2647,6 +2638,15 @@
       "text": "4 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-08-21T08:44:57.224Z"
+    },
+    {
+      "id": "m178732958750540",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-08-21T16:26:27.506Z"
     }
   ]
 }
