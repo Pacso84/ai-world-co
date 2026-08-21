@@ -6,6 +6,7 @@
 //   node core/hu-review.js                   MINDEN magyar fordítás átnézése
 //   node core/hu-review.js --dry             csak a jelöltek száma, $0
 //   node core/hu-review.js --limit=5         legfeljebb 5 köteg (5×40 szó) AI-ba
+//   node core/hu-review.js --rejudge         az emberi listát is újraítéli
 //   node core/hu-review.js --fix             a MEGÍTÉLT hibák javítása, $0
 //   node core/hu-review.js --report          a tár állapota, $0
 //
@@ -89,6 +90,10 @@ async function main() {
   const limitBol = args.find(a => a.startsWith('--limit='));
   const limit = Number((limitBol || '').split('=')[1]) || Infinity;
   const dry = args.includes('--dry');
+  // ÚJRAÍTÉLÉS: az emberi listán ülő szavakat is megkérdezzük megint. Azért
+  // kell, mert a mondat-bizonyíték (2026-08-21) előtt ítélt szavakhoz nincs
+  // mondatunk eltéve — nélküle egyik sem válhatna automatikussá.
+  const ujra = args.includes('--rejudge');
   const { isKnownWord } = await loadHuChecker();
 
   // A jelöltek a TELJES halmazon egyszer: ugyanaz a szó több cikkben is
@@ -114,7 +119,12 @@ async function main() {
     if (!d?.hu) continue;
     for (const c of extractCandidates(d.hu, { isKnownWord, allowlist: new Set(store.ok) })) {
       const k = c.word.toLowerCase();
-      if (!store.fix[k] && !store.review[k] && !jeloltek.has(k)) jeloltek.set(k, c);
+      if (store.fix[k] || jeloltek.has(k)) continue;
+      // Az emberi listás szót csak --rejudge mellett kérdezzük újra, és akkor
+      // is CSAK EGYSZER: amit már mondat-bizonyítékkal ítéltünk (`mondattal`),
+      // azt hiába kérdeznénk megint — ugyanazt a választ fizetnénk ki újra.
+      if (store.review[k] && (!ujra || store.review[k].mondattal)) continue;
+      jeloltek.set(k, c);
     }
   }
   const lista = [...jeloltek.values()];
@@ -135,7 +145,9 @@ async function main() {
   const { ask } = await import('./ai-router.js');
   let s = store, koltseg = 0, megitelt = 0, ujFix = 0, ujReview = 0;
   for (let i = 0; i < lista.length && i / BATCH < limit; i += BATCH) {
-    const r = await judgeWords({ candidates: lista.slice(i, i + BATCH), ask, enabled: true });
+    // A szótár ITT kapcsolódik be: a bíró javaslatát is megméri vele, mielőtt
+    // bármit automatikusnak minősítenénk („biokra → biogra" nem is szó).
+    const r = await judgeWords({ candidates: lista.slice(i, i + BATCH), ask, enabled: true, isKnownWord });
     koltseg += r.costUsd; megitelt += r.verdicts.length;
     for (const v of r.verdicts) {
       if (v.ok) continue;

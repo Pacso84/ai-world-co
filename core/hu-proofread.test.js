@@ -7,7 +7,7 @@
 // ===================================================================
 
 import assert from 'assert/strict';
-import { judgeWords, applyVerdicts, applyFixes, needsReview, isFixable, isAccentOnly, emptyStore } from './hu-proofread.js';
+import { judgeWords, applyVerdicts, applyFixes, needsReview, isFixable, isAccentOnly, emptyStore, sentenceConfirms, safeContext } from './hu-proofread.js';
 
 let pass = 0;
 const t = (n, f) => { f(); pass++; console.log('  ✅ ' + n); };
@@ -201,5 +201,374 @@ t('applyFixes üres tárra és hiányzó szövegre sem borul', () => {
   assert.equal(applyFixes(null, emptyStore()).text, '');
   assert.equal(applyFixes('valami', null).text, 'valami');
 });
+
+// ── A MONDAT MINT BIZONYÍTÉK ────────────────────────────────────────
+//
+// MIÉRT (2026-08-21, user-döntés). Eddig CSAK az ékezet-helyreállítás
+// javult magától, mert a bíró a SZÓT nézi, a nyelvtan viszont a MONDATÉ:
+// az „anny → annyit" a mondatból „annyit ideig tartott"-ot csinált volna.
+// Emiatt 222 nyilvánvaló elgépelés — „adddig", „remej", „rlapon" — kint
+// maradt az élő oldalon egy listán, amit senki nem néz át.
+//
+// A megoldás nem lazább zár, hanem KEMÉNYEBB BIZONYÍTÁS: a bírónak le kell
+// írnia a TELJES kijavított mondatot. Ha abban pontosan a mi szavunk
+// változott meg és semmi más, a javítás igazoltan belefér a mondatba.
+// A mondatot NEM cseréljük vissza (a bíró prózát lát, a fájlban markdown
+// van) — a mondat csak BIZONYÍTÉK a szó-szintű cseréhez.
+
+t('🧾 a mondat IGAZOLJA a javítást, ha pontosan a mi szavunk változott', () => {
+  assert.equal(sentenceConfirms(
+    'Ezt kell hozzáadnod – adddig ez egy manuális lépés.',
+    'Ezt kell hozzáadnod – addig ez egy manuális lépés.',
+    'adddig', 'addig'), true);
+});
+
+t('🧾 az anny→annyit CSAPDA: a mondat leleplezi a rossz alakot', () => {
+  // A bíró a szóra „annyit"-ot javasolt, de a mondatba „annyi" illik.
+  assert.equal(sentenceConfirms(
+    'Nem tudom, anny ideig tartott-e.',
+    'Nem tudom, annyi ideig tartott-e.',
+    'anny', 'annyit'), false, 'a mondat mást mond, mint a szó-javaslat');
+});
+
+t('🧾 ha a bíró ÁTFOGALMAZZA a mondatot, nem nyúlunk hozzá', () => {
+  assert.equal(sentenceConfirms(
+    'A terveztel dolgot nézd meg.',
+    'Nézd meg azt, amit terveztél.',
+    'terveztel', 'tervezted'), false);
+});
+
+t('🧾 EGY szó, de MÁSIK szó változott → nem a mi javításunk', () => {
+  assert.equal(sentenceConfirms(
+    'Ez a remej ötlet nagyon jo.',
+    'Ez a remej ötlet nagyon jó.',
+    'remej', 'remek'), false);
+});
+
+t('🧾 ugyanaz a hiba KÉTSZER a mondatban: mindkettő javítva → rendben', () => {
+  assert.equal(sentenceConfirms(
+    'Adddig várj, és adddig ne kattints.',
+    'Addig várj, és addig ne kattints.',
+    'adddig', 'addig'), true, 'minden eltérés a mi szavunk — igazolás, nem zaj');
+});
+
+t('🧾 változatlan mondat nem bizonyít semmit', () => {
+  const m = 'Ez a mondat rendben van.';
+  assert.equal(sentenceConfirms(m, m, 'rendben', 'rendben'), false);
+});
+
+t('🧾 hiányzó mondatra NEM igazolunk — a mai viselkedés marad', () => {
+  assert.equal(sentenceConfirms('Valami.', '', 'a', 'b'), false);
+  assert.equal(sentenceConfirms('', 'Valami.', 'a', 'b'), false);
+  assert.equal(sentenceConfirms(null, null, 'a', 'b'), false);
+});
+
+t('🧾 az írásjelek és a szóköz nem számít eltérésnek', () => {
+  assert.equal(sentenceConfirms(
+    'Kattints ide  – adddig várj!',
+    'Kattints ide – addig várj!',
+    'adddig', 'addig'), true, 'a szavakat hasonlítjuk, nem a formázást');
+});
+
+// ── amit ezzel a bizonyítékkal AUTOMATIKUSSÁ teszünk ────────────────
+
+t('🔓 az IGAZOLT javítás automatikussá válik (nem csak az ékezet)', () => {
+  const s = applyVerdicts(emptyStore(), [
+    { word: 'adddig', ok: false, correct: 'addig', fixable: true, verified: true }
+  ]);
+  assert.equal(s.fix['adddig']?.correct, 'addig', 'igazolt → magától javuljon');
+  assert.ok(!s.review['adddig'], 'ne várjon emberre, amit a mondat igazolt');
+});
+
+t('🔒 az IGAZOLATLAN javítás továbbra is emberi szemet kér', () => {
+  const s = applyVerdicts(emptyStore(), [
+    { word: 'terveztel', ok: false, correct: 'tervezted', fixable: true, verified: false }
+  ]);
+  assert.equal(s.review['terveztel']?.correct, 'tervezted');
+  assert.ok(!s.fix['terveztel'], 'bizonyíték nélkül a gép nem nyúl az élő szöveghez');
+});
+
+t('🔒 az ÉKEZET-javítás bizonyíték nélkül is megy — ez nem változott', () => {
+  const s = applyVerdicts(emptyStore(), [
+    { word: 'dícséretet', ok: false, correct: 'dicséretet', fixable: true }
+  ]);
+  assert.equal(s.fix['dícséretet']?.correct, 'dicséretet');
+});
+
+// ── a bíró válaszából számolt igazolás ──────────────────────────────
+
+// A bírót itt egy egyszerű függvény játssza: a teszt a MI logikánkra néz,
+// nem a modellre. Pénz és hálózat nincs benne.
+const birot = valasz => async () => ({ text: JSON.stringify(valasz), costUsd: 0.001 });
+const JELOLT = [{ word: 'adddig', context: 'Ezt kell hozzáadnod – adddig ez egy manuális lépés.' }];
+
+await (async () => {
+  await at('🧾 a bíró MONDATA igazolja a javítást → verified', async () => {
+    const r = await judgeWords({
+      candidates: JELOLT,
+      ask: birot({ words: [{ word: 'adddig', ok: false, correct: 'addig',
+        sentence: 'Ezt kell hozzáadnod – addig ez egy manuális lépés.' }] }),
+      isKnownWord: w => w === 'addig'
+    });
+    assert.equal(r.verdicts[0].verified, true);
+  });
+
+  await at('🧾 MONDAT NÉLKÜLI válasz → nem igazolt (a mai viselkedés)', async () => {
+    const r = await judgeWords({
+      candidates: JELOLT,
+      ask: birot({ words: [{ word: 'adddig', ok: false, correct: 'addig' }] }),
+      isKnownWord: () => true
+    });
+    assert.equal(r.verdicts[0].verified, false, 'bizonyíték nélkül nem javítunk magunktól');
+  });
+
+  await at('🧾 ha a javaslat NEM létező magyar szó, a mondat sem menti meg', async () => {
+    // Élesben ilyet adott: „biokra" → „biogra" — ami nem is szó.
+    const r = await judgeWords({
+      candidates: [{ word: 'biokra', context: 'Nézd meg a biokra vonatkozó részt.' }],
+      ask: birot({ words: [{ word: 'biokra', ok: false, correct: 'biogra',
+        sentence: 'Nézd meg a biogra vonatkozó részt.' }] }),
+      isKnownWord: w => w !== 'biogra'
+    });
+    assert.equal(r.verdicts[0].verified, false);
+  });
+
+  await at('🧾 szótár nélkül is működik — csak a mondat dönt', async () => {
+    const r = await judgeWords({
+      candidates: JELOLT,
+      ask: birot({ words: [{ word: 'adddig', ok: false, correct: 'addig',
+        sentence: 'Ezt kell hozzáadnod – addig ez egy manuális lépés.' }] })
+    });
+    assert.equal(r.verdicts[0].verified, true);
+  });
+})();
+
+t('🪣 egy szó CSAK EGY vödörben lehet — az újraítélés átmozgatja', () => {
+  // Az újraítéléskor (a mondat-bizonyíték bevezetése) a 222 emberi listás
+  // szó egy része automatikussá válik. Ha a régi bejegyzés bent ragad, a
+  // riport tovább kérné az emberi szemet olyasmire, ami már megjavult.
+  const elozo = { ok: [], fix: {}, review: { adddig: { correct: 'addig', at: '2026-08-20' } } };
+  const s = applyVerdicts(elozo, [
+    { word: 'adddig', ok: false, correct: 'addig', fixable: true, verified: true }
+  ]);
+  assert.equal(s.fix['adddig']?.correct, 'addig');
+  assert.ok(!s.review['adddig'], 'a régi bejegyzés nem ragadhat bent');
+});
+
+t('🪣 visszafelé is: az igazolatlan ítélet leveszi a fix-listáról', () => {
+  const elozo = { ok: [], fix: { valami: { correct: 'valamit', at: '2026-08-20' } }, review: {} };
+  const s = applyVerdicts(elozo, [
+    { word: 'valami', ok: false, correct: 'valamit', fixable: true, verified: false }
+  ]);
+  assert.ok(!s.fix['valami'], 'ha már nem igazolt, ne javítsa tovább magától');
+  assert.equal(s.review['valami']?.correct, 'valamit');
+});
+
+// ── a mondat mint JSON-veszély ──────────────────────────────────────
+//
+// MÉRVE (2026-08-21): a 202 megítélendő mondatból 32-ben (16%) van EGYENES
+// idézőjel. Amióta a bírótól a teljes mondatot is kérjük, ezt vissza kell
+// írnia a JSON-ba — és ha nem escape-eli, az egész köteg értelmezhetetlen
+// lesz. Élesben pontosan ez történt: 40 szó, 4647 kifizetett token, NULLA
+// ítélet. A pénz elment, a napló meg csak annyit írt: „0 ítélet".
+//
+// A javítás iránya: ne a modelltől várjuk a fegyelmet, hanem NE ADJUNK neki
+// olyan karaktert, amit elronthat. Az összevetés úgyis csak a SZAVAKAT nézi,
+// az írásjel nem számít — a mondat megcsonkítása tehát ingyen van.
+
+t('🔒 a bírónak küldött mondatból kikerül az egyenes idézőjel', () => {
+  const be = 'Váltás ' + String.fromCharCode(34) + 'Creative' + String.fromCharCode(34) + ' módra.';
+  const ki = safeContext(be);
+  assert.ok(!ki.includes(String.fromCharCode(34)), 'ezt írná vissza a JSON-ba escape nélkül');
+  assert.match(ki, /Creative/, 'a szavaknak meg kell maradniuk');
+});
+
+t('🔒 a visszaper is kikerül', () => {
+  const ki = safeContext('Egy ' + String.fromCharCode(92) + ' jel a szövegben.');
+  assert.ok(!ki.includes(String.fromCharCode(92)));
+});
+
+t('🔒 a magyar idézőjel MARADHAT — az nem tör el JSON-t', () => {
+  assert.match(safeContext('Írd be: „remek válasz”.'), /„remek válasz”/);
+});
+
+t('🔒 a csonkítás nem zavarja az összevetést', () => {
+  // Az igazolás szavakat hasonlít, nem írásjelet — az idézőjel elvesztése
+  // tehát nem ronthatja el a bizonyítást.
+  const eredeti = safeContext('Váltás ' + String.fromCharCode(34) + 'Creative' + String.fromCharCode(34) + ' módra, adddig várj.');
+  assert.equal(sentenceConfirms(eredeti, 'Váltás Creative módra, addig várj.', 'adddig', 'addig'), true);
+});
+
+t('🔒 hiányzó bemenetre üres sztringet ad', () => {
+  assert.equal(safeContext(null), '');
+  assert.equal(safeContext(undefined), '');
+});
+
+// ── a HARMADIK jel: a javítás TÁVOLSÁGA ─────────────────────────────
+//
+// MÉRVE (2026-08-21, 34 éles ítéleten, kézzel átnézve): a mondat-bizonyíték
+// egymagában NEM elég. Az „anny → annyit" — pontosan az a csapda, ami ellen
+// az egészet építettük — ÁTMENT rajta, mert a bíró a saját mondatába is
+// „annyit"-ot írt. A mondat tehát az ÖNELLENTMONDÁST fogja meg; a magabiztos
+// tévedést nem.
+//
+// A kézi átnézés éles mintát mutatott: a KIS távolságú javítás elgépelés-
+// javítás, a nagy távolságú viszont SZÓCSERE — a bíró más szót tesz oda.
+//   táv ≤ 1: 15 javítás, 1 hibás (és az is ártalmatlan: tasmán→tasman)
+//   táv ≤ 2: 25 javítás, 4 hibás — köztük az anny→annyit és a pineld→pinned
+// Ezért a zár: mondat-bizonyíték ÉS legfeljebb egy karakternyi eltérés.
+
+t('📏 az egy karakternyi, mondattal igazolt javítás automatikus', () => {
+  const s = applyVerdicts(emptyStore(), [
+    { word: 'konkrát', ok: false, correct: 'konkrét', fixable: true, verified: true }
+  ]);
+  assert.equal(s.fix['konkrát']?.correct, 'konkrét');
+});
+
+t('📏 az anny→annyit CSAPDA a távolságon bukik el, ha a mondat átengedte', () => {
+  // A bíró magabiztosan tévedhet: a saját mondatába is a rossz alakot írja.
+  // Két karakternyi eltérés = már nem elgépelés-javítás, hanem szócsere.
+  const s = applyVerdicts(emptyStore(), [
+    { word: 'anny', ok: false, correct: 'annyit', fixable: true, verified: true }
+  ]);
+  assert.ok(!s.fix['anny'], 'a mondat átengedte, a távolság megfogja');
+  assert.equal(s.review['anny']?.correct, 'annyit');
+});
+
+t('📏 a nagy távolságú SZÓCSERE sosem automatikus', () => {
+  // Élesben: „hetéd → önéletrajzodat" — a bíró a szövegkörnyezetből talált ki
+  // egy teljesen más szót.
+  const s = applyVerdicts(emptyStore(), [
+    { word: 'hetéd', ok: false, correct: 'önéletrajzodat', fixable: true, verified: true }
+  ]);
+  assert.ok(!s.fix['hetéd']);
+});
+
+t('📏 az ÉKEZET-javítás a távolságtól függetlenül megy', () => {
+  // Több ékezet is hiányozhat egyszerre — attól az még ugyanaz a szó.
+  const s = applyVerdicts(emptyStore(), [
+    { word: 'kezdo', ok: false, correct: 'kezdő', fixable: true },
+    { word: 'tortenetunkrol', ok: false, correct: 'történetünkről', fixable: true }
+  ]);
+  assert.equal(s.fix['kezdo']?.correct, 'kezdő');
+  assert.equal(s.fix['tortenetunkrol']?.correct, 'történetünkről', 'négy ékezet, de ugyanaz a szó');
+});
+
+// ── a SZÁNDÉKOS elgépelés ───────────────────────────────────────────
+//
+// ÉLES LELET (2026-08-21, az alkalmazás előtti előnézet fogta meg): az egyik
+// útmutatónk MAGÁRÓL az elgépelésről szól, és példaként idézi a rossz alakot:
+//   «Majdnem jó elgépelések — „verfication" a „verification" helyett»
+// A javítás ebből ezt csinálta volna: «„verification" a „verification"
+// helyett» — értelmetlen mondat egy élő oldalon.
+//
+// A minta általános: ha a HELYES alak is ott áll a rossz mellett, akkor a
+// szöveg a kettő KÜLÖNBSÉGÉRŐL beszél, nem hibázik. Ilyenkor nem nyúlunk
+// hozzá — a hallgatás itt is a biztonságos irány.
+
+t('✍️ nem javítunk ott, ahol a HELYES alak is ott áll mellette', () => {
+  const store = { ok: [], fix: { verfication: { correct: 'verification' } }, review: {} };
+  const szoveg = 'Majdnem jó elgépelések — „verfication" a „verification" helyett.';
+  const r = applyFixes(szoveg, store);
+  assert.equal(r.text, szoveg, 'a szöveg a kettő különbségéről beszél');
+  assert.deepEqual(r.fixed, []);
+});
+
+t('✍️ a rendes hibát viszont ugyanúgy javítjuk', () => {
+  const store = { ok: [], fix: { verfication: { correct: 'verification' } }, review: {} };
+  const r = applyFixes('A verfication lépés kimaradt.', store);
+  assert.match(r.text, /A verification lépés/);
+});
+
+t('✍️ a szó SAJÁT részlete nem számít „ott álló helyes alaknak"', () => {
+  // Az „adatokat" benne van az „aadatokat"-ban — ha ezt találatnak vennénk,
+  // egyetlen ilyen hibát sem javítanánk ki soha.
+  const store = { ok: [], fix: { aadatokat: { correct: 'adatokat' } }, review: {} };
+  const r = applyFixes('A rendszerek aadatokat gyűjtenek.', store);
+  assert.match(r.text, /rendszerek adatokat gyűjtenek/);
+});
+
+t('✍️ a TÁVOLI előfordulás nem véd — csak a közvetlen környezet számít', () => {
+  const store = { ok: [], fix: { konkrát: { correct: 'konkrét' } }, review: {} };
+  const szoveg = 'Adj konkrét példát. ' + 'x'.repeat(400) + ' Ne konkrát fájlnevet adj meg.';
+  const r = applyFixes(szoveg, store);
+  assert.equal(r.fixed.length, 1, 'a bekezdésekkel arrébb lévő szó nem ugyanarról beszél');
+});
+
+// ── az újraítélés ne legyen végtelen pénzcsap ───────────────────────
+//
+// A --rejudge minden emberi listás szót újra megkérdez. Ha nem jelölnénk meg,
+// mit ítéltünk MÁR mondattal, minden futásban újra kifizetnénk ugyanazt a 200
+// szót — és pont azokat, amelyek úgysem fognak átmenni. A költés CSENDES:
+// ez a fajta szivárgás csak a havi számlán látszana meg.
+
+t('🏷️ a mondattal ítélt bejegyzés megjelölődik', () => {
+  const s = applyVerdicts(emptyStore(), [
+    { word: 'anny', ok: false, correct: 'annyit', fixable: true, verified: true }
+  ]);
+  assert.equal(s.review['anny'].mondattal, true, 'enélkül minden futásban újra fizetnénk érte');
+});
+
+t('🏷️ a régi, mondat nélküli bejegyzés NEM kap jelölést', () => {
+  // Ezeket érdemes újra megkérdezni: mondat híján sosem kaptak esélyt.
+  const s = applyVerdicts(emptyStore(), [
+    { word: 'regi', ok: false, correct: 'régi', fixable: true }
+  ]);
+  assert.ok(!s.fix['regi'].mondattal);
+});
+
+// ── egy rossz mondat ne vigye el az egész köteget ───────────────────
+//
+// ÉLES LELET (2026-08-21/22): amióta a bírótól TELJES MONDATOT kérünk, egyetlen
+// escape-eletlen idézőjel az EGÉSZ választ értelmezhetetlenné teszi. Mérve:
+// 176 megkérdezett szóból 16 ítélet jött vissza — a többiért fizettünk, és
+// semmit nem kaptunk. 40 szavas kötegnél egy hiba 40 ítéletet visz el.
+//
+// A mentés soronként dolgozik: amit ki lehet olvasni, azt kiolvassa. A csonkán
+// maradt mondat nem baj — a hiányos bizonyíték „nem igazolt"-at jelent, tehát
+// a szó az emberi listára kerül. A rossz irányba dőlés itt is a biztonságos.
+
+await (async () => {
+  const tort = '{"words": [' +
+    '{"word": "adddig", "ok": false, "correct": "addig", "sentence": "Ezt kell – addig várj."},' +
+    '{"word": "remej", "ok": false, "correct": "remek", "sentence": "A "remek" válasz nem jó."},' +
+    '{"word": "ritán", "ok": false, "correct": "ritkán", "sentence": "Az első próba ritkán az utolsó."}' +
+    ']}';
+
+  await at('🛟 a törött válaszból is kimentjük, amit lehet', async () => {
+    const r = await judgeWords({
+      candidates: [
+        { word: 'adddig', context: 'Ezt kell – adddig várj.' },
+        { word: 'remej', context: 'A "remej" válasz nem jó.' },
+        { word: 'ritán', context: 'Az első próba ritán az utolsó.' }
+      ],
+      ask: async () => ({ text: tort, costUsd: 0.005 })
+    });
+    const szavak = r.verdicts.map(v => v.word).sort();
+    assert.deepEqual(szavak, ['adddig', 'remej', 'ritán'], 'egy rossz sor ne vigye el a többit');
+  });
+
+  await at('🛟 a mentett ítélet is megkapja a mondat-bizonyítékát, ha ép', async () => {
+    const r = await judgeWords({
+      candidates: [
+        { word: 'adddig', context: 'Ezt kell – adddig várj.' },
+        { word: 'remej', context: 'A "remej" válasz nem jó.' },
+        { word: 'ritán', context: 'Az első próba ritán az utolsó.' }
+      ],
+      ask: async () => ({ text: tort, costUsd: 0.005 })
+    });
+    assert.equal(r.verdicts.find(v => v.word === 'adddig').verified, true);
+    assert.equal(r.verdicts.find(v => v.word === 'ritán').verified, true);
+  });
+
+  await at('🛟 a menthetetlen válaszra üres marad — nem találunk ki ítéletet', async () => {
+    const r = await judgeWords({
+      candidates: [{ word: 'adddig', context: 'Ezt kell – adddig várj.' }],
+      ask: async () => ({ text: 'Sajnálom, nem tudok segíteni.', costUsd: 0.004 })
+    });
+    assert.deepEqual(r.verdicts, []);
+    assert.equal(r.costUsd, 0.004, 'a kifizetett pénzt akkor is könyveljük');
+  });
+})();
 
 console.log('\n✅ hu-proofread.test: mind a ' + pass + ' eset rendben');
