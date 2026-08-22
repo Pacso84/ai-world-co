@@ -1,16 +1,4 @@
 {
-  "2026-07-29": [
-    {
-      "at": "2026-07-29T01:37:14.988Z",
-      "file": "WRITER_2026-07-28T19-10-59-408Z_perplexity-news_Personal_Computer_is_now_available_on_Windows_-_Pe.json",
-      "action": "block",
-      "reasons": [
-        "The product is named 'Personal Computer' and described as Perplexity's AI-powered browser for Windows. Perplexity's actual AI browser is called 'Comet' — 'Personal Computer' is not a real product name from Perplexity. The entire article describes a fabricated product.",
-        "The article claims the browser 'costs nothing to download' — Perplexity Comet has a paid tier (Comet Plus) and Pro features, so stating it is free as fact is a fabricated pricing claim.",
-        "The article states Perplexity's AI browser is 'now on Windows' — Perplexity Comet launched on Windows in 2024/2025, which is broadly consistent, but combined with the wrong product name this likely misrepresents the actual launch details."
-      ]
-    }
-  ],
   "2026-07-30": [
     {
       "at": "2026-07-30T01:39:57.832Z",
@@ -349,6 +337,27 @@
         "The article states paid Claude plans have an \"Artifacts\" feature that can read a directly uploaded PDF in one go via a paperclip or upload button near the message box. Artifacts is a feature for rendering code/documents in the chat output, not a PDF-reading/uploading feature. Claude's PDF upload capability exists on its own (the document handling/uploading feature), and conflating it with Artifacts or claiming Artifacts specifically lets Claude read uploaded PDFs is an inaccurate UI/feature attribution to Claude."
       ],
       "confidence": 6
+    }
+  ],
+  "2026-08-22": [
+    {
+      "at": "2026-08-22T00:38:29.053Z",
+      "file": "WRITER_2026-08-22T00-37-14-151Z_perplexity-news_Computer_now_works_in_email_-_Perplexity.json",
+      "action": "block",
+      "reasons": [
+        "The article describes a specific \"Computer\" agent feature in Perplexity with specific UI elements ('Connect account' button, 'Disconnect' button, 'Spaces'/'Agents' labeling, left-side panel). While Perplexity has had various agent features, the specific 'Computer' product with these particular email-triage capabilities and UI elements as described needs verification — the term 'Computer' as a named Perplexity agent feature for email triage is not clearly verified. This is a fabrication concern.",
+        "GPT-5.6 appears in the verified-real names list but I should note this looks unusual as it's not a real OpenAI model I'm aware of. However, since it's on the verified list, I should not flag it."
+      ],
+      "confidence": 5
+    },
+    {
+      "at": "2026-08-22T00:38:49.686Z",
+      "file": "WRITER_2026-08-22T00-37-14-152Z_picsart_Flux_3_prompts__start_from_text__images__or_a_clip.json",
+      "action": "block",
+      "reasons": [
+        "Article presents 'Flux 3' as a real AI video tool that generates picture and sound in one pass, with specific capabilities (footsteps, rain, door closing, spoken dialogue) and 'audio settings' — Flux (by Black Forest Labs) is an image-generation model family, not a known video+audio generator, and 'Flux 3' is not in the verified-real names list. The detailed feature claims (dialogue generation, audio settings, one-pass picture+sound) attributed to this specific named tool appear fabricated."
+      ],
+      "confidence": 7
     }
   ]
 }

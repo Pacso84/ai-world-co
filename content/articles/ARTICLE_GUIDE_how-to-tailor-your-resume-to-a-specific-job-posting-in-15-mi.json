@@ -1,0 +1,60 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "how-to-tailor-your-resume-to-a-specific-job-posting-in-15-mi",
+    "company": "",
+    "tool": "",
+    "icon": "📄",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-08-22T00:46:27.824Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.012764888,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-08-22T00:47:59.096Z",
+    "slug": "how-to-tailor-your-resume-to-a-specific-job-posting-in-15-minutes",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1491
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Excellent beginner-friendly guide with clear step-by-step instructions, helpful example prompts, and wise warnings about AI limitations. The structure is complete with hook, steps, common mistakes, and actionable wrap-up. The only minor note is that the 'seven seconds' scanning statistic is widely cited but not sourced, though this is standard industry knowledge rather than a harmful claim.",
+      "_aiCost": 0.00213381,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "image_v": 2,
+    "image_at": "2026-08-22T00:49:09.136Z",
+    "seo": {
+      "meta_description": "Learn how to tailor your resume to any job posting in 15 minutes using AI — match keywords recruiters want without rewriting from scratch.",
+      "keywords": [
+        "how to tailor a resume to a job posting",
+        "AI resume optimization",
+        "resume keywords for job applications",
+        "quick resume customization",
+        "match resume to job description",
+        "ATS friendly resume with AI"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add the phrase 'resume keywords' more prominently in the opening paragraph to strengthen topical relevance",
+        "Consider adding an FAQ section addressing common questions like 'how long does resume tailoring take' and 'do I need to rewrite my whole resume'",
+        "Include a brief intro explaining why recruiters scan for specific keywords (the 7-second scan fact works well here)"
+      ],
+      "optimised_at": "2026-08-22T00:50:03.895Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"How to Tailor Your Resume to a Specific Job Posting in 15 Minutes\"\nsubtitle: \"Use any AI assistant to match your resume keywords to what recruiters actually look for first — quick, simple, no rewriting from scratch.\"\ncategory: \"guide\"\naudience: \"personal\"\ncompany: \"\"\ntool: \"\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"getting-started\", \"resume\", \"job-search\"]\n---\n\n# How to Tailor Your Resume to a Specific Job Posting in 15 Minutes\n\n> **In short:** Paste the job ad and your resume into any AI assistant, ask it to pull out the keywords recruiters look for, then ask for rewritten bullet points that match — you'll have a tailored resume in about 15 minutes without rewriting it from scratch.\n\nRecruiters spend about seven seconds scanning a resume before deciding whether to keep reading. The good news is that the words they look for are almost always spelled out in the job ad. With any AI assistant — ChatGPT, Gemini, Claude, Copilot, Le Chat, or whatever you already use — you can pull those words out, see where your resume matches and where it doesn't, and rewrite just the lines that need it.\n\n## Before you start\n- A current copy of your resume (Word, Google Doc, or plain text) and the full job posting, both copyable as text.\n- A free account with any AI assistant you can type into — ChatGPT, Gemini, Claude, Copilot, and others all work for this.\n- About 15 minutes.\n\n## Step 1 — Open your AI assistant and paste the job ad\nOpen the AI assistant of your choice in a browser or app, and start a new chat — a fresh chat keeps your resume work separate from anything else you've asked the assistant about. Then copy the full text of the job posting — the title, the responsibilities, the requirements, and any \"nice to have\" section — and paste it into the message box. Hit send.\n\n💬 Example prompt: \"Here is a job posting. Please read it carefully. I will paste my resume next, and I want you to compare the two.\"\n\nYou'll know it worked when the AI replies with something like \"Got it — I've read the posting\" or asks for your resume. If the assistant has a project or named-chat mode (Claude has Projects, ChatGPT has projects, Gemini has Gems), you can create a new one called \"Resume Tailor\" so all your work stays in one place. If not, a fresh chat works just as well.\n\n## Step 2 — Ask the AI to list the key requirements\nNow type a follow-up message asking the assistant to pull out the key skills, tools, and experience the job is really asking for. Tell it you want a clean list you can compare against your resume later, not a rewrite yet.\n\n💬 Example prompt: \"From the job posting above, list the top 8–12 skills, tools, or types of experience the employer cares most about. Put them in a numbered list. If a requirement appears more than once or is mentioned in both the responsibilities and the requirements section, mark it as a high-priority keyword.\"\n\nYou'll know it worked when the AI gives you a numbered list of clear, plain-language skills — like \"Project management,\" \"Excel,\" \"Two years of customer-facing experience,\" or \"Familiarity with HIPAA.\" Those are the words you want to show up in your resume. If the job ad is short (under 200 words), the list may be thin — ask the assistant to also infer the obvious related skills for that job type. If it's long and full of jargon, ask it to translate any acronym it doesn't define.\n\n## Step 3 — Paste your current resume and ask for a match check\nCopy all the text from your current resume (or just the most recent section if you only want to tailor one part) and paste it into the same chat. Ask the AI to compare your resume against the keyword list it just made, and tell it you want a clear picture of what matches and what's missing — not a rewrite yet.\n\n💬 Example prompt: \"Here is my current resume. Compare it to the keyword list you just made. Tell me three things: (1) which keywords already appear, (2) which keywords are missing even though I probably have that experience, and (3) any keyword that appears in my resume but is not actually true for me. Use bullet points.\"\n\nYou'll know it worked when the assistant returns three clean groups of bullets — matches, gaps, and \"be careful\" items. The \"gaps\" list is your to-do list for the next step. If your resume is more than two pages, paste only the most recent or most relevant section and tell the AI which job you're targeting — older roles rarely need tailoring. If your resume had columns or tables that didn't paste cleanly, don't worry; the AI reads plain text just fine.\n\n## Step 4 — Ask for rewritten bullet points to fill the gaps\nNow ask the AI to write new bullet points, or rewrite your existing ones, so each missing keyword shows up in a real accomplishment. Be specific: give it one missing skill at a time, paste the actual work you did, and ask for two or three bullet options you can edit. This is the step most worth doing slowly.\n\n💬 Example prompt: \"I noticed 'cross-team collaboration' is missing. Here is what I actually did: I worked with the sales team every Monday to update them on engineering timelines, and I sat in on product reviews once a week. Rewrite 2–3 resume bullet points that honestly show this. Keep each bullet to one line, start with a strong verb, and include a number if possible.\"\n\nYou'll know it worked when the assistant gives you short, punchy bullets (under 25 words each) that you could honestly copy into your resume. If a bullet feels exaggerated or makes you uncomfortable, throw it out — your resume should only say things you can defend in an interview. AI drafts fast, but it can also invent details you never actually did, so always treat its suggestions as a first draft you edit, never a final answer you paste blindly. The AI cannot know what you really did — only you do.\n\n## Step 5 — Update your resume, save a tailored copy, and do a final read-through\nOpen your resume file, and only change the lines that match the AI's gap list. Don't rewrite anything that already works — recruiters can spot a totally rewritten resume, and small, focused edits look more natural. Save the new version with a clear name so you remember which job it fits, then read the whole resume once, out loud if you can, to make sure it still sounds like you.\n\n💬 Example file name: \"Resume_SeniorAccountManager_AcmeCorp_March2026.docx\"\n\nYou'll know it worked when every keyword from the AI's priority list either shows up in your resume (in your own truthful words) or you've decided on purpose not to include it. A tailored resume is not a lie — it's the same story, told in the words the job ad is listening for.\n\n## Common mistakes\n- **Asking the AI to \"rewrite my resume\" all at once.** The result is usually generic and may invent experience you don't have. Always give it your real accomplishments and ask for one bullet at a time.\n- **Adding keywords you don't actually have.** Stuffing your resume with words the AI pulled out, just because they appeared in the ad, is a fast way to fail an interview. If a keyword doesn't match real experience, leave it out or be ready to discuss it honestly.\n- **Rewriting the entire resume for every job.** You only need to change the bullets that matter for each role — your \"Education\" section or old jobs almost never need editing, and trying to retune everything will burn you out.\n\n## What this means for you\n- **In everyday life:** If you've been applying to lots of jobs with no replies, this 15-minute habit can quickly show you why — usually the resume is talking around the keywords, not using them.\n- **For your business or work:** Internal applications, freelance pitches, and proposal submissions follow the same logic — match the words the decision-maker uses, and you get past the first filter.\n- **If you're just getting started:** Open one AI assistant, pick one job you actually want, and run through these five steps today. Don't try to perfect it. The first tailored version is rarely the last — and that's normal.\n\n## Try it now\nPick one real job posting you'd actually apply for. Copy the whole ad into your AI assistant right now, paste your current resume after it, and send the prompt from Step 3. You'll have a gap list in under a minute — and that's the start of a tailored resume.",
+  "original_title": "How to Tailor Your Resume to a Specific Job Posting in 15 Minutes"
+}

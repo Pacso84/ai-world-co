@@ -1,0 +1,61 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "translate-and-explain-a-foreign-language-restaurant-menu-usi",
+    "company": "Alibaba",
+    "tool": "Qwen",
+    "icon": "🍜",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-08-22T00:43:35.595Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.0097737,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-08-22T00:48:24.950Z",
+    "slug": "translate-and-explain-any-restaurant-menu-with-qwen-on-your-phone",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1334
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured beginner guide with friendly tone, clear step-by-step instructions that include multiple fallback options for different phone layouts, practical example prompts, and appropriate safety disclaimers. Passes all quality checks.",
+      "_aiCost": 0.0018515,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "image_v": 2,
+    "image_at": "2026-08-22T00:49:25.531Z",
+    "seo": {
+      "meta_description": "Translate foreign restaurant menus with your phone using Qwen AI. Snap a photo, get English translation, ingredients, and allergen warnings. Free for travelers.",
+      "keywords": [
+        "translate restaurant menu",
+        "foreign language menu translator",
+        "scan menu translate",
+        "AI menu translator",
+        "translate food menu app",
+        "Qwen app menu translation",
+        "allergen menu translation"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more long-tail keywords naturally in the article body (e.g., 'how to translate menu when traveling', 'read foreign menus easily')",
+        "Consider adding an FAQ section addressing common traveler concerns about menu translation accuracy",
+        "Include the app download link or name consistently throughout"
+      ],
+      "optimised_at": "2026-08-22T00:50:26.903Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Translate and Explain Any Restaurant Menu with Qwen on Your Phone\"\nsubtitle: \"Snap a photo of a menu in another language and Qwen will translate each dish into English, list likely ingredients, and flag common allergens.\"\ncategory: \"guide\"\naudience: \"personal\"\ncompany: \"Alibaba\"\ntool: \"Qwen\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"getting-started\", \"qwen\", \"translation\", \"travel\"]\n---\n\n# Translate and Explain Any Restaurant Menu with Qwen on Your Phone\n\n> **In short:** Snap a photo of a foreign-language menu and Qwen will translate each dish into English, list the likely ingredients, and flag common allergens. The free version handles photos and text, but it cannot guarantee allergen safety — always confirm with staff if you have a serious allergy.\n\nHere's how to turn a confusing wall of unfamiliar words into a clear, ordered list of dishes you can actually understand and order from, even when you don't speak the language.\n\n## Before you start\n- A phone with a working camera (iPhone or Android).\n- The free Qwen app installed, or a browser open to Qwen's website if you'd rather not install anything. No paid plan is required for basic menu translation.\n- A clear, well-lit photo of the menu, or the ability to type or paste the menu text. Total time: about 5 minutes for a single menu.\n\n## Step 1 — Open Qwen on your phone\nTap the Qwen app icon on your home screen. If you haven't installed it yet, open your phone's app store, search for **\"Qwen\"**, and download the official app from the developer listed as Alibaba. When the app opens, you'll see a chat screen with a text box near the bottom and a short welcome message above it. If you're using a browser instead, the same chat layout appears once the page loads. If you don't see a chat box, look for a button labeled **\"New chat\"** or a **+** icon in the corner of the screen.\nYou'll know it worked when the chat box is visible, empty, and ready for you to type or attach something.\n\n## Step 2 — Start a fresh chat\nTap **\"New chat\"** (or the **+** / pencil icon) so you begin with a clean conversation. A blank screen appears with just the input field at the bottom. This matters because earlier messages in a long chat can confuse the assistant when you switch topics. If you already have an old chat open, look for a small **+** or **\"New\"** label near the chat history list, sometimes hidden inside a side menu (a **☰** or **≡** icon). A fresh chat also means the response won't be colored by whatever you asked Qwen yesterday.\nYou'll know it worked when the screen shows no previous messages and only an empty input field at the bottom.\n\n## Step 3 — Add the menu (photo or text)\nTap the **paperclip / attachment / + icon** next to the chat box and choose **\"Camera\"** to snap a fresh photo of the menu, or **\"Photos\"** to pick one you already took. Hold the phone steady, frame the dish list, and capture one section at a time if the menu is long — sharp photos translate far better than blurry ones. If you have the menu as text (maybe you copied it from a website), tap the chat box, **long-press**, and choose **Paste**. The image preview or pasted text appears inside the message bubble before you send. If you don't see a paperclip, look for an icon that looks like a **plus sign** or a **picture frame**.\n💬 Example prompt to use after pasting a text menu: \"Here's a menu from a small restaurant in Lyon, France.\"\nYou'll know it worked when the photo or text shows up inside your message bubble, ready to send.\n\n## Step 4 — Ask for translation with ingredients and allergen notes\nTap the text field and type your request, then send it with the arrow or paper-plane button. In a few seconds, Qwen replies with a translated, dish-by-dish breakdown. Be specific in your ask: a one-line \"translate this\" usually gives less useful answers than a request that names what you want to know. If the response is too brief, tap **\"Regenerate\"** or send a follow-up asking for more detail.\n💬 Example: \"Translate this menu into English. For each dish, give a one-sentence description, list the main ingredients, and flag any common allergens like dairy, gluten, eggs, nuts, shellfish, soy, or pork.\"\nYou'll know it worked when Qwen returns a clear list where each dish has a name, a description, ingredients, and an allergen note.\n\n## Step 5 — Ask follow-up questions about specific dishes\nRead through the translation and pick anything that sounds unusual or risky for you. Tap the chat box, type a question about a single dish, and send it. Qwen keeps the menu in memory, so you don't need to re-upload or re-explain. This is the moment to ask about taste, preparation style, or whether something is vegetarian, spicy, or contains a hidden ingredient. If the answer is fuzzy, ask the same question again with sharper wording — for example, instead of \"is this safe?\", try \"does this dish contain any peanut products?\"\n💬 Example: \"What does 'confit de canard' usually taste like, and is it ever made with something other than duck?\"\nYou'll know it worked when Qwen gives a confident, specific answer that helps you decide whether to order it.\n\n## Step 6 — Save or share the translation\nWhen the translation is complete and you have what you need, keep a copy for the table. On most phones you can long-press a Qwen reply and choose **Copy**, or take a regular screenshot by pressing the side buttons together. You can also tap **\"Share\"** (often a small arrow or three dots near the reply) and send the text to a travel companion, your own notes app, or a messaging group. If you'd like the menu translated into another language too (for example, to show a server in their own tongue), ask Qwen — it can switch languages without re-uploading the photo.\nYou'll know it worked when you can scroll through the translation offline and show a single dish to your server without any guesswork.\n\n## Common mistakes\n- **Forgetting to mention allergens.** If you only ask for a translation, Qwen won't flag allergens by default. Always include the line \"and flag any common allergens\" in your prompt, and if you have a serious allergy, double-check with restaurant staff — Qwen's guesses are helpful, not medical advice.\n- **Sending a blurry photo.** Small, dim menu photos produce incomplete or wrong translations. Tap to focus before you shoot, hold steady, and capture one section at a time instead of the whole spread.\n- **Asking for \"the best\" dish.** Qwen doesn't know your taste, your budget, or what your travel companions feel like eating. Ask for short descriptions instead, then decide yourself.\n\n## What this means for you\n- **In everyday life:** the same trick works for grocery labels, medicine packaging instructions, and street signs when you travel. Once you've done a menu, the workflow is identical.\n- **For your business or work:** if you host international guests or clients, you can use the same steps to translate a sample menu, brochure, or schedule from a foreign partner — and ask Qwen to flag anything culturally sensitive, like dishes that include alcohol or non-halal meat.\n- **If you're just getting started:** don't worry about the prompt being perfect. Even a rough \"translate this menu and tell me what's in each dish\" gets you surprisingly far. You can always add detail in a second message.\n\n## Try it now\nOpen Qwen, snap a photo of the first menu you see today — even an English one — and ask it to list the ingredients of one dish you've never tried. You'll get a feel for the workflow in under two minutes, and you'll be ready for the real thing on your next trip.",
+  "original_title": "Translate and explain a foreign-language restaurant menu using Qwen on your phone"
+}

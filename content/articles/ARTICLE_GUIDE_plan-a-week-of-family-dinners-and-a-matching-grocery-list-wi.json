@@ -1,0 +1,61 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "plan-a-week-of-family-dinners-and-a-matching-grocery-list-wi",
+    "company": "Alibaba",
+    "tool": "Qwen",
+    "icon": "🛒",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-08-22T00:47:41.695Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.009817755,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-08-22T00:48:11.398Z",
+    "slug": "plan-a-week-of-family-dinners-and-a-matching-grocery-list-with-qwen",
+    "auto_check": {
+      "passed": false,
+      "issues": [
+        "PRICE_CLAIM_UNSOURCED: lejáró pénz-állítás forrás és árlap-hivatkozás nélkül (\"$120.\"). A Midjourney-próba 2023 márciusa óta nem létezik, mégis kiment egy cikkünkben."
+      ],
+      "wordCount": 1616
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 10,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Excellent beginner guide with consistent step-by-step instructions, phone-specific fallbacks for every UI action, and illustrative examples. The structure is complete with all required sections. No cliches, no prohibited content, and all US English spellings are correct.",
+      "_aiCost": 0.00332128,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "image_v": 2,
+    "image_at": "2026-08-22T00:49:21.141Z",
+    "seo": {
+      "meta_description": "Learn how to use Qwen AI to create a seven-day dinner plan and matching grocery list tailored to your family's tastes, dietary needs and budget.",
+      "keywords": [
+        "how to use AI for meal planning",
+        "Qwen meal planning guide",
+        "family dinner plan generator",
+        "AI grocery list creation",
+        "weekly meal planning with AI"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add the exact prompt or template readers can copy to get started with Qwen",
+        "Include a brief example output (sample dinner plan) to show real results",
+        "Add FAQ section addressing common concerns like dietary restrictions and budget limits"
+      ],
+      "optimised_at": "2026-08-22T00:50:17.428Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Plan a Week of Family Dinners and a Matching Grocery List with Qwen\"\nsubtitle: \"Get a seven-day dinner plan and one consolidated shopping list tailored to your family's tastes, dietary needs and budget.\"\ncategory: \"guide\"\naudience: \"personal\"\ncompany: \"Alibaba\"\ntool: \"Qwen\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"getting-started\", \"qwen\", \"meal-planning\"]\n---\n\n# Plan a Week of Family Dinners and a Matching Grocery List with Qwen\n\n> **In short:** Tell Qwen (Alibaba's AI assistant) your family's likes, dietary needs and weekly food budget, and it will draft a seven-day dinner plan plus one consolidated shopping list you can take to the store.\n\nBy the end of this guide, you'll have a real weeknight dinner plan for your family and one printed list that covers every meal — without spending Sunday afternoon flipping through cookbooks. This works whether you cook for two or six, eat meat or follow a plant-based diet, and whether your week starts on Monday or Sunday.\n\n## Before you start\n- A Qwen account (sign up at chat.qwen.ai with an email — the basic chat is free; paid tiers may exist for heavier use).\n- A few minutes to think about your family's tastes, any allergies or restrictions, and a rough food budget for the week.\n- Total time: about 10–15 minutes for the whole planning session.\n\n## Step 1 — Open Qwen and start a new chat\nOpen your browser and go to **chat.qwen.ai**. If you already have an account, click **Log in** in the top-right and enter your email and password. If this is your first visit, click **Sign up**, type your email, set a password, and confirm the verification email Qwen sends you. After you land on the chat page, look for a **New chat** button or a pencil/edit icon in the left sidebar and click it. A blank conversation box appears, usually with a placeholder like \"Send a message to Qwen…\". You don't need to type anything yet — just confirm the chat is empty and ready.\n💬 Example: leave the box empty for now and just press the new-chat button once.\nIf it looks different: on a phone or tablet the menu may hide behind a **☰** or **⋯** icon in the top corner; tap it once and the new-chat option appears in the side panel.\nYou'll know it worked when you see an empty text box with no previous messages above it and Qwen's greeting message at the top of the screen.\n\n## Step 2 — Describe your family's tastes, needs and budget\nClick inside the chat box and type a single short paragraph that covers four things: how many people you're cooking for, any foods you love, any you want to avoid (allergies, picky eaters, dietary needs), and a rough weekly food budget. Press **Enter** to send. Qwen usually takes a few seconds to reply, and you'll see a typing indicator (three small dots) while it works. Keep this first message short and factual — Qwen uses it as the setup for everything that follows.\n💬 Example: \"I'm cooking dinner for a family of four (two adults, two kids ages 6 and 9). We love pasta, chicken, and Mexican flavors. Nobody eats pork, and one person is lactose intolerant. Our weekly food budget for dinners is about $120.\"\nIf it looks different: if Qwen opens a longer \"system prompt\" field first, paste your description there instead — same effect.\nYou'll know it worked when Qwen replies with a short acknowledgment, like \"Got it — four people, no pork, lactose-free, about $120/week,\" or asks one clarifying question.\n\n## Step 3 — Ask for a seven-day dinner plan\nType a follow-up message that asks for a full week of dinners based on the information you just gave. Be specific about the format you want: one dinner per day, a short list of ingredients for each, and roughly how long it takes to cook. Press **Enter** to send. Qwen will produce a structured plan with each day labeled (Monday through Sunday, or whatever week layout you prefer) and a one- to two-sentence description per meal.\n💬 Example: \"Based on that, please build me a 7-day dinner plan starting Monday. One dinner per day. For each meal list the dish, main ingredients, and rough cook time. Aim for variety — no repeats. Keep weeknight meals to 30 minutes or less.\"\nIf it looks different: if Qwen gives you only three or four days, reply with \"continue with the remaining days\" and it will pick up where it stopped.\nYou'll know it worked when you see seven clearly labeled meals (Monday, Tuesday, Wednesday, and so on) with ingredients and times for each.\n\n## Step 4 — Refine any meals you don't like\nSkim the plan quickly. If a meal doesn't fit your family — maybe the kids hate fish, or you don't own a slow cooker — type a short reply telling Qwen what to swap. Press **Enter** to send. Qwen keeps the rest of the week intact and only changes what you flagged, so you don't lose the work you've already done. This is also the moment to add anything you forgot earlier, like \"we don't eat shellfish\" or \"we already have rice and beans in the pantry.\"\n💬 Example: \"Swap Wednesday — we don't have a slow cooker. Replace it with a 30-minute stovetop pasta. Also, no shellfish anywhere in the week please.\"\nIf it looks different: if Qwen rewrites the entire week, tell it \"only change the days I mentioned, leave the rest as-is.\"\nYou'll know it worked when the updated days show new meals and your untouched days still say the same dish as before.\n\n## Step 5 — Ask for one consolidated shopping list\nOnce the dinner plan is final, send one more message asking Qwen to merge every ingredient from the week into a single shopping list, grouped by aisle (produce, meat, dairy, pantry, frozen, other). Mention that you want quantities, and ask it to flag anything you might already have at home. Press **Enter** to send. Qwen will produce a clean, copyable list — usually with bullet points or a small table — that you can read at a glance in the supermarket.\n💬 Example: \"Now turn the full week into one shopping list, grouped by store section. Include quantities for 4 people. At the end, add a 'check your pantry' note for things people often already have (olive oil, salt, pepper, basic spices).\"\nIf it looks different: if Qwen gives you one long flat list, reply with \"please regroup this by aisle — produce, meat, dairy, pantry, frozen, other — and keep quantities.\"\nYou'll know it worked when you see a list with clear section headers and quantities you can hand to anyone (or take yourself) at the store.\n\n## Step 6 — Copy or save the list for your trip\nHover near the top-right of Qwen's shopping-list reply and look for a **Copy** icon (two overlapping pages) or a **Download** button. Click **Copy** to put the whole list on your clipboard, then paste it into your notes app, email, or a printed sheet. If you don't see those buttons, just highlight the list with your mouse, press **Ctrl+C** (or **Cmd+C** on a Mac), and paste it anywhere. The list is plain text — it works in Apple Notes, Google Docs, a paper printout, or a shared family chat.\n💬 Example: paste it into a note titled \"Dinners — week of [date]\" so next week you can start a fresh chat and not lose this one.\nIf it looks different: on mobile, long-press the list, choose **Select all**, then **Copy** — the steps are slightly different but the result is the same.\nYou'll know it worked when the list shows up exactly as written, in another app, with no missing ingredients or scrambled formatting.\n\n## Common mistakes\n- **Skipping the budget.** If you don't mention a dollar range, Qwen will suggest ingredients that push you over what you can spend. Add the number — even a rough one — in Step 2, and check totals at Step 5.\n- **Asking for the shopping list too early.** Get the dinner plan finalized first (Step 4), then ask for the list. If you ask before refining, you'll redo the whole list after every swap.\n- **Letting one weird meal derail the whole plan.** If a single night looks off, ask Qwen to swap just that day — don't restart from scratch. You're five minutes from a fix, not a full re-plan.\n- **Forgetting that Qwen can't read your actual fridge.** The shopping list is a draft, not a sensor. You'll still want to glance at your pantry before you head out.\n\n## What this means for you\n- **In everyday life:** Sunday meal planning drops from an hour of flipping through recipes to a 10-minute Qwen session, and you stop throwing out unused groceries at week's end.\n- **For your family or shared home:** anyone in the household can take the same list to the store — it's one shared artifact instead of a half-remembered note stuck to the fridge.\n- **If you're just getting started:** the easiest first move is to try Step 2 only — just describe your family and ask \"what's a good easy dinner for us tonight?\" You'll get value before you commit to a full week.\n\n## Try it now\nOpen chat.qwen.ai, start a new chat, and paste this: *\"Family of three, two adults and a toddler. We like chicken, pasta, and rice dishes. No nuts. Budget $80/week for dinners. Suggest one easy dinner for tonight, ready in 30 minutes.\"* You'll have a real meal idea in under a minute.",
+  "original_title": "Plan a week of family dinners and a matching grocery list with Qwen"
+}

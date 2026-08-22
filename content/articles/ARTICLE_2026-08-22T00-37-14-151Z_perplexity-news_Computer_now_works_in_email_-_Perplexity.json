@@ -1,0 +1,69 @@
+{
+  "_meta": {
+    "written_at": "2026-08-22T00:42:04.948Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.009985545,
+    "original_draft": "2026-08-22T00-37-14-151Z_perplexity-news_Computer_now_works_in_email_-_Perplexity.json",
+    "source_id": "perplexity-news",
+    "source_name": "Perplexity (hivatalos, Google News szűrve)",
+    "source_link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE9DRWdtNnhWelRLeno3dlJDVXhLLUFIcURfVlZyeUU3d0NIaHFENUNJdXlEc2ktbTJIckU2aHBrVUZoUDlWSWRlQ3ZGRE0yaHdhSUVfdXdDckNQT0txZWt1b3pUXzJYYkZvMGVLamwwQQ?oc=5",
+    "source_links": [
+      "https://news.google.com/rss/articles/CBMib0FVX3lxTE9DRWdtNnhWelRLeno3dlJDVXhLLUFIcURfVlZyeUU3d0NIaHFENUNJdXlEc2ktbTJIckU2aHBrVUZoUDlWSWRlQ3ZGRE0yaHdhSUVfdXdDckNQT0txZWt1b3pUXzJYYkZvMGVLamwwQQ?oc=5"
+    ],
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "rejected_at": "2026-08-22T00:38:29.041Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 760
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured explainer with clear hook, friendly tone, and appropriate caution throughout. Explains AI agents in plain language, provides practical use cases, and honestly flags limitations without being alarmist. The advice to verify current features against Perplexity's help docs is responsible. Minor note: the 'third of the usual time' claim is presented as general estimate rather than sourced fact, which is acceptable for this type of practical context.",
+      "_aiCost": 0.00144246,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Hitelesség-kapu blokkolta: The article describes a specific \"Computer\" agent feature in Perplexity with specific UI elements ('Connect account' button, 'Disconnect' button, 'Spaces'/'Agents' labeling, left-side panel). While Pe",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-08-22T00-37-14-151Z_perplexity-news_Computer_now_works_in_email_-_Perplexity.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-08-22T00:42:30.959Z",
+    "slug": "perplexity-s-ai-agents-for-email-what-they-can-do",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-08-22T00:42:42.643Z",
+    "guide_worthy": false,
+    "pairing_reason": "No specific named feature - article describes general 'AI agents for email' capability and explicitly warns that feature names and screens change often, directing readers to check Perplexity's help docs instead.",
+    "image_v": 2,
+    "image_at": "2026-08-22T00:48:55.223Z",
+    "seo": {
+      "meta_description": "Discover what Perplexity's AI email agents can do now — read, sort, and draft messages. See current features and limitations before you try them.",
+      "keywords": [
+        "Perplexity AI email agents",
+        "Perplexity email assistant",
+        "AI agents for email",
+        "Perplexity Gmail integration",
+        "Perplexity Outlook assistant",
+        "how to use Perplexity for email",
+        "Perplexity AI tools"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add a clearer introduction paragraph that includes the main keyword in the first 100 words for better relevance",
+        "Consider adding FAQ-style subheadings (e.g., 'What can Perplexity's email agents do?') to capture featured snippet opportunities",
+        "Include the exact feature name once it stabilizes — current ambiguity may hurt click-through rates"
+      ],
+      "optimised_at": "2026-08-22T00:49:46.137Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Perplexity's AI Agents for Email: What They Can Do\"\nsubtitle: \"An honest look at how Perplexity's assistant can read, sort, and draft email — and where to confirm what's available today.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"perplexity\", \"ai-agents\", \"email\", \"productivity\", \"explainers\"]\n---\n\n# Perplexity's AI Agents for Email: What They Can Do\n\n> **In short:** Perplexity offers AI \"agents\" that can read and act on apps like Gmail and Outlook, but exact feature names and screens change often — check Perplexity's current help docs before relying on any specific workflow.\n\nYou open your inbox on a Monday and 140 messages stare back. Mixed in are a customer asking for a refund, a meeting that just moved, and an invite you forgot to accept. The idea of an AI that can read, sort, and even draft replies for you is genuinely useful — and Perplexity, the AI search and assistant company, has been building tools in that direction. Here is what those tools actually do today, and where to be careful before you trust them with your mail.\n\n## What \"AI agents\" actually mean\n\nAn **AI agent** is a program that can take actions on your behalf, not just answer questions. Think of it as the difference between asking a friend \"what's in my inbox?\" and asking \"please sort my inbox and draft replies to the urgent ones.\" The first one describes; the second one does.\n\nMost email-capable agents, including Perplexity's, work in three layers. They need permission to read your mail. They need a way to take actions like drafting, labeling, or archiving. And they need clear instructions from you about what to do. When any of those three is missing or unclear, the agent either guesses or stops and asks.\n\n## What Perplexity offers for email\n\nPerplexity runs a paid tier that unlocks longer-running, more capable \"agent\" features on top of its regular search and chat. For email specifically, Perplexity's agents can typically:\n\n- **Read** messages in a connected inbox and summarize them.\n- **Draft** replies based on the thread's content and your instructions.\n- **Search** across old messages to surface a specific thread or past decision.\n\nThe exact name and shape of these tools — sometimes sold as a standalone agent, sometimes grouped under broader features — has changed over time, and the menu layout shifts as Perplexity ships updates. If you are reading this weeks or months from now, the buttons may not match what older guides describe.\n\n## Things to check before you trust it with your inbox\n\nA few honest guardrails, none of which depend on a specific screen name:\n\n- **Read the permission screen** carefully. You are letting an AI see your mail. Some setups also let it send on your behalf — turn that off unless you really want it.\n- **Start with a low-stakes account.** A secondary or test inbox is the right place to learn how the agent behaves before you point it at work.\n- **Treat drafts as drafts.** Even a confident-sounding AI reply can phrase things in a way you wouldn't — too formal, too casual, or accidentally agreeing to something.\n- **Verify specifics.** Dates, dollar amounts, and names occasionally get misread. Treat every fact in a draft as something to confirm before it leaves your outbox.\n\nFor the most current step-by-step, Perplexity's own help center is the right place — feature names and screen layouts change faster than any third-party guide can keep up.\n\n## What this means for you\n\n- **If you handle email for work:** The biggest time-saver is a short morning triage pass — let the agent sort, ask it to draft replies for the urgent ones, then edit and send yourself. That is typically a third of the usual time.\n- **If you run a small business or work freelance:** Use it to surface the messages that actually need *you* (pricing, refunds, scheduling) and skip the noise. Auto-**draft**, not auto-send.\n- **If you are cautious about AI:** You can still benefit. Read-only mode is fully usable, and revoking the connection takes one click from your email provider's security settings. You stay in control of what actually goes out.\n\n## Wrap-up\n\nPerplexity's email agents are useful — they read, sort, and propose replies you can edit. They are not a substitute for your own judgment on what leaves your inbox under your name. Today's next step: open Perplexity's current help docs, find the latest agent guide, and run one read-only triage task on a low-stakes account to see how it feels.",
+  "original_title": "Computer now works in email - Perplexity"
+}

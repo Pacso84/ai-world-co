@@ -1,12 +1,5 @@
 {
   "days": {
-    "2026-07-06": {
-      "total": 9.534404,
-      "byProvider": {
-        "google": 9.534404
-      },
-      "correction_note": "(+.02 egyszeri korrekció 2026-07-07: a gondolkodási tokenek eddig nem számolódtak — Google-számlához igazítva)"
-    },
     "2026-07-07": {
       "total": 1.387877,
       "byProvider": {
@@ -275,6 +268,12 @@
       "total": 0.68701,
       "byProvider": {
         "openrouter": 0.68701
+      }
+    },
+    "2026-08-22": {
+      "total": 0.138994,
+      "byProvider": {
+        "openrouter": 0.138994
       }
     }
   }

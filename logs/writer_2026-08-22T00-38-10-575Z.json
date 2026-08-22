@@ -1,0 +1,36 @@
+{
+  "started_at": "2026-08-22T00:37:14.531Z",
+  "drafts_total": 2,
+  "articles_written": 2,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 0,
+  "merged_total": 0,
+  "total_cost_usd": 0.020708244,
+  "by_article": [
+    {
+      "draft": "2026-08-22T00-37-14-152Z_picsart_Flux_3_prompts__start_from_text__images__or_a_clip.json",
+      "writer_output": "WRITER_2026-08-22T00-37-14-152Z_picsart_Flux_3_prompts__start_from_text__images__or_a_clip.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.01521954,
+      "duration_ms": 36007,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-08-22T00-37-14-151Z_perplexity-news_Computer_now_works_in_email_-_Perplexity.json",
+      "writer_output": "WRITER_2026-08-22T00-37-14-151Z_perplexity-news_Computer_now_works_in_email_-_Perplexity.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.005002704,
+      "duration_ms": 15442,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    }
+  ],
+  "finished_at": "2026-08-22T00:38:10.575Z",
+  "duration_seconds": 56.044
+}
