@@ -1,86 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178724304092162",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-08-20T16:24:00.921Z",
-      "updated": "2026-08-20T16:24:01.149Z"
-    },
-    {
-      "id": "t178724304115125",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-20T16:24:01.151Z",
-      "updated": "2026-08-20T16:24:18.219Z"
-    },
-    {
-      "id": "t178724305822169",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-08-20T16:24:18.221Z",
-      "updated": "2026-08-20T16:24:39.136Z"
-    },
-    {
-      "id": "t178727274772540",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-08-21T00:39:07.725Z",
-      "updated": "2026-08-21T00:39:07.946Z"
-    },
-    {
-      "id": "t178727274794870",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-08-21T00:39:07.948Z",
-      "updated": "2026-08-21T00:39:46.770Z"
-    },
-    {
-      "id": "t178727278677137",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-08-21T00:39:46.771Z",
-      "updated": "2026-08-21T00:39:46.899Z"
-    },
-    {
-      "id": "t178727278690095",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-21T00:39:46.900Z",
-      "updated": "2026-08-21T00:42:39.382Z"
-    },
-    {
-      "id": "t178727295938486",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-21T00:42:39.384Z",
-      "updated": "2026-08-21T00:43:29.047Z"
-    },
-    {
-      "id": "t178727300904939",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-21T00:43:29.049Z",
-      "updated": "2026-08-21T00:45:31.784Z"
-    },
-    {
-      "id": "t178727313178555",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-21T00:45:31.785Z",
-      "updated": "2026-08-21T00:46:23.322Z"
-    },
-    {
       "id": "t17872731833240",
       "title": "Run pairing",
       "status": "done",
@@ -479,25 +399,89 @@
       "agent": "publisher",
       "created": "2026-08-22T00:50:45.559Z",
       "updated": "2026-08-22T00:51:04.458Z"
+    },
+    {
+      "id": "t178738659288185",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-08-22T08:16:32.881Z",
+      "updated": "2026-08-22T08:16:33.057Z"
+    },
+    {
+      "id": "t178738659305955",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-08-22T08:16:33.059Z",
+      "updated": "2026-08-22T08:17:00.029Z"
+    },
+    {
+      "id": "t178738662003186",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-08-22T08:17:00.031Z",
+      "updated": "2026-08-22T08:17:00.228Z"
+    },
+    {
+      "id": "t17873866202309",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-22T08:17:00.230Z",
+      "updated": "2026-08-22T08:17:00.405Z"
+    },
+    {
+      "id": "t17873866204079",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-22T08:17:00.407Z",
+      "updated": "2026-08-22T08:17:00.581Z"
+    },
+    {
+      "id": "t178738662058469",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-08-22T08:17:00.584Z",
+      "updated": "2026-08-22T08:17:00.810Z"
+    },
+    {
+      "id": "t178738662085558",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-22T08:17:00.855Z",
+      "updated": "2026-08-22T08:17:01.086Z"
+    },
+    {
+      "id": "t17873866210889",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-08-22T08:17:01.088Z",
+      "updated": "2026-08-22T08:17:01.299Z"
+    },
+    {
+      "id": "t178738662130061",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-22T08:17:01.300Z",
+      "updated": "2026-08-22T08:17:09.612Z"
+    },
+    {
+      "id": "t178738662961368",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-08-22T08:17:09.614Z",
+      "updated": "2026-08-22T08:17:27.168Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178641139868331",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). A solid, ready-to-launch lineup! You've got a great mix of practical how-tos (complaint emails, marketing, pet-sitting agreements) plus helpful guidance on privacy and everyday AI strengths—perfect fo",
-      "agent": "publisher",
-      "at": "2026-08-11T01:23:18.683Z",
-      "loud": false
-    },
-    {
-      "id": "n178641140784284",
-      "level": "success",
-      "text": "1 hír + 4 útmutató publikálva (költség: $0.0767).",
-      "agent": "ceo",
-      "at": "2026-08-11T01:23:27.842Z",
-      "loud": false
-    },
     {
       "id": "n178643791382017",
       "level": "info",
@@ -1281,27 +1265,25 @@
       "agent": "ceo",
       "at": "2026-08-22T00:51:04.499Z",
       "loud": false
+    },
+    {
+      "id": "n178738663455133",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). Good mix overall — a solid blend of practical how-tos covering business writing, personal correspondence, and a much-needed privacy guide. One heads-up: the line-up leans heavily toward complaint/refu",
+      "agent": "publisher",
+      "at": "2026-08-22T08:17:14.551Z",
+      "loud": false
+    },
+    {
+      "id": "n178738664720952",
+      "level": "info",
+      "text": "Pipeline lefutott — ma nem volt publikálható új tartalom.",
+      "agent": "ceo",
+      "at": "2026-08-22T08:17:27.209Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178658377280860",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Ask Alexa+ to read your calendar aloud and remind you about today's meetings\" — mi a baj: The price claim that Alexa+ standalone plan costs 'around $19.99/month' appears to be invented. Amazon has not publicly listed Alexa+ at this price point as a standard standalone figure in the way the article states it as a near-fact.; The article states Alexa+ has a built-in ability to",
-      "ref": "GUIDE_ask-alexa-to-read-your-calendar-aloud-and-remind-you-about-t.json",
-      "at": "2026-08-13T01:16:12.808Z"
-    },
-    {
-      "id": "m178658408104017",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-08-13T01:21:21.040Z"
-    },
     {
       "id": "m17865848620438",
       "from": "social",
@@ -2645,6 +2627,24 @@
       "text": "6 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-08-22T01:03:16.191Z"
+    },
+    {
+      "id": "m178738662960081",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-08-22T08:17:09.600Z"
+    },
+    {
+      "id": "m178738678549331",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Getting started with Apple Intelligence on your iP\" — iPhone 15 Pro, iPhone 15 Pro Max, or any later model (incorrect — Apple Intelligence only works on iPhone 15 Pro and Pro Max, iPhone 16/16 Pro/16 Pro Max/16e, and later; NOT on iPhone 15 or iPhone 15 Plus); When asking Siri to draft a reply, the guide describes pressing the mic icon ",
+      "ref": "ARTICLE_GUIDE_apple-intelligence-getting-started.json",
+      "at": "2026-08-22T08:19:45.493Z"
     }
   ]
 }
