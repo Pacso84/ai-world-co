@@ -1,118 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178732917246138",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-08-21T16:19:32.461Z",
-      "updated": "2026-08-21T16:20:03.785Z"
-    },
-    {
-      "id": "t17873292037878",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-08-21T16:20:03.787Z",
-      "updated": "2026-08-21T16:20:03.986Z"
-    },
-    {
-      "id": "t178732920398895",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-21T16:20:03.988Z",
-      "updated": "2026-08-21T16:23:00.594Z"
-    },
-    {
-      "id": "t178732938059535",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-21T16:23:00.595Z",
-      "updated": "2026-08-21T16:24:01.160Z"
-    },
-    {
-      "id": "t178732944116350",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-08-21T16:24:01.163Z",
-      "updated": "2026-08-21T16:24:25.233Z"
-    },
-    {
-      "id": "t17873294652808",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-21T16:24:25.280Z",
-      "updated": "2026-08-21T16:25:39.067Z"
-    },
-    {
-      "id": "t17873295390691",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-08-21T16:25:39.069Z",
-      "updated": "2026-08-21T16:26:11.972Z"
-    },
-    {
-      "id": "t178732957197427",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-21T16:26:11.974Z",
-      "updated": "2026-08-21T16:26:27.515Z"
-    },
-    {
-      "id": "t178732958751693",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-08-21T16:26:27.516Z",
-      "updated": "2026-08-21T16:26:48.802Z"
-    },
-    {
-      "id": "t178735898640354",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-08-22T00:36:26.403Z",
-      "updated": "2026-08-22T00:36:26.594Z"
-    },
-    {
-      "id": "t178735898659610",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-08-22T00:36:26.596Z",
-      "updated": "2026-08-22T00:37:14.165Z"
-    },
-    {
-      "id": "t178735903416725",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-08-22T00:37:14.167Z",
-      "updated": "2026-08-22T00:37:14.362Z"
-    },
-    {
-      "id": "t178735903436419",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-22T00:37:14.364Z",
-      "updated": "2026-08-22T00:38:10.585Z"
-    },
-    {
-      "id": "t178735909058717",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-22T00:38:10.587Z",
-      "updated": "2026-08-22T00:38:49.700Z"
-    },
-    {
       "id": "t17873591297037",
       "title": "Run iro",
       "status": "done",
@@ -479,41 +367,121 @@
       "agent": "publisher",
       "created": "2026-08-23T00:51:42.129Z",
       "updated": "2026-08-23T00:52:11.286Z"
+    },
+    {
+      "id": "t178747303106026",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-08-23T08:17:11.060Z",
+      "updated": "2026-08-23T08:17:11.200Z"
+    },
+    {
+      "id": "t178747303120281",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-08-23T08:17:11.202Z",
+      "updated": "2026-08-23T08:17:42.160Z"
+    },
+    {
+      "id": "t178747306216120",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-08-23T08:17:42.161Z",
+      "updated": "2026-08-23T08:17:42.314Z"
+    },
+    {
+      "id": "t178747306231672",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-23T08:17:42.316Z",
+      "updated": "2026-08-23T08:17:42.452Z"
+    },
+    {
+      "id": "t178747306245484",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-23T08:17:42.454Z",
+      "updated": "2026-08-23T08:18:04.063Z"
+    },
+    {
+      "id": "t178747308406572",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-23T08:18:04.065Z",
+      "updated": "2026-08-23T08:18:38.424Z"
+    },
+    {
+      "id": "t178747311842572",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-23T08:18:38.425Z",
+      "updated": "2026-08-23T08:18:56.226Z"
+    },
+    {
+      "id": "t178747313622819",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-23T08:18:56.228Z",
+      "updated": "2026-08-23T08:19:44.042Z"
+    },
+    {
+      "id": "t178747318404321",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-23T08:19:44.043Z",
+      "updated": "2026-08-23T08:20:09.963Z"
+    },
+    {
+      "id": "t178747320996579",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-08-23T08:20:09.965Z",
+      "updated": "2026-08-23T08:20:17.077Z"
+    },
+    {
+      "id": "t178747321712266",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-23T08:20:17.122Z",
+      "updated": "2026-08-23T08:20:35.623Z"
+    },
+    {
+      "id": "t178747323562485",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-08-23T08:20:35.624Z",
+      "updated": "2026-08-23T08:20:52.809Z"
+    },
+    {
+      "id": "t178747325281121",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-23T08:20:52.811Z",
+      "updated": "2026-08-23T08:21:03.314Z"
+    },
+    {
+      "id": "t178747326331525",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-08-23T08:21:03.315Z",
+      "updated": "2026-08-23T08:21:22.200Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178646697508240",
-      "level": "success",
-      "text": "1 hír + 0 útmutató publikálva (költség: $0.0140).",
-      "agent": "ceo",
-      "at": "2026-08-11T16:49:35.082Z",
-      "loud": false
-    },
-    {
-      "id": "n178649758012638",
-      "level": "info",
-      "text": "SEO: 5 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-08-12T01:19:40.126Z",
-      "loud": false
-    },
-    {
-      "id": "n178649759876463",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The lineup feels practical and useful — a nice mix of productivity (emails, contracts), everyday help (fact-checking, privacy), and emotional support (speeches, sympathy notes). One small note: with t",
-      "agent": "publisher",
-      "at": "2026-08-12T01:19:58.764Z",
-      "loud": false
-    },
-    {
-      "id": "n178649760826190",
-      "level": "success",
-      "text": "2 hír + 3 útmutató publikálva (költség: $0.0942).",
-      "agent": "ceo",
-      "at": "2026-08-12T01:20:08.261Z",
-      "loud": false
-    },
     {
       "id": "n178652541075028",
       "level": "warn",
@@ -1281,72 +1249,41 @@
       "agent": "ceo",
       "at": "2026-08-23T00:52:11.327Z",
       "loud": false
+    },
+    {
+      "id": "n178747318403530",
+      "level": "warn",
+      "text": "📨 guide → ceo: Kell még adat: \"Use ChatGPT to Practice a Foreign Language Without Feeling Awkward\" — az Ellenőrző tényt/forrást kér, am",
+      "agent": "guide",
+      "at": "2026-08-23T08:19:44.035Z",
+      "loud": false
+    },
+    {
+      "id": "n178747325280243",
+      "level": "info",
+      "text": "SEO: 2 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-08-23T08:20:52.802Z",
+      "loud": false
+    },
+    {
+      "id": "n178747327149641",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). A solid, ready-to-go mix! The lineup nicely balances practical AI guidance (like the privacy article) with hands-on writing tutorials using real tools—great for readers who want to learn by doing. A s",
+      "agent": "publisher",
+      "at": "2026-08-23T08:21:11.496Z",
+      "loud": false
+    },
+    {
+      "id": "n178747328223769",
+      "level": "success",
+      "text": "1 hír + 1 útmutató publikálva (költség: $0.0079).",
+      "agent": "ceo",
+      "at": "2026-08-23T08:21:22.238Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178661199982795",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"How to prepare for a job interview with AI\" — The guide lacks the mandatory 'In short' box after the title (Section 2a of style guide) and the term 'hallucinations' is used in Common mistakes without explanation (Section 5 requires all technical terms to be defined on first use)",
-      "ref": "ARTICLE_GUIDE_ai-job-interview.json",
-      "at": "2026-08-13T09:06:39.827Z"
-    },
-    {
-      "id": "m178661249642613",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-08-13T09:14:56.426Z"
-    },
-    {
-      "id": "m178663950665443",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Amazon Quick for Microsoft 365: Agentic AI where you work\" — mi a baj: The article repeatedly refers to 'Amazon Quick' as a Microsoft 365 add-in available in Word, Excel, PowerPoint, and Outlook. Amazon's enterprise AI assistant is called 'Amazon Q' (and 'Amazon Q for QuickSight'), not 'Amazon Quick'. 'Amazon Quick' is not a real AWS product name.",
-      "ref": "2026-08-13T16-44-20-017Z_aws-ml_Amazon_Quick_for_Microsoft_365__Agentic_AI_where_y.json",
-      "at": "2026-08-13T16:45:06.654Z"
-    },
-    {
-      "id": "m178663952432489",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Amazon Quick for Microsoft 365: Agentic AI where you work\" — javítva: The article repeatedly refers to 'Amazon Quick' as a Microsoft 365 add-in available in Word, Excel, PowerPoint, and Outlook. Amazon's enterprise AI assistant is called 'Amazon Q' (and 'Amazon Q for QuickSight'), not 'Amazon Quick'. 'Amazon Quick' is not a real AWS product name.; Reviewer verdict: Hitelesség-kapu bl",
-      "ref": "2026-08-13T16-44-20-017Z_aws-ml_Amazon_Quick_for_Microsoft_365__Agentic_AI_where_y.json",
-      "at": "2026-08-13T16:45:24.324Z"
-    },
-    {
-      "id": "m178663956292797",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Amazon Quick for Microsoft 365: Agentic AI where you work\" (?/10)",
-      "ref": "2026-08-13T16-44-20-017Z_aws-ml_Amazon_Quick_for_Microsoft_365__Agentic_AI_where_y.json",
-      "at": "2026-08-13T16:46:02.927Z"
-    },
-    {
-      "id": "m178663960322952",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-08-13T16:46:43.229Z"
-    },
-    {
-      "id": "m178664004736998",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "5 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-08-13T16:54:07.369Z"
-    },
     {
       "id": "m178666978354039",
       "from": "ellenorzo",
@@ -2643,6 +2580,71 @@
       "text": "4 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-08-23T01:03:35.621Z"
+    },
+    {
+      "id": "m178747308404977",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"This Week in AI: The 5 Stories That Matter (August 23, 2026)\" — mi a baj: NO_LEDE: Hiányzik a RÖVIDEN-doboz (> **In short:** …) közvetlenül a főcím után — az AI-keresők és a Google kivonat-doboza ezt olvassák (style-guide 2a).; PicsArt is mentioned as releasing an AI room redesign tool from a single photo — PicsArt is not in the verified-real list, and the article attributes",
+      "ref": "2026-08-23T00-52-32-690Z_aiworld-editorial_This_Week_in_AI.json",
+      "at": "2026-08-23T08:18:04.049Z"
+    },
+    {
+      "id": "m178747311841736",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"This Week in AI: The 5 Stories That Matter (August 23, 2026)\" — javítva: NO_LEDE: Hiányzik a RÖVIDEN-doboz (> **In short:** …) közvetlenül a főcím után — az AI-keresők és a Google kivonat-doboza ezt olvassák (style-guide 2a).; PicsArt is mentioned as releasing an AI room redesign tool from a single photo — PicsArt is not in the verified-real list, and the article attributes a specifi",
+      "ref": "2026-08-23T00-52-32-690Z_aiworld-editorial_This_Week_in_AI.json",
+      "at": "2026-08-23T08:18:38.417Z"
+    },
+    {
+      "id": "m178747313621834",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"This Week in AI: The 5 Stories That Matter (August 23, 2026)\" (?/10)",
+      "ref": "2026-08-23T00-52-32-690Z_aiworld-editorial_This_Week_in_AI.json",
+      "at": "2026-08-23T08:18:56.218Z"
+    },
+    {
+      "id": "m17874731840330",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Use ChatGPT to Practice a Foreign Language Without Feeling Awkward\" — javítva: LEDE_TOO_LONG: A RÖVIDEN-doboz 63 szó (max ~45) — ami hosszú, az már nem \"röviden\".; Beginner clarity too low (7/10): steps are vague or could mislead a first-time user; újraküldöm.",
+      "ref": "GUIDE_use-chatgpt-to-practice-a-foreign-language-without-feeling-a.json",
+      "at": "2026-08-23T08:19:44.033Z"
+    },
+    {
+      "id": "m178747318403551",
+      "from": "guide",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Kell még adat: \"Use ChatGPT to Practice a Foreign Language Without Feeling Awkward\" — az Ellenőrző tényt/forrást kér, amit nem találhatok ki: Reviewer verdict: Solid, well-structured guide with warm tone and practical steps. The 'What this means for you' and 'Try it now' sections give good real-world context. Two minor UI clarity issues: 'Advanced Voice' in the Common mistakes section should note ",
+      "ref": "GUIDE_use-chatgpt-to-practice-a-foreign-language-without-feeling-a.json",
+      "open": false,
+      "at": "2026-08-23T08:19:44.035Z",
+      "resolved_at": "2026-08-23T08:20:09.950Z"
+    },
+    {
+      "id": "m178747320994932",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Use ChatGPT to Practice a Foreign Language Without Feeling Awkward\" (?/10)",
+      "ref": "GUIDE_use-chatgpt-to-practice-a-foreign-language-without-feeling-a.json",
+      "at": "2026-08-23T08:20:09.949Z"
+    },
+    {
+      "id": "m178747326330726",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-08-23T08:21:03.307Z"
     }
   ]
 }

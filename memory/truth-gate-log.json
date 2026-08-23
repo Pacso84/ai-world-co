@@ -1,24 +1,4 @@
 {
-  "2026-07-30": [
-    {
-      "at": "2026-07-30T01:39:57.832Z",
-      "file": "WRITER_GUIDE_how-to-plan-a-kid-s-birthday-party-on-a-budget-using-any-ai-.json",
-      "action": "block",
-      "reasons": [
-        "The example prompt in Step 1 contains Chinese characters '海洋' mixed into an otherwise English sentence, which is a clear formatting/translation error that appears fabricated or corrupted rather than intentional content."
-      ]
-    },
-    {
-      "at": "2026-07-30T17:17:27.747Z",
-      "file": "WRITER_2026-07-30T17-14-04-999Z_google-workspace_Use_Gemini_in_Google_Forms_to_quickly_create_a_new.json",
-      "action": "block",
-      "reasons": [
-        "The 'Help me create' button as described — a floating button in the bottom-right of a new Google Form that opens a side panel for describing a quiz, with a 'paperclip' icon for attaching Drive files (Docs, Slides, PDFs) as source materials, and that drafts questions with marked correct answers — does not match the known functionality of Gemini in Google Forms. As of current knowledge, Gemini in Google Forms (the 'Help me create' feature) does not support attaching source documents from Drive to ground quiz generation, and the described paperclip/file-attach workflow within the panel is not a documented feature.",
-        "The claim that the source-attachment feature is 'one of the most useful bits' allowing Gemini to base questions on an uploaded Google Doc/Slide/PDF appears to be fabricated, as this capability is not a verified part of the Gemini-in-Google Forms feature.",
-        "The specific UI element descriptions (floating 'Help me create' button in bottom-right, side panel with 'Generate'/'Insert' button, paperclip icon inside the panel, 'Draft ready' message) are presented as definitive product UI but cannot be verified and read as invented specifics rather than honest hedged guidance."
-      ]
-    }
-  ],
   "2026-07-31": [
     {
       "at": "2026-07-31T04:09:15.167Z",
@@ -358,6 +338,19 @@
         "Article presents 'Flux 3' as a real AI video tool that generates picture and sound in one pass, with specific capabilities (footsteps, rain, door closing, spoken dialogue) and 'audio settings' — Flux (by Black Forest Labs) is an image-generation model family, not a known video+audio generator, and 'Flux 3' is not in the verified-real names list. The detailed feature claims (dialogue generation, audio settings, one-pass picture+sound) attributed to this specific named tool appear fabricated."
       ],
       "confidence": 7
+    }
+  ],
+  "2026-08-23": [
+    {
+      "at": "2026-08-23T08:18:04.050Z",
+      "file": "WRITER_2026-08-23T00-52-32-690Z_aiworld-editorial_This_Week_in_AI.json",
+      "action": "block",
+      "reasons": [
+        "PicsArt is mentioned as releasing an AI room redesign tool from a single photo — PicsArt is not in the verified-real list, and the article attributes a specific featured product (a room-redesign tool with modern/cozy/minimalist styles) to it that I cannot verify as real.",
+        "Google Vids is described as 'now available inside Google Workspace' and characterized as an 'AI-powered video creation app' — while Google Vids exists, the specific positioning as an AI-powered video creation tool available inside Workspace with template-based presentation/training video creation needs verification, but is more plausibly a mischaracterization of Google Vids (which is primarily a video creation app but not primarily branded as 'AI-powered'). This is borderline — flagging only if reasonably sure.",
+        "OpenAI's 'zero data retention' policy — OpenAI does have a 'zero data retention' option for enterprise/API customers, so this is plausibly real, not flagging."
+      ],
+      "confidence": 5
     }
   ]
 }
