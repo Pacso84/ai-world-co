@@ -1,142 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178727424894480",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-21T01:04:08.944Z",
-      "updated": "2026-08-21T01:04:19.783Z"
-    },
-    {
-      "id": "t178727425978421",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-08-21T01:04:19.784Z",
-      "updated": "2026-08-21T01:04:41.468Z"
-    },
-    {
-      "id": "t178730077469364",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-08-21T08:26:14.693Z",
-      "updated": "2026-08-21T08:26:17.753Z"
-    },
-    {
-      "id": "t178730077775435",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-08-21T08:26:17.754Z",
-      "updated": "2026-08-21T08:26:53.501Z"
-    },
-    {
-      "id": "t178730081350321",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-08-21T08:26:53.503Z",
-      "updated": "2026-08-21T08:27:32.609Z"
-    },
-    {
-      "id": "t178730085261163",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-21T08:27:32.611Z",
-      "updated": "2026-08-21T08:28:07.710Z"
-    },
-    {
-      "id": "t17873008877118",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-21T08:28:07.711Z",
-      "updated": "2026-08-21T08:28:54.083Z"
-    },
-    {
-      "id": "t178730093408644",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-21T08:28:54.086Z",
-      "updated": "2026-08-21T08:29:24.453Z"
-    },
-    {
-      "id": "t178730096445469",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-21T08:29:24.454Z",
-      "updated": "2026-08-21T08:29:45.058Z"
-    },
-    {
-      "id": "t178730098506079",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-21T08:29:45.060Z",
-      "updated": "2026-08-21T08:30:08.131Z"
-    },
-    {
-      "id": "t178730100813313",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-21T08:30:08.133Z",
-      "updated": "2026-08-21T08:31:06.337Z"
-    },
-    {
-      "id": "t178730106634010",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-08-21T08:31:06.340Z",
-      "updated": "2026-08-21T08:31:42.634Z"
-    },
-    {
-      "id": "t178730110267623",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-21T08:31:42.677Z",
-      "updated": "2026-08-21T08:32:16.526Z"
-    },
-    {
-      "id": "t178730113652835",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-08-21T08:32:16.528Z",
-      "updated": "2026-08-21T08:32:45.963Z"
-    },
-    {
-      "id": "t178730116596449",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-21T08:32:45.964Z",
-      "updated": "2026-08-21T08:33:05.721Z"
-    },
-    {
-      "id": "t178730118572374",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-08-21T08:33:05.723Z",
-      "updated": "2026-08-21T08:33:25.457Z"
-    },
-    {
-      "id": "t178732917226247",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-08-21T16:19:32.262Z",
-      "updated": "2026-08-21T16:19:32.459Z"
-    },
-    {
       "id": "t178732917246138",
       "title": "Run rss-scraper",
       "status": "done",
@@ -479,33 +343,145 @@
       "agent": "publisher",
       "created": "2026-08-22T16:11:22.256Z",
       "updated": "2026-08-22T16:11:42.119Z"
+    },
+    {
+      "id": "t178744557241827",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-08-23T00:39:32.418Z",
+      "updated": "2026-08-23T00:39:32.618Z"
+    },
+    {
+      "id": "t17874455726206",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-08-23T00:39:32.620Z",
+      "updated": "2026-08-23T00:39:55.026Z"
+    },
+    {
+      "id": "t178744559502888",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-08-23T00:39:55.028Z",
+      "updated": "2026-08-23T00:39:55.236Z"
+    },
+    {
+      "id": "t178744559523978",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-23T00:39:55.239Z",
+      "updated": "2026-08-23T00:39:55.421Z"
+    },
+    {
+      "id": "t178744559542389",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-23T00:39:55.423Z",
+      "updated": "2026-08-23T00:39:55.603Z"
+    },
+    {
+      "id": "t178744559560646",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-08-23T00:39:55.606Z",
+      "updated": "2026-08-23T00:39:55.849Z"
+    },
+    {
+      "id": "t178744559589640",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-23T00:39:55.896Z",
+      "updated": "2026-08-23T00:45:44.719Z"
+    },
+    {
+      "id": "t178744594472194",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-23T00:45:44.721Z",
+      "updated": "2026-08-23T00:46:42.339Z"
+    },
+    {
+      "id": "t178744600237846",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-23T00:46:42.378Z",
+      "updated": "2026-08-23T00:46:42.565Z"
+    },
+    {
+      "id": "t178744600256746",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-23T00:46:42.567Z",
+      "updated": "2026-08-23T00:48:04.140Z"
+    },
+    {
+      "id": "t178744608414434",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-23T00:48:04.144Z",
+      "updated": "2026-08-23T00:49:09.470Z"
+    },
+    {
+      "id": "t178744614947394",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-23T00:49:09.473Z",
+      "updated": "2026-08-23T00:49:42.507Z"
+    },
+    {
+      "id": "t178744618250934",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-23T00:49:42.509Z",
+      "updated": "2026-08-23T00:50:05.315Z"
+    },
+    {
+      "id": "t178744620531681",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-23T00:50:05.316Z",
+      "updated": "2026-08-23T00:50:40.558Z"
+    },
+    {
+      "id": "t178744624056029",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-08-23T00:50:40.560Z",
+      "updated": "2026-08-23T00:51:27.123Z"
+    },
+    {
+      "id": "t178744628712594",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-23T00:51:27.125Z",
+      "updated": "2026-08-23T00:51:42.126Z"
+    },
+    {
+      "id": "t178744630212945",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-08-23T00:51:42.129Z",
+      "updated": "2026-08-23T00:52:11.286Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178643796691584",
-      "level": "info",
-      "text": "Pipeline lefutott — ma nem volt publikálható új tartalom.",
-      "agent": "ceo",
-      "at": "2026-08-11T08:46:06.915Z",
-      "loud": false
-    },
-    {
-      "id": "n178646693844431",
-      "level": "info",
-      "text": "SEO: 1 cikk optimalizálva (átlag 7.0/10).",
-      "agent": "seo",
-      "at": "2026-08-11T16:48:58.444Z",
-      "loud": false
-    },
-    {
-      "id": "n178646696531816",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). A mix of practical how-tos and helpful templates — ez jól lefedi, amit az olvasók keresnek. Egy apró javítás: a 7. cikknél a Cohere helyett a tool hivatalos neve kell (Command), és az 1.-nél is Perple",
-      "agent": "publisher",
-      "at": "2026-08-11T16:49:25.318Z",
-      "loud": false
-    },
     {
       "id": "n178646697508240",
       "level": "success",
@@ -1281,29 +1257,33 @@
       "agent": "ceo",
       "at": "2026-08-22T16:11:42.158Z",
       "loud": false
+    },
+    {
+      "id": "n178744628711310",
+      "level": "info",
+      "text": "SEO: 4 cikk optimalizálva (átlag 8.5/10).",
+      "agent": "seo",
+      "at": "2026-08-23T00:51:27.113Z",
+      "loud": false
+    },
+    {
+      "id": "n178744631844537",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The lineup looks solid—practical AI how-tos mixed with human, warm content (sympathy, thank-you speech, pet-sitting) shows we're about helping people, not just tech. One quick check: make sure Le Chat",
+      "agent": "publisher",
+      "at": "2026-08-23T00:51:58.445Z",
+      "loud": false
+    },
+    {
+      "id": "n178744633132746",
+      "level": "success",
+      "text": "0 hír + 4 útmutató publikálva (költség: $0.0670).",
+      "agent": "ceo",
+      "at": "2026-08-23T00:52:11.327Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178661179005822",
-      "from": "guide",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Kell még adat: \"Ask Alexa+ to read your calendar aloud and remind you about today's meetings\" — az Ellenőrző tényt/forrást kér, amit nem találhatok ki: The price claim that Alexa+ standalone plan costs 'around $19.99/month' appears to be invented. Amazon has not publicly listed Alexa+ at this price point as a standard standalone figure in the way the article states it as a near-fact.",
-      "ref": "GUIDE_ask-alexa-to-read-your-calendar-aloud-and-remind-you-about-t.json",
-      "open": false,
-      "at": "2026-08-13T09:03:10.058Z",
-      "resolved_at": "2026-08-13T09:03:31.131Z"
-    },
-    {
-      "id": "m178661181113065",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Ask Alexa+ to read your calendar aloud and remind you about today's meetings\" (?/10)",
-      "ref": "GUIDE_ask-alexa-to-read-your-calendar-aloud-and-remind-you-about-t.json",
-      "at": "2026-08-13T09:03:31.130Z"
-    },
     {
       "id": "m178661185267865",
       "from": "designer",
@@ -2645,6 +2625,24 @@
       "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Adding clear comments to your existing code to mak\" — 30-day free trial mention as the only option for trying Copilot",
       "ref": "ARTICLE_GUIDE_adding-clear-comments-to-your-existing-code-to-make-it-easie.json",
       "at": "2026-08-22T16:13:54.119Z"
+    },
+    {
+      "id": "m178744600232897",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Use ChatGPT to Practice a Foreign Language Without Feeling Awkward\" — mi a baj: LEDE_TOO_LONG: A RÖVIDEN-doboz 63 szó (max ~45) — ami hosszú, az már nem \"röviden\".; Beginner clarity too low (7/10): steps are vague or could mislead a first-time user; Step 4 mentions 'Advanced Voice' without explaining it's a paid feature exclusive to Plus subscribers",
+      "ref": "GUIDE_use-chatgpt-to-practice-a-foreign-language-without-feeling-a.json",
+      "at": "2026-08-23T00:46:42.328Z"
+    },
+    {
+      "id": "m178744630211789",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-08-23T00:51:42.117Z"
     }
   ]
 }

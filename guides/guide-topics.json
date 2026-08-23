@@ -4910,10 +4910,11 @@
       "audience": "personal",
       "level": "beginner",
       "angle": "Paste a suspicious email or text and ask the AI to flag the warning signs, giving you a quick second pair of eyes before you tap a link or send money.",
-      "status": "todo",
+      "status": "done",
       "icon": "🛡️",
       "proposed_at": "2026-08-15T00:59:57.698Z",
-      "proposed_by": "guide-ideas"
+      "proposed_by": "guide-ideas",
+      "written_at": "2026-08-23T00:41:31.534Z"
     },
     {
       "id": "how-to-turn-a-long-voice-memo-into-a-short-summary-in-minute",
@@ -4923,10 +4924,11 @@
       "audience": "personal",
       "level": "beginner",
       "angle": "A walkthrough of recording a voice memo, sending it to any AI assistant, and getting back a clean written summary you can actually read on the bus home.",
-      "status": "todo",
+      "status": "done",
       "icon": "🎙️",
       "proposed_at": "2026-08-15T01:01:08.956Z",
-      "proposed_by": "guide-ideas"
+      "proposed_by": "guide-ideas",
+      "written_at": "2026-08-23T00:45:25.547Z"
     },
     {
       "id": "use-chatgpt-to-practice-a-foreign-language-without-feeling-a",
@@ -4936,10 +4938,11 @@
       "audience": "personal",
       "level": "beginner",
       "angle": "How to set up a low-pressure speaking practice session where ChatGPT corrects you gently and lets you repeat mistakes until they actually stick.",
-      "status": "todo",
+      "status": "done",
       "icon": "🗣️",
       "proposed_at": "2026-08-15T01:01:09.074Z",
-      "proposed_by": "guide-ideas"
+      "proposed_by": "guide-ideas",
+      "written_at": "2026-08-23T00:45:44.709Z"
     },
     {
       "id": "plan-a-week-s-worth-of-family-dinners-with-one-simple-ai-pro",
@@ -5290,11 +5293,12 @@
       "audience": "personal",
       "level": "beginner",
       "angle": "Describe the problem in a few sentences and get a calm, professional email that references your lease and asks for a fix by a specific date.",
-      "status": "todo",
+      "status": "done",
       "icon": "🏠",
       "priority": "balance",
       "proposed_at": "2026-08-21T00:55:01.994Z",
-      "proposed_by": "guide-balance"
+      "proposed_by": "guide-balance",
+      "written_at": "2026-08-23T00:40:15.526Z"
     },
     {
       "id": "build-a-simple-monthly-budget-from-scratch-with-any-ai-assis",
@@ -5398,6 +5402,129 @@
       "status": "todo",
       "icon": "✉️",
       "proposed_at": "2026-08-21T00:57:49.454Z",
+      "proposed_by": "guide-ideas"
+    },
+    {
+      "id": "translate-a-foreign-language-recipe-or-instruction-manual-wi",
+      "company": "Hugging Face",
+      "tool": "Hugging Face",
+      "title": "Translate a foreign-language recipe or instruction manual with Hugging Face's free translator",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "Paste any foreign-language text — a Spanish recipe, a Japanese manual, a French email — and get a clear English version in seconds, right in your browser.",
+      "status": "done",
+      "icon": "🌐",
+      "priority": "balance",
+      "proposed_at": "2026-08-23T00:48:03.668Z",
+      "proposed_by": "guide-balance",
+      "written_at": "2026-08-23T00:49:42.496Z"
+    },
+    {
+      "id": "spot-the-mood-behind-customer-reviews-with-hugging-face-s-fr",
+      "company": "Hugging Face",
+      "tool": "Hugging Face",
+      "title": "Spot the mood behind customer reviews with Hugging Face's free sentiment tool",
+      "audience": "business",
+      "level": "beginner",
+      "angle": "Paste a stack of customer reviews and instantly see which ones sound happy, which are neutral, and which are complaints — without reading every word yourself.",
+      "status": "todo",
+      "icon": "💬",
+      "priority": "balance",
+      "proposed_at": "2026-08-23T00:48:03.782Z",
+      "proposed_by": "guide-balance"
+    },
+    {
+      "id": "ask-plain-english-questions-about-a-long-pdf-using-hugging-f",
+      "company": "Hugging Face",
+      "tool": "Hugging Face",
+      "title": "Ask plain-English questions about a long PDF using Hugging Face's free document Q&A",
+      "audience": "both",
+      "level": "beginner",
+      "angle": "Upload a 50-page manual, lease, or report and just ask 'What's the cancellation policy?' — the tool finds the answer instead of forcing you to skim the whole thing.",
+      "status": "todo",
+      "icon": "📄",
+      "priority": "balance",
+      "proposed_at": "2026-08-23T00:48:03.899Z",
+      "proposed_by": "guide-balance"
+    },
+    {
+      "id": "polish-your-writing-with-hugging-face-s-free-grammar-and-spe",
+      "company": "Hugging Face",
+      "tool": "Hugging Face",
+      "title": "Polish your writing with Hugging Face's free grammar and spelling checker",
+      "audience": "both",
+      "level": "beginner",
+      "angle": "Paste any email, cover letter, or message and get a cleaner version back — typos fixed, awkward sentences smoothed, tone made more natural — in under a minute.",
+      "status": "todo",
+      "icon": "✍️",
+      "priority": "balance",
+      "proposed_at": "2026-08-23T00:48:04.023Z",
+      "proposed_by": "guide-balance"
+    },
+    {
+      "id": "auto-write-captions-for-your-photos-using-hugging-face-s-fre",
+      "company": "Hugging Face",
+      "tool": "Hugging Face",
+      "title": "Auto-write captions for your photos using Hugging Face's free image captioning tool",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "Upload a batch of vacation or family photos and get a one-line description for each — perfect for social media posts, alt text, or finding that one picture you forgot to label.",
+      "status": "todo",
+      "icon": "📸",
+      "priority": "balance",
+      "proposed_at": "2026-08-23T00:48:04.129Z",
+      "proposed_by": "guide-balance"
+    },
+    {
+      "id": "practice-a-salary-negotiation-with-any-ai-assistant-before-t",
+      "company": "",
+      "tool": "",
+      "title": "Practice a salary negotiation with any AI assistant before the real talk",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "A safe space to rehearse the awkward money conversation, hear counter-arguments, and find the words to actually say your number out loud before the real meeting.",
+      "status": "todo",
+      "icon": "💰",
+      "proposed_at": "2026-08-23T00:48:52.686Z",
+      "proposed_by": "guide-ideas"
+    },
+    {
+      "id": "ask-any-ai-assistant-to-explain-the-confusing-parts-of-a-lea",
+      "company": "",
+      "tool": "",
+      "title": "Ask any AI assistant to explain the confusing parts of a lease or contract",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "Paste any clause that sounds like legal gibberish and get a plain-English translation of what you're actually agreeing to — before you sign.",
+      "status": "todo",
+      "icon": "📄",
+      "proposed_at": "2026-08-23T00:48:52.803Z",
+      "proposed_by": "guide-ideas"
+    },
+    {
+      "id": "how-to-spot-an-ai-scam-call-fake-email-or-deepfake-voice-tod",
+      "company": "",
+      "tool": "",
+      "title": "How to spot an AI scam call, fake email, or deepfake voice today",
+      "audience": "both",
+      "level": "beginner",
+      "angle": "Learn the three most common AI-powered scams right now — cloned family-member voice calls, fake customer-service agents, and AI-written phishing emails — plus the one-second checks that catch each one.",
+      "status": "todo",
+      "icon": "🛡️",
+      "proposed_at": "2026-08-23T00:49:09.340Z",
+      "proposed_by": "guide-ideas"
+    },
+    {
+      "id": "talk-to-chatgpt-by-voice-on-your-phone-while-cooking-or-driv",
+      "company": "OpenAI",
+      "tool": "ChatGPT",
+      "title": "Talk to ChatGPT by voice on your phone while cooking or driving",
+      "audience": "both",
+      "level": "beginner",
+      "angle": "Set up ChatGPT's voice mode in about a minute so you can brainstorm, settle an argument, or plan dinner hands-free when your hands are busy.",
+      "status": "todo",
+      "icon": "🎙️",
+      "proposed_at": "2026-08-23T00:49:09.458Z",
       "proposed_by": "guide-ideas"
     }
   ]

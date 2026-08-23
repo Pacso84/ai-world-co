@@ -1,0 +1,41 @@
+{
+  "started_at": "2026-08-23T00:45:44.893Z",
+  "total": 4,
+  "passed": 3,
+  "failed": 1,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.010780122,
+  "by_article": [
+    {
+      "writer": "WRITER_GUIDE_draft-a-polite-complaint-email-to-your-landlord-about-a-main.json",
+      "article": "ARTICLE_GUIDE_draft-a-polite-complaint-email-to-your-landlord-about-a-main.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0019332
+    },
+    {
+      "writer": "WRITER_GUIDE_how-to-spot-a-phishing-or-scam-message-before-you-click.json",
+      "article": "ARTICLE_GUIDE_how-to-spot-a-phishing-or-scam-message-before-you-click.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.00179625
+    },
+    {
+      "writer": "WRITER_GUIDE_how-to-turn-a-long-voice-memo-into-a-short-summary-in-minute.json",
+      "article": "ARTICLE_GUIDE_how-to-turn-a-long-voice-memo-into-a-short-summary-in-minute.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0024018
+    },
+    {
+      "writer": "WRITER_GUIDE_use-chatgpt-to-practice-a-foreign-language-without-feeling-a.json",
+      "rejected": "REJECTED_GUIDE_use-chatgpt-to-practice-a-foreign-language-without-feeling-a.json",
+      "decision": "FAIL",
+      "score": 8,
+      "cost_usd": 0.0023691
+    }
+  ],
+  "finished_at": "2026-08-23T00:46:42.329Z",
+  "duration_seconds": 57.436
+}
