@@ -74,6 +74,8 @@ Az `agents/ellenorzo/agent.js` `runAutoCheck()`-je ingyenes, gépi jelzéseket a
 
 ## Munkamódszer, ami itt bevált
 
+- **Használd magadtól, ami könnyíti a munkát** (user-szabály, 2026-08-23): skill, agent, plugin — **állandó engedély, nem kell külön kérni rá**. Indíts agentet, ha a részfeladat elkülöníthető, vagy ha friss szem segít (egy független átnézés 34 magyar javításból ugyanazt az egyet kifogásolta, amit én — ez adta a bizonyosságot az élő szöveg átírásához). ⚠️ Az engedély az ESZKÖZRE szól, nem az ÍTÉLETRE: a jóváhagyás-kapu a visszafordíthatatlan lépések előtt (élő szöveg, deploy, keret feletti költés) és az agent válaszának ellenőrzése változatlan.
+
 - **Mérj, ne tippelj** — és ha a mérés 100%-os katasztrófát mond egy működő rendszerre, előbb a mérést gyanúsítsd. Az adatútvonalat ellenőrizd, ne csak a függvényt.
 - **A „sikeres" válasz nem elvégzett munka** — a láncot a VÉGÉRŐL mérd (a webhook 200-a nem jelenti, hogy a poszt kiment).
 - **Egy szám, ami több helyre van kimásolva, matematikai biztonsággal szétcsúszik.** Ha ilyet találsz, tedd egy helyre és írj rá tesztet — lásd `core/article-length.js` és `core/auto-check-codes.js` fejlécét.
