@@ -199,6 +199,31 @@ const hossz = f => parseFloat(execFileSync('ffprobe',
   ['-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', f]).toString().trim());
 
 /**
+ * A VÉGSŐ ffmpeg-hívás argumentumai. Külön függvény, mert a Facebook
+ * követelményei ITT dőlnek el, és így teszt őrizheti őket — a kész fájl
+ * ellenőrzéséhez ffmpeg és hálózat kellene, ami a npm test-be nem fér bele.
+ *
+ * ⚠️ A `format=yuv420p` A SZŰRŐLÁNC VÉGÉN KELL, nem a -pix_fmt kapcsolóval
+ * (2026-08-23, mérve). A JPEG-bemenet TELJES színtartományú, és ezt az ffmpeg
+ * végig magával viszi: a kimenet `yuvj420p` lett, hiába állítottam a -pix_fmt-
+ * et. A Facebook az ilyet vagy újrakódolja (romlik a minőség), vagy fakó, túl
+ * kontrasztos színekkel adja vissza — és nem derült volna ki, miért. Az
+ * `out_range=tv` a skálázónak mondja ugyanezt.
+ *
+ * A `+faststart` sem dísz: enélkül a moov atom a fájl VÉGÉRE kerül, és a
+ * letöltőnek az egész fájlt le kell húznia, mielőtt bármit kezdene vele.
+ */
+export function videoArgs({ kepek, hang, out }) {
+  return ['-y',
+    '-f', 'concat', '-safe', '0', '-i', kepek,
+    '-i', hang,
+    '-c:v', 'libx264', '-r', '30', '-preset', 'veryfast', '-crf', '26',
+    '-c:a', 'aac', '-b:a', '128k', '-shortest', '-movflags', '+faststart',
+    '-vf', `scale=${W}:${H}:out_range=tv,format=yuv420p`,
+    '-color_range', 'tv', out];
+}
+
+/**
  * A videó legyártása. Külön függvény, hogy a szkript-logika tesztelhető
  * maradjon nélküle.
  *
@@ -244,12 +269,9 @@ export async function renderVideo(cards, { out, workDir, cover, voice = 'en-US-A
   execFileSync('ffmpeg', ['-y', '-f', 'concat', '-safe', '0', '-i', join(workDir, 'hangok.txt'),
     '-c', 'copy', join(workDir, 'teljes.mp3')], { stdio: 'pipe' });
 
-  execFileSync('ffmpeg', ['-y',
-    '-f', 'concat', '-safe', '0', '-i', join(workDir, 'kepek.txt'),
-    '-i', join(workDir, 'teljes.mp3'),
-    '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-r', '30', '-preset', 'veryfast', '-crf', '26',
-    '-c:a', 'aac', '-b:a', '128k', '-shortest', '-movflags', '+faststart',
-    '-vf', `scale=${W}:${H}`, out], { stdio: 'pipe' });
+  execFileSync('ffmpeg', videoArgs({
+    kepek: join(workDir, 'kepek.txt'), hang: join(workDir, 'teljes.mp3'), out
+  }), { stdio: 'pipe' });
 
   return { file: out, seconds: idok.reduce((a, b) => a + b, 0) };
 }

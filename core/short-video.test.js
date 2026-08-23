@@ -12,7 +12,7 @@
 // ===================================================================
 
 import assert from 'assert/strict';
-import { cardsFromGuide, splitHeading, MIN_LEPES } from './short-video.js';
+import { cardsFromGuide, splitHeading, videoArgs, MIN_LEPES } from './short-video.js';
 
 let pass = 0;
 const t = (n, f) => { f(); pass++; console.log('  ✅ ' + n); };
@@ -166,6 +166,43 @@ t('⏱️ négy lépésnél a felolvasandó szöveg belefér ~30 másodpercbe', 
 t('⏱️ a maxSteps tényleg korlátoz', () => {
   assert.equal(cardsFromGuide(CIKK, { maxSteps: 3 }).cards.length, 5);
   assert.equal(cardsFromGuide(CIKK, { maxSteps: 5 }).cards.length, 7);
+});
+
+// ── a Facebook követelményei ────────────────────────────────────────
+//
+// ÉLES LELET (2026-08-23): a legyártott fájlt átengedtem volna, pedig a
+// színformátuma `yuvj420p` lett a várt `yuv420p` helyett. A JPEG-bemenet
+// TELJES színtartományú, és ezt az ffmpeg végig magával viszi — a `-pix_fmt`
+// kapcsoló ezen NEM segít, a szűrőlánc végén kell a `format=yuv420p`.
+//
+// A Facebook az ilyet vagy újrakódolja (romlik a minőség), vagy fakó, túl
+// kontrasztos színekkel adja vissza. Nem állította volna meg a posztolást —
+// csak rosszul nézett volna ki, és nem tudtuk volna, miért. A kész fájlt nem
+// tudjuk itt megnézni (ffmpeg + hálózat kellene), de az ARGUMENTUMOKAT igen.
+
+t('🎥 a színformátum a SZŰRŐLÁNCBAN dől el, nem a -pix_fmt kapcsolón', () => {
+  const a = videoArgs({ kepek: 'k.txt', hang: 'h.mp3', out: 'ki.mp4' });
+  const vf = a[a.indexOf('-vf') + 1];
+  assert.match(vf, /format=yuv420p/, 'enélkül yuvj420p lesz a JPEG-ekből');
+  assert.match(vf, /out_range=tv/, 'a skálázónak is szólni kell a tartományról');
+});
+
+t('🎥 a méret 1080x1920 marad — a Reels ezt várja', () => {
+  const a = videoArgs({ kepek: 'k.txt', hang: 'h.mp3', out: 'ki.mp4' });
+  assert.match(a[a.indexOf('-vf') + 1], /scale=1080:1920/);
+});
+
+t('🎥 faststart: a moov atom a fájl ELEJÉRE kerül', () => {
+  // Enélkül a letöltőnek az EGÉSZ fájlt le kell húznia, mielőtt bármit kezdene.
+  const a = videoArgs({ kepek: 'k.txt', hang: 'h.mp3', out: 'ki.mp4' });
+  assert.equal(a[a.indexOf('-movflags') + 1], '+faststart');
+});
+
+t('🎥 h264 + aac — amit a Facebook elfogad', () => {
+  const a = videoArgs({ kepek: 'k.txt', hang: 'h.mp3', out: 'ki.mp4' });
+  assert.equal(a[a.indexOf('-c:v') + 1], 'libx264');
+  assert.equal(a[a.indexOf('-c:a') + 1], 'aac');
+  assert.equal(a[a.indexOf('-r') + 1], '30', '23–60 közé kell esnie');
 });
 
 console.log('\n✅ short-video.test: mind a ' + pass + ' eset rendben');
