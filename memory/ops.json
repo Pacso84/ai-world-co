@@ -1,86 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t17873591297037",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-22T00:38:49.703Z",
-      "updated": "2026-08-22T00:42:16.893Z"
-    },
-    {
-      "id": "t178735933689599",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-22T00:42:16.895Z",
-      "updated": "2026-08-22T00:42:37.009Z"
-    },
-    {
-      "id": "t178735935701176",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-08-22T00:42:37.011Z",
-      "updated": "2026-08-22T00:42:49.584Z"
-    },
-    {
-      "id": "t178735936962811",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-22T00:42:49.628Z",
-      "updated": "2026-08-22T00:47:41.705Z"
-    },
-    {
-      "id": "t178735966170740",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-22T00:47:41.707Z",
-      "updated": "2026-08-22T00:48:47.988Z"
-    },
-    {
-      "id": "t178735972802814",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-22T00:48:48.028Z",
-      "updated": "2026-08-22T00:49:33.603Z"
-    },
-    {
-      "id": "t178735977360430",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-08-22T00:49:33.604Z",
-      "updated": "2026-08-22T00:50:33.027Z"
-    },
-    {
-      "id": "t178735983302914",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-22T00:50:33.029Z",
-      "updated": "2026-08-22T00:50:45.557Z"
-    },
-    {
-      "id": "t178735984555945",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-08-22T00:50:45.559Z",
-      "updated": "2026-08-22T00:51:04.458Z"
-    },
-    {
-      "id": "t178738659288185",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-08-22T08:16:32.881Z",
-      "updated": "2026-08-22T08:16:33.057Z"
-    },
-    {
       "id": "t178738659305955",
       "title": "Run rss-scraper",
       "status": "done",
@@ -479,25 +399,89 @@
       "agent": "publisher",
       "created": "2026-08-23T08:21:03.315Z",
       "updated": "2026-08-23T08:21:22.200Z"
+    },
+    {
+      "id": "t178750156049337",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-08-23T16:12:40.493Z",
+      "updated": "2026-08-23T16:12:40.685Z"
+    },
+    {
+      "id": "t178750156068723",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-08-23T16:12:40.687Z",
+      "updated": "2026-08-23T16:13:00.915Z"
+    },
+    {
+      "id": "t178750158091715",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-08-23T16:13:00.917Z",
+      "updated": "2026-08-23T16:13:01.116Z"
+    },
+    {
+      "id": "t178750158111833",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-23T16:13:01.119Z",
+      "updated": "2026-08-23T16:13:01.295Z"
+    },
+    {
+      "id": "t178750158129649",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-23T16:13:01.296Z",
+      "updated": "2026-08-23T16:13:01.474Z"
+    },
+    {
+      "id": "t178750158147743",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-08-23T16:13:01.477Z",
+      "updated": "2026-08-23T16:13:01.691Z"
+    },
+    {
+      "id": "t178750158173879",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-23T16:13:01.738Z",
+      "updated": "2026-08-23T16:13:01.972Z"
+    },
+    {
+      "id": "t178750158197447",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-08-23T16:13:01.974Z",
+      "updated": "2026-08-23T16:13:02.194Z"
+    },
+    {
+      "id": "t178750158219650",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-23T16:13:02.196Z",
+      "updated": "2026-08-23T16:13:14.418Z"
+    },
+    {
+      "id": "t178750159442041",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-08-23T16:13:14.420Z",
+      "updated": "2026-08-23T16:13:34.722Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178652541075028",
-      "level": "warn",
-      "text": "📨 guide → ceo: Kell még adat: \"Rewrite a confusing workplace email into a clear, friendly message with Cohere\" — az Ellenőrző tényt/for",
-      "agent": "guide",
-      "at": "2026-08-12T09:03:30.750Z",
-      "loud": false
-    },
-    {
-      "id": "n178652556994819",
-      "level": "info",
-      "text": "SEO: 2 cikk optimalizálva (átlag 7.5/10).",
-      "agent": "seo",
-      "at": "2026-08-12T09:06:09.948Z",
-      "loud": false
-    },
     {
       "id": "n178652559835060",
       "level": "success",
@@ -1281,18 +1265,25 @@
       "agent": "ceo",
       "at": "2026-08-23T08:21:22.238Z",
       "loud": false
+    },
+    {
+      "id": "n178750160219064",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The lineup looks solid and ready to go! It nicely balances practical how-to guides with helpful life moments (sympathy messages, thank-you speeches). One note: with 7 different AI tools featured, a qu",
+      "agent": "publisher",
+      "at": "2026-08-23T16:13:22.190Z",
+      "loud": false
+    },
+    {
+      "id": "n17875016147628",
+      "level": "info",
+      "text": "Pipeline lefutott — ma nem volt publikálható új tartalom.",
+      "agent": "ceo",
+      "at": "2026-08-23T16:13:34.762Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178666980049353",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Bring your spreadsheet data to life with Sheets canvas\" — mi a baj: \"Sheets canvas\" is described as a real Google product/feature, but no such product exists. Google Sheets does not have a 'Canvas' feature or workspace — this appears to be fabricated.",
-      "ref": "2026-08-14T01-01-26-376Z_google-ai-blog_Bring_your_spreadsheet_data_to_life_with_Sheets_ca.json",
-      "at": "2026-08-14T01:10:00.493Z"
-    },
     {
       "id": "m178666983233285",
       "from": "ellenorzo",
@@ -2645,6 +2636,15 @@
       "text": "2 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-08-23T08:28:51.149Z"
+    },
+    {
+      "id": "m178750159440995",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-08-23T16:13:14.409Z"
     }
   ]
 }
