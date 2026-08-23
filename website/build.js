@@ -2923,6 +2923,16 @@ function main() {
     console.log('✅ art/ (lépés-illusztrációk) másolva');
   }
 
+  // Álló rövidvideók (Reels) másolása. FORRÁS-oldali fájlok, mert ez a build
+  // ÜRÍTI a public/-ot: ami oda kerül, azt a következő futás eltörölné. A
+  // Make ezekről a nyilvános URL-ekről tölti le a videót a Facebookra.
+  const shortsSrc = join(ASSETS_SRC, 'video', 'shorts');
+  if (existsSync(shortsSrc)) {
+    cpSync(shortsSrc, join(OUT_ASSETS_DIR, 'video', 'shorts'), { recursive: true });
+    const db = readdirSync(shortsSrc).filter(f => f.endsWith('.mp4')).length;
+    console.log(`✅ ${db} álló rövidvideó másolva`);
+  }
+
   // Képek mappa másolása (ha van)
   const imagesSrc = join(ASSETS_SRC, 'images');
   if (existsSync(imagesSrc)) {
