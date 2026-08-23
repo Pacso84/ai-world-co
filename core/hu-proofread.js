@@ -340,6 +340,27 @@ export function applyVerdicts(store, verdicts) {
     // Bizonyíték nélkül a gép NEM nyúl az élő szöveghez.
     const igazolt = isAccentOnly(v.word, v.correct)
       || (v.verified === true && editDistance(v.word, v.correct) <= MAX_TAVOLSAG);
+    // ⚠️ KÉT SZABÁLY NEM MUTATHAT EGYMÁSRA (2026-08-23, a CI naplójából).
+    // Élesben egyszerre állt a tárban `eden → edén` és `edén → eden`, két
+    // KÜLÖNBÖZŐ cikk mondatából — és a javító minden futásban jelentette
+    // mindkettőt. A szöveg történetesen nem sérült (a két csere kioltotta
+    // egymást), de ez a bejárási SORRENDEN múlt.
+    //
+    // A gyökérok szerkezeti: a tár GLOBÁLIS szó→szó térkép, a bíró viszont
+    // KÖRNYEZETENKÉNT válaszol. Két mondat ellentétes alakot kérhet ugyanarra
+    // a szóra, és mindkettőnek igaza lehet a maga helyén — ilyenkor egyik sem
+    // lehet globális szabály. Ugyanez a LÁNCRA (a→b, b→c): a köztes alak
+    // sosem stabil. Mindkét esetben az emberi lista a helyes válasz.
+    const helyesKisbetus = String(v.correct).toLowerCase();
+    const utkozik = !!s.fix[helyesKisbetus]
+      || Object.values(s.fix).some(x => String(x?.correct || '').toLowerCase() === w);
+    if (utkozik) {
+      delete s.fix[helyesKisbetus];
+      delete s.fix[w];
+      s.review[w] = { correct: String(v.correct), at: ma, utkozes: true };
+      continue;
+    }
+
     const cel = (v.fixable === true && igazolt) ? s.fix : s.review;
     // EGY SZÓ = EGY VÖDÖR. Újraítéléskor a szó átkerülhet a másik oldalra; ha
     // a régi bejegyzés bent ragadna, a riport emberi szemet kérne olyasmire,
@@ -406,6 +427,11 @@ export function applyFixes(text, store) {
     }
     if (db) fixed.push({ word: w, correct });
   }
+  // ⚠️ AMI KIOLTOTTA MAGÁT, AZ NEM JAVÍTÁS (2026-08-23). A CI naplója két
+  // elvégzett javítást írt ki egy olyan futásra, amely a fájlt nem módosította
+  // — a „sikeres válasz nem elvégzett munka" itt is érvényes. Ha a szöveg
+  // ugyanaz maradt, nem történt semmi, és ezt ne is állítsuk.
+  if (t === eredeti) return { text: eredeti, fixed: [] };
   return { text: t, fixed };
 }
 

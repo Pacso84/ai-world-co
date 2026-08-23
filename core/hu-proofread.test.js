@@ -571,4 +571,53 @@ await (async () => {
   });
 })();
 
+// ── két szabály nem mutathat egymásra ───────────────────────────────
+//
+// ÉLES LELET (2026-08-23, a CI naplójából): a tárban egyszerre állt
+//   eden → edén   (08-20, egyik cikk mondatából)
+//   edén → eden   (08-21, MÁSIK cikk mondatából)
+// és a javító minden futásban jelentette mindkettőt. A szöveg történetesen
+// nem sérült — a két csere kioltotta egymást —, de ez a SORRENDEN múlt.
+//
+// A gyökérok szerkezeti: a tár GLOBÁLIS szó→szó térkép, a bíró viszont
+// KÖRNYEZETENKÉNT válaszol. Két mondat ellentétes alakot kérhet ugyanarra a
+// szóra, és mindkettőnek igaza lehet a maga helyén. Ilyenkor egyik sem lehet
+// globális szabály.
+
+t('🔁 nem veszünk fel olyan javítást, ami egy meglévővel szembe megy', () => {
+  const elozo = { ok: [], fix: { eden: { correct: 'edén', at: '2026-08-20' } }, review: {} };
+  const s = applyVerdicts(elozo, [
+    { word: 'edén', ok: false, correct: 'eden', fixable: true, verified: true }
+  ]);
+  assert.ok(!s.fix['edén'], 'a fordított irány nem kerülhet be');
+  assert.ok(!s.fix['eden'], 'és a meglévő párja sem maradhat — egyik sem globális szabály');
+  assert.equal(s.review['edén']?.correct, 'eden', 'de a jelzés megmarad');
+});
+
+t('🔁 LÁNC sem keletkezhet: amit javítunk, azt ne javítsuk tovább', () => {
+  // a → b és b → c esetén a „b" köztes alak, ami sosem stabil.
+  const elozo = { ok: [], fix: { alma: { correct: 'korte', at: '2026-08-20' } }, review: {} };
+  const s = applyVerdicts(elozo, [
+    { word: 'korte', ok: false, correct: 'körte', fixable: true, verified: true }
+  ]);
+  assert.ok(!s.fix['korte'], 'a lánc közepe nem lehet külön szabály');
+});
+
+t('🔁 a független javítás viszont ugyanúgy bekerül', () => {
+  const elozo = { ok: [], fix: { eden: { correct: 'edén', at: '2026-08-20' } }, review: {} };
+  const s = applyVerdicts(elozo, [
+    { word: 'konkrát', ok: false, correct: 'konkrét', fixable: true, verified: true }
+  ]);
+  assert.equal(s.fix['konkrát']?.correct, 'konkrét');
+  assert.equal(s.fix['eden']?.correct, 'edén', 'a meglévőhöz nem nyúlunk ok nélkül');
+});
+
+t('🔁 ha a szöveg NEM változott, ne jelentsünk elvégzett munkát', () => {
+  // A CI naplója két javítást írt ki egy olyan futásra, ami a fájlt nem
+  // módosította. A „sikeres válasz nem elvégzett munka" itt is érvényes.
+  const store = { ok: [], fix: { eden: { correct: 'edén' }, edén: { correct: 'eden' } }, review: {} };
+  const r = applyFixes('Nyisd meg iPad eden a fájlt.', store);
+  assert.deepEqual(r.fixed, [], 'ami kioltotta magát, az nem javítás');
+});
+
 console.log('\n✅ hu-proofread.test: mind a ' + pass + ' eset rendben');
