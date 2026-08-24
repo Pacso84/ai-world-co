@@ -74,17 +74,42 @@ export function reelArticleUrl(slug, site = SITE) {
  *   2. blokk— a link
  *   3. blokk— követésre hívás (a videó záró táblája is a domaint mutatja)
  */
-export function reelCaption(article, site = SITE) {
+export function reelCaption(article, { site = SITE, videoSteps = null } = {}) {
   const { slug, title, subtitle } = guideMeta(article);
   // SLUG NÉLKÜL NINCS LEÍRÁS. A link a poszt egyetlen célja; slug nélkül
   // a „👉 https://aiworldhq.com/article/" cím ÉLESBEN 404-et ad (mérve).
   // Inkább ne menjen ki semmi, mint egy halott linkes Reel.
   if (!slug) return '';
-  const nyers = String(subtitle || title || '').trim();
+
+  // ⚠️ AZ ALCÍM NEM ÍGÉRHET OLYAN SZÁMOT, AMIT A VIDEÓ NEM MUTAT (2026-08-24,
+  // éles eset). Az első kiküldött Reelünk alatt ez állt: „Five quick checks…",
+  // a videó viszont NÉGY lépést mutatott. Egyik állítás sem volt hamis
+  // önmagában (az alcím a CIKKRŐL szól, a videó magáról), de egymás mellett
+  // hibának látszik. Mérve: 358 alcímből mindössze 1 kezdődik számmal, tehát
+  // ez a kapu szinte sosem sül el — de amikor igen, az kifelé látszik.
+  const igert = igertLepesszam(subtitle);
+  const utkozik = igert !== null && Number.isFinite(videoSteps) && igert !== videoSteps;
+
+  const nyers = String((utkozik ? title : (subtitle || title)) || '').trim();
   if (!nyers) return '';
   const elso = trimToWords(nyers, MOBIL_VAGAS);
   const cta = followCta(slug);
   return `${elso}\n\n👉 ${reelArticleUrl(slug, site)}${cta ? `\n\n${cta}` : ''}`;
+}
+
+// Kiírt számnevek, amikkel egy alcím kezdődhet („Five quick checks…").
+// Csak a SOR ELEJI szám számít: a mondat közepén álló szám nem a lépések
+// számát ígéri („…in under two minutes" — az idő, nem a lépésszám).
+const SZAMSZAVAK = {
+  one: 1, two: 2, three: 3, four: 4, five: 5,
+  six: 6, seven: 7, eight: 8, nine: 9, ten: 10
+};
+
+/** Hány lépést ígér az alcím? null, ha nem ígér semmit. */
+export function igertLepesszam(subtitle) {
+  const m = String(subtitle == null ? '' : subtitle)
+    .match(/^(one|two|three|four|five|six|seven|eight|nine|ten)\b/i);
+  return m ? SZAMSZAVAK[m[1].toLowerCase()] : null;
 }
 
 /** A cím nyilvános-e? A Facebook a saját szerveréről tölti le. */
@@ -212,9 +237,17 @@ async function main() {
 
   const { slug, title } = guideMeta(cikk);
   const video = reelVideoUrl(slug);
-  const caption = reelCaption(cikk);
+
+  // Hány lépés van a VIDEÓBAN? Ugyanaz a számítás, amit a videó-gyártó
+  // futtatott — így a leírás tudja, mit ígérhet. (A kártyák: horog + lépések
+  // + záró, ezért -2.)
+  const { cardsFromGuide } = await import('./short-video.js');
+  const kartyak = cardsFromGuide(cikk.article_markdown || '');
+  const videoSteps = kartyak.cards ? kartyak.cards.length - 2 : null;
+  const caption = reelCaption(cikk, { videoSteps });
 
   console.log('🎬 ' + (title || slug));
+  console.log('   lépés  : ' + (videoSteps ?? '?') + ' a videóban');
   console.log('   videó : ' + video);
   console.log('   leírás : ' + JSON.stringify(caption));
   if (!caption) {

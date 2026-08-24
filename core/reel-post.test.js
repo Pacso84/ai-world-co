@@ -25,7 +25,7 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import {
   reelVideoUrl, reelArticleUrl, reelCaption, sendReel,
-  MOBIL_VAGAS, MIN_VIDEO_BAJT, SITE
+  MOBIL_VAGAS, MIN_VIDEO_BAJT, SITE, igertLepesszam
 } from './reel-post.js';
 
 let pass = 0;
@@ -103,6 +103,55 @@ t('⛔ se alcím, se cím → nincs leírás', () => {
   assert.equal(reelCaption({ _meta: { slug: SLUG }, article_markdown: '---\nx: 1\n---\n' }), '');
   assert.equal(reelCaption(null), '');
   assert.equal(reelCaption({}), '');
+});
+
+// ── SZÁM-ÍGÉRET (2026-08-24, éles eset) ─────────────────────────────
+//
+// Az első kiküldött Reelünk alatt „Five quick checks…" állt, a videó viszont
+// NÉGY lépést mutatott. Egyik állítás sem volt hamis önmagában — az alcím a
+// CIKKRŐL szól, a videó magáról —, de egymás mellett hibának látszik.
+// A user vette észre, mert megkért, hogy fordítsam le neki soronként.
+
+t('felismeri a sor eleji számnevet', () => {
+  assert.equal(igertLepesszam('Five quick checks anyone can run'), 5);
+  assert.equal(igertLepesszam('Three things to try today'), 3);
+  assert.equal(igertLepesszam('TEN ways to start'), 10);
+});
+
+t('a mondat KÖZEPÉN álló szám nem lépés-ígéret', () => {
+  // „…in under two minutes" az IDŐ, nem a lépésszám. Ha ezt is beszámítanánk,
+  // a kapu ártatlan alcímeket rontana el.
+  assert.equal(igertLepesszam('Checks anyone can run in under two minutes'), null);
+  assert.equal(igertLepesszam('A guide for one and all'), null);
+});
+
+t('nem-szám kezdetre és hibás bemenetre null', () => {
+  for (const x of ['Quick checks', '', null, undefined, 42, {}]) {
+    assert.equal(igertLepesszam(x), null, JSON.stringify(x));
+  }
+});
+
+t('⚠️ ha az alcím TÖBBET ígér, mint amennyi a videóban van → a CÍM megy ki', () => {
+  const c = cikk(SLUG, 'Five quick checks anyone can run', 'How to Spot a Deepfake Video');
+  const elso = reelCaption(c, { videoSteps: 4 }).split('\n')[0];
+  assert.ok(!/^Five/i.test(elso), 'nem ígérhet ötöt, ha négy van: ' + elso);
+  assert.match(elso, /Deepfake/, 'a cím lép a helyére');
+});
+
+t('✅ ha EGYEZIK, marad az alcím — az a jobb szöveg', () => {
+  const c = cikk(SLUG, 'Five quick checks anyone can run', 'How to Spot a Deepfake Video');
+  assert.match(reelCaption(c, { videoSteps: 5 }).split('\n')[0], /^Five quick checks/);
+});
+
+t('lépésszám nélkül nem avatkozunk be — nincs mihez mérni', () => {
+  const c = cikk(SLUG, 'Five quick checks anyone can run', 'How to Spot a Deepfake Video');
+  assert.match(reelCaption(c).split('\n')[0], /^Five quick checks/);
+  assert.match(reelCaption(c, { videoSteps: null }).split('\n')[0], /^Five quick checks/);
+});
+
+t('a szám nélküli alcímhez a lépésszám nem szól hozzá', () => {
+  const c = cikk(SLUG, 'Quick checks anyone can run', 'A cím');
+  assert.match(reelCaption(c, { videoSteps: 4 }).split('\n')[0], /^Quick checks/);
 });
 
 // ── a küldés ────────────────────────────────────────────────────────

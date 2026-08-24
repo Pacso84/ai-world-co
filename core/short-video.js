@@ -103,7 +103,24 @@ function tordel(s, maxSor = 13) {
  *
  * @returns {{cards: object[]|null, reason: string}}
  */
-export function cardsFromGuide(md, { maxSteps = 4 } = {}) {
+// Hány lépés fér a videóba. 4 → 6 (2026-08-24), MÉRÉS alapján:
+//
+//   maxSteps   átlagos hossz   leghosszabb   a cikket TELJESEN lefedi
+//      4          18,9 mp        25,0 mp          13 / 358   (4%)
+//      5          21,5 mp        29,2 mp         121 / 358  (34%)
+//      6          23,4 mp        31,9 mp         314 / 358  (88%)
+//
+// A lépésszám-eloszlás: 4→13, 5→108, 6→193, 7→43, 11→1 cikk. Négy lépéssel
+// a videó a cikkek 96%-ánál elhallgatta a tartalom egy részét, miközben az
+// átlagos hossz csak 4,5 másodperccel rövidebb. A Reels 15–30 mp körül a
+// legerősebb — 23,4 mp bőven ebben a sávban van.
+//
+// AZ OK, AMIÉRT KIDERÜLT: egy kiküldött Reel alatt a szöveg „Five quick
+// checks"-et ígért, a videó viszont négy lépést mutatott. A user vette észre
+// („nem tudok angolul" — ezért soronként lefordítottam neki, és így tűnt fel).
+export const LEPES_MAX = 6;
+
+export function cardsFromGuide(md, { maxSteps = LEPES_MAX } = {}) {
   if (typeof md !== 'string' || !md.trim()) return { cards: null, reason: 'nincs szöveg' };
 
   const cim = fm(md, 'title');
@@ -306,7 +323,7 @@ async function main() {
 
   const a = talalt.article;
   const slug = a._meta?.slug || kulcs;
-  const { cards, reason } = cardsFromGuide(a.article_markdown || '', { maxSteps: 4 });
+  const { cards, reason } = cardsFromGuide(a.article_markdown || '');
   if (!cards) { console.log('⏭️  kihagyva — ' + reason); return; }
 
   console.log('🎬 ' + slug);
