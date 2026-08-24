@@ -336,6 +336,26 @@
         "The article describes a specific self-serve sentiment analysis inference widget on huggingface.co (Hosted inference API box, 'Compute'/'Run' button, paragraph-by-paragraph processing of pasted reviews). While Hugging Face does host models with inference APIs, the detailed UI flow described here — especially batch-processing multiple reviews separated by blank lines and returning one stacked label per paragraph via a free web widget — is a fabrication of a specific user-facing feature that does not exist in this form. The model's inference widget returns one label for the entire input, not per paragraph, and the article presents this invented behavior as fact."
       ],
       "confidence": 7
+    },
+    {
+      "at": "2026-08-24T16:34:10.606Z",
+      "file": "WRITER_2026-08-24T16-23-52-028Z_aws-ml_Agentic_Resource_Discovery__ARD___An_open_specific.json",
+      "action": "block",
+      "reasons": [
+        "The article describes AWS as having launched a specific product called \"Agent Registry\" built on an \"Agentic Resource Discovery (ARD)\" open specification. No such AWS product or ARD standard is known to exist; this appears to be a fabricated product, specification, and vendor initiative.",
+        "The article attributes concrete features to this fabricated AWS product — a catalog for listing AI agents/tools/skills, governance capabilities (seeing what tools exist, who built them, what data they touch), and agent-to-agent lookup behavior — none of which can be verified because the underlying product does not appear to exist."
+      ],
+      "confidence": 8
+    },
+    {
+      "at": "2026-08-24T16:34:47.579Z",
+      "file": "WRITER_2026-08-24T16-23-52-028Z_nvidia-blog_Up_to_30x_More_Work_Per_Watt__NVIDIA_Vera_Rubin_NV.json",
+      "action": "block",
+      "reasons": [
+        "The article cites data attributed to OpenRouter as fact: 'According to data shared by OpenRouter... the average AI agent task uses about 15 times more tokens than a simple chat message.' This specific 15x statistic and its attribution to OpenRouter is presented as established fact without hedging, and the 15x figure cannot be verified as a published OpenRouter metric.",
+        "The article states NVIDIA's upcoming 'Vera Rubin NVL72' is 'designed to do up to 30 times more work per watt of electricity than the previous generation.' This is a specific, unhedged performance claim about a named upcoming product. NVIDIA's official Vera Rubin announcements describe the platform, but the specific 'up to 30x per watt' efficiency figure vs the previous generation (Blackwell) is not a widely-verified public spec and is presented here as fact."
+      ],
+      "confidence": 6
     }
   ]
 }

@@ -1,0 +1,69 @@
+{
+  "_meta": {
+    "written_at": "2026-08-24T16:40:31.980Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00542946,
+    "original_draft": "2026-08-24T16-23-52-028Z_nvidia-blog_Up_to_30x_More_Work_Per_Watt__NVIDIA_Vera_Rubin_NV.json",
+    "source_id": "nvidia-blog",
+    "source_name": "NVIDIA Blog (hivatalos)",
+    "source_link": "https://blogs.nvidia.com/blog/vera-rubin-nvl72-efficiency-ai-agents/",
+    "source_links": [
+      "https://blogs.nvidia.com/blog/vera-rubin-nvl72-efficiency-ai-agents/"
+    ],
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "rejected_at": "2026-08-24T16:34:47.573Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 663
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Strong explainer that clearly distinguishes AI agents from chatbots with a relatable flight-booking example, explains the token concept accessibly, and delivers a useful three-audience What This Means For You section. No clichés, no invented facts, no brand disrespect. Ready to publish.",
+      "_aiCost": 0.00115146,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Hitelesség-kapu blokkolta: The article cites data attributed to OpenRouter as fact: 'According to data shared by OpenRouter... the average AI agent task uses about 15 times more tokens than a simple chat message.' This specific",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-08-24T16-23-52-028Z_nvidia-blog_Up_to_30x_More_Work_Per_Watt__NVIDIA_Vera_Rubin_NV.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-08-24T16:41:08.620Z",
+    "slug": "what-is-an-ai-agent-and-how-is-it-different-from-a-chatbot",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-08-24T16:41:26.693Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is a general explainer about AI agents vs chatbots, not news about a specific named feature/tool introduced in an article",
+    "image_v": 2,
+    "image_at": "2026-08-24T16:42:30.800Z",
+    "seo": {
+      "meta_description": "What is an AI agent and how does it differ from a chatbot? Learn how agents actually complete tasks, not just answer questions — and why it matters.",
+      "keywords": [
+        "what is an AI agent",
+        "AI agent vs chatbot",
+        "difference between AI agent and chatbot",
+        "how does an AI agent work",
+        "AI agent examples",
+        "what can AI agents do",
+        "chatbot limitations"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add the key phrase \"what is an AI agent\" naturally in your opening paragraph to capture that common search query",
+        "Include 1-2 more concrete use cases beyond the flight example (like scheduling meetings or ordering supplies) to strengthen the article",
+        "Consider adding an FAQ section with questions like \"Can AI agents replace chatbots?\" to capture more search intent"
+      ],
+      "optimised_at": "2026-08-24T16:44:02.911Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"What Is an AI Agent, and How Is It Different From a Chatbot?\"\nsubtitle: \"The new wave of AI doesn't just answer questions — it does tasks. Here's what's different, and why it matters for you.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"ai-agents\", \"ai-basics\", \"compute\", \"energy\"]\n---\n\n# What Is an AI Agent, and How Is It Different From a Chatbot?\n\n> **In short:** An AI agent is a program that can take actions across apps — not just answer one question. Agents run many steps in a row, which uses far more computing power than a simple chatbot reply. Hardware is getting more efficient, so the extra cost stays manageable.\n\nYou asked Siri for the weather. Quick answer, done. Now imagine asking an AI to \"find me a flight under $300 next weekend, compare the three cheapest options, and email my wife the summary.\" That is not a chatbot. That is an AI agent.\n\n## Chatbot vs agent: what's the difference\n\nA **chatbot** is the kind of AI most people have already used — ChatGPT, Claude, Gemini, Copilot. You type a question, it types back. One question, one answer. A simple exchange.\n\nAn **AI agent** is a different kind of program. Instead of just talking, it can:\n\n- Open your calendar\n- Search the web\n- Spin up smaller \"sub-agents\" (think: helper AIs that focus on one piece of the task)\n- Combine all the answers into one report\n- Send that report by email\n\nThe agent does all this without you watching over its shoulder. You give it the goal; it figures out the steps.\n\n## Why agents use so much more power\n\nHere is the part that surprised even some AI engineers. An agent reads, thinks, searches, asks follow-up questions to itself, and writes a long answer — over and over, sometimes for many minutes. A chatbot might handle a quick reply with a few hundred **tokens** (small chunks of text — roughly four letters, or about three-quarters of a word, that the AI reads and writes one at a time). An agent can run through many times that for a single task, because each step is its own little conversation.\n\nThis is why new server hardware matters to everyday people, even if you will never buy any of it. Companies like NVIDIA keep releasing new chips that do much more work per watt of electricity than the previous generation. As agents become common, this kind of efficiency is what keeps the price of AI tools affordable and the electricity bill reasonable at the data centers running them.\n\n## What this means for you\n\n- **If you use AI casually**: expect AI agents to show up in your email, your calendar, and your spreadsheets. They will be the ones doing the boring multi-step work for you. Some will be free; the more powerful ones will likely sit behind a paid plan.\n- **If you work in an office**: agents are starting to appear in tools like Microsoft 365 and Google Workspace. They can summarize a meeting, draft follow-up emails, or build a slide deck from a report. Your job probably won't disappear, but the way you spend your time will shift.\n- **If you are curious to try one today**: ChatGPT, Claude, and Gemini all have agent-style features you can switch on. They use more computing under the hood, so the free versions usually limit how often you can use them. Try one small task and see how it works.\n\n## Wrap-up\n\nAI agents are the next step beyond chatbots — instead of answering questions, they do tasks that used to need a person clicking through 10 tabs. They use far more computing power, which is why companies are racing to make the hardware more efficient. You don't need to do anything different today, but the next time an AI offers to \"handle that for you,\" you will know what it is actually doing behind the curtain.",
+  "original_title": "Up to 30x More Work Per Watt: NVIDIA Vera Rubin NVL72 Sets a New Efficiency Standard for AI Agents"
+}

@@ -1,0 +1,69 @@
+{
+  "_meta": {
+    "written_at": "2026-08-24T16:39:29.866Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.008792848,
+    "original_draft": "2026-08-24T16-23-52-028Z_aws-ml_Agentic_Resource_Discovery__ARD___An_open_specific.json",
+    "source_id": "aws-ml",
+    "source_name": "AWS Machine Learning (hivatalos)",
+    "source_link": "https://aws.amazon.com/blogs/machine-learning/agentic-resource-discovery-ard-an-open-specification-for-agent-discovery/",
+    "source_links": [
+      "https://aws.amazon.com/blogs/machine-learning/agentic-resource-discovery-ard-an-open-specification-for-agent-discovery/"
+    ],
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "rejected_at": "2026-08-24T16:34:10.565Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 697
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured explainer that demystifies A2A and MCP for a business audience with clear analogies, practical examples, and actionable guidance in the 'What this means for you' section; no factual issues, cliches, or prohibited content detected.",
+      "_aiCost": 0.0017529,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Hitelesség-kapu blokkolta: The article describes AWS as having launched a specific product called \"Agent Registry\" built on an \"Agentic Resource Discovery (ARD)\" open specification. No such AWS product or ARD standard is known ",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-08-24T16-23-52-028Z_aws-ml_Agentic_Resource_Discovery__ARD___An_open_specific.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-08-24T16:40:53.108Z",
+    "slug": "why-ai-agents-are-learning-to-talk-to-each-other-and-what-it-means-at-",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-08-24T16:41:13.560Z",
+    "guide_worthy": false,
+    "pairing_reason": "Infrastructure/standard explainer about AI agent protocols, not a specific named feature for consumers to use",
+    "image_v": 2,
+    "image_at": "2026-08-24T16:42:02.261Z",
+    "seo": {
+      "meta_description": "AI helpers at work are learning to find each other through open protocols—so your email can quietly use your calendar. Here's what changes.",
+      "keywords": [
+        "AI agents talking to each other",
+        "Google A2A protocol",
+        "AI at work",
+        "AI tools workplace integration",
+        "how AI agents communicate",
+        "AI helper automation",
+        "open protocol AI"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add a concrete example of a real workplace scenario where AI agents collaborating helps save time",
+        "Consider adding FAQ-style content about what A2A means for everyday users",
+        "Include mention of specific tools or platforms that already use these protocols"
+      ],
+      "optimised_at": "2026-08-24T16:43:25.525Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Why AI Agents Are Learning to Talk to Each Other — and What It Means at Work\"\nsubtitle: \"Open protocols like Google's A2A are letting AI helpers find each other across your workplace tools\"\ncategory: \"explainer\"\naudience: \"business\"\nread_time_minutes: 4\ntags: [\"ai-agents\", \"workplace-ai\", \"agent-protocols\", \"enterprise-ai\"]\n---\n\n# Why AI Agents Are Learning to Talk to Each Other — and What It Means at Work\n\n> **In short:** AI helpers at work are starting to find each other through open protocols, so an email tool can quietly call on your calendar tool. The change happens behind the scenes — you won't click any new buttons.\n\nYou know that small frustration when you have to copy-paste the same piece of information between three different apps? AI helpers at work have the same problem — and the industry is starting to fix it for them.\n\n## What's actually changing\n\nAn **AI agent** is a small AI helper that can actually do things, not just answer questions — like one that drafts your emails, or one that books meetings. Today, most of these agents don't know what other agents exist, even inside the same company.\n\nThat is starting to shift. Big AI companies are now publishing **open protocols** — shared, public rulebooks that any toolmaker can build to. Two of the most discussed right now are:\n\n- **Google's A2A (Agent-to-Agent) protocol**, announced in 2025. Think of it like a shared language: if your calendar agent and your email agent both \"speak A2A,\" they can find each other and exchange information without anyone wiring them together by hand.\n- **Anthropic's MCP (Model Context Protocol)**, an earlier open standard focused on letting one AI agent talk to the tools it needs (your files, your inbox, your database).\n\nThe \"open\" part matters. It means no single company owns the rulebook — so a tool built by a small startup can talk to a tool built by a giant, as long as both follow the same protocol.\n\n## Why this matters even if you never touch it\n\nYou probably won't log into a settings screen or click a new button. The point is that the AI tools you already use could quietly start cooperating better.\n\nA practical example: today, you might use one AI to summarize a long email thread, then switch to another to find a related document, then a third to draft a reply. With agent-to-agent protocols in place, a single assistant could call the other two in the background and hand you a finished draft — without you seeing the handoff.\n\nIt also helps with safety. When agents know how to identify each other through a shared standard, the IT team can see what tools exist, who built them, and what data they touch. That's the basic idea behind **governance** — the rules and oversight that keep AI from going off-script.\n\n## What this means for you\n\n- **If you use AI tools at work**: Expect them to feel more \"connected\" over the coming months. Tasks that used to require switching between apps might happen in one place, though this will roll out slowly across different vendors.\n- **If you manage a team or small business**: Even without any new technology, keep a simple list of which AI tools are in use, what they do, and who has access. A spreadsheet works fine. The spirit of what these protocols enable is something you can start by hand today.\n- **If you're worried about AI sprawl**: This is the kind of infrastructure that makes AI adoption less chaotic. Instead of dozens of disconnected bots, you get a known, searchable set with clear ownership — at least in theory.\n\n## Wrap-up\n\nAI helpers are multiplying fast inside companies, and until now they've mostly been strangers to each other. Open protocols like Google's A2A and Anthropic's MCP are early moves to give them a shared way to find and trust one another — much like an employee directory, but for software. If you use AI at work, keep an eye out for tools that feel more \"team-like\" in the coming months, and consider keeping your own simple list of what your team uses.",
+  "original_title": "Agentic Resource Discovery (ARD): An open specification for agent discovery"
+}

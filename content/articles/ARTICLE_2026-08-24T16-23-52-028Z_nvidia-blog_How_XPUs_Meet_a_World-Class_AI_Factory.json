@@ -1,0 +1,63 @@
+{
+  "_meta": {
+    "written_at": "2026-08-24T16:31:31.536Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00969126,
+    "original_draft": "2026-08-24T16-23-52-028Z_nvidia-blog_How_XPUs_Meet_a_World-Class_AI_Factory.json",
+    "source_id": "nvidia-blog",
+    "source_name": "NVIDIA Blog (hivatalos)",
+    "source_link": "https://blogs.nvidia.com/blog/nvlink-fusion-xpu-ai-factory/",
+    "source_links": [
+      "https://blogs.nvidia.com/blog/nvlink-fusion-xpu-ai-factory/"
+    ],
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "published_at": "2026-08-24T16:34:32.532Z",
+    "slug": "the-ai-factory-what-s-actually-powering-the-ai-you-use-every-day",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 718
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Solid explainer with clear structure, good analogies, and accessible explanations of XPUs, GPUs, and tokens for everyday readers. The 'In short' box provides a useful hook, the 'What this means for you' section is concrete and actionable, and the tone is friendly and non-judgmental throughout. No factual red flags, no clichés, and US English is correct.",
+      "_aiCost": 0.0014199,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-08-24T16:41:19.687Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is an explainer article about AI infrastructure (XPUs, AI factories) — there is no specific named feature or tool for ordinary users to go use today.",
+    "image_v": 2,
+    "image_at": "2026-08-24T16:42:17.599Z",
+    "seo": {
+      "meta_description": "Tech giants are building massive AI factories with custom chips. Learn what's really behind the AI tools you use daily and why it matters.",
+      "keywords": [
+        "what is an AI factory",
+        "how does AI work physically",
+        "custom AI chips explained",
+        "where does ChatGPT run",
+        "AI infrastructure",
+        "tech giants AI chips",
+        "AI factory building"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add specific chip names or company examples (like Google TPU, Amazon Trainium) in the excerpt to boost relevance for tech searches",
+        "Consider adding an FAQ section addressing common questions like 'Does my AI usage affect the environment?' to capture more long-tail searches",
+        "The subtitle could include 'infrastructure' or 'chips' to improve keyword density for those terms"
+      ],
+      "optimised_at": "2026-08-24T16:43:41.800Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"The AI Factory: What's Actually Powering the AI You Use Every Day\"\nsubtitle: \"Behind every ChatGPT answer sits a building full of custom chips. Here's what that means for you.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 3\ntags: [\"ai-infrastructure\", \"ai-chips\", \"understanding-ai\", \"ai-explained\"]\n---\n\n# The AI Factory: What's Actually Powering the AI You Use Every Day\n\n> **In short:** Tech giants like Google, Amazon, and Microsoft are building custom AI chips (called XPUs) inside massive \"AI factories\" — purpose-built buildings full of processors, power, and cooling. The shift shapes how fast, cheap, and reliable AI tools become for everyday users.\n\nWhen you ask ChatGPT to rewrite an email, something physical happens. Somewhere in a warehouse-sized building, a chip hums to life, pulls electricity from a power line, processes your words, and sends an answer back. That whole building — not just the software — is what people in the AI world now call an **AI factory**.\n\nIt's a useful image. AI isn't magic. It's manufacturing — intelligence made by machines, the same way a car factory makes cars.\n\n## The old engine: GPUs\n\nUntil recently, most AI ran on **GPUs** (graphics processing units). These chips were originally designed to render video game graphics, but researchers discovered they were also great at the math behind AI. A single GPU can do thousands of small calculations at the same time, which is exactly what training and running an AI model needs.\n\nFor years, one company — NVIDIA — made most of the best GPUs. That's why \"AI chip\" and \"GPU\" became almost the same thing in the news.\n\n## The new engines: custom XPUs\n\nNow, the biggest AI companies are designing their own processors. The industry calls them **XPUs** — the \"X\" stands for \"anything,\" meaning a custom solution instead of an off-the-shelf GPU. Google has its TPUs, Amazon has Trainium, Microsoft has Maia, and Meta is working on its own. Other \"hyperscalers\" (a shorthand for the giant cloud companies that run services at massive scale) are following the same path.\n\nWhy bother? Three reasons:\n\n- **Speed.** A chip designed for one specific AI workload can run faster than a general-purpose GPU.\n- **Cost.** When you serve billions of user questions, even small efficiency gains save serious money.\n- **Control.** If you design the chip, you don't have to wait in line for someone else's supply.\n\n## What is an \"AI factory,\" really?\n\nAn AI factory isn't one machine. It's a system working together:\n\n- Thousands of chips running in sync\n- Huge amounts of electricity\n- Liquid cooling (water flowing through the racks — the chips get very hot)\n- High-speed networking so the chips can talk to each other in microseconds\n\nThe \"factory\" framing matters because it changes how success gets measured. Instead of only asking \"how smart is the AI?\", the industry now asks: how many **tokens per second** can this factory produce? (A **token** is a small chunk of text — roughly four characters — that the AI reads and writes.) How many tokens per watt of electricity? What's the cost per token?\n\nThose numbers decide whether AI services stay fast and affordable for normal users.\n\n## What this means for you\n\n- **If you use AI tools:** The shift to custom chips is one reason AI services keep getting faster and cheaper. The economics are improving behind the scenes, even when you don't see it.\n- **If you care about the environment:** AI factories use serious amounts of power and water for cooling. That's a real concern worth following as the industry grows.\n- **If you're curious about careers:** Designing these factories — not just the software — is becoming a career path in its own right: chip design, data center operations, power infrastructure.\n- **If you run a small business using AI:** The trend should mean lower per-request costs over time, which makes AI features more practical to bake into everyday tools.\n\n## Wrap-up\n\nThe next time an AI gives you an answer in two seconds, remember: a building full of custom chips made that possible. The AI race isn't only about cleverer models. It's about who can build the smartest, fastest, most efficient factory to run them — and that race is one of the reasons your AI tools keep getting better.",
+  "original_title": "How XPUs Meet a World-Class AI Factory"
+}

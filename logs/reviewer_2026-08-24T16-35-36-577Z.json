@@ -1,0 +1,42 @@
+{
+  "started_at": "2026-08-24T16:33:37.634Z",
+  "total": 6,
+  "passed": 4,
+  "failed": 0,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.013913018000000001,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-08-24T16-23-52-028Z_nvidia-blog_How_XPUs_Meet_a_World-Class_AI_Factory.json",
+      "article": "ARTICLE_2026-08-24T16-23-52-028Z_nvidia-blog_How_XPUs_Meet_a_World-Class_AI_Factory.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.0014199
+    },
+    {
+      "writer": "WRITER_2026-08-24T16-23-52-028Z_nvidia-blog_With_Groq_3_LPX_in_Full_Production__NVIDIA_Extends.json",
+      "article": "ARTICLE_2026-08-24T16-23-52-028Z_nvidia-blog_With_Groq_3_LPX_in_Full_Production__NVIDIA_Extends.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.00129756
+    },
+    {
+      "writer": "WRITER_2026-08-24T16-23-52-029Z_apple-ml_Beyond_Visual_CoT__Internalized_Visual_Thinking_fo.json",
+      "article": "ARTICLE_2026-08-24T16-23-52-029Z_apple-ml_Beyond_Visual_CoT__Internalized_Visual_Thinking_fo.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.00111396
+    },
+    {
+      "writer": "WRITER_2026-08-24T16-23-52-029Z_aws-ml_Building_a_restaurant_telephony_AI_host_with_Amazo.json",
+      "article": "ARTICLE_2026-08-24T16-23-52-029Z_aws-ml_Building_a_restaurant_telephony_AI_host_with_Amazo.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.0015039
+    }
+  ],
+  "truth_blocked": 2,
+  "finished_at": "2026-08-24T16:35:36.577Z",
+  "duration_seconds": 118.943
+}
