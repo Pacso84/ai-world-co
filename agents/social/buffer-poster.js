@@ -38,10 +38,17 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { selectSocialBatch } from '../../core/social-queue.js';
 import { composePost, followCta, CHANNELS } from '../../core/social-text.js';
+import { capFor, allowedNow, countSentToday } from '../../core/channel-cap.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..', '..');
 const SOCIAL_DIR = join(ROOT, 'content', 'social');
+// A csatornánkénti napi plafon innen jön (limits.social_daily_caps).
+// Hiányzó/hibás fájl NEM állítja meg a posztolást: plafon nélkül megy tovább.
+const CONFIG = (() => {
+  try { return JSON.parse(readFileSync(join(ROOT, 'config.json'), 'utf-8')); }
+  catch { return {}; }
+})();
 const ARTICLES_DIR = join(ROOT, 'content', 'articles');
 const SITE = 'https://aiworldhq.com';
 
@@ -122,6 +129,37 @@ async function orgId() {
   if (r.error) return { error: r.error };
   const id = r.data?.account?.organizations?.[0]?.id;
   return id ? { id } : { error: 'nincs szervezet a fiókhoz' };
+}
+
+// Hány poszt ment MA ki erre a csatornára — a BUFFERTŐL kérdezve, nem a
+// saját jelölésünkből. Ugyanez a lecke 2026-08-06-ról: a napi riport
+// „Facebook-poszt: N" sora a saját jelölésünkből jött és torzított; azóta a
+// Make naplójából megy. A láncot a VÉGÉRŐL kell mérni.
+//
+// ⚠️ HIBÁNÁL `null` JÖN VISSZA, NEM 0. A kettő különböző: a 0 azt jelenti,
+// „ma még nem ment ki semmi" (mehet a poszt), a null azt, hogy „nem tudom".
+// Az allowedNow() a null-ra bezár. Ha a hibát 0-nak adnánk, a plafon némán
+// kikapcsolna — pont az a néma hiba, ami ellen az egész modul készült.
+//
+// A `filter.channelIds` alak ÉLESBEN MÉRVE (2026-08-24): a `channelIds`
+// NEM a PostsInput gyökerében van, hanem a `filter` alatt (a gyökérbe téve
+// „Field channelIds is not defined by type PostsInput" jön).
+//
+// ⚠️ ISMERT KORLÁT: a Buffer lapozva válaszol, mérve 10 posztot ad vissza,
+// LEGÚJABB ELÖL (2026-08-24: 08-24-ről 6, 08-23-ról 4). Ha egy csatornán egy
+// nap 10-nél több poszt menne ki, a mai darabszám alulmérne. A napi plafonos
+// csatornákon ez nem fordulhat elő (épp azért van plafon), a plafon nélkülieket
+// pedig le sem kérdezzük. A hiba IRÁNYA is szelíd: alulmérésből több poszt
+// menne ki, nem kevesebb — tehát nem némít el némán semmit. Ha valaha 10 fölé
+// emelnénk egy plafont, ITT kell lapozást írni.
+async function sentTodayFor(organizationId, channelId) {
+  const r = await gql(
+    `query($i: PostsInput!){ posts(input:$i){ edges { node { status sentAt } } } }`,
+    { i: { organizationId, filter: { channelIds: [channelId] } } });
+  if (r.error) return null;
+  const edges = r.data?.posts?.edges;
+  if (!Array.isArray(edges)) return null;
+  return countSentToday(edges.map(e => e?.node).filter(Boolean));
 }
 
 async function listChannels() {
@@ -326,6 +364,16 @@ async function main() {
     if (!channels.length) { console.log('   ⚠️ ilyen bekötött csatorna nincs.'); return; }
   }
 
+  // A napi plafonhoz kell a szervezet-azonosító — de CSAK akkor kérjük le,
+  // ha van egyáltalán plafonos csatorna. Fölösleges kérés nem terheli a
+  // napi 250-es Buffer-keretet.
+  let ORG = null;
+  if (token() && channels.some(c => capFor(CONFIG, c.key) !== null)) {
+    const o = await orgId();
+    if (o.error) console.log('   ⚠️ a szervezet-azonosító nem jött meg — a plafonos csatornák kimaradnak');
+    else ORG = o.id;
+  }
+
   const pub = publishedMap();
   const now = Date.now();
   let kikuldve = 0, keres = 0;
@@ -335,7 +383,24 @@ async function main() {
     const q = queueFor(cfg.field, pub, now);
     if (!q.length) { console.log(`\n💤 ${cfg.label}: nincs kiküldendő.`); continue; }
 
-    const batch = selectSocialBatch(q, LIMIT);
+    // ── NAPI PLAFON (2026-08-24) ────────────────────────────────────
+    // A `--limit` FUTÁSONKÉNT számol, a CI viszont naponta háromszor fut —
+    // `--limit 2` így napi 6 posztot jelentett csatornánként. Indoklás és a
+    // mért számok: core/channel-cap.js.
+    const plafon = token() ? capFor(CONFIG, ch.key) : null;
+    let keret = LIMIT;
+    if (plafon !== null) {
+      const maiDb = ORG ? await sentTodayFor(ORG, ch.id) : null;
+      keret = allowedNow({ sentToday: maiDb, dailyCap: plafon, runLimit: LIMIT });
+      console.log(`\n📊 ${cfg.label}: napi plafon ${plafon} · ma eddig `
+        + `${maiDb === null ? '? (nem sikerült lekérdezni)' : maiDb} → most ${keret} mehet`);
+      if (keret <= 0) {
+        console.log(`   ⏭️  ${cfg.label}: mára megvan a napi adag — kihagyom.`);
+        continue;
+      }
+    }
+
+    const batch = selectSocialBatch(q, keret);
     console.log(`\n📨 ${cfg.label} (@${ch.user}) — ${q.length} várakozóból ${batch.length} megy ki`);
 
     for (const item of batch) {
