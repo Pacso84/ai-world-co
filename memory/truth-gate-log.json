@@ -1,30 +1,4 @@
 {
-  "2026-07-31": [
-    {
-      "at": "2026-07-31T04:09:15.167Z",
-      "file": "WRITER_2026-07-31T04-08-41-143Z_openai-blog_How_avatarin_built_a_24_7_retail_agent_with_GPT-Re.json",
-      "action": "block",
-      "reasons": [
-        "GPT-Realtime is not a verified model name — OpenAI's real-time voice API product is 'Realtime API' (or 'gpt-4o-realtime-preview' model). 'GPT-Realtime' as a model name appears fabricated."
-      ]
-    },
-    {
-      "at": "2026-07-31T17:19:32.336Z",
-      "file": "WRITER_2026-07-31T17-18-49-790Z_google-workspace_Prevent_accidental_disclosures_with_new_Reply_All_.json",
-      "action": "block",
-      "reasons": [
-        "The article claims Gmail has rolled out a warning when hitting Reply All on a thread where you were BCC'd, but no such feature is documented in any official Google release notes or Workspace updates. This is a fabricated product feature attributed to Gmail."
-      ]
-    },
-    {
-      "at": "2026-07-31T18:41:40.795Z",
-      "file": "WRITER_2026-07-31T17-18-49-790Z_google-workspace_Prevent_accidental_disclosures_with_new_Reply_All_.json",
-      "action": "block",
-      "reasons": [
-        "Article describes a specific 'new Reply All warning for BCC'd threads' as a current Gmail feature. I am not reasonably sure this specific feature (a Reply All warning triggered specifically when you were BCC'd) exists as described in Gmail. Gmail has had generic Reply All warnings (e.g., when replying to large recipient lists), but the claim of a specific BCC-detection warning being rolled out is presented as fact without sourcing and may be fabricated or inaccurate."
-      ]
-    }
-  ],
   "2026-08-03": [
     {
       "at": "2026-08-03T02:03:36.775Z",
@@ -351,6 +325,17 @@
         "OpenAI's 'zero data retention' policy — OpenAI does have a 'zero data retention' option for enterprise/API customers, so this is plausibly real, not flagging."
       ],
       "confidence": 5
+    }
+  ],
+  "2026-08-24": [
+    {
+      "at": "2026-08-24T00:45:26.419Z",
+      "file": "WRITER_GUIDE_spot-the-mood-behind-customer-reviews-with-hugging-face-s-fr.json",
+      "action": "block",
+      "reasons": [
+        "The article describes a specific self-serve sentiment analysis inference widget on huggingface.co (Hosted inference API box, 'Compute'/'Run' button, paragraph-by-paragraph processing of pasted reviews). While Hugging Face does host models with inference APIs, the detailed UI flow described here — especially batch-processing multiple reviews separated by blank lines and returning one stacked label per paragraph via a free web widget — is a fabrication of a specific user-facing feature that does not exist in this form. The model's inference widget returns one label for the entire input, not per paragraph, and the article presents this invented behavior as fact."
+      ],
+      "confidence": 7
     }
   ]
 }

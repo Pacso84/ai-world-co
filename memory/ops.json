@@ -1,134 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178738659305955",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-08-22T08:16:33.059Z",
-      "updated": "2026-08-22T08:17:00.029Z"
-    },
-    {
-      "id": "t178738662003186",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-08-22T08:17:00.031Z",
-      "updated": "2026-08-22T08:17:00.228Z"
-    },
-    {
-      "id": "t17873866202309",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-22T08:17:00.230Z",
-      "updated": "2026-08-22T08:17:00.405Z"
-    },
-    {
-      "id": "t17873866204079",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-22T08:17:00.407Z",
-      "updated": "2026-08-22T08:17:00.581Z"
-    },
-    {
-      "id": "t178738662058469",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-08-22T08:17:00.584Z",
-      "updated": "2026-08-22T08:17:00.810Z"
-    },
-    {
-      "id": "t178738662085558",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-22T08:17:00.855Z",
-      "updated": "2026-08-22T08:17:01.086Z"
-    },
-    {
-      "id": "t17873866210889",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-08-22T08:17:01.088Z",
-      "updated": "2026-08-22T08:17:01.299Z"
-    },
-    {
-      "id": "t178738662130061",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-22T08:17:01.300Z",
-      "updated": "2026-08-22T08:17:09.612Z"
-    },
-    {
-      "id": "t178738662961368",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-08-22T08:17:09.614Z",
-      "updated": "2026-08-22T08:17:27.168Z"
-    },
-    {
-      "id": "t178741504471587",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-08-22T16:10:44.715Z",
-      "updated": "2026-08-22T16:10:44.902Z"
-    },
-    {
-      "id": "t17874150449049",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-08-22T16:10:44.904Z",
-      "updated": "2026-08-22T16:11:11.983Z"
-    },
-    {
-      "id": "t178741507198588",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-08-22T16:11:11.985Z",
-      "updated": "2026-08-22T16:11:12.186Z"
-    },
-    {
-      "id": "t178741507218867",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-22T16:11:12.188Z",
-      "updated": "2026-08-22T16:11:12.370Z"
-    },
-    {
-      "id": "t17874150723722",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-22T16:11:12.372Z",
-      "updated": "2026-08-22T16:11:12.555Z"
-    },
-    {
-      "id": "t178741507255821",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-08-22T16:11:12.558Z",
-      "updated": "2026-08-22T16:11:12.780Z"
-    },
-    {
-      "id": "t178741507282476",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-22T16:11:12.824Z",
-      "updated": "2026-08-22T16:11:13.058Z"
-    },
-    {
       "id": "t178741507306051",
       "title": "Run seo",
       "status": "done",
@@ -479,41 +351,137 @@
       "agent": "publisher",
       "created": "2026-08-23T16:13:14.420Z",
       "updated": "2026-08-23T16:13:34.722Z"
+    },
+    {
+      "id": "t178753187323874",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-08-24T00:37:53.238Z",
+      "updated": "2026-08-24T00:37:53.404Z"
+    },
+    {
+      "id": "t17875318734064",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-08-24T00:37:53.406Z",
+      "updated": "2026-08-24T00:38:13.118Z"
+    },
+    {
+      "id": "t178753189312977",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-08-24T00:38:13.129Z",
+      "updated": "2026-08-24T00:38:13.369Z"
+    },
+    {
+      "id": "t178753189337162",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-24T00:38:13.371Z",
+      "updated": "2026-08-24T00:38:13.603Z"
+    },
+    {
+      "id": "t178753189364481",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-24T00:38:13.644Z",
+      "updated": "2026-08-24T00:38:13.824Z"
+    },
+    {
+      "id": "t178753189389982",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-08-24T00:38:13.899Z",
+      "updated": "2026-08-24T00:38:14.320Z"
+    },
+    {
+      "id": "t178753189438136",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-24T00:38:14.381Z",
+      "updated": "2026-08-24T00:44:03.713Z"
+    },
+    {
+      "id": "t178753224371538",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-24T00:44:03.715Z",
+      "updated": "2026-08-24T00:45:26.434Z"
+    },
+    {
+      "id": "t178753232646771",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-24T00:45:26.467Z",
+      "updated": "2026-08-24T00:45:26.621Z"
+    },
+    {
+      "id": "t17875323266226",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-24T00:45:26.622Z",
+      "updated": "2026-08-24T00:45:50.419Z"
+    },
+    {
+      "id": "t178753235042390",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-24T00:45:50.423Z",
+      "updated": "2026-08-24T00:51:10.349Z"
+    },
+    {
+      "id": "t178753267035178",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-24T00:51:10.351Z",
+      "updated": "2026-08-24T00:51:36.285Z"
+    },
+    {
+      "id": "t178753269628685",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-24T00:51:36.286Z",
+      "updated": "2026-08-24T00:52:09.760Z"
+    },
+    {
+      "id": "t178753272976220",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-08-24T00:52:09.762Z",
+      "updated": "2026-08-24T00:53:07.660Z"
+    },
+    {
+      "id": "t178753278766268",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-24T00:53:07.662Z",
+      "updated": "2026-08-24T00:53:16.004Z"
+    },
+    {
+      "id": "t178753279600666",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-08-24T00:53:16.006Z",
+      "updated": "2026-08-24T00:53:40.172Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178652559835060",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The line-up looks solid — practical how-tos, helpful privacy guidance, and everyday use cases. One small note: articles 4-6 are all complaint-related; consider adding subheadings so readers can quickl",
-      "agent": "publisher",
-      "at": "2026-08-12T09:06:38.350Z",
-      "loud": false
-    },
-    {
-      "id": "n178652560843073",
-      "level": "success",
-      "text": "0 hír + 2 útmutató publikálva (költség: $0.0072).",
-      "agent": "ceo",
-      "at": "2026-08-12T09:06:48.430Z",
-      "loud": false
-    },
-    {
-      "id": "n178655370523431",
-      "level": "info",
-      "text": "SEO: 4 cikk optimalizálva (átlag 7.8/10).",
-      "agent": "seo",
-      "at": "2026-08-12T16:55:05.234Z",
-      "loud": false
-    },
-    {
-      "id": "n178655372215194",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). A cohesive, practical line-up covering everyday AI use — from writing help (complaint emails, speeches, agreements) to privacy and fact-checking. The mix of \"what AI is great at\" and \"what to avoid\" k",
-      "agent": "publisher",
-      "at": "2026-08-12T16:55:22.151Z",
-      "loud": false
-    },
     {
       "id": "n178655373233120",
       "level": "success",
@@ -1281,54 +1249,41 @@
       "agent": "ceo",
       "at": "2026-08-23T16:13:34.762Z",
       "loud": false
+    },
+    {
+      "id": "n178753225732337",
+      "level": "warn",
+      "text": "📨 ellenorzo → guide: Hiányos / kell még adat: \"Ask plain-English questions about a long PDF using Hugging Face's free document Q&A\" — egészít",
+      "agent": "ellenorzo",
+      "at": "2026-08-24T00:44:17.323Z",
+      "loud": false
+    },
+    {
+      "id": "n178753278765231",
+      "level": "info",
+      "text": "SEO: 4 cikk optimalizálva (átlag 8.5/10).",
+      "agent": "seo",
+      "at": "2026-08-24T00:53:07.652Z",
+      "loud": false
+    },
+    {
+      "id": "n178753280974044",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The line-up looks good — practical, varied (from privacy to heartfelt messages), and genuinely useful for everyday people. Just one quick check: is \"Le Chat\" the shortest official name, or should it b",
+      "agent": "publisher",
+      "at": "2026-08-24T00:53:29.740Z",
+      "loud": false
+    },
+    {
+      "id": "n178753282020527",
+      "level": "success",
+      "text": "0 hír + 4 útmutató publikálva (költség: $0.0866).",
+      "agent": "ceo",
+      "at": "2026-08-24T00:53:40.205Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178666983233285",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"All about Kling 2.6: AI video model with sound, voices, and motion\" — mi a baj: Kling is not on the VERIFIED-REAL NAMES list, so its existence cannot be assumed verified. However, Kling is a real AI video generator by Kuaishou. The article makes specific claims about Kling 2.6's features (integrated dialogue, sound effects, room tone in one step; sound only activates at 1080",
-      "ref": "2026-08-14T01-01-26-376Z_picsart_All_about_Kling_2_6__AI_video_model_with_sound__vo.json",
-      "at": "2026-08-14T01:10:32.332Z"
-    },
-    {
-      "id": "m178666984165650",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Flux 3 in Picsart: video and audio in one pass\" — mi a baj: Flux 3 in Picsart: I cannot verify that Picsart has a product or feature called 'Flux 3' that generates image, video, and audio from a single prompt. Picsart is a real company, but this specific feature name and its claimed capabilities (single prompt producing a 20-second video with matching audio) appear fabricate",
-      "ref": "2026-08-14T01-01-38-197Z_picsart_Flux_3_in_Picsart__video_and_audio_in_one_pass.json",
-      "at": "2026-08-14T01:10:41.656Z"
-    },
-    {
-      "id": "m178666991208625",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"The builder’s guide to GPT‑5.6\" — javítva: GPT-5.6 does not exist — this appears to be fabricated product naming; current OpenAI models include GPT-4, GPT-4o, o1, and o3, not GPT-5.6; Source URL references a non-existent OpenAI page (openai.com/index/builders-guide-to-gpt-5-6); újraküldöm.",
-      "ref": "2026-08-14T01-01-26-375Z_openai-blog_The_builder_s_guide_to_GPT_5_6.json",
-      "at": "2026-08-14T01:11:52.086Z"
-    },
-    {
-      "id": "m178666993614726",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Bring your spreadsheet data to life with Sheets canvas\" — javítva: \"Sheets canvas\" is described as a real Google product/feature, but no such product exists. Google Sheets does not have a 'Canvas' feature or workspace — this appears to be fabricated.; Reviewer verdict: Hitelesség-kapu blokkolta: \"Sheets canvas\" is described as a real Google product/feature, but no such product exists",
-      "ref": "2026-08-14T01-01-26-376Z_google-ai-blog_Bring_your_spreadsheet_data_to_life_with_Sheets_ca.json",
-      "at": "2026-08-14T01:12:16.147Z"
-    },
-    {
-      "id": "m178666995962774",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"All about Kling 2.6: AI video model with sound, voices, and motion\" — javítva: Kling is not on the VERIFIED-REAL NAMES list, so its existence cannot be assumed verified. However, Kling is a real AI video generator by Kuaishou. The article makes specific claims about Kling 2.6's features (integrated dialogue, sound effects, room tone in one step; sound only activates at 1080p resoluti",
-      "ref": "2026-08-14T01-01-26-376Z_picsart_All_about_Kling_2_6__AI_video_model_with_sound__vo.json",
-      "at": "2026-08-14T01:12:39.627Z"
-    },
     {
       "id": "m178666998125446",
       "from": "iro",
@@ -2645,6 +2600,52 @@
       "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
       "ref": "mobile",
       "at": "2026-08-23T16:13:14.409Z"
+    },
+    {
+      "id": "m178753225732267",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Ask plain-English questions about a long PDF using Hugging Face's free document Q&A\" — mi a baj: LEDE_TOO_LONG: A RÖVIDEN-doboz 67 szó (max ~45) — ami hosszú, az már nem \"röviden\".; Chinese text '扔进抽屉再也不看' appears mid-sentence in What this means for you — use English only; Minor tool naming ambiguity: metadata says 'Hugging Face's free document Q&A' but article calls it 'Hug",
+      "ref": "GUIDE_ask-plain-english-questions-about-a-long-pdf-using-hugging-f.json",
+      "at": "2026-08-24T00:44:17.322Z"
+    },
+    {
+      "id": "m178753225732367",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "need",
+      "text": "Hiányos / kell még adat: \"Ask plain-English questions about a long PDF using Hugging Face's free document Q&A\" — egészítsd ki: LEDE_TOO_LONG: A RÖVIDEN-doboz 67 szó (max ~45) — ami hosszú, az már nem \"röviden\".; Chinese text '扔进抽屉再也不看' appears mid-sentence in What this means for you — use English only; Minor tool naming ambiguity: metadata says 'Hugging Face's free document Q&A' but article calls ",
+      "ref": "GUIDE_ask-plain-english-questions-about-a-long-pdf-using-hugging-f.json",
+      "open": true,
+      "at": "2026-08-24T00:44:17.323Z"
+    },
+    {
+      "id": "m17875323264184",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Spot the mood behind customer reviews with Hugging Face's free sentiment tool\" — mi a baj: HOWTO_TOO_LONG: 2150 szó (~10.8 perc olvasás) — a cél 1000-1400 szó, a felső kapu 1700. A Facebookról érkező mobilolvasó ennyit ritkán olvas végig.; UI_CLAIMS_UNSOURCED: 3 konkrét képernyő-feliratot állít tényként forrás nélkül (\"hosted inference api\", \"compute\", \"data → sort range\"). ",
+      "ref": "GUIDE_spot-the-mood-behind-customer-reviews-with-hugging-face-s-fr.json",
+      "at": "2026-08-24T00:45:26.418Z"
+    },
+    {
+      "id": "m178753279599562",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-08-24T00:53:15.995Z"
+    },
+    {
+      "id": "m178753292498441",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"How to use Apple Intelligence Writing Tools\" — \"The tools are generally free as part of the operating system on supported devices.\"",
+      "ref": "ARTICLE_GUIDE_apple-writing-tools.json",
+      "at": "2026-08-24T00:55:24.984Z"
     }
   ]
 }
