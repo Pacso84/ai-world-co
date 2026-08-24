@@ -83,7 +83,12 @@ export function stripUrl(text, url) {
 
 // Szóhatáron csonkít, és jelzi a vágást. Félbevágott szó olvashatatlan,
 // és azt sugallja, hogy elromlott valami — az pedig bizalmat ront.
-function trimToWords(text, max) {
+//
+// EXPORTÁLVA 2026-08-24: a core/reel-post.js-be először LEMÁSOLTAM ezt a
+// szabályt, és a két példány AZONNAL eltért — a másolat nem vágta le a záró
+// írásjelet. 358 valódi útmutató-alcímen mérve 9 olyan volt, ahol vessző
+// maradt volna a „…" előtt. Egy példány van belőle, és ez az.
+export function trimToWords(text, max) {
   if (text.length <= max) return text;
   const room = max - ELLIPSIS.length;
   if (room <= 0) return ELLIPSIS.slice(0, Math.max(0, max));

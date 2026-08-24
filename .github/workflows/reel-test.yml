@@ -1,0 +1,68 @@
+name: Reel — kézi próbaküldés
+
+# KÉZZEL indított, EGYSZERI Reel-küldés a Facebookra.
+#
+# MIÉRT VAN KÜLÖN GOMB (2026-08-24, user-döntés: „előbb EGY kézi próba"):
+# a napi automatikába építeni valamit, ami még sosem működött, azt jelenti,
+# hogy az első hibás poszt már kint van. Ez a gomb egyszer, szándékosan süt
+# el egy Reelt — és a titkos webhook-cím közben nem hagyja el a GitHubot.
+#
+# ⚠️ AZ ALAPÉRTELMEZÉS A PRÓBA (dry = true). Aki gondolkodás nélkül
+# rákattint, az NEM posztol a Facebookra — csak megnézi, mi menne ki.
+# A küldéshez kifejezetten át kell állítani.
+
+on:
+  workflow_dispatch:
+    inputs:
+      slug:
+        description: 'Melyik útmutató? (a cikk slugja)'
+        required: true
+        default: 'how-to-spot-a-deepfake-video-or-voice-clone-before-you-share-it'
+      dry:
+        description: 'Csak próba? (igaz = NEM posztol, csak megmutatja)'
+        type: boolean
+        required: true
+        default: true
+
+# Csak olvasunk — ez a lépés nem commitol semmit.
+permissions:
+  contents: read
+
+# Két egyszerre indított futás két Reelt jelentene ugyanarról.
+concurrency:
+  group: aiworld-reel-test
+  cancel-in-progress: false
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Függőségek
+        run: npm install
+
+      # ⚠️ A SLUG KÖRNYEZETI VÁLTOZÓN MEGY BE, nem közvetlen behelyettesítéssel.
+      # A `"${{ inputs.slug }}"` alak idézőjelen belül is végrehajtaná a `$( )`
+      # és a backtick tartalmát — ez a lépés pedig hozzáfér a webhook-titokhoz.
+      # A GitHub saját ajánlása is ez.
+      #
+      # ⚠️ `inputs.dry` ÉS NEM `github.event.inputs.dry`. Az `inputs` típusos
+      # logikai értéket ad, a `github.event.inputs` SZÖVEGET — ott a `== true`
+      # mindig hamis lenne, a `--dry` NÉMÁN kiesne, és egy „csak megnézem"
+      # kattintásból valódi Facebook-poszt lenne. A hiba iránya itt veszélyes.
+      - name: Reel küldése
+        env:
+          MAKE_REEL_WEBHOOK_URL: ${{ secrets.MAKE_REEL_WEBHOOK_URL }}
+          SLUG: ${{ inputs.slug }}
+          DRY: ${{ inputs.dry }}
+        run: |
+          if [ "$DRY" = "true" ]; then
+            node core/reel-post.js "$SLUG" --dry
+          else
+            node core/reel-post.js "$SLUG"
+          fi

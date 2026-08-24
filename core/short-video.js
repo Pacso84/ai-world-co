@@ -25,6 +25,7 @@
 import { execFileSync } from 'child_process';
 import { existsSync, mkdirSync, rmSync, writeFileSync } from 'fs';
 import { join } from 'path';
+import { fm, findArticleBySlug } from './frontmatter.js';
 
 export const W = 1080, H = 1920;
 
@@ -76,11 +77,8 @@ export function splitHeading(cim) {
   return { nagy: szavak.slice(0, legjobb).join(' '), kicsi: szavak.slice(legjobb).join(' ') };
 }
 
-/** A frontmatter egy mezője. */
-function fm(md, kulcs) {
-  const m = String(md).match(new RegExp('^' + kulcs + ':\\s*["\']?(.*?)["\']?\\s*$', 'm'));
-  return m ? m[1].trim() : '';
-}
+// A frontmatter-olvasó a core/frontmatter.js-be költözött (2026-08-24),
+// amikor a core/reel-post.js is kérni kezdte. Egy példány van belőle.
 
 /** A nagy szöveg tördelése a kártyán — kézzel, mert az SVG nem tördel. */
 function tordel(s, maxSor = 13) {
@@ -299,11 +297,14 @@ async function main() {
   const kulcs = args.find(a => !a.startsWith('--'));
   if (!kulcs) { console.log('Használat: node core/short-video.js <slug> [--dry]'); return; }
 
+  // SLUG SZERINT keres, nem fájlnév szerint — a kettő a cikkek ~11%-ánál
+  // eltér, és ez élesben meg is fogott: erre a videóra a saját slugjával
+  // NEM talált rá. Részletek: core/frontmatter.js findArticleBySlug().
   const DIR = join(ROOT, 'content', 'articles');
-  const fajl = readdirSync(DIR).find(f => f.includes(kulcs) && f.endsWith('.json'));
-  if (!fajl) { console.log('❌ nincs ilyen cikk: ' + kulcs); process.exit(1); }
+  const talalt = findArticleBySlug(DIR, kulcs);
+  if (!talalt) { console.log('❌ nincs ilyen cikk: ' + kulcs); process.exit(1); }
 
-  const a = JSON.parse(readFileSync(join(DIR, fajl), 'utf-8'));
+  const a = talalt.article;
   const slug = a._meta?.slug || kulcs;
   const { cards, reason } = cardsFromGuide(a.article_markdown || '', { maxSteps: 4 });
   if (!cards) { console.log('⏭️  kihagyva — ' + reason); return; }
