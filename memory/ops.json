@@ -1,102 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178741507306051",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-08-22T16:11:13.060Z",
-      "updated": "2026-08-22T16:11:13.283Z"
-    },
-    {
-      "id": "t178741507328426",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-22T16:11:13.284Z",
-      "updated": "2026-08-22T16:11:22.255Z"
-    },
-    {
-      "id": "t178741508225693",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-08-22T16:11:22.256Z",
-      "updated": "2026-08-22T16:11:42.119Z"
-    },
-    {
-      "id": "t178744557241827",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-08-23T00:39:32.418Z",
-      "updated": "2026-08-23T00:39:32.618Z"
-    },
-    {
-      "id": "t17874455726206",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-08-23T00:39:32.620Z",
-      "updated": "2026-08-23T00:39:55.026Z"
-    },
-    {
-      "id": "t178744559502888",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-08-23T00:39:55.028Z",
-      "updated": "2026-08-23T00:39:55.236Z"
-    },
-    {
-      "id": "t178744559523978",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-23T00:39:55.239Z",
-      "updated": "2026-08-23T00:39:55.421Z"
-    },
-    {
-      "id": "t178744559542389",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-23T00:39:55.423Z",
-      "updated": "2026-08-23T00:39:55.603Z"
-    },
-    {
-      "id": "t178744559560646",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-08-23T00:39:55.606Z",
-      "updated": "2026-08-23T00:39:55.849Z"
-    },
-    {
-      "id": "t178744559589640",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-23T00:39:55.896Z",
-      "updated": "2026-08-23T00:45:44.719Z"
-    },
-    {
-      "id": "t178744594472194",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-23T00:45:44.721Z",
-      "updated": "2026-08-23T00:46:42.339Z"
-    },
-    {
-      "id": "t178744600237846",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-23T00:46:42.378Z",
-      "updated": "2026-08-23T00:46:42.565Z"
-    },
-    {
       "id": "t178744600256746",
       "title": "Run guide",
       "status": "done",
@@ -479,49 +383,105 @@
       "agent": "publisher",
       "created": "2026-08-24T00:53:16.006Z",
       "updated": "2026-08-24T00:53:40.172Z"
+    },
+    {
+      "id": "t178756050925753",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-08-24T08:35:09.257Z",
+      "updated": "2026-08-24T08:35:09.361Z"
+    },
+    {
+      "id": "t178756050936247",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-08-24T08:35:09.362Z",
+      "updated": "2026-08-24T08:35:33.535Z"
+    },
+    {
+      "id": "t178756053353620",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-08-24T08:35:33.536Z",
+      "updated": "2026-08-24T08:36:15.660Z"
+    },
+    {
+      "id": "t178756057566171",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-24T08:36:15.661Z",
+      "updated": "2026-08-24T08:36:15.773Z"
+    },
+    {
+      "id": "t178756057577486",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-24T08:36:15.774Z",
+      "updated": "2026-08-24T08:36:15.921Z"
+    },
+    {
+      "id": "t178756057592397",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-24T08:36:15.923Z",
+      "updated": "2026-08-24T08:37:34.079Z"
+    },
+    {
+      "id": "t178756065408039",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-24T08:37:34.080Z",
+      "updated": "2026-08-24T08:38:32.125Z"
+    },
+    {
+      "id": "t178756071213185",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-08-24T08:38:32.131Z",
+      "updated": "2026-08-24T08:38:32.269Z"
+    },
+    {
+      "id": "t17875607122961",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-24T08:38:32.296Z",
+      "updated": "2026-08-24T08:38:59.595Z"
+    },
+    {
+      "id": "t178756073959695",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-08-24T08:38:59.596Z",
+      "updated": "2026-08-24T08:39:19.474Z"
+    },
+    {
+      "id": "t178756075947529",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-24T08:39:19.475Z",
+      "updated": "2026-08-24T08:39:32.526Z"
+    },
+    {
+      "id": "t178756077252750",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-08-24T08:39:32.527Z",
+      "updated": "2026-08-24T08:39:51.615Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178655373233120",
-      "level": "success",
-      "text": "4 hír + 0 útmutató publikálva (költség: $0.0388).",
-      "agent": "ceo",
-      "at": "2026-08-12T16:55:32.331Z",
-      "loud": false
-    },
-    {
-      "id": "n178658407160688",
-      "level": "info",
-      "text": "SEO: 6 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-08-13T01:21:11.606Z",
-      "loud": false
-    },
-    {
-      "id": "n178658409128291",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). A cohesive, practical lineup that shows real AI value — from privacy awareness to everyday writing help. Good mix of educational pieces and hands-on tutorials. One note: we're heavy on tool-specific h",
-      "agent": "publisher",
-      "at": "2026-08-13T01:21:31.282Z",
-      "loud": false
-    },
-    {
-      "id": "n17865841011398",
-      "level": "success",
-      "text": "2 hír + 4 útmutató publikálva (költség: $0.1078).",
-      "agent": "ceo",
-      "at": "2026-08-13T01:21:41.139Z",
-      "loud": false
-    },
-    {
-      "id": "n178661179005871",
-      "level": "warn",
-      "text": "📨 guide → ceo: Kell még adat: \"Ask Alexa+ to read your calendar aloud and remind you about today's meetings\" — az Ellenőrző tényt/forrá",
-      "agent": "guide",
-      "at": "2026-08-13T09:03:10.058Z",
-      "loud": false
-    },
     {
       "id": "n178661183978452",
       "level": "info",
@@ -1281,82 +1241,49 @@
       "agent": "ceo",
       "at": "2026-08-24T00:53:40.205Z",
       "loud": false
+    },
+    {
+      "id": "n178756059896742",
+      "level": "warn",
+      "text": "📨 guide → ceo: Kell még adat: \"Ask plain-English questions about a long PDF using Hugging Face's free document Q&A\" — az Ellenőrző tény",
+      "agent": "guide",
+      "at": "2026-08-24T08:36:38.967Z",
+      "loud": false
+    },
+    {
+      "id": "n178756065407133",
+      "level": "warn",
+      "text": "📨 guide → ceo: Kell még adat: \"Spot the mood behind customer reviews with Hugging Face's free sentiment tool\" — az Ellenőrző tényt/forr",
+      "agent": "guide",
+      "at": "2026-08-24T08:37:34.071Z",
+      "loud": false
+    },
+    {
+      "id": "n178756075946611",
+      "level": "info",
+      "text": "SEO: 2 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-08-24T08:39:19.466Z",
+      "loud": false
+    },
+    {
+      "id": "n178756078330567",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). A válogatás jó mixet kínál: a privátosságvédelemtől (1) a mindennapi írásig minden helyet kap, szimpatikus és hasznos. Több AI-eszközt is bemutat (ChatGPT, DeepSeek, Grok, Cohere, ChatRTX, Le Chat, Qw",
+      "agent": "publisher",
+      "at": "2026-08-24T08:39:43.305Z",
+      "loud": false
+    },
+    {
+      "id": "n178756079163937",
+      "level": "success",
+      "text": "0 hír + 2 útmutató publikálva (költség: $0.0087).",
+      "agent": "ceo",
+      "at": "2026-08-24T08:39:51.639Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178667000092119",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"The builder’s guide to GPT‑5.6\" (?/10)",
-      "ref": "2026-08-14T01-01-26-375Z_openai-blog_The_builder_s_guide_to_GPT_5_6.json",
-      "at": "2026-08-14T01:13:20.921Z"
-    },
-    {
-      "id": "m178667001665077",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Bring your spreadsheet data to life with Sheets canvas\" (?/10)",
-      "ref": "2026-08-14T01-01-26-376Z_google-ai-blog_Bring_your_spreadsheet_data_to_life_with_Sheets_ca.json",
-      "at": "2026-08-14T01:13:36.650Z"
-    },
-    {
-      "id": "m178667003208098",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"All about Kling 2.6: AI video model with sound, voices, and motion\" (?/10)",
-      "ref": "2026-08-14T01-01-26-376Z_picsart_All_about_Kling_2_6__AI_video_model_with_sound__vo.json",
-      "at": "2026-08-14T01:13:52.080Z"
-    },
-    {
-      "id": "m17866700520392",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Flux 3 in Picsart: video and audio in one pass\" (?/10)",
-      "ref": "2026-08-14T01-01-38-197Z_picsart_Flux_3_in_Picsart__video_and_audio_in_one_pass.json",
-      "at": "2026-08-14T01:14:12.039Z"
-    },
-    {
-      "id": "m17866700743033",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "info",
-      "text": "A \"Take Notes for me for in-person meetings is now availab\" hír a meglévő útmutatóra mutat: transcribe-spoken-meetings-or-interviews-into-text-with-ai-f",
-      "ref": "transcribe-spoken-meetings-or-interviews-into-text-with-ai-f",
-      "at": "2026-08-14T01:14:34.303Z"
-    },
-    {
-      "id": "m178667013615552",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "need",
-      "text": "Új funkció-hír → kéne hozzá útmutató: \"How to Use Picsart AI Playground on Your Desktop\"",
-      "ref": "how-to-use-picsart-ai-playground-on-your-desktop",
-      "open": true,
-      "at": "2026-08-14T01:15:36.155Z"
-    },
-    {
-      "id": "m178667100016118",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 20 → 5/4/2 oszlop.",
-      "ref": "mobile",
-      "at": "2026-08-14T01:30:00.161Z"
-    },
-    {
-      "id": "m178667110867891",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"How to study and learn faster with AI\" — Mobile voice input via microphone icon - the current ChatGPT mobile app does not have a prominent microphone icon for voice input in the way described",
-      "ref": "ARTICLE_GUIDE_ai-study-learn.json",
-      "at": "2026-08-14T01:31:48.678Z"
-    },
     {
       "id": "m178667171204626",
       "from": "social",
@@ -2608,8 +2535,9 @@
       "kind": "need",
       "text": "Hiányos / kell még adat: \"Ask plain-English questions about a long PDF using Hugging Face's free document Q&A\" — egészítsd ki: LEDE_TOO_LONG: A RÖVIDEN-doboz 67 szó (max ~45) — ami hosszú, az már nem \"röviden\".; Chinese text '扔进抽屉再也不看' appears mid-sentence in What this means for you — use English only; Minor tool naming ambiguity: metadata says 'Hugging Face's free document Q&A' but article calls ",
       "ref": "GUIDE_ask-plain-english-questions-about-a-long-pdf-using-hugging-f.json",
-      "open": true,
-      "at": "2026-08-24T00:44:17.323Z"
+      "open": false,
+      "at": "2026-08-24T00:44:17.323Z",
+      "resolved_at": "2026-08-24T08:38:06.229Z"
     },
     {
       "id": "m17875323264184",
@@ -2646,6 +2574,82 @@
       "text": "4 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-08-24T01:06:22.770Z"
+    },
+    {
+      "id": "m17875605989668",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Ask plain-English questions about a long PDF using Hugging Face's free document Q&A\" — javítva: LEDE_TOO_LONG: A RÖVIDEN-doboz 67 szó (max ~45) — ami hosszú, az már nem \"röviden\".; Chinese text '扔进抽屉再也不看' appears mid-sentence in What this means for you — use English only; újraküldöm.",
+      "ref": "GUIDE_ask-plain-english-questions-about-a-long-pdf-using-hugging-f.json",
+      "at": "2026-08-24T08:36:38.966Z"
+    },
+    {
+      "id": "m178756059896743",
+      "from": "guide",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Kell még adat: \"Ask plain-English questions about a long PDF using Hugging Face's free document Q&A\" — az Ellenőrző tényt/forrást kér, amit nem találhatok ki: Minor tool naming ambiguity: metadata says 'Hugging Face's free document Q&A' but article calls it 'Hugging Chat'. Consider clarifying they're the same thing or matching the names",
+      "ref": "GUIDE_ask-plain-english-questions-about-a-long-pdf-using-hugging-f.json",
+      "open": false,
+      "at": "2026-08-24T08:36:38.967Z",
+      "resolved_at": "2026-08-24T08:38:06.229Z"
+    },
+    {
+      "id": "m178756065407041",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Spot the mood behind customer reviews with Hugging Face's free sentiment tool\" — javítva: HOWTO_TOO_LONG: 2150 szó (~10.8 perc olvasás) — a cél 1000-1400 szó, a felső kapu 1700. A Facebookról érkező mobilolvasó ennyit ritkán olvas végig.; UI_CLAIMS_UNSOURCED: 3 konkrét képernyő-feliratot állít tényként forrás nélkül (\"hosted inference api\", \"compute\", \"data → sort range\"). Vagy nézd ",
+      "ref": "GUIDE_spot-the-mood-behind-customer-reviews-with-hugging-face-s-fr.json",
+      "at": "2026-08-24T08:37:34.070Z"
+    },
+    {
+      "id": "m178756065407126",
+      "from": "guide",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Kell még adat: \"Spot the mood behind customer reviews with Hugging Face's free sentiment tool\" — az Ellenőrző tényt/forrást kér, amit nem találhatok ki: UI_CLAIMS_UNSOURCED: 3 konkrét képernyő-feliratot állít tényként forrás nélkül (\"hosted inference api\", \"compute\", \"data → sort range\"). Vagy nézd meg a hivatalos oldalon, vagy írd hedge-elve (\"if you don't see…\").",
+      "ref": "GUIDE_spot-the-mood-behind-customer-reviews-with-hugging-face-s-fr.json",
+      "open": false,
+      "at": "2026-08-24T08:37:34.071Z",
+      "resolved_at": "2026-08-24T08:38:32.114Z"
+    },
+    {
+      "id": "m178756068622882",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Ask plain-English questions about a long PDF using Hugging Face's free document Q&A\" (?/10)",
+      "ref": "GUIDE_ask-plain-english-questions-about-a-long-pdf-using-hugging-f.json",
+      "at": "2026-08-24T08:38:06.228Z"
+    },
+    {
+      "id": "m178756071211365",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Spot the mood behind customer reviews with Hugging Face's free sentiment tool\" (?/10)",
+      "ref": "GUIDE_spot-the-mood-behind-customer-reviews-with-hugging-face-s-fr.json",
+      "at": "2026-08-24T08:38:32.113Z"
+    },
+    {
+      "id": "m178756077251928",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-08-24T08:39:32.519Z"
+    },
+    {
+      "id": "m178756094713896",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Ask Alexa+ to explain the news headlines in simple\" — The guide claims you can customize Flash Briefing order by 'drag and drop' — recent Alexa app versions have changed this interface and may not support drag-and-drop the same way; Some individual news skills mentioned have been discontinued or rebranded over time, and specific skill n",
+      "ref": "ARTICLE_GUIDE_ask-alexa-to-explain-the-news-headlines-in-simple-terms-ever.json",
+      "at": "2026-08-24T08:42:27.138Z"
     }
   ]
 }

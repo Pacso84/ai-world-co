@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-08-21T08:27:32.562Z",
+    "generated_at": "2026-08-24T08:36:15.649Z",
     "generated_by": "source-scout agent v3.0 (megbízhatóság-kapu)",
     "note": "JAVASLATOK új, MEGBÍZHATÓ hivatalos forrásokra. A felhasználó/főnök dönti el, melyiket adjuk a sources/rss-feeds.json-hoz (enabled:true-val). Minden jelölt megbízhatósági pontszámmal + indoklással.",
     "min_score": 100,
@@ -9,15 +9,15 @@
     "rejected_count": 2,
     "rejected_examples": [
       {
-        "name": "Sync.com Blog",
-        "host": "sync.com",
-        "reason": "a friss cikkeinek csak 2%-a szól AI-ról (kell: 60%)",
+        "name": "Bear Blog",
+        "host": "blog.bear.app",
+        "reason": "a friss cikkeinek csak 5%-a szól AI-ról (kell: 60%)",
         "score": 100
       },
       {
-        "name": "Quip Product News",
-        "host": "quip.com",
-        "reason": "halott feed — 1477 napja nincs új cikk (limit: 365)",
+        "name": "Readwise Reader Updates",
+        "host": "blog.readwise.io",
+        "reason": "halott feed — 825 napja nincs új cikk (limit: 365)",
         "score": 0
       }
     ]

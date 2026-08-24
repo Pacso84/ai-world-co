@@ -1,0 +1,27 @@
+{
+  "started_at": "2026-08-24T08:37:34.184Z",
+  "total": 2,
+  "passed": 2,
+  "failed": 0,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.00867474,
+  "by_article": [
+    {
+      "writer": "WRITER_GUIDE_ask-plain-english-questions-about-a-long-pdf-using-hugging-f.json",
+      "article": "ARTICLE_GUIDE_ask-plain-english-questions-about-a-long-pdf-using-hugging-f.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0022926
+    },
+    {
+      "writer": "WRITER_GUIDE_spot-the-mood-behind-customer-reviews-with-hugging-face-s-fr.json",
+      "article": "ARTICLE_GUIDE_spot-the-mood-behind-customer-reviews-with-hugging-face-s-fr.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.0048246
+    }
+  ],
+  "finished_at": "2026-08-24T08:38:32.117Z",
+  "duration_seconds": 57.933
+}
