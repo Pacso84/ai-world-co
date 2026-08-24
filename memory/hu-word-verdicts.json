@@ -71,6 +71,7 @@
     "aliaszt",
     "alibabacloud",
     "alice",
+    "alkalmazásáruházra",
     "alulabb",
     "amért",
     "anamorphikus",
@@ -646,6 +647,7 @@
     "frittata",
     "frittatához",
     "fryered",
+    "fryert",
     "fuego",
     "funghi",
     "furcsaságok",
@@ -1051,6 +1053,7 @@
     "legitimnak",
     "legjobbban",
     "legkezdőbarátabb",
+    "legkezdőbarátabbak",
     "legkövetkező",
     "legtöbbben",
     "lehetőséget",
@@ -1427,6 +1430,8 @@
     "podemos",
     "pointba",
     "pointban",
+    "pointek",
+    "pointeket",
     "portlandi",
     "posthoz",
     "pozcióban",
@@ -1619,6 +1624,7 @@
     "sentimentnek",
     "sereget",
     "sessiont",
+    "shakshuka",
     "shortlistet",
     "shortlistig",
     "sidebarban",
@@ -1916,6 +1922,7 @@
     "többfeladatoskodás",
     "többmillió",
     "tökéletességet",
+    "töltelékszöveget",
     "történetmagod",
     "történetmagokkal",
     "történetmagoknak",
@@ -3104,6 +3111,41 @@
       "correct": "szempontból",
       "at": "2026-08-23",
       "mondattal": true
+    },
+    "ételközelt": {
+      "correct": "ételközeli",
+      "at": "2026-08-24",
+      "mondattal": true
+    },
+    "irok": {
+      "correct": "írok",
+      "at": "2026-08-24",
+      "mondattal": true
+    },
+    "pozicióra": {
+      "correct": "pozícióra",
+      "at": "2026-08-24",
+      "mondattal": true
+    },
+    "irom": {
+      "correct": "írom",
+      "at": "2026-08-24",
+      "mondattal": true
+    },
+    "rendelésemel": {
+      "correct": "rendelésemmel",
+      "at": "2026-08-24",
+      "mondattal": true
+    },
+    "erkezett": {
+      "correct": "érkezett",
+      "at": "2026-08-24",
+      "mondattal": true
+    },
+    "ugorjd": {
+      "correct": "ugorj",
+      "at": "2026-08-24",
+      "mondattal": true
     }
   },
   "review": {
@@ -3923,11 +3965,21 @@
       "correct": "example",
       "at": "2026-08-23",
       "mondattal": true
+    },
+    "bannán": {
+      "correct": "banán",
+      "at": "2026-08-24",
+      "mondattal": true
+    },
+    "regihez": {
+      "correct": "reggelihez",
+      "at": "2026-08-24",
+      "mondattal": true
     }
   },
   "scan": {
-    "at": "2026-08-23",
-    "files": 785,
-    "candidates": 0
+    "at": "2026-08-24",
+    "files": 789,
+    "candidates": 16
   }
 }
