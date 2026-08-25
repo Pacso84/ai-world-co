@@ -278,7 +278,69 @@ async function imageExists(url) {
 //            UnexpectedError | RestProxyError | LimitReachedError |
 //            InvalidInputError
 // Ezért MINDEGYIKET lekérdezzük, és csak a Success számít sikernek.
-async function createPost({ channelId, text, image, channelKey }) {
+// ===================================================================
+// A MAI REEL — van-e ma legyártott álló videó, és kint van-e?
+// ===================================================================
+//
+// A Facebook-Reel lánc (core/reel-queue.js + core/reel-post.js) naponta
+// EGY útmutatóból gyárt videót, és a cikk `_meta.reel_at` mezőjét ma-i
+// időbélyeggel jelöli meg. Ezt keressük meg — így ugyanaz a fájl megy ki
+// az Instagramra is, plusz gyártás nélkül.
+//
+// ⚠️ A CÍMET LE IS ELLENŐRIZZÜK. A Buffer a saját szerveréről tölti le a
+// videót, ugyanúgy, mint a Facebook. Ha a deploy elhasalt volna, a fájl
+// nem lenne kint — és ezt élesben már megtanultuk (2026-08-23: háromszor
+// küldtünk ki egy 404-es videó-címet, háromszor 422 jött vissza).
+//
+// BÁRMILYEN hiba → null, vagyis a MAI viselkedés (állóképes poszt megy).
+// A Reel soha nem akadályozhatja meg, hogy egyáltalán posztoljunk.
+async function maiReel() {
+  try {
+    const { reelVideoUrl } = await import('../../core/reel-post.js');
+    const DIR = join(ROOT, 'content', 'articles');
+    if (!existsSync(DIR)) return null;
+    const ma = new Date().toISOString().slice(0, 10);
+
+    for (const f of readdirSync(DIR)) {
+      if (!f.startsWith('ARTICLE_') || !f.endsWith('.json')) continue;
+      let j; try { j = JSON.parse(readFileSync(join(DIR, f), 'utf-8')); } catch { continue; }
+      const m = j._meta || {};
+      if (String(m.reel_at || '').slice(0, 10) !== ma || !m.slug) continue;
+
+      const video = reelVideoUrl(m.slug);
+      const h = await fetch(video, { method: 'HEAD', signal: AbortSignal.timeout(15000) }).catch(() => null);
+      if (!h || !h.ok) { console.log('   ⚠️ a mai Reel nincs kint — marad az állóképes poszt'); return null; }
+
+      // ⚠️ A BORÍTÓKÉPET IS ELLENŐRIZNI KELL, ÉS EZ ÉLESBEN MEGFOGOTT
+      // (2026-08-25): a Reel-sor a LEGRÉGEBBI útmutatót választja, a
+      // megosztás-képek (assets/fb, assets/share) viszont csak a friss
+      // cikkekhez készülnek — a júniusi útmutatóra mindkettő 404 volt.
+      // Egy 404-es `thumbnailUrl` átadása rosszabb, mint a hiánya: a
+      // Buffer/Instagram enélkül a videó első kockájából csinál csempét.
+      let kep = null;
+      for (const j of [imageUrl(m.slug), `${SITE}/assets/images/${m.slug}.jpg`]) {
+        const t = await fetch(j, { method: 'HEAD', signal: AbortSignal.timeout(10000) }).catch(() => null);
+        if (t && t.ok) { kep = j; break; }
+      }
+
+      // A CIKK SAJÁT KÖZÖSSÉGI SZÖVEGE. Enélkül a videó egy idegen cikk
+      // szövegével menne ki — a próbafutás pontosan ezt mutatta meg.
+      const sp = join(SOCIAL_DIR, m.slug + '.json');
+      if (!existsSync(sp)) { console.log('   ⚠️ a mai Reel cikkéhez nincs poszt-szöveg — marad az állókép'); return null; }
+      let post; try { post = JSON.parse(readFileSync(sp, 'utf-8')); } catch { return null; }
+
+      // ⚠️ HA MÁR POSZTOLTUK EZT A CIKKET INSTAGRAMRA, NEM KÜLDJÜK ÚJRA.
+      // Más formátum, de UGYANAZ a tartalom — a user épp a téma-ismétlés
+      // miatt szólt. Ilyenkor a rendes sor viszi tovább a napot.
+      if (post.posted_instagram) { console.log('   ⏭️  a mai Reel cikkét már posztoltuk Instagramra — marad a sor'); return null; }
+
+      return { slug: m.slug, video, kep, item: { path: sp, post } };
+    }
+    return null;
+  } catch { return null; }
+}
+
+async function createPost({ channelId, text, image, video, thumbnail, channelKey }) {
   const mutation = `mutation ($input: CreatePostInput!) {
     createPost(input: $input) {
       __typename
@@ -291,12 +353,22 @@ async function createPost({ channelId, text, image, channelKey }) {
       ... on InvalidInputError { message }
     }
   }`;
+  // ── VIDEÓ VAGY KÉP ──────────────────────────────────────────────
+  // A séma élesben lekérdezve (2026-08-25):
+  //     AssetInput      = { document | image | video }
+  //     VideoAssetInput = { url, thumbnailUrl, metadata }
+  // Videó esetén a borítókép NEM elhagyható jószág: az Instagram ebből
+  // rakja ki a Reel csempéjét a profilrácsban.
+  const assets = video
+    ? [{ video: { url: video, ...(thumbnail ? { thumbnailUrl: thumbnail } : {}) } }]
+    : image ? [{ image: { url: image } }] : [];
+
   const input = {
     channelId,
     text,
     // Az assets NON_NULL: kép nélkül ÜRES lista megy (X/Threads elfogadja,
     // az Instagramot kép nélkül fentebb már kihagytuk).
-    assets: image ? [{ image: { url: image } }] : [],
+    assets,
     mode: 'shareNow',
     schedulingType: 'automatic',
     needsApproval: false
@@ -309,8 +381,21 @@ async function createPost({ channelId, text, image, channelKey }) {
   //    PostType = carousel | event | ghost_post | offer | post | reel | short
   //               | story | thread | whats_new
   // Nekünk `post` (feed-poszt) kell; a shouldShareToFeed kötelező.
+  // ── REEL VAGY FEED-POSZT (2026-08-25, user-döntés) ──────────────
+  // „A napi 1 Instagram-poszt legyen Reel az állókép helyett."
+  //
+  // MIÉRT: 11 nap mérve az Instagram 0 látogatót hozott. Az ok nem a
+  // csatorna volt, hanem a FORMÁTUM — az állóképes feed-posztot az
+  // Instagram alig mutatja NEM-követőknek, a Reelt viszont külön fülön és
+  // az ajánlóban is. A saját csatorna-szabályunk épp ezt kérdezi:
+  // „mutatja-e a platform a tartalmat nem követőknek?"
+  //
+  // ⚠️ HELYETTE, NEM MELLÉ. A fiók 2026-08-23-án automatizálás miatt
+  // hirdetési korlátozást kapott, és aznap vettük vissza napi 6 posztról
+  // napi 1-re. A Reel a napi EGY alkalmat használja fel — a tevékenység
+  // mennyisége NEM nő, csak a formátum lesz jobb.
   if (channelKey === 'instagram') {
-    input.metadata = { instagram: { type: 'post', shouldShareToFeed: true } };
+    input.metadata = { instagram: { type: video ? 'reel' : 'post', shouldShareToFeed: true } };
   }
 
   const r = await gql(mutation, { input });
@@ -395,13 +480,36 @@ async function main() {
       console.log(`\n📊 ${cfg.label}: napi plafon ${plafon} · ma eddig `
         + `${maiDb === null ? '? (nem sikerült lekérdezni)' : maiDb} → most ${keret} mehet`);
       if (keret <= 0) {
-        console.log(`   ⏭️  ${cfg.label}: mára megvan a napi adag — kihagyom.`);
-        continue;
+        // ⚠️ PRÓBAMÓDBAN NEM UGRUNK ÁT. Egy próba, ami a plafon miatt
+        // ELHALLGATJA, mi menne ki, pont a lényegét veszti el: így nem
+        // lehet ellenőrizni a poszt FORMÁJÁT (2026-08-25-én ezen bukott
+        // meg az Instagram-Reel próbája). Élesben viszont a plafon szent.
+        if (!DRY) {
+          console.log(`   ⏭️  ${cfg.label}: mára megvan a napi adag — kihagyom.`);
+          continue;
+        }
+        console.log(`   🧪 (a plafon élesben itt megállna — próbában megmutatom, mi menne)`);
+        keret = 1;
       }
     }
 
-    const batch = selectSocialBatch(q, keret);
-    console.log(`\n📨 ${cfg.label} (@${ch.user}) — ${q.length} várakozóból ${batch.length} megy ki`);
+    // ── A MAI REEL LESZ AZ INSTAGRAM NAPI POSZTJA (2026-08-25) ──────
+    //
+    // ⚠️ NEM A SORBÓL VETT SZÖVEGHEZ RAGASZTJUK A VIDEÓT. Az első
+    // változatom ezt tette, és a próbafutás megmutatta, mi lett belőle:
+    //     szöveg: „AI Memory Games for Dementia Care…"
+    //     videó : „How to Write a Clear Prompt…"
+    // Két különböző cikk, egy poszton. A videót a Reel-sor választja
+    // (legrégebbi útmutató), a szöveget a közösségi sor — a kettőnek
+    // semmi köze egymáshoz.
+    //
+    // Ezért a Reel a SAJÁT cikkének kész közösségi szövegével megy ki, és
+    // az a poszt kapja a „kiküldve" jelölést. A sorból kimaradó elem ott
+    // marad, holnap sorra kerül — sor, nem határidő.
+    const reel = ch.key === 'instagram' ? await maiReel() : null;
+    const batch = reel?.item ? [reel.item] : selectSocialBatch(q, keret);
+    console.log(`\n📨 ${cfg.label} (@${ch.user}) — ${q.length} várakozóból ${batch.length} megy ki`
+      + (reel?.item ? '  🎬 (a mai Reel)' : ''));
 
     for (const item of batch) {
       const slug = realSlug(item.post);
@@ -411,20 +519,34 @@ async function main() {
       if (!alap) { console.log(`   ⏭️  ${slug.slice(0, 40)} — nem fér ki erre a csatornára`); continue; }
       const szoveg = cta && (alap.weight + cta.length + 2) <= cfg.limit ? `${alap.body}\n\n${cta}` : alap.body;
 
-      // KÉP-ELLENŐRZÉS. Az Instagramnak KÖTELEZŐ; a másik kettőnek jólesik.
+      // ── A MAI REEL (2026-08-25) ─────────────────────────────────
+      // Ugyanaz a videó, amit a Facebook Reelhez gyártottunk — egy fájl,
+      // két helyre, nulla plusz költség. CSAK az Instagramnak: a Threads
+      // szöveges csatorna, ott a link kattintható, a mostani forma jó.
+      //
+      // KÉP-ELLENŐRZÉS. Az Instagramnak KÖTELEZŐ — kivéve, ha Reel megy.
       const kep = imageUrl(slug);
       const vanKep = await imageExists(kep);
-      if (!vanKep && ch.key === 'instagram') {
+      if (!vanKep && !reel && ch.key === 'instagram') {
         console.log(`   ⏭️  ${slug.slice(0, 40)} — nincs borítókép, az Instagram viszont követeli`);
         continue;
       }
 
       if (DRY) {
         console.log(`   (próba) ${slug.slice(0, 44)}  [${alap.weight}/${cfg.limit}${alap.truncated ? ', csonkítva' : ''}]${vanKep ? '' : ' ⚠️ kép nélkül'}`);
+        if (reel) {
+          console.log(`      🎬 REEL-formátum: ${reel.video}`);
+          console.log(`         csempe: ${reel.kep || '(nincs — a videó első kockája lesz)'}`);
+        } else if (ch.key === 'instagram') {
+          console.log('      🖼️  állóképes poszt (ma nincs legyártott Reel)');
+        }
         continue;
       }
 
-      const r = await createPost({ channelId: ch.id, channelKey: ch.key, text: szoveg, image: vanKep ? kep : null });
+      const r = reel
+        ? await createPost({ channelId: ch.id, channelKey: ch.key, text: szoveg, video: reel.video, thumbnail: reel.kep })
+        : await createPost({ channelId: ch.id, channelKey: ch.key, text: szoveg, image: vanKep ? kep : null });
+      if (reel) console.log(`   🎬 Reel-formátum: ${reel.slug.slice(0, 44)}`);
       keres++;
       if (r.error) { console.log(`   ❌ ${slug.slice(0, 40)} — ${r.error}`); continue; }
 
