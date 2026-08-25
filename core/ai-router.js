@@ -84,21 +84,105 @@ function getClient(provider) {
 // ===================================================================
 // Egy szám-vektort ad vissza a szöveghez, vagy null-t ha nem sikerült
 // (nincs Google kulcs / hiba). A hívó ilyenkor kulcsszó-keresésre eshet vissza.
-export async function embedText(text) {
-  const t = (text || '').trim();
-  if (!t || !process.env.GOOGLE_API_KEY) return null;
+// ===================================================================
+// BEÁGYAZÁS — jelentés-vektor egy szöveghez (INGYENES)
+// ===================================================================
+//
+// ⚠️ ÉLES LELET (2026-08-25). A Google-kulcs előfizetéses kerete ELFOGYOTT:
+//     429 — "Your prepayment credits are depleted"
+// Az embedText erre NÉMÁN `null`-t adott, a közeli-téma-őr pedig szó nélkül
+// átváltott a Jaccard-tartalékra. MÉRVE: a tartalék 15 ISMERT témaismétlésből
+// 1-et fogott meg (7%). Vagyis az őr hónapokig futott ~7%-os érzékenységgel,
+// és közben végig zöldnek látszott.
+//
+// 🔑 A TANULSÁG: nem „elromlott", hanem FOKOZATOSAN LEBUTULT. A néma siker és
+// a néma vakság kívülről egyformán néz ki. Ezért van most (a) tartalék-
+// szolgáltató, és (b) `embedStatus()`, amit a napi riport kiír.
+//
+// A Mistral-beágyazás ugyanazzal a MEGLÉVŐ ingyenes kulcsunkkal megy
+// (mérve 2026-08-25: HTTP 200, 1024 dimenzió).
+// ===================================================================
+
+// A legutóbbi hívás sorsa — a napi riport ebből tudja, lát-e még az őr.
+let _embedAllapot = { provider: null, at: null, error: null };
+
+/** Mit tudunk a beágyazásról? A napi riport ezt írja ki. */
+export function embedStatus() {
+  return { ..._embedAllapot };
+}
+
+async function embedGoogle(t) {
+  if (!process.env.GOOGLE_API_KEY) return { v: null, error: 'nincs GOOGLE_API_KEY' };
   try {
-    const client = getClient('google');
-    const resp = await client.models.embedContent({
+    const resp = await getClient('google').models.embedContent({
       model: 'gemini-embedding-001',
-      contents: t.slice(0, 2000),
+      contents: t,
       config: { outputDimensionality: 768 }
     });
     const v = resp?.embeddings?.[0]?.values || resp?.embedding?.values || null;
-    return Array.isArray(v) && v.length ? v : null;
-  } catch {
-    return null;
+    return { v: Array.isArray(v) && v.length ? v : null, error: v ? null : 'üres válasz' };
+  } catch (e) {
+    return { v: null, error: String(e.message || e).slice(0, 120) };
   }
+}
+
+// ⚠️ AZ INGYENES SZINT SEBESSÉGKORLÁTOS, ÉS EZ ÉLESBEN MEG IS FOGOTT
+// (2026-08-25): egy 429 miatt kimaradt beágyazásból a hívó „0 hasonlóság"-ot
+// olvasott, és két majdnem azonos cím átment a kapun. A 429 NEM végleges
+// hiba — megvárjuk és újrapróbáljuk. Kevesebbe kerül egy másodperc várakozás,
+// mint egy ismétlődő cikk.
+async function embedMistral(t, probak = 3) {
+  const key = (process.env.MISTRAL_API_KEY || '').trim();
+  if (!key) return { v: null, error: 'nincs MISTRAL_API_KEY' };
+  let utolso = 'ismeretlen';
+  for (let i = 0; i < probak; i++) {
+    try {
+      const r = await fetch('https://api.mistral.ai/v1/embeddings', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${key}` },
+        body: JSON.stringify({ model: 'mistral-embed', input: [t] }),
+        signal: AbortSignal.timeout(20000)
+      });
+      if (r.status === 429 || r.status >= 500) {
+        utolso = `HTTP ${r.status}`;
+        await new Promise(s => setTimeout(s, 1200 * (i + 1)));
+        continue;
+      }
+      if (!r.ok) return { v: null, error: `HTTP ${r.status}` };
+      const j = await r.json();
+      const v = j?.data?.[0]?.embedding || null;
+      return { v: Array.isArray(v) && v.length ? v : null, error: v ? null : 'üres válasz' };
+    } catch (e) {
+      utolso = String(e.message || e).slice(0, 120);
+      await new Promise(s => setTimeout(s, 1200 * (i + 1)));
+    }
+  }
+  return { v: null, error: utolso + ` (${probak} próba után)` };
+}
+
+/**
+ * @returns {Promise<number[]|null>} a vektor, vagy null, ha EGYIK szolgáltató
+ *          sem tudott adni. A `null` itt „nem tudom", nem „nem hasonló" —
+ *          a hívónak ezt KÜLÖN kell kezelnie, nem szabad 0 hasonlóságnak venni.
+ *
+ * ⚠️ A VEKTOROK SZOLGÁLTATÓNKÉNT MÁSOK (768 vs 1024 dimenzió, más tér).
+ * Két vektort CSAK akkor szabad összehasonlítani, ha ugyanaz a szolgáltató
+ * adta őket. A gyorsítótárnak ezért tárolnia kell, melyik adta.
+ */
+export async function embedText(text) {
+  const t = (text || '').trim();
+  if (!t) return null;
+  const rovid = t.slice(0, 2000);
+
+  for (const [nev, fn] of [['google', embedGoogle], ['mistral', embedMistral]]) {
+    const { v, error } = await fn(rovid);
+    if (v) {
+      _embedAllapot = { provider: nev, at: new Date().toISOString(), error: null };
+      return v;
+    }
+    _embedAllapot = { provider: null, at: new Date().toISOString(), error: `${nev}: ${error}` };
+  }
+  return null;
 }
 
 // ===================================================================

@@ -74,26 +74,58 @@ export async function isNearDuplicateTitle(candidate, existingTitles, opts = {})
 
   if (embed) {
     const cache = loadCache();
-    const vecFor = async (title) => {
+    // ⚠️ SZOLGÁLTATÓ-VÁLTÁS UTÁN A RÉGI GYORSÍTÓTÁR MÉRGEZŐ (2026-08-25).
+    // A Google 768, a Mistral 1024 dimenziós vektort ad, és a kettő KÜLÖN
+    // TÉR — összehasonlítani őket értelmetlen. A cosine() eltérő hosszra
+    // 0-t ad vissza, tehát a régi bejegyzések NÉMÁN „nem hasonló"-t
+    // mondanának mindenre: pontosan az a fajta csendes vakság, ami miatt
+    // ez az egész javítás készül. Ezért a rossz méretű bejegyzés
+    // gyorsítótár-tévesztésnek számít, és újra beágyazzuk.
+    const vecFor = async (title, dim = 0) => {
       const key = normTitle(title);
-      if (cache[key]) return cache[key];
+      const c = cache[key];
+      if (Array.isArray(c) && c.length && (!dim || c.length === dim)) return c;
       const v = await embed(title);
       if (v) cache[key] = v;
       return v;
     };
-    const cv = await vecFor(cand);
+    // ⚠️ A JELÖLTET MINDIG FRISSEN ÁGYAZZUK BE, gyorsítótár nélkül. Az ő
+    // vektorának hossza mondja meg, MI A MOSTANI szolgáltató tere — és
+    // csak ehhez szabad mérni a többit. Az első javításom csak a gyanúsak
+    // dimenzióját ellenőrizte, a jelöltét nem: így a jelölt a RÉGI (768
+    // dimenziós Google) gyorsítótárból jött, a párja meg frissen 1024-gyel,
+    // és a cosine() 0.000-t adott két majdnem azonos címre. Egy plusz
+    // beágyazás hívásonként — ez az ára annak, hogy ne hazudjon a szám.
+    const cv = await embed(cand);
+    if (cv) cache[normTitle(cand)] = cv;
     if (cv) {
-      let best = null;
+      // ⚠️ A SIKERTELEN BEÁGYAZÁS NEM NULLA HASONLÓSÁG (2026-08-25, élesben
+      // megfogva). Korábban itt `sv ? cosine(cv, sv) : 0` állt: ha egy cím
+      // beágyazása elhasalt (pl. sebességkorlát), a kód 0-t adott, vagyis
+      // „egyáltalán nem hasonlít". Mérve: két majdnem azonos cím kapott
+      // 0.000-t, és átment a kapun. A „NEM TUDOM" nem lehet „NEM".
+      //
+      // Most az ilyen gyanús a SAJÁT tartalék-skáláján (Jaccard) kap
+      // ítéletet, és minden gyanúsat a hozzá tartozó küszöbhöz mérünk —
+      // a két pontszám KÜLÖN SKÁLA, összehasonlítani őket értelmetlen volna.
+      let best = null, hianyzo = 0, talalat = false;
       for (const s of suspects) {
-        const sv = await vecFor(s.title);
-        const score = sv ? cosine(cv, sv) : 0;
-        if (!best || score > best.score) best = { title: s.title, score, by: 'embedding' };
+        const sv = await vecFor(s.title, cv.length);
+        const beagyazott = !!sv;
+        if (!beagyazott) hianyzo++;
+        const score = beagyazott ? cosine(cv, sv) : s.jac;
+        const kuszob = beagyazott ? cosineThreshold : jaccardThreshold;
+        if (score >= kuszob) talalat = true;
+        // a JELENTÉSHEZ azt tartjuk meg, amelyik a saját küszöbéhez képest
+        // a legközelebb jár — így a riportban összemérhető marad
+        const arany = kuszob > 0 ? score / kuszob : 0;
+        if (!best || arany > best._arany) {
+          best = { title: s.title, score, by: beagyazott ? 'embedding' : 'jaccard-tartalék', _arany: arany };
+        }
       }
       saveCache(cache);
-      if (best && best.score >= cosineThreshold) return { duplicate: true, closest: best };
-      // embedding megvolt, de nem elég közeli → NEM duplikátum (a Jaccard-ra
-      // nem esünk vissza, mert az embedding a megbízhatóbb jel)
-      return { duplicate: false, closest: best };
+      if (best) delete best._arany;
+      return { duplicate: talalat, closest: best, unresolved: hianyzo };
     }
   }
 
