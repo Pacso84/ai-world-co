@@ -21,7 +21,7 @@ import { dirname, join } from 'path';
 import { sendMessage } from './telegram.js';
 import { canonicalChip } from './quality-guard.js';
 import { summarizeRuns, describeFailures } from './make-health.js';
-import { describePosts, describeRepeat, describeTranslationGaps, mergeLine, huSpellingLine } from './report-lines.js';
+import { describePosts, describeRepeat, describeTranslationGaps, mergeLine, huSpellingLine, repeatLine } from './report-lines.js';
 import { bodyLooksUntranslated } from './translation-guard.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -366,6 +366,30 @@ async function main() {
   // a néma hiba pont az lenne, hogy az ítélet sosem csoportosít, és a hiányzó
   // sorból ez nem derülne ki. Az őrszem csak akkor őr, ha odaszól, ahol nézed.
   lines.push(mergeLine(r.maiCikkek, 1));
+  // 🔁 ISMÉTLÉS-ŐR (2026-08-25): hány készülő cikket fogott meg, mert már
+  // írtunk róla. AKKOR IS kimegy, ha nulla — sőt, KÜLÖN üzenet jár arra, ha
+  // az őr EL SEM INDULT. Előzmény: a témaismétlés-őr beágyazása hónapokig
+  // halott volt (elfogyott Google-keret), 7%-os érzékenységgel futott, és
+  // közben végig zöldnek látszott. A „nem volt" és a „nem futott" kívülről
+  // egyformán néz ki — ezért kell a kettőt megkülönböztetni.
+  //
+  // A MAI ÖSSZES futást összegezzük: a CI naponta háromszor fut, egyetlen
+  // futás naplója a nap harmadát mutatná.
+  try {
+    const napi = { skipped_repeat: 0, repeats: [] };
+    let volt = false;
+    const ma = today();
+    for (const f of readdirSync(join(ROOT, 'logs'))) {
+      if (!f.startsWith('writer_') || !f.endsWith('.json')) continue;
+      if (!f.includes(ma)) continue;
+      let s; try { s = JSON.parse(readFileSync(join(ROOT, 'logs', f), 'utf-8')); } catch { continue; }
+      if (!Number.isFinite(Number(s.skipped_repeat)) || !Array.isArray(s.repeats)) continue;
+      volt = true;
+      napi.skipped_repeat += Number(s.skipped_repeat);
+      napi.repeats.push(...s.repeats);
+    }
+    lines.push(repeatLine(volt ? napi : {}));
+  } catch { lines.push(repeatLine({})); }
   // 📝 MAGYAR HELYESÍRÁS (2026-08-20): csak az kerül ide, amit a gép nem
   // javíthatott magától. Az őrszem csak akkor őr, ha odaszól, ahol nézed.
   try {

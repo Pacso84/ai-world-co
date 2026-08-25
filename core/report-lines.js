@@ -175,3 +175,39 @@ export function huSpellingLine(store) {
   const fej = fedes ? `📝 Helyesírás (${fedes}) — átnézésre: ` : '📝 Magyar szóalak átnézésre: ';
   return `${fej}${lista.length} — ${pelda}${lista.length > 3 ? ' …' : ''}`;
 }
+
+/**
+ * 🔁 Ismétlés-őr — hány készülő cikket fogott meg, mert már írtunk róla?
+ *
+ * MIÉRT KELL EZ A SOR (2026-08-25). A témaismétlés-őr beágyazása HÓNAPOK ÓTA
+ * halott volt: a Google-kulcs kerete elfogyott, a hívás némán `null`-t adott,
+ * az őr meg szó nélkül átváltott a durva tartalékra. Mérve: 15 ismert
+ * ismétlésből 1-et fogott meg (7%). Végig ZÖLDNEK LÁTSZOTT.
+ *
+ * ⚠️ EZÉRT KÜLÖNBÖZTETÜNK MEG HÁROM ÁLLAPOTOT, nem kettőt:
+ *     „nem futott"  — az őr el sem indult  → ⚠️, mert ez HIBA
+ *     „nem volt"    — futott, nem talált    → csendes rendben
+ *     „N ismétlés"  — futott és fogott      → mit hagyott ki, és mi helyett
+ *
+ * A „nem volt" és a „nem futott" kívülről EGYFORMÁN néz ki (mindkettő nulla),
+ * és pont ez a különbségtétel hiányzott hónapokig.
+ */
+export function repeatLine(stats) {
+  const s = (stats && typeof stats === 'object') ? stats : {};
+  const db = Number(s.skipped_repeat);
+  const lista = Array.isArray(s.repeats) ? s.repeats : null;
+
+  if (!Number.isFinite(db) || !lista) {
+    return '🔁 Ismétlés-őr: ⚠️ NEM FUTOTT (nincs adat) — ez hiba, nézd meg a naplót';
+  }
+  if (!db) return '🔁 Ismétlés-őr: nem volt ismétlés (0)';
+
+  const reszek = lista.slice(0, 3).map(r => {
+    const cim = String(r?.cim || '?').slice(0, 44);
+    const mar = String(r?.mar || '?').slice(0, 44);
+    const p = Number(r?.pont);
+    return `   • „${cim}"\n     helyett megvan: „${mar}"${Number.isFinite(p) ? ` (${p.toFixed(2)})` : ''}`;
+  });
+  const tobb = lista.length > 3 ? `\n   …és még ${lista.length - 3}` : '';
+  return `🔁 Ismétlés-őr: ${db} cikk NEM jelent meg, mert már írtunk róla\n${reszek.join('\n')}${tobb}`;
+}

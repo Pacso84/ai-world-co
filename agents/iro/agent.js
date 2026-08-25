@@ -400,6 +400,73 @@ function hasRequiredSections(markdown) {
 }
 
 // ===================================================================
+// ISMÉTLÉS-ŐR — írtunk-e már erről?
+// ===================================================================
+//
+// A logika a core/repeat-guard.js-ben és a core/topic-dedup.js-ben él
+// (ott tesztelhető); itt csak a lemezolvasás és a döntés összekötése.
+//
+// ⚠️ HÁROM KIZÁRÁS FUT A HASONLÓSÁG ELŐTT, mind a saját metaadatunkból:
+// heti összefoglaló · eltérő eszköz · szándékos hír+útmutató páros.
+// A hír-író `pairing: false`-szal hív — a hír ELŐBB születik, mint a hozzá
+// írt útmutató, tehát visszafelé mutató párosítás itt nem jelent semmit
+// (mérve: 9/9 vs 8/9 elkapva, ugyanannyi hamis riasztással).
+//
+// ⚠️ A KÜSZÖB 0.92, MÉRT ÉRTÉK 42 kézzel osztályozott páron: 12/12 valódi
+// ismétlés elkapva, 2 hamis riasztás. Ne írd át mérés nélkül.
+
+/** A megírt cikk címe a markdown első `# ` sorából (a frontmatter után). */
+function megirtCim(markdown) {
+  const m = String(markdown || '').match(/^#\s+(.+)$/m);
+  return m ? m[1].trim() : '';
+}
+
+/**
+ * @returns {Promise<{cim,mar,pont}|null>} a lelet, vagy null, ha nem ismétlés
+ *
+ * BÁRMILYEN hiba → null, vagyis a MAI viselkedés (a cikk megjelenik).
+ * Az őr soha nem állíthatja meg a gyártást azzal, hogy ő maga elhasal.
+ */
+async function ismetlesE(markdown, drafts, theme) {
+  try {
+    const cim = megirtCim(markdown);
+    if (!cim) return null;
+
+    const { kizart, REPEAT_COSINE } = await import('../../core/repeat-guard.js');
+    const { isNearDuplicateTitle } = await import('../../core/topic-dedup.js');
+    const { guideMeta } = await import('../../core/frontmatter.js');
+
+    // A JELÖLT metaadatai: az összevonás miatt több draftból is jöhet.
+    const fo = (Array.isArray(drafts) ? drafts : [drafts])[0] || {};
+    const jelolt = { cim, slug: '', file: '', type: 'news', tool: fo?._meta?.tool || '', source_news: '' };
+
+    // A REFERENCIA A TELJES CIKKÁLLOMÁNY — hír ÉS útmutató. Eddig az
+    // útmutató-őr csak MÁS ÚTMUTATÓKHOZ hasonlított, a hírhez semmi.
+    const DIR = join(PROJECT_ROOT, 'content', 'articles');
+    if (!existsSync(DIR)) return null;
+    const jeloltek = [];
+    for (const f of readdirSync(DIR)) {
+      if (!f.startsWith('ARTICLE_') || !f.endsWith('.json')) continue;
+      let j; try { j = JSON.parse(readFileSync(join(DIR, f), 'utf-8')); } catch { continue; }
+      const c = (guideMeta(j).title || '').trim();
+      if (!c) continue;
+      const meta = j._meta || {};
+      const masik = { cim: c, slug: meta.slug || '', file: f, tool: meta.tool || '',
+        type: meta.type === 'guide' ? 'guide' : 'news', source_news: meta.source_news || '' };
+      if (kizart(jelolt, masik, { pairing: false })) continue;
+      jeloltek.push(masik);
+    }
+    if (!jeloltek.length) return null;
+
+    const r = await isNearDuplicateTitle(cim, jeloltek.map(x => x.cim), { cosineThreshold: REPEAT_COSINE });
+    if (!r.duplicate || !r.closest) return null;
+    return { cim, mar: r.closest.title, pont: r.closest.score, by: r.closest.by, theme: theme || null };
+  } catch {
+    return null;
+  }
+}
+
+// ===================================================================
 // CIKK MENTÉSE
 // ===================================================================
 
@@ -703,6 +770,12 @@ async function main() {
     skipped_duplicate: 0,
     clusters_found: 0,
     merged_total: 0,
+    // ISMÉTLÉS-ŐR (2026-08-25). A mezők MINDIG itt vannak, akkor is, ha 0 —
+    // különben a napi riport nem tudná megkülönböztetni a „nem volt ismétlés"
+    // esetet attól, hogy az őr EL SEM INDULT. Ugyanaz a lecke, mint a magyar
+    // helyesírás-őrnél: a néma siker és a néma vakság egyformán néz ki.
+    skipped_repeat: 0,
+    repeats: [],
     total_cost_usd: 0,
     by_article: []
   };
@@ -778,6 +851,36 @@ async function main() {
         draft: egyseg.ids[0],
         success: false,
         error: 'AI router returned null'
+      });
+      continue;
+    }
+
+    // ── ISMÉTLÉS-ŐR (2026-08-25) ────────────────────────────────────
+    // „Írtunk-e már erről?" — a user vette észre, hogy ugyanaz a téma
+    // többször megjelenik. Mérve: 797 cikkből 4-5% ismételt egy korábbit,
+    // és a hír-íróban EGYÁLTALÁN nem volt ilyen ellenőrzés.
+    //
+    // ⚠️ MIÉRT AZ ÍRÁS UTÁN, ÉS NEM ELŐTTE. A draft nyers forrás-címe és a
+    // mi átírt címünk KÉT KÜLÖNBÖZŐ dolog. Mérve a 12 ismert ismétlésen:
+    //     nyers forrás-címmel:  3/12  (és 9-nél nincs is nyers cím)
+    //     a MEGÍRT címmel    : 12/12
+    // Az írás ára ilyenkor kárba vész (~$0,02), de a 4-5%-os arány mellett
+    // ez napi ~$0,008 — a napi $1-os kerethez képest elhanyagolható.
+    // A KÖLTSÉGET AKKOR IS ELKÖNYVELJÜK, ha eldobjuk a cikket: a tokent
+    // kifizettük, elhallgatni annyi lenne, mint eltitkolni a költést.
+    const ism = await ismetlesE(response.text, lista, egyseg.theme);
+    if (ism) {
+      stats.total_cost_usd += response.costUsd;
+      stats.skipped_repeat = (stats.skipped_repeat || 0) + 1;
+      (stats.repeats = stats.repeats || []).push(ism);
+      console.log(`   🔁 ISMÉTLÉS — nem publikálom: "${ism.cim.slice(0, 52)}"`);
+      console.log(`      már megvan: "${ism.mar.slice(0, 52)}"  (${ism.pont.toFixed(3)})`);
+      for (const d of lista) {
+        try { unlinkSync(join(DRAFTS_DIR, d.__filename)); } catch { /* már nincs ott */ }
+      }
+      stats.by_article.push({
+        draft: egyseg.ids[0], success: false, reason: 'repeat',
+        repeat_of: ism.mar, score: ism.pont, cost_usd: response.costUsd
       });
       continue;
     }

@@ -242,4 +242,42 @@ t('sok átnézendőnél számot ad és néhány példát', () => {
   assert.ok(s.length < 220, 'a riport-sor ne fusson szét');
 });
 
+
+// ── 🔁 ISMÉTLÉS-ŐR ──────────────────────────────────────────────────
+//
+// ELŐZMÉNY (2026-08-25): a user vette észre, hogy ugyanaz a téma többször
+// megjelenik. Kiderült, hogy a témaismétlés-őr beágyazása HÓNAPOK ÓTA halott
+// volt (a Google-kulcs elfogyott), és 7%-os érzékenységgel futott — miközben
+// végig zöldnek látszott. EZÉRT van most sor a napi riportban.
+
+import { repeatLine } from './report-lines.js';
+
+t('🔁 kiírja, hány ismétlést fogott meg', () => {
+  const s = repeatLine({ skipped_repeat: 2, repeats: [
+    { cim: 'What Is Agentic AI?', mar: "What 'Agentic AI' Means for Your Work", pont: 0.921 },
+    { cim: 'How to Spot a Phishing Message', mar: 'How to Spot a Phishing Email', pont: 0.956 }
+  ] });
+  assert.match(s, /2/);
+  assert.match(s, /Agentic AI/, 'mondja meg, MIT hagyott ki');
+});
+
+t('🔁 NULLÁNÁL IS KIÍR — a hallgatás itt félrevezetne', () => {
+  // A „nem volt ismétlés" és az „el sem indult az őr" kívülről egyformán
+  // néz ki: mindkettő nulla. Pont ez a hiba tartott hónapokig.
+  const s = repeatLine({ skipped_repeat: 0, repeats: [] });
+  assert.ok(s, 'nem lehet üres');
+  assert.match(s, /nem volt|0/);
+});
+
+t('🔁 ha az őr EL SEM INDULT, az MÁS üzenet, mint a nulla', () => {
+  const nincs = repeatLine({});                    // nincsenek mezők
+  const nulla = repeatLine({ skipped_repeat: 0, repeats: [] });
+  assert.notEqual(nincs, nulla, 'a két állapotot meg kell különböztetni');
+  assert.match(nincs, /nem futott|ismeretlen|⚠️/i);
+});
+
+t('🔁 hibás bemenetre nem borul', () => {
+  for (const x of [null, undefined, 'hopp', 42]) assert.doesNotThrow(() => repeatLine(x));
+});
+
 console.log('\n✅ report-lines.test: mind a ' + pass + ' eset rendben');
