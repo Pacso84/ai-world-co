@@ -1,86 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t17875318734064",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-08-24T00:37:53.406Z",
-      "updated": "2026-08-24T00:38:13.118Z"
-    },
-    {
-      "id": "t178753189312977",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-08-24T00:38:13.129Z",
-      "updated": "2026-08-24T00:38:13.369Z"
-    },
-    {
-      "id": "t178753189337162",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-24T00:38:13.371Z",
-      "updated": "2026-08-24T00:38:13.603Z"
-    },
-    {
-      "id": "t178753189364481",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-24T00:38:13.644Z",
-      "updated": "2026-08-24T00:38:13.824Z"
-    },
-    {
-      "id": "t178753189389982",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-08-24T00:38:13.899Z",
-      "updated": "2026-08-24T00:38:14.320Z"
-    },
-    {
-      "id": "t178753189438136",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-24T00:38:14.381Z",
-      "updated": "2026-08-24T00:44:03.713Z"
-    },
-    {
-      "id": "t178753224371538",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-24T00:44:03.715Z",
-      "updated": "2026-08-24T00:45:26.434Z"
-    },
-    {
-      "id": "t178753232646771",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-24T00:45:26.467Z",
-      "updated": "2026-08-24T00:45:26.621Z"
-    },
-    {
-      "id": "t17875323266226",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-24T00:45:26.622Z",
-      "updated": "2026-08-24T00:45:50.419Z"
-    },
-    {
-      "id": "t178753235042390",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-24T00:45:50.423Z",
-      "updated": "2026-08-24T00:51:10.349Z"
-    },
-    {
       "id": "t178753267035178",
       "title": "Run ellenorzo",
       "status": "done",
@@ -479,33 +399,89 @@
       "agent": "publisher",
       "created": "2026-08-25T08:33:36.558Z",
       "updated": "2026-08-25T08:34:00.711Z"
+    },
+    {
+      "id": "t178767501261387",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-08-25T16:23:32.613Z",
+      "updated": "2026-08-25T16:23:32.800Z"
+    },
+    {
+      "id": "t178767501280156",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-08-25T16:23:32.801Z",
+      "updated": "2026-08-25T16:24:07.366Z"
+    },
+    {
+      "id": "t178767504736839",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-08-25T16:24:07.368Z",
+      "updated": "2026-08-25T16:24:07.570Z"
+    },
+    {
+      "id": "t178767504757278",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-25T16:24:07.572Z",
+      "updated": "2026-08-25T16:24:41.644Z"
+    },
+    {
+      "id": "t178767508164648",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-25T16:24:41.646Z",
+      "updated": "2026-08-25T16:24:54.275Z"
+    },
+    {
+      "id": "t178767509427833",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-08-25T16:24:54.278Z",
+      "updated": "2026-08-25T16:25:01.973Z"
+    },
+    {
+      "id": "t178767510201955",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-25T16:25:02.019Z",
+      "updated": "2026-08-25T16:25:15.956Z"
+    },
+    {
+      "id": "t178767511595757",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-08-25T16:25:15.957Z",
+      "updated": "2026-08-25T16:25:32.087Z"
+    },
+    {
+      "id": "t178767513208886",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-25T16:25:32.088Z",
+      "updated": "2026-08-25T16:25:43.564Z"
+    },
+    {
+      "id": "t178767514356614",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-08-25T16:25:43.566Z",
+      "updated": "2026-08-25T16:26:03.600Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178667101142024",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). A solid, varied lineup! The mix of practical guides (complaints, refunds, pet-sitting agreements) with personal writing (sympathy messages, thank-you speeches) works well — it shows everyday people th",
-      "agent": "publisher",
-      "at": "2026-08-14T01:30:11.420Z",
-      "loud": false
-    },
-    {
-      "id": "n178667102133421",
-      "level": "success",
-      "text": "8 hír + 4 útmutató publikálva (költség: $0.2110).",
-      "agent": "ceo",
-      "at": "2026-08-14T01:30:21.334Z",
-      "loud": false
-    },
-    {
-      "id": "n178675630416690",
-      "level": "info",
-      "text": "SEO: 9 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-08-15T01:11:44.166Z",
-      "loud": false
-    },
     {
       "id": "n178675632567868",
       "level": "success",
@@ -1281,18 +1257,33 @@
       "agent": "ceo",
       "at": "2026-08-25T08:34:00.749Z",
       "loud": false
+    },
+    {
+      "id": "n178767513207818",
+      "level": "info",
+      "text": "SEO: 1 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-08-25T16:25:32.078Z",
+      "loud": false
+    },
+    {
+      "id": "n17876751506756",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The line-up has a clear, practical focus—helping people with everyday writing tasks—which makes it coherent and useful. One note: with 7 different AI tools featured, a gentle \"How to Get Started\" intr",
+      "agent": "publisher",
+      "at": "2026-08-25T16:25:50.675Z",
+      "loud": false
+    },
+    {
+      "id": "n178767516364056",
+      "level": "success",
+      "text": "1 hír + 0 útmutató publikálva (költség: $0.0153).",
+      "agent": "ceo",
+      "at": "2026-08-25T16:26:03.640Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178681032028421",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 20 → 5/4/2 oszlop.",
-      "ref": "mobile",
-      "at": "2026-08-15T16:12:00.284Z"
-    },
     {
       "id": "m178684108322987",
       "from": "pairing",
@@ -2650,6 +2641,15 @@
       "text": "5 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-08-25T08:40:50.133Z"
+    },
+    {
+      "id": "m178767514355496",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-08-25T16:25:43.554Z"
     }
   ]
 }
