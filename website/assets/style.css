@@ -636,6 +636,13 @@ body {
 .midread__arrow { color:var(--accent); flex-shrink:0; }
 .midread__link:hover { text-decoration:underline; }
 @media (max-width:640px){ .midread { margin:24px 0; padding:12px 14px; } .midread__link { font-size:15px; } }
+/* KÖZÉP-DOBOZ ÚTMUTATÓBAN (2026-08-25). A .g-steps flex-oszlop, ami MÁR ad
+   16px rést a lépések közé, és a flexben a margó NEM olvad össze — a doboz
+   saját 30px-ével együtt 46px lenne, ami úgy nézne ki, mintha kimaradt volna
+   egy lépés. 14px-re véve a rés 30px: láthatóan több a lépésköznél (tehát
+   nem lépésnek olvasódik), de nem szakadék. */
+.g-steps > .midread { margin: 14px 0; }
+@media (max-width:640px){ .g-steps > .midread { margin: 10px 0; } }
 
 /* ===== Táblázatok (cikkekben + útmutatókban) ===== */
 .table-wrap { overflow-x:auto; margin:22px 0; border:1px solid var(--line); border-radius:12px; -webkit-overflow-scrolling:touch; }

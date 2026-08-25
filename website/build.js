@@ -25,6 +25,8 @@ import { buildMetaDescription } from '../core/meta-description.js';
 import { legacyRedirect } from '../core/legacy-urls.js';
 import { rankRelated } from '../core/related.js';
 import { kindOf, KIND_ORDER, KINDS } from '../core/tool-kinds.js';
+import { langSentence } from '../core/llms-txt.js';
+import { insertMidGuide } from '../core/mid-guide.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = join(__dirname, '..');
@@ -2176,7 +2178,11 @@ function buildGuidePage(a) {
   // egy fogalom az egész útmutatóban csak egyszer linkelődik (először a bevezetőben).
   const alState = { linked: new Set(), count: 0 };
   const introHtml = intro ? glossAutolink(guideSectionHtml(intro), alState) : '';
-  const blocksLinked = glossAutolink(blocks, alState);
+  // KÖZÉP-DOBOZ (2026-08-25): a látogatók 63%-a útmutatóra érkezik, és
+  // 359 útmutatóból 0 kapott továbbvezetést a szöveg közepén — a hírek
+  // 437-ből 397-et igen. Lásd core/mid-guide.js. Két LÉPÉS KÖZÉ kerül.
+  const blocksLinked = insertMidGuide(
+    glossAutolink(blocks, alState), stepHeadings.length, midReadBox(a));
 
   const toolChip = (a.company || a.tool)
     ? `<span class="g-tool">📘 ${escapeHtml([a.company, a.tool].filter(Boolean).join(' · '))}</span>` : '';
@@ -3107,7 +3113,7 @@ ${newsArts.map(a => `  <url><loc>${SITE.url}/article/${a.slug}</loc><news:news><
   console.log(`✅ sitemap.xml (${sitemapUrls.length} URL) + news-sitemap.xml (${newsArts.length} friss hír) + robots.txt generálva`);
 
   // feed.xml: NYELVENKÉNT készül a fő ciklusban (en=gyökér, /hu/feed.xml stb.)
-  console.log('✅ feed.xml minden nyelven generálva (gyökér + /hu /es /de /fr)');
+  console.log(`✅ feed.xml minden nyelven generálva (gyökér + ${SITE_LANGS.filter(l=>l!=='en').map(l=>'/'+l).join(' ')})`);
 
   // llms.txt — az AI-keresők/asszisztensek (Perplexity, ChatGPT stb.) számára
   // készült tömör oldal-térkép (llmstxt.org konvenció). Segít, hogy az AI-válaszok
@@ -3120,7 +3126,7 @@ ${newsArts.map(a => `  <url><loc>${SITE.url}/article/${a.slug}</loc><news:news><
     .join('\n');
   const llms = `# ${SITE.name}
 
-> AI news and step-by-step how-to guides for everyday people, written in plain English (no jargon). Every technical term is explained; every guide is written so a complete beginner can follow it. Also available in Hungarian (/hu/), Spanish (/es/), German (/de/) and French (/fr/).
+> AI news and step-by-step how-to guides for everyday people, written in plain English (no jargon). Every technical term is explained; every guide is written so a complete beginner can follow it.${langSentence(SITE_LANGS)}
 
 ## Main sections
 
