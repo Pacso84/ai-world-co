@@ -186,7 +186,7 @@ async function main() {
 
   // 4) Felirat-FORDÍTÁSOK (hu/es/de/fr) — user-kérés 2026-07-11: aki nem tud
   // angolul, olvashassa. Számozott sorokként fordíttatjuk (1:1 megfeleltetés).
-  const LANG_NAMES = { hu: 'Hungarian', es: 'Spanish', de: 'German', fr: 'French' };
+  const LANG_NAMES = { hu: 'Hungarian', es: 'Spanish' };
   for (const [lang, langName] of Object.entries(LANG_NAMES)) {
     try {
       const numbered = sentences.map((x, i) => `${i + 1}. ${x.text}`).join('\n');

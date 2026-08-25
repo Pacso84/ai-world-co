@@ -114,7 +114,7 @@
   if (!tog || !ov || !inp || !res) return;
 
   var seg = location.pathname.split('/')[1];
-  var pref = ['hu', 'es', 'de', 'fr'].indexOf(seg) !== -1 ? '/' + seg : '';
+  var pref = ['hu', 'es'].indexOf(seg) !== -1 ? '/' + seg : '';
   var idx = null;
 
   function esc(s) { var d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
@@ -214,7 +214,7 @@
   function thank() { box.innerHTML = '<span class="fb__q">' + (box.getAttribute('data-thanks') || '💛') + '</span>'; }
   if (lsGet(key)) { thank(); return; }
   var seg = location.pathname.split('/')[1];
-  var lang = ['hu', 'es', 'de', 'fr'].indexOf(seg) !== -1 ? seg : 'en';
+  var lang = ['hu', 'es'].indexOf(seg) !== -1 ? seg : 'en';
   box.querySelectorAll('.fb__btn').forEach(function (btn) {
     btn.addEventListener('click', function () {
       lsSet(key, btn.getAttribute('data-vote'));

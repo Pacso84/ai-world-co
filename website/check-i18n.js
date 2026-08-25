@@ -138,9 +138,7 @@ for (const lang of LANGS) {
         // 'hozzon létre'/'adja meg' SZÁNDÉKOSAN nincs itt: 3. személyben az
         // AI-ra is vonatkozhat ("kérd meg, hogy hozzon létre...") — álriasztás.
         hu: ['kattintson', 'nyissa meg', 'jelentkezzen be', 'írja be', 'válassza ki', 'nyisson'],
-        de: ['klicken sie', 'öffnen sie', 'geben sie', 'erstellen sie', 'wählen sie', 'melden sie sich', 'tippen sie'],
         es: ['haga clic', 'inicie sesión', 'seleccione', 'escriba su', 'abra su', 'pulse '],
-        fr: ['tu peux', 'ton compte', 'clique sur', 'ta première']
       };
       const marks = FORMALITY[lang] || [];
       const mHits = marks.filter(w => text.includes(w)).length;

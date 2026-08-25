@@ -14,7 +14,7 @@ const KB_TTL = 900; // 15 perc — a chatbot MINDIG a legfrissebb híreket láss
 // mindig friss, a chat kis forgalma mellett elhanyagolható extra kb.json-lekérés.)
 
 export async function loadKb(env, lang, fetchFn = fetch) {
-  const l = ['en', 'hu', 'es', 'de', 'fr'].includes(lang) ? lang : 'en';
+  const l = ['en', 'hu', 'es'].includes(lang) ? lang : 'en';
   const key = `cs:kb:${l}`;
   const cached = await env.FEEDBACK.get(key);
   if (cached) { try { return JSON.parse(cached); } catch { /* újratöltés */ } }
@@ -26,13 +26,11 @@ export async function loadKb(env, lang, fetchFn = fetch) {
   return kb;
 }
 
-// A megszólítás-norma (2026-07-14) a promptban: hu=tegezés, de=du, es=tú, fr=vous.
+// A megszólítás-norma (2026-07-14) a promptban: hu=tegezés, es=tú.
 const LANG_RULE = {
   en: 'Reply in English.',
   hu: 'Válaszolj magyarul, tegeződve (te).',
   es: 'Responde en español, tuteando (tú).',
-  de: 'Antworte auf Deutsch, in der Du-Form.',
-  fr: 'Répondez en français, en vouvoyant (vous).',
   auto: 'Reply in the same language the visitor wrote in.'
 };
 

@@ -116,7 +116,7 @@ function checkChips() {
 
 function checkDupLinks() {
   const out = [];
-  for (const lang of ['', 'hu', 'es', 'de', 'fr']) {
+  for (const lang of ['', 'hu', 'es']) {
     const p = join(PUBLIC_DIR, lang, 'tools.html');
     if (!existsSync(p)) continue;
     const h = readFileSync(p, 'utf-8');

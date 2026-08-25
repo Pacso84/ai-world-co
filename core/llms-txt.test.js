@@ -14,9 +14,12 @@ import { readFileSync, existsSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { langSentence } from './llms-txt.js';
+import { RETIRED_LANGS } from './retired-langs.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
-const KIVEZETETT = ['de', 'fr'];
+// A kivezetett nyelvek EGYETLEN forrása a sírkő-modul — ha egyszer az is
+// megszűnik, ez a teszt magától elnémul, nem elavult listát őriz.
+const KIVEZETETT = RETIRED_LANGS;
 
 let pass = 0;
 const t = (name, fn) => { fn(); pass++; console.log('  ✅ ' + name); };

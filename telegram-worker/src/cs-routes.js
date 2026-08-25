@@ -8,7 +8,7 @@ import { answer } from './cs-engine.js';
 import { tg } from './tg.js';
 
 const ORIGINS = ['https://aiworldhq.com', 'https://www.aiworldhq.com'];
-const LANGS = ['en', 'hu', 'es', 'de', 'fr'];
+const LANGS = ['en', 'hu', 'es'];
 const SESSION_MAX = 10;      // üzenet / munkamenet
 const IP_DAILY_MAX = 10;     // üzenet / nap / látogató
 const CONTACT_DAILY_MAX = 5;  // kapcsolat-űrlap / nap / IP — KÜLÖN a chat keretétől
@@ -18,15 +18,11 @@ export const LIMIT_MSG = {
   en: 'I have reached today’s free answer limit. Please use the contact form below — a human will get back to you by email. 💛',
   hu: 'Mára elfogyott az ingyenes válasz-keretem. Kérlek, használd a lenti űrlapot — emailben válaszolunk. 💛',
   es: 'He alcanzado el límite de respuestas gratuitas de hoy. Usa el formulario de contacto — te responderemos por correo. 💛',
-  de: 'Mein kostenloses Antwort-Kontingent für heute ist aufgebraucht. Nutze bitte das Kontaktformular — wir antworten per E-Mail. 💛',
-  fr: 'J’ai atteint ma limite de réponses gratuites pour aujourd’hui. Utilisez le formulaire de contact — nous vous répondrons par e-mail. 💛'
 };
 export const ESC_FALLBACK = {
   en: 'I’m not able to help with that here — please use the contact form and a human will reply by email.',
   hu: 'Ebben itt nem tudok segíteni — kérlek, használd az űrlapot, és emailben válaszolunk.',
   es: 'No puedo ayudarte con eso aquí — usa el formulario y te responderemos por correo.',
-  de: 'Dabei kann ich hier nicht helfen — nutze bitte das Formular, wir antworten per E-Mail.',
-  fr: 'Je ne peux pas vous aider ici — utilisez le formulaire et nous vous répondrons par e-mail.'
 };
 
 function cors(request) {

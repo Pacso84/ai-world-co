@@ -134,7 +134,7 @@ function main() {
         const h = Math.floor(ms / 3600000), m = Math.floor(ms / 60000) % 60, s = Math.floor(ms / 1000) % 60, x = ms % 1000;
         return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}.${String(x).padStart(3, '0')}`;
       };
-      for (const lang of ['hu', 'es', 'de', 'fr']) {
+      for (const lang of ['hu', 'es']) {
         const cues = meta.sentences.filter(x => x[lang]);
         if (!cues.length) continue;
         const body = cues.map((x, i) => `${i + 1}\n${vt(x.s)} --> ${vt(x.e)}\n${x[lang]}`).join('\n\n');

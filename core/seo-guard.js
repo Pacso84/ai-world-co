@@ -75,7 +75,7 @@ function checkSitemap() {
 // "átirányítást tartalmazó oldal" hiba jönne vissza, csak más kapun.
 function checkOtherOutputs() {
   const targets = ['news-sitemap.xml', 'llms.txt'];
-  for (const l of ['', 'hu', 'es', 'de', 'fr']) {
+  for (const l of ['', 'hu', 'es']) {
     for (const f of ['feed.xml', 'search.json', 'kb.json']) targets.push(l ? `${l}/${f}` : f);
   }
   const rx = /aiworldhq\.com[^"'<>)\s]*\.html/g;
@@ -93,7 +93,7 @@ function checkOtherOutputs() {
 // Mintát nézünk (nem mind a 2700 oldalt): gyökér + 1 cikk nyelvenként.
 function checkPageSignals() {
   const samples = [];
-  for (const lang of ['', 'hu', 'es', 'de', 'fr']) {
+  for (const lang of ['', 'hu', 'es']) {
     const base = lang ? join(PUBLIC, lang) : PUBLIC;
     const idx = join(base, 'index.html');
     if (existsSync(idx)) samples.push(idx);

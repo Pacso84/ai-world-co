@@ -23,6 +23,7 @@
 import { writeFileSync, mkdirSync, readFileSync, readdirSync, existsSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
+import { RETIRED_LANGS } from './retired-langs.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
@@ -65,7 +66,7 @@ async function main() {
   if (nf.status !== 404) add('SOFT_404', `nem létező oldal HTTP ${nf.status}-at ad 404 helyett`);
 
   // ── 3. KIVEZETETT NYELVEK: a /de/ és /fr/ tényleg átirányít-e ─────
-  for (const l of ['de', 'fr']) {
+  for (const l of RETIRED_LANGS) {
     const p = await probe(`${SITE}/${l}/${bust()}`);
     if (p.status !== 301 && p.status !== 308) add('RETIRED_LANG_ALIVE', `/${l}/ nem irányít át (HTTP ${p.status}) — a kivezetett nyelv él`);
   }

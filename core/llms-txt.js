@@ -20,8 +20,7 @@
 
 /** Angol nyelvnevek — az llms.txt-t angolul olvassák a keresők. */
 export const LANG_EN_NAME = {
-  en: 'English', hu: 'Hungarian', es: 'Spanish', de: 'German', fr: 'French'
-};
+  en: 'English', hu: 'Hungarian', es: 'Spanish', };
 
 /**
  * „Also available in …" mondat a ÉLŐ nyelvlistából.

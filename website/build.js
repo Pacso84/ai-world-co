@@ -27,6 +27,7 @@ import { rankRelated } from '../core/related.js';
 import { kindOf, KIND_ORDER, KINDS } from '../core/tool-kinds.js';
 import { langSentence } from '../core/llms-txt.js';
 import { insertMidGuide } from '../core/mid-guide.js';
+import { RETIRED_LANGS } from '../core/retired-langs.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = join(__dirname, '..');
@@ -123,13 +124,13 @@ const TRANS_DIR = join(__dirname, '..', 'content', 'translations');
 // lemezen MARADNAK — ez a döntés percek alatt visszafordítható: elég ide
 // visszaírni a két nyelvet.
 const SITE_LANGS = ['en', 'hu', 'es'];   // en = forrás/gyökér
-const RETIRED_LANGS = ['de', 'fr'];      // 301 az angol változatra
+// A kivezetett nyelvek EGYETLEN forrása: core/retired-langs.js (sírkő).
 const FB_URL = 'https://www.facebook.com/profile.php?id=61591788804540';   // FB-oldal (követés + JSON-LD sameAs)
 const IG_URL = 'https://www.instagram.com/aiworldhq/';                    // Instagram (Bufferrel posztolunk rá)
 const TH_URL = 'https://www.threads.com/@aiworldhq';                      // Threads (Bufferrel posztolunk rá)
 // X/Twitter SZÁNDÉKOSAN NINCS: a Buffer nem ismer ilyen csatornát, tehát nem
 // létező profilra nem linkelünk. Ha bekötjük, ide kerül — és a sameAs-be is.
-const FOLLOW = { en: 'Follow us', hu: 'Kövess minket', es: 'Síguenos', de: 'Folge uns', fr: 'Suivez-nous' };
+const FOLLOW = { en: 'Follow us', hu: 'Kövess minket', es: 'Síguenos', };
 // A márkajelek a simple-iconsból valók (CC0 közkincs), ugyanabból a forrásból,
 // amit a core/fetch-brand-logos.js is használ. KITALÁLT LOGÓ SOHA.
 const ICON = {
@@ -137,8 +138,8 @@ const ICON = {
   ig: 'M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077',
   th: 'M18.263 11.097c-.03-3.486-1.92-5.586-5.111-5.586-2.13 0-3.922.963-4.863 2.499l2.062 1.438c.535-.843 1.272-1.543 2.628-1.543 1.528 0 2.318.85 2.544 2.431a15 15 0 0 0-2.236-.173c-4.125 0-6.068 1.867-6.068 4.336s1.943 3.99 4.804 3.99c3.139 0 5.013-2.115 5.781-4.735.798.361 1.348 1.204 1.348 2.47 0 3.387-3.907 5.232-7.22 5.232-4.885 0-8.077-3.207-8.077-8.424 0-6.392 4.223-10.487 9.9-10.487 3.808 0 5.69 1.671 6.97 3.914l2.108-1.475C21.44 2.078 18.331 0 13.663 0 6.227 0 1.168 5.277 1.168 12.934c0 7 4.953 11.066 10.856 11.066 4.878 0 9.809-2.846 9.809-7.716 0-2.545-1.46-4.231-3.569-5.187m-6.33 4.855c-1.077 0-2.026-.512-2.026-1.453 0-1.483 1.822-1.934 3.606-1.934.678 0 1.34.045 1.927.173-.422 1.927-1.671 3.215-3.508 3.214Z'
 };
-const HTML_LANG = { en: 'en-US', hu: 'hu', es: 'es', de: 'de', fr: 'fr' };
-const LANG_NAME = { en: 'English', hu: 'Magyar', es: 'Español', de: 'Deutsch', fr: 'Français' };
+const HTML_LANG = { en: 'en-US', hu: 'hu', es: 'es', };
+const LANG_NAME = { en: 'English', hu: 'Magyar', es: 'Español', };
 
 // UI-szótár (a honlap "váza" — menü, hero, feliratok). A cikkek tartalmát a
 // fordító agent fordítja; ezek a fix felületi szövegek.
@@ -174,22 +175,7 @@ const UI = {
         guidesMetaDesc: 'Guías paso a paso en lenguaje claro sobre IA cotidiana: escribir prompts, resumir, verificar datos y usarla con seguridad. Funciona con cualquier asistente.',
         toolsMetaDesc: 'Guías paso a paso para herramientas de IA concretas: ChatGPT, Gemini, Claude, Copilot, Perplexity y más. Elige tu herramienta y aprende lo que necesitas.',
         footerNote: 'Escrito y curado por agentes de IA autónomos · Revisado para mayor precisión', back: '← Volver', language: 'Idioma' },
-  de: { news: 'Nachrichten', guides: 'Anleitungen', tools: 'KI-Tools', support: 'Unterstützen',
-        heroKicker: 'Ausgabe 01', heroTitle: 'Alltags-KI, <em>einfach erklärt.</em>',
-        minRead: 'Min. Lesezeit', stepByStep: 'Schritt für Schritt',
-        guidesTitle: 'Alltags-<em>KI-Können</em>', guidesTag: 'Verständliche Anleitungen für jeden Assistenten — ChatGPT, Gemini, Claude und mehr.',
-        toolsTitle: 'Anleitungen nach <em>KI-Tool</em>', toolsTag: 'Wähle dein KI-Tool für tool-spezifische Schritt-für-Schritt-Anleitungen.',
-        guidesMetaDesc: 'Verständliche Schritt-für-Schritt-Anleitungen zu alltäglichen KI-Fähigkeiten: Prompts schreiben, zusammenfassen, Fakten prüfen, sicher bleiben und mehr. Funktioniert mit jedem Assistenten.',
-        toolsMetaDesc: 'Schritt-für-Schritt-Anleitungen für konkrete KI-Tools: ChatGPT, Gemini, Claude, Copilot, Perplexity und mehr. Wähle dein Tool und lerne, was du brauchst.',
-        footerNote: 'Geschrieben und kuratiert von autonomen KI-Agenten · Auf Richtigkeit geprüft', back: '← Zurück', language: 'Sprache' },
-  fr: { news: 'Actus', guides: 'Guides', tools: 'Outils IA', support: 'Soutenir',
-        heroKicker: 'Numéro 01', heroTitle: "L'IA au quotidien, <em>expliquée simplement.</em>",
-        minRead: 'min de lecture', stepByStep: 'Pas à pas',
-        guidesTitle: 'Compétences <em>IA du quotidien</em>', guidesTag: 'Des guides clairs qui marchent avec tout assistant — ChatGPT, Gemini, Claude et autres.',
-        toolsTitle: 'Guides par <em>outil IA</em>', toolsTag: 'Choisissez votre outil IA pour des guides pas à pas dédiés.',
-        guidesMetaDesc: 'Des guides clairs, pas à pas, sur les usages quotidiens de l’IA : écrire des prompts, résumer, vérifier les faits, rester prudent et bien plus. Compatible avec tout assistant.',
-        toolsMetaDesc: 'Des guides pas à pas pour des outils IA précis : ChatGPT, Gemini, Claude, Copilot, Perplexity et d’autres. Choisissez votre outil et apprenez l’essentiel.',
-        footerNote: 'Écrit et curé par des agents IA autonomes · Vérifié pour l’exactitude', back: '← Retour', language: 'Langue' }
+
 };
 
 // További felületi feliratok (homepage + cikk-chrome)
@@ -197,8 +183,7 @@ const UI_EXTRA = {
   en: { coverStory: 'Cover Story', edit: 'The Edit', latestNews: 'Latest <span class="muted-word">news</span>', all: 'All', personal: '🏠 Everyday life', business: '💼 Business', ctaTitle: 'New to AI? Start with our step-by-step guides', ctaText: 'Browse practical how-tos by tool and task — everyday and business.', backStories: '← Back to all stories', noStories: 'No stories yet', noStoriesNote: 'Our AI newsroom is gathering the latest. Check back soon.' },
   hu: { coverStory: 'Címlapsztori', edit: 'A válogatás', latestNews: 'Friss <span class="muted-word">hírek</span>', all: 'Mind', personal: '🏠 Hétköznapok', business: '💼 Üzlet', ctaTitle: 'Új vagy az AI-ban? Kezdd a lépésről-lépésre útmutatókkal', ctaText: 'Böngéssz gyakorlati útmutatókat eszköz és feladat szerint — hétköznapi és üzleti.', backStories: '← Vissza a hírekhez', noStories: 'Még nincs cikk', noStoriesNote: 'Az AI-szerkesztőségünk épp gyűjti a legfrissebbeket. Nézz vissza hamarosan.' },
   es: { coverStory: 'Portada', edit: 'La selección', latestNews: 'Últimas <span class="muted-word">noticias</span>', all: 'Todo', personal: '🏠 Día a día', business: '💼 Negocios', ctaTitle: '¿Nuevo en la IA? Empieza con nuestras guías paso a paso', ctaText: 'Explora guías prácticas por herramienta y tarea — cotidianas y de negocio.', backStories: '← Volver a las noticias', noStories: 'Aún no hay artículos', noStoriesNote: 'Nuestra redacción de IA está recopilando lo último. Vuelve pronto.' },
-  de: { coverStory: 'Titelstory', edit: 'Die Auswahl', latestNews: 'Aktuelle <span class="muted-word">News</span>', all: 'Alle', personal: '🏠 Alltag', business: '💼 Business', ctaTitle: 'Neu bei KI? Starte mit unseren Schritt-für-Schritt-Anleitungen', ctaText: 'Durchstöbere praktische Anleitungen nach Tool und Aufgabe — Alltag und Business.', backStories: '← Zurück zu den News', noStories: 'Noch keine Beiträge', noStoriesNote: 'Unsere KI-Redaktion sammelt gerade das Neueste. Schau bald wieder vorbei.' },
-  fr: { coverStory: 'À la une', edit: 'La sélection', latestNews: 'Dernières <span class="muted-word">actus</span>', all: 'Tout', personal: '🏠 Quotidien', business: '💼 Pro', ctaTitle: "Nouveau dans l'IA ? Commencez par nos guides pas à pas", ctaText: 'Parcourez des guides pratiques par outil et tâche — quotidien et pro.', backStories: '← Retour aux actus', noStories: 'Pas encore d’articles', noStoriesNote: 'Notre rédaction IA rassemble les dernières infos. Revenez bientôt.' }
+
 };
 for (const l of SITE_LANGS) Object.assign(UI[l], UI_EXTRA[l] || {});
 
@@ -250,34 +235,7 @@ const UI_GUIDES = {
         aiSkills: 'Habilidades de IA', coverSub: 'Para el día a día', exampleLabel: 'Ejemplo', tryTyping: 'Escribe esto', xrefNews: 'La noticia detrás de esta guía', xrefGuide: '¿Quieres probarlo? Guía paso a paso',
         disclosureNews: '✦ Artículo original escrito por el equipo editorial de IA de AI World HQ Revisado para mayor precisión y claridad.',
         disclosureGuide: '✦ Guía original paso a paso del equipo editorial de IA de AI World HQ Escrita en lenguaje claro y revisada para mayor precisión.' },
-  de: { tagline: 'KI-News, verständlich erklärt', forEveryone: 'Für alle',
-        lvl_beginner: 'Einsteiger', lvl_intermediate: 'Mittelstufe', lvl_advanced: 'Profi',
-        guideWordOne: 'Anleitung', guideWordMany: 'Anleitungen',
-        pickTool: 'Wähle dein KI-Tool und spring direkt zu seinen Schritt-für-Schritt-Anleitungen.',
-        companyGuides: '{c}-<span class="muted-word">Anleitungen</span>',
-        kindAssistant: 'KI-Assistenten <span class="muted-word">zum Chatten</span>',
-        kindImage: 'Bild- und Video-<span class="muted-word">Generatoren</span>',
-        kindData: 'Daten- und <span class="muted-word">Analyse-Plattformen</span>',
-        kindOther: 'Weitere <span class="muted-word">KI-Tools</span>',
-        comingSoon: 'Die Anleitungen sind unterwegs — schau bald wieder vorbei.',
-        audPersonal: 'Alltag', audBusiness: 'Business', audBoth: 'Alltag & Business',
-        aiSkills: 'KI-Können', coverSub: 'Für den Alltag', exampleLabel: 'Beispiel', tryTyping: 'Tipp das ein', xrefNews: 'Die News hinter dieser Anleitung', xrefGuide: 'Ausprobieren? Schritt-für-Schritt-Anleitung',
-        disclosureNews: '✦ Originalartikel, geschrieben vom KI-Redaktionsteam von AI World HQ Auf Richtigkeit und Klarheit geprüft.',
-        disclosureGuide: '✦ Original-Schritt-für-Schritt-Anleitung vom KI-Redaktionsteam von AI World HQ Verständlich geschrieben, auf Richtigkeit geprüft.' },
-  fr: { tagline: "L'actu IA, en langage clair", forEveryone: 'Pour tous',
-        lvl_beginner: 'débutant', lvl_intermediate: 'intermédiaire', lvl_advanced: 'avancé',
-        guideWordOne: 'guide', guideWordMany: 'guides',
-        pickTool: "Choisissez l'outil IA que vous utilisez pour accéder à ses guides pas à pas.",
-        companyGuides: '<span class="muted-word">Guides</span> {c}',
-        kindAssistant: 'Assistants IA <span class="muted-word">pour discuter</span>',
-        kindImage: '<span class="muted-word">Générateurs</span> d’images et de vidéos',
-        kindData: '<span class="muted-word">Plateformes</span> de données et d’analyse',
-        kindOther: 'Autres <span class="muted-word">outils IA</span>',
-        comingSoon: 'Les guides arrivent — revenez bientôt.',
-        audPersonal: 'Quotidien', audBusiness: 'Pro', audBoth: 'Perso & pro',
-        aiSkills: 'Compétences IA', coverSub: 'Pour tous les jours', exampleLabel: 'Exemple', tryTyping: 'Essayez ceci', xrefNews: "L'actu derrière ce guide", xrefGuide: "Envie d'essayer ? Guide pas à pas",
-        disclosureNews: "✦ Article original rédigé par l'équipe éditoriale IA d'AI World HQ Vérifié pour l'exactitude et la clarté.",
-        disclosureGuide: "✦ Guide original pas à pas de l'équipe éditoriale IA d'AI World HQ Rédigé en langage clair, vérifié pour l'exactitude." }
+
 };
 for (const l of SITE_LANGS) Object.assign(UI[l], UI_GUIDES[l] || {});
 
@@ -286,8 +244,7 @@ const UI_DAYS = {
   en: { past7: 'Past 7 days', today: 'Today', yesterday: 'Yesterday' },
   hu: { past7: 'Az elmúlt 7 nap', today: 'Ma', yesterday: 'Tegnap' },
   es: { past7: 'Últimos 7 días', today: 'Hoy', yesterday: 'Ayer' },
-  de: { past7: 'Letzte 7 Tage', today: 'Heute', yesterday: 'Gestern' },
-  fr: { past7: '7 derniers jours', today: "Aujourd'hui", yesterday: 'Hier' }
+
 };
 for (const l of SITE_LANGS) Object.assign(UI[l], UI_DAYS[l] || {});
 
@@ -327,28 +284,7 @@ const UI_SUPPORT = {
         supNote: 'Apoyarnos es totalmente opcional: el sitio seguirá siendo gratuito de todos modos. Somos un pequeño proyecto independiente, no una organización benéfica registrada, así que tu aportación es una <strong>propina voluntaria</strong>, no un donativo desgravable. Gracias por leernos. 💛',
         supSoon: 'muy pronto', supMetaTitle: 'Apóyanos',
         supMetaDesc: 'Ayuda a que AI World siga siendo gratuito y casi sin anuncios. Una pequeña propina voluntaria cubre el alojamiento y la IA que escribe cada artículo.' },
-  de: { siteDesc: 'KI-News und Anleitungen für alle — frisch, freundlich, ohne Fachchinesisch.',
-        supPill: 'Unterstütze uns', supTitle: 'Halte Alltags-KI <em>für alle kostenlos</em>',
-        supLead: 'AI World ist ein kleines, unabhängiges Projekt — ein Team aus KI-Agenten und einem einzigen Menschen —, das klare, jargonfreie Anleitungen rund um KI veröffentlicht. Die Seite bleibt kostenlos und fast werbefrei. Wenn sie dir hilft, kannst du etwas zu den laufenden Kosten beisteuern.',
-        supCard1h: 'Hosting &amp; Domain', supCard1p: 'Damit die Seite online, schnell und für alle erreichbar bleibt.',
-        supCard2h: 'Die KI-Redaktion', supCard2p: 'Die Modelle, die jeden Artikel recherchieren, schreiben, prüfen und verbessern.',
-        supCard3h: 'Eigene Illustrationen', supCard3p: 'Das individuelle Titelbild zu jeder Geschichte.',
-        supThanksH: 'An alle, die etwas beisteuern — danke. 💛',
-        supThanksP: 'Dank dir bleibt AI World kostenlos, werbearm und offen für alle. Jeder Kaffee hilft beim Hosting und treibt die kleine KI-Redaktion hinter jedem Artikel an. Wir sind ein winziges unabhängiges Team — es bedeutet uns wirklich viel.',
-        supNote: 'Uns zu unterstützen ist völlig freiwillig — die Seite bleibt so oder so kostenlos. Wir sind ein kleines unabhängiges Projekt und keine eingetragene Wohltätigkeitsorganisation; dein Beitrag ist ein freundliches <strong>freiwilliges Trinkgeld</strong>, keine steuerlich absetzbare Spende. Danke fürs Lesen. 💛',
-        supSoon: 'bald verfügbar', supMetaTitle: 'Unterstützen',
-        supMetaDesc: 'Hilf mit, dass AI World kostenlos und werbearm bleibt. Ein kleines freiwilliges Trinkgeld deckt Hosting und die KI hinter jedem Artikel.' },
-  fr: { siteDesc: 'Actus et guides IA pour tous — clairs, chaleureux, sans jargon.',
-        supPill: 'Soutenez-nous', supTitle: "Gardons l'IA du quotidien <em>gratuite pour tous</em>",
-        supLead: "AI World est un petit projet indépendant — une équipe d'agents IA et un seul humain — qui publie des guides clairs et sans jargon sur l'IA. Le site reste gratuit et presque sans publicité. S'il vous est utile, vous pouvez contribuer aux frais de fonctionnement.",
-        supCard1h: 'Hébergement &amp; domaine', supCard1p: 'Garder le site en ligne, rapide et accessible à tous.',
-        supCard2h: 'La rédaction IA', supCard2p: 'Les modèles qui recherchent, écrivent, vérifient et améliorent chaque article.',
-        supCard3h: 'Illustrations originales', supCard3p: "L'image de couverture créée pour chaque article.",
-        supThanksH: 'À tous ceux qui contribuent — merci. 💛',
-        supThanksP: "Grâce à vous, AI World reste gratuit, peu publicitaire et ouvert à tous. Chaque café aide à couvrir l'hébergement et fait tourner la petite rédaction IA derrière chaque article. Nous sommes une toute petite équipe indépendante — cela compte énormément.",
-        supNote: "Nous soutenir est entièrement facultatif — le site reste gratuit quoi qu'il arrive. Nous sommes un petit projet indépendant, pas une association caritative enregistrée : votre contribution est un <strong>pourboire volontaire</strong>, pas un don déductible des impôts. Merci de nous lire. 💛",
-        supSoon: 'bientôt disponible', supMetaTitle: 'Soutenir',
-        supMetaDesc: "Aidez AI World à rester gratuit et presque sans publicité. Un petit pourboire volontaire couvre l'hébergement et l'IA qui écrit chaque article." }
+
 };
 for (const l of SITE_LANGS) Object.assign(UI[l], UI_SUPPORT[l] || {});
 
@@ -384,24 +320,7 @@ const CS_FAQ = {
     { q: '¿Hay RSS?', a: 'Sí — cada idioma tiene su propio feed.', p: '/feed.xml' },
     { q: '¿Cómo os contacto / hablo con una persona?', a: 'Usa el formulario al final de la página Sobre nosotros, o escribe a support@aiworldhq.com — una persona lee todos los mensajes.', p: '/about#contact' }
   ],
-  de: [
-    { q: 'Was ist AI World HQ?', a: 'Eine automatische, unabhängige News- und Anleitungsseite, die dir hilft, KI im Alltag zu nutzen. Die Inhalte erstellt eine KI-Redaktion mit Ehrlichkeits-Checks, in 5 Sprachen.', p: '/about' },
-    { q: 'Wie melde ich einen Fehler in einem Artikel?', a: 'Mit den 👍/👎-Buttons unter dem Artikel, oder schreib uns — echte Fehler werden korrigiert und neu veröffentlicht.', p: '/about' },
-    { q: 'Ist die Seite kostenlos? Wie kann ich sie unterstützen?', a: 'Alles ist kostenlos. Wenn du magst, kannst du auf der Unterstützen-Seite ein freiwilliges Trinkgeld geben.', p: '/support' },
-    { q: 'Wo finde ich Anleitungen für Einsteiger?', a: 'Die Start-Seite zeigt die ersten 5 empfohlenen Anleitungen, auf der Anleitungen-Seite findest du alle nach Thema.', p: '/start' },
-    { q: 'Was bedeuten KI-Wörter wie Prompt oder Token?', a: 'Unser kleines KI-Glossar erklärt die häufigsten Begriffe verständlich.', p: '/glossary' },
-    { q: 'Gibt es RSS?', a: 'Ja — jede Sprache hat ihren eigenen Feed.', p: '/feed.xml' },
-    { q: 'Wie erreiche ich euch / einen Menschen?', a: 'Nutze das Nachrichten-Formular unten auf der Über-uns-Seite, oder schreib an support@aiworldhq.com — jede Nachricht liest ein Mensch.', p: '/about#contact' }
-  ],
-  fr: [
-    { q: 'Qu’est-ce que AI World HQ ?', a: 'Un site automatique et indépendant d’actus et de guides qui vous aide à utiliser l’IA au quotidien. Le contenu est produit par une rédaction IA avec des contrôles d’honnêteté, en 5 langues.', p: '/about' },
-    { q: 'Comment signaler une erreur dans un article ?', a: 'Avec les boutons 👍/👎 sous l’article, ou écrivez-nous — les vraies erreurs sont corrigées et republiées.', p: '/about' },
-    { q: 'Le site est-il gratuit ? Comment le soutenir ?', a: 'Tout est gratuit. Si vous le souhaitez, vous pouvez laisser un pourboire volontaire sur la page Soutenir.', p: '/support' },
-    { q: 'Où trouver les guides pour débutants ?', a: 'La page Commencer présente les 5 premiers guides recommandés, et la page Guides les regroupe tous par thème.', p: '/start' },
-    { q: 'Que signifient les mots comme prompt ou token ?', a: 'Notre petit glossaire IA explique les termes les plus courants en langage clair.', p: '/glossary' },
-    { q: 'Y a-t-il un flux RSS ?', a: 'Oui — chaque langue a son propre flux.', p: '/feed.xml' },
-    { q: 'Comment vous contacter / parler à un humain ?', a: 'Utilisez le formulaire en bas de la page À propos, ou écrivez à support@aiworldhq.com — un humain lit chaque message.', p: '/about#contact' }
-  ]
+
 };
 
 // Chat-doboz + űrlap UI-szövegei (megszólítás-norma: hu=te, de=du, es=tú, fr=vous)
@@ -409,8 +328,7 @@ const UI_CHAT = {
   en: { csOpen: 'Questions? Chat with us', csTitle: 'AI World HQ assistant', csHello: 'Hi! Ask me about the site or any of our AI guides. 😊', csPlaceholder: 'Type your question…', csSend: 'Send', csHuman: 'I need a human', csFormT: 'Message the team', csName: 'Name (optional)', csEmail: 'Your email', csMsg: 'Your message', csSubmit: 'Send message', csOk: 'Thanks! We got your message and will reply by email.', csErr: 'Something went wrong — please try again or email support@aiworldhq.com.', csPrivacy: 'We only use your email to reply; messages are deleted after 30 days.', csThinking: 'Thinking…' },
   hu: { csOpen: 'Kérdésed van? Írj nekünk', csTitle: 'AI World HQ asszisztens', csHello: 'Szia! Kérdezz az oldalról vagy bármelyik AI-útmutatónkról. 😊', csPlaceholder: 'Írd ide a kérdésed…', csSend: 'Küldés', csHuman: 'Emberi segítséget kérek', csFormT: 'Üzenet a csapatnak', csName: 'Név (nem kötelező)', csEmail: 'Email-címed', csMsg: 'Üzeneted', csSubmit: 'Üzenet küldése', csOk: 'Köszönjük! Megkaptuk az üzeneted, emailben válaszolunk.', csErr: 'Valami hiba történt — próbáld újra, vagy írj a support@aiworldhq.com címre.', csPrivacy: 'Az email-címedet csak a válaszhoz használjuk; az üzenetek 30 nap után törlődnek.', csThinking: 'Gondolkodom…' },
   es: { csOpen: '¿Preguntas? Chatea con nosotros', csTitle: 'Asistente de AI World HQ', csHello: '¡Hola! Pregúntame sobre el sitio o cualquiera de nuestras guías de IA. 😊', csPlaceholder: 'Escribe tu pregunta…', csSend: 'Enviar', csHuman: 'Quiero hablar con una persona', csFormT: 'Mensaje al equipo', csName: 'Nombre (opcional)', csEmail: 'Tu correo', csMsg: 'Tu mensaje', csSubmit: 'Enviar mensaje', csOk: '¡Gracias! Recibimos tu mensaje y te responderemos por correo.', csErr: 'Algo salió mal — inténtalo de nuevo o escribe a support@aiworldhq.com.', csPrivacy: 'Solo usamos tu correo para responderte; los mensajes se borran a los 30 días.', csThinking: 'Pensando…' },
-  de: { csOpen: 'Fragen? Schreib uns', csTitle: 'AI World HQ Assistent', csHello: 'Hallo! Frag mich zur Seite oder zu unseren KI-Anleitungen. 😊', csPlaceholder: 'Deine Frage…', csSend: 'Senden', csHuman: 'Ich möchte einen Menschen', csFormT: 'Nachricht ans Team', csName: 'Name (optional)', csEmail: 'Deine E-Mail', csMsg: 'Deine Nachricht', csSubmit: 'Nachricht senden', csOk: 'Danke! Wir haben deine Nachricht und antworten per E-Mail.', csErr: 'Etwas ist schiefgelaufen — versuch es erneut oder schreib an support@aiworldhq.com.', csPrivacy: 'Deine E-Mail nutzen wir nur für die Antwort; Nachrichten werden nach 30 Tagen gelöscht.', csThinking: 'Denke nach…' },
-  fr: { csOpen: 'Des questions ? Écrivez-nous', csTitle: 'Assistant AI World HQ', csHello: 'Bonjour ! Posez-moi vos questions sur le site ou nos guides IA. 😊', csPlaceholder: 'Votre question…', csSend: 'Envoyer', csHuman: 'Je veux parler à un humain', csFormT: 'Message à l’équipe', csName: 'Nom (facultatif)', csEmail: 'Votre e-mail', csMsg: 'Votre message', csSubmit: 'Envoyer le message', csOk: 'Merci ! Nous avons bien reçu votre message et répondrons par e-mail.', csErr: 'Une erreur est survenue — réessayez ou écrivez à support@aiworldhq.com.', csPrivacy: 'Votre e-mail sert uniquement à vous répondre ; les messages sont supprimés après 30 jours.', csThinking: 'Je réfléchis…' }
+
 };
 for (const l of SITE_LANGS) Object.assign(UI[l], UI_CHAT[l] || {});
 
@@ -419,8 +337,7 @@ const UI_MAP = {
   en: { mapTitle: 'Your roadmap', mapSteps: 'steps' },
   hu: { mapTitle: 'Így fogod csinálni', mapSteps: 'lépés' },
   es: { mapTitle: 'Así lo harás', mapSteps: 'pasos' },
-  de: { mapTitle: 'So gehst du vor', mapSteps: 'Schritte' },
-  fr: { mapTitle: 'Votre parcours', mapSteps: 'étapes' }
+
 };
 for (const l of SITE_LANGS) Object.assign(UI[l], UI_MAP[l] || {});
 
@@ -430,8 +347,7 @@ const UI_STEPTIP = {
   en: { stepTipLabel: 'Tip', stepTip: 'tap a step’s number when you finish it — a green tick appears and your browser remembers how far you got.' },
   hu: { stepTipLabel: 'Tipp', stepTip: 'kattints egy lépés számára, ha kész vagy — zöld pipa jelenik meg, és a böngésződ megjegyzi, meddig jutottál.' },
   es: { stepTipLabel: 'Consejo', stepTip: 'toca el número de un paso cuando lo termines — aparece una marca verde y tu navegador recuerda hasta dónde llegaste.' },
-  de: { stepTipLabel: 'Tipp', stepTip: 'tippe auf die Nummer eines Schritts, wenn du ihn erledigt hast — ein grüner Haken erscheint und dein Browser merkt sich, wie weit du warst.' },
-  fr: { stepTipLabel: 'Astuce', stepTip: 'appuie sur le numéro d’une étape quand tu l’as terminée — une coche verte apparaît et ton navigateur retient où tu en étais.' }
+
 };
 for (const l of SITE_LANGS) Object.assign(UI[l], UI_STEPTIP[l] || {});
 
@@ -441,8 +357,7 @@ const UI_REL = {
   en: { relatedTitle: 'Keep reading', startHere: 'Start here', midRead: 'Read this next' },
   hu: { relatedTitle: 'Olvass tovább', startHere: 'Kezdd itt!', midRead: 'Ezt olvasd utána' },
   es: { relatedTitle: 'Sigue leyendo', startHere: 'Empieza aquí', midRead: 'Lee esto después' },
-  de: { relatedTitle: 'Weiterlesen', startHere: 'Starte hier', midRead: 'Lies das als Nächstes' },
-  fr: { relatedTitle: 'À lire ensuite', startHere: 'Commencez ici', midRead: 'À lire ensuite' }
+
 };
 for (const l of SITE_LANGS) Object.assign(UI[l], UI_REL[l] || {});
 
@@ -463,16 +378,7 @@ const UI_START = {
         startS2h: 'Cómo empezar', startS2p: 'Elige la primera guía de abajo y sigue los pasos: cada uno te dice qué hacer, qué deberías ver en tu pantalla y qué hacer si la tuya se ve diferente. ¡Puedes ir marcando los pasos!',
         startS3h: 'Seguridad desde el primer día', startS3p: 'Dos reglas de oro: nunca pegues contraseñas, documentos o datos bancarios en un chat de IA, y verifica siempre los datos importantes: la IA suena segura incluso cuando se equivoca.',
         startPickH: 'Tus primeras 5 guías', startMore: 'Ver todas las guías' },
-  de: { startTitle: 'Neu bei KI? Starte hier.', startTag: 'Kein Fachchinesisch, kein Druck — nur die ersten kleinen Schritte, in der richtigen Reihenfolge.',
-        startS1h: 'Was ist diese Seite?', startS1p: 'AI World HQ erklärt künstliche Intelligenz für alle: frische News in klarer Sprache und Schritt-für-Schritt-Anleitungen, denen auch komplette Anfänger folgen können. Jeder Fachbegriff wird beim ersten Auftauchen erklärt.',
-        startS2h: 'So fängst du an', startS2p: 'Wähle unten die erste Anleitung und folge einfach den Schritten — jeder sagt dir, was zu tun ist, was du auf dem Bildschirm sehen solltest und was du tust, wenn es bei dir anders aussieht. Schritte kannst du abhaken!',
-        startS3h: 'Von Anfang an sicher', startS3p: 'Zwei goldene Regeln: Gib niemals Passwörter, Ausweisdaten oder Bankdaten in einen KI-Chat ein, und prüfe wichtige Fakten immer nach — KI klingt auch dann überzeugt, wenn sie falsch liegt.',
-        startPickH: 'Deine ersten 5 Anleitungen', startMore: 'Alle Anleitungen ansehen' },
-  fr: { startTitle: "Nouveau dans l'IA ? Commencez ici.", startTag: 'Pas de jargon, pas de pression — juste les premiers petits pas, dans le bon ordre.',
-        startS1h: "Ce site, c'est quoi ?", startS1p: "AI World HQ explique l'intelligence artificielle à tout le monde : des actus en langage clair et des guides pas à pas qu'un débutant complet peut suivre. Chaque terme technique est expliqué à sa première apparition.",
-        startS2h: 'Comment commencer', startS2p: "Choisissez le premier guide ci-dessous et suivez simplement les étapes — chacune vous dit quoi faire, ce que vous devriez voir à l'écran, et quoi faire si le vôtre est différent. Vous pouvez cocher les étapes !",
-        startS3h: 'En sécurité dès le premier jour', startS3p: "Deux règles d'or : ne collez jamais de mots de passe, de pièces d'identité ou de données bancaires dans un chat IA, et vérifiez toujours les faits importants — l'IA a l'air sûre d'elle même quand elle se trompe.",
-        startPickH: 'Vos 5 premiers guides', startMore: 'Voir tous les guides' }
+
 };
 for (const l of SITE_LANGS) Object.assign(UI[l], UI_START[l] || {});
 
@@ -481,8 +387,7 @@ const UI_FB = {
   en: { fbQ: 'Was this helpful?', fbThanks: 'Thanks for the feedback! 💛' },
   hu: { fbQ: 'Hasznos volt?', fbThanks: 'Köszönjük a visszajelzést! 💛' },
   es: { fbQ: '¿Te ha resultado útil?', fbThanks: '¡Gracias por tu opinión! 💛' },
-  de: { fbQ: 'War das hilfreich?', fbThanks: 'Danke für dein Feedback! 💛' },
-  fr: { fbQ: 'Cela vous a été utile ?', fbThanks: 'Merci pour votre retour ! 💛' }
+
 };
 for (const l of SITE_LANGS) Object.assign(UI[l], UI_FB[l] || {});
 
@@ -490,8 +395,7 @@ const UI_SEARCH = {
   en: { searchLabel: 'Search', searchPh: 'Search articles and guides…', noResults: 'No results — try another word' },
   hu: { searchLabel: 'Keresés', searchPh: 'Keress a cikkek és útmutatók közt…', noResults: 'Nincs találat — próbálj más szót' },
   es: { searchLabel: 'Buscar', searchPh: 'Busca artículos y guías…', noResults: 'Sin resultados — prueba otra palabra' },
-  de: { searchLabel: 'Suche', searchPh: 'Artikel und Anleitungen durchsuchen…', noResults: 'Keine Treffer — versuch ein anderes Wort' },
-  fr: { searchLabel: 'Rechercher', searchPh: 'Rechercher articles et guides…', noResults: 'Aucun résultat — essayez un autre mot' }
+
 };
 for (const l of SITE_LANGS) Object.assign(UI[l], UI_SEARCH[l] || {});
 
@@ -500,8 +404,7 @@ const UI_GLOSS = {
   en: { glossNav: 'Dictionary', glossTitle: 'The little AI dictionary', glossTag: 'Every AI word you keep seeing — explained in one breath, no jargon.' },
   hu: { glossNav: 'Kisszótár', glossTitle: 'AI-kisszótár', glossTag: 'Minden AI-szó, amivel folyton találkozol — egy szuszra, szakzsargon nélkül elmagyarázva.' },
   es: { glossNav: 'Diccionario', glossTitle: 'El pequeño diccionario de la IA', glossTag: 'Todas las palabras de IA que ves por todas partes — explicadas de un tirón, sin jerga.' },
-  de: { glossNav: 'Wörterbuch', glossTitle: 'Das kleine KI-Wörterbuch', glossTag: 'Alle KI-Begriffe, die dir ständig begegnen — in einem Atemzug erklärt, ohne Fachchinesisch.' },
-  fr: { glossNav: 'Dico', glossTitle: 'Le petit dico de l’IA', glossTag: 'Tous les mots de l’IA que vous croisez partout — expliqués d’un trait, sans jargon.' }
+
 };
 for (const l of SITE_LANGS) Object.assign(UI[l], UI_GLOSS[l] || {});
 
@@ -516,12 +419,7 @@ const UI_WIZ = {
   es: { wizTitle: '¿Qué IA es la adecuada para ti?', wizTag: 'Cuatro preguntas rápidas — y te indicamos el asistente que encaja con tu vida.',
         wizStep: 'Pregunta', wizResultH: 'Tu mejor opción', wizAlso: 'También vale la pena', wizCta: 'Ver nuestras guías', wizAgain: 'Empezar de nuevo',
         wizBanner: '¿No sabes qué IA elegir? Test de 1 minuto →' },
-  de: { wizTitle: 'Welche KI passt zu dir?', wizTag: 'Vier schnelle Fragen — und wir zeigen dir den Assistenten, der zu deinem Alltag passt.',
-        wizStep: 'Frage', wizResultH: 'Dein Treffer', wizAlso: 'Auch einen Blick wert', wizCta: 'Unsere Anleitungen dazu ansehen', wizAgain: 'Neu starten',
-        wizBanner: 'Unsicher, welche KI? 1-Minuten-Quiz →' },
-  fr: { wizTitle: 'Quelle IA est faite pour vous ?', wizTag: 'Quatre questions rapides — et on vous oriente vers l’assistant qui colle à votre vie.',
-        wizStep: 'Question', wizResultH: 'Votre meilleur choix', wizAlso: 'À regarder aussi', wizCta: 'Voir nos guides', wizAgain: 'Recommencer',
-        wizBanner: 'Vous hésitez entre les IA ? Quiz d’1 minute →' }
+
 };
 for (const l of SITE_LANGS) Object.assign(UI[l], UI_WIZ[l] || {});
 
@@ -547,18 +445,7 @@ const UI_ABOUT = {
         aboutSrcH: 'De dónde vienen las noticias', aboutSrcP: 'Solo fuentes oficiales y de primera mano: las salas de prensa y blogs de las propias empresas de IA — OpenAI, Google, Microsoft, Anthropic, Meta, NVIDIA, Mistral y más. Sin rumores ni “fuentes anónimas”. Si una empresa no lo anunció, no lo publicamos.',
         aboutHonH: 'Nuestras reglas de honestidad', aboutHonP: 'Cada artículo lleva una nota de divulgación de IA. Nunca inventamos datos, capturas ni precios — lo que cambia con el tiempo te remite al sitio oficial. Las palabras técnicas se explican la primera vez que aparecen, y nuestro diccionario de IA cubre el resto.',
         aboutFixH: '¿Has visto un error?', aboutFixP: 'Dínoslo con los botones 👍/👎 bajo cualquier artículo, o contáctanos por la página de Apoyo. Los errores reales se corrigen y el artículo arreglado se vuelve a publicar — es una promesa.' },
-  de: { aboutNav: 'Über uns', aboutTitle: 'Über AI World HQ', aboutTag: 'Wer wir sind, wie unsere Artikel entstehen und welche Regeln wir nie brechen.',
-        aboutWhoH: 'Was ist AI World HQ?', aboutWhoP: 'Eine kleine, unabhängige Seite, die künstliche Intelligenz für alle erklärt — frische News in klarer Sprache und Schritt-für-Schritt-Anleitungen, denen auch komplette Anfänger folgen können, in fünf Sprachen.',
-        aboutHowH: 'Wie unsere Inhalte entstehen', aboutHowP: 'Unsere Redaktion wird von KI-Agenten betrieben — ganz offen. Sie lesen die offiziellen Ankündigungen, schreiben einen verständlichen Artikel, und jeder Text muss durch ein automatisches Qualitätstor, das Klarheit und Ehrlichkeit prüft, bevor er live geht. Ein menschlicher Betreiber überwacht das System, liest dein Feedback und verschärft die Regeln laufend.',
-        aboutSrcH: 'Woher die News kommen', aboutSrcP: 'Nur offizielle Erstquellen: die Newsrooms und Blogs der KI-Firmen selbst — OpenAI, Google, Microsoft, Anthropic, Meta, NVIDIA, Mistral und mehr. Keine Gerüchte, keine anonymen „Insider“. Wenn eine Firma es nicht angekündigt hat, berichten wir nicht darüber.',
-        aboutHonH: 'Unsere Ehrlichkeitsregeln', aboutHonP: 'Jeder Artikel trägt einen KI-Hinweis. Wir erfinden nie Fakten, Screenshots oder Preise — bei allem, was sich ändert, verweisen wir auf die offizielle Seite. Fachbegriffe werden beim ersten Auftauchen erklärt, den Rest deckt unser KI-Wörterbuch ab.',
-        aboutFixH: 'Fehler entdeckt?', aboutFixP: 'Sag es uns mit den 👍/👎-Buttons unter jedem Artikel oder über die Unterstützen-Seite. Echte Fehler werden korrigiert und der berichtigte Artikel neu veröffentlicht — versprochen.' },
-  fr: { aboutNav: 'À propos', aboutTitle: 'À propos d’AI World HQ', aboutTag: 'Qui nous sommes, comment nos articles sont faits, et les règles que nous ne brisons jamais.',
-        aboutWhoH: 'C’est quoi, AI World HQ ?', aboutWhoP: 'Un petit site indépendant qui explique l’intelligence artificielle à tout le monde — des actus fraîches en langage clair et des guides pas à pas qu’un débutant complet peut suivre, en cinq langues.',
-        aboutHowH: 'Comment nos contenus sont faits', aboutHowP: 'Notre rédaction est tenue par des agents IA — en toute transparence. Ils lisent les annonces officielles, écrivent un article en langage clair, et chaque texte doit passer un portail de qualité automatique qui vérifie la clarté et l’honnêteté avant publication. Un propriétaire humain supervise le système, lit vos retours et durcit les règles en continu.',
-        aboutSrcH: 'D’où viennent les actus', aboutSrcP: 'Uniquement des sources officielles de première main : les salles de presse et blogs des entreprises d’IA elles-mêmes — OpenAI, Google, Microsoft, Anthropic, Meta, NVIDIA, Mistral et d’autres. Pas de rumeurs, pas d’« initiés » anonymes. Si une entreprise ne l’a pas annoncé, nous n’en parlons pas.',
-        aboutHonH: 'Nos règles d’honnêteté', aboutHonP: 'Chaque article porte une mention de contribution IA. Nous n’inventons jamais de faits, de captures ou de prix — pour tout ce qui change avec le temps, nous renvoyons au site officiel. Les termes techniques sont expliqués à leur première apparition, et notre dico de l’IA couvre le reste.',
-        aboutFixH: 'Une erreur repérée ?', aboutFixP: 'Signalez-la avec les boutons 👍/👎 sous chaque article, ou contactez-nous via la page Soutenir. Les vraies erreurs sont corrigées et l’article rectifié est republié — c’est une promesse.' }
+
 };
 for (const l of SITE_LANGS) Object.assign(UI[l], UI_ABOUT[l] || {});
 
@@ -576,8 +463,7 @@ const UI_OFFICIAL = {
   en: { officialSite: 'Official site', officialRow: 'Official sites' },
   hu: { officialSite: 'Hivatalos oldal', officialRow: 'Hivatalos oldalak' },
   es: { officialSite: 'Sitio oficial', officialRow: 'Sitios oficiales' },
-  de: { officialSite: 'Offizielle Seite', officialRow: 'Offizielle Seiten' },
-  fr: { officialSite: 'Site officiel', officialRow: 'Sites officiels' }
+
 };
 for (const l of SITE_LANGS) Object.assign(UI[l], UI_OFFICIAL[l] || {});
 
@@ -593,16 +479,15 @@ const UI_VID = {
   en: { vidNote: '▶ Orbit, our AI news anchor, sums up the week in about 90 seconds (English).' },
   hu: { vidNote: '▶ Orbit, az AI-hírbemondónk kb. 90 másodpercben összefoglalja a hetet (angolul).' },
   es: { vidNote: '▶ Orbit, nuestro presentador de IA, resume la semana en unos 90 segundos (en inglés).' },
-  de: { vidNote: '▶ Orbit, unser KI-Nachrichtensprecher, fasst die Woche in ca. 90 Sekunden zusammen (Englisch).' },
-  fr: { vidNote: '▶ Orbit, notre présentateur IA, résume la semaine en 90 secondes environ (en anglais).' }
+
 };
 for (const l of SITE_LANGS) Object.assign(UI[l], UI_VID[l] || {});
 
 function videoBlock(a) {
   if (!VIDEO_META || VIDEO_META.slug !== a.slug) return '';
   // Kapcsolható feliratok (hu/es/de/fr) — az oldal nyelvén alapból BE
-  const LANG_LABEL = { hu: 'Magyar', es: 'Español', de: 'Deutsch', fr: 'Français' };
-  const tracks = ['hu', 'es', 'de', 'fr']
+  const LANG_LABEL = { hu: 'Magyar', es: 'Español', };
+  const tracks = ['hu', 'es']
     .filter(l => VIDEO_META.sentences?.some(x => x[l]))
     .map(l => `<track kind="subtitles" srclang="${l}" label="${LANG_LABEL[l]}" src="/assets/video/weekly-${VIDEO_META.week}.${l}.vtt"${l === LANG ? ' default' : ''}>`)
     .join('\n      ');
@@ -628,12 +513,7 @@ const UI_FAQ = {
   es: { faqTitle: 'Preguntas rápidas', faqQTime: '¿Cuánto tiempo lleva?', faqATime: 'Unos {min} minutos — la guía tiene {steps} pasos y puedes ir marcándolos a medida que avanzas.',
         faqQTool: '¿Qué herramienta necesito?', faqATool: 'Esta guía usa {tool} — pero el método funciona de forma muy parecida en otros asistentes de IA.',
         faqQPrep: '¿Necesito preparar algo?', faqQMist: '¿Qué errores debo evitar?' },
-  de: { faqTitle: 'Schnelle Fragen', faqQTime: 'Wie lange dauert das?', faqATime: 'Etwa {min} Minuten — die Anleitung hat {steps} Schritte, und du kannst jeden beim Durcharbeiten abhaken.',
-        faqQTool: 'Welches Tool brauche ich?', faqATool: 'Diese Anleitung nutzt {tool} — aber die Methode funktioniert in anderen KI-Assistenten sehr ähnlich.',
-        faqQPrep: 'Muss ich etwas vorbereiten?', faqQMist: 'Welche Fehler sollte ich vermeiden?' },
-  fr: { faqTitle: 'Questions rapides', faqQTime: 'Combien de temps ça prend ?', faqATime: 'Environ {min} minutes — le guide compte {steps} étapes, que vous pouvez cocher au fur et à mesure.',
-        faqQTool: 'De quel outil ai-je besoin ?', faqATool: 'Ce guide utilise {tool} — mais la méthode fonctionne de façon très similaire dans d’autres assistants IA.',
-        faqQPrep: 'Dois-je préparer quelque chose ?', faqQMist: 'Quelles erreurs éviter ?' }
+
 };
 for (const l of SITE_LANGS) Object.assign(UI[l], UI_FAQ[l] || {});
 
@@ -643,8 +523,7 @@ const UI_ARCH = {
   en: { archTitle: 'All news', archTag: 'Every story we have published — newest first, grouped by month.', archNav: 'Browse all news', archNavS: 'Archive' },
   hu: { archTitle: 'Minden hír', archTag: 'Az összes eddig megjelent hírünk — a legfrissebbtől, hónapok szerint.', archNav: 'Az összes hír böngészése', archNavS: 'Archívum' },
   es: { archTitle: 'Todas las noticias', archTag: 'Todas las historias que hemos publicado — las más recientes primero, agrupadas por mes.', archNav: 'Ver todas las noticias', archNavS: 'Archivo' },
-  de: { archTitle: 'Alle News', archTag: 'Alle bisher veröffentlichten Meldungen — neueste zuerst, nach Monaten gruppiert.', archNav: 'Alle News durchstöbern', archNavS: 'Archiv' },
-  fr: { archTitle: 'Toutes les actus', archTag: 'Toutes nos publications — les plus récentes d’abord, groupées par mois.', archNav: 'Parcourir toutes les actus', archNavS: 'Archives' }
+
 };
 for (const l of SITE_LANGS) Object.assign(UI[l], UI_ARCH[l] || {});
 
@@ -727,56 +606,7 @@ const WIZ_DATA = {
       copilot: { n: 'Copilot (Microsoft)', w: 'Vive dentro de Word, Excel y Outlook. Si tu día ya transcurre en Microsoft Office, Copilot pone la IA justo donde trabajas — sin apps nuevas que aprender.' }
     }
   },
-  de: {
-    q: [
-      { t: 'Wofür würdest du KI hauptsächlich nutzen?', o: [
-        { t: 'Schreiben — E-Mails, Briefe, Ideen', s: { chatgpt: 2, claude: 2 } },
-        { t: 'Lernen und Recherche — Fragen, Erklärungen', s: { gemini: 2, chatgpt: 1 } },
-        { t: 'Schnelle Alltagshilfe auf dem Handy', s: { gemini: 2, chatgpt: 1 } },
-        { t: 'Arbeitsdokumente — Word, Excel, Outlook', s: { copilot: 3 } }] },
-      { t: 'In welcher digitalen Welt lebst du?', o: [
-        { t: 'Google — Gmail, Android, Google Docs', s: { gemini: 2 } },
-        { t: 'Microsoft — Windows, Office, Outlook', s: { copilot: 2 } },
-        { t: 'Apple, gemischt oder keine davon', s: { chatgpt: 1, claude: 1 } }] },
-      { t: 'Würdest du für KI eine Monatsgebühr zahlen?', o: [
-        { t: 'Nein — vorerst nur kostenlos', s: { gemini: 1 } },
-        { t: 'Ja, wenn es sich lohnt', s: { chatgpt: 1, claude: 1 } }] },
-      { t: 'Wie sicher bist du mit neuen Apps?', o: [
-        { t: 'Blutiger Anfänger — bitte einfach', s: { chatgpt: 1, gemini: 1 } },
-        { t: 'Ziemlich sicher', s: { claude: 1 } }] }
-    ],
-    r: {
-      chatgpt: { n: 'ChatGPT (OpenAI)', w: 'Der beliebteste Allrounder: stark beim Schreiben, Brainstormen und bei Alltagsfragen, mit großzügiger Gratis-Version und unzähligen Anleitungen im Netz. Wenn du die KI willst, über die alle reden, fang hier an.' },
-      gemini:  { n: 'Gemini (Google)', w: 'Fest in der Google-Welt verankert: versteht sich mit Gmail und Google Docs, hat eine starke Gratis-Version und ist auf vielen Android-Handys startklar. Die natürliche Wahl, wenn du in Google-Apps lebst.' },
-      claude:  { n: 'Claude (Anthropic)', w: 'Beliebt für durchdachtes, sorgfältiges Schreiben und lange Dokumente. Ein starker Begleiter fürs Zusammenfassen, Entwerfen und für ehrliche, differenzierte Antworten.' },
-      copilot: { n: 'Copilot (Microsoft)', w: 'Wohnt direkt in Word, Excel und Outlook. Wenn dein Tag ohnehin in Microsoft Office stattfindet, bringt Copilot die KI genau dorthin, wo du arbeitest — ganz ohne neue App.' }
-    }
-  },
-  fr: {
-    q: [
-      { t: 'Pour quoi utiliseriez-vous surtout l’IA ?', o: [
-        { t: 'Écrire — e-mails, courriers, idées', s: { chatgpt: 2, claude: 2 } },
-        { t: 'Apprendre et rechercher — questions, explications', s: { gemini: 2, chatgpt: 1 } },
-        { t: 'Aide rapide au quotidien sur mon téléphone', s: { gemini: 2, chatgpt: 1 } },
-        { t: 'Documents de travail — Word, Excel, Outlook', s: { copilot: 3 } }] },
-      { t: 'Dans quel monde numérique vivez-vous ?', o: [
-        { t: 'Google — Gmail, Android, Google Docs', s: { gemini: 2 } },
-        { t: 'Microsoft — Windows, Office, Outlook', s: { copilot: 2 } },
-        { t: 'Apple, mixte ou aucun', s: { chatgpt: 1, claude: 1 } }] },
-      { t: 'Paieriez-vous un abonnement mensuel pour l’IA ?', o: [
-        { t: 'Non — gratuit seulement pour l’instant', s: { gemini: 1 } },
-        { t: 'Oui, si ça les vaut', s: { chatgpt: 1, claude: 1 } }] },
-      { t: 'À l’aise avec les nouvelles applis ?', o: [
-        { t: 'Grand débutant — restons simple', s: { chatgpt: 1, gemini: 1 } },
-        { t: 'Plutôt à l’aise', s: { claude: 1 } }] }
-    ],
-    r: {
-      chatgpt: { n: 'ChatGPT (OpenAI)', w: 'Le touche-à-tout le plus populaire : fort en écriture, en remue-méninges et en questions du quotidien, avec une version gratuite généreuse et des tutoriels à l’infini. Si vous voulez l’IA dont tout le monde parle, commencez ici.' },
-      gemini:  { n: 'Gemini (Google)', w: 'Intégrée au monde Google : elle s’entend bien avec Gmail et Google Docs, offre une version gratuite solide et est prête à l’emploi sur beaucoup de téléphones Android. Le choix naturel si vous vivez dans les applis Google.' },
-      claude:  { n: 'Claude (Anthropic)', w: 'Appréciée pour son écriture soignée et réfléchie et pour les documents longs. Une excellente compagne pour résumer, rédiger et obtenir des réponses honnêtes et nuancées.' },
-      copilot: { n: 'Copilot (Microsoft)', w: 'Habite dans Word, Excel et Outlook. Si votre journée se passe déjà dans Microsoft Office, Copilot amène l’IA là où vous travaillez — sans nouvelle appli à apprendre.' }
-    }
-  }
+
 };
 
 // VALÓDI lapszám: hány külön napon jelent meg tartalom (a main() számolja ki).
@@ -980,7 +810,7 @@ function wrapTables(html) {
     .replace(/<\/table>/g, '</table></div>');
 }
 
-const DATE_LOCALES = { en: 'en-US', hu: 'hu-HU', es: 'es-ES', de: 'de-DE', fr: 'fr-FR' };
+const DATE_LOCALES = { en: 'en-US', hu: 'hu-HU', es: 'es-ES' };
 function formatDate(iso) {
   if (!iso) return '';
   const d = new Date(iso);
@@ -1552,7 +1382,7 @@ function buildIndex(articles) {
     <span class="guides-cta__arrow">→</span></a>`;
 
   // Kiemelt HETI ÖSSZEFOGLALÓ blokk (a kabalával) — a hero UTÁN, mindig látszik.
-  const WEEKLY_LABEL = { en: 'This week in AI', hu: 'A hét összefoglalója', es: 'Esta semana en IA', de: 'Diese Woche in KI', fr: 'Cette semaine en IA' };
+  const WEEKLY_LABEL = { en: 'This week in AI', hu: 'A hét összefoglalója', es: 'Esta semana en IA' };
   const weeklyHtml = weeklyPin ? `<section class="grid-section weekly-pin">
     <div class="section-head">
       <span class="pill">📅 ${escapeHtml(WEEKLY_LABEL[LANG] || WEEKLY_LABEL.en)}</span>
@@ -2377,41 +2207,41 @@ try { GLOSSARY = JSON.parse(readFileSync(join(__dirname, 'glossary-data.json'), 
 // szándékosan NEM linkeljük — csak a valódi szakszavakat.
 // ===================================================================
 const AUTOLINK_KW = {
-  'prompt-engineering': { en: ['prompt engineering'], hu: ['prompt-írás', 'prompt engineering'], es: ['ingeniería de prompts'], de: ['Prompt Engineering'], fr: ['prompt engineering', 'art du prompt'] },
-  'machine-learning': { en: ['machine learning'], hu: ['gépi tanulás'], es: ['aprendizaje automático'], de: ['maschinelles Lernen'], fr: ['apprentissage automatique'] },
-  'neural-network': { en: ['neural network'], hu: ['neurális hálózat', 'neurális háló'], es: ['red neuronal', 'redes neuronales'], de: ['neuronales Netz', 'neuronale Netze'], fr: ['réseau de neurones', 'réseaux de neurones'] },
-  'context-window': { en: ['context window'], hu: ['kontextusablak'], es: ['ventana de contexto'], de: ['Kontextfenster'], fr: ['fenêtre de contexte'] },
-  'generative-ai': { en: ['generative AI'], hu: ['generatív AI'], es: ['IA generativa'], de: ['generative KI'], fr: ['IA générative'] },
-  'reasoning-model': { en: ['reasoning model'], hu: ['gondolkodó modell'], es: ['modelo de razonamiento'], de: ['Reasoning-Modell'], fr: ['modèle de raisonnement'] },
-  'knowledge-cutoff': { en: ['knowledge cut-off', 'knowledge cutoff'], hu: ['tudás-határnap'], es: ['fecha de corte de conocimiento'], de: ['Wissensstichtag'], fr: ['date de coupure des connaissances'] },
-  'training-data': { en: ['training data'], hu: ['tanítóadat'], es: ['datos de entrenamiento'], de: ['Trainingsdaten'], fr: ['données d’entraînement', "données d'entraînement"] },
-  'open-source-model': { en: ['open-source model', 'open source model'], hu: ['nyílt forráskódú modell'], es: ['modelo de código abierto'], de: ['Open-Source-Modell'], fr: ['modèle open source'] },
-  'voice-cloning': { en: ['voice cloning'], hu: ['hangklónozás'], es: ['clonación de voz'], de: ['Stimmklonen'], fr: ['clonage de voix'] },
-  'image-generator': { en: ['image generator'], hu: ['képgenerátor'], es: ['generador de imágenes'], de: ['Bildgenerator'], fr: ['générateur d’images', "générateur d'images"] },
-  'ai-agent': { en: ['AI agent'], hu: ['AI-ügynök'], es: ['agente de IA', 'agentes de IA'], de: ['KI-Agent', 'KI-Agenten'], fr: ['agent IA', 'agents IA'] },
+  'prompt-engineering': { en: ['prompt engineering'], hu: ['prompt-írás', 'prompt engineering'], es: ['ingeniería de prompts'], },
+  'machine-learning': { en: ['machine learning'], hu: ['gépi tanulás'], es: ['aprendizaje automático'], },
+  'neural-network': { en: ['neural network'], hu: ['neurális hálózat', 'neurális háló'], es: ['red neuronal', 'redes neuronales'], },
+  'context-window': { en: ['context window'], hu: ['kontextusablak'], es: ['ventana de contexto'], },
+  'generative-ai': { en: ['generative AI'], hu: ['generatív AI'], es: ['IA generativa'], },
+  'reasoning-model': { en: ['reasoning model'], hu: ['gondolkodó modell'], es: ['modelo de razonamiento'], },
+  'knowledge-cutoff': { en: ['knowledge cut-off', 'knowledge cutoff'], hu: ['tudás-határnap'], es: ['fecha de corte de conocimiento'], },
+  'training-data': { en: ['training data'], hu: ['tanítóadat'], es: ['datos de entrenamiento'], },
+  'open-source-model': { en: ['open-source model', 'open source model'], hu: ['nyílt forráskódú modell'], es: ['modelo de código abierto'], },
+  'voice-cloning': { en: ['voice cloning'], hu: ['hangklónozás'], es: ['clonación de voz'], },
+  'image-generator': { en: ['image generator'], hu: ['képgenerátor'], es: ['generador de imágenes'], },
+  'ai-agent': { en: ['AI agent'], hu: ['AI-ügynök'], es: ['agente de IA', 'agentes de IA'], },
   // 2026-08-01 (user: "szótárat bővítsük agent skill plugin"). SZÁNDÉKOSAN nem a
   // puszta "skill" a kulcsszó: a minta `(?<![\p{L}])kw[\p{L}]*` kis-nagybetűre
   // érzéketlen, tehát a "skill" ráugrana az "improve your skills"-re is, és a
   // szótárba vinné az olvasót egy teljesen hétköznapi szóról. A "plugin"
   // viszont önmagában is egyértelmű (a toldalékos "pluginek" is illeszkedik).
   // Az MCP betűszó → kis-nagybetű-érzékeny ág, magyar toldalékkal (MCP-t) is jó.
-  'ai-skill': { en: ['AI skill'], hu: ['AI-készség'], es: ['habilidad de IA'], de: ['KI-Fähigkeit'], fr: ['compétence IA'] },
-  'plugin': { en: ['plugin'], hu: ['plugin'], es: ['plugin'], de: ['Plugin'], fr: ['plugin'] },
-  'mcp': { en: ['MCP'], hu: ['MCP'], es: ['MCP'], de: ['MCP'], fr: ['MCP'] },
-  'fine-tuning': { en: ['fine-tuning', 'fine-tuned', 'fine-tune'], hu: ['finomhangolás'], es: ['ajuste fino'], de: ['Feinabstimmung', 'Fine-Tuning'], fr: ['ajustement fin', 'fine-tuning'] },
-  'multimodal': { en: ['multimodal'], hu: ['multimodális'], es: ['multimodal'], de: ['multimodal'], fr: ['multimodal', 'multimodale'] },
-  'hallucination': { en: ['hallucination'], hu: ['hallucináció'], es: ['alucinación'], de: ['Halluzination'], fr: ['hallucination'] },
-  'deepfake': { en: ['deepfake'], hu: ['deepfake'], es: ['deepfake'], de: ['Deepfake'], fr: ['deepfake'] },
-  'jailbreak': { en: ['jailbreak'], hu: ['jailbreak'], es: ['jailbreak'], de: ['Jailbreak'], fr: ['jailbreak'] },
-  'benchmark': { en: ['benchmark'], hu: ['benchmark'], es: ['benchmark'], de: ['Benchmark'], fr: ['benchmark'] },
-  'guardrails': { en: ['guardrails', 'guardrail'], hu: ['védőkorlát'], es: ['barreras de seguridad'], de: ['Schutzplanken', 'Guardrails'], fr: ['garde-fous'] },
-  'watermark': { en: ['AI watermark', 'watermark'], hu: ['vízjel'], es: ['marca de agua'], de: ['Wasserzeichen'], fr: ['filigrane'] },
-  'token': { en: ['token'], hu: ['token'], es: ['token'], de: ['Token'], fr: ['token', 'jeton'] },
-  'prompt': { en: ['prompt'], hu: ['prompt'], es: ['prompt'], de: ['Prompt'], fr: ['prompt'] },
-  'llm': { en: ['LLM', 'large language model'], hu: ['LLM', 'nagy nyelvi modell'], es: ['LLM', 'gran modelo de lenguaje'], de: ['LLM', 'großes Sprachmodell'], fr: ['LLM', 'grand modèle de langage'] },
-  'agi': { en: ['AGI'], hu: ['AGI'], es: ['AGI'], de: ['AGI'], fr: ['AGI'] },
-  'chip-gpu': { en: ['GPU'], hu: ['GPU'], es: ['GPU'], de: ['GPU'], fr: ['GPU'] },
-  'gpt': { en: ['GPT'], hu: ['GPT'], es: ['GPT'], de: ['GPT'], fr: ['GPT'] }
+  'ai-skill': { en: ['AI skill'], hu: ['AI-készség'], es: ['habilidad de IA'], },
+  'plugin': { en: ['plugin'], hu: ['plugin'], es: ['plugin'], },
+  'mcp': { en: ['MCP'], hu: ['MCP'], es: ['MCP'], },
+  'fine-tuning': { en: ['fine-tuning', 'fine-tuned', 'fine-tune'], hu: ['finomhangolás'], es: ['ajuste fino'], },
+  'multimodal': { en: ['multimodal'], hu: ['multimodális'], es: ['multimodal'], },
+  'hallucination': { en: ['hallucination'], hu: ['hallucináció'], es: ['alucinación'], },
+  'deepfake': { en: ['deepfake'], hu: ['deepfake'], es: ['deepfake'], },
+  'jailbreak': { en: ['jailbreak'], hu: ['jailbreak'], es: ['jailbreak'], },
+  'benchmark': { en: ['benchmark'], hu: ['benchmark'], es: ['benchmark'], },
+  'guardrails': { en: ['guardrails', 'guardrail'], hu: ['védőkorlát'], es: ['barreras de seguridad'], },
+  'watermark': { en: ['AI watermark', 'watermark'], hu: ['vízjel'], es: ['marca de agua'], },
+  'token': { en: ['token'], hu: ['token'], es: ['token'], },
+  'prompt': { en: ['prompt'], hu: ['prompt'], es: ['prompt'], },
+  'llm': { en: ['LLM', 'large language model'], hu: ['LLM', 'nagy nyelvi modell'], es: ['LLM', 'gran modelo de lenguaje'], },
+  'agi': { en: ['AGI'], hu: ['AGI'], es: ['AGI'], },
+  'chip-gpu': { en: ['GPU'], hu: ['GPU'], es: ['GPU'], },
+  'gpt': { en: ['GPT'], hu: ['GPT'], es: ['GPT'], }
 };
 const AUTOLINK_MAX = 8;
 

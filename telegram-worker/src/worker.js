@@ -35,7 +35,7 @@ async function handleFeedback(request, env) {
   let body;
   try { body = await request.json(); } catch { return new Response('bad json', { status: 400, headers: FEEDBACK_CORS }); }
   const slug = String(body.slug || '').replace(/[^a-z0-9-]/g, '').slice(0, 80);
-  const lang = ['en', 'hu', 'es', 'de', 'fr'].includes(body.lang) ? body.lang : 'en';
+  const lang = ['en', 'hu', 'es'].includes(body.lang) ? body.lang : 'en';
   const vote = body.vote === 'up' ? 'up' : body.vote === 'down' ? 'down' : null;
   if (!slug || !vote) return new Response('bad input', { status: 400, headers: FEEDBACK_CORS });
   const key = `fb:${slug}`;
