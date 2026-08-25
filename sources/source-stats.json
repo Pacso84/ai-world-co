@@ -1,7 +1,7 @@
 {
   "_meta": {
     "note": "Forrás-bizonyítvány: frissesség + termés + megbízhatóság forrásonként. Gyártja: core/source-report-card.js",
-    "updated": "2026-08-25T08:41:42.385Z",
+    "updated": "2026-08-25T16:36:01.304Z",
     "thresholds": {
       "DEAD_FEED_DAYS": 365,
       "MIN_SAMPLE": 4,
@@ -12,7 +12,7 @@
   "sources": {
     "openai-blog": {
       "name": "OpenAI Blog (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 0,
       "published30d": 33,
       "truthBlocks": 0,
       "totalAttempts": 64,
@@ -34,7 +34,7 @@
     },
     "google-ai-blog": {
       "name": "Google AI (hivatalos, blog.google)",
-      "feedAgeDays": 6,
+      "feedAgeDays": 0,
       "published30d": 7,
       "truthBlocks": 0,
       "totalAttempts": 18,
@@ -78,7 +78,7 @@
     },
     "nvidia-blog": {
       "name": "NVIDIA Blog (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 0,
       "published30d": 4,
       "truthBlocks": 0,
       "totalAttempts": 20,
@@ -89,7 +89,7 @@
     },
     "google-workspace": {
       "name": "Google Workspace Updates (hivatalos)",
-      "feedAgeDays": 0,
+      "feedAgeDays": 1,
       "published30d": 14,
       "truthBlocks": 1,
       "totalAttempts": 37,
@@ -133,7 +133,7 @@
     },
     "aws-ml": {
       "name": "AWS Machine Learning (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 0,
       "published30d": 4,
       "truthBlocks": 0,
       "totalAttempts": 45,
@@ -386,18 +386,18 @@
     },
     "sap": {
       "name": "SAP Innovation Blog (hivatalos)",
-      "feedAgeDays": 1,
-      "published30d": 1,
+      "feedAgeDays": 0,
+      "published30d": 2,
       "truthBlocks": 0,
-      "totalAttempts": 7,
+      "totalAttempts": 8,
       "alreadyDisabled": false,
-      "lastArticle": "2026-08-21",
+      "lastArticle": "2026-08-25",
       "verdict": "ok",
       "reason": ""
     },
     "databricks": {
       "name": "Databricks Blog (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 0,
       "published30d": 7,
       "truthBlocks": 0,
       "totalAttempts": 22,
@@ -441,7 +441,7 @@
     },
     "ibm": {
       "name": "IBM Research (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 0,
       "published30d": 0,
       "truthBlocks": 0,
       "totalAttempts": 1,
@@ -518,7 +518,7 @@
     },
     "qwen-news": {
       "name": "Qwen / Alibaba (hivatalos, Google News szűrve)",
-      "feedAgeDays": 23,
+      "feedAgeDays": 13,
       "published30d": 2,
       "truthBlocks": 0,
       "totalAttempts": 4,
@@ -529,7 +529,7 @@
     },
     "grammarly-blog": {
       "name": "Grammarly (hivatalos)",
-      "feedAgeDays": 11,
+      "feedAgeDays": 12,
       "published30d": 2,
       "truthBlocks": 0,
       "totalAttempts": 2,
@@ -551,7 +551,7 @@
     },
     "sony-ai": {
       "name": "Sony AI (hivatalos)",
-      "feedAgeDays": 55,
+      "feedAgeDays": 56,
       "published30d": 1,
       "truthBlocks": 0,
       "totalAttempts": 3,
@@ -562,7 +562,7 @@
     },
     "notion-releases": {
       "name": "Notion – Mi újság (hivatalos)",
-      "feedAgeDays": 6,
+      "feedAgeDays": 7,
       "published30d": 0,
       "truthBlocks": 0,
       "totalAttempts": 0,
@@ -573,7 +573,7 @@
     },
     "microsoft-365": {
       "name": "Microsoft 365 Insider (hivatalos)",
-      "feedAgeDays": 0,
+      "feedAgeDays": 1,
       "published30d": 4,
       "truthBlocks": 0,
       "totalAttempts": 4,
@@ -617,7 +617,7 @@
     },
     "dropbox-blog": {
       "name": "Dropbox Blog (hivatalos)",
-      "feedAgeDays": 43,
+      "feedAgeDays": 44,
       "published30d": 3,
       "truthBlocks": 0,
       "totalAttempts": 3,
