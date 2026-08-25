@@ -1,86 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178750156068723",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-08-23T16:12:40.687Z",
-      "updated": "2026-08-23T16:13:00.915Z"
-    },
-    {
-      "id": "t178750158091715",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-08-23T16:13:00.917Z",
-      "updated": "2026-08-23T16:13:01.116Z"
-    },
-    {
-      "id": "t178750158111833",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-23T16:13:01.119Z",
-      "updated": "2026-08-23T16:13:01.295Z"
-    },
-    {
-      "id": "t178750158129649",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-23T16:13:01.296Z",
-      "updated": "2026-08-23T16:13:01.474Z"
-    },
-    {
-      "id": "t178750158147743",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-08-23T16:13:01.477Z",
-      "updated": "2026-08-23T16:13:01.691Z"
-    },
-    {
-      "id": "t178750158173879",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-23T16:13:01.738Z",
-      "updated": "2026-08-23T16:13:01.972Z"
-    },
-    {
-      "id": "t178750158197447",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-08-23T16:13:01.974Z",
-      "updated": "2026-08-23T16:13:02.194Z"
-    },
-    {
-      "id": "t178750158219650",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-23T16:13:02.196Z",
-      "updated": "2026-08-23T16:13:14.418Z"
-    },
-    {
-      "id": "t178750159442041",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-08-23T16:13:14.420Z",
-      "updated": "2026-08-23T16:13:34.722Z"
-    },
-    {
-      "id": "t178753187323874",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-08-24T00:37:53.238Z",
-      "updated": "2026-08-24T00:37:53.404Z"
-    },
-    {
       "id": "t17875318734064",
       "title": "Run rss-scraper",
       "status": "done",
@@ -479,33 +399,89 @@
       "agent": "publisher",
       "created": "2026-08-25T01:21:27.374Z",
       "updated": "2026-08-25T01:21:49.521Z"
+    },
+    {
+      "id": "t178764656881537",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-08-25T08:29:28.815Z",
+      "updated": "2026-08-25T08:29:28.994Z"
+    },
+    {
+      "id": "t178764656899534",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-08-25T08:29:28.995Z",
+      "updated": "2026-08-25T08:29:56.105Z"
+    },
+    {
+      "id": "t17876465961065",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-08-25T08:29:56.107Z",
+      "updated": "2026-08-25T08:29:56.305Z"
+    },
+    {
+      "id": "t178764659630718",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-25T08:29:56.307Z",
+      "updated": "2026-08-25T08:29:56.476Z"
+    },
+    {
+      "id": "t178764659647743",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-25T08:29:56.477Z",
+      "updated": "2026-08-25T08:29:56.654Z"
+    },
+    {
+      "id": "t178764659665727",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-08-25T08:29:56.657Z",
+      "updated": "2026-08-25T08:29:56.876Z"
+    },
+    {
+      "id": "t178764659692388",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-25T08:29:56.923Z",
+      "updated": "2026-08-25T08:31:11.772Z"
+    },
+    {
+      "id": "t178764667177463",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-08-25T08:31:11.774Z",
+      "updated": "2026-08-25T08:33:26.307Z"
+    },
+    {
+      "id": "t17876468063087",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-25T08:33:26.308Z",
+      "updated": "2026-08-25T08:33:36.556Z"
+    },
+    {
+      "id": "t178764681655875",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-08-25T08:33:36.558Z",
+      "updated": "2026-08-25T08:34:00.711Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178663962024811",
-      "level": "success",
-      "text": "1 hír + 0 útmutató publikálva (költség: $0.0170).",
-      "agent": "ceo",
-      "at": "2026-08-13T16:47:00.248Z",
-      "loud": false
-    },
-    {
-      "id": "n178667013615545",
-      "level": "warn",
-      "text": "📨 pairing → guide: Új funkció-hír → kéne hozzá útmutató: \"How to Use Picsart AI Playground on Your Desktop\"",
-      "agent": "pairing",
-      "at": "2026-08-14T01:15:36.155Z",
-      "loud": false
-    },
-    {
-      "id": "n17866709901037",
-      "level": "info",
-      "text": "SEO: 12 cikk optimalizálva (átlag 8.3/10).",
-      "agent": "seo",
-      "at": "2026-08-14T01:29:50.103Z",
-      "loud": false
-    },
     {
       "id": "n178667101142024",
       "level": "success",
@@ -1281,18 +1257,33 @@
       "agent": "ceo",
       "at": "2026-08-25T01:21:49.559Z",
       "loud": false
+    },
+    {
+      "id": "n17876468062988",
+      "level": "info",
+      "text": "SEO: 11 cikk optimalizálva (átlag 8.2/10).",
+      "agent": "seo",
+      "at": "2026-08-25T08:33:26.298Z",
+      "loud": false
+    },
+    {
+      "id": "n178764682818322",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The lineup looks solid and ready — mix of practical how-tos and a strong privacy guide sets a helpful, trustworthy tone. A few tool names could use a final check per our naming conventions (especially",
+      "agent": "publisher",
+      "at": "2026-08-25T08:33:48.183Z",
+      "loud": false
+    },
+    {
+      "id": "n178764684074988",
+      "level": "info",
+      "text": "Pipeline lefutott — ma nem volt publikálható új tartalom.",
+      "agent": "ceo",
+      "at": "2026-08-25T08:34:00.749Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178678187028663",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 20 → 5/4/2 oszlop.",
-      "ref": "mobile",
-      "at": "2026-08-15T08:17:50.286Z"
-    },
     {
       "id": "m17867824020997",
       "from": "social",
@@ -2650,6 +2641,15 @@
       "text": "6 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-08-25T01:34:52.270Z"
+    },
+    {
+      "id": "m17876468165471",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-08-25T08:33:36.547Z"
     }
   ]
 }
