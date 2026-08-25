@@ -1,0 +1,41 @@
+{
+  "started_at": "2026-08-25T01:19:55.003Z",
+  "total": 4,
+  "passed": 4,
+  "failed": 0,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.014940025,
+  "by_article": [
+    {
+      "writer": "WRITER_GUIDE_fact-check-a-viral-claim-with-perplexity-before-you-share-it.json",
+      "article": "ARTICLE_GUIDE_fact-check-a-viral-claim-with-perplexity-before-you-share-it.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0020718
+    },
+    {
+      "writer": "WRITER_GUIDE_plan-a-week-s-meals-and-build-a-grocery-list-with-perplexity.json",
+      "article": "ARTICLE_GUIDE_plan-a-week-s-meals-and-build-a-grocery-list-with-perplexity.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0019983
+    },
+    {
+      "writer": "WRITER_GUIDE_translate-and-explain-a-confusing-email-or-letter-with-perpl.json",
+      "article": "ARTICLE_GUIDE_translate-and-explain-a-confusing-email-or-letter-with-perpl.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0022341
+    },
+    {
+      "writer": "WRITER_GUIDE_use-claude-to-pull-out-the-key-points-of-a-long-research-pap.json",
+      "article": "ARTICLE_GUIDE_use-claude-to-pull-out-the-key-points-of-a-long-research-pap.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0018864
+    }
+  ],
+  "finished_at": "2026-08-25T01:21:27.364Z",
+  "duration_seconds": 92.361
+}

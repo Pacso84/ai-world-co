@@ -1,42 +1,4 @@
 {
-  "2026-08-03": [
-    {
-      "at": "2026-08-03T02:03:36.775Z",
-      "file": "WRITER_2026-08-03T01-49-28-320Z_pixlr_AI_Visual_Storytelling_Trends_to_Watch_This_Spring.json",
-      "action": "block",
-      "reasons": [
-        "References 'GPT-5.6' in verified list but article does not mention it — no problem there. However, article mentions 'Adobe Firefly' as if it's a real product offering image generation alongside the listed names — Adobe Firefly is real, so this is fine. Wait, let me re-check: The article mentions 'OpenAI's Sora', 'Runway', and 'Google's Veo' as video generators. Sora, Runway (Gen-3/4), and Veo are real products. The article also mentions 'Adobe Firefly' which is a real product. No fabricated UI elements, URLs, prices, or model versions. The claims about free tiers are hedged ('Most platforms have free trials or low-cost tiers') rather than stated as specific facts. The mention of ChatGPT, Copilot, and Gemini including some image generation is generally accurate. No invented specific features."
-      ]
-    },
-    {
-      "at": "2026-08-03T02:05:32.829Z",
-      "file": "WRITER_2026-08-03T01-49-35-027Z_picsart_Wan_2_7_prompt_guide__the_formula_plus_24_ready-to.json",
-      "action": "block",
-      "reasons": [
-        "Wan 2.7 is not described as Picsart's AI video model in the article — but more importantly, the article claims Wan 2.7 is a Picsart product with 'native audio generation' and 'multi-reference inputs'. Wan (通义万相) is Alibaba's AI video model family, not Picsart's. Picsart is a separate photo/video editing platform. This is a fabricated attribution of the Wan model to the wrong company, and the specific feature claims (native audio, multi-reference inputs for Wan 2.7) cannot be verified."
-      ]
-    },
-    {
-      "at": "2026-08-03T02:06:24.418Z",
-      "file": "WRITER_2026-08-03T01-49-35-028Z_picsart_How_to_use_Kling_AI_to_create_cinematic_AI_videos.json",
-      "action": "block",
-      "reasons": [
-        "Picsart's AI Video Generator offering Kling as a selectable model is not verifiable and likely fabricated — Picsart is a real photo/design platform, but I cannot confirm they offer Kling video generation as described (model selector dropdown, specific 'AI Video Generator' tool)",
-        "The article presents the Picsart + Kling integration as a simple factual flow ('Go to picsart.com... look for the AI Video Generator... choose Kling from the dropdown') without any hedging, but this specific integration is not a verified, widely-known feature and may be invented or misrepresented",
-        "Kling being 'built by Kuaishou' is roughly accurate (Kuaishou developed the Kling model), so not flagged, but the specific claim that Picsart has integrated Kling as a selectable model in their video generator is presented as fact without verification"
-      ]
-    },
-    {
-      "at": "2026-08-03T02:22:21.371Z",
-      "file": "WRITER_GUIDE_how-to-practise-a-job-interview-out-loud-with-chatgpt-s-voic.json",
-      "action": "block",
-      "reasons": [
-        "The article claims Voice Mode 'does not work on a desktop browser' — this is fabricated/wrong; Voice Mode is available on the ChatGPT web/desktop interface as well, not only on mobile.",
-        "The article states ChatGPT Plus costs '$20/month' — this is an invented/incorrect price stated as fact; current ChatGPT Plus pricing should be verified on OpenAI's pricing page rather than asserted as a specific dollar amount.",
-        "The article describes a very specific UI: 'Just above that bar, in the bottom-right corner, look for a small headphones or sound-wave icon' for Voice Mode. This UI detail (headphones icon location) is not accurately described for the current ChatGPT mobile app interface and reads as a fabricated UI element."
-      ]
-    }
-  ],
   "2026-08-05": [
     {
       "at": "2026-08-05T17:22:38.078Z",
@@ -356,6 +318,17 @@
         "The article states NVIDIA's upcoming 'Vera Rubin NVL72' is 'designed to do up to 30 times more work per watt of electricity than the previous generation.' This is a specific, unhedged performance claim about a named upcoming product. NVIDIA's official Vera Rubin announcements describe the platform, but the specific 'up to 30x per watt' efficiency figure vs the previous generation (Blackwell) is not a widely-verified public spec and is presented here as fact."
       ],
       "confidence": 6
+    }
+  ],
+  "2026-08-25": [
+    {
+      "at": "2026-08-25T01:02:16.873Z",
+      "file": "WRITER_2026-08-25T00-37-56-601Z_openai-blog_Advancing_price-performance_for_developers_with_GP.json",
+      "action": "block",
+      "reasons": [
+        "Kiro is described as 'an AI coding assistant' that runs on GPT-5.6, but Kiro is not a verified-real product on the supplied list and no verifiable AI coding assistant named Kiro (powered by OpenAI's GPT-5.6) can be confirmed — the tool's name, its existence, and its GPT-5.6 integration appear fabricated or unverifiable."
+      ],
+      "confidence": 7
     }
   ]
 }

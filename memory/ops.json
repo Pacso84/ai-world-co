@@ -1,94 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178747306245484",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-23T08:17:42.454Z",
-      "updated": "2026-08-23T08:18:04.063Z"
-    },
-    {
-      "id": "t178747308406572",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-23T08:18:04.065Z",
-      "updated": "2026-08-23T08:18:38.424Z"
-    },
-    {
-      "id": "t178747311842572",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-23T08:18:38.425Z",
-      "updated": "2026-08-23T08:18:56.226Z"
-    },
-    {
-      "id": "t178747313622819",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-23T08:18:56.228Z",
-      "updated": "2026-08-23T08:19:44.042Z"
-    },
-    {
-      "id": "t178747318404321",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-23T08:19:44.043Z",
-      "updated": "2026-08-23T08:20:09.963Z"
-    },
-    {
-      "id": "t178747320996579",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-08-23T08:20:09.965Z",
-      "updated": "2026-08-23T08:20:17.077Z"
-    },
-    {
-      "id": "t178747321712266",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-23T08:20:17.122Z",
-      "updated": "2026-08-23T08:20:35.623Z"
-    },
-    {
-      "id": "t178747323562485",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-08-23T08:20:35.624Z",
-      "updated": "2026-08-23T08:20:52.809Z"
-    },
-    {
-      "id": "t178747325281121",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-23T08:20:52.811Z",
-      "updated": "2026-08-23T08:21:03.314Z"
-    },
-    {
-      "id": "t178747326331525",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-08-23T08:21:03.315Z",
-      "updated": "2026-08-23T08:21:22.200Z"
-    },
-    {
-      "id": "t178750156049337",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-08-23T16:12:40.493Z",
-      "updated": "2026-08-23T16:12:40.685Z"
-    },
-    {
       "id": "t178750156068723",
       "title": "Run rss-scraper",
       "status": "done",
@@ -479,25 +391,97 @@
       "agent": "publisher",
       "created": "2026-08-24T16:44:40.535Z",
       "updated": "2026-08-24T16:45:02.194Z"
+    },
+    {
+      "id": "t178761823412589",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-08-25T00:37:14.125Z",
+      "updated": "2026-08-25T00:37:14.298Z"
+    },
+    {
+      "id": "t178761823430085",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-08-25T00:37:14.300Z",
+      "updated": "2026-08-25T00:38:05.228Z"
+    },
+    {
+      "id": "t178761828523060",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-08-25T00:38:05.230Z",
+      "updated": "2026-08-25T00:38:05.425Z"
+    },
+    {
+      "id": "t178761828542622",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-25T00:38:05.426Z",
+      "updated": "2026-08-25T01:01:47.686Z"
+    },
+    {
+      "id": "t178761970768755",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-25T01:01:47.687Z",
+      "updated": "2026-08-25T01:04:45.759Z"
+    },
+    {
+      "id": "t178761988576121",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-25T01:04:45.761Z",
+      "updated": "2026-08-25T01:04:54.318Z"
+    },
+    {
+      "id": "t178761989432018",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-25T01:04:54.320Z",
+      "updated": "2026-08-25T01:05:10.143Z"
+    },
+    {
+      "id": "t178761991014579",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-08-25T01:05:10.145Z",
+      "updated": "2026-08-25T01:06:08.960Z"
+    },
+    {
+      "id": "t178761996900668",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-25T01:06:09.006Z",
+      "updated": "2026-08-25T01:19:54.826Z"
+    },
+    {
+      "id": "t178762079482741",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-25T01:19:54.827Z",
+      "updated": "2026-08-25T01:21:27.372Z"
+    },
+    {
+      "id": "t178762088737412",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-08-25T01:21:27.374Z",
+      "updated": "2026-08-25T01:21:49.521Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n17866395980802",
-      "level": "info",
-      "text": "SEO: 1 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-08-13T16:46:38.080Z",
-      "loud": false
-    },
-    {
-      "id": "n178663961041970",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The line-up is solid and ready — it covers privacy, practical how-tos, and real-world writing tasks, giving everyday readers a useful mix. Articles 4, 5, and 6 are closely related (complaint letter, c",
-      "agent": "publisher",
-      "at": "2026-08-13T16:46:50.419Z",
-      "loud": false
-    },
     {
       "id": "n178663962024811",
       "level": "success",
@@ -1281,63 +1265,25 @@
       "agent": "ceo",
       "at": "2026-08-24T16:45:02.218Z",
       "loud": false
+    },
+    {
+      "id": "n178762089722650",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). A solid, well-balanced lineup — you have practical how-tos, a much-needed privacy guide, and a nice mix of emotional writing support (sympathy, thank-you speech). It covers everyday needs well. A coup",
+      "agent": "publisher",
+      "at": "2026-08-25T01:21:37.226Z",
+      "loud": false
+    },
+    {
+      "id": "n178762090955910",
+      "level": "success",
+      "text": "7 hír + 4 útmutató publikálva (költség: $0.1846).",
+      "agent": "ceo",
+      "at": "2026-08-25T01:21:49.559Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178675550688641",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Plan a 3‑day weekend road trip with Meta AI in 15 minutes\" — mi a baj: British spelling: 'favour' in the What this means for you section — change to 'favor' for US English compliance",
-      "ref": "GUIDE_plan-a-3-day-weekend-road-trip-with-meta-ai-in-15-minutes.json",
-      "at": "2026-08-15T00:58:26.886Z"
-    },
-    {
-      "id": "m178675631638527",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 20 → 5/4/2 oszlop.",
-      "ref": "mobile",
-      "at": "2026-08-15T01:11:56.385Z"
-    },
-    {
-      "id": "m178675694743837",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-08-15T01:22:27.438Z"
-    },
-    {
-      "id": "m178678173573194",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Previewing Ultrafast mode: GPT-5.6 Sol at up to 14X the speed\" — javítva: GPT-5.6 is listed as a verified-real name, but as of my knowledge there is no public OpenAI model named 'GPT-5.6'. It is presented as a current, released product ('OpenAI's GPT-5.6 is one of the reasons why'), which is a fabricated specific claim.; Reviewer verdict: Hitelesség-kapu blokkolta: GPT-5.6 is listed ",
-      "ref": "2026-08-14T01-01-26-375Z_openai-blog_Previewing_Ultrafast_mode__GPT-5_6_Sol_at_up_to_14.json",
-      "at": "2026-08-15T08:15:35.731Z"
-    },
-    {
-      "id": "m178678174569040",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Previewing Ultrafast mode: GPT-5.6 Sol at up to 14X the speed\" (?/10)",
-      "ref": "2026-08-14T01-01-26-375Z_openai-blog_Previewing_Ultrafast_mode__GPT-5_6_Sol_at_up_to_14.json",
-      "at": "2026-08-15T08:15:45.690Z"
-    },
-    {
-      "id": "m178678178341842",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Plan a 3‑day weekend road trip with Meta AI in 15 minutes\" — javítva: British spelling: 'favour' in the What this means for you section — change to 'favor' for US English compliance; Reviewer verdict: Nearly publication-ready guide with excellent structure, beginner-friendly clarity, and strong brand voice. One quick fix needed: change the British spelling 'favour' to 'favor' in the ",
-      "ref": "GUIDE_plan-a-3-day-weekend-road-trip-with-meta-ai-in-15-minutes.json",
-      "at": "2026-08-15T08:16:23.418Z"
-    },
     {
       "id": "m178678179783717",
       "from": "ellenorzo",
@@ -2650,6 +2596,60 @@
       "text": "6 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-08-24T16:53:32.427Z"
+    },
+    {
+      "id": "m178761973687249",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Advancing price-performance for developers with GPT‑5.6 in Kiro\" — mi a baj: Kiro is described as 'an AI coding assistant' that runs on GPT-5.6, but Kiro is not a verified-real product on the supplied list and no verifiable AI coding assistant named Kiro (powered by OpenAI's GPT-5.6) can be confirmed — the tool's name, its existence, and its GPT-5.6 integration appear fabric",
+      "ref": "2026-08-25T00-37-56-601Z_openai-blog_Advancing_price-performance_for_developers_with_GP.json",
+      "at": "2026-08-25T01:02:16.872Z"
+    },
+    {
+      "id": "m178761989430738",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Advancing price-performance for developers with GPT‑5.6 in Kiro\" — javítva: Kiro is described as 'an AI coding assistant' that runs on GPT-5.6, but Kiro is not a verified-real product on the supplied list and no verifiable AI coding assistant named Kiro (powered by OpenAI's GPT-5.6) can be confirmed — the tool's name, its existence, and its GPT-5.6 integration appear fabricated or un",
+      "ref": "2026-08-25T00-37-56-601Z_openai-blog_Advancing_price-performance_for_developers_with_GP.json",
+      "at": "2026-08-25T01:04:54.307Z"
+    },
+    {
+      "id": "m178761991013299",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Advancing price-performance for developers with GPT‑5.6 in Kiro\" (?/10)",
+      "ref": "2026-08-25T00-37-56-601Z_openai-blog_Advancing_price-performance_for_developers_with_GP.json",
+      "at": "2026-08-25T01:05:10.132Z"
+    },
+    {
+      "id": "m178761992959354",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "info",
+      "text": "A \"Generate interactive simulations and models in the Gemi\" hír a meglévő útmutatóra mutat: gemini-getting-started",
+      "ref": "gemini-getting-started",
+      "at": "2026-08-25T01:05:29.593Z"
+    },
+    {
+      "id": "m178761994949780",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "info",
+      "text": "A \"All about Grok Imagine 2: sharper detail, text, and edi\" hír a meglévő útmutatóra mutat: generate-ai-powered-tweet-threads-on-x-with-grok",
+      "ref": "generate-ai-powered-tweet-threads-on-x-with-grok",
+      "at": "2026-08-25T01:05:49.497Z"
+    },
+    {
+      "id": "m178762104782838",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Ask DeepSeek to explain complex topics and concept\" — \"You don't need to create an account to start using it immediately for simple questions\"",
+      "ref": "ARTICLE_GUIDE_ask-deepseek-to-explain-complex-topics-and-concepts-in-simpl.json",
+      "at": "2026-08-25T01:24:07.828Z"
     }
   ]
 }

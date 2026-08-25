@@ -1,0 +1,48 @@
+{
+  "_meta": {
+    "written_at": "2026-08-25T01:04:54.305Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.0058696,
+    "original_draft": "2026-08-25T00-37-56-601Z_openai-blog_Advancing_price-performance_for_developers_with_GP.json",
+    "source_id": "openai-blog",
+    "source_name": "OpenAI Blog (hivatalos)",
+    "source_link": "https://openai.com/index/gpt-5-6-in-kiro",
+    "source_links": [
+      "https://openai.com/index/gpt-5-6-in-kiro"
+    ],
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "rejected_at": "2026-08-25T01:02:16.867Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 701
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Solid explainer that hits all structural marks — hook, plain explanations, audience-segmented What This Means For You, and actionable wrap-up. Tone is friendly and non-judgmental, technical terms are explained in context, and the causal link between cheaper AI models and better consumer apps is clearly articulated without invented specifics.",
+      "_aiCost": 0.00120846,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Hitelesség-kapu blokkolta: Kiro is described as 'an AI coding assistant' that runs on GPT-5.6, but Kiro is not a verified-real product on the supplied list and no verifiable AI coding assistant named Kiro (powered by OpenAI's G",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-08-25T00-37-56-601Z_openai-blog_Advancing_price-performance_for_developers_with_GP.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-08-25T01:05:10.131Z",
+    "slug": "ai-just-got-cheaper-and-smarter-here-s-what-that-means-for-you",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-08-25T01:05:19.253Z",
+    "guide_worthy": false,
+    "pairing_reason": "Article is a general explainer about AI pricing trends, not about a specific named feature. Mentions 'AI coding assistants' and 'AI models' broadly with no concrete, actionable product to guide readers to."
+  },
+  "article_markdown": "---\ntitle: \"AI Just Got Cheaper and Smarter — Here's What That Means for You\"\nsubtitle: \"A quiet shift in how AI models are priced is changing the tools you already use — and opening doors to people who never thought they could build with AI.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"ai-models\", \"ai-costs\", \"ai-coding\", \"ai-for-everyone\"]\n---\n\n# AI Just Got Cheaper and Smarter — Here's What That Means for You\n\n> **In short:** When a major AI lab ships a new, more efficient model, the cost of running AI drops for everyone downstream — and the apps you already rely on quietly get more capable. Even if you never write a line of code, this shift is reaching you.\n\nLast week you asked an AI to rewrite a clunky email and it did the job in seconds. Maybe you used a phone app that turned a rambling voice note into a tidy to-do list. None of that feels remarkable anymore — it's just how things work now. Behind those everyday conveniences, though, a quiet shift is happening.\n\n## What's changing behind the scenes\n\nAI companies are releasing new versions of their core models — the \"engines\" that power ChatGPT, Claude, Gemini, and the smart features inside hundreds of other apps — at a steady rhythm. Each new generation tends to do more for less: less computing power, less cost per request, faster answers. The headline numbers are aimed at developers and businesses who pay to run these models. The ripple effect, though, reaches everyone.\n\n## Why the price of AI matters to you\n\nWhen a powerful AI model gets cheaper to run, two things usually follow.\n\n**Savings tend to spread.** The companies that build apps pay less to power the AI features they embed. So they can offer more for free, keep subscription prices steady while adding new capabilities, or both. That voice-to-list app on your phone exists largely because running AI in the background has become cheap enough to bundle into a free version.\n\n**The door opens wider for non-developers.** AI coding assistants — tools that help you describe what you want and turn it into working software — aren't just for trained engineers anymore. Someone with no programming background can describe a small website, a tool that reformats a messy spreadsheet, or a simple app for a side project, and get a working first draft in minutes. People sometimes call this \"vibe coding\": you describe the vibe, and the AI writes the code. It isn't magic, and it still needs human judgment to polish, but the entry bar has dropped sharply.\n\n## What this means for you\n\n- **If you only use AI casually**: expect the tools you already rely on to keep getting more capable without getting more expensive. Watch for new features appearing quietly inside apps you already pay for.\n- **If you've ever wanted to build something small**: this is a good moment to try. Pick one tiny project — a personal budget tracker, a watering reminder for your plants, a basic page for something you sell on the side — and describe it to an AI assistant. You won't get a polished product, but you might get a working starting point that surprises you.\n- **If you're thinking about jobs**: the honest answer is that roles are shifting, not vanishing. People who learn to work alongside these tools — describing what they want clearly, checking the output, knowing when something is off — tend to feel more in control than people who never try at all.\n\n## Wrap-up\n\nA cheaper, smarter AI model inside a developer tool might sound like a small headline. It sits inside a much bigger story, though: the cost of running powerful AI keeps falling, and the benefits keep spreading outward. You don't need to open a coding tool to feel that — you already feel it every time you open an app that quietly does something clever.\n\nA small step to try today: open the AI assistant you already use and ask it to help you build one tiny thing you've been putting off. That's the easiest way to see what this shift actually looks like in practice.",
+  "original_title": "Advancing price-performance for developers with GPT‑5.6 in Kiro"
+}
