@@ -200,8 +200,19 @@ export async function sendReel({ video, caption, hook, fetchFn, dry = false, tim
 // PARANCSSOR
 // ===================================================================
 //
-//   node core/reel-post.js <slug>          kiküldés
+//   node core/reel-post.js <slug>          kiküldés (kézzel)
 //   node core/reel-post.js <slug> --dry    csak megmutatja, mit küldene
+//
+//   node core/reel-post.js --prepare       AUTOMATIKA, 1. lépés  (a build ELŐTT)
+//   node core/reel-post.js --send          AUTOMATIKA, 2. lépés  (a deploy UTÁN)
+//
+// ── MIÉRT KÉT LÉPÉS ─────────────────────────────────────────────────
+// A Facebook a SAJÁT szerveréről tölti le a videót, tehát a fájlnak KINT
+// kell lennie a posztolás pillanatában. A CI sorrendje:
+//     … → videó-gyártás → build → deploy → social
+// A `--prepare` kiválasztja a következő útmutatót és legyártja a videót,
+// a választást pedig a `memory/reel-pending.json`-ba írja. A `--send` a
+// deploy után ezt veszi elő, kiküldi, és megjelöli a cikket.
 //
 // ⚠️ EZ A FÁJL AZ IMPORTRA NEM INDUL EL — őrszem van a végén. 25 agentből
 // 21 a fájl végén feltétel nélkül hívja a main()-t, tehát a puszta import
@@ -221,6 +232,10 @@ async function main() {
 
   const args = process.argv.slice(2);
   const dry = args.includes('--dry');
+
+  if (args.includes('--prepare')) return prepare(ROOT, join);
+  if (args.includes('--send')) return send(ROOT, join, dry);
+
   const kulcs = args.find(a => !a.startsWith('--'));
   if (!kulcs) {
     console.log('Használat: node core/reel-post.js <slug> [--dry]');
@@ -269,6 +284,106 @@ async function main() {
 
   console.error('\n❌ ' + r.reason);
   if (r.sent === 'unknown') console.error('   ⚠️ A kimenetel BIZONYTALAN — ne küldd újra vakon.');
+  process.exit(1);
+}
+
+// ── AUTOMATIKA ──────────────────────────────────────────────────────
+
+/** A cikkek betöltése a sor-döntéshez. */
+async function cikkekBetolt(ROOT, join) {
+  const { readFileSync, readdirSync, existsSync } = await import('fs');
+  const DIR = join(ROOT, 'content', 'articles');
+  if (!existsSync(DIR)) return [];
+  const ki = [];
+  for (const f of readdirSync(DIR)) {
+    if (!f.startsWith('ARTICLE_') || !f.endsWith('.json')) continue;
+    let j; try { j = JSON.parse(readFileSync(join(DIR, f), 'utf-8')); } catch { continue; }
+    const m = j._meta || {};
+    ki.push({ file: f, slug: m.slug || '', type: m.type === 'guide' ? 'guide' : 'news',
+      published_at: m.published_at || '', reel_at: m.reel_at || '', md: j.article_markdown || '' });
+  }
+  return ki;
+}
+
+/** 1. LÉPÉS: kiválasztás + videó-gyártás. A build ELŐTT fut. */
+async function prepare(ROOT, join) {
+  const { writeFileSync, existsSync, mkdirSync, rmSync } = await import('fs');
+  const { kovetkezoReel } = await import('./reel-queue.js');
+  const { cardsFromGuide, renderVideo } = await import('./short-video.js');
+
+  const cikkek = await cikkekBetolt(ROOT, join);
+  // ALKALMAS-E? Csak a markdown ismeretében derül ki (kell 3+ lépés).
+  const valasztott = kovetkezoReel(cikkek, Date.now(), {
+    alkalmas: c => !!cardsFromGuide(c.md).cards
+  });
+  if (!valasztott) {
+    console.log('💤 Reel: ma már ment, vagy nincs alkalmas útmutató — kihagyom.');
+    return;
+  }
+
+  const { cards } = cardsFromGuide(valasztott.md);
+  console.log('🎬 Reel készül: ' + valasztott.slug);
+  console.log('   ' + cards.length + ' kártya (' + (cards.length - 2) + ' lépés)');
+
+  const kiDir = join(ROOT, 'website', 'assets', 'video', 'shorts');
+  mkdirSync(kiDir, { recursive: true });
+  const r = await renderVideo(cards, {
+    out: join(kiDir, valasztott.slug + '.mp4'),
+    workDir: join(ROOT, '.video-munka'),
+    cover: join(ROOT, 'website', 'assets', 'images', valasztott.slug + '.jpg')
+  });
+  try { rmSync(join(ROOT, '.video-munka'), { recursive: true, force: true }); } catch { /* */ }
+
+  const memDir = join(ROOT, 'memory');
+  if (!existsSync(memDir)) mkdirSync(memDir, { recursive: true });
+  writeFileSync(join(memDir, 'reel-pending.json'),
+    JSON.stringify({ slug: valasztott.slug, file: valasztott.file, at: new Date().toISOString() }, null, 2), 'utf-8');
+  console.log('✅ ' + r.seconds.toFixed(1) + ' mp — a küldés a deploy után jön (--send)');
+}
+
+/** 2. LÉPÉS: kiküldés + megjelölés. A deploy UTÁN fut. */
+async function send(ROOT, join, dry) {
+  const { readFileSync, writeFileSync, existsSync, unlinkSync } = await import('fs');
+  const { guideMeta } = await import('./frontmatter.js');
+  const { cardsFromGuide } = await import('./short-video.js');
+
+  const P = join(ROOT, 'memory', 'reel-pending.json');
+  if (!existsSync(P)) { console.log('💤 Reel: nincs előkészített videó — kihagyom.'); return; }
+  let pending; try { pending = JSON.parse(readFileSync(P, 'utf-8')); } catch { pending = null; }
+  if (!pending?.file) { console.log('💤 Reel: hibás előkészítés — kihagyom.'); try { unlinkSync(P); } catch { /* */ } return; }
+
+  const cikkPath = join(ROOT, 'content', 'articles', pending.file);
+  if (!existsSync(cikkPath)) { console.log('⏭️  Reel: a cikk közben eltűnt — kihagyom.'); try { unlinkSync(P); } catch { /* */ } return; }
+  const cikk = JSON.parse(readFileSync(cikkPath, 'utf-8'));
+
+  const { slug } = guideMeta(cikk);
+  const kartyak = cardsFromGuide(cikk.article_markdown || '');
+  const caption = reelCaption(cikk, { videoSteps: kartyak.cards ? kartyak.cards.length - 2 : null });
+  const video = reelVideoUrl(slug || pending.slug);
+  const hook = (process.env.MAKE_REEL_WEBHOOK_URL || '').trim();
+
+  console.log('🎬 Reel küldése: ' + (slug || pending.slug));
+  const r = await sendReel({ video, caption, hook, dry });
+
+  if (r.ok && r.dry) { console.log('   🧪 PRÓBA — nem küldtem el.'); return; }
+
+  // ⚠️ MEGJELÖLÜNK AKKOR IS, HA A KIMENETEL BIZONYTALAN (időtúllépés). A két
+  // hiba nem egyforma súlyú: a kimaradt Reel egy nap csendje, a duplikált
+  // viszont kint van az oldaladon. Ha a Make mégis kiküldte, a jelölés
+  // pontosan azt akadályozza meg, hogy holnap megismételjük.
+  if (r.ok || r.sent === 'unknown') {
+    cikk._meta = cikk._meta || {};
+    cikk._meta.reel_at = new Date().toISOString();
+    writeFileSync(cikkPath, JSON.stringify(cikk, null, 2), 'utf-8');
+  }
+  try { unlinkSync(P); } catch { /* */ }
+
+  if (r.ok) {
+    console.log('   ✅ Átvette a Make (HTTP ' + r.status + ') — a TÉNYLEGES sikert a napló mondja meg');
+    return;
+  }
+  console.error('   ❌ ' + r.reason);
+  if (r.sent === 'unknown') console.error('   ⚠️ Bizonytalan kimenetel — megjelöltem, hogy ne menjen ki kétszer.');
   process.exit(1);
 }
 

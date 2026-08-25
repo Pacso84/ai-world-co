@@ -55,3 +55,13 @@ telegram-worker/.dev.vars
 # munkamasolatot commitolna be. A .claude/worktrees/ alatt a natív worktree-
 # eszkoz dolgozik; a tartalma mar amugy is verziokovetett a sajat agan.
 .claude/worktrees/
+
+# 🎬 REEL-VIDEÓK — SZÁNDÉKOSAN NEM KERÜLNEK A REPÓBA (2026-08-25).
+# A napi álló videó ~500 KB. Egy év alatt ez ~180 MB lenne a NYILVÁNOS repó
+# történetében, VÉGLEGESEN — a git-történetből utólag nem lehet kivenni.
+# És fölösleges: a videó egyetlen célja, hogy a Facebook letöltse a poszt
+# pillanatában (URL-mód). Utána holt teher.
+# A lánc egyetlen CI-futáson belül zárul: gyártás → build → deploy → küldés,
+# a Facebook percen belül letölti. A következő futás friss checkoutja már
+# nem tartalmazza, tehát a deploy le is veszi az oldalról — ez így helyes.
+website/assets/video/shorts/

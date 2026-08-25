@@ -331,6 +331,24 @@ jobs:
         if: always()
         run: node core/housekeeping.js || true
 
+      # 🎬 REEL — 1. LÉPÉS: a napi álló videó legyártása.
+      #
+      # ⚠️ A BUILD ELŐTT KELL FUTNIA. A videó a FORRÁS-oldalra készül
+      # (website/assets/video/shorts/), és a build másolja ki a public/-ba;
+      # ha utána futna, a fájl nem kerülne ki az oldalra.
+      #
+      # NAPI EGY, akkor is, hogy a CI naponta háromszor fut: a jelölés a cikk
+      # `_meta.reel_at` mezője (core/reel-queue.js). Jelölés nélkül ugyanaz a
+      # Reel naponta háromszor menne ki — EZ volt az egyetlen ok, amiért a
+      # Reel 2026-08-24 óta készen állt, de nem volt bekötve.
+      #
+      # Ingyenes: a szöveg a cikk „Step N —" fejléceiből jön (nem AI), a hang
+      # msedge-tts, a kép sharp, az összerakás ffmpeg. Hiba nem dönti el a
+      # futást — ilyenkor egyszerűen nem lesz aznap Reel.
+      - name: Reel — napi videó gyártása (a build ELŐTT)
+        if: always()
+        run: node core/reel-post.js --prepare || true
+
       # id + outcome: a deploy CSAK sikeres build után mehet — a build.js
       # ELŐSZÖR ÜRÍTI a website/public mappát, tehát egy bukott build után a
       # deploy LETÖRÖLNÉ az élő oldalt. Ez a feltétel a védőháló.
@@ -402,6 +420,24 @@ jobs:
       - name: IndexNow — friss URL-ek bejelentése
         if: always()
         run: node core/indexnow.js || true
+
+      # 🎬 REEL — 2. LÉPÉS: kiküldés a Facebookra.
+      #
+      # ⚠️ A DEPLOY UTÁN KELL FUTNIA. A Facebook a SAJÁT szerveréről tölti le
+      # a videót (URL-mód, ezért kerül 2 műveletbe 3 helyett) — a fájlnak
+      # tehát KINT kell lennie a posztolás pillanatában. Élesben megtanulva
+      # 2026-08-23: háromszor küldtünk ki egy még nem létező címet, és a
+      # Facebook mindháromszor 422-t adott.
+      #
+      # A modul küldés előtt MAGA IS leellenőrzi a címet (HTTP + content-type
+      # + méret), tehát ha a deploy elhasalt, nem megy ki hibás poszt.
+      # A siker AKKOR IS csak „átvettem" — a valódi kimenetel a Make
+      # naplójában (forgatókönyv 7066389) látszik.
+      - name: Reel — kiküldés (a deploy UTÁN)
+        if: always()
+        env:
+          MAKE_REEL_WEBHOOK_URL: ${{ secrets.MAKE_REEL_WEBHOOK_URL }}
+        run: node core/reel-post.js --send || true
 
       # Social: poszt-szöveg az új cikkekhez + kiküldés (Make webhook → FB oldal).
       # Max 2 poszt/futás (kulturált tempó); hiba nem dönti el a futást.
