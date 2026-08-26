@@ -23,6 +23,11 @@ on:
         type: boolean
         required: true
         default: true
+      csak_gyartas:
+        description: 'Csak a videó legyártása? (a CI-környezet ellenőrzésére — nem küld semmit)'
+        type: boolean
+        required: false
+        default: false
 
 # Csak olvasunk — ez a lépés nem commitol semmit.
 permissions:
@@ -65,8 +70,13 @@ jobs:
           MAKE_REEL_WEBHOOK_URL: ${{ secrets.MAKE_REEL_WEBHOOK_URL }}
           SLUG: ${{ inputs.slug }}
           DRY: ${{ inputs.dry }}
+          GYARTAS: ${{ inputs.csak_gyartas }}
         run: |
-          if [ "$DRY" = "true" ]; then
+          # A "csak gyártás" mód azt ellenőrzi, hogy a CI-KÖRNYEZET képes-e
+          # videót renderelni (ffmpeg, msedge-tts, sharp). Nem küld semmit.
+          if [ "$GYARTAS" = "true" ]; then
+            node core/reel-post.js --prepare
+          elif [ "$DRY" = "true" ]; then
             node core/reel-post.js "$SLUG" --dry
           else
             node core/reel-post.js "$SLUG"
