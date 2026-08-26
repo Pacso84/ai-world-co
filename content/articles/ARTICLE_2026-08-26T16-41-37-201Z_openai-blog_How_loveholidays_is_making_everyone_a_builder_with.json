@@ -1,0 +1,64 @@
+{
+  "_meta": {
+    "written_at": "2026-08-26T16:46:08.964Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.01065192,
+    "original_draft": "2026-08-26T16-41-37-201Z_openai-blog_How_loveholidays_is_making_everyone_a_builder_with.json",
+    "source_id": "openai-blog",
+    "source_name": "OpenAI Blog (hivatalos)",
+    "source_link": "https://openai.com/index/loveholidays",
+    "source_links": [
+      "https://openai.com/index/loveholidays"
+    ],
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "published_at": "2026-08-26T16:46:36.342Z",
+    "slug": "what-is-openai-codex-and-can-you-use-it-without-coding",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 826
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [
+        "No source citation included — article references OpenAI blog but provides no URL or link"
+      ],
+      "verdict": "Well-structured explainer that hits all marks: clear hook, jargon explained in plain English, useful What This Means For You section with three audience-specific takes, and an encouraging wrap-up. The tone is kind, the language is accessible, and no clichés or prohibited content found. One fix: add the source URL so readers can explore further.",
+      "_aiCost": 0.0017679,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-08-26T16:47:14.962Z",
+    "guide_worthy": false,
+    "pairing_reason": "Explainer article about Codex rather than news of a specific accessible feature with concrete user action",
+    "image_v": 2,
+    "image_at": "2026-08-26T16:47:28.089Z",
+    "seo": {
+      "meta_description": "Discover what OpenAI Codex is—an AI tool that converts plain English into working code—and how non-programmers can use it effectively.",
+      "keywords": [
+        "what is OpenAI Codex",
+        "OpenAI Codex without coding",
+        "OpenAI Codex for beginners",
+        "how to use OpenAI Codex",
+        "AI coding assistant for non-programmers",
+        "OpenAI Codex tutorial"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more subheadings (H2s) to break up content and include secondary keywords like 'AI code generator' or 'no-code programming tools'",
+        "Include 1-2 internal links to related AI World articles about similar AI tools or beginner coding guides",
+        "Add an FAQ section targeting common questions like 'Is OpenAI Codex free?' or 'Can Codex build complete apps?'"
+      ],
+      "optimised_at": "2026-08-26T16:47:48.521Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"What Is OpenAI Codex, and Can You Use It Without Coding?\"\nsubtitle: \"A plain-language look at OpenAI's AI coding assistant, who it's actually for, and why non-developers are starting to use it.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 3\ntags: [\"openai\", \"codex\", \"ai-coding\", \"no-code\", \"automation\", \"productivity\"]\n---\n\n# What Is OpenAI Codex, and Can You Use It Without Coding?\n\n> **In short:** OpenAI Codex is an AI coding assistant that turns plain-English instructions into working code. Recent updates have made it more useful for people who don't write code professionally, letting small teams and curious individuals build simple tools without hiring a software developer.\n\nYou spent last weekend fighting a spreadsheet. The list was right there, but the columns wouldn't sort the way you wanted, the formulas kept breaking, and after an hour of copy-pasting between tabs you were still not sure you'd do it the same way next month.\n\nFor most people, the only answers to \"I wish a small program could just do this for me\" used to be: learn to code, hire someone, or give up. A new generation of AI coding tools — including **OpenAI Codex** — is quietly changing that, and the shift is worth understanding even if you never plan to touch a programming language.\n\n## What Codex actually is\n\n**OpenAI Codex** is an AI assistant that writes and edits code when you describe what you want in plain English. Think of it as a junior developer who sits next to you, listens to your request, types out a first draft, and waits for you to say what to change.\n\nYou don't need to know a programming language to start. The \"**prompt**\" (the instruction you give the AI) is written like a sentence, not like code. The AI then proposes code, explains what it did in plain language, and waits for your feedback.\n\nThere are two main ways to use it. You can run it in a chat-style window where you describe the small tool you want and review the result, or you can point it at an existing project and ask it to add, change, or fix things. Either way, the AI is doing the typing — you're the one making the decisions.\n\n## What's actually new for non-developers\n\nA few things have shifted lately. The first is that the AI has gotten better at small, self-contained jobs: sorting a CSV file (a plain spreadsheet you can hand to a program), renaming a folder of photos, sending a templated email, or **scraping** (pulling data from) a webpage into a clean table. These are the kinds of tasks a non-developer actually has, and the AI now handles them with less hand-holding than it did a year ago.\n\nThe second shift is in how teams work. More companies are giving non-developers a way to safely use these tools, with a tech team reviewing the output. A marketer, an HR person, or an operations analyst can **prototype** (build a rough first version of) a small internal tool, then hand it over to a real developer to clean up. The result is fewer \"can someone just build me a thing?\" requests and faster small wins.\n\nThe third shift is that the AI is now better at explaining its own work. If you ask it to write a script, it can walk you through what each part does. That matters — because a tool you don't understand is a tool you can't safely fix.\n\n## What this means for you\n\n- **If you're not a developer and never plan to be one**: AI coding tools are now genuinely useful for one-off jobs. You can describe what you want in a sentence, get a working draft, and run it. They aren't magic — you'll still hit walls — but for a 20-minute task that used to eat a Saturday, they're a real shortcut.\n- **If you run a small business or team**: this is the moment to let curious non-developers experiment with these tools inside your company, with a few basic guardrails. A clear policy on what data goes in, and a \"tech buddy\" to review the output, goes a long way.\n- **If you're worried about job changes**: the pattern so far is that AI coding tools speed up people who already know how to code, and open small doors for people who don't. They don't yet replace either group for serious work — they just change what \"serious work\" looks like.\n\n## Wrap-up\n\nCodex and tools like it are turning \"I wish I could just automate this\" from a fantasy into a half-hour experiment. You don't need a developer on speed-dial, and you don't need to learn a programming language tonight. You need a clear idea of the small thing you want done, and a willingness to read what the AI hands back. Pick one annoying task from this week, and try describing it as a sentence. That's the whole starting point.",
+  "original_title": "How loveholidays is making everyone a builder with Codex"
+}

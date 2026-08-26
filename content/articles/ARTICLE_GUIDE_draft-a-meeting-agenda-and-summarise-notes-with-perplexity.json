@@ -15,24 +15,20 @@
     "source_id": "guide",
     "source_name": "AI World Guide",
     "source_link": "",
-    "status": "awaiting-review",
+    "status": "published",
     "rejected_at": "2026-08-26T01:03:59.898Z",
     "auto_check": {
-      "passed": false,
-      "issues": [
-        "BRITISH_SPELLING_NAME: nagybetűs brit alak — Summarise (2×). Ha közszó, írd amerikaiul; ha VALÓDI tulajdonnév (szervezet/termék neve), hagyd."
-      ],
+      "passed": true,
+      "issues": [],
       "wordCount": 1613
     },
     "ai_review": {
-      "overall_score": 8,
-      "clarity_score": 9,
-      "decision": "FAIL",
-      "issues": [
-        "Title and subtitle use British spelling 'summarise' — must be 'summarize' for US English consistency"
-      ],
-      "verdict": "This is a well-structured, beginner-friendly guide with excellent step-by-step instructions, clear fallbacks, and a helpful What this means for you section. However, it fails publication due to British spelling of 'summarise' in both the title and subtitle, which violates the US English requirement. Fix this spelling error and the article is ready to publish.",
-      "_aiCost": 0.00212679,
+      "overall_score": 9,
+      "clarity_score": 10,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Excellent beginner guide with specific UI details, helpful fallbacks, and clear success checks for each step. Friendly tone, no jargon, and the What this means for you section ties it to real-life situations. Ready to publish.",
+      "_aiCost": 0.0021219,
       "_provider": "openrouter",
       "_model": "minimax/minimax-m2.7",
       "_attempts": 1
@@ -41,7 +37,29 @@
     "can_retry": true,
     "rework_attempts": 1,
     "reworked_from": "REJECTED_GUIDE_draft-a-meeting-agenda-and-summarise-notes-with-perplexity.json",
-    "requeued_unchanged": false
+    "requeued_unchanged": false,
+    "published_at": "2026-08-26T16:47:02.434Z",
+    "slug": "draft-a-meeting-agenda-and-summarize-notes-with-perplexity",
+    "image_v": 2,
+    "image_at": "2026-08-26T16:47:37.209Z",
+    "seo": {
+      "meta_description": "Learn to use Perplexity to create a timed meeting agenda from a rough goal and summarize messy notes into clear decisions and action items.",
+      "keywords": [
+        "Perplexity meeting agenda",
+        "summarize meeting notes with AI",
+        "AI note taking for meetings",
+        "Perplexity productivity tips",
+        "how to organize meeting notes",
+        "AI meeting summary tool"
+      ],
+      "seo_score": 7,
+      "suggestions": [
+        "Add a concrete example with actual prompt text in the article to show readers exactly what to type",
+        "Include time savings (e.g., 'save 20 minutes') in the title or intro to boost click-through rates",
+        "Consider adding this to a 'Perplexity productivity' article series for internal linking opportunities"
+      ],
+      "optimised_at": "2026-08-26T16:48:01.493Z"
+    }
   },
   "article_markdown": "---\ntitle: \"Draft a Meeting Agenda and Summarize Notes with Perplexity\"\nsubtitle: \"Turn a fuzzy meeting goal into a timed agenda, then condense messy notes into clear decisions and next steps for everyone.\"\ncategory: \"guide\"\naudience: \"business\"\ncompany: \"Perplexity\"\ntool: \"Perplexity\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"getting-started\", \"perplexity\", \"productivity\"]\n---\n\n# Draft a Meeting Agenda and Summarize Notes with Perplexity\n\n> **In short:** With Perplexity you can turn a one-line meeting goal into a timed agenda in under a minute, and later compress a page of messy notes into three short sections: decisions, action items, and open questions. It runs in your browser or app; a free account is enough, though paid plans unlock more deep-research runs per day.\n\nIf you've ever walked out of a meeting wondering *who is doing what by when*, this guide is for you. We'll do two things together. First, take a rough meeting goal and turn it into a real, timed agenda. Second, after the meeting, paste your messy notes into Perplexity and get a tidy summary you can send to everyone who attended. No jargon, no setup headaches.\n\n## Before you start\n- A free Perplexity account (sign up at perplexity.com with email, Google, or Apple).\n- A browser or the Perplexity mobile app — the steps look the same on both.\n- About 15–20 minutes total (5 minutes for the agenda, 10–15 for the summary).\n- Your rough meeting goal written down somewhere (even one sentence is fine).\n- After the meeting: your raw notes, voice-memo transcript, or bullet list — anything messy works.\n\n## Step 1 — Open Perplexity and start a new thread\nGo to **perplexity.com** in a browser, or open the **Perplexity app** on your phone, and sign in if you're asked. The page opens to a large text box in the middle of the screen with the placeholder *\"Ask anything…\"* and a small **Focus** selector (a dropdown showing modes like *Internet*, *Academic*, *Writing*, or *Social*). Click inside the text box so your cursor blinks there. If you've used Perplexity before, you'll see your past threads on the left or under a **Home** tab — look for a **New Thread** or **+ New** button so this conversation stays clean and easy to find later. If you can't see those, look for a pencil icon instead. A new, empty thread means you're ready to type your first request, and nothing you've written before will mix into this one.\n\n💬 Example: type `Help me plan a 30-minute project kickoff meeting for a small team.`\n\nYou'll know it worked when you see a fresh empty text box, a visible **Focus** dropdown, and Perplexity starts streaming an answer below your question.\n\n## Step 2 — Pick the Writing focus for the agenda\nLook for the **Focus** dropdown — it's usually just above or below the text box. Open it and choose **Writing**. (On the phone it may be inside the small **+** or **Tools** menu near the text box.) \"Focus\" simply means which mode Perplexity uses — *Internet* searches the live web, *Writing* is built for drafting original text without web lookups, which is what you want for a clean, original agenda. A small label or icon appears next to your question confirming Writing mode is on. Perplexity will now skip web searching and write directly, which keeps the agenda tight and avoids random links.\n\n💬 Example: leave your previous question in the box; just change the focus to **Writing**.\n\nYou'll know it worked when the mode label next to your text says **Writing**, and the answer it produces has no source links at the bottom.\n\n## Step 3 — Ask for the timed agenda\nIn the same text box, send a clear, specific request. The more detail you give, the closer the result will be to what you actually need. Tell Perplexity: the meeting length, who's invited (role, not name), the goal of the meeting, and any topics you already know must be covered. Press **Enter** or tap the **send** arrow. A short intro line appears, then a numbered or time-blocked agenda. If the agenda is missing something or has too much, don't rewrite the whole thing — just type a follow-up like *\"Add a 5-minute wrap-up at the end\"* or *\"Make the agenda 45 minutes, not 30.\"* Perplexity redrafts using your thread as context, so each tweak gets faster.\n\n💬 Example: `Write a 45-minute agenda for a weekly team sync. Attendees: 1 project manager, 2 designers, 1 engineer. Goal: align on this week's priorities and unblock anything stuck. Include time blocks, who speaks when, and a 5-minute wrap-up.`\n\nYou'll know it worked when you see a numbered list with time markers (e.g., *0:00–5:00*), clear topic titles, and a closing block for next steps.\n\n## Step 4 — Refine the agenda in one short follow-up\nRead the agenda out loud in your head and ask yourself: *would I actually run this meeting from this page?* If something's off — wrong length, missing topic, too formal — reply in plain English in the same thread. Perplexity keeps the full conversation as context, so it understands *\"shorten the design review from 15 to 10 minutes\"* without you re-explaining anything. After the change, copy the final agenda into your calendar invite, your team's chat, or a shared doc. If your tool has a **Copy** button under the answer, use it; if not, highlight the text and copy manually. This is the version you actually send to people.\n\n💬 Example: `Move the \"blockers\" section earlier (right after wins), and add a one-line outcome we want by the end: \"Top 3 priorities for next week locked in.\"`\n\nYou'll know it worked when the new version reflects every change you asked for, and you can paste it straight into an email or calendar invite without rewriting.\n\n## Step 5 — After the meeting, paste your messy notes into a new thread\nOpen Perplexity again, click **+ New Thread** (or the pencil icon) so your notes get a clean workspace — don't keep them in the old agenda thread, or the context will confuse the summary. Switch the **Focus** back to **Internet** (or just leave it on the default). Paste your notes as-is: typos, half-sentences, bullet fragments, timestamps, all of it. Add one short instruction line at the top or bottom telling Perplexity exactly what shape you want. Press **Enter**. Within seconds you get a structured summary you can actually send around. If a section feels wrong, ask a tiny follow-up: *\"Add owners next to each action item\"* or *\"Make the open questions a numbered list.\"*\n\n💬 Example prompt to paste with your notes:\n\n```\nSummarize these meeting notes into three short sections:\n1) Key decisions made\n2) Action items (with owner if mentioned, otherwise write \"TBD\")\n3) Open questions / things we didn't resolve\n\nKeep it under 200 words. Plain English. No filler.\n\n[paste your raw notes here]\n```\n\nYou'll know it worked when the answer has three clearly labeled sections, action items are scannable in one glance, and nothing important from your notes has been quietly dropped.\n\n## Step 6 — Sanity-check and share the summary\nAI is fast, but it can miss nuance. Skim the summary once and ask: *does this match what I actually remember from the room?* If an action item is missing an owner, if a decision sounds stronger than it really was, or if something funny-but-important was dropped, fix it in the chat first — Perplexity will redraft the whole summary — or just edit the final text yourself before you send it. Then share it: paste it into your team chat, your meeting notes app, or email reply-all. The whole job, from raw notes to sent summary, usually takes two to three minutes.\n\n💬 Example: `Rewrite the action items as a checklist with checkboxes, and put the owner's name in bold before each task.`\n\nYou'll know it worked when a teammate can read the summary on their phone in 30 seconds and know exactly what was decided and what they owe next.\n\n## Common mistakes\n- **Pasting notes into the same thread as the agenda.** The old context bleeds in and the summary comes out confused. Always start a **+ New Thread** for the notes.\n- **Forgetting to switch Focus to Writing for the agenda.** With *Internet* on, Perplexity may add source links and web fluff you didn't ask for, making the agenda longer and less original.\n- **Trusting the summary without reading it once.** AI can quietly drop a small but important detail (a deadline, a name). A 30-second skim catches this; a 0-second skim doesn't.\n\n## What this means for you\n- **In everyday life:** Even for a quick family planning chat or a catch-up with a friend, you can use the same pattern — one line of context, ask for a short structure, refine in one follow-up.\n- **For your business or work:** You'll stop leaving meetings with a vague *\"we'll figure it out\"* feeling. Decisions get written down, owners get named, and follow-ups don't fall through the cracks because the summary is already in everyone's inbox before the meeting ends.\n- **If you're just getting started:** Don't try to use every Perplexity feature at once. Stick to two — **Writing** for drafting, **Internet** for summarizing — and let the rest wait until you need them.\n\n## Try it now\nOpen Perplexity right now and, in **Writing** mode, type: *\"Plan a 30-minute one-on-one between a manager and a new hire. Goals: set first-30-days expectations, answer questions, agree on weekly check-in cadence.\"* Copy the result, tweak one section with a follow-up, and you've just made your first agenda in under two minutes.",
   "original_title": "Draft a meeting agenda and summarise notes with Perplexity"

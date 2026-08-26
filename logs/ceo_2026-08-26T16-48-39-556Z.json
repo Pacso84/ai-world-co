@@ -1,0 +1,80 @@
+{
+  "started_at": "2026-08-26T16:40:58.267Z",
+  "date": "2026-08-26",
+  "mode": "full-pipeline",
+  "stages": {
+    "desk": {
+      "exit_code": 0
+    },
+    "scraper": {
+      "exit_code": 0
+    },
+    "source_scout": {
+      "exit_code": 0
+    },
+    "writer": {
+      "exit_code": 0,
+      "limit_used": 4
+    },
+    "reviewer": {
+      "exit_code": 0
+    },
+    "rework": {
+      "article": null,
+      "guide_rounds": 0,
+      "escalated": 0
+    },
+    "pairing": {
+      "exit_code": 0,
+      "new_topics": 17
+    },
+    "designer": {
+      "exit_code": 0
+    },
+    "seo": {
+      "exit_code": 0
+    },
+    "web_designer": {
+      "exit_code": 0
+    },
+    "publisher": {
+      "exit_code": 0
+    }
+  },
+  "pre_report": {
+    "date": "2026-08-26",
+    "articles_published_today": 9,
+    "news_published_today": 4,
+    "guides_published_today": 5,
+    "drafts_awaiting_writer": 0,
+    "drafts_awaiting_review": 1,
+    "rejected_today": 0,
+    "total_cost_today_usd": 0.20009837800000002,
+    "day_cost_all_usd": 0.4675,
+    "daily_limit_articles": 8,
+    "daily_limit_guides": 4,
+    "daily_limit_cost_usd": 1,
+    "cost_remaining_usd": 0.5325,
+    "articles_remaining": 4,
+    "guides_remaining": 0
+  },
+  "post_report": {
+    "date": "2026-08-26",
+    "articles_published_today": 11,
+    "news_published_today": 5,
+    "guides_published_today": 6,
+    "drafts_awaiting_writer": 0,
+    "drafts_awaiting_review": 0,
+    "rejected_today": 0,
+    "total_cost_today_usd": 0.21790098600000005,
+    "day_cost_all_usd": 0.4933,
+    "daily_limit_articles": 8,
+    "daily_limit_guides": 4,
+    "daily_limit_cost_usd": 1,
+    "cost_remaining_usd": 0.5066999999999999,
+    "articles_remaining": 3,
+    "guides_remaining": 0
+  },
+  "finished_at": "2026-08-26T16:48:39.555Z",
+  "duration_seconds": 461.288
+}
