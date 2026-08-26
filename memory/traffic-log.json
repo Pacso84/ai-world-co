@@ -1,7 +1,7 @@
 {
   "_meta": {
     "note": "Cikkenkénti napi forgalom. Írja: core/traffic-log.js a CI-ban. Helyben CSAK olvasd.",
-    "updated": "2026-08-25T16:36:03.799Z"
+    "updated": "2026-08-26T01:26:17.183Z"
   },
   "days": {
     "2026-08-04": [
@@ -1717,6 +1717,108 @@
       {
         "path": "/wizard",
         "visits": 0,
+        "views": 1
+      }
+    ],
+    "2026-08-25": [
+      {
+        "path": "/",
+        "visits": 10,
+        "views": 10
+      },
+      {
+        "path": "/article/ai-memory-games-for-dementia-care-what-families-should-know",
+        "visits": 8,
+        "views": 8
+      },
+      {
+        "path": "/article/plan-a-week-s-meals-and-build-a-grocery-list-with-perplexity",
+        "visits": 7,
+        "views": 7
+      },
+      {
+        "path": "/hu/",
+        "visits": 1,
+        "views": 4
+      },
+      {
+        "path": "/article/how-to-write-a-clear-prompt-that-gets-better-ai-answers",
+        "visits": 4,
+        "views": 4
+      },
+      {
+        "path": "/article/use-claude-to-pull-out-the-key-points-of-a-long-research-paper",
+        "visits": 4,
+        "views": 4
+      },
+      {
+        "path": "/article/ai-just-got-cheaper-and-smarter-here-s-what-that-means-for-you",
+        "visits": 3,
+        "views": 3
+      },
+      {
+        "path": "/article/how-ai-video-object-replacement-works-and-what-you-can-do-today",
+        "visits": 2,
+        "views": 2
+      },
+      {
+        "path": "/article/translate-and-explain-a-confusing-email-or-letter-with-perplexity",
+        "visits": 2,
+        "views": 2
+      },
+      {
+        "path": "/article/use-qwen-chat-to-create-a-simple-meal-plan-for-the-week-using-ingredie",
+        "visits": 1,
+        "views": 1
+      },
+      {
+        "path": "/es/article/how-to-write-better-prompts-for-ai-video-tools-with-sound-and-dialogue",
+        "visits": 0,
+        "views": 1
+      },
+      {
+        "path": "/article/practice-job-interview-questions-with-qwen-before-the-real-interview",
+        "visits": 1,
+        "views": 1
+      },
+      {
+        "path": "/es/",
+        "visits": 1,
+        "views": 1
+      },
+      {
+        "path": "/es/article/how-to-write-better-prompts-for-ai-video-tools-with-ready-to-use-examp",
+        "visits": 1,
+        "views": 1
+      },
+      {
+        "path": "/article/how-to-use-qwen-chat-to-plan-a-weekend-road-trip-without-getting-lost",
+        "visits": 1,
+        "views": 1
+      },
+      {
+        "path": "/hu/guides",
+        "visits": 0,
+        "views": 1
+      },
+      {
+        "path": "/hu/tools",
+        "visits": 0,
+        "views": 1
+      },
+      {
+        "path": "/es/article/how-to-make-money-with-ai-content-a-practical-first-guide",
+        "visits": 1,
+        "views": 1
+      },
+      {
+        "path": "/article/ask-perplexity-to-find-and-cite-sources-for-a-topic-you-re-researching",
+        "visits": 1,
+        "views": 1
+      },
+      {
+        "path": "/article/getting-started-with-alibaba-s-qwen-chatbot",
+        "visits": 1,
         "views": 1
       }
     ]

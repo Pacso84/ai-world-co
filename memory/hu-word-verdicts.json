@@ -16,6 +16,7 @@
     "adelaide",
     "adjs",
     "adminból",
+    "admineszközöket",
     "adminfeladatokhoz",
     "adminfelületével",
     "adminisztrátorod",
@@ -222,6 +223,7 @@
     "bulletpontok",
     "bulletpontokat",
     "bulletpontot",
+    "bulletsben",
     "burpee",
     "bámultsz",
     "bérbeadott",
@@ -247,6 +249,7 @@
     "chargeback",
     "chat-et",
     "chat-hez",
+    "chatbottot",
     "chatgpt",
     "checklistaként",
     "checklistben",
@@ -337,6 +340,7 @@
     "családtagoknak",
     "csapatchatba",
     "csapatmeetingen",
+    "csapatpohárköszöntőnél",
     "csapattagjaidat",
     "csapattagjaiként",
     "csapattagok",
@@ -392,6 +396,7 @@
     "címsorokból",
     "címsorokhoz",
     "címsorokkal",
+    "címzetről",
     "cómo",
     "dashboardhoz",
     "dashboardod",
@@ -470,6 +475,8 @@
     "dritten",
     "dronok",
     "dronokat",
+    "dropokhoz",
+    "dropokra",
     "dugoghatsz",
     "durante",
     "dzsal",
@@ -776,10 +783,12 @@
     "hitelességet",
     "hiányosságok",
     "hiányosságokat",
+    "hiányosságokról",
     "hobbiidre",
     "hobbiistáknak",
     "hobbista",
     "hobiprojekthez",
+    "hookot",
     "hostingot",
     "hostolja",
     "hosztolhatsz",
@@ -813,6 +822,7 @@
     "házifeladat",
     "házifeladatodhoz",
     "házifeladaton",
+    "házifeladattal",
     "házifeladattá",
     "házod",
     "hézagok",
@@ -854,6 +864,7 @@
     "információsűrű",
     "információtömegen",
     "inget",
+    "ingyenebéd",
     "inkluzívabb",
     "inkognító",
     "inolj",
@@ -989,6 +1000,7 @@
     "kontaktokat",
     "kontaktoknak",
     "kontaktoknál",
+    "korokat",
     "korokhoz",
     "korunk",
     "kozvetlenul",
@@ -1415,6 +1427,7 @@
     "országod",
     "országodban",
     "országok",
+    "országokat",
     "országokban",
     "országonként",
     "ossze",
@@ -1665,6 +1678,7 @@
     "sentimentjét",
     "sentimentnek",
     "sereget",
+    "sessionben",
     "sessiont",
     "shakshuka",
     "shortlistet",
@@ -1801,6 +1815,7 @@
     "szélessávú",
     "szélesvászonú",
     "színkódolt",
+    "szívességet",
     "szívet",
     "szórólapszöveget",
     "szószaláta",
@@ -1942,6 +1957,7 @@
     "tutorialokat",
     "tutorialt",
     "tutorokat",
+    "tutorrá",
     "tutort",
     "tutorért",
     "tweetből",
@@ -1959,6 +1975,7 @@
     "tárgysorod",
     "tárgysorok",
     "tárgysorokat",
+    "távolságok",
     "távolságokat",
     "távolságokért",
     "távolságon",
@@ -2084,6 +2101,7 @@
     "vizuálok",
     "vizuálokat",
     "vizuált",
+    "voice-overrel",
     "válasszd",
     "vászgépnek",
     "vászonnyal",
@@ -2092,6 +2110,7 @@
     "végigszkrollolsz",
     "végtagok",
     "végtagokat",
+    "végzettséget",
     "végösszeget",
     "véleménykülönbséget",
     "vízfestményré",
@@ -3205,6 +3224,21 @@
       "correct": "belépned",
       "at": "2026-08-24",
       "mondattal": true
+    },
+    "halgatni": {
+      "correct": "hallgatni",
+      "at": "2026-08-26",
+      "mondattal": true
+    },
+    "hétvégég": {
+      "correct": "hétvégét",
+      "at": "2026-08-26",
+      "mondattal": true
+    },
+    "nagyjáboli": {
+      "correct": "nagyjábóli",
+      "at": "2026-08-26",
+      "mondattal": true
     }
   },
   "review": {
@@ -4054,11 +4088,21 @@
       "correct": "kamrapolc-eket",
       "at": "2026-08-25",
       "mondattal": true
+    },
+    "napra-ról": {
+      "correct": "napról",
+      "at": "2026-08-26",
+      "mondattal": true
+    },
+    "ismész": {
+      "correct": "ismersz",
+      "at": "2026-08-26",
+      "mondattal": true
     }
   },
   "scan": {
-    "at": "2026-08-25",
-    "files": 796,
-    "candidates": 0
+    "at": "2026-08-26",
+    "files": 803,
+    "candidates": 27
   }
 }
