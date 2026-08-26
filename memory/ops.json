@@ -1,118 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178758863203826",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-08-24T16:23:52.038Z",
-      "updated": "2026-08-24T16:23:52.166Z"
-    },
-    {
-      "id": "t178758863216736",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-24T16:23:52.167Z",
-      "updated": "2026-08-24T16:33:37.505Z"
-    },
-    {
-      "id": "t178758921750670",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-24T16:33:37.506Z",
-      "updated": "2026-08-24T16:35:36.584Z"
-    },
-    {
-      "id": "t178758933658660",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-24T16:35:36.586Z",
-      "updated": "2026-08-24T16:40:31.988Z"
-    },
-    {
-      "id": "t178758963198910",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-24T16:40:31.989Z",
-      "updated": "2026-08-24T16:41:08.629Z"
-    },
-    {
-      "id": "t17875896686319",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-08-24T16:41:08.631Z",
-      "updated": "2026-08-24T16:41:56.167Z"
-    },
-    {
-      "id": "t178758971619854",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-24T16:41:56.198Z",
-      "updated": "2026-08-24T16:43:03.580Z"
-    },
-    {
-      "id": "t178758978358270",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-08-24T16:43:03.582Z",
-      "updated": "2026-08-24T16:44:31.331Z"
-    },
-    {
-      "id": "t178758987133294",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-24T16:44:31.332Z",
-      "updated": "2026-08-24T16:44:40.534Z"
-    },
-    {
-      "id": "t178758988053533",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-08-24T16:44:40.535Z",
-      "updated": "2026-08-24T16:45:02.194Z"
-    },
-    {
-      "id": "t178761823412589",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-08-25T00:37:14.125Z",
-      "updated": "2026-08-25T00:37:14.298Z"
-    },
-    {
-      "id": "t178761823430085",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-08-25T00:37:14.300Z",
-      "updated": "2026-08-25T00:38:05.228Z"
-    },
-    {
-      "id": "t178761828523060",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-08-25T00:38:05.230Z",
-      "updated": "2026-08-25T00:38:05.425Z"
-    },
-    {
-      "id": "t178761828542622",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-25T00:38:05.426Z",
-      "updated": "2026-08-25T01:01:47.686Z"
-    },
-    {
       "id": "t178761970768755",
       "title": "Run ellenorzo",
       "status": "done",
@@ -479,41 +367,121 @@
       "agent": "publisher",
       "created": "2026-08-26T01:15:50.377Z",
       "updated": "2026-08-26T01:16:14.194Z"
+    },
+    {
+      "id": "t178773298877066",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-08-26T08:29:48.770Z",
+      "updated": "2026-08-26T08:29:48.943Z"
+    },
+    {
+      "id": "t178773298894454",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-08-26T08:29:48.944Z",
+      "updated": "2026-08-26T08:30:21.806Z"
+    },
+    {
+      "id": "t178773302180835",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-08-26T08:30:21.808Z",
+      "updated": "2026-08-26T08:30:21.999Z"
+    },
+    {
+      "id": "t178773302200154",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-26T08:30:22.001Z",
+      "updated": "2026-08-26T08:34:21.291Z"
+    },
+    {
+      "id": "t178773326129233",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-26T08:34:21.292Z",
+      "updated": "2026-08-26T08:34:50.555Z"
+    },
+    {
+      "id": "t178773329055729",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-26T08:34:50.557Z",
+      "updated": "2026-08-26T08:35:25.796Z"
+    },
+    {
+      "id": "t178773332579725",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-26T08:35:25.797Z",
+      "updated": "2026-08-26T08:35:56.113Z"
+    },
+    {
+      "id": "t178773335611516",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-26T08:35:56.116Z",
+      "updated": "2026-08-26T08:41:47.572Z"
+    },
+    {
+      "id": "t178773370757368",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-26T08:41:47.573Z",
+      "updated": "2026-08-26T08:43:01.879Z"
+    },
+    {
+      "id": "t178773378188228",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-08-26T08:43:01.882Z",
+      "updated": "2026-08-26T08:43:14.396Z"
+    },
+    {
+      "id": "t178773379444552",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-26T08:43:14.445Z",
+      "updated": "2026-08-26T08:43:43.558Z"
+    },
+    {
+      "id": "t178773382355991",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-08-26T08:43:43.559Z",
+      "updated": "2026-08-26T08:44:09.725Z"
+    },
+    {
+      "id": "t178773384972759",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-26T08:44:09.727Z",
+      "updated": "2026-08-26T08:44:33.573Z"
+    },
+    {
+      "id": "t178773387357581",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-08-26T08:44:33.575Z",
+      "updated": "2026-08-26T08:44:55.515Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178678187896616",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The lineup looks solid — practical, everyday use cases that show AI as a helpful tool without overpromising. Good mix of productivity (emails, complaints), real-world help (pet-sitting, privacy), and ",
-      "agent": "publisher",
-      "at": "2026-08-15T08:17:58.966Z",
-      "loud": false
-    },
-    {
-      "id": "n178678188903988",
-      "level": "success",
-      "text": "1 hír + 1 útmutató publikálva (költség: $0.0047).",
-      "agent": "ceo",
-      "at": "2026-08-15T08:18:09.039Z",
-      "loud": false
-    },
-    {
-      "id": "n178681033219459",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). A kész anyagok kiválóak: jó mixet adnak a hasznos mindennapi feladatokból (panaszlevél, e-mailek, háziállat-ápolási megállapodás), fontos tudatosságnövelő cikkekből (mit ne osszunk meg az AI-nal), és ",
-      "agent": "publisher",
-      "at": "2026-08-15T16:12:12.194Z",
-      "loud": false
-    },
-    {
-      "id": "n178681034337896",
-      "level": "info",
-      "text": "Pipeline lefutott — ma nem volt publikálható új tartalom.",
-      "agent": "ceo",
-      "at": "2026-08-15T16:12:23.378Z",
-      "loud": false
-    },
     {
       "id": "n178684167844193",
       "level": "info",
@@ -1281,83 +1249,41 @@
       "agent": "ceo",
       "at": "2026-08-26T01:16:14.236Z",
       "loud": false
+    },
+    {
+      "id": "n17877336826796",
+      "level": "warn",
+      "text": "📨 guide → ceo: Kell még adat: \"Build a Simple Monthly Budget From Scratch With Any AI Assistant\" — az Ellenőrző tényt/forrást kér, amit",
+      "agent": "guide",
+      "at": "2026-08-26T08:41:22.679Z",
+      "loud": false
+    },
+    {
+      "id": "n178773384971574",
+      "level": "info",
+      "text": "SEO: 2 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-08-26T08:44:09.715Z",
+      "loud": false
+    },
+    {
+      "id": "n178773388266018",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). A lineup egységes és kész: a cikkek az AI íróasszisztenseket mindennapi helyzetekben mutatják be – a panaszlevelektől a privát szféráig. Egy apró észrevétel: 4 cikk is panaszemailekkel foglalkozik, am",
+      "agent": "publisher",
+      "at": "2026-08-26T08:44:42.660Z",
+      "loud": false
+    },
+    {
+      "id": "n178773389555658",
+      "level": "success",
+      "text": "1 hír + 1 útmutató publikálva (költség: $0.0227).",
+      "agent": "ceo",
+      "at": "2026-08-26T08:44:55.556Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178686850980533",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Get a quick summary of unread emails with Apple Mail's priority messages\" — javítva: The article claims Apple Mail has a dedicated 'Priority Messages' section at the top of the inbox that is generated by Apple Intelligence. This is not a real feature in Apple Mail — Apple Mail does have a Priority inbox (an older Gmail-style feature predating Apple Intelligence), but it is not an App",
-      "ref": "GUIDE_get-a-quick-summary-of-unread-emails-with-apple-mail-s-prior.json",
-      "at": "2026-08-16T08:21:49.805Z"
-    },
-    {
-      "id": "m178686850980686",
-      "from": "guide",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Kell még adat: \"Get a quick summary of unread emails with Apple Mail's priority messages\" — az Ellenőrző tényt/forrást kér, amit nem találhatok ki: iOS 18.1 / iPadOS 18.1 / macOS Sequoia 15.1 version numbers as the launch point for these specific Apple Intelligence Mail features may not be accurate (Apple Intelligence Mail summarization launched with iOS 18.2 in some regions, not 18.1).",
-      "ref": "GUIDE_get-a-quick-summary-of-unread-emails-with-apple-mail-s-prior.json",
-      "open": false,
-      "at": "2026-08-16T08:21:49.806Z",
-      "resolved_at": "2026-08-16T08:24:29.558Z"
-    },
-    {
-      "id": "m178686852924012",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Transcribe and summarize a voice memo on your iPhone with Apple Intelligence\" — javítva: LEDE_TOO_LONG: A RÖVIDEN-doboz 66 szó (max ~45) — ami hosszú, az már nem \"röviden\".; The article claims Apple Intelligence's summary step works inside the Voice Memos app or via Writing Tools on a pasted transcript in Notes. In reality, Apple Intelligence's Writing Tools / Summarize operate on se",
-      "ref": "GUIDE_transcribe-and-summarize-a-voice-memo-on-your-iphone-with-ap.json",
-      "at": "2026-08-16T08:22:09.240Z"
-    },
-    {
-      "id": "m178686863564542",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Translate a foreign menu or street sign with your iPhone camera\" — javítva: The article claims iOS 16 supports the basic Camera translation (Live Text translation), but the in-camera Translate feature requires iOS 16 and the specific Translate app integration that Apple added later; more importantly, the article attributes an automatic hands-free \"Live Translation\" feature to Apple I",
-      "ref": "GUIDE_translate-a-foreign-menu-or-street-sign-with-your-iphone-cam.json",
-      "at": "2026-08-16T08:23:55.645Z"
-    },
-    {
-      "id": "m17868686695575",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Get a quick summary of unread emails with Apple Mail's priority messages\" (?/10)",
-      "ref": "GUIDE_get-a-quick-summary-of-unread-emails-with-apple-mail-s-prior.json",
-      "at": "2026-08-16T08:24:29.557Z"
-    },
-    {
-      "id": "m17868687023141",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Transcribe and summarize a voice memo on your iPhone with Apple Intelligence\" (?/10)",
-      "ref": "GUIDE_transcribe-and-summarize-a-voice-memo-on-your-iphone-with-ap.json",
-      "at": "2026-08-16T08:25:02.314Z"
-    },
-    {
-      "id": "m178686872036329",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Translate a foreign menu or street sign with your iPhone camera\" (?/10)",
-      "ref": "GUIDE_translate-a-foreign-menu-or-street-sign-with-your-iphone-cam.json",
-      "at": "2026-08-16T08:25:20.363Z"
-    },
-    {
-      "id": "m178686878231249",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 20 → 5/4/2 oszlop.",
-      "ref": "mobile",
-      "at": "2026-08-16T08:26:22.312Z"
-    },
     {
       "id": "m178686939044798",
       "from": "social",
@@ -2650,6 +2576,80 @@
       "text": "6 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-08-26T01:25:31.748Z"
+    },
+    {
+      "id": "m178773329036740",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Meet Your New Creative Team: How Pixlr AI Handles Design, Photography, Video, and Music\" — mi a baj: Pixlr is described as an all-in-one AI creative platform that 'bundles several of these jobs (image generation, photo retouching, video edits, and music) under one roof' — Pixlr is primarily a photo editing tool and is not accurately described as bundling video and music gene",
+      "ref": "2026-08-26T08-30-21-793Z_pixlr_Meet_Your_New_Creative_Team__How_Pixlr_AI_Handles_.json",
+      "at": "2026-08-26T08:34:50.367Z"
+    },
+    {
+      "id": "m178773332578791",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Meet Your New Creative Team: How Pixlr AI Handles Design, Photography, Video, and Music\" — javítva: Pixlr is described as an all-in-one AI creative platform that 'bundles several of these jobs (image generation, photo retouching, video edits, and music) under one roof' — Pixlr is primarily a photo editing tool and is not accurately described as bundling video and music generation.; E",
+      "ref": "2026-08-26T08-30-21-793Z_pixlr_Meet_Your_New_Creative_Team__How_Pixlr_AI_Handles_.json",
+      "at": "2026-08-26T08:35:25.787Z"
+    },
+    {
+      "id": "m178773335610051",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Meet Your New Creative Team: How Pixlr AI Handles Design, Photography, Video, and Music\" (?/10)",
+      "ref": "2026-08-26T08-30-21-793Z_pixlr_Meet_Your_New_Creative_Team__How_Pixlr_AI_Handles_.json",
+      "at": "2026-08-26T08:35:56.101Z"
+    },
+    {
+      "id": "m178773368267733",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Build a Simple Monthly Budget From Scratch With Any AI Assistant\" — javítva: NO_FRONTMATTER: A cikk nem YAML frontmatter-rel kezdődik; PRICE_CLAIM_UNSOURCED: lejáró pénz-állítás forrás és árlap-hivatkozás nélkül (\"$3,200\"). A Midjourney-próba 2023 márciusa óta nem létezik, mégis kiment egy cikkünkben.; újraküldöm.",
+      "ref": "GUIDE_build-a-simple-monthly-budget-from-scratch-with-any-ai-assis.json",
+      "at": "2026-08-26T08:41:22.677Z"
+    },
+    {
+      "id": "m178773368267973",
+      "from": "guide",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Kell még adat: \"Build a Simple Monthly Budget From Scratch With Any AI Assistant\" — az Ellenőrző tényt/forrást kér, amit nem találhatok ki: PRICE_CLAIM_UNSOURCED: lejáró pénz-állítás forrás és árlap-hivatkozás nélkül (\"$3,200\"). A Midjourney-próba 2023 márciusa óta nem létezik, mégis kiment egy cikkünkben.",
+      "ref": "GUIDE_build-a-simple-monthly-budget-from-scratch-with-any-ai-assis.json",
+      "open": false,
+      "at": "2026-08-26T08:41:22.679Z",
+      "resolved_at": "2026-08-26T08:42:38.347Z"
+    },
+    {
+      "id": "m17877337075599",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Draft a meeting agenda and summarise notes with Perplexity\" — javítva: BRITISH_SPELLING_NAME: nagybetűs brit alak — Summarise (2×). Ha közszó, írd amerikaiul; ha VALÓDI tulajdonnév (szervezet/termék neve), hagyd.; Title and subtitle use British spelling 'summarise' — must be 'summarize' for US English consistency; újraküldöm.",
+      "ref": "GUIDE_draft-a-meeting-agenda-and-summarise-notes-with-perplexity.json",
+      "at": "2026-08-26T08:41:47.559Z"
+    },
+    {
+      "id": "m178773375834536",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Build a Simple Monthly Budget From Scratch With Any AI Assistant\" (?/10)",
+      "ref": "GUIDE_build-a-simple-monthly-budget-from-scratch-with-any-ai-assis.json",
+      "at": "2026-08-26T08:42:38.345Z"
+    },
+    {
+      "id": "m178773387356286",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-08-26T08:44:33.562Z"
     }
   ]
 }

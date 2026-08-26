@@ -330,6 +330,25 @@
         "The 'Admin plugin for ChatGPT Work and Codex' as described (a workspace dashboard showing team usage, usage limits, permissions, and access requests) is presented as a new feature without verification — OpenAI's ChatGPT Team/Enterprise/Work admin tools exist in some form, but the specific framing of a newly rolled-out 'Admin plugin' with these capabilities is not verifiable and reads as a fabricated UI feature."
       ],
       "confidence": 7
+    },
+    {
+      "at": "2026-08-26T08:34:50.368Z",
+      "file": "WRITER_2026-08-26T08-30-21-793Z_pixlr_Meet_Your_New_Creative_Team__How_Pixlr_AI_Handles_.json",
+      "action": "block",
+      "reasons": [
+        "Pixlr is described as an all-in-one AI creative platform that 'bundles several of these jobs (image generation, photo retouching, video edits, and music) under one roof' — Pixlr is primarily a photo editing tool and is not accurately described as bundling video and music generation.",
+        "ElevenLabs is mentioned as a well-known AI tool alongside Runway, Suno, and Midjourney, but ElevenLabs is not on the verified-real names list and was not provided in context — it appears to be introduced as a known/verified name without verification.",
+        "ElevenLabs is described as a 'voice' tool, which while directionally reasonable, is not part of the verified product list and is presented as a factual reference point."
+      ],
+      "confidence": 7
+    },
+    {
+      "at": "2026-08-26T08:43:01.869Z",
+      "file": "WRITER_GUIDE_draft-a-meeting-agenda-and-summarise-notes-with-perplexity.json",
+      "action": "hold",
+      "reasons": [
+        "AI-bíró nem elérhető (érthetetlen AI-válasz: credible mező hiányzik) — visszatartva a következő futásig"
+      ]
     }
   ]
 }
