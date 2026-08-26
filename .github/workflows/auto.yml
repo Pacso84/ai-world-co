@@ -384,6 +384,13 @@ jobs:
         if: always()
         run: node core/image-guard.js || true
 
+      # ✂️ Csonka-őrszem (2026-08-25): elvágott cikk/fordítás keresése.
+      # A feltáráskor 53 ilyen szöveg volt kint, mind mondat közepén elvágva.
+      # Ingyenes, hálózat nélküli — csak a lemezt olvassa.
+      - name: Csonka-őrszem
+        if: always()
+        run: node core/truncation-guard.js || true
+
       # Címes megosztás-képek a friss cikkekhez (FB-posztokhoz; 2026-07-08)
       # FIGYELEM: a build ÜRÍTI a public/-ot, ezért ennek a build UTÁN kell futnia.
       - name: Megosztás-képek (címes borítók)

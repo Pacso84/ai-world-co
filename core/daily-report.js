@@ -530,6 +530,24 @@ async function main() {
     }
   } catch { /* még nem futott — nem baj */ }
 
+  // ✂️ CSONKA-ŐRSZEM (2026-08-25). A feltáráskor 53 elvágott szöveg volt kint:
+  // 11 angol cikk és 42 fordítás, mind mondat közepén — némelyik SZÓ közepén.
+  // A gyökérok a routerben volt (a keret-mentő csak ÜRES válaszra lépett), az
+  // már javítva; ez a sor azt őrzi, hogy ÚJ ne keletkezzen.
+  // A LEFEDETTSÉGET is kiírjuk: a néma siker és a néma vakság enélkül
+  // egyformán néz ki (lásd a magyar helyesírás-őrszem 773→12-es esetét).
+  try {
+    const tg = JSON.parse(readFileSync(join(ROOT, 'memory', 'truncation-guard.json'), 'utf-8'));
+    const p = tg.problems || [];
+    const fedes = `${tg.cikkNezve ?? '?'} cikk + ${tg.parNezve ?? '?'} fordítás átnézve`;
+    if (!p.length) {
+      lines.push(`✂️ Csonka-őrszem: nincs elvágott szöveg (${fedes})`);
+    } else {
+      const en = p.filter(x => x.code === 'ARTICLE_TRUNCATED').length;
+      lines.push(`✂️ CSONKA-ŐRSZEM: ${p.length} elvágott szöveg (${en} angol cikk, ${p.length - en} fordítás) — ${fedes}`);
+    }
+  } catch { /* még nem futott — nem baj */ }
+
   // HÁZMESTER (2026-07-30): mit takarított el, és hízik-e valami vissza.
   // CSENDES a hétköznapokon: napi pár régi napló törlése nem hír. Csak akkor
   // szólal meg, ha ÉRDEMI takarítás történt (kép/fordítás/embedding), vagy ha

@@ -30,6 +30,7 @@ import { GoogleGenAI } from '@google/genai';
 import Groq from 'groq-sdk';
 
 import { recordSpend, meteredBlocked, isMetered } from './budget.js';
+import { shouldRetryTruncated } from './truncation-guard.js';
 
 // ===================================================================
 // KONFIG BETÖLTÉS
@@ -785,6 +786,8 @@ export async function ask(prompt, options = {}) {
     // MENTŐÖV-KÖNYVELÉS: melyik keretbe fulladt bele az előző próba. Amíg 0,
     // a keret-számítás a megszokott (a meglévő utak viselkedése változatlan).
     let prevCeiling = 0;
+    // Csonka-mentő: modellenként EGYSZER emelünk keretet. (Lásd lent.)
+    let csonkaMentve = false;
 
     // Átmeneti hibákra ugyanazt a modellt újrapróbáljuk (backoff-fal)
     for (let tryNum = 1; tryNum <= MAX_TRANSIENT_RETRIES + 1; tryNum++) {
@@ -839,6 +842,51 @@ export async function ask(prompt, options = {}) {
             continue;
           }
           break; // Tartalom-szabály blokk -> fallback (nem retry)
+        }
+
+        // ✂️ CSONKA-MENTŐ (2026-08-25) — A VÁLASZ NEM ÜRES, DE A KERET ELVÁGTA.
+        //
+        // A LELET: 1592 fordítás-párból 12 és 796 angol cikkből 10 MONDAT
+        // KÖZEPÉN ér véget, némelyik SZÓ közepén. Élesben ma is kint van:
+        // "…create a unique image for a birthday card or social media post,
+        // all without " — és ott a cikk vége. Egy magyar útmutató 5 lépés
+        // helyett 2-vel jelent meg; az olvasó megtanulja, hogyan KÉRJEN
+        // parancsot a Copilottól, és nem tudja meg, hogyan futtassa.
+        //
+        // MIÉRT NEM FOGTUK EDDIG: a fenti gondolkodás-mentő feltétele
+        // `safety.reason === 'Üres válasz'`. A rendszer KIOLVASSA a
+        // `finish_reason: "length"`-et — de csak akkor lép, ha a válasz ÜRES.
+        // A félkész válasz nem üres (3893 karakter tökéletes magyar szöveg),
+        // tehát végigment a sikeres ágon. A mentőháló a NULLA esetre készült;
+        // a FÉL eset úgy néz ki, mint a siker.
+        //
+        // MIÉRT ITT, ÉS NEM A safetyFilter-BEN: ha a csonka választ eldobnánk,
+        // a hívás továbbesne a következő modellre, onnan a következőre — a napi
+        // $1-os keretet égetve, és a végén akár cikk NÉLKÜL. Így viszont a
+        // legrosszabb eset EGY extra hívás, és csak akkor, ha a keret tényleg
+        // vágott. Ha a bővebb kerettel sem fér bele, a csonka szöveget
+        // visszaadjuk — azt a core/truncation-guard.js-nek kell elkapnia a
+        // mentés előtt. Két külön réteg, két külön feladat.
+        {
+          const nextCeiling = effectiveMaxTokens({ model, maxTokens, noThink, prevCeiling: effMaxTokens });
+          const ujra = shouldRetryTruncated({
+            finishReason: response.finishReason, text: response.text,
+            alreadyRetried: csonkaMentve, currentCeiling: effMaxTokens, nextCeiling
+          });
+          if (ujra) {
+            // A tokent AKKOR IS kifizettük, ha eldobjuk a féloldalas választ.
+            const wasted = response.actualCostUsd ?? calculateCost(model, response.usage);
+            logCall(agentName, provider, model, response.usage, wasted, false, new Error('Elvágta a keret'));
+            if (isMetered(provider, model) && wasted > 0) recordSpend(provider, wasted);
+            csonkaMentve = true;
+            prevCeiling = effMaxTokens;
+            tryNum--;   // ez nem átmeneti-hiba próba, ne fogyassza azt a keretet
+            console.log(`   ✂️ [${agentName}] a választ ELVÁGTA a keret (${response.usage?.outputTokens}/${effMaxTokens} tok, ${(response.text || '').length} kar) — újra, ${effMaxTokens} → ${nextCeiling} tokenes kerettel.`);
+            continue;
+          }
+          if (response.finishReason === 'length' && (response.text || '').trim()) {
+            console.log(`   ✂️ [${agentName}] a választ elvágta a keret, de nincs hova emelni (${effMaxTokens}) — a CSONKA szöveget adom vissza, a mentés előtti kapunak kell elkapnia.`);
+          }
         }
 
         // Költség: a szolgáltató által VISSZAIGAZOLT ár az elsődleges (OpenRouter),
