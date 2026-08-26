@@ -1,0 +1,65 @@
+{
+  "started_at": "2026-08-26T00:38:44.726Z",
+  "drafts_total": 9,
+  "articles_written": 3,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 3,
+  "merged_total": 3,
+  "skipped_repeat": 1,
+  "repeats": [
+    {
+      "cim": "Google Meet's AI Notetaker Is Coming to Your Conference Room Screen",
+      "mar": "Google Meet's AI Notetaker Is Getting Screenshots Soon — What Changes for You",
+      "pont": 0.9236726162241388,
+      "by": "embedding",
+      "theme": null
+    }
+  ],
+  "total_cost_usd": 0.03703785,
+  "by_article": [
+    {
+      "draft": "2026-08-26T00-38-44-357Z_picsart_How_to_make_an_AI_music_video_from_audio__not_foot.json",
+      "writer_output": "WRITER_2026-08-26T00-38-44-357Z_picsart_How_to_make_an_AI_music_video_from_audio__not_foot.json",
+      "success": true,
+      "merged_from": 2,
+      "merged_theme": "PicsArt audio-to-video creation tutorials",
+      "cost_usd": 0.00811515,
+      "duration_ms": 362614,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-08-26T00-38-36-312Z_openai-blog_Introducing_the_Admin_plugin_for_ChatGPT_Work_and_.json",
+      "writer_output": "WRITER_2026-08-26T00-38-36-312Z_openai-blog_Introducing_the_Admin_plugin_for_ChatGPT_Work_and_.json",
+      "success": true,
+      "merged_from": 4,
+      "merged_theme": "OpenAI infrastructure, products and safety",
+      "cost_usd": 0.00950922,
+      "duration_ms": 39039,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-08-26T00-38-44-356Z_perplexity-news_A_Local-First_Agent_for_Private_and_Cost-Effective.json",
+      "writer_output": "WRITER_2026-08-26T00-38-44-356Z_perplexity-news_A_Local-First_Agent_for_Private_and_Cost-Effective.json",
+      "success": true,
+      "merged_from": 2,
+      "merged_theme": "Perplexity local-first AI",
+      "cost_usd": 0.0064458,
+      "duration_ms": 93465,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-08-26T00-38-36-313Z_google-workspace_Control__Take_notes_for_me__directly_from_Google_M.json",
+      "success": false,
+      "reason": "repeat",
+      "repeat_of": "Google Meet's AI Notetaker Is Getting Screenshots Soon — What Changes for You",
+      "score": 0.9236726162241388,
+      "cost_usd": 0.00994908
+    }
+  ],
+  "finished_at": "2026-08-26T00:48:16.584Z",
+  "duration_seconds": 571.858
+}

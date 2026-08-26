@@ -1,158 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178753267035178",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-24T00:51:10.351Z",
-      "updated": "2026-08-24T00:51:36.285Z"
-    },
-    {
-      "id": "t178753269628685",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-24T00:51:36.286Z",
-      "updated": "2026-08-24T00:52:09.760Z"
-    },
-    {
-      "id": "t178753272976220",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-08-24T00:52:09.762Z",
-      "updated": "2026-08-24T00:53:07.660Z"
-    },
-    {
-      "id": "t178753278766268",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-24T00:53:07.662Z",
-      "updated": "2026-08-24T00:53:16.004Z"
-    },
-    {
-      "id": "t178753279600666",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-08-24T00:53:16.006Z",
-      "updated": "2026-08-24T00:53:40.172Z"
-    },
-    {
-      "id": "t178756050925753",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-08-24T08:35:09.257Z",
-      "updated": "2026-08-24T08:35:09.361Z"
-    },
-    {
-      "id": "t178756050936247",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-08-24T08:35:09.362Z",
-      "updated": "2026-08-24T08:35:33.535Z"
-    },
-    {
-      "id": "t178756053353620",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-08-24T08:35:33.536Z",
-      "updated": "2026-08-24T08:36:15.660Z"
-    },
-    {
-      "id": "t178756057566171",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-24T08:36:15.661Z",
-      "updated": "2026-08-24T08:36:15.773Z"
-    },
-    {
-      "id": "t178756057577486",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-24T08:36:15.774Z",
-      "updated": "2026-08-24T08:36:15.921Z"
-    },
-    {
-      "id": "t178756057592397",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-24T08:36:15.923Z",
-      "updated": "2026-08-24T08:37:34.079Z"
-    },
-    {
-      "id": "t178756065408039",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-24T08:37:34.080Z",
-      "updated": "2026-08-24T08:38:32.125Z"
-    },
-    {
-      "id": "t178756071213185",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-08-24T08:38:32.131Z",
-      "updated": "2026-08-24T08:38:32.269Z"
-    },
-    {
-      "id": "t17875607122961",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-24T08:38:32.296Z",
-      "updated": "2026-08-24T08:38:59.595Z"
-    },
-    {
-      "id": "t178756073959695",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-08-24T08:38:59.596Z",
-      "updated": "2026-08-24T08:39:19.474Z"
-    },
-    {
-      "id": "t178756075947529",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-24T08:39:19.475Z",
-      "updated": "2026-08-24T08:39:32.526Z"
-    },
-    {
-      "id": "t178756077252750",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-08-24T08:39:32.527Z",
-      "updated": "2026-08-24T08:39:51.615Z"
-    },
-    {
-      "id": "t178758858367274",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-08-24T16:23:03.672Z",
-      "updated": "2026-08-24T16:23:03.901Z"
-    },
-    {
-      "id": "t178758858391062",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-08-24T16:23:03.910Z",
-      "updated": "2026-08-24T16:23:52.036Z"
-    },
-    {
       "id": "t178758863203826",
       "title": "Run source-scout",
       "status": "done",
@@ -479,33 +327,161 @@
       "agent": "publisher",
       "created": "2026-08-25T16:25:43.566Z",
       "updated": "2026-08-25T16:26:03.600Z"
+    },
+    {
+      "id": "t178770468655629",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-08-26T00:38:06.556Z",
+      "updated": "2026-08-26T00:38:06.740Z"
+    },
+    {
+      "id": "t178770468674250",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-08-26T00:38:06.742Z",
+      "updated": "2026-08-26T00:38:44.369Z"
+    },
+    {
+      "id": "t17877047243716",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-08-26T00:38:44.371Z",
+      "updated": "2026-08-26T00:38:44.561Z"
+    },
+    {
+      "id": "t178770472456349",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-26T00:38:44.563Z",
+      "updated": "2026-08-26T00:48:16.598Z"
+    },
+    {
+      "id": "t178770529659928",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-26T00:48:16.599Z",
+      "updated": "2026-08-26T00:49:06.211Z"
+    },
+    {
+      "id": "t17877053462146",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-26T00:49:06.214Z",
+      "updated": "2026-08-26T00:49:25.606Z"
+    },
+    {
+      "id": "t178770536560840",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-26T00:49:25.608Z",
+      "updated": "2026-08-26T00:49:42.474Z"
+    },
+    {
+      "id": "t178770538247613",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-08-26T00:49:42.476Z",
+      "updated": "2026-08-26T00:50:03.302Z"
+    },
+    {
+      "id": "t178770540334756",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-26T00:50:03.347Z",
+      "updated": "2026-08-26T01:03:38.095Z"
+    },
+    {
+      "id": "t178770621809645",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-26T01:03:38.096Z",
+      "updated": "2026-08-26T01:04:59.021Z"
+    },
+    {
+      "id": "t178770629906195",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-26T01:04:59.061Z",
+      "updated": "2026-08-26T01:04:59.235Z"
+    },
+    {
+      "id": "t178770629923647",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-26T01:04:59.236Z",
+      "updated": "2026-08-26T01:06:20.986Z"
+    },
+    {
+      "id": "t178770638098914",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-26T01:06:20.989Z",
+      "updated": "2026-08-26T01:07:48.947Z"
+    },
+    {
+      "id": "t178770646895073",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-26T01:07:48.950Z",
+      "updated": "2026-08-26T01:13:24.765Z"
+    },
+    {
+      "id": "t178770680476636",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-26T01:13:24.766Z",
+      "updated": "2026-08-26T01:13:55.888Z"
+    },
+    {
+      "id": "t178770683589058",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-26T01:13:55.890Z",
+      "updated": "2026-08-26T01:14:37.248Z"
+    },
+    {
+      "id": "t17877068772505",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-08-26T01:14:37.250Z",
+      "updated": "2026-08-26T01:15:40.158Z"
+    },
+    {
+      "id": "t178770694016080",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-26T01:15:40.160Z",
+      "updated": "2026-08-26T01:15:50.375Z"
+    },
+    {
+      "id": "t178770695037778",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-08-26T01:15:50.377Z",
+      "updated": "2026-08-26T01:16:14.194Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178675632567868",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). A line-up készen áll — a cikkek coherent mixöt alkotnak: praktikus AI-segítség mindennapi feladatokra (személyes levelezés, háziállat-őrzés, köszönetnyilvánítás) és fontos tudnivalók (adatvédelem, tén",
-      "agent": "publisher",
-      "at": "2026-08-15T01:12:05.678Z",
-      "loud": false
-    },
-    {
-      "id": "n178675633620813",
-      "level": "success",
-      "text": "5 hír + 4 útmutató publikálva (költség: $0.1348).",
-      "agent": "ceo",
-      "at": "2026-08-15T01:12:16.208Z",
-      "loud": false
-    },
-    {
-      "id": "n178678185973819",
-      "level": "info",
-      "text": "SEO: 2 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-08-15T08:17:39.738Z",
-      "loud": false
-    },
     {
       "id": "n178678187896616",
       "level": "success",
@@ -1281,72 +1257,33 @@
       "agent": "ceo",
       "at": "2026-08-25T16:26:03.640Z",
       "loud": false
+    },
+    {
+      "id": "n178770694014468",
+      "level": "info",
+      "text": "SEO: 7 cikk optimalizálva (átlag 8.3/10).",
+      "agent": "seo",
+      "at": "2026-08-26T01:15:40.144Z",
+      "loud": false
+    },
+    {
+      "id": "n178770696139041",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). A lineup egész egységes: gyakorlati, mindennapi AI-írási tippek – szép mix. Egy apró aggályom van: 4 panasz-/reklamációs cikk (3-6. számú) kicsit repetitív, talán érdemes lenne összevonni vagy más tém",
+      "agent": "publisher",
+      "at": "2026-08-26T01:16:01.390Z",
+      "loud": false
+    },
+    {
+      "id": "n17877069742368",
+      "level": "success",
+      "text": "3 hír + 4 útmutató publikálva (költség: $0.1774).",
+      "agent": "ceo",
+      "at": "2026-08-26T01:16:14.236Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178684134148923",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Transcribe and summarize a voice memo on your iPhone with Apple Intelligence\" — mi a baj: LEDE_TOO_LONG: A RÖVIDEN-doboz 66 szó (max ~45) — ami hosszú, az már nem \"röviden\".; The article claims Apple Intelligence's summary step works inside the Voice Memos app or via Writing Tools on a pasted transcript in Notes. In reality, Apple Intelligence's Writing Tools / Summarize ope",
-      "ref": "GUIDE_transcribe-and-summarize-a-voice-memo-on-your-iphone-with-ap.json",
-      "at": "2026-08-16T00:49:01.489Z"
-    },
-    {
-      "id": "m178684136005354",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Translate a foreign menu or street sign with your iPhone camera\" — mi a baj: The article claims iOS 16 supports the basic Camera translation (Live Text translation), but the in-camera Translate feature requires iOS 16 and the specific Translate app integration that Apple added later; more importantly, the article attributes an automatic hands-free \"Live Translation\" feature ",
-      "ref": "GUIDE_translate-a-foreign-menu-or-street-sign-with-your-iphone-cam.json",
-      "at": "2026-08-16T00:49:20.053Z"
-    },
-    {
-      "id": "m178684147102969",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Get a quick summary of unread emails with Apple Mail's priority messages\" — mi a baj: The article claims Apple Mail has a dedicated 'Priority Messages' section at the top of the inbox that is generated by Apple Intelligence. This is not a real feature in Apple Mail — Apple Mail does have a Priority inbox (an older Gmail-style feature predating Apple Intelligence), but it is ",
-      "ref": "GUIDE_get-a-quick-summary-of-unread-emails-with-apple-mail-s-prior.json",
-      "at": "2026-08-16T00:51:11.030Z"
-    },
-    {
-      "id": "m178684168487829",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 20 → 5/4/2 oszlop.",
-      "ref": "mobile",
-      "at": "2026-08-16T00:54:44.878Z"
-    },
-    {
-      "id": "m178684226202484",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-08-16T01:04:22.024Z"
-    },
-    {
-      "id": "m178686817115744",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"This Week in AI: The 5 Stories That Matter (August 16, 2026)\" — mi a baj: NO_LEDE: Hiányzik a RÖVIDEN-doboz (> **In short:** …) közvetlenül a főcím után — az AI-keresők és a Google kivonat-doboza ezt olvassák (style-guide 2a).; '透明度' is Chinese characters in an English article — use 'transparency' instead; untranslated text breaks the reading experience for English-only read",
-      "ref": "2026-08-16T00-55-15-136Z_aiworld-editorial_This_Week_in_AI.json",
-      "at": "2026-08-16T08:16:11.157Z"
-    },
-    {
-      "id": "m178686819740045",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"This Week in AI: The 5 Stories That Matter (August 16, 2026)\" — javítva: NO_LEDE: Hiányzik a RÖVIDEN-doboz (> **In short:** …) közvetlenül a főcím után — az AI-keresők és a Google kivonat-doboza ezt olvassák (style-guide 2a).; '透明度' is Chinese characters in an English article — use 'transparency' instead; újraküldöm.",
-      "ref": "2026-08-16T00-55-15-136Z_aiworld-editorial_This_Week_in_AI.json",
-      "at": "2026-08-16T08:16:37.400Z"
-    },
     {
       "id": "m178686820524879",
       "from": "ellenorzo",
@@ -2650,6 +2587,69 @@
       "text": "1 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-08-25T16:35:26.494Z"
+    },
+    {
+      "id": "m178770531563353",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Introducing the Admin plugin for ChatGPT Work and Codex\" — mi a baj: OpenAI's custom chip is fabricated/named incorrectly: there is no public OpenAI chip called 'Jalapeño' — OpenAI has publicly discussed designing its own silicon but has not announced or named any chip 'Jalapeño'. This is an invented product name attributed to OpenAI.; The 'Admin plugin for ChatGPT Work and ",
+      "ref": "2026-08-26T00-38-36-312Z_openai-blog_Introducing_the_Admin_plugin_for_ChatGPT_Work_and_.json",
+      "at": "2026-08-26T00:48:35.633Z"
+    },
+    {
+      "id": "m178770536559725",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Introducing the Admin plugin for ChatGPT Work and Codex\" — javítva: OpenAI's custom chip is fabricated/named incorrectly: there is no public OpenAI chip called 'Jalapeño' — OpenAI has publicly discussed designing its own silicon but has not announced or named any chip 'Jalapeño'. This is an invented product name attributed to OpenAI.; The 'Admin plugin for ChatGPT Work and Codex' as ",
+      "ref": "2026-08-26T00-38-36-312Z_openai-blog_Introducing_the_Admin_plugin_for_ChatGPT_Work_and_.json",
+      "at": "2026-08-26T00:49:25.597Z"
+    },
+    {
+      "id": "m17877053824605",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Introducing the Admin plugin for ChatGPT Work and Codex\" (?/10)",
+      "ref": "2026-08-26T00-38-36-312Z_openai-blog_Introducing_the_Admin_plugin_for_ChatGPT_Work_and_.json",
+      "at": "2026-08-26T00:49:42.460Z"
+    },
+    {
+      "id": "m178770540328857",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "info",
+      "text": "A \"How to make an AI music video from audio, not footage\" hír a meglévő útmutatóra mutat: turn-a-messy-product-review-into-a-polished-customer-testimo",
+      "ref": "turn-a-messy-product-review-into-a-polished-customer-testimo",
+      "at": "2026-08-26T00:50:03.288Z"
+    },
+    {
+      "id": "m178770621863487",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Build a Simple Monthly Budget From Scratch With Any AI Assistant\" — mi a baj: NO_FRONTMATTER: A cikk nem YAML frontmatter-rel kezdődik; PRICE_CLAIM_UNSOURCED: lejáró pénz-állítás forrás és árlap-hivatkozás nélkül (\"$3,200\"). A Midjourney-próba 2023 márciusa óta nem létezik, mégis kiment egy cikkünkben.",
+      "ref": "GUIDE_build-a-simple-monthly-budget-from-scratch-with-any-ai-assis.json",
+      "at": "2026-08-26T01:03:38.634Z"
+    },
+    {
+      "id": "m178770624021911",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Draft a meeting agenda and summarise notes with Perplexity\" — mi a baj: BRITISH_SPELLING_NAME: nagybetűs brit alak — Summarise (2×). Ha közszó, írd amerikaiul; ha VALÓDI tulajdonnév (szervezet/termék neve), hagyd.; Title and subtitle use British spelling 'summarise' — must be 'summarize' for US English consistency",
+      "ref": "GUIDE_draft-a-meeting-agenda-and-summarise-notes-with-perplexity.json",
+      "at": "2026-08-26T01:04:00.219Z"
+    },
+    {
+      "id": "m178770695035628",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-08-26T01:15:50.356Z"
     }
   ]
 }

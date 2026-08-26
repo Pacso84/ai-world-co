@@ -1,15 +1,4 @@
 {
-  "2026-08-05": [
-    {
-      "at": "2026-08-05T17:22:38.078Z",
-      "file": "WRITER_2026-08-05T17-19-17-047Z_google-workspace_Streamlining_rubric_generation_in_Google_Classroom.json",
-      "action": "block",
-      "reasons": [
-        "The article asserts that 'Google Classroom now lets teachers draft rubrics with Gemini... right in the assignment page' and describes specific UI ('Generate with Gemini' / 'Draft with AI' button, Rubrics section with Gemini option) as if this feature exists in Google Classroom. There is no widely known/verified feature in Google Classroom that integrates Gemini to generate rubrics on the assignment creation page. This is likely a fabricated product feature."
-      ],
-      "confidence": 7
-    }
-  ],
   "2026-08-07": [
     {
       "at": "2026-08-07T02:19:46.084Z",
@@ -327,6 +316,18 @@
       "action": "block",
       "reasons": [
         "Kiro is described as 'an AI coding assistant' that runs on GPT-5.6, but Kiro is not a verified-real product on the supplied list and no verifiable AI coding assistant named Kiro (powered by OpenAI's GPT-5.6) can be confirmed — the tool's name, its existence, and its GPT-5.6 integration appear fabricated or unverifiable."
+      ],
+      "confidence": 7
+    }
+  ],
+  "2026-08-26": [
+    {
+      "at": "2026-08-26T00:48:35.634Z",
+      "file": "WRITER_2026-08-26T00-38-36-312Z_openai-blog_Introducing_the_Admin_plugin_for_ChatGPT_Work_and_.json",
+      "action": "block",
+      "reasons": [
+        "OpenAI's custom chip is fabricated/named incorrectly: there is no public OpenAI chip called 'Jalapeño' — OpenAI has publicly discussed designing its own silicon but has not announced or named any chip 'Jalapeño'. This is an invented product name attributed to OpenAI.",
+        "The 'Admin plugin for ChatGPT Work and Codex' as described (a workspace dashboard showing team usage, usage limits, permissions, and access requests) is presented as a new feature without verification — OpenAI's ChatGPT Team/Enterprise/Work admin tools exist in some form, but the specific framing of a newly rolled-out 'Admin plugin' with these capabilities is not verifiable and reads as a fabricated UI feature."
       ],
       "confidence": 7
     }

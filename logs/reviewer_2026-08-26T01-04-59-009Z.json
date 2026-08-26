@@ -1,0 +1,40 @@
+{
+  "started_at": "2026-08-26T01:03:38.261Z",
+  "total": 4,
+  "passed": 2,
+  "failed": 2,
+  "auto_check_failed": 1,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.00828556,
+  "by_article": [
+    {
+      "writer": "WRITER_GUIDE_build-a-simple-monthly-budget-from-scratch-with-any-ai-assis.json",
+      "decision": "FAIL",
+      "reason": "auto-check critical",
+      "skipped_ai": true
+    },
+    {
+      "writer": "WRITER_GUIDE_draft-a-meeting-agenda-and-summarise-notes-with-perplexity.json",
+      "rejected": "REJECTED_GUIDE_draft-a-meeting-agenda-and-summarise-notes-with-perplexity.json",
+      "decision": "FAIL",
+      "score": 8,
+      "cost_usd": 0.00212679
+    },
+    {
+      "writer": "WRITER_GUIDE_help-your-child-with-homework-using-ai-without-giving-the-an.json",
+      "article": "ARTICLE_GUIDE_help-your-child-with-homework-using-ai-without-giving-the-an.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.00163431
+    },
+    {
+      "writer": "WRITER_GUIDE_use-ai-to-rewrite-your-resume-and-catch-a-recruiter-s-attent.json",
+      "article": "ARTICLE_GUIDE_use-ai-to-rewrite-your-resume-and-catch-a-recruiter-s-attent.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.00214812
+    }
+  ],
+  "finished_at": "2026-08-26T01:04:59.009Z",
+  "duration_seconds": 80.748
+}

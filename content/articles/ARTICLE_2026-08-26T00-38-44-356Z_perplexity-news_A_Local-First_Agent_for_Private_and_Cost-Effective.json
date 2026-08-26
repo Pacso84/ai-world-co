@@ -1,0 +1,64 @@
+{
+  "_meta": {
+    "written_at": "2026-08-26T00:47:38.318Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.0064458,
+    "original_draft": "2026-08-26T00-38-44-356Z_perplexity-news_A_Local-First_Agent_for_Private_and_Cost-Effective.json",
+    "source_id": "perplexity-news",
+    "source_name": "Perplexity (hivatalos, Google News szűrve)",
+    "source_link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPZVNFZ0QtZk9Ya3pMUk9aUFVBaVVNNzhwTjBZc3lUS0VXMTlvdzNLa0JWMmdnaW5aaUN5aVN4WjIwZll5UWt6Mi1UNDd3WlFzeW5RWUdrR1E5dm1zaGlIV1B3YzNRM2JZWGE0OF94a0dmanN5dVdIVXU0Skx5Z1R5WEFCVkVRUEtONExsZnlTdDNmVDdvNkJjZFVMUEczLVpWb1E?oc=5",
+    "source_links": [
+      "https://news.google.com/rss/articles/CBMiogFBVV95cUxPZVNFZ0QtZk9Ya3pMUk9aUFVBaVVNNzhwTjBZc3lUS0VXMTlvdzNLa0JWMmdnaW5aaUN5aVN4WjIwZll5UWt6Mi1UNDd3WlFzeW5RWUdrR1E5dm1zaGlIV1B3YzNRM2JZWGE0OF94a0dmanN5dVdIVXU0Skx5Z1R5WEFCVkVRUEtONExsZnlTdDNmVDdvNkJjZFVMUEczLVpWb1E?oc=5",
+      "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1WcXkyRUl3RVFfT3Nmb2laTEpmUHFzWE5fQUowLUo1RkRaSTlmOU9PREJCWUJiQ1ExT1Z1cmpzX3hHVHhkbllOaXk1ZXMzSWh4dC1uSmJ6R0w2Z0t6Z3lxZFlmUWhOdFE?oc=5"
+    ],
+    "merged_from": 2,
+    "merged_theme": "Perplexity local-first AI",
+    "status": "published",
+    "published_at": "2026-08-26T00:48:50.153Z",
+    "slug": "what-local-first-ai-means-for-your-privacy-and-your-wallet",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 730
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured explainer with a strong hook, clear analogies, balanced trade-off discussion, and a useful audience-segmented 'What this means for you' section. Friendly, accessible tone throughout with no prohibited content or clichés.",
+      "_aiCost": 0.001419,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-08-26T00:49:55.778Z",
+    "guide_worthy": false,
+    "pairing_reason": "Article explains the concept of local-first AI but does not introduce a specific shipped feature/tool users can use today - Perplexity's local-first agent is only something they're planning to build, not a concrete product available now.",
+    "image_v": 2,
+    "image_at": "2026-08-26T01:14:07.231Z",
+    "seo": {
+      "meta_description": "Discover what local-first AI means for your privacy and wallet. Learn how running AI on your device keeps your data secure and cuts costs.",
+      "keywords": [
+        "local-first AI",
+        "AI privacy",
+        "run AI on phone",
+        "private AI tools",
+        "AI cost savings",
+        "offline AI",
+        "local AI processing"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add specific examples of local-first AI tools or apps readers can try",
+        "Include practical steps for everyday users to start using local AI",
+        "Add a brief comparison table showing cloud vs local AI trade-offs"
+      ],
+      "optimised_at": "2026-08-26T01:14:46.343Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"What 'Local-First AI' Means for Your Privacy and Your Wallet\"\nsubtitle: \"Why some AI tools are moving from cloud servers to running on your phone or laptop — and what that changes for everyday users\"\ncategory: \"explainer\"\naudience: \"personal\"\nread_time_minutes: 4\ntags: [\"privacy\", \"local-ai\", \"perplexity\", \"data-protection\"]\n---\n\n# What 'Local-First AI' Means for Your Privacy and Your Wallet\n\n> **In short:** Local-first AI means the AI does its thinking directly on your phone or laptop instead of sending your question to a distant server. Perplexity is one of several companies exploring this approach, which can keep your data more private and lower costs — though with some honest trade-offs.\n\nYou're drafting a personal email to your doctor, and you ask an AI to help you phrase it more politely. Right now, that message usually travels over the internet to a company computer, gets processed there, and the answer comes back to you. Local-first AI flips that order: the thinking happens on your own device, before the message ever leaves your hand.\n\n## What \"local-first\" actually means\n\nWhen you use most AI tools today — ChatGPT, Gemini, Claude — you're using **cloud AI**. Your question goes over the internet to a powerful computer in a **data center** (a big, temperature-controlled building full of servers), the AI thinks there, and the answer travels back to your screen.\n\nLocal-first AI is the opposite. The AI model lives on your phone or laptop. Your question never leaves your device. The processing happens right there, in your pocket or on your desk.\n\nIt's the same idea as keeping your photos stored on your phone instead of uploading every one to a cloud service. You stay in control of the file.\n\n## Why this is getting attention now\n\nTwo big reasons are pushing companies to explore local-first AI:\n\n**1. Privacy.** When your data stays on your device, there's no copy sitting on someone else's server. For people who worry about their conversations being stored, reviewed, or leaked, that's a meaningful change.\n\n**2. Cost.** Cloud AI is expensive to run. Every question you ask costs the company real money in electricity and hardware. Local-first models cut that ongoing cost, which can mean cheaper — or eventually free — AI tools over time.\n\nPerplexity, the AI search company, has been talking publicly about building a \"local-first agent\" — an AI helper that does most of its work on your device rather than in their data centers. Other companies are exploring similar directions.\n\n## The trade-offs worth knowing\n\nLocal-first AI isn't a free lunch. A few honest limits:\n\n- **Your device does the work.** Older phones and laptops may struggle with bigger models. Speed and quality can depend on your hardware.\n- **Smaller models.** The most capable AI models are usually too large to run well on a personal device. Local models are often less powerful than cloud ones.\n- **Setup can be fiddly.** Some local-first tools need a bit of technical comfort to install and configure.\n\nSo local-first isn't going to replace cloud AI for everyone. It's more like an extra option on the menu, not a full swap.\n\n## What this means for you\n\n- **If you care about privacy:** Local-first AI is worth watching. It's the closest thing to \"AI that never sees your data.\" When tools become easy to install, they could be a good fit for sensitive writing — medical questions, personal journals, financial notes.\n- **If you use AI casually:** You probably don't need to switch anything today. Cloud AI is more powerful and easier to use right now. But knowing this trend exists helps you make smarter choices later.\n- **If you're curious to try:** Start small. A few apps already run smaller AI models on-device for simple tasks like summarizing notes or rewriting text. Test one on your phone, see how it feels, and decide from there.\n\n## Wrap-up\n\nLocal-first AI is one response to a real concern: people want AI help without giving up control of their data. It's not a finished revolution — it's an early direction, with Perplexity and others still figuring out what works. The best move for you right now is simply to know the term exists. The next time a tool you use offers a local-first option, you'll recognize what it means and what you actually gain (and lose) by turning it on.",
+  "original_title": "A Local-First Agent for Private and Cost-Effective Knowledge Work - Perplexity"
+}

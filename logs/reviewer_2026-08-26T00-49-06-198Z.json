@@ -1,0 +1,28 @@
+{
+  "started_at": "2026-08-26T00:48:16.766Z",
+  "total": 3,
+  "passed": 2,
+  "failed": 0,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.0069757199999999995,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-08-26T00-38-44-356Z_perplexity-news_A_Local-First_Agent_for_Private_and_Cost-Effective.json",
+      "article": "ARTICLE_2026-08-26T00-38-44-356Z_perplexity-news_A_Local-First_Agent_for_Private_and_Cost-Effective.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.001419
+    },
+    {
+      "writer": "WRITER_2026-08-26T00-38-44-357Z_picsart_How_to_make_an_AI_music_video_from_audio__not_foot.json",
+      "article": "ARTICLE_2026-08-26T00-38-44-357Z_picsart_How_to_make_an_AI_music_video_from_audio__not_foot.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.0016989
+    }
+  ],
+  "truth_blocked": 1,
+  "finished_at": "2026-08-26T00:49:06.197Z",
+  "duration_seconds": 49.431
+}

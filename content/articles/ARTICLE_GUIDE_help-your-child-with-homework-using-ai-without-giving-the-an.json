@@ -1,0 +1,63 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "help-your-child-with-homework-using-ai-without-giving-the-an",
+    "company": "",
+    "tool": "",
+    "icon": "📚",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-08-26T01:03:38.080Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.01213698,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-08-26T01:04:38.558Z",
+    "slug": "help-your-child-with-homework-using-ai-without-giving-the-answer",
+    "auto_check": {
+      "passed": false,
+      "issues": [
+        "LEDE_TOO_LONG: A RÖVIDEN-doboz 64 szó (max ~45) — ami hosszú, az már nem \"röviden\"."
+      ],
+      "wordCount": 1522
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 10,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Excellent guide that hits all structural requirements with clear step-by-step instructions, fallback guidance for different screen layouts, concrete example prompts, and clear success criteria. Warm and encouraging tone appropriate for everyday parents. Minor improvement possible: Step 4 could spell out the recovery prompt more prominently in the main text rather than only in context.",
+      "_aiCost": 0.00163431,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "image_v": 2,
+    "image_at": "2026-08-26T01:14:14.983Z",
+    "seo": {
+      "meta_description": "Learn how to use AI assistants like ChatGPT as tutors that ask guiding questions—helping your child understand homework without giving answers.",
+      "keywords": [
+        "how to help child with homework using AI",
+        "AI homework help for kids",
+        "use ChatGPT as tutor",
+        "AI guided learning for students",
+        "parent guide AI homework help",
+        "teach kids problem solving with AI",
+        "AI tutor asking questions instead of answers"
+      ],
+      "seo_score": 9,
+      "suggestions": [
+        "Add a clear step-by-step introduction in the first paragraph that includes keywords like 'AI homework help' for better snippet visibility",
+        "Consider adding an FAQ section targeting common parent searches like 'is ChatGPT good for homework' to capture featured snippets",
+        "Include the specific AI tool names (ChatGPT, Claude, Gemini) in subheadings to improve relevance for branded searches"
+      ],
+      "optimised_at": "2026-08-26T01:15:14.865Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Help Your Child With Homework Using AI — Without Giving the Answer\"\nsubtitle: \"Learn how any AI assistant can break down problems, ask guiding questions, and create practice exercises while you stay in charge of the final answer.\"\ncategory: \"guide\"\naudience: \"personal\"\ncompany: \"\"\ntool: \"\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"homework-help\", \"parenting\", \"ai-for-families\"]\n---\n\n# Help Your Child With Homework Using AI — Without Giving the Answer\n\n> **In short:** Any mainstream AI assistant — ChatGPT, Gemini, Claude, Microsoft Copilot, or Le Chat — can walk your child through a homework problem step by step, if you ask it the right way. You stay the teacher; the AI plays the patient tutor who asks questions instead of handing over answers. Free plans are usually enough; paid plans are not required for this.\n\nMost parents who try AI for homework reach for the wrong thing first. They ask the assistant to solve the problem. That is the fastest way for a child to learn nothing. The smarter move is to set the AI up as a tutor — someone who asks the right questions, explains the steps in plain language, and lets your child do the actual thinking. This guide shows you how, in six short steps.\n\n## Before you start\n- An account on any mainstream AI assistant. ChatGPT, Gemini, Claude, Microsoft Copilot, and Le Chat all work for this. A free plan is fine.\n- The homework question in front of you — typed, photographed, or screenshotted. A phone or laptop with the assistant's app or website open.\n- About 15–20 minutes for your first try; closer to 5 once the habit is set.\n\n## Step 1 — Open your AI assistant and start a fresh chat\nOpen the AI assistant of your choice in a browser or its app. Tap **New chat** or **New conversation** so the AI has no leftover memory from earlier topics — homework is best handled in clean sessions. You will see a blank text box, usually near the bottom of the screen, sometimes labeled **Ask anything** or **Message**. If you cannot find a \"new chat\" button, look for a **pencil icon**, a **plus (+) icon**, or a **sidebar you can swipe open from the left**.\n💬 Example: there is nothing to type yet — the empty chat box itself is the starting point.\nYou'll know it worked when you see a clean conversation with no messages above the input box.\n\n## Step 2 — Tell the AI to act as a tutor, not a solver\nBefore you share the homework, type a short instruction that sets the AI's role. This is the single most important step — it shapes every reply that follows. Say clearly: do not give the final answer, ask guiding questions instead. The assistant will usually reply with a short acknowledgment like \"Got it, I will guide rather than solve.\" If your assistant has a tone or persona setting, pick something neutral or teacher-like — but the typed instruction is what really matters.\n💬 Example: *\"You are a patient tutor for a 10-year-old. Never give the final answer. Instead, ask guiding questions, break problems into small steps, and encourage the child to think. If I paste a math word problem, walk me through it with questions.\"*\nYou'll know it worked when the AI confirms the role in its first reply, usually in one or two short sentences.\n\n## Step 3 — Paste the homework question\nNow share the actual homework. Type it in, copy-paste it, or upload a photo if your assistant supports image input — most do on phone and desktop these days. If the question is from a textbook, you can include the page or chapter number for context. The assistant will read it and respond with something like \"Okay, let's start with the first piece\" — a sign it understood the assignment. If your screen looks different and the photo upload button is not obvious, look for a **paperclip icon**, a **plus (+) icon**, or a small **camera icon** near the text box.\n💬 Example: *\"Here is the question: A train leaves Station A at 9:00 AM going 60 km/h. Another train leaves Station B at 10:00 AM going 80 km/h toward Station A. The stations are 280 km apart. When do the two trains meet?\"*\nYou'll know it worked when the AI restates the problem in its own words before doing anything else.\n\n## Step 4 — Ask the AI to lead with guiding questions\nThis is where the magic happens. Instead of letting the assistant jump straight to a solution, ask it to lead with a question. A good prompt here turns the AI into a question-asking tutor: it nudges, you and your child answer, and only then does the next step appear. After each of your replies, the assistant will usually respond with the next question or a short explanation. If the AI gives away the answer too quickly, reply *\"Too fast — give me a question, not the answer\"* and it will back up.\n💬 Example: *\"Start with one question that helps me figure out which piece of information matters most. Wait for my answer before going further.\"*\nYou'll know it worked when the first reply from the AI is a question, not a number, equation, or final answer.\n\n## Step 5 — Generate fresh practice problems\nOnce your child understands the method, ask the AI to invent two or three similar problems — same idea, different numbers. This is great for drilling the concept without reusing the original homework. The assistant will usually produce problems in a numbered list. You can ask for them to be easier, harder, or in a specific form: word problems, multiple choice, or no calculators. If the practice problems look identical to the original homework, ask for *\"different numbers and a different context\"* and try again.\n💬 Example: *\"Now make three new practice problems on the same idea — trains meeting, different distances and speeds, no calculator needed. Do not repeat the original numbers.\"*\nYou'll know it worked when you get a short list of fresh problems that look similar in style but use different numbers and a different setup.\n\n## Step 6 — Review the final answer together\nOnce your child has worked through the problem, ask the AI to check the answer — but you and your child do the final judging. Type the child's answer into the chat and ask *\"Is this right? If not, where did I go wrong?\"* The assistant will either confirm or point to a specific mistake. Read the reply together; you decide whether it makes sense, because AI can sound confident while being subtly wrong, especially on multi-step math or science. If anything feels off, ask the AI to **show its work step by step** so you can compare it with your child's reasoning.\n💬 Example: *\"My answer is 11:00 AM. Check it and show me each step you used. Where, if anywhere, did I go wrong?\"*\nYou'll know it worked when the AI either confirms the answer with a clear walkthrough, or points to a specific step that needs fixing — and your child can explain the reasoning back to you in plain words.\n\n## Common mistakes\n- **Asking for \"the answer.\"** A prompt like *\"solve this for me\"* usually gets you a finished solution in seconds — useful for nothing. Fix: always start with the tutor instruction from Step 2, and add *\"do not give the answer\"* to every new homework session.\n- **Letting the AI write the essay or solve the whole worksheet.** The child learns nothing if the AI does the work. Fix: stay next to your child during the chat, and treat the AI like a study buddy, not a shortcut.\n- **Trusting the AI on topics you do not know yourself.** AI assistants can sound confident while being subtly wrong on advanced math, science, or language rules. Fix: if the topic is outside your comfort zone, double-check with a textbook or the teacher's published materials before trusting the explanation.\n\n## What this means for you\n- **In everyday life:** Homework time stops being a fight. You become the coach, the AI becomes the patient explainer, and your child keeps doing the actual thinking.\n- **For your business or work:** The same \"tutor, not solver\" trick works for any new skill you are learning yourself — a new language, a spreadsheet formula, a piece of code. Set the role once, then ask guiding questions forever after.\n- **If you're just getting started:** Pick the assistant you already have an account on — ChatGPT, Gemini, Claude, or Copilot — and try Steps 2 and 3 with one real homework question tonight. Five minutes is enough to feel the difference.\n\n## Try it now\nOpen a fresh chat with your usual AI assistant and type this: *\"You are a patient tutor for my child. Never give the final answer. Ask guiding questions instead. Ready?\"* Then paste tonight's first homework question and reply only to the AI's first question — not to any solutions it offers.",
+  "original_title": "Help Your Child With Homework Using AI Without Giving the Answer"
+}

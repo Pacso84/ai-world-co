@@ -1,0 +1,72 @@
+{
+  "_meta": {
+    "written_at": "2026-08-26T00:49:25.595Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00874278,
+    "original_draft": "2026-08-26T00-38-36-312Z_openai-blog_Introducing_the_Admin_plugin_for_ChatGPT_Work_and_.json",
+    "source_id": "openai-blog",
+    "source_name": "OpenAI Blog (hivatalos)",
+    "source_link": "https://openai.com/index/introducing-admin-plugin",
+    "source_links": [
+      "https://openai.com/index/introducing-admin-plugin",
+      "https://openai.com/index/the-full-stack-behind-abundant-intelligence",
+      "https://openai.com/index/jalapeno-first-results",
+      "https://openai.com/index/disrupting-malicious-uses-of-ai-influence-campaign-russia"
+    ],
+    "merged_from": 4,
+    "merged_theme": "OpenAI infrastructure, products and safety",
+    "status": "published",
+    "rejected_at": "2026-08-26T00:48:35.438Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 732
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Excellent explainer with clear hook, friendly tone, and useful plain-language explanations of technical terms like data center and inference. The 'What this means for you' section gives concrete next steps for three reader types. No prohibited content, no clichés, and no invented facts or quotes. Minor note: the article is loosely based on an OpenAI Admin plugin announcement but expands appropriately into broader industry context — this framing is acceptable for an explainer.",
+      "_aiCost": 0.00145776,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Hitelesség-kapu blokkolta: OpenAI's custom chip is fabricated/named incorrectly: there is no public OpenAI chip called 'Jalapeño' — OpenAI has publicly discussed designing its own silicon but has not announced or named any chip",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-08-26T00-38-36-312Z_openai-blog_Introducing_the_Admin_plugin_for_ChatGPT_Work_and_.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-08-26T00:49:42.459Z",
+    "slug": "why-chatgpt-is-getting-faster-and-more-reliable-right-now",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-08-26T00:49:47.471Z",
+    "guide_worthy": false,
+    "pairing_reason": "Article is a general explainer about infrastructure improvements (chips, admin tools, safety) without introducing one specific named feature users can actually use",
+    "image_v": 2,
+    "image_at": "2026-08-26T01:14:01.910Z",
+    "seo": {
+      "meta_description": "ChatGPT is now faster and more reliable thanks to custom AI chips, better workplace tools, and improved AI misuse detection. Learn what's changed.",
+      "keywords": [
+        "why is ChatGPT faster",
+        "ChatGPT speed improvement",
+        "ChatGPT reliability",
+        "OpenAI custom AI chips",
+        "ChatGPT workplace tools",
+        "ChatGPT updates 2024",
+        "OpenAI infrastructure improvements"
+      ],
+      "seo_score": 7,
+      "suggestions": [
+        "Add a year or timeframe to the title (e.g., 'Right Now' or '2024') to improve relevance for time-sensitive searches",
+        "Include specific speed benchmarks or percentage improvements in the article for more concrete value",
+        "Add FAQ-style content addressing common user questions about ChatGPT improvements"
+      ],
+      "optimised_at": "2026-08-26T01:14:41.672Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Why ChatGPT Is Getting Faster and More Reliable Right Now\"\nsubtitle: \"Behind-the-scenes upgrades — custom AI chips, better workplace admin tools, and faster detection of AI misuse — are quietly changing the app you already use.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"chatgpt\", \"openai\", \"ai-infrastructure\", \"ai-safety\", \"workplace-ai\"]\n---\n\n# Why ChatGPT Is Getting Faster and More Reliable Right Now\n\n> **In short:** AI companies are upgrading the foundations behind ChatGPT — working on custom AI chips, expanding admin tools for workplaces, and getting faster at spotting coordinated disinformation. For everyday users, the result is a steadier, more dependable chatbot.\n\nYou open ChatGPT to draft an email, and the answer comes back faster than it did a few months ago. Nothing on the screen looks different — but a lot has changed underneath.\n\n## The hidden engine room\n\nWhen you type a question into ChatGPT, your message travels through a chain of computers in a **data center** (a large warehouse full of servers — basically, the AI's home base). Each of those computers runs **inference** — the moment the AI actually reads your words and writes its reply. To make that step faster and cheaper, AI companies including OpenAI have been working on designing their own custom chips rather than relying entirely on off-the-shelf hardware from a single supplier.\n\nThink of it like swapping a delivery bike for an electric scooter: same job, but faster, cheaper, and easier on the battery. A custom chip means two things you can actually feel. First, quicker responses when many people use ChatGPT at the same time — those moments when it used to feel sluggish on a busy evening. Second, lower operating costs for the company, which over time can translate into better features or more generous free tiers for users.\n\n## Better tools for the people who manage teams\n\nIf you use ChatGPT at work through a Team, Business, or Enterprise plan, the admin side has been quietly getting more useful. Workspace admins can already see who on the team uses ChatGPT, set usage limits, manage permissions, and respond to requests for access — a kind of **dashboard** (a control panel, in plain words) for AI use across a company.\n\nFor most personal users, this is invisible. But for organizations, it's a sign that ChatGPT is being treated as a real workplace tool — not just a personal toy. If your company uses ChatGPT at work, ask your IT or operations lead what plan you're on and what controls are already turned on.\n\n## The safety side\n\nBehind the scenes, AI companies now publish regular reports about coordinated influence operations they have shut down — campaigns where bad actors use AI to mass-produce misleading posts, fake accounts, or comments pushing a political agenda. These reports name the countries involved, show examples of the fake content, and explain how the accounts were caught and banned.\n\nThis matters because the same technology that helps you write a birthday card can also be misused at scale to mislead. The faster platforms can spot and stop that, the safer the wider conversation becomes. Think of it as the immune system of the AI world — usually invisible, but very important when it kicks in.\n\n## What this means for you\n\n- **If you use ChatGPT personally:** Expect quicker replies and fewer slowdowns at peak hours. None of this changes how you type your questions — but the experience behind the curtain is becoming more reliable. A small thing to try today: time how long a long answer takes and notice whether it feels noticeably faster than a few months ago.\n- **If you work in a team or company:** Ask your IT lead what ChatGPT plan you have and whether the admin dashboard is enabled. It's the simplest place to answer \"who is using AI here, and how?\" without launching a separate survey.\n- **If you care about online safety:** Platforms are getting faster at catching coordinated AI misuse, but they still rely on everyday readers flagging what looks wrong. Reporting suspicious accounts and double-checking surprising claims before sharing them genuinely helps.\n\nChatGPT isn't just getting smarter — it's growing up. Better hardware, better workplace tools, and better guardrails are quietly turning a fun chatbot into a real piece of everyday infrastructure. The next time the app feels smoother than you remember, now you know why.",
+  "original_title": "Introducing the Admin plugin for ChatGPT Work and Codex"
+}
