@@ -345,6 +345,16 @@ jobs:
       # Ingyenes: a szöveg a cikk „Step N —" fejléceiből jön (nem AI), a hang
       # msedge-tts, a kép sharp, az összerakás ffmpeg. Hiba nem dönti el a
       # futást — ilyenkor egyszerűen nem lesz aznap Reel.
+      # ⚠️ FFMPEG TELEPÍTÉSE (2026-08-26). Az ubuntu-latest futtatón NINCS
+      # ffmpeg. A kódban évek óta ott állt a feltevés, hogy "a runneren adott"
+      # — soha senki nem ellenőrizte, mert az Orbit-videó ki van kapcsolva.
+      # Az első automata Reel emiatt bukott: "spawnSync ffmpeg ENOENT".
+      # HELYBEN MŰKÖDÖTT, mert a fejlesztő gépén ott van. A helyi próba tehát
+      # SEMMIT nem bizonyított a CI-ról.
+      - name: ffmpeg telepítése (a Reelhez kell)
+        if: always()
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg && ffmpeg -version | head -1
+
       - name: Reel — napi videó gyártása (a build ELŐTT)
         if: always()
         run: node core/reel-post.js --prepare || true
@@ -397,7 +407,10 @@ jobs:
         if: always() && steps.build.outcome == 'success'
         run: node core/share-images.js || true
 
-      # Orbit heti videó összerakása (ffmpeg a runneren adott; mp4 nincs commitolva)
+      # Orbit heti videó összerakása (mp4 nincs commitolva).
+      # ⚠️ A korábbi komment azt állította, hogy "ffmpeg a runneren adott" —
+      # NEM AZ. Ez a feltevés bukatta el az első automata Reelt 2026-08-26-án.
+      # Az ffmpeg-et fentebb TELEPÍTJÜK; ez a lépés arra támaszkodik.
       - name: Orbit videó — összerakás (mp4)
         if: always()
         run: node core/video-compose.js || true

@@ -233,8 +233,23 @@ async function main() {
   const args = process.argv.slice(2);
   const dry = args.includes('--dry');
 
-  if (args.includes('--prepare')) return prepare(ROOT, join);
-  if (args.includes('--send')) return send(ROOT, join, dry);
+  // ÁLLAPOT A NAPI RIPORTNAK (2026-08-26). Az első automata Reel a CI-ban
+  // "spawnSync ffmpeg ENOENT"-tel bukott — és ez CSAK a CI naplójába került,
+  // ahová senki nem néz. A workflow `|| true`-ja (helyesen) nem dönti el a
+  // futást, de emiatt kívülről a bukás és a "ma nem volt dolga" EGYFORMÁN
+  // néz ki: mindkettő néma. Ezért írjuk le, mi történt.
+  if (args.includes('--prepare') || args.includes('--send')) {
+    const fazis = args.includes('--prepare') ? 'prepare' : 'send';
+    const fn = fazis === 'prepare' ? () => prepare(ROOT, join) : () => send(ROOT, join, dry);
+    try {
+      await fn();
+      reelAllapot(ROOT, join, { fazis, ok: true });
+    } catch (e) {
+      reelAllapot(ROOT, join, { fazis, ok: false, hiba: String(e?.message || e).slice(0, 200) });
+      throw e;
+    }
+    return;
+  }
 
   const kulcs = args.find(a => !a.startsWith('--'));
   if (!kulcs) {
@@ -306,6 +321,27 @@ async function cikkekBetolt(ROOT, join) {
 }
 
 /** 1. LÉPÉS: kiválasztás + videó-gyártás. A build ELŐTT fut. */
+/**
+ * Feljegyzi, mi történt a Reellel — a napi riport ebből olvas.
+ * SOHA nem dob: az állapot-írás hibája nem ronthatja el magát a Reelt.
+ */
+function reelAllapot(ROOT, join, mit) {
+  try {
+    const { writeFileSync, mkdirSync, existsSync, readFileSync } = require$('fs');
+    const dir = join(ROOT, 'memory');
+    mkdirSync(dir, { recursive: true });
+    const p = join(dir, 'reel-guard.json');
+    let elozo = {};
+    if (existsSync(p)) { try { elozo = JSON.parse(readFileSync(p, 'utf-8')); } catch { /* */ } }
+    writeFileSync(p, JSON.stringify({
+      ...elozo, at: new Date().toISOString(), [mit.fazis]: mit
+    }, null, 2), 'utf-8');
+  } catch { /* a napló akkor is ott van */ }
+}
+// A `fs` szinkron kell (a hibaágon is), ezért createRequire-rel hozzuk be.
+import { createRequire } from 'module';
+const require$ = createRequire(import.meta.url);
+
 async function prepare(ROOT, join) {
   const { writeFileSync, existsSync, mkdirSync, rmSync } = await import('fs');
   const { kovetkezoReel } = await import('./reel-queue.js');

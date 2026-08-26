@@ -46,6 +46,11 @@ jobs:
       - name: Függőségek
         run: npm install
 
+      # ⚠️ Az ubuntu-latest futtatón NINCS ffmpeg — az első automata Reel
+      # emiatt bukott (2026-08-26, "spawnSync ffmpeg ENOENT").
+      - name: ffmpeg telepítése
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg && ffmpeg -version | head -1
+
       # ⚠️ A SLUG KÖRNYEZETI VÁLTOZÓN MEGY BE, nem közvetlen behelyettesítéssel.
       # A `"${{ inputs.slug }}"` alak idézőjelen belül is végrehajtaná a `$( )`
       # és a backtick tartalmát — ez a lépés pedig hozzáfér a webhook-titokhoz.

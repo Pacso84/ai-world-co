@@ -530,6 +530,23 @@ async function main() {
     }
   } catch { /* még nem futott — nem baj */ }
 
+  // 🎬 REEL-ŐRSZEM (2026-08-26). Az ELSŐ automata Reel elbukott a CI-ban
+  // ("spawnSync ffmpeg ENOENT" — az ubuntu-latest futtatón nincs ffmpeg), és
+  // ez CSAK a CI naplójába került. A workflow `|| true`-ja helyesen nem
+  // dönti el a futást — de emiatt kívülről a BUKÁS és a "ma nem volt dolga"
+  // egyformán néz ki: mindkettő néma. Ez a sor csak akkor szólal meg, ha
+  // tényleg baj van; a csendes napokon nem zajong.
+  try {
+    const rg = JSON.parse(readFileSync(join(ROOT, 'memory', 'reel-guard.json'), 'utf-8'));
+    for (const fazis of ['prepare', 'send']) {
+      const f = rg[fazis];
+      if (f && f.ok === false) {
+        const nev = fazis === 'prepare' ? 'videó-gyártás' : 'kiküldés';
+        lines.push(`🎬 REEL-ŐRSZEM: a ${nev} elbukott — ${String(f.hiba || 'ismeretlen ok').slice(0, 90)}`);
+      }
+    }
+  } catch { /* még nem futott — nem baj */ }
+
   // ✂️ CSONKA-ŐRSZEM (2026-08-25). A feltáráskor 53 elvágott szöveg volt kint:
   // 11 angol cikk és 42 fordítás, mind mondat közepén — némelyik SZÓ közepén.
   // A gyökérok a routerben volt (a keret-mentő csak ÜRES válaszra lépett), az
