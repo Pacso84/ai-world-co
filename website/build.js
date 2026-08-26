@@ -2948,12 +2948,54 @@ ${newsArts.map(a => `  <url><loc>${SITE.url}/article/${a.slug}</loc><news:news><
   // llms.txt — az AI-keresők/asszisztensek (Perplexity, ChatGPT stb.) számára
   // készült tömör oldal-térkép (llmstxt.org konvenció). Segít, hogy az AI-válaszok
   // minket találjanak meg és idézzenek a kezdőbarát útmutatókhoz.
-  const topGuides = articles
-    .filter(a => a.isGuide)
-    .sort((a, b) => (b.publishedAt || '').localeCompare(a.publishedAt || ''))
-    .slice(0, 15)
-    .map(a => `- [${a.title}](${SITE.url}/article/${a.slug}): ${a.subtitle}`)
-    .join('\n');
+  // ── ESZKÖZ SZERINTI CSOPORTOSÍTÁS (2026-08-26) ────────────────────
+  //
+  // MIÉRT: az llms.txt eddig a 15 LEGFRISSEBB útmutatót sorolta fel a 365-ből
+  // (4%). A "friss" viszont annak a mércéje, ami NEKÜNK számít — az AI-kereső
+  // nem dátum szerint keres, hanem ESZKÖZ és FELADAT szerint: "hogyan
+  // csináljam ezt ChatGPT-vel". Az útmutatóink pont így oszlanak el: 20 cég,
+  // egyenként 16-20 útmutatóval.
+  //
+  // MIÉRT ÉPP MOST: mérve (28 nap) a Bing 832 megjelenést és 11 kattintást
+  // hozott, a Google 108-at és 1-et — és a Bing indexéből dolgozik a ChatGPT
+  // keresője is. 2026-08-25-én a Perplexity ELŐSZÖR küldött hozzánk látogatót.
+  // Ez a fájl tehát már nem elméleti.
+  //
+  // ⚠️ A HASZNA NINCS MÉRVE. Nem tudjuk, ki olvassa ezt a fájlt — a .txt-n
+  // nincs mérőkódunk. A döntés az ÁRON áll, nem a bizonyítékon: a generálás
+  // ingyenes és determinisztikus. Ne állítsuk, hogy ettől jönnek a látogatók.
+  const guideList = articles.filter(a => a.isGuide);
+  const sorrend = (a, b) => (b.publishedAt || '').localeCompare(a.publishedAt || '');
+  const sor = a => `- [${a.title}](${SITE.url}/article/${a.slug})`;
+
+  const cegek = new Map();
+  for (const a of guideList) {
+    const c = a.company || a.tool || '';
+    if (!c) continue;
+    if (!cegek.has(c)) cegek.set(c, []);
+    cegek.get(c).push(a);
+  }
+  // KÉT FÁJL, ahogy a konvenció (llmstxt.org) kéri:
+  //   llms.txt       — TÖMÖR térkép, eszközönként 5 példa (~12 KB)
+  //   llms-full.txt  — a TELJES útmutató-lista (~45 KB)
+  // Az elsőt az olvassa, aki gyorsan tájékozódna; a másodikat az, aki
+  // mindent akar. Egyetlen 45 KB-os fájllal mindkettőt rosszul szolgálnánk:
+  // a tömörséget kérőnek túl sok, és a csonkolás kockázatát is vállalnánk.
+  const toolBlokk = max => [...cegek]
+    .sort((a, b) => b[1].length - a[1].length)
+    .map(([c, lista]) => `### ${c}\n`
+      + lista.sort(sorrend).slice(0, max).map(sor).join('\n')
+      + (lista.length > max ? `\n- [… and ${lista.length - max} more ${c} guides](${SITE.url}/tools)` : ''))
+    .join('\n\n');
+  const byTool = toolBlokk(5);
+  const byToolFull = toolBlokk(Infinity);
+
+  // A cég nélküli, általános útmutatók (e-mail, tanulás, utazás, biztonság).
+  const general = guideList.filter(a => !(a.company || a.tool)).sort(sorrend).slice(0, 30);
+  const topGuides = general.map(a => `- [${a.title}](${SITE.url}/article/${a.slug}): ${a.subtitle}`).join('\n');
+
+  const latestNews = articles.filter(a => !a.isGuide).sort(sorrend).slice(0, 12)
+    .map(a => `- [${a.title}](${SITE.url}/article/${a.slug})`).join('\n');
   const llms = `# ${SITE.name}
 
 > AI news and step-by-step how-to guides for everyday people, written in plain English (no jargon). Every technical term is explained; every guide is written so a complete beginner can follow it.${langSentence(SITE_LANGS)}
@@ -2965,17 +3007,40 @@ ${newsArts.map(a => `  <url><loc>${SITE.url}/article/${a.slug}</loc><news:news><
 - [AI tool guides](${SITE.url}/tools): beginner guides organized by tool — ChatGPT, Gemini, Claude, Copilot, Perplexity and more
 - [RSS feed](${SITE.url}/feed.xml)
 - [Sitemap](${SITE.url}/sitemap.xml)
+- [Full guide list](${SITE.url}/llms-full.txt): every guide we have published, grouped by tool
 
-## Recent guides
+## Guides by AI tool
+
+Step-by-step guides grouped by the tool they teach. Every guide is written for
+a complete beginner: what to click, what you will see, and what to do if your
+screen looks different.
+
+${byTool}
+
+## Everyday guides (no specific tool)
 
 ${topGuides}
+
+## Latest news
+
+${latestNews}
 
 ## About
 
 Original content by ${SITE.name} — written and quality-checked by an autonomous editorial system, following a strict beginner-clarity rulebook (every step says what to do, what you'll see, and what to do if your screen looks different). When quoting, please link back to the article.
 `;
   writeFileSync(join(OUT_DIR, 'llms.txt'), llms, 'utf-8');
-  console.log('✅ llms.txt generálva (AI-kereső oldal-térkép)');
+
+  // A TELJES lista: ugyanaz a fejléc, de eszközönként MINDEN útmutató, és
+  // az összes cég nélküli is. A hírek innen kimaradnak — azok 90 nap után
+  // törlődnek, a térképnek az ÖRÖKZÖLD tartalmat érdemes tükröznie.
+  const llmsFull = llms
+    .replace('## Guides by AI tool', '## All guides by AI tool')
+    .replace(byTool, byToolFull)
+    .replace(topGuides, guideList.filter(a => !(a.company || a.tool)).sort(sorrend)
+      .map(a => `- [${a.title}](${SITE.url}/article/${a.slug})`).join('\n'));
+  writeFileSync(join(OUT_DIR, 'llms-full.txt'), llmsFull, 'utf-8');
+  console.log(`✅ llms.txt (${Math.round(llms.length / 1024)} KB) + llms-full.txt (${Math.round(llmsFull.length / 1024)} KB) generálva`);
 
   // IndexNow kulcsfájl (a .txt-t a szép-URL nem irányítja át, sima 200)
   if (VERIFY.indexnow) {

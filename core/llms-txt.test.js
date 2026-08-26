@@ -63,6 +63,26 @@ t('a build.js nem tartalmaz kézzel beírt nyelv-hirdetést', () => {
   }
 });
 
+t('a kész llms.txt eszköz szerint csoportosít, és mutat a teljes listára', () => {
+  // MIÉRT (2026-08-26): korábban a 365 útmutatóból a 15 LEGFRISSEBBET sorolta
+  // fel (4%). A "friss" a MI mércénk — az AI-kereső eszköz és feladat szerint
+  // keres ("hogyan csináljam ezt ChatGPT-vel"), nem dátum szerint.
+  const p = join(ROOT, 'website', 'public', 'llms.txt');
+  const pf = join(ROOT, 'website', 'public', 'llms-full.txt');
+  if (!existsSync(p)) { console.log('     ⏭️  kihagyva: még nincs build'); return; }
+  const s = readFileSync(p, 'utf-8');
+  const eszkozok = (s.match(/^### /gm) || []).length;
+  const linkek = (s.match(/^- \[/gm) || []).length;
+  console.log(`     📏 llms.txt: ${eszkozok} eszköz-csoport, ${linkek} link`);
+  assert.ok(eszkozok >= 10, `csak ${eszkozok} eszköz-csoport van`);
+  assert.ok(linkek >= 60, `csak ${linkek} link van`);
+  assert.ok(s.includes('llms-full.txt'), 'a tömör fájl NEM mutat a teljesre');
+  assert.ok(existsSync(pf), 'a llms-full.txt nem készült el');
+  const f = readFileSync(pf, 'utf-8');
+  assert.ok((f.match(/^- \[/gm) || []).length > linkek,
+    'a teljes fájlban NEM több a link, mint a tömörben — akkor mire jó');
+});
+
 t('a kész llms.txt nem hirdet kivezetett nyelvet', () => {
   const p = join(ROOT, 'website', 'public', 'llms.txt');
   if (!existsSync(p)) {
