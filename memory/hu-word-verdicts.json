@@ -1305,6 +1305,7 @@
     "nassolnivalóknál",
     "natívan",
     "nedvességet",
+    "negatívat",
     "nehézséget",
     "nehézsúlyú",
     "neked",
@@ -1482,6 +1483,7 @@
     "portlandi",
     "posthoz",
     "pozcióban",
+    "pozitívat",
     "pptx",
     "prioritizálnia",
     "priorizáld",
@@ -1648,6 +1650,7 @@
     "rövidlistád",
     "sablonszöveget",
     "sajatportfoliosite",
+    "sajátkezű",
     "sajátmagadnak",
     "sajátnevem",
     "sajátosságokat",
@@ -3239,6 +3242,11 @@
       "correct": "nagyjábóli",
       "at": "2026-08-26",
       "mondattal": true
+    },
+    "segédséfeid": {
+      "correct": "segédséfjeid",
+      "at": "2026-08-26",
+      "mondattal": true
     }
   },
   "review": {
@@ -4098,11 +4106,31 @@
       "correct": "ismersz",
       "at": "2026-08-26",
       "mondattal": true
+    },
+    "álegy": {
+      "correct": "egy",
+      "at": "2026-08-26",
+      "mondattal": true
+    },
+    "néztesd": {
+      "correct": "néztesd át",
+      "at": "2026-08-26",
+      "mondattal": true
+    },
+    "néről": {
+      "correct": "néről (értelmetlen - talán \"napi útvonalakról\" vagy \"vezetési távolságokról\")",
+      "at": "2026-08-26",
+      "mondattal": true
+    },
+    "nasiról": {
+      "correct": "nasiról (értelmetlen - talán \"nasiról\" mint névről?)",
+      "at": "2026-08-26",
+      "mondattal": true
     }
   },
   "scan": {
     "at": "2026-08-26",
-    "files": 803,
-    "candidates": 27
+    "files": 805,
+    "candidates": 9
   }
 }
