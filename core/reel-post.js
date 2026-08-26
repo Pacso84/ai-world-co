@@ -347,12 +347,53 @@ async function prepare(ROOT, join) {
   const { kovetkezoReel } = await import('./reel-queue.js');
   const { cardsFromGuide, renderVideo } = await import('./short-video.js');
 
+  const { maiReelCikk } = await import('./reel-queue.js');
   const cikkek = await cikkekBetolt(ROOT, join);
   // ALKALMAS-E? Csak a markdown ismeretében derül ki (kell 3+ lépés).
   const valasztott = kovetkezoReel(cikkek, Date.now(), {
     alkalmas: c => !!cardsFromGuide(c.md).cards
   });
   if (!valasztott) {
+    // ── A MAI VIDEÓ ÉLETBEN TARTÁSA (2026-08-26) ──────────────────
+    //
+    // MI TÖRTÉNT: a 08:29-es futás legyártotta és kitette a Reel videóját,
+    // a Facebook Reel kiment. A 16:40-es futás viszont — helyesen — nem
+    // gyártott újat („ma már ment"), így a `website/assets/video/shorts/`
+    // ÜRESEN maradt, és a build utáni deploy LETÖRÖLTE a délelőtti videót.
+    // Este már 404 volt.
+    //
+    // A videók szándékosan a .gitignore-ban vannak (napi 500 KB = 180 MB/év
+    // a NYILVÁNOS repóban), tehát minden futás TISZTA lappal indul.
+    //
+    // A FACEBOOKNAK MINDEGY: ő a poszt pillanatában letölti és a saját
+    // szerverén tárolja. Az INSTAGRAMNAK NEM: ha a Buffer-poszter később
+    // fut (vagy egy későbbi futásban próbálkozna újra), a videó már nincs
+    // ott — és az Instagram aznap kimarad. Ez adta a napi EGYETLEN esélyt.
+    //
+    // Az újragyártás INGYENES (ffmpeg + helyi TTS, ~26 mp), ezért inkább
+    // minden futásban meglegyen, mint hogy egy elmulasztott Instagram-poszt
+    // egy egész napba kerüljön.
+    const mai = maiReelCikk(cikkek);
+    if (mai) {
+      const kiDir0 = join(ROOT, 'website', 'assets', 'video', 'shorts');
+      const utvonal = join(kiDir0, mai.slug + '.mp4');
+      if (existsSync(utvonal)) {
+        console.log('💤 Reel: ma már ment, a videó megvan — nincs teendő.');
+        return;
+      }
+      const { cards } = cardsFromGuide(mai.md);
+      if (!cards) { console.log('💤 Reel: ma már ment (a videó nem gyártható újra).'); return; }
+      console.log('♻️  Reel: ma már ment, de a videó hiányzik — újragyártom, hogy kint maradjon.');
+      mkdirSync(kiDir0, { recursive: true });
+      const r0 = await renderVideo(cards, {
+        out: utvonal,
+        workDir: join(ROOT, '.video-munka'),
+        cover: join(ROOT, 'website', 'assets', 'images', mai.slug + '.jpg')
+      });
+      try { rmSync(join(ROOT, '.video-munka'), { recursive: true, force: true }); } catch { /* */ }
+      console.log('   ✅ ' + r0.seconds.toFixed(1) + ' mp — a deploy után újra elérhető lesz.');
+      return;   // pending-et NEM írunk: a Facebook Reel ma már kiment
+    }
     console.log('💤 Reel: ma már ment, vagy nincs alkalmas útmutató — kihagyom.');
     return;
   }

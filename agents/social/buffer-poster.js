@@ -507,6 +507,31 @@ async function main() {
     // az a poszt kapja a „kiküldve" jelölést. A sorból kimaradó elem ott
     // marad, holnap sorra kerül — sor, nem határidő.
     const reel = ch.key === 'instagram' ? await maiReel() : null;
+
+    // ── INSTAGRAMRA CSAK REEL MEGY (2026-08-26, user-döntés) ───────
+    //
+    // MI TÖRTÉNT: 08-26-án a Facebook Reel kiment, az Instagram viszont
+    // ÁLLÓKÉPET kapott. Az éjféli futás még ffmpeg nélkül ment, ott a Reel
+    // elbukott, tehát a rendszer a szokásos állóképet posztolta — és azzal
+    // ELHASZNÁLTA a napi 1-es keretet. Mire reggel elkészült a Reel, már
+    // nem volt hova kitenni.
+    //
+    // Az állókép tehát nem csak gyengébb: KISZORÍTJA a Reelt. Ezért most
+    // inkább NEM posztolunk, mint hogy a nap egyetlen helyét egy olyan
+    // formával töltsük ki, ami 11 nap alatt 0 látogatót hozott.
+    //
+    // ⚠️ CSAK AZ INSTAGRAMRA vonatkozik. A Threads szöveges csatorna, ott
+    // a link kattintható és a mostani forma működik — azt nem érintjük.
+    //
+    // Ha egy nap nincs Reel (elfogytak az alkalmas útmutatók, vagy hibázott
+    // a gyártás), az Instagram aznap NÉMA MARAD. Ez szándékos — és nem
+    // észrevétlen: a bukást a 🎬 REEL-ŐRSZEM kiírja a napi riportba.
+    if (ch.key === 'instagram' && !reel?.item) {
+      console.log(`\n⏭️  ${cfg.label}: ma nincs kiküldhető Reel — kihagyom.`
+        + ' (Az Instagramra CSAK Reel megy — user-döntés, 2026-08-26.)');
+      continue;
+    }
+
     const batch = reel?.item ? [reel.item] : selectSocialBatch(q, keret);
     console.log(`\n📨 ${cfg.label} (@${ch.user}) — ${q.length} várakozóból ${batch.length} megy ki`
       + (reel?.item ? '  🎬 (a mai Reel)' : ''));

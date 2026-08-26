@@ -67,3 +67,15 @@ export function kovetkezoReel(cikkek, now = Date.now(), opts = {}) {
 }
 
 export default { reelMaMar, kovetkezoReel };
+
+/**
+ * A MAI Reel cikke — az, amelyiknek a `reel_at`-ja a mai nap.
+ * Azért kell külön a `reelMaMar`-tól, mert a videót NEM elég egyszer
+ * legyártani: lásd a core/reel-post.js `videoEletbenTart()` fejlécét.
+ * @returns {object|null}
+ */
+export function maiReelCikk(cikkek, now = Date.now()) {
+  if (!Array.isArray(cikkek)) return null;
+  const ma = new Date(now).toISOString().slice(0, 10);
+  return cikkek.find(c => napja(c?.reel_at) === ma) || null;
+}

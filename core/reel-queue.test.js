@@ -12,7 +12,7 @@
 // ===================================================================
 
 import assert from 'assert/strict';
-import { reelMaMar, kovetkezoReel } from './reel-queue.js';
+import { reelMaMar, kovetkezoReel, maiReelCikk } from './reel-queue.js';
 
 let pass = 0;
 const t = (n, f) => { f(); pass++; console.log('  ✅ ' + n); };
@@ -101,5 +101,34 @@ t('⚠️ a HIBÁS reel_at nem számít „ma már ment"-nek', () => {
     assert.equal(reelMaMar([g('a', '2026-01-01', { reel_at: rossz })], MOST), false, JSON.stringify(rossz));
   }
 });
+
+
+// ── A MAI REEL CIKKE (2026-08-26) ─────────────────────────────────
+// Miért kell külön a reelMaMar-tól: a videó a .gitignore-ban van, tehát
+// minden CI-futás tiszta lappal indul. Ha a mai Reel MÁR kiment, de a
+// videó nincs a lemezen, a build utáni deploy LETÖRLI az élő oldalról —
+// és az Instagram (ami a videó URL-jét kéri) aznap kimarad.
+t('megtalálja a mai Reel cikkét', () => {
+  const most = Date.parse('2026-08-26T18:00:00.000Z');
+  const cikkek = [
+    { slug: 'regi', reel_at: '2026-08-25T18:33:00.000Z' },
+    { slug: 'mai', reel_at: '2026-08-26T08:53:00.000Z' },
+    { slug: 'soha', reel_at: null }
+  ];
+  assert.equal(maiReelCikk(cikkek, most)?.slug, 'mai');
+});
+
+t('tegnapi Reel NEM mai, és a hibás dátum sem', () => {
+  const most = Date.parse('2026-08-26T18:00:00.000Z');
+  assert.equal(maiReelCikk([{ slug: 'regi', reel_at: '2026-08-25T18:33:00.000Z' }], most), null);
+  assert.equal(maiReelCikk([{ slug: 'rossz', reel_at: 'nem-datum' }], most), null);
+});
+
+t('üres vagy hibás bemenet nem omlik össze', () => {
+  assert.equal(maiReelCikk([], Date.now()), null);
+  assert.equal(maiReelCikk(null, Date.now()), null);
+  assert.equal(maiReelCikk(undefined, Date.now()), null);
+});
+
 
 console.log('\n✅ reel-queue.test: mind a ' + pass + ' eset rendben');
