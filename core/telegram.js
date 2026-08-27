@@ -36,8 +36,14 @@ export function appendChatHistory(from, text) {
 }
 
 // Egy üzenet küldése. Ha nincs token/chat-id, csendben kihagyja (pl. helyi futás).
+//
+// ⚠️ A BESZÉLGETÉS-NAPLÓBA CSAK A TÉNYLEG KIMENT ÜZENET KERÜL (2026-08-27).
+// Eddig a naplózás a függvény ELSŐ sora volt, a token-ellenőrzés ELŐTT — így
+// a `memory/chat-history.json`-ba olyan bot-válasz is bekerült, ami sosem ment
+// ki (helyi futás, Telegram-hiba, hálózati hiba). Ebből a napló ELŐZMÉNYT ír,
+// amit a Főnök (`agents/ceo/instruct.js`) visszaolvas a promptjába — vagyis a
+// cég azt hitte, hogy válaszolt valamire, amit a user sosem látott.
 export async function sendMessage(text, opts = {}) {
-  appendChatHistory('bot', text);
   const token = process.env.TELEGRAM_BOT_TOKEN;
   const chatId = opts.chatId || process.env.TELEGRAM_OWNER_CHAT_ID;
   if (!token || !chatId) {
@@ -64,8 +70,11 @@ export async function sendMessage(text, opts = {}) {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ chat_id: chatId, text: String(text).slice(0, 3900) })
       });
-      return await r2.json();
+      const j2 = await r2.json();
+      if (j2.ok) appendChatHistory('bot', text);
+      return j2;
     }
+    appendChatHistory('bot', text);
     return j;
   } catch (e) {
     console.log('⚠️  Telegram küldés hiba: ' + e.message);
