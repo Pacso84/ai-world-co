@@ -559,7 +559,7 @@ jobs:
           # nem fogyaszt, nem jelöl meg semmit.
           node agents/social/buffer-poster.js --limit 2 || true
 
-      # Napi önjelentés a Főnöktől Telegramra (naponta 1x, a 7-15 UTC sávban)
+      # Napi önjelentés a Főnöktől Telegramra (naponta 1x, a 07-20 UTC sávban)
       # FORRÁS-BIZONYÍTVÁNY (2026-07-22): osztályozza a hírforrásokat (frissesség +
       # termés + hitelesség-kapu blokkok). A halott/valótlant közlő forrást MAGÁTÓL
       # kikapcsolja (enabled:false), a többiről csak javaslatot tesz a napi riportban.

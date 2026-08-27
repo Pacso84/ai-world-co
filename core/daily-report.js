@@ -4,8 +4,10 @@
 //
 // User-ötlet (2026-07-07): "jó érzés lenne kávé mellé olvasni, mit csinált
 // éjjel a cég". A cron minden futáskor meghívja, de csak NAPONTA EGYSZER
-// küld, és csak a 07-15 UTC sávban (≈ dél körül ér a userhez) — így a
-// hajnali futás nem ébreszt, az esti nem duplikál.
+// küld (a `last_sent` dedup), és csak a 07-20 UTC sávban — így a hajnali
+// futás nem ébreszt. A DEDUP adja a napi egyet, NEM az időablak; a sáv
+// egyetlen feladata a csendes órák védelme. Lásd: core/report-window.js
+// (2026-08-27: a régi 7-15 túl szűk volt, aznap egy futás sem fért bele).
 //
 // Tartalom: új tartalom (24h), FB-posztok, költés (tegnap + havi),
 // fordítás-hiány, kvóta-tiltások, várólistás forrás-javaslatok.
@@ -23,6 +25,7 @@ import { canonicalChip } from './quality-guard.js';
 import { summarizeRuns, describeFailures } from './make-health.js';
 import { describePosts, describeRepeat, describeTranslationGaps, mergeLine, huSpellingLine, repeatLine } from './report-lines.js';
 import { bodyLooksUntranslated } from './translation-guard.js';
+import { shouldSendReport, sikeresKuldes } from './report-window.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
@@ -126,15 +129,23 @@ async function openrouterBalance(burnPerDay) {
   } catch { return ''; }
 }
 
+// A DÖNTÉS a core/report-window.js-ben él, mert ez a modul feltétel nélkül
+// hívja a main()-t — importálni sem lehet, tehát tesztelni sem lehetett.
+// (2026-08-27: aznap egyetlen futás sem fért be a régi 7-15 UTC sávba, és
+// a jelentés némán elmaradt. Lásd a report-window.js fejlécét.)
 function guard() {
-  if (FORCE) return true;
-  const h = new Date().getUTCHours();
-  if (h < 7 || h > 15) { console.log(`⏭️  Napi jelentés: ${h}h UTC a sávon kívül (7-15) — kihagyom.`); return false; }
-  try {
-    const s = JSON.parse(readFileSync(STATE_PATH, 'utf-8'));
-    if (s.last_sent === today()) { console.log('⏭️  Napi jelentés: ma már ment — kihagyom.'); return false; }
-  } catch { /* nincs állapot — mehet */ }
-  return true;
+  let lastSent = null;
+  try { lastSent = JSON.parse(readFileSync(STATE_PATH, 'utf-8')).last_sent || null; }
+  catch { /* nincs állapot — mehet */ }
+
+  const d = shouldSendReport({
+    hour: new Date().getUTCHours(),
+    lastSent,
+    today: today(),
+    force: FORCE
+  });
+  if (!d.send) console.log('⏭️  Napi jelentés: ' + d.reason + ' — kihagyom.');
+  return d.send;
 }
 
 function collect() {
@@ -145,8 +156,13 @@ function collect() {
   // Régen 24 ÓRÁS gördülő ablak volt, ami "most"-hoz képest nézett vissza — így
   // átnyúlt a TEGNAP ESTI futásba, és a napi 8-as plafon ellenére 16-ot mutatott
   // (7 tegnap este + 9 ma). A user "Napi jelentés — MA" fejlécet olvas, tehát a
-  // szám a MAI napra vonatkozzon. (A dél körül futó jelentés a mai éjszakai +
-  // reggeli futást fogja; a délutáni futás tartalma az oldalon ott van.)
+  // szám a MAI napra vonatkozzon.
+  //
+  // ⚠️ 2026-08-27 óta a jelentés NEM biztosan dél körül megy (az időablak
+  // 07-20 UTC, lásd core/report-window.js). Ez a szám tehát a nap addig
+  // eltelt részét fedi: egy 08:00-s jelentés kevesebbet lát, mint egy
+  // 18:00-s. A napok EGYMÁSSAL való összevetésekor ezt vedd figyelembe —
+  // a különbség lehet a kiküldés időpontja, nem a termelés.
   const dayStr = today();
   let news = 0, guides = 0; const titles = []; const maiCikkek = [];
   const artDir = join(ROOT, 'content', 'articles');
@@ -655,8 +671,31 @@ async function main() {
   console.log(lines.join('\n'));
   console.log('───────────────────────────────────────────────────');
 
-  await sendMessage(lines.join('\n'));
-  try { writeFileSync(STATE_PATH, JSON.stringify({ last_sent: today() }, null, 2), 'utf-8'); } catch { /* nem kritikus */ }
+  // ⚠️ A KÜLDÉS EREDMÉNYÉT MEG KELL NÉZNI (2026-08-27, független átnézés
+  // találta). A `sendMessage()` SOHA nem dob: hiányzó tokenre, Telegram-
+  // hibára és hálózati hibára is `{ok:false}`-t ad vissza. Eddig a
+  // dedup-kulcsot ilyenkor is beírtuk — vagyis EGY SIKERTELEN KÜLDÉS
+  // „ma már ment"-nek számított, a nap többi futása kihagyta, és a
+  // jelentés NÉMÁN elveszett. Pontosan a 08-27-i hiba, csak másik ajtón.
+  //
+  // A „✅ elküldve" sor is feltétel nélkül futott: a napló sikert mutatott
+  // olyankor is, amikor semmi nem ment ki. (Házi szabály: a „sikeres"
+  // válasz nem elvégzett munka — a láncot a VÉGÉRŐL mérd.)
+  const kuldes = await sendMessage(lines.join('\n'));
+  if (!sikeresKuldes(kuldes)) {
+    console.log('⚠️  Napi jelentés: a küldés NEM sikerült (' +
+      (kuldes?.skipped ? 'nincs Telegram-token' : (kuldes?.description || kuldes?.error || 'ismeretlen ok')) +
+      ') — a dedup-kulcsot NEM írom be, a következő futás újrapróbálja.');
+    return;
+  }
+  try { writeFileSync(STATE_PATH, JSON.stringify({ last_sent: today() }, null, 2), 'utf-8'); }
+  catch (e) {
+    // Régen „nem kritikus" volt, mert a szűk sávba amúgy is egy futás fért
+    // bele. A tágabb sávval viszont a dedup EGYEDÜL tartja a napi egyet —
+    // ha ez a mentés elvész, a következő futás DUPLIKÁL. Legyen látható.
+    console.log('⚠️  Napi jelentés: a dedup-kulcs mentése nem sikerült (' + e.message +
+      ') — a következő futás ma másodszor is küldhet.');
+  }
   console.log('✅ Napi jelentés elküldve.');
 }
 

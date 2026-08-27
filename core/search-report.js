@@ -4,8 +4,9 @@
 //
 // User-kérés (2026-07-07): lássuk hetente, hogyan talál ránk a világ.
 //
-// Vasárnaponként fut (a cron minden nap hívja, de csak vasárnap 7-15 UTC
-// közt küld, heti dedup-pal). Kulcsok (mind OPCIONÁLIS — ami hiányzik,
+// Vasárnaponként fut (a cron minden nap hívja, de csak vasárnap 07-20 UTC
+// közt küld, heti dedup-pal — az időablak a core/report-window.js-ben él,
+// közösen a napi jelentéssel). Kulcsok (mind OPCIONÁLIS — ami hiányzik,
 // azt a riport kihagyja):
 //   GSC_SA_JSON        — Google service-account JSON (GitHub Secret!)
 //                        (a service-account e-mailt fel kell venni a GSC-ben olvasóként)
@@ -20,6 +21,7 @@ import { readFileSync, writeFileSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { sendMessage } from './telegram.js';
+import { shouldSendReport, sikeresKuldes } from './report-window.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
@@ -35,17 +37,31 @@ function isoWeek(d = new Date()) {
   return t.getUTCFullYear() + '-W' + String(Math.ceil((((t - y) / 86400000) + 1) / 7)).padStart(2, '0');
 }
 
+// AZ IDŐSÁV a core/report-window.js-ben él, közösen a napi jelentéssel —
+// 2026-08-27-ig itt is a szűk 7-15 UTC állt, és aznap a nap MIND A NÉGY
+// futása kívül esett rajta.
+//
+// ⚠️ ITT NAGYOBB A TÉT: ez a riport csak VASÁRNAP mehet, tehát egy
+// kicsúszott vasárnap nem egy napot, hanem az EGÉSZ HÉT riportját viszi
+// el — hétfőn már a következő hét kulcsa jön, pótolni nincs mit.
+// A tágabb sáv (07-20 UTC) a három cron-slotból kettőt fed le.
 function guard() {
-  if (FORCE) return true;
   const now = new Date();
-  if (now.getUTCDay() !== 0) { console.log('⏭️  Kereső-riport: nem vasárnap van — kihagyom.'); return false; }
-  const h = now.getUTCHours();
-  if (h < 7 || h > 15) { console.log('⏭️  Kereső-riport: a 7-15 UTC sávon kívül — kihagyom.'); return false; }
-  try {
-    const s = JSON.parse(readFileSync(STATE_PATH, 'utf-8'));
-    if (s.last_week === isoWeek()) { console.log('⏭️  Kereső-riport: ezen a héten már ment.'); return false; }
-  } catch { /* első futás */ }
-  return true;
+  let lastWeek = null;
+  try { lastWeek = JSON.parse(readFileSync(STATE_PATH, 'utf-8')).last_week || null; }
+  catch { /* első futás */ }
+
+  const d = shouldSendReport({
+    hour: now.getUTCHours(),
+    day: now.getUTCDay(),
+    onlyOnDay: 0,                 // vasárnap
+    lastSent: lastWeek,
+    today: isoWeek(),
+    force: FORCE,
+    periodNev: 'ezen a héten'
+  });
+  if (!d.send) console.log('⏭️  Kereső-riport: ' + d.reason + ' — kihagyom.');
+  return d.send;
 }
 
 // ---------- Google Search Console (service-account JWT, SDK nélkül) ----------
@@ -233,8 +249,23 @@ async function main() {
     }
   } catch { /* a visszajelzés-blokk hibája ne állítsa meg a riportot */ }
 
-  await sendMessage(lines.join('\n'));
-  try { writeFileSync(STATE_PATH, JSON.stringify({ last_week: isoWeek() }, null, 2), 'utf-8'); } catch { /* ok */ }
+  // ⚠️ Ugyanaz a csapda, mint a napi jelentésnél (lásd ott a hosszabb
+  // magyarázatot): a `sendMessage()` nem dob, csak `{ok:false}`-t ad.
+  // ITT DRÁGÁBB A HIBA: a dedup HETI kulcsú, tehát egy sikertelen küldés
+  // után a riport nem a következő futásig, hanem A KÖVETKEZŐ VASÁRNAPIG
+  // maradna el — vagyis egy egész hét adata veszne el.
+  const kuldes = await sendMessage(lines.join('\n'));
+  if (!sikeresKuldes(kuldes)) {
+    console.log('⚠️  Kereső-riport: a küldés NEM sikerült (' +
+      (kuldes?.skipped ? 'nincs Telegram-token' : (kuldes?.description || kuldes?.error || 'ismeretlen ok')) +
+      ') — a heti kulcsot NEM írom be, a mai nap későbbi futása újrapróbálja.');
+    return;
+  }
+  try { writeFileSync(STATE_PATH, JSON.stringify({ last_week: isoWeek() }, null, 2), 'utf-8'); }
+  catch (e) {
+    console.log('⚠️  Kereső-riport: a heti kulcs mentése nem sikerült (' + e.message +
+      ') — ma egy későbbi futás másodszor is küldhet.');
+  }
   console.log('✅ Heti kereső-riport elküldve.');
 }
 
