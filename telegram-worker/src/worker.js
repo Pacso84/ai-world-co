@@ -17,6 +17,7 @@
 import { tg } from './tg.js';
 import { handleChat, handleContact, csCounters } from './cs-routes.js';
 import { handleEmail } from './cs-email.js';
+import { pipelineWatchdog } from './watchdog.js';
 
 // ===================================================================
 // OLVASÓI 👍/👎 VISSZAJELZÉS (2026-07-07) — a weboldal cikkeiről érkezik.
@@ -123,6 +124,23 @@ export default {
     }
 
     return new Response('ok');
+  },
+
+  // ⏰ CLOUDFLARE CRON (2026-08-27) — FÜGGETLEN ÓRA a GitHub ütemezője mellé.
+  //
+  // A 2026-08-27-i 00:00 UTC-s futás EL SEM INDULT. Nálunk nem volt hiba: a
+  // munkafolyamat aktív, a YAML érvényes, a cron változatlan — a GitHub az
+  // ütemezett futásokra kifejezetten „legjobb szándék" garanciát ad.
+  //
+  // Az ő ütemezőjüket nem tudjuk megjavítani, de tehetünk mellé egy másikat.
+  // A Cloudflare cron KÜLÖN rendszer: hogy mindkettő ugyanabban az órában
+  // hibázzon, sokkal valószínűtlenebb, mint hogy az egyik.
+  //
+  // A `waitUntil` kötelező: enélkül a futtatókörnyezet a kezelő visszatérése
+  // után megszakítaná a még függő hálózati hívásokat, és az őrjárat némán
+  // félbemaradna — pontosan az a fajta csendes hiba, ami ezt kiváltotta.
+  async scheduled(event, env, ctx) {
+    ctx.waitUntil(pipelineWatchdog(env));
   },
 
   async email(message, env) { return handleEmail(message, env); }

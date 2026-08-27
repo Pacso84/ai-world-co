@@ -8,6 +8,13 @@ on:
     - cron: '0 */8 * * *'   # 00:00, 08:00, 16:00 UTC (naponta 3x)
   workflow_dispatch: {}       # kézi indítás a GitHub felületről is
 
+  # 🐕 ŐRKUTYA (2026-08-27): a Cloudflare Worker cron-ja indítja, HA a GitHub
+  # saját ütemezője kihagyott egy futást. 08-27-én a 00:00 UTC-s futás EL SEM
+  # INDULT — a GitHub az ütemezett futásokra „legjobb szándék" garanciát ad.
+  # A döntés a core/pipeline-watchdog.js-ben él (tesztelve); a küszöb 9,5 óra.
+  repository_dispatch:
+    types: [pipeline-catchup]
+
 permissions:
   contents: write             # a generált tartalom visszacommitolásához
 

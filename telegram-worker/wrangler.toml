@@ -25,3 +25,13 @@ id = "3ec3cac8de4247d09ddac8b245f9b985"
 # Workers AI — az ügyfélszolgálat ingyenes válasz-motorja (env.AI)
 [ai]
 binding = "AI"
+
+# ⏰ ORKUTYA (2026-08-27) — orankent megnezi, futott-e a GitHub pipeline.
+# A 00:00 UTC-s futas 08-27-en EL SEM INDULT; a GitHub utemezoje "legjobb
+# szandek" garanciat ad. A Cloudflare cron KULON rendszer — hogy mindketto
+# ugyanabban az oraban hibazzon, sokkal valoszinutlenebb, mint hogy az egyik.
+# OLCSO: egy publikus (hitelesites nelkuli) GitHub-lekerdezes oránként, es
+# CSAK bajban egy inditas. A percet (7) szandekosan NEM az ora elejere
+# tettuk, hogy ne essen egybe a GitHub sajat inditasi csucsaval.
+[triggers]
+crons = ["7 * * * *"]
