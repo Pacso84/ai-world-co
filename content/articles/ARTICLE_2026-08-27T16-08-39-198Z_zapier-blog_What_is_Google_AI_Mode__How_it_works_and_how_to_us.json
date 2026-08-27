@@ -1,0 +1,63 @@
+{
+  "_meta": {
+    "written_at": "2026-08-27T16:13:49.220Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00701718,
+    "original_draft": "2026-08-27T16-08-39-198Z_zapier-blog_What_is_Google_AI_Mode__How_it_works_and_how_to_us.json",
+    "source_id": "zapier-blog",
+    "source_name": "Zapier Blog (hivatalos)",
+    "source_link": "https://zapier.com/blog/google-ai-mode",
+    "source_links": [
+      "https://zapier.com/blog/google-ai-mode"
+    ],
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "published_at": "2026-08-27T16:17:08.911Z",
+    "slug": "what-google-ai-mode-does-and-how-to-try-it-today",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 922
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Solid explainer with friendly tone, clear analogies (librarian comparison), proper structure including the required 'What this means for you' section, and no prohibited content or clichés. Technical terms are explained in plain language for everyday readers. The cautious language around access changes and the reminder to check source links builds trust.",
+      "_aiCost": 0.0017403,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-08-27T16:17:24.059Z",
+    "guide_worthy": true,
+    "related_guide_topic": "gemini-getting-started",
+    "image_v": 2,
+    "image_at": "2026-08-27T16:17:35.584Z",
+    "seo": {
+      "meta_description": "Discover what Google AI Mode does, how it changes searching, and step-by-step instructions to try it yourself today.",
+      "keywords": [
+        "what is Google AI Mode",
+        "how to use Google AI Mode",
+        "Google AI Mode tutorial",
+        "Google AI Mode how to try",
+        "Google conversational search",
+        "AI search feature Google",
+        "Google Gemini search"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more details about when Google AI Mode became available and if it's available worldwide or limited to certain regions",
+        "Include a comparison with traditional Google Search to show key differences",
+        "Add more specific step-by-step instructions for enabling or accessing Google AI Mode"
+      ],
+      "optimised_at": "2026-08-27T16:18:03.889Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"What Google AI Mode Does and How to Try It Today\"\nsubtitle: \"A plain-language guide to Google's conversational search, what it changes about finding answers, and how to get the most out of it\"\ncategory: \"explainer\"\naudience: \"personal\"\nread_time_minutes: 4\ntags: [\"google-ai\", \"search\", \"gemini\", \"getting-started\", \"productivity\"]\n---\n\n# What Google AI Mode Does and How to Try It Today\n\n> **In short:** Google AI Mode is a conversational version of Google Search built on Gemini. You ask a question in natural language, it breaks that question into smaller searches behind the scenes, and gives you one AI-written answer with links to the sources it used — then you can keep asking follow-ups without starting over.\n\nYou know that moment when you type a question into Google, open six tabs, and somehow still don't have an answer? You read the first result, the second one contradicts it, the third is from 2019, and by the time you close everything you are more confused than when you started. Google AI Mode is Google's attempt to fix that exact feeling.\n\n## What AI Mode actually is\n\nAI Mode is a separate tab inside Google Search. Instead of returning a list of ten blue links, it gives you a single AI-written response, with the web pages it pulled from shown as small clickable cards above and below the answer.\n\nUnder the hood, it runs on **Gemini** (Google's family of AI models — think of it as the engine behind Google's chatbot products). What makes it different from just chatting with Gemini directly is that AI Mode is still doing real web searches for you. It is not relying only on what the model was trained on. It actively fetches fresh information and cites where it came from.\n\nA useful analogy: regular Google Search is like asking a librarian for a stack of books on your topic. AI Mode is like asking the librarian to read the books, write you a summary, and tell you which page each fact came from.\n\n## How it works in plain language\n\nWhen you ask a question, AI Mode does three things:\n\n1. **It splits your question** into several related sub-questions. Ask \"what's the best way to start running at 40,\" and it might also search for beginner running plans, injury prevention, and realistic weekly mileage.\n2. **It reads the results** from those sub-questions and writes one combined answer.\n3. **It shows you the sources** as inline links, so you can check anything that matters to you.\n\nYou can then ask follow-up questions, and it remembers the context. So your second question can be \"what if I have bad knees\" and it understands you still mean running.\n\n## How to try it\n\nAccess changes over time, so the safest move is to check Google's official help page for the latest entry point. Generally:\n\n- Open **Google.com** in a web browser.\n- Look for the **AI Mode** tab near the top of the search page (it usually sits next to \"All,\" \"Images,\" \"News,\" and \"Shopping\").\n- If you don't see it, you may need to opt in through **Google Labs** (Google's testing area for experimental features) or have it rolled out to your account. Google has been expanding access gradually.\n\nYou'll know it worked when the page layout changes from a list of links to a chat-style box inviting you to \"Ask anything.\"\n\n## When AI Mode helps most (and when to skip it)\n\nAI Mode is genuinely useful for messy, multi-part questions where you'd otherwise open ten tabs. Things like planning a trip with several constraints, comparing options with tradeoffs, or researching a topic you don't know much about yet.\n\nIt's less useful for quick factual lookups (\"what time does the store close\"), or when you specifically want to browse a list of sources yourself. For those, the regular search tab is still faster.\n\n## Tips for better answers\n\n- **Be specific about what you actually want.** \"Compare two running shoes for flat feet, budget under $150\" works better than \"best running shoes.\"\n- **Tell it the format you need.** Add \"give me a bullet list\" or \"explain like I'm new to this.\"\n- **Check the links.** AI Mode cites its sources. If a claim matters, click through. AI models can confidently state things that are wrong, and the link is your safety net.\n- **Use follow-ups.** The conversation remembers context, so you can refine instead of starting over.\n\n## What this means for you\n\n- **If you search for everyday things** (recipes, travel, health questions, product comparisons): AI Mode can save you the tab-juggling. Treat it like a research assistant, but always glance at the sources it used.\n- **If you use Google for work or study**: it shines on research-heavy questions where you'd otherwise spend an hour reading. For quick lookups, the regular search tab is still faster.\n- **If you're new to AI tools**: this is one of the easiest ways to try conversational AI without signing up for a separate account or app — it's right inside the search box you already use.\n\n## Wrap-up\n\nGoogle AI Mode is Google's answer to \"I just want a straight answer, not a homework assignment.\" It does real web searches, writes a summary, and shows you where each piece came from, then lets you keep the conversation going. Try it once with a question you genuinely care about, click at least one source link to check the work, and see how it compares to your usual search routine.",
+  "original_title": "What is Google AI Mode? How it works and how to use it"
+}

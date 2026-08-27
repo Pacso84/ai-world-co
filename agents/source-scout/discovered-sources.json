@@ -1,24 +1,18 @@
 {
   "_meta": {
-    "generated_at": "2026-08-24T08:36:15.649Z",
+    "generated_at": "2026-08-27T16:09:36.712Z",
     "generated_by": "source-scout agent v3.0 (megbízhatóság-kapu)",
     "note": "JAVASLATOK új, MEGBÍZHATÓ hivatalos forrásokra. A felhasználó/főnök dönti el, melyiket adjuk a sources/rss-feeds.json-hoz (enabled:true-val). Minden jelölt megbízhatósági pontszámmal + indoklással.",
     "min_score": 100,
     "checked_orgs": 18,
     "newly_discovered": 0,
-    "rejected_count": 2,
+    "rejected_count": 1,
     "rejected_examples": [
       {
-        "name": "Bear Blog",
-        "host": "blog.bear.app",
-        "reason": "a friss cikkeinek csak 5%-a szól AI-ról (kell: 60%)",
+        "name": "Garmin Newsroom",
+        "host": "garmin.com",
+        "reason": "a friss cikkeinek csak 8%-a szól AI-ról (kell: 60%)",
         "score": 100
-      },
-      {
-        "name": "Readwise Reader Updates",
-        "host": "blog.readwise.io",
-        "reason": "halott feed — 825 napja nincs új cikk (limit: 365)",
-        "score": 0
       }
     ]
   },

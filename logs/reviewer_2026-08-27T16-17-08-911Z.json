@@ -1,0 +1,28 @@
+{
+  "started_at": "2026-08-27T16:16:16.364Z",
+  "total": 3,
+  "passed": 2,
+  "failed": 0,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.006675048,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-08-27T16-08-30-207Z_xai-news_Grok___Useful_AI_Chatbot_with_Voice___Image_Genera.json",
+      "article": "ARTICLE_2026-08-27T16-08-30-207Z_xai-news_Grok___Useful_AI_Chatbot_with_Voice___Image_Genera.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0015765
+    },
+    {
+      "writer": "WRITER_2026-08-27T16-08-39-198Z_zapier-blog_What_is_Google_AI_Mode__How_it_works_and_how_to_us.json",
+      "article": "ARTICLE_2026-08-27T16-08-39-198Z_zapier-blog_What_is_Google_AI_Mode__How_it_works_and_how_to_us.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.0017403
+    }
+  ],
+  "truth_held": 1,
+  "finished_at": "2026-08-27T16:17:08.911Z",
+  "duration_seconds": 52.547
+}

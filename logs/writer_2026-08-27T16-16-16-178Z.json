@@ -1,0 +1,49 @@
+{
+  "started_at": "2026-08-27T16:09:36.902Z",
+  "drafts_total": 3,
+  "articles_written": 3,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 0,
+  "merged_total": 0,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "total_cost_usd": 0.02945592,
+  "by_article": [
+    {
+      "draft": "2026-08-27T16-08-39-198Z_zapier-blog_What_is_Google_AI_Mode__How_it_works_and_how_to_us.json",
+      "writer_output": "WRITER_2026-08-27T16-08-39-198Z_zapier-blog_What_is_Google_AI_Mode__How_it_works_and_how_to_us.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.00701718,
+      "duration_ms": 232164,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-08-27T16-08-30-208Z_picsart_Recraft_V4_Styles_in_Picsart__one_reference__every.json",
+      "writer_output": "WRITER_2026-08-27T16-08-30-208Z_picsart_Recraft_V4_Styles_in_Picsart__one_reference__every.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.01032078,
+      "duration_ms": 84009,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-08-27T16-08-30-207Z_xai-news_Grok___Useful_AI_Chatbot_with_Voice___Image_Genera.json",
+      "writer_output": "WRITER_2026-08-27T16-08-30-207Z_xai-news_Grok___Useful_AI_Chatbot_with_Voice___Image_Genera.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.01088316,
+      "duration_ms": 54194,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    }
+  ],
+  "finished_at": "2026-08-27T16:16:16.178Z",
+  "duration_seconds": 399.276
+}

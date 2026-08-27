@@ -1,26 +1,4 @@
 {
-  "2026-08-07": [
-    {
-      "at": "2026-08-07T02:19:46.084Z",
-      "file": "WRITER_2026-08-07T02-05-03-922Z_apple-ml_Locking_Pretrained_Weights_via_Deep_Low-Rank_Resid.json",
-      "action": "block",
-      "reasons": [
-        "The article cites a specific technical paper titled 'Locking Pretrained Weights via Deep Low-Rank Residual Distillation' as introducing 'weight locking' — this appears to be an invented/incorrect title used to substantiate a technique that may not exist under that exact name, presenting fabricated academic provenance as fact."
-      ],
-      "confidence": 4
-    },
-    {
-      "at": "2026-08-07T02:21:34.583Z",
-      "file": "WRITER_2026-08-07T02-05-16-309Z_xai-news_Grok_4_20_Multi_Agent_Beta_0309_-_xAI_Docs.json",
-      "action": "block",
-      "reasons": [
-        "Article states 'the current public test is labeled \"Grok 4.20\" with a multi-agent build tagged \"0309\"' — 'Grok 4.20' is not a known publicly released xAI version (xAI's known Grok versions are Grok-1, Grok-2, Grok-3, Grok-4), and a build tag '0309' for a multi-agent beta is not documented in any verifiable xAI public material.",
-        "Article states 'According to xAI's own documentation, the multi-agent beta is in early testing' as if citing real xAI docs — no public xAI documentation describing a 'multi-agent beta' mode for Grok is known to exist; the citation appears invented.",
-        "The article is presented as news of a real xAI product/beta, but the core specific claims (multi-agent beta program, Grok 4.20 version, 0309 build tag) appear to be fabricated product details."
-      ],
-      "confidence": 7
-    }
-  ],
   "2026-08-08": [
     {
       "at": "2026-08-08T00:55:18.148Z",
@@ -345,6 +323,16 @@
     {
       "at": "2026-08-26T08:43:01.869Z",
       "file": "WRITER_GUIDE_draft-a-meeting-agenda-and-summarise-notes-with-perplexity.json",
+      "action": "hold",
+      "reasons": [
+        "AI-bíró nem elérhető (érthetetlen AI-válasz: credible mező hiányzik) — visszatartva a következő futásig"
+      ]
+    }
+  ],
+  "2026-08-27": [
+    {
+      "at": "2026-08-27T16:16:53.398Z",
+      "file": "WRITER_2026-08-27T16-08-30-208Z_picsart_Recraft_V4_Styles_in_Picsart__one_reference__every.json",
       "action": "hold",
       "reasons": [
         "AI-bíró nem elérhető (érthetetlen AI-válasz: credible mező hiányzik) — visszatartva a következő futásig"

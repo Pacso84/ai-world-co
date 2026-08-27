@@ -1,0 +1,64 @@
+{
+  "_meta": {
+    "written_at": "2026-08-27T16:16:16.178Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.01088316,
+    "original_draft": "2026-08-27T16-08-30-207Z_xai-news_Grok___Useful_AI_Chatbot_with_Voice___Image_Genera.json",
+    "source_id": "xai-news",
+    "source_name": "xAI (hivatalos, Google News szűrve)",
+    "source_link": "https://news.google.com/rss/articles/CBMiM0FVX3lxTFBodGt3WDU0aGZOajhINEljNmFFT21XWVNVT0xXNzZZZU4zNzFDd25WNlR2WQ?oc=5",
+    "source_links": [
+      "https://news.google.com/rss/articles/CBMiM0FVX3lxTFBodGt3WDU0aGZOajhINEljNmFFT21XWVNVT0xXNzZZZU4zNzFDd25WNlR2WQ?oc=5"
+    ],
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "published_at": "2026-08-27T16:16:38.745Z",
+    "slug": "grok-explained-what-xai-s-chatbot-does-and-how-to-try-it",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1090
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "The article hits the mark: accessible language for everyday readers, plain-English explanations of technical terms, strong structure with hook and What This Means For You, respectful tone that compares without putting down competitors, and no clichés or invented facts. Ready to publish.",
+      "_aiCost": 0.0015765,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-08-27T16:17:15.002Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is a general product explainer about Grok overall, not introducing ONE specific new feature — it covers multiple existing features (voice, image generation, real-time search) without focusing on a single named tool that was just announced.",
+    "image_v": 2,
+    "image_at": "2026-08-27T16:17:30.979Z",
+    "seo": {
+      "meta_description": "What is Grok AI? Learn about xAI's chatbot with voice, image generation & live X access. Free and easy to try — we show you how.",
+      "keywords": [
+        "Grok AI chatbot explained",
+        "what is Grok xAI",
+        "how to use Grok AI chatbot",
+        "Grok vs ChatGPT",
+        "Grok app download",
+        "Grok voice chat feature",
+        "xAI chatbot review",
+        "try Grok AI free"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Consider adding 'Grok tutorial' or 'Grok how to' to target how-to searches",
+        "Add a comparison section comparing Grok to ChatGPT/Claude to capture comparison searchers",
+        "Include more long-tail keywords like 'Grok for beginners' to capture new users"
+      ],
+      "optimised_at": "2026-08-27T16:17:49.722Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Grok Explained: What xAI's Chatbot Does and How to Try It\"\nsubtitle: \"A friendly walkthrough of the AI chatbot with voice, image generation, and live access to X — and how everyday people can start using it today\"\ncategory: \"explainer\"\naudience: \"personal\"\nread_time_minutes: 5\ntags: [\"grok\", \"xai\", \"chatbots\", \"voice-ai\", \"image-generation\", \"getting-started\"]\n---\n\n# Grok Explained: What xAI's Chatbot Does and How to Try It\n\n> **In short:** Grok is an AI chatbot built by xAI (Elon Musk's AI company), available free on grok.com, inside the X app, and on iOS and Android. It can answer questions, generate images, hold voice conversations, and pull in live posts from X — and it's known for a more playful, less filtered personality than most chatbots.\n\nYou open a chat window, type a question, and an AI talks back. That's basically every chatbot in 2026. So why is Grok the one people keep asking about? Mostly because of three things: it has a sense of humor (sometimes), it can do tricks your average chatbot can't, and it actually knows what's happening on the internet right now.\n\nLet's walk through what Grok really is, what makes it different, and how to try it without getting tangled in accounts or paywalls.\n\n## What Grok is, in plain English\n\nGrok is the AI assistant built by **xAI** — the artificial intelligence company Elon Musk launched in 2023. It's the same kind of tool as ChatGPT, Claude, or Gemini: you type or speak a request, and a **large language model** (think of it as the engine that reads your words and writes a reply) does its best to answer.\n\nWhere Grok differs is in three areas worth knowing about:\n\n- **Personality.** Grok is known for being a bit cheekier and more willing to engage with edgy questions than most competitors. You can usually dial this back if you want, but the default tone has more bite than ChatGPT's polite-assistant vibe.\n- **Real-time access to X.** Because xAI and X are closely connected, Grok can pull in live posts and trending topics from the platform. If you want to know what people are saying about a news event this minute, that's its home turf.\n- **Built-in creative tools.** Out of the box, Grok can generate images and hold a voice conversation — no extra apps, no plug-ins.\n\n## The features that actually matter day-to-day\n\nYou don't need to know every option under the hood. Here are the ones that change how you use it:\n\n- **Voice mode.** You can talk to Grok instead of typing, and it talks back. Useful when your hands are busy — cooking, walking, or just lounging on the couch. It's the same idea as talking to Siri or Alexa, but a full chatbot sits on the other end of the conversation.\n- **Image generation.** Type a description and Grok draws it. The output tends to look more like a stylized illustration than a photograph, which is fine for most casual uses — social media posts, storyboards, birthday cards, or a quick visual for a school project.\n- **Real-time search.** Ask \"what's the reaction to X\" and Grok surfaces actual posts. This is the one place it genuinely stands out, because most chatbots only know things up to their **training cutoff** (the date when their knowledge stops — older chatbots just don't know what happened yesterday).\n- **Multiple model versions.** You'll see options for different model versions — the latest one for everyday use, and sometimes a \"Think\" mode for harder questions. Pick the newest available model for everyday stuff; \"Think\" is for when you want the AI to slow down and reason step by step.\n\n## How to actually start using it\n\nYou have three doors in, and you don't need all of them. Pick whichever matches the account you already have.\n\n1. **The web (the easiest first step).** Go to **grok.com** and sign in with an X account, a Google account, or an Apple ID. The free tier lets you send a limited number of messages per day — enough to kick the tires and see if you like it.\n2. **Inside the X app.** If you already use X, look for the Grok option in the menu (often near the search bar or as a dedicated tab). It works the same way, and the free limits are usually a bit more generous there.\n3. **Mobile apps.** Grok has standalone iOS and Android apps. Worth downloading if you plan to use voice mode often — the microphone button sits right on the home screen.\n\nOnce you're in, the interface is a chat box like any other. Type a question, press enter, read the answer. The first thing worth trying is something specific to you: a question about a hobby, a recipe, a workout plan, a translation. Generic questions get generic answers; personal questions show you what the AI can really do. If a button or menu looks slightly different from what I described, that's normal — apps update often, and the core idea (type or talk, get an answer) stays the same.\n\n## What this means for you\n\n- **If you're curious but not technical:** Open grok.com, sign in with whichever account is easiest, and ask it something you actually need help with this week. The free tier is genuinely useful for everyday questions — explanations, drafts, summaries, ideas. The personality thing is real, but you can ignore it if you want straight answers.\n- **If you create content (social posts, blogs, school projects):** Voice mode plus image generation together is the standout combo. You can outline a post by talking, generate a header image from one sentence, and have a draft in ten minutes. Try it on a low-stakes project first so you learn the rhythm.\n- **If you care about real-time information:** This is the one area where Grok is genuinely ahead. For anything happening *right now* — a sports game, a breaking news story, a trending meme — ask Grok inside the X app and you'll get live posts alongside the answer.\n\n## Wrap-up\n\nGrok is a capable, slightly different AI chatbot with three things that stand out: it talks, it draws, and it knows what's happening on X this minute. The easiest way to see if it's for you is to spend ten minutes on grok.com, ask it something real, and try the voice button at least once. If the personality clicks, you'll know quickly — and if it doesn't, you've lost nothing but a few minutes.",
+  "original_title": "Grok — Useful AI Chatbot with Voice & Image Generation - X.ai"
+}

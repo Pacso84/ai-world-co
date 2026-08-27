@@ -1,86 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178770638098914",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-26T01:06:20.989Z",
-      "updated": "2026-08-26T01:07:48.947Z"
-    },
-    {
-      "id": "t178770646895073",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-26T01:07:48.950Z",
-      "updated": "2026-08-26T01:13:24.765Z"
-    },
-    {
-      "id": "t178770680476636",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-26T01:13:24.766Z",
-      "updated": "2026-08-26T01:13:55.888Z"
-    },
-    {
-      "id": "t178770683589058",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-26T01:13:55.890Z",
-      "updated": "2026-08-26T01:14:37.248Z"
-    },
-    {
-      "id": "t17877068772505",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-08-26T01:14:37.250Z",
-      "updated": "2026-08-26T01:15:40.158Z"
-    },
-    {
-      "id": "t178770694016080",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-26T01:15:40.160Z",
-      "updated": "2026-08-26T01:15:50.375Z"
-    },
-    {
-      "id": "t178770695037778",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-08-26T01:15:50.377Z",
-      "updated": "2026-08-26T01:16:14.194Z"
-    },
-    {
-      "id": "t178773298877066",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-08-26T08:29:48.770Z",
-      "updated": "2026-08-26T08:29:48.943Z"
-    },
-    {
-      "id": "t178773298894454",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-08-26T08:29:48.944Z",
-      "updated": "2026-08-26T08:30:21.806Z"
-    },
-    {
-      "id": "t178773302180835",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-08-26T08:30:21.808Z",
-      "updated": "2026-08-26T08:30:21.999Z"
-    },
-    {
       "id": "t178773302200154",
       "title": "Run iro",
       "status": "done",
@@ -479,33 +399,89 @@
       "agent": "publisher",
       "created": "2026-08-27T05:42:01.459Z",
       "updated": "2026-08-27T05:42:22.999Z"
+    },
+    {
+      "id": "t178784684877495",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-08-27T16:07:28.774Z",
+      "updated": "2026-08-27T16:07:28.979Z"
+    },
+    {
+      "id": "t178784684898058",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-08-27T16:07:28.980Z",
+      "updated": "2026-08-27T16:08:39.211Z"
+    },
+    {
+      "id": "t178784691921391",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-08-27T16:08:39.213Z",
+      "updated": "2026-08-27T16:09:36.732Z"
+    },
+    {
+      "id": "t178784697673455",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-27T16:09:36.734Z",
+      "updated": "2026-08-27T16:16:16.192Z"
+    },
+    {
+      "id": "t178784737619364",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-27T16:16:16.193Z",
+      "updated": "2026-08-27T16:17:08.923Z"
+    },
+    {
+      "id": "t178784742892652",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-08-27T16:17:08.926Z",
+      "updated": "2026-08-27T16:17:24.115Z"
+    },
+    {
+      "id": "t178784744416347",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-27T16:17:24.163Z",
+      "updated": "2026-08-27T16:17:35.628Z"
+    },
+    {
+      "id": "t178784745563029",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-08-27T16:17:35.630Z",
+      "updated": "2026-08-27T16:18:03.923Z"
+    },
+    {
+      "id": "t178784748392592",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-27T16:18:03.925Z",
+      "updated": "2026-08-27T16:18:14.928Z"
+    },
+    {
+      "id": "t178784749493069",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-08-27T16:18:14.930Z",
+      "updated": "2026-08-27T16:18:36.764Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178689688072215",
-      "level": "success",
-      "text": "1 hír + 0 útmutató publikálva (költség: $0.0020).",
-      "agent": "ceo",
-      "at": "2026-08-16T16:14:40.722Z",
-      "loud": false
-    },
-    {
-      "id": "n178692767000871",
-      "level": "info",
-      "text": "SEO: 4 cikk optimalizálva (átlag 8.3/10).",
-      "agent": "seo",
-      "at": "2026-08-17T00:47:50.008Z",
-      "loud": false
-    },
-    {
-      "id": "n178692769309543",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The lineup looks solid—practical, everyday use cases that show AI as a helpful tool, not something scary. Good mix of productivity, communication, and safety topics. One quick note: a gentle \"AI for B",
-      "agent": "publisher",
-      "at": "2026-08-17T00:48:13.095Z",
-      "loud": false
-    },
     {
       "id": "n178692770133367",
       "level": "success",
@@ -1281,36 +1257,33 @@
       "agent": "ceo",
       "at": "2026-08-27T05:42:23.038Z",
       "loud": false
+    },
+    {
+      "id": "n178784748391248",
+      "level": "info",
+      "text": "SEO: 2 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-08-27T16:18:03.912Z",
+      "loud": false
+    },
+    {
+      "id": "n17878475030148",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). A coherent line-up with solid practical value across real-life situations — from privacy awareness to everyday writing tasks. One note: we have 3 complaint-email articles plus a refund request, which ",
+      "agent": "publisher",
+      "at": "2026-08-27T16:18:23.014Z",
+      "loud": false
+    },
+    {
+      "id": "n178784751682394",
+      "level": "success",
+      "text": "2 hír + 0 útmutató publikálva (költség: $0.0401).",
+      "agent": "ceo",
+      "at": "2026-08-27T16:18:36.823Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178698339107879",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"OpenAI joins PORTS-Pike project\" — mi a baj: The 'PORTS-Pike' initiative is an invented partnership/project name with no verifiable basis, presented as fact throughout the article.; The claim that OpenAI is joining a partnership bringing AI infrastructure and 'thousands of jobs' to Southern Ohio is presented as factual news but appears to be fabricated — there is no verifiab",
-      "ref": "2026-08-17T16-15-19-703Z_openai-blog_OpenAI_joins_PORTS-Pike_project.json",
-      "at": "2026-08-17T16:16:31.078Z"
-    },
-    {
-      "id": "m178698342343799",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"OpenAI joins PORTS-Pike project\" — javítva: The 'PORTS-Pike' initiative is an invented partnership/project name with no verifiable basis, presented as fact throughout the article.; The claim that OpenAI is joining a partnership bringing AI infrastructure and 'thousands of jobs' to Southern Ohio is presented as factual news but appears to be fabricated — there is no verifiable record ",
-      "ref": "2026-08-17T16-15-19-703Z_openai-blog_OpenAI_joins_PORTS-Pike_project.json",
-      "at": "2026-08-17T16:17:03.437Z"
-    },
-    {
-      "id": "m178698343916662",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"OpenAI joins PORTS-Pike project\" (?/10)",
-      "ref": "2026-08-17T16-15-19-703Z_openai-blog_OpenAI_joins_PORTS-Pike_project.json",
-      "at": "2026-08-17T16:17:19.166Z"
-    },
     {
       "id": "m178698354157019",
       "from": "designer",
@@ -2648,6 +2621,33 @@
       "text": "4 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-08-27T05:51:06.428Z"
+    },
+    {
+      "id": "m178784744410123",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "info",
+      "text": "A \"What is Google AI Mode? How it works and how to use it\" hír a meglévő útmutatóra mutat: gemini-getting-started",
+      "ref": "gemini-getting-started",
+      "at": "2026-08-27T16:17:24.101Z"
+    },
+    {
+      "id": "m178784749491862",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-08-27T16:18:14.918Z"
+    },
+    {
+      "id": "m178784758210449",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Ask Qwen Chat to compare two cities for your next \" — The URL qwen.chat (the guide says navigate to qwen.chat, but the current official Qwen website is qwen.ai); Daily cost examples showing specific dollar amounts ($120, $110) - violates the rule that guides must never state prices; The \"Summarize\" button above replies (may not exist in",
+      "ref": "ARTICLE_GUIDE_ask-qwen-chat-to-compare-two-cities-for-your-next-holiday-in.json",
+      "at": "2026-08-27T16:19:42.104Z"
     }
   ]
 }
