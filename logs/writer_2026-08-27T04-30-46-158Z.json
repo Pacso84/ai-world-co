@@ -1,0 +1,87 @@
+{
+  "started_at": "2026-08-27T04:21:40.410Z",
+  "drafts_total": 6,
+  "articles_written": 5,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 0,
+  "merged_total": 0,
+  "skipped_repeat": 1,
+  "repeats": [
+    {
+      "cim": "What AI Agents at Work Mean for Your Daily Job",
+      "mar": "Understanding AI Agents and How They Can Help You at Work",
+      "pont": 0.9418390123615228,
+      "by": "embedding",
+      "theme": null
+    }
+  ],
+  "total_cost_usd": 0.08217144,
+  "by_article": [
+    {
+      "draft": "2026-08-27T04-21-40-031Z_zapier-blog_Claude_integrations__How_to_use_Zapier_with_Claude.json",
+      "writer_output": "WRITER_2026-08-27T04-21-40-031Z_zapier-blog_Claude_integrations__How_to_use_Zapier_with_Claude.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.02541378,
+      "duration_ms": 314728,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-08-27T04-21-40-031Z_salesforce_Salesforce_and_Anthropic_Announce_Claudeforce__The.json",
+      "writer_output": "WRITER_2026-08-27T04-21-40-031Z_salesforce_Salesforce_and_Anthropic_Announce_Claudeforce__The.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.01200408,
+      "duration_ms": 22127,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-08-27T04-21-40-031Z_salesforce_Salesforce_Quarterly_Highlights__FY27_Q2_Product_R.json",
+      "success": false,
+      "reason": "repeat",
+      "repeat_of": "Understanding AI Agents and How They Can Help You at Work",
+      "score": 0.9418390123615228,
+      "cost_usd": 0.0109596
+    },
+    {
+      "draft": "2026-08-27T04-21-27-239Z_openai-blog_Learning_never_stops__How_AI_makes_learning_contin.json",
+      "writer_output": "WRITER_2026-08-27T04-21-27-239Z_openai-blog_Learning_never_stops__How_AI_makes_learning_contin.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.01180356,
+      "duration_ms": 25436,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-08-27T04-21-27-239Z_openai-blog_Bringing_ChatGPT_for_Teachers_to_more_U_S__school_.json",
+      "writer_output": "WRITER_2026-08-27T04-21-27-239Z_openai-blog_Bringing_ChatGPT_for_Teachers_to_more_U_S__school_.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.01098564,
+      "duration_ms": 17075,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-08-27T04-21-27-239Z_google-deepmind_Intelligent_transcription_with_Gemini_3_5_Transcri.json",
+      "writer_output": "WRITER_2026-08-27T04-21-27-239Z_google-deepmind_Intelligent_transcription_with_Gemini_3_5_Transcri.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.01014198,
+      "duration_ms": 75696,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    }
+  ],
+  "finished_at": "2026-08-27T04:30:46.158Z",
+  "duration_seconds": 545.748
+}

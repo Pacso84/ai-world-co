@@ -1,0 +1,63 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "turn-off-ai-chat-history-and-data-saving-in-chatgpt-claude-a",
+    "company": "",
+    "tool": "",
+    "icon": "🔒",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-08-27T04:42:00.176Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.01683318,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-08-27T04:45:58.400Z",
+    "slug": "turn-off-ai-chat-history-and-data-saving-in-chatgpt-claude-and-gemini",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1578
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [
+        "The 30-day monitoring claim for OpenAI is stated as fact without a source or caveat that it may change"
+      ],
+      "verdict": "Solid beginner-friendly guide with clear steps, multiple fallbacks for different screens, and useful context on what each toggle does and does not do. The 'What this means for you' section is practical and appropriately tiered for different reader situations. Minor issue: the 30-day retention claim should note that policies vary and readers should check current policy.",
+      "_aiCost": 0.00187974,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "image_v": 2,
+    "image_at": "2026-08-27T04:50:58.102Z",
+    "seo": {
+      "meta_description": "Learn how to turn off AI chat history in ChatGPT, Claude, and Gemini to stop your conversations from training future AI models. Simple step-by-step guide.",
+      "keywords": [
+        "how to turn off ChatGPT history",
+        "disable AI training data",
+        "stop Claude from saving chats",
+        "ChatGPT privacy settings",
+        "turn off Gemini data collection",
+        "AI chatbot data privacy",
+        "delete AI chat history"
+      ],
+      "seo_score": 9,
+      "suggestions": [
+        "Consider adding the year in the title or meta (like '2024') to signal freshness, as privacy settings change frequently",
+        "The subtitle is quite long - a shorter version could improve click-through rates in search results",
+        "Add 'privacy' as a secondary keyword focus since that's the core reader concern, beyond just the 'how-to' intent"
+      ],
+      "optimised_at": "2026-08-27T04:52:38.911Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Turn Off AI Chat History and Data Saving in ChatGPT, Claude, and Gemini\"\nsubtitle: \"Step-by-step instructions to find the right privacy setting in each major AI assistant so your conversations stop training future models\"\ncategory: \"guide\"\naudience: \"personal\"\ncompany: \"\"\ntool: \"\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"privacy\", \"chatgpt\", \"claude\", \"gemini\", \"getting-started\"]\n---\n\n# Turn Off AI Chat History and Data Saving in ChatGPT, Claude, and Gemini\n\n> **In short:** You can stop ChatGPT, Claude, and Gemini from using your conversations to train future AI models by flipping a privacy toggle in each service's settings — but the exact menu names change often, and turning off training does not erase the conversations those companies have already saved.\n\nBy default, ChatGPT, Claude, and Gemini save your chats and may use them to train future versions of themselves. This guide shows you how to switch that off in each service — on web and mobile — and explains what each toggle actually changes, and what it quietly does not.\n\n## Before you start\n- A free or paid **personal** account on each AI service you want to adjust. Work or school accounts are usually managed by your employer and may not let you change these settings.\n- A web browser is the easiest place to do this. Phone apps work too, but menus shift around more often.\n- Set aside about **15 minutes total** — roughly five minutes per service.\n- Make sure you are signed in to each service before you begin, so the settings actually save.\n\n## Step 1 — Open ChatGPT's Data Controls\nGo to **chatgpt.com** in a browser and sign in if you are not already. Click your **profile picture or initials** in the top-right corner — a small menu appears. Look for an option like **Settings** (sometimes shown as a gear icon ⚙️) and click it. In the Settings panel that opens on the left side of the page, look for a section called **Data Controls** and click that. If your screen looks different, try a section called **Privacy** instead — older versions used that name.\n\nIf you are on a phone, tap the **two lines or three dots** in the top corner of the ChatGPT app, then tap your name at the top of the menu that slides up. The same Settings → Data Controls path should appear.\n\nYou'll know it worked when you see a list of toggles — look for ones mentioning \"Improve\", \"training\", or \"history\".\n\n## Step 2 — Turn off ChatGPT's training toggle\nOn the Data Controls page, find the toggle labeled something like **\"Improve model for everyone\"** or **\"Chat history & training\"** — the exact label changes often, so read each toggle's description. Click the toggle so it slides to the **off** position (it usually turns gray or loses its color). You may see a small popup asking you to confirm — click **Confirm** or **Save**. The page may refresh, or you may need to close and reopen it for the change to show.\n\nIf you do not see a training toggle at all, your account may be on a plan or in a region where the option is hidden. In that case, leave the page and check back in a few weeks — settings are added over time.\n\nYou'll know it worked when the toggle stays gray (off) after a page refresh and no longer shows an \"on\" indicator. Even after turning this off, OpenAI may still keep your most recent chats for up to 30 days for safety monitoring — so avoid pasting anything truly sensitive in the meantime.\n\n## Step 3 — Open Claude's privacy settings\nGo to **claude.ai** and sign in. Click your **profile picture or initials** — usually the bottom-left on web or the top-right on mobile. From the menu that pops up, choose **Settings**. Inside Settings, look for a tab or section called **Privacy**, **Account**, or **Profile** — the exact name varies. Within that section, hunt for a toggle that mentions **\"help improve Claude\"** or **\"use my chats for training\"**.\n\nOn the Claude mobile app, the same path usually works: tap your **profile icon**, then **Settings**, then look for the privacy section. If your app opens straight into a chat, look for a **gear icon** ⚙️ in the top corner instead.\n\nYou'll know it worked when you see a privacy section with at least one on/off toggle related to training or improving the assistant.\n\n## Step 4 — Turn off Claude's training toggle\nClick the toggle next to **\"Help improve Claude\"** (or whichever similar phrase appears on your screen) so it slides to the **off** position. Some users see a confirmation popup — accept it. The change usually saves instantly without a separate Save button, but if you see one, click it.\n\nA few honest notes here. On some free Claude accounts, the option to opt out of training may be limited or unavailable — Anthropic has updated this policy more than once. If you do not see the toggle at all, check whether you are signed in with a **work or school email**; those accounts are managed by an admin and cannot be changed here. If you pay for Claude, you may see the toggle in a slightly different place — the same Settings area, but possibly under a **Privacy** sub-tab.\n\nYou'll know it worked when the toggle is gray and stays gray after you refresh the page. If the setting does not seem to stick, sign out, sign back in, and check again — sometimes it takes a moment to sync.\n\n## Step 5 — Open Gemini's activity controls\nGemini handles this a little differently because it lives inside your Google account. Go to **gemini.google.com** or open the Gemini app. Click your **profile picture** in the top corner. Look for **Settings** or **Activity** — on the web, you may see a direct link labeled **\"Gemini Apps Activity\"** that takes you straight into your Google account controls. Click it.\n\nOn mobile, tap your **profile picture** in the top corner of the Gemini app, then look for **Gemini Apps Activity** in the menu that appears. If it is not there, your app version may have moved it — try searching your phone's settings app for **\"Gemini\"** instead, or open **myactivity.google.com** in a browser.\n\nYou'll know it worked when a Google page opens showing a toggle labeled **\"Gemini Apps Activity\"** and a short description of what it does.\n\n## Step 6 — Turn off Gemini's Apps Activity\nOn the Gemini Apps Activity page, click the toggle at the top so it switches to **off**. A small confirmation panel may pop up explaining what will change — read it, then confirm. You may also see a separate option to **delete past activity**; if you want a clean slate, click that too and follow the prompts.\n\nThis single Google toggle covers the Gemini web app, the Gemini mobile app, and any other place Gemini saves your chats to your Google account. Disabling it does not delete your past conversations automatically — you need to do that separately if you want them gone. And remember: turning off Gemini Apps Activity does not affect your Google Search history or YouTube history, which are controlled by separate toggles.\n\nYou'll know it worked when the toggle is off and a line of text confirms activity is paused. You can verify by starting a new chat, then returning to this page — the activity should not appear there.\n\n## Common mistakes\n- **Looking for a \"delete my data\" button.** None of these toggles erase what the company already has on file. If you want old chats removed, each service has a separate **Delete** or **Clear conversations** option — and even then, companies often keep copies for legal or safety reasons for a while.\n- **Assuming one toggle fixes everything.** In Gemini especially, there are **multiple** Google activity controls. Turning off Gemini Apps Activity does not affect Search history, YouTube history, or other Google products. Check each one separately if you care about all of them.\n- **Trusting the toggle forever.** Companies update their settings and policies regularly. The opt-out you flipped today may quietly disappear or change meaning in six months — set a calendar reminder every few months to come back and check.\n\n## What this means for you\n- **In everyday life:** Turning these off is a good habit if you ever paste anything personal into an AI chat — names, addresses, health questions, work emails. It does not make you invisible, but it stops your words from being used to teach the next model.\n- **For your business or work:** If you handle customer data, contracts, or anything confidential, do not rely on these toggles alone. Many companies explicitly say opt-outs do not cover legal requests or internal abuse detection. Use a separate AI account with synthetic data, or stick to enterprise plans that promise stronger privacy.\n- **If you're just getting started:** Pick the service you use the most, open its settings, and turn off the training toggle right now. That single move is the most useful thing you can do today — you can come back for the other two later.\n\n## Try it now\nOpen the AI assistant you used most recently, click your profile picture, find the privacy or data settings, and turn off the training toggle. It takes about a minute, and you'll see exactly what your settings look like today.",
+  "original_title": "Turn Off AI Chat History and Data Saving in ChatGPT, Claude, and Gemini"
+}

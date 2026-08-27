@@ -1,0 +1,41 @@
+{
+  "started_at": "2026-08-27T04:43:23.031Z",
+  "total": 4,
+  "passed": 3,
+  "failed": 1,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.01301055,
+  "by_article": [
+    {
+      "writer": "WRITER_GUIDE_how-to-create-custom-images-for-invitations-social-posts-and.json",
+      "article": "ARTICLE_GUIDE_how-to-create-custom-images-for-invitations-social-posts-and.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.002952
+    },
+    {
+      "writer": "WRITER_GUIDE_how-to-rehearse-for-a-job-interview-by-letting-copilot-play-.json",
+      "article": "ARTICLE_GUIDE_how-to-rehearse-for-a-job-interview-by-letting-copilot-play-.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.00190863
+    },
+    {
+      "writer": "WRITER_GUIDE_how-to-translate-and-condense-long-foreign-language-articles.json",
+      "rejected": "REJECTED_GUIDE_how-to-translate-and-condense-long-foreign-language-articles.json",
+      "decision": "FAIL",
+      "score": 8,
+      "cost_usd": 0.0023535
+    },
+    {
+      "writer": "WRITER_GUIDE_turn-off-ai-chat-history-and-data-saving-in-chatgpt-claude-a.json",
+      "article": "ARTICLE_GUIDE_turn-off-ai-chat-history-and-data-saving-in-chatgpt-claude-a.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.00187974
+    }
+  ],
+  "finished_at": "2026-08-27T04:45:58.400Z",
+  "duration_seconds": 155.369
+}

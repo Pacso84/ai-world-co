@@ -1,0 +1,62 @@
+{
+  "_meta": {
+    "written_at": "2026-08-27T04:28:13.875Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.01200408,
+    "original_draft": "2026-08-27T04-21-40-031Z_salesforce_Salesforce_and_Anthropic_Announce_Claudeforce__The.json",
+    "source_id": "salesforce",
+    "source_name": "Salesforce AI Blog (hivatalos)",
+    "source_link": "https://www.salesforce.com/news/press-releases/2026/08/26/salesforce-and-anthropic-announce-claudeforce/",
+    "source_links": [
+      "https://www.salesforce.com/news/press-releases/2026/08/26/salesforce-and-anthropic-announce-claudeforce/"
+    ],
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "published_at": "2026-08-27T04:32:21.092Z",
+    "slug": "what-ai-inside-your-crm-actually-means-for-your-daily-work",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 986
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Strong explainer that hits all structural requirements, explains key terms (CRM, LLM, trusted enterprise action) in plain language, uses friendly and respectful tone, and ends with a concrete next step. No clichés, US English, no prohibited content, and the practical examples help everyday readers understand the real-world impact.",
+      "_aiCost": 0.00152982,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-08-27T04:33:20.874Z",
+    "guide_worthy": false,
+    "pairing_reason": "Partnership announcement without a shipped, usable feature - no specific named tool with a concrete action for everyday users to take today",
+    "image_v": 2,
+    "image_at": "2026-08-27T04:50:13.680Z",
+    "seo": {
+      "meta_description": "Learn what Salesforce's AI partnership with Anthropic means for your daily work. Plain language explanation of Claude inside your CRM.",
+      "keywords": [
+        "AI in CRM explained",
+        "Salesforce AI partnership",
+        "what is Claude AI",
+        "Anthropic Salesforce integration",
+        "AI tools for daily work",
+        "CRM AI assistant"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more concrete use cases showing how AI actually helps with daily tasks like copy-pasting between tabs",
+        "Include the full article to improve word count and SEO value",
+        "Consider adding FAQ section addressing common questions about AI in workplace tools"
+      ],
+      "optimised_at": "2026-08-27T04:51:50.327Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"What 'AI Inside Your CRM' Actually Means for Your Daily Work\"\nsubtitle: \"Salesforce and Anthropic are teaming up to put Claude inside the tools your company already uses — here's what that is, in plain language.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"claude\", \"salesforce\", \"enterprise-ai\", \"productivity\"]\n---\n\n# What \"AI Inside Your CRM\" Actually Means for Your Daily Work\n\n> **In short:** Salesforce and Anthropic announced a deeper partnership that puts Claude (Anthropic's AI assistant) directly inside Salesforce, the customer-relationship software many companies already pay for. The point is that Claude can read your company's data and take action on it, not just chat about it.\n\nIf you've ever sat at your desk copy-pasting the same customer update into three different tabs, this is the part of the AI news that's actually about you. The biggest AI names and the biggest workplace-software names have been quietly signing deals to put AI inside the tools your employer already runs. The latest one pairs Claude with Salesforce — and the reason it matters has less to do with the brands and more to do with where the AI will actually show up in your day.\n\n## What the partnership actually is\n\nSalesforce is one of the largest customer-relationship platforms in the world — a \"CRM\" (customer relationship management tool) is the software a company uses to keep track of customers, sales calls, support tickets, and follow-ups. Many of the companies around you, from your bank to your favorite online store, use a CRM somewhere in the background.\n\nClaude is Anthropic's AI assistant — a \"large language model\" (an AI trained on huge amounts of text so it can write, summarize, and reason in plain English). You may have used it at claude.ai, but most workers haven't, because their company hasn't approved it yet.\n\nWhat the new deal does, in plain words: it gives Claude a way to read and act on the information already sitting inside Salesforce. Not a separate chatbot that you have to remember to open. The same Claude intelligence, but with access to your real work data, and with permission to do things in the system — like drafting an email, updating a record, or summarizing an account.\n\n## Why \"actions\" is the interesting word\n\nMost AI features you may have tried so far are the chat-and-paste kind. You ask a question, the AI answers, you copy the answer somewhere else. Useful, but you're still the one moving things around.\n\nThe phrase that keeps showing up around this kind of partnership is \"trusted enterprise action.\" Let's break that down:\n\n- **Trusted** — the company has rules about what the AI is allowed to see and do. It can't just read your CEO's email.\n- **Enterprise** — built for the way big organizations work, with permissions, audit logs, and IT oversight.\n- **Action** — the AI can actually do things, not just suggest them. It can update a Salesforce record, draft a follow-up, or pull a report.\n\nThis is the difference between a smart assistant and a smart coworker. A smart assistant can write you a great draft. A smart coworker can draft, send, and log the conversation — while you stay focused on the next thing.\n\n## What it looks like in practice\n\nYou don't need to be a Salesforce admin to imagine the everyday impact. A few realistic moments:\n\n- A sales rep asks Claude to summarize a six-month account history before a client call. The summary pulls from notes, emails, and support tickets — all inside Salesforce, so the rep doesn't have to dig through them.\n- A support agent asks Claude to draft a reply to a frustrated customer. The draft is grounded in the customer's actual history, not made up.\n- A manager asks Claude to flag the deals most at risk this quarter. The AI works from the live pipeline, with the same numbers the manager would otherwise build by hand.\n\nIn every case, the human is still in the loop — approving, editing, sending. The AI does the gathering and the first draft.\n\n## What this means for you\n\n- **If you work at a company that uses Salesforce:** the change will probably show up as a new panel or button inside the tools you already use, not as a separate app to learn. Ask your manager or IT team when it's being rolled out, and what data it's allowed to touch.\n- **If you run a small business or work for yourself:** you can already use Claude or another AI assistant alongside a simpler CRM, even if you don't have the enterprise version. The same idea — let the AI handle the gathering, you handle the judgment — works at any size.\n- **If you're worried about AI \"watching\" your work:** the data boundaries in these deals are set by your employer, not by the AI. It's worth asking what information the AI can see, what it can do, and what's logged. Knowing the rules is the best way to stay comfortable with the tools.\n- **If you're just getting started with AI at work:** the easiest first habit is to ask whatever AI you do have access to summarize one piece of work for you tomorrow — a meeting, an email thread, a customer note. That's the same skill this partnership is trying to scale.\n\n## Wrap-up\n\nThe headline is \"two big companies signed a deal,\" but the actual story is smaller and closer to your desk: AI is moving from a separate website you visit into the software you already work in, and starting to do the gathering and drafting that used to eat your afternoon. You don't need to do anything today. But if you want a head start, pick one task tomorrow and let your AI assistant take the first pass at it — then you polish what it gives back.",
+  "original_title": "Salesforce and Anthropic Announce Claudeforce: The #1 AI Meets the #1 AI CRM"
+}

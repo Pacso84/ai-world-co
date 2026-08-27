@@ -1,0 +1,63 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "how-to-find-lost-files-in-onedrive-and-clean-up-a-messy-down",
+    "company": "Microsoft",
+    "tool": "Copilot",
+    "icon": "🗂️",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-08-27T04:49:20.496Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.01014137,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-08-27T04:49:31.632Z",
+    "slug": "how-to-find-lost-files-in-onedrive-and-tidy-your-downloads-folder-with",
+    "auto_check": {
+      "passed": false,
+      "issues": [
+        "UI_CLAIMS_UNSOURCED: 3 konkrét képernyő-feliratot állít tényként forrás nélkül (\"file explorer\", \"downloads\", \"copilot\"). Vagy nézd meg a hivatalos oldalon, vagy írd hedge-elve (\"if you don't see…\")."
+      ],
+      "wordCount": 1451
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured beginner guide with clear steps, good fallbacks where UI varies, explicit safety checks, and an honest note that Copilot cannot see local files. The What/You sections are strong and the tone is encouraging without being patronizing.",
+      "_aiCost": 0.00163175,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "image_v": 2,
+    "image_at": "2026-08-27T04:50:44.890Z",
+    "seo": {
+      "meta_description": "Use Copilot in OneDrive to find missing files by describing what you remember, then clear old Downloads clutter in one simple guided session.",
+      "keywords": [
+        "how to find lost OneDrive files",
+        "Copilot OneDrive file search",
+        "OneDrive AI search",
+        "clean up Downloads folder",
+        "Microsoft 365 Copilot",
+        "find missing files OneDrive",
+        "OneDrive Downloads cleanup"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add the Microsoft 365 Copilot paid plan requirement early in the article to manage reader expectations",
+        "Include specific examples of natural language searches like 'that tax form from March' to show real value",
+        "Consider adding a section on what Copilot can't do to build trust with readers"
+      ],
+      "optimised_at": "2026-08-27T04:52:24.255Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"How to Find Lost Files in OneDrive and Tidy Your Downloads Folder with Copilot\"\nsubtitle: \"Describe what you remember, let Copilot do the hunting, then sweep old clutter from your folders in one guided pass.\"\ncategory: \"guide\"\naudience: \"both\"\ncompany: \"Microsoft\"\ntool: \"Copilot\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"productivity\", \"copilot\", \"onedrive\"]\n---\n\n# How to Find Lost Files in OneDrive and Tidy Your Downloads Folder with Copilot\n\n> **In short:** Copilot inside OneDrive can search your cloud files using plain-English descriptions like \"that tax form from March\", and it can also help you spot which old Downloads to delete. It suggests — you confirm and move things yourself. Some advanced features need a paid Microsoft 365 Copilot plan.\n\nEveryone has that moment: *\"I know I saved it somewhere, but where?\"* This guide shows you how to describe a missing file in everyday words and let Copilot do the hunting, then use the same helper to spot the old junk clogging up your Downloads folder. You don't need to remember exact filenames, and you don't need any technical skill — just a clear description and a few quiet minutes.\n\n## Before you start\n- A **Microsoft account** (a free Outlook or Hotmail address works; a paid Microsoft 365 subscription unlocks more Copilot features).\n- A web browser on a computer — phone browsers also work, but a bigger screen makes file lists easier to read.\n- Files already saved to **OneDrive**, plus a **Downloads** folder that's gotten out of hand.\n- About **10 minutes** total.\n\n## Step 1 — Open OneDrive on the web and find Copilot\nGo to OneDrive on the web and sign in with your Microsoft account. Once your files load, look for a **Copilot button** — it's usually at the top of the page or pinned to the right side. If you don't see it, look in the top-right corner for a sparkle-style ✨ icon, or check inside the **\"New\"** menu. Click it to open the Copilot side panel. If nothing appears, try a different browser or check whether your Microsoft 365 plan includes Copilot — basic free accounts may not see it yet.\n💬 Example: just open the panel for now; you'll type your first question in Step 2.\nYou'll know it worked when a chat-style panel opens with a text box at the bottom.\n\n## Step 2 — Describe the file you want to find\nIn the Copilot text box, type a short description of the file in plain words — pretend you're describing it to a friend who has never seen it. Mention the type of document, the topic, roughly when you made it, and any words you remember from the title. Copilot searches your OneDrive by file name, content, and recent activity, so the more useful detail you give, the better the match. If the first try returns nothing, add one more clue and try again — don't worry about being perfect on the first pass.\n💬 Example: \"Find me the tax summary I saved in March — a PDF with '2024' in the name that talked about home office deductions.\"\nYou'll know it worked when Copilot responds with a list of file names and links, or asks a clarifying question.\n\n## Step 3 — Review the matches and open the right one\nLook through the files Copilot returned. Each entry usually shows the file name, a small icon for the type (Word, PDF, image), and when you last opened it. Hover over a result to see a longer preview, or just click it to open in a new tab — opening a file doesn't move or delete it, so it's safe. If none of the matches feel right at first, open the most likely one anyway and skim the first page; the file you want often hides behind a name you don't quite remember.\n💬 Example: if Copilot shows three PDFs, open the one dated most recent March and check the first page for your name or \"home office\".\nYou'll know it worked when the document you were hunting opens in front of you, and you can finally stop digging through mystery folders.\n\n## Step 4 — Switch over and describe your messy Downloads folder\nOpen a new browser tab and go to your computer's file manager — on Windows, click **File Explorer** and open **Downloads**; on a Mac, open **Finder** and click **Downloads** in the sidebar. Don't try to scroll through it yet — instead, take a quick mental snapshot: how many files, roughly how old, and what types (PDFs, installers, photos, screenshots). Come back to the Copilot panel in OneDrive and write a short message explaining the situation. Copilot won't see the actual files in your local Downloads folder, but it can suggest a smart way to sort and decide what matters.\n💬 Example: \"I have about 300 files in my Downloads folder, mostly old PDFs and installers from the last two years. Help me sort them into keep-and-delete piles.\"\nYou'll know it worked when Copilot gives you a short, sensible plan you can actually follow — usually a list of file types worth keeping and types that are usually safe to remove.\n\n## Step 5 — Ask Copilot to help you decide what to delete\nNow narrow the question. Tell Copilot what kinds of files worry you most, and ask which ones are usually safe to trash. Be honest about anything you want to keep — old tax forms, scanned ID photos, work drafts — and Copilot will tell you to keep those. Common safe-to-delete categories include old software installers (`.exe` and `.dmg` files), duplicate photos, and outdated document drafts. Ask Copilot to write a simple **keep / probably delete** checklist you can follow on your own. It will return a short, plain list — copy it into a notes app if that helps you stay focused.\n💬 Example: \"Make me a keep-or-delete checklist for a Downloads folder full of old installers, PDF receipts, and photo duplicates from 2023 and 2024.\"\nYou'll know it worked when you have a written list you can use while you work through the folder, without second-guessing each file.\n\n## Step 6 — Take the cleanup actions yourself\nGo back to your Downloads folder and start working through the checklist Copilot made. **You** do the deleting — Copilot does not have permission to remove files on your behalf, and that is by design, so nothing gets deleted by accident. Work in small batches: sort by date modified, trash anything older than a year that matches the \"probably delete\" list, and pause to look closely at anything you're unsure about. If you accidentally delete the wrong file, check your computer's **Recycle Bin** (Windows) or **Trash** (Mac) — it's usually recoverable for a while.\n💬 Example: sort by date, select all files older than twelve months that are installers or duplicate photos, and move them to the Trash in one go.\nYou'll know it worked when your Downloads folder looks noticeably lighter, and you can find what you actually need without scrolling forever.\n\n## Common mistakes\n- **Asking Copilot to delete files for you.** It can't — and giving it permission won't work. It only suggests; you take the action. Plan to spend a few minutes yourself.\n- **Being too vague in your description.** \"That document I made last year\" gives Copilot nothing to search. Add the type, topic, time window, and any word you remember from the title.\n- **Forgetting that local Downloads and OneDrive are different.** Copilot inside OneDrive searches the cloud; your local Downloads folder lives on your computer. You describe the mess; you do the cleanup on the device itself.\n\n## What this means for you\n- **In everyday life:** the next time you can't find a bill, receipt, or form, you can describe it in your own words instead of guessing filenames — and stop digging through five folders of mystery PDFs.\n- **For your business or work:** a tidy Downloads folder and a OneDrive that actually responds to plain-language questions removes the small \"where is that file?\" interruptions that quietly eat into every week.\n- **If you're just getting started:** begin with one file you know you saved somewhere — your last resume, a recent receipt, a school assignment. Search for that first to get a feel for how Copilot reads your description.\n\n## Try it now\nOpen OneDrive on the web, click into the Copilot panel, and ask: *\"Find a PDF I saved in the last month that has my name in it.\"* Whatever comes back will show you exactly how Copilot reads your words — and you'll have one real file in hand in under two minutes.",
+  "original_title": "How to find lost files in OneDrive and clean up a messy Downloads folder with Copilot"
+}

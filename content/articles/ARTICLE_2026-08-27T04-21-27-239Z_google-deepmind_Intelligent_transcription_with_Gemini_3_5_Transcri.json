@@ -1,0 +1,67 @@
+{
+  "_meta": {
+    "written_at": "2026-08-27T04:30:46.157Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.01014198,
+    "original_draft": "2026-08-27T04-21-27-239Z_google-deepmind_Intelligent_transcription_with_Gemini_3_5_Transcri.json",
+    "source_id": "google-deepmind",
+    "source_name": "Google DeepMind (hivatalos)",
+    "source_link": "https://deepmind.google/blog/intelligent-transcription-with-gemini-3-5-transcribe/",
+    "source_links": [
+      "https://deepmind.google/blog/intelligent-transcription-with-gemini-3-5-transcribe/"
+    ],
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "published_at": "2026-08-27T04:31:16.402Z",
+    "slug": "ai-transcription-explained-5-everyday-moments-it-makes-easier",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 682
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [
+        "Source tool 'Gemini 3.5 Transcribe' not named despite article being based on Google DeepMind's announcement about it",
+        "Could add brief attribution to Google DeepMind as source in intro or hook"
+      ],
+      "verdict": "Solid explainer with clear structure, friendly tone, and good use of concrete examples. The privacy note is responsible without being alarmist. Minor issue: the specific tool (Gemini 3.5 Transcribe) should be named directly to give proper source credit and help readers who want to try it.",
+      "_aiCost": 0.0018852,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-08-27T04:32:58.188Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is a general explainer about AI transcription technology rather than introducing one specific named feature or tool that users can go use",
+    "image_v": 2,
+    "image_at": "2026-08-27T04:49:39.857Z",
+    "seo": {
+      "meta_description": "Discover how AI transcription simplifies daily tasks — from meeting notes to interviews. Learn 5 real ways speech-to-text saves time.",
+      "keywords": [
+        "AI transcription",
+        "speech to text AI",
+        "how does AI transcription work",
+        "AI transcription app",
+        "voice to text AI",
+        "best AI transcription tools",
+        "free AI transcription",
+        "AI transcription for meetings"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more long-tail keywords in body (e.g., 'transcribe interview', 'voice notes app') to capture specific search intents",
+        "Include the word 'explained' in the H1 or early in the article to match informational search intent",
+        "Consider adding FAQ schema markup for 'what is AI transcription' question to improve SERP visibility"
+      ],
+      "optimised_at": "2026-08-27T04:51:14.193Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"AI Transcription Explained: 5 Everyday Moments It Makes Easier\"\nsubtitle: \"Smart speech-to-text is more than typing what you said — here's where it actually saves time\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 3\ntags: [\"transcription\", \"speech-to-text\", \"gemini\", \"productivity\", \"ai-tools\"]\n---\n\n# AI Transcription Explained: 5 Everyday Moments It Makes Easier\n\n> **In short:** AI transcription now turns spoken audio into accurate, searchable text in minutes. The new generation — including Gemini-powered options — handles accents, multiple speakers, and noisy rooms better than older tools, so a recorded meeting or lecture becomes a quick skim.\n\nYou probably know the feeling: talking is much faster than typing, but written notes are much easier to search. That gap is exactly where AI transcription lives — and the technology has gotten a lot smarter over the past year.\n\n## What \"intelligent transcription\" actually means\n\nOld speech-to-text tools just turned sound into words. The new generation does three extra things well:\n\n- It figures out **who is speaking** (often called \"speaker labels\"), so a meeting transcript reads like a real conversation instead of one wall of text.\n- It adds **punctuation and paragraph breaks** automatically, so you don't get a single sentence that runs for 400 words.\n- It understands **context** — it knows that \"their,\" \"there,\" and \"they're\" are different words, even when they sound identical.\n\nAdd multilingual support (English, Spanish, Mandarin, dozens more), and the practical gap between \"I said it\" and \"I have a written record of it\" nearly disappears.\n\n## 5 everyday moments where it helps\n\n1. **Back-to-back meetings at work.** Record (with permission), upload the audio later, and you get a written summary you can actually search when someone asks \"what did we decide about X?\"\n2. **Lectures and study sessions.** A one-hour class becomes searchable notes — you can find the exact minute a concept was explained without re-watching the whole thing.\n3. **Voice memos that finally become useful.** The quick idea you mumbled into your phone on a walk turns into a sentence you can paste into an email or a to-do list.\n4. **Interviews** for journalists, researchers, students, or podcasters — no more frantic typing while someone is talking, and quotes are easy to pull out later.\n5. **Accessibility.** People who are deaf or hard-of-hearing, or anyone who processes information better by reading, can follow along with conversations and videos in real time.\n\n## Where it still stumbles\n\nNo transcription tool is perfect, and knowing the weak spots saves frustration:\n\n- **Overlapping voices.** Two people talking at once usually become one garbled line.\n- **Heavy background noise.** Cafés, traffic, and wind still cause errors.\n- **Specialized vocabulary.** Drug names, legal terms, or niche company products may be misspelled.\n- **Very fast talkers with unusual accents** are still harder than clear, paced speech.\n\nMost tools let you click on any word in the transcript to jump straight to that moment in the audio — that click-to-jump is the killer feature for verification.\n\n## What this means for you\n\n- **If you work in an office:** the biggest win is meetings. Even if you take notes during the call, a transcript lets you double-check what was actually said before you act on it.\n- **If you're a student:** lectures become searchable. Search for \"second law of thermodynamics\" instead of scrubbing through a 90-minute recording.\n- **If you're just curious:** try it on something low-stakes first — your own voice memos, a podcast you liked, a family story you recorded. You'll quickly see where it shines.\n- **A word on privacy:** anything you upload is leaving your device. Don't transcribe confidential work calls or personal medical conversations through a tool you haven't checked the privacy policy on.\n\n## Wrap-up\n\nIntelligent transcription is one of those quietly useful AI features — not flashy, but it can save an hour a week if your day involves talking to people. Pick one recorded conversation you already have, run it through a transcription tool, and see how it does. That's the fastest way to figure out whether it earns a permanent spot in your workflow.",
+  "original_title": "Intelligent transcription with Gemini 3.5 Transcribe"
+}
