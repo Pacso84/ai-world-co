@@ -1,7 +1,7 @@
 {
   "_meta": {
     "note": "Forrás-bizonyítvány: frissesség + termés + megbízhatóság forrásonként. Gyártja: core/source-report-card.js",
-    "updated": "2026-08-27T16:28:14.822Z",
+    "updated": "2026-08-27T18:50:11.488Z",
     "thresholds": {
       "DEAD_FEED_DAYS": 365,
       "MIN_SAMPLE": 4,
@@ -13,9 +13,9 @@
     "openai-blog": {
       "name": "OpenAI Blog (hivatalos)",
       "feedAgeDays": 0,
-      "published30d": 35,
+      "published30d": 36,
       "truthBlocks": 0,
-      "totalAttempts": 68,
+      "totalAttempts": 69,
       "alreadyDisabled": false,
       "lastArticle": "2026-08-27",
       "verdict": "ok",
@@ -89,7 +89,7 @@
     },
     "google-workspace": {
       "name": "Google Workspace Updates (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 0,
       "published30d": 14,
       "truthBlocks": 1,
       "totalAttempts": 37,
@@ -596,17 +596,17 @@
     "picsart": {
       "name": "PicsArt Blog (hivatalos)",
       "feedAgeDays": 0,
-      "published30d": 32,
+      "published30d": 33,
       "truthBlocks": 0,
-      "totalAttempts": 32,
+      "totalAttempts": 33,
       "alreadyDisabled": false,
-      "lastArticle": "2026-08-26",
+      "lastArticle": "2026-08-27",
       "verdict": "ok",
       "reason": ""
     },
     "zapier-blog": {
       "name": "Zapier Blog (hivatalos)",
-      "feedAgeDays": 0,
+      "feedAgeDays": 1,
       "published30d": 5,
       "truthBlocks": 0,
       "totalAttempts": 5,
