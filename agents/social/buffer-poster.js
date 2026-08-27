@@ -177,6 +177,10 @@ async function listChannels() {
 }
 
 // A Buffer `service` neve → a mi csatorna-kulcsunk a social-text.js-ben.
+// A Reel-csempe pillanata (ms). A horog-kártya a videó elején van; az 1.
+// másodperc biztosan benne esik, a 0 viszont a legelső képkockára ülne.
+const REEL_CSEMPE_MS = 1000;
+
 const SERVICE_MAP = { twitter: 'x', x: 'x', threads: 'threads', instagram: 'instagram' };
 
 // ---------- 3. A SOR (ugyanaz a rangsor, mint a Facebooknál) ----------
@@ -311,17 +315,15 @@ async function maiReel() {
       const h = await fetch(video, { method: 'HEAD', signal: AbortSignal.timeout(15000) }).catch(() => null);
       if (!h || !h.ok) { console.log('   ⚠️ a mai Reel nincs kint — marad az állóképes poszt'); return null; }
 
-      // ⚠️ A BORÍTÓKÉPET IS ELLENŐRIZNI KELL, ÉS EZ ÉLESBEN MEGFOGOTT
-      // (2026-08-25): a Reel-sor a LEGRÉGEBBI útmutatót választja, a
-      // megosztás-képek (assets/fb, assets/share) viszont csak a friss
-      // cikkekhez készülnek — a júniusi útmutatóra mindkettő 404 volt.
-      // Egy 404-es `thumbnailUrl` átadása rosszabb, mint a hiánya: a
-      // Buffer/Instagram enélkül a videó első kockájából csinál csempét.
-      let kep = null;
-      for (const j of [imageUrl(m.slug), `${SITE}/assets/images/${m.slug}.jpg`]) {
-        const t = await fetch(j, { method: 'HEAD', signal: AbortSignal.timeout(10000) }).catch(() => null);
-        if (t && t.ok) { kep = j; break; }
-      }
+      // ⚠️ CSEMPE-KERESÉS ITT NINCS, ÉS EZ SZÁNDÉKOS (2026-08-27).
+      // Korábban két HEAD-kéréssel kerestünk borítóképet a `thumbnailUrl`-hez.
+      // Az első valódi Instagram-Reel próbálkozás megmutatta, hogy a Buffer a
+      // mezőt EGYÁLTALÁN nem fogadja el:
+      //     "Video thumbnailUrl is not supported: social networks do not
+      //      accept custom video thumbnail images…"
+      // A csempét a videó egy PILLANATÁVAL választjuk (metadata.thumbnailOffset,
+      // lásd createPost). A kép-keresés tehát két fölösleges hálózati kérés volt
+      // egy olyan mezőhöz, amit sosem lehetett elküldeni.
 
       // A CIKK SAJÁT KÖZÖSSÉGI SZÖVEGE. Enélkül a videó egy idegen cikk
       // szövegével menne ki — a próbafutás pontosan ezt mutatta meg.
@@ -334,13 +336,13 @@ async function maiReel() {
       // miatt szólt. Ilyenkor a rendes sor viszi tovább a napot.
       if (post.posted_instagram) { console.log('   ⏭️  a mai Reel cikkét már posztoltuk Instagramra — marad a sor'); return null; }
 
-      return { slug: m.slug, video, kep, item: { path: sp, post } };
+      return { slug: m.slug, video, item: { path: sp, post } };
     }
     return null;
   } catch { return null; }
 }
 
-async function createPost({ channelId, text, image, video, thumbnail, channelKey }) {
+async function createPost({ channelId, text, image, video, channelKey }) {
   const mutation = `mutation ($input: CreatePostInput!) {
     createPost(input: $input) {
       __typename
@@ -357,10 +359,24 @@ async function createPost({ channelId, text, image, video, thumbnail, channelKey
   // A séma élesben lekérdezve (2026-08-25):
   //     AssetInput      = { document | image | video }
   //     VideoAssetInput = { url, thumbnailUrl, metadata }
-  // Videó esetén a borítókép NEM elhagyható jószág: az Instagram ebből
-  // rakja ki a Reel csempéjét a profilrácsban.
+  //
+  // ⚠️ A `thumbnailUrl` LÉTEZIK A SÉMÁBAN, DE AZ API ELUTASÍTJA (2026-08-27,
+  // az első valódi Instagram-Reel próbálkozáson derült ki):
+  //     InvalidInputError: Video thumbnailUrl is not supported: social
+  //     networks do not accept custom video thumbnail images… Remove
+  //     thumbnailUrl… To pick the video thumbnail, set
+  //     metadata.thumbnailOffset on the video (milliseconds).
+  //
+  // KLASSZIKUS CSAPDA: a mező szerepel a sémában, tehát TÁMOGATOTTNAK
+  // LÁTSZIK — az elutasítás csak a beküldés pillanatában jön. A séma
+  // megléte nem bizonyítja, hogy a hálózat el is fogadja.
+  //
+  // Helyette a videó EGY PILLANATÁT választjuk ki. 1000 ms = a HOROG-kártya
+  // (a cikk címe + „In N steps"), ami pontosan az, amit a profilrácsban
+  // látni akarunk. A kártya a felolvasás hosszáig tart, tipikusan 3-5 mp,
+  // tehát az 1. másodperc bőven benne van.
   const assets = video
-    ? [{ video: { url: video, ...(thumbnail ? { thumbnailUrl: thumbnail } : {}) } }]
+    ? [{ video: { url: video, metadata: { thumbnailOffset: REEL_CSEMPE_MS } } }]
     : image ? [{ image: { url: image } }] : [];
 
   const input = {
@@ -561,7 +577,7 @@ async function main() {
         console.log(`   (próba) ${slug.slice(0, 44)}  [${alap.weight}/${cfg.limit}${alap.truncated ? ', csonkítva' : ''}]${vanKep ? '' : ' ⚠️ kép nélkül'}`);
         if (reel) {
           console.log(`      🎬 REEL-formátum: ${reel.video}`);
-          console.log(`         csempe: ${reel.kep || '(nincs — a videó első kockája lesz)'}`);
+          console.log(`         csempe: a videó ${REEL_CSEMPE_MS} ms-nál lévő képkockája (a horog-kártya)`);
         } else if (ch.key === 'instagram') {
           console.log('      🖼️  állóképes poszt (ma nincs legyártott Reel)');
         }
@@ -569,7 +585,7 @@ async function main() {
       }
 
       const r = reel
-        ? await createPost({ channelId: ch.id, channelKey: ch.key, text: szoveg, video: reel.video, thumbnail: reel.kep })
+        ? await createPost({ channelId: ch.id, channelKey: ch.key, text: szoveg, video: reel.video })
         : await createPost({ channelId: ch.id, channelKey: ch.key, text: szoveg, image: vanKep ? kep : null });
       if (reel) console.log(`   🎬 Reel-formátum: ${reel.slug.slice(0, 44)}`);
       keres++;
