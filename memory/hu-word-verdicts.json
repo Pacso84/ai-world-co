@@ -46,6 +46,7 @@
     "ajándékcsomagok",
     "ajándékcsomagokat",
     "ajánlólinkek",
+    "akcenteket",
     "akciótervet",
     "akkumulátorok",
     "akkumulátorokat",
@@ -589,6 +590,7 @@
     "erőfeszítéscsökkenés",
     "erőforrásigényes",
     "escalálni",
+    "eseményszórólapokat",
     "essztervázlatokhoz",
     "estar",
     "estédat",
@@ -1263,10 +1265,12 @@
     "motorokat",
     "motorokra",
     "mozgáspromptot",
+    "munkadataidhoz",
     "munkahelyidre",
     "munkahelyit",
     "munkameetingen",
     "munkaviszonyot",
+    "myactivity",
     "máre",
     "márkaanyagoktól",
     "márkabrief",
@@ -1434,6 +1438,7 @@
     "országonként",
     "ossze",
     "osszefoglalót",
+    "osztálytermben",
     "osztálytevékenységet",
     "ottalvások",
     "outro",
@@ -1463,6 +1468,7 @@
     "pilotot",
     "pilotprojekttel",
     "pináta",
+    "pipeline-ból",
     "pitchekhez",
     "pitchekre",
     "pitchhez",
@@ -1658,6 +1664,7 @@
     "sandboxban",
     "sarah",
     "sarokában",
+    "save-the-date-et",
     "scrapbookot",
     "screenshotolni",
     "scriptek",
@@ -1741,6 +1748,7 @@
     "storyboardokat",
     "storyboardokhoz",
     "storyboardot",
+    "storykhoz",
     "stratégikusnak",
     "streamelheted",
     "streamelheti",
@@ -1923,6 +1931,7 @@
     "terméktulajdonságokat",
     "terven",
     "tervet",
+    "tervédbe",
     "testens",
     "testreszabhatják",
     "testreszabhatod",
@@ -1956,10 +1965,13 @@
     "tulajdonságokat",
     "tulajdonságokkal",
     "turistalátványosságokat",
+    "tutori",
     "tutorialban",
     "tutorialból",
     "tutorialokat",
     "tutorialt",
+    "tutornak",
+    "tutorodként",
     "tutorokat",
     "tutorrá",
     "tutort",
@@ -3248,6 +3260,11 @@
       "correct": "segédséfjeid",
       "at": "2026-08-26",
       "mondattal": true
+    },
+    "kevesebbben": {
+      "correct": "kevesebben",
+      "at": "2026-08-27",
+      "mondattal": true
     }
   },
   "review": {
@@ -4132,11 +4149,51 @@
       "correct": "válasz mindenkinek",
       "at": "2026-08-26",
       "mondattal": true
+    },
+    "szövegfall": {
+      "correct": "szövegfal",
+      "at": "2026-08-27",
+      "mondattal": true
+    },
+    "supportes": {
+      "correct": "ügyfélszolgálati",
+      "at": "2026-08-27",
+      "mondattal": true
+    },
+    "hetodból": {
+      "correct": "hetedszóból",
+      "at": "2026-08-27",
+      "mondattal": true
+    },
+    "boardon": {
+      "correct": "táblán",
+      "at": "2026-08-27",
+      "mondattal": true
+    },
+    "boardodhoz": {
+      "correct": "tábládhoz",
+      "at": "2026-08-27",
+      "mondattal": true
+    },
+    "boardodon": {
+      "correct": "tábládon",
+      "at": "2026-08-27",
+      "mondattal": true
+    },
+    "boardokat": {
+      "correct": "táblákat",
+      "at": "2026-08-27",
+      "mondattal": true
+    },
+    "duplikát": {
+      "correct": "duplikátumokat",
+      "at": "2026-08-27",
+      "mondattal": true
     }
   },
   "scan": {
-    "at": "2026-08-26",
-    "files": 807,
-    "candidates": 3
+    "at": "2026-08-27",
+    "files": 816,
+    "candidates": 22
   }
 }
