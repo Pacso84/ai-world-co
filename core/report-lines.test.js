@@ -280,4 +280,47 @@ t('🔁 hibás bemenetre nem borul', () => {
   for (const x of [null, undefined, 'hopp', 42]) assert.doesNotThrow(() => repeatLine(x));
 });
 
+// ── 👥 LÁTOGATÓSZÁM (2026-08-28) ────────────────────────────────────
+// A user panasza: „nem releváns, amit küld". A riportból pont a legfontosabb
+// szám hiányzott, miközben az adat hónapok óta megvolt.
+const { visitorLine, napiBelepok } = await import('./report-lines.js');
+
+const NAPOK = {
+  '2026-08-24': [{ path: '/', visits: 30 }, { path: '/a', visits: 18 }],
+  '2026-08-25': [{ path: '/', visits: 49 }],
+  '2026-08-26': [{ path: '/', visits: 40 }, { path: '/b', visits: 27 }]
+};
+
+t('a látogatószám a VALÓDI napi összeget adja', () => {
+  // A --report ugyanígy számol: minden útvonal visits-e összeadva.
+  assert.equal(napiBelepok(NAPOK['2026-08-26']), 67);
+  assert.equal(napiBelepok(NAPOK['2026-08-24']), 48);
+});
+
+t('„Tegnap", ha tényleg tegnapi az adat', () => {
+  const sor = visitorLine(NAPOK, '2026-08-27');
+  assert.ok(sor.startsWith('👥 Tegnap: 67 látogató'), sor);
+});
+
+t('⚠️ DÁTUMOT ír, ha az adat RÉGEBBI — nem hazudik „tegnap"-ot', () => {
+  // A Cloudflare-adat késhet, a CI is csúszhat. Élesben 2026-08-28-án a
+  // napló legfrissebb napja tényleg 2026-08-26 volt.
+  const sor = visitorLine(NAPOK, '2026-08-28');
+  assert.ok(sor.includes('2026-08-26'), sor);
+  assert.ok(!sor.includes('Tegnap'), 'régi adatra „Tegnap"-ot írt: ' + sor);
+});
+
+t('az átlag csak 3 naptól jelenik meg', () => {
+  assert.ok(visitorLine(NAPOK, '2026-08-27').includes('átlag'));
+  assert.ok(!visitorLine({ '2026-08-26': [{ visits: 5 }] }, '2026-08-27').includes('átlag'));
+});
+
+t('hiányzó vagy rossz adatra CSENDBEN kimarad', () => {
+  for (const rossz of [null, undefined, {}, 'hopp', 42, { nem_datum: [] }]) {
+    assert.equal(visitorLine(rossz, '2026-08-28'), '', String(rossz));
+  }
+  assert.equal(napiBelepok(null), 0);
+  assert.equal(napiBelepok([{ visits: 'x' }, {}]), 0);
+});
+
 console.log('\n✅ report-lines.test: mind a ' + pass + ' eset rendben');

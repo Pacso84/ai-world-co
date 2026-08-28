@@ -211,3 +211,49 @@ export function repeatLine(stats) {
   const tobb = lista.length > 3 ? `\n   …és még ${lista.length - 3}` : '';
   return `🔁 Ismétlés-őr: ${db} cikk NEM jelent meg, mert már írtunk róla\n${reszek.join('\n')}${tobb}`;
 }
+
+// ===================================================================
+// 👥 LÁTOGATÓSZÁM (2026-08-28, user-döntés)
+// ===================================================================
+// A user panasza: „kapok napi jelentést, de amit küld, az nem releváns."
+// A riport 14 sorából 7 egy fejlesztőnek szólt — és közben A LEGFONTOSABB
+// SZÁM HIÁNYZOTT BELŐLE: hány látogató volt. Az adat hónapok óta megvan
+// (memory/traffic-log.json), csak sosem került a jelentésbe.
+//
+// ⚠️ A DÁTUMOT NEM FELTÉTELEZZÜK. A Cloudflare-adat késhet, a CI is
+// csúszhat — a naplóban lévő LEGFRISSEBB napot mutatjuk, és ha az nem
+// tegnap volt, kiírjuk a dátumot. Egy „Tegnap: 67" felirat egy három napos
+// adaton rosszabb, mint a semmi.
+// ===================================================================
+
+/** Egy nap belépőinek száma (a --report is így számol: minden útvonal). */
+export function napiBelepok(rows) {
+  if (!Array.isArray(rows)) return 0;
+  return rows.reduce((s, r) => s + (Number(r?.visits) || 0), 0);
+}
+
+/**
+ * @param {object} days  memory/traffic-log.json → days
+ * @param {string} today YYYY-MM-DD (UTC)
+ * @returns {string} a 👥 sor, vagy '' ha nincs elég adat
+ */
+export function visitorLine(days, today) {
+  if (!days || typeof days !== 'object') return '';
+  const kulcsok = Object.keys(days).filter(k => /^\d{4}-\d{2}-\d{2}$/.test(k)).sort();
+  if (!kulcsok.length) return '';
+
+  const utolso = kulcsok[kulcsok.length - 1];
+  const db = napiBelepok(days[utolso]);
+
+  const tegnap = new Date(Date.parse(today + 'T00:00:00Z') - 86400e3).toISOString().slice(0, 10);
+  const cimke = utolso === tegnap ? 'Tegnap' : utolso;
+
+  // 7 napos átlag — csak ha van mihez viszonyítani (3 nap alatt félrevezető).
+  const utolso7 = kulcsok.slice(-7);
+  let atlag = '';
+  if (utolso7.length >= 3) {
+    const ossz = utolso7.reduce((s, k) => s + napiBelepok(days[k]), 0);
+    atlag = ` (${utolso7.length} napos átlag: ${Math.round(ossz / utolso7.length)})`;
+  }
+  return `👥 ${cimke}: ${db} látogató${atlag}`;
+}

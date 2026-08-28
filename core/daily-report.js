@@ -23,9 +23,10 @@ import { dirname, join } from 'path';
 import { sendMessage } from './telegram.js';
 import { canonicalChip } from './quality-guard.js';
 import { summarizeRuns, describeFailures } from './make-health.js';
-import { describePosts, describeRepeat, describeTranslationGaps, mergeLine, huSpellingLine, repeatLine } from './report-lines.js';
+import { describePosts, describeRepeat, describeTranslationGaps, mergeLine, huSpellingLine, repeatLine, visitorLine } from './report-lines.js';
 import { bodyLooksUntranslated } from './translation-guard.js';
 import { shouldSendReport, sikeresKuldes } from './report-window.js';
+import { szurZajt, csendesSor } from './report-noise.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
@@ -133,10 +134,19 @@ async function openrouterBalance(burnPerDay) {
 // hívja a main()-t — importálni sem lehet, tehát tesztelni sem lehetett.
 // (2026-08-27: aznap egyetlen futás sem fért be a régi 7-15 UTC sávba, és
 // a jelentés némán elmaradt. Lásd a report-window.js fejlécét.)
+/**
+ * A riport állapotfájlja. Két dolgot tart:
+ *   last_sent — melyik napra ment már ki (dedup)
+ *   orszem    — melyik őrszem-sort láttuk utoljára milyennek (zajszűrés)
+ * Hiányzó vagy sérült fájlra ÜRES objektum, nem hiba.
+ */
+function allapotOlvas() {
+  try { return JSON.parse(readFileSync(STATE_PATH, 'utf-8')) || {}; }
+  catch { return {}; }
+}
+
 function guard() {
-  let lastSent = null;
-  try { lastSent = JSON.parse(readFileSync(STATE_PATH, 'utf-8')).last_sent || null; }
-  catch { /* nincs állapot — mehet */ }
+  const lastSent = allapotOlvas().last_sent || null;
 
   const d = shouldSendReport({
     hour: new Date().getUTCHours(),
@@ -319,11 +329,26 @@ async function main() {
   const r = collect();
   const fbDelivered = await deliveredPosts('6452490');
 
+  // A forgalom-napló olvasása SOSEM dönthet el egy riportot: ha nincs adat,
+  // a sor egyszerűen kimarad (a `lines` szűri az üres elemeket).
+  let latogatoSor = '';
+  try {
+    const { loadLog } = await import('./traffic-log.js');
+    latogatoSor = visitorLine(loadLog(), today());
+  } catch { /* marad üres */ }
+
   const lines = [
     `📊 *Napi jelentés — ${today()}*`,
     ``,
     `📰 Új tartalom ma: ${r.news} hír + ${r.guides} útmutató`,
     ...r.titles.map(t => `   • ${t.slice(0, 60)}`),
+    // 👥 A LEGFONTOSABB SZÁM (2026-08-28, user: „amit küld, az nem releváns").
+    // Az adat hónapok óta megvolt a forgalom-naplóban, de sosem került a
+    // jelentésbe — miközben hét sor egy nem létező fejlesztőnek szólt.
+    // Rögtön a tartalom után: „mit csináltunk" → „hányan olvasták".
+    // ⚠️ Szórással, nem üres sztringgel: a tömb 2. eleme egy SZÁNDÉKOS üres
+    // sor (a fejléc alatt), tehát a végén nem lehet csak úgy falsy-t szűrni.
+    ...(latogatoSor ? [latogatoSor] : []),
     describePosts(r.fbPosts, fbDelivered),
     // A NAPI keret is látszik (2026-08-01) — a user maga kérte a korlátot,
     // tehát látnia kell, hol tart benne, ne csak akkor derüljön ki, ha betelt.
@@ -660,7 +685,26 @@ async function main() {
     const repLine = describeRepeat(rep, rep.length, today());
     if (repLine) lines.push(repLine);
   } catch { /* könyv nélkül is megy */ }
-  lines.push(``, `Minden megy magától. ✅`);
+  // ── ZAJSZŰRÉS (2026-08-28, user-döntés: „csak ha VÁLTOZIK") ────────
+  // A user panasza: „kapok napi jelentést, de amit küld, az nem releváns."
+  // A 14 sorból 7 egy nem létező fejlesztőnek szólt, és napról napra
+  // BETŰRE UGYANAZ volt. Innentől az őrszem-sor csak akkor megy ki, ha
+  // változott — a részletes szabályok a core/report-noise.js-ben.
+  //
+  // ⚠️ A 🔇 SOR NEM DÍSZ: enélkül a „nincs változás" és a „elromlott az
+  // őrszem" kívülről egyformán nézne ki. Hét sor helyett egy, de látszik,
+  // hogy az őrszemek lefutottak.
+  const zaj = szurZajt(lines, allapotOlvas().orszem || {});
+  const szurtSorok = zaj.sorok.slice();
+  const csendes = csendesSor(zaj.csendes);
+  if (csendes) szurtSorok.push(csendes);
+  if (zaj.csendes.length) {
+    console.log('🔇 elnémítva ' + zaj.csendes.length + ' változatlan őrszem-sor: '
+      + Object.entries(zaj.indokok).map(([k, v]) => k + '=' + v).join(' · '));
+  }
+  szurtSorok.push(``, `Minden megy magától. ✅`);
+  lines.length = 0;
+  lines.push(...szurtSorok);
 
   // A TELJES riport a CI-naplóba is (2026-07-31, user: "te is olvasd el
   // mindig a telegramot, ne csak a rendszert ellenőrizd"). Eddig csak az
@@ -688,7 +732,10 @@ async function main() {
       ') — a dedup-kulcsot NEM írom be, a következő futás újrapróbálja.');
     return;
   }
-  try { writeFileSync(STATE_PATH, JSON.stringify({ last_sent: today() }, null, 2), 'utf-8'); }
+  // ⚠️ AZ ŐRSZEM-ÁLLAPOT IS CSAK SIKERES KÜLDÉS UTÁN mentődik. Ha a küldés
+  // elbukott, a user nem látta a sorokat — ilyenkor „megjegyezni", hogy már
+  // megmutattuk őket, pont az a néma vesztés lenne, amit tegnap javítottunk.
+  try { writeFileSync(STATE_PATH, JSON.stringify({ last_sent: today(), orszem: zaj.allapot }, null, 2), 'utf-8'); }
   catch (e) {
     // Régen „nem kritikus" volt, mert a szűk sávba amúgy is egy futás fért
     // bele. A tágabb sávval viszont a dedup EGYEDÜL tartja a napi egyet —
