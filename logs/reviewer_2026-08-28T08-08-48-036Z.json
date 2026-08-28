@@ -1,0 +1,54 @@
+{
+  "started_at": "2026-08-28T08:06:50.024Z",
+  "total": 6,
+  "passed": 4,
+  "failed": 2,
+  "auto_check_failed": 1,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.012916038000000001,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-08-27T16-08-08-409Z_google-ai-blog_3_new_ways_to_plan_and_book_travel_in_Search.json",
+      "article": "ARTICLE_2026-08-27T16-08-08-409Z_google-ai-blog_3_new_ways_to_plan_and_book_travel_in_Search.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.001139
+    },
+    {
+      "writer": "WRITER_2026-08-27T16-08-08-409Z_nvidia-blog_GeForce_NOW_Gives_Gamers_More_Ways_to_Play_at_Game.json",
+      "rejected": "REJECTED_2026-08-27T16-08-08-409Z_nvidia-blog_GeForce_NOW_Gives_Gamers_More_Ways_to_Play_at_Game.json",
+      "decision": "FAIL",
+      "score": 8,
+      "cost_usd": 0.002184
+    },
+    {
+      "writer": "WRITER_2026-08-27T16-08-08-409Z_openai-blog_Expanding_OpenAI_s_presence_in_Brazil.json",
+      "article": "ARTICLE_2026-08-27T16-08-08-409Z_openai-blog_Expanding_OpenAI_s_presence_in_Brazil.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.00108215
+    },
+    {
+      "writer": "WRITER_2026-08-27T16-08-08-410Z_salesforce_New_Study_of_2_025_Agentic_AI_Leaders__First_To_La.json",
+      "article": "ARTICLE_2026-08-27T16-08-08-410Z_salesforce_New_Study_of_2_025_Agentic_AI_Leaders__First_To_La.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.0033216
+    },
+    {
+      "writer": "WRITER_2026-08-27T16-08-30-207Z_d-id-news_What_Are_AI_Digital_Humans__How_Conversational_AI_.json",
+      "decision": "FAIL",
+      "reason": "auto-check critical",
+      "skipped_ai": true
+    },
+    {
+      "writer": "WRITER_2026-08-28T07-47-11-079Z_midjourney-updates_Edit_Model_for_V8.json",
+      "article": "ARTICLE_2026-08-28T07-47-11-079Z_midjourney-updates_Edit_Model_for_V8.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0014826
+    }
+  ],
+  "finished_at": "2026-08-28T08:08:48.036Z",
+  "duration_seconds": 118.012
+}

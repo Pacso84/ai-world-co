@@ -1,0 +1,61 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "use-gemini-on-your-phone-to-pull-editable-text-from-any-phot",
+    "company": "Google",
+    "tool": "Gemini",
+    "icon": "📸",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-08-28T08:20:33.562Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00934068,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-08-28T08:22:01.049Z",
+    "slug": "use-gemini-on-your-phone-to-pull-editable-text-from-any-photo-or-scree",
+    "auto_check": {
+      "passed": false,
+      "issues": [
+        "UI_CLAIMS_UNSOURCED: 3 konkrét képernyő-feliratot állít tényként forrás nélkül (\"gemini app icon\", \"camera icon\", \"share icon\"). Vagy nézd meg a hivatalos oldalon, vagy írd hedge-elve (\"if you don't see…\")."
+      ],
+      "wordCount": 1495
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured guide with clear step-by-step instructions, good fallbacks for UI variations, explained technical terms (multimodal), and practical real-world examples. The 'What this means for you' section and wrap-up are solid. No cliches, US English throughout, and respectful tone.",
+      "_aiCost": 0.00151865,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "image_v": 2,
+    "image_at": "2026-08-28T08:23:16.715Z",
+    "seo": {
+      "meta_description": "Learn how to use Google's Gemini app to pull editable text from any photo or screenshot on your phone. Quick step-by-step guide.",
+      "keywords": [
+        "extract text from photo on phone",
+        "copy text from screenshot",
+        "Gemini image to text",
+        "how to extract text from image",
+        "Google Gemini OCR",
+        "text recognition Android iPhone"
+      ],
+      "seo_score": 9,
+      "suggestions": [
+        "Consider adding 'how to' in the title: 'How to Use Gemini to Extract Text from Any Photo'"
+      ],
+      "slug": "use-gemini-to-extract-text-from-photo",
+      "optimised_at": "2026-08-28T08:25:19.458Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Use Gemini on Your Phone to Pull Editable Text from Any Photo or Screenshot\"\nsubtitle: \"Point your phone at a sign, page, or screenshot and copy the words out in under a minute — no typing required\"\ncategory: \"guide\"\naudience: \"personal\"\ncompany: \"Google\"\ntool: \"Gemini\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"gemini\", \"productivity\", \"getting-started\"]\n---\n\n# Use Gemini on Your Phone to Pull Editable Text from Any Photo or Screenshot\n\n> **In short:** Open the free Gemini app, snap or attach a photo of a sign, page, or screenshot, and ask Gemini to lift the words out as copyable text. You'll need a Google account, the app on Android or iOS, and about three minutes.\n\nYou're standing in a parking lot staring at a faded sign with the rates, or you saved a screenshot of a recipe and now you want the ingredients in a real list. Gemini (Google's AI assistant app) can read the image for you and hand back the text — searchable, editable, ready to paste anywhere. This guide shows the exact taps on both Android and iPhone.\n\n## Before you start\n- A Google account (the same one you might use for Gmail or YouTube). Sign-up is free if you do not have one.\n- The **Gemini** app installed on your phone. Free on Android (via the Play Store) and iPhone (via the App Store). On many Android phones Gemini replaces the Google Assistant — if so, you already have it.\n- A photo ready: either saved in your gallery (a screenshot, a receipt) or something you can point your camera at (a sign, a page in a book).\n- Roughly **3 minutes** for the first run; faster once you know the flow.\n- Honest note: on the free plan, Gemini handles a generous number of image chats per day. If you hit a limit, it will tell you, and the same feature is included in the paid plan if you ever upgrade.\n\n## Step 1 — Open Gemini and start a fresh chat\nTap the **Gemini app icon** on your home screen — a four-pointed star with pink, purple, and blue edges. The first screen is a chat page with a text box at the bottom and a few suggested prompts above it. If a previous conversation is still open, look for a small **\"+\"** or **pencil icon** near the text box and tap it to start fresh. If you can't see those, just force-quit the app and reopen it — a new chat loads automatically.\n\n💬 Example: nothing to type yet — this step is just opening the app.\n\nYou'll know it worked when you see a blank chat with a blinking cursor in the text box at the bottom of the screen.\n\n## Step 2 — Add your photo (camera or gallery)\nTap the **camera icon** 🎥 (or a small **picture/landscape icon** 🖼 — different phones place it slightly differently). A small menu appears offering **\"Camera\"** and **\"Photos\"** or **\"Gallery\"**. Pick **Camera** if you're pointing at a live sign or page; pick **Photos** if the image is already in your phone (a screenshot, a downloaded PDF page, a screenshot of a recipe). Allow camera and photo permissions the first time the app asks — the prompt only shows once. Take the photo or tap the one you want, then confirm by tapping **\"Add\"** or **\"Use photo\"**.\n\nIf your version of the app doesn't show this menu, look for a **\"+\"** button next to the text box and pick **Image** from the popup.\n\n💬 Example: no text needed yet, just pick the image.\n\nYou'll know it worked when a small thumbnail of your photo appears just above the text box, and the text box is still empty waiting for your instruction.\n\n## Step 3 — Tell Gemini what to do with the image\nTap the text box and type a short instruction — or skip typing entirely by tapping the **microphone icon** 🎤 and speaking. The photo stays attached; your instruction goes below it. Gemini reads the image (the technical word is **multimodal** — meaning it can understand both pictures and words in the same chat) and replies with the text it found.\n\nBe specific. A vague \"what does this say?\" works, but a clearer request gives a better answer. If the photo has a lot of clutter around the text, ask Gemini to skip the extras.\n\n💬 Example: \"Pull out all the text from this photo, line by line, exactly as written.\" — or — \"Read the recipe in this image and list just the ingredients.\"\n\nYou'll know it worked when Gemini replies with the words from your photo written out as normal text (not a description like \"this is an image of…\"). If it gives a description instead, your prompt was too vague — rephrase with the exact wording you want.\n\n## Step 4 — Copy the text out so you can use it\nLook at Gemini's reply. Long-press on the text (press and hold with your finger for about a second) until a highlight bar appears with options like **Copy**, **Select all**, and **Share**. Tap **Copy**, and the text is now on your phone's clipboard — invisible, but ready to paste. Open Notes, Messages, your email app, or Google Docs, tap into a text field, and tap **Paste**. The words from the photo appear in your new app, perfectly editable.\n\nIf long-press doesn't show a menu, look for a tiny **\"Copy\"** button or a **⋯ (three-dot)** icon at the bottom-right corner of Gemini's reply message — both Android and iOS sometimes tuck the option there.\n\n💬 Example: paste it into Notes and you'll have a searchable copy of that faded parking sign — no more squinting at the photo.\n\nYou'll know it worked when you can paste the text into another app and the words are correct, spelled the way they were in the original image.\n\n## Step 5 — Try a quick follow-up (translate, shorten, save)\nThis is where it gets useful. Stay in the same chat — Gemini remembers the photo, so you don't have to attach it again. Type a new instruction and Gemini builds on the text it already pulled. Common follow-ups: translate to another language, shorten into bullet points, rewrite in simpler words, or turn it into a checklist. When the answer is what you want, tap the **share icon** on Gemini's reply to send it to another app, or long-press and copy it the same way you did in Step 4.\n\nIf the free plan ever tells you you've hit a limit for the day, the same flow keeps working on a paid plan — check Google's official pricing page for the current plan names and details.\n\n💬 Example: \"Now translate that to Spanish.\" — or — \"Shorten this list to the five most important points.\" — or — \"Turn these ingredients into a grocery checklist with quantities.\"\n\nYou'll know it worked when Gemini's next reply is the translated, shortened, or reformatted version of the same text — proof that it's using the original photo as context, not starting over.\n\n## Common mistakes\n- **Asking too vaguely.** \"What does this say?\" sometimes gets you a description of the image instead of the text. Always include the word *text*, *words*, or *list* and tell Gemini what to do with them.\n- **Forgetting to allow camera or photo permissions.** If tapping the camera icon does nothing, open your phone's Settings, find Gemini, and switch both **Camera** and **Photos** permissions on, then try again.\n- **Trying it on handwriting that's too messy.** Printed text works very well. Cursive handwriting is hit-or-miss — if Gemini misses letters, snap a flatter, more even-lit photo and try once more, or just type the few unclear words yourself.\n\n## What this means for you\n- **In everyday life:** Snap a photo of a recipe card, a Wi-Fi password sticker, a museum placard, or a friend's handwritten note and turn it into text you can search, save, or share. No more typing things out by hand from a photo.\n- **For your business or work:** Photograph a whiteboard after a meeting, a printed receipt, a page from a contract, or a business card at a conference and pull the text straight into an email, spreadsheet, or note. It saves a surprising amount of retyping.\n- **If you're just getting started:** The easiest first move is one screenshot you already have — a recipe, an address, a quote. Attach it, ask for the text, and copy it somewhere useful. After that one try, every future photo is the same three taps.\n\n## Try it now\nOpen Gemini, attach any photo already in your phone's gallery — a screenshot, a receipt, a sign you snapped yesterday — and type: \"Pull out all the text from this photo exactly as written.\" Copy the reply into your Notes app. That's the whole trick, and it's the same trick you'll use tomorrow.",
+  "original_title": "Use Gemini on Your Phone to Pull Editable Text from Any Photo or Screenshot"
+}

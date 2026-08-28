@@ -1,0 +1,70 @@
+{
+  "_meta": {
+    "written_at": "2026-08-28T08:10:30.621Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.0145098,
+    "original_draft": "2026-08-27T16-08-08-409Z_nvidia-blog_GeForce_NOW_Gives_Gamers_More_Ways_to_Play_at_Game.json",
+    "source_id": "nvidia-blog",
+    "source_name": "NVIDIA Blog (hivatalos)",
+    "source_link": "https://blogs.nvidia.com/blog/geforce-now-thursday-gamescom-2026/",
+    "source_links": [
+      "https://blogs.nvidia.com/blog/geforce-now-thursday-gamescom-2026/"
+    ],
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "rejected_at": "2026-08-28T08:07:47.208Z",
+    "auto_check": {
+      "passed": false,
+      "issues": [
+        "HOWTO_TOO_LONG: 1803 szó (~9.0 perc olvasás) — a cél 1000-1400 szó, a felső kapu 1700. A Facebookról érkező mobilolvasó ennyit ritkán olvas végig."
+      ],
+      "wordCount": 1803
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Excellent guide that meets all quality gates — clear structure, specific actionable steps with fallbacks, friendly and respectful tone, explains all technical terms in plain language, no prohibited content, and accurate to the official NVIDIA source.",
+      "_aiCost": 0.0025419,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Strong, well-structured guide with good brand voice and clear explanations, but two steps lack fallback guidance for when the expected UI element is missing. A complete beginner could get stuck on the Connections settings and the DLSS overlay. Fix those two gaps and it passes easily.",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-08-27T16-08-08-409Z_nvidia-blog_GeForce_NOW_Gives_Gamers_More_Ways_to_Play_at_Game.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-08-28T08:11:21.620Z",
+    "slug": "how-to-start-cloud-gaming-with-geforce-now-no-gaming-pc-required",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-08-28T08:11:56.611Z",
+    "guide_worthy": false,
+    "pairing_reason": "The news title is a vague announcement about 'more ways to play' rather than introducing ONE specific named feature — it's likely a roundup of multiple updates, not a concrete action for users.",
+    "image_v": 2,
+    "image_at": "2026-08-28T08:22:23.768Z",
+    "seo": {
+      "meta_description": "Learn cloud gaming with GeForce NOW — play PC games on your laptop or phone without a graphics card. Free setup guide in 10 minutes.",
+      "keywords": [
+        "how to start cloud gaming",
+        "GeForce NOW setup guide",
+        "cloud gaming without PC",
+        "play PC games on laptop",
+        "NVIDIA GeForce NOW",
+        "cloud gaming on phone",
+        "gaming without graphics card"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more long-tail keywords like 'GeForce NOW free vs priority' to compete for higher-intent searches",
+        "Include a brief comparison with other cloud gaming services (Xbox Cloud, PlayStation Plus) to capture broader search intent"
+      ],
+      "optimised_at": "2026-08-28T08:23:53.258Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"How to Start Cloud Gaming with GeForce NOW (No Gaming PC Required)\"\nsubtitle: \"A practical guide to playing PC games in your browser, on a phone, or on a laptop — without buying a graphics card.\"\ncategory: \"how-to\"\naudience: \"personal\"\nread_time_minutes: 7\ntags: [\"cloud-gaming\", \"nvidia\", \"gaming\", \"getting-started\"]\n---\n\n# How to Start Cloud Gaming with GeForce NOW (No Gaming PC Required)\n\n> **In short:** GeForce NOW streams PC games from NVIDIA's data centers to your phone, laptop, tablet, smart TV, or browser — so you can play big titles without a graphics card. Setup is free, takes about 10 minutes, and connects to game stores you already use.\n\nYour laptop is three years old, it wheezes when you open more than five browser tabs, and you've been quietly wondering how people play those big PC games anyway. The answer is that the game isn't really running on your laptop — it's running in a data center, and what you're seeing is a live video stream that responds to your inputs.\n\n## What cloud gaming actually is\n\nThink of it like Netflix for games, but interactive. Instead of downloading a 90 GB game file and hoping your hardware can handle it, you tap \"Play\" and a powerful remote computer does the actual work. Your keypresses and mouse movements travel up to that computer over the internet, and it sends a video of the game back down to your screen in real time.\n\nThis means three things for you:\n\n- **Your device almost doesn't matter.** A cheap Chromebook, a five-year-old office laptop, an Android phone — all of them can run games that would normally need a serious gaming PC.\n- **Your internet matters a lot.** You'll want a stable connection of around 15–25 Mbps for a smooth picture. Wired ethernet is friendlier than flaky Wi-Fi.\n- **You still need to own the games.** GeForce NOW doesn't come with a game library. It connects to stores you may already use — Steam, Epic, GOG, or Ubisoft — and plays the games you've already bought there.\n\nThe AI part is real, by the way. NVIDIA's data center hardware uses a feature called **DLSS** (Deep Learning Super Sampling — an AI technique that fills in extra detail so the picture looks sharper than what the hardware is actually rendering). Recent DLSS versions give players more control over how that AI enhancement behaves, which is part of why streamed games look better than they would on weaker hardware.\n\n## Before you start\n\nYou'll need:\n\n- A device with a web browser or the GeForce NOW app (Windows, Mac, Android, iOS, smart TVs, and certain streaming sticks)\n- A stable internet connection — ideally 20 Mbps or more\n- An email address for a free NVIDIA account\n- An account at one of the supported game stores (Steam, Epic, GOG, or Ubisoft Connect), with at least one game you own there\n\nYou don't need a credit card to try the free tier.\n\n## Step 1 — Make a free NVIDIA account\n\nOpen `play.geforcenow.com` in a browser and click the sign-up button in the top-right corner. You'll be asked for an email, a password, and to confirm you're not a robot. NVIDIA sends a confirmation email — click the link inside to activate the account. The whole process usually takes under two minutes.\n\n**💬 Tip:** If you already have an NVIDIA account from anything else, use the same email. This includes accounts from **GeForce Experience** — that was NVIDIA's older companion app bundled with some graphics cards years ago, used for driver updates and game settings — as well as NVIDIA Shield TV boxes or other NVIDIA services. Your existing profile will merge in automatically.\n\n**You'll know it worked when:** you land back on the GeForce NOW homepage with your initials or username in the top corner of the page.\n\n## Step 2 — Pick how you want to play\n\nYou have two main options, and both are worth knowing about.\n\n- **In a browser.** This is the quickest test. Chrome, Edge, Safari, and Firefox are all supported. No install, no admin rights — useful on a work laptop or a borrowed device.\n- **In the GeForce NOW app.** Available for Windows, Mac, Android, and iOS (where supported). The app gives slightly better performance and a cleaner full-screen experience.\n\nIf you're just trying GeForce NOW for the first time, the browser is the lowest-friction option. You can switch to the app later without losing anything — your account and linked stores follow you.\n\n**You'll know it worked when:** the GeForce NOW library loads and shows you a list of supported games, with your owned titles marked clearly.\n\n## Step 3 — Link a game store\n\nGeForce NOW is just a streaming engine — it needs to know which games you're allowed to play. Click your profile icon (top-right corner), then choose \"Account\" or \"Settings.\" Look for a section called \"Connections,\" \"Linked accounts,\" or anything that mentions store logos. Pick the store you use (Steam is the most common), and sign in when a pop-up window appears.\n\n**If you can't find the right menu:** NVIDIA has refreshed this layout more than once, so the exact label varies. Try the \"Account Settings\" page, scan the left-hand sidebar, or look for small store icons (Steam, Epic, GOG, Ubisoft) anywhere near your profile area. If you still don't see it, search the official GeForce NOW help site for \"link account\" — there's always a working path, even if it's been renamed.\n\nOnce linked, GeForce NOW scans your library and shows which of your games are supported. The list keeps growing, but not every game is there — some publishers opt out, and very new releases sometimes take a few weeks to appear.\n\n**💬 Example:** if you own *Stardew Valley* on Steam, it'll show up automatically after you link Steam. A heavier title like *Cyberpunk 2077* might take a few extra seconds to appear as the library refreshes.\n\n**You'll know it worked when:** your library shows a \"Play\" button next to a game you actually own, instead of a \"Get it on…\" link pointing to the store.\n\n## Step 4 — Start a free session\n\nHit \"Play\" on any supported game. On the free tier, your session is limited to about an hour at a time, and you may have to wait in a queue during busy evenings. Paid tiers remove the queue and extend session length — check the current tier names and prices on the official GeForce NOW site.\n\n**💬 First-game tip:** start with something you already know well and isn't too demanding — a strategy game, a cozy sim, or a turn-based title. It gives you a feel for the controls and picture quality without the pressure of a fast-paced shooter where lag would be obvious.\n\n**You'll know it worked when:** the game launches within a few seconds, your keyboard and mouse (or gamepad) feel responsive, and the picture follows your inputs with minimal delay.\n\n## Step 5 — Tune the picture (optional but worth it)\n\nOnce a game is running, you can usually open an in-stream settings overlay by pressing **Ctrl + G** on Windows or **Cmd + G** on Mac, or by moving your mouse toward the side of the screen during gameplay. The overlay looks like a small gear icon or a side panel — it lets you choose between resolutions and frame rates, and on supported titles, adjust the DLSS settings (the AI sharpness options mentioned earlier). Start with the \"Balanced\" preset; switch to \"Performance\" if the picture feels laggy, or to \"Quality\" if your network is rock-solid and you want a sharper image.\n\n**If the overlay doesn't appear:** not every game or device exposes these settings. Some titles override them entirely, some smart-TV versions hide the panel, and a few older browsers ignore the shortcut. In any of those cases, just leave the defaults — GeForce NOW auto-picks reasonable settings for your connection — and move on. You can try reopening the overlay later, or revisit it from the app version instead of the browser.\n\n**You'll know it worked when:** the picture quality visibly changes after you switch presets, or you've confirmed the overlay just isn't available for that title and carry on playing without it.\n\n## Common mistakes\n\n- **Skipping the internet test.** Cloud gaming lives or dies by your connection. Run a speed test first, and if possible, sit closer to your router or plug in an ethernet cable. A weak Wi-Fi signal is the #1 reason cloud gaming feels bad.\n- **Trying a competitive shooter first.** Fast, twitchy games show every millisecond of lag. Pick something slower for your first session so you can judge the experience fairly.\n- **Linking the wrong store.** If you bought the game on Epic but you linked Steam, the game won't show up. Double-check which store you actually used for the purchase.\n- **Closing the browser tab by accident.** The game is running in that tab. Close it, and your session ends — there's no \"minimize\" that keeps the stream alive once the tab disappears.\n- **Expecting mobile games to feel like console games.** Phones work, but tapping a touchscreen is a different experience from a controller. A small Bluetooth gamepad makes a huge difference.\n\n## What this means for you\n\n- **If you don't own a gaming PC at all:** this is the cheapest way to play big PC games. The free tier is genuinely useful, and a paid subscription is far cheaper than building a real gaming computer.\n- **If your laptop is too old for new games:** before replacing it, try cloud gaming first. You might not need a new machine at all — a borrowed or cheap device plus a decent internet connection is often enough.\n- **If you travel a lot:** a phone, a hotel Wi-Fi connection, and a small controller is suddenly a portable gaming setup. Heavy reliance on hotel Wi-Fi is risky though — test the network before settling in.\n- **If you're a parent:** cloud gaming means a kid can play big titles on the family laptop without you worrying about whether the hardware can take it. It also makes it easy to set time limits, since sessions end on their own.\n\n## Wrap-up\n\nCloud gaming isn't magic — it's a video stream, and your internet and expectations both matter. But for most people who don't already own a serious gaming PC, it's the most practical way to play PC games on hardware you already own. The free tier is enough to know within ten minutes whether it's for you, and nothing is locked in. Spend a coffee break this week creating an account and launching one game you've already bought. That's all it takes to find out.",
+  "original_title": "GeForce NOW Gives Gamers More Ways to Play at Gamescom 2026"
+}

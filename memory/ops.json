@@ -1,118 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178776245851496",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-08-26T16:40:58.514Z",
-      "updated": "2026-08-26T16:41:37.215Z"
-    },
-    {
-      "id": "t178776249721789",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-08-26T16:41:37.217Z",
-      "updated": "2026-08-26T16:41:37.419Z"
-    },
-    {
-      "id": "t178776249742116",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-26T16:41:37.421Z",
-      "updated": "2026-08-26T16:46:08.979Z"
-    },
-    {
-      "id": "t178776276898165",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-26T16:46:08.981Z",
-      "updated": "2026-08-26T16:47:02.449Z"
-    },
-    {
-      "id": "t178776282245254",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-08-26T16:47:02.452Z",
-      "updated": "2026-08-26T16:47:14.975Z"
-    },
-    {
-      "id": "t178776283502310",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-26T16:47:15.023Z",
-      "updated": "2026-08-26T16:47:37.246Z"
-    },
-    {
-      "id": "t178776285724825",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-08-26T16:47:37.248Z",
-      "updated": "2026-08-26T16:48:01.522Z"
-    },
-    {
-      "id": "t178776288152430",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-26T16:48:01.524Z",
-      "updated": "2026-08-26T16:48:13.722Z"
-    },
-    {
-      "id": "t178776289372416",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-08-26T16:48:13.724Z",
-      "updated": "2026-08-26T16:48:39.515Z"
-    },
-    {
-      "id": "t178780445411433",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-08-27T04:20:54.114Z",
-      "updated": "2026-08-27T04:20:54.285Z"
-    },
-    {
-      "id": "t178780445428773",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-08-27T04:20:54.287Z",
-      "updated": "2026-08-27T04:21:40.044Z"
-    },
-    {
-      "id": "t178780450004620",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-08-27T04:21:40.046Z",
-      "updated": "2026-08-27T04:21:40.246Z"
-    },
-    {
-      "id": "t178780450024857",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-27T04:21:40.248Z",
-      "updated": "2026-08-27T04:30:46.170Z"
-    },
-    {
-      "id": "t178780504617155",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-27T04:30:46.171Z",
-      "updated": "2026-08-27T04:32:49.201Z"
-    },
-    {
       "id": "t178780516920452",
       "title": "Run pairing",
       "status": "done",
@@ -479,41 +367,121 @@
       "agent": "publisher",
       "created": "2026-08-27T18:36:33.154Z",
       "updated": "2026-08-27T18:36:55.064Z"
+    },
+    {
+      "id": "t178790318768858",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-08-28T07:46:27.688Z",
+      "updated": "2026-08-28T07:46:27.895Z"
+    },
+    {
+      "id": "t178790318789732",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-08-28T07:46:27.897Z",
+      "updated": "2026-08-28T07:47:11.092Z"
+    },
+    {
+      "id": "t178790323109461",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-08-28T07:47:11.094Z",
+      "updated": "2026-08-28T07:47:11.296Z"
+    },
+    {
+      "id": "t178790323129825",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-28T07:47:11.298Z",
+      "updated": "2026-08-28T08:06:49.841Z"
+    },
+    {
+      "id": "t178790440984351",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-28T08:06:49.843Z",
+      "updated": "2026-08-28T08:08:48.051Z"
+    },
+    {
+      "id": "t178790452805398",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-28T08:08:48.053Z",
+      "updated": "2026-08-28T08:10:43.232Z"
+    },
+    {
+      "id": "t178790464323415",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-28T08:10:43.234Z",
+      "updated": "2026-08-28T08:11:35.929Z"
+    },
+    {
+      "id": "t178790469593149",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-08-28T08:11:35.931Z",
+      "updated": "2026-08-28T08:12:21.953Z"
+    },
+    {
+      "id": "t178790474200259",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-28T08:12:22.002Z",
+      "updated": "2026-08-28T08:20:33.576Z"
+    },
+    {
+      "id": "t178790523357843",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-28T08:20:33.578Z",
+      "updated": "2026-08-28T08:22:01.218Z"
+    },
+    {
+      "id": "t178790532122081",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-28T08:22:01.220Z",
+      "updated": "2026-08-28T08:23:16.735Z"
+    },
+    {
+      "id": "t178790539673745",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-08-28T08:23:16.737Z",
+      "updated": "2026-08-28T08:25:19.475Z"
+    },
+    {
+      "id": "t178790551947613",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-28T08:25:19.476Z",
+      "updated": "2026-08-28T08:25:31.078Z"
+    },
+    {
+      "id": "t178790553108061",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-08-28T08:25:31.080Z",
+      "updated": "2026-08-28T08:25:52.110Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178695575700047",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The lineup looks solid and ready to publish! You've got a nice mix of practical how-tos, essential privacy guidance, and emotionally supportive content—plus article 2 serves as a friendly on-ramp for ",
-      "agent": "publisher",
-      "at": "2026-08-17T08:35:57.000Z",
-      "loud": false
-    },
-    {
-      "id": "n178695576877465",
-      "level": "success",
-      "text": "1 hír + 1 útmutató publikálva (költség: $0.0176).",
-      "agent": "ceo",
-      "at": "2026-08-17T08:36:08.774Z",
-      "loud": false
-    },
-    {
-      "id": "n178698352652292",
-      "level": "info",
-      "text": "SEO: 2 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-08-17T16:18:46.522Z",
-      "loud": false
-    },
-    {
-      "id": "n178698354923062",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The lineup looks solid and ready — practical, varied, and exactly what everyday people need: useful tasks, smart boundaries, and kind guidance. One small note: articles 4-6 all cover complaint writing",
-      "agent": "publisher",
-      "at": "2026-08-17T16:19:09.230Z",
-      "loud": false
-    },
     {
       "id": "n178698356122653",
       "level": "success",
@@ -1281,110 +1249,41 @@
       "agent": "ceo",
       "at": "2026-08-27T18:36:55.104Z",
       "loud": false
+    },
+    {
+      "id": "n178790551946268",
+      "level": "info",
+      "text": "SEO: 8 cikk optimalizálva (átlag 8.1/10).",
+      "agent": "seo",
+      "at": "2026-08-28T08:25:19.462Z",
+      "loud": false
+    },
+    {
+      "id": "n178790553842440",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). A line-up kész és kohéensen mutatja be az AI praktikus, hétköznapi felhasználását – munkahelyi levelektől a személyes üzenetekig. Jó, hogy a privacy téma is helyet kapott, és a különböző eszközök (Cha",
+      "agent": "publisher",
+      "at": "2026-08-28T08:25:38.424Z",
+      "loud": false
+    },
+    {
+      "id": "n178790555215219",
+      "level": "success",
+      "text": "6 hír + 2 útmutató publikálva (költség: $0.1587).",
+      "agent": "ceo",
+      "at": "2026-08-28T08:25:52.152Z",
+      "loud": false
+    },
+    {
+      "id": "n178790556190959",
+      "level": "warn",
+      "text": "📨 fact-check → human: Ez az útmutató talán tárgytalanná vált: \"Automate basic email replies in Outlook with Meta \" — Meta AI does not have an ",
+      "agent": "fact-check",
+      "at": "2026-08-28T08:26:01.909Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178704162438372",
-      "from": "guide",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Kell még adat: \"Use Gemini to plan a trip across multiple Google apps\" — az Ellenőrző tényt/forrást kér, amit nem találhatok ki: Claims that Gemini can 'tap into Google Maps data to recommend restaurants, attractions, and routes' and that place names in replies include 'clickable links that opens Google Maps directly' are fabricated — Gemini does not have direct Maps integration of this kind in it",
-      "ref": "GUIDE_use-gemini-to-plan-a-trip-across-multiple-google-apps.json",
-      "open": false,
-      "at": "2026-08-18T08:27:04.383Z",
-      "resolved_at": "2026-08-18T08:28:16.473Z"
-    },
-    {
-      "id": "m178704166403516",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Turn Alexa+ into a sleep sounds machine and gentle sunrise alarm\" (?/10)",
-      "ref": "GUIDE_turn-alexa-into-a-sleep-sounds-machine-and-gentle-sunrise-al.json",
-      "at": "2026-08-18T08:27:44.035Z"
-    },
-    {
-      "id": "m17870416964725",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Use Gemini to plan a trip across multiple Google apps\" (?/10)",
-      "ref": "GUIDE_use-gemini-to-plan-a-trip-across-multiple-google-apps.json",
-      "at": "2026-08-18T08:28:16.472Z"
-    },
-    {
-      "id": "m17870418010935",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-08-18T08:30:01.093Z"
-    },
-    {
-      "id": "m178704247286966",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "4 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-08-18T08:41:12.869Z"
-    },
-    {
-      "id": "m178707007488427",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Introducing ChatGPT for Teens: Built for learning, backed by protections\" — mi a baj: The article repeatedly describes a 'ChatGPT for Teens' product with specific features (age-based response filtering, healthy-use break nudges, parent-linked controls with usage summaries, memory visibility, alerts) and presents them as facts about an existing product. As of the article's fr",
-      "ref": "2026-08-18T16-19-17-295Z_openai-blog_Introducing_ChatGPT_for_Teens__Built_for_learning_.json",
-      "at": "2026-08-18T16:21:14.884Z"
-    },
-    {
-      "id": "m178707011484648",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Introducing ChatGPT for Teens: Built for learning, backed by protections\" — javítva: The article repeatedly describes a 'ChatGPT for Teens' product with specific features (age-based response filtering, healthy-use break nudges, parent-linked controls with usage summaries, memory visibility, alerts) and presents them as facts about an existing product. As of the article's framing this",
-      "ref": "2026-08-18T16-19-17-295Z_openai-blog_Introducing_ChatGPT_for_Teens__Built_for_learning_.json",
-      "at": "2026-08-18T16:21:54.846Z"
-    },
-    {
-      "id": "m178707014152840",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Introducing ChatGPT for Teens: Built for learning, backed by protections\" (?/10)",
-      "ref": "2026-08-18T16-19-17-295Z_openai-blog_Introducing_ChatGPT_for_Teens__Built_for_learning_.json",
-      "at": "2026-08-18T16:22:21.528Z"
-    },
-    {
-      "id": "m178707020757729",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-08-18T16:23:27.577Z"
-    },
-    {
-      "id": "m178707064497612",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "2 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-08-18T16:30:44.976Z"
-    },
-    {
-      "id": "m178710054107611",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-08-19T00:49:01.076Z"
-    },
     {
       "id": "m178710111748733",
       "from": "social",
@@ -2648,6 +2547,106 @@
       "text": "2 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-08-27T18:49:37.524Z"
+    },
+    {
+      "id": "m178790446750935",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"GeForce NOW Gives Gamers More Ways to Play at Gamescom 2026\" — mi a baj: Step 3: 'look for a Connections or Linked accounts section' is vague with no fallback — UI labels vary, reader needs guidance like 'if you don't see it, check under Account Settings or look for a store logo icon'; Step 5: 'look for the in-stream settings overlay' — no hint on how to summon it or what to",
+      "ref": "2026-08-27T16-08-08-409Z_nvidia-blog_GeForce_NOW_Gives_Gamers_More_Ways_to_Play_at_Game.json",
+      "at": "2026-08-28T08:07:47.509Z"
+    },
+    {
+      "id": "m178790450137775",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"What Are AI Digital Humans? How Conversational AI Avatars Transform Customer and Employee Experiences \" — mi a baj: NO_FRONTMATTER: A cikk nem YAML frontmatter-rel kezdődik",
+      "ref": "2026-08-27T16-08-30-207Z_d-id-news_What_Are_AI_Digital_Humans__How_Conversational_AI_.json",
+      "at": "2026-08-28T08:08:21.377Z"
+    },
+    {
+      "id": "m17879046306231",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"GeForce NOW Gives Gamers More Ways to Play at Gamescom 2026\" — javítva: Step 3: 'look for a Connections or Linked accounts section' is vague with no fallback — UI labels vary, reader needs guidance like 'if you don't see it, check under Account Settings or look for a store logo icon'; Step 5: 'look for the in-stream settings overlay' — no hint on how to summon it or what to do if it ",
+      "ref": "2026-08-27T16-08-08-409Z_nvidia-blog_GeForce_NOW_Gives_Gamers_More_Ways_to_Play_at_Game.json",
+      "at": "2026-08-28T08:10:30.623Z"
+    },
+    {
+      "id": "m178790464322254",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"What Are AI Digital Humans? How Conversational AI Avatars Transform Customer and Employee Experiences \" — javítva: NO_FRONTMATTER: A cikk nem YAML frontmatter-rel kezdődik; Reviewer verdict: Critical auto-check failures: NO_FRONTMATTER: A cikk nem YAML frontmatter-rel kezdődik; újraküldöm.",
+      "ref": "2026-08-27T16-08-30-207Z_d-id-news_What_Are_AI_Digital_Humans__How_Conversational_AI_.json",
+      "at": "2026-08-28T08:10:43.222Z"
+    },
+    {
+      "id": "m178790468162299",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"GeForce NOW Gives Gamers More Ways to Play at Gamescom 2026\" (?/10)",
+      "ref": "2026-08-27T16-08-08-409Z_nvidia-blog_GeForce_NOW_Gives_Gamers_More_Ways_to_Play_at_Game.json",
+      "at": "2026-08-28T08:11:21.622Z"
+    },
+    {
+      "id": "m178790469591333",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"What Are AI Digital Humans? How Conversational AI Avatars Transform Customer and Employee Experiences \" (?/10)",
+      "ref": "2026-08-27T16-08-30-207Z_d-id-news_What_Are_AI_Digital_Humans__How_Conversational_AI_.json",
+      "at": "2026-08-28T08:11:35.913Z"
+    },
+    {
+      "id": "m178790524946423",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Turn a quick brainstorm into a clear meeting agenda with DeepSeek\" — mi a baj: Beginner clarity too low (7/10): steps are vague or could mislead a first-time user; Step 1: 'notes app' is vague — specify which app or give examples of options for someone who doesn't know what to use; Step 2: no actual DeepSeek URL provided — readers unfamiliar with the brand may struggle to fi",
+      "ref": "GUIDE_turn-a-quick-brainstorm-into-a-clear-meeting-agenda-with-dee.json",
+      "at": "2026-08-28T08:20:49.464Z"
+    },
+    {
+      "id": "m178790529253399",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Use ChatGPT to Plan a Road Trip Route with Stops, Fuel Stops, and Driving Time\" — mi a baj: LEDE_TOO_LONG: A RÖVIDEN-doboz 64 szó (max ~45) — ami hosszú, az már nem \"röviden\".; HOWTO_TOO_LONG: 1813 szó (~9.1 perc olvasás) — a cél 1000-1400 szó, a felső kapu 1700. A Facebookról érkező mobilolvasó ennyit ritkán olvas végig.; British spelling: 'behaviour' in common mistakes sec",
+      "ref": "GUIDE_use-chatgpt-to-plan-a-road-trip-route-with-stops-fuel-stops-.json",
+      "at": "2026-08-28T08:21:32.533Z"
+    },
+    {
+      "id": "m178790553106750",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-08-28T08:25:31.067Z"
+    },
+    {
+      "id": "m178790556190925",
+      "from": "fact-check",
+      "to": "human",
+      "kind": "need",
+      "text": "Ez az útmutató talán tárgytalanná vált: \"Automate basic email replies in Outlook with Meta \" — Meta AI does not have an Outlook integration that watches typing and generates email drafts. This feature does not exist.. NEM vettem le (az törölné az URL-t is) — dönts róla.",
+      "ref": "ARTICLE_GUIDE_automate-basic-email-replies-in-outlook-with-meta-ai.json",
+      "open": true,
+      "at": "2026-08-28T08:26:01.909Z"
+    },
+    {
+      "id": "m178790558825683",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Automate meeting minutes generation using Grok aft\" — Grok can listen to the call and write the minutes for you; Drag the mp4 file from your downloads folder into the Grok chat window, or click the paperclip icon and choose the file. Then type: 'Please write concise meeting minutes from this call...'; Grok shows a preview of the file an",
+      "ref": "ARTICLE_GUIDE_automate-meeting-minutes-generation-using-grok-after-a-zoom-.json",
+      "at": "2026-08-28T08:26:28.256Z"
     }
   ]
 }

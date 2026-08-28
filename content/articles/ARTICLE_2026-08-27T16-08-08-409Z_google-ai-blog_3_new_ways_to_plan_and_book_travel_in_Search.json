@@ -1,0 +1,63 @@
+{
+  "_meta": {
+    "written_at": "2026-08-28T08:06:49.828Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00956718,
+    "original_draft": "2026-08-27T16-08-08-409Z_google-ai-blog_3_new_ways_to_plan_and_book_travel_in_Search.json",
+    "source_id": "google-ai-blog",
+    "source_name": "Google AI (hivatalos, blog.google)",
+    "source_link": "https://blog.google/products-and-platforms/products/search/book-travel-ai-mode/",
+    "source_links": [
+      "https://blog.google/products-and-platforms/products/search/book-travel-ai-mode/"
+    ],
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "published_at": "2026-08-28T08:07:13.875Z",
+    "slug": "how-ai-search-tools-are-changing-the-way-you-plan-a-trip",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 656
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Solid explainer with a strong hook, clear structure, practical examples, and an actionable 'What this means for you' section. Factual claims align with the official Google source, tone is warm and non-judgmental, and no clichés detected. Minor note: a brief disclaimer that features may vary by region or account type would strengthen trust, but the article is clean enough to pass.",
+      "_aiCost": 0.001139,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-08-28T08:11:47.218Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is an explainer about AI travel capabilities in general, not an introduction of one specific named feature — no single product or button to guide readers toward.",
+    "image_v": 2,
+    "image_at": "2026-08-28T08:22:09.816Z",
+    "seo": {
+      "meta_description": "Tired of tabs and screenshots? AI search tools now compare hotels, track flights, and find your rewards in one conversation—what actually works.",
+      "keywords": [
+        "AI trip planner",
+        "Google AI Mode travel",
+        "how to use AI for travel planning",
+        "AI travel assistant",
+        "AI flight search",
+        "AI hotel comparison",
+        "best AI tools for travel"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more specific long-tail keywords in the article body like 'how to use AI for booking flights'",
+        "Consider mentioning specific AI tools by name beyond just Google AI Mode",
+        "Include a comparison table or list of top AI travel tools for better SEO"
+      ],
+      "optimised_at": "2026-08-28T08:23:37.065Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"How AI Search Tools Are Changing the Way You Plan a Trip\"\nsubtitle: \"A practical look at how AI assistants can help with hotels, flights, and rewards — without the hype\"\ncategory: \"explainer\"\naudience: \"personal\"\nread_time_minutes: 4\ntags: [\"travel-ai\", \"google-search\", \"trip-planning\", \"ai-mode\"]\n---\n\n# How AI Search Tools Are Changing the Way You Plan a Trip\n\n> **In short:** AI search assistants can now compare hotels, watch flight prices for you, and pull up your rewards balances in one conversation. Here's what's actually useful today, what still falls short, and how to ask the right questions.\n\nRemember when planning a trip meant twelve browser tabs, three screenshot folders, and a notes app full of half-prices? That feeling is starting to fade. AI search tools — including AI Mode in Google Search — are quietly absorbing the busywork of trip planning, and the experience is different enough that it's worth understanding before your next vacation.\n\n## Three things AI search can do for travelers\n\nThink of today's AI search as a friend who never gets tired of comparing options. Three capabilities are worth knowing.\n\n**1. Hotel comparison, side by side.** Instead of opening ten booking sites (the sites where you reserve a room), you describe what you need — neighborhood, dates, budget — and the AI pulls a short list with prices, ratings, and what's nearby. It synthesizes (combines and summarizes) information from many sources so you don't have to.\n\n**2. Flight price tracking.** Tell the AI your route and dates, and it can watch prices over time and alert you when they drop. This used to require a separate alerts website. Now it can live in the same conversation where you're planning everything else.\n\n**3. Rewards and miles in context.** This is the quietly powerful one. AI Mode can connect to your loyalty accounts (the points you earn from airlines and hotel chains) and tell you whether your points are actually worth using for the trip you're planning — or whether paying cash is the smarter move.\n\n## How to ask well\n\nThe trick is being specific. A vague question gets a vague answer. Try prompts (the instructions you type to the AI) like these:\n\n- *\"Find me a quiet hotel in Kyoto for under $X a night, within walking distance of a subway station, for the second week of October.\"*\n- *\"Track flights from Chicago to Lisbon in March and tell me when the price drops below $X.\"*\n- *\"I have 45,000 miles with [airline]. Is it worth using them for a trip to Reykjavik in November, or should I save them?\"*\n\nThe more concrete you are, the better the answer.\n\n## What AI still can't do for you\n\nHonest limits are worth knowing:\n\n- **It can't book for you in every case.** Some tools can complete the reservation, others can only point you to the booking site. Always check before you assume.\n- **Reviews are still mixed.** AI summaries combine what people say, but they don't replace reading a few recent reviews yourself — especially for smaller hotels.\n- **Your loyalty numbers matter.** If you don't connect your accounts, the rewards angle disappears.\n\n## What this means for you\n\n- **If you're planning a personal trip:** Try one search this week — even just for a weekend getaway — and see how it compares to your usual method.\n- **If you travel often for work:** Set up price tracking once for your most common routes and let the AI do the watching.\n- **If you're privacy-conscious:** Connect only the loyalty accounts you actually use, and check what data the AI is storing about your searches.\n\n## Wrap-up\n\nAI search isn't replacing the joy of planning a trip, but it's quietly taking over the boring part. Pick one upcoming trip, try one of the three capabilities above, and see how much faster it gets. That's usually enough to know whether it's for you.",
+  "original_title": "3 new ways to plan and book travel in Search"
+}

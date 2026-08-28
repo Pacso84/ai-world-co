@@ -1,0 +1,41 @@
+{
+  "started_at": "2026-08-28T08:20:33.746Z",
+  "total": 4,
+  "passed": 2,
+  "failed": 2,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.008665848,
+  "by_article": [
+    {
+      "writer": "WRITER_GUIDE_turn-a-quick-brainstorm-into-a-clear-meeting-agenda-with-dee.json",
+      "rejected": "REJECTED_GUIDE_turn-a-quick-brainstorm-into-a-clear-meeting-agenda-with-dee.json",
+      "decision": "FAIL",
+      "score": 7,
+      "cost_usd": 0.00134165
+    },
+    {
+      "writer": "WRITER_GUIDE_use-ai-to-draft-a-simple-one-page-business-plan-from-scratch.json",
+      "article": "ARTICLE_GUIDE_use-ai-to-draft-a-simple-one-page-business-plan-from-scratch.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.00160265
+    },
+    {
+      "writer": "WRITER_GUIDE_use-chatgpt-to-plan-a-road-trip-route-with-stops-fuel-stops-.json",
+      "rejected": "REJECTED_GUIDE_use-chatgpt-to-plan-a-road-trip-route-with-stops-fuel-stops-.json",
+      "decision": "FAIL",
+      "score": 7,
+      "cost_usd": 0.00189915
+    },
+    {
+      "writer": "WRITER_GUIDE_use-gemini-on-your-phone-to-pull-editable-text-from-any-phot.json",
+      "article": "ARTICLE_GUIDE_use-gemini-on-your-phone-to-pull-editable-text-from-any-phot.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.00151865
+    }
+  ],
+  "finished_at": "2026-08-28T08:22:01.204Z",
+  "duration_seconds": 87.458
+}
