@@ -3,6 +3,7 @@
     "a-te-oldalad",
     "a-te-repod",
     "ablakja",
+    "acceleratorok",
     "adagjaid",
     "adagod",
     "adagokat",
@@ -80,6 +81,7 @@
     "alügynököket",
     "amért",
     "anamorphikus",
+    "angolgyakorlásban",
     "animátorokat",
     "annotátor",
     "annotátori",
@@ -298,6 +300,7 @@
     "chipnek",
     "chippel",
     "chipre",
+    "chipset",
     "chiptervezés",
     "chiptervezésben",
     "chiptervezővel",
@@ -449,6 +452,7 @@
     "docra",
     "docx",
     "dokban",
+    "dokhoz",
     "dokuiból",
     "dokumentumellenőrzés",
     "dokumentumszöveget",
@@ -511,6 +515,7 @@
     "edzésmunkákra",
     "edzésnapló",
     "edzésprogram",
+    "edzésprogramot",
     "edzésszövegen",
     "edzésterv",
     "edzésterved",
@@ -543,6 +548,7 @@
     "elfogultságokat",
     "ellenérvet",
     "elsímítja",
+    "elsővonalbeli",
     "elégedettséget",
     "elérhetőséget",
     "előbeállításokat",
@@ -785,6 +791,7 @@
     "hatékonyságokat",
     "hatóságok",
     "hatóságoknak",
+    "hatótávod",
     "havról",
     "headsettet",
     "headshot",
@@ -1245,6 +1252,7 @@
     "megjegyzéset",
     "megossd",
     "megosztanivaló",
+    "mehívót",
     "melbourne",
     "melegséget",
     "mellmagasságban",
@@ -1276,6 +1284,7 @@
     "mockupot",
     "modeledet",
     "modelid",
+    "modellfinomhangolásban",
     "modelllicencet",
     "modelllista",
     "modellsorokat",
@@ -1432,6 +1441,7 @@
     "okostévék",
     "okostévén",
     "okostévére",
+    "okostévés",
     "okostükröt",
     "oktatóanyagok",
     "oktatóanyagokat",
@@ -1723,6 +1733,7 @@
     "sereget",
     "sessionben",
     "sessiont",
+    "sessionökhöz",
     "shakshuka",
     "shortlistet",
     "shortlistig",
@@ -1732,6 +1743,7 @@
     "skillhez",
     "skillre",
     "skillt",
+    "slotba",
     "sorbanállástól",
     "sorjázkodást",
     "sorod",
@@ -1809,6 +1821,7 @@
     "suno",
     "supportjegyek",
     "supportjára",
+    "supportos",
     "sydney",
     "sync-ről",
     "syncről",
@@ -1923,6 +1936,7 @@
     "te-ízűnek",
     "teaserek",
     "tech-ben",
+    "techben",
     "techcímlapsztori",
     "techdemó",
     "techgurunak",
@@ -2279,7 +2293,9 @@
     "ízületkíméletlenre",
     "óratervet",
     "óráknyi",
+    "óránél",
     "óvatosságod",
+    "ömljenek",
     "önéletrajc",
     "össz-céges",
     "összefoglalókészítéshez",
@@ -2291,6 +2307,7 @@
     "összerezennél",
     "összhangulat",
     "összhangulatot",
+    "összkilométert",
     "összperceket",
     "össztapasztalatot",
     "ötletcsomagod",
@@ -3324,6 +3341,11 @@
       "correct": "elkezdi",
       "at": "2026-08-27",
       "mondattal": true
+    },
+    "wellnes": {
+      "correct": "wellness",
+      "at": "2026-08-28",
+      "mondattal": true
     }
   },
   "review": {
@@ -4258,11 +4280,21 @@
       "correct": "okostévére",
       "at": "2026-08-28",
       "mondattal": true
+    },
+    "áltad": {
+      "correct": "általad",
+      "at": "2026-08-28",
+      "mondattal": true
+    },
+    "munkáds": {
+      "correct": "munkádban",
+      "at": "2026-08-28",
+      "mondattal": true
     }
   },
   "scan": {
     "at": "2026-08-28",
-    "files": 829,
-    "candidates": 37
+    "files": 833,
+    "candidates": 20
   }
 }
