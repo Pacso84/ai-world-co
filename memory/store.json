@@ -1,7 +1,7 @@
 {
   "_meta": {
     "note": "AI World rétegzett memória (hot/warm/cold, salience decay).",
-    "updated": "2026-08-28T19:30:11.721Z"
+    "updated": "2026-08-28T19:45:24.511Z"
   },
   "items": [
     {
@@ -7743,6 +7743,20 @@
       "tags": [],
       "created": "2026-08-28T19:30:11.721Z",
       "lastAccessed": "2026-08-28T19:30:11.721Z",
+      "accessCount": 0,
+      "salience": 1,
+      "tier": "hot"
+    },
+    {
+      "id": "m1787946324511798",
+      "scope": "guide",
+      "text": "Avoid stating (may be removed/false): GitHub Copilot is a paid service. Make sure you have an active subscription for Copilot and Copilot Chat.",
+      "tags": [
+        "fact-check",
+        "lesson"
+      ],
+      "created": "2026-08-28T19:45:24.511Z",
+      "lastAccessed": "2026-08-28T19:45:24.511Z",
       "accessCount": 0,
       "salience": 1,
       "tier": "hot"

@@ -1285,15 +1285,6 @@
   ],
   "messages": [
     {
-      "id": "m178718701393176",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"How to set up smart routines with Alexa+\" — \"Alexa+ app\" — should be just \"Alexa app\"; \"Alexa+ device\" — should be \"Echo device\" or \"Alexa-enabled device\"",
-      "ref": "ARTICLE_GUIDE_alexa-routines.json",
-      "at": "2026-08-20T00:50:13.931Z"
-    },
-    {
       "id": "m178718743218075",
       "from": "social",
       "to": "team",
@@ -2647,6 +2638,15 @@
       "text": "6 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-08-28T19:35:52.915Z"
+    },
+    {
+      "id": "m17879463245086",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Automating repetitive Git commands using Copilot s\" — GitHub Copilot is a paid service. Make sure you have an active subscription for Copilot and Copilot Chat.",
+      "ref": "ARTICLE_GUIDE_automating-repetitive-git-commands-using-copilot-suggestions.json",
+      "at": "2026-08-28T19:45:24.508Z"
     }
   ]
 }
