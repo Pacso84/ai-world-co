@@ -60,6 +60,17 @@ const ido = x => {
  * @returns {{trigger: boolean, reason: string, gapHours: number|null}}
  */
 export function shouldTrigger({ lastRunAt, lastPokeAt = null, now = Date.now() } = {}) {
+  // ⚠️ A `now`-t IS validálni kell (2026-08-28, független átnézés találta).
+  // Enélkül egy érvénytelen érték (pl. string) NaN-t adott az összes
+  // összehasonlításban, és mivel `NaN < 9.5` és `NaN < 4` egyaránt false,
+  // a kód ÁTESETT a türelem-küszöbön ÉS a bökés-szüneten is → óránként
+  // indított volna pipeline-t. Ma latens (a hívó nem ad `now`-t), de egy
+  // jövőbeli átírás elsütné, és pénzbe kerülne.
+  const most = typeof now === 'number' && Number.isFinite(now) ? now : Date.parse(now);
+  if (!Number.isFinite(most)) {
+    return { trigger: false, reason: 'ISMERETLEN: érvénytelen időpont', gapHours: null };
+  }
+
   const utolso = ido(lastRunAt);
 
   // ⚠️ A "NEM TUDOM" NEM "IGEN". Ha nem derül ki, mikor futott utoljára
@@ -69,7 +80,7 @@ export function shouldTrigger({ lastRunAt, lastPokeAt = null, now = Date.now() }
     return { trigger: false, reason: 'ISMERETLEN: nem derült ki az utolsó futás ideje', gapHours: null };
   }
 
-  const oraTelt = (now - utolso) / ORA;
+  const oraTelt = (most - utolso) / ORA;
 
   // Jövőbeli időbélyeg → az óránk vagy az adat hibás. Ne cselekedjünk.
   if (oraTelt < 0) {
@@ -81,10 +92,10 @@ export function shouldTrigger({ lastRunAt, lastPokeAt = null, now = Date.now() }
   }
 
   const bokes = ido(lastPokeAt);
-  if (bokes !== null && (now - bokes) / ORA < BOKES_SZUNET_ORA) {
+  if (bokes !== null && (most - bokes) / ORA >= 0 && (most - bokes) / ORA < BOKES_SZUNET_ORA) {
     return {
       trigger: false,
-      reason: 'már bökött ' + ((now - bokes) / ORA).toFixed(1) + ' órája — várok',
+      reason: 'már bökött ' + ((most - bokes) / ORA).toFixed(1) + ' órája — várok',
       gapHours: oraTelt
     };
   }
