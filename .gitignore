@@ -51,6 +51,14 @@ temp/
 .dev.vars
 telegram-worker/.dev.vars
 
+# A wrangler helyi munkaállapota. A repó PUBLIKUS, ide semmi nem kerülhet be.
+# ⚠️ EDDIG CSAK VÉLETLENÜL VOLT VÉDVE (2026-08-27, agent-felderítés találta):
+# a fenti általános `tmp/` szabály elkapta a `.wrangler/tmp/`-t, de a
+# `.wrangler/state/` (helyi KV/D1-másolat), a `.wrangler/config/` (ITT LAKHAT
+# OAUTH-TOKEN) és a `telegram-worker/.wrangler/` NEM volt ignorálva. Egyetlen
+# `git add -A` becommitolhatta volna őket.
+.wrangler/
+
 # Munkaterületek (git worktree) — SOHA nem kerulhet a repoba: a teljes
 # munkamasolatot commitolna be. A .claude/worktrees/ alatt a natív worktree-
 # eszkoz dolgozik; a tartalma mar amugy is verziokovetett a sajat agan.
