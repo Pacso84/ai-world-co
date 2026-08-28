@@ -1,0 +1,70 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "use-chatgpt-to-plan-a-road-trip-route-with-stops-fuel-stops-",
+    "company": "OpenAI",
+    "tool": "ChatGPT",
+    "icon": "🚗",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-08-28T19:22:44.728Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.01342014,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "rejected_at": "2026-08-28T08:21:31.873Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1693
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": 8,
+      "decision": "PASS",
+      "issues": [
+        "Step 6: 'Copy it with the Copy button' is vague — many beginners won't know where this button appears or that it exists; clarify it's in the top-right corner of ChatGPT's message bubble",
+        "Step 6: The transition from ChatGPT to a notes app assumes readers know how to paste; adding 'hold down the text field in your notes app and tap Paste' would help complete beginners"
+      ],
+      "verdict": "The guide is well-structured with a warm, teaching tone and six clear steps that build progressively. It handles the live-data limitation honestly in the disclaimer and common mistakes, which builds trust. A few minor UI details (Copy button location, paste instructions) could be tightened for absolute beginners, but the overall clarity is strong and the article is safe to publish.",
+      "_aiCost": 0.0023883,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "The guide is well-structured, friendly, and mostly clear for beginners, but contains a British spelling ('behaviour') that violates US English rules, plus one UI instruction that could confuse a complete beginner about where to find the chat box on their device.",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_GUIDE_use-chatgpt-to-plan-a-road-trip-route-with-stops-fuel-stops-.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-08-28T19:23:28.998Z",
+    "slug": "use-chatgpt-to-plan-a-road-trip-with-stops-fuel-breaks-and-drive-time",
+    "image_v": 2,
+    "image_at": "2026-08-28T19:24:16.275Z",
+    "seo": {
+      "meta_description": "Learn how to use ChatGPT to plan a road trip with stops, fuel breaks, and drive time. Create a custom multi-stop itinerary in minutes with practical prompts.",
+      "keywords": [
+        "how to use ChatGPT for road trip planning",
+        "AI road trip planner",
+        "ChatGPT travel itinerary",
+        "plan road trip with AI",
+        "multi-stop driving route planner",
+        "ChatGPT trip planning prompts",
+        "road trip planning tool"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more specific long-tail keywords in the article body like 'how to plan a road trip with ChatGPT' to improve topical relevance",
+        "Consider adding FAQ schema markup to capture voice search and 'people also ask' rankings",
+        "The title could include '2024' or the current year to signal freshness and improve CTR"
+      ],
+      "optimised_at": "2026-08-28T19:24:51.289Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Use ChatGPT to Plan a Road Trip with Stops, Fuel Breaks, and Drive Time\"\nsubtitle: \"Turn a single destination into a full multi-stop driving itinerary with fuel stops, meal breaks, and things to see along the way\"\ncategory: \"guide\"\naudience: \"both\"\ncompany: \"OpenAI\"\ntool: \"ChatGPT\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"getting-started\", \"chatgpt\", \"travel\"]\n---\n\n# Use ChatGPT to Plan a Road Trip with Stops, Fuel Breaks, and Drive Time\n\n> **In short:** Give ChatGPT your start, destination, dates, and a daily driving cap, and it drafts a day-by-day plan with stops, fuel breaks, and sights. Double-check distances and closures yourself — it has no live traffic or gas data, and sometimes invents places that don't exist.\n\nYou know that moment when you're staring at a map, scrolling between two pins, wondering where to stop for lunch? That's exactly the kind of question ChatGPT handles well. You give it the boring facts and it gives you back a plan you can edit and actually drive.\n\n## Before you start\n- A free ChatGPT account works. Paid plans unlock the newest, fastest models — check the official pricing page for current tiers.\n- A phone or computer with the ChatGPT app, or any browser pointed at the official site.\n- About 20–30 minutes, plus a notes app on your phone for the final plan (Apple Notes, Google Keep, or Notion all work).\n- Know four things before you begin: starting city, final destination, travel dates, and roughly how many hours you want to drive each day.\n\n## Step 1 — Open ChatGPT and describe your trip in one paragraph\nOn a computer, open chatgpt.com in your browser and sign in. On a phone, open the ChatGPT app. If this is your first time, you land on a blank screen with a message field at the very bottom of the page — that's where you type. If you see an old conversation instead, look for a **New Chat** button (a pencil ✏️ or a square with a plus sign) at the top of the screen and tap it to start fresh. Type one short paragraph covering who's traveling, where you're starting, where you're going, and your dates. A few sentences is plenty, because ChatGPT works better with concrete details than vague ones.\n💬 Example: \"My partner and I are driving from Portland, Oregon to San Francisco, California on June 12, leaving around 8am. We like small towns, good coffee, and short hikes. We want to drive no more than 6 hours a day.\"\nYou'll know it worked when your paragraph appears in the chat and a \"typing…\" indicator shows up below it.\n\n## Step 2 — Ask for a day-by-day itinerary with drive times\nOnce ChatGPT replies, type a follow-up asking it to break the trip into days, with the exact driving time for each leg and the suggested overnight stop. A new chat bubble appears below your question, and within a few seconds ChatGPT starts typing a numbered day-by-day plan. Each day should show roughly how many hours you'll spend driving, where you'll sleep that night, and a one-line reason for the stop.\n💬 Example: \"Great. Now please give me a day-by-day plan. For each day, tell me the start city, the end city, total driving hours, and one sentence on why that stop is worth it.\"\nIf the first reply is too general — say, just listing famous cities without hours — reply with \"Please add driving hours for each day and the rough total mileage.\" ChatGPT remembers the conversation, so it rewrites the plan with that detail included.\nYou'll know it worked when each day in the plan has a clear start, end, and a number of hours in the car.\n\n## Step 3 — Ask for fuel stops and meal breaks\nWith the skeleton in place, ask ChatGPT to mark fuel stops and rest breaks along each driving day. Type a short message asking for fuel stations roughly every 3–4 hours, plus one real meal stop per day. The chat updates in place, so the fuel plan lives right below the day-by-day driving plan you already have.\n💬 Example: \"Add a fuel stop about every 3 hours of driving, and one proper meal stop per day. Just give me the town or exit name and roughly when in the day I'd hit it.\"\nIf your car is electric or your range is shorter, say so in a follow-up — for example, \"My EV gets about 250 miles per charge, so plan charging stops around that.\" ChatGPT will adjust the plan in place.\nYou'll know it worked when each driving day now lists one or two fuel stops and a meal break, with rough timing.\n\n## Step 4 — Ask for one or two things to see at each stop\nType a short follow-up asking for one or two small, specific things to see or do at each overnight stop — nothing fancy, just enough to make the drive feel like a trip. ChatGPT adds a \"things to do\" line under each day in the same chat, mixing one outdoor stop, one food pick, and one small museum or viewpoint where it makes sense.\n💬 Example: \"For each overnight stop, suggest one outdoor thing, one local food place, and one quick museum or viewpoint. Keep it short — we're not trying to cram the whole trip in.\"\nIf a suggestion feels off — maybe it's closed, far from your route, or you've already been there — just reply \"Skip the lighthouse one, give me a different outdoor stop\" and ChatGPT will swap it out. You don't need to start over.\nYou'll know it worked when each day has a small \"things to do\" line that fits the time you actually have.\n\n## Step 5 — Ask ChatGPT to spot problems with your plan\nThis is the step most people skip, and it's the one that saves the most headaches. Type a short message asking ChatGPT to act like a skeptical road-trip reviewer and poke holes in your plan. ChatGPT rewrites its previous answer with a \"Things to double-check\" section at the bottom, flagging things like long stretches with no fuel, late-evening arrivals in quiet towns, or driving legs that are clearly too long. Treat this as a free second opinion.\n💬 Example: \"Now read the plan back to me like a skeptical friend. What looks too rushed? Which day has the longest stretch between fuel stops? Anything I should double-check before I leave?\"\nIf it doesn't flag anything, the plan isn't necessarily perfect — it just means nothing obvious jumped out. Always verify highway exit numbers, current fuel prices, and road closures with your map app before you drive.\nYou'll know it worked when the plan ends with a short \"Things to double-check\" section you didn't have before.\n\n## Step 6 — Save the final plan to your phone or notes\nType one last short message asking ChatGPT to combine the whole trip into a clean, numbered list you can paste into your notes app. ChatGPT responds with a tidy plain-text version: Day 1, Day 2, each day on its own short block, fuel stops inline, things to do in a few words. Copy it with the **Copy** button at the top of the message, then paste into Apple Notes, Google Keep, Notion, or even a plain email to yourself. Now the plan lives somewhere you can read at a gas station without an internet connection.\n💬 Example: \"Now condense the whole trip into a clean numbered list I can paste into my notes app. Keep fuel stops inline with each day. Don't add anything new.\"\nIf your plan changes mid-trip — a road closes, you want to stay an extra night — come back to this same chat and ask ChatGPT to rebuild just that day. It still has the full conversation in memory.\nYou'll know it worked when you have a clean, copyable list on your phone that doesn't depend on ChatGPT being open.\n\n## Common mistakes\n- **Trusting every name without checking.** ChatGPT sometimes invents a town, café, or gas station that doesn't exist. Before you drive anywhere new, paste the name into a search engine or your map app and confirm it's real and still open.\n- **Forgetting that ChatGPT has no live data.** It can't see today's gas prices, current road closures, or weather. Use it for the shape of the trip, then use a real-time map and weather app for the day-of details.\n- **Asking for too much in one giant prompt.** A 600-word question usually gets a vague answer. Break the planning into the six steps above — the conversation builds a better plan than any single mega-message could.\n\n## What this means for you\n- **In everyday life:** The same pattern works for any multi-stop day — a city break, a weekend of errands across town, a move between two apartments. Tell it the start, the end, the time you have, and ask for one chunk at a time.\n- **For your business or work:** If you drive for work — delivery, sales calls, field service — paste tomorrow's address list into ChatGPT and ask it to group stops into the most efficient route, with fuel and meal breaks folded in. It's a quick first draft before you load the addresses into a real route planner.\n- **If you're just getting started:** The easiest first move is to plan a half-day drive you already know well, just to see how ChatGPT structures a route. You'll learn what to ask for, what to ignore, and how to push back when an answer feels off.\n\n## Try it now\nOpen ChatGPT and paste this: \"I'm driving from [your city] to [a town 2–3 hours away] this Saturday, leaving at 9am. Give me a one-day plan with total driving hours, one fuel stop, one lunch stop, and one thing to see along the way.\" Read the reply, change one detail (\"actually make the lunch stop a town with a bakery\"), and notice how fast it rewrites. That's the muscle you want before planning the big trip.",
+  "original_title": "Use ChatGPT to Plan a Road Trip Route with Stops, Fuel Stops, and Driving Time"
+}

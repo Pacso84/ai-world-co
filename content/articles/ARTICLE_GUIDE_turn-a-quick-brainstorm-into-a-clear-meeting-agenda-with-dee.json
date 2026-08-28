@@ -1,0 +1,66 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "turn-a-quick-brainstorm-into-a-clear-meeting-agenda-with-dee",
+    "company": "DeepSeek",
+    "tool": "DeepSeek",
+    "icon": "📋",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-08-28T19:22:10.390Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.012846068,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "rejected_at": "2026-08-28T08:20:48.956Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1671
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Excellent guide for beginners — clear structure, good UI details with fallbacks, helpful examples in every step, and it knows what DeepSeek cannot do (send invites, book rooms). Brand voice is friendly and explanatory throughout. Passes all quality gates.",
+      "_aiCost": 0.00187434,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Good, practical guide with a solid structure and friendly tone. The clarity score of 7 reflects a few areas where a true beginner could get stuck — specifically, knowing which notes app to use, finding the DeepSeek website without a URL, and the unexplained mention of the reasoning model. These are fixable without restructuring the piece.",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_GUIDE_turn-a-quick-brainstorm-into-a-clear-meeting-agenda-with-dee.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-08-28T19:23:08.175Z",
+    "slug": "turn-a-quick-brainstorm-into-a-clear-meeting-agenda-with-deepseek",
+    "image_v": 2,
+    "image_at": "2026-08-28T19:24:04.552Z",
+    "seo": {
+      "meta_description": "Paste your messy meeting notes into DeepSeek and get back a clean agenda with time slots, topics, and owners — ready in under a minute.",
+      "keywords": [
+        "how to create a meeting agenda from notes",
+        "DeepSeek meeting agenda generator",
+        "turn brainstorm into meeting agenda",
+        "structured meeting agenda tips",
+        "AI for meeting preparation",
+        "meeting planning with AI tools"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add a secondary heading that includes the phrase 'meeting agenda template' or 'how to plan a meeting' to capture related searches",
+        "Include a FAQ section targeting 'what is DeepSeek used for' to capture broader informational queries",
+        "Add an alt tag to any header image mentioning 'DeepSeek agenda example' to improve image search visibility"
+      ],
+      "optimised_at": "2026-08-28T19:24:42.036Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Turn a Quick Brainstorm into a Clear Meeting Agenda with DeepSeek\"\nsubtitle: \"Paste your scattered meeting ideas and get back a structured agenda with time slots, topics, and a named owner for each item.\"\ncategory: \"guide\"\naudience: \"business\"\ncompany: \"DeepSeek\"\ntool: \"DeepSeek\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"productivity\", \"meetings\", \"deepseek\"]\n---\n\n# Turn a Quick Brainstorm into a Clear Meeting Agenda with DeepSeek\n\n> **In short:** Paste your messy meeting notes into DeepSeek and it will draft a structured agenda with time boxes, named owners, and a clear order — usually in under a minute. DeepSeek writes the agenda; it does not send invites, book a room, or add the entry to your calendar for you.\n\nWe've all sat in the meeting where ten people arrive with twelve different ideas and leave with no clear next step. This guide walks you through turning that rough brainstorm into a clean, time-boxed agenda that anyone could actually run from. It assumes you've never opened DeepSeek before, and it leans on plain language the whole way. (If \"AI chat assistant\" is a new phrase: think of DeepSeek as a very fast coworker who reads your notes and writes back structured suggestions — it doesn't store your data after you close the tab on the free plan.)\n\n## Before you start\n- **A free DeepSeek account** — sign up at chat.deepseek.com with an email or a Google account. The free plan is enough for this task; no credit card needed.\n- **Phone or laptop with a browser** — the web version works on any modern browser. A DeepSeek app is also available on iOS and Android if you'd rather work from your phone.\n- **About 10 minutes total** — roughly 2 minutes to collect your ideas, a minute to paste and wait, and a few minutes to refine the answer.\n- **Your raw brainstorm** — anything goes: bullets, a voice-memo transcript, Slack messages, or even a photo of scribbled notes.\n\n## Step 1 — Collect your meeting ideas in one place\nOpen any note-taking app you already use and dump every topic, question, and decision you want covered into a single document. If you don't have a favorite, the simplest options are Apple Notes (on iPhone or Mac), Google Keep (on Android or in any browser), or the Notes/Notepad app that comes with Windows. A blank email draft, a Google Doc, or even a piece of paper all work too — anything you can copy from later. Don't worry about order or wording; just get everything out of your head. If your ideas live in different places — a Slack thread, a quick voice memo, an email reply — copy them all into that one document so DeepSeek can read them together.\n💬 Example: a brainstorm bullet list — \"product launch — pricing — who's doing the demo — what is the social plan — we still owe the legal review a reply — vendor contract is stuck — hire for the support role — Q4 OKRs\"\nYou'll know it worked when you can highlight all of those bullets with one swipe and copy them as a single block of text.\n\n## Step 2 — Open a fresh DeepSeek chat\nIn your browser's address bar, type **chat.deepseek.com** and press Enter. The first screen you'll see is the DeepSeek homepage with a \"Start Now\" or \"Log In\" button — click it, then sign in with the email or Google account you used to register. Once you're in, you'll land on a chat page with an empty message box near the bottom and your past conversations listed in a sidebar on the left. Click the **\"New Chat\"** button (usually at the top of that sidebar, sometimes drawn as a pencil or plus icon) so the assistant starts fresh — older threads can confuse it with leftover rules from earlier questions. If you can't find \"New Chat,\" look in the top-left corner; on mobile, it's often a small pencil icon instead.\n💬 Example: navigate to chat.deepseek.com, sign in, then click the \"New Chat\" option in the left sidebar.\nYou'll know it worked when the screen shows a blank chat with an empty text field at the bottom, ready for typing.\n\n## Step 3 — Pick the right model and paste your prompt\nBefore you type, look for the **model selector** — a small chip or dropdown near the top of the chat box that shows the current model's name. DeepSeek offers two main choices: **DeepSeek-V3** (the everyday chat model, fast for most tasks) and **DeepSeek-R1** (a \"reasoning\" model that prints a short \"thinking\" block before answering — picture a student scribbling their work on the page before giving the final answer). For agenda drafting either works fine; if you want to see the reasoning, pick R1, otherwise leave the default. Click inside the input box, paste your brainstorm, then add a short instruction underneath: meeting length, who's attending, and what kind of agenda you want. Hit the send button (a paper-airplane or arrow icon at the right edge of the box).\n💬 Example: \"Here are our notes for the meeting. It's a 45-minute weekly product sync on Tuesday with Maria, John, Sarah, and me. Please turn these into a structured agenda with time boxes, topics, and a named owner per item. Notes: product launch, pricing decision, demo owner, social plan, legal review reply, vendor contract, support hire, Q4 OKRs.\"\nYou'll know it worked when DeepSeek prints a numbered agenda with names, durations, and clear topics — usually within 30 seconds, sometimes with a visible \"thinking…\" block first if you picked R1.\n\n## Step 4 — Read the result and ask for adjustments\nNow scan the agenda on your screen. Does it cover every point you cared about? Are the time boxes realistic? Is the right person named for each item? If something feels off, send a short follow-up message — DeepSeek will rewrite or nudge the agenda in place. Treat it like chatting with a colleague: short, specific notes get better results than vague ones. If the agenda missed a topic entirely, paste that bullet again and ask for it to be added. If the assistant assigned a task to \"TBD,\" tell it who the right person is and it will fill in the name. This back-and-forth is normal — the first reply is a draft, not a finished document.\n💬 Example: \"Move the budget review to minute 15, give Priya ownership of the next-step list, and cut the demo recap to two minutes.\"\nYou'll know it worked when the second reply matches your team's reality and you can picture running the meeting straight from the page.\n\n## Step 5 — Copy the final agenda into your shared tool\nOnce the agenda looks right, copy DeepSeek's text. Most replies show a small **copy icon** (two overlapping squares) in the corner of the response; if you don't see one, highlight the text with your finger or mouse and copy it the usual way. Paste it into the place your team actually reads — a calendar invite description, a Slack message, a Google Doc, or an email. Spend one minute adding your own touches: a one-line welcome, a link to the relevant doc, the meeting link itself. DeepSeek doesn't send the invite for you, doesn't book a room, and on the free plan it won't remember this conversation next week — so saving it where your team lives matters.\n💬 Example: paste the agenda into your meeting invite's description field, then write \"Welcome — please read before joining\" above it and the meeting link below.\nYou'll know it worked when the agenda is sitting in your calendar or shared doc, formatted clean, with everything your team needs to walk in prepared.\n\n## Common mistakes\n- **Pasting only one or two bullets.** The agenda will feel thin because the assistant had nothing to work with. *Fix:* include every topic, even the wishlist ones — DeepSeek can decide what to drop once it sees the full picture.\n- **Forgetting to mention who's attending.** Without names, the assistant can't assign owners. *Fix:* drop the list of attendees into the prompt so ownership lands on real people, not \"TBD.\"\n- **Skipping the meeting length.** If you don't say \"30 minutes\" or \"60 minutes,\" DeepSeek will guess and the time boxes may not fit your slot. *Fix:* always include the total duration, plus a rough sense of which topics are must-cover versus nice-to-have.\n- **Sending the first draft unchanged.** The output is a starting point, not a finished document. *Fix:* spend two minutes on Step 4 — small edits make the agenda feel owned, not auto-generated.\n- **Assuming DeepSeek will send the invite for you.** It drafts the plan only — the calendar entry, the room, the email are still your job. *Fix:* copy the agenda into the tool your team uses and add the meeting details yourself.\n\n## What this means for you\n- **In everyday life:** the same trick works for any get-together — a family holiday plan, a coach's practice schedule, a birthday surprise — because the recipe (dump ideas, ask for structure, refine) is the same everywhere.\n- **For your business or work:** instead of starting every meeting from silence or retyping the same template, you get a fresh, customized agenda in under a minute, and the time boxes push your team to leave with real decisions instead of more questions.\n- **If you're just getting started:** the simplest move is to run this on your very next meeting — open DeepSeek, paste three bullets and the attendees' names, and see what comes back. The first draft almost always teaches you something about what you actually needed to decide.\n\n## Try it now\nOpen chat.deepseek.com in a new tab, paste three meeting topics and the names of three attendees, and ask it for a 30-minute agenda with named owners. You'll have a draft in under a minute, and you'll know exactly whether this trick belongs in your weekly workflow.",
+  "original_title": "Turn a quick brainstorm into a clear meeting agenda with DeepSeek"
+}

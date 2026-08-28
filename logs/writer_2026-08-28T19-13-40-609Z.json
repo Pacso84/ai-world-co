@@ -1,0 +1,38 @@
+{
+  "started_at": "2026-08-28T19:08:02.033Z",
+  "drafts_total": 2,
+  "articles_written": 2,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 0,
+  "merged_total": 0,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "total_cost_usd": 0.023679779999999997,
+  "by_article": [
+    {
+      "draft": "2026-08-28T19-08-01-717Z_openai-blog_Supporting_Thailand_s_next_generation_of_AI_startu.json",
+      "writer_output": "WRITER_2026-08-28T19-08-01-717Z_openai-blog_Supporting_Thailand_s_next_generation_of_AI_startu.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.0090516,
+      "duration_ms": 269261,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-08-28T19-08-01-717Z_databricks_Beyond_answers__New_Genie_One_features_to_turn_ins.json",
+      "writer_output": "WRITER_2026-08-28T19-08-01-717Z_databricks_Beyond_answers__New_Genie_One_features_to_turn_ins.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.01400478,
+      "duration_ms": 42298,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    }
+  ],
+  "finished_at": "2026-08-28T19:13:40.609Z",
+  "duration_seconds": 338.576
+}
