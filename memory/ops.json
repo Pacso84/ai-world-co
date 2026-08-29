@@ -1,86 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178784684877495",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-08-27T16:07:28.774Z",
-      "updated": "2026-08-27T16:07:28.979Z"
-    },
-    {
-      "id": "t178784684898058",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-08-27T16:07:28.980Z",
-      "updated": "2026-08-27T16:08:39.211Z"
-    },
-    {
-      "id": "t178784691921391",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-08-27T16:08:39.213Z",
-      "updated": "2026-08-27T16:09:36.732Z"
-    },
-    {
-      "id": "t178784697673455",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-27T16:09:36.734Z",
-      "updated": "2026-08-27T16:16:16.192Z"
-    },
-    {
-      "id": "t178784737619364",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-27T16:16:16.193Z",
-      "updated": "2026-08-27T16:17:08.923Z"
-    },
-    {
-      "id": "t178784742892652",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-08-27T16:17:08.926Z",
-      "updated": "2026-08-27T16:17:24.115Z"
-    },
-    {
-      "id": "t178784744416347",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-27T16:17:24.163Z",
-      "updated": "2026-08-27T16:17:35.628Z"
-    },
-    {
-      "id": "t178784745563029",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-08-27T16:17:35.630Z",
-      "updated": "2026-08-27T16:18:03.923Z"
-    },
-    {
-      "id": "t178784748392592",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-27T16:18:03.925Z",
-      "updated": "2026-08-27T16:18:14.928Z"
-    },
-    {
-      "id": "t178784749493069",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-08-27T16:18:14.930Z",
-      "updated": "2026-08-27T16:18:36.764Z"
-    },
-    {
       "id": "t178785535703740",
       "title": "Run ceo",
       "status": "done",
@@ -479,25 +399,89 @@
       "agent": "publisher",
       "created": "2026-08-29T05:05:07.664Z",
       "updated": "2026-08-29T05:05:18.906Z"
+    },
+    {
+      "id": "t178801005206631",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-08-29T13:27:32.066Z",
+      "updated": "2026-08-29T13:27:32.239Z"
+    },
+    {
+      "id": "t178801005224139",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-08-29T13:27:32.241Z",
+      "updated": "2026-08-29T13:27:48.186Z"
+    },
+    {
+      "id": "t178801006818869",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-08-29T13:27:48.188Z",
+      "updated": "2026-08-29T13:27:48.387Z"
+    },
+    {
+      "id": "t178801006838928",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-29T13:27:48.389Z",
+      "updated": "2026-08-29T13:27:48.558Z"
+    },
+    {
+      "id": "t178801006856045",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-29T13:27:48.560Z",
+      "updated": "2026-08-29T13:27:48.734Z"
+    },
+    {
+      "id": "t178801006873729",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-08-29T13:27:48.737Z",
+      "updated": "2026-08-29T13:27:48.953Z"
+    },
+    {
+      "id": "t178801006900084",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-29T13:27:49.000Z",
+      "updated": "2026-08-29T13:27:49.233Z"
+    },
+    {
+      "id": "t17880100692359",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-08-29T13:27:49.235Z",
+      "updated": "2026-08-29T13:27:49.453Z"
+    },
+    {
+      "id": "t178801006945548",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-29T13:27:49.455Z",
+      "updated": "2026-08-29T13:28:08.011Z"
+    },
+    {
+      "id": "t178801008801310",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-08-29T13:28:08.013Z",
+      "updated": "2026-08-29T13:28:24.661Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178704181110976",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The line-up looks solid and ready — practical articles like complaint letters and pet-sitting agreements give readers real value, while privacy and everyday use guides build trust. One small note: art",
-      "agent": "publisher",
-      "at": "2026-08-18T08:30:11.109Z",
-      "loud": false
-    },
-    {
-      "id": "n178704182032937",
-      "level": "success",
-      "text": "0 hír + 2 útmutató publikálva (költség: $0.0073).",
-      "agent": "ceo",
-      "at": "2026-08-18T08:30:20.329Z",
-      "loud": false
-    },
     {
       "id": "n178707019378472",
       "level": "info",
@@ -1281,27 +1265,25 @@
       "agent": "ceo",
       "at": "2026-08-29T05:05:18.931Z",
       "loud": false
+    },
+    {
+      "id": "n178801009151599",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). A solid, varied line-up covering privacy, practical writing tasks, and personal moments—nice mix that shows everyday AI use. One quick fix: \"Qwen Chat\" should be just \"Qwen\" per our naming standard (s",
+      "agent": "publisher",
+      "at": "2026-08-29T13:28:11.515Z",
+      "loud": false
+    },
+    {
+      "id": "n178801010470067",
+      "level": "info",
+      "text": "Pipeline lefutott — ma nem volt publikálható új tartalom.",
+      "agent": "ceo",
+      "at": "2026-08-29T13:28:24.700Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178724300372495",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"How ChatGPT Work helps Stampli move ideas to market\" — mi a baj: Opening productivity claim has no source citation — consider linking to the Stampli case study or softening to 'Some teams report...'; Codex is mentioned in Step 4 but the tool name could use the short official form (Codex) and a brief clarification on how to access it for readers who may not have an account",
-      "ref": "2026-08-20T16-22-15-024Z_openai-blog_How_ChatGPT_Work_helps_Stampli_move_ideas_to_marke.json",
-      "at": "2026-08-20T16:23:23.724Z"
-    },
-    {
-      "id": "m178724301791446",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"How ChatGPT Work helps Stampli move ideas to market\" — javítva: Opening productivity claim has no source citation — consider linking to the Stampli case study or softening to 'Some teams report...'; Codex is mentioned in Step 4 but the tool name could use the short official form (Codex) and a brief clarification on how to access it for readers who may not have an account; újraküldöm.",
-      "ref": "2026-08-20T16-22-15-024Z_openai-blog_How_ChatGPT_Work_helps_Stampli_move_ideas_to_marke.json",
-      "at": "2026-08-20T16:23:37.914Z"
-    },
     {
       "id": "m178724304040488",
       "from": "ellenorzo",
@@ -2646,6 +2628,24 @@
       "text": "6 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-08-29T05:16:58.107Z"
+    },
+    {
+      "id": "m178801008800241",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-08-29T13:28:08.002Z"
+    },
+    {
+      "id": "m178801013179368",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Brainstorm product names for a new startup using G\" — The purple sparkle icon in the bottom navigation bar on mobile (interface may have changed); Grok works 'usually under 15 seconds' (performance claim unverifiable now)",
+      "ref": "ARTICLE_GUIDE_brainstorm-product-names-for-a-new-startup-using-grok-on-x.json",
+      "at": "2026-08-29T13:28:51.793Z"
     }
   ]
 }
