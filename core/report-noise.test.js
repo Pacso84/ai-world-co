@@ -100,9 +100,35 @@ t('📝 a helyesírás-szám JAVULÁSA néma, a CSÚCS fölé menés hangos', ()
 
   // A visszakapaszkodás a csúcs ALATT még mindig néma…
   assert.deepEqual(szurZajt([HELYESIRAS.replace('átnézésre: 200', 'átnézésre: 195')], a2.allapot).sorok, []);
-  // …a csúcs FÖLÖTT viszont már nem.
+  // …a tűréshatár FÖLÖTT viszont már nem (200 × 1,15 = 230).
   const rosszabb = HELYESIRAS.replace('átnézésre: 200', 'átnézésre: 240');
   assert.deepEqual(szurZajt([rosszabb], a2.allapot).sorok, [rosszabb]);
+});
+
+t('📈 A VALÓDI ESET: a cikkállománnyal EGYÜTT növő szám NEM szólal meg', () => {
+  // 2026-08-29, az első éles nap tanulsága: a sor visszajött a jelentésbe,
+  // mert 201 → 207. Csakhogy közben 821 → 841 cikk lett — arányban 24,5% →
+  // 24,6%, vagyis lapos. A puszta „nagyobb, mint eddig" szabály így majdnem
+  // minden nap átengedte volna pont azt, amit ki akartunk szűrni.
+  const nap1 = '📝 Helyesírás (821 cikk átnézve) — átnézésre: 201 — priorizált → prioritással';
+  const nap2 = '📝 Helyesírás (841 cikk átnézve) — átnézésre: 207 — priorizált → prioritással';
+  const a = szurZajt([nap1], {}).allapot;
+  assert.equal(a.helyesiras, 201);
+  const r = szurZajt([nap2], a);
+  assert.deepEqual(r.sorok, [], 'a napi sodródás megint zajt csinált');
+  assert.ok(r.indokok.helyesiras.includes('nem romlott'), r.indokok.helyesiras);
+
+  // …de egy VALÓDI ugrás (több mint 15%) továbbra is átmegy.
+  const ugras = nap2.replace('átnézésre: 207', 'átnézésre: 260');
+  assert.deepEqual(szurZajt([ugras], a).sorok, [ugras], 'a valódi romlást is elnyelte');
+});
+
+t('✂️ a csonka-sornál NINCS tűrés — EGY új elvágott szöveg is hír', () => {
+  // A tűrés rule-onként külön: itt 54 már a keret-mentő romlását jelentené,
+  // 15%-os tűréssel viszont csak 61-nél szólalna meg.
+  const alap = szurZajt([CSONKA], {}).allapot;
+  const egyTobb = CSONKA.replace(': 53 ', ': 54 ');
+  assert.deepEqual(szurZajt([egyTobb], alap).sorok, [egyTobb], 'az 54. csonka szöveg elnémult');
 });
 
 t('⚠️ a helyesírás-sorból a JÓ számot olvassuk ki', () => {

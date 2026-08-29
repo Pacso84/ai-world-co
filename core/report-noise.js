@@ -38,7 +38,9 @@ export const SZABALYOK = [
   { kulcs: 'nemTermel', minta: '🔎 Nem termel', mod: 'halmaz', nev: 'források' },
   { kulcs: 'minosegOr', minta: '🧹 Minőség-őr', mod: 'valtozas', nev: 'minőség-őr' },
   { kulcs: 'i18n', minta: '🈳 I18N-ŐRSZEM', mod: 'valtozas', nev: 'nyelvi foltok' },
-  { kulcs: 'helyesiras', minta: '📝 Helyesírás', mod: 'novekedes', nev: 'helyesírás', szamMinta: /átnézésre:\s*(\d+)/ },
+  // TŰRÉS 15%: a szám a cikkállománnyal EGYÜTT nő (201/821 → 207/841 = lapos
+  // arány), tehát a puszta „nagyobb, mint eddig" majdnem minden nap átengedte.
+  { kulcs: 'helyesiras', minta: '📝 Helyesírás', mod: 'novekedes', nev: 'helyesírás', szamMinta: /átnézésre:\s*(\d+)/, tures: 0.15 },
   // A user 2026-08-26-án LEZÁRTA az 53 meglévő csonka szöveget („maradjon
   // így"). Egy lezárt döntést nyitott problémaként jelenteni napi zaj — de
   // egy 54. MÁR ÚJ HIBA lenne (a router keret-mentője romlott el), ezért a
@@ -84,7 +86,15 @@ export function dontes(szabaly, sor, elozo) {
     const n = szamKi(sor, szabaly.szamMinta);
     if (n === null) return { mutasd: false, ujAllapot: elozo ?? null, indok: 'nincs szám a sorban' };
     const alap = typeof elozo === 'number' ? elozo : null;
-    const mutasd = alap !== null && n > alap;
+    // ⚠️ TŰRÉSHATÁR (2026-08-29, az első éles nap tanulsága). A puszta
+    // „nagyobb, mint eddig" szabály a helyesírás-sort MAJDNEM MINDEN NAP
+    // átengedte, mert a szám a cikkállománnyal EGYÜTT NŐ: 201 → 207,
+    // miközben 821 → 841 cikk, vagyis arányban 24,5% → 24,6% (lapos).
+    // Pont az a sor jött vissza naponta, amit ki akartunk szűrni.
+    // A tűrés RULE-onként külön: a csonka szövegeknél 0, mert ott EGY új
+    // elvágott szöveg is valódi hír (a keret-mentő romlását jelentené).
+    const kuszob = alap === null ? null : alap * (1 + (szabaly.tures || 0));
+    const mutasd = kuszob !== null && n > kuszob;
     // A CSÚCSOT tartjuk alapnak, nem az utolsó értéket: különben egy javulás
     // után a visszakapaszkodás fölöslegesen riasztana (200 → 190 → 195).
     return { mutasd, ujAllapot: alap === null ? n : Math.max(alap, n), indok: mutasd ? `nőtt (${alap} → ${n})` : 'nem romlott' };

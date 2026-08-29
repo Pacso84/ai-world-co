@@ -78,6 +78,12 @@ const ASSISTANT_NAMES = [
   // eszközök
   'Alexa', 'Alexa+', 'Apple Intelligence', 'ChatGPT', 'ChatRTX', 'Claude',
   'Copilot', 'DeepSeek Chat', 'Gemini', 'GitHub Copilot', 'Grok', 'Le Chat',
+  // KÜLÖN a 'Copilot'-tól (2026-08-29): a Microsoft 365 Copilot FIZETŐS,
+  // céges licenchez kötött termék, a Microsoft Copilot pedig ingyenes.
+  // Egy chipbe olvasztva az olvasó azt hinné, ugyanaz — ez az a hiba, ami a
+  // Genie One útmutatónál megtörtént (olyan termékhez írtunk, amit az
+  // olvasónk nem tud használni). Chat-ablak, tehát asszisztens.
+  'Microsoft 365 Copilot',
   'Meta AI', 'Mistral AI', 'NotebookLM', 'Qwen', 'Qwen Chat'
 ];
 

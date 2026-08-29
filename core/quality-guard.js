@@ -66,7 +66,14 @@ export function canonicalChip(tool, company) {
     if (tool.toLowerCase().startsWith(full.toLowerCase() + ' ')) return full;
   if (company && tool.toLowerCase().startsWith(company.toLowerCase() + ' ')) {
     const rest = tool.slice(company.length + 1).trim();
-    if (rest.length >= 3 && !GENERIC_REST_RX.test(rest)) return rest;   // "NVIDIA ChatRTX"→"ChatRTX"
+    // ⚠️ SZÁMMAL KEZDŐDŐ MARADÉK NEM TERMÉKNÉV (2026-08-29, élő hiba volt).
+    // A "Microsoft 365 Copilot" cégnév-levágásból **„365 Copilot"** lett, és
+    // ez a KITALÁLT név 6 helyen kint volt az olvasónál (a cikkben és a
+    // /tools oldalon). A szabály a "NVIDIA ChatRTX"→"ChatRTX" esetre készült;
+    // a termék-számot (365, 3.5, 4o) viszont nem szabad leszakítani a névről.
+    // Ugyanaz a lecke, mint a helyesírás-védelemnél: az ELŐTAG-ILLESZTÉS
+    // magabiztosan gyárt nem létező szóalakokat.
+    if (rest.length >= 3 && !GENERIC_REST_RX.test(rest) && !/^\d/.test(rest)) return rest;
   }
   return tool;   // amit nem értünk, azt NEM bántjuk — majd az őr jelzi
 }
