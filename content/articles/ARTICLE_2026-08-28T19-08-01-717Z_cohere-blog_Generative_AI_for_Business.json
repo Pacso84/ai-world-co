@@ -1,0 +1,62 @@
+{
+  "_meta": {
+    "written_at": "2026-08-29T04:49:35.652Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.01284888,
+    "original_draft": "2026-08-28T19-08-01-717Z_cohere-blog_Generative_AI_for_Business.json",
+    "source_id": "cohere-blog",
+    "source_name": "Cohere (hivatalos)",
+    "source_link": "https://cohere.com/blog/generative-ai-for-business",
+    "source_links": [
+      "https://cohere.com/blog/generative-ai-for-business"
+    ],
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "published_at": "2026-08-29T04:50:54.991Z",
+    "slug": "generative-ai-for-business-what-it-does-and-doesn-t",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 860
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-crafted explainer that hits all structural beats, explains technical terms accessibly, maintains a warm encouraging tone, and avoids clichés or prohibited content. The what-this-means-for-you section is particularly strong with genuinely useful differentiated advice for three reader personas.",
+      "_aiCost": 0.00189318,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-08-29T04:51:33.026Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is a generic explainer article about generative AI in business, not news about a specific named feature or tool",
+    "image_v": 2,
+    "image_at": "2026-08-29T05:02:54.474Z",
+    "seo": {
+      "meta_description": "What is generative AI for business? A plain-English guide explaining what it does, real examples, and why human review still matters.",
+      "keywords": [
+        "generative AI for business",
+        "what does generative AI do",
+        "AI content creation tools",
+        "how to use AI at work",
+        "AI business applications",
+        "generative AI examples"
+      ],
+      "seo_score": 7,
+      "suggestions": [
+        "Add more concrete business use cases across different departments (customer service, HR, finance) beyond the marketing example to capture wider search intent",
+        "Include a short FAQ section targeting question-based searches like 'what is AI good for at work' to improve featured snippet potential",
+        "Add a simple glossary or key terms box to help readers unfamiliar with AI terminology, which can boost time-on-page and reduce bounce rates"
+      ],
+      "optimised_at": "2026-08-29T05:04:12.250Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Generative AI for Business: What It Does (and Doesn't)\"\nsubtitle: \"A plain-English guide for anyone curious about how this technology fits into real work\"\ncategory: \"explainer\"\naudience: \"business\"\nread_time_minutes: 4\ntags: [\"generative-ai\", \"business\", \"productivity\", \"getting-started\"]\n---\n\n# Generative AI for Business: What It Does (and Doesn't)\n\n> **In short:** Generative AI is software that creates new content — text, images, code — from patterns it learned during training. Businesses use it most for drafting, summarizing, and brainstorming, but every output needs a human check before it goes anywhere important.\n\nLast Tuesday a small marketing team finished a campaign in two days instead of two weeks. The catch: an AI wrote the first draft of every email, social post, and headline — and a human still had to review, rewrite, and approve each one. That's generative AI in business today, and it's less mysterious than the headlines suggest.\n\n## What generative AI actually is\n\nGenerative AI is software that creates new content — text, images, audio, code — based on patterns it learned from large amounts of examples. When you ask it to \"write a friendly email about a delayed shipment,\" it isn't looking anything up; it's predicting, word by word, what a good answer would look like.\n\nMost business tools today run on large language models, often shortened to LLMs. Think of them as the engine behind tools like ChatGPT or Claude. You type a question or instruction (called a prompt), and the model produces an answer in seconds.\n\nThis is different from older software that followed fixed rules. A spreadsheet adds the numbers you put in. A generative AI invents the wording each time, based on what it has learned. That flexibility is why it feels so new — and why the results vary so much.\n\n## Where businesses are actually using it\n\nThe most common uses are surprisingly mundane:\n\n- **Drafting first versions** — emails, proposals, job descriptions, contracts (a human rewrites before sending)\n- **Summarizing long stuff** — meeting transcripts, research reports, long email threads\n- **Brainstorming** — names for a product, angles for a campaign, questions for an interview\n- **Customer service** — drafting replies that agents then edit\n- **Coding help** — suggesting code snippets or explaining error messages, mostly for the people who build software\n- **Translation and rewriting** — adjusting tone, length, or formality\n\nA useful mental model: AI is good at producing a starting point. A human still owns the finishing point.\n\n## The real challenges\n\nThree problems come up over and over.\n\nFirst, hallucination. This is when an AI confidently states something that isn't true — a fake statistic, a made-up case study, a non-existent regulation. The output reads like an expert wrote it. It didn't.\n\nSecond, data privacy. If you paste a customer list or a confidential contract into a public AI tool, you've just shared it with that provider's servers. Many companies now have policies about what can and can't go in.\n\nThird, the \"good enough\" trap. AI-generated text is usually fine. Fine is not the same as great, and customers can often tell. The teams getting the most value use AI for speed, then add the human touch that makes the work feel like them.\n\n## A simple way to think about adoption\n\nDon't try to \"AI-ify the whole company.\" Pick one small, low-stakes task where speed matters more than perfection — first-draft emails, meeting notes, a FAQ page. Try one of the mainstream tools for two weeks. Track the time saved and the rewrites needed.\n\nIf it helps, expand. If it doesn't, try a different task. The point of the first project isn't transformation; it's learning what the tool is actually good at in your specific work.\n\n## What this means for you\n\n- **If you run a small team or a one-person business**: Start with a single task that eats your time — drafting client emails, summarizing calls, or turning bullet points into paragraphs. Use a mainstream tool with its free or entry-level plan; check the current pricing on the provider's site. Always review the output before sending or publishing.\n- **If you work somewhere larger**: Before pasting anything sensitive into an AI tool, check your company's policy. Many organizations now have approved tools and clear \"do not upload\" rules. Following the policy isn't bureaucracy; it's how you protect customers and your job.\n- **If you're nervous about getting left behind**: You don't need to become an AI expert. You need to get comfortable using one tool for one task well. That small habit is what separates people who feel in control from people who feel behind.\n\n## The bottom line\n\nGenerative AI in business isn't a robot takeover or a magic wand. It's a fast first-drafter that needs an editor. The companies getting real value aren't the ones with the biggest budgets — they're the ones that picked one task, tried it for a couple of weeks, and kept what worked. Your move: pick one task this week, open one of the mainstream tools, and see what it produces. You'll learn more from twenty minutes of doing than from twenty articles of reading.",
+  "original_title": "Generative AI for Business"
+}

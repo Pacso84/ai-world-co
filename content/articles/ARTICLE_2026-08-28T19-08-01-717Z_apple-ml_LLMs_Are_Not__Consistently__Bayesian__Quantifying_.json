@@ -1,0 +1,62 @@
+{
+  "_meta": {
+    "written_at": "2026-08-29T04:50:30.907Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.01001328,
+    "original_draft": "2026-08-28T19-08-01-717Z_apple-ml_LLMs_Are_Not__Consistently__Bayesian__Quantifying_.json",
+    "source_id": "apple-ml",
+    "source_name": "Apple Machine Learning Research (hivatalos)",
+    "source_link": "https://machinelearning.apple.com/research/llms-not-consistently-bayesian",
+    "source_links": [
+      "https://machinelearning.apple.com/research/llms-not-consistently-bayesian"
+    ],
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "published_at": "2026-08-29T04:50:44.589Z",
+    "slug": "why-your-ai-assistant-sometimes-contradicts-itself-and-what-to-do-abou",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 710
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Excellent explainer that breaks down a complex AI research concept into accessible, practical advice. The hook lands, Bayesian updating is explained with a clear everyday analogy, the 'What this means for you' section is organized by user type, and the wrap-up includes a concrete next step. No prohibited content, no clichés, no competitor put-downs. Ready to publish.",
+      "_aiCost": 0.0014241,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-08-29T04:51:30.736Z",
+    "guide_worthy": false,
+    "pairing_reason": "Generic explainer about LLM behavior without any specific named feature or tool introduced for users to use",
+    "image_v": 2,
+    "image_at": "2026-08-29T05:02:46.014Z",
+    "seo": {
+      "meta_description": "Why does your AI assistant contradict itself? Research shows chatbots don't update confidence logically — here's how to use them wisely.",
+      "keywords": [
+        "why AI contradicts itself",
+        "AI chatbot keeps changing answer",
+        "can AI be trusted",
+        "how to use AI properly",
+        "AI confidence levels",
+        "when to double-check AI answers"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more specific long-tail keywords like 'why does ChatGPT disagree with itself' to capture direct user queries",
+        "Consider adding a section on practical tips for verifying AI outputs to improve E-E-A-T signals",
+        "Include the research source name in the article body to boost credibility for search"
+      ],
+      "optimised_at": "2026-08-29T05:03:59.400Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Why Your AI Assistant Sometimes Contradicts Itself (And What To Do About It)\"\nsubtitle: \"AI chatbots don't update their confidence the way logic says they should. Here's how to use that knowledge without losing trust in them.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"llm\", \"ai-reliability\", \"critical-thinking\", \"prompt-tips\"]\n---\n\n# Why Your AI Assistant Sometimes Contradicts Itself (And What To Do About It)\n\n> **In short:** New research finds AI chatbots don't update their confidence the way a logically consistent system should — so the same assistant can sound very sure about opposite things in one conversation. The fix isn't to distrust them; it's to know when to double-check.\n\nYou've probably had this happen. You ask an AI a question, it gives you a confident answer. You push back with a small detail, and suddenly it agrees with you — even though that detail shouldn't have flipped its answer. It's not your imagination. Recent research shows this is a measurable pattern in how today's AI chatbots handle probability.\n\n## What \"Bayesian\" means, in plain English\n\nResearchers describe the problem using a word from probability theory: **Bayesian updating** — named after Thomas Bayes, a mathematician from the 1700s. The idea is simple. Imagine you're 60% sure it will rain tomorrow. Then you see a forecast calling for clear skies. A logical mind would adjust that 60% downward — maybe to 40%. New evidence, updated belief.\n\nThat's what a \"Bayesian\" thinker does: they shift their confidence up or down based on evidence, in roughly the right amounts. A consistent reasoner never says \"I'm 80% sure\" and \"I'm 30% sure\" about the same fact, depending on which order you ask.\n\n## Why AI chatbots struggle with this\n\nLarge language models (LLMs) are prediction machines — they generate the next most likely word in a sentence, one word at a time. They weren't trained to track a single, internal \"confidence level\" that updates as the conversation grows. So when you rephrase a question, or add a piece of evidence partway through, the model often answers as if it's seeing the question fresh.\n\nThe new research put it bluntly: LLMs are **not consistently Bayesian**. They can sound more confident than the evidence supports, or flip their answer after new information without good reason. This isn't a bug being patched next week — it's a fundamental trait of how current LLMs work. The same issue affects the major assistants you may already use, like ChatGPT, Claude, and Gemini.\n\n## What this means for you\n\n- **If you use AI for everyday questions** (recipes, summaries, travel ideas): Trust the answer when it's easy to verify yourself — a recipe, a famous date, a well-known fact. Be more cautious when the question involves judgment, prediction, or anything that affects a decision you'll have to live with.\n- **If you use AI at work** (drafting, research, brainstorming): Treat the AI's confidence as a vibe, not a measurement. When the answer matters — a number in a report, a quote, a legal or medical point — verify it from a primary source before you act on it.\n- **If you want a more reliable answer right now**: Ask the AI to list what would change its mind. A simple prompt like *\"What's the strongest evidence that could prove you wrong?\"* forces the model to surface uncertainty you can actually use.\n- **If you're worried about over-trusting AI**: A good rule of thumb — if the AI sounds very sure and the stakes are high, slow down. Confidence is easy for an LLM to fake; accuracy is not.\n\n## Wrap-up\n\nToday's AI assistants are powerful, but they're not careful reasoners. They don't keep a hidden scoreboard of how confident they are, so they can sound just as certain about two opposite answers in the same conversation. The practical move isn't to distrust them — it's to match your trust to the stakes. Easy stuff, trust away. Anything that matters, double-check.\n\nYour next step today: the next time an AI gives you a confident answer you plan to act on, spend 30 seconds asking it what would change its mind. The reply will tell you a lot — and it's the single best habit you can build with these tools.",
+  "original_title": "LLMs Are Not (Consistently) Bayesian: Quantifying Internal (In)consistencies of LLMs’ Probabilistic Beliefs"
+}

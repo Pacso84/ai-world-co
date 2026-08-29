@@ -1,102 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t17878090803313",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-08-27T05:38:00.331Z",
-      "updated": "2026-08-27T05:38:00.510Z"
-    },
-    {
-      "id": "t178780908051159",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-08-27T05:38:00.511Z",
-      "updated": "2026-08-27T05:38:26.020Z"
-    },
-    {
-      "id": "t178780910602271",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-08-27T05:38:26.022Z",
-      "updated": "2026-08-27T05:38:26.245Z"
-    },
-    {
-      "id": "t178780910624781",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-27T05:38:26.247Z",
-      "updated": "2026-08-27T05:38:26.437Z"
-    },
-    {
-      "id": "t178780910643965",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-27T05:38:26.439Z",
-      "updated": "2026-08-27T05:38:26.627Z"
-    },
-    {
-      "id": "t178780910663086",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-27T05:38:26.630Z",
-      "updated": "2026-08-27T05:41:00.629Z"
-    },
-    {
-      "id": "t178780926063088",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-27T05:41:00.630Z",
-      "updated": "2026-08-27T05:41:25.883Z"
-    },
-    {
-      "id": "t178780928588574",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-08-27T05:41:25.885Z",
-      "updated": "2026-08-27T05:41:26.111Z"
-    },
-    {
-      "id": "t178780928615592",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-27T05:41:26.155Z",
-      "updated": "2026-08-27T05:41:37.678Z"
-    },
-    {
-      "id": "t178780929768012",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-08-27T05:41:37.680Z",
-      "updated": "2026-08-27T05:41:44.865Z"
-    },
-    {
-      "id": "t178780930486662",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-27T05:41:44.866Z",
-      "updated": "2026-08-27T05:42:01.457Z"
-    },
-    {
-      "id": "t178780932145950",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-08-27T05:42:01.459Z",
-      "updated": "2026-08-27T05:42:22.999Z"
-    },
-    {
       "id": "t178784684877495",
       "title": "Run ceo",
       "status": "done",
@@ -479,33 +383,105 @@
       "agent": "publisher",
       "created": "2026-08-28T19:25:05.093Z",
       "updated": "2026-08-28T19:25:19.871Z"
+    },
+    {
+      "id": "t178797852187371",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-08-29T04:42:01.873Z",
+      "updated": "2026-08-29T04:42:01.983Z"
+    },
+    {
+      "id": "t178797852198455",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-08-29T04:42:01.984Z",
+      "updated": "2026-08-29T04:42:37.048Z"
+    },
+    {
+      "id": "t178797855704955",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-08-29T04:42:37.049Z",
+      "updated": "2026-08-29T04:42:37.159Z"
+    },
+    {
+      "id": "t17879785571603",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-29T04:42:37.160Z",
+      "updated": "2026-08-29T04:50:30.917Z"
+    },
+    {
+      "id": "t17879790309189",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-29T04:50:30.918Z",
+      "updated": "2026-08-29T04:51:25.338Z"
+    },
+    {
+      "id": "t178797908534062",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-08-29T04:51:25.340Z",
+      "updated": "2026-08-29T04:51:46.643Z"
+    },
+    {
+      "id": "t178797910667119",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-29T04:51:46.671Z",
+      "updated": "2026-08-29T05:01:21.528Z"
+    },
+    {
+      "id": "t178797968152950",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-29T05:01:21.529Z",
+      "updated": "2026-08-29T05:02:36.111Z"
+    },
+    {
+      "id": "t178797975613412",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-29T05:02:36.134Z",
+      "updated": "2026-08-29T05:03:52.756Z"
+    },
+    {
+      "id": "t178797983275713",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-08-29T05:03:52.757Z",
+      "updated": "2026-08-29T05:05:00.919Z"
+    },
+    {
+      "id": "t178797990092049",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-29T05:05:00.920Z",
+      "updated": "2026-08-29T05:05:07.662Z"
+    },
+    {
+      "id": "t17879799076644",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-08-29T05:05:07.664Z",
+      "updated": "2026-08-29T05:05:18.906Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178701506555193",
-      "level": "success",
-      "text": "4 hír + 4 útmutató publikálva (költség: $0.1860).",
-      "agent": "ceo",
-      "at": "2026-08-18T01:04:25.551Z",
-      "loud": false
-    },
-    {
-      "id": "n178704162438319",
-      "level": "warn",
-      "text": "📨 guide → ceo: Kell még adat: \"Use Gemini to plan a trip across multiple Google apps\" — az Ellenőrző tényt/forrást kér, amit nem találh",
-      "agent": "guide",
-      "at": "2026-08-18T08:27:04.383Z",
-      "loud": false
-    },
-    {
-      "id": "n178704178538034",
-      "level": "info",
-      "text": "SEO: 2 cikk optimalizálva (átlag 9.0/10).",
-      "agent": "seo",
-      "at": "2026-08-18T08:29:45.380Z",
-      "loud": false
-    },
     {
       "id": "n178704181110976",
       "level": "success",
@@ -1281,27 +1257,33 @@
       "agent": "ceo",
       "at": "2026-08-28T19:25:19.904Z",
       "loud": false
+    },
+    {
+      "id": "n178797990091374",
+      "level": "info",
+      "text": "SEO: 8 cikk optimalizálva (átlag 8.1/10).",
+      "agent": "seo",
+      "at": "2026-08-29T05:05:00.913Z",
+      "loud": false
+    },
+    {
+      "id": "n17879799114877",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The line-up looks solid and ready to go — the mix of privacy guidance and practical \"write this in minutes with AI\" articles serves readers well across both caution and creativity. One gentle note: th",
+      "agent": "publisher",
+      "at": "2026-08-29T05:05:11.487Z",
+      "loud": false
+    },
+    {
+      "id": "n178797991893138",
+      "level": "success",
+      "text": "4 hír + 4 útmutató publikálva (költség: $0.1133).",
+      "agent": "ceo",
+      "at": "2026-08-29T05:05:18.931Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178718743218075",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-08-20T00:57:12.180Z"
-    },
-    {
-      "id": "m17872143126265",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-08-20T08:25:12.626Z"
-    },
     {
       "id": "m178721443963086",
       "from": "fact-check",
@@ -2647,6 +2629,24 @@
       "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Automating repetitive Git commands using Copilot s\" — GitHub Copilot is a paid service. Make sure you have an active subscription for Copilot and Copilot Chat.",
       "ref": "ARTICLE_GUIDE_automating-repetitive-git-commands-using-copilot-suggestions.json",
       "at": "2026-08-28T19:45:24.508Z"
+    },
+    {
+      "id": "m178797990765259",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-08-29T05:05:07.652Z"
+    },
+    {
+      "id": "m178797997849294",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Brainstorm creative story prompts for your hobby n\" — Step 1: \"look for an option labeled 'Playground'\" — too specific about labeling; Step 2: \"Avoid models with names like 'Embed' or 'Rerank'\" — oversimplification, these are valid product categories not Playground models; Step 5: mentions specific button labels \"Generate,' 'Run,' 'Subm",
+      "ref": "ARTICLE_GUIDE_brainstorm-creative-story-prompts-for-your-hobby-novel-using.json",
+      "at": "2026-08-29T05:06:18.492Z"
     }
   ]
 }

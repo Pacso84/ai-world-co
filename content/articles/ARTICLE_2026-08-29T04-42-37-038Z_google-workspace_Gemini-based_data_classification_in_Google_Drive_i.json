@@ -1,0 +1,61 @@
+{
+  "_meta": {
+    "written_at": "2026-08-29T04:48:05.611Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00974358,
+    "original_draft": "2026-08-29T04-42-37-038Z_google-workspace_Gemini-based_data_classification_in_Google_Drive_i.json",
+    "source_id": "google-workspace",
+    "source_name": "Google Workspace Updates (hivatalos)",
+    "source_link": "http://workspaceupdates.googleblog.com/2026/08/gemini-based-data-classification-in-Google-Drive-is-now-available-in-open-beta.html",
+    "source_links": [
+      "http://workspaceupdates.googleblog.com/2026/08/gemini-based-data-classification-in-Google-Drive-is-now-available-in-open-beta.html"
+    ],
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "published_at": "2026-08-29T04:51:14.579Z",
+    "slug": "google-drive-s-new-ai-file-labeling-what-it-is-and-who-it-affects",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 803
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured explainer that meets all quality criteria: clear hook, plain-language definitions of technical terms (data classification, DLP, AI agents), audience-segmented impact section with four distinct reader types, and a useful wrap-up. No prohibited content, no clichés, respectful tone throughout, and all claims trace back to the Google Workspace Updates source.",
+      "_aiCost": 0.0016458,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-08-29T04:51:41.492Z",
+    "guide_worthy": false,
+    "pairing_reason": "Feature is enterprise admin-controlled (IT teams enable it), not a consumer-facing tool individuals actively use themselves",
+    "image_v": 2,
+    "image_at": "2026-08-29T05:03:09.205Z",
+    "seo": {
+      "meta_description": "Google Drive now uses Gemini AI to automatically label sensitive files in business accounts. Learn what this beta feature does and who's affected.",
+      "keywords": [
+        "Google Drive AI file labeling",
+        "Google Drive automatic file labeling",
+        "Gemini AI Google Drive business",
+        "what is Google Drive file labeling",
+        "Google Drive sensitive files"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add the release date or 'beta' in the title to boost freshness signals",
+        "Include a section on how to enable or find this feature in Drive for better 'how-to' search intent",
+        "Consider adding related terms like 'data security' or 'compliance' for additional long-tail reach"
+      ],
+      "optimised_at": "2026-08-29T05:04:17.303Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Google Drive's New AI File Labeling: What It Is and Who It Affects\"\nsubtitle: \"Gemini now helps organizations automatically sort sensitive files in Drive — here's the plain-language breakdown\"\ncategory: \"explainer\"\naudience: \"business\"\nread_time_minutes: 4\ntags: [\"google-workspace\", \"gemini\", \"data-security\", \"enterprise-ai\"]\n---\n\n# Google Drive's New AI File Labeling: What It Is and Who It Affects\n\n> **In short:** Google Drive now uses Gemini AI to automatically label files in business accounts during an open beta. The labels help companies spot sensitive content, set retention rules, and stop AI helpers from grabbing the wrong files. Personal Google accounts aren't affected.\n\nYou've probably opened Google Drive at work and felt a small wave of guilt about the mess of folders, old contracts, and that one PDF from 2022. Imagine your company's IT team seeing the same thing — except they also have to worry about which files contain customer data, payroll details, or anything that legally can't leak. A new Gemini-powered feature aims to sort that out for them.\n\n## What \"data classification\" actually means\n\nData classification is just sorting files into categories based on how sensitive they are. A company might label a file \"Public,\" \"Internal,\" \"Confidential,\" or \"Restricted\" — think of the colored folders some schools use, but for digital documents.\n\nUntil now, humans had to apply those labels manually, which meant a lot of files never got labeled at all. That's a problem when an AI assistant or even a careless employee opens the wrong document. The new Gemini feature reads the contents of files and applies the right label automatically.\n\n## What Gemini adds to the mix\n\nGemini (Google's family of AI models — the same technology behind the Gemini chatbot) does the reading. It looks at the text inside documents and compares it to rules the company has set up. A file full of credit card numbers gets one label. A draft press release gets another.\n\nOnce files have labels, three things become possible for the organization:\n\n- **Data loss prevention (DLP)** — stop a file from being shared outside the company if it's labeled sensitive\n- **Retention rules** — automatically delete old files when their label says they're no longer needed\n- **Audit trails** — when something does go wrong, investigators can search by label to find every related file\n\nThe \"agentic\" angle is the newest concern. An **AI agent** (think of it as a small automated helper that can open files, send emails, or fill in spreadsheets on its own) needs permission to act on files. Without labels, the agent can't easily tell which ones are safe to touch. With labels, the company can block the agent from opening anything marked \"Restricted\" — without slowing down its work on the public ones.\n\n## Where this is right now\n\nThe feature is in **open beta**, which means any organization with a Google Workspace account can try it without a special invitation from Google. The same labeling system now also covers more file types — not just Google Docs, but PDFs and files stored in shared drives.\n\nHow the labels work day-to-day depends on each company's setup, which is one reason the rollout is gradual.\n\n## What this means for you\n\n- **If you use Google Drive at work**: your IT team may quietly turn this on in the next few months. You might notice stricter warnings when you try to share certain files externally, or old files getting cleaned up automatically. Nothing changes about how you write your documents — the AI is just reading them.\n- **If you manage a team or run a small business on Workspace**: this is worth a conversation with whoever handles your admin settings. Automatic labeling saves hours of manual sorting and reduces the chance of a costly mistake, like emailing a customer list to the wrong person.\n- **If you use personal Google Drive (free Gmail account)**: this doesn't apply to you. Google has kept the feature inside Workspace business accounts. Your personal files aren't being scanned or labeled by Gemini.\n- **If you worry about AI reading company files**: that's a reasonable instinct. The labels are intended to stay inside your organization's Workspace setup, not feed into Gemini's general training. Your admin or data protection officer can confirm exactly how it's configured where you work.\n\n## Wrap-up\n\nAI labeling in Google Drive is one of those quiet background changes most workers never see directly but feel in small ways — fewer accidental shares, faster cleanup, fewer \"who has access to this?\" mysteries. For organizations, it's a step toward letting AI helpers operate safely inside a business without stepping on anything important. If your workplace uses Workspace, expect your admin team to be the ones making the decisions here — and to hear from them when they've turned it on.",
+  "original_title": "Gemini-based data classification in Google Drive is now available in open beta"
+}

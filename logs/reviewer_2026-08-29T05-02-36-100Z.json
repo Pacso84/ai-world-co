@@ -1,0 +1,41 @@
+{
+  "started_at": "2026-08-29T05:01:21.624Z",
+  "total": 4,
+  "passed": 4,
+  "failed": 0,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.013834408000000001,
+  "by_article": [
+    {
+      "writer": "WRITER_GUIDE_ask-any-ai-assistant-to-explain-the-confusing-parts-of-a-lea.json",
+      "article": "ARTICLE_GUIDE_ask-any-ai-assistant-to-explain-the-confusing-parts-of-a-lea.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.00235036
+    },
+    {
+      "writer": "WRITER_GUIDE_how-to-spot-an-ai-scam-call-fake-email-or-deepfake-voice-tod.json",
+      "article": "ARTICLE_GUIDE_how-to-spot-an-ai-scam-call-fake-email-or-deepfake-voice-tod.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.0023865
+    },
+    {
+      "writer": "WRITER_GUIDE_practice-a-salary-negotiation-with-any-ai-assistant-before-t.json",
+      "article": "ARTICLE_GUIDE_practice-a-salary-negotiation-with-any-ai-assistant-before-t.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.00286686
+    },
+    {
+      "writer": "WRITER_GUIDE_use-claude-to-rewrite-an-angry-email-so-it-says-what-you-act.json",
+      "article": "ARTICLE_GUIDE_use-claude-to-rewrite-an-angry-email-so-it-says-what-you-act.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0019155
+    }
+  ],
+  "finished_at": "2026-08-29T05:02:36.100Z",
+  "duration_seconds": 74.476
+}
