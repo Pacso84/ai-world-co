@@ -17,6 +17,7 @@
     "adelaide",
     "adjs",
     "adminból",
+    "admincsapat",
     "admineszközöket",
     "adminfeladatokhoz",
     "adminfelületével",
@@ -32,6 +33,7 @@
     "adminok",
     "adminokat",
     "adminokon",
+    "adok-kapokban",
     "adverzáriális",
     "agentic",
     "agentjei",
@@ -104,8 +106,10 @@
     "anyagoktól",
     "anyagon",
     "ap-southeast",
+    "apróbetűs",
     "apróságok",
     "apróságokra",
+    "apwg",
     "arroz",
     "artefakt",
     "artifactként",
@@ -124,6 +128,7 @@
     "autocomplete",
     "autocorrect",
     "avatarfunkciókat",
+    "avatarját",
     "avatarnak",
     "avatarod",
     "avatarok",
@@ -214,6 +219,7 @@
     "briefelnél",
     "briefen",
     "briefet",
+    "briefhez",
     "briefingedben",
     "briefinget",
     "briefingről",
@@ -507,6 +513,7 @@
     "e-mail-címmel",
     "e-mail-piszkozatot",
     "e-mail-választ",
+    "e-maileid",
     "ebook",
     "edbe",
     "edből",
@@ -658,6 +665,7 @@
     "felébresszd",
     "festékesvödör",
     "feszültséget",
+    "fillárt",
     "filmelőzetel",
     "filmszcéna",
     "filmszemcsésséget",
@@ -1051,6 +1059,7 @@
     "kuszaak",
     "kutatólaborokban",
     "kutatólaborokból",
+    "károkat",
     "kártyakötegelten",
     "kávéspoharat",
     "képanyagok",
@@ -1460,6 +1469,7 @@
     "oldalsávon",
     "olivabogyóra",
     "ollama",
+    "olvashatlanul",
     "olvashato",
     "olyasmig",
     "omat",
@@ -1598,6 +1608,7 @@
     "promptsegéd",
     "promptstílus",
     "prompttechnika",
+    "promptterületbe",
     "prompttrükk",
     "prompttámadás",
     "prompttámadások",
@@ -1641,6 +1652,7 @@
     "rakás",
     "ramenest",
     "readyplayer",
+    "rebranding-projektet",
     "reelhez",
     "refaktorálni",
     "refaktorálás",
@@ -1659,6 +1671,7 @@
     "rendszeren",
     "repod",
     "reportfraud",
+    "reportphishing",
     "repozitóriumokban",
     "reptéren",
     "requestet",
@@ -2070,6 +2083,7 @@
     "történetmagod",
     "történetmagokkal",
     "történetmagoknak",
+    "történetpromptok",
     "törzsszöveget",
     "túlformálisak",
     "uborkásüveg",
@@ -2243,6 +2257,7 @@
     "általa",
     "általam",
     "általuk",
+    "általánosságok",
     "általánosságokat",
     "általányosan",
     "ánál",
@@ -3355,6 +3370,11 @@
       "correct": "wellness",
       "at": "2026-08-28",
       "mondattal": true
+    },
+    "megbázható": {
+      "correct": "megbízható",
+      "at": "2026-08-29",
+      "mondattal": true
     }
   },
   "review": {
@@ -4304,11 +4324,21 @@
       "correct": "stage-elned",
       "at": "2026-08-28",
       "mondattal": true
+    },
+    "bayesiek": {
+      "correct": "bayesiánusok",
+      "at": "2026-08-29",
+      "mondattal": true
+    },
+    "cengedélyezi": {
+      "correct": "cégengedélyezi",
+      "at": "2026-08-29",
+      "mondattal": true
     }
   },
   "scan": {
-    "at": "2026-08-28",
-    "files": 833,
-    "candidates": 10
+    "at": "2026-08-29",
+    "files": 841,
+    "candidates": 18
   }
 }
