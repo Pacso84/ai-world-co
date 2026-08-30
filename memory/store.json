@@ -1,7 +1,7 @@
 {
   "_meta": {
     "note": "AI World rétegzett memória (hot/warm/cold, salience decay).",
-    "updated": "2026-08-30T12:13:53.112Z"
+    "updated": "2026-08-30T13:25:23.659Z"
   },
   "items": [
     {
@@ -99,9 +99,9 @@
         "design-rule"
       ],
       "created": "2026-06-22T19:24:53.845Z",
-      "lastAccessed": "2026-08-30T12:12:04.178Z",
-      "accessCount": 185,
-      "salience": 0.9999495680555556,
+      "lastAccessed": "2026-08-30T13:24:32.215Z",
+      "accessCount": 186,
+      "salience": 1,
       "tier": "hot"
     },
     {
@@ -112,9 +112,9 @@
         "design-rule"
       ],
       "created": "2026-06-22T19:33:18.784Z",
-      "lastAccessed": "2026-08-30T12:12:04.178Z",
-      "accessCount": 182,
-      "salience": 0.9999495680555556,
+      "lastAccessed": "2026-08-30T13:24:32.215Z",
+      "accessCount": 183,
+      "salience": 1,
       "tier": "hot"
     },
     {
@@ -142,9 +142,9 @@
         "design-rule"
       ],
       "created": "2026-06-28T19:44:51.115Z",
-      "lastAccessed": "2026-08-30T12:12:04.178Z",
-      "accessCount": 175,
-      "salience": 0.9999495680555556,
+      "lastAccessed": "2026-08-30T13:24:32.215Z",
+      "accessCount": 176,
+      "salience": 1,
       "tier": "hot"
     },
     {
@@ -7869,6 +7869,20 @@
       "lastAccessed": "2026-08-30T12:12:44.907Z",
       "accessCount": 0,
       "salience": 0.9999684236111112,
+      "tier": "hot"
+    },
+    {
+      "id": "m1788096323659817",
+      "scope": "guide",
+      "text": "Avoid stating (may be removed/false): SDK: Select Docker (it's the most beginner-friendly option)",
+      "tags": [
+        "fact-check",
+        "lesson"
+      ],
+      "created": "2026-08-30T13:25:23.659Z",
+      "lastAccessed": "2026-08-30T13:25:23.659Z",
+      "accessCount": 0,
+      "salience": 1,
       "tier": "hot"
     }
   ],
