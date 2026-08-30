@@ -161,6 +161,7 @@
     "barkács",
     "barkácsrobotkarod",
     "bart-large-cnn",
+    "barátságok",
     "barátságokról",
     "basmati",
     "beadandó-draftokat",
@@ -744,6 +745,7 @@
     "guideban",
     "gyakorlandó",
     "gyakorlóanyagod",
+    "gyengeségen",
     "gyengeséget",
     "gyerekzsúroknál",
     "gyorsgombokat",
@@ -781,6 +783,7 @@
     "hangodtól",
     "hangok",
     "hangokat",
+    "hangokhoz",
     "hangokkal",
     "hangoknál",
     "hangokra",
@@ -1292,6 +1295,7 @@
     "minőségellenőrzést",
     "minőségellenőrző",
     "minőséget",
+    "mnemonikák",
     "mock-upokat",
     "mockupok",
     "mockupokat",
@@ -1704,6 +1708,7 @@
     "rovarokat",
     "rutinek",
     "rutininterakciót",
+    "ráklikkelsz",
     "rákövetkező",
     "rápillantnod",
     "részleteiddal",
@@ -2252,6 +2257,7 @@
     "zsályazöldre",
     "zsúra",
     "zsúrok",
+    "zugokba",
     "zöldséget",
     "ágon",
     "állapotsávon",
@@ -3376,6 +3382,11 @@
       "correct": "megbízható",
       "at": "2026-08-29",
       "mondattal": true
+    },
+    "ötletetni": {
+      "correct": "ötletelni",
+      "at": "2026-08-30",
+      "mondattal": true
     }
   },
   "review": {
@@ -4340,11 +4351,26 @@
       "correct": "kattints",
       "at": "2026-08-29",
       "mondattal": true
+    },
+    "guidehoz": {
+      "correct": "guide-hoz",
+      "at": "2026-08-30",
+      "mondattal": true
+    },
+    "in-ra": {
+      "correct": "bejelentkezésre",
+      "at": "2026-08-30",
+      "mondattal": true
+    },
+    "up-ra": {
+      "correct": "regisztrációra",
+      "at": "2026-08-30",
+      "mondattal": true
     }
   },
   "scan": {
-    "at": "2026-08-29",
-    "files": 841,
-    "candidates": 1
+    "at": "2026-08-30",
+    "files": 845,
+    "candidates": 10
   }
 }
