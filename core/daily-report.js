@@ -26,7 +26,7 @@ import { summarizeRuns, describeFailures } from './make-health.js';
 // A forgatókönyv-azonosítók EGY helyen élnek (ott a művelet-keret is őket
 // összegzi) — egy kimásolt szám matematikai biztonsággal csúszik szét.
 import { FB_SCENARIO_ID, REEL_SCENARIO_ID } from './make-budget.js';
-import { describePosts, describeRepeat, describeTranslationGaps, mergeLine, huSpellingLine, repeatLine, visitorLine } from './report-lines.js';
+import { describePosts, describeRepeat, describeTranslationGaps, mergeLine, huSpellingLine, repeatLine, visitorLine, orFutott } from './report-lines.js';
 import { bodyLooksUntranslated } from './translation-guard.js';
 import { shouldSendReport, sikeresKuldes } from './report-window.js';
 import { szurZajt, csendesSor } from './report-noise.js';
@@ -424,18 +424,32 @@ async function main() {
   // futás naplója a nap harmadát mutatná.
   try {
     const napi = { skipped_repeat: 0, repeats: [] };
-    let volt = false;
+    let writerNaplok = 0;
     const ma = today();
     for (const f of readdirSync(join(ROOT, 'logs'))) {
       if (!f.startsWith('writer_') || !f.endsWith('.json')) continue;
       if (!f.includes(ma)) continue;
       let s; try { s = JSON.parse(readFileSync(join(ROOT, 'logs', f), 'utf-8')); } catch { continue; }
       if (!Number.isFinite(Number(s.skipped_repeat)) || !Array.isArray(s.repeats)) continue;
-      volt = true;
+      writerNaplok++;
       napi.skipped_repeat += Number(s.skipped_repeat);
       napi.repeats.push(...s.repeats);
     }
-    lines.push(repeatLine(volt ? napi : {}));
+    // ⚠️ A MÁSODIK FORRÁS (2026-08-30, hibavadászat). Az őr KÉT helyen dolgozik:
+    // a hír-írónál (writer-napló) ÉS az útmutató-ágon (`guide-balance`,
+    // `guide-ideas` → `memory/topic-dedup-log.json`). A riport eddig csak az
+    // elsőt nézte, ezért egy csak-útmutatós napon „⚠️ NEM FUTOTT — ez hiba"-t
+    // írt. Élesben mérve ma: 0 writer-napló, DE 4 mai dedup-bejegyzés — és a
+    // riport tizenöt sorral feljebb ki is írta, hogy „Ismétlődő téma
+    // kiszűrve: 4". Két egymásnak ellentmondó sor ugyanabban az üzenetben.
+    // 🔑 A hamis vészjelzés rosszabb a néma hibánál: leszoktat a ⚠️ olvasásáról.
+    let dedupMai = 0;
+    try {
+      const dl = JSON.parse(readFileSync(join(ROOT, 'memory', 'topic-dedup-log.json'), 'utf-8'));
+      dedupMai = Array.isArray(dl[ma]) ? dl[ma].length : 0;
+    } catch { /* nincs napló — marad 0 */ }
+
+    lines.push(repeatLine(orFutott({ writerNaplok, dedupMai }) ? napi : {}));
   } catch { lines.push(repeatLine({})); }
   // 📝 MAGYAR HELYESÍRÁS (2026-08-20): csak az kerül ide, amit a gép nem
   // javíthatott magától. Az őrszem csak akkor őr, ha odaszól, ahol nézed.

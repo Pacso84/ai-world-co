@@ -323,4 +323,33 @@ t('hiányzó vagy rossz adatra CSENDBEN kimarad', () => {
   assert.equal(napiBelepok([{ visits: 'x' }, {}]), 0);
 });
 
+// ── 🔁 FUTOTT-E AZ ŐR? (2026-08-30, hibavadászat) ───────────────────
+const { orFutott } = await import('./report-lines.js');
+
+t('🔁 A VALÓDI ESET: csak útmutató készült → az őr AKKOR IS futott', () => {
+  // 2026-08-30-án élesben: 0 writer-napló (nem volt hír-írás), DE a
+  // topic-dedup naplóban 4 mai bejegyzés, mind `guide-*` forrásból.
+  // A riport mégis „⚠️ NEM FUTOTT — ez hiba"-t írt, tizenöt sorral azután,
+  // hogy kiírta: „Ismétlődő téma kiszűrve: 4". Két egymásnak ellentmondó sor.
+  assert.equal(orFutott({ writerNaplok: 0, dedupMai: 4 }), true, 'a guide-ág lefutását nem vette észre');
+});
+
+t('a hír-író naplója önmagában is elég', () => {
+  assert.equal(orFutott({ writerNaplok: 2, dedupMai: 0 }), true);
+});
+
+t('⚠️ ha EGYIK forrás sem mutat semmit, az TÉNYLEG „nem futott"', () => {
+  // Ez a különbségtétel a lényeg — nem szabad elmosni. A 08-25-i lelet épp az
+  // volt, hogy a „nem volt dolga" és a „el sem indult" egyformán nézett ki.
+  assert.equal(orFutott({ writerNaplok: 0, dedupMai: 0 }), false);
+  assert.equal(orFutott({}), false);
+  assert.equal(orFutott(), false);
+});
+
+t('hibás bemenetre nem borul, és nem hazudik „futott"-at', () => {
+  for (const rossz of [null, undefined, 'hopp', NaN]) {
+    assert.equal(orFutott({ writerNaplok: rossz, dedupMai: rossz }), false, String(rossz));
+  }
+});
+
 console.log('\n✅ report-lines.test: mind a ' + pass + ' eset rendben');

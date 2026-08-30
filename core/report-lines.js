@@ -257,3 +257,27 @@ export function visitorLine(days, today) {
   }
   return `👥 ${cimke}: ${db} látogató${atlag}`;
 }
+
+/**
+ * Futott-e ma a témaismétlés-őr?
+ *
+ * ⚠️ KÉT FORRÁSBÓL, MERT AZ ŐR KÉT HELYEN DOLGOZIK (2026-08-30, hibavadászat).
+ * A hívó eddig CSAK a `logs/writer_<ma>*.json` fájlokat nézte — azokat viszont
+ * a HÍR-ÍRÓ készíti. Egy olyan napon, amikor csak útmutató születik (a
+ * `guide-balance` / `guide-ideas` ágon), nincs writer-napló, és a riport
+ * „⚠️ NEM FUTOTT — ez hiba"-t írt.
+ *
+ * ÉLESBEN MÉRVE 2026-08-30-án: a `memory/topic-dedup-log.json`-ban 4 mai
+ * bejegyzés volt (mind `guide-*` forrásból), a riport mégis két EGYMÁSNAK
+ * ELLENTMONDÓ sort adott, tizenöt sor távolságra:
+ *     🔁 Ismétlődő téma kiszűrve: 4 (…)
+ *     🔁 Ismétlés-őr: ⚠️ NEM FUTOTT (nincs adat) — ez hiba
+ *
+ * A hamis vészjelzés rosszabb a néma hibánál is: leszoktatja az embert arról,
+ * hogy a ⚠️-t komolyan vegye.
+ *
+ * @param {{writerNaplok?: number, dedupMai?: number}} p
+ */
+export function orFutott({ writerNaplok = 0, dedupMai = 0 } = {}) {
+  return Number(writerNaplok) > 0 || Number(dedupMai) > 0;
+}
