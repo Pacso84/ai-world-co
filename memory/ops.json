@@ -1,142 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178785578269824",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-27T18:36:22.698Z",
-      "updated": "2026-08-27T18:36:33.152Z"
-    },
-    {
-      "id": "t178785579315471",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-08-27T18:36:33.154Z",
-      "updated": "2026-08-27T18:36:55.064Z"
-    },
-    {
-      "id": "t178790318768858",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-08-28T07:46:27.688Z",
-      "updated": "2026-08-28T07:46:27.895Z"
-    },
-    {
-      "id": "t178790318789732",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-08-28T07:46:27.897Z",
-      "updated": "2026-08-28T07:47:11.092Z"
-    },
-    {
-      "id": "t178790323109461",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-08-28T07:47:11.094Z",
-      "updated": "2026-08-28T07:47:11.296Z"
-    },
-    {
-      "id": "t178790323129825",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-28T07:47:11.298Z",
-      "updated": "2026-08-28T08:06:49.841Z"
-    },
-    {
-      "id": "t178790440984351",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-28T08:06:49.843Z",
-      "updated": "2026-08-28T08:08:48.051Z"
-    },
-    {
-      "id": "t178790452805398",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-28T08:08:48.053Z",
-      "updated": "2026-08-28T08:10:43.232Z"
-    },
-    {
-      "id": "t178790464323415",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-28T08:10:43.234Z",
-      "updated": "2026-08-28T08:11:35.929Z"
-    },
-    {
-      "id": "t178790469593149",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-08-28T08:11:35.931Z",
-      "updated": "2026-08-28T08:12:21.953Z"
-    },
-    {
-      "id": "t178790474200259",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-28T08:12:22.002Z",
-      "updated": "2026-08-28T08:20:33.576Z"
-    },
-    {
-      "id": "t178790523357843",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-28T08:20:33.578Z",
-      "updated": "2026-08-28T08:22:01.218Z"
-    },
-    {
-      "id": "t178790532122081",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-28T08:22:01.220Z",
-      "updated": "2026-08-28T08:23:16.735Z"
-    },
-    {
-      "id": "t178790539673745",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-08-28T08:23:16.737Z",
-      "updated": "2026-08-28T08:25:19.475Z"
-    },
-    {
-      "id": "t178790551947613",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-28T08:25:19.476Z",
-      "updated": "2026-08-28T08:25:31.078Z"
-    },
-    {
-      "id": "t178790553108061",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-08-28T08:25:31.080Z",
-      "updated": "2026-08-28T08:25:52.110Z"
-    },
-    {
-      "id": "t178794404677784",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-08-28T19:07:26.777Z",
-      "updated": "2026-08-28T19:07:26.890Z"
-    },
-    {
       "id": "t178794404689125",
       "title": "Run rss-scraper",
       "status": "done",
@@ -479,33 +343,145 @@
       "agent": "publisher",
       "created": "2026-08-29T18:59:56.724Z",
       "updated": "2026-08-29T19:00:09.713Z"
+    },
+    {
+      "id": "t178805620168191",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-08-30T02:16:41.681Z",
+      "updated": "2026-08-30T02:16:41.865Z"
+    },
+    {
+      "id": "t17880562018665",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-08-30T02:16:41.866Z",
+      "updated": "2026-08-30T02:16:59.721Z"
+    },
+    {
+      "id": "t178805621972334",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-08-30T02:16:59.723Z",
+      "updated": "2026-08-30T02:16:59.916Z"
+    },
+    {
+      "id": "t178805621991839",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-30T02:16:59.918Z",
+      "updated": "2026-08-30T02:17:00.089Z"
+    },
+    {
+      "id": "t178805622009131",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-30T02:17:00.091Z",
+      "updated": "2026-08-30T02:17:00.263Z"
+    },
+    {
+      "id": "t178805622026641",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-08-30T02:17:00.266Z",
+      "updated": "2026-08-30T02:17:00.492Z"
+    },
+    {
+      "id": "t178805622054084",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-30T02:17:00.540Z",
+      "updated": "2026-08-30T02:23:35.426Z"
+    },
+    {
+      "id": "t178805661542818",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-30T02:23:35.428Z",
+      "updated": "2026-08-30T02:24:54.018Z"
+    },
+    {
+      "id": "t178805669406081",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-30T02:24:54.060Z",
+      "updated": "2026-08-30T02:24:54.237Z"
+    },
+    {
+      "id": "t178805669423975",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-30T02:24:54.239Z",
+      "updated": "2026-08-30T02:26:20.458Z"
+    },
+    {
+      "id": "t178805678046187",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-30T02:26:20.461Z",
+      "updated": "2026-08-30T02:34:04.860Z"
+    },
+    {
+      "id": "t17880572448639",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-30T02:34:04.863Z",
+      "updated": "2026-08-30T02:35:42.115Z"
+    },
+    {
+      "id": "t178805734211673",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-30T02:35:42.116Z",
+      "updated": "2026-08-30T02:36:02.365Z"
+    },
+    {
+      "id": "t178805736236760",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-30T02:36:02.367Z",
+      "updated": "2026-08-30T02:36:36.142Z"
+    },
+    {
+      "id": "t178805739614338",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-08-30T02:36:36.143Z",
+      "updated": "2026-08-30T02:37:08.804Z"
+    },
+    {
+      "id": "t178805742880652",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-30T02:37:08.806Z",
+      "updated": "2026-08-30T02:37:22.324Z"
+    },
+    {
+      "id": "t178805744232562",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-08-30T02:37:22.325Z",
+      "updated": "2026-08-30T02:37:44.065Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178707023367919",
-      "level": "success",
-      "text": "2 hír + 0 útmutató publikálva (költség: $0.0251).",
-      "agent": "ceo",
-      "at": "2026-08-18T16:23:53.679Z",
-      "loud": false
-    },
-    {
-      "id": "n178710053142879",
-      "level": "info",
-      "text": "SEO: 8 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-08-19T00:48:51.428Z",
-      "loud": false
-    },
-    {
-      "id": "n178710055039816",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The line-up has a warm, practical vibe — a nice mix of AI how-tos and genuinely helpful emotional-support pieces (sympathy messages, thank-you speeches). One quick note: we reference quite a few AI to",
-      "agent": "publisher",
-      "at": "2026-08-19T00:49:10.398Z",
-      "loud": false
-    },
     {
       "id": "n178710056209937",
       "level": "success",
@@ -1281,45 +1257,33 @@
       "agent": "ceo",
       "at": "2026-08-29T19:00:09.739Z",
       "loud": false
+    },
+    {
+      "id": "n178805742879695",
+      "level": "info",
+      "text": "SEO: 4 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-08-30T02:37:08.796Z",
+      "loud": false
+    },
+    {
+      "id": "n178805745048394",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The lineup covers practical, everyday use cases nicely — from privacy to writing help and emotional messages. One note: articles 3-6 are all complaint emails, which feels repetitive for readers. I'd s",
+      "agent": "publisher",
+      "at": "2026-08-30T02:37:30.483Z",
+      "loud": false
+    },
+    {
+      "id": "n178805746410917",
+      "level": "success",
+      "text": "0 hír + 4 útmutató publikálva (költség: $0.0779).",
+      "agent": "ceo",
+      "at": "2026-08-30T02:37:44.109Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178727299672350",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"30 Gemini Omni prompts to copy and paste for AI video\" — mi a baj: \"Gemini Omni\" is not in the verified-real names list and does not appear to be a real Google product — the article repeatedly treats it as a named, existing video model; The claim that Gemini has a 'video generation' feature with audio/dialogue/on-screen text rendering rolled out to users is presented as fact",
-      "ref": "2026-08-21T00-39-46-760Z_picsart_30_Gemini_Omni_prompts_to_copy_and_paste_for_AI_vi.json",
-      "at": "2026-08-21T00:43:16.723Z"
-    },
-    {
-      "id": "m178727304836970",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"How ChatGPT Work helps Stampli move ideas to market\" — javítva: Opening claims about compressing multi-week launches lack a specific source or citation; Step 4 says Codex access is 'currently through' developer tools without telling readers how to actually find or request it; újraküldöm.",
-      "ref": "2026-08-20T16-22-15-024Z_openai-blog_How_ChatGPT_Work_helps_Stampli_move_ideas_to_marke.json",
-      "at": "2026-08-21T00:44:08.369Z"
-    },
-    {
-      "id": "m178727309829234",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Record presentations in Google Slides with Google Vids\" — javítva: The article describes a 'Record button' added to Google Slides' right-hand menu that launches a recording workflow, but this is not a real feature. Google Slides does not have a Record button in its side menu, nor does Google Vids integrate recording functionality into the Slides interface as described.; The article d",
-      "ref": "2026-08-21T00-39-46-760Z_google-workspace_Record_presentations_in_Google_Slides_with_Google_.json",
-      "at": "2026-08-21T00:44:58.292Z"
-    },
-    {
-      "id": "m17872731317768",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"30 Gemini Omni prompts to copy and paste for AI video\" — javítva: \"Gemini Omni\" is not in the verified-real names list and does not appear to be a real Google product — the article repeatedly treats it as a named, existing video model; The claim that Gemini has a 'video generation' feature with audio/dialogue/on-screen text rendering rolled out to users is presented as fact without v",
-      "ref": "2026-08-21T00-39-46-760Z_picsart_30_Gemini_Omni_prompts_to_copy_and_paste_for_AI_vi.json",
-      "at": "2026-08-21T00:45:31.776Z"
-    },
     {
       "id": "m178727315203295",
       "from": "ellenorzo",
@@ -2646,6 +2610,42 @@
       "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Brainstorming Fresh Ideas for Any Personal Project\" — paper airplane icon for send button; Message Claude... placeholder text; Start a new chat button location (top left)",
       "ref": "ARTICLE_GUIDE_brainstorming-fresh-ideas-for-any-personal-project-with-clau.json",
       "at": "2026-08-29T19:00:57.638Z"
+    },
+    {
+      "id": "m178805664472649",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Create Your First AI Image with Midjourney: A Beginner Walkthrough\" — mi a baj: UI_CLAIMS_UNSOURCED: 3 konkrét képernyő-feliratot állít tényként forrás nélkül (\"open in browser\", \"save to photos\", \"imagine\"). Vagy nézd meg a hivatalos oldalon, vagy írd hedge-elve (\"if you don't see…\").; PRICE_CLAIM_UNSOURCED: lejáró pénz-állítás forrás és árlap-hivatkozás nélkül (\"no free ti",
+      "ref": "GUIDE_create-your-first-ai-image-with-midjourney-a-beginner-walkth.json",
+      "at": "2026-08-30T02:24:04.726Z"
+    },
+    {
+      "id": "m178805744231273",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-08-30T02:37:22.312Z"
+    },
+    {
+      "id": "m178805749984193",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Boost Your Learning: Get Quick Explanations and St\" — The Microsoft Copilot mobile app name may have changed; Free plan chat history behavior may have changed; Specific suggestion chips content may have changed",
+      "ref": "ARTICLE_GUIDE_boost-your-learning-get-quick-explanations-and-study-guides-.json",
+      "at": "2026-08-30T02:38:19.841Z"
+    },
+    {
+      "id": "m178805753856616",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Brainstorming quick ideas for home projects and ho\" — Le Chat also has mobile apps; either path works fine",
+      "ref": "ARTICLE_GUIDE_brainstorming-quick-ideas-for-home-projects-and-hobbies-with.json",
+      "at": "2026-08-30T02:38:58.566Z"
     }
   ]
 }

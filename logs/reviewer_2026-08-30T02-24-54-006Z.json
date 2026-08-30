@@ -1,0 +1,41 @@
+{
+  "started_at": "2026-08-30T02:23:35.598Z",
+  "total": 4,
+  "passed": 3,
+  "failed": 1,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.011606736,
+  "by_article": [
+    {
+      "writer": "WRITER_GUIDE_create-your-first-ai-image-with-midjourney-a-beginner-walkth.json",
+      "rejected": "REJECTED_GUIDE_create-your-first-ai-image-with-midjourney-a-beginner-walkth.json",
+      "decision": "FAIL",
+      "score": 8,
+      "cost_usd": 0.001777
+    },
+    {
+      "writer": "WRITER_GUIDE_how-to-build-a-simple-study-schedule-in-the-weeks-before-a-b.json",
+      "article": "ARTICLE_GUIDE_how-to-build-a-simple-study-schedule-in-the-weeks-before-a-b.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.00271868
+    },
+    {
+      "writer": "WRITER_GUIDE_how-to-make-a-clear-pros-and-cons-list-when-you-re-stuck-on-.json",
+      "article": "ARTICLE_GUIDE_how-to-make-a-clear-pros-and-cons-list-when-you-re-stuck-on-.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.00193374
+    },
+    {
+      "writer": "WRITER_GUIDE_talk-to-chatgpt-by-voice-on-your-phone-while-cooking-or-driv.json",
+      "article": "ARTICLE_GUIDE_talk-to-chatgpt-by-voice-on-your-phone-while-cooking-or-driv.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.002253
+    }
+  ],
+  "finished_at": "2026-08-30T02:24:54.005Z",
+  "duration_seconds": 78.407
+}
