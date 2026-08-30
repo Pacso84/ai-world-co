@@ -1,10 +1,11 @@
 {
-  "at": "2026-08-30T09:52:34.193Z",
-  "dry": true,
+  "at": "2026-08-30T12:13:53.114Z",
+  "dry": false,
   "keep_days": 14,
-  "articles": 845,
-  "logs": 302,
+  "articles": 847,
+  "logs": 309,
   "actions": [
-    "🧠 embedding: a szolgáltatás ÉL — a vektorok hasznos gyorsítótárak, maradnak."
+    "🧠 halott embedding törölve: 169 elem · 4994 KB → 275 KB (94%-kal kisebb)",
+    "🧠 memória: 435 lecke réteget váltott (557 összesen)"
   ]
 }
