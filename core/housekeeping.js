@@ -35,6 +35,7 @@
 import { readFileSync, writeFileSync, readdirSync, unlinkSync, statSync, existsSync, mkdirSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
+import { decay } from './memory-manager.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
@@ -264,6 +265,32 @@ function watchGrowth() {
   return { logCount };
 }
 
+// ── 🧠 A MEMÓRIA HALVÁNYÍTÁSA (2026-08-29, hibavadászat) ────────────
+// A `decay()` egyetlen hívója az `agents/analyst/agent.js` volt, azt pedig
+// 2026-07-30-án kivezettük — azóta a salience SOHA nem csökkent. Élesben
+// mérve: 556 emlék, MIND 1.000-en, MIND „hot". A `lessonsBlock()` a
+// salience-rendezésből dolgozik, csupa döntetlennél tehát a BESZÚRÁSI
+// SORREND első négyét adja: hat hete ugyanaz a négy 07-13/14-i lecke ment
+// minden AI-hívásba, és a 119 megosztott leckéből 115 SOHA nem jutott
+// promptba. A cég „tanulása" díszként működött.
+//
+// MIÉRT ITT: a házmester a CI MINDEN futásában megy (`auto.yml`), ingyenes,
+// és pont ilyen időszakos karbantartás a dolga. A napi kapu a `decay()`-ben
+// van — enélkül a napi három futás háromszoros ütemben halványítana.
+//
+// A DRY (próba) módot tiszteletben tartjuk: az is írás.
+function memoriaHalvanyitas() {
+  if (DRY) { console.log('   🧠 memória-halványítás: PRÓBA, nem írok'); return; }
+  try {
+    const d = decay();
+    if (d.skipped) return;                       // ma már megvolt — csendben
+    if (d.moved > 0) report.push(`🧠 memória: ${d.moved} lecke réteget váltott (${d.total} összesen)`);
+  } catch (e) {
+    // Sosem dönthet el egy házmester-futást — de NE legyen néma.
+    report.push(`⚠️ a memória halványítása elbukott: ${String(e?.message || e).slice(0, 80)}`);
+  }
+}
+
 async function main() {
   console.log('🧹 HÁZMESTER' + (DRY ? ' — PRÓBA (nem törlök)' : ''));
   console.log('─'.repeat(60));
@@ -281,6 +308,7 @@ async function main() {
   ({ files, slugs } = liveArticles());
   pruneImages(slugs);
   pruneTranslations(files);
+  memoriaHalvanyitas();
   const { logCount } = watchGrowth();
 
   if (!report.length) console.log('   ✅ Nincs takarítanivaló.');

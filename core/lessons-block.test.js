@@ -1,16 +1,30 @@
 // ===================================================================
 // TANULSÁG-BLOKK TESZT — futtatás: node core/lessons-block.test.js
-// Nem hív API-t; a memory/store.json-t a végén visszaállítja.
+// Nem hív API-t. ⚠️ 2026-08-29-ig az ÉLES memory/store.json-t írta, és csak
+// mentés-visszaállítással védekezett — párhuzamos futásnál ez okozta a
+// megfigyelt ingadozó bukást. Mostantól saját, ideiglenes táron dolgozik
+// (MEMORY_STORE_PATH), tehát az élessel EGYÁLTALÁN nem találkozik.
 // ===================================================================
 import { strict as assert } from 'assert';
-import { readFileSync, writeFileSync } from 'fs';
+import { readFileSync, mkdirSync, rmSync } from 'fs';
+import { tmpdir } from 'os';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
-import { remember, lessonsBlock } from './memory-manager.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const STORE = join(__dirname, '..', 'memory', 'store.json');
-const backup = readFileSync(STORE, 'utf-8');
+const ELES = join(__dirname, '..', 'memory', 'store.json');
+const ELES_ELOTTE = readFileSync(ELES, 'utf-8');
+
+// Saját tár — az élest meg sem nyitjuk íráshoz.
+const MUNKA = join(tmpdir(), 'aiworld-lessons-teszt-' + process.pid);
+mkdirSync(MUNKA, { recursive: true });
+process.env.MEMORY_STORE_PATH = join(MUNKA, 'store.json');
+
+// ⚠️ A MODULT CSAK AZ ENV BEÁLLÍTÁSA UTÁN töltjük be: a STORE_PATH a modul
+// betöltésekor dől el. Az első változatom feljebb importált, és emiatt MÉGIS
+// az éles tárba írt — a lenti záró ellenőrzés fogta meg.
+const { remember, lessonsBlock } = await import('./memory-manager.js');
+const STORE = process.env.MEMORY_STORE_PATH;
 
 try {
   remember('shared', 'ZZTESZT-közös: a csempe mindig a legrövidebb hivatalos terméknév');
@@ -43,5 +57,8 @@ try {
 
   console.log('✅ lessons-block.test: minden átment');
 } finally {
-  writeFileSync(STORE, backup, 'utf-8');
+  try { rmSync(MUNKA, { recursive: true, force: true }); } catch { /* */ }
+  if (readFileSync(ELES, 'utf-8') !== ELES_ELOTTE) {
+    console.log('🔴 A TESZT BELEÍRT AZ ÉLES MEMÓRIATÁRBA!'); process.exit(1);
+  }
 }

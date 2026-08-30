@@ -22,7 +22,11 @@ import { dirname, join } from 'path';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const MEMORY_DIR = join(__dirname, '..', 'memory');
-const STORE_PATH = join(MEMORY_DIR, 'store.json');
+// ⚠️ A `MEMORY_STORE_PATH` KIZÁRÓLAG a teszté (2026-08-29). Enélkül minden
+// teszt az ÉLES memóriatárba írt, és a régi `lessons-block.test.js` csak
+// mentés-visszaállítással védekezett — párhuzamos futásnál ez okozta a
+// megfigyelt ingadozó bukást. Élesben a változó nincs beállítva.
+const STORE_PATH = process.env.MEMORY_STORE_PATH || join(MEMORY_DIR, 'store.json');
 
 // Réteg-küszöbök (salience 0..1)
 const TIER = { HOT: 0.6, WARM: 0.3 };           // >=0.6 hot, >=0.3 warm, else cold
@@ -178,18 +182,43 @@ export async function recallSemantic(query, opts = {}) {
 }
 
 // ---------- DECAY (időszakos halványítás, soha nem töröl) ----------
+/**
+ * A memória halványítása — NAPONTA LEGFELJEBB EGYSZER.
+ *
+ * ⚠️ 2026-07-30 és 08-29 között EGYÁLTALÁN NEM FUTOTT: az egyetlen hívója az
+ * `agents/analyst/agent.js` volt, azt pedig kivezettük. Élesben mérve: 556
+ * emlék, MIND 1.000-en, MIND „hot". A `lessonsBlock()` a salience-rendezésből
+ * dolgozik — csupa döntetlennél a stabil rendezés a BESZÚRÁSI SORREND első
+ * négyét adja, tehát hat hete ugyanaz a négy 07-13/14-i lecke ment minden
+ * AI-hívásba, és a 119 megosztott leckéből 115 SOHA nem jutott promptba.
+ *
+ * ⚠️ MIÉRT KELL A NAPI KAPU: a levonás `DECAY_PER_DAY * daysSince(lastAccessed)`,
+ * és ez a függvény NEM frissíti a `lastAccessed`-et. Ugyanazon a napon
+ * kétszer hívva tehát KÉTSZER von le. A hívó (`core/housekeeping.js`) a CI
+ * minden futásában megy, vagyis naponta háromszor — a kapu nélkül
+ * háromszoros ütemben halványítanánk. Ez helyességi feltétel, nem kényelem.
+ *
+ * @returns {{total:number, moved:number, skipped?:boolean}}
+ */
 export function decay() {
   const store = load();
+  const ma = new Date().toISOString().slice(0, 10);
+  if (store.lastDecay === ma) {
+    return { total: (store.items || []).length, moved: 0, skipped: true };
+  }
+
   let moved = 0;
-  for (const it of store.items) {
+  for (const it of store.items || []) {
     const days = daysSince(it.lastAccessed);
+    if (!Number.isFinite(days) || !Number.isFinite(it.salience)) continue;   // hiányos elem: kihagyjuk
     const before = it.tier;
     it.salience = Math.max(0.05, it.salience - DECAY_PER_DAY * days);
     it.tier = tierOf(it.salience);
     if (it.tier !== before) moved++;
   }
+  store.lastDecay = ma;
   save(store);
-  return { total: store.items.length, moved };
+  return { total: (store.items || []).length, moved };
 }
 
 // ---------- LIST (dashboardhoz — emlékek listája salience szerint) ----------
