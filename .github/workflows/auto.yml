@@ -125,6 +125,14 @@ jobs:
           CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+          # ⚠️ TELEGRAM MINDEN FIZETŐS LÉPÉSBE (2026-08-30, hibavadászat).
+          # A config.json szerint MIND A 23 agent paid-only, tehát BÁRMELYIK
+          # lépés elsütheti az `core/ai-router.js` vészháló-riasztását („a cég
+          # ingyenes vészhálóra esett"). Token nélkül viszont a `sendMessage()`
+          # némán `{ok:false, skipped:true}`-t ad: a riasztás nem hibázik, csak
+          # SOHA nem jut el a userhez — pont az a néma hiba, ami ellen szól.
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_OWNER_CHAT_ID: ${{ secrets.TELEGRAM_OWNER_CHAT_ID }}
         run: |
           node agents/digest/agent.js || true
           node agents/compare/agent.js || true
@@ -149,6 +157,9 @@ jobs:
           CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+          # Vészháló-riasztás — lásd a „Heti összefoglaló" lépés indoklását.
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_OWNER_CHAT_ID: ${{ secrets.TELEGRAM_OWNER_CHAT_ID }}
         # 10 → 15 perc (2026-07-31): a 18:51-es futásban a lépés PONT a 10
         # percnél halt el — a || true a lépés-timeout ellen NEM véd (a GitHub
         # a timeoutot a shell-től függetlenül üti). 2 cikk × max 8 perces
@@ -189,6 +200,10 @@ jobs:
           CLOUDFLARE_FLUX_TOKEN: ${{ secrets.CLOUDFLARE_FLUX_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           HF_API_KEY: ${{ secrets.HF_API_KEY }}
+          # Vészháló-riasztás — lásd a „Heti összefoglaló" lépés indoklását.
+          # (A kép ingyenes, DE a jelenet-leírás fizetős hívás.)
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_OWNER_CHAT_ID: ${{ secrets.TELEGRAM_OWNER_CHAT_ID }}
         run: node agents/designer/agent.js --refresh 8 || true
 
       # TÉNY-ELLENŐRZŐ (2026-07-30): a MÁR KINT LÉVŐ útmutatók frissesség-őre.
@@ -334,6 +349,9 @@ jobs:
         if: always()
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          # Vészháló-riasztás — lásd a „Heti összefoglaló" lépés indoklását.
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_OWNER_CHAT_ID: ${{ secrets.TELEGRAM_OWNER_CHAT_ID }}
         run: node core/hu-review.js --limit=5 || true
 
       - name: Magyar helyesírás — a megítélt hibák javítása ($0)
@@ -521,6 +539,9 @@ jobs:
           # jelölést kapott, de sosem jelent meg. Token nélkül az ellenőrzés
           # kimarad (a poszter ilyenkor a régi módon küld).
           MAKE_API_TOKEN: ${{ secrets.MAKE_API_TOKEN }}
+          # Vészháló-riasztás — lásd a „Heti összefoglaló" lépés indoklását.
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_OWNER_CHAT_ID: ${{ secrets.TELEGRAM_OWNER_CHAT_ID }}
         run: |
           node agents/social/agent.js --limit 6 || true
           # 2 → 3 POSZT/FUTÁS (2026-08-09, user-döntés: "mivel nincs Pinterest,

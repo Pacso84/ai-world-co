@@ -34,6 +34,7 @@ import { shouldRetryTruncated } from './truncation-guard.js';
 // A „csak sikeres küldés után jegyezzük be" szabály KÖZÖS (napi riport,
 // heti kereső-riport, vészháló-riasztás) — kimásolva szétcsúszna.
 import { sikeresKuldes } from './report-window.js';
+import { jegyezEmbed } from './embed-guard.js';
 
 // ===================================================================
 // KONFIG BETÖLTÉS
@@ -182,10 +183,20 @@ export async function embedText(text) {
     const { v, error } = await fn(rovid);
     if (v) {
       _embedAllapot = { provider: nev, at: new Date().toISOString(), error: null };
+      jegyezEmbed(_embedAllapot);
       return v;
     }
     _embedAllapot = { provider: null, at: new Date().toISOString(), error: `${nev}: ${error}` };
   }
+  // ⚠️ A LEMEZRE ÍRÁS A HIÁNYZÓ LÁNCSZEM (2026-08-30, hibavadászat).
+  // Az `embedStatus()` a 08-25-i javítás óta létezett, a kommentje szerint
+  // „amit a napi riport kiír" — de SOHA NEM ÍRTA KI: nulla hívója volt, és
+  // FOLYAMAT-LOKÁLIS változóból dolgozott, tehát a külön processzben futó
+  // `daily-report.js` akkor sem láthatta volna, ha meghívja.
+  // Így a 08-25-i javítás csak a „nem futott" esetet zárta le, a LEBUTULT
+  // esetet nem — pedig épp az volt az eredeti lelet (15 ismétlésből 1).
+  // A `jegyezEmbed()` csak VÁLTOZÁSKOR ír, tehát nem terheli a futást.
+  jegyezEmbed(_embedAllapot);
   return null;
 }
 

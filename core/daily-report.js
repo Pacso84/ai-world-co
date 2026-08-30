@@ -31,6 +31,7 @@ import { bodyLooksUntranslated } from './translation-guard.js';
 import { shouldSendReport, sikeresKuldes } from './report-window.js';
 import { szurZajt, csendesSor } from './report-noise.js';
 import { elavultOrszemek, frissessegSor } from './guard-freshness.js';
+import { embedSor } from './embed-guard.js';
 import { bufferSor } from './buffer-guard.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -664,6 +665,21 @@ async function main() {
     }
   } catch { /* még nem futott build — nem baj */ }
 
+  // ⚠️ BEÁGYAZÁS-ŐR (2026-08-30, hibavadászat). A 08-25-i lelet: a Google-kulcs
+  // kerete elfogyott, az `embedText()` némán `null`-t adott, és a
+  // témaismétlés-őr szó nélkül a gyengébb Jaccard-tartalékra váltott — MÉRVE
+  // 15 ismert ismétlésből 1-et fogott meg (7%), miközben ZÖLDNEK látszott.
+  // Akkor született rá az `embedStatus()`, „amit a napi riport kiír" — de
+  // SOHA NEM ÍRTA KI: nulla hívója volt, és folyamat-lokális változóból
+  // dolgozott, tehát ez a külön processz akkor sem látta volna, ha meghívja.
+  // Vagyis a „nem futott" eset le volt zárva, a LEBUTULT nem — pedig épp az
+  // volt az eredeti hiba.
+  try {
+    const eg = JSON.parse(readFileSync(join(ROOT, 'memory', 'embed-guard.json'), 'utf-8'));
+    const sor = embedSor(eg);
+    if (sor) lines.push(sor);
+  } catch { /* még nem futott beágyazás — nem baj */ }
+
   // 🕰️ ŐRSZEM-FRISSESSÉG (2026-08-29, hibavadászat). A riport eddig MINDEN
   // őrszem-fájlból csak a `problems`-et nézte, az `at` bélyeget EGYIKBŐL SEM.
   // Egy lefagyott őrszem (pl. a seo-guard bukott buildnél visszatér az írás
@@ -673,7 +689,7 @@ async function main() {
     const nevek = {
       'seo-guard.json': 'SEO', 'live-guard.json': 'élő oldal', 'i18n-guard.json': 'nyelvi',
       'image-guard.json': 'borítókép', 'redirect-guard.json': 'átirányítás',
-      'reel-guard.json': 'Reel', 'truncation-guard.json': 'csonka', 'guide-coverage-guard.json': 'útmutató-lefedettség',
+      'reel-guard.json': 'Reel', 'truncation-guard.json': 'csonka', 'guide-coverage-guard.json': 'útmutató-lefedettség', 'embed-guard.json': 'beágyazás',
       // A Buffer-poszter őre (2026-08-30). ITT dől el az „el sem indult" eset:
       // a poszter SIKERES futásnál is ír (üres problems), tehát ha az `at`
       // megáll, az azt jelenti, hogy a lépés maga maradt ki — enélkül a
