@@ -333,7 +333,21 @@ async function deliveredPosts(scenarioId) {
 async function main() {
   if (!guard()) return;
   const r = collect();
-  const fbDelivered = await deliveredPosts('6452490');
+  const fbDelivered = await deliveredPosts(FB_SCENARIO_ID);
+
+  // 🚦 MAKE MŰVELET-KERET (2026-08-30). A keret-logika 2026-08-09 óta létezik,
+  // de a szám EDDIG CSAK A CI-NAPLÓBA került — vagyis senkihez.
+  // 🔑 És most már SZOROS: mérve teljes tempón 29 művelet/nap, ami 31 napos
+  // hónapban 899 a 900-as biztonsági plafonnál — EGYETLEN művelet tartalék.
+  // A Reel 08-25-i bekötése ette be a korábbi tartalékot; ez visszatérő,
+  // szerkezeti szorítás minden 31 napos hónap végén.
+  // A sor CSENDES, amíg van hely, és a mért tempóból vetít, nem a maximumból.
+  let keret = '';
+  try {
+    const { usedThisMonth, keretSor } = await import('./make-budget.js');
+    const used = await usedThisMonth({ token: process.env.MAKE_API_TOKEN, day: today() });
+    keret = keretSor(used, today());
+  } catch { /* a riport ettől még kimegy */ }
 
   // A forgalom-napló olvasása SOSEM dönthet el egy riportot: ha nincs adat,
   // a sor egyszerűen kimarad (a `lines` szűri az üres elemeket).
@@ -356,6 +370,7 @@ async function main() {
     // sor (a fejléc alatt), tehát a végén nem lehet csak úgy falsy-t szűrni.
     ...(latogatoSor ? [latogatoSor] : []),
     describePosts(r.fbPosts, fbDelivered),
+    ...(keret ? [keret] : []),
     // A NAPI keret is látszik (2026-08-01) — a user maga kérte a korlátot,
     // tehát látnia kell, hol tart benne, ne csak akkor derüljön ki, ha betelt.
     // A keret a MAI költés mellé kerül, nem a tegnapi mellé: a "$2.51 / $1"

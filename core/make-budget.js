@@ -273,3 +273,52 @@ export default {
   MONTHLY_CAP, SAFETY_CAP, OPS_PER_POST, RUNS_PER_DAY,
   SHARED_SCENARIOS, FB_SCENARIO_ID, REEL_SCENARIO_ID, REEL_OPS_PER_DAY
 };
+
+/**
+ * A művelet-keret SORA a napi riportba (2026-08-30).
+ *
+ * MIÉRT KELL: a keret-logika 2026-08-09 óta létezik, de a szám EDDIG CSAK A
+ * CI-NAPLÓBA került — vagyis senkihez. A projekt saját szabálya szerint az
+ * őrszem csak akkor őr, ha odaszól, ahol a user néz.
+ *
+ * 🔑 ÉS MOST MÁR SZOROS. Mérve (2026-08-30, hátralék-elemzés): teljes tempón
+ * napi 9 FB-poszt (3 művelet) + 1 Reel (2 művelet) = 29 művelet/nap.
+ *     31 napos hónapban: 899 művelet — a 900-as biztonsági plafonnál.
+ *     ⇒ EGYETLEN művelet tartalék.
+ * A Reel 2026-08-25-i bekötése ette be a korábbi tartalékot. Ez nem egyszeri
+ * hiba, hanem VISSZATÉRŐ, SZERKEZETI szorítás minden 31 napos hónap végén:
+ * ilyenkor a garantált hátralék-hely (limit ≥ 3 kell hozzá) magától lekapcsol.
+ *
+ * A sor CSENDES, amíg van tartalék — csak a szorosnál szólal meg, és a
+ * riasztó változat ⚠️-vel kezdődik, hogy a zajszűrő sose némíthassa el.
+ *
+ * @param {number|null} used  a hónapban eddig elhasznált művelet (null = nem tudjuk)
+ * @param {string} day        YYYY-MM-DD
+ */
+export function keretSor(used, day) {
+  if (used === null || used === undefined || !Number.isFinite(Number(used))) {
+    // ⚠️ A „nem tudom" NEM „rendben van". A Make kvótája nem lekérdezhető
+    // közvetlenül; ha a naplóból sem jön szám, azt látni kell.
+    return '⚠️ Make-keret: NEM TUDTAM lekérdezni — a fékezés vakon megy.';
+  }
+  const n = Number(used);
+  const marad = SAFETY_CAP - n;
+  const hatra = remainingDays(day);
+  if (!Number.isFinite(hatra)) return '';
+  // ⚠️ A VETÍTÉS A MÉRT TEMPÓBÓL, NEM az elméleti maximumból (2026-08-30).
+  // Az első változatom a teljes tempót (29 művelet/nap) vetítette előre, és
+  // ezzel a hónap ELEJÉN is riasztott — pont az a napi zaj lett volna belőle,
+  // amit ma egész nap irtottunk. A tényleges fogyás önmagát korrigálja.
+  const honapNapja = Number(String(day).slice(8, 10));
+  if (!Number.isFinite(honapNapja) || honapNapja < 3) return '';   // pár napból nincs tempó
+  const napiTeny = n / honapNapja;
+  const varhato = Math.round(n + napiTeny * hatra);
+
+  if (varhato > SAFETY_CAP) {
+    return `⚠️ MAKE-KERET SZŰK: ${n}/${SAFETY_CAP} elhasználva, `
+      + `a hónap végéig várhatóan ${varhato} lenne — a poszter magától visszavesz. `
+      + `(Új csatorna MOST nem fér bele.)`;
+  }
+  if (marad < 100) return `🚦 Make-keret: ${n}/${SAFETY_CAP} · ${marad} művelet a tartalék`;
+  return '';                                              // bőven van hely — csendes
+}

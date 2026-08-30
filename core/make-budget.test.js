@@ -311,3 +311,41 @@ await at('🚦 a Reel műveletei TÉNYLEGESEN eltolják a döntést', async () =
 });
 
 console.log('\n✅ make-budget.test: mind a ' + pass + ' eset rendben');
+
+// ── 🚦 A KERET-SOR A NAPI RIPORTBAN (2026-08-30) ────────────────────
+// A keret-logika 2026-08-09 óta létezik, de a szám EDDIG CSAK A CI-NAPLÓBA
+// került — vagyis senkihez. Mérve a hátralék-elemzésben: teljes tempón
+// 29 művelet/nap, 31 napos hónapban 899 a 900-as plafonnál. EGY tartalék.
+{
+  const { keretSor, SAFETY_CAP } = await import('./make-budget.js');
+
+  t('🚦 bőven van hely → CSENDES', () => {
+    assert.equal(keretSor(120, '2026-08-05'), '', 'a hónap elején zajongott');
+  });
+
+  t('⚠️ a SZŰK keret megszólal, és megmondja, mi következik', () => {
+    // 31 napos hónap vége felé, a mért tempóval.
+    const sor = keretSor(800, '2026-08-28');
+    assert.ok(sor.startsWith('⚠️'), 'nem vészjelzés-mintás → a zajszűrő elnémíthatná: ' + sor);
+    assert.ok(sor.includes('800'), 'nem mondja meg, hol tartunk: ' + sor);
+    assert.ok(/visszavesz/.test(sor), 'nem mondja meg, MI FOG TÖRTÉNNI: ' + sor);
+  });
+
+  t('a szűkülő tartalék jelez, mielőtt baj lenne', () => {
+    const sor = keretSor(SAFETY_CAP - 50, '2026-08-31');
+    assert.ok(sor.length > 0, 'az utolsó napon, 50 művelettel némán maradt');
+  });
+
+  t('⚠️ a „NEM TUDOM" nem „rendben van"', () => {
+    // A Make kvótája nem lekérdezhető; ha a naplóból sem jön szám, azt LÁTNI
+    // kell — különben a vak fékezés úgy néz ki, mint a nyugalom.
+    for (const rossz of [null, undefined, NaN, 'hopp']) {
+      const sor = keretSor(rossz, '2026-08-20');
+      assert.ok(sor.startsWith('⚠️') && /NEM TUDTAM/.test(sor), String(rossz) + ' → ' + sor);
+    }
+  });
+
+  t('hibás dátumra nem borul', () => {
+    for (const d of [null, undefined, 'hopp', '']) assert.doesNotThrow(() => keretSor(500, d));
+  });
+}
