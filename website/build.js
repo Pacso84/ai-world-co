@@ -732,7 +732,15 @@ function plainText(s) {
 
 // Egyszerű frontmatter parser (--- ... --- blokk a markdown tetején)
 function parseFrontmatter(markdown) {
-  const fm = { title: '', subtitle: '', category: 'other', audience: 'both', read_time_minutes: 3, tags: [] };
+  // ⚠️ A `tool` és a `company` 2026-08-29-ig HIÁNYZOTT innen, és mivel a lenti
+  // szűrő `hasOwnProperty`-vel dolgozik, a cikk SAJÁT `tool:`/`company:` sorát
+  // NÉMÁN ELDOBTA. Így a build MINDIG a `_meta`-t (a párosító korai TERVÉT)
+  // használta — a 891. sor kommentje ennek pont az ellenkezőjét állítja.
+  // Élő kár: 378 útmutatóból 3 rossz eszközt mutatott (kettő elveszítette a
+  // jelvényt és a hivatalos linket, egy pedig a KITALÁLT „365 Copilot" néven
+  // futott). A `meta.tool || _meta.tool` fallback miatt az üres frontmatterű
+  // cikkek viselkedése VÁLTOZATLAN marad.
+  const fm = { title: '', subtitle: '', category: 'other', audience: 'both', read_time_minutes: 3, tags: [], tool: '', company: '' };
   const match = markdown.match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/);
   if (!match) return { meta: fm, body: markdown };
 

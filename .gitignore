@@ -73,3 +73,9 @@ telegram-worker/.dev.vars
 # a Facebook percen belül letölti. A következő futás friss checkoutja már
 # nem tartalmazza, tehát a deploy le is veszi az oldalról — ez így helyes.
 website/assets/video/shorts/
+
+# A költés-nyilvántartás sérülés-másolatai (2026-08-29). A `core/budget.js`
+# félreteszi a sérült állapotfájlt forenzikára — de a CI `git add -A`-t futtat,
+# és a repó PUBLIKUS. Számokat tartalmaz, titkot nem, mégsem való ide.
+core/budget-state.json.corrupt-*
+core/*.tmp-*

@@ -20,12 +20,14 @@
 // ===================================================================
 
 import assert from 'assert/strict';
-import { readFileSync, readdirSync } from 'fs';
+import { readFileSync, readdirSync, writeFileSync, existsSync, mkdirSync, mkdtempSync, rmSync } from 'fs';
+import { tmpdir } from 'os';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import {
   reelVideoUrl, reelArticleUrl, reelCaption, sendReel,
-  MOBIL_VAGAS, MIN_VIDEO_BAJT, SITE, igertLepesszam
+  MOBIL_VAGAS, MIN_VIDEO_BAJT, SITE, igertLepesszam,
+  futtatFazis, send
 } from './reel-post.js';
 
 let pass = 0;
@@ -347,5 +349,121 @@ t('📌 VALÓDI útmutatókon: mindegyikhez épül érvényes leírás és vide�
   assert.equal(hosszu, 0, hosszu + ' leírás első sora túllógna a mobil vágásán');
   console.log('     (' + fajlok.length + ' valódi útmutató átnézve)');
 });
+
+
+// ===================================================================
+// AZ ŐRSZEM AKKOR IS MEGTUDJA, HA A KIKÜLDÉS BUKOTT (2026-08-30)
+// ===================================================================
+//
+// A `--send` fázis bukását a `memory/reel-guard.json`-ból olvassa ki a napi
+// riport (core/daily-report.js → „🎬 REEL-ŐRSZEM"). Az őrszem 2026-08-26-án
+// pontosan azért készült, mert az első automata Reel némán elbukott a CI-ban.
+//
+// CSAKHOGY a send() a hibaágon `process.exit(1)`-et hívott — az AZONNAL
+// megöli a folyamatot, tehát a hívó try/catch-e (és vele az őrszem-írás)
+// SOSEM futott le. A guard-fájlban az ELŐZŐ futás `ok:true`-ja maradt, és a
+// riport hallgatott: pont az a bukás lett láthatatlan, amiért az őr épült.
+//
+// A `sendReel()` SOSEM DOB — {ok:false}-t ad hiányzó webhookra, nem elérhető
+// videóra (bukott deploy → 404), rossz content-type-ra, túl kicsi fájlra és
+// webhook-HTTP-hibára. Vagyis a néma ág volt a TIPIKUS ág.
+//
+// ⚠️ HA A HIBA VISSZAJÖN, EZ A TESZTFÁJL NEM „bukik", hanem MEGHAL: a
+// process.exit(1) a teszt-folyamatot is megöli. A futtató ezt is ❌-nek
+// látja — csak a kimenet lesz csonka.
+//
+// ⚠️ A VALÓDI memory/reel-guard.json-hoz NEM NYÚLUNK: minden eset a saját
+// ideiglenes gyökerében fut. A valódi fájlt a végén ellenőrizzük is.
+
+const VALODI_GUARD = join(dirname(fileURLToPath(import.meta.url)), '..', 'memory', 'reel-guard.json');
+const GUARD_EREDETI = existsSync(VALODI_GUARD) ? readFileSync(VALODI_GUARD, 'utf-8') : null;
+const HOOK_EREDETI = process.env.MAKE_REEL_WEBHOOK_URL;
+
+/** Ideiglenes „projekt-gyökér" — a teszt SEMMIT nem ír a repóba. */
+function ideiglenesGyoker() {
+  const root = mkdtempSync(join(tmpdir(), 'reel-teszt-'));
+  mkdirSync(join(root, 'memory'), { recursive: true });
+  mkdirSync(join(root, 'content', 'articles'), { recursive: true });
+  return root;
+}
+const guardOlvas = (root) => {
+  const p = join(root, 'memory', 'reel-guard.json');
+  return existsSync(p) ? JSON.parse(readFileSync(p, 'utf-8')) : null;
+};
+const takarit = (root) => { try { rmSync(root, { recursive: true, force: true }); } catch { /* */ } };
+
+try {
+  await at('📓 sikeres fázis után ok:true kerül az őrszem-fájlba', async () => {
+    const root = ideiglenesGyoker();
+    await futtatFazis({ ROOT: root, join, fazis: 'prepare', fn: async () => {} });
+    assert.equal(guardOlvas(root).prepare.ok, true);
+    takarit(root);
+  });
+
+  await at('📓 a dobott hiba ok:false-ként bekerül — ÉS tovább is megy a CI felé', async () => {
+    const root = ideiglenesGyoker();
+    await assert.rejects(
+      () => futtatFazis({ ROOT: root, join, fazis: 'send', fn: async () => { throw new Error('spawnSync ffmpeg ENOENT'); } }),
+      /ffmpeg/, 'a hibát tovább kell adni: enélkül a CI zöld pipát adna');
+    const g = guardOlvas(root);
+    assert.equal(g.send.ok, false);
+    assert.match(g.send.hiba, /ffmpeg/, 'az OK is kell, nem csak a tény');
+    takarit(root);
+  });
+
+  await at('📓 az előző futás sikerét FELÜLÍRJA a mai bukás', async () => {
+    // Ez a valódi guard-fájl állapota: {send:{ok:true}} egy korábbi napról.
+    // Ha a mai bukás nem íródik felül, a riport a tegnapi sikert látja.
+    const root = ideiglenesGyoker();
+    await futtatFazis({ ROOT: root, join, fazis: 'send', fn: async () => {} });
+    assert.equal(guardOlvas(root).send.ok, true);
+    await assert.rejects(() => futtatFazis({ ROOT: root, join, fazis: 'send', fn: async () => { throw new Error('404'); } }));
+    assert.equal(guardOlvas(root).send.ok, false, 'a régi ok:true maradt bent');
+    takarit(root);
+  });
+
+  await at('🚨 a BUKOTT kiküldés eljut az őrszemig — nem lép ki előtte', async () => {
+    // A legolcsóbb valódi bukás: nincs webhook-cím. A sendReel ilyenkor
+    // {ok:false}-t ad — HÁLÓZAT NÉLKÜL, az első sorban.
+    delete process.env.MAKE_REEL_WEBHOOK_URL;
+    const root = ideiglenesGyoker();
+    const fajl = 'ARTICLE_GUIDE_teszt.json';
+    writeFileSync(join(root, 'content', 'articles', fajl), JSON.stringify({
+      _meta: { slug: SLUG, type: 'guide' },
+      article_markdown: `---\ntitle: "Egy cím"\nsubtitle: "${ALCIM}"\n---\n\n# Törzs\n`
+    }), 'utf-8');
+    writeFileSync(join(root, 'memory', 'reel-pending.json'),
+      JSON.stringify({ slug: SLUG, file: fajl, at: new Date().toISOString() }), 'utf-8');
+
+    await assert.rejects(
+      () => futtatFazis({ ROOT: root, join, fazis: 'send', fn: () => send(root, join, false) }),
+      /webhook/i, 'a send() a bukást DOBJA, nem process.exit-tel némítja');
+
+    const g = guardOlvas(root);
+    assert.ok(g, 'meg sem született az őrszem-fájl');
+    assert.equal(g.send.ok, false, 'a bukás nem került be az őrszem-fájlba — a riport hallgatna');
+    assert.match(g.send.hiba, /webhook/i, 'a riport a `hiba` mezőt írja ki');
+    takarit(root);
+  });
+
+  await at('✅ a „nincs mit küldeni" NEM bukás — a csendes napok maradjanak csendesek', async () => {
+    // Nincs reel-pending.json: a send() rendben visszatér. Ha ezt bukásnak
+    // vennénk, a riport minden nap vészjelezne — az őrszem elveszítené az
+    // erejét (lásd a Pinterest-sor kigyomlálását 2026-08-09-én).
+    const root = ideiglenesGyoker();
+    await futtatFazis({ ROOT: root, join, fazis: 'send', fn: () => send(root, join, false) });
+    assert.equal(guardOlvas(root).send.ok, true);
+    takarit(root);
+  });
+
+  t('🔒 a valódi memory/reel-guard.json érintetlen maradt', () => {
+    const most = existsSync(VALODI_GUARD) ? readFileSync(VALODI_GUARD, 'utf-8') : null;
+    assert.equal(most, GUARD_EREDETI, 'a teszt beleírt az ÉLES őrszem-fájlba');
+  });
+} finally {
+  if (HOOK_EREDETI === undefined) delete process.env.MAKE_REEL_WEBHOOK_URL;
+  else process.env.MAKE_REEL_WEBHOOK_URL = HOOK_EREDETI;
+  if (GUARD_EREDETI !== null) writeFileSync(VALODI_GUARD, GUARD_EREDETI, 'utf-8');
+}
 
 console.log('\n✅ reel-post.test: mind a ' + pass + ' eset rendben');

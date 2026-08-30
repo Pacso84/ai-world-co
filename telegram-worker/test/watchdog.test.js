@@ -45,7 +45,8 @@ const EREDETI_FETCH = globalThis.fetch;
  * `runsStatusToken nelkul` a tartalék-útra.
  */
 function mockFetch({
-  runsAt = '2026-08-26T16:40:40Z', runsStatus = 200, runsStatusNoAuth = null, dispatchOk = true
+  runsAt = '2026-08-26T16:40:40Z', runsStatus = 200, runsStatusNoAuth = null, dispatchOk = true,
+  telegramOk = true
 } = {}) {
   const hivasok = [];
   const fn = async (url, opts = {}) => {
@@ -63,7 +64,11 @@ function mockFetch({
     if (String(url).includes('/dispatches')) {
       return { ok: dispatchOk, status: dispatchOk ? 204 : 403, text: async () => 'nope' };
     }
-    return { ok: true, status: 200, json: async () => ({ ok: true }), text: async () => '' };  // Telegram
+    // Telegram. A `telegramOk:false` a valóságos bukást utánozza: HTTP 429 +
+    // {ok:false} törzs (a Telegram mindkét csatornán jelez).
+    return telegramOk
+      ? { ok: true, status: 200, json: async () => ({ ok: true }), text: async () => '' }
+      : { ok: false, status: 429, json: async () => ({ ok: false, description: 'Too Many Requests' }), text: async () => '' };
   };
   fn.hivasok = hivasok;
   fn.runs = () => hivasok.filter(x => x.url.includes('/actions/workflows/'));
@@ -241,6 +246,34 @@ await t('🔕 egy tartós hibáról max. 4 óránként szól, nem óránként', 
     db += f.telegram().length;
   }
   assert.equal(db, 1, '4 óra alatt ' + db + ' üzenetet küldött, nem 1-et');
+});
+
+await t('🔇 KI NEM MENT riasztás NEM némítja el 4 órára az őrkutyát', async () => {
+  // 2026-08-30: a szünet-nyom eddig a küldés MEGKÍSÉRLÉSE után íródott be.
+  // Ha a Telegram elutasította (429/403), az őrkutya négy órára elhallgatott
+  // egy olyan riasztás miatt, amit SENKI NEM KAPOTT MEG.
+  const e = env();
+  let probalkozas = 0;
+  for (const ora of [0, 1]) {
+    const f = mockFetch({ runsStatus: 500, runsStatusNoAuth: 500, telegramOk: false });
+    await pipelineWatchdog(e, f, MOST + ora * 3600e3);
+    probalkozas += f.telegram().length;
+  }
+  assert.ok(!e.__tar.get('watchdog:last-alert'), 'sikertelen küldésre is bejegyezte, hogy "riasztott"');
+  assert.equal(probalkozas, 2, 'a második körben meg sem próbálta újra (' + probalkozas + ' próbálkozás)');
+});
+
+await t('🔔 sikeres küldés UTÁN viszont elnémul (a szünet megmarad)', async () => {
+  // A javítás nem szedheti szét a 4 órás szünetet: siker → nyom → csend.
+  const e = env();
+  let db = 0;
+  for (const ora of [0, 1]) {
+    const f = mockFetch({ runsStatus: 500, runsStatusNoAuth: 500 });
+    await pipelineWatchdog(e, f, MOST + ora * 3600e3);
+    db += f.telegram().length;
+  }
+  assert.ok(e.__tar.get('watchdog:last-alert'), 'sikeres küldés után sincs szünet-nyom');
+  assert.equal(db, 1, 'sikeres riasztás után is újra zajongott');
 });
 
 await t('💰 a bökés-nyom az INDÍTÁS ELŐTT rögzül (dupla futás ellen)', async () => {

@@ -65,6 +65,72 @@ export async function globalLimitReached(env) {
   return parseInt(await env.FEEDBACK.get(`cs:global:${dayKey()}`) || '0', 10) >= GLOBAL_DAILY_MAX;
 }
 
+// ===================================================================
+// 📮 KÉZBESÍTETLEN KAPCSOLAT-ŰRLAP-ÜZENETEK (2026-08-30)
+// ===================================================================
+// MIÉRT KÜLÖN KULCS-ELŐTAG (`cs:unsent:<ts>`), és miért NEM a meglévő
+// `cs:msg:` rekordba tett `delivered:false` mező:
+//
+//  1. AZ EXPORTNAK SZÁMOLNIA KELL, NEM OLVASNIA. A `list({prefix})` egyetlen
+//     KV-művelet, és CSAK a bukásokat adja vissza (élesben tipikusan nullát).
+//     A `cs:msg:`-be tett mezőhöz minden riport-lekéréskor ki kellene listázni
+//     ÉS BE IS OLVASNI 30 nap összes üzenetét, hogy kiderüljön: nincs baj.
+//  2. A `cs:msg:*` KULCSOKAT SENKI NEM OLVASSA (egyetlen írás az egész
+//     repóban). Ha a javítást egy olyan rekord mezőjére akasztanánk, amit
+//     senki nem néz, pontosan azt a hibát ismételnénk meg, amit javítunk.
+//  3. A KÉT ÍRÁS FÜGGETLEN: a `cs:msg:` mentés akkor is áll, ha ez elbukik.
+//
+// A kulcs neve hordozza az időbélyeget, így a számolás ÉRTÉKET SEM OLVAS.
+// TTL 30 nap — mint a `cs:msg:`. Kézi ürítés (miután megválaszoltad őket):
+//   wrangler kv key list --prefix "cs:unsent:" … | wrangler kv key delete …
+const UNSENT_PREFIX = 'cs:unsent:';
+const UNSENT_TTL = 2592000;      // 30 nap — ugyanaz, mint a cs:msg:
+const UNSENT_MAX_PAGES = 5;      // 5×1000 kulcs bőven elég; véghetetlen lapozás nincs
+
+/**
+ * A kézbesítetlen üzenet nyoma. SOHA nem tartalmaz tokent — a riportba megy.
+ * Az `id` UGYANAZ, mint a `cs:msg:` rekordé (`<ts>-<véletlen>`), így a kettő
+ * párosítható, és két egyszerre érkező üzenet nem írja felül egymást.
+ */
+async function markUnsent(env, id, rec, hiba) {
+  await env.FEEDBACK.put(`${UNSENT_PREFIX}${id}`, JSON.stringify({
+    ...rec,
+    delivered: false,
+    reason: String(hiba || '').slice(0, 200)
+  }), { expirationTtl: UNSENT_TTL });
+}
+
+/** @returns {{unsent:number, unsentLast:string|null}} — érték-olvasás nélkül. */
+export async function csUnsent(env) {
+  let cursor = null, count = 0, last = null;
+  for (let lap = 0; lap < UNSENT_MAX_PAGES; lap++) {
+    const r = await env.FEEDBACK.list({ prefix: UNSENT_PREFIX, cursor: cursor || undefined });
+    for (const k of r?.keys || []) {
+      count++;
+      // A kulcs `<ts>-<véletlen>`; az időbélyeg az első szakasz.
+      const ts = Number(String(k.name).slice(UNSENT_PREFIX.length).split('-')[0]);
+      if (Number.isFinite(ts) && ts > 0 && (last === null || ts > last)) last = ts;
+    }
+    if (r?.list_complete !== false || !r?.cursor) break;
+    cursor = r.cursor;
+  }
+  return { unsent: count, unsentLast: last === null ? null : new Date(last).toISOString() };
+}
+
+/**
+ * A `/feedback-export` `__cs` objektuma egy helyen összeállítva (a worker
+ * csak beemeli). KÉT KÜLÖN try: egy KV-list hiba NE vigye magával a napi
+ * számlálókat, és — fontos — a sikertelen listázás NE látsszon
+ * „0 kézbesítetlen"-nek. Az „elromlott" és a „nem volt dolga" kívülről
+ * egyformán néz ki, ha nincs külön jelzés: ezért van `unsentError`.
+ */
+export async function csExport(env) {
+  const out = {};
+  try { Object.assign(out, await csCounters(env)); } catch { /* a többi mehet */ }
+  try { Object.assign(out, await csUnsent(env)); } catch { out.unsentError = true; }
+  return out;
+}
+
 async function verifyTurnstile(env, token, ip) {
   if (!env.TURNSTILE_SECRET) return false; // nincs beállítva → zárva (mint a MailerLite-minta)
   try {
@@ -164,9 +230,31 @@ async function contactFlow(request, env, h, { email, message, lang, name, token 
   if (cipCount >= CONTACT_DAILY_MAX) return j({ error: 'limit', ok: false }, 429, h);
 
   const ts = Date.now();
-  await env.FEEDBACK.put(`cs:msg:${ts}`, JSON.stringify({ email, name, message, lang, ts }), { expirationTtl: 2592000 }); // 30 nap
+  // ⚠️ AZ EZREDMÁSODPERC NEM EGYEDI KULCS (2026-08-30, a saját tesztem hozta
+  // elő, véletlenszerűen bukó esetként). A `cs:msg:<ts>` kulcsból két
+  // UGYANABBAN az ezredmásodpercben érkező üzenet ugyanazt adta: a második
+  // NÉMÁN FELÜLÍRTA az elsőt. Pontosan az a csendes veszteség, amit itt
+  // javítunk — csak a másik végén. Az időbélyeg a kulcs ELEJÉN marad
+  // (rendezhetőség + a `csUnsent` innen olvassa ki, érték-olvasás nélkül).
+  const id = `${ts}-${crypto.randomUUID().slice(0, 8)}`;
+  const rec = { email, name, message, lang, ts };
+  await env.FEEDBACK.put(`cs:msg:${id}`, JSON.stringify(rec), { expirationTtl: 2592000 }); // 30 nap
   await bumpCs(env, 'esc');
-  await tg(env, env.OWNER_CHAT_ID, `📝 ÚJ ÜGYFÉL-ÜZENET (űrlap, ${lang})\nFeladó: ${name ? name + ' — ' : ''}${email}\n\n${message.slice(0, 600)}\n\n(Válasz: sima email a feladónak.)`);
+  const kuldes = await tg(env, env.OWNER_CHAT_ID, `📝 ÚJ ÜGYFÉL-ÜZENET (űrlap, ${lang})\nFeladó: ${name ? name + ' — ' : ''}${email}\n\n${message.slice(0, 600)}\n\n(Válasz: sima email a feladónak.)`);
+
+  // 📮 A TELEGRAM AZ EGYETLEN ÉRTESÍTÉSI ÚT. Ha nem ment ki, a KV-mentés
+  // önmagában NEM értesítés (a `cs:msg:*` kulcsokat semmi nem olvassa) —
+  // a látogató „válaszolunk"-ot kapna egy üzenetre, amiről sosem tudnánk.
+  // A nyom ezért olyan helyre kerül, ahonnan a /feedback-export FELVISZI a
+  // napi riportba: oda, ahol a tulajdonos tényleg ránéz.
+  if (!kuldes?.ok) {
+    // ⚠️ Ez NEM try/catch-elt: ha a nyom írása IS elbukik, nincs mit ígérni.
+    // A kivétel a handleContact 503-ára fut ki, a látogató „próbáld később"-t
+    // lát — és nem egy hamis {ok:true}-t. Ez az EGYETLEN eset, amiben a
+    // látogató válasza változik; a sikeres úton minden változatlan.
+    await markUnsent(env, id, rec, kuldes.description);
+  }
+
   await bump(env, `cs:cip:${iph}:${dayKey()}`, 172800);
   return j({ ok: true }, 200, h);
 }

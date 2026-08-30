@@ -149,7 +149,127 @@ export function postsPerRun({ used, day, defaultLimit = 3 }) {
   return Math.min(defaultLimit, Math.max(1, n), fer, ferPlafonig);
 }
 
+// ===================================================================
+// KI ESZIK A KÖZÖS KERETBŐL (2026-08-30)
+// ===================================================================
+//
+// A keret a FIÓKÉ, nem a forgatókönyvé: minden Make-forgatókönyv ugyanabból
+// az 1000-ből fogyaszt. Az őr mégis 2026-08-10 óta CSAK a Facebook-fotó
+// forgatókönyvét összegezte — a Facebook Reel 08-25-én éles lett a
+// 7066389-esen, és azóta láthatatlanul evett a keretből. A core/reel-post.js
+// fejléce ezt előre leírta; a bekötéskor maradt el.
+//
+// AMI ELROMLIK EGY ALULBECSÜLT SZÁMTÓL: az őr későn fékez, a keret elfogy, a
+// Make nem futtatja a forgatókönyvet — a webhook viszont továbbra is 200-at ad,
+// mi „kiküldve"-nek jelöljük a posztot, és SOHA nem próbáljuk újra.
+//
+// ⚠️ ÚJ CSATORNA FELVÉTELE: egy sor ide, ÉS egy sor a core/daily-report.js
+// WATCH-listájába (az figyeli, hogy a forgatókönyv áll-e / hiányos-e / bukik-e).
+// A kettő külön kérdés: ez a MENNYIT FOGYASZT, az a MŰKÖDIK-E.
+
+/** A Facebook-fotó forgatókönyv (a napi posztok). Nem titok — a token az. */
+export const FB_SCENARIO_ID = '6452490';
+
+/** A Facebook Reel forgatókönyv (napi egy álló videó, 2026-08-25 óta éles). */
+export const REEL_SCENARIO_ID = '7066389';
+
+/**
+ * Egy Reel ára: webhook + a Reel-feltöltő modul. (URL-módban a Facebook maga
+ * tölti le a videót, ezért nincs külön letöltő lépés, mint a fotós posztnál.)
+ * Napi EGY Reel megy ki → ~60 művelet/hó.
+ */
+export const REEL_OPS_PER_DAY = 2;
+
+/** A KÖZÖS keretből evő forgatókönyvek. `napiOps` = becslés, ha a napló néma. */
+export const SHARED_SCENARIOS = [
+  { id: FB_SCENARIO_ID, nev: 'FB-poszt', napiOps: 0 },
+  { id: REEL_SCENARIO_ID, nev: 'FB Reel', napiOps: REEL_OPS_PER_DAY }
+];
+
+/**
+ * Mennyit fogyaszthatott a hónap elejétől MÁIG egy ismert napi tempójú
+ * forgatókönyv? Csak akkor számol, ha a naplója nem kérdezhető le.
+ *
+ * A becslés SZÁNDÉKOSAN felfelé kerekít (a hónap minden napjára számol, akkor
+ * is, ha a csatorna a hónap közben indult): ugyanaz az elv, mint az
+ * UNTRACKED_OPS-nál — az alulbecslés leállást okoz, a túlbecslés csak lassít.
+ *
+ * @returns {number|null} null, ha nincs mihez viszonyítani
+ */
+export function estimateOps(napiOps, day) {
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(day || ''));
+  if (!m || !Number.isFinite(Number(napiOps)) || Number(napiOps) <= 0) return null;
+  return Number(napiOps) * Number(m[3]);
+}
+
+/**
+ * EGY forgatókönyv havi művelet-fogyása a Make futási naplójából.
+ *
+ * @returns {number|null} null = NEM TUDJUK (hiba, hiányzó jog, törölt
+ *   forgatókönyv). A nulla és az ismeretlen KÉT KÜLÖN dolog: a nulla azt
+ *   állítaná, hogy a csatorna nem fogyaszt.
+ */
+export async function scenarioMonthOps(id, { token, fetchFn = fetch, month, timeoutMs = 15000 } = {}) {
+  if (!id || !token || !month) return null;
+  let osszes = 0, offset = 0;
+  try {
+    // Lapozva: a végpont legfeljebb 50 sort ad (100-ra HTTP 400). Egy hónap
+    // ~90 futás, tehát 4 oldal bőven elég — a régebbi sorok már más hónapé.
+    for (let oldal = 0; oldal < 4; oldal++) {
+      const r = await fetchFn(
+        `https://eu1.make.com/api/v2/scenarios/${id}/logs?pg[limit]=50&pg[offset]=${offset}&pg[sortDir]=desc`,
+        { headers: { Authorization: 'Token ' + token }, signal: AbortSignal.timeout(timeoutMs) });
+      if (!r || !r.ok) return null;
+      const sorok = (await r.json().catch(() => ({}))).scenarioLogs || [];
+      if (!sorok.length) break;
+      osszes += sumMonthOps(sorok, month);
+      offset += sorok.length;
+      // Ha az oldal legrégebbi sora már az előző hónapé, nincs mit tovább lapozni.
+      if (String(sorok[sorok.length - 1]?.timestamp || '') < month) break;
+      if (sorok.length < 50) break;
+    }
+  } catch { return null; }
+  return osszes;
+}
+
+/**
+ * A KÖZÖS keret állása: minden figyelt forgatókönyv + a naplóból nem látszó
+ * felhasználás. Ez megy a `postsPerRun` `used` mezőjébe.
+ *
+ * @param {object} p
+ * @param {string} p.token      MAKE_API_TOKEN
+ * @param {string} p.day        'YYYY-MM-DD' — a mai nap
+ * @param {Function} [p.fetchFn]
+ * @param {Array} [p.scenarios] alapból SHARED_SCENARIOS
+ * @returns {Promise<number|null>} null = ISMERETLEN → NEM fékezünk
+ *
+ * ⚠️ A NULL NEM NULLA. Ha a fő forgatókönyv naplója nem jön (API-hiba), az
+ * egész szám hamis lenne — ilyenkor inkább teljes tempón megyünk: egy API-hiba
+ * miatti visszavétel biztos és azonnali kár, a keret kifutása bizonytalan és
+ * hó végi. Amelyik csatornának viszont ismert a napi tempója (Reel), ott a
+ * becslés jobb, mint a nulla — különben egy törölt/átnevezett forgatókönyv
+ * NÉMÁN ingyenessé válna a számításban.
+ */
+export async function usedThisMonth({ token, day, fetchFn = fetch, scenarios = SHARED_SCENARIOS, timeoutMs } = {}) {
+  const t = String(token || '').trim();
+  const honap = String(day || '').slice(0, 7);
+  if (!t || !/^\d{4}-\d{2}$/.test(honap)) return null;
+
+  let osszes = 0;
+  for (const sc of scenarios) {
+    const ops = await scenarioMonthOps(sc.id, { token: t, fetchFn, month: honap, timeoutMs });
+    if (Number.isFinite(ops)) { osszes += ops; continue; }
+    const becsles = estimateOps(sc.napiOps, day);
+    if (becsles === null) return null;
+    osszes += becsles;
+  }
+  // A naplóból nem látszó felhasználás (törölt Pinterest) — EGYSZER.
+  return osszes + untrackedOps(honap);
+}
+
 export default {
   postsPerRun, remainingDays, sumMonthOps, untrackedOps,
-  MONTHLY_CAP, SAFETY_CAP, OPS_PER_POST, RUNS_PER_DAY
+  scenarioMonthOps, usedThisMonth, estimateOps,
+  MONTHLY_CAP, SAFETY_CAP, OPS_PER_POST, RUNS_PER_DAY,
+  SHARED_SCENARIOS, FB_SCENARIO_ID, REEL_SCENARIO_ID, REEL_OPS_PER_DAY
 };

@@ -125,4 +125,39 @@ t('ismeretlen kulcsra null, nem borulás', () => {
   assert.equal(findArticleBySlug(DIR, null), null);
 });
 
+// ── A BUILD FEHÉRLISTÁS FELDOLGOZÓJA (2026-08-29) ───────────────────
+// A `website/build.js` `parseFrontmatter()`-e FEHÉRLISTÁS: csak azokat a
+// kulcsokat tartja meg, amik a mag-objektumban szerepelnek (`hasOwnProperty`).
+// A `tool` és a `company` KIMARADT belőle, ezért a build a cikk saját
+// frontmatterét NÉMÁN eldobta, és mindig a `_meta`-t (a párosító korai
+// TERVÉT) használta — a melletti komment pont az ellenkezőjét állítja.
+// Élő kár: 378 útmutatóból 3 rossz eszközt mutatott, köztük a KITALÁLT
+// „365 Copilot" néven futó cikk.
+//
+// ⚠️ A build.js-t NEM lehet importálni (a fájl végén feltétel nélküli
+// `main()`), ezért FORRÁS-SZINTEN ellenőrzünk. Ez a teszt nem csak a két
+// kulcsot védi, hanem az EGÉSZ HIBAOSZTÁLYT: amit a kód `meta.X`-ként
+// olvas, annak benne KELL lennie a fehérlistán, különben mindig undefined.
+t('🔑 a build minden OLVASOTT frontmatter-kulcsa a fehérlistán van', () => {
+  const src = readFileSync(join(dirname(fileURLToPath(import.meta.url)), '..', 'website', 'build.js'), 'utf-8');
+
+  const seedSor = src.match(/const fm = \{([^}]*)\}/);
+  assert.ok(seedSor, 'nem találom a parseFrontmatter mag-objektumát');
+  const feherlista = [...seedSor[1].matchAll(/(\w+)\s*:/g)].map(m => m[1]);
+
+  for (const kell of ['tool', 'company']) {
+    assert.ok(feherlista.includes(kell),
+      'a „' + kell + '" hiányzik a fehérlistáról → a build némán eldobná a cikk saját értékét');
+  }
+
+  // ⚠️ Az `import.meta.url`-t KI KELL ZÁRNI: az első változatom rá is
+  // illeszkedett, és hamis riasztást adott. (A mérőeszköz hitelesítése.)
+  const olvasott = [...new Set(
+    [...src.matchAll(/(?<!import\.)\bmeta\.(\w+)/g)].map(m => m[1])
+  )];
+  const hianyzo = olvasott.filter(k => !feherlista.includes(k));
+  assert.deepEqual(hianyzo, [],
+    'a kód olvassa, de a fehérlista nem tartalmazza (mindig undefined lenne): ' + hianyzo.join(', '));
+});
+
 console.log('\n✅ frontmatter.test: mind a ' + pass + ' eset rendben');

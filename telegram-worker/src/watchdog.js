@@ -34,10 +34,19 @@ const kvPut = async (env, k, v, ttl) => {
  * üzenetet jelentett volna, napi 24-et. Egy figyelmeztetés, ami mindennap
  * huszonnégyszer szól, egy hét alatt láthatatlanná válik — ugyanaz a hiba,
  * amit az egyenleg-őrnél már egyszer kijavítottunk.
+ *
+ * 🔑 CSAK A TÉNYLEG KIMENT RIASZTÁS NÉMÍT (2026-08-30). Korábban a szünet
+ * akkor is bejegyződött, ha a Telegram elutasította a küldést — a „szóltam"
+ * a KÜLDÉS MEGKÍSÉRLÉSÉT jelentette, nem a megérkezését. Egy átmeneti 429
+ * így négy órára ELNÉMÍTOTTA az őrkutyát egy olyan riasztásról, amit senki
+ * nem kapott meg. („Sikeres" válasz ≠ elvégzett munka — a lánc VÉGÉT mérd.)
  */
 async function riaszt(env, szoveg) {
   if (await kvGet(env, KV_RIASZT)) return false;
-  await tg(env, env?.OWNER_CHAT_ID, szoveg).catch(() => { /* a Telegram hibája ne dobjon */ });
+  // A `tg()` szerződés szerint nem dob; a `.catch` csak öv a nadrágtartó mellé,
+  // mert itt egy elutasított ígéret a `ctx.waitUntil()` alatt némán elveszne.
+  const kuldes = await tg(env, env?.OWNER_CHAT_ID, szoveg).catch(() => ({ ok: false }));
+  if (!kuldes?.ok) return false;   // nem ment ki → NEM némítjuk el magunkat
   await kvPut(env, KV_RIASZT, new Date().toISOString(), RIASZTAS_SZUNET_MP);
   return true;
 }

@@ -50,6 +50,17 @@ export const SZABALYOK = [
   { kulcs: 'osszevonas', minta: '🔗 Összevonás: nem volt', mod: 'soha', nev: 'hír-összevonás' }
 ];
 
+/**
+ * 🛑 VÉSZJELZÉS-MINTA — ami ezt viszi, az MINDEN szabályt felülír.
+ *
+ * EXPLICIT jelek, nem szó-illesztés: a repó tanulsága szerint az előtag- és
+ * mintaillesztés magabiztosan téved (analysis→analyzis, Microsoft 365 Copilot
+ * →„365 Copilot"). Itt a 🛑 és a ⚠️ a rendszerünk SAJÁT, szándékosan kitett
+ * jelzése — a housekeeping ezekkel jelzi a tömeges törlés vészfékét és a
+ * „újra hízik" növekedés-őrt.
+ */
+const VESZ_RX = /[🛑🚨]|⚠️/u;
+
 /** A felsorolt elemek egy „halmaz"-sorból: a kettőspont után, a gondolatjelig. */
 export function halmazElemek(sor) {
   const t = String(sor);
@@ -75,10 +86,29 @@ export function szamKi(sor, minta) {
  * állítunk. Ez szándékos — így a bevezetés napján nem zúdul ki minden.
  */
 export function dontes(szabaly, sor, elozo) {
+  // 🛑 VÉSZ-KIVÉTEL (2026-08-29, hibavadászat). A `soha` szabályt a sor NEVE
+  // alapján hoztam meg („a házmester rutin") — csakhogy UGYANAZON a soron megy
+  // a tömeges törlés vészféke is. Bizonyítva:
+  //   „🧹 HÁZMESTER: 🛑 LEJÁRT HÍR: 812 cikk esne ki egyszerre — NEM TÖRLÖK"
+  //   → a szűrő kimenete: []  (TELJESEN elnémítva)
+  // Ugyanezen a soron jön a housekeeping „⚠️ újra hízik" növekedés-őre is, ami
+  // pont a 08-15-i _redirects-lecke ellenszere.
+  // 🔑 A TANULSÁG: egy sort a TARTALMA alapján kell megítélni, nem a nevéből.
+  if (VESZ_RX.test(sor)) {
+    return { mutasd: true, ujAllapot: szabaly.mod === 'soha' ? null : elozo ?? null, indok: 'VÉSZJELZÉS — mindig kimegy' };
+  }
+
   if (szabaly.mod === 'soha') return { mutasd: false, ujAllapot: null, indok: 'rutin/lezárt' };
 
   if (szabaly.mod === 'valtozas') {
-    const mutasd = elozo !== undefined && elozo !== null && elozo !== sor;
+    // ⚠️ AZ ELSŐ ELŐFORDULÁS MOSTANTÓL KIMEGY (2026-08-29). Korábban néma volt,
+    // és „változatlan" indokkal került a 🔇 „Csendben rendben" sorba — ami
+    // HAZUGSÁG: nem volt mihez hasonlítani. Élő kitettség volt: a minőség-őr
+    // ELSŐ találata biztosan elveszett volna (nincs `minosegOr` az állapotban).
+    if (elozo === undefined || elozo === null) {
+      return { mutasd: true, ujAllapot: sor, indok: 'első alkalom — nincs mihez hasonlítani' };
+    }
+    const mutasd = elozo !== sor;
     return { mutasd, ujAllapot: sor, indok: mutasd ? 'megváltozott' : 'változatlan' };
   }
 
@@ -95,9 +125,16 @@ export function dontes(szabaly, sor, elozo) {
     // elvágott szöveg is valódi hír (a keret-mentő romlását jelentené).
     const kuszob = alap === null ? null : alap * (1 + (szabaly.tures || 0));
     const mutasd = kuszob !== null && n > kuszob;
-    // A CSÚCSOT tartjuk alapnak, nem az utolsó értéket: különben egy javulás
-    // után a visszakapaszkodás fölöslegesen riasztana (200 → 190 → 195).
-    return { mutasd, ujAllapot: alap === null ? n : Math.max(alap, n), indok: mutasd ? `nőtt (${alap} → ${n})` : 'nem romlott' };
+
+    // ⚠️ AZ ALAP KÉTFÉLE (2026-08-29, hibavadászat).
+    //   tures > 0  → CSÚCS: a javulás utáni visszakapaszkodás ne riasszon
+    //                fölöslegesen (200 → 190 → 195 néma marad).
+    //   tures = 0  → UTOLSÓ ÉRTÉK: ott minden növekmény hír, tehát a csúcs
+    //                tartása ELNÉMÍTANÁ a valódi újat. Bizonyítva: alap 53
+    //                mellett 52 → néma (jó), majd az ÚJ 53. → szintén néma
+    //                (rossz), pedig az egy friss elvágott szöveg lenne.
+    const ujAlap = alap === null ? n : (szabaly.tures ? Math.max(alap, n) : n);
+    return { mutasd, ujAllapot: ujAlap, indok: mutasd ? `nőtt (${alap} → ${n})` : 'nem romlott érdemben' };
   }
 
   // 'halmaz'

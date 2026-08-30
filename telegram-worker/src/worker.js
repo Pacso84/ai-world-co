@@ -13,9 +13,31 @@
 //   WEBHOOK_SECRET  — a Telegram webhook titok (kérés-hitelesítés)
 // VARS (wrangler.toml):
 //   GH_REPO         — pl. "Pacso84/ai-world-co"
+//
+// ===================================================================
+// 📮 HÁTRALÉVŐ MUNKA A RIPORT-OLDALON (2026-08-30) — NEM ITT KELL MEGÍRNI
+// ===================================================================
+// A `/feedback-export` `__cs` objektuma mostantól a kapcsolat-űrlap
+// KÉZBESÍTETLEN üzeneteit is viszi (a Telegram-értesítés elbukott):
+//
+//     __cs = { chat, mail, esc, unsent, unsentLast }        // vagy
+//     __cs = { chat, mail, esc, unsentError: true }         // ha a KV-listázás bukott
+//
+// A `core/daily-report.js` (~652. sor) ma csak a 💬 sort írja ki, azt is
+// CSAK akkor, ha `chat+mail+esc > 0`. A hiányzó sorok — a 💬 feltételén
+// KÍVÜL, mert egy kézbesítetlen üzenetről akkor is szólni kell, ha aznap
+// nem volt más ügyfélszolgálati forgalom:
+//
+//   if (cs.unsent > 0) lines.push(`📮 KÉZBESÍTETLEN kapcsolat-üzenet: ${cs.unsent} db `
+//     + `(utolsó: ${cs.unsentLast}) — a Telegram-értesítés NEM ment ki. `
+//     + `Az üzenetek a KV-ben: cs:unsent:*`);
+//   if (cs.unsentError) lines.push('📮 A kézbesítetlen üzeneteket NEM tudtam ellenőrizni (KV-listázás hibája).');
+//
+// ⚠️ A második sor nem díszítés: enélkül a sikertelen ellenőrzés pontosan
+// úgy néz ki, mint a „0 kézbesítetlen" — és a néma őr nem őr.
 // ===================================================================
 import { tg } from './tg.js';
-import { handleChat, handleContact, csCounters } from './cs-routes.js';
+import { handleChat, handleContact, csExport } from './cs-routes.js';
 import { handleEmail } from './cs-email.js';
 import { pipelineWatchdog } from './watchdog.js';
 
@@ -60,8 +82,9 @@ async function handleFeedbackExport(request, env) {
   for (const k of list.keys) {
     try { out[k.name.slice(3)] = JSON.parse(await env.FEEDBACK.get(k.name)); } catch { /* skip */ }
   }
-  // Ügyfélszolgálat napi számlálói a riportoknak (2026-07-20)
-  try { out.__cs = await csCounters(env); } catch { /* skip */ }
+  // Ügyfélszolgálat napi számlálói + kézbesítetlen üzenetek a riportoknak
+  // (2026-07-20, bővítve 2026-08-30 — lásd a fájl fejlécének 📮 szakaszát)
+  try { out.__cs = await csExport(env); } catch { /* skip */ }
   return new Response(JSON.stringify(out), { status: 200, headers: { 'Content-Type': 'application/json' } });
 }
 

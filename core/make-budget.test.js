@@ -13,11 +13,15 @@
 import assert from 'assert/strict';
 import {
   postsPerRun, remainingDays, sumMonthOps, untrackedOps,
-  MONTHLY_CAP, SAFETY_CAP, OPS_PER_POST, RUNS_PER_DAY
+  usedThisMonth, estimateOps,
+  MONTHLY_CAP, SAFETY_CAP, OPS_PER_POST, RUNS_PER_DAY,
+  SHARED_SCENARIOS, FB_SCENARIO_ID, REEL_SCENARIO_ID, REEL_OPS_PER_DAY
 } from './make-budget.js';
 
 let pass = 0;
 const t = (name, fn) => { fn(); pass++; console.log('  ✅ ' + name); };
+// Az aszinkron eseteknek (mock fetch) sajat futtato kell — ugyanaz a szamlalo.
+const at = async (name, fn) => { await fn(); pass++; console.log('  ✅ ' + name); };
 
 console.log('🧪 Make művelet-őr\n');
 
@@ -176,6 +180,134 @@ t('a korrekcióval a mai állapot ténylegesen fékez', () => {
 t('szeptemberben a teljes tempó belefér', () => {
   // 9 poszt/nap × 3 művelet × 30 nap = 810 — ezért volt jó a 6→9 emelés.
   assert.equal(postsPerRun({ used: untrackedOps('2026-09'), day: '2026-09-01', defaultLimit: 3 }), 3);
+});
+
+
+// ===================================================================
+// A KÖZÖS KERET — a Reel is ebből eszik (2026-08-30)
+// ===================================================================
+//
+// A művelet-őr 2026-08-10 óta CSAK a Facebook-fotó forgatókönyvét (6452490)
+// összegezte. A Facebook Reel 08-25-én éles lett a 7066389-esen, és azóta
+// naponta 2 műveletet vesz el UGYANABBÓL az 1000-es fiók-keretből —
+// láthatatlanul. A core/reel-post.js fejléce ezt ELŐRE leírta („a Make-keret
+// sem szerepel itt… pipeline-ba kötés előtt a core/make-budget.js oldalán
+// kell kezelni"), csak a bekötéskor nem történt meg.
+//
+// A veszély nem elméleti: alulbecsült fogyás → az őr későn fékez → a keret
+// elfogy → a Make NEM futtatja a forgatókönyvet, a webhook mégis 200-at ad,
+// mi „kiküldve"-nek jelöljük a posztot, és SOHA nem próbáljuk újra.
+
+/** Mock Make-napló-végpont. `valaszok[id]` = sorok tömbje, vagy 'hiba'. */
+function makeMock(valaszok) {
+  const hivott = [];
+  const f = async (url, opt = {}) => {
+    const u = String(url);
+    hivott.push({ url: u, auth: opt?.headers?.Authorization });
+    const id = u.match(/scenarios\/(\d+)\/logs/)?.[1];
+    const v = valaszok[id];
+    if (v === undefined || v === 'hiba') return { ok: false, status: 500, json: async () => ({}) };
+    const offset = Number(u.match(/offset\]=(\d+)/)?.[1] || 0);
+    return { ok: true, status: 200, json: async () => ({ scenarioLogs: v.slice(offset, offset + 50) }) };
+  };
+  return { f, hivott, idk: () => [...new Set(hivott.map(h => h.url.match(/scenarios\/(\d+)\//)?.[1]))] };
+}
+
+/** N napló-sor egy hónapra, soronként `ops` művelettel. */
+const naploSorok = (n, ops) =>
+  Array.from({ length: n }, (_, i) => ({
+    timestamp: `2026-08-1${String((i % 9) + 1)}T10:00:00Z`, operations: ops
+  }));
+
+t('🎬 a Reel is a KÖZÖS keretből eszik — benne van a figyelt listában', () => {
+  const idk = SHARED_SCENARIOS.map(s => s.id);
+  assert.ok(idk.includes(FB_SCENARIO_ID), 'a Facebook-fotó forgatókönyv');
+  assert.ok(idk.includes(REEL_SCENARIO_ID), 'a Facebook Reel forgatókönyv (7066389)');
+  assert.equal(REEL_SCENARIO_ID, '7066389', 'a Make-forgatókönyv azonosítója');
+  assert.equal(REEL_OPS_PER_DAY, 2, 'webhook + Reel-feltöltés, napi EGY Reel');
+});
+
+await at('🚨 MINDKÉT forgatókönyv naplóját lekérdezi és ÖSSZEADJA', async () => {
+  // EZ A HIBA MAGA: a régi kód csak a 6452490-et kérdezte le, tehát a Reel
+  // ~60 művelete/hó láthatatlan maradt.
+  const m = makeMock({
+    [FB_SCENARIO_ID]: naploSorok(10, 3),      // 30 művelet
+    [REEL_SCENARIO_ID]: naploSorok(20, 2)     // 40 művelet
+  });
+  const used = await usedThisMonth({ token: 'teszt-token', day: '2026-08-20', fetchFn: m.f });
+  assert.deepEqual(m.idk().sort(), [FB_SCENARIO_ID, REEL_SCENARIO_ID].sort(),
+    'a Reel naplóját is le KELL kérdezni');
+  assert.equal(used, 30 + 40 + untrackedOps('2026-08'));
+});
+
+await at('a lekérdezés a tokent viszi, és csak az adott hónapot számolja', async () => {
+  const m = makeMock({
+    [FB_SCENARIO_ID]: [
+      { timestamp: '2026-08-10T01:20:48Z', operations: 9 },
+      { timestamp: '2026-07-31T23:59:00Z', operations: 99 }   // előző hónap
+    ],
+    [REEL_SCENARIO_ID]: [{ timestamp: '2026-08-11T00:00:00Z', operations: 2 }]
+  });
+  const used = await usedThisMonth({ token: 'teszt-token', day: '2026-08-20', fetchFn: m.f });
+  assert.equal(used, 9 + 2 + untrackedOps('2026-08'));
+  assert.ok(m.hivott.every(h => h.auth === 'Token teszt-token'), 'hitelesítés nélkül 401 jönne');
+});
+
+await at('50-nél több sornál LAPOZ — különben a hónap eleje kimaradna', async () => {
+  const m = makeMock({ [FB_SCENARIO_ID]: naploSorok(60, 1), [REEL_SCENARIO_ID]: [] });
+  const used = await usedThisMonth({ token: 'teszt-token', day: '2026-08-20', fetchFn: m.f });
+  assert.equal(used, 60 + untrackedOps('2026-08'), 'a második oldal is kell');
+});
+
+await at('⚙️ a FŐ forgatókönyv naplója nélkül ISMERETLEN (null) — nem fékezünk vaktában', async () => {
+  // Ugyanaz az elv, mint eddig: egy API-hiba miatti visszavétel biztos és
+  // azonnali kár, a keret kifutása bizonytalan és hó végi.
+  const m = makeMock({ [FB_SCENARIO_ID]: 'hiba', [REEL_SCENARIO_ID]: naploSorok(5, 2) });
+  assert.equal(await usedThisMonth({ token: 'teszt-token', day: '2026-08-20', fetchFn: m.f }), null);
+  assert.equal(postsPerRun({ used: null, day: '2026-08-20', defaultLimit: 3 }), 3);
+});
+
+await at('🎬 a Reel naplója nélkül BECSLÉSSEL számolunk — nem nullával', async () => {
+  // A törölt Pinterest leckéje: ami nem mérhető, azt sem hagyhatjuk figyelmen
+  // kívül. Ha a Reel naplója 403/500-at ad (törölt vagy átnevezett
+  // forgatókönyv), a nulla azt hazudná, hogy nem eszik a keretből.
+  const m = makeMock({ [FB_SCENARIO_ID]: naploSorok(10, 3), [REEL_SCENARIO_ID]: 'hiba' });
+  const used = await usedThisMonth({ token: 'teszt-token', day: '2026-08-15', fetchFn: m.f });
+  assert.equal(used, 30 + REEL_OPS_PER_DAY * 15 + untrackedOps('2026-08'),
+    'a becslés a hónap elejétől máig, napi 2 művelettel');
+  assert.ok(used > 30 + untrackedOps('2026-08'), 'a Reel NEM lehet ingyenes a számításban');
+});
+
+t('a Reel havi fogyása ~60 művelet — ez a nagyságrend, amit eddig elhagytunk', () => {
+  assert.equal(estimateOps(REEL_OPS_PER_DAY, '2026-08-30'), 60);
+  assert.equal(estimateOps(REEL_OPS_PER_DAY, '2026-08-01'), 2, 'a mai nap is beleszámít');
+  assert.equal(estimateOps(0, '2026-08-30'), null, 'becslés csak ott, ahol ismert a napi tempó');
+  assert.equal(estimateOps(REEL_OPS_PER_DAY, 'nem-datum'), null);
+});
+
+await at('token nélkül ISMERETLEN — és hálózatot sem hívunk', async () => {
+  const m = makeMock({ [FB_SCENARIO_ID]: naploSorok(10, 3) });
+  assert.equal(await usedThisMonth({ token: '', day: '2026-08-20', fetchFn: m.f }), null);
+  assert.equal(await usedThisMonth({ token: undefined, day: '2026-08-20', fetchFn: m.f }), null);
+  assert.equal(await usedThisMonth({ token: 'teszt-token', day: 'nem-datum', fetchFn: m.f }), null);
+  assert.equal(m.hivott.length, 0);
+});
+
+await at('a hálózati kivétel sem dob — ISMERETLEN lesz belőle', async () => {
+  const f = async () => { throw new Error('halott hálózat'); };
+  assert.equal(await usedThisMonth({ token: 'teszt-token', day: '2026-08-20', fetchFn: f }), null);
+});
+
+await at('🚦 a Reel műveletei TÉNYLEGESEN eltolják a döntést', async () => {
+  // Nem elmélet: a szűk sávban a Reel 60 művelete egy egész poszt-fokozat.
+  const nelkule = makeMock({ [FB_SCENARIO_ID]: naploSorok(40, 13), [REEL_SCENARIO_ID]: [] });
+  const vele = makeMock({ [FB_SCENARIO_ID]: naploSorok(40, 13), [REEL_SCENARIO_ID]: naploSorok(30, 2) });
+  const a = await usedThisMonth({ token: 'teszt-token', day: '2026-08-28', fetchFn: nelkule.f });
+  const b = await usedThisMonth({ token: 'teszt-token', day: '2026-08-28', fetchFn: vele.f });
+  assert.equal(b - a, 60, 'a Reel havi fogyása');
+  const nA = postsPerRun({ used: a, day: '2026-08-28', defaultLimit: 3 });
+  const nB = postsPerRun({ used: b, day: '2026-08-28', defaultLimit: 3 });
+  assert.ok(nB < nA, `a Reel fogyásával kevesebb posztot szabad küldeni (${nA} → ${nB})`);
 });
 
 console.log('\n✅ make-budget.test: mind a ' + pass + ' eset rendben');

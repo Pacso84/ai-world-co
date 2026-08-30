@@ -25,7 +25,7 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { selectSocialBatch } from '../../core/social-queue.js';
 import { followCta } from '../../core/social-text.js';
-import { postsPerRun, sumMonthOps, untrackedOps } from '../../core/make-budget.js';
+import { postsPerRun, usedThisMonth, MONTHLY_CAP } from '../../core/make-budget.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..', '..');
@@ -50,39 +50,20 @@ function slugify(text) {
 // még 200-at ad, mi "kiküldve"-nek jelöljük a posztot, és soha nem próbáljuk
 // újra. Nem lassulás lenne, hanem NÉMA VESZTESÉG.
 //
-// A Facebook-forgatókönyv azonosítója. Nem titok (a token az), és a
-// core/daily-report.js is így hivatkozik rá — egy helyen tartani félrevezetőbb
-// lenne, mint két helyen ugyanazt a konstanst látni.
-const FB_SCENARIO_ID = '6452490';
-
-// A döntés logikája (tesztelve): core/make-budget.js.
-// Itt csak az adatot szerezzük be — és ha az nem jön, NEM fékezünk: egy
-// API-hiba miatti visszavétel biztos kár, a kifutás bizonytalan és hó végi.
-async function havonEddigElhasznalt(scenarioId) {
-  const token = (process.env.MAKE_API_TOKEN || '').trim();
-  if (!token || !scenarioId) return null;
-  const honap = new Date().toISOString().slice(0, 7);
-  let osszes = 0, offset = 0;
-  try {
-    // Lapozva: a végpont legfeljebb 50 sort ad (100-ra HTTP 400). Egy hónap
-    // ~90 futás, tehát 4 oldal bőven elég — a régebbi sorok már más hónapé.
-    for (let oldal = 0; oldal < 4; oldal++) {
-      const r = await fetch(
-        `https://eu1.make.com/api/v2/scenarios/${scenarioId}/logs?pg[limit]=50&pg[offset]=${offset}&pg[sortDir]=desc`,
-        { headers: { Authorization: 'Token ' + token }, signal: AbortSignal.timeout(15000) });
-      if (!r.ok) return null;
-      const sorok = (await r.json().catch(() => ({}))).scenarioLogs || [];
-      if (!sorok.length) break;
-      osszes += sumMonthOps(sorok, honap);
-      offset += sorok.length;
-      // Ha az oldal legrégebbi sora már az előző hónapé, nincs mit tovább lapozni.
-      if (String(sorok[sorok.length - 1]?.timestamp || '') < honap) break;
-      if (sorok.length < 50) break;
-    }
-  } catch { return null; }
-  // A naplóban nem szereplő, de elhasznált műveletek (törölt Pinterest).
-  return osszes + untrackedOps(honap);
-}
+// 🎬 A KERET A FIÓKÉ, NEM A FORGATÓKÖNYVÉ (2026-08-30). Ez a függvény
+// korábban CSAK a Facebook-fotó forgatókönyvét (6452490) összegezte. A
+// Facebook Reel 2026-08-25 óta a 7066389-esen fut, és naponta 2 műveletet
+// vesz el UGYANABBÓL az 1000-ből — vagyis havi ~60 művelet hiányzott a
+// számításból. A core/reel-post.js fejléce ezt előre leírta, csak a
+// bekötéskor maradt el.
+//
+// A lekérdezés + összegzés ÁTKÖLTÖZÖTT a core/make-budget.js-be
+// (`usedThisMonth`, `SHARED_SCENARIOS`) — ott TESZTELHETŐ mock fetch-csel,
+// itt nem volt az. A forgatókönyv-azonosítók is ott élnek, egy helyen:
+// egy kimásolt szám matematikai biztonsággal csúszik szét.
+//
+// A viselkedés változatlan: ha az adat nem jön, NEM fékezünk — egy API-hiba
+// miatti visszavétel biztos kár, a kifutás bizonytalan és hó végi.
 
 // slug → { published_at, guide } térkép a cikkekből.
 //
@@ -172,14 +153,15 @@ async function main() {
   for (const x of queue) x.isFresh = !!(x.pubAt && new Date(x.pubAt).getTime() >= freshCut);
 
   // MŰVELET-ŐR: a havi Make-keret vetítése alapján visszaveszünk, ha kifutnánk.
-  const elhasznalt = DRY ? null : await havonEddigElhasznalt(FB_SCENARIO_ID);
-  const limit = postsPerRun({
-    used: elhasznalt, day: new Date().toISOString().slice(0, 10), defaultLimit: LIMIT
-  });
+  // MINDEN forgatókönyv beleszámít, ami ugyanebből a fiók-keretből eszik:
+  // a Facebook-poszt ÉS a Facebook Reel (core/make-budget.js → SHARED_SCENARIOS).
+  const MA = new Date().toISOString().slice(0, 10);
+  const elhasznalt = DRY ? null : await usedThisMonth({ token: process.env.MAKE_API_TOKEN, day: MA });
+  const limit = postsPerRun({ used: elhasznalt, day: MA, defaultLimit: LIMIT });
   if (limit !== LIMIT) {
     console.log(elhasznalt === null
       ? `   ⚙️  Make-keret: ismeretlen — maradok a teljes tempón (${LIMIT})`
-      : `   🚦 Make-keret: ${elhasznalt}/1000 elhasználva ebben a hónapban → ${LIMIT} helyett ${limit} poszt megy ki`);
+      : `   🚦 Make-keret (FB-poszt + Reel): ${elhasznalt}/${MONTHLY_CAP} elhasználva ebben a hónapban → ${LIMIT} helyett ${limit} poszt megy ki`);
   }
   if (limit === 0) {
     console.log('   ⛔ A havi Make-keret elfogyott — NEM küldök, mert a poszt némán elveszne.');

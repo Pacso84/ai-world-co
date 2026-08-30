@@ -37,17 +37,21 @@ const t = (name, fn) => { fn(); pass++; console.log('  ✅ ' + name); };
 
 console.log('🧪 riport-zajszűrő\n');
 
-t('AZ ELSŐ FUTÁS NÉMA — csak alapot állít', () => {
-  // Szándékos: a bevezetés napján ne zúduljon ki minden egyszerre.
+t('AZ ELSŐ FUTÁS az ÖSSZEHASONLÍTHATÓ sorokat némítja — a többit nem', () => {
+  // Szándékos: a bevezetés napján ne zúduljon ki minden egyszerre. DE a
+  // 'valtozas' módú soroknál nincs mihez hasonlítani, tehát ott a némítás
+  // hazugság lenne — azok KIMENNEK (2026-08-29-i javítás).
   const r = szurZajt(TELJES, {});
-  assert.deepEqual(r.sorok, [TARTALOM, FB, PENZ, EGYENLEG, MELYSEG], 'őrszem-sor maradt bent');
-  assert.equal(r.csendes.length, 7, 'nem mind a 7 őrszem hallgatott: ' + r.csendes.join(', '));
+  assert.deepEqual(r.sorok, [TARTALOM, FB, PENZ, EGYENLEG, I18N, MELYSEG], 'nem a várt sorok maradtak');
+  assert.equal(r.csendes.length, 6, 'nem a várt 6 őrszem hallgatott: ' + r.csendes.join(', '));
 });
 
 t('a NEM-őrszem sorok ÉRINTETLENÜL, SORRENDBEN mennek tovább', () => {
   // Ez a legfontosabb: a szűrő nem nyúlhat ahhoz, amiért a user olvassa.
   const r = szurZajt(TELJES, {});
-  assert.deepEqual(r.sorok, [TARTALOM, FB, PENZ, EGYENLEG, MELYSEG]);
+  for (const kell of [TARTALOM, FB, PENZ, EGYENLEG, MELYSEG]) {
+    assert.ok(r.sorok.includes(kell), 'elnyelt egy nem-őrszem sort: ' + kell.slice(0, 40));
+  }
   const r2 = szurZajt([PENZ, TARTALOM, FB], {});
   assert.deepEqual(r2.sorok, [PENZ, TARTALOM, FB], 'átrendezte a sorokat');
 });
@@ -161,7 +165,9 @@ t('DE a valódi összevonás átmegy (más a szövege)', () => {
 t('🔇 a csendes sor MEGNEVEZI a lefutott őrszemeket', () => {
   // ⚠️ Enélkül a "nincs változás" és a "elromlott az őrszem" egyformán nézne
   // ki — ez a hiba a témaismétlés-őrnél hónapokig rejtve maradt.
-  const r = szurZajt(TELJES, {});
+  // Állapottal indítunk, hogy az i18n-sornak legyen mihez hasonlítania —
+  // különben (helyesen) kimenne, és nem lenne a csendesek közt.
+  const r = szurZajt(TELJES, { i18n: I18N });
   const sor = csendesSor(r.csendes);
   assert.ok(sor.startsWith('🔇'), sor);
   for (const nev of ['helyesírás', 'csonka szövegek', 'források', 'nyelvi foltok']) {
@@ -177,6 +183,60 @@ t('a bemenet ROSSZ alakja nem dönti el a riportot', () => {
   // Szám nélküli "novekedes"-sor: ne némuljon el örökre rossz állapottal
   const csonkaSzamNelkul = '✂️ CSONKA-ŐRSZEM: nincs adat';
   assert.doesNotThrow(() => szurZajt([csonkaSzamNelkul], {}));
+});
+
+// ── 2026-08-29, HIBAVADÁSZAT: három hiba a saját szűrőmben ──────────
+
+t('🛑 A VÉSZFÉK MINDIG KIMEGY — a „soha" szabály sem némíthatja el', () => {
+  // A `soha` szabályt a sor NEVE alapján hoztam meg („a házmester rutin").
+  // Csakhogy UGYANAZON a soron megy a tömeges törlés vészféke. Mérve volt:
+  // ez a sor a szűrő után ÜRES tömböt adott.
+  const vesz = '🧹 HÁZMESTER: 🛑 LEJÁRT HÍR: 812 cikk esne ki egyszerre — NEM TÖRLÖK. Ez dátumhibára utal';
+  assert.deepEqual(szurZajt([vesz], {}).sorok, [vesz], 'a tömeges törlés vészféke ELNÉMULT');
+
+  // A housekeeping „újra hízik" növekedés-őre (a 08-15-i _redirects-lecke
+  // ellenszere) szintén ezen a soron jön.
+  const nol = '🧹 HÁZMESTER: ⚠️ a _redirects újra hízik: 1580 sor (a plafon 75%-a)';
+  assert.deepEqual(szurZajt([nol], {}).sorok, [nol], 'a növekedés-őr elnémult');
+
+  // …de a RUTIN házmester-sor továbbra is néma.
+  assert.deepEqual(szurZajt([HAZMESTER], {}).sorok, [], 'a rutin karbantartás megint zajt csinál');
+});
+
+t('🔔 az ELSŐ előfordulás KIMEGY — nem „Csendben rendben"-ként hazudik', () => {
+  // Korábban néma volt, „változatlan" indokkal — pedig nem volt mihez
+  // hasonlítani. Élő kitettség: a minőség-őrnek NINCS kulcsa az állapotban,
+  // tehát az első találata biztosan elveszett volna.
+  const elso = '🈳 I18N-ŐRSZEM: 3 cikk ANGOLUL ment ki — hu: valami, es: masik';
+  const r = szurZajt([elso], {});
+  assert.deepEqual(r.sorok, [elso], 'az első i18n-lelet elnémult');
+  assert.ok(r.indokok.i18n.includes('első alkalom'), r.indokok.i18n);
+  assert.ok(!r.csendes.includes('nyelvi foltok'), '„Csendben rendben"-ként ment ki egy VALÓDI lelet');
+
+  // A második, azonos alkalommal viszont már néma.
+  assert.deepEqual(szurZajt([elso], r.allapot).sorok, []);
+});
+
+t('✂️ 0 TŰRÉSNÉL az alap az UTOLSÓ érték, nem a csúcs', () => {
+  // Alap 53 (lezárt user-döntés). Ha egy csonka szöveg megjavul (52), majd
+  // egy ÚJ keletkezik (53), annak szólnia KELL — a csúcs-alap elnémítaná.
+  const s = n => '✂️ CSONKA-ŐRSZEM: ' + n + ' elvágott szöveg (11 angol cikk, 42 fordítás) — 841 cikk átnézve';
+  let a = { csonka: 53 };
+
+  a = szurZajt([s(52)], a).allapot;
+  assert.equal(a.csonka, 52, 'a javulás után nem követte le az alapot');
+
+  const r = szurZajt([s(53)], a);
+  assert.deepEqual(r.sorok, [s(53)], 'az ÚJ 53. elvágott szöveg néma maradt');
+});
+
+t('📝 …de a TŰRÉSSEL bíró szabálynál marad a csúcs (lengés ellen)', () => {
+  // Itt a csúcs a helyes: 200 → 190 → 195 ne riasszon fölöslegesen.
+  const s = n => '📝 Helyesírás (841 cikk átnézve) — átnézésre: ' + n + ' — priorizált → prioritással';
+  let a = szurZajt([s(200)], { helyesiras: 200 }).allapot;
+  a = szurZajt([s(190)], a).allapot;
+  assert.equal(a.helyesiras, 200, 'a tűréses szabálynál elveszett a csúcs');
+  assert.deepEqual(szurZajt([s(195)], a).sorok, [], 'a lengés riasztott');
 });
 
 t('minden szabálynak van neve a csendes sorhoz', () => {

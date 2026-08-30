@@ -20,17 +20,20 @@
 // 422-t adna — visszajönne pont az a hiba, ami ellen a kapu épült. Ezért
 // a típust és a méretet is megnézzük, ugyanabból az egy kérésből.
 //
-// ── AMI SZÁNDÉKOSAN NINCS BENNE ──────────────────────────────────────
-// NINCS „már kiment" jelölés (a poster.js `posted_fb`-je). Ez a modul ma
-// KÉZZEL, egyszer indul; a jelölés a napi automatikába kötéskor lesz
-// kötelező, mert a CI 8 óránként fut, és jelölés nélkül ugyanaz a Reel
-// naponta háromszor menne ki. ADDIG NE KÖSD BE A PIPELINE-BA.
+// ── AMI A PIPELINE-BA KÖTÉSHEZ KELLETT (bekötve 2026-08-25) ──────────
+// Ez a modul eleinte KÉZZEL indult, és a fejléce két feltételt szabott a
+// bekötéshez. Mindkettő megvan:
+//   • „már kiment" jelölés → a cikk `_meta.reel_at` mezője (a send() írja).
+//     Enélkül a 8 óránként futó CI naponta háromszor küldené ki ugyanazt.
+//   • MAKE-KERET → a Reel a 7066389-es forgatókönyvön fut, és UGYANABBÓL az
+//     1000-es havi fiók-keretből eszik, mint a fotós poszt (6452490): napi
+//     ~2 művelet, havi ~60. A művelet-őr 2026-08-30 óta MINDKETTŐT
+//     összegzi — core/make-budget.js → SHARED_SCENARIOS / usedThisMonth().
 //
-// ⚠️ A MAKE-KERET SEM SZEREPEL ITT. A poster.js művelet-őre CSAK a
-// 6452490-es (Facebook-fotó) forgatókönyv naplóját összegzi — a Reel a
-// 7066389-esen fut, tehát a Reel műveletei NEM számítanak bele. Egy kézi
-// próbánál (1 művelet) elhanyagolható; pipeline-ba kötés előtt a
-// core/make-budget.js oldalán kell kezelni.
+// ⚠️ A LECKE: a bekötés megtörtént, a feltétel öt napig pótlatlan maradt, és
+// ezt a fejléc szövege sem árulta el — a kód saját kommentje NEM bizonyíték.
+// A Reel a napi riport Make-őrszemébe is csak 08-30-án került be
+// (core/daily-report.js → WATCH).
 // ===================================================================
 
 import { followCta, trimToWords } from './social-text.js';
@@ -241,13 +244,7 @@ async function main() {
   if (args.includes('--prepare') || args.includes('--send')) {
     const fazis = args.includes('--prepare') ? 'prepare' : 'send';
     const fn = fazis === 'prepare' ? () => prepare(ROOT, join) : () => send(ROOT, join, dry);
-    try {
-      await fn();
-      reelAllapot(ROOT, join, { fazis, ok: true });
-    } catch (e) {
-      reelAllapot(ROOT, join, { fazis, ok: false, hiba: String(e?.message || e).slice(0, 200) });
-      throw e;
-    }
+    await futtatFazis({ ROOT, join, fazis, fn });
     return;
   }
 
@@ -342,6 +339,28 @@ function reelAllapot(ROOT, join, mit) {
 import { createRequire } from 'module';
 const require$ = createRequire(import.meta.url);
 
+/**
+ * Egy fázis (prepare/send) lefuttatása ÚGY, hogy a kimenetele MINDIG
+ * bekerüljön az őrszem-fájlba — sikerkor és bukáskor is.
+ *
+ * ⚠️ EZÉRT VAN KÜLÖN FÜGGVÉNYBEN: a fázis-futtatás a main()-ben élt, ahol
+ * teszt nem érte el. A hívott függvény bármelyik `process.exit()`-je némán
+ * kikerülte volna ezt a try/catch-et (2026-08-30, lásd a send() végét).
+ *
+ * A hibát TOVÁBBADJA: a nem nulla kilépőkód a CI-nak szól, az őrszem-fájl
+ * a napi riportnak. A kettő nem helyettesíti egymást.
+ */
+export async function futtatFazis({ ROOT, join, fazis, fn }) {
+  try {
+    const ki = await fn();
+    reelAllapot(ROOT, join, { fazis, ok: true });
+    return ki;
+  } catch (e) {
+    reelAllapot(ROOT, join, { fazis, ok: false, hiba: String(e?.message || e).slice(0, 200) });
+    throw e;
+  }
+}
+
 async function prepare(ROOT, join) {
   const { writeFileSync, existsSync, mkdirSync, rmSync } = await import('fs');
   const { kovetkezoReel } = await import('./reel-queue.js');
@@ -419,7 +438,7 @@ async function prepare(ROOT, join) {
 }
 
 /** 2. LÉPÉS: kiküldés + megjelölés. A deploy UTÁN fut. */
-async function send(ROOT, join, dry) {
+export async function send(ROOT, join, dry) {
   const { readFileSync, writeFileSync, existsSync, unlinkSync } = await import('fs');
   const { guideMeta } = await import('./frontmatter.js');
   const { cardsFromGuide } = await import('./short-video.js');
@@ -461,7 +480,25 @@ async function send(ROOT, join, dry) {
   }
   console.error('   ❌ ' + r.reason);
   if (r.sent === 'unknown') console.error('   ⚠️ Bizonytalan kimenetel — megjelöltem, hogy ne menjen ki kétszer.');
-  process.exit(1);
+
+  // ⚠️ DOBUNK, NEM LÉPÜNK KI (2026-08-30). Itt `process.exit(1)` állt — az
+  // AZONNAL megöli a folyamatot, tehát a hívó futtatFazis() try/catch-e, és
+  // vele az ŐRSZEM-ÍRÁS, SOSEM futott le: a memory/reel-guard.json-ban az
+  // ELŐZŐ futás `ok:true`-ja maradt, a napi riport pedig hallgatott. Pont az
+  // a bukás volt láthatatlan, amiért az őrszem 2026-08-26-án készült.
+  //
+  // ÉS EZ VOLT A TIPIKUS ÁG, nem a kivételes: a sendReel() SOSEM DOB —
+  // hiányzó webhookra, nem elérhető videóra (bukott deploy → 404), rossz
+  // content-type-ra, gyanúsan kicsi fájlra és webhook-HTTP-hibára is
+  // {ok:false}-t ad vissza.
+  //
+  // A nem nulla kilépőkód MEGMARAD: a futtatFazis továbbdobja a hibát, a
+  // fájl végi main().catch() pedig process.exit(1)-gyel zár. A kilépőkód a
+  // CI-nak szól, az őrszem-fájl a napi riportnak — a kettő nem helyettesíti
+  // egymást (a workflow `|| true`-ja miatt a CI-napló amúgy sem jut el senkihez).
+  const hiba = new Error(r.reason || 'A Reel kiküldése nem sikerült.');
+  hiba.sent = r.sent;          // 'unknown' = a Make már átvehette, ne küldd újra vakon
+  throw hiba;
 }
 
 const kozvetlen = process.argv[1] && process.argv[1].endsWith('reel-post.js');

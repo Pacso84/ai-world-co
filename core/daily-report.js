@@ -23,6 +23,9 @@ import { dirname, join } from 'path';
 import { sendMessage } from './telegram.js';
 import { canonicalChip } from './quality-guard.js';
 import { summarizeRuns, describeFailures } from './make-health.js';
+// A forgatókönyv-azonosítók EGY helyen élnek (ott a művelet-keret is őket
+// összegzi) — egy kimásolt szám matematikai biztonsággal csúszik szét.
+import { FB_SCENARIO_ID, REEL_SCENARIO_ID } from './make-budget.js';
 import { describePosts, describeRepeat, describeTranslationGaps, mergeLine, huSpellingLine, repeatLine, visitorLine } from './report-lines.js';
 import { bodyLooksUntranslated } from './translation-guard.js';
 import { shouldSendReport, sikeresKuldes } from './report-window.js';
@@ -464,9 +467,27 @@ async function main() {
       // maradt volna, a riport MINDEN NAP "⛔ PINTEREST-POSZTOLÓ LEÁLLT"
       // vészjelzést küldött volna egy szándékosan kikapcsolt csatornáról —
       // pontosan az a fajta valótlan sor, amit 08-06-án kigyomláltunk.
-      // Új csatorna felvétele ide: egy sor, ha megvan a Make-forgatókönyv azonosítója.
+      // Új csatorna felvétele ide: egy sor, ha megvan a Make-forgatókönyv
+      // azonosítója — ÉS egy sor a core/make-budget.js SHARED_SCENARIOS
+      // listájába, mert a művelet-keret a FIÓKÉ, nem a forgatókönyvé.
+      // A kettő külön kérdés: itt a MŰKÖDIK-E, ott a MENNYIT FOGYASZT.
+      // (A Reel 08-25-én éles lett, és 5 napig egyikben sem szerepelt.)
       const WATCH = [
-        { id: '6452490', pkg: 'facebook-pages', name: 'FB-POSZTOLÓ', fix: 'Facebook Pages → Upload a Photo' },
+        { id: FB_SCENARIO_ID, pkg: 'facebook-pages', name: 'FB-POSZTOLÓ', fix: 'Facebook Pages → Upload a Photo' },
+        // 🎬 A REEL FELVÉVE (2026-08-30). A csatorna 08-25 óta automata, de
+        // eddig KIMARADT mind a három rétegből (áll-e? · van-e kimeneti modul? ·
+        // bukott-e ma?) — pontosan abból, amit a 9 napos néma FB-leállás után
+        // építettünk. Az azonosító végig ismert volt (core/reel-post.js), csak
+        // ez az egy sor nem került be.
+        //
+        // ⚠️ A `pkg: null` SZÁNDÉKOS. Nem mértük, milyen csomagnéven jelenti a
+        // Make a Reel-feltöltő modult (a fotós posztnál 'facebook-pages'), és egy
+        // rossz csomagnév MINDEN NAP hamis vészjelzést küldene egy működő
+        // csatornáról — az elhitetlenített riport drágább, mint egy hiányzó
+        // ellenőrzés (lásd a Pinterest-sor kigyomlálását 08-09-én).
+        // Amit csomagnév NÉLKÜL is biztosan tudunk: ha a forgatókönyvben CSAK a
+        // webhook ('gateway') van, semmi nem megy ki. Ezt a lenti ág elkapja.
+        { id: REEL_SCENARIO_ID, pkg: null, name: 'REEL-POSZTOLÓ', fix: 'Facebook Pages → a Reel-feltöltő modul' },
         ...(process.env.THREADS_MAKE_SCENARIO_ID
           ? [{ id: process.env.THREADS_MAKE_SCENARIO_ID, pkg: 'threads', name: 'THREADS-POSZTOLÓ', fix: 'Threads → Create a Thread' }] : []),
         ...(process.env.X_MAKE_SCENARIO_ID
@@ -479,7 +500,13 @@ async function main() {
         const s = mj.scenario;
         if (s.isActive === false || s.isPaused === true) {
           lines.push(`⛔ ${w.name} LEÁLLT (Make-forgatókönyv inaktív)! Kapcsold vissza: eu1.make.com → Scenarios → kapcsoló a sor végén.`);
-        } else if (!(s.usedPackages || []).includes(w.pkg)) {
+        } else if (w.pkg
+          ? !(s.usedPackages || []).includes(w.pkg)
+          // Csomagnév nélkül CSAK a biztosat állítjuk: a lista nem üres, és
+          // nincs benne más, mint a webhook → nincs kimeneti modul. Hiányzó
+          // vagy üres listára NEM szólunk: az adathiány nem bizonyíték.
+          : (Array.isArray(s.usedPackages) && s.usedPackages.length > 0
+            && s.usedPackages.every(p => p === 'gateway'))) {
           lines.push(`⛔ ${w.name}: a Make-forgatókönyv HIÁNYOS — nincs benne kimeneti modul (csak: ${(s.usedPackages || []).join(', ') || '—'}). A webhook 200-at ad, de SEMMI nem megy ki! Javítás: eu1.make.com → a forgatókönyv → + → ${w.fix} → mentés.`);
         }
 
@@ -588,6 +615,22 @@ async function main() {
     }
   } catch { /* még nem futott — nem baj */ }
 
+  // 💰 KÖLTÉS-NYILVÁNTARTÁS ŐRE (2026-08-29, hibavadászat).
+  // A `core/budget.js` `load()`-ja BÁRMILYEN JSON-hibára némán `{days:{}}`-t
+  // adott, a következő `recordSpend` pedig ezt írta vissza — vagyis a napi $1
+  // ÉS a havi $25 plafon EGYSZERRE kikapcsolt a hónap végéig.
+  // 🔑 A kár azért volt nagy, mert OLCSÓ NAPNAK LÁTSZOTT: a riport $0.00-t
+  // mutatott, ami megnyugtató, nem riasztó. Innentől hangosan szól.
+  try {
+    const bg = JSON.parse(readFileSync(join(ROOT, 'memory', 'budget-guard.json'), 'utf-8'));
+    for (const p of bg.problems || []) {
+      const mikor = p.count > 1 ? ` (${p.count}× ${String(p.firstAt || '').slice(0, 10)} óta)` : '';
+      lines.push(p.code === 'BUDGET_STATE_WRITE_FAILED'
+        ? `🚨 *A KÖLTÉS-NYILVÁNTARTÁS ÍRÁSA ELBUKOTT*${mikor} — a plafon NEM SÜL EL. Szólj a fejlesztőnek!`
+        : `🚨 *SÉRÜLT KÖLTÉS-NYILVÁNTARTÁS*${mikor} — a mentett napok visszaálltak, de nézd meg a naplót.`);
+    }
+  } catch { /* nincs jel — ez a jó eset */ }
+
   // ✂️ CSONKA-ŐRSZEM (2026-08-25). A feltáráskor 53 elvágott szöveg volt kint:
   // 11 angol cikk és 42 fordítás, mind mondat közepén — némelyik SZÓ közepén.
   // A gyökérok a routerben volt (a keret-mentő csak ÜRES válaszra lépett), az
@@ -652,6 +695,22 @@ async function main() {
         const cs = (await cr.json()).__cs || {};
         const total = (cs.chat || 0) + (cs.mail || 0);
         if (total + (cs.esc || 0) > 0) lines.push(`💬 Ügyfélszolgálat ma: ${cs.chat || 0} chat-válasz · ${cs.mail || 0} email · ${cs.esc || 0} emberi kézbe adva`);
+
+        // 📮 KÉZBESÍTETLEN KAPCSOLAT-ÜZENET (2026-08-29, hibavadászat).
+        // A worker `tg()`-je nem nézte a Telegram válaszát, a KV-be mentett
+        // másolatot (`cs:msg:*`) pedig SOHA SENKI nem olvasta — vagyis egy
+        // bukott értesítés esetén a látogató `{ok:true}`-t kapott, azt hitte,
+        // válaszolunk, te pedig sosem tudtál róla.
+        // ⚠️ A `total > 0` feltételen KÍVÜL: egy elveszett üzenetről akkor is
+        // szólni kell, ha aznap semmi más forgalom nem volt.
+        if (cs.unsent > 0) {
+          lines.push(`📮 KÉZBESÍTETLEN kapcsolat-üzenet: ${cs.unsent} db`
+            + (cs.unsentLast ? ` (utolsó: ${cs.unsentLast})` : '')
+            + ' — a Telegram-értesítés NEM ment ki. Az üzenetek megvannak a KV-ben (`cs:unsent:*`).');
+        }
+        // A sikertelen ELLENŐRZÉS nem ugyanaz, mint a „0 kézbesítetlen" —
+        // enélkül a kettő kívülről egyformán nézne ki.
+        if (cs.unsentError) lines.push('📮 A kézbesítetlen üzeneteket NEM tudtam ellenőrizni (KV-listázás hibája).');
       }
     }
   } catch { /* a riport ettől még kimegy */ }
