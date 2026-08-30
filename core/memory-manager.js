@@ -62,8 +62,24 @@ export function remember(scope, text, opts = {}) {
   const norm = (text || '').trim();
   if (!norm) return;
 
-  const existing = store.items.find(it => it.scope === scope && it.text === norm);
+  // 🔑 STABIL KULCS (2026-08-29, hibavadászat). A dedup alapból a PONTOS
+  // SZÖVEGRE megy — ezért minden lecke, amibe változó adat kerül (napi
+  // darabszám, példa-slug), ÚJ emléket gyártott a meglévő megerősítése
+  // helyett. Élesben mérve: 12 db „Csempe-szabály emlékeztető", 0 repeats;
+  // 11 db „Avoid stating…", 0 repeats. A memória HÍZOTT, nem ERŐSÖDÖTT, és a
+  // napi riport ♻️ sora pont ezekre SOHA nem tüzelt.
+  //
+  // A megoldás NEM fuzzy hasonlítás (a mintaillesztés magabiztosan téved),
+  // hanem hogy a hívó EXPLICIT megmondja: „ez ugyanaz a lecke, friss
+  // részlettel". Kulcs nélkül minden marad a régiben.
+  const kulcs = opts.kulcs ? String(opts.kulcs) : null;
+  const existing = kulcs
+    ? store.items.find(it => it.scope === scope && it.kulcs === kulcs)
+    : store.items.find(it => it.scope === scope && it.text === norm);
   if (existing) {
+    // A SZÖVEG FRISSÜL: a lecke lényege állandó, de a példa ne legyen hetekkel
+    // ezelőtti — az kerül be minden AI-hívás promptjába.
+    if (kulcs) { existing.text = norm; existing.kulcs = kulcs; }
     existing.salience = Math.min(1, existing.salience + ACCESS_BOOST);
     existing.lastAccessed = new Date().toISOString();
     existing.accessCount++;
@@ -81,6 +97,7 @@ export function remember(scope, text, opts = {}) {
       id: 'm' + Date.now() + Math.floor(Math.random() * 1000),
       scope,                               // pl. 'iro', 'shared'
       text: norm,
+      ...(kulcs ? { kulcs } : {}),         // stabil dedup-kulcs, ha a hívó adott
       tags: opts.tags || [],
       created: now,
       lastAccessed: now,

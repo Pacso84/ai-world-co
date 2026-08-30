@@ -264,11 +264,20 @@ export async function applyQualityFixes() {
   const spellFixes = fixes.filter(x => x.startsWith('helyesírás '));
   try {
     const { remember } = await import('./memory-manager.js');
+    // ⚠️ STABIL KULCS (2026-08-29). A lecke szövegében VÁLTOZÓ adat van (napi
+    // darabszám + példa), a dedup viszont a pontos szövegre ment — ezért ez a
+    // két lecke naponta ÚJ emléket gyártott a meglévő megerősítése helyett.
+    // Élesben mérve: 12 db „Csempe-szabály emlékeztető", ÖSSZESEN 0 repeats.
+    // A memória hízott, a ♻️ „ismétlődő hiba" riport-sor pedig SOHA nem tüzelt
+    // rájuk — pedig pont ezek ismétlődtek. A kulccsal egy emlék marad, a
+    // szövege frissül, és a `repeats` végre a valóságot mutatja.
     if (chipFixes.length) {
-      remember('shared', `Csempe-szabály emlékeztető: a tool mindig a legrövidebb hivatalos terméknév (ma ${chipFixes.length} javítás kellett, pl. ${chipFixes[0].slice(0, 60)}).`);
+      remember('shared', `Csempe-szabály emlékeztető: a tool mindig a legrövidebb hivatalos terméknév (ma ${chipFixes.length} javítás kellett, pl. ${chipFixes[0].slice(0, 60)}).`,
+        { kulcs: 'csempe-szabaly' });
     }
     if (spellFixes.length) {
-      remember('shared', `Amerikai helyesírás: ma ${spellFixes.length} cikkben kellett gépi javítás (color, organize, center — NEM colour/organise/centre). Írás közben mindjárt amerikaiul írd.`);
+      remember('shared', `Amerikai helyesírás: ma ${spellFixes.length} cikkben kellett gépi javítás (color, organize, center — NEM colour/organise/centre). Írás közben mindjárt amerikaiul írd.`,
+        { kulcs: 'amerikai-helyesiras' });
     }
   } catch { /* tanulság nélkül is megy */ }
   logFixes(fixes);

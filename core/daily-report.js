@@ -30,6 +30,7 @@ import { describePosts, describeRepeat, describeTranslationGaps, mergeLine, huSp
 import { bodyLooksUntranslated } from './translation-guard.js';
 import { shouldSendReport, sikeresKuldes } from './report-window.js';
 import { szurZajt, csendesSor } from './report-noise.js';
+import { elavultOrszemek, frissessegSor } from './guard-freshness.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
@@ -630,6 +631,39 @@ async function main() {
         : `🚨 *SÉRÜLT KÖLTÉS-NYILVÁNTARTÁS*${mikor} — a mentett napok visszaálltak, de nézd meg a naplót.`);
     }
   } catch { /* nincs jel — ez a jó eset */ }
+
+  // 📚 ÚTMUTATÓ-LEFEDETTSÉG (2026-08-29). A `website/build.js` minden buildnél
+  // írja ezt a fájlt („minden útmutató pontosan egy gyűjtőoldalon van"), de
+  // EDDIG SENKI NEM OLVASTA — az egész repóban egyetlen hivatkozás volt rá: az
+  // írás. A 08-17-i hibát (17 cikk sehonnan nem volt kattintható) a USER vette
+  // észre, nem az őrszem.
+  try {
+    const gc = JSON.parse(readFileSync(join(ROOT, 'memory', 'guide-coverage-guard.json'), 'utf-8'));
+    const p = gc.problems || [];
+    if (p.length) {
+      lines.push(`📚 ÚTMUTATÓ-LEFEDETTSÉG: ${p.length} gond — `
+        + p.slice(0, 2).map(x => String(x.code || x).slice(0, 50)).join(', ') + (p.length > 2 ? '…' : ''));
+    }
+  } catch { /* még nem futott build — nem baj */ }
+
+  // 🕰️ ŐRSZEM-FRISSESSÉG (2026-08-29, hibavadászat). A riport eddig MINDEN
+  // őrszem-fájlból csak a `problems`-et nézte, az `at` bélyeget EGYIKBŐL SEM.
+  // Egy lefagyott őrszem (pl. a seo-guard bukott buildnél visszatér az írás
+  // előtt) ezért ott hagyja az ELŐZŐ futás `problems: []`-jét — és az a
+  // riportban azonos a „minden rendben"-nel.
+  try {
+    const nevek = {
+      'seo-guard.json': 'SEO', 'live-guard.json': 'élő oldal', 'i18n-guard.json': 'nyelvi',
+      'image-guard.json': 'borítókép', 'redirect-guard.json': 'átirányítás',
+      'reel-guard.json': 'Reel', 'truncation-guard.json': 'csonka', 'guide-coverage-guard.json': 'útmutató-lefedettség'
+    };
+    const beolvasott = {};
+    for (const [f, nev] of Object.entries(nevek)) {
+      try { beolvasott[nev] = JSON.parse(readFileSync(join(ROOT, 'memory', f), 'utf-8')); } catch { /* nincs fájl */ }
+    }
+    const sor = frissessegSor(elavultOrszemek(beolvasott));
+    if (sor) lines.push(sor);
+  } catch { /* a riport ettől még kimegy */ }
 
   // ✂️ CSONKA-ŐRSZEM (2026-08-25). A feltáráskor 53 elvágott szöveg volt kint:
   // 11 angol cikk és 42 fordítás, mind mondat közepén — némelyik SZÓ közepén.
