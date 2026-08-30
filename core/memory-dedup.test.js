@@ -106,6 +106,39 @@ t('KULCS NÉLKÜL a régi viselkedés VÁLTOZATLAN', () => {
   assert.equal(s.items.find(i => i.text === 'ugyanaz a szöveg').repeats, 1, 'a pontos-szöveg dedup elromlott');
 });
 
+t('♻️ RUTIN öntisztítás NEM „ismétlődő hiba" — a saját regresszióm', () => {
+  // 2026-08-30, független átnézés találta. A stabil kulcs miatt a
+  // quality-guard napi öntisztítása mostantól a MEGLÉVŐ emléket erősíti —
+  // ami helyes —, DE ezzel `repeats`-et és `lastRepeat`-et is állít. A napi
+  // riport ♻️ sora minden mai `lastRepeat`-re tüzel, és mérve ezt adta:
+  //   „♻️ Ismétlődő hiba: 1 típus ma (… 2× 1 nap alatt) — ez sűrű, KEMÉNY
+  //    SZABÁLY KELLHET!"
+  // 🔑 A sürgetés itt HAMIS: a kemény szabály MÁR LÉTEZIK (a determinisztikus
+  // `quality-guard --fix`). A `repeats` jelentése „a lecke ELLENÉRE megint
+  // megtörtént" — a rutin, automatikusan javított eset nem ilyen.
+  // A `quality-fix-log` szerint ez a nap ~32%-án előfordul: napi zaj lett
+  // volna abból a sorból, amit épp NEM szűr a zajszűrő.
+  urit();
+  remember('shared', csempeLecke(1), { kulcs: 'csempe-szabaly', rutin: true });
+  remember('shared', csempeLecke(4), { kulcs: 'csempe-szabaly', rutin: true });
+  const it = tar().items[0];
+  assert.equal(tar().items.length, 1, 'a kulcs-dedup elromlott');
+  assert.ok(it.text.includes('ma 4 javítás'), 'a szöveg nem frissült');
+  assert.ok(!it.repeats, 'RUTIN javítás „ismétlődő hibának" számított: repeats=' + it.repeats);
+  assert.ok(!it.lastRepeat, 'RUTIN javítás lastRepeat-et állított → a ♻️ sor tüzelne');
+});
+
+t('…de a VALÓDI ismétlés továbbra is számít', () => {
+  // A megkülönböztetés a lényeg: a kapu által megfogott, ismétlődő hiba
+  // ELLENÉRE-a-leckének történt — arra kell a ♻️ sor és a sürgetés.
+  urit();
+  remember('shared', 'A hitelesség-kapu megint kitalált gombot fogott');
+  remember('shared', 'A hitelesség-kapu megint kitalált gombot fogott');
+  const it = tar().items[0];
+  assert.equal(it.repeats, 1, 'a valódi ismétlés nem számolódott');
+  assert.ok(it.lastRepeat, 'a valódi ismétlésnek nincs lastRepeat-je');
+});
+
 t('a kulcsos emlék a leckelistába is bekerül', () => {
   urit();
   remember('shared', csempeLecke(3), { kulcs: 'csempe-szabaly' });

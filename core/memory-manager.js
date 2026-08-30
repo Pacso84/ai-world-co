@@ -88,8 +88,21 @@ export function remember(scope, text, opts = {}) {
     // így az újra-remember = UGYANAZ A HIBA ÚJRA megtörtént, a lecke ellenére.
     // Ezt CSAK itt számoljuk (a recall-olvasás nem ismétlés!) — a napi riport
     // ♻️ sora ebből jelzi: puha lecke helyett kemény kód-szabály kell.
-    existing.repeats = (existing.repeats || 0) + 1;
-    existing.lastRepeat = new Date().toISOString();
+    // ♻️ RUTIN ÖNTISZTÍTÁS NEM ISMÉTLŐDŐ HIBA (2026-08-30, független átnézés).
+    // A stabil kulcs bevezetése után a `quality-guard` napi öntisztítása is ide
+    // futott be — és ezzel `repeats`-et állított. A napi riport ♻️ sora minden
+    // mai `lastRepeat`-re tüzel, tehát mérve ezt adta volna:
+    //   „♻️ Ismétlődő hiba: 1 típus ma (… 2× 1 nap alatt) — ez sűrű, KEMÉNY
+    //    SZABÁLY KELLHET!"
+    // 🔑 A sürgetés HAMIS: a kemény szabály MÁR LÉTEZIK (a determinisztikus
+    // `quality-guard --fix`). A `repeats` jelentése az, hogy „a lecke ELLENÉRE
+    // megint megtörtént" — a gép által automatikusan javított, rutin eset nem
+    // ilyen. A `quality-fix-log` szerint ez a napok ~32%-án előfordul: napi zaj
+    // lett volna épp abból a sorból, amit a zajszűrő NEM fed le.
+    if (!opts.rutin) {
+      existing.repeats = (existing.repeats || 0) + 1;
+      existing.lastRepeat = new Date().toISOString();
+    }
     existing.tier = tierOf(existing.salience);
   } else {
     const now = new Date().toISOString();

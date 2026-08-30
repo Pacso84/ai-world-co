@@ -273,11 +273,11 @@ export async function applyQualityFixes() {
     // szövege frissül, és a `repeats` végre a valóságot mutatja.
     if (chipFixes.length) {
       remember('shared', `Csempe-szabály emlékeztető: a tool mindig a legrövidebb hivatalos terméknév (ma ${chipFixes.length} javítás kellett, pl. ${chipFixes[0].slice(0, 60)}).`,
-        { kulcs: 'csempe-szabaly' });
+        { kulcs: 'csempe-szabaly', rutin: true });
     }
     if (spellFixes.length) {
       remember('shared', `Amerikai helyesírás: ma ${spellFixes.length} cikkben kellett gépi javítás (color, organize, center — NEM colour/organise/centre). Írás közben mindjárt amerikaiul írd.`,
-        { kulcs: 'amerikai-helyesiras' });
+        { kulcs: 'amerikai-helyesiras', rutin: true });
     }
   } catch { /* tanulság nélkül is megy */ }
   logFixes(fixes);
