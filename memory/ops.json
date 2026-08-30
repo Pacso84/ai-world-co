@@ -1,102 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178794404689125",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-08-28T19:07:26.891Z",
-      "updated": "2026-08-28T19:08:01.725Z"
-    },
-    {
-      "id": "t178794408172655",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-08-28T19:08:01.727Z",
-      "updated": "2026-08-28T19:08:01.860Z"
-    },
-    {
-      "id": "t178794408186229",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-28T19:08:01.862Z",
-      "updated": "2026-08-28T19:13:40.618Z"
-    },
-    {
-      "id": "t178794442061930",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-28T19:13:40.619Z",
-      "updated": "2026-08-28T19:14:34.043Z"
-    },
-    {
-      "id": "t178794447404658",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-28T19:14:34.046Z",
-      "updated": "2026-08-28T19:22:44.738Z"
-    },
-    {
-      "id": "t178794496484979",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-28T19:22:44.849Z",
-      "updated": "2026-08-28T19:23:29.009Z"
-    },
-    {
-      "id": "t178794500901184",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-08-28T19:23:29.011Z",
-      "updated": "2026-08-28T19:23:43.123Z"
-    },
-    {
-      "id": "t178794502317325",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-28T19:23:43.173Z",
-      "updated": "2026-08-28T19:24:16.287Z"
-    },
-    {
-      "id": "t178794505628871",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-08-28T19:24:16.288Z",
-      "updated": "2026-08-28T19:24:51.299Z"
-    },
-    {
-      "id": "t178794509130040",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-28T19:24:51.300Z",
-      "updated": "2026-08-28T19:25:04.962Z"
-    },
-    {
-      "id": "t178794510509315",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-08-28T19:25:05.093Z",
-      "updated": "2026-08-28T19:25:19.871Z"
-    },
-    {
-      "id": "t178797852187371",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-08-29T04:42:01.873Z",
-      "updated": "2026-08-29T04:42:01.983Z"
-    },
-    {
       "id": "t178797852198455",
       "title": "Run rss-scraper",
       "status": "done",
@@ -479,49 +383,105 @@
       "agent": "publisher",
       "created": "2026-08-30T02:37:22.325Z",
       "updated": "2026-08-30T02:37:44.065Z"
+    },
+    {
+      "id": "t178809166383480",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-08-30T12:07:43.834Z",
+      "updated": "2026-08-30T12:07:44.157Z"
+    },
+    {
+      "id": "t178809166415920",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-08-30T12:07:44.159Z",
+      "updated": "2026-08-30T12:08:02.248Z"
+    },
+    {
+      "id": "t178809168225023",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-08-30T12:08:02.250Z",
+      "updated": "2026-08-30T12:08:02.408Z"
+    },
+    {
+      "id": "t178809168240970",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-30T12:08:02.409Z",
+      "updated": "2026-08-30T12:08:02.544Z"
+    },
+    {
+      "id": "t178809168254647",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-30T12:08:02.546Z",
+      "updated": "2026-08-30T12:08:17.079Z"
+    },
+    {
+      "id": "t178809169719648",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-30T12:08:17.196Z",
+      "updated": "2026-08-30T12:10:46.602Z"
+    },
+    {
+      "id": "t178809184660475",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-30T12:10:46.604Z",
+      "updated": "2026-08-30T12:11:11.890Z"
+    },
+    {
+      "id": "t178809187189247",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-08-30T12:11:11.892Z",
+      "updated": "2026-08-30T12:11:18.899Z"
+    },
+    {
+      "id": "t178809187893999",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-30T12:11:18.939Z",
+      "updated": "2026-08-30T12:11:43.548Z"
+    },
+    {
+      "id": "t178809190354935",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-08-30T12:11:43.549Z",
+      "updated": "2026-08-30T12:12:04.028Z"
+    },
+    {
+      "id": "t178809192402916",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-30T12:12:04.029Z",
+      "updated": "2026-08-30T12:12:17.874Z"
+    },
+    {
+      "id": "t178809193787550",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-08-30T12:12:17.875Z",
+      "updated": "2026-08-30T12:12:34.941Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178710056209937",
-      "level": "success",
-      "text": "4 hír + 4 útmutató publikálva (költség: $0.1062).",
-      "agent": "ceo",
-      "at": "2026-08-19T00:49:22.099Z",
-      "loud": false
-    },
-    {
-      "id": "n178712804477075",
-      "level": "info",
-      "text": "SEO: 2 cikk optimalizálva (átlag 9.0/10).",
-      "agent": "seo",
-      "at": "2026-08-19T08:27:24.770Z",
-      "loud": false
-    },
-    {
-      "id": "n178712806340027",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The line-up is solid and ready to go — it's got a practical mix of privacy sense, real-world task guides, and genuinely helpful tone. One small note: the collection leans heavily on writing tasks, whi",
-      "agent": "publisher",
-      "at": "2026-08-19T08:27:43.400Z",
-      "loud": false
-    },
-    {
-      "id": "n17871280752016",
-      "level": "success",
-      "text": "2 hír + 0 útmutató publikálva (költség: $0.0228).",
-      "agent": "ceo",
-      "at": "2026-08-19T08:27:55.201Z",
-      "loud": false
-    },
-    {
-      "id": "n178715681785016",
-      "level": "info",
-      "text": "SEO: 1 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-08-19T16:26:57.850Z",
-      "loud": false
-    },
     {
       "id": "n178715683813832",
       "level": "success",
@@ -1281,54 +1241,49 @@
       "agent": "ceo",
       "at": "2026-08-30T02:37:44.109Z",
       "loud": false
+    },
+    {
+      "id": "n178809184659343",
+      "level": "warn",
+      "text": "📨 guide → ceo: Kell még adat: \"Create Your First AI Image with Midjourney: A Beginner Walkthrough\" — az Ellenőrző tényt/forrást kér, am",
+      "agent": "guide",
+      "at": "2026-08-30T12:10:46.593Z",
+      "loud": false
+    },
+    {
+      "id": "n178809192401821",
+      "level": "info",
+      "text": "SEO: 2 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-08-30T12:12:04.018Z",
+      "loud": false
+    },
+    {
+      "id": "n178809194441841",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). A lineup egységes és kész: tíz gyakorlatias írási útmutató került összegyűjtésre, a panaszlevelektől a személyes üzenetekig, kiegészítve egy fontos adatvédelmi anyaggal. Ez a mix szép mixet ad (how-to",
+      "agent": "publisher",
+      "at": "2026-08-30T12:12:24.418Z",
+      "loud": false
+    },
+    {
+      "id": "n178809195497579",
+      "level": "success",
+      "text": "1 hír + 1 útmutató publikálva (költség: $0.0060).",
+      "agent": "ceo",
+      "at": "2026-08-30T12:12:34.975Z",
+      "loud": false
+    },
+    {
+      "id": "n178809196488175",
+      "level": "warn",
+      "text": "📨 fact-check → human: Ez az útmutató talán tárgytalanná vált: \"Build a basic AI chatbot for your website using Op\" — OpenAI retired the Playgr",
+      "agent": "fact-check",
+      "at": "2026-08-30T12:12:44.881Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178727316726568",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Record presentations in Google Slides with Google Vids\" (?/10)",
-      "ref": "2026-08-21T00-39-46-760Z_google-workspace_Record_presentations_in_Google_Slides_with_Google_.json",
-      "at": "2026-08-21T00:46:07.265Z"
-    },
-    {
-      "id": "m178727318331355",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"30 Gemini Omni prompts to copy and paste for AI video\" (?/10)",
-      "ref": "2026-08-21T00-39-46-760Z_picsart_30_Gemini_Omni_prompts_to_copy_and_paste_for_AI_vi.json",
-      "at": "2026-08-21T00:46:23.313Z"
-    },
-    {
-      "id": "m178727319180189",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "info",
-      "text": "A \"Record presentations in Google Slides with Google Vids\" hír a meglévő útmutatóra mutat: gemini-getting-started",
-      "ref": "gemini-getting-started",
-      "at": "2026-08-21T00:46:31.801Z"
-    },
-    {
-      "id": "m17872736388705",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Use Claude to read and explain a long contract or legal document\" — mi a baj: HOWTO_TOO_LONG: 1754 szó (~8.8 perc olvasás) — a cél 1000-1400 szó, a felső kapu 1700. A Facebookról érkező mobilolvasó ennyit ritkán olvas végig.; The article states paid Claude plans have an \"Artifacts\" feature that can read a directly uploaded PDF in one go via a paperclip or upload button near ",
-      "ref": "GUIDE_use-claude-to-read-and-explain-a-long-contract-or-legal-docu.json",
-      "at": "2026-08-21T00:53:58.870Z"
-    },
-    {
-      "id": "m178727425977665",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-08-21T01:04:19.776Z"
-    },
     {
       "id": "m178727475531271",
       "from": "social",
@@ -2646,6 +2601,54 @@
       "text": "4 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-08-30T02:48:44.064Z"
+    },
+    {
+      "id": "m178809184659239",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Create Your First AI Image with Midjourney: A Beginner Walkthrough\" — javítva: UI_CLAIMS_UNSOURCED: 3 konkrét képernyő-feliratot állít tényként forrás nélkül (\"open in browser\", \"save to photos\", \"imagine\"). Vagy nézd meg a hivatalos oldalon, vagy írd hedge-elve (\"if you don't see…\").; PRICE_CLAIM_UNSOURCED: lejáró pénz-állítás forrás és árlap-hivatkozás nélkül (\"no free tier\"). A Mi",
+      "ref": "GUIDE_create-your-first-ai-image-with-midjourney-a-beginner-walkth.json",
+      "at": "2026-08-30T12:10:46.592Z"
+    },
+    {
+      "id": "m178809184659310",
+      "from": "guide",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Kell még adat: \"Create Your First AI Image with Midjourney: A Beginner Walkthrough\" — az Ellenőrző tényt/forrást kér, amit nem találhatok ki: UI_CLAIMS_UNSOURCED: 3 konkrét képernyő-feliratot állít tényként forrás nélkül (\"open in browser\", \"save to photos\", \"imagine\"). Vagy nézd meg a hivatalos oldalon, vagy írd hedge-elve (\"if you don't see…\").",
+      "ref": "GUIDE_create-your-first-ai-image-with-midjourney-a-beginner-walkth.json",
+      "open": false,
+      "at": "2026-08-30T12:10:46.593Z",
+      "resolved_at": "2026-08-30T12:11:11.880Z"
+    },
+    {
+      "id": "m178809187187984",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Create Your First AI Image with Midjourney: A Beginner Walkthrough\" (?/10)",
+      "ref": "GUIDE_create-your-first-ai-image-with-midjourney-a-beginner-walkth.json",
+      "at": "2026-08-30T12:11:11.879Z"
+    },
+    {
+      "id": "m178809193786563",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-08-30T12:12:17.865Z"
+    },
+    {
+      "id": "m178809196488171",
+      "from": "fact-check",
+      "to": "human",
+      "kind": "need",
+      "text": "Ez az útmutató talán tárgytalanná vált: \"Build a basic AI chatbot for your website using Op\" — OpenAI retired the Playground in early 2025 — the entire guide teaches using a tool that no longer exists. Users are now directed to use ChatGPT directly or write code to interact with the API.. NEM vettem le (az törölné az URL-t is) — dönts róla.",
+      "ref": "ARTICLE_GUIDE_build-a-basic-ai-chatbot-for-your-website-using-openai-s-api.json",
+      "open": true,
+      "at": "2026-08-30T12:12:44.881Z"
     }
   ]
 }

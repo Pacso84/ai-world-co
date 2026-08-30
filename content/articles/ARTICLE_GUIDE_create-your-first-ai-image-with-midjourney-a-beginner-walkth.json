@@ -1,0 +1,70 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "create-your-first-ai-image-with-midjourney-a-beginner-walkth",
+    "company": "Midjourney",
+    "tool": "Midjourney",
+    "icon": "🎨",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-08-30T12:10:46.591Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.01439838,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "rejected_at": "2026-08-30T02:24:04.433Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1615
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [
+        "Watermark claim for paid plans may be inaccurate — verify and hedge or remove",
+        "Discord and web app described as equivalent, but web app may lack features available in Discord"
+      ],
+      "verdict": "Solid beginner guide with clear steps, helpful fallbacks for every UI action, and a warm tone. One factual caution on the watermark claim and the Discord/web parity statement, but these are fixable. Ready to publish after those two small verifications.",
+      "_aiCost": 0.0022285,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Solid beginner guide with warm, encouraging tone and practical step-by-step structure. Factual and clear overall, though Step 2's UI descriptions (sidebar, + icon, placeholder text) feel slightly uncertain. The Discord fallback helps, but adding \"if your screen looks different, try...\" guidance would make it more robust for all readers.",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_GUIDE_create-your-first-ai-image-with-midjourney-a-beginner-walkth.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-08-30T12:11:11.878Z",
+    "slug": "create-your-first-ai-image-with-midjourney-a-beginner-walkthrough",
+    "image_v": 2,
+    "image_at": "2026-08-30T12:11:43.519Z",
+    "seo": {
+      "meta_description": "Step-by-step guide to creating AI images with Midjourney in 10 minutes. No art skills needed — just type what you want and download the result.",
+      "keywords": [
+        "midjourney beginner tutorial",
+        "how to use midjourney",
+        "create AI images for beginners",
+        "midjourney getting started guide",
+        "midjourney sign up tutorial",
+        "how to make AI art easy",
+        "midjourney first image"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add the phrase 'step by step' or 'how to' in the title or subtitle to capture more search intent",
+        "Include more specific long-tail keywords like 'midjourney discord tutorial' since the tool runs through Discord",
+        "Add an FAQ section addressing common beginner questions to improve topical authority"
+      ],
+      "optimised_at": "2026-08-30T12:12:04.002Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Create Your First AI Image with Midjourney: A Beginner Walkthrough\"\nsubtitle: \"From sign-up to a finished picture saved on your device in one short sitting — no art skills or design background needed.\"\ncategory: \"guide\"\naudience: \"both\"\ncompany: \"Midjourney\"\ntool: \"Midjourney\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"image-generation\", \"midjourney\", \"getting-started\"]\n---\n\n# Create Your First AI Image with Midjourney: A Beginner Walkthrough\n\n> **In short:** Midjourney turns a written description into a picture in roughly a minute. You'll need a Midjourney subscription, about ten minutes, and a clear idea of what you want to see. The finished image is yours to download and use.\n\nIn the next ten minutes, you'll go from a blank screen to a finished picture saved on your device. No art background needed — if you can describe what you want, you can do this. We'll skip the jargon and focus on the buttons you'll actually press.\n\n## Before you start\n\n- **A Midjourney account** — sign up on the official Midjourney website using your email, a Google account, or a Discord login. Generating images requires a paid subscription; current plans and pricing are listed on Midjourney's official pricing page, so check there before you commit.\n- **A web browser or the Midjourney web app** — you can work on a computer, tablet, or phone. Discord also works as an alternative entry point if you already have an account there.\n- **About 10–15 minutes** of your time, plus another minute or so while the AI draws.\n- **One clear idea** of a picture you'd like to see. \"A cat\" works as a starter; \"a calico cat asleep on a stack of books, soft morning light\" gives a much better result.\n\n## Step 1 — Create your Midjourney account\n\nOpen your web browser and go to the official Midjourney homepage. Look for a sign-in or sign-up button — it's usually in the top-right corner, often labeled something like **\"Sign In\"** or **\"Get Started\"**. Click it, then sign in with your email, a Google account, or a Discord login.\n\nAfter signing in, the page will guide you through choosing a subscription plan. Pick whichever option feels right for a first try — you can change or cancel later. Once payment is confirmed, the page reloads and drops you into your personal Midjourney workspace.\n\nIf you'd rather start in Discord, the same tool runs inside a chat window there. Either path leads to the same image-quality results, so don't worry about choosing wrong.\n\n💬 Example: when asked for your email, use the one you check most often — that's where receipts and account notices will go.\n\nYou'll know it worked when you see the Midjourney workspace, with a place to type your picture description and your account name visible somewhere on screen.\n\n## Step 2 — Find the create screen\n\nOnce you're in your workspace, look for the area where you can start a new image. On the Midjourney web app, this is usually a large text box near the middle of the screen, sometimes paired with a sidebar that lists past images or quick-start options. On mobile, the input area may fill the whole screen.\n\nClick anywhere inside that text box. Your cursor should start blinking there. Don't type yet — just confirm you've found it. This box is where you'll describe your picture, so it's worth a moment to make sure you're in the right place.\n\nIf your version looks more like a Discord chat, type **/imagine** in any message field and Discord will offer to autocomplete it. Either way, you're heading to the same destination: a box waiting for your words.\n\nIf you don't see a text box at all, look for a button that says something like **\"Create\"** or **\"Imagine,\"** or shows a **+** symbol — clicking it usually opens the input area.\n\nYou'll know it worked when your cursor is blinking inside an empty text box and no error message is showing.\n\n## Step 3 — Write your first prompt\n\nNow describe one picture in plain words. Imagine texting a friend who paints for you — tell them the subject, the mood, the setting, and the style. A **prompt** is just the name for this description; nothing fancy.\n\nBe specific. *\"A flower\"* gives you a generic flower. *\"A single red poppy in a glass jar, morning sunlight, photo-realistic\"* gives you something that actually looks the way you pictured it. Short sentences are fine. So is a comma-separated list.\n\nWhen your description feels right, look for a button nearby — usually a paper-plane icon, an arrow, or the word **\"Generate\"** — and click it once. Don't click twice; each click spends a credit and starts a fresh image, so patience saves you money.\n\n💬 Example: `a cozy reading nook by a window, warm lamp light, watercolor illustration, soft colors`\n\nYou'll know it worked when the button greys out, a small progress message appears, and within about a minute the first signs of your picture start forming on screen.\n\n## Step 4 — Read the image grid\n\nWhen generation finishes, you'll usually see a **2×2 grid** of four images — four different attempts at your prompt. They're all based on the same description, but each one took the words a slightly different way.\n\nLook at all four. Which feels closest to what you imagined? Which has a color, angle, or detail you really like? You don't have to pick yet — for now, just notice that the four pictures are different from each other, even though you only typed one prompt.\n\nIf none of the four feels right, look for a button like **\"Re-roll\"** or a circular **↻** arrow somewhere near the grid. That tells Midjourney to try again with the same prompt and produce four new attempts.\n\nYou'll know it worked when you can clearly see four distinct images and at least one of them makes you think *\"ooh, that's nice.\"*\n\n## Step 5 — Upscale your favorite\n\nNear the grid, you'll typically find a row of small buttons labeled something like **U1, U2, U3, U4** — one under each image. The **U** stands for **upscale**, which simply means turning the small preview into a full-size, sharp picture. There are usually also **V1–V4** buttons, which create **variations** on that specific image.\n\nClick the **U** button under the picture you like most. Within a few seconds, a single full-resolution version of that image appears. This is the one you'll keep.\n\nIf the upscaled image has a small detail you'd like changed — say the cat's eyes are the wrong color — you can run a new variation on it, or simply upscale a different image from the grid instead.\n\nYou'll know it worked when a single, larger, sharper image appears alongside or in place of the small grid preview.\n\n## Step 6 — Download the image to your device\n\nClick the upscaled image to open it full-size. Look for a download control — this might be a small downward arrow ⬇, a button that says something like **\"Save\"** or **\"Download,\"** or an option inside a right-click or menu. One tap or click should save a PNG or JPG file straight to your device.\n\nOn a phone, the image often opens in a new tab. From there, look in your browser's menu (often three dots or a share icon) for an option to save the picture to your Photos or Gallery app. On a computer, the file usually lands in your Downloads folder.\n\nThe file is now yours. You can post it, print it, set it as your wallpaper, or send it to a friend. Midjourney's standard paid plans deliver images without a watermark, so the picture is ready to share as soon as it's saved.\n\nYou'll know it worked when the file appears in your **Downloads** folder (computer) or **Photos / Gallery** app (phone), and you can open it again from there.\n\n## Common mistakes\n\n- **Writing a one-word prompt.** \"Cat\" gives you a random cat. Always include at least one detail about mood, style, or setting — Step 3 has an example you can copy and tweak.\n- **Clicking Generate twice in a hurry.** Once is enough. Every extra click spends a credit and starts a fresh image. If the first result isn't ready yet, just wait — a progress indicator should be visible.\n- **Asking the AI to draw readable text.** Midjourney struggles with words inside images — a sign that says \"OPEN\" often comes out misspelled or jumbled. Use a real text tool or a graphic editor for readable words, and let Midjourney handle the rest of the picture.\n\n## What this means for you\n\n- **In everyday life:** your first image is great for a phone wallpaper, a birthday card, or a custom avatar — small personal touches that feel one-of-a-kind without paying a designer's fee.\n- **For your business or work:** a single Midjourney picture can become a blog header, a slide background, or a quick mockup for a client conversation. It's not a replacement for a designer on real projects, but it's a fast way to test an idea visually.\n- **If you're just getting started:** the easiest first move is to re-run the same prompt with one word changed each time — *\"watercolor\"* becomes *\"oil painting\"* becomes *\"pencil sketch\"* — and watch how the style shifts while the subject stays the same.\n\n## Try it now\n\nTake one minute and write down a single sentence describing a picture you actually want to see. Then open Midjourney, paste it into the prompt box, and hit Generate. By the time you finish reading this paragraph, your first image will probably be ready to look at.",
+  "original_title": "Create Your First AI Image with Midjourney: A Beginner Walkthrough"
+}
