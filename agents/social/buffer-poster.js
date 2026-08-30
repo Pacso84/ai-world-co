@@ -39,6 +39,13 @@ import { dirname, join } from 'path';
 import { selectSocialBatch } from '../../core/social-queue.js';
 import { composePost, followCta, CHANNELS } from '../../core/social-text.js';
 import { capFor, allowedNow, countSentToday } from '../../core/channel-cap.js';
+// ⚠️ AZ ŐRSZEM (2026-08-30). Enélkül ez a modul NÉMÁN áll le: lejárt token,
+// levált csatorna vagy bukott createPost esetén csak a CI naplójába írt,
+// ahová senki nem néz — és a fájl végi `catch` még 0-val is lépett ki, tehát
+// a GitHub Actions is zöld pipát adott. A döntés-logika azért van a `core/`
+// alatt, mert EZ A FÁJL NEM IMPORTÁLHATÓ (valódi posztot küldene), tehát
+// tesztelni sem lehet. Lásd: core/buffer-guard.js + core/buffer-guard.test.js.
+import { futtatBuffer } from '../../core/buffer-guard.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..', '..');
@@ -74,6 +81,13 @@ const LIMIT = li !== -1 && args[li + 1] ? parseInt(args[li + 1], 10) || 3 : 3;
 // egy csatornára, kézzel ellenőrizve, csak utána a többi.
 const oi = args.indexOf('--only');
 const ONLY = oi !== -1 && args[oi + 1] ? String(args[oi + 1]).toLowerCase() : null;
+
+// ⚠️ CSAK A TELJES, ÉLES FUTÁS ÍRJA AZ ŐRSZEM-FÁJLT. Egy helyi `--dry` vagy
+// `--only threads` futás különben friss `at`-ot és üres `problems`-et hagyna a
+// memory/buffer-guard.json-ban — vagyis épp azt hazudná a napi riportnak, hogy
+// az éles poszter rendben lefutott. (Ugyanaz a csapda, mint a magyar
+// helyesírás-őrnél: 773 cikkből 12-t nézett, és „0 hibát" jelentett.)
+const ELES = !DRY && !VERIFY && !LIST_CHANNELS && !ONLY;
 
 const token = () => (process.env.BUFFER_ACCESS_TOKEN || '').trim();
 
@@ -162,14 +176,23 @@ async function sentTodayFor(organizationId, channelId) {
   return countSentToday(edges.map(e => e?.node).filter(Boolean));
 }
 
+// ── AZ ŐRSZEM NYERSANYAGA (2026-08-30) ──────────────────────────────
+// A `listChannels()` eddig NÉMÁN kiszűrte a levált/zárolt csatornákat, és
+// hibánál csak `null`-t adott. Kívülről tehát a „leesett az Instagram" és a
+// „ma nem volt mit posztolni" EGYFORMÁN nézett ki. A szűretlen listát és a
+// hiba OKÁT ezért félretesszük — a napi riport ebből tudja meg, mi történt.
+let NYERS_CSATORNAK = null;   // a Buffer válasza, SZŰRÉS ELŐTT
+let CSATORNA_HIBA = null;     // miért nem jött meg (a Buffer saját üzenete)
+
 async function listChannels() {
   const o = await orgId();
-  if (o.error) { console.log('   ❌ ' + o.error); return null; }
+  if (o.error) { CSATORNA_HIBA = o.error; console.log('   ❌ ' + o.error); return null; }
   const r = await gql(
     `query($i: ChannelsInput!){ channels(input:$i){ id service name isDisconnected isLocked } }`,
     { i: { organizationId: o.id } });
-  if (r.error) { console.log('   ❌ ' + r.error); return null; }
-  const ch = (r.data?.channels || []).filter(c => !c.isDisconnected && !c.isLocked);
+  if (r.error) { CSATORNA_HIBA = r.error; console.log('   ❌ ' + r.error); return null; }
+  NYERS_CSATORNAK = r.data?.channels || [];
+  const ch = NYERS_CSATORNAK.filter(c => !c.isDisconnected && !c.isLocked);
   console.log('📡 BEKÖTÖTT CSATORNÁK');
   if (!ch.length) { console.log('   ⚠️ egy használható csatorna sincs'); return []; }
   for (const c of ch) console.log(`   ${String(c.service).padEnd(11)} ${c.name || '?'}   id: ${c.id}`);
@@ -428,10 +451,19 @@ async function main() {
   console.log('📤 BUFFER-POSZTER (X · Threads · Instagram)');
   console.log('─'.repeat(60));
 
-  if (VERIFY) { await verifySchema(); return; }
-  if (LIST_CHANNELS) { await listChannels(); return; }
+  // ⚠️ A VISSZATÉRÉSI ÉRTÉK NEM DÍSZ: ebből épül a memory/buffer-guard.json,
+  // amit a napi riport olvas. MINDEN kilépési ág mondja meg, mi történt —
+  // különben a néma visszafordulás megint láthatatlan marad.
+  const hibak = [];
+  const alapAllapot = () => ({ tokenVan: !!token(), socialMappa: true, csatornaLekerdezes: 'kihagyva', hibak, kikuldve: 0, keres: 0 });
 
-  if (!existsSync(SOCIAL_DIR)) { console.log('   💤 Nincs social mappa.'); return; }
+  if (VERIFY) { await verifySchema(); return null; }
+  if (LIST_CHANNELS) { await listChannels(); return null; }
+
+  if (!existsSync(SOCIAL_DIR)) {
+    console.log('   💤 Nincs social mappa.');
+    return { ...alapAllapot(), socialMappa: false };
+  }
 
   // Melyik csatornákra dolgozunk? Élesben a Buffertől kérdezzük (így az X
   // bekötése után magától bővül); próbában mind a hármat mutatjuk.
@@ -452,17 +484,26 @@ async function main() {
     console.log('   🧪 PRÓBA — nincs kiküldés');
   } else {
     const list = await listChannels();
-    if (!list) { console.log('   ⏭️  A csatornákat nem sikerült lekérdezni — kihagyom.'); return; }
+    if (!list) {
+      // ⚠️ ITT ÁLL LE A LEJÁRT TOKEN. Eddig ez egy sor volt a CI-naplóban, és
+      // a folyamat 0-val lépett ki — a Threads és az Instagram napokig
+      // hallgathatott volna anélkül, hogy bárki megtudja.
+      console.log('   ⏭️  A csatornákat nem sikerült lekérdezni — kihagyom.');
+      return { ...alapAllapot(), csatornaLekerdezes: 'bukott', csatornaHiba: CSATORNA_HIBA };
+    }
     channels = list
       .map(c => ({ key: SERVICE_MAP[String(c.service).toLowerCase()], id: c.id, user: c.serviceUsername }))
       .filter(c => c.key && CHANNELS[c.key]);
-    if (!channels.length) { console.log('   ⚠️ egyik bekötött csatornát sem ismerem.'); return; }
+    if (!channels.length) {
+      console.log('   ⚠️ egyik bekötött csatornát sem ismerem.');
+      return { ...alapAllapot(), csatornaLekerdezes: 'ok', csatornak: NYERS_CSATORNAK, ismertCsatornak: [] };
+    }
   }
 
   if (ONLY) {
     channels = channels.filter(c => c.key === ONLY);
     console.log(`   🎯 csak a(z) ${ONLY} csatorna`);
-    if (!channels.length) { console.log('   ⚠️ ilyen bekötött csatorna nincs.'); return; }
+    if (!channels.length) { console.log('   ⚠️ ilyen bekötött csatorna nincs.'); return null; }
   }
 
   // A napi plafonhoz kell a szervezet-azonosító — de CSAK akkor kérjük le,
@@ -589,7 +630,14 @@ async function main() {
         : await createPost({ channelId: ch.id, channelKey: ch.key, text: szoveg, image: vanKep ? kep : null });
       if (reel) console.log(`   🎬 Reel-formátum: ${reel.slug.slice(0, 44)}`);
       keres++;
-      if (r.error) { console.log(`   ❌ ${slug.slice(0, 40)} — ${r.error}`); continue; }
+      if (r.error) {
+        // A bukás nem csak a naplóba megy: az őrszem-fájlon át a napi
+        // riportba is. Egy elutasított poszt („LimitReachedError",
+        // „UnauthorizedError") pontosan olyan néma leállás, mint a lejárt token.
+        hibak.push({ csatorna: ch.key, slug: slug.slice(0, 60), hiba: r.error });
+        console.log(`   ❌ ${slug.slice(0, 40)} — ${r.error}`);
+        continue;
+      }
 
       // CSAK sikeres válasz után jelöljük kiküldöttnek. ⚠️ A "sikeres" API-válasz
       // nem jelenti, hogy a poszt MEG IS JELENT — a Facebooknál ezt már
@@ -604,9 +652,38 @@ async function main() {
 
   console.log('\n' + '─'.repeat(60));
   console.log(`📊 Kiküldve: ${kikuldve} | API-kérés: ${keres}/${NAPI_KERET} napi keret`);
+
+  return {
+    tokenVan: !!token(),
+    socialMappa: true,
+    csatornaLekerdezes: token() ? 'ok' : 'kihagyva',
+    csatornaHiba: CSATORNA_HIBA,
+    csatornak: NYERS_CSATORNAK,
+    ismertCsatornak: channels.map(c => c.key),
+    hibak, kikuldve, keres
+  };
 }
 
-main().then(() => process.exit(0)).catch(e => {
-  console.error('💥 BUFFER-POSZTER HIBA (nem kritikus):', String(e.message).slice(0, 200));
-  process.exit(0);
-});
+// ===================================================================
+// A LÁNC VÉGE — előbb az őrszem, AZTÁN a kilépőkód (2026-08-30)
+// ===================================================================
+//
+// ⚠️ ITT KORÁBBAN `process.exit(0)` ÁLLT A HIBAÁGON IS („nem kritikus"),
+// szemben a poster.js-szel és a reel-post.js-szel, amik 1-gyel lépnek ki.
+// Egy összeomlott poszter így ZÖLD CI-futásnak látszott.
+//
+// ⚠️ ÉS A SORREND SEM MINDEGY. A reel-post.js-ben pontosan ez a hiba volt: ott
+// a `process.exit(1)` MEGELŐZTE az őrszem-írást, az pedig azonnal megöli a
+// folyamatot — a bukás sosem került a guard-fájlba, a riport hallgatott. A
+// `futtatBuffer()` ezért ELŐBB írja az őr-fájlt, és a hibát csak utána adja
+// tovább ide.
+//
+// A kilépőkód a CI-nak szól, az őr-fájl a napi riportnak: a kettő nem
+// helyettesíti egymást. A workflow `|| true`-ja (auto.yml) miatt az 1-es
+// kilépőkód NEM állítja meg a pipeline-t — a user felé az őrszem-sor visz.
+futtatBuffer({ ROOT, join, fn: main, eles: ELES })
+  .then(() => process.exit(0))
+  .catch(e => {
+    console.error('💥 BUFFER-POSZTER HIBA:', String(e.message).slice(0, 200));
+    process.exit(1);
+  });

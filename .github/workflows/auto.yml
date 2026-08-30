@@ -44,7 +44,22 @@ jobs:
     # A 120 perc nem pazarlás: a repó 2026-07-26 óta PUBLIKUS → az Actions
     # INGYENES ÉS KORLÁTLAN. A régi 60-as érték a privát repó 2000 perces
     # havi kerete miatt volt szűk; az az ok megszűnt, a kockázat maradt.
-    timeout-minutes: 120
+    #
+    # ⚠️ 120 → 145 PERC (2026-08-30, hibavadászat). A FENTI „111 perc" SZÁM
+    # ELAVULT VOLT: a Pipeline 45→55-re nőtt 08-03-án, a Fordítás 30→35-re
+    # 07-31-én — UGYANAZON A NAPON, amikor a 120-as plafont épp a „111 perc
+    # biztonságos" érvvel vezették be. Senki nem számolt utána. A valódi
+    # összeg 131 PERC (55+15+10+10+35+6), vagyis a lépések együtt TÖBBET
+    # kérhettek, mint a job-plafon — pont azt a katasztrófát kockáztatva,
+    # amit a 60→120 emelés meg akart előzni (lásd fentebb: megszakított
+    # jobnál az `if: always()` lépések is kimaradnak).
+    #
+    # 🔑 A KOMMENT NEM BIZONYÍTÉK — ezért mostantól TESZT őrzi:
+    # `core/ci-timeouts.test.js` kiolvassa a YAML-ből a job-plafont és a lépések
+    # korlátait, és elbukik, ha az összeg + 5 perc tartalék nem fér bele.
+    # (Ugyanaz a lecke, mint a `_redirects` 08-15-i esete: növekvő szám mellé
+    # mindig őrszem.)
+    timeout-minutes: 145
     steps:
       - uses: actions/checkout@v4
 
@@ -252,6 +267,16 @@ jobs:
           CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+          # ⚠️ TELEGRAM IS KELL IDE (2026-08-30, hibavadászat). A fordító
+          # paid-only, tehát ITT is elsülhet a vészháló-riasztás („a fizetős
+          # lánc kiesett") — de token nélkül a `sendMessage()` némán
+          # `{ok:false, skipped:true}`-t adott. Ez a leghosszabb fizetős lépés
+          # (35 perc), tehát a legvalószínűbb hely, ahol a lánc elfogy.
+          # (A riasztás a `core/ai-router.js` javítása óta már nem VÉSZ EL
+          # token nélkül sem — a dedup-kulcs csak sikeres küldés után íródik —,
+          # de így AZONNAL megy ki, nem csak egy későbbi lépésből.)
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_OWNER_CHAT_ID: ${{ secrets.TELEGRAM_OWNER_CHAT_ID }}
         # 30 → 35 PERC (2026-07-31). A 04:07-es futásban a fordító RENDESEN
         # dolgozott (154 fordítás), tisztán ki is lépett a saját 27 perces
         # keretén, kiírta az összegzést — és a lépés-korlát UGYANABBAN A
@@ -592,6 +617,13 @@ jobs:
 
       # Heti kereső-riport (vasárnap): GSC+Bing számok + hírlevél-lámpa
       - name: Heti kereső-riport (Telegram)
+        # if: always() (2026-08-30, hibavadászat) — EDDIG HIÁNYZOTT, pedig a
+        # közvetlenül fölötte lévő napi riport kifejezetten megkapta, ezzel az
+        # indoklással: „ha egy korábbi lépés elhasal, a riport ENÉLKÜL sosem
+        # menne ki: a hiba NÉMA maradna". Ugyanaz a szabály, ugyanaz az ok —
+        # csak erre a lépésre nem lett alkalmazva. Egy bukott Fordítás vagy
+        # Deploy (egyiken sincs `|| true`) eddig kihagyta ezt a riportot.
+        if: always()
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_OWNER_CHAT_ID: ${{ secrets.TELEGRAM_OWNER_CHAT_ID }}
@@ -609,6 +641,13 @@ jobs:
       # el, hogy a napok közti háromszoros szórás a TARTALOMBÓL jön-e vagy a
       # napból. Read-only Cloudflare-hívás, $0, nincs benne AI.
       - name: Forgalom-napló (cikkenkénti)
+        # if: always() (2026-08-30, hibavadászat) — ITT A LEGSÚLYOSABB a
+        # hiánya: a fenti komment maga mondja ki, hogy amit nem mentünk el
+        # naponta, az VÉGLEGESEN elveszik (a Cloudflare ~7 nap után tízesre
+        # kerekít). A `core/traffic-log.js` csak 3 napot pótol vissza, tehát
+        # egy 3 napnál hosszabb kiesés visszahozhatatlan lyukat üt a naplóban.
+        # És pont ebből az adatból dolgozik a napi riport 👥 látogatószám-sora.
+        if: always()
         env:
           CF_ANALYTICS_TOKEN: ${{ secrets.CF_ANALYTICS_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

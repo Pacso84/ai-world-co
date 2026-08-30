@@ -31,6 +31,9 @@ import Groq from 'groq-sdk';
 
 import { recordSpend, meteredBlocked, isMetered } from './budget.js';
 import { shouldRetryTruncated } from './truncation-guard.js';
+// A „csak sikeres küldés után jegyezzük be" szabály KÖZÖS (napi riport,
+// heti kereső-riport, vészháló-riasztás) — kimásolva szétcsúszna.
+import { sikeresKuldes } from './report-window.js';
 
 // ===================================================================
 // KONFIG BETÖLTÉS
@@ -650,24 +653,90 @@ export function unwrapOuterFence(text) {
 // VÉSZHÁLÓ-RIASZTÁS (2026-07-10): napi 1x Telegram, ha egy paid-only agent
 // ingyenes kulcsra kényszerült (= minden fizetős elesett). Fire-and-forget,
 // dinamikus telegram-import (nincs körkörös függőség); hiba nem állítja meg a routert.
+//
+// ⚠️ A NAPI DEDUP-KULCS CSAK SIKERES KÜLDÉS UTÁN ÍRÓDHAT BE (2026-08-30,
+// független átnézés találta). Eddig fordítva volt: előbb ment a `last_alert`
+// a lemezre, aztán indult a küldés. A `sendMessage()` viszont SOHA nem dob —
+// hiányzó tokenre `{ok:false, skipped:true}`, Telegram- és hálózati hibára
+// `{ok:false}` a válasz. A CI „Fordítás" lépésének NINCS TELEGRAM_BOT_TOKEN-je,
+// a fordító pedig paid-only: pont ott, ahol a vészháló a legvalószínűbben
+// megszólal, a riasztás NÉMÁN elveszett — a kulcs viszont beíródott ÉS
+// visszacommitolódott (a fájl git-követett), így aznap már a Pipeline-lépés
+// sem szólt. Ugyanaz a hibaosztály, mint a 2026-08-27-i napi riporté, ezért
+// ugyanaz a KÖZÖS szabály dönt: `report-window.js → sikeresKuldes()`.
 const EMERGENCY_STATE = join(__dirname, '..', 'memory', 'emergency-fallback-state.json');
 let _emergencyAlertedThisRun = false;
+
+// 2026-07-22: a szöveg eddig KŐBE VÉSVE a Google/Gemini feltöltésére küldött —
+// a Gemini kivezetése után ez félrevezető lett volna. Most a TÉNYLEGES helyzetet
+// mondjuk, és az egyetlen fizetős szolgáltatóra (OpenRouter) irányítunk.
+export function veszUzenet(agentName, provider, model) {
+  return `⚠️ *Vészhelyzet — figyelj rám!*\n\nA fizetős AI most nem volt elérhető, ezért a *${agentName}* INGYENES kulccsal dolgozott (${provider}/${model}). Így a cég TOVÁBB megy, nem áll le 👍 — de a szöveg minősége gyengébb lehet.\n\nValószínű ok: elfogyott az OpenRouter-egyenleg vagy kvóta-limit.\nEllenőrizd: openrouter.ai → Credits.`;
+}
+
+/**
+ * Kiküldi a vészháló-riasztást, és CSAK SIKER ESETÉN jegyzi be a napi kulcsot.
+ *
+ * A küldő és a mentő injektált — így a szabály hálózat és éles állapotfájl
+ * nélkül tesztelhető (`core/emergency-alert.test.js`). A router futását
+ * semmi nem állíthatja meg: minden hiba idebent marad.
+ *
+ * @param {object} p
+ * @param {string} p.agentName  ki kényszerült ingyenes kulcsra
+ * @param {string} p.provider   melyik ingyenes szolgáltatóra esett
+ * @param {string} p.model      melyik modellre
+ * @param {string} p.today      a napi dedup-kulcs (YYYY-MM-DD)
+ * @param {(szoveg:string)=>Promise<any>} p.send   a telegram sendMessage()
+ * @param {(allapot:object)=>void} p.mentes        az állapotfájl írása
+ * @param {(s:string)=>void} [p.log]
+ * @returns {Promise<{sent:boolean, saved:boolean}>}
+ */
+export async function veszRiasztasKuldes({ agentName, provider, model, today, send, mentes, log = console.log }) {
+  let kuldes;
+  try {
+    kuldes = await send(veszUzenet(agentName, provider, model));
+  } catch (e) {
+    kuldes = { ok: false, error: e?.message || String(e) };
+  }
+
+  if (!sikeresKuldes(kuldes)) {
+    log('   ⚠️  VÉSZHÁLÓ-riasztás: a küldés NEM sikerült (' +
+      (kuldes?.skipped ? 'nincs Telegram-token' : (kuldes?.description || kuldes?.error || 'ismeretlen ok')) +
+      ') — a napi kulcsot NEM írom be, a következő CI-lépés/futás újrapróbálja.');
+    return { sent: false, saved: false };
+  }
+
+  try {
+    mentes({ last_alert: today, agent: agentName, provider, model });
+  } catch (e) {
+    // A riasztás KIMENT — ezt nem tagadjuk le. De ha a kulcs nem mentődött,
+    // a következő futás ma másodszor is szólhat: legyen látható, miért.
+    log('   ⚠️  VÉSZHÁLÓ: a riasztás kiment, de a napi kulcs mentése nem sikerült (' +
+      (e?.message || e) + ') — ma másodszor is szólhat.');
+    return { sent: true, saved: false };
+  }
+  return { sent: true, saved: true };
+}
+
 function emergencyFallbackAlert(agentName, provider, model) {
   if (_emergencyAlertedThisRun) return;
   const today = new Date().toISOString().slice(0, 10);
   try {
     const st = existsSync(EMERGENCY_STATE) ? JSON.parse(readFileSync(EMERGENCY_STATE, 'utf-8')) : {};
     if (st.last_alert === today) { _emergencyAlertedThisRun = true; return; }   // ma már szóltunk
-    writeFileSync(EMERGENCY_STATE, JSON.stringify({ last_alert: today, agent: agentName, provider, model }, null, 2), 'utf-8');
   } catch { /* állapot-hiba ne állítsa meg a routert */ }
+  // A FUTÁSON BELÜLI zár a küldés ELŐTT áll — és ez szándékos, nem feledékenység:
+  // ha a fizetős lánc elesett, a futás MINDEN további hívása ide érne, tokenhiány
+  // esetén tucatnyi néma próbálkozással és naplózajjal. A NAPI kulcs viszont csak
+  // sikeres küldés után íródik, tehát a következő CI-lépés (aminek VAN tokenje) és
+  // a következő futás újrapróbálja — ez a mostani javítás lényege.
   _emergencyAlertedThisRun = true;
   console.log(`   🚨 VÉSZHÁLÓ: a(z) "${agentName}" fizetős helyett INGYENES kulccsal ment (${provider}) — Telegram-riasztás.`);
-  import('./telegram.js').then(({ sendMessage }) => {
-    // 2026-07-22: a szöveg eddig KŐBE VÉSVE a Google/Gemini feltöltésére küldött —
-    // a Gemini kivezetése után ez félrevezető lett volna. Most a TÉNYLEGES helyzetet
-    // mondjuk, és az egyetlen fizetős szolgáltatóra (OpenRouter) irányítunk.
-    sendMessage(`⚠️ *Vészhelyzet — figyelj rám!*\n\nA fizetős AI most nem volt elérhető, ezért a *${agentName}* INGYENES kulccsal dolgozott (${provider}/${model}). Így a cég TOVÁBB megy, nem áll le 👍 — de a szöveg minősége gyengébb lehet.\n\nValószínű ok: elfogyott az OpenRouter-egyenleg vagy kvóta-limit.\nEllenőrizd: openrouter.ai → Credits.`).catch(() => {});
-  }).catch(() => {});
+  import('./telegram.js').then(({ sendMessage }) => veszRiasztasKuldes({
+    agentName, provider, model, today,
+    send: sendMessage,
+    mentes: (allapot) => writeFileSync(EMERGENCY_STATE, JSON.stringify(allapot, null, 2), 'utf-8')
+  })).catch(() => {});
 }
 
 export async function ask(prompt, options = {}) {

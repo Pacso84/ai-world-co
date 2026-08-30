@@ -31,6 +31,7 @@ import { bodyLooksUntranslated } from './translation-guard.js';
 import { shouldSendReport, sikeresKuldes } from './report-window.js';
 import { szurZajt, csendesSor } from './report-noise.js';
 import { elavultOrszemek, frissessegSor } from './guard-freshness.js';
+import { bufferSor } from './buffer-guard.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
@@ -616,6 +617,23 @@ async function main() {
     }
   } catch { /* még nem futott — nem baj */ }
 
+  // 📤 BUFFER-ŐRSZEM (2026-08-30). A Threads és az Instagram a Bufferen megy
+  // (agents/social/buffer-poster.js), és ez a riport EDDIG EGYETLEN SZÓVAL SEM
+  // említette a Buffert. Ha lejárt a BUFFER_ACCESS_TOKEN, levált egy csatorna
+  // vagy a createPost hibát adott, a posztolás NÉMÁN állt le: a poszter csak a
+  // CI naplójába írt, ráadásul összeomláskor is 0-val lépett ki, tehát a
+  // GitHub Actions zöld pipát adott. 2026 nyarán volt már egy 9 napos néma
+  // Facebook-leállás pontosan ebből a mintából.
+  // A sor ⚠️-vel kezdődik (core/buffer-guard.js), tehát a zajszűrő
+  // vészjelzés-mintája alá esik: egy napokig VÁLTOZATLAN néma leállás sem
+  // némulhat el. Ha nincs gond, ez a blokk hallgat — hogy a poszter egyáltalán
+  // futott-e, azt lentebb a frissesség-őr nézi meg az `at` bélyegből.
+  try {
+    const bufg = JSON.parse(readFileSync(join(ROOT, 'memory', 'buffer-guard.json'), 'utf-8'));
+    const sor = bufferSor(bufg);
+    if (sor) lines.push(sor);
+  } catch { /* még nem futott — nem baj */ }
+
   // 💰 KÖLTÉS-NYILVÁNTARTÁS ŐRE (2026-08-29, hibavadászat).
   // A `core/budget.js` `load()`-ja BÁRMILYEN JSON-hibára némán `{days:{}}`-t
   // adott, a következő `recordSpend` pedig ezt írta vissza — vagyis a napi $1
@@ -655,7 +673,12 @@ async function main() {
     const nevek = {
       'seo-guard.json': 'SEO', 'live-guard.json': 'élő oldal', 'i18n-guard.json': 'nyelvi',
       'image-guard.json': 'borítókép', 'redirect-guard.json': 'átirányítás',
-      'reel-guard.json': 'Reel', 'truncation-guard.json': 'csonka', 'guide-coverage-guard.json': 'útmutató-lefedettség'
+      'reel-guard.json': 'Reel', 'truncation-guard.json': 'csonka', 'guide-coverage-guard.json': 'útmutató-lefedettség',
+      // A Buffer-poszter őre (2026-08-30). ITT dől el az „el sem indult" eset:
+      // a poszter SIKERES futásnál is ír (üres problems), tehát ha az `at`
+      // megáll, az azt jelenti, hogy a lépés maga maradt ki — enélkül a
+      // „nem volt mit posztolni" és a „nem futott le" egyformán nézne ki.
+      'buffer-guard.json': 'Buffer'
     };
     const beolvasott = {};
     for (const [f, nev] of Object.entries(nevek)) {
