@@ -1,86 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t17879799076644",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-08-29T05:05:07.664Z",
-      "updated": "2026-08-29T05:05:18.906Z"
-    },
-    {
-      "id": "t178801005206631",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-08-29T13:27:32.066Z",
-      "updated": "2026-08-29T13:27:32.239Z"
-    },
-    {
-      "id": "t178801005224139",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-08-29T13:27:32.241Z",
-      "updated": "2026-08-29T13:27:48.186Z"
-    },
-    {
-      "id": "t178801006818869",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-08-29T13:27:48.188Z",
-      "updated": "2026-08-29T13:27:48.387Z"
-    },
-    {
-      "id": "t178801006838928",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-29T13:27:48.389Z",
-      "updated": "2026-08-29T13:27:48.558Z"
-    },
-    {
-      "id": "t178801006856045",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-29T13:27:48.560Z",
-      "updated": "2026-08-29T13:27:48.734Z"
-    },
-    {
-      "id": "t178801006873729",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-08-29T13:27:48.737Z",
-      "updated": "2026-08-29T13:27:48.953Z"
-    },
-    {
-      "id": "t178801006900084",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-29T13:27:49.000Z",
-      "updated": "2026-08-29T13:27:49.233Z"
-    },
-    {
-      "id": "t17880100692359",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-08-29T13:27:49.235Z",
-      "updated": "2026-08-29T13:27:49.453Z"
-    },
-    {
-      "id": "t178801006945548",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-29T13:27:49.455Z",
-      "updated": "2026-08-29T13:28:08.011Z"
-    },
-    {
       "id": "t178801008801310",
       "title": "Run publisher",
       "status": "done",
@@ -479,25 +399,89 @@
       "agent": "publisher",
       "created": "2026-08-30T13:24:42.474Z",
       "updated": "2026-08-30T13:25:02.509Z"
+    },
+    {
+      "id": "t178811609559612",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-08-30T18:54:55.596Z",
+      "updated": "2026-08-30T18:54:55.778Z"
+    },
+    {
+      "id": "t178811609577916",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-08-30T18:54:55.779Z",
+      "updated": "2026-08-30T18:55:13.573Z"
+    },
+    {
+      "id": "t178811611357552",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-08-30T18:55:13.575Z",
+      "updated": "2026-08-30T18:56:40.596Z"
+    },
+    {
+      "id": "t178811620059860",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-30T18:56:40.598Z",
+      "updated": "2026-08-30T18:56:40.781Z"
+    },
+    {
+      "id": "t178811620078228",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-30T18:56:40.783Z",
+      "updated": "2026-08-30T18:56:40.965Z"
+    },
+    {
+      "id": "t178811620096836",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-08-30T18:56:40.968Z",
+      "updated": "2026-08-30T18:56:41.193Z"
+    },
+    {
+      "id": "t178811620123980",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-30T18:56:41.240Z",
+      "updated": "2026-08-30T18:56:41.476Z"
+    },
+    {
+      "id": "t178811620147878",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-08-30T18:56:41.478Z",
+      "updated": "2026-08-30T18:56:41.704Z"
+    },
+    {
+      "id": "t178811620170661",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-30T18:56:41.706Z",
+      "updated": "2026-08-30T18:56:52.667Z"
+    },
+    {
+      "id": "t178811621266834",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-08-30T18:56:52.668Z",
+      "updated": "2026-08-30T18:57:13.949Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178718686384148",
-      "level": "info",
-      "text": "SEO: 6 cikk optimalizálva (átlag 8.3/10).",
-      "agent": "seo",
-      "at": "2026-08-20T00:47:43.841Z",
-      "loud": false
-    },
-    {
-      "id": "n178718688585646",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The lineup is solid — warm, practical, and on-brand. One thing worth flagging: articles 3–6 are all complaint emails/letters with different AI tools. That's a lot of overlap. I'd suggest cutting or me",
-      "agent": "publisher",
-      "at": "2026-08-20T00:48:05.856Z",
-      "loud": false
-    },
     {
       "id": "n178718689735538",
       "level": "success",
@@ -1281,38 +1265,25 @@
       "agent": "ceo",
       "at": "2026-08-30T13:25:02.548Z",
       "loud": false
+    },
+    {
+      "id": "n178811622040348",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The line-up is solid and ready to go — you have a nice mix of practical AI writing tools, personal life scenarios, and that important privacy piece to build trust. The variety feels approachable for e",
+      "agent": "publisher",
+      "at": "2026-08-30T18:57:00.403Z",
+      "loud": false
+    },
+    {
+      "id": "n178811623398969",
+      "level": "info",
+      "text": "Pipeline lefutott — ma nem volt publikálható új tartalom.",
+      "agent": "ceo",
+      "at": "2026-08-30T18:57:13.989Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178730098504752",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"How ChatGPT Work helps Stampli move ideas to market\" (?/10)",
-      "ref": "2026-08-20T16-22-15-024Z_openai-blog_How_ChatGPT_Work_helps_Stampli_move_ideas_to_marke.json",
-      "at": "2026-08-21T08:29:45.047Z"
-    },
-    {
-      "id": "m178730100812175",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Use Claude to read and explain a long contract or legal document\" — javítva: HOWTO_TOO_LONG: 1754 szó (~8.8 perc olvasás) — a cél 1000-1400 szó, a felső kapu 1700. A Facebookról érkező mobilolvasó ennyit ritkán olvas végig.; The article states paid Claude plans have an \"Artifacts\" feature that can read a directly uploaded PDF in one go via a paperclip or upload button near the messag",
-      "ref": "GUIDE_use-claude-to-read-and-explain-a-long-contract-or-legal-docu.json",
-      "at": "2026-08-21T08:30:08.121Z"
-    },
-    {
-      "id": "m178730100812277",
-      "from": "guide",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Kell még adat: \"Use Claude to read and explain a long contract or legal document\" — az Ellenőrző tényt/forrást kér, amit nem találhatok ki: The article states paid Claude plans have an \"Artifacts\" feature that can read a directly uploaded PDF in one go via a paperclip or upload button near the message box. Artifacts is a feature for rendering code/documents in the chat output, not a PDF-reading/up",
-      "ref": "GUIDE_use-claude-to-read-and-explain-a-long-contract-or-legal-docu.json",
-      "open": false,
-      "at": "2026-08-21T08:30:08.122Z",
-      "resolved_at": "2026-08-21T08:31:06.324Z"
-    },
     {
       "id": "m17873010663225",
       "from": "ellenorzo",
@@ -2649,6 +2620,33 @@
       "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Build a personal study-buddy chatbot in 15 minutes\" — SDK: Select Docker (it's the most beginner-friendly option)",
       "ref": "ARTICLE_GUIDE_build-a-personal-study-buddy-chatbot-in-15-minutes-using-hug.json",
       "at": "2026-08-30T13:25:23.656Z"
+    },
+    {
+      "id": "m178811621265854",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-08-30T18:56:52.658Z"
+    },
+    {
+      "id": "m178811625084033",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Build a quick project timeline outline using Grok \" — \"look for the Grok icon – it's a little robot head, usually under the Explore section\"; \"look for a button labeled 'AI Assistant' or a similar icon with three dots\"; \"a chat window slides up with a text box at the bottom\"",
+      "ref": "ARTICLE_GUIDE_build-a-quick-project-timeline-outline-using-grok-on-x.json",
+      "at": "2026-08-30T18:57:30.840Z"
+    },
+    {
+      "id": "m178811626851123",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Build a simple AI study buddy with Apple Intellige\" — \"Draft with AI\" option (unverified exact name)",
+      "ref": "ARTICLE_GUIDE_build-a-simple-ai-study-buddy-with-apple-intelligence-on-you.json",
+      "at": "2026-08-30T18:57:48.511Z"
     }
   ]
 }
