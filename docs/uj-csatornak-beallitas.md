@@ -1,3 +1,7 @@
+⚠️ **ELAVULT (2026-08-30):** a  TÖRÖLVE — a Bufferre álltunk
+át 2026-08-14-én, mert az X saját API-ja $0,200/poszt ($56/hó, a keret kétszerese).
+A mai próba-parancs:
+
 # Új terjesztési csatornák — beállítási útmutató
 
 **Készült:** 2026-08-09 · **Állapot:** a kód kész és él, a fiókok hiányoznak
@@ -11,6 +15,12 @@ poszterek **alszanak**: nem hibáznak, nem fogyasztanak, nem jelölnek meg semmi
 ami félrevezet).
 
 ---
+
+⚠️ **ELAVULT (2026-08-30):** a  TÖRÖLVE — a Bufferre álltunk
+át 2026-08-14-én, mert az X saját API-ja $0,200/poszt ($56/hó, a keret kétszerese).
+A mai próba-parancs:
+
+
 
 ## Miért épp ez a három
 
@@ -121,9 +131,14 @@ Ugyanaz a menet, két eltéréssel:
 
 ## Próba élesítés előtt
 
-```
-node agents/social/multi-poster.js --channel threads --limit 2 --dry
-node agents/social/multi-poster.js --channel x --limit 2 --dry
+⚠️ **FRISSÍTVE 2026-08-30:** a régi `agents/social/multi-poster.js` **TÖRÖLVE**.
+2026-08-14-én a Bufferre álltunk át, mert az X saját API-ja $0,200/poszt
+(= $56/hó, a keret kétszerese). A workflow saját kommentje már akkor
+„ELVETVE"-nek nevezte — a fájl mégis ott maradt, és ez a doksi két hétig
+nem létező parancsot ajánlott.
+
+```bash
+node agents/social/buffer-poster.js --dry --limit 2
 ```
 
 A `--dry` semmit nem ír és nem küld — csak megmutatja, mi menne ki.

@@ -6,14 +6,13 @@
   "main": "core/orchestrator.js",
   "scripts": {
     "router-smoke": "node core/ai-router.smoke.js",
-    "test": "node core/run-tests.js",
-    "scrape": "node scheduled/morning-scrape.js"
+    "test": "node core/run-tests.js"
   },
   "keywords": [
     "ai",
     "agents",
     "news",
-    "australia"
+    "usa"
   ],
   "author": "pacsi84",
   "license": "MIT",

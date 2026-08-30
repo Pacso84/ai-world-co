@@ -238,7 +238,7 @@
         "model": "minimax/minimax-m2.7"
       },
       "enabled": false,
-      "comment": "MODELL-TIERING 2026-07-24 (user: minden fizetős). KÖLTSÉG-OPTIMUM = MiniMax M2.5 — a legolcsóbb működő fizetős tier gépies munkára (parse/terv/formátum). MEGJEGYZÉS: az M2.5/M2.7 NEM engedi kikapcsolni a gondolkodást (HTTP 400), így reasoning marad ON. Fallback M2.7, vég-tartalék az ingyenes VÉSZHÁLÓ.",
+      "comment": "KOD TOROLVE 2026-08-30 (agents/ ala mar nem letezik). A bejegyzes SIRKO: a kivezetes tenyet es indokat orzi, semmit nem kapcsol ki — a mezot ugyanis SENKI nem olvassa. MODELL-TIERING 2026-07-24 (user: minden fizetős). KÖLTSÉG-OPTIMUM = MiniMax M2.5 — a legolcsóbb működő fizetős tier gépies munkára (parse/terv/formátum). MEGJEGYZÉS: az M2.5/M2.7 NEM engedi kikapcsolni a gondolkodást (HTTP 400), így reasoning marad ON. Fallback M2.7, vég-tartalék az ingyenes VÉSZHÁLÓ.",
       "routing": "paid-only",
       "retired_2026_07_30": "KIVEZETVE: szerepét a core/source-report-card.js vette át (2026-07-22) — ugyanazt a sources/source-stats.json fájlt írja, csak jobban (3 jegy + auto-kikapcsolás). A kód a történetben marad."
     },
@@ -284,7 +284,7 @@
     "api-expert": {
       "deterministic": true,
       "enabled": false,
-      "comment": "MODELL-TIERING 2026-07-24 (user: minden fizetős). KÖLTSÉG-OPTIMUM = MiniMax M2.5 — a legolcsóbb működő fizetős tier gépies munkára (parse/terv/formátum). MEGJEGYZÉS: az M2.5/M2.7 NEM engedi kikapcsolni a gondolkodást (HTTP 400), így reasoning marad ON. Fallback M2.7, vég-tartalék az ingyenes VÉSZHÁLÓ.",
+      "comment": "KOD TOROLVE 2026-08-30 (agents/ ala mar nem letezik). A bejegyzes SIRKO: a kivezetes tenyet es indokat orzi, semmit nem kapcsol ki — a mezot ugyanis SENKI nem olvassa. MODELL-TIERING 2026-07-24 (user: minden fizetős). KÖLTSÉG-OPTIMUM = MiniMax M2.5 — a legolcsóbb működő fizetős tier gépies munkára (parse/terv/formátum). MEGJEGYZÉS: az M2.5/M2.7 NEM engedi kikapcsolni a gondolkodást (HTTP 400), így reasoning marad ON. Fallback M2.7, vég-tartalék az ingyenes VÉSZHÁLÓ.",
       "primary_model": {
         "provider": "openrouter",
         "model": "minimax/minimax-m2.5"
