@@ -1,102 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178805622054084",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-30T02:17:00.540Z",
-      "updated": "2026-08-30T02:23:35.426Z"
-    },
-    {
-      "id": "t178805661542818",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-30T02:23:35.428Z",
-      "updated": "2026-08-30T02:24:54.018Z"
-    },
-    {
-      "id": "t178805669406081",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-30T02:24:54.060Z",
-      "updated": "2026-08-30T02:24:54.237Z"
-    },
-    {
-      "id": "t178805669423975",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-30T02:24:54.239Z",
-      "updated": "2026-08-30T02:26:20.458Z"
-    },
-    {
-      "id": "t178805678046187",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-30T02:26:20.461Z",
-      "updated": "2026-08-30T02:34:04.860Z"
-    },
-    {
-      "id": "t17880572448639",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-30T02:34:04.863Z",
-      "updated": "2026-08-30T02:35:42.115Z"
-    },
-    {
-      "id": "t178805734211673",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-30T02:35:42.116Z",
-      "updated": "2026-08-30T02:36:02.365Z"
-    },
-    {
-      "id": "t178805736236760",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-30T02:36:02.367Z",
-      "updated": "2026-08-30T02:36:36.142Z"
-    },
-    {
-      "id": "t178805739614338",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-08-30T02:36:36.143Z",
-      "updated": "2026-08-30T02:37:08.804Z"
-    },
-    {
-      "id": "t178805742880652",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-30T02:37:08.806Z",
-      "updated": "2026-08-30T02:37:22.324Z"
-    },
-    {
-      "id": "t178805744232562",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-08-30T02:37:22.325Z",
-      "updated": "2026-08-30T02:37:44.065Z"
-    },
-    {
-      "id": "t178809166383480",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-08-30T12:07:43.834Z",
-      "updated": "2026-08-30T12:07:44.157Z"
-    },
-    {
       "id": "t178809166415920",
       "title": "Run rss-scraper",
       "status": "done",
@@ -479,41 +383,105 @@
       "agent": "publisher",
       "created": "2026-08-31T02:32:38.573Z",
       "updated": "2026-08-31T02:32:56.666Z"
+    },
+    {
+      "id": "t178817806547082",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-08-31T12:07:45.470Z",
+      "updated": "2026-08-31T12:07:45.650Z"
+    },
+    {
+      "id": "t178817806565215",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-08-31T12:07:45.652Z",
+      "updated": "2026-08-31T12:08:13.152Z"
+    },
+    {
+      "id": "t178817809315319",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-08-31T12:08:13.153Z",
+      "updated": "2026-08-31T12:08:13.353Z"
+    },
+    {
+      "id": "t178817809335585",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-31T12:08:13.355Z",
+      "updated": "2026-08-31T12:08:13.526Z"
+    },
+    {
+      "id": "t178817809352850",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-31T12:08:13.528Z",
+      "updated": "2026-08-31T12:08:13.709Z"
+    },
+    {
+      "id": "t178817809371294",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-31T12:08:13.712Z",
+      "updated": "2026-08-31T12:10:42.923Z"
+    },
+    {
+      "id": "t178817824292585",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-31T12:10:42.925Z",
+      "updated": "2026-08-31T12:10:50.295Z"
+    },
+    {
+      "id": "t178817825029886",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-08-31T12:10:50.298Z",
+      "updated": "2026-08-31T12:10:50.544Z"
+    },
+    {
+      "id": "t178817825059437",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-31T12:10:50.594Z",
+      "updated": "2026-08-31T12:11:00.119Z"
+    },
+    {
+      "id": "t178817826012147",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-08-31T12:11:00.121Z",
+      "updated": "2026-08-31T12:11:16.570Z"
+    },
+    {
+      "id": "t17881782765716",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-31T12:11:16.571Z",
+      "updated": "2026-08-31T12:11:29.997Z"
+    },
+    {
+      "id": "t178817828999935",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-08-31T12:11:29.999Z",
+      "updated": "2026-08-31T12:11:54.508Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178724306692912",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). A solid, practical lineup that covers real everyday needs — from privacy to pet-sitting to sympathy notes. Just one note: we have four complaint/refund email how-tos (items 3-6), which might feel repe",
-      "agent": "publisher",
-      "at": "2026-08-20T16:24:26.929Z",
-      "loud": false
-    },
-    {
-      "id": "n178724307917234",
-      "level": "info",
-      "text": "Pipeline lefutott — ma nem volt publikálható új tartalom.",
-      "agent": "ceo",
-      "at": "2026-08-20T16:24:39.172Z",
-      "loud": false
-    },
-    {
-      "id": "n178727424893572",
-      "level": "info",
-      "text": "SEO: 7 cikk optimalizálva (átlag 8.3/10).",
-      "agent": "seo",
-      "at": "2026-08-21T01:04:08.935Z",
-      "loud": false
-    },
-    {
-      "id": "n178727427317414",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). A line-up egységes és készen áll a megjelenésre – a cikkek jól lefedik a mindennapi AI-használatot, a magánéleti kérdésektől a személyes üzenetekig. Egy apró észrevétel: a 3., 4., 5. és 6. cikk hasonl",
-      "agent": "publisher",
-      "at": "2026-08-21T01:04:33.174Z",
-      "loud": false
-    },
     {
       "id": "n178727428149330",
       "level": "success",
@@ -1281,63 +1249,41 @@
       "agent": "fact-check",
       "at": "2026-08-31T02:33:08.849Z",
       "loud": false
+    },
+    {
+      "id": "n178817824291128",
+      "level": "warn",
+      "text": "📨 guide → ceo: Kell még adat: \"Turn messy meeting notes into clear action items with ChatRTX\" — az Ellenőrző tényt/forrást kér, amit ne",
+      "agent": "guide",
+      "at": "2026-08-31T12:10:42.911Z",
+      "loud": false
+    },
+    {
+      "id": "n178817827655941",
+      "level": "info",
+      "text": "SEO: 1 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-08-31T12:11:16.559Z",
+      "loud": false
+    },
+    {
+      "id": "n178817830032629",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The line-up is solid and ready — practical, everyday AI use cases that feel genuinely useful, from privacy awareness to complaint letters to sympathy messages. One gentle note: since readers are every",
+      "agent": "publisher",
+      "at": "2026-08-31T12:11:40.326Z",
+      "loud": false
+    },
+    {
+      "id": "n178817831455267",
+      "level": "success",
+      "text": "0 hír + 1 útmutató publikálva (költség: $0.0046).",
+      "agent": "ceo",
+      "at": "2026-08-31T12:11:54.552Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178733002883333",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "3 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-08-21T16:33:48.833Z"
-    },
-    {
-      "id": "m178735910905214",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Computer now works in email - Perplexity\" — mi a baj: NO_LEDE: Hiányzik a RÖVIDEN-doboz (> **In short:** …) közvetlenül a főcím után — az AI-keresők és a Google kivonat-doboza ezt olvassák (style-guide 2a).; The article describes a specific \"Computer\" agent feature in Perplexity with specific UI elements ('Connect account' button, 'Disconnect' button, 'Spaces'/'Agents' label",
-      "ref": "2026-08-22T00-37-14-151Z_perplexity-news_Computer_now_works_in_email_-_Perplexity.json",
-      "at": "2026-08-22T00:38:29.052Z"
-    },
-    {
-      "id": "m178735912968569",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Flux 3 prompts: start from text, images, or a clip\" — mi a baj: Article presents 'Flux 3' as a real AI video tool that generates picture and sound in one pass, with specific capabilities (footsteps, rain, door closing, spoken dialogue) and 'audio settings' — Flux (by Black Forest Labs) is an image-generation model family, not a known video+audio generator, and 'Flux 3' is no",
-      "ref": "2026-08-22T00-37-14-152Z_picsart_Flux_3_prompts__start_from_text__images__or_a_clip.json",
-      "at": "2026-08-22T00:38:49.685Z"
-    },
-    {
-      "id": "m178735932494924",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Computer now works in email - Perplexity\" — javítva: NO_LEDE: Hiányzik a RÖVIDEN-doboz (> **In short:** …) közvetlenül a főcím után — az AI-keresők és a Google kivonat-doboza ezt olvassák (style-guide 2a).; The article describes a specific \"Computer\" agent feature in Perplexity with specific UI elements ('Connect account' button, 'Disconnect' button, 'Spaces'/'Agents' labeling, left-",
-      "ref": "2026-08-22T00-37-14-151Z_perplexity-news_Computer_now_works_in_email_-_Perplexity.json",
-      "at": "2026-08-22T00:42:04.949Z"
-    },
-    {
-      "id": "m178735933688473",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Flux 3 prompts: start from text, images, or a clip\" — javítva: Article presents 'Flux 3' as a real AI video tool that generates picture and sound in one pass, with specific capabilities (footsteps, rain, door closing, spoken dialogue) and 'audio settings' — Flux (by Black Forest Labs) is an image-generation model family, not a known video+audio generator, and 'Flux 3' is not in the v",
-      "ref": "2026-08-22T00-37-14-152Z_picsart_Flux_3_prompts__start_from_text__images__or_a_clip.json",
-      "at": "2026-08-22T00:42:16.884Z"
-    },
-    {
-      "id": "m178735935096013",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Computer now works in email - Perplexity\" (?/10)",
-      "ref": "2026-08-22T00-37-14-151Z_perplexity-news_Computer_now_works_in_email_-_Perplexity.json",
-      "at": "2026-08-22T00:42:30.960Z"
-    },
     {
       "id": "m178735935699888",
       "from": "ellenorzo",
@@ -2648,6 +2594,62 @@
       "text": "4 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-08-31T02:43:35.835Z"
+    },
+    {
+      "id": "m178817824291057",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Turn messy meeting notes into clear action items with ChatRTX\" — javítva: UI_CLAIMS_UNSOURCED: 4 konkrét képernyő-feliratot állít tényként forrás nélkül (\"windows key + x\", \"more info → run anyway\", \"chatrtx\", \"inside the chat reply first\"). Vagy nézd meg a hivatalos oldalon, vagy írd hedge-elve (\"if you don't see…\").; Beginner clarity too low (7/10): steps are vague or could mislead",
+      "ref": "GUIDE_turn-messy-meeting-notes-into-clear-action-items-with-chatrt.json",
+      "at": "2026-08-31T12:10:42.910Z"
+    },
+    {
+      "id": "m178817824291149",
+      "from": "guide",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Kell még adat: \"Turn messy meeting notes into clear action items with ChatRTX\" — az Ellenőrző tényt/forrást kér, amit nem találhatok ki: UI_CLAIMS_UNSOURCED: 4 konkrét képernyő-feliratot állít tényként forrás nélkül (\"windows key + x\", \"more info → run anyway\", \"chatrtx\", \"inside the chat reply first\"). Vagy nézd meg a hivatalos oldalon, vagy írd hedge-elve (\"if you don't see…\").",
+      "ref": "GUIDE_turn-messy-meeting-notes-into-clear-action-items-with-chatrt.json",
+      "open": false,
+      "at": "2026-08-31T12:10:42.911Z",
+      "resolved_at": "2026-08-31T12:10:50.201Z"
+    },
+    {
+      "id": "m178817825019983",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Turn messy meeting notes into clear action items with ChatRTX\" (?/10)",
+      "ref": "GUIDE_turn-messy-meeting-notes-into-clear-action-items-with-chatrt.json",
+      "at": "2026-08-31T12:10:50.199Z"
+    },
+    {
+      "id": "m178817828998681",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-08-31T12:11:29.986Z"
+    },
+    {
+      "id": "m178817835342382",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Catch Up Fast: Summarise Long Chats in WhatsApp an\" — \"circular blue-purple icon\" - specific UI element that may vary; \"glowing ring icon\" - specific visual description that may not be accurate; \"swipe down from the top of the screen to see both conversations as small floating bubbles\" - specific gesture description that may not work on",
+      "ref": "ARTICLE_GUIDE_catch-up-fast-summarise-long-chats-in-whatsapp-and-messenger.json",
+      "at": "2026-08-31T12:12:33.423Z"
+    },
+    {
+      "id": "m178817839947562",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Categorize customer feedback from online forms wit\" — The specific model names \"Command\" or \"Command R+\" as the exact current models; The exact navigation menu structure and button labels like \"Playground\", \"Model\", \"Run\"; The claim that a free tier is definitely available",
+      "ref": "ARTICLE_GUIDE_categorize-customer-feedback-from-online-forms-with-cohere.json",
+      "at": "2026-08-31T12:13:19.475Z"
     }
   ]
 }
