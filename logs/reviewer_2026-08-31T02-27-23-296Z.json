@@ -1,0 +1,41 @@
+{
+  "started_at": "2026-08-31T02:25:48.744Z",
+  "total": 4,
+  "passed": 3,
+  "failed": 1,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.012667228,
+  "by_article": [
+    {
+      "writer": "WRITER_GUIDE_how-to-turn-your-messy-study-notes-into-practice-quiz-questi.json",
+      "article": "ARTICLE_GUIDE_how-to-turn-your-messy-study-notes-into-practice-quiz-questi.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.00210708
+    },
+    {
+      "writer": "WRITER_GUIDE_plan-a-full-week-of-family-dinners-and-a-shopping-list-with-.json",
+      "article": "ARTICLE_GUIDE_plan-a-full-week-of-family-dinners-and-a-shopping-list-with-.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.00190026
+    },
+    {
+      "writer": "WRITER_GUIDE_sort-and-clean-up-a-messy-phone-photo-library-with-gemini.json",
+      "article": "ARTICLE_GUIDE_sort-and-clean-up-a-messy-phone-photo-library-with-gemini.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0021147
+    },
+    {
+      "writer": "WRITER_GUIDE_turn-messy-meeting-notes-into-clear-action-items-with-chatrt.json",
+      "rejected": "REJECTED_GUIDE_turn-messy-meeting-notes-into-clear-action-items-with-chatrt.json",
+      "decision": "FAIL",
+      "score": 8,
+      "cost_usd": 0.0022845
+    }
+  ],
+  "finished_at": "2026-08-31T02:27:23.296Z",
+  "duration_seconds": 94.552
+}

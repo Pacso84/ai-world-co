@@ -1,0 +1,62 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "plan-a-full-week-of-family-dinners-and-a-shopping-list-with-",
+    "company": "NVIDIA",
+    "tool": "ChatRTX",
+    "icon": "🛒",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-08-31T02:15:01.543Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.01038498,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-08-31T02:26:35.684Z",
+    "slug": "plan-a-full-week-of-family-dinners-and-a-shopping-list-with-chatrtx",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1657
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Clear, detailed step-by-step guide with specific UI guidance, fallbacks for ambiguous steps (e.g., multiple paths to find the folder-loading button), concrete examples, and a practical Try it now section. No cliches, no prohibited content, US English throughout, and appropriate beginner-friendly explanations of terms like GPU and dataset.",
+      "_aiCost": 0.00190026,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "image_v": 2,
+    "image_at": "2026-08-31T02:31:03.245Z",
+    "seo": {
+      "meta_description": "Plan a full week of family dinners with ChatRTX using your own recipes to generate a personalized 7-day meal plan and shopping list.",
+      "keywords": [
+        "ChatRTX meal planning",
+        "AI meal planning with own recipes",
+        "NVIDIA RTX dinner planner",
+        "family meal planning AI",
+        "personalized weekly meal plan app",
+        "ChatRTX recipes local files",
+        "AI grocery list generator",
+        "local AI meal planner"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add 'how to' in the title to match search intent: 'How to Plan a Week of Family Dinners with ChatRTX'",
+        "Include the exact NVIDIA RTX GPU requirement in the subtitle for better keyword alignment",
+        "Add a brief section on 'who should use this' to improve relevance scoring for family-focused searches"
+      ],
+      "optimised_at": "2026-08-31T02:31:55.095Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Plan a full week of family dinners and a shopping list with ChatRTX\"\nsubtitle: \"Use your own recipe files and a short family brief to get a personalized 7-day dinner plan with one grocery list — all running on your NVIDIA RTX GPU.\"\ncategory: \"guide\"\naudience: \"personal\"\ncompany: \"NVIDIA\"\ntool: \"ChatRTX\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"getting-started\", \"chatrtx\", \"family\", \"meal-planning\"]\n---\n\n# Plan a full week of family dinners and a shopping list with ChatRTX\n\n> **In short:** ChatRTX is a free NVIDIA app that runs an AI assistant entirely on your PC. Point it at your recipe folder plus a short note about your family's needs, and it builds a 7-day dinner plan and a shopping list from your local files. You need an NVIDIA RTX graphics card.\n\nBy the end of this guide, you'll have a printed-or-saved dinner calendar and one tidy shopping list — built from the recipes you already trust, not random suggestions. This works best for families who keep a folder of recipes (digital cookbooks, saved pages, plain text notes) and want a personal assistant that respects their actual cooking. The key thing to know upfront: ChatRTX reads **your local files** (think: files saved on your own computer). It does **not** search the internet for new recipes, so the quality of the plan depends on what's in the folder you give it.\n\n## Before you start\n- **A Windows PC with an NVIDIA RTX graphics card** (the RTX 30-series works; the RTX 40-series is faster). You can check by opening **Device Manager** → **Display adapters** — look for a name starting with \"NVIDIA GeForce RTX\".\n- **The free ChatRTX app**, downloaded and installed from NVIDIA's official site. The first install also pulls in a local AI model (a self-contained language model that runs on your PC, like ChatGPT's engine but offline), so the download is large — plan for 15–20 minutes on a decent internet connection.\n- **A folder of recipes or notes** on your computer. Plain `.txt` files work fine; PDFs and `.docx` are usually supported too. Even 5–10 saved recipes is enough to start.\n- **Roughly 30 minutes total** — most of it is the one-time setup; the actual plan-and-list step takes about five minutes once your folder is ready.\n\n## Step 1 — Make a \"family brief\" file\nOpen **File Explorer** and create a new folder somewhere easy to find, like `Documents\\ChatRTX-Family`. Inside it, create a plain text file named `family-brief.txt` (right-click → **New** → **Text Document**). Open it in **Notepad** and type a few short lines about your household — who's eating, any allergies, which nights are tight on time, ingredients you want to use up. Save the file and close Notepad. **If Notepad is not your thing**, any app that saves a `.txt` or `.docx` works (Word, Google Docs exported as `.docx`, even Apple's Pages can export plain text).\n\n💬 Example:\n`Family of 4: two adults, two kids (ages 7 and 10). One adult is lactose intolerant. Busy nights: Tuesday and Thursday (under 30 minutes please). We love chicken, pasta, and stir-fries. Please avoid: mushrooms, very spicy food.`\n\nYou'll know it worked when the file `family-brief.txt` sits in your new folder, opens in Notepad, and shows your typed lines.\n\n## Step 2 — Drop your recipes into the same folder\nCopy or save any recipe files you have into that same `ChatRTX-Family` folder. PDFs of cookbooks, text files you typed yourself, exported Google Docs — anything ChatRTX can read. **If you have no digital recipes yet**, write three or four in plain Notepad now (one recipe per file works great). Even a few real recipes give the assistant something to mix and match; without any, it has nothing to pull from. **If your recipes are scattered**, just copy the same recipes in twice — duplicate recipes are fine; ChatRTX will simply notice the overlap.\n\n💬 Example recipe file (`monday-lemon-chicken.txt`):\n`Lemon chicken tray bake. Serves 4. Chicken thighs 800g, lemons 2, potatoes 600g, olive oil, salt, pepper. Bake 45 min at 200C. Squeeze lemon over at the end.`\n\nYou'll know it worked when your folder shows several recognizable recipe files alongside `family-brief.txt`.\n\n## Step 3 — Launch ChatRTX and load your folder\nOpen the **ChatRTX** app from your Start menu. The first launch takes a minute or two while the AI model loads into your GPU's memory (the dedicated video memory on your graphics card — bigger is faster). Once the chat window appears, look for a sidebar or a button labeled something like **\"Add Dataset\"**, **\"Add Files\"**, or a small folder/document icon — usually on the left side or near the top. Click it, browse to `Documents\\ChatRTX-Family`, and select the whole folder. **If you don't see a folder option**, look for a \"+\" or a paperclip icon, or check the **⋯ (three dots)** menu in the corner of the chat window. ChatRTX will scan your files; a small progress bar or spinner appears while it reads them. Once it finishes, the folder name usually shows up in a list of \"datasets\" in the sidebar.\n\nYou'll know it worked when the chat area shows a status like \"Dataset loaded\" or your folder name appears in the sidebar, and the model is marked **Ready**.\n\n## Step 4 — Ask for the 7-day plan\nClick into the chat box at the bottom of the window and type a clear, single request that names your files and what you want. Press **Enter** (or click the send/paper-plane icon). The assistant reads your `family-brief.txt` and your recipes, then drafts a Monday-to-Sunday dinner plan that respects your busy nights and dietary notes. The reply usually takes 10–30 seconds depending on your GPU. **If the plan ignores the lactose-free rule**, your prompt was probably too vague — make the constraint explicit (see the example). **If the assistant seems to invent recipes not in your folder**, that's a sign the brief was unclear; tell it \"only use recipes from the loaded folder.\"\n\n💬 Example:\n`Using the family-brief.txt and the recipes in this folder, plan dinners for Monday through Sunday. Respect the busy-night rules and the lactose-free need. Only use recipes that already exist in the folder — don't invent new ones.`\n\nYou'll know it worked when the reply contains seven named days, each with a recipe title that matches a file in your folder.\n\n## Step 5 — Ask for the shopping list\nIn the same chat, send a follow-up message asking for one consolidated shopping list. Be explicit about how you want it grouped — ChatRTX doesn't know your local store's aisle layout, so tell it the categories you care about. The assistant reads the seven recipes it just suggested and totals the ingredients, so the list stays accurate to the plan. **If you changed a dinner in Step 4**, re-send the list request so it re-totals. **If you want quantities in cups or grams**, say so — the assistant can switch units on request.\n\n💬 Example:\n`Great. Now make one shopping list with every ingredient from those 7 dinners, combined and de-duplicated. Group items by store section: produce, meat/seafood, dairy/dairy-free, pantry, frozen. List quantities in grams and milliliters where it makes sense.`\n\nYou'll know it worked when the reply is a single tidy list grouped under your chosen section headers, with no duplicate ingredients (one onion total, not seven).\n\n## Step 6 — Save, print, or copy the plan\nHighlight the assistant's reply, copy it with **Ctrl+C**, and paste it into **Notepad**, **Word**, **Google Docs**, or your phone's notes app for safekeeping. You can also just take a phone photo of the screen — quick and good enough for a shopping trip. **If you want to reuse it next week**, save the file as `week-1-meal-plan.txt` in your `ChatRTX-Family` folder; ChatRTX can read it next time and avoid repeating the same dinners. **If something doesn't sound tasty to the family**, reply with \"swap Wednesday's dinner for something with salmon\" and the assistant will suggest a replacement from your folder — or admit no salmon recipe exists.\n\nYou'll know it worked when you have a saved document with seven days of meals plus one shopping list, ready to take to the store.\n\n## Common mistakes\n- **Expecting ChatRTX to invent recipes from the internet.** It can't. If your folder only has three recipes, your plan will repeat them. Fix: add more recipe files (even quick photos converted to PDFs work in many setups), or accept a repeating week.\n- **Asking vague questions.** \"Plan dinners\" gets a wishy-washy answer. Fix: name the file (`family-brief.txt`), name the rule (\"lactose-free\"), and name the format (\"one shopping list grouped by section\"). The clearer the prompt, the better the output.\n- **Forgetting which folder you loaded.** ChatRTX only knows what you pointed it at last. Fix: keep all your cooking-related files in one dedicated folder and re-load that single folder each session — don't scatter recipes across your Desktop, Downloads, and Documents.\n\n## What this means for you\n- **In everyday life:** You stop staring at the fridge at 5pm wondering what's for dinner. The plan and the list are ready before the week starts, built from meals your family already likes.\n- **For your work or small business:** The same trick works for catering menus, weekly meal-prep services, or a small café's specials board — load your recipes and constraints, get a rotated plan plus a consolidated prep list.\n- **If you're just getting started with AI on your PC:** This is a gentle way to meet a local AI assistant. Nothing leaves your computer, so it's a safe place to learn what a language model can (and can't) do for you.\n\n## Try it now\nOpen ChatRTX, load your `ChatRTX-Family` folder, and send this single message: `Read family-brief.txt and the recipes in this folder. Suggest just ONE dinner for tonight that fits the brief, plus the ingredients I need to buy.` Two minutes, one decision, dinner sorted.",
+  "original_title": "Plan a full week of family dinners and a shopping list with ChatRTX"
+}

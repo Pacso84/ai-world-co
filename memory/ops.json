@@ -1,142 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178801008801310",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-08-29T13:28:08.013Z",
-      "updated": "2026-08-29T13:28:24.661Z"
-    },
-    {
-      "id": "t178802996023863",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-08-29T18:59:20.238Z",
-      "updated": "2026-08-29T18:59:20.351Z"
-    },
-    {
-      "id": "t178802996035237",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-08-29T18:59:20.352Z",
-      "updated": "2026-08-29T18:59:41.349Z"
-    },
-    {
-      "id": "t178802998135014",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-08-29T18:59:41.350Z",
-      "updated": "2026-08-29T18:59:41.479Z"
-    },
-    {
-      "id": "t178802998148163",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-29T18:59:41.481Z",
-      "updated": "2026-08-29T18:59:41.612Z"
-    },
-    {
-      "id": "t178802998161313",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-29T18:59:41.613Z",
-      "updated": "2026-08-29T18:59:41.738Z"
-    },
-    {
-      "id": "t178802998176339",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-08-29T18:59:41.763Z",
-      "updated": "2026-08-29T18:59:42.029Z"
-    },
-    {
-      "id": "t178802998206026",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-29T18:59:42.060Z",
-      "updated": "2026-08-29T18:59:42.247Z"
-    },
-    {
-      "id": "t178802998224869",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-08-29T18:59:42.248Z",
-      "updated": "2026-08-29T18:59:42.389Z"
-    },
-    {
-      "id": "t178802998239044",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-29T18:59:42.390Z",
-      "updated": "2026-08-29T18:59:56.723Z"
-    },
-    {
-      "id": "t178802999672487",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-08-29T18:59:56.724Z",
-      "updated": "2026-08-29T19:00:09.713Z"
-    },
-    {
-      "id": "t178805620168191",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-08-30T02:16:41.681Z",
-      "updated": "2026-08-30T02:16:41.865Z"
-    },
-    {
-      "id": "t17880562018665",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-08-30T02:16:41.866Z",
-      "updated": "2026-08-30T02:16:59.721Z"
-    },
-    {
-      "id": "t178805621972334",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-08-30T02:16:59.723Z",
-      "updated": "2026-08-30T02:16:59.916Z"
-    },
-    {
-      "id": "t178805621991839",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-30T02:16:59.918Z",
-      "updated": "2026-08-30T02:17:00.089Z"
-    },
-    {
-      "id": "t178805622009131",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-30T02:17:00.091Z",
-      "updated": "2026-08-30T02:17:00.263Z"
-    },
-    {
-      "id": "t178805622026641",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-08-30T02:17:00.266Z",
-      "updated": "2026-08-30T02:17:00.492Z"
-    },
-    {
       "id": "t178805622054084",
       "title": "Run guide",
       "status": "done",
@@ -479,41 +343,145 @@
       "agent": "publisher",
       "created": "2026-08-30T18:56:52.668Z",
       "updated": "2026-08-30T18:57:13.949Z"
+    },
+    {
+      "id": "t178814230800670",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-08-31T02:11:48.006Z",
+      "updated": "2026-08-31T02:11:48.184Z"
+    },
+    {
+      "id": "t178814230818684",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-08-31T02:11:48.186Z",
+      "updated": "2026-08-31T02:12:06.886Z"
+    },
+    {
+      "id": "t178814232688860",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-08-31T02:12:06.888Z",
+      "updated": "2026-08-31T02:12:07.084Z"
+    },
+    {
+      "id": "t178814232708752",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-31T02:12:07.087Z",
+      "updated": "2026-08-31T02:12:07.260Z"
+    },
+    {
+      "id": "t178814232726210",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-31T02:12:07.262Z",
+      "updated": "2026-08-31T02:12:07.443Z"
+    },
+    {
+      "id": "t178814232744685",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-08-31T02:12:07.446Z",
+      "updated": "2026-08-31T02:12:07.673Z"
+    },
+    {
+      "id": "t178814232772137",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-31T02:12:07.721Z",
+      "updated": "2026-08-31T02:25:48.578Z"
+    },
+    {
+      "id": "t178814314858088",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-31T02:25:48.580Z",
+      "updated": "2026-08-31T02:27:23.313Z"
+    },
+    {
+      "id": "t178814324335616",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-31T02:27:23.356Z",
+      "updated": "2026-08-31T02:27:23.534Z"
+    },
+    {
+      "id": "t178814324353614",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-31T02:27:23.536Z",
+      "updated": "2026-08-31T02:28:08.442Z"
+    },
+    {
+      "id": "t178814328844583",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-31T02:28:08.445Z",
+      "updated": "2026-08-31T02:29:09.229Z"
+    },
+    {
+      "id": "t178814334923224",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-08-31T02:29:09.232Z",
+      "updated": "2026-08-31T02:30:13.368Z"
+    },
+    {
+      "id": "t17881434133702",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-31T02:30:13.370Z",
+      "updated": "2026-08-31T02:30:30.135Z"
+    },
+    {
+      "id": "t178814343013762",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-31T02:30:30.137Z",
+      "updated": "2026-08-31T02:31:10.414Z"
+    },
+    {
+      "id": "t178814347041686",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-08-31T02:31:10.416Z",
+      "updated": "2026-08-31T02:32:06.810Z"
+    },
+    {
+      "id": "t178814352681291",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-31T02:32:06.812Z",
+      "updated": "2026-08-31T02:32:38.572Z"
+    },
+    {
+      "id": "t178814355857324",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-08-31T02:32:38.573Z",
+      "updated": "2026-08-31T02:32:56.666Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178718689735538",
-      "level": "success",
-      "text": "2 hír + 4 útmutató publikálva (költség: $0.0770).",
-      "agent": "ceo",
-      "at": "2026-08-20T00:48:17.355Z",
-      "loud": false
-    },
-    {
-      "id": "n17872143194581",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). A lineup kész és cohérens – a mix szépen lefedi a praktikus AI-utasításokat (panaszlevelek, e-mailek) és a személyes helyzeteket (gyászköszöntő, háziállat-őrzés), plusz a fontos adatvédelmi témát. Egy",
-      "agent": "publisher",
-      "at": "2026-08-20T08:25:19.458Z",
-      "loud": false
-    },
-    {
-      "id": "n178721433124940",
-      "level": "info",
-      "text": "Pipeline lefutott — ma nem volt publikálható új tartalom.",
-      "agent": "ceo",
-      "at": "2026-08-20T08:25:31.249Z",
-      "loud": false
-    },
-    {
-      "id": "n178721443963077",
-      "level": "warn",
-      "text": "📨 fact-check → human: Ez az útmutató talán tárgytalanná vált: \"Using Amazon's new conversational Alexa+ at home\" — Amazon's Alexa+ (the genera",
-      "agent": "fact-check",
-      "at": "2026-08-20T08:27:19.630Z",
-      "loud": false
-    },
     {
       "id": "n178724306692912",
       "level": "success",
@@ -1281,45 +1249,41 @@
       "agent": "ceo",
       "at": "2026-08-30T18:57:13.989Z",
       "loud": false
+    },
+    {
+      "id": "n178814352679926",
+      "level": "info",
+      "text": "SEO: 4 cikk optimalizálva (átlag 8.3/10).",
+      "agent": "seo",
+      "at": "2026-08-31T02:32:06.799Z",
+      "loud": false
+    },
+    {
+      "id": "n178814356308817",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The line-up looks solid and ready to go — a practical mix of everyday use cases (emails, complaints, pet-sitting, sympathy notes) with a helpful privacy guide up front to address a real reader concern",
+      "agent": "publisher",
+      "at": "2026-08-31T02:32:43.088Z",
+      "loud": false
+    },
+    {
+      "id": "n178814357671055",
+      "level": "success",
+      "text": "0 hír + 4 útmutató publikálva (költség: $0.0803).",
+      "agent": "ceo",
+      "at": "2026-08-31T02:32:56.710Z",
+      "loud": false
+    },
+    {
+      "id": "n178814358884965",
+      "level": "warn",
+      "text": "📨 fact-check → human: Ez az útmutató talán tárgytalanná vált: \"Build a smart recipe finder that suggests meals fr\" — The entire guide describe",
+      "agent": "fact-check",
+      "at": "2026-08-31T02:33:08.849Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m17873010663225",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Use Claude to read and explain a long contract or legal document\" (?/10)",
-      "ref": "GUIDE_use-claude-to-read-and-explain-a-long-contract-or-legal-docu.json",
-      "at": "2026-08-21T08:31:06.322Z"
-    },
-    {
-      "id": "m178730118571234",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-08-21T08:33:05.712Z"
-    },
-    {
-      "id": "m178730140861911",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Analyse a Spreadsheet by Chatting with AI on Your \" — \"A free account with an AI assistant that supports file uploads, such as ChatGPT, Gemini, or Copilot\" — too strong, free tiers now have restrictions; \"free AI assistant\" subtitle — misleading, free tiers have limited file upload; \"free\" referred to as default in Before You Start",
-      "ref": "ARTICLE_GUIDE_analyse-a-spreadsheet-by-chatting-with-ai-on-your-phone.json",
-      "at": "2026-08-21T08:36:48.619Z"
-    },
-    {
-      "id": "m178730189722451",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "4 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-08-21T08:44:57.224Z"
-    },
     {
       "id": "m178732958750540",
       "from": "designer",
@@ -2647,6 +2611,43 @@
       "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Build a simple AI study buddy with Apple Intellige\" — \"Draft with AI\" option (unverified exact name)",
       "ref": "ARTICLE_GUIDE_build-a-simple-ai-study-buddy-with-apple-intelligence-on-you.json",
       "at": "2026-08-30T18:57:48.511Z"
+    },
+    {
+      "id": "m178814324329529",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Turn messy meeting notes into clear action items with ChatRTX\" — mi a baj: UI_CLAIMS_UNSOURCED: 4 konkrét képernyő-feliratot állít tényként forrás nélkül (\"windows key + x\", \"more info → run anyway\", \"chatrtx\", \"inside the chat reply first\"). Vagy nézd meg a hivatalos oldalon, vagy írd hedge-elve (\"if you don't see…\").; Beginner clarity too low (7/10): steps are vague or cou",
+      "ref": "GUIDE_turn-messy-meeting-notes-into-clear-action-items-with-chatrt.json",
+      "at": "2026-08-31T02:27:23.295Z"
+    },
+    {
+      "id": "m178814355856051",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-08-31T02:32:38.560Z"
+    },
+    {
+      "id": "m178814358884943",
+      "from": "fact-check",
+      "to": "human",
+      "kind": "need",
+      "text": "Ez az útmutató talán tárgytalanná vált: \"Build a smart recipe finder that suggests meals fr\" — The entire guide describes a feature that does not exist. Apple Intelligence is not integrated into the Home app for recipe suggestions, there is no 'Ask Apple Intelligence' button in the Home app, and the Home app does not track food ingredients or generate recipes from them.. NEM vettem le (az törölné ",
+      "ref": "ARTICLE_GUIDE_build-a-smart-recipe-finder-that-suggests-meals-from-ingredi.json",
+      "open": true,
+      "at": "2026-08-31T02:33:08.849Z"
+    },
+    {
+      "id": "m178814362927295",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Build simple community event flyers with Meta AI’s\" — Text generation claim: Meta AI can render specific readable text ('Community Movie Night', dates, locations) onto flyers — this is historically unreliable across AI image generators and may overpromise capability; Phone app reference: 'open the Meta AI app on your phone' — unclear if",
+      "ref": "ARTICLE_GUIDE_build-simple-community-event-flyers-with-meta-ai-s-design-pr.json",
+      "at": "2026-08-31T02:33:49.272Z"
     }
   ]
 }

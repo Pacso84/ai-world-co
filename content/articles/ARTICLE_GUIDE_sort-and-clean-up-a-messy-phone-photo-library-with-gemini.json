@@ -1,0 +1,61 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "sort-and-clean-up-a-messy-phone-photo-library-with-gemini",
+    "company": "Google",
+    "tool": "Gemini",
+    "icon": "📸",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-08-31T02:24:48.657Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.01566108,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-08-31T02:27:04.254Z",
+    "slug": "how-to-sort-and-clean-up-a-messy-phone-photo-library-with-gemini",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1639
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Excellent guide for beginners. Clear structure with 6 actionable steps, friendly and encouraging tone, helpful fallbacks when UI varies (e.g., paperclip vs plus icon, hamburger menu option), and a warm What this means for you section. Technical terms like context window are explained in plain language. No clichés, no prohibited content, and the voice respects readers without talking down to them.",
+      "_aiCost": 0.0021147,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "image_v": 2,
+    "image_at": "2026-08-31T02:31:10.394Z",
+    "seo": {
+      "meta_description": "Learn how to use Gemini to clean up your phone photo library — find duplicates, group similar shots, and extract text from screenshots.",
+      "keywords": [
+        "how to organize phone photos with AI",
+        "clean up photo library duplicates",
+        "find similar photos on phone",
+        "extract text from screenshots phone",
+        "Gemini photo organization tips",
+        "how to declutter photo gallery",
+        "phone photo management AI"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add a brief intro explaining what Gemini is for readers unfamiliar with it — 'Gemini is Google's AI assistant'",
+        "Consider adding '2024' or '2025' to the title if this covers the latest version, improving freshness signals",
+        "Include 1-2 more long-tail keywords like 'organize screenshots on Android' naturally in the article body"
+      ],
+      "optimised_at": "2026-08-31T02:32:06.793Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"How to Sort and Clean Up a Messy Phone Photo Library with Gemini\"\nsubtitle: \"Find duplicates, group similar shots, and pull readable text out of old screenshots — safely, one batch at a time\"\ncategory: \"guide\"\naudience: \"personal\"\ncompany: \"Google\"\ntool: \"Gemini\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"getting-started\", \"gemini\", \"google-photos\"]\n---\n\n# How to Sort and Clean Up a Messy Phone Photo Library with Gemini\n\n> **In short:** Gemini can look through photos you upload, flag near-duplicates, group similar shots, and pull readable text out of old screenshots — all without touching your library. You stay in control: Gemini suggests, you decide what to delete.\n\nBy the end of this guide, you'll know how to use Gemini as a careful second pair of eyes for your photo mess — the kind where you have seven nearly-identical sunset shots and a folder full of screenshots you can never search. This is for anyone whose phone gallery has gotten out of hand and wants a low-risk way to start sorting through it.\n\n## Before you start\n- A free Google account (any Gmail address works). The free Gemini tier is enough for small batches; a paid Google AI plan lets you upload more photos at once and keeps longer conversations in memory — check Google's official site for current plan options.\n- The Gemini app on your phone, **or** a browser pointed at the Gemini website.\n- About 20–30 minutes for your first batch.\n- A folder of photos you actually want to clean up. Pick one small group to start with — don't try the whole library on day one.\n\n## Step 1 — Open Gemini and start a fresh chat\nTap the Gemini app icon, or visit the Gemini website in your browser. If you're not signed in, sign in with your Google account. Look for a **\"New chat\"** button — usually a plus sign or a small pencil icon at the top of the chat list — and tap it. A blank conversation opens. Starting fresh keeps the AI focused on the photos you're about to share, not on a leftover question from yesterday's weather check.\n\nIf you don't see \"New chat,\" try the **three-line menu** (sometimes called a hamburger icon) in the top corner — the option to start over is usually inside it. On some devices the same button looks like a small **square with a pencil** inside instead.\n\n💬 Example: tap **New chat**, then wait for the empty text box to appear.\n\nYou'll know it worked when you see a clean text box with no messages above it and a paperclip or upload icon somewhere nearby.\n\n## Step 2 — Gather a small batch of photos to upload\nDon't try your whole library on day one. Pick **10 to 20 photos** that feel like they might overlap — the seven sunset shots from your last trip, the burst-mode photos from your kid's birthday, the screenshots you saved last month. In your phone's gallery, tap **Select** (or hold one photo until checkboxes appear), choose the photos, then tap **Share**, and pick **Gemini** from the list of apps. On a computer, drag the photos straight into the chat box.\n\nIf the share menu doesn't show Gemini, copy the photos to your clipboard and paste them into the chat. On older Android phones the upload icon looks like a **paperclip 📎**; on iPhones it's often a small **plus sign +** at the bottom of the text box.\n\n💬 Example: open your gallery, select the 8 beach photos from last weekend, tap **Share → Gemini**.\n\nYou'll know it worked when the photos appear as small thumbnails in your message and Gemini replies with something like \"Got it — I can see 8 photos.\"\n\n## Step 3 — Ask Gemini to flag duplicates and similar shots\nNow comes the useful part. In the same chat, type a short, clear question about the photos you just shared. The clearer your instruction, the better the answer. You can ask Gemini to find photos that look almost the same, group them by scene, or just describe what makes each one different. It can read the image content directly — the colors, the framing, who's in the shot — and reason about which ones are worth keeping.\n\nIf Gemini's response is too generic, follow up with a more specific question. After a vague \"they all look similar,\" try \"Which one is sharpest?\" or \"Which one best shows both people smiling?\" If the free tier says it's reached a limit, work in even smaller batches, or look into a paid plan for larger uploads.\n\n💬 Example: \"Here are 8 photos from the same sunset. Can you group any that look like near-duplicates, and tell me which one of each group is the sharpest or best composed?\"\n\nYou'll know it worked when Gemini gives you a numbered list or short table, like \"Group A: photos 1, 3, and 5 are nearly identical — keep #3.\"\n\n## Step 4 — Pull searchable text out of an old screenshot\nScreenshots are useless until you can search them. Take a single screenshot — a recipe, an address, a confirmation number, a Wi-Fi password you saved months ago — and share it with Gemini the same way you did in Step 2. Then ask Gemini to read the text out of it and rewrite it in a clean, searchable form. This works for receipts, WhatsApp messages, store hours, anything that ended up trapped inside an image.\n\nThe text won't be added back to your photo library automatically — you'll copy it out yourself in Step 6. And Gemini can misread small or blurry text, so for anything important like medical info or legal documents, always double-check the original screenshot.\n\n💬 Example: \"Please transcribe the text in this screenshot. Format it as: store name, date, total amount, and any reference number.\"\n\nYou'll know it worked when Gemini replies with readable text you can copy and paste, and that text matches what you actually see in the screenshot.\n\n## Step 5 — Ask for a simple cleanup plan\nOnce Gemini has analyzed a batch, ask it to summarize what it found into a short, action-friendly list. You're looking for a \"do this, then this, then this\" answer — not a long essay. The point is to turn Gemini's observations into a checklist you can actually use in your phone's gallery. This is also where Gemini's \"context window\" (the amount of text and images it can keep track of in one conversation) matters: if your batch is too big, it may start forgetting earlier photos.\n\nIf the plan is too long, ask for the top three actions only. If it's missing something obvious, ask a follow-up like \"Did you see any photos that look like receipts or notes I should transcribe?\"\n\n💬 Example: \"Based on what you saw, give me a short checklist of which photos I can safely delete and which I should keep. Keep it under 5 bullet points.\"\n\nYou'll know it worked when you have a short, scannable list that feels doable in under five minutes.\n\n## Step 6 — Take the plan into your Photos app\nNow switch to your phone's gallery or Google Photos. Open the same batch of photos. Use Gemini's checklist as your guide: delete the ones it flagged as duplicates, keep the sharpest of each group, and save the transcribed text somewhere searchable — a notes app, a contact entry, or a dedicated \"Screenshots I've read\" album. This is the step where the cleanup actually happens, and it's the step only you can do.\n\nFor an extra safety net, turn on your gallery's recently-deleted folder so any mistake can be undone within 30 days. On Google Photos it's usually at **Library → Trash**; on iPhone it's at **Albums → Recently Deleted**.\n\n💬 Example: open the 8 beach photos, delete 5 based on Gemini's notes, star the best one, and paste the transcribed receipt text into your notes app.\n\nYou'll know it worked when your batch is smaller, the photos you kept are the ones you actually want, and the old screenshots have become searchable text.\n\n## Common mistakes\n- **Uploading your whole library at once.** Gemini gets less accurate with very large batches, the conversation becomes hard to follow, and you may hit free-tier limits fast. Work in groups of 10–20.\n- **Letting Gemini \"decide\" what to delete.** Gemini can suggest, but it can't actually delete anything from your phone — and it shouldn't. Always make the final call yourself, in your own gallery, with your finger on the button.\n- **Trusting transcribed text blindly.** Especially for numbers, dates, and addresses — Gemini reads most of it right, but a single wrong digit on a confirmation code can cost you a refund. Always glance back at the original screenshot.\n\n## What this means for you\n- **In everyday life:** That folder of 200 mystery screenshots from the last three years can finally become a few searchable notes — addresses you can find, receipts you can expense, articles you can actually read.\n- **For your business or work:** If you snap whiteboards, business cards, or reference material on the go, this same flow turns them into text you can paste into documents, spreadsheets, or your CRM.\n- **If you're just getting started:** Pick **one** folder — say, screenshots from last month — and run the full six steps on just that folder. Twenty minutes later, you'll have a feel for the process before touching anything bigger.\n\n## Try it now\nOpen Gemini right now, share it the last five photos you took, and ask: \"Which of these is the best one, and why?\" You'll get a tiny but real taste of how Gemini sees your library — and you'll have deleted nothing by accident.",
+  "original_title": "Sort and Clean Up a Messy Phone Photo Library with Gemini"
+}
