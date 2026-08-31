@@ -518,6 +518,8 @@
     "e-mail-cím",
     "e-mail-címet",
     "e-mail-címmel",
+    "e-mail-draftban",
+    "e-mail-draftodra",
     "e-mail-piszkozatot",
     "e-mail-választ",
     "e-maileid",
@@ -601,6 +603,7 @@
     "emailjeit",
     "emailnek",
     "emailre",
+    "embeddingekhez",
     "emberen",
     "emlékekeztet",
     "emojik",
@@ -1572,6 +1575,7 @@
     "pptx",
     "prioritizálnia",
     "priorizáld",
+    "priorizálhatod",
     "priorizálni",
     "priorizálását",
     "proaktívabb",
@@ -1594,6 +1598,7 @@
     "projekttervet",
     "projektösszefoglalók",
     "promptablakot",
+    "promptbeviteli",
     "promptcsomag",
     "promptdoboz",
     "promptdobozba",
@@ -1674,6 +1679,7 @@
     "raktáron",
     "rakás",
     "ramenest",
+    "randomok",
     "readyplayer",
     "rebranding-projektet",
     "reelhez",
@@ -4396,11 +4402,21 @@
       "correct": "regisztrációra",
       "at": "2026-08-30",
       "mondattal": true
+    },
+    "sorotokat": {
+      "correct": "sorokat",
+      "at": "2026-08-31",
+      "mondattal": true
+    },
+    "telejs": {
+      "correct": "teljes",
+      "at": "2026-08-31",
+      "mondattal": true
     }
   },
   "scan": {
     "at": "2026-08-31",
-    "files": 851,
-    "candidates": 22
+    "files": 852,
+    "candidates": 8
   }
 }
