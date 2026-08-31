@@ -1,0 +1,63 @@
+{
+  "_meta": {
+    "written_at": "2026-08-31T21:16:21.186Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00865728,
+    "original_draft": "2026-08-31T21-12-28-506Z_picsart_How_to_dub_a_video_with_AI_and_keep_the_original_v.json",
+    "source_id": "picsart",
+    "source_name": "PicsArt Blog (hivatalos)",
+    "source_link": "https://picsart.com/blog/how-to-dub-a-video-with-ai/",
+    "source_links": [
+      "https://picsart.com/blog/how-to-dub-a-video-with-ai/"
+    ],
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "published_at": "2026-08-31T21:16:30.049Z",
+    "slug": "ai-video-dubbing-explained-how-your-voice-can-stay-in-any-language",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 730
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured explainer with a relatable hook, clear three-step breakdown of the technology, and a practical 'What this means for you' section that serves different reader types. Plain language throughout, no clichés, and no prohibited content. The article meets all quality gates for publication.",
+      "_aiCost": 0.00219832,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-08-31T21:16:34.511Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is a general explainer about AI dubbing as a concept, not a specific named tool or feature introduced in the article. No particular product is mentioned that users could go and use.",
+    "image_v": 2,
+    "image_at": "2026-08-31T21:16:43.733Z",
+    "seo": {
+      "meta_description": "Learn how AI video dubbing translates videos into any language while keeping your original voice. Simple plain-English guide for creators.",
+      "keywords": [
+        "AI video dubbing",
+        "video language translation",
+        "AI voice cloning for videos",
+        "translate video to different language",
+        "multilingual video content",
+        "how does AI dubbing work",
+        "video dubbing software"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add a brief comparison of top AI dubbing tools to capture comparison-search intent",
+        "Include an FAQ section targeting 'how to' questions for featured snippet opportunities",
+        "Add more specific real-world use cases beyond the three examples to broaden search relevance"
+      ],
+      "optimised_at": "2026-08-31T21:16:49.685Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"AI Video Dubbing, Explained: How Your Voice Can Stay in Any Language\"\nsubtitle: \"A plain-English guide to the technology that lets you speak Spanish, French, or Japanese — and still sound like you\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"ai-video\", \"voice-cloning\", \"dubbing\", \"content-creation\"]\n---\n\n# AI Video Dubbing, Explained: How Your Voice Can Stay in Any Language\n\n> **In short:** AI dubbing tools can now translate a video's spoken words into another language and recreate the original speaker's voice — tone, pitch, and rhythm included — so the new audio sounds like the same person, just speaking a new language.\n\nYou posted a cooking tutorial last week and noticed half the comments came from Brazil. You run a small online class that suddenly has students from Madrid and Seoul. You recorded a heartfelt video message for a relative who only speaks Mandarin. These are real situations where one language just isn't enough — and re-recording everything isn't realistic.\n\nThat's where AI dubbing comes in. It's a fast-growing category of tools that take an existing video, translate what was said into another language, and voice it back over the original footage. The interesting twist: the new audio can sound like the original speaker, not a stock voice.\n\n## How it actually works\n\nThree things happen, usually in a few minutes.\n\n**Step one is transcription.** The AI listens to the original audio and writes down what was said — every word, plus the timing. Think of it as automatic closed captions (the text version of spoken words that appears at the bottom of a screen), but more precise about pauses and who spoke when.\n\n**Step two is translation.** That transcript gets translated into the target language. Good tools try to keep the length close to the original so the new audio lines up with the speaker's mouth movements.\n\n**Step three is voice synthesis — that is, speech generation.** This is the part that has gotten dramatically better in the last year or two. The AI takes a short sample of the original speaker's voice and builds a **voice clone**, basically a digital copy that captures the tone, pitch, and rhythm. Then it reads the new translation out loud in that cloned voice.\n\nThe result: someone watching the dubbed video hears the original creator speaking the new language, with the same warmth, rasp, or energy the original had.\n\n## What it's good at — and where it stumbles\n\nThis works beautifully for short, conversational content: explainers, vlogs, online courses, product demos, social media clips. The voice stays recognizably you, and viewers who don't speak your language can finally follow along.\n\nIt stumbles in a few predictable places. Heavy background noise or music can confuse the transcription — if you recorded in a noisy café, the AI may mishear words. Idioms and humor often translate awkwardly: a pun in English can become nonsense in Japanese. Multi-speaker scenes, like interviews or podcasts, are harder than a single person talking, because the AI has to figure out who's saying what. And real-time dubbing for live calls is still mostly experimental; most tools work on finished videos.\n\n## What this means for you\n\n- **If you make content for fun** — a hobby channel, family videos, a small community page — this is now within reach. You don't need a studio or a translator. You can post one video and let it reach audiences you never had access to before.\n- **If you teach, train, or sell online** — think about how much of your work lives in just one language. Customer onboarding, internal training, course material. A single dubbed version can multiply your audience for the same effort.\n- **If you're cautious about the technology** — fair. Voice cloning raises real questions about consent and misuse. Stick to tools that only clone voices you own or have explicit permission to use, and be transparent with your audience when a video has been AI-dubbed.\n\n## Wrap-up\n\nAI dubbing isn't magic, and it isn't flawless — but for the first time, a small creator or a one-person business can sound like themselves in languages they don't speak. Pick one short video you already have, look for an AI dubbing service with a free trial, and see how the translation sounds. That's the fastest way to know whether this technology is useful for what you make.",
+  "original_title": "How to dub a video with AI and keep the original voice"
+}

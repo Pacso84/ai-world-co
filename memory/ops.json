@@ -1,86 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178809193787550",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-08-30T12:12:17.875Z",
-      "updated": "2026-08-30T12:12:34.941Z"
-    },
-    {
-      "id": "t178809625183482",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-08-30T13:24:11.834Z",
-      "updated": "2026-08-30T13:24:12.033Z"
-    },
-    {
-      "id": "t178809625203584",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-08-30T13:24:12.035Z",
-      "updated": "2026-08-30T13:24:30.754Z"
-    },
-    {
-      "id": "t178809627075632",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-08-30T13:24:30.756Z",
-      "updated": "2026-08-30T13:24:30.963Z"
-    },
-    {
-      "id": "t178809627096512",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-30T13:24:30.965Z",
-      "updated": "2026-08-30T13:24:31.145Z"
-    },
-    {
-      "id": "t178809627114652",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-30T13:24:31.146Z",
-      "updated": "2026-08-30T13:24:31.313Z"
-    },
-    {
-      "id": "t178809627131636",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-08-30T13:24:31.316Z",
-      "updated": "2026-08-30T13:24:31.542Z"
-    },
-    {
-      "id": "t178809627158987",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-30T13:24:31.589Z",
-      "updated": "2026-08-30T13:24:31.828Z"
-    },
-    {
-      "id": "t178809627183036",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-08-30T13:24:31.830Z",
-      "updated": "2026-08-30T13:24:32.047Z"
-    },
-    {
-      "id": "t178809627204991",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-30T13:24:32.049Z",
-      "updated": "2026-08-30T13:24:42.473Z"
-    },
-    {
       "id": "t178809628247422",
       "title": "Run publisher",
       "status": "done",
@@ -479,33 +399,89 @@
       "agent": "publisher",
       "created": "2026-08-31T15:49:18.644Z",
       "updated": "2026-08-31T15:49:41.268Z"
+    },
+    {
+      "id": "t178821072490572",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-08-31T21:12:04.905Z",
+      "updated": "2026-08-31T21:12:05.091Z"
+    },
+    {
+      "id": "t178821072509345",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-08-31T21:12:05.093Z",
+      "updated": "2026-08-31T21:12:28.521Z"
+    },
+    {
+      "id": "t178821074852342",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-08-31T21:12:28.523Z",
+      "updated": "2026-08-31T21:12:28.719Z"
+    },
+    {
+      "id": "t178821074872111",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-31T21:12:28.721Z",
+      "updated": "2026-08-31T21:16:21.200Z"
+    },
+    {
+      "id": "t178821098120223",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-31T21:16:21.202Z",
+      "updated": "2026-08-31T21:16:30.059Z"
+    },
+    {
+      "id": "t178821099006287",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-08-31T21:16:30.062Z",
+      "updated": "2026-08-31T21:16:34.526Z"
+    },
+    {
+      "id": "t178821099457579",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-31T21:16:34.575Z",
+      "updated": "2026-08-31T21:16:43.774Z"
+    },
+    {
+      "id": "t17882110037768",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-08-31T21:16:43.776Z",
+      "updated": "2026-08-31T21:16:49.730Z"
+    },
+    {
+      "id": "t178821100973245",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-31T21:16:49.732Z",
+      "updated": "2026-08-31T21:16:54.835Z"
+    },
+    {
+      "id": "t178821101483798",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-08-31T21:16:54.837Z",
+      "updated": "2026-08-31T21:17:16.340Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178730119319725",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The lineup looks solid and ready — it's a practical mix of privacy awareness and real-life writing help, using everyday examples people actually need. One small note: we've used 7 different AI tools a",
-      "agent": "publisher",
-      "at": "2026-08-21T08:33:13.197Z",
-      "loud": false
-    },
-    {
-      "id": "n178730120549355",
-      "level": "success",
-      "text": "2 hír + 1 útmutató publikálva (költség: $0.0227).",
-      "agent": "ceo",
-      "at": "2026-08-21T08:33:25.493Z",
-      "loud": false
-    },
-    {
-      "id": "n178732957196375",
-      "level": "info",
-      "text": "SEO: 3 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-08-21T16:26:11.963Z",
-      "loud": false
-    },
     {
       "id": "n178732959610376",
       "level": "success",
@@ -1281,36 +1257,33 @@
       "agent": "ceo",
       "at": "2026-08-31T15:49:41.312Z",
       "loud": false
+    },
+    {
+      "id": "n178821100971770",
+      "level": "info",
+      "text": "SEO: 1 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-08-31T21:16:49.717Z",
+      "loud": false
+    },
+    {
+      "id": "n17882110223586",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The lineup is solid and ready — helpful, practical topics that everyday people genuinely need, from privacy to sympathy messages. One minor note: articles 3-5 all cover complaint emails, which might f",
+      "agent": "publisher",
+      "at": "2026-08-31T21:17:02.358Z",
+      "loud": false
+    },
+    {
+      "id": "n17882110363830",
+      "level": "success",
+      "text": "1 hír + 0 útmutató publikálva (költség: $0.0130).",
+      "agent": "ceo",
+      "at": "2026-08-31T21:17:16.384Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178738678549331",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Getting started with Apple Intelligence on your iP\" — iPhone 15 Pro, iPhone 15 Pro Max, or any later model (incorrect — Apple Intelligence only works on iPhone 15 Pro and Pro Max, iPhone 16/16 Pro/16 Pro Max/16e, and later; NOT on iPhone 15 or iPhone 15 Plus); When asking Siri to draft a reply, the guide describes pressing the mic icon ",
-      "ref": "ARTICLE_GUIDE_apple-intelligence-getting-started.json",
-      "at": "2026-08-22T08:19:45.493Z"
-    },
-    {
-      "id": "m178741508223770",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-08-22T16:11:22.237Z"
-    },
-    {
-      "id": "m178741523411992",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Adding clear comments to your existing code to mak\" — 30-day free trial mention as the only option for trying Copilot",
-      "ref": "ARTICLE_GUIDE_adding-clear-comments-to-your-existing-code-to-make-it-easie.json",
-      "at": "2026-08-22T16:13:54.119Z"
-    },
     {
       "id": "m178744600232897",
       "from": "ellenorzo",
@@ -2650,6 +2623,33 @@
       "text": "3 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-08-31T16:02:14.520Z"
+    },
+    {
+      "id": "m178821101482399",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-08-31T21:16:54.823Z"
+    },
+    {
+      "id": "m178821106714946",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"How to set ChatGPT custom instructions so it answe\" — The precise toggle switch label 'Enable for new chats' in Step 4 - UI elements may have changed; The exact menu options shown in Step 1 ('Settings,' 'Help,' 'Custom instructions') - current UI may differ; The exact button label 'Save' or 'Update' in Step 4 - current UI may differ",
+      "ref": "ARTICLE_GUIDE_chatgpt-custom-instructions.json",
+      "at": "2026-08-31T21:17:47.149Z"
+    },
+    {
+      "id": "m178821107581265",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"How to analyse files and spreadsheets with ChatGPT\" — Simple charts are supported on both free and paid tiers, but the free plan may limit how many images you can generate each day; The guide works on the free tier, though the free plan limits the number of images the AI can generate per day",
+      "ref": "ARTICLE_GUIDE_chatgpt-files-data.json",
+      "at": "2026-08-31T21:17:55.812Z"
     }
   ]
 }
