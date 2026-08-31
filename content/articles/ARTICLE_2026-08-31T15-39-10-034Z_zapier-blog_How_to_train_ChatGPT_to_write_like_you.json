@@ -1,0 +1,66 @@
+{
+  "_meta": {
+    "written_at": "2026-08-31T15:43:42.610Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.01118052,
+    "original_draft": "2026-08-31T15-39-10-034Z_zapier-blog_How_to_train_ChatGPT_to_write_like_you.json",
+    "source_id": "zapier-blog",
+    "source_name": "Zapier Blog (hivatalos)",
+    "source_link": "https://zapier.com/blog/train-chatgpt-to-write-like-you",
+    "source_links": [
+      "https://zapier.com/blog/train-chatgpt-to-write-like-you"
+    ],
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "published_at": "2026-08-31T15:47:32.333Z",
+    "slug": "how-to-train-chatgpt-to-write-like-you-5-practical-steps",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1309
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": 7,
+      "decision": "PASS",
+      "issues": [
+        "Step 4: Settings menu path described without screen location or what happens after clicking — consider adding 'look for a gear icon or the word Settings' and confirming what the user sees next",
+        "Step 2: 'Ask it to refine' is vague — add a sample follow-up phrase like 'Now paste the next sample and say: refine my style description based on this additional example'"
+      ],
+      "verdict": "Strong, well-structured guide with friendly tone and no prohibited content. Passes all gates. The two clarity notes are minor polish items for a first-time user on mobile: the Settings navigation in Step 4 lacks a screen landmark, and Step 2's 'ask to refine' could use a sample phrase. Both are fixable one-liners that don't block publication.",
+      "_aiCost": 0.0024093,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-08-31T15:47:52.506Z",
+    "guide_worthy": false,
+    "pairing_reason": "This IS already a how-to guide article itself, not news that would need a paired guide",
+    "image_v": 2,
+    "image_at": "2026-08-31T15:48:38.250Z",
+    "seo": {
+      "meta_description": "Learn to train ChatGPT to write like you in 5 simple steps. Use Custom Instructions to capture your unique voice and save hours of writing time.",
+      "keywords": [
+        "how to train ChatGPT to write like me",
+        "ChatGPT Custom Instructions",
+        "teach ChatGPT my writing style",
+        "ChatGPT personal voice",
+        "ChatGPT tone and style settings",
+        "customize ChatGPT writing voice",
+        "AI writing assistant personal style"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add the year to the title (e.g., 'How to Train ChatGPT to Write Like You in 2024') for freshness signals that improve rankings",
+        "Include 'Custom Instructions' as a primary keyword earlier in the article intro for better topical relevance",
+        "Break content into clear H2 sections matching each of the 5 steps to improve featured snippet eligibility"
+      ],
+      "optimised_at": "2026-08-31T15:49:07.718Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"How to Train ChatGPT to Write Like You (5 Practical Steps)\"\nsubtitle: \"A simple workflow to teach ChatGPT your voice, tone, and style using Custom Instructions — no coding needed\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 7\ntags: [\"chatgpt\", \"custom-instructions\", \"writing\", \"productivity\", \"custom-gpt\"]\n---\n\n# How to Train ChatGPT to Write Like You (5 Practical Steps)\n\n> **In short:** You can teach ChatGPT your writing voice in about 15 minutes by feeding it a few of your own samples, asking it to describe your style, and pasting that description into ChatGPT's Custom Instructions box — no coding or fine-tuning needed.\n\nPicture this. You've got a stack of emails to clear before lunch, a blog post that needs to sound like *you*, and a LinkedIn update you've been putting off for three days. The work is straightforward — but sitting down to write each one from scratch eats hours. What if the AI in your browser already knew how you sound?\n\nThis is a real workflow that real writers use every week. It's not magic, and it's not technical. It's a 15-minute setup that turns ChatGPT from a generic helper into something that drafts close enough to your voice that you only need to polish, not rewrite. Here's how to do it, step by step.\n\n## What you'll need\n\nBefore we start, gather a few things:\n\n- A **free ChatGPT account** at chatgpt.com (a paid plan gives you more options later, but the core method works on free)\n- **3-5 short samples of your own writing** — past emails, blog posts, social media captions, anything that sounds like you on a good day\n- About **15-20 minutes** of uninterrupted time\n\nPick samples that match the work you want ChatGPT to draft. If you want help with work newsletters, don't feed it your poetry.\n\n## Step 1 — Collect 3-5 writing samples that sound like you\n\nOpen a folder, a Google Doc, or even a notes app. Drop in three to five short pieces you've written — between 100 and 400 words each is ideal. They should be pieces you're proud of, where your natural voice came through.\n\n💬 Examples of what to grab:\n- A past email to a client or colleague\n- A blog post or newsletter\n- A few LinkedIn or social media posts\n- A section from a report you wrote\n\nYou'll know it worked when you have a small folder with at least three short, varied examples that all clearly sound like you.\n\n## Step 2 — Ask ChatGPT to analyze your writing style\n\nOpen ChatGPT in a brand new chat (a fresh one — you don't want earlier conversations polluting the result). Paste one sample at a time and ask it to describe your style in detail.\n\n💬 Copy-paste prompt to start:\n> *\"Read this sample of my writing. Describe my style in detail — my tone, sentence length, vocabulary level, how I open and close paragraphs, my sense of humor (if any), and any patterns you notice. Be specific. I'll paste more samples after.\"*\n\nPaste each sample and ask it to refine the description. After three or four samples, you'll have a paragraph or two that describes your voice in surprisingly accurate terms.\n\nYou'll know it worked when ChatGPT can describe your style well enough that you'd recognize yourself in the description.\n\n## Step 3 — Save your \"style profile\" as a reusable block\n\nOnce ChatGPT has written a clear description of your style, save it. You can copy it into a notes app as a \"Style Profile\" document, or ask ChatGPT to format it as a single clean paragraph you can paste anywhere later.\n\nThis is your reusable style fingerprint. You'll reuse it across different tools.\n\nYou'll know it worked when you can read the profile back and immediately think: \"Yes, that's how I write.\"\n\n## Step 4 — Paste the profile into ChatGPT's Custom Instructions\n\nNow we tell ChatGPT to use the profile by default. In ChatGPT, click your **profile icon or name** in the top corner, then look for **Settings** (sometimes under a \"Personalization\" section). Find the **Custom Instructions** area and turn it on. You'll see two text boxes — one asks what ChatGPT should know about you, the other asks how ChatGPT should respond.\n\n💬 Paste your style profile into the \"How would you like ChatGPT to respond\" box. In the \"about you\" box, add a one-liner like:\n> *\"I'm a freelance copywriter who writes for small business clients. I want help drafting content in my own voice, not generic AI-speak.\"*\n\nYou'll know it worked when you start a new chat and the first response already sounds closer to your voice.\n\n> ⚠️ **Note:** The exact menu names shift occasionally as OpenAI updates the app. If you don't see \"Custom Instructions\" under Settings, look for \"Personalization\" or check OpenAI's help page for the current path.\n\n## Step 5 — Test, then refine\n\nOpen a new chat. Ask ChatGPT to draft something in your usual style — a short blog intro, an email, a paragraph. Compare it to your samples. Notice where it goes off.\n\nCommon tweaks:\n- If it sounds **too formal**, add: *\"Use contractions. Be conversational.\"*\n- If it sounds **too generic**, add: *\"Avoid clichés. Use specific, concrete examples.\"*\n- If it sounds **too long-winded**, add: *\"Keep sentences short. Prefer the active voice.\"*\n\nPaste the updated profile back into Custom Instructions. Repeat once or twice until the output feels right.\n\nYou'll know it worked when you read a draft and find yourself editing small words instead of whole sentences.\n\n## (Optional) Step 6 — Build a Custom GPT with the same instructions\n\nIf you want a dedicated AI helper for your writing — separate from general ChatGPT chats — you can create a **Custom GPT** (a personalized AI assistant inside ChatGPT, which typically requires a paid plan). When configuring it, paste the same style profile into the **Instructions** field, and optionally upload some of your samples as **Knowledge** files so it can reference them directly.\n\nThis step is optional, but useful if you write a lot and want a one-click \"draft in my voice\" button.\n\n## Common mistakes to avoid\n\n- **Too few samples.** One paragraph isn't enough for ChatGPT to find your real patterns. Three to five is the sweet spot.\n- **Samples that don't match your goal.** Don't feed it casual tweets if you want it to draft formal reports. Pick samples that match the work you're trying to speed up.\n- **Setting it and forgetting it.** Your style evolves. Refresh your style profile every few months, or when you notice the output drifting.\n- **Skipping the test step.** Always test in a new chat before assuming the setup worked. Old conversations can hide problems.\n\n## What this means for you\n\n- **If you write for work** (emails, reports, proposals): Set this up once and you'll spend less time on first drafts. Most of the value comes from the first 20 minutes.\n- **If you're a content creator** (blog, newsletter, social): Build a Custom GPT with your style profile. Treat it like a junior writer who already knows the brief.\n- **If you teach or study**: Use the style profile to keep your own voice when AI helps you outline essays, lesson plans, or study notes. You stay in control of how it sounds.\n- **If you're just getting started with AI**: This is one of the highest-leverage things you can do. Once ChatGPT knows your style, almost everything else becomes easier.\n\n## Wrap-up\n\nTeaching ChatGPT to write like you isn't a one-time miracle — it's a small piece of setup that pays you back every time you draft. Spend 15 minutes today collecting samples, getting a style description, and pasting it into Custom Instructions. By this afternoon, your drafts will already feel more like you.",
+  "original_title": "How to train ChatGPT to write like you"
+}

@@ -1,0 +1,49 @@
+{
+  "started_at": "2026-08-31T15:39:10.418Z",
+  "drafts_total": 3,
+  "articles_written": 3,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 0,
+  "merged_total": 0,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "total_cost_usd": 0.030280919999999996,
+  "by_article": [
+    {
+      "draft": "2026-08-31T15-39-10-034Z_zapier-blog_How_to_train_ChatGPT_to_write_like_you.json",
+      "writer_output": "WRITER_2026-08-31T15-39-10-034Z_zapier-blog_How_to_train_ChatGPT_to_write_like_you.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.01118052,
+      "duration_ms": 265629,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-08-31T15-39-10-034Z_picsart_Gemini_Omni_1_2_Flash_lands_in_Picsart_with_4K_vid.json",
+      "writer_output": "WRITER_2026-08-31T15-39-10-034Z_picsart_Gemini_Omni_1_2_Flash_lands_in_Picsart_with_4K_vid.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.00775476,
+      "duration_ms": 46627,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-08-31T15-39-10-034Z_openai-blog_A_milestone_in_expanding_access_to_AI.json",
+      "writer_output": "WRITER_2026-08-31T15-39-10-034Z_openai-blog_A_milestone_in_expanding_access_to_AI.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.01018824,
+      "duration_ms": 56445,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    }
+  ],
+  "finished_at": "2026-08-31T15:45:59.534Z",
+  "duration_seconds": 409.116
+}

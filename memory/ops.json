@@ -1,86 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178809166415920",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-08-30T12:07:44.159Z",
-      "updated": "2026-08-30T12:08:02.248Z"
-    },
-    {
-      "id": "t178809168225023",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-08-30T12:08:02.250Z",
-      "updated": "2026-08-30T12:08:02.408Z"
-    },
-    {
-      "id": "t178809168240970",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-30T12:08:02.409Z",
-      "updated": "2026-08-30T12:08:02.544Z"
-    },
-    {
-      "id": "t178809168254647",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-30T12:08:02.546Z",
-      "updated": "2026-08-30T12:08:17.079Z"
-    },
-    {
-      "id": "t178809169719648",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-30T12:08:17.196Z",
-      "updated": "2026-08-30T12:10:46.602Z"
-    },
-    {
-      "id": "t178809184660475",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-30T12:10:46.604Z",
-      "updated": "2026-08-30T12:11:11.890Z"
-    },
-    {
-      "id": "t178809187189247",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-08-30T12:11:11.892Z",
-      "updated": "2026-08-30T12:11:18.899Z"
-    },
-    {
-      "id": "t178809187893999",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-30T12:11:18.939Z",
-      "updated": "2026-08-30T12:11:43.548Z"
-    },
-    {
-      "id": "t178809190354935",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-08-30T12:11:43.549Z",
-      "updated": "2026-08-30T12:12:04.028Z"
-    },
-    {
-      "id": "t178809192402916",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-30T12:12:04.029Z",
-      "updated": "2026-08-30T12:12:17.874Z"
-    },
-    {
       "id": "t178809193787550",
       "title": "Run publisher",
       "status": "done",
@@ -479,33 +399,89 @@
       "agent": "publisher",
       "created": "2026-08-31T12:11:29.999Z",
       "updated": "2026-08-31T12:11:54.508Z"
+    },
+    {
+      "id": "t178819070113733",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-08-31T15:38:21.137Z",
+      "updated": "2026-08-31T15:38:21.336Z"
+    },
+    {
+      "id": "t178819070133882",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-08-31T15:38:21.338Z",
+      "updated": "2026-08-31T15:39:10.046Z"
+    },
+    {
+      "id": "t17881907500489",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-08-31T15:39:10.048Z",
+      "updated": "2026-08-31T15:39:10.245Z"
+    },
+    {
+      "id": "t17881907502479",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-08-31T15:39:10.247Z",
+      "updated": "2026-08-31T15:45:59.547Z"
+    },
+    {
+      "id": "t178819115954999",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-08-31T15:45:59.549Z",
+      "updated": "2026-08-31T15:47:32.345Z"
+    },
+    {
+      "id": "t178819125234870",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-08-31T15:47:32.348Z",
+      "updated": "2026-08-31T15:47:52.519Z"
+    },
+    {
+      "id": "t178819127257047",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-31T15:47:52.570Z",
+      "updated": "2026-08-31T15:48:38.291Z"
+    },
+    {
+      "id": "t178819131829354",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-08-31T15:48:38.293Z",
+      "updated": "2026-08-31T15:49:07.757Z"
+    },
+    {
+      "id": "t178819134775952",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-08-31T15:49:07.759Z",
+      "updated": "2026-08-31T15:49:18.642Z"
+    },
+    {
+      "id": "t178819135864446",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-08-31T15:49:18.644Z",
+      "updated": "2026-08-31T15:49:41.268Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178727428149330",
-      "level": "success",
-      "text": "3 hír + 4 útmutató publikálva (költség: $0.1463).",
-      "agent": "ceo",
-      "at": "2026-08-21T01:04:41.493Z",
-      "loud": false
-    },
-    {
-      "id": "n178730100812253",
-      "level": "warn",
-      "text": "📨 guide → ceo: Kell még adat: \"Use Claude to read and explain a long contract or legal document\" — az Ellenőrző tényt/forrást kér, amit",
-      "agent": "guide",
-      "at": "2026-08-21T08:30:08.122Z",
-      "loud": false
-    },
-    {
-      "id": "n178730116595438",
-      "level": "info",
-      "text": "SEO: 3 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-08-21T08:32:45.954Z",
-      "loud": false
-    },
     {
       "id": "n178730119319725",
       "level": "success",
@@ -1281,36 +1257,33 @@
       "agent": "ceo",
       "at": "2026-08-31T12:11:54.552Z",
       "loud": false
+    },
+    {
+      "id": "n178819134774484",
+      "level": "info",
+      "text": "SEO: 3 cikk optimalizálva (átlag 8.3/10).",
+      "agent": "seo",
+      "at": "2026-08-31T15:49:07.744Z",
+      "loud": false
+    },
+    {
+      "id": "n178819136692669",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The lineup looks solid — you've got a nice mix of practical how-tos, privacy guidance, and heartfelt content that covers real everyday needs. Just one small check: the \"actually gets results\" promise ",
+      "agent": "publisher",
+      "at": "2026-08-31T15:49:26.926Z",
+      "loud": false
+    },
+    {
+      "id": "n178819138131299",
+      "level": "success",
+      "text": "3 hír + 0 útmutató publikálva (költség: $0.0405).",
+      "agent": "ceo",
+      "at": "2026-08-31T15:49:41.312Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178735984554890",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-08-22T00:50:45.548Z"
-    },
-    {
-      "id": "m178735999177144",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Analyze customer reviews or social media comments \" — No account or sign-up is required for this guide, as we'll use a free online demo.",
-      "ref": "ARTICLE_GUIDE_analyze-customer-reviews-or-social-media-comments-for-positi.json",
-      "at": "2026-08-22T00:53:11.771Z"
-    },
-    {
-      "id": "m178736059619155",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-08-22T01:03:16.191Z"
-    },
     {
       "id": "m178738662960081",
       "from": "designer",
@@ -2650,6 +2623,33 @@
       "text": "1 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-08-31T12:23:54.532Z"
+    },
+    {
+      "id": "m178819126812470",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "info",
+      "text": "A \"Gemini Omni 1.2 Flash lands in Picsart with 4K video\" hír a meglévő útmutatóra mutat: create-a-personalised-weekly-meal-plan-based-on-your-diet-wi",
+      "ref": "create-a-personalised-weekly-meal-plan-based-on-your-diet-wi",
+      "at": "2026-08-31T15:47:48.125Z"
+    },
+    {
+      "id": "m178819135862916",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-08-31T15:49:18.629Z"
+    },
+    {
+      "id": "m17881914468172",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Chat with Your Own Documents Offline Using NVIDIA \" — ChatRTX application (entire tool name - rebranded); NVIDIA RTX 30-series or 40-series GPU requirement (may be outdated - RTX 50-series now supported)",
+      "ref": "ARTICLE_GUIDE_chat-with-your-own-documents-offline-using-nvidia-chatrtx.json",
+      "at": "2026-08-31T15:50:46.817Z"
     }
   ]
 }
