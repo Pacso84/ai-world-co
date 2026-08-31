@@ -1,7 +1,7 @@
 {
   "_meta": {
     "note": "Forrás-bizonyítvány: frissesség + termés + megbízhatóság forrásonként. Gyártja: core/source-report-card.js",
-    "updated": "2026-08-31T12:24:30.780Z",
+    "updated": "2026-08-31T16:02:49.763Z",
     "thresholds": {
       "DEAD_FEED_DAYS": 365,
       "MIN_SAMPLE": 4,
@@ -19,12 +19,12 @@
   "sources": {
     "openai-blog": {
       "name": "OpenAI Blog (hivatalos)",
-      "feedAgeDays": 3,
-      "published30d": 34,
+      "feedAgeDays": 1,
+      "published30d": 35,
       "truthBlocks": 5,
-      "totalAttempts": 18,
+      "totalAttempts": 19,
       "alreadyDisabled": false,
-      "lastArticle": "2026-08-28",
+      "lastArticle": "2026-08-31",
       "verdict": "ok",
       "reason": ""
     },
@@ -118,7 +118,7 @@
     },
     "microsoft-research": {
       "name": "Microsoft Research (hivatalos)",
-      "feedAgeDays": 11,
+      "feedAgeDays": 0,
       "published30d": 0,
       "truthBlocks": 0,
       "totalAttempts": 0,
@@ -481,7 +481,7 @@
     },
     "midjourney-updates": {
       "name": "Midjourney Updates (hivatalos)",
-      "feedAgeDays": 2,
+      "feedAgeDays": 3,
       "published30d": 2,
       "truthBlocks": 0,
       "totalAttempts": 2,
@@ -547,7 +547,7 @@
     },
     "d-id-news": {
       "name": "D-ID (hivatalos)",
-      "feedAgeDays": 4,
+      "feedAgeDays": 0,
       "published30d": 3,
       "truthBlocks": 0,
       "totalAttempts": 2,
@@ -558,7 +558,7 @@
     },
     "sony-ai": {
       "name": "Sony AI (hivatalos)",
-      "feedAgeDays": 61,
+      "feedAgeDays": 62,
       "published30d": 0,
       "truthBlocks": 0,
       "totalAttempts": 0,
@@ -580,7 +580,7 @@
     },
     "microsoft-365": {
       "name": "Microsoft 365 Insider (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 0,
       "published30d": 4,
       "truthBlocks": 0,
       "totalAttempts": 0,
@@ -591,7 +591,7 @@
     },
     "pixlr": {
       "name": "Pixlr Blog (hivatalos)",
-      "feedAgeDays": 5,
+      "feedAgeDays": 6,
       "published30d": 5,
       "truthBlocks": 1,
       "totalAttempts": 1,
@@ -603,22 +603,22 @@
     "picsart": {
       "name": "PicsArt Blog (hivatalos)",
       "feedAgeDays": 0,
-      "published30d": 33,
+      "published30d": 34,
       "truthBlocks": 3,
-      "totalAttempts": 17,
+      "totalAttempts": 18,
       "alreadyDisabled": false,
-      "lastArticle": "2026-08-27",
+      "lastArticle": "2026-08-31",
       "verdict": "ok",
       "reason": ""
     },
     "zapier-blog": {
       "name": "Zapier Blog (hivatalos)",
-      "feedAgeDays": 4,
-      "published30d": 5,
+      "feedAgeDays": 0,
+      "published30d": 6,
       "truthBlocks": 0,
-      "totalAttempts": 2,
+      "totalAttempts": 3,
       "alreadyDisabled": false,
-      "lastArticle": "2026-08-27",
+      "lastArticle": "2026-08-31",
       "verdict": "ok",
       "reason": ""
     },
