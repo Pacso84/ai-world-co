@@ -1,102 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178809628247422",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-08-30T13:24:42.474Z",
-      "updated": "2026-08-30T13:25:02.509Z"
-    },
-    {
-      "id": "t178811609559612",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-08-30T18:54:55.596Z",
-      "updated": "2026-08-30T18:54:55.778Z"
-    },
-    {
-      "id": "t178811609577916",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-08-30T18:54:55.779Z",
-      "updated": "2026-08-30T18:55:13.573Z"
-    },
-    {
-      "id": "t178811611357552",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-08-30T18:55:13.575Z",
-      "updated": "2026-08-30T18:56:40.596Z"
-    },
-    {
-      "id": "t178811620059860",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-30T18:56:40.598Z",
-      "updated": "2026-08-30T18:56:40.781Z"
-    },
-    {
-      "id": "t178811620078228",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-30T18:56:40.783Z",
-      "updated": "2026-08-30T18:56:40.965Z"
-    },
-    {
-      "id": "t178811620096836",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-08-30T18:56:40.968Z",
-      "updated": "2026-08-30T18:56:41.193Z"
-    },
-    {
-      "id": "t178811620123980",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-30T18:56:41.240Z",
-      "updated": "2026-08-30T18:56:41.476Z"
-    },
-    {
-      "id": "t178811620147878",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-08-30T18:56:41.478Z",
-      "updated": "2026-08-30T18:56:41.704Z"
-    },
-    {
-      "id": "t178811620170661",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-30T18:56:41.706Z",
-      "updated": "2026-08-30T18:56:52.667Z"
-    },
-    {
-      "id": "t178811621266834",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-08-30T18:56:52.668Z",
-      "updated": "2026-08-30T18:57:13.949Z"
-    },
-    {
-      "id": "t178814230800670",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-08-31T02:11:48.006Z",
-      "updated": "2026-08-31T02:11:48.184Z"
-    },
-    {
       "id": "t178814230818684",
       "title": "Run rss-scraper",
       "status": "done",
@@ -479,41 +383,105 @@
       "agent": "publisher",
       "created": "2026-08-31T21:16:54.837Z",
       "updated": "2026-08-31T21:17:16.340Z"
+    },
+    {
+      "id": "t178822986147897",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-09-01T02:31:01.478Z",
+      "updated": "2026-09-01T02:31:01.615Z"
+    },
+    {
+      "id": "t178822986161793",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-09-01T02:31:01.617Z",
+      "updated": "2026-09-01T02:31:33.627Z"
+    },
+    {
+      "id": "t178822989362843",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-09-01T02:31:33.628Z",
+      "updated": "2026-09-01T02:31:33.782Z"
+    },
+    {
+      "id": "t17882298937831",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-09-01T02:31:33.783Z",
+      "updated": "2026-09-01T02:36:03.672Z"
+    },
+    {
+      "id": "t178823016367374",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-01T02:36:03.673Z",
+      "updated": "2026-09-01T02:36:22.584Z"
+    },
+    {
+      "id": "t178823018258613",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-09-01T02:36:22.586Z",
+      "updated": "2026-09-01T02:36:30.080Z"
+    },
+    {
+      "id": "t17882301901197",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-09-01T02:36:30.119Z",
+      "updated": "2026-09-01T02:45:36.833Z"
+    },
+    {
+      "id": "t178823073683451",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-01T02:45:36.834Z",
+      "updated": "2026-09-01T02:47:17.322Z"
+    },
+    {
+      "id": "t178823083735695",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-01T02:47:17.356Z",
+      "updated": "2026-09-01T02:48:15.863Z"
+    },
+    {
+      "id": "t178823089586423",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-09-01T02:48:15.864Z",
+      "updated": "2026-09-01T02:49:46.015Z"
+    },
+    {
+      "id": "t178823098601796",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-01T02:49:46.017Z",
+      "updated": "2026-09-01T02:50:03.220Z"
+    },
+    {
+      "id": "t178823100322210",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-09-01T02:50:03.222Z",
+      "updated": "2026-09-01T02:50:21.029Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178732959610376",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). A lineup erősen gyakorlatias és mindenki számára érthető – ez tetszik. Egy apró észrevétel: a 3., 4., 5. és 6. cikk mind panaszlevelekről/emailekről szól, ami Repetitív lehet olvasóként. Érdemes lehet",
-      "agent": "publisher",
-      "at": "2026-08-21T16:26:36.103Z",
-      "loud": false
-    },
-    {
-      "id": "n178732960885246",
-      "level": "success",
-      "text": "3 hír + 0 útmutató publikálva (költség: $0.0420).",
-      "agent": "ceo",
-      "at": "2026-08-21T16:26:48.852Z",
-      "loud": false
-    },
-    {
-      "id": "n178735983301863",
-      "level": "info",
-      "text": "SEO: 6 cikk optimalizálva (átlag 7.8/10).",
-      "agent": "seo",
-      "at": "2026-08-22T00:50:33.018Z",
-      "loud": false
-    },
-    {
-      "id": "n178735985181424",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). A solid, practical lineup that shows everyday people exactly how AI can help with real tasks—from writing tricky emails to handling sensitive situations. Good mix of productivity, personal life, and t",
-      "agent": "publisher",
-      "at": "2026-08-22T00:50:51.814Z",
-      "loud": false
-    },
     {
       "id": "n17873598644995",
       "level": "success",
@@ -1281,27 +1249,41 @@
       "agent": "ceo",
       "at": "2026-08-31T21:17:16.384Z",
       "loud": false
+    },
+    {
+      "id": "n178823098600864",
+      "level": "info",
+      "text": "SEO: 5 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-09-01T02:49:46.008Z",
+      "loud": false
+    },
+    {
+      "id": "n178823101002264",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The lineup looks solid and ready—practical, diverse (emails, letters, sympathy, pet-sitting), and covers 7 real AI tools plus privacy awareness. One small note: the very first article warns about shar",
+      "agent": "publisher",
+      "at": "2026-09-01T02:50:10.022Z",
+      "loud": false
+    },
+    {
+      "id": "n178823102106569",
+      "level": "success",
+      "text": "1 hír + 4 útmutató publikálva (költség: $0.0735).",
+      "agent": "ceo",
+      "at": "2026-09-01T02:50:21.065Z",
+      "loud": false
+    },
+    {
+      "id": "n17882310430909",
+      "level": "warn",
+      "text": "📨 fact-check → human: Ez az útmutató talán tárgytalanná vált: \"How to use custom GPTs (and build a simple one)\" — OpenAI shut down the GPT Sto",
+      "agent": "fact-check",
+      "at": "2026-09-01T02:50:43.090Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178744630211789",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-08-23T00:51:42.117Z"
-    },
-    {
-      "id": "m178744701562116",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "4 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-08-23T01:03:35.621Z"
-    },
     {
       "id": "m178747308404977",
       "from": "ellenorzo",
@@ -2650,6 +2632,25 @@
       "text": "1 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-08-31T21:27:24.866Z"
+    },
+    {
+      "id": "m178823100321160",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-09-01T02:50:03.211Z"
+    },
+    {
+      "id": "m178823104309023",
+      "from": "fact-check",
+      "to": "human",
+      "kind": "need",
+      "text": "Ez az útmutató talán tárgytalanná vált: \"How to use custom GPTs (and build a simple one)\" — OpenAI shut down the GPT Store and disabled custom GPT creation entirely in early 2025. The entire guide teaches a feature that no longer exists — there is no GPT Store, no Explore GPTs, no Create button, and no GPT Builder. This is not a fixable issue; the feature was removed, not just changed.. NEM vettem",
+      "ref": "ARTICLE_GUIDE_chatgpt-gpts.json",
+      "open": true,
+      "at": "2026-09-01T02:50:43.090Z"
     }
   ]
 }
