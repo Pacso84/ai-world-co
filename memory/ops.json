@@ -1,86 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178814334923224",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-31T02:29:09.232Z",
-      "updated": "2026-08-31T02:30:13.368Z"
-    },
-    {
-      "id": "t17881434133702",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-31T02:30:13.370Z",
-      "updated": "2026-08-31T02:30:30.135Z"
-    },
-    {
-      "id": "t178814343013762",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-31T02:30:30.137Z",
-      "updated": "2026-08-31T02:31:10.414Z"
-    },
-    {
-      "id": "t178814347041686",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-08-31T02:31:10.416Z",
-      "updated": "2026-08-31T02:32:06.810Z"
-    },
-    {
-      "id": "t178814352681291",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-31T02:32:06.812Z",
-      "updated": "2026-08-31T02:32:38.572Z"
-    },
-    {
-      "id": "t178814355857324",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-08-31T02:32:38.573Z",
-      "updated": "2026-08-31T02:32:56.666Z"
-    },
-    {
-      "id": "t178817806547082",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-08-31T12:07:45.470Z",
-      "updated": "2026-08-31T12:07:45.650Z"
-    },
-    {
-      "id": "t178817806565215",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-08-31T12:07:45.652Z",
-      "updated": "2026-08-31T12:08:13.152Z"
-    },
-    {
-      "id": "t178817809315319",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-08-31T12:08:13.153Z",
-      "updated": "2026-08-31T12:08:13.353Z"
-    },
-    {
-      "id": "t178817809335585",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-31T12:08:13.355Z",
-      "updated": "2026-08-31T12:08:13.526Z"
-    },
-    {
       "id": "t178817809352850",
       "title": "Run ellenorzo",
       "status": "done",
@@ -479,25 +399,89 @@
       "agent": "publisher",
       "created": "2026-09-01T12:26:49.869Z",
       "updated": "2026-09-01T12:27:11.738Z"
+    },
+    {
+      "id": "t178826710882766",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-09-01T12:51:48.827Z",
+      "updated": "2026-09-01T12:51:49.020Z"
+    },
+    {
+      "id": "t178826710902252",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-09-01T12:51:49.022Z",
+      "updated": "2026-09-01T12:52:06.691Z"
+    },
+    {
+      "id": "t178826712669324",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-09-01T12:52:06.693Z",
+      "updated": "2026-09-01T12:52:06.906Z"
+    },
+    {
+      "id": "t178826712690860",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-09-01T12:52:06.908Z",
+      "updated": "2026-09-01T12:52:07.093Z"
+    },
+    {
+      "id": "t178826712709471",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-01T12:52:07.094Z",
+      "updated": "2026-09-01T12:52:07.274Z"
+    },
+    {
+      "id": "t178826712727741",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-09-01T12:52:07.277Z",
+      "updated": "2026-09-01T12:52:07.515Z"
+    },
+    {
+      "id": "t178826712756638",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-01T12:52:07.566Z",
+      "updated": "2026-09-01T12:52:07.810Z"
+    },
+    {
+      "id": "t17882671278121",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-09-01T12:52:07.812Z",
+      "updated": "2026-09-01T12:52:08.048Z"
+    },
+    {
+      "id": "t178826712804917",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-01T12:52:08.049Z",
+      "updated": "2026-09-01T12:52:31.471Z"
+    },
+    {
+      "id": "t178826715147376",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-09-01T12:52:31.473Z",
+      "updated": "2026-09-01T12:53:04.353Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178741508957712",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). A jól összeválogatott, hétköznapi helyzetekhez kapcsolódó cikkek igazán készen állnak — a sorozat a privát szférától a hivatalos levelekig sok valós igényt fed le. Két apróság: a Cohere-t említő cikkn",
-      "agent": "publisher",
-      "at": "2026-08-22T16:11:29.577Z",
-      "loud": false
-    },
-    {
-      "id": "n178741510215846",
-      "level": "info",
-      "text": "Pipeline lefutott — ma nem volt publikálható új tartalom.",
-      "agent": "ceo",
-      "at": "2026-08-22T16:11:42.158Z",
-      "loud": false
-    },
     {
       "id": "n178744628711310",
       "level": "info",
@@ -1281,36 +1265,25 @@
       "agent": "ceo",
       "at": "2026-09-01T12:27:11.772Z",
       "loud": false
+    },
+    {
+      "id": "n178826717030714",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The lineup looks solid and ready — you've got a nice mix of practical how-tos (complaint emails, marketing, pet agreements) plus that essential privacy guide to build trust. Articles 3-5 cover complai",
+      "agent": "publisher",
+      "at": "2026-09-01T12:52:50.307Z",
+      "loud": false
+    },
+    {
+      "id": "n178826718439737",
+      "level": "info",
+      "text": "Pipeline lefutott — ma nem volt publikálható új tartalom.",
+      "agent": "ceo",
+      "at": "2026-09-01T12:53:04.397Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178747320994932",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Use ChatGPT to Practice a Foreign Language Without Feeling Awkward\" (?/10)",
-      "ref": "GUIDE_use-chatgpt-to-practice-a-foreign-language-without-feeling-a.json",
-      "at": "2026-08-23T08:20:09.949Z"
-    },
-    {
-      "id": "m178747326330726",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-08-23T08:21:03.307Z"
-    },
-    {
-      "id": "m178747373114911",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "2 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-08-23T08:28:51.149Z"
-    },
     {
       "id": "m178750159440995",
       "from": "designer",
@@ -2649,6 +2622,33 @@
       "text": "3 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-09-01T12:35:49.985Z"
+    },
+    {
+      "id": "m178826715146125",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-09-01T12:52:31.461Z"
+    },
+    {
+      "id": "m178826719584037",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"How to use ChatGPT's memory so it remembers your p\" — \"This feature may be part of a paid plan for some users.\" — Memory is available to free users as well, not just paid plans",
+      "ref": "ARTICLE_GUIDE_chatgpt-memory.json",
+      "at": "2026-09-01T12:53:15.840Z"
+    },
+    {
+      "id": "m178826726853171",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Using ChatGPT Voice for hands-free everyday tasks\" — Step 1: \"tap the small headphones icon located in the bottom-right corner\" — The ChatGPT app now uses a different voice activation icon (typically a waveform/sound wave, not headphones) in the bottom-right area.; Step 2: \"Swipe through the options to browse the different tones and acc",
+      "ref": "ARTICLE_GUIDE_chatgpt-voice.json",
+      "at": "2026-09-01T12:54:28.531Z"
     }
   ]
 }
