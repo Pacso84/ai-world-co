@@ -1,0 +1,28 @@
+{
+  "started_at": "2026-09-01T19:11:04.367Z",
+  "total": 3,
+  "passed": 2,
+  "failed": 0,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.00767664,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-09-01T18-58-55-332Z_openai-blog_Healthcare_organizations_can_now_connect_EHR_and_a.json",
+      "article": "ARTICLE_2026-09-01T18-58-55-332Z_openai-blog_Healthcare_organizations_can_now_connect_EHR_and_a.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.001551
+    },
+    {
+      "writer": "WRITER_2026-09-01T18-59-10-424Z_salesforce_Salesforce_Named_a_Leader_in_the_2026_Gartner__Mag.json",
+      "article": "ARTICLE_2026-09-01T18-59-10-424Z_salesforce_Salesforce_Named_a_Leader_in_the_2026_Gartner__Mag.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.00248225
+    }
+  ],
+  "truth_blocked": 1,
+  "finished_at": "2026-09-01T19:12:16.973Z",
+  "duration_seconds": 72.606
+}

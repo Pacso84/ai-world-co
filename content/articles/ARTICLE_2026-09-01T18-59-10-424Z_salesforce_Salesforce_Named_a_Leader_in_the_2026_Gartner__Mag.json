@@ -1,0 +1,63 @@
+{
+  "_meta": {
+    "written_at": "2026-09-01T19:06:09.633Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.008017548,
+    "original_draft": "2026-09-01T18-59-10-424Z_salesforce_Salesforce_Named_a_Leader_in_the_2026_Gartner__Mag.json",
+    "source_id": "salesforce",
+    "source_name": "Salesforce AI Blog (hivatalos)",
+    "source_link": "https://www.salesforce.com/news/stories/gartner-magic-quadrant-healthcare-provider-industry-cloud-platforms-2026/",
+    "source_links": [
+      "https://www.salesforce.com/news/stories/gartner-magic-quadrant-healthcare-provider-industry-cloud-platforms-2026/"
+    ],
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "published_at": "2026-09-01T19:12:16.973Z",
+    "slug": "ai-agents-are-coming-to-your-hospital-what-that-means-for-you-as-a-pat",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 741
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Solid explainer that hits all structural marks, explains AI agents clearly with relatable examples, and ends with an actionable tip; no prohibited content, no clichés, and US English throughout.",
+      "_aiCost": 0.00248225,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-09-01T19:13:13.637Z",
+    "guide_worthy": false,
+    "pairing_reason": "Article is a general explainer about AI agents in healthcare as a trend, not about a specific named tool or feature that ordinary people can use",
+    "image_v": 2,
+    "image_at": "2026-09-01T19:13:38.329Z",
+    "seo": {
+      "meta_description": "AI agents are arriving in hospitals—unifying records, scheduling appointments, and cutting paperwork for patients. Here's what changes.",
+      "keywords": [
+        "AI in healthcare",
+        "AI agents in hospitals",
+        "healthcare AI patients",
+        "AI patient records",
+        "hospital automation",
+        "AI appointment scheduling",
+        "what is AI in healthcare"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add a clear H1 heading matching the title exactly to strengthen SEO hierarchy",
+        "Include schema markup for 'Article' to help search engines understand content type",
+        "Consider adding 'AI in medicine' as a secondary keyword for broader search reach"
+      ],
+      "optimised_at": "2026-09-01T19:14:06.710Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"AI Agents Are Coming to Your Hospital — What That Means for You as a Patient\"\nsubtitle: \"Health systems are starting to deploy autonomous AI that can act on your behalf, not just answer questions\"\ncategory: \"explainer\"\naudience: \"personal\"\nread_time_minutes: 4\ntags: [\"ai-agents\", \"healthcare\", \"patient-care\", \"everyday-ai\"]\n---\n\n# AI Agents Are Coming to Your Hospital — What That Means for You as a Patient\n\n> **In short:** Major health systems are now deploying AI \"agents\" that can unify patient records, schedule appointments, and help clinicians with routine tasks — meaning fewer repeated forms at check-in, faster answers when you call, and reminders that arrive before you have to ask.\n\nYou arrive at a clinic for the third time this year. Same clipboard, same fifteen minutes answering the same questions about your allergies. The systems don't talk to each other — yet. That experience is starting to change, and the change has a name: **AI agents**.\n\n## What is an AI agent, exactly?\n\nYou've probably used ChatGPT or a similar AI assistant. Those tools mostly wait for your question and reply with text. An **AI agent** is a step further: it can take actions on its own, like pulling information from another software system, updating a record, or sending a message to a staff member.\n\nIn a hospital or clinic, that might look like an AI that:\n\n- Looks up your records across different departments\n- Fills in forms automatically from past visits\n- Schedules follow-up appointments based on your doctor's notes\n- Sends you a reminder that your lab results are ready\n\nThe goal isn't to replace nurses or doctors. It's to take the repetitive, time-consuming tasks off their plates so they can spend more time with you.\n\n## Why are hospitals investing now?\n\nHealth systems sit on huge amounts of data — lab results, prescriptions, imaging, visit notes — often stored in different software that doesn't share information easily. **Unifying patient data** means bringing all of that into one place so any provider you see has the full picture.\n\nAI agents are especially suited for this kind of work. They can connect to several tools at once, follow rules set by the hospital, and escalate anything unusual to a human. That combination — handling the routine while flagging the unusual — is what makes them attractive to large health networks.\n\n## What this looks like in everyday care\n\nYou don't need to be a doctor to picture the small wins:\n\n- **At check-in**: the system already knows your medications from last month, so the form is shorter.\n- **After a visit**: instead of waiting on hold to ask about a referral, you message the assistant and get a same-day answer.\n- **For a chronic condition**: the agent notices your readings trending in one direction and gently reminds your care team to reach out — before your next appointment.\n\nNone of this replaces a clinician's judgment. It just removes the small delays that frustrate everyone.\n\n## What this means for you\n\n- **If you're a patient or family caregiver**: ask your clinic or hospital what tools they use. Many now have a patient portal with an AI assistant for routine questions — that can save you a phone call.\n- **If you're choosing a new provider**: data integration is becoming a quiet quality signal. A system that \"knows\" you from your first visit is less likely to miss an allergy or repeat a test.\n- **If you're worried about privacy**: AI agents in healthcare are bound by the same privacy laws as your doctor (in the US, that's HIPAA — the law that protects your medical information). Your data isn't being used to train a public chatbot; it stays inside your provider's system.\n\n## Wrap-up\n\nHealthcare is one of the slowest industries to change, for good reason — mistakes matter. The arrival of AI agents there is less about dramatic decisions and more about connecting the dots. Watch for the small moments: a shorter form, a faster callback, a reminder you didn't have to ask for. Those are signs the system is finally catching up.\n\nTry this today: open your patient portal (the app or website from your doctor) and look for a chat or message option. If there's an AI assistant, send it one real question — like when your next prescription is due. That's the simplest way to see what these tools can actually do for you.",
+  "original_title": "Salesforce Named a Leader in the 2026 Gartner® Magic Quadrant™ for Healthcare Provider Industry Cloud Platforms"
+}

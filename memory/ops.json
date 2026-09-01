@@ -1,102 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178817809352850",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-31T12:08:13.528Z",
-      "updated": "2026-08-31T12:08:13.709Z"
-    },
-    {
-      "id": "t178817809371294",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-31T12:08:13.712Z",
-      "updated": "2026-08-31T12:10:42.923Z"
-    },
-    {
-      "id": "t178817824292585",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-31T12:10:42.925Z",
-      "updated": "2026-08-31T12:10:50.295Z"
-    },
-    {
-      "id": "t178817825029886",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-08-31T12:10:50.298Z",
-      "updated": "2026-08-31T12:10:50.544Z"
-    },
-    {
-      "id": "t178817825059437",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-31T12:10:50.594Z",
-      "updated": "2026-08-31T12:11:00.119Z"
-    },
-    {
-      "id": "t178817826012147",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-08-31T12:11:00.121Z",
-      "updated": "2026-08-31T12:11:16.570Z"
-    },
-    {
-      "id": "t17881782765716",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-31T12:11:16.571Z",
-      "updated": "2026-08-31T12:11:29.997Z"
-    },
-    {
-      "id": "t178817828999935",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-08-31T12:11:29.999Z",
-      "updated": "2026-08-31T12:11:54.508Z"
-    },
-    {
-      "id": "t178819070113733",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-08-31T15:38:21.137Z",
-      "updated": "2026-08-31T15:38:21.336Z"
-    },
-    {
-      "id": "t178819070133882",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-08-31T15:38:21.338Z",
-      "updated": "2026-08-31T15:39:10.046Z"
-    },
-    {
-      "id": "t17881907500489",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-08-31T15:39:10.048Z",
-      "updated": "2026-08-31T15:39:10.245Z"
-    },
-    {
-      "id": "t17881907502479",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-31T15:39:10.247Z",
-      "updated": "2026-08-31T15:45:59.547Z"
-    },
-    {
       "id": "t178819115954999",
       "title": "Run ellenorzo",
       "status": "done",
@@ -479,33 +383,105 @@
       "agent": "publisher",
       "created": "2026-09-01T12:52:31.473Z",
       "updated": "2026-09-01T12:53:04.353Z"
+    },
+    {
+      "id": "t178828909573159",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-09-01T18:58:15.731Z",
+      "updated": "2026-09-01T18:58:15.897Z"
+    },
+    {
+      "id": "t178828909589889",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-09-01T18:58:15.898Z",
+      "updated": "2026-09-01T18:59:10.434Z"
+    },
+    {
+      "id": "t178828915043589",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-09-01T18:59:10.435Z",
+      "updated": "2026-09-01T18:59:10.609Z"
+    },
+    {
+      "id": "t178828915061157",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-09-01T18:59:10.611Z",
+      "updated": "2026-09-01T19:11:04.207Z"
+    },
+    {
+      "id": "t178828986420866",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-01T19:11:04.208Z",
+      "updated": "2026-09-01T19:12:16.984Z"
+    },
+    {
+      "id": "t178828993698731",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-09-01T19:12:16.987Z",
+      "updated": "2026-09-01T19:12:49.335Z"
+    },
+    {
+      "id": "t17882899693379",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-01T19:12:49.337Z",
+      "updated": "2026-09-01T19:12:56.122Z"
+    },
+    {
+      "id": "t178828997612578",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-09-01T19:12:56.125Z",
+      "updated": "2026-09-01T19:13:13.648Z"
+    },
+    {
+      "id": "t178828999370298",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-01T19:13:13.702Z",
+      "updated": "2026-09-01T19:13:38.369Z"
+    },
+    {
+      "id": "t178829001837111",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-09-01T19:13:38.371Z",
+      "updated": "2026-09-01T19:14:06.744Z"
+    },
+    {
+      "id": "t178829004674674",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-01T19:14:06.746Z",
+      "updated": "2026-09-01T19:14:18.023Z"
+    },
+    {
+      "id": "t178829005802536",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-09-01T19:14:18.025Z",
+      "updated": "2026-09-01T19:14:34.667Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178744628711310",
-      "level": "info",
-      "text": "SEO: 4 cikk optimalizálva (átlag 8.5/10).",
-      "agent": "seo",
-      "at": "2026-08-23T00:51:27.113Z",
-      "loud": false
-    },
-    {
-      "id": "n178744631844537",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The lineup looks solid—practical AI how-tos mixed with human, warm content (sympathy, thank-you speech, pet-sitting) shows we're about helping people, not just tech. One quick check: make sure Le Chat",
-      "agent": "publisher",
-      "at": "2026-08-23T00:51:58.445Z",
-      "loud": false
-    },
-    {
-      "id": "n178744633132746",
-      "level": "success",
-      "text": "0 hír + 4 útmutató publikálva (költség: $0.0670).",
-      "agent": "ceo",
-      "at": "2026-08-23T00:52:11.327Z",
-      "loud": false
-    },
     {
       "id": "n178747318403530",
       "level": "warn",
@@ -1281,56 +1257,33 @@
       "agent": "ceo",
       "at": "2026-09-01T12:53:04.397Z",
       "loud": false
+    },
+    {
+      "id": "n178829004673677",
+      "level": "info",
+      "text": "SEO: 3 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-09-01T19:14:06.736Z",
+      "loud": false
+    },
+    {
+      "id": "n178829006161481",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The line-up is solid — practical, varied, and perfect for everyday use. One small note: we jump straight into tool-specific tutorials without a gentle intro for AI newcomers. Adding a quick \"How to Ge",
+      "agent": "publisher",
+      "at": "2026-09-01T19:14:21.614Z",
+      "loud": false
+    },
+    {
+      "id": "n178829007471245",
+      "level": "success",
+      "text": "3 hír + 0 útmutató publikálva (költség: $0.0393).",
+      "agent": "ceo",
+      "at": "2026-09-01T19:14:34.712Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178750159440995",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-08-23T16:13:14.409Z"
-    },
-    {
-      "id": "m178753225732267",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Ask plain-English questions about a long PDF using Hugging Face's free document Q&A\" — mi a baj: LEDE_TOO_LONG: A RÖVIDEN-doboz 67 szó (max ~45) — ami hosszú, az már nem \"röviden\".; Chinese text '扔进抽屉再也不看' appears mid-sentence in What this means for you — use English only; Minor tool naming ambiguity: metadata says 'Hugging Face's free document Q&A' but article calls it 'Hug",
-      "ref": "GUIDE_ask-plain-english-questions-about-a-long-pdf-using-hugging-f.json",
-      "at": "2026-08-24T00:44:17.322Z"
-    },
-    {
-      "id": "m178753225732367",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "need",
-      "text": "Hiányos / kell még adat: \"Ask plain-English questions about a long PDF using Hugging Face's free document Q&A\" — egészítsd ki: LEDE_TOO_LONG: A RÖVIDEN-doboz 67 szó (max ~45) — ami hosszú, az már nem \"röviden\".; Chinese text '扔进抽屉再也不看' appears mid-sentence in What this means for you — use English only; Minor tool naming ambiguity: metadata says 'Hugging Face's free document Q&A' but article calls ",
-      "ref": "GUIDE_ask-plain-english-questions-about-a-long-pdf-using-hugging-f.json",
-      "open": false,
-      "at": "2026-08-24T00:44:17.323Z",
-      "resolved_at": "2026-08-24T08:38:06.229Z"
-    },
-    {
-      "id": "m17875323264184",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Spot the mood behind customer reviews with Hugging Face's free sentiment tool\" — mi a baj: HOWTO_TOO_LONG: 2150 szó (~10.8 perc olvasás) — a cél 1000-1400 szó, a felső kapu 1700. A Facebookról érkező mobilolvasó ennyit ritkán olvas végig.; UI_CLAIMS_UNSOURCED: 3 konkrét képernyő-feliratot állít tényként forrás nélkül (\"hosted inference api\", \"compute\", \"data → sort range\"). ",
-      "ref": "GUIDE_spot-the-mood-behind-customer-reviews-with-hugging-face-s-fr.json",
-      "at": "2026-08-24T00:45:26.418Z"
-    },
-    {
-      "id": "m178753279599562",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-08-24T00:53:15.995Z"
-    },
     {
       "id": "m178753292498441",
       "from": "fact-check",
@@ -2649,6 +2602,51 @@
       "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Using ChatGPT Voice for hands-free everyday tasks\" — Step 1: \"tap the small headphones icon located in the bottom-right corner\" — The ChatGPT app now uses a different voice activation icon (typically a waveform/sound wave, not headphones) in the bottom-right area.; Step 2: \"Swipe through the options to browse the different tones and acc",
       "ref": "ARTICLE_GUIDE_chatgpt-voice.json",
       "at": "2026-09-01T12:54:28.531Z"
+    },
+    {
+      "id": "m178828989320111",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Add co-presenters in Google Meet with one click\" — mi a baj: The article states that Google's Gemini assistant in Meet can detect spoken trigger phrases like \"Next slide, please\" and surface a one-click co-presenter handoff suggestion in the Gemini panel. This is a fabricated UI/feature — Google Meet's Gemini (Ask Gemini in Meet) does not have a voice-triggered co-presenter ",
+      "ref": "2026-09-01T18-58-55-333Z_google-workspace_Add_co-presenters_in_Google_Meet_with_one_click.json",
+      "at": "2026-09-01T19:11:33.201Z"
+    },
+    {
+      "id": "m178828996932787",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Add co-presenters in Google Meet with one click\" — javítva: The article states that Google's Gemini assistant in Meet can detect spoken trigger phrases like \"Next slide, please\" and surface a one-click co-presenter handoff suggestion in the Gemini panel. This is a fabricated UI/feature — Google Meet's Gemini (Ask Gemini in Meet) does not have a voice-triggered co-presenter handoff fe",
+      "ref": "2026-09-01T18-58-55-333Z_google-workspace_Add_co-presenters_in_Google_Meet_with_one_click.json",
+      "at": "2026-09-01T19:12:49.327Z"
+    },
+    {
+      "id": "m17882899761087",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Add co-presenters in Google Meet with one click\" (?/10)",
+      "ref": "2026-09-01T18-58-55-333Z_google-workspace_Add_co-presenters_in_Google_Meet_with_one_click.json",
+      "at": "2026-09-01T19:12:56.108Z"
+    },
+    {
+      "id": "m178828998850511",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "info",
+      "text": "A \"Add co-presenters in Google Meet with one click\" hír a meglévő útmutatóra mutat: gemini-getting-started",
+      "ref": "gemini-getting-started",
+      "at": "2026-09-01T19:13:08.505Z"
+    },
+    {
+      "id": "m178829005801431",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-09-01T19:14:18.014Z"
     }
   ]
 }

@@ -1,27 +1,4 @@
 {
-  "2026-08-08": [
-    {
-      "at": "2026-08-08T00:55:18.148Z",
-      "file": "WRITER_2026-08-08T00-50-18-674Z_picsart_Seedance_2_5_in_Picsart__cinematic_video__one_take.json",
-      "action": "block",
-      "reasons": [
-        "Claimed that Seedance 2.5 generates 'up to 30 seconds of cinematic video' in Picsart — this is an invented feature/technical specification attributed to a specific tool version.",
-        "Claimed that Seedance 2.5 produces 'native 4K' video — this is an invented technical specification attributed to a specific tool version.",
-        "Claimed that Seedance 2.5 generates 'matching audio' (music, ambient sound, or dialogue) simultaneously with video in one pass — this is an invented feature attributed to a specific tool version.",
-        "Claimed that Seedance 2.5 features 'physics-accurate lighting' — this is an invented feature attribute.",
-        "Claimed that Seedance 2.5 is 'now available inside Picsart's AI Playground and Flow' — this is an invented integration claim stated as fact."
-      ],
-      "confidence": 8
-    },
-    {
-      "at": "2026-08-08T01:06:26.934Z",
-      "file": "WRITER_GUIDE_track-your-monthly-bills-and-spot-unusual-charges-with-chatr.json",
-      "action": "hold",
-      "reasons": [
-        "AI-bíró nem elérhető (érthetetlen AI-válasz: credible mező hiányzik) — visszatartva a következő futásig"
-      ]
-    }
-  ],
   "2026-08-13": [
     {
       "at": "2026-08-13T01:16:12.810Z",
@@ -344,6 +321,18 @@
       "action": "block",
       "reasons": [
         "Recraft V4 Styles is described as a feature inside Picsart that builds a reusable style profile from uploaded reference images with Precise and Flexible modes — this is a fabricated feature/product. Picsart's AI image tools (including any Recraft integration) do not have a 'Recraft V4 Styles' feature with these described modes and a reference-image-to-style-profile workflow."
+      ],
+      "confidence": 7
+    }
+  ],
+  "2026-09-01": [
+    {
+      "at": "2026-09-01T19:11:33.202Z",
+      "file": "WRITER_2026-09-01T18-58-55-333Z_google-workspace_Add_co-presenters_in_Google_Meet_with_one_click.json",
+      "action": "block",
+      "reasons": [
+        "The article states that Google's Gemini assistant in Meet can detect spoken trigger phrases like \"Next slide, please\" and surface a one-click co-presenter handoff suggestion in the Gemini panel. This is a fabricated UI/feature — Google Meet's Gemini (Ask Gemini in Meet) does not have a voice-triggered co-presenter handoff feature with one-click approval tied to specific spoken phrases.",
+        "The article describes specific UI behavior ('a small suggestion appears in the Gemini panel asking the main presenter whether they want to add that person as a co-presenter') that does not exist in Google Meet."
       ],
       "confidence": 7
     }
