@@ -1,0 +1,62 @@
+{
+  "_meta": {
+    "written_at": "2026-09-01T12:16:44.952Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00906884,
+    "original_draft": "2026-09-01T12-08-23-921Z_pinecone_Our_support_agent_now_solves_most_tickets_without_.json",
+    "source_id": "pinecone",
+    "source_name": "Pinecone Blog (hivatalos)",
+    "source_link": "https://www.pinecone.io/blog/support-agent-nexus/",
+    "source_links": [
+      "https://www.pinecone.io/blog/support-agent-nexus/"
+    ],
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "published_at": "2026-09-01T12:25:19.456Z",
+    "slug": "ai-support-agents-now-solve-more-than-half-of-support-tickets-without-",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 699
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured news piece with a strong hook, accessible RAG explanation using the librarian analogy, and a useful three-persona 'What this means for you' section. US English verified, no clichés, no prohibited content, and the specific percentages are attributed to Pinecone's own announcement. Ready to publish.",
+      "_aiCost": 0.00141756,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-09-01T12:25:43.058Z",
+    "guide_worthy": false,
+    "pairing_reason": "case study about Pinecone's internal AI support automation with no named product for users to access",
+    "image_v": 2,
+    "image_at": "2026-09-01T12:26:13.032Z",
+    "seo": {
+      "meta_description": "AI support agents now handle 55% of tickets without humans—double the earlier rate. Pinecone's bot learned internal knowledge. What this means for your business.",
+      "keywords": [
+        "AI support agent",
+        "AI customer service automation",
+        "automated support tickets",
+        "AI help desk",
+        "Pinecone AI support",
+        "AI customer service statistics"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add a specific stat (e.g., '55%') in the first 100 words to improve click-through rates",
+        "Include 'AI customer service' as a secondary keyword in a subheading for better topical relevance",
+        "Add FAQ section addressing 'Will AI replace support agents?' to capture related search intent"
+      ],
+      "optimised_at": "2026-09-01T12:26:36.941Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"AI Support Agents Now Solve More Than Half of Support Tickets Without Humans\"\nsubtitle: \"Pinecone says its AI support agent now solves more than half of tickets alone, up from 1 in 4. Here's what changed and why it matters.\"\ncategory: \"news\"\naudience: \"both\"\nread_time_minutes: 3\ntags: [\"customer-support\", \"ai-agents\", \"business-automation\", \"pinecone\"]\n---\n\n# AI Support Agents Now Solve More Than Half of Support Tickets Without Humans\n\n> **In short:** A Pinecone-built AI support agent now resolves about 55% of customer tickets on its own, more than double its earlier rate, after the company fed it its own internal account knowledge. Support automation is moving fast, and that affects small business owners and anyone who contacts a help desk.\n\nIf you've emailed a company's support team recently and got a useful answer in under a minute, there's a good chance no human ever saw your message. AI support agents — software that reads your question, looks up the answer, and writes back — have quietly become the first line of help at a lot of companies. And according to Pinecone, the company that builds AI search tools, that trend just took a noticeable step forward.\n\n## What's new\n\nPinecone shared that its internal AI support agent, which used to resolve about 24.6% of customer tickets on its own, now resolves 55.1%. In plain English: out of every 100 support questions that come in, the AI handles 55 without any human help. That's a big jump in a short time.\n\nThe change came from what the team calls \"compiling account knowledge\" — basically gathering all of the company's scattered internal documents, account-specific notes, and past support conversations into a single searchable knowledge base. Think of it as a digital filing cabinet the AI can flip through whenever it needs to answer a question.\n\n## How it actually works\n\nA useful way to picture an AI support agent is as a librarian with perfect memory. You ask your question, and the librarian looks through every book in the building to find the answer. The trick is making sure all the books are in one place, organized well, and that the librarian knows how to search them quickly.\n\nThat's what Pinecone did. They connected the AI to all of their own internal documentation — billing systems, product guides, account-specific notes — and let it pull from those sources whenever it answered a customer. This approach is usually called RAG (retrieval-augmented generation), which just means: the AI looks up relevant information before it writes its reply, instead of trying to remember everything on its own.\n\nThe result: more accurate answers, fewer made-up responses, and a lot more tickets handled without a person in the loop.\n\n## What this means for you\n\n- **If you run a small business or side hustle**: An AI support agent that can answer most of your customer questions automatically is now realistic, not science fiction. The tools to build one have gotten dramatically easier and cheaper over the past year. Many platforms now let you upload your help docs and connect an AI in an afternoon — no developer required.\n\n- **If you work in customer support**: Your job isn't disappearing, but it is changing fast. The boring, repetitive tickets — \"where's my order,\" \"how do I reset my password\" — are exactly the ones AI handles best. The work that remains is the trickier stuff: angry customers, weird edge cases, building trust. Getting good at those is a smart bet.\n\n- **If you contact support regularly**: Expect faster first replies and shorter hold times, especially for simple questions. For complex issues you'll probably still need a human — but the AI will likely have done the research for that human, which makes the human faster too.\n\n## Wrap-up\n\nAI support agents are not a future thing — they're already handling more than half of tickets at some companies. If you run a business, this is worth exploring this month. If you work in support, this is worth preparing for. And if you're just a customer, the next time you get a surprisingly good answer from a chatbot, you'll know what's likely going on behind the scenes.",
+  "original_title": "Our support agent now solves most tickets without a human"
+}

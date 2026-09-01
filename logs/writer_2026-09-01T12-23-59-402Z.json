@@ -1,0 +1,65 @@
+{
+  "started_at": "2026-09-01T12:08:24.263Z",
+  "drafts_total": 4,
+  "articles_written": 3,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 0,
+  "merged_total": 0,
+  "skipped_repeat": 1,
+  "repeats": [
+    {
+      "cim": "4K AI Video Is Here — What It Means for Everyday Creators",
+      "mar": "AI Video Just Hit 4K: What It Means for Everyday Creators",
+      "pont": 0.9703626983666417,
+      "by": "embedding",
+      "theme": null
+    }
+  ],
+  "total_cost_usd": 0.037247180000000005,
+  "by_article": [
+    {
+      "draft": "2026-09-01T12-08-23-921Z_pinecone_Our_support_agent_now_solves_most_tickets_without_.json",
+      "writer_output": "WRITER_2026-09-01T12-08-23-921Z_pinecone_Our_support_agent_now_solves_most_tickets_without_.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.00906884,
+      "duration_ms": 487319,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-09-01T12-08-23-921Z_picsart_Gemini_Omni_1_1_Flash_lands_in_Picsart_with_4K_vid.json",
+      "success": false,
+      "reason": "repeat",
+      "repeat_of": "AI Video Just Hit 4K: What It Means for Everyday Creators",
+      "score": 0.9703626983666417,
+      "cost_usd": 0.0074049
+    },
+    {
+      "draft": "2026-09-01T12-08-23-921Z_picsart_Flux_Video_Upscale_explained__precise_and_creative.json",
+      "writer_output": "WRITER_2026-09-01T12-08-23-921Z_picsart_Flux_Video_Upscale_explained__precise_and_creative.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.01118898,
+      "duration_ms": 34044,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-09-01T12-08-23-920Z_openai-blog_OpenAI_supports_California_s_bill_to_advance_youth.json",
+      "writer_output": "WRITER_2026-09-01T12-08-23-920Z_openai-blog_OpenAI_supports_California_s_bill_to_advance_youth.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.00885576,
+      "duration_ms": 108478,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    }
+  ],
+  "finished_at": "2026-09-01T12:23:59.401Z",
+  "duration_seconds": 935.138
+}

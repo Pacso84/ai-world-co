@@ -1,86 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178814230818684",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-08-31T02:11:48.186Z",
-      "updated": "2026-08-31T02:12:06.886Z"
-    },
-    {
-      "id": "t178814232688860",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-08-31T02:12:06.888Z",
-      "updated": "2026-08-31T02:12:07.084Z"
-    },
-    {
-      "id": "t178814232708752",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-08-31T02:12:07.087Z",
-      "updated": "2026-08-31T02:12:07.260Z"
-    },
-    {
-      "id": "t178814232726210",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-31T02:12:07.262Z",
-      "updated": "2026-08-31T02:12:07.443Z"
-    },
-    {
-      "id": "t178814232744685",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-08-31T02:12:07.446Z",
-      "updated": "2026-08-31T02:12:07.673Z"
-    },
-    {
-      "id": "t178814232772137",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-31T02:12:07.721Z",
-      "updated": "2026-08-31T02:25:48.578Z"
-    },
-    {
-      "id": "t178814314858088",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-08-31T02:25:48.580Z",
-      "updated": "2026-08-31T02:27:23.313Z"
-    },
-    {
-      "id": "t178814324335616",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-31T02:27:23.356Z",
-      "updated": "2026-08-31T02:27:23.534Z"
-    },
-    {
-      "id": "t178814324353614",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-31T02:27:23.536Z",
-      "updated": "2026-08-31T02:28:08.442Z"
-    },
-    {
-      "id": "t178814328844583",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-08-31T02:28:08.445Z",
-      "updated": "2026-08-31T02:29:09.229Z"
-    },
-    {
       "id": "t178814334923224",
       "title": "Run guide",
       "status": "done",
@@ -479,33 +399,89 @@
       "agent": "publisher",
       "created": "2026-09-01T02:50:03.222Z",
       "updated": "2026-09-01T02:50:21.029Z"
+    },
+    {
+      "id": "t178826446718997",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-09-01T12:07:47.189Z",
+      "updated": "2026-09-01T12:07:47.332Z"
+    },
+    {
+      "id": "t178826446733426",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-09-01T12:07:47.334Z",
+      "updated": "2026-09-01T12:08:23.931Z"
+    },
+    {
+      "id": "t178826450393245",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-09-01T12:08:23.932Z",
+      "updated": "2026-09-01T12:08:24.089Z"
+    },
+    {
+      "id": "t178826450409110",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-09-01T12:08:24.091Z",
+      "updated": "2026-09-01T12:23:59.413Z"
+    },
+    {
+      "id": "t178826543941536",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-01T12:23:59.415Z",
+      "updated": "2026-09-01T12:25:19.466Z"
+    },
+    {
+      "id": "t178826551946830",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-09-01T12:25:19.468Z",
+      "updated": "2026-09-01T12:25:43.070Z"
+    },
+    {
+      "id": "t17882655431092",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-01T12:25:43.109Z",
+      "updated": "2026-09-01T12:26:13.069Z"
+    },
+    {
+      "id": "t178826557307038",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-09-01T12:26:13.070Z",
+      "updated": "2026-09-01T12:26:36.972Z"
+    },
+    {
+      "id": "t17882655969736",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-01T12:26:36.973Z",
+      "updated": "2026-09-01T12:26:49.867Z"
+    },
+    {
+      "id": "t178826560986955",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-09-01T12:26:49.869Z",
+      "updated": "2026-09-01T12:27:11.738Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n17873598644995",
-      "level": "success",
-      "text": "2 hír + 4 útmutató publikálva (költség: $0.0902).",
-      "agent": "ceo",
-      "at": "2026-08-22T00:51:04.499Z",
-      "loud": false
-    },
-    {
-      "id": "n178738663455133",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). Good mix overall — a solid blend of practical how-tos covering business writing, personal correspondence, and a much-needed privacy guide. One heads-up: the line-up leans heavily toward complaint/refu",
-      "agent": "publisher",
-      "at": "2026-08-22T08:17:14.551Z",
-      "loud": false
-    },
-    {
-      "id": "n178738664720952",
-      "level": "info",
-      "text": "Pipeline lefutott — ma nem volt publikálható új tartalom.",
-      "agent": "ceo",
-      "at": "2026-08-22T08:17:27.209Z",
-      "loud": false
-    },
     {
       "id": "n178741508957712",
       "level": "success",
@@ -1281,36 +1257,33 @@
       "agent": "fact-check",
       "at": "2026-09-01T02:50:43.090Z",
       "loud": false
+    },
+    {
+      "id": "n178826559696263",
+      "level": "info",
+      "text": "SEO: 3 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-09-01T12:26:36.962Z",
+      "loud": false
+    },
+    {
+      "id": "n178826562072061",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). **Publish Summary:** The lineup looks solid and ready — it has a nice mix of practical, educational, and emotionally supportive content that fits \"AI for everyday people\" perfectly. A few quick checks",
+      "agent": "publisher",
+      "at": "2026-09-01T12:27:00.720Z",
+      "loud": false
+    },
+    {
+      "id": "n178826563177256",
+      "level": "success",
+      "text": "3 hír + 0 útmutató publikálva (költség: $0.0461).",
+      "agent": "ceo",
+      "at": "2026-09-01T12:27:11.772Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178747311841736",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"This Week in AI: The 5 Stories That Matter (August 23, 2026)\" — javítva: NO_LEDE: Hiányzik a RÖVIDEN-doboz (> **In short:** …) közvetlenül a főcím után — az AI-keresők és a Google kivonat-doboza ezt olvassák (style-guide 2a).; PicsArt is mentioned as releasing an AI room redesign tool from a single photo — PicsArt is not in the verified-real list, and the article attributes a specifi",
-      "ref": "2026-08-23T00-52-32-690Z_aiworld-editorial_This_Week_in_AI.json",
-      "at": "2026-08-23T08:18:38.417Z"
-    },
-    {
-      "id": "m178747313621834",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"This Week in AI: The 5 Stories That Matter (August 23, 2026)\" (?/10)",
-      "ref": "2026-08-23T00-52-32-690Z_aiworld-editorial_This_Week_in_AI.json",
-      "at": "2026-08-23T08:18:56.218Z"
-    },
-    {
-      "id": "m17874731840330",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Use ChatGPT to Practice a Foreign Language Without Feeling Awkward\" — javítva: LEDE_TOO_LONG: A RÖVIDEN-doboz 63 szó (max ~45) — ami hosszú, az már nem \"röviden\".; Beginner clarity too low (7/10): steps are vague or could mislead a first-time user; újraküldöm.",
-      "ref": "GUIDE_use-chatgpt-to-practice-a-foreign-language-without-feeling-a.json",
-      "at": "2026-08-23T08:19:44.033Z"
-    },
     {
       "id": "m178747318403551",
       "from": "guide",
@@ -2651,6 +2624,33 @@
       "text": "5 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-09-01T03:00:18.717Z"
+    },
+    {
+      "id": "m17882656098583",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-09-01T12:26:49.858Z"
+    },
+    {
+      "id": "m178826567054469",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Getting started with ChatGPT: your first 15 minute\" — The placeholder text \"Message ChatGPT…\" — this exact wording no longer appears; The back arrow reference in Step 4 — the current UI uses different navigation icons; Some interface descriptions are too specific to an older version of ChatGPT",
+      "ref": "ARTICLE_GUIDE_chatgpt-getting-started.json",
+      "at": "2026-09-01T12:27:50.544Z"
+    },
+    {
+      "id": "m178826570758662",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"How to create and edit images in ChatGPT\" — Image generation requires a paid ChatGPT Plus subscription — it's no longer true, free users can now generate images; The interface requires finding a 'camera or paintbrush icon' or using 'Explore GPTs' to access a separate DALL-E GPT — the current interface integrates image generation directl",
+      "ref": "ARTICLE_GUIDE_chatgpt-images.json",
+      "at": "2026-09-01T12:28:27.586Z"
     }
   ]
 }

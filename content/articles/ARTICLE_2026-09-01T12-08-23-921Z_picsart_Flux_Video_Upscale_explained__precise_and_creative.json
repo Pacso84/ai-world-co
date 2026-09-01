@@ -1,0 +1,61 @@
+{
+  "_meta": {
+    "written_at": "2026-09-01T12:22:09.795Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.01118898,
+    "original_draft": "2026-09-01T12-08-23-921Z_picsart_Flux_Video_Upscale_explained__precise_and_creative.json",
+    "source_id": "picsart",
+    "source_name": "PicsArt Blog (hivatalos)",
+    "source_link": "https://picsart.com/blog/flux-video-upscale-explained/",
+    "source_links": [
+      "https://picsart.com/blog/flux-video-upscale-explained/"
+    ],
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "published_at": "2026-09-01T12:24:47.424Z",
+    "slug": "ai-video-upscaling-explained-why-mode-choice-beats-resolution",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 885
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Excellent explainer that hits every structural beat with clear, plain-language explanations of AI upscaling concepts. Technical terms are defined in context, the three-audience What this means for you section is well-segmented, and the wrap-up gives a concrete next step. No prohibited content, no clichés, no fabricated facts. Minor note: 'most tools ask you to pick a mode' is a slight overgeneralization but acceptable for an explanatory piece aimed at helping readers understand a common pattern.",
+      "_aiCost": 0.001746,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-09-01T12:25:35.159Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is a generic explainer article about AI video upscaling concepts, not news about a specific named tool or feature. No particular product is introduced that users could go use.",
+    "image_v": 2,
+    "image_at": "2026-09-01T12:26:00.515Z",
+    "seo": {
+      "meta_description": "Learn how AI video upscaling works. Understand precise vs creative mode and pick the right setting for your footage.",
+      "keywords": [
+        "AI video upscaling explained",
+        "what is AI video upscaling",
+        "precise vs creative mode upscaling",
+        "AI video enhancer tutorial",
+        "upscale video to 4K"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more long-tail keywords naturally throughout the article like 'how to fix blurry video' and 'improve video quality with AI'",
+        "Consider adding FAQ schema or a Q&A section targeting common search queries about video upscaling",
+        "Include specific tool names in the content (e.g., Topaz, Runway) that people actually search for"
+      ],
+      "optimised_at": "2026-09-01T12:26:33.935Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"AI Video Upscaling Explained: Why Mode Choice Beats Resolution\"\nsubtitle: \"A clear, plain-language look at how AI video upscalers actually work, what precise and creative modes really do, and how to pick the right one for your footage.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"video-upscaling\", \"ai-video\", \"creative-tools\", \"video-editing\"]\n---\n\n# AI Video Upscaling Explained: Why Mode Choice Beats Resolution\n\n> **In short:** AI video upscaling rebuilds a low-res clip toward a higher resolution (often up to 4K). Most tools ask you to pick between \"precise\" (preserve the original) and \"creative\" (let the AI add detail). That one choice changes your result more than the resolution setting does.\n\nYou've probably hit this before: an old family clip looks soft and pixelated, a downloaded video is only 720p, or you shot something on a phone that just isn't sharp enough for the project you're working on. AI video upscaling promises to fix that — to take a low-res clip and rebuild it toward 4K (a screen size of roughly 3840 by 2160 pixels, with about four times the detail of 1080p). The trick is that \"upscale\" is doing more work than it sounds, and one decision in the tool quietly changes everything.\n\n## What \"AI upscaling\" actually means\n\nTraditional upscaling (the kind your TV or phone does by default) just stretches the pixels it has — like blowing up a small photo. You get a bigger image, but no new detail. It's fast, and it's free of surprises.\n\nAI upscaling is different. The tool has been trained on millions of frames (the still images that make up a video, one for every moment of footage), so it has learned what skin, hair, brick walls, leaves, and text usually look like at higher resolution. When you feed it your low-res clip, it doesn't just stretch — it tries to **guess** what the missing detail should be, frame by frame, then stitches them back into smooth motion.\n\nThat guesswork is what makes the result look genuinely sharper. It's also where things can quietly go wrong.\n\n## The two modes: precise vs creative\n\nMost modern AI upscalers ask you to pick a mode before they start. Two flavors show up again and again:\n\n- **Precise mode** stays loyal to the original clip. The AI smooths edges, cleans up compression artifacts (the blocky squares you sometimes see in heavily compressed video), and sharpens what's already there — but it won't invent new detail. A face stays the same face. A logo stays the same logo. This is the safer choice for archival footage, talking heads, or anything where accuracy matters.\n- **Creative mode** lets the AI fill in more aggressively. It might add pores to a face, sharpen text that was blurry, even out a brick wall, or pull detail out of foliage that wasn't really there. The clip looks crisper, sometimes dramatically so — but the AI is essentially **redrawing** parts of every frame. A grandmother's face might come back looking like a slightly different person. A logo might say something subtly off.\n\nNeither mode is \"better.\" They're different tools for different jobs. The single biggest mistake people make is choosing creative mode by default because the preview looks more impressive, then wondering later why faces don't quite look right.\n\n## Which mode to pick (a quick guide)\n\n- **Old family videos, weddings, archival footage** → precise. You want the people you love to still look like themselves.\n- **CCTV, dashcam, security footage** → precise. You need what's actually there, not what the AI thinks might be.\n- **B-roll** (the scenic or supporting footage you layer into an edit), **landscapes, generic backgrounds** → creative often works beautifully. There's less at stake if a leaf gets redrawn.\n- **Stylized animation, video game captures, drone footage** → start with precise, try creative on a short test clip, then decide.\n- **Any clip with faces that matter** → precise, unless you're going for a stylized look and you don't mind the change.\n\n## What this means for you\n\n- **If you're saving family memories**: Use precise mode. The sharpness upgrade is real, but the people stay recognizable. Always run a 10-second test first before committing to a longer render.\n- **If you create content for work**: Build the choice into your workflow. Match the mode to the footage — precise for interviews and product shots, creative for b-roll and backgrounds you control. Always export a short test before a long render.\n- **If you're just curious**: Upload a short test clip and try both modes side by side. The difference is something you really need to see, not just read about.\n\n## Wrap-up\n\nAI video upscaling is one of the most genuinely useful AI tools for ordinary people, because almost everyone has old or low-res footage they'd love to see in better quality. Just remember the rule: pick the mode on purpose, not by default. The resolution slider (the control that sets how big the final video will be) matters far less than the choice between precise and creative. That one decision is the difference between a sharper version of the clip you have, and a clip that's been quietly redrawn. Try a 10-second test in both modes tonight — that's all it takes to see the difference for yourself.",
+  "original_title": "Flux Video Upscale explained: precise and creative modes up to 4K"
+}
