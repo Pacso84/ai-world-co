@@ -547,6 +547,7 @@
     "edzéstervedet",
     "edzéstervekbe",
     "edzéstervet",
+    "edzéstervező",
     "edzéstervvel",
     "edzéstípushoz",
     "edzéstípust",
@@ -568,6 +569,7 @@
     "ekről",
     "elborzadult",
     "elevenlabs",
+    "elfoglaltságok",
     "elfoglaltságokat",
     "elfogultságokat",
     "ellenérvet",
@@ -1030,6 +1032,7 @@
     "kettősséget",
     "keyframe-eket",
     "kezdőprompt",
+    "kezdőtervet",
     "khoz",
     "kifejezőképességet",
     "kifutottok",
@@ -1087,6 +1090,7 @@
     "kutatólaborokból",
     "károkat",
     "kártyakötegelten",
+    "kártyaszöveget",
     "kávéspoharat",
     "képanyagok",
     "képernyőmegosztásos",
@@ -1630,6 +1634,7 @@
     "promptmezőjébe",
     "promptmezőt",
     "promptmezővel",
+    "promptminta",
     "promptmérnöknek",
     "promptolj",
     "promptolt",
@@ -2069,6 +2074,7 @@
     "tomoríteni",
     "tooltip",
     "topic-ot",
+    "tortalehetőséget",
     "touchot",
     "touchpaddel",
     "trackpaddel",
@@ -2245,6 +2251,7 @@
     "vlogoknál",
     "voice-overrel",
     "válasszd",
+    "válaszata",
     "válaszsorokkal",
     "vászgépnek",
     "vászonnyal",
@@ -2426,6 +2433,7 @@
     "ügyfélmegállapodásokban",
     "ügyfélmegállapodásokra",
     "ügyfélprezentáción",
+    "ügyintézel",
     "ünnepségen",
     "ütemtervet",
     "üveget",
@@ -4434,11 +4442,21 @@
       "correct": "amelyekre",
       "at": "2026-08-31",
       "mondattal": true
+    },
+    "összebegélnek": {
+      "correct": "összebeszélnek",
+      "at": "2026-09-01",
+      "mondattal": true
+    },
+    "jegyz": {
+      "correct": "jegyzetet",
+      "at": "2026-09-01",
+      "mondattal": true
     }
   },
   "scan": {
-    "at": "2026-08-31",
-    "files": 856,
-    "candidates": 7
+    "at": "2026-09-01",
+    "files": 861,
+    "candidates": 10
   }
 }
