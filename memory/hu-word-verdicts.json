@@ -204,6 +204,7 @@
     "boldogan",
     "bosszúságod",
     "bosszúságodat",
+    "bosszúságokat",
     "bosszúságokra",
     "botlazol",
     "boxok",
@@ -410,6 +411,7 @@
     "csomagokon",
     "csomagokról",
     "csomagom",
+    "csomagommal",
     "csomagon",
     "csomagonként",
     "csomagunkon",
@@ -577,6 +579,7 @@
     "elfoglaltságokat",
     "elfogultságokat",
     "ellenérvet",
+    "elsiklandó",
     "elsímítja",
     "elsővonalbeli",
     "elégedettséget",
@@ -776,6 +779,8 @@
     "gyártósorra",
     "hackathonok",
     "hackelés",
+    "hackelésben",
+    "hackelésre",
     "hackertoolsá",
     "hajtanivaló",
     "hallatát",
@@ -931,6 +936,7 @@
     "információtömegen",
     "inget",
     "ingyenebéd",
+    "injectiont",
     "inkluzívabb",
     "inkognító",
     "inolj",
@@ -1287,6 +1293,7 @@
     "mailé",
     "mailírás",
     "makerspace",
+    "managereddel",
     "mappböngészőre",
     "marginjaid",
     "marginok",
@@ -1402,6 +1409,7 @@
     "naptárappedben",
     "naptárappedet",
     "naptárapplikációt",
+    "naptérv",
     "narrált",
     "narrálásához",
     "nassolnivaló",
@@ -1549,6 +1557,7 @@
     "panaszemes",
     "papirrepulo",
     "papírepülő",
+    "papírod",
     "papírok",
     "papíron",
     "paraméteren",
@@ -1589,6 +1598,7 @@
     "pointban",
     "pointek",
     "pointeket",
+    "polúr",
     "portlandi",
     "posthoz",
     "pozcióban",
@@ -1753,6 +1763,7 @@
     "robotikus",
     "robotikusan",
     "robotikusnak",
+    "rosszok",
     "routine-ját",
     "rovarokat",
     "rutinek",
@@ -1922,6 +1933,7 @@
     "szenzorok",
     "szenzorokat",
     "szenzorokra",
+    "szept",
     "szereplés",
     "szerkesztettetni",
     "szerveren",
@@ -2139,6 +2151,7 @@
     "többmillió",
     "tökéletességet",
     "töltelékszöveget",
+    "tömeget",
     "történetmagod",
     "történetmagokkal",
     "történetmagoknak",
@@ -2174,6 +2187,7 @@
     "vacsoramenu",
     "vacsoratervet",
     "vacsoraötélet",
+    "vacsorihra",
     "vacsorterv",
     "vacsortervet",
     "vadvirágokat",
@@ -2182,6 +2196,7 @@
     "valóságellenőrzés",
     "valóságellenőrzést",
     "valósághűségen",
+    "valóságoddal",
     "valóságodhoz",
     "vastagabb",
     "vastagon",
@@ -2264,6 +2279,7 @@
     "válasszd",
     "válaszata",
     "válaszsorokkal",
+    "várostervet",
     "vászgépnek",
     "vászonnyal",
     "végereménnyel",
@@ -2277,6 +2293,7 @@
     "vízfestményré",
     "vízvezetékszerelőt",
     "walkie",
+    "webhosztingért",
     "webináriumhoz",
     "weboldalszöveget",
     "westpac",
@@ -2333,6 +2350,7 @@
     "ársávokat",
     "áteresztőképességet",
     "átfussd",
+    "átgondultan",
     "átlagodnál",
     "átlagok",
     "átlagokat",
@@ -2343,6 +2361,7 @@
     "égen",
     "éhséget",
     "élelmiszeren",
+    "élelmiszerkezelői",
     "élelmiszerpazarlás",
     "élelmiszerpazarlást",
     "éleslátóak",
@@ -2368,6 +2387,7 @@
     "észrevenné",
     "észrevennéd",
     "észrevennék",
+    "észrevennél",
     "észrevenzed",
     "észrevesz",
     "észreveszed",
@@ -2388,6 +2408,7 @@
     "óránél",
     "óvatosságod",
     "ömljenek",
+    "önvezetett",
     "önéletrajc",
     "össz-céges",
     "összefoglalókészítéshez",
@@ -3454,6 +3475,21 @@
       "correct": "vászon",
       "at": "2026-08-30",
       "mondattal": true
+    },
+    "assisztens": {
+      "correct": "asszisztens",
+      "at": "2026-09-02",
+      "mondattal": true
+    },
+    "kreativ": {
+      "correct": "kreatív",
+      "at": "2026-09-02",
+      "mondattal": true
+    },
+    "csaladi": {
+      "correct": "családi",
+      "at": "2026-09-02",
+      "mondattal": true
     }
   },
   "review": {
@@ -4468,11 +4504,51 @@
       "correct": "vizsgálatot",
       "at": "2026-09-01",
       "mondattal": true
+    },
+    "bánl": {
+      "correct": "ban",
+      "at": "2026-09-02",
+      "mondattal": true
+    },
+    "alulán": {
+      "correct": "alul egy",
+      "at": "2026-09-02",
+      "mondattal": true
+    },
+    "termelösletes": {
+      "correct": "terméletes",
+      "at": "2026-09-02",
+      "mondattal": true
+    },
+    "yszedni": {
+      "correct": "megunni",
+      "at": "2026-09-02",
+      "mondattal": true
+    },
+    "isbanen": {
+      "correct": "istenten",
+      "at": "2026-09-02",
+      "mondattal": true
+    },
+    "megbeszélünket": {
+      "correct": "megbeszélésünket",
+      "at": "2026-09-02",
+      "mondattal": true
+    },
+    "szakaszsá": {
+      "correct": "szakaszba",
+      "at": "2026-09-02",
+      "mondattal": true
+    },
+    "kössz": {
+      "correct": "kös",
+      "at": "2026-09-02",
+      "mondattal": true
     }
   },
   "scan": {
-    "at": "2026-09-01",
-    "files": 867,
-    "candidates": 6
+    "at": "2026-09-02",
+    "files": 875,
+    "candidates": 32
   }
 }

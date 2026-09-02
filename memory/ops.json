@@ -1285,17 +1285,6 @@
   ],
   "messages": [
     {
-      "id": "m178756059896743",
-      "from": "guide",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Kell még adat: \"Ask plain-English questions about a long PDF using Hugging Face's free document Q&A\" — az Ellenőrző tényt/forrást kér, amit nem találhatok ki: Minor tool naming ambiguity: metadata says 'Hugging Face's free document Q&A' but article calls it 'Hugging Chat'. Consider clarifying they're the same thing or matching the names",
-      "ref": "GUIDE_ask-plain-english-questions-about-a-long-pdf-using-hugging-f.json",
-      "open": false,
-      "at": "2026-08-24T08:36:38.967Z",
-      "resolved_at": "2026-08-24T08:38:06.229Z"
-    },
-    {
       "id": "m178756065407041",
       "from": "guide",
       "to": "ellenorzo",
@@ -2647,6 +2636,15 @@
       "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Getting started with Claude for clear, careful hel\" — Claude was trained to be 'helpful, harmless, and honest' — this was Anthropic's old framing (the \"HHH\" framework). They've since evolved their approach and this phrase is no longer accurate as a current description.; The guide describes the login process using 'login code' via email ",
       "ref": "ARTICLE_GUIDE_claude-getting-started.json",
       "at": "2026-09-02T02:18:08.604Z"
+    },
+    {
+      "id": "m178831623424295",
+      "from": "social",
+      "to": "team",
+      "kind": "info",
+      "text": "6 közösségi poszt megírva (Facebook)",
+      "ref": null,
+      "at": "2026-09-02T02:30:34.242Z"
     }
   ]
 }
