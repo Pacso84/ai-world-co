@@ -1,86 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178821099457579",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-31T21:16:34.575Z",
-      "updated": "2026-08-31T21:16:43.774Z"
-    },
-    {
-      "id": "t17882110037768",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-08-31T21:16:43.776Z",
-      "updated": "2026-08-31T21:16:49.730Z"
-    },
-    {
-      "id": "t178821100973245",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-08-31T21:16:49.732Z",
-      "updated": "2026-08-31T21:16:54.835Z"
-    },
-    {
-      "id": "t178821101483798",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-08-31T21:16:54.837Z",
-      "updated": "2026-08-31T21:17:16.340Z"
-    },
-    {
-      "id": "t178822986147897",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-09-01T02:31:01.478Z",
-      "updated": "2026-09-01T02:31:01.615Z"
-    },
-    {
-      "id": "t178822986161793",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-09-01T02:31:01.617Z",
-      "updated": "2026-09-01T02:31:33.627Z"
-    },
-    {
-      "id": "t178822989362843",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-09-01T02:31:33.628Z",
-      "updated": "2026-09-01T02:31:33.782Z"
-    },
-    {
-      "id": "t17882298937831",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-09-01T02:31:33.783Z",
-      "updated": "2026-09-01T02:36:03.672Z"
-    },
-    {
-      "id": "t178823016367374",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-01T02:36:03.673Z",
-      "updated": "2026-09-01T02:36:22.584Z"
-    },
-    {
-      "id": "t178823018258613",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-09-01T02:36:22.586Z",
-      "updated": "2026-09-01T02:36:30.080Z"
-    },
-    {
       "id": "t17882301901197",
       "title": "Run guide",
       "status": "done",
@@ -479,33 +399,89 @@
       "agent": "publisher",
       "created": "2026-09-02T02:16:57.792Z",
       "updated": "2026-09-02T02:17:18.221Z"
+    },
+    {
+      "id": "t17883508666006",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-09-02T12:07:46.600Z",
+      "updated": "2026-09-02T12:07:46.780Z"
+    },
+    {
+      "id": "t178835086678170",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-09-02T12:07:46.781Z",
+      "updated": "2026-09-02T12:08:15.648Z"
+    },
+    {
+      "id": "t178835089564921",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-09-02T12:08:15.649Z",
+      "updated": "2026-09-02T12:08:15.853Z"
+    },
+    {
+      "id": "t178835089585515",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-09-02T12:08:15.855Z",
+      "updated": "2026-09-02T12:19:01.160Z"
+    },
+    {
+      "id": "t17883515411627",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-02T12:19:01.162Z",
+      "updated": "2026-09-02T12:19:22.664Z"
+    },
+    {
+      "id": "t178835156266783",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-09-02T12:19:22.667Z",
+      "updated": "2026-09-02T12:19:29.198Z"
+    },
+    {
+      "id": "t178835156924856",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-02T12:19:29.248Z",
+      "updated": "2026-09-02T12:19:37.412Z"
+    },
+    {
+      "id": "t178835157741423",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-09-02T12:19:37.414Z",
+      "updated": "2026-09-02T12:19:46.748Z"
+    },
+    {
+      "id": "t17883515867497",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-02T12:19:46.749Z",
+      "updated": "2026-09-02T12:20:03.951Z"
+    },
+    {
+      "id": "t178835160395495",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-09-02T12:20:03.954Z",
+      "updated": "2026-09-02T12:20:27.513Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178747328223769",
-      "level": "success",
-      "text": "1 hír + 1 útmutató publikálva (költség: $0.0079).",
-      "agent": "ceo",
-      "at": "2026-08-23T08:21:22.238Z",
-      "loud": false
-    },
-    {
-      "id": "n178750160219064",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The lineup looks solid and ready to go! It nicely balances practical how-to guides with helpful life moments (sympathy messages, thank-you speeches). One note: with 7 different AI tools featured, a qu",
-      "agent": "publisher",
-      "at": "2026-08-23T16:13:22.190Z",
-      "loud": false
-    },
-    {
-      "id": "n17875016147628",
-      "level": "info",
-      "text": "Pipeline lefutott — ma nem volt publikálható új tartalom.",
-      "agent": "ceo",
-      "at": "2026-08-23T16:13:34.762Z",
-      "loud": false
-    },
     {
       "id": "n178753225732337",
       "level": "warn",
@@ -1281,38 +1257,33 @@
       "agent": "ceo",
       "at": "2026-09-02T02:17:18.264Z",
       "loud": false
+    },
+    {
+      "id": "n178835158673797",
+      "level": "info",
+      "text": "SEO: 1 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-09-02T12:19:46.737Z",
+      "loud": false
+    },
+    {
+      "id": "n178835161330787",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). **Publish Summary:**\n\nThe line-up looks great — practical, everyday use cases that real people actually need, covering a nice mix of AI tools (Le Chat, ChatRTX, DeepSeek, Grok, ChatGPT, Cohere, Qwen).",
+      "agent": "publisher",
+      "at": "2026-09-02T12:20:13.307Z",
+      "loud": false
+    },
+    {
+      "id": "n178835162755470",
+      "level": "success",
+      "text": "1 hír + 0 útmutató publikálva (költség: $0.0231).",
+      "agent": "ceo",
+      "at": "2026-09-02T12:20:27.554Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178756065407041",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Spot the mood behind customer reviews with Hugging Face's free sentiment tool\" — javítva: HOWTO_TOO_LONG: 2150 szó (~10.8 perc olvasás) — a cél 1000-1400 szó, a felső kapu 1700. A Facebookról érkező mobilolvasó ennyit ritkán olvas végig.; UI_CLAIMS_UNSOURCED: 3 konkrét képernyő-feliratot állít tényként forrás nélkül (\"hosted inference api\", \"compute\", \"data → sort range\"). Vagy nézd ",
-      "ref": "GUIDE_spot-the-mood-behind-customer-reviews-with-hugging-face-s-fr.json",
-      "at": "2026-08-24T08:37:34.070Z"
-    },
-    {
-      "id": "m178756065407126",
-      "from": "guide",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Kell még adat: \"Spot the mood behind customer reviews with Hugging Face's free sentiment tool\" — az Ellenőrző tényt/forrást kér, amit nem találhatok ki: UI_CLAIMS_UNSOURCED: 3 konkrét képernyő-feliratot állít tényként forrás nélkül (\"hosted inference api\", \"compute\", \"data → sort range\"). Vagy nézd meg a hivatalos oldalon, vagy írd hedge-elve (\"if you don't see…\").",
-      "ref": "GUIDE_spot-the-mood-behind-customer-reviews-with-hugging-face-s-fr.json",
-      "open": false,
-      "at": "2026-08-24T08:37:34.071Z",
-      "resolved_at": "2026-08-24T08:38:32.114Z"
-    },
-    {
-      "id": "m178756068622882",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Ask plain-English questions about a long PDF using Hugging Face's free document Q&A\" (?/10)",
-      "ref": "GUIDE_ask-plain-english-questions-about-a-long-pdf-using-hugging-f.json",
-      "at": "2026-08-24T08:38:06.228Z"
-    },
     {
       "id": "m178756071211365",
       "from": "ellenorzo",
@@ -2645,6 +2616,33 @@
       "text": "6 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-09-02T02:30:34.242Z"
+    },
+    {
+      "id": "m178835156918296",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "info",
+      "text": "A \"Introducing MiniMax H3 Max: fast AI video in Picsart\" hír a meglévő útmutatóra mutat: create-royalty-free-ai-music-loops-for-podcasts-and-videos-b",
+      "ref": "create-royalty-free-ai-music-loops-for-podcasts-and-videos-b",
+      "at": "2026-09-02T12:19:29.182Z"
+    },
+    {
+      "id": "m178835160393882",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-09-02T12:20:03.938Z"
+    },
+    {
+      "id": "m178835166160135",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"How to use Claude Artifacts to create and preview \" — The description of the Artifacts pane appearing on the right side of the screen (Step 2, Step 4, Step 5) — this UI no longer exists. Artifacts now appear inline within the conversation, not in a separate right-side pane; The 'Artifacts button' icon described as 'a small stack of pape",
+      "ref": "ARTICLE_GUIDE_claude-artifacts.json",
+      "at": "2026-09-02T12:21:01.601Z"
     }
   ]
 }
