@@ -1,102 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t17882301901197",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-09-01T02:36:30.119Z",
-      "updated": "2026-09-01T02:45:36.833Z"
-    },
-    {
-      "id": "t178823073683451",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-01T02:45:36.834Z",
-      "updated": "2026-09-01T02:47:17.322Z"
-    },
-    {
-      "id": "t178823083735695",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-01T02:47:17.356Z",
-      "updated": "2026-09-01T02:48:15.863Z"
-    },
-    {
-      "id": "t178823089586423",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-09-01T02:48:15.864Z",
-      "updated": "2026-09-01T02:49:46.015Z"
-    },
-    {
-      "id": "t178823098601796",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-01T02:49:46.017Z",
-      "updated": "2026-09-01T02:50:03.220Z"
-    },
-    {
-      "id": "t178823100322210",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-09-01T02:50:03.222Z",
-      "updated": "2026-09-01T02:50:21.029Z"
-    },
-    {
-      "id": "t178826446718997",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-09-01T12:07:47.189Z",
-      "updated": "2026-09-01T12:07:47.332Z"
-    },
-    {
-      "id": "t178826446733426",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-09-01T12:07:47.334Z",
-      "updated": "2026-09-01T12:08:23.931Z"
-    },
-    {
-      "id": "t178826450393245",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-09-01T12:08:23.932Z",
-      "updated": "2026-09-01T12:08:24.089Z"
-    },
-    {
-      "id": "t178826450409110",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-09-01T12:08:24.091Z",
-      "updated": "2026-09-01T12:23:59.413Z"
-    },
-    {
-      "id": "t178826543941536",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-01T12:23:59.415Z",
-      "updated": "2026-09-01T12:25:19.466Z"
-    },
-    {
-      "id": "t178826551946830",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-09-01T12:25:19.468Z",
-      "updated": "2026-09-01T12:25:43.070Z"
-    },
-    {
       "id": "t17882655431092",
       "title": "Run designer",
       "status": "done",
@@ -479,41 +383,105 @@
       "agent": "publisher",
       "created": "2026-09-02T12:20:03.954Z",
       "updated": "2026-09-02T12:20:27.513Z"
+    },
+    {
+      "id": "t178835238502666",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-09-02T12:33:05.026Z",
+      "updated": "2026-09-02T12:33:05.211Z"
+    },
+    {
+      "id": "t178835238521265",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-09-02T12:33:05.212Z",
+      "updated": "2026-09-02T12:33:35.130Z"
+    },
+    {
+      "id": "t178835241513253",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-09-02T12:33:35.132Z",
+      "updated": "2026-09-02T12:33:35.335Z"
+    },
+    {
+      "id": "t178835241533749",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-09-02T12:33:35.337Z",
+      "updated": "2026-09-02T12:35:37.933Z"
+    },
+    {
+      "id": "t178835253793563",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-02T12:35:37.935Z",
+      "updated": "2026-09-02T12:36:51.954Z"
+    },
+    {
+      "id": "t178835261195725",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-09-02T12:36:51.957Z",
+      "updated": "2026-09-02T12:37:28.118Z"
+    },
+    {
+      "id": "t178835264812027",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-02T12:37:28.120Z",
+      "updated": "2026-09-02T12:37:58.234Z"
+    },
+    {
+      "id": "t178835267823618",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-09-02T12:37:58.237Z",
+      "updated": "2026-09-02T12:38:14.983Z"
+    },
+    {
+      "id": "t178835269503626",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-02T12:38:15.036Z",
+      "updated": "2026-09-02T12:38:41.992Z"
+    },
+    {
+      "id": "t178835272199391",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-09-02T12:38:41.993Z",
+      "updated": "2026-09-02T12:38:51.976Z"
+    },
+    {
+      "id": "t178835273197878",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-02T12:38:51.978Z",
+      "updated": "2026-09-02T12:39:04.451Z"
+    },
+    {
+      "id": "t178835274445393",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-09-02T12:39:04.453Z",
+      "updated": "2026-09-02T12:39:27.918Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178753225732337",
-      "level": "warn",
-      "text": "📨 ellenorzo → guide: Hiányos / kell még adat: \"Ask plain-English questions about a long PDF using Hugging Face's free document Q&A\" — egészít",
-      "agent": "ellenorzo",
-      "at": "2026-08-24T00:44:17.323Z",
-      "loud": false
-    },
-    {
-      "id": "n178753278765231",
-      "level": "info",
-      "text": "SEO: 4 cikk optimalizálva (átlag 8.5/10).",
-      "agent": "seo",
-      "at": "2026-08-24T00:53:07.652Z",
-      "loud": false
-    },
-    {
-      "id": "n178753280974044",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The line-up looks good — practical, varied (from privacy to heartfelt messages), and genuinely useful for everyday people. Just one quick check: is \"Le Chat\" the shortest official name, or should it b",
-      "agent": "publisher",
-      "at": "2026-08-24T00:53:29.740Z",
-      "loud": false
-    },
-    {
-      "id": "n178753282020527",
-      "level": "success",
-      "text": "0 hír + 4 útmutató publikálva (költség: $0.0866).",
-      "agent": "ceo",
-      "at": "2026-08-24T00:53:40.205Z",
-      "loud": false
-    },
     {
       "id": "n178756059896742",
       "level": "warn",
@@ -1281,54 +1249,41 @@
       "agent": "ceo",
       "at": "2026-09-02T12:20:27.554Z",
       "loud": false
+    },
+    {
+      "id": "n178835269242951",
+      "level": "warn",
+      "text": "📨 pairing → guide: Új funkció-hír → kéne hozzá útmutató: \"How to use Kling AI video templates in Picsart Flow\"",
+      "agent": "pairing",
+      "at": "2026-09-02T12:38:12.429Z",
+      "loud": false
+    },
+    {
+      "id": "n17883527319662",
+      "level": "info",
+      "text": "SEO: 2 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-09-02T12:38:51.966Z",
+      "loud": false
+    },
+    {
+      "id": "n178835275359219",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The lineup looks solid and ready — practical, everyday AI use cases that match your \"AI for everyone\" mission. One small note: Article 6 (Resume) doesn't mention a specific tool like the others do, so",
+      "agent": "publisher",
+      "at": "2026-09-02T12:39:13.592Z",
+      "loud": false
+    },
+    {
+      "id": "n178835276796345",
+      "level": "success",
+      "text": "2 hír + 0 útmutató publikálva (költség: $0.0308).",
+      "agent": "ceo",
+      "at": "2026-09-02T12:39:27.963Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178756077251928",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-08-24T08:39:32.519Z"
-    },
-    {
-      "id": "m178756094713896",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Ask Alexa+ to explain the news headlines in simple\" — The guide claims you can customize Flash Briefing order by 'drag and drop' — recent Alexa app versions have changed this interface and may not support drag-and-drop the same way; Some individual news skills mentioned have been discontinued or rebranded over time, and specific skill n",
-      "ref": "ARTICLE_GUIDE_ask-alexa-to-explain-the-news-headlines-in-simple-terms-ever.json",
-      "at": "2026-08-24T08:42:27.138Z"
-    },
-    {
-      "id": "m178756143053529",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "2 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-08-24T08:50:30.535Z"
-    },
-    {
-      "id": "m178758925060545",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Agentic Resource Discovery (ARD): An open specification for agent discovery\" — mi a baj: LEDE_TOO_LONG: A RÖVIDEN-doboz 61 szó (max ~45) — ami hosszú, az már nem \"röviden\".; The article describes AWS as having launched a specific product called \"Agent Registry\" built on an \"Agentic Resource Discovery (ARD)\" open specification. No such AWS product or ARD standard is known to ",
-      "ref": "2026-08-24T16-23-52-028Z_aws-ml_Agentic_Resource_Discovery__ARD___An_open_specific.json",
-      "at": "2026-08-24T16:34:10.605Z"
-    },
-    {
-      "id": "m17875892875787",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Up to 30x More Work Per Watt: NVIDIA Vera Rubin NVL72 Sets a New Efficiency Standard for AI Agents\" — mi a baj: The article cites data attributed to OpenRouter as fact: 'According to data shared by OpenRouter... the average AI agent task uses about 15 times more tokens than a simple chat message.' This specific 15x statistic and its attribution to OpenRouter is presented as ",
-      "ref": "2026-08-24T16-23-52-028Z_nvidia-blog_Up_to_30x_More_Work_Per_Watt__NVIDIA_Vera_Rubin_NV.json",
-      "at": "2026-08-24T16:34:47.578Z"
-    },
     {
       "id": "m178758956986746",
       "from": "iro",
@@ -2636,13 +2591,59 @@
       "at": "2026-09-02T12:21:01.601Z"
     },
     {
-      "id": "m178835232528265",
-      "from": "social",
-      "to": "team",
+      "id": "m178835261175144",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Qwen Image 3.0 Pro is now in Picsart: what it does and how to use it\" — mi a baj: The article presents 'Qwen Image 3.0 Pro' as Alibaba's top image-generation model with a specific version number, but this model name does not match known Qwen product naming conventions (Qwen's lineup uses patterns like Qwen2.5, Qwen-VL, Qwen2-VL) and cannot be verified as a real, officially n",
+      "ref": "2026-09-02T12-33-35-117Z_picsart_Qwen_Image_3_0_Pro_is_now_in_Picsart__what_it_does.json",
+      "at": "2026-09-02T12:36:51.751Z"
+    },
+    {
+      "id": "m178835264810814",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Qwen Image 3.0 Pro is now in Picsart: what it does and how to use it\" — javítva: The article presents 'Qwen Image 3.0 Pro' as Alibaba's top image-generation model with a specific version number, but this model name does not match known Qwen product naming conventions (Qwen's lineup uses patterns like Qwen2.5, Qwen-VL, Qwen2-VL) and cannot be verified as a real, officially named produ",
+      "ref": "2026-09-02T12-33-35-117Z_picsart_Qwen_Image_3_0_Pro_is_now_in_Picsart__what_it_does.json",
+      "at": "2026-09-02T12:37:28.108Z"
+    },
+    {
+      "id": "m178835267822057",
+      "from": "ellenorzo",
+      "to": "iro",
       "kind": "info",
-      "text": "3 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-09-02T12:32:05.282Z"
+      "text": "Rendben ✓ átment: \"Qwen Image 3.0 Pro is now in Picsart: what it does and how to use it\" (?/10)",
+      "ref": "2026-09-02T12-33-35-117Z_picsart_Qwen_Image_3_0_Pro_is_now_in_Picsart__what_it_does.json",
+      "at": "2026-09-02T12:37:58.220Z"
+    },
+    {
+      "id": "m178835269242978",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "need",
+      "text": "Új funkció-hír → kéne hozzá útmutató: \"How to use Kling AI video templates in Picsart Flow\"",
+      "ref": "how-to-use-kling-ai-video-templates-in-picsart-flow",
+      "open": true,
+      "at": "2026-09-02T12:38:12.429Z"
+    },
+    {
+      "id": "m178835274444134",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-09-02T12:39:04.441Z"
+    },
+    {
+      "id": "m178835280432334",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"How to use Claude Projects to keep your work organ\" — The specific UI icons described (grid of four squares, speech-bubble, paper-clip, cloud icon, person-plus) — these are invented details that cannot be verified; The claim that 'The free tier includes Projects' — this cannot be confirmed from provided sources; The step-by-step details",
+      "ref": "ARTICLE_GUIDE_claude-projects.json",
+      "at": "2026-09-02T12:40:04.323Z"
     }
   ]
 }

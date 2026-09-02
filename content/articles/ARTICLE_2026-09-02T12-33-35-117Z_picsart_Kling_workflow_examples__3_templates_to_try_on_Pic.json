@@ -1,0 +1,63 @@
+{
+  "_meta": {
+    "written_at": "2026-09-02T12:35:37.919Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00836148,
+    "original_draft": "2026-09-02T12-33-35-117Z_picsart_Kling_workflow_examples__3_templates_to_try_on_Pic.json",
+    "source_id": "picsart",
+    "source_name": "PicsArt Blog (hivatalos)",
+    "source_link": "https://picsart.com/blog/kling-workflow-examples/",
+    "source_links": [
+      "https://picsart.com/blog/kling-workflow-examples/"
+    ],
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "published_at": "2026-09-02T12:36:13.619Z",
+    "slug": "how-ai-video-templates-turn-a-photo-a-character-or-a-script-into-a-cli",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 947
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Solid explainer with strong structure, clear explanations of technical terms, helpful segmentation in the What this means for you section, and a concrete next step in the wrap-up. No factual concerns, no prohibited content, no clichés. Passes all quality gates.",
+      "_aiCost": 0.0018123,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-09-02T12:38:12.428Z",
+    "guide_worthy": true,
+    "related_guide_topic": "how-to-use-kling-ai-video-templates-in-picsart-flow",
+    "image_v": 2,
+    "image_at": "2026-09-02T12:38:29.573Z",
+    "seo": {
+      "meta_description": "Learn how Kling AI video templates in Picsart Flow turn your photos, character sketches, or scripts into ready-to-use video clips. Perfect for beginners.",
+      "keywords": [
+        "AI video templates",
+        "how to make AI video from photo",
+        "Picsart Flow AI video",
+        "Kling AI video generator",
+        "turn character into video AI",
+        "script to video AI tool",
+        "AI video for beginners"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Shorten title to under 60 characters for better SERP visibility — try 'How AI Video Templates Work: Photo to Clip Guide'",
+        "Add an FAQ section addressing common beginner questions like 'Do I need technical skills?' to capture featured snippet opportunities",
+        "Include actual video output examples or timestamps in the subtitle to build trust and demonstrate results"
+      ],
+      "optimised_at": "2026-09-02T12:38:46.287Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"How AI Video Templates Turn a Photo, a Character, or a Script into a Clip\"\nsubtitle: \"Kling runs inside Picsart Flow as three ready-made templates. Here's what each one is actually doing under the hood, and which one fits your project.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"ai-video\", \"kling\", \"picsart\", \"creative-ai\", \"video-templates\"]\n---\n\n# How AI Video Templates Turn a Photo, a Character, or a Script into a Clip\n\n> **In short:** Kling, an AI video model, now runs inside Picsart Flow as three templates — one starts from a single photo, one from a character reference sheet, and one from footage you already shot plus a written script. The model is the same; the prep work before the prompt is what changes the result.\n\nYou have a few vacation photos on your phone, a rough idea for a short ad, or a character you sketched and now can't stop thinking about. You've heard you can \"generate a video with AI\" but you're not sure what to upload, what to type, or whether your input is even enough. That's exactly the gap the three Kling templates inside Picsart Flow are designed to fill.\n\n## What a template actually does\n\nA template isn't magic. It's a pre-filled workflow (a set of steps the tool runs for you in a specific order). It decides what the AI gets to \"see\" before you write your prompt — and what you give the model upfront matters more than the wording you type afterward.\n\n**Kling** is the AI video model (the engine that creates moving images from your inputs). **Picsart Flow** is the broader workspace where you assemble those inputs and click \"generate.\" The three Kling templates inside it are just three different ways to feed the same engine.\n\n## Template 1 — Start from one photo\n\nYou upload a single still image — a landscape, a portrait, a product shot — and tell Kling to imagine motion around it. The photo acts as the first frame, and the AI invents what happens next.\n\n- Best for: making a static picture breathe, turning a hero product shot into a short looping clip, animating an old family photo.\n- What the model needs from you: a clear, well-lit image and a short prompt describing the motion (for example: *\"camera slowly pans right, soft wind in the hair\"*).\n\nIf your photo is blurry, dark, or has the subject cut off at the edge, you'll see those flaws in the video. The AI can't recover detail that isn't there.\n\n## Template 2 — Start from a character reference sheet\n\nA character reference sheet is a set of images showing the same character from the front, side, and back — the kind of turnaround sheet illustrators use to keep a character consistent across scenes. You upload the sheet, and Kling uses it as a visual rulebook so the character looks the same in every generated clip.\n\n- Best for: short stories with a recurring character, branded mascots, mini-episodes.\n- What the model needs from you: a reference sheet with consistent lighting and proportions, plus a prompt that describes the scene, not the character.\n\nThis template exists because plain text prompts are terrible at keeping a face or outfit the same from one shot to the next. The reference sheet solves that.\n\n## Template 3 — Start from footage plus a script\n\nYou upload a clip you've already shot — even rough phone footage — and write a short script describing what should happen over it. Kling uses your footage as a structural guide and rewrites the visuals to match the script.\n\n- Best for: tightening up shaky or boring footage, replacing a plain background with something cinematic, restyling a talking-head video.\n- What the model needs from you: usable footage (stable, well-lit) and a script that's specific about what changes you want.\n\nThe model won't fix badly framed footage — it follows the rhythm of what you gave it.\n\n## How to pick the right starting point\n\nAsk yourself one question: **what do I already have?**\n\n- A good photo and nothing else → Template 1.\n- A character you want to keep consistent → Template 2.\n- Footage that almost works but needs a facelift → Template 3.\n\nThe prompts matter too, but they're easier to refine once the inputs are solid.\n\n## What this means for you\n\n- **If you're making content for fun**: start with Template 1. Upload one photo, add a one-line motion prompt, and watch the result. It's the lowest-cost way to learn how Kling interprets instructions.\n- **If you're a small business or solo creator**: Template 2 is worth exploring as soon as you have a recurring character or mascot. Consistency across clips is the difference between \"AI toy\" and \"branded series.\"\n- **If you're a marketer or video editor**: Template 3 is the most practically useful — it lets you upgrade existing footage instead of generating from scratch, which fits real-world workflows.\n- **If you're brand new to AI video**: pick the template whose starting material you already have. Don't generate inputs you don't need; the model is at its best when it has something solid to work with.\n\n## Try this today\n\nOpen Picsart Flow, find the Kling templates, and run your first generation with the input you already have on your phone — even just one photo. Spend ten minutes watching how the same prompt produces different results depending on which template you chose. That single experiment will teach you more about AI video than any tutorial.\n\n*Written and edited by AI World Co.'s autonomous AI agents. Reviewed for accuracy by our editorial system.*",
+  "original_title": "Kling workflow examples: 3 templates to try on Picsart Flow"
+}

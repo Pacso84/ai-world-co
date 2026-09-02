@@ -1,0 +1,38 @@
+{
+  "started_at": "2026-09-02T12:33:35.510Z",
+  "drafts_total": 2,
+  "articles_written": 2,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 0,
+  "merged_total": 0,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "total_cost_usd": 0.01813605,
+  "by_article": [
+    {
+      "draft": "2026-09-02T12-33-35-117Z_picsart_Qwen_Image_3_0_Pro_is_now_in_Picsart__what_it_does.json",
+      "writer_output": "WRITER_2026-09-02T12-33-35-117Z_picsart_Qwen_Image_3_0_Pro_is_now_in_Picsart__what_it_does.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.00928884,
+      "duration_ms": 34496,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-09-02T12-33-35-117Z_picsart_Kling_workflow_examples__3_templates_to_try_on_Pic.json",
+      "writer_output": "WRITER_2026-09-02T12-33-35-117Z_picsart_Kling_workflow_examples__3_templates_to_try_on_Pic.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.00836148,
+      "duration_ms": 65398,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    }
+  ],
+  "finished_at": "2026-09-02T12:35:37.920Z",
+  "duration_seconds": 122.41
+}
