@@ -1,0 +1,62 @@
+{
+  "_meta": {
+    "written_at": "2026-09-02T01:57:22.872Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.01054794,
+    "original_draft": "2026-09-02T01-52-53-040Z_openai-blog_Path_to_Astra__critical_capabilities_and_frontier_.json",
+    "source_id": "openai-blog",
+    "source_name": "OpenAI Blog (hivatalos)",
+    "source_link": "https://openai.com/index/path-to-astra",
+    "source_links": [
+      "https://openai.com/index/path-to-astra"
+    ],
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "published_at": "2026-09-02T02:00:59.105Z",
+    "slug": "what-ai-capability-levels-mean-for-everyday-users",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 801
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured explainer with clear hooks, friendly tone, and good term definitions (malware, SQL injection, credentials, API keys). The What this means for you section covers three distinct audiences accessibly. No clichés, no prohibited content, no invented quotes or statistics. Minor trim potential in the third audience subsection but not a blocking issue.",
+      "_aiCost": 0.0016005,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-09-02T02:01:21.845Z",
+    "guide_worthy": false,
+    "pairing_reason": "Article explains AI safety frameworks conceptually rather than introducing a specific named feature users can interact with",
+    "image_v": 2,
+    "image_at": "2026-09-02T02:14:51.866Z",
+    "seo": {
+      "meta_description": "AI labs now rank models by cybersecurity skill — what that means for tools you use daily and why your AI apps are getting safer.",
+      "keywords": [
+        "AI safety levels explained",
+        "what are AI capability levels",
+        "AI cybersecurity rating",
+        "are AI tools getting safer",
+        "how AI models are tested for safety",
+        "AI labs risk classification"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add a first-line summary that includes the core keyword (AI capability levels) for immediate context",
+        "Consider adding a secondary keyword like 'AI safety testing' to capture related searches",
+        "Keep the conversational, accessible tone in the meta to match the article's plain-language style"
+      ],
+      "optimised_at": "2026-09-02T02:16:01.746Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"What AI Capability Levels Mean for Everyday Users\"\nsubtitle: \"Why AI labs are ranking models by cybersecurity skill — and what those ratings change for the tools you already use\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"ai-safety\", \"cybersecurity\", \"ai-tools\", \"preparedness\"]\n---\n\n# What AI Capability Levels Mean for Everyday Users\n\n> **In short:** AI labs now rank their models by how much they can help with cybersecurity, and add protections when one crosses certain lines. For you, that means the AI tools you use are tested harder before release — and the safety nets around them are getting thicker.\n\nYou probably used AI this week without thinking about it — to summarize an email, draft a message, or look up a recipe. Behind the scenes, the people who built that AI spent months asking a quieter question: how good is this thing at hacking?\n\n## The new way AI labs talk about risk\n\nFor most of the last few years, AI safety talk sounded abstract. *\"What if the AI becomes too powerful?\"* Now it's getting concrete — measured, even.\n\nSeveral major AI labs have published versions of what they call **Preparedness Frameworks** or **Responsible Scaling Policies**. The idea is simple: as a model gets more capable, the lab has to prove it can handle the new risks before releasing it.\n\nInside these frameworks, models are rated on a scale — usually Low, Medium, High, and Critical — across several risk categories:\n\n- **Cybersecurity** — could the model help someone write **malware** (malicious software designed to damage or break into systems)?\n- **CBRN** — could it help build chemical, biological, radiological, or nuclear weapons? This is the most restricted category.\n- **Autonomy** — could the model act on its own for long periods without a human checking in?\n- **Persuasion** — could it manipulate people at scale?\n\nWhen a model crosses into a higher category, the lab is supposed to add stronger safeguards before letting the public use it.\n\n## Why cybersecurity is the headline right now\n\nThe recent news is about a model crossing the Critical cybersecurity line — the first time any major lab's model has officially reached that tier. *\"Critical\"* doesn't mean the model is dangerous by itself. It means: in the lab's own tests, the model is good enough at cybersecurity tasks that it could meaningfully help someone, defensive or offensive.\n\nThat's a serious threshold. So the safeguards get serious too:\n\n- **Refusal training** — the model is taught to say *\"no\"* to requests for help with attacks. For example, it might refuse a request like *\"write me a script that tests this login page for SQL injection\"* (a common hacking technique where an attacker slips harmful commands into a form), even if you say it's for research.\n- **Monitoring** — the lab watches how people try to use the model in risky ways.\n- **Restricted access** — the most capable versions may not be available in the regular consumer app.\n- **External review** — outside experts, sometimes linked to government, look at the model before release.\n\nYou won't see most of this directly. But you may notice the results: the AI app on your phone refuses requests it would have answered a year ago. The safety messages in the chat are getting more specific.\n\n## What this means for you\n\n- **If you're a regular AI user**: expect your AI assistant to refuse more requests, especially anything that sounds like hacking, scamming, or bypassing security. That's not the AI being annoying — it's the safety layer the lab promised to add.\n- **If you work in IT, security, or run a small business**: this is a useful signal. AI is now genuinely useful for defenders AND for attackers. Talk to your team about updating policies on what employees paste into AI tools — internal code, **credentials** (passwords and **API keys** — the secret codes apps use to talk to each other), customer data. The same model that helps your security team could help an attacker who tricks an intern into pasting it the wrong place.\n- **If you're worried about AI scams**: the same capability that helps defenders also helps scammers. Treat any unexpected voice, video, or message — even one that sounds like a family member — with extra skepticism. Verify through a second channel before you act.\n\n## Wrap-up\n\nThe headlines about *\"AI capability levels\"* sound technical, but the practical effect is closer to home: the AI tools you use are being stress-tested before release, and the safety nets around them are getting thicker. A useful next step today — open your AI assistant of choice and read its safety or usage policy. Just five minutes. Knowing what the tool is designed to refuse is the first step to using it well.",
+  "original_title": "Path to Astra: critical capabilities and frontier safeguards"
+}

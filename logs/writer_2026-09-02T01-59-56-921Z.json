@@ -1,0 +1,60 @@
+{
+  "started_at": "2026-09-02T01:52:53.427Z",
+  "drafts_total": 4,
+  "articles_written": 4,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 0,
+  "merged_total": 0,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "total_cost_usd": 0.039499745,
+  "by_article": [
+    {
+      "draft": "2026-09-02T01-52-53-040Z_openai-blog_Path_to_Astra__critical_capabilities_and_frontier_.json",
+      "writer_output": "WRITER_2026-09-02T01-52-53-040Z_openai-blog_Path_to_Astra__critical_capabilities_and_frontier_.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.01054794,
+      "duration_ms": 249554,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-09-02T01-52-53-040Z_meta-ai_Inside_Meta_s_Infrastructure_Lab.json",
+      "writer_output": "WRITER_2026-09-02T01-52-53-040Z_meta-ai_Inside_Meta_s_Infrastructure_Lab.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.00855366,
+      "duration_ms": 42666,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-09-02T01-52-53-040Z_google-ai-blog_The_latest_AI_news_we_announced_in_August_2026.json",
+      "writer_output": "WRITER_2026-09-02T01-52-53-040Z_google-ai-blog_The_latest_AI_news_we_announced_in_August_2026.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.01069746,
+      "duration_ms": 46391,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-09-02T01-52-53-040Z_aws-ml_Introducing_Claude_Fable_5_1_on_AWS.json",
+      "writer_output": "WRITER_2026-09-02T01-52-53-040Z_aws-ml_Introducing_Claude_Fable_5_1_on_AWS.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.00905832,
+      "duration_ms": 29313,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    }
+  ],
+  "finished_at": "2026-09-02T01:59:56.920Z",
+  "duration_seconds": 423.493
+}

@@ -1,0 +1,35 @@
+{
+  "started_at": "2026-09-02T01:59:57.104Z",
+  "total": 4,
+  "passed": 3,
+  "failed": 0,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.008625006000000001,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-09-02T01-52-53-040Z_aws-ml_Introducing_Claude_Fable_5_1_on_AWS.json",
+      "article": "ARTICLE_2026-09-02T01-52-53-040Z_aws-ml_Introducing_Claude_Fable_5_1_on_AWS.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.00119232
+    },
+    {
+      "writer": "WRITER_2026-09-02T01-52-53-040Z_meta-ai_Inside_Meta_s_Infrastructure_Lab.json",
+      "article": "ARTICLE_2026-09-02T01-52-53-040Z_meta-ai_Inside_Meta_s_Infrastructure_Lab.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.0014871
+    },
+    {
+      "writer": "WRITER_2026-09-02T01-52-53-040Z_openai-blog_Path_to_Astra__critical_capabilities_and_frontier_.json",
+      "article": "ARTICLE_2026-09-02T01-52-53-040Z_openai-blog_Path_to_Astra__critical_capabilities_and_frontier_.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0016005
+    }
+  ],
+  "truth_held": 1,
+  "finished_at": "2026-09-02T02:00:59.106Z",
+  "duration_seconds": 62.002
+}

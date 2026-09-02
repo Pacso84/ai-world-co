@@ -1,25 +1,4 @@
 {
-  "2026-08-13": [
-    {
-      "at": "2026-08-13T01:16:12.810Z",
-      "file": "WRITER_GUIDE_ask-alexa-to-read-your-calendar-aloud-and-remind-you-about-t.json",
-      "action": "block",
-      "reasons": [
-        "The price claim that Alexa+ standalone plan costs 'around $19.99/month' appears to be invented. Amazon has not publicly listed Alexa+ at this price point as a standard standalone figure in the way the article states it as a near-fact.",
-        "The article states Alexa+ has a built-in ability to read attendees and 'names of the people joining' from calendar events with a dedicated command flow — this level of granular attendee-reading behavior by Alexa+ is not verified and may be fabricated."
-      ],
-      "confidence": 4
-    },
-    {
-      "at": "2026-08-13T16:45:06.656Z",
-      "file": "WRITER_2026-08-13T16-44-20-017Z_aws-ml_Amazon_Quick_for_Microsoft_365__Agentic_AI_where_y.json",
-      "action": "block",
-      "reasons": [
-        "The article repeatedly refers to 'Amazon Quick' as a Microsoft 365 add-in available in Word, Excel, PowerPoint, and Outlook. Amazon's enterprise AI assistant is called 'Amazon Q' (and 'Amazon Q for QuickSight'), not 'Amazon Quick'. 'Amazon Quick' is not a real AWS product name."
-      ],
-      "confidence": 8
-    }
-  ],
   "2026-08-14": [
     {
       "at": "2026-08-14T01:10:00.494Z",
@@ -335,6 +314,16 @@
         "The article describes specific UI behavior ('a small suggestion appears in the Gemini panel asking the main presenter whether they want to add that person as a co-presenter') that does not exist in Google Meet."
       ],
       "confidence": 7
+    }
+  ],
+  "2026-09-02": [
+    {
+      "at": "2026-09-02T02:00:29.911Z",
+      "file": "WRITER_2026-09-02T01-52-53-040Z_google-ai-blog_The_latest_AI_news_we_announced_in_August_2026.json",
+      "action": "hold",
+      "reasons": [
+        "AI-bíró nem elérhető (érthetetlen AI-válasz: credible mező hiányzik) — visszatartva a következő futásig"
+      ]
     }
   ]
 }
