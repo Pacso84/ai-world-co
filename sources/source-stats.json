@@ -1,7 +1,7 @@
 {
   "_meta": {
     "note": "Forrás-bizonyítvány: frissesség + termés + megbízhatóság forrásonként. Gyártja: core/source-report-card.js",
-    "updated": "2026-09-02T12:32:43.394Z",
+    "updated": "2026-09-02T12:48:28.802Z",
     "thresholds": {
       "DEAD_FEED_DAYS": 365,
       "MIN_SAMPLE": 4,
@@ -13,7 +13,7 @@
       "days": 14,
       "from": "2026-08-14",
       "to": "2026-09-02",
-      "blocks": 27
+      "blocks": 28
     }
   },
   "sources": {
@@ -481,7 +481,7 @@
     },
     "midjourney-updates": {
       "name": "Midjourney Updates (hivatalos)",
-      "feedAgeDays": 4,
+      "feedAgeDays": 5,
       "published30d": 2,
       "truthBlocks": 0,
       "totalAttempts": 2,
@@ -603,9 +603,9 @@
     "picsart": {
       "name": "PicsArt Blog (hivatalos)",
       "feedAgeDays": 0,
-      "published30d": 37,
-      "truthBlocks": 3,
-      "totalAttempts": 17,
+      "published30d": 39,
+      "truthBlocks": 4,
+      "totalAttempts": 19,
       "alreadyDisabled": false,
       "lastArticle": "2026-09-02",
       "verdict": "ok",
