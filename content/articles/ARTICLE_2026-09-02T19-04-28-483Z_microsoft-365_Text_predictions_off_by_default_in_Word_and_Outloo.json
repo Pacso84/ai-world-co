@@ -1,0 +1,62 @@
+{
+  "_meta": {
+    "written_at": "2026-09-02T19:09:53.715Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.01023958,
+    "original_draft": "2026-09-02T19-04-28-483Z_microsoft-365_Text_predictions_off_by_default_in_Word_and_Outloo.json",
+    "source_id": "microsoft-365",
+    "source_name": "Microsoft 365 Insider (hivatalos)",
+    "source_link": "https://techcommunity.microsoft.com/t5/microsoft-365-insider-blog/text-predictions-off-by-default-in-word-and-outlook/ba-p/4549085",
+    "source_links": [
+      "https://techcommunity.microsoft.com/t5/microsoft-365-insider-blog/text-predictions-off-by-default-in-word-and-outlook/ba-p/4549085"
+    ],
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "published_at": "2026-09-02T19:10:13.388Z",
+    "slug": "how-to-control-microsoft-s-text-predictions-in-word-and-outlook",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1385
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Excellent guide with clear platform-specific steps, honest limitations, and helpful 'you'll know it worked when' markers throughout. Structure is complete with hook, explanations, 'What this means for you', and actionable wrap-up. Content is backed by official Microsoft source and uses accessible language for everyday readers.",
+      "_aiCost": 0.0017361,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-09-02T19:10:25.872Z",
+    "guide_worthy": true,
+    "related_guide_topic": "copilot-office",
+    "image_v": 2,
+    "image_at": "2026-09-02T19:10:46.321Z",
+    "seo": {
+      "meta_description": "Find out how to turn Microsoft's text predictions on or off in Word and Outlook with these simple settings. Control your AI writing assistance.",
+      "keywords": [
+        "how to turn off text predictions in word",
+        "microsoft word text predictions settings",
+        "enable text predictions outlook",
+        "disable microsoft text suggestions",
+        "word predictive text",
+        "outlook auto-complete settings"
+      ],
+      "seo_score": 9,
+      "suggestions": [
+        "Consider adding '2024' or '2025' to the title if this is a recent change, as datetime modifiers can improve fresh content rankings",
+        "Add the specific setting path 'File > Options > Editor' or similar exact location for better SEO and user value",
+        "Include the exact toggle name 'Show text predictions while typing' in the article for better semantic matching"
+      ],
+      "optimised_at": "2026-09-02T19:10:54.331Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"How to Control Microsoft's Text Predictions in Word and Outlook\"\nsubtitle: \"Microsoft is turning off AI text suggestions by default. Here's how to switch them back on — or off for good.\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 6\ntags: [\"microsoft-word\", \"outlook\", \"text-predictions\", \"ai-writing\", \"productivity\"]\n---\n\n# How to Control Microsoft's Text Predictions in Word and Outlook\n\n> **In short:** Microsoft is turning off its \"text predictions\" feature by default in Word and Outlook, but the setting still exists. You can switch it back on — or off for good — from each app's settings, usually under \"Show text predictions while typing\".\n\nYou're halfway through an email when a gray suggestion pops up, finishing your sentence before you do. For some people, that's a small daily save. For others, it's a distraction they'd rather not see. Microsoft has decided the default should match the second group, so the company is switching text predictions off by default across Word and Outlook. You can still use them — you just have to choose to.\n\nHere's how to find the setting and put it back the way you want.\n\n## Before you start\n\nYou don't need anything fancy. You need:\n\n- A Microsoft account that's signed into Word, Outlook, or both\n- One of: Word or Outlook on Windows, Mac, the web, iOS, or Android\n- About two minutes per app\n\nOne honest note up front: the exact menu labels are slightly different across versions. The general area — *Settings* or *Options* — is the same everywhere. If you don't see the wording below, use the search box inside Settings and type **\"predictions\"**. That's almost always faster than hunting through menus.\n\n## Step 1 — Decide what you actually want\n\nBefore touching any setting, decide what outcome you want. Three reasonable choices:\n\n- **Keep predictions off** — the new default. Nothing to do; Microsoft will already have switched them off for new installs and updates.\n- **Turn them on** in Word, Outlook, or both. Useful if you write a lot of similar sentences — replies, status updates, repetitive work emails.\n- **Turn them off completely**, in case they're still on from before. Useful if you've been getting suggestions and want them gone.\n\n💬 You can tell which side you're on right now: open Word or Outlook, type half a sentence, and wait a second. If a gray word or phrase appears, predictions are on.\n\n**You'll know it worked when** you've made a deliberate choice — on, off, or mixed per app.\n\n## Step 2 — Open Word's settings on Windows or Mac\n\nIn **Word for Windows (desktop)**: click **File**, then **Options** at the bottom of the left-hand menu. A window titled \"Word Options\" will open.\n\nIn **Word for Mac**: click **Word** in the top menu bar, then **Settings** (called **Preferences** on older versions).\n\nYou'll see a list of categories on the left. What you're looking for is usually **Advanced** — that's where the editing-related options live, including the predictions toggle.\n\n💬 Don't see Advanced? Try the search box at the top of the Options window and type **\"text predictions\"**. It will jump you straight to the right setting.\n\n**You'll know it worked when** you see a Word Options / Settings window with category names listed on the left.\n\n## Step 3 — Turn predictions on or off in Word\n\nOnce you're on the right page, look for a checkbox labeled something like **\"Show text predictions while typing\"**. Microsoft has used this label for years; if the wording is slightly different, it's almost certainly the same setting.\n\n- Tick the box to turn predictions **on**.\n- Untick the box to turn them **off**.\n\nClick **OK** to save. There's no separate save step — closing the Options window commits the change.\n\n💬 Honest limit: predictions usually only work while you're online, because the suggestions are generated by Microsoft's cloud AI models. If you work offline a lot, expect the feature to feel flaky or stop entirely.\n\n**You'll know it worked when** you reopen a document, start typing, and either see a gray suggestion appear (on) or nothing appear at all (off).\n\n## Step 4 — Do the same in Outlook\n\nOutlook has the same feature, but the path differs a little.\n\nFor **classic Outlook on Windows**: click **File**, then **Options**, then **Mail**. Look for **\"Show text predictions while typing\"** under the *Compose messages* section.\n\nFor **new Outlook on Windows** and **Outlook on the web** (Outlook.com or outlook.office.com): click the **gear icon** ⚙ top-right, then **Mail**, then **Compose and reply**. The toggle is in that section.\n\nFor **Outlook on Mac**: open **Outlook** → **Settings** → **Composing**. On **iOS and Android**, open the app's **Settings** (the gear in the top corner), then look under **Mail** for the predictions toggle — mobile versions sometimes bury it a couple of menus deep.\n\n💬 Tip: if you're not sure which Outlook you have, look at the top of the window. The new Outlook says \"Outlook (new)\" or has a simplified header. The classic one has a more traditional ribbon.\n\n**You'll know it worked when** you start a new email, type half a line, and the suggested completion either shows up (on) or stays silent (off).\n\n## Step 5 — Test it with a sentence you actually write\n\nThe real test isn't the checkbox — it's whether the suggestions are useful to *you*. Open a real email or document and type a phrase you write often. Things like:\n\n- \"Hi [name], thanks for your message — I'll\"\n- \"Following up on our conversation about\"\n- \"Please find attached\"\n\nIf predictions are on, one of those should pop a gray suggestion. If nothing appears within a second, predictions are off — or the model simply didn't have a confident guess for that sentence.\n\n💬 Honest limit: predictions tend to be helpful for routine, polite phrasing. They get less reliable for anything unusual or technical, and they sometimes suggest things you'd never actually write — which is exactly when most people decide to turn them off.\n\n**You'll know it worked when** you've tested at least one app with a sentence you actually use.\n\n## Common mistakes\n\n- **Assuming the feature is gone forever.** Microsoft turned it off *by default*, not deleted it. The setting is still there.\n- **Looking under \"AI\" or \"Copilot.\"** Text predictions are an older feature that predates Copilot. The toggle sits in regular Word and Outlook settings, not in any Copilot menu.\n- **Forgetting to test mobile.** If you also use Outlook on your phone, that app has its own separate toggle. Turning it off on your laptop doesn't affect your phone.\n- **Not signing in.** Predictions only work when you're signed into a Microsoft account. Anonymous or shared computers may not show the feature at all.\n- **Expecting suggestions in every language.** Quality varies by language — English suggestions are the most polished.\n\n## What this means for you\n\n- **If you write a lot of similar emails at work**: turn predictions on. They save the most time on repetitive, polite phrasing — the kind you write five times a day.\n- **If you're easily distracted by suggestions**: leave the new default in place. Microsoft is essentially betting that the majority of users prefer not seeing suggestions, and they're probably right that it's less distracting.\n- **If you care about privacy**: predictions send your in-progress text to Microsoft's cloud to generate the suggestion. If that's not acceptable for the kind of work you do, keep the feature off and stick to typing.\n- **If you mainly use mobile**: check both the iOS and Android Outlook app settings — Microsoft has had a habit of leaving mobile toggles independent of desktop ones, so verify each.\n\n## Wrap-up\n\nMicrosoft's text predictions are still available — they're just no longer switched on for you by default. Open the Options or Settings panel in Word and Outlook, look for the \"Show text predictions while typing\" toggle, and set it the way you want. Two minutes, one setting, fully under your control.\n\nA useful next step today: open Word or Outlook right now, type half a sentence in any document, and see whether a suggestion appears. That tells you, in five seconds, which way the toggle is currently set — and whether you want to change it.",
+  "original_title": "Text predictions off by default in Word and Outlook"
+}

@@ -1,86 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t17882655431092",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-01T12:25:43.109Z",
-      "updated": "2026-09-01T12:26:13.069Z"
-    },
-    {
-      "id": "t178826557307038",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-09-01T12:26:13.070Z",
-      "updated": "2026-09-01T12:26:36.972Z"
-    },
-    {
-      "id": "t17882655969736",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-01T12:26:36.973Z",
-      "updated": "2026-09-01T12:26:49.867Z"
-    },
-    {
-      "id": "t178826560986955",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-09-01T12:26:49.869Z",
-      "updated": "2026-09-01T12:27:11.738Z"
-    },
-    {
-      "id": "t178826710882766",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-09-01T12:51:48.827Z",
-      "updated": "2026-09-01T12:51:49.020Z"
-    },
-    {
-      "id": "t178826710902252",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-09-01T12:51:49.022Z",
-      "updated": "2026-09-01T12:52:06.691Z"
-    },
-    {
-      "id": "t178826712669324",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-09-01T12:52:06.693Z",
-      "updated": "2026-09-01T12:52:06.906Z"
-    },
-    {
-      "id": "t178826712690860",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-09-01T12:52:06.908Z",
-      "updated": "2026-09-01T12:52:07.093Z"
-    },
-    {
-      "id": "t178826712709471",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-01T12:52:07.094Z",
-      "updated": "2026-09-01T12:52:07.274Z"
-    },
-    {
-      "id": "t178826712727741",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-09-01T12:52:07.277Z",
-      "updated": "2026-09-01T12:52:07.515Z"
-    },
-    {
       "id": "t178826712756638",
       "title": "Run designer",
       "status": "done",
@@ -479,33 +399,89 @@
       "agent": "publisher",
       "created": "2026-09-02T12:39:04.453Z",
       "updated": "2026-09-02T12:39:27.918Z"
+    },
+    {
+      "id": "t178837583479534",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-09-02T19:03:54.795Z",
+      "updated": "2026-09-02T19:03:54.987Z"
+    },
+    {
+      "id": "t178837583498844",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-09-02T19:03:54.988Z",
+      "updated": "2026-09-02T19:04:28.497Z"
+    },
+    {
+      "id": "t178837586849988",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-09-02T19:04:28.499Z",
+      "updated": "2026-09-02T19:04:56.107Z"
+    },
+    {
+      "id": "t178837589610937",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-09-02T19:04:56.109Z",
+      "updated": "2026-09-02T19:09:53.729Z"
+    },
+    {
+      "id": "t178837619373145",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-02T19:09:53.731Z",
+      "updated": "2026-09-02T19:10:13.400Z"
+    },
+    {
+      "id": "t17883762134035",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-09-02T19:10:13.403Z",
+      "updated": "2026-09-02T19:10:25.932Z"
+    },
+    {
+      "id": "t178837622598577",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-02T19:10:25.985Z",
+      "updated": "2026-09-02T19:10:46.364Z"
+    },
+    {
+      "id": "t178837624636628",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-09-02T19:10:46.366Z",
+      "updated": "2026-09-02T19:10:54.376Z"
+    },
+    {
+      "id": "t178837625437817",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-02T19:10:54.378Z",
+      "updated": "2026-09-02T19:11:12.510Z"
+    },
+    {
+      "id": "t178837627251128",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-09-02T19:11:12.511Z",
+      "updated": "2026-09-02T19:11:35.302Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178756059896742",
-      "level": "warn",
-      "text": "📨 guide → ceo: Kell még adat: \"Ask plain-English questions about a long PDF using Hugging Face's free document Q&A\" — az Ellenőrző tény",
-      "agent": "guide",
-      "at": "2026-08-24T08:36:38.967Z",
-      "loud": false
-    },
-    {
-      "id": "n178756065407133",
-      "level": "warn",
-      "text": "📨 guide → ceo: Kell még adat: \"Spot the mood behind customer reviews with Hugging Face's free sentiment tool\" — az Ellenőrző tényt/forr",
-      "agent": "guide",
-      "at": "2026-08-24T08:37:34.071Z",
-      "loud": false
-    },
-    {
-      "id": "n178756075946611",
-      "level": "info",
-      "text": "SEO: 2 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-08-24T08:39:19.466Z",
-      "loud": false
-    },
     {
       "id": "n178756078330567",
       "level": "success",
@@ -1281,27 +1257,33 @@
       "agent": "ceo",
       "at": "2026-09-02T12:39:27.963Z",
       "loud": false
+    },
+    {
+      "id": "n178837625436456",
+      "level": "info",
+      "text": "SEO: 1 cikk optimalizálva (átlag 9.0/10).",
+      "agent": "seo",
+      "at": "2026-09-02T19:10:54.364Z",
+      "loud": false
+    },
+    {
+      "id": "n178837628086423",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The lineup is solid and cohesive — all 10 pieces share the same practical, everyday vibe and fit the \"AI for busy people\" mission perfectly. One small thing to check: titles mix \"Write a...\" and \"Writ",
+      "agent": "publisher",
+      "at": "2026-09-02T19:11:20.864Z",
+      "loud": false
+    },
+    {
+      "id": "n17883762953469",
+      "level": "success",
+      "text": "1 hír + 0 útmutató publikálva (költség: $0.0177).",
+      "agent": "ceo",
+      "at": "2026-09-02T19:11:35.346Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178758963198050",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Up to 30x More Work Per Watt: NVIDIA Vera Rubin NVL72 Sets a New Efficiency Standard for AI Agents\" — javítva: The article cites data attributed to OpenRouter as fact: 'According to data shared by OpenRouter... the average AI agent task uses about 15 times more tokens than a simple chat message.' This specific 15x statistic and its attribution to OpenRouter is presented as establishe",
-      "ref": "2026-08-24T16-23-52-028Z_nvidia-blog_Up_to_30x_More_Work_Per_Watt__NVIDIA_Vera_Rubin_NV.json",
-      "at": "2026-08-24T16:40:31.980Z"
-    },
-    {
-      "id": "m178758965310956",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Agentic Resource Discovery (ARD): An open specification for agent discovery\" (?/10)",
-      "ref": "2026-08-24T16-23-52-028Z_aws-ml_Agentic_Resource_Discovery__ARD___An_open_specific.json",
-      "at": "2026-08-24T16:40:53.109Z"
-    },
     {
       "id": "m178758966862159",
       "from": "ellenorzo",
@@ -2644,6 +2626,24 @@
       "text": "2 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-09-02T12:47:55.307Z"
+    },
+    {
+      "id": "m178837622591998",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "info",
+      "text": "A \"Text predictions off by default in Word and Outlook\" hír a meglévő útmutatóra mutat: copilot-office",
+      "ref": "copilot-office",
+      "at": "2026-09-02T19:10:25.919Z"
+    },
+    {
+      "id": "m178837627249969",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-09-02T19:11:12.499Z"
     }
   ]
 }
