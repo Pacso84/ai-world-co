@@ -1,34 +1,4 @@
 {
-  "2026-08-14": [
-    {
-      "at": "2026-08-14T01:10:00.494Z",
-      "file": "WRITER_2026-08-14T01-01-26-376Z_google-ai-blog_Bring_your_spreadsheet_data_to_life_with_Sheets_ca.json",
-      "action": "block",
-      "reasons": [
-        "\"Sheets canvas\" is described as a real Google product/feature, but no such product exists. Google Sheets does not have a 'Canvas' feature or workspace — this appears to be fabricated."
-      ],
-      "confidence": 7
-    },
-    {
-      "at": "2026-08-14T01:10:32.333Z",
-      "file": "WRITER_2026-08-14T01-01-26-376Z_picsart_All_about_Kling_2_6__AI_video_model_with_sound__vo.json",
-      "action": "block",
-      "reasons": [
-        "Kling is not on the VERIFIED-REAL NAMES list, so its existence cannot be assumed verified. However, Kling is a real AI video generator by Kuaishou. The article makes specific claims about Kling 2.6's features (integrated dialogue, sound effects, room tone in one step; sound only activates at 1080p resolution, silent at default 720p) that I cannot verify and may be fabricated specifics.",
-        "The specific claim that 'sound only switches on at the 1080p resolution, not the default 720p' is a precise UI/behavioral claim about Kling 2.6 that may be fabricated."
-      ],
-      "confidence": 4
-    },
-    {
-      "at": "2026-08-14T01:10:41.657Z",
-      "file": "WRITER_2026-08-14T01-01-38-197Z_picsart_Flux_3_in_Picsart__video_and_audio_in_one_pass.json",
-      "action": "block",
-      "reasons": [
-        "Flux 3 in Picsart: I cannot verify that Picsart has a product or feature called 'Flux 3' that generates image, video, and audio from a single prompt. Picsart is a real company, but this specific feature name and its claimed capabilities (single prompt producing a 20-second video with matching audio) appear fabricated or unverified."
-      ],
-      "confidence": 6
-    }
-  ],
   "2026-08-15": [
     {
       "at": "2026-08-15T00:45:57.449Z",
@@ -334,6 +304,25 @@
         "The article claims Qwen Image 3.0 Pro is integrated into Picsart and accessible via 'The AI Image Generator' and 'The AI Playground' UI sections, but this specific integration and these exact UI element names are unverifiable and may be fabricated"
       ],
       "confidence": 5
+    }
+  ],
+  "2026-09-03": [
+    {
+      "at": "2026-09-03T02:14:12.630Z",
+      "file": "WRITER_2026-09-02T19-04-24-112Z_google-workspace_Automate_Drive__Gmail__and_Google_Chat_actions_wit.json",
+      "action": "block",
+      "reasons": [
+        "The article describes 'Workspace Studio Flows' as a Google no-code automation tool with specific actions ('Move Drive file', 'Copy Drive file', 'Reply to email', 'Send a Chat reply') and admin toggle controls — this product/feature does not appear to exist in Google's actual Workspace offerings, making these fabricated UI features and capabilities."
+      ],
+      "confidence": 7
+    },
+    {
+      "at": "2026-09-03T02:15:38.136Z",
+      "file": "WRITER_2026-09-02T19-04-28-483Z_databricks_Expanding_Genie_Agents__Deep_analysis__file_reason.json",
+      "action": "hold",
+      "reasons": [
+        "AI-bíró nem elérhető (érthetetlen AI-válasz: credible mező hiányzik) — visszatartva a következő futásig"
+      ]
     }
   ]
 }

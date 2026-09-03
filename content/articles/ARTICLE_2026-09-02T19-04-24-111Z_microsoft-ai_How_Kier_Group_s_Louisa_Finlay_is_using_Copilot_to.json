@@ -1,0 +1,63 @@
+{
+  "_meta": {
+    "written_at": "2026-09-03T02:13:40.935Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.01118562,
+    "original_draft": "2026-09-02T19-04-24-111Z_microsoft-ai_How_Kier_Group_s_Louisa_Finlay_is_using_Copilot_to.json",
+    "source_id": "microsoft-ai",
+    "source_name": "Microsoft AI (hivatalos)",
+    "source_link": "https://news.microsoft.com/source/emea/features/how-kier-groups-louisa-finlay-is-using-copilot-to-drive-safety-and-productivity-in-the-construction-industry/",
+    "source_links": [
+      "https://news.microsoft.com/source/emea/features/how-kier-groups-louisa-finlay-is-using-copilot-to-drive-safety-and-productivity-in-the-construction-industry/"
+    ],
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "published_at": "2026-09-03T02:14:00.059Z",
+    "slug": "how-to-use-an-ai-assistant-at-work-to-save-time-and-catch-mistakes",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1306
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured how-to guide with clear steps, friendly tone, and practical advice. The 'Before you start' section is thorough, each step has copy-paste prompts, and the 'What this means for you' section appropriately tailors advice to different reader situations. No cliches, no prohibited content, and US English is correct throughout.",
+      "_aiCost": 0.0015654,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-09-03T02:18:45.292Z",
+    "guide_worthy": true,
+    "related_guide_topic": "copilot-getting-started",
+    "image_v": 2,
+    "image_at": "2026-09-03T02:28:14.227Z",
+    "seo": {
+      "meta_description": "How to use Microsoft Copilot at work to save time: 5 practical tasks for email triage, meeting notes, and catching mistakes in your first week.",
+      "keywords": [
+        "how to use Microsoft Copilot at work",
+        "Microsoft Copilot tips",
+        "AI assistant workplace productivity",
+        "Copilot email summarization",
+        "Microsoft Copilot free tutorial",
+        "using AI at work",
+        "Copilot meeting notes tips"
+      ],
+      "seo_score": "8",
+      "suggestions": [
+        "Consider adding more long-tail keywords like 'how to use Copilot in Outlook' or 'Microsoft Copilot Word tutorial' to capture specific intent",
+        "The meta description is strong but slightly under 150 characters—add 'practical' or 'quick' to hit the 150-160 sweet spot",
+        "Add an FAQ section or subheadings targeting specific Copilot use cases for better topical coverage"
+      ],
+      "optimised_at": "2026-09-03T02:30:01.399Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"How to Use an AI Assistant at Work to Save Time and Catch Mistakes\"\nsubtitle: \"Five practical tasks to try in your first week with Copilot, from email triage to sanity-checking your draft.\"\ncategory: \"how-to\"\naudience: \"business\"\nread_time_minutes: 7\ntags: [\"copilot\", \"productivity\", \"workplace-ai\", \"getting-started\"]\n---\n\n# How to Use an AI Assistant at Work to Save Time and Catch Mistakes\n\n> **In short:** Microsoft Copilot can summarize long email threads, draft meeting notes, and rewrite rough notes into a clean summary. You can try it for free at copilot.microsoft.com, or use the version built into Word, Outlook, and Teams if your workplace provides it.\n\nA 30-minute meeting ends. You have a long unread thread, a half-finished report, and action items scribbled on a napkin. Sound familiar? This is the part of the workday an AI assistant is genuinely built for — not the flashy stuff, the small jobs that quietly eat your afternoon.\n\n## Before you start\n\nYou need a Microsoft account. If you already use Outlook, Teams, or OneDrive for work, you have one. The free version lives at copilot.microsoft.com and works in any browser on desktop or mobile. If your company provides Microsoft 365 Copilot, you will see a Copilot button inside Word, Excel, PowerPoint, Outlook, and Teams — same kinds of prompts, just closer to your existing files.\n\nWhat follows is written for the free web version. If you have the work-integration version, the prompts are identical; the buttons just live inside the apps you already have open. If a button I describe is not where I say it is, the official Microsoft Copilot help pages list the current menu locations.\n\n## Step 1 — Triage your inbox\n\nOpen copilot.microsoft.com. You will see a chat box at the bottom of the page, and a small microphone icon next to it if you want to speak your prompt instead of typing. The first job is the one most people avoid: the email avalanche.\n\n💬 Prompt to copy: *\"I have 12 unread emails from this morning. For each one, tell me: who sent it, what they want from me, and whether it needs a reply today, this week, or can be archived. Use one line per email.\"*\n\nThe free web version does not see your real inbox, so paste the text of the emails into the chat instead. In Microsoft 365 Copilot, you can ask it to read your actual inbox — the prompt stays the same.\n\n**You'll know it worked when** you have a one-line summary per email and a clear \"reply today / this week / archive\" tag next to each, and you can act on the list in one sitting.\n\n## Step 2 — Summarize a long meeting\n\nIf your team uses Teams, every recorded meeting has a transcript waiting in the chat afterward. If you don't, paste any transcript, or even rough notes, into the Copilot chat.\n\n💬 Prompt: *\"Here are notes from a 45-minute meeting. List the decisions we made, the action items, and who owns each one. Skip the small talk. Use bullet points.\"*\n\nThis is the single task where AI tends to save the most time. People who skip it end up rereading their own notes three times. AI does it in one pass.\n\n**You'll know it worked when** you can paste the output into a Slack message or email and send it on without rewriting.\n\n## Step 3 — Turn a rough idea into a first draft\n\nYou have a goal and a few bullet points, and the blank page is the enemy. Let the AI do the blank page.\n\n💬 Prompt: *\"I'm writing a short update for my team about [topic]. Here are my points: [paste 3–5 bullets]. Write a 200-word version in a friendly, professional tone. Use one short paragraph per bullet.\"*\n\nThe first draft from an AI is rarely the final one. That's fine — its job is to give you something to react to, not to ship.\n\n**You'll know it worked when** you can read the draft and start changing it, instead of staring at an empty page wondering how to begin.\n\n## Step 4 — Rewrite something that came out wrong\n\nMaybe you wrote an email that read as harsh, or a Slack message that came across as cold. AI is a useful second pair of eyes here.\n\n💬 Prompt: *\"Here's a message I sent: [paste it]. The reader told me it came across as cold. Rewrite it so it sounds like a real person, not a robot. Keep it shorter than the original. Keep my main point.\"*\n\nA small trick that helps: tell the AI what response you wanted, not just what to fix. \"I wanted them to feel heard, not lectured\" is more useful than \"make it nicer.\"\n\n**You'll know it worked when** you'd be comfortable sending the rewrite as-is, or with one small tweak.\n\n## Step 5 — Sanity-check your own work before you hit send\n\nThis is the underrated one. Before you send a long email, file a report, or share a document, ask the AI to read it the way your reader will.\n\n💬 Prompt: *\"Read this as if you're a busy manager who has 30 seconds. Tell me: what's the main point, what's missing, and is anything unclear? Don't rewrite it — just give me three short bullet points of feedback.\"*\n\nThe reason this works: AI is not you. You can't un-see what you wrote. It can.\n\n**You'll know it worked when** you catch at least one thing you would have sent by accident — a wrong name, a missing reference, a paragraph that did not actually say what you meant.\n\n## Common mistakes\n\n- **Asking for too much at once.** \"Write me a report\" gets you a generic report. \"Write me a 300-word status update covering these three points\" gets you something you can use.\n- **Skipping the audience.** Always tell the AI who the reader is, how long the output should be, and what tone you want. Otherwise it guesses, and you end up rewriting the whole thing.\n- **Trusting the first answer.** AI makes confident mistakes. Always read the output before you send it. The first draft is a starting point, not a finished one.\n- **Using it for things it can't see.** The free web version of Copilot does not read your files, calendar, or email. For that, you need Microsoft 365 Copilot, which your employer may already provide. If something feels missing, check which version you are signed into.\n\n## What this means for you\n\n- **If you work in an office:** start with the email and meeting steps. Those two alone tend to free up a noticeable chunk of each day once the habit sticks.\n- **If you work in the field, on a site, or away from a desk:** the \"draft a first version\" and \"sanity-check\" steps work from your phone. Open copilot.microsoft.com in a mobile browser, paste in a quick note from the day, and turn it into a clean handover for the next shift.\n- **If you are new to AI at work:** pick one step and use it for a full week before adding another. Habits stick one at a time.\n- **If your workplace has not given you access yet:** the free web version covers most individual needs. The paid Microsoft 365 Copilot adds the in-app buttons — check with your IT team or manager for current access.\n\n## Wrap-up\n\nAn AI assistant is not magic, and it is not a replacement for thinking. What it is, in practice, is a quick second pair of eyes for the small jobs that pile up during a normal workday: triaging email, summarizing meetings, drafting from notes, and catching mistakes before you send. Try Step 1 tomorrow morning. If it works, add Step 2 next week.",
+  "original_title": "How Kier Group’s Louisa Finlay is using Copilot to drive safety and productivity in the construction industry"
+}

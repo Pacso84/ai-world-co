@@ -1,0 +1,109 @@
+{
+  "started_at": "2026-09-03T01:58:31.435Z",
+  "drafts_total": 8,
+  "articles_written": 7,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 0,
+  "merged_total": 0,
+  "skipped_repeat": 1,
+  "repeats": [
+    {
+      "cim": "What AI Customer Support Really Means for Small Business Owners",
+      "mar": "AI Customer Service Explained: How Small Businesses Are Using It",
+      "pont": 0.9304938775888775,
+      "by": "embedding",
+      "theme": null
+    }
+  ],
+  "total_cost_usd": 0.082339576,
+  "by_article": [
+    {
+      "draft": "2026-09-03T01-58-31-057Z_openai-blog_ATV_Big_Air_Tour_turned_3_days_of_work_into_3_hour.json",
+      "writer_output": "WRITER_2026-09-03T01-58-31-057Z_openai-blog_ATV_Big_Air_Tour_turned_3_days_of_work_into_3_hour.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.01141488,
+      "duration_ms": 295225,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-09-02T19-04-28-483Z_databricks_Expanding_Genie_Agents__Deep_analysis__file_reason.json",
+      "writer_output": "WRITER_2026-09-02T19-04-28-483Z_databricks_Expanding_Genie_Agents__Deep_analysis__file_reason.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.008870548,
+      "duration_ms": 88994,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-09-02T19-04-24-113Z_aws-ml_Trinity__Agentic_AI-powered_transition_planning_fo.json",
+      "writer_output": "WRITER_2026-09-02T19-04-24-113Z_aws-ml_Trinity__Agentic_AI-powered_transition_planning_fo.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.008432276,
+      "duration_ms": 130656,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-09-02T19-04-24-112Z_google-workspace_Turn_Google_Docs__PDFs__and_Word_files_into_video_.json",
+      "writer_output": "WRITER_2026-09-02T19-04-24-112Z_google-workspace_Turn_Google_Docs__PDFs__and_Word_files_into_video_.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.01547,
+      "duration_ms": 93301,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-09-02T19-04-24-112Z_google-workspace_Custom_instructions_for_Gemini_in_Workspace_now_av.json",
+      "writer_output": "WRITER_2026-09-02T19-04-24-112Z_google-workspace_Custom_instructions_for_Gemini_in_Workspace_now_av.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.007449696,
+      "duration_ms": 74015,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-09-02T19-04-24-112Z_google-workspace_Automate_Drive__Gmail__and_Google_Chat_actions_wit.json",
+      "writer_output": "WRITER_2026-09-02T19-04-24-112Z_google-workspace_Automate_Drive__Gmail__and_Google_Chat_actions_wit.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.007084796,
+      "duration_ms": 71745,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-09-02T19-04-24-112Z_aws-ml_Modernizing_and_scaling_support_operations_with_ge.json",
+      "success": false,
+      "reason": "repeat",
+      "repeat_of": "AI Customer Service Explained: How Small Businesses Are Using It",
+      "score": 0.9304938775888775,
+      "cost_usd": 0.01140756
+    },
+    {
+      "draft": "2026-09-02T19-04-24-111Z_microsoft-ai_How_Kier_Group_s_Louisa_Finlay_is_using_Copilot_to.json",
+      "writer_output": "WRITER_2026-09-02T19-04-24-111Z_microsoft-ai_How_Kier_Group_s_Louisa_Finlay_is_using_Copilot_to.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.01118562,
+      "duration_ms": 74587,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    }
+  ],
+  "finished_at": "2026-09-03T02:13:40.936Z",
+  "duration_seconds": 909.501
+}

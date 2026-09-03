@@ -1,0 +1,50 @@
+{
+  "started_at": "2026-09-03T02:13:41.114Z",
+  "total": 7,
+  "passed": 5,
+  "failed": 0,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.019169577999999996,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-09-02T19-04-24-111Z_microsoft-ai_How_Kier_Group_s_Louisa_Finlay_is_using_Copilot_to.json",
+      "article": "ARTICLE_2026-09-02T19-04-24-111Z_microsoft-ai_How_Kier_Group_s_Louisa_Finlay_is_using_Copilot_to.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0015654
+    },
+    {
+      "writer": "WRITER_2026-09-02T19-04-24-112Z_google-workspace_Custom_instructions_for_Gemini_in_Workspace_now_av.json",
+      "article": "ARTICLE_2026-09-02T19-04-24-112Z_google-workspace_Custom_instructions_for_Gemini_in_Workspace_now_av.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0023319
+    },
+    {
+      "writer": "WRITER_2026-09-02T19-04-24-112Z_google-workspace_Turn_Google_Docs__PDFs__and_Word_files_into_video_.json",
+      "article": "ARTICLE_2026-09-02T19-04-24-112Z_google-workspace_Turn_Google_Docs__PDFs__and_Word_files_into_video_.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0018987
+    },
+    {
+      "writer": "WRITER_2026-09-02T19-04-24-113Z_aws-ml_Trinity__Agentic_AI-powered_transition_planning_fo.json",
+      "article": "ARTICLE_2026-09-02T19-04-24-113Z_aws-ml_Trinity__Agentic_AI-powered_transition_planning_fo.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.001599
+    },
+    {
+      "writer": "WRITER_2026-09-03T01-58-31-057Z_openai-blog_ATV_Big_Air_Tour_turned_3_days_of_work_into_3_hour.json",
+      "article": "ARTICLE_2026-09-03T01-58-31-057Z_openai-blog_ATV_Big_Air_Tour_turned_3_days_of_work_into_3_hour.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0020193
+    }
+  ],
+  "truth_blocked": 1,
+  "truth_held": 1,
+  "finished_at": "2026-09-03T02:15:57.628Z",
+  "duration_seconds": 136.514
+}

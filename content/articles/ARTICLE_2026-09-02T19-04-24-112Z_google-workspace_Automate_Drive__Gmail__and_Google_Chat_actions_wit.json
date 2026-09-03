@@ -1,0 +1,70 @@
+{
+  "_meta": {
+    "written_at": "2026-09-03T02:17:40.440Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.009108692,
+    "original_draft": "2026-09-02T19-04-24-112Z_google-workspace_Automate_Drive__Gmail__and_Google_Chat_actions_wit.json",
+    "source_id": "google-workspace",
+    "source_name": "Google Workspace Updates (hivatalos)",
+    "source_link": "http://workspaceupdates.googleblog.com/2026/09/automate-drive-gmail-and-google-chat-actions-with-new-steps-in-Workspace-Studio.html",
+    "source_links": [
+      "http://workspaceupdates.googleblog.com/2026/09/automate-drive-gmail-and-google-chat-actions-with-new-steps-in-Workspace-Studio.html"
+    ],
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "rejected_at": "2026-09-03T02:14:12.519Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 827
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "The article is well-structured, explains terms clearly in plain language, maintains a friendly and encouraging tone, and accurately describes real Google Workspace tools without fabricating details. No cliches, no prohibited content, correct US English throughout. A minor note: the article describes general automation tools rather than specifically covering the 'Workspace Studio' update referenced in the source URL — but the content is accurate, useful, and meets all quality gate criteria for an explainer.",
+      "_aiCost": 0.0021183,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Hitelesség-kapu blokkolta: The article describes 'Workspace Studio Flows' as a Google no-code automation tool with specific actions ('Move Drive file', 'Copy Drive file', 'Reply to email', 'Send a Chat reply') and admin toggle ",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-09-02T19-04-24-112Z_google-workspace_Automate_Drive__Gmail__and_Google_Chat_actions_wit.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-09-03T02:18:22.017Z",
+    "slug": "practical-ways-to-automate-routine-tasks-across-google-workspace",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-09-03T02:18:52.087Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is an explainer/roundup covering multiple existing Google Workspace tools (filters, templates, Drive folders, Apps Script) rather than introducing one specific new feature with a concrete action.",
+    "image_v": 2,
+    "image_at": "2026-09-03T02:28:21.062Z",
+    "seo": {
+      "meta_description": "Learn to automate Gmail, Drive, and Chat in Google Workspace without coding. Simple filters, templates, and scripts to save time daily.",
+      "keywords": [
+        "automate Google Workspace tasks",
+        "Google Workspace automation without code",
+        "how to automate Gmail filters",
+        "Google Apps Script for beginners",
+        "automate Google Drive tasks",
+        "Google Chat automation tips",
+        "save time with Google Workspace",
+        "no-code automation tools"
+      ],
+      "seo_score": 7,
+      "suggestions": [
+        "Add more long-tail keywords like 'Gmail automatic email filters' and 'Google Drive file automation' to capture specific search intent",
+        "Include a practical example in the title or subtitle (e.g., 'in 5 minutes') to boost click-through rates",
+        "Consider adding 'step-by-step' or 'beginner guide' to meta keywords for higher search relevance"
+      ],
+      "optimised_at": "2026-09-03T02:30:09.662Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Practical Ways to Automate Routine Tasks Across Google Workspace\"\nsubtitle: \"A plain-language look at the real tools that connect Gmail, Drive, and Chat — so you stop doing the same clicks every morning\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"google-workspace\", \"automation\", \"productivity\", \"gmail\", \"google-drive\"]\n---\n\n# Practical Ways to Automate Routine Tasks Across Google Workspace\n\n> **In short:** Google Workspace already offers several real ways to automate routine work across Gmail, Drive, and Chat — including filters, templates, and Google Apps Script — without needing a developer's skill set.\n\nEvery weekday morning looks the same: open Gmail, find the attached invoice, save it to a project folder in Drive, ping the team in Chat, send a \"got it\" reply. Four small actions. Done by hand. Every single day.\n\nThe good news is you don't need to wait for a magic button. Real automation tools already live inside Google Workspace — most people just never open them.\n\n## What \"no-code\" automation actually means here\n\nA no-code tool is one that lets you build automated actions by clicking through menus and filling in fields, instead of writing software. In Google Workspace, that idea lives in a few different corners of the product:\n\n- **Filters and rules in Gmail** automatically sort, label, forward, archive, or delete incoming mail based on rules you set.\n- **Canned responses (templates)** save replies you've written before so you can paste them in one click.\n- **Drive folders, shortcuts, and shared drives** keep files organized across teams. A shortcut is a one-click way to put a file in two folders without duplicating it.\n- **Add-ons** — small extras you install from the Workspace Marketplace — connect Gmail and Calendar to other apps.\n- **Google Apps Script** is a built-in scripting tool. \"Scripting\" sounds scary, but most Apps Scripts are copy-paste recipes that automate a specific task. You don't have to write them yourself — many are shared freely online.\n\nNone of these require a programmer. Each has trade-offs in how much you can customize them, and that's normal.\n\n## Three real starting points for everyday routines\n\nIf you only have fifteen minutes, pick one of these:\n\n1. **Stop retyping the same email reply.** Turn on Canned Responses in Gmail Settings, then start saving your most-sent messages as templates. The first one you save might be \"Thanks, got it — I'll review and get back to you by Friday.\"\n\n2. **Tame a noisy inbox with one filter.** Pick a label (a tag you can color and search), and set up a filter that applies it automatically to anything from a specific sender or with a specific word. Inbox zero gets closer.\n\n3. **Use a shared Drive folder as your team's \"dropbox.\"** Anything saved there is visible to everyone with access — no emailing files back and forth.\n\nThese three take less time to set up than they save you in the first week.\n\n## When the built-ins aren't enough\n\nFilters and templates can handle a lot, but not everything. Once you find yourself wanting a chain that \"watches for an email with an attachment, saves the attachment to a specific Drive folder, and posts a note in Chat\" — that's a real cross-app automation, and Gmail rules alone won't do it.\n\nTwo honest paths from there:\n\n- **Apps Script.** Google's own scripting language, designed for non-developers who can follow a recipe. Search for \"[task you want] Google Apps Script\" — chances are someone has already written and shared the code.\n- **Third-party tools.** Services like Zapier and Make sit between your apps and connect them. They cost money and need a bit more setup, but they don't require any code at all.\n\nBoth routes are legitimate. Apps Script is free and stays inside Google; third-party tools often have friendlier menus but live outside your Workspace.\n\n## What this means for you\n\n- **If Gmail already feels like a chore**: filters and templates will give you back the most time for the smallest effort. Start there.\n- **If you run a small team or business**: a shared Drive folder plus one simple filter eliminates a surprising amount of \"where's the latest version?\" email. Set it up once, then stop chasing files.\n- **If you want cross-app automation (Gmail → Drive → Chat)**: that's where Apps Script or a third-party tool becomes worth the setup time. Don't start there — graduate to it.\n- **If you're worried about automation breaking something**: start with the lowest-stakes thing first. An auto-label on a newsletter is easy to undo; auto-deleting financial mail is not. Build confidence, then expand.\n\n## Wrap-up\n\nThe point isn't to automate everything. The point is to take the three or four small actions that eat your morning and let a tool do them while you start your real work. Filters today, a template tomorrow, a cross-app chain when you're ready. Pick one boring task and automate it this week — the rest follows naturally.",
+  "original_title": "Automate Drive, Gmail, and Google Chat actions with new steps in Workspace Studio"
+}

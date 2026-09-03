@@ -1,0 +1,63 @@
+{
+  "_meta": {
+    "written_at": "2026-09-03T02:07:36.137Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.008432276,
+    "original_draft": "2026-09-02T19-04-24-113Z_aws-ml_Trinity__Agentic_AI-powered_transition_planning_fo.json",
+    "source_id": "aws-ml",
+    "source_name": "AWS Machine Learning (hivatalos)",
+    "source_link": "https://aws.amazon.com/blogs/machine-learning/trinity-agentic-ai-powered-transition-planning-for-students-with-disabilities/",
+    "source_links": [
+      "https://aws.amazon.com/blogs/machine-learning/trinity-agentic-ai-powered-transition-planning-for-students-with-disabilities/"
+    ],
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "published_at": "2026-09-03T02:15:32.467Z",
+    "slug": "how-ai-is-helping-students-with-disabilities-plan-their-future",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 714
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Solid explainer with a strong hook, clear explanations of IDEA and transition plans, appropriate cautions about AI use, and a useful 'What this means for you' section for parents, teachers, and students. No invented facts, product names, or fake quotes. No prohibited content. No clichés. Brand voice is consistently friendly and explanatory throughout.",
+      "_aiCost": 0.001599,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-09-03T02:19:07.898Z",
+    "guide_worthy": false,
+    "pairing_reason": "Article is a trend explainer about AI being used in schools generally, with no specific named tool or product that readers could go use",
+    "image_v": 2,
+    "image_at": "2026-09-03T02:28:49.979Z",
+    "seo": {
+      "meta_description": "Schools use AI chatbots to help families complete IDEA transition plans for students with disabilities. See how AI simplifies special education paperwork.",
+      "keywords": [
+        "AI for special education",
+        "IDEA transition plan help",
+        "AI tools for students with disabilities",
+        "transition planning for IEP",
+        "chatbot for special education paperwork",
+        "AI help with IEP documents",
+        "special education transition planning tools"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add specific examples of AI tools being used in schools to build trust and credibility",
+        "Include practical tips for parents on what questions to ask about AI tools at their child's school",
+        "Consider adding a FAQ section addressing common parent concerns about AI in special education"
+      ],
+      "optimised_at": "2026-09-03T02:30:41.473Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"How AI Is Helping Students With Disabilities Plan Their Future\"\nsubtitle: \"A new wave of AI tools is making the school system's transition planning process faster — and easier for families to navigate.\"\ncategory: \"explainer\"\naudience: \"personal\"\nread_time_minutes: 4\ntags: [\"ai-education\", \"special-education\", \"idea\", \"transition-planning\", \"accessibility\"]\n---\n\n# How AI Is Helping Students With Disabilities Plan Their Future\n\n> **In short:** School districts across the US are starting to use conversational AI (chatbot-style tools) to help draft IDEA transition plans for students with disabilities — aiming for faster paperwork, more consistent support, and less back-and-forth for families.\n\nYou finally got the email about your child's transition meeting — and then you see the PDF: forty pages of acronyms, goals, and legal language. Two weeks to read it, write your own comments, and shape what your kid's next few years will look like. Sound familiar?\n\nA new wave of AI tools is being built specifically for this moment. They're not designed to replace the adults in the room — they're meant to take on the part everyone dreads: the paperwork.\n\n## What a transition plan actually is\n\nIn the US, the **Individuals with Disabilities Education Act** (commonly called IDEA — a federal law that guarantees a free, appropriate public education for students with disabilities) requires schools to start writing a **transition plan** for students with disabilities, usually around age 16. The plan spells out what the student is working toward after high school: further education, a job, independent living, or some mix.\n\nIn practice, these plans take hours to write, hours more to review, and they pull in teachers, counselors, and sometimes outside specialists. For parents, especially those who don't have a background in special education, the process can feel like translating a different language.\n\n## Where AI fits in\n\nConversational AI — the same kind of technology behind ChatGPT and Claude — is now being used by some school districts to speed up three specific jobs:\n\n- **Drafting the plan from notes.** A teacher types or dictates observations about a student, and the AI produces a draft plan aligned with IDEA requirements. What used to take days can come back in minutes.\n- **Translating the legalese.** Parents can paste a section of the plan into a chatbot and ask, in plain English, \"What does this actually mean for my child?\" — and get an answer they can use in a meeting.\n- **Spotting what's missing.** The AI can flag parts of a draft that don't fully address IDEA requirements, so nothing important gets left out by accident.\n\nThese tools run on cloud platforms (think of them as rented computers in big data centers), which is how they're able to handle the work of an entire district at once.\n\n## What's worth being cautious about\n\nA few things to keep in mind:\n\n- **AI drafts, humans decide.** The plan still needs a real educator — and you — to sign off. Treat the AI's output as a starting point, not a finished document.\n- **Privacy matters.** A student's school records are sensitive. Ask your district what data the AI sees, where it goes, and whether it stays private.\n- **AI can still make mistakes.** If a goal in the draft doesn't sound right, push back. You know your child.\n\n## What this means for you\n\n- **If you're a parent of a student with a disability:** Ask your school district if they use any AI tools in the transition planning process, and which ones. Most districts are happy to explain.\n- **If you're a teacher or special-ed coordinator:** These tools are most useful for the parts of your job that aren't really teaching — the paperwork. They free you up for the work that is.\n- **If you're a student yourself:** Some districts let older students contribute to their own plan through these tools. Ask if you can.\n\n## Wrap-up\n\nIDEA transition plans aren't going anywhere — and they shouldn't. What is changing is how much of the heavy lifting happens before a family ever sits down in a meeting room. If your school district is rolling out an AI tool in this space, ask questions, read the drafts yourself, and remember that the technology is there to support the conversation, not end it.",
+  "original_title": "Trinity: Agentic AI-powered transition planning for students with disabilities"
+}

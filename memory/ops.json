@@ -1,118 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178826712756638",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-01T12:52:07.566Z",
-      "updated": "2026-09-01T12:52:07.810Z"
-    },
-    {
-      "id": "t17882671278121",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-09-01T12:52:07.812Z",
-      "updated": "2026-09-01T12:52:08.048Z"
-    },
-    {
-      "id": "t178826712804917",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-01T12:52:08.049Z",
-      "updated": "2026-09-01T12:52:31.471Z"
-    },
-    {
-      "id": "t178826715147376",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-09-01T12:52:31.473Z",
-      "updated": "2026-09-01T12:53:04.353Z"
-    },
-    {
-      "id": "t178828909573159",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-09-01T18:58:15.731Z",
-      "updated": "2026-09-01T18:58:15.897Z"
-    },
-    {
-      "id": "t178828909589889",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-09-01T18:58:15.898Z",
-      "updated": "2026-09-01T18:59:10.434Z"
-    },
-    {
-      "id": "t178828915043589",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-09-01T18:59:10.435Z",
-      "updated": "2026-09-01T18:59:10.609Z"
-    },
-    {
-      "id": "t178828915061157",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-09-01T18:59:10.611Z",
-      "updated": "2026-09-01T19:11:04.207Z"
-    },
-    {
-      "id": "t178828986420866",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-01T19:11:04.208Z",
-      "updated": "2026-09-01T19:12:16.984Z"
-    },
-    {
-      "id": "t178828993698731",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-09-01T19:12:16.987Z",
-      "updated": "2026-09-01T19:12:49.335Z"
-    },
-    {
-      "id": "t17882899693379",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-01T19:12:49.337Z",
-      "updated": "2026-09-01T19:12:56.122Z"
-    },
-    {
-      "id": "t178828997612578",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-09-01T19:12:56.125Z",
-      "updated": "2026-09-01T19:13:13.648Z"
-    },
-    {
-      "id": "t178828999370298",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-01T19:13:13.702Z",
-      "updated": "2026-09-01T19:13:38.369Z"
-    },
-    {
-      "id": "t178829001837111",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-09-01T19:13:38.371Z",
-      "updated": "2026-09-01T19:14:06.744Z"
-    },
-    {
       "id": "t178829004674674",
       "title": "Run designer",
       "status": "done",
@@ -479,33 +367,121 @@
       "agent": "publisher",
       "created": "2026-09-02T19:11:12.511Z",
       "updated": "2026-09-02T19:11:35.302Z"
+    },
+    {
+      "id": "t17884006809883",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-09-03T01:58:00.988Z",
+      "updated": "2026-09-03T01:58:01.161Z"
+    },
+    {
+      "id": "t178840068116332",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-09-03T01:58:01.163Z",
+      "updated": "2026-09-03T01:58:31.070Z"
+    },
+    {
+      "id": "t178840071107272",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-09-03T01:58:31.072Z",
+      "updated": "2026-09-03T01:58:31.269Z"
+    },
+    {
+      "id": "t17884007112718",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-09-03T01:58:31.272Z",
+      "updated": "2026-09-03T02:13:40.949Z"
+    },
+    {
+      "id": "t178840162095090",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-03T02:13:40.950Z",
+      "updated": "2026-09-03T02:15:57.640Z"
+    },
+    {
+      "id": "t178840175764360",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-09-03T02:15:57.643Z",
+      "updated": "2026-09-03T02:17:40.451Z"
+    },
+    {
+      "id": "t178840186045277",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-03T02:17:40.452Z",
+      "updated": "2026-09-03T02:18:36.184Z"
+    },
+    {
+      "id": "t178840191618645",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-09-03T02:18:36.187Z",
+      "updated": "2026-09-03T02:19:24.492Z"
+    },
+    {
+      "id": "t178840196454247",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-09-03T02:19:24.542Z",
+      "updated": "2026-09-03T02:26:31.376Z"
+    },
+    {
+      "id": "t178840239137885",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-03T02:26:31.378Z",
+      "updated": "2026-09-03T02:28:07.703Z"
+    },
+    {
+      "id": "t178840248774760",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-03T02:28:07.747Z",
+      "updated": "2026-09-03T02:29:48.515Z"
+    },
+    {
+      "id": "t178840258851663",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-09-03T02:29:48.516Z",
+      "updated": "2026-09-03T02:31:44.738Z"
+    },
+    {
+      "id": "t178840270474075",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-03T02:31:44.740Z",
+      "updated": "2026-09-03T02:31:52.095Z"
+    },
+    {
+      "id": "t178840271209639",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-09-03T02:31:52.096Z",
+      "updated": "2026-09-03T02:32:13.607Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178756078330567",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). A válogatás jó mixet kínál: a privátosságvédelemtől (1) a mindennapi írásig minden helyet kap, szimpatikus és hasznos. Több AI-eszközt is bemutat (ChatGPT, DeepSeek, Grok, Cohere, ChatRTX, Le Chat, Qw",
-      "agent": "publisher",
-      "at": "2026-08-24T08:39:43.305Z",
-      "loud": false
-    },
-    {
-      "id": "n178756079163937",
-      "level": "success",
-      "text": "0 hír + 2 útmutató publikálva (költség: $0.0087).",
-      "agent": "ceo",
-      "at": "2026-08-24T08:39:51.639Z",
-      "loud": false
-    },
-    {
-      "id": "n17875898713239",
-      "level": "info",
-      "text": "SEO: 6 cikk optimalizálva (átlag 8.2/10).",
-      "agent": "seo",
-      "at": "2026-08-24T16:44:31.323Z",
-      "loud": false
-    },
     {
       "id": "n17875898939024",
       "level": "success",
@@ -1281,72 +1257,33 @@
       "agent": "ceo",
       "at": "2026-09-02T19:11:35.346Z",
       "loud": false
+    },
+    {
+      "id": "n178840270472854",
+      "level": "info",
+      "text": "SEO: 11 cikk optimalizálva (átlag 7989908981.6/10).",
+      "agent": "seo",
+      "at": "2026-09-03T02:31:44.728Z",
+      "loud": false
+    },
+    {
+      "id": "n178840271946415",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The lineup is solid and practical — great mix of workplace, personal, and community use cases that everyday people will actually use. One quick check: the company lessons flagged \"ChatRT\" (not ChatRTX",
+      "agent": "publisher",
+      "at": "2026-09-03T02:31:59.464Z",
+      "loud": false
+    },
+    {
+      "id": "n17884027336526",
+      "level": "success",
+      "text": "7 hír + 4 útmutató publikálva (költség: $0.1583).",
+      "agent": "ceo",
+      "at": "2026-09-03T02:32:13.652Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178758988052695",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-08-24T16:44:40.526Z"
-    },
-    {
-      "id": "m178759007290072",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Ask Copilot to compare two product specs and list \" — copilot.github.com — the URL for accessing the web-based Copilot chat has changed. Copilot now lives within the GitHub interface (github.com/github-copilot or through the Copilot app), not at a separate copilot.github.com domain.; The ability to paste a URL and have Copilot autonomou",
-      "ref": "ARTICLE_GUIDE_ask-copilot-to-compare-two-product-specs-and-list-the-differ.json",
-      "at": "2026-08-24T16:47:52.900Z"
-    },
-    {
-      "id": "m178759041242766",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-08-24T16:53:32.427Z"
-    },
-    {
-      "id": "m178761973687249",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Advancing price-performance for developers with GPT‑5.6 in Kiro\" — mi a baj: Kiro is described as 'an AI coding assistant' that runs on GPT-5.6, but Kiro is not a verified-real product on the supplied list and no verifiable AI coding assistant named Kiro (powered by OpenAI's GPT-5.6) can be confirmed — the tool's name, its existence, and its GPT-5.6 integration appear fabric",
-      "ref": "2026-08-25T00-37-56-601Z_openai-blog_Advancing_price-performance_for_developers_with_GP.json",
-      "at": "2026-08-25T01:02:16.872Z"
-    },
-    {
-      "id": "m178761989430738",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Advancing price-performance for developers with GPT‑5.6 in Kiro\" — javítva: Kiro is described as 'an AI coding assistant' that runs on GPT-5.6, but Kiro is not a verified-real product on the supplied list and no verifiable AI coding assistant named Kiro (powered by OpenAI's GPT-5.6) can be confirmed — the tool's name, its existence, and its GPT-5.6 integration appear fabricated or un",
-      "ref": "2026-08-25T00-37-56-601Z_openai-blog_Advancing_price-performance_for_developers_with_GP.json",
-      "at": "2026-08-25T01:04:54.307Z"
-    },
-    {
-      "id": "m178761991013299",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Advancing price-performance for developers with GPT‑5.6 in Kiro\" (?/10)",
-      "ref": "2026-08-25T00-37-56-601Z_openai-blog_Advancing_price-performance_for_developers_with_GP.json",
-      "at": "2026-08-25T01:05:10.132Z"
-    },
-    {
-      "id": "m178761992959354",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "info",
-      "text": "A \"Generate interactive simulations and models in the Gemi\" hír a meglévő útmutatóra mutat: gemini-getting-started",
-      "ref": "gemini-getting-started",
-      "at": "2026-08-25T01:05:29.593Z"
-    },
     {
       "id": "m178761994949780",
       "from": "pairing",
@@ -2644,6 +2581,69 @@
       "text": "1 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-09-02T19:19:24.958Z"
+    },
+    {
+      "id": "m178840165262897",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Automate Drive, Gmail, and Google Chat actions with new steps in Workspace Studio\" — mi a baj: The article describes 'Workspace Studio Flows' as a Google no-code automation tool with specific actions ('Move Drive file', 'Copy Drive file', 'Reply to email', 'Send a Chat reply') and admin toggle controls — this product/feature does not appear to exist in Google's actual Worksp",
+      "ref": "2026-09-02T19-04-24-112Z_google-workspace_Automate_Drive__Gmail__and_Google_Chat_actions_wit.json",
+      "at": "2026-09-03T02:14:12.628Z"
+    },
+    {
+      "id": "m178840186044211",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Automate Drive, Gmail, and Google Chat actions with new steps in Workspace Studio\" — javítva: The article describes 'Workspace Studio Flows' as a Google no-code automation tool with specific actions ('Move Drive file', 'Copy Drive file', 'Reply to email', 'Send a Chat reply') and admin toggle controls — this product/feature does not appear to exist in Google's actual Workspace offeri",
+      "ref": "2026-09-02T19-04-24-112Z_google-workspace_Automate_Drive__Gmail__and_Google_Chat_actions_wit.json",
+      "at": "2026-09-03T02:17:40.442Z"
+    },
+    {
+      "id": "m178840190201950",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Automate Drive, Gmail, and Google Chat actions with new steps in Workspace Studio\" (?/10)",
+      "ref": "2026-09-02T19-04-24-112Z_google-workspace_Automate_Drive__Gmail__and_Google_Chat_actions_wit.json",
+      "at": "2026-09-03T02:18:22.019Z"
+    },
+    {
+      "id": "m178840192536039",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "info",
+      "text": "A \"How Kier Group’s Louisa Finlay is using Copilot to driv\" hír a meglévő útmutatóra mutat: copilot-getting-started",
+      "ref": "copilot-getting-started",
+      "at": "2026-09-03T02:18:45.360Z"
+    },
+    {
+      "id": "m178840193699543",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "info",
+      "text": "A \"Custom instructions for Gemini in Workspace now availab\" hír a meglévő útmutatóra mutat: how-to-set-up-gemini-as-your-default-helper-on-an-android-ph",
+      "ref": "how-to-set-up-gemini-as-your-default-helper-on-an-android-ph",
+      "at": "2026-09-03T02:18:56.995Z"
+    },
+    {
+      "id": "m178840194217154",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "info",
+      "text": "A \"Turn Google Docs, PDFs, and Word files into video summa\" hír a meglévő útmutatóra mutat: how-to-start-a-new-google-docs-document-with-gemini-s-built-",
+      "ref": "how-to-start-a-new-google-docs-document-with-gemini-s-built-",
+      "at": "2026-09-03T02:19:02.171Z"
+    },
+    {
+      "id": "m178840271208027",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 20 → 5/4/2 oszlop.",
+      "ref": "mobile",
+      "at": "2026-09-03T02:31:52.080Z"
     }
   ]
 }
