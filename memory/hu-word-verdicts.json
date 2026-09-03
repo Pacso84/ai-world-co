@@ -918,6 +918,7 @@
     "időpontegyeztetésről",
     "idősellátásban",
     "idősávokkal",
+    "idősávon",
     "idővonalá",
     "iframe",
     "ikonaként",
@@ -1030,6 +1031,7 @@
     "jüket",
     "kampuszon",
     "kampánybriefet",
+    "karaktermintaképes",
     "karokba",
     "kedvet",
     "kellnek",
@@ -1064,6 +1066,7 @@
     "klippeket",
     "klippet",
     "klipphossz",
+    "klipt",
     "knak",
     "knál",
     "kombó",
@@ -1209,6 +1212,7 @@
     "linklistát",
     "linklistával",
     "linkmegosztás",
+    "linkprobléma",
     "linksor",
     "lisinopril",
     "listaba",
@@ -1342,6 +1346,7 @@
     "menüsávodon",
     "menütervet",
     "mesterségesintelligencia",
+    "metforminról",
     "microsoft",
     "middleware",
     "midjourney",
@@ -1567,6 +1572,7 @@
     "papirrepulo",
     "papírepülő",
     "papírod",
+    "papírodról",
     "papírok",
     "papíron",
     "paraméteren",
@@ -1737,6 +1743,7 @@
     "renderelésbe",
     "renderelésre",
     "renderelést",
+    "renderelésére",
     "renderelődik",
     "renderképpé",
     "rendetlenséget",
@@ -1949,6 +1956,7 @@
     "szerveren",
     "szervezettséget",
     "szintjet",
+    "szkriptelőeszköz",
     "szlenget",
     "szoftveren",
     "szolgáltatásifeltétel-változás",
@@ -1964,6 +1972,7 @@
     "szundíztatom",
     "szuperfelbontás",
     "szuperfelbontású",
+    "szuperképesség",
     "szuperképessége",
     "szuperképességeket",
     "szuperképességnek",
@@ -2078,6 +2087,7 @@
     "terminálkurzorod",
     "terminálpromptba",
     "termékdesignt",
+    "termékmascotokhoz",
     "termékmockupokat",
     "termékmockupokhoz",
     "termékszöveget",
@@ -2089,6 +2099,7 @@
     "testreszabhatják",
     "testreszabhatod",
     "testreszabható",
+    "testreszabhatóságban",
     "testreszabott",
     "testreszabottabb",
     "testreszabó",
@@ -3501,6 +3512,11 @@
       "correct": "családi",
       "at": "2026-09-02",
       "mondattal": true
+    },
+    "kifozöd": {
+      "correct": "kifőzöd",
+      "at": "2026-09-03",
+      "mondattal": true
     }
   },
   "review": {
@@ -4555,11 +4571,36 @@
       "correct": "kös",
       "at": "2026-09-02",
       "mondattal": true
+    },
+    "ához": {
+      "correct": "készletlistához",
+      "at": "2026-09-03",
+      "mondattal": true
+    },
+    "bulletpont": {
+      "correct": "pontokat",
+      "at": "2026-09-03",
+      "mondattal": true
+    },
+    "keverhetedz": {
+      "correct": "keverheted",
+      "at": "2026-09-03",
+      "mondattal": true
+    },
+    "dobjd": {
+      "correct": "dobj",
+      "at": "2026-09-03",
+      "mondattal": true
+    },
+    "témaával": {
+      "correct": "témával",
+      "at": "2026-09-03",
+      "mondattal": true
     }
   },
   "scan": {
-    "at": "2026-09-02",
-    "files": 879,
-    "candidates": 3
+    "at": "2026-09-03",
+    "files": 890,
+    "candidates": 18
   }
 }
