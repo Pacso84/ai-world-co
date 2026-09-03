@@ -1285,15 +1285,6 @@
   ],
   "messages": [
     {
-      "id": "m17876472501331",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "5 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-08-25T08:40:50.133Z"
-    },
-    {
       "id": "m178767514355496",
       "from": "designer",
       "to": "team",
@@ -2644,6 +2635,15 @@
       "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Control TV and streaming apps using Alexa+ voice c\" — The guide treats 'Alexa+' as a free feature available to all Alexa users, but Alexa+ is actually Amazon's paid subscription service (roughly $19.99/month). Regular Alexa users may not have these advanced TV control features.; The guide describes specific UI elements in the Alexa app ",
       "ref": "ARTICLE_GUIDE_control-tv-and-streaming-apps-using-alexa-voice-commands.json",
       "at": "2026-09-03T12:24:32.984Z"
+    },
+    {
+      "id": "m17884619240479",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Getting started with Microsoft Copilot in everyday\" — The Windows key + C shortcut opens Copilot panel in Windows 11 (this was removed/deprecated); The Copilot icon is 'a blue-green circle with three overlapping dots inside, resembling a speech bubble' (icon design has changed); The statement about Windows Copilot being able to 'answer ",
+      "ref": "ARTICLE_GUIDE_copilot-getting-started.json",
+      "at": "2026-09-03T18:58:44.047Z"
     }
   ]
 }
