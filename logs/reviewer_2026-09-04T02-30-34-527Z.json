@@ -1,0 +1,42 @@
+{
+  "started_at": "2026-09-04T02:28:15.199Z",
+  "total": 5,
+  "passed": 3,
+  "failed": 1,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.01684167,
+  "by_article": [
+    {
+      "writer": "WRITER_GUIDE_how-to-build-a-clean-invoice-and-payment-tracker-in-excel-wi.json",
+      "rejected": "REJECTED_GUIDE_how-to-build-a-clean-invoice-and-payment-tracker-in-excel-wi.json",
+      "decision": "FAIL",
+      "score": 7,
+      "cost_usd": 0.0025578
+    },
+    {
+      "writer": "WRITER_GUIDE_how-to-design-a-simple-logo-for-your-side-project-with-midjo.json",
+      "article": "ARTICLE_GUIDE_how-to-design-a-simple-logo-for-your-side-project-with-midjo.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.00187785
+    },
+    {
+      "writer": "WRITER_GUIDE_how-to-prepare-for-a-job-interview-with-realistic-practice-q.json",
+      "article": "ARTICLE_GUIDE_how-to-prepare-for-a-job-interview-with-realistic-practice-q.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.00175878
+    },
+    {
+      "writer": "WRITER_GUIDE_how-to-read-and-summarize-a-long-lease-or-insurance-policy-w.json",
+      "article": "ARTICLE_GUIDE_how-to-read-and-summarize-a-long-lease-or-insurance-policy-w.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.002277
+    }
+  ],
+  "truth_blocked": 1,
+  "finished_at": "2026-09-04T02:30:34.526Z",
+  "duration_seconds": 139.327
+}

@@ -1,34 +1,4 @@
 {
-  "2026-08-15": [
-    {
-      "at": "2026-08-15T00:45:57.449Z",
-      "file": "WRITER_2026-08-14T01-01-26-375Z_openai-blog_Previewing_Ultrafast_mode__GPT-5_6_Sol_at_up_to_14.json",
-      "action": "block",
-      "reasons": [
-        "GPT-5.6 is listed as a verified-real name in the provided list, but the article does not reference it. However, I should check: The article mentions Cerebras as a company making custom AI chips, but Cerebras is NOT on the verified-real names list. While Cerebras is a real company, the article attributes specific features to it ('processors designed for one thing only: feeding AI models as quickly as possible') - this is a real characterization of Cerebras but not a fabricated feature. The article doesn't really fabricate here. Let me reconsider.",
-        "Wait - re-reading the output discipline: I should only flag actual fabrications and not narrate my checking. Let me focus on what is actually fabricated in this article. The claims about 750 tokens per second and 14x faster speeds are presented as facts from 'recent previews' but I cannot verify these specific numbers. However, I cannot be sure these are fabricated either. The article is fairly hedged throughout. I don't see clear fabrications of UI elements, URLs, invented model names, invented prices, or features attributed to named tools that don't exist. The article doesn't even name a specific product feature that doesn't exist - it speaks generally about 'AI providers like OpenAI'. I'll mark this as credible=true."
-      ],
-      "confidence": 3
-    },
-    {
-      "at": "2026-08-15T00:46:40.506Z",
-      "file": "WRITER_2026-08-15T00-37-12-118Z_microsoft-365_Co-create_slides_with_Copilot_in_PowerPoint_for_iP.json",
-      "action": "block",
-      "reasons": [
-        "The article states 'Microsoft has rolled out its Copilot assistant ... into the iPad version of PowerPoint' and presents it as a new, recent development. As of available information, Microsoft 365 Copilot is not generally available in the PowerPoint iPad app in the manner described (a sparkly ribbon Copilot icon with a chat panel, draft-from-scratch, restyle whole deck, reorder slides by command). This describes functionality not confirmed to exist on the iPad PowerPoint client, attributing fabricated features to a named Microsoft product."
-      ],
-      "confidence": 7
-    },
-    {
-      "at": "2026-08-15T00:48:43.134Z",
-      "file": "WRITER_2026-08-14T01-01-26-375Z_openai-blog_Previewing_Ultrafast_mode__GPT-5_6_Sol_at_up_to_14.json",
-      "action": "block",
-      "reasons": [
-        "GPT-5.6 is listed as a verified-real name, but as of my knowledge there is no public OpenAI model named 'GPT-5.6'. It is presented as a current, released product ('OpenAI's GPT-5.6 is one of the reasons why'), which is a fabricated specific claim."
-      ],
-      "confidence": 6
-    }
-  ],
   "2026-08-16": [
     {
       "at": "2026-08-16T00:49:01.490Z",
@@ -323,6 +293,26 @@
       "reasons": [
         "AI-bíró nem elérhető (érthetetlen AI-válasz: credible mező hiányzik) — visszatartva a következő futásig"
       ]
+    }
+  ],
+  "2026-09-04": [
+    {
+      "at": "2026-09-04T02:12:11.849Z",
+      "file": "WRITER_2026-09-04T01-58-32-035Z_openai-blog_Daybreak_for_Frontline_Defenders___1B_to_protect_e.json",
+      "action": "hold",
+      "reasons": [
+        "AI-bíró nem elérhető (érthetetlen AI-válasz: credible mező hiányzik) — visszatartva a következő futásig"
+      ]
+    },
+    {
+      "at": "2026-09-04T02:28:37.791Z",
+      "file": "WRITER_2026-09-04T01-58-32-035Z_openai-blog_Daybreak_for_Frontline_Defenders___1B_to_protect_e.json",
+      "action": "block",
+      "reasons": [
+        "The article states OpenAI announced a $1 billion commitment called 'Daybreak for Frontline Defenders' — this specific program name and dollar amount are not verifiable and appear to be fabricated.",
+        "The article claims OpenAI 'recently announced' this $1 billion commitment to protect essential services — no such verified public OpenAI initiative matching this description exists, and the attribution of a specific dollar figure to a named program is presented as fact."
+      ],
+      "confidence": 7
     }
   ]
 }

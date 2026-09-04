@@ -1,0 +1,56 @@
+{
+  "started_at": "2026-09-04T02:11:36.112Z",
+  "total": 7,
+  "passed": 6,
+  "failed": 0,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.019299038,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-09-04T01-58-32-035Z_nvidia-blog_Sparks_Fly__NVIDIA_Accelerates_Local_AI_at_IFA_202.json",
+      "article": "ARTICLE_2026-09-04T01-58-32-035Z_nvidia-blog_Sparks_Fly__NVIDIA_Accelerates_Local_AI_at_IFA_202.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.001512
+    },
+    {
+      "writer": "WRITER_2026-09-04T01-58-59-343Z_aws-ml_Best_practices_for_building_agentic_automations_wi.json",
+      "article": "ARTICLE_2026-09-04T01-58-59-343Z_aws-ml_Best_practices_for_building_agentic_automations_wi.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0014118
+    },
+    {
+      "writer": "WRITER_2026-09-04T01-58-59-343Z_cohere-blog_Automation_s_Early_Footprint__The_ATE_Dataset.json",
+      "article": "ARTICLE_2026-09-04T01-58-59-343Z_cohere-blog_Automation_s_Early_Footprint__The_ATE_Dataset.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.0017589
+    },
+    {
+      "writer": "WRITER_2026-09-04T01-58-59-343Z_cohere-blog_The_Benefits_of_Small_Language_Models__SLMs_.json",
+      "article": "ARTICLE_2026-09-04T01-58-59-343Z_cohere-blog_The_Benefits_of_Small_Language_Models__SLMs_.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0014211
+    },
+    {
+      "writer": "WRITER_2026-09-04T01-58-59-343Z_picsart_How_to_make_reels_with_AI__meet_your_personal_reel.json",
+      "article": "ARTICLE_2026-09-04T01-58-59-343Z_picsart_How_to_make_reels_with_AI__meet_your_personal_reel.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.0022302
+    },
+    {
+      "writer": "WRITER_2026-09-04T01-58-59-343Z_zapier-blog_Gmail_labels__What_they_are_and_how_to_use_them.json",
+      "article": "ARTICLE_2026-09-04T01-58-59-343Z_zapier-blog_Gmail_labels__What_they_are_and_how_to_use_them.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0018954
+    }
+  ],
+  "truth_held": 1,
+  "finished_at": "2026-09-04T02:14:14.333Z",
+  "duration_seconds": 158.221
+}

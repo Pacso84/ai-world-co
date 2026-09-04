@@ -1,0 +1,44 @@
+{
+  "_meta": {
+    "written_at": "2026-09-04T02:09:05.287Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.01190448,
+    "original_draft": "2026-09-04T01-58-59-343Z_cohere-blog_The_Benefits_of_Small_Language_Models__SLMs_.json",
+    "source_id": "cohere-blog",
+    "source_name": "Cohere (hivatalos)",
+    "source_link": "https://cohere.com/blog/how-small-models-can-make-a-big-impact-for-enterprises",
+    "source_links": [
+      "https://cohere.com/blog/how-small-models-can-make-a-big-impact-for-enterprises"
+    ],
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "published_at": "2026-09-04T02:13:19.884Z",
+    "slug": "small-language-models-explained-the-lighter-ai-on-your-phone",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 910
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Excellent explainer that hits every structural requirement: clear hook, well-defined technical terms, segmented 'What this means for you' section for different reader types, and a wrap-up with a useful next step. The tone is friendly and accessible throughout, avoiding any condescending language. No prohibited content, no clichés, no invented facts or numbers. Ready to publish.",
+      "_aiCost": 0.0014211,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-09-04T02:14:39.093Z",
+    "guide_worthy": false,
+    "pairing_reason": "Article explains the concept of Small Language Models generically without introducing any specific named product or feature that users can go use",
+    "image_v": 2,
+    "image_at": "2026-09-04T02:40:56.871Z"
+  },
+  "article_markdown": "---\ntitle: \"Small Language Models Explained: The Lighter AI on Your Phone\"\nsubtitle: \"What an SLM is, why companies and phones are using them, and what that means for you\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"small-language-models\", \"ai-basics\", \"on-device-ai\", \"privacy\"]\n---\n\n# Small Language Models Explained: The Lighter AI on Your Phone\n\n> **In short:** Small language models (SLMs) are compact AI models designed to run on a phone, laptop, or company server instead of in a giant data center. They are cheaper to run, faster to respond, and keep your data closer to home — and you are already using them in places you might not notice.\n\nYou typed a question into your phone's keyboard and the suggested next word popped up almost instantly. No spinning wheel, no \"connecting to the cloud.\" Behind that tiny suggestion there is a good chance a **small language model** is doing the work, and you never had to think about it.\n\n## So, what is a small language model?\n\nA language model is the kind of AI that predicts and generates text — the same family of technology that powers ChatGPT, Claude, and Gemini. \"Small\" is relative: the big public models are built with hundreds of billions of parameters (think of **parameters** as the model's learned settings — the more it has, the more patterns it can store). A small language model, or **SLM**, is built with far fewer. That makes it lighter, cheaper to run, and often fast enough to fit on a single device.\n\nThe trade-off is range. A massive general-purpose model can write a sonnet, debug code, and explain quantum physics. A small model is usually focused: it does one or a few jobs very well, like summarizing emails, transcribing voice notes, or finishing your sentence.\n\n## Why are companies and phone makers suddenly interested?\n\nA few practical reasons have pushed SLMs into the spotlight:\n\n- **Speed.** A small model running on your device answers in milliseconds. No round trip to a distant data center.\n- **Cost.** Running a giant model for every keystroke would be wildly expensive. A small model uses a tiny fraction of the electricity and computing power.\n- **Privacy.** When the model lives on your phone, your text does not have to be sent to anyone. For a doctor taking notes, a lawyer drafting a memo, or a parent typing something personal, that matters.\n- **Offline use.** Without an internet connection, a cloud-based assistant is just a blank box. An on-device SLM can still help.\n\nYou see this trend in newer phones that advertise \"on-device AI\" — the assistant that summarizes notifications, transcribes recordings, or rewrites a message without uploading anything.\n\n## A small model in your pocket: what it actually feels like\n\nImagine you are on a plane, no Wi-Fi. You dictate a voice memo about an idea for a work project. On the way down, the memo is already split into bullet points, with a suggested title at the top. None of that went to a server. It all happened on the phone in your hand.\n\nOr picture an email app that offers three short replies under every message — \"Sounds good,\" \"Can we push to Thursday?\", \"Thanks, let me check.\" Those suggestions are usually coming from a small, fast model that lives close to your inbox.\n\n## What this means for you\n\n- **If you use a phone or laptop daily:** expect more features to work without internet and without sending your data anywhere. When a setting mentions \"on-device\" or \"local AI,\" that is usually an SLM at work.\n- **If you handle sensitive information at work — medical notes, legal drafts, internal reports:** small models are worth asking about. Many tools now offer a local mode specifically because the privacy story is strong.\n- **If you are curious about trying AI for the first time:** a small model is a gentle way in. The free, built-in features on your phone are often powered by one, and there is nothing to install.\n- **If you work in a business and wonder about cost:** small models are why AI features are getting cheaper to add to products. Anything that runs locally instead of in the cloud can be offered at a lower price, or even for free.\n\n## A quick way to tell what kind of model you are using\n\nA simple rule of thumb:\n\n- **No internet, still works** → probably a small model on the device.\n- **Needs the cloud, very strong at many tasks** → probably a large model in a data center.\n- **Focused on one job (summarizing, transcribing, autocomplete) and feels instant** → often a small model, even if it lives in the cloud.\n\nNeither is \"better\" — they are built for different jobs. As you use more AI tools, you will start to notice which kind is doing what, and that helps you pick the right one for the task at hand.\n\n## Wrap-up\n\nSmall language models are not a downgrade from the big names. They are a different tool, designed for moments when speed, cost, and privacy matter more than raw breadth. The next time your phone finishes your sentence or your email app writes a polite reply in a second, there is a fair chance an SLM is the quiet helper behind the curtain. Keep an eye on the \"on-device\" label — it is the easiest clue that the AI is working close to home.",
+  "original_title": "The Benefits of Small Language Models (SLMs)"
+}

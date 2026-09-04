@@ -1,0 +1,109 @@
+{
+  "started_at": "2026-09-04T01:59:04.389Z",
+  "drafts_total": 8,
+  "articles_written": 7,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 0,
+  "merged_total": 0,
+  "skipped_repeat": 1,
+  "repeats": [
+    {
+      "cim": "What Are AI Agents, and Why Is Salesforce Putting Them Everywhere?",
+      "mar": "Understanding Salesforce AI Agents and Their Business Impact",
+      "pont": 0.9297004991756336,
+      "by": "embedding",
+      "theme": null
+    }
+  ],
+  "total_cost_usd": 0.08921438,
+  "by_article": [
+    {
+      "draft": "2026-09-04T01-58-59-343Z_zapier-blog_Gmail_labels__What_they_are_and_how_to_use_them.json",
+      "writer_output": "WRITER_2026-09-04T01-58-59-343Z_zapier-blog_Gmail_labels__What_they_are_and_how_to_use_them.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.01041291,
+      "duration_ms": 344756,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-09-04T01-58-59-343Z_salesforce_New_Salesforce_Editions_Bundle_Everything_Business.json",
+      "success": false,
+      "reason": "repeat",
+      "repeat_of": "Understanding Salesforce AI Agents and Their Business Impact",
+      "score": 0.9297004991756336,
+      "cost_usd": 0.01279122
+    },
+    {
+      "draft": "2026-09-04T01-58-59-343Z_picsart_How_to_make_reels_with_AI__meet_your_personal_reel.json",
+      "writer_output": "WRITER_2026-09-04T01-58-59-343Z_picsart_How_to_make_reels_with_AI__meet_your_personal_reel.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.0090794,
+      "duration_ms": 113763,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-09-04T01-58-59-343Z_cohere-blog_The_Benefits_of_Small_Language_Models__SLMs_.json",
+      "writer_output": "WRITER_2026-09-04T01-58-59-343Z_cohere-blog_The_Benefits_of_Small_Language_Models__SLMs_.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.01190448,
+      "duration_ms": 18112,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-09-04T01-58-59-343Z_cohere-blog_Automation_s_Early_Footprint__The_ATE_Dataset.json",
+      "writer_output": "WRITER_2026-09-04T01-58-59-343Z_cohere-blog_Automation_s_Early_Footprint__The_ATE_Dataset.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.01066872,
+      "duration_ms": 16650,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-09-04T01-58-59-343Z_aws-ml_Best_practices_for_building_agentic_automations_wi.json",
+      "writer_output": "WRITER_2026-09-04T01-58-59-343Z_aws-ml_Best_practices_for_building_agentic_automations_wi.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.0118749,
+      "duration_ms": 58699,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-09-04T01-58-32-035Z_openai-blog_Daybreak_for_Frontline_Defenders___1B_to_protect_e.json",
+      "writer_output": "WRITER_2026-09-04T01-58-32-035Z_openai-blog_Daybreak_for_Frontline_Defenders___1B_to_protect_e.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.01036584,
+      "duration_ms": 21710,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-09-04T01-58-32-035Z_nvidia-blog_Sparks_Fly__NVIDIA_Accelerates_Local_AI_at_IFA_202.json",
+      "writer_output": "WRITER_2026-09-04T01-58-32-035Z_nvidia-blog_Sparks_Fly__NVIDIA_Accelerates_Local_AI_at_IFA_202.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.01096512,
+      "duration_ms": 19873,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    }
+  ],
+  "finished_at": "2026-09-04T02:11:35.924Z",
+  "duration_seconds": 751.535
+}

@@ -1,118 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178831525315866",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-02T02:14:13.158Z",
-      "updated": "2026-09-02T02:15:25.270Z"
-    },
-    {
-      "id": "t178831532527245",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-09-02T02:15:25.272Z",
-      "updated": "2026-09-02T02:16:46.830Z"
-    },
-    {
-      "id": "t178831540683155",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-02T02:16:46.831Z",
-      "updated": "2026-09-02T02:16:57.790Z"
-    },
-    {
-      "id": "t178831541779236",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-09-02T02:16:57.792Z",
-      "updated": "2026-09-02T02:17:18.221Z"
-    },
-    {
-      "id": "t17883508666006",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-09-02T12:07:46.600Z",
-      "updated": "2026-09-02T12:07:46.780Z"
-    },
-    {
-      "id": "t178835086678170",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-09-02T12:07:46.781Z",
-      "updated": "2026-09-02T12:08:15.648Z"
-    },
-    {
-      "id": "t178835089564921",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-09-02T12:08:15.649Z",
-      "updated": "2026-09-02T12:08:15.853Z"
-    },
-    {
-      "id": "t178835089585515",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-09-02T12:08:15.855Z",
-      "updated": "2026-09-02T12:19:01.160Z"
-    },
-    {
-      "id": "t17883515411627",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-02T12:19:01.162Z",
-      "updated": "2026-09-02T12:19:22.664Z"
-    },
-    {
-      "id": "t178835156266783",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-09-02T12:19:22.667Z",
-      "updated": "2026-09-02T12:19:29.198Z"
-    },
-    {
-      "id": "t178835156924856",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-02T12:19:29.248Z",
-      "updated": "2026-09-02T12:19:37.412Z"
-    },
-    {
-      "id": "t178835157741423",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-09-02T12:19:37.414Z",
-      "updated": "2026-09-02T12:19:46.748Z"
-    },
-    {
-      "id": "t17883515867497",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-02T12:19:46.749Z",
-      "updated": "2026-09-02T12:20:03.951Z"
-    },
-    {
-      "id": "t178835160395495",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-09-02T12:20:03.954Z",
-      "updated": "2026-09-02T12:20:27.513Z"
-    },
-    {
       "id": "t178835238502666",
       "title": "Run ceo",
       "status": "done",
@@ -479,25 +367,121 @@
       "agent": "publisher",
       "created": "2026-09-03T12:14:23.958Z",
       "updated": "2026-09-03T12:14:46.958Z"
+    },
+    {
+      "id": "t178848707097735",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-09-04T01:57:50.977Z",
+      "updated": "2026-09-04T01:57:51.097Z"
+    },
+    {
+      "id": "t178848707109949",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-09-04T01:57:51.099Z",
+      "updated": "2026-09-04T01:59:04.148Z"
+    },
+    {
+      "id": "t178848714415018",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-09-04T01:59:04.150Z",
+      "updated": "2026-09-04T01:59:04.285Z"
+    },
+    {
+      "id": "t178848714428658",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-09-04T01:59:04.286Z",
+      "updated": "2026-09-04T02:11:35.934Z"
+    },
+    {
+      "id": "t178848789593552",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-04T02:11:35.935Z",
+      "updated": "2026-09-04T02:14:14.342Z"
+    },
+    {
+      "id": "t178848805434493",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-09-04T02:14:14.344Z",
+      "updated": "2026-09-04T02:15:08.191Z"
+    },
+    {
+      "id": "t178848810822821",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-09-04T02:15:08.228Z",
+      "updated": "2026-09-04T02:28:15.024Z"
+    },
+    {
+      "id": "t178848889502598",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-04T02:28:15.025Z",
+      "updated": "2026-09-04T02:30:34.537Z"
+    },
+    {
+      "id": "t178848903456459",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-09-04T02:30:34.564Z",
+      "updated": "2026-09-04T02:30:34.962Z"
+    },
+    {
+      "id": "t178848903496323",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-09-04T02:30:34.963Z",
+      "updated": "2026-09-04T02:33:05.116Z"
+    },
+    {
+      "id": "t17884891851199",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-09-04T02:33:05.119Z",
+      "updated": "2026-09-04T02:36:02.719Z"
+    },
+    {
+      "id": "t178848936272168",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-09-04T02:36:02.721Z",
+      "updated": "2026-09-04T02:38:59.354Z"
+    },
+    {
+      "id": "t17884895393558",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-04T02:38:59.355Z",
+      "updated": "2026-09-04T02:39:22.743Z"
+    },
+    {
+      "id": "t178848956275935",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-09-04T02:39:22.760Z",
+      "updated": "2026-09-04T02:39:42.307Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178762090955910",
-      "level": "success",
-      "text": "7 hír + 4 útmutató publikálva (költség: $0.1846).",
-      "agent": "ceo",
-      "at": "2026-08-25T01:21:49.559Z",
-      "loud": false
-    },
-    {
-      "id": "n17876468062988",
-      "level": "info",
-      "text": "SEO: 11 cikk optimalizálva (átlag 8.2/10).",
-      "agent": "seo",
-      "at": "2026-08-25T08:33:26.298Z",
-      "loud": false
-    },
     {
       "id": "n178764682818322",
       "level": "success",
@@ -1281,54 +1265,25 @@
       "agent": "ceo",
       "at": "2026-09-03T12:14:46.993Z",
       "loud": false
+    },
+    {
+      "id": "n178848957251916",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The lineup looks solid and ready! It's a practical mix of everyday AI writing tasks—emails, professional docs, and heartfelt personal messages—showcasing multiple tools. One small note: we have three ",
+      "agent": "publisher",
+      "at": "2026-09-04T02:39:32.519Z",
+      "loud": false
+    },
+    {
+      "id": "n178848958234638",
+      "level": "success",
+      "text": "6 hír + 3 útmutató publikálva (költség: $0.1924).",
+      "agent": "ceo",
+      "at": "2026-09-04T02:39:42.346Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178767514355496",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-08-25T16:25:43.554Z"
-    },
-    {
-      "id": "m178767572649499",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "1 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-08-25T16:35:26.494Z"
-    },
-    {
-      "id": "m178770531563353",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Introducing the Admin plugin for ChatGPT Work and Codex\" — mi a baj: OpenAI's custom chip is fabricated/named incorrectly: there is no public OpenAI chip called 'Jalapeño' — OpenAI has publicly discussed designing its own silicon but has not announced or named any chip 'Jalapeño'. This is an invented product name attributed to OpenAI.; The 'Admin plugin for ChatGPT Work and ",
-      "ref": "2026-08-26T00-38-36-312Z_openai-blog_Introducing_the_Admin_plugin_for_ChatGPT_Work_and_.json",
-      "at": "2026-08-26T00:48:35.633Z"
-    },
-    {
-      "id": "m178770536559725",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Introducing the Admin plugin for ChatGPT Work and Codex\" — javítva: OpenAI's custom chip is fabricated/named incorrectly: there is no public OpenAI chip called 'Jalapeño' — OpenAI has publicly discussed designing its own silicon but has not announced or named any chip 'Jalapeño'. This is an invented product name attributed to OpenAI.; The 'Admin plugin for ChatGPT Work and Codex' as ",
-      "ref": "2026-08-26T00-38-36-312Z_openai-blog_Introducing_the_Admin_plugin_for_ChatGPT_Work_and_.json",
-      "at": "2026-08-26T00:49:25.597Z"
-    },
-    {
-      "id": "m17877053824605",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Introducing the Admin plugin for ChatGPT Work and Codex\" (?/10)",
-      "ref": "2026-08-26T00-38-36-312Z_openai-blog_Introducing_the_Admin_plugin_for_ChatGPT_Work_and_.json",
-      "at": "2026-08-26T00:49:42.460Z"
-    },
     {
       "id": "m178770540328857",
       "from": "pairing",
@@ -2644,6 +2599,51 @@
       "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Getting started with Microsoft Copilot in everyday\" — The Windows key + C shortcut opens Copilot panel in Windows 11 (this was removed/deprecated); The Copilot icon is 'a blue-green circle with three overlapping dots inside, resembling a speech bubble' (icon design has changed); The statement about Windows Copilot being able to 'answer ",
       "ref": "ARTICLE_GUIDE_copilot-getting-started.json",
       "at": "2026-09-03T18:58:44.047Z"
+    },
+    {
+      "id": "m178848891779029",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Daybreak for Frontline Defenders: $1B to protect essential services\" — mi a baj: The article states OpenAI announced a $1 billion commitment called 'Daybreak for Frontline Defenders' — this specific program name and dollar amount are not verifiable and appear to be fabricated.; The article claims OpenAI 'recently announced' this $1 billion commitment to protect essential ser",
+      "ref": "2026-09-04T01-58-32-035Z_openai-blog_Daybreak_for_Frontline_Defenders___1B_to_protect_e.json",
+      "at": "2026-09-04T02:28:37.790Z"
+    },
+    {
+      "id": "m17884889485257",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"How to build a clean invoice and payment tracker in Excel with Copilot\" — mi a baj: Beginner clarity too low (7/10): steps are vague or could mislead a first-time user; Status column appears in example prompts but has no instruction for how it should be populated or calculated — a beginner may not know whether to type values manually or ask Copilot for a formula",
+      "ref": "GUIDE_how-to-build-a-clean-invoice-and-payment-tracker-in-excel-wi.json",
+      "at": "2026-09-04T02:29:08.525Z"
+    },
+    {
+      "id": "m17884895627338",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"How to Ask GitHub Copilot to Explain a Confusing Error Message\" — mi a baj: Beginner clarity too low (6/10): steps are vague or could mislead a first-time user; Keyboard shortcut is wrong: 'Ctrl+Alt+I' and 'Ctrl+Cmd+I' are not standard Copilot Chat shortcuts — standard is Ctrl+Shift+I (Win/Linux) and Cmd+Shift+I (Mac); No prerequisite step explains how to install the Copilot",
+      "ref": "GUIDE_how-to-ask-github-copilot-to-explain-a-confusing-error-messa.json",
+      "at": "2026-09-04T02:39:22.733Z"
+    },
+    {
+      "id": "m178848972126961",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"How to use Claude for clear, careful writing and e\" — One claim about access limitations during peak times lacks verification — softened to reflect uncertainty",
+      "ref": "ARTICLE_GUIDE_claude-writing.json",
+      "at": "2026-09-04T02:42:01.269Z"
+    },
+    {
+      "id": "m178848980283988",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"How to use Microsoft Copilot in Word, Excel and Ou\" — 'stylised ribbon or a simple AI symbol' as the exact Copilot icon description; 'Summary by Copilot' as the exact button name (might be just 'Summarize' now); Copilot in Excel can directly 'highlight cells' automatically (may only suggest, not execute)",
+      "ref": "ARTICLE_GUIDE_copilot-office.json",
+      "at": "2026-09-04T02:43:22.839Z"
     }
   ]
 }
