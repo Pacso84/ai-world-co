@@ -1,0 +1,68 @@
+{
+  "_meta": {
+    "written_at": "2026-09-04T12:16:06.130Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00947298,
+    "original_draft": "2026-09-04T12-08-32-840Z_picsart_Muse_Image_1_0__Meta_s_agentic_image_model__in_Pic.json",
+    "source_id": "picsart",
+    "source_name": "PicsArt Blog (hivatalos)",
+    "source_link": "https://picsart.com/blog/muse-image-1-0-picsart-integration/",
+    "source_links": [
+      "https://picsart.com/blog/muse-image-1-0-picsart-integration/"
+    ],
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "rejected_at": "2026-09-04T12:15:05.217Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 825
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Strong explainer that hits all structural requirements: engaging hook about the bake sale poster, clear plain-language definitions of agentic and prompt, the four-step breakdown, audience-segmented What this means for you, and a wrap-up with a concrete next step. No invented facts, no competitor put-downs, no clichés, and accessible throughout for everyday readers.",
+      "_aiCost": 0.0017445,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Hitelesség-kapu blokkolta: The article claims 'Meta's Muse' is 'now in Picsart's AI Playground' — 'Muse' is not a known Meta image-generation product (Meta's image model line is Emu / Meta AI image generation), and 'Picsart's A",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-09-04T12-08-32-840Z_picsart_Muse_Image_1_0__Meta_s_agentic_image_model__in_Pic.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-09-04T12:16:52.449Z",
+    "slug": "agentic-image-ai-how-it-plans-before-it-draws-and-why-it-matters",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-09-04T12:23:29.666Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is a conceptual explainer about agentic AI technology generally, not a practical guide to using a specific named tool. It describes what agentic image models do but doesn't tell users how to access or use Muse Image 1.0 in Picsart.",
+    "image_v": 2,
+    "image_at": "2026-09-04T12:24:07.538Z",
+    "seo": {
+      "meta_description": "Agentic AI image generation: the new tools that plan before drawing, fixing text errors and extra fingers for better results.",
+      "keywords": [
+        "agentic AI image generation",
+        "AI image generator without errors",
+        "how agentic AI works",
+        "AI image tools for beginners",
+        "best AI image generator 2024",
+        "AI image generation mistakes fix"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add a clearer explanation of what 'agentic AI' means in the first paragraph for better keyword relevance",
+        "Consider mentioning specific tools or examples that use agentic image AI to boost credibility",
+        "Add more long-tail keywords naturally throughout the article like 'AI image generator that fixes mistakes'"
+      ],
+      "optimised_at": "2026-09-04T12:26:33.542Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Agentic Image AI: How It Plans Before It Draws, and Why It Matters\"\nsubtitle: \"A new kind of image generator doesn't just respond to your prompt — it plans, references, builds, and checks. Here's what that changes for everyday users.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"image-generation\", \"agentic-ai\", \"ai-tools\", \"creators\"]\n---\n\n# Agentic Image AI: How It Plans Before It Draws, and Why It Matters\n\n> **In short:** A new wave of \"agentic\" image AI plans the picture before drawing it, looks up references, builds structured parts as code, and checks the result. The practical payoff: fewer broken details like misspelled text and extra fingers in the images you make.\n\nLast week you asked an AI to draw a poster for a school bake sale. The text on the cake came out as squiggly nonsense, and the kid's hand had six fingers. That kind of \"almost right\" output is the most common complaint about AI image tools, and the next wave of models is being built specifically to fix it — by slowing down and thinking first.\n\n## What \"agentic\" actually means\n\nMost image generators work like a reflex. You type a **prompt** (the instruction you give the AI), and the model starts drawing within milliseconds. The output can be beautiful, but it is also a single fast guess. If the model gets text, hands, or layout slightly wrong, that's what you see.\n\nAn **agentic** model works more like a careful assistant. Before it draws anything, it plans. It breaks the request into smaller tasks, decides what it needs to look up, does the lookups, draws the image, and then reviews the result. If something looks off — a misspelled word, a wonky hand — it goes back and tries again.\n\nIn plain English: instead of one quick guess, you get several slower, more deliberate steps. The trade-off is usually better accuracy on the things older models got wrong.\n\n## The four steps most agentic image tools follow\n\n1. **Plan the composition** — the model decides what goes where on the page before drawing any pixels.\n2. **Look up references** — if it doesn't already know a specific object, logo, or style, it can fetch references first.\n3. **Build structured parts in code** — text, charts, tables, and geometric shapes are often generated as code, not as raw pixels, so they stay sharp and readable.\n4. **Check the result** — the model reviews its own output, flags problems, and reworks the parts that look wrong.\n\nA growing number of major AI labs are combining these steps into a single flow. Earlier models usually did one or two, and only when you asked for them in a specific way.\n\n## Why this matters in practice\n\nFor most people, the biggest visible change is **text**. Older models famously struggle to spell words inside images — a birthday banner ends up reading \"HPYY BIRTDAY.\" A model that generates text as code first, then pastes it in, tends to get it right the first time.\n\nOther things that improve with the planning step:\n\n- **Diagrams and posters** with clear, readable labels\n- **Hands, faces, and symmetrical objects** that follow real anatomy\n- **Consistent details** across multiple versions of the same image\n- **Less \"almost-right\" output** that you would normally fix in another app\n\nIt will not make every image perfect. But the gap between \"wow, this is amazing\" and \"why is there an extra finger\" gets noticeably smaller.\n\n## What this means for you\n\n- **If you make things for fun** — birthday cards, memes, social posts, fan art: this is the kind of update worth waiting for. Cleaner text and fewer weird artifacts mean less time fixing things in another app.\n- **If you run a small business or side project** — flyers, menu boards, product mockups, and pitch slides used to need a designer for the parts where AI failed. Agentic models handle more of that themselves.\n- **If you're a student or teacher** — diagrams, infographics, and presentation slides become faster to produce, especially when the labels need to be exact.\n- **If you're new to AI image tools** — try a small project you've already done by hand. Pick the one piece that usually gives image AI trouble (a sign, a chart, a label) and see if the new approach handles it better.\n\n## Wrap-up\n\nAgentic image AI is a quiet but real shift. Instead of a fast guess, you get a model that plans, references, codes, and checks. For most people, the practical difference shows up first in the things that used to break — readable text, accurate diagrams, and consistent details. If you've been frustrated by AI images in the past, try a small prompt that used to fail (a sign with a real word on it, a hand holding something) and compare the output to what you got six months ago. You'll see the difference within a single image.",
+  "original_title": "Muse Image 1.0: Meta’s agentic image model, in Picsart"
+}

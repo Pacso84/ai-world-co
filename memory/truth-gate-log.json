@@ -313,6 +313,25 @@
         "The article claims OpenAI 'recently announced' this $1 billion commitment to protect essential services — no such verified public OpenAI initiative matching this description exists, and the attribution of a specific dollar figure to a named program is presented as fact."
       ],
       "confidence": 7
+    },
+    {
+      "at": "2026-09-04T12:14:46.481Z",
+      "file": "WRITER_2026-09-04T12-08-32-840Z_picsart_How_to_edit_PDF_pages_with_AI_in_Picsart_Flow.json",
+      "action": "block",
+      "reasons": [
+        "Picsart Flow is presented as a real AI PDF editing tool ('Picsart Flow is one example of a tool that does this'), but this specific product name does not appear on the verified-real list and I cannot confirm this is a real product with AI PDF editing capabilities. The article treats it as a concrete, named example when it may be an invented feature name or unreleased product.",
+        "The article states 'Picsart Flow, for example, includes AI PDF editing alongside its image and design features' as fact — this feature attribution to Picsart Flow is presented with certainty but cannot be verified as real."
+      ],
+      "confidence": 8
+    },
+    {
+      "at": "2026-09-04T12:15:05.389Z",
+      "file": "WRITER_2026-09-04T12-08-32-840Z_picsart_Muse_Image_1_0__Meta_s_agentic_image_model__in_Pic.json",
+      "action": "block",
+      "reasons": [
+        "The article claims 'Meta's Muse' is 'now in Picsart's AI Playground' — 'Muse' is not a known Meta image-generation product (Meta's image model line is Emu / Meta AI image generation), and 'Picsart's AI Playground' is not a verifiable Picsart product surface. This specific pairing of product names + integration claim matches the pattern flagged in past company lessons about fabricated Picsart tool/feature names."
+      ],
+      "confidence": 6
     }
   ]
 }

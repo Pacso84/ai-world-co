@@ -1,0 +1,38 @@
+{
+  "started_at": "2026-09-04T12:08:33.183Z",
+  "drafts_total": 2,
+  "articles_written": 2,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 0,
+  "merged_total": 0,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "total_cost_usd": 0.022137360000000002,
+  "by_article": [
+    {
+      "draft": "2026-09-04T12-08-32-840Z_picsart_Muse_Image_1_0__Meta_s_agentic_image_model__in_Pic.json",
+      "writer_output": "WRITER_2026-09-04T12-08-32-840Z_picsart_Muse_Image_1_0__Meta_s_agentic_image_model__in_Pic.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.01086378,
+      "duration_ms": 268390,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-09-04T12-08-32-840Z_picsart_How_to_edit_PDF_pages_with_AI_in_Picsart_Flow.json",
+      "writer_output": "WRITER_2026-09-04T12-08-32-840Z_picsart_How_to_edit_PDF_pages_with_AI_in_Picsart_Flow.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.00981198,
+      "duration_ms": 40571,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    }
+  ],
+  "finished_at": "2026-09-04T12:14:17.398Z",
+  "duration_seconds": 344.215
+}
