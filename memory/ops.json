@@ -1285,24 +1285,6 @@
   ],
   "messages": [
     {
-      "id": "m178780638606939",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-08-27T04:53:06.069Z"
-    },
-    {
-      "id": "m17878070159354",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-08-27T05:03:35.935Z"
-    },
-    {
       "id": "m178780926061884",
       "from": "guide",
       "to": "ellenorzo",
@@ -2644,6 +2626,24 @@
       "text": "6 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-09-04T12:42:22.575Z"
+    },
+    {
+      "id": "m178854728752782",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Create a custom text summarizer with Hugging Face \" — 'the card will usually say \"Free\" or have no price tag' - unverifiable current UI claim",
+      "ref": "ARTICLE_GUIDE_create-a-custom-text-summarizer-with-hugging-face-transforme.json",
+      "at": "2026-09-04T18:41:27.527Z"
+    },
+    {
+      "id": "m178854756905374",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Create a multi‑room music playlist with Alexa+\" — The exact UI labels \"Add to Routine\", the \"When this happens\" / \"Add action\" tab structure, the \"+ When this happens\" blue button, the \"Voice\" trigger type with microphone icon, \"Music\" with musical note icon, \"Choose a playlist\" and \"Choose devices\" as separate pickers, and the \"three-d",
+      "ref": "ARTICLE_GUIDE_create-a-multi-room-music-playlist-with-alexa.json",
+      "at": "2026-09-04T18:46:09.053Z"
     }
   ]
 }
