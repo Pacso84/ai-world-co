@@ -37,6 +37,7 @@
     "adminokon",
     "adok-kapokban",
     "adverzáriális",
+    "agens",
     "agentic",
     "agentjei",
     "agentnek",
@@ -142,6 +143,7 @@
     "avatarvideót",
     "avatarával",
     "avatár",
+    "avatárját",
     "avatárként",
     "avatárkészítő",
     "avatárkészítőt",
@@ -160,6 +162,7 @@
     "backendjéhez",
     "backlink",
     "bannerekhez",
+    "banneren",
     "bannerhez",
     "bannerként",
     "bannerre",
@@ -225,8 +228,10 @@
     "briefekké",
     "briefeknél",
     "briefekre",
+    "briefel",
     "briefelni",
     "briefelnél",
+    "briefelsz",
     "briefen",
     "briefet",
     "briefhez",
@@ -236,6 +241,7 @@
     "briefje",
     "briefjét",
     "briefként",
+    "briefnek",
     "briefolvasáshoz",
     "briefre",
     "briefé",
@@ -412,6 +418,7 @@
     "csomagoknál",
     "csomagokon",
     "csomagokról",
+    "csomagokért",
     "csomagom",
     "csomagommal",
     "csomagon",
@@ -435,6 +442,7 @@
     "címsorokból",
     "címsorokhoz",
     "címsorokkal",
+    "címsoroknak",
     "címzetről",
     "cómo",
     "dashboardhoz",
@@ -580,6 +588,7 @@
     "elevenlabs",
     "elfoglaltságok",
     "elfoglaltságokat",
+    "elfoglaltságom",
     "elfogultságokat",
     "ellenérvet",
     "elsiklandó",
@@ -646,6 +655,7 @@
     "erőforrásigényes",
     "escalálni",
     "eseményszórólapokat",
+    "eseményösszefoglalókhoz",
     "essztervázlatokhoz",
     "estar",
     "estédat",
@@ -761,7 +771,9 @@
     "gepelni",
     "ghostwriterként",
     "gigabájt",
+    "gigabájtig",
     "gigabájtnyi",
+    "gigabájttól",
     "git-scm",
     "github",
     "glitchre",
@@ -1060,6 +1072,7 @@
     "kifutottok",
     "kimásolhalsz",
     "kirakatmonitoron",
+    "kisméretű",
     "klikkbait",
     "klikkbaitok",
     "klipet",
@@ -1156,6 +1169,7 @@
     "köteget",
     "követd",
     "következetességet",
+    "közelképe",
     "közelséget",
     "közelét",
     "köznyelven",
@@ -1325,6 +1339,7 @@
     "meetingző",
     "megabájt",
     "megbízanhassanak",
+    "megcímkézol",
     "megfelelőséget",
     "meghívottlista",
     "megjegyzéset",
@@ -1468,6 +1483,7 @@
     "o-realtime-preview",
     "observability",
     "oconnor",
+    "odavissza",
     "odba",
     "odhoz",
     "odon",
@@ -1694,6 +1710,7 @@
     "promptötletet",
     "promtok",
     "promttal",
+    "promó",
     "promóklip",
     "promóvideóban",
     "prototípizálhatsz",
@@ -1716,6 +1733,7 @@
     "példapromptot",
     "példaprompttal",
     "példaszöveget",
+    "péntekra",
     "quantised",
     "queenslandi",
     "quizel",
@@ -1769,6 +1787,7 @@
     "retrievert",
     "retrospektívák",
     "reviewerek",
+    "ribbonon",
     "riportolja",
     "riportolás",
     "risograph",
@@ -1896,6 +1915,7 @@
     "storyboardokat",
     "storyboardokhoz",
     "storyboardot",
+    "storyboardra",
     "storykhoz",
     "stratégikusnak",
     "streamelheted",
@@ -2304,6 +2324,7 @@
     "voice-overrel",
     "válasszd",
     "válaszata",
+    "válaszlehetőséget",
     "válaszsorokkal",
     "várostervet",
     "vászgépnek",
@@ -3527,6 +3548,11 @@
       "correct": "ideje",
       "at": "2026-09-03",
       "mondattal": true
+    },
+    "emlék-reellel": {
+      "correct": "emlék-Réellel",
+      "at": "2026-09-04",
+      "mondattal": true
     }
   },
   "review": {
@@ -4606,11 +4632,26 @@
       "correct": "témával",
       "at": "2026-09-03",
       "mondattal": true
+    },
+    "műződik": {
+      "correct": "működik",
+      "at": "2026-09-04",
+      "mondattal": true
+    },
+    "legtö": {
+      "correct": "legtöbb",
+      "at": "2026-09-04",
+      "mondattal": true
+    },
+    "képszkenn": {
+      "correct": "képszkennelés",
+      "at": "2026-09-04",
+      "mondattal": true
     }
   },
   "scan": {
-    "at": "2026-09-03",
-    "files": 891,
-    "candidates": 0
+    "at": "2026-09-04",
+    "files": 900,
+    "candidates": 25
   }
 }
