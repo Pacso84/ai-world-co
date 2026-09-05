@@ -110,9 +110,34 @@ try {
     assert.equal(s.month, 0.72, 'a más havi nap NEM számít bele');
     assert.deepEqual(s.byProviderToday, { openrouter: 0.4, google: 0.02 });
     assert.equal(s.meteredBlocked.blocked, false);
-    // A PLAFONOK ÉRTÉKE a configból jön — ez a sor fogja meg, ha valaki elírja.
-    assert.equal(s.dayHardCap, LIMITS.daily_budget_usd_hard_cap);
-    assert.equal(s.monthHardCap, (LIMITS.monthly_budget_usd_hard_cap_by_month || {})[HO] ?? LIMITS.monthly_budget_usd_hard_cap);
+    // ── A PLAFONOK: A USER KEMÉNY SZABÁLYÁT ŐRIZZÜK, NEM A KÓD MÁSOLATÁT ──
+    // 2026-09-01, NAPTÁRI HATÁRON ROMLOTT EL. Ez a két sor korábban ÚJRA-
+    // SZÁMOLTA a plafont a configból — csak egyszerűbben, mint a
+    // `capForMonth()`: pontos hónap-kulcsra keresett
+    // (`..._by_month[HO] ?? ..._hard_cap`). A KÓD viszont a LEGKÉSŐBBI, MÁR
+    // ÉLETBE LÉPETT bejegyzést viszi tovább, tehát a 2026-08-as $25 szeptem-
+    // berben is érvényes; a teszt szeptemberre nem talált kulcsot, visszaesett
+    // a csupasz $50-re, és elbukott. A két logika AUGUSZTUSBAN VÉLETLENÜL
+    // EGYEZETT — pont a hónapfordulón vált el. A kód volt a jó, a teszt a rossz.
+    //
+    // 🔑 TANULSÁG (ugyanaz, amit a core/daily-report.js már megtanult 08-01-én):
+    // a tesztbe MÁSOLT logika elcsúszik a kódtól, és addig néma, amíg a két
+    // eredmény véletlenül egyezik. Ezért itt nem a KÉPLET áll, hanem a SZABÁLY,
+    // ami a képletnél tartósabb: a user kemény kerete napi $1 + havi $25.
+    // Ez akkor is meg fog szólalni, ha valaki visszaemeli a plafont 50-re.
+    const NAPI_FELSO_HATAR = 1;    // user-döntés, 2026-08-01
+    const HAVI_FELSO_HATAR = 25;   // user-döntés
+    assert.ok(s.dayHardCap > 0 && s.dayHardCap <= NAPI_FELSO_HATAR,
+      `a napi plafon $${s.dayHardCap} — a user kemény kerete legfeljebb $${NAPI_FELSO_HATAR}/nap`);
+    assert.ok(s.monthHardCap > 0 && s.monthHardCap <= HAVI_FELSO_HATAR,
+      `a havi plafon $${s.monthHardCap} — a user kemény kerete legfeljebb $${HAVI_FELSO_HATAR}/hó`);
+    // A CSAPDA, amit külön kell őrizni: a `..._by_month` blokk egy nap
+    // kikerülhet a configból (elavult hónap-kulcsok takarítása), és akkor a
+    // csupasz `..._hard_cap` lép életbe — NÉMÁN. Ezért az ALAPÉRTÉK maga sem
+    // lehet 25-nél nagyobb: így a blokk törlése a keretet nem duplázza meg.
+    assert.ok(Number(LIMITS.monthly_budget_usd_hard_cap) <= HAVI_FELSO_HATAR,
+      `a config CSUPASZ havi alapértéke $${LIMITS.monthly_budget_usd_hard_cap} — `
+      + `a by_month blokk törlésekor ez lépne életbe, tehát legfeljebb $${HAVI_FELSO_HATAR} lehet`);
     // Ép fájlnál NINCS se jel, se sérült-másolat, se ottfelejtett átmeneti fájl.
     assert.equal(existsSync(JEL), false, 'ép fájlra is jelet hagyott');
     assert.equal(masolatok().length, 0);

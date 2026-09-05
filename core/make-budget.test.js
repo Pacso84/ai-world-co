@@ -317,23 +317,74 @@ console.log('\n✅ make-budget.test: mind a ' + pass + ' eset rendben');
 // került — vagyis senkihez. Mérve a hátralék-elemzésben: teljes tempón
 // 29 művelet/nap, 31 napos hónapban 899 a 900-as plafonnál. EGY tartalék.
 {
-  const { keretSor, SAFETY_CAP } = await import('./make-budget.js');
+  const { keretSor, vetitesFekkel, MONTHLY_CAP } = await import('./make-budget.js');
 
   t('🚦 bőven van hely → CSENDES', () => {
     assert.equal(keretSor(120, '2026-08-05'), '', 'a hónap elején zajongott');
   });
 
-  t('⚠️ a SZŰK keret megszólal, és megmondja, mi következik', () => {
-    // 31 napos hónap vége felé, a mért tempóval.
-    const sor = keretSor(800, '2026-08-28');
-    assert.ok(sor.startsWith('⚠️'), 'nem vészjelzés-mintás → a zajszűrő elnémíthatná: ' + sor);
-    assert.ok(sor.includes('800'), 'nem mondja meg, hol tartunk: ' + sor);
-    assert.ok(/visszavesz/.test(sor), 'nem mondja meg, MI FOG TÖRTÉNNI: ' + sor);
+  // ===================================================================
+  // 2026-09-05 — A VETÍTÉS A FÉK LEJÁTSZÁSA, NEM EGY KÉPLET
+  // ===================================================================
+  // Az előző két teszt azt írta elő, hogy a sor a hónap vége felé RIASSZON.
+  // Élesben ez 09-03/04/05-én három egymást követő napon HAMISAN riasztott,
+  // és a vetített szám napról napra ROMLOTT (992 → 1039 → 1066), miközben a
+  // fék végig rendben dolgozott: leszimulálva 899/900-on landolt.
+  //
+  // 🔑 A HIBA GYÖKERE: lineárisan vetítettem előre egy ÖNMAGÁT FÉKEZŐ
+  // rendszert. A mért tempó a hónap ELEJÉN azért magas, mert a fék még nem
+  // kapcsolt be; ahogy fogy a keret, a tempó magától csökken. Egy ilyen
+  // rendszert csak úgy lehet előrevetíteni, ha LEJÁTSSZUK a fékjét — az
+  // pedig tiszta függvény, tehát pontosan megtehető.
+  //
+  // (Az első javításom is ezt hitte megoldottnak: a kommentje szerint „a
+  // mért tempóból vetít, nem az elméleti maximumból". Egy rossz modellt
+  // cseréltem egy másik rossz modellre — mindkettő figyelmen kívül hagyta
+  // magát a féket.)
+  t('a fékkel vetítve NEM riaszt, ha a fék megtartja', () => {
+    // Élesben mért állás, 2026-09-05. A régi képlet 1066-ot vetített és
+    // riasztott; a fék valójában 899-en landol.
+    assert.equal(keretSor(172, '2026-09-05'), '',
+      'HAMIS RIASZTÁS: a fék megtartja, mégis szól');
+    // A hónap vége felé is: 800/900-nál a fék visszavesz, és belefér.
+    assert.equal(keretSor(800, '2026-08-28'), '',
+      'HAMIS RIASZTÁS a hónap vége felé');
   });
 
-  t('a szűkülő tartalék jelez, mielőtt baj lenne', () => {
-    const sor = keretSor(SAFETY_CAP - 50, '2026-08-31');
-    assert.ok(sor.length > 0, 'az utolsó napon, 50 művelettel némán maradt');
+  t('🚦 a fék fölött MEGSZÓLAL — ez magyarázza a kevesebb posztot', () => {
+    // 2026-08-31-én élesben 901/900 volt: a poszter 4 posztra esett vissza.
+    // Ilyenkor a user KEVESEBB posztot lát — annak legyen magyarázata.
+    const sor = keretSor(901, '2026-08-31');
+    assert.ok(sor.length > 0, 'a fék fölött némán maradt');
+    assert.ok(sor.includes('901'), 'nem mondja meg, hol tartunk: ' + sor);
+    assert.ok(/visszavesz|kevesebb/.test(sor), 'nem mondja meg, MI TÖRTÉNIK: ' + sor);
+  });
+
+  t('🛑 ha a fék SEM tartaná meg, az valódi vészjelzés', () => {
+    // A fék a Facebook-posztokat szabályozza, de a Reel (és bármi más, ami a
+    // KÖZÖS keretből eszik) NINCS fékezve. Ha a nem-fékezett fogyás önmagában
+    // átvinné a valódi plafonon, azt látni kell — ez az egyetlen eset, ami
+    // tényleg elromlott.
+    const sor = keretSor(995, '2026-09-20');
+    assert.ok(sor.startsWith('🛑'), 'nem vészjelzés-mintás: ' + sor);
+  });
+
+  t('a vetítés nem függ a poszter beállított tempójától', () => {
+    // Mérve: 3-as limittől fölfelé a fék UGYANODA visz (899). A fék a szűk
+    // keresztmetszet, nem a beállítás — ezért NEM kell a CI `--limit 3`-át
+    // ide is lemásolni. (Egy két helyre másolt szám matematikai
+    // bizonyossággal szétcsúszik.)
+    const a = vetitesFekkel(172, '2026-09-05', 3);
+    const b = vetitesFekkel(172, '2026-09-05', 20);
+    assert.equal(a, b, 'a tempótól függ az eredmény: ' + a + ' vs ' + b);
+    assert.ok(a <= MONTHLY_CAP, 'a fék átengedte a plafont: ' + a);
+  });
+
+  t('a vetítés hibás bemenetre null-t ad, nem hazudik nullát', () => {
+    for (const rossz of [null, undefined, NaN, 'hopp']) {
+      assert.equal(vetitesFekkel(rossz, '2026-09-05'), null, String(rossz));
+    }
+    assert.equal(vetitesFekkel(172, 'hopp'), null, 'hibás dátum');
   });
 
   t('⚠️ a „NEM TUDOM" nem „rendben van"', () => {

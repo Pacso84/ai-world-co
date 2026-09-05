@@ -20,6 +20,7 @@ import { dirname, join } from 'path';
 import { marked } from 'marked';
 import { canonicalChip } from '../core/quality-guard.js';
 import { toolRegex } from '../core/tool-regex.js';
+import { toolLabel } from '../core/tool-label.js';
 import { absolutizeFeedLinks } from '../core/feed-links.js';
 import { buildMetaDescription } from '../core/meta-description.js';
 import { legacyRedirect } from '../core/legacy-urls.js';
@@ -2023,7 +2024,7 @@ function buildGuidePage(a) {
     glossAutolink(blocks, alState), stepHeadings.length, midReadBox(a));
 
   const toolChip = (a.company || a.tool)
-    ? `<span class="g-tool">📘 ${escapeHtml([a.company, a.tool].filter(Boolean).join(' · '))}</span>` : '';
+    ? `<span class="g-tool">📘 ${escapeHtml(toolLabel(a.company, a.tool, ' · '))}</span>` : '';
   // Hivatalos oldal gomb (2026-07-12): eszköz-link, új eszköznél AUTOMATIKUSAN
   // a cég hivatalos oldala (kitalált URL soha)
   const officialUrl = TOOL_LINKS[a.tool] || COMPANY_LINKS[a.company] || '';
@@ -2037,7 +2038,8 @@ function buildGuidePage(a) {
   // MEGLÉVŐ (lefordított) szekciókból — $0 AI-költség, Google FAQ-jelöléssel.
   const faqs = [];
   if (a.readTime && stepsTotal) faqs.push({ q: tr('faqQTime'), aHtml: `<p>${escapeHtml(tr('faqATime').replace('{min}', a.readTime).replace('{steps}', stepsTotal))}</p>` });
-  const faqTool = [a.company, a.tool].filter(Boolean).join(' ');
+  // Kettőződés nélkül: "GitHub" + "GitHub Copilot" → "GitHub Copilot" (core/tool-label.js).
+  const faqTool = toolLabel(a.company, a.tool);
   if (faqTool) faqs.push({ q: tr('faqQTool'), aHtml: `<p>${escapeHtml(tr('faqATool').replace('{tool}', faqTool))}</p>` });
   if (faqPrepBody) faqs.push({ q: tr('faqQPrep'), aHtml: guideSectionHtml(faqPrepBody) });
   if (faqMistBody) faqs.push({ q: tr('faqQMist'), aHtml: guideSectionHtml(faqMistBody) });
@@ -2883,7 +2885,7 @@ function main() {
       const g = t[lang] || t.en;
       return { t: g.term, s: g.def, b: '', u: '', g: 0, p: `/glossary#${t.id}` };
     }).concat(loc.map(a => ({
-      t: a.title, s: a.subtitle || '', b: [a.company, a.tool].filter(Boolean).join(' '),
+      t: a.title, s: a.subtitle || '', b: toolLabel(a.company, a.tool),
       u: a.slug, g: a.isGuide ? 1 : 0
     })));
     writeFileSync(join(outBase, 'search.json'), JSON.stringify(searchIndex), 'utf-8');

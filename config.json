@@ -540,8 +540,8 @@
     "weekly_deep_articles": 1,
     "daily_api_cost_usd_max": 3,
     "monthly_budget_usd_target": 30,
-    "_hard_cap_comment": "2026-07-22 (user-döntés): 45 → 50, TELJES TEMPÓ aug. 1-ig. Előzmény: 40→45 (07-21). A MiniMax-váltás feleződést hozott ($1.79→$0.89/nap), de a hó eleji drága napok miatt így is ~4 nap hiányzott; a user a keret-emelést választotta a lassítás/szünet helyett. AUGUSZTUSBAN vissza 40-re (akkor egész hónapban a MiniMax olcsóbb tempója fut, bőven elég).",
-    "monthly_budget_usd_hard_cap": 50,
+    "_hard_cap_comment": "AZ ALAPÉRTÉK — az érvényes keretet a `monthly_budget_usd_hard_cap_by_month` adja, ez csak akkor lép életbe, ha ott nincs már hatályos bejegyzés. TÖRTÉNET: 40→45 (07-21) → 50 (07-22, user-döntés: TELJES TEMPÓ aug. 1-ig, mert a MiniMax-váltás feleződést hozott, de a hó eleji drága napok miatt ~4 nap hiányzott). 2026-09-05: 50 → 25. MIÉRT: a csupasz 50 CSAPDA volt. A cég ma 25-nél áll le (a by_month 2026-08-as bejegyzése miatt), de ha valaki valaha kitakarítja onnan az elavult hónap-kulcsokat, ez az alapérték lép be — és a keret NÉMÁN a kétszeresére ugrik, pont ott, ahol pénz fogy. Most a két érték UGYANAZT mondja, tehát a blokk törlése nem változtat semmin. A user kemény kerete: napi $1 + havi $25. Őrszem: core/budget.test.js.",
+    "monthly_budget_usd_hard_cap": 25,
     "_paid_strategy_comment": "ELV: a fizetős kulcsot (pl. Gemini paid) HASZNÁLJUK, amíg bírja; amikor eléri a saját rate/kvóta limitjét (429), a router AUTOMATIKUSAN a következő kulcsra vált (free pool: Cerebras/Groq/Mistral). A core/budget.js KÖVETI a költést (látható a 'mennyi a keret?' paranccsal). KÉT keret véd, más-más ellen: a NAPI egy elszabaduló nap ellen, a HAVI a hónap végi számla ellen.",
     "daily_budget_usd_hard_cap": 1,
     "_daily_cap_comment": "2026-08-01 (user-döntés): 'legyen egy napi korlát ami 1 dollár, ez sokba kerül ezek a javítások így'. ELŐZMÉNY: 07-31-én a napi költés $0,60-ról $2,51-re ugrott, mert egy tömeges cikkjavítás 136 cikk fordítás-gyorsítótárát törölte -> 544 ujrafordítás; a havi keret ezt nem fogta meg ($2,51 belefér $40-ba, csak epp EGY NAP alatt viszi a havi keret 6%-át). A KORÁBBI elv ('nincs napi plafon') ezzel felülírva. Elérésekor a fizetős agentek SZÜNETELNEK (nem esnek gyenge ingyenes modellre), a munka másnap folytatódik; a napi számláló éjfélkor (UTC) magától nullázódik, nincs mit visszakapcsolni. Meret: a rendes napi költés $0,40-0,66, tehát ~50% fejtér. $1 x 31 = $31, ami a $30-as havi CÉL körül van.",
@@ -555,7 +555,7 @@
     "monthly_budget_usd_hard_cap_by_month": {
       "2026-08": 25
     },
-    "_by_month_comment": "IDŐZÍTETT VÁLTÁS (2026-07-30): a hard cap a FUTÓ hónap költésével számol, ezért a tervezett júl.50→aug.40 csökkentést nem lehetett előre beírni — július 1,91-nél tartott, azonnal leállt volna a cég. Ez a mező hónapra bontva adja meg a keretet: a legkésőbbi már életbe lépett bejegyzés érvényes. Augusztus 1-jén MAGÁTÓL 40 lesz, senkinek nem kell rá emlékeznie."
+    "_by_month_comment": "IDŐZÍTETT VÁLTÁS (2026-07-30): a hard cap a FUTÓ hónap költésével számol, ezért a tervezett júl.50→aug.40 csökkentést nem lehetett előre beírni — július 1,91-nél tartott, azonnal leállt volna a cég. Ez a mező hónapra bontva adja meg a keretet: a legkésőbbi MÁR ÉLETBE LÉPETT bejegyzés érvényes, és onnantól MINDEN későbbi hónapra az marad, amíg nincs újabb — tehát a 2026-08-as $25 szeptemberben és utána is ez. (A komment korábban 40-et írt, miközben a beírt érték 25 — javítva 2026-09-05.) ⚠️ EZT A BLOKKOT NE ÜRÍTSD KI abban a hitben, hogy 'elavult hónap': akkor a csupasz `monthly_budget_usd_hard_cap` lép életbe. Az szándékosan szintén 25, hogy a törlés ne duplázza meg némán a keretet."
   },
   "fallback_strategy": {
     "rule_1": "Ha primary provider rate limit -> automatikusan fallback model",

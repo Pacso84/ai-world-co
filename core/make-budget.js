@@ -289,8 +289,7 @@ export default {
  * hiba, hanem VISSZATÉRŐ, SZERKEZETI szorítás minden 31 napos hónap végén:
  * ilyenkor a garantált hátralék-hely (limit ≥ 3 kell hozzá) magától lekapcsol.
  *
- * A sor CSENDES, amíg van tartalék — csak a szorosnál szólal meg, és a
- * riasztó változat ⚠️-vel kezdődik, hogy a zajszűrő sose némíthassa el.
+ * A sor CSENDES, amíg a fék megtartja — lásd a `vetitesFekkel` fejlécét.
  *
  * @param {number|null} used  a hónapban eddig elhasznált művelet (null = nem tudjuk)
  * @param {string} day        YYYY-MM-DD
@@ -302,23 +301,75 @@ export function keretSor(used, day) {
     return '⚠️ Make-keret: NEM TUDTAM lekérdezni — a fékezés vakon megy.';
   }
   const n = Number(used);
-  const marad = SAFETY_CAP - n;
-  const hatra = remainingDays(day);
-  if (!Number.isFinite(hatra)) return '';
-  // ⚠️ A VETÍTÉS A MÉRT TEMPÓBÓL, NEM az elméleti maximumból (2026-08-30).
-  // Az első változatom a teljes tempót (29 művelet/nap) vetítette előre, és
-  // ezzel a hónap ELEJÉN is riasztott — pont az a napi zaj lett volna belőle,
-  // amit ma egész nap irtottunk. A tényleges fogyás önmagát korrigálja.
-  const honapNapja = Number(String(day).slice(8, 10));
-  if (!Number.isFinite(honapNapja) || honapNapja < 3) return '';   // pár napból nincs tempó
-  const napiTeny = n / honapNapja;
-  const varhato = Math.round(n + napiTeny * hatra);
+  const veg = vetitesFekkel(n, day);
+  if (veg === null) return '';                 // értelmezhetetlen dátum — nem találgatunk
 
-  if (varhato > SAFETY_CAP) {
-    return `⚠️ MAKE-KERET SZŰK: ${n}/${SAFETY_CAP} elhasználva, `
-      + `a hónap végéig várhatóan ${varhato} lenne — a poszter magától visszavesz. `
-      + `(Új csatorna MOST nem fér bele.)`;
+  // 🛑 A fék a FACEBOOK-posztokat szabályozza. A Reel — és bármi más, ami a
+  // KÖZÖS keretből eszik — NINCS fékezve. Ha a vetítés így is a VALÓDI plafon
+  // fölé megy, az nem szorosság, hanem működési hiba: a Make onnantól nem
+  // futtatja a forgatókönyvet, a webhook viszont TOVÁBBRA IS 200-at ad, tehát
+  // a posztot „kiküldve"-nek jelöljük, és SOHA nem próbáljuk újra.
+  if (veg > MONTHLY_CAP) {
+    return `🛑 MAKE-KERET: a fék SEM tartja meg — ${n}/${MONTHLY_CAP} elhasználva, `
+      + `a hónap végéig ${veg} lenne. A nem fékezett fogyás (Reel, új csatorna) túl sok.`;
   }
-  if (marad < 100) return `🚦 Make-keret: ${n}/${SAFETY_CAP} · ${marad} művelet a tartalék`;
-  return '';                                              // bőven van hely — csendes
+
+  // 🚦 A fék fölött a poszter a minimumra esik vissza. Ez NEM hiba — de a user
+  // ilyenkor láthatóan kevesebb posztot kap, és annak legyen magyarázata.
+  // (2026-08-31-én élesben 901/900 volt, és aznap 4 poszt ment ki 9 helyett.)
+  if (n >= SAFETY_CAP) {
+    return `🚦 Make-keret: ${n}/${SAFETY_CAP} — a poszter visszavesz, `
+      + `a hónap végéig kevesebb poszt megy ki. (Új csatorna MOST nem fér bele.)`;
+  }
+  return '';                                   // a fék megtartja — nincs mit mondani
+}
+
+/**
+ * Hova ér a hónap, ha a fék úgy dolgozik, ahogy meg van írva?
+ *
+ * 🔑 MIÉRT SZIMULÁCIÓ, NEM KÉPLET (2026-09-05). A `postsPerRun` MINDEN futásnál
+ * a valódi fogyásból számol újra, tehát a tempó a hónap során magától csökken.
+ * Egy ilyen, ÖNMAGÁT FÉKEZŐ rendszert lineárisan előrevetíteni mindig
+ * túlbecslés: élesben három egymást követő napon hamisan riasztott, és a
+ * vetített szám napról napra romlott (992 → 1039 → 1066), miközben a fék
+ * végig rendben dolgozott és 899/900-on landolt.
+ *
+ * A fék viszont TISZTA FÜGGVÉNY: le lehet játszani. Így a vetítés nem egy
+ * modell a rendszerről, hanem ugyanaz a döntéssor, ami élesben le fog futni.
+ *
+ * ⚠️ A MAI NAP EGÉSZ NAPKÉNT SZÁMÍT, pedig a mai körök egy része már lefutott.
+ * Ez FELFELÉ torzít — szándékosan: a túlbecslés csak fölösleges óvatosság, az
+ * alulbecslés viszont elhallgatna egy valódi kifutást.
+ *
+ * @param {number} used   a hónapban eddig elhasznált műveletek
+ * @param {string} day    'YYYY-MM-DD'
+ * @param {number} [defaultLimit] a poszter tempója futásonként. MÉRVE: 3-tól
+ *   fölfelé NEM SZÁMÍT, mert a fék a szűk keresztmetszet (limit 3/5/10/20 mind
+ *   899-en landol). Ezért NEM a CI `--limit 3`-át másoljuk ide: egy két helyre
+ *   írt szám matematikai bizonyossággal szétcsúszik. Bőven fölé lövünk.
+ * @returns {number|null} a hónap végi művelet-szám, vagy null, ha nem számolható
+ */
+export function vetitesFekkel(used, day, defaultLimit = 20) {
+  // ⚠️ A HIÁNYZÓ ÉRTÉKET A SZÁMMÁ ALAKÍTÁS ELŐTT kell elfogni: `Number(null)`
+  // és `Number('')` egyaránt 0 — vagyis a „nem tudom" némán „még semmit nem
+  // használtunk el"-lé válna, ami a lehető legderűlátóbb válasz. A tesztem
+  // ezt kapta el (898-at vetített a semmiből).
+  if (used === null || used === undefined || used === '') return null;
+  const kezdo = Number(used);
+  if (!Number.isFinite(kezdo) || kezdo < 0) return null;
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(day || ''));
+  if (!m) return null;
+  const [, ev, ho, nap] = m.map(Number);
+  const hosszu = new Date(Date.UTC(ev, ho, 0)).getUTCDate();
+  if (!hosszu || nap < 1 || nap > hosszu) return null;
+
+  let n = kezdo;
+  for (let d = nap; d <= hosszu; d++) {
+    const napja = `${ev}-${String(ho).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+    for (let kor = 0; kor < RUNS_PER_DAY; kor++) {
+      n += postsPerRun({ used: n, day: napja, defaultLimit }) * OPS_PER_POST;
+    }
+    n += REEL_OPS_PER_DAY;   // a Reel NINCS fékezve — a közös keretből eszik
+  }
+  return n;
 }

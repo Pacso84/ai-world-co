@@ -90,7 +90,13 @@ const ASSISTANT_NAMES = [
 /** Kép- és videógenerálás. Ezek NEM asszisztensek. */
 const IMAGE_NAMES = [
   // cégek
-  'Midjourney', 'Picsart',
+  // A Kling a Kuaishou VIDEÓGENERÁTORA (2026-09-03, a `how-to-use-kling-ai-
+  // video-templates-in-picsart-flow` útmutatóból). A cikkben egyszerre cég és
+  // eszköznév — a nyilvántartás egy névtér, ezért EGY bejegyzés mindkettőt
+  // lefedi. Videót ELŐÁLLÍT → a HOZZÁADÁS SZABÁLYA 2. pontja szerint `image`,
+  // a Midjourney és a Picsart mellé. Chat-ablaka nincs, tehát `assistant` szóba
+  // sem jöhet.
+  'Kling', 'Midjourney', 'Picsart',
   // eszközök
   'Image Playground',   // Apple Intelligence képgenerátora — nem chat (2026-08-17)
   'Project Genie',      // Google DeepMind világ-/videómodell — nem chat
