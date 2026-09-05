@@ -1,86 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178840186045277",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-03T02:17:40.452Z",
-      "updated": "2026-09-03T02:18:36.184Z"
-    },
-    {
-      "id": "t178840191618645",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-09-03T02:18:36.187Z",
-      "updated": "2026-09-03T02:19:24.492Z"
-    },
-    {
-      "id": "t178840196454247",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-09-03T02:19:24.542Z",
-      "updated": "2026-09-03T02:26:31.376Z"
-    },
-    {
-      "id": "t178840239137885",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-03T02:26:31.378Z",
-      "updated": "2026-09-03T02:28:07.703Z"
-    },
-    {
-      "id": "t178840248774760",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-03T02:28:07.747Z",
-      "updated": "2026-09-03T02:29:48.515Z"
-    },
-    {
-      "id": "t178840258851663",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-09-03T02:29:48.516Z",
-      "updated": "2026-09-03T02:31:44.738Z"
-    },
-    {
-      "id": "t178840270474075",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-03T02:31:44.740Z",
-      "updated": "2026-09-03T02:31:52.095Z"
-    },
-    {
-      "id": "t178840271209639",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-09-03T02:31:52.096Z",
-      "updated": "2026-09-03T02:32:13.607Z"
-    },
-    {
-      "id": "t178843726754141",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-09-03T12:07:47.541Z",
-      "updated": "2026-09-03T12:07:47.679Z"
-    },
-    {
-      "id": "t178843726768142",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-09-03T12:07:47.681Z",
-      "updated": "2026-09-03T12:08:43.810Z"
-    },
-    {
       "id": "t178843732381279",
       "title": "Run source-scout",
       "status": "done",
@@ -479,25 +399,89 @@
       "agent": "publisher",
       "created": "2026-09-05T02:17:05.575Z",
       "updated": "2026-09-05T02:17:26.656Z"
+    },
+    {
+      "id": "t178860767659156",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-09-05T11:27:56.591Z",
+      "updated": "2026-09-05T11:27:56.764Z"
+    },
+    {
+      "id": "t178860767676571",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-09-05T11:27:56.765Z",
+      "updated": "2026-09-05T11:28:31.057Z"
+    },
+    {
+      "id": "t178860771105889",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-09-05T11:28:31.058Z",
+      "updated": "2026-09-05T11:28:31.189Z"
+    },
+    {
+      "id": "t178860771119199",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-09-05T11:28:31.191Z",
+      "updated": "2026-09-05T11:28:31.298Z"
+    },
+    {
+      "id": "t178860771130024",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-05T11:28:31.300Z",
+      "updated": "2026-09-05T11:28:31.458Z"
+    },
+    {
+      "id": "t178860771146080",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-09-05T11:28:31.460Z",
+      "updated": "2026-09-05T11:28:31.601Z"
+    },
+    {
+      "id": "t178860771163226",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-05T11:28:31.632Z",
+      "updated": "2026-09-05T11:28:31.788Z"
+    },
+    {
+      "id": "t178860771178917",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-09-05T11:28:31.789Z",
+      "updated": "2026-09-05T11:28:31.933Z"
+    },
+    {
+      "id": "t178860771193420",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-05T11:28:31.934Z",
+      "updated": "2026-09-05T11:28:42.549Z"
+    },
+    {
+      "id": "t178860772255147",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-09-05T11:28:42.551Z",
+      "updated": "2026-09-05T11:28:55.318Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n17877069742368",
-      "level": "success",
-      "text": "3 hír + 4 útmutató publikálva (költség: $0.1774).",
-      "agent": "ceo",
-      "at": "2026-08-26T01:16:14.236Z",
-      "loud": false
-    },
-    {
-      "id": "n17877336826796",
-      "level": "warn",
-      "text": "📨 guide → ceo: Kell még adat: \"Build a Simple Monthly Budget From Scratch With Any AI Assistant\" — az Ellenőrző tényt/forrást kér, amit",
-      "agent": "guide",
-      "at": "2026-08-26T08:41:22.679Z",
-      "loud": false
-    },
     {
       "id": "n178773384971574",
       "level": "info",
@@ -1281,27 +1265,25 @@
       "agent": "ceo",
       "at": "2026-09-05T02:17:26.692Z",
       "loud": false
+    },
+    {
+      "id": "n178860772576627",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The line-up is solid and covers practical, everyday writing tasks people actually need help with — from complaint emails to sympathy messages. One small note: Article 6 (Resume From Scratch) doesn't n",
+      "agent": "publisher",
+      "at": "2026-09-05T11:28:45.766Z",
+      "loud": false
+    },
+    {
+      "id": "n178860773534519",
+      "level": "info",
+      "text": "Pipeline lefutott — ma nem volt publikálható új tartalom.",
+      "agent": "ceo",
+      "at": "2026-09-05T11:28:55.345Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m17878556707143",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Recraft V4 Styles in Picsart: one reference, every image matches\" — mi a baj: Recraft V4 Styles is described as a feature inside Picsart that builds a reusable style profile from uploaded reference images with Precise and Flexible modes — this is a fabricated feature/product. Picsart's AI image tools (including any Recraft integration) do not have a 'Recraft V4 Styles' featu",
-      "ref": "2026-08-27T16-08-30-208Z_picsart_Recraft_V4_Styles_in_Picsart__one_reference__every.json",
-      "at": "2026-08-27T18:34:30.714Z"
-    },
-    {
-      "id": "m178785572795892",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Recraft V4 Styles in Picsart: one reference, every image matches\" — javítva: Recraft V4 Styles is described as a feature inside Picsart that builds a reusable style profile from uploaded reference images with Precise and Flexible modes — this is a fabricated feature/product. Picsart's AI image tools (including any Recraft integration) do not have a 'Recraft V4 Styles' feature with th",
-      "ref": "2026-08-27T16-08-30-208Z_picsart_Recraft_V4_Styles_in_Picsart__one_reference__every.json",
-      "at": "2026-08-27T18:35:27.958Z"
-    },
     {
       "id": "m17878557484612",
       "from": "ellenorzo",
@@ -2644,6 +2626,24 @@
       "text": "6 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-09-05T02:30:28.929Z"
+    },
+    {
+      "id": "m178860772254016",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 20 → 5/4/2 oszlop.",
+      "ref": "mobile",
+      "at": "2026-09-05T11:28:42.540Z"
+    },
+    {
+      "id": "m17886077694662",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Create a personalized learning plan for a new hobb\" — An X (formerly Twitter) account with a premium subscription that includes Grok access; look for the 'Grok' icon or tab, usually found in the left-hand navigation menu; look for a button that says 'New Chat,' 'Start a new conversation,' or a similar icon like a plus sign (+) or a spee",
+      "ref": "ARTICLE_GUIDE_create-a-personalized-learning-plan-for-a-new-hobby-with-gro.json",
+      "at": "2026-09-05T11:29:29.466Z"
     }
   ]
 }
