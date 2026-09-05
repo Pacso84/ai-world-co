@@ -1,118 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178837586849988",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-09-02T19:04:28.499Z",
-      "updated": "2026-09-02T19:04:56.107Z"
-    },
-    {
-      "id": "t178837589610937",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-09-02T19:04:56.109Z",
-      "updated": "2026-09-02T19:09:53.729Z"
-    },
-    {
-      "id": "t178837619373145",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-02T19:09:53.731Z",
-      "updated": "2026-09-02T19:10:13.400Z"
-    },
-    {
-      "id": "t17883762134035",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-09-02T19:10:13.403Z",
-      "updated": "2026-09-02T19:10:25.932Z"
-    },
-    {
-      "id": "t178837622598577",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-02T19:10:25.985Z",
-      "updated": "2026-09-02T19:10:46.364Z"
-    },
-    {
-      "id": "t178837624636628",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-09-02T19:10:46.366Z",
-      "updated": "2026-09-02T19:10:54.376Z"
-    },
-    {
-      "id": "t178837625437817",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-02T19:10:54.378Z",
-      "updated": "2026-09-02T19:11:12.510Z"
-    },
-    {
-      "id": "t178837627251128",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-09-02T19:11:12.511Z",
-      "updated": "2026-09-02T19:11:35.302Z"
-    },
-    {
-      "id": "t17884006809883",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-09-03T01:58:00.988Z",
-      "updated": "2026-09-03T01:58:01.161Z"
-    },
-    {
-      "id": "t178840068116332",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-09-03T01:58:01.163Z",
-      "updated": "2026-09-03T01:58:31.070Z"
-    },
-    {
-      "id": "t178840071107272",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-09-03T01:58:31.072Z",
-      "updated": "2026-09-03T01:58:31.269Z"
-    },
-    {
-      "id": "t17884007112718",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-09-03T01:58:31.272Z",
-      "updated": "2026-09-03T02:13:40.949Z"
-    },
-    {
-      "id": "t178840162095090",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-03T02:13:40.950Z",
-      "updated": "2026-09-03T02:15:57.640Z"
-    },
-    {
-      "id": "t178840175764360",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-09-03T02:15:57.643Z",
-      "updated": "2026-09-03T02:17:40.451Z"
-    },
-    {
       "id": "t178840186045277",
       "title": "Run ellenorzo",
       "status": "done",
@@ -479,33 +367,121 @@
       "agent": "publisher",
       "created": "2026-09-04T12:27:20.356Z",
       "updated": "2026-09-04T12:27:45.942Z"
+    },
+    {
+      "id": "t178857322593595",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-09-05T01:53:45.935Z",
+      "updated": "2026-09-05T01:53:46.074Z"
+    },
+    {
+      "id": "t178857322607636",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-09-05T01:53:46.076Z",
+      "updated": "2026-09-05T01:54:24.487Z"
+    },
+    {
+      "id": "t178857326448964",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-09-05T01:54:24.489Z",
+      "updated": "2026-09-05T01:54:24.646Z"
+    },
+    {
+      "id": "t178857326464827",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-09-05T01:54:24.648Z",
+      "updated": "2026-09-05T02:02:03.652Z"
+    },
+    {
+      "id": "t17885737236532",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-05T02:02:03.653Z",
+      "updated": "2026-09-05T02:03:56.932Z"
+    },
+    {
+      "id": "t17885738369347",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-09-05T02:03:56.934Z",
+      "updated": "2026-09-05T02:04:40.029Z"
+    },
+    {
+      "id": "t178857388003059",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-05T02:04:40.030Z",
+      "updated": "2026-09-05T02:05:13.795Z"
+    },
+    {
+      "id": "t178857391379796",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-09-05T02:05:13.797Z",
+      "updated": "2026-09-05T02:06:01.720Z"
+    },
+    {
+      "id": "t178857396176267",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-09-05T02:06:01.762Z",
+      "updated": "2026-09-05T02:12:11.654Z"
+    },
+    {
+      "id": "t178857433165698",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-05T02:12:11.656Z",
+      "updated": "2026-09-05T02:13:39.089Z"
+    },
+    {
+      "id": "t178857441912596",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-05T02:13:39.125Z",
+      "updated": "2026-09-05T02:14:51.757Z"
+    },
+    {
+      "id": "t178857449175845",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-09-05T02:14:51.758Z",
+      "updated": "2026-09-05T02:16:57.953Z"
+    },
+    {
+      "id": "t178857461795498",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-05T02:16:57.954Z",
+      "updated": "2026-09-05T02:17:05.573Z"
+    },
+    {
+      "id": "t178857462557591",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-09-05T02:17:05.575Z",
+      "updated": "2026-09-05T02:17:26.656Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178767516364056",
-      "level": "success",
-      "text": "1 hír + 0 útmutató publikálva (költség: $0.0153).",
-      "agent": "ceo",
-      "at": "2026-08-25T16:26:03.640Z",
-      "loud": false
-    },
-    {
-      "id": "n178770694014468",
-      "level": "info",
-      "text": "SEO: 7 cikk optimalizálva (átlag 8.3/10).",
-      "agent": "seo",
-      "at": "2026-08-26T01:15:40.144Z",
-      "loud": false
-    },
-    {
-      "id": "n178770696139041",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). A lineup egész egységes: gyakorlati, mindennapi AI-írási tippek – szép mix. Egy apró aggályom van: 4 panasz-/reklamációs cikk (3-6. számú) kicsit repetitív, talán érdemes lenne összevonni vagy más tém",
-      "agent": "publisher",
-      "at": "2026-08-26T01:16:01.390Z",
-      "loud": false
-    },
     {
       "id": "n17877069742368",
       "level": "success",
@@ -1281,81 +1257,33 @@
       "agent": "ceo",
       "at": "2026-09-04T12:27:45.994Z",
       "loud": false
+    },
+    {
+      "id": "n178857461794328",
+      "level": "info",
+      "text": "SEO: 9 cikk optimalizálva (átlag 8.3/10).",
+      "agent": "seo",
+      "at": "2026-09-05T02:16:57.943Z",
+      "loud": false
+    },
+    {
+      "id": "n178857463530832",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The line-up is solid and ready — ten practical, everyday use cases that should resonate well with busy people. Before publishing, just double-check that cover images, SEO meta descriptions, and intern",
+      "agent": "publisher",
+      "at": "2026-09-05T02:17:15.308Z",
+      "loud": false
+    },
+    {
+      "id": "n178857464669225",
+      "level": "success",
+      "text": "5 hír + 4 útmutató publikálva (költség: $0.1208).",
+      "agent": "ceo",
+      "at": "2026-09-05T02:17:26.692Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178780928587118",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"How to translate and condense long foreign-language articles or PDFs into plain English with Copilot\" (?/10)",
-      "ref": "GUIDE_how-to-translate-and-condense-long-foreign-language-articles.json",
-      "at": "2026-08-27T05:41:25.871Z"
-    },
-    {
-      "id": "m178780932144661",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-08-27T05:42:01.446Z"
-    },
-    {
-      "id": "m178780938828011",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"How to spot AI scams, deepfakes and fake content\" — AI image generators 'often struggle with fine details, perfect symmetry, and real-world logic' — this is increasingly false for modern models; 'If they appear to have six fingers, their wedding ring is melting into their skin, or their glasses frames warp unnaturally, it is very likely",
-      "ref": "ARTICLE_GUIDE_ai-spot-scams.json",
-      "at": "2026-08-27T05:43:08.280Z"
-    },
-    {
-      "id": "m178780940982493",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Ask Gemini to explain a confusing work email in pl\" — The paper airplane icon for sending messages",
-      "ref": "ARTICLE_GUIDE_ask-gemini-to-explain-a-confusing-work-email-in-plain-englis.json",
-      "at": "2026-08-27T05:43:29.824Z"
-    },
-    {
-      "id": "m178780986642855",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "4 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-08-27T05:51:06.428Z"
-    },
-    {
-      "id": "m178784744410123",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "info",
-      "text": "A \"What is Google AI Mode? How it works and how to use it\" hír a meglévő útmutatóra mutat: gemini-getting-started",
-      "ref": "gemini-getting-started",
-      "at": "2026-08-27T16:17:24.101Z"
-    },
-    {
-      "id": "m178784749491862",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-08-27T16:18:14.918Z"
-    },
-    {
-      "id": "m178784758210449",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Ask Qwen Chat to compare two cities for your next \" — The URL qwen.chat (the guide says navigate to qwen.chat, but the current official Qwen website is qwen.ai); Daily cost examples showing specific dollar amounts ($120, $110) - violates the rule that guides must never state prices; The \"Summarize\" button above replies (may not exist in",
-      "ref": "ARTICLE_GUIDE_ask-qwen-chat-to-compare-two-cities-for-your-next-holiday-in.json",
-      "at": "2026-08-27T16:19:42.104Z"
-    },
     {
       "id": "m178784805857530",
       "from": "social",
@@ -2644,6 +2572,78 @@
       "text": "2 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-09-04T18:53:42.878Z"
+    },
+    {
+      "id": "m178857380995025",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"NVIDIA to Acquire Hugging Face\" — mi a baj: The article presents 'NVIDIA has agreed to acquire Hugging Face' as an established fact. As of available information, there is no verified announcement of NVIDIA acquiring Hugging Face. If this is speculative or unconfirmed, framing it as a done deal ('has agreed to acquire') is a fabrication of fact — not an opinion or analysis.; ",
+      "ref": "2026-09-04T01-58-32-035Z_nvidia-blog_NVIDIA_to_Acquire_Hugging_Face.json",
+      "at": "2026-09-05T02:03:29.950Z"
+    },
+    {
+      "id": "m17885738367471",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Google Workspace Weekly Recap - September 4, 2026\" — mi a baj: The article presents 'Gemini co-presenter suggestion' in Google Meet as a new, real feature. As of available information, there is no verified announcement of Gemini proactively suggesting a co-presenter during Google Slides presentations in Meet, nor a one-click handoff suggestion in an 'Ask Gemini in Meet' pane",
+      "ref": "2026-09-05T01-54-24-476Z_google-workspace_Google_Workspace_Weekly_Recap_-_September_4__2026.json",
+      "at": "2026-09-05T02:03:56.747Z"
+    },
+    {
+      "id": "m17885738557993",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"NVIDIA to Acquire Hugging Face\" — javítva: The article presents 'NVIDIA has agreed to acquire Hugging Face' as an established fact. As of available information, there is no verified announcement of NVIDIA acquiring Hugging Face. If this is speculative or unconfirmed, framing it as a done deal ('has agreed to acquire') is a fabrication of fact — not an opinion or analysis.; The articl",
+      "ref": "2026-09-04T01-58-32-035Z_nvidia-blog_NVIDIA_to_Acquire_Hugging_Face.json",
+      "at": "2026-09-05T02:04:15.799Z"
+    },
+    {
+      "id": "m178857388002061",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Google Workspace Weekly Recap - September 4, 2026\" — javítva: The article presents 'Gemini co-presenter suggestion' in Google Meet as a new, real feature. As of available information, there is no verified announcement of Gemini proactively suggesting a co-presenter during Google Slides presentations in Meet, nor a one-click handoff suggestion in an 'Ask Gemini in Meet' panel. This ap",
+      "ref": "2026-09-05T01-54-24-476Z_google-workspace_Google_Workspace_Weekly_Recap_-_September_4__2026.json",
+      "at": "2026-09-05T02:04:40.020Z"
+    },
+    {
+      "id": "m178857389934450",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"NVIDIA to Acquire Hugging Face\" (?/10)",
+      "ref": "2026-09-04T01-58-32-035Z_nvidia-blog_NVIDIA_to_Acquire_Hugging_Face.json",
+      "at": "2026-09-05T02:04:59.344Z"
+    },
+    {
+      "id": "m178857391378471",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Google Workspace Weekly Recap - September 4, 2026\" (?/10)",
+      "ref": "2026-09-05T01-54-24-476Z_google-workspace_Google_Workspace_Weekly_Recap_-_September_4__2026.json",
+      "at": "2026-09-05T02:05:13.784Z"
+    },
+    {
+      "id": "m178857462556286",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 20 → 5/4/2 oszlop.",
+      "ref": "mobile",
+      "at": "2026-09-05T02:17:05.562Z"
+    },
+    {
+      "id": "m178857467416544",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Create a personalised workout plan using Le Chat i\" — UI descriptions are generic but unverifiable — soften to be safe",
+      "ref": "ARTICLE_GUIDE_create-a-personalised-workout-plan-using-le-chat-in-under-10.json",
+      "at": "2026-09-05T02:17:54.165Z"
     }
   ]
 }

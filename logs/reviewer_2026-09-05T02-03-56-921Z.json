@@ -1,0 +1,35 @@
+{
+  "started_at": "2026-09-05T02:02:03.782Z",
+  "total": 5,
+  "passed": 3,
+  "failed": 0,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.011867309999999999,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-09-04T01-58-32-035Z_github-ai_GitHub_Copilot_app_for_Beginners__Run_several_agen.json",
+      "article": "ARTICLE_2026-09-04T01-58-32-035Z_github-ai_GitHub_Copilot_app_for_Beginners__Run_several_agen.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.001851
+    },
+    {
+      "writer": "WRITER_2026-09-04T01-58-32-035Z_google-workspace_Introducing_comprehensive_audit_logs_for_Gemini_No.json",
+      "article": "ARTICLE_2026-09-04T01-58-32-035Z_google-workspace_Introducing_comprehensive_audit_logs_for_Gemini_No.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.0018408
+    },
+    {
+      "writer": "WRITER_2026-09-05T01-54-24-476Z_d-id-news_Why_AI_Video_Is_Redefining_the_Cost_of_Video_Produ.json",
+      "article": "ARTICLE_2026-09-05T01-54-24-476Z_d-id-news_Why_AI_Video_Is_Redefining_the_Cost_of_Video_Produ.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0015519
+    }
+  ],
+  "truth_blocked": 2,
+  "finished_at": "2026-09-05T02:03:56.921Z",
+  "duration_seconds": 113.139
+}

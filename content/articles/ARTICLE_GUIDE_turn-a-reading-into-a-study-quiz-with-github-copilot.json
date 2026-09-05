@@ -1,0 +1,61 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "turn-a-reading-into-a-study-quiz-with-github-copilot",
+    "company": "GitHub",
+    "tool": "GitHub Copilot",
+    "icon": "📚",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-09-05T02:10:50.214Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00889321,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-09-05T02:13:39.078Z",
+    "slug": "turn-a-reading-into-a-study-quiz-with-github-copilot",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1564
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Clear, well-structured guide that explains every step with fallbacks and qualified UI descriptions. Appropriate caveats about Copilot's limitations are included without being alarmist. The What this means for you section offers practical applications for three reader types.",
+      "_aiCost": 0.0025503,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "image_v": 2,
+    "image_at": "2026-09-05T02:14:51.740Z",
+    "seo": {
+      "meta_description": "Learn how to use GitHub Copilot to create practice quizzes from any reading material in about 10 minutes. Perfect for students and book clubs.",
+      "keywords": [
+        "GitHub Copilot study tips",
+        "create quiz from article AI",
+        "AI study tools for students",
+        "how to make practice questions from reading",
+        "GitHub Copilot tutorial",
+        "AI quiz generator",
+        "reading comprehension tools"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more specific long-tail keywords like 'GitHub Copilot study quiz' earlier in the article",
+        "Include a brief step-by-step subheading to improve keyword visibility and readability",
+        "Consider adding secondary keywords like 'practice questions from text' in the first paragraph"
+      ],
+      "optimised_at": "2026-09-05T02:16:57.939Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Turn a Reading into a Study Quiz with GitHub Copilot\"\nsubtitle: \"Paste any article or chapter, ask for practice questions, and check each one against the original text in about ten minutes\"\ncategory: \"guide\"\naudience: \"both\"\ncompany: \"GitHub\"\ntool: \"GitHub Copilot\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"getting-started\", \"github-copilot\", \"study-skills\"]\n---\n\n# Turn a Reading into a Study Quiz with GitHub Copilot\n\n> **In short:** You can use GitHub Copilot's chat to turn any short reading into a list of practice questions, then ask for the answers and verify each one yourself against the original text. Copilot is built for coding, so this works best with shorter readings (about one page) and a free or paid GitHub account with Copilot access.\n\nGitHub Copilot is best known as a coding assistant — picture a very fast pair-programmer who sits beside you and suggests the next line. But the same chat panel also reads, summarizes, and writes questions about plain text. That makes it handy for students, book clubs, or anyone who wants to test whether they really understood an article. The two habits that make this work: keep the reading short, and double-check every answer before you trust the quiz. One honest limit up front — Copilot can draft questions about a text, but it cannot grade open-ended essay responses or replace doing the reading yourself.\n\n## Before you start\n- A free GitHub account at github.com. Sign up if you don't have one — the same account works for the website.\n- A web browser (Chrome, Edge, Firefox, or Safari).\n- A reading you want to study. Pick something between one paragraph and roughly one printed page. Longer texts work, but smaller chunks give cleaner quizzes.\n- Copilot Chat access. It is available on a free tier with daily message limits; heavier use may require a paid Copilot plan — see the current pricing page for the latest details.\n- About 10 minutes.\n\n## Step 1 — Open Copilot Chat on github.com\nSign in to github.com, then look at the top-right corner of the page for a small chat-bubble icon or a \"Copilot\" label. If you don't see it there, click your profile picture in the same corner and scan the menu that drops down — Copilot is usually listed near \"Settings\" or \"Your repositories.\" Clicking it opens a chat panel, normally as a side window on the right or as a pop-up near the bottom of the screen. You'll see a blank text box at the bottom labeled something like \"Ask Copilot\" or \"Message Copilot.\"\n\n💬 Example: don't type anything yet — just confirm the chat is open and you can click into the box.\n\nYou'll know it worked when the chat panel is visible, the text box is empty, and your cursor blinks inside it.\n\n## Step 2 — Paste your reading into the chat\nOpen the reading you want to study — a news article, a chapter section, a Wikipedia entry, anything text-based — and copy the whole passage to your clipboard. On Windows this is usually Ctrl+C; on a Mac, Cmd+C. Click into the Copilot text box, then paste with Ctrl+V or Cmd+V. The text appears inside the box, often wrapping over several lines. If the reading is very long, paste only one section at a time — Copilot handles shorter chunks much better and gives you tighter questions. If nothing pastes, right-click inside the box and choose Paste, or use the browser's Edit menu.\n\n💬 Example: paste this short paragraph — *\"The Amazon rainforest produces about six percent of the world's oxygen and stores billions of tons of carbon. It also hosts ten percent of all known species. Fires there release stored carbon and reduce the forest's ability to absorb more.\"*\n\nYou'll know it worked when the full reading sits inside the chat box and you can still see a blinking cursor at the end.\n\n## Step 3 — Ask Copilot to make a quiz\nNow you ask for what you want. In plain English, type a short instruction that tells Copilot the question type, the count, and the difficulty mix. Vague asks produce vague quizzes, so be specific. Press Enter or click the send icon — usually a paper-airplane shape or an arrow inside the text box — to submit. Copilot usually replies within a few seconds with a numbered list of questions, each followed by four options labeled A, B, C, and D. If the reply looks too long or off-topic, click \"Stop\" if you see it, then send a clearer prompt.\n\n💬 Example: *\"Read the passage I pasted. Write 5 multiple-choice questions about it, with 4 answer choices each. Make 2 easy recall and 3 about meaning or application. Don't give me the answer key yet.\"*\n\nYou'll know it worked when Copilot responds with a numbered list of questions, each with four lettered options.\n\n## Step 4 — Ask for the answer key\nIn the same chat, send a follow-up message asking for the answers. Tell Copilot to put each correct letter on its own line and to quote a short supporting phrase from the original text. This second pass is where verification matters — Copilot can guess, and you'll check it in the next step. If the chat shows a \"regenerate\" or \"try again\" button, ignore it for now and just send your own text request instead.\n\n💬 Example: *\"Now give me the answer key. For each question, write the correct letter (A/B/C/D) and quote one short phrase from the original passage that supports it. Don't paraphrase — quote directly.\"*\n\nYou'll know it worked when Copilot replies with a clean list — for example, \"1. B — 'six percent of the world's oxygen'\" — one entry per question.\n\n## Step 5 — Check every answer against the original reading\nThis is the step most people skip, and it's the one that turns a fun experiment into a real study tool. Open the original reading again in another browser tab or window. For each answer Copilot gave, find the exact phrase it quoted and read the surrounding sentence to confirm the answer is actually right and the quote really supports it. If a quote is missing, doesn't match the text, or the answer feels off, delete that question or rewrite it yourself. Treat every answer as a draft until you've seen the supporting phrase with your own eyes.\n\n💬 Example: if the answer says \"B — 'ten percent of all species'\" but the original paragraph says the rainforest *hosts* (not produces) ten percent of species, you've caught a subtle mistake — correct the question before using it.\n\nYou'll know it worked when every answer on your list is backed by a real phrase in the original text and every question still makes sense to a fresh reader.\n\n## Step 6 — Save or share the quiz\nOnce the quiz is verified, copy the questions and answers into wherever you actually study — a notes app, a document, or a flashcard tool. If you want to share with a class or study group, paste just the questions into a shared doc and keep the answers hidden (for example, on a second page, in a separate file, or behind a spoiler tag). In Copilot Chat, you may see a \"copy\" or \"share\" icon near the reply; if not, just drag your mouse across the text and copy it out the usual way. Then close the chat — your verified quiz now lives outside it.\n\n💬 Example: paste your verified list into a note titled \"Quiz — Amazon rainforest (WIP)\" so you can come back and revise it later.\n\nYou'll know it worked when the finished quiz lives somewhere outside the chat and you can re-open it without Copilot.\n\n## Common mistakes\n- **Pasting a whole book chapter at once.** Copilot loses track of long inputs and the questions become vague or invented. Stick to one section at a time — a page or less — and run a new chat for each chunk.\n- **Trusting the answers without checking.** Copilot sometimes invents a quote that sounds right but isn't in the text. Treat every answer as a draft until you've actually found the supporting phrase in the original.\n- **Asking for too many questions at once.** Asking for 20 questions usually gives you weaker questions than asking for 5. Smaller, sharper sets are easier to verify and easier to actually use.\n\n## What this means for you\n- **If you're studying on your own:** turn each article you read for class into a 5-question quiz the same day. Doing this within an hour of reading cements the material much better than re-reading alone.\n- **If you teach or run training:** build a quick quiz at the end of any handout. It takes about ten minutes per reading, and the answers stay yours to verify before sharing.\n- **If you just want to remember what you read:** even a 3-question quiz, done once, beats highlighting the same paragraph three times.\n\n## Try it now\nPick one short article you saved recently — anything between 200 and 500 words. Open github.com, start a Copilot chat, paste the article, and ask for 4 multiple-choice questions. Then ask for the answer key. Spend two minutes checking each answer against the original. You'll have a verified quiz before your coffee gets cold.",
+  "original_title": "Turn a Reading into a Study Quiz with GitHub Copilot"
+}

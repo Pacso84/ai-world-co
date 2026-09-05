@@ -1,0 +1,69 @@
+{
+  "_meta": {
+    "written_at": "2026-09-05T02:04:40.019Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00894624,
+    "original_draft": "2026-09-05T01-54-24-476Z_google-workspace_Google_Workspace_Weekly_Recap_-_September_4__2026.json",
+    "source_id": "google-workspace",
+    "source_name": "Google Workspace Updates (hivatalos)",
+    "source_link": "http://workspaceupdates.googleblog.com/2026/09/weekly-recap-09-04-2026.html",
+    "source_links": [
+      "http://workspaceupdates.googleblog.com/2026/09/weekly-recap-09-04-2026.html"
+    ],
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "rejected_at": "2026-09-05T02:03:56.575Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 835
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Accurate, well-structured explainer that clearly separates real features from rumored ones, explains key terms accessibly, and provides useful audience-specific guidance in the 'What this means for you' section. The honest framing builds reader trust.",
+      "_aiCost": 0.0015042,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Hitelesség-kapu blokkolta: The article presents 'Gemini co-presenter suggestion' in Google Meet as a new, real feature. As of available information, there is no verified announcement of Gemini proactively suggesting a co-presen",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-09-05T01-54-24-476Z_google-workspace_Google_Workspace_Weekly_Recap_-_September_4__2026.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-09-05T02:05:13.783Z",
+    "slug": "gemini-in-google-meet-what-it-actually-does-and-what-it-doesn-t",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-09-05T02:06:01.708Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is a weekly recap/explainer article summarizing Gemini in Meet, not introducing a new specific feature for users to act on today.",
+    "image_v": 2,
+    "image_at": "2026-09-05T02:14:12.321Z",
+    "seo": {
+      "meta_description": "Discover what Gemini in Google Meet actually does — AI note-taking, meeting summaries, and late-joiner recaps. Honest review of real features and limits.",
+      "keywords": [
+        "Gemini in Google Meet",
+        "Google Meet AI features",
+        "Google Meet AI assistant",
+        "Gemini Meet note taking",
+        "how to use Gemini in Meet",
+        "Google Meet AI summarization",
+        "Gemini Meet limits"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add a brief how-to section explaining how to enable Gemini in Meet",
+        "Include specific examples of real use cases users can relate to",
+        "Consider adding FAQs schema markup for common questions about Gemini Meet"
+      ],
+      "optimised_at": "2026-09-05T02:15:54.385Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Gemini in Google Meet: What It Actually Does (and What It Doesn't)\"\nsubtitle: \"An honest look at Google's AI assistant inside Meet — the real features, the limits, and how to know if it's worth it.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"google-meet\", \"gemini\", \"ai-assistant\", \"meetings\"]\n---\n\n# Gemini in Google Meet: What It Actually Does (and What It Doesn't)\n\n> **In short:** Gemini in Google Meet is Google's AI assistant that lives in a side panel during calls. It can take notes, summarize discussions, and catch you up when you're late. It does not proactively suggest handing off slides to a co-presenter — that capability has not been announced.\n\nAnyone who's been the one fumbling with screen-sharing controls during a meeting has probably wished for a quiet helper sitting next to them. Gemini in Meet is supposed to be that helper. But what it can actually do today — and what it can't — is worth knowing before you start paying for it.\n\n## What Gemini in Meet actually is\n\n\"AI assistant\" sounds like marketing buzzwords until you see what it does in practice. Gemini in Meet (Gemini being Google's family of AI models, the same technology behind the Gemini chat apps) is a side panel that opens on the right side of your screen during a call. You open it when you need it; otherwise it stays out of your way.\n\nIts real, working features today include:\n\n- **Take notes for me**: Gemini listens and writes a summary of what was discussed, then saves a recap to your Google Drive.\n- **Catch me up**: If you join a meeting late, Gemini shows a quick recap of what you missed.\n- **Summarize this meeting so far**: A button that asks Gemini to recap the conversation up to the current moment.\n- **Translate captions**: Real-time translation of spoken language into on-screen captions in another language.\n\nThese features work today for people who have the Gemini add-on enabled on their Google Workspace account. New features get added over time, but only some of them are widely available to everyone at once.\n\n## What it can do during a presentation\n\nIf you're showing Google Slides inside Meet, Gemini can still help — just not in the way some headlines suggest. Here's what's real:\n\n- It will **take notes** of the discussion while your slides are on screen.\n- After the meeting, you get a **summary** that includes who said what and what questions came up.\n- If you joined late, **Catch me up** can tell you which slides were already discussed.\n\nWhat's not real: Gemini does not watch who's talking during your presentation and then suggest someone to hand the slides to. There is no panel that proactively proposes a co-presenter, and no one-click handoff feature built around that idea. If you need to pass control mid-presentation, you still do it the regular way — open the participant list, find the person, and grant co-presenter access manually.\n\n## What you need before trying it\n\nGemini in Meet is not free. It's a paid add-on for Google Workspace (the paid version of Google's productivity tools — Gmail, Docs, Drive, and Meet for businesses and organizations). You'll need:\n\n- A Google Workspace account. The personal free version of Meet does not include the Gemini panel.\n- A Workspace admin (the person who manages your organization's Google setup) to turn on the Gemini add-on for your account.\n- The latest version of Meet in your browser, or the Meet mobile app.\n\nIf you don't see the Gemini panel in your next meeting, the most likely reason is that the add-on hasn't been turned on for your account yet — talk to your Workspace admin.\n\n## What this means for you\n\n- **If you present at work often**: The honest win is post-meeting summaries, not in-meeting magic. You get a written record of what was discussed, who said what, and what was decided — without taking notes yourself.\n- **If you're a student or teacher**: \"Take notes for me\" can be useful in long group sessions, but check your school's policy first. Some instructors don't allow AI note-takers in class.\n- **If you run community or family video calls**: Free Google Meet calls don't include Gemini. You'd need a paid Workspace plan to use these features.\n- **If you're brand new to AI assistants**: Start with one meeting. Use \"Take notes for me\" in a low-stakes call, then read the summary afterward. That's enough to learn how it feels before you trust it with anything important.\n\n## Wrap-up\n\nThe honest picture of Gemini in Meet is smaller than some headlines suggest, but it's still useful. It won't pick your co-presenter for you. It will write down what was said and give you a recap when you're late — which, for most people, is plenty. Try it in one meeting this week. Read the notes it produces. That's the simplest way to find out whether it's worth keeping on.",
+  "original_title": "Google Workspace Weekly Recap - September 4, 2026"
+}

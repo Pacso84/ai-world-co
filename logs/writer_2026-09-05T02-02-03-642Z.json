@@ -1,0 +1,71 @@
+{
+  "started_at": "2026-09-05T01:54:24.775Z",
+  "drafts_total": 5,
+  "articles_written": 5,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 0,
+  "merged_total": 0,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "total_cost_usd": 0.04470158,
+  "by_article": [
+    {
+      "draft": "2026-09-05T01-54-24-476Z_google-workspace_Google_Workspace_Weekly_Recap_-_September_4__2026.json",
+      "writer_output": "WRITER_2026-09-05T01-54-24-476Z_google-workspace_Google_Workspace_Weekly_Recap_-_September_4__2026.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.0077483,
+      "duration_ms": 234631,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-09-05T01-54-24-476Z_d-id-news_Why_AI_Video_Is_Redefining_the_Cost_of_Video_Produ.json",
+      "writer_output": "WRITER_2026-09-05T01-54-24-476Z_d-id-news_Why_AI_Video_Is_Redefining_the_Cost_of_Video_Produ.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.00759882,
+      "duration_ms": 47515,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-09-04T01-58-32-035Z_nvidia-blog_NVIDIA_to_Acquire_Hugging_Face.json",
+      "writer_output": "WRITER_2026-09-04T01-58-32-035Z_nvidia-blog_NVIDIA_to_Acquire_Hugging_Face.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.00986982,
+      "duration_ms": 40819,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-09-04T01-58-32-035Z_google-workspace_Introducing_comprehensive_audit_logs_for_Gemini_No.json",
+      "writer_output": "WRITER_2026-09-04T01-58-32-035Z_google-workspace_Introducing_comprehensive_audit_logs_for_Gemini_No.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.01153116,
+      "duration_ms": 15028,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-09-04T01-58-32-035Z_github-ai_GitHub_Copilot_app_for_Beginners__Run_several_agen.json",
+      "writer_output": "WRITER_2026-09-04T01-58-32-035Z_github-ai_GitHub_Copilot_app_for_Beginners__Run_several_agen.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.00700548,
+      "duration_ms": 24464,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    }
+  ],
+  "finished_at": "2026-09-05T02:02:03.642Z",
+  "duration_seconds": 458.867
+}
