@@ -1,7 +1,7 @@
 {
   "_meta": {
     "note": "Forrás-bizonyítvány: frissesség + termés + megbízhatóság forrásonként. Gyártja: core/source-report-card.js",
-    "updated": "2026-09-05T11:36:12.177Z",
+    "updated": "2026-09-05T17:54:39.019Z",
     "thresholds": {
       "DEAD_FEED_DAYS": 365,
       "MIN_SAMPLE": 4,
@@ -173,7 +173,7 @@
     },
     "apple-ml": {
       "name": "Apple Machine Learning Research (hivatalos)",
-      "feedAgeDays": 3,
+      "feedAgeDays": 4,
       "published30d": 3,
       "truthBlocks": 0,
       "totalAttempts": 2,
@@ -448,7 +448,7 @@
     },
     "ibm": {
       "name": "IBM Research (hivatalos)",
-      "feedAgeDays": 4,
+      "feedAgeDays": null,
       "published30d": 0,
       "truthBlocks": 0,
       "totalAttempts": 0,
@@ -492,7 +492,7 @@
     },
     "xai-news": {
       "name": "xAI (hivatalos, Google News szűrve)",
-      "feedAgeDays": 0,
+      "feedAgeDays": 1,
       "published30d": 2,
       "truthBlocks": 0,
       "totalAttempts": 1,
@@ -525,7 +525,7 @@
     },
     "qwen-news": {
       "name": "Qwen / Alibaba (hivatalos, Google News szűrve)",
-      "feedAgeDays": 2,
+      "feedAgeDays": 3,
       "published30d": 0,
       "truthBlocks": 0,
       "totalAttempts": 0,
@@ -536,7 +536,7 @@
     },
     "grammarly-blog": {
       "name": "Grammarly (hivatalos)",
-      "feedAgeDays": 22,
+      "feedAgeDays": 23,
       "published30d": 1,
       "truthBlocks": 0,
       "totalAttempts": 0,
@@ -558,7 +558,7 @@
     },
     "sony-ai": {
       "name": "Sony AI (hivatalos)",
-      "feedAgeDays": 66,
+      "feedAgeDays": 67,
       "published30d": 0,
       "truthBlocks": 0,
       "totalAttempts": 0,
@@ -569,7 +569,7 @@
     },
     "notion-releases": {
       "name": "Notion – Mi újság (hivatalos)",
-      "feedAgeDays": 8,
+      "feedAgeDays": 9,
       "published30d": 0,
       "truthBlocks": 0,
       "totalAttempts": 0,
@@ -591,7 +591,7 @@
     },
     "pixlr": {
       "name": "Pixlr Blog (hivatalos)",
-      "feedAgeDays": 2,
+      "feedAgeDays": 3,
       "published30d": 2,
       "truthBlocks": 1,
       "totalAttempts": 1,
