@@ -87,6 +87,7 @@
     "alulabb",
     "alügynököket",
     "amért",
+    "amögött",
     "anamorphikus",
     "angolgyakorlásban",
     "animátorokat",
@@ -261,6 +262,7 @@
     "bulletsben",
     "burpee",
     "bámultsz",
+    "bárokat",
     "bérbeadott",
     "bétatesztjei",
     "bírságokat",
@@ -323,6 +325,7 @@
     "chipgyártókkal",
     "chiphez",
     "chipje",
+    "chipjeiket",
     "chipjével",
     "chipkategória",
     "chipként",
@@ -485,6 +488,7 @@
     "diá-vázlatok",
     "diákkat",
     "diákszöveget",
+    "diákát",
     "dnak",
     "docban",
     "docra",
@@ -564,6 +568,7 @@
     "edzésterveddel",
     "edzéstervedet",
     "edzéstervekbe",
+    "edzéstervem",
     "edzéstervet",
     "edzéstervező",
     "edzéstervvel",
@@ -930,6 +935,7 @@
     "hülyeséget",
     "icloud",
     "icloudba",
+    "icloudban",
     "idegennyelvű",
     "időnyereséget",
     "időpontegyeztetésről",
@@ -1874,6 +1880,7 @@
     "sorjázkodást",
     "sorod",
     "sorodat",
+    "sorodra",
     "sorok",
     "sorokat",
     "sorokba",
@@ -2004,6 +2011,7 @@
     "szuperképességeket",
     "szuperképességnek",
     "szuperokos",
+    "számlaszkennesek",
     "széleskörű",
     "szélessáv",
     "szélessávot",
@@ -2152,6 +2160,7 @@
     "trackpaddel",
     "transzformernek",
     "tripemet",
+    "tréninget",
     "tuesday",
     "tulajdonlás",
     "tulajdonságok",
@@ -3560,6 +3569,11 @@
       "correct": "emlék-Réellel",
       "at": "2026-09-04",
       "mondattal": true
+    },
+    "átnezed": {
+      "correct": "átnézed",
+      "at": "2026-09-05",
+      "mondattal": true
     }
   },
   "review": {
@@ -4654,11 +4668,21 @@
       "correct": "képszkennelés",
       "at": "2026-09-04",
       "mondattal": true
+    },
+    "hónban": {
+      "correct": "hónapban",
+      "at": "2026-09-05",
+      "mondattal": true
+    },
+    "asszistensed": {
+      "correct": "asszisztensed",
+      "at": "2026-09-05",
+      "mondattal": true
     }
   },
   "scan": {
-    "at": "2026-09-04",
-    "files": 905,
-    "candidates": 0
+    "at": "2026-09-05",
+    "files": 914,
+    "candidates": 12
   }
 }
