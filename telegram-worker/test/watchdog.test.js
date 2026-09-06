@@ -45,7 +45,11 @@ const EREDETI_FETCH = globalThis.fetch;
  * `runsStatusToken nelkul` a tartalék-útra.
  */
 function mockFetch({
-  runsAt = '2026-08-26T16:40:40Z', runsStatus = 200, runsStatusNoAuth = null, dispatchOk = true,
+  // ⚠️ 2026-09-06: a türelem 9,5 → 14 óra lett (mérve: a GitHub leghosszabb
+  // NORMÁL szünete 13,4 óra). A régi alapérték 11,4 órás rést adott, ami MA
+  // már nem kimaradás, csak késés — ezért az összes „beavatkozik" eset némán
+  // elbukott volna. Az alapérték most egy TÉNYLEG kihagyott slot: 20,1 óra.
+  runsAt = '2026-08-26T08:00:00Z', runsStatus = 200, runsStatusNoAuth = null, dispatchOk = true,
   telegramOk = true
 } = {}) {
   const hivasok = [];
@@ -83,7 +87,7 @@ const nyom = e => { try { return JSON.parse(e.__tar.get('watchdog:last-check'));
 
 console.log('🧪 őrkutya (worker)\n');
 
-await t('11,4 óra némaság → ELINDÍTJA a pipeline-t', async () => {
+await t('20,1 óra némaság (KIHAGYOTT slot) → ELINDÍTJA a pipeline-t', async () => {
   const f = mockFetch();
   const r = await pipelineWatchdog(env(), f, MOST);
   assert.equal(r.trigger, true);

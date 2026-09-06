@@ -70,6 +70,40 @@ jobs:
       - name: Függőségek
         run: npm install
 
+      # 🧪 TESZTEK — INGYENES, HÁLÓZAT NÉLKÜLI KAPUK (2026-09-06).
+      #
+      # MIÉRT KELLETT: 2026-08-31-én a tény-ellenőrző agent egy ÉLŐ cikkben
+      # átírta a valódi „ChatRTX" terméknevet a nem létező „NVIDIA Chat"-re.
+      # A `core/tool-kinds.test.js` EZT PONTOSAN ELKAPTA („BESOROLATLAN CÉG:
+      # NVIDIA Chat") — a védelem jól volt megtervezve. Csakhogy ez a
+      # munkafolyamat NEM FUTTATOTT TESZTEKET, `npm test` pedig csak akkor fut,
+      # ha egy ember leül a géphez. A teszt ÖT NAPIG pirosan állt, és a kitalált
+      # név öt napig kint volt élesben, HÁROM NYELVEN. Ugyanígy a
+      # `core/budget.test.js` is piros volt szeptember 1-je óta (naptári határon
+      # romlott el) — szintén észrevétlenül.
+      #
+      # ⚠️ MIÉRT ITT, A PIPELINE ELŐTT: ez az utolsó pont, ahol még semmi nem
+      # került pénzbe. Egy elromlott kapu így azelőtt kiderül, hogy az első
+      # fizetős hívás elmegy. A tesztek ingyenesek és hálózat nélküliek
+      # (szerződés: `core/run-tests.js` fejléce), futásidejük ~1-2 perc.
+      #
+      # 🚦 `|| true` — A BUKÁS SOSEM ÁLLÍTJA MEG A PIPELINE-T (user-döntés).
+      # Egy elromlott teszt miatt leállítani a cég működését sokkal drágább,
+      # mint a hiba maga: a tartalomnak akkor is mennie kell. A LÁTHATÓSÁGOT
+      # ezért nem a kilépőkód adja, hanem a `--guard`: az eredmény a
+      # `memory/test-guard.json`-ba kerül, onnan a NAPI TELEGRAM-RIPORTBA
+      # („⚠️ TESZT PIROS: …"). A projekt szabálya szerint az őrszem csak akkor
+      # őr, ha odaszól, AHOL A USER NÉZ — a CI-napló nem az a hely.
+      #
+      # A `--guard` szándékosan kapcsoló: a helyi `npm test` így nem módosítja
+      # a `memory/`-t, tehát nem készít elő git-ütközést (traffic-log-lecke).
+      - name: Tesztek (ingyenes kapuk — a bukás a napi riportba megy)
+        # 5 perc: a mért futásidő ~1-2 perc, a maradék a lassú futtatóra.
+        # ⚠️ A `core/ci-timeouts.test.js` őrzi, hogy a lépés-korlátok ÖSSZEGE
+        # (most 136) beleférjen a 145 perces job-plafonba 5 perc tartalékkal.
+        timeout-minutes: 5
+        run: node core/run-tests.js --guard || true
+
       - name: Pipeline (hírkeresés + cikk/útmutató írás + ellenőrzés)
         env:
           GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}

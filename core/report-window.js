@@ -27,8 +27,24 @@
 // pipeline-őrkutyánál.
 // ===================================================================
 
-/** Ennél korábban NEM szólunk: 07 UTC ≈ 09:00 magyar idő. */
-export const KEZDES_ORA = 7;
+/**
+ * Ennél korábban NEM szólunk: 05 UTC ≈ 07:00 magyar NYÁRI idő (user-döntés).
+ *
+ * 🔑 07 → 05 (2026-09-06). Nem az ébresztési szokás változott, hanem egy
+ * RENDSZERSZINTŰ KÉNYSZER: a pipeline-őrkutya türelmét 9,5 → 14 órára kellett
+ * emelni (a GitHub ütemezője sokkal pontatlanabb lett — a mért leghosszabb
+ * NORMÁL szünet 13,4 óra, ezért havi 9 fölösleges pótfutás indult). A lenti
+ * ablak viszont TÁGABB kell legyen az őrkutya legnagyobb reménél, különben
+ * megint kimaradhat egy napi jelentés — pontosan az a hiba, amiért az egész
+ * mechanizmus készült. 14 órás türelemhez 17 órás ablak kell.
+ *
+ * ⚠️ TÉLI IDŐSZÁMÍTÁSKOR EZ 06:00 MAGYAR IDŐ (UTC+1), nem 07:00. A modul
+ * UTC-órával dolgozik, és SZÁNDÉKOSAN nem kezel időzónát: egy nyári/téli
+ * átállást követő logika több hibalehetőséget hozna, mint amennyit ér.
+ * Ha a téli 6:00 zavaró, a KEZDES_ORA-t 6-ra kell emelni — de akkor a
+ * VEGE_ORA is 22 kell legyen, hogy az ablak 17 óra maradjon.
+ */
+export const KEZDES_ORA = 5;
 
 /**
  * Ennél később sem. A 20-as óra még átmegy, tehát a legkésőbbi pillanat
@@ -41,8 +57,13 @@ export const KEZDES_ORA = 7;
  * a nap három futásából csak egy fért bele, és ha AZ maradt ki, a
  * jelentés is elmaradt. 20-szal a 16:00-s slot is befér, akkor is, ha a
  * GitHub több órát késik vele (08-27-én 2,5 órát késett).
+ *
+ * 🔑 20 → 21 (2026-09-06, user-döntés: „7:00–23:00"). A KEZDES_ORA-val
+ * EGYÜTT mozdult: kettejük távolsága adja a 17 órás ablakot, ami a 14 órás
+ * őrkutya-türelemhez kell. A `core/report-window.test.js` „🔒 az ablak
+ * TÁGABB" esete őrzi ezt a viszonyt — ha bármelyiket állítod, az bukik el.
  */
-export const VEGE_ORA = 20;
+export const VEGE_ORA = 21;
 
 /** A hét napjai a naplóhoz (0 = vasárnap, ahogy a `getUTCDay()` adja). */
 const NAPOK = ['vasárnap', 'hétfő', 'kedd', 'szerda', 'csütörtök', 'péntek', 'szombat'];

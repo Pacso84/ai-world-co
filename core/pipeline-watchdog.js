@@ -30,11 +30,34 @@ export const CIKLUS_ORA = 8;
 
 /**
  * Ennyi óra után mondjuk ki, hogy KIMARADT egy futás.
- * 8 órás ciklus + a mért legnagyobb késés (40 perc) + tartalék.
- * Szándékosan BŐKEZŰ: egy fölösleges futás pár tíz cent, egy fölöslegesen
- * riasztó őrszemről viszont leszokik az ember.
+ *
+ * 🔑 9,5 → 14 ÓRA (2026-09-06, ÚJRAMÉRVE). Az eredeti indoklás — „8 órás ciklus
+ * + a mért legnagyobb késés (40 perc) + tartalék" — 2026-08-27-én IGAZ VOLT.
+ * A GitHub ütemezője azóta jelentősen pontatlanabb lett. 90 ütemezett futáson
+ * újramérve (2026-08-06 … 09-05):
+ *
+ *     késés:  medián 0,7 · 90% 4,3 · LEGNAGYOBB 7,8 óra
+ *     szünet: medián 7,9 · 90% 10,4 · LEGNAGYOBB 13,4 óra
+ *     a futások 34%-a késett többet, mint amennyit a 9,5 óra elvisel
+ *
+ * KÖVETKEZMÉNY VOLT: egy hónap alatt 9 pótfutás indult, és MIND FÖLÖSLEGES —
+ * mindegyik után 12-211 percen belül megjött az ütemezett futás magától.
+ * Egyik sem előzött meg valódi kimaradást, viszont mindegyik pénzbe és
+ * ~9 Make-műveletbe került.
+ *
+ * ⚠️ EZ EGY KÜLSŐ RENDSZER VISELKEDÉSÉBŐL SZÁRMAZÓ SZÁM, tehát ROMLANDÓ.
+ * Nem attól lesz jó, hogy egyszer megmértük, hanem attól, hogy a mérés
+ * ELLENŐRIZHETŐ MARAD: a teszt a két határ közé szorítja (a mért leghosszabb
+ * normál szünet fölé, egy kihagyott slot alá). Ha a GitHub megint elcsúszik,
+ * a teszt szól — nem a havi számla.
+ *
+ * ⚠️⚠️ EZ A SZÁM ÖSSZE VAN KÖTVE A NAPI JELENTÉS ABLAKÁVAL. A riport-ablaknak
+ * TÁGABBNAK kell lennie az itteni legnagyobb résnél, különben kimaradhat egy
+ * napi jelentés — pontosan az a hiba, amiért ez a modul készült. Ezért mozdult
+ * vele együtt a `core/report-window.js` (07–20 → 05–21 UTC, 17 órás ablak).
+ * NE emeld ezt a számot az ablak átgondolása nélkül.
  */
-export const TURELEM_ORA = 9.5;
+export const TURELEM_ORA = 14;
 
 /**
  * Ha már böktünk egyet, ennyi ideig nem bökünk újra — akkor sem, ha a

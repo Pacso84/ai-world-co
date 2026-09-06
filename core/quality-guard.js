@@ -157,8 +157,32 @@ function checkSlugCollisions() {
   return out;
 }
 
+// NÉV-ZÁR-KIFOGÁSOK (2026-09-06) — a tény-ellenőrző átnevezési kísérletei.
+// A `core/name-guard.js` naplózza őket; ide azért kerülnek, mert a napi
+// Telegram-jelentés EZT a függvényt hívja (`daily-report.js`: „🧹 Minőség-őr").
+// Egy őrszem, ami csak a CI-naplóba ír, senkihez nem jut el.
+//
+// ⚠️ MIÉRT `fs`-SEL, ÉS NEM IMPORTTAL. A `name-guard.js` innen importál
+// (`canonicalChip`), tehát a visszafelé mutató import KÖRKÖRÖS lenne:
+// quality-guard → name-guard → tool-kinds → quality-guard. A `qualityFindings()`
+// szinkron, dinamikus importot sem tehet. Ez a pár sor a napló olvasása;
+// a két oldal összetartozását a `core/name-guard.test.js` utolsó esete
+// méri le — az ITT betöltött modullal.
+function checkNameLock() {
+  try {
+    // Hívásonként olvassuk a felülírást: a teszt a modul betöltése UTÁN állítja.
+    const ut = process.env.NAME_GUARD_PATH || join(ROOT, 'memory', 'name-guard.json');
+    const log = JSON.parse(readFileSync(ut, 'utf-8'));
+    const ma = new Date().toISOString().slice(0, 10);
+    return (log?.entries || [])
+      .filter(e => String(e?.at || '').slice(0, 10) === ma)
+      .map(e => `NÉV-ZÁR: ${e.indok}`
+        + (e.file ? ` (${String(e.file).replace(/^ARTICLE_(GUIDE_)?/, '').replace(/\.json$/, '').slice(0, 45)})` : ''));
+  } catch { return []; }   // nincs napló = nem volt átnevezési kísérlet
+}
+
 export function qualityFindings() {
-  try { return [...checkChips(), ...checkDupLinks(), ...checkSlugCollisions()]; }
+  try { return [...checkChips(), ...checkDupLinks(), ...checkSlugCollisions(), ...checkNameLock()]; }
   catch (e) { return ['MINŐSÉG-ŐR HIBA: ' + e.message.slice(0, 80)]; }
 }
 

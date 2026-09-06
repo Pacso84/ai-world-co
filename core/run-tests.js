@@ -20,8 +20,22 @@ import { readdirSync } from 'fs';
 import { spawnSync } from 'child_process';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
+import { irTesztGuard } from './test-guard.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
+
+// 🚨 --guard: ÍRJ ŐRSZEM-FÁJLT (2026-09-06). CSAK a CI adja meg.
+//
+// MIÉRT KELL: 2026-08-31-én a tény-ellenőrző agent kitalált terméknevet írt egy
+// élő cikkbe, a `tool-kinds.test.js` el is kapta — de a munkafolyamat nem
+// futtatott teszteket, így a teszt ÖT NAPIG pirosan állt, és senki nem hallotta.
+// A kilépőkód a CI-nak szól, az őr-fájl a napi Telegram-riportnak: a kettő nem
+// helyettesíti egymást (a CI-naplóhoz senki nem nyúl).
+//
+// MIÉRT KAPCSOLÓRA: a helyi `npm test` így NEM módosítja a `memory/`-t —
+// különben minden fejlesztői futás git-ütközést készítene elő a következő
+// pull-nál (ugyanaz a szabály, mint a `core/traffic-log.js`-nél).
+const IR_GUARD = process.argv.includes('--guard');
 
 // ⚠️ A WORKER TESZTJEI IS IDE TARTOZNAK (2026-08-28, független átnézés
 // találta): a `telegram-worker/test/` fájljai ingyenesek és hálózat nélküliek
@@ -43,23 +57,40 @@ console.log('🧪 TESZTEK — ' + files.length + ' fájl (ingyenes, hálózat n�
 
 let failed = 0;
 const broken = [];
+let osszeomlas = null;
 
-for (const f of files) {
-  const r = spawnSync(process.execPath, [f.ut], { encoding: 'utf-8' });
-  if (r.status === 0) {
-    console.log('  ✅ ' + f.nev);
-  } else {
-    failed++;
-    broken.push(f.nev);
-    console.log('  ❌ ' + f.nev);
-    // Csak a lényeg: az utolsó pár sor mondja meg, mi bukott.
-    const out = ((r.stderr || '') + (r.stdout || '')).trim().split(/\r?\n/);
-    for (const line of out.slice(-6)) console.log('       ' + line);
+try {
+  for (const f of files) {
+    const r = spawnSync(process.execPath, [f.ut], { encoding: 'utf-8' });
+    if (r.status === 0) {
+      console.log('  ✅ ' + f.nev);
+    } else {
+      failed++;
+      broken.push(f.nev);
+      console.log('  ❌ ' + f.nev);
+      // Csak a lényeg: az utolsó pár sor mondja meg, mi bukott.
+      const out = ((r.stderr || '') + (r.stdout || '')).trim().split(/\r?\n/);
+      for (const line of out.slice(-6)) console.log('       ' + line);
+    }
   }
+} catch (e) {
+  // A futtató SAJÁT összeomlása (pl. EMFILE) eddig néma halál lett volna:
+  // fájl nélkül a riport nem tudná, hogy egyáltalán próbálkoztunk.
+  osszeomlas = String(e?.message || e);
+  console.log('\n💥 A TESZT-FUTTATÓ ELSZÁLLT: ' + osszeomlas);
 }
 
-console.log('\n' + (failed === 0
+console.log('\n' + (failed === 0 && !osszeomlas
   ? '✅ MIND A ' + files.length + ' TESZT RENDBEN'
   : '❌ ' + failed + ' BUKOTT: ' + broken.join(', ')));
 
-process.exit(failed === 0 ? 0 : 1);
+// ── ŐRSZEM-JEL A NAPI RIPORTNAK ──────────────────────────────────────
+// ⚠️ A KILÉPÉS ELŐTT. Élő lecke a `reel-post.js`-ből (2026-08-30): ott a
+// `process.exit(1)` MEGELŐZTE az őrszem-írást, tehát a bukás sosem került a
+// guard-fájlba, és a riport hallgatott. A `process.exit()` azonnal megöli a
+// folyamatot — ami utána van, az nem létezik.
+if (IR_GUARD) {
+  irTesztGuard(join(__dirname, '..'), join, { osszes: files.length, bukottak: broken, osszeomlas });
+}
+
+process.exit(failed === 0 && !osszeomlas ? 0 : 1);

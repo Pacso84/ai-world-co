@@ -120,6 +120,46 @@ t('🔒 a valódi memory/embed-guard.json ÉRINTETLEN', () => {
   assert.equal(most, ELES_ELOTTE, '🔴 A TESZT BELEÍRT AZ ÉLES ŐRSZEM-FÁJLBA!');
 });
 
+// ===================================================================
+// 🔑 A „NINCS KULCS" NEM AZONOS A „HALOTT"-TAL (2026-09-06, saját regresszió)
+// ===================================================================
+// Élesben mérve: a `memory/embed-guard.json` NAPONTA OSZCILLÁLT
+//     provider:"mistral", error:null   ←  a Pipeline lépés (VAN kulcsa)
+//     provider:null, error:"mistral: nincs MISTRAL_API_KEY"  ← a Házmester
+// A `jegyezEmbed()`-et a `core/ai-router.js` hívja, tehát MINDEN AI-t érintő
+// CI-lépésből fut — de a Házmester lépésnek EGYÁLTALÁN NINCS env-je (nem is
+// kell neki). Az a lépés így felülírta a Pipeline egészséges bejegyzését, és a
+// napi riport „⚠️ BEÁGYAZÁS HALOTT"-ot írt volna egy MŰKÖDŐ beágyazásra.
+//
+// A KÜLÖNBSÉG, amit a kódnak látnia kell:
+//   „megpróbáltam és ELBUKOTT"      → valódi baj, szólni kell
+//   „ebben a lépésben NINCS kulcs"  → nem bizonyíték a rendszerről
+// Ha aznap egy másik lépés MÁR IGAZOLTA, hogy megy, a konfig-hiány nem
+// írhatja felül. (Fordítva viszont igen: a valódi hiba mindig felülír.)
+t('🔑 a konfig-hiány nem írja felül az aznapi MŰKÖDŐ állapotot', () => {
+  const ma = '2026-09-06T12:00:00.000Z';
+  const mukodott = { provider: 'mistral', error: null, at: '2026-09-06T02:00:00.000Z' };
+  const nincsKulcs = { provider: null, error: 'mistral: nincs MISTRAL_API_KEY', at: ma };
+
+  assert.equal(kellIrni(mukodott, nincsKulcs), false,
+    'a kulcs nélküli lépés HALOTT-ra írta az aznap MŰKÖDŐ beágyazást');
+
+  // …de egy VALÓDI hiba igenis felülír.
+  const valodiHiba = { provider: null, error: 'mistral: HTTP 429 kvóta elfogyott', at: ma };
+  assert.equal(kellIrni(mukodott, valodiHiba), true,
+    'a valódi hibát elnyelte');
+
+  // …és ha MÁSIK napról való a siker, a konfig-hiány is kiírandó (nincs friss
+  // bizonyítékunk, hogy ma működne).
+  const tegnapiSiker = { provider: 'mistral', error: null, at: '2026-09-05T02:00:00.000Z' };
+  assert.equal(kellIrni(tegnapiSiker, nincsKulcs), true,
+    'tegnapi sikerre hivatkozva hallgatott ma');
+
+  // …és ha aznap MÁR hibás volt, a konfig-hiány sem javíthatja zöldre.
+  const maiHiba = { provider: null, error: 'mistral: HTTP 429', at: '2026-09-06T02:00:00.000Z' };
+  assert.equal(kellIrni(maiHiba, nincsKulcs), false, 'fölöslegesen újraírt');
+});
+
 try { rmSync(MUNKA, { recursive: true, force: true }); } catch { /* */ }
 console.log(`\n${bukott === 0 ? '✅' : '❌'} embed-guard.test: ${pass} rendben, ${bukott} bukott`);
 process.exit(bukott === 0 ? 0 : 1);

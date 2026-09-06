@@ -46,12 +46,39 @@ const GUARD_PATH = process.env.EMBED_GUARD_PATH
  * @param {{provider:string|null, error:string|null}|null} elozo
  * @param {{provider:string|null, error:string|null, at:string}} most
  */
+/**
+ * „Ebben a lépésben nincs is beállítva kulcs" — ez NEM a rendszer állapota.
+ *
+ * ⚠️ EXPLICIT MINTA, nem előtag-illesztés (a projekt kemény szabálya): csak a
+ * konkrét „nincs VALAMI_API_KEY" alakra illeszkedik. Egy valódi hibaüzenet
+ * (HTTP 429, kvóta, hálózat) SOHA nem eshet ide.
+ */
+const KONFIG_HIANY_RX = /\bnincs\s+[A-Z][A-Z0-9_]*_API_KEY\b/;
+
 export function kellIrni(elozo, most) {
   if (!elozo) return true;
+
+  // ===================================================================
+  // 🔑 A „NINCS KULCS" NEM AZONOS A „HALOTT"-TAL (2026-09-06, saját regresszió)
+  // ===================================================================
+  // A `jegyezEmbed()`-et a `core/ai-router.js` hívja, tehát MINDEN AI-t
+  // érintő CI-lépésből lefut. A Házmester lépésnek viszont EGYÁLTALÁN NINCS
+  // env-je (nem is kell neki), ezért ott a beágyazás „nincs kulcs"-csal bukik.
+  // Élesben ettől NAPONTA OSZCILLÁLT a fájl:
+  //     provider:"mistral", error:null                    ← Pipeline (van kulcs)
+  //     provider:null, error:"mistral: nincs MISTRAL_API_KEY"  ← Házmester
+  // és a napi riport „⚠️ BEÁGYAZÁS HALOTT"-ot írt volna egy MŰKÖDŐ rendszerre.
+  //
+  // Ha AZNAP egy másik lépés MÁR IGAZOLTA, hogy megy, a konfig-hiány nem
+  // írhatja felül. Egy VALÓDI hiba viszont mindig felülír — a bizonyíték
+  // iránya számít, nem a sorrend.
+  const ugyanazNap = String(elozo.at || '').slice(0, 10) === String(most.at || '').slice(0, 10);
+  if (ugyanazNap && KONFIG_HIANY_RX.test(String(most.error || ''))) return false;
+
   if ((elozo.provider ?? null) !== (most.provider ?? null)) return true;
   // A hiba SZÖVEGE változhat (más kvóta-üzenet) — a LÉNYEG, hogy van-e hiba.
   if (!!elozo.error !== !!most.error) return true;
-  return String(elozo.at || '').slice(0, 10) !== String(most.at || '').slice(0, 10);
+  return !ugyanazNap;
 }
 
 /** Az állapot lemezre mentése — SOHA nem dob, és sosem akaszt meg egy hívást. */

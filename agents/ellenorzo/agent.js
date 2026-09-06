@@ -918,8 +918,22 @@ Original title: ${writerData.original_title}
         // Lecke a KÖZÖSBE (mindenki lássa) + a SZERZŐ saját rekeszébe STABIL
         // szöveggel (2026-07-16, user: "külön memóriája... ne essenek bele
         // mindig ugyanabba a hibába") — ismétlődéskor erősödik, nem duplikálódik.
+        // A közös lecke szövegébe VÁLTOZÓ adat (az adott cikk állítása) kerül,
+        // ezért ott a `kulcs` adja a dedupot — lásd a hívás fölötti leletet.
         try {
-          remember('shared', `Hitelesség-kapu blokk: ${(gate.blockers[0] || '').slice(0, 150)} — kitalált felületet/linket/számot SOHA ne írj le tényként`);
+          // 🔑 STABIL KULCS (2026-09-06, mérés). A fenti komment azt állította,
+          // hogy „ismétlődéskor erősödik, nem duplikálódik" — a SZERZŐI hívásra
+          // (állandó szöveg) igaz volt, EBBE a sorba viszont a cikk konkrét
+          // állítása van beleírva, tehát MINDEN blokk ÚJ emléket gyártott.
+          // Élesben mérve: a 130 `shared` emlékből 89 (68%) innen származó,
+          // egyszeri eset-napló. Mivel a `lessonsBlock()` csak a legfelső
+          // NÉGY `shared` emléket fűzi minden agent minden promptjába, és a
+          // rangsor gyakorlatilag frissesség, ezek a naplók a decay 08-30-i
+          // újraélesztése óta a négy hely 56%-át vitték (az utolsó négy napon
+          // 3-at a 4-ből) — kiszorítva a tartós leckéket.
+          // A kulccsal a lecke EGY helyet foglal, a példa pedig mindig friss.
+          remember('shared', `Hitelesség-kapu blokk: ${(gate.blockers[0] || '').slice(0, 150)} — kitalált felületet/linket/számot SOHA ne írj le tényként`,
+            { kulcs: 'hitelesseg-kapu' });
           const authorScope = writerData._meta?.type === 'guide' ? 'guide' : 'iro';
           const isLink = (gate.blockers[0] || '').startsWith('Halott');
           remember(authorScope, isLink

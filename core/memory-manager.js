@@ -228,6 +228,20 @@ export async function recallSemantic(query, opts = {}) {
  * minden futásában megy, vagyis naponta háromszor — a kapu nélkül
  * háromszoros ütemben halványítanánk. Ez helyességi feltétel, nem kényelem.
  *
+ * 📏 MÉRVE (2026-09-06) — A LEVONÁS NAPONTA ÖSSZEADÓDIK, NEM ÁLLANDÓ.
+ * Mivel a levonás alapja `daysSince(lastAccessed)`, és ez a függvény a
+ * `lastAccessed`-et nem frissíti, N nap alatt a teljes veszteség nem
+ * `0,04·N`, hanem `0,02·N·(N+1)`. Vagyis a 0,05-ös padlót NEM 24 nap alatt
+ * éri el egy emlék, hanem 7 alatt. Élesben: 617 emlékből 534 (86,5%)
+ * pontosan 0,05-ön áll, és mind 6,8 napnál régebbi.
+ *
+ * 🔑 EZ NEM RONTJA EL A LECKE-VÁLASZTÁST, és ezért maradt így: a salience
+ * mindkét ütemben SZIGORÚAN CSÖKKENŐ a kor függvényében, tehát a `list()`
+ * sorrendje ugyanaz (mérve: 616 szomszédos párból 2 inverzió). A gyakorlati
+ * jelentése viszont fontos: a salience nem „hasznosság", hanem ~7 napos
+ * FRISSESSÉG-ÓRA — a rangsor ennél régebbi emlékek között nem különböztet.
+ * Ha valaha tartós fontosságot kell rangsorolni, azt a `repeats` adja, nem ez.
+ *
  * @returns {{total:number, moved:number, skipped?:boolean}}
  */
 export function decay() {

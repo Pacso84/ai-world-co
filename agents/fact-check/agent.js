@@ -48,6 +48,7 @@ import { dirname, join } from 'path';
 import { ask } from '../../core/ai-router.js';
 import { remember } from '../../core/memory-manager.js';
 import { message } from '../../core/ops.js';
+import { nameLockObjection, jegyezNevZar } from '../../core/name-guard.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..', '..');
@@ -166,6 +167,8 @@ function parseJson(text) {
 const SYSTEM_PROMPT = `You are the Fact-Check / Freshness agent for AI World Co. Your ONLY job is truthfulness: make sure a published step-by-step guide does not state anything that is no longer true.
 
 A company may have REMOVED or CHANGED a feature after we published a guide about it. Find any claim that is now FALSE, removed, or that you cannot stand behind, and either REMOVE it or SOFTEN it into a conditional ("if it's available, look for…"). Keep everything that is still accurate. NEVER invent new facts. When unsure, SOFTEN rather than assert.
+
+HARD RULE — DO NOT RENAME THE PRODUCT. Keep the product and company names EXACTLY as the guide has them, in the frontmatter (company:, tool:), in the title and in the body. You are NOT asked to check whether a product was renamed or rebranded, and you have no source that could prove it: a rebrand claim from memory is a guess, and a guess here sends our readers searching for a name that does not exist. This is not hypothetical — on 2026-08-31 this agent rewrote the real product name "ChatRTX" to "NVIDIA Chat" on the claim that it "has been rebranded", which was false; the invented name was live in 10 places. If you genuinely believe a name is outdated, DO NOT change it: leave every name untouched and say so in "reason" instead. A name change in fixed_markdown is rejected automatically and the whole fix is thrown away — including the good parts.
 
 If only parts are affected: return the FULL corrected guide (same step-by-step format: YAML frontmatter with category: "guide", "## Before you start", 2-6 "## Step N — …", "## Common mistakes", "## What this means for you", "## Try it now").
 If the WHOLE guide teaches a feature that no longer exists at all: verdict "unpublish".
@@ -296,7 +299,28 @@ async function main() {
     }
 
     // verdict === 'fix' — HELYBEN javítunk, az URL nem mozdul, az oldal végig él
-    const why = decision.fixed_markdown ? isSafeReplacement(decision.fixed_markdown, guide.data.article_markdown) : 'nincs javított szöveg';
+    let why = decision.fixed_markdown ? isSafeReplacement(decision.fixed_markdown, guide.data.article_markdown) : 'nincs javított szöveg';
+
+    // ── NÉV-ZÁR (2026-09-06) ─────────────────────────────────────────
+    // A 08-31-i eset: a tényellenőr a valódi „ChatRTX" nevet átírta a nem
+    // létező „NVIDIA Chat"-re, és a hamis név 10 helyen kiment. A név nem
+    // ezen agent hatásköre — a döntés a `core/name-guard.js`-ben van
+    // (tesztelhető), mert az `agents/` alól semmit nem lehet importálni.
+    // A visszautasítás ugyanabba az ágba fut, mint a nem elég ép javítás:
+    // A RÉGI CIKK MARAD, az oldalon nincs lyuk.
+    if (!why && decision.fixed_markdown) {
+      const nevKifogas = nameLockObjection(guide.data.article_markdown, decision.fixed_markdown, guide.data._meta);
+      if (nevKifogas) {
+        why = nevKifogas.indok;
+        console.log(`🔒 NÉV-ZÁR: ${title}… — ${nevKifogas.indok}`);
+        if (!args.dry) {
+          // A kifogás naplóba → onnan a minőség-őrön át a napi jelentésbe.
+          jegyezNevZar({ ...nevKifogas, file: guide.file, reason: String(decision.reason || '').slice(0, 160) });
+          remember('shared', `A tény-ellenőrző NEM nevezhet át terméket: a "${nevKifogas.regi}" nevet akarta "${nevKifogas.uj}"-ra írni, forrás nélkül — visszautasítva.`.slice(0, 200), { tags: ['fact-check', 'name-lock'] });
+        }
+      }
+    }
+
     if (!why) {
       console.log(`🔧 JAVÍTÁS: ${title}… — eltávolítva/lágyítva: ${claims || decision.reason}`);
       if (!args.dry) {

@@ -33,6 +33,7 @@ import { szurZajt, csendesSor } from './report-noise.js';
 import { elavultOrszemek, frissessegSor } from './guard-freshness.js';
 import { embedSor } from './embed-guard.js';
 import { bufferSor } from './buffer-guard.js';
+import { tesztSor } from './test-guard.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
@@ -664,6 +665,26 @@ async function main() {
     if (sor) lines.push(sor);
   } catch { /* még nem futott — nem baj */ }
 
+  // 🧪 TESZT-ŐRSZEM (2026-09-06). 2026-08-31-én a tény-ellenőrző agent egy ÉLŐ
+  // cikkben átírta a valódi „ChatRTX" nevet a nem létező „NVIDIA Chat"-re. A
+  // `core/tool-kinds.test.js` EZT PONTOSAN ELKAPTA — csakhogy a munkafolyamat
+  // NEM FUTTATOTT TESZTEKET, így a teszt ÖT NAPIG pirosan állt, és a kitalált
+  // név öt napig kint volt, három nyelven. (A `budget.test.js` ugyanígy piros
+  // volt szeptember 1-je óta.) A CI mostantól futtatja őket — de a bukás a
+  // `|| true` miatt a CI-naplóban maradna, ahová senki nem néz.
+  //
+  // ⚠️ A HIÁNYZÓ FÁJL ITT NEM CSEND. Minden más őrszemnél a `catch` némán
+  // átsiklik („még nem futott — nem baj"), mert azoknak van dolguk-nélküli
+  // napjuk. A teszteknek NINCS: minden futásban le kell futniuk. A `tesztSor()`
+  // ezért hiányzó/sérült állapotra „NEM TUDOM"-ot ad — a hallgatást
+  // jóváhagyásnak venni pont az a hiba, amit ez a sor javít.
+  try {
+    let tg = null;
+    try { tg = JSON.parse(readFileSync(join(ROOT, 'memory', 'test-guard.json'), 'utf-8')); } catch { tg = null; }
+    const sor = tesztSor(tg);
+    if (sor) lines.push(sor);
+  } catch { /* a riport ettől még kimegy */ }
+
   // 💰 KÖLTÉS-NYILVÁNTARTÁS ŐRE (2026-08-29, hibavadászat).
   // A `core/budget.js` `load()`-ja BÁRMILYEN JSON-hibára némán `{days:{}}`-t
   // adott, a következő `recordSpend` pedig ezt írta vissza — vagyis a napi $1
@@ -723,7 +744,13 @@ async function main() {
       // a poszter SIKERES futásnál is ír (üres problems), tehát ha az `at`
       // megáll, az azt jelenti, hogy a lépés maga maradt ki — enélkül a
       // „nem volt mit posztolni" és a „nem futott le" egyformán nézne ki.
-      'buffer-guard.json': 'Buffer'
+      'buffer-guard.json': 'Buffer',
+      // A teszt-futtató őre (2026-09-06). A `tesztSor()` a TARTALMAT nézi
+      // (piros-e), ez az `at` BÉLYEGET: ha a CI tesztlépése kimarad (pl. egy
+      // korábbi lépés elhasal, és a step nem `always()`), a lemezen az ELŐZŐ
+      // futás zöld állapota marad — és az a riportban azonos a „minden
+      // rendben"-nel. Ezt a rést csak a frissesség-őr zárja be.
+      'test-guard.json': 'teszt'
     };
     const beolvasott = {};
     for (const [f, nev] of Object.entries(nevek)) {

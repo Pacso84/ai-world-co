@@ -23,11 +23,17 @@ t('A VALÓDI ESET: a 2026-08-27-i négy futás közül a 16:07-es MEHETETT VOLNA
   // és aznap nem ment ki jelentés — pedig 9 hír + 5 útmutató megjelent.
   const orak = [4, 5, 16, 18];          // 04:20, 05:37, 16:07, 18:29 UTC
   const mehet = orak.filter(h => shouldSendReport({ hour: h, lastSent: TEGNAP, today: MA }).send);
-  assert.deepEqual(mehet, [16, 18], 'a délutáni futásoknak át kell menniük');
+  // 2026-09-06: az ablak 07 → 05 UTC-re tágult, ezért az 05:37-es futás IS átmegy.
+  // Ez épp a lényeg: aznap az 05:37-es volt az első futás, ami vihette volna a
+  // jelentést (utólag kiderült, hogy az nem kimaradt slot volt, hanem 5,6 órát
+  // késett). A 04:20-as marad kizárva — hajnalban tényleg ne ébresszen.
+  assert.deepEqual(mehet, [5, 16, 18], 'a hajnal utáni futásoknak át kell menniük');
 });
 
 t('a hajnali futás NEM ébreszt', () => {
-  for (const h of [0, 1, 3, 4, 5, 6]) {
+  // 2026-09-06: a határ 07 → 05 UTC. Hajnal = 00-04 UTC (02:00-06:59 magyar
+  // nyári idő). Az 5 és a 6 MOST MÁR átmegy — ez a user döntése („7:00-tól").
+  for (const h of [0, 1, 2, 3, 4]) {
     const r = shouldSendReport({ hour: h, lastSent: TEGNAP, today: MA });
     assert.equal(r.send, false, h + 'h átment');
     assert.ok(r.reason.includes('hajnal'), r.reason);
@@ -58,8 +64,15 @@ t('🔢 a határok ÉRTÉKE is rögzítve — nem csak a reláció', () => {
   // csak rossz relációs jelet fog meg, rossz ÉRTÉKET soha. Kimérve: a
   // VEGE_ORA 21→19-re, a KEZDES_ORA 7→9-re volt állítható úgy, hogy minden
   // teszt zöld maradjon. Ezért kell literál.
-  assert.equal(KEZDES_ORA, 7, '07 UTC = 09:00 magyar idő — ne ébresszen');
-  assert.equal(VEGE_ORA, 20, '20 UTC = 22:59-ig magyar idő (a 20-as óra MÉG átmegy)');
+  // 2026-09-06, USER-DÖNTÉS: 07–20 → 05–21 UTC (magyar nyári idő 7:00–23:00).
+  // MIÉRT TÁGÍTOTTUK: az őrkutya türelme 9,5 → 14 óra lett (a GitHub ütemezője
+  // sokkal pontatlanabb, mint 08-27-én: a mért leghosszabb NORMÁL szünet 13,4 óra,
+  // ezért havi 9 FÖLÖSLEGES pótfutás indult). A lenti „🔒 az ablak TÁGABB" teszt
+  // viszont megköveteli, hogy az ablak nagyobb legyen az őrkutya legnagyobb
+  // résénél — 14 órás türelemhez ez 17 órás ablakot kíván.
+  // A kettő EGYÜTT mozog: az egyiket a másik nélkül átállítani hibát okoz.
+  assert.equal(KEZDES_ORA, 5, '05 UTC = 07:00 magyar nyári idő — ne ébresszen korábban');
+  assert.equal(VEGE_ORA, 21, '21 UTC = 23:59-ig magyar nyári idő (a 21-es óra MÉG átmegy)');
 
   // A cron három slotja: 00, 08, 16 UTC. A jelentés a 08-as és a 16-os
   // slotból is mehessen, mert bármelyik kimaradhat.
