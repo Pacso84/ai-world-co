@@ -55,6 +55,27 @@ const GUARD_PATH = process.env.EMBED_GUARD_PATH
  */
 const KONFIG_HIANY_RX = /\bnincs\s+[A-Z][A-Z0-9_]*_API_KEY\b/;
 
+// A szolgáltatók okait az `embedText()` ezzel fűzi össze („google: … · mistral: …").
+export const OK_ELVALASZTO = ' · ';
+
+const reszek = (error) => String(error || '').split(OK_ELVALASZTO).map(r => r.trim()).filter(Boolean);
+
+/**
+ * „Ebben a lépésben EGYÁLTALÁN nincs kulcs beállítva."
+ *
+ * ⚠️ MINDEN RÉSZNEK teljesülnie kell (2026-09-06). A hibaüzenet 2026-09-06 óta
+ * TÖBB szolgáltató okát hordozza egyszerre, és a puszta „illeszkedik valahol"
+ * vizsgálat itt VESZÉLYES: a
+ *     „google: 429 credits depleted · mistral: nincs MISTRAL_API_KEY"
+ * üzenet konfig-hiánynak látszana, holott a Google TÉNYLEG megpróbálta és
+ * elbukott. Egy valódi baj így némán eltűnne — pontosan az a hibaosztály,
+ * ami ellen ez a fájl készült.
+ */
+function csakKonfigHiany(error) {
+  const r = reszek(error);
+  return r.length > 0 && r.every(x => KONFIG_HIANY_RX.test(x));
+}
+
 export function kellIrni(elozo, most) {
   if (!elozo) return true;
 
@@ -73,7 +94,7 @@ export function kellIrni(elozo, most) {
   // írhatja felül. Egy VALÓDI hiba viszont mindig felülír — a bizonyíték
   // iránya számít, nem a sorrend.
   const ugyanazNap = String(elozo.at || '').slice(0, 10) === String(most.at || '').slice(0, 10);
-  if (ugyanazNap && KONFIG_HIANY_RX.test(String(most.error || ''))) return false;
+  if (ugyanazNap && csakKonfigHiany(most.error)) return false;
 
   if ((elozo.provider ?? null) !== (most.provider ?? null)) return true;
   // A hiba SZÖVEGE változhat (más kvóta-üzenet) — a LÉNYEG, hogy van-e hiba.
@@ -103,7 +124,25 @@ export function jegyezEmbed(allapot, ut = GUARD_PATH) {
 export function embedSor(guard) {
   if (!guard || typeof guard !== 'object') return '';
   if (!guard.error) return '';
-  return '⚠️ BEÁGYAZÁS HALOTT: ' + String(guard.error).slice(0, 90)
+  return '⚠️ BEÁGYAZÁS HALOTT: ' + rovidHiba(guard.error)
     + ' — a témaismétlés-őr a gyengébb Jaccard-tartalékra esett vissza '
     + '(mérve: 15 ismétlésből 1-et fog meg). A „nem volt ismétlés" MOST NEM BIZONYÍTÉK.';
+}
+
+/**
+ * Csonkolás SZOLGÁLTATÓNKÉNT, nem vakon a végéről (2026-09-06).
+ *
+ * ⚠️ MIÉRT NEM ELÉG A `.slice(0, 90)`: az `error` 2026-09-06 óta MINDEN
+ * szolgáltató okát hordozza („google: … · mistral: …"). A vak csonkolás a
+ * VÉGÉT vágja le — vagyis pont a második szolgáltató okát, amiért az egész
+ * bővítés készült. Mérve: egy valósághű Google-kvótaüzenet (140 kar) mellől
+ * a Mistral neve teljesen eltűnt a riportsorból.
+ *
+ * Így minden résznek SAJÁT kerete van; egyrészes hibánál a viselkedés a
+ * korábbival azonos (90 karakter), tehát a riport nem hízik ok nélkül.
+ */
+export function rovidHiba(error, reszKeret = 90) {
+  const r = reszek(error);
+  if (!r.length) return '';
+  return r.map(x => (x.length > reszKeret ? x.slice(0, reszKeret - 1) + '…' : x)).join(OK_ELVALASZTO);
 }

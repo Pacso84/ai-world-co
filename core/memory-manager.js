@@ -13,12 +13,18 @@
 //   remember('iro', 'Article rejected: missing section', { tags:['rejection'] });
 //   const hits = recall('rejection mistakes', { scope:'iro', limit:8 });
 //
-// Tárolás: memory/store.json (egy fájl, minden emlék)
+// Tárolás: memory/store.json — TISZTA SZÖVEGTÁR (~0,3 MB), git-követett.
+//   ⚠️ A beágyazás-vektorok 2026-09-06 óta NEM ide kerülnek, hanem a
+//   gitignore-olt `memory/memory-embeddings.json`-ba (lásd
+//   `core/memory-embeddings.js` fejléce: a vektorok minden CI-futásban
+//   megszülettek és minden futásban törlődtek, ~335 MB/év a NYILVÁNOS
+//   repó történetében).
 // ===================================================================
 
-import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs';
+import { readFileSync, writeFileSync, existsSync, mkdirSync, statSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
+import { cacheBetolt, cacheOlvas, cacheIr, cacheMent } from './memory-embeddings.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const MEMORY_DIR = join(__dirname, '..', 'memory');
@@ -41,8 +47,47 @@ function load() {
 }
 function save(store) {
   if (!existsSync(MEMORY_DIR)) mkdirSync(MEMORY_DIR, { recursive: true });
+  // 🧹 A VEKTOR NEM VALÓ IDE (2026-09-06). A szemantikus keresés 2026-08-25 óta
+  // az `it.embedding` mezőbe cache-elt, a Házmester meg minden futásban
+  // letörölte — a store.json így 13,9 MB ↔ 0,3 MB között hullámzott, és minden
+  // hullám EGY ÚJ TELJES PÉLDÁNY a NYILVÁNOS git-történetben (mérve:
+  // 165,9 KB/commit a stabil 14,3 KB helyett). A vektorok azóta a
+  // `memory/memory-embeddings.json` gitignore-olt gyorsítótárban laknak.
+  //
+  // EZ ITT A VÉGSŐ ZÁR, nem udvariasság: bárhonnan is kerülne vissza egy
+  // `embedding` mező (régi adat a lemezről, más ág kódja), a szövegtár írásakor
+  // lemarad. A régi vektorok kitakarítása ezért MAGÁTÓL megtörténik az első
+  // mentésnél — lásd még `purgeStoreEmbeddings()`.
+  for (const it of store.items || []) if ('embedding' in it) delete it.embedding;
+  store._meta = store._meta || {};
   store._meta.updated = new Date().toISOString();
   writeFileSync(STORE_PATH, JSON.stringify(store, null, 2), 'utf-8');
+}
+
+/**
+ * A store.json-ban RAGADT régi vektorok egyszeri kitakarítása.
+ *
+ * 🔑 NINCS BENNE „ÉL-E A SZOLGÁLTATÁS" KÉRDÉS — és épp ez a lényeg. A régi
+ * `core/housekeeping.js stripEmbeddings()` az `embedText('ping')`-gel kérdezte
+ * meg, halott-e a beágyazás, és kulcs nélkül törölt. A Házmester CI-lépésének
+ * viszont NINCS `env:` blokkja, tehát ott a válasz MINDIG „halott" volt: a
+ * próba nem azt mérte, hogy halott-e a szolgáltatás, hanem hogy „én, itt, most,
+ * tudok-e beágyazni". (Ugyanez az alak volt az `embed-guard.js`-ben is.)
+ *
+ * Most a kérdés fel sem merül: a szövegtárban a vektornak SEMMILYEN
+ * körülmények között nincs helye, mert a helye máshol van. Determinisztikus,
+ * hálózat nélküli, $0.
+ *
+ * @returns {{n:number, elotte:number, utana:number}} hány elemről, mekkora fájlból mekkorára
+ */
+export function purgeStoreEmbeddings() {
+  const store = load();
+  const n = (store.items || []).filter(it => it.embedding !== undefined && it.embedding !== null).length;
+  const meret = () => { try { return statSync(STORE_PATH).size; } catch { return 0; } };
+  if (!n) return { n: 0, elotte: meret(), utana: meret() };
+  const elotte = meret();
+  save(store);                       // a `save()` maga szedi le a mezőket
+  return { n, elotte, utana: meret() };
 }
 
 function tierOf(salience) {
@@ -165,39 +210,116 @@ function cosineSim(a, b) {
   return (na && nb) ? dot / (Math.sqrt(na) * Math.sqrt(nb)) : 0;
 }
 
+// A LEGUTÓBBI SZEMANTIKUS FUTÁS MÉRLEGE — lásd a `kihagyott` mezőt lejjebb.
+let _szemantikus = { at: null, provider: null, dim: 0, osszes: 0, cache: 0, beagyazva: 0, kihagyott: 0, tartalek: null };
+
+/**
+ * Mi történt a LEGUTÓBBI `recallSemantic()`-ban? (diagnózishoz)
+ *
+ * ⚠️ FOLYAMAT-LOKÁLIS, tehát ezt CSAK ugyanabban a processzben lehet
+ * kiolvasni, ahol a keresés futott. Ez ma az `agents/iro` és `agents/guide`,
+ * NEM a külön processzben futó `core/daily-report.js` — vagyis a napi
+ * Telegram-riportba ez az adat NEM jut el. Pontosan ez az alak buktatta meg az
+ * `embedStatus()`-t 2026-08-30-ig („a komment szerint a riport kiírja, csak
+ * épp nulla hívója volt"), ezért mondjuk ki: EGYELŐRE A CI-NAPLÓIG JUT EL, a
+ * hangos `console.warn`-nal együtt. Ha ez valaha a userhez is kell, lemezre
+ * kell tenni (a `core/embed-guard.js` mintája), nem ide.
+ */
+export function szemantikusAllapot() { return { ..._szemantikus }; }
+
+/**
+ * @param {string} query
+ * @param {{scope?:string|null, limit?:number, embedFn?:Function|null, provider?:string}} opts
+ *   `embedFn`: a HÍVÓ SZÁNDÉKA számít (a `topic-dedup.js` mintája) —
+ *   `undefined` = töltsd be az éles routert; `null` = NINCS beágyazás
+ *   (kulcsszavas tartalék), így a teszt tisztán offline maradhat.
+ */
 export async function recallSemantic(query, opts = {}) {
   const { scope = null, limit = 8 } = opts;
 
+  // ⚠️ A MÉRLEG MINDIG A MOSTANI HÍVÁSRÓL SZÓLJON. Ha csak a sikeres ágon
+  // írnánk, egy tartalékra futó hívás után az ELŐZŐ futás számai maradnának
+  // bent, és úgy néznének ki, mintha ezt a hívást írnák le — pontosan az a
+  // fajta csendes hazugság, ami ellen ez az egész javítás készült.
+  _szemantikus = {
+    at: new Date().toISOString(), provider: null, dim: 0,
+    osszes: 0, cache: 0, beagyazva: 0, kihagyott: 0, tartalek: null
+  };
+
   // Embedding-függvény lazy betöltése (ne terhelje a dashboardot, ami csak stats-ot hív)
-  let embedText = null;
-  try { ({ embedText } = await import('./ai-router.js')); } catch { /* nincs router */ }
+  let embedText = opts.embedFn;
+  let statusFn = null;
+  if (embedText === undefined) {
+    try {
+      const router = await import('./ai-router.js');
+      embedText = router.embedText;
+      if (typeof router.embedStatus === 'function') statusFn = router.embedStatus;
+    } catch { embedText = null; /* nincs router */ }
+  }
 
   const qVec = embedText ? await embedText(query) : null;
-  if (!qVec) return recall(query, opts); // nincs embedding → kulcsszó-fallback
+  // ⚠️ A KÉRDÉS VEKTORÁT MINDIG FRISSEN KÉRJÜK, gyorsítótár nélkül: az ő
+  // hossza mondja meg, MI A MOSTANI szolgáltató tere — és csak ehhez szabad
+  // mérni a többit. (A `topic-dedup.js` első javítása pont ezt hagyta ki, és
+  // két majdnem azonos cím kapott 0.000 hasonlóságot.)
+  if (!Array.isArray(qVec) || !qVec.length) {
+    _szemantikus.tartalek = 'nincs kérdés-vektor';
+    return recall(query, opts);                    // nincs embedding → kulcsszó-fallback
+  }
 
   const store = load();
   const candidates = store.items.filter(it => !scope || it.scope === scope);
-  if (!candidates.length) return [];
+  if (!candidates.length) { _szemantikus.tartalek = 'nincs jelölt emlék'; return []; }
 
-  // Hiányzó emlék-embeddingek pótlása (egyszer, cache-elve a store-ba)
-  let dirty = false;
+  const dim = qVec.length;
+  const provider = opts.provider
+    || (statusFn ? (statusFn().provider || 'ismeretlen') : 'ismeretlen');
+
+  // ── A VEKTOROK A KÜLÖN GYORSÍTÓTÁRBÓL JÖNNEK (2026-09-06) ──────────
+  // Régen `it.embedding`-be írtuk, vagyis a szövegtárba — és a Házmester
+  // minden futásban letörölte. Lásd `core/memory-embeddings.js` fejléce.
+  const cache = cacheBetolt(provider, dim);
+  const vektorok = new Map();
+  let talalat = 0, ujra = 0, kihagyott = 0;
   for (const it of candidates) {
-    if (!Array.isArray(it.embedding)) {
-      const v = await embedText(it.text);
-      if (v) { it.embedding = v; dirty = true; }
+    const c = cacheOlvas(cache, it.id, it.text, provider, dim);
+    if (c) { vektorok.set(it.id, c); talalat++; continue; }
+    const v = await embedText(it.text);
+    // A MÉRETET IS ELLENŐRIZZÜK: ha a szolgáltató menet közben váltott, a
+    // rövidebb/hosszabb vektor nem összemérhető a kérdésével — ez „nem tudom".
+    if (Array.isArray(v) && v.length === dim) {
+      cacheIr(cache, it.id, it.text, v, provider);
+      vektorok.set(it.id, v);
+      ujra++;
+    } else {
+      kihagyott++;
     }
+  }
+  if (ujra) cacheMent(cache, provider, dim);
+
+  _szemantikus = {
+    at: new Date().toISOString(), provider, dim,
+    osszes: candidates.length, cache: talalat, beagyazva: ujra, kihagyott, tartalek: null
+  };
+  // 🔊 „A NEM TUDOM NEM RENDBEN VAN." A régi kód `if (v)`-vel elnyelte az egyes
+  // elemek beágyazási hibáját, a `filter(Array.isArray)` pedig kiszűrte őket —
+  // így egy emlék KIMARADHATOTT a keresésből anélkül, hogy bárhol nyoma lett
+  // volna. Egy sebességkorlátos (429) körben ez a memória felét is jelentheti.
+  if (kihagyott) {
+    console.warn(`   ⚠️ szemantikus memória: ${kihagyott}/${candidates.length} emlék beágyazása NEM sikerült `
+      + `— ezek KIMARADTAK a keresésből (a „nem tudom" nem „nem hasonló"). Szolgáltató: ${provider}.`);
   }
 
   const scored = candidates
-    .filter(it => Array.isArray(it.embedding))
+    .filter(it => vektorok.has(it.id))
     .map(it => {
       const recency = 1 / (1 + daysSince(it.lastAccessed));
-      return { it, score: cosineSim(qVec, it.embedding) * (0.5 + 0.5 * it.salience) + recency * 0.1 };
+      return { it, score: cosineSim(qVec, vektorok.get(it.id)) * (0.5 + 0.5 * it.salience) + recency * 0.1 };
     })
     .sort((a, b) => b.score - a.score)
     .slice(0, limit);
 
-  if (!scored.length) { if (dirty) save(store); return recall(query, opts); }
+  if (!scored.length) { _szemantikus.tartalek = 'nincs pontozott találat'; return recall(query, opts); }
 
   // Visszahívott emlékek erősödnek (mint a kulcsszavas recall-nál)
   const now = new Date().toISOString();
@@ -308,4 +430,4 @@ export function lessonsBlock(agentName) {
   } catch { return ''; }
 }
 
-export default { remember, recall, recallSemantic, decay, stats, lessonsBlock };
+export default { remember, recall, recallSemantic, szemantikusAllapot, purgeStoreEmbeddings, decay, stats, lessonsBlock };

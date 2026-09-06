@@ -230,7 +230,7 @@ async function proposeCompanyTopics(needs, store, brandContext) {
   for (const t of store.topics) if (t.company) (existingByCompany[normCompany(t.company)] ||= []).push(t.title);
   const usedIds = new Set(store.topics.map(t => t.id).filter(Boolean));
   // KÖZELI-TÉMA-ŐR (2026-07-18) — a cég-lefedettség témái se ismétlődjenek
-  const { isNearDuplicateTitle, allExistingGuideTitles, logDedup } = await import('../../core/topic-dedup.js');
+  const { isNearDuplicateTitle, allExistingGuideTitles, logDedup, dedupBejegyzes } = await import('../../core/topic-dedup.js');
   const dedupRef = allExistingGuideTitles();
   let nearDupSkipped = 0;
 
@@ -265,7 +265,10 @@ Return ONLY the JSON array (${total} items), each with the correct "company" and
     const near = await isNearDuplicateTitle(title, dedupRef);
     if (near.duplicate) {
       nearDupSkipped++;
-      logDedup({ source: 'guide-balance', rejected: title.slice(0, 80), closest: near.closest?.title?.slice(0, 80), score: +(near.closest?.score || 0).toFixed(3) });
+      // A bejegyzés alakja a `core/topic-dedup.js`-ben él (ott tesztelhető):
+      // a `by` mező mondja meg, BEÁGYAZÁSSAL vagy a gyengébb Jaccard-tartalékkal
+      // született-e a döntés — enélkül egy lebutult őr zöldnek látszik.
+      logDedup(dedupBejegyzes('guide-balance', title, near));
       continue;
     }
     // (2026-08-03) Itt korábban egy `generalOnly` hivatkozás állt, átmásolva a
@@ -402,7 +405,7 @@ async function proposeNewTopics(count, store, brandContext, { generalOnly = fals
   const usedIds = new Set(store.topics.map(t => t.id).filter(Boolean));
   // KÖZELI-TÉMA-ŐR (2026-07-18): a JELENTÉSBEN közeli ötleteket is kiszűrjük,
   // nem csak a szó szerint azonosakat — a kész guide-ok címeivel is összevetve.
-  const { isNearDuplicateTitle, allExistingGuideTitles, logDedup } = await import('../../core/topic-dedup.js');
+  const { isNearDuplicateTitle, allExistingGuideTitles, logDedup, dedupBejegyzes } = await import('../../core/topic-dedup.js');
   const dedupRef = allExistingGuideTitles();
   let nearDupSkipped = 0;
   // A meglévő címek egy részét megmutatjuk, hogy NE ismételje őket
@@ -450,7 +453,9 @@ Return ONLY the JSON array (${count + 4} items).`;
     const near = await isNearDuplicateTitle(title, dedupRef);
     if (near.duplicate) {
       nearDupSkipped++;
-      logDedup({ source: 'guide-ideas', rejected: title.slice(0, 80), closest: near.closest?.title?.slice(0, 80), score: +(near.closest?.score || 0).toFixed(3) });
+      // `by` + `unresolved` is a naplóba (2026-09-06): ebből derül ki, hogy a
+      // döntés beágyazással vagy a gyengébb Jaccard-tartalékkal született.
+      logDedup(dedupBejegyzes('guide-ideas', title, near));
       continue;
     }
     existingTitles.add(normTitle(title));                    // a mostani batch-en belül se duplázzon

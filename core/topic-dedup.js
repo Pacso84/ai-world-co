@@ -28,7 +28,10 @@ const ROOT = join(__dirname, '..');
 // `EMBED_GUARD_PATH`-nál: élesben nincs beállítva.
 const CACHE_PATH = process.env.TOPIC_EMBED_CACHE_PATH
   || join(ROOT, 'guides', 'topic-embeddings.json');
-const LOG_PATH = join(ROOT, 'memory', 'topic-dedup-log.json');
+// Ugyanaz a teszt-felülírás mint fent: a napló ÉLŐ ÁLLAPOT, a `core/traffic-log.js`
+// szabálya vonatkozik rá — helyi/teszt futás nem készíthet elő git-ütközést.
+const LOG_PATH = process.env.TOPIC_DEDUP_LOG_PATH
+  || join(ROOT, 'memory', 'topic-dedup-log.json');
 
 export const COSINE_THRESHOLD = 0.88;   // efölött = jelentésben közeli
 export const JACCARD_THRESHOLD = 0.7;   // embedding-tartalék küszöb
@@ -177,6 +180,40 @@ export function isRemovedTopic(meta = {}, title = '') {
     const nt = normTitle(title || meta.title || '');
     return removed.some(x => (id && x.id === id) || (nt && normTitle(x.title) === nt));
   } catch { return false; }
+}
+
+// ===================================================================
+// 🔎 A NAPLÓ MONDJA MEG, MIVEL DÖNTÖTT (2026-09-06)
+// ===================================================================
+// A projekt egyik legdrágább leckéje: „a beágyazás HÓNAPOKIG halott volt, az őr
+// némán Jaccardra váltott — 15 ismétlésből 1-et fogott, és ZÖLDNEK látszott."
+//
+// Az `isNearDuplicateTitle` PONTOSAN TUDJA, melyik módszer döntött
+// (`closest.by`) és hány gyanús maradt beágyazatlan (`unresolved`) — a három
+// hívóhely mégis eldobta mindkettőt: csak `source/rejected/closest/score` ment
+// a naplóba. Egy vizsgálatnak ezért 37 döntést kellett VISSZASZÁMOLNIA, hogy
+// kiderüljön, működött-e egyáltalán a beágyazás. Ez a mező ingyen van, és
+// KÖZVETLEN bizonyíték.
+//
+// A `by` MINDIG kimegy — ismeretlen esetben `null`-ként. A hiányzó kulcs
+// ugyanúgy néz ki, mint az egészség; egy kiírt `null` nem.
+// Az `unresolved` viszont CSAK a beágyazott ágon értelmes: a Jaccard-ágon nem
+// volt mit beágyazni, ott a `0` hazugság volna.
+//
+// @param {string} source   'guide-ideas' | 'guide-balance' | 'pairing'
+// @param {string} rejected a kiszűrt cím
+// @param {{closest?:{title?:string,score?:number,by?:string},unresolved?:number}} near
+export function dedupBejegyzes(source, rejected, near) {
+  const c = near?.closest || null;
+  const e = {
+    source,
+    rejected: String(rejected || '').slice(0, 80),
+    closest: c?.title ? String(c.title).slice(0, 80) : undefined,
+    score: +(Number(c?.score) || 0).toFixed(3),
+    by: c?.by || null
+  };
+  if (Number.isFinite(Number(near?.unresolved))) e.unresolved = Number(near.unresolved);
+  return e;
 }
 
 // Napló a napi riporthoz (nap-kulcsos, 14 nap)

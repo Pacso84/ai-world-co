@@ -174,7 +174,7 @@ async function main() {
 
   const topics = loadTopics();
   // KÖZELI-TÉMA-ŐR referencia: a témalista + a KÉSZ guide-ok címei (2026-07-18)
-  const { isNearDuplicateTitle, allExistingGuideTitles, logDedup } = await import('../../core/topic-dedup.js');
+  const { isNearDuplicateTitle, allExistingGuideTitles, logDedup, dedupBejegyzes } = await import('../../core/topic-dedup.js');
   const existingTitles = allExistingGuideTitles();
   let worthy = 0, linked = 0, skip = 0, cost = 0, nearDup = 0;
 
@@ -214,7 +214,9 @@ async function main() {
       console.log(`🔁 KÖZELI TÉMA már van, nem duplikálok: ${title}…\n     → hasonló: "${near.closest?.title?.slice(0, 50)}" (${(near.closest?.score || 0).toFixed(2)})`);
       if (!args.dry) {
         markNews(n, { guide_worthy: true, pairing_reason: `near-duplicate of: ${near.closest?.title || ''}`.slice(0, 120) });
-        logDedup({ source: 'pairing', rejected: (parsed.title || '').slice(0, 80), closest: near.closest?.title?.slice(0, 80), score: +(near.closest?.score || 0).toFixed(3) });
+        // `by` + `unresolved` is a naplóba (2026-09-06) — lásd core/topic-dedup.js:
+        // a beágyazásos és a Jaccard-tartalékos döntés eddig egyformán nézett ki.
+        logDedup(dedupBejegyzes('pairing', parsed.title || '', near));
       }
       nearDup++;
       continue;

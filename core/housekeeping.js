@@ -11,6 +11,10 @@
 //      embedText() null-t ad, tehát a kód SOHA nem olvassa ki őket.
 //      Ez volt a legnagyobb tétel: 133 példány a történetben, és napi 3
 //      futással évi ~2,2 GB-tal hízott volna tovább.
+//      ⚠️ 2026-09-06: a takarítás MAGA vált a hiba forrásává, amikor a
+//      beágyazás visszatért — lásd a `stripEmbeddings()` fölötti szakaszt.
+//      A vektorok azóta a gitignore-olt memory/memory-embeddings.json-ban
+//      laknak, és nem a szövegtárban.
 //
 //   2. logs/ — 949 fájl 2026-06-07-ig visszamenőleg. EGYETLEN SOR KÓD SEM
 //      törölte őket, mert soha senki nem írt rá takarítást.
@@ -35,7 +39,7 @@
 import { readFileSync, writeFileSync, readdirSync, unlinkSync, statSync, existsSync, mkdirSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
-import { decay } from './memory-manager.js';
+import { decay, purgeStoreEmbeddings } from './memory-manager.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
@@ -84,34 +88,52 @@ function liveArticles() {
   return { files, slugs };
 }
 
-// ── 1. HALOTT EMBEDDINGEK ────────────────────────────────────────────
-// A legnagyobb tétel. Csak akkor törlünk, ha a szolgáltatás TÉNYLEG halott —
-// ha egyszer visszatérne, az embedding hasznos gyorsítótár, nem szemét.
-async function stripEmbeddings() {
+// ── 1. RÉGI VEKTOROK A SZÖVEGTÁRBAN ──────────────────────────────────
+//
+// 🔴 EZ A FÜGGVÉNY VOLT A HIBA FORRÁSA — 2026-09-06-ig (igazolva).
+// Ugyanannak a CI-futásnak két commitja:
+//     8cd53e0a  02:02:54  memory/store.json = 6 379 702 bájt · 212 vektor
+//     a8fd5f08  02:12:40  memory/store.json =   318 783 bájt ·   0 vektor
+// Közte egyetlen dolog fut, ami vektort töröl: EZ. A régi kód így kérdezett:
+//     alive = Array.isArray(await embedText('ping'))
+// és `alive === false` esetén MINDEN emlékről letörölte a vektort.
+//
+// 🔑 A PRÓBA ROSSZ KÉRDÉST TETT FEL. Nem azt mérte, hogy „halott-e a
+// szolgáltatás", hanem hogy „ÉN, ITT, MOST, tudok-e beágyazni" — és a
+// Házmester CI-lépésének NINCS `env:` blokkja (`auto.yml`), tehát ott kulcs
+// nélkül a válasz MINDIG „halott". A `recallSemantic()` viszont a következő
+// futásban visszatöltötte és elmentette a vektorokat. Eredmény: 12 napja
+// MINDEN futásban megszülettek és MINDEN futásban törlődtek, a nyilvános
+// git-történet meg 13,9 MB ↔ 0,3 MB között hullámzott (165,9 KB/commit a
+// stabil 14,3 KB helyett, ~335 MB/év).
+// ⚠️ UGYANEZ AZ ALAK volt az `core/embed-guard.js kellIrni()`-jében is —
+// ha ilyet találsz, keresd meg a többit.
+//
+// A JAVÍTÁS NEM JOBB PRÓBA, HANEM A KÉRDÉS MEGSZÜNTETÉSE. A vektorok azóta
+// a gitignore-olt `memory/memory-embeddings.json`-ban laknak, a szövegtárban
+// pedig SEMMILYEN körülmények között nincs helyük — nincs mit mérlegelni.
+// Determinisztikus, hálózat nélküli, $0. (Ezért nincs itt már `await` sem:
+// a Házmester ettől kezdve EGYETLEN hálózati hívást sem indít.)
+function stripEmbeddings() {
   if (!existsSync(STORE)) return;
 
-  let alive = false;
-  try {
-    const { embedText } = await import('./ai-router.js');
-    alive = Array.isArray(await embedText('ping'));
-  } catch { alive = false; }
-
-  if (alive) {
-    report.push('🧠 embedding: a szolgáltatás ÉL — a vektorok hasznos gyorsítótárak, maradnak.');
+  if (DRY) {
+    try {
+      const s = JSON.parse(readFileSync(STORE, 'utf-8'));
+      const n = (s.items || []).filter(it => it.embedding !== undefined && it.embedding !== null).length;
+      if (n) report.push(`🧠 régi vektor a szövegtárban: ${n} elem — PRÓBA, nem írok`);
+    } catch { /* olvashatatlan tár: a memória-halványítás úgyis szól */ }
     return;
   }
 
-  const before = statSync(STORE).size;
-  const store = JSON.parse(readFileSync(STORE, 'utf-8'));
-  let n = 0;
-  for (const it of (store.items || [])) {
-    if (it.embedding !== undefined && it.embedding !== null) { delete it.embedding; n++; }
+  try {
+    const r = purgeStoreEmbeddings();
+    if (!r.n) return;
+    report.push(`🧠 régi vektor kiköltöztetve a szövegtárból: ${r.n} elem · ${kb(r.elotte)} KB → ${kb(r.utana)} KB `
+      + '(a vektorok helye a gitignore-olt memory/memory-embeddings.json)');
+  } catch (e) {
+    report.push(`⚠️ a régi vektorok takarítása elbukott: ${String(e?.message || e).slice(0, 80)}`);
   }
-  if (!n) return;
-
-  const out = JSON.stringify(store, null, 2);
-  if (!DRY) writeFileSync(STORE, out, 'utf-8');
-  report.push(`🧠 halott embedding törölve: ${n} elem · ${kb(before)} KB → ${kb(out.length)} KB (${Math.round((1 - out.length / before) * 100)}%-kal kisebb)`);
 }
 
 // ── 2. RÉGI NAPLÓK ───────────────────────────────────────────────────
@@ -249,6 +271,15 @@ function pruneTranslations(files) {
 // Nem elég egyszer kitakarítani. Ha valami MEGINT elkezd nőni (pl. visszatér
 // egy embedding-szolgáltató, vagy új naplófajta jelenik meg), arról tudni
 // akarunk — ne fél év múlva, a lassú klónozásból.
+//
+// ⚠️ A `memory/memory-embeddings.json` SZÁNDÉKOSAN NINCS EZEN A LISTÁN
+// (2026-09-06). Nagy (478 emlék × 1024 float ≈ 13 MB) és NŐNI IS FOG — de
+// GITIGNORE-OLT, tehát a git-történetbe nem kerül, márpedig ez a lista pont
+// azt őrzi. A 600 KB-os store.json-határ mellé véve NAPI HÁROM HAMIS
+// figyelmeztetést adna, és a hamis riasztás megeszi az igazit is:
+// pontosan azt a sort butítaná le, amelyik a mostani hibát elkapta volna.
+// A store.json határa viszont TOVÁBBRA IS ÉRVÉNYES ÉS ÉLES: ha a vektorok
+// valaha visszaszivárognának a szövegtárba, 600 KB-nál megszólal.
 function watchGrowth() {
   const warn = [];
   for (const [label, path, limitKb] of [
@@ -298,7 +329,7 @@ async function main() {
   let { files, slugs } = liveArticles();     // let: a lejárt hírek után újraolvassuk
   if (!files.size) { console.log('   ⏭️  Nincs cikk — kihagyom (óvatosságból nem törlök semmit).'); return; }
 
-  await stripEmbeddings();
+  stripEmbeddings();
   pruneLogs();
   pruneOldNews();
   // ÚJRAOLVASSUK az élő cikkeket: a lejárt hírek most tűntek el, és a lenti
@@ -326,11 +357,13 @@ async function main() {
 
 // A takarítás SOHA ne állítsa meg a kiadást → mindig 0-val zárunk.
 //
-// MIÉRT NEM process.exit(0): az embedding-próba hálózati hívást indít, és a
-// azonnali exit egy még nyitott kezelő mellett libuv-hibát dobott a naplóba
-// ("Assertion failed: !(handle->flags & UV_HANDLE_CLOSING)"). A munka ilyenkor
-// már kész volt, de a CI-naplóban riasztónak látszik. Ezért hagyjuk a Node-ot
-// magától kiürülni, és CSAK akkor lövünk, ha valami tényleg beragadna.
+// MIÉRT NEM process.exit(0): a régi embedding-próba hálózati hívást indított,
+// és az azonnali exit egy még nyitott kezelő mellett libuv-hibát dobott a
+// naplóba ("Assertion failed: !(handle->flags & UV_HANDLE_CLOSING)"). A munka
+// ilyenkor már kész volt, de a CI-naplóban riasztónak látszik.
+// A próba 2026-09-06 óta NINCS (a Házmester egyetlen hálózati hívást sem
+// indít), tehát a tünet oka megszűnt — de a türelmes kilépés így is helyes,
+// és nem kerül semmibe: ha nincs nyitott kezelő, a Node azonnal kilép.
 function finish() {
   process.exitCode = 0;
   const t = setTimeout(() => process.exit(0), 3000);

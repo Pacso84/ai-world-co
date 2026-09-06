@@ -35,6 +35,7 @@ import { shouldRetryTruncated } from './truncation-guard.js';
 // heti kereső-riport, vészháló-riasztás) — kimásolva szétcsúszna.
 import { sikeresKuldes } from './report-window.js';
 import { jegyezEmbed } from './embed-guard.js';
+import { probalSorban } from './embed-chain.js';
 
 // ===================================================================
 // KONFIG BETÖLTÉS
@@ -111,9 +112,23 @@ function getClient(provider) {
 // A legutóbbi hívás sorsa — a napi riport ebből tudja, lát-e még az őr.
 let _embedAllapot = { provider: null, at: null, error: null };
 
-/** Mit tudunk a beágyazásról? A napi riport ezt írja ki. */
+// ⚠️ FOLYAMAT-LOKÁLIS BUKÁS-NYILVÁNTARTÁS (2026-09-06, mérve).
+// Az `embed-guard.json` git-történetében a 16 SIKERES bejegyzés MIND
+// `provider: "mistral"` — google EGY SEM. Vagyis minden egyes beágyazás előtt
+// lefutott egy biztosan bukó Google-kör (futásonként 100+ eldobott hívás).
+// Ez a Map a FUTÁS idejéig emlékszik, kit láttunk elbukni; a következő CI-futás
+// új processz, üres nyilvántartással — tehát nincs beégetett „a Google halott"
+// ítélet. A szabályokat lásd a `core/embed-chain.js` fejlécében.
+const _embedKiesett = new Map();
+
+/**
+ * Mit tudunk a beágyazásról? A napi riport ezt írja ki.
+ * A `kiesett` FOLYAMAT-LOKÁLIS diagnózis: kiket hagytunk ki ebben a futásban,
+ * és miért. A lemezre írt őrszem-fájlba ez nem megy — ott csak a TELJES bukás
+ * számít hibának (egy működő tartalék mellett a rendszer nem halott).
+ */
 export function embedStatus() {
-  return { ..._embedAllapot };
+  return { ..._embedAllapot, kiesett: Object.fromEntries(_embedKiesett) };
 }
 
 async function embedGoogle(t) {
@@ -179,15 +194,25 @@ export async function embedText(text) {
   if (!t) return null;
   const rovid = t.slice(0, 2000);
 
-  for (const [nev, fn] of [['google', embedGoogle], ['mistral', embedMistral]]) {
-    const { v, error } = await fn(rovid);
-    if (v) {
-      _embedAllapot = { provider: nev, at: new Date().toISOString(), error: null };
-      jegyezEmbed(_embedAllapot);
-      return v;
-    }
-    _embedAllapot = { provider: null, at: new Date().toISOString(), error: `${nev}: ${error}` };
+  // ⚠️ A SORREND ÉS A RÖVIDZÁR a `core/embed-chain.js`-ben él — ott tesztelhető
+  // valódi (fizetős) hívás nélkül, injektált szolgáltató-függvényekkel.
+  // Két dolgot old meg egyszerre:
+  //   • aki EBBEN A FUTÁSBAN már elbukott, azt nem hívjuk újra minden hívásnál
+  //     (a mért 100+ fölösleges Google-kör);
+  //   • teljes bukáskor MINDEN ismert ok kimegy — a kihagyottaké is. A régi
+  //     kód itt felülírta a Google hibáját a Mistraléval, ezért az őrszem-
+  //     fájlból sosem derült ki, MIÉRT halott a Google.
+  const r = await probalSorban(
+    [['google', embedGoogle], ['mistral', embedMistral]],
+    _embedKiesett,
+    rovid
+  );
+  if (r.v) {
+    _embedAllapot = { provider: r.provider, at: new Date().toISOString(), error: null };
+    jegyezEmbed(_embedAllapot);
+    return r.v;
   }
+  _embedAllapot = { provider: null, at: new Date().toISOString(), error: r.error };
   // ⚠️ A LEMEZRE ÍRÁS A HIÁNYZÓ LÁNCSZEM (2026-08-30, hibavadászat).
   // Az `embedStatus()` a 08-25-i javítás óta létezett, a kommentje szerint
   // „amit a napi riport kiír" — de SOHA NEM ÍRTA KI: nulla hívója volt, és

@@ -160,6 +160,63 @@ t('🔑 a konfig-hiány nem írja felül az aznapi MŰKÖDŐ állapotot', () => 
   assert.equal(kellIrni(maiHiba, nincsKulcs), false, 'fölöslegesen újraírt');
 });
 
+// ===================================================================
+// 🔗 KÉT SZOLGÁLTATÓ, KÉT OK (2026-09-06)
+// ===================================================================
+// Az `embedText()` eddig a Google hibáját FELÜLÍRTA a Mistraléval, ezért az
+// őrszem-fájlból SOHA nem derült ki, MIÉRT halott a Google. (Mérve: a fájl
+// git-történetében a 16 sikeres bejegyzés MIND `provider:"mistral"` — google
+// egy sem.) Mostantól az `error` mindkét okot hordozza, „ · "-tal elválasztva.
+//
+// ⚠️ AMI ÚJ VESZÉLY: a riport-sor eddig VAKON csonkolt (`.slice(0, 90)`), és
+// egy hosszú Google-hibaüzenet így pont a MÁSODIK szolgáltatót vágta volna le —
+// vagyis a bővebb diagnózisból kevesebb információ jutna ki, mint eddig.
+t('🔗 a KÉTSZOLGÁLTATÓS hibából MINDKÉT név kijut a riport-sorba', () => {
+  const hosszu = 'google: 429 Your prepayment credits are depleted — please enable billing '
+    + 'on your project or wait for the quota window to reset before retrying'
+    + ' · mistral: HTTP 401 Unauthorized';
+  const sor = embedSor({ provider: null, error: hosszu });
+  assert.ok(sor.includes('google:'), 'a Google oka eltűnt: ' + sor);
+  assert.ok(sor.includes('mistral:'), '🔴 a vak csonkolás levágta a MÁSODIK szolgáltatót: ' + sor);
+});
+
+t('🔗 az EGYSZOLGÁLTATÓS hiba csonkolása változatlan (nem hízik a riport)', () => {
+  const sor = embedSor({ provider: null, error: 'x'.repeat(300) });
+  assert.ok(sor.length < 260, 'egy szolgáltató hibája elárasztotta a riportot: ' + sor.length);
+});
+
+// ===================================================================
+// 🔑 A MAI SZABÁLY MEGMARAD — DE MOST MÁR RÉSZENKÉNT (2026-09-06)
+// ===================================================================
+// A „nincs kulcs ≠ halott" szabály fentebb egyetlen hibaüzenetre készült.
+// Az összefűzött üzenetben viszont a minta BÁRHOL illeszkedhet: egy VALÓDI
+// Google-hiba + egy hiányzó Mistral-kulcs így némán konfig-hiánynak látszana,
+// és a valódi baj eltűnne. Ezért a szabály mostantól MINDEN részre kell.
+t('🔑 a csupa-konfighiány üzenet TOVÁBBRA sem írja felül az aznapi működőt', () => {
+  const mukodott = { provider: 'mistral', error: null, at: '2026-09-06T02:00:00.000Z' };
+  const nincsSemmi = {
+    provider: null,
+    at: '2026-09-06T12:00:00.000Z',
+    error: 'google: nincs GOOGLE_API_KEY · mistral: nincs MISTRAL_API_KEY'
+  };
+  assert.equal(kellIrni(mukodott, nincsSemmi), false,
+    '🔴 a kulcs nélküli Házmester-lépés megint HALOTT-ra írná a működő beágyazást');
+  // …és az egyrészes alak (a mai éles fájl alakja) ugyanúgy viselkedik
+  assert.equal(kellIrni(mukodott, { ...nincsSemmi, error: 'mistral: nincs MISTRAL_API_KEY' }), false,
+    'a régi, egyrészes konfig-hiány szabálya elromlott');
+});
+
+t('🔑 a VEGYES üzenet (valódi hiba + hiányzó kulcs) IGENIS kiíródik', () => {
+  const mukodott = { provider: 'mistral', error: null, at: '2026-09-06T02:00:00.000Z' };
+  const vegyes = {
+    provider: null,
+    at: '2026-09-06T12:00:00.000Z',
+    error: 'google: 429 credits depleted · mistral: nincs MISTRAL_API_KEY'
+  };
+  assert.equal(kellIrni(mukodott, vegyes), true,
+    '🔴 egy VALÓDI hibát elnyelt, mert a másik részben volt egy „nincs kulcs"');
+});
+
 try { rmSync(MUNKA, { recursive: true, force: true }); } catch { /* */ }
 console.log(`\n${bukott === 0 ? '✅' : '❌'} embed-guard.test: ${pass} rendben, ${bukott} bukott`);
 process.exit(bukott === 0 ? 0 : 1);

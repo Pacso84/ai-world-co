@@ -79,3 +79,14 @@ website/assets/video/shorts/
 # és a repó PUBLIKUS. Számokat tartalmaz, titkot nem, mégsem való ide.
 core/budget-state.json.corrupt-*
 core/*.tmp-*
+
+# 🧠 A memória beágyazás-vektorai (2026-09-06). PONTOS MINTA, NEM a `memory/`
+# mappa — annak minden más fájlja (store.json, *-guard.json, naplók) KÖVETETT,
+# és annak is kell maradnia.
+# MIÉRT: a vektorok eddig a `memory/store.json`-ban laktak, és a Házmester
+# minden futásban letörölte őket (kulcs nélküli lépésben az „él-e a
+# szolgáltatás" próba mindig „halott"-at mondott). A fájl így 13,9 MB ↔ 0,3 MB
+# között hullámzott, és MINDEN hullám egy új teljes példány a NYILVÁNOS
+# git-történetben: mérve 165,9 KB/commit a stabil 14,3 KB helyett (11,6×),
+# ~335 MB/év, VÉGLEGESEN. Ingyenes és újraépíthető adat — nem való ide.
+memory/memory-embeddings.json
