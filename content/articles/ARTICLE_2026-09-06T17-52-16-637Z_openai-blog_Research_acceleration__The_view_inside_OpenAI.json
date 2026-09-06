@@ -1,0 +1,63 @@
+{
+  "_meta": {
+    "written_at": "2026-09-06T17:56:41.815Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00867372,
+    "original_draft": "2026-09-06T17-52-16-637Z_openai-blog_Research_acceleration__The_view_inside_OpenAI.json",
+    "source_id": "openai-blog",
+    "source_name": "OpenAI Blog (hivatalos)",
+    "source_link": "https://openai.com/index/research-acceleration-view-inside-openai",
+    "source_links": [
+      "https://openai.com/index/research-acceleration-view-inside-openai"
+    ],
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "published_at": "2026-09-06T17:57:03.322Z",
+    "slug": "ai-is-now-helping-build-better-ai-and-it-is-moving-faster-than-you-thi",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 768
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured explainer with clear definitions, responsible sourcing from OpenAI, appropriate caution about unverifiable numbers, and a practical next-step wrap-up. Accessible to everyday readers with no clichés, prohibited content, or respect issues.",
+      "_aiCost": 0.0015333,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-09-06T17:57:14.757Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is a general explainer about AI coding agents in research labs, not an introduction of a specific named feature. No concrete tool or action for everyday users.",
+    "image_v": 2,
+    "image_at": "2026-09-06T17:57:25.946Z",
+    "seo": {
+      "meta_description": "Inside research labs, AI coding agents now handle the slow work of building new models. See what faster AI means for you.",
+      "keywords": [
+        "AI coding agents",
+        "how AI builds AI",
+        "AI research labs",
+        "AI development speed",
+        "OpenAI agents",
+        "AI model training automation",
+        "future of AI"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add specific examples of tasks AI coding agents perform (like writing training scripts or debugging)",
+        "Include a timeline or prediction for when users will see faster AI tool releases",
+        "Add a quote from a researcher or industry expert to boost credibility"
+      ],
+      "optimised_at": "2026-09-06T17:57:36.461Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"AI Is Now Helping Build Better AI — And It Is Moving Faster Than You Think\"\nsubtitle: \"Inside research labs, coding agents are quietly taking over the slow parts of building new models. Here is what that means for the rest of us.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"ai-research\", \"coding-agents\", \"future-of-ai\", \"explainer\"]\n---\n\n# AI Is Now Helping Build Better AI — And It Is Moving Faster Than You Think\n\n> **In short:** Inside major research labs like OpenAI, AI \"coding agents\" are now doing much of the routine work of building and testing new models. For everyday users, the practical result is that new AI tools and upgrades are arriving on a faster timeline than before.\n\nA few years ago, building a new AI model meant months of human effort: writing the training scripts, running the experiments, checking the results, fixing the bugs, and starting over. Today, AI itself is doing more of those steps. Inside labs like OpenAI, a growing share of that research work is being handed to AI coding agents — assistants that can read, write, and run computer code with minimal human help.\n\n## What is a coding agent, exactly?\n\nA coding agent is an AI that goes beyond answering questions. Instead of just chatting, it can open files, edit code, run programs, check the output, and try again when something breaks. Think of it as a junior developer who never sleeps: you give it a goal, and it figures out the steps to get there on its own.\n\nResearchers use these agents as helpers. A scientist might assign it a task like \"run this training experiment, watch for errors, and write a short summary of what happened.\" The agent handles the slow middle part, and the human reviews the result. The same pattern is now showing up in consumer tools, too.\n\n## Why is this speeding up research?\n\nResearch has a lot of repetitive work — running the same code with slightly different settings, checking charts, summarizing what worked. Each round of that loop used to eat up human hours. Agents compress the loop. An experiment that used to need a week of babysitting can now run overnight, with the agent flagging only the interesting moments.\n\nThe result is more experiments in less time, which means researchers can test more ideas, drop bad ones earlier, and spend their own attention on the genuinely hard questions. Over months, that compounds: a lab that runs twice as many experiments in a year can ship improvements twice as fast. OpenAI has not published exact numbers, so treat any specific percentage you see online with caution.\n\n## What you can use today\n\nYou do not have to be a researcher to try this style of work. Several consumer AI tools now include agent-like features that can act on your behalf — drafting a file, browsing a page, filling in a form, or running a multi-step task. The exact menus differ by product and change often, so check the help docs of whatever tool you use for the current steps.\n\nA simple way to start: give any AI assistant a small, multi-step task and watch how it plans the work. Something like \"find three weeknight dinners I can make with chicken, rice, and broccoli, and put them in a list with cooking times\" is enough. That is the same coding-agent mindset, applied to everyday life.\n\n## What this means for you\n\n- **If you are just curious about AI:** the next big upgrade is likely to land sooner than past ones did, because the people building AI are themselves using AI to build faster.\n- **If you work in a non-technical job:** look for the \"agent,\" \"tasks,\" or \"actions\" feature in the AI tools you already use. They can save real time on multi-step work — drafting, researching, organizing — once you trust them with a small job first.\n- **If you are worried about AI moving too fast:** this trend is real and accelerating, and the best response is to stay a regular user of these tools, not an outsider. Using them, even in small ways, is how you stay informed about what they can and cannot yet do.\n\n## Wrap-up\n\nAI is now part of the team that builds AI. That does not change what the tools are for — it just means the pace of new features and improvements is climbing. Pick one agent-style task to try this week, even a small one. You will get a feel for the shift before it shows up in every app you use.",
+  "original_title": "Research acceleration: The view inside OpenAI"
+}
