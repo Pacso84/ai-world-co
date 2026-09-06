@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-09-02T19:04:56.084Z",
+    "generated_at": "2026-09-06T01:49:13.406Z",
     "generated_by": "source-scout agent v3.0 (megbízhatóság-kapu)",
     "note": "JAVASLATOK új, MEGBÍZHATÓ hivatalos forrásokra. A felhasználó/főnök dönti el, melyiket adjuk a sources/rss-feeds.json-hoz (enabled:true-val). Minden jelölt megbízhatósági pontszámmal + indoklással.",
     "min_score": 100,
@@ -9,27 +9,27 @@
     "rejected_count": 4,
     "rejected_examples": [
       {
-        "name": "Duolingo Newsroom",
+        "name": "Amazon Devices & Services Blog",
+        "host": "aboutamazon.com",
+        "reason": "a friss cikkeinek csak 20%-a szól AI-ról (kell: 60%)",
+        "score": 100
+      },
+      {
+        "name": "Garmin Blog",
+        "host": "garmin.com",
+        "reason": "a friss cikkeinek csak 0%-a szól AI-ról (kell: 60%)",
+        "score": 100
+      },
+      {
+        "name": "Duolingo News",
         "host": "blog.duolingo.com",
         "reason": "a friss cikkeinek csak 7%-a szól AI-ról (kell: 60%)",
         "score": 100
       },
       {
-        "name": "Brilliant Blog",
-        "host": "blog.brilliant.org",
-        "reason": "pont 82 < 100",
-        "score": 82
-      },
-      {
         "name": "Rosetta Stone Blog",
         "host": "rosettastone.com",
         "reason": "a friss cikkeinek csak 0%-a szól AI-ról (kell: 60%)",
-        "score": 100
-      },
-      {
-        "name": "Visme Blog",
-        "host": "visme.co",
-        "reason": "a friss cikkeinek csak 8%-a szól AI-ról (kell: 60%)",
         "score": 100
       }
     ]

@@ -1,142 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178848714415018",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-09-04T01:59:04.150Z",
-      "updated": "2026-09-04T01:59:04.285Z"
-    },
-    {
-      "id": "t178848714428658",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-09-04T01:59:04.286Z",
-      "updated": "2026-09-04T02:11:35.934Z"
-    },
-    {
-      "id": "t178848789593552",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-04T02:11:35.935Z",
-      "updated": "2026-09-04T02:14:14.342Z"
-    },
-    {
-      "id": "t178848805434493",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-09-04T02:14:14.344Z",
-      "updated": "2026-09-04T02:15:08.191Z"
-    },
-    {
-      "id": "t178848810822821",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-09-04T02:15:08.228Z",
-      "updated": "2026-09-04T02:28:15.024Z"
-    },
-    {
-      "id": "t178848889502598",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-04T02:28:15.025Z",
-      "updated": "2026-09-04T02:30:34.537Z"
-    },
-    {
-      "id": "t178848903456459",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-09-04T02:30:34.564Z",
-      "updated": "2026-09-04T02:30:34.962Z"
-    },
-    {
-      "id": "t178848903496323",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-09-04T02:30:34.963Z",
-      "updated": "2026-09-04T02:33:05.116Z"
-    },
-    {
-      "id": "t17884891851199",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-09-04T02:33:05.119Z",
-      "updated": "2026-09-04T02:36:02.719Z"
-    },
-    {
-      "id": "t178848936272168",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-09-04T02:36:02.721Z",
-      "updated": "2026-09-04T02:38:59.354Z"
-    },
-    {
-      "id": "t17884895393558",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-04T02:38:59.355Z",
-      "updated": "2026-09-04T02:39:22.743Z"
-    },
-    {
-      "id": "t178848956275935",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-09-04T02:39:22.760Z",
-      "updated": "2026-09-04T02:39:42.307Z"
-    },
-    {
-      "id": "t178852367532269",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-09-04T12:07:55.322Z",
-      "updated": "2026-09-04T12:07:55.585Z"
-    },
-    {
-      "id": "t178852367558887",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-09-04T12:07:55.588Z",
-      "updated": "2026-09-04T12:08:32.850Z"
-    },
-    {
-      "id": "t178852371285226",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-09-04T12:08:32.852Z",
-      "updated": "2026-09-04T12:08:33.031Z"
-    },
-    {
-      "id": "t178852371303362",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-09-04T12:08:33.033Z",
-      "updated": "2026-09-04T12:14:17.410Z"
-    },
-    {
-      "id": "t178852405741179",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-04T12:14:17.411Z",
-      "updated": "2026-09-04T12:15:05.623Z"
-    },
-    {
       "id": "t178852410562673",
       "title": "Run iro",
       "status": "done",
@@ -479,41 +343,145 @@
       "agent": "publisher",
       "created": "2026-09-05T17:47:40.224Z",
       "updated": "2026-09-05T17:48:00.215Z"
+    },
+    {
+      "id": "t178865930919375",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-09-06T01:48:29.193Z",
+      "updated": "2026-09-06T01:48:29.393Z"
+    },
+    {
+      "id": "t178865930939587",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-09-06T01:48:29.395Z",
+      "updated": "2026-09-06T01:48:53.763Z"
+    },
+    {
+      "id": "t178865933376574",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-09-06T01:48:53.765Z",
+      "updated": "2026-09-06T01:49:13.436Z"
+    },
+    {
+      "id": "t178865935343846",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-09-06T01:49:13.438Z",
+      "updated": "2026-09-06T01:49:13.614Z"
+    },
+    {
+      "id": "t178865935361678",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-06T01:49:13.616Z",
+      "updated": "2026-09-06T01:49:13.787Z"
+    },
+    {
+      "id": "t178865935379086",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-09-06T01:49:13.790Z",
+      "updated": "2026-09-06T01:49:14.020Z"
+    },
+    {
+      "id": "t178865935406722",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-09-06T01:49:14.067Z",
+      "updated": "2026-09-06T01:54:40.395Z"
+    },
+    {
+      "id": "t178865968039777",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-06T01:54:40.397Z",
+      "updated": "2026-09-06T01:55:39.754Z"
+    },
+    {
+      "id": "t178865973979580",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-09-06T01:55:39.796Z",
+      "updated": "2026-09-06T01:55:39.964Z"
+    },
+    {
+      "id": "t178865973996532",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-09-06T01:55:39.965Z",
+      "updated": "2026-09-06T01:57:07.373Z"
+    },
+    {
+      "id": "t178865982737781",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-09-06T01:57:07.377Z",
+      "updated": "2026-09-06T01:59:07.285Z"
+    },
+    {
+      "id": "t178865994728867",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-09-06T01:59:07.288Z",
+      "updated": "2026-09-06T01:59:50.021Z"
+    },
+    {
+      "id": "t178865999002339",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-06T01:59:50.023Z",
+      "updated": "2026-09-06T02:00:08.792Z"
+    },
+    {
+      "id": "t178866000879378",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-06T02:00:08.793Z",
+      "updated": "2026-09-06T02:00:48.878Z"
+    },
+    {
+      "id": "t178866004888068",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-09-06T02:00:48.880Z",
+      "updated": "2026-09-06T02:01:22.708Z"
+    },
+    {
+      "id": "t178866008271086",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-06T02:01:22.710Z",
+      "updated": "2026-09-06T02:01:35.203Z"
+    },
+    {
+      "id": "t17886600952053",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-09-06T02:01:35.205Z",
+      "updated": "2026-09-06T02:01:56.982Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178773389555658",
-      "level": "success",
-      "text": "1 hír + 1 útmutató publikálva (költség: $0.0227).",
-      "agent": "ceo",
-      "at": "2026-08-26T08:44:55.556Z",
-      "loud": false
-    },
-    {
-      "id": "n178776288151124",
-      "level": "info",
-      "text": "SEO: 2 cikk optimalizálva (átlag 7.5/10).",
-      "agent": "seo",
-      "at": "2026-08-26T16:48:01.511Z",
-      "loud": false
-    },
-    {
-      "id": "n178776290613315",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). A kínálat készen áll: minden cikk gyakorlatias, hétköznapi írási helyzeteket old meg AI-val, könnyen érthető stílusban. Egy apró megjegyzés: a panaszlevelek/cancel emails 4 különböző eszközzel (ChatRT",
-      "agent": "publisher",
-      "at": "2026-08-26T16:48:26.133Z",
-      "loud": false
-    },
-    {
-      "id": "n178776291955782",
-      "level": "success",
-      "text": "1 hír + 1 útmutató publikálva (költség: $0.0178).",
-      "agent": "ceo",
-      "at": "2026-08-26T16:48:39.557Z",
-      "loud": false
-    },
     {
       "id": "n178780635891549",
       "level": "info",
@@ -1281,45 +1249,41 @@
       "agent": "ceo",
       "at": "2026-09-05T17:48:00.258Z",
       "loud": false
+    },
+    {
+      "id": "n17886596994945",
+      "level": "warn",
+      "text": "📨 ellenorzo → guide: Hiányos / kell még adat: \"Create a Simple Event Sign-Up Form with GitHub Copilot\" — egészítsd ki: HOWTO_TOO_LONG: 1714 s",
+      "agent": "ellenorzo",
+      "at": "2026-09-06T01:54:59.494Z",
+      "loud": false
+    },
+    {
+      "id": "n178866008269730",
+      "level": "info",
+      "text": "SEO: 4 cikk optimalizálva (átlag 8.5/10).",
+      "agent": "seo",
+      "at": "2026-09-06T02:01:22.697Z",
+      "loud": false
+    },
+    {
+      "id": "n178866010279063",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). Hi! The lineup looks solid and ready — it's a practical mix of everyday AI writing tasks, from emails to resumes to heartfelt messages. One small note: article 6 doesn't specify which AI tool to use, ",
+      "agent": "publisher",
+      "at": "2026-09-06T02:01:42.790Z",
+      "loud": false
+    },
+    {
+      "id": "n178866011702586",
+      "level": "success",
+      "text": "0 hír + 4 útmutató publikálva (költség: $0.0748).",
+      "agent": "ceo",
+      "at": "2026-09-06T02:01:57.025Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178785583453347",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Ask Le Chat to explain a news article like you're \" — URL fetching - \"Le Chat will usually fetch the article automatically\" is presented as reliable behavior, but this feature may be inconsistent or unavailable now",
-      "ref": "ARTICLE_GUIDE_ask-le-chat-to-explain-a-news-article-like-you-re-12-years-o.json",
-      "at": "2026-08-27T18:37:14.533Z"
-    },
-    {
-      "id": "m178785586697040",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Ask Qwen Chat to write a polite complaint email ab\" — The specific 'Qwen Chat' website URL and interface as described (with 'Launch Chat' or 'Start Chatting' button); The exact copy button location next to generated text; The assumption that the core workflow hasn't changed",
-      "ref": "ARTICLE_GUIDE_ask-qwen-chat-to-write-a-polite-complaint-email-about-a-dela.json",
-      "at": "2026-08-27T18:37:46.970Z"
-    },
-    {
-      "id": "m178785657752413",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "2 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-08-27T18:49:37.524Z"
-    },
-    {
-      "id": "m178790446750935",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"GeForce NOW Gives Gamers More Ways to Play at Gamescom 2026\" — mi a baj: Step 3: 'look for a Connections or Linked accounts section' is vague with no fallback — UI labels vary, reader needs guidance like 'if you don't see it, check under Account Settings or look for a store logo icon'; Step 5: 'look for the in-stream settings overlay' — no hint on how to summon it or what to",
-      "ref": "2026-08-27T16-08-08-409Z_nvidia-blog_GeForce_NOW_Gives_Gamers_More_Ways_to_Play_at_Game.json",
-      "at": "2026-08-28T08:07:47.509Z"
-    },
     {
       "id": "m178790450137775",
       "from": "ellenorzo",
@@ -2644,6 +2608,43 @@
       "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 20 → 5/4/2 oszlop.",
       "ref": "mobile",
       "at": "2026-09-05T17:47:40.211Z"
+    },
+    {
+      "id": "m178865969949328",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Create a Simple Event Sign-Up Form with GitHub Copilot\" — mi a baj: HOWTO_TOO_LONG: 1714 szó (~8.6 perc olvasás) — a cél 1000-1400 szó, a felső kapu 1700. A Facebookról érkező mobilolvasó ennyit ritkán olvas végig.; Beginner clarity too low (7/10): steps are vague or could mislead a first-time user; Step 2: 'type the bare minimum an HTML page needs' is slightly vague for tru",
+      "ref": "GUIDE_create-a-simple-event-sign-up-form-with-github-copilot.json",
+      "at": "2026-09-06T01:54:59.493Z"
+    },
+    {
+      "id": "m17886596994941",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "need",
+      "text": "Hiányos / kell még adat: \"Create a Simple Event Sign-Up Form with GitHub Copilot\" — egészítsd ki: HOWTO_TOO_LONG: 1714 szó (~8.6 perc olvasás) — a cél 1000-1400 szó, a felső kapu 1700. A Facebookról érkező mobilolvasó ennyit ritkán olvas végig.; Beginner clarity too low (7/10): steps are vague or could mislead a first-time user; Step 2: 'type the bare minimum an HTML page needs' is slightly vague ",
+      "ref": "GUIDE_create-a-simple-event-sign-up-form-with-github-copilot.json",
+      "open": true,
+      "at": "2026-09-06T01:54:59.494Z"
+    },
+    {
+      "id": "m17886600951948",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 20 → 5/4/2 oszlop.",
+      "ref": "mobile",
+      "at": "2026-09-06T02:01:35.194Z"
+    },
+    {
+      "id": "m178866017431959",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Create a personalized workout routine with DeepSee\" — chat.deepseek.com as the definitive URL for DeepSeek Chat",
+      "ref": "ARTICLE_GUIDE_create-a-personalized-workout-routine-with-deepseek-s-multil.json",
+      "at": "2026-09-06T02:02:54.319Z"
     }
   ]
 }
