@@ -111,6 +111,7 @@
     "anyagokról",
     "anyagoktól",
     "anyagon",
+    "anyanyelven",
     "ap-southeast",
     "appanként",
     "apróbetűs",
@@ -256,6 +257,7 @@
     "buildeli",
     "buildernek",
     "builderrel",
+    "bulletpointot",
     "bulletpontok",
     "bulletpontokat",
     "bulletpontot",
@@ -622,6 +624,7 @@
     "emailekkel",
     "emailekként",
     "emailekre",
+    "emailekről",
     "emailemben",
     "emailjeid",
     "emailjeidet",
@@ -725,6 +728,7 @@
     "foc-edzés",
     "fogalmatlan",
     "foley",
+    "follow-upban",
     "folott",
     "fordulra",
     "forgatókönyvet",
@@ -1355,6 +1359,7 @@
     "megjegyzéset",
     "megossd",
     "megosztanivaló",
+    "megvennivalókról",
     "mehívót",
     "melbourne",
     "melegséget",
@@ -1708,6 +1713,7 @@
     "promptsablon",
     "promptsablonok",
     "promptsegéd",
+    "promptstruktúrával",
     "promptstílus",
     "prompttechnika",
     "promptterületbe",
@@ -4688,11 +4694,21 @@
       "correct": "útvonalad / tanulási útjaid / utad",
       "at": "2026-09-05",
       "mondattal": true
+    },
+    "szőjj": {
+      "correct": "szőj",
+      "at": "2026-09-06",
+      "mondattal": true
+    },
+    "aren": {
+      "correct": "are",
+      "at": "2026-09-06",
+      "mondattal": true
     }
   },
   "scan": {
-    "at": "2026-09-05",
-    "files": 914,
-    "candidates": 0
+    "at": "2026-09-06",
+    "files": 918,
+    "candidates": 8
   }
 }

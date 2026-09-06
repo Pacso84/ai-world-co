@@ -1,6 +1,8 @@
 {
-  "provider": "mistral",
-  "at": "2026-09-06T01:57:02.658Z",
-  "error": null,
-  "problems": []
+  "provider": null,
+  "at": "2026-09-06T02:05:58.134Z",
+  "error": "mistral: nincs MISTRAL_API_KEY",
+  "problems": [
+    "mistral: nincs MISTRAL_API_KEY"
+  ]
 }
