@@ -3,7 +3,31 @@
 // Offline: injektált ál-embedText (nincs hálózat/AI). $0.
 // ===================================================================
 import { strict as assert } from 'assert';
-import { isNearDuplicateTitle, normTitle } from './topic-dedup.js';
+import { tmpdir } from 'os';
+import { join as pjoin } from "path";
+import { fileURLToPath } from "url";
+import { existsSync, rmSync, readFileSync as rfs } from 'fs';
+
+// ===================================================================
+// 🔒 A TESZT NEM ÍRHAT AZ ÉLES BEÁGYAZÁS-CACHE-BE (2026-09-06)
+// ===================================================================
+// A lenti ál-embedFn 8 DIMENZIÓS vektorokat ad. Ezek eddig a valódi
+// `guides/topic-embeddings.json`-be íródtak (mérve: 2 ilyen bejegyzés volt
+// benne). Önmagában ártalmatlan — a dimenzió-őr tévesztésnek veszi és
+// újraszámolja —, de 2026-09-06 óta a CI is futtatja a teszteket, tehát a
+// szemét mostantól MINDEN futásnál keletkezne.
+//
+// ⚠️ AZ ÉRTÉKADÁS AZ IMPORT ELŐTT KELL. A statikus `import` felülemelkedik a
+// kódon, tehát a modul a régi úttal töltődne be — ezért DINAMIKUS az import
+// alább. (Ez a csapda egyszer már megfogott egy másik teszten.)
+// ⚠️ `fileURLToPath`, NEM `.pathname`: Windowson az utóbbi „/C:/AI%20work/…"-et
+// ad (vezető perjel + URL-kódolt szóköz), amitől az `existsSync` némán hamisat
+// mond — és a záró őr úgy hallgatna, mintha minden rendben lenne.
+const ELES_CACHE = fileURLToPath(new URL('../guides/topic-embeddings.json', import.meta.url));
+const ELES_ELOTTE = existsSync(ELES_CACHE) ? rfs(ELES_CACHE, 'utf-8') : null;
+process.env.TOPIC_EMBED_CACHE_PATH = pjoin(tmpdir(), 'topic-embed-teszt-' + process.pid + '.json');
+
+const { isNearDuplicateTitle, normTitle } = await import('./topic-dedup.js');
 
 // Ál-embedFn: determinisztikus "jelentés-vektor" néhány kulcsszóra.
 // A "meeting/notes/action" témák EGY irányba mutatnak → magas koszinusz.
@@ -60,3 +84,11 @@ if (removedNow) {
 assert.equal(isRemovedTopic({ guide_topic_id: 'no-such-topic-xyz' }, 'Totally Fresh Topic'), false, 'élő téma nem jelez');
 
 console.log('✅ topic-dedup.test: mind a 7 blokk átment');
+
+// 🔒 ZÁRÓ ŐR: az éles cache bájtra változatlan maradt-e?
+if (ELES_ELOTTE !== null) {
+  const most = existsSync(ELES_CACHE) ? rfs(ELES_CACHE, 'utf-8') : null;
+  assert.equal(most, ELES_ELOTTE, '🔴 A TESZT BELEÍRT AZ ÉLES BEÁGYAZÁS-CACHE-BE!');
+  console.log('  ✅ az éles topic-embeddings.json érintetlen');
+}
+try { rmSync(process.env.TOPIC_EMBED_CACHE_PATH, { force: true }); } catch { /* */ }

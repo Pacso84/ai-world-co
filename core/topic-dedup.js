@@ -20,7 +20,14 @@ import { dirname, join } from 'path';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
-const CACHE_PATH = join(ROOT, 'guides', 'topic-embeddings.json');
+// ⚠️ TESZT-FELÜLÍRÁS (2026-09-06). A `core/topic-dedup.test.js` 8 dimenziós
+// ÁL-VEKTOROKAT használ, és ezek eddig az ÉLES cache-be íródtak (mérve: 2 ilyen
+// bejegyzés van benne most). Önmagában ártalmatlan — a dimenzió-őr tévesztésnek
+// veszi és újraszámolja —, de 2026-09-06 óta a CI is futtatja a teszteket, tehát
+// a szemét MOSTANTÓL minden futásnál keletkezne. Ugyanaz a minta, mint az
+// `EMBED_GUARD_PATH`-nál: élesben nincs beállítva.
+const CACHE_PATH = process.env.TOPIC_EMBED_CACHE_PATH
+  || join(ROOT, 'guides', 'topic-embeddings.json');
 const LOG_PATH = join(ROOT, 'memory', 'topic-dedup-log.json');
 
 export const COSINE_THRESHOLD = 0.88;   // efölött = jelentésben közeli
