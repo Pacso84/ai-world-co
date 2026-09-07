@@ -1,7 +1,7 @@
 {
   "_meta": {
     "note": "Forrás-bizonyítvány: frissesség + termés + megbízhatóság forrásonként. Gyártja: core/source-report-card.js",
-    "updated": "2026-09-07T12:21:20.332Z",
+    "updated": "2026-09-07T14:01:08.578Z",
     "thresholds": {
       "DEAD_FEED_DAYS": 365,
       "MIN_SAMPLE": 4,
@@ -11,8 +11,8 @@
     },
     "truth_log": {
       "days": 14,
-      "from": "2026-08-17",
-      "to": "2026-09-05",
+      "from": "2026-08-18",
+      "to": "2026-09-07",
       "blocks": 25
     }
   },
@@ -580,7 +580,7 @@
     },
     "microsoft-365": {
       "name": "Microsoft 365 Insider (hivatalos)",
-      "feedAgeDays": 2,
+      "feedAgeDays": 1,
       "published30d": 2,
       "truthBlocks": 0,
       "totalAttempts": 1,
@@ -602,12 +602,12 @@
     },
     "picsart": {
       "name": "PicsArt Blog (hivatalos)",
-      "feedAgeDays": 3,
-      "published30d": 37,
-      "truthBlocks": 4,
-      "totalAttempts": 17,
+      "feedAgeDays": 0,
+      "published30d": 38,
+      "truthBlocks": 5,
+      "totalAttempts": 18,
       "alreadyDisabled": false,
-      "lastArticle": "2026-09-04",
+      "lastArticle": "2026-09-07",
       "verdict": "ok",
       "reason": ""
     },
