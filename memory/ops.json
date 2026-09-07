@@ -1,102 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178860767676571",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-09-05T11:27:56.765Z",
-      "updated": "2026-09-05T11:28:31.057Z"
-    },
-    {
-      "id": "t178860771105889",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-09-05T11:28:31.058Z",
-      "updated": "2026-09-05T11:28:31.189Z"
-    },
-    {
-      "id": "t178860771119199",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-09-05T11:28:31.191Z",
-      "updated": "2026-09-05T11:28:31.298Z"
-    },
-    {
-      "id": "t178860771130024",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-05T11:28:31.300Z",
-      "updated": "2026-09-05T11:28:31.458Z"
-    },
-    {
-      "id": "t178860771146080",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-09-05T11:28:31.460Z",
-      "updated": "2026-09-05T11:28:31.601Z"
-    },
-    {
-      "id": "t178860771163226",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-05T11:28:31.632Z",
-      "updated": "2026-09-05T11:28:31.788Z"
-    },
-    {
-      "id": "t178860771178917",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-09-05T11:28:31.789Z",
-      "updated": "2026-09-05T11:28:31.933Z"
-    },
-    {
-      "id": "t178860771193420",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-05T11:28:31.934Z",
-      "updated": "2026-09-05T11:28:42.549Z"
-    },
-    {
-      "id": "t178860772255147",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-09-05T11:28:42.551Z",
-      "updated": "2026-09-05T11:28:55.318Z"
-    },
-    {
-      "id": "t178863043385969",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-09-05T17:47:13.859Z",
-      "updated": "2026-09-05T17:47:14.027Z"
-    },
-    {
-      "id": "t178863043402927",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-09-05T17:47:14.029Z",
-      "updated": "2026-09-05T17:47:35.580Z"
-    },
-    {
-      "id": "t178863045558227",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-09-05T17:47:35.582Z",
-      "updated": "2026-09-05T17:47:35.780Z"
-    },
-    {
       "id": "t178863045578225",
       "title": "Run iro",
       "status": "done",
@@ -479,33 +383,105 @@
       "agent": "publisher",
       "created": "2026-09-06T17:57:45.777Z",
       "updated": "2026-09-06T17:58:05.885Z"
+    },
+    {
+      "id": "t178874553845930",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-09-07T01:45:38.459Z",
+      "updated": "2026-09-07T01:45:38.608Z"
+    },
+    {
+      "id": "t178874553860974",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-09-07T01:45:38.609Z",
+      "updated": "2026-09-07T01:46:04.638Z"
+    },
+    {
+      "id": "t178874556464093",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-09-07T01:46:04.640Z",
+      "updated": "2026-09-07T01:46:04.814Z"
+    },
+    {
+      "id": "t178874556481618",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-09-07T01:46:04.816Z",
+      "updated": "2026-09-07T01:46:04.964Z"
+    },
+    {
+      "id": "t178874556496650",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-07T01:46:04.966Z",
+      "updated": "2026-09-07T01:46:05.131Z"
+    },
+    {
+      "id": "t178874556513312",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-09-07T01:46:05.133Z",
+      "updated": "2026-09-07T01:46:05.334Z"
+    },
+    {
+      "id": "t178874556538829",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-09-07T01:46:05.388Z",
+      "updated": "2026-09-07T01:55:12.363Z"
+    },
+    {
+      "id": "t178874611236479",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-07T01:55:12.364Z",
+      "updated": "2026-09-07T01:57:38.919Z"
+    },
+    {
+      "id": "t178874625896926",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-07T01:57:38.969Z",
+      "updated": "2026-09-07T01:58:17.586Z"
+    },
+    {
+      "id": "t178874629758852",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-09-07T01:58:17.588Z",
+      "updated": "2026-09-07T01:58:55.677Z"
+    },
+    {
+      "id": "t17887463356786",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-07T01:58:55.678Z",
+      "updated": "2026-09-07T01:59:10.168Z"
+    },
+    {
+      "id": "t17887463501708",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-09-07T01:59:10.170Z",
+      "updated": "2026-09-07T01:59:36.967Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n17878475030148",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). A coherent line-up with solid practical value across real-life situations — from privacy awareness to everyday writing tasks. One note: we have 3 complaint-email articles plus a refund request, which ",
-      "agent": "publisher",
-      "at": "2026-08-27T16:18:23.014Z",
-      "loud": false
-    },
-    {
-      "id": "n178784751682394",
-      "level": "success",
-      "text": "2 hír + 0 útmutató publikálva (költség: $0.0401).",
-      "agent": "ceo",
-      "at": "2026-08-27T16:18:36.823Z",
-      "loud": false
-    },
-    {
-      "id": "n17878557826864",
-      "level": "info",
-      "text": "SEO: 2 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-08-27T18:36:22.687Z",
-      "loud": false
-    },
     {
       "id": "n178785580184930",
       "level": "success",
@@ -1281,27 +1257,33 @@
       "agent": "ceo",
       "at": "2026-09-06T17:58:05.933Z",
       "loud": false
+    },
+    {
+      "id": "n17887463356693",
+      "level": "info",
+      "text": "SEO: 4 cikk optimalizálva (átlag 8.3/10).",
+      "agent": "seo",
+      "at": "2026-09-07T01:58:55.669Z",
+      "loud": false
+    },
+    {
+      "id": "n178874636314723",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The lineup looks solid and ready — practical, everyday use cases that genuinely help busy people, with nice variety across personal, professional, and professional tasks. All the AI tools mentioned (L",
+      "agent": "publisher",
+      "at": "2026-09-07T01:59:23.147Z",
+      "loud": false
+    },
+    {
+      "id": "n178874637701746",
+      "level": "success",
+      "text": "0 hír + 4 útmutató publikálva (költség: $0.0812).",
+      "agent": "ceo",
+      "at": "2026-09-07T01:59:37.017Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178794493039197",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Turn a quick brainstorm into a clear meeting agenda with DeepSeek\" — javítva: Beginner clarity too low (7/10): steps are vague or could mislead a first-time user; Step 1: 'notes app' is vague — specify which app or give examples of options for someone who doesn't know what to use; újraküldöm.",
-      "ref": "GUIDE_turn-a-quick-brainstorm-into-a-clear-meeting-agenda-with-dee.json",
-      "at": "2026-08-28T19:22:10.391Z"
-    },
-    {
-      "id": "m178794496472999",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Use ChatGPT to Plan a Road Trip Route with Stops, Fuel Stops, and Driving Time\" — javítva: LEDE_TOO_LONG: A RÖVIDEN-doboz 64 szó (max ~45) — ami hosszú, az már nem \"röviden\".; HOWTO_TOO_LONG: 1813 szó (~9.1 perc olvasás) — a cél 1000-1400 szó, a felső kapu 1700. A Facebookról érkező mobilolvasó ennyit ritkán olvas végig.; újraküldöm.",
-      "ref": "GUIDE_use-chatgpt-to-plan-a-road-trip-route-with-stops-fuel-stops-.json",
-      "at": "2026-08-28T19:22:44.729Z"
-    },
     {
       "id": "m17879449881762",
       "from": "ellenorzo",
@@ -2647,6 +2629,24 @@
       "text": "1 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-09-06T18:04:58.262Z"
+    },
+    {
+      "id": "m178874635016056",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 20 → 5/4/2 oszlop.",
+      "ref": "mobile",
+      "at": "2026-09-07T01:59:10.160Z"
+    },
+    {
+      "id": "m178874641923626",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Create a smart‑home security alert with Alexa+ rou\" — The claim that 'This feature is free to use' — Alexa+ is a paid subscription service ($19.99/month or $9.99/month for Prime members), not free. The guide should clarify this or soften the claim.; The frontmatter specifies tool 'Alexa+' but the guide describes standard Alexa routine f",
+      "ref": "ARTICLE_GUIDE_create-a-smart-home-security-alert-with-alexa-routines.json",
+      "at": "2026-09-07T02:00:19.236Z"
     }
   ]
 }
