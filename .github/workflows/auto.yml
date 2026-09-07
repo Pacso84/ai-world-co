@@ -70,6 +70,54 @@ jobs:
       - name: Függőségek
         run: npm install
 
+      # 🧠 BEÁGYAZÁS-GYORSÍTÓTÁR — VISSZATÖLTÉS (2026-09-06)
+      #
+      # MIÉRT: a vektorok 2026-09-06 óta külön, GITIGNORE-OLT fájlokban élnek
+      # (`memory/memory-embeddings.json`, `guides/topic-embeddings.json`) —
+      # szándékosan, mert a 13,9 MB ↔ 0,3 MB hullámzás megsemmisítette a git
+      # delta-tömörítést (165,9 KB/commit a stabil 14,3 KB helyett, ~335 MB/év
+      # a NYILVÁNOS repó történetében). Az ára viszont az, hogy a CI friss
+      # checkoutja MINDIG hideg gyorsítótárral indul.
+      #
+      # MÉRVE (2026-09-06): a szemantikus memória-előhívás 480 emléket (iro 265
+      # + guide 215) ágyaz be, SOROSAN, ~1 s/hívás → ~8 PERC futásonként. Új
+      # emlék naponta csak ~8 születik, tehát meleg gyorsítótárral ebből ~3-10
+      # hívás marad: 98%-os találati arány. A téma-ismétlés-őr oldalán további
+      # 150-400 hívás/futás, aminek a nagy része a 690 MEGLÉVŐ útmutató-cím —
+      # azok hónapokig változatlanok. Napi 3 futás → ~1400-2600 megspórolt
+      # API-hívás naponta.
+      #
+      # 🔑 A KULCS SZÁNDÉKOSAN FUTÁSONKÉNT EGYEDI. A GitHub gyorsítótárát
+      # UGYANAZZAL A KULCCSAL NEM LEHET FELÜLÍRNI: állandó kulcsnál a legelső
+      # mentés BEFAGYNA, és hetekig egy elavult vektorkészletet töltenénk
+      # vissza. Ezért `run_id`-s kulcs + `restore-keys` ELŐTAG — az utóbbi
+      # mindig a LEGUTÓBB MENTETT egyezőt hozza vissza.
+      #
+      # 🧪 MÉRGEZÉS-VÉDELEM: NEM a kulcs adja, hanem a KÓD, és a visszatöltés
+      # nem kerüli meg. A `core/memory-embeddings.js` fejlécbe írja a
+      # szolgáltatót + a dimenziót, és bejegyzésenként is ellenőrzi
+      # (szolgáltató, dimenzió, vektorhossz, szöveg-ujjlenyomat); a
+      # `core/topic-dedup.js` a jelöltet MINDIG frissen ágyazza be, és csak
+      # azonos hosszúságú gyorsítótár-vektort fogad el. Egy visszatöltött fájl
+      # PONTOSAN ugyanazon a betöltőn megy át, mint a lemezen talált — más út
+      # nincs. Őrzi: `core/ci-embed-cache.test.js`.
+      #
+      # ⚠️ Ha valaha OLYAN beágyazó-szolgáltató kerül a láncba, aminek a
+      # dimenziója EGYEZIK egy meglévőével (ma: Google 768, Mistral 1024), a
+      # `topic-embeddings.json` dimenzió-őre vakká válik. Akkor a `v1` kulcs-
+      # szegmenst `v2`-re KELL emelni. A `core/ci-embed-cache.test.js` ezt
+      # nem a memóriánkra bízza: elbukik, ha a router beágyazó-készlete
+      # megváltozik.
+      - name: Beágyazás-gyorsítótár visszatöltése
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            memory/memory-embeddings.json
+            guides/topic-embeddings.json
+          key: embed-v1-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            embed-v1-
+
       # 🧪 TESZTEK — INGYENES, HÁLÓZAT NÉLKÜLI KAPUK (2026-09-06).
       #
       # MIÉRT KELLETT: 2026-08-31-én a tény-ellenőrző agent egy ÉLŐ cikkben
@@ -727,3 +775,37 @@ jobs:
             sleep 5
           done
           git push || echo "⚠️ push 3 próba után sem sikerült — e futás tartalma elveszhet!"
+
+      # 🧠 BEÁGYAZÁS-GYORSÍTÓTÁR — MENTÉS (2026-09-06)
+      #
+      # ⚠️ MIÉRT KÜLÖN `actions/cache/save` ÉS NEM A KOMBINÁLT `actions/cache`:
+      # az utóbbi a mentést a job VÉGÉN, `post-if: success()` feltétellel
+      # futtatja — vagyis egy BUKOTT futás után NEM MENTENE. Márpedig épp a
+      # bukott futás az, amelyik már kifizette a 480 beágyazást; eldobni a
+      # gyümölcsét pont a legrosszabb pillanatban lenne. Az `if: always()`
+      # ugyanaz a védelem, ami a fenti visszacommitot is őrzi (2026-07-21).
+      #
+      # A gyorsítótár a futásonként EGYEDI kulcs alá kerül (a GitHub egy
+      # meglévő kulcsot nem enged felülírni), a visszatöltés pedig az
+      # `embed-v1-` ELŐTAGRA illeszkedik, és mindig a legutóbbit hozza.
+      # Az egyszer visszatöltött, majd nem hivatkozott régi bejegyzéseket a
+      # GitHub 7 nap után magától kiselejtezi — nincs mit takarítani.
+      #
+      # 🚦 `continue-on-error` — EGY GYORSÍTÓTÁR-HIBA SOSEM BUKTATHATJA EL A
+      # FUTÁST: ha a két fájl egyike sincs meg (pl. a beágyazás egész nap
+      # halott volt), a mentő lépés útvonal-hibát ad. Az veszteség nélküli
+      # eset — a következő futás egyszerűen hidegen indul.
+      #
+      # ⏱️ Nincs `timeout-minutes`: a lépés-időkorlátok összege így változatlan
+      # marad (136 perc a 145-ös job-plafon alatt), amit a
+      # `core/ci-timeouts.test.js` őriz. A mért teher kicsi: a két fájl
+      # együtt ~14-20 MB, tömörítve ~4-6 MB → néhány másodperc oda-vissza.
+      - name: Beágyazás-gyorsítótár mentése
+        if: always()
+        continue-on-error: true
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            memory/memory-embeddings.json
+            guides/topic-embeddings.json
+          key: embed-v1-${{ github.run_id }}-${{ github.run_attempt }}

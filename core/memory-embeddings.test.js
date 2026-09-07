@@ -45,6 +45,8 @@ const GITIGNORE = fileURLToPath(new URL('../.gitignore', import.meta.url));
 // Bájtra: Bufferként olvasunk, hogy a sorvég se csúszhasson el észrevétlenül.
 const ELES_STORE_ELOTTE = existsSync(ELES_STORE) ? readFileSync(ELES_STORE) : null;
 const ELES_CACHE_ELOTTE = existsSync(ELES_CACHE) ? readFileSync(ELES_CACHE) : null;
+const ELES_SEMANTIC = fileURLToPath(new URL('../memory/semantic-guard.json', import.meta.url));
+const ELES_SEMANTIC_ELOTTE = existsSync(ELES_SEMANTIC) ? readFileSync(ELES_SEMANTIC) : null;
 
 const MUNKA = join(tmpdir(), 'aiworld-mem-embed-teszt-' + process.pid);
 mkdirSync(MUNKA, { recursive: true });
@@ -52,6 +54,13 @@ const TESZT_STORE = join(MUNKA, 'store.json');
 const TESZT_CACHE = join(MUNKA, 'memory-embeddings.json');
 process.env.MEMORY_STORE_PATH = TESZT_STORE;
 process.env.MEMORY_EMBED_CACHE_PATH = TESZT_CACHE;
+// ⚠️ 2026-09-07: a `recallSemantic()` AZÓTA LEMEZRE IS ÍRJA a mérleget
+// (`core/semantic-guard.js`) — enélkül ez a teszt az ÉLES
+// `memory/semantic-guard.json`-t hozta létre `provider: "teszt"`, `dim: 8`
+// tartalommal. Élesben megtörtént, egy teljes tesztfuttatás után.
+// 🔑 ÚJ ÍRÁSI ÚT = ÚJ ÚTVONAL-FELÜLÍRÁS. Ha egy modul új helyre kezd írni,
+// MINDEN tesztjében külön kell terelni — a meglévő két felülírás nem véd meg tőle.
+process.env.SEMANTIC_GUARD_PATH = join(MUNKA, 'semantic-guard.json');
 
 const { recallSemantic, szemantikusAllapot, purgeStoreEmbeddings } = await import('./memory-manager.js');
 const { cacheBetolt, cacheOlvas, cacheIr, cacheMent, ujjlenyomat } = await import('./memory-embeddings.js');
@@ -394,6 +403,24 @@ await t('🔒 az éles memory/memory-embeddings.json bájtra változatlan', () =
     return;
   }
   assert.ok(utana && utana.equals(ELES_CACHE_ELOTTE), '🔴 A TESZT BELEÍRT AZ ÉLES BEÁGYAZÁS-CACHE-BE!');
+});
+
+// ⚠️ 2026-09-07, MUTÁCIÓVAL KIMÉRVE. A `recallSemantic()` ezen a napon kapott
+// EGY ÚJ ÍRÁSI UTAT (`memory/semantic-guard.json`), és ez a teszt azonnal az
+// ÉLES fájlt hozta létre `provider: "teszt"` tartalommal. A fenti két záró őr
+// NEM fogta meg — más fájlt néztek. Kipróbálva: a felülírás eltávolítása után
+// az éles fájl LÉTREJÖTT, és MIND A 78 TESZT ZÖLD MARADT.
+//
+// 🔑 EGY ÚJ ÍRÁSI ÚT NEM CSAK ÚJ FELÜLÍRÁST KÍVÁN, HANEM ÚJ ZÁRÓ ŐRT IS.
+// A meglévő őrök pontosan annyit védenek, amennyit néznek — a hallgatásuk
+// nem bizonyíték egy olyan fájlról, amiről nem tudnak.
+await t('🔒 az éles memory/semantic-guard.json érintetlen', () => {
+  const utana = existsSync(ELES_SEMANTIC) ? readFileSync(ELES_SEMANTIC) : null;
+  if (ELES_SEMANTIC_ELOTTE === null) {
+    assert.equal(utana, null, '🔴 A TESZT LÉTREHOZTA AZ ÉLES SZEMANTIKUS ŐRSZEM-FÁJLT!');
+    return;
+  }
+  assert.ok(utana && utana.equals(ELES_SEMANTIC_ELOTTE), '🔴 A TESZT BELEÍRT AZ ÉLES ŐRSZEM-FÁJLBA!');
 });
 
 try { rmSync(MUNKA, { recursive: true, force: true }); } catch { /* takarítás nem kritikus */ }

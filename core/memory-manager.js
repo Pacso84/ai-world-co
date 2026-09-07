@@ -25,6 +25,7 @@ import { readFileSync, writeFileSync, existsSync, mkdirSync, statSync } from 'fs
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { cacheBetolt, cacheOlvas, cacheIr, cacheMent } from './memory-embeddings.js';
+import { jegyezSzemantikus } from './semantic-guard.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const MEMORY_DIR = join(__dirname, '..', 'memory');
@@ -218,12 +219,20 @@ let _szemantikus = { at: null, provider: null, dim: 0, osszes: 0, cache: 0, beag
  *
  * ⚠️ FOLYAMAT-LOKÁLIS, tehát ezt CSAK ugyanabban a processzben lehet
  * kiolvasni, ahol a keresés futott. Ez ma az `agents/iro` és `agents/guide`,
- * NEM a külön processzben futó `core/daily-report.js` — vagyis a napi
- * Telegram-riportba ez az adat NEM jut el. Pontosan ez az alak buktatta meg az
- * `embedStatus()`-t 2026-08-30-ig („a komment szerint a riport kiírja, csak
- * épp nulla hívója volt"), ezért mondjuk ki: EGYELŐRE A CI-NAPLÓIG JUT EL, a
- * hangos `console.warn`-nal együtt. Ha ez valaha a userhez is kell, lemezre
- * kell tenni (a `core/embed-guard.js` mintája), nem ide.
+ * NEM a külön processzben futó `core/daily-report.js`.
+ *
+ * 🔑 2026-09-06-IG EZ VOLT A TELJES IGAZSÁG, ÉS EZ VOLT A BAJ. A komment maga
+ * mondta ki, hogy a lelet „EGYELŐRE A CI-NAPLÓIG JUT EL" — vagyis senkihez.
+ * Pontosan az az alak, ami az `embedStatus()`-t megbuktatta 2026-08-30-ig
+ * („a komment szerint a riport kiírja, csak épp nulla hívója volt"), és
+ * pontosan az, amit a projekt kemény szabálya tilt: az őrszem csak akkor őr,
+ * ha odaszól, AHOL A USER NÉZ.
+ *
+ * AZÓTA a `recallSemantic()` LEMEZRE is teszi a mérleget
+ * (`memory/semantic-guard.json`, `core/semantic-guard.js`), a napi Telegram-
+ * riport pedig beolvassa. Ez a függvény maradt, ami volt: a MOSTANI processz
+ * diagnózisa (teszt + naplózás). Ha új mezőt veszel fel ide, kérdezd meg,
+ * kell-e a lemezre is — különben újra egy néma számláló születik.
  */
 export function szemantikusAllapot() { return { ..._szemantikus }; }
 
@@ -309,6 +318,16 @@ export async function recallSemantic(query, opts = {}) {
     console.warn(`   ⚠️ szemantikus memória: ${kihagyott}/${candidates.length} emlék beágyazása NEM sikerült `
       + `— ezek KIMARADTAK a keresésből (a „nem tudom" nem „nem hasonló"). Szolgáltató: ${provider}.`);
   }
+
+  // 🔑 ÉS LEMEZRE IS (2026-09-07). A fenti `console.warn` a CI-naplóig jut el —
+  // vagyis senkihez. A `recallSemantic()` az `agents/iro` és `agents/guide`
+  // PROCESSZÉBEN fut, a napi riport egy MÁSIKBAN: folyamat-lokális változóból
+  // az sosem láthatná. Pontosan ez az alak buktatta meg az `embedStatus()`-t
+  // 2026-08-30-ig. A `jegyezSzemantikus()` SOHA nem dob, és csak változáskor ír.
+  jegyezSzemantikus({
+    at: _szemantikus.at, provider, dim,
+    osszes: candidates.length, kihagyott
+  });
 
   const scored = candidates
     .filter(it => vektorok.has(it.id))

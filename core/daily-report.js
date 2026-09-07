@@ -32,6 +32,7 @@ import { shouldSendReport, sikeresKuldes } from './report-window.js';
 import { szurZajt, csendesSor } from './report-noise.js';
 import { elavultOrszemek, frissessegSor } from './guard-freshness.js';
 import { embedSor } from './embed-guard.js';
+import { szemantikusSor } from './semantic-guard.js';
 import { bufferSor } from './buffer-guard.js';
 import { tesztSor } from './test-guard.js';
 
@@ -729,6 +730,21 @@ async function main() {
     const sor = embedSor(eg);
     if (sor) lines.push(sor);
   } catch { /* még nem futott beágyazás — nem baj */ }
+
+  // 🧠 SZEMANTIKUS MEMÓRIA-MÉRLEG (2026-09-07). Az `embedSor()` fölötte azt
+  // mondja meg, hogy a beágyazó ÉL-E. EZ a sor mást mér: hogy a KERESÉSBŐL
+  // hány emlék MARADT KI, mert a saját beágyazásuk elhasalt (pl. 429). A kettő
+  // független: egy működő szolgáltató mellett is kieshet az emlékek fele.
+  //
+  // ⚠️ Enélkül a `recallSemantic()` mérlege csak a CI-naplóig jutott (a
+  // `szemantikusAllapot()` FOLYAMAT-LOKÁLIS — a riport másik processzben fut,
+  // tehát sosem láthatná). Pontosan az az alak, ami az `embedStatus()`-t
+  // megbuktatta 2026-08-30-ig: a komment szerint „a riport kiírja", és nem írta.
+  try {
+    const sg = JSON.parse(readFileSync(join(ROOT, 'memory', 'semantic-guard.json'), 'utf-8'));
+    const sor = szemantikusSor(sg);
+    if (sor) lines.push(sor);
+  } catch { /* még nem futott szemantikus keresés — nem baj */ }
 
   // 🕰️ ŐRSZEM-FRISSESSÉG (2026-08-29, hibavadászat). A riport eddig MINDEN
   // őrszem-fájlból csak a `problems`-et nézte, az `at` bélyeget EGYIKBŐL SEM.

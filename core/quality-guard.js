@@ -28,13 +28,46 @@ const PUBLIC_DIR = join(ROOT, 'website', 'public');
 
 // Teljes-alakú hivatalos nevek (szabálykönyv 7. szakasz kivétel-listája):
 // ezek NEM cégnév-duplázások / nem rövidítendők.
-const FULLFORM_OK = new Set([
+export const FULLFORM_OK = new Set([
   'GitHub Copilot', 'Meta AI', 'Apple Intelligence', 'Alibaba Cloud',
   'Mistral AI', 'Le Chat', 'Hugging Face', 'Project Genie', 'NotebookLM',
-  'Google Photos'
+  'Google Photos',
+  // 🔑 2026-09-06. Ez a név 08-30, 09-01 és 09-06 napi jelentésében is
+  // „cégnév-duplázás"-ként szerepelt — HAMISAN. A „Microsoft 365 Copilot" a
+  // termék hivatalos, teljes alakú neve; rövidíteni csak úgy lehetne, hogy
+  // KITALÁLUNK egy nem létező terméket.
+  // ⚠️ ÉS EZ MÁR MEGTÖRTÉNT: 2026-08-30-án három élő útmutatóból javítottuk ki
+  // a kitalált „365 Copilot" nevet. A figyelmeztetés tehát pontosan azt a hibát
+  // ajánlotta vissza, amit egyszer már megszüntettünk — egy tanács, amit nem
+  // lehet helyesen követni, rosszabb a semminél.
+  'Microsoft 365 Copilot'
 ]);
 // Generikus (nem-termék) szavak a chipben → találat
 const GENERIC_RX = /\(|,| in |powered|capacit|resolution|assistant|chatbot|workspace|feature| api\b|projects?$| chat$|models?$| llm\b| ai$/i;
+
+/**
+ * Kifogásolható-e ez a chip? Tiszta függvény — lemez és hálózat nélkül tesztelhető.
+ *
+ * 🔑 MIÉRT KÜLÖN FÜGGVÉNY (2026-09-06). A szabály korábban a `qualityFindings()`
+ * belsejében élt, és csak a VALÓDI cikkeken lehetett mérni. Emiatt a tesztje
+ * egyetlen irányra volt élezhető („ne legyen hamis riasztás") — a mutációs próba
+ * viszont megmutatta, hogy ez ELÉGTELEN: ha a szabályt teljesen kitörlöm, a teszt
+ * ZÖLD MARAD, mert találat akkor sincs. A projekt kemény szabálya:
+ * **minden mérce IRÁNYA számít** — a valódi hibát is el KELL kapni.
+ *
+ * @returns {'generikus'|'cegnev-dupla'|null}
+ */
+export function chipKifogas(tool, company) {
+  const t = String(tool || '').trim();
+  if (!t) return null;
+  // A hivatalos, teljes alakú nevek nem rövidítendők — lásd a FULLFORM_OK-ot.
+  if (FULLFORM_OK.has(t)) return null;
+  if (GENERIC_RX.test(t)) return 'generikus';
+  const c = String(company || '').trim();
+  // ⚠️ SZÓHATÁRON, nem puszta előtagként: a „Meta" nem előtagja a „Metaphor"-nak.
+  if (c && t.toLowerCase().startsWith(c.toLowerCase() + ' ')) return 'cegnev-dupla';
+  return null;
+}
 
 function strip(s) { return (s || '').trim().replace(/^["']+|["']+$/g, '').trim(); }
 
@@ -108,9 +141,9 @@ function checkChips() {
     // Terv ↔ kész cikk eltérés: a párosító mást tervezett, mint amiről az író írt
     if (fmTool && metaTool && fmTool !== metaTool)
       out.push(`CHIP terv≠cikk: _meta "${metaTool}" de a cikk "${fmTool}" (${file.slice(0, 50)})`);
-    if (FULLFORM_OK.has(tool)) continue;
-    if (GENERIC_RX.test(tool)) out.push(`CHIP generikus/toldalékos: "${tool}" (${file.slice(0, 50)})`);
-    else if (company && tool.toLowerCase().startsWith(company.toLowerCase() + ' '))
+    const kifogas = chipKifogas(tool, company);
+    if (kifogas === 'generikus') out.push(`CHIP generikus/toldalékos: "${tool}" (${file.slice(0, 50)})`);
+    else if (kifogas === 'cegnev-dupla')
       out.push(`CHIP cégnév-duplázás: "${tool}" a(z) ${company} szekcióban (${file.slice(0, 50)})`);
   }
   // Két néven ugyanaz: az egyik tool a másik előtagja (Qwen vs "Qwen Chat")
