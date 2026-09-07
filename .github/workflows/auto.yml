@@ -717,6 +717,14 @@ jobs:
           # feltöltött pénz viszont fizikai korlát — ha az fogy el, a cég
           # NÉMÁN elhallgat, jóval a keret elérése előtt. Read-only hívás, $0.
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          # ÜGYFÉLSZOLGÁLAT + KÉZBESÍTETLEN ÜZENETEK (2026-09-07, HIÁNYZOTT).
+          # A 08-29-i „📮 KÉZBESÍTETLEN kapcsolat-üzenet" riasztás azért
+          # készült, hogy egy elveszett látogatói üzenet ne maradhasson
+          # láthatatlan — a látogató {ok:true}-t kapott, azt hitte, válaszolunk.
+          # A kulcs viszont CSAK a heti riport lépésére került rá, így a napi
+          # jelentés egész blokkja (💬 számok + 📮 riasztás + a „nem tudtam
+          # ellenőrizni" sor) a megírása óta NÉMA volt. A titok megvolt.
+          FEEDBACK_EXPORT_KEY: ${{ secrets.FEEDBACK_EXPORT_KEY }}
           # ŐRKUTYA-SODRÓDÁS (2026-09-07): a riport megnézi a SAJÁT
           # futáslistánkat. Ha egy pótfutás a türelem-küszöbnél kisebb résnél
           # sült el, akkor az élő Worker RÉGI kódot futtat — a Worker-telepítés
