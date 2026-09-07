@@ -33,6 +33,7 @@ import { szurZajt, csendesSor } from './report-noise.js';
 import { elavultOrszemek, frissessegSor } from './guard-freshness.js';
 import { embedSor } from './embed-guard.js';
 import { szemantikusSor } from './semantic-guard.js';
+import { futasokLekerdez, sodrodasVizsgalat, sodrodasSor } from './watchdog-drift.js';
 import { bufferSor } from './buffer-guard.js';
 import { tesztSor } from './test-guard.js';
 
@@ -745,6 +746,23 @@ async function main() {
     const sor = szemantikusSor(sg);
     if (sor) lines.push(sor);
   } catch { /* még nem futott szemantikus keresés — nem baj */ }
+
+  // 🕰️ ŐRKUTYA-SODRÓDÁS (2026-09-07). A többi őr a REPÓ kódját méri. Ez az
+  // egy a KÜLVILÁGOT — mert az őrkutya döntését nem a repó futtatja, hanem a
+  // Cloudflare Worker, egy `wrangler deploy`-jal befagyasztott bundle-ből, és
+  // a Worker-telepítés NINCS a CI-ban. A 09-06-i türelem-javítás (9,5 → 14
+  // óra) ezért 7 napig PAPÍRON volt meg: a commit bement, a tesztje zöld volt,
+  // közben az élő Worker a régi küszöbbel dolgozott, napi egy fölösleges
+  // pótfutás árán (09-01, 09-02, 09-03, 09-04, 09-07 — mindegyik után
+  // perceken belül megjött az ütemezett futás magától).
+  //
+  // A jel: ha egy pótfutás a türelem-küszöbnél KISEBB résnél sült el, az
+  // cáfolhatatlan bizonyíték, hogy az élő kód nem a repóé. Forrást olvasó
+  // teszt ezt SOHA nem látja — a forrásban minden rendben van.
+  try {
+    const sor = sodrodasSor(sodrodasVizsgalat(await futasokLekerdez()));
+    if (sor) lines.push(sor);
+  } catch { /* a sodródás-vizsgálat SOHA ne buktassa el a jelentést */ }
 
   // 🕰️ ŐRSZEM-FRISSESSÉG (2026-08-29, hibavadászat). A riport eddig MINDEN
   // őrszem-fájlból csak a `problems`-et nézte, az `at` bélyeget EGYIKBŐL SEM.

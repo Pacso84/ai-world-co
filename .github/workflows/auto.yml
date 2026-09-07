@@ -17,6 +17,7 @@ on:
 
 permissions:
   contents: write             # a generált tartalom visszacommitolásához
+  actions: read               # őrkutya-sodródás: a saját futáslistánk olvasása
 
 concurrency:
   group: aiworld-auto
@@ -716,6 +717,13 @@ jobs:
           # feltöltött pénz viszont fizikai korlát — ha az fogy el, a cég
           # NÉMÁN elhallgat, jóval a keret elérése előtt. Read-only hívás, $0.
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          # ŐRKUTYA-SODRÓDÁS (2026-09-07): a riport megnézi a SAJÁT
+          # futáslistánkat. Ha egy pótfutás a türelem-küszöbnél kisebb résnél
+          # sült el, akkor az élő Worker RÉGI kódot futtat — a Worker-telepítés
+          # ugyanis nincs a CI-ban, így egy javítás észrevétlenül maradhat
+          # papíron (09-06 … 09-07: 7 nap, napi egy fölösleges pótfutás).
+          # A beépített futtató-token elég hozzá: csak `actions: read` kell.
+          GITHUB_TOKEN: ${{ github.token }}
         run: node core/daily-report.js || true
 
       # Heti kereső-riport (vasárnap): GSC+Bing számok + hírlevél-lámpa
