@@ -11,7 +11,15 @@ on:
   # 🐕 ŐRKUTYA (2026-08-27): a Cloudflare Worker cron-ja indítja, HA a GitHub
   # saját ütemezője kihagyott egy futást. 08-27-én a 00:00 UTC-s futás EL SEM
   # INDULT — a GitHub az ütemezett futásokra „legjobb szándék" garanciát ad.
-  # A döntés a core/pipeline-watchdog.js-ben él (tesztelve); a küszöb 9,5 óra.
+  # A döntés a core/pipeline-watchdog.js-ben él (tesztelve). A küszöböt NE
+  # írd ide számmal: ez a komment 2026-09-07-ig „9,5 óra"-t mondott, miközben
+  # a valódi érték 09-06 óta 14 — egy szám, ami két helyen van, elcsúszik.
+  #
+  # ⚠️ A DÖNTÉST A CLOUDFLARE WORKER FUTTATJA, és a Worker-telepítés NINCS a
+  # CI-ban: a `core/pipeline-watchdog.js` átírása ÖNMAGÁBAN nem élesít semmit,
+  # `npx wrangler deploy` kell a telegram-worker/ mappából. Ennek elmaradása
+  # 7 napig napi egy fölösleges pótfutást okozott. Azóta a napi jelentés
+  # figyeli (core/watchdog-drift.js).
   repository_dispatch:
     types: [pipeline-catchup]
 
