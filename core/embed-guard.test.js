@@ -110,7 +110,15 @@ t('a lemezre írt alak illeszkedik az őrszem-mintához', () => {
 });
 
 t('SOHA nem dob — egy őrszem nem akaszthat meg egy AI-hívást', () => {
-  assert.doesNotThrow(() => jegyezEmbed(halott('2026-09-01T10:00:00.000Z'), 'Z:/nincs/ilyen/ut/x.json'));
+  // ⚠️ EZ AZ ÚT KORÁBBAN 'Z:/nincs/ilyen/ut/x.json' VOLT, és élesben elsült
+  // (2026-09-07). Windowson a `Z:` nem létező meghajtó → ENOENT, tehát a teszt
+  // itt helyesen viselkedett. LINUXON viszont ez egy egyszerű RELATÍV mappa:
+  // a CI teszt-lépése létrehozta a repóban, a `git add -A` pedig BECOMMITOLTA
+  // — a fájlnév kettőspontja miatt utána egyetlen Windows-gép sem tudta
+  // kicsekkolni a repót. A javítás egy LÉTEZŐ FÁJL alá mutat: a szülő nem
+  // mappa, ezért mindkét rendszeren ENOTDIR (kimérve).
+  const IRHATATLAN = join(fileURLToPath(import.meta.url), 'nem-mappa', 'x.json');
+  assert.doesNotThrow(() => jegyezEmbed(halott('2026-09-01T10:00:00.000Z'), IRHATATLAN));
   assert.doesNotThrow(() => jegyezEmbed(null, UT));
   for (const rossz of [null, undefined, 'hopp', 42]) assert.doesNotThrow(() => kellIrni(rossz, ok('2026-09-01T10:00:00.000Z')));
 });

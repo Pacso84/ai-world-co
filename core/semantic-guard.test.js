@@ -230,7 +230,14 @@ await t('4b) a fájlnév EGY helyen él (a riport is erre hivatkozik)', async ()
 });
 
 await t('4c) SOHA nem dob — egy őrszem nem akaszthat meg egy AI-hívást', async () => {
-  assert.doesNotThrow(() => jegyezSzemantikus(baj('2026-09-06T02:00:00.000Z'), 'Z:/nincs/ilyen/ut/x.json'));
+  // ⚠️ EZ AZ ÚT KORÁBBAN 'Z:/nincs/ilyen/ut/x.json' VOLT, és élesben elsült
+  // (2026-09-07): Windowson nem létező meghajtó, LINUXON viszont közönséges
+  // RELATÍV mappa. A CI teszt-lépése létrehozta a repóban, a `git add -A`
+  // becommitolta — és a kettőspontos fájlnév után Windowson kicsekkolni sem
+  // lehetett a repót. Egy LÉTEZŐ FÁJL alá mutató út mindkét rendszeren
+  // ENOTDIR-t ad (kimérve).
+  const IRHATATLAN = join(fileURLToPath(import.meta.url), 'nem-mappa', 'x.json');
+  assert.doesNotThrow(() => jegyezSzemantikus(baj('2026-09-06T02:00:00.000Z'), IRHATATLAN));
   assert.doesNotThrow(() => jegyezSzemantikus(null, TESZT_GUARD));
   assert.doesNotThrow(() => jegyezSzemantikus('hopp', TESZT_GUARD));
 });

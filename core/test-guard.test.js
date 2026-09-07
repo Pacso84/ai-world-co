@@ -200,7 +200,12 @@ t('📓 a tegnapi zöldet FELÜLÍRJA a mai piros', () => {
 });
 
 t('az írás hibája NEM dob (egy őrszem sosem ronthatja el a futást)', () => {
-  assert.doesNotThrow(() => irTesztGuard('/nincs/ilyen/mappa/soha', join, jo()));
+  // ⚠️ EZ '/nincs/ilyen/mappa/soha' VOLT — a testvér-hibája annak, ami
+  // 2026-09-07-én élesben elsült. Linuxon a `/` alá írni jogosultság-hiba,
+  // Windowson viszont ez `C:\nincs\ilyen\mappa\soha`-ként LÉTREHOZHATÓ.
+  // Egy LÉTEZŐ FÁJL alá mutató út mindkét rendszeren ENOTDIR (kimérve).
+  assert.doesNotThrow(() =>
+    irTesztGuard(join(fileURLToPath(import.meta.url), 'nem-mappa'), join, jo()));
 });
 
 // ── 4. EGYÜTT A RIPORT TÖBBI RÉTEGÉVEL ──────────────────────────────
