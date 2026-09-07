@@ -1,25 +1,4 @@
 {
-  "2026-08-17": [
-    {
-      "at": "2026-08-17T00:44:59.966Z",
-      "file": "WRITER_GUIDE_use-alexa-to-schedule-meetings-and-hear-your-calendar-read-a.json",
-      "action": "hold",
-      "reasons": [
-        "AI-bíró nem elérhető (érthetetlen AI-válasz: credible mező hiányzik) — visszatartva a következő futásig"
-      ]
-    },
-    {
-      "at": "2026-08-17T16:16:31.079Z",
-      "file": "WRITER_2026-08-17T16-15-19-703Z_openai-blog_OpenAI_joins_PORTS-Pike_project.json",
-      "action": "block",
-      "reasons": [
-        "The 'PORTS-Pike' initiative is an invented partnership/project name with no verifiable basis, presented as fact throughout the article.",
-        "The claim that OpenAI is joining a partnership bringing AI infrastructure and 'thousands of jobs' to Southern Ohio is presented as factual news but appears to be fabricated — there is no verifiable record of such an OpenAI partnership or Southern Ohio AI infrastructure project by this name.",
-        "Specific regional details (Southern Ohio data center hub, workforce development programs tied to this project, chamber of commerce 'supplier readiness' workshops) are invented specifics attached to a fabricated project."
-      ],
-      "confidence": 7
-    }
-  ],
   "2026-08-18": [
     {
       "at": "2026-08-18T00:57:38.242Z",
@@ -319,6 +298,17 @@
         "The article refers to a specific UI element called the 'Ask Gemini in Meet' panel that surfaces co-presenter suggestions, which does not match known Google Meet/Gemini features."
       ],
       "confidence": 6
+    }
+  ],
+  "2026-09-07": [
+    {
+      "at": "2026-09-07T13:51:25.492Z",
+      "file": "WRITER_2026-09-07T13-47-12-643Z_picsart_How_to_make_an_AI_bedtime_story_video_from_one_pho.json",
+      "action": "block",
+      "reasons": [
+        "The article states 'Tools like Picsart and similar consumer image editors have begun offering this kind of workflow as a built-in template, alongside other AI effects.' This presents an image-to-video bedtime story template as an actual feature of Picsart. Picsart is a real product, but this specific 'image-to-video personalized bedtime story' template feature is not a verified Picsart capability and appears fabricated."
+      ],
+      "confidence": 7
     }
   ]
 }

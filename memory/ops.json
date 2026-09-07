@@ -1,102 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178865935343846",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-09-06T01:49:13.438Z",
-      "updated": "2026-09-06T01:49:13.614Z"
-    },
-    {
-      "id": "t178865935361678",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-06T01:49:13.616Z",
-      "updated": "2026-09-06T01:49:13.787Z"
-    },
-    {
-      "id": "t178865935379086",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-09-06T01:49:13.790Z",
-      "updated": "2026-09-06T01:49:14.020Z"
-    },
-    {
-      "id": "t178865935406722",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-09-06T01:49:14.067Z",
-      "updated": "2026-09-06T01:54:40.395Z"
-    },
-    {
-      "id": "t178865968039777",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-06T01:54:40.397Z",
-      "updated": "2026-09-06T01:55:39.754Z"
-    },
-    {
-      "id": "t178865973979580",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-09-06T01:55:39.796Z",
-      "updated": "2026-09-06T01:55:39.964Z"
-    },
-    {
-      "id": "t178865973996532",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-09-06T01:55:39.965Z",
-      "updated": "2026-09-06T01:57:07.373Z"
-    },
-    {
-      "id": "t178865982737781",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-09-06T01:57:07.377Z",
-      "updated": "2026-09-06T01:59:07.285Z"
-    },
-    {
-      "id": "t178865994728867",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-09-06T01:59:07.288Z",
-      "updated": "2026-09-06T01:59:50.021Z"
-    },
-    {
-      "id": "t178865999002339",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-06T01:59:50.023Z",
-      "updated": "2026-09-06T02:00:08.792Z"
-    },
-    {
-      "id": "t178866000879378",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-06T02:00:08.793Z",
-      "updated": "2026-09-06T02:00:48.878Z"
-    },
-    {
-      "id": "t178866004888068",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-09-06T02:00:48.880Z",
-      "updated": "2026-09-06T02:01:22.708Z"
-    },
-    {
       "id": "t178866008271086",
       "title": "Run designer",
       "status": "done",
@@ -479,33 +383,105 @@
       "agent": "publisher",
       "created": "2026-09-07T12:14:08.132Z",
       "updated": "2026-09-07T12:14:20.438Z"
+    },
+    {
+      "id": "t17887888086025",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-09-07T13:46:48.602Z",
+      "updated": "2026-09-07T13:46:48.786Z"
+    },
+    {
+      "id": "t178878880878830",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-09-07T13:46:48.788Z",
+      "updated": "2026-09-07T13:47:12.658Z"
+    },
+    {
+      "id": "t17887888326609",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-09-07T13:47:12.660Z",
+      "updated": "2026-09-07T13:47:12.857Z"
+    },
+    {
+      "id": "t178878883285982",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-09-07T13:47:12.859Z",
+      "updated": "2026-09-07T13:51:02.336Z"
+    },
+    {
+      "id": "t178878906233831",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-07T13:51:02.338Z",
+      "updated": "2026-09-07T13:51:25.509Z"
+    },
+    {
+      "id": "t178878908551294",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-09-07T13:51:25.512Z",
+      "updated": "2026-09-07T13:51:38.300Z"
+    },
+    {
+      "id": "t178878909830227",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-07T13:51:38.302Z",
+      "updated": "2026-09-07T13:52:05.441Z"
+    },
+    {
+      "id": "t178878912544321",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-09-07T13:52:05.443Z",
+      "updated": "2026-09-07T13:52:12.439Z"
+    },
+    {
+      "id": "t178878913249218",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-07T13:52:12.492Z",
+      "updated": "2026-09-07T13:52:23.076Z"
+    },
+    {
+      "id": "t178878914307850",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-09-07T13:52:23.078Z",
+      "updated": "2026-09-07T13:52:32.378Z"
+    },
+    {
+      "id": "t178878915237968",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-07T13:52:32.379Z",
+      "updated": "2026-09-07T13:52:47.774Z"
+    },
+    {
+      "id": "t178878916777634",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-09-07T13:52:47.776Z",
+      "updated": "2026-09-07T13:53:12.335Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178790553842440",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). A line-up kész és kohéensen mutatja be az AI praktikus, hétköznapi felhasználását – munkahelyi levelektől a személyes üzenetekig. Jó, hogy a privacy téma is helyet kapott, és a különböző eszközök (Cha",
-      "agent": "publisher",
-      "at": "2026-08-28T08:25:38.424Z",
-      "loud": false
-    },
-    {
-      "id": "n178790555215219",
-      "level": "success",
-      "text": "6 hír + 2 útmutató publikálva (költség: $0.1587).",
-      "agent": "ceo",
-      "at": "2026-08-28T08:25:52.152Z",
-      "loud": false
-    },
-    {
-      "id": "n178790556190959",
-      "level": "warn",
-      "text": "📨 fact-check → human: Ez az útmutató talán tárgytalanná vált: \"Automate basic email replies in Outlook with Meta \" — Meta AI does not have an ",
-      "agent": "fact-check",
-      "at": "2026-08-28T08:26:01.909Z",
-      "loud": false
-    },
     {
       "id": "n178794509129298",
       "level": "info",
@@ -1281,45 +1257,33 @@
       "agent": "ceo",
       "at": "2026-09-07T12:14:20.471Z",
       "loud": false
+    },
+    {
+      "id": "n178878915236823",
+      "level": "info",
+      "text": "SEO: 1 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-09-07T13:52:32.369Z",
+      "loud": false
+    },
+    {
+      "id": "n178878917762333",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The line-up is solid and practical — all 10 articles help everyday people communicate better using AI, from complaint emails to sympathy messages. Before publishing, do a quick fact-check on the AI to",
+      "agent": "publisher",
+      "at": "2026-09-07T13:52:57.623Z",
+      "loud": false
+    },
+    {
+      "id": "n178878919238483",
+      "level": "success",
+      "text": "1 hír + 0 útmutató publikálva (költség: $0.0335).",
+      "agent": "ceo",
+      "at": "2026-09-07T13:53:12.384Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178794514542656",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Automate meeting note‑taking with Microsoft Copilo\" — The guide uses \"Microsoft Copilot\" generically throughout, but Microsoft now specifically brands the meeting assistant as \"Microsoft 365 Copilot\" in their official communications. The generic name could confuse users looking for the specific product.",
-      "ref": "ARTICLE_GUIDE_automate-meeting-note-taking-with-microsoft-copilot-in-teams.json",
-      "at": "2026-08-28T19:25:45.426Z"
-    },
-    {
-      "id": "m178794575291571",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-08-28T19:35:52.915Z"
-    },
-    {
-      "id": "m17879463245086",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Automating repetitive Git commands using Copilot s\" — GitHub Copilot is a paid service. Make sure you have an active subscription for Copilot and Copilot Chat.",
-      "ref": "ARTICLE_GUIDE_automating-repetitive-git-commands-using-copilot-suggestions.json",
-      "at": "2026-08-28T19:45:24.508Z"
-    },
-    {
-      "id": "m178797990765259",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-08-29T05:05:07.652Z"
-    },
     {
       "id": "m178797997849294",
       "from": "fact-check",
@@ -2647,6 +2611,42 @@
       "text": "1 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-09-07T12:20:30.850Z"
+    },
+    {
+      "id": "m17887890854902",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"How to make an AI bedtime story video from one photo\" — mi a baj: The article states 'Tools like Picsart and similar consumer image editors have begun offering this kind of workflow as a built-in template, alongside other AI effects.' This presents an image-to-video bedtime story template as an actual feature of Picsart. Picsart is a real product, but this specific 'image-to",
+      "ref": "2026-09-07T13-47-12-643Z_picsart_How_to_make_an_AI_bedtime_story_video_from_one_pho.json",
+      "at": "2026-09-07T13:51:25.490Z"
+    },
+    {
+      "id": "m178878909828822",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"How to make an AI bedtime story video from one photo\" — javítva: The article states 'Tools like Picsart and similar consumer image editors have begun offering this kind of workflow as a built-in template, alongside other AI effects.' This presents an image-to-video bedtime story template as an actual feature of Picsart. Picsart is a real product, but this specific 'image-to-video per",
+      "ref": "2026-09-07T13-47-12-643Z_picsart_How_to_make_an_AI_bedtime_story_video_from_one_pho.json",
+      "at": "2026-09-07T13:51:38.288Z"
+    },
+    {
+      "id": "m178878912542577",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"How to make an AI bedtime story video from one photo\" (?/10)",
+      "ref": "2026-09-07T13-47-12-643Z_picsart_How_to_make_an_AI_bedtime_story_video_from_one_pho.json",
+      "at": "2026-09-07T13:52:05.425Z"
+    },
+    {
+      "id": "m178878916772113",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 20 → 5/4/2 oszlop.",
+      "ref": "mobile",
+      "at": "2026-09-07T13:52:47.721Z"
     }
   ]
 }
