@@ -1,0 +1,38 @@
+{
+  "started_at": "2026-09-08T12:23:05.415Z",
+  "drafts_total": 2,
+  "articles_written": 2,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 0,
+  "merged_total": 0,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "total_cost_usd": 0.02035383,
+  "by_article": [
+    {
+      "draft": "2026-09-08T12-23-05-031Z_picsart_From_one_image_to_a_full_set__Recraft_V4_Styles_pr.json",
+      "writer_output": "WRITER_2026-09-08T12-23-05-031Z_picsart_From_one_image_to_a_full_set__Recraft_V4_Styles_pr.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.01224318,
+      "duration_ms": 83020,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-09-08T12-23-05-031Z_ibm_How_llm-d_makes_the_most_of_the_hardware_you_alrea.json",
+      "writer_output": "WRITER_2026-09-08T12-23-05-031Z_ibm_How_llm-d_makes_the_most_of_the_hardware_you_alrea.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.00766455,
+      "duration_ms": 22078,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    }
+  ],
+  "finished_at": "2026-09-08T12:25:07.605Z",
+  "duration_seconds": 122.19
+}

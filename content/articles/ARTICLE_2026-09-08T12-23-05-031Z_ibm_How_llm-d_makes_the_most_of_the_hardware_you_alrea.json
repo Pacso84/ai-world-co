@@ -1,0 +1,69 @@
+{
+  "_meta": {
+    "written_at": "2026-09-08T12:28:40.191Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.009385668,
+    "original_draft": "2026-09-08T12-23-05-031Z_ibm_How_llm-d_makes_the_most_of_the_hardware_you_alrea.json",
+    "source_id": "ibm",
+    "source_name": "IBM Research (hivatalos)",
+    "source_link": "https://research.ibm.com/blog/running-open-models-on-h100-gpus-with-llmd?utm_medium=rss&utm_source=rss",
+    "source_links": [
+      "https://research.ibm.com/blog/running-open-models-on-h100-gpus-with-llmd?utm_medium=rss&utm_source=rss"
+    ],
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "rejected_at": "2026-09-08T12:25:20.065Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 660
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Strong explainer that explains all technical terms in plain language, follows the correct structure with audience-segmented 'What this means for you' content, bases its claims on the IBM Research source, and maintains a friendly, non-judgmental tone throughout. No issues found.",
+      "_aiCost": 0.0014772,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Hitelesség-kapu blokkolta: The article states a '753-billion-parameter open AI model' was demonstrated by IBM Research and Red Hat running on standard H100 GPUs at '5 to 10 times lower' cost via a system called 'llm-d' — this i",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-09-08T12-23-05-031Z_ibm_How_llm-d_makes_the_most_of_the_hardware_you_alrea.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-09-08T12:28:54.121Z",
+    "slug": "why-big-ai-models-are-getting-cheaper-to-run-and-what-that-means-for-y",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-09-08T12:29:03.395Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is a general explainer about AI infrastructure cost trends, not an introduction of any specific named product or feature. No concrete action for everyday users.",
+    "image_v": 2,
+    "image_at": "2026-09-08T12:29:24.852Z",
+    "seo": {
+      "meta_description": "Why are AI models getting cheaper to run? Discover how open source releases, efficient software, and better hardware are lowering costs while improving your AI tools.",
+      "keywords": [
+        "why AI models are getting cheaper",
+        "open source AI models cost",
+        "AI tool pricing trends",
+        "how to reduce AI running costs",
+        "efficient AI serving software",
+        "AI hardware optimization",
+        "cheaper AI tools 2024"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more specific keywords like 'LLM inference cost' and 'AI model pricing' to capture commercial search intent",
+        "Include a clear primary keyword in the first 100 characters of the meta description for better ranking signals",
+        "Consider adding the publication date to the metadata to signal content freshness for time-sensitive AI topics"
+      ],
+      "optimised_at": "2026-09-08T12:29:49.275Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Why Big AI Models Are Getting Cheaper to Run (and What That Means for You)\"\nsubtitle: \"A simple look at the engineering tricks that are making your favorite AI tools more capable, while your bill stays the same or drops\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"ai-infrastructure\", \"open-source-ai\", \"llm-costs\", \"gpu-computing\"]\n---\n\n# Why Big AI Models Are Getting Cheaper to Run (and What That Means for You)\n\n> **In short:** Big AI models are getting cheaper to run thanks to open-source releases, more efficient serving software, and better hardware use — which is why your AI tools keep improving while prices stay flat or drop.\n\nYou open an AI assistant, type a question, and get an answer in seconds. The bill — if you pay one — is small. A few years ago, that combination (fast, cheap, and capable) would have been nearly impossible. So what's actually changed?\n\n## What makes a big AI model expensive to run\n\nAn AI model is essentially a very large math engine. When you send it a question, it does billions of calculations to produce an answer. The bigger the engine — engineers measure this in **parameters**, the adjustable numbers inside the model that hold its \"knowledge\" — the more capable it usually is. But it's also hungrier for **compute** (raw processing power) with every question.\n\nThree things drive the cost:\n\n- **The model itself.** Bigger models need more powerful chips to run.\n- **The hardware.** Top-tier AI chips like NVIDIA's H100 (a **GPU**, or graphics processing unit — the kind of chip that does the heavy math in modern AI) are expensive to buy and to power.\n- **The software layer.** When thousands of people ask questions at once, something has to spread the work across many chips without overloading any single one. That something is called a **serving system**.\n\n## Why costs are trending down\n\nA few forces are pushing prices down at the same time:\n\n- **Open-source models are getting better.** When companies publish the learned numbers (the **weights**) of a model, anyone can download and run it. More teams can host the same model independently — and competition drives prices down.\n- **Serving software keeps improving.** Engineers keep building better open-source tools for spreading questions across many chips at once. Each year these tools squeeze more answers out of the same hardware. Think of it as better traffic management at a busy intersection.\n- **Hardware is getting faster and cheaper.** Each new generation of AI chip delivers more power per dollar than the last.\n- **Quantization and other tricks.** Engineers can shrink a model — basically rounding some numbers so it uses less memory — with only a small drop in quality. A smaller model needs less-expensive hardware to run.\n\n## What this means for you\n\n- **If you use AI tools for everyday tasks:** expect free tiers to keep expanding and paid plans to stay reasonable. The pressure on prices is structural, not temporary.\n- **If you run a small business or side project:** running your own AI assistant is becoming a realistic option, not just a tech-giant luxury. You don't need exotic hardware — you need the right setup.\n- **If you're curious about AI but not technical:** remember that \"AI\" isn't one thing. There's the model (the brain) and the infrastructure (the wiring). Smart wiring is now doing as much work as bigger brains.\n\n## Wrap-up\n\nThe big takeaway: AI isn't just getting smarter — it's getting more efficient. Every time engineers find a way to do more with the same hardware, the cost of using AI drops a little further. For you, that means cheaper, faster, more accessible tools in the months ahead.\n\nTry this today: next time you use a free AI tool, notice what it can do that paid tools couldn't do a year ago. The gap is closing — and competition plus better infrastructure is a big part of why.",
+  "original_title": "How llm-d makes the most of the hardware you already have"
+}

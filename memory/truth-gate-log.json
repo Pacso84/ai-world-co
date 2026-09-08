@@ -1,26 +1,4 @@
 {
-  "2026-08-18": [
-    {
-      "at": "2026-08-18T00:57:38.242Z",
-      "file": "WRITER_GUIDE_use-gemini-to-plan-a-trip-across-multiple-google-apps.json",
-      "action": "block",
-      "reasons": [
-        "In Step 1, claims about specific UI elements like 'Settings → Extensions → Google apps' menu path are fabricated — Gemini's actual settings interface uses different terminology ('Apps' section) and does not have an 'Extensions' toggle for Gmail/Drive in the way described.",
-        "The article describes a permission prompt flow ('A small notice may appear asking for permission to access your Google Workspace apps (Gmail, Drive, Maps)') that does not accurately reflect how Gemini's Gmail/Drive integrations actually work — users typically connect these via the 'Apps' section in settings, not via a one-time notice.",
-        "Claims that Gemini can 'tap into Google Maps data to recommend restaurants, attractions, and routes' and that place names in replies include 'clickable links that opens Google Maps directly' are fabricated — Gemini does not have direct Maps integration of this kind in its standard capabilities."
-      ],
-      "confidence": 7
-    },
-    {
-      "at": "2026-08-18T16:21:14.885Z",
-      "file": "WRITER_2026-08-18T16-19-17-295Z_openai-blog_Introducing_ChatGPT_for_Teens__Built_for_learning_.json",
-      "action": "block",
-      "reasons": [
-        "The article repeatedly describes a 'ChatGPT for Teens' product with specific features (age-based response filtering, healthy-use break nudges, parent-linked controls with usage summaries, memory visibility, alerts) and presents them as facts about an existing product. As of the article's framing this is written as if it has launched, but this specific named product offering and its claimed feature set cannot be verified as a real, shipping OpenAI product — these look like invented specifics attributed to ChatGPT/OpenAI."
-      ],
-      "confidence": 6
-    }
-  ],
   "2026-08-21": [
     {
       "at": "2026-08-21T00:42:55.015Z",
@@ -309,6 +287,18 @@
         "The article states 'Tools like Picsart and similar consumer image editors have begun offering this kind of workflow as a built-in template, alongside other AI effects.' This presents an image-to-video bedtime story template as an actual feature of Picsart. Picsart is a real product, but this specific 'image-to-video personalized bedtime story' template feature is not a verified Picsart capability and appears fabricated."
       ],
       "confidence": 7
+    }
+  ],
+  "2026-09-08": [
+    {
+      "at": "2026-09-08T12:25:20.076Z",
+      "file": "WRITER_2026-09-08T12-23-05-031Z_ibm_How_llm-d_makes_the_most_of_the_hardware_you_alrea.json",
+      "action": "block",
+      "reasons": [
+        "The article states a '753-billion-parameter open AI model' was demonstrated by IBM Research and Red Hat running on standard H100 GPUs at '5 to 10 times lower' cost via a system called 'llm-d' — this is a specific fabricated product demonstration. There is no verified public announcement of an IBM/Red Hat 753B-parameter open model demonstration using an 'llm-d' serving system with these specific cost claims.",
+        "The article describes 'llm-d' as a real, named software system that distributes requests across chips — this appears to be an invented tool name not corresponding to a verified IBM/Red Hat product."
+      ],
+      "confidence": 6
     }
   ]
 }

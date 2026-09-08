@@ -1,102 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178871743482124",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-06T17:57:14.821Z",
-      "updated": "2026-09-06T17:57:25.991Z"
-    },
-    {
-      "id": "t178871744599342",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-09-06T17:57:25.993Z",
-      "updated": "2026-09-06T17:57:36.499Z"
-    },
-    {
-      "id": "t178871745650067",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-06T17:57:36.500Z",
-      "updated": "2026-09-06T17:57:45.775Z"
-    },
-    {
-      "id": "t178871746577729",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-09-06T17:57:45.777Z",
-      "updated": "2026-09-06T17:58:05.885Z"
-    },
-    {
-      "id": "t178874553845930",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-09-07T01:45:38.459Z",
-      "updated": "2026-09-07T01:45:38.608Z"
-    },
-    {
-      "id": "t178874553860974",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-09-07T01:45:38.609Z",
-      "updated": "2026-09-07T01:46:04.638Z"
-    },
-    {
-      "id": "t178874556464093",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-09-07T01:46:04.640Z",
-      "updated": "2026-09-07T01:46:04.814Z"
-    },
-    {
-      "id": "t178874556481618",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-09-07T01:46:04.816Z",
-      "updated": "2026-09-07T01:46:04.964Z"
-    },
-    {
-      "id": "t178874556496650",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-07T01:46:04.966Z",
-      "updated": "2026-09-07T01:46:05.131Z"
-    },
-    {
-      "id": "t178874556513312",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-09-07T01:46:05.133Z",
-      "updated": "2026-09-07T01:46:05.334Z"
-    },
-    {
-      "id": "t178874556538829",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-09-07T01:46:05.388Z",
-      "updated": "2026-09-07T01:55:12.363Z"
-    },
-    {
-      "id": "t178874611236479",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-07T01:55:12.364Z",
-      "updated": "2026-09-07T01:57:38.919Z"
-    },
-    {
       "id": "t178874625896926",
       "title": "Run designer",
       "status": "done",
@@ -479,41 +383,105 @@
       "agent": "publisher",
       "created": "2026-09-08T02:06:39.022Z",
       "updated": "2026-09-08T02:07:01.504Z"
+    },
+    {
+      "id": "t178887016078030",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-09-08T12:22:40.780Z",
+      "updated": "2026-09-08T12:22:40.974Z"
+    },
+    {
+      "id": "t178887016097555",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-09-08T12:22:40.975Z",
+      "updated": "2026-09-08T12:23:05.044Z"
+    },
+    {
+      "id": "t178887018504521",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-09-08T12:23:05.045Z",
+      "updated": "2026-09-08T12:23:05.251Z"
+    },
+    {
+      "id": "t178887018525327",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-09-08T12:23:05.253Z",
+      "updated": "2026-09-08T12:25:07.617Z"
+    },
+    {
+      "id": "t178887030761981",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-08T12:25:07.619Z",
+      "updated": "2026-09-08T12:25:39.634Z"
+    },
+    {
+      "id": "t178887033963686",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-09-08T12:25:39.636Z",
+      "updated": "2026-09-08T12:28:40.201Z"
+    },
+    {
+      "id": "t178887052020298",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-08T12:28:40.202Z",
+      "updated": "2026-09-08T12:28:54.132Z"
+    },
+    {
+      "id": "t178887053413570",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-09-08T12:28:54.135Z",
+      "updated": "2026-09-08T12:29:11.838Z"
+    },
+    {
+      "id": "t178887055188839",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-08T12:29:11.888Z",
+      "updated": "2026-09-08T12:29:34.509Z"
+    },
+    {
+      "id": "t17888705745111",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-09-08T12:29:34.511Z",
+      "updated": "2026-09-08T12:30:01.737Z"
+    },
+    {
+      "id": "t178887060173891",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-08T12:30:01.738Z",
+      "updated": "2026-09-08T12:30:10.811Z"
+    },
+    {
+      "id": "t17888706108135",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-09-08T12:30:10.813Z",
+      "updated": "2026-09-08T12:30:30.731Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178797991893138",
-      "level": "success",
-      "text": "4 hír + 4 útmutató publikálva (költség: $0.1133).",
-      "agent": "ceo",
-      "at": "2026-08-29T05:05:18.931Z",
-      "loud": false
-    },
-    {
-      "id": "n178801009151599",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). A solid, varied line-up covering privacy, practical writing tasks, and personal moments—nice mix that shows everyday AI use. One quick fix: \"Qwen Chat\" should be just \"Qwen\" per our naming standard (s",
-      "agent": "publisher",
-      "at": "2026-08-29T13:28:11.515Z",
-      "loud": false
-    },
-    {
-      "id": "n178801010470067",
-      "level": "info",
-      "text": "Pipeline lefutott — ma nem volt publikálható új tartalom.",
-      "agent": "ceo",
-      "at": "2026-08-29T13:28:24.700Z",
-      "loud": false
-    },
-    {
-      "id": "n178803000031760",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). A good mix — you've got practical AI how-tos alongside genuinely helpful personal writing pieces (sympathy messages, thank-you speeches, pet agreements). That balance between \"getting stuff done\" and ",
-      "agent": "publisher",
-      "at": "2026-08-29T19:00:00.317Z",
-      "loud": false
-    },
     {
       "id": "n178803000973968",
       "level": "info",
@@ -1281,74 +1249,41 @@
       "agent": "ceo",
       "at": "2026-09-08T02:07:01.548Z",
       "loud": false
+    },
+    {
+      "id": "n178887060172865",
+      "level": "info",
+      "text": "SEO: 2 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-09-08T12:30:01.728Z",
+      "loud": false
+    },
+    {
+      "id": "n178887061613348",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The line-up is solid and ready — it covers practical, everyday writing tasks (complaints, resumes, sympathy notes) using various AI tools, which fits your mission of making AI accessible to regular pe",
+      "agent": "publisher",
+      "at": "2026-09-08T12:30:16.133Z",
+      "loud": false
+    },
+    {
+      "id": "n178887063077862",
+      "level": "success",
+      "text": "2 hír + 0 útmutató publikálva (költség: $0.0324).",
+      "agent": "ceo",
+      "at": "2026-09-08T12:30:30.778Z",
+      "loud": false
+    },
+    {
+      "id": "n178887109600949",
+      "level": "warn",
+      "text": "📨 fact-check → human: Ez az útmutató talán tárgytalanná vált: \"Create AI‑generated meeting summaries directly in \" — Apple Calendar does not h",
+      "agent": "fact-check",
+      "at": "2026-09-08T12:38:16.009Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178805664472649",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Create Your First AI Image with Midjourney: A Beginner Walkthrough\" — mi a baj: UI_CLAIMS_UNSOURCED: 3 konkrét képernyő-feliratot állít tényként forrás nélkül (\"open in browser\", \"save to photos\", \"imagine\"). Vagy nézd meg a hivatalos oldalon, vagy írd hedge-elve (\"if you don't see…\").; PRICE_CLAIM_UNSOURCED: lejáró pénz-állítás forrás és árlap-hivatkozás nélkül (\"no free ti",
-      "ref": "GUIDE_create-your-first-ai-image-with-midjourney-a-beginner-walkth.json",
-      "at": "2026-08-30T02:24:04.726Z"
-    },
-    {
-      "id": "m178805744231273",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-08-30T02:37:22.312Z"
-    },
-    {
-      "id": "m178805749984193",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Boost Your Learning: Get Quick Explanations and St\" — The Microsoft Copilot mobile app name may have changed; Free plan chat history behavior may have changed; Specific suggestion chips content may have changed",
-      "ref": "ARTICLE_GUIDE_boost-your-learning-get-quick-explanations-and-study-guides-.json",
-      "at": "2026-08-30T02:38:19.841Z"
-    },
-    {
-      "id": "m178805753856616",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Brainstorming quick ideas for home projects and ho\" — Le Chat also has mobile apps; either path works fine",
-      "ref": "ARTICLE_GUIDE_brainstorming-quick-ideas-for-home-projects-and-hobbies-with.json",
-      "at": "2026-08-30T02:38:58.566Z"
-    },
-    {
-      "id": "m178805812406425",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "4 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-08-30T02:48:44.064Z"
-    },
-    {
-      "id": "m178809184659239",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Create Your First AI Image with Midjourney: A Beginner Walkthrough\" — javítva: UI_CLAIMS_UNSOURCED: 3 konkrét képernyő-feliratot állít tényként forrás nélkül (\"open in browser\", \"save to photos\", \"imagine\"). Vagy nézd meg a hivatalos oldalon, vagy írd hedge-elve (\"if you don't see…\").; PRICE_CLAIM_UNSOURCED: lejáró pénz-állítás forrás és árlap-hivatkozás nélkül (\"no free tier\"). A Mi",
-      "ref": "GUIDE_create-your-first-ai-image-with-midjourney-a-beginner-walkth.json",
-      "at": "2026-08-30T12:10:46.592Z"
-    },
-    {
-      "id": "m178809184659310",
-      "from": "guide",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Kell még adat: \"Create Your First AI Image with Midjourney: A Beginner Walkthrough\" — az Ellenőrző tényt/forrást kér, amit nem találhatok ki: UI_CLAIMS_UNSOURCED: 3 konkrét képernyő-feliratot állít tényként forrás nélkül (\"open in browser\", \"save to photos\", \"imagine\"). Vagy nézd meg a hivatalos oldalon, vagy írd hedge-elve (\"if you don't see…\").",
-      "ref": "GUIDE_create-your-first-ai-image-with-midjourney-a-beginner-walkth.json",
-      "open": false,
-      "at": "2026-08-30T12:10:46.593Z",
-      "resolved_at": "2026-08-30T12:11:11.880Z"
-    },
     {
       "id": "m178809187187984",
       "from": "ellenorzo",
@@ -2647,6 +2582,70 @@
       "text": "4 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-09-08T02:18:59.147Z"
+    },
+    {
+      "id": "m178887032007586",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"How llm-d makes the most of the hardware you already have\" — mi a baj: The article states a '753-billion-parameter open AI model' was demonstrated by IBM Research and Red Hat running on standard H100 GPUs at '5 to 10 times lower' cost via a system called 'llm-d' — this is a specific fabricated product demonstration. There is no verified public announcement of an IBM/Red Hat ",
+      "ref": "2026-09-08T12-23-05-031Z_ibm_How_llm-d_makes_the_most_of_the_hardware_you_alrea.json",
+      "at": "2026-09-08T12:25:20.075Z"
+    },
+    {
+      "id": "m178887052019255",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"How llm-d makes the most of the hardware you already have\" — javítva: The article states a '753-billion-parameter open AI model' was demonstrated by IBM Research and Red Hat running on standard H100 GPUs at '5 to 10 times lower' cost via a system called 'llm-d' — this is a specific fabricated product demonstration. There is no verified public announcement of an IBM/Red Hat 753B-param",
+      "ref": "2026-09-08T12-23-05-031Z_ibm_How_llm-d_makes_the_most_of_the_hardware_you_alrea.json",
+      "at": "2026-09-08T12:28:40.192Z"
+    },
+    {
+      "id": "m17888705341225",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"How llm-d makes the most of the hardware you already have\" (?/10)",
+      "ref": "2026-09-08T12-23-05-031Z_ibm_How_llm-d_makes_the_most_of_the_hardware_you_alrea.json",
+      "at": "2026-09-08T12:28:54.122Z"
+    },
+    {
+      "id": "m178887055182738",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "info",
+      "text": "A \"From one image to a full set: Recraft V4 Styles prompts\" hír a meglévő útmutatóra mutat: generate-a-custom-illustration-for-a-slide-or-document-with-",
+      "ref": "generate-a-custom-illustration-for-a-slide-or-document-with-",
+      "at": "2026-09-08T12:29:11.827Z"
+    },
+    {
+      "id": "m178887061080233",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 20 → 5/4/2 oszlop.",
+      "ref": "mobile",
+      "at": "2026-09-08T12:30:10.802Z"
+    },
+    {
+      "id": "m178887109600990",
+      "from": "fact-check",
+      "to": "human",
+      "kind": "need",
+      "text": "Ez az útmutató talán tárgytalanná vált: \"Create AI‑generated meeting summaries directly in \" — Apple Calendar does not have an AI summarization feature with a 'Summarize' button. Apple Intelligence summarization exists in Mail, Messages, Safari, and Notifications — but NOT in Calendar as described. The entire guide teaches a non-existent feature.. NEM vettem le (az törölné az URL-t is) — dönts ról",
+      "ref": "ARTICLE_GUIDE_create-ai-generated-meeting-summaries-directly-in-apple-cale.json",
+      "open": true,
+      "at": "2026-09-08T12:38:16.009Z"
+    },
+    {
+      "id": "m17888711083174",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Create catchy Instagram captions using AI in minut\" — The claim that ai.meta.com has a 'Caption Generator' tool with specific UI elements (speech bubble with pencil icon, 'Describe your image' prompt field, 'Generate' button); The claim that Meta AI produces 'three-to-five caption suggestions' in a list labeled 'Suggestion 1', 'Suggesti",
+      "ref": "ARTICLE_GUIDE_create-catchy-instagram-captions-using-ai-in-minutes-a-begin.json",
+      "at": "2026-09-08T12:38:28.317Z"
     }
   ]
 }
