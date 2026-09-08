@@ -1,0 +1,67 @@
+{
+  "_meta": {
+    "written_at": "2026-09-08T19:10:42.661Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00662496,
+    "original_draft": "2026-09-08T19-08-01-954Z_picsart_Grok_Imagine_Quality_explained__the_high-fidelity_.json",
+    "source_id": "picsart",
+    "source_name": "PicsArt Blog (hivatalos)",
+    "source_link": "https://picsart.com/blog/grok-imagine-quality-explained/",
+    "source_links": [
+      "https://picsart.com/blog/grok-imagine-quality-explained/"
+    ],
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "rejected_at": "2026-09-08T19:09:55.461Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 826
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Clean, well-structured explainer with excellent plain-language definitions, appropriate audience targeting, and a useful 'What this means for you' section with audience-specific takeaways. No clichés, no invented facts, respectful tone throughout, and US English used consistently.",
+      "_aiCost": 0.0015225,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Hitelesség-kapu blokkolta: The article describes a specific UI element — a 'model picker' inside 'Picsart AI Playground' where 'Grok Imagine Quality' is one of the selectable model options. Neither 'Picsart AI Playground' as a ",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-09-08T19-08-01-954Z_picsart_Grok_Imagine_Quality_explained__the_high-fidelity_.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-09-08T19:11:02.983Z",
+    "slug": "grok-imagine-explained-what-xai-s-image-tool-does-and-when-high-fideli",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-09-08T19:11:10.012Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is an explainer article about Grok Imagine concepts rather than a news announcement about a specific named feature with concrete usage steps",
+    "image_v": 2,
+    "image_at": "2026-09-08T19:11:26.440Z",
+    "seo": {
+      "meta_description": "Learn what Grok Imagine does, what high-fidelity AI images mean, and how to get better pictures from any AI image generator.",
+      "keywords": [
+        "Grok Imagine",
+        "high fidelity AI images",
+        "xAI image generator",
+        "AI image generation tips",
+        "how to improve AI image quality"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more specific long-tail keywords like 'how to use Grok Imagine' to capture beginner search intent",
+        "Consider adding related terms like 'AI image tools comparison' or 'AI image quality settings' to broaden reach",
+        "The article would benefit from mentioning the specific model picker context to help with feature-specific searches"
+      ],
+      "optimised_at": "2026-09-08T19:11:47.186Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Grok Imagine, Explained: What xAI's Image Tool Does and When High-Fidelity Matters\"\nsubtitle: \"A plain-language guide to xAI's image generator, what 'high-fidelity' really means, and how to get better pictures from any AI image tool.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"image-generation\", \"grok\", \"xai\", \"creative-tools\", \"ai-basics\"]\n---\n\n# Grok Imagine, Explained: What xAI's Image Tool Does and When High-Fidelity Matters\n\n> **In short:** Grok Imagine is xAI's image generator — you type a description and it makes a picture. \"High-fidelity\" is the term for images that hold up when you zoom in or print them, as opposed to quick generations that look fine small but fall apart up close.\n\nYou spot a poster online and squint at the letters — they're slightly melted, a hand has six fingers, the texture looks waxy. That's the gap between a \"quick AI image\" and a \"high-fidelity AI image.\" Most tools, Grok Imagine included, can produce both kinds. Knowing which one to ask for, and how, is what separates a wallpaper you delete in a week from one you keep.\n\n## What Grok Imagine actually is\n\n**xAI** (Elon Musk's AI company, the team behind the Grok chatbot) added image generation to its assistant under the name **Grok Imagine**. You give it a **prompt** (the instruction you type to the AI), and it produces a picture. Like most modern image tools, it can also work from an uploaded photo, redrawing or restyling it based on what you ask for.\n\nWhether you can access Grok Imagine depends on where you live, what platform you're on, and whether you're on a free or paid tier. xAI's own help pages are the place to check current access — plans and availability change often, and we don't want to quote details that quietly go out of date.\n\n## What \"high-fidelity\" actually means\n\nIn plain terms, **fidelity** is how closely the picture matches what you'd see in real life — sharp edges, accurate text, believable hands, consistent small details. A \"high-fidelity\" mode is tuned (trained with extra attention to detail, and given more **compute** — more processing power — at generation time) to get these details right, at the cost of taking a little longer.\n\nYou won't notice the difference at thumbnail size. You will notice it on a phone wallpaper, a printed flyer, or anywhere someone zooms in.\n\n## When high-fidelity is worth the extra time\n\nYou don't need it for everything. Quick generators are fine when the image is small, will be cropped, or just needs to feel right at a glance — mood-board rough drafts, throwaway social posts, placeholder graphics.\n\nReach for high-fidelity when:\n\n- **The image will be printed or zoomed.** A flyer, a poster, a product shot on a website.\n- **Text in the image matters.** Higher-fidelity modes are noticeably better at rendering readable words.\n- **Small details carry the design.** Jewelry, food, fabric texture, faces.\n- **You'll be re-using it.** If the image lives on a homepage for a year, the extra minute is worth it.\n\n## Getting better results from any image AI\n\nA few habits help, regardless of which tool you're using:\n\n- **Be specific in the prompt.** Lighting (\"soft morning light from the left\"), camera angle (\"shot on a 50mm lens\"), and mood matter more than vague adjectives like \"beautiful\" or \"professional.\"\n- **Name what shouldn't appear.** \"No extra fingers, no warped text\" is a fair instruction to include.\n- **Generate several versions.** Small wording changes often unlock very different results.\n- **Tell the AI what the image is for.** \"For a website hero banner\" gets different output than \"for a printed A4 poster.\"\n\n## What this means for you\n\n- **If you make content for fun**: high-fidelity is the difference between a phone wallpaper you keep and one you delete in a week. Try it when an image actually matters to you, and stick with quick generations when it doesn't.\n- **If you run a small business or work in marketing**: this is the first place to look when you need a hero image, a product mock-up, or a printed piece — and the place to skip when you just need a placeholder.\n- **If you're new to AI images**: start with a prompt for something real you've seen — a coffee cup, your dog, your street — and compare what you get to what you remember. That comparison is the fastest way to learn what these tools are good at and where they still stumble.\n\n## Wrap-up\n\nGrok Imagine is one of several image generators now available, and the \"high-fidelity versus quick\" choice is becoming standard across them. The tool matters less than how you prompt it and which mode you choose for the job. Your first task today: open whichever image AI you already have access to, type one specific prompt for an image you'd actually use, and notice which details hold up — and which melt when you zoom in.",
+  "original_title": "Grok Imagine Quality explained: the high-fidelity mode"
+}

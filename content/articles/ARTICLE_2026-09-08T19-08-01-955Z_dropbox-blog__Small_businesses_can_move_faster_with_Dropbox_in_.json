@@ -1,0 +1,62 @@
+{
+  "_meta": {
+    "written_at": "2026-09-08T19:08:53.716Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.0127941,
+    "original_draft": "2026-09-08T19-08-01-955Z_dropbox-blog__Small_businesses_can_move_faster_with_Dropbox_in_.json",
+    "source_id": "dropbox-blog",
+    "source_name": "Dropbox Blog (hivatalos)",
+    "source_link": "  https://blog.dropbox.com/topics/company/dropbox-chatgpt-small-business-collection ",
+    "source_links": [
+      "  https://blog.dropbox.com/topics/company/dropbox-chatgpt-small-business-collection "
+    ],
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "published_at": "2026-09-08T19:10:25.950Z",
+    "slug": "how-to-draft-a-business-proposal-in-chatgpt-using-your-dropbox-files",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1418
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": 8,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Solid how-to guide with clear structure, friendly tone, and appropriate use of qualifiers (usually, any of those paths) to handle UI variation honestly. The five-step approach is logical and beginner-accessible, the What This Means For You section is well-segmented by audience, and the article avoids clichés and condescension. Minor note: the 20-minute first run and 5-minute subsequent runs are presented as general expectations rather than hard guarantees, which is appropriate.",
+      "_aiCost": 0.002433,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-09-08T19:11:17.975Z",
+    "guide_worthy": false,
+    "pairing_reason": "This IS already a how-to guide, not a news article requiring a paired guide",
+    "image_v": 2,
+    "image_at": "2026-09-08T19:11:33.802Z",
+    "seo": {
+      "meta_description": "Learn how to use ChatGPT with Dropbox to quickly draft business proposals from your existing files. No more copy-pasting — save time today.",
+      "keywords": [
+        "how to use ChatGPT with Dropbox",
+        "ChatGPT read Dropbox files",
+        "ChatGPT business proposal",
+        "connect ChatGPT to Dropbox",
+        "ChatGPT draft proposal from existing documents",
+        "AI writing business proposals"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more long-tail keywords naturally throughout the body like 'ChatGPT Dropbox integration' and 'let AI write my proposal'",
+        "Consider adding an FAQ section to capture featured snippet opportunities",
+        "Include the phrase 'step-by-step guide' in the introduction for better search intent matching"
+      ],
+      "optimised_at": "2026-09-08T19:11:57.252Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"How to Draft a Business Proposal in ChatGPT Using Your Dropbox Files\"\nsubtitle: \"A practical guide to letting ChatGPT read your existing documents and write a fresh proposal in minutes, then save it straight back to Dropbox\"\ncategory: \"how-to\"\naudience: \"business\"\nread_time_minutes: 6\ntags: [\"chatgpt\", \"dropbox\", \"small-business\", \"proposals\", \"productivity\"]\n---\n\n# How to Draft a Business Proposal in ChatGPT Using Your Dropbox Files\n\n> **In short:** ChatGPT can connect directly to Dropbox, so small business owners can pull content from existing files to draft new proposals in minutes, then save the finished document straight back to Dropbox — no copy-pasting needed.\n\nIt's the night before a client meeting. You have a stack of past proposals, a price list, and a rough brief — and you need a fresh proposal before morning. Instead of opening every file and rewriting from scratch, you can let ChatGPT read what's already in your Dropbox and draft the new one for you. This guide walks you through exactly how.\n\n## What you need before you start\n\nYou need three things in place before you begin:\n\n- A **ChatGPT account** — the Dropbox connector (the bridge that lets ChatGPT read your files) is part of OpenAI's small business tools, and availability can vary by plan, so check the current plan details in your account settings.\n- A **Dropbox account** with the files you want to draw from — past proposals, service lists, price sheets, anything that holds background information.\n- A modern web browser or the latest **ChatGPT desktop app**. On mobile, the connector experience is more limited, so a computer is the easier path for the first try.\n\nYou'll know you're ready when you can log into both accounts and see at least a few files in your Dropbox folder.\n\n## Step 1 — Connect Dropbox inside ChatGPT\n\nOpen ChatGPT in your browser and look for the **Apps** or **Connectors** area. On the web, you'll usually find it in the left sidebar — a small icon that opens a panel of available third-party services. If you don't see it there, open **Settings** (click your profile icon or name in the bottom-left) and look under **Connected apps**, **Integrations**, or **Data controls**. Labels shift occasionally as OpenAI updates the interface, so any of those paths is the right one.\n\nClick **Dropbox** in the list, then sign in and grant access. ChatGPT will ask which folders you want to share — start with just one folder that holds your reference documents, not your whole Dropbox.\n\n💬 Example path: `Settings → Connected apps → Dropbox → Connect`\n\nYou'll know it worked when Dropbox shows up in your sidebar or appears in the list of available sources when you start a new chat.\n\n## Step 2 — Point ChatGPT at the right files\n\nStart a new chat. In the message box, you can reference files from your connected Dropbox — usually by typing `@` and choosing Dropbox, or by clicking an attachment-style icon that opens your connected sources. Pick the past proposal, the price list, and any other document you want ChatGPT to learn from.\n\nAsk ChatGPT to confirm what's in each file before you ask it to write anything. This quick check saves time later, because if the summaries don't match your files, you'll want to fix the connection before drafting.\n\n💬 Example prompt:\n> \"Read these three files from my Dropbox: last year's proposal for Acme Co., my 2026 service price list, and the brief I just wrote for Bright Studio. Give me a 5-bullet summary of each.\"\n\nYou'll know it worked when the summary clearly reflects the content of your files — names, numbers, and dates all matching what's actually in the documents.\n\n## Step 3 — Draft the proposal with a clear brief\n\nNow tell ChatGPT exactly what you need. The more specific you are, the closer the first draft will be to something you can actually send. Include the **client name**, the **goal of the proposal**, the **tone** (formal, friendly, short), and the **format** you want — for example, a cover summary, three project phases, a pricing block, and a timeline.\n\nAsk it to pull details from the connected files rather than invent them. That is the whole point of the connector: your old proposals become the source of truth.\n\n💬 Example prompt:\n> \"Using my service price list and last year's Acme proposal as references, draft a new proposal for Bright Studio. Tone: friendly but professional. Length: about 800 words. Structure: cover summary, three project phases with deliverables, pricing, timeline. Pull prices from the price list — do not make up new numbers.\"\n\nYou'll know it worked when the draft arrives in roughly the shape you asked for, with prices and details that match your reference files.\n\n## Step 4 — Review and refine before you send it\n\nAI drafts are a starting point, not a finished product. Read the proposal carefully. Check every number, every name, every date. If anything looks off, ask ChatGPT to fix it — short follow-up prompts work better than rewriting the whole brief.\n\nA few things worth doing in this step:\n\n- Confirm the **client name** and any project-specific details are correct.\n- Sanity-check **prices** against your latest price list.\n- Read it aloud — if it doesn't sound like you, ask ChatGPT to adjust the tone.\n- Add anything the AI couldn't know: a personal note, a signature line, your contact details.\n\nYou'll know it's ready when a colleague could read it and not tell which parts were AI-assisted.\n\n## Step 5 — Save the finished proposal back to Dropbox\n\nOnce the draft looks good, you have two easy options. If ChatGPT offers an export or \"save to\" option for your connected apps, choose Dropbox and pick the folder where you keep client work. If that option isn't available where you are, copy the finished text into a new **Dropbox Paper** doc or a **Microsoft Word** file inside your Dropbox folder, and save it with a clear name like `2026-Bright-Studio-Proposal.docx`.\n\nEither way, end up with the final version stored where the rest of your client work lives — so future you can find it, search it, and reuse it on the next job.\n\n💬 Example prompt:\n> \"Save the final version of this proposal to my Dropbox folder called 'Client proposals'. If you can't do that directly, give me the full text formatted for a Word document.\"\n\nYou'll know it worked when you can open Dropbox and see the new file in your chosen folder.\n\n## Common mistakes to avoid\n\n- **Connecting your whole Dropbox.** Only share the folders ChatGPT actually needs. Less access means less risk if something goes wrong, and it keeps the AI focused on the right material.\n- **Skipping the review step.** AI can quietly invent numbers or \"fill in\" missing details. Always cross-check prices, dates, and names against your source files before sending.\n- **Vague prompts.** \"Write me a proposal\" gives a generic draft. \"Write a 600-word proposal for Bright Studio, friendly tone, three phases, pricing from my price list\" gives you something you can actually use.\n- **Forgetting to disconnect when you're done.** When you're finished with a one-off task, you can revoke ChatGPT's access to Dropbox from your Dropbox account settings under **Connected apps**.\n\n## What this means for you\n\n- **If you run a small business or shop:** This is one of the fastest ways to turn a stack of old documents into a fresh proposal without rewriting from scratch. Try it once on a real, low-stakes client request — you'll get the hang of it in a single sitting.\n- **If you're a freelancer or consultant:** Past proposals, case studies, and rate cards become raw material instead of clutter. Build a small \"reference\" folder in Dropbox and reuse it for every new client brief.\n- **If you're new to AI tools:** Start with one document and one short proposal. The first run won't be perfect, and that's expected — the time you save starts showing up on the second or third try.\n\n## Wrap-up\n\nChatGPT reading your Dropbox and writing a new proposal from your own files is one of the most practical AI tricks for small businesses right now. The first run takes about 20 minutes. By the third one, you'll likely be done in five. Pick one upcoming client request today, gather three or four reference files in a Dropbox folder, and run through the five steps above. That's the whole experiment.",
+  "original_title": " Small businesses can move faster with Dropbox in ChatGPT "
+}

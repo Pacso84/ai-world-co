@@ -1,102 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178874625896926",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-07T01:57:38.969Z",
-      "updated": "2026-09-07T01:58:17.586Z"
-    },
-    {
-      "id": "t178874629758852",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-09-07T01:58:17.588Z",
-      "updated": "2026-09-07T01:58:55.677Z"
-    },
-    {
-      "id": "t17887463356786",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-07T01:58:55.678Z",
-      "updated": "2026-09-07T01:59:10.168Z"
-    },
-    {
-      "id": "t17887463501708",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-09-07T01:59:10.170Z",
-      "updated": "2026-09-07T01:59:36.967Z"
-    },
-    {
-      "id": "t178878288076614",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-09-07T12:08:00.766Z",
-      "updated": "2026-09-07T12:08:00.879Z"
-    },
-    {
-      "id": "t178878288088063",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-09-07T12:08:00.880Z",
-      "updated": "2026-09-07T12:08:29.955Z"
-    },
-    {
-      "id": "t178878290995635",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-09-07T12:08:29.956Z",
-      "updated": "2026-09-07T12:08:30.092Z"
-    },
-    {
-      "id": "t178878291009478",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-09-07T12:08:30.094Z",
-      "updated": "2026-09-07T12:12:53.126Z"
-    },
-    {
-      "id": "t17887831731271",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-07T12:12:53.127Z",
-      "updated": "2026-09-07T12:13:10.628Z"
-    },
-    {
-      "id": "t178878319063030",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-09-07T12:13:10.630Z",
-      "updated": "2026-09-07T12:13:20.854Z"
-    },
-    {
-      "id": "t178878320088772",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-07T12:13:20.887Z",
-      "updated": "2026-09-07T12:13:36.172Z"
-    },
-    {
-      "id": "t178878321617371",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-09-07T12:13:36.173Z",
-      "updated": "2026-09-07T12:13:54.322Z"
-    },
-    {
       "id": "t178878323432335",
       "title": "Run designer",
       "status": "done",
@@ -479,33 +383,105 @@
       "agent": "publisher",
       "created": "2026-09-08T12:30:10.813Z",
       "updated": "2026-09-08T12:30:30.731Z"
+    },
+    {
+      "id": "t178889443338898",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-09-08T19:07:13.388Z",
+      "updated": "2026-09-08T19:07:13.561Z"
+    },
+    {
+      "id": "t178889443356372",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-09-08T19:07:13.563Z",
+      "updated": "2026-09-08T19:08:01.968Z"
+    },
+    {
+      "id": "t178889448197028",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-09-08T19:08:01.970Z",
+      "updated": "2026-09-08T19:08:02.163Z"
+    },
+    {
+      "id": "t178889448216599",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-09-08T19:08:02.165Z",
+      "updated": "2026-09-08T19:09:20.422Z"
+    },
+    {
+      "id": "t17888945604235",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-08T19:09:20.423Z",
+      "updated": "2026-09-08T19:10:25.960Z"
+    },
+    {
+      "id": "t178889462596359",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-09-08T19:10:25.963Z",
+      "updated": "2026-09-08T19:10:42.671Z"
+    },
+    {
+      "id": "t178889464267327",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-08T19:10:42.673Z",
+      "updated": "2026-09-08T19:11:02.995Z"
+    },
+    {
+      "id": "t178889466299832",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-09-08T19:11:02.998Z",
+      "updated": "2026-09-08T19:11:17.986Z"
+    },
+    {
+      "id": "t178889467803960",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-08T19:11:18.039Z",
+      "updated": "2026-09-08T19:11:33.846Z"
+    },
+    {
+      "id": "t178889469384828",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-09-08T19:11:33.848Z",
+      "updated": "2026-09-08T19:11:57.285Z"
+    },
+    {
+      "id": "t178889471728797",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-08T19:11:57.287Z",
+      "updated": "2026-09-08T19:12:06.422Z"
+    },
+    {
+      "id": "t178889472642425",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-09-08T19:12:06.424Z",
+      "updated": "2026-09-08T19:12:33.119Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178803000973968",
-      "level": "info",
-      "text": "Pipeline lefutott — ma nem volt publikálható új tartalom.",
-      "agent": "ceo",
-      "at": "2026-08-29T19:00:09.739Z",
-      "loud": false
-    },
-    {
-      "id": "n178805742879695",
-      "level": "info",
-      "text": "SEO: 4 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-08-30T02:37:08.796Z",
-      "loud": false
-    },
-    {
-      "id": "n178805745048394",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The lineup covers practical, everyday use cases nicely — from privacy to writing help and emotional messages. One note: articles 3-6 are all complaint emails, which feels repetitive for readers. I'd s",
-      "agent": "publisher",
-      "at": "2026-08-30T02:37:30.483Z",
-      "loud": false
-    },
     {
       "id": "n178805746410917",
       "level": "success",
@@ -1281,64 +1257,33 @@
       "agent": "fact-check",
       "at": "2026-09-08T12:38:16.009Z",
       "loud": false
+    },
+    {
+      "id": "n178889471727684",
+      "level": "info",
+      "text": "SEO: 2 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-09-08T19:11:57.276Z",
+      "loud": false
+    },
+    {
+      "id": "n178889473841099",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The line-up has a warm, practical feel — great for everyday folks looking to use AI for real-life tasks. However, it's a bit complaint-heavy (three articles), and the mix of \"with specific AI tool\" vs",
+      "agent": "publisher",
+      "at": "2026-09-08T19:12:18.410Z",
+      "loud": false
+    },
+    {
+      "id": "n178889475316423",
+      "level": "success",
+      "text": "2 hír + 0 útmutató publikálva (költség: $0.0361).",
+      "agent": "ceo",
+      "at": "2026-09-08T19:12:33.164Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178809193786563",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-08-30T12:12:17.865Z"
-    },
-    {
-      "id": "m178809196488171",
-      "from": "fact-check",
-      "to": "human",
-      "kind": "need",
-      "text": "Ez az útmutató talán tárgytalanná vált: \"Build a basic AI chatbot for your website using Op\" — OpenAI retired the Playground in early 2025 — the entire guide teaches using a tool that no longer exists. Users are now directed to use ChatGPT directly or write code to interact with the API.. NEM vettem le (az törölné az URL-t is) — dönts róla.",
-      "ref": "ARTICLE_GUIDE_build-a-basic-ai-chatbot-for-your-website-using-openai-s-api.json",
-      "open": true,
-      "at": "2026-08-30T12:12:44.881Z"
-    },
-    {
-      "id": "m178809231885432",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "2 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-08-30T12:18:38.854Z"
-    },
-    {
-      "id": "m178809628246464",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-08-30T13:24:42.464Z"
-    },
-    {
-      "id": "m178809632365654",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Build a personal study-buddy chatbot in 15 minutes\" — SDK: Select Docker (it's the most beginner-friendly option)",
-      "ref": "ARTICLE_GUIDE_build-a-personal-study-buddy-chatbot-in-15-minutes-using-hug.json",
-      "at": "2026-08-30T13:25:23.656Z"
-    },
-    {
-      "id": "m178811621265854",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-08-30T18:56:52.658Z"
-    },
     {
       "id": "m178811625084033",
       "from": "fact-check",
@@ -2646,6 +2591,60 @@
       "text": "2 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-09-08T12:45:43.188Z"
+    },
+    {
+      "id": "m178889459546717",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Grok Imagine Quality explained: the high-fidelity mode\" — mi a baj: The article describes a specific UI element — a 'model picker' inside 'Picsart AI Playground' where 'Grok Imagine Quality' is one of the selectable model options. Neither 'Picsart AI Playground' as a named Picsart product with such a model picker, nor 'Grok Imagine Quality' as a specific xAI mode distinct fr",
+      "ref": "2026-09-08T19-08-01-954Z_picsart_Grok_Imagine_Quality_explained__the_high-fidelity_.json",
+      "at": "2026-09-08T19:09:55.467Z"
+    },
+    {
+      "id": "m178889464266291",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Grok Imagine Quality explained: the high-fidelity mode\" — javítva: The article describes a specific UI element — a 'model picker' inside 'Picsart AI Playground' where 'Grok Imagine Quality' is one of the selectable model options. Neither 'Picsart AI Playground' as a named Picsart product with such a model picker, nor 'Grok Imagine Quality' as a specific xAI mode distinct from the bro",
+      "ref": "2026-09-08T19-08-01-954Z_picsart_Grok_Imagine_Quality_explained__the_high-fidelity_.json",
+      "at": "2026-09-08T19:10:42.662Z"
+    },
+    {
+      "id": "m178889466298488",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Grok Imagine Quality explained: the high-fidelity mode\" (?/10)",
+      "ref": "2026-09-08T19-08-01-954Z_picsart_Grok_Imagine_Quality_explained__the_high-fidelity_.json",
+      "at": "2026-09-08T19:11:02.984Z"
+    },
+    {
+      "id": "m178889472641356",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 20 → 5/4/2 oszlop.",
+      "ref": "mobile",
+      "at": "2026-09-08T19:12:06.413Z"
+    },
+    {
+      "id": "m178889479118369",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Create royalty‑free AI music loops for podcasts an\" — Suno.ai usually generates two distinct variations of your music; Suno.ai offers a free tier, which allows you a limited number of music generations per day (the specific claim about daily limits)",
+      "ref": "ARTICLE_GUIDE_create-royalty-free-ai-music-loops-for-podcasts-and-videos-b.json",
+      "at": "2026-09-08T19:13:11.183Z"
+    },
+    {
+      "id": "m178889481677393",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Create Your Own Custom GPT in ChatGPT (No Coding)\" — The claim that 'Explore GPTs' is definitely in the left-hand sidebar (this UI location may have changed); The claim about specific publishing options 'Only me', 'Anyone with a link', 'Public' (these exact options and labels may have changed); The claim that the interface is 'split int",
+      "ref": "ARTICLE_GUIDE_create-your-own-custom-gpt-in-chatgpt-no-coding.json",
+      "at": "2026-09-08T19:13:36.774Z"
     }
   ]
 }

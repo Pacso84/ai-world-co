@@ -1,0 +1,38 @@
+{
+  "started_at": "2026-09-08T19:08:02.333Z",
+  "drafts_total": 2,
+  "articles_written": 2,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 0,
+  "merged_total": 0,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "total_cost_usd": 0.0223971,
+  "by_article": [
+    {
+      "draft": "2026-09-08T19-08-01-955Z_dropbox-blog__Small_businesses_can_move_faster_with_Dropbox_in_.json",
+      "writer_output": "WRITER_2026-09-08T19-08-01-955Z_dropbox-blog__Small_businesses_can_move_faster_with_Dropbox_in_.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.0127941,
+      "duration_ms": 40849,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-09-08T19-08-01-954Z_picsart_Grok_Imagine_Quality_explained__the_high-fidelity_.json",
+      "writer_output": "WRITER_2026-09-08T19-08-01-954Z_picsart_Grok_Imagine_Quality_explained__the_high-fidelity_.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.0076974,
+      "duration_ms": 19683,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    }
+  ],
+  "finished_at": "2026-09-08T19:09:20.408Z",
+  "duration_seconds": 78.075
+}

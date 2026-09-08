@@ -299,6 +299,15 @@
         "The article describes 'llm-d' as a real, named software system that distributes requests across chips — this appears to be an invented tool name not corresponding to a verified IBM/Red Hat product."
       ],
       "confidence": 6
+    },
+    {
+      "at": "2026-09-08T19:09:55.469Z",
+      "file": "WRITER_2026-09-08T19-08-01-954Z_picsart_Grok_Imagine_Quality_explained__the_high-fidelity_.json",
+      "action": "block",
+      "reasons": [
+        "The article describes a specific UI element — a 'model picker' inside 'Picsart AI Playground' where 'Grok Imagine Quality' is one of the selectable model options. Neither 'Picsart AI Playground' as a named Picsart product with such a model picker, nor 'Grok Imagine Quality' as a specific xAI mode distinct from the broader Grok Imagine feature, could be verified. The article presents both the product integration and the UI as established fact, but the level of specificity (a discrete 'Quality' tier plus a model-picker UI housing it) is the kind of invented interface/feature pairing the truth gate is meant to catch."
+      ],
+      "confidence": 6
     }
   ]
 }
