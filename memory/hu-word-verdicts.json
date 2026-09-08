@@ -388,6 +388,7 @@
     "családtagodnak",
     "családtagodtól",
     "családtagok",
+    "családtagokat",
     "családtagokkal",
     "családtagoknak",
     "csapatchatba",
@@ -402,6 +403,7 @@
     "csapattagoknak",
     "csapatösszefoglalóvá",
     "csavarokat",
+    "cserbenhagy",
     "csevegdobozzal",
     "csevegében",
     "csevegőcsomagok",
@@ -600,6 +602,8 @@
     "elevenlabs",
     "elfoglaltságok",
     "elfoglaltságokat",
+    "elfoglaltságokkal",
+    "elfoglaltságokról",
     "elfoglaltságom",
     "elfogultságokat",
     "ellenérvet",
@@ -625,12 +629,14 @@
     "emaileit",
     "emailek",
     "emailekben",
+    "emailekből",
     "emailekhez",
     "emailekkel",
     "emailekként",
     "emailekre",
     "emailekről",
     "emailemben",
+    "emailemre",
     "emailjeid",
     "emailjeidet",
     "emailjeidhez",
@@ -638,9 +644,11 @@
     "emailjeimmel",
     "emailjeinek",
     "emailjeit",
+    "emailjét",
     "emailnek",
     "emailnél",
     "emailre",
+    "emailről",
     "embeddingekhez",
     "emberen",
     "emlék-réellel",
@@ -767,6 +775,7 @@
     "funkcólista",
     "furcsaságok",
     "fuvarok",
+    "fuvarokat",
     "függetlenséget",
     "függőséget",
     "főkönyvet",
@@ -1098,6 +1107,7 @@
     "kifutottok",
     "kimásolhalsz",
     "kirakatmonitoron",
+    "kislistát",
     "kisméretű",
     "kitöltőszöveget",
     "klikkbait",
@@ -1730,6 +1740,7 @@
     "promptpélda",
     "promptreceptet",
     "promptsablon",
+    "promptsablonod",
     "promptsablonok",
     "promptsegéd",
     "promptstruktúrával",
@@ -1741,6 +1752,7 @@
     "prompttámadások",
     "prompttámadásokat",
     "promptvariációk",
+    "promptírási",
     "promptírássá",
     "promptötlet",
     "promptötletet",
@@ -1755,6 +1767,7 @@
     "próbavisszaállítást",
     "párbeszédsorok",
     "párod",
+    "párodat",
     "pároddal",
     "párok",
     "párokat",
@@ -2462,6 +2475,7 @@
     "élelmiszerpazarlást",
     "éleslátóak",
     "élességet",
+    "életkorok",
     "életkorokkal",
     "életlenséget",
     "életviteleted",
@@ -3621,6 +3635,11 @@
       "correct": "célok",
       "at": "2026-09-06",
       "mondattal": true
+    },
+    "szakasonként": {
+      "correct": "szakaszonként",
+      "at": "2026-09-08",
+      "mondattal": true
     }
   },
   "review": {
@@ -4760,11 +4779,26 @@
       "correct": "lokalizálj",
       "at": "2026-09-07",
       "mondattal": true
+    },
+    "ceruval": {
+      "correct": "ceruzát",
+      "at": "2026-09-08",
+      "mondattal": true
+    },
+    "panaszemelek": {
+      "correct": "panaszokat",
+      "at": "2026-09-08",
+      "mondattal": true
+    },
+    "legfontobbat": {
+      "correct": "legfontosabbat",
+      "at": "2026-09-08",
+      "mondattal": true
     }
   },
   "scan": {
-    "at": "2026-09-07",
-    "files": 927,
-    "candidates": 4
+    "at": "2026-09-08",
+    "files": 931,
+    "candidates": 18
   }
 }
