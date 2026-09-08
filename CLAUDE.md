@@ -13,13 +13,13 @@ Automata, több nyelvű AI-hírportál (aiworldhq.com), amit agentek üzemeltetn
 ## Parancsok
 
 ```bash
-npm test                    # 33 teszt — INGYENES és hálózat nélküli (core/run-tests.js)
+npm test                    # 83 teszt — INGYENES és hálózat nélküli (core/run-tests.js)
 node core/<nev>.test.js     # egyetlen teszt futtatása
 npm run router-smoke        # ⚠️ PÉNZBE KERÜL — valódi API-hívás, szándékosan nincs a npm test-ben
 node website/build.js       # statikus build a website/public/-ba (ingyenes, hálózat nélkül)
 ```
 
-A CI (`.github/workflows/auto.yml`) **nem futtat teszteket** — helyben kell.
+A CI (`.github/workflows/auto.yml`) **2026-09-06 óta FUTTAT teszteket**, a költés ELŐTT, `|| true`-val: a bukás nem állítja meg a futást, hanem a napi Telegram-riportba megy (`core/test-guard.js`). Előtte 5 napig pirosan állt egy teszt, és senki nem hallotta.
 
 ### Deploy (ebben a sorrendben, a középső lépés kötelező)
 
@@ -40,8 +40,8 @@ rss-scraper ──► iro / guide ──► ellenorzo ──► content/articles
                                  truth-gate)                                └──► social (Make: Facebook · Buffer: Threads, Instagram)
 ```
 
-- **`agents/`** — 20 agent, mind saját mappában, `agent.js` belépési ponttal. Ezek költenek pénzt és publikálnak.
-- **`core/`** — 81 tiszta modul: kapuk, őrszemek, router, memória. **Ide tedd a tesztelhető logikát**, ne az agentbe.
+- **`agents/`** — 25 agent, mind saját mappában, `agent.js` belépési ponttal. Ezek költenek pénzt és publikálnak.
+- **`core/`** — ~80 tiszta modul (+ ugyanennyi `*.test.js`): kapuk, őrszemek, router, memória. **Ide tedd a tesztelhető logikát**, ne az agentbe.
 - **`shared/`** — a promptokba fűzött közös tudás (stílus, jogi szabályok). ⚠️ A promptokba a TÖMÖR `legal-rules-ai.md` megy, nem a 12,5K-s `legal-rules.md` — jogi változásnál **mindkettőt** frissítsd.
 - **`content/`** — `articles/` (megjelent) · `drafts/` · `rejected/` · `withdrawn/` (levett, a build nem látja) · `translations/` · `slug-history.json` (301-ek).
 
