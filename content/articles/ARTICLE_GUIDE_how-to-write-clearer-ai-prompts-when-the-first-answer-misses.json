@@ -1,0 +1,64 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "how-to-write-clearer-ai-prompts-when-the-first-answer-misses",
+    "company": "",
+    "tool": "",
+    "icon": "✍️",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-09-08T02:01:45.825Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00725508,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-09-08T02:05:03.471Z",
+    "slug": "how-to-write-clearer-ai-prompts-when-the-first-answer-misses-the-mark",
+    "auto_check": {
+      "passed": false,
+      "issues": [
+        "PRICE_CLAIM_UNSOURCED: lejáró pénz-állítás forrás és árlap-hivatkozás nélkül (\"$5,000\"). A Midjourney-próba 2023 márciusa óta nem létezik, mégis kiment egy cikkünkben."
+      ],
+      "wordCount": 1402
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Excellent guide with clear structure, friendly tone, and beginner-friendly explanations. Each step tells readers exactly where to type, what to write, and what to expect. The fallback suggestions (like using personas button vs. plain text) help readers with different AI assistants. The Before You Start section sets expectations well. The \"What this means for you\" and \"Try it now\" sections are present with actionable takeaways. US English used throughout. No prohibited content, no clichés, no invented facts.",
+      "_aiCost": 0.001959,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "image_v": 2,
+    "image_at": "2026-09-08T02:05:38.992Z",
+    "seo": {
+      "meta_description": "Fix vague AI prompts with a simple four-part formula to get better chatbot responses. Works in ChatGPT, Claude, Gemini, and any AI assistant.",
+      "keywords": [
+        "how to write better AI prompts",
+        "how to improve AI chatbot responses",
+        "AI prompt formula",
+        "get better ChatGPT answers",
+        "clear AI prompts guide",
+        "AI prompt tips that work",
+        "fix bad AI responses",
+        "AI prompt framework"
+      ],
+      "seo_score": 9,
+      "suggestions": [
+        "Add a specific example showing before/after prompt using the four-part formula to demonstrate real results",
+        "Include the exact four-part formula elements (role, context, task, format) in a numbered list for easy scanning",
+        "Add 'how to write AI prompts' or 'AI prompt tutorial' to meta_description for better keyword targeting"
+      ],
+      "optimised_at": "2026-09-08T02:06:35.872Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"How to Write Clearer AI Prompts When the First Answer Misses the Mark\"\nsubtitle: \"A simple four-part formula that turns vague chatbot replies into useful ones, in any AI assistant you already use.\"\ncategory: \"guide\"\naudience: \"both\"\ncompany: \"\"\ntool: \"\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"prompting\", \"getting-started\", \"productivity\"]\n---\n\n# How to Write Clearer AI Prompts When the First Answer Misses the Mark\n\n> **In short:** Most bad AI replies come from vague prompts. Add four short pieces — role, context, task, and format — and the same assistant will give you a noticeably better answer. This works in any chatbot, free or paid.\n\nYou've asked the AI a question, the answer came back, and it's not what you wanted. It was too generic, too long, or it missed the point entirely. The fix is almost always the same: you didn't give it enough to work with. Below is a four-part formula that takes about thirty seconds to apply and works in any assistant you already have open.\n\n## Before you start\n- **Any AI assistant** open in a browser or app — ChatGPT, Gemini, Claude, Copilot, Le Chat, or whatever you already use.\n- **A moment of patience.** The first rewrite will feel slow; the second one will feel automatic.\n- **Total time:** about 5 minutes for the formula, plus a real prompt of your own to test it on.\n\n## Step 1 — Name the role the AI should play\nTell the assistant *who* you want it to be before you ask your question. A role is a short instruction like \"act as a travel agent\" or \"you are a patient math tutor.\" On the screen, just type this at the very start of your message — the chat box is the same one you already use. After you send, the assistant will answer from that perspective, which usually narrows the style and the level of detail. If your assistant has a \"personas\" or \"custom GPT\" button, you can use that instead — but a plain text role works in every chatbot. If you'd rather not name a role, skip to Step 2 and the rest of the formula still helps.\n💬 Example: *\"Act as a friendly editor who explains things to a complete beginner.\"*\nYou'll know it worked when the assistant's reply matches the tone of the role (warmer, more technical, more cautious, and so on) instead of its usual default voice.\n\n## Step 2 — Add the context it can't guess\nThe assistant doesn't know who you are, what you've already tried, or why you're asking. A short context line fixes that in one move. In the chat box, just add a sentence or two after the role: who you are, what you've already done, and what the situation is. You'll see the reply get more specific, because the assistant now has real facts to lean on instead of guessing. If you're not sure how much to write, give it the same background you'd give a friend in a text message. If your screen shows a \"memory\" or \"custom instructions\" setting, you can put recurring context there once and skip the line in future prompts.\n💬 Example: *\"I'm a small business owner with no marketing budget. I've never run an ad before.\"*\nYou'll know it worked when the answer stops including obvious assumptions (like suggesting a $5,000/month plan) and starts naming options that match your situation.\n\n## Step 3 — State the task in one sharp sentence\nNow say exactly what you want. One sentence is usually enough. In the chat box, write a verb-led request: \"write me…\", \"compare…\", \"summarize…\", \"give me five ideas for…\". What you see on screen is the same chat input; nothing changes about the interface. What happens next is that the assistant focuses on that one job instead of wandering into three different topics at once. If you want more than one thing, put them in a numbered list inside the prompt so the assistant knows there are multiple deliverables. If your version of the assistant has a \"focus\" or \"task\" mode toggle, turn it on now so the model treats the message as a job, not a chat.\n💬 Example: *\"Give me five low-cost ways to promote a one-day pop-up event next Saturday.\"*\nYou'll know it worked when the assistant answers the specific thing you asked, instead of giving you a generic article about marketing.\n\n## Step 4 — Tell it the format you want back\nThe last part of the formula is format. Say how you want the answer shaped: a list, a table, a 200-word paragraph, three bullet points, an email, a JSON object, or just \"ask me three questions first.\" In the chat box, add one short line at the end of your prompt describing the shape. You'll see the reply arrive in that shape — a numbered list, a short paragraph, a table — instead of the default wall of text. If the assistant offers output-style settings (like \"response length\" or \"format\"), set them now as a backup. If the result is still in the wrong format, repeat the format line more directly: \"Reply in bullet points only, no extra commentary.\"\n💬 Example: *\"Reply in a numbered list, max 50 words per item, no intro paragraph.\"*\nYou'll know it worked when the answer comes back in the exact shape you asked for and you don't have to rewrite it before using it.\n\n## Step 5 — Compare the two replies side by side\nSend your old, vague prompt first and save the reply. Then send the new four-part version in the same chat. You'll see both answers on screen, one above the other, in the same conversation. What usually happens is that the second answer is shorter, more on-topic, and easier to act on — and the difference comes entirely from what you wrote, not from the tool. If the two answers look almost the same, the assistant is probably still missing a key piece of context; go back to Step 2 and add another sentence. If your assistant has a \"compare\" or \"regenerate\" button, you can also use that to test a second version without retyping the prompt.\n💬 Example: compare *\"tell me about meal planning\"* with *\"Act as a budget home cook. I feed two adults, one of whom is vegetarian, and I have 45 minutes on weeknights. Suggest a 5-day dinner plan. Reply as a table with columns for Day, Main, Prep time, and one leftover-friendly note.\"*\nYou'll know it worked when the second answer is something you can actually use this week, while the first one felt like a Wikipedia summary.\n\n## Common mistakes\n- **Mistake: writing a whole essay as the prompt.** The fix: keep each of the four parts to one or two short lines. Long prompts make the assistant prioritize your wording instead of your goal.\n- **Mistake: leaving the format line out because it feels silly.** The fix: the format is the single biggest lever. Saying \"bullet points, no intro\" almost always beats a fancier question without a format hint.\n- **Mistake: asking three different tasks in one message.** The fix: split them. If you really need a single reply, number them (\"1. summarize… 2. list risks… 3. suggest next step\") so the assistant knows there are several deliverables.\n\n## What this means for you\n- **In everyday life:** the same formula works for writing a kind email to a landlord, planning a weekend trip, or rewriting a child's school note in simpler language — anywhere the default answer would feel generic.\n- **For your business or work:** paste the four parts into a reusable template and you have a personal prompt generator. Most people find their best results on the second or third rewrite, so the formula also gives you a quick way to iterate instead of giving up.\n- **If you're just getting started:** practice once on a real task you already have open. One rewrite is worth more than ten examples.\n\n## Try it now\nOpen any AI assistant, pick one small task you've been putting off (a polite \"no\" email, a meal plan, a meeting agenda), and write the four parts in this order: role, context, task, format. Send it. If the first reply is even 30% better than what you'd usually get, you've just learned the most useful prompting skill there is.",
+  "original_title": "How to write clearer AI prompts when the first answer misses the mark"
+}
