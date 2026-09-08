@@ -25,8 +25,8 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { tmpdir } from 'os';
 import {
-  judgeSource, reportLine, collectArticleStats, sourceIdFromFile,
-  DEAD_FEED_DAYS, MIN_SAMPLE, BAD_RATIO, TRUTH_WINDOW_DAYS
+  judgeSource, reportLine, reportLineFromFile, collectArticleStats, sourceIdFromFile, runReportCard,
+  DEAD_FEED_DAYS, MIN_SAMPLE, BAD_RATIO, TRUTH_WINDOW_DAYS, UNFIXED_GRACE_HOURS
 } from './source-report-card.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -91,16 +91,50 @@ t('halott feed → automatikus kikapcsolás', () => {
   assert.equal(j.auto, true, 'halott feedet a rendszer MAGÁTÓL kikapcsolja');
 });
 
-t('valótlant közöl → automatikus kikapcsolás (elég minta felett)', () => {
-  const j = judgeSource({ feedAgeDays: 1, published30d: 2, truthBlocks: 3, totalAttempts: 6 });
+// ===================================================================
+// 🔑 A BLOKK NEM ÍTÉLET (2026-09-08) — a szerződés MEGVÁLTOZOTT
+// ===================================================================
+// Ez a teszt korábban azt rögzítette, hogy a kapu-blokkok aránya AUTOMATIKUS
+// kikapcsolást vált ki. Kimérve a valódi naplón: 25 blokkolt piszkozatból
+// 25 megjelent és ma is kint van (100%), elutasítva maradt 0. A blokk tehát
+// „egy javítási kör kellett"-et jelent, nem azt, hogy a forrás valótlant közöl
+// — a kitalált menüutakat ráadásul a MI írónk gyártotta, nem a forrás.
+// Az ítélet ezért JAVASLAT lett, és a mérce a „nem is jött rendbe" szám.
+t('🔑 a puszta BLOKK önmagában NEM minősít (25/25 blokkolt cikk megjelent)', () => {
+  // Régen ez `unreliable` + `auto:true` volt. Ma: minden blokkolt cikk rendbe
+  // jött, tehát nincs miről beszélni.
+  const j = judgeSource({ feedAgeDays: 1, published30d: 2, truthBlocks: 8, totalAttempts: 10, truthUnfixed: 0 });
+  assert.equal(j.verdict, 'ok', '8/10 blokk, de mind rendbe jött — ez nem forráshiba');
+  assert.equal(j.auto, false);
+});
+
+t('🔑 ami NEM JÖTT RENDBE, arra szól — de csak JAVASLATKÉNT, nem kivégzésként', () => {
+  const j = judgeSource({ feedAgeDays: 1, published30d: 2, truthBlocks: 6, totalAttempts: 10, truthUnfixed: 5 });
   assert.equal(j.verdict, 'unreliable');
-  assert.equal(j.auto, true);
-  assert.ok(/hitelesség-kapu/i.test(j.reason));
+  assert.equal(j.auto, false, '⚠️ NEM kapcsolhatja ki magától — ez ítélet kérdése, a user dönt');
+  assert.ok(/fennakadt a hitelesség-kapun/.test(j.reason), 'a szöveg: ' + j.reason);
+});
+
+t('🔑 a szöveg nem állít TÖBBET, mint amennyit mér', () => {
+  const j = judgeSource({ feedAgeDays: 1, published30d: 2, truthBlocks: 6, totalAttempts: 10, truthUnfixed: 5 });
+  // A régi mondat „valótlan tartalom"-ról beszélt — az ítélet a forrásról,
+  // amit ez a szám nem támaszt alá. Ilyet többé nem írunk le.
+  assert.ok(!/valótlan/i.test(j.reason), 'visszatért a meg nem alapozott ítélet: ' + j.reason);
+  assert.ok(/utolsó \d+ nap/.test(j.reason), 'az IDŐTÁV-nak ki kell mennie: ' + j.reason);
 });
 
 t('kevés minta → NEM minősítünk (egy-két rossz cikk nem tendencia)', () => {
-  const j = judgeSource({ feedAgeDays: 1, published30d: 1, truthBlocks: 2, totalAttempts: MIN_SAMPLE - 1 });
+  const j = judgeSource({ feedAgeDays: 1, published30d: 1, truthBlocks: MIN_SAMPLE - 1, totalAttempts: MIN_SAMPLE - 1, truthUnfixed: MIN_SAMPLE - 1 });
   assert.notEqual(j.verdict, 'unreliable', 'kis mintán nem bélyegzünk meg forrást');
+  assert.equal(j.auto, false);
+});
+
+t('🔑 a MINTAKÜSZÖB valódi esetet véd: az nvidia-blog 1/3-on állt', () => {
+  // 2026-09-08-i éles állapot. A RÉGI küszöbnél (4) egyetlen további blokk
+  // kikapcsolta volna: 2/4 = 50%. Havi 7 cikket adó hivatalos forrás, három
+  // elemű mintán. Ez a teszt azt őrzi, hogy ez ne fordulhasson elő újra.
+  const j = judgeSource({ feedAgeDays: 1, published30d: 7, truthBlocks: 2, totalAttempts: 4, truthUnfixed: 2 });
+  assert.equal(j.verdict, 'ok', '4 elemű mintán NEM minősítünk (MIN_SAMPLE=' + MIN_SAMPLE + ')');
   assert.equal(j.auto, false);
 });
 
@@ -117,8 +151,23 @@ t('jól működő forrás → nincs teendő', () => {
 });
 
 t('egy rossz cikk sok jó mellett NEM elég a kikapcsoláshoz', () => {
-  const j = judgeSource({ feedAgeDays: 0, published30d: 20, truthBlocks: 1, totalAttempts: 20 });
-  assert.equal(j.verdict, 'ok', '1/20 blokk (' + BAD_RATIO + ' küszöb alatt) még rendben');
+  const j = judgeSource({ feedAgeDays: 0, published30d: 20, truthBlocks: 1, totalAttempts: 20, truthUnfixed: 1 });
+  assert.equal(j.verdict, 'ok', '1/20 (' + BAD_RATIO + ' küszöb alatt) még rendben');
+});
+
+t('🚨 az AUTOMATIKUS kikapcsolás CSAK a halott feed ágán maradt', () => {
+  // A projekt legdrágább hibaosztálya a némán meghozott, visszafordíthatatlan
+  // döntés. Ez a teszt kimondja, hány ilyen ág van: PONTOSAN EGY.
+  const esetek = [
+    { nev: 'halott feed', m: { feedAgeDays: DEAD_FEED_DAYS + 1, published30d: 0, truthBlocks: 0, totalAttempts: 5, truthUnfixed: 0 } },
+    { nev: 'fennakadt cikkek', m: { feedAgeDays: 1, published30d: 3, truthBlocks: 20, totalAttempts: 20, truthUnfixed: 20 } },
+    { nev: 'elavult feed', m: { feedAgeDays: 200, published30d: 4, truthBlocks: 0, totalAttempts: 4, truthUnfixed: 0 } },
+    { nev: 'nem termel', m: { feedAgeDays: 2, published30d: 0, truthBlocks: 0, totalAttempts: 0, truthUnfixed: 0 } },
+    { nev: 'rendben', m: { feedAgeDays: 0, published30d: 12, truthBlocks: 0, totalAttempts: 12, truthUnfixed: 0 } }
+  ];
+  const autok = esetek.filter(e => judgeSource(e.m).auto === true).map(e => e.nev);
+  assert.deepEqual(autok, ['halott feed'],
+    'megváltozott, mely ág kapcsol ki MAGÁTÓL forrást: ' + JSON.stringify(autok));
 });
 
 t('már kikapcsolt forrást nem bántunk újra', () => {
@@ -127,10 +176,19 @@ t('már kikapcsolt forrást nem bántunk újra', () => {
   assert.equal(j.auto, false);
 });
 
-t('a küszöbök NEM változtak (a javítás csak a BEMENŐ számot javítja)', () => {
-  assert.equal(MIN_SAMPLE, 4);
+t('a küszöbök rögzítve (változás csak szándékosan, mérés mellé)', () => {
+  assert.equal(MIN_SAMPLE, 8, 'a 4-es minta valódi forrást veszélyeztetett (nvidia-blog 1/3)');
   assert.equal(BAD_RATIO, 0.5);
   assert.equal(DEAD_FEED_DAYS, 365);
+  assert.equal(UNFIXED_GRACE_HOURS, 48, 'a mért maximum 9,8 óra volt — ez az ötszöröse');
+});
+
+t('🔑 a türelmi idő a MÉRT valóság fölött van', () => {
+  // Mérve 2026-09-08, 25 párosított eseten: blokk → megjelenés mediánja 0,0
+  // óra, maximuma 9,8 óra. Ha a türelem ez alá csúszna, a rendszer a saját,
+  // NORMÁLIS javítási körét minősítené kudarcnak.
+  assert.ok(UNFIXED_GRACE_HOURS > 9.8 * 2,
+    'a türelmi idő (' + UNFIXED_GRACE_HOURS + 'ó) nincs biztonságos távolságban a mért 9,8 órától');
 });
 
 t('riport-sor: csendes, ha nincs teendő; beszédes, ha van', () => {
@@ -142,6 +200,30 @@ t('riport-sor: csendes, ha nincs teendő; beszédes, ha van', () => {
   assert.ok(line.includes('KIKAPCSOLVA') && line.includes('Teszt Forrás'), 'a kikapcsolt forrás nevesítve');
   assert.ok(!line.includes('(hivatalos)'), 'a technikai utótag nem megy ki a riportba');
   assert.ok(line.includes('Másik Forrás'), 'a javaslat is megjelenik');
+});
+
+t('🔑 a kapun fennakadt forrás a SAJÁT mondatát kapja, nem a „nem termel"-t', () => {
+  // A riport-sornak korábban KÉT vödre volt: „elavult" és „minden más".
+  // A 2026-09-08-i változás után az `unreliable` is javaslat lett — a régi
+  // kódban abba a „minden más" vödörbe esett volna, és a napi riport azt írta
+  // volna egy havi 36 cikket adó forrásra, hogy NEM TERMEL.
+  const line = reportLine({
+    autoDisabled: [],
+    proposals: [{ id: 'p', name: 'Picsart (hivatalos)', reason: '5/8 cikke fennakadt a hitelesség-kapun és 48 óra után sem jelent meg (utolsó 14 nap) — érdemes megnézni' }]
+  });
+  assert.ok(line.includes('Picsart'), 'a forrás nevesítve: ' + line);
+  assert.ok(/fennakadt/.test(line), 'a lelet szövege kimegy: ' + line);
+  assert.ok(!/Nem termel/.test(line), '⚠️ a „nem termel" mondatot kapta egy termelő forrás: ' + line);
+});
+
+t('🔑 a fennakadt forrás NEM némul el a napi riportban', () => {
+  // A legfontosabb: a javaslattá szelídítés nem jelentheti azt, hogy a lelet
+  // senkihez nem jut el. („Az őrszem csak akkor őr, ha odaszól, ahol a user néz.")
+  const line = reportLine({
+    autoDisabled: [],
+    proposals: [{ id: 'p', name: 'X', reason: '9/10 cikke fennakadt a hitelesség-kapun és 48 óra után sem jelent meg (utolsó 14 nap) — érdemes megnézni' }]
+  });
+  assert.ok(line && line.trim().length > 0, 'a riport-sor NÉMA maradt egy valódi leletre');
 });
 
 // ===================================================================
@@ -193,9 +275,68 @@ t('REGRESSZIÓ: a napló blokkjai átbillentik a forrást, ÜRES rejected mappa 
   assert.ok(a, 'a forrásnak meg kell jelennie a mérésben');
   assert.equal(a.truthBlocks, 5, 'mind az 5 naplózott blokk beszámít');
   assert.equal(a.totalAttempts, 10, '5 kiment + 5 blokkolt = 10 próbálkozás');
+  // ⚠️ 2026-09-08-tól a SZÁMLÁLÁS ugyanaz, az ÍTÉLET más. Egyik blokkolt cikk
+  // sem jött rendbe, de a türelmi időn belüliek nem terhelik a forrást, és a
+  // kikapcsolás így sem automatikus.
   const j = judgeSource({ ...a, feedAgeDays: 1 });
-  assert.equal(j.verdict, 'unreliable');
-  assert.equal(j.auto, true, 'ez a szabály eddig HALOTT volt');
+  assert.equal(j.auto, false, '⚠️ ez az ág 2026-09-08 óta NEM kapcsol ki magától');
+});
+
+// ===================================================================
+// 3/b. rész — „NEM JÖTT RENDBE" (2026-09-08): a blokk és a kudarc KÜLÖNBSÉGE
+// ===================================================================
+console.log('\n🧪 nem jött rendbe — a blokk önmagában nem kudarc');
+
+t('🔑 a blokkolt, majd MEGJELENT cikk NEM számít kudarcnak', () => {
+  // Ez az éles valóság: 25 blokkolt cikkből 25 megjelent. A `_blocked`
+  // alapnév és a kiadott `ARTICLE_` alapnév UGYANAZ (ellenorzo/agent.js:571
+  // csak az előtagot cseréli) — ezen a párosításon áll az egész mérés.
+  uritCikkek();
+  const alap = '2026-08-20T00-00-00-000Z_javuloforras_Kamu.json';
+  writeFileSync(join(CIKKEK, 'ARTICLE_' + alap), JSON.stringify({
+    _meta: { source_id: 'javuloforras', published_at: new Date(MOST - 9 * DAY).toISOString() }
+  }), 'utf-8');
+  const per = collectArticleStats({
+    articlesDir: CIKKEK, truthLog: naplo({ alap, napokkalEzelott: 9 }), now: MOST });
+  assert.equal(per['javuloforras'].truthBlocks, 1, 'a blokkot LÁTJUK');
+  assert.equal(per['javuloforras'].truthUnfixed, 0, 'de rendbe jött — nem kudarc');
+});
+
+t('🔑 ami a türelmi idő után sincs kint, AZ a kudarc', () => {
+  uritCikkek();
+  const alap = '2026-08-20T00-00-00-000Z_elakadtforras_Kamu.json';
+  const per = collectArticleStats({
+    articlesDir: CIKKEK, truthLog: naplo({ alap, napokkalEzelott: 9 }), now: MOST });
+  assert.equal(per['elakadtforras'].truthUnfixed, 1, '9 napja blokkolva, ma sincs kint');
+});
+
+t('🔑 a FRISSEN blokkolt cikk nem kudarc — még javítás alatt állhat', () => {
+  // Mérve: a javítás mediánban 0,0 óra, maximum 9,8 óra alatt lezajlik. A
+  // türelmi idő ennek ötszöröse. Türelem nélkül a rendszer a SAJÁT, normális
+  // javítási körét minősítené kudarcnak — és épp a legfrissebb, legaktívabb
+  // forrásokat büntetné.
+  uritCikkek();
+  const alap = '2026-08-30T00-00-00-000Z_frissforras_Kamu.json';
+  const orakkal = o => ({ [napja(0)]: [{ at: new Date(MOST - o * 3600000).toISOString(), file: 'WRITER_' + alap, action: 'block', reasons: ['teszt'] }] });
+  assert.equal(collectArticleStats({ articlesDir: CIKKEK, truthLog: orakkal(UNFIXED_GRACE_HOURS - 1), now: MOST })['frissforras'].truthUnfixed,
+    0, 'a türelmi időn BELÜL még nem kudarc');
+  assert.equal(collectArticleStats({ articlesDir: CIKKEK, truthLog: orakkal(UNFIXED_GRACE_HOURS + 1), now: MOST })['frissforras'].truthUnfixed,
+    1, 'a türelmi idő UTÁN már az');
+});
+
+t('🔌 a collectArticleStats MINDIG kitölti a truthUnfixed mezőt', () => {
+  // A `judgeSource` `?? 0`-val védekezik a hiányzó mező ellen. Ez a teszt azt
+  // őrzi, hogy erre a védelemre soha ne legyen szükség: ha a mező kiesne a
+  // gyűjtésből, az ítélet NÉMÁN mindenkit tisztának látna.
+  uritCikkek();
+  cikk('barmiforras', 'Ok', 1);
+  const per = collectArticleStats({
+    articlesDir: CIKKEK,
+    truthLog: naplo({ alap: '2026-08-20T00-00-00-000Z_barmiforras_K.json', napokkalEzelott: 9 }),
+    now: MOST });
+  for (const [id, a] of Object.entries(per)) {
+    assert.equal(typeof a.truthUnfixed, 'number', id + ': a truthUnfixed nem szám — az ítélet elnémulna');
+  }
 });
 
 t('ABLAK: az ablakon KÍVÜLI blokk nem számít bele (nem élettartam-összeg)', () => {
@@ -337,10 +478,97 @@ t('az éles mérés lefut, és minden szám értelmes', () => {
     .sort((x, y) => y.arany - x.arany);
   console.log('     ↳ ' + Object.keys(per).length + ' forrás mérve, ' + sorok.length + ' forrásnak van blokkja az ablakban:');
   for (const s of sorok) {
-    const jel = (s.totalAttempts >= MIN_SAMPLE && s.arany >= BAD_RATIO) ? '  ⛔ ÁTLÉPI A KÜSZÖBÖT' : '';
-    console.log('        ' + s.id.padEnd(20) + ' ' + s.truthBlocks + '/' + s.totalAttempts + ' = ' + s.arany.toFixed(2) + jel);
+    const jel = (s.totalAttempts >= MIN_SAMPLE && (s.truthUnfixed / s.totalAttempts) >= BAD_RATIO) ? '  ⛔ ÁTLÉPI A KÜSZÖBÖT' : '';
+    console.log('        ' + s.id.padEnd(20) + ' blokk ' + s.truthBlocks + '/' + s.totalAttempts
+      + ' = ' + s.arany.toFixed(2) + ' · nem jött rendbe: ' + s.truthUnfixed + jel);
   }
 });
+
+// ===================================================================
+// 🔑 A LELET MAGA, ÉLES ADATON (2026-09-08)
+// ===================================================================
+t('🔑 ÉLESBEN: a blokkolt cikkek TÚLNYOMÓ TÖBBSÉGE rendbe jön', () => {
+  // Ez a teszt a döntés ALAPJÁT méri újra minden futáskor. 2026-09-08-án:
+  // 25 blokkolt cikkből 25 megjelent (100%), nem jött rendbe: 0.
+  // Ha ez az arány valaha megfordul, AZ önmagában hír — és akkor a mostani
+  // enyhítés újragondolandó. Küszöb: a blokkoltak több mint fele jöjjön rendbe.
+  const per = collectArticleStats();
+  const blokk = Object.values(per).reduce((s, a) => s + a.truthBlocks, 0);
+  const elakadt = Object.values(per).reduce((s, a) => s + a.truthUnfixed, 0);
+  if (blokk === 0) { console.log('     ⚠️ nincs blokk az ablakban — a lépést kihagyom'); return; }
+  const rendbeJott = blokk - elakadt;
+  console.log('     ↳ ' + blokk + ' blokkolt cikk, ebből ' + rendbeJott + ' megjelent ('
+    + (100 * rendbeJott / blokk).toFixed(0) + '%), elakadt: ' + elakadt);
+  assert.ok(elakadt <= blokk, 'elakadt (' + elakadt + ') nem lehet több a blokknál (' + blokk + ')');
+  assert.ok(rendbeJott / blokk > 0.5,
+    'MEGFORDULT A KÉP: a blokkolt cikkek többsége már NEM jön rendbe (' + rendbeJott + '/' + blokk
+    + '). A 2026-09-08-i enyhítés ezen a mérésen állt — nézd meg újra.');
+});
+
+t('🚨 ÉLESBEN: egyetlen forrás sincs automatikus kikapcsolás előtt', () => {
+  // A javítás LÉNYEGE. A régi szabállyal az `nvidia-blog` 1/3-on állt, azaz
+  // EGYETLEN további blokkra a kikapcsolástól — havi 7 cikket adó hivatalos
+  // forrás. Ez a lépés minden futáskor újrakérdezi az éles adaton.
+  const per = collectArticleStats();
+  const veszelyben = [];
+  for (const [id, a] of Object.entries(per)) {
+    const j = judgeSource({ ...a, feedAgeDays: 1 });
+    if (j.auto) veszelyben.push(id + ' (' + j.reason + ')');
+  }
+  assert.deepEqual(veszelyben, [],
+    'a kapu-blokkok miatt forrás kapcsolódna ki magától: ' + veszelyben.join(' · '));
+});
+
+// ===================================================================
+// 🔌 BEKÖTÉS-ŐR — a lelet ELJUT a userhez (2026-09-08)
+// ===================================================================
+// Az éles adaton ma egyetlen forrás sem éri el a küszöböt — helyesen. Ezért
+// egy elvágott huzalozás TELJESEN NÉMÁN maradna: a `truthUnfixed` kimaradhatna
+// a `judgeSource` bemenetéből, vagy az `unreliable` a javaslatok közül, és
+// minden teszt zöld lenne. Ezek a lépések élethű bemenettel kényszerítik ki.
+console.log('\n🧪 bekötés — a lelet eljut a userhez');
+
+const halottFeed = async () => ({ ok: true, text: async () => '<rss><channel></channel></rss>' });
+
+await (async () => {
+  const eredmeny = await runReportCard({
+    dryRun: true,
+    fetchFn: halottFeed,
+    // A `picsart` VALÓDI forrás-azonosító a rss-feeds.json-ban — kitalált id-vel
+    // a lépés némán semmit sem mérne.
+    stats: { picsart: { published30d: 30, truthBlocks: 9, totalAttempts: 10, truthUnfixed: 9, lastArticle: '2026-09-01' } }
+  });
+
+  t('🔌 a truthUnfixed ELJUT a judgeSource-ig (különben soha nincs ítélet)', () => {
+    const c = eredmeny.card['picsart'];
+    assert.ok(c, 'a picsart nincs a bizonyítványban');
+    assert.equal(c.truthUnfixed, 9, 'a mező nem jutott át a bizonyítványba');
+    assert.equal(c.verdict, 'unreliable', '9/10 elakadt cikkre nem született ítélet — elvágott huzalozás');
+  });
+
+  t('🔌 az ítélet a JAVASLATOK közé kerül (nem a kikapcsoltak közé, és nem sehova)', () => {
+    assert.ok(eredmeny.proposals.some(p => p.id === 'picsart'),
+      '⚠️ az ítélet SEHOVA nem jutott el — a napi riport néma maradna');
+    assert.ok(!eredmeny.autoDisabled.some(d => d.id === 'picsart'),
+      '⚠️ visszatért az automatikus kikapcsolás ezen az ágon');
+  });
+
+  t('🔌 a riport-sor tényleg kimondja (a lánc VÉGE, nem a közepe)', () => {
+    const sor = reportLine(eredmeny);
+    assert.ok(/fennakadt a hitelesség-kapun/.test(sor), 'a lelet nem ér el a riport-sorig: ' + sor);
+  });
+
+  t('🔌 a NAPI RIPORT útján is kimegy (reportLineFromFile — ez hívja a user felé)', () => {
+    // ⚠️ EZ A VALÓDI ÚT. A `core/daily-report.js:844` NEM a runReportCard
+    // kimenetét használja, hanem a KIÍRT bizonyítványt olvassa vissza ezzel a
+    // függvénnyel. Ha itt esne ki az `unreliable` a szűrésből, a lelet a
+    // fájlban ott ülne, a Telegram-üzenetben pedig soha nem jelenne meg —
+    // pontosan az i18n-őrszem hibája.
+    const sor = reportLineFromFile(eredmeny.card);
+    assert.ok(sor && /fennakadt a hitelesség-kapun/.test(sor),
+      '⚠️ a napi riport ÚTJÁN a lelet elnémul: ' + JSON.stringify(sor));
+  });
+})();
 
 t('A JAVÍTÁS TÉNYLEG SZÁMOL: az éles naplóból >0 blokk jut el a mérőig', () => {
   // Ez a lépés bukik, ha a mérő újra egy ürülő mappát néz. A régi kód
