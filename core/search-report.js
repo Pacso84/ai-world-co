@@ -22,6 +22,7 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { sendMessage } from './telegram.js';
 import { shouldSendReport, sikeresKuldes } from './report-window.js';
+import { szakadekVizsgalat, szakadekSor } from './search-cliff.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
@@ -124,11 +125,17 @@ async function getBing() {
   const rows = (await r.json()).d || [];
   const cutoff = Date.now() - 7 * 86400e3;
   let clicks = 0, impressions = 0;
+  // ⚠️ A TELJES NAPI SOROZAT IS KELL, nem csak a heti összeg (2026-09-08).
+  // A 08-21-i Bing-szakadék 18 napig azért maradt néma, mert a riport CSAK
+  // összeget írt ki — egy összeg matematikailag képtelen megmutatni egy
+  // lépcsőt: hetekig magas marad azután is, hogy a napi érték nullára esett.
+  const napok = [];
   for (const row of rows) {
     const t = parseInt((String(row.Date).match(/\d+/) || [0])[0], 10);
     if (t >= cutoff) { clicks += row.Clicks || 0; impressions += row.Impressions || 0; }
+    if (t) napok.push({ date: new Date(t).toISOString().slice(0, 10), impressions: row.Impressions || 0 });
   }
-  return { clicks, impressions };
+  return { clicks, impressions, napok };
 }
 
 function pct(cur, prev) {
@@ -200,6 +207,15 @@ async function main() {
   if (b) {
     weeklyClicks += b.clicks;
     lines.push(`🔎 Bing: *${b.clicks} kattintás* · ${b.impressions} megjelenés`);
+
+    // 🚫 SZAKADÉK-ŐR (2026-09-08). A fenti sor ÖSSZEGET mond; ez SZINTVÁLTÁST
+    // keres. A kettő nem ugyanaz: 2026-08-21-én a napi megjelenés 38-76-ról
+    // pontosan nullára esett, és 18 napig senki nem vette észre, mert a 30
+    // napos összeg még hetekig magas maradt. A memóriánkba is úgy került be,
+    // hogy „Bing 832 megjelenés (mérve 08-26)" — miközben aznap már öt napja
+    // nulla volt. Néma, ha nincs szintváltás.
+    const sor = szakadekSor('Bing', szakadekVizsgalat(b.napok));
+    if (sor) lines.push(sor);
   } else lines.push(`🔎 Bing: ${why(bErr, 'BING_WM_API_KEY')}`);
 
   // ÖSSZES látogató (Cloudflare Web Analytics) — nem csak a keresőkből!
