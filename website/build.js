@@ -29,6 +29,7 @@ import { kindOf, KIND_ORDER, KINDS } from '../core/tool-kinds.js';
 import { langSentence } from '../core/llms-txt.js';
 import { insertMidGuide } from '../core/mid-guide.js';
 import { RETIRED_LANGS } from '../core/retired-langs.js';
+import { laposit } from '../core/redirect-chain.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = join(__dirname, '..');
@@ -1143,10 +1144,20 @@ function pageShell({ title, description, bodyContent, isArticle = false, noIntro
   // Tartalék megosztás-kép: JPG kell (az SVG-t a Facebook nem jeleníti meg!)
   const img = ogImage || (SITE.url + '/assets/og-default.jpg');
   // hreflang + nyelvváltó (minden oldalnak ugyanaz a pagePath-ja minden nyelven)
-  const hreflang = SITE_LANGS.map(l => `<link rel="alternate" hreflang="${l}" href="${SITE.url}${langPrefix(l)}${cp}">`).join('\n  ')
-    + `\n  <link rel="alternate" hreflang="x-default" href="${SITE.url}${cp}">`;
+  // ⚠️ HIBAOLDALON A NYELVI PÁR NEM LÉTEZIK (2026-09-08). A `cp` a lapból
+  // képződik, tehát a 404-en `/404` lett belőle — a nyelvváltó `/hu/404`-re és
+  // `/es/404`-re mutatott, a hreflang ugyanoda. Mindkettő 404 (élesben mérve),
+  // vagyis a saját oldalunk küldött halott címre, és a kereső is odament.
+  // 🔑 Az elv: hreflang és nyelvváltó csak olyan lapnak jár, ami MINDEN nyelven
+  // létezik. A hibaoldalon a nyelvváltás célja nem „ugyanez másik nyelven",
+  // hanem „az a nyelv kezdőlapja" — a lap TÖRZSE már így is linkel.
+  const hibaLap = /^\/?404(\.html)?$/.test(String(pagePath || ''));
+  const cpNyelv = hibaLap ? '/' : cp;
+  const hreflang = hibaLap ? '' : (
+    SITE_LANGS.map(l => `<link rel="alternate" hreflang="${l}" href="${SITE.url}${langPrefix(l)}${cp}">`).join('\n  ')
+    + `\n  <link rel="alternate" hreflang="x-default" href="${SITE.url}${cp}">`);
   const langSwitcher = `<select class="lang-select" onchange="if(this.value)location.href=this.value" aria-label="${T.language}" style="background-color:var(--card);color:var(--ink);border:1px solid var(--line-strong);border-radius:8px;font:inherit;font-size:13px;padding:7px 6px;cursor:pointer;color-scheme:light dark">
-        ${SITE_LANGS.map(l => `<option value="${SITE.url}${langPrefix(l)}${cp}" ${l === LANG ? 'selected' : ''} style="background-color:var(--card);color:var(--ink)">${LANG_NAME[l]}</option>`).join('')}
+        ${SITE_LANGS.map(l => `<option value="${SITE.url}${langPrefix(l)}${cpNyelv}" ${l === LANG ? 'selected' : ''} style="background-color:var(--card);color:var(--ink)">${LANG_NAME[l]}</option>`).join('')}
       </select>`;
   // OpenGraph cikk-meták (2026-07-23, Google News/aggregátor-felkészítés): a
   // publikálás/módosítás ideje + rovat. A dátum a NewsArticle JSON-LD-ben már
@@ -3108,12 +3119,19 @@ Original content by ${SITE.name} — written and quality-checked by an autonomou
   const covered = new Set();
   try {
     const hist = JSON.parse(readFileSync(join(PROJECT_ROOT, 'content', 'slug-history.json'), 'utf-8'));
-    for (const [from, to] of Object.entries(hist)) {
-      if (from === to) continue;
+    // ⚠️ KILAPÍTVA (2026-09-08). A slug-history TÖRTÉNET: ha egy cikket
+    // KÉTSZER neveztek át, két bejegyzés keletkezik, és a nyers kiírásból
+    // két ugrás lesz (301 → 301 → 200). Élesben mérve pontosan ez adta a
+    // GSC „Átirányítási hiba" sorát, három nyelven és .html-lel együtt hat
+    // fölösleges szabállyal — abban a fájlban, aminek 2100 sor a plafonja.
+    // A történetet nem írjuk át; a KISZOLGÁLT átirányítás lesz egyenes.
+    const lapos = laposit(hist);
+    for (const [from, to] of lapos) {
       redirectLines.push(...rule(from, to));
       covered.add(from);
     }
-    console.log(`✅ ${Object.keys(hist).length} bizonyított régi cím a git-történetből`);
+    console.log(`✅ ${Object.keys(hist).length} bizonyított régi cím a git-történetből`
+      + ` (${lapos.size} szabály a lánc-kilapítás után)`);
   } catch { /* nincs slug-history — csak a fájlnév-alapú tippek mennek ki */ }
 
   for (const [from, to] of RENAMED_SLUGS) {
