@@ -35,3 +35,22 @@ binding = "AI"
 # tettuk, hogy ne essen egybe a GitHub sajat inditasi csucsaval.
 [triggers]
 crons = ["7 * * * *"]
+
+# ===================================================================
+# 📜 WORKER-NAPLÓZÁS (2026-09-08) — miért kapcsoltuk be
+# ===================================================================
+# 2026-09-08-án egy support-email auto-válasza elbukott. A hibát a kód
+# `console.log`-ba írta — ami naplózás NÉLKÜL SEHOVA nem jut el (a
+# `wrangler tail` csak ÉLŐBEN mutat, utólag nem). A bukást végül abból
+# lehetett kikövetkeztetni, hogy egy KV-kulcs HIÁNYZOTT: az, amit a
+# sikeres ág írt volna. Az OKÁT viszont máig nem tudjuk.
+#
+# 🔑 Ez ugyanaz a lecke, mint az őrkutyánál: ahol a kód és a futtatás
+# helye szétválik, kell egy mérés a FUTTATÁS felől. Egy `console.log`,
+# amit senki nem olvashat, nem napló.
+#
+# A kód-oldali javítás (napi `replyfail` számláló + ok, ami a napi
+# Telegram-riportba megy) ettől FÜGGETLENÜL megvan — ez a napló a
+# RÉSZLETEKHEZ kell, amikor a számláló megszólal.
+[observability]
+enabled = true

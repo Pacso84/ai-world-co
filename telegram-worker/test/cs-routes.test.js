@@ -1,7 +1,7 @@
 // node telegram-worker/test/cs-routes.test.js — offline: fake env + globális fetch-csere
 import { strict as assert } from 'assert';
 import { readFileSync } from 'fs';
-import { handleChat, handleContact, csCounters, csExport, LIMIT_MSG } from '../src/cs-routes.js';
+import { handleChat, handleContact, csCounters, csExport, LIMIT_MSG, markUnsent, uzenetAzonosito, bumpCs, dayKey } from '../src/cs-routes.js';
 
 function fakeKv() {
   const store = new Map();
@@ -279,6 +279,103 @@ try {
     const src = readFileSync(new URL('../src/worker.js', import.meta.url), 'utf-8');
     assert.ok(/out\.__cs\s*=\s*await\s+csExport\(env\)/.test(src), 'a /feedback-export nem a csExport()-ot adja ki');
     assert.ok(/import\s*\{[^}]*csExport[^}]*\}\s*from\s*'\.\/cs-routes\.js'/.test(src), 'a worker.js nem importálja a csExport-ot');
+  }
+
+  // ===================================================================
+  // 19) 📧 AZ EMAIL-ÁG IS VÉDVE (2026-09-08)
+  // ===================================================================
+  // MI TÖRTÉNT: a `cs-email.js` elküldte a Telegram-másolatot, és a `tg()`
+  // visszatérési értékét ELDOBTA. A `tg()` SOHA nem dob — hiba esetén
+  // `{ok:false}`-t ad —, tehát a bukott küldés pontosan úgy nézett ki, mint a
+  // sikeres. És az email-ág SEMMIT nem mentett a KV-be, tehát a levél
+  // nyomtalanul elveszett volna. Ugyanaz a hiba, amit 08-29-én az ŰRLAPON
+  // már megjavítottunk — csak a másik ágon maradt bent.
+  //
+  // ⚠️ A `cs-email.js` node alatt NEM importálható (`cloudflare:email`),
+  // ezért a megosztott részt viselkedésben, a bekötést forrásból nézzük.
+  {
+    // a) Az azonosító alakja SZERZŐDÉS a `csUnsent()` olvasójával: az
+    //    időbélyeg a kulcs ELSŐ szakasza, érték-olvasás nélkül.
+    const id = uzenetAzonosito(1756500000000);
+    assert.match(id, /^1756500000000-[0-9a-f]{8}$/, 'elromlott az azonosító alakja: ' + id);
+    assert.notEqual(uzenetAzonosito(1756500000000), uzenetAzonosito(1756500000000),
+      'ugyanarra az ezredmásodpercre AZONOS azonosítót ad — a második üzenet felülírná az elsőt');
+
+    // b) A `markUnsent` exportálva van, és az export TÉNYLEG meglátja.
+    const env = baseEnv();
+    const rec = { kind: 'email', email: 't@trykrea.ai', subject: 'Krea for your article', message: 'Hey', ts: 1756500000000 };
+    await markUnsent(env, uzenetAzonosito(rec.ts), rec, 'Forbidden: bot was blocked by the user');
+    const ex = await csExport(env);
+    assert.equal(ex.unsent, 1, 'az email-ág nyoma nem jut el az exportig');
+    assert.equal(ex.unsentLast, new Date(1756500000000).toISOString());
+    // A LEVÉL TARTALMA is legyen visszakereshető — ez a lényeg: ne vesszen el.
+    const mentett = JSON.parse(env.FEEDBACK._store.get(unsentKeys(env)[0]));
+    assert.equal(mentett.email, 't@trykrea.ai');
+    assert.equal(mentett.subject, 'Krea for your article');
+    assert.equal(mentett.delivered, false);
+    assert.match(mentett.reason, /blocked/, 'az OK nem került be: ' + mentett.reason);
+  }
+
+  // ===================================================================
+  // 20) ✉️ A BUKOTT AUTO-VÁLASZ LÁTHATÓ (2026-09-08)
+  // ===================================================================
+  // A `message.reply()` hibáját eddig `console.log` nyelte el — az sehova nem
+  // jut el. Élesben megtörtént, és KIZÁRÓLAG abból derült ki, hogy egy
+  // KV-kulcs HIÁNYZOTT (amit a sikeres ág írt volna). Most számlálóba megy.
+  {
+    const env = baseEnv();
+    const nulla = await csCounters(env);
+    assert.equal(nulla.replyfail, 0, 'alapból 0, nem undefined — különben a riport sosem szólalna meg');
+    assert.equal(nulla.replyfailWhy, null, 'ok nélkül ne találjunk ki okot');
+
+    await bumpCs(env, 'replyfail');
+    await env.FEEDBACK.put(`cs:replyfailwhy:${dayKey()}`, 'could not send email: invalid recipient');
+    const c = await csCounters(env);
+    assert.equal(c.replyfail, 1);
+    assert.match(c.replyfailWhy, /invalid recipient/, 'az OK nem megy ki — egy szám önmagában nem javítható hiba');
+
+    // A lánc VÉGE: az exportba is bele kell kerülnie.
+    const ex = await csExport(env);
+    assert.equal(ex.replyfail, 1, 'a replyfail nem jut el a /feedback-export-ig');
+  }
+
+  // ===================================================================
+  // 21) 🔌 BEKÖTÉS-ŐR — a cs-email.js tényleg MEGNÉZI a küldés eredményét
+  // ===================================================================
+  // ⚠️ A KOMMENTEKET LEVÁGJUK. Ma (2026-09-08) élesben megtörtént, hogy egy
+  // ilyen forrás-alapú őr egy KOMMENTRE illeszkedett, és a kivágott hívást
+  // zölden átengedte. A fejléc itt is leírja a függvények nevét.
+  {
+    const nyers = readFileSync(new URL('../src/cs-email.js', import.meta.url), 'utf-8');
+    const src = nyers.split('\n').filter(s => !s.trim().startsWith('//')).join('\n');
+    assert.ok(nyers.includes('// '), 'nincs komment a forrásban — a szűrő nem azt méri, amit hisz');
+
+    assert.ok(/const\s+kuldes\s*=\s*await\s+tg\s*\(/.test(src),
+      '⚠️ a cs-email.js megint ELDOBJA a tg() visszatérési értékét');
+    assert.ok(/if\s*\(\s*!kuldes\?\.ok\s*\)/.test(src), 'nincs ellenőrizve a küldés eredménye');
+    assert.ok(/markUnsent\s*\(/.test(src), 'a markUnsent() nincs HÍVVA az email-ágon');
+    assert.ok(/bumpCs\s*\(\s*env\s*,\s*'replyfail'\s*\)/.test(src),
+      'a bukott auto-válasz megint némán vész el');
+
+    // SORREND: a nyom a válasz-küldés ELŐTT kell — nem ígérhetünk emberi
+    // választ egy levélre, amit épp elvesztettünk.
+    const nyomNal = src.indexOf('markUnsent(');
+    const valaszNal = src.indexOf('message.reply(');
+    assert.ok(nyomNal > 0 && valaszNal > 0, 'nem találom a két hívást — a teszt elavult');
+    assert.ok(nyomNal < valaszNal, 'a kézbesítetlen-nyom a válasz UTÁN van');
+  }
+
+  // ===================================================================
+  // 22) 🔌 A NAPI RIPORT KIÍRJA (a lánc utolsó szeme)
+  // ===================================================================
+  {
+    // A `core/daily-report.js` importálása Telegram-üzenetet küldene
+    // (feltétel nélküli `main()`), ezért forrásból nézzük.
+    const rep = readFileSync(new URL('../../core/daily-report.js', import.meta.url), 'utf-8')
+      .split('\n').filter(s => !s.trim().startsWith('//')).join('\n');
+    assert.ok(/cs\.replyfail\s*>\s*0/.test(rep),
+      '⚠️ a bukott auto-válasz nem jut el a napi riportig — a lelet a CI-naplóig ér, senkihez');
+    assert.ok(/replyfailWhy/.test(rep), 'a riport nem írja ki, MIÉRT bukott a válasz');
   }
 
   console.log('✅ cs-routes.test: minden átment');

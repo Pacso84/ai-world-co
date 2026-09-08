@@ -888,6 +888,18 @@ async function main() {
         // A sikertelen ELLENŐRZÉS nem ugyanaz, mint a „0 kézbesítetlen" —
         // enélkül a kettő kívülről egyformán nézne ki.
         if (cs.unsentError) lines.push('📮 A kézbesítetlen üzeneteket NEM tudtam ellenőrizni (KV-listázás hibája).');
+
+        // ✉️ A FELADÓ NEM KAPOTT VÁLASZT (2026-09-08).
+        // A `cs-email.js` `message.reply()`-ja eddig NÉMÁN nyelte a hibát:
+        // csak `console.log`, ami sehova nem jut el. Élesben megtörtént, és
+        // kizárólag abból derült ki, hogy egy KV-kulcs HIÁNYZOTT — az, amit
+        // a SIKERES ág írt volna. A `total > 0` feltételen KÍVÜL van, mint a
+        // kézbesítetlen sor: egy elmaradt válaszról akkor is szólni kell, ha
+        // aznap semmi más forgalom nem volt.
+        if (cs.replyfail > 0) {
+          lines.push(`✉️ AUTO-VÁLASZ NEM MENT KI: ${cs.replyfail} db — a feladó nem kapott visszajelzést.`
+            + (cs.replyfailWhy ? ` Ok: ${String(cs.replyfailWhy).slice(0, 120)}` : ''));
+        }
       }
     }
   } catch { /* a riport ettől még kimegy */ }

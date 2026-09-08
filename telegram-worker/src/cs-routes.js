@@ -56,9 +56,16 @@ export async function bumpCs(env, kind) {
 export async function csCounters(env) {
   const d = dayKey();
   const out = {};
-  for (const k of ['chat', 'mail', 'esc']) {
+  // ⚠️ A `replyfail` 2026-09-08-tól van itt: a bukott AUTO-VÁLASZ eddig csak
+  // `console.log`-ba ment, tehát sehova. Élesben meg is történt — és csak
+  // abból derült ki, hogy egy KV-kulcs HIÁNYZOTT, amit a sikeres ág írt volna.
+  for (const k of ['chat', 'mail', 'esc', 'replyfail']) {
     out[k] = parseInt(await env.FEEDBACK.get(`cs:${k}:${d}`) || '0', 10);
   }
+  // Az OK is kimegy: egy szám önmagában nem javítható hiba.
+  out.replyfailWhy = out.replyfail > 0
+    ? (await env.FEEDBACK.get(`cs:replyfailwhy:${d}`) || null)
+    : null;
   return out;
 }
 export async function globalLimitReached(env) {
@@ -88,11 +95,35 @@ const UNSENT_TTL = 2592000;      // 30 nap — ugyanaz, mint a cs:msg:
 const UNSENT_MAX_PAGES = 5;      // 5×1000 kulcs bőven elég; véghetetlen lapozás nincs
 
 /**
+ * Az üzenet-azonosító: `<ezredmásodperc>-<8 véletlen jegy>`.
+ *
+ * ⚠️ AZ ALAKJA SZERZŐDÉS, nem ízlés: a `csUnsent()` az időbélyeget a kulcs
+ * ELSŐ szakaszából olvassa ki, ÉRTÉK-OLVASÁS NÉLKÜL (így egy listázás nem
+ * kerül N darab KV-get-be). Ha a két hely külön képezné az azonosítót, a
+ * formátum előbb-utóbb szétcsúszna, és a „legutóbbi kézbesítetlen" dátuma
+ * némán elromlana. Ezért ez EGY függvény, és mindkét ág ezt hívja.
+ *
+ * ⚠️ A VÉLETLEN RÉSZ SEM DÍSZ (2026-08-30, a saját teszt hozta elő): a puszta
+ * ezredmásodperc NEM egyedi — két ugyanabban a milliszekundumban érkező
+ * üzenet közül a második NÉMÁN felülírta volna az elsőt.
+ */
+export function uzenetAzonosito(ts = Date.now()) {
+  return `${ts}-${crypto.randomUUID().slice(0, 8)}`;
+}
+
+/**
  * A kézbesítetlen üzenet nyoma. SOHA nem tartalmaz tokent — a riportba megy.
  * Az `id` UGYANAZ, mint a `cs:msg:` rekordé (`<ts>-<véletlen>`), így a kettő
  * párosítható, és két egyszerre érkező üzenet nem írja felül egymást.
+ *
+ * ⚠️ EXPORTÁLT (2026-09-08): az EMAIL-ág is ezt használja. Addig csak az
+ * űrlap volt védve — a `cs-email.js` elküldte a Telegram-másolatot, és a
+ * `tg()` visszatérési értékét ELDOBTA. Az email-ág ráadásul SEMMIT nem ment
+ * a KV-be, tehát egy bukott Telegram-küldésnél a levél nyomtalanul elveszett
+ * volna. Ugyanaz a hiba, amit 2026-08-29-én az űrlapon már megjavítottunk —
+ * csak a másik ágon maradt bent.
  */
-async function markUnsent(env, id, rec, hiba) {
+export async function markUnsent(env, id, rec, hiba) {
   await env.FEEDBACK.put(`${UNSENT_PREFIX}${id}`, JSON.stringify({
     ...rec,
     delivered: false,
@@ -236,7 +267,7 @@ async function contactFlow(request, env, h, { email, message, lang, name, token 
   // NÉMÁN FELÜLÍRTA az elsőt. Pontosan az a csendes veszteség, amit itt
   // javítunk — csak a másik végén. Az időbélyeg a kulcs ELEJÉN marad
   // (rendezhetőség + a `csUnsent` innen olvassa ki, érték-olvasás nélkül).
-  const id = `${ts}-${crypto.randomUUID().slice(0, 8)}`;
+  const id = uzenetAzonosito(ts);
   const rec = { email, name, message, lang, ts };
   await env.FEEDBACK.put(`cs:msg:${id}`, JSON.stringify(rec), { expirationTtl: 2592000 }); // 30 nap
   await bumpCs(env, 'esc');
