@@ -17,6 +17,42 @@
 //   4. bukásnál a régi marad, a próbálkozás számlálódik (3 után békén hagyjuk)
 // Így az oldalon soha nincs lyuk, és rossz csere sem történhet.
 //
+// ===================================================================
+// ⚠️ MI HIÁNYZOTT INNEN (feltárva és javítva 2026-09-08)
+// ===================================================================
+// Ez a szkript ÉLŐ, publikált cikkeket ír át, naponta háromszor kettőt —
+// 79 cikket írt már át, legutóbb ma. A csere feltétele viszont NÉGY
+// SZERKEZETI ellenőrzés volt: ép frontmatter, van `title:`, elég szó és
+// lépés, megvan a brand-szekció. Mind azt kérdezi, hogy MEGVAN-E A FORMA.
+// EGYIK SEM azt, hogy IGAZ-E.
+//
+// A prompt KÉRI a modelltől, hogy ne találjon ki menüt („NEVER invent a menu
+// name") — de semmi nem ELLENŐRIZTE. Márpedig a projekt legdrágább leckéi
+// épp ezek: 321 útmutatóból 321 forrás nélkül íródott, 48% konkrét gombot is
+// megnevez; és a hitelesség-kapu VALÓDI naplójában ilyen blokkok állnak:
+// „a 'Settings → Extensions → Google apps' menüútvonal KITALÁLT".
+//
+// A kapuk két rétegben, olcsóságuk sorrendjében:
+//   1. INGYENES — `core/upgrade-gate.js` `felujitasKifogas()`. Ott lakik, és
+//      nem itt, mert az agentbe zárt logika SOHA nem tesztelhető (az
+//      `agents/` alól importálni tilos). Tartalma: a négy régi szerkezeti
+//      ellenőrzés + CSONKA-ŐR + NÉV-ZÁR. A modul saját fejléce indokolja
+//      mindegyiket; a mérések is ott vannak.
+//   2. FIZETŐS — `truthGate()`: halott link ($0) + AI-bíró. Ezen a cikken
+//      SEMMI más nem ellenőrzi az igazságot: a lánc többi kapuja (Ellenőrző,
+//      truth-gate) csak az ÚJ cikkekre fut, erre nem.
+//
+// ⚠️ NINCS `logGate()` HÍVÁS, SZÁNDÉKOSAN. A hitelesség-kapu naplója a
+// FORRÁS-BIZONYÍTVÁNYT táplálja (`core/source-report-card.js`), az pedig a
+// fájlnévből fejti vissza a hírforrást. Egy FELÚJÍTÁSI bukás nem a forrás
+// hibája — ha ide naplóznánk, a forrás kapná a rovást. Pontosan az a hiba,
+// amit 2026-09-08-án javítottunk ki.
+//
+// ⚠️ A `hold` NEM BUKÁS. Ha az AI-bíró elérhetetlen, az a MI hibánk, nem a
+// szövegé — ilyenkor a próbálkozás-számlálót NEM növeljük, különben három
+// hálózati hiba örökre kizárná a cikket a felújításból.
+// ===================================================================
+//
 // FORDÍTÁSOK: sikeres csere után a cikk fordítás-gyorsítótárát TÖRÖLJÜK, hogy a
 // fordító a következő futásban az ÚJ szöveget vigye ki mind a 4 nyelvre.
 //
@@ -32,6 +68,9 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { ask } from '../../core/ai-router.js';
 import { HOWTO_RANGE } from '../../core/article-length.js';
+// ── KAPUK (2026-09-08) — lásd a „MI HIÁNYZOTT INNEN" szakaszt lentebb ──
+import { truthGate } from '../../core/truth-gate.js';
+import { felujitasKifogas } from '../../core/upgrade-gate.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..', '..');
@@ -151,18 +190,41 @@ async function main() {
     // a "---title:" alak átment rajta, ráadásul a coversPromise ilyenkor NEM
     // találta meg a címet, így "nincs ígéret → nincs mit fedezni" alapon
     // TÉVESEN átengedte. Most nyitó ÉS záró határolót követelünk, saját sorban.
-    const validFrontmatter = /^---\r?\n[\s\S]*?\r?\n---/.test(text.trimStart());
-    const hasTitle = /^title:\s*\S/m.test(text);
-    const ok = validFrontmatter
-      && hasTitle
-      && coversPromise(text)
-      && /what this means for you/i.test(text);
-    if (!ok) {
+    // ── 1. INGYENES KAPUK — hálózat és AI nélkül, ezért ezek futnak ELŐBB.
+    // A döntés a `core/upgrade-gate.js`-ben lakik, mert az agentbe zárt logika
+    // SOHA nem tesztelhető (az `agents/` alól importálni tilos).
+    const kifogas = felujitasKifogas({
+      regiMd: c.md,
+      ujMd: text,
+      fedez: coversPromise(text),
+      fedezIndok: `${text.split(/\s+/).length} szó / ${stepCount(text)} lépés`
+    });
+    let why = kifogas ? kifogas.indok : null;
+
+    // ── 2. FIZETŐS KAPU — csak ha az ingyenesek átengedték ──
+    // A sorrend nem ízlés kérdése: egy szerkezetileg rossz szövegre kifizetni
+    // az AI-bírót tiszta veszteség lenne. (Ugyanaz az elv, mint a
+    // `truthGate()`-en belül: előbb a $0-s link-vadász, aztán a bíró.)
+    let gate = null;
+    if (!why) {
+      gate = await truthGate({ ...c.data, article_markdown: text }, { ask });
+      cost += gate.cost || 0;
+      // ⚠️ A `hold` NEM a szöveg hibája: az AI-bíró volt elérhetetlen. Ilyenkor
+      // NEM növeljük a próbálkozás-számlálót, különben három hálózati akadás
+      // ÖRÖKRE kizárná a cikket a felújításból — némán, indoklás nélkül.
+      if (!gate.pass && gate.hold) {
+        console.log(`   ⏸️  visszatartva: ${(gate.blockers[0] || 'AI-bíró nem elérhető').slice(0, 90)}`);
+        console.log('       (a próbálkozás NEM számít bele — a következő futás újrapróbálja)\n');
+        continue;
+      }
+      if (!gate.pass) why = `🛡️ IGAZSÁG-KAPU: ${(gate.blockers[0] || 'kitalált állítás').slice(0, 110)}`;
+    }
+
+    if (why) {
       failed++;
       c.data._meta = c.data._meta || {};
       c.data._meta.howto_upgrade_attempts = (c.data._meta.howto_upgrade_attempts || 0) + 1;
       writeFileSync(join(ARTICLES_DIR, c.file), JSON.stringify(c.data, null, 2), 'utf-8');
-      const why = !validFrontmatter ? 'sérült frontmatter' : !hasTitle ? 'nincs title mező' : (!coversPromise(text) ? `${text.split(/\s+/).length} szó / ${stepCount(text)} lépés` : 'hiányzik a brand-szekció');
       console.log(`   ❌ nem felelt meg (${why}) — a RÉGI marad, próbálkozás ${c.data._meta.howto_upgrade_attempts}/${MAX_ATTEMPTS}\n`);
       continue;
     }

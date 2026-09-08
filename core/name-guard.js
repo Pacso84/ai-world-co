@@ -48,7 +48,8 @@
 // importálni (25-ből 21 modul a fájl végén feltétel nélkül hívja a
 // `main()`-t → a puszta import pénzt költ és publikál), tehát ami ott
 // belül van, azt SOHA nem lehet tesztelni. Ez a modul `fs`-en kívül csak
-// két saját `core/` modult használ.
+// tiszta `core/` modulokat használ (frontmatter, quality-guard, tool-kinds,
+// truth-gate) — egyik sem indít semmit importáláskor.
 //
 // ⚠️ EGYIRÁNYÚ FÜGGŐSÉG. Ez a modul importál a `quality-guard.js`-ből —
 // a `quality-guard.js` VISZONT NEM importál innen (körkörös lenne:
@@ -64,6 +65,11 @@ import { dirname, join } from 'path';
 import { fm } from './frontmatter.js';
 import { canonicalChip } from './quality-guard.js';
 import { unclassified } from './tool-kinds.js';
+// A HITELES névlista (website/tool-links.json). Innen hozzuk, és nem másoljuk
+// ide a beolvasást: „egy szám, ami két helyre van kimásolva, matematikai
+// biztonsággal szétcsúszik". A `truth-gate.js` az `fs`-en kívül SEMMIT nem
+// importál, tehát körkörös függés nem keletkezik (ellenőrizve 2026-09-08).
+import { knownRealNames } from './truth-gate.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -223,6 +229,65 @@ export function nameLockObjection(eredetiMarkdown, javasoltMarkdown, meta) {
   return null;
 }
 
+// ===================================================================
+// ELTŰNT ISMERT NEVEK — a név-zár a DEKLARÁLATLAN cikkekre (2026-09-08)
+// ===================================================================
+// MIÉRT KELLETT: a `nameLockObjection()` a `tool:`/`company:` mezőre épül.
+// Az útmutatókon (`ARTICLE_GUIDE_*`) ezek megvannak — a HÍRBŐL lett „hogyan"
+// cikkeken viszont NINCSENEK. Kimérve 2026-09-08-án a 79 felújított cikken:
+// `declaredNames()` szerint **tool: 0/79, company: 0/79**. Vagyis az
+// `agents/iro/upgrade-howtos.js`-re kötve a meglévő zár SOSEM sült volna el
+// — pontosan az a fajta dísz-őr, ami zöld, mert soha nem néz semmit.
+//
+// EZ A VÁLTOZAT NEM A DEKLARÁCIÓBÓL DOLGOZIK, hanem a HITELES NÉVLISTÁBÓL
+// (`website/tool-links.json`, a truth-gate `knownRealNames()`-én át).
+// Ugyanaz a kérdés, más névforrással: eltűnt-e a cikk tárgya az átírásból?
+//
+// KALIBRÁCIÓ VALÓDI ADATON (79 felújított cikk, 2026-09-08):
+//   • 68/79 (86%) tartalmaz legalább egy ismert nevet ≥2× — a kapu tehát ÉL
+//   • átlagosan 1,9 ilyen név van cikkenként, és ezek a cikk TÁRGYAI:
+//     „ChatGPT+OpenAI", „Gemini+Google", „Copilot+Microsoft"
+//   Nem mellékes említések — ezek elvesztése valódi hiba.
+//
+// ⚠️ IRÁNY-SZABÁLY, a `nameLockObjection()`-nel azonos: a küszöb ≥2 előfordulás
+// és 0 utána. EGYETLEN, mellékes említés eltávolítása lehet jogos lágyítás.
+//
+// ⚠️ SAJÁT SZÁMLÁLÓ, SZÓHATÁRRAL. Az `elofordulas()` szóhatár NÉLKÜL illeszt,
+// mert a deklarált névre az pontosabb. Itt viszont 40 általános név fut végig
+// a szövegen: a „Meta" a „metadata" szóban is bent van, és egy szövegátírás,
+// ami a „metadata" szót kiveszi, TÉVESEN „Meta"-eltűnésnek látszana.
+const ISMERT_MIN_ELOFORDULAS = 2;
+
+function elofordulasSzoHatar(szoveg, nev) {
+  const n = strip(nev);
+  if (!n) return 0;
+  const rx = new RegExp('(^|[^\\w-])' + n.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '([^\\w-]|$)', 'gi');
+  return (String(szoveg || '').match(rx) || []).length;
+}
+
+/**
+ * Mely HITELES terméknevek tűntek el teljesen az átírásból?
+ *
+ * @param {string} eredetiMarkdown a MOST kint lévő cikk
+ * @param {string} javasoltMarkdown amit be akarunk írni helyette
+ * @param {{nevek?: string[]}} [opts] `nevek` = névlista felülírása (teszthez)
+ * @returns {{nev:string, volt:number}[]} üres tömb = nincs kifogás
+ */
+export function eltuntIsmertNevek(eredetiMarkdown, javasoltMarkdown, opts = {}) {
+  const regi = torzs(String(eredetiMarkdown == null ? '' : eredetiMarkdown));
+  const uj = torzs(String(javasoltMarkdown == null ? '' : javasoltMarkdown));
+  // ⚠️ „NEM TUDOM" ≠ „RENDBEN" — de itt a hiányzó új szöveget a hívó
+  // szerkezeti kapui már elutasították, tehát nincs mit összehasonlítani.
+  if (!regi.trim() || !uj.trim()) return [];
+  const lista = Array.isArray(opts.nevek) ? opts.nevek : knownRealNames();
+  const ki = [];
+  for (const n of lista) {
+    const volt = elofordulasSzoHatar(regi, n);
+    if (volt >= ISMERT_MIN_ELOFORDULAS && elofordulasSzoHatar(uj, n) === 0) ki.push({ nev: n, volt });
+  }
+  return ki;
+}
+
 /**
  * A kifogás naplóba. SOHA nem dob: egy őr hibája nem akaszthatja meg az
  * agentet — ez a kapu a cikket védi, nem a futást.
@@ -269,5 +334,5 @@ export function nevZarTalalatok(ut = nevZarUt()) {
 
 export default {
   NEV_ZAR_MAX, nevZarUt, declaredNames, unregisteredNames,
-  nameLockObjection, jegyezNevZar, nevZarTalalatok
+  nameLockObjection, eltuntIsmertNevek, jegyezNevZar, nevZarTalalatok
 };

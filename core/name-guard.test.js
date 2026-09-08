@@ -22,7 +22,7 @@
 // ===================================================================
 
 import assert from 'assert/strict';
-import { readFileSync, writeFileSync, existsSync, unlinkSync, mkdtempSync } from 'fs';
+import { readFileSync, writeFileSync, existsSync, unlinkSync, mkdtempSync, readdirSync } from 'fs';
 import { tmpdir } from 'os';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
@@ -30,7 +30,7 @@ import { dirname, join } from 'path';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 import {
   NEV_ZAR_MAX, declaredNames, nameLockObjection, unregisteredNames,
-  jegyezNevZar, nevZarTalalatok
+  eltuntIsmertNevek, jegyezNevZar, nevZarTalalatok
 } from './name-guard.js';
 
 let pass = 0;
@@ -293,5 +293,104 @@ t('🔌 A KAPU BE IS VAN KÖTVE a tény-ellenőrzőbe (nem csak megépült)', ()
   pass++;
   console.log('  ✅ 🔗 a minőség-őr TÉNYLEG beolvassa a naplót (nem csak elvben)');
 }
+
+// ===================================================================
+// ELTŰNT ISMERT NEVEK (2026-09-08) — a zár a DEKLARÁLATLAN cikkekre
+// ===================================================================
+// MIÉRT KELL KÜLÖN: a `nameLockObjection()` a `tool:`/`company:` mezőre épül.
+// KIMÉRVE a 79 felújított „hogyan"-cikken: `declaredNames()` szerint
+// tool 0/79, company 0/79 — vagyis a meglévő zár az `upgrade-howtos.js`-re
+// kötve SOSEM sült volna el. Ez a változat a HITELES NÉVLISTÁBÓL dolgozik.
+console.log('\n🧪 eltűnt ismert nevek — a zár névlistából, deklaráció nélkül');
+
+const NEVEK = ['ChatGPT', 'OpenAI', 'Gemini', 'Google', 'Meta', 'Copilot'];
+const cikk = (torzs) => '---\ntitle: "Teszt"\n---\n\n' + torzs;
+
+t('🔑 a cikk TÁRGYÁNAK eltűnését elkapja', () => {
+  // Ez a valódi alak: a felújított cikkeken átlagosan 1,9 ismert név
+  // szerepel ≥2×, és azok a cikk tárgyai („ChatGPT+OpenAI", „Gemini+Google").
+  const el = eltuntIsmertNevek(
+    cikk('Open ChatGPT and pick a chat. ChatGPT remembers it. OpenAI says so.'),
+    cikk('Open the assistant and pick a chat. The assistant remembers it.'),
+    { nevek: NEVEK });
+  assert.ok(el.some(x => x.nev === 'ChatGPT'), 'a ChatGPT eltűnését nem vette észre: ' + JSON.stringify(el));
+});
+
+t('🔑 EGYETLEN, mellékes említés eltűnése NEM kifogás (az irány-szabály)', () => {
+  // Ugyanaz az elv, mint a `nameLockObjection()` NEV_ELTUNT ágán: a kapu a
+  // TÖMEGES átírásra van élezve. Egy mellékes név kihagyása jogos lágyítás.
+  const el = eltuntIsmertNevek(
+    cikk('Open ChatGPT. ChatGPT is handy. Unlike Gemini, it remembers.'),
+    cikk('Open ChatGPT. ChatGPT is handy. It remembers.'),
+    { nevek: NEVEK });
+  assert.deepEqual(el, [], 'egyetlen Gemini-említés kihagyására riasztott');
+});
+
+t('🔑 SZÓHATÁRRAL illeszt — a „Meta" nem a „metadata"', () => {
+  // Ez a konkrét csapda miatt van saját számlálója: az `elofordulas()`
+  // szóhatár nélkül illeszt, így a „metadata" szó kivétele TÉVESEN
+  // „Meta"-eltűnésnek látszana — és a kapu jó átírásokat blokkolna.
+  const el = eltuntIsmertNevek(
+    cikk('Check the metadata. The metadata shows the date. Metadata matters.'),
+    cikk('Check the file details. The details show the date.'),
+    { nevek: NEVEK });
+  assert.deepEqual(el, [], '⚠️ a „metadata" szót „Meta" terméknévnek nézte: ' + JSON.stringify(el));
+});
+
+t('a változatlan szöveg nem ad kifogást', () => {
+  const sz = cikk('Open Gemini. Gemini is from Google. Google made it.');
+  assert.deepEqual(eltuntIsmertNevek(sz, sz, { nevek: NEVEK }), []);
+});
+
+t('a frontmatterben lévő név nem számít (csak a TÖRZS)', () => {
+  // A frontmatter-mezőket a `nameLockObjection()` őrzi. Ha ez is beszámítaná,
+  // a két kapu ugyanarra riasztana, és a naplóból nem derülne ki, mi történt.
+  const el = eltuntIsmertNevek(
+    '---\ntitle: "ChatGPT and ChatGPT"\n---\n\nSemmi termék.',
+    '---\ntitle: "Az asszisztens"\n---\n\nSemmi termék.',
+    { nevek: NEVEK });
+  assert.deepEqual(el, []);
+});
+
+t('hibás/üres bemenetre nem dob és üreset ad', () => {
+  for (const rossz of [null, undefined, '', 42, {}]) {
+    assert.doesNotThrow(() => eltuntIsmertNevek(rossz, cikk('x'), { nevek: NEVEK }));
+    assert.deepEqual(eltuntIsmertNevek(rossz, cikk('x'), { nevek: NEVEK }), []);
+    assert.deepEqual(eltuntIsmertNevek(cikk('x'), rossz, { nevek: NEVEK }), []);
+  }
+});
+
+t('🔑 a VALÓDI névlistával is működik (nem csak a teszt-listával)', () => {
+  // A hiteles listát a `website/tool-links.json` adja a truth-gate-en át.
+  // Ha ez a huzalozás elszakadna, a kapu néma maradna — és minden más
+  // esetem (saját `nevek` listával) továbbra is zöld lenne.
+  const el = eltuntIsmertNevek(
+    cikk('Open ChatGPT and pick a chat. ChatGPT remembers what you told it.'),
+    cikk('Open the assistant and pick a chat. It remembers what you told it.'));
+  assert.ok(el.some(x => x.nev === 'ChatGPT'),
+    '⚠️ a beépített névlista nem ér el a kapuhoz: ' + JSON.stringify(el));
+});
+
+t('🔑 ÉLES ADATON: a kapu ténylegesen LÁT neveket a felújított cikkekben', () => {
+  // A repó legdrágább teszt-tanulsága: a kézzel gyártott minta az ALAKOT
+  // ellenőrzi, nem a valóságot. KIMÉRVE 2026-09-08-án: a 79 felújított
+  // cikkből 68 (86%) tartalmaz legalább egy ismert nevet ≥2×.
+  const dir = join(__dirname, '..', 'content', 'articles');
+  if (!existsSync(dir)) { console.log('     (nincs cikk-mappa — kihagyva)'); pass++; return; }
+  let nezett = 0, fogna = 0;
+  for (const f of readdirSync(dir).filter(x => x.endsWith('.json'))) {
+    let j; try { j = JSON.parse(readFileSync(join(dir, f), 'utf-8')); } catch { continue; }
+    if (!j._meta?.howto_upgraded_at) continue;
+    nezett++;
+    // „Mi történne, ha a modell MINDEN nevet kihagyna?" — ha erre sem
+    // szólalna meg, a kapu ezen a cikken vak.
+    if (eltuntIsmertNevek(j.article_markdown || '', cikk('Semmi termeknev itt.')).length) fogna++;
+  }
+  if (!nezett) { console.log('     (nincs felújított cikk — kihagyva)'); pass++; return; }
+  console.log('     ↳ ' + nezett + ' felújított cikk, ' + fogna + ' esetén FOGNA a kapu ('
+    + (100 * fogna / nezett).toFixed(0) + '%)');
+  assert.ok(fogna / nezett > 0.5,
+    'a kapu a felújított cikkek többségén VAK lenne (' + fogna + '/' + nezett + ') — dísz-őr');
+});
 
 console.log('\n✅ name-guard.test: mind a ' + pass + ' eset rendben');
