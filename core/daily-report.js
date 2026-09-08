@@ -34,6 +34,7 @@ import { elavultOrszemek, frissessegSor } from './guard-freshness.js';
 import { embedSor } from './embed-guard.js';
 import { szemantikusSor } from './semantic-guard.js';
 import { futasokLekerdez, sodrodasVizsgalat, sodrodasSor } from './watchdog-drift.js';
+import { linkSor } from './internal-link-guard.js';
 import { bufferSor } from './buffer-guard.js';
 import { tesztSor } from './test-guard.js';
 
@@ -763,6 +764,19 @@ async function main() {
     const sor = sodrodasSor(sodrodasVizsgalat(await futasokLekerdez()));
     if (sor) lines.push(sor);
   } catch { /* a sodródás-vizsgálat SOHA ne buktassa el a jelentést */ }
+
+  // 🔗 HALOTT BELSŐ LINK (2026-09-08). A saját oldalunk küld-e sehova?
+  // A 09-08-i pásztázás hármat talált 2822 oldalon: kettőt a 404-lap
+  // nyelvváltója gyártott, a harmadik egy heti összefoglaló „Read the full
+  // story" gombja volt — HAT HETE 404, mert az amerikai-helyesírás javítónk
+  // (a 08-30-i URL-védelem előtt) a „personalise" slugot „personalize"-ra
+  // írta át a linkben is. Semmi nem szólt róla: a halott link nem dob hibát,
+  // és a tesztek is zöldek maradnak tőle. Csak az olvasó akad el rajta.
+  try {
+    const lg = JSON.parse(readFileSync(join(ROOT, 'memory', 'link-guard.json'), 'utf-8'));
+    const sor = linkSor(lg);
+    if (sor) lines.push(sor);
+  } catch { /* még nem futott őrjárat — nem baj */ }
 
   // 🕰️ ŐRSZEM-FRISSESSÉG (2026-08-29, hibavadászat). A riport eddig MINDEN
   // őrszem-fájlból csak a `problems`-et nézte, az `at` bélyeget EGYIKBŐL SEM.

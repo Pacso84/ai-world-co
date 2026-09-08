@@ -525,6 +525,19 @@ jobs:
         if: always() && steps.build.outcome == 'success'
         run: node core/seo-guard.js || true
 
+      # BELSŐ HIVATKOZÁS-ŐR (2026-09-08): mutat-e a saját oldalunk sehova?
+      # A user Search Console-képén „Nem található (404): 15" állt. A 2822
+      # épített oldal MINDEN belső linkjét végigmérve három halott cél jött ki;
+      # a legrégebbi HAT HETE élt egy heti összefoglaló „Read the full story"
+      # gombjában. Semmi nem szólt róla: a halott link nem dob hibát, és a
+      # tesztek is zöldek maradnak tőle — csak az olvasó akad el rajta, és a
+      # kereső jegyez fel 404-et a saját oldalunkról.
+      # Az ÁTIRÁNYÍTOTT címet nem tekinti halottnak (különben mind a 49 régi
+      # slug riasztana, és a zajban a valódi lelet elveszne).
+      - name: Belső hivatkozás-őr (halott linkek)
+        if: always() && steps.build.outcome == 'success'
+        run: node core/internal-link-guard.js || true
+
       # BORÍTÓKÉP-ŐRSZEM (2026-08-14): van-e képe a friss cikkeknek. A user
       # vette észre a főoldalon, hogy a CÍMLAPSZTORI borítója üres — a designer
       # 3 db HTTP 400-at kapott, és azt csak a CI naplójába írta.

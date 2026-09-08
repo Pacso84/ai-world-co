@@ -25,7 +25,7 @@
 // ===================================================================
 
 import assert from 'assert/strict';
-import { readFileSync } from 'fs';
+import { readFileSync, readdirSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { vegcel, laposit, MAX_LEPES } from './redirect-chain.js';
@@ -147,6 +147,41 @@ t('a lapítás nem veszít el ÉRVÉNYES átirányítást', () => {
     const koros = hist[k] === k || vegcel(hist, k) === null;
     assert.ok(koros, 'ép átirányítás veszett el a lapításban: ' + k + ' → ' + hist[k]);
   }
+});
+
+// ===================================================================
+// 5b. AZ ÁTIRÁNYÍTÁS ÉLŐ CIKKRE VIGYEN — különben 301 vezet 404-re
+// ===================================================================
+t('🔑 minden KILAPÍTOTT átirányítás létező cikkre mutat', () => {
+  const hist = JSON.parse(readFileSync(join(ROOT, 'content', 'slug-history.json'), 'utf-8'));
+  const elo = new Set();
+  for (const f of readdirSync(join(ROOT, 'content', 'articles'))) {
+    try {
+      const m = JSON.parse(readFileSync(join(ROOT, 'content', 'articles', f), 'utf-8'))._meta || {};
+      if (m.slug) elo.add(m.slug);
+    } catch { /* olvashatatlan fájl — a többit attól még nézzük */ }
+  }
+  // ⚠️ A LÁNC KÖZEPE nem számít: az csak átmenő állomás, a lapítás után már
+  // nem végcél. Ezért a LAPÍTOTT listát nézzük, nem a nyerset.
+  const rossz = [...laposit(hist).entries()]
+    .filter(([, to]) => !elo.has(to))
+    .map(([f, to]) => f + ' → ' + to);
+  assert.deepEqual(rossz, [],
+    '301 vezet nem létező cikkre — a látogató 404-et kap két ugrás után:\n     '
+    + rossz.join('\n     '));
+});
+
+t('🔑 a júl. 19-i összefoglaló halott linkjére van átirányítás', () => {
+  // Értéket rögzítő teszt. Az amerikai-helyesírás javítónk 2026-08-30 ELŐTT
+  // az URL-eket is átírta: a heti összefoglaló „personalise" slugja
+  // „personalize"-ra változott, és a „Read the full story" gomb azóta 404.
+  // A gépezet már javítva (core/us-spelling.js védi az URL-eket), ez a
+  // maradék sérülés helyreállítása — az élő szöveghez nyúlás nélkül.
+  const hist = JSON.parse(readFileSync(join(ROOT, 'content', 'slug-history.json'), 'utf-8'));
+  assert.equal(
+    hist['personalize-your-ai-connect-it-to-your-everyday-apps'],
+    'personalise-your-ai-connect-it-to-your-everyday-apps',
+    'hiányzik a 301 az elgépelt (amerikai) alakról a valódi cikkre');
 });
 
 // ===================================================================
