@@ -59,7 +59,7 @@ export async function csCounters(env) {
   // ⚠️ A `replyfail` 2026-09-08-tól van itt: a bukott AUTO-VÁLASZ eddig csak
   // `console.log`-ba ment, tehát sehova. Élesben meg is történt — és csak
   // abból derült ki, hogy egy KV-kulcs HIÁNYZOTT, amit a sikeres ág írt volna.
-  for (const k of ['chat', 'mail', 'esc', 'replyfail']) {
+  for (const k of ['chat', 'mail', 'esc', 'replyfail', 'noreply']) {
     out[k] = parseInt(await env.FEEDBACK.get(`cs:${k}:${d}`) || '0', 10);
   }
   // Az OK is kimegy: egy szám önmagában nem javítható hiba.

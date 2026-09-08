@@ -340,6 +340,23 @@ try {
   }
 
   // ===================================================================
+  // 20/b) 🔕 A „NEM VÁLASZOLHATÓ" KÜLÖN SZÁMÍT — nem riasztás (2026-09-08)
+  // ===================================================================
+  // A Cloudflare nem enged válaszolni ÉRVÉNYES DMARC nélküli levélre
+  // (`original email is not repliable`). Ez a KÜLDŐ domainjének a hibája,
+  // a mi oldalunkon nincs mit tenni vele — tipikusan hanyag tömeges küldő.
+  // Ha ezt is „kudarcnak" vennénk, a napi riport minden marketing-levélre
+  // riasztana, és a hamis riasztás zajában a VALÓDI kudarc veszne el.
+  {
+    const env = baseEnv();
+    await bumpCs(env, 'noreply');
+    const c = await csCounters(env);
+    assert.equal(c.noreply, 1, 'a „nem válaszolható" nincs külön számolva');
+    assert.equal(c.replyfail, 0, '⚠️ a nem válaszolható levél KUDARCNAK számít — hamis riasztás lesz belőle');
+    assert.equal((await csExport(env)).noreply, 1, 'a noreply nem jut el az exportig');
+  }
+
+  // ===================================================================
   // 21) 🔌 BEKÖTÉS-ŐR — a cs-email.js tényleg MEGNÉZI a küldés eredményét
   // ===================================================================
   // ⚠️ A KOMMENTEKET LEVÁGJUK. Ma (2026-09-08) élesben megtörtént, hogy egy
@@ -354,8 +371,22 @@ try {
       '⚠️ a cs-email.js megint ELDOBJA a tg() visszatérési értékét');
     assert.ok(/if\s*\(\s*!kuldes\?\.ok\s*\)/.test(src), 'nincs ellenőrizve a küldés eredménye');
     assert.ok(/markUnsent\s*\(/.test(src), 'a markUnsent() nincs HÍVVA az email-ágon');
-    assert.ok(/bumpCs\s*\(\s*env\s*,\s*'replyfail'\s*\)/.test(src),
-      'a bukott auto-válasz megint némán vész el');
+    assert.ok(/bumpCs\s*\(\s*env\s*,\s*nemValaszolhato\s*\?\s*'noreply'\s*:\s*'replyfail'\s*\)/.test(src),
+      'a bukott auto-válasz megint némán vész el, vagy nincs szétválasztva a „nem válaszolható" eset');
+    assert.ok(/not repliable/i.test(src),
+      '⚠️ a DMARC-hiány miatti eset nincs megkülönböztetve — minden marketing-levélre riasztanánk');
+
+    // Az AI-motor hívása LEGYEN védve: kivétele visszapattintaná a levelet.
+    assert.ok(/try\s*\{[\s\S]{0,200}?await\s+answer\s*\(/.test(src),
+      '⚠️ az answer() megint védtelen — egy AI-kiesés bounce-olná a valódi olvasó levelét');
+    // ⚠️ A `try` MEGLÉTE NEM ELÉG, ÉS EZT MUTÁCIÓVAL TANULTAM MEG: egy
+    // `catch { throw e; }` ugyanúgy átmegy a fenti mintán, közben pontosan azt
+    // a bounce-ot okozza, ami ellen a védelem szól. Ezért azt kötjük ki, hogy
+    // a handler SEMMILYEN kivételt ne dobjon tovább: a levél feldolgozása
+    // fusson végig, akkor is, ha az AI kiesett.
+    assert.ok(!/\bthrow\b/.test(src),
+      '⚠️ a cs-email.js dob egy kivételt — az Email Routing visszapattintja a levelet: '
+      + (src.match(/[^\n]*\bthrow\b[^\n]*/) || [''])[0].trim());
 
     // SORREND: a nyom a válasz-küldés ELŐTT kell — nem ígérhetünk emberi
     // választ egy levélre, amit épp elvesztettünk.

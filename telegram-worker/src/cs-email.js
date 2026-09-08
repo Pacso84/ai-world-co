@@ -74,7 +74,18 @@ export async function handleEmail(message, env) {
 
   let engineResult = { text: '', escalate: true, links: [] };
   if (!unreadable && !(await globalLimitReached(env))) {
-    engineResult = await answer(env, { message: `${subject}\n\n${text}`.slice(0, 1500), lang: 'auto' });
+    // ⚠️ TRY/CATCH (2026-09-08): az `answer()` eddig VÉDTELENÜL állt itt. Egy
+    // Workers AI kiesés kivétele kifutott a `handleEmail()`-ből, az Email
+    // Routing pedig VISSZAPATTINTOTTA volna a levelet — egy valódi olvasó
+    // azt látta volna, hogy a címünk nem is létezik. Pedig van jó válaszunk
+    // erre az esetre: a „továbbítottuk egy embernek" sablon.
+    // (A Telegram-másolat ekkor már kiment, tehát a levél nem vész el.)
+    try {
+      engineResult = await answer(env, { message: `${subject}\n\n${text}`.slice(0, 1500), lang: 'auto' });
+    } catch (e) {
+      console.log('cs-engine hiba', (e && e.message) || e);
+      engineResult = { text: '', escalate: true, links: [] };
+    }
     await bumpCs(env, 'global'); // a 300/nap sapka KÖZÖS: chat+email AI-hívás együtt számít
     await bumpCs(env, 'mail');
     if (engineResult.escalate) await bumpCs(env, 'esc');
@@ -102,11 +113,33 @@ export async function handleEmail(message, env) {
     // onnan a `/feedback-export`-on át a napi Telegram-riportba.
     const ok = String((e && e.message) || e || 'ismeretlen').slice(0, 160);
     console.log('email reply hiba', ok);
+    // ===================================================================
+    // ⚠️ KÉT KÜLÖNBÖZŐ DOLOG, NE KEVERJÜK ÖSSZE (kimérve 2026-09-08)
+    // ===================================================================
+    // A Cloudflare NEM ENGED válaszolni olyan levélre, amelynek nincs
+    // ÉRVÉNYES DMARC-eredménye — ilyenkor `original email is not repliable`
+    // hibát dob. Ez NEM a mi hibánk és NEM javítható a mi oldalunkról: a
+    // küldő domainjének a beállítása.
+    //
+    // A mai eset pontosan ez volt. A `trykrea.ai` DNS-e (saját mérés):
+    //   trykrea.ai        TXT  "v=spf1 include:_spf.google.com ~all"  ← van SPF
+    //   _dmarc.trykrea.ai TXT  (üres válasz)                          ← NINCS DMARC
+    // Az SPF miatt a levél MEGÉRKEZIK, a hiányzó DMARC miatt a válasz nem
+    // mehet. (Kontroll: a google.com és a mi domainünk ad DMARC-rekordot,
+    // tehát a mérés jó.) Tipikusan a hanyagul beállított tömeges küldők
+    // esnek ide — az igazi olvasók Gmailről/Outlookról ÍRNAK, azoknak van.
+    //
+    // 🔑 EZÉRT KÜLÖN SZÁMLÁLÓ. Ha ezt is „hibának" vennénk, a napi riport
+    // minden marketing-levélre riasztana — és a hamis riasztás zajában a
+    // VALÓDI kudarc veszne el. Egy őr, ami nem-tennivalóra szól, zaj.
+    const nemValaszolhato = /not repliable/i.test(ok);
     try {
-      await bumpCs(env, 'replyfail');
-      // Az OK-ot külön kulcsba, hogy a riport meg tudja mondani, MIÉRT.
-      // Egy szám önmagában nem javítható hiba.
-      await env.FEEDBACK.put(`cs:replyfailwhy:${dayKey()}`, ok, { expirationTtl: 172800 });
+      await bumpCs(env, nemValaszolhato ? 'noreply' : 'replyfail');
+      if (!nemValaszolhato) {
+        // Az OK-ot külön kulcsba, hogy a riport meg tudja mondani, MIÉRT.
+        // Egy szám önmagában nem javítható hiba.
+        await env.FEEDBACK.put(`cs:replyfailwhy:${dayKey()}`, ok, { expirationTtl: 172800 });
+      }
     } catch { /* a naplózás hibája nem ronthatja el a levél feldolgozását */ }
   }
 }

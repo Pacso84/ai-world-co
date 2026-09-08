@@ -871,7 +871,13 @@ async function main() {
       if (cr.ok) {
         const cs = (await cr.json()).__cs || {};
         const total = (cs.chat || 0) + (cs.mail || 0);
-        if (total + (cs.esc || 0) > 0) lines.push(`💬 Ügyfélszolgálat ma: ${cs.chat || 0} chat-válasz · ${cs.mail || 0} email · ${cs.esc || 0} emberi kézbe adva`);
+        if (total + (cs.esc || 0) > 0) lines.push(`💬 Ügyfélszolgálat ma: ${cs.chat || 0} chat-válasz · ${cs.mail || 0} email · ${cs.esc || 0} emberi kézbe adva`
+          // A „nem válaszolható" NEM külön riasztás-sor, hanem itt egy utótag.
+          // Ez a feladó domainjének hiányzó DMARC-ja miatt van, a mi oldalunkon
+          // NINCS mit tenni vele — tipikusan hanyag tömeges küldő. Külön sort
+          // adni neki azt jelentené, hogy minden marketing-levélre riasztunk,
+          // és a zajban a VALÓDI kudarc veszne el. Látszik, de nem kiabál.
+          + ((cs.noreply || 0) > 0 ? ` · ${cs.noreply} levélre nem lehetett válaszolni (a feladó domainje nem hitelesített — nem a mi hibánk)` : ''));
 
         // 📮 KÉZBESÍTETLEN KAPCSOLAT-ÜZENET (2026-08-29, hibavadászat).
         // A worker `tg()`-je nem nézte a Telegram válaszát, a KV-be mentett
