@@ -206,7 +206,9 @@ const GENERAL_GUIDES_MIN_SHARE = (() => {
 // Cégenkénti hiány a DINAMIKUS célig (deficit szerint csökkenő sorrend).
 // A cél = a LEGTÖBB útmutatóval bíró cég száma (min. a floor) — így ahogy a
 // vezető cégek bővülnek (pl. hír-párosításból), a lemaradók célja is NŐ, és a
-// rés NEM szélesedik. A napi írás-tempót külön a daily_guides_max (4) fogja.
+// rés NEM szélesedik. A napi írás-tempót külön a daily_guides_max fogja.
+// ⚠️ A SZÁMOT NE ÍRD IDE: 2026-09-08-ig „(4)" állt itt, közben a config-beli
+// érték 2-re ment. Egy szám, ami két helyen él, elcsúszik — a config a forrás.
 function dynamicTarget(store, floor = GUIDES_PER_COMPANY_TARGET) {
   const counts = companyCounts(store);
   const max = Math.max(floor, ...COMPANY_CATALOG.map(c => counts[normCompany(c.company)] || 0));

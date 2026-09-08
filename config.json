@@ -526,12 +526,14 @@
     "turnstile_site_key": "0x4AAAAAAD5-0_stUu2LQwDO"
   },
   "limits": {
-    "daily_articles_max": 8,
+    "daily_articles_max": 4,
+    "_daily_articles_comment_2026_09_08": "8 -> 4 (USER-DÖNTÉS 2026-09-08): a keresők leminősítettek. A Bing 08-21-én napi 38-76 megjelenésről PONTOSAN nullára esett és ott is maradt, MIKÖZBEN az indexe 785-ről 1415-re nőtt — vagyis indexel, de nem szolgál ki. Négy oldal, amit a Bing maga hozott a 4-8. helyen, ma egyik sem jön vissza a SAJÁT szó szerinti mondatára (a kontroll-keresés viszont működik). A Google ugyanezt lassabban: 2067 'feltérképezve - nincs indexelve', NÖVEKVŐ. A technikai réteg tiszta (robots/canonical/hreflang/200/nincs cloaking) - a valószínű ok a tömeges gépi tartalom 3 bejövő linken: napi 10,2 új cikk x 3 nyelv = ~30 új URL/nap, összesen 2808 beküldve. A visszavétel BIZTONSÁGOS: a selectSocialBatch() 3-4. lépése a 424 örökzöld útmutatóval tölti fel a maradék posztkeretet (core/daily-cap.test.js méri), és 08-04-én kimértük, hogy TÖBB POSZT != TÖBB LÁTOGATÓ (korreláció 0,30). Őrzi: core/daily-cap.test.js.",
     "_daily_articles_comment": "A HIR napi kerete. 2026-07-22 (user-dontes: \"kevesebb cikk de minosegiek\"): 25 -> 8. Ok: 30 nap alatt 460 oldalletoltes jutott napi 25 cikkre - a mennyiseg messze meghaladta a keresletet, es a koltseg 2/3-a a forditasra ment. Kevesebb, de gondosabb cikk a keresoknek is jobb. Az atmeno-kuszob ezzel egyutt 7-rol 8-ra emelve (agents/ellenorzo MIN_PASSING_SCORE).",
     "daily_articles_min": 0,
     "news_keep_days": 90,
     "_news_keep_days_comment": "HÍR-MEGŐRZÉS (user-döntés 2026-08-02): a hírt 3 hónapig tároljuk, utána a házmester törli (cikk + fordítás + borítókép + közösségi poszt). AZ ÚTMUTATÓRA ÉS AZ ÖSSZEHASONLÍTÁSRA NEM VONATKOZIK — azok örökzöldek, soha nem törlődnek. A heti összefoglaló LEJÁR (dátumos tartalom). Ok: a hír romlandó, egy fél éves 'új funkció' cikk gyakran már nem igaz; napi ~11 hírrel a 90 napos ablak ~1000 cikkes állandósult állapotot jelent, enélkül a tár örökké nő. Biztosíték: dátum nélküli cikket sosem törlünk, és egy futásban legfeljebb 200-at (dátumhiba ellen).",
-    "daily_guides_max": 4,
+    "daily_guides_max": 2,
+    "_daily_guides_comment_2026_09_08": "4 -> 2 (USER-DÖNTÉS 2026-09-08, ugyanaz az ok, mint a daily_articles_max-nál). A két keret EGYÜTT mozog: napi 6 új oldal a korábbi 12-es plafon helyett, három nyelven ~18 új URL/nap a ~30 helyett. Az útmutató örökzöld, ezért arányaiban továbbra is többet hagyunk belőle. NE emeld vissza a keresők állapotának újramérése nélkül.",
     "_daily_guides_comment": "Az UTMUTATO napi kerete: 6 -> 4 (2026-07-22). Az utmutato orokzold tartalom, ezert aranyaiban tobbet hagyunk belole, mint a hirbol.",
     "guide_topic_buffer_target": 16,
     "_guide_topic_buffer_comment": "A KÉSZENLÉTI téma-puffer célja (2026-07-18): a ceo-pipeline eddig csak az aznapi slotokra töltött fel témát, ezért a sor néha kiürült (júl. 15: csak 4 guide a 6 helyett). Most legalább ennyi 'todo' témát tartunk készenlétben, hogy a napi keret (daily_guides_max) TÉNYLEGESEN, folyamatosan teljesüljön — a napi TEMPÓ NEM nő, csak a folytonosság. A közeli-téma-őr (core/topic-dedup.js) gondoskodik róla, hogy ezek friss, nem ismételt témák legyenek.",
