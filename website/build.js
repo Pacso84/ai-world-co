@@ -29,6 +29,10 @@ import { kindOf, KIND_ORDER, KINDS } from '../core/tool-kinds.js';
 import { langSentence } from '../core/llms-txt.js';
 import { insertMidGuide } from '../core/mid-guide.js';
 import { RETIRED_LANGS } from '../core/retired-langs.js';
+// ⚠️ NEM ugyanaz, mint a RETIRED_LANGS: azok VÉGLEG TÖRÖLT nyelvek (301-et
+// kapnak), ezek viszont ÉLŐ, elérhető lapok — csak a keresők indexéből
+// maradnak ki. A modul fejléce indokolja, hogy miért. (2026-09-08)
+import { robotsTartalom, indexelhetoNyelvek, noindexNyelv } from '../core/noindex-langs.js';
 import { laposit } from '../core/redirect-chain.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -1153,8 +1157,12 @@ function pageShell({ title, description, bodyContent, isArticle = false, noIntro
   // hanem „az a nyelv kezdőlapja" — a lap TÖRZSE már így is linkel.
   const hibaLap = /^\/?404(\.html)?$/.test(String(pagePath || ''));
   const cpNyelv = hibaLap ? '/' : cp;
+  // ⚠️ CSAK AZ INDEXELHETŐ NYELVEK. Egy noindexelt lapra mutató hreflang
+  // ellentmondás: azt állítaná, hogy „ez ugyanez a tartalom amott", miközben
+  // megkérjük a keresőt, hogy azt ne vegye fel. A LÁTHATÓ nyelvváltó ettől
+  // független — az lentebb a teljes SITE_LANGS-ból épül, és mindent mutat.
   const hreflang = hibaLap ? '' : (
-    SITE_LANGS.map(l => `<link rel="alternate" hreflang="${l}" href="${SITE.url}${langPrefix(l)}${cp}">`).join('\n  ')
+    indexelhetoNyelvek(SITE_LANGS).map(l => `<link rel="alternate" hreflang="${l}" href="${SITE.url}${langPrefix(l)}${cp}">`).join('\n  ')
     + `\n  <link rel="alternate" hreflang="x-default" href="${SITE.url}${cp}">`);
   const langSwitcher = `<select class="lang-select" onchange="if(this.value)location.href=this.value" aria-label="${T.language}" style="background-color:var(--card);color:var(--ink);border:1px solid var(--line-strong);border-radius:8px;font:inherit;font-size:13px;padding:7px 6px;cursor:pointer;color-scheme:light dark">
         ${SITE_LANGS.map(l => `<option value="${SITE.url}${langPrefix(l)}${cpNyelv}" ${l === LANG ? 'selected' : ''} style="background-color:var(--card);color:var(--ink)">${LANG_NAME[l]}</option>`).join('')}
@@ -1197,7 +1205,7 @@ function pageShell({ title, description, bodyContent, isArticle = false, noIntro
        A max-snippet:-1 és max-video-preview:-1 ugyanennek a családja: nem
        korlátozzuk, mennyit mutathat belőlünk. Ez NEM noindex — indexelést
        nem tilt, csak a megjelenítési korlátokat oldja fel. -->
-  <meta name="robots" content="max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="robots" content="${robotsTartalom(LANG)}">
   ${hreflang}
   <!-- Open Graph (közösségi megosztás) -->
   <meta property="og:type" content="${isArticle ? 'article' : 'website'}">
@@ -2926,17 +2934,23 @@ function main() {
     if (SUPPORT.enabled) writeFileSync(join(outBase, 'support.html'), buildSupportPage(), 'utf-8');
 
     // sitemap (nyelvenként)
+    // ⚠️ A NOINDEXELT NYELV NEM KERÜL BE. A sitemap egy KÉRÉS a keresőhöz:
+    // „ezeket vedd fel". Beküldeni egy címet, majd a lapon megtiltani az
+    // indexelést, ellentmondás — és a Search Console külön hibaként jelzi.
+    // Az OLDALAK ettől függetlenül elkészülnek és elérhetők (fentebb).
     const lp = langPrefix(lang);
-    sitemapUrls.push({ loc: `${SITE.url}${lp}/`, date: today });
-    if (generalGuides.length) sitemapUrls.push({ loc: `${SITE.url}${lp}/guides`, date: today });
-    if (companyGuides.length) sitemapUrls.push({ loc: `${SITE.url}${lp}/tools`, date: today });
-    if (SUPPORT.enabled) sitemapUrls.push({ loc: `${SITE.url}${lp}/support`, date: today });
-    sitemapUrls.push({ loc: `${SITE.url}${lp}/start`, date: today });
-    sitemapUrls.push({ loc: `${SITE.url}${lp}/glossary`, date: today });
-    sitemapUrls.push({ loc: `${SITE.url}${lp}/wizard`, date: today });
-    sitemapUrls.push({ loc: `${SITE.url}${lp}/about`, date: today });
-    sitemapUrls.push({ loc: `${SITE.url}${lp}/archive`, date: today });
-    for (const a of loc) sitemapUrls.push({ loc: `${SITE.url}${lp}/article/${a.slug}`, date: (a.publishedAt || '').slice(0, 10) || today });
+    if (!noindexNyelv(lang)) {
+      sitemapUrls.push({ loc: `${SITE.url}${lp}/`, date: today });
+      if (generalGuides.length) sitemapUrls.push({ loc: `${SITE.url}${lp}/guides`, date: today });
+      if (companyGuides.length) sitemapUrls.push({ loc: `${SITE.url}${lp}/tools`, date: today });
+      if (SUPPORT.enabled) sitemapUrls.push({ loc: `${SITE.url}${lp}/support`, date: today });
+      sitemapUrls.push({ loc: `${SITE.url}${lp}/start`, date: today });
+      sitemapUrls.push({ loc: `${SITE.url}${lp}/glossary`, date: today });
+      sitemapUrls.push({ loc: `${SITE.url}${lp}/wizard`, date: today });
+      sitemapUrls.push({ loc: `${SITE.url}${lp}/about`, date: today });
+      sitemapUrls.push({ loc: `${SITE.url}${lp}/archive`, date: today });
+      for (const a of loc) sitemapUrls.push({ loc: `${SITE.url}${lp}/article/${a.slug}`, date: (a.publishedAt || '').slice(0, 10) || today });
+    }
 
     console.log(`✅ [${lang}] ${loc.length + 3} oldal generálva (${outBase === OUT_DIR ? 'gyökér' : lang + '/'})`);
   }

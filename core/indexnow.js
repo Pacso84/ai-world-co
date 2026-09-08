@@ -20,6 +20,7 @@ import 'dotenv/config';
 import { readFileSync, readdirSync, existsSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
+import { noindexNyelv } from './noindex-langs.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
@@ -27,7 +28,11 @@ const ARTICLES_DIR = join(ROOT, 'content', 'articles');
 // 2026-07-31: a /de és /fr kivezetve (301 az angol cikkre). NE jelentsük be
 // őket a keresőknek — különben ÁTIRÁNYÍTÓ címeket hirdetnénk, ami pontosan az
 // a hiba, amit július 27-én javítottunk ki mindenhonnan.
-const LANGS = ['', '/hu', '/es'];   // '' = angol gyökér
+// ⚠️ A NOINDEXELT nyelvi ágakat NEM jelentjük be (2026-09-08). Bejelenteni egy
+// címet, majd a lapon megtiltani az indexelést, ellentmondás — ugyanaz a hiba,
+// mint a /de /fr esetében: átirányító, illetve nem kívánt címeket hirdetnénk.
+const LANGS = ['', '/hu', '/es']
+  .filter(l => !noindexNyelv(l.slice(1)));   // '' = angol gyökér, az mindig marad
 const FRESH_HOURS = 48;                            // a 8 órás cron mellé bő ráhagyás
 
 function slugify(text) {

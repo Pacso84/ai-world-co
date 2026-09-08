@@ -29,6 +29,7 @@ import { readFileSync, existsSync, readdirSync, writeFileSync, mkdirSync } from 
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { linkState, slugOf, CLOSED, DEAD, REDIRECT } from './social-link-state.js';
+import { noindexKifogas } from './noindex-langs.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
@@ -113,9 +114,17 @@ function checkPageSignals() {
     if (badHreflang) add('HREFLANG_HTML', `${badHreflang} db .html-es hreflang: ${rel}`);
     const og = (html.match(/og:url" content="([^"]+)"/) || [])[1];
     if (og && og.endsWith('.html')) add('OGURL_HTML', `.html-es og:url: ${rel}`);
-    if (/name="robots"[^>]*noindex|noindex[^>]*name="robots"/i.test(html)) {
-      add('NOINDEX', `noindex címke egy indexelendő oldalon: ${rel}`);
-    }
+    // ⚠️ A SZÁNDÉKOS noindex NEM HIBA (2026-09-08). A `/hu/` ág kimarad a
+    // keresők indexéből (user-döntés, lásd `core/noindex-langs.js`) — ha ezt
+    // az őr nem tudná, MINDEN futásban riasztana rá, és a hamis riasztás
+    // zajában a valódi lelet veszne el.
+    //
+    // ⚠️ A DÖNTÉS SZÁNDÉKOSAN NEM ITT LAKIK. Ez a fájl a végén feltétel nélkül
+    // hívja a `main()`-t, tehát importálni nem lehet — ami itt belül van, azt
+    // SOHA nem lehet tesztelni. Mutációval ki is derült: a régi, hibás
+    // feltételt visszaírva minden teszt zöld maradt.
+    const noindexBaj = noindexKifogas(rel, html);
+    if (noindexBaj) add(noindexBaj.kod, noindexBaj.uzenet);
     // GOOGLE DISCOVER (2026-07-29): enélkül a Google csak bélyegképet mutathat,
     // és a Discover — a telefonokra magától kitolt hírfolyam — ki sem próbál
     // minket. Hónapokig észrevétlen volt, mert a honlap tökéletesen működött.
