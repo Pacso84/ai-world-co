@@ -1,0 +1,70 @@
+{
+  "_meta": {
+    "written_at": "2026-09-09T02:06:38.626Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00705464,
+    "original_draft": "2026-09-08T19-07-52-017Z_salesforce_Mastering_Time_Series_Forecasting_with_Morai.json",
+    "source_id": "salesforce",
+    "source_name": "Salesforce AI Blog (hivatalos)",
+    "source_link": "https://www.salesforce.com/news/stories/video/mastering-time-series-forecasting-with-morai/",
+    "source_links": [
+      "https://www.salesforce.com/news/stories/video/mastering-time-series-forecasting-with-morai/",
+      "https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/"
+    ],
+    "merged_from": 2,
+    "merged_theme": "Enterprise AI model releases",
+    "status": "published",
+    "rejected_at": "2026-09-09T02:06:20.163Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 754
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured explainer with a friendly tone that explains AI model categories in plain language, includes the required sections, avoids clichés, and gives practical next steps for readers at different levels.",
+      "_aiCost": 0.00124005,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Well-structured, friendly, and accessible explainer with good teaching voice and no clichés. However, it contains a name misspell (Morai vs Moirai) and an invented statistic (90%) — both undermine reader trust and must be verified and corrected before publication.",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-09-08T19-07-52-017Z_salesforce_Mastering_Time_Series_Forecasting_with_Morai.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-09-09T02:07:06.502Z",
+    "slug": "why-tech-giants-keep-releasing-new-ai-models-and-which-ones-matter-to-",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-09-09T02:07:46.355Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is a generic explainer explainer about how to evaluate AI news, not the introduction of any new tool or feature",
+    "image_v": 2,
+    "image_at": "2026-09-09T02:10:06.847Z",
+    "seo": {
+      "meta_description": "Overwhelmed by constant AI announcements? This practical guide helps you identify which AI models actually matter for your work — and which to ignore.",
+      "keywords": [
+        "which AI model to use",
+        "new AI tools that matter",
+        "how to follow AI news without overwhelm",
+        "best AI models for work",
+        "AI announcements explained simply",
+        "which AI is worth learning",
+        "stay updated on AI without effort"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Consider adding a publication date in the meta description (e.g., '2024 guide') to signal freshness",
+        "The title could include a year or current year reference to improve recency signals for SEO",
+        "Adding a question format to the meta (e.g., 'Which AI models matter in 2024?') may improve CTR from curious searchers"
+      ],
+      "optimised_at": "2026-09-09T02:11:16.909Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Why Tech Giants Keep Releasing New AI Models (And Which Ones Matter to You)\"\nsubtitle: \"A practical guide to making sense of the constant stream of AI announcements without getting overwhelmed\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"ai-models\", \"ai-news\", \"getting-started\", \"decision-making\"]\n---\n\n# Why Tech Giants Keep Releasing New AI Models (And Which Ones Matter to You)\n\n> **In short:** Major AI companies release new specialized models every month — for forecasting, for personal help, for video, and more. You don't need to track every release, but knowing the main categories helps you spot the ones that actually change your daily life or work.\n\nEvery week, another headline: a new AI model from a tech giant. A forecasting tool here, a personal helper there, a video generator somewhere else. It can feel like you need a second job just to keep up.\n\nHere's the relief: you don't. Most of these releases won't change your life. A small number will. The trick is knowing which is which, and that's easier than you think once you see the pattern.\n\n## What \"new AI model\" actually means\n\nAn **AI model** is a program trained to do a specific kind of task. Some are generalists, like a Swiss Army knife that can chat, write, summarize, and code. Others are specialists — a single sharp tool built for one job.\n\nWhen you hear about a new AI model release, you're really hearing one of three things:\n\n- **A general-purpose assistant** — a new version of ChatGPT, Claude, or Gemini. You use these through a chat app.\n- **A specialized tool** — built for one job. Some focus on **time series forecasting**, which means predicting future patterns from past data (next month's sales from this month's numbers, for example). Others specialize in images, video, or code.\n- **A personal agent** — an AI that proactively does things for you in the background, suggesting ideas and nudging you toward goals.\n\nThat's basically the whole landscape. Everything else is variation on those three themes.\n\n## How to tell if a release matters to you\n\nInstead of trying to follow every announcement, ask three simple questions:\n\n1. **Can I use it without being a developer?** If the answer is no, it's probably a business tool that won't reach your everyday life for months, if ever. Move on.\n2. **Does it do something I already do manually?** Forecasting your household budget, summarizing long articles, generating images for a birthday card — these are tasks where AI directly replaces effort.\n3. **Is it free or cheap to try?** The first week of any major release is usually the cheapest moment to experiment, because companies offer free tiers to attract users. Heavy upfront cost usually means the tool isn't ready for regular people yet.\n\nIf a release answers \"yes\" to two of those three, it's worth 10 minutes of your time. If it answers \"yes\" to all three, drop what you're doing and try it today.\n\n## What this means for you\n\n- **If you're just curious about AI**: Pick one general-purpose assistant (ChatGPT, Claude, or Gemini — any of them) and stick with it for a month. Switching tools constantly slows down your learning curve.\n- **If you run a small business or freelance**: Pay attention to specialized tools in your field. A forecasting model, a scheduling helper, or a writing assistant can save hours every week. Subscribe to a few newsletters that filter the noise for you.\n- **If you're worried about missing something**: You're not. The tools that actually matter will keep showing up in your existing apps — your phone, your email, your browser. They come to you.\n- **If you love experimenting**: Great. Just set a rule: try one new tool a month, not one a week. Bouncing between half-finished AI products is the fastest path to burnout.\n\n## Wrap-up\n\nBig companies will keep releasing new AI models — that pace isn't slowing down. The good news is that most of those releases are aimed at other big companies, not at you. The few that matter will either show up in apps you already use, or be cheap and easy to try on a quiet afternoon. Focus your attention there, and you can ignore most of the noise without missing anything important.\n\nYour next step: pick one AI assistant you haven't tried yet (ChatGPT, Claude, or Gemini — all have free versions) and ask it one real question from your day. That's the only experiment that matters today.",
+  "original_title": "Mastering Time Series Forecasting with Morai"
+}

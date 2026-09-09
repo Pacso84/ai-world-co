@@ -1,0 +1,63 @@
+{
+  "_meta": {
+    "written_at": "2026-09-09T02:05:25.032Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.002353152,
+    "original_draft": "2026-09-08T19-07-52-017Z_cohere-blog_Cohere__x27_s_North_Mini_Code_Megakernel_Serving_E.json",
+    "source_id": "cohere-blog",
+    "source_name": "Cohere (hivatalos)",
+    "source_link": "https://cohere.com/blog/megakernels",
+    "source_links": [
+      "https://cohere.com/blog/megakernels"
+    ],
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "published_at": "2026-09-09T02:06:03.661Z",
+    "slug": "why-ai-keeps-getting-faster-and-why-you-rarely-notice",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 845
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Excellent explainer with a strong hook, clear analogies (kitchen/chef), well-segmented audience takeaways, and no prohibited content. US English correct throughout. Factual claims are reasonable and well-qualified.",
+      "_aiCost": 0.0014802,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-09-09T02:07:21.163Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is an explainer about backend AI infrastructure (serving engines/kernels), not a specific tool or feature users can interact with. No concrete action for everyday users.",
+    "image_v": 2,
+    "image_at": "2026-09-09T02:09:58.009Z",
+    "seo": {
+      "meta_description": "Why does AI keep getting faster? A plain-language look at the technology making AI responses quicker — and what it means for you.",
+      "keywords": [
+        "why is AI getting faster",
+        "how does AI inference work",
+        "what makes AI responses faster",
+        "LLM serving engine explained",
+        "AI speed improvements",
+        "ChatGPT faster technology",
+        "AI megakernel"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add 'how AI works' to the title or subtitle to capture higher-volume search traffic",
+        "Consider adding a schema markup for 'Article' type to improve SERP appearance",
+        "Include 1-2 more long-tail keywords naturally: 'AI inference speed' or 'why AI responses are faster now'"
+      ],
+      "optimised_at": "2026-09-09T02:11:06.724Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Why AI Keeps Getting Faster (And Why You Rarely Notice)\"\nsubtitle: \"A plain-language look at the engine room of large language models — and what speed gains actually mean for everyday users.\"\ncategory: \"explainer\"\naudience: \"personal\"\nread_time_minutes: 4\ntags: [\"ai-basics\", \"llm\", \"performance\", \"inference\"]\n---\n\n# Why AI Keeps Getting Faster (And Why You Rarely Notice)\n\n> **In short:** New \"megakernel\" serving engines make large language models respond faster and cheaper to run. You won't see the name on your screen — but you will notice the wait times getting shorter.\n\nYou open a chatbot to summarize a long document. A year ago, the reply took ten seconds. Now it takes three. Nothing about your phone changed. Nothing about your keyboard changed. The improvement happened somewhere behind the curtain, in the layer between your question and the AI's answer — and that layer just had a quiet breakthrough.\n\n## What \"serving\" actually means\n\nWhen you type a message to ChatGPT, Claude, Gemini or any similar tool, the request travels to a data center (a giant warehouse full of computers). A piece of software called a **serving engine** receives it, feeds it into the **LLM** (large language model — the AI's actual \"brain\"), and ships the answer back to your screen.\n\nThink of the serving engine as the kitchen of a restaurant. The LLM is the chef. No matter how talented the chef is, the kitchen has to get the ingredients to the station, keep everything at the right temperature, and plate the dish quickly. A faster kitchen doesn't make the chef smarter — it makes the meal arrive sooner.\n\nFor years, most AI kitchens used the same well-known recipe. A popular open-source system called **vLLM** became the default. It works well, but it has limits: it splits work across many small processes, and coordinating those processes takes extra time.\n\n## What a \"megakernel\" changes\n\nA **megakernel** is a different kitchen layout. Instead of many small cooks each handling one tiny task and passing the plate around, one giant program handles the entire order from start to finish. There are fewer hand-offs, less waiting, less wasted motion.\n\nThe result is something measured in the lab but felt in the app: response times drop, costs per question fall, and more users can be served from the same hardware. A company called Cohere recently published what it describes as the first production-ready system built around this idea for **decoding** — the moment-by-moment step where the AI generates each word of its reply.\n\n## Why you don't see the name anywhere\n\nYou won't find \"megakernel\" written into the chat window you use. This kind of speedup is **infrastructure** — plumbing, wiring, the bit underneath the bit. It is the same reason your internet sometimes feels faster after your provider upgrades a router on a tower you've never visited.\n\nWhat you do feel is:\n\n- **Shorter pauses.** The first word of a long answer arrives sooner.\n- **Longer replies in one go.** The system is less likely to \"give up\" halfway through a complex request.\n- **Cheaper access at the back end.** Companies pass some savings along as free tiers, longer limits, or lower subscription prices.\n\n## The bigger picture: speed as the silent feature\n\nFor the first wave of consumer AI, the headline was **what** the models could do. The next wave is increasingly about **how cheaply and how quickly** they can do it. Every percentage point shaved off the cost of a single answer is a small amount of money — but multiplied by billions of answers per day, it decides who can afford to offer free AI and who can't.\n\nThere is also a feedback loop. Cheaper, faster serving means developers can build more ambitious products — AI agents that browse for you, video generators, voice assistants that hold real conversations — because each step costs less.\n\n## What this means for you\n\n- **If you use AI casually**: the next time your chatbot feels snappier than the one you tried last year, this is partly why. You don't need to do anything different — just enjoy the shorter wait, and don't be afraid to ask longer questions.\n- **If you're curious about trying AI for the first time**: know that today's free tools are noticeably faster than the ones from 2023 or 2024. A slow experience you might have heard about is no longer the norm.\n- **If you work with AI at your job**: speed improvements like this one often arrive without an announcement. If you build anything that calls an AI in the background, retest your old prompts occasionally — what felt clunky a year ago may now feel instant.\n\n## Wrap-up\n\nMegakernels, serving engines, decoding — these are words for the AI's kitchen, not the meal. But kitchens matter. The quiet race to make every answer cheaper and faster is the reason AI keeps getting more useful without you having to learn anything new. Next time a chatbot answers you almost instantly, that is the work happening where you'll never see it.",
+  "original_title": "Cohere&#x27;s North Mini Code Megakernel Serving Engine"
+}

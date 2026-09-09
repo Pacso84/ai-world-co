@@ -1,34 +1,16 @@
 {
   "_meta": {
-    "generated_at": "2026-09-06T01:49:13.406Z",
+    "generated_at": "2026-09-09T02:03:20.337Z",
     "generated_by": "source-scout agent v3.0 (megbízhatóság-kapu)",
     "note": "JAVASLATOK új, MEGBÍZHATÓ hivatalos forrásokra. A felhasználó/főnök dönti el, melyiket adjuk a sources/rss-feeds.json-hoz (enabled:true-val). Minden jelölt megbízhatósági pontszámmal + indoklással.",
     "min_score": 100,
     "checked_orgs": 18,
     "newly_discovered": 0,
-    "rejected_count": 4,
+    "rejected_count": 1,
     "rejected_examples": [
       {
-        "name": "Amazon Devices & Services Blog",
-        "host": "aboutamazon.com",
-        "reason": "a friss cikkeinek csak 20%-a szól AI-ról (kell: 60%)",
-        "score": 100
-      },
-      {
-        "name": "Garmin Blog",
-        "host": "garmin.com",
-        "reason": "a friss cikkeinek csak 0%-a szól AI-ról (kell: 60%)",
-        "score": 100
-      },
-      {
-        "name": "Duolingo News",
-        "host": "blog.duolingo.com",
-        "reason": "a friss cikkeinek csak 7%-a szól AI-ról (kell: 60%)",
-        "score": 100
-      },
-      {
-        "name": "Rosetta Stone Blog",
-        "host": "rosettastone.com",
+        "name": "YNAB Blog",
+        "host": "youneedabudget.com",
         "reason": "a friss cikkeinek csak 0%-a szól AI-ról (kell: 60%)",
         "score": 100
       }

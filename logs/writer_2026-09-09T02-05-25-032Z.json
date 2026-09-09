@@ -1,0 +1,49 @@
+{
+  "started_at": "2026-09-09T02:03:20.526Z",
+  "drafts_total": 8,
+  "articles_written": 3,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 2,
+  "merged_total": 2,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "total_cost_usd": 0.015926704,
+  "by_article": [
+    {
+      "draft": "2026-09-08T19-07-52-016Z_openai-blog_Introducing_ChatGPT_Images_2_5.json",
+      "writer_output": "WRITER_2026-09-08T19-07-52-016Z_openai-blog_Introducing_ChatGPT_Images_2_5.json",
+      "success": true,
+      "merged_from": 5,
+      "merged_theme": "OpenAI product announcements and initiatives (Sept 2026)",
+      "cost_usd": 0.002324352,
+      "duration_ms": 43679,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-09-08T19-07-52-017Z_salesforce_Mastering_Time_Series_Forecasting_with_Morai.json",
+      "writer_output": "WRITER_2026-09-08T19-07-52-017Z_salesforce_Mastering_Time_Series_Forecasting_with_Morai.json",
+      "success": true,
+      "merged_from": 2,
+      "merged_theme": "Enterprise AI model releases",
+      "cost_usd": 0.00980454,
+      "duration_ms": 25261,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-09-08T19-07-52-017Z_cohere-blog_Cohere__x27_s_North_Mini_Code_Megakernel_Serving_E.json",
+      "writer_output": "WRITER_2026-09-08T19-07-52-017Z_cohere-blog_Cohere__x27_s_North_Mini_Code_Megakernel_Serving_E.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.002353152,
+      "duration_ms": 20245,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    }
+  ],
+  "finished_at": "2026-09-09T02:05:25.032Z",
+  "duration_seconds": 124.506
+}

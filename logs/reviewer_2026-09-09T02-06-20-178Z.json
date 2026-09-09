@@ -1,0 +1,34 @@
+{
+  "started_at": "2026-09-09T02:05:25.222Z",
+  "total": 3,
+  "passed": 2,
+  "failed": 1,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.005382972,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-09-08T19-07-52-016Z_openai-blog_Introducing_ChatGPT_Images_2_5.json",
+      "article": "ARTICLE_2026-09-08T19-07-52-016Z_openai-blog_Introducing_ChatGPT_Images_2_5.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.00128007
+    },
+    {
+      "writer": "WRITER_2026-09-08T19-07-52-017Z_cohere-blog_Cohere__x27_s_North_Mini_Code_Megakernel_Serving_E.json",
+      "article": "ARTICLE_2026-09-08T19-07-52-017Z_cohere-blog_Cohere__x27_s_North_Mini_Code_Megakernel_Serving_E.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.0014802
+    },
+    {
+      "writer": "WRITER_2026-09-08T19-07-52-017Z_salesforce_Mastering_Time_Series_Forecasting_with_Morai.json",
+      "rejected": "REJECTED_2026-09-08T19-07-52-017Z_salesforce_Mastering_Time_Series_Forecasting_with_Morai.json",
+      "decision": "FAIL",
+      "score": 6,
+      "cost_usd": 0.00111867
+    }
+  ],
+  "finished_at": "2026-09-09T02:06:20.178Z",
+  "duration_seconds": 54.956
+}
