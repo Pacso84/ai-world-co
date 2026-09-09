@@ -1024,11 +1024,14 @@ function relatedBox(a) {
 // a törzsbe ékelt hirdetés-szerű blokk-lista rontaná az olvasást.
 // SZEKCIÓ-HATÁRRA kerül (h2 elé), hogy ne vágjon ketté egy gondolatot.
 const MIDREAD_MIN_WORDS = 600;   // rövid cikket nem szakítunk meg
+// A MÁSODIK ajánló küszöbe. 1400 szó alatt két doboz tolakodó lenne; az
+// útmutatóink mediánja 2155 szó, tehát a hosszúak kapják meg, a hírek nem.
+const MIDREAD_MASODIK_MIN_WORDS = 1100;
 
-function midReadBox(a) {
+function midReadBox(a, n = 0) {
   const rel = RELATED.get(a.file) || [];
-  if (!rel.length) return '';
-  const r = rel[0];                       // a legerősebb kapcsolat
+  if (rel.length <= n) return '';
+  const r = rel[n];                       // 0 = a legerősebb kapcsolat
   const lr = localizeArticle(r, LANG);
   return `<aside class="midread"><span class="midread__lbl">${r.isGuide ? '📘' : '📰'} ${tr('midRead')}</span>`
     + `<a class="midread__link" href="${r.slug}">${escapeHtml(lr.title)}<span class="midread__arrow">→</span></a></aside>`;
@@ -1056,9 +1059,43 @@ function withMidRead(bodyHtml, a) {
   // mediánja így 64% lett 50% helyett, vagyis a doboz épp azoknak maradt
   // láthatatlan, akiknek szól.
   const wordsUpTo = i => bodyHtml.slice(0, i).replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length;
-  const half = wordsUpTo(bodyHtml.length) / 2;
-  const at = usable.reduce((best, i) =>
-    Math.abs(wordsUpTo(i) - half) < Math.abs(wordsUpTo(best) - half) ? i : best, usable[0]);
+  const ossz = wordsUpTo(bodyHtml.length);
+  const legkozelebb = (cel) => usable.reduce((best, i) =>
+    Math.abs(wordsUpTo(i) - cel) < Math.abs(wordsUpTo(best) - cel) ? i : best, usable[0]);
+  const at = legkozelebb(ossz / 2);
+
+  // ===================================================================
+  // MÁSODIK DOBOZ HOSSZÚ CIKKBEN (2026-09-10) — bizonyítékra alapozva
+  // ===================================================================
+  // A kutatás két mért dolgot mondott, és a kettő együtt indokolja ezt:
+  //   • Az olvasók **38%-a egyáltalán nem görget**, a medián görgetési
+  //     mélység a cikk **fele** körül van (Slate/Chartbeat). A lap végi,
+  //     83%-nál lévő kapcsolódó-rácsot a MEDIÁN OLVASÓ SOSEM LÁTJA.
+  //   • 294 kiadói oldalon mérve: a SŰRŰBBEN elhelyezett linkek
+  //     ~2,5×-esen teljesítenek a ritkásan elhelyezettekhez képest.
+  //
+  // 🔑 ÉS A VALÓDI TÉT NEM AZ OLDALLETÖLTÉS: 300 millió első látogatáson
+  // mérve, aki EGY oldalt néz meg, 8%-ban tér vissza — aki KETTŐT, 22%-ban
+  // (2,75×). A második kattintás a VISSZATÉRÉST veszi meg, nem a
+  // statisztikát.
+  //
+  // ⚠️ CSAK HOSSZÚ CIKKBEN és CSAK MÁSIK cikkre. Egy 900 szavas írásban két
+  // doboz tolakodó lenne, ugyanarra a linkre mutatva pedig értelmetlen.
+  // ⚠️ A BESZÚRÁS HÁTULRÓL ELŐRE megy: az első beszúrás eltolná a második
+  // pozícióját, és a doboz a mondat közepére kerülne.
+  const box2 = ossz >= MIDREAD_MASODIK_MIN_WORDS ? midReadBox(a, 1) : '';
+  // A MÁSODIK doboz az UTOLSÓ szekció-határt is használhatja: a végi rács
+  // 83%-nál van, tehát 70-75% körül még van hely. (Az ELSŐ doboznál a
+  // kizárás marad — ott a cél a felezőpont.)
+  const usable2 = heads.slice(1);
+  const legkozelebb2 = (cel) => usable2.reduce((best, i) =>
+    Math.abs(wordsUpTo(i) - cel) < Math.abs(wordsUpTo(best) - cel) ? i : best, usable2[0]);
+  const at2 = box2 ? legkozelebb2(ossz * 0.80) : -1;
+  // Ugyanaz a szekció-határ? Akkor nincs második doboz — két egymás melletti
+  // ajánló rosszabb, mint egy.
+  if (box2 && at2 > at) {
+    return bodyHtml.slice(0, at) + box + bodyHtml.slice(at, at2) + box2 + bodyHtml.slice(at2);
+  }
   return bodyHtml.slice(0, at) + box + bodyHtml.slice(at);
 }
 

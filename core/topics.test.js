@@ -164,5 +164,75 @@ t('🔑 ÉLES: a hub-csempék linkjei ÉLNEK (a relatív út csapdája)', () => 
     '⚠️ HALOTT csempe-link a hubon: ' + elso);
 });
 
+// ===================================================================
+// MÁSODIK „READ THIS NEXT" DOBOZ (2026-09-10) — bizonyítékra alapozva
+// ===================================================================
+// KÉT MÉRT TÉNY indokolja, és csak a kettő EGYÜTT:
+//   • Az olvasók 38%-a EGYÁLTALÁN NEM görget, a medián görgetési mélység a
+//     cikk fele körül van → a lap végi, 83%-nál lévő kapcsolódó-rácsot a
+//     MEDIÁN OLVASÓ SOSEM LÁTJA. (Slate/Chartbeat)
+//   • 294 kiadói oldalon mérve: a sűrűbben elhelyezett linkek ~2,5×-esen
+//     teljesítenek a ritkásan elhelyezettekhez képest.
+//
+// 🔑 ÉS A TÉT NEM AZ OLDALLETÖLTÉS: 300 millió első látogatáson mérve, aki
+// EGY oldalt néz meg, 8%-ban tér vissza — aki KETTŐT, 22%-ban (2,75×).
+// A második kattintás a VISSZATÉRÉST veszi meg, nem a statisztikát.
+console.log('\n🧪 második ajánló-doboz a hosszú cikkekben');
+
+const cikkFajlok = () => {
+  const D = join(PUBLIC, 'article');
+  return existsSync(D) ? readdirSync(D).filter(x => x.endsWith('.html')).map(x => join(D, x)) : [];
+};
+const lathatoSzoveg = (h) => h.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
+
+t('🔑 ÉLES: a hosszú cikkek KÉT ajánlót kapnak, KÜLÖNBÖZŐ célra', () => {
+  const f = cikkFajlok();
+  if (!f.length) { console.log('     (nincs helyi build — kihagyva)'); return; }
+  let ketto = 0, dup = 0;
+  for (const p of f) {
+    const l = [...readFileSync(p, 'utf-8').matchAll(/class="midread__link" href="([^"]+)"/g)].map(m => m[1]);
+    if (l.length < 2) continue;
+    ketto++;
+    if (l[0] === l[1]) dup++;
+  }
+  console.log('     ↳ ' + ketto + ' cikk kapott két ajánlót');
+  assert.equal(dup, 0, '⚠️ a két doboz UGYANARRA a cikkre mutat — értelmetlen ismétlés');
+});
+
+t('🔑 ÉLES: a két doboz TÁVOL van egymástól (nem 7 százalékpontra)', () => {
+  // ⚠️ AZ ELSŐ VÁLTOZATOM 50%-ra és 57%-ra tette őket — a második doboz így
+  // felesleges volt. A MÉRÉS mutatta meg, nem az átolvasás: a beszúrás csak
+  // a KÖZTES szekció-határokra mehetett, ezért nem tudott lejjebb menni.
+  const tavok = [];
+  for (const p of cikkFajlok()) {
+    const h = readFileSync(p, 'utf-8');
+    const m = [...h.matchAll(/class="midread"/g)];
+    if (m.length < 2) continue;
+    const k = h.indexOf('article__head'), v = h.indexOf('class="article__foot"');
+    if (k < 0 || v < 0) continue;
+    const teljes = lathatoSzoveg(h.slice(k, v)).split(' ').length;
+    const helyek = m.map(x => 100 * lathatoSzoveg(h.slice(k, x.index)).split(' ').length / teljes);
+    tavok.push(helyek[1] - helyek[0]);
+  }
+  if (!tavok.length) return;
+  tavok.sort((a, b) => a - b);
+  const med = tavok[Math.floor(tavok.length / 2)];
+  console.log('     ↳ a két doboz közti távolság (medián): ' + med.toFixed(0) + ' százalékpont');
+  assert.ok(med >= 12, 'a két doboz csak ' + med.toFixed(0) + ' százalékpontra van — a második felesleges');
+});
+
+t('🚨 RÖVID cikk NEM kap két dobozt (az tolakodó lenne)', () => {
+  // A hírek mediánja 914 szó — ott egy doboz is épp elég.
+  let rovidKetDobozos = 0;
+  for (const p of cikkFajlok()) {
+    const h = readFileSync(p, 'utf-8');
+    if ((h.match(/class="midread"/g) || []).length < 2) continue;
+    const k = h.indexOf('article__head'), v = h.indexOf('class="article__foot"');
+    if (k < 0 || v < 0) continue;
+    if (lathatoSzoveg(h.slice(k, v)).split(' ').length < 900) rovidKetDobozos++;
+  }
+  assert.equal(rovidKetDobozos, 0, rovidKetDobozos + ' rövid cikk kapott két ajánlót');
+});
+
 console.log(`\n${bukott === 0 ? '✅' : '❌'} topics.test: ${pass} rendben, ${bukott} bukott`);
 process.exit(bukott === 0 ? 0 : 1);
