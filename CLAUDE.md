@@ -13,7 +13,7 @@ Automata, több nyelvű AI-hírportál (aiworldhq.com), amit agentek üzemeltetn
 ## Parancsok
 
 ```bash
-npm test                    # 87 teszt — INGYENES és hálózat nélküli (core/run-tests.js)
+npm test                    # 88 teszt — INGYENES és hálózat nélküli (core/run-tests.js)
 node core/<nev>.test.js     # egyetlen teszt futtatása
 npm run router-smoke        # ⚠️ PÉNZBE KERÜL — valódi API-hívás, szándékosan nincs a npm test-ben
 node website/build.js       # statikus build a website/public/-ba (ingyenes, hálózat nélkül)

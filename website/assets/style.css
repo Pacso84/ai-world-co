@@ -379,6 +379,15 @@ body {
   background: var(--paper-2); padding: 15px 20px; border-radius: var(--radius-sm);
   margin: 0 auto 22px; max-width: 60ch; text-align: left;
 }
+/* Támogatás-sor (2026-09-09) — a Ko-fi gomb eddig CSAK a /support oldalon
+   volt, ahova 37 nap alatt NULLA látogató jött. A forgalom 92%-a cikkre
+   érkezik, ezért ide került. SZÁNDÉKOSAN halk: egy sor, a nyilatkozat
+   méretében — az olvasó 1,16 oldalt néz meg, egy tolakodó doboz csak
+   rontana rajta. */
+.support-foot { font-size: 14px; color: var(--muted); margin: 0 0 18px; }
+.support-foot a { color: var(--accent-dark); font-weight: 700; text-decoration: none; }
+.support-foot a:hover { text-decoration: underline; }
+
 .back-link { display: inline-block; font-weight: 700; color: var(--ink); text-decoration: none; }
 .back-link:hover { color: var(--accent-dark); }
 

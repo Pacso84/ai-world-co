@@ -212,7 +212,8 @@ const UI_GUIDES = {
         audPersonal: 'Everyday life', audBusiness: 'Business', audBoth: 'Life & Business',
         aiSkills: 'AI skills', coverSub: 'For everyday people', exampleLabel: 'Example', tryTyping: 'Try typing this', xrefNews: 'What prompted this guide', xrefGuide: 'Want to try it? Step-by-step guide',
         disclosureNews: "✦ Original guide written by AI World HQ's own AI editorial team. Reviewed for accuracy and clarity.",
-        disclosureGuide: "✦ Original step-by-step guide by AI World HQ's AI editorial team. Written in plain language, reviewed for accuracy." },
+        disclosureGuide: "✦ Original step-by-step guide by AI World HQ's AI editorial team. Written in plain language, reviewed for accuracy.",
+        supFootPre: 'Free to read, no ads, no paywall.', supFootLink: 'Buy us a coffee' },
   hu: { tagline: 'AI-hírek, közérthetően', forEveryone: 'Mindenkinek',
         lvl_beginner: 'kezdő', lvl_intermediate: 'középhaladó', lvl_advanced: 'haladó',
         guideWordOne: 'útmutató', guideWordMany: 'útmutató',
@@ -226,7 +227,8 @@ const UI_GUIDES = {
         audPersonal: 'Hétköznapok', audBusiness: 'Üzlet', audBoth: 'Otthon és munka',
         aiSkills: 'AI-készségek', coverSub: 'Hétköznapi embereknek', exampleLabel: 'Példa', tryTyping: 'Írd be ezt', xrefNews: 'Ebből a hírből született az útmutató', xrefGuide: 'Kipróbálnád? Lépésről lépésre útmutató',
         disclosureNews: '✦ Az AI World HQ saját AI-szerkesztősége által írt eredeti cikk. Pontosságra és érthetőségre ellenőrizve.',
-        disclosureGuide: '✦ Az AI World HQ AI-szerkesztőségének eredeti, lépésről lépésre útmutatója. Közérthetően írva, pontosságra ellenőrizve.' },
+        disclosureGuide: '✦ Az AI World HQ AI-szerkesztőségének eredeti, lépésről lépésre útmutatója. Közérthetően írva, pontosságra ellenőrizve.',
+        supFootPre: 'Ingyenes, hirdetés és fizetőfal nélkül.', supFootLink: 'Hívj meg egy kávéra' },
   es: { tagline: 'Noticias de IA, en lenguaje claro', forEveryone: 'Para todos',
         lvl_beginner: 'principiante', lvl_intermediate: 'intermedio', lvl_advanced: 'avanzado',
         guideWordOne: 'guía', guideWordMany: 'guías',
@@ -240,7 +242,8 @@ const UI_GUIDES = {
         audPersonal: 'Día a día', audBusiness: 'Negocios', audBoth: 'Vida y negocios',
         aiSkills: 'Habilidades de IA', coverSub: 'Para el día a día', exampleLabel: 'Ejemplo', tryTyping: 'Escribe esto', xrefNews: 'La noticia detrás de esta guía', xrefGuide: '¿Quieres probarlo? Guía paso a paso',
         disclosureNews: '✦ Artículo original escrito por el equipo editorial de IA de AI World HQ Revisado para mayor precisión y claridad.',
-        disclosureGuide: '✦ Guía original paso a paso del equipo editorial de IA de AI World HQ Escrita en lenguaje claro y revisada para mayor precisión.' },
+        disclosureGuide: '✦ Guía original paso a paso del equipo editorial de IA de AI World HQ Escrita en lenguaje claro y revisada para mayor precisión.',
+        supFootPre: 'Gratis, sin anuncios ni muro de pago.', supFootLink: 'Invítanos a un café' },
 
 };
 for (const l of SITE_LANGS) Object.assign(UI[l], UI_GUIDES[l] || {});
@@ -1659,6 +1662,32 @@ function buildToolsPage(companyGuides, counts) {
   });
 }
 
+// ===================================================================
+// TÁMOGATÁS-SOR A CIKK ALJÁN (2026-09-09)
+// ===================================================================
+// MI VOLT A BAJ: a Ko-fi gomb 2026-07-30 óta „be van kötve" — de KIZÁRÓLAG
+// a `/support` oldalon. Megmértem, hány látogató járt ott 37 nap alatt:
+//
+//     NULLA.
+//
+// 🔑 Vagyis az egyetlen meglévő bevételi csatornánk nem PIACI okból hozott
+// nullát, hanem SZERKEZETILEG: olyan lapon állt, ahova senki nem megy.
+// Ugyanaz az alakzat, mint az i18n-őrszem, ami csak a CI-naplóba írt.
+// „Az őrszem — és a gomb — csak akkor ér valamit, ha ott van, ahol a
+// felhasználó néz." A forgalom 92%-a CIKKRE érkezik, tehát ide való.
+//
+// ⚠️ EGY SOR, NEM BANNER. A projekt mérése szerint az olvasó 1,16 oldalt
+// néz meg és távozik — egy tolakodó doboz ezen csak rontana. A hangnem a
+// brand-szabályt követi: átlátszó, nem kunyerál.
+//
+// ⚠️ AZ ÁLLÍTÁS IGAZ: kimérve, hogy az oldalon NINCS hirdetés-kód és nincs
+// fizetőfal. Ha valaha lesz, EZ A SZÖVEG IS VÁLTOZZON.
+function supportLine() {
+  if (!SUPPORT.enabled || !SUPPORT.url) return '';
+  return `<p class="support-foot">☕ ${tr('supFootPre')} `
+    + `<a href="${escapeHtml(SUPPORT.url)}" target="_blank" rel="noopener noreferrer">${tr('supFootLink')}</a></p>`;
+}
+
 function buildArticlePage(a) {
   const cat = CATEGORIES[a.category] || CATEGORIES.other;
   const aud = AUDIENCES[a.audience] || AUDIENCES.both;
@@ -1691,6 +1720,7 @@ function buildArticlePage(a) {
     <div class="article__foot">
       <div class="fb" data-slug="${a.slug}" data-thanks="${escapeHtml(tr('fbThanks'))}"><span class="fb__q">${tr('fbQ')}</span><button class="fb__btn" data-vote="up" aria-label="👍">👍</button><button class="fb__btn" data-vote="down" aria-label="👎">👎</button></div>
       <p class="ai-disclosure">${tr('disclosureNews')}</p>
+      ${supportLine()}
       <a href="../index" class="back-link">${tr('backStories')}</a>
     </div>
   </article>`;
@@ -2094,6 +2124,7 @@ function buildGuidePage(a) {
     <div class="article__foot">
       <div class="fb" data-slug="${a.slug}" data-thanks="${escapeHtml(tr('fbThanks'))}"><span class="fb__q">${tr('fbQ')}</span><button class="fb__btn" data-vote="up" aria-label="👍">👍</button><button class="fb__btn" data-vote="down" aria-label="👎">👎</button></div>
       <p class="ai-disclosure">${tr('disclosureGuide')}</p>
+      ${supportLine()}
       <a href="../index" class="back-link">${tr('backStories')}</a>
     </div>
   </article>`;
