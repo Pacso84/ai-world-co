@@ -1,86 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178880932108458",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-09-07T19:28:41.084Z",
-      "updated": "2026-09-07T19:28:41.254Z"
-    },
-    {
-      "id": "t178880932125664",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-09-07T19:28:41.256Z",
-      "updated": "2026-09-07T19:29:04.508Z"
-    },
-    {
-      "id": "t178880934451062",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-09-07T19:29:04.510Z",
-      "updated": "2026-09-07T19:29:04.705Z"
-    },
-    {
-      "id": "t178880934470740",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-09-07T19:29:04.707Z",
-      "updated": "2026-09-07T19:29:04.884Z"
-    },
-    {
-      "id": "t178880934488612",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-07T19:29:04.886Z",
-      "updated": "2026-09-07T19:29:05.068Z"
-    },
-    {
-      "id": "t178880934507116",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-09-07T19:29:05.071Z",
-      "updated": "2026-09-07T19:29:05.294Z"
-    },
-    {
-      "id": "t178880934534839",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-07T19:29:05.348Z",
-      "updated": "2026-09-07T19:29:05.589Z"
-    },
-    {
-      "id": "t178880934559269",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-09-07T19:29:05.592Z",
-      "updated": "2026-09-07T19:29:05.817Z"
-    },
-    {
-      "id": "t178880934581915",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-07T19:29:05.819Z",
-      "updated": "2026-09-07T19:29:09.247Z"
-    },
-    {
-      "id": "t178880934924960",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-09-07T19:29:09.249Z",
-      "updated": "2026-09-07T19:29:29.994Z"
-    },
-    {
       "id": "t178883262275925",
       "title": "Run ceo",
       "status": "done",
@@ -479,33 +399,89 @@
       "agent": "publisher",
       "created": "2026-09-09T02:11:45.890Z",
       "updated": "2026-09-09T02:12:05.302Z"
+    },
+    {
+      "id": "t178895723297986",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-09-09T12:33:52.979Z",
+      "updated": "2026-09-09T12:33:53.159Z"
+    },
+    {
+      "id": "t17889572331613",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-09-09T12:33:53.161Z",
+      "updated": "2026-09-09T12:34:21.173Z"
+    },
+    {
+      "id": "t17889572611757",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-09-09T12:34:21.175Z",
+      "updated": "2026-09-09T12:34:21.368Z"
+    },
+    {
+      "id": "t178895726137054",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-09-09T12:34:21.370Z",
+      "updated": "2026-09-09T12:35:19.849Z"
+    },
+    {
+      "id": "t178895731985196",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-09T12:35:19.851Z",
+      "updated": "2026-09-09T12:35:45.147Z"
+    },
+    {
+      "id": "t17889573451505",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-09-09T12:35:45.150Z",
+      "updated": "2026-09-09T12:35:52.419Z"
+    },
+    {
+      "id": "t17889573524751",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-09T12:35:52.475Z",
+      "updated": "2026-09-09T12:36:12.294Z"
+    },
+    {
+      "id": "t178895737229639",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-09-09T12:36:12.296Z",
+      "updated": "2026-09-09T12:36:27.368Z"
+    },
+    {
+      "id": "t178895738737057",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-09T12:36:27.370Z",
+      "updated": "2026-09-09T12:36:31.077Z"
+    },
+    {
+      "id": "t17889573910790",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-09-09T12:36:31.079Z",
+      "updated": "2026-09-09T12:36:57.338Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178809195497579",
-      "level": "success",
-      "text": "1 hír + 1 útmutató publikálva (költség: $0.0060).",
-      "agent": "ceo",
-      "at": "2026-08-30T12:12:34.975Z",
-      "loud": false
-    },
-    {
-      "id": "n178809196488175",
-      "level": "warn",
-      "text": "📨 fact-check → human: Ez az útmutató talán tárgytalanná vált: \"Build a basic AI chatbot for your website using Op\" — OpenAI retired the Playgr",
-      "agent": "fact-check",
-      "at": "2026-08-30T12:12:44.881Z",
-      "loud": false
-    },
-    {
-      "id": "n178809628890917",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The lineup offers practical, varied AI use cases that everyday people can actually apply. A couple of notes: three articles focus on complaint emails (#3, #4, #5) — this might feel repetitive to reade",
-      "agent": "publisher",
-      "at": "2026-08-30T13:24:48.909Z",
-      "loud": false
-    },
     {
       "id": "n17880963025485",
       "level": "info",
@@ -1281,29 +1257,33 @@
       "agent": "fact-check",
       "at": "2026-09-09T02:12:50.348Z",
       "loud": false
+    },
+    {
+      "id": "n178895738735872",
+      "level": "info",
+      "text": "SEO: 1 cikk optimalizálva (átlag 9.0/10).",
+      "agent": "seo",
+      "at": "2026-09-09T12:36:27.358Z",
+      "loud": false
+    },
+    {
+      "id": "n178895740241621",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The lineup looks solid — practical, everyday AI writing guides that match our \"AI for everyone\" mission perfectly. One note: Article 6 (Resume From Scratch) doesn't mention an AI tool like the others ",
+      "agent": "publisher",
+      "at": "2026-09-09T12:36:42.416Z",
+      "loud": false
+    },
+    {
+      "id": "n178895741738657",
+      "level": "success",
+      "text": "1 hír + 0 útmutató publikálva (költség: $0.0167).",
+      "agent": "ceo",
+      "at": "2026-09-09T12:36:57.386Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178817824291057",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Turn messy meeting notes into clear action items with ChatRTX\" — javítva: UI_CLAIMS_UNSOURCED: 4 konkrét képernyő-feliratot állít tényként forrás nélkül (\"windows key + x\", \"more info → run anyway\", \"chatrtx\", \"inside the chat reply first\"). Vagy nézd meg a hivatalos oldalon, vagy írd hedge-elve (\"if you don't see…\").; Beginner clarity too low (7/10): steps are vague or could mislead",
-      "ref": "GUIDE_turn-messy-meeting-notes-into-clear-action-items-with-chatrt.json",
-      "at": "2026-08-31T12:10:42.910Z"
-    },
-    {
-      "id": "m178817824291149",
-      "from": "guide",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Kell még adat: \"Turn messy meeting notes into clear action items with ChatRTX\" — az Ellenőrző tényt/forrást kér, amit nem találhatok ki: UI_CLAIMS_UNSOURCED: 4 konkrét képernyő-feliratot állít tényként forrás nélkül (\"windows key + x\", \"more info → run anyway\", \"chatrtx\", \"inside the chat reply first\"). Vagy nézd meg a hivatalos oldalon, vagy írd hedge-elve (\"if you don't see…\").",
-      "ref": "GUIDE_turn-messy-meeting-notes-into-clear-action-items-with-chatrt.json",
-      "open": false,
-      "at": "2026-08-31T12:10:42.911Z",
-      "resolved_at": "2026-08-31T12:10:50.201Z"
-    },
     {
       "id": "m178817825019983",
       "from": "ellenorzo",
@@ -2645,6 +2625,24 @@
       "text": "5 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-09-09T02:22:06.160Z"
+    },
+    {
+      "id": "m178895739106697",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 20 → 5/4/2 oszlop.",
+      "ref": "mobile",
+      "at": "2026-09-09T12:36:31.066Z"
+    },
+    {
+      "id": "m178895745185940",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Creating a polished README with GitHub Copilot\" — While there's usually a free trial available, note that a paid plan is typically required after the trial period.",
+      "ref": "ARTICLE_GUIDE_creating-a-polished-readme-with-github-copilot.json",
+      "at": "2026-09-09T12:37:31.859Z"
     }
   ]
 }
