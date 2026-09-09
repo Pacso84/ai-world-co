@@ -12,7 +12,8 @@
 // ===================================================================
 
 import assert from 'assert/strict';
-import { reelMaMar, kovetkezoReel, maiReelCikk } from './reel-queue.js';
+import { readFileSync } from 'fs';
+import { reelMaMar, kovetkezoReel, maiReelCikk, reelForma } from './reel-queue.js';
 
 let pass = 0;
 const t = (n, f) => { f(); pass++; console.log('  ✅ ' + n); };
@@ -130,5 +131,131 @@ t('üres vagy hibás bemenet nem omlik össze', () => {
   assert.equal(maiReelCikk(undefined, Date.now()), null);
 });
 
+
+// ===================================================================
+// VÁLTOZATOSSÁG (2026-09-09) — a user vette észre: „sok az ismétlés"
+// ===================================================================
+// A VALÓDI ESET: az utolsó 8 Reelből 6 szó szerint „Getting started with
+// <asszisztens>" volt — ChatGPT, Claude, Gemini, Copilot, DeepSeek, Le Chat.
+//
+// 🔑 AZ OK NEM HIBA VOLT, HANEM KÖVETKEZMÉNY. A tiszta FIFO pontosan azt
+// csinálta, amit kértek tőle; csak a tartalmunk KÖTEGEKBEN készült (a
+// legrégebbi útmutatók mind a 2026-06-22–24-i „alapító" kezdő-sorozatból
+// valók), és FIFO + kötegelt tartalom = TÉMA-CSOMÓSODÁS.
+//
+// A javítás SZŰK: a FIFO marad a gerinc, csak átugorjuk azt a jelöltet,
+// ami az elmúlt hét Reeljeivel azonos ESZKÖZRŐL vagy azonos CÍM-KEZDETTEL
+// szól. Valódi adaton szimulálva: 4/15 ismétlés → 0/15, és a sor továbbra
+// is az első ~18 elemből válogat (a hátralék ugyanúgy fogy).
+console.log('\n🧪 változatosság — ne ugyanarról szóljon egy héten át');
+
+const gm = (slug, at, cim, extra = {}) => g(slug, at, { md: `---\ntitle: "${cim}"\n---\n\n## Step 1 — x`, ...extra });
+
+t('🔑 A VALÓDI ESET: hat „Getting started with…" után NEM a hetedik jön', () => {
+  const cikkek = [
+    // az elmúlt hat nap Reeljei — mind ugyanaz a forma
+    gm('a', '2026-06-01', 'Getting started with ChatGPT', { tool: 'ChatGPT', reel_at: '2026-08-19T09:00:00Z' }),
+    gm('b', '2026-06-02', 'Getting started with Claude', { tool: 'Claude', reel_at: '2026-08-20T09:00:00Z' }),
+    gm('c', '2026-06-03', 'Getting started with Gemini', { tool: 'Gemini', reel_at: '2026-08-21T09:00:00Z' }),
+    // a jelöltek: a LEGRÉGEBBI megint ugyanolyan, a következő más
+    gm('d', '2026-06-04', 'Getting started with Perplexity', { tool: 'Perplexity' }),
+    gm('e', '2026-06-05', 'How to plan a trip with AI', { tool: '' })
+  ];
+  const v = kovetkezoReel(cikkek, MOST);
+  assert.equal(v.slug, 'e', 'megint „Getting started with…" ment volna ki: ' + (v && v.slug));
+});
+
+t('🔑 ugyanaz az ESZKÖZ sem jöhet a héten belül', () => {
+  // Két KÜLÖNBÖZŐ cím-kezdet, de ugyanaz a termék — a nézőnek az is ismétlés.
+  const cikkek = [
+    gm('a', '2026-06-01', 'Getting started with Claude', { tool: 'Claude', reel_at: '2026-08-24T09:00:00Z' }),
+    gm('b', '2026-06-02', 'Organize your work with Claude Projects', { tool: 'Claude' }),
+    gm('c', '2026-06-03', 'How to plan a trip with AI', { tool: '' })
+  ];
+  assert.equal(kovetkezoReel(cikkek, MOST).slug, 'c');
+});
+
+t('🔑 FIFO MARAD, ha nincs hasonlóság — nem véletlenszerű', () => {
+  const cikkek = [
+    gm('regi', '2026-06-01', 'How to plan a trip with AI'),
+    gm('ujabb', '2026-07-01', 'Summarize any long document')
+  ];
+  assert.equal(kovetkezoReel(cikkek, MOST).slug, 'regi', 'a legrégebbinek kell mennie');
+});
+
+t('🚨 VISSZAESÉS: ha MINDEN jelölt hasonlít, akkor is MEGY Reel', () => {
+  // A változatosság kényelem, a napi videó a feladat. Enélkül a sor némán
+  // megállna — és az „elromlott" pontosan úgy nézne ki, mint a „nincs jelölt".
+  const cikkek = [
+    gm('volt', '2026-06-01', 'Getting started with ChatGPT', { tool: 'ChatGPT', reel_at: '2026-08-24T09:00:00Z' }),
+    gm('x', '2026-06-02', 'Getting started with ChatGPT Voice', { tool: 'ChatGPT' }),
+    gm('y', '2026-06-03', 'Getting started with ChatGPT Memory', { tool: 'ChatGPT' })
+  ];
+  const v = kovetkezoReel(cikkek, MOST);
+  assert.ok(v, '⚠️ a sor MEGÁLLT — a változatosság nem előzheti meg a feladatot');
+  assert.equal(v.slug, 'x', 'visszaeséskor a LEGRÉGEBBI megy');
+});
+
+t('a hét ELŐTTI Reel már nem korlátoz (az ablak gördül)', () => {
+  const cikkek = [
+    // 8 régebbi Reel, mind más formájú — a „Getting started" kicsúszik az ablakból
+    ...Array.from({ length: 8 }, (_, i) =>
+      gm('r' + i, '2026-05-0' + (i + 1), 'Filler title number ' + i, { reel_at: `2026-08-1${i}T09:00:00Z` })),
+    gm('regen', '2026-04-01', 'Getting started with ChatGPT', { tool: 'ChatGPT', reel_at: '2026-08-01T09:00:00Z' }),
+    gm('most', '2026-06-01', 'Getting started with Claude', { tool: 'Claude' })
+  ];
+  assert.equal(kovetkezoReel(cikkek, MOST).slug, 'most', 'a 8 nappal ezelőtti forma még mindig korlátoz');
+});
+
+t('a forma: eszköz + a cím első HÁROM szava', () => {
+  const f = reelForma({ tool: 'ChatGPT', md: '---\ntitle: "Getting Started with ChatGPT: Your First 15 Minutes"\n---' });
+  assert.equal(f.eszkoz, 'chatgpt');
+  assert.equal(f.kezdet, 'getting started with');
+  // Három szó, mert a „getting started with" és a „how to use" is három.
+  assert.equal(reelForma({ md: '---\ntitle: "How to use Meta AI"\n---' }).kezdet, 'how to use');
+});
+
+t('hiányzó cím/eszköz nem dob és nem korlátoz', () => {
+  for (const rossz of [null, undefined, {}, { md: 42 }, { tool: null }]) {
+    assert.doesNotThrow(() => reelForma(rossz));
+    const f = reelForma(rossz);
+    assert.equal(f.eszkoz, '');
+    assert.equal(f.kezdet, '');
+  }
+  // Üres forma NEM korlátozhat: különben egy cím nélküli régi Reel mindent kizárna.
+  const cikkek = [
+    gm('volt', '2026-06-01', '', { reel_at: '2026-08-24T09:00:00Z' }),
+    gm('a', '2026-06-02', 'How to plan a trip with AI')
+  ];
+  assert.equal(kovetkezoReel(cikkek, MOST).slug, 'a');
+});
+
+t('🚨 az ESZKÖZ NÉLKÜLI cikkek nem zárják ki EGYMÁST', () => {
+  // ⚠️ EZT A LÉPÉST MUTÁCIÓVAL TALÁLTAM MEG. Az előző eset egyetlen jelölttel
+  // dolgozott, ezért a visszaesés amúgy is ugyanazt adta — vagyis NEM MÉRTE,
+  // amit hittem. Itt KÉT jelölt van, és a helyes válasz a régebbi.
+  //
+  // A VALÓDI KOCKÁZAT: a Reeljeink egy részének NINCS `tool` mezője (mérve: a
+  // 16 eddigiből 5). Ha az üres eszköz „formának" számítana, EGY ilyen Reel
+  // után MINDEN eszköz nélküli jelölt kiesne — pedig azok épp a legáltalánosabb,
+  // legjobban terjedő útmutatóink („How to plan a trip with AI").
+  const cikkek = [
+    gm('volt', '2026-06-01', 'Filler title here', { reel_at: '2026-08-24T09:00:00Z' }),  // nincs tool
+    gm('altalanos', '2026-06-02', 'How to plan a trip with AI'),                          // nincs tool
+    gm('eszkozos', '2026-07-01', 'Organize your work with Claude', { tool: 'Claude' })
+  ];
+  assert.equal(kovetkezoReel(cikkek, MOST).slug, 'altalanos',
+    '⚠️ az eszköz nélküli jelölt kiesett, mert egy korábbi Reelnek sem volt eszköze');
+});
+
+t('🔑 a sor-döntés MEGKAPJA a tool mezőt (különben fél szabály vak)', () => {
+  // A `cikkekBetolt()` a reel-post.js-ben van, ami NEM importálható
+  // (posztolna). Forrásból nézzük — a kommenteket levágva, mert a fejléc is
+  // leírja a mezőnevet.
+  const src = readFileSync(new URL('./reel-post.js', import.meta.url), 'utf-8')
+    .split('\n').filter(s => !s.trim().startsWith('//')).join('\n');
+  assert.ok(/tool:\s*m\.tool/.test(src),
+    '⚠️ a cikkekBetolt() nem adja tovább a tool mezőt — az eszköz-ismétlés némán átcsúszna');
+});
 
 console.log('\n✅ reel-queue.test: mind a ' + pass + ' eset rendben');

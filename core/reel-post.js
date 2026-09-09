@@ -311,8 +311,12 @@ async function cikkekBetolt(ROOT, join) {
     if (!f.startsWith('ARTICLE_') || !f.endsWith('.json')) continue;
     let j; try { j = JSON.parse(readFileSync(join(DIR, f), 'utf-8')); } catch { continue; }
     const m = j._meta || {};
+    // ⚠️ A `tool` 2026-09-09 óta KELL: a sor-döntés ebből látja, hogy ne
+    // menjen két Reel ugyanarról az eszközről egy héten belül. Enélkül a
+    // változatossági szabály fele NÉMÁN vak lenne (a cím-kezdet fogna csak).
     ki.push({ file: f, slug: m.slug || '', type: m.type === 'guide' ? 'guide' : 'news',
-      published_at: m.published_at || '', reel_at: m.reel_at || '', md: j.article_markdown || '' });
+      published_at: m.published_at || '', reel_at: m.reel_at || '', tool: m.tool || '',
+      md: j.article_markdown || '' });
   }
   return ki;
 }

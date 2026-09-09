@@ -17,6 +17,24 @@
 // előre (a hír romlik), itt viszont az csak azt érné el, hogy a 358 régi
 // soha ne kerüljön sorra. FIFO: a hátralék kiszámíthatóan fogy.
 // (Ugyanez a felismerés vezetett a core/social-queue.js hátralék-helyéhez.)
+//
+// ── VÁLTOZATOSSÁG (2026-09-09, a user vette észre: „sok az ismétlés") ──
+//
+// A tiszta FIFO helyes volt, de hiányzott belőle egy szempont, és ez élesben
+// kiült a nézőnek. Az utolsó 8 Reelből 6 szó szerint „Getting started with
+// <asszisztens>" volt — ChatGPT, Claude, Gemini, Copilot, DeepSeek, Le Chat.
+//
+// 🔑 AZ OK NEM HIBA, HANEM KÖVETKEZMÉNY: a tartalmunk KÖTEGEKBEN készült. A
+// legrégebbi útmutatók mind a 2026-06-22–24-i „alapító" kezdő-sorozatból
+// valók. FIFO + kötegelt tartalom = TÉMA-CSOMÓSODÁS. A sor pontosan azt
+// csinálta, amit kértek tőle — csak senki nem mondta neki, hogy ne
+// ugyanarról szóljon egy héten át. (Mérve: a következő 30 jelöltből 15
+// osztozik valakivel a cím első három szaván.)
+//
+// A JAVÍTÁS SZŰK: a FIFO marad a gerinc, csak ÁTUGORJUK azt a jelöltet,
+// amelyik az elmúlt hét Reeljeivel azonos ESZKÖZRŐL vagy azonos cím-kezdettel
+// szól. Ha minden jelölt ilyen, a legrégebbi megy — a sor SOHA nem áll meg.
+// Így a hátralék ugyanúgy fogy, csak nem egy témát darál le egyszerre.
 // ===================================================================
 
 const napja = (x) => {
@@ -63,10 +81,55 @@ export function kovetkezoReel(cikkek, now = Date.now(), opts = {}) {
   if (!jeloltek.length) return null;
 
   jeloltek.sort((a, b) => String(a.published_at).localeCompare(String(b.published_at)));
-  return jeloltek[0];
+
+  // VÁLTOZATOSSÁG: az elmúlt hét Reeljének „formája" (eszköz + cím-kezdet).
+  const utobbi = cikkek
+    .filter(c => napja(c?.reel_at))
+    .sort((a, b) => String(b.reel_at).localeCompare(String(a.reel_at)))
+    .slice(0, VALTOZATOSSAG_ABLAK)
+    .map(reelForma);
+  const voltEszkoz = new Set(utobbi.map(x => x.eszkoz).filter(Boolean));
+  const voltKezdet = new Set(utobbi.map(x => x.kezdet).filter(Boolean));
+
+  const valtozatos = jeloltek.find(c => {
+    const f = reelForma(c);
+    if (f.eszkoz && voltEszkoz.has(f.eszkoz)) return false;
+    if (f.kezdet && voltKezdet.has(f.kezdet)) return false;
+    return true;
+  });
+  // ⚠️ A VISSZAESÉS KÖTELEZŐ. Ha minden jelölt hasonlít valamire, akkor is
+  // MEGY Reel — a változatosság kényelem, a napi videó a feladat. Enélkül a
+  // sor némán megállna, és az „elromlott" pontosan úgy nézne ki, mint a
+  // „ma nem volt jelölt".
+  return valtozatos || jeloltek[0];
 }
 
-export default { reelMaMar, kovetkezoReel };
+// ── VÁLTOZATOSSÁG ───────────────────────────────────────────────────
+
+/** Hány legutóbbi Reelhez viszonyítunk. Egy hét: ennyit lát egy néző egyben. */
+export const VALTOZATOSSAG_ABLAK = 7;
+
+/**
+ * Mi teszi két Reelt felismerhetően EGYFORMÁVÁ a nézőnek?
+ *
+ * Két dolog, és mindkettő kellett a valódi eseten:
+ *   • AZ ESZKÖZ — hat egymást követő Reel hat különböző asszisztensről szólt,
+ *     tehát az eszköz önmagában nem fogta volna meg őket…
+ *   • …a CÍM-KEZDET viszont igen: mind a hat „Getting started with…" volt.
+ *
+ * Három szó, mert a „getting started with" és a „how to use" is három.
+ * A címet a markdownból olvassuk ki: a sor-döntés amúgy is azt kapja meg.
+ */
+export function reelForma(cikk) {
+  const cim = (String(cikk?.md || '').match(/^title:\s*"?([^"\n]+)/m) || [])[1] || '';
+  const szavak = String(cim).toLowerCase().replace(/[^a-z0-9]+/g, ' ').split(' ').filter(Boolean);
+  return {
+    eszkoz: String(cikk?.tool || '').trim().toLowerCase(),
+    kezdet: szavak.slice(0, 3).join(' ')
+  };
+}
+
+export default { reelMaMar, kovetkezoReel, reelForma, VALTOZATOSSAG_ABLAK };
 
 /**
  * A MAI Reel cikke — az, amelyiknek a `reel_at`-ja a mai nap.
