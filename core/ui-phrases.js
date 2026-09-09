@@ -54,6 +54,41 @@ const entitasMentes = decodeEntities;
  * @param {string[]} phrases  a tiltott frázisok listája
  * @returns {string[]} a ténylegesen foltnak számító frázisok, egyszer-egyszer
  */
+// ===================================================================
+// IDÉZŐJELEK KÖZÖTT ÁLL-E? (2026-09-09)
+// ===================================================================
+// A korábbi vizsgálat csak a KÖZVETLEN szomszédokat nézte, tehát csak akkor
+// fogott, ha a frázis PONTOSAN a két idézőjel közt állt. Élesben viszont ez
+// a valódi alak fordult elő egy magyar cikkben:
+//
+//     az „Improve model for everyone" kapcsolót keresd
+//
+// A megfogott frázis a „for everyone" — előtte SZÓKÖZ, utána idézőjel, mert
+// egy HOSSZABB idézet BELSEJÉBEN van. A cikk teljesen helyes: a ChatGPT
+// gombfeliratát idézi, és zárójelben adja a magyar magyarázatot.
+//
+// ⚠️ AZ ABLAK SZÁNDÉKOSAN SZŰK (60 karakter). Az idézett gombnevek rövidek;
+// egy tágabb ablakban két, egymástól távoli idézet közé eső VALÓDI folt is
+// elnémulna.
+// ⚠️ AZ EGYENES `"` KÉTÉRTELMŰ (nyitó és záró is lehet) — ilyenkor a szűk
+// ablak melletti „idézetnek tekintjük" a választás. Ez ismert korlát: a
+// hamis riasztás ára itt nagyobb, mert az őr minden futásban kiabálna, és a
+// zajban a valódi lelet veszne el.
+const ABLAK = 60;
+function idezetben(s, kezdet, veg) {
+  let nyitva = false;
+  for (let i = kezdet - 1; i >= Math.max(0, kezdet - ABLAK); i--) {
+    const c = s[i];
+    if (NYITO.includes(c) || ZARO.includes(c)) { nyitva = NYITO.includes(c); break; }
+  }
+  if (!nyitva) return false;
+  for (let i = veg; i < Math.min(s.length, veg + ABLAK); i++) {
+    const c = s[i];
+    if (NYITO.includes(c) || ZARO.includes(c)) return ZARO.includes(c);
+  }
+  return false;
+}
+
 export function chromePhraseHits(text, phrases) {
   const s = entitasMentes(String(text || ''));
   if (!s || !Array.isArray(phrases)) return [];
@@ -62,14 +97,22 @@ export function chromePhraseHits(text, phrases) {
   for (const phrase of phrases) {
     // A kötőjel/szóköz rugalmas, a szóhatár szigorú: a "#advanced" hashtag
     // és a "tryitnowadays" összetétel nem folt.
+    //
+    // ⚠️ A KÖTŐJEL IS SZÓHATÁR-TÖRŐ (2026-09-09, élesben 4 téves riasztás).
+    // A visszatekintés eddig csak a betűt és a `#`-et zárta ki. A
+    // `#ai-for-everyone` CÍMKÉBEN viszont a „for" előtt KÖTŐJEL áll, ami
+    // átment rajta — így a hashtag-kizárás csak akkor működött, ha a frázis
+    // KÖZVETLENÜL a `#` után kezdődött. Több szavas szlognál nem.
+    // A szándék (a fenti két sor) jó volt; a megvalósítás egy karakterrel
+    // rövidebb. Egy őr, ami nem-tennivalóra szól, zaj: a hamis riasztásban
+    // a valódi lelet vész el.
     const mag = String(phrase).replace(/[-\s]/g, '[-\\s]');
-    const rx = new RegExp(`(?<![a-z#])${mag}(?![a-z])`, 'gi');
+    const rx = new RegExp(`(?<![a-z#-])${mag}(?![a-z])`, 'gi');
 
     for (const m of s.matchAll(rx)) {
-      const elotte = s[m.index - 1] || '';
-      const utana = s[m.index + m[0].length] || '';
-      // IDÉZETT GOMBNÉV: közvetlenül idézőjelek közt áll → nem a mi feliratunk.
-      if (NYITO.includes(elotte) && ZARO.includes(utana)) continue;
+      // IDÉZETT GOMBNÉV: idézőjelek KÖZÖTT áll → nem a mi feliratunk, hanem
+      // egy idegen termék gombja, amit épp hogy NEM szabad lefordítani.
+      if (idezetben(s, m.index, m.index + m[0].length)) continue;
       talalt.push(phrase);
       break;                       // frázisonként egy jelzés elég
     }

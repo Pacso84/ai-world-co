@@ -66,6 +66,63 @@ t('szóhatárt tart (a hashtag és az összetétel nem folt)', () => {
   assert.deepEqual(chromePhraseHits('#advanced tryitnowadays', P), []);
 });
 
+t('🔑 a TÖBB SZAVAS hashtag sem folt (élesben 4 téves riasztást adott)', () => {
+  // VALÓDI ESET, 2026-09-09: az i18n-őrszem 4 leletet jelentett magyar és
+  // spanyol cikkeken — mindegyik a `#ai-for-everyone` CÍMKÉBŐL jött.
+  //
+  // A minta `(?<![a-z#])for[-\s]everyone(?![a-z])` volt. A címkében a „for"
+  // előtti karakter egy KÖTŐJEL: a visszatekintés a betűt és a `#`-et zárta
+  // ki, a kötőjelet NEM. Így a hashtag-kizárás csak akkor működött, ha a
+  // frázis KÖZVETLENÜL a `#` után kezdődött (`#advanced`) — több szavas
+  // szlognál nem. A szándék jó volt (lásd a modul kommentjét), a
+  // megvalósítás egy karakterrel rövidebb.
+  //
+  // 🔑 Ez nem a fordítás hibája volt, hanem a MÉRŐESZKÖZÉ — és egy őr, ami
+  // nem-tennivalóra szól, zaj: a hamis riasztásban a valódi lelet vész el.
+  assert.deepEqual(chromePhraseHits('#ai-for-everyone', ['for everyone']), []);
+  assert.deepEqual(chromePhraseHits('<span>#ai-for-everyone</span>', ['for everyone']), []);
+  // Az ELLENPÉLDA ugyanolyan fontos: a valódi, szabadon álló felirat MARAD folt.
+  assert.deepEqual(chromePhraseHits('AI for everyone', ['for everyone']), ['for everyone']);
+  assert.deepEqual(chromePhraseHits('Made for everyone.', ['for everyone']), ['for everyone']);
+});
+
+t('🔑 a HOSSZABB idézett gombnév BELSEJE sem folt (élesben 2 téves riasztás)', () => {
+  // VALÓDI ESET, 2026-09-09: a magyar cikk a ChatGPT gombfeliratát idézi —
+  //   „Improve model for everyone" (a modell fejlesztése mindenki számára)
+  // — és zárójelben adja a magyar magyarázatot. Ez PONTOSAN HELYES: egy
+  // képernyőn keresendő gombnevet nem szabad lefordítani.
+  //
+  // A modulnak volt szabálya az idézett gombnévre, de csak akkor fogott, ha
+  // a frázis PONTOSAN a két idézőjel közt állt. Itt a „for everyone" egy
+  // HOSSZABB idézet belsejében van: előtte szóköz, utána idézőjel — így a
+  // szomszéd-vizsgálat elvétette.
+  const P2 = ['for everyone'];
+  assert.deepEqual(chromePhraseHits('az „Improve model for everyone" kapcsolót keresd', P2), []);
+  assert.deepEqual(chromePhraseHits('the "Improve model for everyone" toggle', P2), []);
+  assert.deepEqual(chromePhraseHits('busca «Improve model for everyone» abajo', P2), []);
+  // ⚠️ AZ ELLENPÉLDA: idézet NÉLKÜL ugyanaz a szöveg VISZONT folt.
+  assert.deepEqual(chromePhraseHits('Improve model for everyone', P2), ['for everyone']);
+  // És egy távoli, LEZÁRT idézet nem némítja el a későbbi valódi találatot.
+  assert.deepEqual(chromePhraseHits('a "Try it now" gomb, majd sokkal később: for everyone', P2), ['for everyone']);
+});
+
+t('🔑 a frázis UTÁN álló NYITÓ idézőjel nem némít (mutációval találtam)', () => {
+  // Ha a záró-keresés minden idézőjelet „zárónak" venne, egy KÖVETKEZŐ idézet
+  // kezdete elnémítaná a valódi foltot. Itt a folt két idézet KÖZÖTT áll,
+  // nem BENNE — ez a mi lefordítatlan feliratunk, jelezni kell.
+  const P2 = ['for everyone'];
+  assert.deepEqual(chromePhraseHits('„egyik" majd for everyone «másik»', P2), ['for everyone']);
+});
+
+t('🔑 a TÁVOLI záró idézőjel nem némít — az ablak szűk (mutációval találtam)', () => {
+  // Az idézett gombnevek rövidek. Ha az ablak tágra nyílna, két egymástól
+  // messze eső idézet közé eső VALÓDI folt is elnémulna. A tömítés 70
+  // karakter — a 60-as ablakon kívül.
+  const P2 = ['for everyone'];
+  const tomites = '. '.repeat(35);                       // 70 karakter
+  assert.deepEqual(chromePhraseHits('„x" for everyone' + tomites + '»', P2), ['for everyone']);
+});
+
 t('minden frázist csak egyszer sorol fel', () => {
   const s = 'min read ... min read ... min read';
   assert.deepEqual(chromePhraseHits(s, P), ['min read']);
