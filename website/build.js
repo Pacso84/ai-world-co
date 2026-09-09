@@ -33,6 +33,9 @@ import { RETIRED_LANGS } from '../core/retired-langs.js';
 // kapnak), ezek viszont ÉLŐ, elérhető lapok — csak a keresők indexéből
 // maradnak ki. A modul fejléce indokolja, hogy miért. (2026-09-08)
 import { robotsTartalom, indexelhetoNyelvek, noindexNyelv } from '../core/noindex-langs.js';
+// Teme-hub oldalak (2026-09-10) — a besorolas a KOZOS modulbol jon, ugyanabbol,
+// amit a fizetos csomag hasznal. Egy szabaly, egy hely.
+import { TEMAK, temaOf } from '../core/topics.js';
 import { laposit } from '../core/redirect-chain.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -892,6 +895,13 @@ function loadArticles() {
         sourceNews: data._meta?.source_news || null,
         image: (isWeeklyDigest && mascotCover) ? mascotCover : (imgFile || null),
         title: meta.title || data.original_title || 'Untitled',
+        // ⚠️ AZ EREDETI ANGOL CIM MEGORZESE (2026-09-10). A lokalizalo felulirja
+        // a `title`-t a leforditott valtozattal — a TEMA-BESOROLAS viszont a
+        // cikk tulajdonsaga, nem a megjelenites nyelvee. Enelkul a /es/ es
+        // /hu/ futasban szinte semmi nem sorolodott be, a hub-oldalak el sem
+        // keszultek, a nyelvvalto viszont hivatkozott rajuk → HALOTT LINK.
+        // (A belso hivatkozas-or kapta el, nem az atolvasas.)
+        titleEn: meta.title || data.original_title || 'Untitled',
         subtitle: meta.subtitle || '',
         category: meta.category || 'other',
         audience: ['personal', 'business', 'both'].includes(meta.audience) ? meta.audience : 'both',
@@ -1547,7 +1557,7 @@ function guideTile(a) {
 }
 
 // ÁLTALÁNOS (mindennapi) útmutatók — guides.html
-function buildGuidesPage(generalGuides, counts) {
+function buildGuidesPage(generalGuides, counts, temaCsoportok = new Map()) {
   const tiles = generalGuides.length
     ? `<div class="gtiles">${generalGuides.map(guideTile).join('')}</div>`
     : `<p class="muted" style="color:var(--ink-soft)">${tr('comingSoon')}</p>`;
@@ -1556,7 +1566,7 @@ function buildGuidesPage(generalGuides, counts) {
     <h1 class="guides-hero__title">${tr('guidesTitle')}</h1>
     <p class="guides-hero__tag">${tr('guidesTag')}</p>
   </section>`;
-  const body = designStyleBlock() + header + tiles;
+  const body = designStyleBlock() + header + temaSav(temaCsoportok) + tiles;
   return pageShell({
     // LOKALIZÁLT CÍM + LEÍRÁS (2026-08-04): eddig beégetett ANGOL szöveg ment
     // ki a magyar és spanyol változatra is — a Google találatban a cím és az
@@ -1569,6 +1579,61 @@ function buildGuidesPage(generalGuides, counts) {
     bodyContent: body
   });
 }
+
+// ===================================================================
+// TÉMA-HUB OLDALAK (2026-09-10) — a második kattintásért
+// ===================================================================
+// MI A BAJ, AMIT MEGOLD. Kimérve: a látogatók **92%-a egyenesen EGY
+// CIKKRE** érkezik a Facebookról, **0%-uk gyűjtő-oldalra**, és a mélység
+// **1,04 oldal/látogató** — egy hónapja lapos.
+//
+// 🔑 Nem a linkek hiányoztak: minden útmutatóban ott a „Read this next"
+// doboz a szöveg 36%-ánál és 4 kapcsolódó cikk a végén. A hiány
+// SZERKEZETI: a `/guides` **129 csempét** mutat egyszerre — abból senki
+// nem választ —, a `/tools` pedig 295-öt. Nincs olyan lapunk, aminek a
+// mérete emberi.
+//
+// A hub 8-100 útmutatót mutat EGY élet-területről. A besorolás a közös
+// `core/topics.js`-ből jön (ugyanaz, amit a fizetős csomag használ).
+//
+// ⚠️ MIÉRT A GYÖKÉRBEN VANNAK (`topic-safe.html`, nem `topic/safe.html`):
+// a `guideTile()` RELATÍV linket ad (`href="article/<slug>"`). Egy
+// alkönyvtárból az `/topic/article/<slug>`-ra mutatna — halott link 400
+// helyen. A gyökér-szint a biztonságos választás, és illik a meglévő
+// `/guides`, `/tools`, `/start` mintájához.
+//
+// ⚠️ EZ EGY MÉRÉSI KÍSÉRLET, NEM BIZONYOSSÁG. A mélység egy hónapja lapos,
+// pedig a kapcsolódó-gépezet végig működött — ezért a várakozás szerény
+// (1,04 → talán 1,2), és a Facebook-posztoláshoz EGYELŐRE NEM nyúlunk:
+// az a 21,2%-os átkattintást kockáztatná, ami a legjobban működő dolgunk.
+export function temaHubUt(id) { return `topic-${id}`; }
+
+function buildTopicPage(t, cikkek) {
+  const tiles = cikkek.length
+    ? `<div class="gtiles">${cikkek.map(guideTile).join('')}</div>`
+    : `<p class="muted" style="color:var(--ink-soft)">${tr('comingSoon')}</p>`;
+  const header = `<section class="guides-hero">
+    <p class="intro__kicker">${escapeHtml(t.rovid)}</p>
+    <h1 class="guides-hero__title">${escapeHtml(t.cim)}</h1>
+    <p class="guides-hero__tag">${cikkek.length} ${tr('stepByStep').toLowerCase()}</p>
+  </section>`;
+  return pageShell({
+    title: `${t.cim} — ${SITE.name}`,
+    description: `${t.rovid}: ${cikkek.length} step-by-step AI guides in plain language.`,
+    noIntro: true, pagePath: `${temaHubUt(t.id)}.html`,
+    jsonld: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: t.cim, url: `${SITE.url}${LP}/${temaHubUt(t.id)}` },
+    bodyContent: designStyleBlock() + header + tiles
+  });
+}
+
+/** A hubokra mutató sáv — a /guides tetejére, hogy egyáltalán megtalálják. */
+function temaSav(csoportok) {
+  const elemek = TEMAK.filter(t => (csoportok.get(t.id) || []).length >= 3)
+    .map(t => `<a class="minitag" href="${temaHubUt(t.id)}" style="text-decoration:none">${escapeHtml(t.cim)} <span style="opacity:.6">${csoportok.get(t.id).length}</span></a>`);
+  if (!elemem(elemek)) return '';
+  return `<div class="article__tags" style="justify-content:center;margin:0 0 22px">${elemek.join('')}</div>`;
+}
+const elemem = (a) => Array.isArray(a) && a.length > 0;
 
 // CÉGES (eszköz-specifikus) útmutatók — tools.html
 function buildToolsPage(companyGuides, counts) {
@@ -2903,7 +2968,18 @@ function main() {
     }
 
     writeFileSync(join(outBase, 'index.html'), buildIndex(news), 'utf-8');
-    writeFileSync(join(outBase, 'guides.html'), buildGuidesPage(generalGuides, guideCounts), 'utf-8');
+    // TEMA-HUBOK (2026-09-10): minden utmutato PONTOSAN egy temara, az elso
+    // illeszkedo nyer. A 3-nal kevesebbet tartalmazo tema NEM kap oldalt —
+    // egy harom elemu gyujto-oldal nem segit, csak zajt csinal.
+    const temaCsoportok = new Map(TEMAK.map(t => [t.id, []]));
+    for (const g of guides) { const t = temaOf(g.titleEn || g.title); if (t) temaCsoportok.get(t).push(g); }
+    for (const t of TEMAK) {
+      const lista = temaCsoportok.get(t.id);
+      if (lista.length < 3) continue;
+      writeFileSync(join(outBase, temaHubUt(t.id) + '.html'), buildTopicPage(t, lista), 'utf-8');
+      if (!noindexNyelv(lang)) sitemapUrls.push({ loc: `${SITE.url}${langPrefix(lang)}/${temaHubUt(t.id)}`, date: today });
+    }
+    writeFileSync(join(outBase, 'guides.html'), buildGuidesPage(generalGuides, guideCounts, temaCsoportok), 'utf-8');
     writeFileSync(join(outBase, 'tools.html'), buildToolsPage(companyGuides, guideCounts), 'utf-8');
     writeFileSync(join(outBase, 'start.html'), buildStartPage(loc), 'utf-8');
     writeFileSync(join(outBase, 'glossary.html'), buildGlossaryPage(), 'utf-8');   // AI-kisszótár

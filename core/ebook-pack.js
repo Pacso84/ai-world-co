@@ -38,6 +38,8 @@
 // BELÜL is kell változatosság — eszközre és cím-kezdetre.
 // ===================================================================
 
+import { TEMAK, temaOf } from './topics.js';
+
 /** A minőségi mérce: mi kerülhet EGYÁLTALÁN fizetős csomagba. */
 export const MIN_LEPES = 4;
 export const MIN_SZO = 900;
@@ -48,28 +50,12 @@ export const MIN_SZO = 900;
  * biztonsági útmutatónak vette — pedig fotó-átnevezésről szól.
  * Egy laza minta itt nem zaj, hanem ROSSZ TERMÉK.
  */
-// ⚠️ A SORREND SZÁMÍT: az ELSŐ illeszkedő terület nyer, ezért a
-// SPECIFIKUSABB megy előre. Ezt is egy valódi hiba tanította meg: a
-// „How to Spot a **Phishing Email**…" a Work területre esett, mert az
-// „email" hamarabb illeszkedett, mint a „phishing"; a „Turn Off AI Chat
-// History and Data **Saving**" pedig a Money-ba, egy adatvédelmi útmutató
-// létére. A `work` és a `create` a legtágabb szókincsű — azok mennek hátra.
-export const TERULETEK = [
-  { id: 'safe', cim: 'Staying safe',
-    rx: /\b(scam|phishing|deepfake|fraud|privacy|password|security key|safely with your|never share|chat history|training data|data saving)\b/i },
-  // ⚠️ A „shopping list" és a puszta „saving" SZÁNDÉKOSAN NINCS itt.
-  // Az első változatban benne volt, és a Money-terület öt cikkéből HÁROM
-  // étkezés-tervezés meg nyaralás lett. Egy fizetős csomagnál a rossz
-  // besorolás nem szépséghiba, hanem termékhiba.
-  { id: 'money', cim: 'Money & admin',
-    rx: /\b(budget spreadsheet|personal budget|money|savings|saving money|spend|bill|receipt|tax|insurance|subscription|price compar)\b/i },
-  { id: 'home', cim: 'Home & family',
-    rx: /\b(meal|dinner|grocer|recipe|fridge|trip|travel|vacation|getaway|packing|holiday|family|kids?|bedtime|home|household|smart[- ]home|garden|pet|shopping list)\b/i },
-  { id: 'create', cim: 'Photos, video & music',
-    rx: /\b(photo|image|picture|video|music|song|logo|avatar|wallpaper|illustration)\b/i },
-  { id: 'work', cim: 'Work & email',
-    rx: /\b(email|inbox|cv|resume|cover letter|interview|meeting|notes|report|spreadsheet|presentation|document|contract)\b/i }
-];
+// ⚠️ A TÉMA-BESOROLÁS 2026-09-10 óta a KÖZÖS `core/topics.js`-ben lakik,
+// mert két dolog használja: ez a csomag ÉS a téma-hub oldalak. Amíg itt
+// volt, a mintái nem tűrték a többes számot (`email` nem illeszkedik az
+// "emails"-re), és ezért a 424 útmutatóból 255 BESOROLATLAN volt — vagyis ez
+// a válogatás is szűkebb halmazból dolgozott, mint kellett volna.
+export const TERULETEK = TEMAK;
 
 export const DB_TERULETENKENT = 5;
 
@@ -123,9 +109,7 @@ export function alkalmas(c) {
  * Előbb BESOROLUNK, aztán rangsorolunk a területen BELÜL.
  */
 export function teruletOf(c) {
-  const cim = cimBol(c?.md);
-  if (!cim) return null;
-  return TERULETEK.find(t => t.rx.test(cim))?.id || null;
+  return temaOf(cimBol(c?.md));
 }
 
 /** A „forma": mitől néz ki két útmutató egyformának EGY CSOMAGON BELÜL. */

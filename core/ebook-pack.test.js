@@ -106,8 +106,12 @@ t('🔑 NINCS ÁTSZIVÁRGÁS: ami az egyik terület top-5-jéből kimarad, nem e
 t('🔑 nem lesz öt „Getting started with…" egymás mellett', () => {
   // Ugyanaz a lecke, mint a Reel-sornál (ugyanaznap): a tartalmunk
   // kötegekben készült, ezért a puszta „legrészletesebb N" ismételne.
+  // ⚠️ A RÖGZÍTŐ 2026-09-10-én ELAVULT: a „Getting started with…" címek azóta
+  // a `learn` témára esnek (a közös `core/topics.js` bevezetésekor), nem a
+  // `work`-re. A teszt SZÁNDÉKA jó volt, a mintája nem — ezért most olyan
+  // címeket használ, amelyek egyértelműen EGY témán belül maradnak.
   const jeloltek = [
-    ...Array.from({ length: 5 }, (_, i) => cikk(`Getting started with email tool ${i}`, { lep: 9 - i })),
+    ...Array.from({ length: 5 }, (_, i) => cikk(`Sort your inbox with tool ${i}`, { lep: 9 - i })),
     cikk('Clean up a flooded inbox', { lep: 4 }),
     cikk('Write a polite complaint email', { lep: 4 })
   ];
@@ -120,7 +124,7 @@ t('🔑 nem lesz öt „Getting started with…" egymás mellett', () => {
 t('🚨 a változatosság NEM tehet hiányossá: ha nincs más, feltölt', () => {
   // A vevő 25 útmutatót vásárolt. A változatosság kényelem, a DARABSZÁM
   // az ígéret — ha minden jelölt hasonlít, akkor is tele kell lennie.
-  const egyformak = Array.from({ length: 5 }, (_, i) => cikk(`Getting started with email ${i}`, { tool: 'ChatGPT', lep: 9 - i }));
+  const egyformak = Array.from({ length: 5 }, (_, i) => cikk(`Sort your inbox fast ${i}`, { tool: 'ChatGPT', lep: 9 - i }));
   const work = valogat(egyformak).find(x => x.id === 'work');
   assert.equal(work.cikkek.length, DB_TERULETENKENT, 'a terület hiányos maradt a változatosság miatt');
 });
