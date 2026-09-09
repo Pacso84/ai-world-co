@@ -128,6 +128,14 @@ t('🔑 ÉLES: mind a három nyelven a SAJÁT nyelvén szól', () => {
   const cikkek = cikkOldalak();
   if (!cikkek.length) return;
   const vart = { '': /Free to read/, 'hu': /Ingyenes, hirdetés/, 'es': /Gratis, sin anuncios/ };
+  // 2026-09-10, user-döntés: ÖNKÉNTES HAVI támogatás — fizetőfal NÉLKÜL.
+  // Az előzmény: felmerült, hogy az örökzöld útmutatók legyenek fizetősek.
+  // Kimérve elvetettük: 1,17 oldal/látogató (a tipikus olvasó EGY cikket
+  // olvas), a forgalom 62%-a útmutatóra érkezik, és a fizetőfal leállítaná a
+  // Facebook-motort, ami a forgalom 82%-át hozza. A havi támogatás tehát
+  // KÉRÉS, nem kapu. A szövegnek ezt kell tükröznie: a link mondja ki, hogy
+  // egyszeri VAGY havi lehet.
+  const havi = { '': /one-off or monthly/i, 'hu': /egyszeri vagy havi/i, 'es': /puntual o mensual/i };
   for (const [nyelv, rx] of Object.entries(vart)) {
     const d = join(PUBLIC, nyelv, 'article');
     if (!existsSync(d)) continue;
@@ -135,6 +143,24 @@ t('🔑 ÉLES: mind a három nyelven a SAJÁT nyelvén szól', () => {
     if (!f) continue;
     const sor = (readFileSync(join(d, f), 'utf-8').match(/<p class="support-foot">[\s\S]*?<\/p>/) || [''])[0];
     assert.match(sor, rx, '/' + nyelv + ' nem a saját nyelvén kapta a sort: ' + sor.slice(0, 90));
+    assert.match(sor, havi[nyelv],
+      '⚠️ /' + nyelv + ': eltűnt a HAVI lehetőség a támogatás-sorból (user-döntés 2026-09-10): ' + sor.slice(0, 110));
+  }
+});
+
+t('🚨 NINCS fizetőfal-szöveg sehol (a támogatás KÉRÉS, nem KAPU)', () => {
+  // ⚠️ USER-DÖNTÉS 2026-09-10, mérésre alapozva: az örökzöld útmutatók NEM
+  // lesznek fizetősek. 1,17 oldal/látogató — a tipikus olvasó EGY cikket
+  // olvas, tehát egy „olvasd mindet" előfizetésnek nincs közönsége; közben a
+  // fizetőfal a forgalom 62%-át érintené, és leállítaná a Facebook-motort
+  // (a forgalom 82%-a), amit a Meta ajánlómotorja hajt.
+  const tiltott = /paywall.{0,20}(active|enabled)|subscribers only|members only|unlock this (guide|article)|sign in to read/i;
+  const cikkek = cikkOldalak();
+  if (!cikkek.length) return;
+  for (const p of cikkek.slice(0, 60)) {
+    const html = readFileSync(p, 'utf-8');
+    assert.ok(!tiltott.test(html),
+      '⚠️ FIZETŐFAL-SZÖVEG került egy cikkre: ' + p.replace(PUBLIC, ''));
   }
 });
 

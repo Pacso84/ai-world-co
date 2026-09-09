@@ -213,7 +213,7 @@ const UI_GUIDES = {
         aiSkills: 'AI skills', coverSub: 'For everyday people', exampleLabel: 'Example', tryTyping: 'Try typing this', xrefNews: 'What prompted this guide', xrefGuide: 'Want to try it? Step-by-step guide',
         disclosureNews: "✦ Original guide written by AI World HQ's own AI editorial team. Reviewed for accuracy and clarity.",
         disclosureGuide: "✦ Original step-by-step guide by AI World HQ's AI editorial team. Written in plain language, reviewed for accuracy.",
-        supFootPre: 'Free to read, no ads, no paywall.', supFootLink: 'Buy us a coffee' },
+        supFootPre: 'Free to read, no ads, no paywall — readers keep it going.', supFootLink: 'Support us (one-off or monthly)' },
   hu: { tagline: 'AI-hírek, közérthetően', forEveryone: 'Mindenkinek',
         lvl_beginner: 'kezdő', lvl_intermediate: 'középhaladó', lvl_advanced: 'haladó',
         guideWordOne: 'útmutató', guideWordMany: 'útmutató',
@@ -228,7 +228,7 @@ const UI_GUIDES = {
         aiSkills: 'AI-készségek', coverSub: 'Hétköznapi embereknek', exampleLabel: 'Példa', tryTyping: 'Írd be ezt', xrefNews: 'Ebből a hírből született az útmutató', xrefGuide: 'Kipróbálnád? Lépésről lépésre útmutató',
         disclosureNews: '✦ Az AI World HQ saját AI-szerkesztősége által írt eredeti cikk. Pontosságra és érthetőségre ellenőrizve.',
         disclosureGuide: '✦ Az AI World HQ AI-szerkesztőségének eredeti, lépésről lépésre útmutatója. Közérthetően írva, pontosságra ellenőrizve.',
-        supFootPre: 'Ingyenes, hirdetés és fizetőfal nélkül.', supFootLink: 'Hívj meg egy kávéra' },
+        supFootPre: 'Ingyenes, hirdetés és fizetőfal nélkül — az olvasók tartják életben.', supFootLink: 'Támogasd (egyszeri vagy havi)' },
   es: { tagline: 'Noticias de IA, en lenguaje claro', forEveryone: 'Para todos',
         lvl_beginner: 'principiante', lvl_intermediate: 'intermedio', lvl_advanced: 'avanzado',
         guideWordOne: 'guía', guideWordMany: 'guías',
@@ -243,7 +243,7 @@ const UI_GUIDES = {
         aiSkills: 'Habilidades de IA', coverSub: 'Para el día a día', exampleLabel: 'Ejemplo', tryTyping: 'Escribe esto', xrefNews: 'La noticia detrás de esta guía', xrefGuide: '¿Quieres probarlo? Guía paso a paso',
         disclosureNews: '✦ Artículo original escrito por el equipo editorial de IA de AI World HQ Revisado para mayor precisión y claridad.',
         disclosureGuide: '✦ Guía original paso a paso del equipo editorial de IA de AI World HQ Escrita en lenguaje claro y revisada para mayor precisión.',
-        supFootPre: 'Gratis, sin anuncios ni muro de pago.', supFootLink: 'Invítanos a un café' },
+        supFootPre: 'Gratis, sin anuncios ni muro de pago — lo mantienen los lectores.', supFootLink: 'Apóyanos (puntual o mensual)' },
 
 };
 for (const l of SITE_LANGS) Object.assign(UI[l], UI_GUIDES[l] || {});
@@ -262,7 +262,7 @@ for (const l of SITE_LANGS) Object.assign(UI[l], UI_DAYS[l] || {});
 const UI_SUPPORT = {
   en: { siteDesc: 'AI news and how-to guides for everyday people — fresh, friendly, jargon-free.',
         supPill: 'Support us', supTitle: 'Keep everyday AI <em>free for everyone</em>',
-        supLead: 'AI World is a small, independent project — a team of AI agents and one human — publishing clear, jargon-free guides about AI. We keep it free and ad-light. If you find it useful, you can chip in to help cover the running costs.',
+        supLead: 'AI World is a small, independent project — a team of AI agents and one human — publishing clear, jargon-free guides about AI. We keep it free and ad-light. If you find it useful, you can chip in to help cover the running costs — once, or a small amount each month. Everything stays free either way.',
         supCard1h: 'Hosting &amp; domain', supCard1p: 'Keeping the site online, fast and reachable for everyone.',
         supCard2h: 'The AI newsroom', supCard2p: 'The models that research, write, fact-check and improve every article.',
         supCard3h: 'Original artwork', supCard3p: 'The custom cover image generated for each story.',
@@ -273,7 +273,7 @@ const UI_SUPPORT = {
         supMetaDesc: 'Help keep AI World free and ad-light. A small voluntary tip covers our hosting and the AI that writes each article.' },
   hu: { siteDesc: 'AI-hírek és útmutatók hétköznapi embereknek — frissen, barátságosan, szakzsargon nélkül.',
         supPill: 'Támogass minket', supTitle: 'Maradjon a hétköznapi AI <em>mindenkinek ingyenes</em>',
-        supLead: 'Az AI World egy kicsi, független projekt — egy csapatnyi AI-ügynök és egyetlen ember —, amely közérthető, szakzsargon-mentes útmutatókat készít az AI-ról. Ingyen adjuk, alig van rajta hirdetés. Ha hasznosnak találod, bedobhatsz egy kávéra valót a működési költségekhez.',
+        supLead: 'Az AI World egy kicsi, független projekt — egy csapatnyi AI-ügynök és egyetlen ember —, amely közérthető, szakzsargon-mentes útmutatókat készít az AI-ról. Ingyen adjuk, alig van rajta hirdetés. Ha hasznosnak találod, bedobhatsz egy kávéra valót a működési költségekhez — egyszer, vagy havonta egy kis összeggel. Minden ingyenes marad így is.',
         supCard1h: 'Tárhely és domain', supCard1p: 'Hogy az oldal online, gyors és mindenki számára elérhető maradjon.',
         supCard2h: 'Az AI-szerkesztőség', supCard2p: 'A modellek, amelyek minden cikket kutatnak, megírnak, tényellenőriznek és csiszolnak.',
         supCard3h: 'Eredeti grafikák', supCard3p: 'Minden cikkhez egyedi borítókép készül.',
@@ -284,7 +284,7 @@ const UI_SUPPORT = {
         supMetaDesc: 'Segíts, hogy az AI World ingyenes és hirdetésmentes-közeli maradjon. Egy kis önkéntes borravaló fedezi a tárhelyet és a cikkeket író AI-t.' },
   es: { siteDesc: 'Noticias y guías de IA para gente común — frescas, cercanas y sin jerga.',
         supPill: 'Apóyanos', supTitle: 'Mantén la IA cotidiana <em>gratis para todos</em>',
-        supLead: 'AI World es un proyecto pequeño e independiente — un equipo de agentes de IA y una sola persona — que publica guías claras y sin jerga sobre la IA. Lo mantenemos gratis y casi sin anuncios. Si te resulta útil, puedes aportar algo para cubrir los costes.',
+        supLead: 'AI World es un proyecto pequeño e independiente — un equipo de agentes de IA y una sola persona — que publica guías claras y sin jerga sobre la IA. Lo mantenemos gratis y casi sin anuncios. Si te resulta útil, puedes aportar algo para cubrir los costes — una vez, o una pequeña cantidad cada mes. Todo sigue siendo gratis igualmente.',
         supCard1h: 'Alojamiento y dominio', supCard1p: 'Mantener el sitio en línea, rápido y accesible para todos.',
         supCard2h: 'La redacción de IA', supCard2p: 'Los modelos que investigan, escriben, verifican y mejoran cada artículo.',
         supCard3h: 'Ilustraciones originales', supCard3p: 'La imagen de portada creada para cada historia.',
