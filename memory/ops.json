@@ -1,118 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178883262275925",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-09-08T01:57:02.759Z",
-      "updated": "2026-09-08T01:57:02.940Z"
-    },
-    {
-      "id": "t178883262294273",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-09-08T01:57:02.942Z",
-      "updated": "2026-09-08T01:57:21.204Z"
-    },
-    {
-      "id": "t178883264120575",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-09-08T01:57:21.205Z",
-      "updated": "2026-09-08T01:57:21.404Z"
-    },
-    {
-      "id": "t17888326414066",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-09-08T01:57:21.406Z",
-      "updated": "2026-09-08T01:57:21.585Z"
-    },
-    {
-      "id": "t17888326415867",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-08T01:57:21.586Z",
-      "updated": "2026-09-08T01:57:21.771Z"
-    },
-    {
-      "id": "t178883264177447",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-09-08T01:57:21.774Z",
-      "updated": "2026-09-08T01:57:21.993Z"
-    },
-    {
-      "id": "t178883264204324",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-09-08T01:57:22.043Z",
-      "updated": "2026-09-08T02:03:43.075Z"
-    },
-    {
-      "id": "t178883302307755",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-08T02:03:43.077Z",
-      "updated": "2026-09-08T02:05:03.485Z"
-    },
-    {
-      "id": "t17888331035285",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-08T02:05:03.528Z",
-      "updated": "2026-09-08T02:05:39.016Z"
-    },
-    {
-      "id": "t178883313901888",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-09-08T02:05:39.018Z",
-      "updated": "2026-09-08T02:06:35.892Z"
-    },
-    {
-      "id": "t178883319589315",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-08T02:06:35.893Z",
-      "updated": "2026-09-08T02:06:39.020Z"
-    },
-    {
-      "id": "t178883319902218",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-09-08T02:06:39.022Z",
-      "updated": "2026-09-08T02:07:01.504Z"
-    },
-    {
-      "id": "t178887016078030",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-09-08T12:22:40.780Z",
-      "updated": "2026-09-08T12:22:40.974Z"
-    },
-    {
-      "id": "t178887016097555",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-09-08T12:22:40.975Z",
-      "updated": "2026-09-08T12:23:05.044Z"
-    },
-    {
       "id": "t178887018504521",
       "title": "Run source-scout",
       "status": "done",
@@ -479,33 +367,121 @@
       "agent": "publisher",
       "created": "2026-09-09T12:36:31.079Z",
       "updated": "2026-09-09T12:36:57.338Z"
+    },
+    {
+      "id": "t178900553321467",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-09-10T01:58:53.214Z",
+      "updated": "2026-09-10T01:58:53.398Z"
+    },
+    {
+      "id": "t178900553340083",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-09-10T01:58:53.400Z",
+      "updated": "2026-09-10T01:59:45.652Z"
+    },
+    {
+      "id": "t178900558565399",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-09-10T01:59:45.653Z",
+      "updated": "2026-09-10T01:59:45.860Z"
+    },
+    {
+      "id": "t178900558586245",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-09-10T01:59:45.862Z",
+      "updated": "2026-09-10T02:05:40.095Z"
+    },
+    {
+      "id": "t178900594009736",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-10T02:05:40.097Z",
+      "updated": "2026-09-10T02:07:31.879Z"
+    },
+    {
+      "id": "t178900605188195",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-09-10T02:07:31.881Z",
+      "updated": "2026-09-10T02:07:53.234Z"
+    },
+    {
+      "id": "t178900607323560",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-10T02:07:53.235Z",
+      "updated": "2026-09-10T02:08:16.557Z"
+    },
+    {
+      "id": "t178900609655919",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-09-10T02:08:16.559Z",
+      "updated": "2026-09-10T02:08:50.199Z"
+    },
+    {
+      "id": "t17890061302500",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-09-10T02:08:50.250Z",
+      "updated": "2026-09-10T02:12:15.091Z"
+    },
+    {
+      "id": "t178900633509384",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-10T02:12:15.093Z",
+      "updated": "2026-09-10T02:12:58.888Z"
+    },
+    {
+      "id": "t178900637893571",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-10T02:12:58.935Z",
+      "updated": "2026-09-10T02:13:50.250Z"
+    },
+    {
+      "id": "t178900643025134",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-09-10T02:13:50.251Z",
+      "updated": "2026-09-10T02:14:40.785Z"
+    },
+    {
+      "id": "t178900648078747",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-10T02:14:40.787Z",
+      "updated": "2026-09-10T02:14:47.461Z"
+    },
+    {
+      "id": "t178900648746360",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-09-10T02:14:47.463Z",
+      "updated": "2026-09-10T02:15:07.925Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n17880963025485",
-      "level": "info",
-      "text": "Pipeline lefutott — ma nem volt publikálható új tartalom.",
-      "agent": "ceo",
-      "at": "2026-08-30T13:25:02.548Z",
-      "loud": false
-    },
-    {
-      "id": "n178811622040348",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The line-up is solid and ready to go — you have a nice mix of practical AI writing tools, personal life scenarios, and that important privacy piece to build trust. The variety feels approachable for e",
-      "agent": "publisher",
-      "at": "2026-08-30T18:57:00.403Z",
-      "loud": false
-    },
-    {
-      "id": "n178811623398969",
-      "level": "info",
-      "text": "Pipeline lefutott — ma nem volt publikálható új tartalom.",
-      "agent": "ceo",
-      "at": "2026-08-30T18:57:13.989Z",
-      "loud": false
-    },
     {
       "id": "n178814352679926",
       "level": "info",
@@ -1281,54 +1257,33 @@
       "agent": "ceo",
       "at": "2026-09-09T12:36:57.386Z",
       "loud": false
+    },
+    {
+      "id": "n17890064807779",
+      "level": "info",
+      "text": "SEO: 6 cikk optimalizálva (átlag 8.3/10).",
+      "agent": "seo",
+      "at": "2026-09-10T02:14:40.777Z",
+      "loud": false
+    },
+    {
+      "id": "n178900649257732",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The line-up covers practical, everyday writing tasks well — from professional emails to personal notes — and should resonate with busy readers. A quick concern: articles 2-5 are quite similar (complai",
+      "agent": "publisher",
+      "at": "2026-09-10T02:14:52.577Z",
+      "loud": false
+    },
+    {
+      "id": "n178900650797055",
+      "level": "success",
+      "text": "4 hír + 2 útmutató publikálva (költség: $0.0946).",
+      "agent": "ceo",
+      "at": "2026-09-10T02:15:07.970Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178817828998681",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-08-31T12:11:29.986Z"
-    },
-    {
-      "id": "m178817835342382",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Catch Up Fast: Summarise Long Chats in WhatsApp an\" — \"circular blue-purple icon\" - specific UI element that may vary; \"glowing ring icon\" - specific visual description that may not be accurate; \"swipe down from the top of the screen to see both conversations as small floating bubbles\" - specific gesture description that may not work on",
-      "ref": "ARTICLE_GUIDE_catch-up-fast-summarise-long-chats-in-whatsapp-and-messenger.json",
-      "at": "2026-08-31T12:12:33.423Z"
-    },
-    {
-      "id": "m178817839947562",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Categorize customer feedback from online forms wit\" — The specific model names \"Command\" or \"Command R+\" as the exact current models; The exact navigation menu structure and button labels like \"Playground\", \"Model\", \"Run\"; The claim that a free tier is definitely available",
-      "ref": "ARTICLE_GUIDE_categorize-customer-feedback-from-online-forms-with-cohere.json",
-      "at": "2026-08-31T12:13:19.475Z"
-    },
-    {
-      "id": "m178817903453255",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "1 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-08-31T12:23:54.532Z"
-    },
-    {
-      "id": "m178819126812470",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "info",
-      "text": "A \"Gemini Omni 1.2 Flash lands in Picsart with 4K video\" hír a meglévő útmutatóra mutat: create-a-personalised-weekly-meal-plan-based-on-your-diet-wi",
-      "ref": "create-a-personalised-weekly-meal-plan-based-on-your-diet-wi",
-      "at": "2026-08-31T15:47:48.125Z"
-    },
     {
       "id": "m178819135862916",
       "from": "designer",
@@ -2643,6 +2598,51 @@
       "text": "1 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-09-09T12:45:41.609Z"
+    },
+    {
+      "id": "m178900602428730",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"What is Lyria 3.5? The AI model that writes full songs\" — mi a baj: Lyria 3.5 is presented as a real, named model with specific version number and features. 'Lyria 3.5' does not appear on the verified-real product list, and the specific claims — that it generates complete songs (not loops), accepts image prompts, produces tracks with intro/verses/chorus structure, and return",
+      "ref": "2026-09-10T01-59-45-639Z_picsart_What_is_Lyria_3_5__The_AI_model_that_writes_full_s.json",
+      "at": "2026-09-10T02:07:04.287Z"
+    },
+    {
+      "id": "m17890060732245",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"What is Lyria 3.5? The AI model that writes full songs\" — javítva: Lyria 3.5 is presented as a real, named model with specific version number and features. 'Lyria 3.5' does not appear on the verified-real product list, and the specific claims — that it generates complete songs (not loops), accepts image prompts, produces tracks with intro/verses/chorus structure, and returns tracks '",
+      "ref": "2026-09-10T01-59-45-639Z_picsart_What_is_Lyria_3_5__The_AI_model_that_writes_full_s.json",
+      "at": "2026-09-10T02:07:53.224Z"
+    },
+    {
+      "id": "m178900609654727",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"What is Lyria 3.5? The AI model that writes full songs\" (?/10)",
+      "ref": "2026-09-10T01-59-45-639Z_picsart_What_is_Lyria_3_5__The_AI_model_that_writes_full_s.json",
+      "at": "2026-09-10T02:08:16.547Z"
+    },
+    {
+      "id": "m17890064874494",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 20 → 5/4/2 oszlop.",
+      "ref": "mobile",
+      "at": "2026-09-10T02:14:47.449Z"
+    },
+    {
+      "id": "m178900652253849",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Creating a weekly workout plan tailored to your fi\" — Le Chat is presented as a major AI assistant that 'all work for this' purpose, but Le Chat by Mistral AI has had a complicated history — it was temporarily removed, rebranded, and is now primarily available through paid API access rather than a free consumer chat interface. Presentin",
+      "ref": "ARTICLE_GUIDE_creating-a-weekly-workout-plan-tailored-to-your-fitness-leve.json",
+      "at": "2026-09-10T02:15:22.538Z"
     }
   ]
 }

@@ -1,45 +1,4 @@
 {
-  "2026-08-21": [
-    {
-      "at": "2026-08-21T00:42:55.015Z",
-      "file": "WRITER_2026-08-21T00-39-46-760Z_google-workspace_Record_presentations_in_Google_Slides_with_Google_.json",
-      "action": "block",
-      "reasons": [
-        "The article describes a 'Record button' added to Google Slides' right-hand menu that launches a recording workflow, but this is not a real feature. Google Slides does not have a Record button in its side menu, nor does Google Vids integrate recording functionality into the Slides interface as described.",
-        "The article describes 'transcript-based editing' and 'AI voiceover' as features of a Google Slides recording flow, but these specific integration capabilities are not a documented feature of Google Slides or Google Vids as presented.",
-        "The article presents these features as if they currently exist ('Google Slides now lets you record yourself presenting'), when no such public, generally available integration of Google Vids recording inside Google Slides has been announced. The described workflow (Record button in Slides menu → guided recording → shareable video link with transcript editing and AI voiceover) is fabricated."
-      ],
-      "confidence": 7
-    },
-    {
-      "at": "2026-08-21T00:43:16.723Z",
-      "file": "WRITER_2026-08-21T00-39-46-760Z_picsart_30_Gemini_Omni_prompts_to_copy_and_paste_for_AI_vi.json",
-      "action": "block",
-      "reasons": [
-        "\"Gemini Omni\" is not in the verified-real names list and does not appear to be a real Google product — the article repeatedly treats it as a named, existing video model",
-        "The claim that Gemini has a 'video generation' feature with audio/dialogue/on-screen text rendering rolled out to users is presented as fact without verification — I am not aware this exists in this form"
-      ],
-      "confidence": 6
-    },
-    {
-      "at": "2026-08-21T00:45:52.033Z",
-      "file": "WRITER_2026-08-20T16-22-15-024Z_openai-blog_How_ChatGPT_Work_helps_Stampli_move_ideas_to_marke.json",
-      "action": "block",
-      "reasons": [
-        "\"OpenAI's published case study with Stampli, an accounts-payable software company, showed a small team using ChatGPT and Codex to compress a multi-week product launch into a few days\" — fabricated case study attributed to OpenAI and Stampli; I cannot verify such a published case study exists."
-      ],
-      "confidence": 6
-    },
-    {
-      "at": "2026-08-21T00:53:58.871Z",
-      "file": "WRITER_GUIDE_use-claude-to-read-and-explain-a-long-contract-or-legal-docu.json",
-      "action": "block",
-      "reasons": [
-        "The article states paid Claude plans have an \"Artifacts\" feature that can read a directly uploaded PDF in one go via a paperclip or upload button near the message box. Artifacts is a feature for rendering code/documents in the chat output, not a PDF-reading/uploading feature. Claude's PDF upload capability exists on its own (the document handling/uploading feature), and conflating it with Artifacts or claiming Artifacts specifically lets Claude read uploaded PDFs is an inaccurate UI/feature attribution to Claude."
-      ],
-      "confidence": 6
-    }
-  ],
   "2026-08-22": [
     {
       "at": "2026-08-22T00:38:29.053Z",
@@ -306,6 +265,17 @@
       "action": "block",
       "reasons": [
         "The article describes a specific UI element — a 'model picker' inside 'Picsart AI Playground' where 'Grok Imagine Quality' is one of the selectable model options. Neither 'Picsart AI Playground' as a named Picsart product with such a model picker, nor 'Grok Imagine Quality' as a specific xAI mode distinct from the broader Grok Imagine feature, could be verified. The article presents both the product integration and the UI as established fact, but the level of specificity (a discrete 'Quality' tier plus a model-picker UI housing it) is the kind of invented interface/feature pairing the truth gate is meant to catch."
+      ],
+      "confidence": 6
+    }
+  ],
+  "2026-09-10": [
+    {
+      "at": "2026-09-10T02:07:04.288Z",
+      "file": "WRITER_2026-09-10T01-59-45-639Z_picsart_What_is_Lyria_3_5__The_AI_model_that_writes_full_s.json",
+      "action": "block",
+      "reasons": [
+        "Lyria 3.5 is presented as a real, named model with specific version number and features. 'Lyria 3.5' does not appear on the verified-real product list, and the specific claims — that it generates complete songs (not loops), accepts image prompts, produces tracks with intro/verses/chorus structure, and returns tracks 'a couple minutes long' — are presented as established facts rather than speculative or future developments. Without verification that this specific model and these specific capabilities exist, treating them as real in the article constitutes a fabrication."
       ],
       "confidence": 6
     }

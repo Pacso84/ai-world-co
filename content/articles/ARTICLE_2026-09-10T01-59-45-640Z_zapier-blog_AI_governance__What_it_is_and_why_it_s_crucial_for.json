@@ -1,0 +1,64 @@
+{
+  "_meta": {
+    "written_at": "2026-09-10T02:00:39.810Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.004850304,
+    "original_draft": "2026-09-10T01-59-45-640Z_zapier-blog_AI_governance__What_it_is_and_why_it_s_crucial_for.json",
+    "source_id": "zapier-blog",
+    "source_name": "Zapier Blog (hivatalos)",
+    "source_link": "https://zapier.com/blog/ai-governance",
+    "source_links": [
+      "https://zapier.com/blog/ai-governance"
+    ],
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "published_at": "2026-09-10T02:07:31.865Z",
+    "slug": "ai-governance-for-small-businesses-a-plain-english-starter-guide",
+    "auto_check": {
+      "passed": false,
+      "issues": [
+        "LEDE_TOO_LONG: A RÖVIDEN-doboz 63 szó (max ~45) — ami hosszú, az már nem \"röviden\"."
+      ],
+      "wordCount": 952
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured explainer with a strong hook, clear definitions, and practical four-block framework. The audience segmentation in 'What this means for you' is particularly useful. No clichés, US English is correct, and the tone is friendly without being condescending. A few legal references could benefit from a footnote link to sources, but as an introductory explainer rather than investigative journalism, the general-trend framing is acceptable.",
+      "_aiCost": 0.0018498,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-09-10T02:08:50.187Z",
+    "guide_worthy": false,
+    "pairing_reason": "Generic explainer about AI governance policies, no specific named feature or tool introduced in the article",
+    "image_v": 2,
+    "image_at": "2026-09-10T02:13:25.526Z",
+    "seo": {
+      "meta_description": "Learn simple AI governance policies for small businesses. Stay legally compliant and accountable when AI tools make decisions for your team.",
+      "keywords": [
+        "AI governance for small business",
+        "small business AI policy",
+        "AI accountability small business",
+        "how to create AI policy small business",
+        "AI legal responsibility business",
+        "AI compliance small team"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add 'AI policy template' or 'AI governance checklist' to the article to capture more actionable search queries",
+        "Include 1-2 relevant subheadings with long-tail keywords like 'how to set up AI rules for small business'",
+        "Add internal links to related AI how-to articles on the site to boost topical authority"
+      ],
+      "optimised_at": "2026-09-10T02:14:29.852Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"AI Governance for Small Businesses: A Plain-English Starter Guide\"\nsubtitle: \"What accountability for AI looks like in a small team — and the simple policies that keep you out of trouble.\"\ncategory: \"explainer\"\naudience: \"business\"\nread_time_minutes: 6\ntags: [\"ai-governance\", \"small-business\", \"policy\", \"accountability\", \"getting-started\"]\n---\n\n# AI Governance for Small Businesses: A Plain-English Starter Guide\n\n> **In short:** AI governance is the set of rules and responsibilities a company sets so that when an AI tool makes a decision, sends an email, or alters a record, a real person is still accountable. Courts are increasingly clear that \"the AI did it\" is not a defense — so a simple, written policy is now essential, even for teams of five.\n\nYou opened ChatGPT, asked it to summarize a client contract, and pasted the result into an email. Two hours later, you realize the summary quietly dropped a key clause. Nobody approved the send. The tool did. You're now wondering who answers for that. That tiny moment is exactly what AI governance is built for — and it's why small businesses can no longer treat AI like an unsupervised intern.\n\n## What \"AI governance\" actually means\n\nStrip away the buzzword and you get three plain ideas:\n\n- **Rules** — which AI tools your team may use, and for what.\n- **Controls** — what those tools are allowed to do without a human checking first.\n- **Accountability** — a named person who owns the outcome of every AI action.\n\nThink of it like a health-and-safety policy, but for software decisions. You don't need a 40-page document. You need a few clear sentences that everyone has read, and one person who knows they own the AI choices in their department.\n\nA useful distinction: an **AI policy** tells people *what they may do*. **AI governance** is the wider system that makes sure the policy is followed, reviewed, and updated. The policy is a sentence on a poster; governance is who checks the poster is still on the wall.\n\n## Why this matters more in 2026 than two years ago\n\nThree quiet shifts have made the question unavoidable:\n\n- **AI agents can act on your behalf.** A growing number of tools can draft, schedule, file, pay, or update records without you clicking \"send.\" When something goes wrong, the trail leads back to your business.\n- **Courts and regulators are drawing lines.** Legal decisions in 2025 and 2026 have repeatedly stressed that a business cannot delegate responsibility to a chatbot. The human who deployed it is on the hook.\n- **Customers and partners are starting to ask.** Enterprise clients, insurers, and some government contracts now ask vendors: *\"How do you govern AI in your work?\"* A blank answer is increasingly a lost deal.\n\nYou don't need to be a regulated bank to feel this. A wrong automated refund, a hallucinated policy quote to a customer, or an AI tool that exposed a contact's data — any of these can become your problem on a Monday morning.\n\n## The four building blocks of a small-business AI policy\n\nYou can write a working policy in an afternoon. Most small teams need only these four pieces:\n\n1. **An approved-tools list.** Name the AI products your team may use (for example, your company chat assistant, your design tool, your coding helper). Anything not on the list needs a quick manager check before use.\n2. **A human-in-the-loop rule.** Decide which actions require a person to approve the output. A useful default: anything sent to a customer, anything that changes money or contracts, and anything that touches personal data.\n3. **A data rule.** Spell out what may and may not be pasted into an AI tool. Customer names, medical details, financial records, and employee HR files usually belong in a private, controlled system — not in a public chatbot prompt.\n4. **A named owner.** One person — often the founder, ops lead, or a part-time compliance-minded manager — is the \"AI owner.\" They review logs every month, update the list when a new tool is added, and field questions from the team.\n\nYou don't need fancy software to do this. A shared doc the team can read, plus a short monthly check-in, is enough to start.\n\n## What this means for you\n\n- **If you're a solo operator or freelancer:** You are the AI owner by default. Write a one-page note to yourself: which tools you trust, what you won't paste in, and which outputs you'll re-check. Review it once a quarter. That's governance at your scale.\n- **If you run a small team (2–25 people):** Pick one person as the AI owner. Run a 30-minute team meeting to agree on the approved-tools list and the human-in-the-loop rule. Add a sentence to your existing policies rather than creating a new binder no one will read.\n- **If you're a manager in a larger organization:** Your governance work is mostly *translation* — turning whatever the legal and security teams decide into language your team will actually follow. Keep your version short, specific, and example-driven.\n- **If you're worried about being left behind:** A small, honest policy is a competitive advantage. When a bigger client asks how you handle AI, you can show them a real document instead of guessing on a call.\n\n## Wrap-up\n\nAI governance sounds like something for banks and lawyers, but at its core it's a habit: name the tools, name the owner, decide what needs a human eye, and review it every so often. Start with a single page, share it with your team, and treat it as a living document rather than a finished one. Your Monday-morning self will thank you the first time an AI tool does something unexpected.",
+  "original_title": "AI governance: What it is and why it's crucial for every business"
+}
