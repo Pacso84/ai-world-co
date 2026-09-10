@@ -1,7 +1,7 @@
 {
   "_meta": {
     "note": "Forrás-bizonyítvány: frissesség + termés + megbízhatóság forrásonként. Gyártja: core/source-report-card.js",
-    "updated": "2026-09-09T19:02:15.569Z",
+    "updated": "2026-09-10T02:28:01.033Z",
     "thresholds": {
       "DEAD_FEED_DAYS": 365,
       "MIN_SAMPLE": 8,
@@ -12,19 +12,19 @@
     },
     "truth_log": {
       "days": 14,
-      "from": "2026-08-21",
-      "to": "2026-09-08",
-      "blocks": 25
+      "from": "2026-08-22",
+      "to": "2026-09-10",
+      "blocks": 22
     }
   },
   "sources": {
     "openai-blog": {
       "name": "OpenAI Blog (hivatalos)",
       "feedAgeDays": 0,
-      "published30d": 35,
-      "truthBlocks": 2,
+      "published30d": 33,
+      "truthBlocks": 1,
       "truthUnfixed": 0,
-      "totalAttempts": 17,
+      "totalAttempts": 15,
       "alreadyDisabled": false,
       "lastArticle": "2026-09-09",
       "verdict": "ok",
@@ -32,7 +32,7 @@
     },
     "google-deepmind": {
       "name": "Google DeepMind (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 2,
       "published30d": 3,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -45,7 +45,7 @@
     "google-ai-blog": {
       "name": "Google AI (hivatalos, blog.google)",
       "feedAgeDays": 0,
-      "published30d": 6,
+      "published30d": 5,
       "truthBlocks": 0,
       "truthUnfixed": 0,
       "totalAttempts": 2,
@@ -57,7 +57,7 @@
     "meta-ai": {
       "name": "Meta Newsroom (hivatalos)",
       "feedAgeDays": 1,
-      "published30d": 2,
+      "published30d": 1,
       "truthBlocks": 0,
       "truthUnfixed": 0,
       "totalAttempts": 1,
@@ -69,7 +69,7 @@
     "microsoft-ai": {
       "name": "Microsoft AI (hivatalos)",
       "feedAgeDays": 7,
-      "published30d": 2,
+      "published30d": 1,
       "truthBlocks": 0,
       "truthUnfixed": 0,
       "totalAttempts": 1,
@@ -164,7 +164,7 @@
     },
     "mistral-ai": {
       "name": "Mistral AI (hivatalos)",
-      "feedAgeDays": 0,
+      "feedAgeDays": 1,
       "published30d": 0,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -428,7 +428,7 @@
     },
     "sap": {
       "name": "SAP Innovation Blog (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 2,
       "published30d": 2,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -476,7 +476,7 @@
     },
     "pinecone": {
       "name": "Pinecone Blog (hivatalos)",
-      "feedAgeDays": 0,
+      "feedAgeDays": 1,
       "published30d": 1,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -548,11 +548,11 @@
     },
     "perplexity-news": {
       "name": "Perplexity (hivatalos, Google News szűrve)",
-      "feedAgeDays": 0,
+      "feedAgeDays": 1,
       "published30d": 2,
       "truthBlocks": 0,
       "truthUnfixed": 0,
-      "totalAttempts": 1,
+      "totalAttempts": 0,
       "alreadyDisabled": false,
       "lastArticle": "2026-08-26",
       "verdict": "ok",
@@ -596,7 +596,7 @@
     },
     "d-id-news": {
       "name": "D-ID (hivatalos)",
-      "feedAgeDays": 5,
+      "feedAgeDays": 6,
       "published30d": 3,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -620,7 +620,7 @@
     },
     "notion-releases": {
       "name": "Notion – Mi újság (hivatalos)",
-      "feedAgeDays": 13,
+      "feedAgeDays": 1,
       "published30d": 0,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -646,9 +646,9 @@
       "name": "Pixlr Blog (hivatalos)",
       "feedAgeDays": 7,
       "published30d": 1,
-      "truthBlocks": 1,
+      "truthBlocks": 0,
       "truthUnfixed": 0,
-      "totalAttempts": 1,
+      "totalAttempts": 0,
       "alreadyDisabled": false,
       "lastArticle": "2026-08-26",
       "verdict": "ok",
@@ -657,24 +657,24 @@
     "picsart": {
       "name": "PicsArt Blog (hivatalos)",
       "feedAgeDays": 0,
-      "published30d": 38,
-      "truthBlocks": 6,
+      "published30d": 41,
+      "truthBlocks": 7,
       "truthUnfixed": 0,
-      "totalAttempts": 15,
+      "totalAttempts": 17,
       "alreadyDisabled": false,
-      "lastArticle": "2026-09-08",
+      "lastArticle": "2026-09-10",
       "verdict": "ok",
       "reason": ""
     },
     "zapier-blog": {
       "name": "Zapier Blog (hivatalos)",
       "feedAgeDays": 1,
-      "published30d": 7,
+      "published30d": 8,
       "truthBlocks": 0,
       "truthUnfixed": 0,
-      "totalAttempts": 4,
+      "totalAttempts": 5,
       "alreadyDisabled": false,
-      "lastArticle": "2026-09-04",
+      "lastArticle": "2026-09-10",
       "verdict": "ok",
       "reason": ""
     },
