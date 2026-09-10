@@ -1285,15 +1285,6 @@
   ],
   "messages": [
     {
-      "id": "m17881914468172",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Chat with Your Own Documents Offline Using NVIDIA \" — ChatRTX application (entire tool name - rebranded); NVIDIA RTX 30-series or 40-series GPU requirement (may be outdated - RTX 50-series now supported)",
-      "ref": "ARTICLE_GUIDE_chat-with-your-own-documents-offline-using-nvidia-chatrtx.json",
-      "at": "2026-08-31T15:50:46.817Z"
-    },
-    {
       "id": "m178819213452045",
       "from": "social",
       "to": "team",
@@ -2643,6 +2634,15 @@
       "text": "6 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-09-10T02:27:16.630Z"
+    },
+    {
+      "id": "m178904327887289",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Getting started with DeepSeek for everyday help\" — DeepSeek is described as \"completely free\" — this is unverifiable and likely outdated. DeepSeek has had API pricing and may have introduced paid tiers.",
+      "ref": "ARTICLE_GUIDE_deepseek-getting-started.json",
+      "at": "2026-09-10T12:27:58.872Z"
     }
   ]
 }
