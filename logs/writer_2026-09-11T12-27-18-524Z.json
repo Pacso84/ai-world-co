@@ -1,0 +1,32 @@
+{
+  "started_at": "2026-09-11T12:26:24.234Z",
+  "drafts_total": 2,
+  "articles_written": 0,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 2,
+  "merged_total": 0,
+  "skipped_repeat": 1,
+  "repeats": [
+    {
+      "cim": "What Are Enterprise AI Agents and Why Are Companies Investing in Them?",
+      "mar": "What Are AI Agents, and Why Are Companies Suddenly Talking About Them?",
+      "pont": 0.934538339032562,
+      "by": "embedding",
+      "theme": "Enterprise AI agents for business operations"
+    }
+  ],
+  "total_cost_usd": 0.0098247,
+  "by_article": [
+    {
+      "draft": "2026-09-11T12-26-23-861Z_salesforce_Salesforce_Expands_Agentforce_With_a_New_Portfolio.json",
+      "success": false,
+      "reason": "repeat",
+      "repeat_of": "What Are AI Agents, and Why Are Companies Suddenly Talking About Them?",
+      "score": 0.934538339032562,
+      "cost_usd": 0.00873228
+    }
+  ],
+  "finished_at": "2026-09-11T12:27:18.524Z",
+  "duration_seconds": 54.29
+}
