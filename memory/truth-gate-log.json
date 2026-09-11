@@ -304,6 +304,26 @@
         "Az AI-bíró kitalált állítást talált (részletek nélkül)"
       ],
       "confidence": 2
+    },
+    {
+      "at": "2026-09-11T18:52:49.846Z",
+      "file": "WRITER_2026-09-11T18-51-46-518Z_picsart_How_FLUX_Video_Edit_rewrites_a_clip_from_one_instr.json",
+      "action": "block",
+      "reasons": [
+        "The article presents 'PicsArt Agents' as a real, named product feature with voice control and the ability to interrupt and redirect edits. PicsArt does have an 'AI Agents' feature with voice control that launched, but attributing specific behaviors like 'interrupt mid-task and redirect without starting over' and specific integration with 'OpenAI's real-time speech technology (the same family that powers voice mode in ChatGPT)' as established facts is presented without verifiable sourcing for these specific claims.",
+        "The article presents 'FLUX Video Edit' by Black Forest Labs as a real, released product that performs targeted one-instruction video edits preserving length, camera movement, framing and audio. While Black Forest Labs exists and has FLUX image models, there is no verified release of a 'FLUX Video Edit' product with these specific capabilities described as fact.",
+        "The article states PicsArt is 'wiring the voice side to OpenAI's real-time speech technology' as an established integration fact, with no verifiable confirmation of this specific OpenAI integration powering PicsArt's voice feature."
+      ],
+      "confidence": 7
+    },
+    {
+      "at": "2026-09-11T18:54:12.908Z",
+      "file": "WRITER_2026-09-11T18-51-46-518Z_picsart_How_FLUX_Video_Edit_rewrites_a_clip_from_one_instr.json",
+      "action": "block",
+      "reasons": [
+        "The article states 'PicsArt has been publicly rolling out AI editing agents inside its app, with voice control as part of that direction — that's confirmed.' This asserts PicsArt Agents with voice control as a confirmed, deployed product feature/direction. Per prior verification, the specific combination of PicsArt Agents + voice control as a real, shipped capability is not confirmed and was previously flagged as fabricated."
+      ],
+      "confidence": 7
     }
   ]
 }

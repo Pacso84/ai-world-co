@@ -1,102 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178891984110132",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-09-09T02:10:41.101Z",
-      "updated": "2026-09-09T02:11:32.468Z"
-    },
-    {
-      "id": "t178891989246953",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-09T02:11:32.469Z",
-      "updated": "2026-09-09T02:11:45.888Z"
-    },
-    {
-      "id": "t178891990589099",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-09-09T02:11:45.890Z",
-      "updated": "2026-09-09T02:12:05.302Z"
-    },
-    {
-      "id": "t178895723297986",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-09-09T12:33:52.979Z",
-      "updated": "2026-09-09T12:33:53.159Z"
-    },
-    {
-      "id": "t17889572331613",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-09-09T12:33:53.161Z",
-      "updated": "2026-09-09T12:34:21.173Z"
-    },
-    {
-      "id": "t17889572611757",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-09-09T12:34:21.175Z",
-      "updated": "2026-09-09T12:34:21.368Z"
-    },
-    {
-      "id": "t178895726137054",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-09-09T12:34:21.370Z",
-      "updated": "2026-09-09T12:35:19.849Z"
-    },
-    {
-      "id": "t178895731985196",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-09T12:35:19.851Z",
-      "updated": "2026-09-09T12:35:45.147Z"
-    },
-    {
-      "id": "t17889573451505",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-09-09T12:35:45.150Z",
-      "updated": "2026-09-09T12:35:52.419Z"
-    },
-    {
-      "id": "t17889573524751",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-09T12:35:52.475Z",
-      "updated": "2026-09-09T12:36:12.294Z"
-    },
-    {
-      "id": "t178895737229639",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-09-09T12:36:12.296Z",
-      "updated": "2026-09-09T12:36:27.368Z"
-    },
-    {
-      "id": "t178895738737057",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-09T12:36:27.370Z",
-      "updated": "2026-09-09T12:36:31.077Z"
-    },
-    {
       "id": "t17889573910790",
       "title": "Run publisher",
       "status": "done",
@@ -479,25 +383,105 @@
       "agent": "publisher",
       "created": "2026-09-11T12:34:35.567Z",
       "updated": "2026-09-11T12:35:00.051Z"
+    },
+    {
+      "id": "t178915267917361",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-09-11T18:51:19.173Z",
+      "updated": "2026-09-11T18:51:19.309Z"
+    },
+    {
+      "id": "t178915267931165",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-09-11T18:51:19.311Z",
+      "updated": "2026-09-11T18:51:46.528Z"
+    },
+    {
+      "id": "t178915270652917",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-09-11T18:51:46.529Z",
+      "updated": "2026-09-11T18:51:46.670Z"
+    },
+    {
+      "id": "t178915270667181",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-09-11T18:51:46.671Z",
+      "updated": "2026-09-11T18:52:30.930Z"
+    },
+    {
+      "id": "t178915275093186",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-11T18:52:30.931Z",
+      "updated": "2026-09-11T18:52:49.859Z"
+    },
+    {
+      "id": "t178915276986158",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-09-11T18:52:49.861Z",
+      "updated": "2026-09-11T18:53:21.282Z"
+    },
+    {
+      "id": "t178915280128354",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-11T18:53:21.283Z",
+      "updated": "2026-09-11T18:54:12.921Z"
+    },
+    {
+      "id": "t17891528529238",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-09-11T18:54:12.923Z",
+      "updated": "2026-09-11T18:54:13.100Z"
+    },
+    {
+      "id": "t178915285314910",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-11T18:54:13.149Z",
+      "updated": "2026-09-11T18:54:13.332Z"
+    },
+    {
+      "id": "t178915285333314",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-09-11T18:54:13.333Z",
+      "updated": "2026-09-11T18:54:13.506Z"
+    },
+    {
+      "id": "t17891528535072",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-11T18:54:13.507Z",
+      "updated": "2026-09-11T18:54:22.547Z"
+    },
+    {
+      "id": "t178915286254875",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-09-11T18:54:22.548Z",
+      "updated": "2026-09-11T18:54:40.811Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178819134774484",
-      "level": "info",
-      "text": "SEO: 3 cikk optimalizálva (átlag 8.3/10).",
-      "agent": "seo",
-      "at": "2026-08-31T15:49:07.744Z",
-      "loud": false
-    },
-    {
-      "id": "n178819136692669",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The lineup looks solid — you've got a nice mix of practical how-tos, privacy guidance, and heartfelt content that covers real everyday needs. Just one small check: the \"actually gets results\" promise ",
-      "agent": "publisher",
-      "at": "2026-08-31T15:49:26.926Z",
-      "loud": false
-    },
     {
       "id": "n178819138131299",
       "level": "success",
@@ -1281,45 +1265,25 @@
       "agent": "ceo",
       "at": "2026-09-11T12:35:00.098Z",
       "loud": false
+    },
+    {
+      "id": "n17891528679419",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The line-up is solid — practical, varied, and genuinely useful with a nice mix of workplace, personal, and community writing guides. A few articles make strong claims like \"That Actually Gets Results\"",
+      "agent": "publisher",
+      "at": "2026-09-11T18:54:27.941Z",
+      "loud": false
+    },
+    {
+      "id": "n178915288085486",
+      "level": "info",
+      "text": "Pipeline lefutott — ma nem volt publikálható új tartalom.",
+      "agent": "ceo",
+      "at": "2026-09-11T18:54:40.854Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m17882899761087",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Add co-presenters in Google Meet with one click\" (?/10)",
-      "ref": "2026-09-01T18-58-55-333Z_google-workspace_Add_co-presenters_in_Google_Meet_with_one_click.json",
-      "at": "2026-09-01T19:12:56.108Z"
-    },
-    {
-      "id": "m178828998850511",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "info",
-      "text": "A \"Add co-presenters in Google Meet with one click\" hír a meglévő útmutatóra mutat: gemini-getting-started",
-      "ref": "gemini-getting-started",
-      "at": "2026-09-01T19:13:08.505Z"
-    },
-    {
-      "id": "m178829005801431",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-09-01T19:14:18.014Z"
-    },
-    {
-      "id": "m178829052715925",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "3 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-09-01T19:22:07.159Z"
-    },
     {
       "id": "m178831541777925",
       "from": "designer",
@@ -2646,6 +2610,42 @@
       "text": "2 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-09-11T12:44:00.673Z"
+    },
+    {
+      "id": "m178915276984526",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"How FLUX Video Edit rewrites a clip from one instruction\" — mi a baj: The article presents 'PicsArt Agents' as a real, named product feature with voice control and the ability to interrupt and redirect edits. PicsArt does have an 'AI Agents' feature with voice control that launched, but attributing specific behaviors like 'interrupt mid-task and redirect without starting ove",
+      "ref": "2026-09-11T18-51-46-518Z_picsart_How_FLUX_Video_Edit_rewrites_a_clip_from_one_instr.json",
+      "at": "2026-09-11T18:52:49.845Z"
+    },
+    {
+      "id": "m178915280127537",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"How FLUX Video Edit rewrites a clip from one instruction\" — javítva: The article presents 'PicsArt Agents' as a real, named product feature with voice control and the ability to interrupt and redirect edits. PicsArt does have an 'AI Agents' feature with voice control that launched, but attributing specific behaviors like 'interrupt mid-task and redirect without starting over' and spe",
+      "ref": "2026-09-11T18-51-46-518Z_picsart_How_FLUX_Video_Edit_rewrites_a_clip_from_one_instr.json",
+      "at": "2026-09-11T18:53:21.275Z"
+    },
+    {
+      "id": "m17891528529061",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"How FLUX Video Edit rewrites a clip from one instruction\" — mi a baj: The article states 'PicsArt has been publicly rolling out AI editing agents inside its app, with voice control as part of that direction — that's confirmed.' This asserts PicsArt Agents with voice control as a confirmed, deployed product feature/direction. Per prior verification, the specific combination o",
+      "ref": "2026-09-11T18-51-46-518Z_picsart_How_FLUX_Video_Edit_rewrites_a_clip_from_one_instr.json",
+      "at": "2026-09-11T18:54:12.906Z"
+    },
+    {
+      "id": "m178915286254075",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 20 → 5/4/2 oszlop.",
+      "ref": "mobile",
+      "at": "2026-09-11T18:54:22.540Z"
     }
   ]
 }
