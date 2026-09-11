@@ -142,7 +142,19 @@ if (ELES_LOG_ELOTTE) {
   for (const k of valodiKulcsok) {
     assert.ok(k in be, `🔴 az ÉLES naplóban van "${k}" mező, az új bejegyzésből hiányzik`);
   }
-  assert.ok(!valodiKulcsok.has('by'), 'a by már kint van — ez a teszt elavult');
+  // 🔔 EZ A SOR IDŐZÍTETT JELZÉS VOLT, ÉS 2026-09-11-ÉN ELSÜLT.
+  // Amíg a `by` mező nem volt kint élesben, a fenti alak-hurok nem tudta
+  // ellenőrizni, ezért itt egy `!valodiKulcsok.has('by')` őr állt, ami
+  // SZÓLT, amikor a mező megérkezik. Megérkezett: aznap 11 bejegyzés,
+  // mind `by:"embedding"`. A helyére POZITÍV, erősebb állítás kerül —
+  // ha egy jövőbeli változtatás visszavenné a mezőt, az ITT bukjon el,
+  // ne élesben, némán. (A beágyazás ÉLETBEN létét nem itt őrizzük:
+  // az a memory/embed-guard.json és a napi riport dolga.)
+  assert.ok(valodiKulcsok.has('by'),
+    '🔴 a `by` mező ELTŰNT az éles naplóból — a dedup-döntés indoka megint láthatatlan');
+  const elesBy = new Set(valodiak.map(e => e.by).filter(Boolean));
+  for (const b of elesBy) assert.ok(['embedding', 'jaccard'].includes(b),
+    '🔴 ismeretlen `by` érték az éles naplóban: ' + b);
 }
 
 // --- 11. VÉGIG A LEMEZIG: a `by` tényleg beleíródik a napló-fájlba
