@@ -2171,8 +2171,14 @@ function buildGuidePage(a) {
   // KÖZÉP-DOBOZ (2026-08-25): a látogatók 63%-a útmutatóra érkezik, és
   // 359 útmutatóból 0 kapott továbbvezetést a szöveg közepén — a hírek
   // 437-ből 397-et igen. Lásd core/mid-guide.js. Két LÉPÉS KÖZÉ kerül.
+  //
+  // MÁSODIK DOBOZ (2026-09-11): a hír-ág 09-10-én megkapta, az útmutató nem —
+  // pedig a belépők 61%-a IDE érkezik, és az útmutató örökzöld. A második
+  // doboz `rel[1]`, tehát MÁSIK cikk: a törzsbeli ajánló ma ugyanarra mutat,
+  // mint a végi rács első kártyája. A miértet és a mérést lásd a
+  // core/mid-guide.js fejlécében. Üres string = nincs második ajánlható cikk.
   const blocksLinked = insertMidGuide(
-    glossAutolink(blocks, alState), stepHeadings.length, midReadBox(a));
+    glossAutolink(blocks, alState), stepHeadings.length, midReadBox(a), midReadBox(a, 1));
 
   const toolChip = (a.company || a.tool)
     ? `<span class="g-tool">📘 ${escapeHtml(toolLabel(a.company, a.tool, ' · '))}</span>` : '';
