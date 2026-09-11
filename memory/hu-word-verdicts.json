@@ -837,7 +837,9 @@
     "gyorssegéd",
     "gyorsszámítás",
     "gyorsválasz",
+    "gyártósorokra",
     "gyártósorra",
+    "gépjárműügyintézés",
     "hackathonok",
     "hackelés",
     "hackelésben",
@@ -1269,6 +1271,7 @@
     "lefedettséget",
     "legaktívabb",
     "legcsilesebb",
+    "leghosszabhoz",
     "legitimnak",
     "legjobbban",
     "legkezdőbarátabb",
@@ -2143,7 +2146,9 @@
     "tabletre",
     "tablettel",
     "tabletten",
+    "tabok",
     "tabot",
+    "tabváltás",
     "tacót",
     "tagalogot",
     "tagjairól",
@@ -2213,6 +2218,7 @@
     "telemedicinális",
     "teljességet",
     "telkók",
+    "teltházas",
     "termelékenységet",
     "terminálkurzorod",
     "terminálpromptba",
@@ -2256,6 +2262,7 @@
     "trackpaddel",
     "transzformernek",
     "tripemet",
+    "tripen",
     "tréninget",
     "tuesday",
     "tulajdonlás",
@@ -2428,6 +2435,7 @@
     "virágok",
     "vissz",
     "visszabeilleszthetsz",
+    "visszaechozza",
     "visszaszol",
     "visszáskodás",
     "visualstudio",
@@ -2506,6 +2514,7 @@
     "zugokba",
     "zöldséget",
     "ágon",
+    "állampolgárok",
     "állapotsávon",
     "állatszőr-eltávolítás",
     "általa",
@@ -4911,11 +4920,16 @@
       "correct": "annyit",
       "at": "2026-09-10",
       "mondattal": true
+    },
+    "hetédet": {
+      "correct": "hetédet vagy heti beosztásodat",
+      "at": "2026-09-11",
+      "mondattal": true
     }
   },
   "scan": {
-    "at": "2026-09-10",
-    "files": 947,
-    "candidates": 0
+    "at": "2026-09-11",
+    "files": 951,
+    "candidates": 10
   }
 }
