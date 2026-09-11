@@ -1,25 +1,4 @@
 {
-  "2026-08-22": [
-    {
-      "at": "2026-08-22T00:38:29.053Z",
-      "file": "WRITER_2026-08-22T00-37-14-151Z_perplexity-news_Computer_now_works_in_email_-_Perplexity.json",
-      "action": "block",
-      "reasons": [
-        "The article describes a specific \"Computer\" agent feature in Perplexity with specific UI elements ('Connect account' button, 'Disconnect' button, 'Spaces'/'Agents' labeling, left-side panel). While Perplexity has had various agent features, the specific 'Computer' product with these particular email-triage capabilities and UI elements as described needs verification — the term 'Computer' as a named Perplexity agent feature for email triage is not clearly verified. This is a fabrication concern.",
-        "GPT-5.6 appears in the verified-real names list but I should note this looks unusual as it's not a real OpenAI model I'm aware of. However, since it's on the verified list, I should not flag it."
-      ],
-      "confidence": 5
-    },
-    {
-      "at": "2026-08-22T00:38:49.686Z",
-      "file": "WRITER_2026-08-22T00-37-14-152Z_picsart_Flux_3_prompts__start_from_text__images__or_a_clip.json",
-      "action": "block",
-      "reasons": [
-        "Article presents 'Flux 3' as a real AI video tool that generates picture and sound in one pass, with specific capabilities (footsteps, rain, door closing, spoken dialogue) and 'audio settings' — Flux (by Black Forest Labs) is an image-generation model family, not a known video+audio generator, and 'Flux 3' is not in the verified-real names list. The detailed feature claims (dialogue generation, audio settings, one-pass picture+sound) attributed to this specific named tool appear fabricated."
-      ],
-      "confidence": 7
-    }
-  ],
   "2026-08-23": [
     {
       "at": "2026-08-23T08:18:04.050Z",
@@ -276,6 +255,35 @@
       "action": "block",
       "reasons": [
         "Lyria 3.5 is presented as a real, named model with specific version number and features. 'Lyria 3.5' does not appear on the verified-real product list, and the specific claims — that it generates complete songs (not loops), accepts image prompts, produces tracks with intro/verses/chorus structure, and returns tracks 'a couple minutes long' — are presented as established facts rather than speculative or future developments. Without verification that this specific model and these specific capabilities exist, treating them as real in the article constitutes a fabrication."
+      ],
+      "confidence": 6
+    }
+  ],
+  "2026-09-11": [
+    {
+      "at": "2026-09-11T02:01:51.643Z",
+      "file": "WRITER_2026-09-11T01-58-29-349Z_openai-blog_Expanding_AI_access_and_cyber_defense_for_federal_.json",
+      "action": "hold",
+      "reasons": [
+        "AI-bíró nem elérhető (érthetetlen AI-válasz: credible mező hiányzik) — visszatartva a következő futásig"
+      ]
+    },
+    {
+      "at": "2026-09-11T02:05:19.048Z",
+      "file": "WRITER_2026-09-11T01-58-29-349Z_openai-blog_Expanding_AI_access_and_cyber_defense_for_federal_.json",
+      "action": "hold",
+      "reasons": [
+        "AI-bíró nem elérhető (érthetetlen AI-válasz: credible mező hiányzik) — visszatartva a következő futásig"
+      ]
+    },
+    {
+      "at": "2026-09-11T02:12:51.947Z",
+      "file": "WRITER_GUIDE_create-custom-genmoji-and-images-with-apple-intelligence-ima.json",
+      "action": "block",
+      "reasons": [
+        "Apple Intelligence, Image Playground, and Genmoji are real Apple features, so they are not fabricated. However, the article states 'iOS 18.1 or later for Genmoji, iOS 18.2 or later for the standalone Image Playground app.' While Genmoji did launch with iOS 18.1, the standalone Image Playground app launched with iOS 18.2 in December 2024, so this appears correct.",
+        "The article mentions 'iPhone 17 model' as supported. As of available information through early 2026, there has been no verified announcement or release of an iPhone 17. This is a fabricated product name stated as fact.",
+        "The article states that style options in Image Playground are 'Animation', 'Illustration', and 'Sketch'. While Animation and Illustration are real styles, 'Sketch' is not a confirmed style option for Image Playground based on available information — this may be a fabricated UI element."
       ],
       "confidence": 6
     }

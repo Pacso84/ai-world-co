@@ -1,0 +1,65 @@
+{
+  "started_at": "2026-09-11T01:58:49.977Z",
+  "drafts_total": 9,
+  "articles_written": 3,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 4,
+  "merged_total": 3,
+  "skipped_repeat": 1,
+  "repeats": [
+    {
+      "cim": "How to Use AI to Make Sense of Your Work Data (Without Being a Data Person)",
+      "mar": "How to Use AI to Make Sense of Confusing Data (Without Being a Data Scientist)",
+      "pont": 0.9363597432705999,
+      "by": "embedding",
+      "theme": "OpenAI GPT-6 Astra and enterprise product launches"
+    }
+  ],
+  "total_cost_usd": 0.050588124000000005,
+  "by_article": [
+    {
+      "draft": "2026-09-10T01-59-24-046Z_openai-blog_GPT-6_Astra__The_next_generation_in_intelligence_f.json",
+      "success": false,
+      "reason": "repeat",
+      "repeat_of": "How to Use AI to Make Sense of Confusing Data (Without Being a Data Scientist)",
+      "score": 0.9363597432705999,
+      "cost_usd": 0.005723184
+    },
+    {
+      "draft": "2026-09-11T01-58-37-979Z_google-workspace_Gemini_in_Google_Sheets_is_now_available_on_Androi.json",
+      "writer_output": "WRITER_2026-09-11T01-58-37-979Z_google-workspace_Gemini_in_Google_Sheets_is_now_available_on_Androi.json",
+      "success": true,
+      "merged_from": 2,
+      "merged_theme": "Google Workspace Gemini features expansion",
+      "cost_usd": 0.01081284,
+      "duration_ms": 32244,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-09-11T01-58-29-349Z_openai-blog_Expanding_AI_access_and_cyber_defense_for_federal_.json",
+      "writer_output": "WRITER_2026-09-11T01-58-29-349Z_openai-blog_Expanding_AI_access_and_cyber_defense_for_federal_.json",
+      "success": true,
+      "merged_from": 2,
+      "merged_theme": "OpenAI government and policy initiatives",
+      "cost_usd": 0.0194052,
+      "duration_ms": 20419,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-09-11T01-58-46-087Z_snowflake_How_Manufacturers_Unlock_Operational_ROI_with_Agen.json",
+      "writer_output": "WRITER_2026-09-11T01-58-46-087Z_snowflake_How_Manufacturers_Unlock_Operational_ROI_with_Agen.json",
+      "success": true,
+      "merged_from": 2,
+      "merged_theme": "Snowflake AI applications for enterprises",
+      "cost_usd": 0.0126924,
+      "duration_ms": 44650,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    }
+  ],
+  "finished_at": "2026-09-11T02:01:34.823Z",
+  "duration_seconds": 164.846
+}

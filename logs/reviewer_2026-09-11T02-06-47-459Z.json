@@ -1,0 +1,28 @@
+{
+  "started_at": "2026-09-11T02:05:07.494Z",
+  "total": 3,
+  "passed": 1,
+  "failed": 1,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.00987954,
+  "by_article": [
+    {
+      "writer": "WRITER_GUIDE_how-to-decode-a-confusing-medical-bill-or-insurance-statemen.json",
+      "rejected": "REJECTED_GUIDE_how-to-decode-a-confusing-medical-bill-or-insurance-statemen.json",
+      "decision": "FAIL",
+      "score": 8,
+      "cost_usd": 0.0027888
+    },
+    {
+      "writer": "WRITER_GUIDE_how-to-plan-a-multi-stop-road-trip-with-realistic-driving-ti.json",
+      "article": "ARTICLE_GUIDE_how-to-plan-a-multi-stop-road-trip-with-realistic-driving-ti.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0043482
+    }
+  ],
+  "truth_held": 1,
+  "finished_at": "2026-09-11T02:06:47.459Z",
+  "duration_seconds": 99.965
+}
