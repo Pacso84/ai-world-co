@@ -1,7 +1,7 @@
 {
   "_meta": {
     "note": "Forrás-bizonyítvány: frissesség + termés + megbízhatóság forrásonként. Gyártja: core/source-report-card.js",
-    "updated": "2026-09-12T12:13:58.768Z",
+    "updated": "2026-09-12T18:04:46.453Z",
     "thresholds": {
       "DEAD_FEED_DAYS": 365,
       "MIN_SAMPLE": 8,
@@ -608,7 +608,7 @@
     },
     "sony-ai": {
       "name": "Sony AI (hivatalos)",
-      "feedAgeDays": 73,
+      "feedAgeDays": 74,
       "published30d": 0,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -632,7 +632,7 @@
     },
     "microsoft-365": {
       "name": "Microsoft 365 Insider (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 0,
       "published30d": 3,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -644,7 +644,7 @@
     },
     "pixlr": {
       "name": "Pixlr Blog (hivatalos)",
-      "feedAgeDays": 9,
+      "feedAgeDays": 10,
       "published30d": 1,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -668,7 +668,7 @@
     },
     "zapier-blog": {
       "name": "Zapier Blog (hivatalos)",
-      "feedAgeDays": 2,
+      "feedAgeDays": 3,
       "published30d": 8,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -692,7 +692,7 @@
     },
     "samsung-newsroom": {
       "name": "Samsung Newsroom (hivatalos)",
-      "feedAgeDays": 3,
+      "feedAgeDays": 4,
       "published30d": 1,
       "truthBlocks": 0,
       "truthUnfixed": 0,
