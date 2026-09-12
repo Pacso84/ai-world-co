@@ -20,6 +20,7 @@ import { readFileSync, readdirSync, existsSync, writeFileSync } from 'fs';
 import { fileURLToPath, pathToFileURL } from 'url';
 import { dirname, join } from 'path';
 import { toUS } from './us-spelling.js';
+import { slugUtkozesek } from './slug-collisions.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
@@ -170,24 +171,25 @@ function checkDupLinks() {
   return out;
 }
 
-// SLUG-ÜTKÖZÉS-ŐR (2026-07-16): ha két cikk EN címe ugyanarra a slugra képződik,
-// a build EGYMÁSRA ÍRJA őket (a Together-hír és a belőle párosított guide azonos
+// SLUG-ÜTKÖZÉS-ŐR (2026-07-16): ha két cikk ugyanarra az URL-re kerül, a build
+// EGYMÁSRA ÍRJA őket (a Together-hír és a belőle párosított guide azonos
 // címet kapott → nyelvenként hol az egyik, hol a másik látszott). Nem javítható
 // gépi biztonsággal (címet AI-nak/embernek kell adnia) → őr-találat, Telegramra.
+//
+// ⚠️ 2026-09-12: a kulcs a BUILD kulcsa — `_meta.slug`, tartalékként a cím.
+// Eddig a CÍMBŐL képzett slugot néztük, ami 961 cikkből 81-nél NEM az URL:
+// két azonos `_meta.slug` valódi ütközését nem láttuk volna. A döntés és a
+// mérés: core/slug-collisions.js (a tesztje a build.js forrásával veti össze).
+// A mappa a bekötés-teszthez felülírható (hívásonként olvassuk, mint a
+// NAME_GUARD_PATH-t); élesben sosem állítja senki.
 function checkSlugCollisions() {
-  const slugify = (t) => t.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 70);
-  const seen = new Map();
-  const out = [];
-  for (const f of readdirSync(ARTICLES_DIR).filter(x => x.endsWith('.json'))) {
-    try {
-      const d = JSON.parse(readFileSync(join(ARTICLES_DIR, f), 'utf-8'));
-      const title = ((d.article_markdown || '').match(/^title:\s*["']?(.+?)["']?\s*$/m) || [])[1] || d.original_title || f;
-      const slug = slugify(title);
-      if (seen.has(slug)) out.push(`SLUG-ÜTKÖZÉS: "${title.slice(0, 50)}" — ${f.slice(0, 40)} és ${seen.get(slug).slice(0, 40)} egymásra épül!`);
-      else seen.set(slug, f);
-    } catch { /* hibás fájl nem az őr dolga */ }
+  const dir = process.env.SLUG_GUARD_ARTICLES_DIR || ARTICLES_DIR;
+  const bejegyzesek = [];
+  for (const f of readdirSync(dir).filter(x => x.endsWith('.json'))) {
+    try { bejegyzesek.push({ file: f, data: JSON.parse(readFileSync(join(dir, f), 'utf-8')) }); }
+    catch { /* hibás fájl nem az őr dolga — a build is átugorja */ }
   }
-  return out;
+  return slugUtkozesek(bejegyzesek);
 }
 
 // NÉV-ZÁR-KIFOGÁSOK (2026-09-06) — a tény-ellenőrző átnevezési kísérletei.

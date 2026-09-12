@@ -55,7 +55,11 @@ const KIVETELEK = {
   'node core/quality-guard.js --fix': {
     NAME_GUARD_PATH:
       'TESZT-útvonal felülírás, hogy a tesztek ne az ÉLES memory/name-guard.json-t '
-      + 'írják. Élesben szándékosan üres — az alapértelmezés a helyes.'
+      + 'írják. Élesben szándékosan üres — az alapértelmezés a helyes.',
+    SLUG_GUARD_ARTICLES_DIR:
+      'TESZT-mappa felülírás a slug-ütközés-őr bekötés-tesztjéhez '
+      + '(core/slug-collisions.test.js). Élesben szándékosan üres — az őr a '
+      + 'content/articles-t nézi, ahogy kell.'
   },
   'node agents/designer/agent.js --refresh 8': {
     GOOGLE_API_KEY:
