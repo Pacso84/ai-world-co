@@ -2167,7 +2167,30 @@ function buildGuidePage(a) {
   // Kisszótár-autolink (2026-07-10): a bevezető ÉS a lépések közös állapottal —
   // egy fogalom az egész útmutatóban csak egyszer linkelődik (először a bevezetőben).
   const alState = { linked: new Set(), count: 0 };
-  const introHtml = intro ? glossAutolink(guideSectionHtml(intro), alState) : '';
+  // SZÖVEGBELI BELSŐ LINKELÉS AZ ÚTMUTATÓKBAN (2026-09-12)
+  // ------------------------------------------------------------------
+  // A `guideAutolink` 2026 óta CSAK a hír-sablonban futott. Élesben mérve:
+  // a hírek 62%-a kap szövegbeli linket, az útmutatók 0%-a — pedig a
+  // belépők 61%-a ÚTMUTATÓRA érkezik, és az útmutató örökzöld.
+  // Hogy figyelmetlenség volt, nem döntés: a függvény két önkizáró őre
+  // (`t.tool === selfTool`, `t.target.slug === article?.slug`) CSAK
+  // útmutatóra értelmezhető — a link-célok kizárólag útmutatók, tehát egy
+  // HÍR sosem lehet a saját célja. Kimérve: 175/431 útmutató (41%) kapna
+  // linket, összesen 270 újat.
+  //
+  // ⚠️ hubOk: false — EZ ELTÉR A HÍR-ÁGTÓL, MÉRÉS ALAPJÁN.
+  // A hír-ág 3+ útmutatónál a /tools GYŰJTŐRE visz. Az útmutatóknál ez a
+  // 270 linkből 240-et (89%) egy olyan oldalra küldene, amely 40 nap alatt
+  // 7 oldalletöltést kapott (/tools) — miközben ugyanez a hub-link a hírek
+  // felén HÓNAPOK óta kint van. A gyűjtő tehát mérhetően zsákutca, ezért
+  // innen EGYENESEN a legjobb útmutatóra megyünk. A 19 érintett eszközből
+  // 16-nak van rendes „getting started" útmutatója, tehát az olvasó jó
+  // helyre érkezik. A HÍR-ág változatlan (user-döntés 2026-09-12).
+  //
+  // A `glState` a bevezető és a lépések KÖZÖTT osztott: együtt max 2 link.
+  const glState = { count: 0, used: new Set() };
+  const glOpts = { state: glState, hubOk: false };
+  const introHtml = intro ? guideAutolink(glossAutolink(guideSectionHtml(intro), alState), a, glOpts) : '';
   // KÖZÉP-DOBOZ (2026-08-25): a látogatók 63%-a útmutatóra érkezik, és
   // 359 útmutatóból 0 kapott továbbvezetést a szöveg közepén — a hírek
   // 437-ből 397-et igen. Lásd core/mid-guide.js. Két LÉPÉS KÖZÉ kerül.
@@ -2177,8 +2200,12 @@ function buildGuidePage(a) {
   // doboz `rel[1]`, tehát MÁSIK cikk: a törzsbeli ajánló ma ugyanarra mutat,
   // mint a végi rács első kártyája. A miértet és a mérést lásd a
   // core/mid-guide.js fejlécében. Üres string = nincs második ajánlható cikk.
+  // A guideAutolink a közép-doboz BESZÚRÁSA ELŐTT fut: a doboz saját <a>-t
+  // tartalmaz, azt nem szabad újra linkelni (a függvény kihagyná, de így a
+  // sorrend maga zárja ki a kérdést).
   const blocksLinked = insertMidGuide(
-    glossAutolink(blocks, alState), stepHeadings.length, midReadBox(a), midReadBox(a, 1));
+    guideAutolink(glossAutolink(blocks, alState), a, glOpts),
+    stepHeadings.length, midReadBox(a), midReadBox(a, 1));
 
   const toolChip = (a.company || a.tool)
     ? `<span class="g-tool">📘 ${escapeHtml(toolLabel(a.company, a.tool, ' · '))}</span>` : '';
@@ -2494,16 +2521,24 @@ function buildGuideLinks(articles) {
   return out;
 }
 
-function guideAutolink(html, article) {
+// opts.state — MEGOSZTOTT számláló (2026-09-12). Az útmutató KÉT részletben
+//   renderelődik (bevezető + lépések). Külön hívásonkénti számlálóval mindkettő
+//   megkapná a maga 2 linkjét, és a GUIDE_LINK_MAX (user-döntés: MARAD 2)
+//   némán 4-re hígulna. A hír EGY hívásban megy: ott a friss állapot marad.
+// opts.hubOk — vihet-e a link a /tools GYŰJTŐRE a cikk helyett. Lásd a
+//   hívóhelyeken, hogy melyik ág mit kap, és MIÉRT.
+function guideAutolink(html, article, opts = {}) {
   if (!html || !_guideLinkMap) return html;
   const targets = _guideLinkMap;
   if (!targets.length) return html;
   const selfTool = String(article?.tool || '').trim();
+  const state = opts.state || { count: 0, used: new Set() };
+  const hubOk = opts.hubOk !== false;
   const parts = html.split(/(<[^>]+>)/);
   const OPEN = /^<(a|h[1-6]|code|pre|button|script|style)\b/i;
   const CLOSE = /^<\/(a|h[1-6]|code|pre|button|script|style)>/i;
-  let skipDepth = 0, count = 0;
-  const used = new Set();
+  let skipDepth = 0;
+  const used = state.used;
   for (let i = 0; i < parts.length; i++) {
     const p = parts[i];
     if (p.startsWith('<')) {
@@ -2511,7 +2546,7 @@ function guideAutolink(html, article) {
       else if (OPEN.test(p)) skipDepth++;
       continue;
     }
-    if (skipDepth > 0 || count >= GUIDE_LINK_MAX || p.trim().length < 4) continue;
+    if (skipDepth > 0 || state.count >= GUIDE_LINK_MAX || p.trim().length < 4) continue;
     const found = [];
     for (const t of targets) {
       if (used.has(t.tool)) continue;
@@ -2527,23 +2562,24 @@ function guideAutolink(html, article) {
     const accepted = []; let lastEnd = -1;
     for (const f of found) {
       if (f.idx < lastEnd) continue;
-      if (count + accepted.length >= GUIDE_LINK_MAX) break;
+      if (state.count + accepted.length >= GUIDE_LINK_MAX) break;
       accepted.push(f); lastEnd = f.idx + f.str.length;
     }
     let text = p;
     for (const f of accepted.sort((a, b) => b.idx - a.idx)) {
-      const href = f.t.hub
-        ? `${LP}${f.t.hub}`
+      const hub = hubOk ? f.t.hub : null;
+      const href = hub
+        ? `${LP}${hub}`
         : `${LP}/article/${f.t.target.slug}`;
       // A title MEGMONDJA, hova visz — gyűjtőnél a darabszámmal, hogy az
       // olvasó tudja: választék vár, nem egyetlen cikk.
-      const title = f.t.hub
+      const title = hub
         ? `${f.t.count} ${f.t.count > 1 ? tr('guideWordMany') : tr('guideWordOne')} — ${f.t.tool}`
         : localizeArticle(f.t.target, LANG).title;
       text = text.slice(0, f.idx)
         + `<a class="guide-link" href="${href}" title="${escapeHtml(title)}">${f.str}</a>`
         + text.slice(f.idx + f.str.length);
-      used.add(f.t.tool); count++;
+      used.add(f.t.tool); state.count++;
     }
     parts[i] = text;
   }
