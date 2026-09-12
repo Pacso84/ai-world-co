@@ -133,6 +133,26 @@ const TRANS_DIR = join(__dirname, '..', 'content', 'translations');
 // lemezen MARADNAK — ez a döntés percek alatt visszafordítható: elég ide
 // visszaírni a két nyelvet.
 const SITE_LANGS = ['en', 'hu', 'es'];   // en = forrás/gyökér
+
+// ===================================================================
+// A NYELVEK SZÁMA SOHA NEM LEHET KÉZZEL BEÍRVA (2026-09-12)
+// ===================================================================
+// A DE/FR 2026-08-25-i végleges törlése után HAT élő szöveg maradt
+// „5 nyelven"-en: a Rólunk oldal MINDHÁROM nyelven, és a chatbot
+// tudásbázisa ugyanígy. Vagyis a bizalmi oldalunk 18 napon át valótlant
+// állított magáról, három nyelven, a chatbot pedig vissza is mondta.
+// A szám ezentúl a SITE_LANGS-ból SZÁRMAZIK — így a következő nyelvi
+// változás magától átvezetődik. Őrzi: core/lang-count.test.js.
+const NYELV_SZAM = SITE_LANGS.length;
+const NYELV_BETUVEL = {
+  en: ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven'],
+  hu: ['nulla', 'egy', 'két', 'három', 'négy', 'öt', 'hat', 'hét'],
+  es: ['cero', 'un', 'dos', 'tres', 'cuatro', 'cinco', 'seis', 'siete']
+};
+// Betűvel írt alak; ha egyszer 8-nál több nyelv lenne, a számjegy jön.
+function nyelvSzo(lang) {
+  return NYELV_BETUVEL[lang]?.[NYELV_SZAM] || String(NYELV_SZAM);
+}
 // A kivezetett nyelvek EGYETLEN forrása: core/retired-langs.js (sírkő).
 const FB_URL = 'https://www.facebook.com/profile.php?id=61591788804540';   // FB-oldal (követés + JSON-LD sameAs)
 const IG_URL = 'https://www.instagram.com/aiworldhq/';                    // Instagram (Bufferrel posztolunk rá)
@@ -306,7 +326,7 @@ for (const l of SITE_LANGS) Object.assign(UI[l], UI_SUPPORT[l] || {});
 // ===================================================================
 const CS_FAQ = {
   en: [
-    { q: 'What is AI World HQ?', a: 'An automated, independent news + guides site that helps everyday people use AI. Content is produced by an AI newsroom with honesty checks, in 5 languages.', p: '/about' },
+    { q: 'What is AI World HQ?', a: `An automated, independent news + guides site that helps everyday people use AI. Content is produced by an AI newsroom with honesty checks, in ${NYELV_SZAM} languages.`, p: '/about' },
     { q: 'How do I report a mistake in an article?', a: 'Use the 👍/👎 buttons under the article, or send us a message — genuine errors get corrected and republished.', p: '/about' },
     { q: 'Is the site free? How can I support it?', a: 'Everything is free. If you want, you can leave a voluntary tip on the Support page.', p: '/support' },
     { q: 'Where do I find beginner guides?', a: 'The Start page lists the first 5 guides to read, and the Guides page has all of them by topic.', p: '/start' },
@@ -315,7 +335,7 @@ const CS_FAQ = {
     { q: 'How do I contact you / reach a human?', a: 'Use the message form at the bottom of the About page, or write to support@aiworldhq.com — a human reads every message.', p: '/about#contact' }
   ],
   hu: [
-    { q: 'Mi az AI World HQ?', a: 'Automata, független hír- és útmutató-oldal, ami a hétköznapi AI-használatban segít. A tartalmat AI-szerkesztőség készíti őszinteség-ellenőrzéssel, 5 nyelven.', p: '/about' },
+    { q: 'Mi az AI World HQ?', a: `Automata, független hír- és útmutató-oldal, ami a hétköznapi AI-használatban segít. A tartalmat AI-szerkesztőség készíti őszinteség-ellenőrzéssel, ${NYELV_SZAM} nyelven.`, p: '/about' },
     { q: 'Hogyan jelezhetek hibát egy cikkben?', a: 'A cikk alatti 👍/👎 gombokkal, vagy írj nekünk — a valódi hibákat javítjuk és újra kiadjuk.', p: '/about' },
     { q: 'Ingyenes az oldal? Hogyan támogathatom?', a: 'Minden ingyenes. Ha szeretnéd, a Támogatás oldalon önkéntes borravalót adhatsz.', p: '/support' },
     { q: 'Hol találom a kezdő útmutatókat?', a: 'A Kezdés oldal az első 5 ajánlott útmutatót mutatja, az Útmutatók oldalon pedig az összes megvan téma szerint.', p: '/start' },
@@ -324,7 +344,7 @@ const CS_FAQ = {
     { q: 'Hogyan tudlak elérni titeket / élő embert?', a: 'A Rólunk oldal alján lévő üzenet-űrlappal, vagy írj a support@aiworldhq.com címre — minden üzenetet elolvas egy ember.', p: '/about#contact' }
   ],
   es: [
-    { q: '¿Qué es AI World HQ?', a: 'Un sitio automático e independiente de noticias y guías que te ayuda a usar la IA en el día a día. El contenido lo produce una redacción de IA con controles de honestidad, en 5 idiomas.', p: '/about' },
+    { q: '¿Qué es AI World HQ?', a: `Un sitio automático e independiente de noticias y guías que te ayuda a usar la IA en el día a día. El contenido lo produce una redacción de IA con controles de honestidad, en ${NYELV_SZAM} idiomas.`, p: '/about' },
     { q: '¿Cómo aviso de un error en un artículo?', a: 'Con los botones 👍/👎 bajo el artículo, o escríbenos — los errores reales se corrigen y se vuelven a publicar.', p: '/about' },
     { q: '¿El sitio es gratis? ¿Cómo puedo apoyarlo?', a: 'Todo es gratis. Si quieres, puedes dejar una propina voluntaria en la página de Apoyo.', p: '/support' },
     { q: '¿Dónde están las guías para principiantes?', a: 'La página Empezar muestra las 5 primeras guías recomendadas, y en Guías están todas por tema.', p: '/start' },
@@ -440,19 +460,19 @@ for (const l of SITE_LANGS) Object.assign(UI[l], UI_WIZ[l] || {});
 // ŐSZINTESÉG: nyíltan vállaljuk, hogy AI-agentek írják, minőség-kapuval.
 const UI_ABOUT = {
   en: { aboutNav: 'About us', aboutTitle: 'About AI World HQ', aboutTag: 'Who we are, how our articles are made, and the rules we never break.',
-        aboutWhoH: 'What is AI World HQ?', aboutWhoP: 'A small, independent site that explains artificial intelligence for everyday people — fresh news in plain language and step-by-step guides a complete beginner can follow, in five languages.',
+        aboutWhoH: 'What is AI World HQ?', aboutWhoP: `A small, independent site that explains artificial intelligence for everyday people — fresh news in plain language and step-by-step guides a complete beginner can follow, in ${nyelvSzo('en')} languages.`,
         aboutHowH: 'How our content is made', aboutHowP: 'Our newsroom is run by AI agents — openly. They read the official announcements, write a plain-language article, and every piece must pass an automated quality gate that checks clarity and honesty before it can go live. A human owner oversees the system, reads your feedback and keeps tightening the rules.',
         aboutSrcH: 'Where the news comes from', aboutSrcP: 'Only official, first-party sources: the newsrooms and blogs of the AI companies themselves — OpenAI, Google, Microsoft, Anthropic, Meta, NVIDIA, Mistral and more. No rumours, no anonymous “insiders”. If a company didn’t announce it, we don’t report it.',
         aboutHonH: 'Our honesty rules', aboutHonP: 'Every article carries an AI-disclosure note. We never invent facts, screenshots or prices — anything that changes over time points you to the official site instead. Technical words are explained the first time they appear, and our AI dictionary covers the rest.',
         aboutFixH: 'Spotted a mistake?', aboutFixP: 'Tell us with the 👍/👎 buttons under any article, or reach us via the Support page. Genuine errors get corrected and the fixed article is republished — that’s a promise.' },
   hu: { aboutNav: 'Rólunk', aboutTitle: 'Az AI World HQ-ról', aboutTag: 'Kik vagyunk, hogyan készülnek a cikkeink, és melyek a szabályok, amiket sosem szegünk meg.',
-        aboutWhoH: 'Mi az AI World HQ?', aboutWhoP: 'Egy kis, független oldal, amely hétköznapi embereknek magyarázza a mesterséges intelligenciát — friss hírek közérthetően és lépésről lépésre útmutatók, amelyeket egy teljesen kezdő is követni tud, öt nyelven.',
+        aboutWhoH: 'Mi az AI World HQ?', aboutWhoP: `Egy kis, független oldal, amely hétköznapi embereknek magyarázza a mesterséges intelligenciát — friss hírek közérthetően és lépésről lépésre útmutatók, amelyeket egy teljesen kezdő is követni tud, ${nyelvSzo('hu')} nyelven.`,
         aboutHowH: 'Hogyan készül a tartalom?', aboutHowP: 'A szerkesztőségünket AI-agentek működtetik — nyíltan vállalva. Elolvassák a hivatalos bejelentéseket, közérthető cikket írnak, és minden írásnak át kell mennie egy automatikus minőség-kapun, amely az érthetőséget és az őszinteséget ellenőrzi, mielőtt élesbe kerülhet. A rendszert emberi tulajdonos felügyeli: olvassa a visszajelzéseidet és folyamatosan szigorítja a szabályokat.',
         aboutSrcH: 'Honnan jönnek a hírek?', aboutSrcP: 'Kizárólag hivatalos, elsődleges forrásokból: maguknak az AI-cégeknek a hírrovataiból és blogjairól — OpenAI, Google, Microsoft, Anthropic, Meta, NVIDIA, Mistral és társaik. Se pletyka, se névtelen „bennfentes”. Ha egy cég nem jelentette be, mi nem írjuk meg.',
         aboutHonH: 'Őszinteség-szabályaink', aboutHonP: 'Minden cikken ott az AI-közreműködés jelölése. Sosem találunk ki tényt, képernyőképet vagy árat — ami idővel változik, ahhoz a hivatalos oldalra irányítunk. A szakszavakat az első előfordulásukkor elmagyarázzuk, a többit pedig az AI-kisszótárunk fedi le.',
         aboutFixH: 'Hibát találtál?', aboutFixP: 'Jelezd a cikkek alatti 👍/👎 gombokkal, vagy írj a Támogatás oldalon keresztül. A valódi hibákat kijavítjuk, és a javított cikket újra kiadjuk — ez ígéret.' },
   es: { aboutNav: 'Quiénes somos', aboutTitle: 'Sobre AI World HQ', aboutTag: 'Quiénes somos, cómo se hacen nuestros artículos y las reglas que nunca rompemos.',
-        aboutWhoH: '¿Qué es AI World HQ?', aboutWhoP: 'Un sitio pequeño e independiente que explica la inteligencia artificial para gente común: noticias frescas en lenguaje claro y guías paso a paso que cualquier principiante puede seguir, en cinco idiomas.',
+        aboutWhoH: '¿Qué es AI World HQ?', aboutWhoP: `Un sitio pequeño e independiente que explica la inteligencia artificial para gente común: noticias frescas en lenguaje claro y guías paso a paso que cualquier principiante puede seguir, en ${nyelvSzo('es')} idiomas.`,
         aboutHowH: 'Cómo se hace el contenido', aboutHowP: 'Nuestra redacción la llevan agentes de IA — y lo decimos abiertamente. Leen los anuncios oficiales, escriben un artículo en lenguaje claro, y cada pieza debe pasar una puerta de calidad automática que comprueba claridad y honestidad antes de publicarse. Un propietario humano supervisa el sistema, lee tus comentarios y endurece las reglas continuamente.',
         aboutSrcH: 'De dónde vienen las noticias', aboutSrcP: 'Solo fuentes oficiales y de primera mano: las salas de prensa y blogs de las propias empresas de IA — OpenAI, Google, Microsoft, Anthropic, Meta, NVIDIA, Mistral y más. Sin rumores ni “fuentes anónimas”. Si una empresa no lo anunció, no lo publicamos.',
         aboutHonH: 'Nuestras reglas de honestidad', aboutHonP: 'Cada artículo lleva una nota de divulgación de IA. Nunca inventamos datos, capturas ni precios — lo que cambia con el tiempo te remite al sitio oficial. Las palabras técnicas se explican la primera vez que aparecen, y nuestro diccionario de IA cubre el resto.',
@@ -2401,7 +2421,7 @@ function buildStartPage(allLoc) {
 
 // ===================================================================
 // AI-KISSZÓTÁR — örökzöld fogalom-oldal (website/glossary-data.json)
-// Kézzel karbantartott, 5 nyelven — nem AI-generált, nem kell Ellenőrző.
+// Kézzel karbantartott, minden élő nyelven — nem AI-generált, nem kell Ellenőrző.
 // ===================================================================
 let GLOSSARY = [];
 try { GLOSSARY = JSON.parse(readFileSync(join(__dirname, 'glossary-data.json'), 'utf-8')).terms || []; } catch { /* nincs szótár-adat */ }
@@ -3309,7 +3329,7 @@ Original content by ${SITE.name} — written and quality-checked by an autonomou
   // meta-ai — a cikk ÉL, csak "Turn a short note into a polished email reply…"
   // címmel. A 404 nem csak elveszett látogató: elveszett rangsor-erő is.
   // Ezért minden EREDETI (fájlnévbe fagyott) slugról 301-et adunk a mostanira,
-  // mind az 5 nyelven. A .html-es alakot a Cloudflare előbb 308-cal levágja,
+  // minden élő nyelven. A .html-es alakot a Cloudflare előbb 308-cal levágja,
   // úgyhogy elég a kiterjesztés nélküli szabály.
   // (Cloudflare Pages korlát: 2100 statikus szabály — ezért figyeljük a számot.)
   // MINDKÉT alakra kell szabály: a Cloudflare csak LÉTEZŐ fájlnál vágja le a
