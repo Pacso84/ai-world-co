@@ -524,6 +524,10 @@ body {
 .g-level { background: var(--paper-2); color: var(--ink-soft); text-transform: capitalize; }
 .g-intro { font-size: 19px; line-height: 1.6; color: var(--ink); margin: 6px 0 30px; }
 .g-intro strong { font-weight: 700; }
+/* 2026-09-12: a globális reset (* { margin: 0 }) miatt a bevezető egymás
+   utáni bekezdései NULLA térközzel összeragadtak. Mérve: 13 élő útmutató.
+   A gyermek-kombinátor szándékos — a .lede-n belül saját szabály van. */
+.g-intro > p + p { margin-top: 14px; }
 .g-steps { display: flex; flex-direction: column; gap: 16px; }
 .g-step { display: flex; gap: 16px; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px 22px; }
 .g-step__no { flex-shrink:0; width: 38px; height: 38px; border-radius: 50%; background: var(--ink); color: var(--paper);

@@ -2190,7 +2190,19 @@ function buildGuidePage(a) {
   // A `glState` a bevezető és a lépések KÖZÖTT osztott: együtt max 2 link.
   const glState = { count: 0, used: new Set() };
   const glOpts = { state: glState, hubOk: false };
-  const introHtml = intro ? guideAutolink(glossAutolink(guideSectionHtml(intro), alState), a, glOpts) : '';
+  // „IN SHORT"-DOBOZ AZ ÚTMUTATÓBAN IS (2026-09-12)
+  // A hír-ág a betöltéskor kapja meg (`wrapInShort` a loadArticles-ben), de
+  // az útmutató SOSEM használja az `a.bodyHtml`-t — az `a.bodyMd`-ből
+  // renderel újra, így a doboz átalakítása kimaradt. Mérve a kiépített
+  // lapokon: 204 útmutató bevezetője `<blockquote>`-tal kezdődik, aminek a
+  // `.article__body`-n KÍVÜL egyetlen CSS-szabálya sincs — a reset pedig
+  // `* { margin: 0 }`. Böngészőben ellenőrizve: az összefoglaló és a
+  // következő bekezdés NULLA térközzel összefolyik, egyetlen tömbnek látszik.
+  // A `.lede` osztály GLOBÁLIS (nem a hír-burkolóhoz kötött), tehát új CSS
+  // nélkül működik itt is.
+  const introHtml = intro
+    ? guideAutolink(glossAutolink(wrapInShort(guideSectionHtml(intro)), alState), a, glOpts)
+    : '';
   // KÖZÉP-DOBOZ (2026-08-25): a látogatók 63%-a útmutatóra érkezik, és
   // 359 útmutatóból 0 kapott továbbvezetést a szöveg közepén — a hírek
   // 437-ből 397-et igen. Lásd core/mid-guide.js. Két LÉPÉS KÖZÉ kerül.
