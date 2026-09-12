@@ -302,6 +302,15 @@ body {
   font-size: 13px; color: var(--muted); font-weight: 600; letter-spacing: 0.04em;
 }
 .article__meta .dot { color: var(--line-strong); }
+/* MI-JELÖLÉS A CIKK TETEJÉN (2026-09-12, EU AI Act 50. cikk (4)–(5)): a jelölésnek
+   „világosan és megkülönböztethetően, legkésőbb az első találkozáskor" kell
+   megjelennie. Addig csak a lap alján (77–84%) volt. Szándékosan NEM halvány:
+   saját háttérrel, olvasható méretben. Őrzi: core/ai-disclosure.test.js. */
+.ai-label {
+  display: table; margin: 14px auto 0; max-width: 62ch;
+  padding: 7px 14px; border-radius: 999px; background: var(--paper-2);
+  font-size: 13px; line-height: 1.45; color: var(--ink-soft); text-align: center;
+}
 
 .article__body { font-size: 18.5px; line-height: 1.78; color: var(--ink); }
 .article__body > p:first-of-type::first-letter {
