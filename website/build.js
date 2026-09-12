@@ -35,7 +35,7 @@ import { RETIRED_LANGS } from '../core/retired-langs.js';
 import { robotsTartalom, indexelhetoNyelvek, noindexNyelv } from '../core/noindex-langs.js';
 // Teme-hub oldalak (2026-09-10) — a besorolas a KOZOS modulbol jon, ugyanabbol,
 // amit a fizetos csomag hasznal. Egy szabaly, egy hely.
-import { TEMAK, temaOf } from '../core/topics.js';
+import { TEMAK, temaOf , temaSzoveg, temaLeiras } from '../core/topics.js';
 import { laposit } from '../core/redirect-chain.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -1495,6 +1495,9 @@ function buildIndex(articles) {
     // spanyol találatban angol mondat állt a magyar cím alatt. (2026-08-04)
     description: tr('siteDesc') || SITE.description,
     ogImage: articles[0]?.image ? `${SITE.url}/assets/images/${articles[0].image}` : '',
+    // A WebSite csomópont SZÁNDÉKOSAN előtag NÉLKÜLI: nem a lapot írja le,
+    // hanem magát az oldalt, ami nyelvtől független entitás. (Ugyanígy az
+    // Organization a Rólunk oldalon.) NE „javítsd meg" ${LP}-vel.
     jsonld: { '@context': 'https://schema.org', '@type': 'WebSite', name: SITE.name, url: SITE.url, description: tr('siteDesc') || SITE.description },
     bodyContent: featuredHtml + weeklyHtml + guidesCta + grid
       + `<p class="start__wizcta"><a href="archive">🗂️ ${escapeHtml(tr('archNav'))} →</a></p>`,
@@ -1632,7 +1635,10 @@ function buildGuidesPage(generalGuides, counts, temaCsoportok = new Map()) {
     title: `${plainText(tr('guidesTitle'))} — ${SITE.name}`,
     description: tr('guidesMetaDesc'),
     noIntro: true, pagePath: 'guides.html',
-    jsonld: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: plainText(tr('guidesTitle')), url: `${SITE.url}/guides` },
+    // ⚠️ A ${LP} KÖTELEZŐ: a CollectionPage AZ ADOTT LAPOT írja le, tehát az
+    // url-je a lap saját, nyelvi előtagos címe. Enélkül a /hu/ és /es/
+    // változat a gyökér-lapot állítja magáról (2026-09-12, élesben mérve).
+    jsonld: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: plainText(tr('guidesTitle')), url: `${SITE.url}${LP}/guides` },
     bodyContent: body
   });
 }
@@ -1666,19 +1672,27 @@ function buildGuidesPage(generalGuides, counts, temaCsoportok = new Map()) {
 export function temaHubUt(id) { return `topic-${id}`; }
 
 function buildTopicPage(t, cikkek) {
+  // ⚠️ 2026-09-12: EZ A FÜGGVÉNY BEÉGETETT ANGOLLAL KÉSZÜLT (09-10), és
+  // ezzel 16 élő lap (8 téma × hu + es) angol címet, leírást és H1-et kapott.
+  // Élesben ellenőrizve: /hu/topic-safe és /es/topic-safe is „Staying safe".
+  // SZÓ SZERINT ugyanaz a hiba, mint 2026-08-04-én a /guides és /tools
+  // oldalon — a figyelmeztetés ott van a buildGuidesPage kommentjében.
+  // A szövegek a core/topics.js-ben laknak, a BESOROLÁS MELLETT, hogy egy új
+  // téma felvételekor a kettő együtt mozduljon.
+  const sz = temaSzoveg(t, LANG);
   const tiles = cikkek.length
     ? `<div class="gtiles">${cikkek.map(guideTile).join('')}</div>`
     : `<p class="muted" style="color:var(--ink-soft)">${tr('comingSoon')}</p>`;
   const header = `<section class="guides-hero">
-    <p class="intro__kicker">${escapeHtml(t.rovid)}</p>
-    <h1 class="guides-hero__title">${escapeHtml(t.cim)}</h1>
+    <p class="intro__kicker">${escapeHtml(sz.rovid)}</p>
+    <h1 class="guides-hero__title">${escapeHtml(sz.cim)}</h1>
     <p class="guides-hero__tag">${cikkek.length} ${tr('stepByStep').toLowerCase()}</p>
   </section>`;
   return pageShell({
-    title: `${t.cim} — ${SITE.name}`,
-    description: `${t.rovid}: ${cikkek.length} step-by-step AI guides in plain language.`,
+    title: `${sz.cim} — ${SITE.name}`,
+    description: temaLeiras(sz.rovid, cikkek.length, LANG),
     noIntro: true, pagePath: `${temaHubUt(t.id)}.html`,
-    jsonld: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: t.cim, url: `${SITE.url}${LP}/${temaHubUt(t.id)}` },
+    jsonld: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: sz.cim, url: `${SITE.url}${LP}/${temaHubUt(t.id)}` },
     bodyContent: designStyleBlock() + header + tiles
   });
 }
@@ -1686,7 +1700,9 @@ function buildTopicPage(t, cikkek) {
 /** A hubokra mutató sáv — a /guides tetejére, hogy egyáltalán megtalálják. */
 function temaSav(csoportok) {
   const elemek = TEMAK.filter(t => (csoportok.get(t.id) || []).length >= 3)
-    .map(t => `<a class="minitag" href="${temaHubUt(t.id)}" style="text-decoration:none">${escapeHtml(t.cim)} <span style="opacity:.6">${csoportok.get(t.id).length}</span></a>`);
+    // A sáv címkéi is a nyelvhez tartoznak — enélkül a magyar /guides tetején
+    // angol téma-nevek állnának, miközben alattuk minden magyar.
+    .map(t => `<a class="minitag" href="${temaHubUt(t.id)}" style="text-decoration:none">${escapeHtml(temaSzoveg(t, LANG).cim)} <span style="opacity:.6">${csoportok.get(t.id).length}</span></a>`);
   if (!elemem(elemek)) return '';
   return `<div class="article__tags" style="justify-content:center;margin:0 0 22px">${elemek.join('')}</div>`;
 }
@@ -1779,7 +1795,8 @@ function buildToolsPage(companyGuides, counts) {
     title: `${plainText(tr('toolsTitle'))} — ${SITE.name}`,
     description: tr('toolsMetaDesc'),
     noIntro: true, pagePath: 'tools.html',
-    jsonld: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: plainText(tr('toolsTitle')), url: `${SITE.url}/tools` },
+    // ⚠️ A ${LP} KÖTELEZŐ — lásd a /guides-nál írt indoklást.
+    jsonld: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: plainText(tr('toolsTitle')), url: `${SITE.url}${LP}/tools` },
     bodyContent: body
   });
 }

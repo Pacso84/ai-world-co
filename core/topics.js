@@ -74,6 +74,65 @@ export const TEMAK = [
       'reminder', 'batch', 'template'] }
 ];
 
+// ===================================================================
+// A TÉMÁK NEVE A TÖBBI NYELVEN (2026-09-12)
+// ===================================================================
+// ⚠️ MIÉRT ITT, ÉS NEM A build.js-BEN: a `buildTopicPage()` 2026-09-10-én
+// BEÉGETETT ANGOLLAL készült, és ezzel 16 élő lap (8 téma × hu + es) angol
+// címet, leírást és H1-et kapott — élesben ellenőrizve. Ez SZÓ SZERINT
+// ugyanaz a hiba, amit 2026-08-04-én már kijavítottak a /guides és a /tools
+// oldalon; a figyelmeztető komment ma is ott áll a buildGuidesPage-ben.
+// A fordítás azért kerül IDE, a besorolás MELLÉ, mert egy új téma
+// felvételekor a kettőnek együtt kell mozdulnia. Teszt őrzi, hogy minden
+// témának minden élő nyelven legyen neve.
+export const TEMA_NYELV = {
+  safe: {
+    hu: { cim: 'Biztonság', rovid: 'Biztonságban az AI-jal' },
+    es: { cim: 'Seguridad', rovid: 'Seguridad con la IA' } },
+  money: {
+    hu: { cim: 'Pénz és ügyintézés', rovid: 'Pénz és papírmunka' },
+    es: { cim: 'Dinero y trámites', rovid: 'Dinero y papeleo' } },
+  home: {
+    hu: { cim: 'Otthon és család', rovid: 'Otthon és család' },
+    es: { cim: 'Hogar y familia', rovid: 'Hogar y familia' } },
+  create: {
+    hu: { cim: 'Fotó, videó és zene', rovid: 'Fotó, videó és zene' },
+    es: { cim: 'Fotos, vídeo y música', rovid: 'Fotos, vídeo y música' } },
+  learn: {
+    hu: { cim: 'Tanulás és első lépések', rovid: 'Első lépések az AI-jal' },
+    es: { cim: 'Aprender y empezar', rovid: 'Primeros pasos con la IA' } },
+  work: {
+    hu: { cim: 'Munka és e-mail', rovid: 'Munka és e-mail' },
+    es: { cim: 'Trabajo y correo', rovid: 'Trabajo y correo electrónico' } },
+  explain: {
+    hu: { cim: 'Érts meg bármit', rovid: 'Legyen érthető' },
+    es: { cim: 'Entiende cualquier cosa', rovid: 'Aclara las cosas' } },
+  automate: {
+    hu: { cim: 'Automatizáld az unalmast', rovid: 'Bízd az AI-ra az ismétlődő munkát' },
+    es: { cim: 'Automatiza lo aburrido', rovid: 'Deja que la IA haga lo repetitivo' } }
+};
+
+// A hub-oldal leírás-mondata. A darabszám kívülről jön.
+export const TEMA_LEIRAS = {
+  en: (rovid, n) => `${rovid}: ${n} step-by-step AI guides in plain language.`,
+  hu: (rovid, n) => `${rovid}: ${n} lépésről lépésre útmutató, közérthetően.`,
+  es: (rovid, n) => `${rovid}: ${n} guías de IA paso a paso en lenguaje claro.`
+};
+
+/**
+ * A téma neve az adott nyelven. Ismeretlen nyelvnél az ANGOL jön vissza —
+ * a hiányzó fordítás jobb, mint az üres cím; a hiányt teszt fogja meg.
+ */
+export function temaSzoveg(t, lang) {
+  const f = TEMA_NYELV[t?.id]?.[lang];
+  return { cim: f?.cim || t?.cim || '', rovid: f?.rovid || t?.rovid || '' };
+}
+
+/** A leírás-mondat az adott nyelven; ismeretlen nyelvnél angol. */
+export function temaLeiras(rovid, n, lang) {
+  return (TEMA_LEIRAS[lang] || TEMA_LEIRAS.en)(rovid, n);
+}
+
 const MINTAK = TEMAK.map(t => ({ ...t, rx: temaMinta(t.szavak) }));
 
 /**
