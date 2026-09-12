@@ -1,0 +1,69 @@
+{
+  "_meta": {
+    "written_at": "2026-09-12T11:49:58.908Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00908712,
+    "original_draft": "2026-09-11T18-51-46-518Z_google-workspace_The_Gemini_desktop_app_is_now_available_for_Window.json",
+    "source_id": "google-workspace",
+    "source_name": "Google Workspace Updates (hivatalos)",
+    "source_link": "http://workspaceupdates.googleblog.com/2026/09/the-gemini-desktop-app-is-now-available-for-Windows.html",
+    "source_links": [
+      "http://workspaceupdates.googleblog.com/2026/09/the-gemini-desktop-app-is-now-available-for-Windows.html"
+    ],
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "rejected_at": "2026-09-12T02:19:13.572Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 918
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Strong explainer with clear structure, friendly tone, accurate feature descriptions, and useful privacy context. The 'Try this today' call-to-action at the end gives readers an immediate next step. Minor note: the article correctly hedges on specific plan names by pointing to official sources, which avoids presenting outdated pricing.",
+      "_aiCost": 0.0017136,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "The writing quality is strong — friendly, clear, and well-structured. However, the article fails its most basic job: it ignores the primary news from its own source. The Google Workspace Updates blog post announces a Gemini desktop app for Windows, yet the article covers only browser, phone, and in-app access. A reader would have no idea the Windows desktop app exists. Either add the Windows desktop app as a key access method or acknowledge that desktop availability is currently limited.",
+    "can_retry": true,
+    "rework_attempts": 2,
+    "reworked_from": "REJECTED_2026-09-11T18-51-46-518Z_google-workspace_The_Gemini_desktop_app_is_now_available_for_Window.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-09-12T11:50:14.898Z",
+    "slug": "what-gemini-can-do-for-you-today-and-where-you-can-actually-use-it",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-09-12T12:04:19.868Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is an overview/explainer covering multiple ways to access Gemini (Windows app, browser, phone, Google apps), not a single named feature introduction",
+    "image_v": 2,
+    "image_at": "2026-09-12T12:04:37.558Z",
+    "seo": {
+      "meta_description": "Google's AI assistant Gemini is everywhere — here's how to access it free on your browser, iPhone, Android, and in Gmail and Docs.",
+      "keywords": [
+        "what is Google Gemini",
+        "how to use Gemini AI",
+        "Gemini AI access methods",
+        "Google Gemini free vs paid",
+        "Gemini app download",
+        "Gemini on iPhone and Android",
+        "Google AI assistant guide"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add 'Google Gemini tutorial' or 'Gemini AI how to use' as secondary keywords in the article body for better topical relevance",
+        "Consider adding a FAQ section addressing common search queries like 'Is Gemini free to use?' and 'Which devices support Gemini?' to capture featured snippet opportunities",
+        "Include the Windows desktop app mention in the first 100 words to improve relevance signal for desktop search queries"
+      ],
+      "optimised_at": "2026-09-12T12:05:05.826Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"What Gemini Can Do for You Today (And Where You Can Actually Use It)\"\nsubtitle: \"A plain guide to Google's AI assistant — every way to access it, what it does, and how to start\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"gemini\", \"google\", \"ai-assistants\", \"productivity\"]\n---\n\n# What Gemini Can Do for You Today (And Where You Can Actually Use It)\n\n> **In short:** Gemini is Google's AI assistant, available in your browser, on iPhone and Android, inside Gmail and Docs on paid plans, and as a new dedicated desktop app for Windows. The free version handles most everyday questions; paid tiers add image generation, longer documents, and deeper Google app integration.\n\nIf you've heard \"Gemini\" a lot lately and aren't sure what it is or where to find it, you're not alone. Google has been weaving it through more of its products, and the lineup gets confusing fast. The access options are growing too — there's now a Windows desktop app alongside the website and phone app. Here's a plain explanation of what Gemini does, every place you can actually use it, and how to get started today.\n\n## What Gemini actually is\n\nGemini is Google's AI assistant — the thing you talk to (or type at) when you want help writing, summarizing, brainstorming, translating, or answering questions. Think of it as Google's answer to ChatGPT. The \"model\" behind it (the AI brain doing the thinking) is also called Gemini, but most people use the word to mean the assistant itself.\n\nIt comes in different versions. The free version is solid for everyday questions and quick drafts. The paid tiers are faster, handle longer documents, and unlock features like image generation and deeper Google app integration. Google has used names like **Gemini Advanced** and **Google AI Pro** for these — for the current plan names and pricing, check Google's official AI plans page.\n\n## Every place you can use Gemini right now\n\n**As a dedicated desktop app on Windows.** Google recently released a Gemini app for Windows, giving you a full Gemini window that lives outside your browser. It works much like the web version but stays open while you switch between other apps, which is handy if you bounce between tasks all day. This is a newer access method and is rolling out gradually, so it may not be available everywhere yet.\n\n**In your browser at gemini.google.com.** This is still the main starting point for most people. Open it in any browser, sign in with your Google account, and start typing. You can upload images and files, have back-and-forth conversations, and save chats for later.\n\n**On your phone via the Gemini app.** Google has a dedicated Gemini app for iPhone and Android. It works like a smart voice and text assistant — talk to it, send it photos, or ask questions on the go. If you've used Siri or Google Assistant, the experience feels familiar but is sharper for most tasks.\n\n**Inside Google apps.** If you have a paid plan (or certain Google Workspace plans), Gemini shows up directly inside Gmail as a **\"Help me write\"** button, in Docs as a writing helper, and in similar spots across Slides, Sheets, and Drive. It can summarize a long email thread, draft a reply in your voice, or pull answers from your Drive files without you leaving the app.\n\n**In Chrome.** Google has been adding Gemini-powered features into the Chrome browser itself, mostly for paying subscribers. Chrome's help docs describe what's currently available in your region, since this area is evolving quickly.\n\n## Common ways people actually use it\n\n- Drafting or replying to emails faster\n- Summarizing long documents, articles, or PDFs\n- Brainstorming ideas for work or personal projects\n- Translating text or polishing your writing\n- Getting quick answers with sources linked\n- Generating images (on paid plans)\n\n## What this means for you\n\n- **If you've never tried an AI assistant**: gemini.google.com is the easiest start. No install, no setup — just open the site and type. Try asking it to explain something you want to learn, or to draft a short message you've been putting off.\n- **If you work on a Windows computer**: try the new desktop app. It keeps Gemini one click away and out of your browser tab graveyard, which is a real quality-of-life upgrade if you switch between it and other windows all day.\n- **If you live in Gmail and Google Docs for work**: the paid tiers earn their money here. The ability to ask Gemini to summarize a thread or draft a reply without leaving Gmail is the kind of feature that saves real time every week.\n- **If you care about privacy**: your Google account's **My Activity** page shows everything you've sent to Gemini, and you can delete it any time. You can also turn off **Gemini Apps Activity** to stop Google from saving new chats. Both controls live in your Google Account settings.\n\n## Wrap-up\n\nGemini is most useful when you meet it where you already work. Browser user? Start at gemini.google.com. Windows power user? Give the new desktop app a look. Heavy Gmail and Docs user? A paid tier is worth considering. Mostly on your phone? The app covers the basics well.\n\nTry this today: open gemini.google.com, sign in, and ask *\"Help me write a short, polite email asking for a deadline extension.\"* That one task tells you more about whether AI assistants fit your life than any review ever will.",
+  "original_title": "The Gemini desktop app is now available for Windows"
+}

@@ -1,18 +1,24 @@
 {
   "_meta": {
-    "generated_at": "2026-09-09T02:03:20.337Z",
+    "generated_at": "2026-09-12T11:48:17.897Z",
     "generated_by": "source-scout agent v3.0 (megbízhatóság-kapu)",
     "note": "JAVASLATOK új, MEGBÍZHATÓ hivatalos forrásokra. A felhasználó/főnök dönti el, melyiket adjuk a sources/rss-feeds.json-hoz (enabled:true-val). Minden jelölt megbízhatósági pontszámmal + indoklással.",
     "min_score": 100,
     "checked_orgs": 18,
     "newly_discovered": 0,
-    "rejected_count": 1,
+    "rejected_count": 2,
     "rejected_examples": [
       {
-        "name": "YNAB Blog",
-        "host": "youneedabudget.com",
+        "name": "Duolingo Blog",
+        "host": "blog.duolingo.com",
         "reason": "a friss cikkeinek csak 0%-a szól AI-ról (kell: 60%)",
         "score": 100
+      },
+      {
+        "name": "Brilliant Blog",
+        "host": "blog.brilliant.org",
+        "reason": "pont 82 < 100",
+        "score": 82
       }
     ]
   },

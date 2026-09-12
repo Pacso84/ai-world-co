@@ -334,6 +334,44 @@
         "The article claims users 'may also see a related option to ask a follow-up question about the article — for example, \"What's the main argument?\" — which Apple Intelligence answers using the page content.' This follow-up Q&A feature inside Safari's article summary is not a verified Apple Intelligence feature."
       ],
       "confidence": 7
+    },
+    {
+      "at": "2026-09-12T11:54:17.128Z",
+      "file": "WRITER_GUIDE_summarize-long-web-articles-in-safari-with-apple-intelligenc.json",
+      "action": "block",
+      "reasons": [
+        "The 'Summarize' option described inside Safari's Reader/Aa page-settings menu is a fabricated UI element. Apple Intelligence article summarization in Safari is triggered via the share sheet → 'Summarize' action, or via the Reader view's built-in summarize button on the article itself — it is not presented as an option within the Aa page-settings menu itself (no ✨ sparkles icon entry inside that menu)."
+      ],
+      "confidence": 8
+    },
+    {
+      "at": "2026-09-12T11:59:43.266Z",
+      "file": "WRITER_GUIDE_summarize-long-web-articles-in-safari-with-apple-intelligenc.json",
+      "action": "block",
+      "reasons": [
+        "Step 4 describes a 'Summarize' button appearing on the article itself in Safari Reader view and a 'Summarize' option in the Share sheet — this is a fabricated UI element. Apple Intelligence web article summarization is not a built-in Safari Reader/Share-sheet feature; users access it via the Apple Intelligence website summarization in Safari's address bar, not via a 'Summarize' button on the article or a Share-sheet action.",
+        "Step 3 and the 'Common mistakes' section imply that Reader view is required for the summarization feature, which is inaccurate — Apple Intelligence can summarize from the standard page, and the article/Share-sheet 'Summarize' controls as described do not exist."
+      ],
+      "confidence": 8
+    },
+    {
+      "at": "2026-09-12T12:02:16.894Z",
+      "file": "WRITER_GUIDE_summarize-long-web-articles-in-safari-with-apple-intelligenc.json",
+      "action": "block",
+      "reasons": [
+        "Step 4 describes a 'Summarize' option appearing in the Safari Reader-mode page menu (the Aa panel) — this UI element does not exist in Safari. Safari's Reader mode has never included a Summarize button in its page settings menu. This is a fabricated UI element."
+      ],
+      "confidence": 9
+    },
+    {
+      "at": "2026-09-12T12:03:50.660Z",
+      "file": "WRITER_GUIDE_summarize-long-web-articles-in-safari-with-apple-intelligenc.json",
+      "action": "block",
+      "reasons": [
+        "Step 4 instructs readers to look for a 'Summarize' option in the Safari Reader-mode page menu (the Aa panel) and claims it can appear 'inside the same Aa-style page menu you used in Step 3.' Safari's Reader mode Aa page-settings menu does not contain a Summarize option — this UI element does not exist in Safari. Apple Intelligence summarization in Safari Reader is accessed via the Reader view toolbar, not through the Aa page-settings panel.",
+        "Step 4 also tells readers to look for Summarize 'at the top or bottom of the Reader view' with a 'sparkles icon,' describing a specific UI element that does not exist in Safari's Reader mode interface."
+      ],
+      "confidence": 9
     }
   ]
 }
