@@ -22,7 +22,8 @@
 //   1. `_meta.slug`, ha van (a rögzített, megjelent URL),
 //   2. különben a FRONTMATTER `title:` sora — a build.js `parseFrontmatter()`
 //      szabályaival (csak a `---` blokkban, az utolsó `title:` nyer, egy-egy
-//      szélső idézőjel lekerül; CRLF-es markdownban NINCS frontmatter),
+//      szélső idézőjel lekerül, a dupla idézőjeles érték `\"` és `\\` escape-je
+//      feloldódik; CRLF-es markdownban NINCS frontmatter),
 //   3. különben az `original_title`, végül a fájlnév.
 //
 // ⚠️ NEM a `core/publish-meta.js` `slugCimbol()`-ja. Az a publikáláskor
@@ -63,7 +64,11 @@ export function frontmatterCim(markdown) {
   for (const line of match[1].split('\n')) {
     const m = line.match(/^(\w+):\s*(.*)$/);
     if (!m || m[1] !== 'title') continue;
-    cim = m[2].trim().replace(/^["']|["']$/g, '');   // az UTOLSÓ title: nyer, mint a buildben
+    const ertek = m[2].trim();
+    cim = ertek.replace(/^["']|["']$/g, '');   // az UTOLSÓ title: nyer, mint a buildben
+    // 2026-09-12: a build a dupla idézőjeles érték `\"` és `\\` escape-jét is
+    // feloldja — a tükörnek ugyanezt kell tennie (a paritás-teszt figyeli).
+    if (/^".*"$/.test(ertek)) cim = cim.replace(/\\(["\\])/g, '$1');
   }
   return cim;
 }

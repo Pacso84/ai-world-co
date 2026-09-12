@@ -146,6 +146,8 @@ t('🔗 PARITÁS szintetikus mintákon — beleértve, ahol a RÉGI őr tévedet
     { article_markdown: '---\ntitle: Idézőjel nélkül\n---\nx', original_title: 'Más' },
     { article_markdown: "---\ntitle: 'Egyszeres idézőjel'\n---\nx" },
     { article_markdown: '---\ntitle: "He said "hi""\n---\nx' },
+    // 2026-09-12: belső `\"` escape — az élő /article/what cikk címének alakja
+    { article_markdown: '---\ntitle: "What \\"AI for Everyone\\" Really Means"\n---\nx', original_title: 'x' },
     { article_markdown: '---\ntitle: Első\ntitle: Második\n---\nx' },
     { article_markdown: '---\ntitle:\n---\nx', original_title: 'Üres cím után' },
     // A RÉGI őr ezt a törzsbeli sort címnek hitte; a build nem látja (nincs frontmatter):
@@ -162,6 +164,21 @@ t('🔗 PARITÁS szintetikus mintákon — beleértve, ahol a RÉGI őr tévedet
   }
   for (const f of ['ARTICLE_a.json', 'README.md', 'x.json', 'ARTICLE_b.JSON', 'article_c.json'])
     assert.equal(epulOldal(f), builder.szuro(f), `a fájl-szűrő eltér: ${f}`);
+});
+
+t('🔴 dupla idézőjeles cím belső escape-pel: a build és az őr is FELOLDJA (2026-09-12)', () => {
+  // Élő kár volt: a /article/what oldal H1-e „What \"AI for Everyone\" …" alakban,
+  // kilátszó perjelekkel jelent meg. ⚠️ A slug ezt NEM mutatja meg — a slugify a
+  // perjelet úgyis eldobja —, ezért a CÍMET magát kell nézni, mindkét oldalon.
+  const md = '---\ntitle: "What \\"AI for Everyone\\" Really Means in 2026"\n---\nx';
+  const varhato = 'What "AI for Everyone" Really Means in 2026';
+  assert.equal(frontmatterCim(md), varhato, 'az őr tükre nem oldja fel az escape-et');
+  const parseFrontmatter = new Function(`${fuggveny('parseFrontmatter')}; return parseFrontmatter;`)();
+  assert.equal(parseFrontmatter(md).meta.title, varhato, '🔴 a BUILD kilátszó perjellel jelenítené meg a címet');
+  // a szélső idézőjel nélküli, és az egyszeres idézőjeles érték NEM oldódik fel
+  assert.equal(parseFrontmatter('---\ntitle: Nincs \\"idezojel\n---\nx').meta.title, 'Nincs \\"idezojel');
+  assert.equal(frontmatterCim('---\ntitle: Nincs \\"idezojel\n---\nx'), 'Nincs \\"idezojel',
+    'az őr tükre idézőjel NÉLKÜLI értéken is feloldana — eltérne a buildtől');
 });
 
 t('🔑 (c) VALÓDI cikkeken: minden URL-slug egyezik a buildével, és nincs ütközés', () => {

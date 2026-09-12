@@ -783,7 +783,16 @@ function parseFrontmatter(markdown) {
     const key = m[1];
     let val = m[2].trim();
     // idézőjelek le
+    // ⚠️ ESCAPE (2026-09-12): a YAML dupla idézőjeles értékben az író `\"`-t ír
+    // a belső idézőjelre. Eddig csak a szélső idézőjel került le, a `\"` bent
+    // maradt, és az oldalon SZÓ SZERINT kilátszott — élő H1 volt:
+    // „What \"AI for Everyone\" Really Means in 2026". Mérve: 961 cikkből
+    // pontosan ez az EGY frontmatter-érték tartalmazott bármilyen escape-et,
+    // tehát a javítás mást nem érint. ⚠️ INLINE marad, nem importált segéd:
+    // a core/slug-collisions.test.js ezt a függvényt a FORRÁSBÓL építi fel.
+    const duplaIdezet = /^".*"$/.test(val);
     val = val.replace(/^["']|["']$/g, '');
+    if (duplaIdezet) val = val.replace(/\\(["\\])/g, '$1');
     if (key === 'tags') {
       // ["a", "b"] formátum
       try { fm.tags = JSON.parse(m[2].trim()); }

@@ -80,6 +80,18 @@ t('a slug-képlet megegyezik a build.js-ével', () => {
   assert.equal(slugCimbol(hosszu, null, null).length, SLUG_MAX, 'a hossz-plafon nem érvényesül');
 });
 
+t('🔴 idézőjelet tartalmazó cím NEM csonkul a slugban (élő kár: /article/what)', () => {
+  // A régi minta az első BELSŐ idézőjelnél megállt, és a slug `what` lett.
+  const md = 'title: "What \\"AI for Everyone\\" Really Means in 2026"\n\nSzöveg.';
+  assert.equal(slugCimbol(md, null, null), 'what-ai-for-everyone-really-means-in-2026');
+  // egyszeres idézőjelbe tett cím, benne dupla idézőjellel — ugyanaz a csapda
+  assert.equal(slugCimbol("title: 'Say \"hi\" to AI'", null, null), 'say-hi-to-ai');
+  // idézőjel nélküli cím, a végén idézőjellel
+  assert.equal(slugCimbol('title: The "Best" AI Tools', null, null), 'the-best-ai-tools');
+  // az ÜRES idézőjeles cím a tartalékra esik vissza — ezért kell a szélső idézőjel levétele
+  assert.equal(slugCimbol('title: ""', 'Tartalék Cím', null), 'tartal-k-c-m');
+});
+
 t('hiányzó bemenetre sem dob', () => {
   const m = publikalasMeta();
   assert.ok(typeof m.publishedAt === 'string' && m.publishedAt.length > 0);

@@ -38,8 +38,19 @@ export const SLUG_MAX = 70;
  * címből képzett alak a rögzített `_meta.slug`-tól.
  */
 export function slugCimbol(markdown, originalTitle, tartalek) {
-  const t = String(markdown || '').match(/^title:\s*"?([^"\n]+)/m);
-  return String(t?.[1] || originalTitle || tartalek || '')
+  // ⚠️ 2026-09-12: a régi minta (`"?([^"\n]+)`) az ELSŐ BELSŐ idézőjelnél megállt.
+  // Élő kár: „What \"AI for Everyone\" Really Means in 2026" → a rögzített slug
+  // ÖRÖKRE `what` lett (/article/what). Most a TELJES sor-értéket vesszük.
+  // A szélső idézőjel levétele azért kell, hogy az ÜRES idézőjeles cím (`""`)
+  // a tartalékra essen vissza. Escape-feloldás itt SZÁNDÉKOSAN nincs: a
+  // slug-képlet a perjelet és az idézőjelet úgyis eldobja — mutációval
+  // igazolva, hogy a feloldás a slugon semmit nem változtatna (a build.js-ben
+  // viszont kell, ott a CÍM jelenik meg).
+  // A már rögzített slugokat ez NEM érinti (a kint lévő slug sérthetetlen).
+  const sor = String(markdown || '').match(/^title:\s*(.*)$/m);
+  let cim = sor ? sor[1].trim() : '';
+  cim = cim.replace(/^["']|["']$/g, '');
+  return String(cim || originalTitle || tartalek || '')
     .toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, SLUG_MAX);
 }
 
