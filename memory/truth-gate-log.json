@@ -1,17 +1,4 @@
 {
-  "2026-08-23": [
-    {
-      "at": "2026-08-23T08:18:04.050Z",
-      "file": "WRITER_2026-08-23T00-52-32-690Z_aiworld-editorial_This_Week_in_AI.json",
-      "action": "block",
-      "reasons": [
-        "PicsArt is mentioned as releasing an AI room redesign tool from a single photo — PicsArt is not in the verified-real list, and the article attributes a specific featured product (a room-redesign tool with modern/cozy/minimalist styles) to it that I cannot verify as real.",
-        "Google Vids is described as 'now available inside Google Workspace' and characterized as an 'AI-powered video creation app' — while Google Vids exists, the specific positioning as an AI-powered video creation tool available inside Workspace with template-based presentation/training video creation needs verification, but is more plausibly a mischaracterization of Google Vids (which is primarily a video creation app but not primarily branded as 'AI-powered'). This is borderline — flagging only if reasonably sure.",
-        "OpenAI's 'zero data retention' policy — OpenAI does have a 'zero data retention' option for enterprise/API customers, so this is plausibly real, not flagging."
-      ],
-      "confidence": 5
-    }
-  ],
   "2026-08-24": [
     {
       "at": "2026-08-24T00:45:26.419Z",
@@ -322,6 +309,29 @@
       "action": "block",
       "reasons": [
         "The article states 'PicsArt has been publicly rolling out AI editing agents inside its app, with voice control as part of that direction — that's confirmed.' This asserts PicsArt Agents with voice control as a confirmed, deployed product feature/direction. Per prior verification, the specific combination of PicsArt Agents + voice control as a real, shipped capability is not confirmed and was previously flagged as fabricated."
+      ],
+      "confidence": 7
+    }
+  ],
+  "2026-09-12": [
+    {
+      "at": "2026-09-12T02:16:59.017Z",
+      "file": "WRITER_2026-09-11T18-51-46-518Z_google-workspace_The_Gemini_desktop_app_is_now_available_for_Window.json",
+      "action": "block",
+      "reasons": [
+        "The article states as fact that there is a 'Gemini desktop app' for Windows distributed via the Microsoft Store, with publisher 'Google LLC', installable from the Microsoft Store. As of available information, Google has not publicly released a dedicated Gemini desktop app for Windows via the Microsoft Store under that publisher — this appears to be a fabricated product/UI.",
+        "The article states as fact that the Gemini desktop app is summoned with the keyboard shortcut 'Alt + Space'. There is no verified announcement or documentation of this shortcut being tied to a Gemini Windows app — this appears to be a fabricated UI detail."
+      ],
+      "confidence": 7
+    },
+    {
+      "at": "2026-09-12T02:22:20.469Z",
+      "file": "WRITER_GUIDE_summarize-long-web-articles-in-safari-with-apple-intelligenc.json",
+      "action": "block",
+      "reasons": [
+        "The article claims a 'Summarize' option appears in Safari's page settings (Aa) menu as a discrete option (or with a ✨ sparkles icon) on supported devices. As of available information, Apple Intelligence's web-page summarization in Safari is accessed via the Reader view's summary feature, not as a standalone 'Summarize' button labeled in the Aa page-settings menu — the article describes a specific UI element that does not exist as stated.",
+        "The article states that tapping Summarize produces 'a short list of bullet points' and that 'a small section labeled \"Summary\" appears with 3 to 5 bullet points' — this specific UI behavior (a labeled 'Summary' section with bullet points appearing after tapping Summarize) is fabricated; Apple's Reader-view summary shows a few short lines at the top of the page, not a separately labeled section with bullet points.",
+        "The article claims users 'may also see a related option to ask a follow-up question about the article — for example, \"What's the main argument?\" — which Apple Intelligence answers using the page content.' This follow-up Q&A feature inside Safari's article summary is not a verified Apple Intelligence feature."
       ],
       "confidence": 7
     }

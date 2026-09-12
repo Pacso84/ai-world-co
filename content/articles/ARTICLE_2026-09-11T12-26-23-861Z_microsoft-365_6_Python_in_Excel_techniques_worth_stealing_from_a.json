@@ -1,0 +1,66 @@
+{
+  "_meta": {
+    "written_at": "2026-09-12T02:16:20.204Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.01193256,
+    "original_draft": "2026-09-11T12-26-23-861Z_microsoft-365_6_Python_in_Excel_techniques_worth_stealing_from_a.json",
+    "source_id": "microsoft-365",
+    "source_name": "Microsoft 365 Insider (hivatalos)",
+    "source_link": "https://techcommunity.microsoft.com/t5/microsoft-365-insider-blog/6-python-in-excel-techniques-worth-stealing-from-an-excel/ba-p/4552793",
+    "source_links": [
+      "https://techcommunity.microsoft.com/t5/microsoft-365-insider-blog/6-python-in-excel-techniques-worth-stealing-from-an-excel/ba-p/4552793"
+    ],
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "published_at": "2026-09-12T02:16:42.131Z",
+    "slug": "how-to-use-python-in-excel-even-if-you-ve-never-written-code",
+    "auto_check": {
+      "passed": false,
+      "issues": [
+        "LEDE_TOO_LONG: A RÖVIDEN-doboz 62 szó (max ~45) — ami hosszú, az már nem \"röviden\"."
+      ],
+      "wordCount": 1534
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured how-to guide with friendly, encouraging tone that respects beginners; technical terms are explained in plain language; hook, steps, verification checkpoints, What this means for you, and wrap-up are all present; sourced from official Microsoft Tech Community; no clichés or prohibited content found.",
+      "_aiCost": 0.0052794,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-09-12T02:19:40.714Z",
+    "guide_worthy": false,
+    "pairing_reason": "This article is already a step-by-step how-to guide for Python in Excel with concrete examples and instructions",
+    "image_v": 2,
+    "image_at": "2026-09-12T02:24:10.475Z",
+    "seo": {
+      "meta_description": "Microsoft now lets you run Python inside Excel. Learn how to use the =PY function with 5 beginner-friendly examples for filtering data and creating charts.",
+      "keywords": [
+        "python in excel tutorial",
+        "how to use python in excel",
+        "excel python for beginners",
+        "microsoft excel python",
+        "pandas matplotlib excel",
+        "python spreadsheet数据分析",
+        "python data analysis excel",
+        "excel python function"
+      ],
+      "seo_score": 9,
+      "suggestions": [
+        "Add more long-tail keywords like 'run python in excel cells' and 'excel python beginners guide' to the article content for better ranking",
+        "Consider adding FAQ section addressing common beginner concerns like 'do I need to install python' and 'is it free'",
+        "Include the specific Excel version or Microsoft 365 requirement in the article for clearer guidance"
+      ],
+      "optimised_at": "2026-09-12T02:25:03.695Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"How to Use Python in Excel (Even If You've Never Written Code)\"\nsubtitle: \"Microsoft now lets you run Python directly inside your spreadsheet. Here's how to start, with five practical examples you can try today.\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 6\ntags: [\"python-in-excel\", \"spreadsheets\", \"productivity\", \"data-analysis\"]\n---\n\n# How to Use Python in Excel (Even If You've Never Written Code)\n\n> **In short:** Microsoft now lets you run Python code inside Excel cells using `=PY`. The code runs in Microsoft's cloud, so nothing installs on your computer, and common data libraries (pandas, matplotlib, NumPy) are already loaded. This guide walks through five practical examples — filtering rows, averaging columns, drawing a chart — for anyone who has never written a line of code.\n\nYou open a spreadsheet, scroll through a few thousand rows of orders, and try to spot which products sell best. The filter button gets you partway. A pivot table (a built-in summary tool that counts and totals your data) helps more. But the moment you think \"I wish I could just describe what I want in plain English and have it happen\" — that's where Python in Excel fits in.\n\nMicrosoft added Python directly to Excel. You type `=PY` in any cell, write a few short lines of Python, and the answer shows up right there in the grid. Nothing installs locally. Nothing new to learn.\n\n## What you need before you start\n\nA few things should be in place so you don't hit a wall at step one.\n\n- **A current Microsoft 365 subscription.** Python in Excel is part of the Microsoft 365 family. Check the latest Microsoft 365 plan list to confirm your plan includes it — features are sometimes added or moved between tiers.\n- **Excel on a desktop or the web.** The richest support is in Excel for Windows, with Excel for Mac and Excel on the web also supported. Mobile support is more limited, so use a laptop for your first try.\n- **An internet connection.** Your Python code runs on Microsoft's servers, so offline workbooks can't compute Python cells.\n- **A willingness to type a few non-English words.** That's it. You don't need to know Python. You just need to copy the lines below, change one or two names, and press Enter.\n\n## What is Python, anyway?\n\nPython is a programming language — a way to write instructions for a computer using words that look close to English. It's popular because the instructions are short and read almost like sentences.\n\nYou don't need to learn Python to use Python in Excel. Think of it like copy-pasting a formula, except this formula can do things a regular Excel formula can't — pull the average from only the rows that match a condition, or draw a chart, or reshape messy text in one step.\n\nWhen you type `=PY` in a cell, Excel sends your Python code to Microsoft's cloud. The cloud runs it, returns the answer, and Excel displays the result — a number, a small table, or even a chart image. This takes a few seconds.\n\n## Step 1 — Pull data from a cell range into Python\n\nBefore Python can do anything useful, it needs to \"see\" your data. The trick is a function called `xl()` — think of it as Python pointing at a cell range and saying \"that one.\"\n\n1. Click an empty cell away from your data — say **cell H1**.\n2. Type this exactly:\n   ```\n   =PY(\"df = xl('A1:D50')\")\n   ```\n3. Press **Ctrl+Enter** on Windows, or **Cmd+Enter** on Mac. This shortcut is what tells Excel \"this is Python,\" not a regular formula.\n4. A small Python icon appears next to the cell, and the cell shows a table preview like `[DataFrame]`.\n\n💬 Example: `=PY(\"df = xl('A1:D50')\")`\n\n**You'll know it worked when:** the cell shows a tiny table icon or a small preview, not an error like `#NAME?` or `#VALUE!`. If you see an error, double-check that `xl` is lowercase and the cell range matches where your data actually lives.\n\n## Step 2 — Filter rows by a condition\n\nSuppose you have a list of customer orders with columns named something like Date, Product, and Amount. You want to see only the rows where the Amount is greater than 1,000. In regular Excel, that's a filter. In Python, it's one short line.\n\n1. In a new empty cell, type:\n   ```\n   =PY(\"xl('A1:D500')[xl('A1:D500')['Amount'] > 1000]\")\n   ```\n2. Press **Ctrl+Enter** to commit. The square-bracket condition works like an Excel filter — it keeps only the rows where Amount is greater than 1,000.\n3. The cell now shows a smaller table containing only the big orders.\n\n💬 Example: `=PY(\"xl('A1:D500')[xl('A1:D500')['Amount'] > 1000]\")`\n\n**You'll know it worked when:** the cell returns a smaller table than your original data. The label \"Amount\" must match your real column header — change it if your column is called \"Total\" or \"Price.\"\n\n## Step 3 — Summarize a column with one line\n\nA pivot table can do this too, but Python lets you write the rule in plain words. Here, you want the average of column \"Amount\" for each unique \"Product.\"\n\n1. In a new cell, type:\n   ```\n   =PY(\"xl('A1:D500').groupby('Product')['Amount'].mean()\")\n   ```\n2. Press **Ctrl+Enter**.\n3. The result is a small two-column table: each unique product on the left, the average amount on the right.\n\n💬 Example: `=PY(\"xl('A1:D500').groupby('Product')['Amount'].mean()\")`\n\n**You'll know it worked when:** you see a table where each row is one product with a number beside it. If your column has a different name, swap `'Product'` and `'Amount'` for your actual headers. Use `.sum()` instead of `.mean()` if you want totals.\n\n## Step 4 — Draw a chart inside a cell\n\nThis is the part that feels a little like magic. You ask matplotlib (a Python library for drawing charts) to draw a bar chart, and Excel shows the chart right inside the spreadsheet, in a single cell.\n\n1. In a new cell, type:\n   ```\n   =PY(\"import matplotlib.pyplot as plt; xl('A1:D500').groupby('Product')['Amount'].sum().plot(kind='bar'); plt.show()\")\n   ```\n2. Press **Ctrl+Enter**.\n3. Wait a few seconds. Excel shows a chart image inside the cell.\n\n💬 Example: `=PY(\"import matplotlib.pyplot as plt; xl('A1:D500').groupby('Product')['Amount'].sum().plot(kind='bar'); plt.show()\")`\n\n**You'll know it worked when:** the cell shows a small bar chart, not text. If the chart looks squashed, drag the row taller or widen the column — the chart resizes with the cell.\n\n## Step 5 — Save and reopen your workbook\n\nPython in Excel doesn't change how you save a file. Your workbook stays a normal `.xlsx`, and each Python cell stores both the code and the last computed result.\n\n1. Press **Ctrl+S** (Windows) or **Cmd+S** (Mac), or go to **File → Save**.\n2. Keep the default `.xlsx` format — that's fine for Python in Excel workbooks.\n3. When you reopen the file later, Excel will show the saved results immediately. If you edit a cell the Python code depends on, the Python cell will refresh the next time you click it.\n\n💬 Example: nothing to copy here — just **File → Save**.\n\n**You'll know it worked when:** the file opens normally and your Python cells still display their values. Anyone you share the file with sees the results too — they don't need Python installed to view it.\n\n## Common mistakes\n\n- **Forgetting Ctrl+Enter.** Pressing just Enter treats `=PY(...)` as a regular formula and gives you a `#NAME?` error. The shortcut is what tells Excel \"this is Python.\"\n- **Typos in column names.** `['Amount']` only works if your column is literally named \"Amount.\" Check the header row of your data and match the spelling exactly — including capitalization.\n- **Cell range too small or too large.** If your data runs to row 800 but you wrote `A1:D50`, Python only sees the first 50 rows.\n- **Working offline.** Python runs in Microsoft's cloud, so a workbook opened without internet won't compute new Python results.\n- **Trying it on a phone first.** Mobile Excel has limited Python support. Use a laptop or the web version for your first attempt.\n\n## What this means for you\n\n- **If you manage a budget or spending log:** Step 3 replaces a manual average. Drop in your bank export, group by category, and you have a one-line monthly average — no formula writing.\n- **If you run a small business or work in sales:** Step 4 makes a presentation-ready chart in seconds, without opening a separate tool.\n- **If you teach or learn data:** Python in Excel is a low-stakes way to introduce students to programming — they're already comfortable inside a spreadsheet.\n- **If you've never written code:** treat the examples above as templates. Swap the column names, change the numbers, and see what happens. You can't break anything by trying.\n\n## A first next step to try today\n\nOpen a spreadsheet you've been meaning to clean up. Find an empty cell and try Step 1 first — just pulling your data into Python. Once you see that work, try Step 3 with your own column names. The feeling of typing a sentence and having the computer obey it is the same one every programmer had on day one.\n\nYou don't need to become a Python expert. You just need one line that does something useful for you.",
+  "original_title": "6 Python in Excel techniques worth stealing from an Excel champion"
+}

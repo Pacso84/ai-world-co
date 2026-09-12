@@ -1,0 +1,28 @@
+{
+  "started_at": "2026-09-12T02:16:20.390Z",
+  "total": 3,
+  "passed": 2,
+  "failed": 0,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.012840767999999999,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-09-11T12-26-23-861Z_microsoft-365_6_Python_in_Excel_techniques_worth_stealing_from_a.json",
+      "article": "ARTICLE_2026-09-11T12-26-23-861Z_microsoft-365_6_Python_in_Excel_techniques_worth_stealing_from_a.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0052794
+    },
+    {
+      "writer": "WRITER_2026-09-12T02-02-47-849Z_openai-blog_Perplexity_trusts_GPT-6_Astra_with_end-to-end_syst.json",
+      "article": "ARTICLE_2026-09-12T02-02-47-849Z_openai-blog_Perplexity_trusts_GPT-6_Astra_with_end-to-end_syst.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.0016827
+    }
+  ],
+  "truth_blocked": 1,
+  "finished_at": "2026-09-12T02:17:23.664Z",
+  "duration_seconds": 63.274
+}

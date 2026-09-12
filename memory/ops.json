@@ -1,150 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t17889573910790",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-09-09T12:36:31.079Z",
-      "updated": "2026-09-09T12:36:57.338Z"
-    },
-    {
-      "id": "t178900553321467",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-09-10T01:58:53.214Z",
-      "updated": "2026-09-10T01:58:53.398Z"
-    },
-    {
-      "id": "t178900553340083",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-09-10T01:58:53.400Z",
-      "updated": "2026-09-10T01:59:45.652Z"
-    },
-    {
-      "id": "t178900558565399",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-09-10T01:59:45.653Z",
-      "updated": "2026-09-10T01:59:45.860Z"
-    },
-    {
-      "id": "t178900558586245",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-09-10T01:59:45.862Z",
-      "updated": "2026-09-10T02:05:40.095Z"
-    },
-    {
-      "id": "t178900594009736",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-10T02:05:40.097Z",
-      "updated": "2026-09-10T02:07:31.879Z"
-    },
-    {
-      "id": "t178900605188195",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-09-10T02:07:31.881Z",
-      "updated": "2026-09-10T02:07:53.234Z"
-    },
-    {
-      "id": "t178900607323560",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-10T02:07:53.235Z",
-      "updated": "2026-09-10T02:08:16.557Z"
-    },
-    {
-      "id": "t178900609655919",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-09-10T02:08:16.559Z",
-      "updated": "2026-09-10T02:08:50.199Z"
-    },
-    {
-      "id": "t17890061302500",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-09-10T02:08:50.250Z",
-      "updated": "2026-09-10T02:12:15.091Z"
-    },
-    {
-      "id": "t178900633509384",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-10T02:12:15.093Z",
-      "updated": "2026-09-10T02:12:58.888Z"
-    },
-    {
-      "id": "t178900637893571",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-10T02:12:58.935Z",
-      "updated": "2026-09-10T02:13:50.250Z"
-    },
-    {
-      "id": "t178900643025134",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-09-10T02:13:50.251Z",
-      "updated": "2026-09-10T02:14:40.785Z"
-    },
-    {
-      "id": "t178900648078747",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-10T02:14:40.787Z",
-      "updated": "2026-09-10T02:14:47.461Z"
-    },
-    {
-      "id": "t178900648746360",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-09-10T02:14:47.463Z",
-      "updated": "2026-09-10T02:15:07.925Z"
-    },
-    {
-      "id": "t17890918609766",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-09-11T01:57:40.976Z",
-      "updated": "2026-09-11T01:57:41.141Z"
-    },
-    {
-      "id": "t178909186114352",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-09-11T01:57:41.143Z",
-      "updated": "2026-09-11T01:58:49.634Z"
-    },
-    {
-      "id": "t178909192963697",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-09-11T01:58:49.636Z",
-      "updated": "2026-09-11T01:58:49.821Z"
-    },
-    {
       "id": "t178909192982310",
       "title": "Run iro",
       "status": "done",
@@ -479,33 +335,153 @@
       "agent": "publisher",
       "created": "2026-09-11T18:54:22.548Z",
       "updated": "2026-09-11T18:54:40.811Z"
+    },
+    {
+      "id": "t178917853857766",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-09-12T02:02:18.577Z",
+      "updated": "2026-09-12T02:02:18.763Z"
+    },
+    {
+      "id": "t178917853876490",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-09-12T02:02:18.764Z",
+      "updated": "2026-09-12T02:02:47.860Z"
+    },
+    {
+      "id": "t178917856786255",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-09-12T02:02:47.862Z",
+      "updated": "2026-09-12T02:02:48.058Z"
+    },
+    {
+      "id": "t178917856806036",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-09-12T02:02:48.060Z",
+      "updated": "2026-09-12T02:16:20.220Z"
+    },
+    {
+      "id": "t178917938022176",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-12T02:16:20.221Z",
+      "updated": "2026-09-12T02:17:23.673Z"
+    },
+    {
+      "id": "t178917944367675",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-09-12T02:17:23.676Z",
+      "updated": "2026-09-12T02:18:58.523Z"
+    },
+    {
+      "id": "t178917953852482",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-12T02:18:58.524Z",
+      "updated": "2026-09-12T02:19:31.370Z"
+    },
+    {
+      "id": "t178917957137280",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-09-12T02:19:31.372Z",
+      "updated": "2026-09-12T02:19:48.490Z"
+    },
+    {
+      "id": "t178917958854367",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-09-12T02:19:48.543Z",
+      "updated": "2026-09-12T02:21:28.757Z"
+    },
+    {
+      "id": "t178917968875882",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-12T02:21:28.758Z",
+      "updated": "2026-09-12T02:22:20.487Z"
+    },
+    {
+      "id": "t178917974053418",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-09-12T02:22:20.534Z",
+      "updated": "2026-09-12T02:22:20.717Z"
+    },
+    {
+      "id": "t178917974071982",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-09-12T02:22:20.719Z",
+      "updated": "2026-09-12T02:22:56.955Z"
+    },
+    {
+      "id": "t178917977696130",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-09-12T02:22:56.961Z",
+      "updated": "2026-09-12T02:23:18.724Z"
+    },
+    {
+      "id": "t178917979872542",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-12T02:23:18.725Z",
+      "updated": "2026-09-12T02:24:00.392Z"
+    },
+    {
+      "id": "t178917984039358",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-12T02:24:00.393Z",
+      "updated": "2026-09-12T02:24:52.315Z"
+    },
+    {
+      "id": "t178917989231771",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-09-12T02:24:52.317Z",
+      "updated": "2026-09-12T02:25:54.778Z"
+    },
+    {
+      "id": "t178917995478083",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-12T02:25:54.780Z",
+      "updated": "2026-09-12T02:26:06.695Z"
+    },
+    {
+      "id": "t178917996669745",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-09-12T02:26:06.697Z",
+      "updated": "2026-09-12T02:27:14.649Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178819138131299",
-      "level": "success",
-      "text": "3 hír + 0 útmutató publikálva (költség: $0.0405).",
-      "agent": "ceo",
-      "at": "2026-08-31T15:49:41.312Z",
-      "loud": false
-    },
-    {
-      "id": "n178821100971770",
-      "level": "info",
-      "text": "SEO: 1 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-08-31T21:16:49.717Z",
-      "loud": false
-    },
-    {
-      "id": "n17882110223586",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The lineup is solid and ready — helpful, practical topics that everyday people genuinely need, from privacy to sympathy messages. One minor note: articles 3-5 all cover complaint emails, which might f",
-      "agent": "publisher",
-      "at": "2026-08-31T21:17:02.358Z",
-      "loud": false
-    },
     {
       "id": "n17882110363830",
       "level": "success",
@@ -1281,81 +1257,33 @@
       "agent": "ceo",
       "at": "2026-09-11T18:54:40.854Z",
       "loud": false
+    },
+    {
+      "id": "n178917995477059",
+      "level": "info",
+      "text": "SEO: 5 cikk optimalizálva (átlag 8.2/10).",
+      "agent": "seo",
+      "at": "2026-09-12T02:25:54.770Z",
+      "loud": false
+    },
+    {
+      "id": "n178918001870811",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The line-up is warm, on-brand, and genuinely useful — real-life moments like resumes, sympathy notes, and pet-sitting agreements show everyday readers exactly where AI can help — but four of the ten p",
+      "agent": "publisher",
+      "at": "2026-09-12T02:26:58.708Z",
+      "loud": false
+    },
+    {
+      "id": "n178918003469333",
+      "level": "success",
+      "text": "3 hír + 2 útmutató publikálva (költség: $0.1112).",
+      "agent": "ceo",
+      "at": "2026-09-12T02:27:14.693Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178831541777925",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-09-02T02:16:57.779Z"
-    },
-    {
-      "id": "m17883154886040",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Getting started with Claude for clear, careful hel\" — Claude was trained to be 'helpful, harmless, and honest' — this was Anthropic's old framing (the \"HHH\" framework). They've since evolved their approach and this phrase is no longer accurate as a current description.; The guide describes the login process using 'login code' via email ",
-      "ref": "ARTICLE_GUIDE_claude-getting-started.json",
-      "at": "2026-09-02T02:18:08.604Z"
-    },
-    {
-      "id": "m178831623424295",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-09-02T02:30:34.242Z"
-    },
-    {
-      "id": "m178835156918296",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "info",
-      "text": "A \"Introducing MiniMax H3 Max: fast AI video in Picsart\" hír a meglévő útmutatóra mutat: create-royalty-free-ai-music-loops-for-podcasts-and-videos-b",
-      "ref": "create-royalty-free-ai-music-loops-for-podcasts-and-videos-b",
-      "at": "2026-09-02T12:19:29.182Z"
-    },
-    {
-      "id": "m178835160393882",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 19 → 7/5/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-09-02T12:20:03.938Z"
-    },
-    {
-      "id": "m178835166160135",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"How to use Claude Artifacts to create and preview \" — The description of the Artifacts pane appearing on the right side of the screen (Step 2, Step 4, Step 5) — this UI no longer exists. Artifacts now appear inline within the conversation, not in a separate right-side pane; The 'Artifacts button' icon described as 'a small stack of pape",
-      "ref": "ARTICLE_GUIDE_claude-artifacts.json",
-      "at": "2026-09-02T12:21:01.601Z"
-    },
-    {
-      "id": "m178835261175144",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Qwen Image 3.0 Pro is now in Picsart: what it does and how to use it\" — mi a baj: The article presents 'Qwen Image 3.0 Pro' as Alibaba's top image-generation model with a specific version number, but this model name does not match known Qwen product naming conventions (Qwen's lineup uses patterns like Qwen2.5, Qwen-VL, Qwen2-VL) and cannot be verified as a real, officially n",
-      "ref": "2026-09-02T12-33-35-117Z_picsart_Qwen_Image_3_0_Pro_is_now_in_Picsart__what_it_does.json",
-      "at": "2026-09-02T12:36:51.751Z"
-    },
-    {
-      "id": "m178835264810814",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Qwen Image 3.0 Pro is now in Picsart: what it does and how to use it\" — javítva: The article presents 'Qwen Image 3.0 Pro' as Alibaba's top image-generation model with a specific version number, but this model name does not match known Qwen product naming conventions (Qwen's lineup uses patterns like Qwen2.5, Qwen-VL, Qwen2-VL) and cannot be verified as a real, officially named produ",
-      "ref": "2026-09-02T12-33-35-117Z_picsart_Qwen_Image_3_0_Pro_is_now_in_Picsart__what_it_does.json",
-      "at": "2026-09-02T12:37:28.108Z"
-    },
     {
       "id": "m178835267822057",
       "from": "ellenorzo",
@@ -2646,6 +2574,78 @@
       "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 20 → 5/4/2 oszlop.",
       "ref": "mobile",
       "at": "2026-09-11T18:54:22.540Z"
+    },
+    {
+      "id": "m178917941901671",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"The Gemini desktop app is now available for Windows\" — mi a baj: The article states as fact that there is a 'Gemini desktop app' for Windows distributed via the Microsoft Store, with publisher 'Google LLC', installable from the Microsoft Store. As of available information, Google has not publicly released a dedicated Gemini desktop app for Windows via the Microsoft Store und",
+      "ref": "2026-09-11T18-51-46-518Z_google-workspace_The_Gemini_desktop_app_is_now_available_for_Window.json",
+      "at": "2026-09-12T02:16:59.016Z"
+    },
+    {
+      "id": "m178917952717071",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"The Gemini desktop app is now available for Windows\" — javítva: The article states as fact that there is a 'Gemini desktop app' for Windows distributed via the Microsoft Store, with publisher 'Google LLC', installable from the Microsoft Store. As of available information, Google has not publicly released a dedicated Gemini desktop app for Windows via the Microsoft Store under that pu",
+      "ref": "2026-09-11T18-51-46-518Z_google-workspace_The_Gemini_desktop_app_is_now_available_for_Window.json",
+      "at": "2026-09-12T02:18:47.170Z"
+    },
+    {
+      "id": "m178917953851410",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"How FLUX Video Edit rewrites a clip from one instruction\" — javítva: The article states 'PicsArt has been publicly rolling out AI editing agents inside its app, with voice control as part of that direction — that's confirmed.' This asserts PicsArt Agents with voice control as a confirmed, deployed product feature/direction. Per prior verification, the specific combination of PicsArt ",
+      "ref": "2026-09-11T18-51-46-518Z_picsart_How_FLUX_Video_Edit_rewrites_a_clip_from_one_instr.json",
+      "at": "2026-09-12T02:18:58.514Z"
+    },
+    {
+      "id": "m178917955358885",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"The Gemini desktop app is now available for Windows\" — mi a baj: Source announces Windows desktop app availability but article never mentions it — major factual gap; Omits an entire Gemini access method the source covers; Article subtitle promises to explain where Gemini 'lives' but ignores the desktop app entirely",
+      "ref": "2026-09-11T18-51-46-518Z_google-workspace_The_Gemini_desktop_app_is_now_available_for_Window.json",
+      "at": "2026-09-12T02:19:13.588Z"
+    },
+    {
+      "id": "m178917957136065",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"How FLUX Video Edit rewrites a clip from one instruction\" (?/10)",
+      "ref": "2026-09-11T18-51-46-518Z_picsart_How_FLUX_Video_Edit_rewrites_a_clip_from_one_instr.json",
+      "at": "2026-09-12T02:19:31.360Z"
+    },
+    {
+      "id": "m178917974046810",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Summarize long web articles in Safari with Apple Intelligence\" — mi a baj: UI_CLAIMS_UNSOURCED: 6 konkrét képernyő-feliratot állít tényként forrás nélkül (\"turn on apple intelligence\", \"apple intelligence\", \"aa\", \"summarize\", …). Vagy nézd meg a hivatalos oldalon, vagy írd hedge-elve (\"if you don't see…\").; The article claims a 'Summarize' option appears in Safari's page set",
+      "ref": "GUIDE_summarize-long-web-articles-in-safari-with-apple-intelligenc.json",
+      "at": "2026-09-12T02:22:20.468Z"
+    },
+    {
+      "id": "m178917996668784",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 20 → 5/4/2 oszlop.",
+      "ref": "mobile",
+      "at": "2026-09-12T02:26:06.687Z"
+    },
+    {
+      "id": "m178918006721052",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Design a personalized weekly workout plan with Met\" — Meta AI is accessible via \"a small blue circle icon in some apps\" (specific UI element that may have changed)",
+      "ref": "ARTICLE_GUIDE_design-a-personalized-weekly-workout-plan-with-meta-ai.json",
+      "at": "2026-09-12T02:27:47.210Z"
     }
   ]
 }

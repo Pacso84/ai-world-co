@@ -1,0 +1,62 @@
+{
+  "_meta": {
+    "written_at": "2026-09-12T02:03:41.600Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00855318,
+    "original_draft": "2026-09-12T02-02-47-849Z_openai-blog_Perplexity_trusts_GPT-6_Astra_with_end-to-end_syst.json",
+    "source_id": "openai-blog",
+    "source_name": "OpenAI Blog (hivatalos)",
+    "source_link": "https://openai.com/index/perplexity-improving-accuracy-with-astra",
+    "source_links": [
+      "https://openai.com/index/perplexity-improving-accuracy-with-astra"
+    ],
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "published_at": "2026-09-12T02:17:23.663Z",
+    "slug": "end-to-end-ai-agents-what-it-means-when-ai-does-the-whole-job",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 767
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [
+        "Article could better reference the OpenAI source to ground the claims in the announced GPT-6 Astra features rather than making general statements about 'end-to-end agents' without attribution"
+      ],
+      "verdict": "The article meets quality standards with accessible language, good structure, clear explanations of technical terms (API, hallucination), appropriate audience fit, and no prohibited content. It could strengthen credibility by explicitly connecting to the OpenAI announcement rather than staying at the general explainer level.",
+      "_aiCost": 0.0016827,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-09-12T02:19:48.478Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is a general explainer article about the concept of end-to-end AI agents, not a news announcement about a specific named feature/tool that users can go use",
+    "image_v": 2,
+    "image_at": "2026-09-12T02:24:37.915Z",
+    "seo": {
+      "meta_description": "End-to-end AI agents now handle complete workflows, not just single prompts. Here's what that means for your productivity and work.",
+      "keywords": [
+        "end-to-end AI agents",
+        "what are AI agents",
+        "AI workflow automation",
+        "AI agents vs assistants",
+        "how AI agents work"
+      ],
+      "seo_score": 7,
+      "suggestions": [
+        "Add more specific long-tail keywords like 'AI agents for business' or 'using AI agents for productivity'",
+        "Consider adding the target keyword 'end-to-end AI agents' earlier in the first paragraph for better relevance"
+      ],
+      "optimised_at": "2026-09-12T02:25:25.131Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"End-to-End AI Agents: What It Means When AI Does the Whole Job\"\nsubtitle: \"A new wave of AI tools can carry whole workflows with far less hand-holding. Here's what that actually means for you.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"ai-agents\", \"automation\", \"productivity\", \"workflows\"]\n---\n\n# End-to-End AI Agents: What It Means When AI Does the Whole Job\n\n> **In short:** A new class of AI agents can handle whole workflows — writing messages, updating software, monitoring systems — with far less human check-in than before. For you, that means AI tools will take on bigger chunks of work, not just one question at a time.\n\nYou've asked a coworker to \"handle the email thread\" or \"take care of the scheduling,\" then gone back to your real work. That feeling of trust — letting someone else carry a small task start to finish — is exactly what a new wave of AI tools is starting to copy.\n\nFor most of the past few years, AI assistants worked one question at a time. You typed a prompt (your instruction to the AI), got a reply, then had to copy the answer somewhere yourself. The AI didn't actually *do* anything in the outside world — it just talked.\n\nThat's starting to change.\n\n## What \"end-to-end\" actually means\n\nWhen a tool says it handles work \"end-to-end,\" it means the AI can carry a task from the first step to the last without you driving every click. Think of the difference between:\n\n- **A calculator** — you type the numbers, it gives you an answer. You do everything else.\n- **A tax preparer** — you hand them a folder of receipts, and they build the whole return. You check the final result.\n\nAn end-to-end AI agent is closer to the second one. You describe the goal, and the AI breaks it into steps, talks to other apps through what tech folks call an API (a way for programs to hand work to each other), and reports back when it's done.\n\nIn practical terms, an end-to-end agent might:\n\n- Read incoming messages, draft replies in your voice, and queue them up for your approval.\n- Watch a list of running software, notice when something looks wrong, and open a fix-or-flag note on its own.\n- Plan a project, write a short brief, send it to your team, and add the next steps to your calendar.\n\nThese are not science-fiction promises. They are the kinds of tasks that companies are now testing in real workplaces.\n\n## Where the human still matters\n\nEven when an AI agent handles the whole loop, it usually checks in with you at two key moments:\n\n1. **Before big or irreversible actions.** Sending a chat message internally? Probably fine. Sending an email to a customer? Most agents will pause and ask, \"Look okay?\"\n2. **When something looks off.** If the AI isn't sure, it stops and surfaces the question instead of guessing.\n\nThe shift you may have noticed is *how often* the AI checks in. Older tools pinged you every few steps. The newer ones often wait until the work is finished — or until they hit something they can't decide on.\n\nThat sounds great, but it raises a real question: how much do you trust the AI to be right before you see its work?\n\n## What this means for you\n\n- **If you use AI for everyday tasks (email, planning, writing):** Expect the assistant to do more before it asks you. The trade-off is speed, but check its drafts before sending — a confident AI is still capable of confident mistakes, a quirk known as hallucination (when the AI fills gaps with made-up details).\n- **If you run a small business or team:** You can now point an AI at a recurring process — weekly reports, customer follow-ups, social scheduling — and let it run with light supervision. Start with one process, review the first week's output carefully, then loosen the reins.\n- **If you're worried about AI \"taking over\":** The honest answer is that these tools are still learning your standards. The bigger shift is that reviewing an AI's *finished work* becomes a new daily skill — not typing prompts, but judging what comes back.\n\n## Wrap-up\n\nEnd-to-end AI agents don't replace the work you do — they change the shape of it. Less time typing instructions, more time checking the result. Pick one small workflow you repeat every week and try handing it to an AI assistant with clear instructions and a check-in at the end. The first run is the teacher.",
+  "original_title": "Perplexity trusts GPT-6 Astra with end-to-end systems"
+}

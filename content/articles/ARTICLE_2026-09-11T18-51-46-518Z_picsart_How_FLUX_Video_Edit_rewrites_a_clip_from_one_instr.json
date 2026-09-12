@@ -1,0 +1,69 @@
+{
+  "_meta": {
+    "written_at": "2026-09-12T02:18:58.512Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.004929504,
+    "original_draft": "2026-09-11T18-51-46-518Z_picsart_How_FLUX_Video_Edit_rewrites_a_clip_from_one_instr.json",
+    "source_id": "picsart",
+    "source_name": "PicsArt Blog (hivatalos)",
+    "source_link": "https://picsart.com/blog/flux-video-edit-guide/",
+    "source_links": [
+      "https://picsart.com/blog/flux-video-edit-guide/",
+      "https://picsart.com/blog/picsart-agents-get-live-voice-with-gpt-live-1/"
+    ],
+    "merged_from": 2,
+    "merged_theme": "PicsArt FLUX video editing tools",
+    "status": "published",
+    "rejected_at": "2026-09-11T18:54:12.900Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 829
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Solid explainer with a clear hook, good term definitions (masking, AI agents), responsible caveats about unconfirmed features, and a practical 'What this means for you' section tailored to different user types. Voice is friendly and educational throughout.",
+      "_aiCost": 0.0015597,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Hitelesség-kapu blokkolta: The article states 'PicsArt has been publicly rolling out AI editing agents inside its app, with voice control as part of that direction — that's confirmed.' This asserts PicsArt Agents with voice con",
+    "can_retry": true,
+    "rework_attempts": 2,
+    "reworked_from": "REJECTED_2026-09-11T18-51-46-518Z_picsart_How_FLUX_Video_Edit_rewrites_a_clip_from_one_instr.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-09-12T02:19:31.359Z",
+    "slug": "voice-controlled-ai-editing-what-casual-creators-should-know-right-now",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-09-12T02:19:44.832Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is an explainer about a general trend (voice-controlled AI editing), not a specific shipped feature. The article explicitly states most capabilities are 'pilots or research demos — not finished consumer products.'",
+    "image_v": 2,
+    "image_at": "2026-09-12T02:24:22.772Z",
+    "seo": {
+      "meta_description": "Discover what's real in voice-controlled AI photo and video editing for casual creators — practical info on available tools, not hype.",
+      "keywords": [
+        "voice controlled photo editing",
+        "AI video editing for beginners",
+        "voice commands editing apps",
+        "AI photo editing tools 2024",
+        "how to use AI for video editing",
+        "voice editing apps creators"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more specific app names and real features to improve search relevance",
+        "Include a comparison table or list of currently available voice AI tools to boost topical authority",
+        "Add FAQ section targeting common questions like 'does Photoshop have voice commands' to capture featured snippets"
+      ],
+      "optimised_at": "2026-09-12T02:25:14.310Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Voice-Controlled AI Editing: What Casual Creators Should Know Right Now\"\nsubtitle: \"Talking to your photo and video apps sounds futuristic — here's what's actually shipping, what's still a demo, and how to stay grounded.\"\ncategory: \"explainer\"\naudience: \"personal\"\nread_time_minutes: 4\ntags: [\"creative-ai\", \"video-editing\", \"voice-ai\", \"ai-agents\"]\n---\n\n# Voice-Controlled AI Editing: What Casual Creators Should Know Right Now\n\n> **In short:** Major creative apps are exploring voice commands and AI editing agents, but most are pilots or research demos — not finished consumer products. Treat the idea as real, the feature list as not-yet-confirmed, and your own files as the safe testing ground.\n\nYou get back from a weekend trip and open your photos. One shot is perfect — except a stranger's backpack ruins the corner. The old fix: open an app, find the object-removal brush, paint over the bag, wait for it to render, and hope it blends. The new idea floating around the industry is simpler: you just say *\"remove the backpack in the corner\"* and the app does it.\n\nThat shift — from tapping menus to describing what you want — is the most interesting thing happening in consumer creative tools right now. The honest part is figuring out how much of it you can actually use today.\n\n## The bigger shift: \"describe, don't tap\"\n\nFor most of editing history, every action lived behind a button. Want to brighten the sky? Find the sky slider. Want to desaturate the background? Find the **masking** tool — *masking means picking out part of an image so only that part changes.* The user had to know which tool existed and where it hid.\n\n**AI agents** flip that around. An agent is a small assistant inside an app that takes a goal in plain language and figures out the steps itself, instead of waiting for you to tap each one. The shift shows up in two places:\n\n- **Voice control**: you talk to the app instead of tapping through menus.\n- **Targeted edits**: the AI changes one specific thing and leaves everything else alone. This matters, because full regeneration usually changes lighting, framing, or even a person's face.\n\n## What's confirmed — and what isn't\n\nSeveral creative platforms — including PicsArt — have publicly talked about AI editing agents as a direction for their apps, and that conversation is real. Independent research labs, including Black Forest Labs in Germany (the team behind the **FLUX** family of image-generation models), have shown early demos of one-instruction targeted edits.\n\nWhat isn't confirmed: a finished, widely shipped consumer product that combines every claimed capability (voice control, targeted edits, agent-style planning) into a single reliable feature you can depend on for client work. Pricing, feature lists, and rollout schedules change quickly. Before you build a workflow around any of this, check the app's current page — and treat any \"available now\" claim you see on social media with caution until you confirm it in the app itself.\n\n## Why this direction matters\n\nTwo things change at once. The **skill floor drops**: a non-expert can produce a polished edit by saying what they want, instead of learning which slider does what. And edits get **narrower and safer**: instead of asking the AI to reimagine your clip and lose what made it yours, you ask it to fix one thing. The second shift is what makes this feel less like \"AI made this\" and more like \"AI helped me finish what I started.\"\n\n## What this means for you\n\n- **If you make social clips for fun**: try a short personal clip first. If you can remove a small distraction in a few seconds by typing or talking, that's a real win — and a free test that tells you whether the new workflow feels natural without risking anything important.\n- **If you handle your own business marketing**: the time savings add up on fiddly fixes. Keep your original source files; edits work best when you start from footage you actually own, and you keep a clean fallback if a new feature glitches.\n- **If you're cautious about AI in creative work**: look for tools that advertise *targeted* edits rather than full regeneration. Keeping most of the clip the same is closer to how a human assistant would retouch than letting an AI reshape the whole thing.\n- **On privacy, briefly**: when you talk to an app, that audio gets processed somewhere. For anything sensitive — kids, client work, unreleased products — read the app's data policy first. Voice features often carry different terms from the regular editor.\n\n## Wrap-up\n\nThe creative apps on your phone are quietly learning to listen — or at least trying to. Treat the new voice and agent features as useful experiments for low-stakes personal clips first. Pick one short video, ask for one specific change, and see what comes back. That's the cheapest way to know whether the new voice workflow fits you — without betting anything important on it.",
+  "original_title": "How FLUX Video Edit rewrites a clip from one instruction"
+}

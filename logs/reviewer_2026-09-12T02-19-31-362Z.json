@@ -1,0 +1,27 @@
+{
+  "started_at": "2026-09-12T02:18:58.699Z",
+  "total": 2,
+  "passed": 1,
+  "failed": 1,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.005672,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-09-11T18-51-46-518Z_google-workspace_The_Gemini_desktop_app_is_now_available_for_Window.json",
+      "rejected": "REJECTED_2026-09-11T18-51-46-518Z_google-workspace_The_Gemini_desktop_app_is_now_available_for_Window.json",
+      "decision": "FAIL",
+      "score": 5,
+      "cost_usd": 0.0036162
+    },
+    {
+      "writer": "WRITER_2026-09-11T18-51-46-518Z_picsart_How_FLUX_Video_Edit_rewrites_a_clip_from_one_instr.json",
+      "article": "ARTICLE_2026-09-11T18-51-46-518Z_picsart_How_FLUX_Video_Edit_rewrites_a_clip_from_one_instr.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0015597
+    }
+  ],
+  "finished_at": "2026-09-12T02:19:31.362Z",
+  "duration_seconds": 32.663
+}
