@@ -22,7 +22,9 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
+// ⚠️ Sorvég-normalizálás — lásd core/guide-autolink.test.js indoklását.
 const src = readFileSync(join(ROOT, 'website', 'build.js'), 'utf-8')
+  .replace(/\r\n/g, '\n')
   .split('\n').filter(s => !/^\s*\/\//.test(s)).join('\n');
 const css = readFileSync(join(ROOT, 'website', 'assets', 'style.css'), 'utf-8');
 

@@ -212,7 +212,9 @@ t('🔌 BEKÖTÉS-ŐR: a build.js MINDKÉT sablonnak átadja a dobozokat', () =>
   // cikk-sablon közül csak az egyikbe került be, és kívülről zöldnek látszott.
   // ⚠️ A KOMMENTEKET KIVÁGJUK: egy korábbi bekötés-őr egy KOMMENTRE
   // illeszkedett, és zöld maradt, miközben a valódi hívás ki volt véve.
+  // ⚠️ Sorvég-normalizálás — lásd core/guide-autolink.test.js indoklását.
   const src = readFileSync(join(ROOT, 'website', 'build.js'), 'utf-8')
+    .replace(/\r\n/g, '\n')
     .split('\n').filter(sor => !/^\s*\/\//.test(sor)).join('\n');
 
   // --- ÚTMUTATÓ-ÁG ---

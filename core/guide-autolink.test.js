@@ -29,7 +29,10 @@ const t = (name, fn) => { fn(); pass++; console.log('  ✅ ' + name); };
 
 console.log('🧪 szövegbeli belső linkelés (guideAutolink)\n');
 
-const nyers = readFileSync(BUILD, 'utf-8');
+// ⚠️ SORVÉG-NORMALIZÁLÁS. A build.js hol LF-fel, hol CRLF-fel kerül a
+// lemezre (egy `git checkout` az autocrlf miatt átválthatja). Enélkül a
+// lentebbi `'\n}\n'` keresés -1-et ad, és az őr HAMIS BUKÁST jelez.
+const nyers = readFileSync(BUILD, 'utf-8').replace(/\r\n/g, '\n');
 const src = nyers.split('\n').filter(sor => !/^\s*\/\//.test(sor)).join('\n');
 
 // A plafon a user döntése (2026: MARAD 2) — a tesztek ebből dolgoznak,

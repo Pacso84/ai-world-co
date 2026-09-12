@@ -25,7 +25,8 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
-const nyers = readFileSync(join(ROOT, 'website', 'build.js'), 'utf-8');
+// ⚠️ Sorvég-normalizálás — lásd core/guide-autolink.test.js indoklását.
+const nyers = readFileSync(join(ROOT, 'website', 'build.js'), 'utf-8').replace(/\r\n/g, '\n');
 // ⚠️ A kommenteket kivágjuk: a fenti magyarázat MAGA is tartalmazza a régi,
 // hamis szövegeket, és e nélkül a teszt saját magára illeszkedne.
 const src = nyers.split('\n').filter(s => !/^\s*\/\//.test(s)).join('\n');
