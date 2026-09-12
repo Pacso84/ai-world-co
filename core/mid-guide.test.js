@@ -10,6 +10,7 @@ import { readFileSync, readdirSync, existsSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { midStepNo, masodikStepNo, insertMidGuide, MIN_LEPES, MASODIK_MIN_TAVOLSAG } from './mid-guide.js';
+import { kimenetAllapot } from './built-output.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const DOBOZ = '<aside class="midread">X</aside>';
@@ -137,8 +138,12 @@ t('ha az ELSŐ doboz hiányzik, a második sem kerül be', () => {
 // alakja más (2026-08-25, reelCaption). Azóta minden ilyen modul végén ez áll.
 
 t('minden élő útmutató kap közép-dobozt, és mind lépés-határon áll', () => {
-  const p = join(ROOT, 'website', 'public', 'article');
-  if (!existsSync(p)) { console.log('     ⏭️  kihagyva: még nincs build'); return; }
+  // ⚠️ 2026-09-12: csak FRISS kimeneten — elavult buildön ez az állítás a RÉGI
+  // kódot mérné (a helyi másolat 09-09-i volt). A friss ellenőrzés a CI-ban a
+  // build UTÁN fut: core/output-guard.js (MIDREAD_TOBB, MIDREAD_UGYANAZ).
+  const allapot = kimenetAllapot(ROOT);
+  if (!allapot.hasznalhato) { console.log('     ⏭️  kihagyva: ' + allapot.ok); return; }
+  const p = allapot.pub;
   const utmutatok = readdirSync(p).filter(f => f.endsWith('.html'))
     .map(f => readFileSync(join(p, f), 'utf-8'))
     .filter(s => s.includes('class="g-steps"'));

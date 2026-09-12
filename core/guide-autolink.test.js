@@ -20,6 +20,7 @@ import assert from 'assert/strict';
 import { readFileSync, readdirSync, existsSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
+import { kimenetAllapot } from './built-output.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const BUILD = join(ROOT, 'website', 'build.js');
@@ -103,22 +104,24 @@ t('🔬 a függvény a MEGOSZTOTT számlálót használja, nem helyit', () => {
 // ===================================================================
 // A KIÉPÍTETT OLDALAKON
 // ===================================================================
-// ⚠️ ŐSZINTE MEGJEGYZÉS: a `website/public/` a LEGUTÓBBI build eredménye.
-// Amíg a CI újra nem épít, az útmutatókon még 0 link van, ezért az alábbi
-// útmutató-állítások addig ÜRESEN igazak. A HÍR-oldali állítás viszont MOST
-// IS fog: 318/517 hír kap linket, tehát regressziót azonnal jelez.
-
-const PUB = join(ROOT, 'website', 'public', 'article');
+// ⚠️ 2026-09-12 — HELYESBÍTÉS. Korábban itt az állt, hogy a hír-oldali állításnak
+// „MOST IS foga van". Nem volt: a helyi `website/public/` egy BEFAGYOTT, 09-09-i
+// build volt (a kódot azóta többször módosítottuk), a CI-ban pedig a tesztek a
+// build ELŐTT futnak, amikor a mappa nem is létezik. Elavult kimeneten az állítás
+// hamis biztonság. Ezért csak FRISS kimeneten ellenőrzünk; a valódi, friss
+// ellenőrzés a CI-ban a build UTÁN fut: core/output-guard.js.
+const ALLAPOT = kimenetAllapot(ROOT);
+const PUB = ALLAPOT.pub;
 
 function lapok() {
-  if (!existsSync(PUB)) return null;
+  if (!ALLAPOT.hasznalhato) { console.log('     ⏭️  kihagyva: ' + ALLAPOT.ok); return null; }
   return readdirSync(PUB).filter(f => f.endsWith('.html'))
     .map(f => ({ f, h: readFileSync(join(PUB, f), 'utf-8') }));
 }
 
 t('a HÍREK ma is kapnak szövegbeli linket (regresszió-őr)', () => {
   const L = lapok();
-  if (!L) { console.log('     ⏭️  kihagyva: még nincs build'); return; }
+  if (!L) return;
   const hirek = L.filter(x => !x.h.includes('class="g-steps"'));
   if (!hirek.length) { console.log('     ⏭️  kihagyva: nincs kiépített hír'); return; }
   const vanLink = hirek.filter(x => x.h.includes('class="guide-link"')).length;
@@ -129,7 +132,7 @@ t('a HÍREK ma is kapnak szövegbeli linket (regresszió-őr)', () => {
 
 t('egyetlen cikk sem lépi túl a link-plafont', () => {
   const L = lapok();
-  if (!L) { console.log('     ⏭️  kihagyva: még nincs build'); return; }
+  if (!L) return;
   const tullepok = [];
   for (const { f, h } of L) {
     const n = (h.match(/class="guide-link"/g) || []).length;
@@ -140,7 +143,7 @@ t('egyetlen cikk sem lépi túl a link-plafont', () => {
 
 t('az ÚTMUTATÓK szövegbeli linkjei nem a /tools gyűjtőre visznek', () => {
   const L = lapok();
-  if (!L) { console.log('     ⏭️  kihagyva: még nincs build'); return; }
+  if (!L) return;
   const utmutatok = L.filter(x => x.h.includes('class="g-steps"'));
   let osszes = 0, hubra = 0;
   for (const { h } of utmutatok) {

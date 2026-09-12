@@ -20,6 +20,7 @@ import assert from 'assert/strict';
 import { readFileSync, readdirSync, existsSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
+import { kimenetAllapot } from './built-output.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 // ⚠️ Sorvég-normalizálás — lásd core/guide-autolink.test.js indoklását.
@@ -75,18 +76,21 @@ t('🔴 az egymás utáni bekezdések nem ragadhatnak össze', () => {
 // ===================================================================
 // A KIÉPÍTETT OLDALAKON
 // ===================================================================
-// ⚠️ ŐSZINTÉN: a `website/public/` a LEGUTÓBBI build eredménye. Az
-// útmutató-oldali állítás a CI újraépítéséig még a RÉGI állapotot látja,
-// ezért csak JELENT, nem bukik. A hír-oldali állításnak MOST is foga van.
-
-const PUB = join(ROOT, 'website', 'public', 'article');
-const lapok = () => existsSync(PUB)
-  ? readdirSync(PUB).filter(f => f.endsWith('.html')).map(f => ({ f, h: readFileSync(join(PUB, f), 'utf-8') }))
-  : null;
+// ⚠️ 2026-09-12 — HELYESBÍTÉS: az a mondat, hogy a hír-oldali állításnak „MOST is
+// foga van", nem volt igaz. A helyi `website/public/` egy befagyott, 09-09-i build
+// volt, a CI-ban pedig a tesztek a build ELŐTT futnak (a mappa nem létezik).
+// Ezért csak FRISS kimeneten ellenőrzünk; a friss ellenőrzés a CI-ban a build
+// UTÁN fut: core/output-guard.js (CSUPASZ_IDEZET).
+const ALLAPOT = kimenetAllapot(ROOT);
+const PUB = ALLAPOT.pub;
+const lapok = () => {
+  if (!ALLAPOT.hasznalhato) { console.log('     ⏭️  kihagyva: ' + ALLAPOT.ok); return null; }
+  return readdirSync(PUB).filter(f => f.endsWith('.html')).map(f => ({ f, h: readFileSync(join(PUB, f), 'utf-8') }));
+};
 
 t('a HÍREK ma is kapják a lede-dobozt (regresszió-őr)', () => {
   const L = lapok();
-  if (!L) { console.log('     ⏭️  kihagyva: még nincs build'); return; }
+  if (!L) return;
   const hirek = L.filter(x => !x.h.includes('class="g-steps"'));
   if (!hirek.length) { console.log('     ⏭️  kihagyva: nincs kiépített hír'); return; }
   const van = hirek.filter(x => x.h.includes('class="lede"')).length;
@@ -97,7 +101,7 @@ t('a HÍREK ma is kapják a lede-dobozt (regresszió-őr)', () => {
 
 t('az útmutatók bevezetőjében nem marad csupasz idézetblokk', () => {
   const L = lapok();
-  if (!L) { console.log('     ⏭️  kihagyva: még nincs build'); return; }
+  if (!L) return;
   let csupasz = 0, ledes = 0, ossz = 0;
   for (const { h } of L) {
     if (!h.includes('class="g-steps"')) continue;
@@ -156,7 +160,7 @@ t('⚠️ a `.article__body` burkolót NEM tesszük az útmutatóra', () => {
 
 t('a rejtő szabálynak van dolga (tájékoztató)', () => {
   const L = lapok();
-  if (!L) { console.log('     ⏭️  kihagyva: még nincs build'); return; }
+  if (!L) return;
   let hr = 0, lap = 0;
   for (const { h } of L) {
     if (!h.includes('class="g-steps"')) continue;

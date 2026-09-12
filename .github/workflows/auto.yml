@@ -538,6 +538,16 @@ jobs:
         if: always() && steps.build.outcome == 'success'
         run: node core/internal-link-guard.js || true
 
+      # 🧩 KIMENET-ŐR (2026-09-12): a kiépített lapok ellenőrzése a FRISS buildön.
+      # A két cikk-sablon (hír ↔ útmutató) négyszer csúszott szét némán. Az ezt
+      # néző ellenőrzések eddig csak TESZTKÉNT léteztek — de a „Tesztek" lépés
+      # a build ELŐTT fut, amikor a website/public még nincs (gitignore-os), így
+      # sosem láttak friss kimenetet, és üresen „zöldet" adtak. Itt a build UTÁN
+      # futnak; a lelet a napi riportba megy, a kiadást nem állítja meg.
+      - name: Kimenet-őr (sablon-paritás + kimeneti visszaesés)
+        if: always() && steps.build.outcome == 'success'
+        run: node core/output-guard.js || true
+
       # BORÍTÓKÉP-ŐRSZEM (2026-08-14): van-e képe a friss cikkeknek. A user
       # vette észre a főoldalon, hogy a CÍMLAPSZTORI borítója üres — a designer
       # 3 db HTTP 400-at kapott, és azt csak a CI naplójába írta.

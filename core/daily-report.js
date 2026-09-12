@@ -798,7 +798,11 @@ async function main() {
       // korábbi lépés elhasal, és a step nem `always()`), a lemezen az ELŐZŐ
       // futás zöld állapota marad — és az a riportban azonos a „minden
       // rendben"-nel. Ezt a rést csak a frissesség-őr zárja be.
-      'test-guard.json': 'teszt'
+      'test-guard.json': 'teszt',
+      // A kimenet-őr (2026-09-12) a build UTÁN fut. Ha a build elbukik, a lépés
+      // kimarad, és a lemezen az ELŐZŐ futás üres `problems`-e marad — ezt csak
+      // az `at` bélyeg különbözteti meg a „minden rendben"-től.
+      'output-guard.json': 'kimenet'
     };
     const beolvasott = {};
     for (const [f, nev] of Object.entries(nevek)) {
@@ -824,6 +828,24 @@ async function main() {
       const en = p.filter(x => x.code === 'ARTICLE_TRUNCATED').length;
       lines.push(`✂️ CSONKA-ŐRSZEM: ${p.length} elvágott szöveg (${en} angol cikk, ${p.length - en} fordítás) — ${fedes}`);
     }
+  } catch { /* még nem futott — nem baj */ }
+
+  // 🧩 KIMENET-ŐR (2026-09-12). A kiépített lapokat néző ellenőrzések (a két
+  // cikk-sablon paritása, szövegbeli linkek, „In short"-doboz, közép-doboz)
+  // eddig CSAK tesztként léteztek, és friss kimenetet SEHOL nem láttak: a
+  // CI-ban a tesztek a build ELŐTT futnak (a website/public még nincs), helyben
+  // pedig egy befagyott, napokkal korábbi build volt. Most a CI a build UTÁN
+  // futtatja őket (core/output-guard.js).
+  // CSENDES, ha minden rendben — a user 08-28-i panasza óta a zöld sor zaj. Hogy
+  // a „nem futott le" ne nézzen ki „minden rendben"-nek, azt a fenti
+  // frissesség-térkép `at`-ellenőrzése zárja ki; a túl kevés lap pedig maga is
+  // leletként (KEVES_LAP) jön ki, a lefedettséggel együtt.
+  try {
+    const og = JSON.parse(readFileSync(join(ROOT, 'memory', 'output-guard.json'), 'utf-8'));
+    const p = og.problems || [];
+    const fedes = `${og.hir ?? '?'} hír + ${og.utmutato ?? '?'} útmutató átnézve`;
+    if (p.length) lines.push(`🧩 KIMENET-ŐR: ${p.length} lelet — ${p.slice(0, 3).map(x => x.uzenet).join(' · ')} — ${fedes}`);
+    if ((og.megjavult || []).length) lines.push(`🧩 Kimenet-őr: megjavult, a FOLYAMATBAN listából törölhető: ${og.megjavult.join(', ')}`);
   } catch { /* még nem futott — nem baj */ }
 
   // HÁZMESTER (2026-07-30): mit takarított el, és hízik-e valami vissza.
