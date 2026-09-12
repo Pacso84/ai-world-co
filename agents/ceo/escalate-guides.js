@@ -29,6 +29,7 @@ import { dirname, join } from 'path';
 import { ask } from '../../core/ai-router.js';
 import { remember } from '../../core/memory-manager.js';
 import { message } from '../../core/ops.js';
+import { publikalasMeta } from '../../core/publish-meta.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..', '..');
@@ -127,11 +128,39 @@ Make the call. Output ONLY the JSON.`;
 function publishGuide(rejectedFilename, data, markdown, reason, decisionMeta) {
   if (!existsSync(ARTICLES_DIR)) mkdirSync(ARTICLES_DIR, { recursive: true });
   const articleFilename = rejectedFilename.replace(/^REJECTED_/, 'ARTICLE_');
+  const articlePath = join(ARTICLES_DIR, articleFilename);
+
+  // ===================================================================
+  // KÖZÖS PUBLIKÁLÁSI META (2026-09-12) — a szétcsúszás javítása
+  // ===================================================================
+  // Ez az ág HÁROM lépést hagyott ki, amit a rendes út (Ellenőrző →
+  // moveToArticles) elvégez: slug-rögzítés, az EREDETI megjelenési dátum
+  // megőrzése, és a fordítás-gyorsítótár törlése szövegváltozáskor.
+  //
+  // ÉS EZ MEGTÖRTÉNT: az egyetlen cikk, ami valaha ezen az úton ment ki
+  // (ARTICLE_GUIDE_adding-clear-comments-…), a publikálás pillanatában
+  // (89f99fa3) `_meta.slug: undefined` volt — pontosan az UNPINNED_SLUG
+  // hiba, amit a másik ágon 2026-07-28-án már megoldottak. Öt nappal
+  // később egy visszamenőleges rögzítés pótolta.
+  //
+  // 🔑 A döntés a core/publish-meta.js-ben lakik, és MINDKÉT út onnan
+  // kéri — így nem tud újra szétcsúszni.
+  let elozo = null;
+  try { if (existsSync(articlePath)) elozo = JSON.parse(readFileSync(articlePath, 'utf-8')); }
+  catch { /* sérült előző fájl → új megjelenésként kezeljük */ }
+
+  const meta = publikalasMeta({
+    elozo,
+    uj: { _meta: data._meta, article_markdown: markdown, original_title: data.original_title },
+    fajlnev: articleFilename
+  });
+
   const out = {
     _meta: {
       ...data._meta,
       status: 'published',
-      published_at: new Date().toISOString(),
+      published_at: meta.publishedAt,
+      slug: meta.slug,
       ceo_decision: 'approve',
       ceo_override: true,        // a főnök felülbírálta az Ellenőrzőt
       ceo_reason: reason,
@@ -142,7 +171,17 @@ function publishGuide(rejectedFilename, data, markdown, reason, decisionMeta) {
     article_markdown: markdown,
     original_title: data.original_title
   };
-  writeFileSync(join(ARTICLES_DIR, articleFilename), JSON.stringify(out, null, 2), 'utf-8');
+  writeFileSync(articlePath, JSON.stringify(out, null, 2), 'utf-8');
+
+  // A nem-angol oldalak különben a RÉGI szöveget mutatnák tovább.
+  if (meta.forditasElavult) {
+    const transPath = join(ROOT, 'content', 'translations', articleFilename);
+    if (existsSync(transPath)) {
+      unlinkSync(transPath);
+      console.log('   🌍 Fordítás-cache törölve (a szöveg változott — újrafordítás jön)');
+    }
+  }
+
   unlinkSync(join(REJECTED_DIR, rejectedFilename));
   return articleFilename;
 }

@@ -33,6 +33,7 @@ import { lengthIssue, HOWTO_MIN, HOWTO_MAX, GATE_MAX } from '../../core/article-
 import { repetitionIssue, firstParagraph, WINDOW as OPENING_WINDOW } from '../../core/opening-variety.js';
 import { blockingIssues, advisoryIssues, lessonFor } from '../../core/auto-check-codes.js';
 import { guideClaimIssues } from '../../core/guide-claims.js';
+import { publikalasMeta } from '../../core/publish-meta.js';
 import { findBritish } from '../../core/us-spelling.js';
 import { skillsBlock } from '../../core/skills.js';
 
@@ -584,33 +585,32 @@ function moveToArticles(writerFilename, writerData, autoCheckResult, aiReviewRes
   // A SEO-őrszem ELSŐ éles körében kiderült, hogy a visszamenőleges rögzítés
   // csak a MEGLÉVŐ cikkeket fedte le: az újonnan megjelenők slug nélkül jöttek
   // ki (UNPINNED_SLUG, 10 cikk). Ez a sor zárja be a rést a forrásánál.
-  let publishedAt = new Date().toISOString();
-  let pinnedSlug = writerData._meta?.slug || null;
-  try {
-    if (existsSync(articlePath)) {
-      const prev = JSON.parse(readFileSync(articlePath, 'utf-8'));
-      if (prev?._meta?.published_at) publishedAt = prev._meta.published_at;
-      if (prev?._meta?.slug) pinnedSlug = prev._meta.slug;   // SOHA nem írjuk felül
-      // FORDÍTÁS-INVALIDÁLÁS: ha a cikk SZÖVEGE megváltozott (upgrade/rework
-      // utáni újra-publikálás), a régi fordítás-cache elavult → töröljük, a
-      // fordító a következő körben újrafordítja. (Enélkül a nem-angol oldalak
-      // a RÉGI szöveget mutatnák tovább.)
-      if (prev?.article_markdown && prev.article_markdown !== writerData.article_markdown) {
-        const transPath = join(PROJECT_ROOT, 'content', 'translations', articleFilename);
-        if (existsSync(transPath)) {
-          unlinkSync(transPath);
-          console.log('   🌍 Fordítás-cache törölve (a szöveg változott — újrafordítás jön)');
-        }
-      }
-    }
-  } catch { /* marad az új dátum */ }
+  // ===================================================================
+  // A DÖNTÉS 2026-09-12 ÓTA KÖZÖS: core/publish-meta.js
+  // ===================================================================
+  // Ugyanezt a három lépést a CEO-felülbírálás útja (agents/ceo/
+  // escalate-guides.js) NEM csinálta, és emiatt egy cikk `_meta.slug:
+  // undefined`-dal ment ki élesbe. A logika ezért kiköltözött ide, és
+  // MINDKÉT publikáló út onnan kéri. A viselkedés VÁLTOZATLAN — a modul
+  // pontosan ezt az algoritmust tartalmazza, tesztekkel rögzítve.
+  let prev = null;
+  try { if (existsSync(articlePath)) prev = JSON.parse(readFileSync(articlePath, 'utf-8')); }
+  catch { /* sérült előző fájl → új megjelenésként kezeljük */ }
 
-  // Első megjelenés → a MOSTANI címből képezzük a slugot, és rögzítjük.
-  // (A build.js pontosan ezt a képletet használja, ezért egyeznie kell.)
-  if (!pinnedSlug) {
-    const t = (writerData.article_markdown || '').match(/^title:\s*"?([^"\n]+)/m);
-    pinnedSlug = (t?.[1] || writerData.original_title || articleFilename)
-      .toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 70);
+  const pubMeta = publikalasMeta({ elozo: prev, uj: writerData, fajlnev: articleFilename });
+  const publishedAt = pubMeta.publishedAt;
+  const pinnedSlug = pubMeta.slug;
+
+  // FORDÍTÁS-INVALIDÁLÁS: ha a cikk SZÖVEGE megváltozott (upgrade/rework
+  // utáni újra-publikálás), a régi fordítás-cache elavult → töröljük, a
+  // fordító a következő körben újrafordítja. (Enélkül a nem-angol oldalak
+  // a RÉGI szöveget mutatnák tovább.)
+  if (pubMeta.forditasElavult) {
+    const transPath = join(PROJECT_ROOT, 'content', 'translations', articleFilename);
+    if (existsSync(transPath)) {
+      unlinkSync(transPath);
+      console.log('   🌍 Fordítás-cache törölve (a szöveg változott — újrafordítás jön)');
+    }
   }
 
   // Markdown formátumba mentjük a cikket (a meta + az AI review-val együtt)
