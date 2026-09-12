@@ -114,4 +114,57 @@ t('az útmutatók bevezetőjében nem marad csupasz idézetblokk', () => {
   assert.equal(csupasz, 0, '🔴 ' + csupasz + ' útmutató bevezetőjében maradt csupasz idézetblokk');
 });
 
+// ===================================================================
+// A TÖRZS-SZABÁLYOK, AMIK SOSEM ÉRTÉK EL AZ ÚTMUTATÓT (2026-09-12)
+// ===================================================================
+// A hír törzse `.article__body`-ban áll, az útmutatóé nem. Négy szabály
+// némán kimaradt. Mérve a 424 kiépített útmutatón, böngészőben ellenőrizve.
+
+t('🔴 az útmutatóban NEM látszik a fölösleges vízszintes vonal', () => {
+  // 470 db <hr> 46 lapon. A hírben `.article__body hr { display:none }`
+  // rejti; az útmutatóban KILÁTSZOTT (képernyőképpel igazolva).
+  assert.ok(/\.article\.guide hr\s*\{[^}]*display:\s*none/.test(css),
+    '🔴 az útmutatókban visszatér a kilátszó vonal (46 lap)');
+});
+
+t('az osztály nélküli linkek márka-színt kapnak', () => {
+  // 126 db 49 lapon. Minden OSZTÁLYOS link-fajtának van saját szabálya
+  // (.gloss-link, .midread__link, .g-official, .xref__link, .g-map__node) —
+  // csak a szövegbe írt, csupasz linkek maradtak alapértelmezett kéken.
+  assert.ok(/\.article\.guide a:not\(\[class\]\)\s*\{[^}]*color:/.test(css),
+    '🔴 a csupasz linkek megint böngésző-alapértelmezett kékek lesznek');
+});
+
+t('a lépés-törzsben lévő listák behúzást kapnak', () => {
+  // 82 lista a `.g-step__body` és a `.g-try` alatt. A többi listás doboznak
+  // (.g-prereq, .g-mistakes, .g-faq__a, .impact) MÁR VAN saját szabálya.
+  assert.ok(/\.g-step__body ul[^{]*\{[^}]*margin:/.test(css),
+    '🔴 a lépéseken belüli listák behúzás nélkül állnak');
+});
+
+t('⚠️ a `.article__body` burkolót NEM tesszük az útmutatóra', () => {
+  // Ez a teszt egy KÍSÉRTÉST zár ki. A burkoló egy sorral „megoldaná" mind a
+  // négy hiányt — de behozná a magazin-tipográfiát is: az INICIÁLÉT és a
+  // 28px-es h2-t, ami az útmutatóban SZÁNDÉKOSAN nincs. A pótlás célzott.
+  const g = src.slice(src.indexOf('function buildGuidePage'));
+  const teste = g.slice(0, g.indexOf('\nfunction buildSupportPage'));
+  assert.ok(!/article__body/.test(teste),
+    '🔴 az útmutató-sablon megkapta a `.article__body` burkolót — ezzel az iniciálé is megjelenne');
+});
+
+t('a rejtő szabálynak van dolga (tájékoztató)', () => {
+  const L = lapok();
+  if (!L) { console.log('     ⏭️  kihagyva: még nincs build'); return; }
+  let hr = 0, lap = 0;
+  for (const { h } of L) {
+    if (!h.includes('class="g-steps"')) continue;
+    const a = h.indexOf('<article'), r = h.indexOf('<section class="rel"');
+    const n = (h.slice(a, r > 0 ? r : h.length).match(/<hr\s*\/?>/g) || []).length;
+    if (n) { hr += n; lap++; }
+  }
+  // SZÁNDÉKOSAN nem állítás: ha az író egyszer abbahagyja a <hr> írását,
+  // a szabály fölöslegessé válik — az nem hiba, csak tudni jó.
+  console.log(`     📏 ${hr} <hr> ${lap} útmutatóban` + (hr === 0 ? '  (a rejtő szabály már fölösleges)' : ''));
+});
+
 console.log(`\n✅ ${pass} teszt rendben`);

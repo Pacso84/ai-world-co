@@ -528,6 +528,24 @@ body {
    utáni bekezdései NULLA térközzel összeragadtak. Mérve: 13 élő útmutató.
    A gyermek-kombinátor szándékos — a .lede-n belül saját szabály van. */
 .g-intro > p + p { margin-top: 14px; }
+
+/* ==================================================================
+   A TÖRZS-SZABÁLYOK, AMIK SOSEM ÉRTÉK EL AZ ÚTMUTATÓT (2026-09-12)
+   ==================================================================
+   A hír törzse `.article__body`-ban áll, az útmutatóé nem — annak saját
+   `g-*` készlete van. Emiatt négy szabály némán kimaradt. Mérve a 424
+   kiépített útmutatón, és böngészőben ellenőrizve:
+     • <hr>: 470 db 46 lapon — a hírben elrejtve, itt KILÁTSZOTT
+     • osztály nélküli link: 126 db 49 lapon — böngésző-alapértelmezett kék
+     • lista a lépés törzsében / a záró dobozban: 82 db — behúzás nélkül
+       (a reset `* { padding: 0 }` miatt a felsorolásjel is kicsúszott)
+   ⚠️ A `.article__body` BURKOLÓT SZÁNDÉKOSAN NEM tesszük rá: az iniciálé
+   és a 28px-es h2 az útmutatóban NEM kell. Csak a hiányzó darabokat
+   pótoljuk, a magazin-tipográfiát nem. */
+.article.guide hr { display: none; }
+.article.guide a:not([class]) { color: var(--accent-dark); text-decoration: underline; text-underline-offset: 3px; }
+.g-step__body ul, .g-step__body ol, .g-try ul, .g-try ol { margin: 0 0 22px 1.2em; }
+.g-step__body li, .g-try li { margin-bottom: 10px; }
 .g-steps { display: flex; flex-direction: column; gap: 16px; }
 .g-step { display: flex; gap: 16px; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px 22px; }
 .g-step__no { flex-shrink:0; width: 38px; height: 38px; border-radius: 50%; background: var(--ink); color: var(--paper);
