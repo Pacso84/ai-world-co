@@ -73,8 +73,9 @@ export function followCta(slug) {
   return FOLLOW_CTAS[h % FOLLOW_CTAS.length];
 }
 
-// A link kiszedése a szövegtörzsből. Ugyanaz a szabály, mint az
-// agents/social/poster.js-ben — a kettő ne szakadjon el egymástól.
+// A link kiszedése a szövegtörzsből. EGY példány: az agents/social/poster.js
+// is ezt hívja (2026-09-12 óta; addig beírt másolata volt ott). A bekötést a
+// core/social-published.test.js őrzi.
 export function stripUrl(text, url) {
   if (!text) return '';
   const bare = url ? String(text).split(url).join('') : String(text);

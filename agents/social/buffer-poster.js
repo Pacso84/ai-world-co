@@ -38,6 +38,9 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { selectSocialBatch } from '../../core/social-queue.js';
 import { composePost, followCta, CHANNELS } from '../../core/social-text.js';
+// A SOR KÖZÖS DÖNTÉSE (2026-09-12) — ugyanaz, mint a Facebook-poszterben.
+// Eddig karakterre lemásolva élt itt; most egy példány: core/social-published.js.
+import { isArticleFile, buildPublishedMap, queueStatus, realSlug } from '../../core/social-published.js';
 import { capFor, allowedNow, countSentToday } from '../../core/channel-cap.js';
 // ⚠️ AZ ŐRSZEM (2026-08-30). Enélkül ez a modul NÉMÁN áll le: lejárt token,
 // levált csatorna vagy bukott createPost esetén csak a CI naplójába írt,
@@ -63,7 +66,6 @@ const SITE = 'https://aiworldhq.com';
 // introspektálható, de az adat-lekérdezéseknél maga a Buffer szól rá:
 //     {"errors":[{"message":"Please use api.buffer.com"}]}
 const ENDPOINT = 'https://api.buffer.com/';
-const FRESH_DAYS = 7;
 
 // A Buffer ingyenes kerete: 250 kérés/nap, 3000/30 nap, 3 csatorna.
 // Nekünk 3 csatorna × 9 poszt = 27 kérés/nap kell — a keret KILENCSZERESE
@@ -207,31 +209,17 @@ const REEL_CSEMPE_MS = 1000;
 const SERVICE_MAP = { twitter: 'x', x: 'x', threads: 'threads', instagram: 'instagram' };
 
 // ---------- 3. A SOR (ugyanaz a rangsor, mint a Facebooknál) ----------
-function slugify(text) {
-  return (text || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 70);
-}
-
-function publishedMap() {
-  const map = {};
-  if (!existsSync(ARTICLES_DIR)) return map;
-  for (const f of readdirSync(ARTICLES_DIR).filter(x => x.startsWith('ARTICLE_') && x.endsWith('.json'))) {
-    try {
-      const d = JSON.parse(readFileSync(join(ARTICLES_DIR, f), 'utf-8'));
-      const isGuide = d._meta?.type === 'guide' || f.startsWith('ARTICLE_GUIDE');
-      const rec = { at: d._meta?.published_at || '', guide: isGuide };
-      if (d._meta?.slug) map[d._meta.slug] = rec;
-      const m = (d.article_markdown || '').match(/^---\n[\s\S]*?^title:\s*["']?(.+?)["']?\s*$/m);
-      const legacy = slugify((m && m[1]) || d.original_title || f);
-      if (legacy && !map[legacy]) map[legacy] = rec;
-    } catch { /* kihagyjuk */ }
+// Itt csak a fájl-olvasás él. A térkép, a `realSlug` és a frissesség-vágás a
+// core/social-published.js-ben — UGYANAZ a példány, amit a poster.js hív.
+// Olvashatatlan fájl: kihagyjuk (mint eddig).
+function loadArticles() {
+  const out = [];
+  if (!existsSync(ARTICLES_DIR)) return out;
+  for (const file of readdirSync(ARTICLES_DIR).filter(isArticleFile)) {
+    try { out.push({ file, data: JSON.parse(readFileSync(join(ARTICLES_DIR, file), 'utf-8')) }); }
+    catch { /* kihagyjuk */ }
   }
-  return map;
-}
-
-// A social-fájl VALÓDI slugja az url-ből — a `slug` mező lehet csonka maradvány.
-function realSlug(post) {
-  const fromUrl = String(post.url || '').split('/article/')[1];
-  return (fromUrl || post.slug || '').replace(/\.html$/, '').replace(/[?#].*$/, '');
+  return out;
 }
 
 /**
@@ -247,18 +235,15 @@ function queueFor(field, pub, now) {
     if (post[field]) continue;                       // erre a csatornára már kiment
     if (!post.facebook || !post.url) continue;       // a szöveg a `facebook` mezőben van
 
-    const rec = pub[realSlug(post)] || pub[post.slug];
-    if (!rec) continue;                              // nincs találat → VÁRUNK, nem dobunk
-    const pubAt = rec.at || '';
-    const isGuide = !!rec.guide;
-    const age = pubAt ? (now - new Date(pubAt).getTime()) : Infinity;
+    const st = queueStatus(pub, post, now);
+    if (!st) continue;                               // nincs találat → VÁRUNK, nem dobunk
     // HÍR: csak friss. ÚTMUTATÓ: örökzöld (ugyanaz a szabály, mint a Facebooknál).
-    if (!isGuide && age > FRESH_DAYS * 24 * 3600e3) {
+    if (st.stale) {
       post[field] = 'skipped-stale';
       if (!DRY) writeFileSync(path, JSON.stringify(post, null, 2), 'utf-8');
       continue;
     }
-    out.push({ path, post, pubAt, isGuide, isFresh: age <= FRESH_DAYS * 24 * 3600e3 });
+    out.push({ path, post, pubAt: st.pubAt, isGuide: st.isGuide, isFresh: st.isFresh });
   }
   return out;
 }
@@ -516,7 +501,7 @@ async function main() {
     else ORG = o.id;
   }
 
-  const pub = publishedMap();
+  const pub = buildPublishedMap(loadArticles());
   const now = Date.now();
   let kikuldve = 0, keres = 0;
 

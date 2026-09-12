@@ -38,8 +38,9 @@ export function selectFormats({ ageDays, freshDays, isQueued, all }) {
 
 // A social-sor VALÓDI slugja: elsődlegesen az url-ből, mert az a publikált
 // cím — a `slug` mező lehet régi/csonka maradvány. (Ugyanaz a szabály, mint
-// az agents/social/poster.js realSlug() függvényében; 2026-08-09-én mérve
-// mind a 610 sorelemnél egyeztek, de a szabály maradjon egységes.)
+// a core/social-published.js realSlug() függvényében — azt hívja mindkét
+// poszter 2026-09-12 óta; 2026-08-09-én mérve mind a 610 sorelemnél egyeztek.
+// ⚠️ Ez még KÜLÖN PÉLDÁNY, és null-biztos (`post?.`), a közös nem az.)
 function realSlug(post) {
   const fromUrl = String(post?.url || '').split('/article/')[1];
   return (fromUrl || post?.slug || '').replace(/\.html$/, '').replace(/[?#].*$/, '');

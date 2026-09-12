@@ -24,23 +24,23 @@ import { readFileSync, writeFileSync, readdirSync, existsSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { selectSocialBatch } from '../../core/social-queue.js';
-import { followCta } from '../../core/social-text.js';
+import { followCta, stripUrl } from '../../core/social-text.js';
 import { postsPerRun, usedThisMonth, MONTHLY_CAP } from '../../core/make-budget.js';
+// A SOR KÖZÖS DÖNTÉSE (2026-09-12): melyik poszt melyik élő cikkhez tartozik,
+// és friss-e. Ugyanez a buffer-poster.js-ben is kellett, és KARAKTERRE
+// lemásolva élt a két fájlban — semmi nem tartotta szinkronban. Most egy
+// példány van: core/social-published.js (teszt + bekötés-őr mellette).
+import { isArticleFile, buildPublishedMap, queueStatus } from '../../core/social-published.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..', '..');
 const SOCIAL_DIR = join(ROOT, 'content', 'social');
 const ARTICLES_DIR = join(ROOT, 'content', 'articles');
-const FRESH_DAYS = 7;
 
 const args = process.argv.slice(2);
 const DRY = args.includes('--dry');
 const li = args.indexOf('--limit');
 const LIMIT = li !== -1 && args[li + 1] ? parseInt(args[li + 1], 10) || 2 : 2;
-
-function slugify(text) {
-  return (text || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 70);
-}
 
 // ===================================================================
 // MŰVELET-ŐR (2026-08-10) — a keret ne fusson ki a hónap végén
@@ -65,39 +65,18 @@ function slugify(text) {
 // A viselkedés változatlan: ha az adat nem jön, NEM fékezünk — egy API-hiba
 // miatti visszavétel biztos kár, a kifutás bizonytalan és hó végi.
 
-// slug → { published_at, guide } térkép a cikkekből.
-//
-// A KULCS A RÖGZÍTETT _meta.slug (2026-08-02). Korábban a CÍMBŐL képeztük
-// újra a slugot — csakhogy a cikkek 2026-07-27 óta rögzített slugot kapnak,
-// és a social-fájlokban maradt egy régi, 60 karakterre CSONKÍTOTT változat.
-// Ha a keresés nem talált egyezést, a kor "végtelen" lett, és a posztoló
-// AZONNAL elavultnak jelölte — akkor is, ha a cikk aznap jelent meg.
-// Mérve: 210 social-fájl slugja nem felelt meg egyetlen élő cikknek sem;
-// emiatt 18 FRISS poszt némán elveszett. A slugify-os visszafejtés tehát
-// nem csak felesleges, hanem kártékony volt.
-// Tartaléknak a címből képzett kulcsot is felvesszük (régi fájlokhoz).
-function publishedMap() {
-  const map = {};
-  if (!existsSync(ARTICLES_DIR)) return map;
-  for (const f of readdirSync(ARTICLES_DIR).filter(x => x.startsWith('ARTICLE_') && x.endsWith('.json'))) {
-    try {
-      const d = JSON.parse(readFileSync(join(ARTICLES_DIR, f), 'utf-8'));
-      const isGuide = d._meta?.type === 'guide' || f.startsWith('ARTICLE_GUIDE');
-      const rec = { at: d._meta?.published_at || '', guide: isGuide };
-      if (d._meta?.slug) map[d._meta.slug] = rec;
-      const m = (d.article_markdown || '').match(/^---\n[\s\S]*?^title:\s*["']?(.+?)["']?\s*$/m);
-      const legacy = slugify((m && m[1]) || d.original_title || f);
-      if (legacy && !map[legacy]) map[legacy] = rec;
-    } catch { /* kihagyjuk */ }
+// A cikkek BEOLVASÁSA — csak a fájlművelet él itt. A slug → { at, guide }
+// térkép felépítése (a RÖGZÍTETT _meta.slug a kulcs, 2026-08-02; a 18 némán
+// elveszett friss poszt története) a core/social-published.js-ben van.
+// Olvashatatlan fájl: kihagyjuk (mint eddig).
+function loadArticles() {
+  const out = [];
+  if (!existsSync(ARTICLES_DIR)) return out;
+  for (const file of readdirSync(ARTICLES_DIR).filter(isArticleFile)) {
+    try { out.push({ file, data: JSON.parse(readFileSync(join(ARTICLES_DIR, file), 'utf-8')) }); }
+    catch { /* kihagyjuk */ }
   }
-  return map;
-}
-
-// A social-fájl VALÓDI slugja: elsődlegesen az url-ből, mert az a
-// publikált cím — a `slug` mező lehet régi/csonka maradvány.
-function realSlug(post) {
-  const fromUrl = String(post.url || '').split('/article/')[1];
-  return (fromUrl || post.slug || '').replace(/\.html$/, '').replace(/[?#].*$/, '');
+  return out;
 }
 
 async function main() {
@@ -108,7 +87,7 @@ async function main() {
   if (!hook) { console.log('   ⏭️  Nincs MAKE_WEBHOOK_URL — kihagyom (állítsd be a .env-ben / GitHub Secrets-ben).'); return; }
   if (!existsSync(SOCIAL_DIR)) { console.log('   💤 Nincs social mappa.'); return; }
 
-  const pub = publishedMap();
+  const pub = buildPublishedMap(loadArticles());
   const now = Date.now();
   const queue = [];
 
@@ -119,38 +98,32 @@ async function main() {
     if (post.posted_fb) continue;                       // már kiment / lezárva
     if (!post.facebook || !post.url) continue;
 
-    const rec = pub[realSlug(post)] || pub[post.slug];
-    const pubAt = rec?.at || '';
-    const isGuide = !!rec?.guide;
     // HÍR: csak friss (az archívum ne árassza el az oldalt).
     // ÚTMUTATÓ: EVERGREEN — nincs vágás (2026-08-02). Ugyanaz a szabály,
     // amit a Pinterestnél már 07-29-én bevezettünk; a Facebook oldalán
     // ottfelejtettük, és emiatt 131 évelő útmutató esett ki "elavultként"
     // arról a csatornáról, ami a mérés szerint a forgalmunk zömét hozza.
-    // Ha nincs találat a térképben, NEM dobjuk el: inkább kihagyjuk erre a
-    // körre. A néma eldobás visszafordíthatatlan, a várakozás nem.
-    if (!rec) continue;
-    if (!isGuide) {
-      const age = pubAt ? (now - new Date(pubAt).getTime()) : Infinity;
-      if (age > FRESH_DAYS * 24 * 3600e3) {
-        post.posted_fb = 'skipped-stale';
-        // A PRÓBA NE ÍRJON (2026-08-02): enélkül a --dry végleges jelölést írt a
-        // fájlokba. Ártalmatlanul, de a "próba" azt ígéri, hogy semmi nem történik.
-        if (!DRY) writeFileSync(path, JSON.stringify(post, null, 2), 'utf-8');
-        continue;
-      }
+    // Ha nincs találat a térképben (null), NEM dobjuk el: inkább kihagyjuk erre
+    // a körre. A néma eldobás visszafordíthatatlan, a várakozás nem.
+    const st = queueStatus(pub, post, now);
+    if (!st) continue;
+    if (st.stale) {
+      post.posted_fb = 'skipped-stale';
+      // A PRÓBA NE ÍRJON (2026-08-02): enélkül a --dry végleges jelölést írt a
+      // fájlokba. Ártalmatlanul, de a "próba" azt ígéri, hogy semmi nem történik.
+      if (!DRY) writeFileSync(path, JSON.stringify(post, null, 2), 'utf-8');
+      continue;
     }
-    queue.push({ path, post, pubAt, isGuide });
+    // FRISS TARTALOM ELŐL — DE a helyek fele az örökzöld útmutatóé (2026-08-04).
+    // A régi rangsor tisztán kor szerint ment, és mivel napi 12 megosztható
+    // tartalom készül 6 hely mellett, a friss sor SOSEM fogyott el: a 7 napnál
+    // öregebb útmutató örökre a sor végén maradt (mérve: 156 db). Részletek és
+    // a fenntartás logikája: core/social-queue.js. Az `isFresh` a közös
+    // modulból jön — ugyanaz a vágás, mint a Buffer-csatornákon.
+    queue.push({ path, post, pubAt: st.pubAt, isGuide: st.isGuide, isFresh: st.isFresh });
   }
 
   if (!queue.length) { console.log('   💤 Nincs kiküldendő friss poszt.'); return; }
-  // FRISS TARTALOM ELŐL — DE a helyek fele az örökzöld útmutatóé (2026-08-04).
-  // A régi rangsor tisztán kor szerint ment, és mivel napi 12 megosztható
-  // tartalom készül 6 hely mellett, a friss sor SOSEM fogyott el: a 7 napnál
-  // öregebb útmutató örökre a sor végén maradt (mérve: 156 db). Részletek és
-  // a fenntartás logikája: core/social-queue.js.
-  const freshCut = now - FRESH_DAYS * 24 * 3600e3;
-  for (const x of queue) x.isFresh = !!(x.pubAt && new Date(x.pubAt).getTime() >= freshCut);
 
   // MŰVELET-ŐR: a havi Make-keret vetítése alapján visszaveszünk, ha kifutnánk.
   // MINDEN forgatókönyv beleszámít, ami ugyanebből a fiók-keretből eszik:
@@ -176,7 +149,9 @@ async function main() {
   for (const { path, post } of batch) {
     // A FB-szövegben benne van az URL — kiszedjük, mert a linket KÜLÖN mezőben
     // küldjük (abból lesz a szép előnézeti kártya; duplán csúnya lenne).
-    const message = String(post.facebook).split(post.url).join('').replace(/[ \t]{2,}/g, ' ').replace(/\n{3,}/g, '\n\n').trim();
+    // A szabály EGY példányban él: core/social-text.js → stripUrl() (2026-09-12;
+    // eddig itt beírt másolata volt — 974 valódi poszton mérve azonos kimenet).
+    const message = stripUrl(post.facebook, post.url);
     // FOTÓS poszt (user-kérés 2026-07-05: "képet mellékelni, mint a cégek"):
     // a borítóképet KÖZVETLENÜL posztoljuk, a link a caption végére kerül.
     // (A link-kártyás módban a Facebook az új domain képét megbízhatatlanul
