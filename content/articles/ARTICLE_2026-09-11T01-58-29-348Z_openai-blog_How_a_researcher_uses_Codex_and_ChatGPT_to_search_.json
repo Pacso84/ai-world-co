@@ -1,0 +1,62 @@
+{
+  "_meta": {
+    "written_at": "2026-09-13T01:57:59.303Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.004735344,
+    "original_draft": "2026-09-11T01-58-29-348Z_openai-blog_How_a_researcher_uses_Codex_and_ChatGPT_to_search_.json",
+    "source_id": "openai-blog",
+    "source_name": "OpenAI Blog (hivatalos)",
+    "source_link": "https://openai.com/index/using-codex-chatgpt-to-search-for-new-antimicrobials",
+    "source_links": [
+      "https://openai.com/index/using-codex-chatgpt-to-search-for-new-antimicrobials"
+    ],
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "published_at": "2026-09-13T01:58:49.333Z",
+    "slug": "how-ai-is-speeding-up-the-hunt-for-new-antibiotics-and-what-that-means",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 917
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured explainer that hits all marks: friendly and explanatory tone, clear definitions of terms (AMR, drug-resistant, Codex), relatable real-world examples, three-persona 'What this means for you' section, and a wrap-up with actionable next steps. No clichés, no prohibited content, and the claims trace back to the OpenAI blog source. A solid, trustworthy piece for everyday readers.",
+      "_aiCost": 0.00152928,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-09-13T01:59:18.525Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is a case study about how a researcher uses existing tools (Codex and ChatGPT) for antibiotic discovery — not a new feature announcement. There's no concrete action for ordinary people to take; it's research methodology, not a usable product feature.",
+    "image_v": 2,
+    "image_at": "2026-09-13T02:06:34.203Z",
+    "seo": {
+      "meta_description": "AI is now finding new antibiotics in months instead of years. See how tools like ChatGPT are accelerating the fight against drug-resistant bacteria — and what it means for you.",
+      "keywords": [
+        "AI antibiotics discovery",
+        "how AI finds new antibiotics",
+        "AI drug development antibiotics",
+        "ChatGPT antibiotic research",
+        "antibiotic resistance AI solution",
+        "AI speed up drug discovery"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more specific long-tail keywords like 'AI antibiotic development 2024' to capture timely searches",
+        "Include the term 'machine learning antibiotics' as a common search phrase",
+        "Consider adding 'antibiotic pipeline' to appeal to readers searching about drug availability"
+      ],
+      "optimised_at": "2026-09-13T02:08:00.665Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"How AI Is Speeding Up the Hunt for New Antibiotics — And What That Means for You\"\nsubtitle: \"Researchers are using ChatGPT and Codex to scan millions of molecules for new drugs, and the pipeline is finally moving again.\"\ncategory: \"explainer\"\naudience: \"personal\"\nread_time_minutes: 4\ntags: [\"ai-in-science\", \"health\", \"drug-discovery\", \"openai\", \"chatgpt\"]\n---\n\n# How AI Is Speeding Up the Hunt for New Antibiotics — And What That Means for You\n\n> **In short:** Researchers are using AI tools like Codex and ChatGPT to scan millions of genetic sequences for new antibiotic candidates — work that used to take years is now happening in months, which matters because old antibiotics are slowly losing their power.\n\nIf you've ever taken a course of antibiotics for a sinus infection or a scraped knee, you've used one of the miracles of modern medicine. Most of the antibiotics your doctor prescribes were discovered more than 60 years ago. Since then, bacteria have gotten smarter — and many infections are now harder to kill. Finding new antibiotics has been painfully slow.\n\nThat's starting to change, and AI is one reason why.\n\n## Why new antibiotics are so hard to find\n\nAntibiotics are substances that kill bacteria. Most of them originally came from nature — from soil microbes, fungi, and other living things that produce them as a defense. The traditional way to find a new one was to grow millions of microbes in petri dishes and test each one to see if it stopped bacteria from growing. Imagine tasting every spoonful from a giant pot of soup to find the one with the perfect seasoning. That's roughly how slow the process has been.\n\nOn top of that, many of the most promising \"sources\" — animals that went extinct thousands of years ago, or microbes that live in places we can't easily reach — were almost impossible to study. We knew the genetic material (the DNA instructions inside every living thing) was sitting in museums and databases, but nobody had time to read it carefully.\n\n## How AI changes the search\n\nThis is where tools like **Codex** and **ChatGPT** come in. Codex is an AI made by OpenAI that writes and understands computer code. Researchers use it to write scripts — small programs that can scan huge DNA databases in hours instead of years. ChatGPT, the chatbot you may have used to write an email or summarize a long article, helps scientists brainstorm, summarize research papers, and explain patterns they find.\n\nPut simply: a researcher can now ask, \"Which of these 10 million DNA sequences look like they might produce a substance that kills bacteria?\" — and get a short list of likely candidates to test in the lab. The AI doesn't replace the lab work. It just makes sure the lab doesn't waste months on dead ends.\n\nIn one notable project, a research group led by scientist César de la Fuente has used exactly this approach — combining AI analysis with lab testing — to find new antibiotic candidates hidden in genomes from both living organisms and extinct ones (like woolly mammoths). Early results have turned up a few molecules that show real promise against drug-resistant bacteria.\n\n## What \"drug-resistant\" actually means\n\nYou may have heard the phrase **superbug** in the news. It refers to bacteria that no longer respond to common antibiotics. Things like MRSA (a stubborn staph infection) or certain tuberculosis strains fall into this category. When an antibiotic stops working, simple infections can become life-threatening again. Doctors call this **antimicrobial resistance**, or AMR.\n\nThe World Health Organization has called AMR one of the biggest threats to global health. New antibiotics are the main way we fight back, but the discovery pipeline has been mostly empty for decades. Anything that speeds it up — even a little — is a big deal.\n\n## What this means for you\n\n- **If you're a parent or grandparent:** The antibiotics your family uses today still work for most common infections. But the trend matters for the future. A scraped knee, a urinary infection, a hospital stay — any of these can become more dangerous if resistance grows faster than new drugs appear. AI research like this is one of the few things actively trying to fix that.\n- **If you work in healthcare, science, or biotech:** The toolkit your colleagues are using is changing fast. Familiarity with AI tools — even basic prompting in ChatGPT or running simple Codex scripts — is becoming a useful skill in lab work, not just office work.\n- **If you're just curious about AI:** This is one of the clearest examples of AI doing something useful that doesn't involve writing essays or making pictures. The same kind of model that helps you plan a vacation is now helping scientists narrow down which molecules to test in a petri dish. It's a good reminder that AI's biggest wins may not be the loudest ones.\n\n## Wrap-up\n\nThe search for new antibiotics used to be a slow, expensive grind. AI tools are now helping researchers scan millions of genetic sequences in days instead of years — and turning up real candidates worth testing in the lab. None of this changes your doctor's appointment next week, but it's quietly reshaping how we prepare for the next generation of infections. If you want to follow this kind of work, look up **César de la Fuente's lab** or search \"AI drug discovery\" on PubMed — you'll find new papers every month.",
+  "original_title": "How a researcher uses Codex and ChatGPT to search for new antimicrobial molecules"
+}

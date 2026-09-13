@@ -1,102 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178912989919483",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-09-11T12:31:39.194Z",
-      "updated": "2026-09-11T12:32:08.439Z"
-    },
-    {
-      "id": "t178912992844132",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-11T12:32:08.441Z",
-      "updated": "2026-09-11T12:32:36.978Z"
-    },
-    {
-      "id": "t178912995698070",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-09-11T12:32:36.980Z",
-      "updated": "2026-09-11T12:33:10.969Z"
-    },
-    {
-      "id": "t178912999097151",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-11T12:33:10.971Z",
-      "updated": "2026-09-11T12:33:41.581Z"
-    },
-    {
-      "id": "t178913002158412",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-09-11T12:33:41.584Z",
-      "updated": "2026-09-11T12:33:48.926Z"
-    },
-    {
-      "id": "t17891300290253",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-11T12:33:49.025Z",
-      "updated": "2026-09-11T12:34:09.031Z"
-    },
-    {
-      "id": "t178913004903273",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-09-11T12:34:09.032Z",
-      "updated": "2026-09-11T12:34:28.724Z"
-    },
-    {
-      "id": "t178913006872622",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-11T12:34:28.726Z",
-      "updated": "2026-09-11T12:34:35.565Z"
-    },
-    {
-      "id": "t178913007556736",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-09-11T12:34:35.567Z",
-      "updated": "2026-09-11T12:35:00.051Z"
-    },
-    {
-      "id": "t178915267917361",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-09-11T18:51:19.173Z",
-      "updated": "2026-09-11T18:51:19.309Z"
-    },
-    {
-      "id": "t178915267931165",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-09-11T18:51:19.311Z",
-      "updated": "2026-09-11T18:51:46.528Z"
-    },
-    {
-      "id": "t178915270652917",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-09-11T18:51:46.529Z",
-      "updated": "2026-09-11T18:51:46.670Z"
-    },
-    {
       "id": "t178915270667181",
       "title": "Run iro",
       "status": "done",
@@ -479,33 +383,105 @@
       "agent": "publisher",
       "created": "2026-09-12T12:05:16.372Z",
       "updated": "2026-09-12T12:05:41.564Z"
+    },
+    {
+      "id": "t178926460114696",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-09-13T01:56:41.146Z",
+      "updated": "2026-09-13T01:56:41.328Z"
+    },
+    {
+      "id": "t178926460133074",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-09-13T01:56:41.330Z",
+      "updated": "2026-09-13T01:56:58.715Z"
+    },
+    {
+      "id": "t178926461871745",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-09-13T01:56:58.717Z",
+      "updated": "2026-09-13T01:56:58.921Z"
+    },
+    {
+      "id": "t17892646189238",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-09-13T01:56:58.923Z",
+      "updated": "2026-09-13T01:58:14.944Z"
+    },
+    {
+      "id": "t178926469494646",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-13T01:58:14.946Z",
+      "updated": "2026-09-13T01:59:04.527Z"
+    },
+    {
+      "id": "t178926474453082",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-09-13T01:59:04.530Z",
+      "updated": "2026-09-13T01:59:23.922Z"
+    },
+    {
+      "id": "t178926476397621",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-09-13T01:59:23.976Z",
+      "updated": "2026-09-13T02:05:02.662Z"
+    },
+    {
+      "id": "t178926510266326",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-13T02:05:02.663Z",
+      "updated": "2026-09-13T02:05:41.720Z"
+    },
+    {
+      "id": "t178926514176570",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-13T02:05:41.765Z",
+      "updated": "2026-09-13T02:07:37.744Z"
+    },
+    {
+      "id": "t178926525774541",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-09-13T02:07:37.745Z",
+      "updated": "2026-09-13T02:08:37.122Z"
+    },
+    {
+      "id": "t178926531712418",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-13T02:08:37.124Z",
+      "updated": "2026-09-13T02:08:56.882Z"
+    },
+    {
+      "id": "t178926533688433",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-09-13T02:08:56.884Z",
+      "updated": "2026-09-13T02:09:31.278Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178826562072061",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). **Publish Summary:** The lineup looks solid and ready — it has a nice mix of practical, educational, and emotionally supportive content that fits \"AI for everyday people\" perfectly. A few quick checks",
-      "agent": "publisher",
-      "at": "2026-09-01T12:27:00.720Z",
-      "loud": false
-    },
-    {
-      "id": "n178826563177256",
-      "level": "success",
-      "text": "3 hír + 0 útmutató publikálva (költség: $0.0461).",
-      "agent": "ceo",
-      "at": "2026-09-01T12:27:11.772Z",
-      "loud": false
-    },
-    {
-      "id": "n178826717030714",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The lineup looks solid and ready — you've got a nice mix of practical how-tos (complaint emails, marketing, pet agreements) plus that essential privacy guide to build trust. Articles 3-5 cover complai",
-      "agent": "publisher",
-      "at": "2026-09-01T12:52:50.307Z",
-      "loud": false
-    },
     {
       "id": "n178826718439737",
       "level": "info",
@@ -1281,27 +1257,33 @@
       "agent": "ceo",
       "at": "2026-09-12T12:05:41.610Z",
       "loud": false
+    },
+    {
+      "id": "n178926531711386",
+      "level": "info",
+      "text": "SEO: 5 cikk optimalizálva (átlag 8.4/10).",
+      "agent": "seo",
+      "at": "2026-09-13T02:08:37.113Z",
+      "loud": false
+    },
+    {
+      "id": "n178926535451395",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The line-up is solid and ready — practical, everyday use cases that match our \"AI for everyone\" mission. Quick note: Article 4's headline leans a bit sensational (\"actually gets results\"), consider to",
+      "agent": "publisher",
+      "at": "2026-09-13T02:09:14.513Z",
+      "loud": false
+    },
+    {
+      "id": "n178926537132237",
+      "level": "success",
+      "text": "3 hír + 2 útmutató publikálva (költség: $0.0535).",
+      "agent": "ceo",
+      "at": "2026-09-13T02:09:31.322Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178843766394792",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 20 → 5/4/2 oszlop.",
-      "ref": "mobile",
-      "at": "2026-09-03T12:14:23.947Z"
-    },
-    {
-      "id": "m178843772945315",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Compare features of two products before making a p\" — The guide claims the free version 'offers plenty of comparison power' - this is now questionable as Perplexity has significantly limited free tier capabilities (around 5 searches/day limit as of late 2024/2025, with Pro features locked behind paywall)",
-      "ref": "ARTICLE_GUIDE_compare-features-of-two-products-before-making-a-purchase-wi.json",
-      "at": "2026-09-03T12:15:29.453Z"
-    },
     {
       "id": "m178843827298449",
       "from": "fact-check",
@@ -2647,6 +2629,24 @@
       "text": "3 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-09-12T12:13:26.372Z"
+    },
+    {
+      "id": "m178926533682835",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 20 → 5/4/2 oszlop.",
+      "ref": "mobile",
+      "at": "2026-09-13T02:08:56.828Z"
+    },
+    {
+      "id": "m178926542814660",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Build a simple 'Leave a review' form for your smal\" — GitHub Copilot has a free tier with a small monthly message limit that may push you toward the paid plan",
+      "ref": "ARTICLE_GUIDE_build-a-simple-leave-a-review-form-for-your-small-business-s.json",
+      "at": "2026-09-13T02:10:28.146Z"
     }
   ]
 }

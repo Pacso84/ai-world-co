@@ -1,0 +1,49 @@
+{
+  "started_at": "2026-09-13T01:56:59.095Z",
+  "drafts_total": 3,
+  "articles_written": 3,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 0,
+  "merged_total": 0,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "total_cost_usd": 0.018496481000000002,
+  "by_article": [
+    {
+      "draft": "2026-09-11T01-58-29-349Z_microsoft-ai_What_if_everything_changes_tomorrow__A_Canadian_co.json",
+      "writer_output": "WRITER_2026-09-11T01-58-29-349Z_microsoft-ai_What_if_everything_changes_tomorrow__A_Canadian_co.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.0086616,
+      "duration_ms": 42484,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-09-11T01-58-29-348Z_openai-blog_How_a_researcher_uses_Codex_and_ChatGPT_to_search_.json",
+      "writer_output": "WRITER_2026-09-11T01-58-29-348Z_openai-blog_How_a_researcher_uses_Codex_and_ChatGPT_to_search_.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.004735344,
+      "duration_ms": 11096,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-09-10T01-59-24-046Z_google-ai-blog_Recreating_a_70-year_love_story_frame_by_frame.json",
+      "writer_output": "WRITER_2026-09-10T01-59-24-046Z_google-ai-blog_Recreating_a_70-year_love_story_frame_by_frame.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.004606752,
+      "duration_ms": 14836,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    }
+  ],
+  "finished_at": "2026-09-13T01:58:14.930Z",
+  "duration_seconds": 75.835
+}

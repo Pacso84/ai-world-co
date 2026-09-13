@@ -1,0 +1,63 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "how-to-set-up-a-custom-gpt-in-chatgpt-for-a-task-you-repeat-",
+    "company": "OpenAI",
+    "tool": "ChatGPT",
+    "icon": "🤖",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-09-13T02:05:02.652Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00959082,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-09-13T02:05:41.705Z",
+    "slug": "how-to-set-up-a-custom-gpt-in-chatgpt-for-tasks-you-repeat-weekly",
+    "auto_check": {
+      "passed": false,
+      "issues": [
+        "UI_CLAIMS_UNSOURCED: 7 konkrét képernyő-feliratot állít tényként forrás nélkül (\"configure\", \"name\", \"description\", \"instructions\", …). Vagy nézd meg a hivatalos oldalon, vagy írd hedge-elve (\"if you don't see…\")."
+      ],
+      "wordCount": 1622
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured guide that covers all six steps with clear navigation paths, explains technical terms in plain language, and includes encouraging language that respects the reader. The 'What this means for you' section provides practical applications, and the 'Try it now' wrap-up gives an actionable next step. No prohibited content, no clichés, no invented facts.",
+      "_aiCost": 0.00186036,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "image_v": 2,
+    "image_at": "2026-09-13T02:07:37.718Z",
+    "seo": {
+      "meta_description": "Learn to build a Custom GPT in ChatGPT that remembers your instructions, files, and tone—so you stop re-explaining every week.",
+      "keywords": [
+        "how to create a custom GPT in ChatGPT",
+        "ChatGPT custom GPT setup tutorial",
+        "custom GPT for repetitive tasks",
+        "ChatGPT saved instructions",
+        "ChatGPT plus custom GPT guide",
+        "create personalized ChatGPT assistant",
+        "ChatGPT custom instructions tutorial"
+      ],
+      "seo_score": 9,
+      "suggestions": [
+        "Add an introduction section explaining who Custom GPTs are for (e.g., professionals, writers, marketers) to improve topical relevance",
+        "Include the phrase 'how to make a custom GPT' or 'create custom GPT' in the first heading to capture exact-match search intent",
+        "Consider adding a section on Custom GPT use cases (email drafting, report writing, meeting summaries) to expand keyword coverage"
+      ],
+      "optimised_at": "2026-09-13T02:08:37.100Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"How to Set Up a Custom GPT in ChatGPT for Tasks You Repeat Weekly\"\nsubtitle: \"Build a personalized AI helper with saved instructions, your own reference files, and a tone that matches yours — so you stop re-explaining every Monday.\"\ncategory: \"guide\"\naudience: \"both\"\ncompany: \"OpenAI\"\ntool: \"ChatGPT\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"getting-started\", \"chatgpt\", \"custom-gpt\", \"productivity\"]\n---\n\n# How to Set Up a Custom GPT in ChatGPT for Tasks You Repeat Weekly\n\n> **In short:** A Custom GPT is a saved version of ChatGPT with your own instructions, reference files, and tone already loaded. You build it once in the GPT builder, then it gives consistent answers every time you open it.\n\nMost of us end up typing the same long setup paragraph into ChatGPT over and over. Maybe it's the voice you want for client emails, the format for your weekly report, or the rules for summarizing meeting notes. A Custom GPT saves that setup so you only write it once — and after that, every new chat starts ready to go. The catch: creating one usually needs a paid ChatGPT plan (Plus, Team, or Enterprise), so check the current pricing page at chatgpt.com if you're unsure which plan you have.\n\n## Before you start\n- A ChatGPT account at chatgpt.com — sign-up is free, but creating a Custom GPT typically needs a paid plan (Plus, Team, or Enterprise). Look at the current pricing page if you don't know which plan you have.\n- A web browser on a computer, or the ChatGPT app on iOS or Android.\n- About 15–20 minutes for the first build, plus one weekly task you do often enough that saving the setup is worth it.\n- A short example of the input you'll usually give it — rough notes, an email draft, a topic list.\n\n## Step 1 — Open the GPT builder\nIn your browser, go to chatgpt.com and sign in. Look along the left sidebar for an item labeled **Explore GPTs** and click it. A new page opens showing featured GPTs, and somewhere near the top right you'll see a button labeled **+ Create** or **My GPTs** — click that. A two-panel screen opens: a **Configure** tab on the left and a **Create** tab on the right. The Create tab is a chat where you describe what you want in plain English; the Configure tab is a form with named fields. Either path leads to the same GPT.\n\nIf your sidebar looks different, try clicking your account name or the **⋯** menu at the top of the chat list — the GPT builder is sometimes tucked in there on mobile. The screen you're aiming for has headings like \"Name\", \"Description\" and \"Instructions\".\n\n💬 Example: type nothing yet — this step is just navigation.\n\nYou'll know it worked when you see a screen with \"Configure\" and \"Create\" tabs, ready for you to fill in.\n\n## Step 2 — Name your GPT and describe what it does\nOn the **Configure** tab, click into the **Name** field at the top and write a short, clear name. Then click into the **Description** field below it and write one or two sentences explaining what the GPT is for. These two fields are how you'll recognize this GPT later — both in your own sidebar and in any list you share.\n\nIf you're on the **Create** tab instead, just type the name and description into the chat as if you're asking the builder to set it up for you. The builder will fill in the same fields on the Configure tab, which you can then edit.\n\n💬 Example:\nName: `Weekly Client Report Writer`\nDescription: `Turns my rough end-of-week notes into a clean status report in our standard format.`\n\nYou'll know it worked when both fields hold your own text, not placeholder text.\n\n## Step 3 — Write the instructions\nScroll down to the large box labeled **Instructions** and write a paragraph that tells the GPT how to behave every single time. This is the heart of the setup — think of it as the rules of the house. The more specific you are, the more consistent the answers will be. Include the tone you want, the format you expect, and any rules it must never break.\n\nIf the Instructions box feels hard to fill, switch to the **Create** tab and describe your task in a sentence or two — the builder will draft instructions for you, which you can then tweak on the Configure tab.\n\n💬 Example: `You are my weekly report assistant. Tone: friendly but professional. Always use these sections in order: Wins, Blockers, Next Week. Keep each section to 3 bullets max. End every report with one suggested question for the client. Never invent numbers I didn't give you — if a number is missing, write '[verify]' instead.`\n\nYou'll know it worked when your instructions appear in the box and the preview chat on the right already starts answering in your requested tone.\n\n## Step 4 — Upload your reference files (optional but useful)\nStill on the **Configure** tab, scroll to a section called **Knowledge**. Click the **Upload files** button and pick one or two documents the GPT should always have access to — a style guide, a report template, a list of approved phrases, a glossary. The GPT will read these on every conversation, so it's like handing it a small notebook of your preferences.\n\nStart small. Two or three short files beat ten long ones, because the GPT can only \"remember\" so much at once (the technical term is the **context window** — think of it as the desk space on the AI's desk, and every file takes up some of it). You can always add more later.\n\n💬 Example: upload your company's weekly status template as a PDF, or paste a list of approved product names as a `.txt` file.\n\nYou'll know it worked when the file names appear under Knowledge with a small file size next to each.\n\n## Step 5 — Add a few conversation starters\nScroll to **Conversation Starters**. These are the clickable prompt buttons a user sees when they first open your GPT — a kind of quick-start menu. Add three or four short prompts that match how you'll actually use it. The first time you open the GPT, you'll probably click one of these instead of typing from scratch.\n\nIf the section is hidden, look for **Suggested prompts** or a small ✨ icon. On the Create tab, you can also type \"add three conversation starters\" and the builder will fill them in for you.\n\n💬 Example: a starter prompt could be `Here are my rough notes from this week — write the client report.`\n\nYou'll know it worked when, in the preview pane on the right, those exact phrases appear as buttons under the chat box.\n\n## Step 6 — Save and try it out\nAt the top right of the Configure tab, click **Save** (or **Update** if you're editing an existing GPT). A small panel asks who can use it — pick **Only me** for a personal weekly helper, **Anyone with a link** to share with a teammate, or **Public** to put it in the GPT store. Click **Confirm**, then open your GPT from the sidebar.\n\nSend your first real test message. Don't be surprised if the first answer needs a tiny tweak — that's normal. Edit your instructions, save again, and try once more. After two or three rounds the GPT usually settles into a rhythm that needs almost no correction. One honest limit: a Custom GPT cannot log into your email, calendar, or company database, so you'll still paste the data it needs into the chat yourself.\n\n💬 Example: paste three lines of rough notes and ask `Write this week's report.`\n\nYou'll know it worked when you get a clean, formatted reply that matches your instructions — and when opening this GPT in the future needs zero setup.\n\n## Common mistakes\n- **Writing vague instructions like \"be helpful.\"** That tells the GPT almost nothing. The fix is to name the tone (friendly, formal, blunt), the format (bullets, sections, length), and at least one rule it must never break.\n- **Uploading too many files at once.** A 90-page style guide and six PDFs will crowd out the actual conversation. The fix is to start with one or two short, high-value files and add more only when you feel a clear gap.\n- **Expecting the GPT to connect to live tools it doesn't have.** A Custom GPT can read the files you uploaded and answer from them, but it cannot log into your email, calendar, or company database on its own. The fix is to paste the information into the chat, or upload a spreadsheet directly when you need data analysis.\n\n## What this means for you\n- **In everyday life:** the same idea works for weekly meal plans, fitness check-ins, journaling prompts, or a Sunday-night grocery list — anything you repeat with the same shape.\n- **For your business or work:** use it for the report, email, or summary format you re-write most often. A Custom GPT for client updates alone can save 20–40 minutes a week once it learns your voice.\n- **If you're just getting started:** don't try to build a perfect GPT on day one. Pick the single task you most hate re-explaining, give it three sentences of instructions, and refine from there.\n\n## Try it now\nOpen chatgpt.com, click **Explore GPTs** → **+ Create**, and fill in only the Name and Description fields for the one task you repeat every week. You can finish the rest in a follow-up sitting — but starting today means next Monday is already easier.",
+  "original_title": "How to set up a Custom GPT in ChatGPT for a task you repeat weekly"
+}
