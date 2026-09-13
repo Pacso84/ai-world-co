@@ -1,7 +1,7 @@
 {
   "_meta": {
     "note": "Forrás-bizonyítvány: frissesség + termés + megbízhatóság forrásonként. Gyártja: core/source-report-card.js",
-    "updated": "2026-09-13T13:05:58.367Z",
+    "updated": "2026-09-13T18:31:30.685Z",
     "thresholds": {
       "DEAD_FEED_DAYS": 365,
       "MIN_SAMPLE": 8,
@@ -608,7 +608,7 @@
     },
     "sony-ai": {
       "name": "Sony AI (hivatalos)",
-      "feedAgeDays": 74,
+      "feedAgeDays": 75,
       "published30d": 0,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -632,7 +632,7 @@
     },
     "microsoft-365": {
       "name": "Microsoft 365 Insider (hivatalos)",
-      "feedAgeDays": 0,
+      "feedAgeDays": 1,
       "published30d": 3,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -644,7 +644,7 @@
     },
     "pixlr": {
       "name": "Pixlr Blog (hivatalos)",
-      "feedAgeDays": 10,
+      "feedAgeDays": 11,
       "published30d": 1,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -668,7 +668,7 @@
     },
     "zapier-blog": {
       "name": "Zapier Blog (hivatalos)",
-      "feedAgeDays": 3,
+      "feedAgeDays": 4,
       "published30d": 8,
       "truthBlocks": 0,
       "truthUnfixed": 0,
