@@ -103,6 +103,7 @@
     "annotátorokkal",
     "annyít",
     "anthropic",
+    "antimikrobiális",
     "anyagod",
     "anyagodban",
     "anyagodra",
@@ -194,10 +195,12 @@
     "bevásárlolistává",
     "beállításeidben",
     "beállításokbeli",
+    "beállítószöveget",
     "bill-jan",
     "billentyuzeten",
     "billentyyt",
     "bioban",
+    "bizonytalanságok",
     "biztonságod",
     "biztonságodat",
     "biót",
@@ -359,7 +362,9 @@
     "cimkéket",
     "cimkékkel",
     "cimkékre",
+    "cipősdoboz",
     "cipősdoboznyi",
+    "cipősdobozon",
     "claude",
     "clip-artot",
     "clipart",
@@ -624,6 +629,7 @@
     "elfoglaltságokról",
     "elfoglaltságom",
     "elfogultságokat",
+    "elhissz",
     "ellenérvet",
     "elsiklandó",
     "elsímítja",
@@ -716,6 +722,7 @@
     "facebook",
     "faktorokat",
     "faktorokhoz",
+    "falevelről",
     "faliújságon",
     "fanart",
     "fanfictionhöz",
@@ -1525,6 +1532,7 @@
     "műsorokat",
     "műveletcsempejében",
     "műveltséget",
+    "nagy-marthának",
     "nagyjábóli",
     "nagyméretű",
     "nagyobbahoz",
@@ -1569,6 +1577,7 @@
     "nyelvtanárod",
     "nyereséget",
     "nyersanyagod",
+    "nyersanyagoktól",
     "nyilra",
     "nyitósorok",
     "nyomonkövetést",
@@ -1635,6 +1644,7 @@
     "okosszemüveged",
     "okosszemüveget",
     "okosszűrését",
+    "okosszűrő",
     "okostechnológiát",
     "okostermosztát",
     "okostermosztátod",
@@ -1775,6 +1785,7 @@
     "promptdobozban",
     "promptdobozt",
     "promptedet",
+    "promptgombok",
     "promptindító",
     "promptkalauz",
     "promptkönyvtár",
@@ -2126,6 +2137,7 @@
     "szukseged",
     "szundítsd",
     "szundíztatom",
+    "szuperbaktérium",
     "szuperfelbontás",
     "szuperfelbontású",
     "szuperképesség",
@@ -2159,6 +2171,7 @@
     "szövegösszefoglaló",
     "szőnyeget",
     "sávod",
+    "sávodban",
     "sávokat",
     "sávon",
     "sávszélességet",
@@ -2179,6 +2192,7 @@
     "tabváltás",
     "tacót",
     "tagalogot",
+    "taget",
     "tagjairól",
     "tagjait",
     "tagok",
@@ -2355,6 +2369,7 @@
     "túlformálisak",
     "uborkásüveg",
     "udvatlanság",
+    "ugyanazhoz",
     "univerális",
     "unokahúgokat",
     "unokaöccsöket",
@@ -3763,6 +3778,16 @@
       "correct": "diához",
       "at": "2026-09-11",
       "mondattal": true
+    },
+    "tízvel": {
+      "correct": "tízzel",
+      "at": "2026-09-13",
+      "mondattal": true
+    },
+    "visszamasolod": {
+      "correct": "visszamásolod",
+      "at": "2026-09-13",
+      "mondattal": true
     }
   },
   "review": {
@@ -4992,11 +5017,16 @@
       "correct": "hibát keresel",
       "at": "2026-09-12",
       "mondattal": true
+    },
+    "gyekednek": {
+      "correct": "gyerekeknek",
+      "at": "2026-09-13",
+      "mondattal": true
     }
   },
   "scan": {
-    "at": "2026-09-12",
-    "files": 961,
-    "candidates": 9
+    "at": "2026-09-13",
+    "files": 966,
+    "candidates": 19
   }
 }
