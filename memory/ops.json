@@ -1,86 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178915270667181",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-09-11T18:51:46.671Z",
-      "updated": "2026-09-11T18:52:30.930Z"
-    },
-    {
-      "id": "t178915275093186",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-11T18:52:30.931Z",
-      "updated": "2026-09-11T18:52:49.859Z"
-    },
-    {
-      "id": "t178915276986158",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-09-11T18:52:49.861Z",
-      "updated": "2026-09-11T18:53:21.282Z"
-    },
-    {
-      "id": "t178915280128354",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-11T18:53:21.283Z",
-      "updated": "2026-09-11T18:54:12.921Z"
-    },
-    {
-      "id": "t17891528529238",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-09-11T18:54:12.923Z",
-      "updated": "2026-09-11T18:54:13.100Z"
-    },
-    {
-      "id": "t178915285314910",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-11T18:54:13.149Z",
-      "updated": "2026-09-11T18:54:13.332Z"
-    },
-    {
-      "id": "t178915285333314",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-09-11T18:54:13.333Z",
-      "updated": "2026-09-11T18:54:13.506Z"
-    },
-    {
-      "id": "t17891528535072",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-11T18:54:13.507Z",
-      "updated": "2026-09-11T18:54:22.547Z"
-    },
-    {
-      "id": "t178915286254875",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-09-11T18:54:22.548Z",
-      "updated": "2026-09-11T18:54:40.811Z"
-    },
-    {
-      "id": "t178917853857766",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-09-12T02:02:18.577Z",
-      "updated": "2026-09-12T02:02:18.763Z"
-    },
-    {
       "id": "t178917853876490",
       "title": "Run rss-scraper",
       "status": "done",
@@ -479,33 +399,89 @@
       "agent": "publisher",
       "created": "2026-09-13T02:08:56.884Z",
       "updated": "2026-09-13T02:09:31.278Z"
+    },
+    {
+      "id": "t178930409393555",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-09-13T12:54:53.935Z",
+      "updated": "2026-09-13T12:54:54.116Z"
+    },
+    {
+      "id": "t178930409411849",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-09-13T12:54:54.118Z",
+      "updated": "2026-09-13T12:55:20.956Z"
+    },
+    {
+      "id": "t178930412095835",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-09-13T12:55:20.958Z",
+      "updated": "2026-09-13T12:55:21.164Z"
+    },
+    {
+      "id": "t178930412116688",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-09-13T12:55:21.166Z",
+      "updated": "2026-09-13T12:55:21.358Z"
+    },
+    {
+      "id": "t178930412136058",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-13T12:55:21.360Z",
+      "updated": "2026-09-13T12:55:43.684Z"
+    },
+    {
+      "id": "t17893041436874",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-09-13T12:55:43.687Z",
+      "updated": "2026-09-13T12:55:54.308Z"
+    },
+    {
+      "id": "t178930415436063",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-13T12:55:54.360Z",
+      "updated": "2026-09-13T12:56:14.061Z"
+    },
+    {
+      "id": "t178930417406257",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-09-13T12:56:14.062Z",
+      "updated": "2026-09-13T12:56:20.975Z"
+    },
+    {
+      "id": "t178930418097751",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-13T12:56:20.977Z",
+      "updated": "2026-09-13T12:56:25.585Z"
+    },
+    {
+      "id": "t178930418558770",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-09-13T12:56:25.587Z",
+      "updated": "2026-09-13T12:56:51.863Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178826718439737",
-      "level": "info",
-      "text": "Pipeline lefutott — ma nem volt publikálható új tartalom.",
-      "agent": "ceo",
-      "at": "2026-09-01T12:53:04.397Z",
-      "loud": false
-    },
-    {
-      "id": "n178829004673677",
-      "level": "info",
-      "text": "SEO: 3 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-09-01T19:14:06.736Z",
-      "loud": false
-    },
-    {
-      "id": "n178829006161481",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The line-up is solid — practical, varied, and perfect for everyday use. One small note: we jump straight into tool-specific tutorials without a gentle intro for AI newcomers. Adding a quick \"How to Ge",
-      "agent": "publisher",
-      "at": "2026-09-01T19:14:21.614Z",
-      "loud": false
-    },
     {
       "id": "n178829007471245",
       "level": "success",
@@ -1281,18 +1257,33 @@
       "agent": "ceo",
       "at": "2026-09-13T02:09:31.322Z",
       "loud": false
+    },
+    {
+      "id": "n178930418096475",
+      "level": "info",
+      "text": "SEO: 1 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-09-13T12:56:20.964Z",
+      "loud": false
+    },
+    {
+      "id": "n178930419491155",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The line-up looks solid — practical, everyday use cases (complaints, resumes, thank-yous, pet-sitting) that match \"AI for everyday people\" perfectly. Good mix of tools too (ChatGPT, DeepSeek, Grok, Co",
+      "agent": "publisher",
+      "at": "2026-09-13T12:56:34.911Z",
+      "loud": false
+    },
+    {
+      "id": "n178930421191188",
+      "level": "success",
+      "text": "1 hír + 0 útmutató publikálva (költség: $0.0030).",
+      "agent": "ceo",
+      "at": "2026-09-13T12:56:51.911Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m17884619240479",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Getting started with Microsoft Copilot in everyday\" — The Windows key + C shortcut opens Copilot panel in Windows 11 (this was removed/deprecated); The Copilot icon is 'a blue-green circle with three overlapping dots inside, resembling a speech bubble' (icon design has changed); The statement about Windows Copilot being able to 'answer ",
-      "ref": "ARTICLE_GUIDE_copilot-getting-started.json",
-      "at": "2026-09-03T18:58:44.047Z"
-    },
     {
       "id": "m178848891779029",
       "from": "ellenorzo",
@@ -2647,6 +2638,15 @@
       "text": "5 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-09-13T02:20:50.004Z"
+    },
+    {
+      "id": "m178930418557495",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 20 → 5/4/2 oszlop.",
+      "ref": "mobile",
+      "at": "2026-09-13T12:56:25.574Z"
     }
   ]
 }
