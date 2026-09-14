@@ -1,0 +1,61 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "how-to-use-gemini-deep-research-to-plan-a-big-purchase-decis",
+    "company": "Google",
+    "tool": "Gemini",
+    "icon": "🔬",
+    "level": "intermediate",
+    "source_news": null,
+    "written_at": "2026-09-14T02:16:01.033Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00446442,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-09-14T02:18:53.257Z",
+    "slug": "how-to-use-gemini-deep-research-to-plan-a-big-purchase-decision",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1511
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Solid guide with clear step-by-step instructions, practical examples in each step, good fallbacks for variable UI elements, and a helpful disclaimer about outdated information. The structure is complete with hook, six numbered steps, common mistakes, a What this means for you section, and a Try it now wrap-up. Minor note: Step 1 briefly mentions Deep Research without defining it again, but the opening paragraph already covers it adequately.",
+      "_aiCost": 0.00254286,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "image_v": 2,
+    "image_at": "2026-09-14T02:19:12.230Z",
+    "seo": {
+      "meta_description": "Use Gemini Deep Research to compare big purchases like cars and laptops. AI scans dozens of sites and delivers a sourced report—faster than manual Googling.",
+      "keywords": [
+        "Gemini Deep Research",
+        "how to use Gemini Deep Research",
+        "AI research tool for shopping",
+        "Gemini AI purchase research",
+        "compare products with AI",
+        "deep research feature Gemini",
+        "AI assisted purchase decisions"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add an FAQ section targeting common questions like 'Is Gemini Deep Research free?' or 'Can Gemini research products for me?' to capture featured snippet opportunities",
+        "Include a brief comparison with other research methods (traditional Googling, comparison sites) to reinforce the unique value proposition and target 'vs' search queries",
+        "Consider adding a short video or screenshot walkthrough to improve dwell time, which signals quality to search engines"
+      ],
+      "optimised_at": "2026-09-14T02:19:33.029Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"How to use Gemini Deep Research to plan a big purchase decision\"\nsubtitle: \"Let Gemini scan dozens of sites and build a sourced report so your next big purchase isn't a whole weekend of manual Googling.\"\ncategory: \"guide\"\naudience: \"personal\"\ncompany: \"Google\"\ntool: \"Gemini\"\nlevel: \"intermediate\"\nread_time_minutes: 7\ntags: [\"gemini\", \"deep-research\", \"shopping\", \"decision-making\"]\n---\n\n# How to use Gemini Deep Research to plan a big purchase decision\n\n> **In short:** Gemini Deep Research browses dozens of websites for you and returns a structured report with source links, so comparing big purchases like cars, appliances, or laptops stops being a full weekend of manual Googling.\n\nBuying a new laptop, a refrigerator, or a used car usually means opening forty browser tabs and reading half of them. Gemini's **Deep Research** feature does that scrolling for you: it reads many sites, summarizes what it found, and hands you a tidy report with links back to where each claim came from. This guide walks you through using it, step by step, so the report actually answers *your* question.\n\n## Before you start\n- **A Google account** signed in on the Gemini website or the Gemini app.\n- **Access to Deep Research.** It may be limited to paid Google AI plans on some accounts, so check the plan page for the latest availability before relying on it.\n- **A rough idea of what you're shopping for** (a category, a budget range, and 2–3 must-haves work best — more on this in Step 2).\n- **About 15–25 minutes.** Deep Research usually takes a few minutes to run, and you'll want time to read the report it returns.\n- An honest expectation: the report gives you a strong starting point, but it does **not** buy the thing for you, and prices or availability can be outdated by the time you read them.\n\n## Step 1 — Open Gemini and pick the Deep Research mode\nGo to the Gemini website or open the Gemini app, then look in the chat box for a model or tool picker — usually a small dropdown above the text field. From that picker, choose the option labeled **\"Deep Research.\"** On some accounts the option appears as a separate **Tools** button or a dedicated tab at the top of the chat. If you don't see it, it might not be enabled on your plan yet, or it could live behind a different name like **\"Research\"** or **\"Pro.\"**\n\n💬 Example: when the picker appears, click the dropdown that currently shows \"Fast\" or \"Pro\" and switch it to **Deep Research**.\n\nYou'll know it worked when the text field gains a small brief outline or \"Plan\" panel, and the placeholder text inside the box mentions research or sources.\n\n## Step 2 — Describe your purchase in concrete detail\nThis is the most important step: the more specific your prompt, the more useful the report. Type a short paragraph that names the **item, your budget range, your must-haves, your deal-breakers, and how you'll use it.** Think of it like a one-page brief you'd give a friend who's shopping on your behalf — vague briefs produce vague reports. Avoid jargon the AI won't understand; instead, describe the thing in plain words.\n\n💬 Example: \"I need a quiet, energy-efficient dishwasher for a small kitchen, budget roughly $700–$1,000 USD, must fit a 24-inch opening and run under 45 dB. I cook most nights for two, sometimes four. Compare the top 5 models available in my country, with pros, cons, and where each one tends to be cheapest.\"\n\nYou'll know it worked when you see a clear \"Research plan\" or outline appear below your message — Gemini usually shows what it intends to search for before it starts.\n\n## Step 3 — Approve the plan and let it run\nBelow the research plan, look for a button like **\"Start Research\"** or **\"Begin.\"** Click it, then step away. Deep Research browses many websites in the background and writes as it goes, so the response can take **several minutes** (sometimes five, sometimes fifteen) — far longer than a normal chat reply. A progress bar or running indicator usually appears. **Do not close the tab** while it's running, or you'll lose the work.\n\n💬 Example: hit the \"Start Research\" button, then make a coffee; the first draft of the report appears inline as it finishes each section.\n\nYou'll know it worked when a long, structured report lands in the chat, with section headings, bullet points, and small numbered or linked citations you can click.\n\n## Step 4 — Read the report and click at least three sources\nDon't trust any AI research report blindly. Scroll to the end of the report first and look for a **Sources** section, or for inline footnote-style numbers next to specific claims. Click at least three of those links and read the original page for a minute each, especially anything related to price, warranty, or safety. The sources tell you whether the report is repeating marketing copy or actually weighing real reviews.\n\n💬 Example: open the report, jump to the \"Sources\" list at the bottom, and click the first three links — if any of them are dead, irrelevant, or from a brand's own press release, treat the matching claim with caution.\n\nYou'll know it worked when you can point to a specific source link and say, out loud, \"this is where that fact came from.\"\n\n## Step 5 — Ask two or three follow-up questions to narrow the field\nOnce the first report lands, treat it like a starting point, not the final answer. Ask Gemini to compare your top two candidates head-to-head, to look for known reliability complaints, or to translate the report into a simple \"if you care most about X, choose Y; if you care about Z, choose W\" decision guide. One question per message works best. If an answer feels too generic, push back: ask for specific model numbers, specific dates, or specific failure modes.\n\n💬 Example: \"Now compare models A and B from your report on noise, energy use, and reliability over five years — which one wins for a household of two who cooks daily?\"\n\nYou'll know it worked when Gemini's reply is sharper and more specific than the original report, and ideally points back to the same source list.\n\n## Step 6 — Turn the report into a personal decision checklist\nBefore you close the chat, ask Gemini to summarize the entire research session into a short **decision checklist** you can actually use: 3–5 finalist products, the deciding criteria for each, and the questions you still need to answer before you spend money. Copy that checklist into a note on your phone or print it. The point of the report is to leave your head clear, not crammed with new jargon.\n\n💬 Example: \"Summarize this whole conversation into a checklist: top 3 dishwashers I should see in a store, what to test in person, and what to double-check on the manufacturer's site before I buy.\"\n\nYou'll know it worked when you have a one-page summary in your hand that you could read in two minutes in a showroom.\n\n## Common mistakes\n- **Mistake:** Treating the report as a buy recommendation. **Fix:** It's a starting brief — the final choice is still yours, and any purchase should be confirmed against the official product page and the live price.\n- **Mistake:** Skipping the sources. **Fix:** Always click at least three source links. If you can't find them, or they look unreliable, ask Gemini to redo the research with more trusted sites.\n- **Mistake:** Closing the tab while research is running. **Fix:** Deep Research takes several minutes; leave the tab open until the full report appears, or you'll lose the work.\n- **Mistake:** Asking a vague prompt like \"best laptop under $1,000.\" **Fix:** Add your must-haves (size, weight, battery life, ports) and your main use (work, gaming, school) — the more detail, the better the report.\n\n## What this means for you\n- **In everyday life:** A big purchase — a car, a fridge, a laptop — stops being a weekend of forty open tabs. You get a sourced brief instead, then spend your time on the decisions that actually need a human.\n- **For your business or work:** The same workflow works for buying equipment, software subscriptions, or vendor comparisons at work: ask Deep Research to compare three vendors against your checklist, then read the sources yourself before signing anything.\n- **If you're just getting started:** Pick one purchase you've been putting off, write a two-sentence brief in Step 2, and run the report end to end. The first run is the slowest; the second one feels easy.\n\n## Try it now\nOpen Gemini, switch to **Deep Research**, and paste this single sentence as your first prompt: *\"I'm buying a [item] with a budget of [low]–[high], and my must-haves are [X, Y, Z]. Compare the top 5 options and end with a short decision checklist.\"* Fill in the brackets, hit Start Research, and read the sources before you trust any of it.",
+  "original_title": "How to use Gemini Deep Research to plan a big purchase decision"
+}
