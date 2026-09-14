@@ -1,102 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178917979872542",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-12T02:23:18.725Z",
-      "updated": "2026-09-12T02:24:00.392Z"
-    },
-    {
-      "id": "t178917984039358",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-12T02:24:00.393Z",
-      "updated": "2026-09-12T02:24:52.315Z"
-    },
-    {
-      "id": "t178917989231771",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-09-12T02:24:52.317Z",
-      "updated": "2026-09-12T02:25:54.778Z"
-    },
-    {
-      "id": "t178917995478083",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-12T02:25:54.780Z",
-      "updated": "2026-09-12T02:26:06.695Z"
-    },
-    {
-      "id": "t178917996669745",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-09-12T02:26:06.697Z",
-      "updated": "2026-09-12T02:27:14.649Z"
-    },
-    {
-      "id": "t178921363205819",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-09-12T11:47:12.058Z",
-      "updated": "2026-09-12T11:47:12.241Z"
-    },
-    {
-      "id": "t178921363224225",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-09-12T11:47:12.242Z",
-      "updated": "2026-09-12T11:47:31.004Z"
-    },
-    {
-      "id": "t178921365100562",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-09-12T11:47:31.005Z",
-      "updated": "2026-09-12T11:48:17.916Z"
-    },
-    {
-      "id": "t17892136979188",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-09-12T11:48:17.918Z",
-      "updated": "2026-09-12T11:49:06.350Z"
-    },
-    {
-      "id": "t178921374635230",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-12T11:49:06.352Z",
-      "updated": "2026-09-12T11:49:33.240Z"
-    },
-    {
-      "id": "t17892137732435",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-09-12T11:49:33.243Z",
-      "updated": "2026-09-12T11:49:58.917Z"
-    },
-    {
-      "id": "t178921379891950",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-12T11:49:58.919Z",
-      "updated": "2026-09-12T11:50:14.909Z"
-    },
-    {
       "id": "t178921381491226",
       "title": "Run guide",
       "status": "done",
@@ -479,33 +383,105 @@
       "agent": "publisher",
       "created": "2026-09-14T02:19:47.158Z",
       "updated": "2026-09-14T02:20:13.615Z"
+    },
+    {
+      "id": "t17893963532041",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-09-14T14:32:33.204Z",
+      "updated": "2026-09-14T14:32:33.359Z"
+    },
+    {
+      "id": "t178939635336030",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-09-14T14:32:33.360Z",
+      "updated": "2026-09-14T14:33:06.368Z"
+    },
+    {
+      "id": "t178939638637020",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-09-14T14:33:06.370Z",
+      "updated": "2026-09-14T14:33:06.550Z"
+    },
+    {
+      "id": "t178939638655168",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-09-14T14:33:06.551Z",
+      "updated": "2026-09-14T14:37:24.527Z"
+    },
+    {
+      "id": "t178939664452990",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-14T14:37:24.529Z",
+      "updated": "2026-09-14T14:38:50.401Z"
+    },
+    {
+      "id": "t178939673040480",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-09-14T14:38:50.404Z",
+      "updated": "2026-09-14T14:39:28.510Z"
+    },
+    {
+      "id": "t178939676851254",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-14T14:39:28.512Z",
+      "updated": "2026-09-14T14:39:47.551Z"
+    },
+    {
+      "id": "t178939678755465",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-09-14T14:39:47.554Z",
+      "updated": "2026-09-14T14:40:22.883Z"
+    },
+    {
+      "id": "t178939682294169",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-14T14:40:22.941Z",
+      "updated": "2026-09-14T14:40:59.971Z"
+    },
+    {
+      "id": "t178939685997399",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-09-14T14:40:59.973Z",
+      "updated": "2026-09-14T14:41:33.834Z"
+    },
+    {
+      "id": "t178939689383751",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-14T14:41:33.837Z",
+      "updated": "2026-09-14T14:41:37.221Z"
+    },
+    {
+      "id": "t178939689722313",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-09-14T14:41:37.223Z",
+      "updated": "2026-09-14T14:42:04.257Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178831543826490",
-      "level": "success",
-      "text": "4 hír + 4 útmutató publikálva (költség: $0.1036).",
-      "agent": "ceo",
-      "at": "2026-09-02T02:17:18.264Z",
-      "loud": false
-    },
-    {
-      "id": "n178835158673797",
-      "level": "info",
-      "text": "SEO: 1 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-09-02T12:19:46.737Z",
-      "loud": false
-    },
-    {
-      "id": "n178835161330787",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). **Publish Summary:**\n\nThe line-up looks great — practical, everyday use cases that real people actually need, covering a nice mix of AI tools (Le Chat, ChatRTX, DeepSeek, Grok, ChatGPT, Cohere, Qwen).",
-      "agent": "publisher",
-      "at": "2026-09-02T12:20:13.307Z",
-      "loud": false
-    },
     {
       "id": "n178835162755470",
       "level": "success",
@@ -1281,63 +1257,33 @@
       "agent": "ceo",
       "at": "2026-09-14T02:20:13.659Z",
       "loud": false
+    },
+    {
+      "id": "n178939689382891",
+      "level": "info",
+      "text": "SEO: 4 cikk optimalizálva (átlag 8.3/10).",
+      "agent": "seo",
+      "at": "2026-09-14T14:41:33.828Z",
+      "loud": false
+    },
+    {
+      "id": "n178939690824968",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The line-up looks solid and ready to go—practical, everyday use cases that show AI as a helpful tool, not something scary. Good mix of personal (sympathy, thank-you notes) and professional (resumes, c",
+      "agent": "publisher",
+      "at": "2026-09-14T14:41:48.249Z",
+      "loud": false
+    },
+    {
+      "id": "n178939692430824",
+      "level": "success",
+      "text": "4 hír + 0 útmutató publikálva (költség: $0.0580).",
+      "agent": "ceo",
+      "at": "2026-09-14T14:42:04.308Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178848972126961",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"How to use Claude for clear, careful writing and e\" — One claim about access limitations during peak times lacks verification — softened to reflect uncertainty",
-      "ref": "ARTICLE_GUIDE_claude-writing.json",
-      "at": "2026-09-04T02:42:01.269Z"
-    },
-    {
-      "id": "m178848980283988",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"How to use Microsoft Copilot in Word, Excel and Ou\" — 'stylised ribbon or a simple AI symbol' as the exact Copilot icon description; 'Summary by Copilot' as the exact button name (might be just 'Summarize' now); Copilot in Excel can directly 'highlight cells' automatically (may only suggest, not execute)",
-      "ref": "ARTICLE_GUIDE_copilot-office.json",
-      "at": "2026-09-04T02:43:22.839Z"
-    },
-    {
-      "id": "m178849079978768",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-09-04T02:59:59.787Z"
-    },
-    {
-      "id": "m178852408647949",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"How to edit PDF pages with AI in Picsart Flow\" — mi a baj: Picsart Flow is presented as a real AI PDF editing tool ('Picsart Flow is one example of a tool that does this'), but this specific product name does not appear on the verified-real list and I cannot confirm this is a real product with AI PDF editing capabilities. The article treats it as a concrete, named example wh",
-      "ref": "2026-09-04T12-08-32-840Z_picsart_How_to_edit_PDF_pages_with_AI_in_Picsart_Flow.json",
-      "at": "2026-09-04T12:14:46.479Z"
-    },
-    {
-      "id": "m178852410538879",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Muse Image 1.0: Meta’s agentic image model, in Picsart\" — mi a baj: The article claims 'Meta's Muse' is 'now in Picsart's AI Playground' — 'Muse' is not a known Meta image-generation product (Meta's image model line is Emu / Meta AI image generation), and 'Picsart's AI Playground' is not a verifiable Picsart product surface. This specific pairing of product names + integrati",
-      "ref": "2026-09-04T12-08-32-840Z_picsart_Muse_Image_1_0__Meta_s_agentic_image_model__in_Pic.json",
-      "at": "2026-09-04T12:15:05.388Z"
-    },
-    {
-      "id": "m178852412904612",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Daybreak for Frontline Defenders: $1B to protect essential services\" — javítva: The article states OpenAI announced a $1 billion commitment called 'Daybreak for Frontline Defenders' — this specific program name and dollar amount are not verifiable and appear to be fabricated.; The article claims OpenAI 'recently announced' this $1 billion commitment to protect essential services — no",
-      "ref": "2026-09-04T01-58-32-035Z_openai-blog_Daybreak_for_Frontline_Defenders___1B_to_protect_e.json",
-      "at": "2026-09-04T12:15:29.046Z"
-    },
     {
       "id": "m17885241437424",
       "from": "iro",
@@ -2647,6 +2593,60 @@
       "text": "2 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-09-14T02:31:44.637Z"
+    },
+    {
+      "id": "m178939671678964",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"New AI Agent Ace Helps the TSA Support Travelers as They Navigate Airport Security \" — mi a baj: The article presents a named TSA AI assistant called 'Ace' handling 100,000 conversations/month with a 96% resolution rate as established fact, but 'Ace' is not a recognized official name of any TSA AI product, and the specific statistics (100,000/month, 96%) are not verifiable f",
+      "ref": "2026-09-14T14-33-06-357Z_salesforce_New_AI_Agent_Ace_Helps_the_TSA_Support_Travelers_a.json",
+      "at": "2026-09-14T14:38:36.789Z"
+    },
+    {
+      "id": "m178939676850287",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"New AI Agent Ace Helps the TSA Support Travelers as They Navigate Airport Security \" — javítva: The article presents a named TSA AI assistant called 'Ace' handling 100,000 conversations/month with a 96% resolution rate as established fact, but 'Ace' is not a recognized official name of any TSA AI product, and the specific statistics (100,000/month, 96%) are not verifiable from any kn",
+      "ref": "2026-09-14T14-33-06-357Z_salesforce_New_AI_Agent_Ace_Helps_the_TSA_Support_Travelers_a.json",
+      "at": "2026-09-14T14:39:28.502Z"
+    },
+    {
+      "id": "m178939678754144",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"New AI Agent Ace Helps the TSA Support Travelers as They Navigate Airport Security \" (?/10)",
+      "ref": "2026-09-14T14-33-06-357Z_salesforce_New_AI_Agent_Ace_Helps_the_TSA_Support_Travelers_a.json",
+      "at": "2026-09-14T14:39:47.541Z"
+    },
+    {
+      "id": "m178939680990455",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "info",
+      "text": "A \"3 Veo workflow examples in Picsart Flow, broken down\" hír a meglévő útmutatóra mutat: how-to-use-kling-ai-video-templates-in-picsart-flow",
+      "ref": "how-to-use-kling-ai-video-templates-in-picsart-flow",
+      "at": "2026-09-14T14:40:09.904Z"
+    },
+    {
+      "id": "m178939689721240",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 20 → 5/4/2 oszlop.",
+      "ref": "mobile",
+      "at": "2026-09-14T14:41:37.212Z"
+    },
+    {
+      "id": "m178939695173064",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Ask Alexa+ to read your calendar aloud and remind \" — Basic calendar reading on Echo devices works without Alexa+",
+      "ref": "ARTICLE_GUIDE_ask-alexa-to-read-your-calendar-aloud-and-remind-you-about-t.json",
+      "at": "2026-09-14T14:42:31.730Z"
     }
   ]
 }

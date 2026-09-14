@@ -1,0 +1,69 @@
+{
+  "_meta": {
+    "written_at": "2026-09-14T14:39:28.500Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.01188948,
+    "original_draft": "2026-09-14T14-33-06-357Z_salesforce_New_AI_Agent_Ace_Helps_the_TSA_Support_Travelers_a.json",
+    "source_id": "salesforce",
+    "source_name": "Salesforce AI Blog (hivatalos)",
+    "source_link": "https://www.salesforce.com/news/press-releases/2026/09/14/tsa-improves-travel-experience-agentforce/",
+    "source_links": [
+      "https://www.salesforce.com/news/press-releases/2026/09/14/tsa-improves-travel-experience-agentforce/"
+    ],
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "rejected_at": "2026-09-14T14:38:36.782Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 750
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Solid explainer that delivers on teaching + friendly tone, with good plain-language definitions of chatbot and knowledge base, a clear What This Means For You section with four audience-specific takeaways, and a practical wrap-up. No prohibited content, no clichés, no invented statistics. One note: claims about the broader trend across airports and agencies feel general rather than sourced, but the article frames them as an emerging pattern rather than hard facts, which is acceptable for this format.",
+      "_aiCost": 0.00136353,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Hitelesség-kapu blokkolta: The article presents a named TSA AI assistant called 'Ace' handling 100,000 conversations/month with a 96% resolution rate as established fact, but 'Ace' is not a recognized official name of any TSA A",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-09-14T14-33-06-357Z_salesforce_New_AI_Agent_Ace_Helps_the_TSA_Support_Travelers_a.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-09-14T14:39:47.540Z",
+    "slug": "ai-now-helps-travelers-at-the-airport-here-s-what-that-means",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-09-14T14:40:15.193Z",
+    "guide_worthy": false,
+    "pairing_reason": "Article is a general explainer about AI assistants at airports without naming a specific tool readers can use",
+    "image_v": 2,
+    "image_at": "2026-09-14T14:40:48.029Z",
+    "seo": {
+      "meta_description": "AI airport assistants now answer traveler questions 24/7 — from ID rules to security wait times. Here's what this means for your next trip.",
+      "keywords": [
+        "AI at airports",
+        "airport AI assistant",
+        "how AI helps travelers",
+        "airport chatbot for travelers",
+        "travel assistance AI",
+        "airport information chatbot",
+        "AI customer service airports"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add a specific example or use case (e.g., which airports already use this) to build trust",
+        "Consider adding FAQ-style headers to capture more search traffic",
+        "Include practical benefits like 'no more waiting in line for simple questions'"
+      ],
+      "optimised_at": "2026-09-14T14:41:23.578Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"AI Now Helps Travelers at the Airport — Here's What That Means\"\nsubtitle: \"Airports, airlines, and government travel agencies are quietly rolling out AI assistants to handle the flood of routine questions. Here's how they work and what changes for you.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"ai-assistants\", \"travel\", \"airports\", \"customer-service\"]\n---\n\n# AI Now Helps Travelers at the Airport — Here's What That Means\n\n> **In short:** Airports and government travel agencies are increasingly using AI assistants to answer common traveler questions — about ID requirements, baggage rules, and checkpoint hours — around the clock. The shift means faster, more consistent answers, with a human still available for unusual cases.\n\nYou've probably stood in a long airport security line, watched someone fumble for their laptop, and wondered where to put the toiletries. Now imagine being able to ask those questions any time, day or night — and getting a clear, accurate answer in seconds.\n\n## What's actually changing\n\nAirports, airlines, and government travel agencies have started rolling out AI assistants on their websites and apps. These are chatbots (a program you chat with in plain language) tuned for one specific job: answering the questions travelers ask most often.\n\n\"Can I bring this through the scanner?\" \"What time does the checkpoint open?\" \"Where's the lost luggage office?\" Those used to mean waiting on hold, scrolling a dense FAQ page, or just guessing. Now many of those questions get an instant, plain-English reply.\n\nThe shift isn't flashy. What's changing is that the boring, repetitive questions — the ones already answered somewhere in a thick rulebook — are being handled automatically, so human staff can focus on the trickier cases.\n\n## How AI assistants like this actually work\n\nAn AI assistant is software designed to do one specific job, like answering questions or filling out forms. It doesn't make things up out of thin air. Behind the scenes, it pulls answers from a curated knowledge base — a collection of official documents, regulations, and FAQs the agency has already published.\n\nWhen you ask a question, the AI searches that knowledge base, drafts an answer, and replies. If your question is unusual — a medical exception, a complicated legal edge case, a real emergency — it hands you off to a human.\n\nThis is different from a general-purpose chatbot (an AI you can ask anything, like ChatGPT). An AI assistant in this context is tuned for one specific task and one specific knowledge base, which is why its answers tend to be more accurate and less likely to go off-script.\n\n## Why airports and public agencies are leaning in\n\nPublic agencies and travel companies deal with enormous volumes of repetitive questions — \"what documents do I need?\" \"is this allowed?\" \"is my flight delayed?\" — and most of those answers already exist somewhere. AI assistants offer three things:\n\n- **Speed** — answers come in seconds, not on hold.\n- **Consistency** — everyone gets the same correct answer.\n- **Capacity** — the system can handle thousands of conversations at once, around the clock.\n\nThat's why you're starting to see similar setups at tax authorities, transit systems, and city service portals. The airport is just the loudest example because travelers notice it most.\n\n## What this means for you\n\n- **If you travel even once a year**: Expect faster, more consistent answers when you ask about security rules, baggage, or ID requirements — and a real human if your situation is unusual.\n- **If you handle government paperwork or travel for work**: The same pattern is showing up at tax offices, permit systems, and benefits portals. The interface may feel more like a chat window than a web form.\n- **If you're worried about AI replacing humans**: In these setups, the AI handles the routine questions. Humans stay for the cases that genuinely need judgment — and that mix is likely to stick.\n- **If you want the best answer from any AI assistant**: Be specific. \"Can I bring a 3-oz perfume bottle in my carry-on?\" works much better than \"Can I bring this?\"\n\n## Wrap-up\n\nAI assistants are quietly becoming the first voice you hear when you have a question for a travel agency or airport. The practical takeaway: get comfortable asking specific, clear questions, because the answers are getting faster and more reliable. Next time you're stuck on a rule before a flight, try the agency's chat assistant first. You might be surprised how quickly you get back to packing.",
+  "original_title": "New AI Agent Ace Helps the TSA Support Travelers as They Navigate Airport Security "
+}
