@@ -1,7 +1,7 @@
 {
   "_meta": {
     "note": "Forrás-bizonyítvány: frissesség + termés + megbízhatóság forrásonként. Gyártja: core/source-report-card.js",
-    "updated": "2026-09-13T18:31:30.685Z",
+    "updated": "2026-09-14T02:31:59.553Z",
     "thresholds": {
       "DEAD_FEED_DAYS": 365,
       "MIN_SAMPLE": 8,
@@ -21,7 +21,7 @@
     "openai-blog": {
       "name": "OpenAI Blog (hivatalos)",
       "feedAgeDays": 0,
-      "published30d": 33,
+      "published30d": 32,
       "truthBlocks": 1,
       "truthUnfixed": 0,
       "totalAttempts": 13,
@@ -32,7 +32,7 @@
     },
     "google-deepmind": {
       "name": "Google DeepMind (hivatalos)",
-      "feedAgeDays": 5,
+      "feedAgeDays": 6,
       "published30d": 2,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -45,7 +45,7 @@
     "google-ai-blog": {
       "name": "Google AI (hivatalos, blog.google)",
       "feedAgeDays": 3,
-      "published30d": 5,
+      "published30d": 4,
       "truthBlocks": 0,
       "truthUnfixed": 0,
       "totalAttempts": 2,
@@ -68,7 +68,7 @@
     },
     "microsoft-ai": {
       "name": "Microsoft AI (hivatalos)",
-      "feedAgeDays": 3,
+      "feedAgeDays": 4,
       "published30d": 2,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -104,8 +104,8 @@
     },
     "google-workspace": {
       "name": "Google Workspace Updates (hivatalos)",
-      "feedAgeDays": 2,
-      "published30d": 13,
+      "feedAgeDays": 0,
+      "published30d": 12,
       "truthBlocks": 4,
       "truthUnfixed": 0,
       "totalAttempts": 8,
@@ -164,7 +164,7 @@
     },
     "mistral-ai": {
       "name": "Mistral AI (hivatalos)",
-      "feedAgeDays": 3,
+      "feedAgeDays": 4,
       "published30d": 0,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -428,7 +428,7 @@
     },
     "sap": {
       "name": "SAP Innovation Blog (hivatalos)",
-      "feedAgeDays": 2,
+      "feedAgeDays": 3,
       "published30d": 2,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -476,7 +476,7 @@
     },
     "pinecone": {
       "name": "Pinecone Blog (hivatalos)",
-      "feedAgeDays": 4,
+      "feedAgeDays": 5,
       "published30d": 1,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -488,7 +488,7 @@
     },
     "ibm": {
       "name": "IBM Research (hivatalos)",
-      "feedAgeDays": 3,
+      "feedAgeDays": 4,
       "published30d": 1,
       "truthBlocks": 1,
       "truthUnfixed": 0,
@@ -536,7 +536,7 @@
     },
     "xai-news": {
       "name": "xAI (hivatalos, Google News szűrve)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 2,
       "published30d": 1,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -585,18 +585,18 @@
     "grammarly-blog": {
       "name": "Grammarly (hivatalos)",
       "feedAgeDays": 31,
-      "published30d": 1,
+      "published30d": 0,
       "truthBlocks": 0,
       "truthUnfixed": 0,
       "totalAttempts": 0,
       "alreadyDisabled": false,
       "lastArticle": "2026-08-14",
-      "verdict": "ok",
-      "reason": ""
+      "verdict": "no-yield",
+      "reason": "él, de 30 napja egy cikket sem adott — érdemes megnézni"
     },
     "d-id-news": {
       "name": "D-ID (hivatalos)",
-      "feedAgeDays": 9,
+      "feedAgeDays": 10,
       "published30d": 3,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -656,8 +656,8 @@
     },
     "picsart": {
       "name": "PicsArt Blog (hivatalos)",
-      "feedAgeDays": 2,
-      "published30d": 40,
+      "feedAgeDays": 3,
+      "published30d": 36,
       "truthBlocks": 7,
       "truthUnfixed": 0,
       "totalAttempts": 17,
