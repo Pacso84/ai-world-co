@@ -1,0 +1,69 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "how-to-use-perplexity-s-focus-modes-to-get-cleaner-faster-an",
+    "company": "Perplexity",
+    "tool": "Perplexity",
+    "icon": "🔍",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-09-15T13:05:07.784Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00775412,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "rejected_at": "2026-09-15T02:32:39.375Z",
+    "auto_check": {
+      "passed": false,
+      "issues": [
+        "LEDE_TOO_LONG: A RÖVIDEN-doboz 72 szó (max ~45) — ami hosszú, az már nem \"röviden\"."
+      ],
+      "wordCount": 1258
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "This is a well-structured, beginner-friendly guide with accurate Perplexity information, clear explanations of each Focus mode, helpful fallbacks for varying screens, and a practical What this means for you section. The warnings about paid features and screen variability are responsible and the tone stays encouraging throughout.",
+      "_aiCost": 0.0018642,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Well-structured beginner guide with excellent clarity, fallbacks, and friendly tone. However, the article names a YouTube Focus mode that appears to be invented (Perplexity does not have this mode), which directly violates the factual accuracy requirement. The Writer must verify which Focus modes actually exist before publication.",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_GUIDE_how-to-use-perplexity-s-focus-modes-to-get-cleaner-faster-an.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-09-15T13:05:47.158Z",
+    "slug": "how-to-use-perplexity-s-focus-modes-for-cleaner-answers",
+    "image_v": 2,
+    "image_at": "2026-09-15T13:06:43.476Z",
+    "seo": {
+      "meta_description": "Learn how to use Perplexity's Focus Modes to get cleaner, more trustworthy answers from sources you actually choose.",
+      "keywords": [
+        "how to use Perplexity focus modes",
+        "Perplexity focus modes tutorial",
+        "Perplexity AI search filters",
+        "Perplexity source settings",
+        "how to control Perplexity sources",
+        "Perplexity beginner guide",
+        "Perplexity your files mode"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add the current year to the title for freshness signals",
+        "Include a brief comparison table of the different Focus Mode options",
+        "Add FAQ schema markup for better SERP visibility"
+      ],
+      "optimised_at": "2026-09-15T13:07:13.218Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"How to Use Perplexity's Focus Modes for Cleaner Answers\"\nsubtitle: \"A beginner-friendly walkthrough to limit Perplexity's sources so your answers come from places you actually trust.\"\ncategory: \"guide\"\naudience: \"both\"\ncompany: \"Perplexity\"\ntool: \"Perplexity\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"getting-started\", \"perplexity\", \"search\"]\n---\n\n# How to Use Perplexity's Focus Modes for Cleaner Answers\n\n> **In short:** Focus modes tell Perplexity which sources to read from — the whole web, scholarly papers, Reddit-style forums, or only the files you upload — so answers are sharper and easier to verify. The exact menu can change over time, so treat the list below as a starting point and check what your screen shows today; \"Your Files\" mode may require a paid plan, and no mode can read content behind a login wall.\n\nPerplexity is an AI answer engine — think of it as a search box that reads many websites for you and writes a tidy summary with links back to where each fact came from. Focus modes are a small switch that controls *which places* Perplexity is allowed to read from. Pick the right mode and your answer gets sharper, faster, and easier to double-check.\n\n## Before you start\n- A free Perplexity account (sign up with email, Google, or Apple).\n- A web browser, or the Perplexity mobile app on iOS or Android.\n- About 5 minutes for the first run-through.\n- Optional: a PDF or document on your computer if you want to try the file-search mode.\n\n## Step 1 — Open Perplexity and find the Focus selector\nGo to **perplexity.ai** in your browser, or launch the Perplexity app. Look just above the main search box for a small row of controls — somewhere there is a **Focus** option, usually shown with an icon that looks like a target or funnel 🎯. Click or tap it. A short menu appears with options like **All**, **Web**, **Academic**, **Social**, and **Your Files**. If you don't see a \"Focus\" label on your screen, look for the same row of small icons to the left of any Pro or search toggle. You'll know it worked when a dropdown of source options appears above the search box. The exact list of modes can change — if a mode I'm about to describe is missing on your screen, just skip that step.\n\n## Step 2 — Pick the mode that matches your question\nChoose the option that fits what you actually want to learn. **Web** is the everyday default — good for general questions, news, and how-tos. **Academic** narrows the search to scholarly papers and is great for science, history, or anything where you want citable sources. **Social** leans on Reddit and similar discussion forums, which is wonderful for real-world opinions (\"Is this dishwasher worth buying?\") and surprisingly bad for medical facts. **Your Files** searches only documents you've uploaded, which is perfect for a long rental agreement or class syllabus. If you're unsure, **Web** is a safe starting point. 💬 Example: researching a sleep claim → choose **Academic**. You'll know it worked when the mode name appears highlighted in the search bar or above your question after you submit it.\n\n## Step 3 — Type your question the way you'd ask a friend\nClick into the search box and write a full, plain-English sentence — not just one or two keywords. The mode you picked stays in effect for this question and the follow-up thread. If the Focus label doesn't seem to change when you switch modes, refresh the page once and try again — the selector occasionally sticks on the previous choice. 💬 Example: with **Academic** selected, type *\"What does recent research say about the effect of screen time on teenagers' sleep?\"* You'll know it worked when the answer arrives with a list of small citation numbers, and the right-hand **Sources** panel (on web) or the inline links (in the app) show paper titles, not just blogs.\n\n## Step 4 — Read the sources, not just the summary\nScroll to the bottom of the answer (on web) or tap the source count (in the app). Each numbered footnote links to the actual page Perplexity read. Open at least one — especially for anything important — to confirm the summary matches what the source really says. If you don't see any sources listed, the mode may have silently fallen back to **All**; switch it again and resubmit. You'll know it worked when you can click a number and land on a page that genuinely backs up the sentence next to it.\n\n## Step 5 — Follow up inside the same thread\nBelow Perplexity's answer is a smaller box that says something like **Ask a follow-up**. Type your next question there instead of starting a brand-new search — the thread remembers your Focus mode and the earlier sources. This is where Focus modes really shine: a long conversation stays grounded in the same trusted corner of the internet. If the follow-up box is missing on your screen, scroll down — it sometimes hides below longer answers. You'll know it worked when the next reply shows the same mode indicator you picked in Step 2.\n\n## Step 6 — Try the file-search mode for personal questions\nIf you have a long PDF — a rental agreement, a class syllabus, a 40-page report — look for an **attach** or **upload** button near the search box (it usually looks like a paperclip or a **+** icon, but the icon can vary by device). Once the file finishes uploading, switch Focus to **Your Files**, then ask questions about it. The answer will only draw from your document, not the open web. This mode may sit behind a paid plan; if you can't select it, check the current plan names on Perplexity's official pricing page. You'll know it worked when Perplexity quotes your document directly and every source link points back to the file you uploaded.\n\n## Common mistakes\n- **Leaving Focus on \"All\" by default.** Perplexity still works, but you'll get a noisy mix of forums, news, and stores. Switch the mode to match the question — it's the single biggest quality boost you can give yourself.\n- **Trusting the summary without opening a source.** AI summaries are usually right, but \"usually\" isn't \"always\". Click at least one citation for anything that matters — money, health, legal, school.\n- **Asking a medical or financial question in Social mode.** Reddit is wonderful for product opinions and a poor place for personal decisions about your body or wallet. Switch to **Academic** or **Web**, and treat the result as a starting point, not a verdict.\n\n## What this means for you\n- **In everyday life:** the next time you're about to buy a $400 appliance, switch to **Social** and ask *\"What do owners complain about after six months?\"* — you'll get real frustration, not ad copy.\n- **For your work or business:** use **Academic** when you need to back up a claim in a report or slide deck. The citations are already there, which saves a trip to a library database.\n- **If you're just getting started:** stick with **Web** for your first week. Once you're comfortable, try **Academic** for one question you'd normally Google — you'll see the difference immediately.\n\n## Try it now\nOpen Perplexity, switch Focus to **Academic**, and ask: *\"What does research say about whether morning sunlight improves mood?\"* Read the answer, then click one of the numbered sources. That single click is the habit that turns a fun AI demo into a trustworthy research tool.",
+  "original_title": "How to use Perplexity's Focus modes to get cleaner, faster answers"
+}

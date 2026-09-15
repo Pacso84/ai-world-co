@@ -352,6 +352,16 @@
         "The article claims 'Perplexity has released a Windows version of its \"Computer\" AI agent that runs locally on your machine, powered by NVIDIA RTX graphics cards.' No such Perplexity product exists. Perplexity's agent product is called 'Perplexity Comet' (a browser), not 'Computer', and there is no verified Windows desktop local-AI agent from Perplexity that runs on NVIDIA RTX GPUs. This appears to be a fabricated product/feature claim presented as fact."
       ],
       "confidence": 8
+    },
+    {
+      "at": "2026-09-15T13:03:44.125Z",
+      "file": "WRITER_2026-09-15T12-59-05-468Z_picsart_GPT-6_Astra_now_creates_any_creative_asset_with_Pi.json",
+      "action": "block",
+      "reasons": [
+        "Picsart is not on the verified-real names list, and the article presents as fact that 'Picsart has now made its creative engine available through MCP' with specific capabilities (9:16 poster generation, image/video/audio production via MCP). This is a fabricated feature/announcement attributed to a named company that I cannot verify — the article states MCP integration with Picsart's image, video, and audio models as established fact.",
+        "The claim that 'Picsart is one of the first big creative platforms to open its door this way' via MCP is presented as fact without sourcing and cannot be verified."
+      ],
+      "confidence": 7
     }
   ]
 }

@@ -1,0 +1,64 @@
+{
+  "_meta": {
+    "written_at": "2026-09-15T13:03:25.644Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.01253988,
+    "original_draft": "2026-09-15T12-59-05-469Z_picsart_How_to_replace_objects_with_inpainting_in_Picsart_.json",
+    "source_id": "picsart",
+    "source_name": "PicsArt Blog (hivatalos)",
+    "source_link": "https://picsart.com/blog/replace-objects-with-inpainting/",
+    "source_links": [
+      "https://picsart.com/blog/replace-objects-with-inpainting/"
+    ],
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "published_at": "2026-09-15T13:04:08.894Z",
+    "slug": "picsart-s-ai-object-replacement-a-plain-language-guide",
+    "auto_check": {
+      "passed": false,
+      "issues": [
+        "LEDE_TOO_LONG: A RÖVIDEN-doboz 61 szó (max ~45) — ami hosszú, az már nem \"röviden\"."
+      ],
+      "wordCount": 847
+    },
+    "ai_review": {
+      "overall_score": 10,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Excellent explainer that hits all structural requirements with a strong hook, clear term definitions, and a useful 'What this means for you' section serving four distinct audiences. Friendly, non-judgmental tone throughout. No clichés, no prohibited content, and the Picsart source is verified official.",
+      "_aiCost": 0.0018537,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-09-15T13:06:05.945Z",
+    "guide_worthy": false,
+    "pairing_reason": "Article is an explainer/guide about inpainting concept rather than announcing a new named feature launch; Picsart not on verified brand list",
+    "image_v": 2,
+    "image_at": "2026-09-15T13:06:23.908Z",
+    "seo": {
+      "meta_description": "Picsart's AI object replacement uses inpainting to remove unwanted things from photos. Learn what it does and how to use it in plain terms.",
+      "keywords": [
+        "Picsart AI object replacement",
+        "Picsart inpainting tutorial",
+        "how to remove objects from photos AI",
+        "remove unwanted items from photos",
+        "AI photo editing remove objects",
+        "Picsart remove background objects"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add the target keyword 'Picsart AI object replacement' earlier in the article body for better keyword prominence",
+        "Include a brief step-by-step example (e.g., removing a stranger from a cafe photo) to match search intent for tutorials",
+        "Add 'how to' phrasing in a subheading to capture 'how to remove objects from photos Picsart' searches"
+      ],
+      "optimised_at": "2026-09-15T13:07:07.157Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Picsart's AI Object Replacement: A Plain-Language Guide\"\nsubtitle: \"What inpainting actually does inside the Picsart app, and the everyday photo problems it can solve in seconds\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"picsart\", \"ai-photo-editing\", \"inpainting\", \"image-generation\", \"productivity\"]\n---\n\n# Picsart's AI Object Replacement: A Plain-Language Guide\n\n> **In short:** Picsart's AI object replacement (a kind of tool called inpainting) lets you brush over any unwanted thing in a photo — a stranger in the background, a stray soda can, an old logo — describe what should go there instead, and the app swaps just that part. The rest of the picture stays exactly as the camera captured it.\n\nYou took a great photo of your lunch at a cafe, and there's a stranger's elbow creeping into the corner. Or you snapped a product shot for your small shop's Instagram, and a parked car slipped into the edge of the frame. In the old days, you'd either live with it, crop it out, or open a heavy editing program. Now there's a faster way — and it's built into apps many people already have on their phone.\n\n## What inpainting actually means\n\n**Inpainting** is the technical name for \"fill in part of an image with something new.\" In AI tools, it means you tell the AI which part of the picture to change, and it generates new content that fits the surroundings. Picsart offers this inside its AI editing features, often labeled something like \"AI Replace\" — but the underlying trick is the same one used by every modern photo app with this capability.\n\nThe word comes from old photo restoration work: specialists would \"paint in\" missing parts of damaged prints by hand. AI just does the painting for you, in seconds, and from a text description.\n\n## Why this is different from \"AI image editing\"\n\nMost AI photo tools work like this: you upload a picture, type a description, and the AI generates a completely new image based on your words. The result might look similar, but the colors, the lighting, and small details in the background will all be different. It's a fresh drawing inspired by your photo.\n\nInpainting flips that around. You only change the pixels you mark. Everything else — the lighting on the table, the texture of the wall, the sky behind your subject — stays exactly as the camera captured it. The AI fills in only the missing piece.\n\nThat difference matters in three real ways:\n\n- **Speed.** You don't have to describe the whole image. You describe just the small change.\n- **Consistency.** Faces, brand colors, and small details don't drift between edits.\n- **Control.** You decide exactly what changes, and what doesn't.\n\n## What you can realistically do with it\n\nHere are the kinds of swaps people actually use this for:\n\n- Removing **photobombers** from travel photos — brush over the tourist, write \"empty beach,\" done.\n- Cleaning up **product photos** for an online shop — drop a soda can or a stray wire from the background.\n- Updating **old logos** on storefront photos without reshooting.\n- Tidying up **real estate listings** — removing a parked car or trash bin from a property photo.\n- Personal creative edits — putting a different hat on a friend, just for fun.\n\nThe honest limit: the results are usually good but not always perfect. Hands, faces, and small text are the hardest things for AI to generate cleanly. If you brush over a face, expect to look at the result carefully before you share it.\n\n## What this means for you\n\n- **If you post photos on social media for fun:** This is the easiest way to clean up the background of an otherwise good shot. No need to learn a heavy editing program or pay a professional editor.\n- **If you run a small online shop or sell on marketplaces:** Clean product photos sell better. Replacing clutter and stray objects in your shots can take a single photo from \"amateur\" to \"professional-looking\" in about a minute.\n- **If you're a parent or scrapbooker:** You can fix the one thing that ruined an otherwise perfect family photo — a closed-eyed cousin, an unknown object on the table — without needing advanced skills.\n- **If you're just curious:** Open Picsart, head to the AI editing section, and try a small test. Pick a photo, brush over something simple like a lamp in the background, type \"empty wall,\" and see what comes back. That's the fastest way to feel out what it can and can't do.\n\n## Wrap-up\n\nAI object replacement is one of the most practical everyday uses of generative AI — not because it's flashy, but because it solves a problem almost everyone has: a nearly-perfect photo with one thing in it you wish wasn't there. Picsart's version lives inside their photo editor, in the AI tools section. The next time you take a photo you almost love, give it a try — a small brush, a short description, and a few seconds is all it takes to find out.",
+  "original_title": "How to replace objects with inpainting in Picsart Flow"
+}

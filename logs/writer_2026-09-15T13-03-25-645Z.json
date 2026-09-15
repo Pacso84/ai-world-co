@@ -1,0 +1,38 @@
+{
+  "started_at": "2026-09-15T13:02:06.421Z",
+  "drafts_total": 3,
+  "articles_written": 2,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 1,
+  "merged_total": 1,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "total_cost_usd": 0.026863079999999998,
+  "by_article": [
+    {
+      "draft": "2026-09-15T12-59-05-468Z_picsart_GPT-6_Astra_now_creates_any_creative_asset_with_Pi.json",
+      "writer_output": "WRITER_2026-09-15T12-59-05-468Z_picsart_GPT-6_Astra_now_creates_any_creative_asset_with_Pi.json",
+      "success": true,
+      "merged_from": 2,
+      "merged_theme": "AI model integrations with Picsart MCP",
+      "cost_usd": 0.0135816,
+      "duration_ms": 10775,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-09-15T12-59-05-469Z_picsart_How_to_replace_objects_with_inpainting_in_Picsart_.json",
+      "writer_output": "WRITER_2026-09-15T12-59-05-469Z_picsart_How_to_replace_objects_with_inpainting_in_Picsart_.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.01253988,
+      "duration_ms": 58863,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    }
+  ],
+  "finished_at": "2026-09-15T13:03:25.645Z",
+  "duration_seconds": 79.224
+}

@@ -1,118 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178926474453082",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-09-13T01:59:04.530Z",
-      "updated": "2026-09-13T01:59:23.922Z"
-    },
-    {
-      "id": "t178926476397621",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-09-13T01:59:23.976Z",
-      "updated": "2026-09-13T02:05:02.662Z"
-    },
-    {
-      "id": "t178926510266326",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-13T02:05:02.663Z",
-      "updated": "2026-09-13T02:05:41.720Z"
-    },
-    {
-      "id": "t178926514176570",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-13T02:05:41.765Z",
-      "updated": "2026-09-13T02:07:37.744Z"
-    },
-    {
-      "id": "t178926525774541",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-09-13T02:07:37.745Z",
-      "updated": "2026-09-13T02:08:37.122Z"
-    },
-    {
-      "id": "t178926531712418",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-13T02:08:37.124Z",
-      "updated": "2026-09-13T02:08:56.882Z"
-    },
-    {
-      "id": "t178926533688433",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-09-13T02:08:56.884Z",
-      "updated": "2026-09-13T02:09:31.278Z"
-    },
-    {
-      "id": "t178930409393555",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-09-13T12:54:53.935Z",
-      "updated": "2026-09-13T12:54:54.116Z"
-    },
-    {
-      "id": "t178930409411849",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-09-13T12:54:54.118Z",
-      "updated": "2026-09-13T12:55:20.956Z"
-    },
-    {
-      "id": "t178930412095835",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-09-13T12:55:20.958Z",
-      "updated": "2026-09-13T12:55:21.164Z"
-    },
-    {
-      "id": "t178930412116688",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-09-13T12:55:21.166Z",
-      "updated": "2026-09-13T12:55:21.358Z"
-    },
-    {
-      "id": "t178930412136058",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-13T12:55:21.360Z",
-      "updated": "2026-09-13T12:55:43.684Z"
-    },
-    {
-      "id": "t17893041436874",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-09-13T12:55:43.687Z",
-      "updated": "2026-09-13T12:55:54.308Z"
-    },
-    {
-      "id": "t178930415436063",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-13T12:55:54.360Z",
-      "updated": "2026-09-13T12:56:14.061Z"
-    },
-    {
       "id": "t178930417406257",
       "title": "Run seo",
       "status": "done",
@@ -479,41 +367,121 @@
       "agent": "publisher",
       "created": "2026-09-15T02:42:01.821Z",
       "updated": "2026-09-15T02:42:28.398Z"
+    },
+    {
+      "id": "t178947710401525",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-09-15T12:58:24.015Z",
+      "updated": "2026-09-15T12:58:24.153Z"
+    },
+    {
+      "id": "t178947710415439",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-09-15T12:58:24.154Z",
+      "updated": "2026-09-15T12:59:05.480Z"
+    },
+    {
+      "id": "t178947714548199",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-09-15T12:59:05.481Z",
+      "updated": "2026-09-15T13:02:06.285Z"
+    },
+    {
+      "id": "t178947732628721",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-09-15T13:02:06.287Z",
+      "updated": "2026-09-15T13:03:25.657Z"
+    },
+    {
+      "id": "t178947740565894",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-15T13:03:25.658Z",
+      "updated": "2026-09-15T13:04:08.906Z"
+    },
+    {
+      "id": "t178947744890815",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-09-15T13:04:08.908Z",
+      "updated": "2026-09-15T13:04:34.005Z"
+    },
+    {
+      "id": "t178947747400646",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-15T13:04:34.006Z",
+      "updated": "2026-09-15T13:04:45.808Z"
+    },
+    {
+      "id": "t178947748581041",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-09-15T13:04:45.810Z",
+      "updated": "2026-09-15T13:05:07.794Z"
+    },
+    {
+      "id": "t178947750779564",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-15T13:05:07.795Z",
+      "updated": "2026-09-15T13:05:47.173Z"
+    },
+    {
+      "id": "t178947754717567",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-09-15T13:05:47.175Z",
+      "updated": "2026-09-15T13:06:05.953Z"
+    },
+    {
+      "id": "t178947756599643",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-15T13:06:05.996Z",
+      "updated": "2026-09-15T13:06:43.495Z"
+    },
+    {
+      "id": "t178947760349681",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-09-15T13:06:43.496Z",
+      "updated": "2026-09-15T13:07:13.235Z"
+    },
+    {
+      "id": "t178947763323633",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-15T13:07:13.236Z",
+      "updated": "2026-09-15T13:07:29.464Z"
+    },
+    {
+      "id": "t178947764946521",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-09-15T13:07:29.465Z",
+      "updated": "2026-09-15T13:07:49.386Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178835275359219",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The lineup looks solid and ready — practical, everyday AI use cases that match your \"AI for everyone\" mission. One small note: Article 6 (Resume) doesn't mention a specific tool like the others do, so",
-      "agent": "publisher",
-      "at": "2026-09-02T12:39:13.592Z",
-      "loud": false
-    },
-    {
-      "id": "n178835276796345",
-      "level": "success",
-      "text": "2 hír + 0 útmutató publikálva (költség: $0.0308).",
-      "agent": "ceo",
-      "at": "2026-09-02T12:39:27.963Z",
-      "loud": false
-    },
-    {
-      "id": "n178837625436456",
-      "level": "info",
-      "text": "SEO: 1 cikk optimalizálva (átlag 9.0/10).",
-      "agent": "seo",
-      "at": "2026-09-02T19:10:54.364Z",
-      "loud": false
-    },
-    {
-      "id": "n178837628086423",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The lineup is solid and cohesive — all 10 pieces share the same practical, everyday vibe and fit the \"AI for busy people\" mission perfectly. One small thing to check: titles mix \"Write a...\" and \"Writ",
-      "agent": "publisher",
-      "at": "2026-09-02T19:11:20.864Z",
-      "loud": false
-    },
     {
       "id": "n17883762953469",
       "level": "success",
@@ -1281,81 +1249,41 @@
       "agent": "ceo",
       "at": "2026-09-15T02:42:28.443Z",
       "loud": false
+    },
+    {
+      "id": "n178947750778672",
+      "level": "warn",
+      "text": "📨 guide → ceo: Kell még adat: \"How to use Perplexity's Focus modes to get cleaner, faster answers\" — az Ellenőrző tényt/forrást kér, am",
+      "agent": "guide",
+      "at": "2026-09-15T13:05:07.786Z",
+      "loud": false
+    },
+    {
+      "id": "n17894776332278",
+      "level": "info",
+      "text": "SEO: 3 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-09-15T13:07:13.227Z",
+      "loud": false
+    },
+    {
+      "id": "n178947765598984",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The line-up covers practical, everyday writing tasks using various AI tools - from complaint emails to pet-sitting agreements. Since most readers may be new to AI, I'd suggest adding a brief \"Getting ",
+      "agent": "publisher",
+      "at": "2026-09-15T13:07:35.989Z",
+      "loud": false
+    },
+    {
+      "id": "n178947766942722",
+      "level": "success",
+      "text": "2 hír + 1 útmutató publikálva (költség: $0.0393).",
+      "agent": "ceo",
+      "at": "2026-09-15T13:07:49.427Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178852454347883",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"How to build a clean invoice and payment tracker in Excel with Copilot\" — javítva: Beginner clarity too low (7/10): steps are vague or could mislead a first-time user; Status column appears in example prompts but has no instruction for how it should be populated or calculated — a beginner may not know whether to type values manually or ask Copilot for a formula; újraküldöm.",
-      "ref": "GUIDE_how-to-build-a-clean-invoice-and-payment-tracker-in-excel-wi.json",
-      "at": "2026-09-04T12:22:23.478Z"
-    },
-    {
-      "id": "m178852456670793",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"How to Ask GitHub Copilot to Explain a Confusing Error Message\" (?/10)",
-      "ref": "GUIDE_how-to-ask-github-copilot-to-explain-a-confusing-error-messa.json",
-      "at": "2026-09-04T12:22:46.707Z"
-    },
-    {
-      "id": "m178852459135485",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"How to build a clean invoice and payment tracker in Excel with Copilot\" (?/10)",
-      "ref": "GUIDE_how-to-build-a-clean-invoice-and-payment-tracker-in-excel-wi.json",
-      "at": "2026-09-04T12:23:11.354Z"
-    },
-    {
-      "id": "m178852484034599",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 20 → 5/4/2 oszlop.",
-      "ref": "mobile",
-      "at": "2026-09-04T12:27:20.345Z"
-    },
-    {
-      "id": "m178852491290219",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"How to use Copilot on Windows for everyday tasks\" — The Windows key + C keyboard shortcut to open Copilot; The description of the Copilot icon as 'colorful ribbon-shaped icon next to the search box (typically blue, green and orange)'; The claim that Copilot 'reads the visible content of the active window (it can only see what)'s on scre",
-      "ref": "ARTICLE_GUIDE_copilot-windows.json",
-      "at": "2026-09-04T12:28:32.902Z"
-    },
-    {
-      "id": "m178852494301218",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Create a custom recipe generator that only uses in\" — The specific URL https://www.nvidia.com/ai-data-science/chatrtx/ for downloading ChatRTX; The button label 'Download ChatRTX' in the top-right corner; The 'Load Local File' button name",
-      "ref": "ARTICLE_GUIDE_create-a-custom-recipe-generator-that-only-uses-ingredients-.json",
-      "at": "2026-09-04T12:29:03.012Z"
-    },
-    {
-      "id": "m178852574257563",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-09-04T12:42:22.575Z"
-    },
-    {
-      "id": "m178854728752782",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Create a custom text summarizer with Hugging Face \" — 'the card will usually say \"Free\" or have no price tag' - unverifiable current UI claim",
-      "ref": "ARTICLE_GUIDE_create-a-custom-text-summarizer-with-hugging-face-transforme.json",
-      "at": "2026-09-04T18:41:27.527Z"
-    },
     {
       "id": "m178854756905374",
       "from": "fact-check",
@@ -2645,6 +2573,80 @@
       "text": "4 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-09-15T02:51:34.123Z"
+    },
+    {
+      "id": "m178947742412436",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"GPT-6 Astra now creates any creative asset with Picsart MCP\" — mi a baj: Picsart is not on the verified-real names list, and the article presents as fact that 'Picsart has now made its creative engine available through MCP' with specific capabilities (9:16 poster generation, image/video/audio production via MCP). This is a fabricated feature/announcement attributed to a name",
+      "ref": "2026-09-15T12-59-05-468Z_picsart_GPT-6_Astra_now_creates_any_creative_asset_with_Pi.json",
+      "at": "2026-09-15T13:03:44.124Z"
+    },
+    {
+      "id": "m178947747399681",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"GPT-6 Astra now creates any creative asset with Picsart MCP\" — javítva: Picsart is not on the verified-real names list, and the article presents as fact that 'Picsart has now made its creative engine available through MCP' with specific capabilities (9:16 poster generation, image/video/audio production via MCP). This is a fabricated feature/announcement attributed to a named company ",
+      "ref": "2026-09-15T12-59-05-468Z_picsart_GPT-6_Astra_now_creates_any_creative_asset_with_Pi.json",
+      "at": "2026-09-15T13:04:33.996Z"
+    },
+    {
+      "id": "m178947748580052",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"GPT-6 Astra now creates any creative asset with Picsart MCP\" (?/10)",
+      "ref": "2026-09-15T12-59-05-468Z_picsart_GPT-6_Astra_now_creates_any_creative_asset_with_Pi.json",
+      "at": "2026-09-15T13:04:45.800Z"
+    },
+    {
+      "id": "m178947750778555",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"How to use Perplexity's Focus modes to get cleaner, faster answers\" — javítva: YouTube Focus mode is likely not a real Perplexity feature - this appears to be a hallucination that could mislead readers into looking for a non-existent option; Article lacks any source links or citations to verify the claimed feature set (Academic, Social, YouTube, Your Files); újraküldöm.",
+      "ref": "GUIDE_how-to-use-perplexity-s-focus-modes-to-get-cleaner-faster-an.json",
+      "at": "2026-09-15T13:05:07.785Z"
+    },
+    {
+      "id": "m178947750778665",
+      "from": "guide",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Kell még adat: \"How to use Perplexity's Focus modes to get cleaner, faster answers\" — az Ellenőrző tényt/forrást kér, amit nem találhatok ki: Article lacks any source links or citations to verify the claimed feature set (Academic, Social, YouTube, Your Files)",
+      "ref": "GUIDE_how-to-use-perplexity-s-focus-modes-to-get-cleaner-faster-an.json",
+      "open": false,
+      "at": "2026-09-15T13:05:07.786Z",
+      "resolved_at": "2026-09-15T13:05:47.160Z"
+    },
+    {
+      "id": "m178947754715987",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"How to use Perplexity's Focus modes to get cleaner, faster answers\" (?/10)",
+      "ref": "GUIDE_how-to-use-perplexity-s-focus-modes-to-get-cleaner-faster-an.json",
+      "at": "2026-09-15T13:05:47.159Z"
+    },
+    {
+      "id": "m178947764942463",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 20 → 5/4/2 oszlop.",
+      "ref": "mobile",
+      "at": "2026-09-15T13:07:29.424Z"
+    },
+    {
+      "id": "m178947768988673",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Ask Perplexity to find and cite sources for a topi\" — Focus modes 'Web', 'Academic', 'Social', 'News', 'Video' — the exact names and availability of these Focus modes may have changed with Perplexity's newer interface updates (Comet, Computer)",
+      "ref": "ARTICLE_GUIDE_ask-perplexity-to-find-and-cite-sources-for-a-topic-you-re-r.json",
+      "at": "2026-09-15T13:08:09.886Z"
     }
   ]
 }
