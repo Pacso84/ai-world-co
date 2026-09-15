@@ -1,0 +1,68 @@
+{
+  "_meta": {
+    "written_at": "2026-09-15T02:28:22.617Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.004875984,
+    "original_draft": "2026-09-15T02-21-21-008Z_nvidia-blog_Perplexity_Portable_Computer_Is_Now_Available_on_W.json",
+    "source_id": "nvidia-blog",
+    "source_name": "NVIDIA Blog (hivatalos)",
+    "source_link": "https://blogs.nvidia.com/blog/local-ai-perplexity-windows-pcs/",
+    "source_links": [
+      "https://blogs.nvidia.com/blog/local-ai-perplexity-windows-pcs/"
+    ],
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "rejected_at": "2026-09-15T02:28:16.045Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 804
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured explainer that hits all marks: friendly hook, clear term explanations, useful 'What this means for you' section with distinct personas, and a wrap-up with practical next steps. Factual claims are general and reasonable with no invented specifics. Brand voice is consistent and kind throughout.",
+      "_aiCost": 0.00150168,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Hitelesség-kapu blokkolta: The article claims 'Perplexity has released a Windows version of its \"Computer\" AI agent that runs locally on your machine, powered by NVIDIA RTX graphics cards.' No such Perplexity product exists. Pe",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-09-15T02-21-21-008Z_nvidia-blog_Perplexity_Portable_Computer_Is_Now_Available_on_W.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-09-15T02:28:44.229Z",
+    "slug": "local-ai-on-your-pc-what-it-is-and-why-people-are-talking-about-it",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-09-15T02:28:59.092Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is a generic explainer about 'local AI' as a concept/trend, not coverage of one specific named tool. No concrete action or named product for users to go use.",
+    "image_v": 2,
+    "image_at": "2026-09-15T02:37:45.956Z",
+    "seo": {
+      "meta_description": "Learn what local AI means—AI that runs directly on your PC instead of cloud servers. Discover privacy benefits, offline use, and what you need to get started.",
+      "keywords": [
+        "local AI on PC",
+        "run AI locally",
+        "what is local AI",
+        "AI privacy benefits",
+        "offline AI tools",
+        "AI on your computer"
+      ],
+      "seo_score": 9,
+      "suggestions": [
+        "Add a clear subheading in the first 100 words that includes the main keyword for better SEO structure",
+        "Consider adding specific tool names (like Ollama or LM Studio) as examples to increase search relevance",
+        "The meta description is strong but could mention 'graphics card' or 'GPU' since that's a key search intent for this topic"
+      ],
+      "optimised_at": "2026-09-15T02:41:40.608Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Local AI on Your PC: What It Is and Why People Are Talking About It\"\nsubtitle: \"A growing wave of AI tools runs directly on your own computer instead of in the cloud. Here's the everyday-person breakdown.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"local-ai\", \"ai-agents\", \"privacy\", \"nvidia\", \"getting-started\"]\n---\n\n# Local AI on Your PC: What It Is and Why People Are Talking About It\n\n> **In short:** A new wave of AI tools can now run directly on your own computer instead of on a company's servers. This \"local AI\" trend promises better privacy, offline use, and faster responses, but you usually need a modern graphics card to make it work.\n\nYou open a chat with an AI, type a question about a spreadsheet you're working on, and the answer comes back from a server somewhere far away. That's how most AI tools work today. A new wave of tools is starting to flip that around: the AI runs on your own computer instead.\n\n## What's a \"local\" AI?\n\nMost AI tools today are **cloud-based**, which means when you ask a question, your words travel to a big data center, get processed there, and the answer comes back. A local AI does the same thinking, but on your own PC. Your data doesn't have to leave your house.\n\nThink of it like the difference between doing your taxes with an online app versus using software installed on your computer. The cloud version is convenient. The local version keeps your information closer to you.\n\nSome of these new tools are described as **agents**, meaning pieces of AI that don't just answer questions but can plan and carry out multi-step tasks on your behalf. For example, an agent might open files, pull together information from a few different sources, and write a short summary, all on its own.\n\n## Why does local AI need a powerful graphics card?\n\nRunning a capable AI on your own PC takes serious computing power. That's where **NVIDIA RTX graphics cards** come in. These are the chips normally used for gaming and video editing, and they have specialized parts called **tensor cores** (think of them as tiny calculators built specifically for AI math) that handle AI work much faster than a regular processor.\n\nIn short: you usually need a reasonably modern gaming or creator PC to take advantage of local AI. Because this is a fast-moving area, the exact requirements vary from tool to tool, so check the official specs of any app before installing it.\n\n## What's the appeal?\n\nThree big reasons people care about local AI:\n\n- **Privacy** — your files, prompts, and answers stay on your computer. Nothing is sent to a remote server.\n- **Offline use** — once set up, the AI can keep working even when your internet is down.\n- **Speed** — for some tasks, a local AI can respond faster because there's no round trip to a data center.\n\nThese benefits matter more for some users than others. If you work with sensitive documents, like legal contracts, medical records, or business plans, the privacy angle is huge. If you're just asking an AI to write a birthday poem, the cloud version is probably fine.\n\n## What this means for you\n\n- **If you use AI for everyday tasks** (writing, summarizing, research): the cloud tools you already use will keep working fine. You don't need to switch. But if privacy matters to you, or your internet is unreliable, local tools are worth watching.\n- **If you handle sensitive information at work**: this trend is worth paying attention to. Local AI could let you use powerful assistants without sending client or company data to a third party. Ask your IT team what's possible on your hardware.\n- **If you own a gaming PC or a recent creator laptop**: you're sitting on hardware that can now do real AI work. The era of needing a separate AI subscription just to chat may be shifting.\n- **If you're just curious**: the honest answer is that you don't need to do anything today. The local AI field is moving fast, and the tools will keep getting easier to use. Wait until something specific catches your eye, then read up on its actual requirements before installing it.\n\n## Wrap-up\n\nLocal AI is no longer a tech-demo curiosity. Several companies are now exploring versions that run on your own machine, which means your PC is becoming a serious place to run AI for some tasks. The cloud isn't going away, but for some people, some tasks, the local option is starting to look like the better deal. For now, the smartest move is to know the option exists, check whether your hardware can handle it, and keep an eye on which tools actually deliver on the promise.",
+  "original_title": "Perplexity Portable Computer Is Now Available on Windows, Powered by NVIDIA RTX"
+}

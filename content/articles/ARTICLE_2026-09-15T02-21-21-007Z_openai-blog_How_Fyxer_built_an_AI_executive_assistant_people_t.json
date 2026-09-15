@@ -1,0 +1,66 @@
+{
+  "_meta": {
+    "written_at": "2026-09-15T02:27:26.079Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.01146258,
+    "original_draft": "2026-09-15T02-21-21-007Z_openai-blog_How_Fyxer_built_an_AI_executive_assistant_people_t.json",
+    "source_id": "openai-blog",
+    "source_name": "OpenAI Blog (hivatalos)",
+    "source_link": "https://openai.com/index/fyxer",
+    "source_links": [
+      "https://openai.com/index/fyxer"
+    ],
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "published_at": "2026-09-15T02:27:58.888Z",
+    "slug": "how-to-use-an-ai-email-assistant-that-learns-your-voice",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1503
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": 7,
+      "decision": "PASS",
+      "issues": [
+        "Step 4 is vague: 'point it at messages you're proud of' — add a general location (e.g., 'usually in Settings > Assistant or a Training section') and note that exact steps vary by tool",
+        "Step 3 mentions 'revoke access from your account settings' — consider adding 'usually under your profile picture > Manage account > Security > Third-party apps' so readers know where to look"
+      ],
+      "verdict": "Strong educational article with clear structure, good hook, and practical 'What this means for you' section. Technical terms are explained accessibly. The guide is sound overall, but two steps (3 and 4) could mislead beginners by assuming they know where to find inbox connection settings and training options — adding a general location and a note that exact steps vary by tool would close the gap.",
+      "_aiCost": 0.00222291,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-09-15T02:28:52.083Z",
+    "guide_worthy": false,
+    "pairing_reason": "Generic how-to article about AI email assistants as a category, not about one specific named tool or feature introduced in news",
+    "image_v": 2,
+    "image_at": "2026-09-15T02:37:33.461Z",
+    "seo": {
+      "meta_description": "Discover AI email assistants that learn your writing style and draft replies you control. Tools like Fyxer, Gmail, and Outlook save time without losing your voice.",
+      "keywords": [
+        "how to use AI email assistant",
+        "AI email assistant learns your style",
+        "AI email that sounds like you",
+        "Fyxer AI email assistant",
+        "Gmail AI email assistant",
+        "AI email drafting tool",
+        "best AI email assistant"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more specific use cases showing AI email assistants in action to improve reader understanding",
+        "Include comparison between different AI email tools to help readers choose",
+        "Consider adding section on privacy and data handling for AI email assistants"
+      ],
+      "optimised_at": "2026-09-15T02:41:25.225Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"How to Use an AI Email Assistant That Learns Your Voice\"\nsubtitle: \"A practical, beginner-friendly guide to inbox helpers that draft replies in your style — without giving up control of your words\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 6\ntags: [\"email\", \"productivity\", \"ai-assistants\", \"getting-started\"]\n---\n\n# How to Use an AI Email Assistant That Learns Your Voice\n\n> **In short:** AI email assistants — like Fyxer, and similar tools built into Gmail and Outlook — read your past messages, learn how you write, and draft replies in your style. You stay in control: nothing sends without your review, and the more you use them, the better they get at sounding like you.\n\nYou open your laptop on Monday morning and 47 unread emails stare back. Three need careful replies, twelve are quick \"thanks, got it\" responses, and the rest are noise. The draining part isn't the writing — it's the switching, the typing, the decision fatigue. A new generation of AI assistants is built exactly for this moment, and the most useful ones don't just spit out generic text. They learn your voice.\n\nThis guide explains how they actually work, what to trust them with, and how to set one up without giving away the keys to your digital life.\n\n## What an AI email assistant actually does\n\nAt its core, an AI email assistant is a small helper that lives next to your inbox. When a new email arrives, it reads the message, thinks about what kind of reply makes sense, and writes a first draft for you. You open the draft, tweak it if you want, and hit send. Some also sort incoming mail — pushing newsletters to a folder, surfacing urgent messages, hiding junk.\n\nUnder the hood, most of these tools are built on top of a **large language model** (LLM) — the same kind of engine that powers ChatGPT. An LLM is a program trained on huge amounts of text, so it's very good at predicting the next word in a sentence. The trick that makes an email assistant feel different from a generic chatbot is what gets added on top: a layer that lets it see your inbox, plus extra training to match your personal style.\n\n## How it learns to sound like you\n\nThis is where the interesting part happens. Three ideas work together.\n\n**Memory.** The assistant keeps a rolling window of recent conversations you've had. Think of it like a friend who's been in the room with you for the last hour — they remember what you just talked about, even if they don't know your whole life story. In AI terms, the \"context window\" is how much text the AI can actively consider at once. Bigger window, more coherent reply.\n\n**Fine-tuning.** Imagine you bought a brand-new car and then spent a weekend adjusting the seat, mirrors, and steering. You didn't change the engine — you changed how the car responds to *you*. Fine-tuning is the same idea: the base AI is the engine, and the company tweaks how it behaves for a specific job, like writing polite, on-brand replies for a salesperson.\n\n**Feedback.** Every time you edit the draft, accept it, or rewrite it from scratch, you're teaching the assistant. Over weeks, the tool notices patterns: you start emails with \"Hi\" not \"Hey,\" you sign off with \"Best\" not \"Cheers,\" you keep sentences short. Good assistants use that signal to nudge future drafts closer to your real voice.\n\n## How to try one in your own workflow\n\nYou don't have to commit to a paid tool on day one. Here's a low-risk way to see if an AI email helper fits your life.\n\n### Step 1 — Name your email pain\n\nBefore installing anything, write down what you actually want help with. Is it volume (too many messages)? Tone (writing work emails when you're tired)? Follow-up (forgetting to reply)? A weekly newsletter pile-up? The clearer your goal, the easier it is to tell whether a tool is helping.\n\n**You'll know it worked when:** you have a one-sentence answer — for example, \"I want to clear my inbox in 20 minutes instead of 90.\"\n\n### Step 2 — Pick the right type of tool\n\nThere are three flavors worth knowing about.\n\n- **Built-in helpers.** Gmail's Smart Reply and Smart Compose, and similar features in Outlook, already suggest short replies and finish your sentences. They're free, low-risk, and a good place to start.\n- **Specialized assistants.** Tools like **Fyxer** are built from the ground up around email: they organize your inbox, draft full replies in your voice, and learn over time. Fyxer runs on **OpenAI's models** (the GPT family of LLMs, the same technology behind ChatGPT) and uses the memory, fine-tuning, and feedback loop described above.\n- **General chatbots.** You can also paste an email into ChatGPT or Claude and ask for a draft. It's the most manual option — no inbox connection — but useful for occasional help.\n\n**You'll know it worked when:** you've chosen one path to try first, instead of installing five things at once.\n\n### Step 3 — Connect your inbox carefully\n\nAny tool that reads your mail needs permission to do so. You'll usually be asked to sign in with Google or Microsoft and approve a list of permissions — \"read email,\" \"send email,\" \"manage labels.\" Read that list. A good rule of thumb: a tool that drafts but doesn't send without your approval is safer than one that sends on autopilot. You can revoke access anytime from your Google or Microsoft account settings.\n\n**You'll know it worked when:** you've seen exactly what the tool can and can't do, and you feel okay with the trade.\n\n### Step 4 — Feed it examples of your writing\n\nThe more the assistant knows about how you write, the better its drafts. Spend 10 minutes pointing it at messages you're proud of — past replies that sounded like you, not formal templates. If the tool offers a \"voice\" or \"style\" setting, fill it in with two or three sentences that sound like you actually talk.\n\n**You'll know it worked when:** the first draft of a reply feels 80% there, not 20%.\n\n### Step 5 — Always review before sending\n\nThis is non-negotiable. Treat every AI draft the way you'd treat an intern's first attempt: useful starting point, but your name is on the email. Spend 30 seconds skimming for tone, facts, and anything private the assistant might have guessed about.\n\n**You'll know it worked when:** you've sent a few replies that took you half the usual time, and no one has noticed anything weird.\n\n### Step 6 — Give it feedback\n\nMost assistants learn from corrections. When you delete a phrase and rewrite it, you're teaching. When you accept a draft unchanged, you're teaching too. The first two weeks are the most important — that's when the tool is still calibrating.\n\n**You'll know it worked when:** after a week or two, you find yourself editing drafts less, not more.\n\n## Common mistakes to avoid\n\n- **Sending without reading.** Even a 95% good draft can have a wrong name, a wrong date, or a tone that doesn't fit the recipient. Always skim before clicking send.\n- **Granting access you don't understand.** If a permission screen mentions \"delete email\" or \"manage contacts\" and you didn't expect that, stop and look it up before approving.\n- **Expecting perfection on day one.** The first few drafts will feel off. That's normal — the assistant is still learning you. Give it a week before judging.\n- **Using it for sensitive threads.** For very personal emails, legal matters, or anything involving money or health, write them yourself. AI helpers are productivity tools, not advisors.\n\n## What this means for you\n\n- **If you mainly want to speed up your personal inbox:** start with the free built-in helpers in Gmail or Outlook. You'll get most of the value with zero setup.\n- **If you run a business or handle a lot of client email:** a dedicated assistant like Fyxer can pay for itself in saved hours within a month — but only if you commit to the two-week learning window.\n- **If you're worried about privacy:** choose tools that are clear about not training on your data without consent, that let you delete what they've stored, and that never send without your approval.\n- **If you're just curious:** try pasting one email into a general chatbot and asking for a draft in your style. It's a 2-minute experiment with no setup at all.\n\n## Wrap-up\n\nAn AI email assistant isn't about letting a robot take over your inbox — it's about removing the boring 80% of email work so you can spend your attention on the 20% that actually matters. The ones worth using learn from you, draft in your voice, and stay out of the way until you need them. Pick one, give it a week of honest feedback, and see if your Monday morning gets a little quieter.",
+  "original_title": "How Fyxer built an AI executive assistant people trust"
+}

@@ -1,0 +1,27 @@
+{
+  "started_at": "2026-09-15T02:31:43.233Z",
+  "total": 2,
+  "passed": 1,
+  "failed": 1,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.009294179999999999,
+  "by_article": [
+    {
+      "writer": "WRITER_GUIDE_how-to-practice-for-a-job-interview-with-an-ai-mock-intervie.json",
+      "article": "ARTICLE_GUIDE_how-to-practice-for-a-job-interview-with-an-ai-mock-intervie.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.0024111
+    },
+    {
+      "writer": "WRITER_GUIDE_how-to-use-perplexity-s-focus-modes-to-get-cleaner-faster-an.json",
+      "rejected": "REJECTED_GUIDE_how-to-use-perplexity-s-focus-modes-to-get-cleaner-faster-an.json",
+      "decision": "FAIL",
+      "score": 7,
+      "cost_usd": 0.0054642
+    }
+  ],
+  "finished_at": "2026-09-15T02:32:39.389Z",
+  "duration_seconds": 56.156
+}

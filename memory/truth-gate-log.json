@@ -1,15 +1,4 @@
 {
-  "2026-08-25": [
-    {
-      "at": "2026-08-25T01:02:16.873Z",
-      "file": "WRITER_2026-08-25T00-37-56-601Z_openai-blog_Advancing_price-performance_for_developers_with_GP.json",
-      "action": "block",
-      "reasons": [
-        "Kiro is described as 'an AI coding assistant' that runs on GPT-5.6, but Kiro is not a verified-real product on the supplied list and no verifiable AI coding assistant named Kiro (powered by OpenAI's GPT-5.6) can be confirmed — the tool's name, its existence, and its GPT-5.6 integration appear fabricated or unverifiable."
-      ],
-      "confidence": 7
-    }
-  ],
   "2026-08-26": [
     {
       "at": "2026-08-26T00:48:35.634Z",
@@ -352,6 +341,17 @@
         "The article presents a named TSA AI assistant called 'Ace' handling 100,000 conversations/month with a 96% resolution rate as established fact, but 'Ace' is not a recognized official name of any TSA AI product, and the specific statistics (100,000/month, 96%) are not verifiable from any known public source — these appear to be invented specifics about a real-sounding but unverified deployment."
       ],
       "confidence": 5
+    }
+  ],
+  "2026-09-15": [
+    {
+      "at": "2026-09-15T02:28:16.052Z",
+      "file": "WRITER_2026-09-15T02-21-21-008Z_nvidia-blog_Perplexity_Portable_Computer_Is_Now_Available_on_W.json",
+      "action": "block",
+      "reasons": [
+        "The article claims 'Perplexity has released a Windows version of its \"Computer\" AI agent that runs locally on your machine, powered by NVIDIA RTX graphics cards.' No such Perplexity product exists. Perplexity's agent product is called 'Perplexity Comet' (a browser), not 'Computer', and there is no verified Windows desktop local-AI agent from Perplexity that runs on NVIDIA RTX GPUs. This appears to be a fabricated product/feature claim presented as fact."
+      ],
+      "confidence": 8
     }
   ]
 }
