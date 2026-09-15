@@ -17,6 +17,13 @@
 //   50(5) — „clear and distinguishable manner at the latest at the time of
 //           the first interaction or exposure".
 // User-döntés (2026-09-12): jelölés a cikkek tetejére is + a chatbe.
+//
+// 2026-09-15 (kutatás után, user-döntés): „AI"-jel a kártyákon és a címkében,
+// a címke kontrasztja 4,5:1 fölé, és a Rólunk oldalon leírjuk, hogyan jelölünk.
+// A Gyakorlati Kódex 1.1(a): a jel fő eleme „the capitalised acronym "AI" in
+// the English language" — ezért a spanyol oldalon sem „IA". A régi „látható
+// stílust kap" teszt a 4,21:1-es kontrasztot ZÖLDNEK látta — ezért a
+// kontrasztot most a stíluslap színtokenjeiből SZÁMOLJUK, mindkét témában.
 // ⚠️ Nem jogi tanács — ez a teszt azt őrzi, amit megcsináltunk.
 //
 // ⚠️ A „AI World HQ" márkanévben is benne van az „AI" szó, ezért a
@@ -69,7 +76,7 @@ function sablonTest(nev) {
 
 t('🔌 a HÍR-sablon a fejlécben, a cikk törzse ELŐTT jelöl', () => {
   const s = sablonTest('buildArticlePage');
-  const cimke = s.indexOf('<p class="ai-label">${tr(\'aiLabelNews\')}</p>');
+  const cimke = s.indexOf("${aiLabelHtml('aiLabelNews')}");
   assert.ok(cimke > 0, '🔴 a hírek tetején nincs MI-jelölés');
   assert.ok(cimke > s.indexOf('article__title'), 'a címke a cím ELŐTT áll — a fejlécben, a cím után a helye');
   assert.ok(cimke < s.indexOf('article__body'), '🔴 a címke a törzs UTÁN jön — nem „az első találkozáskor"');
@@ -77,11 +84,40 @@ t('🔌 a HÍR-sablon a fejlécben, a cikk törzse ELŐTT jelöl', () => {
 
 t('🔌 az ÚTMUTATÓ-sablon a fejlécben, a lépések ELŐTT jelöl', () => {
   const s = sablonTest('buildGuidePage');
-  const cimke = s.indexOf('<p class="ai-label">${tr(\'aiLabelGuide\')}</p>');
+  const cimke = s.indexOf("${aiLabelHtml('aiLabelGuide')}");
   assert.ok(cimke > 0, '🔴 az útmutatók tetején nincs MI-jelölés (a két sablon NÉGYSZER csúszott már szét)');
   assert.ok(cimke > s.indexOf('article__title'), 'a címke a cím ELŐTT áll');
   const map = s.indexOf('guideMapHtml(');
   assert.ok(map > 0 && cimke < map, '🔴 a címke a lépés-térkép UTÁN jön — nem „az első találkozáskor"');
+});
+
+t('🔴 az „AI"-jel minden nyelven a nagybetűs ANGOL rövidítés (Kódex 1.1(a))', () => {
+  const m = sablonTest('aiMark');
+  assert.ok(m.includes('>AI</span>'), '🔴 a jel nem a nagybetűs „AI" rövidítést mutatja');
+  assert.ok(!/\bLANG\b|\blang\b|\bIA\b/.test(m), '🔴 a jel nyelvenként változik — a Kódex minden nyelven az angol „AI"-t kéri');
+  const cimke = sablonTest('aiLabelHtml');
+  assert.ok(cimke.includes('class="ai-label"'), 'az aiLabelHtml nem az .ai-label bekezdést adja');
+  assert.ok(cimke.indexOf('aiMark(') >= 0 && cimke.indexOf('aiMark(') < cimke.indexOf('tr(kulcs)'),
+    '🔴 a címkében nincs „AI"-jel, vagy a mondat UTÁN áll — a fő elemnek elöl a helye');
+});
+
+t('🔴 a kártyákon is ott az „AI"-jel (főoldal + útmutató-csempék)', () => {
+  const kartya = sablonTest('articleCard');
+  const jel = kartya.indexOf('aiMark()');
+  assert.ok(jel > 0, '🔴 a főoldali cikk-kártyán nincs „AI"-jel');
+  assert.ok(jel > kartya.indexOf('card__link') && jel < kartya.indexOf('</a>'), 'az „AI"-jel a kártya linkjén KÍVÜL van');
+  assert.ok(sablonTest('guideTile').includes('aiMark()'), '🔴 az útmutató-csempén nincs „AI"-jel');
+  // A főoldali kártyák 19/30-án ott a szürke „AI" TÉMA-címke (az `other` kategória
+  // felirata, mérve 2026-09-15) — a puszta „AI"-jel mellette témának is olvasható,
+  // a tooltip pedig mobilon nem látszik. Ezért a kártyán a jel mellett szó is áll
+  // (a Kódex 1.1(b) és melléklete is „AI" + „generated" alakot mutat).
+  assert.ok(kartya.includes("tr('aiMarkShort')"), '🔴 a kártyán az „AI"-jel mellől hiányzik a „generated" szó — összetéveszthető a téma-címkével');
+  const rovid = ertekek('aiMarkShort');
+  assert.equal(rovid.length, 3, 'aiMarkShort: nem pontosan 3 nyelven');
+  rovid.forEach((s, i) => assert.ok(/generat|generál|generad/i.test(s), `🔴 aiMarkShort/${NYELV[i]} nem mondja, hogy generált: ${s}`));
+  const cim = ertekek('aiMarkTitle');
+  assert.equal(cim.length, 3, 'aiMarkTitle: nem pontosan 3 nyelven');
+  cim.forEach((s, i) => assert.ok(MI_IRTA[NYELV[i]].test(s), `🔴 aiMarkTitle/${NYELV[i]} nem mondja ki, hogy MI írta: ${s}`));
 });
 
 t('🔴 a FELSŐ címke minden nyelven kimondja: MI írta, ember nem nézte át', () => {
@@ -111,6 +147,19 @@ t('🔴 a lap ALJI jelölés is egyértelmű, és eltűnt a félreérthető rég
   assert.equal(regi, null, '🔴 visszakerült a félreérthető régi jelölés: ' + (regi && regi[0]));
 });
 
+t('🔴 a lábléc nem sugall emberi ellenőrzést (minden oldal alján ott van)', () => {
+  // 2026-09-15: a lábléc „Reviewed for accuracy" / „Pontosságra ellenőrizve" volt —
+  // alany nélkül, szenvedő szerkezetben ez EMBERI átnézést sugall, miközben a
+  // címke kimondja, hogy szerkesztő nem nézte át. A kettő nem mondhat ellent.
+  const NEM_EMBER = { en: /no human editor/i, hu: /emberi szerkesztő nélkül/i, es: /sin editor humano/i };
+  const v = ertekek('footerNote');
+  assert.equal(v.length, 3, 'footerNote: nem pontosan 3 nyelven');
+  v.forEach((s, i) => {
+    assert.ok(!/Reviewed for accuracy|Pontosságra ellenőrizve|Revisado para mayor precisión/i.test(s), `🔴 footerNote/${NYELV[i]}: visszakerült az emberi ellenőrzést sugalló szöveg: ${s}`);
+    assert.ok(NEM_EMBER[NYELV[i]].test(s), `🔴 footerNote/${NYELV[i]} nem mondja ki, hogy ember nem nézte át: ${s}`);
+  });
+});
+
 t('🔴 a chat a megnyitó gombtól kezdve kimondja, hogy MI-asszisztens (50. cikk (1))', () => {
   const ASSZISZTENS = { en: /AI assistant/i, hu: /AI-asszisztens/i, es: /asistente de IA/i };
   const NEM_EMBER = {
@@ -128,12 +177,73 @@ t('🔴 a chat a megnyitó gombtól kezdve kimondja, hogy MI-asszisztens (50. ci
   hello.forEach((s, i) => assert.ok(NEM_EMBER[NYELV[i]].test(s), `🔴 csHello/${NYELV[i]} nem mondja ki, hogy nem ember: ${s}`));
 });
 
-t('a felső címke látható stílust kap (nem rejtett, nem apró)', () => {
-  const m = /\.ai-label\s*\{([^}]*)\}/.exec(css);
-  assert.ok(m, '🔴 nincs .ai-label szabály a stíluslapon');
-  assert.ok(!/display:\s*none|visibility:\s*hidden|opacity:\s*0[;\s]/.test(m[1]), '🔴 a címke el van rejtve');
-  const px = Number((/font-size:\s*(\d+)px/.exec(m[1]) || [])[1]);
+t('🔴 a Rólunk oldal leírja, hogyan jelöljük az MI-tartalmat', () => {
+  assert.ok(sablonTest('buildAboutPage').includes("'aboutAiH', 'aboutAiP'"), '🔴 a Rólunk oldalon nincs „Hogyan jelölünk" kártya');
+  assert.equal(ertekek('aboutAiH').length, 3, 'aboutAiH: nem pontosan 3 nyelven');
+  const JEL = { en: '“AI”', hu: '„AI”', es: '“AI”' };
+  ertekek('aboutAiP').forEach((s, i) => {
+    const l = NYELV[i];
+    assert.ok(s.includes(JEL[l]), `🔴 aboutAiP/${l} nem említi az „AI"-jelet: ${s}`);
+    assert.ok(MI_IRTA[l].test(s), `🔴 aboutAiP/${l} nem mondja ki, hogy MI írta`);
+    assert.ok(EMBER_NEM[l].test(s), `🔴 aboutAiP/${l} nem mondja ki, hogy ember nem nézte át`);
+  });
+  assert.equal(ertekek('aboutAiP').length, 3, 'aboutAiP: nem pontosan 3 nyelven');
+});
+
+// --- KONTRASZT: a stíluslap színtokenjeiből számolva (WCAG 2.x képlet) ---
+function tokenek(blokk) {
+  const out = {};
+  for (const m of blokk.matchAll(/--([\w-]+):\s*(#[0-9a-fA-F]{3,6})\b/g)) out[m[1]] = m[2];
+  return out;
+}
+const vilagos = tokenek((/:root\s*\{([^}]*)\}/.exec(css) || [])[1] || '');
+const sotet = { ...vilagos, ...tokenek((/\[data-theme="dark"\]\s*\{([^}]*)\}/.exec(css) || [])[1] || '') };
+
+function rgb(h) {
+  let x = h.slice(1);
+  if (x.length === 3) x = x.split('').map(c => c + c).join('');
+  return [0, 2, 4].map(i => parseInt(x.slice(i, i + 2), 16));
+}
+function fenyesseg(h) {
+  const [r, g, b] = rgb(h).map(v => { v /= 255; return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); });
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+}
+function kontraszt(a, b) {
+  const [v, s] = [fenyesseg(a), fenyesseg(b)].sort((p, q) => q - p);
+  return (v + 0.05) / (s + 0.05);
+}
+function szabaly(szelektor) {
+  const m = new RegExp(szelektor.replace(/\./g, '\\.') + '\\s*\\{([^}]*)\\}').exec(css);
+  assert.ok(m, '🔴 nincs ' + szelektor + ' szabály a stíluslapon');
+  return m[1];
+}
+function tokenNev(test, tul) {
+  const m = new RegExp('(^|[;\\s])' + tul + ':\\s*var\\(--([\\w-]+)\\)').exec(test);
+  assert.ok(m, `a(z) ${tul} nem színtokenből jön — a kontraszt így nem ellenőrizhető`);
+  return m[2];
+}
+
+t('a mérőeszköz hiteles: a régi címke-színre (4,21:1) valóban 4,5 ALATTI értéket ad', () => {
+  const k = kontraszt('#6f6a60', '#eae3d6');
+  assert.ok(k > 4.1 && k < 4.3, 'a kontraszt-képlet elcsúszott: ' + k.toFixed(2));
+  assert.ok(Math.abs(kontraszt('#000000', '#ffffff') - 21) < 0.01, 'a fekete-fehér nem 21:1');
+});
+
+t('🔴 a címke és az „AI"-jel kontrasztja ≥ 4,5:1 — világos ÉS sötét témában', () => {
+  assert.ok(vilagos.ink && vilagos['paper-2'], 'nem olvashatók a :root színtokenek');
+  const label = szabaly('.ai-label');
+  assert.ok(!/display:\s*none|visibility:\s*hidden|opacity:\s*0[;\s]/.test(label), '🔴 a címke el van rejtve');
+  const px = Number((/font-size:\s*(\d+)px/.exec(label) || [])[1]);
   assert.ok(px >= 12, '🔴 a címke betűmérete túl kicsi: ' + px + 'px');
+  const mark = szabaly('.ai-mark');
+  for (const [nev, tok] of [['világos', vilagos], ['sötét', sotet]]) {
+    for (const [mit, test] of [['.ai-label', label], ['.ai-mark', mark]]) {
+      const elo = tok[tokenNev(test, 'color')], hat = tok[tokenNev(test, 'background')];
+      assert.ok(elo && hat, `${mit}: ismeretlen színtoken (${nev} téma)`);
+      const k = kontraszt(elo, hat);
+      assert.ok(k >= 4.5, `🔴 ${mit} kontrasztja ${nev} témában csak ${k.toFixed(2)}:1 (WCAG AA: 4,5)`);
+    }
+  }
 });
 
 console.log(`\n✅ ${pass} teszt rendben`);

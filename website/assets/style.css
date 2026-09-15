@@ -231,8 +231,8 @@ body {
 .article__cover.cover--gen { display: flex; align-items: center; justify-content: center; }
 .article__cover .cover__icon { font-size: 96px; }
 
-.card__meta { display: flex; align-items: center; justify-content: space-between; }
-.card__read { font-size: 12.5px; color: var(--muted); font-weight: 600; }
+.card__meta { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; justify-content: space-between; }
+.card__read { display: inline-flex; align-items: center; gap: 8px; font-size: 12.5px; color: var(--muted); font-weight: 600; }
 .card__title {
   font-family: 'Schibsted Grotesk', sans-serif; font-weight: 700;
   font-size: 22px; line-height: 1.14; letter-spacing: -0.02em;
@@ -309,8 +309,19 @@ body {
 .ai-label {
   display: table; margin: 14px auto 0; max-width: 62ch;
   padding: 7px 14px; border-radius: 999px; background: var(--paper-2);
-  font-size: 13px; line-height: 1.45; color: var(--ink-soft); text-align: center;
+  font-size: 13px; line-height: 1.45; color: var(--ink); text-align: center;
 }
+/* 2026-09-15: a --ink-soft a --paper-2-n csak 4,21:1 volt (WCAG AA: 4,5) → --ink.
+   AI-JEL (Gyakorlati Kódex 1.1(a)): a fő elem a nagybetűs „AI", magas kontraszttal,
+   mindkét témában (a teszt a színtokenekből SZÁMOLJA a kontrasztot). */
+.ai-mark {
+  display: inline-block; vertical-align: 1px;
+  padding: 2px 6px; border-radius: 5px;
+  background: var(--ink); color: var(--paper);
+  font-family: 'Schibsted Grotesk', sans-serif; font-weight: 800;
+  font-size: 11px; line-height: 1.2; letter-spacing: .04em; text-transform: none;
+}
+.ai-label .ai-mark { margin-right: 4px; }
 
 .article__body { font-size: 18.5px; line-height: 1.78; color: var(--ink); }
 .article__body > p:first-of-type::first-letter {
