@@ -802,7 +802,17 @@ async function main() {
       // A kimenet-őr (2026-09-12) a build UTÁN fut. Ha a build elbukik, a lépés
       // kimarad, és a lemezen az ELŐZŐ futás üres `problems`-e marad — ezt csak
       // az `at` bélyeg különbözteti meg a „minden rendben"-től.
-      'output-guard.json': 'kimenet'
+      'output-guard.json': 'kimenet',
+      // A belső hivatkozás-őr (2026-09-08) MINDEN sikeres build után ír, üres
+      // `problems`-szel is (core/internal-link-guard.js parancssori ága), ugyanabban
+      // a lépés-láncban, mint a SEO- és a kimenet-őr. Ha a lépés kimarad, a lemezen
+      // az előző futás „0 halott link"-je marad — az pedig azonos a „minden
+      // rendben"-nel. A térképből kimaradt; a core/guard-registry.test.js mutatta ki.
+      'link-guard.json': 'belső link',
+      // A Házmester (core/housekeeping.js) a CI MINDEN futásában ír, és a beépített
+      // hízás-őre (watchGrowth) ide teszi a figyelmeztetést. Ha a lépés elmarad, a
+      // „semmi nem hízik" csend nem bizonyíték. (Ugyanaz a lelet, 2026-09-15.)
+      'housekeeping.json': 'házmester'
     };
     const beolvasott = {};
     for (const [f, nev] of Object.entries(nevek)) {
