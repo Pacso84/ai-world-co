@@ -21,6 +21,7 @@ import { fileURLToPath, pathToFileURL } from 'url';
 import { dirname, join } from 'path';
 import { toUS } from './us-spelling.js';
 import { slugUtkozesek } from './slug-collisions.js';
+import { utmutatoE } from './guide-kind.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
@@ -118,7 +119,7 @@ function loadGuideChips() {
   for (const f of readdirSync(ARTICLES_DIR).filter(x => x.endsWith('.json'))) {
     try {
       const d = JSON.parse(readFileSync(join(ARTICLES_DIR, f), 'utf-8'));
-      if (d._meta?.type !== 'guide') continue;
+      if (!utmutatoE(f, d)) continue;            // közös szabály (2026-09-16)
       const md = d.article_markdown || '';
       // A frontmatter az elsődleges (az író VÉGSŐ döntése — ezt mutatja az oldal),
       // a _meta (a párosító terve) csak tartalék; az eltérésüket külön jelezzük.
@@ -293,7 +294,10 @@ export async function applyQualityFixes() {
         }
 
         // 2b) CSEMPE-SZABÁLY — csak útmutatóra értelmes
-        if (d._meta?.type === 'guide' && d._meta?.tool) {
+        // Az „útmutató-e?" a közös core/guide-kind.js-ből jön (2026-09-16);
+        // a `tool` megléte külön feltétel marad (csempe nélkül nincs mit
+        // kanonizálni).
+        if (utmutatoE(f, d) && d._meta?.tool) {
           const md = d.article_markdown || '';
           const fmCompany = strip((md.match(/^company:\s*(.*)$/m) || [])[1]);
           const fmTool = strip((md.match(/^tool:\s*(.*)$/m) || [])[1]);

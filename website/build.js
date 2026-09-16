@@ -37,6 +37,7 @@ import { robotsTartalom, indexelhetoNyelvek, noindexNyelv } from '../core/noinde
 // amit a fizetos csomag hasznal. Egy szabaly, egy hely.
 import { TEMAK, temaOf , temaSzoveg, temaLeiras } from '../core/topics.js';
 import { laposit } from '../core/redirect-chain.js';
+import { utmutatoE } from '../core/guide-kind.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = join(__dirname, '..');
@@ -955,7 +956,11 @@ function loadArticles() {
         seoKeywords: (data._meta?.seo?.keywords || meta.tags || []).join(', '),
         bodyHtml: wrapTables(wrapInShort(wrapImpactSection(stripLeadH1(marked.parse(body))))),
         bodyMd: body,
-        isGuide: (data._meta?.type === 'guide') || meta.category === 'guide',
+        // „Útmutató-e?" — a közös core/guide-kind.js dönt (2026-09-16). Ez a
+        // mező vezérli a SABLONVÁLASZTÁST (buildGuidePage vs buildArticlePage),
+        // a /guides listát, a kb.json-t és a kereszthivatkozást; korábban a
+        // Házmester és a poszterek MÁS szabállyal kérdezték ugyanezt.
+        isGuide: utmutatoE(file, data),
         // Frontmatter az elsődleges (az író VÉGSŐ eszköz-választása), a _meta
         // (a párosító terve) csak tartalék; a canonicalChip a cégnév-előtagot
         // kódból vágja le (2026-07-13: "NVIDIA ChatRTX" átcsúszott a prompton).

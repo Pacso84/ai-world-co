@@ -25,6 +25,8 @@
 // Teszt: core/social-published.test.js (egységteszt + valódi adat + bekötés-őr).
 // ===================================================================
 
+import { utmutatoE } from './guide-kind.js';
+
 /** Hír ennyi napig megy ki; utána lezárjuk. Az útmutató örökzöld. */
 export const FRESH_DAYS = 7;
 export const FRESH_MS = FRESH_DAYS * 24 * 3600e3;
@@ -62,7 +64,10 @@ export function buildPublishedMap(entries) {
     try {
       const f = e.file;
       const d = e.data;
-      const isGuide = d._meta?.type === 'guide' || f.startsWith('ARTICLE_GUIDE');
+      // „Útmutató-e?" — a közös core/guide-kind.js dönt (2026-09-16). A
+      // hátralék-hely a sorban CSAK útmutatót enged előre, ezért a téves
+      // „hír" itt egy örökzöld cikket zárna ki a terjesztésből 7 nap után.
+      const isGuide = utmutatoE(f, d);
       const rec = { at: d._meta?.published_at || '', guide: isGuide };
       if (d._meta?.slug) map[d._meta.slug] = rec;
       const m = (d.article_markdown || '').match(/^---\n[\s\S]*?^title:\s*["']?(.+?)["']?\s*$/m);

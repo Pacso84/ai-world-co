@@ -40,6 +40,7 @@ import { readFileSync, writeFileSync, readdirSync, unlinkSync, statSync, existsS
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { decay, purgeStoreEmbeddings } from './memory-manager.js';
+import { utmutatoE } from './guide-kind.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
@@ -199,7 +200,10 @@ function pruneLogs() {
 const MAX_DELETE = 200;
 
 function isEvergreen(file, data) {
-  if (data._meta?.type === 'guide' || file.startsWith('ARTICLE_GUIDE')) return true;
+  // ⚠️ EZ A LEGDRÁGÁBB „útmutató-e?" kérdés a repóban: a téves „hír" válasz
+  // 90 nap múlva VÉGLEG TÖRLI a cikket. Ezért a közös core/guide-kind.js dönt
+  // (2026-09-16), ugyanazzal a szabállyal, mint a build és a poszterek.
+  if (utmutatoE(file, data)) return true;
   return /^tags:.*\bcomparison\b/m.test(data.article_markdown || '');
 }
 

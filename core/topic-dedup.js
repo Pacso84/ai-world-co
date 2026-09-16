@@ -17,6 +17,7 @@
 import { readFileSync, writeFileSync, existsSync, readdirSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
+import { utmutatoE } from './guide-kind.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
@@ -158,7 +159,10 @@ export function allExistingGuideTitles() {
     if (existsSync(dir)) for (const f of readdirSync(dir).filter(x => x.endsWith('.json'))) {
       try {
         const d = JSON.parse(readFileSync(join(dir, f), 'utf-8'));
-        if (d._meta?.type !== 'guide') continue;
+        // Közös szabály (2026-09-16). Itt a téves „hír" azt jelenti, hogy a
+        // cikk címe KIMARAD a téma-ismétlés listájából — vagyis ugyanarról
+        // még egyszer írnánk. A témaismétlés a usernek már feltűnt egyszer.
+        if (!utmutatoE(f, d)) continue;
         const m = (d.article_markdown || '').match(/^title:\s*["']?(.+?)["']?\s*$/m);
         if (m) titles.add(m[1]);
       } catch { /* egy hibás fájl ne állítsa meg */ }

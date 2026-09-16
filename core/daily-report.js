@@ -22,6 +22,7 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { sendMessage } from './telegram.js';
 import { canonicalChip } from './quality-guard.js';
+import { utmutatoE } from './guide-kind.js';
 import { summarizeRuns, describeFailures } from './make-health.js';
 // A forgatókönyv-azonosítók EGY helyen élnek (ott a művelet-keret is őket
 // összegzi) — egy kimásolt szám matematikai biztonsággal csúszik szét.
@@ -196,7 +197,10 @@ function collect() {
         maiCikkek.push(d);
         // Útmutató: a _meta.type MINDIG megbízható a guide-oknál; a hír-cikkeknek
         // nincs type mezőjük — a fájlnév-előtag a biztos tartalék (2026-07-23).
-        (d._meta?.type === 'guide' || f.startsWith('ARTICLE_GUIDE')) ? guides++ : news++;
+        // 2026-09-16 óta a közös core/guide-kind.js dönt: ha a riport MÁS
+        // szabállyal számolna, mint amivel a rendszer publikál, a napi
+        // „N hír + M útmutató" sor valótlan adatot küldene a usernek.
+        utmutatoE(f, d) ? guides++ : news++;
         if (titles.length < 3) {
           let title = d.original_title || f;
           try {
@@ -288,7 +292,7 @@ function collect() {
     for (const f of readdirSync(artDir).filter(x => x.endsWith('.json'))) {
       try {
         const d = JSON.parse(readFileSync(join(artDir, f), 'utf-8'));
-        if (d._meta?.type !== 'guide') continue;
+        if (!utmutatoE(f, d)) continue;          // közös szabály (2026-09-16)
         const md = d.article_markdown || '';
         const strip = (s) => (s || '').trim().replace(/^["']+|["']+$/g, '').trim();
         // Frontmatter az elsődleges — a build is azt mutatja; kanonikus névvel

@@ -38,6 +38,7 @@
 
 import { followCta, trimToWords } from './social-text.js';
 import { guideMeta, findArticleBySlug } from './frontmatter.js';
+import { utmutatoE } from './guide-kind.js';
 
 export const SITE = 'https://aiworldhq.com';
 
@@ -314,7 +315,10 @@ async function cikkekBetolt(ROOT, join) {
     // ⚠️ A `tool` 2026-09-09 óta KELL: a sor-döntés ebből látja, hogy ne
     // menjen két Reel ugyanarról az eszközről egy héten belül. Enélkül a
     // változatossági szabály fele NÉMÁN vak lenne (a cím-kezdet fogna csak).
-    ki.push({ file: f, slug: m.slug || '', type: m.type === 'guide' ? 'guide' : 'news',
+    // ITT normalizálódik a típus EGYSZER, a közös core/guide-kind.js-szel
+    // (2026-09-16) — a sor-döntés (core/reel-queue.js) ezután már csak a kész
+    // `type` mezőt nézi, nem kérdezi meg újra, máshogy.
+    ki.push({ file: f, slug: m.slug || '', type: utmutatoE(f, j) ? 'guide' : 'news',
       published_at: m.published_at || '', reel_at: m.reel_at || '', tool: m.tool || '',
       md: j.article_markdown || '' });
   }

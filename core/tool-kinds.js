@@ -36,6 +36,7 @@ import { readdirSync, readFileSync, existsSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { canonicalChip } from './quality-guard.js';
+import { utmutatoE } from './guide-kind.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -243,8 +244,8 @@ export function scanGuideToolNames(articlesDir = DEFAULT_ARTICLES_DIR) {
     try { data = JSON.parse(readFileSync(join(articlesDir, f), 'utf-8')); } catch { continue; }
     const meta = data._meta || {};
     const fm = frontmatterOf(data.article_markdown);
-    const isGuide = meta.type === 'guide' || fm.category === 'guide';
-    if (!isGuide) continue;
+    // „Útmutató-e?" — a közös core/guide-kind.js dönt (2026-09-16).
+    if (!utmutatoE(f, data)) continue;
     if (meta.status && meta.status !== 'published') continue;
 
     const company = String(fm.company || meta.company || '').trim();

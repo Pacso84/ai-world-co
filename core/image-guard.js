@@ -25,6 +25,7 @@
 import { readFileSync, writeFileSync, readdirSync, existsSync, mkdirSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
+import { utmutatoE } from './guide-kind.js';
 
 /** Ennyi napra visszamenőleg firtatjuk a képhiányt. A régi hiány más ügy
  *  (felújítás), és minden nap ugyanazt sorolva a riport-sor zajjá válna. */
@@ -84,11 +85,13 @@ if (process.argv[1] && process.argv[1].replace(/\\/g, '/').endsWith('core/image-
         const d = JSON.parse(readFileSync(join(A, f), 'utf-8'));
         if (!d._meta?.slug || !d._meta?.published_at) continue;
         // A guide/digest jelölés a build.js szabályát tükrözi (lásd fent).
+        // 2026-09-16 óta SZÓ SZERINT ugyanaz: a közös core/guide-kind.js dönt,
+        // nem egy ide másolt feltétel, ami a build.js-étől elcsúszhat.
         const md = d.article_markdown || '';
         articles.push({
           slug: d._meta.slug,
           pub: d._meta.published_at,
-          guide: d._meta.type === 'guide' || f.startsWith('ARTICLE_GUIDE'),
+          guide: utmutatoE(f, d),
           digest: /weekly-digest/.test(JSON.stringify(d._meta.tags || []) + md.slice(0, 600))
         });
       } catch { /* rossz fájl kihagyva */ }

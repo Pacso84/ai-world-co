@@ -19,6 +19,7 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { marked } from 'marked';
 import { valogat, cimBol, lepesSzam } from './ebook-pack.js';
+import { utmutatoE } from './guide-kind.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const KI_DIR = join(ROOT, 'dist', 'ebook');
@@ -31,7 +32,11 @@ export function utmutatokBetolt(dir = join(ROOT, 'content', 'articles')) {
     if (!f.startsWith('ARTICLE_') || !f.endsWith('.json')) continue;
     let d; try { d = JSON.parse(readFileSync(join(dir, f), 'utf-8')); } catch { continue; }
     const m = d._meta || {};
-    if (m.type !== 'guide' || !m.slug) continue;
+    // „Útmutató-e?" — a közös core/guide-kind.js dönt (2026-09-16). A `slug`
+    // külön feltétel marad: URL nélkül a PDF nem tud visszalinkelni.
+    // ⚠️ Ez a hívó TAGADÓ alakban (`!== 'guide'`) írta a feltételt, ezért a
+    // másolat-kereső első mintája NEM LÁTTA. A mérce IRÁNYA itt is számított.
+    if (!utmutatoE(f, d) || !m.slug) continue;
     ki.push({ slug: m.slug, tool: m.tool || '', md: d.article_markdown || '' });
   }
   return ki;
