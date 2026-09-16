@@ -85,6 +85,32 @@ const RESPONSIVE_CSS = `
   .navbar__nav a.navbar__support{ margin:12px 22px; text-align:center; }
 }
 
+/* KESKENY TELEFON (2026-09-15, Chrome-ban mérve): a fejléc 440 px alatt NEM fért
+   ki — logó + nyelvválasztó + 3 gomb + 12 px-es hézagok = 440 px MINDEN
+   szélességen, így 360–412 px-es telefonon vízszintesen görgethető lett a lap,
+   és a menügomb 360 px-en teljesen a képernyőn kívülre került. Ezzel en/hu/es
+   nyelven 320–600 px között minden szélességen belefér. A .lang-select !important-ja
+   szándékos: a build.js inline stílust ad neki (font-size, padding), enélkül a
+   szabály hatástalan (a style.css ≤440 px-es .lang-select-je emiatt sosem hatott).
+   Őrzi: core/mobile-header.test.js */
+@media (max-width:440px){
+  .navbar__inner{ gap:6px; padding:10px 12px; }
+  .navbar__logo{ font-size:15px; gap:6px; }
+  .navbar__logo .navbar__mark{ width:24px; height:24px; }
+  .lang-select{ font-size:12px !important; padding:6px 2px !important; }
+  .search-toggle, .theme-toggle{ width:34px; height:34px; font-size:14px; }
+  .navbar__burger{ width:34px; height:38px; }
+}
+@media (max-width:374px){
+  .navbar__inner{ gap:4px; padding:10px; }
+  .navbar__logo{ font-size:13.5px; gap:5px; }
+  .navbar__logo .navbar__mark{ width:22px; height:22px; }
+}
+@media (max-width:359px){
+  .navbar__inner{ padding:10px 6px; }
+  .navbar__logo{ font-size:12px; }
+}
+
 @media (max-width:560px){
   /* Kiemelt borító margó-fix: a negatív margó kövesse a kártya paddingjét */
   .card--featured .card__link{ padding:30px 22px; }
