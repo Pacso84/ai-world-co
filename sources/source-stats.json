@@ -1,7 +1,7 @@
 {
   "_meta": {
     "note": "Forrás-bizonyítvány: frissesség + termés + megbízhatóság forrásonként. Gyártja: core/source-report-card.js",
-    "updated": "2026-09-16T13:02:05.478Z",
+    "updated": "2026-09-16T19:18:38.205Z",
     "thresholds": {
       "DEAD_FEED_DAYS": 365,
       "MIN_SAMPLE": 8,
@@ -20,7 +20,7 @@
   "sources": {
     "openai-blog": {
       "name": "OpenAI Blog (hivatalos)",
-      "feedAgeDays": 2,
+      "feedAgeDays": 0,
       "published30d": 32,
       "truthBlocks": 1,
       "truthUnfixed": 0,
@@ -56,7 +56,7 @@
     },
     "meta-ai": {
       "name": "Meta Newsroom (hivatalos)",
-      "feedAgeDays": 8,
+      "feedAgeDays": 0,
       "published30d": 1,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -152,7 +152,7 @@
     },
     "aws-ml": {
       "name": "AWS Machine Learning (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 0,
       "published30d": 5,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -188,7 +188,7 @@
     },
     "apple-ml": {
       "name": "Apple Machine Learning Research (hivatalos)",
-      "feedAgeDays": 6,
+      "feedAgeDays": 1,
       "published30d": 2,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -440,7 +440,7 @@
     },
     "databricks": {
       "name": "Databricks Blog (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 0,
       "published30d": 2,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -464,7 +464,7 @@
     },
     "together": {
       "name": "Together AI Blog (hivatalos)",
-      "feedAgeDays": 6,
+      "feedAgeDays": 1,
       "published30d": 0,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -536,7 +536,7 @@
     },
     "xai-news": {
       "name": "xAI (hivatalos, Google News szűrve)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 5,
       "published30d": 1,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -596,7 +596,7 @@
     },
     "d-id-news": {
       "name": "D-ID (hivatalos)",
-      "feedAgeDays": 2,
+      "feedAgeDays": 3,
       "published30d": 4,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -608,7 +608,7 @@
     },
     "sony-ai": {
       "name": "Sony AI (hivatalos)",
-      "feedAgeDays": 77,
+      "feedAgeDays": 78,
       "published30d": 0,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -644,7 +644,7 @@
     },
     "pixlr": {
       "name": "Pixlr Blog (hivatalos)",
-      "feedAgeDays": 2,
+      "feedAgeDays": 3,
       "published30d": 1,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -668,7 +668,7 @@
     },
     "zapier-blog": {
       "name": "Zapier Blog (hivatalos)",
-      "feedAgeDays": 0,
+      "feedAgeDays": 1,
       "published30d": 5,
       "truthBlocks": 0,
       "truthUnfixed": 0,
