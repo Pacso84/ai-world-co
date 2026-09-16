@@ -143,6 +143,7 @@
     "attekinthetőek",
     "attribúció",
     "augmentatív",
+    "auto-reframe",
     "autocomplete",
     "autocorrect",
     "avatarfunkciókat",
@@ -303,6 +304,7 @@
     "cateringet",
     "cegneve",
     "cegneved",
+    "chanclát",
     "chargeback",
     "chat-et",
     "chat-hez",
@@ -332,7 +334,9 @@
     "chen",
     "chetet",
     "chilipor",
+    "chipből",
     "chipek",
+    "chipekből",
     "chipeken",
     "chipeket",
     "chipekhez",
@@ -344,6 +348,8 @@
     "chipen",
     "chipes",
     "chipet",
+    "chipfajta",
+    "chipgyárakat",
     "chipgyártás",
     "chipgyártó",
     "chipgyártók",
@@ -708,6 +714,7 @@
     "engineeringet",
     "english",
     "enyi",
+    "enél",
     "erdemes",
     "erinnern",
     "erőedzés",
@@ -730,6 +737,7 @@
     "ezutáni",
     "ezzal",
     "facebook",
+    "fado-előadást",
     "faktorokat",
     "faktorokhoz",
     "falevelről",
@@ -820,6 +828,7 @@
     "fuvarok",
     "fuvarokat",
     "fájlchip",
+    "fölösleget",
     "függetlenséget",
     "függőséget",
     "főkönyvet",
@@ -859,6 +868,7 @@
     "gyakorlóanyagod",
     "gyengeségen",
     "gyengeséget",
+    "gyerekskorodban",
     "gyerekzsúroknál",
     "gyorsgombokat",
     "gyorshívón",
@@ -956,7 +966,14 @@
     "hobbjaidat",
     "hobbra",
     "hobiprojekthez",
+    "hooknak",
+    "hooknál",
+    "hookod",
+    "hookodat",
+    "hookokat",
+    "hookom",
     "hookot",
+    "hookötletet",
     "hostingot",
     "hostolja",
     "hosztolhatsz",
@@ -1217,6 +1234,7 @@
     "korunk",
     "kozvetlenul",
     "kozvetlenül",
+    "kraft",
     "kreatornak",
     "kreatívabb",
     "kreatívabban",
@@ -1248,6 +1266,7 @@
     "képgenerátorokig",
     "képgenerátorokkal",
     "képgenerátoroknál",
+    "képgenerátorokon",
     "képminőséget",
     "képmodeljének",
     "képpromptokkal",
@@ -1326,6 +1345,7 @@
     "legkezdőbarátabbak",
     "legkockázatkerülőbb",
     "legkövetkező",
+    "legközebb",
     "legtöbbben",
     "lehetőséget",
     "lejátsza",
@@ -1339,6 +1359,7 @@
     "licenszeket",
     "licenszet",
     "lidar",
+    "likeokat",
     "limiteit",
     "linklistát",
     "linklistával",
@@ -1606,6 +1627,7 @@
     "nyelvtanárod",
     "nyereséget",
     "nyersanyagod",
+    "nyersanyagok",
     "nyersanyagoktól",
     "nyilra",
     "nyitósorok",
@@ -2230,6 +2252,7 @@
     "tabot",
     "tabváltás",
     "tacót",
+    "tagalog",
     "tagalogot",
     "taget",
     "tagjairól",
@@ -2267,6 +2290,7 @@
     "techszektorban",
     "techvarázslóvá",
     "techvezérek",
+    "techvilág",
     "techvilágon",
     "teendőlista",
     "teendőlistában",
@@ -2330,6 +2354,7 @@
     "tetszés",
     "tevékenységet",
     "tevékenységsávon",
+    "tianguisba",
     "ticketet",
     "tieren",
     "timelinesra",
@@ -2436,6 +2461,7 @@
     "utókövető",
     "utószerkesztés",
     "uzsonnásdoboz",
+    "vacsoraköltségvetést",
     "vacsoralehetőséget",
     "vacsoramenu",
     "vacsoratervet",
@@ -2465,6 +2491,7 @@
     "versenyszimulátorok",
     "vesztegnek",
     "veszteséget",
+    "vettamár",
     "vezetőségen",
     "vibe-ot",
     "videojátékban",
@@ -3841,6 +3868,31 @@
       "correct": "fotorestaurálási",
       "at": "2026-09-15",
       "mondattal": true
+    },
+    "pottyanak": {
+      "correct": "pottyannak",
+      "at": "2026-09-16",
+      "mondattal": true
+    },
+    "legtöb": {
+      "correct": "legtöbb",
+      "at": "2026-09-16",
+      "mondattal": true
+    },
+    "összefoglalóa": {
+      "correct": "összefoglalója",
+      "at": "2026-09-16",
+      "mondattal": true
+    },
+    "technologia": {
+      "correct": "technológia",
+      "at": "2026-09-16",
+      "mondattal": true
+    },
+    "helyról": {
+      "correct": "helyről",
+      "at": "2026-09-16",
+      "mondattal": true
     }
   },
   "review": {
@@ -5090,11 +5142,66 @@
       "correct": "viselkedési",
       "at": "2026-09-15",
       "mondattal": true
+    },
+    "barátodan": {
+      "correct": "barátodnak",
+      "at": "2026-09-16",
+      "mondattal": true
+    },
+    "bszólnál": {
+      "correct": "szólnál",
+      "at": "2026-09-16",
+      "mondattal": true
+    },
+    "mezukbe": {
+      "correct": "mezőbe",
+      "at": "2026-09-16",
+      "mondattal": true
+    },
+    "leidzemezed": {
+      "correct": "leidezeted",
+      "at": "2026-09-16",
+      "mondattal": true
+    },
+    "ikotem": {
+      "correct": "ikont",
+      "at": "2026-09-16",
+      "mondattal": true
+    },
+    "misadsz": {
+      "correct": "adsz el",
+      "at": "2026-09-16",
+      "mondattal": true
+    },
+    "hanáls": {
+      "correct": "hanem",
+      "at": "2026-09-16",
+      "mondattal": true
+    },
+    "egyszerzísíts": {
+      "correct": "egyszerűsíts",
+      "at": "2026-09-16",
+      "mondattal": true
+    },
+    "figyelemfelhét": {
+      "correct": "figyelemfelhívást",
+      "at": "2026-09-16",
+      "mondattal": true
+    },
+    "kiindulópak": {
+      "correct": "kiindulópontok",
+      "at": "2026-09-16",
+      "mondattal": true
+    },
+    "mostel": {
+      "correct": "most",
+      "at": "2026-09-16",
+      "mondattal": true
     }
   },
   "scan": {
-    "at": "2026-09-15",
-    "files": 980,
-    "candidates": 1
+    "at": "2026-09-16",
+    "files": 986,
+    "candidates": 43
   }
 }
