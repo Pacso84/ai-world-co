@@ -12,18 +12,23 @@
 // MIÉRT NEM AZ X SAJÁT API-JA: fizetős — egy linkes poszt $0,200, napi 9
 // poszt = $56/hó, a teljes havi keretünk ($25) kétszerese. Bufferen át $0.
 //
-// ── AMI IGAZOLVA VAN ─────────────────────────────────────────────────
-// A végpont (2026-08-14, kulcs nélkül mérve):
-//     POST https://graph.buffer.com/  →  401
-//     {"errors":[{"message":"An authentication JWT or Access Token is
-//      required","extensions":{"code":"UNAUTHENTICATED"}}]}
-// Vagyis a cím létezik és GraphQL-t beszél.
+// ── A GRAPHQL API (a hálózati réteg: core/buffer-api.js) ─────────────
+// A Buffer saját dokumentációja szerint (developers.buffer.com):
+//     POST https://api.buffer.com
+//     Authorization: Bearer <API_KEY>
+// A kulcs a https://publish.buffer.com/settings/api oldalon készül.
 //
-// ── AMI MÉG NINCS IGAZOLVA ───────────────────────────────────────────
-// A `createPost` mutáció PONTOS alakját kulcs nélkül nem lehet ellenőrizni.
-// Ezért NEM tippelünk vakon: a `--verify` mód a token megérkezésekor
-// LEKÉRDEZI a séma valódi alakját, és megmondja, egyezik-e azzal, amit
-// küldeni készülünk. Éles posztolás csak azután.
+// ⚠️ A RÉGI REST API (`api.bufferapp.com/1/`) MÁR NEM ÉRINT MINKET: erre a
+// GraphQL API-ra 2026-08-14-én álltunk át. A Buffer a régit 2027-02-01-én
+// nyugdíjazza — nálunk egyetlen `bufferapp` hivatkozás sincs.
+//
+// ── A TOKEN LEJÁRHAT, ÉS EZ A LEGGYAKORIBB LEÁLLÁS ───────────────────
+// 2026-09-16-án élesben ez jött a csatorna-lekérdezésre:
+//     {"errors":[{"message":"Access token is not valid"}]}
+// Ilyenkor a poszter NEM hibázik el némán: a `core/buffer-guard.js`
+// CSATORNA_LEKERDEZES_BUKOTT leletet tesz a memory/buffer-guard.json-ba, és a
+// napi riport kiírja. A megoldás egy ÚJ API-kulcs a fenti oldalról, a
+// BUFFER_ACCESS_TOKEN titokba (GitHub → Settings → Secrets → Actions).
 //
 // FUTTATÁS:
 //   node agents/social/buffer-poster.js --verify   -- séma-ellenőrzés (nem posztol)
@@ -49,6 +54,14 @@ import { capFor, allowedNow, countSentToday } from '../../core/channel-cap.js';
 // alatt, mert EZ A FÁJL NEM IMPORTÁLHATÓ (valódi posztot küldene), tehát
 // tesztelni sem lehet. Lásd: core/buffer-guard.js + core/buffer-guard.test.js.
 import { futtatBuffer } from '../../core/buffer-guard.js';
+// ⚠️ A HÁLÓZATI RÉTEG IS KIKÖLTÖZÖTT (2026-09-16), ugyanabból az okból: ami
+// ebben a fájlban lakik, az TESZTELHETETLEN. A Buffer-hívások — köztük a
+// „HTTP 200 ≠ siker" döntés — most a core/buffer-api.js-ben vannak, injektált
+// `fetch`-csel, teszt alatt: core/buffer-api.test.js.
+import {
+  BUFFER_ENDPOINT, REEL_CSEMPE_MS,
+  bufferGql, lekerSzervezet, lekerCsatornak, lekerPosztok, createPost as createPostApi
+} from '../../core/buffer-api.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..', '..');
@@ -61,11 +74,6 @@ const CONFIG = (() => {
 })();
 const ARTICLES_DIR = join(ROOT, 'content', 'articles');
 const SITE = 'https://aiworldhq.com';
-
-// ⚠️ A HELYES CÍM az api.buffer.com (2026-08-14). A graph.buffer.com is él és
-// introspektálható, de az adat-lekérdezéseknél maga a Buffer szól rá:
-//     {"errors":[{"message":"Please use api.buffer.com"}]}
-const ENDPOINT = 'https://api.buffer.com/';
 
 // A Buffer ingyenes kerete: 250 kérés/nap, 3000/30 nap, 3 csatorna.
 // Nekünk 3 csatorna × 9 poszt = 27 kérés/nap kell — a keret KILENCSZERESE
@@ -94,22 +102,10 @@ const ELES = !DRY && !VERIFY && !LIST_CHANNELS && !ONLY;
 const token = () => (process.env.BUFFER_ACCESS_TOKEN || '').trim();
 
 // ---------- GraphQL ----------
-async function gql(query, variables = {}) {
-  const t = token();
-  if (!t) return { error: 'nincs BUFFER_ACCESS_TOKEN' };
-  try {
-    const r = await fetch(ENDPOINT, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${t}` },
-      body: JSON.stringify({ query, variables }),
-      signal: AbortSignal.timeout(20000)
-    });
-    const j = await r.json().catch(() => ({}));
-    if (j.errors?.length) return { error: String(j.errors[0].message).slice(0, 140), status: r.status };
-    if (!r.ok) return { error: `HTTP ${r.status}`, status: r.status };
-    return { data: j.data };
-  } catch (e) { return { error: String(e.message).slice(0, 100) }; }
-}
+// A hívás maga a core/buffer-api.js-ben; itt már csak a tokent adjuk hozzá.
+// Token nélkül a réteg el sem indítja a kérést — „alszik, nem hibázik".
+const api = () => ({ token: token() });
+const gql = (query, variables = {}) => bufferGql(query, variables, api());
 
 // ---------- 1. SÉMA-ELLENŐRZÉS ----------
 // Ez a lépés váltja ki a találgatást. Introspekcióval megkérdezzük a Buffert,
@@ -117,6 +113,7 @@ async function gql(query, variables = {}) {
 // akarunk, ITT derül ki — nem egy néma, elveszett posztnál.
 async function verifySchema() {
   console.log('🔬 BUFFER SÉMA-ELLENŐRZÉS');
+  console.log('   végpont: ' + BUFFER_ENDPOINT);
   const r = await gql(`{
     __type(name: "Mutation") { fields { name args { name type { name kind ofType { name kind } } } } }
   }`);
@@ -140,12 +137,7 @@ async function verifySchema() {
 // ⚠️ A csatorna-lekérdezés KÖTELEZŐEN kér szervezet-azonosítót, és az
 // `account.currentOrganization` út FORBIDDEN ezzel a tokennel — az
 // `account.organizations` viszont működik. (Mindkettőt élesben mértem.)
-async function orgId() {
-  const r = await gql(`{ account { organizations { id } } }`);
-  if (r.error) return { error: r.error };
-  const id = r.data?.account?.organizations?.[0]?.id;
-  return id ? { id } : { error: 'nincs szervezet a fiókhoz' };
-}
+const orgId = () => lekerSzervezet(api());
 
 // Hány poszt ment MA ki erre a csatornára — a BUFFERTŐL kérdezve, nem a
 // saját jelölésünkből. Ugyanez a lecke 2026-08-06-ról: a napi riport
@@ -169,13 +161,9 @@ async function orgId() {
 // menne ki, nem kevesebb — tehát nem némít el némán semmit. Ha valaha 10 fölé
 // emelnénk egy plafont, ITT kell lapozást írni.
 async function sentTodayFor(organizationId, channelId) {
-  const r = await gql(
-    `query($i: PostsInput!){ posts(input:$i){ edges { node { status sentAt } } } }`,
-    { i: { organizationId, filter: { channelIds: [channelId] } } });
+  const r = await lekerPosztok({ organizationId, channelId }, api());
   if (r.error) return null;
-  const edges = r.data?.posts?.edges;
-  if (!Array.isArray(edges)) return null;
-  return countSentToday(edges.map(e => e?.node).filter(Boolean));
+  return countSentToday(r.nodes);
 }
 
 // ── AZ ŐRSZEM NYERSANYAGA (2026-08-30) ──────────────────────────────
@@ -189,11 +177,9 @@ let CSATORNA_HIBA = null;     // miért nem jött meg (a Buffer saját üzenete)
 async function listChannels() {
   const o = await orgId();
   if (o.error) { CSATORNA_HIBA = o.error; console.log('   ❌ ' + o.error); return null; }
-  const r = await gql(
-    `query($i: ChannelsInput!){ channels(input:$i){ id service name isDisconnected isLocked } }`,
-    { i: { organizationId: o.id } });
+  const r = await lekerCsatornak(o.id, api());
   if (r.error) { CSATORNA_HIBA = r.error; console.log('   ❌ ' + r.error); return null; }
-  NYERS_CSATORNAK = r.data?.channels || [];
+  NYERS_CSATORNAK = r.csatornak || [];
   const ch = NYERS_CSATORNAK.filter(c => !c.isDisconnected && !c.isLocked);
   console.log('📡 BEKÖTÖTT CSATORNÁK');
   if (!ch.length) { console.log('   ⚠️ egy használható csatorna sincs'); return []; }
@@ -202,10 +188,8 @@ async function listChannels() {
 }
 
 // A Buffer `service` neve → a mi csatorna-kulcsunk a social-text.js-ben.
-// A Reel-csempe pillanata (ms). A horog-kártya a videó elején van; az 1.
-// másodperc biztosan benne esik, a 0 viszont a legelső képkockára ülne.
-const REEL_CSEMPE_MS = 1000;
-
+// (A Reel-csempe pillanatát — REEL_CSEMPE_MS — a core/buffer-api.js adja: ott
+// van a poszt bemenete is, ami ténylegesen elküldi.)
 const SERVICE_MAP = { twitter: 'x', x: 'x', threads: 'threads', instagram: 'instagram' };
 
 // ---------- 3. A SOR (ugyanaz a rangsor, mint a Facebooknál) ----------
@@ -350,87 +334,10 @@ async function maiReel() {
   } catch { return null; }
 }
 
-async function createPost({ channelId, text, image, video, channelKey }) {
-  const mutation = `mutation ($input: CreatePostInput!) {
-    createPost(input: $input) {
-      __typename
-      ... on PostActionSuccess { post { id status } }
-      ... on NotFoundError { message }
-      ... on UnauthorizedError { message }
-      ... on UnexpectedError { message }
-      ... on RestProxyError { code message }
-      ... on LimitReachedError { message }
-      ... on InvalidInputError { message }
-    }
-  }`;
-  // ── VIDEÓ VAGY KÉP ──────────────────────────────────────────────
-  // A séma élesben lekérdezve (2026-08-25):
-  //     AssetInput      = { document | image | video }
-  //     VideoAssetInput = { url, thumbnailUrl, metadata }
-  //
-  // ⚠️ A `thumbnailUrl` LÉTEZIK A SÉMÁBAN, DE AZ API ELUTASÍTJA (2026-08-27,
-  // az első valódi Instagram-Reel próbálkozáson derült ki):
-  //     InvalidInputError: Video thumbnailUrl is not supported: social
-  //     networks do not accept custom video thumbnail images… Remove
-  //     thumbnailUrl… To pick the video thumbnail, set
-  //     metadata.thumbnailOffset on the video (milliseconds).
-  //
-  // KLASSZIKUS CSAPDA: a mező szerepel a sémában, tehát TÁMOGATOTTNAK
-  // LÁTSZIK — az elutasítás csak a beküldés pillanatában jön. A séma
-  // megléte nem bizonyítja, hogy a hálózat el is fogadja.
-  //
-  // Helyette a videó EGY PILLANATÁT választjuk ki. 1000 ms = a HOROG-kártya
-  // (a cikk címe + „In N steps"), ami pontosan az, amit a profilrácsban
-  // látni akarunk. A kártya a felolvasás hosszáig tart, tipikusan 3-5 mp,
-  // tehát az 1. másodperc bőven benne van.
-  const assets = video
-    ? [{ video: { url: video, metadata: { thumbnailOffset: REEL_CSEMPE_MS } } }]
-    : image ? [{ image: { url: image } }] : [];
-
-  const input = {
-    channelId,
-    text,
-    // Az assets NON_NULL: kép nélkül ÜRES lista megy (X/Threads elfogadja,
-    // az Instagramot kép nélkül fentebb már kihagytuk).
-    assets,
-    mode: 'shareNow',
-    schedulingType: 'automatic',
-    needsApproval: false
-  };
-
-  // AZ INSTAGRAM KÜLÖN METAADATOT KÖVETEL. Enélkül a mutáció így felel:
-  //    InvalidInputError: Instagram posts require a type (post, story, or reel)
-  // — és ez a hibaüzenet CSAK azért látszik, mert az unió-variánsokat is
-  // lekérdezzük. Korábban némán "sikernek" tűnt, miközben a poszt létre sem jött.
-  //    PostType = carousel | event | ghost_post | offer | post | reel | short
-  //               | story | thread | whats_new
-  // Nekünk `post` (feed-poszt) kell; a shouldShareToFeed kötelező.
-  // ── REEL VAGY FEED-POSZT (2026-08-25, user-döntés) ──────────────
-  // „A napi 1 Instagram-poszt legyen Reel az állókép helyett."
-  //
-  // MIÉRT: 11 nap mérve az Instagram 0 látogatót hozott. Az ok nem a
-  // csatorna volt, hanem a FORMÁTUM — az állóképes feed-posztot az
-  // Instagram alig mutatja NEM-követőknek, a Reelt viszont külön fülön és
-  // az ajánlóban is. A saját csatorna-szabályunk épp ezt kérdezi:
-  // „mutatja-e a platform a tartalmat nem követőknek?"
-  //
-  // ⚠️ HELYETTE, NEM MELLÉ. A fiók 2026-08-23-án automatizálás miatt
-  // hirdetési korlátozást kapott, és aznap vettük vissza napi 6 posztról
-  // napi 1-re. A Reel a napi EGY alkalmat használja fel — a tevékenység
-  // mennyisége NEM nő, csak a formátum lesz jobb.
-  if (channelKey === 'instagram') {
-    input.metadata = { instagram: { type: video ? 'reel' : 'post', shouldShareToFeed: true } };
-  }
-
-  const r = await gql(mutation, { input });
-  if (r.error) return r;
-  const p = r.data?.createPost;
-  // A "nem Success" variáns HIBA, akkor is, ha a HTTP-válasz 200 volt.
-  if (p?.__typename !== 'PostActionSuccess') {
-    return { error: `${p?.__typename || 'ismeretlen válasz'}: ${p?.message || '(nincs üzenet)'}` };
-  }
-  return { data: p.post };
-}
+// A poszt-küldés ÉS a válasz értékelése a core/buffer-api.js-ben lakik —
+// ott áll teszt alatt, hogy a HTTP 200-ban érkező hibaüzenet (MutationError)
+// HIBÁNAK számít, nem sikernek. Itt már csak a tokent adjuk hozzá.
+const createPost = args => createPostApi(args, api());
 
 async function main() {
   console.log('📤 BUFFER-POSZTER (X · Threads · Instagram)');
