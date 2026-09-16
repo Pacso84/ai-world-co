@@ -309,6 +309,31 @@ await t('5d) az `embedFn: null` (tiszta offline teszt) sem ír', async () => {
   assert.equal(existsSync(TESZT_GUARD), false, 'a tartalék-ág nyomot hagyott a lemezen');
 });
 
+await t('5e) 🔑 a lemezre írt `cache`/`beagyazva` KÖVETI A VALÓSÁGOT (nem szerkezetileg 0)', async () => {
+  // 2026-09-16-i lelet. A hívó (`memory-manager.js`) csak
+  // {at, provider, dim, osszes, kihagyott}-ot adott át, a `jegyezSzemantikus()`
+  // pedig a hiányzó mezőket `szam(...) ?? 0`-val töltötte → a LEMEZEN a `cache`
+  // és a `beagyazva` MINDIG 0 volt, akkor is, amikor 287 emlék beágyazódott.
+  // Élesben kimérve: 6 egymást követő verzióban `cache=0 beagyazva=0`.
+  // 🔑 MIÉRT BAJ EGY „CSAK KOZMETIKAI" SZÁM: pontosan ez a „212 → 0"
+  // beágyazás-hiba ALAKJA. Ha a beágyazás tényleg elhalna, a fájl UGYANÍGY
+  // nézne ki — az élő és a halott rendszer megkülönböztethetetlen lenne.
+  guardTorol();
+  rmSync(TESZT_CACHE, { force: true });
+  tarBeallit([emlek('m1', M1), emlek('m2', M2), emlek('m3', M3)]);
+  await recallSemantic('meeting notes', { scope: 'iro', provider: 'teszt', embedFn: alEmbed() });
+  const elso = guardOlvas();
+  assert.equal(elso.beagyazva, 3, '🔴 üres gyorsítótár mellett is 0 beágyazást írt ki — a mező szerkezetileg 0');
+  assert.equal(elso.cache, 0, 'üres gyorsítótárból nem jöhet találat');
+
+  // Második futás UGYANARRA: most már mindent a gyorsítótár ad — a két szám cserél.
+  guardTorol();   // ugyanaznapi TISZTA futás különben nem írna (kellIrniSzemantikus)
+  await recallSemantic('meeting notes', { scope: 'iro', provider: 'teszt', embedFn: alEmbed() });
+  const masodik = guardOlvas();
+  assert.equal(masodik.cache, 3, '🔴 a gyorsítótár-találatok száma nem jut el a lemezre');
+  assert.equal(masodik.beagyazva, 0, 'gyorsítótárból kiszolgált futás nem ágyazhatott be újra');
+});
+
 // ───────────────────────────────────────────────────────────────────
 // 6) A RIPORT TÉNYLEG OLVASSA — enélkül az egész munka a CI-naplóig ér
 //    A `core/daily-report.js` NEM IMPORTÁLHATÓ (a fájl végén feltétel nélkül

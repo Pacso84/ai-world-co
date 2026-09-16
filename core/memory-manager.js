@@ -324,10 +324,12 @@ export async function recallSemantic(query, opts = {}) {
   // PROCESSZÉBEN fut, a napi riport egy MÁSIKBAN: folyamat-lokális változóból
   // az sosem láthatná. Pontosan ez az alak buktatta meg az `embedStatus()`-t
   // 2026-08-30-ig. A `jegyezSzemantikus()` SOHA nem dob, és csak változáskor ír.
-  jegyezSzemantikus({
-    at: _szemantikus.at, provider, dim,
-    osszes: candidates.length, kihagyott
-  });
+  // ⚠️ A TELJES állapotot adjuk át (2026-09-16). Korábban csak öt mező ment át, és
+  // a `cache`/`beagyazva` a hiányzó értékből 0-ra töltődött — vagyis a lemezen
+  // MINDIG 0 volt, akkor is, amikor 287 emlék beágyazódott. Ez pontosan a „212 → 0"
+  // beágyazás-hiba ALAKJA: ha a beágyazás tényleg elhalna, a fájl ugyanígy nézne ki,
+  // és a két állapot megkülönböztethetetlen lenne. Őrzi: core/semantic-guard.test.js.
+  jegyezSzemantikus(_szemantikus);
 
   const scored = candidates
     .filter(it => vektorok.has(it.id))
