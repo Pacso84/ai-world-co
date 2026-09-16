@@ -1,118 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178930417406257",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-09-13T12:56:14.062Z",
-      "updated": "2026-09-13T12:56:20.975Z"
-    },
-    {
-      "id": "t178930418097751",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-13T12:56:20.977Z",
-      "updated": "2026-09-13T12:56:25.585Z"
-    },
-    {
-      "id": "t178930418558770",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-09-13T12:56:25.587Z",
-      "updated": "2026-09-13T12:56:51.863Z"
-    },
-    {
-      "id": "t178935206559244",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-09-14T02:14:25.592Z",
-      "updated": "2026-09-14T02:14:25.781Z"
-    },
-    {
-      "id": "t178935206578246",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-09-14T02:14:25.782Z",
-      "updated": "2026-09-14T02:14:44.644Z"
-    },
-    {
-      "id": "t178935208464675",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-09-14T02:14:44.646Z",
-      "updated": "2026-09-14T02:14:44.846Z"
-    },
-    {
-      "id": "t178935208484818",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-09-14T02:14:44.848Z",
-      "updated": "2026-09-14T02:14:45.027Z"
-    },
-    {
-      "id": "t178935208502995",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-14T02:14:45.029Z",
-      "updated": "2026-09-14T02:14:45.210Z"
-    },
-    {
-      "id": "t178935208521348",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-09-14T02:14:45.213Z",
-      "updated": "2026-09-14T02:14:45.441Z"
-    },
-    {
-      "id": "t178935208549586",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-09-14T02:14:45.495Z",
-      "updated": "2026-09-14T02:17:31.596Z"
-    },
-    {
-      "id": "t178935225159740",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-14T02:17:31.597Z",
-      "updated": "2026-09-14T02:18:53.266Z"
-    },
-    {
-      "id": "t178935233331338",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-14T02:18:53.313Z",
-      "updated": "2026-09-14T02:19:12.253Z"
-    },
-    {
-      "id": "t178935235225473",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-09-14T02:19:12.254Z",
-      "updated": "2026-09-14T02:19:33.048Z"
-    },
-    {
-      "id": "t17893523730505",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-14T02:19:33.050Z",
-      "updated": "2026-09-14T02:19:47.156Z"
-    },
-    {
       "id": "t178935238715888",
       "title": "Run publisher",
       "status": "done",
@@ -479,33 +367,121 @@
       "agent": "publisher",
       "created": "2026-09-15T13:07:29.465Z",
       "updated": "2026-09-15T13:07:49.386Z"
+    },
+    {
+      "id": "t178952484332635",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-09-16T02:14:03.326Z",
+      "updated": "2026-09-16T02:14:03.515Z"
+    },
+    {
+      "id": "t178952484351769",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-09-16T02:14:03.517Z",
+      "updated": "2026-09-16T02:15:00.324Z"
+    },
+    {
+      "id": "t178952490032661",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-09-16T02:15:00.326Z",
+      "updated": "2026-09-16T02:15:00.541Z"
+    },
+    {
+      "id": "t178952490054359",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-09-16T02:15:00.543Z",
+      "updated": "2026-09-16T02:22:11.126Z"
+    },
+    {
+      "id": "t178952533112838",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-16T02:22:11.128Z",
+      "updated": "2026-09-16T02:23:40.610Z"
+    },
+    {
+      "id": "t178952542061236",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-09-16T02:23:40.612Z",
+      "updated": "2026-09-16T02:24:09.865Z"
+    },
+    {
+      "id": "t178952544986662",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-16T02:24:09.866Z",
+      "updated": "2026-09-16T02:24:50.018Z"
+    },
+    {
+      "id": "t178952549002168",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-09-16T02:24:50.021Z",
+      "updated": "2026-09-16T02:25:19.068Z"
+    },
+    {
+      "id": "t178952551912089",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-09-16T02:25:19.120Z",
+      "updated": "2026-09-16T02:27:47.559Z"
+    },
+    {
+      "id": "t178952566756080",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-16T02:27:47.560Z",
+      "updated": "2026-09-16T02:28:33.977Z"
+    },
+    {
+      "id": "t178952571402730",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-16T02:28:34.027Z",
+      "updated": "2026-09-16T02:35:09.956Z"
+    },
+    {
+      "id": "t178952610995762",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-09-16T02:35:09.957Z",
+      "updated": "2026-09-16T02:48:38.421Z"
+    },
+    {
+      "id": "t178952691842393",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-16T02:48:38.423Z",
+      "updated": "2026-09-16T02:56:51.071Z"
+    },
+    {
+      "id": "t178952741107281",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-09-16T02:56:51.072Z",
+      "updated": "2026-09-16T02:59:32.681Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n17883762953469",
-      "level": "success",
-      "text": "1 hír + 0 útmutató publikálva (költség: $0.0177).",
-      "agent": "ceo",
-      "at": "2026-09-02T19:11:35.346Z",
-      "loud": false
-    },
-    {
-      "id": "n178840270472854",
-      "level": "info",
-      "text": "SEO: 11 cikk optimalizálva (átlag 7989908981.6/10).",
-      "agent": "seo",
-      "at": "2026-09-03T02:31:44.728Z",
-      "loud": false
-    },
-    {
-      "id": "n178840271946415",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The lineup is solid and practical — great mix of workplace, personal, and community use cases that everyday people will actually use. One quick check: the company lessons flagged \"ChatRT\" (not ChatRTX",
-      "agent": "publisher",
-      "at": "2026-09-03T02:31:59.464Z",
-      "loud": false
-    },
     {
       "id": "n17884027336526",
       "level": "success",
@@ -1281,81 +1257,33 @@
       "agent": "ceo",
       "at": "2026-09-15T13:07:49.427Z",
       "loud": false
+    },
+    {
+      "id": "n178952691841362",
+      "level": "info",
+      "text": "SEO: 6 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-09-16T02:48:38.413Z",
+      "loud": false
+    },
+    {
+      "id": "n17895275555613",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The line-up looks solid and ready — practical, everyday use cases that demystify AI for regular people. Just one small note: articles 6, 8, and 10 don't specify which AI tool they're using (while othe",
+      "agent": "publisher",
+      "at": "2026-09-16T02:59:15.561Z",
+      "loud": false
+    },
+    {
+      "id": "n178952757272675",
+      "level": "success",
+      "text": "4 hír + 2 útmutató publikálva (költség: $0.0805).",
+      "agent": "ceo",
+      "at": "2026-09-16T02:59:32.726Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178854802287763",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "2 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-09-04T18:53:42.878Z"
-    },
-    {
-      "id": "m178857380995025",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"NVIDIA to Acquire Hugging Face\" — mi a baj: The article presents 'NVIDIA has agreed to acquire Hugging Face' as an established fact. As of available information, there is no verified announcement of NVIDIA acquiring Hugging Face. If this is speculative or unconfirmed, framing it as a done deal ('has agreed to acquire') is a fabrication of fact — not an opinion or analysis.; ",
-      "ref": "2026-09-04T01-58-32-035Z_nvidia-blog_NVIDIA_to_Acquire_Hugging_Face.json",
-      "at": "2026-09-05T02:03:29.950Z"
-    },
-    {
-      "id": "m17885738367471",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Google Workspace Weekly Recap - September 4, 2026\" — mi a baj: The article presents 'Gemini co-presenter suggestion' in Google Meet as a new, real feature. As of available information, there is no verified announcement of Gemini proactively suggesting a co-presenter during Google Slides presentations in Meet, nor a one-click handoff suggestion in an 'Ask Gemini in Meet' pane",
-      "ref": "2026-09-05T01-54-24-476Z_google-workspace_Google_Workspace_Weekly_Recap_-_September_4__2026.json",
-      "at": "2026-09-05T02:03:56.747Z"
-    },
-    {
-      "id": "m17885738557993",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"NVIDIA to Acquire Hugging Face\" — javítva: The article presents 'NVIDIA has agreed to acquire Hugging Face' as an established fact. As of available information, there is no verified announcement of NVIDIA acquiring Hugging Face. If this is speculative or unconfirmed, framing it as a done deal ('has agreed to acquire') is a fabrication of fact — not an opinion or analysis.; The articl",
-      "ref": "2026-09-04T01-58-32-035Z_nvidia-blog_NVIDIA_to_Acquire_Hugging_Face.json",
-      "at": "2026-09-05T02:04:15.799Z"
-    },
-    {
-      "id": "m178857388002061",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Google Workspace Weekly Recap - September 4, 2026\" — javítva: The article presents 'Gemini co-presenter suggestion' in Google Meet as a new, real feature. As of available information, there is no verified announcement of Gemini proactively suggesting a co-presenter during Google Slides presentations in Meet, nor a one-click handoff suggestion in an 'Ask Gemini in Meet' panel. This ap",
-      "ref": "2026-09-05T01-54-24-476Z_google-workspace_Google_Workspace_Weekly_Recap_-_September_4__2026.json",
-      "at": "2026-09-05T02:04:40.020Z"
-    },
-    {
-      "id": "m178857389934450",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"NVIDIA to Acquire Hugging Face\" (?/10)",
-      "ref": "2026-09-04T01-58-32-035Z_nvidia-blog_NVIDIA_to_Acquire_Hugging_Face.json",
-      "at": "2026-09-05T02:04:59.344Z"
-    },
-    {
-      "id": "m178857391378471",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Google Workspace Weekly Recap - September 4, 2026\" (?/10)",
-      "ref": "2026-09-05T01-54-24-476Z_google-workspace_Google_Workspace_Weekly_Recap_-_September_4__2026.json",
-      "at": "2026-09-05T02:05:13.784Z"
-    },
-    {
-      "id": "m178857462556286",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 20 → 5/4/2 oszlop.",
-      "ref": "mobile",
-      "at": "2026-09-05T02:17:05.562Z"
-    },
     {
       "id": "m178857467416544",
       "from": "fact-check",
@@ -2647,6 +2575,78 @@
       "text": "3 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-09-15T13:17:56.058Z"
+    },
+    {
+      "id": "m178952534946056",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"How to get more views on TikTok on a small account\" — mi a baj: Step 6 mentions Analytics location without a fallback for readers who can't find it; AI accuracy claim in common mistakes (9/10 words) is stated as fact without sourcing",
+      "ref": "2026-09-15T12-59-05-469Z_picsart_How_to_get_more_views_on_TikTok_on_a_small_account.json",
+      "at": "2026-09-16T02:22:29.460Z"
+    },
+    {
+      "id": "m178952542059144",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Gmail Search’s AI Overviews now available globally\" — mi a baj: Tool and Company fields are empty in the article metadata despite the article being about a Google/Gmail/Gemini product — while not strictly a fabrication, the article's specific claim that MCP (Model Context Protocol) is the standard connecting Gemini in Workspace to Asana, HubSpot, Salesforce, etc., and that G",
+      "ref": "2026-09-16T02-14-52-457Z_google-workspace_Gmail_Search_s_AI_Overviews_now_available_globally.json",
+      "at": "2026-09-16T02:23:40.591Z"
+    },
+    {
+      "id": "m17895254370793",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"How to get more views on TikTok on a small account\" — javítva: Step 6 mentions Analytics location without a fallback for readers who can't find it; AI accuracy claim in common mistakes (9/10 words) is stated as fact without sourcing; újraküldöm.",
+      "ref": "2026-09-15T12-59-05-469Z_picsart_How_to_get_more_views_on_TikTok_on_a_small_account.json",
+      "at": "2026-09-16T02:23:57.079Z"
+    },
+    {
+      "id": "m17895254498544",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Gmail Search’s AI Overviews now available globally\" — javítva: Tool and Company fields are empty in the article metadata despite the article being about a Google/Gmail/Gemini product — while not strictly a fabrication, the article's specific claim that MCP (Model Context Protocol) is the standard connecting Gemini in Workspace to Asana, HubSpot, Salesforce, etc., and that Gemini now ",
+      "ref": "2026-09-16T02-14-52-457Z_google-workspace_Gmail_Search_s_AI_Overviews_now_available_globally.json",
+      "at": "2026-09-16T02:24:09.854Z"
+    },
+    {
+      "id": "m178952547661837",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"How to get more views on TikTok on a small account\" (?/10)",
+      "ref": "2026-09-15T12-59-05-469Z_picsart_How_to_get_more_views_on_TikTok_on_a_small_account.json",
+      "at": "2026-09-16T02:24:36.618Z"
+    },
+    {
+      "id": "m178952549000848",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Gmail Search’s AI Overviews now available globally\" (?/10)",
+      "ref": "2026-09-16T02-14-52-457Z_google-workspace_Gmail_Search_s_AI_Overviews_now_available_globally.json",
+      "at": "2026-09-16T02:24:50.008Z"
+    },
+    {
+      "id": "m178952551905680",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "info",
+      "text": "A \"Gmail Search’s AI Overviews now available globally\" hír a meglévő útmutatóra mutat: how-to-search-years-of-your-gmail-with-plain-english-questio",
+      "ref": "how-to-search-years-of-your-gmail-with-plain-english-questio",
+      "at": "2026-09-16T02:25:19.056Z"
+    },
+    {
+      "id": "m178952741106277",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 20 → 5/4/2 oszlop.",
+      "ref": "mobile",
+      "at": "2026-09-16T02:56:51.062Z"
     }
   ]
 }

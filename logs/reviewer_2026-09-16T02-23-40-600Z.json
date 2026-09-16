@@ -1,0 +1,35 @@
+{
+  "started_at": "2026-09-16T02:22:11.300Z",
+  "total": 4,
+  "passed": 2,
+  "failed": 1,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.00697946,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-09-15T12-59-05-469Z_picsart_How_to_get_more_views_on_TikTok_on_a_small_account.json",
+      "rejected": "REJECTED_2026-09-15T12-59-05-469Z_picsart_How_to_get_more_views_on_TikTok_on_a_small_account.json",
+      "decision": "FAIL",
+      "score": 7,
+      "cost_usd": 0.00183303
+    },
+    {
+      "writer": "WRITER_2026-09-16T02-14-36-973Z_google-ai-blog_AI_for_everyone_in_every_language.json",
+      "article": "ARTICLE_2026-09-16T02-14-36-973Z_google-ai-blog_AI_for_everyone_in_every_language.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.001569
+    },
+    {
+      "writer": "WRITER_2026-09-16T02-14-36-973Z_nvidia-blog__Now_We_Can_Know_Everything_and_Do_Anything___Jens.json",
+      "article": "ARTICLE_2026-09-16T02-14-36-973Z_nvidia-blog__Now_We_Can_Know_Everything_and_Do_Anything___Jens.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.0011382
+    }
+  ],
+  "truth_blocked": 1,
+  "finished_at": "2026-09-16T02:23:40.600Z",
+  "duration_seconds": 89.3
+}
