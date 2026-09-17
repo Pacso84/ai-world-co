@@ -1285,24 +1285,6 @@
   ],
   "messages": [
     {
-      "id": "m178860812713076",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "3 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-09-05T11:35:27.130Z"
-    },
-    {
-      "id": "m178863046021129",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 20 → 5/4/2 oszlop.",
-      "ref": "mobile",
-      "at": "2026-09-05T17:47:40.211Z"
-    },
-    {
       "id": "m178865969949328",
       "from": "ellenorzo",
       "to": "guide",
@@ -2647,6 +2629,24 @@
       "text": "6 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-09-17T02:48:43.879Z"
+    },
+    {
+      "id": "m178964956001630",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Control all your smart lights, plugs, and thermost\" — The specific AI suggestions UI elements described (\"sparkle icon\", \"AI suggestions\" toggle) — these may not exist or work as described, and the guide states them as facts rather than possibilities; The implication that \"AI-assisted suggestions\" are a clearly visible, documented featu",
+      "ref": "ARTICLE_GUIDE_control-all-your-smart-lights-plugs-and-thermostats-with-one.json",
+      "at": "2026-09-17T12:52:40.016Z"
+    },
+    {
+      "id": "m178964958305687",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Create a custom Genmoji of a friend or pet for you\" — iPhone 15 Pro, iPhone 15 Pro Max, the entire iPhone 16 lineup are the only supported devices — newer models (iPhone 17 series) are now available; iOS 18.2 is the version where Genmoji arrived — this is now outdated as iOS has progressed to version 19; The Apple Intelligence settings ",
+      "ref": "ARTICLE_GUIDE_create-a-custom-genmoji-of-a-friend-or-pet-for-your-next-mes.json",
+      "at": "2026-09-17T12:53:03.056Z"
     }
   ]
 }
