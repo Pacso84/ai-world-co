@@ -1,12 +1,15 @@
 {
-  "at": "2026-09-17T13:02:20.052Z",
-  "kikuldve": 0,
-  "keres": 0,
-  "csatornak": [],
+  "at": "2026-09-17T19:31:19.831Z",
+  "kikuldve": 2,
+  "keres": 3,
+  "csatornak": [
+    "instagram",
+    "threads"
+  ],
   "problems": [
     {
-      "code": "CSATORNA_LEKERDEZES_BUKOTT",
-      "detail": "a csatornákat nem sikerült lekérdezni — Access token is not valid"
+      "code": "POSZT_BUKOTT",
+      "detail": "threads: InvalidInputError: Invalid post: Image could not be read from its URL."
     }
   ]
 }
