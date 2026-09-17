@@ -586,6 +586,9 @@
     "dronokat",
     "dropokhoz",
     "dropokra",
+    "dugalj",
+    "dugaljakat",
+    "dugaljat",
     "dugoghatsz",
     "durante",
     "dzsal",
@@ -1664,12 +1667,17 @@
     "oignon",
     "okosasszisztensed",
     "okosasszisztensedhez",
+    "okosdugalj",
+    "okosdugaljad",
+    "okosdugaljat",
+    "okosdugaljjal",
     "okoseszköz",
     "okoseszköze",
     "okoseszközeid",
     "okoseszközeidhez",
     "okoseszközeink",
     "okoseszköznek",
+    "okoseszközt",
     "okoseszközök",
     "okoseszközökben",
     "okoseszközöktől",
@@ -1697,6 +1705,7 @@
     "okoskonnektorral",
     "okoskonnektort",
     "okoslámpák",
+    "okoslámpákat",
     "okoslámpát",
     "okosmérődhöz",
     "okosotthon",
@@ -5223,11 +5232,21 @@
       "correct": "légitársaságoknál",
       "at": "2026-09-17",
       "mondattal": true
+    },
+    "ventillátor": {
+      "correct": "ventilátor",
+      "at": "2026-09-17",
+      "mondattal": true
+    },
+    "ventillátornak": {
+      "correct": "ventilátornak",
+      "at": "2026-09-17",
+      "mondattal": true
     }
   },
   "scan": {
     "at": "2026-09-17",
     "files": 992,
-    "candidates": 18
+    "candidates": 11
   }
 }
