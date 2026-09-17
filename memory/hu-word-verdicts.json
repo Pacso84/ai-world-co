@@ -91,6 +91,7 @@
     "alkalmazásáruházban",
     "alkalmazásáruházra",
     "alkalmazásáruházából",
+    "allergénfigyelmeztetések",
     "alulabb",
     "alügynököket",
     "amért",
@@ -107,6 +108,7 @@
     "antimikrobiális",
     "anyagod",
     "anyagodban",
+    "anyagodból",
     "anyagodra",
     "anyagok",
     "anyagokat",
@@ -224,6 +226,7 @@
     "boardra",
     "boldogabbá",
     "boldogan",
+    "bootcampeken",
     "bosszúságod",
     "bosszúságodat",
     "bosszúságokat",
@@ -314,6 +317,7 @@
     "checkekről",
     "checklistaként",
     "checklistben",
+    "checklisteden",
     "checklistek",
     "checklisteket",
     "checklistet",
@@ -400,7 +404,9 @@
     "com-ra",
     "commbank",
     "commitoljam",
+    "commitolni",
     "commitolás",
+    "commitolásra",
     "confit",
     "cookered",
     "copilotok",
@@ -441,6 +447,7 @@
     "csillagokat",
     "csillagokkal",
     "csináltod",
+    "csodászkert",
     "csomagjai",
     "csomagjaiba",
     "csomagjaiban",
@@ -463,6 +470,7 @@
     "csomagokról",
     "csomagokért",
     "csomagom",
+    "csomagomat",
     "csomagommal",
     "csomagon",
     "csomagonként",
@@ -558,6 +566,7 @@
     "domainje",
     "domainjéhez",
     "domainjére",
+    "domainjüket",
     "domainjükről",
     "domainnel",
     "domainnevek",
@@ -828,6 +837,7 @@
     "fuvarok",
     "fuvarokat",
     "fájlchip",
+    "félévet",
     "fölösleget",
     "függetlenséget",
     "függőséget",
@@ -1240,6 +1250,7 @@
     "kreatívabban",
     "kreatívat",
     "kriptikus",
+    "kriptóban",
     "krisztákba",
     "krisztákon",
     "król",
@@ -1524,7 +1535,10 @@
     "minőségellenőrző",
     "minőséget",
     "mnemonikák",
+    "mock-upját",
     "mock-upokat",
+    "mockup",
+    "mockupod",
     "mockupok",
     "mockupokat",
     "mockupokra",
@@ -1945,6 +1959,7 @@
     "renderel",
     "renderelj",
     "renderelni",
+    "renderelt",
     "renderelés",
     "renderelésbe",
     "renderelésre",
@@ -1955,6 +1970,7 @@
     "rendetlenséget",
     "rendrakás",
     "rendszeren",
+    "repo",
     "repod",
     "reportfraud",
     "reportphishing",
@@ -3893,6 +3909,11 @@
       "correct": "helyről",
       "at": "2026-09-16",
       "mondattal": true
+    },
+    "vlasz": {
+      "correct": "válasz",
+      "at": "2026-09-17",
+      "mondattal": true
     }
   },
   "review": {
@@ -5197,11 +5218,16 @@
       "correct": "most",
       "at": "2026-09-16",
       "mondattal": true
+    },
+    "telefontársaságoknál": {
+      "correct": "légitársaságoknál",
+      "at": "2026-09-17",
+      "mondattal": true
     }
   },
   "scan": {
-    "at": "2026-09-16",
-    "files": 986,
-    "candidates": 0
+    "at": "2026-09-17",
+    "files": 992,
+    "candidates": 18
   }
 }
