@@ -36,6 +36,7 @@ import { shouldRetryTruncated } from './truncation-guard.js';
 import { sikeresKuldes } from './report-window.js';
 import { jegyezEmbed } from './embed-guard.js';
 import { probalSorban } from './embed-chain.js';
+import { jegyezLatencia } from './ai-latency-guard.js';
 
 // ===================================================================
 // KONFIG BETÖLTÉS
@@ -500,6 +501,36 @@ function logCall(agentName, provider, model, usage, costUsd, success, error = nu
 }
 
 // ===================================================================
+// ⏱️ HÍVÁS-IDŐ MÉRÉS — a beragadt hívás legyen LÁTHATÓ (2026-09-16)
+// ===================================================================
+// A `logCall()` fölötte mindent kiír, csak IDŐT nem — és a 2026-09-16 02:13
+// UTC-s futásban épp az idő volt a hír: a Pipeline-lépés 45,5 percig tartott
+// (átlag 8,9), miközben a napi költés $0,23 maradt. Két hívás pontosan 8,0
+// percig lógott, majd „aborted due to timeout"-tal elhasalt, 0+0 tokennel.
+// Ez a kettő a `logCall` sorában semmiben nem különbözött egy másodperc alatt
+// elbukó hívástól.
+//
+// ⚠️ A MÉRÉS SOHA NEM AKASZTHAT MEG EGY AI-HÍVÁST. A `jegyezLatencia()` maga
+// sem dob (mindent elnyel), de a kettős háló szándékos: ha egyszer mégis
+// dobna, ez a `catch` állja meg — különben a `ask()` `catch (error)` ága egy
+// MÉRÉSI hibát API-hibának látna, és fölöslegesen tovább esne a következő
+// modellre. Ugyanaz a szabály, mint a `jegyezSzemantikus()`-nál.
+// ===================================================================
+function merHivas(agentName, provider, model, kezdet, error) {
+  try {
+    jegyezLatencia({
+      at: new Date().toISOString(),
+      agent: agentName,
+      provider,
+      model,
+      mp: (Date.now() - kezdet) / 1000,
+      ok: !error,
+      hiba: error ? String(error?.message || error) : null
+    });
+  } catch { /* a mérés SOHA nem akaszthat meg egy AI-hívást */ }
+}
+
+// ===================================================================
 // RETRY SEGÉDEK
 // ===================================================================
 
@@ -897,8 +928,24 @@ export async function ask(prompt, options = {}) {
     // Átmeneti hibákra ugyanazt a modellt újrapróbáljuk (backoff-fal)
     for (let tryNum = 1; tryNum <= MAX_TRANSIENT_RETRIES + 1; tryNum++) {
       const effMaxTokens = effectiveMaxTokens({ model, maxTokens, noThink, prevCeiling });
+      // ⏱️ A STOPPER ITT INDUL — közvetlenül a hálózati hívás előtt. A mérés a
+      // KÖZVETLEN hívást fedi (egy HTTP-kör), nem a teljes `ask()`-ot: a
+      // gondolkodás-mentő, a csonka-mentő és az átmeneti újrapróba mind KÜLÖN
+      // körként mérődik, mert a beragadás is körönként történik.
+      const merKezdet = Date.now();
+      // ⚠️ EGY KÖR = EGY FELJEGYZÉS. A `caller()` UTÁN még sok minden fut
+      // ugyanebben a `try`-ban (biztonsági szűrő, költség-könyvelés,
+      // vészháló-riasztás) — ha ott dobna valami, a `catch` MÁSODSZOR is
+      // feljegyezné ugyanazt a hálózati kört, egyszer sikeresként, egyszer
+      // bukottként. A napi „N hívásból" nevező ettől hazudna.
+      let merKesz = false;
       try {
         const response = await caller(prompt, model, { systemPrompt: sysWithLessons, maxTokens: effMaxTokens, jsonMode, reasoningOff: noThink });
+        // A SIKERES hívás ideje is kell: a „leglassabb hívás" pont attól
+        // mérőszám, hogy a sikeres körökre is kiterjed (2026-09-16: a
+        // leglassabb SIKERES hívás 4,7 perc volt, a plafon 8).
+        merHivas(agentName, provider, model, merKezdet, null);
+        merKesz = true;
 
         // Safety check
         const safety = safetyFilter(response);
@@ -1013,6 +1060,12 @@ export async function ask(prompt, options = {}) {
         return { text: unwrapOuterFence(response.text), provider, model, costUsd: cost };
 
       } catch (error) {
+        // ⏱️ A BUKOTT HÍVÁS IDEJE A LÉNYEG. A 2026-09-16-i esetben a két
+        // beragadt hívás PONTOSAN 8,0 percig lógott, majd elhasalt 0+0
+        // tokennel — a `logCall()` sora ($0.000000, ERROR) ezt nem árulta el,
+        // mert IDŐT nem ír ki. Ez a mérés az, ami kiviszi a napi riportba.
+        // (Csak ha a kör MÉG NINCS feljegyezve — lásd `merKesz` fent.)
+        if (!merKesz) merHivas(agentName, provider, model, merKezdet, error);
         logCall(agentName, provider, model, null, 0, false, error);
 
         // Kvóta-hiba (429/402) -> megjegyezzük (napi vagy perces), és átirányítunk másik modellre

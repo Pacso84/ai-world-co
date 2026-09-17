@@ -85,6 +85,7 @@ const RIPORT_KIVETEL = {
 /** Őrszem-fájl, ami NEM minden futásban íródik — a frissesség-térképben hamis riasztás lenne. */
 const FRISSESSEG_KIVETEL = {
   'budget-guard.json': 'csak GOND esetén íródik (core/budget.js jeletHagy) — élesben a fájl nem is létezik',
+  'ai-latency-guard.json': 'csak akkor íródik, ha VOLT AI-hívás: a HAVI keret betelte (user-döntés — minden agent paid-only, az ask() hívás nélkül null-t ad) hónapfordulóig egyetlen hívást sem enged, és ott a régi `at` a helyes állapot, nem lefagyás',
   'semantic-guard.json': 'naponta csak az ELSŐ szemantikus keresés írja, és csak ha az Író/Útmutató dolgozott — üres napon nincs keresés, a régi `at` normális',
   'name-guard.json': 'csak NÉV-ZÁR-kifogásnál íródik (core/name-guard.js jegyezNevZar), és nincs felső szintű `at` mezője'
 };

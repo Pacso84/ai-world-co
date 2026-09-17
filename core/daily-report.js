@@ -34,6 +34,7 @@ import { szurZajt, csendesSor } from './report-noise.js';
 import { elavultOrszemek, frissessegSor } from './guard-freshness.js';
 import { embedSor } from './embed-guard.js';
 import { szemantikusSor } from './semantic-guard.js';
+import { latenciaSor } from './ai-latency-guard.js';
 import { futasokLekerdez, sodrodasVizsgalat, sodrodasSor } from './watchdog-drift.js';
 import { linkSor } from './internal-link-guard.js';
 import { bufferSor } from './buffer-guard.js';
@@ -751,6 +752,28 @@ async function main() {
     const sor = szemantikusSor(sg);
     if (sor) lines.push(sor);
   } catch { /* még nem futott szemantikus keresés — nem baj */ }
+
+  // ⏱️ AI-KÉSLELTETÉS-ŐR (2026-09-16). A 09-16 02:13 UTC-s futás Pipeline-lépése
+  // 45,5 percig tartott — átlag 8,9, addigi csúcs 21,9 —, közben a napi költés
+  // $0,23 maradt. Vagyis a 45 perc NEM munkával telt: két hívás PONTOSAN 8,0
+  // percig lógott, majd „aborted due to timeout"-tal elhasalt, 0+0 tokennel
+  // ([designer] és [seo], mindkettő minimax-m2.5). Ebből az egészből EGYETLEN
+  // jel sem jutott ki: a router `logCall()`-ja időt nem ír, és a konzol a CI
+  // naplója, „ahová senki nem néz".
+  //
+  // CSENDES, ha nem volt sem időtúllépés, sem a türelem-plafon közelébe érő
+  // hívás. A sor ⚠️-vel kezdődik (core/ai-latency-guard.js), tehát a zajszűrő
+  // vészjelzés-mintája alá esik: egy napokig VÁLTOZATLAN beragadás sem
+  // némulhat el — épp a KITARTÓ lassulás lenne a hír.
+  //
+  // ⚠️ A HIÁNYZÓ FÁJL ITT NEM „LEFAGYOTT ŐRSZEM". Ha a HAVI keret betelt
+  // (user-döntés: teljes szünet hónapfordulóig), egyetlen AI-hívás sem indul,
+  // tehát nincs mit feljegyezni — ezért nincs a frissesség-térképben sem.
+  try {
+    const lat = JSON.parse(readFileSync(join(ROOT, 'memory', 'ai-latency-guard.json'), 'utf-8'));
+    const sor = latenciaSor(lat);
+    if (sor) lines.push(sor);
+  } catch { /* ma nem volt AI-hívás — nem baj */ }
 
   // 🕰️ ŐRKUTYA-SODRÓDÁS (2026-09-07). A többi őr a REPÓ kódját méri. Ez az
   // egy a KÜLVILÁGOT — mert az őrkutya döntését nem a repó futtatja, hanem a
