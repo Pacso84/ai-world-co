@@ -496,6 +496,29 @@ jobs:
         if: always()
         run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg && ffmpeg -version | head -1
 
+      # ⚠️ BETŰTÍPUS TELEPÍTÉSE (2026-09-17) — UGYANAZ A CSAPDA, MINT AZ
+      # FFMPEG-NÉL, EGY SZINTTEL CSENDESEBBEN. A Reel-táblák „Arial Black"-et
+      # kértek. Az a fejlesztői Windowson megvan, ezen a futtatón NINCS — és
+      # a betűmotor nem hibázik ilyenkor, hanem NÉMÁN egy vékonyabb alapbetűre
+      # esik vissza. Az ffmpeg hiánya legalább elhasalt; ez három hétig, 24
+      # kiküldött Reelen át úgy ment, hogy a gyártás „sikeres" volt.
+      #
+      # A betű mostantól a repóval utazik (shared/fonts/, SIL OFL licenc a
+      # mappában), és innen kerül a rendszer betűkönyvtárába. A `fc-cache`
+      # nélkül a librsvg (sharp) nem látja meg.
+      #
+      # 🔑 EZ A LÉPÉS NEM BIZONYÍTÉK. A gyártás ezen kívül MEGMÉRI, hogy
+      # tényleg ezt a betűt kapta-e (core/video-font.js), és a lelet a napi
+      # jelentésbe megy — nem a CI-naplóba, ahová senki nem néz.
+      - name: Betűtípus telepítése (a Reel-táblákhoz)
+        if: always()
+        run: |
+          command -v fc-cache >/dev/null || sudo apt-get install -y -qq fontconfig
+          mkdir -p "$HOME/.local/share/fonts"
+          cp shared/fonts/schibsted-grotesk-900.ttf "$HOME/.local/share/fonts/"
+          fc-cache -f >/dev/null
+          fc-match "Schibsted Grotesk"
+
       - name: Reel — napi videó gyártása (a build ELŐTT)
         if: always()
         run: node core/reel-post.js --prepare || true

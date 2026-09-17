@@ -23,11 +23,41 @@
 // ===================================================================
 
 import { execFileSync } from 'child_process';
-import { existsSync, mkdirSync, rmSync, writeFileSync } from 'fs';
+import { mkdirSync, rmSync, writeFileSync } from 'fs';
 import { join } from 'path';
 import { fm, findArticleBySlug } from './frontmatter.js';
+import { BETU_CSALAD, betuRendben } from './video-font.js';
 
 export const W = 1080, H = 1920;
+
+// ── A BIZTONSÁGOS SÁV (2026-09-17) ─────────────────────────────────
+//
+// MIÉRT VAN. A tábla 1080x1920, de a Reels-lejátszóban ennek a széle NEM
+// a miénk: a Facebook/Instagram a felső ~14%-ra a saját fejlécét teszi
+// (profilnév, hang, „…"), az alsó ~35%-ra a leírást, a linket és a
+// jobb oldali gombsort. A régi tábla haladásjelzője y=1788-on állt (a
+// magasság 93%-a), a márkajel y=1854-en — tehát jó eséllyel SENKI nem
+// látta egyiket sem. A nagy szöveg y=960 körül volt, az egyetlen elem,
+// ami biztosan látszott.
+//
+// Innentől MINDEN látható elem ebbe a sávba kerül. Kivétel csak a
+// háttér és a felső vonal: azok szándékosan futnak ki a szélig, mert
+// nem hordoznak információt.
+//
+// 🔑 Azért KONSTANS és azért EXPORTÁLT, mert a teszt ezekre hivatkozik:
+// ha valaki később elmozdít egy elemet a sávon kívülre, elbukik — nem
+// kell észben tartani, melyik y hol van.
+export const SAV_FELSO = 250;
+export const SAV_ALSO = 1290;
+
+// ── A „PAPÍR" PALETTA ──────────────────────────────────────────────
+// Ugyanaz a három szín, mint a honlapon: így a Reelről a cikkre érkező
+// olvasó ugyanazt a felületet látja. A régi tábla sötét volt, mert az
+// elmosott borítóképre kellett írni — borítókép nélkül erre nincs ok.
+const PAPIR = '#f2ede4';    // a lap alapszíne
+const TINTA = '#1c1a16';    // a szöveg
+const ZSALYA = '#5f8a76';   // a kiemelés (vonal, lépésszám, haladásjelző)
+const HALVANY = '#5c5850';  // az alcím
 
 /** Ennél kevesebb lépésből nem lesz videó — egy helyen, hogy ne csússzon szét. */
 export const MIN_LEPES = 3;
@@ -79,6 +109,87 @@ export function splitHeading(cim) {
 
 // A frontmatter-olvasó a core/frontmatter.js-be költözött (2026-08-24),
 // amikor a core/reel-post.js is kérni kezdte. Egy példány van belőle.
+
+// ── AZ ÁLTALÁNOS FELVEZETŐK — amit a HOROG elől le kell vágni ───────
+//
+// ÉLES LELET (2026-09-17). A nyitótábla nagy szövege eddig a címből
+// készült úgy, hogy CSAK a „how to" került le róla. A
+// „Getting started with Perplexity for answers that show their sources"
+// címből így pontosan az a két szó lett a horog, ami SEMMIT nem mond:
+// „Getting started". A szó, ami megállítaná a görgetést — „Perplexity" —
+// kimaradt. Ez a videó ki is ment.
+//
+// MÉRVE a 443 élő útmutató címén (2026-09-17, mind a 443 videóképes):
+//   • ELŐTTE 15 horog-szöveg volt pontosan egy általános fordulat:
+//       „getting started" 13× · „get started" 1× · „a beginner's guide" 1×
+//   • UTÁNA 0.
+//   • A 443-ból 15 horog változik meg, a többi 428 SZÓ SZERINT ugyanaz
+//     marad (a 133 „How to…" cím eredménye azonos, mert azt a régi kód
+//     is levágta) — a beavatkozás hatóköre tehát mért és szűk.
+//   • Üresre vagy egyetlen szóra vágott horog: 0.
+//
+// A címkezdet-statisztika (mért, >=13×) mutatja, hogy ez a LISTA fedi a
+// valódi mintát: „how to" 133×, „getting started with" 13×, a maradék
+// élmező („turn a" 15×, „plan a" 19×, „build a" 17×) MÁR KONKRÉT, azt
+// nem szabad levágni.
+//
+// ⚠️ MIÉRT TELJES, KIÍRT FORDULATOKRA ILLESZTÜNK, és miért nem
+// szótöredékre. A projektben KÉTSZER fogott meg az előtag-illesztés
+// csapdája (az „analysis → analyzis" eset a magyar/US-helyesírás
+// szótárban): aki előtagra illeszt, az előbb-utóbb egy szó BELSEJÉT
+// találja meg. Ezért minden elem egy egész fordulat, a minta a sor
+// elejéhez van kötve (`^`), a végén `\b` áll (hogy a „how to" a „How
+// together…" címre NE illeszkedjen), és kis/nagybetű-érzéketlen.
+//
+// A HOSSZABB VÁLTOZAT ELŐBB áll: az alternáció az első illeszkedőt
+// választja, tehát ha az „introduction" előbb jönne, az „introduction
+// to" `to`-ja ott maradna a horgon.
+const FELVEZETOK = [
+  'how to',
+  'getting started with', 'getting started in', 'getting started',
+  'get started with', 'get started in', 'get started',
+  "a beginner(?:'|’)s guide to", "the beginner(?:'|’)s guide to",
+  "a beginner(?:'|’)s guide", "the beginner(?:'|’)s guide",
+  'an introduction to', 'a quick introduction to', 'introduction to', 'introduction',
+  'an overview of', 'overview of', 'overview',
+  'the basics of', 'the basics', 'basics of',
+  'a complete guide to', 'the complete guide to', 'a complete guide', 'the complete guide',
+  'a quick guide to', 'the quick guide to', 'a quick guide',
+  'a simple guide to', 'a simple guide',
+  'a practical guide to', 'a practical guide',
+  'a step(?:-| )by(?:-| )step guide to', 'a step(?:-| )by(?:-| )step guide',
+  'the ultimate guide to', 'the ultimate guide',
+  'a hands(?:-| )on guide to', 'a hands(?:-| )on guide',
+  'your guide to', 'a guide to', 'the guide to',
+  'a first look at', 'first steps with', 'first steps in',
+  'everything you need to know about', 'everything you need to know',
+  'what you need to know about', 'what you need to know',
+  'the easy way to'
+];
+
+/** A felvezető + a mögötte álló írásjel (kettőspont, vessző, gondolatjel). */
+const FELVEZETO_RX = new RegExp(
+  String.raw`^(?:` + FELVEZETOK.join('|') + String.raw`)\b[\s:,—–-]*`, 'i');
+
+/**
+ * A cím megtisztítása a HOROGHOZ: az általános felvezetők lekerülnek.
+ *
+ * ⚠️ TÖBBSZÖR IS VÁG (max 3 kör), mert a felvezetők egymásra rakódnak:
+ * a „How to get started with X" cím KÉT felvezetőt hordoz. De csak addig,
+ * amíg legalább KÉT szó marad — egy szóból nem lesz kártya, és a
+ * „HALLGATÁS A BIZTONSÁGOS IRÁNY" elve szerint inkább a suta felvezető
+ * maradjon bent, mint hogy üres horgot tegyünk ki. Kimérve: a 443 valódi
+ * címből EGY sem esik ebbe a védelembe.
+ */
+export function horogCimbol(cim) {
+  let t = String(cim == null ? '' : cim).replace(/\s+/g, ' ').trim();
+  for (let k = 0; k < 3; k++) {
+    const u = t.replace(FELVEZETO_RX, '').trim();
+    if (u === t || u.split(' ').filter(Boolean).length < 2) break;
+    t = u;
+  }
+  return t;
+}
 
 /** A nagy szöveg tördelése a kártyán — kézzel, mert az SVG nem tördel. */
 function tordel(s, maxSor = 13) {
@@ -134,8 +245,14 @@ export function cardsFromGuide(md, { maxSteps = LEPES_MAX } = {}) {
   }
 
   const valasztott = lepesek.slice(0, Math.max(MIN_LEPES, maxSteps));
-  const horogCim = splitHeading(cim.replace(/^how to\s+/i, '')).nagy;
+  // A HOROG a megtisztított címből jön: az általános felvezető nem hír.
+  const horogCim = splitHeading(horogCimbol(cim)).nagy;
 
+  // ⚠️ A KIMONDOTT mondat SZÁNDÉKOSAN a teljes címet hozza, csak a „how to"
+  // nélkül — ott a felvezető nem baj, mert a hang tovább mondja a lényeget.
+  // A horog-KÉPEN viszont a nagy szöveg minden, amit az első másodpercben
+  // látni lehet, ezért ott vágunk (horogCimbol).
+  //
   // A HOROG. Reelsben az első két másodperc dönt, ezért FELSZÓLÍTÓ mondat,
   // nem körülírás: a „How to Spot a Deepfake…" címből „Spot a Deepfake…" lesz.
   // Az első változat „Here is how to Spot a…"-t mondott — hosszabb és sutább.
@@ -180,33 +297,61 @@ export function becsultHossz(cards) {
 
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
-/** Egy álló tábla SVG-ben. A színek a megosztás-képekéivel azonosak. */
+/**
+ * Egy álló tábla SVG-ben — „PAPÍR" dizájn (2026-09-17, user jóváhagyta).
+ *
+ * MI VÁLTOZOTT ÉS MIÉRT. A régi tábla sötét volt (#14120f 80%-os
+ * fedéssel) és fehér szöveget írt az ELMOSOTT BORÍTÓKÉPRE. Két baja volt:
+ *
+ *  1. A BORÍTÓKÉP AI-VAL GENERÁLT, ÉS HIBÁS FELIRATOT TARTALMAZHAT.
+ *     Kimérve 2026-09-17-én: a Perplexity-útmutató borítóján „perrplexity"
+ *     állt, két r-rel. Elmosva ez nem tűnt fel — élesen kitéve a
+ *     hitelességünkbe kerülne. Ezért a háttér ma EGYBEFÜGGŐ PAPÍRSZÍN,
+ *     kép nélkül (lásd renderVideo: a `cover` opció megszűnt).
+ *  2. A LÁTHATÓ ELEMEK A SÁVON KÍVÜL VOLTAK — lásd SAV_FELSO/SAV_ALSO.
+ *
+ * ⚠️ MINDEN y-koordináta a SAV_FELSO…SAV_ALSO sávba esik, a háttéren és a
+ * felső vonalon kívül. Teszt őrzi, regexszel — nem felsorolással, hogy egy
+ * későbbi elmozdítás is elbukjon.
+ */
 export function tablaSvg({ cimke, nagy, kicsi }, i, db) {
-  const sorok = String(nagy).split('\n');
-  const meret = sorok.some(s => s.length > 11) ? 118 : 146;
-  const kezd = H / 2 - ((sorok.length - 1) * meret * 0.56);
+  const sorok = String(nagy).split('\n').slice(0, 3);
+  // A méret a SORSZÁMTÓL függ, nem a sorok hosszától: három sornál a
+  // 138-as magasság a blokkot a sávból lógatná ki.
+  const meret = sorok.length <= 2 ? 138 : 116;
+  const sorMagassag = meret * 1.08;
+  // A blokk a 980-as alapvonal körül ül ki: ez a Reels-lejátszó
+  // KÖZÉPSŐ, biztosan szabad harmada.
+  const kezd = 980 - (sorok.length - 1) * meret * 0.55;
+  const utolsoSor = kezd + (sorok.length - 1) * sorMagassag;
   const szoveg = sorok.map((s, k) =>
-    `<text x="${W / 2}" y="${kezd + k * meret * 1.12}" text-anchor="middle" font-size="${meret}"
-       font-family="Arial Black, Arial, sans-serif" font-weight="900" fill="#ffffff">${esc(s)}</text>`).join('\n');
+    `<text x="${W / 2}" y="${kezd + k * sorMagassag}" text-anchor="middle" font-size="${meret}"
+     font-family="${BETU_CSALAD}" font-weight="900" fill="${TINTA}">${esc(s)}</text>`).join('\n');
 
-  // Haladásjelző: Reelsben ez mutatja, mennyi van hátra — ez tartja bent a nézőt.
+  // Haladásjelző: Reelsben ez mutatja, mennyi van hátra — ez tartja bent a
+  // nézőt. ⚠️ KÖZÉPRE került (y=1180): a régi helyén, y=1788-on a platform
+  // saját leírás-sávja alatt volt, azaz gyakorlatilag láthatatlan.
+  const SAV_SZELES = 720, SAV_X = (W - SAV_SZELES) / 2, RES = 10;
   const sav = Array.from({ length: db }, (_, k) => {
-    const sz = (W - 120 - (db - 1) * 10) / db;
-    return `<rect x="${60 + k * (sz + 10)}" y="${H - 132}" width="${sz}" height="7" rx="3.5"
-      fill="${k <= i ? '#e8c15a' : '#ffffff'}" opacity="${k <= i ? '1' : '0.22'}"/>`;
+    const sz = (SAV_SZELES - (db - 1) * RES) / db;
+    return `<rect x="${SAV_X + k * (sz + RES)}" y="1180" width="${sz}" height="8" rx="4"
+      fill="${ZSALYA}" opacity="${k <= i ? '1' : '0.22'}"/>`;
   }).join('\n');
 
   return Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}">
-  <rect width="${W}" height="${H}" fill="#14120f" opacity="0.80"/>
-  <rect x="0" y="0" width="${W}" height="10" fill="#e8c15a"/>
-  ${cimke ? `<text x="${W / 2}" y="${H / 2 - 330}" text-anchor="middle" font-size="150"
-      font-family="Arial Black, Arial, sans-serif" font-weight="900" fill="#e8c15a" opacity="0.85">${cimke}</text>` : ''}
+  <rect width="${W}" height="${H}" fill="${PAPIR}"/>
+  <rect x="0" y="0" width="${W}" height="14" fill="${ZSALYA}"/>
+  <rect x="${W - 166}" y="270" width="96" height="56" rx="10" fill="${TINTA}"/>
+  <text x="${W - 118}" y="311" text-anchor="middle" font-size="38"
+    font-family="${BETU_CSALAD}" font-weight="900" fill="${PAPIR}">AI</text>
+  ${cimke ? `<text x="${W / 2}" y="640" text-anchor="middle" font-size="190"
+      font-family="${BETU_CSALAD}" font-weight="900" fill="${ZSALYA}" opacity="0.30">${cimke}</text>` : ''}
   ${szoveg}
-  ${kicsi ? `<text x="${W / 2}" y="${H / 2 + 250}" text-anchor="middle" font-size="52"
-    font-family="Arial, sans-serif" fill="#e8c15a">${esc(kicsi)}</text>` : ''}
+  ${kicsi ? `<text x="${W / 2}" y="${utolsoSor + 70}" text-anchor="middle" font-size="52"
+    font-family="${BETU_CSALAD}" fill="${HALVANY}">${esc(kicsi)}</text>` : ''}
   ${sav}
-  <text x="${W / 2}" y="${H - 66}" text-anchor="middle" font-size="40" letter-spacing="5"
-    font-family="Arial, sans-serif" font-weight="bold" fill="#ffffff" opacity="0.72">AI WORLD HQ</text>
+  <text x="${W / 2}" y="1262" text-anchor="middle" font-size="40" letter-spacing="5"
+    font-family="${BETU_CSALAD}" font-weight="bold" fill="${TINTA}" opacity="0.65">AIWORLDHQ.COM</text>
 </svg>`);
 }
 
@@ -242,18 +387,46 @@ export function videoArgs({ kepek, hang, out }) {
  * A videó legyártása. Külön függvény, hogy a szkript-logika tesztelhető
  * maradjon nélküle.
  *
- * @returns {Promise<{file: string, seconds: number}>}
+ * @returns {Promise<{file: string, seconds: number, betu: object}>}
  */
-export async function renderVideo(cards, { out, workDir, cover, voice = 'en-US-AvaMultilingualNeural' }) {
+export async function renderVideo(cards, { out, workDir, voice = 'en-US-AvaMultilingualNeural' }) {
   const sharp = (await import('sharp')).default;
   const { MsEdgeTTS, OUTPUT_FORMAT } = await import('msedge-tts');
+
+  // 🔤 MEGKAPTUK-E A KÉRT BETŰT? (2026-09-17) A táblák csak KÉRIK a
+  // betűcsaládot; ha a gépen nincs telepítve, a betűmotor némán egy
+  // alapbetűvel rajzol, és a gyártás ugyanúgy „sikerül". Három hétig, 24
+  // kiküldött Reelen át pontosan ez történt. Ezért a gyártás LEMÉRI a
+  // saját eredményét, a lelet a visszatérési értékben utazik, és a hívón
+  // keresztül a napi Telegram-jelentésbe jut (core/reel-post.js →
+  // memory/reel-guard.json → core/daily-report.js).
+  //
+  // ⚠️ A MÉRÉS NEM AKADÁLY: a rossz betűvel készült videó is jobb, mint a
+  // semmi, és a döntés nem a gépé. A mérés csak SZÓL.
+  const betu = await betuRendben(sharp);
+  console.log('   betű: ' + (betu.ok === true ? '✅ ' + betu.nev
+    : betu.ok === false ? '⚠️ NEM a kért betű — ' + betu.reason
+      : '⚠️ ' + betu.reason));
 
   rmSync(workDir, { recursive: true, force: true });
   mkdirSync(workDir, { recursive: true });
 
-  const hatter = cover && existsSync(cover)
-    ? await sharp(cover).resize(W, H, { fit: 'cover' }).blur(9).toBuffer()
-    : await sharp({ create: { width: W, height: H, channels: 3, background: '#14120f' } }).png().toBuffer();
+  // ⛔ A BORÍTÓKÉP KIMARADT (2026-09-17) — a `cover` opció megszűnt.
+  //
+  // MIÉRT. A háttér eddig a cikk borítóképe volt, 9-es sugárral elmosva.
+  // A borítók AI-val generált képek, és amikor élesen látszanak, kiderül,
+  // hogy HIBÁS FELIRATOT tartalmaznak: a 2026-09-17-i mérésben a
+  // Perplexity-útmutató borítóján „perrplexity" állt, két r-rel. Elmosva
+  // nem tűnt fel — élesen kitéve a hitelességünkbe kerülne. A takarást
+  // nem lehet „elég erősre" hangolni: ami annyira el van mosva, hogy a
+  // hibát elfedi, az már csak színes zaj, azaz nem ad semmit.
+  //
+  // A helye egybefüggő papírszín. Ez EGYBEN A PAPÍR-DIZÁJN ALAPJA is
+  // (lásd tablaSvg), és mellékesen gyorsabb: nincs lemezről olvasás,
+  // nincs átméretezés, nincs elmosás táblánként.
+  const hatter = await sharp({
+    create: { width: W, height: H, channels: 3, background: PAPIR }
+  }).png().toBuffer();
 
   const idok = [];
   for (let i = 0; i < cards.length; i++) {
@@ -288,10 +461,13 @@ export async function renderVideo(cards, { out, workDir, cover, voice = 'en-US-A
     kepek: join(workDir, 'kepek.txt'), hang: join(workDir, 'teljes.mp3'), out
   }), { stdio: 'pipe' });
 
-  return { file: out, seconds: idok.reduce((a, b) => a + b, 0) };
+  return { file: out, seconds: idok.reduce((a, b) => a + b, 0), betu };
 }
 
-export default { cardsFromGuide, splitHeading, becsultHossz, renderVideo, tablaSvg, MIN_LEPES, W, H };
+export default {
+  cardsFromGuide, splitHeading, horogCimbol, becsultHossz, renderVideo, tablaSvg,
+  MIN_LEPES, W, H, SAV_FELSO, SAV_ALSO
+};
 
 // ── CLI ─────────────────────────────────────────────────────────────
 //
@@ -336,12 +512,10 @@ async function main() {
   // eltűnne. A build innen másolja ki (website/build.js, shorts/).
   const kiDir = join(ROOT, 'website', 'assets', 'video', 'shorts');
   mkdirSync(kiDir, { recursive: true });
-  const cover = join(ROOT, 'website', 'assets', 'images', slug + '.jpg');
 
   const r = await renderVideo(cards, {
     out: join(kiDir, slug + '.mp4'),
-    workDir: join(ROOT, '.video-munka'),
-    cover
+    workDir: join(ROOT, '.video-munka')
   });
   rmSync(join(ROOT, '.video-munka'), { recursive: true, force: true });
   console.log('✅ ' + r.file + ' — ' + r.seconds.toFixed(1) + ' mp, ' + W + 'x' + H);

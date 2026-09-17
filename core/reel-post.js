@@ -361,7 +361,11 @@ const require$ = createRequire(import.meta.url);
 export async function futtatFazis({ ROOT, join, fazis, fn }) {
   try {
     const ki = await fn();
-    reelAllapot(ROOT, join, { fazis, ok: true });
+    // A fázis MELLÉKLELETEI is bekerülnek az őrszem-fájlba (ma: a
+    // betűtípus-mérés a gyártásból). Csak ismert kulcsot veszünk át, hogy
+    // egy jövőbeli visszatérési érték ne szemetelje tele az állapotot.
+    const mellek = ki && typeof ki === 'object' && ki.betu ? { betu: ki.betu } : {};
+    reelAllapot(ROOT, join, { fazis, ok: true, ...mellek });
     return ki;
   } catch (e) {
     reelAllapot(ROOT, join, { fazis, ok: false, hiba: String(e?.message || e).slice(0, 200) });
@@ -412,10 +416,12 @@ async function prepare(ROOT, join) {
       if (!cards) { console.log('💤 Reel: ma már ment (a videó nem gyártható újra).'); return; }
       console.log('♻️  Reel: ma már ment, de a videó hiányzik — újragyártom, hogy kint maradjon.');
       mkdirSync(kiDir0, { recursive: true });
+      // A `cover` 2026-09-17-én megszűnt: a tábla háttere egybefüggő
+      // papírszín, mert az AI-val generált borítók hibás feliratot
+      // tartalmazhatnak („perrplexity", két r-rel). Lásd core/short-video.js.
       const r0 = await renderVideo(cards, {
         out: utvonal,
-        workDir: join(ROOT, '.video-munka'),
-        cover: join(ROOT, 'website', 'assets', 'images', mai.slug + '.jpg')
+        workDir: join(ROOT, '.video-munka')
       });
       try { rmSync(join(ROOT, '.video-munka'), { recursive: true, force: true }); } catch { /* */ }
       console.log('   ✅ ' + r0.seconds.toFixed(1) + ' mp — a deploy után újra elérhető lesz.');
@@ -431,10 +437,10 @@ async function prepare(ROOT, join) {
 
   const kiDir = join(ROOT, 'website', 'assets', 'video', 'shorts');
   mkdirSync(kiDir, { recursive: true });
+  // Borítókép nélkül — lásd a fenti indoklást és a core/short-video.js-t.
   const r = await renderVideo(cards, {
     out: join(kiDir, valasztott.slug + '.mp4'),
-    workDir: join(ROOT, '.video-munka'),
-    cover: join(ROOT, 'website', 'assets', 'images', valasztott.slug + '.jpg')
+    workDir: join(ROOT, '.video-munka')
   });
   try { rmSync(join(ROOT, '.video-munka'), { recursive: true, force: true }); } catch { /* */ }
 
@@ -443,6 +449,13 @@ async function prepare(ROOT, join) {
   writeFileSync(join(memDir, 'reel-pending.json'),
     JSON.stringify({ slug: valasztott.slug, file: valasztott.file, at: new Date().toISOString() }, null, 2), 'utf-8');
   console.log('✅ ' + r.seconds.toFixed(1) + ' mp — a küldés a deploy után jön (--send)');
+
+  // 🔤 A BETŰ-LELET TOVÁBBADÁSA (2026-09-17). A gyártás megmérte, hogy
+  // tényleg a kért betűt kapta-e (core/video-font.js); a `futtatFazis`
+  // innen teszi be a `memory/reel-guard.json`-ba, ahonnan a napi jelentés
+  // olvassa. Enélkül a mérés csak a CI naplójába kerülne — oda, ahová
+  // senki nem néz, és ahol a betűhiba három hétig el is bújt.
+  return { betu: r.betu };
 }
 
 /** 2. LÉPÉS: kiküldés + megjelölés. A deploy UTÁN fut. */

@@ -654,6 +654,24 @@ async function main() {
         lines.push(`🎬 REEL-ŐRSZEM: a ${nev} elbukott — ${String(f.hiba || 'ismeretlen ok').slice(0, 90)}`);
       }
     }
+
+    // ⚠️ BETŰTÍPUS-VISSZAESÉS (2026-09-17). A Reel-táblák „Arial Black"-et
+    // kértek; az a futtatón NINCS, és a betűmotor ilyenkor nem hibázik,
+    // hanem NÉMÁN egy vékonyabb alapbetűt használ. Három hétig, 24 kiküldött
+    // videón nem az ment ki, amit terveztünk — a gyártás közben végig
+    // „sikeres" volt. Egy telepítő CI-lépés ezt NEM bizonyítja (elég egy
+    // átnevezett fájl vagy egy kihagyott `fc-cache`), ezért a gyártás
+    // MEGMÉRI a saját eredményét (core/video-font.js), és a lelet ide jön.
+    //
+    // A „nem sikerült megmérni" KÜLÖN eset, és NEM hallgatunk róla: a
+    // projekt visszatérő hibája, hogy a mérhetetlent zöldnek vettük.
+    // Mindkét sor ⚠️-vel kezdődik, tehát átjut a zajszűrőn is.
+    const betu = rg.prepare && rg.prepare.betu;
+    if (betu && betu.ok === false) {
+      lines.push(`⚠️ REEL-BETŰ: a videó NEM a saját betűnkkel készült — ${String(betu.reason || 'ismeretlen ok').slice(0, 90)}`);
+    } else if (betu && betu.ok === null) {
+      lines.push(`⚠️ REEL-BETŰ: nem tudtam megmérni, milyen betűvel készült a videó — ${String(betu.reason || 'ismeretlen ok').slice(0, 90)}`);
+    }
   } catch { /* még nem futott — nem baj */ }
 
   // 📤 BUFFER-ŐRSZEM (2026-08-30). A Threads és az Instagram a Bufferen megy

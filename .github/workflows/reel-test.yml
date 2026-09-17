@@ -28,6 +28,11 @@ on:
         type: boolean
         required: false
         default: false
+      csak_render:
+        description: 'Csak a MEGADOTT cikk videója, sorra és jelölésre nem nyúlva (dizájn-ellenőrzésre)'
+        type: boolean
+        required: false
+        default: false
 
 # Csak olvasunk — ez a lépés nem commitol semmit.
 permissions:
@@ -56,6 +61,17 @@ jobs:
       - name: ffmpeg telepítése
         run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg && ffmpeg -version | head -1
 
+      # A táblák betűje a repóval utazik — részletek az auto.yml ugyanilyen
+      # lépésénél. Itt azért KELL, hogy ez a gomb ugyanazt a videót gyártsa,
+      # amit a napi futás: enélkül a „próba" mást bizonyítana, mint az éles.
+      - name: Betűtípus telepítése
+        run: |
+          command -v fc-cache >/dev/null || sudo apt-get install -y -qq fontconfig
+          mkdir -p "$HOME/.local/share/fonts"
+          cp shared/fonts/schibsted-grotesk-900.ttf "$HOME/.local/share/fonts/"
+          fc-cache -f >/dev/null
+          fc-match "Schibsted Grotesk"
+
       # ⚠️ A SLUG KÖRNYEZETI VÁLTOZÓN MEGY BE, nem közvetlen behelyettesítéssel.
       # A `"${{ inputs.slug }}"` alak idézőjelen belül is végrehajtaná a `$( )`
       # és a backtick tartalmát — ez a lépés pedig hozzáfér a webhook-titokhoz.
@@ -71,13 +87,38 @@ jobs:
           SLUG: ${{ inputs.slug }}
           DRY: ${{ inputs.dry }}
           GYARTAS: ${{ inputs.csak_gyartas }}
+          RENDER: ${{ inputs.csak_render }}
         run: |
-          # A "csak gyártás" mód azt ellenőrzi, hogy a CI-KÖRNYEZET képes-e
-          # videót renderelni (ffmpeg, msedge-tts, sharp). Nem küld semmit.
-          if [ "$GYARTAS" = "true" ]; then
+          # A "csak render" mód a MEGADOTT cikkből gyárt videót, és semmi
+          # mást nem tesz: nem néz sort, nem ír `reel_at` jelölést, nem küld.
+          # Ez a DIZÁJN ellenőrzésének útja (2026-09-17): a `--prepare` a napi
+          # sorból választ, és ha aznap már ment Reel, nem is renderel — a
+          # kézi, slug-os ág viszont eddig CSAK küldött, videót nem gyártott.
+          # A kész fájl a lépés után artifactként letölthető.
+          if [ "$RENDER" = "true" ]; then
+            node core/short-video.js "$SLUG"
+          elif [ "$GYARTAS" = "true" ]; then
             node core/reel-post.js --prepare
           elif [ "$DRY" = "true" ]; then
             node core/reel-post.js "$SLUG" --dry
           else
             node core/reel-post.js "$SLUG"
           fi
+
+      # ⚠️ EZ A LÉPÉS A DIZÁJN EGYETLEN HITELES ELLENŐRZÉSE (2026-09-17).
+      # A videót eddig csak a fejlesztői gépen tudtam megnézni — és pont az
+      # derült ki, hogy a KÉT KÖRNYEZET MÁST GYÁRT (betűtípus). Amit a
+      # Windowson látok, az semmit nem bizonyít arról, ami kimegy.
+      # Innentől a futtatón készült fájl letölthető, tehát AZT nézzük meg,
+      # ami a Facebookra is menne.
+      #
+      # `if: always()`: ha a küldés elhasal, a videó ATTÓL MÉG érdekes —
+      # gyakran épp az mondja meg, mi volt a baj.
+      - name: A legyártott videó letölthetővé tétele
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: reel-video
+          path: website/assets/video/shorts/*.mp4
+          if-no-files-found: warn
+          retention-days: 7
