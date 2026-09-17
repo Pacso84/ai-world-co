@@ -1,0 +1,63 @@
+{
+  "_meta": {
+    "written_at": "2026-09-17T02:20:57.867Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00829428,
+    "original_draft": "2026-09-17T02-18-51-761Z_salesforce_Live_Nation_Makes_Show_Day_Easier_for_Fans_With_Sa.json",
+    "source_id": "salesforce",
+    "source_name": "Salesforce AI Blog (hivatalos)",
+    "source_link": "https://www.salesforce.com/news/press-releases/2026/09/16/live-nation-agentforce-expansion/",
+    "source_links": [
+      "https://www.salesforce.com/news/press-releases/2026/09/16/live-nation-agentforce-expansion/"
+    ],
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "published_at": "2026-09-17T02:21:40.607Z",
+    "slug": "what-are-ai-customer-service-agents-a-plain-english-guide",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 706
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-crafted explainer with excellent analogies (vending machine vs shop assistant), clear structure including the required What this means for you section, and accessible language for everyday readers. Minor note: the article loosely references the Salesforce/Agentforce source without diving into specifics — this is acceptable for a general explainer but the connection could be stronger.",
+      "_aiCost": 0.00141777,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-09-17T02:22:37.861Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is a general explainer about AI customer service agents, not an announcement of a specific feature/tool an ordinary person can go use today",
+    "image_v": 2,
+    "image_at": "2026-09-17T02:35:31.584Z",
+    "seo": {
+      "meta_description": "Learn what AI customer service agents are and how they work. A plain-English guide to the AI technology changing 24/7 customer support.",
+      "keywords": [
+        "what is an AI customer service agent",
+        "AI customer service agents explained",
+        "how do AI agents work",
+        "AI agents vs chatbots",
+        "Salesforce Agentforce",
+        "AI customer support guide",
+        "what is an AI agent"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more keyword variations in the opening paragraph like 'AI customer service agents' earlier in the first 100 words",
+        "Consider adding an FAQ section targeting common search queries like 'Are AI customer service agents safe?'",
+        "Include more specific use cases beyond the mentioned sectors to broaden search relevance"
+      ],
+      "optimised_at": "2026-09-17T02:36:24.746Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"What Are AI Customer Service Agents? A Plain-English Guide\"\nsubtitle: \"More companies now use AI to answer your questions 24/7. Here's how they actually work — and what to expect when you meet one.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"ai-agents\", \"customer-service\", \"getting-started\"]\n---\n\n# What Are AI Customer Service Agents? A Plain-English Guide\n\n> **In short:** AI customer service agents can answer questions, look up your account, and solve problems without a human in the loop. Salesforce's Agentforce is one platform behind this shift — it's being used by event companies, airlines, and banks to give customers help at any hour.\n\nYou message a company at 11pm about a lost order. Within seconds, a friendly voice replies, finds your order, and offers a refund. No waiting on hold, no \"press 3 for…\" menus. A year ago this felt futuristic. Today it's becoming normal — and AI is the reason.\n\n## What exactly is an \"AI agent\"?\n\nAn AI agent is a step beyond a regular chatbot. A normal chatbot follows a script — if you say \"refund\", it sends you the refund page. An AI agent can actually *do* things: pull up your account, check your order status, file the request, and confirm it was done.\n\nThink of it like this:\n\n- A **chatbot** is a vending machine. You press B4, you get a B4.\n- An **AI agent** is a shop assistant. You say \"I never got my package\", and they check the back room, find it, and book you a new delivery.\n\nThe technical term you'll hear is \"agentic AI\" — AI that takes actions, not just gives answers. The model behind it is usually a large language model (the same kind of engine that powers ChatGPT), but connected to the company's customer database and given a clear list of what it's allowed to do.\n\n## Where you'll actually meet them\n\nYou may have already talked to one without realizing:\n\n- Online stores checking order status or returns\n- Airlines rebooking canceled flights\n- Banks flagging unusual transactions\n- Phone companies handling plan changes\n- Concert and event venues answering \"where's my ticket?\" at midnight\n\nSalesforce's Agentforce is one of the better-known platforms building these. Event companies and other large organizations have recently announced rollouts so customers can get help at any hour — even while walking up to a venue with a phone in hand. Other major companies are doing similar things.\n\n## Why companies are rushing to use them\n\nTwo reasons, mostly:\n\n1. **Customers want answers now.** Research consistently shows people expect a reply within an hour, at any hour of the day. Humans can't deliver that without burning out.\n2. **The AI is finally good enough.** Older chatbots were infuriating. Modern AI agents understand messy, real-world questions like \"I never got the thing I paid for last Tuesday, what now?\" — and they handle them well enough that most customers don't even ask for a human.\n\n## What this means for you\n\n- **If you're a customer:** Expect more companies to handle your first interaction with AI. The good news: faster answers, around the clock. The catch: complex problems still need a human. If it gets stuck, ask \"Can I speak to a person?\" — most systems are required to let you.\n- **If you run a small business:** AI customer agents used to cost a fortune and a year to set up. Today, platforms like Agentforce and others offer simpler plug-and-play versions. Worth exploring if your team spends hours answering the same five questions every week.\n- **If you're worried about jobs:** This is real change. Many entry-level customer service roles are shifting toward AI supervision — humans checking that the AI did the right thing, rather than answering the phone themselves. The skill worth learning now is \"AI quality review\" instead of \"phone answering.\"\n\n## Wrap-up\n\nAI customer service agents aren't science fiction anymore — they're the new front desk, the new call center, the new \"press 3.\" You'll bump into them more and more. Knowing what's behind them helps you use them well: be specific in what you ask, and don't be shy about requesting a human if the AI can't solve your problem.",
+  "original_title": "Live Nation Makes Show Day Easier for Fans With Salesforce’s Agentforce"
+}

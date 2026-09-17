@@ -1,0 +1,66 @@
+{
+  "_meta": {
+    "written_at": "2026-09-17T02:21:12.206Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00816408,
+    "original_draft": "2026-09-17T02-18-40-128Z_mistral-ai_Mistral_and_Mozilla_are_bringing_open__private_and.json",
+    "source_id": "mistral-ai",
+    "source_name": "Mistral AI (hivatalos)",
+    "source_link": "https://mistral.ai/news/mistral-x-mozilla/",
+    "source_links": [
+      "https://mistral.ai/news/mistral-x-mozilla/"
+    ],
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "published_at": "2026-09-17T02:21:26.029Z",
+    "slug": "open-ai-in-your-browser-what-mozilla-and-mistral-are-building-together",
+    "auto_check": {
+      "passed": false,
+      "issues": [
+        "NO_LEDE: Hiányzik a RÖVIDEN-doboz (> **In short:** …) közvetlenül a főcím után — az AI-keresők és a Google kivonat-doboza ezt olvassák (style-guide 2a)."
+      ],
+      "wordCount": 725
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Excellent explainer with clear hook, good technical definitions (weights, prompt), balanced trade-off acknowledgment, and actionable What this means for you section. Factual framing is appropriate — describes partnership goals rather than inventing specifics. Friendly, accessible tone throughout. Ready to publish.",
+      "_aiCost": 0.0015021,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-09-17T02:22:33.545Z",
+    "guide_worthy": false,
+    "pairing_reason": "Partnership announcement about future browser AI capability with no specific shipped feature or tool users can access today",
+    "image_v": 2,
+    "image_at": "2026-09-17T02:35:24.456Z",
+    "seo": {
+      "meta_description": "Mozilla and Mistral are building AI that runs directly in your browser — no data sent to servers. Learn how this privacy-first approach works for everyday users.",
+      "keywords": [
+        "browser AI",
+        "privacy focused AI",
+        "Mozilla AI",
+        "Mistral AI",
+        "local AI assistant",
+        "Firefox AI",
+        "on-device AI",
+        "open source AI"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more specific long-tail keywords like 'how to use browser AI locally' or 'privacy-first AI assistant' to capture more specific search intent",
+        "Consider mentioning the exact product name or codename if available to improve relevance",
+        "Add a clear call-to-action in the excerpt to improve CTR"
+      ],
+      "optimised_at": "2026-09-17T02:36:13.678Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Open AI in Your Browser: What Mozilla and Mistral Are Building Together\"\nsubtitle: \"A plain-English look at why a French AI lab and Firefox's parent company want AI to live where you already are — and what that means for your privacy.\"\ncategory: \"explainer\"\naudience: \"personal\"\nread_time_minutes: 4\ntags: [\"browser-ai\", \"privacy\", \"mistral\", \"mozilla\", \"open-source-ai\"]\n---\n\n# Open AI in Your Browser: What Mozilla and Mistral Are Building Together\n\nYou open your browser, type a question into a small chat box in the corner, and get an answer — without anything leaving your computer. That's the picture Mozilla and Mistral are working toward.\n\n> **In short:** Mozilla, the company behind Firefox, is partnering with Mistral, a French AI lab, to bring open-source, privacy-focused AI directly into your web browser. The goal is an assistant that runs locally on your device, works in many languages, and doesn't send every word you type to a remote server.\n\n## Why this is worth paying attention to\n\nMost AI assistants today — the popular ones you've probably heard of — live in the cloud. When you type something, your message travels to a data center (a warehouse-sized room full of computers owned by the AI company), gets processed, and the answer comes back. That works fine, but it means your words pass through someone else's machine on the way.\n\nMozilla and Mistral are betting on a different model: an AI that can run **locally** — meaning right on your laptop or phone, without an internet round-trip for every question. Mozilla has been hinting at this direction for a while, and Mistral has built a reputation for releasing AI models whose inner workings (called **weights**, basically the \"learned knowledge\" stored inside an AI) are publicly available. That's what \"open source\" means here — anyone can inspect, modify, or run the model themselves.\n\n## Who is Mistral, anyway?\n\nMistral is a Paris-based AI company founded in 2023. Within about a year, it became one of Europe's most-watched AI labs because it kept releasing capable models that researchers and developers could actually download and try. Its chat product, **Le Chat**, is a consumer-facing assistant similar to other AI chat tools. Unlike most of its bigger competitors, Mistral leans hard into the idea that AI models should be **transparent** — you can see how they're built, not just the polished output.\n\nThat philosophy lines up nicely with Mozilla's long-standing focus on an open, privacy-first web.\n\n## What \"in your browser\" actually changes\n\nWhen an AI runs inside your browser instead of in a faraway data center, three things get better in theory:\n\n- **Privacy.** Your **prompt** (the instruction or question you type) doesn't necessarily travel to a remote server. For people who care about confidentiality — journalists, lawyers, anyone handling sensitive info — that's a meaningful shift.\n- **Speed.** Local models skip the round-trip. Simple answers can come back almost instantly, even on a spotty connection.\n- **Offline use.** If your Wi-Fi drops mid-flight, a local assistant can still help you draft an email or summarize an article.\n\nThe honest trade-off: smaller local models are usually less capable than the giant cloud models. You may not get the same depth on a tough research question — at least not yet.\n\n## What this means for you\n\n- **If you're privacy-curious:** This is the direction to watch. A browser-resident assistant that doesn't phone home is a real shift from how most AI works today.\n- **If you speak more than one language:** \"Multilingual\" is in the announcement for a reason. Mistral's models are known for handling European languages well, including ones that bigger AI products often stumble on.\n- **If you're just curious about AI:** You don't need to do anything yet. The feature is rolling out gradually, and Firefox will make it visible when it lands in your version.\n\n## Wrap-up\n\nThe big idea behind this partnership is simple: AI doesn't have to live only in someone else's data center. Mozilla and Mistral are betting that the next chapter of helpful AI is one that runs close to home, speaks your language, and lets you peek under the hood. Worth keeping an eye on as it lands in your browser over the coming months — and we'll show you exactly where to find it the moment it's there for everyone to try.",
+  "original_title": "Mistral and Mozilla are bringing open, private and multilingual AI to your web browser"
+}
