@@ -1,0 +1,71 @@
+{
+  "_meta": {
+    "written_at": "2026-09-18T02:14:17.295Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00972918,
+    "original_draft": "2026-09-17T02-18-27-380Z_openai-blog_Our_framework_for_reporting_model_misalignment.json",
+    "source_id": "openai-blog",
+    "source_name": "OpenAI Blog (hivatalos)",
+    "source_link": "https://openai.com/index/model-misalignment-reporting-framework",
+    "source_links": [
+      "https://openai.com/index/model-misalignment-reporting-framework",
+      "https://openai.com/index/unlocking-new-ways-of-working",
+      "https://openai.com/index/helping-older-adults-use-ai-in-everyday-life"
+    ],
+    "merged_from": 3,
+    "merged_theme": "OpenAI announcements: model safety, workforce impact, and AI education",
+    "status": "published",
+    "rejected_at": "2026-09-18T02:07:41.474Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 802
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured explainer that defines 'alignment' in plain language, uses concrete everyday examples (invented meetings, salt measurements, landlord messages), and cleanly segments advice for four reader types. No fabricated quotes or numbers, no prohibited content, no clichés, and the wrap-up gives a practical next step. Minor note: the article could explicitly name 'OpenAI' when describing their specific framework rather than only citing it as a source, but this is not a blocking issue.",
+      "_aiCost": 0.00159921,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "The article has a friendly tone and mostly clean structure, but it invents a specific claim (1,000 adults, 10 cities) with no source, fails to name or explain the actual OpenAI framework it's based on, and provides no citation to the source material — these are factual accuracy and attribution gaps that a reader could easily verify and would erode trust if published.",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-09-17T02-18-27-380Z_openai-blog_Our_framework_for_reporting_model_misalignment.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-09-18T02:14:53.087Z",
+    "slug": "what-ai-alignment-means-in-practice-and-why-it-matters-to-you",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-09-18T02:15:17.005Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is an explainer article about the concept of AI alignment and safety reporting, not a news story about a specific named feature or tool that users can go use today.",
+    "image_v": 2,
+    "image_at": "2026-09-18T02:19:18.540Z",
+    "seo": {
+      "meta_description": "What is AI alignment? Discover how OpenAI and Anthropic test AI models through safety reports — explained in plain language for every AI user.",
+      "keywords": [
+        "what is AI alignment",
+        "AI alignment explained",
+        "AI safety reports",
+        "how AI models are tested",
+        "OpenAI safety testing",
+        "Anthropic AI safety",
+        "why AI makes mistakes"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add the exact phrase 'AI alignment' early in the first paragraph to strengthen keyword relevance",
+        "Include a brief definition of alignment within the first 100 words for better topical authority",
+        "Consider adding 'AI safety' as a secondary keyword since it's commonly searched alongside alignment"
+      ],
+      "optimised_at": "2026-09-18T02:19:48.965Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"What 'AI Alignment' Means in Practice — and Why It Matters to You\"\nsubtitle: \"AI labs now publish detailed reports on how they test their models before release. Here's what's inside them, in plain language.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"ai-safety\", \"alignment\", \"openai\", \"future-of-work\"]\n---\n\n# What 'AI Alignment' Means in Practice — and Why It Matters to You\n\n> **In short:** AI labs like OpenAI, Anthropic, and Google DeepMind now publish regular safety reports describing how they test models before release. The field behind these reports is called \"alignment\" — making sure AI does what you actually want, not just what you literally said.\n\nYou asked an AI to summarize a long email and it invented a meeting that never happened. Or you asked for a recipe and it suggested salt measured in cups. AI still makes these kinds of mistakes. The companies building these tools know it, and they've started being much more public about how they try to prevent them.\n\n## What \"alignment\" really means\n\n**Alignment** is the AI industry's word for one simple idea: the system should do what you actually want, not just what you technically said. Think of it like a very literal-minded assistant. You say \"open the window,\" and they open every window in the house — including the one above the baby crib. The AI didn't disobey; it just didn't understand the *intent*.\n\nThis used to be a quiet research topic buried in academic papers. It's now a public part of how the big labs operate. OpenAI, Anthropic, and Google DeepMind all publish regular safety reports. These documents do a few things in plain English:\n\n- **Describe what could go wrong.** Before releasing a new model, the lab lists the ways the AI might be misused or might fail — from helping someone write a phishing message to giving confidently wrong medical advice.\n- **Test for those specific risks.** The team runs the model through scenarios designed to surface those problems. If the model fails too many, they slow the release and fix what they can.\n- **Tell the public what they found.** Even when the findings are uncomfortable, the reports usually get shared. A few years ago, most AI companies kept this kind of information internal. Today it's standard practice.\n\nNone of this means AI is \"safe.\" It means the process of checking is becoming more structured and more visible. That visibility is the part that matters to everyday users — you can read what the labs are worried about and decide for yourself whether their concerns match yours.\n\n## Why this matters beyond the headlines\n\nThe interesting shift isn't in any single report. It's in the direction. The conversation has moved from \"is AI dangerous?\" to \"how do we keep making it less dangerous, step by step?\" That sounds like a small change. It's actually a big one.\n\nWorkers are quietly noticing a similar shift in how AI fits into their day. People don't just use AI for coding or writing essays anymore. They use it for the small, nameless tasks that used to eat 20 minutes of Googling — drafting a tricky message to a landlord, planning a family budget, figuring out how to phrase a question for a child's school. Each gain feels small on its own. Together, they add up to real time saved. The same quiet pattern is happening with safety: small improvements, written up, shared publicly, repeated.\n\n## What this means for you\n\n- **If you've never tried AI:** the safety work doesn't change how you'd start. Pick one small task — like summarizing a long email — and notice where the AI helps and where it makes something up. That habit matters more than any report.\n- **If you use AI at work:** keep your own short list of where AI is reliable and where it isn't for *your* job. The labs publish their risk lists; you can write a simpler version for yourself.\n- **If you care about AI safety specifically:** read at least one public safety report from a major lab. They're written for a general audience and they're surprisingly short. You'll come away with a clearer picture than any news headline gives you.\n- **If someone you know is hesitant about AI:** remind them that the labs themselves are often the most cautious voices about their own tools. That's not a reason to be scared — it's evidence that the checking process is real.\n\n## Wrap-up\n\nAI safety isn't a single product or a single promise. It's a slowly maturing practice — testing, writing things down, telling the public what was found. You don't need to read every report. But knowing that this work exists, and roughly how it goes, is part of being a confident AI user today.",
+  "original_title": "Our framework for reporting model misalignment"
+}

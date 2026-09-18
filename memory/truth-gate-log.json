@@ -1,23 +1,4 @@
 {
-  "2026-08-27": [
-    {
-      "at": "2026-08-27T16:16:53.398Z",
-      "file": "WRITER_2026-08-27T16-08-30-208Z_picsart_Recraft_V4_Styles_in_Picsart__one_reference__every.json",
-      "action": "hold",
-      "reasons": [
-        "AI-bíró nem elérhető (érthetetlen AI-válasz: credible mező hiányzik) — visszatartva a következő futásig"
-      ]
-    },
-    {
-      "at": "2026-08-27T18:34:30.716Z",
-      "file": "WRITER_2026-08-27T16-08-30-208Z_picsart_Recraft_V4_Styles_in_Picsart__one_reference__every.json",
-      "action": "block",
-      "reasons": [
-        "Recraft V4 Styles is described as a feature inside Picsart that builds a reusable style profile from uploaded reference images with Precise and Flexible modes — this is a fabricated feature/product. Picsart's AI image tools (including any Recraft integration) do not have a 'Recraft V4 Styles' feature with these described modes and a reference-image-to-style-profile workflow."
-      ],
-      "confidence": 7
-    }
-  ],
   "2026-09-01": [
     {
       "at": "2026-09-01T19:11:33.202Z",
@@ -343,6 +324,18 @@
         "The article states AI Overviews in Gmail search are rolling out to 'paid Google Workspace users worldwide' and were 'previously U.S.-only' — this is a specific availability claim presented as fact about a Google product feature that requires verification against Google's official announcements."
       ],
       "confidence": 4
+    }
+  ],
+  "2026-09-18": [
+    {
+      "at": "2026-09-18T02:15:10.042Z",
+      "file": "WRITER_2026-09-18T02-04-26-641Z_aws-ml_Reduce_time-to-hire_for_quality_candidates_with_AI.json",
+      "action": "block",
+      "reasons": [
+        "The article describes an AWS hiring tool built inside Amazon Connect that runs structured job interviews for call-center hiring with AI asking questions and scoring candidates. This appears to be a fabricated or inaccurate product feature not currently announced by AWS/Amazon Connect.",
+        "The article describes an AWS open-source 'agent skills' release for medical reasoning that any developer/hospital IT team can download. This is not a verified AWS product or release and appears fabricated."
+      ],
+      "confidence": 3
     }
   ]
 }

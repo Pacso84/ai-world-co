@@ -1,0 +1,41 @@
+{
+  "started_at": "2026-09-18T02:07:15.504Z",
+  "total": 4,
+  "passed": 2,
+  "failed": 2,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.011754500000000001,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-09-17T02-18-27-380Z_openai-blog_Our_framework_for_reporting_model_misalignment.json",
+      "rejected": "REJECTED_2026-09-17T02-18-27-380Z_openai-blog_Our_framework_for_reporting_model_misalignment.json",
+      "decision": "FAIL",
+      "score": 5,
+      "cost_usd": 0.002244
+    },
+    {
+      "writer": "WRITER_2026-09-18T02-04-26-641Z_aws-ml_Reduce_time-to-hire_for_quality_candidates_with_AI.json",
+      "rejected": "REJECTED_2026-09-18T02-04-26-641Z_aws-ml_Reduce_time-to-hire_for_quality_candidates_with_AI.json",
+      "decision": "FAIL",
+      "score": 6,
+      "cost_usd": 0.00165969
+    },
+    {
+      "writer": "WRITER_2026-09-18T02-04-43-752Z_picsart_Understanding_MiniMax_Music_v3__from_prompt_to_ful.json",
+      "article": "ARTICLE_2026-09-18T02-04-43-752Z_picsart_Understanding_MiniMax_Music_v3__from_prompt_to_ful.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.001683
+    },
+    {
+      "writer": "WRITER_2026-09-18T02-04-43-753Z_dropbox-blog__Put_your_Dropbox_context_to_work_in_Google_Gemini.json",
+      "article": "ARTICLE_2026-09-18T02-04-43-753Z_dropbox-blog__Put_your_Dropbox_context_to_work_in_Google_Gemini.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0021633
+    }
+  ],
+  "finished_at": "2026-09-18T02:08:38.471Z",
+  "duration_seconds": 82.967
+}

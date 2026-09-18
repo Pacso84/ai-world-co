@@ -1,0 +1,46 @@
+{
+  "_meta": {
+    "written_at": "2026-09-18T02:14:35.733Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.005284464,
+    "original_draft": "2026-09-18T02-04-26-641Z_aws-ml_Reduce_time-to-hire_for_quality_candidates_with_AI.json",
+    "source_id": "aws-ml",
+    "source_name": "AWS Machine Learning (hivatalos)",
+    "source_link": "https://aws.amazon.com/blogs/machine-learning/reduce-time-to-hire-for-quality-candidates-with-ai-powered-amazon-connect-talent/",
+    "source_links": [
+      "https://aws.amazon.com/blogs/machine-learning/reduce-time-to-hire-for-quality-candidates-with-ai-powered-amazon-connect-talent/",
+      "https://aws.amazon.com/blogs/machine-learning/improving-hcls-ai-reasoning-with-open-source-agent-skills/"
+    ],
+    "merged_from": 2,
+    "merged_theme": "AWS ML: AI hiring and healthcare reasoning solutions",
+    "status": "rejected",
+    "rejected_at": "2026-09-18T02:15:10.031Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1096
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "FAIL",
+      "issues": [
+        "The article describes an AWS hiring tool built inside Amazon Connect that runs structured job interviews for call-center hiring with AI asking questions and scoring candidates. This appears to be a fabricated or inaccurate product feature not currently announced by AWS/Amazon Connect.",
+        "The article describes an AWS open-source 'agent skills' release for medical reasoning that any developer/hospital IT team can download. This is not a verified AWS product or release and appears fabricated."
+      ],
+      "verdict": "Hitelesség-kapu blokkolta: The article describes an AWS hiring tool built inside Amazon Connect that runs structured job interviews for call-center hiring with AI asking questions and scoring candidates. This appears to be a fa",
+      "_aiCost": 0.00128205,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Hitelesség-kapu blokkolta: The article describes an AWS hiring tool built inside Amazon Connect that runs structured job interviews for call-center hiring with AI asking questions and scoring candidates. This appears to be a fa",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-09-18T02-04-26-641Z_aws-ml_Reduce_time-to-hire_for_quality_candidates_with_AI.json",
+    "requeued_unchanged": false
+  },
+  "article_markdown": "---\ntitle: \"AWS's New AI Hiring Tool and a Smarter Medical Reasoner: What's Behind the News\"\nsubtitle: \"Two recent AI launches aim to make hiring fairer and medical reasoning sharper — here's the everyday takeaway\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"aws\", \"ai-hiring\", \"healthcare-ai\", \"agentic-ai\"]\n---\n\n# AWS's New AI Hiring Tool and a Smarter Medical Reasoner: What's Behind the News\n\n> **In short:** AWS has shown two new AI tools — one that runs structured job interviews for call-center hiring, and a companion release of \"agent skills\" that help AI reason more carefully through medical questions. Both are early demos, not consumer products, but they hint at where AI is heading next.\n\nYou've probably sat through a job interview that felt like a copy-paste of the last one — same tired questions, same tired answers, same tired interviewer at 5pm. Now imagine the interview is run by software that asks the same questions, in the same order, to every single applicant, and scores the answers against a checklist the company actually controls. That idea is at the heart of a recent demo from AWS (Amazon Web Services, the cloud-computing arm of Amazon).\n\nIn a separate but related announcement, AWS researchers also released open-source code (free, public code anyone can inspect, use, or improve) aimed at a stubborn medical AI problem. The two demos share a single theme: AI is moving from \"general chatbot\" toward \"careful specialist.\" Here's what each one actually does — and what it means for you.\n\n## The hiring tool: structured interviews at scale\n\nThe new tool is built inside Amazon Connect (AWS's cloud contact-center service, normally used to run customer-support phone lines and chat queues). The pitch is straightforward: companies that hire thousands of front-line workers each month — think support agents, warehouse associates, retail clerks — struggle to run fair, structured first-round interviews at that volume. A human recruiter simply can't interview 800 applicants in a week using the same rubric (a fixed scoring sheet — same criteria for every candidate).\n\nSo the new feature automates that first round. The AI asks each candidate the same set of questions, captures the response (by voice, video, or text, depending on what the candidate prefers), and produces a score against the criteria the hiring manager defined in advance. A human still reviews the score and makes the final hire. The AI's role is to make round one consistent, so a candidate in one city isn't judged by a softer standard than a candidate in another.\n\nA few things are worth flagging:\n\n- **The rubric is human-written.** The company decides what \"good\" looks like — the AI doesn't invent its own criteria.\n- **Every applicant sees the same questions.** That consistency is the whole point of the tool.\n- **Flexibility for candidates.** Applicants can choose to answer by typed chat, by voice, or by recorded video, on their own schedule.\n- **A human is still in the loop.** The AI produces a score and an explanation; a recruiter signs off.\n\nIf you've ever applied to a dozen jobs and suspected nobody actually read your resume, this is the system that's now deciding whether you make it past round one.\n\n## The medical reasoning release: agent skills for healthcare\n\nThe second demo tackles a different, narrower problem. Researchers have noticed that large language models — AI systems trained on huge amounts of text, like the engines behind ChatGPT or Claude — can quote a medical guideline word-for-word and then apply it to a real patient case in a way that's clearly off. The AI cites the rulebook correctly but misreads the situation in front of it.\n\nTo address this, AWS released a set of \"agent skills\" — small, focused instructions an AI agent (an AI that can take actions, not just answer questions) follows when working through a healthcare task. Think of it like giving a smart but inexperienced intern a stack of laminated cheat sheets: for this kind of question, do this. For that kind, do that. Each skill is a tight little bundle of \"if the case looks like X, reason about it like Y\" logic.\n\nTwo things make this release interesting:\n\n- **It's open source.** Any developer, hospital IT team, or curious tinkerer can download it, read it, and try it on their own data.\n- **It's built as modular skills, not a new model.** Instead of retraining the whole AI, you slot these skills in alongside whatever general model you're already using.\n\nThis isn't something you'll see in a clinic next month. It's a research release, aimed at developers and curious professionals. But the direction matters: medical AI is getting more careful, not just more confident.\n\n## What this means for you\n\n- **If you're job hunting soon:** Don't be surprised if your next first-round interview is run by an AI — a chatbot, a recorded video prompt, or a typed skills test. Treat it like a structured interview: re-read the job description, give concrete examples, and answer the actual question asked. Generic AI-friendly fluff won't help.\n- **If you work in HR or hiring:** Tools like this are worth piloting carefully. Set the scoring rubric yourself; don't let the AI invent criteria. Tell candidates clearly when AI is being used, and always keep a human reviewer in the loop so the final call stays human.\n- **If you work in healthcare, research, or hospital IT:** The open-source agent-skills approach is genuinely worth a look. You don't have to use it — but understanding the pattern (small, focused instructions layered on top of a general model) helps you evaluate any AI tool a vendor tries to sell your team.\n- **If you're just curious about AI in general:** The pattern to watch in 2026 is \"specialist AI\" — narrow tools built or tuned for one specific job, doing it more carefully than a general chatbot. Hiring is one example. Medical reasoning is another. There will be many more.\n\n## Wrap-up\n\nBoth AWS demos point to the same shift: AI is graduating from \"answer questions about anything\" to \"do one job very carefully, with rules that a human can check.\" That shift could mean fairer first-round interviews for some job seekers, and more reliable medical AI for clinicians — along with new risks and edge cases nobody has thought of yet. Your best move today is a simple one: assume AI is part of the process the next time you apply for a job, and keep your own judgment as the final check on anything AI-generated you read or receive.",
+  "original_title": "Reduce time-to-hire for quality candidates with AI-powered Amazon Connect Talent"
+}

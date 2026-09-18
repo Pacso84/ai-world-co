@@ -1,0 +1,60 @@
+{
+  "started_at": "2026-09-18T02:04:44.130Z",
+  "drafts_total": 9,
+  "articles_written": 4,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 3,
+  "merged_total": 3,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "total_cost_usd": 0.033171707999999994,
+  "by_article": [
+    {
+      "draft": "2026-09-17T02-18-27-380Z_openai-blog_Our_framework_for_reporting_model_misalignment.json",
+      "writer_output": "WRITER_2026-09-17T02-18-27-380Z_openai-blog_Our_framework_for_reporting_model_misalignment.json",
+      "success": true,
+      "merged_from": 3,
+      "merged_theme": "OpenAI announcements: model safety, workforce impact, and AI education",
+      "cost_usd": 0.01167318,
+      "duration_ms": 44039,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-09-18T02-04-43-752Z_picsart_Understanding_MiniMax_Music_v3__from_prompt_to_ful.json",
+      "writer_output": "WRITER_2026-09-18T02-04-43-752Z_picsart_Understanding_MiniMax_Music_v3__from_prompt_to_ful.json",
+      "success": true,
+      "merged_from": 3,
+      "merged_theme": "PicsArt tutorials: MiniMax Music v3, Seedream 5.0 Pro, and YouTube video clipping",
+      "cost_usd": 0.00969192,
+      "duration_ms": 39815,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-09-18T02-04-26-641Z_aws-ml_Reduce_time-to-hire_for_quality_candidates_with_AI.json",
+      "writer_output": "WRITER_2026-09-18T02-04-26-641Z_aws-ml_Reduce_time-to-hire_for_quality_candidates_with_AI.json",
+      "success": true,
+      "merged_from": 2,
+      "merged_theme": "AWS ML: AI hiring and healthcare reasoning solutions",
+      "cost_usd": 0.004824624,
+      "duration_ms": 25495,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-09-18T02-04-43-753Z_dropbox-blog__Put_your_Dropbox_context_to_work_in_Google_Gemini.json",
+      "writer_output": "WRITER_2026-09-18T02-04-43-753Z_dropbox-blog__Put_your_Dropbox_context_to_work_in_Google_Gemini.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.005170944,
+      "duration_ms": 20171,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    }
+  ],
+  "finished_at": "2026-09-18T02:07:15.316Z",
+  "duration_seconds": 151.186
+}
