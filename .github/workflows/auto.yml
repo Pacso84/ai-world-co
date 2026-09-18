@@ -517,7 +517,19 @@ jobs:
           mkdir -p "$HOME/.local/share/fonts"
           cp shared/fonts/schibsted-grotesk-900.ttf "$HOME/.local/share/fonts/"
           fc-cache -f >/dev/null
-          fc-match "Schibsted Grotesk"
+          # ⚠️ AZ `fc-match` ÖNMAGÁBAN NEM KAPU: mindig 0-val lép ki, és a
+          # NÉMA VISSZAESÉST is sikernek mutatja (kiírja, mit adna helyette).
+          # Ezért megnézzük, hogy tényleg a mi fájlunkat adja-e vissza.
+          # Itt CSAK HANGOSAN SZÓLUNK, nem döntjük el a futást: a Reel
+          # díszítő elem, egy betű miatt nem állítjuk meg az egész napi
+          # gépezetet. A valódi kapu a gyártás pixel-mérése, ami a napi
+          # Telegram-jelentésbe jut (core/video-font.js).
+          if fc-match -f '%{file}\n' "Schibsted Grotesk" | grep -qi schibsted; then
+            echo "✅ betű telepítve: $(fc-match -f '%{file}\n' 'Schibsted Grotesk')"
+          else
+            echo "🔴 A BETŰ NEM TELEPÜLT — a fontconfig ezt adja helyette:"
+            fc-match "Schibsted Grotesk"
+          fi
 
       - name: Reel — napi videó gyártása (a build ELŐTT)
         if: always()

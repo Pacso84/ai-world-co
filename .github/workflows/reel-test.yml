@@ -70,7 +70,13 @@ jobs:
           mkdir -p "$HOME/.local/share/fonts"
           cp shared/fonts/schibsted-grotesk-900.ttf "$HOME/.local/share/fonts/"
           fc-cache -f >/dev/null
-          fc-match "Schibsted Grotesk"
+          # Itt KEMÉNY a kapu (az auto.yml-ben csak hangos): ez a gomb pont
+          # az ellenőrzésre való, és egy olyan „próba", ami a rossz betűt
+          # átengedi, rosszabb a semminél. Az `fc-match` magától mindig
+          # 0-val lép ki, ezért kell a saját fájlunkra szűrni.
+          fc-match -f '%{file}\n' "Schibsted Grotesk" | grep -qi schibsted || {
+            echo "🔴 A BETŰ NEM TELEPÜLT — a fontconfig ezt adja helyette:"; fc-match "Schibsted Grotesk"; exit 1; }
+          echo "✅ betű telepítve: $(fc-match -f '%{file}\n' 'Schibsted Grotesk')"
 
       # ⚠️ A SLUG KÖRNYEZETI VÁLTOZÓN MEGY BE, nem közvetlen behelyettesítéssel.
       # A `"${{ inputs.slug }}"` alak idézőjelen belül is végrehajtaná a `$( )`

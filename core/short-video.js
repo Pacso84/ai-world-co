@@ -50,6 +50,42 @@ export const W = 1080, H = 1920;
 export const SAV_FELSO = 250;
 export const SAV_ALSO = 1290;
 
+// ── A VÍZSZINTES KERET (2026-09-18) ────────────────────────────────
+// A sáv-őr eddig CSAK függőleges volt, és emiatt átengedett egy csonka
+// táblát (lásd a tablaSvg méret-számítását). Ez a három szám a
+// vízszintes védelem: a szöveg legfeljebb ennyi pixel széles lehet, a
+// betűszélesség-arány ebből számol méretet, és ennél kisebbre nem
+// megyünk — egy 40 pixeles felirat már olvashatatlan a telefonon.
+export const SZOVEG_MAX_SZELES = 1000;   // 1080 vászon − 2 × 40 margó
+export const BETU_ARANY = 0.65;          // mért: ~0,62; felfelé kerekítve
+export const SZOVEG_MIN_MERET = 72;
+
+// Az alcím mérete és alsó határa. 40 px alatt a telefon képernyőjén már
+// nem olvasható — ott inkább elhagyjuk (lásd tablaSvg).
+//
+// ⚠️ AZ ARÁNY UGYANAZ, MINT A NAGY SZÖVEGÉ, és ez nem elírás. Az első
+// változatban 0,60 állt itt azzal az indoklással, hogy „az alcím normál
+// vastagságú, tehát keskenyebb". Ez TÉVEDÉS volt: a `shared/fonts/`
+// EGYETLEN vágatot tartalmaz (a betű neve „Schibsted Grotesk Black"), az
+// alcím `<text>`-je pedig nem kér külön vastagságot — vagyis ugyanazokkal
+// a karakterszélességekkel rajzolódik. Kimérve a 2226 élő alcímen: a
+// tényleges arány mediánja 0,49, a MAXIMUMA 0,6374 — a 0,60 tehát
+// átengedett volna egy szélesebb glifájú, 32 karakteres alcímet (1061 px
+// az 1000-es kereten túl). Nem hiba történt, hanem szerencse volt.
+export const ALCIM_MERET = 52;
+export const ALCIM_MIN_MERET = 40;
+export const ALCIM_ARANY = 0.65;
+
+// ── AZ ALSÓ HÁROM ELEM HELYE (2026-09-18) ──────────────────────────
+// A haladásjelző eredetileg y=1180-on állt, és ez ELÉGTELEN volt: egy
+// háromsoros tábla alcíme az alapvonal-számításból mindig 1173-ra esik,
+// a betűk alja 1182-re — vagyis a zsálya sáv KERESZTÜLMENT az alcímen.
+// Determinisztikus hiba, nem véletlen: a 3385 valódi kártyából 492-t
+// érintett (14,5%), köztük a nyitótáblák „In five steps" sorát.
+// A két szám azért konstans, mert a teszt a KÖZTÜK LÉVŐ TÁVOLSÁGOT őrzi.
+export const SAV_JELZO_Y = 1208;
+export const MARKAJEL_Y = 1270;
+
 // ── A „PAPÍR" PALETTA ──────────────────────────────────────────────
 // Ugyanaz a három szín, mint a honlapon: így a Reelről a cikkre érkező
 // olvasó ugyanazt a felületet látja. A régi tábla sötét volt, mert az
@@ -295,7 +331,14 @@ export function becsultHossz(cards) {
 // ── A RENDERELÉS (ffmpeg + sharp + msedge-tts) ──────────────────────
 // Innentől I/O van: a tesztek a fenti tiszta függvényeket nézik.
 
-const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+// ⚠️ A NEM TÖRHETŐ KÖTŐJEL ÜRES TÉGLALAP LESZ (2026-09-18, mérve). A
+// becsomagolt Schibsted Grotesk `cmap`-jában nincs U+2011, és a cikkeink
+// címei használják (`day‑by‑day`, `energy‑monitoring`) — 26 élő táblán.
+// A betűmotor ilyenkor vagy más betűből pótolja (más alakú kötőjel), vagy
+// tofut rajzol. Közönséges kötőjelre cseréljük: a tábla szövegében a
+// „nem törhető" tulajdonságnak semmi szerepe (mi tördelünk, nem a motor).
+const esc = s => String(s).replace(/‑/g, '-')
+  .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
 /**
  * Egy álló tábla SVG-ben — „PAPÍR" dizájn (2026-09-17, user jóváhagyta).
@@ -318,12 +361,50 @@ export function tablaSvg({ cimke, nagy, kicsi }, i, db) {
   const sorok = String(nagy).split('\n').slice(0, 3);
   // A méret a SORSZÁMTÓL függ, nem a sorok hosszától: három sornál a
   // 138-as magasság a blokkot a sávból lógatná ki.
-  const meret = sorok.length <= 2 ? 138 : 116;
+  // ⚠️ A MÉRET NEM CSAK A SORSZÁMTÓL FÜGG (2026-09-18, éles lelet).
+  //
+  // Az első papír-változatban a méretet CSAK a sorok száma szabta meg
+  // (≤2 sor → 138). A régi, sötét tábla ezzel szemben a sor HOSSZÁT nézte
+  // (>11 karakter → 118). A csere iránya csendben rossz volt: az „Open
+  // DeepSeek" (13 karakter) 138 pixelen 1111 px széles lett az 1080-as
+  // vásznon, tehát a szó SZÉLE LEVÁGÓDOTT. Végigmérve a 443 élő
+  // útmutatón: 27 sor futott volna ki, azaz nagyjából minden 16. Reelen
+  // lett volna egy csonka tábla. A függőleges sáv-őr ezt nem látta —
+  // egydimenziós volt.
+  //
+  // Ezért a méret a LEGHOSSZABB SOR-hoz igazodik: a becsült szélesség
+  // `karakterszám × ARANY × méret`, és ennek a 40-40 pixeles margón
+  // belül kell maradnia. Az ARANY = 0,65 MÉRT érték a becsomagolt
+  // Schibsted Groteskre (a „recommendation" és az „Open DeepSeek" valódi
+  // rendereléséből 0,616 jött ki — felfelé kerekítve, hogy a nagybetűs
+  // sorok se szaladjanak ki). A pontos védelmet a teszt adja, ami a
+  // betűfájl VALÓDI karakterszélességeivel számol minden élő cikkre.
+  const alapMeret = sorok.length <= 2 ? 138 : 116;
+  const leghosszabb = Math.max(1, ...sorok.map(s => s.length));
+  const meret = Math.max(SZOVEG_MIN_MERET,
+    Math.min(alapMeret, Math.floor(SZOVEG_MAX_SZELES / (leghosszabb * BETU_ARANY))));
   const sorMagassag = meret * 1.08;
   // A blokk a 980-as alapvonal körül ül ki: ez a Reels-lejátszó
   // KÖZÉPSŐ, biztosan szabad harmada.
   const kezd = 980 - (sorok.length - 1) * meret * 0.55;
   const utolsoSor = kezd + (sorok.length - 1) * sorMagassag;
+
+  // ── AZ ALCÍM IS KIFUTHAT (2026-09-18, mérve) ─────────────────────
+  // A nagy szöveget tördeljük és méretezzük, az alcímet eddig SEM: a
+  // 2226 élő alcímből 45 (2,0%) szélesebb lett a vászonnál, a legrosszabb
+  // 1801 px az 1080-ból — vagyis a fele lelógott. Az alcím a lépés-cím
+  // levágott farka, tehát hosszú is lehet.
+  //
+  // A szabály KÉTLÉPCSŐS, és szándékosan NEM vág szöveget (a projektben
+  // az elvágott mondatok külön fejezet): előbb kicsinyítünk, ameddig még
+  // olvasható marad; ha annyival sem fér be, akkor az alcím LEMARAD a
+  // tábláról. Nem vész el: a felolvasott mondat (`mond`) VÁLTOZATLANUL
+  // tartalmazza — tehát a néző hallja azt, amit nem lát.
+  const alcimFer = kicsi
+    ? Math.floor(SZOVEG_MAX_SZELES / (String(kicsi).length * ALCIM_ARANY))
+    : 0;
+  const alcimMeret = Math.min(ALCIM_MERET, alcimFer);
+  const alcimLatszik = !!kicsi && alcimMeret >= ALCIM_MIN_MERET;
   const szoveg = sorok.map((s, k) =>
     `<text x="${W / 2}" y="${kezd + k * sorMagassag}" text-anchor="middle" font-size="${meret}"
      font-family="${BETU_CSALAD}" font-weight="900" fill="${TINTA}">${esc(s)}</text>`).join('\n');
@@ -334,7 +415,7 @@ export function tablaSvg({ cimke, nagy, kicsi }, i, db) {
   const SAV_SZELES = 720, SAV_X = (W - SAV_SZELES) / 2, RES = 10;
   const sav = Array.from({ length: db }, (_, k) => {
     const sz = (SAV_SZELES - (db - 1) * RES) / db;
-    return `<rect x="${SAV_X + k * (sz + RES)}" y="1180" width="${sz}" height="8" rx="4"
+    return `<rect x="${SAV_X + k * (sz + RES)}" y="${SAV_JELZO_Y}" width="${sz}" height="8" rx="4"
       fill="${ZSALYA}" opacity="${k <= i ? '1' : '0.22'}"/>`;
   }).join('\n');
 
@@ -347,10 +428,10 @@ export function tablaSvg({ cimke, nagy, kicsi }, i, db) {
   ${cimke ? `<text x="${W / 2}" y="640" text-anchor="middle" font-size="190"
       font-family="${BETU_CSALAD}" font-weight="900" fill="${ZSALYA}" opacity="0.30">${cimke}</text>` : ''}
   ${szoveg}
-  ${kicsi ? `<text x="${W / 2}" y="${utolsoSor + 70}" text-anchor="middle" font-size="52"
+  ${alcimLatszik ? `<text x="${W / 2}" y="${utolsoSor + 70}" text-anchor="middle" font-size="${alcimMeret}"
     font-family="${BETU_CSALAD}" fill="${HALVANY}">${esc(kicsi)}</text>` : ''}
   ${sav}
-  <text x="${W / 2}" y="1262" text-anchor="middle" font-size="40" letter-spacing="5"
+  <text x="${W / 2}" y="${MARKAJEL_Y}" text-anchor="middle" font-size="40" letter-spacing="5"
     font-family="${BETU_CSALAD}" font-weight="bold" fill="${TINTA}" opacity="0.65">AIWORLDHQ.COM</text>
 </svg>`);
 }

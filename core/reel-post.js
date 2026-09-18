@@ -338,8 +338,15 @@ function reelAllapot(ROOT, join, mit) {
     const p = join(dir, 'reel-guard.json');
     let elozo = {};
     if (existsSync(p)) { try { elozo = JSON.parse(readFileSync(p, 'utf-8')); } catch { /* */ } }
+    // ⚠️ A FÁZIS-REKORD LECSERÉLŐDIK, tehát ami nincs az új rekordban, az
+    // ELVÉSZ. A betű-lelet viszont csak akkor keletkezik, ha aznap tényleg
+    // renderelt valaki; egy „ma nem volt dolgom" futás enélkül ELNÉMÍTANÁ
+    // a tegnapi leletet. Ezért a mérést átmentjük, ha az új rekord nem hoz
+    // sajátot (2026-09-18).
+    const elozoBetu = elozo && elozo[mit.fazis] && elozo[mit.fazis].betu;
+    const rekord = (mit.betu === undefined && elozoBetu) ? { ...mit, betu: elozoBetu } : mit;
     writeFileSync(p, JSON.stringify({
-      ...elozo, at: new Date().toISOString(), [mit.fazis]: mit
+      ...elozo, at: new Date().toISOString(), [mit.fazis]: rekord
     }, null, 2), 'utf-8');
   } catch { /* a napló akkor is ott van */ }
 }
@@ -425,7 +432,15 @@ async function prepare(ROOT, join) {
       });
       try { rmSync(join(ROOT, '.video-munka'), { recursive: true, force: true }); } catch { /* */ }
       console.log('   ✅ ' + r0.seconds.toFixed(1) + ' mp — a deploy után újra elérhető lesz.');
-      return;   // pending-et NEM írunk: a Facebook Reel ma már kiment
+      // pending-et NEM írunk: a Facebook Reel ma már kiment. A BETŰ-LELETET
+      // viszont IGEN — és élesben pont ez az ág számít (2026-09-18).
+      // Miért: a `website/assets/video/shorts/` gitignore-olt, tehát minden
+      // futás videó nélkül indul; a napi jelentés pedig SOSEM az első
+      // futásban megy ki (riport-ablak 05 UTC-től, az első futás 02-03
+      // körül van). Vagyis a jelentést látó futásban MINDIG ez az
+      // újragyártó ág fut — ha itt eldobnánk a leletet, a betű-őrszem
+      // némán soha nem szólalna meg.
+      return { betu: r0.betu };
     }
     console.log('💤 Reel: ma már ment, vagy nincs alkalmas útmutató — kihagyom.');
     return;
