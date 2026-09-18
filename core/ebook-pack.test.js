@@ -11,11 +11,14 @@
 // ===================================================================
 
 import assert from 'assert/strict';
-import { readFileSync, readdirSync, existsSync } from 'fs';
+import { existsSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
-import { valogat, alkalmas, teruletOf, cimBol, lepesSzam, TERULETEK, SZUK_ESZKOZ, DB_TERULETENKENT } from './ebook-pack.js';
-import { torzs, konyvHtml } from './ebook-build.js';
+import {
+  valogat, csomag, alkalmas, teruletOf, cimBol, lepesSzam, szovegNyelven,
+  TERULETEK, SZUK_ESZKOZ, DB_TERULETENKENT, DB_MINI, DB_NAGY, MIN_CSOMAG, SZO_PER_OLDAL
+} from './ebook-pack.js';
+import { torzs, konyvHtml, utmutatokBetolt, csomagCim } from './ebook-build.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 let pass = 0, bukott = 0;
@@ -32,6 +35,21 @@ const cikk = (cim, { tool = '', lep = 5, szo = 1200 } = {}) => ({
     + Array.from({ length: lep }, (_, i) => `## Step ${i + 1} — do it\n${'word '.repeat(Math.ceil(szo / lep))}`).join('\n')
     + '\n\n## Common mistakes\nx\n\n## What this means for you\ny\n'
 });
+
+/**
+ * Ugyanaz a cikk KÉSZ spanyol fordítással. A spanyol cím SZÁNDÉKOSAN más —
+ * a valódi fordításokban is az, és éppen az azonosság a néma-visszaesés jele.
+ */
+const esCikk = (cim, esCim, opt) => {
+  const c = cikk(cim, opt);
+  return { ...c, es: c.md.replace(cim, esCim).replace(/## Step /g, '## Paso ') };
+};
+
+/** Az élő tartalom — EGY betöltéssel, ugyanazzal a függvénnyel, mint a gyártás. */
+const eloCikkek = (() => {
+  let gyorsitott = null;
+  return () => (gyorsitott ||= existsSync(join(ROOT, 'content', 'articles')) ? utmutatokBetolt() : []);
+})();
 
 // ===================================================================
 // 1. A MINŐSÉGI MÉRCE
@@ -162,26 +180,200 @@ t('a törzs a frontmatter és a H1 NÉLKÜL megy be (a címet mi adjuk)', () => 
 });
 
 // ===================================================================
-// 5. A VALÓDI TARTALMON — „a kézzel gyártott minta az ALAKOT nézi"
+// 5. A TERMÉKSZERKEZET: 8 MINI + 1 NAGY (2026-09-18)
+// ===================================================================
+// ⚠️ Az itteni címek SZÁNDÉKOSAN kerülik a korábbi témák kulcsszavait: a
+// besorolásban az ELSŐ illeszkedő téma nyer (safe → money → home → create →
+// learn → work → explain → automate). Egy „Explain your **contract**" cím
+// például a WORK témára esne, nem az explainre.
+const MINTA_TEMAK = {
+  safe: 'Spot a phishing message fast',
+  money: 'Track a monthly bill with AI',
+  home: 'Plan a family dinner',
+  create: 'Make a photo look better',
+  learn: 'Study a new language faster',
+  work: 'Sort your inbox',
+  // ⚠️ „Explain a tricky idea **simply**" NEM jó: a `simply` a LEARN téma
+  // szava, és a learn HAMARABB fut. A fixtúra-hitelesítő teszt fogta meg —
+  // pontosan ezért van.
+  explain: 'Explain a tricky idea in plain words',
+  automate: 'Automate a weekly routine'
+};
+/** Témánként N jelölt, mind a mérce fölött. */
+const mintaKeszlet = (n = 14) => Object.values(MINTA_TEMAK)
+  .flatMap(cim => Array.from({ length: n }, (_, i) => cikk(`${cim} ${i}`, { lep: 9 - (i % 5) })));
+
+t('a MINTA-készlet tényleg mind a 8 témát lefedi (a mérce hitelesítése)', () => {
+  // Ismert esettel hitelesítünk: ha a fixtúra besorolása elcsúszik, az alábbi
+  // tesztek „zöldek" lennének anélkül, hogy bármit is mérnének.
+  for (const [id, cim] of Object.entries(MINTA_TEMAK)) {
+    assert.equal(teruletOf(cikk(cim)), id, `a(z) „${cim}" nem a(z) ${id} témára esik`);
+  }
+  assert.equal(Object.keys(MINTA_TEMAK).length, TERULETEK.length, 'új téma jött, a fixtúra nem követte');
+});
+
+t('a téma-csomag CSAK a saját témája cikkeit tartalmazza', () => {
+  for (const id of ['work', 'home', 'safe']) {
+    const v = valogat(mintaKeszlet(), { tema: id });
+    assert.equal(v.length, 1, 'egy téma = egy szakasz');
+    assert.equal(v[0].id, id);
+    assert.equal(v[0].cikkek.length, DB_MINI, `a(z) ${id} mini nem telt ki`);
+    for (const c of v[0].cikkek) {
+      assert.equal(teruletOf(c), id, `idegen téma a(z) ${id} csomagban: ${cimBol(c.md)}`);
+    }
+  }
+});
+
+t('ahol kevés az alkalmas, ANNYI lesz — de a mérce alá nem megy', () => {
+  // A safe/money/automate témán élesben is kevesebb van, mint 12: a csomag
+  // ilyenkor RÖVIDEBB, nem gyengébb. Feltölteni idegen témával tilos.
+  const keves = [...Array.from({ length: 4 }, (_, i) => cikk(`Spot a phishing message fast ${i}`)),
+    ...mintaKeszlet(14).filter(c => teruletOf(c) === 'work')];
+  const v = valogat(keves, { tema: 'safe' });
+  assert.equal(v[0].cikkek.length, 4, 'idegen témával töltötte fel a hiányt');
+});
+
+t('🚫 NINCS TERMÉK 3 CIKK ALATT — okot ad vissza, nem üres fájlt', () => {
+  // Ugyanaz az elv, mint a heti videónál: inkább ne legyen termék, mint
+  // rossz termék. Egy 2 cikkes „csomag" a boltban nem szépséghiba: panasz.
+  const ketto = [cikk('Spot a phishing message fast'), cikk('Spot a scam text early')];
+  const r = csomag(ketto, { tema: 'safe' });
+  assert.equal(r.ok, false, 'két cikkből is terméket gyártott');
+  assert.equal(r.db, 2);
+  assert.match(r.indok, /2/, 'az ok nem mondja meg, hány cikk van');
+  assert.equal(csomag([], { tema: 'money' }).ok, false, 'üres bemenetből is terméket gyártott');
+  assert.equal(MIN_CSOMAG, 3, 'a mérce elmozdult — a teszt fixtúrái is ehhez vannak szabva');
+  assert.equal(csomag([...ketto, cikk('Keep your password private')], { tema: 'safe' }).ok, true,
+    'három cikkből MÁR van termék');
+});
+
+t('ismeretlen téma és ismeretlen nyelv OKOT ad, nem dob', () => {
+  const k = mintaKeszlet();
+  assert.equal(csomag(k, { tema: 'nincs-ilyen-tema' }).ok, false);
+  // A `de`/`fr` 2026-08-25-én VÉGLEG kivezetett nyelv — ha valaki mégis
+  // kéri, magyarázatot kapjon, ne egy üres angol csomagot.
+  assert.equal(csomag(k, { nyelv: 'de' }).ok, false, 'kivezetett nyelvre is gyártott');
+  assert.match(csomag(k, { nyelv: 'de' }).indok, /nyelv/);
+});
+
+t('🔑 A TERMÉKÍGÉRET: a nagy gyűjtemény MARADÉKTALANUL tartalmazza mind a 8 minit', () => {
+  // Ez maga a termék-szerkezet: aki megveszi a „work" minit ÉS a
+  // gyűjteményt, ne találjon bejelentetlen átfedést. Ha ez elcsúszik, a
+  // VEVŐNEK tűnik fel, nem nekünk.
+  const k = mintaKeszlet();
+  const nagy = valogat(k, { tema: 'all' });
+  const nagySlug = new Set(nagy.flatMap(s => s.cikkek.map(c => c.slug)));
+  for (const ter of TERULETEK) {
+    const mini = valogat(k, { tema: ter.id })[0].cikkek;
+    assert.ok(mini.length > 0, `üres mini: ${ter.id}`);
+    for (const c of mini) {
+      assert.ok(nagySlug.has(c.slug),
+        `🔴 a(z) ${ter.id} mini cikke KIMARADT a gyűjteményből: ${cimBol(c.md)}`);
+    }
+    // …és nem csak benne van: a szakasz ELEJÉN áll, ugyanabban a sorrendben.
+    const szakasz = nagy.find(s => s.id === ter.id).cikkek.slice(0, mini.length);
+    assert.deepEqual(szakasz.map(c => c.slug), mini.map(c => c.slug),
+      `a(z) ${ter.id} szakasz nem a mini-csomaggal kezdődik`);
+  }
+});
+
+t('🔑 a PLAFON a mélyítést fogja vissza, a minikbe SOHA nem vág bele', () => {
+  // A plafon a gyűjtemény MÉRETÉT szabályozza. Ha a nyolc mini önmagában
+  // túllépné, akkor is teljes marad: a termékígéret erősebb, mint a méret.
+  const k = mintaKeszlet();
+  const szoros = valogat(k, { tema: 'all', dbNagy: 5 });
+  const db = szoros.reduce((s, x) => s + x.cikkek.length, 0);
+  assert.equal(db, TERULETEK.length * DB_MINI, 'a plafon megcsonkította a mini-csomagokat');
+  // …a bőséges plafon viszont TÖBBET hoz, mint a puszta minik összege.
+  assert.ok(valogat(mintaKeszlet(30), { tema: 'all' }).reduce((s, x) => s + x.cikkek.length, 0) > db,
+    'a gyűjtemény nem mélyít a minik fölé');
+  assert.ok(DB_NAGY > TERULETEK.length * DB_MINI, 'a plafon a minik összege alatt van');
+});
+
+t('nincs ÁTFEDÉS két MINI-csomag között (egy cikk EGY témában van)', () => {
+  const k = mintaKeszlet();
+  const hol = new Map();
+  for (const ter of TERULETEK) for (const c of valogat(k, { tema: ter.id })[0].cikkek) {
+    assert.ok(!hol.has(c.slug),
+      `🔴 ${cimBol(c.md)} két csomagban is szerepel: ${hol.get(c.slug)} és ${ter.id}`);
+    hol.set(c.slug, ter.id);
+  }
+});
+
+// ===================================================================
+// 6. A SPANYOL ÁG — SOHA NE ESSEN VISSZA NÉMÁN AZ ANGOLRA
+// ===================================================================
+// 🔴 EZ A PROJEKT VISSZATÉRŐ HIBÁJA: 2026-08-04-én a fordító TITLE-sor híján
+// NÉMÁN az angolt mentette spanyol cikknek — 611-ből 3 cím, és egy közülük a
+// kapcsolódó-dobozokon át 47 oldalra ült ki. Egy FIZETŐS spanyol csomagnál
+// ugyanez visszatérítés. Ezért a hiányzó fordítás KIESIK, nem visszaesik.
+t('🔴 a spanyol csomagba SPANYOL szöveg kerül', () => {
+  const k = [
+    esCikk('Sort your inbox fast', 'Ordena tu bandeja de entrada'),
+    esCikk('Write a polite complaint email', 'Escribe una queja educada'),
+    esCikk('Draft a meeting note', 'Redacta una nota de reunión')
+  ];
+  const v = valogat(k, { tema: 'work', nyelv: 'es' });
+  assert.equal(v[0].cikkek.length, 3);
+  for (const c of v[0].cikkek) {
+    const sz = szovegNyelven(c, 'es');
+    assert.ok(sz && sz !== c.md, 'az angol eredeti ment volna a spanyol csomagba');
+  }
+  const html = konyvHtml(v, { nyelv: 'es', tema: 'work' });
+  assert.match(html, /<html lang="es"/, 'a spanyol csomag angol nyelvi jelölést kapott');
+  assert.match(html, /Ordena tu bandeja de entrada/, 'nincs benne a spanyol cím');
+  assert.ok(!/Sort your inbox fast/.test(html), '🔴 az ANGOL cím került a spanyol csomagba');
+  assert.match(html, /aiworldhq\.com\/es\/article\//, 'a link az angol oldalra visz');
+});
+
+t('🔴 a NÉMA VISSZAESÉS három alakja mind kiesik a spanyol csomagból', () => {
+  const jo = esCikk('Sort your inbox fast', 'Ordena tu bandeja de entrada');
+  const angolMasolat = { ...cikk('Clean a flooded inbox'), es: cikk('Clean a flooded inbox').md };
+  const cimtelen = (() => { const c = cikk('Archive old inbox mail'); return { ...c, es: c.md.replace(/^title:.*$/m, 'x: y') }; })();
+  const csonka = (() => { const c = cikk('Reply to inbox mail fast'); return { ...c, es: c.md.slice(0, Math.floor(c.md.length * 0.4)).replace(c.md.match(/title: "(.+)"/)[1], 'Responde rápido') }; })();
+  const v = valogat([jo, angolMasolat, cimtelen, csonka], { tema: 'work', nyelv: 'es' });
+  assert.deepEqual(v[0].cikkek.map(c => c.slug), [jo.slug],
+    '🔴 néma angol/címtelen/csonka fordítás került a spanyol csomagba');
+  // …angolul viszont MIND A NÉGY jó cikk.
+  assert.equal(valogat([jo, angolMasolat, cimtelen, csonka], { tema: 'work' })[0].cikkek.length, 4);
+});
+
+t('a spanyol felületi szöveg a NYELVI TÁBLÁBÓL jön, nem helyszíni fordításból', () => {
+  const k = [esCikk('Sort your inbox fast', 'Ordena tu bandeja de entrada'),
+    esCikk('Write a polite complaint email', 'Escribe una queja educada'),
+    esCikk('Draft a meeting note', 'Redacta una nota de reunión')];
+  const html = konyvHtml(valogat(k, { tema: 'work', nyelv: 'es' }), { nyelv: 'es', tema: 'work' });
+  // 🇪🇺 A MI-JELÖLÉS ÉS AZ ŐSZINTE NYITÓ RÉSZ MINDKÉT NYELVEN KÖTELEZŐ.
+  assert.match(html, /Antes de empezar/, 'eltűnt az őszinte nyitó rész spanyolul');
+  assert.match(html, /equipo editorial de IA/, '⚠️ eltűnt a MI-JELÖLÉS a spanyol csomagból');
+  assert.match(html, /gratis en nuestra web/, 'a spanyol csomag elhallgatja, hogy a tartalom ingyenes');
+  assert.match(html, /Trabajo y correo/, 'a szakasz-cím angolul maradt');
+  // ⚠️ A LÉPÉSSZÁM AZ ANGOL EREDETIBŐL JÖN: a spanyol „## Paso 1" a
+  // `lepesSzam()` angol mintájára NEM illeszkedik — a fordításból mérve MINDEN
+  // spanyol cikk „0 pasos"-t írna ki.
+  assert.match(html, /[1-9]\d* pasos/, '🔴 „0 pasos" — a lépésszámot a fordításból mérte');
+});
+
+t('a csomag CÍME témára és nyelvre szabott, paraméter nélkül a RÉGI név', () => {
+  assert.equal(csomagCim(null), 'The Everyday AI Starter Pack');   // visszafelé kompatibilitás
+  assert.match(csomagCim('all', 'es'), /colección/);
+  assert.match(csomagCim('work', 'es'), /Trabajo y correo/);
+  assert.match(csomagCim('work', 'en'), /Work & email/);
+});
+
+// ===================================================================
+// 7. A VALÓDI TARTALMON — „a kézzel gyártott minta az ALAKOT nézi"
 // ===================================================================
 console.log('\n🧪 a valódi útmutatókon');
 
 t('🔑 ÉLES: a csomag TELJES és minden terület kitelik', () => {
-  const dir = join(ROOT, 'content', 'articles');
-  if (!existsSync(dir)) { console.log('     (nincs cikk-mappa — kihagyva)'); return; }
-  const cikkek = [];
-  for (const f of readdirSync(dir).filter(x => x.startsWith('ARTICLE_') && x.endsWith('.json'))) {
-    let d; try { d = JSON.parse(readFileSync(join(dir, f), 'utf-8')); } catch { continue; }
-    const m = d._meta || {};
-    if (m.type !== 'guide' || !m.slug) continue;
-    cikkek.push({ slug: m.slug, tool: m.tool || '', md: d.article_markdown || '' });
-  }
+  const cikkek = eloCikkek();
   if (!cikkek.length) { console.log('     (nincs útmutató — kihagyva)'); return; }
 
   const v = valogat(cikkek);
   const db = v.reduce((s, x) => s + x.cikkek.length, 0);
   const szo = v.reduce((s, x) => s + x.cikkek.reduce((n, c) => n + c.md.split(/\s+/).length, 0), 0);
-  console.log(`     ↳ ${db} útmutató, ${szo} szó, ${v.length} terület`);
+  console.log(`     ↳ régi csomag: ${db} útmutató, ${szo} szó, ${v.length} terület`);
   assert.equal(v.length, TERULETEK.length);
   for (const ter of v) {
     assert.equal(ter.cikkek.length, DB_TERULETENKENT,
@@ -191,33 +383,93 @@ t('🔑 ÉLES: a csomag TELJES és minden terület kitelik', () => {
 });
 
 t('🔑 ÉLES: EGYETLEN útmutató sem szerepel KÉTSZER', () => {
-  const dir = join(ROOT, 'content', 'articles');
-  if (!existsSync(dir)) return;
-  const cikkek = [];
-  for (const f of readdirSync(dir).filter(x => x.startsWith('ARTICLE_') && x.endsWith('.json'))) {
-    let d; try { d = JSON.parse(readFileSync(join(dir, f), 'utf-8')); } catch { continue; }
-    const m = d._meta || {};
-    if (m.type === 'guide' && m.slug) cikkek.push({ slug: m.slug, tool: m.tool || '', md: d.article_markdown || '' });
-  }
-  if (!cikkek.length) return;
-  const slugok = valogat(cikkek).flatMap(x => x.cikkek.map(c => c.slug));
+  if (!eloCikkek().length) return;
+  const slugok = valogat(eloCikkek()).flatMap(x => x.cikkek.map(c => c.slug));
   assert.equal(new Set(slugok).size, slugok.length, 'ugyanaz az útmutató kétszer van a csomagban');
 });
 
 t('🔑 ÉLES: minden kiválasztott útmutató átmegy a minőségi mércén', () => {
-  const dir = join(ROOT, 'content', 'articles');
-  if (!existsSync(dir)) return;
-  const cikkek = [];
-  for (const f of readdirSync(dir).filter(x => x.startsWith('ARTICLE_') && x.endsWith('.json'))) {
-    let d; try { d = JSON.parse(readFileSync(join(dir, f), 'utf-8')); } catch { continue; }
-    const m = d._meta || {};
-    if (m.type === 'guide' && m.slug) cikkek.push({ slug: m.slug, tool: m.tool || '', md: d.article_markdown || '' });
-  }
-  if (!cikkek.length) return;
-  for (const ter of valogat(cikkek)) for (const c of ter.cikkek) {
+  if (!eloCikkek().length) return;
+  for (const ter of valogat(eloCikkek())) for (const c of ter.cikkek) {
     assert.ok(alkalmas(c), cimBol(c.md) + ' nem felel meg a mércének');
     assert.ok(lepesSzam(c.md) >= 4, cimBol(c.md) + ' kevés lépés');
   }
+});
+
+// ⚠️ MÉRCE-KIÜRÜLÉS ELLENI KÜSZÖB. Ez a szakasz a VALÓDI tartalmon fut, és
+// egy ilyen teszt attól a naptól kezdve hazudik, amikor a bemenete elfogy:
+// „minden csomag rendben" — mert nulla csomagot nézett. Pontosan ez történt a
+// magyar helyesírás-őrszemmel (773 cikkből 12-t nézett, és 0 hibát jelentett).
+// Kimérve 2026-09-18-án: 399 alkalmas útmutató. A küszöb jóval alatta van,
+// hogy a Házmester normál törlései ne buktassák — de a kiürülést elkapja.
+const MIN_BEMENET = 300;
+
+t('⚠️ a mérce TÉNYLEG lát elég bemenetet (különben a zöld semmit nem ér)', () => {
+  const cikkek = eloCikkek();
+  if (!cikkek.length) { console.log('     (nincs cikk-mappa — kihagyva)'); return; }
+  const jo = cikkek.filter(alkalmas);
+  console.log(`     ↳ ${cikkek.length} útmutató, ebből ${jo.length} alkalmas fizetős csomagba`);
+  assert.ok(jo.length >= MIN_BEMENET,
+    `csak ${jo.length} alkalmas útmutató (a mérce ${MIN_BEMENET}) — az élő tesztek vakon futnának`);
+});
+
+t('🔑 ÉLES: a nagy gyűjtemény mind a 9 csomagot lefedi, MINDKÉT nyelven', () => {
+  const cikkek = eloCikkek();
+  if (!cikkek.length) return;
+  for (const nyelv of ['en', 'es']) {
+    const nagy = csomag(cikkek, { tema: 'all', nyelv });
+    assert.equal(nagy.ok, true, `nincs nagy csomag (${nyelv}): ${nagy.indok}`);
+    const nagySlug = new Set(nagy.szakaszok.flatMap(s => s.cikkek.map(c => c.slug)));
+    const sorok = [];
+    for (const ter of TERULETEK) {
+      const mini = csomag(cikkek, { tema: ter.id, nyelv });
+      assert.equal(mini.ok, true, `nincs ${ter.id} mini (${nyelv}): ${mini.indok}`);
+      sorok.push(`${ter.id} ${mini.db}/${mini.oldal}o`);
+      for (const c of mini.szakaszok[0].cikkek) {
+        assert.ok(nagySlug.has(c.slug),
+          `🔴 ${nyelv}: a(z) ${ter.id} mini cikke kimaradt a gyűjteményből (${c.slug})`);
+      }
+    }
+    console.log(`     ↳ ${nyelv}: all ${nagy.db} cikk / ${nagy.szo} szó / ~${nagy.oldal} oldal · ` + sorok.join(' · '));
+  }
+});
+
+t('🔑 ÉLES: két mini-csomag SOHA nem fed át', () => {
+  const cikkek = eloCikkek();
+  if (!cikkek.length) return;
+  for (const nyelv of ['en', 'es']) {
+    const hol = new Map();
+    for (const ter of TERULETEK) for (const c of csomag(cikkek, { tema: ter.id, nyelv }).szakaszok[0].cikkek) {
+      assert.ok(!hol.has(c.slug), `${nyelv}: ${c.slug} két csomagban (${hol.get(c.slug)} + ${ter.id})`);
+      hol.set(c.slug, ter.id);
+    }
+  }
+});
+
+t('🔴 ÉLES: a spanyol csomagok EGYETLEN cikke sem angol', () => {
+  const cikkek = eloCikkek();
+  if (!cikkek.length) return;
+  let db = 0;
+  for (const tema of ['all', ...TERULETEK.map(t => t.id)]) {
+    for (const c of csomag(cikkek, { tema, nyelv: 'es' }).szakaszok.flatMap(s => s.cikkek)) {
+      const sz = szovegNyelven(c, 'es');
+      assert.ok(sz, `nincs spanyol szöveg: ${c.slug}`);
+      assert.notEqual(cimBol(sz), cimBol(c.md), `🔴 ANGOL cím a spanyol csomagban: ${c.slug}`);
+      db++;
+    }
+  }
+  console.log(`     ↳ ${db} spanyol szakasz-cikk ellenőrizve, 0 angol visszaesés`);
+});
+
+t('a mért oldalszám a MÉRT 600 szó/oldal arányból jön', () => {
+  // ⚠️ Az első becslésem 380 szó/oldal volt, a legyártott PDF 600-at adott —
+  // a 104 oldalas jóslatból 66 lett. A hitelesítetlen jóslat marketing-szám.
+  assert.equal(SZO_PER_OLDAL, 600);
+  const cikkek = eloCikkek();
+  if (!cikkek.length) return;
+  const r = csomag(cikkek, { tema: 'work' });
+  assert.equal(r.oldal, Math.round(r.szo / SZO_PER_OLDAL));
+  assert.ok(r.szo > 0 && r.oldal > 0, 'a csomag 0 szót/oldalt mért — a számláló romlott el');
 });
 
 console.log(`\n${bukott === 0 ? '✅' : '❌'} ebook-pack.test: ${pass} rendben, ${bukott} bukott`);

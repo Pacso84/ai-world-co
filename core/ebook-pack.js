@@ -29,13 +29,41 @@
 //    az összes kapunkon.
 //
 // ── A VÁLOGATÁS SZABÁLYA ──────────────────────────────────────────
-// Öt élet-terület, területenként öt útmutató. A rangsor a RÉSZLETESSÉG
-// (lépésszám, majd hossz), DE változatossággal:
+// A rangsor a RÉSZLETESSÉG (lépésszám, majd hossz), DE változatossággal:
 //
 // 🔑 UGYANAZ A LECKE, MINT A REEL-SORNÁL (2026-09-09, ugyanaznap): ha csak
 // „a legrészletesebb ötöt" venném, könnyen öt „Getting started with…"
 // kerülne egymás mellé, mert a tartalmunk KÖTEGEKBEN készült. A csomagon
 // BELÜL is kell változatosság — eszközre és cím-kezdetre.
+//
+// ===================================================================
+// A TERMÉKSZERKEZET (user-döntés, 2026-09-18): 8 MINI + 1 NAGY, 2 NYELVEN
+// ===================================================================
+// 8 mini-csomag, témánként egy (`core/topics.js` TEMAK), célméret 12 útmutató,
+// plusz 1 nagy gyűjtemény (`all`). Mindkét nyelven: `en` + `es`.
+//
+// ⚠️ A NAGY CSOMAG SZÁNDÉKOSAN TARTALMAZZA A NYOLC KICSIT — MARADÉKTALANUL.
+// Ez nem véletlen és nem lustaság, hanem MAGA A TERMÉKÍGÉRET: aki előbb a
+// „Work & email" minit veszi meg, majd a gyűjteményt is, ne fedezzen fel egy
+// átfedést, amit nem jelentettünk be. Két rossz alternatíva volt:
+//   a) a nagy KIHAGYJA a minik cikkeit → a gyűjtemény pont a legjobb 85
+//      útmutatót nem tartalmazza, vagyis a drágább termék a gyengébb;
+//   b) a nagy MÁSHOGY válogat ugyanabból → véletlenszerű, kimagyarázhatatlan
+//      átfedés, amit se mi, se a vevő nem tud előre kiszámolni.
+// Ezért a nagy csomag témánként UGYANAZZAL a rangsorral indul, és csak
+// utána mélyít. A szerkezetet TESZT őrzi (`ebook-pack.test.js`) — mert ha
+// egyszer elcsúszik, az a VEVŐNEK tűnik fel, nem nekünk.
+//
+// 🚫 NINCS TERMÉK 3 CIKK ALATT (MIN_CSOMAG). Ugyanaz az elv, mint a heti
+// videónál: inkább NE legyen termék, mint rossz termék. A `csomag()` ilyenkor
+// nem üres fájlt gyárt, hanem visszaad egy OKOT, amit a hívó kiír.
+//
+// 🌐 A SPANYOL ÁG NEM KERÜL PÉNZBE: mind a 399 alkalmas útmutatónak KÉSZ a
+// fordítása a `content/translations/`-ban (kimérve 2026-09-18) — itt sem AI-t
+// nem hívunk, sem fordítót. ⚠️ ÉS SOHA NEM ESÜNK VISSZA NÉMÁN AZ ANGOLRA:
+// ez a projekt visszatérő hibája (2026-08-04, `core/translation-guard.js`),
+// amikor a fordító TITLE-sor híján az angolt mentette spanyol cikként, és 3
+// cím 47 oldalra ült ki. Fizetős terméknél ez visszatérítés.
 // ===================================================================
 
 import { TEMAK, temaOf } from './topics.js';
@@ -58,6 +86,58 @@ export const MIN_SZO = 900;
 export const TERULETEK = TEMAK;
 
 export const DB_TERULETENKENT = 5;
+
+/** Egy MINI csomag célmérete. Ahol ennyi nincs, annyi lesz, amennyi van. */
+export const DB_MINI = 12;
+
+/**
+ * A NAGY gyűjtemény felső határa — cikkben, nem oldalban, mert a cikkszám az,
+ * amit a válogatás ténylegesen szabályoz.
+ *
+ * MÉRVE (2026-09-18, 399 alkalmas útmutató): átlag 1496 szó/útmutató, és
+ * 600 szó/oldal → 150 útmutató ≈ 374 oldal. Ez már egy vaskos gyűjtemény;
+ * feljebb a PDF mérete és a letöltés lesz a vevő problémája.
+ *
+ * ⚠️ A BESOROLATLAN ÚTMUTATÓK SZÁNDÉKOSAN KIMARADNAK a nagy csomagból is.
+ * Mérve: 399 alkalmasból 276 kap témát, 123 nem. A gyűjtemény SZERKEZETE
+ * maga a téma-beosztás; egy „Egyebek" fejezet töltelék lenne, névvel, amit
+ * három nyelven kellene kitalálni. És nincs is rá szükség: a 276 besorolt
+ * MAGÁBAN több, mint a plafon (150) — nem a készlet szűk.
+ */
+export const DB_NAGY = 150;
+
+/** Ennél kevesebb útmutatóból NEM gyártunk terméket. */
+export const MIN_CSOMAG = 3;
+
+/**
+ * Szó/oldal — MÉRVE, nem tippelve (2026-09-09): az első becslésem 380 volt,
+ * a legyártott PDF 600-at adott, a 104 oldalas jóslatból 66 lett. Egy jóslat,
+ * amit nem hitelesítünk a kimeneten, marketing-szám.
+ *
+ * ⚠️ 2026-09-18-án ÚJRA HITELESÍTVE, 6 legyártott PDF valódi oldalszámán:
+ *     starter-pack 101 oldal (633 szó/oldal) · work-en 34 (604) ·
+ *     work-es 39 (568) · all-en 340 (679) · money-en 27 (346) · money-es 28 (356)
+ * Az arány a NAGY csomagokra jó (0–12% eltérés), a MONEY csomagra viszont
+ * ~40%-kal ALÁBECSÜL — mindkét nyelven, tehát nem a fordítás az ok, hanem
+ * maga a tartalom: a pénzügyi útmutatók táblázat- és listasűrűek, azok pedig
+ * több függőleges helyet esznek ugyanannyi szóra. A 600 MARAD (ez a mért
+ * átlag), de amit a BOLTBAN kiírunk oldalszámnak, azt a legyártott PDF-ből
+ * vegyük, ne ebből a becslésből. A becslés tervezésre való, nem ígéretnek.
+ */
+export const SZO_PER_OLDAL = 600;
+
+/** A csomag nyelvei. A `hu` KIMARAD: az egész honlap `/hu/` ága NOINDEX. */
+export const NYELVEK = ['en', 'es'];
+
+/**
+ * A SPANYOL SZÖVEG MINIMÁLIS HOSSZ-ARÁNYA az angolhoz képest.
+ * MÉRVE (2026-09-18, 399 cikk): a medián arány 1,10 (a spanyol HOSSZABB), az
+ * alsó 5% is 1,00 — a mérce alatt mindössze 7 cikk van, mind a 2026-08-26-án
+ * dokumentált CSONKA fordítások közül (0,38–0,57). A user döntése szerint a
+ * meglévő csonkák az oldalon MARADNAK; egy FIZETŐS csomagba viszont nem
+ * valók, ezért itt kiesnek.
+ */
+export const ES_MIN_ARANY = 0.6;
 
 /**
  * KÜLÖNLEGES HARDVERT/ELŐFIZETÉST IGÉNYLŐ ESZKÖZÖK — ezek NEM valók egy
@@ -112,6 +192,43 @@ export function teruletOf(c) {
   return temaOf(cimBol(c?.md));
 }
 
+/**
+ * A csomagba KERÜLŐ szöveg az adott nyelven — vagy `null`, ha nincs.
+ *
+ * 🔴 A `null` ITT A LÉNYEG. A kézenfekvő megoldás (`c.es || c.md`) pontosan
+ * azt a hibát írná újra, ami 2026-08-04-én élesben megtörtént: a fordító
+ * TITLE-sor nélkül NÉMÁN az angolt mentette spanyol cikknek, és a hiba a
+ * kapcsolódó-dobozokon át 47 oldalra terjedt. A néma visszaesés azért
+ * veszélyes, mert SIKERNEK LÁTSZIK. Inkább essen ki a cikk a spanyol
+ * csomagból — a hívó látja a különbséget a darabszámon.
+ *
+ * Három jel, mind egy VALÓDI hibára válasz:
+ *   1. van egyáltalán szöveg,
+ *   2. van benne `title:` (ez hiányzott a 2026-08-04-i esetben),
+ *   3. a cím NEM szó szerint az angol (ez maga a néma visszaesés), és
+ *      a szöveg nem CSONKA (lásd ES_MIN_ARANY).
+ */
+export function szovegNyelven(c, nyelv = 'en') {
+  const en = String(c?.md || '');
+  if (nyelv !== 'es') return en || null;
+  const es = String(c?.es || '').trim();
+  if (!es) return null;
+  const esCim = cimBol(es);
+  if (!esCim || esCim === cimBol(en)) return null;
+  if (es.length < en.length * ES_MIN_ARANY) return null;
+  return es;
+}
+
+/** Szószám — ugyanaz a mérce, amit a minőségi kapu is használ. */
+export function szoSzam(s) {
+  return String(s || '').split(/\s+/).filter(Boolean).length;
+}
+
+/** Becsült oldalszám a MÉRT 600 szó/oldal arányból. */
+export function oldalSzam(szo) {
+  return Math.max(1, Math.round(szo / SZO_PER_OLDAL));
+}
+
 /** A „forma": mitől néz ki két útmutató egyformának EGY CSOMAGON BELÜL. */
 export function forma(c) {
   const szavak = cimBol(c?.md).toLowerCase().replace(/[^a-z0-9]+/g, ' ').split(' ').filter(Boolean);
@@ -119,13 +236,60 @@ export function forma(c) {
 }
 
 /**
- * A csomag tartalma: öt terület, területenként öt útmutató.
+ * EGY terület TELJES sorrendje: rangsor + változatosság, felső határ nélkül.
  *
- * @param {Array<{slug:string, tool:string, md:string}>} cikkek
+ * ⚠️ MIÉRT A TELJES SORREND, ÉS NEM „A LEGJOBB N": mert a nagy gyűjteménynek
+ * a mini-csomag cikkeivel KELL kezdődnie (lásd a fejlécben a termékígéretet).
+ * Ha a kettő külön hívással, külön határral válogatna, a két lista idővel
+ * szétcsúszna — ugyanaz a „két példány" csapda, ami a cikk-sablonoknál
+ * NÉGYSZER ütött be. Egy sorrend van; a mini az ELEJE, a nagy a HOSSZABB
+ * eleje. A tulajdonság így SZERKEZETI, nem a jóindulaton múlik.
+ *
+ * KÉT KÖR: előbb csak változatosat veszünk (eszköz + cím-kezdet), aztán a
+ * maradékot rangsor szerint. Így a csomag SOSEM lesz hiányos a
+ * változatosság miatt — a vevőnek a DARABSZÁM az ígéret.
+ */
+export function sorrend(mezony) {
+  const valasztott = [], mar = new Set();
+  const voltEszkoz = new Set(), voltKezdet = new Set();
+  for (const csakValtozatos of [true, false]) {
+    for (const c of mezony) {
+      if (mar.has(c)) continue;
+      const f = forma(c);
+      if (csakValtozatos) {
+        if (f.eszkoz && voltEszkoz.has(f.eszkoz)) continue;
+        if (f.kezdet && voltKezdet.has(f.kezdet)) continue;
+      }
+      valasztott.push(c); mar.add(c);
+      if (f.eszkoz) voltEszkoz.add(f.eszkoz);
+      if (f.kezdet) voltKezdet.add(f.kezdet);
+    }
+  }
+  return valasztott;
+}
+
+/**
+ * A csomag tartalma témánként.
+ *
+ * @param {Array<{slug:string, tool:string, md:string, es?:string}>} cikkek
+ * @param {{dbTeruletenkent?:number, tema?:string|null, nyelv?:string,
+ *          dbMini?:number, dbNagy?:number}} opt
+ *   `tema`: `null` → a RÉGI viselkedés (mind a 8 terület, területenként 5 —
+ *   ezt gyártja a paraméter nélküli CLI, és ezt őrzik a régi tesztek);
+ *   egy téma-azonosító → egyetlen szakasz, `dbMini` cikkel;
+ *   `'all'` → mind a 8 szakasz, a minikkel kezdve, a plafonig mélyítve.
  * @returns {Array<{id:string, cim:string, cikkek:Array}>}
  */
-export function valogat(cikkek, { dbTeruletenkent = DB_TERULETENKENT } = {}) {
-  const jo = (Array.isArray(cikkek) ? cikkek : []).filter(alkalmas);
+export function valogat(cikkek, {
+  dbTeruletenkent = DB_TERULETENKENT, tema = null, nyelv = 'en',
+  dbMini = DB_MINI, dbNagy = DB_NAGY
+} = {}) {
+  // A minőségi mérce MINDIG az angol eredetin fut: a `topics.js` mintái angol
+  // szavak, és a lépés-számláló is angol („## Step 1"). A nyelv csak azt
+  // szűri, KÉSZ-e a fordítás — így a spanyol csomag ugyanabból a rangsorból
+  // dolgozik, nem egy másikból.
+  const jo = (Array.isArray(cikkek) ? cikkek : [])
+    .filter(c => alkalmas(c) && szovegNyelven(c, nyelv) !== null);
   // A RÉSZLETESEBB elöl: több lépés, majd hosszabb szöveg.
   jo.sort((a, b) => lepesSzam(b.md) - lepesSzam(a.md) || b.md.length - a.md.length);
 
@@ -135,32 +299,70 @@ export function valogat(cikkek, { dbTeruletenkent = DB_TERULETENKENT } = {}) {
     const t = teruletOf(c);
     if (t) szerint.get(t).push(c);
   }
+  // 2) RANGSOR A TERÜLETEN BELÜL, változatossággal — területenként EGYSZER.
+  const teljes = new Map(TERULETEK.map(t => [t.id, sorrend(szerint.get(t.id) || [])]));
+  const szakasz = (t, db) => ({ id: t.id, cim: t.cim, cikkek: teljes.get(t.id).slice(0, db) });
 
-  // 2) RANGSOR A TERÜLETEN BELÜL, változatossággal.
-  const ki = [];
-  for (const ter of TERULETEK) {
-    const mezony = szerint.get(ter.id) || [];
-    const valasztott = [];
-    const voltEszkoz = new Set(), voltKezdet = new Set();
-    // KÉT KÖR: előbb csak változatosat veszünk, aztán — ha nem telt ki —
-    // feltöltjük. Így a csomag SOSEM lesz hiányos a változatosság miatt.
-    for (const csakValtozatos of [true, false]) {
-      for (const c of mezony) {
-        if (valasztott.length >= dbTeruletenkent) break;
-        if (valasztott.includes(c)) continue;
-        const f = forma(c);
-        if (csakValtozatos) {
-          if (f.eszkoz && voltEszkoz.has(f.eszkoz)) continue;
-          if (f.kezdet && voltKezdet.has(f.kezdet)) continue;
-        }
-        valasztott.push(c);
-        if (f.eszkoz) voltEszkoz.add(f.eszkoz);
-        if (f.kezdet) voltKezdet.add(f.kezdet);
-      }
-    }
-    ki.push({ id: ter.id, cim: ter.cim, cikkek: valasztott });
+  if (!tema) return TERULETEK.map(t => szakasz(t, dbTeruletenkent));
+
+  if (tema !== 'all') {
+    const t = TERULETEK.find(x => x.id === tema);
+    return t ? [szakasz(t, dbMini)] : [];
   }
-  return ki;
+
+  // 3) A NAGY GYŰJTEMÉNY: a nyolc mini, majd KÖRBE-KÖRBE mélyítés a plafonig.
+  // ⚠️ MIÉRT KÖRBE-KÖRBE, ÉS NEM „a legjobb 150": mert a készlet erősen
+  // aránytalan (mérve: work 98, money 6). A puszta rangsor a gyűjtemény
+  // kétharmadát munkahelyi útmutatóvá tenné, holott a termék ígérete a
+  // HÉTKÖZNAPI ÉLET egésze. A mélyítés így minden területet egyszerre visz.
+  const szakaszok = TERULETEK.map(t => szakasz(t, dbMini));
+  let db = szakaszok.reduce((s, x) => s + x.cikkek.length, 0);
+  for (let haladt = true; haladt && db < dbNagy;) {
+    haladt = false;
+    for (const sz of szakaszok) {
+      if (db >= dbNagy) break;
+      const sor = teljes.get(sz.id);
+      if (sz.cikkek.length >= sor.length) continue;
+      sz.cikkek.push(sor[sz.cikkek.length]);
+      db++; haladt = true;
+    }
+  }
+  return szakaszok;
 }
 
-export default { valogat, alkalmas, forma, teruletOf, cimBol, lepesSzam, TERULETEK, SZUK_ESZKOZ, MIN_LEPES, MIN_SZO, DB_TERULETENKENT };
+/**
+ * EGY KIADHATÓ CSOMAG — vagy egy OK, hogy miért nincs.
+ *
+ * 🚫 Ugyanaz az elv, mint a heti videónál: inkább NE legyen termék, mint
+ * rossz termék. Egy 2 cikkes „csomag" a Ko-fi boltban nem szépséghiba,
+ * hanem panasz. A hívó dolga kiírni az okot — a néma üres fájl a rosszabb.
+ *
+ * A számok MÉRTEK, nem becsültek: a szószám azon a szövegen fut, ami
+ * TÉNYLEGESEN a csomagba kerül (spanyolnál a spanyolon).
+ */
+export function csomag(cikkek, { tema = 'all', nyelv = 'en', dbMini = DB_MINI, dbNagy = DB_NAGY } = {}) {
+  if (!NYELVEK.includes(nyelv)) {
+    return { ok: false, indok: `ismeretlen nyelv: „${nyelv}" (${NYELVEK.join(', ')})`, db: 0 };
+  }
+  if (tema !== 'all' && !TERULETEK.some(t => t.id === tema)) {
+    return { ok: false, indok: `ismeretlen téma: „${tema}" (all, ${TERULETEK.map(t => t.id).join(', ')})`, db: 0 };
+  }
+  const szakaszok = valogat(cikkek, { tema, nyelv, dbMini, dbNagy });
+  const mind = szakaszok.flatMap(sz => sz.cikkek);
+  if (mind.length < MIN_CSOMAG) {
+    return {
+      ok: false, db: mind.length,
+      indok: `csak ${mind.length} alkalmas útmutató van (a mérce ${MIN_CSOMAG}) — `
+        + 'inkább ne legyen termék, mint rossz termék'
+    };
+  }
+  const szo = mind.reduce((s, c) => s + szoSzam(szovegNyelven(c, nyelv)), 0);
+  return { ok: true, tema, nyelv, szakaszok, db: mind.length, szo, oldal: oldalSzam(szo) };
+}
+
+export default {
+  valogat, csomag, sorrend, alkalmas, forma, teruletOf, cimBol, lepesSzam,
+  szovegNyelven, szoSzam, oldalSzam,
+  TERULETEK, SZUK_ESZKOZ, NYELVEK, MIN_LEPES, MIN_SZO,
+  DB_TERULETENKENT, DB_MINI, DB_NAGY, MIN_CSOMAG, SZO_PER_OLDAL
+};
