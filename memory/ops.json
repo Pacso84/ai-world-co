@@ -1285,15 +1285,6 @@
   ],
   "messages": [
     {
-      "id": "m178874635016056",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 20 → 5/4/2 oszlop.",
-      "ref": "mobile",
-      "at": "2026-09-07T01:59:10.160Z"
-    },
-    {
       "id": "m178874641923626",
       "from": "fact-check",
       "to": "team",
@@ -2643,6 +2634,15 @@
       "text": "2 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-09-18T12:47:23.172Z"
+    },
+    {
+      "id": "m178975706965963",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Design AI‑driven story prompts on Meta AI for your\" — The description of the Meta AI icon as \"a small circular Meta AI icon (it often looks like a multi-colored ring)\" — the actual icon is a stylized \"M\" logo, not a multi-colored ring; The description \"Message Meta AI\" as the label for the message box — current interfaces use \"Ask Meta ",
+      "ref": "ARTICLE_GUIDE_design-ai-driven-story-prompts-on-meta-ai-for-your-writing-h.json",
+      "at": "2026-09-18T18:44:29.659Z"
     }
   ]
 }
