@@ -1,7 +1,7 @@
 {
   "_meta": {
     "note": "Forrás-bizonyítvány: frissesség + termés + megbízhatóság forrásonként. Gyártja: core/source-report-card.js",
-    "updated": "2026-09-17T19:31:32.458Z",
+    "updated": "2026-09-18T02:32:16.170Z",
     "thresholds": {
       "DEAD_FEED_DAYS": 365,
       "MIN_SAMPLE": 8,
@@ -12,8 +12,8 @@
     },
     "truth_log": {
       "days": 14,
-      "from": "2026-08-27",
-      "to": "2026-09-16",
+      "from": "2026-09-01",
+      "to": "2026-09-18",
       "blocks": 28
     }
   },
@@ -21,12 +21,12 @@
     "openai-blog": {
       "name": "OpenAI Blog (hivatalos)",
       "feedAgeDays": 1,
-      "published30d": 31,
+      "published30d": 30,
       "truthBlocks": 1,
       "truthUnfixed": 0,
       "totalAttempts": 9,
       "alreadyDisabled": false,
-      "lastArticle": "2026-09-15",
+      "lastArticle": "2026-09-18",
       "verdict": "ok",
       "reason": ""
     },
@@ -44,7 +44,7 @@
     },
     "google-ai-blog": {
       "name": "Google AI (hivatalos, blog.google)",
-      "feedAgeDays": 2,
+      "feedAgeDays": 0,
       "published30d": 4,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -68,11 +68,11 @@
     },
     "microsoft-ai": {
       "name": "Microsoft AI (hivatalos)",
-      "feedAgeDays": 7,
+      "feedAgeDays": 8,
       "published30d": 2,
       "truthBlocks": 0,
       "truthUnfixed": 0,
-      "totalAttempts": 2,
+      "totalAttempts": 1,
       "alreadyDisabled": false,
       "lastArticle": "2026-09-13",
       "verdict": "ok",
@@ -92,7 +92,7 @@
     },
     "nvidia-blog": {
       "name": "NVIDIA Blog (hivatalos)",
-      "feedAgeDays": 0,
+      "feedAgeDays": 1,
       "published30d": 9,
       "truthBlocks": 2,
       "truthUnfixed": 0,
@@ -106,9 +106,9 @@
       "name": "Google Workspace Updates (hivatalos)",
       "feedAgeDays": 1,
       "published30d": 13,
-      "truthBlocks": 4,
+      "truthBlocks": 3,
       "truthUnfixed": 0,
-      "totalAttempts": 8,
+      "totalAttempts": 5,
       "alreadyDisabled": false,
       "lastArticle": "2026-09-16",
       "verdict": "ok",
@@ -154,7 +154,7 @@
       "name": "AWS Machine Learning (hivatalos)",
       "feedAgeDays": 0,
       "published30d": 5,
-      "truthBlocks": 0,
+      "truthBlocks": 1,
       "truthUnfixed": 0,
       "totalAttempts": 2,
       "alreadyDisabled": false,
@@ -164,7 +164,7 @@
     },
     "mistral-ai": {
       "name": "Mistral AI (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 2,
       "published30d": 1,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -428,7 +428,7 @@
     },
     "sap": {
       "name": "SAP Innovation Blog (hivatalos)",
-      "feedAgeDays": 0,
+      "feedAgeDays": 1,
       "published30d": 2,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -444,7 +444,7 @@
       "published30d": 2,
       "truthBlocks": 0,
       "truthUnfixed": 0,
-      "totalAttempts": 1,
+      "totalAttempts": 0,
       "alreadyDisabled": false,
       "lastArticle": "2026-09-03",
       "verdict": "ok",
@@ -488,7 +488,7 @@
     },
     "ibm": {
       "name": "IBM Research (hivatalos)",
-      "feedAgeDays": 2,
+      "feedAgeDays": 3,
       "published30d": 1,
       "truthBlocks": 1,
       "truthUnfixed": 0,
@@ -548,7 +548,7 @@
     },
     "perplexity-news": {
       "name": "Perplexity (hivatalos, Google News szűrve)",
-      "feedAgeDays": 0,
+      "feedAgeDays": 1,
       "published30d": 2,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -657,12 +657,12 @@
     "picsart": {
       "name": "PicsArt Blog (hivatalos)",
       "feedAgeDays": 0,
-      "published30d": 40,
+      "published30d": 37,
       "truthBlocks": 7,
       "truthUnfixed": 0,
       "totalAttempts": 17,
       "alreadyDisabled": false,
-      "lastArticle": "2026-09-17",
+      "lastArticle": "2026-09-18",
       "verdict": "ok",
       "reason": ""
     },
@@ -681,12 +681,12 @@
     "dropbox-blog": {
       "name": "Dropbox Blog (hivatalos)",
       "feedAgeDays": 0,
-      "published30d": 1,
+      "published30d": 2,
       "truthBlocks": 0,
       "truthUnfixed": 0,
-      "totalAttempts": 1,
+      "totalAttempts": 2,
       "alreadyDisabled": false,
-      "lastArticle": "2026-09-08",
+      "lastArticle": "2026-09-18",
       "verdict": "ok",
       "reason": ""
     },
