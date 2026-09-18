@@ -1,0 +1,66 @@
+{
+  "_meta": {
+    "written_at": "2026-09-18T12:29:06.721Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.0057312,
+    "original_draft": "2026-09-18T12-28-19-452Z_google-workspace_Notebooks_in_Gemini__a_dedicated_workspace_for_foc.json",
+    "source_id": "google-workspace",
+    "source_name": "Google Workspace Updates (hivatalos)",
+    "source_link": "http://workspaceupdates.googleblog.com/2026/09/notebooks-in-gemini-dedicated-workspace-for-focused-organized-work-now-for-schools-and-organizations.html",
+    "source_links": [
+      "http://workspaceupdates.googleblog.com/2026/09/notebooks-in-gemini-dedicated-workspace-for-focused-organized-work-now-for-schools-and-organizations.html",
+      "http://workspaceupdates.googleblog.com/2026/09/introducing-expert-intelligence-in-Gemini-Notebook.html"
+    ],
+    "merged_from": 2,
+    "merged_theme": "Gemini Notebook feature expansions",
+    "status": "published",
+    "published_at": "2026-09-18T12:29:54.101Z",
+    "slug": "how-to-use-gemini-notebook-to-organize-your-ai-work-in-one-place",
+    "auto_check": {
+      "passed": false,
+      "issues": [
+        "NO_LEDE: Hiányzik a RÖVIDEN-doboz (> **In short:** …) közvetlenül a főcím után — az AI-keresők és a Google kivonat-doboza ezt olvassák (style-guide 2a)."
+      ],
+      "wordCount": 1699
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "This is a well-structured how-to guide with excellent beginner clarity, appropriate hedging language for UI variations, concrete example prompts, and a proper before-you-start section. Brand voice is teaching, friendly, and accessible. US English is correct throughout. No prohibited content, no clichés, no fabricated facts or quotes. The source URL appears to be a placeholder but the product information aligns with the official Google Workspace announcement.",
+      "_aiCost": 0.0024558,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-09-18T12:30:52.592Z",
+    "guide_worthy": true,
+    "related_guide_topic": "ask-gemini-to-explain-a-confusing-work-email-in-plain-englis",
+    "image_v": 2,
+    "image_at": "2026-09-18T12:31:25.288Z",
+    "seo": {
+      "meta_description": "Learn how to use Gemini Notebook to organize all your AI research, chats, and files in one dedicated workspace. Simple guide for focused projects.",
+      "keywords": [
+        "how to use Gemini Notebook",
+        "Gemini Notebook guide",
+        "Google Gemini workspace",
+        "organize AI projects",
+        "Gemini Notebook tutorial",
+        "Google AI notebook",
+        "Gemini project workspace"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add a step-by-step walkthrough with concrete examples of creating and using a notebook",
+        "Include specific features like connecting ebooks and asking questions grounded in uploaded documents",
+        "Add common use cases such as book research, study sessions, or project work to improve relevance"
+      ],
+      "optimised_at": "2026-09-18T12:31:42.794Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"How to Use Gemini Notebook to Organize Your AI Work in One Place\"\nsubtitle: \"A practical guide to Google's dedicated workspace for focused projects, study sessions, and book research\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 6\ntags: [\"gemini\", \"google-ai\", \"productivity\", \"study-tools\", \"organization\"]\n---\n\n# How to Use Gemini Notebook to Organize Your AI Work in One Place\n\nYou know that moment when you have seventeen browser tabs open, three different AI chats about the same topic, and a half-finished document somewhere on your desktop? Gemini Notebook is Google's answer to exactly that. It is a dedicated workspace inside Gemini (Google's AI assistant, the one at gemini.google.com) where every conversation, uploaded file, and source stays tied to a single project instead of floating around loose.\n\n> **In short:** Gemini Notebook is a project-specific workspace inside Gemini where you upload files, keep related chats in one place, and (with a connected ebook) ask questions grounded in that book. It is rolling out to students, educators, and workplace accounts, with a paid add-on for expert sources.\n\n## What a Notebook actually is\n\nThink of a Notebook less like a chat window and more like a folder on your desk. Inside that folder you can drop PDFs, slides, images, notes, and even compatible ebooks you bought from Google Play Books. Once the files are inside, the AI can pull answers from them when you ask questions — so you stop having to copy-paste the same paragraph into every new chat.\n\nA few things that are useful to know about the name itself, because Google uses the word \"notebook\" in a couple of different places:\n\n- **Gemini Notebook** is the AI workspace inside Gemini. This is what this guide covers.\n- **Google NotebookLM** is a separate, research-focused tool that works mostly with sources you give it and writes its own summaries. Different product, similar idea.\n\nIf you have used either one before, the new Notebook will feel familiar — just built directly into the Gemini app you may already have on your phone.\n\n## Two ways it can change your week\n\nBefore the steps, here is the honest payoff so you know whether it is worth ten minutes of setup.\n\n**For study or training.** Upload the syllabus, the slides, the readings, and your own notes. Ask the AI to quiz you on chapter three, or to explain a paragraph in plain English. Because everything lives in one Notebook, the AI keeps the whole course in mind — it does not forget what you talked about last week.\n\n**For work projects.** Drop in the brief, the client emails, and the research PDFs. When you ask for a draft, the AI reads the materials you uploaded instead of guessing. That means fewer made-up details and more answers you can actually use.\n\nFor books specifically, Google has been adding the ability to add compatible ebooks purchased from Google Play Books directly into a Notebook, so you can ask questions about the text of the book rather than typing in quotes by hand. A wider library of expert sources — branded as \"Expert Intelligence\" — is being layered on top of this for eligible accounts.\n\n## Before you start\n\nA few things to check so the steps below go smoothly:\n\n- You need a Google account. A personal Gmail works; a Workspace account from school or work also works where the feature has rolled out.\n- Open Gemini in a browser at gemini.google.com, or use the Gemini mobile app. The steps below work in both, but desktop is easier for uploading several files at once.\n- Some features — especially expert-source books and workplace rollouts — sit behind paid Google AI plans. If a button is greyed out or you cannot find an option, that is usually why. Google's own pricing page has the current plan names and what each one includes.\n\n## Step 1 — Create your first Notebook\n\nOpen Gemini and look in the left-hand sidebar. You should see a **Notebooks** entry near the top. Click it, then choose **New notebook** (or **+ Create**, depending on your version of the interface). Give it a clear name — \"Marketing Q4 campaign\", \"Biology 101 midterm\", \"Book club: Thinking Fast and Slow\" — anything that tells future-you what is inside.\n\nYou'll know it worked when you land on an empty Notebook page with a chat box and an upload area, and the notebook name appears at the top of the sidebar.\n\n## Step 2 — Upload the materials you actually need\n\nClick the upload icon (it usually looks like a paperclip or a plus sign next to the chat box). You can drop in PDFs, Google Docs, Google Slides, images, and plain text files. For a school course, start with the syllabus, the lecture slides, and one or two readings you keep referring back to. For a work project, the brief and the most-cited background document are enough for a first pass.\n\n> 💬 Example prompt after uploading: *\"Summarize the key dates and grading breakdown from the syllabus I just uploaded.\"*\n\nYou'll know it worked when the AI responds using details from your file — for instance, naming a real date from the syllabus rather than a generic one.\n\n## Step 3 — Keep all related chats in that Notebook\n\nThis is the part most people skip, and it is the whole point. Whenever you start a new chat about a topic that belongs in the project, do it inside the Notebook — not in the main Gemini home screen. The sidebar inside a Notebook usually shows a **New chat in this notebook** button. Use it. That way every follow-up question, every draft, every \"explain this to me like I'm 12\" prompt stays attached to the same set of source files.\n\n> 💬 Example prompt: *\"Based on chapter 4, give me five practice questions with answers at the end.\"*\n\nYou'll know it worked when you scroll the sidebar and see a clean list of chats, all tagged with the notebook name, instead of one giant undifferentiated history.\n\n## Step 4 — Add a book if you have one\n\nIf you bought a compatible ebook from Google Play Books, look for an **Add source** or **Add from Google Play** option inside the Notebook. Pick the book, and it becomes a source the AI can quote and answer from. Useful for study guides, work training manuals, or book clubs where you want to ask \"what did the author say about X?\" without flipping through pages.\n\n> 💬 Example prompt: *\"What does this book say about decision-making under pressure? Give me three passages and a short summary.\"*\n\nYou'll know it worked when the response includes direct references to the book rather than general knowledge about the topic.\n\n## Step 5 — Pin or revisit the Notebook you care about\n\nOnce you have more than one Notebook, the one you actually need tends to get buried. Most versions of Gemini let you star or pin a Notebook in the sidebar so it sits at the top. Do this for the two or three you open every week — your current course, your main work project, the book you are reading — and ignore the rest.\n\nYou'll know it worked when the Notebook you care about is the first thing you see when you open Gemini.\n\n## Step 6 — Review and clean up once a month\n\nNotebooks get messy the same way folders do. Every few weeks, open each one, delete chats that did not lead anywhere, and rename files you uploaded under vague names like \"doc_final_v3\". The AI works better when the sources are clear, and so do you.\n\n> 💬 Example prompt: *\"Look through the files in this Notebook and tell me which ones look like duplicates or drafts.\"*\n\nYou'll know it worked when the Notebook opens faster and the AI stops mixing up old drafts with the final version.\n\n## Common mistakes\n\n- **Starting chats in the main Gemini window instead of inside the Notebook.** The AI will not see your uploaded files, and you will have to upload them again. Always start the chat from inside the Notebook.\n- **Uploading too many files at once.** Twenty PDFs sounds thorough, but the AI starts mixing details between them. Start with three to five core documents and add more only when you have a specific question that needs them.\n- **Treating the AI's answer as gospel just because it quoted your file.** It can still misread a chart or pull the wrong paragraph. Always check the source the AI points you to, especially before you use the answer at work or in an assignment.\n- **Forgetting which plan you are on.** Book integration and some expert sources sit behind paid plans. If a button is missing, that is the most likely reason — check Google's plan page rather than assuming the feature does not exist.\n\n## What this means for you\n\n- **If you are a student or lifelong learner**: Treat one Notebook as your course folder. Upload the syllabus and key readings on day one, and you have a study partner that remembers what your professor said in week two.\n- **If you work on projects with a lot of background material**: One Notebook per project keeps the brief, the research, and the drafts in one place. It is the difference between searching five folders and asking one question.\n- **If you are just curious**: Pick one thing you have been meaning to learn about — a hobby, a new skill, a book on your shelf — and build a Notebook around it. Twenty minutes of setup can save you hours of repetitive prompting.\n\n## Wrap-up\n\nGemini Notebook is at its best when you stop thinking of it as a chat box and start thinking of it as a project folder with an AI inside it. Pick one project today — a course, a work task, a book — upload two or three files, and run a single question through it. If the answer feels more useful than what you usually get from a chatbot, you will know the setup was worth it, and you can build from there.",
+  "original_title": "Notebooks in Gemini: a dedicated workspace for focused, organized work, now for schools and organizations"
+}

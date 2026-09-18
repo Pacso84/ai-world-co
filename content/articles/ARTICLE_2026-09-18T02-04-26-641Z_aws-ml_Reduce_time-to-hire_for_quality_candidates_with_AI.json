@@ -1,0 +1,69 @@
+{
+  "_meta": {
+    "written_at": "2026-09-18T12:30:04.747Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00697698,
+    "original_draft": "2026-09-18T02-04-26-641Z_aws-ml_Reduce_time-to-hire_for_quality_candidates_with_AI.json",
+    "source_id": "aws-ml",
+    "source_name": "AWS Machine Learning (hivatalos)",
+    "source_link": "https://aws.amazon.com/blogs/machine-learning/reduce-time-to-hire-for-quality-candidates-with-ai-powered-amazon-connect-talent/",
+    "source_links": [
+      "https://aws.amazon.com/blogs/machine-learning/reduce-time-to-hire-for-quality-candidates-with-ai-powered-amazon-connect-talent/",
+      "https://aws.amazon.com/blogs/machine-learning/improving-hcls-ai-reasoning-with-open-source-agent-skills/"
+    ],
+    "merged_from": 2,
+    "merged_theme": "AWS ML: AI hiring and healthcare reasoning solutions",
+    "status": "published",
+    "rejected_at": "2026-09-18T02:15:10.031Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 817
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Solid explainer with a warm, educational tone. It explains technical terms (LLM) in plain language, uses relatable analogies (family doctor vs cardiologist, kitchen knife), and structures content well for everyday readers. No prohibited content, no clichés, no British spellings, and the 'What this means for you' section offers clear, actionable guidance for four audience segments.",
+      "_aiCost": 0.0017316,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Hitelesség-kapu blokkolta: The article describes an AWS hiring tool built inside Amazon Connect that runs structured job interviews for call-center hiring with AI asking questions and scoring candidates. This appears to be a fa",
+    "can_retry": true,
+    "rework_attempts": 2,
+    "reworked_from": "REJECTED_2026-09-18T02-04-26-641Z_aws-ml_Reduce_time-to-hire_for_quality_candidates_with_AI.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-09-18T12:30:21.293Z",
+    "slug": "why-ai-is-getting-more-specialized-and-what-that-means-for-you",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-09-18T12:30:40.661Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is a general explainer article about AI specialization trends, not an announcement of a specific named tool or feature for users to adopt.",
+    "image_v": 2,
+    "image_at": "2026-09-18T12:31:15.376Z",
+    "seo": {
+      "meta_description": "AI is moving from general chatbots to specialized tools. Discover what specialized AI means for your work and why this shift matters in 2026.",
+      "keywords": [
+        "specialized AI",
+        "AI specialization",
+        "narrow AI vs general AI",
+        "job-specific AI tools",
+        "AI trends 2026",
+        "general AI vs specialized AI",
+        "AI tools for business"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add the primary keyword 'specialized AI' earlier in the meta description for better keyword prominence",
+        "Consider adding a secondary keyword like 'AI tools at work' to capture both consumer and professional search intent"
+      ],
+      "optimised_at": "2026-09-18T12:31:33.404Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Why AI Is Getting More Specialized — and What That Means for You\"\nsubtitle: \"The era of one-size-fits-all chatbots is fading. Here's how narrow, job-focused AI tools are quietly replacing general assistants.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"ai-trends\", \"specialist-ai\", \"agentic-ai\", \"everyday-ai\"]\n---\n\n# Why AI Is Getting More Specialized — and What That Means for You\n\n> **In short:** Across 2026, more AI products are being built to do *one job well* instead of answering anything you ask. That shift from \"general chatbot\" to \"careful specialist\" is already showing up in hiring tools, healthcare software, and the apps you use at work.\n\nYou asked your AI assistant to write a birthday card last year. This year, a separate tool writes the card, another one picks the gift, and a third one orders the flowers. None of them can explain quantum physics — and that is the point.\n\nFor most of the last few years, the public conversation about AI has revolved around giant, general-purpose chatbots — the kind that try to answer anything from \"what should I cook tonight?\" to \"explain this legal clause.\" They are still around. But quietly, a different kind of AI has been growing: smaller, narrower tools built to do one specific task carefully, with rules that a human can read and check.\n\n## What \"specialist AI\" actually means\n\nThink of the difference between a family doctor and a cardiologist. The family doctor knows a little about everything. The cardiologist knows a lot about one thing. Specialist AI works the same way — instead of one giant system trying to handle every request, you get focused tools that handle a narrow job.\n\nThis usually involves three ingredients working together:\n\n- **A general AI model underneath** — the same kind of engine that powers chatbots like ChatGPT or Claude (an LLM, or large language model — software trained on huge amounts of text that can understand and generate language).\n- **A focused instruction set** — a tight bundle of rules telling the model how to handle *this* type of task. For medical questions, that might mean \"always cite the source guideline.\" For hiring, it might mean \"score every answer against the same checklist.\"\n- **A narrow input and output** — the tool only accepts the kind of input it was built for (a resume, a patient summary, a customer email) and only produces the kind of output that makes sense for that job.\n\nThe result is software that is less flashy but more predictable. You know what goes in, you know what comes out, and a human can usually trace the reasoning in between.\n\n## Where you're already seeing it\n\nA few everyday examples worth noticing:\n\n- **Image generators** that specialize in one style — product photos, anime, architectural renders — instead of trying every visual style at once.\n- **Code assistants** built into editors, trained to suggest the *next line* in your file rather than chat about anything.\n- **Voice agents** for customer support that handle a fixed menu of requests (refund status, password reset, address change) and politely hand off anything stranger to a human.\n- **Writing helpers** focused on a single format — email replies, meeting notes, ad headlines — instead of blank-page creativity.\n\nEach of these is doing less than a general chatbot, on purpose. That is what makes them useful.\n\n## What this means for you\n\n- **If you use AI casually at home:** Expect more apps to ship with AI that only does one thing — and does it without the long, rambling answers general chatbots sometimes give. That is usually a good thing for daily tasks.\n- **If you work in a small business or as a freelancer:** Specialist tools tend to be cheaper, faster, and easier to trust than general ones, because their scope is smaller. When you evaluate any new AI vendor, ask: \"What is this tool *not* trying to do?\" A clear answer is a good sign.\n- **If you're in HR, healthcare, law, or another regulated field:** Look for tools that show you their rules — the rubric, the checklist, the criteria. Specialist AI earns trust by being inspectable, not by being magical.\n- **If you're just curious about where AI is heading:** The pattern to watch is *narrow, careful, inspectable* — the opposite of the early \"AI can do anything\" hype. The next few years will reward tools that know their limits.\n\n## Wrap-up\n\nGeneral chatbots aren't going away. But more and more of the AI you'll actually touch in daily life will be quieter, smaller, and built for one job — the way a good kitchen knife beats a Swiss Army knife for chopping onions. Your best move today is a simple one: when a new AI tool shows up, ask what it is *specifically* for. If the answer is vague, treat the tool the same way.",
+  "original_title": "Reduce time-to-hire for quality candidates with AI-powered Amazon Connect Talent"
+}

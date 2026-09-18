@@ -1,102 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t17894397291684",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-09-15T02:35:29.168Z",
-      "updated": "2026-09-15T02:36:47.406Z"
-    },
-    {
-      "id": "t178943980740839",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-15T02:36:47.408Z",
-      "updated": "2026-09-15T02:37:11.901Z"
-    },
-    {
-      "id": "t178943983190234",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-15T02:37:11.902Z",
-      "updated": "2026-09-15T02:38:07.037Z"
-    },
-    {
-      "id": "t178943988703973",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-09-15T02:38:07.039Z",
-      "updated": "2026-09-15T02:41:51.287Z"
-    },
-    {
-      "id": "t178944011128856",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-15T02:41:51.288Z",
-      "updated": "2026-09-15T02:42:01.819Z"
-    },
-    {
-      "id": "t178944012182163",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-09-15T02:42:01.821Z",
-      "updated": "2026-09-15T02:42:28.398Z"
-    },
-    {
-      "id": "t178947710401525",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-09-15T12:58:24.015Z",
-      "updated": "2026-09-15T12:58:24.153Z"
-    },
-    {
-      "id": "t178947710415439",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-09-15T12:58:24.154Z",
-      "updated": "2026-09-15T12:59:05.480Z"
-    },
-    {
-      "id": "t178947714548199",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-09-15T12:59:05.481Z",
-      "updated": "2026-09-15T13:02:06.285Z"
-    },
-    {
-      "id": "t178947732628721",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-09-15T13:02:06.287Z",
-      "updated": "2026-09-15T13:03:25.657Z"
-    },
-    {
-      "id": "t178947740565894",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-15T13:03:25.658Z",
-      "updated": "2026-09-15T13:04:08.906Z"
-    },
-    {
-      "id": "t178947744890815",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-09-15T13:04:08.908Z",
-      "updated": "2026-09-15T13:04:34.005Z"
-    },
-    {
       "id": "t178947747400646",
       "title": "Run ellenorzo",
       "status": "done",
@@ -479,33 +383,105 @@
       "agent": "publisher",
       "created": "2026-09-18T02:20:32.996Z",
       "updated": "2026-09-18T02:20:56.197Z"
+    },
+    {
+      "id": "t178973447050997",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-09-18T12:27:50.509Z",
+      "updated": "2026-09-18T12:27:50.625Z"
+    },
+    {
+      "id": "t178973447062625",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-09-18T12:27:50.626Z",
+      "updated": "2026-09-18T12:28:19.461Z"
+    },
+    {
+      "id": "t178973449946215",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-09-18T12:28:19.462Z",
+      "updated": "2026-09-18T12:28:19.591Z"
+    },
+    {
+      "id": "t178973449959349",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-09-18T12:28:19.593Z",
+      "updated": "2026-09-18T12:29:06.732Z"
+    },
+    {
+      "id": "t178973454673340",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-18T12:29:06.733Z",
+      "updated": "2026-09-18T12:29:54.113Z"
+    },
+    {
+      "id": "t178973459411566",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-09-18T12:29:54.115Z",
+      "updated": "2026-09-18T12:30:04.757Z"
+    },
+    {
+      "id": "t178973460475842",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-18T12:30:04.759Z",
+      "updated": "2026-09-18T12:30:21.302Z"
+    },
+    {
+      "id": "t17897346213045",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-09-18T12:30:21.304Z",
+      "updated": "2026-09-18T12:30:52.619Z"
+    },
+    {
+      "id": "t178973465265319",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-18T12:30:52.653Z",
+      "updated": "2026-09-18T12:31:25.319Z"
+    },
+    {
+      "id": "t178973468532090",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-09-18T12:31:25.320Z",
+      "updated": "2026-09-18T12:31:42.818Z"
+    },
+    {
+      "id": "t17897347028193",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-18T12:31:42.819Z",
+      "updated": "2026-09-18T12:31:55.426Z"
+    },
+    {
+      "id": "t178973471542739",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-09-18T12:31:55.427Z",
+      "updated": "2026-09-18T12:32:12.933Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178852448756422",
-      "level": "warn",
-      "text": "📨 guide → ceo: Kell még adat: \"How to Ask GitHub Copilot to Explain a Confusing Error Message\" — az Ellenőrző tényt/forrást kér, amit n",
-      "agent": "guide",
-      "at": "2026-09-04T12:21:27.564Z",
-      "loud": false
-    },
-    {
-      "id": "n178852482614693",
-      "level": "info",
-      "text": "SEO: 14 cikk optimalizálva (átlag 8.3/10).",
-      "agent": "seo",
-      "at": "2026-09-04T12:27:06.146Z",
-      "loud": false
-    },
-    {
-      "id": "n178852485112559",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The line-up looks solid — practical, everyday use cases that anyone can relate to, with good variety across personal, professional, and emotional scenarios. Each article names a specific AI tool, whic",
-      "agent": "publisher",
-      "at": "2026-09-04T12:27:31.125Z",
-      "loud": false
-    },
     {
       "id": "n178852486599477",
       "level": "success",
@@ -1281,54 +1257,33 @@
       "agent": "ceo",
       "at": "2026-09-18T02:20:56.242Z",
       "loud": false
+    },
+    {
+      "id": "n178973470281174",
+      "level": "info",
+      "text": "SEO: 2 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-09-18T12:31:42.811Z",
+      "loud": false
+    },
+    {
+      "id": "n178973472111815",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The lineup looks solid and ready — practical, everyday use cases that show real people how AI can help with common writing tasks. One small gap: Article 6 doesn't specify which AI tool it uses, so I'd",
+      "agent": "publisher",
+      "at": "2026-09-18T12:32:01.118Z",
+      "loud": false
+    },
+    {
+      "id": "n178973473296480",
+      "level": "success",
+      "text": "2 hír + 0 útmutató publikálva (költség: $0.0168).",
+      "agent": "ceo",
+      "at": "2026-09-18T12:32:12.964Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178869570651876",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Create a Simple Event Sign-Up Form with GitHub Copilot\" (?/10)",
-      "ref": "GUIDE_create-a-simple-event-sign-up-form-with-github-copilot.json",
-      "at": "2026-09-06T11:55:06.518Z"
-    },
-    {
-      "id": "m178869577477440",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 20 → 5/4/2 oszlop.",
-      "ref": "mobile",
-      "at": "2026-09-06T11:56:14.774Z"
-    },
-    {
-      "id": "m178869583774667",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Create a personalised weekly meal plan based on yo\" — Free Plan claim about Gemini's free version being suitable for all steps in this guide",
-      "ref": "ARTICLE_GUIDE_create-a-personalised-weekly-meal-plan-based-on-your-diet-wi.json",
-      "at": "2026-09-06T11:57:17.746Z"
-    },
-    {
-      "id": "m178869644347650",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "2 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-09-06T12:07:23.476Z"
-    },
-    {
-      "id": "m178871746576673",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 20 → 5/4/2 oszlop.",
-      "ref": "mobile",
-      "at": "2026-09-06T17:57:45.766Z"
-    },
     {
       "id": "m178871789826265",
       "from": "social",
@@ -2643,6 +2598,51 @@
       "text": "5 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-09-18T02:31:29.969Z"
+    },
+    {
+      "id": "m178973460474863",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Reduce time-to-hire for quality candidates with AI-powered Amazon Connect Talent\" — javítva: The article describes an AWS hiring tool built inside Amazon Connect that runs structured job interviews for call-center hiring with AI asking questions and scoring candidates. This appears to be a fabricated or inaccurate product feature not currently announced by AWS/Amazon Connect.; The ar",
+      "ref": "2026-09-18T02-04-26-641Z_aws-ml_Reduce_time-to-hire_for_quality_candidates_with_AI.json",
+      "at": "2026-09-18T12:30:04.748Z"
+    },
+    {
+      "id": "m178973462129411",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Reduce time-to-hire for quality candidates with AI-powered Amazon Connect Talent\" (?/10)",
+      "ref": "2026-09-18T02-04-26-641Z_aws-ml_Reduce_time-to-hire_for_quality_candidates_with_AI.json",
+      "at": "2026-09-18T12:30:21.294Z"
+    },
+    {
+      "id": "m178973465261192",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "info",
+      "text": "A \"Notebooks in Gemini: a dedicated workspace for focused,\" hír a meglévő útmutatóra mutat: ask-gemini-to-explain-a-confusing-work-email-in-plain-englis",
+      "ref": "ask-gemini-to-explain-a-confusing-work-email-in-plain-englis",
+      "at": "2026-09-18T12:30:52.611Z"
+    },
+    {
+      "id": "m178973471541982",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 20 → 5/4/2 oszlop.",
+      "ref": "mobile",
+      "at": "2026-09-18T12:31:55.419Z"
+    },
+    {
+      "id": "m178973477743648",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Build a simple weekly meal plan with Grok based on\" — star or pin the chat in Grok",
+      "ref": "ARTICLE_GUIDE_build-a-simple-weekly-meal-plan-with-grok-based-on-what-s-in.json",
+      "at": "2026-09-18T12:32:57.436Z"
     }
   ]
 }
