@@ -1285,15 +1285,6 @@
   ],
   "messages": [
     {
-      "id": "m178880934923619",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 20 → 5/4/2 oszlop.",
-      "ref": "mobile",
-      "at": "2026-09-07T19:29:09.236Z"
-    },
-    {
       "id": "m178880939571481",
       "from": "fact-check",
       "to": "team",
@@ -2643,6 +2634,15 @@
       "text": "6 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-09-19T02:30:23.153Z"
+    },
+    {
+      "id": "m178981977494722",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Digitize handwritten notes with AI and turn them i\" — Microsoft Lens as a standalone app (merged into OneNote in 2020); Reference to 'purple lens' icon (app no longer exists standalone)",
+      "ref": "ARTICLE_GUIDE_digitize-handwritten-notes-with-ai-and-turn-them-into-editab.json",
+      "at": "2026-09-19T12:09:34.948Z"
     }
   ]
 }
