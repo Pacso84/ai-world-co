@@ -110,6 +110,7 @@
     "anyagodban",
     "anyagodból",
     "anyagodra",
+    "anyagodról",
     "anyagok",
     "anyagokat",
     "anyagokból",
@@ -185,6 +186,7 @@
     "barkácsrobotkarod",
     "bart-large-cnn",
     "barátságok",
+    "barátságokban",
     "barátságokról",
     "basmati",
     "beadandó-draftokat",
@@ -312,6 +314,7 @@
     "chargeback",
     "chat-et",
     "chat-hez",
+    "chatbot-tól",
     "chatbottot",
     "chatbotól",
     "chatgpt",
@@ -322,6 +325,7 @@
     "checklisteden",
     "checklistek",
     "checklisteket",
+    "checklisten",
     "checklistet",
     "checklistje",
     "checklistként",
@@ -382,6 +386,7 @@
     "cipősdoboznyi",
     "cipősdobozon",
     "claude",
+    "cliffhangerrel",
     "clip-artot",
     "clipart",
     "coachként",
@@ -536,6 +541,7 @@
     "dhoz",
     "diacsomagod",
     "diacsomagodban",
+    "diarizáció",
     "distilbert-base-uncased-finetuned-sst",
     "distilgpt",
     "dizájnszakkifejezés",
@@ -811,6 +817,7 @@
     "forintösszeget",
     "formalityás",
     "forrásanyagod",
+    "forrásanyagoknál",
     "forrásanyagokon",
     "forráslink",
     "forráslinkek",
@@ -908,6 +915,7 @@
     "hanganyagod",
     "hanganyagok",
     "hanganyagokat",
+    "hanganyagokkal",
     "hanganyagoknál",
     "hanganyagon",
     "hanggenerátorokból",
@@ -1148,6 +1156,7 @@
     "jelenetpromptodba",
     "jelenséget",
     "jelentésösszeállítás",
+    "jelerősséget",
     "jellemzőtelen",
     "jelnyelvet",
     "jelzálogodat",
@@ -1751,6 +1760,7 @@
     "olvashato",
     "olyasmig",
     "omat",
+    "omni-modal",
     "onboarding",
     "onboardingnál",
     "onzenhez",
@@ -2032,6 +2042,7 @@
     "robotikusnak",
     "rollout",
     "rosszok",
+    "routeren",
     "routine-ját",
     "rovarokat",
     "rutinek",
@@ -2749,6 +2760,7 @@
     "óránél",
     "óvatosságod",
     "ömljenek",
+    "önhibafelderítő",
     "önvezetett",
     "önéletrajc",
     "össz-céges",
@@ -3949,6 +3961,11 @@
     "kopints": {
       "correct": "koppints",
       "at": "2026-09-18",
+      "mondattal": true
+    },
+    "alapveten": {
+      "correct": "alapvetően",
+      "at": "2026-09-19",
       "mondattal": true
     }
   },
@@ -5279,11 +5296,36 @@
       "correct": "költözési",
       "at": "2026-09-18",
       "mondattal": true
+    },
+    "töltssek": {
+      "correct": "töltsem",
+      "at": "2026-09-19",
+      "mondattal": true
+    },
+    "felteti": {
+      "correct": "felteszi",
+      "at": "2026-09-19",
+      "mondattal": true
+    },
+    "egyetli": {
+      "correct": "egyetlen",
+      "at": "2026-09-19",
+      "mondattal": true
+    },
+    "megoszsd": {
+      "correct": "oszd meg",
+      "at": "2026-09-19",
+      "mondattal": true
+    },
+    "checklisted": {
+      "correct": "checklisten",
+      "at": "2026-09-19",
+      "mondattal": true
     }
   },
   "scan": {
-    "at": "2026-09-18",
-    "files": 999,
-    "candidates": 3
+    "at": "2026-09-19",
+    "files": 1005,
+    "candidates": 18
   }
 }
