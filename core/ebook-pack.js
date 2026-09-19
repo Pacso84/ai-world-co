@@ -229,6 +229,201 @@ export function oldalSzam(szo) {
   return Math.max(1, Math.round(szo / SZO_PER_OLDAL));
 }
 
+// ===================================================================
+// HORGONYOK — a kattintható tartalomjegyzék alapja (2026-09-19)
+// ===================================================================
+/**
+ * Az útmutató HORGONY-AZONOSÍTÓJA a csomagban — a `_meta.slug`-ból.
+ *
+ * ⚠️ NEM A CÍMBŐL. A `slug` a KANONIKUS azonosítónk (rögzített slug-szabály):
+ * a cím átírása sosem költöztet oldalt, és mérve a cikkek ~11%-ánál a kettő
+ * ELTÉR. Címből képzett azonosító tehát (a) elmozdulhat egy cím-javítástól,
+ * (b) két hasonló címnél ÜTKÖZHET — és egy ütköző horgony a PDF-ben nem
+ * hibát ad, hanem CSENDBEN rossz fejezetre visz.
+ *
+ * A `g-` előtag két dolgot ad: a számmal kezdődő slug is érvényes HTML-id
+ * lesz, és sosem ütközik a szakasz-horgonyokkal (`s-`).
+ */
+export function horgony(slug) {
+  const t = String(slug || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+  return 'g-' + (t || 'utmutato');
+}
+
+/** Egy TÉMA-SZAKASZ horgonya. A téma-azonosítók gépiek, de ugyanúgy tisztítjuk. */
+export function szakaszHorgony(id) {
+  const t = String(id || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+  return 's-' + (t || 'szakasz');
+}
+
+/**
+ * A csomag TELJES horgony-térképe: cikk-objektum → egyedi azonosító.
+ *
+ * ⚠️ MIÉRT EGY TÉRKÉP, ÉS NEM KÉT HÍVÁS: a jegyzék és a fejezet-fejléc
+ * UGYANEZT a térképet olvassa. Ha mindkettő magának számolná ki, az egyik
+ * elnémulhatna a másiktól (halott belső link) — ugyanaz a „két példány"
+ * csapda, ami a cikk-sablonoknál NÉGYSZER ütött be.
+ *
+ * Az EGYEDISÉGET itt kényszerítjük ki (`-2`, `-3` utótag), nem reméljük:
+ * a slug elvben egyedi, de egy fizetős PDF-ben a „csendben rossz fejezetre
+ * visz" hiba a VEVŐNEK tűnik fel, nem nekünk.
+ */
+export function horgonyok(szakaszok) {
+  const ki = new Map(), volt = new Set();
+  for (const sz of Array.isArray(szakaszok) ? szakaszok : []) {
+    for (const c of sz?.cikkek || []) {
+      const alap = horgony(c?.slug);
+      let id = alap;
+      for (let n = 2; volt.has(id); n++) id = `${alap}-${n}`;
+      volt.add(id); ki.set(c, id);
+    }
+  }
+  return ki;
+}
+
+// ===================================================================
+// PÉLDA-PROMPTOK KINYERÉSE — a 💬 blokkok (2026-09-19)
+// ===================================================================
+// MIÉRT: a nagy csomag termékszövege prompt-gyűjteményt ígér a végére. A
+// promptok MEGVANNAK a szövegben (mérve: 719 a nagy angol csomagban), csak
+// nem voltak egy helyen — az ígéret tehát nem hazugság volt, hanem hiány.
+//
+// ⚠️ A MINTA NEM ÚJ, ÉS SZÁNDÉKOSAN SZÓ SZERINTI MÁSOLAT a
+// `website/build.js` → `guideSectionHtml()` két szabályából (0) és (2).
+// Ugyanazt a 💬 blokkot kell megtalálni, amit az olvasó a honlapon a
+// `.g-prompt` dobozban LÁT — két külön minta idővel szétcsúszna, és a
+// függelék halkan kevesebbet mutatna, mint a könyv törzse.
+// Importálni NEM lehet: a `website/build.js` puszta importja épít és
+// publikál. Ezért másolat — és a `PROMPT_CIMKE` szó szerinti jelenlétét az
+// eredetiben TESZT őrzi (`ebook-pack.test.js`), hogy a csúszás ne legyen néma.
+//
+// A címke-alternatívák közt a `beispiel|exemple` is ott van: a de/fr nyelv
+// 2026-08-25-én kivezetett, de a minta az EREDETI szövegével azonos marad —
+// a másolat akkor ér valamit, ha BETŰRE ugyanaz. (A csomag nyelve en/es.)
+export const PROMPT_CIMKE = String.raw`(?:\*\*[^*\n]{1,40}\*\*[ \t]*:?[ \t]*|(?:example|p[ée]lda(?:[ \t]*prompt)?|ejemplo|beispiel|exemple)[ \t]*:?[ \t]*)?`;
+
+// ⚠️ AZ `i` ZÁSZLÓ ITT NEM RÉSZLETKÉRDÉS: a honlap mintája `gmi`, a cikkekben
+// pedig NAGY kezdőbetűvel áll a címke („💬 Example:"). Nélküle a címke
+// bent maradt a prompt szövegében, a kerítés-ág pedig SOHA nem indult el —
+// mérve: 106 többsoros promptból 13 jött ki. Egy zászló, 93 csonka prompt.
+/** A címke a sor elejéről (pl. „Example:", „**Ejemplo:**") — leszedve. */
+const RX_CIMKE_ELOL = new RegExp('^[ \\t]*' + PROMPT_CIMKE, 'i');
+/** A felvezető sort KÖVETŐ kódkerítés — a TÖBBSOROS prompt tartalma. */
+const RX_KERITES = /^\n+[ \t]*```[^\n]*\n([\s\S]*?)\n[ \t]*```/;
+/** A következő NEM ÜRES sor (üres sorokon át is). */
+const RX_KOV_SOR = /^\n+([^\n]*\S[^\n]*)/;
+/**
+ * FELVEZETÉS-e a sor, vagyis MÁSHOL van-e a prompt?
+ *
+ * MÉRVE (2026-09-19, 447 útmutató): a 💬 sort KÖZVETLENÜL követő kódkerítés
+ * 114 helyen áll, és MIND A 114-nél a sor kettőspontra végződik („💬 Example:",
+ * „💬 Example: Type into the message box:"). Ugyanez a jel vezeti a sima
+ * folytatást is: „💬 Example:" → „`Hi`", vagy „💬 Example:" → „Type or paste:"
+ * → „\"Hello\"". A kettőspont tehát MÉRT jel, nem tipp.
+ */
+const RX_FELVEZETES = /:\s*\*{0,2}\s*$/;
+
+/** Üres-e a prompt ÉRDEMI szövege? A jelölés (idézőjel, félkövér, kettőspont) nem tartalom. */
+const promptUres = (s) => !String(s).replace(/[`*_>#\s"'„“”«»:.\-–—]/g, '').length;
+/** Egy sor nyers jelöléstől megtisztítva: idézet-jel, behúzás, címke. */
+const promptSor = (s) => String(s).replace(/^[ \t>]+/, '').trim().replace(RX_CIMKE_ELOL, '').trim();
+
+/**
+ * BEÍRHATÓ prompt-e, vagy csak SZEMLÉLTETŐ példa?
+ *
+ * Ugyanaz a jel, amit a honlap használ a `.g-prompt` dobozban a „Try typing"
+ * és az „Example" címke közti választásra: IDÉZŐJELLEL kezdődik-e. A
+ * markdown-hangsúlyt (`*`, `_`, backtick) előbb lehúzzuk — a honlap ezt nem
+ * teszi meg, ezért ott a `*"…"*` alakú promptok „Example"-ként jelennek meg.
+ *
+ * ⚠️ MÉRVE (2026-09-19, nagy angol csomag): 719 💬 példából 266 beírható
+ * prompt, 453 szemléltetés („a »USPS« tracking link points to…"). EZÉRT nem
+ * hívjuk a függeléket „719 promptnak": az 719 PÉLDA, amiből 266 a beírható.
+ * A termékszöveg prompt-gyűjteményt ígért — az megvan, de a darabszámot nem
+ * kerekítjük felfelé egy kényelmesebb szóval.
+ */
+export function promptBeirhato(szoveg) {
+  return /^[„“"'«‘]/.test(String(szoveg || '').replace(/^[*_`>\s]+/, ''));
+}
+
+/**
+ * A markdownban lévő példa-promptok, DOKUMENTUM-SORRENDBEN.
+ *
+ * ⚠️ A SZÁMLÁLÁS A 💬 JELRŐL INDUL, NEM EGY SOR-MINTÁRÓL — és ez egy MÉRÉS
+ * után lett így. Az első, sor-kezdetre horgonyzott változat a nagy angol
+ * csomag 719 jeléből 689-et talált meg: 22 jel a bekezdés KÖZEPÉN vagy egy
+ * listajel után áll (`*   💬 Example: …`), 8 pedig címke-sorként, aminek a
+ * folytatása külön soron van. A honlap ezeket nem teszi kiemelt dobozba, de
+ * PROMPTOK — és egy „minden prompt egy helyen" függelékből nem hiányozhat 30
+ * darab CSENDBEN. Ezért: minden jel PONTOSAN egy bejegyzést ad, így a
+ * darabszám a szöveggel ÖSSZEMÉRHETŐ (a tesztben az is).
+ *
+ * @returns {Array<{szoveg:string, kod:boolean, bevezeto:string, beir:boolean}>}
+ *   `kod:true` = kerítésből jött (ott a sortörés a tartalom RÉSZE, nem
+ *   formázás). `bevezeto` = a 💬 sor felvezető szövege, ha volt („Type into
+ *   the message box:") — a promptot NEM szennyezi, de nem is veszik el.
+ *   `beir:true` = BEÍRHATÓ prompt, nem szemléltetés (lásd `promptBeirhato`).
+ */
+export function promptok(md) {
+  const s = String(md || '').replace(/\r\n/g, '\n');
+  const ki = [];
+  let kerVege = 0;   // a kerítésbe zárt 💬 ne számoljon MÁSODSZOR is
+  for (const m of s.matchAll(/💬/g)) {
+    if (m.index < kerVege) continue;
+    let poz = m.index + m[0].length;
+    let bevezeto = '', szoveg = '', kod = false;
+    // LEGFELJEBB 3 LÉPÉS. A felvezetés néha két sor („💬 Example:" →
+    // „Type or paste:" → „\"Hello\""), de egy futó ciklus a cikk feléből
+    // promptot csinálna. A korlát MÉRT: 3 lépés mindent elér, amit találtunk.
+    for (let lepes = 0; lepes < 3; lepes++) {
+      const nl = s.indexOf('\n', poz);
+      const sorVege = nl < 0 ? s.length : nl;
+      const sor = promptSor(s.slice(poz, sorVege));
+      // Ez már maga a prompt (nem felvezetés) → készen vagyunk.
+      if (sor && !RX_FELVEZETES.test(sor)) { szoveg = sor; break; }
+      bevezeto = [bevezeto, sor].filter(Boolean).join(' ');
+      // (a) kódkerítés → TÖBBSOROS prompt, EGÉSZBEN. A behúzott tartalmat
+      // kihúzzuk (van író, aki 4 szóközzel tolja) — ahogy a honlap is.
+      const k = s.slice(sorVege).match(RX_KERITES);
+      if (k) {
+        szoveg = k[1].replace(/^[ \t]{1,8}/gm, '').trim();
+        kod = true; kerVege = sorVege + k[0].length;
+        break;
+      }
+      // (b) a következő nem üres sor a folytatás.
+      const kov = s.slice(sorVege).match(RX_KOV_SOR);
+      if (!kov) break;
+      poz = sorVege + kov[0].length - kov[1].length;
+    }
+    // Nincs folytatás → maradjon a felvezetés maga; jobb egy sovány
+    // bejegyzés, mint egy NÉMÁN eltűnt prompt.
+    if (!szoveg) { szoveg = bevezeto; bevezeto = ''; }
+    if (!promptUres(szoveg)) ki.push({ szoveg, kod, bevezeto, beir: promptBeirhato(szoveg) });
+  }
+  return ki;
+}
+
+/**
+ * A csomag promptjai ÚTMUTATÓNKÉNT — a függelék bemenete.
+ *
+ * A nyelv itt is a TARTALMAT választja: a spanyol csomag függelékébe a
+ * SPANYOL promptok mennek. (A fordító utasítása szerint a 💬 utáni példa-
+ * szöveg emberi szöveg, tehát le van fordítva — mérve: 723 a spanyolban.)
+ *
+ * ⚠️ AKINEK NINCS PROMPTJA, KIMARAD — nem üres helyet kap. Egy fizetős
+ * függelékben az üres cím rosszabb, mint a rövidebb lista.
+ */
+export function promptLista(szakaszok, nyelv = 'en') {
+  const ki = [];
+  for (const sz of Array.isArray(szakaszok) ? szakaszok : []) {
+    for (const c of sz?.cikkek || []) {
+      const szoveg = szovegNyelven(c, nyelv) || String(c?.md || '');
+      const p = promptok(szoveg);
+      if (p.length) ki.push({ cikk: c, cim: cimBol(szoveg), promptok: p });
+    }
+  }
+  return ki;
+}
+
 /** A „forma": mitől néz ki két útmutató egyformának EGY CSOMAGON BELÜL. */
 export function forma(c) {
   const szavak = cimBol(c?.md).toLowerCase().replace(/[^a-z0-9]+/g, ' ').split(' ').filter(Boolean);
@@ -363,6 +558,7 @@ export function csomag(cikkek, { tema = 'all', nyelv = 'en', dbMini = DB_MINI, d
 export default {
   valogat, csomag, sorrend, alkalmas, forma, teruletOf, cimBol, lepesSzam,
   szovegNyelven, szoSzam, oldalSzam,
+  horgony, szakaszHorgony, horgonyok, promptok, promptLista, promptBeirhato, PROMPT_CIMKE,
   TERULETEK, SZUK_ESZKOZ, NYELVEK, MIN_LEPES, MIN_SZO,
   DB_TERULETENKENT, DB_MINI, DB_NAGY, MIN_CSOMAG, SZO_PER_OLDAL
 };

@@ -11,11 +11,12 @@
 // ===================================================================
 
 import assert from 'assert/strict';
-import { existsSync } from 'fs';
+import { existsSync, readFileSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import {
   valogat, csomag, alkalmas, teruletOf, cimBol, lepesSzam, szovegNyelven,
+  horgony, horgonyok, promptok, promptLista, promptBeirhato, PROMPT_CIMKE,
   TERULETEK, SZUK_ESZKOZ, DB_TERULETENKENT, DB_MINI, DB_NAGY, MIN_CSOMAG, SZO_PER_OLDAL
 } from './ebook-pack.js';
 import { torzs, konyvHtml, utmutatokBetolt, csomagCim } from './ebook-build.js';
@@ -157,10 +158,42 @@ t('🚨 a könyv KIMONDJA, hogy a tartalom ingyen is elérhető', () => {
   assert.match(html, /also free on our website/i, '⚠️ a csomag elhallgatja, hogy a tartalom ingyenes');
 });
 
-t('🚨 a könyv KIMONDJA az AI-szerzőséget', () => {
+t('🚨 a könyv KIMONDJA: MI írta, EMBER nem szerkesztette', () => {
+  // 2026-09-19: a régi mondat („written by our AI editorial team and reviewed
+  // for accuracy and clarity") KÉT olyat állított, amit nem tudunk fedezni:
+  // emberi felülvizsgálatot (NINCS) és egy „csapatot" (eufemizmus). A honlap
+  // lábléce és a cikk-címkék pont az ellenkezőjét mondják. Egy FIZETŐS termék
+  // nem állíthat többet, mint az ingyenes oldal — se az EU MI-rendelet 50.
+  // cikke, se a fogyasztóvédelem szerint.
   const html = konyvHtml(valogat([cikk('Automate Email Drafts')]));
-  assert.match(html, /written by our AI editorial team/i,
+  assert.match(html, /written by AI\b/,
     '⚠️ eltűnt az AI-szerzőség — épp gépi tartalom miatt vagyunk keresői büntetésben');
+  assert.match(html, /No human editor reviewed the text/i,
+    '🔴 nincs kimondva, hogy emberi szerkesztő NEM nézte át (a honlap kimondja)');
+  // A jel FŐ ELEME a nagybetűs, ANGOL „AI" — Gyakorlati Kódex 1.1(a), ugyanaz,
+  // amit a honlap kártyáin az `aiMark()` ad.
+  assert.match(html, /class="ai-mark">AI</, '🔴 eltűnt a nagybetűs „AI" jel');
+  // 🔴 ÉS A TÚLÍGÉRÉS NE SZIVÁROGHASSON VISSZA. A mérce IRÁNYA itt is számít:
+  // a „van-e jelölés" kérdés ZÖLD volt a régi, félrevezető szövegre is.
+  assert.ok(!/reviewed for accuracy/i.test(html),
+    '🔴 visszajött a „reviewed for accuracy and clarity" — ilyen felülvizsgálat NINCS');
+  assert.ok(!/AI editorial team/i.test(html),
+    '🔴 visszajött az „AI editorial team" — a honlapon 2026-09-12-én pont ezt cseréltük le');
+});
+
+t('🚨 a csomag NEM ígér olyan előnyt, ami az INGYENES oldalon is megvan', () => {
+  // A régi szöveg „a version with no ads and no cookie banners"-t ígért. A
+  // honlapon SEM hirdetés, SEM fizetőfal, SEM cookie-sáv nincs (a cikkek alja
+  // szó szerint azt írja: „no ads, no paywall" — teszt is őrzi). Vagyis a
+  // mondat olyan előnyt sugallt, amiért nem kellett fizetni.
+  for (const nyelv of ['en', 'es']) {
+    const html = konyvHtml(valogat([esCikk('Sort your inbox fast', 'Ordena tu bandeja')], { nyelv }),
+      { nyelv, tema: 'work' });
+    assert.ok(!/cookie/i.test(html), `${nyelv}: visszajött a cookie-sáv mint fizetős előny`);
+  }
+  const en = konyvHtml(valogat([cikk('Automate Email Drafts')]));
+  assert.match(en, /no ads and no paywall either/i,
+    '🔴 a csomag elhallgatja, hogy a honlap MAGA is hirdetés- és fizetőfal-mentes');
 });
 
 t('minden útmutatóhoz van HONLAP-LINK (a friss változat ott van)', () => {
@@ -345,7 +378,14 @@ t('a spanyol felületi szöveg a NYELVI TÁBLÁBÓL jön, nem helyszíni fordít
   const html = konyvHtml(valogat(k, { tema: 'work', nyelv: 'es' }), { nyelv: 'es', tema: 'work' });
   // 🇪🇺 A MI-JELÖLÉS ÉS AZ ŐSZINTE NYITÓ RÉSZ MINDKÉT NYELVEN KÖTELEZŐ.
   assert.match(html, /Antes de empezar/, 'eltűnt az őszinte nyitó rész spanyolul');
-  assert.match(html, /equipo editorial de IA/, '⚠️ eltűnt a MI-JELÖLÉS a spanyol csomagból');
+  // 🇪🇺 A PRÓZA a honlap SPANYOL szövegével egyezik („escritas por IA … ningún
+  // editor humano"), a JEL viszont a nagybetűs ANGOL „AI" — ugyanaz a kettősség,
+  // mint a honlap kártyáin. A régi „equipo editorial de IA" mindkettőt elmosta.
+  assert.match(html, /escritas por IA/, '⚠️ eltűnt a MI-JELÖLÉS a spanyol csomagból');
+  assert.match(html, /Ningún editor humano revisó el texto/,
+    '🔴 a spanyol csomag elhallgatja, hogy emberi szerkesztő nem nézte át');
+  assert.match(html, /class="ai-mark">AI</, '🔴 a spanyol csomagból eltűnt a nagybetűs „AI" jel');
+  assert.ok(!/equipo editorial de IA/.test(html), '🔴 visszajött az eufemizmus');
   assert.match(html, /gratis en nuestra web/, 'a spanyol csomag elhallgatja, hogy a tartalom ingyenes');
   assert.match(html, /Trabajo y correo/, 'a szakasz-cím angolul maradt');
   // ⚠️ A LÉPÉSSZÁM AZ ANGOL EREDETIBŐL JÖN: a spanyol „## Paso 1" a
@@ -362,7 +402,179 @@ t('a csomag CÍME témára és nyelvre szabott, paraméter nélkül a RÉGI név
 });
 
 // ===================================================================
-// 7. A VALÓDI TARTALMON — „a kézzel gyártott minta az ALAKOT nézi"
+// 7. KATTINTHATÓ TARTALOMJEGYZÉK + PROMPT-FÜGGELÉK (2026-09-19)
+// ===================================================================
+// MIÉRT: a termékszöveg HÁROM extrát ígért a nagy csomagnál, és kettő nem
+// létezett (kattintható jegyzék: 0 belső horgony; prompt-gyűjtemény: 0 — pedig
+// 719 példa-prompt VAN a szövegben). Vagy megépítjük, vagy kihúzzuk az
+// ígéretet; a user az építést kérte.
+const belsoLinkek = (html) => [...html.matchAll(/href="#([^"]+)"/g)].map(m => m[1]);
+const azonositok = (html) => [...html.matchAll(/ id="([^"]+)"/g)].map(m => m[1]);
+/** A jegyzék (nav.toc) önmagában — a többi belső link a függelékből jön. */
+const tocResz = (html) => (html.match(/<nav class="toc">[\s\S]*?<\/nav>/) || [''])[0];
+
+t('🔗 a jegyzék minden eleme LÉTEZŐ horgonyra mutat (nincs halott belső link)', () => {
+  // Ugyanaz az elv, mint a cikkek halott-link kapujánál: egy jegyzék, ami
+  // sehova nem visz, egy 376 oldalas PDF-ben nem szépséghiba.
+  const k = mintaKeszlet();
+  for (const tema of [null, 'all', ...TERULETEK.map(x => x.id)]) {
+    const v = valogat(k, tema ? { tema } : {});
+    const html = konyvHtml(v, { tema });
+    const ids = azonositok(html), linkek = belsoLinkek(html);
+    assert.ok(linkek.length > 0, `${tema}: EGYETLEN belső link sincs — a jegyzék sima szöveg`);
+    const halott = linkek.filter(x => !ids.includes(x));
+    assert.deepEqual(halott, [], `${tema}: halott belső link(ek)`);
+    // …és a jegyzék MINDEN pontja link, nem csak néhány.
+    const toc = tocResz(html);
+    assert.equal((toc.match(/<li/g) || []).length, (toc.match(/href="#/g) || []).length,
+      `${tema}: a jegyzékben van link NÉLKÜLI pont`);
+  }
+});
+
+t('🔑 a horgony a SLUG-ból jön, NEM a címből (a kettő a cikkek ~11%-ánál eltér)', () => {
+  // A `_meta.slug` a kanonikus azonosítónk: a cím átírása sosem költöztet
+  // oldalt. Címből képzett horgony egy cím-javításkor ELMOZDULNA, és két
+  // hasonló cím ÜTKÖZHETNE — a PDF-ben az ütközés CSENDBEN rossz fejezetre visz.
+  const c = cikk('Sort your inbox fast');
+  c.slug = 'kanonikus-slug-2026';
+  const html = konyvHtml([{ id: 'work', cim: 'Work & email', cikkek: [c] }]);
+  assert.match(html, /id="g-kanonikus-slug-2026"/);
+  assert.match(html, /href="#g-kanonikus-slug-2026"/);
+  assert.ok(!/g-sort-your-inbox/.test(html), '🔴 a címből képzett azonosító került a PDF-be');
+});
+
+t('🔑 az azonosítók EGYEDIEK — két EGYFORMA slug is két külön horgonyt kap', () => {
+  const a = cikk('Sort your inbox one'), b = cikk('Write a polite complaint email');
+  b.slug = a.slug;                                     // szándékos ütközés
+  const m = horgonyok([{ id: 'work', cikkek: [a, b] }]);
+  assert.equal(new Set(m.values()).size, 2, '🔴 két cikk UGYANAZT a horgonyt kapta');
+  assert.equal(m.get(a), horgony(a.slug));
+  assert.match(m.get(b), /-2$/, 'az ütközés-feloldás nem sorszámoz');
+  // A számmal kezdődő slug is érvényes HTML-azonosítót ad (`g-` előtag).
+  assert.match(horgony('2026-guide'), /^g-2026-guide$/);
+  assert.match(horgony(''), /^g-/, 'slug nélkül sincs csupasz azonosító');
+});
+
+// ── A PROMPT-KINYERŐ HITELESÍTÉSE ISMERT ESETTEL ────────────────────
+// ⚠️ ENÉLKÜL A TÖBBI PROMPT-TESZT VAKON FUTNA: egy „N promptot találtam"
+// állítás önmagában nem mond semmit arról, hogy a HELYES N-t találta-e meg.
+// A fixtúra alakja a VALÓDI cikkekből van (a 💬 sor, a címke, és a címke +
+// kódkerítés hármas) — nem kitalált formátum.
+const PROMPT_FIXTURA = [
+  '## Step 1 — ask for a note',
+  '',
+  '💬 *"Write a thank-you note to my neighbour."*',
+  '',
+  'Some prose in between that must not become a prompt.',
+  '',
+  '## Step 2 — plan a trip',
+  '',
+  '💬 Example: Type into the box:',
+  '```',
+  'Plan a 3-day trip to Lisbon.',
+  'Keep it under $400.',
+  'I travel with a toddler.',
+  '```',
+  '',
+  'More prose.',
+  '',
+  '## Step 3 — summarize',
+  '',
+  '💬 **Example prompt:**',
+  '"Summarize this email in two sentences."',
+  ''
+].join('\n');
+
+t('🔑 A KINYERŐ HITELESÍTÉSE: 3 prompt van, a TÖBBSOROS pedig EGÉSZBEN jön', () => {
+  const p = promptok(PROMPT_FIXTURA);
+  assert.equal(p.length, 3, `3 prompt helyett ${p.length}: ` + JSON.stringify(p.map(x => x.szoveg)));
+  assert.equal(p[0].szoveg, '*"Write a thank-you note to my neighbour."*');
+  // A többsoros: MIND A HÁROM sor, az ELSŐ és az UTOLSÓ is. A csonkítás pont
+  // azért alattomos, mert a részleges találat SIKERNEK látszik.
+  assert.equal(p[1].kod, true, 'a kerítésből jött prompt nincs kód-jelölve');
+  assert.equal(p[1].szoveg.split('\n').length, 3, '🔴 a többsoros prompt CSONKÁN jött ki');
+  assert.match(p[1].szoveg, /^Plan a 3-day trip to Lisbon\./, 'elveszett a prompt ELSŐ sora');
+  assert.match(p[1].szoveg, /toddler\.$/, '🔴 elveszett a prompt UTOLSÓ sora');
+  assert.equal(p[1].bevezeto, 'Type into the box:', 'a felvezetés a prompt szövegébe folyt');
+  assert.equal(p[2].szoveg, '"Summarize this email in two sentences."');
+  for (const x of p) assert.ok(x.szoveg.trim(), 'ÜRES prompt került a listába');
+  // A prózából SOHA nem lesz prompt, és a címke sem marad benne.
+  assert.ok(!p.some(x => /prose/i.test(x.szoveg)), 'a próza promptként jött ki');
+  assert.ok(!p.some(x => /^Example|^\*\*Example/i.test(x.szoveg)), 'a címke bent maradt a promptban');
+  // Hibás/üres bemenet nem dob és nem gyárt promptot.
+  for (const rossz of ['', null, undefined, 42, 'nincs benne jel']) {
+    assert.doesNotThrow(() => promptok(rossz));
+    assert.deepEqual(promptok(rossz), []);
+  }
+});
+
+t('🔑 a BEÍRHATÓ prompt és a szemléltető példa különválik', () => {
+  // A honlap ugyanezzel a jellel választ a „Try typing" és az „Example"
+  // címke közt: idézőjellel kezdődik-e. Ezért nem hívjuk a függeléket
+  // „719 promptnak" — 719 PÉLDA, amiből 266 beírható.
+  assert.equal(promptBeirhato('"Write me a poem"'), true);
+  assert.equal(promptBeirhato('*"Write me a poem"*'), true, 'a dőlt prompt is prompt');
+  assert.equal(promptBeirhato('a "USPS" tracking link points to a fake domain'), false);
+  assert.equal(promptBeirhato('Menu label to look for: *"Settings"*'), false);
+});
+
+t('💬 prompt nélküli útmutató KIMARAD a függelékből (nem kap üres helyet)', () => {
+  const nincs = cikk('Sort your inbox fast');
+  const van = cikk('Write a polite complaint email');
+  van.md += '\n💬 *"Draft a polite complaint about a late delivery."*\n';
+  const lista = promptLista([{ id: 'work', cikkek: [nincs, van] }], 'en');
+  assert.equal(lista.length, 1, 'a prompt nélküli útmutató is bekerült a függelékbe');
+  assert.equal(lista[0].cikk, van);
+});
+
+t('💬 a függelék CSAK a nagy gyűjteményben van (a termékszöveg is csak ott ígéri)', () => {
+  const k = mintaKeszlet().map(c => ({ ...c, md: c.md + '\n💬 *"Do the thing."*\n' }));
+  const nagy = konyvHtml(valogat(k, { tema: 'all' }), { tema: 'all' });
+  assert.match(nagy, /id="prompts"/, '🔴 a nagy csomagból hiányzik a prompt-függelék');
+  assert.match(nagy, /Every prompt and example in this pack/);
+  for (const tema of [null, 'work']) {
+    assert.ok(!/id="prompts"/.test(konyvHtml(valogat(k, tema ? { tema } : {}), { tema })),
+      `${tema}: a mini csomagba is bekerült a függelék`);
+  }
+});
+
+t('💬 a spanyol függelék SPANYOL promptokat és SPANYOL feliratot kap', () => {
+  // 🔴 Ugyanaz a visszatérő hiba, mint a törzsnél: a néma angol visszaesés
+  // SIKERNEK látszik. Egy fizetős spanyol csomagban ez visszatérítés.
+  const k = Array.from({ length: 3 }, (_, i) => {
+    const c = esCikk(`Sort your inbox fast ${i}`, `Ordena tu bandeja ${i}`);
+    return { ...c, md: c.md + '\n💬 *"Draft a polite reply."*\n', es: c.es + '\n💬 *"Redacta una respuesta amable."*\n' };
+  });
+  const html = konyvHtml(valogat(k, { tema: 'all', nyelv: 'es' }), { tema: 'all', nyelv: 'es' });
+  assert.match(html, /Todos los prompts y ejemplos/, 'a függelék felirata angolul maradt');
+  assert.match(html, /Redacta una respuesta amable/, 'nincs benne a spanyol prompt');
+  assert.ok(!/Draft a polite reply/.test(html), '🔴 ANGOL prompt a spanyol függelékben');
+});
+
+t('🔀 a 💬 címke-minta BETŰRE ugyanaz, mint a honlapon (másolat-csúszás ellen)', () => {
+  // A kinyerő minta TUDATOS MÁSOLAT a `website/build.js` guideSectionHtml()-ből:
+  // ugyanazt a 💬 blokkot kell megtalálnia, amit az olvasó a honlapon LÁT.
+  // Importálni nem lehet (a build.js puszta importja épít és publikál), ezért
+  // ez a teszt olvassa a fájlt SZÖVEGKÉNT. A másolat akkor ér valamit, ha
+  // BETŰRE ugyanaz — a néma szétcsúszás a projekt visszatérő hibája.
+  const web = join(ROOT, 'website', 'build.js');
+  if (!existsSync(web)) { console.log('     (nincs website/build.js — kihagyva)'); return; }
+  assert.ok(readFileSync(web, 'utf-8').includes(PROMPT_CIMKE),
+    '🔴 a 💬 címke-minta ELCSÚSZOTT a honlapétól — a függelék más promptokat talál, mint amit az olvasó lát');
+});
+
+t('🏷️ a csomag darabszáma GÉPILEG is kiolvasható, és EGYEZIK a borítóval', () => {
+  // A bolti feltöltési lista eddig csak találgatásból tudta a darabszámot —
+  // és a találgatott szám pont az a fajta állítás, amit itt most javítunk.
+  const html = konyvHtml(valogat(mintaKeszlet(), { tema: 'work' }), { tema: 'work' });
+  assert.match(html, new RegExp(`<meta name="aiworld-guides" content="${DB_MINI}">`));
+  assert.match(html, new RegExp(`${DB_MINI} step-by-step guides`),
+    '🔴 a gépi szám és a borító EMBERI szövege szétcsúszott');
+  assert.match(html, /<meta name="aiworld-lang" content="en">/);
+});
+
+// ===================================================================
+// 8. A VALÓDI TARTALMON — „a kézzel gyártott minta az ALAKOT nézi"
 // ===================================================================
 console.log('\n🧪 a valódi útmutatókon');
 
@@ -459,6 +671,63 @@ t('🔴 ÉLES: a spanyol csomagok EGYETLEN cikke sem angol', () => {
     }
   }
   console.log(`     ↳ ${db} spanyol szakasz-cikk ellenőrizve, 0 angol visszaesés`);
+});
+
+// ⚠️ MÉRCE-KIÜRÜLÉS ELLENI KÜSZÖB A PROMPTOKRA. Ugyanaz a csapda, mint a
+// bemenet-küszöbnél: ha a kinyerő egyszer elhallgat (egy elrontott minta, egy
+// megváltozott írói szokás), a „minden prompt bekerült" állítás akkor is ZÖLD
+// lenne, ha NULLA promptot néz. Kimérve 2026-09-19-én: 719 (en) / 723 (es).
+const MIN_PROMPT = 300;
+
+t('🔗 ÉLES: MIND A 18 csomagban 0 halott belső link és 0 ütköző azonosító', () => {
+  const cikkek = eloCikkek();
+  if (!cikkek.length) { console.log('     (nincs útmutató — kihagyva)'); return; }
+  let linkDb = 0;
+  for (const nyelv of ['en', 'es']) {
+    for (const tema of ['all', ...TERULETEK.map(t => t.id)]) {
+      const c = csomag(cikkek, { tema, nyelv });
+      const html = konyvHtml(c.szakaszok, { nyelv, tema });
+      const ids = azonositok(html), linkek = belsoLinkek(html);
+      linkDb += linkek.length;
+      assert.equal(ids.length, new Set(ids).size, `${tema}-${nyelv}: ÜTKÖZŐ azonosító`);
+      const halott = linkek.filter(x => !ids.includes(x));
+      assert.deepEqual(halott, [], `${tema}-${nyelv}: ${halott.length} halott belső link`);
+      // A jegyzékben MINDEN útmutató szerepel, és mind link.
+      const toc = tocResz(html);
+      assert.equal((toc.match(/href="#/g) || []).length, c.db + c.szakaszok.length + (tema === 'all' ? 1 : 0),
+        `${tema}-${nyelv}: a jegyzék nem a teljes csomagot sorolja fel`);
+    }
+  }
+  console.log(`     ↳ 18 csomag, ${linkDb} belső link, 0 halott, 0 ütközés`);
+});
+
+t('💬 ÉLES: a függelékben MINDEN 💬 példa ott van, egy sem üresen', () => {
+  const cikkek = eloCikkek();
+  if (!cikkek.length) return;
+  for (const nyelv of ['en', 'es']) {
+    const c = csomag(cikkek, { tema: 'all', nyelv });
+    const lista = promptLista(c.szakaszok, nyelv);
+    const db = lista.reduce((s, x) => s + x.promptok.length, 0);
+    const beir = lista.reduce((s, x) => s + x.promptok.filter(p => p.beir).length, 0);
+    // A FÜGGETLEN MÉRCE: hány 💬 jel van magában a csomagba kerülő szövegben?
+    // Ha a kinyerő elhallgat, ez a szám NEM mozdul vele — ezért mérce.
+    const jel = c.szakaszok.flatMap(s => s.cikkek)
+      .reduce((s, x) => s + ((szovegNyelven(x, nyelv) || '').match(/💬/g) || []).length, 0);
+    assert.equal(db, jel,
+      `🔴 ${nyelv}: ${jel} db 💬 van a csomag szövegében, de ${db} került a függelékbe`);
+    for (const x of lista) for (const p of x.promptok) {
+      assert.ok(p.szoveg.trim(), `🔴 ÜRES prompt a függelékben: ${x.cim}`);
+    }
+    assert.ok(db >= MIN_PROMPT,
+      `csak ${db} prompt (a mérce ${MIN_PROMPT}) — a függelék-tesztek vakon futnának`);
+    // …és a legyártott HTML-ben PONTOSAN ennyi pont van.
+    const html = konyvHtml(c.szakaszok, { nyelv, tema: 'all' });
+    assert.equal((html.match(/class="pr__i/g) || []).length, db,
+      `${nyelv}: a függelék HTML-je nem a kinyert promptokat tartalmazza`);
+    assert.equal((html.match(/class="pr__h"/g) || []).length, lista.length);
+    assert.match(html, new RegExp(`<meta name="aiworld-prompts" content="${db}">`));
+    console.log(`     ↳ ${nyelv}: ${db} példa (${beir} beírható) ${lista.length} útmutatóból, 0 üres`);
+  }
 });
 
 t('a mért oldalszám a MÉRT 600 szó/oldal arányból jön', () => {
