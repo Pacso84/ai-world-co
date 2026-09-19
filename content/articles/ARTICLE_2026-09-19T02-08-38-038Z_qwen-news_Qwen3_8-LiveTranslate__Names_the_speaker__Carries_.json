@@ -1,0 +1,66 @@
+{
+  "_meta": {
+    "written_at": "2026-09-19T02:12:21.219Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.007059,
+    "original_draft": "2026-09-19T02-08-38-038Z_qwen-news_Qwen3_8-LiveTranslate__Names_the_speaker__Carries_.json",
+    "source_id": "qwen-news",
+    "source_name": "Qwen / Alibaba (hivatalos, Google News szűrve)",
+    "source_link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE91U2JuVzJOTWQ1dVhuVDJTV1V1MkRIcllDWTVNaTljd2lBSTk3M3hCMkFYWXd0MGpZNHdIbzNSX0RiWkFOTTZIV1N6SHhUNklyMmJFT3dfMW0?oc=5",
+    "source_links": [
+      "https://news.google.com/rss/articles/CBMiWEFVX3lxTE91U2JuVzJOTWQ1dVhuVDJTV1V1MkRIcllDWTVNaTljd2lBSTk3M3hCMkFYWXd0MGpZNHdIbzNSX0RiWkFOTTZIV1N6SHhUNklyMmJFT3dfMW0?oc=5"
+    ],
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "rejected_at": "2026-09-19T02:11:43.436Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 802
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured explainer with clear hook, solid definitions of technical terms (speaker diarization, LLM), practical real-world applications, appropriate hedging about limitations, and an actionable What This Means For You section. No prohibited content, no clichés, no fabricated facts. Minor note: the article generalizes based on the Qwen announcement without naming it explicitly, which keeps it broadly informative but could mention the source direction in a future iteration.",
+      "_aiCost": 0.00138726,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Hitelesség-kapu blokkolta: The article presents \"Qwen's LiveTranslate\" as an existing named product with speaker-diarization translation capabilities. While Qwen is verified-real, \"LiveTranslate\" as a specific branded product/f",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-09-19T02-08-38-038Z_qwen-news_Qwen3_8-LiveTranslate__Names_the_speaker__Carries_.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-09-19T02:12:59.951Z",
+    "slug": "speaker-aware-ai-translation-is-coming-what-it-does-and-who-it-helps",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-09-19T02:13:34.598Z",
+    "guide_worthy": false,
+    "pairing_reason": "Article explains speaker-aware translation as an emerging concept across the industry, not a specific named product users can access today",
+    "image_v": 2,
+    "image_at": "2026-09-19T02:16:29.904Z",
+    "seo": {
+      "meta_description": "New AI translation tools can now identify different speakers in conversations. Learn how speaker-aware translation works for meetings and travel.",
+      "keywords": [
+        "speaker aware translation AI",
+        "live translation multiple speakers",
+        "real-time translation meetings",
+        "AI translator for calls",
+        "speaker identification translation app"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add a section on current tools or platforms offering this feature for readers who want to try it now",
+        "Include specific use case examples (e.g., Zoom, Google Meet integrations) to increase relevance"
+      ],
+      "optimised_at": "2026-09-19T02:17:36.732Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Speaker-Aware AI Translation Is Coming — What It Does and Who It Helps\"\nsubtitle: \"A new wave of live translation tools names who's talking and preserves meaning. Here's what everyday people should know.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"translation\", \"voice-ai\", \"multilingual\"]\n---\n\n# Speaker-Aware AI Translation Is Coming — What It Does and Who It Helps\n\n> **In short:** A new wave of AI translation tools in development across the industry can identify different speakers in a conversation and translate what each person says while keeping tone and meaning. It works for meetings, family calls, and travel, but the technology still has rough edges worth knowing about.\n\nPicture a work call with three colleagues. One speaks Spanish, one Mandarin, one English. A year ago, a live translator would flatten their words into a single stream of text and you would lose track of who said what. The next wave of tools — being explored by several AI labs — aims to keep the speaker labels intact, so \"Maria said…\" and \"Wei said…\" survive the translation.\n\n## What \"speaker-aware\" actually means\n\nSpeaker-aware translation is a relatively new direction in AI translation tools. It means the system tries to **figure out who is talking** in a multi-person conversation and **label the translated output accordingly**, instead of dumping everything into one running paragraph.\n\nThe second part of the pitch — \"carries the meaning\" — is about **preserving tone, intent, and context**, not just swapping words. A polite refusal in Japanese should still sound like a polite refusal in English, not a blunt \"no.\"\n\nUnder the hood, this combines a few pieces of AI working together:\n\n- **Speech recognition** — turning the audio into text (the same tech that powers voice typing).\n- **Speaker diarization** — identifying *which* voice belongs to which person. Think of it like the AI drawing a colored box around each speaker in its \"mind.\"\n- **Machine translation** — converting the words to the target language.\n- **A large language model (LLM)** — the kind of engine behind ChatGPT — that smooths the result so it sounds natural and keeps the speaker's intent.\n\n## Where this helps in real life\n\nThe most obvious win is **international meetings**. If you have ever sat through a video call where half the attendees speak another language, you know the awkward pause while everyone waits for the translator to catch up. Speaker-aware tools reduce that friction by making the transcript easier to follow.\n\nIt also helps in **multilingual families and friendships**. Group chats, family video calls, even a dinner table where grandparents prefer their native language — labeling who said what keeps the conversation human.\n\nTravelers benefit too, especially in places where reading signs or menus is hard and pointing at a phone no longer feels like enough.\n\n## Limits worth knowing\n\nThis technology is impressive in demos, but as it moves into real products, it still has rough edges:\n\n- **Accents and noisy rooms** reduce accuracy. A café with music in the background can confuse the speaker detection.\n- **Code-switching** — when people mix two languages in the same sentence (\"let's go mañana, okay?\") — is still hard for most systems.\n- **Privacy matters.** Sending live audio to an AI service means your conversations are processed on someone else's servers. If you discuss anything sensitive, check the tool's data policy first.\n- **It is not a replacement for a human interpreter** in legal, medical, or high-stakes business settings. Use it as a helper, not a final authority.\n\n## What this means for you\n\n- **If you work with international teams or clients:** test any tool in a low-stakes meeting first. Notice whether the speaker labels actually help you follow the thread — and whether the translations sound natural to native speakers on your team.\n- **If you have a multilingual family or friend group:** it can make group calls and chats feel more inclusive, especially for relatives less comfortable in the dominant language.\n- **If you're learning a language:** turn the translation off sometimes and just read the original transcript. You will absorb more.\n- **If privacy is a concern:** look for tools that offer on-device processing or clearly explain how long they keep your audio. Avoid uploading anything you would not want stored on a company's server.\n\n## Wrap-up\n\nSpeaker-aware live translation is moving from research demos into something you may soon use in everyday tools. It will not replace human interpreters for serious work, but for everyday multilingual moments — calls, family, travel — it points to a quiet leap forward. Keep an eye out as it rolls out in the apps you already use, and try a small test conversation with a friend to see whether the speaker labels actually make your next multilingual moment easier to follow.",
+  "original_title": "Qwen3.8-LiveTranslate: Names the speaker. Carries the meaning. - qwen.ai"
+}

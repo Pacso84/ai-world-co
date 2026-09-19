@@ -1,0 +1,28 @@
+{
+  "started_at": "2026-09-19T02:10:53.539Z",
+  "total": 4,
+  "passed": 2,
+  "failed": 0,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.010136194000000001,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-09-18T02-04-43-752Z_qwen-news_Qwen3_8-Omni-Flash__Omni_Senses__Agentic_Delivery_.json",
+      "article": "ARTICLE_2026-09-18T02-04-43-752Z_qwen-news_Qwen3_8-Omni-Flash__Omni_Senses__Agentic_Delivery_.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.0013911
+    },
+    {
+      "writer": "WRITER_2026-09-19T02-08-38-037Z_openai-blog_Hex_turns_complex_analysis_into_visual_reports_wit.json",
+      "article": "ARTICLE_2026-09-19T02-08-38-037Z_openai-blog_Hex_turns_complex_analysis_into_visual_reports_wit.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.00125736
+    }
+  ],
+  "truth_blocked": 2,
+  "finished_at": "2026-09-19T02:11:43.451Z",
+  "duration_seconds": 49.912
+}
