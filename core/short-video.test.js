@@ -643,6 +643,99 @@ t('🔠 a fésű PONTOS száma befagyasztott valódi címeken', () => {
   }
 });
 
+// ── ZÁRÓLÉPÉS: A NÉVJEGYZÉK ÉS A VÉDETT LISTA ÖSSZE VAN KÖTVE ───────
+//
+// A 2026-09-19-i javítás után EGY dolog maradt nyitva, és pont a projekt
+// visszatérő hiba-alakja: „a javítás megvan, de a ZÁRÓLÉPÉS hiányzik"
+// (Pinterest leállt → a feltétel maradt; Reel bekötve → az őrzése nem). Ha új,
+// KISBETŰS nevű eszköz kerül a `website/tool-links.json`-ba, azt a
+// `VEDETT_ELSO_SZAVAK`-ba is be kell írni — különben a neve az ELSŐ cikkével
+// együtt „XAI's Grok" alakban megy ki a nyitótáblára.
+//
+// 🔑 MIÉRT NEM ELÉG A HOROG-FÉSŰ. Az nem tudja megmondani, hogy a „tinyGPT" a
+// gyártó írásmódja-e vagy elharapott mondat — a különbséget csak a saját
+// névjegyzékünk tudja. Ezért itt a NÉVJEGYZÉKET kérdezzük, nem a cikkeket.
+//
+// ⚠️ CSAK EBBE AZ IRÁNYBA: névjegyzék → védett lista. A fordított irány
+// (minden védett szó legyen a névjegyzékben) HAMIS BUKÁST adna, mert a listán
+// szándékosan van jövőbeli védelem (watchOS, eSIM…), aminek ma 0 előfordulása.
+const TOOL_LINKS = join(__dirname, '..', 'website', 'tool-links.json');
+
+/**
+ * A kanonikus nevek a névjegyzékből: eszközök + cégek + a hivatalos oldal
+ * nélküli ismertek (`ignore`). A `_`-kezdetű kulcsok kommentek, nem nevek.
+ * Az `ignore` is bent van: az ott álló név ugyanúgy cikk-CÍMBE kerülhet,
+ * csak épp nincs hova linkelni.
+ */
+function kanonikusNevek(j) {
+  const ki = [];
+  for (const szakasz of ['tools', 'companies']) {
+    const o = j && j[szakasz];
+    if (o && typeof o === 'object' && !Array.isArray(o)) {
+      for (const n of Object.keys(o)) if (!n.startsWith('_')) ki.push(n);
+    }
+  }
+  if (Array.isArray(j && j.ignore)) for (const n of j.ignore) if (typeof n === 'string') ki.push(n);
+  return ki;
+}
+
+/** Amit a névjegyzék alapján VÉDENI kellene, de nincs a listán. Egy mérce,
+ *  hogy az élő fájl és a hitelesítő fixtúra PONTOSAN ugyanazon fusson át. */
+function vedelemHianyzik(j) {
+  const nevek = kanonikusNevek(j);
+  const kicsi = nevek.filter(n => /^\p{Ll}/u.test(n));
+  const VED = new Set(VEDETT_ELSO_SZAVAK.map(s => s.toLowerCase()));
+  return { nevek, kicsi, hianyzik: kicsi.filter(n => !VED.has(n.toLowerCase())) };
+}
+
+t('🔠 ZÁRÓLÉPÉS: a névjegyzék MINDEN kisbetűs neve védett is', () => {
+  const { nevek, kicsi, hianyzik } = vedelemHianyzik(
+    JSON.parse(readFileSync(TOOL_LINKS, 'utf-8')));
+
+  // ⚠️ A MÉRCE NE ÜRÜLHESSEN KI. Üres vagy átstrukturált JSON mellett a
+  // „minden név védett" állítás a SEMMIBŐL is igaz lenne — a 0 kiolvasott név
+  // tehát BUKÁS, nem csend. Mérve 2026-09-19: 26 eszköz + 19 cég + 1 ignore.
+  assert.ok(nevek.length >= 30, 'csak ' + nevek.length + ' kanonikus nevet olvasott ki a '
+    + 'website/tool-links.json-ból (46 volt 2026-09-19-én) — ha a fájl szerkezete változott, a '
+    + 'kanonikusNevek() olvasóját kell hozzáigazítani, mert így ez a mérce vakon zöld');
+
+  // ISMERT POZITÍV AZ ÉLŐ FÁJLON: a névjegyzék ma pontosan egy kisbetűs nevet
+  // tart (az xAI-t), és pont az fordul elő horog elején is („xAI's Grok"). Ha
+  // ez nullára esik, az nem azt jelenti, hogy nincs baj, hanem hogy a
+  // kiolvasás romlott el.
+  assert.ok(kicsi.length >= 1, 'egyetlen kisbetűvel kezdődő kanonikus nevet sem talált — '
+    + '2026-09-19-én az xAI ott volt a ' + nevek.length + ' név között, tehát a kiolvasás '
+    + 'romlott el, nem a valóság');
+
+  assert.deepEqual(hianyzik, [], hianyzik.length + ' kisbetűs kanonikus név NINCS védve — '
+    + 'a nyitótáblán nagybetűre írnánk át a gyártó saját írásmódját. Vedd fel őket a '
+    + 'core/short-video.js VEDETT_ELSO_SZAVAK listájába (teljes szóalakkal): '
+    + hianyzik.join(', '));
+
+  console.log('       ' + nevek.length + ' kanonikus név · kisbetűs: ' + kicsi.join(', ')
+    + ' · mind védett');
+});
+
+t('🔠 a ZÁRÓLÉPÉS-mérce TÉNYLEG fog — kitalált névjegyzéken elbukik', () => {
+  // ISMERT POZITÍV, ami nem mozdul a névjegyzék változásával: három kitalált,
+  // kisbetűs név, MINDHÁROM másik szakaszból — így az is kiderül, ha az olvasó
+  // csak a `tools`-t látná.
+  const fiktiv = {
+    _comment: 'ezt nem névnek kell venni',
+    tools: { tinyGPT: 'https://example.com', Claude: 'https://claude.ai' },
+    companies: { zetaAI: 'https://example.com' },
+    ignore: ['qBot']
+  };
+  const r = vedelemHianyzik(fiktiv);
+  assert.deepEqual(r.nevek, ['tinyGPT', 'Claude', 'zetaAI', 'qBot'],
+    'az olvasó mind a három szakaszt látja, a `_comment`-et pedig nem nevezi névnek');
+  assert.deepEqual(r.hianyzik, ['tinyGPT', 'zetaAI', 'qBot'],
+    'a mérce megtalálja a védelem nélküli kisbetűs neveket');
+  // …és a MÁR VÉDETT név nem kifogás, kis/nagybetűtől függetlenül.
+  assert.deepEqual(vedelemHianyzik({ tools: { xAI: 'x', XAi: 'y' } }).hianyzik, [],
+    'az xAI védett, és az összevetés kis/nagybetű-érzéketlen');
+});
+
 // ═══════════════════════════════════════════════════════════════════
 // A TÁBLA KERETE: VÍZSZINTES KIFUTÁS ÉS FÜGGŐLEGES ÜTKÖZÉS (2026-09-18)
 // ═══════════════════════════════════════════════════════════════════
