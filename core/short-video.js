@@ -227,6 +227,91 @@ export function horogCimbol(cim) {
   return t;
 }
 
+// ── A HOROG NAGYBETŰVEL KEZDŐDIK (2026-09-19) ───────────────────────
+//
+// ÉLES LELET. A ma kiküldött Reel nyitótáblájára ez ment ki nagy betűvel:
+// „create images" — kisbetűvel, mert a cím „How to create images with AI…"
+// volt, és a felvezető-vágás („how to") után egy mondatKÖZÉPI ige maradt
+// elöl. A címben ez helyes volt; a táblán viszont ez a szöveg nem mondat
+// közepe, hanem minden, amit a néző az első másodpercben lát.
+//
+// MÉRVE (2026-09-19, a 447 videóképes útmutató MINDEGYIKÉN): 49 horog
+// (11,0%) kezdődött kisbetűvel. Az első szavak: „use" 14× · „plan" 5× ·
+// „write" 5× · „build" 3× · „create" 3× · „turn" 3× · „translate" 2×, plusz
+// 13 egyszeri ige (analyze, brainstorm, check, get, organize, practice,
+// quickly, read, rehearse, run, set, study, upload) — ÉS „xAI's Grok", ami
+// NEM ige, hanem szándékosan kisbetűs márkanév.
+//
+// A BEAVATKOZÁS HATÓKÖRE is mért: a 447 horogból 48 kap nagy kezdőbetűt, 1
+// marad kisbetűs (az xAI-os), a többi 399 SZÓ SZERINT ugyanaz.
+//
+// 🔑 EZÉRT NEM ELÉG EGY toUpperCase(). Kétféle kisbetű van a horgok elején:
+// a levágott mondatközépi ige (ezt javítani kell) és a név, amit a gyártó ír
+// kisbetűvel (ezt elrontaná). A 447-ből ma EGY ilyen név van (xAI) — de a
+// kettő KARAKTERSZINTEN teljesen egyformán néz ki, tehát a különbséget
+// tudásból kell hozni, nem a szövegből.
+//
+// ⚠️ MIÉRT CSAK A HOROG-KÁRTYÁN. A ZÁRÓ tábla nagy szövege „aiworldhq\n.com"
+// — abból SOHA nem lehet „Aiworldhq.com". A lépés-táblák szövegét pedig a
+// cikk saját fejléce adja, nagybetűvel. Ezért a beavatkozás EGYETLEN ponton
+// áll (a `cardsFromGuide` első kártyáján), és nem a `tordel`-ben vagy a
+// `tablaSvg`-ben: ott MINDEN táblát érintene, a zárót is.
+//
+// A kimondott mondat (`mond`) SZÁNDÉKOSAN változatlan: a felolvasó a
+// kis/nagybetűt nem hallja, a mondat pedig a teljes címből épül.
+export const VEDETT_ELSO_SZAVAK = [
+  // MÉRVE az 1005 élő cikk szövegében (2026-09-19), előfordulással. A saját
+  // kanonikus névjegyzékünk (website/tool-links.json, 26 eszköz + 19 cég)
+  // EGYETLEN kisbetűs nevet tart: az xAI-t — és pont az fordul elő horog
+  // elején is („xAI's Grok"). A lista tehát nem ötlet, hanem lelet.
+  'iPhone',      // 217×
+  'iOS',         // 179×
+  'iPad',        //  83×
+  'xAI',         //  65×  ← ez az egyetlen, ami ma HOROG elején is áll
+  'macOS',       //  43×
+  'iCloud',      //  15×
+  'iPadOS',      //  14×
+  'iMessage',    //   4×
+  'iPod',        //   3×
+  'eBay',        //   3×
+  'iMovie',      //   1×
+  'nano-banana', //   1×
+  'n8n',         //   1×
+  // JÖVŐBELI VÉDELEM: ma 0 előfordulás, de ugyanabból a névcsaládból valók,
+  // és egy új cikk bármikor behozhatja őket. Nulla a költségük.
+  'watchOS', 'tvOS', 'visionOS', 'iTunes', 'iWork', 'iBooks', 'eSIM'
+];
+
+/**
+ * A szándékosan kisbetűs nevek kisbetűsítve — a kis/nagybetű-érzéketlen
+ * összevetéshez.
+ *
+ * ⚠️ TELJES SZÓALAKRA ILLESZTÜNK, SOHA NEM ELŐTAGRA. A projektben KÉTSZER
+ * fogott meg az előtag-illesztés csapdája (a helyesírás-szótárban az
+ * „analysis → analyzis"): aki előtagra illeszt, az előbb-utóbb egy szó
+ * BELSEJÉT találja meg. Egy Set és teljes szóalak — így az „iOS" az „iOS"-ra
+ * illeszkedik, az „iOSomething"-re nem, a „set"-re pedig semmiképp.
+ */
+const VEDETT = new Set(VEDETT_ELSO_SZAVAK.map(s => s.toLowerCase()));
+
+/**
+ * A horog-szöveg első szava NAGYBETŰVEL — kivéve, ha védett név.
+ *
+ * A birtokos-farkat és a záró írásjelet az ÖSSZEVETÉS előtt vágjuk le
+ * („xAI's" → „xAI", „iPhone:" → „iPhone"), mert azok nem részei a névnek.
+ * A KIMENETET ez nem írja át: ott pontosan egy karakter változhat.
+ */
+export function nagybetusHorog(s) {
+  const t = String(s == null ? '' : s);
+  const m = t.match(/^(\s*)(\S+)/);
+  if (!m) return t;                              // üres vagy csak térköz
+  const eleje = m[1].length, szo = m[2];
+  if (!/^\p{Ll}/u.test(szo)) return t;           // már nagybetű, szám vagy jel
+  const mag = szo.replace(/['’]s$/i, '').replace(/[^\p{L}\p{N}]+$/u, '');
+  if (VEDETT.has(mag.toLowerCase())) return t;
+  return t.slice(0, eleje) + t[eleje].toUpperCase() + t.slice(eleje + 1);
+}
+
 /** A nagy szöveg tördelése a kártyán — kézzel, mert az SVG nem tördel. */
 function tordel(s, maxSor = 13) {
   const szavak = String(s).split(' ');
@@ -282,7 +367,8 @@ export function cardsFromGuide(md, { maxSteps = LEPES_MAX } = {}) {
 
   const valasztott = lepesek.slice(0, Math.max(MIN_LEPES, maxSteps));
   // A HOROG a megtisztított címből jön: az általános felvezető nem hír.
-  const horogCim = splitHeading(horogCimbol(cim)).nagy;
+  // A kezdő nagybetűt a nagybetusHorog adja — CSAK ennek az EGY kártyának.
+  const horogCim = nagybetusHorog(splitHeading(horogCimbol(cim)).nagy);
 
   // ⚠️ A KIMONDOTT mondat SZÁNDÉKOSAN a teljes címet hozza, csak a „how to"
   // nélkül — ott a felvezető nem baj, mert a hang tovább mondja a lényeget.
@@ -546,7 +632,7 @@ export async function renderVideo(cards, { out, workDir, voice = 'en-US-AvaMulti
 }
 
 export default {
-  cardsFromGuide, splitHeading, horogCimbol, becsultHossz, renderVideo, tablaSvg,
+  cardsFromGuide, splitHeading, horogCimbol, nagybetusHorog, becsultHossz, renderVideo, tablaSvg,
   MIN_LEPES, W, H, SAV_FELSO, SAV_ALSO
 };
 

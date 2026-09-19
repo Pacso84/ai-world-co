@@ -16,7 +16,8 @@ import { readFileSync, readdirSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import {
-  cardsFromGuide, splitHeading, horogCimbol, videoArgs, tablaSvg,
+  cardsFromGuide, splitHeading, horogCimbol, nagybetusHorog, VEDETT_ELSO_SZAVAK,
+  videoArgs, tablaSvg,
   MIN_LEPES, SAV_FELSO, SAV_ALSO, W,
   ALCIM_MERET, ALCIM_MIN_MERET, ALCIM_ARANY,
   SZOVEG_MAX_SZELES, BETU_ARANY, SZOVEG_MIN_MERET, SAV_JELZO_Y, MARKAJEL_Y
@@ -427,6 +428,81 @@ t('🪝 a KIMONDOTT mondat változatlan — ott a felvezető nem baj', () => {
   assert.match(cards[0].mond, /^Spot a Deepfake/);
 });
 
+// ═══════════════════════════════════════════════════════════════════
+// A HOROG ELSŐ BETŰJE (2026-09-19)
+// ═══════════════════════════════════════════════════════════════════
+//
+// ÉLES LELET. A ma kiküldött Reel nyitótáblájára „create images" ment ki —
+// kisbetűvel, mert a cím „How to create images with AI…" volt, és a
+// felvezető-vágás után mondatKÖZÉPI ige maradt elöl. MÉRVE: a 447 videóképes
+// útmutatóból 49 (11,0%) horga kezdődött kisbetűvel.
+//
+// 🔑 AMIÉRT EZ NEM EGY toUpperCase(). A 49 között VAN egy, ami helyes volt:
+// „xAI's Grok". Ugyanaz a karakter-alak, ellentétes helyes válasz — ezért a
+// javításnak tudnia kell, mi márkanév.
+
+/** A legkisebb videóképes útmutató egy adott címmel — itt csak a horog érdekel. */
+const horogCikk = cim => [
+  '---', 'title: "' + cim + '"', '---', '',
+  '## Step 1 — Open the app and sign in', '', 'x', '',
+  '## Step 2 — Ask a question in plain words', '', 'x', '',
+  '## Step 3 — Check the sources it shows', '', 'x', ''
+].join('\n');
+
+/** A mai éles eset, szó szerint a kiküldött videó címe. */
+const MAI = "How to create images with AI: a beginner's first try";
+
+t('🔠 a MAI éles eset: „create images" → „Create images"', () => {
+  const { cards } = cardsFromGuide(horogCikk(MAI));
+  assert.equal(cards[0].nagy, 'Create images');
+});
+
+t('🔠 a ZÁRÓ tábla „aiworldhq"-ja VÁLTOZATLAN', () => {
+  // A LEGFONTOSABB visszaesés-védelem. A nagybetűsítés EGYETLEN kártyára szól;
+  // ha egyszer a `tordel`-be vagy a `tablaSvg`-be csúszik, akkor a saját
+  // domainünk „Aiworldhq.com"-ként megy ki a videó utolsó másodpercében.
+  for (const md of [CIKK, horogCikk(MAI), horogCikk('use AI for everything')]) {
+    const { cards } = cardsFromGuide(md, { maxSteps: 4 });
+    assert.equal(cards[cards.length - 1].nagy, 'aiworldhq\n.com', 'a záró tábla nagy szövege');
+  }
+});
+
+t('🔠 a szándékosan kisbetűs márkanév NEM kap nagybetűt', () => {
+  // VALÓDI cím a mai 447-ből — az EGYETLEN kisbetűs első szó, ami nem ige.
+  // A birtokos farok („'s") nem rejtheti el a nevet az összevetés elől.
+  const { cards } = cardsFromGuide(horogCikk(
+    "Get Started with xAI's Grok to Draft Professional Emails in Seconds"));
+  assert.equal(cards[0].nagy, "xAI's Grok");
+  // Szintetikus családtagok: ilyen cím ma nincs, de bármikor lehet.
+  assert.equal(nagybetusHorog('iPhone tricks worth knowing'), 'iPhone tricks worth knowing');
+  assert.equal(nagybetusHorog('eBay listings in one minute'), 'eBay listings in one minute');
+  assert.equal(nagybetusHorog('macOS shortcuts for AI'), 'macOS shortcuts for AI');
+  assert.equal(nagybetusHorog('iPhone: the short version'), 'iPhone: the short version');
+});
+
+t('🔠 a védelem TELJES szóra illeszt, SOHA nem előtagra', () => {
+  // ⚠️ A projektben KÉTSZER fogott meg az előtag-illesztés (analysis → analyzis).
+  // Az „iOS" védett — de az „iOSomething" nem az „iOS", és a „set" sem.
+  assert.equal(nagybetusHorog('iOSomething made up'), 'IOSomething made up');
+  assert.equal(nagybetusHorog('set up two-factor login'), 'Set up two-factor login');
+  assert.equal(nagybetusHorog('iPadding out a sentence'), 'IPadding out a sentence');
+  // A lista ne ürülhessen ki csendben: ez az EGY elem mért valódi eset.
+  assert.ok(VEDETT_ELSO_SZAVAK.includes('xAI'),
+    'az xAI a névjegyzékünk (website/tool-links.json) EGYETLEN kisbetűs neve — ha kiesik a '
+    + 'listából, a „xAI\'s Grok" horog „XAI\'s Grok"-ként megy ki');
+  for (const x of ['', '   ', 'A', '5 steps']) assert.equal(nagybetusHorog(x), x);
+  for (const x of [null, undefined]) assert.equal(nagybetusHorog(x), '');
+});
+
+t('🔠 a KIMONDOTT mondat érintetlen — a nagybetűt a felolvasó nem hallja', () => {
+  // A `mond` a TELJES címből épül, és a hang számára a kis/nagybetű nem
+  // létezik. Ezért itt SZÁNDÉKOSAN kisbetűs marad — a két helyen más a jó
+  // válasz, pontosan mint a felvezető-vágásnál.
+  const { cards } = cardsFromGuide(horogCikk(MAI));
+  assert.equal(cards[0].nagy, 'Create images');
+  assert.match(cards[0].mond, /^create images with AI/);
+});
+
 // ── FÉSŰ A VALÓDI ÚTMUTATÓKON ───────────────────────────────────────
 //
 // MÉRVE (2026-09-17, 443 élő útmutató, mind videóképes):
@@ -466,6 +542,105 @@ t('🪝 a VALÓDI útmutatók egyetlen horga sem általános fordulat', () => {
   assert.ok(utmutato >= 300, 'csak ' + utmutato + ' útmutatót látott — romlott a minta');
   assert.ok(videokepes >= 300, 'csak ' + videokepes + ' videóképes — romlott a minta');
   assert.deepEqual(rossz, [], 'általános horog-szöveg élő cikken:\n     ' + rossz.join('\n     '));
+});
+
+// ── FÉSŰ: A HOROG ELSŐ BETŰJE A VALÓDI CIKKEKEN (2026-09-19) ────────
+//
+// 🔑 MIÉRT A VALÓDI ADATON. A „create images" senkinek nem jutott volna
+// eszébe kitalált példaként — a 447 élő útmutató végigmérése köpte ki, és
+// csak ott derült ki, hogy a 49 kisbetűs horog között van EGY, amit nem
+// javítani kell, hanem megvédeni („xAI's Grok").
+//
+// A MÉRCE EGY HELYEN ÁLL (`elsoBetuFesu`), és KÉT bemeneten fut:
+//   • a JAVÍTOTT úton (amit a néző látni fog)  → 0 kifogás,
+//   • a NYERS úton (a `nagybetusHorog` megkerülésével) → ott kell FOGNIA.
+// Enélkül nem tudnánk, hogy a fésűnek van-e foga egyáltalán.
+
+/** Kifogás akkor van, ha a horog kisbetűvel kezdődik ÉS nem védett név.
+ *  A „védett-e" kérdést a gyártó függvény válaszolja meg (ha kisbetűvel
+ *  kezdődik és a javító mégis érintetlenül hagyja, akkor névnek tartja) —
+ *  a logika ÚJRAÍRÁSA itt párhuzamos megvalósítás lenne, és pont azt a
+ *  hibát rejtené el, amit keresünk. */
+function elsoBetuFesu(horgok) {
+  const kisbetus = horgok.filter(h => /^\p{Ll}/u.test(String(h.szoveg)));
+  const vedett = kisbetus.filter(h => nagybetusHorog(h.szoveg) === h.szoveg);
+  return {
+    kisbetus, vedett,
+    hiba: kisbetus.filter(h => nagybetusHorog(h.szoveg) !== h.szoveg)
+      .map(h => '«' + String(h.szoveg).replace(/\n/g, ' ') + '»  ←  ' + h.cim)
+  };
+}
+
+t('🔠 a VALÓDI útmutatók horga nagybetűvel kezdődik (vagy védett név)', () => {
+  const javitott = [], nyers = [];
+  let utmutato = 0, videokepes = 0;
+  for (const f of readdirSync(CIKK_DIR).filter(x => x.endsWith('.json'))) {
+    let j; try { j = JSON.parse(readFileSync(join(CIKK_DIR, f), 'utf-8')); } catch { continue; }
+    if (!utmutatoE(f, j)) continue;
+    utmutato++;
+    const md = j.article_markdown || '';
+    const { cards } = cardsFromGuide(md);
+    if (!cards) continue;
+    videokepes++;
+    const cim = fm(md, 'title');
+    javitott.push({ szoveg: cards[0].nagy, cim });
+    // A NYERS út: pontosan az, amit a kód 2026-09-19 előtt kitett. A `tordel`
+    // csak sorokra vág, az ELSŐ karakteren nem változtat — a fésű szempontjából
+    // a két bemenet összemérhető.
+    nyers.push({ szoveg: splitHeading(horogCimbol(cim)).nagy, cim });
+  }
+  // ⚠️ A MINTA NE ÜRÜLHESSEN KI: „0 kifogás" a semmiből is kijön.
+  assert.ok(utmutato >= 300, 'csak ' + utmutato + ' útmutatót látott — romlott a minta');
+  assert.ok(videokepes >= 300, 'csak ' + videokepes + ' videóképes — romlott a minta');
+
+  const most = elsoBetuFesu(javitott);
+  assert.deepEqual(most.hiba, [], most.hiba.length + ' élő horog kezdődik kisbetűvel:\n     '
+    + most.hiba.slice(0, 12).join('\n     '));
+
+  // ── A MÉRŐESZKÖZ HITELESÍTÉSE ISMERT ESETTEL ──────────────────────
+  // A javítás NÉLKÜL ugyanennek a fésűnek FOGNIA kell. Mérve 2026-09-19:
+  // 447 horogból 49 kezdődött kisbetűvel (11,0%), ebből 48 kifogás és 1
+  // védett név („xAI's Grok").
+  //
+  // ⚠️ MIÉRT KÜSZÖB ÉS NEM PONTOS SZÁM. Naponta 2 új útmutató jelenik meg, és
+  // ~11%-uk kisbetűs címközéppel indul — egy `=== 49` pár nap múlva hamis
+  // riasztás lenne. A PONTOS számot az alábbi befagyasztott lista adja.
+  const regi = elsoBetuFesu(nyers);
+  assert.ok(regi.kisbetus.length >= 20, 'a fésűnek FOGNIA kell a javítás nélkül, de csak '
+    + regi.kisbetus.length + ' kisbetűs horgot talált — a mérce elveszítette a fogát');
+  assert.ok(regi.hiba.length >= 20, 'a javítás nélkül ' + regi.hiba.length + ' kifogás — kevés');
+  console.log('       ' + videokepes + ' útmutató · javítás nélkül ' + regi.kisbetus.length
+    + ' kisbetűs horog (' + (100 * regi.kisbetus.length / videokepes).toFixed(1) + '%), ebből '
+    + regi.hiba.length + ' kifogás · javítva: 0 kifogás, ' + most.vedett.length + ' védett név');
+});
+
+t('🔠 a fésű PONTOS száma befagyasztott valódi címeken', () => {
+  // ISMERT POZITÍV, ami nem mozdul a tartalom növésével: hét VALÓDI cím a
+  // 2026-09-19-i 49-ből (a példák a leletből), plusz az egy védett eset.
+  const CIMEK = [
+    'How to write a standout cover letter with AI',
+    'How to use AI to write quick, polite emails and replies',
+    "How to create images with AI: a beginner's first try",
+    'How to plan meals and a grocery budget with AI',
+    'How to turn a meeting into clear notes and action items with AI',
+    'How to build or improve your CV with AI',
+    'How to study and learn faster with AI – a beginner’s step-by-step guide'
+  ];
+  const VEDETT_CIM = "Get Started with xAI's Grok to Draft Professional Emails in Seconds";
+
+  const nyers = c => ({ szoveg: splitHeading(horogCimbol(c)).nagy, cim: c });
+  const kesz = c => ({ szoveg: cardsFromGuide(horogCikk(c)).cards[0].nagy, cim: c });
+
+  // A javítás NÉLKÜL mind a hét bukik — a fésűnek tehát van foga.
+  assert.equal(elsoBetuFesu(CIMEK.map(nyers)).hiba.length, 7);
+  // …a javítással egy sem.
+  assert.equal(elsoBetuFesu(CIMEK.map(kesz)).hiba.length, 0);
+  // A védett eset MINDKÉT úton kisbetűs marad, és egyik úton sem kifogás.
+  for (const ut of [nyers, kesz]) {
+    const r = elsoBetuFesu([ut(VEDETT_CIM)]);
+    assert.equal(r.kisbetus.length, 1, 'az „xAI" kisbetűs marad');
+    assert.deepEqual(r.hiba, [], 'a védett név nem kifogás');
+  }
 });
 
 // ═══════════════════════════════════════════════════════════════════
