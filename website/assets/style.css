@@ -407,6 +407,14 @@ body {
 .support-foot { font-size: 14px; color: var(--muted); margin: 0 0 18px; }
 .support-foot a { color: var(--accent-dark); font-weight: 700; text-decoration: none; }
 .support-foot a:hover { text-decoration: underline; }
+/* Csomag-sor (2026-09-20) — ugyanaz a halk hangnem, mint a támogatás-soré,
+   és SZÁNDÉKOSAN külön osztálynév: a core/support-line.test.js a
+   `support-foot` előfordulásait számolja, és nem szabad, hogy egy másik
+   sor elkezdjen beleszámítani a mérőjébe. Csak a Reellel népszerűsített
+   útmutatók alján és a téma-oldalakon jelenik meg. */
+.pack-foot { font-size: 14px; color: var(--muted); margin: 0 0 18px; }
+.pack-foot a { color: var(--accent-dark); font-weight: 700; text-decoration: none; }
+.pack-foot a:hover { text-decoration: underline; }
 
 .back-link { display: inline-block; font-weight: 700; color: var(--ink); text-decoration: none; }
 .back-link:hover { color: var(--accent-dark); }

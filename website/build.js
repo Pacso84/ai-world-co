@@ -38,6 +38,10 @@ import { robotsTartalom, indexelhetoNyelvek, noindexNyelv } from '../core/noinde
 import { TEMAK, temaOf , temaSzoveg, temaLeiras } from '../core/topics.js';
 import { laposit } from '../core/redirect-chain.js';
 import { utmutatoE } from '../core/guide-kind.js';
+// A FIZETŐS CSOMAGOK (2026-09-20): a MÉRT számok a packs.json-ból (lásd
+// core/packs-data.js — a dist/ a CI-ban nem létezik), a szöveg innen.
+import { CSOMAG_SZOVEG, PACKS_UI, csomagSzoveg } from '../core/packs-text.js';
+import { CSOMAG_IDK, NAGY_ID } from '../core/packs-data.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = join(__dirname, '..');
@@ -60,6 +64,23 @@ let CF_BEACON = '';
 // Ügyfélszolgálati chat-doboz kapcsoló + Worker-végpont (Task 3 config: customer_service.*).
 // enabled csak akkor igaz, ha a config engedélyezi ÉS van Turnstile site-key.
 let CS = { enabled: false, base: '', key: '' };
+// FIZETŐS CSOMAGOK (2026-09-20). A `website/packs.json` GÉPI fájl: a MÉRT
+// oldalszámot a `core/packs-data.js` írja bele a legyártott PDF-ekből.
+//
+// ⚠️ AZ ÜRES ÁLLAPOT NEM HIBA, HANEM KAPCSOLÓ: ha a fájl hiányzik vagy
+// üres, `PACKS.enabled` hamis, és az eladó oldal EL SEM KÉSZÜL — nem
+// épül be link sehova. Így a bolt megnyitásáig egyetlen gomb sem visz
+// üres boltba. (A support-gombnál ugyanez az elv működik 07-07 óta.)
+let PACKS = { enabled: false, shopUrl: '', list: [] };
+try {
+  const rawPacks = JSON.parse(readFileSync(join(__dirname, 'packs.json'), 'utf-8'));
+  const list = (rawPacks.packs || []).filter(p => p && p.id && p.price > 0);
+  PACKS = {
+    enabled: list.length > 0 && !!rawPacks.shop_url,
+    shopUrl: (rawPacks.shop_url || '').trim(),
+    list
+  };
+} catch { /* nincs packs.json → az eladó oldal kimarad */ }
 try {
   const rawConfig = JSON.parse(readFileSync(join(PROJECT_ROOT, 'config.json'), 'utf-8'));
   const company = rawConfig.company || {};
@@ -332,6 +353,9 @@ const UI_SUPPORT = {
 
 };
 for (const l of SITE_LANGS) Object.assign(UI[l], UI_SUPPORT[l] || {});
+// Az eladó oldal szövegei (2026-09-20). Külön fájlban laknak, a csomag-adat
+// mellett — lásd a core/packs-text.js fejlécét.
+for (const l of SITE_LANGS) Object.assign(UI[l], PACKS_UI[l] || {});
 
 // ===================================================================
 // ÜGYFÉLSZOLGÁLAT GYIK (2026-07-20) — a kb.json „site” szekciója.
@@ -344,6 +368,7 @@ const CS_FAQ = {
     { q: 'Is the site free? How can I support it?', a: 'Everything is free. If you want, you can leave a voluntary tip on the Support page.', p: '/support' },
     { q: 'Where do I find beginner guides?', a: 'The Start page lists the first 5 guides to read, and the Guides page has all of them by topic.', p: '/start' },
     { q: 'What do AI words like prompt or token mean?', a: 'Our AI glossary explains the most common terms in plain language.', p: '/glossary' },
+    { q: 'Do you sell anything? What are the packs?', a: 'Our guides are free here and stay free. We also group them by subject into PDF packs you can buy and keep, with a 30-day no-questions refund. The packs page lists all of them.', p: '/packs' },
     { q: 'Is there an RSS feed?', a: 'Yes — every language has its own feed.', p: '/feed.xml' },
     { q: 'How do I contact you / reach a human?', a: 'Use the message form at the bottom of the About page, or write to support@aiworldhq.com — a human reads every message.', p: '/about#contact' }
   ],
@@ -353,6 +378,7 @@ const CS_FAQ = {
     { q: 'Ingyenes az oldal? Hogyan támogathatom?', a: 'Minden ingyenes. Ha szeretnéd, a Támogatás oldalon önkéntes borravalót adhatsz.', p: '/support' },
     { q: 'Hol találom a kezdő útmutatókat?', a: 'A Kezdés oldal az első 5 ajánlott útmutatót mutatja, az Útmutatók oldalon pedig az összes megvan téma szerint.', p: '/start' },
     { q: 'Mit jelentenek az AI-szavak, pl. prompt vagy token?', a: 'Az AI-kisszótárunk közérthetően elmagyarázza a leggyakoribb fogalmakat.', p: '/glossary' },
+    { q: 'Árultok valamit? Mik azok a csomagok?', a: 'Az útmutatóink itt ingyenesek, és azok is maradnak. Emellett téma szerint PDF-csomagokba rendezve meg is vásárolhatók, 30 napos, kérdés nélküli visszatérítéssel. A Csomagok oldal mindet felsorolja.', p: '/packs' },
     { q: 'Van RSS?', a: 'Igen — minden nyelvnek saját feedje van.', p: '/feed.xml' },
     { q: 'Hogyan tudlak elérni titeket / élő embert?', a: 'A Rólunk oldal alján lévő üzenet-űrlappal, vagy írj a support@aiworldhq.com címre — minden üzenetet elolvas egy ember.', p: '/about#contact' }
   ],
@@ -362,6 +388,7 @@ const CS_FAQ = {
     { q: '¿El sitio es gratis? ¿Cómo puedo apoyarlo?', a: 'Todo es gratis. Si quieres, puedes dejar una propina voluntaria en la página de Apoyo.', p: '/support' },
     { q: '¿Dónde están las guías para principiantes?', a: 'La página Empezar muestra las 5 primeras guías recomendadas, y en Guías están todas por tema.', p: '/start' },
     { q: '¿Qué significan palabras como prompt o token?', a: 'Nuestro pequeño glosario de IA explica los términos más comunes en lenguaje claro.', p: '/glossary' },
+    { q: '¿Vendéis algo? ¿Qué son los packs?', a: 'Nuestras guías son gratis aquí y seguirán siéndolo. Además las agrupamos por tema en packs PDF que puedes comprar y guardar, con reembolso sin preguntas durante 30 días. La página de packs los lista todos.', p: '/packs' },
     { q: '¿Hay RSS?', a: 'Sí — cada idioma tiene su propio feed.', p: '/feed.xml' },
     { q: '¿Cómo os contacto / hablo con una persona?', a: 'Usa el formulario al final de la página Sobre nosotros, o escribe a support@aiworldhq.com — una persona lee todos los mensajes.', p: '/about#contact' }
   ],
@@ -969,6 +996,11 @@ function loadArticles() {
         level: data._meta?.level || '',
         icon: data._meta?.icon || '',
         publishedAt: data._meta?.published_at || '',
+        // Ment-e már róla Reel? (2026-09-20) A user döntése szerint a
+        // csomag-sor CSAK a Reellel népszerűsített útmutatók alá kerül:
+        // ott a legmelegebb a közönség, és így 449 cikk helyett ~27-et
+        // érint — szűk, visszavonható, mérhető kísérlet.
+        reelAt: data._meta?.reel_at || '',
         // VALÓDI módosítás-dátum (2026-08-01, kereső-barátság átvilágítás).
         // Eddig a dateModified = datePublished volt, vagyis a Google szerint
         // egyetlen cikkünk sem frissült SOHA — pedig a felújító (upgrade-howtos)
@@ -1241,6 +1273,7 @@ function pageShell({ title, description, bodyContent, isArticle = false, noIntro
   const glossaryPath = `${LP}/glossary`;
   const aboutPath = `${LP}/about`;
   const archivePath = `${LP}/archive`;
+  const packsPath = `${LP}/packs`;
   const year = new Date().getFullYear();
   const cp = canonicalPath(pagePath);
   const url = `${SITE.url}${LP}${cp}`;
@@ -1346,6 +1379,7 @@ function pageShell({ title, description, bodyContent, isArticle = false, noIntro
         <a href="${toolsPath}">${T.tools}</a>
         <a href="${glossaryPath}">${tr('glossNav')}</a>
         <a href="${aboutPath}">${tr('aboutNav')}</a>
+        ${PACKS.enabled ? `<a href="${packsPath}">${tr('packsNav')}</a>` : ''}
         ${SUPPORT.enabled ? `<a href="${supportPath}" class="navbar__support">${T.support}</a>` : ''}
       </nav>
       ${langSwitcher}
@@ -1379,6 +1413,7 @@ function pageShell({ title, description, bodyContent, isArticle = false, noIntro
       <p class="site-footer__brand">${SITE.name}<span class="masthead__dot">.</span></p>
       <p class="site-footer__note">${escapeHtml(tr('siteDesc') || SITE.description)}</p>
       <p class="site-footer__support"><a href="${LP}/about">${tr('aboutNav')}</a></p>
+      ${PACKS.enabled ? `<p class="site-footer__support"><a href="${packsPath}">${tr('packsNav')}</a></p>` : ''}
       ${SUPPORT.enabled ? `<p class="site-footer__support"><a href="${supportPath}">${T.support}</a></p>` : ''}
       <p class="site-footer__support"><a href="${LP}/feed.xml" title="RSS">📡 RSS</a></p>
       <p class="site-footer__socialt">${escapeHtml(FOLLOW[LANG] || FOLLOW.en)}</p>
@@ -1735,7 +1770,7 @@ function buildTopicPage(t, cikkek) {
     description: temaLeiras(sz.rovid, cikkek.length, LANG),
     noIntro: true, pagePath: `${temaHubUt(t.id)}.html`,
     jsonld: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: sz.cim, url: `${SITE.url}${LP}/${temaHubUt(t.id)}` },
-    bodyContent: designStyleBlock() + header + tiles
+    bodyContent: designStyleBlock() + header + tiles + packLine(t.id)
   });
 }
 
@@ -2352,6 +2387,7 @@ function buildGuidePage(a) {
     <div class="article__foot">
       <div class="fb" data-slug="${a.slug}" data-thanks="${escapeHtml(tr('fbThanks'))}"><span class="fb__q">${tr('fbQ')}</span><button class="fb__btn" data-vote="up" aria-label="👍">👍</button><button class="fb__btn" data-vote="down" aria-label="👎">👎</button></div>
       <p class="ai-disclosure">${tr('disclosureGuide')}</p>
+      ${a.reelAt ? packLine(temaOf(a.titleEn || a.title)) : ''}
       ${supportLine()}
       <a href="../index" class="back-link">${tr('backStories')}</a>
     </div>
@@ -2427,6 +2463,7 @@ function buildSupportPage() {
     </div>
 
     <p class="support__note">${tr('supNote')}</p>
+    ${PACKS.enabled ? `<p class="pack-foot">📘 ${escapeHtml(tr('packsFromSupport'))} <a href="${LP}/packs">${escapeHtml(tr('packsFromSupportLink'))}</a></p>` : ''}
 
     <a href="index" class="back-link">${tr('backStories')}</a>
   </section>`;
@@ -2437,6 +2474,150 @@ function buildSupportPage() {
     noIntro: true, pagePath: 'support.html',
     bodyContent: body
   });
+}
+
+// ===================================================================
+// ELADÓ OLDAL — /packs (2026-09-20)
+//
+// A honlap EGYETLEN kereskedelmi lapja. A /support ÖNKÉNTES borravalót
+// kér; ez TERMÉKET ad el. A kettőt szándékosan nem keverjük.
+//
+// ⚠️ AMI EZEN AZ OLDALON ÁLL, AZ RÁNK NÉZVE KÖTELEZŐ. A 30 napos,
+// kérdés nélküli visszatérítést NEM a Ko-fi teljesíti: a Ko-fi súgója
+// szerint „Refunds on Ko-fi are handled directly by you, the creator.
+// Ko-fi won't issue refunds in your place." (saját méréssel ellenőrizve
+// 2026-09-20). Ugyanennek a mondatnak a Ko-fi „Your Terms" mezőjében is
+// ott kell lennie, hogy a vevő fizetéskor lássa.
+//
+// ⚠️ A SZÁM NEM BECSÜLT: az oldalszám a legyártott PDF-ből jön
+// (website/packs.json ← core/packs-data.js). A régi 600-szó/oldal
+// képlet 40%-ot tévedett, és mindig lefelé.
+// ===================================================================
+
+/** A csomag MÉRT adatai az aktuális nyelven; magyarra az angol fájl adatai. */
+function packMeres(p) { return (p && (p[LANG] || p.en)) || {}; }
+
+/** „12 guides · 34 pages · PDF" — a mérésből, nem beégetve. */
+function packMetaSor(p) {
+  const m = packMeres(p);
+  const r = [];
+  if (m.guides > 0) r.push(`${m.guides} ${tr('packsUnitGuides')}`);
+  if (m.pages > 0) r.push(`${m.pages} ${tr('packsUnitPages')}`);
+  r.push('PDF');
+  return r.join(' · ');
+}
+
+/**
+ * Egy tétel gombja. Amíg a Ko-fin nincs tételenkénti link, MINDEN gomb a
+ * bolt nyitólapjára visz — a `shop_url` a packs.json-ban áll. Ha egy
+ * tételhez később bekerül a saját `url`-je, az élvez elsőbbséget.
+ */
+function packGomb(p) {
+  const cel = (p.url || '').trim() || PACKS.shopUrl;
+  if (!cel) return `<span class="packs__btn packs__btn--soon">${escapeHtml(tr('packsSoon'))}</span>`;
+  return `<a class="packs__btn" href="${escapeHtml(cel)}" target="_blank" rel="noopener noreferrer">${escapeHtml(tr('packsBuy'))}</a>`;
+}
+
+function packsStyleBlock() {
+  return `<style id="packs-css">
+.packs{max-width:860px;margin:0 auto;padding:8px 0 24px}
+.packs__lead{font-size:17px;line-height:1.65;color:var(--ink-soft);margin:0 0 14px}
+.packs__langs{font-size:14px;color:var(--muted);margin:0 0 30px}
+.packs__grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:0 0 40px;text-align:left}
+.packs__item{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-sm);padding:22px 20px;display:flex;flex-direction:column;gap:8px}
+.packs__item--big{grid-column:1 / -1;border-color:var(--line-strong)}
+.packs__name{font-family:'Schibsted Grotesk',sans-serif;font-size:17px;line-height:1.3;margin:0}
+.packs__promise{font-size:14px;color:var(--ink-soft);line-height:1.55;margin:0;flex:1}
+.packs__meta{font-size:13px;color:var(--muted);margin:0;letter-spacing:.01em}
+.packs__price{font-family:'Schibsted Grotesk',sans-serif;font-size:22px;font-weight:800;margin:2px 0 0}
+.packs__btn{display:inline-block;align-self:flex-start;padding:10px 18px;border-radius:999px;background:var(--ink);color:var(--paper);font-weight:700;font-size:14px;text-decoration:none}
+.packs__btn:hover{transform:translateY(-1px)}
+.packs__btn--soon{background:transparent;color:var(--muted);border:1px dashed var(--line-strong);cursor:default}
+.packs__sec{margin:34px 0 0;text-align:left}
+.packs__sec h2{font-family:'Schibsted Grotesk',sans-serif;font-size:20px;margin:0 0 10px}
+.packs__sec p{font-size:15px;line-height:1.65;color:var(--ink-soft);margin:0 0 14px}
+.packs__q{font-family:'Schibsted Grotesk',sans-serif;font-size:16px;margin:20px 0 6px}
+.packs__shopall{margin:28px 0 0}
+@media(max-width:620px){.packs__grid{grid-template-columns:1fr}}
+</style>`;
+}
+
+function buildPacksPage() {
+  const kartyak = PACKS.list.map(p => {
+    const sz = csomagSzoveg(p.id, LANG) || {};
+    const nagy = p.id === NAGY_ID ? ' packs__item--big' : '';
+    return `<article class="packs__item${nagy}">
+      <h2 class="packs__name">${escapeHtml(sz.cim || p.id)}</h2>
+      <p class="packs__promise">${escapeHtml(sz.igeret || '')}</p>
+      <p class="packs__meta">${escapeHtml(packMetaSor(p))}</p>
+      <p class="packs__price">$${p.price}</p>
+      ${packGomb(p)}
+    </article>`;
+  }).join('');
+
+  const gyik = [1, 2, 3, 4, 5].map(i =>
+    `<h3 class="packs__q">${escapeHtml(tr('packsQ' + i))}</h3><p>${escapeHtml(tr('packsA' + i))}</p>`
+  ).join('');
+
+  const boltGomb = PACKS.shopUrl
+    ? `<p class="packs__shopall"><a class="packs__btn" href="${escapeHtml(PACKS.shopUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(tr('packsShopAll'))}</a></p>`
+    : '';
+
+  const body = `<section class="packs">
+    ${packsStyleBlock()}
+    <span class="pill">${tr('packsPill')}</span>
+    <h1 class="support__title">${tr('packsTitle')}</h1>
+    <p class="packs__lead">${escapeHtml(tr('packsLead'))}</p>
+    <p class="packs__langs">${escapeHtml(tr('packsLangs'))}</p>
+
+    <div class="packs__grid">${kartyak}</div>
+
+    <div class="packs__sec">
+      <h2>${escapeHtml(tr('packsBuildH'))}</h2>
+      <p>${escapeHtml(tr('packsBuildP'))}</p>
+    </div>
+    <div class="packs__sec">
+      <h2>${escapeHtml(tr('packsAiH'))}</h2>
+      <p>${escapeHtml(tr('packsAiP'))}</p>
+    </div>
+    <div class="packs__sec">
+      <h2>${escapeHtml(tr('packsFaqH'))}</h2>
+      ${gyik}
+    </div>
+    ${boltGomb}
+    <a href="index" class="back-link">${tr('backStories')}</a>
+  </section>`;
+
+  return pageShell({
+    title: `${tr('packsMetaTitle')} — ${SITE.name}`,
+    description: tr('packsMetaDesc'),
+    noIntro: true, pagePath: 'packs.html',
+    jsonld: {
+      '@context': 'https://schema.org', '@type': 'CollectionPage',
+      name: tr('packsMetaTitle'), url: `${SITE.url}${LP}/packs`
+    },
+    bodyContent: body
+  });
+}
+
+/**
+ * A témához tartozó csomag sora — a téma-oldal aljára és a Reellel
+ * népszerűsített útmutatók lábába (2026-09-20, user-döntés).
+ *
+ * ⚠️ SAJÁT OSZTÁLYNÉV, NEM `support-foot`: a `core/support-line.test.js`
+ * azt számolja, hány cikk-lábban van `support-foot`, és megköveteli, hogy
+ * a főoldalon NE legyen. Ha ez a sor is azt az osztályt viselné, a teszt
+ * mérője elkezdene mást mérni, mint amit a neve mond.
+ */
+function packLine(temaId) {
+  if (!PACKS.enabled || !temaId) return '';
+  const p = PACKS.list.find(x => x.id === temaId);
+  if (!p) return '';
+  const cel = (p.url || '').trim() || PACKS.shopUrl;
+  if (!cel) return '';
+  const sz = csomagSzoveg(p.id, LANG) || {};
+  return `<p class="pack-foot">📘 ${tr('packsFootPre')} `
+    + `<a href="${LP}/packs" title="${escapeHtml(sz.cim || '')}">${tr('packsFootLink')}</a></p>`;
 }
 
 // ===================================================================
@@ -3212,6 +3393,9 @@ function main() {
       writeFileSync(join(outArticle, `${a.slug}.html`), html, 'utf-8');
     }
     if (SUPPORT.enabled) writeFileSync(join(outBase, 'support.html'), buildSupportPage(), 'utf-8');
+    // Az eladó oldal CSAK akkor készül el, ha van mérési adat ÉS bolt-cím
+    // (lásd a PACKS betöltését) — üres boltba mutató gomb ne keletkezzen.
+    if (PACKS.enabled) writeFileSync(join(outBase, 'packs.html'), buildPacksPage(), 'utf-8');
 
     // sitemap (nyelvenként)
     // ⚠️ A NOINDEXELT NYELV NEM KERÜL BE. A sitemap egy KÉRÉS a keresőhöz:
@@ -3224,6 +3408,7 @@ function main() {
       if (generalGuides.length) sitemapUrls.push({ loc: `${SITE.url}${lp}/guides`, date: today });
       if (companyGuides.length) sitemapUrls.push({ loc: `${SITE.url}${lp}/tools`, date: today });
       if (SUPPORT.enabled) sitemapUrls.push({ loc: `${SITE.url}${lp}/support`, date: today });
+      if (PACKS.enabled) sitemapUrls.push({ loc: `${SITE.url}${lp}/packs`, date: today });
       sitemapUrls.push({ loc: `${SITE.url}${lp}/start`, date: today });
       sitemapUrls.push({ loc: `${SITE.url}${lp}/glossary`, date: today });
       sitemapUrls.push({ loc: `${SITE.url}${lp}/wizard`, date: today });
