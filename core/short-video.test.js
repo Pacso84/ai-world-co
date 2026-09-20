@@ -25,6 +25,9 @@ import {
 import { BETU_CSALAD } from './video-font.js';
 import { fm } from './frontmatter.js';
 import { utmutatoE } from './guide-kind.js';
+// A csomag-reklám kézzel írt tábláit UGYANEZ a betűfájl-alapú fésű méri —
+// lásd az indoklást a „📐 VÍZSZINTES: a csomag-reklám…" lépésnél.
+import { promoKartyak } from './packs-reel.js';
 
 // ⚠️ MEGHAJTÓBETŰS ÚTVONAL ITT TILOS (core/test-hygiene.test.js őrzi): Linuxon
 // az relatív mappa lenne, és a kiadási lánc `git add -A`-ja becommitolná.
@@ -1064,6 +1067,48 @@ t('📐 VÍZSZINTES: egyetlen élő kártya-sor sem fut ki a vászonról', () =>
   console.log('       ' + VALODI.videokepes + ' útmutató · ' + VALODI.kartyak.length + ' kártya · '
     + sorok + ' sor · legszélesebb: ' + legszelesebb.px.toFixed(0) + ' px («'
     + legszelesebb.s + '», ' + legszelesebb.meret + ' px betű)');
+});
+
+// ── A CSOMAG-REKLÁM TÁBLÁI IS ÁTMENNEK A FÉSŰN (2026-09-20) ─────────
+//
+// 🔑 MIÉRT ITT, ÉS NEM A packs-reel.test.js-BEN. A reklám-Reel kártyáit
+// KÉZZEL írtuk, nem cikkből jönnek — vagyis pont az a fajta szöveg, amit a
+// szerző a saját képernyőjéhez méretez. A `packs-reel.test.js` a BETU_ARANY
+// közelítéssel számol, ami ugyanaz a képlet, amivel a kód a méretet VÁLASZTJA
+// — az tehát körben forog. Az egyetlen független mérce a VALÓDI betűfájl, és
+// az itt lakik. A fejlesztői gépen ráadásul nincs is telepítve a betű (a
+// tartalék KESKENYEBB), tehát a helyben legyártott videó sem bizonyíték.
+t('📐 VÍZSZINTES: a csomag-reklám egyetlen sora sem fut ki a vászonról', () => {
+  const OLDAL_MARGO = 20, HATAR = W - 2 * OLDAL_MARGO;
+  const { cards } = promoKartyak({ utmutatoDb: 449 });
+  assert.ok(cards && cards.length >= 5, 'nincs reklám-kártya — a fésűnek nincs mit mérnie');
+  const kifut = [];
+  let sorok = 0, legszelesebb = { px: 0 };
+  for (const c of cards) {
+    const sorLista = String(c.nagy).split('\n').slice(0, 3);
+    const meret = tablaMeret(sorLista);
+    for (const s of sorLista) {
+      sorok++;
+      const { px } = szovegSzeles(s, meret);
+      if (px > legszelesebb.px) legszelesebb = { px, s, meret };
+      if (px > HATAR) kifut.push('«' + s + '» ' + meret + ' px → ' + px.toFixed(0) + ' px (max ' + HATAR + ')');
+    }
+  }
+  assert.deepEqual(kifut, [], 'a reklám-Reel sorai kifutnak:\n     ' + kifut.join('\n     '));
+  console.log('       ' + cards.length + ' reklám-tábla · ' + sorok + ' sor · legszélesebb: '
+    + legszelesebb.px.toFixed(0) + ' px («' + legszelesebb.s + '»)');
+});
+
+t('📐 a csomag-reklám egyetlen ALCÍME sem esik le a tábláról', () => {
+  // A `tablaSvg` ELHAGYJA az alcímet, ha nem fér be. Egy reklámvideónál ez
+  // néma tartalomvesztés lenne: a `mond` kimondaná, a kép nem mutatná.
+  const { cards } = promoKartyak({ utmutatoDb: 449 });
+  const hianyzo = [];
+  cards.forEach((c, i) => {
+    const svg = tablaSvg(c, i, cards.length).toString();
+    if (c.kicsi && !alcimElem(svg)) hianyzo.push(c.kicsi);
+  });
+  assert.deepEqual(hianyzo, [], 'ezek az alcímek nem fértek ki: ' + hianyzo.join(' | '));
 });
 
 // ── AZ ALCÍM IS KIFUTOTT (2026-09-18, ez a mérés találta) ───────────

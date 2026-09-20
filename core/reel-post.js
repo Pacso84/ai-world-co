@@ -380,13 +380,77 @@ export async function futtatFazis({ ROOT, join, fazis, fn }) {
   }
 }
 
+/**
+ * A csomag-reklám állapota: él-e a bolt, és mikor ment az utolsó promó.
+ * SOHA nem dob — hiányzó fájl = nincs promó, nem összeomlás.
+ */
+export function packsAllapot(ROOT, join, readFileSync) {
+  let live = false, utolso = '';
+  try { live = JSON.parse(readFileSync(join(ROOT, 'website', 'packs.json'), 'utf-8')).live === true; }
+  catch { /* nincs packs.json → nincs promó */ }
+  try { utolso = JSON.parse(readFileSync(join(ROOT, 'memory', 'packs-reel.json'), 'utf-8')).last || ''; }
+  catch { /* még sosem ment */ }
+  return { live, utolso };
+}
+
+/** Ma ment-e már csomag-reklám? (A napi Reel-jelölés ezt NEM látja.) */
+export function maiPromo(utolso, now = Date.now()) {
+  return typeof utolso === 'string' && utolso.slice(0, 10) === new Date(now).toISOString().slice(0, 10);
+}
+
 async function prepare(ROOT, join) {
-  const { writeFileSync, existsSync, mkdirSync, rmSync } = await import('fs');
+  const { writeFileSync, existsSync, mkdirSync, rmSync, readFileSync } = await import('fs');
   const { kovetkezoReel } = await import('./reel-queue.js');
   const { cardsFromGuide, renderVideo } = await import('./short-video.js');
+  const { promoKell, promoKartyak, PROMO_SLUG } = await import('./packs-reel.js');
 
   const { maiReelCikk } = await import('./reel-queue.js');
   const cikkek = await cikkekBetolt(ROOT, join);
+
+  // ── CSOMAG-REKLÁM (2026-09-20) ────────────────────────────────────
+  //
+  // ⚠️ EZ AZ ÁG A NAPI ÚTMUTATÓ-REEL HELYÉT VESZI EL, VASÁRNAP. Ezért
+  // áll ELÖL, és ezért `return`-öl: ha alatta lefutna a szokásos
+  // kiválasztás is, vasárnap KÉT videó menne ki — kétszeres Make-költség,
+  // és a két Reel egymással versenyezne a Facebook ajánlómotorjánál.
+  //
+  // 🔑 ÉS AZÉRT KELL A MÁSODIK ÁG IS (maiPromo): a `prepare` naponta
+  // HÁROMSZOR fut. A promó nem jelöl meg cikket, tehát a délutáni futás
+  // `maiReelCikk`-je NEM látná, hogy ma már ment videó — és vidáman
+  // gyártana egy útmutató-Reelt mellé. Pontosan az a csapda, ami
+  // 08-26-án a videó eltűnésénél már megvolt: a napi jelölés és a
+  // tényleges kimenet két külön dolog.
+  const promoA = packsAllapot(ROOT, join, readFileSync);
+  const utmutatoDb = cikkek.filter(c => c.type === 'guide').length;
+  const kellPromo = promoKell({ live: promoA.live, now: Date.now(), utolso: promoA.utolso });
+  const maMarPromo = maiPromo(promoA.utolso);
+
+  if (kellPromo.kell || maMarPromo) {
+    const kiDirP = join(ROOT, 'website', 'assets', 'video', 'shorts');
+    const utvonalP = join(kiDirP, PROMO_SLUG + '.mp4');
+    if (maMarPromo && existsSync(utvonalP)) {
+      console.log('💤 Csomag-reklám: ma már ment, a videó megvan — nincs teendő.');
+      return;
+    }
+    const { cards, reason } = promoKartyak({ utmutatoDb });
+    if (!cards) {
+      console.log('⏭️  Csomag-reklám kimarad: ' + reason);
+    } else {
+      console.log((maMarPromo ? '♻️  Csomag-reklám újragyártása' : '📘 Csomag-reklám készül')
+        + ' — ' + utmutatoDb + ' útmutató, ' + cards.length + ' tábla');
+      mkdirSync(kiDirP, { recursive: true });
+      const rp = await renderVideo(cards, { out: utvonalP, workDir: join(ROOT, '.video-munka') });
+      try { rmSync(join(ROOT, '.video-munka'), { recursive: true, force: true }); } catch { /* */ }
+      if (!maMarPromo) {
+        const memDirP = join(ROOT, 'memory');
+        if (!existsSync(memDirP)) mkdirSync(memDirP, { recursive: true });
+        writeFileSync(join(memDirP, 'reel-pending.json'),
+          JSON.stringify({ kind: 'packs', slug: PROMO_SLUG, utmutatoDb, at: new Date().toISOString() }, null, 2), 'utf-8');
+      }
+      console.log('   ✅ ' + rp.seconds.toFixed(1) + ' mp');
+      return { betu: rp.betu };
+    }
+  }
   // ALKALMAS-E? Csak a markdown ismeretében derül ki (kell 3+ lépés).
   const valasztott = kovetkezoReel(cikkek, Date.now(), {
     alkalmas: c => !!cardsFromGuide(c.md).cards
@@ -482,6 +546,33 @@ export async function send(ROOT, join, dry) {
   const P = join(ROOT, 'memory', 'reel-pending.json');
   if (!existsSync(P)) { console.log('💤 Reel: nincs előkészített videó — kihagyom.'); return; }
   let pending; try { pending = JSON.parse(readFileSync(P, 'utf-8')); } catch { pending = null; }
+
+  // ── CSOMAG-REKLÁM (2026-09-20) ────────────────────────────────────
+  // Nincs mögötte cikk, ezért a `file` mező is hiányzik — a kind dönt,
+  // MIELŐTT a cikk-ág hibás előkészítésnek minősítené és eldobná.
+  if (pending?.kind === 'packs') {
+    const { promoCaption, PROMO_SLUG } = await import('./packs-reel.js');
+    const videoP = reelVideoUrl(PROMO_SLUG);
+    const hookP = (process.env.MAKE_REEL_WEBHOOK_URL || '').trim();
+    console.log('📘 Csomag-reklám küldése');
+    const rp = await sendReel({ video: videoP, caption: promoCaption({ utmutatoDb: pending.utmutatoDb }), hook: hookP, dry });
+    if (rp.ok && rp.dry) { console.log('   🧪 PRÓBA — nem küldtem el.'); return; }
+    // Bizonytalan kimenetelnél is jelölünk: a kimaradt reklám egy hét
+    // csendje, a duplikált viszont kint van az oldaladon.
+    if (rp.ok || rp.sent === 'unknown') {
+      try {
+        writeFileSync(join(ROOT, 'memory', 'packs-reel.json'),
+          JSON.stringify({ last: new Date().toISOString() }, null, 2), 'utf-8');
+      } catch { /* a jelölés hibája ne rontsa el a küldést */ }
+    }
+    try { unlinkSync(P); } catch { /* */ }
+    if (rp.ok) { console.log('   ✅ Átvette a Make (HTTP ' + rp.status + ')'); return; }
+    console.error('   ❌ ' + rp.reason);
+    const hibaP = new Error(rp.reason || 'A csomag-reklám kiküldése nem sikerült.');
+    hibaP.sent = rp.sent;
+    throw hibaP;
+  }
+
   if (!pending?.file) { console.log('💤 Reel: hibás előkészítés — kihagyom.'); try { unlinkSync(P); } catch { /* */ } return; }
 
   const cikkPath = join(ROOT, 'content', 'articles', pending.file);

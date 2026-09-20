@@ -273,7 +273,14 @@ const MASOLAT_KIVETEL = {
     'nem osztályoz: MÁR NORMALIZÁLT `type` mezőt kap a core/reel-post.js-től '
     + '(ami a közös függvényt hívja). Se fájlnév, se markdown nincs a kezében, '
     + 'tehát a három jelből kettőt meg sem tudna nézni — a bővítés itt nem '
-    + 'pontosítana semmit, csak egy negyedik kérdés-alakot szülne.'
+    + 'pontosítana semmit, csak egy negyedik kérdés-alakot szülne.',
+  'reel-post.js':
+    'nem osztályoz, hanem a SAJÁT, néhány sorral feljebb kiszámolt mezőt olvassa '
+    + 'vissza: a cikkekBetolt() ugyanebben a fájlban tölti a `type`-ot az '
+    + 'utmutatoE()-vel. A csomag-reklám Reel innen kapja meg, hány útmutató van '
+    + '(2026-09-20). Ha ez helyett újra a közös függvényt hívnánk, ugyanazt a '
+    + 'kérdést tennénk fel kétszer ugyanarra az adatra — épp azt a párhuzamos '
+    + 'alakot, ami ellen ez a teszt íródott.'
 };
 
 t('🔑 NINCS ÚJ MÁSOLAT a core/ és a website/ alatt', () => {

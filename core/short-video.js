@@ -313,7 +313,10 @@ export function nagybetusHorog(s) {
 }
 
 /** A nagy szöveg tördelése a kártyán — kézzel, mert az SVG nem tördel. */
-function tordel(s, maxSor = 13) {
+// Exportálva 2026-09-20: a csomag-reklám Reel (core/packs-reel.js) UGYANEZZEL
+// tördel. Ha saját tördelőt kapna, a két videó máshogy nézne ki, és a
+// szélesség-fésű (core/short-video.test.js) csak az egyiket védené.
+export function tordel(s, maxSor = 13) {
   const szavak = String(s).split(' ');
   const sorok = [];
   let mostani = '';

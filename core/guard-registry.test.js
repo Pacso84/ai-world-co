@@ -102,6 +102,7 @@ const NEM_ORSZEM = {
   'hu-word-verdicts.json': 'a magyar helyesírás-bíró szó-ítéleteinek tára (core/hu-review.js) — gyorsítótár, nem lelet',
   'memory-embeddings.json': 'a beágyazás-vektorok gitignore-olt gyorsítótára — adat; a beágyazó életét az embed-guard.json őrzi',
   'ops.json': 'feladat- és értesítés-tár (core/ops.js) — működési adat; a hízását a Házmester hízás-őre figyeli',
+  'packs-reel.json': 'a heti csomag-reklám Reel ÜTEMEZŐ-jelölése (mikor ment utoljára) — ismétlés-védelem; a gyártás és a küldés kimenetelét a reel-guard.json viszi a napi riportba',
   'quality-fix-log.json': 'a minőség-önjavító javítás-naplója (mit javított magától) — eseménynapló, nem lelet-állapot',
   'reel-pending.json': 'a Reel két fázisa közti átadó fájl (--prepare → --send) — munkaanyag; a bukást a reel-guard.json jelzi',
   'search-report-state.json': 'a heti kereső-riport küldés-dedupja (last_week) — ismétlés-védelem, nem ellenőrzési eredmény',
