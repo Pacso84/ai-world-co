@@ -1,7 +1,7 @@
 {
   "_meta": {
     "note": "Forrás-bizonyítvány: frissesség + termés + megbízhatóság forrásonként. Gyártja: core/source-report-card.js",
-    "updated": "2026-09-19T18:24:08.608Z",
+    "updated": "2026-09-20T02:39:20.851Z",
     "thresholds": {
       "DEAD_FEED_DAYS": 365,
       "MIN_SAMPLE": 8,
@@ -12,21 +12,21 @@
     },
     "truth_log": {
       "days": 14,
-      "from": "2026-09-02",
-      "to": "2026-09-19",
+      "from": "2026-09-03",
+      "to": "2026-09-20",
       "blocks": 29
     }
   },
   "sources": {
     "openai-blog": {
       "name": "OpenAI Blog (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 2,
       "published30d": 26,
-      "truthBlocks": 0,
+      "truthBlocks": 1,
       "truthUnfixed": 0,
-      "totalAttempts": 9,
+      "totalAttempts": 10,
       "alreadyDisabled": false,
-      "lastArticle": "2026-09-19",
+      "lastArticle": "2026-09-20",
       "verdict": "ok",
       "reason": ""
     },
@@ -44,7 +44,7 @@
     },
     "google-ai-blog": {
       "name": "Google AI (hivatalos, blog.google)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 2,
       "published30d": 4,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -57,18 +57,18 @@
     "meta-ai": {
       "name": "Meta Newsroom (hivatalos)",
       "feedAgeDays": 3,
-      "published30d": 1,
+      "published30d": 2,
       "truthBlocks": 0,
       "truthUnfixed": 0,
-      "totalAttempts": 0,
+      "totalAttempts": 1,
       "alreadyDisabled": false,
-      "lastArticle": "2026-09-02",
+      "lastArticle": "2026-09-20",
       "verdict": "ok",
       "reason": ""
     },
     "microsoft-ai": {
       "name": "Microsoft AI (hivatalos)",
-      "feedAgeDays": 9,
+      "feedAgeDays": 10,
       "published30d": 2,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -92,23 +92,23 @@
     },
     "nvidia-blog": {
       "name": "NVIDIA Blog (hivatalos)",
-      "feedAgeDays": 2,
-      "published30d": 9,
-      "truthBlocks": 2,
+      "feedAgeDays": 3,
+      "published30d": 10,
+      "truthBlocks": 1,
       "truthUnfixed": 0,
       "totalAttempts": 4,
       "alreadyDisabled": false,
-      "lastArticle": "2026-09-16",
+      "lastArticle": "2026-09-20",
       "verdict": "ok",
       "reason": ""
     },
     "google-workspace": {
       "name": "Google Workspace Updates (hivatalos)",
-      "feedAgeDays": 0,
-      "published30d": 15,
-      "truthBlocks": 4,
+      "feedAgeDays": 1,
+      "published30d": 14,
+      "truthBlocks": 3,
       "truthUnfixed": 0,
-      "totalAttempts": 7,
+      "totalAttempts": 5,
       "alreadyDisabled": false,
       "lastArticle": "2026-09-19",
       "verdict": "ok",
@@ -144,7 +144,7 @@
       "published30d": 1,
       "truthBlocks": 0,
       "truthUnfixed": 0,
-      "totalAttempts": 1,
+      "totalAttempts": 0,
       "alreadyDisabled": false,
       "lastArticle": "2026-09-05",
       "verdict": "ok",
@@ -164,7 +164,7 @@
     },
     "mistral-ai": {
       "name": "Mistral AI (hivatalos)",
-      "feedAgeDays": 3,
+      "feedAgeDays": 4,
       "published30d": 1,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -189,12 +189,12 @@
     "apple-ml": {
       "name": "Apple Machine Learning Research (hivatalos)",
       "feedAgeDays": 2,
-      "published30d": 2,
+      "published30d": 3,
       "truthBlocks": 0,
       "truthUnfixed": 0,
-      "totalAttempts": 0,
+      "totalAttempts": 1,
       "alreadyDisabled": false,
-      "lastArticle": "2026-08-29",
+      "lastArticle": "2026-09-20",
       "verdict": "ok",
       "reason": ""
     },
@@ -428,7 +428,7 @@
     },
     "sap": {
       "name": "SAP Innovation Blog (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 2,
       "published30d": 2,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -488,7 +488,7 @@
     },
     "ibm": {
       "name": "IBM Research (hivatalos)",
-      "feedAgeDays": 4,
+      "feedAgeDays": 5,
       "published30d": 1,
       "truthBlocks": 1,
       "truthUnfixed": 0,
@@ -536,7 +536,7 @@
     },
     "xai-news": {
       "name": "xAI (hivatalos, Google News szűrve)",
-      "feedAgeDays": 0,
+      "feedAgeDays": 4,
       "published30d": 1,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -548,7 +548,7 @@
     },
     "perplexity-news": {
       "name": "Perplexity (hivatalos, Google News szűrve)",
-      "feedAgeDays": 2,
+      "feedAgeDays": 3,
       "published30d": 2,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -596,11 +596,11 @@
     },
     "d-id-news": {
       "name": "D-ID (hivatalos)",
-      "feedAgeDays": 5,
+      "feedAgeDays": 6,
       "published30d": 4,
       "truthBlocks": 0,
       "truthUnfixed": 0,
-      "totalAttempts": 2,
+      "totalAttempts": 1,
       "alreadyDisabled": false,
       "lastArticle": "2026-09-14",
       "verdict": "ok",
@@ -656,7 +656,7 @@
     },
     "picsart": {
       "name": "PicsArt Blog (hivatalos)",
-      "feedAgeDays": 2,
+      "feedAgeDays": 3,
       "published30d": 35,
       "truthBlocks": 5,
       "truthUnfixed": 0,
