@@ -110,6 +110,18 @@ export function epit(distDir) {
   });
   return {
     _comment: 'GÉPI FÁJL — ne szerkeszd kézzel. Előállítás: node core/packs-data.js --write',
+    // ⚠️ EZ AZ EGY MEZŐ KÉZI, ÉS A --write MEGŐRZI (lásd main()).
+    //
+    // `live: false` = a Ko-fi boltban MÉG NINCS FENT a 18 tétel. Amíg
+    // hamis, az eladó oldal el sem készül, és egyetlen link sem épül be
+    // sehova — különben minden gomb ÜRES boltba vinne. A feltöltés után
+    // ezt az egy szót kell igazra írni, és a következő CI-futás élesíti.
+    //
+    // 🔑 Azért külön mező, nem az üres bolt-címből következtetve: az
+    // „üres mező" és a „szándékos kikapcsolás" kívülről egyformán néz ki,
+    // és ebben a projektben már kétszer néztünk némán elromlott dolgot
+    // szándékos szünetnek.
+    live: false,
     generated_at: new Date().toISOString().slice(0, 10),
     currency: 'USD',
     // A bolt címe. A tételenkénti linkek addig üresek, amíg a 18 tétel fel
@@ -147,7 +159,16 @@ async function main() {
     process.exit(1);
   }
   const ki = join(ROOT, 'website', 'packs.json');
+  // A `live` KÉZI kapcsoló — egy újramérés SOHA ne kapcsolja vissza (vagy
+  // be) az élesítést a hátad mögött. Ha van korábbi fájl, az ő értéke nyer.
+  try {
+    const regi = JSON.parse(readFileSync(ki, 'utf-8'));
+    if (typeof regi.live === 'boolean') adat.live = regi.live;
+  } catch { /* első futás — marad az alapértelmezett false */ }
   writeFileSync(ki, JSON.stringify(adat, null, 2) + '\n', 'utf-8');
+  console.log(adat.live
+    ? '🟢 live: true — az eladó oldal ÉLESBEN épül'
+    : '🔴 live: false — az eladó oldal NEM épül meg (a bolt még nincs feltöltve)');
   for (const p of adat.packs) {
     console.log(`  ${p.id.padEnd(9)} $${p.price}  en: ${String(p.en.pages).padStart(3)} oldal / ${p.en.guides} útmutató`
       + `   es: ${String(p.es.pages).padStart(3)} oldal / ${p.es.guides} útmutató`);

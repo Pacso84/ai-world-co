@@ -310,8 +310,27 @@ t('a csevegő GY.I.K. ismeri a /packs oldalt mind a 3 nyelven', () => {
 // ===================================================================
 // 5. KIMENET — ha van friss build, a számok tényleg kikerültek
 // ===================================================================
+// ⚠️ A KAPCSOLÓ ÁLLÁSÁT KI KELL MONDANI. Ha a live:false miatt kimaradó
+// kimenet-próbák ugyanúgy néznének ki, mint egy elfelejtett build, akkor
+// egy néma kihagyás fedné el, hogy az oldal egyáltalán nem épül meg.
+const ELO = (() => { try { return JSON.parse(readFileSync(packsUt,'utf-8')).live === true; } catch { return false; } })();
+
+t('a live kapcsoló létezik és logikai érték', () => {
+  const j = JSON.parse(readFileSync(packsUt, 'utf-8'));
+  assert.equal(typeof j.live, 'boolean', 'a packs.json live mezője hiányzik vagy nem true/false');
+});
+
+t('🔑 a kapcsoló TÉNYLEG kapcsol: az oldal a live mögé van zárva', () => {
+  assert.ok(/rawPacks.live === true/.test(build),
+    'a PACKS.enabled nem a live mezőtől függ — a kapcsoló díszlet lenne');
+});
+
 const kimenet = join(ROOT, 'website', 'public', 'packs.html');
-if (existsSync(kimenet)) {
+if (!ELO) {
+  console.log('  ⏸️  AZ ELADÓ OLDAL SZÁNDÉKOSAN KI VAN KAPCSOLVA (packs.json live:false).');
+  console.log('      A bolt feltöltése után: live:true → a következő build élesíti.');
+  if (existsSync(kimenet)) { bukott++; console.log('  ❌ mégis van kiépített packs.html — a kapcsoló nem fog'); }
+} else if (existsSync(kimenet)) {
   const html = readFileSync(kimenet, 'utf-8');
   t('[kimenet] az eladó oldalon nem maradt kitöltetlen helyőrző', () => {
     assert.ok(!/\{OLDAL\}|\{DB\}|\bundefined\b|NaN/.test(html), 'helyőrző vagy undefined a kész lapon');
@@ -323,7 +342,7 @@ if (existsSync(kimenet)) {
     assert.ok(html.includes('$' + ARAK.nagy), 'a gyűjtemény ára nincs kint');
   });
 } else {
-  console.log('  ⏭️  [kimenet] nincs friss build — a kimenet-próbák kimaradnak');
+  console.log('  ⏭️  [kimenet] él, de nincs friss build — a kimenet-próbák kimaradnak');
 }
 
 console.log(`\n${bukott ? '❌' : '✅'} ${pass} sikeres, ${bukott} bukott`);

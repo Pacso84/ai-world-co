@@ -76,7 +76,9 @@ try {
   const rawPacks = JSON.parse(readFileSync(join(__dirname, 'packs.json'), 'utf-8'));
   const list = (rawPacks.packs || []).filter(p => p && p.id && p.price > 0);
   PACKS = {
-    enabled: list.length > 0 && !!rawPacks.shop_url,
+    // A `live` a KÉZI kapcsoló: amíg a 18 tétel nincs fent a Ko-fin,
+    // hamis, és az egész eladó ág néma marad.
+    enabled: rawPacks.live === true && list.length > 0 && !!rawPacks.shop_url,
     shopUrl: (rawPacks.shop_url || '').trim(),
     list
   };
