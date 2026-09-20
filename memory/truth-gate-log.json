@@ -1,24 +1,4 @@
 {
-  "2026-09-02": [
-    {
-      "at": "2026-09-02T02:00:29.911Z",
-      "file": "WRITER_2026-09-02T01-52-53-040Z_google-ai-blog_The_latest_AI_news_we_announced_in_August_2026.json",
-      "action": "hold",
-      "reasons": [
-        "AI-bíró nem elérhető (érthetetlen AI-válasz: credible mező hiányzik) — visszatartva a következő futásig"
-      ]
-    },
-    {
-      "at": "2026-09-02T12:36:51.752Z",
-      "file": "WRITER_2026-09-02T12-33-35-117Z_picsart_Qwen_Image_3_0_Pro_is_now_in_Picsart__what_it_does.json",
-      "action": "block",
-      "reasons": [
-        "The article presents 'Qwen Image 3.0 Pro' as Alibaba's top image-generation model with a specific version number, but this model name does not match known Qwen product naming conventions (Qwen's lineup uses patterns like Qwen2.5, Qwen-VL, Qwen2-VL) and cannot be verified as a real, officially named product",
-        "The article claims Qwen Image 3.0 Pro is integrated into Picsart and accessible via 'The AI Image Generator' and 'The AI Playground' UI sections, but this specific integration and these exact UI element names are unverifiable and may be fabricated"
-      ],
-      "confidence": 5
-    }
-  ],
   "2026-09-03": [
     {
       "at": "2026-09-03T02:14:12.630Z",
@@ -344,6 +324,17 @@
       "action": "block",
       "reasons": [
         "The article presents \"Qwen's LiveTranslate\" as an existing named product with speaker-diarization translation capabilities. While Qwen is verified-real, \"LiveTranslate\" as a specific branded product/feature of Qwen with the described capabilities (speaker diarization + LLM-smoothed live translation) is not verifiable and appears to be a fabricated product name. The article frames it as a concrete, shippable product (\"a new generation of live translation tools — including Qwen's LiveTranslate\"), which would mislead readers into believing this is a real, available offering."
+      ],
+      "confidence": 7
+    }
+  ],
+  "2026-09-20": [
+    {
+      "at": "2026-09-20T02:16:54.381Z",
+      "file": "WRITER_2026-09-20T02-14-53-889Z_openai-blog_Introducing_the_Australian_Youth_Safety_Blueprint.json",
+      "action": "block",
+      "reasons": [
+        "The article repeatedly refers to an 'OpenAI Youth Safety Blueprint' with six specific pillars as if it is a published, real document. No such named, published document with this title or these six specific pillars is verifiably known to exist. This is a fabricated specific feature/document attributed to OpenAI."
       ],
       "confidence": 7
     }

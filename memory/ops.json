@@ -1,118 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178952544986662",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-16T02:24:09.866Z",
-      "updated": "2026-09-16T02:24:50.018Z"
-    },
-    {
-      "id": "t178952549002168",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-09-16T02:24:50.021Z",
-      "updated": "2026-09-16T02:25:19.068Z"
-    },
-    {
-      "id": "t178952551912089",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-09-16T02:25:19.120Z",
-      "updated": "2026-09-16T02:27:47.559Z"
-    },
-    {
-      "id": "t178952566756080",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-16T02:27:47.560Z",
-      "updated": "2026-09-16T02:28:33.977Z"
-    },
-    {
-      "id": "t178952571402730",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-16T02:28:34.027Z",
-      "updated": "2026-09-16T02:35:09.956Z"
-    },
-    {
-      "id": "t178952610995762",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-09-16T02:35:09.957Z",
-      "updated": "2026-09-16T02:48:38.421Z"
-    },
-    {
-      "id": "t178952691842393",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-16T02:48:38.423Z",
-      "updated": "2026-09-16T02:56:51.071Z"
-    },
-    {
-      "id": "t178952741107281",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-09-16T02:56:51.072Z",
-      "updated": "2026-09-16T02:59:32.681Z"
-    },
-    {
-      "id": "t178961147201160",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-09-17T02:17:52.011Z",
-      "updated": "2026-09-17T02:17:52.128Z"
-    },
-    {
-      "id": "t17896114721308",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-09-17T02:17:52.130Z",
-      "updated": "2026-09-17T02:18:56.357Z"
-    },
-    {
-      "id": "t178961153635981",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-09-17T02:18:56.359Z",
-      "updated": "2026-09-17T02:18:56.494Z"
-    },
-    {
-      "id": "t178961153649550",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-09-17T02:18:56.495Z",
-      "updated": "2026-09-17T02:21:12.217Z"
-    },
-    {
-      "id": "t178961167221841",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-17T02:21:12.218Z",
-      "updated": "2026-09-17T02:22:29.791Z"
-    },
-    {
-      "id": "t178961174979368",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-09-17T02:22:29.793Z",
-      "updated": "2026-09-17T02:22:56.862Z"
-    },
-    {
       "id": "t178961177689614",
       "title": "Run guide",
       "status": "done",
@@ -479,33 +367,121 @@
       "agent": "publisher",
       "created": "2026-09-19T02:18:18.460Z",
       "updated": "2026-09-19T02:18:40.109Z"
+    },
+    {
+      "id": "t178987046768336",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-09-20T02:14:27.683Z",
+      "updated": "2026-09-20T02:14:27.825Z"
+    },
+    {
+      "id": "t178987046782670",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-09-20T02:14:27.826Z",
+      "updated": "2026-09-20T02:14:53.899Z"
+    },
+    {
+      "id": "t178987049390099",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-09-20T02:14:53.900Z",
+      "updated": "2026-09-20T02:14:54.062Z"
+    },
+    {
+      "id": "t178987049406311",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-09-20T02:14:54.063Z",
+      "updated": "2026-09-20T02:15:50.802Z"
+    },
+    {
+      "id": "t178987055080470",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-20T02:15:50.804Z",
+      "updated": "2026-09-20T02:16:54.396Z"
+    },
+    {
+      "id": "t178987061439814",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-09-20T02:16:54.398Z",
+      "updated": "2026-09-20T02:17:09.642Z"
+    },
+    {
+      "id": "t178987062964469",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-20T02:17:09.644Z",
+      "updated": "2026-09-20T02:17:32.576Z"
+    },
+    {
+      "id": "t178987065257931",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-09-20T02:17:32.579Z",
+      "updated": "2026-09-20T02:17:50.522Z"
+    },
+    {
+      "id": "t178987067057887",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-09-20T02:17:50.578Z",
+      "updated": "2026-09-20T02:23:38.291Z"
+    },
+    {
+      "id": "t178987101829249",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-20T02:23:38.292Z",
+      "updated": "2026-09-20T02:24:12.079Z"
+    },
+    {
+      "id": "t178987105212776",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-20T02:24:12.127Z",
+      "updated": "2026-09-20T02:25:24.659Z"
+    },
+    {
+      "id": "t178987112466026",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-09-20T02:25:24.660Z",
+      "updated": "2026-09-20T02:26:45.443Z"
+    },
+    {
+      "id": "t178987120544552",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-20T02:26:45.445Z",
+      "updated": "2026-09-20T02:26:52.216Z"
+    },
+    {
+      "id": "t178987121221727",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-09-20T02:26:52.217Z",
+      "updated": "2026-09-20T02:27:13.998Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178857464669225",
-      "level": "success",
-      "text": "5 hír + 4 útmutató publikálva (költség: $0.1208).",
-      "agent": "ceo",
-      "at": "2026-09-05T02:17:26.692Z",
-      "loud": false
-    },
-    {
-      "id": "n178860772576627",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The line-up is solid and covers practical, everyday writing tasks people actually need help with — from complaint emails to sympathy messages. One small note: Article 6 (Resume From Scratch) doesn't n",
-      "agent": "publisher",
-      "at": "2026-09-05T11:28:45.766Z",
-      "loud": false
-    },
-    {
-      "id": "n178860773534519",
-      "level": "info",
-      "text": "Pipeline lefutott — ma nem volt publikálható új tartalom.",
-      "agent": "ceo",
-      "at": "2026-09-05T11:28:55.345Z",
-      "loud": false
-    },
     {
       "id": "n17886304659660",
       "level": "success",
@@ -1281,54 +1257,33 @@
       "agent": "ceo",
       "at": "2026-09-19T02:18:40.156Z",
       "loud": false
+    },
+    {
+      "id": "n178987120543596",
+      "level": "info",
+      "text": "SEO: 6 cikk optimalizálva (átlag 8.2/10).",
+      "agent": "seo",
+      "at": "2026-09-20T02:26:45.436Z",
+      "loud": false
+    },
+    {
+      "id": "n17898712190350",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The lineup is solid and ready — it's a practical, user-friendly mix of everyday writing tasks helped by AI, from complaint letters to heartfelt speeches. One note: since this is tech-heavy, consider a",
+      "agent": "publisher",
+      "at": "2026-09-20T02:26:59.035Z",
+      "loud": false
+    },
+    {
+      "id": "n17898712340440",
+      "level": "success",
+      "text": "4 hír + 2 útmutató publikálva (költség: $0.0623).",
+      "agent": "ceo",
+      "at": "2026-09-20T02:27:14.044Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178880939571481",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Create a tiny AI weather-helper widget for your bl\" — The embed process description may need softening as UI details can change; no specific false claims found but guide should use more conditional language.",
-      "ref": "ARTICLE_GUIDE_create-a-tiny-ai-weather-helper-widget-for-your-blog-with-hu.json",
-      "at": "2026-09-07T19:29:55.714Z"
-    },
-    {
-      "id": "m178883319900999",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 20 → 5/4/2 oszlop.",
-      "ref": "mobile",
-      "at": "2026-09-08T02:06:39.009Z"
-    },
-    {
-      "id": "m178883324134437",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Create a simple budget spreadsheet with Perplexity\" — search bar placeholder text 'Ask anything…'",
-      "ref": "ARTICLE_GUIDE_create-a-simple-budget-spreadsheet-with-perplexity-s-suggest.json",
-      "at": "2026-09-08T02:07:21.344Z"
-    },
-    {
-      "id": "m178883326288553",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Create AI‑generated grocery shopping lists from pa\" — The guide claims there's a specific 'pantry photo to grocery list' feature that works by taking a photo and getting a shopping list back. This is presented as a built-in dedicated workflow, but I cannot verify Meta AI specifically offers this as a dedicated feature.",
-      "ref": "ARTICLE_GUIDE_create-ai-generated-grocery-shopping-lists-from-pantry-photo.json",
-      "at": "2026-09-08T02:07:42.885Z"
-    },
-    {
-      "id": "m178883393914741",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "4 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-09-08T02:18:59.147Z"
-    },
     {
       "id": "m178887032007586",
       "from": "ellenorzo",
@@ -2643,6 +2598,51 @@
       "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Digitize handwritten notes with AI and turn them i\" — Microsoft Lens as a standalone app (merged into OneNote in 2020); Reference to 'purple lens' icon (app no longer exists standalone)",
       "ref": "ARTICLE_GUIDE_digitize-handwritten-notes-with-ai-and-turn-them-into-editab.json",
       "at": "2026-09-19T12:09:34.948Z"
+    },
+    {
+      "id": "m178987061437969",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Introducing the Australian Youth Safety Blueprint\" — mi a baj: The article repeatedly refers to an 'OpenAI Youth Safety Blueprint' with six specific pillars as if it is a published, real document. No such named, published document with this title or these six specific pillars is verifiably known to exist. This is a fabricated specific feature/document attributed to OpenAI.",
+      "ref": "2026-09-20T02-14-53-889Z_openai-blog_Introducing_the_Australian_Youth_Safety_Blueprint.json",
+      "at": "2026-09-20T02:16:54.379Z"
+    },
+    {
+      "id": "m178987062963221",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Introducing the Australian Youth Safety Blueprint\" — javítva: The article repeatedly refers to an 'OpenAI Youth Safety Blueprint' with six specific pillars as if it is a published, real document. No such named, published document with this title or these six specific pillars is verifiably known to exist. This is a fabricated specific feature/document attributed to OpenAI.; Reviewer v",
+      "ref": "2026-09-20T02-14-53-889Z_openai-blog_Introducing_the_Australian_Youth_Safety_Blueprint.json",
+      "at": "2026-09-20T02:17:09.632Z"
+    },
+    {
+      "id": "m178987065256714",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Introducing the Australian Youth Safety Blueprint\" (?/10)",
+      "ref": "2026-09-20T02-14-53-889Z_openai-blog_Introducing_the_Australian_Youth_Safety_Blueprint.json",
+      "at": "2026-09-20T02:17:32.567Z"
+    },
+    {
+      "id": "m178987121220848",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 20 → 5/4/2 oszlop.",
+      "ref": "mobile",
+      "at": "2026-09-20T02:26:52.208Z"
+    },
+    {
+      "id": "m178987125820742",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Brainstorm birthday gift ideas with Le Chat for an\" — The guide repeatedly mentions specific prices like \"under $25\", \"$25–$75\", \"$75 to $150\", \"under $30\", \"$30–$80\", \"$80–$150\" in examples — these concrete dollar amounts violate the pricing rule from the style guide",
+      "ref": "ARTICLE_GUIDE_brainstorm-birthday-gift-ideas-with-le-chat-for-any-budget-a.json",
+      "at": "2026-09-20T02:27:38.207Z"
     }
   ]
 }

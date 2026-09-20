@@ -1,0 +1,69 @@
+{
+  "_meta": {
+    "written_at": "2026-09-20T02:17:09.631Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.0085479,
+    "original_draft": "2026-09-20T02-14-53-889Z_openai-blog_Introducing_the_Australian_Youth_Safety_Blueprint.json",
+    "source_id": "openai-blog",
+    "source_name": "OpenAI Blog (hivatalos)",
+    "source_link": "https://openai.com/index/australian-youth-safety-blueprint",
+    "source_links": [
+      "https://openai.com/index/australian-youth-safety-blueprint"
+    ],
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "rejected_at": "2026-09-20T02:16:54.373Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 909
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured explainer with clear hooks, practical audience-specific guidance, and honest acknowledgment of what is still missing. Technical terms like hallucination are explained plainly. US English throughout. No prohibited content. Factual claims are appropriately hedged and reasonable. Suitable for publication.",
+      "_aiCost": 0.0017811,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Hitelesség-kapu blokkolta: The article repeatedly refers to an 'OpenAI Youth Safety Blueprint' with six specific pillars as if it is a published, real document. No such named, published document with this title or these six spe",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-09-20T02-14-53-889Z_openai-blog_Introducing_the_Australian_Youth_Safety_Blueprint.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-09-20T02:17:32.566Z",
+    "slug": "how-ai-companies-are-making-chatbots-safer-for-young-users-and-what-pa",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-09-20T02:17:50.512Z",
+    "guide_worthy": false,
+    "pairing_reason": "The article describes a broad industry roadmap of planned youth-safety concepts across multiple companies, not a single named feature that exists today. The article explicitly states most protections are 'not finished products' and 'arriving over the next year or two.'",
+    "image_v": 2,
+    "image_at": "2026-09-20T02:25:06.169Z",
+    "seo": {
+      "meta_description": "AI companies are adding safety features for young users. Learn what's real, what's missing, and what parents can do right now.",
+      "keywords": [
+        "AI chatbot safety for kids",
+        "ChatGPT parental controls",
+        "how to keep children safe with AI",
+        "AI safety features for teenagers",
+        "Google AI safety young users",
+        "Anthropic AI kids protection",
+        "family AI safety guide"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add the target keyword 'AI chatbot safety for kids' earlier in the title or subtitle for better topical relevance",
+        "Include specific product names (like 'ChatGPT' or 'Gemini') in the first 100 words to strengthen product-level search signals",
+        "Add an FAQ section addressing common parent questions like 'What age should kids use AI chatbots?' to capture long-tail search intent"
+      ],
+      "optimised_at": "2026-09-20T02:25:56.222Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"How AI Companies Are Making Chatbots Safer for Young Users (And What Parents Can Do Now)\"\nsubtitle: \"A plain-language look at the youth-safety features rolling out in AI apps — what's real, what's still missing, and what families can do today\"\ncategory: \"explainer\"\naudience: \"personal\"\nread_time_minutes: 5\ntags: [\"ai-safety\", \"youth\", \"parents\", \"chatgpt\", \"ai-companies\"]\n---\n\n# How AI Companies Are Making Chatbots Safer for Young Users (And What Parents Can Do Now)\n\n> **In short:** Major AI companies — including OpenAI, Google, and Anthropic — have started rolling out age-aware features and family-style controls in their chatbots, but most of the strongest protections are still arriving over the next year or two. Until they fully land, the everyday responsibility for keeping kids safe with AI still sits at home.\n\nIf your teenager has ever asked an AI chatbot for homework help at 11pm, you've probably wondered who's making sure the answers are actually right — or safe. You're not alone. A growing number of AI companies are now publicly describing how their assistants should behave around minors, and several have already started shipping real changes inside the apps your family may already be using.\n\n## What's actually being built\n\nThe conversation across the industry has settled on a few common ideas. None of these are finished products yet, but they are the categories you will hear about most:\n\n- **Age-aware responses.** The AI is being trained to behave differently for a 13-year-old than for a 35-year-old — softer language around sensitive topics, and stronger guardrails for anything that could harm a minor. ChatGPT, for example, already routes users it suspects are under 18 toward a restricted version of the model.\n- **Crisis handling.** When a young user types something that suggests self-harm or immediate danger, the system should respond with trained crisis resources — hotlines and safety steps for the user's region — not generic advice.\n- **Family-friendly defaults.** For accounts that are clearly under 18, the AI should lean conservative, erring on the side of caution rather than giving the most \"complete\" answer.\n- **Tools for parents and schools.** Companies are working on dashboards that let families see how AI is being used, set time limits, and report problems.\n- **Outside review.** Independent researchers are being given limited access to study how AI actually performs with minors — not just how the company says it performs.\n- **Public reporting.** Regular updates on what is working and what isn't, so families are not left guessing.\n\nIf you've ever wished a chatbot would \"just be careful around my kid,\" this is the general direction the industry is moving in.\n\n## What's still missing\n\nIt is worth seeing this clearly.\n\n**It is a roadmap, not a finished product.** Most of these protections are arriving in waves over months — not overnight. Check your specific app's settings regularly, because the situation changes fast.\n\n**Detection is genuinely hard.** AI systems try to infer a user's age from how they write and what they ask. That works most of the time, but it isn't foolproof. A determined teen can sometimes get around it, which is one of those areas where honest uncertainty is more useful than false confidence.\n\n**Parents still carry the load.** Until the tools fully land, the everyday responsibility for keeping kids safe with AI sits at home. That includes knowing which apps your child uses, what they sign in to, and what those apps actually do with their conversations.\n\n## What this means for you\n\n- **If you're a parent of a teen:** Treat any AI chatbot like a public space — useful, but not supervised. Sit with your kid for the first few sessions. Talk about what they should never share (real name, address, school, photos of themselves). Show them how to spot when an answer sounds confident but is actually wrong — a problem called **hallucination** (when AI makes something up and states it like a fact).\n- **If you're a teacher or school staff:** You don't have to wait for official tools. A simple classroom rule — \"never paste a real student's name or photo into an AI\" — covers most risks today. Bookmark the educator guides that major AI companies already publish.\n- **If you're a teen reading this:** The \"secret question\" trick still works. If a chatbot ever pressures you to keep a conversation private from a parent, teacher, or counselor, that's a signal to close the tab and tell someone. A real safety system should never ask you to hide it.\n- **If you're just curious:** You don't need to memorize every company's plan. Just remember the six ideas above — age-awareness, crisis handling, safer defaults, family tools, outside research, and honest reporting. If an AI product you're using does well on all of them, it's doing the basics right.\n\n## Wrap-up\n\nThe AI industry has begun taking youth safety seriously in a way that was rare even a year ago, and the changes are starting to show up inside the apps your family may already use. Treat the trend as a signal that the industry is moving, not as a finished safety net. The most useful thing you can do today is have one short, calm conversation with your kid (or yourself) about how AI assistants work, where they guess, and when to ask a human instead. That single conversation will do more than any feature update — until the technology catches up.",
+  "original_title": "Introducing the Australian Youth Safety Blueprint"
+}

@@ -1,0 +1,35 @@
+{
+  "started_at": "2026-09-20T02:15:50.939Z",
+  "total": 4,
+  "passed": 3,
+  "failed": 0,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.009009832,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-09-17T02-18-27-380Z_meta-ai_Canadian_Start-up_smartARM_Uses_AI_to_Create_Intui.json",
+      "article": "ARTICLE_2026-09-17T02-18-27-380Z_meta-ai_Canadian_Start-up_smartARM_Uses_AI_to_Create_Intui.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.00131085
+    },
+    {
+      "writer": "WRITER_2026-09-17T02-18-27-380Z_nvidia-blog_Emerald_AI__Google_and_NVIDIA_Launch_Alliance_to_A.json",
+      "article": "ARTICLE_2026-09-17T02-18-27-380Z_nvidia-blog_Emerald_AI__Google_and_NVIDIA_Launch_Alliance_to_A.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.0024147
+    },
+    {
+      "writer": "WRITER_2026-09-17T02-18-40-128Z_apple-ml_How_Value_Induction_Reshapes_LLM_Behaviour.json",
+      "article": "ARTICLE_2026-09-17T02-18-40-128Z_apple-ml_How_Value_Induction_Reshapes_LLM_Behaviour.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.0016692
+    }
+  ],
+  "truth_blocked": 1,
+  "finished_at": "2026-09-20T02:16:54.389Z",
+  "duration_seconds": 63.45
+}

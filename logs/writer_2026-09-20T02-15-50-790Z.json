@@ -1,0 +1,60 @@
+{
+  "started_at": "2026-09-20T02:14:54.199Z",
+  "drafts_total": 4,
+  "articles_written": 4,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 0,
+  "merged_total": 0,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "total_cost_usd": 0.019591776,
+  "by_article": [
+    {
+      "draft": "2026-09-20T02-14-53-889Z_openai-blog_Introducing_the_Australian_Youth_Safety_Blueprint.json",
+      "writer_output": "WRITER_2026-09-20T02-14-53-889Z_openai-blog_Introducing_the_Australian_Youth_Safety_Blueprint.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.004751184,
+      "duration_ms": 15059,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-09-17T02-18-40-128Z_apple-ml_How_Value_Induction_Reshapes_LLM_Behaviour.json",
+      "writer_output": "WRITER_2026-09-17T02-18-40-128Z_apple-ml_How_Value_Induction_Reshapes_LLM_Behaviour.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.004850064,
+      "duration_ms": 10126,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-09-17T02-18-27-380Z_nvidia-blog_Emerald_AI__Google_and_NVIDIA_Launch_Alliance_to_A.json",
+      "writer_output": "WRITER_2026-09-17T02-18-27-380Z_nvidia-blog_Emerald_AI__Google_and_NVIDIA_Launch_Alliance_to_A.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.004676304,
+      "duration_ms": 7336,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-09-17T02-18-27-380Z_meta-ai_Canadian_Start-up_smartARM_Uses_AI_to_Create_Intui.json",
+      "writer_output": "WRITER_2026-09-17T02-18-27-380Z_meta-ai_Canadian_Start-up_smartARM_Uses_AI_to_Create_Intui.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.004770624,
+      "duration_ms": 16133,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    }
+  ],
+  "finished_at": "2026-09-20T02:15:50.790Z",
+  "duration_seconds": 56.591
+}
