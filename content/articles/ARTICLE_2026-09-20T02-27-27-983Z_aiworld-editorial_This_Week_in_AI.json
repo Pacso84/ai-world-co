@@ -1,0 +1,63 @@
+{
+  "_meta": {
+    "written_at": "2026-09-21T02:20:27.462Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00863936,
+    "original_draft": null,
+    "source_id": "aiworld-editorial",
+    "source_name": "AI World HQ Editorial",
+    "source_link": "https://aiworldhq.com",
+    "status": "published",
+    "rejected_at": "2026-09-21T02:16:59.605Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 752
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured weekly digest that hits all required elements: accessible language, practical focus, actionable 'What this means for you' section, and encouraging wrap-up. No cliches, no prohibited content, factual claims are general enough to be defensible, and technical terms are explained in context.",
+      "_aiCost": 0.001062936,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Hitelesség-kapu blokkolta: Link to non-existent article: https://aiworldhq.com/article/how-ai-companies-are-making-chatbots-safer-for-young-users-and-what-pa.html — fabricated URL",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-09-20T02-27-27-983Z_aiworld-editorial_This_Week_in_AI.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-09-21T02:20:53.927Z",
+    "slug": "this-week-in-ai-5-practical-shifts-worth-knowing",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-09-21T02:21:06.741Z",
+    "guide_worthy": false,
+    "pairing_reason": "Weekly roundup aggregating 5 unrelated stories — per rules, news digests/recaps are always false",
+    "image_v": 2,
+    "image_at": "2026-09-21T02:30:40.212Z",
+    "seo": {
+      "meta_description": "This week's AI news brings practical tools — safer AI for kids, accessibility breakthroughs, and energy-saving data centers. See what matters for you.",
+      "keywords": [
+        "AI news this week",
+        "practical AI applications",
+        "AI for kids safety",
+        "AI accessibility tools",
+        "AI energy efficiency",
+        "latest AI developments"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add a specific date to the title (e.g., 'January 2025') to improve freshness signals for search",
+        "Consider adding FAQ schema markup to capture featured snippet opportunities",
+        "Include more specific company/product names mentioned in each development for better topical authority"
+      ],
+      "optimised_at": "2026-09-21T02:31:12.675Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"This Week in AI: 5 Practical Shifts Worth Knowing\"\nsubtitle: \"From safer tools for families to breakthroughs in accessibility and energy — what this week's AI news actually means for your daily life.\"\ncategory: \"ai-news\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"weekly-digest\", \"ai-news\"]\n---\n\n# This Week in AI: 5 Practical Shifts Worth Knowing\n\n> **In short:** This week's AI news leans practical — better safety tools for kids, smarter prosthetics, more energy-efficient data centers, audio versions of research notes, and live translation that knows who's talking. The takeaway: AI is moving from flashy demos into tools you can actually use.\n\nThis week showed AI becoming more useful in everyday situations — and less like a science project. Here are five developments worth your time, and what they mean for you.\n\n## Safer AI for Young Users\n\nMajor AI companies keep adding features aimed at protecting younger users — stricter content filters, age-detection systems, and options for parents to set limits. The details vary by company, and no tool is perfect, but the direction matters: AI providers are being pushed to treat safety as a feature, not an afterthought.\n\nWhat this looks like in practice: more visible reminders that you're talking to an AI, easier ways to report problems, and clearer settings for younger users.\n\n## Smarter Prosthetics\n\nResearchers are teaching prosthetic hands to \"see\" the world around them. Using small cameras and AI vision systems (software trained to recognize what's in an image), the hand figures out what it's reaching for — soft, hard, fragile, heavy — and adjusts its grip before contact. The result: someone can pick up an egg without crushing it, or grab a paper cup without tipping it over.\n\nThis isn't a demo anymore. Real users are testing these hands at home, and the goal is everyday usefulness, not lab headlines.\n\n## Energy-Smart Data Centers\n\nAI uses a lot of electricity — that's no secret. But a quiet idea is gaining traction: flexible data centers that shift their power use based on the grid. When the grid is green (sunny, windy), AI work scales up. When the grid is stressed, it dials back. The hope is lower energy bills for everyone and less strain during peak hours.\n\nYou won't see this directly, but it's one of the reasons your electricity bill might not spike as AI grows.\n\n## Listening to Your Notes\n\nGoogle's NotebookLM — a tool that summarizes documents you upload — has been adding audio versions of your material. Two AI voices \"discuss\" what you gave it like a podcast, summarizing, debating, and pulling out key points. It's a different way to absorb dense reading, especially if you learn better by listening than staring at text.\n\nIf you've ever wished you could \"listen to a PDF\" on your morning walk, this is built for that.\n\n## Translation That Knows Who's Talking\n\nLive translation has been around for a while, but the newest tools add a clever layer: they can tell who is speaking. In a meeting with three people — one in Spanish, one in Mandarin, one in English — the AI keeps each voice distinct, so you know who said what. It makes group conversations across languages feel less like a jumble and more like a real discussion.\n\n## What this means for you\n\n- **If you're a parent or work with teens:** Look at the safety settings in any AI tool your family uses. Most have improved recently, and a few minutes of setup now is worth it.\n- **If you work in a multilingual team or with international clients:** Live translation tools that recognize different speakers are starting to make meetings smoother. Worth a test before your next cross-language call.\n- **If you're interested in accessibility:** AI-driven prosthetics and real-time translation are two areas where the technology is genuinely changing lives — and worth keeping an eye on.\n- **If you learn better by listening:** NotebookLM's audio feature is worth trying. Upload a chapter of a textbook, an article you've been avoiding, or your own notes, and listen on a walk.\n- **If you're energy-conscious:** The data center story won't change your bill tomorrow, but it's a reminder that the AI growth story is also a power story.\n\n## Wrap-up\n\nThis week's theme: AI is getting more personal, more practical, and more embedded in everyday life. Pick one tool from this list and try it this week — even a quick five-minute test will teach you more than reading about it.",
+  "original_title": "This Week in AI: The 5 Stories That Matter (September 20, 2026)"
+}

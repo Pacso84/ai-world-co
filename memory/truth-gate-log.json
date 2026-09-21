@@ -1,23 +1,4 @@
 {
-  "2026-09-03": [
-    {
-      "at": "2026-09-03T02:14:12.630Z",
-      "file": "WRITER_2026-09-02T19-04-24-112Z_google-workspace_Automate_Drive__Gmail__and_Google_Chat_actions_wit.json",
-      "action": "block",
-      "reasons": [
-        "The article describes 'Workspace Studio Flows' as a Google no-code automation tool with specific actions ('Move Drive file', 'Copy Drive file', 'Reply to email', 'Send a Chat reply') and admin toggle controls — this product/feature does not appear to exist in Google's actual Workspace offerings, making these fabricated UI features and capabilities."
-      ],
-      "confidence": 7
-    },
-    {
-      "at": "2026-09-03T02:15:38.136Z",
-      "file": "WRITER_2026-09-02T19-04-28-483Z_databricks_Expanding_Genie_Agents__Deep_analysis__file_reason.json",
-      "action": "hold",
-      "reasons": [
-        "AI-bíró nem elérhető (érthetetlen AI-válasz: credible mező hiányzik) — visszatartva a következő futásig"
-      ]
-    }
-  ],
   "2026-09-04": [
     {
       "at": "2026-09-04T02:12:11.849Z",
@@ -335,6 +316,31 @@
       "action": "block",
       "reasons": [
         "The article repeatedly refers to an 'OpenAI Youth Safety Blueprint' with six specific pillars as if it is a published, real document. No such named, published document with this title or these six specific pillars is verifiably known to exist. This is a fabricated specific feature/document attributed to OpenAI."
+      ],
+      "confidence": 7
+    }
+  ],
+  "2026-09-21": [
+    {
+      "at": "2026-09-21T02:16:42.897Z",
+      "file": "WRITER_2026-09-17T02-18-27-380Z_google-workspace_View_conference_room_and_meeting_location_details_.json",
+      "action": "block",
+      "reasons": [
+        "The article describes a specific feature ('meeting cards showing room and floor details on the Google Meet web homepage') as a real, rolling-out update with no source, no Workspace blog post, no official Google announcement cited. Given the specificity of the claims (prioritizing the most relevant room for multi-room bookings, surfacing Calendar location on the homepage card), this reads as fabricated product news rather than a verifiable update.",
+        "Claim that 'Google says the homepage will prioritize the most relevant room' attributes a specific behavioral detail and an official statement to Google without any cited source — this is an invented claim presented as fact."
+      ],
+      "confidence": 6
+    },
+    {
+      "at": "2026-09-21T02:16:59.616Z",
+      "file": "WRITER_2026-09-20T02-27-27-983Z_aiworld-editorial_This_Week_in_AI.json",
+      "action": "block",
+      "reasons": [
+        "Link to non-existent article: https://aiworldhq.com/article/how-ai-companies-are-making-chatbots-safer-for-young-users-and-what-pa.html — fabricated URL",
+        "Link to non-existent article: https://aiworldhq.com/article/ai-powered-prosthetics-how-smart-bionic-arms-work-and-who-they-re-for.html — fabricated URL",
+        "Link to non-existent article: https://aiworldhq.com/article/what-flexible-ai-data-centers-actually-means-for-you.html — fabricated URL",
+        "Link to non-existent article: https://aiworldhq.com/article/notebooklm-s-audio-features-what-it-can-do-and-who-it-s-for.html — fabricated URL",
+        "Link to non-existent article: https://aiworldhq.com/article/speaker-aware-ai-translation-is-coming-what-it-does-and-who-it-helps.html — fabricated URL"
       ],
       "confidence": 7
     }

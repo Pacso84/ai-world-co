@@ -1,0 +1,69 @@
+{
+  "_meta": {
+    "written_at": "2026-09-21T02:17:38.076Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00906978,
+    "original_draft": "2026-09-17T02-18-27-380Z_google-workspace_View_conference_room_and_meeting_location_details_.json",
+    "source_id": "google-workspace",
+    "source_name": "Google Workspace Updates (hivatalos)",
+    "source_link": "http://workspaceupdates.googleblog.com/2026/09/view-conference-room-and-meeting-location-details-directly-on-the-Google-Meet-homepage.html",
+    "source_links": [
+      "http://workspaceupdates.googleblog.com/2026/09/view-conference-room-and-meeting-location-details-directly-on-the-Google-Meet-homepage.html"
+    ],
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "rejected_at": "2026-09-21T02:16:42.890Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1431
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 10,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured how-to guide with clear web and phone steps, a helpful Before you start section, constructive Common mistakes, and a solid What this means for you section. No cliches, no prohibited content, no British spellings, and no invented facts. The article explains technical terms like resource calendars when introduced and maintains a kind, non-judgmental tone throughout.",
+      "_aiCost": 0.00172962,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Hitelesség-kapu blokkolta: The article describes a specific feature ('meeting cards showing room and floor details on the Google Meet web homepage') as a real, rolling-out update with no source, no Workspace blog post, no offic",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-09-17T02-18-27-380Z_google-workspace_View_conference_room_and_meeting_location_details_.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-09-21T02:20:41.036Z",
+    "slug": "how-to-find-your-meeting-room-details-before-a-google-meet-call",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-09-21T02:21:03.727Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is an existing how-to article about using Google Calendar's Location field, not a news article about a new feature launch",
+    "image_v": 2,
+    "image_at": "2026-09-21T02:30:31.906Z",
+    "seo": {
+      "meta_description": "Learn how to find meeting room details in Google Calendar before your Google Meet call. Check the Location field so you never walk into the wrong room again.",
+      "keywords": [
+        "how to find meeting room in Google Meet",
+        "Google Calendar meeting location",
+        "Google Meet room details",
+        "find meeting room before Google Meet",
+        "Google Calendar location field",
+        "where is meeting room in Google Calendar",
+        "check meeting location Google Calendar"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more details about where exactly the Location field appears (e.g., 'in the calendar event card or invite email')",
+        "Include a brief step-by-step list or numbered guide to increase readability and time-on-page",
+        "Consider adding a screenshot reference showing where the meeting room info appears in Google Calendar"
+      ],
+      "optimised_at": "2026-09-21T02:31:10.032Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"How to find your meeting room details before a Google Meet call\"\nsubtitle: \"A practical guide to checking, sharing, and filling in meeting location info in Google Calendar and Meet\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 6\ntags: [\"google-meet\", \"google-calendar\", \"productivity\", \"meetings\", \"hybrid-work\"]\n---\n\n# How to find your meeting room details before a Google Meet call\n\n> **In short:** The room or address for a Google Meet call usually lives in the Calendar event's Location line. You can check it on the Calendar invite, the Calendar event itself, or the Meet homepage before you join, and as the organizer you can fill that field in so attendees never have to guess.\n\nYou've clicked join, the meeting has started, and you're the one walking the hallway looking for \"Aspen\" or \"Catalyst 3\" while everyone else is already talking. That small daily scramble almost always has the same cause: the meeting room info exists somewhere in your calendar, but it isn't where you're looking. Here's how to find it — and how to make sure it's there for the next person.\n\n## Before you start\n\nYou'll need:\n\n- A Google account with Google Calendar and Google Meet\n- Either the **web version** at calendar.google.com and meet.google.com, or the **Google Calendar app** on iPhone or Android\n- A meeting invite that already has the room booked (for the first three steps), or organizer access to a Calendar event (for the last two)\n\n## Step 1 — Check the Calendar event itself\n\nThe room and address always live on the Calendar event. The fastest way to find them is to open the event, not the Meet call.\n\nOn the web, open **calendar.google.com**, click the meeting on your calendar grid, and a small popover will appear with the title, time, and a **Location** field. If the location is filled in, you'll see the room name, building, or full address right there. If you want the full details, click **\"Open event\"** or the popover's expand icon, and the full event page opens with everything: title, time, guests, location, description, and any attachments.\n\nOn the phone, open the **Google Calendar app**, tap the event, and scroll. The **Where** line sits right under the time block.\n\nYou'll know it worked when: you see a street address, building name, or room label under \"Location\" (web) or \"Where\" (phone) without having to scroll into a separate invite email.\n\n## Step 2 — Check the Google Meet web homepage\n\nWhen you open Meet at **meet.google.com** on the web, you see a list of your upcoming meetings as cards. Each card shows the meeting title, the time, and the join button. If the meeting has a physical location filled in on the Calendar event, that room or address typically shows up on the card too — usually directly under the meeting title.\n\nOn the phone, the Meet app behaves a little differently. It focuses on joining a meeting by code, and the upcoming-meeting view isn't as full as the web homepage. If you can't see the room on your phone, that's normal — switch to the web or to the Calendar app for the full picture.\n\nYou'll know it worked when: you see a line under the meeting title that includes a room name, floor number, or street address, and you didn't have to click into anything.\n\n## Step 3 — Check the original email invite\n\nIf neither the Calendar event nor the Meet homepage gives you what you need, the original email invite is the fallback. Search your inbox for the meeting title or the organizer's name. Open the invite and look for the **Location:** line near the top, just under the date and time. It contains whatever the organizer typed in — a room number, a building name, a full address, or sometimes a link to a map.\n\nThis is also the place to find attachments like a floor plan PDF or a one-time meeting link that didn't make it onto the Calendar event page.\n\nYou'll know it worked when: you can read the room number or address without leaving your inbox.\n\n## Step 4 — If you're organizing: fill in the Location field when you create the event\n\nThe card and the Meet homepage can only show what's in the Location field. If it's blank, the card stays blank. So if you're the one setting up the meeting, fill it in.\n\nOn the web, in Google Calendar, click any empty time slot, then click **\"Create event\"** (or click the **\"More options\"** link to open the full event editor). You'll see a **Location** field just below the date and time. Type the room name or full address. Calendar will suggest matching rooms from your building if your organization uses **resource calendars** — special email-style addresses like `conf-room-4B@company.com` that book a physical room when you add them as a guest.\n\nOn the phone, in the Calendar app, tap the **\"+\"** button to create an event, tap **\"Add location\"**, and type it in. Tap the suggested room if one matches.\n\nYou'll know it worked when: after you save the event, you can open it back up and see the location line is no longer empty.\n\n## Step 5 — If you're organizing: use a clear, consistent format\n\nThe Location field accepts anything, but a good format saves everyone a minute of walking. Pick one and use it every time:\n\n- **Room first, then building**: `Room 4B — Building 2, 3rd floor`\n- **Address for off-site guests**: `221B Baker Street, London — ask for \"Aspen\" room at reception`\n- **Hybrid meetings**: `Conference Room Aspen, Building 2 + Google Meet link in description`\n\nIf your office has rooms with creative names, add the building or floor in parentheses: `Catalyst 3 (Building 2, 3rd floor)`. Future you, walking in from the elevator, will thank you.\n\nYou'll know it worked when: a colleague can find the room on their first try without asking anyone.\n\n## Common mistakes\n\n- **Leaving the Location field blank.** The single most common reason attendees can't find a room. If the meeting has a room, put the room in the Location field — every time.\n- **Writing only \"the conference room.\"** Which one? On which floor? \"Conference Room\" alone forces a guess. Add the room number or building.\n- **Forgetting to update the location when the room changes.** If a meeting moves from Aspen to Birch, edit the event and change the Location field too. The old room doesn't update automatically, and your attendees will walk to the wrong one.\n- **Putting the Meet link in the Location field.** The Meet join link belongs in the event description or in the \"Add Google Meet video conferencing\" button — not in Location. Mixing them up hides the room from anyone who's already joined the call.\n- **Typing \"TBD\" or \"TBA\" and never updating it.** A placeholder is fine while you're booking, but if the room is confirmed, replace the placeholder with the real room name. Search your calendar for \"TBD\" every couple of weeks and clean up any you find.\n\n## What this means for you\n\n- **If you attend meetings in an office**: before joining any in-office meeting, spend ten seconds on the Calendar event or the Meet homepage to check the Location field. Knowing the room before you leave your desk saves the awkward \"sorry, I'm still looking for it\" join.\n- **If you organize meetings**: make filling in the Location field a reflex — the same way you always add a title and time. Use a consistent format, and update the field if the room changes.\n- **If you manage an office or a team**: standardize your room names. A short list of room names with their buildings and floors — shared once with the team — eliminates most \"where do I go?\" moments for good.\n- **If you're fully remote**: none of this changes your day directly, but it's worth knowing your in-office colleagues may now be walking to a specific room before joining. If someone's a minute late, the room change might be why.\n\n## Wrap-up\n\nMeeting room details aren't hard to find — they're just easy to miss. The Location field on the Calendar event is the single source of truth, and the Meet homepage and the email invite both pull from it. As an attendee, the habit is \"check the event before you walk.\" As an organizer, the habit is \"fill in the field, every time, with a clear format.\" Try it on your next meeting, and notice how much smoother the walk in feels.",
+  "original_title": "View conference room and meeting location details directly on the Google Meet homepage"
+}
