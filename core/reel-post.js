@@ -302,6 +302,16 @@ async function main() {
 
 // ── AUTOMATIKA ──────────────────────────────────────────────────────
 
+/**
+ * A cikk borítóképének útvonala — ez lesz a Reel háttér-színfoltja
+ * (2026-09-21). A kép elmosva, papír felé keverve kerül a tábla alá, így
+ * minden Reel a saját cikkének színeit hozza. A mérés és az indoklás:
+ * core/short-video.js hatterKepbol().
+ */
+export function boritoUt(ROOT, join, slug) {
+  return slug ? join(ROOT, 'website', 'assets', 'images', slug + '.jpg') : '';
+}
+
 /** A cikkek betöltése a sor-döntéshez. */
 async function cikkekBetolt(ROOT, join) {
   const { readFileSync, readdirSync, existsSync } = await import('fs');
@@ -492,6 +502,7 @@ async function prepare(ROOT, join) {
       // tartalmazhatnak („perrplexity", két r-rel). Lásd core/short-video.js.
       const r0 = await renderVideo(cards, {
         out: utvonal,
+        kepUt: boritoUt(ROOT, join, mai.slug),
         workDir: join(ROOT, '.video-munka')
       });
       try { rmSync(join(ROOT, '.video-munka'), { recursive: true, force: true }); } catch { /* */ }
@@ -519,6 +530,7 @@ async function prepare(ROOT, join) {
   // Borítókép nélkül — lásd a fenti indoklást és a core/short-video.js-t.
   const r = await renderVideo(cards, {
     out: join(kiDir, valasztott.slug + '.mp4'),
+    kepUt: boritoUt(ROOT, join, valasztott.slug),
     workDir: join(ROOT, '.video-munka')
   });
   try { rmSync(join(ROOT, '.video-munka'), { recursive: true, force: true }); } catch { /* */ }

@@ -23,7 +23,7 @@
 // ===================================================================
 
 import { execFileSync } from 'child_process';
-import { mkdirSync, rmSync, writeFileSync } from 'fs';
+import { mkdirSync, rmSync, writeFileSync, existsSync } from 'fs';
 import { join } from 'path';
 import { fm, findArticleBySlug } from './frontmatter.js';
 import { BETU_CSALAD, betuRendben } from './video-font.js';
@@ -316,16 +316,46 @@ export function nagybetusHorog(s) {
 // Exportálva 2026-09-20: a csomag-reklám Reel (core/packs-reel.js) UGYANEZZEL
 // tördel. Ha saját tördelőt kapna, a két videó máshogy nézne ki, és a
 // szélesség-fésű (core/short-video.test.js) csak az egyiket védené.
+// ⚠️ EZ A FÜGGVÉNY SZAVAKAT NYELT EL (2026-09-21, éles képkockán látszott).
+//
+// A régi változat FIX 13 karakteres sorokkal tördelt, majd a 3. sor után
+// egyszerűen VÁGOTT. Kimérve mind a 3448 élő kártyán: 194 (5,6%) végződött
+// csonkán — a táblán „Install the GitHub Copilot" állt, a felolvasó meg azt
+// mondta, „…GitHub Copilot extension." Egy 7 táblás Reelnél ez nagyjából
+// minden harmadik videót érintett.
+//
+// 🔑 A KÉP ÉS A HANG ELVÁLÁSA A LEGROSSZABB FAJTA HIBA: külön-külön
+// mindkettő hibátlannak látszik, együtt viszont hibásnak — és a gyártás
+// ettől még ugyanúgy „sikerül". Ugyanaz az alak, mint a Reel-alcím
+// lépésszám-ütközésénél (2026-08-24).
+//
+// A JAVÍTÁS: nem vágunk, hanem SZÉLESÍTJÜK a sorokat, amíg minden szó
+// belefér három sorba. A betűméretet a tablaSvg úgyis a leghosszabb sorhoz
+// igazítja, tehát a szélesebb sor automatikusan kisebb betűt kap.
+// A felső határ 21 karakter: a legkisebb megengedett betűvel (72 px) ennyi
+// fér az 1000 pixeles keretbe (1000 / (72 × 0,65) ≈ 21,4). Efölött már a
+// vászonról futna le a szöveg — azt a szélesség-fésű külön őrzi.
+export const TORDEL_MAX_KAR = 21;
+
 export function tordel(s, maxSor = 13) {
   const szavak = String(s).split(' ');
-  const sorok = [];
-  let mostani = '';
-  for (const sz of szavak) {
-    if (!mostani) { mostani = sz; continue; }
-    if ((mostani + ' ' + sz).length <= maxSor) mostani += ' ' + sz;
-    else { sorok.push(mostani); mostani = sz; }
+  const egySor = (max) => {
+    const sorok = [];
+    let mostani = '';
+    for (const sz of szavak) {
+      if (!mostani) { mostani = sz; continue; }
+      if ((mostani + ' ' + sz).length <= max) mostani += ' ' + sz;
+      else { sorok.push(mostani); mostani = sz; }
+    }
+    if (mostani) sorok.push(mostani);
+    return sorok;
+  };
+  let sorok = egySor(maxSor);
+  // Ameddig nem fér bele háromba, engedünk a sorhosszon — de csak addig,
+  // ameddig a betű még olvasható méretben elfér a vásznon.
+  for (let max = maxSor + 1; sorok.length > 3 && max <= TORDEL_MAX_KAR; max++) {
+    sorok = egySor(max);
   }
-  if (mostani) sorok.push(mostani);
   return sorok.slice(0, 3).join('\n');
 }
 
@@ -446,7 +476,12 @@ const esc = s => String(s).replace(/‑/g, '-')
  * felső vonalon kívül. Teszt őrzi, regexszel — nem felsorolással, hogy egy
  * későbbi elmozdítás is elbukjon.
  */
-export function tablaSvg({ cimke, nagy, kicsi }, i, db) {
+// ⚠️ AZ `alap` KAPCSOLÓ (2026-09-21). A tábla eddig MAGA festette a
+// papírszínű alapot. Amióta a háttér a cikk elmosott borítóképe
+// (hatterKepbol), az az alap RÁFEKÜDNE a képre és letakarná. A gyártás
+// ezért `alap: false`-szal hívja; a tesztek és a kézi hívások a régi,
+// önmagában is teljes táblát kapják.
+export function tablaSvg({ cimke, nagy, kicsi }, i, db, { alap = true } = {}) {
   const sorok = String(nagy).split('\n').slice(0, 3);
   // A méret a SORSZÁMTÓL függ, nem a sorok hosszától: három sornál a
   // 138-as magasság a blokkot a sávból lógatná ki.
@@ -509,7 +544,7 @@ export function tablaSvg({ cimke, nagy, kicsi }, i, db) {
   }).join('\n');
 
   return Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}">
-  <rect width="${W}" height="${H}" fill="${PAPIR}"/>
+  ${alap ? `<rect width="${W}" height="${H}" fill="${PAPIR}"/>` : ''}
   <rect x="0" y="0" width="${W}" height="14" fill="${ZSALYA}"/>
   <rect x="${W - 166}" y="270" width="96" height="56" rx="10" fill="${TINTA}"/>
   <text x="${W - 118}" y="311" text-anchor="middle" font-size="38"
@@ -559,7 +594,53 @@ export function videoArgs({ kepek, hang, out }) {
  *
  * @returns {Promise<{file: string, seconds: number, betu: object}>}
  */
-export async function renderVideo(cards, { out, workDir, voice = 'en-US-AvaMultilingualNeural' }) {
+// ── A HÁTTÉR-SZÍNFOLT (2026-09-21) ──────────────────────────────────
+//
+// Az ELMOSAS és a PAPIR_FEDES együtt dönti el, mennyi marad a képből.
+// Nem szabad „ízlés szerint" állítani rajtuk: a 70/0,80 pároshoz tartozik
+// a mérés (0,0000% éles átmenet 25 borítón) ÉS a világosság-garancia
+// (0,2 × kép + 0,8 × papír → legsötétebb ~189/255). Ha valaki gyengíti
+// őket, a hibás felirat újra kilátszhat — ezért a teszt mindkettőt őrzi.
+export const HATTER_ELMOSAS = 70;
+export const HATTER_PAPIR_FEDES = 0.80;
+const PAPIR_RGB = { r: 0xf2, g: 0xed, b: 0xe4 };
+
+/**
+ * A tábla háttere: a cikk borítóképéből elmosott színfolt, vagy — ha
+ * nincs kép — egybefüggő papírszín.
+ *
+ * ⚠️ SOHA NEM DOB. Hiányzó vagy olvashatatlan kép esetén a papírszínre
+ * esik vissza: egy háttér miatt nem maradhat el a napi Reel.
+ *
+ * @param {object} sharp a behúzott sharp modul
+ * @param {string} kepUt a borítókép útvonala ('' = nincs)
+ */
+export async function hatterKepbol(sharp, kepUt) {
+  const sima = () => sharp({ create: { width: W, height: H, channels: 3, background: PAPIR } })
+    .png().toBuffer();
+  if (!kepUt || !existsSync(kepUt)) return sima();
+  try {
+    const nyers = await sharp(kepUt)
+      .resize(W, H, { fit: 'cover', position: 'attention' })
+      .blur(HATTER_ELMOSAS)
+      .modulate({ saturation: 0.75 })
+      .removeAlpha()
+      .raw().toBuffer({ resolveWithObject: true });
+    const px = nyers.data;
+    const f = HATTER_PAPIR_FEDES;
+    for (let i = 0; i < px.length; i += 3) {
+      px[i]     = Math.round(px[i]     * (1 - f) + PAPIR_RGB.r * f);
+      px[i + 1] = Math.round(px[i + 1] * (1 - f) + PAPIR_RGB.g * f);
+      px[i + 2] = Math.round(px[i + 2] * (1 - f) + PAPIR_RGB.b * f);
+    }
+    return await sharp(px, { raw: { width: W, height: H, channels: 3 } }).png().toBuffer();
+  } catch (e) {
+    console.log('   ⚠️ a borítókép nem használható (' + e.message + ') — papírszín megy helyette');
+    return sima();
+  }
+}
+
+export async function renderVideo(cards, { out, workDir, voice = 'en-US-AvaMultilingualNeural', kepUt = '' }) {
   const sharp = (await import('sharp')).default;
   const { MsEdgeTTS, OUTPUT_FORMAT } = await import('msedge-tts');
 
@@ -581,22 +662,34 @@ export async function renderVideo(cards, { out, workDir, voice = 'en-US-AvaMulti
   rmSync(workDir, { recursive: true, force: true });
   mkdirSync(workDir, { recursive: true });
 
-  // ⛔ A BORÍTÓKÉP KIMARADT (2026-09-17) — a `cover` opció megszűnt.
+  // 🎨 A HÁTTÉR A CIKK SAJÁT KÉPÉBŐL — SZÍNFOLTKÉNT (2026-09-21, user-kérés)
   //
-  // MIÉRT. A háttér eddig a cikk borítóképe volt, 9-es sugárral elmosva.
-  // A borítók AI-val generált képek, és amikor élesen látszanak, kiderül,
-  // hogy HIBÁS FELIRATOT tartalmaznak: a 2026-09-17-i mérésben a
-  // Perplexity-útmutató borítóján „perrplexity" állt, két r-rel. Elmosva
-  // nem tűnt fel — élesen kitéve a hitelességünkbe kerülne. A takarást
-  // nem lehet „elég erősre" hangolni: ami annyira el van mosva, hogy a
-  // hibát elfedi, az már csak színes zaj, azaz nem ad semmit.
+  // ELŐZMÉNY. 09-17-én kivettük a borítóképet, mert az AI-generált borítók
+  // HIBÁS FELIRATOT tartalmazhatnak („perrplexity", két r-rel), és a 9-es
+  // sugarú elmosás alól az kilátszott. Az akkori indoklásom azt írta: „a
+  // takarást nem lehet elég erősre hangolni; ami annyira el van mosva,
+  // hogy a hibát elfedi, az már csak színes zaj, azaz nem ad semmit."
   //
-  // A helye egybefüggő papírszín. Ez EGYBEN A PAPÍR-DIZÁJN ALAPJA is
-  // (lásd tablaSvg), és mellékesen gyorsabb: nincs lemezről olvasás,
-  // nincs átméretezés, nincs elmosás táblánként.
-  const hatter = await sharp({
-    create: { width: W, height: H, channels: 3, background: PAPIR }
-  }).png().toBuffer();
+  // 🔑 AZ AKKORI CÉL MÁS VOLT. Akkor azt akartuk, hogy LÁTSZÓDJON a kép.
+  // A user mai kérése más: azt akarja, hogy minden Reel MÁSKÉPP nézzen ki.
+  // Ahhoz a „színes zaj" épp elég — a cikk saját színeit hozza, és attól
+  // lesz a napi videó mindig más. Ugyanaz a technika, másik kérdésre.
+  //
+  // AMIT MÉRTÜNK (2026-09-21, 25 valódi borítón; a mérő HITELESÍTVE, mert
+  // a nyers képre 11,62%-ot ad, tehát tényleg lát):
+  //   nyers kép ......................... 11,62% éles átmenet
+  //   + papír-keverés ................... 1,73%
+  //   + 70-es elmosás (ez megy ki) ...... 0,0000%   ← sehol nem marad betű
+  //
+  // ⚠️ AZ ELSŐ MÉRŐM VAK VOLT, és a hitelesítő eset fogta meg: a nyers
+  // képre is nullát mondott. Nem a képlet volt rossz, hanem a HITELESÍTŐ
+  // ág is átment a papír-keverésen — rosszul izoláltam a változót.
+  //
+  // OLVASHATÓSÁG — NEM REMÉNY, HANEM HATÁR. A kimenet
+  // `0,2 × kép + 0,8 × papír`, tehát a LEGSÖTÉTEBB lehetséges háttér is
+  // ~189/255 világos. Nincs az a borítókép, amitől a tinta-fekete szöveg
+  // olvashatatlanná válna. Teszt őrzi (core/short-video.test.js).
+  const hatter = await hatterKepbol(sharp, kepUt);
 
   const idok = [];
   for (let i = 0; i < cards.length; i++) {
@@ -615,7 +708,7 @@ export async function renderVideo(cards, { out, workDir, voice = 'en-US-AvaMulti
       '-c:a', 'libmp3lame', mp3], { stdio: 'pipe' });
     idok.push(hossz(mp3));
 
-    await sharp(hatter).composite([{ input: tablaSvg(cards[i], i, cards.length) }])
+    await sharp(hatter).composite([{ input: tablaSvg(cards[i], i, cards.length, { alap: false }) }])
       .jpeg({ quality: 92 }).toFile(join(workDir, `k${i}.jpg`));
   }
 
@@ -685,6 +778,11 @@ async function main() {
 
   const r = await renderVideo(cards, {
     out: join(kiDir, slug + '.mp4'),
+    // ⚠️ A PARANCSSOR IS KAPJA MEG A BORÍTÓT (2026-09-21). Enélkül a
+    // kézi próba és a CI „csak_render" gombja a RÉGI, papírszínű
+    // táblát mutatná, miközben az automatika már a képes hátteret
+    // gyártja — vagyis pont az ellenőrzés nézne mellé.
+    kepUt: join(ROOT, 'website', 'assets', 'images', slug + '.jpg'),
     workDir: join(ROOT, '.video-munka')
   });
   rmSync(join(ROOT, '.video-munka'), { recursive: true, force: true });
