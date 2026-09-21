@@ -19,6 +19,9 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import sharp from 'sharp';
 import { selectFormats, queuedSlugs } from './image-targets.js';
+import { utmutatoE } from './guide-kind.js';
+import { splitHeading } from './short-video.js';
+import { kar, STILUS, poszterSvg, lepesekMdbol, alkalmas } from './social-poster.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
@@ -181,6 +184,12 @@ async function main() {
     // generátor ezt a 72-t MEG SEM TALÁLTA (ez volt a "borító nélkül" tétel),
     // és a posztjuk cím nélküli sima borítóval ment ki.
     const slug = d._meta?.slug || slugify(title);
+    // INFOGRAFIKA-KÍSÉRLET (2026-09-21, user-kérés). Három kar:
+    //   foto = a mostani fotó + cím-sáv · vilagos / sotet = infografika
+    // A kar a slugból SZÁMOLÓDIK (core/social-poster.js kar()), nincs
+    // külön nyilvántartás — az elemzés bármikor visszafejti.
+    const utmutato = utmutatoE(f, d);
+    const infoKar = (utmutato && alkalmas(d.article_markdown || '')) ? kar(slug) : 'foto';
     const pub = new Date(d._meta?.published_at || 0).getTime();
     const formats = selectFormats({
       ageDays: (now - pub) / 86400e3,
@@ -213,7 +222,28 @@ async function main() {
           ? { fit: 'contain', background: { r: 13, g: 15, b: 20 } }
           : { fit: 'cover', position: isWeekly ? 'centre' : 'attention' });
         if (!isWeekly) pipe = pipe.composite([{ input: overlaySvg(title, fmt) }]);
-        await pipe.jpeg({ quality: 82 }).toFile(out);
+
+        // ── INFOGRAFIKA-VÁLTOZAT (csak a Facebook-formátumon) ──────
+        // A fotó itt NEM a főszereplő: halvány, erősen elmosott
+        // színfoltként marad a háttérben. Így megmarad a cikk hangulata,
+        // DE a borítóinkon gyakori gépi zagyvaság („Memor Settings",
+        // „Confesion stiing") nem látszik — márpedig egy infografikás
+        // poszt azt sugallja, hogy „ez itt információ", tehát jobban
+        // odanéznek. Ugyanaz a technika, mint a Reel hátterénél.
+        if (fmt.key === 'fb' && !isWeekly && infoKar !== 'foto') {
+          const st = STILUS[infoKar];
+          const folt = await sharp(src).resize(fmt.w, fmt.h, { fit: 'cover' })
+            .blur(80).modulate({ saturation: 0.8 }).ensureAlpha(st.kepAtl).png().toBuffer();
+          pipe = sharp({ create: { width: fmt.w, height: fmt.h, channels: 3, background: st.hatter } })
+            .composite([
+              { input: folt },
+              { input: Buffer.from(poszterSvg({
+                cim: title, lepesek: lepesekMdbol(d.article_markdown || ''),
+                stilus: st, splitFn: splitHeading
+              })) }
+            ]);
+        }
+        await pipe.jpeg({ quality: 86 }).toFile(out);
         didWork = true;
       } catch (e) {
         console.log(`   ⚠️ ${slug.slice(0, 40)} [${fmt.key}]: ${e.message.slice(0, 50)}`);
