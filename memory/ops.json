@@ -1,86 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178973454673340",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-18T12:29:06.733Z",
-      "updated": "2026-09-18T12:29:54.113Z"
-    },
-    {
-      "id": "t178973459411566",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-09-18T12:29:54.115Z",
-      "updated": "2026-09-18T12:30:04.757Z"
-    },
-    {
-      "id": "t178973460475842",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-18T12:30:04.759Z",
-      "updated": "2026-09-18T12:30:21.302Z"
-    },
-    {
-      "id": "t17897346213045",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-09-18T12:30:21.304Z",
-      "updated": "2026-09-18T12:30:52.619Z"
-    },
-    {
-      "id": "t178973465265319",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-18T12:30:52.653Z",
-      "updated": "2026-09-18T12:31:25.319Z"
-    },
-    {
-      "id": "t178973468532090",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-09-18T12:31:25.320Z",
-      "updated": "2026-09-18T12:31:42.818Z"
-    },
-    {
-      "id": "t17897347028193",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-18T12:31:42.819Z",
-      "updated": "2026-09-18T12:31:55.426Z"
-    },
-    {
-      "id": "t178973471542739",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-09-18T12:31:55.427Z",
-      "updated": "2026-09-18T12:32:12.933Z"
-    },
-    {
-      "id": "t178978369274686",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-09-19T02:08:12.746Z",
-      "updated": "2026-09-19T02:08:12.932Z"
-    },
-    {
-      "id": "t178978369293354",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-09-19T02:08:12.933Z",
-      "updated": "2026-09-19T02:08:38.050Z"
-    },
-    {
       "id": "t178978371805216",
       "title": "Run source-scout",
       "status": "done",
@@ -479,33 +399,89 @@
       "agent": "publisher",
       "created": "2026-09-21T14:42:06.793Z",
       "updated": "2026-09-21T14:42:22.421Z"
+    },
+    {
+      "id": "t179002147498747",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-09-21T20:11:14.987Z",
+      "updated": "2026-09-21T20:11:15.168Z"
+    },
+    {
+      "id": "t179002147516961",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-09-21T20:11:15.169Z",
+      "updated": "2026-09-21T20:12:00.787Z"
+    },
+    {
+      "id": "t179002152078924",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-09-21T20:12:00.789Z",
+      "updated": "2026-09-21T20:12:00.976Z"
+    },
+    {
+      "id": "t179002152097870",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-09-21T20:12:00.978Z",
+      "updated": "2026-09-21T20:13:27.334Z"
+    },
+    {
+      "id": "t179002160733648",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-21T20:13:27.336Z",
+      "updated": "2026-09-21T20:13:47.232Z"
+    },
+    {
+      "id": "t179002162723551",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-09-21T20:13:47.235Z",
+      "updated": "2026-09-21T20:13:54.236Z"
+    },
+    {
+      "id": "t179002163429571",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-21T20:13:54.295Z",
+      "updated": "2026-09-21T20:14:03.183Z"
+    },
+    {
+      "id": "t179002164318522",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-09-21T20:14:03.185Z",
+      "updated": "2026-09-21T20:14:16.802Z"
+    },
+    {
+      "id": "t179002165680429",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-21T20:14:16.804Z",
+      "updated": "2026-09-21T20:14:22.830Z"
+    },
+    {
+      "id": "t179002166283359",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-09-21T20:14:22.833Z",
+      "updated": "2026-09-21T20:14:49.159Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178869568890336",
-      "level": "warn",
-      "text": "📨 guide → ceo: Kell még adat: \"Create a Simple Event Sign-Up Form with GitHub Copilot\" — az Ellenőrző tényt/forrást kér, amit nem talál",
-      "agent": "guide",
-      "at": "2026-09-06T11:54:48.903Z",
-      "loud": false
-    },
-    {
-      "id": "n178869576175966",
-      "level": "info",
-      "text": "SEO: 2 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-09-06T11:56:01.759Z",
-      "loud": false
-    },
-    {
-      "id": "n178869578202534",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). **Publish Summary:**\n\nThe line-up is solid and cohesive — practical, everyday writing tasks paired with real AI tools. The mix of documents (complaints, emails, speeches, agreements) feels useful and ",
-      "agent": "publisher",
-      "at": "2026-09-06T11:56:22.025Z",
-      "loud": false
-    },
     {
       "id": "n17886957968167",
       "level": "success",
@@ -1281,18 +1257,33 @@
       "agent": "ceo",
       "at": "2026-09-21T14:42:22.453Z",
       "loud": false
+    },
+    {
+      "id": "n179002165679487",
+      "level": "info",
+      "text": "SEO: 1 cikk optimalizálva (átlag 9.0/10).",
+      "agent": "seo",
+      "at": "2026-09-21T20:14:16.794Z",
+      "loud": false
+    },
+    {
+      "id": "n179002167163484",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). **Publish Summary:**\n\nThe lineup looks solid and practical — these 10 articles cover real, everyday writing needs (complaints, resumes, emails, agreements, speeches) that anyone can relate to. Friendl",
+      "agent": "publisher",
+      "at": "2026-09-21T20:14:31.634Z",
+      "loud": false
+    },
+    {
+      "id": "n179002168921482",
+      "level": "success",
+      "text": "1 hír + 0 útmutató publikálva (költség: $0.0188).",
+      "agent": "ceo",
+      "at": "2026-09-21T20:14:49.214Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178889479118369",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Create royalty‑free AI music loops for podcasts an\" — Suno.ai usually generates two distinct variations of your music; Suno.ai offers a free tier, which allows you a limited number of music generations per day (the specific claim about daily limits)",
-      "ref": "ARTICLE_GUIDE_create-royalty-free-ai-music-loops-for-podcasts-and-videos-b.json",
-      "at": "2026-09-08T19:13:11.183Z"
-    },
     {
       "id": "m178889481677393",
       "from": "fact-check",
@@ -2642,6 +2633,15 @@
       "text": "1 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-09-21T14:50:16.860Z"
+    },
+    {
+      "id": "m179002166282143",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 20 → 5/4/2 oszlop.",
+      "ref": "mobile",
+      "at": "2026-09-21T20:14:22.821Z"
     }
   ]
 }
