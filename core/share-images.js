@@ -30,6 +30,42 @@ const SOCIAL_DIR = join(ROOT, 'content', 'social');
 const IMG_DIR = join(ROOT, 'website', 'public', 'assets', 'images');
 const OUT_BASE = join(ROOT, 'website', 'public', 'assets');
 
+// A MÁRKALOGÓK a website/assets/logos/ mappából jönnek: valódi,
+// letöltött védjegyek (core/fetch-brand-logos.js). KITALÁLT LOGÓ SOHA.
+// Csak a BELSŐ tartalmat adjuk tovább, hogy a színt a poszter szabja meg.
+const LOGO_DIR = join(ROOT, 'website', 'assets', 'logos');
+const logoGyorsito = new Map();
+function logoBelseje(company) {
+  const kulcs = String(company || '').toLowerCase().replace(/[^a-z0-9]+/g, '-');
+  if (!kulcs) return '';
+  if (logoGyorsito.has(kulcs)) return logoGyorsito.get(kulcs);
+  let belso = '';
+  try {
+    const nyers = readFileSync(join(LOGO_DIR, kulcs + '.svg'), 'utf-8');
+    const m = nyers.match(/<svg[^>]*>([\s\S]*)<\/svg>/i);
+    belso = m ? m[1].trim() : '';
+    // ⚠️ A viewBox NEM MINDIG 24×24. Húszból három más (xAI 841×595,
+    // Midjourney 698×583, Cohere 75×75), és a poszter 24-es dobozra
+    // méretez. Az első változatom ezt elhitte, ezért ezek 3–35-szörös
+    // méretben rajzolódtak: üres fehér doboz és kilógó fekete foltok
+    // 21 kész poszteren. Itt normalizáljuk 24 egységre, EGYSZER.
+    const vb = (nyers.match(/viewBox="([^"]+)"/i) || [])[1];
+    if (belso && vb) {
+      const r = vb.trim().split(/[\s,]+/).map(Number);
+      const sz = r[2], ma = r[3];
+      if (r.length === 4 && sz > 0 && ma > 0 && (Math.abs(sz - 24) > 0.5 || Math.abs(ma - 24) > 0.5)) {
+        const k = 24 / Math.max(sz, ma);
+        // Középre is igazítjuk, hogy a nem négyzetes logó ne csússzon el.
+        const dx = (24 - sz * k) / 2 - r[0] * k;
+        const dy = (24 - ma * k) / 2 - r[1] * k;
+        belso = `<g transform="translate(${dx.toFixed(3)} ${dy.toFixed(3)}) scale(${k.toFixed(5)})">${belso}</g>`;
+      }
+    }
+  } catch { belso = ''; }
+  logoGyorsito.set(kulcs, belso);
+  return belso;
+}
+
 const args = process.argv.slice(2);
 const FORCE = args.includes('--force');
 const di = args.indexOf('--days');
@@ -239,7 +275,8 @@ async function main() {
               { input: folt },
               { input: Buffer.from(poszterSvg({
                 cim: title, lepesek: lepesekMdbol(d.article_markdown || ''),
-                stilus: st, splitFn: splitHeading
+                stilus: st, splitFn: splitHeading,
+                logoBelso: logoBelseje(d._meta?.company || d._meta?.tool || '')
               })) }
             ]);
         }

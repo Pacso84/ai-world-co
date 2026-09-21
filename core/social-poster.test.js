@@ -119,6 +119,10 @@ t('🔬 [hitelesítés] a szabály MINDKÉT irányba jól dönt', () => {
   assert.ok(fele.length <= LEPES_MAX_KAR && !fele.endsWith('…'), 'nem a tiszta felét vette: ' + fele);
   // 3. a lógó kötőszó NEM maradhat bent
   const vagott = r('Connect your Gmail, Drive, and Calendar to the assistant');
+  // Idézőjeles lépéscím: a jelek lekerülnek, félbehagyott idézet nem maradhat.
+  const idezet = r('Add a "summarize into bullet points" prompt');
+  assert.ok(!/["“”]/.test(idezet), 'idézőjel maradt a soron: ' + idezet);
+  assert.ok(!LOGO_VEG.test(idezet), 'lógó szóval végződik: ' + idezet);
   assert.ok(!LOGO_VEG.test(vagott) && !/[,;:]$/.test(vagott), 'lógó véget hagyott: ' + vagott);
   // 4. és a mérce tényleg FOG: egy szándékosan rossz sorra igent mond
   assert.ok(LOGO_VEG.test('Connect your Gmail, Drive, and…'), 'a mérce vak — nem fogja meg a rossz alakot');
