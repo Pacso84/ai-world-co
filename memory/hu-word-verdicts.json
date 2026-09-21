@@ -59,6 +59,7 @@
     "ajándéglista",
     "ajándékcsomagok",
     "ajándékcsomagokat",
+    "ajánlevelet",
     "ajánlólinkek",
     "akcenteket",
     "akciótervet",
@@ -2236,6 +2237,7 @@
     "szemmagasságú",
     "személyazonosságodat",
     "személyazonosságoddal",
+    "személyazonosságodra",
     "személyiséget",
     "szemüvegen",
     "szemüveget",
@@ -2851,6 +2853,7 @@
     "üveget",
     "üzemanyaghiányos",
     "üzemzavarok",
+    "üzenetbuborlékként",
     "üzenetsorokat",
     "üzni",
     "őket"
@@ -3994,6 +3997,11 @@
     "gömbra": {
       "correct": "gömbre",
       "at": "2026-09-20",
+      "mondattal": true
+    },
+    "adatotól": {
+      "correct": "adattól",
+      "at": "2026-09-21",
       "mondattal": true
     }
   },
@@ -5359,11 +5367,16 @@
       "correct": "másként",
       "at": "2026-09-20",
       "mondattal": true
+    },
+    "megosszd": {
+      "correct": "oszd meg",
+      "at": "2026-09-21",
+      "mondattal": true
     }
   },
   "scan": {
-    "at": "2026-09-20",
-    "files": 1011,
-    "candidates": 0
+    "at": "2026-09-21",
+    "files": 1015,
+    "candidates": 5
   }
 }
