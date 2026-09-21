@@ -1,86 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t17896977295059",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-09-18T02:15:29.505Z",
-      "updated": "2026-09-18T02:17:57.365Z"
-    },
-    {
-      "id": "t178969787736778",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-18T02:17:57.367Z",
-      "updated": "2026-09-18T02:19:11.445Z"
-    },
-    {
-      "id": "t178969795149342",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-18T02:19:11.493Z",
-      "updated": "2026-09-18T02:19:45.344Z"
-    },
-    {
-      "id": "t178969798534676",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-09-18T02:19:45.346Z",
-      "updated": "2026-09-18T02:20:22.611Z"
-    },
-    {
-      "id": "t178969802261289",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-18T02:20:22.612Z",
-      "updated": "2026-09-18T02:20:32.994Z"
-    },
-    {
-      "id": "t178969803299621",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-09-18T02:20:32.996Z",
-      "updated": "2026-09-18T02:20:56.197Z"
-    },
-    {
-      "id": "t178973447050997",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-09-18T12:27:50.509Z",
-      "updated": "2026-09-18T12:27:50.625Z"
-    },
-    {
-      "id": "t178973447062625",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-09-18T12:27:50.626Z",
-      "updated": "2026-09-18T12:28:19.461Z"
-    },
-    {
-      "id": "t178973449946215",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-09-18T12:28:19.462Z",
-      "updated": "2026-09-18T12:28:19.591Z"
-    },
-    {
-      "id": "t178973449959349",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-09-18T12:28:19.593Z",
-      "updated": "2026-09-18T12:29:06.732Z"
-    },
-    {
       "id": "t178973454673340",
       "title": "Run ellenorzo",
       "status": "done",
@@ -479,33 +399,89 @@
       "agent": "publisher",
       "created": "2026-09-21T02:31:37.524Z",
       "updated": "2026-09-21T02:31:51.985Z"
+    },
+    {
+      "id": "t179000161346098",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-09-21T14:40:13.460Z",
+      "updated": "2026-09-21T14:40:13.578Z"
+    },
+    {
+      "id": "t179000161358028",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-09-21T14:40:13.580Z",
+      "updated": "2026-09-21T14:40:42.935Z"
+    },
+    {
+      "id": "t179000164293679",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-09-21T14:40:42.936Z",
+      "updated": "2026-09-21T14:40:43.062Z"
+    },
+    {
+      "id": "t179000164306431",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-09-21T14:40:43.064Z",
+      "updated": "2026-09-21T14:41:05.373Z"
+    },
+    {
+      "id": "t179000166537446",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-21T14:41:05.374Z",
+      "updated": "2026-09-21T14:41:22.401Z"
+    },
+    {
+      "id": "t179000168240346",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-09-21T14:41:22.403Z",
+      "updated": "2026-09-21T14:41:33.331Z"
+    },
+    {
+      "id": "t179000169337052",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-21T14:41:33.370Z",
+      "updated": "2026-09-21T14:41:41.212Z"
+    },
+    {
+      "id": "t179000170121443",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-09-21T14:41:41.214Z",
+      "updated": "2026-09-21T14:41:47.737Z"
+    },
+    {
+      "id": "t179000170773828",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-21T14:41:47.738Z",
+      "updated": "2026-09-21T14:42:06.792Z"
+    },
+    {
+      "id": "t179000172679392",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-09-21T14:42:06.793Z",
+      "updated": "2026-09-21T14:42:22.421Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178866008269730",
-      "level": "info",
-      "text": "SEO: 4 cikk optimalizálva (átlag 8.5/10).",
-      "agent": "seo",
-      "at": "2026-09-06T02:01:22.697Z",
-      "loud": false
-    },
-    {
-      "id": "n178866010279063",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). Hi! The lineup looks solid and ready — it's a practical mix of everyday AI writing tasks, from emails to resumes to heartfelt messages. One small note: article 6 doesn't specify which AI tool to use, ",
-      "agent": "publisher",
-      "at": "2026-09-06T02:01:42.790Z",
-      "loud": false
-    },
-    {
-      "id": "n178866011702586",
-      "level": "success",
-      "text": "0 hír + 4 útmutató publikálva (költség: $0.0748).",
-      "agent": "ceo",
-      "at": "2026-09-06T02:01:57.025Z",
-      "loud": false
-    },
     {
       "id": "n178869568890336",
       "level": "warn",
@@ -1281,27 +1257,33 @@
       "agent": "ceo",
       "at": "2026-09-21T02:31:52.013Z",
       "loud": false
+    },
+    {
+      "id": "n179000170772867",
+      "level": "info",
+      "text": "SEO: 1 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-09-21T14:41:47.728Z",
+      "loud": false
+    },
+    {
+      "id": "n179000173050567",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The lineup covers a solid range of practical writing tasks—complaints, resumes, pet-sitting agreements, sympathy notes—and mixes fun, friendly use cases (DeepSeek, Grok) with helpful professional ones",
+      "agent": "publisher",
+      "at": "2026-09-21T14:42:10.505Z",
+      "loud": false
+    },
+    {
+      "id": "n17900017424530",
+      "level": "success",
+      "text": "1 hír + 0 útmutató publikálva (költség: $0.0091).",
+      "agent": "ceo",
+      "at": "2026-09-21T14:42:22.453Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178889464266291",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Grok Imagine Quality explained: the high-fidelity mode\" — javítva: The article describes a specific UI element — a 'model picker' inside 'Picsart AI Playground' where 'Grok Imagine Quality' is one of the selectable model options. Neither 'Picsart AI Playground' as a named Picsart product with such a model picker, nor 'Grok Imagine Quality' as a specific xAI mode distinct from the bro",
-      "ref": "2026-09-08T19-08-01-954Z_picsart_Grok_Imagine_Quality_explained__the_high-fidelity_.json",
-      "at": "2026-09-08T19:10:42.662Z"
-    },
-    {
-      "id": "m178889466298488",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Grok Imagine Quality explained: the high-fidelity mode\" (?/10)",
-      "ref": "2026-09-08T19-08-01-954Z_picsart_Grok_Imagine_Quality_explained__the_high-fidelity_.json",
-      "at": "2026-09-08T19:11:02.984Z"
-    },
     {
       "id": "m178889472641356",
       "from": "designer",
@@ -2642,6 +2624,24 @@
       "text": "4 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-09-21T02:39:59.268Z"
+    },
+    {
+      "id": "m179000172675459",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 20 → 5/4/2 oszlop.",
+      "ref": "mobile",
+      "at": "2026-09-21T14:42:06.754Z"
+    },
+    {
+      "id": "m179000178392197",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Draft a clear, polite email reply from a vague or \" — DeepSeek's availability has become uncertain due to US export restrictions and was temporarily removed from app stores in early 2025. The claim that \"a free account on any of them is enough\" may no longer hold for all tools in all regions.",
+      "ref": "ARTICLE_GUIDE_draft-a-clear-polite-email-reply-from-a-vague-or-confusing-m.json",
+      "at": "2026-09-21T14:43:03.921Z"
     }
   ]
 }
