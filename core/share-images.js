@@ -21,7 +21,7 @@ import sharp from 'sharp';
 import { selectFormats, queuedSlugs } from './image-targets.js';
 import { utmutatoE } from './guide-kind.js';
 import { splitHeading } from './short-video.js';
-import { kar, STILUS, poszterSvg, lepesekMdbol, alkalmas, szakaszok } from './social-poster.js';
+import { kar, STILUS, poszterSvg, lepesekMdbol, alkalmas, szakaszok, HATTER_ELMOSAS, HATTER_TELITETTSEG } from './social-poster.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
@@ -269,7 +269,7 @@ async function main() {
         if (fmt.key === 'fb' && !isWeekly && infoKar !== 'foto') {
           const st = STILUS[infoKar];
           const folt = await sharp(src).resize(fmt.w, fmt.h, { fit: 'cover' })
-            .blur(46).modulate({ saturation: 0.95 }).ensureAlpha(st.kepAtl).png().toBuffer();
+            .blur(HATTER_ELMOSAS).modulate({ saturation: HATTER_TELITETTSEG }).ensureAlpha(st.kepAtl).png().toBuffer();
           pipe = sharp({ create: { width: fmt.w, height: fmt.h, channels: 3, background: st.hatter } })
             .composite([
               { input: folt },

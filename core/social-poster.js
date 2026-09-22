@@ -211,6 +211,17 @@ export function lepesSzoveg(lepes, splitFn) {
 /** Hány lépés fér a képre. Ötnél több már olvashatatlan hírfolyam-méretben. */
 export const LEPES_MAX_DB = 5;
 
+// ── A HÁTTÉRKÉP KÉT SZÁMA ──────────────────────────────────────────
+//
+// ⚠️ EZEK BIZTONSÁGI PARAMÉTEREK, NEM ÍZLÉS KÉRDÉSE. A borítóink gépi
+// képek, és elgépelt feliratot tartalmazhatnak („perrplexity", két
+// r-rel) — az elmosás az, ami ezt olvashatatlanná teszi. A user kérésére
+// 80-ról 46-ra csökkent, hogy a kép LÁTSZÓDJON; a 0,0000%-os él-sűrűséget
+// erre az értékre ÚJRAMÉRTÜK 20 valódi borítón, hitelesített mérővel.
+// Aki tovább csökkenti, mérje újra — teszt őrzi.
+export const HATTER_ELMOSAS = 46;
+export const HATTER_TELITETTSEG = 0.95;
+
 // A fejléc-csík. A szélessége SZÁMOLT, nem beírt szám: az első
 // változatomban fix 372 px állt itt, és a felirat kilógott belőle minden
 // egyes képen. A 0,60 a nagybetűs Arial mért átlagos karakterszélessége

@@ -32,7 +32,7 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import {
   kar, KAROK, STILUS, poszterSvg, lepesSzoveg, lepesekMdbol, alkalmas,
-  LEPES_MAX_DB, LEPES_MAX_KAR, W, H
+  LEPES_MAX_DB, LEPES_MAX_KAR, W, H, HATTER_ELMOSAS, HATTER_TELITETTSEG
 } from './social-poster.js';
 import { splitHeading } from './short-video.js';
 import { utmutatoE } from './guide-kind.js';
@@ -194,6 +194,19 @@ t('a hír-cikkek tényleg kimaradnak a mintából', () => {
     if (!utmutatoE(f, j)) hir++;
   }
   assert.ok(hir > 0, 'nincs hír a mintában — a próba nem bizonyít semmit');
+});
+
+// ===================================================================
+// 5. A HÁTTÉRKÉP KÉT SZÁMA BIZTONSÁGI PARAMÉTER
+// ===================================================================
+t('🔑 az elmosás nem gyengíthető észrevétlenül', () => {
+  // A borítóink gépi képek, és elgépelt feliratot tartalmazhatnak
+  // („perrplexity", két r-rel). Az elmosás az, ami ezt olvashatatlanná
+  // teszi. A user kérésére 80-ról 46-ra csökkent, hogy a kép látszódjon;
+  // 46-ra ÚJRAMÉRVE: 20 valódi borítón 0,0000% éles átmenet, és a mérő
+  // hitelesítve (elmosatlan képen 11,21%). Aki tovább csökkenti, mérje újra.
+  assert.ok(HATTER_ELMOSAS >= 40, 'túl gyenge elmosás: ' + HATTER_ELMOSAS);
+  assert.ok(HATTER_TELITETTSEG <= 1.2, 'túlzott telítettség: ' + HATTER_TELITETTSEG);
 });
 
 console.log(`\n${bukott ? '❌' : '✅'} ${pass} sikeres, ${bukott} bukott`);
