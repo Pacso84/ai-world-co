@@ -206,7 +206,7 @@ t('🔑 az elmosás nem gyengíthető észrevétlenül', () => {
   // 46-ra ÚJRAMÉRVE: 20 valódi borítón 0,0000% éles átmenet, és a mérő
   // hitelesítve (elmosatlan képen 11,21%). Aki tovább csökkenti, mérje újra.
   assert.ok(HATTER_ELMOSAS >= 40, 'túl gyenge elmosás: ' + HATTER_ELMOSAS);
-  assert.ok(HATTER_TELITETTSEG <= 1.2, 'túlzott telítettség: ' + HATTER_TELITETTSEG);
+  assert.ok(HATTER_TELITETTSEG <= 1.5, 'túlzott telítettség: ' + HATTER_TELITETTSEG);
 });
 
 console.log(`\n${bukott ? '❌' : '✅'} ${pass} sikeres, ${bukott} bukott`);

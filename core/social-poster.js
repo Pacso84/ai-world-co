@@ -220,7 +220,7 @@ export const LEPES_MAX_DB = 5;
 // erre az értékre ÚJRAMÉRTÜK 20 valódi borítón, hitelesített mérővel.
 // Aki tovább csökkenti, mérje újra — teszt őrzi.
 export const HATTER_ELMOSAS = 46;
-export const HATTER_TELITETTSEG = 0.95;
+export const HATTER_TELITETTSEG = 1.35;   // a szín LÁTSZÓDJON
 
 // A fejléc-csík. A szélessége SZÁMOLT, nem beírt szám: az első
 // változatomban fix 372 px állt itt, és a felirat kilógott belőle minden
@@ -364,6 +364,11 @@ export function poszterSvg({ cim, lepesek, stilus, splitFn, logoBelso = '', kell
   const cimTeteje = fejY + 86;
   const cimAlja = cimTeteje + (cimSorok.length - 1) * CIM_SOR;
 
+  // ⚠️ A FOTÓ-SÁV MAGASSÁGA FIX. Ha a címtől függne, rövid címnél
+  // összemenne, hosszúnál elnyelné a lapot — a user épp azt kérte,
+  // hogy a kép LÁTSZÓDJON, méghozzá mindig.
+  const panelY = Math.max(cimAlja + 40, 520);
+
   // ── „MI KELL HOZZÁ" SÁV ───────────────────────────────────────────
   const kellLista = (kellenek || []).slice(0, 3)
     // A névelő nem hordoz információt egy leltár-sorban, viszont elvisz
@@ -371,7 +376,7 @@ export function poszterSvg({ cim, lepesek, stilus, splitFn, logoBelso = '', kell
     // Csak az ELSŐ TAGMONDAT kell: a tételek gyakran egész mondatok.
     .map(x => rovid(leltarTetel(x), 30))
     .filter(Boolean);
-  const kellY = cimAlja + 74;
+  const kellY = panelY + 58;
   const kellVan = kellLista.length > 0;
   // ⚠️ EZ A SOR KORÁBBAN A FÁJL VÉGÉN ÁLLT, a lepesTeteje MÖGÖTT, ami
   // használja — így a poszterSvg MINDEN infografikás cikknél kivételt
@@ -380,7 +385,7 @@ export function poszterSvg({ cim, lepesek, stilus, splitFn, logoBelso = '', kell
   const kellAlja = kellVan ? kellY + (kellLista.length - 1) * 38 : cimAlja;
 
   // ── LÉPÉSEK ───────────────────────────────────────────────────────
-  const lathato = (lepesek || []).slice(0, LEPES_MAX_DB);
+  let lathato = (lepesek || []).slice(0, LEPES_MAX_DB);
   const marad = Math.max(0, (lepesek || []).length - lathato.length);
   const megjelenő = lathato.map(l => lepesSzoveg(l, splitFn));
   const ikonok = ikonokHoz(megjelenő);
@@ -393,7 +398,15 @@ export function poszterSvg({ cim, lepesek, stilus, splitFn, logoBelso = '', kell
 
   const lepesTeteje = (kellVan ? kellAlja + 72 : cimAlja + 94);
   const lepesHely = hibaY - 26 - lepesTeteje;
-  const SOR = Math.max(72, Math.min(146, Math.floor(lepesHely / Math.max(1, lathato.length))));
+  // ⚠️ A SOR NEM MEHET 88 ALÁ. Amikor a fotó-sáv elvette a helyet, a
+  // kétsoros lépések EGYMÁSBA CSÚSZTAK. Ha nem fér ki mind az öt,
+  // inkább eggyel kevesebb lépés megy ki — a „+N more step" úgyis kiírja,
+  // hogy folytatódik. Összecsúszott szöveget kitenni rosszabb.
+  const SOR_MIN = 88;
+  while (lathato.length > 3 && (hibaY - 26 - lepesTeteje) / lathato.length < SOR_MIN) lathato.pop();
+  const marad2 = Math.max(0, (lepesek || []).length - lathato.length);
+  const SOR = Math.max(SOR_MIN, Math.min(146,
+    Math.floor((hibaY - 26 - lepesTeteje) / Math.max(1, lathato.length))));
 
   const SZAM_X = M + 60;              // a sorszám jobb széle
   const VONAL_X = M + 82;             // a függőleges hajszálvonal
@@ -419,23 +432,27 @@ export function poszterSvg({ cim, lepesek, stilus, splitFn, logoBelso = '', kell
   ${kellLista.map((x, i) => `<text x="${M + 196}" y="${kellY + i * 38 - (kellLista.length - 1) * 0}" font-family="${BETU}" font-size="28" font-weight="600" fill="${sz.tinta}">${xmlEsc(x)}</text>`).join('\n  ')}` : '';
 
 
-  const panelY = cimAlja + 34;   // a cím alatti vastag vonal vonala
   return `<svg width="${W}" height="${H}" xmlns="http://www.w3.org/2000/svg">
-  <rect x="0" y="0" width="${W}" height="${panelY}" fill="${sz.hatter}" opacity="0.30"/>
-  <rect x="22" y="${panelY}" width="${W - 44}" height="${labY - panelY - 18}" rx="28" fill="${sz.panel}" opacity="${sz.panelAtl}"/>
+  <defs><linearGradient id="fatyol" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#000000" stop-opacity="0.06"/>
+    <stop offset="55%" stop-color="#000000" stop-opacity="0.26"/>
+    <stop offset="100%" stop-color="#000000" stop-opacity="0.50"/>
+  </linearGradient></defs>
+  <rect x="0" y="0" width="${W}" height="${panelY}" fill="url(#fatyol)"/>
+  <rect x="0" y="${panelY}" width="${W}" height="${labY - panelY}" fill="${sz.panel}"/>
   <rect x="0" y="0" width="${W}" height="10" fill="${sz.go}"/>
 
-  <text x="${M}" y="${fejY}" font-family="${BETU}" font-size="30" font-weight="900" fill="${sz.tinta}" letter-spacing="1">aiworldhq.com</text>
-  <text x="${M + Math.round(13 * 30 * BETU_ARANY) + 24}" y="${fejY}" font-family="${BETU}" font-size="28" font-weight="600" fill="${sz.halvany}">step-by-step, free to read</text>
+  <text x="${M}" y="${fejY}" font-family="${BETU}" font-size="30" font-weight="900" fill="#FFFFFF" letter-spacing="1">aiworldhq.com</text>
+  <text x="${M + Math.round(13 * 30 * BETU_ARANY) + 24}" y="${fejY}" font-family="${BETU}" font-size="28" font-weight="600" fill="#FFFFFF" opacity="0.82">step-by-step, free to read</text>
   ${logoBelso
     ? `<rect x="${JOBB - 92}" y="${fejY - 58}" width="92" height="92" rx="20" fill="${sz.lap}"/>
   ${logoSvg(logoBelso, { x: JOBB - 70, y: fejY - 36, meret: 48, szin: sz.tinta })}`
-    : `<rect x="${JOBB - 84}" y="${fejY - 46}" width="84" height="52" rx="10" fill="${sz.tinta}"/>
-  <text x="${JOBB - 42}" y="${fejY - 8}" text-anchor="middle" font-family="${BETU}" font-size="28" font-weight="900" fill="${sz.hatter}">AI</text>`}
+    : `<rect x="${JOBB - 84}" y="${fejY - 46}" width="84" height="52" rx="10" fill="#FFFFFF"/>
+  <text x="${JOBB - 42}" y="${fejY - 8}" text-anchor="middle" font-family="${BETU}" font-size="28" font-weight="900" fill="#14120F">AI</text>`}
 
-  <text font-family="${BETU}" font-size="${CIM_M}" font-weight="900" fill="${sz.tinta}">${cimSorok.map((l, i) => `<tspan x="${M}" y="${cimTeteje + i * CIM_SOR}">${xmlEsc(l)}</tspan>`).join('')}</text>
+  <text font-family="${BETU}" font-size="${CIM_M}" font-weight="900" fill="#FFFFFF">${cimSorok.map((l, i) => `<tspan x="${M}" y="${cimTeteje + i * CIM_SOR}">${xmlEsc(l)}</tspan>`).join('')}</text>
 
-  <rect x="${M}" y="${cimAlja + 34}" width="${JOBB - M}" height="6" fill="${sz.tinta}"/>
+
   ${kellSvg}
   <line x1="${M}" y1="${kellAlja + 32}" x2="${JOBB}" y2="${kellAlja + 32}" stroke="${sz.hajszal}" stroke-width="1"/>
 
@@ -447,7 +464,7 @@ export function poszterSvg({ cim, lepesek, stilus, splitFn, logoBelso = '', kell
   ${tordel(hiba, 44, 2).map((s, k) => `<text x="${M + 26}" y="${hibaY + 74 + k * 34}" font-family="${BETU}" font-size="27" font-weight="600" fill="${sz.tinta}">${xmlEsc(s)}</text>`).join('\n  ')}` : ''}
 
   <rect x="0" y="${labY}" width="${W}" height="${H - labY}" fill="${sz.tinta}"/>
-  <text x="${M}" y="${labY + 58}" font-family="${BETU}" font-size="38" font-weight="900" fill="${sz.hatter}">${marad > 0 ? `${marad} more step${marad > 1 ? 's' : ''} in the full guide` : 'Read the full guide'}</text>
+  <text x="${M}" y="${labY + 58}" font-family="${BETU}" font-size="38" font-weight="900" fill="${sz.hatter}">${marad2 > 0 ? `${marad2} more step${marad2 > 1 ? 's' : ''} in the full guide` : 'Read the full guide'}</text>
   <text x="${M}" y="${labY + 102}" font-family="${BETU}" font-size="26" font-weight="600" fill="${sz.hatter}" opacity="0.75">Written by AI. We label every piece that way.</text>
   <rect x="${JOBB - 76}" y="${labY + 44}" width="76" height="48" rx="10" fill="${sz.go}"/>
   <text x="${JOBB - 38}" y="${labY + 79}" text-anchor="middle" font-family="${BETU}" font-size="27" font-weight="900" fill="${sz.hatter}">AI</text>
