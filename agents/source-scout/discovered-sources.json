@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-09-19T02:09:21.499Z",
+    "generated_at": "2026-09-22T02:22:13.150Z",
     "generated_by": "source-scout agent v3.0 (megbízhatóság-kapu)",
     "note": "JAVASLATOK új, MEGBÍZHATÓ hivatalos forrásokra. A felhasználó/főnök dönti el, melyiket adjuk a sources/rss-feeds.json-hoz (enabled:true-val). Minden jelölt megbízhatósági pontszámmal + indoklással.",
     "min_score": 100,
@@ -9,22 +9,22 @@
     "rejected_count": 3,
     "rejected_examples": [
       {
-        "name": "MyFitnessPal Product Updates",
-        "host": "blog.myfitnesspal.com",
+        "name": "Duolingo Blog",
+        "host": "blog.duolingo.com",
         "reason": "a friss cikkeinek csak 0%-a szól AI-ról (kell: 60%)",
         "score": 100
       },
       {
-        "name": "Noom Product Updates",
-        "host": "noom.com",
-        "reason": "a friss cikkeinek csak 0%-a szól AI-ról (kell: 60%)",
+        "name": "Amazon Alexa Blog",
+        "host": "aboutamazon.com",
+        "reason": "a friss cikkeinek csak 30%-a szól AI-ról (kell: 60%)",
         "score": 100
       },
       {
-        "name": "Kayak Product Updates",
-        "host": "kayak.com",
-        "reason": "a friss cikkeinek csak 0%-a szól AI-ról (kell: 60%)",
-        "score": 100
+        "name": "Ring News Blog",
+        "host": "blog.ring.com",
+        "reason": "pont 70 < 100",
+        "score": 70
       }
     ]
   },
