@@ -21,7 +21,7 @@ import sharp from 'sharp';
 import { selectFormats, queuedSlugs } from './image-targets.js';
 import { utmutatoE } from './guide-kind.js';
 import { splitHeading } from './short-video.js';
-import { kar, STILUS, poszterSvg, lepesekMdbol, alkalmas } from './social-poster.js';
+import { kar, STILUS, poszterSvg, lepesekMdbol, alkalmas, szakaszok } from './social-poster.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
@@ -275,6 +275,8 @@ async function main() {
               { input: folt },
               { input: Buffer.from(poszterSvg({
                 cim: title, lepesek: lepesekMdbol(d.article_markdown || ''),
+                kellenek: szakaszok(d.article_markdown || '').kellenek,
+                hibak: szakaszok(d.article_markdown || '').hibak,
                 stilus: st, splitFn: splitHeading,
                 logoBelso: logoBelseje(d._meta?.company || d._meta?.tool || '')
               })) }

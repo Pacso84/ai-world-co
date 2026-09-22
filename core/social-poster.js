@@ -41,7 +41,10 @@ import { nagybetusHorog } from './short-video.js';
 
 export const W = 1080, H = 1350;
 
-const BETU = "Arial, Helvetica, 'DejaVu Sans', sans-serif";
+const BETU = "'Liberation Sans', Arial, Helvetica, sans-serif";
+// A betű MÉRT átlagos karakterszélessége (nagybetűs szövegre felfelé
+// kerekítve) — ugyanaz az arány, amivel a Reel táblái számolnak.
+export const BETU_ARANY = 0.62;
 
 /**
  * A három mérési kar. A `foto` a mostani (fotó + cím-sáv), a másik kettő
@@ -50,14 +53,20 @@ const BETU = "Arial, Helvetica, 'DejaVu Sans', sans-serif";
  */
 export const KAROK = ['foto', 'vilagos', 'sotet'];
 
+// ── A PALETTA: UTASÍTÁS-LAP ────────────────────────────────────────
+//
+// A tárgy nem szoftver, hanem UTASÍTÁS. Ezért nem „márkaszín + semleges
+// szürkék", hanem három szerepet játszó szín: a TINTA (amit olvasol), a
+// GO (a haladás: sorszámok, felső él) és a WARN (ahol elrontják).
+// A hajszálvonal a szerkezet — kártyák helyett vonalak tagolnak.
 export const STILUS = {
   vilagos: {
-    hatter: '#f2ede4', lap: '#ffffff', tinta: '#1c1a16', halvany: '#5c5850',
-    kiemel: '#3f6b57', chipSzoveg: '#ffffff', keret: 'rgba(0,0,0,0.08)', kepAtl: 0.14
+    hatter: '#EFE9DC', lap: '#FFFFFF', tinta: '#14120F', halvany: '#5A5447',
+    go: '#265C40', warn: '#993A14', hajszal: '#C3B9A4', kepAtl: 0.08
   },
   sotet: {
-    hatter: '#0f1720', lap: '#16212c', tinta: '#ffffff', halvany: '#9fb0be',
-    kiemel: '#2fb3c9', chipSzoveg: '#0f1720', keret: 'rgba(255,255,255,0.10)', kepAtl: 0.20
+    hatter: '#121417', lap: '#1C2127', tinta: '#EDEAE3', halvany: '#A3ACB6',
+    go: '#3FC191', warn: '#F0894A', hajszal: '#2E343C', kepAtl: 0.16
   }
 };
 
@@ -95,7 +104,7 @@ export function tordel(s, maxKar, maxSor) {
   return sorok.slice(0, maxSor);
 }
 
-export const LEPES_MAX_KAR = 34;
+export const LEPES_MAX_KAR = 52;   // KÉT sor × 27 karakter fér a dobozba
 
 // A lógó szavak. Ezekkel egy sor SOHA nem végződhet: a „Connect your
 // Gmail, Drive, and…" hibának látszik, nem rövidítésnek.
@@ -132,6 +141,9 @@ export function kiegyensulyozott(s) {
 // tökéletesen önálló utasítás. A hossz jobban elválasztja a kettőt, mint
 // az arány: 10 karakter vs. 20.
 export const FELE_MIN_KAR = 16;
+// A „természetes fél" a jelentés nagy részét tartsa meg — enélkül az
+// „Ask the AI to draft a condolence message" → „Ask the AI" alak is átment.
+export const FELE_MIN_ARANY = 0.65;
 
 /**
  * Egy lépés szövege a dobozba — három lépcsőben, mindegyik jobb az utána
@@ -163,7 +175,7 @@ export function lepesSzoveg(lepes, splitFn) {
     // A „természetes fele" CSAK akkor mehet jelölés nélkül, ha tényleg
     // önálló utasítás marad: elég hosszú, tisztán zár, és nem hagy
     // nyitva zárójelet.
-    if (fele && fele.length <= LEPES_MAX_KAR && fele.length >= FELE_MIN_KAR
+    if (fele && fele.length <= LEPES_MAX_KAR && fele.length >= FELE_MIN_KAR && fele.length >= t.length * 0.65
         && !/[,;:\-–—]$/.test(fele) && !LOGO_SZO.test(' ' + fele)
         && kiegyensulyozott(fele)) return fele;
   }
@@ -172,7 +184,16 @@ export function lepesSzoveg(lepes, splitFn) {
   const szokoz = v.lastIndexOf(' ');
   if (szokoz > 12) v = v.slice(0, szokoz);
   // A vágás UTÁN is takarítunk: a szóhatár pont egy kötőszó után is állhat.
-  for (let i = 0; i < 3; i++) v = v.replace(/[\s,;:.\-–—]+$/, '').replace(LOGO_SZO, '');
+  // ⚠️ AMÍG NEM VÁLTOZIK, NEM ÁLL MEG. A régi változat háromszor futott,
+  // majd EGY UTOLSÓ írásjel-levágás következett — és az újra kitette a
+  // lógó szót: az „…agreeing to — and what" sorból a záró gondolatjel
+  // levágása után „…agreeing to" maradt, kötőszóval a végén. Három élő
+  // poszteren látszott. A megállási feltétel az, hogy ne változzon.
+  for (let i = 0; i < 8; i++) {
+    const elozo = v;
+    v = v.replace(/[\s,;:.\-–—]+$/, '').replace(LOGO_SZO, '');
+    if (v === elozo) break;
+  }
   v = v.replace(/[\s,;:.\-–—]+$/, '');
   // Nyitva maradt zárójel: levágjuk a nyitó jelig — majd ÚJRA takarítunk,
   // mert a vágás után ott maradhat egy lógó névelő („Add a…").
@@ -197,8 +218,10 @@ const CSIK_BETU = 26;
 export const CSIK_SZELES = Math.round(CSIK_SZOVEG.length * CSIK_BETU * 0.60) + 40;
 
 /**
+/**
  * Egy márkalogó beágyazása. A `logoBelso` a `website/assets/logos/*.svg`
- * fájl BELSŐ tartalma (a path-ok), amit a hívó olvas be a lemezről.
+ * fájl BELSŐ tartalma, 24 egységre normalizálva (a hívó végzi, mert a
+ * 20 logóból három más viewBox-szal érkezett).
  * KITALÁLT LOGÓ SOHA — csak az megy ki, ami letöltve ott van.
  */
 function logoSvg(logoBelso, { x, y, meret, szin }) {
@@ -208,148 +231,207 @@ function logoSvg(logoBelso, { x, y, meret, szin }) {
 }
 
 /**
- * Az infografika SVG-je.
+ * A cikk szakaszai a poszterhez.
  *
- * @param {object} o
- * @param {string} o.cim a cikk címe
- * @param {string[]} o.lepesek a nyers lépéscímek
- * @param {object} o.stilus a STILUS egyik bejegyzése
- * @param {Function} o.splitFn splitHeading
- * @param {string} [o.logoBelso] a márkalogó SVG-jének belseje ('' = nincs)
+ * 🔑 A CIKKEINK GAZDAGABBAK, MINT AMIT AZ ELSŐ POSZTER HASZNÁLT. Mérve
+ * mind a 451 útmutatón: 100%-ukban van „Before you start" ÉS „Common
+ * mistakes" szakasz is, nem csak lépések. Mindkettő felsorolás,
+ * `- **Félkövér címke:** magyarázat` alakban — a félkövér címke kész,
+ * rövid panel-elem. Az első változatom csak a lépéseket vette, és ezért
+ * lett belőle lista egy infografika helyett.
  */
-export function poszterSvg({ cim, lepesek, stilus, splitFn, logoBelso = '' }) {
-  const sz = stilus;
-  const PAD = 56;
+export function szakaszok(md) {
+  const sz = String(md || '');
+  const kiszed = (cim) => {
+    const i = sz.indexOf('## ' + cim);
+    if (i < 0) return [];
+    const veg = sz.indexOf('\n## ', i + 3);
+    const test = sz.slice(i, veg < 0 ? undefined : veg);
+    // ⚠️ KÉT ALAK VAN, ÉS AZ ELSŐ VÁLTOZATOM CSAK AZ EGYIKET ISMERTE.
+    // Mérve 509 cikken: félkövér címkével (`- **Account:** …`) csak 43%
+    // írja; a többi sima felsorolás (`- A phone or computer…`). Ha csak
+    // a félkövéret néznénk, a cikkek több mint felén elmaradna a sáv —
+    // és kívülről ez pont úgy nézne ki, mintha „nem lenne mit kiírni".
+    const felkover = [...test.matchAll(/^[-*]\s+\*\*(.+?)\*\*/gm)].map(m => m[1]);
+    const sima = [...test.matchAll(/^[-*][ \t]+(?!\*\*)(.+)$/gm)].map(m => m[1]);
+    return (felkover.length ? felkover : sima)
+      // Egy részük „Mistake: …" előtaggal ír — az a szakasz CÍMÉT
+      // ismétli, a poszteren fölösleges. A zárójeles kiegészítés is.
+      .map(x => String(x).replace(/^(mistake|tip|note)\s*[:\u2014-]\s*/i, '')
+        .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1').replace(/[\[\]]/g, '')
+        .replace(/\*\*/g, '').replace(/\s*\([^)]*\)/g, '')
+        .replace(/[:\uff1a]\s*$/, '').trim())
+      .filter(Boolean);
+  };
+  return {
+    kellenek: kiszed('Before you start'),
+    hibak: kiszed('Common mistakes'),
+    lepesek: lepesekMdbol(sz)
+  };
+}
 
-  // ── A CÍM ─────────────────────────────────────────────────────────
-  //
-  // A „How to" lekerül: a fejléc-csík úgyis kimondja, hogy lépésről
-  // lépésre szóló útmutatóról van szó, és így hosszabb cím is elfér.
-  //
-  // ⚠️ KÉT HIBA VOLT ITT, MINDKETTŐ ISMERŐS ALAK (2026-09-21):
-  //
-  // 1. KISBETŰVEL KEZDŐDÖTT. A „How to brainstorm gift ideas…" címből
-  //    „brainstorm gift ideas…" lett — a kép tetején, 66 pixeles betűvel.
-  //    UGYANAZ a hiba, amit a Reel nyitótáblájánál 09-19-én javítottunk;
-  //    ezért most UGYANAZ a függvény javítja (nagybetusHorog), nem egy
-  //    második példány.
-  //
-  // 2. A HÁROM SOR UTÁN EGYSZERŰEN LEVÁGTA a maradékot: „explain the
-  //    confusing parts of a lease or" — kötőszóval a végén. Most a
-  //    sorhosszt engedjük (és vele a betűt kicsinyítjük), amíg belefér;
-  //    ha úgy sem, jelöljük a „…"-tal, hogy folytatódik.
+/**
+ * Egy leltár-tétel lényege: névelő nélkül, az ELSŐ tagmondatig.
+ *
+ * Mérve 1436 tételen: teljes mondatként 53%-uk nem fért volna ki 30
+ * karakterbe, vagyis minden második sor „…"-tal végződött volna — az
+ * pedig pont úgy néz ki, mintha elromlott volna.
+ */
+function leltarTetel(x) {
+  let t = String(x || '').replace(/^(you(\u2019|')?ll need|you need)\s*:?\s*/i, '')
+    .replace(/^(a|an|the)\s+/i, '').trim();
+  // A névelő levágása kisbetűvel kezdheti a sort — vissza kell nagyítani.
+  if (t) t = t[0].toUpperCase() + t.slice(1);
+  const vag = t.search(/,|;|\s\u2014\s|\s-\s|\s\(|\sand\s|\sor\s|\sso\s|\sthat\s|\swith\s/i);
+  if (vag > 8) t = t.slice(0, vag);
+  return t.replace(/[\s,;:.]+$/, '');
+}
+
+/** Rövidítés adott karakterszámra, lógó szó és írásjel nélkül. */
+function rovid(s, max) {
+  const t = String(s || '').replace(/["“”]/g, '').replace(/\s+/g, ' ').trim();
+  if (t.length <= max) return t;
+  let v = t.slice(0, max - 1);
+  const sz = v.lastIndexOf(' ');
+  if (sz > 8) v = v.slice(0, sz);
+  // ⚠️ AMÍG NEM VÁLTOZIK, NEM ÁLL MEG. A régi változat háromszor futott,
+  // majd EGY UTOLSÓ írásjel-levágás következett — és az újra kitette a
+  // lógó szót: az „…agreeing to — and what" sorból a záró gondolatjel
+  // levágása után „…agreeing to" maradt, kötőszóval a végén. Három élő
+  // poszteren látszott. A megállási feltétel az, hogy ne változzon.
+  for (let i = 0; i < 8; i++) {
+    const elozo = v;
+    v = v.replace(/[\s,;:.\-–—]+$/, '').replace(LOGO_SZO, '');
+    if (v === elozo) break;
+  }
+  return v.replace(/[\s,;:.\-–—]+$/, '') + '…';
+}
+
+/**
+ * Az infografika SVG-je — UTASÍTÁS-LAP, nem kártyalista.
+ *
+ * ⚠️ AZ ELSŐ VÁLTOZAT MEGBUKOTT A USERNÉL: „ez szar nem hasonlit a
+ * mintára!" Igaza volt. Amit építettem, az cím + öt egyforma lekerekített
+ * kártya + lábléc volt — vagyis LISTA. Ráadásul négy olyan jegyet viselt,
+ * amit a dizájn-útmutató kifejezetten a gépi munka árulkodó jeleként
+ * sorol fel: csupa nagybetűs címke, középpontokkal fűzött metasor
+ * („A · B · C"), nyíl a link végén, és minden azonos lekerekítésű
+ * kártyába vágva.
+ *
+ * AZ ÚJ IRÁNY A TÁRGYBÓL JÖN. Amit árulunk, az nem szoftver, hanem
+ * UTASÍTÁS — ennek saját vizuális hagyománya van: az összeszerelési lap,
+ * a repülős biztonsági kártya, a készülék gyors-útmutatója. Vastag
+ * sorszámok, erős vonalak, „mi kell hozzá" sáv, külön figyelmeztető rész.
+ * Ezért: nincsenek dobozok, a szerkezetet VONALAK és SZÁMOK adják.
+ *
+ * A számozás itt indokolt (a dizájn-útmutató szerint csak akkor szabad,
+ * ha a tartalom tényleg sorrend): a lépések tényleg sorrendben vannak.
+ */
+export function poszterSvg({ cim, lepesek, stilus, splitFn, logoBelso = '', kellenek = [], hibak = [] }) {
+  const sz = stilus;
+  const M = 64;                       // oldalmargó
+  const JOBB = W - M;
+
+  // ── CÍM ───────────────────────────────────────────────────────────
   const cimNyers = nagybetusHorog(String(cim || '').replace(/^How to\s+/i, '').trim());
-  let cimSorok = tordel(cimNyers, 26, 3);
-  let cimKar = 26;
-  // Ameddig kilóg, szélesítjük a sort — a betűméret ehhez igazodik lentebb.
-  while (cimSorok.join(' ').length < cimNyers.length && cimKar < 40) {
-    cimKar += 2;
-    cimSorok = tordel(cimNyers, cimKar, 3);
+  let cimSorok = tordel(cimNyers, 24, 3);
+  let kar = 24;
+  while (cimSorok.join(' ').length < cimNyers.length && kar < 38) {
+    kar += 2;
+    cimSorok = tordel(cimNyers, kar, 3);
   }
   if (cimSorok.join(' ').length < cimNyers.length) {
-    // Még így sem fér ki: a „…" MEGMONDJA, hogy van folytatás — de lógó
-    // kötőszó és írásjel nem maradhat előtte.
-    let u = cimSorok[cimSorok.length - 1];
-    for (let i = 0; i < 3; i++) u = u.replace(/[\s,;:.\-–—]+$/, '').replace(LOGO_SZO, '');
-    cimSorok[cimSorok.length - 1] = u.replace(/[\s,;:.\-–—]+$/, '') + '…';
+    cimSorok[cimSorok.length - 1] = rovid(cimSorok[cimSorok.length - 1] + ' x', 999);
   }
-  const leghosszabbCim = Math.max(1, ...cimSorok.map(s => s.length));
-  // ⚠️ A CÍM BEFUTOTT A SAROK-CSEMPE ALÁ (2026-09-21, átvizsgálás): a
-  // jobb felső logó/„AI" jel az x 920–1028 sávot foglalja, a cím
-  // szélességét viszont semmi nem korlátozta — 12 poszteren átfedték
-  // egymást, a legrosszabbnál 82 px-en. A cím ezért a CSEMPE BAL
-  // SZÉLÉIG kaphat helyet, nem a lap széléig.
-  const CIM_MAX_SZELES = 900 - PAD;         // a csempe bal széle mínusz margó
-  const BETU_ARANY = 0.60;                  // mért nagybetűs Arial-arány
-  // 26 karakternél 66 px fért ki kényelmesen; efölött arányosan kisebb.
-  const CIM_M = Math.max(40, Math.min(cimSorok.length >= 3 ? 58 : 66,
-    Math.round(26 * 66 / leghosszabbCim),
-    Math.floor(CIM_MAX_SZELES / (leghosszabbCim * BETU_ARANY))));
-  const CIM_SOR = Math.round(CIM_M * 1.12);
+  const leghosszabb = Math.max(1, ...cimSorok.map(s => s.length));
+  const CIM_M = Math.max(44, Math.min(76, Math.floor(816 / (leghosszabb * BETU_ARANY))));
+  const CIM_SOR = Math.round(CIM_M * 1.06);
 
+  const fejY = 74;                    // a fejléc alapvonala
+  const cimTeteje = fejY + 86;
+  const cimAlja = cimTeteje + (cimSorok.length - 1) * CIM_SOR;
+
+  // ── „MI KELL HOZZÁ" SÁV ───────────────────────────────────────────
+  const kellLista = (kellenek || []).slice(0, 3)
+    // A névelő nem hordoz információt egy leltár-sorban, viszont elvisz
+    // 2–4 karaktert a keretből — emiatt lett MINDHÁROM tétel „…"-os.
+    // Csak az ELSŐ TAGMONDAT kell: a tételek gyakran egész mondatok.
+    .map(x => rovid(leltarTetel(x), 30))
+    .filter(Boolean);
+  const kellY = cimAlja + 74;
+  const kellVan = kellLista.length > 0;
+
+  // ── LÉPÉSEK ───────────────────────────────────────────────────────
   const lathato = (lepesek || []).slice(0, LEPES_MAX_DB);
   const marad = Math.max(0, (lepesek || []).length - lathato.length);
-
-  // ── FEJLÉC ────────────────────────────────────────────────────────
-  const cimY = 132;
-  const csikY = cimY + (cimSorok.length - 1) * CIM_SOR + 58;
-  const fejMagas = csikY + 34;
-  const cimSvg = cimSorok.map((l, i) =>
-    `<tspan x="${PAD}" y="${cimY + i * CIM_SOR}">${xmlEsc(l)}</tspan>`).join('');
-
-  // Pont-rács a fejléc mögé — ettől lesz „megtervezett" a felület, és
-  // szabályos minta lévén a videó/JPEG tömörítés is jól bírja.
-  const racs = `<defs><pattern id="r" width="34" height="34" patternUnits="userSpaceOnUse">
-      <circle cx="17" cy="17" r="2" fill="${sz.kiemel}" opacity="0.20"/></pattern></defs>
-  <rect x="0" y="0" width="${W}" height="${fejMagas}" fill="url(#r)"/>`;
-
-  // ── LÉPÉS-DOBOZOK ─────────────────────────────────────────────────
-  // ⚠️ A KÖZÖK SZÁMOLTAK, NEM FIXEK. Az első változatban a doboz-köz fix
-  // 16 px volt, a záró sáv viszont a kép aljához rögzítve — így egy
-  // 4 lépéses útmutatónál 228 px ÜRES CSÍK maradt a lista alatt, a
-  // kártya negyede. Három lépésnél 362 px lett volna. Most a hely
-  // szétosztódik a dobozok között, tehát a lap mindig „teleírtnak" látszik.
-  const DOBOZ_M = 118;
-  const listaTeteje = fejMagas + 22;
-  const CTA_HELY = 96;                        // a „+N more step" sornak
-  const hely = (H - 158) - listaTeteje - CTA_HELY;
-  const DOBOZ_KOZ = lathato.length > 1
-    ? Math.max(14, Math.min(46, Math.round((hely - lathato.length * DOBOZ_M) / (lathato.length - 1))))
-    : 16;
-
-  // A megjelenő szöveget EGYSZER számoljuk ki, mert az ikont is ANNAK
-  // kell választania. Az első változatom a NYERS fejlécből választott, és
-  // emiatt a „Save the budget" pipát kapott (a láthatatlan „check" szóra),
-  // a „Paste the code" pedig könyvjelzőt (a láthatatlan „save"-re).
   const megjelenő = lathato.map(l => lepesSzoveg(l, splitFn));
   const ikonok = ikonokHoz(megjelenő);
 
-  const dobozok = lathato.map((l, i) => {
-    const y = listaTeteje + i * (DOBOZ_M + DOBOZ_KOZ);
-    const szovegSorok = tordel(megjelenő[i], 27, 2);
-    const kezd = szovegSorok.length === 2 ? y + 48 : y + 72;
-    const szovegSvg = szovegSorok.map((s, k) =>
-      `<tspan x="${PAD + 148}" y="${kezd + k * 44}">${xmlEsc(s)}</tspan>`).join('');
-    return `<rect x="${PAD}" y="${y}" width="${W - 2 * PAD}" height="${DOBOZ_M}" rx="18" fill="${sz.lap}" stroke="${sz.keret}" stroke-width="1"/>
-  <rect x="${PAD + 20}" y="${y + 19}" width="80" height="80" rx="20" fill="${sz.kiemel}"/>
-  ${ikonSvg(ikonok[i], { x: PAD + 42, y: y + 41, meret: 36, szin: sz.chipSzoveg, vastag: 2.1 })}
-  <circle cx="${PAD + 104}" cy="${y + 26}" r="19" fill="${sz.tinta}"/>
-  <text x="${PAD + 104}" y="${y + 34}" text-anchor="middle" font-family="${BETU}" font-size="22" font-weight="800" fill="${sz.lap}">${i + 1}</text>
-  <text font-family="${BETU}" font-size="34" font-weight="600" fill="${sz.tinta}">${szovegSvg}</text>`;
+  // ── FIGYELMEZTETÉS ────────────────────────────────────────────────
+  const hiba = (hibak || [])[0] ? rovid(hibak[0], 44) : '';
+  const labY = H - 136;               // a záró sáv teteje
+  const hibaMagas = hiba ? 80 : 0;
+  const hibaY = labY - 26 - hibaMagas;
+
+  const lepesTeteje = (kellVan ? kellAlja + 72 : cimAlja + 94);
+  const lepesHely = hibaY - 26 - lepesTeteje;
+  const SOR = Math.max(72, Math.min(146, Math.floor(lepesHely / Math.max(1, lathato.length))));
+
+  const SZAM_X = M + 60;              // a sorszám jobb széle
+  const VONAL_X = M + 82;             // a függőleges hajszálvonal
+  const SZOVEG_X = VONAL_X + 34;
+
+  const lepesSvg = lathato.map((l, i) => {
+    const y = lepesTeteje + i * SOR;
+    const sorok = tordel(megjelenő[i], 30, 2);
+    const alap = y + (sorok.length === 2 ? SOR / 2 - 14 : SOR / 2 + 10);
+    const szovegSvg = sorok.map((s, k) =>
+      `<tspan x="${SZOVEG_X}" y="${alap + k * 42}">${xmlEsc(s)}</tspan>`).join('');
+    return `${i > 0 ? `<line x1="${M}" y1="${y}" x2="${JOBB}" y2="${y}" stroke="${sz.hajszal}" stroke-width="1"/>` : ''}
+  <text x="${SZAM_X}" y="${y + SOR / 2 + 20}" text-anchor="end" font-family="${BETU}" font-size="58" font-weight="900" fill="${sz.go}">${i + 1}</text>
+  ${ikonSvg(ikonok[i], { x: JOBB - 46, y: y + SOR / 2 - 23, meret: 46, szin: sz.halvany, vastag: 1.9 })}
+  <text font-family="${BETU}" font-size="34" font-weight="700" fill="${sz.tinta}">${szovegSvg}</text>`;
   }).join('\n  ');
 
-  const listaAlja = listaTeteje + lathato.length * DOBOZ_M + (lathato.length - 1) * DOBOZ_KOZ;
+  const lepesAlja = lepesTeteje + lathato.length * SOR;
 
-  // ── ZÁRÓ SÁV ──────────────────────────────────────────────────────
-  const zaroY = H - 158;
-  const zaro = marad > 0
-    ? `+ ${marad} more step${marad > 1 ? 's' : ''} in the full guide`
-    : 'The full guide is free to read';
+  // ── ÖSSZERAKÁS ────────────────────────────────────────────────────
+  const kellSvg = kellVan ? `
+  <text x="${M}" y="${kellY}" font-family="${BETU}" font-size="30" font-weight="900" fill="${sz.go}">You'll need</text>
+  ${kellLista.map((x, i) => `<text x="${M + 196}" y="${kellY + i * 38 - (kellLista.length - 1) * 0}" font-family="${BETU}" font-size="28" font-weight="600" fill="${sz.tinta}">${xmlEsc(x)}</text>`).join('\n  ')}` : '';
 
-  // A jobb felső sarok: ahol van márkalogó, az megy; ahol nincs, az
-  // „AI" jelölés. Az AI-jelölés a ZÁRÓ SÁVBAN MINDIG ott van, tehát a
-  // logó nem szorítja ki (EU AI Act).
-  const sarok = logoBelso
-    ? `<rect x="${W - 160}" y="54" width="108" height="108" rx="26" fill="${sz.lap}"/>
-  ${logoSvg(logoBelso, { x: W - 133, y: 81, meret: 54, szin: sz.tinta })}`
-    : `<rect x="${W - 150}" y="60" width="88" height="46" rx="12" fill="${sz.kiemel}"/>
-  <text x="${W - 106}" y="93" text-anchor="middle" font-family="${BETU}" font-size="27" font-weight="800" fill="${sz.chipSzoveg}">AI</text>`;
+  const kellAlja = kellVan ? kellY + (kellLista.length - 1) * 38 : cimAlja;
 
   return `<svg width="${W}" height="${H}" xmlns="http://www.w3.org/2000/svg">
-  ${racs}
-  <rect x="0" y="0" width="${W}" height="12" fill="${sz.kiemel}"/>
-  ${sarok}
-  <text font-family="${BETU}" font-size="${CIM_M}" font-weight="800" fill="${sz.tinta}">${cimSvg}</text>
-  <rect x="${PAD}" y="${csikY - 32}" width="${CSIK_SZELES}" height="46" rx="12" fill="${sz.kiemel}"/>
-  <text x="${PAD + 20}" y="${csikY}" font-family="${BETU}" font-size="26" font-weight="800" fill="${sz.chipSzoveg}">${CSIK_SZOVEG}</text>
-  ${dobozok}
-  ${ikonSvg('szikra', { x: PAD + 2, y: listaAlja + 16, meret: 30, szin: sz.kiemel, vastag: 2.2 })}
-  <text x="${PAD + 46}" y="${listaAlja + 42}" font-family="${BETU}" font-size="32" font-weight="700" fill="${sz.kiemel}">${xmlEsc(zaro)} →</text>
-  <rect x="0" y="${zaroY}" width="${W}" height="${H - zaroY}" fill="${sz.kiemel}"/>
-  <rect x="${W - 138}" y="${zaroY + 46}" width="86" height="46" rx="12" fill="${sz.chipSzoveg}" opacity="0.9"/>
-  <text x="${W - 95}" y="${zaroY + 79}" text-anchor="middle" font-family="${BETU}" font-size="27" font-weight="800" fill="${sz.kiemel}">AI</text>
-  <text x="${PAD}" y="${zaroY + 68}" font-family="${BETU}" font-size="42" font-weight="800" fill="${sz.chipSzoveg}">AIWORLDHQ.COM</text>
-  <text x="${PAD}" y="${zaroY + 116}" font-family="${BETU}" font-size="27" fill="${sz.chipSzoveg}" opacity="0.88">Plain-English AI guides · written by AI, labeled that way</text>
+  <rect width="${W}" height="${H}" fill="${sz.hatter}"/>
+  <rect x="0" y="0" width="${W}" height="10" fill="${sz.go}"/>
+
+  <text x="${M}" y="${fejY}" font-family="${BETU}" font-size="30" font-weight="900" fill="${sz.tinta}" letter-spacing="1">aiworldhq.com</text>
+  <text x="${M + Math.round(13 * 30 * BETU_ARANY) + 24}" y="${fejY}" font-family="${BETU}" font-size="28" font-weight="600" fill="${sz.halvany}">step-by-step, free to read</text>
+  ${logoBelso
+    ? `<rect x="${JOBB - 92}" y="${fejY - 58}" width="92" height="92" rx="20" fill="${sz.lap}"/>
+  ${logoSvg(logoBelso, { x: JOBB - 70, y: fejY - 36, meret: 48, szin: sz.tinta })}`
+    : `<rect x="${JOBB - 84}" y="${fejY - 46}" width="84" height="52" rx="10" fill="${sz.tinta}"/>
+  <text x="${JOBB - 42}" y="${fejY - 8}" text-anchor="middle" font-family="${BETU}" font-size="28" font-weight="900" fill="${sz.hatter}">AI</text>`}
+
+  <text font-family="${BETU}" font-size="${CIM_M}" font-weight="900" fill="${sz.tinta}">${cimSorok.map((l, i) => `<tspan x="${M}" y="${cimTeteje + i * CIM_SOR}">${xmlEsc(l)}</tspan>`).join('')}</text>
+
+  <rect x="${M}" y="${cimAlja + 34}" width="${JOBB - M}" height="6" fill="${sz.tinta}"/>
+  ${kellSvg}
+  <line x1="${M}" y1="${kellAlja + 32}" x2="${JOBB}" y2="${kellAlja + 32}" stroke="${sz.hajszal}" stroke-width="1"/>
+
+  <line x1="${VONAL_X}" y1="${lepesTeteje}" x2="${VONAL_X}" y2="${lepesAlja}" stroke="${sz.hajszal}" stroke-width="1"/>
+  ${lepesSvg}
+
+  ${hiba ? `<rect x="${M}" y="${hibaY}" width="6" height="${hibaMagas}" fill="${sz.warn}"/>
+  <text x="${M + 26}" y="${hibaY + 36}" font-family="${BETU}" font-size="28" font-weight="900" fill="${sz.warn}">Where people slip up</text>
+  ${tordel(hiba, 44, 2).map((s, k) => `<text x="${M + 26}" y="${hibaY + 74 + k * 34}" font-family="${BETU}" font-size="27" font-weight="600" fill="${sz.tinta}">${xmlEsc(s)}</text>`).join('\n  ')}` : ''}
+
+  <rect x="0" y="${labY}" width="${W}" height="${H - labY}" fill="${sz.tinta}"/>
+  <text x="${M}" y="${labY + 58}" font-family="${BETU}" font-size="38" font-weight="900" fill="${sz.hatter}">${marad > 0 ? `${marad} more step${marad > 1 ? 's' : ''} in the full guide` : 'Read the full guide'}</text>
+  <text x="${M}" y="${labY + 102}" font-family="${BETU}" font-size="26" font-weight="600" fill="${sz.hatter}" opacity="0.75">Written by AI. We label every piece that way.</text>
+  <rect x="${JOBB - 76}" y="${labY + 44}" width="76" height="48" rx="10" fill="${sz.go}"/>
+  <text x="${JOBB - 38}" y="${labY + 79}" text-anchor="middle" font-family="${BETU}" font-size="27" font-weight="900" fill="${sz.hatter}">AI</text>
 </svg>`;
 }
 
