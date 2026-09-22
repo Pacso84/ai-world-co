@@ -62,11 +62,13 @@ export const KAROK = ['foto', 'vilagos', 'sotet'];
 export const STILUS = {
   vilagos: {
     hatter: '#EFE9DC', lap: '#FFFFFF', tinta: '#14120F', halvany: '#5A5447',
-    go: '#265C40', warn: '#993A14', hajszal: '#C3B9A4', kepAtl: 0.08
+    go: '#265C40', warn: '#993A14', hajszal: '#C3B9A4', kepAtl: 0.62,
+    panel: '#FBF8F2', panelAtl: 0.90
   },
   sotet: {
     hatter: '#121417', lap: '#1C2127', tinta: '#EDEAE3', halvany: '#A3ACB6',
-    go: '#3FC191', warn: '#F0894A', hajszal: '#2E343C', kepAtl: 0.16
+    go: '#3FC191', warn: '#F0894A', hajszal: '#2E343C', kepAtl: 0.52,
+    panel: '#0F1318', panelAtl: 0.90
   }
 };
 
@@ -329,7 +331,7 @@ function rovid(s, max) {
  */
 export function poszterSvg({ cim, lepesek, stilus, splitFn, logoBelso = '', kellenek = [], hibak = [] }) {
   const sz = stilus;
-  const M = 64;                       // oldalmargó
+  const M = 60;                       // oldalmargó (a panelen belül)
   const JOBB = W - M;
 
   // ── CÍM ───────────────────────────────────────────────────────────
@@ -360,6 +362,11 @@ export function poszterSvg({ cim, lepesek, stilus, splitFn, logoBelso = '', kell
     .filter(Boolean);
   const kellY = cimAlja + 74;
   const kellVan = kellLista.length > 0;
+  // ⚠️ EZ A SOR KORÁBBAN A FÁJL VÉGÉN ÁLLT, a lepesTeteje MÖGÖTT, ami
+  // használja — így a poszterSvg MINDEN infografikás cikknél kivételt
+  // dobott. A képgyártó elkapta, figyelmeztetést írt, és a RÉGI fájlt
+  // hagyta a helyén: kívülről úgy nézett ki, mintha semmi nem változna.
+  const kellAlja = kellVan ? kellY + (kellLista.length - 1) * 38 : cimAlja;
 
   // ── LÉPÉSEK ───────────────────────────────────────────────────────
   const lathato = (lepesek || []).slice(0, LEPES_MAX_DB);
@@ -400,10 +407,11 @@ export function poszterSvg({ cim, lepesek, stilus, splitFn, logoBelso = '', kell
   <text x="${M}" y="${kellY}" font-family="${BETU}" font-size="30" font-weight="900" fill="${sz.go}">You'll need</text>
   ${kellLista.map((x, i) => `<text x="${M + 196}" y="${kellY + i * 38 - (kellLista.length - 1) * 0}" font-family="${BETU}" font-size="28" font-weight="600" fill="${sz.tinta}">${xmlEsc(x)}</text>`).join('\n  ')}` : '';
 
-  const kellAlja = kellVan ? kellY + (kellLista.length - 1) * 38 : cimAlja;
 
+  const panelY = cimAlja + 34;   // a cím alatti vastag vonal vonala
   return `<svg width="${W}" height="${H}" xmlns="http://www.w3.org/2000/svg">
-  <rect width="${W}" height="${H}" fill="${sz.hatter}"/>
+  <rect x="0" y="0" width="${W}" height="${panelY}" fill="${sz.hatter}" opacity="0.30"/>
+  <rect x="22" y="${panelY}" width="${W - 44}" height="${labY - panelY - 18}" rx="28" fill="${sz.panel}" opacity="${sz.panelAtl}"/>
   <rect x="0" y="0" width="${W}" height="10" fill="${sz.go}"/>
 
   <text x="${M}" y="${fejY}" font-family="${BETU}" font-size="30" font-weight="900" fill="${sz.tinta}" letter-spacing="1">aiworldhq.com</text>

@@ -269,7 +269,7 @@ async function main() {
         if (fmt.key === 'fb' && !isWeekly && infoKar !== 'foto') {
           const st = STILUS[infoKar];
           const folt = await sharp(src).resize(fmt.w, fmt.h, { fit: 'cover' })
-            .blur(80).modulate({ saturation: 0.8 }).ensureAlpha(st.kepAtl).png().toBuffer();
+            .blur(46).modulate({ saturation: 0.95 }).ensureAlpha(st.kepAtl).png().toBuffer();
           pipe = sharp({ create: { width: fmt.w, height: fmt.h, channels: 3, background: st.hatter } })
             .composite([
               { input: folt },
