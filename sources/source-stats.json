@@ -1,7 +1,7 @@
 {
   "_meta": {
     "note": "Forrás-bizonyítvány: frissesség + termés + megbízhatóság forrásonként. Gyártja: core/source-report-card.js",
-    "updated": "2026-09-21T20:24:22.534Z",
+    "updated": "2026-09-22T02:51:53.080Z",
     "thresholds": {
       "DEAD_FEED_DAYS": 365,
       "MIN_SAMPLE": 8,
@@ -20,13 +20,13 @@
   "sources": {
     "openai-blog": {
       "name": "OpenAI Blog (hivatalos)",
-      "feedAgeDays": 0,
-      "published30d": 26,
+      "feedAgeDays": 1,
+      "published30d": 29,
       "truthBlocks": 1,
       "truthUnfixed": 0,
-      "totalAttempts": 10,
+      "totalAttempts": 12,
       "alreadyDisabled": false,
-      "lastArticle": "2026-09-21",
+      "lastArticle": "2026-09-22",
       "verdict": "ok",
       "reason": ""
     },
@@ -44,7 +44,7 @@
     },
     "google-ai-blog": {
       "name": "Google AI (hivatalos, blog.google)",
-      "feedAgeDays": 3,
+      "feedAgeDays": 4,
       "published30d": 4,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -68,7 +68,7 @@
     },
     "microsoft-ai": {
       "name": "Microsoft AI (hivatalos)",
-      "feedAgeDays": 11,
+      "feedAgeDays": 12,
       "published30d": 2,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -164,7 +164,7 @@
     },
     "mistral-ai": {
       "name": "Mistral AI (hivatalos)",
-      "feedAgeDays": 5,
+      "feedAgeDays": 6,
       "published30d": 1,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -428,7 +428,7 @@
     },
     "sap": {
       "name": "SAP Innovation Blog (hivatalos)",
-      "feedAgeDays": 0,
+      "feedAgeDays": 1,
       "published30d": 1,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -441,12 +441,12 @@
     "databricks": {
       "name": "Databricks Blog (hivatalos)",
       "feedAgeDays": 3,
-      "published30d": 2,
+      "published30d": 3,
       "truthBlocks": 0,
       "truthUnfixed": 0,
-      "totalAttempts": 0,
+      "totalAttempts": 1,
       "alreadyDisabled": false,
-      "lastArticle": "2026-09-03",
+      "lastArticle": "2026-09-22",
       "verdict": "ok",
       "reason": ""
     },
@@ -488,7 +488,7 @@
     },
     "ibm": {
       "name": "IBM Research (hivatalos)",
-      "feedAgeDays": 6,
+      "feedAgeDays": 7,
       "published30d": 1,
       "truthBlocks": 1,
       "truthUnfixed": 0,
@@ -548,8 +548,8 @@
     },
     "perplexity-news": {
       "name": "Perplexity (hivatalos, Google News szűrve)",
-      "feedAgeDays": 2,
-      "published30d": 2,
+      "feedAgeDays": 0,
+      "published30d": 1,
       "truthBlocks": 0,
       "truthUnfixed": 0,
       "totalAttempts": 0,
@@ -656,11 +656,11 @@
     },
     "picsart": {
       "name": "PicsArt Blog (hivatalos)",
-      "feedAgeDays": 4,
-      "published30d": 32,
-      "truthBlocks": 5,
+      "feedAgeDays": 5,
+      "published30d": 31,
+      "truthBlocks": 4,
       "truthUnfixed": 0,
-      "totalAttempts": 14,
+      "totalAttempts": 13,
       "alreadyDisabled": false,
       "lastArticle": "2026-09-18",
       "verdict": "ok",
@@ -692,7 +692,7 @@
     },
     "samsung-newsroom": {
       "name": "Samsung Newsroom (hivatalos)",
-      "feedAgeDays": 5,
+      "feedAgeDays": 0,
       "published30d": 0,
       "truthBlocks": 0,
       "truthUnfixed": 0,
