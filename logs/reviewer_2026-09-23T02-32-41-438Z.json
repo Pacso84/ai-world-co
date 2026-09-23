@@ -1,0 +1,27 @@
+{
+  "started_at": "2026-09-23T02:30:57.784Z",
+  "total": 2,
+  "passed": 2,
+  "failed": 0,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.007152350000000001,
+  "by_article": [
+    {
+      "writer": "WRITER_GUIDE_how-to-fact-check-a-viral-news-story-with-gemini-before-you-.json",
+      "article": "ARTICLE_GUIDE_how-to-fact-check-a-viral-news-story-with-gemini-before-you-.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.003099
+    },
+    {
+      "writer": "WRITER_GUIDE_how-to-tailor-your-resume-to-a-specific-job-posting-using-cl.json",
+      "article": "ARTICLE_GUIDE_how-to-tailor-your-resume-to-a-specific-job-posting-using-cl.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0021276
+    }
+  ],
+  "finished_at": "2026-09-23T02:32:41.438Z",
+  "duration_seconds": 103.654
+}

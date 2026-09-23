@@ -1,43 +1,4 @@
 {
-  "2026-09-04": [
-    {
-      "at": "2026-09-04T02:12:11.849Z",
-      "file": "WRITER_2026-09-04T01-58-32-035Z_openai-blog_Daybreak_for_Frontline_Defenders___1B_to_protect_e.json",
-      "action": "hold",
-      "reasons": [
-        "AI-bíró nem elérhető (érthetetlen AI-válasz: credible mező hiányzik) — visszatartva a következő futásig"
-      ]
-    },
-    {
-      "at": "2026-09-04T02:28:37.791Z",
-      "file": "WRITER_2026-09-04T01-58-32-035Z_openai-blog_Daybreak_for_Frontline_Defenders___1B_to_protect_e.json",
-      "action": "block",
-      "reasons": [
-        "The article states OpenAI announced a $1 billion commitment called 'Daybreak for Frontline Defenders' — this specific program name and dollar amount are not verifiable and appear to be fabricated.",
-        "The article claims OpenAI 'recently announced' this $1 billion commitment to protect essential services — no such verified public OpenAI initiative matching this description exists, and the attribution of a specific dollar figure to a named program is presented as fact."
-      ],
-      "confidence": 7
-    },
-    {
-      "at": "2026-09-04T12:14:46.481Z",
-      "file": "WRITER_2026-09-04T12-08-32-840Z_picsart_How_to_edit_PDF_pages_with_AI_in_Picsart_Flow.json",
-      "action": "block",
-      "reasons": [
-        "Picsart Flow is presented as a real AI PDF editing tool ('Picsart Flow is one example of a tool that does this'), but this specific product name does not appear on the verified-real list and I cannot confirm this is a real product with AI PDF editing capabilities. The article treats it as a concrete, named example when it may be an invented feature name or unreleased product.",
-        "The article states 'Picsart Flow, for example, includes AI PDF editing alongside its image and design features' as fact — this feature attribution to Picsart Flow is presented with certainty but cannot be verified as real."
-      ],
-      "confidence": 8
-    },
-    {
-      "at": "2026-09-04T12:15:05.389Z",
-      "file": "WRITER_2026-09-04T12-08-32-840Z_picsart_Muse_Image_1_0__Meta_s_agentic_image_model__in_Pic.json",
-      "action": "block",
-      "reasons": [
-        "The article claims 'Meta's Muse' is 'now in Picsart's AI Playground' — 'Muse' is not a known Meta image-generation product (Meta's image model line is Emu / Meta AI image generation), and 'Picsart's AI Playground' is not a verifiable Picsart product surface. This specific pairing of product names + integration claim matches the pattern flagged in past company lessons about fabricated Picsart tool/feature names."
-      ],
-      "confidence": 6
-    }
-  ],
   "2026-09-05": [
     {
       "at": "2026-09-05T02:03:29.951Z",
@@ -341,6 +302,36 @@
         "Link to non-existent article: https://aiworldhq.com/article/what-flexible-ai-data-centers-actually-means-for-you.html — fabricated URL",
         "Link to non-existent article: https://aiworldhq.com/article/notebooklm-s-audio-features-what-it-can-do-and-who-it-s-for.html — fabricated URL",
         "Link to non-existent article: https://aiworldhq.com/article/speaker-aware-ai-translation-is-coming-what-it-does-and-who-it-helps.html — fabricated URL"
+      ],
+      "confidence": 7
+    }
+  ],
+  "2026-09-23": [
+    {
+      "at": "2026-09-23T02:22:48.235Z",
+      "file": "WRITER_2026-09-23T02-19-43-916Z_aws-ml_Claude_Opus_5_5_is_now_available_on_AWS.json",
+      "action": "block",
+      "reasons": [
+        "Invented model name 'Claude Opus 5.5': Anthropic's model lineup in my training (through January 2026) tops out at Claude Opus 4 / 4.1. The 'Opus 5.5' designation represents a major version jump that does not match any known Anthropic release, and the article states it as a hard fact rather than hedging."
+      ],
+      "confidence": 5
+    },
+    {
+      "at": "2026-09-23T02:23:07.514Z",
+      "file": "WRITER_2026-09-23T02-19-43-916Z_picsart_How_to_analyze_a_PDF_with_AI_in_Picsart_Flow.json",
+      "action": "block",
+      "reasons": [
+        "Picsart Flow is mentioned as being able to do AI PDF analysis ('Tools like ChatGPT, Claude, and Picsart Flow now do this in seconds') — there is no 'Picsart Flow' product that performs AI PDF analysis. Picsart's product is an image/video editor/generator (Picsart AI Image Generator / Picsart app); the 'Picsart Flow' name is invented here. Picsart is also not on the list of verified company names supplied."
+      ],
+      "confidence": 9
+    },
+    {
+      "at": "2026-09-23T02:24:05.727Z",
+      "file": "WRITER_2026-09-23T02-19-43-916Z_picsart_Score_ad_creative_with_Vera__an_AI_ad_strategist_p.json",
+      "action": "block",
+      "reasons": [
+        "\"Vera\" is described as a feature inside Picsart built with Zappi — there is no verified Picsart product called 'Vera' or any confirmed Picsart/Zappi ad-scoring partnership; this appears to be an invented product name and fabricated collaboration.",
+        "The article claims Vera was 'built together with Zappi, a consumer insights platform' and that it 'runs creative through Zappi's models' — Zappi is a real company, but the specific Vera/Zappi integration described is not verifiable and reads as fabricated specifics."
       ],
       "confidence": 7
     }

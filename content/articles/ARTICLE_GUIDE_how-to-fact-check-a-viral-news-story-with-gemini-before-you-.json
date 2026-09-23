@@ -1,0 +1,60 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "how-to-fact-check-a-viral-news-story-with-gemini-before-you-",
+    "company": "Google",
+    "tool": "Gemini",
+    "icon": "🔍",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-09-23T02:28:25.043Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00721728,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-09-23T02:31:57.597Z",
+    "slug": "how-to-fact-check-a-viral-news-story-with-gemini-before-you-share-it",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1375
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Excellent beginner guide with clear step-by-step instructions, helpful fallbacks for UI variations, and reassuring language throughout. The political example is appropriate here since it's a neutral demonstration of misinformation technique in a fact-checking context, not political advocacy.",
+      "_aiCost": 0.003099,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "seo": {
+      "meta_description": "Learn how to fact-check viral news with Gemini before sharing. A simple 3-step guide to verify claims and avoid spreading misinformation.",
+      "keywords": [
+        "how to fact check news with AI",
+        "fact check viral stories",
+        "verify news before sharing",
+        "how to use Gemini for fact checking",
+        "spot fake news online",
+        "check if news is real",
+        "AI fact checking tools"
+      ],
+      "seo_score": 9,
+      "suggestions": [
+        "Consider adding 'Google Gemini' as the full product name in the first paragraph for better keyword clarity",
+        "The article could benefit from mentioning specific counter-evidence search techniques within the 3-step process"
+      ],
+      "optimised_at": "2026-09-23T02:34:10.413Z"
+    },
+    "image_v": 2,
+    "image_at": "2026-09-23T02:35:09.202Z"
+  },
+  "article_markdown": "---\ntitle: \"How to Fact-Check a Viral News Story With Gemini Before You Share It\"\nsubtitle: \"A simple three-step check that helps you spot misleading claims before you forward a story to family or group chats.\"\ncategory: \"guide\"\naudience: \"both\"\ncompany: \"Google\"\ntool: \"Gemini\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"getting-started\", \"gemini\", \"fact-checking\"]\n---\n\n# How to Fact-Check a Viral News Story With Gemini Before You Share It\n\n> **In short:** You can paste a headline or link into Gemini and ask it to help you check the claim, the source, and the counter-evidence. Gemini is a starting point for your own check, not a final verdict, and some features may require a paid plan.\n\nViral stories travel fast. By the time you see one in your family group chat, it has usually already been shared hundreds of times, sometimes with a photo, a dramatic quote, or a link that looks real but isn't. This guide walks you through a simple way to slow down, sanity-check the claim with Gemini, and decide whether it's worth passing along. You don't need to be a journalist — you just need ten quiet minutes and a willingness to ask \"is this actually true?\"\n\n## Before you start\n- A **Google account** (the same one you use for Gmail or YouTube).\n- Access to **Gemini** in a browser, or the **Gemini app** on your phone. Free is fine; some advanced features may sit behind a paid plan.\n- The **headline, link, or screenshot** of the story you want to check — copy it to your clipboard before you start.\n- About **10 minutes** of focused time. Rushing is what makes viral misinformation spread in the first place.\n\n## Step 1 — Open Gemini and paste the exact claim\n\nOpen **gemini.google.com** in a browser, or tap the Gemini app on your phone. You'll land on a clean chat screen with a text box at the bottom and a blinking cursor. If you've used Gemini before, your old chats sit on the left side; if it's your first time, the screen is mostly empty.\n\nClick or tap inside the **text box** and paste the headline or short claim exactly as you saw it. Don't rewrite it yet — you want Gemini to react to the same words that hooked you. After you paste, you'll see your text appear inside a rounded message bubble, with a small **send icon** (usually a paper airplane ✈️ or an arrow) on the right side of the box.\n\nTap that send icon. Within a few seconds, Gemini starts typing a response. You'll see words appearing one at a time, the way a person would type. If nothing happens, look for a button labeled **\"Send\"** instead, or press **Enter** on a keyboard.\n\n💬 Example: paste this — `Headline: \"Government to ban all cash payments above $200 starting next month, officials confirm.\" Is this a real, verified news story? Where did it originate?`\n\nYou'll know it worked when you see a written reply appear below your pasted headline, usually within 5–15 seconds.\n\n## Step 2 — Ask Gemini to question the source and the evidence\n\nNow you ask the follow-up that does the real fact-checking work. In the same chat box (your conversation is still open — you don't start over), type a question that pushes Gemini to look behind the claim. Plain language is fine; you don't need fancy words. Hit send the same way as before.\n\nWhat you want to see is a thoughtful reply that names **which outlets are reporting this**, **whether the claim has been confirmed by official sources**, and **what's missing from the original story** — quotes, dates, names, places. If Gemini says it can't find any reliable source, that's actually useful information; it means the claim may have started on social media without ever being verified.\n\n💬 Example: type this — `Can you find at least three reputable news outlets (not random blogs or social posts) that confirm this story? Also, does any official government source or press release back it up? If you can't confirm it, say so clearly.`\n\n**If it looks different** on your screen: some versions of Gemini respond with a long list of links and short summaries; others give a single paragraph. Both are fine — read the links, don't just trust the summary.\n\nYou'll know it worked when the reply either (a) names specific outlets you can independently check, or (b) honestly tells you it can't verify the story. Either answer is a real result — silence or vague waffle is the warning sign.\n\n## Step 3 — Ask for the counter-evidence, then check it yourself\n\nOne more prompt, same chat box. This time you're asking Gemini to play **devil's advocate** (the person who argues the opposite side, just to test the idea). Specifically, ask what would have to be true for this story to be false, and whether any trusted source is saying the opposite.\n\nWhat you should see is a reply that lists reasons to be skeptical — older stories that contradict it, fact-check articles, or simply an honest \"I don't see any counter-evidence, but here are the gaps in the original story.\" This is the moment where you stop letting Gemini think for you and start doing your own quick check.\n\nNow open a **second tab** (or another browser window) and visit one of the outlets Gemini named — or type the headline into **Google Search** yourself inside quotation marks, like `\"government to ban cash above $200\"`. The quotation marks tell Google to find that exact phrase. Look for coverage from outlets you already trust, not from sites you've never heard of.\n\n💬 Example: type this — `Play devil's advocate. What reasons are there to doubt this story? Has any fact-checker (like Snopes, PolitiFact, Reuters Fact Check, or AP Fact Check) looked at it? List the strongest counter-arguments or gaps in the evidence.`\n\n**If it looks different:** on a phone, you may need to switch between the Gemini app and your browser by swiping up from the bottom of the screen — that's normal.\n\nYou'll know it worked when you have at least one named, clickable source from a real newsroom or fact-checking organization, and you've personally visited that source yourself. If you can't find one, treat the story as unverified — and that's a perfectly fine answer.\n\n## Common mistakes\n- **Trusting the first reply without reading it.** Gemini can sound confident even when it's guessing. Always read the actual links it gives you, not just the summary text.\n- **Asking Gemini to \"just tell me if it's true.\"** That's too vague. Always ask it to **show you the sources** and the counter-evidence. The showing matters more than the verdict.\n- **Stopping after one prompt.** A single question rarely tells the whole story. The three-step check — claim, sources, counter-evidence — is what protects you. Skipping a step is how misinformation gets through.\n- **Sharing a story because a chatbot \"said it looked real.\"** Gemini is a starting point, not a court of law. If you can't find a trusted human-run outlet confirming the claim, don't forward it.\n\n## What this means for you\n- **In everyday life:** the next time a shocking headline lands in your family group chat, you'll have a 10-minute routine instead of a knee-jerk share. That alone protects the people who trust you from forwarding something false.\n- **For your business or work:** if you manage a social media account, a customer newsletter, or even an internal Slack channel, this same three-step check becomes a quick editorial gate. One minute of source-checking beats one hour of damage control after you publish something wrong.\n- **If you're just getting started:** remember that the goal isn't to prove every story true or false — it's to be honest about what you *don't* know. A message that says \"I can't verify this, so I'm not sharing it\" is one of the most powerful things you can send.\n\n## Try it now\nPick the last surprising headline you almost shared. Open Gemini, paste it in, and run all three prompts in order. Don't share anything until you've done the full check — and notice how different the story looks after ten focused minutes.",
+  "original_title": "How to fact-check a viral news story with Gemini before you share it"
+}

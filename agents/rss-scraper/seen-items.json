@@ -169,7 +169,11 @@
     "https://openai.com/index/advisory-group-on-mathematics-and-ai",
     "https://openai.com/index/higgsfield-from-prompt-to-production-with-astra",
     "https://openai.com/index/building-standards-next-phase-ai",
-    "https://openai.com/index/expanding-openai-academy-with-new-learning-paths"
+    "https://openai.com/index/expanding-openai-academy-with-new-learning-paths",
+    "https://openai.com/index/better-prompt-caching-for-gpt-6",
+    "https://openai.com/index/introducing-gpt-6-sol-and-luna",
+    "https://openai.com/index/parallel-cuts-time-and-cost-with-astra",
+    "https://openai.com/index/priorities-principles-third-party-assessments"
   ],
   "google-deepmind": [
     "https://deepmind.google/blog/fast-tracking-genetic-leads-to-reverse-cellular-aging/",
@@ -526,7 +530,8 @@
     "https://blogs.nvidia.com/blog/dsx-ready-ai-factories-power-cooling/",
     "https://blogs.nvidia.com/blog/physical-ai-halos-safety/",
     "https://blogs.nvidia.com/blog/egypt-africa-ai-ecosystem/",
-    "https://blogs.nvidia.com/blog/ai-security-agent-stack/"
+    "https://blogs.nvidia.com/blog/ai-security-agent-stack/",
+    "https://blogs.nvidia.com/blog/isaac-ros-5-0-agentic-open-source-robotics/"
   ],
   "google-workspace": [
     "http://workspaceupdates.googleblog.com/2026/06/google-vault-now-supports-retention-rules-and-litigation-holds-for-Gemini-app.html",
@@ -663,7 +668,12 @@
     "http://workspaceupdates.googleblog.com/2026/09/weekly-recap-09-18-2026.html",
     "http://workspaceupdates.googleblog.com/2026/09/new-back-to-school-features-and-learning-tools-available-in-Gemini-Notebook.html",
     "http://workspaceupdates.googleblog.com/2026/09/use-ai-to-supercharge-your-financial-analysis-with-Workday-for-Google-Sheets.html",
-    "http://workspaceupdates.googleblog.com/2026/09/new-manual-calculation-setting-in-Google-Sheets.html"
+    "http://workspaceupdates.googleblog.com/2026/09/new-manual-calculation-setting-in-Google-Sheets.html",
+    "http://workspaceupdates.googleblog.com/2026/09/new-google-meet-take-notes-for-me-settings-for-admins-and-end-users-take-effect-September-29th.html",
+    "http://workspaceupdates.googleblog.com/2026/09/quick-notes-in-take-notes-for-me.html",
+    "http://workspaceupdates.googleblog.com/2026/09/new-confluence-app-for-google-chat.html",
+    "http://workspaceupdates.googleblog.com/2026/09/manually-reorder-and-custom-sort-pivot.html",
+    "http://workspaceupdates.googleblog.com/2026/09/study-notebooks-in-gemini-are-now-available-for-Google-Workspace-accounts.html"
   ],
   "google-research": [
     "https://research.google/blog/towards-passive-heart-health-monitoring-via-smartphone-camera/",
@@ -749,8 +759,6 @@
     "https://github.blog/ai-and-ml/should-you-read-the-code-is-rag-dead-and-did-skills-kill-mcp/"
   ],
   "aws-ml": [
-    "https://aws.amazon.com/blogs/machine-learning/spot-trends-faster-sort-smarter-unlocking-sparklines-and-custom-sort-in-amazon-quick/",
-    "https://aws.amazon.com/blogs/machine-learning/extract-data-with-on-demand-and-batch-pipelines-dynamically/",
     "https://aws.amazon.com/blogs/machine-learning/evaluate-ai-agents-systematically-with-agent-evalkit/",
     "https://aws.amazon.com/blogs/machine-learning/optimize-blueprint-extraction-accuracy-in-amazon-bedrock-data-automation/",
     "https://aws.amazon.com/blogs/machine-learning/how-frontier-teams-are-reinventing-ai-native-development/",
@@ -1042,7 +1050,15 @@
     "https://aws.amazon.com/blogs/machine-learning/run-positron-on-amazon-sagemaker-ai-for-data-science-workflows/",
     "https://aws.amazon.com/blogs/machine-learning/how-benchling-secured-multi-tenant-ai-agents-with-amazon-bedrock-agentcore/",
     "https://aws.amazon.com/blogs/machine-learning/how-bmw-group-detects-cost-anomalies-across-14000-cloud-accounts/",
-    "https://aws.amazon.com/blogs/machine-learning/reducing-medical-claims-review-time-with-ai-on-aws-the-exl-medical-idp-solution/"
+    "https://aws.amazon.com/blogs/machine-learning/reducing-medical-claims-review-time-with-ai-on-aws-the-exl-medical-idp-solution/",
+    "https://aws.amazon.com/blogs/machine-learning/bring-more-intelligence-to-everyday-work-with-gpt-6-sol-and-gpt-6-luna-on-amazon-bedrock/",
+    "https://aws.amazon.com/blogs/machine-learning/evaluate-skill-equipped-agents-with-strands-evals-and-amazon-bedrock-agentcore/",
+    "https://aws.amazon.com/blogs/machine-learning/how-reactiv-automates-mobile-commerce-80-faster-with-amazon-bedrock-agentcore/",
+    "https://aws.amazon.com/blogs/machine-learning/right-size-generative-ai-endpoints-with-concurrency-sweeps-on-amazon-sagemaker-ai/",
+    "https://aws.amazon.com/blogs/machine-learning/how-trane-gets-building-insights-60x-faster-with-amazon-bedrock-agentcore/",
+    "https://aws.amazon.com/blogs/machine-learning/claude-opus-5-5-is-now-available-on-aws/",
+    "https://aws.amazon.com/blogs/machine-learning/how-tata-elxsi-detects-industrial-safety-risks-in-seconds-on-aws/",
+    "https://aws.amazon.com/blogs/machine-learning/extending-public-sector-intelligence-with-agentforce-and-aws/"
   ],
   "mistral-ai": [
     "https://mistral.ai/news/ai-now-summit-2026/",
@@ -1338,7 +1354,10 @@
     "https://news.sap.com/2026/09/sap-strategic-leader-2026-fosway-9-grid-cloud-hr/",
     "https://news.sap.com/2026/09/colombina-sap-faster-delivery-stronger-security-ai-readiness/",
     "https://news.sap.com/2026/09/sap-cx-dominates-g2-fall-grid-reports-2026/",
-    "https://news.sap.com/2026/09/essilorluxottica-from-eyewear-to-smart-wearables/"
+    "https://news.sap.com/2026/09/essilorluxottica-from-eyewear-to-smart-wearables/",
+    "https://news.sap.com/2026/09/autonomous-enterprise-business-transformation-management-solutions-sap-ai-agents-work-at-scale/",
+    "https://news.sap.com/2026/09/future-of-service-delivery-ai-driven-enterprise/",
+    "https://news.sap.com/2026/09/when-ai-moves-from-answers-to-action/"
   ],
   "databricks": [
     "https://www.databricks.com/blog/celebrating-winners-2026-built-databricks-startup-challenge",
@@ -1517,7 +1536,10 @@
     "https://www.databricks.com/blog/enabling-secure-productive-work-personal-devices",
     "https://www.databricks.com/blog/radar-catch-gray-failures-anomaly-detection",
     "https://www.databricks.com/blog/data-ontology-defined-context-layer-your-ai-agents-are-missing",
-    "https://www.databricks.com/blog/what-ai-analytics-why-it-only-works-governed-data"
+    "https://www.databricks.com/blog/what-ai-analytics-why-it-only-works-governed-data",
+    "https://www.databricks.com/blog/genie-one-mcp-give-any-ai-agent-right-business-context",
+    "https://www.databricks.com/blog/genie-one-mcp-now-generally-available",
+    "https://www.databricks.com/blog/database-branching"
   ],
   "snowflake": [
     "https://www.snowflake.com/content/snowflake-site/global/en/blog/snowflake-postgres-ml-online-feature-store",
@@ -1582,7 +1604,9 @@
     "https://www.snowflake.com/content/snowflake-site/global/en/blog/per-user-quotas-ai-generally-available",
     "https://www.snowflake.com/content/snowflake-site/global/en/blog/snowflake-integration-stackit-data-sovereignty",
     "https://www.snowflake.com/content/snowflake-site/global/en/blog/snowpipe-streaming-elastic-channels-ga",
-    "https://www.snowflake.com/content/snowflake-site/global/en/blog/stop-prompting-start-employing-agentic-enterprise"
+    "https://www.snowflake.com/content/snowflake-site/global/en/blog/stop-prompting-start-employing-agentic-enterprise",
+    "https://www.snowflake.com/content/snowflake-site/global/en/blog/claude-opus-5-5-cortex-ai",
+    "https://www.snowflake.com/content/snowflake-site/global/en/blog/ai-agent-observability-monitor-debug-optimize-llm-applications"
   ],
   "together": [
     "https://www.together.ai/blog/announcing-our-series-c",
@@ -1620,7 +1644,8 @@
     "https://www.together.ai/blog/to-infinity-and-beyond-thunderkittens-now-on-nvidia-vera-rubin-nvl72",
     "https://www.together.ai/blog/together-ai-expands-fine-tuning-service-with-more-models-live-metrics-and-finer-controls",
     "https://www.together.ai/blog/migrating-from-closed-to-open-source-models",
-    "https://www.together.ai/blog/global-fintech-scales-coding-agent-traffic-with-dedicated-model-inference"
+    "https://www.together.ai/blog/global-fintech-scales-coding-agent-traffic-with-dedicated-model-inference",
+    "https://www.together.ai/blog/canary-rollouts-upgrade-models-in-production-without-downtime"
   ],
   "pinecone": [
     "https://www.pinecone.io/blog/generating-test-data-for-pinecone/",
@@ -1913,7 +1938,8 @@
     "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9VTm5ycDBuZGpxTGFqc2RqaTBKa3p4TDllNTFqcnBiRG1PdEZTNmVCZU1uNW91bTVrSkJuV0RQa2dMOHRCenZuWUZZUDRndHR4TWlGeDV3?oc=5",
     "https://news.google.com/rss/articles/CBMiSEFVX3lxTE03b2gwY1ctcXFveVRYanpzbnRxUlJ1emhYN05MYTFhM1FzcjdpQnNCdGdhOWNVdXVwYU95Q1ViZ0l0VWRSbXc3UQ?oc=5",
     "https://news.google.com/rss/articles/CBMihwFBVV95cUxNcjhGZUo5RUdqbURXM2ZWZWZodG1vdVNaNEZBNlpBNmI0RUx3bUxaYWJEU2ZkOVBfR2w3Mm84OW5UMWFhV0o3bXBRbVVsdjFWWVVOMUNZOFNfbVJWbHZuaWtKd2JmZHdERUNRTm9GbVBPejVNZXN2eEpGX1QxWXNlTm1iX1gxRm8?oc=5",
-    "https://news.google.com/rss/articles/CBMijgFBVV95cUxNMkxFcHJqSXZjekVScU54cmw4cWNUMXphZXcwU0ZuZ2JIdzVPbjZLTkpIYnR6ZUVXMTFQMExWMlRMemF5X056cmxfVWtxcHBnOEtwY3BsT0tVaXB1SDBQbU1hUnNOMFJDcjdxSzFIVEVtN2lXOXljemtyOHpEM0JkUlhFY2VpY2NudHNmZWt3?oc=5"
+    "https://news.google.com/rss/articles/CBMijgFBVV95cUxNMkxFcHJqSXZjekVScU54cmw4cWNUMXphZXcwU0ZuZ2JIdzVPbjZLTkpIYnR6ZUVXMTFQMExWMlRMemF5X056cmxfVWtxcHBnOEtwY3BsT0tVaXB1SDBQbU1hUnNOMFJDcjdxSzFIVEVtN2lXOXljemtyOHpEM0JkUlhFY2VpY2NudHNmZWt3?oc=5",
+    "https://news.google.com/rss/articles/CBMiekFVX3lxTE56UGlWTFBiTmozRTJTZXF0bFNzUFVIMnhNamJMTmtveGNOMm9EYmRhMHZ3UkRsa1BZRzZSTHpLdkNnX1RvVVZ1V1JUNEQycmQxUkpHR2JvQU41RXJ3eS1wQ1VrSFdFdXB3SW5ZNkVKeWZqZldzbXg0TDh3?oc=5"
   ],
   "deepseek-news": [
     "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9zbUkzc1FDYmZIVjVRdW5wakpEOEgwSHFHZ05zNDhZLWwydGFjcEVtTVdEZW50RWw4MF9sVlYtMDhOb3RNdDdLM1VDOGgxTEZOWnRXZXhvTGVVQ25Rbk1uRg?oc=5",
@@ -2249,7 +2275,11 @@
     "https://picsart.com/blog/ai-image-models-comparison/",
     "https://picsart.com/blog/how-to-clip-a-youtube-video/",
     "https://picsart.com/blog/minimax-music-v3-explained/",
-    "https://picsart.com/blog/how-to-use-seedream-5-pro/"
+    "https://picsart.com/blog/how-to-use-seedream-5-pro/",
+    "https://picsart.com/blog/seedream-workflow-examples/",
+    "https://picsart.com/blog/introducing-ai-ad-strategist-agent/",
+    "https://picsart.com/blog/how-to-analyze-a-pdf-with-ai/",
+    "https://picsart.com/blog/how-to-make-an-ad-campaign-with-ai-agent/"
   ],
   "zapier-blog": [
     "https://zapier.com/blog/stay-focused-avoid-distractions",
@@ -2343,7 +2373,11 @@
     "https://zapier.com/blog/best-hr-software-for-small-businesses",
     "https://zapier.com/blog/conversational-ai-platforms",
     "https://zapier.com/blog/best-marketing-automation-software",
-    "https://zapier.com/blog/ai-coding-survey"
+    "https://zapier.com/blog/ai-coding-survey",
+    "https://zapier.com/blog/automation-vs-ai",
+    "https://zapier.com/blog/claude-ai",
+    "https://zapier.com/blog/ai-governance-for-small-teams",
+    "https://zapier.com/blog/ai-in-hr"
   ],
   "dropbox-blog": [
     "  https://blog.dropbox.com/topics/company/dropbox-announces-q1-2026-results ",
@@ -2410,6 +2444,8 @@
     "https://news.samsung.com/global/samsung-and-mistral-ai-announce-strategic-partnership-for-intelligence-driven-semiconductor-infrastructure",
     "https://news.samsung.com/global/samsung-and-verizon-complete-successful-isac-trial-over-virtualized-network-at-global-sports-event",
     "https://news.samsung.com/global/interview-the-people-behind-the-galaxy-z-series-camera-innovations-%e2%91%a1-how-portrait-video-recreates-the-look-of-professional-camera-lenses",
-    "https://news.samsung.com/global/samsung-begins-official-rollout-of-one-ui-9-bringing-the-latest-galaxy-experiences-to-more-devices"
+    "https://news.samsung.com/global/samsung-begins-official-rollout-of-one-ui-9-bringing-the-latest-galaxy-experiences-to-more-devices",
+    "https://news.samsung.com/global/bringing-fantasy-characters-to-life-samsung-spatial-signage-transforms-tokyo-game-show-2026",
+    "https://news.samsung.com/global/samsung-opens-built-in-appliance-showroom-in-germany-to-advance-european-market-expansion"
   ]
 }

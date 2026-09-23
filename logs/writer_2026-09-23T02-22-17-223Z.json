@@ -1,0 +1,60 @@
+{
+  "started_at": "2026-09-23T02:19:47.094Z",
+  "drafts_total": 4,
+  "articles_written": 4,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 0,
+  "merged_total": 0,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "total_cost_usd": 0.0422829,
+  "by_article": [
+    {
+      "draft": "2026-09-23T02-19-43-916Z_picsart_Score_ad_creative_with_Vera__an_AI_ad_strategist_p.json",
+      "writer_output": "WRITER_2026-09-23T02-19-43-916Z_picsart_Score_ad_creative_with_Vera__an_AI_ad_strategist_p.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.00899514,
+      "duration_ms": 23212,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-09-23T02-19-43-916Z_picsart_How_to_make_an_ad_campaign_with_Aura__an_AI_creati.json",
+      "writer_output": "WRITER_2026-09-23T02-19-43-916Z_picsart_How_to_make_an_ad_campaign_with_Aura__an_AI_creati.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.0098358,
+      "duration_ms": 28863,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-09-23T02-19-43-916Z_picsart_How_to_analyze_a_PDF_with_AI_in_Picsart_Flow.json",
+      "writer_output": "WRITER_2026-09-23T02-19-43-916Z_picsart_How_to_analyze_a_PDF_with_AI_in_Picsart_Flow.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.01250928,
+      "duration_ms": 50523,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-09-23T02-19-43-916Z_aws-ml_Claude_Opus_5_5_is_now_available_on_AWS.json",
+      "writer_output": "WRITER_2026-09-23T02-19-43-916Z_aws-ml_Claude_Opus_5_5_is_now_available_on_AWS.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.00992838,
+      "duration_ms": 37922,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    }
+  ],
+  "finished_at": "2026-09-23T02:22:17.222Z",
+  "duration_seconds": 150.128
+}

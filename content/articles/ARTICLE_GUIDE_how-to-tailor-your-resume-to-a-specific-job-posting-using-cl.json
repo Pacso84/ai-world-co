@@ -1,0 +1,62 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "how-to-tailor-your-resume-to-a-specific-job-posting-using-cl",
+    "company": "Anthropic",
+    "tool": "Claude",
+    "icon": "📄",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-09-23T02:30:57.604Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00672984,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-09-23T02:32:41.437Z",
+    "slug": "how-to-tailor-your-resume-to-a-job-posting-using-claude",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1491
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Excellent guide with clear structure, practical detail at every step, and warm non-judgmental tone throughout. The actionable \"you'll know it worked when\" checkpoints and \"Common mistakes\" section add real value for beginners.",
+      "_aiCost": 0.0021276,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "image_v": 2,
+    "image_at": "2026-09-23T02:33:32.969Z",
+    "seo": {
+      "meta_description": "Learn to use Claude to tailor your resume to any job posting in 15 minutes. Match hiring manager language and get past ATS screens.",
+      "keywords": [
+        "how to tailor resume to job posting",
+        "resume optimization with AI",
+        "Claude resume help",
+        "resume keyword matching",
+        "ATS resume tips",
+        "job application resume advice",
+        "tailor resume to job description",
+        "AI resume writer free"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more specific long-tail keywords like 'resume bullet point rewrite' and 'job posting keyword extraction'",
+        "Consider adding schema markup for how-to articles to improve SERP appearance",
+        "Include the estimated read time (15 minutes) in the meta description for better CTR"
+      ],
+      "optimised_at": "2026-09-23T02:34:21.589Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"How to Tailor Your Resume to a Job Posting Using Claude\"\nsubtitle: \"A practical 15-minute workflow that mirrors the language of the job ad so your resume passes the first screen\"\ncategory: \"guide\"\naudience: \"personal\"\ncompany: \"Anthropic\"\ntool: \"Claude\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"getting-started\", \"claude\", \"resume\", \"job-search\"]\n---\n\n# How to Tailor Your Resume to a Job Posting Using Claude\n\n> **In short:** Paste your resume and one job posting into Claude, ask it to find the matching language, then have it rewrite your bullet points so they read like the ad. You stay in control of what actually changes.\n\nBy the end of this guide you'll have a tailored version of your resume that uses the same words the hiring manager is looking for. This is for anyone who has been sending out the same generic resume and wondering why the responses feel thin — the fix is usually about words, not about you.\n\n## Before you start\n- A free Claude account at claude.ai (sign up with an email — takes about a minute).\n- A digital copy of your current resume (a Word doc, Google Doc, or plain text — anything you can copy from).\n- The full text of one specific job posting (the more complete, the better the result).\n- About 15 to 20 minutes of focused time.\n\n## Step 1 — Save the job posting as plain text\nOpen the job posting you care about. Read it once normally, then select the whole thing — the title, the responsibilities, the requirements, the \"about us\" paragraph at the bottom. Copy it (Ctrl+C on Windows, Cmd+C on Mac) and paste it into a plain text file (Notepad on Windows, TextEdit on Mac in plain mode) or a blank Google Doc. Save it somewhere you can find in two clicks. Don't paste it into Claude yet — first you want one clean file that holds everything you'll feed the assistant.\n\n💬 Example: a one-line note at the top of the file, like \"Marketing Coordinator role — Bay Area Robotics — pasted Sept 10\".\n\nIf the posting is behind a login wall or only loads partly, copy what you can see; partial postings still work, just expect a softer match later. You'll know it worked when you have one file with the full ad text and nothing else in it.\n\n## Step 2 — Put your resume into the same file\nOpen your current resume, select everything (Ctrl+A or Cmd+A), and copy it. Paste it into the same file, below the job posting, with a clear divider line between them — something like \"— MY RESUME BELOW —\" works well. This single file becomes the working document Claude will read in the next step, and keeping both pieces together means you don't lose track of which job you're tailoring for. If you'd rather keep two separate files, that's fine too — just remember which one is which when you start.\n\nYou'll know it worked when you can scroll down and see both blocks of text in one place, clearly separated. Take a breath here — the prep work is the part most people skip, and it's what makes the next steps land cleanly.\n\n## Step 3 — Open Claude and start a fresh chat\nGo to claude.ai and start a new conversation (look for a button like \"New chat\" or a + icon, usually in the left sidebar). A blank message box appears at the bottom of the screen. Think of the chat box as a notepad you can talk to: you type at the bottom, and the assistant's reply shows up above. Pick the most recent Claude model the page offers — for everyday writing tasks like this one, any current model does the job well. You don't need a paid plan unless you want longer documents or more chats per day.\n\nYou'll know it worked when the screen shows an empty conversation with just your input box and a send button. If you see a leftover conversation from yesterday, start a new one so the assistant doesn't get confused by old context.\n\n## Step 4 — Paste the job posting and your resume into the chat\nDrag your text file onto the chat box, or click an attachment icon (it often looks like a paperclip or a plus sign near the message box) and pick the file. Some browsers let you paste text directly with Ctrl+V or Cmd+V — that works just as well. Add a short line after the file explaining what you want, in plain words. Claude reads attachments and pasted text the same way, so use whichever feels easier to you.\n\n💬 Example: paste the file, then type \"Here is one job posting and my current resume. Read both. In your next message, list the top 10 phrases from the job ad that I should mirror in my resume, and tell me which of my current bullet points already match.\"\n\nIf your interface doesn't have an attachment icon, just paste both blocks of text into the message box with a line of explanation between them. You'll know it worked when Claude responds by listing the key phrases it pulled out — usually things like \"stakeholder management\", \"cross-functional teams\", or specific tool names from the ad.\n\n## Step 5 — Ask Claude to rewrite your weakest bullets\nNow that Claude has the ad and your resume in mind, point it at the gap. The job posting lists ten things; your resume only talks about six of them. Ask the assistant to rewrite three to five of your existing bullet points so they use the same language as the ad, without inventing experience you don't actually have. This is the part where Claude is genuinely useful: a fresh set of eyes that notices which phrases you're leaving out.\n\n💬 Example: \"Now rewrite my bullets about 'project coordination' and 'vendor management' to use the exact phrases from the job ad where possible. Keep the facts true to what I actually did. If a bullet needs new wording, give me two versions so I can pick.\"\n\nIf Claude rewrites something that stretches the truth, push back: type \"Make that more honest — I didn't lead it, I supported it.\" Pause here and read every rewrite word by word. You'll know it worked when each new bullet still describes something you genuinely did, just described in the words the job ad is using.\n\n## Step 6 — Update your resume file with the new wording\nOpen your real resume file (the original, not the working text). Replace the old bullets with the Claude versions you chose, one by one. Save the file. Rename it to include the company name or job title so future-you knows which version is which — something like \"Resume — Marketing Coordinator — Bay Area Robotics\" is plenty. Then read the whole resume out loud once. If any sentence sounds like a robot wrote it, rewrite it in your own voice; the goal is for the resume to sound like you on your best day, not like an AI.\n\nYou'll know it worked when you can open the file and every bullet reads naturally, uses words that appear in the job ad, and describes things you actually did. Send the tailored version with confidence — that's the whole point.\n\n## Common mistakes\n- **Letting Claude invent experience.** It will sometimes sound confident about skills you don't have. Always ask \"is this a fact I actually mentioned, or did you add it?\" and cut anything new.\n- **Tailoring without reading the result.** If you copy-paste the new bullets straight into your resume without reading them, the wrong wording can sneak through. Read every line once before saving.\n- **Forgetting to rename the file.** If you keep overwriting your master resume, you'll lose the version that worked for a different job. Save a new file every time.\n\n## What this means for you\n- **In everyday life:** Even if you're not job hunting right now, the same trick — \"read what they wrote, mirror their words\" — works for cover letters, school applications, and pitch emails. The tool is reusable; the skill is the mirroring.\n- **For your business or work:** When you write proposals or client updates, paste the brief or last email into Claude alongside your draft and ask it to align the language. Clients feel heard when you use their words.\n- **If you're just getting started:** Tailor one resume to one job ad this week. Don't try to build a system yet — one good run teaches you more than ten ideas.\n\n## Try it now\nPick one job posting you've been ignoring because your resume didn't quite fit. Spend ten minutes running it through Steps 1 to 6 above. By the end, you'll have a tailored file ready to send — and a workflow you can reuse every time.",
+  "original_title": "How to tailor your resume to a specific job posting using Claude"
+}
