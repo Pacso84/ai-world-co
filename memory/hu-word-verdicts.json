@@ -116,6 +116,7 @@
     "anyagodról",
     "anyagok",
     "anyagokat",
+    "anyagokban",
     "anyagokból",
     "anyagokhoz",
     "anyagokkal",
@@ -492,6 +493,7 @@
     "csoportcsetben",
     "csv-ként",
     "csven",
+    "csúcs-claude-ról",
     "cátmezőbe",
     "cátmeződ",
     "cátmezőt",
@@ -540,6 +542,7 @@
     "designerre",
     "designerrel",
     "designert",
+    "designerért",
     "designjukat",
     "designokat",
     "deszaturált",
@@ -991,6 +994,7 @@
     "hippocampusra",
     "hircsikked",
     "hitelességet",
+    "hivataloskodni",
     "hiányosságok",
     "hiányosságokat",
     "hiányosságokról",
@@ -1281,6 +1285,7 @@
     "kreatívabb",
     "kreatívabban",
     "kreatívat",
+    "kreatívplatformok",
     "kriptikus",
     "kriptóban",
     "krisztákba",
@@ -1605,6 +1610,7 @@
     "munkahelyidre",
     "munkahelyit",
     "munkameetingen",
+    "munkaszöveget",
     "munkaviszonyot",
     "myactivity",
     "máre",
@@ -5400,11 +5406,26 @@
       "correct": "vond",
       "at": "2026-09-22",
       "mondattal": true
+    },
+    "vizsgá": {
+      "correct": "vizsgához",
+      "at": "2026-09-23",
+      "mondattal": true
+    },
+    "számbavegyük": {
+      "correct": "számba vegyük",
+      "at": "2026-09-23",
+      "mondattal": true
+    },
+    "higgyd": {
+      "correct": "hidd el",
+      "at": "2026-09-23",
+      "mondattal": true
     }
   },
   "scan": {
-    "at": "2026-09-22",
-    "files": 1023,
-    "candidates": 0
+    "at": "2026-09-23",
+    "files": 1029,
+    "candidates": 9
   }
 }
