@@ -62,12 +62,12 @@ export const KAROK = ['foto', 'vilagos', 'sotet'];
 export const STILUS = {
   vilagos: {
     hatter: '#EFE9DC', lap: '#FFFFFF', tinta: '#14120F', halvany: '#5A5447',
-    go: '#265C40', warn: '#993A14', hajszal: '#C3B9A4', kepAtl: 0.62,
+    go: '#265C40', warn: '#993A14', hajszal: '#C3B9A4', kepAtl: 1,
     panel: '#FBF8F2', panelAtl: 0.90
   },
   sotet: {
     hatter: '#121417', lap: '#1C2127', tinta: '#EDEAE3', halvany: '#A3ACB6',
-    go: '#3FC191', warn: '#F0894A', hajszal: '#2E343C', kepAtl: 0.52,
+    go: '#3FC191', warn: '#F0894A', hajszal: '#2E343C', kepAtl: 1,
     panel: '#0F1318', panelAtl: 0.90
   }
 };
@@ -219,8 +219,15 @@ export const LEPES_MAX_DB = 5;
 // 80-ról 46-ra csökkent, hogy a kép LÁTSZÓDJON; a 0,0000%-os él-sűrűséget
 // erre az értékre ÚJRAMÉRTÜK 20 valódi borítón, hitelesített mérővel.
 // Aki tovább csökkenti, mérje újra — teszt őrzi.
-export const HATTER_ELMOSAS = 46;
-export const HATTER_TELITETTSEG = 1.35;   // a szín LÁTSZÓDJON
+// ⚠️ NINCS ELMOSÁS — és ez MÉRÉSEN alapul, nem ízlésen.
+// Az elmosás azt hivatott takarni, hogy a gépi borítókon néha fordított,
+// értelmetlen betűk vannak. Csakhogy UGYANEZ A FÁJL megy ki élesen a
+// cikkoldalon (build.js, <img src="/assets/images/...">) és a mostani
+// fotó-poszton is. Amit itt eltakartunk, az máshol amúgy is kint van —
+// az elmosás tehát semmit nem védett, csak elvette a képet.
+// A cím olvashatóságát a GLÓRIA adja (lentebb), nem a homály.
+export const HATTER_ELMOSAS = 0;
+export const HATTER_TELITETTSEG = 1.12;   // éles képnél a 1,35 már rikító
 
 // A fejléc-csík. A szélessége SZÁMOLT, nem beírt szám: az első
 // változatomban fix 372 px állt itt, és a felirat kilógott belőle minden
@@ -348,10 +355,14 @@ export function poszterSvg({ cim, lepesek, stilus, splitFn, logoBelso = '', kell
   // ── CÍM ───────────────────────────────────────────────────────────
   const cimNyers = nagybetusHorog(String(cim || '').replace(/^How to\s+/i, '').trim());
   let cimSorok = tordel(cimNyers, 24, 3);
-  let kar = 24;
-  while (cimSorok.join(' ').length < cimNyers.length && kar < 38) {
-    kar += 2;
-    cimSorok = tordel(cimNyers, kar, 3);
+  // ⚠️ EZ A CÍM TÖRDELÉSI SZÉLESSÉGE karakterben. Régen `kar` volt a neve,
+  // és a poszterSvg TELJES törzsére leárnyékolta az exportált kar(slug)
+  // függvényt — az első kar() hívás itt pont a „Cannot access before
+  // initialization" alakot kapta volna, amiből kettő már napokra megvezetett.
+  let cimSzel = 24;
+  while (cimSorok.join(' ').length < cimNyers.length && cimSzel < 38) {
+    cimSzel += 2;
+    cimSorok = tordel(cimNyers, cimSzel, 3);
   }
   if (cimSorok.join(' ').length < cimNyers.length) {
     cimSorok[cimSorok.length - 1] = rovid(cimSorok[cimSorok.length - 1] + ' x', 999);
@@ -382,7 +393,12 @@ export function poszterSvg({ cim, lepesek, stilus, splitFn, logoBelso = '', kell
   // használja — így a poszterSvg MINDEN infografikás cikknél kivételt
   // dobott. A képgyártó elkapta, figyelmeztetést írt, és a RÉGI fájlt
   // hagyta a helyén: kívülről úgy nézett ki, mintha semmi nem változna.
-  const kellAlja = kellVan ? kellY + (kellLista.length - 1) * 38 : cimAlja;
+  // ⚠️ A NEMLÉTEZŐ „You'll need" sáv helyére NEM a cím alja jön, hanem a
+  // PANEL TETEJE. Korábban `cimAlja` volt itt, és rövid címnél a lépések
+  // a 520 pixeles fotósávba csúsztak: sötét betű a fényképen. Elmosott
+  // háttéren ez alig látszott, élesen viszont azonnal — a hibát nem a
+  // mérőszám fogta meg, hanem hogy RÁNÉZTEM a kész képre.
+  const kellAlja = kellVan ? kellY + (kellLista.length - 1) * 38 : panelY;
 
   // ── LÉPÉSEK ───────────────────────────────────────────────────────
   let lathato = (lepesek || []).slice(0, LEPES_MAX_DB);
@@ -396,7 +412,7 @@ export function poszterSvg({ cim, lepesek, stilus, splitFn, logoBelso = '', kell
   const hibaMagas = hiba ? 80 : 0;
   const hibaY = labY - 26 - hibaMagas;
 
-  const lepesTeteje = (kellVan ? kellAlja + 72 : cimAlja + 94);
+  const lepesTeteje = (kellVan ? kellAlja + 72 : panelY + 94);
   const lepesHely = hibaY - 26 - lepesTeteje;
   // ⚠️ A SOR NEM MEHET 88 ALÁ. Amikor a fotó-sáv elvette a helyet, a
   // kétsoros lépések EGYMÁSBA CSÚSZTAK. Ha nem fér ki mind az öt,
@@ -432,25 +448,31 @@ export function poszterSvg({ cim, lepesek, stilus, splitFn, logoBelso = '', kell
   ${kellLista.map((x, i) => `<text x="${M + 196}" y="${kellY + i * 38 - (kellLista.length - 1) * 0}" font-family="${BETU}" font-size="28" font-weight="600" fill="${sz.tinta}">${xmlEsc(x)}</text>`).join('\n  ')}` : '';
 
 
+  // Fehér szöveg éles fotón: előbb sötét glória, aztán a fehér betű.
+  // A `vastag` a vonalvastagság — a betűméret negyede körül jó.
+  const glorias = (attrs, tartalom, vastag) =>
+    `<text ${attrs} fill="#000000" fill-opacity="0.5" stroke="#000000" stroke-opacity="0.5" stroke-width="${vastag}" stroke-linejoin="round">${tartalom}</text>
+  <text ${attrs} fill="#FFFFFF">${tartalom}</text>`;
+
   return `<svg width="${W}" height="${H}" xmlns="http://www.w3.org/2000/svg">
   <defs><linearGradient id="fatyol" x1="0" y1="0" x2="0" y2="1">
-    <stop offset="0%" stop-color="#000000" stop-opacity="0.06"/>
+    <stop offset="0%" stop-color="#000000" stop-opacity="0.30"/>
     <stop offset="55%" stop-color="#000000" stop-opacity="0.26"/>
-    <stop offset="100%" stop-color="#000000" stop-opacity="0.50"/>
+    <stop offset="100%" stop-color="#000000" stop-opacity="0.48"/>
   </linearGradient></defs>
   <rect x="0" y="0" width="${W}" height="${panelY}" fill="url(#fatyol)"/>
   <rect x="0" y="${panelY}" width="${W}" height="${labY - panelY}" fill="${sz.panel}"/>
   <rect x="0" y="0" width="${W}" height="10" fill="${sz.go}"/>
 
-  <text x="${M}" y="${fejY}" font-family="${BETU}" font-size="30" font-weight="900" fill="#FFFFFF" letter-spacing="1">aiworldhq.com</text>
-  <text x="${M + Math.round(13 * 30 * BETU_ARANY) + 24}" y="${fejY}" font-family="${BETU}" font-size="28" font-weight="600" fill="#FFFFFF" opacity="0.82">step-by-step, free to read</text>
+  ${glorias(`x="${M}" y="${fejY}" font-family="${BETU}" font-size="30" font-weight="900" letter-spacing="1"`, 'aiworldhq.com', 6)}
+  ${glorias(`x="${M + Math.round(13 * 30 * BETU_ARANY) + 24}" y="${fejY}" font-family="${BETU}" font-size="28" font-weight="600" opacity="0.82"`, 'step-by-step, free to read', 6)}
   ${logoBelso
     ? `<rect x="${JOBB - 92}" y="${fejY - 58}" width="92" height="92" rx="20" fill="${sz.lap}"/>
   ${logoSvg(logoBelso, { x: JOBB - 70, y: fejY - 36, meret: 48, szin: sz.tinta })}`
     : `<rect x="${JOBB - 84}" y="${fejY - 46}" width="84" height="52" rx="10" fill="#FFFFFF"/>
   <text x="${JOBB - 42}" y="${fejY - 8}" text-anchor="middle" font-family="${BETU}" font-size="28" font-weight="900" fill="#14120F">AI</text>`}
 
-  <text font-family="${BETU}" font-size="${CIM_M}" font-weight="900" fill="#FFFFFF">${cimSorok.map((l, i) => `<tspan x="${M}" y="${cimTeteje + i * CIM_SOR}">${xmlEsc(l)}</tspan>`).join('')}</text>
+  ${glorias(`font-family="${BETU}" font-size="${CIM_M}" font-weight="900"`, cimSorok.map((l, i) => `<tspan x="${M}" y="${cimTeteje + i * CIM_SOR}">${xmlEsc(l)}</tspan>`).join(''), 10)}
 
 
   ${kellSvg}

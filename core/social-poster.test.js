@@ -197,16 +197,81 @@ t('a hír-cikkek tényleg kimaradnak a mintából', () => {
 });
 
 // ===================================================================
-// 5. A HÁTTÉRKÉP KÉT SZÁMA BIZTONSÁGI PARAMÉTER
+// 5. A HÁTTÉRKÉP ÉLES — ÉS A CÍM MÉGIS OLVASHATÓ
 // ===================================================================
-t('🔑 az elmosás nem gyengíthető észrevétlenül', () => {
-  // A borítóink gépi képek, és elgépelt feliratot tartalmazhatnak
-  // („perrplexity", két r-rel). Az elmosás az, ami ezt olvashatatlanná
-  // teszi. A user kérésére 80-ról 46-ra csökkent, hogy a kép látszódjon;
-  // 46-ra ÚJRAMÉRVE: 20 valódi borítón 0,0000% éles átmenet, és a mérő
-  // hitelesítve (elmosatlan képen 11,21%). Aki tovább csökkenti, mérje újra.
-  assert.ok(HATTER_ELMOSAS >= 40, 'túl gyenge elmosás: ' + HATTER_ELMOSAS);
+t('🔑 a háttérkép éles marad', () => {
+  // Régen elmostuk, mert a gépi borítókon néha zagyva felirat van
+  // („perrplexity", két r-rel). Az indok MEGDŐLT: ugyanez a fájl élesen
+  // megy ki a cikkoldalon (build.js <img src="/assets/images/...">) és a
+  // mostani fotó-poszton is — az elmosás tehát semmit nem takart.
+  // ⚠️ A Reel háttere MÁS eset (short-video.js): ott a szöveg a TELJES
+  // képen fut végig, ezért ott az elmosás MARAD. Ne vidd át ezt a döntést.
+  assert.equal(HATTER_ELMOSAS, 0, 'a képnek élesnek kell lennie: ' + HATTER_ELMOSAS);
   assert.ok(HATTER_TELITETTSEG <= 1.5, 'túlzott telítettség: ' + HATTER_TELITETTSEG);
+});
+
+t('🔑 minden fehér szöveg alatt ott a sötét glória', () => {
+  // 60 valódi borítón mérve: éles képen, glória NÉLKÜL a legrosszabb
+  // borító 1,3:1 kontrasztot adott a fehér címnek — a nagy betű alsó
+  // határa 3:1, tehát 60-ból 55 olvashatatlan lett volna. Erősebb fátyol
+  // elvenné a képet; a glória viszont a KÉPTŐL FÜGGETLENÜL garantál sötét
+  // keretet minden betű köré. Ez a poszter egyetlen olvashatóság-védelme.
+  const svg = poszterSvg({
+    cim: 'How to keep your notes tidy with an AI assistant',
+    lepesek: ['Open the app and sign in', 'Paste your notes into the box'],
+    kellenek: ['A free account'], hibak: ['People skip the first step'],
+    stilus: STILUS.vilagos, splitFn: x => [x], logoBelso: ''
+  });
+  // a glória: fekete kitöltés + vastag fekete vonal, UGYANAZZAL a szöveggel
+  const glorias = (svg.match(/<text [^>]*stroke="#000000"[^>]*>/g) || []).length;
+  const fehér = (svg.match(/<text [^>]*fill="#FFFFFF"[^>]*>/g) || []).length;
+  assert.ok(fehér >= 3, 'kevesebb fehér szöveg, mint várt: ' + fehér);
+  assert.equal(glorias, fehér, 'nem minden fehér szöveg kapott glóriát: '
+    + fehér + ' fehér, ' + glorias + ' glória');
+  // ⚠️ `paint-order` SZÁNDÉKOSAN nincs: a régebbi librsvg nem ismeri, és
+  // NÉMÁN a vonalat rajzolná a kitöltés FÖLÉ — a betű felfalná magát.
+  assert.ok(!/paint-order/.test(svg), 'paint-order került a posztersbe');
+});
+
+t('🔑 a lap tartalma SOHA nem lóg bele a fotósávba', () => {
+  // A fotósáv MINIMÁLIS magassága 520 px (panelY). A sötét betű ott a
+  // fényképen ülne, olvashatatlanul. Ez élesben megtörtént: ha a cikkből
+  // nem jött „You'll need" tétel, a lépések a CÍM aljához igazodtak, és
+  // rövid címnél 330 px-en kezdődtek, a kép közepén.
+  // ⚠️ Elmosott háttéren ez ALIG látszott, a mérőszámok átengedték. A
+  // hibát az fogta meg, hogy valaki RÁNÉZETT a kész képre.
+  const PANEL_MIN = 520;
+  for (const kellenek of [[], ['A free account'], ['A free account', 'Ten minutes']]) {
+    const svg = poszterSvg({
+      cim: 'Short title',                    // rövid cím = a legrosszabb eset
+      lepesek: ['Open the app and sign in', 'Paste your notes in', 'Ask for a summary'],
+      kellenek, hibak: ['People skip the first step'],
+      stilus: STILUS.vilagos, splitFn: x => [x], logoBelso: ''
+    });
+    const eset = kellenek.length + ' tétel';
+    // ⚠️ A SZÁMLÁLÓ KÖTELEZŐ. Ennek a tesztnek az első változatában a
+    // shell megette a backslash-eket: \d helyett „d", \b helyett egy
+    // láthatatlan backspace-karakter került a mintába. A minta SEMMIRE nem
+    // illeszkedett, a ciklus egyszer sem futott, és a teszt a HIBÁS kódon
+    // is zölden ment át. Egy üres ciklusban lévő assert nem ellenőriz semmit.
+    let vonal = 0, szoveg = 0;
+    // a sötét tintával írt szövegek (a FEHÉR cím és fejléc ülhet a fotón)
+    for (const m of svg.matchAll(/<text\s[^>]*\by="(\d+)"[^>]*fill="(#[0-9A-Fa-f]{6})"[^>]*>([^<]*)</g)) {
+      if (m[2].toUpperCase() === '#FFFFFF' || m[2] === '#000000') continue;
+      if (m[3] === 'AI') continue;             // a fejléc AI-címkéje SAJÁT fehér dobozon ül
+      szoveg++;
+      assert.ok(Number(m[1]) >= PANEL_MIN,
+        eset + ': sötét szöveg a fotósávban, y=' + m[1] + ' (' + m[2] + ' „' + m[3] + '")');
+    }
+    // a vonalak (hajszálvonal, lépés-vezérvonal) sem mehetnek a képre.
+    // <line\s és NEM <line: az utóbbi a <linearGradient>-re is illeszkedik.
+    for (const m of svg.matchAll(/<line\s[^>]*\by1="(\d+)"/g)) {
+      vonal++;
+      assert.ok(Number(m[1]) >= PANEL_MIN, eset + ': vonal a fotósávban, y1=' + m[1]);
+    }
+    assert.ok(vonal >= 2, eset + ': a teszt nem talált vonalat, a minta vak (' + vonal + ')');
+    assert.ok(szoveg >= 3, eset + ': a teszt nem talált sötét szöveget, a minta vak (' + szoveg + ')');
+  }
 });
 
 console.log(`\n${bukott ? '❌' : '✅'} ${pass} sikeres, ${bukott} bukott`);

@@ -262,14 +262,20 @@ async function main() {
         // ── INFOGRAFIKA-VÁLTOZAT (csak a Facebook-formátumon) ──────
         // A fotó itt NEM a főszereplő: halvány, erősen elmosott
         // színfoltként marad a háttérben. Így megmarad a cikk hangulata,
-        // DE a borítóinkon gyakori gépi zagyvaság („Memor Settings",
-        // „Confesion stiing") nem látszik — márpedig egy infografikás
-        // poszt azt sugallja, hogy „ez itt információ", tehát jobban
-        // odanéznek. Ugyanaz a technika, mint a Reel hátterénél.
+        // A kép ÉLESEN megy ki. Korábban elmostuk, hogy a gépi
+        // borítókon néha megjelenő zagyva betűk („Memor Settings") ne
+        // látsszanak — de ugyanez a fájl élesen kint van a cikkoldalon
+        // és a mostani fotó-poszton is, tehát az elmosás semmit nem
+        // takart, csak elvette a képet. A fehér cím olvashatóságát a
+        // poszter GLÓRIÁJA adja (social-poster.js), nem a homály.
+        // ⚠️ A Reel háttere MÁS eset: ott a szöveg a TELJES képen fut
+        // végig, ezért ott az elmosás marad (core/short-video.js).
         if (fmt.key === 'fb' && !isWeekly && infoKar !== 'foto') {
           const st = STILUS[infoKar];
-          const folt = await sharp(src).resize(fmt.w, fmt.h, { fit: 'cover' })
-            .blur(HATTER_ELMOSAS).modulate({ saturation: HATTER_TELITETTSEG }).ensureAlpha(st.kepAtl).png().toBuffer();
+          let kepPipe = sharp(src).resize(fmt.w, fmt.h, { fit: 'cover' });
+          if (HATTER_ELMOSAS > 0) kepPipe = kepPipe.blur(HATTER_ELMOSAS);
+          const folt = await kepPipe
+            .modulate({ saturation: HATTER_TELITETTSEG }).ensureAlpha(st.kepAtl).png().toBuffer();
           pipe = sharp({ create: { width: fmt.w, height: fmt.h, channels: 3, background: st.hatter } })
             .composite([
               { input: folt },
