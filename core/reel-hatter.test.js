@@ -1,35 +1,34 @@
 // ===================================================================
-// TESZT — A REEL HÁTTERE A CIKK BORÍTÓKÉPÉBŐL (2026-09-21)
+// TESZT — A REEL HÁTTERE: A CIKK ÉLES BORÍTÓJA, VÁNDORLÓ KIVÁGÁSSAL
 // ===================================================================
-// INGYENES, hálózat nélküli. A próbaképet MAGA GYÁRTJA (sharp), tehát
+// INGYENES, hálózat nélküli. A próbaképeket MAGA GYÁRTJA (sharp), tehát
 // nem függ attól, milyen cikkek vannak épp a repóban.
 //
-// MIÉRT VAN EZ A TESZT.
+// ELŐZMÉNY. 09-21-től a borító 70-es elmosással + 80% papírral ment ki,
+// hogy a gépi borítók elírt feliratai ne látsszanak — ezt őrizte ez a
+// teszt. Az eredmény egy halvány színfolt lett, és a user 09-23-án jelezte:
+// „nem lehet megkülönböztetni egymástól… egyhangú". A bemutatott
+// változatokból a „b+c"-t választotta: ÉLES teljes háttér + lépésenként
+// vándorló kivágás, a szöveg papírszínű kártyán.
 //
-// 2026-09-17-én KIVETTÜK a borítóképet a Reelből, mert az AI-generált
-// borítókon hibás felirat lehet („perrplexity", két r-rel), és a 9-es
-// sugarú elmosás alól kilátszott. A user 09-21-én azt kérte, hogy minden
-// Reel nézzen ki másképp — és erre a cikk saját képe a jó válasz, DE
-// csak akkor, ha a rajta lévő betűkből semmi nem marad olvasható.
+// A teszt MOST ezt őrzi — és nem a beállításoknak hisz, hanem a kimenetet
+// MÉRI:
+//   1. éles-e a háttér (ne csússzon vissza észrevétlenül az elmosás)
+//   2. lépésenként TÉNYLEG más részt mutat-e (különben nincs „C")
+//   3. a kártyán a LEGSÖTÉTEBB képnél is olvasható-e a szöveg
 //
-// Ez a teszt nem hisz a beállításoknak, hanem MEGMÉRI a kimenetet:
-//   1. egy ismert, ÉLES mintából marad-e éles átmenet a feldolgozás után
-//   2. elég világos-e a háttér ahhoz, hogy a tinta-fekete szöveg olvasható
-//      maradjon — a LEGSÖTÉTEBB lehetséges bemenetnél is
-//
-// 🔑 A MÉRŐ HITELESÍTVE VAN. Élesben egyszer már pont ez bukott el: az
-// első él-mérőm a NYERS képre is nullát mondott, vagyis a zöldje a
-// semmiből jött. Ezért itt a nyers mintát is megmérjük — ha arra nem ad
-// magas értéket, a teszt SAJÁT MAGÁT jelenti hibásnak.
+// 🔑 A MÉRŐ HITELESÍTVE VAN: a nyers mintát is megmérjük, és egy elmosott
+// változatot is — ha a kettőt nem választja szét, a teszt SAJÁT MAGÁT
+// jelenti hibásnak. (Élesben egyszer már egy vak mérő adott zöldet.)
 // ===================================================================
 
 import assert from 'assert/strict';
-import { readFileSync } from 'fs';
+import { readFileSync, writeFileSync, rmSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import {
-  hatterKepbol, tablaSvg, W, H, SAV_FELSO, SAV_ALSO,
-  HATTER_ELMOSAS, HATTER_PAPIR_FEDES
+  hatterekKepbol, vandorlasArany, tablaSvg, W, H, SAV_FELSO, SAV_ALSO,
+  KARTYA_X, KARTYA_Y, KARTYA_MAGAS, KARTYA_FEDES, VANDORLAS
 } from './short-video.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -41,13 +40,9 @@ const t = async (nev, fn) => {
   catch (e) { bukott++; console.log('  ❌ ' + nev + '\n     ' + String(e.message).split('\n')[0]); }
 };
 
-console.log('🧪 a Reel háttere — marad-e olvasható betű?\n');
+console.log('🧪 a Reel háttere — éles, vándorol, és olvasható marad?\n');
 
-/**
- * Éles átmenetek aránya. A szomszéd-különbséget SZÁNDÉKOSAN kézzel
- * számoljuk: az első változat a sharp convolve-jára bízta, és az a nyers
- * képre is nullát adott — a mérő némán vak volt.
- */
+/** Éles átmenetek aránya — a szomszéd-különbséget kézzel számoljuk. */
 async function elSuruseg(png, kuszob = 12) {
   const { data, info } = await sharp(png).greyscale().raw().toBuffer({ resolveWithObject: true });
   const w = info.width, h = info.height;
@@ -62,102 +57,165 @@ async function elSuruseg(png, kuszob = 12) {
   return n / ossz * 100;
 }
 
-/** Ismert, NAGYON éles minta: fekete-fehér csíkok — mint a betűk élei. */
-async function probaKep(csikSzeles = 6) {
-  const px = Buffer.alloc(W * H * 3);
-  for (let y = 0; y < H; y++) {
-    for (let x = 0; x < W; x++) {
-      const v = (Math.floor(x / csikSzeles) + Math.floor(y / csikSzeles)) % 2 ? 255 : 0;
-      const i = (y * W + x) * 3;
+/** 16:9-es próbakép: fekete-fehér sakktábla (éles), balról jobbra sötétedve. */
+async function probaKep() {
+  const w = 1280, h = 720, px = Buffer.alloc(w * h * 3);
+  for (let y = 0; y < h; y++) {
+    for (let x = 0; x < w; x++) {
+      const alap = (Math.floor(x / 6) + Math.floor(y / 6)) % 2 ? 255 : 0;
+      const v = Math.round(alap * (1 - 0.8 * x / w));   // jobbra sötétebb → a vándorlás MÉRHETŐ
+      const i = (y * w + x) * 3;
       px[i] = px[i + 1] = px[i + 2] = v;
     }
   }
-  return sharp(px, { raw: { width: W, height: H, channels: 3 } }).jpeg().toBuffer();
+  return sharp(px, { raw: { width: w, height: h, channels: 3 } }).jpeg({ quality: 95 }).toBuffer();
 }
 
 const PROBA = join(ROOT, '.reel-hatter-proba.jpg');
-const { writeFileSync, rmSync } = await import('fs');
 writeFileSync(PROBA, await probaKep());
+const atlag = async png => (await sharp(png).greyscale().stats()).channels[0].mean;
 
 // ── 1. A MÉRŐ HITELESÍTÉSE ──────────────────────────────────────────
 let nyersEl = 0;
-await t('🔬 [hitelesítés] a mérő LÁTJA az éles mintát (különben a nullája semmit nem ér)', async () => {
-  nyersEl = await elSuruseg(readFileSync(PROBA));
-  assert.ok(nyersEl > 5, 'a nyers sakktábla-minta csak ' + nyersEl.toFixed(2) + '% — a mérő vak');
+await t('🔬 [hitelesítés] a mérő SZÉTVÁLASZTJA az éles és az elmosott képet', async () => {
+  const kivagott = await sharp(PROBA).resize({ height: H }).extract({ left: 0, top: 0, width: W, height: H }).png().toBuffer();
+  nyersEl = await elSuruseg(kivagott);
+  const elmosott = await elSuruseg(await sharp(kivagott).blur(20).png().toBuffer());
+  assert.ok(nyersEl > 5, 'az éles minta csak ' + nyersEl.toFixed(2) + '% — a mérő vak');
+  assert.ok(elmosott < nyersEl / 10, 'az elmosottat nem választja szét (' + elmosott.toFixed(2) + '%) — a mérő vak');
 });
 
-// ── 2. A FELDOLGOZÁS UTÁN NEM MARAD OLVASHATÓ RÉSZLET ───────────────
-await t('🔑 a feldolgozott háttéren nem marad éles átmenet (nem látszik ki felirat)', async () => {
-  const el = await elSuruseg(await hatterKepbol(sharp, PROBA));
-  assert.ok(el < 0.5, 'maradt éles részlet: ' + el.toFixed(4) + '% — a hibás felirat kilátszhat');
-  assert.ok(nyersEl / Math.max(el, 0.0001) > 20,
-    'a visszaesés gyanúsan kicsi (' + nyersEl.toFixed(2) + '% → ' + el.toFixed(4) + '%)');
+// ── 2. ÉLES ─────────────────────────────────────────────────────────
+await t('🔑 a háttér ÉLES — az elmosás nem csúszhat vissza észrevétlenül', async () => {
+  const h = await hatterekKepbol(sharp, PROBA, 5);
+  assert.ok(Array.isArray(h) && h.length === 5, 'nem kártyánként egy háttér jött');
+  const el = await elSuruseg(h[0]);
+  assert.ok(el > nyersEl * 0.5, 'a háttér tompább a nyersnél: ' + el.toFixed(2) + '% vs ' + nyersEl.toFixed(2) + '%');
 });
 
-// ── 3. VILÁGOSSÁG-GARANCIA ──────────────────────────────────────────
-await t('🔑 a LEGSÖTÉTEBB lehetséges kép mellett is olvasható marad a szöveg', async () => {
-  // Nem „általában" mérünk: teljesen FEKETE bemenetet adunk, vagyis a
-  // lehető legrosszabb esetet. A keverés miatt a kimenet nem lehet
-  // sötétebb, mint 0,8 × papír — ezt ellenőrizzük a kész képen.
-  const fekete = await sharp({ create: { width: W, height: H, channels: 3, background: '#000000' } })
-    .jpeg().toBuffer();
-  const FEKETE_UT = join(ROOT, '.reel-hatter-fekete.jpg');
-  writeFileSync(FEKETE_UT, fekete);
-  const h = await hatterKepbol(sharp, FEKETE_UT);
-  const sav = await sharp(h)
-    .extract({ left: 0, top: SAV_FELSO, width: W, height: SAV_ALSO - SAV_FELSO })
-    .greyscale().stats();
-  rmSync(FEKETE_UT, { force: true });
-  // A tinta #1c1a16 ≈ 27/255. A háttérnek bőven e fölött kell lennie.
-  assert.ok(sav.channels[0].min > 150,
-    'a szövegsáv legsötétebb pontja ' + sav.channels[0].min + '/255 — a fekete szöveg elveszne');
+// ── 3. VÁNDORLÁS (a „C") ────────────────────────────────────────────
+await t('🔑 lépésenként a kép MÁS RÉSZE látszik (különben állókép marad)', async () => {
+  const h = await hatterekKepbol(sharp, PROBA, 6);
+  const elso = await atlag(h[0]), utolso = await atlag(h[5]);
+  // a próbakép jobbra sötétedik → az ablak jobbra vándorol → sötétebb
+  assert.ok(elso - utolso > 10, 'az első és az utolsó háttér gyakorlatilag ugyanaz (' + elso.toFixed(1) + ' → ' + utolso.toFixed(1) + ')');
+  for (const b of h) {
+    const m = await sharp(b).metadata();
+    assert.equal(m.width, W); assert.equal(m.height, H);
+  }
 });
 
-await t('a két szabályozó nem gyengíthető észrevétlenül', async () => {
-  // Az ELMOSAS és a PAPIR_FEDES együtt adja a fenti két garanciát. Ha
-  // valaki „csak egy kicsit" enged rajtuk, a felirat újra kilátszhat.
-  assert.ok(HATTER_ELMOSAS >= 50, 'túl gyenge elmosás: ' + HATTER_ELMOSAS);
-  assert.ok(HATTER_PAPIR_FEDES >= 0.7, 'túl kevés papír-keverés: ' + HATTER_PAPIR_FEDES);
+await t('a vándorlás tartománya értelmes és monoton', async () => {
+  assert.ok(VANDORLAS[0] >= 0 && VANDORLAS[1] <= 1 && VANDORLAS[0] < VANDORLAS[1], 'rossz tartomány: ' + VANDORLAS);
+  for (let i = 1; i < 6; i++) assert.ok(vandorlasArany(i, 6) > vandorlasArany(i - 1, 6), 'nem monoton');
+  assert.equal(vandorlasArany(0, 1), (VANDORLAS[0] + VANDORLAS[1]) / 2, 'egyetlen kártya: középre');
 });
 
-// ── 4. KÉP NÉLKÜL IS MŰKÖDIK ────────────────────────────────────────
-await t('hiányzó kép esetén papírszín megy, nem összeomlás', async () => {
+// ── 4. OLVASHATÓSÁG A KÁRTYÁN ───────────────────────────────────────
+await t('🔑 a LEGSÖTÉTEBB lehetséges képnél is világos marad a kártya', async () => {
+  // Nem „általában" mérünk: teljesen FEKETE hátteret adunk, a lehető
+  // legrosszabb esetet. A kártya alatt a kép legfeljebb 6%-ban üt át.
+  const fekete = await sharp({ create: { width: W, height: H, channels: 3, background: '#000000' } }).png().toBuffer();
+  const svg = tablaSvg({ cimke: '03', nagy: '', kicsi: '' }, 0, 5, { alap: false, kartya: true });
+  const kesz = await sharp(fekete).composite([{ input: svg }]).png().toBuffer();
+  // a kártya belseje, a haladásjelző és a márkajel FÖLÖTT (azok maguk is tinták)
+  const belso = await sharp(kesz).extract({ left: KARTYA_X + 30, top: KARTYA_Y + 30, width: W - 2 * KARTYA_X - 60, height: 1180 - KARTYA_Y - 30 })
+    .png().toBuffer();
+  const st = await sharp(belso).greyscale().stats();
+  // A tinta #1c1a16 ≈ 27/255 — a kártyának bőven e fölött kell lennie.
+  assert.ok(st.channels[0].min > 200, 'a kártya legsötétebb pontja ' + st.channels[0].min + '/255 — a szöveg elveszhet');
+  assert.ok(KARTYA_FEDES >= 0.9, 'túl átlátszó kártya: ' + KARTYA_FEDES);
+});
+
+await t('📐 a kártya a Reels biztonságos sávjában marad', async () => {
+  assert.ok(KARTYA_Y >= SAV_FELSO, 'a kártya teteje a platform fejléce alá lóg: ' + KARTYA_Y);
+  assert.ok(KARTYA_Y + KARTYA_MAGAS <= SAV_ALSO, 'a kártya alja a leírás-sáv alá lóg: ' + (KARTYA_Y + KARTYA_MAGAS));
+  // a szöveg MINDEN sora a kártyán belül (a leghosszabb, háromsoros esetben is)
+  const svg = String(tablaSvg({ cimke: '', nagy: 'Decide what\nto do next\nright away', kicsi: 'and keep it short' }, 5, 6, { alap: false, kartya: true }));
+  for (const m of svg.matchAll(/<text\b[^>]*\sy="([-\d.]+)"[^>]*font-size="(\d+)"/g)) {
+    const y = parseFloat(m[1]), meret = Number(m[2]);
+    if (y < 400) continue;                                   // az AI-jel a kártyán kívül, szándékosan
+    assert.ok(y - meret * 0.8 >= KARTYA_Y, 'szöveg a kártya fölé lóg: y=' + y + ', méret=' + meret);
+    assert.ok(y <= KARTYA_Y + KARTYA_MAGAS, 'szöveg a kártya alá lóg: y=' + y);
+  }
+});
+
+await t('🔑 egyetlen élő útmutató egyetlen kártyáján sem ér a szöveg a kártya széléig', async () => {
+  // Élesben látott hiba (09-23, az első változat mintáján): az „Open
+  // Gemini" a kártya széléig ért, mert a szövegkeret (1000 px) pontosan
+  // akkora volt, mint a kártya. A becslés a FELFELÉ kerekített 0,65-ös
+  // betűaránnyal számol (mért maximum 0,637), tehát szigorúbb a valóságnál.
+  const { readdirSync } = await import('fs');
+  const { cardsFromGuide } = await import('./short-video.js');
+  const { utmutatoE } = await import('./guide-kind.js');
+  const { BETU_ARANY, ALCIM_ARANY } = await import('./short-video.js');
+  const AD = join(ROOT, 'content', 'articles');
+  const belso = W - 2 * KARTYA_X;                 // a kártya teljes szélessége
+  let kartyaDb = 0; const kint = [];
+  for (const f of readdirSync(AD).filter(x => x.startsWith('ARTICLE_') && x.endsWith('.json'))) {
+    let d; try { d = JSON.parse(readFileSync(join(AD, f), 'utf-8')); } catch { continue; }
+    if (!utmutatoE(f, d)) continue;
+    const { cards } = cardsFromGuide(d.article_markdown || '');
+    for (const [i, k] of (cards || []).entries()) {
+      kartyaDb++;
+      const svg = String(tablaSvg(k, i, cards.length, { alap: false, kartya: true }));
+      for (const m of svg.matchAll(/<text\b[^>]*font-size="(\d+)"[^>]*>([^<]*)</g)) {
+        const meret = Number(m[1]), szoveg = m[2].replace(/&amp;/g, '&').replace(/&[a-z]+;/g, 'x');
+        if (meret < 45 || !szoveg.trim() || szoveg === 'AI') continue;  // a márkajel/AI-jel fix, kicsi
+        const arany = meret >= 72 ? BETU_ARANY : ALCIM_ARANY;
+        const szeles = szoveg.length * arany * meret;
+        if (szeles > belso - 2 * 30) kint.push(`${d._meta?.slug?.slice(0, 30)} #${i}: „${szoveg}" ~${Math.round(szeles)} px`);
+      }
+    }
+  }
+  assert.ok(kartyaDb > 1000, 'gyanúsan kevés kártya (' + kartyaDb + ') — a minta kiürült?');
+  assert.equal(kint.length, 0, kint.length + ' szöveg ér a kártya széléig (30 px-en belül), pl. ' + kint.slice(0, 3).join(' · '));
+});
+
+await t('kártya-módban a halvány lépésszám elmarad (a fotón úgysem látszana)', async () => {
+  const van = String(tablaSvg({ cimke: '03', nagy: 'X', kicsi: '' }, 2, 5));
+  const nincs = String(tablaSvg({ cimke: '03', nagy: 'X', kicsi: '' }, 2, 5, { alap: false, kartya: true }));
+  assert.ok(/>03</.test(van), 'a papír-táblán a lépésszámnak látszania kell');
+  assert.ok(!/>03</.test(nincs), 'a kártya-módban a lépésszám mégis kirajzolódik');
+});
+
+// ── 5. KÉP NÉLKÜL IS MŰKÖDIK ────────────────────────────────────────
+await t('hiányzó kép esetén `null` → a papír-tábla megy, nem összeomlás', async () => {
   for (const rossz of ['', join(ROOT, 'nincs-ilyen-fajl.jpg')]) {
-    const h = await hatterKepbol(sharp, rossz);
-    const m = await sharp(h).metadata();
-    assert.equal(m.width, W);
-    assert.equal(m.height, H);
+    assert.equal(await hatterekKepbol(sharp, rossz, 5), null);
   }
 });
 
 await t('sérült képfájl esetén sem dől el a gyártás', async () => {
   const SERULT = join(ROOT, '.reel-hatter-serult.jpg');
   writeFileSync(SERULT, Buffer.from('ez nem kép, csak szöveg'));
-  const h = await hatterKepbol(sharp, SERULT);
+  const h = await hatterekKepbol(sharp, SERULT, 5);
   rmSync(SERULT, { force: true });
-  const m = await sharp(h).metadata();
-  assert.equal(m.width, W, 'sérült képnél nem a papír-tartalékot adta');
+  assert.equal(h, null, 'sérült képnél nem a papír-tartalékot jelezte');
 });
 
-// ── 5. A TÁBLA NEM TAKARJA LE A KÉPET ───────────────────────────────
-await t('🔑 a gyártás `alap: false`-szal hívja a táblát — különben a kép letakarva', async () => {
-  // Ez a FELTÉTELE annak, hogy a háttér egyáltalán látszódjon. Enélkül a
-  // feldolgozás lefutna, a videó elkészülne, és minden maradna papírszín:
-  // a „megcsinálva, de nem ér célba" alakzat.
+await t('álló (keskeny) kép esetén is teljes méretű hátteret ad', async () => {
+  const ALLO = join(ROOT, '.reel-hatter-allo.jpg');
+  writeFileSync(ALLO, await sharp({ create: { width: 400, height: 900, channels: 3, background: '#336699' } }).jpeg().toBuffer());
+  const h = await hatterekKepbol(sharp, ALLO, 3);
+  rmSync(ALLO, { force: true });
+  assert.equal(h.length, 3);
+  const m = await sharp(h[0]).metadata();
+  assert.equal(m.width, W); assert.equal(m.height, H);
+});
+
+// ── 6. A GYÁRTÁS TÉNYLEG EZT HASZNÁLJA ──────────────────────────────
+await t('🔑 a gyártás a kártya-módot és a kártyánkénti hátteret használja', async () => {
+  // A „megcsinálva, de nem ér célba" alakzat ellen: a függvények létezése
+  // semmit nem bizonyít, ha a renderVideo nem őket hívja.
   const forras = readFileSync(join(ROOT, 'core', 'short-video.js'), 'utf-8')
     .split('\n').filter(s => !s.trim().startsWith('//')).join('\n');
-  assert.ok(/tablaSvg\(cards\[i\], i, cards\.length, \{ alap: false \}\)/.test(forras),
-    'a renderVideo nem alap:false-szal hívja a tablaSvg-t');
-  const vanAlap = String(tablaSvg({ cimke: '', nagy: 'Teszt', kicsi: 'x' }, 0, 3));
-  const nincsAlap = String(tablaSvg({ cimke: '', nagy: 'Teszt', kicsi: 'x' }, 0, 3, { alap: false }));
-  assert.ok(vanAlap.includes('fill="#f2ede4"'), 'az alapértelmezett tábla nem festi a papírt');
-  assert.ok(!nincsAlap.includes('width="1080" height="1920" fill="#f2ede4"'),
-    'az alap:false tábla MÉGIS lefesti a teljes hátteret');
+  assert.ok(/hatterekKepbol\(sharp, kepUt, cards\.length\)/.test(forras), 'a renderVideo nem kér kártyánkénti hátteret');
+  assert.ok(/\{ alap: false, kartya: true \}/.test(forras), 'a renderVideo nem kártya-módban rajzolja a táblát');
+  assert.ok(/hatterek\[i\]/.test(forras), 'a renderVideo nem az i. kártya saját hátterét használja');
 });
 
 await t('🔑 a gyártás TÉNYLEG megkapja a borítókép útvonalát', async () => {
-  // A feature akkor is „kész" lenne, ha a hívó sosem adná át a képet —
-  // ez a projekt visszatérő hibája (a javítás, ami nem ér célba).
   const rp = readFileSync(join(ROOT, 'core', 'reel-post.js'), 'utf-8')
     .split('\n').filter(s => !s.trim().startsWith('//')).join('\n');
   const db = (rp.match(/kepUt: boritoUt\(/g) || []).length;

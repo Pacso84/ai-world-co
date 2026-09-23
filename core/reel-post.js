@@ -303,10 +303,10 @@ async function main() {
 // ── AUTOMATIKA ──────────────────────────────────────────────────────
 
 /**
- * A cikk borítóképének útvonala — ez lesz a Reel háttér-színfoltja
- * (2026-09-21). A kép elmosva, papír felé keverve kerül a tábla alá, így
- * minden Reel a saját cikkének színeit hozza. A mérés és az indoklás:
- * core/short-video.js hatterKepbol().
+ * A cikk borítóképének útvonala — ez lesz a Reel háttere. 2026-09-23 óta
+ * ÉLESEN, lépésenként máshova nézve (vándorló kivágás), a szöveg egy
+ * papírszínű kártyán; így minden Reel a saját cikkének képét hozza.
+ * Részletek: core/short-video.js hatterekKepbol().
  */
 export function boritoUt(ROOT, join, slug) {
   return slug ? join(ROOT, 'website', 'assets', 'images', slug + '.jpg') : '';
