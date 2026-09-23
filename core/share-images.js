@@ -21,7 +21,7 @@ import sharp from 'sharp';
 import { selectFormats, queuedSlugs } from './image-targets.js';
 import { utmutatoE } from './guide-kind.js';
 import { splitHeading } from './short-video.js';
-import { kar, STILUS, poszterSvg, lepesekMdbol, alkalmas, szakaszok, HATTER_ELMOSAS, HATTER_TELITETTSEG } from './social-poster.js';
+import { kar, STILUS, poszterSvg, lepesekMdbol, alkalmas, szakaszok, HATTER_ELMOSAS, HATTER_TELITETTSEG, FOTO_MAGAS } from './social-poster.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
@@ -272,13 +272,15 @@ async function main() {
         // végig, ezért ott az elmosás marad (core/short-video.js).
         if (fmt.key === 'fb' && !isWeekly && infoKar !== 'foto') {
           const st = STILUS[infoKar];
-          let kepPipe = sharp(src).resize(fmt.w, fmt.h, { fit: 'cover' });
+          // A borító a SAJÁT arányában, a fotósáv teljes magasságában —
+          // nem a teljes vászonra nagyítva, ami a képet körbevágta.
+          let kepPipe = sharp(src).resize(fmt.w, FOTO_MAGAS, { fit: 'cover' });
           if (HATTER_ELMOSAS > 0) kepPipe = kepPipe.blur(HATTER_ELMOSAS);
           const folt = await kepPipe
             .modulate({ saturation: HATTER_TELITETTSEG }).ensureAlpha(st.kepAtl).png().toBuffer();
           pipe = sharp({ create: { width: fmt.w, height: fmt.h, channels: 3, background: st.hatter } })
             .composite([
-              { input: folt },
+              { input: folt, top: 0, left: 0 },
               { input: Buffer.from(poszterSvg({
                 cim: title, lepesek: lepesekMdbol(d.article_markdown || ''),
                 kellenek: szakaszok(d.article_markdown || '').kellenek,

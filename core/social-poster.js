@@ -227,6 +227,14 @@ export const LEPES_MAX_DB = 5;
 // az elmosás tehát semmit nem védett, csak elvette a képet.
 // A cím olvashatóságát a GLÓRIA adja (lentebb), nem a homály.
 export const HATTER_ELMOSAS = 0;
+
+// ⚠️ A FOTÓSÁV A BORÍTÓ TELJES MAGASSÁGA — a kép EGÉSZBEN látszik.
+// Régen 520 px volt, a borítót pedig a teljes 1080×1350-es vászonra
+// nagyítottuk: a képből csak egy felnagyított kivágás látszott (user:
+// „jobb lenne, ha a felső képek nem lennének levágva"). Mind az 1012
+// borító 1280×720 (16:9, mérve 09-23) → 1080 széles sávban 608 px.
+// Ha a borító-arány valaha változik, EZT kell újraszámolni.
+export const FOTO_MAGAS = 608;
 export const HATTER_TELITETTSEG = 1.12;   // éles képnél a 1,35 már rikító
 
 // A fejléc-csík. A szélessége SZÁMOLT, nem beírt szám: az első
@@ -378,7 +386,7 @@ export function poszterSvg({ cim, lepesek, stilus, splitFn, logoBelso = '', kell
   // ⚠️ A FOTÓ-SÁV MAGASSÁGA FIX. Ha a címtől függne, rövid címnél
   // összemenne, hosszúnál elnyelné a lapot — a user épp azt kérte,
   // hogy a kép LÁTSZÓDJON, méghozzá mindig.
-  const panelY = Math.max(cimAlja + 40, 520);
+  const panelY = Math.max(cimAlja + 40, FOTO_MAGAS);
 
   // ── „MI KELL HOZZÁ" SÁV ───────────────────────────────────────────
   const kellLista = (kellenek || []).slice(0, 3)

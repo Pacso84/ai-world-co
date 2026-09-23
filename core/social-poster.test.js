@@ -32,7 +32,7 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import {
   kar, KAROK, STILUS, poszterSvg, lepesSzoveg, lepesekMdbol, alkalmas,
-  LEPES_MAX_DB, LEPES_MAX_KAR, W, H, HATTER_ELMOSAS, HATTER_TELITETTSEG
+  LEPES_MAX_DB, LEPES_MAX_KAR, W, H, HATTER_ELMOSAS, HATTER_TELITETTSEG, FOTO_MAGAS
 } from './social-poster.js';
 import { splitHeading } from './short-video.js';
 import { utmutatoE } from './guide-kind.js';
@@ -240,7 +240,9 @@ t('🔑 a lap tartalma SOHA nem lóg bele a fotósávba', () => {
   // rövid címnél 330 px-en kezdődtek, a kép közepén.
   // ⚠️ Elmosott háttéren ez ALIG látszott, a mérőszámok átengedték. A
   // hibát az fogta meg, hogy valaki RÁNÉZETT a kész képre.
-  const PANEL_MIN = 520;
+  const PANEL_MIN = FOTO_MAGAS;
+  // a sáv a 16:9-es borító TELJES magassága — különben a kép levágódik
+  assert.equal(FOTO_MAGAS, Math.round(W * 720 / 1280), 'a fotósáv nem a borító arányát követi');
   for (const kellenek of [[], ['A free account'], ['A free account', 'Ten minutes']]) {
     const svg = poszterSvg({
       cim: 'Short title',                    // rövid cím = a legrosszabb eset
