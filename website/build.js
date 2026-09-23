@@ -42,6 +42,7 @@ import { utmutatoE } from '../core/guide-kind.js';
 // core/packs-data.js — a dist/ a CI-ban nem létezik), a szöveg innen.
 import { CSOMAG_SZOVEG, PACKS_UI, csomagSzoveg } from '../core/packs-text.js';
 import { CSOMAG_IDK, NAGY_ID } from '../core/packs-data.js';
+import { cimTag } from '../core/title-tag.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = join(__dirname, '..');
@@ -1326,7 +1327,7 @@ function pageShell({ title, description, bodyContent, isArticle = false, noIntro
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${escapeHtml(title)}</title>
+  <title>${escapeHtml(cimTag(title))}</title>
   <meta name="description" content="${escapeHtml(description)}">
   ${keywords ? `<meta name="keywords" content="${escapeHtml(keywords)}">` : ''}
   <link rel="canonical" href="${escapeHtml(url)}">
@@ -1372,7 +1373,7 @@ function pageShell({ title, description, bodyContent, isArticle = false, noIntro
   ${isArticle ? '<div class="progress-bar" id="progressBar"></div>' : ''}
   <header class="navbar" id="navbar">
     <div class="navbar__inner">
-      <a href="${homePath}" class="navbar__logo"><img src="/assets/logo.svg" alt="" class="navbar__mark">${SITE.name}<span class="navbar__dot">.</span></a>
+      <a href="${homePath}" class="navbar__logo"><img src="/assets/logo.svg" alt="${escapeHtml(SITE.name)} logo" class="navbar__mark">${SITE.name}<span class="navbar__dot">.</span></a>
       <nav class="navbar__nav" id="navMenu">
         <a href="${startPath}" class="nav--star">⭐ ${tr('startHere')}</a>
         <a href="${homePath}">${T.news}</a>
@@ -2149,10 +2150,21 @@ function stepArtKey(title, idx, used) {
   return key;
 }
 
-function stepArtHtml(key) {
+// ⚠️ AZ ALT NEM MARADHAT ÜRES (2026-09-23, Bing Webmaster „Oldalvizsgálat"):
+// az üres alt a szabvány szerint „díszítő kép", a Bing viszont HIÁNYZÓNAK
+// számolja — 968 oldalra írta ki (a fejléc-logó minden oldalon ott van).
+// A lépésképek alt-ja a lépés címe, markdown nélkül.
+// Függvény-DEKLARÁCIÓ, nem const: előrehúzódik, így a fájl bármely pontjáról
+// hívható (a const itt „used before initialization" csapda lehetne).
+function altSzoveg(s) {
+  return escapeHtml(String(s || '')
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1').replace(/[*_`]/g, '').replace(/\s+/g, ' ').trim());
+}
+
+function stepArtHtml(key, heading = '') {
   // Színes 3D illusztráció (a borítók stílusában) — ha létezik; különben SVG tartalék
   if (existsSync(join(__dirname, 'assets', 'art', key + '.jpg')))
-    return `<div class="g-step__art"><img class="g-art__img" src="/assets/art/${key}.jpg" alt="" loading="lazy" decoding="async" width="640" height="480"></div>`;
+    return `<div class="g-step__art"><img class="g-art__img" src="/assets/art/${key}.jpg" alt="${altSzoveg(heading)}" loading="lazy" decoding="async" width="640" height="480"></div>`;
   return `<div class="g-step__art">${GUIDE_ART[key] || GUIDE_ART.target}</div>`;
 }
 
@@ -2164,7 +2176,7 @@ function guideMapHtml(headings, artKeys) {
   const nodes = headings.map((h, i) => {
     const key = artKeys[i];
     const img = existsSync(join(__dirname, 'assets', 'art', key + '.jpg'))
-      ? `<img class="g-map__img" src="/assets/art/${key}.jpg" alt="" loading="lazy" decoding="async" width="124" height="124">`
+      ? `<img class="g-map__img" src="/assets/art/${key}.jpg" alt="${altSzoveg(h)}" loading="lazy" decoding="async" width="124" height="124">`
       : `<span class="g-map__img g-map__img--f" aria-hidden="true">${i + 1}</span>`;
     let label = h;
     if (label.length > 34) label = label.slice(0, 31).trimEnd() + '…';
@@ -2263,7 +2275,7 @@ function buildGuidePage(a) {
       return `<div class="g-step" id="step-${stepNo}"><div class="g-step__no">${stepNo}</div>
         <div class="g-step__grid">
           <div class="g-step__body"><h3 class="g-step__h">${inlineHeadingHtml(heading)}</h3>${guideSectionHtml(s.body)}</div>
-          ${stepArtHtml(artKeys[stepNo - 1])}
+          ${stepArtHtml(artKeys[stepNo - 1], heading)}
         </div></div>`;
     }
     if (/before you start|before we start|prerequisit|miel[őo]tt elkezd|kezd[ée]s el[őo]tt|antes de (?:empezar|comenzar)|bevor (?:du|sie) (?:loslegst|beginn)|vorbereitung|avant de commencer/i.test(t)) {
