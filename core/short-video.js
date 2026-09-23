@@ -478,10 +478,16 @@ const esc = s => String(s).replace(/‑/g, '-')
  */
 // ⚠️ AZ `alap` KAPCSOLÓ (2026-09-21). A tábla eddig MAGA festette a
 // papírszínű alapot. Amióta a háttér a cikk elmosott borítóképe
-// (hatterKepbol), az az alap RÁFEKÜDNE a képre és letakarná. A gyártás
+// (hatterekKepbol), az az alap RÁFEKÜDNE a képre és letakarná. A gyártás
 // ezért `alap: false`-szal hívja; a tesztek és a kézi hívások a régi,
 // önmagában is teljes táblát kapják.
-export function tablaSvg({ cimke, nagy, kicsi }, i, db, { alap = true } = {}) {
+// ⚠️ A `kartya` KAPCSOLÓ (2026-09-23, user: „b+c"). Amikor a háttér a cikk
+// ÉLES borítóképe, a szöveg egy papírszínű kártyán ül (KARTYA_*), és a
+// halvány, nagy lépésszám (cimke) elmarad: a fotón 30%-os átlátszósággal
+// nem látszana, csak zavarna.
+export function tablaSvg({ cimke, nagy, kicsi }, i, db, { alap = true, kartya = false } = {}) {
+  if (kartya) cimke = '';
+  const maxSzeles = kartya ? KARTYA_SZOVEG_MAX : SZOVEG_MAX_SZELES;
   const sorok = String(nagy).split('\n').slice(0, 3);
   // A méret a SORSZÁMTÓL függ, nem a sorok hosszától: három sornál a
   // 138-as magasság a blokkot a sávból lógatná ki.
@@ -505,8 +511,8 @@ export function tablaSvg({ cimke, nagy, kicsi }, i, db, { alap = true } = {}) {
   // betűfájl VALÓDI karakterszélességeivel számol minden élő cikkre.
   const alapMeret = sorok.length <= 2 ? 138 : 116;
   const leghosszabb = Math.max(1, ...sorok.map(s => s.length));
-  const meret = Math.max(SZOVEG_MIN_MERET,
-    Math.min(alapMeret, Math.floor(SZOVEG_MAX_SZELES / (leghosszabb * BETU_ARANY))));
+  const meret = Math.max(kartya ? KARTYA_MIN_MERET : SZOVEG_MIN_MERET,
+    Math.min(alapMeret, Math.floor(maxSzeles / (leghosszabb * BETU_ARANY))));
   const sorMagassag = meret * 1.08;
   // A blokk a 980-as alapvonal körül ül ki: ez a Reels-lejátszó
   // KÖZÉPSŐ, biztosan szabad harmada.
@@ -525,7 +531,7 @@ export function tablaSvg({ cimke, nagy, kicsi }, i, db, { alap = true } = {}) {
   // tábláról. Nem vész el: a felolvasott mondat (`mond`) VÁLTOZATLANUL
   // tartalmazza — tehát a néző hallja azt, amit nem lát.
   const alcimFer = kicsi
-    ? Math.floor(SZOVEG_MAX_SZELES / (String(kicsi).length * ALCIM_ARANY))
+    ? Math.floor(maxSzeles / (String(kicsi).length * ALCIM_ARANY))
     : 0;
   const alcimMeret = Math.min(ALCIM_MERET, alcimFer);
   const alcimLatszik = !!kicsi && alcimMeret >= ALCIM_MIN_MERET;
@@ -545,6 +551,7 @@ export function tablaSvg({ cimke, nagy, kicsi }, i, db, { alap = true } = {}) {
 
   return Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}">
   ${alap ? `<rect width="${W}" height="${H}" fill="${PAPIR}"/>` : ''}
+  ${kartya ? `<rect x="${KARTYA_X}" y="${KARTYA_Y}" width="${W - 2 * KARTYA_X}" height="${KARTYA_MAGAS}" rx="36" fill="${PAPIR}" opacity="${KARTYA_FEDES}"/>` : ''}
   <rect x="0" y="0" width="${W}" height="14" fill="${ZSALYA}"/>
   <rect x="${W - 166}" y="270" width="96" height="56" rx="10" fill="${TINTA}"/>
   <text x="${W - 118}" y="311" text-anchor="middle" font-size="38"
@@ -594,49 +601,78 @@ export function videoArgs({ kepek, hang, out }) {
  *
  * @returns {Promise<{file: string, seconds: number, betu: object}>}
  */
-// ── A HÁTTÉR-SZÍNFOLT (2026-09-21) ──────────────────────────────────
+// ── A HÁTTÉR: A CIKK ÉLES BORÍTÓJA, LÉPÉSENKÉNT MÁSHOVA NÉZVE ────────
+// (2026-09-23, user: „nem lehet megkülönböztetni egymástól… egyhangú",
+// a bemutatott változatokból a „b+c"-t választotta)
 //
-// Az ELMOSAS és a PAPIR_FEDES együtt dönti el, mennyi marad a képből.
-// Nem szabad „ízlés szerint" állítani rajtuk: a 70/0,80 pároshoz tartozik
-// a mérés (0,0000% éles átmenet 25 borítón) ÉS a világosság-garancia
-// (0,2 × kép + 0,8 × papír → legsötétebb ~189/255). Ha valaki gyengíti
-// őket, a hibás felirat újra kilátszhat — ezért a teszt mindkettőt őrzi.
-export const HATTER_ELMOSAS = 70;
-export const HATTER_PAPIR_FEDES = 0.80;
-const PAPIR_RGB = { r: 0xf2, g: 0xed, b: 0xe4 };
+// ELŐZMÉNY. 09-21-től a borító 70-es elmosással és 80% papírral fedve ment
+// ki, hogy a gépi borítók elírt feliratai ne látsszanak. Az eredmény egy
+// halvány színfolt lett: minden Reel ugyanaz a drapp lap. A 09-23-i
+// posztereknél a user az ÉLES képet választotta, tudva, hogy a gépi
+// borítón néha elírt felirat látszik (ugyanaz a kép élesen kint van a
+// cikkoldalon is) — itt ugyanez a döntés.
+//
+// B — a kép ÉLESEN kitölti a teljes hátteret; a szöveg egy papírszínű
+//     KÁRTYÁN ül, így az olvashatóság nem a képen múlik.
+// C — lépésenként a kép MÁS RÉSZE látszik (vándorló kivágás): a videó
+//     közben is változik, nem egy állókép. A 16:9-es borító a 1920-as
+//     magasságra nagyítva ~3400 px széles, ebből vándorol az 1080-as ablak.
+//
+// OLVASHATÓSÁG — NEM REMÉNY, HANEM HATÁR: a kártyán a kép legfeljebb
+// (1 − KARTYA_FEDES) = 6%-ban üt át, tehát teljesen fekete kép mellett is
+// ~223/255 világos a szöveg alatti felület. Teszt őrzi, fekete bemenettel.
+export const KARTYA_X = 20;               // a kártya szélesebb, mint a régi szövegkeret
+// A szöveg a kártyán BELÜL 40-40 px levegőt kap. Az első változatban a
+// szöveg (1000 px) pontosan akkora volt, mint a kártya — az „Open Gemini"
+// a kártya széléig ért. Kártya-módban ezért keskenyebb a keret.
+export const KARTYA_SZOVEG_MAX = 1080 - 2 * 20 - 2 * 40;   // = 960
+// A legkisebb betű a kártyán. 72 px-nél a leghosszabb (21 karakteres)
+// sorok a keskenyebb keretben a kártya széléig értek volna — 3 élő
+// útmutatón mérve. 68 px a 1920-as képen még bőven olvasható.
+export const KARTYA_MIN_MERET = 68;
+export const KARTYA_Y = 690;               // ⚠️ a SAV_FELSO…SAV_ALSO sávban
+export const KARTYA_MAGAS = 600;           // alja = 1290 = SAV_ALSO
+export const KARTYA_FEDES = 0.94;
+export const VANDORLAS = [0.2, 0.8];       // a kivágás bal széle a szabad sáv 20→80%-án
+
+/** A kivágás bal szélének aránya az i. kártyánál (0…1). */
+export function vandorlasArany(i, db) {
+  const [tol, ig] = VANDORLAS;
+  return db > 1 ? tol + (ig - tol) * (i / (db - 1)) : (tol + ig) / 2;
+}
 
 /**
- * A tábla háttere: a cikk borítóképéből elmosott színfolt, vagy — ha
- * nincs kép — egybefüggő papírszín.
+ * Kártyánként egy-egy ÉLES háttér a borítóból, lépésenként máshova nézve.
  *
- * ⚠️ SOHA NEM DOB. Hiányzó vagy olvashatatlan kép esetén a papírszínre
- * esik vissza: egy háttér miatt nem maradhat el a napi Reel.
+ * ⚠️ SOHA NEM DOB. Hiányzó vagy olvashatatlan kép esetén `null`-t ad, és a
+ * gyártás a régi, egyszínű papír-táblára esik vissza: egy háttér miatt nem
+ * maradhat el a napi Reel.
  *
  * @param {object} sharp a behúzott sharp modul
  * @param {string} kepUt a borítókép útvonala ('' = nincs)
+ * @param {number} db a kártyák száma
+ * @returns {Promise<Buffer[]|null>}
  */
-export async function hatterKepbol(sharp, kepUt) {
-  const sima = () => sharp({ create: { width: W, height: H, channels: 3, background: PAPIR } })
-    .png().toBuffer();
-  if (!kepUt || !existsSync(kepUt)) return sima();
+export async function hatterekKepbol(sharp, kepUt, db) {
+  if (!kepUt || !existsSync(kepUt) || !(db > 0)) return null;
   try {
-    const nyers = await sharp(kepUt)
-      .resize(W, H, { fit: 'cover', position: 'attention' })
-      .blur(HATTER_ELMOSAS)
-      .modulate({ saturation: 0.75 })
-      .removeAlpha()
-      .raw().toBuffer({ resolveWithObject: true });
-    const px = nyers.data;
-    const f = HATTER_PAPIR_FEDES;
-    for (let i = 0; i < px.length; i += 3) {
-      px[i]     = Math.round(px[i]     * (1 - f) + PAPIR_RGB.r * f);
-      px[i + 1] = Math.round(px[i + 1] * (1 - f) + PAPIR_RGB.g * f);
-      px[i + 2] = Math.round(px[i + 2] * (1 - f) + PAPIR_RGB.b * f);
+    const { data, info } = await sharp(kepUt).resize({ height: H }).removeAlpha()
+      .png().toBuffer({ resolveWithObject: true });
+    // álló vagy keskeny kép: nincs hova vándorolni → kitöltjük, egyformán
+    if (info.width < W) {
+      const egy = await sharp(kepUt).resize(W, H, { fit: 'cover', position: 'attention' }).png().toBuffer();
+      return Array.from({ length: db }, () => egy);
     }
-    return await sharp(px, { raw: { width: W, height: H, channels: 3 } }).png().toBuffer();
+    const szabad = info.width - W;
+    const ki = [];
+    for (let i = 0; i < db; i++) {
+      const left = Math.round(szabad * vandorlasArany(i, db));
+      ki.push(await sharp(data).extract({ left, top: 0, width: W, height: H }).png().toBuffer());
+    }
+    return ki;
   } catch (e) {
     console.log('   ⚠️ a borítókép nem használható (' + e.message + ') — papírszín megy helyette');
-    return sima();
+    return null;
   }
 }
 
@@ -662,34 +698,18 @@ export async function renderVideo(cards, { out, workDir, voice = 'en-US-AvaMulti
   rmSync(workDir, { recursive: true, force: true });
   mkdirSync(workDir, { recursive: true });
 
-  // 🎨 A HÁTTÉR A CIKK SAJÁT KÉPÉBŐL — SZÍNFOLTKÉNT (2026-09-21, user-kérés)
+  // 🎨 A HÁTTÉR A CIKK ÉLES BORÍTÓJA, LÉPÉSENKÉNT MÁSHOVA NÉZVE (2026-09-23)
   //
-  // ELŐZMÉNY. 09-17-én kivettük a borítóképet, mert az AI-generált borítók
-  // HIBÁS FELIRATOT tartalmazhatnak („perrplexity", két r-rel), és a 9-es
-  // sugarú elmosás alól az kilátszott. Az akkori indoklásom azt írta: „a
-  // takarást nem lehet elég erősre hangolni; ami annyira el van mosva,
-  // hogy a hibát elfedi, az már csak színes zaj, azaz nem ad semmit."
-  //
-  // 🔑 AZ AKKORI CÉL MÁS VOLT. Akkor azt akartuk, hogy LÁTSZÓDJON a kép.
-  // A user mai kérése más: azt akarja, hogy minden Reel MÁSKÉPP nézzen ki.
-  // Ahhoz a „színes zaj" épp elég — a cikk saját színeit hozza, és attól
-  // lesz a napi videó mindig más. Ugyanaz a technika, másik kérdésre.
-  //
-  // AMIT MÉRTÜNK (2026-09-21, 25 valódi borítón; a mérő HITELESÍTVE, mert
-  // a nyers képre 11,62%-ot ad, tehát tényleg lát):
-  //   nyers kép ......................... 11,62% éles átmenet
-  //   + papír-keverés ................... 1,73%
-  //   + 70-es elmosás (ez megy ki) ...... 0,0000%   ← sehol nem marad betű
-  //
-  // ⚠️ AZ ELSŐ MÉRŐM VAK VOLT, és a hitelesítő eset fogta meg: a nyers
-  // képre is nullát mondott. Nem a képlet volt rossz, hanem a HITELESÍTŐ
-  // ág is átment a papír-keverésen — rosszul izoláltam a változót.
-  //
-  // OLVASHATÓSÁG — NEM REMÉNY, HANEM HATÁR. A kimenet
-  // `0,2 × kép + 0,8 × papír`, tehát a LEGSÖTÉTEBB lehetséges háttér is
-  // ~189/255 világos. Nincs az a borítókép, amitől a tinta-fekete szöveg
-  // olvashatatlanná válna. Teszt őrzi (core/short-video.test.js).
-  const hatter = await hatterKepbol(sharp, kepUt);
+  // Előzmény: 09-17-én a borító kikerült (gépi elírt felirat), 09-21-én
+  // színfoltként (70-es elmosás + 80% papír) jött vissza — de abból minden
+  // Reel ugyanaz a drapp lap lett. A user 09-23-án a bemutatott változatok
+  // közül az éles, teljes hátteret + vándorló kivágást választotta, tudva,
+  // hogy a gépi borítón néha elírt felirat látszik. A részletek és az
+  // olvashatósági garancia: hatterekKepbol() és a KARTYA_* állandók.
+  // Ha nincs kép: `null` → a régi, egyszínű papír-tábla megy.
+  // (2026-09-23) A színfolt helyett ÉLES kép, lásd hatterekKepbol().
+  const hatterek = await hatterekKepbol(sharp, kepUt, cards.length);
+  const papir = await sharp({ create: { width: W, height: H, channels: 3, background: PAPIR } }).png().toBuffer();
 
   const idok = [];
   for (let i = 0; i < cards.length; i++) {
@@ -708,7 +728,10 @@ export async function renderVideo(cards, { out, workDir, voice = 'en-US-AvaMulti
       '-c:a', 'libmp3lame', mp3], { stdio: 'pipe' });
     idok.push(hossz(mp3));
 
-    await sharp(hatter).composite([{ input: tablaSvg(cards[i], i, cards.length, { alap: false }) }])
+    const tabla = hatterek
+      ? tablaSvg(cards[i], i, cards.length, { alap: false, kartya: true })
+      : tablaSvg(cards[i], i, cards.length, { alap: false });
+    await sharp(hatterek ? hatterek[i] : papir).composite([{ input: tabla }])
       .jpeg({ quality: 92 }).toFile(join(workDir, `k${i}.jpg`));
   }
 
