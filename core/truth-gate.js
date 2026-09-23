@@ -92,7 +92,7 @@ const JUDGE_SYSTEM = `You are the pre-publication TRUTH GATE of AI World Co. You
 FLAG (credible=false) only these, and only when you are reasonably sure:
 - UI elements/buttons/menus/pages described for a named product that do not exist (e.g. a self-serve "Purchase Reserved Capacity" button, a "Rewrite tool" with style dropdowns)
 - invented or wrong URLs / domains
-- invented model names or version numbers (e.g. "GPT-5.6", "CORTEX.GPT5_6")
+- invented model names or version numbers (e.g. "GPT-5.6", "CORTEX.GPT5_6") — EXCEPT names and versions that appear in the SOURCE block: those come from the publisher's own official announcement and are real, even if they are newer than your training data
 - invented prices, discounts, percentages or plan claims stated as fact
 - features attributed to a named tool that the tool does not have
 
@@ -135,8 +135,21 @@ export async function aiTruthVerdict(markdown, meta = {}, askFn) {
   const head = `Title: ${meta.title || ''}\nTool: ${meta.tool || '-'} | Company: ${meta.company || '-'} | Type: ${meta.type || 'news'}`;
   const known = (meta.knownNames || knownRealNames());
   const knownBlock = known.length ? `\n\n=== VERIFIED-REAL NAMES (do NOT flag their existence as invented) ===\n${known.join(', ')}` : '';
+  // ⚠️ A FORRÁS NÉLKÜL A BÍRÓ A SAJÁT, ELAVULT TUDÁSÁHOZ MÉR (2026-09-23).
+  // A „Claude Opus 5.5 is now available on AWS" hírt az AWS HIVATALOS
+  // blogjáról azzal blokkolta, hogy „a tudásom 2026 januárjáig tart, ott az
+  // Opus 4.1 a legújabb" — az átdolgozás pedig KIVETTE a modell nevét a
+  // cikkből. 14 nap alatt 15 blokk szólt így („nem ismerem"), jellemzően a
+  // cég SAJÁT blogjáról jött hírre. A bíró eddig nem tudta, honnan jött a
+  // hír, és milyen nap van ma.
+  // ⚠️ CSAK VALÓDI KÜLSŐ FORRÁS-URL MELLETT. Az útmutatónak is van
+  // `original_title`-je (a TÉMÁJA), de az nem hivatalos bejelentés — ha
+  // annak mutatnánk be, a bíró a mi saját témacímünket hinné forrásnak.
+  const forrasBlock = /^https?:\/\//i.test(meta.sourceUrl || '')
+    ? `\n\n=== SOURCE (the official announcement this article rewrites) ===\nPublisher: ${meta.sourceName || '-'}\nOriginal headline: ${meta.originalTitle || '-'}\nURL: ${meta.sourceUrl || '-'}\nToday's date: ${meta.today || new Date().toISOString().slice(0, 10)}\nThis source is NEWER than your training data. Names, models, products and version numbers that appear in the original headline or the URL are REAL — never flag them as invented. Flag only specifics the article ADDS that the source does not support.`
+    : '';
   const body = String(markdown || '').slice(0, 14000);
-  const response = await askFn(`${head}${knownBlock}\n\n=== ARTICLE MARKDOWN ===\n${body}`, {
+  const response = await askFn(`${head}${knownBlock}${forrasBlock}\n\n=== ARTICLE MARKDOWN ===\n${body}`, {
     agentName: 'truth',
     systemPrompt: JUDGE_SYSTEM,
     maxTokens: 6000,          // Gemini gondolkodási tokenjei is ebből fogynak!
@@ -148,6 +161,58 @@ export async function aiTruthVerdict(markdown, meta = {}, askFn) {
 }
 
 // ---------------------------------------------------------------
+// FORRÁS-VISSZAIGAZOLÁS ($0) — a bíró „nem létezik" kifogása a HIVATALOS
+// forrás saját címével szemben nem áll meg.
+//
+// A prompt önmagában nem garancia: a modell a forrás-blokkot is figyelmen
+// kívül hagyhatja. Ezért a döntés UTÁN egy gépi szűrő elveti azt a
+// kifogást, amelyik:
+//   (a) csak LÉTEZÉST vitat („invented", „does not exist", „no such"…),
+//   (b) minden idézett neve szó szerint szerepel a forrás címében vagy
+//       az URL-jében, és
+//   (c) nem említ árat, százalékot vagy linket.
+// ⚠️ A (c) nélkül egy valódi kitalációt is elengedne: „'Claude Opus 5.5'
+// costs $3" — a név a címben van, de a kifogás az ÁRRÓL szól.
+// ⚠️ Minden idézett névnek egyeznie kell: „'Gemini' has no 'Rewrite'
+// button" a Gemini-t idézi (címben van), de a 'Rewrite'-ot nem → marad.
+// ---------------------------------------------------------------
+const LETEZES_RX = /invented|fabricat|does not exist|doesn't exist|no (?:such|known|verified|recogni[sz]ed|confirmed|published)|not (?:a )?(?:real|recogni[sz]ed|known|verified)|training|not aware|made[- ]up|no evidence|does not match any/i;
+const ARAS_RX = /\$|€|£|\d\s*%|percent|price|pricing|cost|https?:\/\//i;
+// ⚠️ FELÜLETRŐL SZÓLÓ KIFOGÁST SOHA NEM ENGEDÜNK EL. A kalibráláskor a
+// szűrő elengedett volna egy jogos blokkot: az útmutató egy nem létező
+// „Summarize" menüpontot írt le a Safariban, és mivel a „Summarize" szó a
+// témacímben is szerepelt, a név-egyezés „visszaigazolta". A kitalált
+// gomb/menü a kapu legfontosabb fogása — ezt a forrás címe nem igazolja.
+const FELULET_RX = /\b(?:button|menu|option|icon|tab|panel|toggle|dropdown|settings?|screen|UI|click|tap|step \d|sidebar|toolbar|label(?:ed|led)?)\b/i;
+
+/** kisbetű, csak betű/szám, szóközzel elválasztva — „Opus 5.5" ≡ „opus-5-5" */
+const norm = s => ' ' + String(s || '').toLowerCase().replace(/[^\p{L}\p{N}]+/gu, ' ').trim() + ' ';
+
+/** A kifogásban idézett nevek. Az aposztróf a szó közepén („Anthropic's") nem idézőjel. */
+function idezettNevek(szoveg) {
+  const ki = [];
+  for (const m of String(szoveg).matchAll(/(?<![\p{L}\p{N}])['‘"“]([^'’"”\n]{2,60})['’"”](?![\p{L}\p{N}])/gu)) ki.push(m[1].trim());
+  return ki.filter(x => /[\p{L}\p{N}]/u.test(x));
+}
+
+export function forrasVisszaigazol(problems, { originalTitle = '', sourceUrl = '' } = {}) {
+  // Külső forrás-URL nélkül (útmutató) SEMMIT nem igazolunk vissza: az
+  // útmutató `original_title`-je a saját témánk, nem hivatalos bejelentés.
+  if (!/^https?:\/\//i.test(sourceUrl || '')) return { maradt: [...(problems || [])], elvetett: [] };
+  let urlResz = '';
+  try { urlResz = new URL(sourceUrl).pathname; } catch { urlResz = ''; }
+  const forras = norm(originalTitle + ' ' + urlResz);
+  const maradt = [], elvetett = [];
+  for (const p of problems || []) {
+    const nevek = idezettNevek(p);
+    const mindForrasban = nevek.length > 0 && nevek.every(n => forras.includes(norm(n)));
+    if (mindForrasban && LETEZES_RX.test(p) && !ARAS_RX.test(p) && !FELULET_RX.test(p)) elvetett.push(p);
+    else maradt.push(p);
+  }
+  return { maradt, elvetett };
+}
+
+// ---------------------------------------------------------------
 // A KAPU — { pass, hold, blockers, warnings, cost }
 //   pass=false + hold=true  → piszkozat marad (AI nem elérhető)
 //   pass=false + hold=false → rejected (kitaláltság)
@@ -156,7 +221,12 @@ export async function truthGate(writerData, { ask, fetcher = fetch } = {}) {
   const md = writerData.article_markdown || '';
   const meta = {
     title: (md.match(/^title:\s*["']?(.+?)["']?\s*$/m) || [])[1] || writerData.original_title,
-    tool: writerData._meta?.tool, company: writerData._meta?.company, type: writerData._meta?.type
+    tool: writerData._meta?.tool, company: writerData._meta?.company, type: writerData._meta?.type,
+    // a hivatalos forrás — az útmutatónak nincs, ott ezek üresek
+    originalTitle: writerData.original_title || '',
+    sourceName: writerData._meta?.source_name || '',
+    sourceUrl: writerData._meta?.source_link || (writerData._meta?.source_links || [])[0] || '',
+    today: new Date().toISOString().slice(0, 10)
   };
 
   // 1. réteg: linkek ($0) — ha itt bukik, AI-t sem hívunk
@@ -171,7 +241,14 @@ export async function truthGate(writerData, { ask, fetcher = fetch } = {}) {
   // nélkül: előbb naplózzuk pár napig, és ha kiderül, hogy az alacsony
   // magabiztosságú blokkolások a téves riasztások, AKKOR lesz küszöb.
   // (Vakon beállított küszöb valódi kitalációkat engedne ki.)
-  if (!v.credible) return { pass: false, hold: false, blockers: v.problems.length ? v.problems : ['Az AI-bíró kitalált állítást talált (részletek nélkül)'], warnings: links.warnings, cost: v.cost, confidence: v.confidence };
+  if (!v.credible) {
+    const { maradt, elvetett } = forrasVisszaigazol(v.problems, meta);
+    if (v.problems.length && !maradt.length) {
+      return { pass: true, hold: false, blockers: [], cost: v.cost, confidence: v.confidence, overridden: elvetett,
+        warnings: [...links.warnings, `A bíró ${elvetett.length} kifogását felülbíráltuk: a név a hivatalos forrás címében szerepel (${meta.sourceName || meta.sourceUrl})`] };
+    }
+    return { pass: false, hold: false, blockers: maradt.length ? maradt : ['Az AI-bíró kitalált állítást talált (részletek nélkül)'], warnings: links.warnings, cost: v.cost, confidence: v.confidence };
+  }
   return { pass: true, hold: false, blockers: [], warnings: links.warnings, cost: v.cost, confidence: v.confidence };
 }
 
