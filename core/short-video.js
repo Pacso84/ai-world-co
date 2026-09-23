@@ -645,16 +645,16 @@ export function videoArgs({ kepek, hang, out }) {
 // A kártya BAL széle és a JOBB oldalon hagyott sáv. A jobb oldalon a
 // Facebook függőlegesen sorakozó gombjai (like, komment, megosztás) ülnek —
 // a szöveg nem kerülhet alájuk, ezért a kártya onnan beljebb húzódik.
-export const KARTYA_X = 20;
-export const KARTYA_JOBB = 110;
+export const KARTYA_X = 90;                 // ⚠️ KÖZÉPEN: bal = jobb (user, 09-23: „legyen középen a szövegdoboz")
+export const KARTYA_JOBB = 90;
 // A szöveg a kártyán BELÜL 40-40 px levegőt kap. Az első változatban a
 // szöveg pontosan akkora volt, mint a kártya — az „Open Gemini" a kártya
 // széléig ért. Kártya-módban ezért keskenyebb a keret.
-export const KARTYA_SZOVEG_MAX = 1080 - 20 - 110 - 2 * 40;   // = 870
+export const KARTYA_SZOVEG_MAX = 1080 - 90 - 90 - 2 * 40;   // = 820
 // A legkisebb betű a kártyán: a leghosszabb (21 karakteres) sor is
 // beleférjen a 870-es keretbe (21 × 0,65 × 62 = 846). A 1920-as képen
 // még bőven olvasható.
-export const KARTYA_MIN_MERET = 62;
+export const KARTYA_MIN_MERET = 60;       // 21 × 0,65 × 60 = 819 ≤ 820
 // ⚠️ A KÁRTYA ALJA A FACEBOOK-TAKARÁS SÁVJÁBAN VAN — A USER DÖNTÉSE
 // (2026-09-23). Első körben a SAV_ALSO-nál (1290) állt meg; a user a
 // takarási sávok bemutatása után kérte: „lent jobb lenne… a szövegre

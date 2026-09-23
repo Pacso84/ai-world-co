@@ -223,6 +223,17 @@ await t('🔑 egyetlen élő útmutató egyetlen kártyáján sem ér a szöveg 
   assert.equal(kint.length, 0, kint.length + ' szöveg ér a kártya széléig (30 px-en belül), pl. ' + kint.slice(0, 3).join(' · '));
 });
 
+await t('🔑 a szövegdoboz KÖZÉPEN van (user, 09-23: „kicsit balra helyezkedik el")', async () => {
+  const svg = String(tablaSvg({ cimke: '', nagy: 'Két\nsor', kicsi: 'alcím' }, 1, 5, { alap: false, kartya: true }));
+  const m = svg.match(/<rect\b[^>]*\bx="([\d.]+)"[^>]*\bwidth="([\d.]+)"[^>]*rx="36"/);
+  assert.ok(m, 'nincs kártya');
+  const kozep = Number(m[1]) + Number(m[2]) / 2;
+  assert.equal(kozep, W / 2, 'a kártya közepe ' + kozep + ', nem ' + W / 2);
+  for (const x of svg.matchAll(/<text\b[^>]*\bx="([\d.]+)"[^>]*text-anchor="middle"[^>]*>(?!AI<)/g)) {
+    assert.equal(Number(x[1]), W / 2, 'egy szöveg nem középen áll: x=' + x[1]);
+  }
+});
+
 await t('kártya-módban a halvány lépésszám elmarad (a fotón úgysem látszana)', async () => {
   const van = String(tablaSvg({ cimke: '03', nagy: 'X', kicsi: '' }, 2, 5));
   const nincs = String(tablaSvg({ cimke: '03', nagy: 'X', kicsi: '' }, 2, 5, { alap: false, kartya: true }));
