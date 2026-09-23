@@ -509,15 +509,13 @@ export function tablaSvg({ cimke, nagy, kicsi }, i, db, { alap = true, kartya = 
   // rendereléséből 0,616 jött ki — felfelé kerekítve, hogy a nagybetűs
   // sorok se szaladjanak ki). A pontos védelmet a teszt adja, ami a
   // betűfájl VALÓDI karakterszélességeivel számol minden élő cikkre.
-  const alapMeret = sorok.length <= 2 ? 138 : 116;
+  const alapMeret = kartya
+    ? KARTYA_MAX_MERET
+    : (sorok.length <= 2 ? 138 : 116);
   const leghosszabb = Math.max(1, ...sorok.map(s => s.length));
   const meret = Math.max(kartya ? KARTYA_MIN_MERET : SZOVEG_MIN_MERET,
     Math.min(alapMeret, Math.floor(maxSzeles / (leghosszabb * BETU_ARANY))));
   const sorMagassag = meret * 1.08;
-  // A blokk a 980-as alapvonal körül ül ki: ez a Reels-lejátszó
-  // KÖZÉPSŐ, biztosan szabad harmada.
-  const kezd = 980 - (sorok.length - 1) * meret * 0.55;
-  const utolsoSor = kezd + (sorok.length - 1) * sorMagassag;
 
   // ── AZ ALCÍM IS KIFUTHAT (2026-09-18, mérve) ─────────────────────
   // A nagy szöveget tördeljük és méretezzük, az alcímet eddig SEM: a
@@ -535,6 +533,21 @@ export function tablaSvg({ cimke, nagy, kicsi }, i, db, { alap = true, kartya = 
     : 0;
   const alcimMeret = Math.min(ALCIM_MERET, alcimFer);
   const alcimLatszik = !!kicsi && alcimMeret >= ALCIM_MIN_MERET;
+
+  // A papír-táblán a blokk a 980-as alapvonal körül ül ki: ez a Reels-
+  // lejátszó KÖZÉPSŐ, biztosan szabad harmada.
+  // ⚠️ KÁRTYA-MÓDBAN ALULRÓL ÉPÜL (2026-09-23, user: „inkább a szöveg
+  // legyen alul, a kép meg teljes"). Az utolsó sor a haladásjelző fölé kerül,
+  // a többi fölötte, és a kártya CSAK akkora, amekkora a szövegnek kell —
+  // fölötte a kép szabadon látszik. Lejjebb nem mehet: 1290 alatt a
+  // Facebook a saját leírásával és gombjaival takarja a videót (SAV_ALSO).
+  const utolsoAlap = alcimLatszik ? KARTYA_SZOVEG_ALJA - 70 : KARTYA_SZOVEG_ALJA;
+  const kezd = kartya
+    ? utolsoAlap - (sorok.length - 1) * sorMagassag
+    : 980 - (sorok.length - 1) * meret * 0.55;
+  const utolsoSor = kezd + (sorok.length - 1) * sorMagassag;
+  const kartyaTeteje = Math.round(kezd - meret * 0.8 - KARTYA_BELSO);
+
   const szoveg = sorok.map((s, k) =>
     `<text x="${W / 2}" y="${kezd + k * sorMagassag}" text-anchor="middle" font-size="${meret}"
      font-family="${BETU_CSALAD}" font-weight="900" fill="${TINTA}">${esc(s)}</text>`).join('\n');
@@ -551,7 +564,7 @@ export function tablaSvg({ cimke, nagy, kicsi }, i, db, { alap = true, kartya = 
 
   return Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}">
   ${alap ? `<rect width="${W}" height="${H}" fill="${PAPIR}"/>` : ''}
-  ${kartya ? `<rect x="${KARTYA_X}" y="${KARTYA_Y}" width="${W - 2 * KARTYA_X}" height="${KARTYA_MAGAS}" rx="36" fill="${PAPIR}" opacity="${KARTYA_FEDES}"/>` : ''}
+  ${kartya ? `<rect x="${KARTYA_X}" y="${kartyaTeteje}" width="${W - 2 * KARTYA_X}" height="${SAV_ALSO - kartyaTeteje}" rx="36" fill="${PAPIR}" opacity="${KARTYA_FEDES}"/>` : ''}
   <rect x="0" y="0" width="${W}" height="14" fill="${ZSALYA}"/>
   <rect x="${W - 166}" y="270" width="96" height="56" rx="10" fill="${TINTA}"/>
   <text x="${W - 118}" y="311" text-anchor="middle" font-size="38"
@@ -630,8 +643,12 @@ export const KARTYA_SZOVEG_MAX = 1080 - 2 * 20 - 2 * 40;   // = 960
 // sorok a keskenyebb keretben a kártya széléig értek volna — 3 élő
 // útmutatón mérve. 68 px a 1920-as képen még bőven olvasható.
 export const KARTYA_MIN_MERET = 68;
-export const KARTYA_Y = 690;               // ⚠️ a SAV_FELSO…SAV_ALSO sávban
-export const KARTYA_MAGAS = 600;           // alja = 1290 = SAV_ALSO
+// A kártya ALULRÓL épül (user, 09-23: „a szöveg legyen alul, a kép meg
+// teljes"): az alja a SAV_ALSO (1290 — alatta a Facebook takar), a teteje
+// a szöveg magasságától függ, így fölötte a kép a lehető legtöbbet mutatja.
+export const KARTYA_SZOVEG_ALJA = 1160;    // az utolsó sor alapvonala (a haladásjelző 1208-on)
+export const KARTYA_BELSO = 40;            // levegő a szöveg fölött a kártyán
+export const KARTYA_MAX_MERET = 100;       // kártyán kisebb a betű → kisebb kártya, több kép
 export const KARTYA_FEDES = 0.94;
 export const VANDORLAS = [0.2, 0.8];       // a kivágás bal széle a szabad sáv 20→80%-án
 
