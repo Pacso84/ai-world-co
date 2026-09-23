@@ -539,8 +539,11 @@ export function tablaSvg({ cimke, nagy, kicsi }, i, db, { alap = true, kartya = 
   // ⚠️ KÁRTYA-MÓDBAN ALULRÓL ÉPÜL (2026-09-23, user: „inkább a szöveg
   // legyen alul, a kép meg teljes"). Az utolsó sor a haladásjelző fölé kerül,
   // a többi fölötte, és a kártya CSAK akkora, amekkora a szövegnek kell —
-  // fölötte a kép szabadon látszik. Lejjebb nem mehet: 1290 alatt a
-  // Facebook a saját leírásával és gombjaival takarja a videót (SAV_ALSO).
+  // fölötte a kép szabadon látszik.
+  // ⚠️ A SAV_ALSO ALÁ MEGY — A USER DÖNTÉSE. Első körben a SAV_ALSO-nál
+  // (1290) állt meg; a user a Facebook-takarás bemutatása UTÁN kérte, hogy
+  // „lent jobb lenne… a szövegre gondoltam". A kártya alja ezért a
+  // KARTYA_ALJA, és a jobb oldali gombsor elől beljebb húzódik (KARTYA_JOBB).
   const utolsoAlap = alcimLatszik ? KARTYA_SZOVEG_ALJA - 70 : KARTYA_SZOVEG_ALJA;
   const kezd = kartya
     ? utolsoAlap - (sorok.length - 1) * sorMagassag
@@ -548,23 +551,28 @@ export function tablaSvg({ cimke, nagy, kicsi }, i, db, { alap = true, kartya = 
   const utolsoSor = kezd + (sorok.length - 1) * sorMagassag;
   const kartyaTeteje = Math.round(kezd - meret * 0.8 - KARTYA_BELSO);
 
+  // kártya-módban a szöveg a KÁRTYA közepén áll, nem a vászonén
+  const kx = kartya ? (KARTYA_X + (W - KARTYA_JOBB)) / 2 : W / 2;
+  const jelzoY = kartya ? KARTYA_JELZO_Y : SAV_JELZO_Y;
+  const markaY = kartya ? KARTYA_MARKA_Y : MARKAJEL_Y;
+
   const szoveg = sorok.map((s, k) =>
-    `<text x="${W / 2}" y="${kezd + k * sorMagassag}" text-anchor="middle" font-size="${meret}"
+    `<text x="${kx}" y="${kezd + k * sorMagassag}" text-anchor="middle" font-size="${meret}"
      font-family="${BETU_CSALAD}" font-weight="900" fill="${TINTA}">${esc(s)}</text>`).join('\n');
 
   // Haladásjelző: Reelsben ez mutatja, mennyi van hátra — ez tartja bent a
   // nézőt. ⚠️ KÖZÉPRE került (y=1180): a régi helyén, y=1788-on a platform
   // saját leírás-sávja alatt volt, azaz gyakorlatilag láthatatlan.
-  const SAV_SZELES = 720, SAV_X = (W - SAV_SZELES) / 2, RES = 10;
+  const SAV_SZELES = 720, SAV_X = kx - SAV_SZELES / 2, RES = 10;
   const sav = Array.from({ length: db }, (_, k) => {
     const sz = (SAV_SZELES - (db - 1) * RES) / db;
-    return `<rect x="${SAV_X + k * (sz + RES)}" y="${SAV_JELZO_Y}" width="${sz}" height="8" rx="4"
+    return `<rect x="${SAV_X + k * (sz + RES)}" y="${jelzoY}" width="${sz}" height="8" rx="4"
       fill="${ZSALYA}" opacity="${k <= i ? '1' : '0.22'}"/>`;
   }).join('\n');
 
   return Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}">
   ${alap ? `<rect width="${W}" height="${H}" fill="${PAPIR}"/>` : ''}
-  ${kartya ? `<rect x="${KARTYA_X}" y="${kartyaTeteje}" width="${W - 2 * KARTYA_X}" height="${SAV_ALSO - kartyaTeteje}" rx="36" fill="${PAPIR}" opacity="${KARTYA_FEDES}"/>` : ''}
+  ${kartya ? `<rect x="${KARTYA_X}" y="${kartyaTeteje}" width="${W - KARTYA_X - KARTYA_JOBB}" height="${KARTYA_ALJA - kartyaTeteje}" rx="36" fill="${PAPIR}" opacity="${KARTYA_FEDES}"/>` : ''}
   <rect x="0" y="0" width="${W}" height="14" fill="${ZSALYA}"/>
   <rect x="${W - 166}" y="270" width="96" height="56" rx="10" fill="${TINTA}"/>
   <text x="${W - 118}" y="311" text-anchor="middle" font-size="38"
@@ -572,10 +580,10 @@ export function tablaSvg({ cimke, nagy, kicsi }, i, db, { alap = true, kartya = 
   ${cimke ? `<text x="${W / 2}" y="640" text-anchor="middle" font-size="190"
       font-family="${BETU_CSALAD}" font-weight="900" fill="${ZSALYA}" opacity="0.30">${cimke}</text>` : ''}
   ${szoveg}
-  ${alcimLatszik ? `<text x="${W / 2}" y="${utolsoSor + 70}" text-anchor="middle" font-size="${alcimMeret}"
+  ${alcimLatszik ? `<text x="${kx}" y="${utolsoSor + 70}" text-anchor="middle" font-size="${alcimMeret}"
     font-family="${BETU_CSALAD}" fill="${HALVANY}">${esc(kicsi)}</text>` : ''}
   ${sav}
-  <text x="${W / 2}" y="${MARKAJEL_Y}" text-anchor="middle" font-size="40" letter-spacing="5"
+  <text x="${kx}" y="${markaY}" text-anchor="middle" font-size="40" letter-spacing="5"
     font-family="${BETU_CSALAD}" font-weight="bold" fill="${TINTA}" opacity="0.65">AIWORLDHQ.COM</text>
 </svg>`);
 }
@@ -634,19 +642,27 @@ export function videoArgs({ kepek, hang, out }) {
 // OLVASHATÓSÁG — NEM REMÉNY, HANEM HATÁR: a kártyán a kép legfeljebb
 // (1 − KARTYA_FEDES) = 6%-ban üt át, tehát teljesen fekete kép mellett is
 // ~223/255 világos a szöveg alatti felület. Teszt őrzi, fekete bemenettel.
-export const KARTYA_X = 20;               // a kártya szélesebb, mint a régi szövegkeret
+// A kártya BAL széle és a JOBB oldalon hagyott sáv. A jobb oldalon a
+// Facebook függőlegesen sorakozó gombjai (like, komment, megosztás) ülnek —
+// a szöveg nem kerülhet alájuk, ezért a kártya onnan beljebb húzódik.
+export const KARTYA_X = 20;
+export const KARTYA_JOBB = 110;
 // A szöveg a kártyán BELÜL 40-40 px levegőt kap. Az első változatban a
-// szöveg (1000 px) pontosan akkora volt, mint a kártya — az „Open Gemini"
-// a kártya széléig ért. Kártya-módban ezért keskenyebb a keret.
-export const KARTYA_SZOVEG_MAX = 1080 - 2 * 20 - 2 * 40;   // = 960
-// A legkisebb betű a kártyán. 72 px-nél a leghosszabb (21 karakteres)
-// sorok a keskenyebb keretben a kártya széléig értek volna — 3 élő
-// útmutatón mérve. 68 px a 1920-as képen még bőven olvasható.
-export const KARTYA_MIN_MERET = 68;
-// A kártya ALULRÓL épül (user, 09-23: „a szöveg legyen alul, a kép meg
-// teljes"): az alja a SAV_ALSO (1290 — alatta a Facebook takar), a teteje
-// a szöveg magasságától függ, így fölötte a kép a lehető legtöbbet mutatja.
-export const KARTYA_SZOVEG_ALJA = 1160;    // az utolsó sor alapvonala (a haladásjelző 1208-on)
+// szöveg pontosan akkora volt, mint a kártya — az „Open Gemini" a kártya
+// széléig ért. Kártya-módban ezért keskenyebb a keret.
+export const KARTYA_SZOVEG_MAX = 1080 - 20 - 110 - 2 * 40;   // = 870
+// A legkisebb betű a kártyán: a leghosszabb (21 karakteres) sor is
+// beleférjen a 870-es keretbe (21 × 0,65 × 62 = 846). A 1920-as képen
+// még bőven olvasható.
+export const KARTYA_MIN_MERET = 62;
+// ⚠️ A KÁRTYA ALJA A FACEBOOK-TAKARÁS SÁVJÁBAN VAN — A USER DÖNTÉSE
+// (2026-09-23). Első körben a SAV_ALSO-nál (1290) állt meg; a user a
+// takarási sávok bemutatása után kérte: „lent jobb lenne… a szövegre
+// gondoltam". Az 1640 a leírás (legalsó ~280 px) FÖLÖTT hagyja.
+export const KARTYA_ALJA = 1640;
+export const KARTYA_JELZO_Y = KARTYA_ALJA - 90;      // a haladásjelző a kártyán
+export const KARTYA_MARKA_Y = KARTYA_ALJA - 28;      // a márkajel a kártyán
+export const KARTYA_SZOVEG_ALJA = KARTYA_JELZO_Y - 48; // az utolsó sor alapvonala
 export const KARTYA_BELSO = 40;            // levegő a szöveg fölött a kártyán
 export const KARTYA_MAX_MERET = 100;       // kártyán kisebb a betű → kisebb kártya, több kép
 export const KARTYA_FEDES = 0.94;

@@ -28,7 +28,7 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import {
   hatterekKepbol, vandorlasArany, tablaSvg, W, H, SAV_FELSO, SAV_ALSO,
-  KARTYA_X, KARTYA_FEDES, VANDORLAS, SAV_JELZO_Y, MARKAJEL_Y
+  KARTYA_X, KARTYA_JOBB, KARTYA_ALJA, KARTYA_JELZO_Y, KARTYA_MARKA_Y, KARTYA_FEDES, VANDORLAS
 } from './short-video.js';
 
 /** A papír-kártya teteje és alja a kész SVG-ből (a kártya az egyetlen rx="36"-os téglalap). */
@@ -127,7 +127,7 @@ await t('🔑 a LEGSÖTÉTEBB lehetséges képnél is világos marad a kártya',
   const kesz = await sharp(fekete).composite([{ input: svg }]).png().toBuffer();
   const teteje = kartyaTeteje(svg);
   // a kártya belseje, a haladásjelző és a márkajel FÖLÖTT (azok maguk is tinták)
-  const belso = await sharp(kesz).extract({ left: KARTYA_X + 30, top: teteje + 30, width: W - 2 * KARTYA_X - 60, height: 1180 - teteje - 30 })
+  const belso = await sharp(kesz).extract({ left: KARTYA_X + 30, top: teteje + 30, width: W - KARTYA_X - KARTYA_JOBB - 60, height: KARTYA_JELZO_Y - 30 - teteje - 30 })
     .png().toBuffer();
   const st = await sharp(belso).greyscale().stats();
   // A tinta #1c1a16 ≈ 27/255 — a kártyának bőven e fölött kell lennie.
@@ -140,7 +140,11 @@ await t('📐 a kártya a Reels biztonságos sávjában marad, és minden sor ra
     const svg = String(tablaSvg({ cimke: '', nagy, kicsi }, 5, 6, { alap: false, kartya: true }));
     const teteje = kartyaTeteje(svg), alja = kartyaAlja(svg);
     assert.ok(teteje >= SAV_FELSO, 'a kártya teteje a platform fejléce alá lóg: ' + teteje);
-    assert.equal(alja, SAV_ALSO, 'a kártya alja nem a Facebook-sáv szélén van: ' + alja);
+    assert.equal(alja, KARTYA_ALJA, 'a kártya alja nem a megbeszélt helyen van: ' + alja);
+    // a jobb oldali Facebook-gombok alá nem lóghat
+    const jobbSzel = Number((svg.match(/<rect\b[^>]*\bx="([\d.]+)"[^>]*\bwidth="([\d.]+)"[^>]*rx="36"/) || [])[1])
+      + Number((svg.match(/<rect\b[^>]*\bx="([\d.]+)"[^>]*\bwidth="([\d.]+)"[^>]*rx="36"/) || [])[2]);
+    assert.ok(jobbSzel <= W - KARTYA_JOBB, 'a kártya a jobb oldali gombok alá lóg: ' + jobbSzel);
     for (const m of svg.matchAll(/<text\b[^>]*\sy="([-\d.]+)"[^>]*font-size="(\d+)"/g)) {
       const y = parseFloat(m[1]), meret = Number(m[2]);
       if (y < 400) continue;                                 // az AI-jel a kártyán kívül, szándékosan
@@ -153,13 +157,13 @@ await t('📐 a kártya a Reels biztonságos sávjában marad, és minden sor ra
 await t('🔑 a szöveg ALUL van — egyetlen élő kártyán sem takarja a kép felső részét', async () => {
   // User, 09-23: „inkább a szöveg legyen alul, a kép meg teljes". Az első
   // B+C-változatban a kártya 690-nél kezdődött, a látható rész felénél.
-  // Mérce: a látható sáv (SAV_FELSO…SAV_ALSO) felső 45%-ába SOHA nem ér
-  // kártya — ott mindig a kép látszik.
+  // Mérce: a kártya teteje SOHA nem ér az 1050-es vonal fölé — fölötte
+  // mindig a kép látszik (a látható rész több mint fele).
   const { readdirSync } = await import('fs');
   const { cardsFromGuide } = await import('./short-video.js');
   const { utmutatoE } = await import('./guide-kind.js');
-  const HATAR = Math.round(SAV_FELSO + (SAV_ALSO - SAV_FELSO) * 0.45);
-  const ALSO_SOR_MIN = SAV_JELZO_Y - 120;                    // az utolsó sor legfeljebb ennyivel a jelző fölött
+  const HATAR = 1050;
+  const ALSO_SOR_MIN = KARTYA_JELZO_Y - 120;                    // az utolsó sor legfeljebb ennyivel a jelző fölött
   const AD = join(ROOT, 'content', 'articles');
   let db = 0, legmagasabb = SAV_ALSO; const rossz = [];
   for (const f of readdirSync(AD).filter(x => x.startsWith('ARTICLE_') && x.endsWith('.json'))) {
@@ -177,7 +181,7 @@ await t('🔑 a szöveg ALUL van — egyetlen élő kártyán sem takarja a kép
       // visszaraktam KÖZÉPRE (a kisebb betű miatt a kártya így is a határ
       // alatt maradt). A valódi mérce: az utolsó sor a haladásjelző fölött ül.
       const sorokY = [...svg.matchAll(/<text\b[^>]*\sy="([-\d.]+)"/g)].map(m => parseFloat(m[1]))
-        .filter(y => y > 400 && y < MARKAJEL_Y - 20);          // az AI-jel és a márkajel nélkül
+        .filter(y => y > 400 && y < KARTYA_MARKA_Y - 20);          // az AI-jel és a márkajel nélkül
       const also = Math.max(...sorokY);
       if (also < ALSO_SOR_MIN) rossz.push(`${d._meta?.slug?.slice(0, 30)} #${i}: utolsó sor ${Math.round(also)}`);
     }
@@ -197,7 +201,7 @@ await t('🔑 egyetlen élő útmutató egyetlen kártyáján sem ér a szöveg 
   const { utmutatoE } = await import('./guide-kind.js');
   const { BETU_ARANY, ALCIM_ARANY } = await import('./short-video.js');
   const AD = join(ROOT, 'content', 'articles');
-  const belso = W - 2 * KARTYA_X;                 // a kártya teljes szélessége
+  const belso = W - KARTYA_X - KARTYA_JOBB;       // a kártya teljes szélessége
   let kartyaDb = 0; const kint = [];
   for (const f of readdirSync(AD).filter(x => x.startsWith('ARTICLE_') && x.endsWith('.json'))) {
     let d; try { d = JSON.parse(readFileSync(join(AD, f), 'utf-8')); } catch { continue; }
