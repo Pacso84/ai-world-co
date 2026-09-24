@@ -1,0 +1,21 @@
+{
+  "started_at": "2026-09-24T02:06:24.849Z",
+  "feeds_total": 36,
+  "feeds_ok": 35,
+  "feeds_failed": 1,
+  "items_seen_before": 281,
+  "items_keyword_filtered": 3,
+  "candidates_for_ai": 42,
+  "ai_calls": 5,
+  "items_relevant": 21,
+  "items_saved": 21,
+  "ai_cost_usd": 0.008677204999999999,
+  "failed_feeds": [
+    {
+      "id": "ntt-research",
+      "error": "Status code 403"
+    }
+  ],
+  "finished_at": "2026-09-24T02:07:47.680Z",
+  "duration_seconds": 82.831
+}

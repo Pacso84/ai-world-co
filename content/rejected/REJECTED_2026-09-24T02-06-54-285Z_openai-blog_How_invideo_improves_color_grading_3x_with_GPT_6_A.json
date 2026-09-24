@@ -1,0 +1,44 @@
+{
+  "_meta": {
+    "written_at": "2026-09-24T02:09:54.319Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00877368,
+    "original_draft": "2026-09-24T02-06-54-285Z_openai-blog_How_invideo_improves_color_grading_3x_with_GPT_6_A.json",
+    "source_id": "openai-blog",
+    "source_name": "OpenAI Blog (hivatalos)",
+    "source_link": "https://openai.com/index/invideo-builds-with-gpt-6-astra",
+    "source_links": [
+      "https://openai.com/index/invideo-builds-with-gpt-6-astra",
+      "https://openai.com/index/harvey-from-context-to-confidence-with-astra",
+      "https://openai.com/index/airbnb-gpt-6-astra"
+    ],
+    "merged_from": 3,
+    "merged_theme": "OpenAI GPT-6 Astra enterprise integrations",
+    "status": "rejected",
+    "rejected_at": "2026-09-24T02:15:39.150Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 619
+    },
+    "ai_review": {
+      "overall_score": 7,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [
+        "The model name 'GPT-6 Astra' cannot be verified as a real, officially announced product — hedging with 'what's been called' helps but the framing may still mislead readers into treating it as confirmed",
+        "The URL itself contains 'gpt-6-astra' which anchors the piece to an unverifiable product claim — consider whether this framing serves reader trust"
+      ],
+      "verdict": "Well-structured, friendly, and explains key terms (LLM, multimodal, agentic, color correction) in plain language. Hook is strong and the three-industry comparison gives readers a concrete mental picture. The main concern is that the entire article is anchored to an unverified product name ('GPT-6 Astra') that may not exist yet — the hedging helps but the URL and headline double down on it. If the model name is real and publicly confirmed by OpenAI, the article passes. If not, the Writer should reframe the piece around what OpenAI has actually announced.",
+      "_aiCost": 0.001098762,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Well-structured, friendly, and explains key terms (LLM, multimodal, agentic, color correction) in plain language. Hook is strong and the three-industry comparison gives readers a concrete mental picture. The main concern is that the entire article is anchored to an unverified product name ('GPT-6 Astra') that may not exist yet — the hedging helps but the URL and headline double down on it. If the model name is real and publicly confirmed by OpenAI, the article passes. If not, the Writer should reframe the piece around what OpenAI has actually announced.",
+    "can_retry": true
+  },
+  "article_markdown": "---\ntitle: \"What Frontier AI Like GPT-6 Astra Reveals About Your Daily Work\"\nsubtitle: \"Next-generation AI is starting to handle real jobs inside companies — here is what that signals for everyone else.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"frontier-ai\", \"openai\", \"enterprise-ai\", \"productivity\"]\n---\n\n# What Frontier AI Like GPT-6 Astra Reveals About Your Daily Work\n\n> **In short:** A new wave of OpenAI's frontier models — including what's been called GPT-6 Astra — is being adopted by companies in video, legal, and tech for real work like color grading, legal drafts, and bug fixing. The pattern tells us where everyday AI tools are heading next.\n\nWhen AI shows up in a video editor, a law firm, and a home-rental platform in the same week, something bigger is happening than a single feature launch. The pattern matters more than any one product.\n\n## What's actually new in these models\n\nThe latest generation of large language models (LLMs — think of them as the \"brain\" behind tools like ChatGPT) can handle far more than chat. They can read images, parse long documents, follow multi-step plans, and call other software to take action. That combination is what people mean by **multimodal** (handling text, images, and audio together) and **agentic** (able to do tasks, not just answer questions).\n\nFor a video team, that means the model can look at frames and suggest color grades. For a legal team, it can read a 200-page contract and surface the clauses that matter. For an engineering team, it can scan code, spot a bug, and propose a fix. These are not research demos anymore — they are starting to ship inside tools people use every day.\n\n## Why three very different companies matter\n\nInvideo, the AI video platform, is using a model like this to speed up **color correction** (adjusting how a video looks — brightness, contrast, color balance) and to generate custom visual effects at scale. Harvey, which builds AI for lawyers, is using it to draft legal documents that respect the surrounding case context. Airbnb is opening access for its engineering teams so they can fix bugs and design systems faster.\n\nThree different industries, one shared shift: AI is moving from \"answer my question\" to \"do real work alongside me.\" That is the part worth paying attention to, because the same capability is quietly reaching tools you may already use — your email app, your photo editor, your notes.\n\n## What this means for you\n\n- **If you create anything for fun or work** — videos, slides, designs, writing: expect your everyday AI helpers to handle longer, messier, more visual tasks over the next year. Try uploading an image or a longer document the next time you get stuck, instead of just typing a question.\n- **If your job involves reviewing lots of material** — emails, contracts, reports, research: a frontier model can act like a second pair of eyes. Don't ship its first draft, but use it to surface what you might have missed.\n- **If you're just curious**: pick one small task this week — summarize a long article, draft a tricky email, clean up a photo — and let a current AI tool do the first pass. You will feel exactly where the floor is moving under your feet.\n\n## Wrap-up\n\nFrontier AI is no longer a research story. It is showing up in real offices, doing real work, in three very different industries at once. Watch the pattern, not the press release. The best move today is to open whatever AI tool you already have, hand it a task you have been putting off, and notice how much further it gets than it would have six months ago.",
+  "original_title": "How invideo improves color grading 3x with GPT‑6 Astra"
+}

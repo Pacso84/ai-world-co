@@ -1,158 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t178995685320710",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-09-21T02:14:13.207Z",
-      "updated": "2026-09-21T02:14:13.312Z"
-    },
-    {
-      "id": "t178995685331333",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-09-21T02:14:13.313Z",
-      "updated": "2026-09-21T02:14:39.265Z"
-    },
-    {
-      "id": "t178995687926782",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-09-21T02:14:39.267Z",
-      "updated": "2026-09-21T02:14:39.392Z"
-    },
-    {
-      "id": "t178995687939367",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-09-21T02:14:39.393Z",
-      "updated": "2026-09-21T02:16:25.423Z"
-    },
-    {
-      "id": "t178995698542470",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-21T02:16:25.424Z",
-      "updated": "2026-09-21T02:16:59.630Z"
-    },
-    {
-      "id": "t178995701963245",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-09-21T02:16:59.632Z",
-      "updated": "2026-09-21T02:20:27.471Z"
-    },
-    {
-      "id": "t178995722747277",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-21T02:20:27.472Z",
-      "updated": "2026-09-21T02:20:53.936Z"
-    },
-    {
-      "id": "t17899572539380",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-09-21T02:20:53.938Z",
-      "updated": "2026-09-21T02:21:06.751Z"
-    },
-    {
-      "id": "t178995726678469",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-09-21T02:21:06.784Z",
-      "updated": "2026-09-21T02:29:39.942Z"
-    },
-    {
-      "id": "t178995777994349",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-21T02:29:39.943Z",
-      "updated": "2026-09-21T02:30:25.520Z"
-    },
-    {
-      "id": "t178995782554847",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-21T02:30:25.548Z",
-      "updated": "2026-09-21T02:30:59.090Z"
-    },
-    {
-      "id": "t178995785909081",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-09-21T02:30:59.090Z",
-      "updated": "2026-09-21T02:31:28.145Z"
-    },
-    {
-      "id": "t178995788814688",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-21T02:31:28.146Z",
-      "updated": "2026-09-21T02:31:37.522Z"
-    },
-    {
-      "id": "t17899578975242",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-09-21T02:31:37.524Z",
-      "updated": "2026-09-21T02:31:51.985Z"
-    },
-    {
-      "id": "t179000161346098",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-09-21T14:40:13.460Z",
-      "updated": "2026-09-21T14:40:13.578Z"
-    },
-    {
-      "id": "t179000161358028",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-09-21T14:40:13.580Z",
-      "updated": "2026-09-21T14:40:42.935Z"
-    },
-    {
-      "id": "t179000164293679",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-09-21T14:40:42.936Z",
-      "updated": "2026-09-21T14:40:43.062Z"
-    },
-    {
-      "id": "t179000164306431",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-09-21T14:40:43.064Z",
-      "updated": "2026-09-21T14:41:05.373Z"
-    },
-    {
-      "id": "t179000166537446",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-21T14:41:05.374Z",
-      "updated": "2026-09-21T14:41:22.401Z"
-    },
-    {
       "id": "t179000168240346",
       "title": "Run pairing",
       "status": "done",
@@ -479,33 +327,161 @@
       "agent": "publisher",
       "created": "2026-09-23T02:34:32.258Z",
       "updated": "2026-09-23T02:34:57.824Z"
+    },
+    {
+      "id": "t179021558444576",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-09-24T02:06:24.445Z",
+      "updated": "2026-09-24T02:06:24.629Z"
+    },
+    {
+      "id": "t179021558463199",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-09-24T02:06:24.631Z",
+      "updated": "2026-09-24T02:07:47.691Z"
+    },
+    {
+      "id": "t179021566769213",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-09-24T02:07:47.692Z",
+      "updated": "2026-09-24T02:07:47.892Z"
+    },
+    {
+      "id": "t179021566789445",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-09-24T02:07:47.894Z",
+      "updated": "2026-09-24T02:11:16.892Z"
+    },
+    {
+      "id": "t179021587689431",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-24T02:11:16.894Z",
+      "updated": "2026-09-24T02:12:53.647Z"
+    },
+    {
+      "id": "t179021597364947",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-09-24T02:12:53.649Z",
+      "updated": "2026-09-24T02:15:16.396Z"
+    },
+    {
+      "id": "t179021611639816",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-24T02:15:16.398Z",
+      "updated": "2026-09-24T02:17:04.400Z"
+    },
+    {
+      "id": "t179021622440336",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-09-24T02:17:04.403Z",
+      "updated": "2026-09-24T02:17:30.730Z"
+    },
+    {
+      "id": "t179021625078636",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-09-24T02:17:30.786Z",
+      "updated": "2026-09-24T02:18:26.867Z"
+    },
+    {
+      "id": "t179021630686998",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-24T02:18:26.869Z",
+      "updated": "2026-09-24T02:18:49.304Z"
+    },
+    {
+      "id": "t179021632935335",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-09-24T02:18:49.353Z",
+      "updated": "2026-09-24T02:18:49.536Z"
+    },
+    {
+      "id": "t179021632953890",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-09-24T02:18:49.538Z",
+      "updated": "2026-09-24T02:19:58.805Z"
+    },
+    {
+      "id": "t179021639880965",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-09-24T02:19:58.809Z",
+      "updated": "2026-09-24T02:23:33.304Z"
+    },
+    {
+      "id": "t179021661330837",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-09-24T02:23:33.308Z",
+      "updated": "2026-09-24T02:23:58.712Z"
+    },
+    {
+      "id": "t179021663871481",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-24T02:23:58.714Z",
+      "updated": "2026-09-24T02:24:26.528Z"
+    },
+    {
+      "id": "t179021666652930",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-24T02:24:26.529Z",
+      "updated": "2026-09-24T02:25:07.022Z"
+    },
+    {
+      "id": "t179021670702497",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-09-24T02:25:07.024Z",
+      "updated": "2026-09-24T02:26:02.278Z"
+    },
+    {
+      "id": "t179021676228050",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-24T02:26:02.280Z",
+      "updated": "2026-09-24T02:26:18.761Z"
+    },
+    {
+      "id": "t179021677876327",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-09-24T02:26:18.763Z",
+      "updated": "2026-09-24T02:26:50.142Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178878323430025",
-      "level": "info",
-      "text": "SEO: 1 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-09-07T12:13:54.300Z",
-      "loud": false
-    },
-    {
-      "id": "n178878325077838",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The lineup is solid and ready — practical, everyday AI use cases that match our mission perfectly. One note: with 10 different AI tools mentioned, a quick intro for newcomers (what Le Chat, ChatRTX, e",
-      "agent": "publisher",
-      "at": "2026-09-07T12:14:10.778Z",
-      "loud": false
-    },
-    {
-      "id": "n178878326047174",
-      "level": "success",
-      "text": "1 hír + 0 útmutató publikálva (költség: $0.0127).",
-      "agent": "ceo",
-      "at": "2026-09-07T12:14:20.471Z",
-      "loud": false
-    },
     {
       "id": "n178878915236823",
       "level": "info",
@@ -1281,90 +1257,33 @@
       "agent": "fact-check",
       "at": "2026-09-23T02:35:37.306Z",
       "loud": false
+    },
+    {
+      "id": "n179021676226945",
+      "level": "info",
+      "text": "SEO: 5 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-09-24T02:26:02.269Z",
+      "loud": false
+    },
+    {
+      "id": "n179021679185493",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The lineup is solid and practical—every article solves a real, everyday problem, which is exactly on-brand. Readers will find genuine value here.\n\n**Two things to flag before publishing:**\n\n1. **Two c",
+      "agent": "publisher",
+      "at": "2026-09-24T02:26:31.854Z",
+      "loud": false
+    },
+    {
+      "id": "n179021681019058",
+      "level": "success",
+      "text": "3 hír + 2 útmutató publikálva (költség: $0.1195).",
+      "agent": "ceo",
+      "at": "2026-09-24T02:26:50.190Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178900652253849",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Creating a weekly workout plan tailored to your fi\" — Le Chat is presented as a major AI assistant that 'all work for this' purpose, but Le Chat by Mistral AI has had a complicated history — it was temporarily removed, rebranded, and is now primarily available through paid API access rather than a free consumer chat interface. Presentin",
-      "ref": "ARTICLE_GUIDE_creating-a-weekly-workout-plan-tailored-to-your-fitness-leve.json",
-      "at": "2026-09-10T02:15:22.538Z"
-    },
-    {
-      "id": "m178900723663081",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-09-10T02:27:16.630Z"
-    },
-    {
-      "id": "m178904327887289",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Getting started with DeepSeek for everyday help\" — DeepSeek is described as \"completely free\" — this is unverifiable and likely outdated. DeepSeek has had API pricing and may have introduced paid tiers.",
-      "ref": "ARTICLE_GUIDE_deepseek-getting-started.json",
-      "at": "2026-09-10T12:27:58.872Z"
-    },
-    {
-      "id": "m178909214913656",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "info",
-      "text": "A \"Gemini in Google Sheets is now available on Android dev\" hír a meglévő útmutatóra mutat: gemini-getting-started",
-      "ref": "gemini-getting-started",
-      "at": "2026-09-11T02:02:29.136Z"
-    },
-    {
-      "id": "m178909239006083",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"How to decode a confusing medical bill or insurance statement with AI\" — mi a baj: Beginner clarity too low (7/10): steps are vague or could mislead a first-time user; Step 4 lacks explicit fallback if a beginner can't identify confusing lines — add guidance like 'if everything looks clear, still ask the AI to flag any codes it thinks are worth questioning'; Step 3 calls UI ",
-      "ref": "GUIDE_how-to-decode-a-confusing-medical-bill-or-insurance-statemen.json",
-      "at": "2026-09-11T02:06:30.060Z"
-    },
-    {
-      "id": "m17890927719451",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Create custom Genmoji and images with Apple Intelligence Image Playground\" — mi a baj: UI_CLAIMS_UNSOURCED: 3 konkrét képernyő-feliratot állít tényként forrás nélkül (\"apple intelligence & siri\", \"turn on apple intelligence\", \"genmoji\"). Vagy nézd meg a hivatalos oldalon, vagy írd hedge-elve (\"if you don't see…\").; Apple Intelligence, Image Playground, and Genmoji are real A",
-      "ref": "GUIDE_create-custom-genmoji-and-images-with-apple-intelligence-ima.json",
-      "at": "2026-09-11T02:12:51.945Z"
-    },
-    {
-      "id": "m178909286060125",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 20 → 5/4/2 oszlop.",
-      "ref": "mobile",
-      "at": "2026-09-11T02:14:20.601Z"
-    },
-    {
-      "id": "m178909346460765",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "4 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-09-11T02:24:24.607Z"
-    },
-    {
-      "id": "m17891297267977",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Create custom Genmoji and images with Apple Intelligence Image Playground\" — javítva: UI_CLAIMS_UNSOURCED: 3 konkrét képernyő-feliratot állít tényként forrás nélkül (\"apple intelligence & siri\", \"turn on apple intelligence\", \"genmoji\"). Vagy nézd meg a hivatalos oldalon, vagy írd hedge-elve (\"if you don't see…\").; Apple Intelligence, Image Playground, and Genmoji are real Apple featu",
-      "ref": "GUIDE_create-custom-genmoji-and-images-with-apple-intelligence-ima.json",
-      "at": "2026-09-11T12:28:46.797Z"
-    },
     {
       "id": "m178912972680033",
       "from": "guide",
@@ -2642,6 +2561,87 @@
       "text": "6 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-09-23T02:45:56.914Z"
+    },
+    {
+      "id": "m179021592796930",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Sam Altman’s remarks at the United Nations Security Council\" — mi a baj: The article states 'A new advisory group focused on mathematics and AI is one example of how the safety conversation is bringing in people from very different fields' as a specific current fact, but this advisory group is not mentioned in the source (Sam Altman's UN Security Council remarks) and no othe",
+      "ref": "2026-09-24T02-06-54-285Z_openai-blog_Sam_Altman_s_remarks_at_the_United_Nations_Securit.json",
+      "at": "2026-09-24T02:12:07.969Z"
+    },
+    {
+      "id": "m179021595647819",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Grab and OpenAI bring practical AI skills to Southeast Asia\" — mi a baj: The article states OpenAI Academy 'has been running for over two years' and is 'now well into its second year' as a free learning program from OpenAI — this is an invented specific claim about an OpenAI product/program. The source URL (Grab/OpenAI Southeast Asia skills) does not support the existence or",
+      "ref": "2026-09-24T02-06-54-286Z_openai-blog_Grab_and_OpenAI_bring_practical_AI_skills_to_South.json",
+      "at": "2026-09-24T02:12:36.478Z"
+    },
+    {
+      "id": "m179021599058797",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Sam Altman’s remarks at the United Nations Security Council\" — javítva: The article states 'A new advisory group focused on mathematics and AI is one example of how the safety conversation is bringing in people from very different fields' as a specific current fact, but this advisory group is not mentioned in the source (Sam Altman's UN Security Council remarks) and no other sourcing",
+      "ref": "2026-09-24T02-06-54-285Z_openai-blog_Sam_Altman_s_remarks_at_the_United_Nations_Securit.json",
+      "at": "2026-09-24T02:13:10.587Z"
+    },
+    {
+      "id": "m179021611638323",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Grab and OpenAI bring practical AI skills to Southeast Asia\" — javítva: The article states OpenAI Academy 'has been running for over two years' and is 'now well into its second year' as a free learning program from OpenAI — this is an invented specific claim about an OpenAI product/program. The source URL (Grab/OpenAI Southeast Asia skills) does not support the existence or age of 'O",
+      "ref": "2026-09-24T02-06-54-286Z_openai-blog_Grab_and_OpenAI_bring_practical_AI_skills_to_South.json",
+      "at": "2026-09-24T02:15:16.383Z"
+    },
+    {
+      "id": "m17902161391674",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"How invideo improves color grading 3x with GPT‑6 Astra\" — mi a baj: The model name 'GPT-6 Astra' cannot be verified as a real, officially announced product — hedging with 'what's been called' helps but the framing may still mislead readers into treating it as confirmed; The URL itself contains 'gpt-6-astra' which anchors the piece to an unverifiable product claim — consider ",
+      "ref": "2026-09-24T02-06-54-285Z_openai-blog_How_invideo_improves_color_grading_3x_with_GPT_6_A.json",
+      "at": "2026-09-24T02:15:39.167Z"
+    },
+    {
+      "id": "m179021616160113",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Sam Altman’s remarks at the United Nations Security Council\" (?/10)",
+      "ref": "2026-09-24T02-06-54-285Z_openai-blog_Sam_Altman_s_remarks_at_the_United_Nations_Securit.json",
+      "at": "2026-09-24T02:16:01.601Z"
+    },
+    {
+      "id": "m179021619150225",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Grab and OpenAI bring practical AI skills to Southeast Asia\" (?/10)",
+      "ref": "2026-09-24T02-06-54-286Z_openai-blog_Grab_and_OpenAI_bring_practical_AI_skills_to_South.json",
+      "at": "2026-09-24T02:16:31.502Z"
+    },
+    {
+      "id": "m179021677870760",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 20 → 5/4/2 oszlop.",
+      "ref": "mobile",
+      "at": "2026-09-24T02:26:18.707Z"
+    },
+    {
+      "id": "m17902168547158",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Auto-write captions for your photos using Hugging \" — The specific claim that \"BLIP Image Captioning\" and \"ViT-GPT2 Image Captioning\" Spaces definitely exist and are the main options",
+      "ref": "ARTICLE_GUIDE_auto-write-captions-for-your-photos-using-hugging-face-s-fre.json",
+      "at": "2026-09-24T02:27:34.715Z"
     }
   ]
 }

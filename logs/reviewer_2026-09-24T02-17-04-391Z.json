@@ -1,0 +1,41 @@
+{
+  "started_at": "2026-09-24T02:15:16.584Z",
+  "total": 4,
+  "passed": 3,
+  "failed": 1,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.009163685999999999,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-09-24T02-06-54-285Z_openai-blog_How_invideo_improves_color_grading_3x_with_GPT_6_A.json",
+      "rejected": "REJECTED_2026-09-24T02-06-54-285Z_openai-blog_How_invideo_improves_color_grading_3x_with_GPT_6_A.json",
+      "decision": "FAIL",
+      "score": 7,
+      "cost_usd": 0.001098762
+    },
+    {
+      "writer": "WRITER_2026-09-24T02-06-54-285Z_openai-blog_Sam_Altman_s_remarks_at_the_United_Nations_Securit.json",
+      "article": "ARTICLE_2026-09-24T02-06-54-285Z_openai-blog_Sam_Altman_s_remarks_at_the_United_Nations_Securit.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.00103782
+    },
+    {
+      "writer": "WRITER_2026-09-24T02-06-54-286Z_openai-blog_Grab_and_OpenAI_bring_practical_AI_skills_to_South.json",
+      "article": "ARTICLE_2026-09-24T02-06-54-286Z_openai-blog_Grab_and_OpenAI_bring_practical_AI_skills_to_South.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.0022224
+    },
+    {
+      "writer": "WRITER_2026-09-24T02-07-11-499Z_google-workspace_Ground_AI_prompts_in_Google_Docs_on_existing_sourc.json",
+      "article": "ARTICLE_2026-09-24T02-07-11-499Z_google-workspace_Ground_AI_prompts_in_Google_Docs_on_existing_sourc.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.00113436
+    }
+  ],
+  "finished_at": "2026-09-24T02:17:04.391Z",
+  "duration_seconds": 107.807
+}

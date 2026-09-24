@@ -1,0 +1,66 @@
+{
+  "_meta": {
+    "written_at": "2026-09-24T02:11:16.873Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.016347,
+    "original_draft": "2026-09-24T02-07-11-499Z_google-workspace_Ground_AI_prompts_in_Google_Docs_on_existing_sourc.json",
+    "source_id": "google-workspace",
+    "source_name": "Google Workspace Updates (hivatalos)",
+    "source_link": "http://workspaceupdates.googleblog.com/2026/09/ground-ai-prompts-in-google-docs-on-existing-sources-from-Gemini-Notebook.html",
+    "source_links": [
+      "http://workspaceupdates.googleblog.com/2026/09/ground-ai-prompts-in-google-docs-on-existing-sources-from-Gemini-Notebook.html",
+      "http://workspaceupdates.googleblog.com/2026/09/gemini-omni-11-flash-now-in-vids-with-improved-extension-quality-1080p-and-duration-control.html",
+      "http://workspaceupdates.googleblog.com/2026/09/study-notebooks-in-gemini-are-now-available-for-Google-Workspace-accounts.html",
+      "http://workspaceupdates.googleblog.com/2026/09/quick-notes-in-take-notes-for-me.html"
+    ],
+    "merged_from": 4,
+    "merged_theme": "Google Workspace AI features",
+    "status": "published",
+    "published_at": "2026-09-24T02:17:04.391Z",
+    "slug": "google-workspace-ai-just-got-more-useful-here-s-what-s-new",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 655
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "The article is well-structured with clear explanations of technical terms like 'grounding' and 'hallucination' in accessible language, has all required sections (hook, explanation, 'What this means for you', wrap-up), uses fresh writing without clichés, and accurately represents the four Google Workspace updates from the source material without invented facts or quotes.",
+      "_aiCost": 0.00113436,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-09-24T02:17:30.718Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is a roundup covering four separate updates (Docs Notebook grounding, Vids quality, Study notebooks, Quick notes in Meet). No single named feature is introduced in depth.",
+    "image_v": 2,
+    "image_at": "2026-09-24T02:24:53.893Z",
+    "seo": {
+      "meta_description": "Google Workspace just got 4 powerful AI updates: smarter Docs research, Vids video creation, Gemini study notebooks, and meeting summaries.",
+      "keywords": [
+        "Google Workspace AI updates",
+        "Google Docs AI features",
+        "Google Vids AI video",
+        "Gemini AI study notebooks",
+        "Google Meet AI summaries",
+        "Google Workspace AI 2024",
+        "AI that works with your files"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add the publication year to the meta description (2024/2025) for better recency signals",
+        "Include a brief mention of 'free' or 'available now' to match search intent for product updates",
+        "Consider adding 'productivity' as a secondary keyword since that's a major search intent"
+      ],
+      "optimised_at": "2026-09-24T02:25:39.768Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Google Workspace AI Just Got More Useful — Here's What's New\"\nsubtitle: \"Four updates that quietly make Google's AI work with your files instead of guessing\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"google-workspace\", \"gemini\", \"productivity\", \"ai-tools\"]\n---\n\n# Google Workspace AI Just Got More Useful — Here's What's New\n\n> **In short:** Google is rolling out four AI updates across Workspace — AI in Docs that reads your saved research, sharper video generation in Vids, study notebooks in Gemini, and one-page meeting summaries. They share one big idea: AI that works with your own files, not just its training data.\n\nIf you've ever asked an AI to \"write me a project update\" and got something that sounded confident but had nothing to do with your actual work, you know the frustration. Google's recent Workspace updates are aimed squarely at that problem.\n\nThe four changes look unrelated on the surface — Docs, Vids, the Gemini app, Meet — but they share one direction: AI that grounds its answers in your stuff. That single word, \"grounding,\" is the trick.\n\n## What \"grounding\" actually means\n\nWhen an AI generates an answer from scratch, it sometimes makes things up — confidently. That's called a **hallucination** (the AI invents facts that sound true but aren't).\n\nGrounding is the opposite. Instead of guessing, the AI is told: \"Here are specific documents. Use only these.\" It's like the difference between asking a stranger about your company versus asking a coworker who's read the same files you have.\n\n## The four updates, in plain English\n\n**Docs can now pull from your saved research.** In Google Docs, you can reference a Gemini Notebook — a place where you've stored research, links, and notes — while you write. The AI drafts using that notebook as its source, so the proposal you're working on actually reflects the sources you've already gathered.\n\n**Video generation got a quality bump in Vids.** Google Vids (the video creation app) now uses a newer model for AI-generated clips. Characters stay more consistent across scenes, audio stays in sync, and you can set an exact clip length. Generated videos also export at 1080p (full high-definition), so they're ready to share without an extra step.\n\n**Study notebooks arrive in Gemini for Workspace users.** If your school or company uses Google Workspace, you may see a new \"Study notebook\" option in the Gemini app. It builds a personalized lesson plan around a topic you choose — anything from a school subject to a job skill.\n\n**One-page meeting summaries in \"Take notes for me.\"** The AI notetaker in Google Meet now includes a \"Quick notes\" tab. Instead of a full transcript, you get the main takeaways on a single page. Built for people who need the gist without the details.\n\n## What this means for you\n\n- **If you use Google Docs for work or study:** Start a Gemini Notebook for any project that involves research. When you draft, the AI can pull from it directly — fewer made-up facts, more of your actual material.\n- **If you make videos at all:** The quality jump in Vids matters if you've tried AI video before and been disappointed. Worth a second look.\n- **If you're learning something new:** Study notebooks turn Gemini into a private tutor. Pick a goal — like \"learn basic Spanish for my trip\" — and it builds the lessons.\n- **If you sit through lots of meetings:** Quick notes save you from reading five pages of transcript to find the three decisions that mattered.\n\n## Wrap-up\n\nThe big story isn't any single feature — it's that Google is moving from \"AI that talks at you\" to \"AI that works with what you already have.\" That's a quiet shift, but it changes how useful these tools feel day to day. Pick one of the four above and try it this week — start with whichever matches something you already do.",
+  "original_title": "Ground AI prompts in Google Docs on existing sources from Gemini Notebook"
+}

@@ -1,26 +1,4 @@
 {
-  "2026-09-05": [
-    {
-      "at": "2026-09-05T02:03:29.951Z",
-      "file": "WRITER_2026-09-04T01-58-32-035Z_nvidia-blog_NVIDIA_to_Acquire_Hugging_Face.json",
-      "action": "block",
-      "reasons": [
-        "The article presents 'NVIDIA has agreed to acquire Hugging Face' as an established fact. As of available information, there is no verified announcement of NVIDIA acquiring Hugging Face. If this is speculative or unconfirmed, framing it as a done deal ('has agreed to acquire') is a fabrication of fact — not an opinion or analysis.",
-        "The article's entire premise rests on this acquisition being real. Regulatory approval mentions ('still needs regulatory approval in several regions', 'clear regulators in the US, the EU'), the section on 'What this means for you', and the 'What to watch next' section all assume the deal exists. If the acquisition itself is unverified, these are built on a fabricated foundation."
-      ],
-      "confidence": 7
-    },
-    {
-      "at": "2026-09-05T02:03:56.748Z",
-      "file": "WRITER_2026-09-05T01-54-24-476Z_google-workspace_Google_Workspace_Weekly_Recap_-_September_4__2026.json",
-      "action": "block",
-      "reasons": [
-        "The article presents 'Gemini co-presenter suggestion' in Google Meet as a new, real feature. As of available information, there is no verified announcement of Gemini proactively suggesting a co-presenter during Google Slides presentations in Meet, nor a one-click handoff suggestion in an 'Ask Gemini in Meet' panel. This appears to be a fabricated feature.",
-        "The article refers to a specific UI element called the 'Ask Gemini in Meet' panel that surfaces co-presenter suggestions, which does not match known Google Meet/Gemini features."
-      ],
-      "confidence": 6
-    }
-  ],
   "2026-09-07": [
     {
       "at": "2026-09-07T13:51:25.492Z",
@@ -334,6 +312,44 @@
         "The article claims Vera was 'built together with Zappi, a consumer insights platform' and that it 'runs creative through Zappi's models' — Zappi is a real company, but the specific Vera/Zappi integration described is not verifiable and reads as fabricated specifics."
       ],
       "confidence": 7
+    }
+  ],
+  "2026-09-24": [
+    {
+      "at": "2026-09-24T02:11:40.466Z",
+      "file": "WRITER_2026-09-24T02-06-54-285Z_openai-blog_How_invideo_improves_color_grading_3x_with_GPT_6_A.json",
+      "action": "hold",
+      "reasons": [
+        "AI-bíró nem elérhető (érthetetlen AI-válasz: credible mező hiányzik) — visszatartva a következő futásig"
+      ]
+    },
+    {
+      "at": "2026-09-24T02:12:07.970Z",
+      "file": "WRITER_2026-09-24T02-06-54-285Z_openai-blog_Sam_Altman_s_remarks_at_the_United_Nations_Securit.json",
+      "action": "block",
+      "reasons": [
+        "The article states 'A new advisory group focused on mathematics and AI is one example of how the safety conversation is bringing in people from very different fields' as a specific current fact, but this advisory group is not mentioned in the source (Sam Altman's UN Security Council remarks) and no other sourcing is provided. This appears to be a fabricated specific claim inserted into the explainer."
+      ],
+      "confidence": 6
+    },
+    {
+      "at": "2026-09-24T02:12:36.479Z",
+      "file": "WRITER_2026-09-24T02-06-54-286Z_openai-blog_Grab_and_OpenAI_bring_practical_AI_skills_to_South.json",
+      "action": "block",
+      "reasons": [
+        "The article states OpenAI Academy 'has been running for over two years' and is 'now well into its second year' as a free learning program from OpenAI — this is an invented specific claim about an OpenAI product/program. The source URL (Grab/OpenAI Southeast Asia skills) does not support the existence or age of 'OpenAI Academy' as a named free learning program.",
+        "The article asserts 'Google, Microsoft, and Anthropic all publish free beginner-friendly AI courses' as fact — fabricated specifics about programs the source does not mention.",
+        "The article claims 'OpenAI, Google, and Anthropic all publish one [weekly newsletter]' — invented factual claim about specific newsletter products not supported by the source."
+      ],
+      "confidence": 7
+    },
+    {
+      "at": "2026-09-24T02:12:53.635Z",
+      "file": "WRITER_2026-09-24T02-07-11-499Z_google-workspace_Ground_AI_prompts_in_Google_Docs_on_existing_sourc.json",
+      "action": "hold",
+      "reasons": [
+        "AI-bíró nem elérhető (érthetetlen AI-válasz: credible mező hiányzik) — visszatartva a következő futásig"
+      ]
     }
   ]
 }

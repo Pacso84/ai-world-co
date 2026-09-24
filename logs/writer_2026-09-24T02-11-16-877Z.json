@@ -1,0 +1,60 @@
+{
+  "started_at": "2026-09-24T02:07:48.063Z",
+  "drafts_total": 12,
+  "articles_written": 4,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 7,
+  "merged_total": 4,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "total_cost_usd": 0.05698212,
+  "by_article": [
+    {
+      "draft": "2026-09-24T02-06-54-285Z_openai-blog_How_invideo_improves_color_grading_3x_with_GPT_6_A.json",
+      "writer_output": "WRITER_2026-09-24T02-06-54-285Z_openai-blog_How_invideo_improves_color_grading_3x_with_GPT_6_A.json",
+      "success": true,
+      "merged_from": 3,
+      "merged_theme": "OpenAI GPT-6 Astra enterprise integrations",
+      "cost_usd": 0.00877368,
+      "duration_ms": 110173,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-09-24T02-06-54-285Z_openai-blog_Sam_Altman_s_remarks_at_the_United_Nations_Securit.json",
+      "writer_output": "WRITER_2026-09-24T02-06-54-285Z_openai-blog_Sam_Altman_s_remarks_at_the_United_Nations_Securit.json",
+      "success": true,
+      "merged_from": 3,
+      "merged_theme": "OpenAI safety and governance",
+      "cost_usd": 0.017133,
+      "duration_ms": 16427,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-09-24T02-06-54-286Z_openai-blog_Grab_and_OpenAI_bring_practical_AI_skills_to_South.json",
+      "writer_output": "WRITER_2026-09-24T02-06-54-286Z_openai-blog_Grab_and_OpenAI_bring_practical_AI_skills_to_South.json",
+      "success": true,
+      "merged_from": 2,
+      "merged_theme": "OpenAI education and accessibility initiatives",
+      "cost_usd": 0.01214784,
+      "duration_ms": 47900,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-09-24T02-07-11-499Z_google-workspace_Ground_AI_prompts_in_Google_Docs_on_existing_sourc.json",
+      "writer_output": "WRITER_2026-09-24T02-07-11-499Z_google-workspace_Ground_AI_prompts_in_Google_Docs_on_existing_sourc.json",
+      "success": true,
+      "merged_from": 4,
+      "merged_theme": "Google Workspace AI features",
+      "cost_usd": 0.016347,
+      "duration_ms": 14625,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    }
+  ],
+  "finished_at": "2026-09-24T02:11:16.876Z",
+  "duration_seconds": 208.813
+}

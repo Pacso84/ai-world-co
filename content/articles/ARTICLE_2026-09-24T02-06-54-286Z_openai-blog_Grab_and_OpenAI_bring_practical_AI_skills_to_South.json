@@ -1,0 +1,70 @@
+{
+  "_meta": {
+    "written_at": "2026-09-24T02:15:16.382Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00621417,
+    "original_draft": "2026-09-24T02-06-54-286Z_openai-blog_Grab_and_OpenAI_bring_practical_AI_skills_to_South.json",
+    "source_id": "openai-blog",
+    "source_name": "OpenAI Blog (hivatalos)",
+    "source_link": "https://openai.com/index/grab-openai-ai-skills-southeast-asia",
+    "source_links": [
+      "https://openai.com/index/grab-openai-ai-skills-southeast-asia",
+      "https://openai.com/index/two-years-of-openai-academy"
+    ],
+    "merged_from": 2,
+    "merged_theme": "OpenAI education and accessibility initiatives",
+    "status": "published",
+    "rejected_at": "2026-09-24T02:12:36.464Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1414
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "The article is friendly, explanatory, and well-structured with a clear hook, actionable steps, and a useful 'What this means for you' section. It explains key terms (prompt, LLM, hallucination) for beginners and avoids prohibited content or clichés. Minor note: Step 3 gives broad guidance to search for courses rather than naming specific ones, but the article acknowledges this intentionally ('the exact names and locations change over time'), so it reads as honest rather than evasive. This is a solid, publishable guide.",
+      "_aiCost": 0.0022224,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Hitelesség-kapu blokkolta: The article states OpenAI Academy 'has been running for over two years' and is 'now well into its second year' as a free learning program from OpenAI — this is an invented specific claim about an Open",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-09-24T02-06-54-286Z_openai-blog_Grab_and_OpenAI_bring_practical_AI_skills_to_South.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-09-24T02:16:31.501Z",
+    "slug": "how-to-start-learning-ai-for-free-a-practical-plan-for-beginners",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-09-24T02:17:22.137Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is already a how-to guide about learning AI generally, not a news article announcing a specific new tool or feature",
+    "image_v": 2,
+    "image_at": "2026-09-24T02:24:44.257Z",
+    "seo": {
+      "meta_description": "Start learning AI for free with this practical beginner's guide. Build real skills with free tools—no prior coding experience required.",
+      "keywords": [
+        "how to learn AI for free",
+        "beginner AI tutorial free",
+        "AI basics for beginners",
+        "learn AI without coding",
+        "free AI courses 2024",
+        "AI skills for beginners",
+        "practical AI learning guide"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more specific free resource names (like specific courses or platforms) in the article body to improve keyword relevance",
+        "Include a clear H1 heading structure with the main keyword near the top of the article",
+        "Add internal links to related AI World Co. articles on specific AI tools to boost site authority"
+      ],
+      "optimised_at": "2026-09-24T02:25:30.886Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"How to Start Learning AI for Free: A Practical Plan for Beginners\"\nsubtitle: \"A step-by-step approach to building real AI skills using free resources, plus the common mistakes to skip\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 7\ntags: [\"ai-learning\", \"beginner\", \"free-resources\", \"self-study\", \"skills\"]\n---\n\n# How to Start Learning AI for Free: A Practical Plan for Beginners\n\n> **In short:** You can build real, practical AI skills for free using tools and resources available today, even if you've never written a line of code. The fastest path is to pick one tool, use it daily, take one beginner course, and finish a small project.\n\nTwo years ago, learning AI usually meant a four-year computer science degree or a bootcamp costing thousands of dollars. That's no longer the only way in. The major AI companies now publish free learning material, and the tools themselves are easier than ever to try. An ordinary person with a phone, an email address, and some curiosity can pick up usable AI skills in a few weeks. This guide shows you how to actually do that, without bouncing between fifty tutorials and finishing none of them.\n\n**Before you start, you'll need:**\n- A computer or smartphone with internet access\n- An email address (to sign up for free tools)\n- About 30 to 60 minutes a day for the next two to three weeks\n- A willingness to *do* the exercises, not just watch them\n\n## Step 1 — Pick one AI tool and use it for a real task today\n\nDon't start with theory. Start with use.\n\nOpen the web version of ChatGPT at **chatgpt.com**, or download the app on your phone. Sign up with your email. You'll land on a chat screen with a message box at the bottom. That's where you type instructions to the AI, called **prompts** (think of a prompt as the question or task you give the AI).\n\nPick one task from your real life: drafting a tricky email, summarizing a long article, planning next week's meals, or turning rough meeting notes into a clean summary. Try it for ten minutes.\n\n**A prompt you can copy:**\n> 💬 \"Here are my rough meeting notes: [paste notes]. Turn this into a short summary with three action items, one per line.\"\n\n**You'll know it worked when:** the AI gives you a clear, useful answer you can actually use today, even if it isn't perfect. Done is the goal for today.\n\n## Step 2 — Learn the basics of how to ask\n\nOnce you've played around for a few days, the single biggest skill to learn is how to ask. This is called **prompting**, the art of writing instructions that get you what you want.\n\nThe pattern is simpler than people make it:\n1. Say what role the AI should play (e.g., \"act as a friendly editor\").\n2. Give context (the situation, your audience).\n3. State the exact output you want (format, length, tone).\n4. Add any limits or examples.\n\n**A prompt you can copy:**\n> 💬 \"Act as a friendly editor. I'm writing a cover letter for a marketing job at a small business. Make it warm, under 200 words, and avoid corporate jargon. Here's my draft: [paste draft].\"\n\n**You'll know it worked when:** the first answer is noticeably better than your earlier attempts, with fewer rewrites and closer to what you wanted on the first try.\n\n## Step 3 — Take one free beginner course, end to end\n\nNow you have context. Time for a little structure. Take *one* free beginner course, all the way through.\n\nA good place to start is the learning or resources section on the official websites of the major AI companies. OpenAI, Google, Anthropic, and Microsoft all publish some form of free beginner-friendly material — videos, written guides, or interactive lessons. The exact names and locations change over time, so search the homepage of each for terms like \"learn,\" \"academy,\" \"tutorials,\" or \"getting started,\" and pick whichever one matches how you learn best (videos, reading, or hands-on labs).\n\nIf you can't find a course you like, look at well-known learning platforms. Many host free AI intro courses created by universities or independent teachers.\n\n**A simple plan:** spend 30 minutes a day, three days a week, and finish one course in about two weeks.\n\n**You'll know it worked when:** you can explain, in your own words, what an **LLM** (large language model, the type of AI that powers ChatGPT) is, what a **prompt** is, and what a **hallucination** is (when an AI confidently makes something up).\n\n## Step 4 — Build one small project using what you learned\n\nTheory without practice fades fast. The next step is to finish a small, real project — not a perfect one, just a real one.\n\nA few good first projects:\n- A personal budget tracker in a spreadsheet, with formulas an AI helped you write.\n- A reusable weekly meal plan generator.\n- A custom assistant that helps you prepare for job interviews.\n- A short, illustrated children's story made with an AI image tool.\n\nAim for a project that takes no more than a weekend. The goal is to finish it.\n\n**A prompt you can copy:**\n> 💬 \"Help me build a simple weekly meal plan. Ask me three questions first (diet, allergies, cooking time), then give me a Monday-to-Friday dinner plan with ingredients.\"\n\n**You'll know it worked when:** you have something real in your hands — a working file, a saved plan, a finished story — that you built with AI help.\n\n## Step 5 — Find one place to keep learning\n\nAI changes every month. If you stop paying attention, you'll fall behind fast. The fix is a low-effort, ongoing habit: one community or one source of updates, checked weekly.\n\nSome good options:\n- A local AI meetup (search Meetup.com or Eventbrite for your city)\n- A subreddit or Discord focused on practical AI use\n- The blog or news section of a major AI company (most publish regular updates on new features and research)\n- A independent newsletter run by an AI teacher or practitioner you trust\n\nPick the one that feels friendly and beginner-friendly. Skip the ones that feel like bragging contests.\n\n**You'll know it worked when:** six weeks from now, you still hear about new AI changes through your own channels, not from a panicked friend.\n\n## Common mistakes to avoid\n\n- **Mistake #1: Trying five tools at once.** You learn nothing deeply and get confused.\n  *Fix:* Park every other AI tool in a bookmark folder. Add them later.\n\n- **Mistake #2: Only watching tutorials, never doing.** Watching feels productive but isn't.\n  *Fix:* After every lesson, do one small task using what you just learned.\n\n- **Mistake #3: Skipping the basics and jumping to \"advanced.\"** Advanced techniques assume you understand prompts, models, and limits.\n  *Fix:* Spend at least a week on beginner material, even when it feels too simple.\n\n- **Mistake #4: Never using AI for your own real work.** The fastest learning happens when you solve a problem you actually have.\n  *Fix:* After each lesson, ask: \"How would I use this in *my* job, *my* study, *my* home?\"\n\n## What this means for you\n\n- **If you're learning for everyday life:** start with Step 1 today. The fastest way to feel comfortable with AI is to use it for things you already do — emails, planning, summarizing. Within a week, you'll wonder how you managed without it.\n\n- **If you're learning for work or a career change:** take the course in Step 3 inside a focused two-week window. Then build the project in Step 4, something you can actually show in a job interview or a performance review. \"I learned AI and built X\" is now a real line on a resume.\n\n- **If you've already dabbled and feel stuck:** skip the basics and go straight to Step 4. Pick a project that scares you slightly. That's where the real learning lives.\n\n## Wrap-up\n\nAI is now a skill you can teach yourself, for free, in a few weeks — no degree, no bootcamp, no prior experience needed. The key is doing, not collecting tutorials. Pick one tool, use it daily, take one course, finish one project, and find a community to keep you honest. The rest follows from there.\n\n**Your next step:** open **chatgpt.com** (or the app on your phone) and try the first prompt from Step 1, right now, before you close this tab.",
+  "original_title": "Grab and OpenAI bring practical AI skills to Southeast Asia"
+}

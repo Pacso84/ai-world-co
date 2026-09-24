@@ -1,0 +1,62 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "how-to-spot-hidden-errors-in-an-excel-budget-using-copilot",
+    "company": "Microsoft",
+    "tool": "Copilot",
+    "icon": "📊",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-09-24T02:18:26.857Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.01359192,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-09-24T02:18:49.290Z",
+    "slug": "how-to-spot-hidden-errors-in-an-excel-budget-with-copilot",
+    "auto_check": {
+      "passed": false,
+      "issues": [
+        "UI_CLAIMS_UNSOURCED: 3 konkrét képernyő-feliratot állít tényként forrás nélkül (\"copilot\", \"insert\", \"march\"). Vagy nézd meg a hivatalos oldalon, vagy írd hedge-elve (\"if you don't see…\")."
+      ],
+      "wordCount": 1506
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Excellent beginner guide with clear step-by-step instructions, helpful fallbacks in every step, concrete example prompts, and a solid What this means for you section. No invented facts, no cliches, correct US English throughout.",
+      "_aiCost": 0.00174609,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "image_v": 2,
+    "image_at": "2026-09-24T02:25:01.997Z",
+    "seo": {
+      "meta_description": "Discover how Microsoft Copilot can scan your Excel budget for hidden errors like broken formulas and inconsistent numbers before they cost you.",
+      "keywords": [
+        "how to find errors in Excel budget",
+        "Microsoft Copilot Excel help",
+        "check Excel formulas for errors",
+        "Excel budget mistakes",
+        "fix broken formulas in Excel",
+        "use AI to check Excel spreadsheet"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add exact Copilot prompts users can type, like 'Find formula errors in this sheet' — these are high-value long-tail keywords",
+        "Include schema markup for HowTo article type to improve rich snippet eligibility",
+        "Consider adding 'Excel budget audit' as a keyword for users searching for budget review techniques"
+      ],
+      "optimised_at": "2026-09-24T02:25:51.899Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"How to Spot Hidden Errors in an Excel Budget with Copilot\"\nsubtitle: \"Use Microsoft's Copilot to scan your Excel budget for broken formulas and inconsistent numbers before they quietly drain your wallet\"\ncategory: \"guide\"\naudience: \"business\"\ncompany: \"Microsoft\"\ntool: \"Copilot\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"getting-started\", \"copilot\", \"excel\", \"productivity\"]\n---\n\n# How to Spot Hidden Errors in an Excel Budget with Copilot\n\n> **In short:** Microsoft Copilot can scan an Excel budget for broken formulas and inconsistent numbers in seconds. You'll need a Microsoft 365 Copilot subscription and the human habit of double-checking whatever the AI flags — it spots issues, it doesn't replace your judgment.\n\nBy the end of this guide, you'll know how to ask Copilot to look over a budget file and flag the kinds of mistakes that quietly add up: a formula that points at the wrong cell, a row where the total doesn't match the items, a number that was typed in twice. This is for anyone who manages money in Excel — at home, in a small business, or as part of a job — and wants a faster safety net than reading every cell by hand.\n\n## Before you start\n- A **Microsoft 365 Copilot subscription** — the free version of Excel doesn't include the Copilot button. Check Microsoft's official pricing page for the current plan names and what's included.\n- Your budget saved as a regular **.xlsx file** stored on **OneDrive** or **SharePoint** (very old .xls files and password-protected files sometimes don't work with Copilot).\n- **A few minutes of setup time** — the scan itself usually takes under a minute once you're in.\n\n## Step 1 — Open your file and find Copilot\nOpen your budget file in **Excel for Windows, Mac, or the web**. Look along the top ribbon for a button labeled **\"Copilot\"** with a small four-pointed sparkle ✨ icon. It usually sits on the **Home** tab, but Microsoft moves it around when the ribbon updates, so don't panic if it's not where you expect. If you don't see it on Home, check the **⋯ More** overflow area on the far right, or peek under the **Insert** tab. Click the button once. A chat panel slides open on the right side of the screen, often with a friendly greeting and a few suggested prompts. If nothing happens when you click, make sure your file is saved to OneDrive or SharePoint — Copilot often won't open on a file that lives only on your desktop. You'll know it worked when the chat panel appears and asks how it can help.\n\n## Step 2 — Ask Copilot to scan for broken formulas\nIn the chat panel, type a clear question about errors and press **Enter**. Copilot reads through the cells and starts a list of problems it finds — broken formulas, cells that show error codes like **#VALUE!**, **#DIV/0!**, or **#REF!**, and columns where the numbers don't add up. Give it about 10 to 30 seconds to think. If the response is too short or seems off-topic, click **Stop**, then rephrase your question once. If the panel shows a **\"Try again\"** or **\"Refresh\"** link, click it before giving up — that's often the fastest fix. If the response says it can't see formulas, your file may be saved in a format the AI can't read, and you'll need to resave it as a standard .xlsx. You'll know it worked when you see a numbered list of issues, each pointing to a specific row or cell.\n💬 Example: Scan this budget for broken formulas and any cells that show error codes like #VALUE!, #DIV/0!, or #REF!.\n\n## Step 3 — Ask about inconsistent or duplicate numbers\nNow ask a follow-up about the *values* themselves, not just the formulas. Copilot can look for rows where the totals don't match the line items, duplicate entries, or unusually large numbers that don't fit the pattern. Type your question and wait again. If nothing comes back, narrow the request to one column or one section — for example, ask it to look only at the \"Expenses\" sheet or the \"March\" tab. If your workbook has multiple sheets, include the sheet name in your prompt so the AI knows where to look. If you get back a wall of vague answers, try a more specific request that names the column letter (column F, for example). You'll know it worked when you see specific rows called out, each with a short reason for the flag.\n💬 Example: Look for rows where the total in column F does not match the sum of the items in columns B through E, and flag any duplicate vendor names in column A.\n\n## Step 4 — Click into each issue to understand it\nBefore you fix anything, ask Copilot to explain each finding in plain words. You can often click directly on a flagged item in the chat, or you can type a follow-up question asking for a plain-language explanation. Copilot usually replies with a short description and, when it can, highlights the cell on the spreadsheet so you can see it. If the explanation is too technical, just type \"explain it more simply\" and it will try again in friendlier words. If Copilot says it can't pinpoint the exact cell, scroll through the sheet yourself and look at the rows it mentioned — the row numbers are usually right even when the cell isn't. You'll know it worked when you can say out loud, in your own words, what the error is and how it changes the bottom line.\n💬 Example: Explain the error in row 14 in plain language and tell me which cells I should look at.\n\n## Step 5 — Verify a few cells yourself\nThis is the most important step, and the one most people skip. Copilot is good at spotting patterns, but it can miss context — a number that looks wrong might actually be correct for your business, and a number that looks fine might be a typo. Pick two or three of the items Copilot flagged and check them by hand. Click the cell, look at the formula in the **formula bar** (the long text box just above the spreadsheet grid), and trace the numbers with a calculator or on paper. If a colleague knows the budget, ask them to glance at the same rows — a second pair of eyes catches what the first one missed. If you want to accept a fix Copilot suggests, read the proposed formula before clicking **Apply**, and copy the original somewhere safe so you can undo it if needed. You'll know it worked when the flagged issues either turn out to be real errors you've now corrected, or turn out to be false alarms you've left alone. Either way, you've made a real decision, not just trusted the AI.\n\n## Common mistakes\n- **Trusting every flag without checking.** Copilot sometimes calls out cells that are perfectly fine, especially when it misreads your formatting as an error. Always do a quick spot check before changing anything — the spot check is what turns a useful AI into an expensive guessing game.\n- **Letting Copilot auto-fix without reading the change.** When the assistant offers an **Apply** button, read the proposed formula first. A wrong auto-fix can be harder to undo than the original typo. Copy the original formula into a notes app, or just take a screenshot, before you accept.\n- **Asking one giant question.** \"Find every problem in this file\" usually returns a vague answer that doesn't help. Break it into smaller asks: broken formulas first, then mismatched totals, then duplicates. Smaller questions get sharper, more useful answers.\n\n## What this means for you\n- **In everyday life:** A personal monthly budget can drift by tens of dollars from a single broken formula or a bill entered twice. Catching that in under a minute beats discovering it when your account is overdrawn — and the same scan works on a shared family spreadsheet.\n- **For your business or work:** A small error in a sales forecast, expense report, or project budget can ripple into real decisions about hiring, pricing, or inventory. Using Copilot as a fast first pass turns a 30-minute manual review into a 2-minute scan plus a few spot checks by someone who knows the numbers.\n- **If you're just getting started:** Open one small budget file you already trust, run the scan, and treat the first run as practice. Don't change anything yet — just read the flags, decide which ones are real, and notice how the assistant handles your real data. That single dry run will teach you more about how Copilot behaves than any tutorial.\n\n## Try it now\nOpen your most-used budget file, find the Copilot button, and type: **\"Scan this sheet for broken formulas and error codes.\"** Spend 60 seconds reading the list before you touch anything. That single scan will tell you more about how Copilot handles your real numbers than any guide can.",
+  "original_title": "How to spot hidden errors in an Excel budget using Copilot"
+}
