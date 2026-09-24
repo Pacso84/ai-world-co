@@ -1,102 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t179000168240346",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-09-21T14:41:22.403Z",
-      "updated": "2026-09-21T14:41:33.331Z"
-    },
-    {
-      "id": "t179000169337052",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-21T14:41:33.370Z",
-      "updated": "2026-09-21T14:41:41.212Z"
-    },
-    {
-      "id": "t179000170121443",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-09-21T14:41:41.214Z",
-      "updated": "2026-09-21T14:41:47.737Z"
-    },
-    {
-      "id": "t179000170773828",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-21T14:41:47.738Z",
-      "updated": "2026-09-21T14:42:06.792Z"
-    },
-    {
-      "id": "t179000172679392",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-09-21T14:42:06.793Z",
-      "updated": "2026-09-21T14:42:22.421Z"
-    },
-    {
-      "id": "t179002147498747",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-09-21T20:11:14.987Z",
-      "updated": "2026-09-21T20:11:15.168Z"
-    },
-    {
-      "id": "t179002147516961",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-09-21T20:11:15.169Z",
-      "updated": "2026-09-21T20:12:00.787Z"
-    },
-    {
-      "id": "t179002152078924",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-09-21T20:12:00.789Z",
-      "updated": "2026-09-21T20:12:00.976Z"
-    },
-    {
-      "id": "t179002152097870",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-09-21T20:12:00.978Z",
-      "updated": "2026-09-21T20:13:27.334Z"
-    },
-    {
-      "id": "t179002160733648",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-21T20:13:27.336Z",
-      "updated": "2026-09-21T20:13:47.232Z"
-    },
-    {
-      "id": "t179002162723551",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-09-21T20:13:47.235Z",
-      "updated": "2026-09-21T20:13:54.236Z"
-    },
-    {
-      "id": "t179002163429571",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-21T20:13:54.295Z",
-      "updated": "2026-09-21T20:14:03.183Z"
-    },
-    {
       "id": "t179002164318522",
       "title": "Run seo",
       "status": "done",
@@ -479,41 +383,105 @@
       "agent": "publisher",
       "created": "2026-09-24T02:26:18.763Z",
       "updated": "2026-09-24T02:26:50.142Z"
+    },
+    {
+      "id": "t179025482559559",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-09-24T13:00:25.595Z",
+      "updated": "2026-09-24T13:00:25.758Z"
+    },
+    {
+      "id": "t179025482576085",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-09-24T13:00:25.760Z",
+      "updated": "2026-09-24T13:01:12.602Z"
+    },
+    {
+      "id": "t179025487260398",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-09-24T13:01:12.603Z",
+      "updated": "2026-09-24T13:01:12.772Z"
+    },
+    {
+      "id": "t179025487277448",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-09-24T13:01:12.774Z",
+      "updated": "2026-09-24T13:01:35.568Z"
+    },
+    {
+      "id": "t179025489556959",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-24T13:01:35.569Z",
+      "updated": "2026-09-24T13:01:57.482Z"
+    },
+    {
+      "id": "t179025491748570",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-09-24T13:01:57.485Z",
+      "updated": "2026-09-24T13:07:46.644Z"
+    },
+    {
+      "id": "t17902552666456",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-24T13:07:46.645Z",
+      "updated": "2026-09-24T13:08:18.351Z"
+    },
+    {
+      "id": "t179025529835348",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-09-24T13:08:18.353Z",
+      "updated": "2026-09-24T13:08:23.473Z"
+    },
+    {
+      "id": "t179025530353494",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-24T13:08:23.534Z",
+      "updated": "2026-09-24T13:08:29.315Z"
+    },
+    {
+      "id": "t179025530931791",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-09-24T13:08:29.317Z",
+      "updated": "2026-09-24T13:08:33.378Z"
+    },
+    {
+      "id": "t179025531338071",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-24T13:08:33.380Z",
+      "updated": "2026-09-24T13:08:38.562Z"
+    },
+    {
+      "id": "t179025531856446",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-09-24T13:08:38.564Z",
+      "updated": "2026-09-24T13:08:59.776Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178878915236823",
-      "level": "info",
-      "text": "SEO: 1 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-09-07T13:52:32.369Z",
-      "loud": false
-    },
-    {
-      "id": "n178878917762333",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The line-up is solid and practical — all 10 articles help everyday people communicate better using AI, from complaint emails to sympathy messages. Before publishing, do a quick fact-check on the AI to",
-      "agent": "publisher",
-      "at": "2026-09-07T13:52:57.623Z",
-      "loud": false
-    },
-    {
-      "id": "n178878919238483",
-      "level": "success",
-      "text": "1 hír + 0 útmutató publikálva (költség: $0.0335).",
-      "agent": "ceo",
-      "at": "2026-09-07T13:53:12.384Z",
-      "loud": false
-    },
-    {
-      "id": "n178880935530469",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The line-up is solid and coherent — practical, everyday writing tasks covered with a nice mix of AI tools. One note: since this is for everyday people, you might consider a quick intro page explaining",
-      "agent": "publisher",
-      "at": "2026-09-07T19:29:15.304Z",
-      "loud": false
-    },
     {
       "id": "n17888093700416",
       "level": "info",
@@ -1281,45 +1249,41 @@
       "agent": "ceo",
       "at": "2026-09-24T02:26:50.190Z",
       "loud": false
+    },
+    {
+      "id": "n17902553133704",
+      "level": "info",
+      "text": "SEO: 1 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-09-24T13:08:33.370Z",
+      "loud": false
+    },
+    {
+      "id": "n179025532343287",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The lineup has solid variety — practical writing tasks (complaints, refunds, resumes) mixed with heartfelt ones (thank-you speeches, sympathy messages). A couple of notes: articles 6, 8, and 10 don't ",
+      "agent": "publisher",
+      "at": "2026-09-24T13:08:43.432Z",
+      "loud": false
+    },
+    {
+      "id": "n179025533982733",
+      "level": "success",
+      "text": "1 hír + 0 útmutató publikálva (költség: $0.0199).",
+      "agent": "ceo",
+      "at": "2026-09-24T13:08:59.827Z",
+      "loud": false
+    },
+    {
+      "id": "n17902553686930",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (nincs meg az útmutató-szerkezet): \"Ask plain-English questions about a lo",
+      "agent": "fact-check",
+      "at": "2026-09-24T13:09:28.693Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178912980867338",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"How to decode a confusing medical bill or insurance statement with AI\" — javítva: Beginner clarity too low (7/10): steps are vague or could mislead a first-time user; Step 4 lacks explicit fallback if a beginner can't identify confusing lines — add guidance like 'if everything looks clear, still ask the AI to flag any codes it thinks are worth questioning'; újraküldöm.",
-      "ref": "GUIDE_how-to-decode-a-confusing-medical-bill-or-insurance-statemen.json",
-      "at": "2026-09-11T12:30:08.673Z"
-    },
-    {
-      "id": "m178912985650131",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Create custom Genmoji and images with Apple Intelligence Image Playground\" — mi a baj: The article states 'iOS 18.1 or later for Genmoji, and iOS 18.2 or later for the standalone Image Playground app' as specific version requirements. While Genmoji and Image Playground are real Apple Intelligence features, the exact iOS version numbers cited (18.1 for Genmoji, 18.2 for Image",
-      "ref": "GUIDE_create-custom-genmoji-and-images-with-apple-intelligence-ima.json",
-      "at": "2026-09-11T12:30:56.501Z"
-    },
-    {
-      "id": "m178912989918168",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"How to decode a confusing medical bill or insurance statement with AI\" (?/10)",
-      "ref": "GUIDE_how-to-decode-a-confusing-medical-bill-or-insurance-statemen.json",
-      "at": "2026-09-11T12:31:39.181Z"
-    },
-    {
-      "id": "m178912992842721",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Create custom Genmoji and images with Apple Intelligence Image Playground\" — javítva: The article states 'iOS 18.1 or later for Genmoji, and iOS 18.2 or later for the standalone Image Playground app' as specific version requirements. While Genmoji and Image Playground are real Apple Intelligence features, the exact iOS version numbers cited (18.1 for Genmoji, 18.2 for Image Playgroun",
-      "ref": "GUIDE_create-custom-genmoji-and-images-with-apple-intelligence-ima.json",
-      "at": "2026-09-11T12:32:08.427Z"
-    },
     {
       "id": "m178912992842984",
       "from": "guide",
@@ -2640,6 +2604,43 @@
       "text": "5 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-09-24T02:42:10.854Z"
+    },
+    {
+      "id": "m179025526663655",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"How invideo improves color grading 3x with GPT‑6 Astra\" — javítva: The model name 'GPT-6 Astra' cannot be verified as a real, officially announced product — hedging with 'what's been called' helps but the framing may still mislead readers into treating it as confirmed; The URL itself contains 'gpt-6-astra' which anchors the piece to an unverifiable product claim — consider whether th",
+      "ref": "2026-09-24T02-06-54-285Z_openai-blog_How_invideo_improves_color_grading_3x_with_GPT_6_A.json",
+      "at": "2026-09-24T13:07:46.636Z"
+    },
+    {
+      "id": "m179025529834258",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"How invideo improves color grading 3x with GPT‑6 Astra\" — mi a baj: Source mismatch: article claims to be based on OpenAI InVideo case study but contains zero mention of InVideo, the 3x color grading claim, or any specifics from that source; GPT-6 Astra does not exist as a released product; writing as fact about a non-existent model violates factual accuracy standards; No ac",
+      "ref": "2026-09-24T02-06-54-285Z_openai-blog_How_invideo_improves_color_grading_3x_with_GPT_6_A.json",
+      "at": "2026-09-24T13:08:18.342Z"
+    },
+    {
+      "id": "m179025531855371",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 20 → 5/4/2 oszlop.",
+      "ref": "mobile",
+      "at": "2026-09-24T13:08:38.553Z"
+    },
+    {
+      "id": "m179025536869311",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem volt elég ép (nincs meg az útmutató-szerkezet): \"Ask plain-English questions about a long PDF using\" — The guide makes confident assertions about specific UI elements and the PDF upload feature that may have changed since publication. The interface descriptions (attachment icon location, exact button labels) and the blanket claim that PDFs work well should be softe",
+      "ref": "ARTICLE_GUIDE_ask-plain-english-questions-about-a-long-pdf-using-hugging-f.json",
+      "open": true,
+      "at": "2026-09-24T13:09:28.693Z"
     }
   ]
 }
