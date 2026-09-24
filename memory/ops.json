@@ -1285,15 +1285,6 @@
   ],
   "messages": [
     {
-      "id": "m178912995695924",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Create custom Genmoji and images with Apple Intelligence Image Playground\" — mi a baj: Az AI-bíró kitalált állítást talált (részletek nélkül)",
-      "ref": "GUIDE_create-custom-genmoji-and-images-with-apple-intelligence-ima.json",
-      "at": "2026-09-11T12:32:36.959Z"
-    },
-    {
       "id": "m178912999095843",
       "from": "guide",
       "to": "ellenorzo",
@@ -2639,6 +2630,15 @@
       "text": "1 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-09-24T13:18:27.592Z"
+    },
+    {
+      "id": "m179027859520086",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Ask plain-English questions about a long PDF using\" — The specific claim that PDF upload works exactly as described with the attachment icon",
+      "ref": "ARTICLE_GUIDE_ask-plain-english-questions-about-a-long-pdf-using-hugging-f.json",
+      "at": "2026-09-24T19:36:35.200Z"
     }
   ]
 }
