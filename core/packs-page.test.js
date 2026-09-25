@@ -112,16 +112,26 @@ t('🔬 [hitelesítés] a tiltás-kereső MINDKÉT irányba jól dönt', () => {
     'eltűnt a „no human editor…" mondat — enélkül a termék többet állít magáról');
 });
 
-t('a visszatérítési ígéret a MI címünkre mutat, és nem a Ko-fira hárít', () => {
-  // A Ko-fi súgója: „Refunds on Ko-fi are handled directly by you, the
-  // creator. Ko-fi won't issue refunds in your place." (mérve 09-20)
-  // Ha a szöveg azt sugallná, hogy a Ko-fi intézi, olyat ígérnénk, amit
-  // egy másik cég nem fog teljesíteni.
+t('NINCS visszatérítési ígéret — a vásárlás végleges (user-döntés 09-25)', () => {
+  // 09-20-án 30 napos, kérdés nélküli visszatérítést ígértünk; a user 09-25-én
+  // úgy döntött, hogy NINCS visszatérítés. Ami ezen az oldalon áll, az ránk
+  // nézve kötelező — egy visszacsúszó ígéret olyat vállalna, amit nem akarunk.
+  // A Ko-fi „Your Terms" mezője ugyanezt mondja (a user tölti ki).
+  const IGERET = /refund within|30[- ]day|no[- ]questions|we will refund|visszatérítjük|kérdés nélkül|napos,? kérdés|te devolvemos|sin preguntas|reembolso sin/i;
   for (const ny of NYELVEK) {
     const a3 = PACKS_UI[ny].packsA3;
-    assert.ok(/support@aiworldhq\.com/.test(a3), ny + ': a visszatérítésnél nincs ott a saját címünk');
-    assert.ok(!/ko-?fi/i.test(a3), ny + ': a visszatérítést a Ko-fira hárítja — azt ő nem teljesíti');
+    assert.ok(/^(No|Nem)\b/.test(a3), ny + ': a válasz nem „nem"-mel kezdődik: ' + a3);
+    assert.ok(!IGERET.test(a3), ny + ': visszatérítést ígér: ' + a3);
+    assert.ok(/support@aiworldhq\.com/.test(a3), ny + ': eltűnt a kérdés-cím');
+    for (const [k, v] of Object.entries(PACKS_UI[ny])) {
+      assert.ok(!IGERET.test(String(v)), ny + '.' + k + ': visszatérítést ígér');
+    }
   }
+  // A honlap GYIK-je (build.js) sem ígérhet — ott is volt, mindhárom nyelven.
+  const build = readFileSync(join(ROOT, 'website', 'build.js'), 'utf-8');
+  const faq = build.split('\n').filter(s => /\{ q: .*packs/.test(s)).join('\n');
+  assert.ok(faq.length > 0, 'nem találom a csomagos GYIK-sorokat');
+  assert.ok(!IGERET.test(faq), 'a GYIK visszatérítést ígér');
 });
 
 t('a kézbesítés-válasz nem állítja, hogy NEM kell fiók', () => {

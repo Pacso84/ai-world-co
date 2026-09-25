@@ -371,7 +371,7 @@ const CS_FAQ = {
     { q: 'Is the site free? How can I support it?', a: 'Everything is free. If you want, you can leave a voluntary tip on the Support page.', p: '/support' },
     { q: 'Where do I find beginner guides?', a: 'The Start page lists the first 5 guides to read, and the Guides page has all of them by topic.', p: '/start' },
     { q: 'What do AI words like prompt or token mean?', a: 'Our AI glossary explains the most common terms in plain language.', p: '/glossary' },
-    { q: 'Do you sell anything? What are the packs?', a: 'Our guides are free here and stay free. We also group them by subject into PDF packs you can buy and keep, with a 30-day no-questions refund. The packs page lists all of them.', p: '/packs' },
+    { q: 'Do you sell anything? What are the packs?', a: 'Our guides are free here and stay free. We also group them by subject into PDF packs you can buy and keep. The packs page lists all of them.', p: '/packs' },
     { q: 'Is there an RSS feed?', a: 'Yes — every language has its own feed.', p: '/feed.xml' },
     { q: 'How do I contact you / reach a human?', a: 'Use the message form at the bottom of the About page, or write to support@aiworldhq.com — a human reads every message.', p: '/about#contact' }
   ],
@@ -381,7 +381,7 @@ const CS_FAQ = {
     { q: 'Ingyenes az oldal? Hogyan támogathatom?', a: 'Minden ingyenes. Ha szeretnéd, a Támogatás oldalon önkéntes borravalót adhatsz.', p: '/support' },
     { q: 'Hol találom a kezdő útmutatókat?', a: 'A Kezdés oldal az első 5 ajánlott útmutatót mutatja, az Útmutatók oldalon pedig az összes megvan téma szerint.', p: '/start' },
     { q: 'Mit jelentenek az AI-szavak, pl. prompt vagy token?', a: 'Az AI-kisszótárunk közérthetően elmagyarázza a leggyakoribb fogalmakat.', p: '/glossary' },
-    { q: 'Árultok valamit? Mik azok a csomagok?', a: 'Az útmutatóink itt ingyenesek, és azok is maradnak. Emellett téma szerint PDF-csomagokba rendezve meg is vásárolhatók, 30 napos, kérdés nélküli visszatérítéssel. A Csomagok oldal mindet felsorolja.', p: '/packs' },
+    { q: 'Árultok valamit? Mik azok a csomagok?', a: 'Az útmutatóink itt ingyenesek, és azok is maradnak. Emellett téma szerint PDF-csomagokba rendezve meg is vásárolhatók. A Csomagok oldal mindet felsorolja.', p: '/packs' },
     { q: 'Van RSS?', a: 'Igen — minden nyelvnek saját feedje van.', p: '/feed.xml' },
     { q: 'Hogyan tudlak elérni titeket / élő embert?', a: 'A Rólunk oldal alján lévő üzenet-űrlappal, vagy írj a support@aiworldhq.com címre — minden üzenetet elolvas egy ember.', p: '/about#contact' }
   ],
@@ -391,7 +391,7 @@ const CS_FAQ = {
     { q: '¿El sitio es gratis? ¿Cómo puedo apoyarlo?', a: 'Todo es gratis. Si quieres, puedes dejar una propina voluntaria en la página de Apoyo.', p: '/support' },
     { q: '¿Dónde están las guías para principiantes?', a: 'La página Empezar muestra las 5 primeras guías recomendadas, y en Guías están todas por tema.', p: '/start' },
     { q: '¿Qué significan palabras como prompt o token?', a: 'Nuestro pequeño glosario de IA explica los términos más comunes en lenguaje claro.', p: '/glossary' },
-    { q: '¿Vendéis algo? ¿Qué son los packs?', a: 'Nuestras guías son gratis aquí y seguirán siéndolo. Además las agrupamos por tema en packs PDF que puedes comprar y guardar, con reembolso sin preguntas durante 30 días. La página de packs los lista todos.', p: '/packs' },
+    { q: '¿Vendéis algo? ¿Qué son los packs?', a: 'Nuestras guías son gratis aquí y seguirán siéndolo. Además las agrupamos por tema en packs PDF que puedes comprar y guardar. La página de packs los lista todos.', p: '/packs' },
     { q: '¿Hay RSS?', a: 'Sí — cada idioma tiene su propio feed.', p: '/feed.xml' },
     { q: '¿Cómo os contacto / hablo con una persona?', a: 'Usa el formulario al final de la página Sobre nosotros, o escribe a support@aiworldhq.com — una persona lee todos los mensajes.', p: '/about#contact' }
   ],
@@ -2496,12 +2496,12 @@ function buildSupportPage() {
 // A honlap EGYETLEN kereskedelmi lapja. A /support ÖNKÉNTES borravalót
 // kér; ez TERMÉKET ad el. A kettőt szándékosan nem keverjük.
 //
-// ⚠️ AMI EZEN AZ OLDALON ÁLL, AZ RÁNK NÉZVE KÖTELEZŐ. A 30 napos,
-// kérdés nélküli visszatérítést NEM a Ko-fi teljesíti: a Ko-fi súgója
-// szerint „Refunds on Ko-fi are handled directly by you, the creator.
-// Ko-fi won't issue refunds in your place." (saját méréssel ellenőrizve
-// 2026-09-20). Ugyanennek a mondatnak a Ko-fi „Your Terms" mezőjében is
-// ott kell lennie, hogy a vevő fizetéskor lássa.
+// ⚠️ AMI EZEN AZ OLDALON ÁLL, AZ RÁNK NÉZVE KÖTELEZŐ. NINCS
+// visszatérítés, a vásárlás végleges (user-döntés 2026-09-25; előtte 30
+// napot ígértünk). A Ko-fi a visszatérítést nem is intézné: „Refunds on
+// Ko-fi are handled directly by you, the creator." Ugyanez áll a Ko-fi
+// „Your Terms" mezőjében is, hogy a vevő fizetés ELŐTT lássa (EU: a
+// letölthető tartalomnál így szűnik meg az elállási jog).
 //
 // ⚠️ A SZÁM NEM BECSÜLT: az oldalszám a legyártott PDF-ből jön
 // (website/packs.json ← core/packs-data.js). A régi 600-szó/oldal
