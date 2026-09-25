@@ -1971,6 +1971,8 @@
     "promó",
     "promóból",
     "promóklip",
+    "promóklippek",
+    "promót",
     "promóvideóban",
     "protetikai",
     "prototípizálhatsz",
@@ -2027,11 +2029,13 @@
     "renderelj",
     "renderelni",
     "renderelt",
+    "renderelteted",
     "renderelés",
     "renderelésbe",
     "renderelésre",
     "renderelést",
     "renderelésére",
+    "renderelésért",
     "renderelődik",
     "renderképpé",
     "rendetlenséget",
@@ -2186,6 +2190,7 @@
     "stage-eljem",
     "staginghez",
     "stai",
+    "stakeholdereknek",
     "standupod",
     "standupon",
     "standupot",
@@ -2301,6 +2306,7 @@
     "szélessávra",
     "szélessávú",
     "szélesvászonú",
+    "szélsőséget",
     "színkódolt",
     "szívességet",
     "szívet",
@@ -2517,6 +2523,7 @@
     "tökéletességet",
     "töltelékszöveget",
     "tömeget",
+    "törlj",
     "törlöl",
     "történetmagod",
     "történetmagokkal",
@@ -4028,6 +4035,16 @@
       "correct": "elérhetsz",
       "at": "2026-09-21",
       "mondattal": true
+    },
+    "játszóteren": {
+      "correct": "játszótéren",
+      "at": "2026-09-25",
+      "mondattal": true
+    },
+    "gondoltd": {
+      "correct": "gondoltad",
+      "at": "2026-09-25",
+      "mondattal": true
     }
   },
   "review": {
@@ -5432,11 +5449,26 @@
       "correct": "bootcampet",
       "at": "2026-09-24",
       "mondattal": true
+    },
+    "amed": {
+      "correct": "amelyiket",
+      "at": "2026-09-25",
+      "mondattal": true
+    },
+    "mozgáselmossással": {
+      "correct": "mozgás-elmosással",
+      "at": "2026-09-25",
+      "mondattal": true
+    },
+    "illusztratált": {
+      "correct": "illusztrált",
+      "at": "2026-09-25",
+      "mondattal": true
     }
   },
   "scan": {
-    "at": "2026-09-24",
-    "files": 1034,
-    "candidates": 0
+    "at": "2026-09-25",
+    "files": 1039,
+    "candidates": 12
   }
 }
