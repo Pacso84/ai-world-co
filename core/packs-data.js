@@ -123,7 +123,7 @@ export function epit(distDir) {
     // szándékos szünetnek.
     live: false,
     generated_at: new Date().toISOString().slice(0, 10),
-    currency: 'EUR',   // a Ko-fi fiók pénzneme (user, 09-25)
+    currency: 'USD',   // a Ko-fi fiók pénzneme (user 09-25: euróról dollárra állította)
     // A bolt címe. A tételenkénti linkek addig üresek, amíg a 18 tétel fel
     // nem kerül a Ko-fira; addig minden gomb a bolt nyitólapjára visz.
     shop_url: 'https://ko-fi.com/aiworldhq/shop',

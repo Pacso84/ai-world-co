@@ -134,10 +134,12 @@ t('NINCS visszatérítési ígéret — a vásárlás végleges (user-döntés 0
   assert.ok(!IGERET.test(faq), 'a GYIK visszatérítést ígér');
 });
 
-t('az ár a Ko-fi pénznemében (EUR) — nincs kódba égetett „$" (09-25)', () => {
-  // A honlap „$3"-t írt, a Ko-fi „€3"-t mutatott: a vevő két árat látott.
+t('az ár a Ko-fi pénznemében (USD) — nincs kódba égetett „$" (09-25)', () => {
+  // 09-25: a Ko-fi euróban volt, a honlap és a leírások dollárt írtak → a user
+  // a Ko-fit dollárra állította (a 18 leírás „$3"-at ír). Ha a Ko-fi pénzneme
+  // változik, ITT és a packs.json-ban is át kell írni — különben két árat lát a vevő.
   const pj = JSON.parse(readFileSync(join(ROOT, 'website', 'packs.json'), 'utf-8'));
-  assert.equal(pj.currency, 'EUR', 'a packs.json pénzneme nem a Ko-fié');
+  assert.equal(pj.currency, 'USD', 'a packs.json pénzneme nem a Ko-fié');
   const build = readFileSync(join(ROOT, 'website', 'build.js'), 'utf-8');
   assert.ok(!/[$][$]\{p\.price\}/.test(build), 'a build.js újra kódba égetett „$"-t ír az ár elé');
   assert.ok(/packAr\(p\)/.test(build), 'az árcímke nem a packAr()-on át készül');

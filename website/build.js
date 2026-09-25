@@ -2532,7 +2532,8 @@ function packMetaSor(p) {
 const PENZ_JEL = { USD: '$', EUR: '€', GBP: '£' };
 function packAr(p) {
   const jel = PENZ_JEL[PACKS.currency] || PACKS.currency || '';
-  return LANG === 'en' ? jel + p.price : p.price + ' ' + jel;
+  // A dollárjel minden nyelven elöl áll ($3); az euró magyarul/spanyolul hátul (3 €).
+  return (LANG === 'en' || PACKS.currency === 'USD') ? jel + p.price : p.price + ' ' + jel;
 }
 
 // A gomb a nyelvhez illő Ko-fi TERMÉKRE visz (a magyar oldal az angolra —
