@@ -11,6 +11,7 @@ import { answer } from './cs-engine.js';
 import { tg } from './tg.js';
 import { bumpCs, globalLimitReached, dayKey, markUnsent, uzenetAzonosito } from './cs-routes.js';
 import { SUPPORT_ADDR, shouldAutoReply, replyText } from './cs-email-rules.js';
+import { levelArchival, tgLevelSzoveg } from './email-archive.js';
 
 async function senderHash(from) {
   const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode('cs-mail:' + from.toLowerCase()));
@@ -41,14 +42,17 @@ export async function handleEmail(message, env) {
   // Ugyanaz a hiba, amit 2026-08-29-én az űrlapon már megjavítottunk; csak
   // ezen az ágon maradt bent. („Ha ilyet találsz, keresd meg a többit.")
   //
-  // ⚠️ NEM ÍRUNK KÜLÖN `cs:msg:` ARCHÍVUMOT. Azt a kulcsot a saját kódunk
-  // szerint SEMMI NEM OLVASSA — egy második, olvasatlan másolat nem véd
-  // semmitől. A `markUnsent()` a TELJES rekordot elteszi, oda, ahonnan a
-  // `/feedback-export` felviszi a napi riportba: ahol tényleg ránézel.
+  // A `markUnsent()` a rekordot oda teszi el, ahonnan a `/feedback-export`
+  // felviszi a napi riportba: ahol tényleg ránézel. (09-25 óta a teljes
+  // levél ettől függetlenül is megvan a `cs:email:` kulcson — azt a
+  // tulajdonos kérésére Claude olvassa; lásd email-archive.js.)
   const ts = Date.now();
   const rec = { kind: 'email', email: from, subject, message: text.slice(0, 4000), ts };
-  const kuldes = await tg(env, env.OWNER_CHAT_ID,
-    `📧 ÚJ SUPPORT-EMAIL\nFeladó: ${from}\nTárgy: ${subject}\n\n${text.slice(0, 600)}`);
+  // 2026-09-25: a TELJES levél 30 napig a KV-ban (lásd email-archive.js) —
+  // a Telegramra csak az eleje fér ki. Ez már olvasott másolat: a tulajdonos
+  // kérésére Claude innen olvassa ki.
+  const archivKulcs = await levelArchival(env, { from, subject, text, ts });
+  const kuldes = await tg(env, env.OWNER_CHAT_ID, tgLevelSzoveg({ from, subject, text }, archivKulcs));
   if (!kuldes?.ok) {
     // ⚠️ SZÁNDÉKOSAN NINCS try/catch. Ha a nyom írása IS elbukik, nincs
     // semmink: se értesítés, se másolat. Olyankor a kivétel kifut a
