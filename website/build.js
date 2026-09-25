@@ -81,6 +81,7 @@ try {
     // hamis, és az egész eladó ág néma marad.
     enabled: rawPacks.live === true && list.length > 0 && !!rawPacks.shop_url,
     shopUrl: (rawPacks.shop_url || '').trim(),
+    currency: rawPacks.currency || 'USD',
     list
   };
 } catch { /* nincs packs.json → az eladó oldal kimarad */ }
@@ -2526,8 +2527,19 @@ function packMetaSor(p) {
  * bolt nyitólapjára visz — a `shop_url` a packs.json-ban áll. Ha egy
  * tételhez később bekerül a saját `url`-je, az élvez elsőbbséget.
  */
+// Az ár a Ko-fi SAJÁT pénznemében (09-25: euró — a user fiókja euróban van;
+// előtte kódba égetett „$" állt, miközben a Ko-fi €-t mutatott).
+const PENZ_JEL = { USD: '$', EUR: '€', GBP: '£' };
+function packAr(p) {
+  const jel = PENZ_JEL[PACKS.currency] || PACKS.currency || '';
+  return LANG === 'en' ? jel + p.price : p.price + ' ' + jel;
+}
+
+// A gomb a nyelvhez illő Ko-fi TERMÉKRE visz (a magyar oldal az angolra —
+// magyar csomag nincs); ha nincs termék-link, a bolt nyitólapjára.
 function packGomb(p) {
-  const cel = (p.url || '').trim() || PACKS.shopUrl;
+  const urls = p.urls || {};
+  const cel = (urls[LANG === 'es' ? 'es' : 'en'] || '').trim() || (p.url || '').trim() || PACKS.shopUrl;
   if (!cel) return `<span class="packs__btn packs__btn--soon">${escapeHtml(tr('packsSoon'))}</span>`;
   return `<a class="packs__btn" href="${escapeHtml(cel)}" target="_blank" rel="noopener noreferrer">${escapeHtml(tr('packsBuy'))}</a>`;
 }
@@ -2564,7 +2576,7 @@ function buildPacksPage() {
       <h2 class="packs__name">${escapeHtml(sz.cim || p.id)}</h2>
       <p class="packs__promise">${escapeHtml(sz.igeret || '')}</p>
       <p class="packs__meta">${escapeHtml(packMetaSor(p))}</p>
-      <p class="packs__price">$${p.price}</p>
+      <p class="packs__price">${escapeHtml(packAr(p))}</p>
       ${packGomb(p)}
     </article>`;
   }).join('');

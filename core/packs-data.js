@@ -123,7 +123,7 @@ export function epit(distDir) {
     // szándékos szünetnek.
     live: false,
     generated_at: new Date().toISOString().slice(0, 10),
-    currency: 'USD',
+    currency: 'EUR',   // a Ko-fi fiók pénzneme (user, 09-25)
     // A bolt címe. A tételenkénti linkek addig üresek, amíg a 18 tétel fel
     // nem kerül a Ko-fira; addig minden gomb a bolt nyitólapjára visz.
     shop_url: 'https://ko-fi.com/aiworldhq/shop',
@@ -164,13 +164,20 @@ async function main() {
   try {
     const regi = JSON.parse(readFileSync(ki, 'utf-8'));
     if (typeof regi.live === 'boolean') adat.live = regi.live;
+    // A pénznem és a Ko-fi termék-linkek is KÉZI adatok (a boltból kiolvasva,
+    // 09-25) — egy újramérés ne törölje ki őket.
+    if (regi.currency) adat.currency = regi.currency;
+    for (const p of adat.packs) {
+      const r = (regi.packs || []).find(x => x && x.id === p.id);
+      if (r && r.urls) p.urls = r.urls;
+    }
   } catch { /* első futás — marad az alapértelmezett false */ }
   writeFileSync(ki, JSON.stringify(adat, null, 2) + '\n', 'utf-8');
   console.log(adat.live
     ? '🟢 live: true — az eladó oldal ÉLESBEN épül'
     : '🔴 live: false — az eladó oldal NEM épül meg (a bolt még nincs feltöltve)');
   for (const p of adat.packs) {
-    console.log(`  ${p.id.padEnd(9)} $${p.price}  en: ${String(p.en.pages).padStart(3)} oldal / ${p.en.guides} útmutató`
+    console.log(`  ${p.id.padEnd(9)} ${p.price} ${adat.currency}  en: ${String(p.en.pages).padStart(3)} oldal / ${p.en.guides} útmutató`
       + `   es: ${String(p.es.pages).padStart(3)} oldal / ${p.es.guides} útmutató`);
   }
   console.log('✅ ' + ki);

@@ -134,6 +134,28 @@ t('NINCS visszatérítési ígéret — a vásárlás végleges (user-döntés 0
   assert.ok(!IGERET.test(faq), 'a GYIK visszatérítést ígér');
 });
 
+t('az ár a Ko-fi pénznemében (EUR) — nincs kódba égetett „$" (09-25)', () => {
+  // A honlap „$3"-t írt, a Ko-fi „€3"-t mutatott: a vevő két árat látott.
+  const pj = JSON.parse(readFileSync(join(ROOT, 'website', 'packs.json'), 'utf-8'));
+  assert.equal(pj.currency, 'EUR', 'a packs.json pénzneme nem a Ko-fié');
+  const build = readFileSync(join(ROOT, 'website', 'build.js'), 'utf-8');
+  assert.ok(!/[$][$]\{p\.price\}/.test(build), 'a build.js újra kódba égetett „$"-t ír az ár elé');
+  assert.ok(/packAr\(p\)/.test(build), 'az árcímke nem a packAr()-on át készül');
+});
+
+t('minden csomag gombja a SAJÁT Ko-fi termékére visz (en + es, 18 különböző link)', () => {
+  const pj = JSON.parse(readFileSync(join(ROOT, 'website', 'packs.json'), 'utf-8'));
+  const linkek = [];
+  for (const p of pj.packs) {
+    for (const ny of ['en', 'es']) {
+      const u = (p.urls || {})[ny] || '';
+      assert.match(u, /^https:\/\/ko-fi\.com\/s\/[0-9a-f]{10}$/, p.id + '-' + ny + ': rossz vagy hiányzó link: ' + u);
+      linkek.push(u);
+    }
+  }
+  assert.equal(new Set(linkek).size, 18, 'két csomag ugyanarra a termékre visz');
+});
+
 t('a kézbesítés-válasz nem állítja, hogy NEM kell fiók', () => {
   // A Ko-fi saját boltoldala szerint a be nem jelentkezett vevőt
   // fiókregisztráció FOGADHATJA. Ezt nem tagadhatjuk le.
