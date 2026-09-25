@@ -1,0 +1,68 @@
+{
+  "_meta": {
+    "written_at": "2026-09-25T02:27:28.799Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.01031058,
+    "original_draft": "2026-09-24T02-07-42-583Z_zapier-blog_How_Ariel_Chen_built_trust_before_she_built_automa.json",
+    "source_id": "zapier-blog",
+    "source_name": "Zapier Blog (hivatalos)",
+    "source_link": "https://zapier.com/blog/figma-background-check-triage",
+    "source_links": [
+      "https://zapier.com/blog/figma-background-check-triage",
+      "https://zapier.com/blog/biorender-sales-followup",
+      "https://zapier.com/blog/galgo-delivery-evidence-ai-review"
+    ],
+    "merged_from": 3,
+    "merged_theme": "Zapier customer success stories: automation implementations",
+    "status": "published",
+    "published_at": "2026-09-25T02:28:50.679Z",
+    "slug": "how-to-make-ai-automation-actually-work-at-your-job",
+    "auto_check": {
+      "passed": false,
+      "issues": [
+        "HOWTO_NO_STEPS: A cím utasítást ígér, de csak 0 számozott lépés-szakasz van (kell 4-6, \"## Step 1 — …\" formában), nem egyetlen összevont bekezdés."
+      ],
+      "wordCount": 727
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Solid article with a strong hook, three well-structured lessons, and a useful What this means for you section with audience-specific takeaways. Voice is friendly and explanatory throughout, accessible to non-technical readers, and the wrap-up provides a clear next step. No cliches, no prohibited content, and no factual red flags.",
+      "_aiCost": 0.0016662,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-09-25T02:35:06.659Z",
+    "guide_worthy": false,
+    "pairing_reason": "Generic advice article about automation principles with no specific named tool or feature for users to actually use",
+    "image_v": 2,
+    "image_at": "2026-09-25T02:37:54.317Z",
+    "seo": {
+      "meta_description": "Learn how to implement AI automation at work without breaking team trust. Three practical lessons for getting colleagues on board.",
+      "keywords": [
+        "how to use AI automation at work",
+        "AI automation workplace tips",
+        "implementing AI at work",
+        "AI tools for productivity",
+        "introducing AI automation to team",
+        "workplace AI adoption tips",
+        "AI automation best practices"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more specific keywords like 'employee trust' or 'AI implementation' to improve search relevance",
+        "Consider adding a clear example or tool name in the subtitle to boost click-through rates",
+        "The meta description could be more specific about 'bottlenecks' or 'owners' to match searcher intent better"
+      ],
+      "optimised_at": "2026-09-25T02:38:40.171Z"
+    },
+    "howto_upgrade_attempts": 1
+  },
+  "article_markdown": "---\ntitle: \"How to Make AI Automation Actually Work at Your Job\"\nsubtitle: \"Three practical lessons for introducing automation at work without losing the trust of the people who use it\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"automation\", \"work\", \"ai-at-work\", \"productivity\"]\n---\n\n# How to Make AI Automation Actually Work at Your Job\n\n> **In short:** The most useful automation projects at work don't start with a flashy tool — they start with a bottleneck, a clear owner, and a way for people to trust the result. Three lessons to borrow before you automate anything in your own job.\n\nYou probably remember the last time a piece of software at work changed on you. A new inbox filter. A switch to a different chat app. A manager who suddenly wanted every status update in a new format. Did everyone embrace it on day one? Probably not. People mostly want to know one thing: *will this make my day easier, or will it break something I already know how to do?*\n\nThat's the part most guides about AI at work skip. They walk you through connecting apps and writing prompts, but they rarely talk about the trust problem. Here are three lessons from automation rollouts that actually stuck — and what they teach you about starting your own.\n\n## Trust comes before tools\n\nWhen a workflow changes how people get paid, get hired, or get followed up with, the biggest risk isn't the technology. It's that nobody believes the new system. People keep their own spreadsheets \"just in case.\" They double-check every output. The automation technically works, but the team quietly works around it.\n\nThe fix isn't better software. It's making the first version small enough that humans can vouch for it. Start with a single task, run it in parallel with the old way, and let the results speak. Once three people on the team trust the output, you have something to build on.\n\n## Find the bottleneck, not the easy task\n\nIt's tempting to automate the things you already enjoy. Drafting emails. Summarizing a meeting. They're satisfying to demo. But the automation that actually pays off is usually the one nobody wants to do — the tedious, repetitive task that quietly takes hours every week and creates errors when people get tired.\n\nBefore you automate anything, write down where your week actually goes. Where do tasks pile up? Where do things get stuck waiting for one person? That's your starting point. A boring bottleneck is almost always a better first project than a flashy demo.\n\n## Keep a human in the loop\n\nThe cleanest automation is rarely the safest. When something goes wrong — a missing field, an unusual situation, a customer's odd request — you want a person who can step in. Treat the first version as an assistant, not a replacement. The AI drafts the email, but a human sends it. The system flags the unusual case, but a person makes the call.\n\nThis isn't a permanent compromise. As the system proves itself on real cases, the human checkpoint can move from \"every time\" to \"only when something looks off.\" But starting with that checkpoint is what makes the rollout survive the first weird Tuesday.\n\n## What this means for you\n\n- **If you manage a small team or project:** Pick one bottleneck, run the automation alongside the old process for two weeks, and ask three people if they noticed a difference before you commit. Trust is a feature you build, not a switch you flip.\n- **If you're an individual contributor at work:** Start with the task you secretly hate — the one that always falls to you. A 30-minute weekly chore is a perfect first project, and you don't need anyone's permission to save yourself time.\n- **If you're worried about AI mistakes at work:** That's not resistance, that's good judgment. The safest setups are the ones where a human still sees the final output before anything leaves the building.\n\n## Wrap-up\n\nThe best automation isn't the one with the most features. It's the one that disappears into the background because everyone trusts it. Pick a small, boring task, run it for two weeks in parallel, and only scale up once real people — not just you — believe in it. That's a starting point you can take to work tomorrow.",
+  "original_title": "How Ariel Chen built trust before she built automation"
+}

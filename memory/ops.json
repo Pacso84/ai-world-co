@@ -1,118 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t179002164318522",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-09-21T20:14:03.185Z",
-      "updated": "2026-09-21T20:14:16.802Z"
-    },
-    {
-      "id": "t179002165680429",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-21T20:14:16.804Z",
-      "updated": "2026-09-21T20:14:22.830Z"
-    },
-    {
-      "id": "t179002166283359",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-09-21T20:14:22.833Z",
-      "updated": "2026-09-21T20:14:49.159Z"
-    },
-    {
-      "id": "t179004353581298",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-09-22T02:18:55.812Z",
-      "updated": "2026-09-22T02:18:55.938Z"
-    },
-    {
-      "id": "t179004353594047",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-09-22T02:18:55.940Z",
-      "updated": "2026-09-22T02:19:21.729Z"
-    },
-    {
-      "id": "t179004356173194",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-09-22T02:19:21.731Z",
-      "updated": "2026-09-22T02:22:13.172Z"
-    },
-    {
-      "id": "t179004373317429",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-09-22T02:22:13.174Z",
-      "updated": "2026-09-22T02:25:16.876Z"
-    },
-    {
-      "id": "t179004391687839",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-22T02:25:16.878Z",
-      "updated": "2026-09-22T02:26:31.013Z"
-    },
-    {
-      "id": "t179004399101660",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-09-22T02:26:31.016Z",
-      "updated": "2026-09-22T02:26:54.630Z"
-    },
-    {
-      "id": "t179004401467181",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-09-22T02:26:54.671Z",
-      "updated": "2026-09-22T02:32:10.299Z"
-    },
-    {
-      "id": "t179004433030065",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-22T02:32:10.300Z",
-      "updated": "2026-09-22T02:32:57.415Z"
-    },
-    {
-      "id": "t179004437745157",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-22T02:32:57.451Z",
-      "updated": "2026-09-22T02:33:51.827Z"
-    },
-    {
-      "id": "t179004443182846",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-09-22T02:33:51.828Z",
-      "updated": "2026-09-22T02:35:05.111Z"
-    },
-    {
-      "id": "t179004450511349",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-22T02:35:05.113Z",
-      "updated": "2026-09-22T02:35:08.336Z"
-    },
-    {
       "id": "t17900445083386",
       "title": "Run publisher",
       "status": "done",
@@ -479,33 +367,121 @@
       "agent": "publisher",
       "created": "2026-09-24T13:08:38.564Z",
       "updated": "2026-09-24T13:08:59.776Z"
+    },
+    {
+      "id": "t179030300472917",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-09-25T02:23:24.729Z",
+      "updated": "2026-09-25T02:23:24.905Z"
+    },
+    {
+      "id": "t179030300490718",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-09-25T02:23:24.907Z",
+      "updated": "2026-09-25T02:23:56.398Z"
+    },
+    {
+      "id": "t179030303640043",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-09-25T02:23:56.400Z",
+      "updated": "2026-09-25T02:24:48.094Z"
+    },
+    {
+      "id": "t179030308809684",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-09-25T02:24:48.096Z",
+      "updated": "2026-09-25T02:28:24.237Z"
+    },
+    {
+      "id": "t179030330423921",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-25T02:28:24.239Z",
+      "updated": "2026-09-25T02:29:46.066Z"
+    },
+    {
+      "id": "t179030338606859",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-09-25T02:29:46.068Z",
+      "updated": "2026-09-25T02:34:03.053Z"
+    },
+    {
+      "id": "t179030364305599",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-25T02:34:03.055Z",
+      "updated": "2026-09-25T02:34:48.421Z"
+    },
+    {
+      "id": "t179030368842496",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-09-25T02:34:48.424Z",
+      "updated": "2026-09-25T02:35:19.295Z"
+    },
+    {
+      "id": "t179030371934931",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-09-25T02:35:19.349Z",
+      "updated": "2026-09-25T02:36:41.303Z"
+    },
+    {
+      "id": "t179030380130556",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-25T02:36:41.305Z",
+      "updated": "2026-09-25T02:37:31.735Z"
+    },
+    {
+      "id": "t179030385178536",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-25T02:37:31.785Z",
+      "updated": "2026-09-25T02:38:17.148Z"
+    },
+    {
+      "id": "t179030389715065",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-09-25T02:38:17.150Z",
+      "updated": "2026-09-25T02:39:20.240Z"
+    },
+    {
+      "id": "t179030396024295",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-25T02:39:20.242Z",
+      "updated": "2026-09-25T02:39:33.236Z"
+    },
+    {
+      "id": "t179030397323821",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-09-25T02:39:33.238Z",
+      "updated": "2026-09-25T02:39:57.892Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n17888093700416",
-      "level": "info",
-      "text": "Pipeline lefutott — ma nem volt publikálható új tartalom.",
-      "agent": "ceo",
-      "at": "2026-09-07T19:29:30.041Z",
-      "loud": false
-    },
-    {
-      "id": "n178883319588361",
-      "level": "info",
-      "text": "SEO: 4 cikk optimalizálva (átlag 8.3/10).",
-      "agent": "seo",
-      "at": "2026-09-08T02:06:35.883Z",
-      "loud": false
-    },
-    {
-      "id": "n178883320689086",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The lineup looks solid—practical, helpful, and covers real situations people face every day (complaints, resumes, sympathy, pet-sitting agreements). It's nicely balanced between work emails and person",
-      "agent": "publisher",
-      "at": "2026-09-08T02:06:46.890Z",
-      "loud": false
-    },
     {
       "id": "n178883322154829",
       "level": "success",
@@ -1281,81 +1257,33 @@
       "agent": "fact-check",
       "at": "2026-09-24T13:09:28.693Z",
       "loud": false
+    },
+    {
+      "id": "n179030396023155",
+      "level": "info",
+      "text": "SEO: 5 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-09-25T02:39:20.231Z",
+      "loud": false
+    },
+    {
+      "id": "n179030397994711",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). **Publish Summary:**\n\nThe lineup has solid, practical appeal — these are exactly the kinds of real-life tasks people want help with. One note: the mix of AI tools (DeepSeek, ChatRTX, Grok, ChatGPT, Co",
+      "agent": "publisher",
+      "at": "2026-09-25T02:39:39.947Z",
+      "loud": false
+    },
+    {
+      "id": "n179030399793914",
+      "level": "success",
+      "text": "4 hír + 1 útmutató publikálva (költség: $0.0877).",
+      "agent": "ceo",
+      "at": "2026-09-25T02:39:57.939Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178912999095843",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Create custom Genmoji and images with Apple Intelligence Image Playground\" — javítva: Az AI-bíró kitalált állítást talált (részletek nélkül); Reviewer verdict: Hitelesség-kapu blokkolta: Az AI-bíró kitalált állítást talált (részletek nélkül); újraküldöm.",
-      "ref": "GUIDE_create-custom-genmoji-and-images-with-apple-intelligence-ima.json",
-      "at": "2026-09-11T12:33:10.958Z"
-    },
-    {
-      "id": "m17891300215692",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Create custom Genmoji and images with Apple Intelligence Image Playground\" (?/10)",
-      "ref": "GUIDE_create-custom-genmoji-and-images-with-apple-intelligence-ima.json",
-      "at": "2026-09-11T12:33:41.569Z"
-    },
-    {
-      "id": "m178913007555397",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 20 → 5/4/2 oszlop.",
-      "ref": "mobile",
-      "at": "2026-09-11T12:34:35.553Z"
-    },
-    {
-      "id": "m178913064067371",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "2 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-09-11T12:44:00.673Z"
-    },
-    {
-      "id": "m178915276984526",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"How FLUX Video Edit rewrites a clip from one instruction\" — mi a baj: The article presents 'PicsArt Agents' as a real, named product feature with voice control and the ability to interrupt and redirect edits. PicsArt does have an 'AI Agents' feature with voice control that launched, but attributing specific behaviors like 'interrupt mid-task and redirect without starting ove",
-      "ref": "2026-09-11T18-51-46-518Z_picsart_How_FLUX_Video_Edit_rewrites_a_clip_from_one_instr.json",
-      "at": "2026-09-11T18:52:49.845Z"
-    },
-    {
-      "id": "m178915280127537",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"How FLUX Video Edit rewrites a clip from one instruction\" — javítva: The article presents 'PicsArt Agents' as a real, named product feature with voice control and the ability to interrupt and redirect edits. PicsArt does have an 'AI Agents' feature with voice control that launched, but attributing specific behaviors like 'interrupt mid-task and redirect without starting over' and spe",
-      "ref": "2026-09-11T18-51-46-518Z_picsart_How_FLUX_Video_Edit_rewrites_a_clip_from_one_instr.json",
-      "at": "2026-09-11T18:53:21.275Z"
-    },
-    {
-      "id": "m17891528529061",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"How FLUX Video Edit rewrites a clip from one instruction\" — mi a baj: The article states 'PicsArt has been publicly rolling out AI editing agents inside its app, with voice control as part of that direction — that's confirmed.' This asserts PicsArt Agents with voice control as a confirmed, deployed product feature/direction. Per prior verification, the specific combination o",
-      "ref": "2026-09-11T18-51-46-518Z_picsart_How_FLUX_Video_Edit_rewrites_a_clip_from_one_instr.json",
-      "at": "2026-09-11T18:54:12.906Z"
-    },
-    {
-      "id": "m178915286254075",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 20 → 5/4/2 oszlop.",
-      "ref": "mobile",
-      "at": "2026-09-11T18:54:22.540Z"
-    },
     {
       "id": "m178917941901671",
       "from": "ellenorzo",
@@ -2639,6 +2567,78 @@
       "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Ask plain-English questions about a long PDF using\" — The specific claim that PDF upload works exactly as described with the attachment icon",
       "ref": "ARTICLE_GUIDE_ask-plain-english-questions-about-a-long-pdf-using-hugging-f.json",
       "at": "2026-09-24T19:36:35.200Z"
+    },
+    {
+      "id": "m179030338604768",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Draft mode for Seedance 2.5: preview in 480p, deliver in 1080p\" — mi a baj: NO_LEDE: Hiányzik a RÖVIDEN-doboz (> **In short:** …) közvetlenül a főcím után — az AI-keresők és a Google kivonat-doboza ezt olvassák (style-guide 2a).; Picsart's AI Playground is described with a specific count of 'more than 190 AI models' — this specific number is not supported by the source, whic",
+      "ref": "2026-09-25T02-23-56-385Z_picsart_Draft_mode_for_Seedance_2_5__preview_in_480p__deli.json",
+      "at": "2026-09-25T02:29:46.047Z"
+    },
+    {
+      "id": "m179030362722723",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"How invideo improves color grading 3x with GPT‑6 Astra\" — javítva: Source mismatch: article claims to be based on OpenAI InVideo case study but contains zero mention of InVideo, the 3x color grading claim, or any specifics from that source; GPT-6 Astra does not exist as a released product; writing as fact about a non-existent model violates factual accuracy standards; újraküldöm.",
+      "ref": "2026-09-24T02-06-54-285Z_openai-blog_How_invideo_improves_color_grading_3x_with_GPT_6_A.json",
+      "at": "2026-09-25T02:33:47.227Z"
+    },
+    {
+      "id": "m179030364304423",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Draft mode for Seedance 2.5: preview in 480p, deliver in 1080p\" — javítva: NO_LEDE: Hiányzik a RÖVIDEN-doboz (> **In short:** …) közvetlenül a főcím után — az AI-keresők és a Google kivonat-doboza ezt olvassák (style-guide 2a).; Picsart's AI Playground is described with a specific count of 'more than 190 AI models' — this specific number is not supported by the source, which only cov",
+      "ref": "2026-09-25T02-23-56-385Z_picsart_Draft_mode_for_Seedance_2_5__preview_in_480p__deli.json",
+      "at": "2026-09-25T02:34:03.044Z"
+    },
+    {
+      "id": "m179030366233177",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"How invideo improves color grading 3x with GPT‑6 Astra\" (?/10)",
+      "ref": "2026-09-24T02-06-54-285Z_openai-blog_How_invideo_improves_color_grading_3x_with_GPT_6_A.json",
+      "at": "2026-09-25T02:34:22.331Z"
+    },
+    {
+      "id": "m179030368841152",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Draft mode for Seedance 2.5: preview in 480p, deliver in 1080p\" (?/10)",
+      "ref": "2026-09-25T02-23-56-385Z_picsart_Draft_mode_for_Seedance_2_5__preview_in_480p__deli.json",
+      "at": "2026-09-25T02:34:48.411Z"
+    },
+    {
+      "id": "m179030371277835",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "info",
+      "text": "A \"Edit updates, thumbnail previews, and more\" hír a meglévő útmutatóra mutat: generate-unique-profile-pictures-for-social-media-with-midjo",
+      "ref": "generate-unique-profile-pictures-for-social-media-with-midjo",
+      "at": "2026-09-25T02:35:12.778Z"
+    },
+    {
+      "id": "m179030397322817",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 20 → 5/4/2 oszlop.",
+      "ref": "mobile",
+      "at": "2026-09-25T02:39:33.228Z"
+    },
+    {
+      "id": "m179030410224396",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Draft a clear project status update for your team \" — The specific URL 'chat.deepseek.com' as the guaranteed access point; The exact 'New Chat' button name and location in the UI",
+      "ref": "ARTICLE_GUIDE_draft-a-clear-project-status-update-for-your-team-with-deeps.json",
+      "at": "2026-09-25T02:41:42.243Z"
     }
   ]
 }

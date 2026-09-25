@@ -1,0 +1,69 @@
+{
+  "_meta": {
+    "written_at": "2026-09-25T02:33:47.226Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.011690224,
+    "original_draft": "2026-09-24T02-06-54-285Z_openai-blog_How_invideo_improves_color_grading_3x_with_GPT_6_A.json",
+    "source_id": "openai-blog",
+    "source_name": "OpenAI Blog (hivatalos)",
+    "source_link": "https://openai.com/index/invideo-builds-with-gpt-6-astra",
+    "source_links": [
+      "https://openai.com/index/invideo-builds-with-gpt-6-astra",
+      "https://openai.com/index/harvey-from-context-to-confidence-with-astra",
+      "https://openai.com/index/airbnb-gpt-6-astra"
+    ],
+    "merged_from": 3,
+    "merged_theme": "OpenAI GPT-6 Astra enterprise integrations",
+    "status": "published",
+    "rejected_at": "2026-09-24T13:08:18.325Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 721
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Excellent explainer with clear hooks, well-defined technical terms in plain language, balanced product examples, and a practical 'What this means for you' section. Factual claims are general and verifiable. No prohibited content, no clichés, kind tone throughout.",
+      "_aiCost": 0.0014931,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Cannot pass to publication. The article is sourced from an OpenAI blog post about InVideo achieving specific results with a specific model, but the article contains no mention of InVideo, the 3x claim, or any specifics from that source. Additionally, GPT-6 Astra is not a released product — presenting it as fact is a factual accuracy failure. The writer should either rewrite to actually use the source material and its concrete details, or choose a different topic.",
+    "can_retry": true,
+    "rework_attempts": 2,
+    "reworked_from": "REJECTED_2026-09-24T02-06-54-285Z_openai-blog_How_invideo_improves_color_grading_3x_with_GPT_6_A.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-09-25T02:34:22.330Z",
+    "slug": "ai-is-quietly-moving-from-answering-questions-to-doing-tasks",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-09-25T02:34:59.082Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is an explainer article about a general trend (multimodal/agentic AI), not the introduction of one specific named feature or tool for users to use.",
+    "image_v": 2,
+    "image_at": "2026-09-25T02:37:43.427Z",
+    "seo": {
+      "meta_description": "AI is no longer just about answering questions. New tools can now see, hear, and act inside your apps. Here's what that actually means for you.",
+      "keywords": [
+        "what is agentic AI",
+        "AI tools that do tasks",
+        "multimodal AI explained",
+        "AI agents vs chatbots",
+        "new AI features 2024"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more specific product names in the article body (like Claude, Gemini) to capture branded search traffic",
+        "Include a clear definition of 'agentic AI' early in the article for featured snippet opportunity",
+        "Consider adding an FAQ section addressing common questions like 'is AI agent safe' or 'what can AI agents actually do'"
+      ],
+      "optimised_at": "2026-09-25T02:38:30.511Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"AI Is Quietly Moving from Answering Questions to Doing Tasks\"\nsubtitle: \"A new generation of multimodal, agentic tools can look at your files, listen to audio, and act inside other software. Here's what that actually looks like in everyday apps.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"agentic-ai\", \"multimodal-ai\", \"ai-tools\", \"productivity\", \"everyday-ai\"]\n---\n\n# AI Is Quietly Moving from Answering Questions to Doing Tasks\n\n> **In short:** A new generation of AI tools can read images, listen to audio, follow multi-step plans, and act inside other software — not just respond to chat. That shift is starting to show up in everyday tools like ChatGPT, Notion, and Adobe products, and it's worth knowing what it actually does for you.\n\nYou've asked an AI for help and gotten a confident but thin answer. If that's your memory of AI, the tools shipping this year are doing things the old versions couldn't.\n\nThe difference isn't that they got smarter at chat. It's that they can now take action in the real world.\n\n## Two terms worth knowing\n\nWhen AI companies describe these new tools, two words come up constantly: **multimodal** and **agentic**.\n\n**Multimodal** means the AI can handle more than just typed words. It can look at a photo you upload, listen to an audio clip, read a PDF, or watch a video. The old chat-only AI was like talking to someone on the phone with their eyes closed — a multimodal AI can see what you uploaded.\n\n**Agentic** means the AI doesn't just answer — it does things. It can open an app, search the web, fill in a form, move a file, or run a command and report back. Think of it as the difference between asking a friend for directions versus asking them to drive you there.\n\nTogether, these two shifts mean the same chat window you use today can quietly turn into something that finishes the task, not just explains it.\n\n## What this looks like in tools you might already use\n\nYou don't need to install anything experimental to feel this shift. It's rolling into familiar products.\n\n**In office work:** Notion, Google Workspace, and Microsoft 365 have added AI features that can summarize a long email thread, draft a meeting recap from your notes, or find a specific clause in a contract you uploaded. These aren't demos — they're shipping in the apps many people already pay for.\n\n**In creative work:** Adobe's Firefly family and Runway now offer AI tools inside creative apps that can remove a background from a video, generate a rough first cut from a script, or suggest color and lighting adjustments you can apply with one click. Descript lets you edit video by editing the text transcript — delete a sentence and the matching video clip disappears.\n\n**In everyday help:** ChatGPT, Claude, and Gemini can now look at a photo of your fridge and suggest dinner, read a screenshot of an error message and explain the fix, or watch a short video and tell you what step you missed.\n\nNone of this is science fiction. It's the current state of products available now.\n\n## What this means for you\n\n- **If you write, design, or create anything:** try uploading an image or a short video the next time you're stuck. The new tools can look at it with you and suggest next steps in a way typed prompts never could.\n- **If your job involves reviewing lots of material — emails, contracts, reports:** a current AI can act like a second pair of eyes that reads everything and points out what matters. Don't ship its first draft, but don't ignore what it surfaces either.\n- **If you're just curious:** pick one small task you've been putting off — summarize a long article, draft a tricky email, clean up a noisy audio clip — and let a current AI tool do the first pass. You'll feel exactly how much the floor has moved.\n\n## Wrap-up\n\nThe chat-only AI you remember is being quietly replaced by tools that look, listen, and act. You don't need to learn anything new to benefit — just open a tool you already have, give it something visual or multi-step, and see how far it gets. The best way to understand this shift is to try it once today.",
+  "original_title": "How invideo improves color grading 3x with GPT‑6 Astra"
+}

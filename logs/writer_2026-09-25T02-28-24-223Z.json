@@ -1,0 +1,65 @@
+{
+  "started_at": "2026-09-25T02:24:48.269Z",
+  "drafts_total": 9,
+  "articles_written": 3,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 2,
+  "merged_total": 2,
+  "skipped_repeat": 1,
+  "repeats": [
+    {
+      "cim": "Your AI Assistant Can Now Read Your Files — Here's What's Actually Changing",
+      "mar": "Your AI Assistant Can Now Read Your Dropbox — Here's What That Actually Means",
+      "pont": 0.9352027774641096,
+      "by": "embedding",
+      "theme": null
+    }
+  ],
+  "total_cost_usd": 0.042115488000000006,
+  "by_article": [
+    {
+      "draft": "2026-09-25T02-23-56-385Z_picsart_Draft_mode_for_Seedance_2_5__preview_in_480p__deli.json",
+      "writer_output": "WRITER_2026-09-25T02-23-56-385Z_picsart_Draft_mode_for_Seedance_2_5__preview_in_480p__deli.json",
+      "success": true,
+      "merged_from": 4,
+      "merged_theme": "PicsArt AI Playground updates: Seedance draft mode, Creatify Boreal video, Gemini integration, style transfer",
+      "cost_usd": 0.011224788,
+      "duration_ms": 128501,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-09-24T02-07-42-583Z_zapier-blog_How_Ariel_Chen_built_trust_before_she_built_automa.json",
+      "writer_output": "WRITER_2026-09-24T02-07-42-583Z_zapier-blog_How_Ariel_Chen_built_trust_before_she_built_automa.json",
+      "success": true,
+      "merged_from": 3,
+      "merged_theme": "Zapier customer success stories: automation implementations",
+      "cost_usd": 0.01031058,
+      "duration_ms": 19263,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-09-25T02-23-56-385Z_dropbox-blog__Dropbox_and_SpaceXAI_turn_project_context_into_du.json",
+      "success": false,
+      "reason": "repeat",
+      "repeat_of": "Your AI Assistant Can Now Read Your Dropbox — Here's What That Actually Means",
+      "score": 0.9352027774641096,
+      "cost_usd": 0.00902868
+    },
+    {
+      "draft": "2026-09-25T02-23-56-384Z_midjourney-updates_Edit_updates__thumbnail_previews__and_more.json",
+      "writer_output": "WRITER_2026-09-25T02-23-56-384Z_midjourney-updates_Edit_updates__thumbnail_previews__and_more.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.00982974,
+      "duration_ms": 34605,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    }
+  ],
+  "finished_at": "2026-09-25T02:28:24.223Z",
+  "duration_seconds": 215.954
+}
