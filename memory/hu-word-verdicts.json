@@ -761,6 +761,7 @@
     "eszközeden",
     "eszközorkesztálás",
     "eszköztáron",
+    "eszközvezérelt",
     "ethernet",
     "ethernet-kábelt",
     "eu-west",
@@ -792,6 +793,7 @@
     "feladatpriorizálás",
     "feladatrangsorolást",
     "feladatsorokkal",
+    "feladatvezérelt",
     "feladatvégrehajtási",
     "felbűg",
     "feleleket",
@@ -4045,6 +4047,11 @@
       "correct": "gondoltad",
       "at": "2026-09-25",
       "mondattal": true
+    },
+    "őszinta": {
+      "correct": "őszinte",
+      "at": "2026-09-25",
+      "mondattal": true
     }
   },
   "review": {
@@ -5464,11 +5471,16 @@
       "correct": "illusztrált",
       "at": "2026-09-25",
       "mondattal": true
+    },
+    "eltárlása": {
+      "correct": "eltörlése",
+      "at": "2026-09-25",
+      "mondattal": true
     }
   },
   "scan": {
     "at": "2026-09-25",
-    "files": 1039,
-    "candidates": 12
+    "files": 1037,
+    "candidates": 4
   }
 }
