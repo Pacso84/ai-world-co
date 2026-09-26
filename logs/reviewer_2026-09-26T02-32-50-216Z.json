@@ -1,0 +1,35 @@
+{
+  "started_at": "2026-09-26T02:31:24.909Z",
+  "total": 4,
+  "passed": 3,
+  "failed": 0,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.008396548,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-09-26T02-28-17-331Z_microsoft-365_Put_multiple_values_in_one_cell_with_lists_and_arr.json",
+      "article": "ARTICLE_2026-09-26T02-28-17-331Z_microsoft-365_Put_multiple_values_in_one_cell_with_lists_and_arr.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0015957
+    },
+    {
+      "writer": "WRITER_2026-09-26T02-28-17-332Z_picsart_How_to_use_Picsart_inside_Grok_Bot_for_full_conten.json",
+      "article": "ARTICLE_2026-09-26T02-28-17-332Z_picsart_How_to_use_Picsart_inside_Grok_Bot_for_full_conten.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.00155682
+    },
+    {
+      "writer": "WRITER_GUIDE_use-qwen-to-translate-a-short-message-for-a-friend-or-family.json",
+      "article": "ARTICLE_GUIDE_use-qwen-to-translate-a-short-message-for-a-friend-or-family.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.00174501
+    }
+  ],
+  "truth_blocked": 1,
+  "finished_at": "2026-09-26T02:32:50.216Z",
+  "duration_seconds": 85.307
+}

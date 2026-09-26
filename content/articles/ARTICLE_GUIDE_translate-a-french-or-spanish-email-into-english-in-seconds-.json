@@ -1,0 +1,64 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "translate-a-french-or-spanish-email-into-english-in-seconds-",
+    "company": "Hugging Face",
+    "tool": "Hugging Face",
+    "icon": "🌐",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-09-26T02:36:51.114Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00927858,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-09-26T02:37:09.301Z",
+    "slug": "translate-a-french-or-spanish-email-into-english-in-seconds-with-huggi",
+    "auto_check": {
+      "passed": false,
+      "issues": [
+        "UI_CLAIMS_UNSOURCED: 3 konkrét képernyő-feliratot állít tényként forrás nélkül (\"continue with google\", \"translate\", \"detect language\"). Vagy nézd meg a hivatalos oldalon, vagy írd hedge-elve (\"if you don't see…\")."
+      ],
+      "wordCount": 1427
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Excellent beginner guide with clear step-by-step instructions, helpful fallback tips for every step, correct French translation example, and good coverage of common mistakes. Brand voice is friendly and explanatory throughout.",
+      "_aiCost": 0.0018081,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "image_v": 2,
+    "image_at": "2026-09-26T02:37:54.467Z",
+    "seo": {
+      "meta_description": "Translate French or Spanish emails to English for free with Hugging Face's AI tool — no signup or language skills needed, works instantly in your browser.",
+      "keywords": [
+        "translate French to English free",
+        "translate Spanish to English free",
+        "free AI translator online",
+        "Hugging Face translation tool",
+        "translate email from French",
+        "translate email from Spanish",
+        "instant translation AI",
+        "no sign-up translator"
+      ],
+      "seo_score": 9,
+      "suggestions": [
+        "Consider adding 'how to' in the title to capture 'how to translate French to English' searches",
+        "Add more specific use cases like 'translate business email' to target commercial intent",
+        "Include the word 'online' or 'browser' in the meta to strengthen the 'no software' benefit"
+      ],
+      "optimised_at": "2026-09-26T02:38:47.112Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Translate a French or Spanish Email into English in Seconds with Hugging Face\"\nsubtitle: \"A free AI tool turns a foreign-language message into readable English — no language skills needed.\"\ncategory: \"guide\"\naudience: \"both\"\ncompany: \"Hugging Face\"\ntool: \"Hugging Face\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"translation\", \"hugging-face\", \"email\"]\n---\n\n# Translate a French or Spanish Email into English in Seconds with Hugging Face\n\n> **In short:** Hugging Face hosts free AI translation tools you can use straight from your browser. Paste in a French or Spanish email and you get a readable English version in seconds — no paid translator, no language skills, and no software to install.\n\nA message lands in your inbox from a French supplier, a Spanish client, or a relative overseas. You don't speak the language, and the clock is ticking. Years ago, that meant copying text into a paid service or waiting for a bilingual friend. Today, an AI model on **Hugging Face** — a popular website where companies and researchers share AI tools for anyone to try — can do the heavy lifting for free. This guide walks you through the whole thing, from sign-up to a translated email in your hand.\n\n## Before you start\n\n- **A free Hugging Face account.** Sign-up takes about a minute at the official site. You'll need an email address.\n- **A web browser** on a phone, tablet, or computer. No app to download.\n- **The text you want translated.** Have it copied to your clipboard, or open the email next to your browser so you can paste it.\n- **Roughly 5 minutes total**, including account creation the first time.\n\nOne honest note before we begin: this works beautifully for everyday emails, short letters, and chat-style messages. Very long documents (think: full contracts or 20-page reports) can hit the tool's input limit, and you'll want a different approach for those.\n\n## Step 1 — Create your free Hugging Face account\n\nOpen your browser and go to the Hugging Face homepage. Look for a **sign-up** or **\"Sign up\"** button, usually near the top-right corner. Enter your email address, choose a password, and confirm your email through the link they send you. After confirmation, you'll land on your personal dashboard.\n\n**If it looks different:** some visitors are automatically logged in through their Google or GitHub account — if you see a button labeled **\"Continue with Google\"** (or GitHub), that's a faster path and creates the same kind of account.\n\n💬 Example: use your regular email and a password you don't reuse anywhere else.\n\nYou'll know it worked when you see your username or profile icon in the top-right corner of the page.\n\n## Step 2 — Search for a French-to-English translation tool\n\nFrom your dashboard, look for a **search bar** at the top of the page and type something like **\"French to English translation\"** or **\"Spanish to English translation\"**. Press Enter. You'll see a list of results — some are AI models (the brains behind the tool), and some are **Spaces** (ready-to-use mini-apps with a friendly interface).\n\nClick on a result that says **Space** underneath its name and shows a little **gradio** or **streamlit** label — those are the ones with a built-in text box you can type into. Community-built translation Spaces are very common and free.\n\n**If it looks different:** if no Space shows up, try the simpler search **\"translation\"** and skim the first few results. You're looking for any Space with two text boxes labeled something like **\"Input\"** and **\"Output\"**.\n\n💬 Example: search for \"French to English translation\" if your email is in French.\n\nYou'll know it worked when the Space opens and you can see at least one text box on the page asking you to type or paste something.\n\n## Step 3 — Paste the foreign-language email into the input box\n\nClick inside the **left-side** or **top** text box — usually labeled something like **\"Source text\"**, **\"Input\"**, or simply **\"Enter text\"**. Open your email in another tab or window, highlight the French or Spanish message, copy it (Ctrl+C on Windows, Cmd+C on Mac, or tap-and-hold \"Copy\" on a phone), then click back into the text box and paste it (Ctrl+V, Cmd+V, or tap-and-hold \"Paste\").\n\n**If it looks different:** some Spaces put both text boxes side by side rather than stacked. The one that already has text in it (your language) is the input; the empty one is where the English will appear.\n\n💬 Example: a French line like *\"Bonjour, je vous écris concernant la livraison prévue vendredi.\"* — paste the whole email, paragraphs and all.\n\nYou'll know it worked when the foreign-language text appears inside the input box and you can see your cursor blinking at the end of it.\n\n## Step 4 — Pick your language pair and click Translate\n\nLook for a small **dropdown menu** or **radio buttons** somewhere on the page labeled **\"Source language\"** and **\"Target language\"** — or similar wording. Set the source to **French** (or **Spanish**) and the target to **English**. Then click the button that says **\"Translate\"**, **\"Submit\"**, or shows a little arrow icon.\n\nThe model will start working. Depending on the length of your email, this takes anywhere from two seconds to about ten seconds. You'll see the output text appear in the second box, often labeled **\"Output\"**, **\"Translation\"**, or **\"Result\"**.\n\n**If it looks different:** some Spaces skip the language-picker step and figure it out automatically. Others have a \"Detect language\" option — if you see it, leave the source on auto-detect and just set the target to English.\n\n💬 Example: leave source set to \"French\" or \"auto-detect\", and target set to \"English\".\n\nYou'll know it worked when a block of English text appears in the output box — readable, mostly natural-sounding, and recognizably the same email.\n\n## Step 5 — Read the translation and copy it out\n\nRead through the English version carefully. AI translation is good, but it's not perfect — names, dates, and very idiomatic phrases can sometimes come out a little stiff or slightly off. If something looks unclear, try rephrasing the tricky sentence and pasting just that sentence back in for a second pass.\n\nWhen you're happy with the result, highlight the English text, copy it, and paste it wherever you need it — back into your email reply, into a note, or into a chat message to a colleague.\n\n**If it looks different:** some Spaces include a small **copy-to-clipboard** icon right next to the output. If you see one, click it instead of highlighting manually — it's faster.\n\n💬 Example: you'd get something like *\"Hello, I'm writing to you regarding the delivery scheduled for Friday.\"* — clear, polite, ready to act on.\n\nYou'll know it worked when you have a readable English version of the email saved somewhere, and you understand what the sender is asking for.\n\n## Common mistakes\n\n- **Pasting a huge document all at once.** Many Spaces cap input at a few hundred words. If nothing happens, try splitting the email into two or three shorter chunks and translating one at a time.\n- **Skipping the language-pair setting.** If you forget to set the target to English, the output may come back in the original language. Always double-check the dropdowns before clicking Translate.\n- **Treating the first result as gospel.** AI translations are usually right, but names, dates, and unusual phrases can be wrong. If a number or a person's name looks strange, paste just that word or phrase back in and ask the tool to clarify — or confirm with the original sender before acting on it.\n\n## What this means for you\n\n- **In everyday life:** when a relative abroad sends a holiday update in French, or a Spanish-speaking neighbor writes about a package pickup, you can read it in seconds instead of asking someone to translate for you.\n- **For your business or work:** if you deal with international suppliers, clients, or remote teammates who write in another language, this gives you a quick first read so you can decide which messages need a careful human translation and which are routine enough to act on immediately.\n- **If you're just getting started:** the easiest first move is to translate one short email you've been ignoring — you'll see in two minutes how useful this becomes part of your regular routine.\n\n## Try it now\n\nFind one unread email in another language sitting in your inbox right now. Sign up for Hugging Face, search for a French-to-English or Spanish-to-English translation Space, paste the message, and read the result. Total time: under five minutes.",
+  "original_title": "Translate a French or Spanish email into English in seconds with Hugging Face"
+}

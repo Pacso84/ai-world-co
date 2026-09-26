@@ -1,0 +1,65 @@
+{
+  "started_at": "2026-09-26T02:29:06.390Z",
+  "drafts_total": 4,
+  "articles_written": 3,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 0,
+  "merged_total": 0,
+  "skipped_repeat": 1,
+  "repeats": [
+    {
+      "cim": "What ChatGPT Ads Are and Why They're Expanding to More Countries",
+      "mar": "ChatGPT Ads Are Expanding Across Europe: What Everyday Users Should Know",
+      "pont": 0.9232104743205509,
+      "by": "embedding",
+      "theme": null
+    }
+  ],
+  "total_cost_usd": 0.03590954,
+  "by_article": [
+    {
+      "draft": "2026-09-26T02-28-17-332Z_picsart_Recraft_V4_1_Flash__the_fastest_image_model_on_the.json",
+      "writer_output": "WRITER_2026-09-26T02-28-17-332Z_picsart_Recraft_V4_1_Flash__the_fastest_image_model_on_the.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.0069344,
+      "duration_ms": 45154,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-09-26T02-28-17-332Z_picsart_How_to_use_Picsart_inside_Grok_Bot_for_full_conten.json",
+      "writer_output": "WRITER_2026-09-26T02-28-17-332Z_picsart_How_to_use_Picsart_inside_Grok_Bot_for_full_conten.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.00904638,
+      "duration_ms": 14075,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-09-26T02-28-17-331Z_microsoft-365_Put_multiple_values_in_one_cell_with_lists_and_arr.json",
+      "writer_output": "WRITER_2026-09-26T02-28-17-331Z_microsoft-365_Put_multiple_values_in_one_cell_with_lists_and_arr.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.01008468,
+      "duration_ms": 56689,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-09-24T13-01-12-592Z_openai-blog_ChatGPT_Ads_expands_to_Southeast_Asia_and_Taiwan.json",
+      "success": false,
+      "reason": "repeat",
+      "repeat_of": "ChatGPT Ads Are Expanding Across Europe: What Everyday Users Should Know",
+      "score": 0.9232104743205509,
+      "cost_usd": 0.00879588
+    }
+  ],
+  "finished_at": "2026-09-26T02:31:24.727Z",
+  "duration_seconds": 138.337
+}

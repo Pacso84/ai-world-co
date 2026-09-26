@@ -1,25 +1,4 @@
 {
-  "2026-09-08": [
-    {
-      "at": "2026-09-08T12:25:20.076Z",
-      "file": "WRITER_2026-09-08T12-23-05-031Z_ibm_How_llm-d_makes_the_most_of_the_hardware_you_alrea.json",
-      "action": "block",
-      "reasons": [
-        "The article states a '753-billion-parameter open AI model' was demonstrated by IBM Research and Red Hat running on standard H100 GPUs at '5 to 10 times lower' cost via a system called 'llm-d' — this is a specific fabricated product demonstration. There is no verified public announcement of an IBM/Red Hat 753B-parameter open model demonstration using an 'llm-d' serving system with these specific cost claims.",
-        "The article describes 'llm-d' as a real, named software system that distributes requests across chips — this appears to be an invented tool name not corresponding to a verified IBM/Red Hat product."
-      ],
-      "confidence": 6
-    },
-    {
-      "at": "2026-09-08T19:09:55.469Z",
-      "file": "WRITER_2026-09-08T19-08-01-954Z_picsart_Grok_Imagine_Quality_explained__the_high-fidelity_.json",
-      "action": "block",
-      "reasons": [
-        "The article describes a specific UI element — a 'model picker' inside 'Picsart AI Playground' where 'Grok Imagine Quality' is one of the selectable model options. Neither 'Picsart AI Playground' as a named Picsart product with such a model picker, nor 'Grok Imagine Quality' as a specific xAI mode distinct from the broader Grok Imagine feature, could be verified. The article presents both the product integration and the UI as established fact, but the level of specificity (a discrete 'Quality' tier plus a model-picker UI housing it) is the kind of invented interface/feature pairing the truth gate is meant to catch."
-      ],
-      "confidence": 6
-    }
-  ],
   "2026-09-10": [
     {
       "at": "2026-09-10T02:07:04.288Z",
@@ -359,6 +338,17 @@
       "reasons": [
         "AI-bíró nem elérhető (érthetetlen AI-válasz: Unexpected token 'i', \"ible\": tru\"... is not valid JSON) — visszatartva a következő futásig"
       ]
+    }
+  ],
+  "2026-09-26": [
+    {
+      "at": "2026-09-26T02:32:29.377Z",
+      "file": "WRITER_2026-09-26T02-28-17-332Z_picsart_Recraft_V4_1_Flash__the_fastest_image_model_on_the.json",
+      "action": "block",
+      "reasons": [
+        "The article states Recraft's V4.1 Flash 'can return a finished picture so quickly that you can react, tweak your prompt, and try again' and that 'some models take 30 seconds to a couple of minutes. The fastest ones come back so quickly…' — these specific timing claims and the trade-off characterization (softer/less photorealistic details, narrower style range, worse text-in-images) are not supported by the PicsArt source, which the article fails to even cite. The source only announces V4.1 Flash as 'the fastest image model on the market' without quantifying speeds or listing specific trade-offs."
+      ],
+      "confidence": 7
     }
   ]
 }

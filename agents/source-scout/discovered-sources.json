@@ -1,30 +1,18 @@
 {
   "_meta": {
-    "generated_at": "2026-09-22T02:22:13.150Z",
+    "generated_at": "2026-09-26T02:29:06.204Z",
     "generated_by": "source-scout agent v3.0 (megbízhatóság-kapu)",
     "note": "JAVASLATOK új, MEGBÍZHATÓ hivatalos forrásokra. A felhasználó/főnök dönti el, melyiket adjuk a sources/rss-feeds.json-hoz (enabled:true-val). Minden jelölt megbízhatósági pontszámmal + indoklással.",
     "min_score": 100,
     "checked_orgs": 18,
     "newly_discovered": 0,
-    "rejected_count": 3,
+    "rejected_count": 1,
     "rejected_examples": [
       {
-        "name": "Duolingo Blog",
+        "name": "Duolingo News",
         "host": "blog.duolingo.com",
         "reason": "a friss cikkeinek csak 0%-a szól AI-ról (kell: 60%)",
         "score": 100
-      },
-      {
-        "name": "Amazon Alexa Blog",
-        "host": "aboutamazon.com",
-        "reason": "a friss cikkeinek csak 30%-a szól AI-ról (kell: 60%)",
-        "score": 100
-      },
-      {
-        "name": "Ring News Blog",
-        "host": "blog.ring.com",
-        "reason": "pont 70 < 100",
-        "score": 70
       }
     ]
   },

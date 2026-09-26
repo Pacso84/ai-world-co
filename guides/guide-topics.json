@@ -6913,10 +6913,11 @@
       "audience": "personal",
       "level": "beginner",
       "angle": "A short, specific note that names one moment from the interview is far more memorable than a generic 'thanks for your time'.",
-      "status": "todo",
+      "status": "done",
       "icon": "💌",
       "proposed_at": "2026-09-24T02:20:56.591Z",
-      "proposed_by": "guide-ideas"
+      "proposed_by": "guide-ideas",
+      "written_at": "2026-09-26T02:34:21.003Z"
     },
     {
       "id": "how-to-scale-a-family-recipe-up-or-down-for-any-number-of-gu",
@@ -7099,6 +7100,49 @@
       "icon": "🧭",
       "proposed_at": "2026-09-24T02:23:33.285Z",
       "proposed_by": "guide-ideas"
+    },
+    {
+      "id": "translate-a-french-or-spanish-email-into-english-in-seconds-",
+      "company": "Hugging Face",
+      "tool": "Hugging Face",
+      "title": "Translate a French or Spanish email into English in seconds with Hugging Face",
+      "audience": "both",
+      "level": "beginner",
+      "angle": "Use a free Hugging Face translation model to instantly turn a foreign-language message into English you can actually read, no language skills needed.",
+      "status": "done",
+      "icon": "🌐",
+      "priority": "balance",
+      "proposed_at": "2026-09-26T02:36:16.455Z",
+      "proposed_by": "guide-balance",
+      "written_at": "2026-09-26T02:36:51.115Z"
+    },
+    {
+      "id": "turn-any-article-into-a-listenable-audio-file-with-hugging-f",
+      "company": "Hugging Face",
+      "tool": "Hugging Face",
+      "title": "Turn any article into a listenable audio file with Hugging Face's free text-to-speech tool",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "Convert a long blog post or newsletter into an MP3 you can play on your commute, without signing up or touching any code.",
+      "status": "todo",
+      "icon": "🎧",
+      "priority": "balance",
+      "proposed_at": "2026-09-26T02:36:18.364Z",
+      "proposed_by": "guide-balance"
+    },
+    {
+      "id": "tell-whether-a-job-application-was-written-by-ai-using-huggi",
+      "company": "Hugging Face",
+      "tool": "Hugging Face",
+      "title": "Tell whether a job application was written by AI using Hugging Face's free detector",
+      "audience": "business",
+      "level": "beginner",
+      "angle": "Paste a candidate's cover letter into Hugging Face's AI-text detector and get a quick read on whether it sounds like a real person wrote it.",
+      "status": "todo",
+      "icon": "🔍",
+      "priority": "balance",
+      "proposed_at": "2026-09-26T02:36:18.995Z",
+      "proposed_by": "guide-balance"
     }
   ]
 }
