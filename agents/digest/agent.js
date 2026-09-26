@@ -72,7 +72,9 @@ function collectWeek() {
       if (!title) continue;
       items.push({
         title, subtitle,
-        url: `${SITE_URL}/article/${slugify(title)}.html`,
+        // A RÖGZÍTETT slug a kanonikus cím (09-26): a címből képzett slug ~11%-ban
+        // eltér tőle → halott link. A .html nélküli alak a kanonikus.
+        url: `${SITE_URL}/article/${d._meta?.slug || slugify(title)}`,
         source: d._meta?.source_name || '',
         publishedAt: d._meta?.published_at || ''
       });
@@ -110,7 +112,7 @@ function enrichWithImages(md) {
   if (!md) return md;
   const IMG_SRC = join(ROOT, 'website', 'assets', 'images');
   return md.replace(
-    /(^##[^\n]+)\n\n([\s\S]*?)\n\n(\[[^\]]+\]\((https?:\/\/[^)]+\/article\/([^)]+?)\.html)\))/gm,
+    /(^##[^\n]+)\n\n([\s\S]*?)\n\n(\[[^\]]+\]\((https?:\/\/[^)]+\/article\/([^)\s]+?)(?:\.html)?)\))/gm,
     (full, heading, body, link, url, slug) => {
       if (!existsSync(join(IMG_SRC, slug + '.jpg'))) return full;
       const alt = heading.replace(/^##\s+/, '').replace(/["\[\]]/g, '').trim();

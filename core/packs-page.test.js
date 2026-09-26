@@ -379,5 +379,14 @@ if (!ELO) {
   console.log('  ⏭️  [kimenet] él, de nincs friss build — a kimenet-próbák kimaradnak');
 }
 
+t('a bolti szöveg csak azt ígéri, ami igaz (09-26: csak PayPal; nem minden lépés nevez meg gombot)', () => {
+  for (const ny of NYELVEK) {
+    const minden = Object.values(PACKS_UI[ny]).join(' ');
+    assert.ok(!/card or PayPal|Kártyával vagy PayPallal|tarjeta o PayPal/i.test(minden), ny + ': kártyás fizetést ígér (jelenleg csak PayPal működik)');
+    assert.ok(!/naming the button|megnevezi a gombot|nombra el botón/i.test(minden), ny + ': azt ígéri, hogy minden lépés megnevezi a gombot');
+    assert.ok(!/If a guide needs paid software, it says so|Ha fizetős szoftver kell hozzá, az az első|Si una guía necesita software de pago, lo dice/i.test(minden), ny + ': mindenre kiterjedő ígéret (mérve: 90%)');
+  }
+});
+
 console.log(`\n${bukott ? '❌' : '✅'} ${pass} sikeres, ${bukott} bukott`);
 process.exit(bukott ? 1 : 0);

@@ -122,7 +122,7 @@ export const PACKS_UI = {
     packsLangs: 'The packs are available in English and Spanish.',
 
     packsBuildH: 'How a guide is built',
-    packsBuildP: 'Every guide follows the same shape, because that is the shape that works when you are stuck. It opens with what you need before you start: which account, which app, how long it will take. Then numbered steps, each one naming the button you are looking for and telling you how to know it worked. Then the mistakes people actually make. Then a short, honest close about what this changes, and what it does not. Most guides include an example prompt you can copy. If a guide needs paid software, it says so in the first box, not in step four.',
+    packsBuildP: 'Every guide follows the same shape, because that is the shape that works when you are stuck. It opens with what you need before you start: which account, which app, how long it will take. Then numbered steps, each one telling you what to look for and how to know it worked. Then the mistakes people actually make. Then a short, honest close about what this changes, and what it does not. Most guides include an example prompt you can copy. Most guides say in that first box whether you need a free or a paid plan, not in step four.',
 
     packsAiH: 'Written by AI, and labeled that way',
     packsAiP: 'This whole site is written by AI. The guides, the news articles and most of the pictures are generated, and the support chat is an AI too. Automated quality gates check every piece before it goes out, and no human editor reads the text. A human owner runs the system, reads the feedback and keeps tightening the rules. We say this on every article and on every pack, because you should be able to decide what that is worth to you.',
@@ -131,7 +131,7 @@ export const PACKS_UI = {
     packsQ1: 'What do I get, exactly?',
     packsA1: 'A PDF. A subject pack collects the guides on one theme — each card above shows exactly how many. The complete collection holds all eight packs in a single file with a clickable table of contents. No subscription and no app.',
     packsQ2: 'How do I get it?',
-    packsA2: 'Through our Ko-fi shop. You pay by card or PayPal, and the download appears right after checkout. Ko-fi also emails you a receipt with a link to the download page, and it may offer to set up a free Ko-fi account for you. The file is yours to keep, print and read offline.',
+    packsA2: 'Through our Ko-fi shop. You pay through PayPal, and the download appears right after checkout. Ko-fi also emails you a receipt with a link to the download page, and it may offer to set up a free Ko-fi account for you. The file is yours to keep, print and read offline.',
     packsQ3: 'Can I get a refund?',
     packsA3: 'No. The packs are digital downloads you get immediately after payment, so all sales are final. Questions? Email support@aiworldhq.com.',
     packsQ4: 'Why pay for something that is free on the site?',
@@ -160,7 +160,7 @@ export const PACKS_UI = {
     packsLangs: 'A csomagok angolul és spanyolul érhetők el.',
 
     packsBuildH: 'Hogyan épül fel egy útmutató',
-    packsBuildP: 'Minden útmutató ugyanazt az alakot követi, mert ez az az alak, ami akkor segít, amikor elakadtál. Azzal kezdődik, mi kell hozzá: melyik fiók, melyik alkalmazás, mennyi idő. Utána számozott lépések, mindegyik megnevezi a gombot, amit keresel, és megmondja, miről ismered fel, hogy sikerült. Aztán a hibák, amiket tényleg el szoktak követni. Végül egy rövid, őszinte zárás arról, min változtat ez — és min nem. A legtöbb útmutatóban van egy másolható példa-prompt. Ha fizetős szoftver kell hozzá, az az első dobozban áll, nem a negyedik lépésben.',
+    packsBuildP: 'Minden útmutató ugyanazt az alakot követi, mert ez az az alak, ami akkor segít, amikor elakadtál. Azzal kezdődik, mi kell hozzá: melyik fiók, melyik alkalmazás, mennyi idő. Utána számozott lépések, mindegyik megmondja, mit keress, és miről ismered fel, hogy sikerült. Aztán a hibák, amiket tényleg el szoktak követni. Végül egy rövid, őszinte zárás arról, min változtat ez — és min nem. A legtöbb útmutatóban van egy másolható példa-prompt. A legtöbb útmutató már az első dobozban megmondja, hogy ingyenes vagy fizetős csomag kell-e, nem a negyedik lépésben.',
 
     packsAiH: 'AI írta, és ezt ki is írjuk',
     packsAiP: 'Ezt az egész oldalt AI írja. Az útmutatók, a hírek és a képek nagy része gépi, és az ügyfélszolgálati csevegő is AI. Automatikus minőség-kapuk minden darabot ellenőriznek a megjelenés előtt, de emberi szerkesztő nem olvassa át a szöveget. Egy ember üzemelteti a rendszert, olvassa a visszajelzéseket, és folyamatosan szigorítja a szabályokat. Ezt minden cikken és minden csomagon kiírjuk, mert neked kell eldöntened, mennyit ér ez így.',
@@ -169,7 +169,7 @@ export const PACKS_UI = {
     packsQ1: 'Mit kapok pontosan?',
     packsA1: 'Egy PDF-et. Egy téma-csomag egyetlen téma útmutatóit gyűjti össze — hogy pontosan hányat, az ott áll minden kártyán. A teljes gyűjteményben mind a nyolc csomag egyetlen fájlban, kattintható tartalomjegyzékkel. Nincs előfizetés és nincs alkalmazás.',
     packsQ2: 'Hogyan kapom meg?',
-    packsA2: 'A Ko-fi boltunkon keresztül. Kártyával vagy PayPallal fizetsz, és a letöltés rögtön a fizetés után megjelenik. A Ko-fi emailben is küld egy visszaigazolást a letöltő oldal linkjével, és felajánlhatja, hogy készít neked egy ingyenes Ko-fi fiókot. A fájl a tiéd: megtarthatod, kinyomtathatod, offline is olvashatod.',
+    packsA2: 'A Ko-fi boltunkon keresztül. PayPalon keresztül fizetsz, és a letöltés rögtön a fizetés után megjelenik. A Ko-fi emailben is küld egy visszaigazolást a letöltő oldal linkjével, és felajánlhatja, hogy készít neked egy ingyenes Ko-fi fiókot. A fájl a tiéd: megtarthatod, kinyomtathatod, offline is olvashatod.',
     packsQ3: 'Kaphatok pénzvisszatérítést?',
     packsA3: 'Nem. A csomagok letölthető PDF-ek, amelyeket a fizetés után azonnal megkapsz, ezért minden vásárlás végleges. Kérdésed van? Írj a support@aiworldhq.com címre.',
     packsQ4: 'Miért fizessek azért, ami ingyen is megvan az oldalon?',
@@ -198,7 +198,7 @@ export const PACKS_UI = {
     packsLangs: 'Los packs están disponibles en inglés y español.',
 
     packsBuildH: 'Cómo se construye una guía',
-    packsBuildP: 'Todas las guías siguen la misma forma, porque es la que funciona cuando te has atascado. Empiezan por lo que necesitas antes de ponerte a ello: qué cuenta, qué aplicación, cuánto tiempo te llevará. Después, pasos numerados: cada uno nombra el botón que buscas y te dice cómo saber que ha funcionado. Luego, los errores que la gente comete de verdad. Y al final, un cierre breve y honesto sobre qué cambia esto y qué no. La mayoría incluye un prompt de ejemplo que puedes copiar. Si una guía necesita software de pago, lo dice en el primer recuadro, no en el paso cuatro.',
+    packsBuildP: 'Todas las guías siguen la misma forma, porque es la que funciona cuando te has atascado. Empiezan por lo que necesitas antes de ponerte a ello: qué cuenta, qué aplicación, cuánto tiempo te llevará. Después, pasos numerados: cada uno te dice qué buscar y cómo saber que ha funcionado. Luego, los errores que la gente comete de verdad. Y al final, un cierre breve y honesto sobre qué cambia esto y qué no. La mayoría incluye un prompt de ejemplo que puedes copiar. La mayoría de las guías indican ya en el primer recuadro si necesitas un plan gratuito o de pago, no en el paso cuatro.',
 
     packsAiH: 'Escrito por IA, y así lo indicamos',
     packsAiP: 'Todo este sitio lo escribe una IA. Las guías, las noticias y la mayoría de las imágenes se generan, y el chat de soporte también es una IA. Unos controles de calidad automáticos comprueban cada pieza antes de publicarla, y ningún editor humano lee el texto. Una persona gestiona el sistema, lee los comentarios y va ajustando las reglas. Lo decimos en cada artículo y en cada pack, porque eres tú quien debe decidir cuánto vale eso.',
@@ -207,7 +207,7 @@ export const PACKS_UI = {
     packsQ1: '¿Qué recibo exactamente?',
     packsA1: 'Un PDF. Un pack temático agrupa las guías de un mismo tema; cada tarjeta de arriba dice cuántas. La colección completa reúne los ocho packs en un solo archivo con índice interactivo. Sin suscripción y sin aplicación.',
     packsQ2: '¿Cómo lo recibo?',
-    packsA2: 'A través de nuestra tienda de Ko-fi. Pagas con tarjeta o PayPal y la descarga aparece justo después del pago. Ko-fi también te envía por correo un recibo con el enlace a la página de descarga, y puede ofrecerte crear una cuenta gratuita de Ko-fi. El archivo es tuyo: puedes guardarlo, imprimirlo y leerlo sin conexión.',
+    packsA2: 'A través de nuestra tienda de Ko-fi. Pagas a través de PayPal y la descarga aparece justo después del pago. Ko-fi también te envía por correo un recibo con el enlace a la página de descarga, y puede ofrecerte crear una cuenta gratuita de Ko-fi. El archivo es tuyo: puedes guardarlo, imprimirlo y leerlo sin conexión.',
     packsQ3: '¿Puedo pedir un reembolso?',
     packsA3: 'No. Los packs son descargas digitales que recibes en cuanto pagas, así que todas las ventas son definitivas. ¿Dudas? Escribe a support@aiworldhq.com.',
     packsQ4: '¿Por qué pagar por algo que es gratis en el sitio?',
