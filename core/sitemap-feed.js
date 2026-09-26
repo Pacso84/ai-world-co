@@ -81,7 +81,11 @@ export function extractPageMeta(html) {
   const desc = (h.match(/<meta[^>]+name=["']description["'][^>]+content=["']([^"']+)/i) || [])[1];
   const clean = (s) => String(s || '').replace(/\s+/g, ' ').replace(/&amp;/g, '&').replace(/&#39;/g, "'").trim();
   return {
-    title: clean(rawTitle).replace(/\s*[|\-–]\s*[^|\-–]{0,40}$/, ''),
+    // Az utótag („ | Anthropic", „ – Brand") csak SZÓKÖZÖKKEL körülvett
+    // elválasztónál vágódik le (2026-09-26): a régi minta a kötőjeles
+    // terméknevet csonkította („Introducing DeepSeek-V4.1" → „…DeepSeek",
+    // „GPT-5" → „GPT").
+    title: clean(rawTitle).replace(/\s+[|\-–]\s+[^|\-–]{0,40}$/, ''),
     snippet: clean(og || desc),
     date: extractPublishDate(h)
   };

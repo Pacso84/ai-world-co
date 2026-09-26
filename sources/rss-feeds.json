@@ -2,7 +2,7 @@
   "_meta": {
     "description": "Forrasok az AI World Co. Scraper-Agent szamara - CSAK ELSODLEGES FORRASOK",
     "version": "3.2",
-    "last_updated": "2026-08-15",
+    "last_updated": "2026-09-26",
     "strategy": "CSAK HIVATALOS cég-források, MINDEN nagy LLM-cég lefedve a hitelességért: OpenAI, Google (DeepMind/AI/Research/Workspace), Anthropic, Microsoft, Meta, Mistral, Alibaba (Qwen), Apple, NVIDIA, Hugging Face, AWS, GitHub. Akiknek NINCS nyilvános RSS-ük (Anthropic, Perplexity, xAI, DeepSeek, Cohere) -> felvéve de kikapcsolva, hírhez X/HTML integráció kell (future). SEMMI hírmagazin/aggregátor. Minden feed tesztelve (működik-e).",
     "max_items_per_feed": 10,
     "priority_legend": {
@@ -535,6 +535,20 @@
       "country": "CN",
       "enabled": false,
       "comment": "KIKAPCSOLVA 2026-08-01: a Google News site:-keresés nem híreket ad, hanem API-DOKUMENTÁCIÓT (\"Using the Responses API\", \"Integrate with Codex\"). 30 nap alatt 0 cikk. Ha kell a DeepSeek, valódi hírfolyamot vagy sitemap-forrást kell keresni. | Eredeti megjegyzés: DeepSeek hivatalos bejelentései. Nincs használható RSS (a news.rss üres), ezért Google News site:deepseek.com szűréssel. Bekötve 2026-07-22: 11 DeepSeek-útmutatónk van hírforrás nélkül."
+    },
+    {
+      "id": "deepseek-sitemap",
+      "name": "DeepSeek (hivatalos, sitemap)",
+      "url": "https://www.deepseek.com/sitemap.xml",
+      "category": "ai-company-official",
+      "priority": 2,
+      "language": "en",
+      "country": "CN",
+      "comment": "HIVATALOS DeepSeek. RSS-t nem ad, ezért SITEMAP-forrás (2026-09-26, user: „kösd be\"): a deepseek.com/sitemap.xml ANGOL hír-oldalai (/en/news/<slug>/ — a /news/ listaoldal és a kínai kettőzés kiszűrve). Élőben kipróbálva: 5 hír valódi dátummal, a legfrissebb a V4.1 (2026-09-10). A régi deepseek-blog / deepseek-news bejegyzések (HTML / Google News) ki vannak kapcsolva.",
+      "enabled": true,
+      "type": "sitemap",
+      "path_include": "/en/news/[^/]+/?$",
+      "max_age_days": 30
     },
     {
       "id": "qwen-news",

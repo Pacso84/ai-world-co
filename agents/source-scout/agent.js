@@ -39,6 +39,7 @@ import { skillsBlock } from '../../core/skills.js';
 import { notify } from '../../core/ops.js';
 import { sendMessage } from '../../core/telegram.js';
 import { aiContentRatio, usefulnessVerdict } from '../../core/source-usefulness.js';
+import { discoverSitemapFeed } from '../../core/sitemap-discovery.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = join(__dirname, '..', '..');
@@ -205,10 +206,17 @@ const SCOUT_NICHES = [
   'health, fitness and cooking app companies with AI features'
 ];
 
+// ÁLLANDÓ VADÁSZMEZŐ (2026-09-26, user: „LLM-modellek, mert szinte csak arról
+// írunk!"). A véletlen fülkék 08-01 óta csak hétköznapi appokat néztek, a
+// „research labs" tiltás pedig épp az LLM-cégeket zárta ki — a DeepSeek
+// hírei így sosem kerültek elő (kézzel lettek meg, sitemapből). Most MINDEN
+// futás (a) pontja ez, a (b) marad véletlen.
+const LLM_NICHE = 'companies that make AI chat assistants / large language models people can use, INCLUDING Chinese ones (e.g. DeepSeek, Moonshot Kimi, Zhipu Z.ai, MiniMax, ByteDance, Baidu, Tencent) — their official news, model-release and product-update pages';
+
 async function getCandidateOrgs(coverage) {
   const known = [...coverage.brands].filter(b => b.length >= 4).slice(0, 30).join(', ');
-  // 2 véletlen fülke — minden futás máshol vadászik
-  const niches = [...SCOUT_NICHES].sort(() => Math.random() - 0.5).slice(0, 2);
+  // (a) mindig az LLM-mező, (b) egy véletlen fülke — minden futás máshol is vadászik
+  const niches = [LLM_NICHE, [...SCOUT_NICHES].sort(() => Math.random() - 0.5)[0]];
   console.log(`🎯 Mai vadászmezők: ${niches.join('  +  ')}`);
   // A KÉRÉS IS TERMÉK-KÖZPONTÚ (2026-08-01). Korábban "official blogs/newsrooms"-ot
   // kértünk — arra a cégek KUTATÁSI és SAJTÓ-blogját kaptuk, amiből 0 útmutató lesz.
@@ -220,8 +228,10 @@ HARD REQUIREMENTS:
 - First-party official sources only. No news media, no aggregators, no review sites.
 - The product must be one ORDINARY, NON-TECHNICAL PEOPLE actually use themselves.
 - Prefer feeds announcing new FEATURES users can try, over corporate//research news.
-- EXCLUDE: research labs, universities, chip/hardware makers, MLOps and developer
+- EXCLUDE: pure research labs and universities, chip/hardware makers, MLOps and developer
   infrastructure, and enterprise-only platforms an ordinary person never touches.
+  (AI companies whose chatbot or model ordinary people can use DO count.)
+- A feed may be RSS OR a sitemap with news/blog pages — give the company's main domain.
 
 Do NOT include any of these already-covered feeds: ${known}. Return a complete, valid JSON array only.${skillsBlock('source-scout')}`;
   let totalCost = 0;
@@ -266,7 +276,7 @@ async function discoverFeedForDomain(domain) {
   const attempts = RSS_PATTERNS.map(async (pattern) => {
     const url = base + pattern;
     const feed = await parser.parseURL(url);
-    if (feed.items && feed.items.length > 0) return { url, feed };
+    if (feed.items && feed.items.length > 0) return { url, feed, type: 'rss' };
     throw new Error('üres feed');
   });
   try { return await Promise.any(attempts); }
@@ -290,7 +300,7 @@ function newestItemAgeDays(items) {
 }
 
 // Visszaad: { ok, score, reasons[], hardFail }
-function reliabilityCheck(org, hostname, feed, coverage) {
+function reliabilityCheck(org, hostname, feed, coverage, tipus = 'rss') {
   const reasons = [];
   const items = feed.items || [];
 
@@ -376,8 +386,9 @@ function reliabilityCheck(org, hostname, feed, coverage) {
     reasons.push('⚠️ a domain nem egyértelműen a cégé');
   }
 
-  // (5) Alap: idáig eljutott = HTTPS + valódi, parse-olható RSS
-  score += 10; reasons.push('HTTPS + érvényes RSS');
+  // (5) Alap: idáig eljutott = HTTPS + valódi, beköthető hírfolyam. A sitemap
+  // ugyanúgy beköthető (type:'sitemap'), mint az RSS — lásd core/sitemap-discovery.js.
+  score += 10; reasons.push(tipus === 'sitemap' ? 'HTTPS + érvényes sitemap-hírfolyam' : 'HTTPS + érvényes RSS');
 
   return { ok: score >= MIN_SCORE, score, reasons, ageDays, itemCount: items.length };
 }
@@ -427,7 +438,7 @@ async function main() {
   }
 
   // 2. RSS felfedezés + MEGBÍZHATÓSÁG-KAPU
-  console.log('🔍 RSS keresés + megbízhatóság-vetés domainenként...\n');
+  console.log('🔍 RSS/sitemap keresés + megbízhatóság-vetés domainenként...\n');
   const discovered = [];
   const rejected = [];
   let checked = 0;
@@ -455,10 +466,12 @@ async function main() {
     // ugyanarról. A lista a javaslat-fájlban él, kézzel bővíthető.
     if (userRejected.has(hostname)) { console.log(`🚫 ${org.name} (${hostname}) — a user korábban elutasította`); continue; }
 
-    const found = await discoverFeedForDomain(org.domain);
-    if (!found) { console.log(`❌ ${org.name} (${hostname}) — nincs működő RSS`); continue; }
+    // Előbb RSS, ha nincs: SITEMAP (2026-09-26 — 18 jelöltből 16 esett ki
+    // „nincs RSS"-sel, pedig a sitemap-forrást ugyanúgy be tudjuk kötni).
+    const found = await discoverFeedForDomain(org.domain) || await discoverSitemapFeed(org.domain);
+    if (!found) { console.log(`❌ ${org.name} (${hostname}) — nincs beköthető hírfolyam (se RSS, se sitemap)`); continue; }
 
-    const verdict = reliabilityCheck(org, hostname, found.feed, coverage);
+    const verdict = reliabilityCheck(org, hostname, found.feed, coverage, found.type);
     if (!verdict.ok) {
       const why = verdict.hardFail || `pont ${verdict.score} < ${MIN_SCORE}`;
       console.log(`🚫 ${org.name} (${hostname}) — KIZÁRVA: ${why}`);
@@ -488,6 +501,9 @@ async function main() {
       suggested_id: hostFirstLabel(hostname),
       name: org.name + ' (hivatalos)',
       url: found.url,
+      // A bekötéshez pontosan ez kell a rss-feeds.json-ba (sitemapnál a path_include is).
+      type: found.type,
+      path_include: found.path_include,
       category: 'ai-company-official',
       priority: 3,
       language: 'en',

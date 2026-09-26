@@ -71,6 +71,10 @@ const iso = (d) => new Date(d).toISOString();
 {
   const m = extractPageMeta('<html><head><title>Claude for Excel | Anthropic</title><meta name="description" content="Egy   új  funkció"></head></html>');
   assert.equal(m.title, 'Claude for Excel', 'a " | Anthropic" utótag lekerül');
+  // A kötőjeles terméknév ÉP marad (2026-09-26: „DeepSeek-V4.1" → „DeepSeek" volt).
+  assert.equal(extractPageMeta('<title>Introducing DeepSeek-V4.1</title>').title, 'Introducing DeepSeek-V4.1');
+  assert.equal(extractPageMeta('<title>GPT-5 is here | OpenAI</title>').title, 'GPT-5 is here');
+  assert.equal(extractPageMeta('<title>New features – Brand</title>').title, 'New features');
   assert.equal(m.snippet, 'Egy új funkció', 'a többszörös szóköz normalizálva');
 }
 
