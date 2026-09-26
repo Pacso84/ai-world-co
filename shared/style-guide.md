@@ -134,8 +134,12 @@ oldalon. Az ellenőrző ezt ma már azonnal elutasítja.)*
 3. **VÁLLALD A KORLÁTOT.** „Ez a funkció csak fizetős csomagban van." „Androidon
    máshol találod, és nem tudom pontosan, hol." Az őszinte bizonytalanság
    emberi; a mindenttudás gépi. *(A hitelesség-kapu is ezt várja.)*
-4. **LEGYEN VÉLEMÉNYED.** „Ez a kettő közül a második a jobb kezdés" — ne
-   „vannak, akik ezt szeretik, mások azt".
+4. **LEGYEN VÉLEMÉNYED — a LÉPÉSEKRŐL, nem a cégekről.** „Ezzel a lépéssel
+   érdemes kezdeni", „ez a beállítás a biztonságosabb" — ne „vannak, akik ezt
+   szeretik, mások azt". ⚠️ Cégeket és termékeket SOHA nem rangsorolunk és nem
+   hasonlítunk össze („X jobb, mint Y", „a legjobb MI") — user-szabály
+   2026-09-26, lásd legal-rules-ai.md. (Korábban itt az állt példaként: „a kettő
+   közül a második a jobb kezdés" — ez termék-összehasonlításra is bátorított.)
 5. **NE minden cikk induljon ugyanúgy.** Néha kérdés, néha egy tény, néha egy
    apró jelenet. Ha az elmúlt cikkek „Imagine"-nel kezdtek, kezdj másképp.
 
@@ -358,15 +362,20 @@ az ígéret nincs fedezve.
 - 10-től felfelé **számjeggyel**: *"This affects **10 million** users..."*
 - Kivétel: mondat elején mindig betűvel (*"Five new features..."*)
 
+> ⚠️ 2026-09-26: ez a szakasz még az AUSZTRÁL közönségre szólt (AUD, metrikus,
+> „5 June 2026"), pedig 2026-07-31 óta AMERIKAI olvasóknak írunk. A régi
+> utasítás a promptokban ütközött a jogi szabállyal („Audience: US readers"),
+> és a cikkek dátuma vegyes lett (1044-ből 16 európai, 11 amerikai alakú).
+
 ### Pénzek
-- **AUD (ausztrál dollár)** elsődleges: *"$50 AUD per month"*
-- Ha forrás USD: jelöljük: *"$50 USD (about $75 AUD)"*
-- Európai cégeknél eurót is: *"€20 (around $32 AUD)"*
+- **USD** elsődleges: *"$20 per month"*
+- Ha a forrás más pénznemben ad árat, azt írjuk, és zárójelben a hozzávetőleges
+  dollárt, ha a forrás megadja: *"€20 per month"*. Átváltást NEM találunk ki.
 
 ### Mértékegységek
-- **Metric**: km, kg, °C (nem mérföld, font, Fahrenheit)
-- Idő: 24-órás formátum cikkekben (*"15:30"*), 12-órás közvetlen beszédben (*"3:30pm"*)
-- Dátum: **DD Month YYYY** (*"5 June 2026"*) — NEM amerikai (06/05/2026)
+- Amerikai olvasó: mérföld, font, °F — ha a forrás metrikus, maradhat, de ne keverd egy mondaton belül
+- Idő: *"3:30 p.m."* (12 órás)
+- Dátum: **Month D, YYYY** (*"June 5, 2026"*) — nem *"5 June 2026"*
 
 ---
 

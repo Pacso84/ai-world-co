@@ -75,6 +75,9 @@ const iso = (d) => new Date(d).toISOString();
   assert.equal(extractPageMeta('<title>Introducing DeepSeek-V4.1</title>').title, 'Introducing DeepSeek-V4.1');
   assert.equal(extractPageMeta('<title>GPT-5 is here | OpenAI</title>').title, 'GPT-5 is here');
   assert.equal(extractPageMeta('<title>New features – Brand</title>').title, 'New features');
+  // Számmal adott entitás is visszaalakul (2026-09-26: „world&#x27;s" maradt).
+  assert.equal(extractPageMeta('<meta property="og:description" content="The world&#x27;s first &amp; only &#8220;open&#8221; model">').snippet,
+    'The world\'s first & only “open” model');
   assert.equal(m.snippet, 'Egy új funkció', 'a többszörös szóköz normalizálva');
 }
 

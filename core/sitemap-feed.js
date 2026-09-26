@@ -79,7 +79,14 @@ export function extractPageMeta(html) {
   const rawTitle = (h.match(/<title[^>]*>([\s\S]*?)<\/title>/i) || [])[1] || '';
   const og = (h.match(/<meta[^>]+property=["']og:description["'][^>]+content=["']([^"']+)/i) || [])[1];
   const desc = (h.match(/<meta[^>]+name=["']description["'][^>]+content=["']([^"']+)/i) || [])[1];
-  const clean = (s) => String(s || '').replace(/\s+/g, ' ').replace(/&amp;/g, '&').replace(/&#39;/g, "'").trim();
+  // HTML-entitások: a névvel adottak ÉS a számmal adottak is (2026-09-26: a
+  // MiniMax/Kimi oldalán „world&#x27;s" maradt a leírásban, és így ment volna
+  // tovább az írónak).
+  const clean = (s) => String(s || '').replace(/\s+/g, ' ')
+    .replace(/&#x([0-9a-f]+);/gi, (_, h) => String.fromCodePoint(parseInt(h, 16)))
+    .replace(/&#(\d+);/g, (_, d) => String.fromCodePoint(parseInt(d, 10)))
+    .replace(/&quot;/g, '"').replace(/&apos;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>')
+    .replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').trim();
   return {
     // Az utótag („ | Anthropic", „ – Brand") csak SZÓKÖZÖKKEL körülvett
     // elválasztónál vágódik le (2026-09-26): a régi minta a kötőjeles

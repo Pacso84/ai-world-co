@@ -80,12 +80,22 @@ Ha az AI nem 100%-ban biztos egy tényben:
 - ✅ **Tényekről írni** (mi a termék, mikor jött ki, mit tud)
 - ✅ **Hivatalos infókat** idézni a cég blogjából
 - ✅ **Funkciókat bemutatni** ("how to use it")
-- ✅ **Saját tapasztalatot** leírni ("when I tested this...")
+- ✅ **A cég önmagáról szóló állítását** — de CSAK forrásmegjelöléssel, ugyanabban
+  a mondatban: *"MiniMax says its new model is the world's first…"* (2026-09-26)
+
+> ⚠️ 2026-09-26: itt korábban az állt, hogy „saját tapasztalatot" leírni
+> szabad („when I tested this..."). Ez TÉVES volt: a cikkeinket MI írja, nincs
+> mögöttük ember, aki kipróbálta — a style-guide 1c szakasza tiltja a kitalált
+> személyes élményt.
 
 ### Mit **NEM SZABAD** (kockázatos):
 
 - ❌ **"X cég csaló"** — rágalmazás, perelhető
 - ❌ **"Y termék rosszabb mint Z"** — összehasonlító állítás, megalapozatlanul megtévesztő
+- ❌ **"X jobb, mint Y" / "a legjobb MI"** — a DICSÉRŐ összehasonlítás is tilos
+  (user-szabály 2026-09-26: „nem állítunk olyat, hogy egyik cég jobb, mint a másik")
+- ❌ **A cég önmagáról szóló állítása forrás nélkül** ("the world's first…",
+  "the most powerful…") — ez a CÉG állítása, nem tény: mindig „X szerint…"
 - ❌ **"X cég pénzügyileg bukik"** — befektetési tanácsadás határa
 - ❌ **Belső infók** idézése ("a leaked email shows...") — kivéve nagy hírek megerősített forrással
 - ❌ **Magánéleti dolgok** CEO-król, alkalmazottakról

@@ -181,6 +181,12 @@ async function fetchFeed(feedConfig) {
     const { fetchSitemapFeed } = await import('../../core/sitemap-feed.js');
     return fetchSitemapFeed(feedConfig, { limit: 10 });
   }
+  // LISTAOLDAL-FORRÁS (2026-09-26): se RSS, se hír-sitemap (MiniMax, Kimi) —
+  // a hivatalos blog-listaoldal AZONOS domainű linkjei. Lásd core/html-list-feed.js.
+  if (feedConfig.type === 'html-list') {
+    const { fetchHtmlListFeed } = await import('../../core/html-list-feed.js');
+    return fetchHtmlListFeed(feedConfig, { limit: 10 });
+  }
   try {
     const feed = await parser.parseURL(feedConfig.url);
     return { ok: true, items: feed.items || [] };
@@ -337,7 +343,18 @@ async function main() {
     stats.feeds_ok++;
 
     // CSAK a legújabb N cikk!
-    const recent = result.items.slice(0, maxPerFeed);
+    let recent = result.items.slice(0, maxPerFeed);
+
+    // LISTAOLDAL ELSŐ FUTÁSA (2026-09-26): a dátum nélküli bejegyzések csak
+    // alapállapot — látottnak jelöljük őket, különben a teljes blog-archívum
+    // „új hírként" zúdulna be. Utána minden ÚJ link hír.
+    if (feedConfig.type === 'html-list') {
+      const { elsoFutas } = await import('../../core/html-list-feed.js');
+      const { uj, alap } = elsoFutas(recent, seenLinks);
+      for (const it of alap) if (it.link) seen[feedConfig.id].push(it.link);
+      if (alap.length) console.log(`   📌 ${feedConfig.id}: első futás — ${alap.length} dátum nélküli bejegyzés alapállapotnak jelölve`);
+      recent = uj;
+    }
 
     let newCount = 0, kwFiltered = 0, alreadySeen = 0, audFiltered = 0;
     for (const item of recent) {

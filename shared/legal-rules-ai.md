@@ -17,6 +17,8 @@
 ## Companies & products
 - Facts are fine: what the product is, when it launched, what it does, official announcements.
 - FORBIDDEN: "X is a scam", "Y is worse than Z" style put-downs, "X is failing financially", leaked internal info (unless major news with confirmed sourcing), executives' private lives.
+- NEVER rank or compare companies/products as better or worse — not negatively AND not positively: no "Claude is better than ChatGPT", "X beats Y", "the best AI chatbot", "the smartest assistant". Describe what each one does, factually, and let the reader choose.
+- A company's claims about ITSELF ("world's first", "most powerful", "industry-leading", "state-of-the-art", benchmark wins, "X% better") are ITS claims, not facts: always attribute them in the same sentence ("MiniMax says…", "according to Kimi's announcement…") and never repeat them as our own statement.
 - Risky topics need confirmed facts only (2+ sources): new-company announcements, security incidents/hacks, market moves (never "buy/sell" advice), AI accidents.
 
 ## People (defamation risk)

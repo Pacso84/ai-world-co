@@ -551,6 +551,34 @@
       "max_age_days": 30
     },
     {
+      "id": "kimi-blog",
+      "name": "Kimi / Moonshot AI (hivatalos, blog-listaoldal)",
+      "url": "https://www.kimi.com/blog",
+      "category": "ai-company-official",
+      "priority": 2,
+      "language": "en",
+      "country": "CN",
+      "comment": "HIVATALOS Kimi (Moonshot AI) angol blog. Se RSS, se angol hír-sitemap (a kimi.com/news CSAK kínai) → LISTAOLDAL-forrás (2026-09-26). A bejegyzéseken NINCS dátum → az első futás a meglévő 9-et csak „látottnak\" jelöli (elsoFutas), utána minden ÚJ link hír. A cégek önmagukról szóló állításait az író CSAK forrásmegjelöléssel írhatja.",
+      "enabled": true,
+      "type": "html-list",
+      "path_include": "kimi\\.com/blog/[^/?#]+/?$",
+      "max_age_days": 30
+    },
+    {
+      "id": "minimax-blog",
+      "name": "MiniMax (hivatalos, blog-listaoldal)",
+      "url": "https://www.minimax.io/blog",
+      "category": "ai-company-official",
+      "priority": 2,
+      "language": "en",
+      "country": "CN",
+      "comment": "HIVATALOS MiniMax (M3, Hailuo, MiniMax Agent). Se RSS, se hír-sitemap → LISTAOLDAL-forrás (2026-09-26, user: „igen\"): a minimax.io/blog saját domainű /blog/ és /news/ linkjei; cím, leírás és VALÓDI dátum a bejegyzés oldaláról. Élőben kipróbálva: 10 bejegyzés, mind dátummal (legfrissebb: Music 3.0, 08-13). A cégek önmagukról szóló állításait az író CSAK forrásmegjelöléssel írhatja (legal-rules-ai.md).",
+      "enabled": true,
+      "type": "html-list",
+      "path_include": "minimax\\.io/(blog|news)/[^/?#]+/?$",
+      "max_age_days": 30
+    },
+    {
       "id": "qwen-news",
       "name": "Qwen / Alibaba (hivatalos, Google News szűrve)",
       "url": "https://news.google.com/rss/search?q=site:qwen.ai&hl=en-US&gl=US&ceid=US:en",

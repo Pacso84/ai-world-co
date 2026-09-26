@@ -40,6 +40,7 @@ import { notify } from '../../core/ops.js';
 import { sendMessage } from '../../core/telegram.js';
 import { aiContentRatio, usefulnessVerdict } from '../../core/source-usefulness.js';
 import { discoverSitemapFeed } from '../../core/sitemap-discovery.js';
+import { discoverHtmlListFeed } from '../../core/html-list-feed.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = join(__dirname, '..', '..');
@@ -388,7 +389,7 @@ function reliabilityCheck(org, hostname, feed, coverage, tipus = 'rss') {
 
   // (5) Alap: idáig eljutott = HTTPS + valódi, beköthető hírfolyam. A sitemap
   // ugyanúgy beköthető (type:'sitemap'), mint az RSS — lásd core/sitemap-discovery.js.
-  score += 10; reasons.push(tipus === 'sitemap' ? 'HTTPS + érvényes sitemap-hírfolyam' : 'HTTPS + érvényes RSS');
+  score += 10; reasons.push(tipus === 'sitemap' ? 'HTTPS + érvényes sitemap-hírfolyam' : tipus === 'html-list' ? 'HTTPS + hivatalos listaoldal (saját domainű, dátumos bejegyzések)' : 'HTTPS + érvényes RSS');
 
   return { ok: score >= MIN_SCORE, score, reasons, ageDays, itemCount: items.length };
 }
@@ -468,8 +469,10 @@ async function main() {
 
     // Előbb RSS, ha nincs: SITEMAP (2026-09-26 — 18 jelöltből 16 esett ki
     // „nincs RSS"-sel, pedig a sitemap-forrást ugyanúgy be tudjuk kötni).
-    const found = await discoverFeedForDomain(org.domain) || await discoverSitemapFeed(org.domain);
-    if (!found) { console.log(`❌ ${org.name} (${hostname}) — nincs beköthető hírfolyam (se RSS, se sitemap)`); continue; }
+    // Harmadik út: a hivatalos blog-/hírlistaoldal (csak dátumos, saját domainű
+    // bejegyzésekkel — lásd core/html-list-feed.js).
+    const found = await discoverFeedForDomain(org.domain) || await discoverSitemapFeed(org.domain) || await discoverHtmlListFeed(org.domain);
+    if (!found) { console.log(`❌ ${org.name} (${hostname}) — nincs beköthető hírfolyam (se RSS, se sitemap, se listaoldal)`); continue; }
 
     const verdict = reliabilityCheck(org, hostname, found.feed, coverage, found.type);
     if (!verdict.ok) {
