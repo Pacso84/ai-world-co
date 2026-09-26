@@ -1,118 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t179021566789445",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-09-24T02:07:47.894Z",
-      "updated": "2026-09-24T02:11:16.892Z"
-    },
-    {
-      "id": "t179021587689431",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-24T02:11:16.894Z",
-      "updated": "2026-09-24T02:12:53.647Z"
-    },
-    {
-      "id": "t179021597364947",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-09-24T02:12:53.649Z",
-      "updated": "2026-09-24T02:15:16.396Z"
-    },
-    {
-      "id": "t179021611639816",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-24T02:15:16.398Z",
-      "updated": "2026-09-24T02:17:04.400Z"
-    },
-    {
-      "id": "t179021622440336",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-09-24T02:17:04.403Z",
-      "updated": "2026-09-24T02:17:30.730Z"
-    },
-    {
-      "id": "t179021625078636",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-09-24T02:17:30.786Z",
-      "updated": "2026-09-24T02:18:26.867Z"
-    },
-    {
-      "id": "t179021630686998",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-24T02:18:26.869Z",
-      "updated": "2026-09-24T02:18:49.304Z"
-    },
-    {
-      "id": "t179021632935335",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-09-24T02:18:49.353Z",
-      "updated": "2026-09-24T02:18:49.536Z"
-    },
-    {
-      "id": "t179021632953890",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-09-24T02:18:49.538Z",
-      "updated": "2026-09-24T02:19:58.805Z"
-    },
-    {
-      "id": "t179021639880965",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-09-24T02:19:58.809Z",
-      "updated": "2026-09-24T02:23:33.304Z"
-    },
-    {
-      "id": "t179021661330837",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-09-24T02:23:33.308Z",
-      "updated": "2026-09-24T02:23:58.712Z"
-    },
-    {
-      "id": "t179021663871481",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-24T02:23:58.714Z",
-      "updated": "2026-09-24T02:24:26.528Z"
-    },
-    {
-      "id": "t179021666652930",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-24T02:24:26.529Z",
-      "updated": "2026-09-24T02:25:07.022Z"
-    },
-    {
-      "id": "t179021670702497",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-09-24T02:25:07.024Z",
-      "updated": "2026-09-24T02:26:02.278Z"
-    },
-    {
       "id": "t179021676228050",
       "title": "Run designer",
       "status": "done",
@@ -479,33 +367,121 @@
       "agent": "publisher",
       "created": "2026-09-26T02:39:02.052Z",
       "updated": "2026-09-26T02:39:29.503Z"
+    },
+    {
+      "id": "t179042599801420",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-09-26T12:33:18.014Z",
+      "updated": "2026-09-26T12:33:18.121Z"
+    },
+    {
+      "id": "t17904259981222",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-09-26T12:33:18.122Z",
+      "updated": "2026-09-26T12:33:37.404Z"
+    },
+    {
+      "id": "t17904260174052",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-09-26T12:33:37.405Z",
+      "updated": "2026-09-26T12:33:37.524Z"
+    },
+    {
+      "id": "t17904260175269",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-09-26T12:33:37.526Z",
+      "updated": "2026-09-26T12:34:11.244Z"
+    },
+    {
+      "id": "t179042605124562",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-26T12:34:11.245Z",
+      "updated": "2026-09-26T12:34:26.566Z"
+    },
+    {
+      "id": "t179042606657111",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-09-26T12:34:26.571Z",
+      "updated": "2026-09-26T12:34:49.506Z"
+    },
+    {
+      "id": "t17904260895074",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-26T12:34:49.507Z",
+      "updated": "2026-09-26T12:35:02.635Z"
+    },
+    {
+      "id": "t17904261026361",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-09-26T12:35:02.637Z",
+      "updated": "2026-09-26T12:36:37.863Z"
+    },
+    {
+      "id": "t179042619786567",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-26T12:36:37.865Z",
+      "updated": "2026-09-26T12:36:55.315Z"
+    },
+    {
+      "id": "t179042621531798",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-09-26T12:36:55.317Z",
+      "updated": "2026-09-26T12:36:59.198Z"
+    },
+    {
+      "id": "t179042621923254",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-26T12:36:59.232Z",
+      "updated": "2026-09-26T12:37:11.595Z"
+    },
+    {
+      "id": "t179042623159612",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-09-26T12:37:11.596Z",
+      "updated": "2026-09-26T12:37:26.511Z"
+    },
+    {
+      "id": "t179042624651151",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-26T12:37:26.511Z",
+      "updated": "2026-09-26T12:37:32.978Z"
+    },
+    {
+      "id": "t17904262529806",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-09-26T12:37:32.980Z",
+      "updated": "2026-09-26T12:37:49.050Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178887063077862",
-      "level": "success",
-      "text": "2 hír + 0 útmutató publikálva (költség: $0.0324).",
-      "agent": "ceo",
-      "at": "2026-09-08T12:30:30.778Z",
-      "loud": false
-    },
-    {
-      "id": "n178887109600949",
-      "level": "warn",
-      "text": "📨 fact-check → human: Ez az útmutató talán tárgytalanná vált: \"Create AI‑generated meeting summaries directly in \" — Apple Calendar does not h",
-      "agent": "fact-check",
-      "at": "2026-09-08T12:38:16.009Z",
-      "loud": false
-    },
-    {
-      "id": "n178889471727684",
-      "level": "info",
-      "text": "SEO: 2 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-09-08T19:11:57.276Z",
-      "loud": false
-    },
     {
       "id": "n178889473841099",
       "level": "success",
@@ -1281,64 +1257,33 @@
       "agent": "ceo",
       "at": "2026-09-26T02:39:29.555Z",
       "loud": false
+    },
+    {
+      "id": "n179042624650335",
+      "level": "info",
+      "text": "SEO: 2 cikk optimalizálva (átlag 8.5/10).",
+      "agent": "seo",
+      "at": "2026-09-26T12:37:26.503Z",
+      "loud": false
+    },
+    {
+      "id": "n179042625847542",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The line-up is coherent and practical — it covers real everyday needs from complaint emails to resumes to sympathy messages, showing readers how different AI tools can help. One note: articles 6, 8, a",
+      "agent": "publisher",
+      "at": "2026-09-26T12:37:38.475Z",
+      "loud": false
+    },
+    {
+      "id": "n179042626908146",
+      "level": "success",
+      "text": "1 hír + 1 útmutató publikálva (költség: $0.0120).",
+      "agent": "ceo",
+      "at": "2026-09-26T12:37:49.081Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178918006721052",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Design a personalized weekly workout plan with Met\" — Meta AI is accessible via \"a small blue circle icon in some apps\" (specific UI element that may have changed)",
-      "ref": "ARTICLE_GUIDE_design-a-personalized-weekly-workout-plan-with-meta-ai.json",
-      "at": "2026-09-12T02:27:47.210Z"
-    },
-    {
-      "id": "m178918084511772",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "5 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-09-12T02:40:45.117Z"
-    },
-    {
-      "id": "m178921379890934",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"The Gemini desktop app is now available for Windows\" — javítva: Source announces Windows desktop app availability but article never mentions it — major factual gap; Omits an entire Gemini access method the source covers; újraküldöm.",
-      "ref": "2026-09-11T18-51-46-518Z_google-workspace_The_Gemini_desktop_app_is_now_available_for_Window.json",
-      "at": "2026-09-12T11:49:58.909Z"
-    },
-    {
-      "id": "m178921381489936",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"The Gemini desktop app is now available for Windows\" (?/10)",
-      "ref": "2026-09-11T18-51-46-518Z_google-workspace_The_Gemini_desktop_app_is_now_available_for_Window.json",
-      "at": "2026-09-12T11:50:14.899Z"
-    },
-    {
-      "id": "m178921403221856",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Summarize long web articles in Safari with Apple Intelligence\" — javítva: UI_CLAIMS_UNSOURCED: 6 konkrét képernyő-feliratot állít tényként forrás nélkül (\"turn on apple intelligence\", \"apple intelligence\", \"aa\", \"summarize\", …). Vagy nézd meg a hivatalos oldalon, vagy írd hedge-elve (\"if you don't see…\").; The article claims a 'Summarize' option appears in Safari's page settings (Aa)",
-      "ref": "GUIDE_summarize-long-web-articles-in-safari-with-apple-intelligenc.json",
-      "at": "2026-09-12T11:53:52.218Z"
-    },
-    {
-      "id": "m178921403222070",
-      "from": "guide",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Kell még adat: \"Summarize long web articles in Safari with Apple Intelligence\" — az Ellenőrző tényt/forrást kér, amit nem találhatok ki: UI_CLAIMS_UNSOURCED: 6 konkrét képernyő-feliratot állít tényként forrás nélkül (\"turn on apple intelligence\", \"apple intelligence\", \"aa\", \"summarize\", …). Vagy nézd meg a hivatalos oldalon, vagy írd hedge-elve (\"if you don't see…\").",
-      "ref": "GUIDE_summarize-long-web-articles-in-safari-with-apple-intelligenc.json",
-      "open": true,
-      "at": "2026-09-12T11:53:52.220Z"
-    },
     {
       "id": "m178921405712627",
       "from": "ellenorzo",
@@ -2639,6 +2584,60 @@
       "text": "5 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-09-26T02:49:24.734Z"
+    },
+    {
+      "id": "m17904260665553",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \" AI is the new starting point for work, but finishing it still requires a manual \"last mile\" \" — mi a baj: Article references 'a study of more than 500 US knowledge workers' but provides no citation or link back to the source Dropbox study at the given URL",
+      "ref": "2026-09-24T02-07-47-678Z_dropbox-blog__AI_is_the_new_starting_point_for_work__but_finish.json",
+      "at": "2026-09-26T12:34:26.555Z"
+    },
+    {
+      "id": "m179042608949817",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \" AI is the new starting point for work, but finishing it still requires a manual \"last mile\" \" — javítva: Article references 'a study of more than 500 US knowledge workers' but provides no citation or link back to the source Dropbox study at the given URL; Reviewer verdict: Well-structured, friendly, and clear explainer that hits all mandatory elements. The US English is correct, ton",
+      "ref": "2026-09-24T02-07-47-678Z_dropbox-blog__AI_is_the_new_starting_point_for_work__but_finish.json",
+      "at": "2026-09-26T12:34:49.498Z"
+    },
+    {
+      "id": "m179042610262673",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \" AI is the new starting point for work, but finishing it still requires a manual \"last mile\" \" (?/10)",
+      "ref": "2026-09-24T02-07-47-678Z_dropbox-blog__AI_is_the_new_starting_point_for_work__but_finish.json",
+      "at": "2026-09-26T12:35:02.626Z"
+    },
+    {
+      "id": "m179042619785643",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"How to write a warm thank-you note after a job interview tonight\" — javítva: LEDE_TOO_LONG: A RÖVIDEN-doboz 67 szó (max ~45) — ami hosszú, az már nem \"röviden\".; HOWTO_TOO_LONG: 1840 szó (~9.2 perc olvasás) — a cél 1000-1400 szó, a felső kapu 1700. A Facebookról érkező mobilolvasó ennyit ritkán olvas végig.; újraküldöm.",
+      "ref": "GUIDE_how-to-write-a-warm-thank-you-note-after-a-job-interview-ton.json",
+      "at": "2026-09-26T12:36:37.856Z"
+    },
+    {
+      "id": "m179042621530183",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"How to write a warm thank-you note after a job interview tonight\" (?/10)",
+      "ref": "GUIDE_how-to-write-a-warm-thank-you-note-after-a-job-interview-ton.json",
+      "at": "2026-09-26T12:36:55.301Z"
+    },
+    {
+      "id": "m179042625296991",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 20 → 5/4/2 oszlop.",
+      "ref": "mobile",
+      "at": "2026-09-26T12:37:32.969Z"
     }
   ]
 }
