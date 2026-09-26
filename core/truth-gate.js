@@ -92,7 +92,7 @@ const JUDGE_SYSTEM = `You are the pre-publication TRUTH GATE of AI World Co. You
 FLAG (credible=false) only these, and only when you are reasonably sure:
 - UI elements/buttons/menus/pages described for a named product that do not exist (e.g. a self-serve "Purchase Reserved Capacity" button, a "Rewrite tool" with style dropdowns)
 - invented or wrong URLs / domains
-- invented model names or version numbers (e.g. "GPT-5.6", "CORTEX.GPT5_6") — EXCEPT names and versions that appear in the SOURCE block: those come from the publisher's own official announcement and are real, even if they are newer than your training data
+- invented model names or version numbers (e.g. an obviously made-up "CORTEX.GPT5_6" function) — but do NOT call a name invented just because you have not heard of it: your knowledge is older than today — EXCEPT names and versions that appear in the SOURCE block: those come from the publisher's own official announcement and are real, even if they are newer than your training data
 - invented prices, discounts, percentages or plan claims stated as fact
 - features attributed to a named tool that the tool does not have
 

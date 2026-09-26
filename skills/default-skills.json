@@ -27,7 +27,7 @@
     {
       "scope": "rss-scraper",
       "title": "Official sources only",
-      "recipe": "Treat only primary/official AI sources (company blogs, research labs, standards bodies) as signal. Ignore opinion blogs, aggregators, forums and rumour."
+      "recipe": "Treat only primary/official AI sources (company blogs, research labs, standards bodies) as signal. Ignore opinion blogs, aggregators, forums and rumor."
     },
     {
       "scope": "rss-scraper",
@@ -46,13 +46,13 @@
     },
     {
       "scope": "iro",
-      "title": "Original, never a rewrite",
-      "recipe": "The input is ONLY a timeliness signal. Write a genuinely original how-to or explainer about the topic. Never paraphrase, summarise, quote or name a source outlet."
+      "title": "Facts from the official source, words of our own",
+      "recipe": "The input is the company's own official announcement: take every specific fact from it, write in your own words (never copy sentences), attribute the company's claims about itself (\"Google says…\"), and never name a news outlet."
     },
     {
       "scope": "iro",
       "title": "Everyday hook first",
-      "recipe": "Open with 1-2 sentences linking the topic to a normal daily moment the reader recognises (commuting, cooking, emails, study) BEFORE any explanation."
+      "recipe": "After the \"In short\" box, open with 1-2 sentences linking the topic to a normal daily moment the reader recognizes (commuting, cooking, emails, study) — and vary how articles open."
     },
     {
       "scope": "iro",
@@ -137,7 +137,7 @@
     {
       "scope": "analyst",
       "title": "Suggest, never act",
-      "recipe": "Propose self-improvements as suggestions for human approval. Never change agent behaviour autonomously."
+      "recipe": "Propose self-improvements as suggestions for human approval. Never change agent behavior autonomously."
     },
     {
       "scope": "analyst",
@@ -197,7 +197,7 @@
     {
       "scope": "guide",
       "title": "One action per step",
-      "recipe": "Each numbered step is a single concrete action with a short why and a copyable example. Aim for 3-6 steps — never a wall of text."
+      "recipe": "Each numbered step is a single concrete action with a short why and a copyable example. Aim for 4-7 steps — never a wall of text."
     },
     {
       "scope": "guide",
@@ -207,7 +207,7 @@
     {
       "scope": "guide",
       "title": "Neutral and kind about every tool",
-      "recipe": "When mentioning other tools, stay neutral and respectful — never put any company or product down. Help the reader choose, don't sell."
+      "recipe": "When mentioning other tools, stay neutral and respectful — never compare or rank companies or products (not better, not worse, not \"the best\"). Describe what each does and let the reader decide; don't sell."
     },
     {
       "scope": "guide",
@@ -222,17 +222,17 @@
     {
       "scope": "api-expert",
       "title": "Right model per task",
-      "recipe": "Match model strengths to the task: reasoning models for hard judgement, fast structured models for JSON/short outputs, reliable ones for creative short text."
+      "recipe": "Match model strengths to the task: reasoning models for hard judgment, fast structured models for JSON/short outputs, reliable ones for creative short text."
     },
     {
       "scope": "shared",
       "title": "Plain language for everyone",
-      "recipe": "Across everything we produce, favour clear, jargon-free language that an ordinary, busy person can understand on the first read."
+      "recipe": "Across everything we produce, favor clear, jargon-free language that an ordinary, busy person can understand on the first read."
     },
     {
       "scope": "shared",
       "title": "Kindness and respect",
-      "recipe": "Never put anyone or any product down. Be encouraging and non-judgemental. We help people feel capable with AI, not stupid."
+      "recipe": "Never put anyone or any product down. Be encouraging and non-judgmental. We help people feel capable with AI, not stupid."
     }
   ]
 }

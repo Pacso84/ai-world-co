@@ -67,5 +67,27 @@ t('🔑 a kint lévő cikkekben NINCS „X jobb, mint Y" cégek/termékek közö
   assert.equal(rossz.length, 0, rossz.length + ' összehasonlító mondat, pl. ' + rossz.slice(0, 2).join(' · '));
 });
 
+t('a „melyiket válaszd" összehasonlító agent NEM fut a CI-ban', () => {
+  const yml = readFileSync(join(ROOT, '.github', 'workflows', 'auto.yml'), 'utf-8');
+  assert.ok(!/^\s*node agents\/compare\/agent\.js/m.test(yml), 'a compare agent újra be van kötve');
+});
+
+t('az író- és ellenőrző-promptok is tiltják a dicsérő összehasonlítást', () => {
+  const iro = readFileSync(join(ROOT, 'agents', 'iro', 'agent.js'), 'utf-8');
+  assert.match(iro, /not "X is better than Y", not "worse", not "the best AI"/);
+  assert.ok(!/The input you receive is ONLY a SIGNAL/.test(iro), 'visszakerült a „csak jelzés, ne kövesd" szabály');
+  const ell = readFileSync(join(ROOT, 'agents', 'ellenorzo', 'agent.js'), 'utf-8');
+  assert.match(ell, /No comparisons or rankings between companies\/products/);
+  const guide = readFileSync(join(ROOT, 'agents', 'guide', 'agent.js'), 'utf-8');
+  assert.match(guide, /No comparisons or rankings between companies\/products/);
+});
+
+t('a CEO-felülbírálás SEM kerüli meg a hitelesség-kaput', () => {
+  const src = readFileSync(join(ROOT, 'agents', 'ceo', 'escalate-guides.js'), 'utf-8');
+  const kapu = src.indexOf('await truthGate(');
+  const publ = src.indexOf('const out = publishGuide(');
+  assert.ok(kapu > 0 && publ > 0 && kapu < publ, 'a jóváhagyott útmutató kapu nélkül publikálódik');
+});
+
 console.log(`\n${bukott ? '❌' : '✅'} ${pass} sikeres, ${bukott} bukott`);
 process.exit(bukott ? 1 : 0);

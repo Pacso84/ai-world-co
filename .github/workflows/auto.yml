@@ -226,7 +226,9 @@ jobs:
           TELEGRAM_OWNER_CHAT_ID: ${{ secrets.TELEGRAM_OWNER_CHAT_ID }}
         run: |
           node agents/digest/agent.js || true
-          node agents/compare/agent.js || true
+          # A „compare" agent KIVÉVE (2026-09-26, user-szabály: „nem állítunk olyat,
+          # hogy egyik cég jobb, mint a másik"). „Melyiket válaszd" cikkeket írt
+          # („If you …, pick …"); csak azért hallgatott, mert elfogyott a témája.
 
       # ÍGÉRET-FEDEZET FELÚJÍTÓ (2026-07-27, user-döntés: fokozatosan).
       # 76 régi cikkünk ígér a címében utasítást, de hírként íródott, ezért

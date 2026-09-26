@@ -129,7 +129,7 @@ MANDATORY for this rewrite:
 
 HONESTY (most important): only describe steps, menus and screens you are genuinely confident are real. NEVER invent a menu name, a button label or a screen. If you cannot write real, verifiable steps for this tool, then keep it as an explainer and CHANGE THE TITLE so it promises only what you deliver (e.g. "What X is and who it's for") — that is a perfectly good outcome, not a failure.
 
-KEEP: the same topic, the same YAML frontmatter fields (update title/subtitle/read_time_minutes if you retitle), US English, no external links, no "Source:" line, no comparisons between companies' products.
+KEEP: the same topic, the same YAML frontmatter fields (update title/subtitle/read_time_minutes if you retitle), US English, no external links, no "Source:" line, no comparisons or rankings between companies' products (not better, not worse, not "the best"); a company's self-claims only attributed ("X says…").
 
 BRAND CONTEXT (must follow):
 ${brandContext}

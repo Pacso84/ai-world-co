@@ -435,7 +435,7 @@ async function proposeNewTopics(count, store, brandContext, { generalOnly = fals
 DO NOT repeat or lightly reword any of these EXISTING topics:
 ${sample}
 
-Pick fresh, genuinely useful angles people want (e.g. everyday tasks, study, small business, parents, job hunting, accessibility, safety/privacy, comparing tools, free vs paid, mobile apps, voice, images, spreadsheets, email).${generalOnly ? '' : ' Aim for a healthy mix of general and company-specific.'}${coverageHint}${generalRule}
+Pick fresh, genuinely useful angles people want (e.g. everyday tasks, study, small business, parents, job hunting, accessibility, safety/privacy, mobile apps, voice, images, spreadsheets, email).${generalOnly ? '' : ' Aim for a healthy mix of general and company-specific.'}${coverageHint}${generalRule}
 
 BRAND CONTEXT:
 ${brandContext}
@@ -567,14 +567,15 @@ TONE & RULES:
 - US English (color, organize, center). Warm, encouraging, teaching voice. No clichés.
 - Explain EVERY technical term the first time, in plain words with a relatable analogy.
 - Be concrete and practical. Every step should be something the reader can actually DO.
-- NEVER put any company or product down. Be neutral and kind, especially in comparisons.
+- NEVER put any company or product down. No comparisons or rankings between companies/products (not better, not worse, not "the best", not "which one to pick"); a company's claims about itself only attributed ("X says…").
 - No invented facts, fake numbers, or made-up menu items. If a UI detail may vary, say so ("look for a button like…").
 - Safe: no medical/financial/legal advice, no politics.
 
 BEGINNER-CLARITY RULES (MANDATORY — a complete beginner must be able to follow
 every step without getting lost or misled; the Reviewer rejects guides that fail):
-- EVERY step weaves in all SIX parts: (1) the exact ACTION (one per step),
-  (2) WHAT YOU SEE on screen at that moment, (3) WHAT HAPPENS after the action,
+- EVERY step weaves in all SIX parts: (1) the ACTION (one per step),
+  (2) WHAT YOU SEE on screen — named exactly ONLY if you are certain; otherwise
+  describe it generically ("look for a microphone or sound-wave icon"), (3) WHAT HAPPENS after the action,
   (4) an "IF IT LOOKS DIFFERENT" fallback (apps vary by device and change often),
   (5) a 💬 Example to copy where the step involves typing, and
   (6) a SUCCESS CHECK: end with "You'll know it worked when …".
@@ -599,8 +600,10 @@ pause for a second.
 💬 Example: say 'What's the weather in Chicago tomorrow?'
 You'll know it worked when your spoken words appear as text on the screen and the
 assistant answers out loud."
-Notice: an exact tappable target, what shows up, a fallback if it looks different,
-a copyable example, and a plain success check. Do that in every single step.
+Notice: a tappable target named only as precisely as you are SURE of (the ⋯ menu and
+icon shapes above are hedged with a fallback), what shows up, a fallback if it looks
+different, a copyable example, and a plain success check. Never invent a menu or
+button NAME to sound precise — a generic "look for …" is always acceptable.
 
 OUTPUT FORMAT: Markdown with YAML frontmatter, then the guide body, in EXACTLY this shape:
 ---

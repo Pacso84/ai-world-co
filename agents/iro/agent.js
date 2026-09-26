@@ -191,15 +191,17 @@ const WRITER_SYSTEM_PROMPT = `You are the Writer Agent for AI World Co., a site 
 
 YOUR JOB: write ORIGINAL, practical, helpful articles — mostly how-to guides, explainers, and tips.
 
-⚠️ MOST IMPORTANT RULE — ORIGINALITY:
-The input you receive is ONLY a SIGNAL of what topic is timely right now (e.g. "a new AI voice feature exists").
-- DO NOT rewrite, summarize, paraphrase, or quote the input article.
-- DO NOT mention, name, or link to any news website, blog, or publication.
-- DO NOT include any "Source:" line or external links to other media.
-- Instead, write something GENUINELY OUR OWN: a practical guide / explainer about the TOPIC, from our own angle, for everyday people.
-- You MAY name the actual AI product or company that is the subject (e.g. "ChatGPT", "Gemini", "OpenAI") because that is what you are teaching about — but never as "X news site reported".
+⚠️ MOST IMPORTANT RULE — FACTS FROM THE SOURCE, WORDS OF OUR OWN:
+The input is an OFFICIAL first-party announcement from the company itself.
+- Every specific fact (feature, product/model name, date, price, availability, number) MUST come from the input. If it is not in the input and you are not certain, leave it out or say it is not confirmed yet.
+- Write in YOUR OWN words — never copy sentences from the input.
+- A company's claims about ITSELF ("world's first", "most powerful", "industry-leading", benchmark wins, "X% faster") are ITS claims, not facts: attribute them in the same sentence ("Google says…", "according to OpenAI's announcement…").
+- Add OUR value around the facts: what it means for an everyday person and, where the input supports it, how to try it. Never invent steps, menus or screens the input does not describe.
+- DO NOT name or link any news website, blog or publication; no "Source:" line, no external links.
+- You MAY (and should) name the company and product the announcement is about.
 
-Think: "What useful, original thing can I teach the reader about this topic?" — not "How do I restate this news?"
+Think: "What does this official news actually say, and how does it help an everyday person?" — not "What can I add that sounds good?"
+(2026-09-26: this rule used to say the input is "ONLY a SIGNAL — do not follow it". That dated from when news MEDIA were among our sources; today every source is the company's own announcement, and "don't follow it" pushed the model to write beyond it.)
 
 OTHER RULES:
 
@@ -254,7 +256,7 @@ OTHER RULES:
    deliver ("What X is and who it's for"). Never invent menu names or screens.
 
 5. PROHIBITED:
-   - No comparisons between different companies' products ("X is better than Y")
+   - No comparisons or rankings between companies/products — not "X is better than Y", not "worse", not "the best AI", not "which one to pick"
    - No putting anyone/anything down
    - No medical, financial, or legal advice
    - No celebrity gossip or politics
@@ -316,19 +318,22 @@ async function writeArticle(drafts, brandContext, theme = null) {
   const lista = Array.isArray(drafts) ? drafts : [drafts];
   const fo = lista[0];
 
-  // A scraped cikk CSAK témajelzés — NEM átírandó forrás!
+  // A hivatalos, első kézből való bejelentés a TÉNYBÁZIS (2026-09-26) — a
+  // szöveg a miénk, a tények az övé. Korábban „csak témajelzés" volt, ami a
+  // forráson túli írásra biztatott. A kivonat 600 → 1500 karakter: ebből
+  // kell dolgoznia, ne a (elavult) saját tudásából.
   const jelzesek = lista.map((d, i) => `
-[${i + 1}] What is currently timely (use ONLY as a hint of the subject — do NOT rewrite it):
+[${i + 1}] Official announcement (the company's own source) — title:
 "${d.title}"
-Extra context to understand the subject (background only, never copy):
-${(d.content_snippet || '').slice(0, 600)}`).join('\n');
+What it says (your FACT BASE — use these facts, in your own words, never copy sentences):
+${(d.content_snippet || '').slice(0, 1500)}`).join('\n');
 
   const kozos = lista.length > 1 ? `
-⚠️ THESE ${lista.length} SIGNALS ARE ABOUT ONE SHARED SUBJECT: "${theme}".
+⚠️ THESE ${lista.length} OFFICIAL ANNOUNCEMENTS ARE ABOUT ONE SHARED SUBJECT: "${theme}".
 Write ONE article about that shared subject — a single arc with one lesson.
-Do NOT write a section per signal, and do NOT list them as separate news items.
-The signals are evidence that this subject matters right now; the article is still
-our own original, practical piece for everyday people.
+Do NOT write a section per announcement, and do NOT list them as separate news items.
+Use only facts from these announcements, in your own words, as one practical piece
+for everyday people.
 ` : '';
 
   const topicSignal = `
@@ -338,13 +343,13 @@ ${kozos}${jelzesek}
 
   const lessons = await loadLessons();   // szemantikus memória (async)
   const skills = loadSkills();
-  const userPrompt = `Write a complete, ORIGINAL article. The note below only tells you WHICH topic is timely right now — it is NOT something to rewrite or cite.
+  const userPrompt = `Write a complete article based on the official announcement below.
 
 WHAT TO DO:
-- Identify the underlying TOPIC / AI tool / capability from the signal below.
-- Write our OWN original, practical, helpful piece about that topic for everyday people (a how-to, explainer, or tips article).
-- Do NOT summarize, paraphrase, quote, or reference the signal text or any news outlet.
-- Do NOT include any "Source:" line or external links.
+- Take the FACTS from the announcement below — every specific fact must come from it.
+- Write it in your OWN words as a practical, helpful piece for everyday people (a how-to, explainer, or tips article).
+- Attribute the company's claims about itself ("Google says…"). Never copy sentences.
+- Do NOT name any news outlet; no "Source:" line, no external links.
 
 REMEMBER:
 - US English
@@ -355,7 +360,7 @@ REMEMBER:
   minutes" style piece), rule 4b applies instead: ${HOWTO_RANGE} words with 4-6 real,
   numbered steps. Promise only what you deliver.
 
-TIMELY TOPIC SIGNAL (hint only):
+OFFICIAL SOURCE (your fact base):
 ${topicSignal}
 
 BRAND CONTEXT (must follow):
@@ -575,7 +580,8 @@ THE REVIEWER'S SPECIFIC PROBLEMS (you MUST address every one):
 ${feedback.map((f, i) => `${i + 1}. ${f}`).join('\n')}
 
 RULES (still apply):
-- Keep it ORIGINAL — do not copy or cite any news outlet, no "Source:" line, no external links.
+- Facts only from the official source; your own words; the company's self-claims attributed ("X says…"); no news outlet, no "Source:" line, no external links.
+- No comparisons between companies or products — not "better", not "worse", not "the best".
 - US English; teaching + friendly tone; explain every technical term.
 - Mandatory "## What this means for you" section.
 - Markdown output with YAML frontmatter (title, subtitle, category, audience, read_time_minutes, tags).

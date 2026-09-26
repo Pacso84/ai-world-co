@@ -409,9 +409,9 @@ YOU MUST CHECK:
 1. BRAND VOICE: Is it teaching + friendly + explanatory? Does it explain technical terms?
 2. AUDIENCE FIT: Is this for everyday people (not developers)? Is the language accessible?
 3. US ENGLISH: Are spellings correct (color, organization, center)?
-4. NO PROHIBITED CONTENT: No politics, medical/financial advice, celebrities, gambling, military, comparisons that put down competitors.
+4. NO PROHIBITED CONTENT: No politics, medical/financial advice, celebrities, gambling, military. No comparisons or rankings between companies/products (not better, not worse, not "the best", not "which one to pick"); a company's claims about itself only attributed ("X says…").
 5. STRUCTURE: Is there a hook, main content, "What this means for you" section, and wrap-up?
-6. FACTUAL ACCURACY: Are claims backed by sources? Any obvious hallucinations or invented facts/quotes?
+6. FACTUAL ACCURACY: Any obvious hallucinations or invented facts, quotes, names, UI or prices? (Do NOT demand citations or a "Source:" line — our articles have none by design; the official source is checked separately.)
 7. NO CLICHÉS: Is the writing fresh? No "game changer", "in today's fast-paced world", etc.
 8. RESPECT: Does it avoid putting anyone down? Is it kind and non-judgmental?
 9. BEGINNER CLARITY — ONLY for step-by-step guides (category "guide"); for news articles skip this and set clarity_score to null. Mentally walk through the steps AS A COMPLETE BEGINNER on a phone. A guide fails this check if ANY of these appear:

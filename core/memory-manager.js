@@ -26,6 +26,7 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { cacheBetolt, cacheOlvas, cacheIr, cacheMent } from './memory-embeddings.js';
 import { jegyezSzemantikus } from './semantic-guard.js';
+import { nevTagadoLecke } from './lesson-filter.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const MEMORY_DIR = join(__dirname, '..', 'memory');
@@ -107,6 +108,9 @@ export function remember(scope, text, opts = {}) {
   const store = load();
   const norm = (text || '').trim();
   if (!norm) return;
+  // A „ez a név KITALÁLT" eseti ítélet nem lecke — a bíró elavult tudásából
+  // gyakran téves (09-26: „Alexa+ is invented" 191-szer ment promptba).
+  if (nevTagadoLecke(norm)) return;
 
   // 🔑 STABIL KULCS (2026-08-29, hibavadászat). A dedup alapból a PONTOS
   // SZÖVEGRE megy — ezért minden lecke, amibe változó adat kerül (napi
@@ -174,7 +178,7 @@ export function recall(query, opts = {}) {
   const { scope = null, limit = 8 } = opts;
   const terms = (query || '').toLowerCase().split(/\W+/).filter(t => t.length > 2);
 
-  let candidates = store.items.filter(it => !scope || it.scope === scope);
+  let candidates = store.items.filter(it => (!scope || it.scope === scope) && !nevTagadoLecke(it.text));
 
   const scored = candidates.map(it => {
     const hay = (it.text + ' ' + (it.tags || []).join(' ')).toLowerCase();
@@ -277,7 +281,7 @@ export async function recallSemantic(query, opts = {}) {
   }
 
   const store = load();
-  const candidates = store.items.filter(it => !scope || it.scope === scope);
+  const candidates = store.items.filter(it => (!scope || it.scope === scope) && !nevTagadoLecke(it.text));
   if (!candidates.length) { _szemantikus.tartalek = 'nincs jelölt emlék'; return []; }
 
   const dim = qVec.length;
@@ -413,7 +417,7 @@ export function list(opts = {}) {
   const store = load();
   const { limit = 12, scope = null } = opts;
   return store.items
-    .filter(it => !scope || it.scope === scope)
+    .filter(it => (!scope || it.scope === scope) && !nevTagadoLecke(it.text))
     .sort((a, b) => b.salience - a.salience)
     .slice(0, limit)
     .map(it => ({ text: it.text, tier: it.tier, scope: it.scope, tags: it.tags, salience: Math.round(it.salience * 100) }));

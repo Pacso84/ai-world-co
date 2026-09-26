@@ -30,6 +30,7 @@ import { ask } from '../../core/ai-router.js';
 import { remember } from '../../core/memory-manager.js';
 import { message } from '../../core/ops.js';
 import { publikalasMeta } from '../../core/publish-meta.js';
+import { truthGate } from '../../core/truth-gate.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..', '..');
@@ -93,9 +94,9 @@ const BOSS_SYSTEM_PROMPT = `You are the CEO of AI World Co., a site that teaches
 
 Be pragmatic and decisive. The Reviewer is sometimes TOO strict about subjective or minor things (style nitpicks, tone, "could be clearer"). Do not let perfect be the enemy of good: if the guide is genuinely safe, original, accurate and useful to a beginner, APPROVE it (overrule the Reviewer).
 
-Only HOLD it for a human if there is a REAL problem you must not publish: unsafe advice (medical/financial/legal), copied/plagiarised text, a clearly false factual claim, missing core structure, or a legal/brand risk.
+Only HOLD it for a human if there is a REAL problem you must not publish: unsafe advice (medical/financial/legal), copied/plagiarized text, a clearly false factual claim, INVENTED UI (button/menu/screen names), prices, URLs or model versions, any comparison or ranking between companies/products, missing core structure, or a legal/brand risk. If the Reviewer's objection is about invented or unverifiable details, do NOT overrule it.
 
-If you APPROVE and can quickly tidy it up yourself, return the full corrected guide in "fixed_markdown" (same step-by-step format: YAML frontmatter with category: "guide", "## Before you start", 3-6 "## Step N — …", "## Common mistakes", "## What this means for you", "## Try it now"). If it's already fine, leave "fixed_markdown" empty.
+If you APPROVE and can quickly tidy it up yourself, return the full corrected guide in "fixed_markdown" (same step-by-step format: YAML frontmatter with category: "guide", "## Before you start", 4-7 "## Step N — …", "## Common mistakes", "## What this means for you", "## Try it now"). If it's already fine, leave "fixed_markdown" empty.
 
 Respond with ONLY this JSON (no prose, no code fence):
 {
@@ -260,6 +261,22 @@ async function main() {
       const fixed = decision.fixed_markdown && hasGuideStructure(decision.fixed_markdown)
         ? decision.fixed_markdown : data.article_markdown;
       const usedFix = fixed !== data.article_markdown;
+
+      // A FELÜLBÍRÁLÁS SEM KERÜLHETI MEG A HITELESSÉG-KAPUT (2026-09-26).
+      // Eddig a jóváhagyott (és esetleg a CEO által átírt) útmutató egyenesen
+      // a content/articles-be ment — halott link és kitalált állítás ellenőrzése
+      // nélkül. Most ugyanaz a kapu dönt, mint a rendes úton (Ellenőrző).
+      const gate = await truthGate({ ...data, article_markdown: fixed }, { ask });
+      cost += gate.cost || 0;
+      if (!gate.pass) {
+        const why = gate.hold ? 'hitelesség-bíró nem elérhető' : 'hitelesség-kapu: ' + String(gate.blockers?.[0] || '').slice(0, 160);
+        if (gate.hold) { console.log(`   ⏸️  ${why} → érintetlenül hagyom, jövő futáskor újra.\n`); continue; }
+        holdGuide(filename, data, 'CEO jóváhagyta, de ' + why);
+        message('ceo', 'human', 'need', `Emberi döntés kell: "${title}" — a CEO jóváhagyta, de ${why}`, { ref: filename });
+        console.log(`   🛡️  CEO-jóváhagyás, de ${why} → HOLD\n`);
+        held++;
+        continue;
+      }
       const out = publishGuide(filename, data, fixed, decision.reason || 'CEO jóváhagyás', {
         ceo_fixed: usedFix, writer_provider: response?.provider, writer_model: response?.model
       });
