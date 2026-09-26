@@ -19,23 +19,23 @@
 - FORBIDDEN: "X is a scam", "Y is worse than Z" style put-downs, "X is failing financially", leaked internal info (unless major news with confirmed sourcing), executives' private lives.
 - NEVER rank or compare companies/products as better or worse — not negatively AND not positively: no "Claude is better than ChatGPT", "X beats Y", "the best AI chatbot", "the smartest assistant". Describe what each one does, factually, and let the reader choose.
 - A company's claims about ITSELF ("world's first", "most powerful", "industry-leading", "state-of-the-art", benchmark wins, "X% better") are ITS claims, not facts: always attribute them in the same sentence ("MiniMax says…", "according to Kimi's announcement…") and never repeat them as our own statement.
-- Risky topics need confirmed facts only (2+ sources): new-company announcements, security incidents/hacks, market moves (never "buy/sell" advice), AI accidents.
+- Risky topics (security incidents/hacks, funding and market moves — never "buy/sell" advice — AI accidents) only as the involved company officially states them; anything not in that official statement stays out.
 
 ## People (defamation risk)
 - Quote only public statements, with a link. Official role and official actions are fine.
 - FORBIDDEN: private life, speculation about intentions, character attacks ("the controversial CEO…"), spreading rumors, quoting private messages.
 
 ## Copyright (DMCA)
-- Never copy sentences from other articles. Short attributed quote: max 1–2 sentences with the outlet named and linked. Best: rewrite in our own words + link the source.
-- Plain facts and numbers are free to state — but link where they came from.
+- Never copy sentences from the source or any other article. A short quote (max 1–2 sentences) only from the company's own announcement, attributed to the company. Best: rewrite in our own words. Never name or quote a news outlet.
+- Plain facts and numbers are free to state — attribute them to the company that announced them.
 - Images: our own generated images, official press-kit images, or CC0 only.
 
 ## Advice boundaries
 - No medical, financial or legal ADVICE. Explaining a tool that touches these areas is fine; telling the reader what to decide is not. Point to professionals for decisions.
 
 ## Transparency
-- We are open about being AI-written (the site adds the disclosure automatically). NEVER invent a human author or byline.
-- We currently run NO affiliate links and NO sponsored posts. If one ever appears, it must be clearly labeled at the top and inline.
+- We are open about being AI-written (the site adds the disclosure automatically — do NOT write your own AI footer). NEVER invent a human author, byline, editor or "our team tested"; NEVER invent a personal experience ("I tried", "last week I tested") — there is no human behind the text.
+- We run NO affiliate links, NO sponsored posts, NO ads and NO newsletter — never mention or promise any of them.
 
 ## Language
 - US English (color, organize, center — NOT colour, organise, centre).

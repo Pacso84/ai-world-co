@@ -87,7 +87,7 @@ export async function checkLinks(markdown, fetcher = fetch) {
 // ---------------------------------------------------------------
 // AI-BÍRÓ — CSAK kitaláltság-vadászat (a minőség az Ellenőrző dolga).
 // ---------------------------------------------------------------
-const JUDGE_SYSTEM = `You are the pre-publication TRUTH GATE of AI World Co. Your ONLY job: catch FABRICATED specifics before they reach readers.
+const JUDGE_SYSTEM = `You are the pre-publication TRUTH GATE of AI World HQ Your ONLY job: catch FABRICATED specifics before they reach readers.
 
 FLAG (credible=false) only these, and only when you are reasonably sure:
 - UI elements/buttons/menus/pages described for a named product that do not exist (e.g. a self-serve "Purchase Reserved Capacity" button, a "Rewrite tool" with style dropdowns)

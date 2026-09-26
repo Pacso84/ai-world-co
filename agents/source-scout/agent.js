@@ -165,7 +165,7 @@ For each, give the blog's base domain (https://...), with NO path.
 Respond ONLY with a JSON array (no markdown):
 [{"name": "Company Official Blog", "domain": "https://example.com", "type": "official", "country": "US", "note": "what they make / cover"}]
 
-Give 15-25 entries. type must be "official". Prefer a global mix (US, EU, Asia, Australia if any). Do NOT include any organization we already cover.`;
+Give 15-25 entries. type must be "official". Prefer a global mix (US, EU, Asia); our readers are mostly in the US and read English. Do NOT include any organization we already cover.`;
 
 // FORGÓ VADÁSZMEZŐK (2026-07-05, user-jelzés: "nem küld új forrásokat"):
 // a fix példa-lista kimerült — futásonként 2 VÉLETLEN fülkéből kérünk

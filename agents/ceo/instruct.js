@@ -148,11 +148,11 @@ const TEAM = [
   { key: 'ellenorzo', name: 'Ellenőr', emoji: '🔍', role: 'minőség és pontosság ellenőrzése' },
   { key: 'designer', name: 'Grafikus', emoji: '🎨', role: 'fejlécképeket készít' },
   { key: 'web-designer', name: 'Honlap-szerkesztő', emoji: '🖥️', role: 'az oldal elrendezése/dizájnja' },
-  { key: 'translator', name: 'Fordító', emoji: '🌍', role: 'a cikkeket lefordítja magyar/spanyol/német/francia nyelvre' },
+  { key: 'translator', name: 'Fordító', emoji: '🌍', role: 'a cikkeket lefordítja magyar és spanyol nyelvre' },
   { key: 'fact-check', name: 'Tényellenőr', emoji: '✅', role: 'kiszűri a valótlan vagy elavult állításokat' },
   { key: 'pairing', name: 'Párosító', emoji: '🔗', role: 'hírhez kapcsolódó útmutatót párosít' },
   { key: 'seo', name: 'SEO-szakértő', emoji: '🔎', role: 'meta-leírás, kulcsszavak, keresőoptimalizálás' },
-  { key: 'social', name: 'Közösségi média', emoji: '📣', role: 'Facebook + Pinterest posztokat ír' },
+  { key: 'social', name: 'Közösségi média', emoji: '📣', role: 'Facebook-, Instagram- és Threads-posztokat ír (a Pinterest 2026-08-09 óta megszűnt)' },
   { key: 'api-expert', name: 'API-szakértő', emoji: '🔌', role: 'API-kulcsok, költség, üzemeltetés' },
   { key: 'analyst', name: 'Elemző', emoji: '📊', role: 'számok, trendek, javaslatok' },
   { key: 'source-scout', name: 'Forráskutató', emoji: '🧭', role: 'új hírforrásokat keres' },
@@ -164,7 +164,7 @@ const teamList = TEAM.map(a => `- ${a.key} = ${a.emoji} ${a.name}: ${a.role}`).j
 // ===================================================================
 // AZ "AGY" — csapat-tudatos: felismeri a megszólított agentet, az ő hangján felel
 // ===================================================================
-const TEAM_PERSONA = `You are the whole AI World Co. TEAM, answering the OWNER (Pacsai) on Telegram in HUNGARIAN. AI World Co. is an automated website publishing AI news + beginner how-to GUIDES for everyday people.
+const TEAM_PERSONA = `You are the whole AI World HQ TEAM, answering the OWNER (Pacsai) on Telegram in HUNGARIAN. AI World HQ is an automated website publishing AI news + beginner how-to GUIDES for everyday people.
 
 THE TEAM (the owner can address any member BY NAME/role):
 ${teamList}
@@ -190,7 +190,7 @@ ACTIONS the team can actually perform now (set "action"):
 - "report_now" (Főnök): send today's daily self-report now. Use when the owner asks for the daily report / "mi történt ma a cégnél, küldd a jelentést".
 - "none": anything else — questions, ideas, explanations, small talk, or not-yet-wired requests (changing design/schedule/code is a later phase). Put the full answer in "reply".
 
-BUDGET note: the paid Gemini plan is pay-as-you-go — NO fixed "remaining" number; report what we've SPENT (today/month) + that we auto-switch to free keys; the $80/month is only a safety stop.
+BUDGET note: the only paid provider is OpenRouter (MiniMax), pay-as-you-go — NO fixed "remaining" number; report what we've SPENT (today/month). The owner's HARD caps are $1/day and $25/month; when the monthly cap is hit, paid work pauses until the next month.
 News is only from official sources — for an arbitrary topic, offer a GUIDE or run the pipeline.
 ACCURACY: do NOT invent specific article titles, examples, company names or numbers you weren't given in the live data. If you don't have a concrete detail, speak generally about your role instead of making something up.
 

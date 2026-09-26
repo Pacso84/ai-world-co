@@ -29,8 +29,8 @@ const ARTICLES_DIR = join(ROOT, 'content', 'articles');
 const AGENT_NAME = 'seo';
 const FORCE = process.argv.includes('--force');
 
-const SEO_SYSTEM_PROMPT = `You are an SEO specialist for AI World Co. (AI news & how-to in plain language).
-Given an article, produce search-optimised metadata.
+const SEO_SYSTEM_PROMPT = `You are an SEO specialist for AI World HQ (AI news & how-to in plain language).
+Given an article, produce search-optimized metadata. Use ONLY facts stated in the article — no invented numbers, features or superlatives, no comparisons between companies.
 
 Respond ONLY with JSON (no markdown):
 {

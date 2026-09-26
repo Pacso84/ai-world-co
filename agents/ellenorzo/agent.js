@@ -310,7 +310,7 @@ function runAutoCheck(articleMarkdown, type, meta = {}) {
     // Lépés-szakaszok: "## Step 3 — …" vagy "## 3. …" vagy "### Step …"
     const stepSections = (articleMarkdown.match(/^#{2,3}\s+(step\s*\d|\d+[.)]\s)/gim) || []).length;
     if (stepSections < 3) {
-      issues.push(`HOWTO_NO_STEPS: A cím utasítást ígér, de csak ${stepSections} számozott lépés-szakasz van (kell 4-6, "## Step 1 — …" formában), nem egyetlen összevont bekezdés.`);
+      issues.push(`HOWTO_NO_STEPS: A cím utasítást ígér, de csak ${stepSections} számozott lépés-szakasz van (kell 4-7, "## Step 1 — …" formában), nem egyetlen összevont bekezdés.`);
     }
   }
 
@@ -400,7 +400,7 @@ function runAutoCheck(articleMarkdown, type, meta = {}) {
 // 2. SZINT: AI ÍTÉLET (Gemini 2.5 Pro - INGYENES 50/nap!)
 // ===================================================================
 
-const REVIEWER_SYSTEM_PROMPT = `You are the Reviewer Agent for AI World Co., an AI news portal for everyday people.
+const REVIEWER_SYSTEM_PROMPT = `You are the Reviewer Agent for AI World HQ, an AI news portal for everyday people.
 
 You are the QUALITY GATE. Your job is to decide if an article is good enough to publish.
 

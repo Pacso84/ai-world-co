@@ -223,7 +223,7 @@ function companyDeficits(store, target = dynamicTarget(store)) {
     .sort((a, b) => b.need - a.need);
 }
 
-const BALANCE_SYSTEM_PROMPT = `You are the editorial planner for AI World Co. Propose SPECIFIC, varied, genuinely useful BEGINNER guide topics for given AI tools, so each company has a fair, balanced set of guides (no company should look more important than another).
+const BALANCE_SYSTEM_PROMPT = `You are the editorial planner for AI World HQ Propose SPECIFIC, varied, genuinely useful BEGINNER guide topics for given AI tools, so each company has a fair, balanced set of guides (no company should look more important than another).
 
 Return ONLY a JSON array: [{"title":"...","company":"OpenAI","tool":"ChatGPT","audience":"personal|business|both","level":"beginner|intermediate","angle":"one practical sentence","icon":"🤖"}]`;
 
@@ -335,7 +335,7 @@ async function runBalanceMode(limit, brandContext) {
 // csak új 'todo' témákat fűz a guide-topics.json-hoz — duplikátum-szűréssel.
 // ===================================================================
 
-const IDEAS_SYSTEM_PROMPT = `You are the editorial planner for AI World Co., a site that teaches everyday people how to use AI in daily life (primary audience: the United States, but written for anyone).
+const IDEAS_SYSTEM_PROMPT = `You are the editorial planner for AI World HQ, a site that teaches everyday people how to use AI in daily life (primary audience: the United States, but written for anyone).
 
 Propose NEW, EVERGREEN, beginner-friendly guide topics — practical "how to…" tutorials people genuinely search for. Mix GENERAL topics (not tied to one company) with COMPANY/TOOL-specific ones (ChatGPT, Gemini, Claude, Copilot, Midjourney, etc.). Favour useful, timeless skills over news.
 
@@ -430,7 +430,7 @@ async function proposeNewTopics(count, store, brandContext, { generalOnly = fals
     ? `\n\nCRITICAL — these must be COMPANY-FREE everyday-skill topics: each idea must work with ANY mainstream AI assistant (ChatGPT, Gemini, Claude, Copilot…). Do NOT build an idea around one product's unique feature, do NOT put a brand in the title, and set "company" to null for every item. Think: real-life tasks (letters, budgeting, studying, job hunting, travel, health admin, parenting, privacy, spotting scams).`
     : '';
 
-  const userPrompt = `Propose ${count + 4} brand-new beginner guide topics for AI World Co.
+  const userPrompt = `Propose ${count + 4} brand-new beginner guide topics for AI World HQ
 
 DO NOT repeat or lightly reword any of these EXISTING topics:
 ${sample}
@@ -557,7 +557,7 @@ async function loadLessons() {
   return `\n\nLESSONS FROM PAST FEEDBACK (avoid these):\n${reasons.map(r => `- ${r}`).join('\n')}`;
 }
 
-const GUIDE_SYSTEM_PROMPT = `You are the Guide Agent for AI World Co., a site that teaches everyday people how to use AI in daily life. (Primary audience: the United States — but written so ANYONE, anywhere can read it; never address readers by nationality and never say "here in <country>".)
+const GUIDE_SYSTEM_PROMPT = `You are the Guide Agent for AI World HQ, a site that teaches everyday people how to use AI in daily life. (Primary audience: the United States — but written so ANYONE, anywhere can read it; never address readers by nationality and never say "here in <country>".)
 
 YOUR JOB: write an ORIGINAL, practical, STEP-BY-STEP guide (a mini tutorial/presentation) that a complete beginner can follow.
 
@@ -806,7 +806,7 @@ ${feedback.map((f, i) => `${i + 1}. ${f}`).join('\n')}
 
 KEEP THE GUIDE FORMAT (this is a guide, NOT a news article):
 - YAML frontmatter with category: "guide".
-- "## Before you start", then 3-6 "## Step N — …" headings, then "## Common mistakes", "## What this means for you", "## Try it now".
+- "## Before you start", then 4-7 "## Step N — …" headings, then "## Common mistakes", "## What this means for you", "## Try it now".
 - 💬 Example lines where helpful. US English, warm teaching tone, explain every term.
 - ORIGINAL writing only — never copy company docs, no "Source:" line, no external links.
 

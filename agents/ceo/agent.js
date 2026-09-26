@@ -3,7 +3,7 @@
 // ===================================================================
 //
 // FELADAT:
-//   Az AI World Co. "főnöke". Nem ír cikket, nem scraping-el.
+//   Az AI World HQ "főnöke". Nem ír cikket, nem scraping-el.
 //   ÖSSZEKÖTI a 3 dolgozó agentet egy működő pipeline-ná:
 //
 //     RSS Scraper → Író → Ellenőrző → Publikálás
@@ -386,7 +386,7 @@ async function main() {
   };
 
   console.log('╔══════════════════════════════════════════════════════════╗');
-  console.log('║  👔 CEO AGENT — AI World Co. Orchestrator                 ║');
+  console.log('║  👔 CEO AGENT — AI World HQ Orchestrator                 ║');
   console.log('╚══════════════════════════════════════════════════════════╝');
 
   const session = {

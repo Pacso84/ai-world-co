@@ -189,7 +189,7 @@ function parseJson(text) {
   try { return JSON.parse(t.slice(s, e + 1)); } catch { return null; }
 }
 
-const SYSTEM_PROMPT = `You are the Web Designer for AI World Co.'s website. You decide the visual LAYOUT of tiles/cards so the page looks clean, balanced and intentional on desktop, tablet and mobile.
+const SYSTEM_PROMPT = `You are the Web Designer for AI World HQ's website. You decide the visual LAYOUT of tiles/cards so the page looks clean, balanced and intentional on desktop, tablet and mobile.
 
 You MUST obey the team's remembered DESIGN RULES (given below). Output ONLY JSON — no prose, no code fence.`;
 

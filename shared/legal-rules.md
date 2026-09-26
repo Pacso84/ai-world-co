@@ -1,4 +1,6 @@
-# AI World Co. — Jogi szabályok
+# AI World HQ — Jogi szabályok
+
+> A PROMPTBA a rövid, angol `legal-rules-ai.md` kerül — a kettőt EGYÜTT kell frissíteni (2026-09-26: szétcsúsztak, lásd `core/no-comparison-rules.test.js`).
 
 > ⚠️ **A PROMPTOKBA a tömör változat megy**: `shared/legal-rules-ai.md` (2026-08-03
 > óta, token-spórolás). Ha itt szabály változik, OTT IS át kell vezetni!
@@ -52,9 +54,9 @@ A jogi keret más lett, a VESZÉLY ugyanaz — ezért a gyakorlati szabályok
 
 | Állítás típus | Példa | Mit kell ellenőrizni |
 |---|---|---|
-| **Számok** | "GPT-5 has 175 billion parameters" | Hivatalos forrás link kötelező |
+| **Számok** | "The new model has a 1M-token context window" | Csak ha a cég hivatalos bejelentésében szerepel |
 | **Idézetek** | "Sam Altman said..." | Eredeti idézet, eredeti link |
-| **Tények** | "Anthropic raised $50B" | 2+ független forrás |
+| **Tények** | "Anthropic raised new funding" | A cég hivatalos közlése (első kézből) |
 | **Funkciók** | "Claude can now read PDFs" | Hivatalos dokumentáció link |
 | **Árak** | "$20/month for ChatGPT Plus" | Hivatalos árlista |
 
@@ -69,7 +71,7 @@ A jogi keret más lett, a VESZÉLY ugyanaz — ezért a gyakorlati szabályok
 Ha az AI nem 100%-ban biztos egy tényben:
 - ✅ "According to early reports..." (jelzi hogy lehet pontatlan)
 - ✅ "OpenAI has not yet confirmed..." (őszinte)
-- ✅ "Based on leaked information..." (forrás jellege jelölve)
+- ❌ "Based on leaked information..." — kiszivárgott infót NEM közlünk (a legal-rules-ai.md is tiltja; 2026-09-26-ig itt tévesen engedélyezve állt)
 
 ---
 
@@ -143,7 +145,7 @@ Ha olvasói reakciókat idézünk:
 #### Hogyan idézzünk helyesen?
 
 **A) Rövid idézet (max 1-2 mondat):**
-> *"According to TechCrunch, 'OpenAI's new model represents a significant leap forward.'"* [link]
+> *"OpenAI says its new model 'can see, hear and speak'."* — CSAK a cég saját bejelentéséből, a cégnek tulajdonítva; hírportált nem idézünk (első kézből való forrás elve)
 
 **B) Saját szavakkal átfogalmazás (legjobb!):**
 > Eredeti: *"OpenAI's revenue grew 50% year-over-year, reaching $5 billion in Q3 2026."*
@@ -159,12 +161,14 @@ Ha olvasói reakciókat idézünk:
 - ❌ Más cég képét **engedély nélkül NEM** használjuk
 - ✅ **Saját generált képek** (Gemini Imagen, Flux) — OK
 - ✅ **Hivatalos press kit** képek (cég megengedi) — OK linkkel
-- ✅ **CC0 / Public Domain** képek (pl. Unsplash) — OK
+- ✅ **CC0 / Public Domain** képek — OK (az Unsplash NEM CC0: saját licence van)
 - ⚠️ **Screenshot-ok cikkből / app-ból** — limitált használat, fair use territory
 
 ---
 
 ## 6. Affiliate és szponzor — Transzparencia KÖTELEZŐ!
+
+> ⚠️ 2026-09-26: JELENLEG NINCS affiliate link, szponzorált cikk, reklám és hírlevél (user-döntés). Ez a szakasz csak arra az esetre szól, ha a user egyszer bevezeti.
 
 ### Affiliate linkek
 
@@ -192,7 +196,7 @@ Az **FTC** (amerikai fogyasztóvédelmi hatóság) szigorú — az Endorsement G
 
 ### 2026-ban ez világszerte fejlődő terület (US és EU egyaránt). Mi proaktívak vagyunk:
 
-- ✅ **Minden cikk alján**: *"Written and edited by AI World Co.'s autonomous AI agents."*
+- ✅ **Minden cikknél**: az OLDAL automatikusan jelöli, hogy MI írta (EU AI Act) — a cikk szövegébe az író NE írjon lábjegyzetet. (A régi „Written and edited by AI World Co.'s autonomous AI agents. Reviewed for accuracy by our editorial system." sablon emberi szerkesztést sugallt, ami nincs — 2026-09-26-án 80 cikkből törölve.)
 - ✅ **About oldalon**: részletes leírás hogyan dolgoznak az agentek
 - ✅ **Forrás transzparencia**: minden hír forrása linkelve
 
@@ -277,7 +281,8 @@ Minden cikkre az Ellenőrző-Agent **kötelezően** lefuttatja:
 - [ ] Minden konkrét szám/idézet forrással alátámasztva?
 - [ ] Minden link működik és releváns oldalra mutat?
 - [ ] Nincs spekulatív / "úgy hallom" állítás?
-- [ ] Nincs összehasonlító negatív állítás más cégről?
+- [ ] Nincs összehasonlítás vagy rangsor cégek/termékek között (se negatív, se pozitív)?
+- [ ] A cég önmagáról szóló állítása „X szerint" formában áll?
 - [ ] Nincs híres személyről pletyka?
 - [ ] Nincs orvosi / pénzügyi / jogi tanács?
 - [ ] Amerikai angol használva? (color/organize/center — NEM colour/organise/centre)

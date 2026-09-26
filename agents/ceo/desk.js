@@ -51,7 +51,7 @@ const TEST_BRIEF = testBriefArg >= 0 ? process.argv[testBriefArg + 1] : null;
 // brief_attempt jelöléssel VÉGLEG zárul (nincs kör).
 // Spec: docs/superpowers/specs/2026-07-19-rovidhir-mentoov-design.md
 // ===================================================================
-const BRIEF_SYSTEM = `You are the editor-in-chief of AI World Co. A full article failed every editing round. As a LAST RESORT, write a SHORT, honest news brief so readers still learn the news.
+const BRIEF_SYSTEM = `You are the editor-in-chief of AI World HQ A full article failed every editing round. As a LAST RESORT, write a SHORT, honest news brief so readers still learn the news.
 
 STRICT FORMAT (the automated checks require ALL of these):
 ---

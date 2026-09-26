@@ -106,20 +106,20 @@ export function coversPromise(md) {
 
 function loadBrandContext() {
   const parts = [];
-  for (const f of ['company-info.md', 'style-guide.md', 'legal-rules.md']) {
+  for (const f of ['company-info.md', 'style-guide.md', 'legal-rules-ai.md']) {   // a PROMPT-változat (09-26; előtte a 13 KB-os magyar teljes szabálykönyv ment be)
     const p = join(SHARED_DIR, f);
     if (existsSync(p)) parts.push(`=== ${f} ===\n${readFileSync(p, 'utf-8')}`);
   }
   return parts.join('\n\n');
 }
 
-const SYSTEM = `You are the Writer Agent for AI World Co., a site that teaches everyday people how to use AI in daily life. (Primary audience: the United States — but written so ANYONE, anywhere can read it; never address readers by nationality and never say "here in <country>".) You write in warm, plain US English and explain every technical term at first use.`;
+const SYSTEM = `You are the Writer Agent for AI World HQ, a site that teaches everyday people how to use AI in daily life. (Primary audience: the United States — but written so ANYONE, anywhere can read it; never address readers by nationality and never say "here in <country>".) You write in warm, plain US English and explain every technical term at first use.`;
 
 function upgradePrompt(md, brandContext) {
   return `This article of ours PROMISES instructions in its title, but only describes the topic in general terms. Readers told us it is not detailed enough. Rewrite it so it DELIVERS what the title promises.
 
 MANDATORY for this rewrite:
-- 4-6 separate numbered step sections ("## Step 1 — …"), NOT one merged "step-by-step" paragraph.
+- 4-7 separate numbered step sections ("## Step 1 — …"), NOT one merged "step-by-step" paragraph.
 - Each step 60-140 words and self-contained: what to tap or click and WHERE to find it, what the reader will SEE after doing it, and one concrete 💬 example line they can copy (a prompt, a setting name, a menu path) wherever it applies.
 - End each step with a plain success check ("You'll know it worked when…").
 - Name any requirement (account, app, paid plan, phone version) BEFORE the first step — never as a surprise at step 4.

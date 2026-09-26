@@ -116,7 +116,7 @@ translation pipeline — keep them EXACTLY:
 
 - The ENTIRE example must live in ONE paragraph, on the SAME line as (or immediately after) the `💬 Example:` marker.
 - NEVER indent continuation lines under a 💬 example — indented lines render as a broken code box on the website.
-- If the example output has multiple items, write them as a single flowing sentence ("…Maria finalises the budget by Friday; John drafts the comms; Sarah books the follow-up.") instead of an indented bullet list.
+- If the example output has multiple items, write them as a single flowing sentence ("…Maria finalizes the budget by Friday; John drafts the comms; Sarah books the follow-up.") instead of an indented bullet list.
 
 ## 7. Tool naming + official links (brand-chip rules — added 2026-07-12)
 

@@ -1,4 +1,4 @@
-# AI World Co. — Stílus útmutató
+# AI World HQ — Stílus útmutató
 
 > **Ez a fájl az Író-Agent "nyelvi szabálykönyve".** Konkrét HOGYAN írunk.
 > A `company-info.md` mondja MIT írunk, ez mondja HOGYAN írjuk.
@@ -186,7 +186,7 @@ Minden cikk a főcím után **azonnal** egy rövid, egyenes válasszal kezdődik
 of shared screens straight into your notes, so you no longer have to guess what
 was on a slide. It's part of "Take notes for me", and no date has been given yet.`
 
-### Rövid cikk (300-600 szó) — alap formátum
+### Rövid cikk (hír/magyarázó — a hossz egy helyen él: `core/article-length.js`) — alap formátum
 
 ```
 ┌─────────────────────────────────────────┐
@@ -232,9 +232,10 @@ was on a slide. It's part of "Take notes for me", and no date has been given yet
 
 ### ✅ JÓ címek:
 
-- **Konkrét, leíró**: *"Google's New Gemini 3 Can Now Read Your Emails — Here's How to Use It Safely"*
-- **Kérdés-alapú**: *"What Does OpenAI's New Sora 2 Mean for Aussie Content Creators?"*
-- **Számokkal**: *"5 Practical Ways Aussies Are Already Using Claude at Work"*
+- **Konkrét, leíró**: *"Gemini Can Now Read Your Emails — Here's How to Use It Safely"*
+- **Kérdés-alapú**: *"What Does OpenAI's New Sora Update Mean for Content Creators?"*
+- **Számokkal**: *"5 Practical Ways People Are Using Claude at Work"*
+- *(2026-09-26: a régi példák „Aussie"-ket szólítottak meg — ütközött a 48. sorral és az amerikai közönséggel.)*
 - **"How to"**: *"How to Get Started with Anthropic's New Code Assistant in 10 Minutes"*
 
 ### ❌ ROSSZ címek:
@@ -268,7 +269,7 @@ Ha a cím vagy a felvezető azt ígéri, hogy az olvasó **meg tud csinálni** v
 
 ### Ilyenkor KÖTELEZŐ
 
-1. **4-6 külön, számozott lépés-szakasz** (`## Step 1 — …`) — NEM egyetlen
+1. **4-7 külön, számozott lépés-szakasz** (`## Step 1 — …`) — NEM egyetlen
    összevont „lépésről lépésre" bekezdés.
 2. **Lépésenként 60-140 szó**, önmagában érthetően: mit kell megnyomni és **hol
    találja**, mit fog **LÁTNI** utána, és egy konkrét, **másolható 💬 példa**
@@ -390,8 +391,8 @@ az ígéret nincs fedezve.
 - **NEM forrás nélkül** mondunk konkrét számot vagy tényt
 
 ### Több forrás
-- Ha 2+ helyről jött az infó, **mindkettőt** linkeljük
-- Ha ellentmondás van, **megemlítjük** ("Anthropic says X, but TechCrunch reports Y")
+- Csak HIVATALOS, első kézből való forrás (a cég saját bejelentése) — hírportált NEM idézünk és nem nevezünk meg.
+- Ha két hivatalos közlés ellentmond egymásnak, megemlítjük ("Google's blog says X, while its help page says Y")
 
 ---
 
@@ -417,7 +418,7 @@ az ígéret nincs fedezve.
 
 ### Mikor linkelünk más cikkünkre?
 - Ha **kapcsolódó téma** van — pl. cikkben említünk egy modellt amiről írtunk
-- Format: *"As we covered in our [guide to Claude 4.6](https://aiworld.co/...), this approach is..."*
+- Format: *"As we covered in our [guide to getting started with Claude](https://aiworldhq.com/...), this approach is..."* — csak LÉTEZŐ saját cikkre, kitalált URL SOHA
 
 ### Cél
 - Olvasó tovább olvasson (engagement)
@@ -428,6 +429,8 @@ az ígéret nincs fedezve.
 
 ## 10. Disclaimer-ek (kötelező jelölések)
 
+> ⚠️ 2026-09-26: affiliate link és szponzorált cikk JELENLEG NINCS (user-döntés) — az alábbi két sablon NEM használandó, csak ha a user egyszer bevezeti.
+
 ### Affiliate link
 A cikk **első előfordulásakor**, vagy ha cikkben sok van akkor egyszer az elején:
 > *"This article contains affiliate links — if you buy through them, we earn a small commission at no extra cost to you."*
@@ -437,8 +440,7 @@ A cikk **legtetején**, **félkövéren**:
 > **Sponsored** — *This article is brought to you in partnership with [Company]. All views and analysis are our own.*
 
 ### AI által írt
-A cikk **alján**, kis betűkkel:
-> *Written and edited by AI World Co.'s autonomous AI agents. Reviewed for accuracy by our editorial system.*
+**NE írj MI-jelölést a cikk szövegébe** — az oldal minden cikknél automatikusan kiteszi (EU AI Act). A régi sablon („Written and edited by AI World Co.'s autonomous AI agents. Reviewed for accuracy by our editorial system.") a régi nevet használta, és emberi szerkesztést sugallt, ami nincs — 80 cikkbe így került be (2026-09-26-án törölve).
 
 ---
 
@@ -485,12 +487,13 @@ Minden cikk végén (rövideknél is!):
 ### Ellenőrző kérdések minden cikkre (Író-Agent használja!):
 - ✅ Megválaszolja a "**Mit jelent ez számomra?**" kérdést?
 - ✅ Minden szakszó magyarázva?
-- ✅ Van forrás minden tényállítás mögött?
-- ✅ Ausztrál angol (nem amerikai)?
+- ✅ Minden konkrét tény a hivatalos forrásból jön, a cég önállítása „X szerint"?
+- ✅ Amerikai angol (nem brit/ausztrál)?
+- ✅ Nincs cég/termék-összehasonlítás vagy rangsor?
 - ✅ Aktív hangnem (nem passzív)?
 - ✅ Bekezdések max 3-4 mondat?
 - ✅ Cím 50-70 karakter, nem click-bait?
-- ✅ Disclaimer ahol kell (affiliate, sponsored, AI)?
+- ✅ Nincs a szövegben MI-lábjegyzet (az oldal teszi ki)?
 - ✅ "Mit jelent ez számodra?" szekció megvan?
 
 ---

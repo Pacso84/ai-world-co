@@ -90,7 +90,7 @@ const LESSON_TEXT = Object.freeze({
     + 'Give each step its own section with what to tap, what to expect, and what to do if the screen differs.',
   HOWTO_NO_STEPS:
     'The title promised steps but the article was one merged block. '
-    + 'Use 4-6 numbered sections ("## Step 1 — …"), each doing exactly one thing.',
+    + 'Use 4-7 numbered sections ("## Step 1 — …"), each doing exactly one thing.',
   OPENING_REPETITIVE:
     'Recent articles keep opening the same way. Start differently — with a question, '
     + 'a concrete fact, or a specific situation. Do not reach for a stock opening formula.',

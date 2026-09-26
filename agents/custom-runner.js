@@ -44,7 +44,7 @@ function loadInstructions() {
   if (agent.instructions) return agent.instructions;
   const p = join(__dirname, agentId, 'instructions.md');
   if (existsSync(p)) return readFileSync(p, 'utf-8');
-  return 'You are a helpful assistant for AI World Co.';
+  return 'You are a helpful assistant for AI World HQ';
 }
 
 // Input meghatározása

@@ -28,7 +28,7 @@ const ARTICLES_DIR = join(ROOT, 'content', 'articles');
 const OUT_DIR = join(ROOT, 'website', 'assets', 'video');
 const STATE_PATH = join(ROOT, 'memory', 'video-state.json');
 const AGENT_NAME = 'video';
-const VOICE = 'en-AU-NatashaNeural';   // ausztrál akcentus — a célközönségünk hangja
+const VOICE = 'en-US-AvaMultilingualNeural';   // amerikai hang (09-26; előtte en-AU Natasha — a közönség 07-31 óta US), ugyanaz, mint a Reeleké
 
 const FORCE = process.argv.includes('--force');
 
@@ -98,7 +98,7 @@ ${source}
 
 RULES:
 - 130-170 words TOTAL. Plain text only: NO markdown, NO emojis, NO headings, NO quotes around the whole thing. It will be read aloud by a text-to-speech voice.
-- Start: "G'day! I'm Orbit, your A I news anchor at A I World HQ." (write "A I" with a space so it is pronounced as letters)
+- Start: "Hi! I'm Orbit, your A I news anchor at A I World HQ." (write "A I" with a space so it is pronounced as letters)
 - Then the top stories, one or two friendly sentences each — what happened and why a normal person should care.
 - End with: "That's your week in A I. Read the full stories on aiworldhq dot com. See you next Sunday!"
 - Never invent facts beyond the source. No prices, no version numbers.`;

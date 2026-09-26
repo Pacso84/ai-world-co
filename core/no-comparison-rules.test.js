@@ -82,6 +82,23 @@ t('az író- és ellenőrző-promptok is tiltják a dicsérő összehasonlítás
   assert.match(guide, /No comparisons or rankings between companies\/products/);
 });
 
+t('a promptok a mostani nevet és a mostani döntéseket mondják (nincs AI World Co., affiliate-terv, ausztrál hang)', () => {
+  const cegInfo = readFileSync(join(ROOT, 'shared', 'company-info.md'), 'utf-8');
+  assert.ok(!/Affiliate linkek\*\* \*\(4\. hónaptól/.test(cegInfo), 'visszakerült az affiliate-terv');
+  assert.ok(!/okosabb ChatGPT/.test(cegInfo), 'visszakerült az összehasonlító hangnem-példa');
+  const promptFajlok = ['agents/iro/agent.js', 'agents/guide/agent.js', 'agents/ellenorzo/agent.js', 'agents/fact-check/agent.js',
+    'agents/ceo/escalate-guides.js', 'agents/ceo/desk.js', 'agents/ceo/instruct.js', 'agents/social/agent.js', 'agents/seo/agent.js',
+    'agents/rss-scraper/agent.js', 'agents/iro/upgrade-howtos.js', 'core/truth-gate.js'];
+  for (const f of promptFajlok) {
+    const src = readFileSync(join(ROOT, f), 'utf-8');
+    assert.ok(!/You are [^`]{0,80}AI World Co\./.test(src), f + ': a prompt a régi „AI World Co." nevet használja');
+  }
+  const video = readFileSync(join(ROOT, 'agents', 'video', 'agent.js'), 'utf-8');
+  assert.ok(!/en-AU-|G'day/.test(video), 'a videó-agent újra ausztrál');
+  const instr = readFileSync(join(ROOT, 'agents', 'ceo', 'instruct.js'), 'utf-8');
+  assert.ok(!/német\/francia|Facebook \+ Pinterest posztokat|\$80\/month/.test(instr), 'a Telegram-bot elavult tényt tud');
+});
+
 t('a CEO-felülbírálás SEM kerüli meg a hitelesség-kaput', () => {
   const src = readFileSync(join(ROOT, 'agents', 'ceo', 'escalate-guides.js'), 'utf-8');
   const kapu = src.indexOf('await truthGate(');
