@@ -210,7 +210,7 @@ async function main() {
       writer_cost_usd: response.costUsd,
       original_draft: null,
       source_id: 'aiworld-editorial',
-      source_name: 'AI World HQ Editorial',
+      source_name: 'AI World HQ (AI-written weekly roundup)',   // 09-27: az „Editorial" emberi szerkesztőséget sugallt
       source_link: SITE_URL,
       status: 'awaiting-review'
     },
