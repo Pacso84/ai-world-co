@@ -43,7 +43,7 @@ import { utmutatoE } from '../core/guide-kind.js';
 import { CSOMAG_SZOVEG, PACKS_UI, csomagSzoveg } from '../core/packs-text.js';
 import { CSOMAG_IDK, NAGY_ID } from '../core/packs-data.js';
 import { cimTag } from '../core/title-tag.js';
-import { lepesReszek } from '../core/guide-step-parts.js';
+import { lepesReszek, dobozSzoveg } from '../core/guide-step-parts.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = join(__dirname, '..');
@@ -2294,8 +2294,8 @@ function buildGuidePage(a) {
           <div class="g-step__body">
             <div class="g-slide__top"><span class="g-slide__cnt">${escapeHtml(tr('stepOf').replace('{n}', stepNo).replace('{m}', osszes))}</span><span class="g-slide__bar" aria-hidden="true"><i style="width:${szazalek}%"></i></span></div>
             <h3 class="g-step__h">${inlineHeadingHtml(heading)}</h3>${guideSectionHtml(reszek.fo)}
-            ${reszek.maskepp ? `<div class="g-diff"><span class="g-diff__lbl">🔄 ${escapeHtml(tr('diffLabel'))}</span>${guideSectionHtml(reszek.maskepp)}</div>` : ''}
-            ${reszek.siker ? `<div class="g-ok"><span class="g-ok__lbl">✅ ${escapeHtml(tr('okLabel'))}</span>${guideSectionHtml(reszek.siker)}</div>` : ''}
+            ${reszek.maskepp ? `<div class="g-diff"><span class="g-diff__lbl">🔄 ${escapeHtml(tr('diffLabel'))}</span>${guideSectionHtml(dobozSzoveg(reszek.maskepp, 'maskepp', LANG))}</div>` : ''}
+            ${reszek.siker ? `<div class="g-ok"><span class="g-ok__lbl">✅ ${escapeHtml(tr('okLabel'))}</span>${guideSectionHtml(dobozSzoveg(reszek.siker, 'siker', LANG))}</div>` : ''}
             ${stepNo < osszes ? `<a class="g-next" href="#step-${stepNo + 1}">${escapeHtml(tr('nextStep'))} ↓</a>` : ''}
           </div>
           ${stepArtHtml(artKeys[stepNo - 1], heading)}

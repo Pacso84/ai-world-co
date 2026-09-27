@@ -7,7 +7,7 @@ import assert from 'assert/strict';
 import { readFileSync, readdirSync, existsSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
-import { lepesReszek } from './guide-step-parts.js';
+import { lepesReszek, dobozSzoveg } from './guide-step-parts.js';
 import { utmutatoE } from './guide-kind.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -36,6 +36,16 @@ t('🔑 a siker-mondat és a „ha másképp" mondat kiemelődik, a többi szöv
 t('magyar és spanyol alak is', () => {
   assert.match(lepesReszek('Nyisd meg az appot. Akkor csináltad jól, ha megjelenik a kezdőképernyő.', 'hu').siker, /^Akkor csináltad jól/);
   assert.match(lepesReszek('Abre la app. Sabrás que funcionó cuando veas la pantalla de inicio.', 'es').siker, /^Sabrás que funcionó/);
+});
+
+t('a doboz szövege nem ismétli a doboz címét (élő kép 09-27)', () => {
+  assert.equal(dobozSzoveg("You'll know it worked when you can describe the message.", 'siker', 'en'), 'you can describe the message.');
+  assert.equal(dobozSzoveg('If it looks different: in some apps a preview shows.', 'maskepp', 'en'), 'in some apps a preview shows.');
+  assert.equal(dobozSzoveg('Akkor tudod, hogy működik, ha zöld lesz a pipa.', 'siker', 'hu'), 'zöld lesz a pipa.');
+  assert.equal(dobozSzoveg('Sabrás que funcionó cuando veas la pantalla.', 'siker', 'es'), 'veas la pantalla.');
+  assert.equal(dobozSzoveg('Tap send when ready.', 'siker', 'en'), 'Tap send when ready.', 'nem illő mondatot is megcsonkított');
+  const b = readFileSync(join(ROOT, 'website', 'build.js'), 'utf-8');
+  assert.match(b, /dobozSzoveg\(reszek\.siker, 'siker', LANG\)/);
 });
 
 t('ha nincs ilyen mondat, a lépés ÉRINTETLEN', () => {

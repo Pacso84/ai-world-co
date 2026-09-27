@@ -62,6 +62,28 @@ function kiemel(md, rx, { utolso = false } = {}) {
   return { maradek, kiemelt };
 }
 
+// A doboz CÍME már kimondja a mondat elejét („✅ You'll know it worked when") —
+// a mondatból ezt levágjuk, hogy ne ismételje (09-27, élő kép: „If it looks
+// different / If it looks different: …"). Ha a levágás nem biztos, marad az egész.
+const SIKER_ELEJE = {
+  en: /^(?:\*\*)?you['’]ll know (?:it|this|that)(?:['’]s| has| is)? (?:worked|working|done|right)(?:\s+when|:)\s*/i,
+  hu: /^(?:\*\*)?akkor [^.!?]{0,60}?,?\s+ha\s+/i,   // a „…, ha" utáni rész marad (az „Akkor tudod, hogy működik, ha …" is)
+  es: /^(?:\*\*)?sabrás que (?:ha )?funcion(?:ó|a)(?:\s+cuando|:)\s*/i
+};
+const MASKEPP_ELEJE = {
+  en: /^(?:\*\*)?if (?:it|yours|your screen|things?) looks? different[:,—–-]?\s*/i,
+  hu: /^(?:\*\*)?ha (?:nálad )?(?:másképp|máshogy) néz ki[:,—–-]?\s*/i,
+  es: /^(?:\*\*)?si (?:se ve|lo ves) (?:distinto|diferente)[:,—–-]?\s*/i
+};
+function eleje(mondat, rx) {
+  const m = String(mondat).match(rx);
+  if (!m) return mondat;
+  const maradek = mondat.slice(m[0].length).trim();
+  if (maradek.length < 8) return mondat;
+  // a nyitó ** párját is rendbe tesszük: ha a levágott rész **-gal kezdődött, a maradék is azzal kezdődjön
+  return (m[0].startsWith('**') ? '**' : '') + maradek;
+}
+
 /**
  * @param {string} md    a lépés törzse (markdown, a címsor nélkül)
  * @param {string} lang  en | hu | es
@@ -75,6 +97,12 @@ export function lepesReszek(md, lang = 'en') {
   const k = kiemel(fo, MASKEPP_RX[lang] || MASKEPP_RX.en);
   if (k) { fo = k.maradek; maskepp = k.kiemelt; }
   return { fo, siker, maskepp };
+}
+
+/** A dobozba kerülő szöveg: a doboz címét ismétlő mondat-eleje nélkül. */
+export function dobozSzoveg(mondat, fajta, lang = 'en') {
+  const rx = (fajta === 'siker' ? SIKER_ELEJE : MASKEPP_ELEJE)[lang] || (fajta === 'siker' ? SIKER_ELEJE.en : MASKEPP_ELEJE.en);
+  return eleje(mondat, rx);
 }
 
 export default { lepesReszek, SIKER_RX, MASKEPP_RX };
