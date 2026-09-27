@@ -24,7 +24,7 @@ import { readFileSync, writeFileSync, readdirSync, existsSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { selectSocialBatch } from '../../core/social-queue.js';
-import { followCta, stripUrl } from '../../core/social-text.js';
+import { followCta, stripUrl, AI_JELOLES } from '../../core/social-text.js';
 import { postsPerRun, usedThisMonth, MONTHLY_CAP } from '../../core/make-budget.js';
 // A SOR KÖZÖS DÖNTÉSE (2026-09-12): melyik poszt melyik élő cikkhez tartozik,
 // és friss-e. Ugyanez a buffer-poster.js-ben is kellett, és KARAKTERRE
@@ -177,7 +177,7 @@ async function main() {
     // hívta őket követésre. A hívás a végére kerül, hogy ne tolja el a
     // mondanivalót. Kikapcsolás: core/social-text.js → FOLLOW_CTAS = [].
     const cta = followCta(post.slug);
-    const caption = `${message}\n\n👉 ${post.url}${cta ? `\n\n${cta}` : ''}`;
+    const caption = `${message}\n\n👉 ${post.url}${cta ? `\n\n${cta}` : ''}\n\n${AI_JELOLES}`;
     console.log(`📘 ${String(post.title).slice(0, 55)}...`);
     if (DRY) { console.log(`   (próba) caption: ${caption.slice(0, 70)}…`); continue; }
     try {

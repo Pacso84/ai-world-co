@@ -36,7 +36,7 @@
 // (core/daily-report.js → WATCH).
 // ===================================================================
 
-import { followCta, trimToWords } from './social-text.js';
+import { followCta, trimToWords, AI_JELOLES } from './social-text.js';
 import { guideMeta, findArticleBySlug } from './frontmatter.js';
 import { utmutatoE } from './guide-kind.js';
 
@@ -98,7 +98,7 @@ export function reelCaption(article, { site = SITE, videoSteps = null } = {}) {
   if (!nyers) return '';
   const elso = trimToWords(nyers, MOBIL_VAGAS);
   const cta = followCta(slug);
-  return `${elso}\n\n👉 ${reelArticleUrl(slug, site)}${cta ? `\n\n${cta}` : ''}`;
+  return `${elso}\n\n👉 ${reelArticleUrl(slug, site)}${cta ? `\n\n${cta}` : ''}\n\n${AI_JELOLES}`;
 }
 
 // Kiírt számnevek, amikkel egy alcím kezdődhet („Five quick checks…").

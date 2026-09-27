@@ -63,6 +63,12 @@ const FOLLOW_CTAS = [
   'Follow AI World HQ for everyday AI help, no jargon.'
 ];
 
+// MI-JELÖLÉS (2026-09-27, EU AI Act): a képes infografikán már ott volt
+// („Written by AI. We label every piece that way."), a poszt- és Reel-
+// SZÖVEGEKBŐL viszont hiányzott (a Reel hangja is szintetikus). Egy helyen él,
+// hogy a három csatorna (FB-poszt, Reel, csomag-reklám) ugyanazt mondja.
+export const AI_JELOLES = '🤖 Written by AI — we label everything we publish.';
+
 // Determinisztikus váltogatás a slug alapján: ugyanaz a cikk mindig ugyanazt
 // kapja (kiszámítható és tesztelhető), de a hírfolyamban váltakozik a szöveg
 // — három egyforma poszt egymás után gépiesnek látszana.

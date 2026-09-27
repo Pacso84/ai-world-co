@@ -29,6 +29,7 @@
 // Az ára: heti egy útmutató-Reel, mérve ~4,2 látogató.
 // ===================================================================
 import { tordel } from './short-video.js';
+import { AI_JELOLES } from './social-text.js';
 
 /** A hét melyik napján megy a reklám-Reel (0 = vasárnap, UTC). */
 export const PROMO_NAP = 0;
@@ -123,7 +124,8 @@ export function promoCaption({ site = 'https://aiworldhq.com', utmutatoDb = 0 } 
     ? `We write plain-English AI guides for everyday life — ${db} of them, free to read.`
     : 'We write plain-English AI guides for everyday life, free to read.';
   return `${elso} Now also grouped by subject into PDF packs you can keep.`
-    + `\n\n👉 ${String(site).replace(/\/$/, '')}${PROMO_UT}`;
+    + `\n\n👉 ${String(site).replace(/\/$/, '')}${PROMO_UT}`
+    + `\n\n${AI_JELOLES}`;
 }
 
 export default { promoKell, promoKartyak, promoCaption, PROMO_NAP, PROMO_SLUG, PROMO_UT, PROMO_SZUNET_NAP };
