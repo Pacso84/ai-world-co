@@ -79,12 +79,18 @@ STRICT RULES: 200-250 words total. FORBIDDEN: step-by-step instructions, UI elem
 async function writeBrief(d) {
   if (TEST_BRIEF) return { text: TEST_BRIEF, costUsd: 0 };
   const m = d._meta || {};
+  // 2026-09-27: a TÉNYBÁZIS a hivatalos kivonat (source_snippet), NEM az elbukott
+  // piszkozat — az épp a kitalált részletei miatt bukhatott el. Régi cikknél
+  // (nincs kivonat) marad a piszkozat, szigorú szűréssel.
+  const hivatalos = String(m.source_snippet || '').trim();
   const failedCore = (d.article_markdown || '').replace(/^---[\s\S]*?---/, '').trim().slice(0, 1500);
+  const tenyek = hivatalos
+    ? `WHAT THE OFFICIAL ANNOUNCEMENT SAYS (your ONLY fact base — use nothing that is not here):\n${hivatalos}`
+    : `CORE FACTS from the failed draft (extract ONLY the verifiable what/who/why — DROP every how-to step, UI detail and number you cannot verify):\n${failedCore}`;
   const prompt = `NEWS TITLE: ${d.original_title || ''}
 SOURCE: ${m.source_name || ''} — ${m.source_link || ''}
 
-CORE FACTS from the failed draft (extract ONLY the verifiable what/who/why — DROP every how-to step, UI detail and number you cannot verify):
-${failedCore}
+${tenyek}
 
 Write the news brief now.`;
   return await ask(prompt, { agentName: 'rework', systemPrompt: BRIEF_SYSTEM, maxTokens: 6000 });

@@ -495,6 +495,10 @@ function saveWrittenArticle(originalDraftFilename, drafts, articleResponse, them
       // ÖSSZEVONÁS (2026-08-18): MINDEN felhasznált forrás. A forrás-zár ezt is
       // nézi — enélkül a beolvasztott hír később külön cikként újra megíródna.
       source_links: lista.map(d => d.link).filter(Boolean),
+      // A HIVATALOS KIVONAT (2026-09-27): eddig csak a cím és a link maradt meg,
+      // így a bíró a saját (elavult) tudásából döntött, a rövidhír-mentő pedig
+      // az ELBUKOTT piszkozatból „vonta ki a tényeket". Most mindkettő ezt kapja.
+      source_snippet: lista.map(d => String(d.content_snippet || '').slice(0, 1500)).filter(Boolean).join('\n\n---\n\n').slice(0, 3000),
       merged_from: lista.length,
       merged_theme: theme || null,
       status: 'awaiting-review' // → Ellenőrző agent veszi fel

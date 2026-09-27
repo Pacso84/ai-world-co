@@ -146,7 +146,7 @@ export async function aiTruthVerdict(markdown, meta = {}, askFn) {
   // `original_title`-je (a TÉMÁJA), de az nem hivatalos bejelentés — ha
   // annak mutatnánk be, a bíró a mi saját témacímünket hinné forrásnak.
   const forrasBlock = /^https?:\/\//i.test(meta.sourceUrl || '')
-    ? `\n\n=== SOURCE (the official announcement this article rewrites) ===\nPublisher: ${meta.sourceName || '-'}\nOriginal headline: ${meta.originalTitle || '-'}\nURL: ${meta.sourceUrl || '-'}\nToday's date: ${meta.today || new Date().toISOString().slice(0, 10)}\nThis source is NEWER than your training data. Names, models, products and version numbers that appear in the original headline or the URL are REAL — never flag them as invented. Flag only specifics the article ADDS that the source does not support.`
+    ? `\n\n=== SOURCE (the official announcement this article rewrites) ===\nPublisher: ${meta.sourceName || '-'}\nOriginal headline: ${meta.originalTitle || '-'}\nURL: ${meta.sourceUrl || '-'}\nToday's date: ${meta.today || new Date().toISOString().slice(0, 10)}\nThis source is NEWER than your training data. Names, models, products and version numbers that appear in the original headline or the URL are REAL — never flag them as invented. Flag only specifics the article ADDS that the source does not support.${meta.sourceSnippet ? `\nWhat the official announcement says (excerpt):\n${meta.sourceSnippet}` : ''}`
     : '';
   const body = String(markdown || '').slice(0, 14000);
   const response = await askFn(`${head}${knownBlock}${forrasBlock}\n\n=== ARTICLE MARKDOWN ===\n${body}`, {
@@ -226,6 +226,7 @@ export async function truthGate(writerData, { ask, fetcher = fetch } = {}) {
     originalTitle: writerData.original_title || '',
     sourceName: writerData._meta?.source_name || '',
     sourceUrl: writerData._meta?.source_link || (writerData._meta?.source_links || [])[0] || '',
+    sourceSnippet: String(writerData._meta?.source_snippet || '').slice(0, 3000),
     today: new Date().toISOString().slice(0, 10)
   };
 

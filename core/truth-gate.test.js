@@ -144,4 +144,15 @@ assert.equal(ev0.length, 0, 'forrás-URL nélkül a cím-egyezés önmagában ne
 const { elvetett: ev2 } = forrasVisszaigazol([OPUS_KIFOGAS], { sourceUrl: 'https://aws.amazon.com/blogs/machine-learning/claude-opus-5-5-is-now-available-on-aws/' });
 assert.equal(ev2.length, 1, 'a kötőjeles URL-ből (opus-5-5) is visszaigazol');
 
-console.log('✅ truth-gate.test: mind a 8 blokk átment');
+// ── 9. blokk (2026-09-27): a bíró a HIVATALOS KIVONATOT is megkapja ──────
+// Enélkül csak a címből és az URL-ből tudta, mi áll a forrásban — minden más
+// részletet a saját (elavult) tudásához mért.
+let latottPrompt = '';
+const figyelo = async (prompt) => { latottPrompt = prompt; return { text: JSON.stringify({ credible: true, problems: [], confidence: 9 }), costUsd: 0 }; };
+await truthGate(hir('x', { source_snippet: 'Claude Opus 5.5 is available in Amazon Bedrock in three regions.' }), { ask: figyelo, fetcher: nincsLink });
+assert.ok(latottPrompt.includes('Claude Opus 5.5 is available in Amazon Bedrock in three regions.'), 'a bíró nem kapja meg a hivatalos kivonatot');
+latottPrompt = '';
+await truthGate(hir('x'), { ask: figyelo, fetcher: nincsLink });
+assert.ok(!/What the official announcement says/.test(latottPrompt), 'kivonat nélkül üres „excerpt" blokk kerül a promptba');
+
+console.log('✅ truth-gate.test: mind a 9 blokk átment');
