@@ -47,7 +47,7 @@ t('🔑 „Copilot" témához NEM jön „GitHub Copilot" hír', () => {
   assert.ok(v.some(h => h.file === 'D.json'), 'a valódi Copilot-hír kimaradt');
 });
 
-t(`legfeljebb ${HIR_MAX} hír, és a ${'>'}120 napos (nem párosított) hír kimarad`, () => {
+t(`legfeljebb ${HIR_MAX} hír, és a 90 napnál régebbi (nem párosított) hír kimarad`, () => {
   const v = valasztHireket({ title: 'Use ChatGPT voice accents while cooking', tool: 'ChatGPT' }, HIREK, MOST);
   assert.ok(v.length <= HIR_MAX);
   assert.ok(!v.some(h => h.file === 'E.json'), 'régi hír került be');
