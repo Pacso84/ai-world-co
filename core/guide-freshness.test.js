@@ -57,6 +57,14 @@ t(`🔑 naponta legfeljebb ${FRISS_NAPI} frissítés (a költség miatt)`, () =>
   assert.equal(frissitendok([maiKesz, G1], HIREK, MOST).length, Math.max(0, FRISS_NAPI - 1));
 });
 
+t('🔑 a RÉGI (≥90 napos) útmutatónál a 60 napos hír is számít, a fiatalnál nem', () => {
+  const regi = utm('R.json', 'How to set ChatGPT custom instructions for memory', 'ChatGPT', { published_at: nap(120) });
+  const fiatal = utm('F.json', 'How to set ChatGPT custom instructions for memory', 'ChatGPT', { published_at: nap(70) });
+  const csakRegiHir = [HIREK[2]];   // 60 napos, illő hír
+  assert.equal(frissitendok([regi], csakRegiHir, MOST).length, 1, 'a régi útmutató nem kapja meg a 60 napos hírt');
+  assert.equal(frissitendok([fiatal], csakRegiHir, MOST).length, 0, 'a fiatal útmutatót is 60 napos hírrel frissítené');
+});
+
 t('NO_CHANGE felismerése', () => {
   assert.ok(nincsValtozas('NO_CHANGE'));
   assert.ok(nincsValtozas('  no change — the news does not affect this guide'));

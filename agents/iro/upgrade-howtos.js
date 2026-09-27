@@ -75,6 +75,7 @@ import { felujitasKifogas } from '../../core/upgrade-gate.js';
 import { frissitendok, nincsValtozas } from '../../core/guide-freshness.js';
 import { hirekBetolt, hirBlokk } from '../../core/guide-sources.js';
 import { utmutatoE } from '../../core/guide-kind.js';
+import { linkEllenorzendok, halottLinkTorles, megerositettHalottak } from '../../core/guide-links.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..', '..');
@@ -221,6 +222,46 @@ async function frissites(brandContext) {
   if (jeloltek.length) console.log(`   💰 frissítés költsége: $${cost.toFixed(4)}`);
 }
 
+// ===================================================================
+// HAVI LINK-ELLENŐRZÉS (2026-09-27) — core/guide-links.js. Ingyenes; a
+// halott linket kiveszi (a szöveg marad), a cikkben és a fordításokban is.
+// ===================================================================
+async function linkEllenorzes() {
+  const { extractLinks, probeUrl } = await import('../../core/truth-gate.js');
+  const utmutatok = [];
+  for (const f of readdirSync(ARTICLES_DIR).filter(x => x.startsWith('ARTICLE_') && x.endsWith('.json'))) {
+    let d; try { d = JSON.parse(readFileSync(join(ARTICLES_DIR, f), 'utf-8')); } catch { continue; }
+    if (!utmutatoE(f, d)) continue;
+    utmutatok.push({ file: f, data: d, md: d.article_markdown || '', meta: d._meta || {} });
+  }
+  const koteg = linkEllenorzendok(utmutatok);
+  console.log(`\n🔗 LINK-ELLENŐRZÉS (havi, ingyenes): ${koteg.length} útmutató most`);
+  let javitott = 0;
+  for (const u of koteg) {
+    const halottak = DRY ? [] : await megerositettHalottak(extractLinks(u.md), probeUrl);
+    if (DRY) { console.log(`   🔎 ${u.file.slice(0, 60)}`); continue; }
+    u.data._meta = { ...u.data._meta, links_checked_at: new Date().toISOString() };
+    if (halottak.length) {
+      const r = halottLinkTorles(u.md, halottak);
+      u.data.article_markdown = r.md;
+      u.data._meta.dead_links_removed = [...(u.data._meta.dead_links_removed || []), ...halottak];
+      // a fordításokban ugyanazok az URL-ek → ott is kivesszük (újrafordítás nélkül, $0)
+      const tp = join(TRANS_DIR, u.file);
+      if (existsSync(tp)) {
+        try {
+          const tr = JSON.parse(readFileSync(tp, 'utf-8'));
+          for (const ny of ['hu', 'es']) if (typeof tr[ny] === 'string') tr[ny] = halottLinkTorles(tr[ny], halottak).md;
+          writeFileSync(tp, JSON.stringify(tr, null, 2), 'utf-8');
+        } catch { /* a fordítás hibája ne állítsa meg */ }
+      }
+      javitott++;
+      console.log(`   🧹 ${u.file.slice(0, 50)}: ${r.db} halott link kivéve (${halottak.map(h => new URL(h).hostname).join(', ')})`);
+    }
+    writeFileSync(join(ARTICLES_DIR, u.file), JSON.stringify(u.data, null, 2), 'utf-8');
+  }
+  if (koteg.length) console.log(`   ✅ ellenőrizve: ${koteg.length} | javítva: ${javitott}`);
+}
+
 function candidates() {
   const out = [];
   for (const f of readdirSync(ARTICLES_DIR).filter(x => x.endsWith('.json'))) {
@@ -242,7 +283,7 @@ async function main() {
   const batch = all.slice(0, LIMIT);
   console.log(`   📋 Felújítandó: ${all.length} | most: ${batch.length}${DRY ? ' (PRÓBA)' : ''}\n`);
   const brandContext = loadBrandContext();
-  if (!batch.length) { console.log('   ✅ Nincs több hiányos "hogyan"-cikk.'); await frissites(brandContext); return; }
+  if (!batch.length) { console.log('   ✅ Nincs több hiányos "hogyan"-cikk.'); await frissites(brandContext); await linkEllenorzes(); return; }
   let fixed = 0, failed = 0, cost = 0;
 
   for (const c of batch) {
@@ -326,6 +367,7 @@ async function main() {
   console.log('─'.repeat(60));
   console.log(`📊 FELÚJÍTÓ: ${fixed} kész | ${failed} sikertelen | maradt: ${Math.max(0, all.length - fixed)} | költség ${cost.toFixed(4)}`);
   await frissites(brandContext);
+  await linkEllenorzes();
 }
 
 main().catch(e => { console.error('💥 FELÚJÍTÓ HIBA:', e); process.exit(1); });

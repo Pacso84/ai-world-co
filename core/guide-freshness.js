@@ -24,6 +24,8 @@ export const FRISS_NAPI = 1;
 export const FRISS_SZUNET_NAP = 30;
 export const HIR_FRISS_NAP = 30;
 export const FRISS_MIN_KOZOS = 2;
+export const REGI_NAP = 90;        // ennyi napja nem változott útmutató „régi"
+export const REGI_HIR_NAP = 90;    // a régi útmutatónál ennyi napos hír is számít (= a hír-megőrzés)
 
 /** Mikor változott utoljára az útmutató szövege (megjelenés / felújítás / frissítés). */
 export function utolsoValtozas(meta = {}) {
@@ -50,10 +52,13 @@ export function frissitendok(utmutatok, hirek, most = Date.now()) {
   for (const u of utmutatok || []) {
     const utolso = utolsoValtozas(u.meta);
     if (u.meta?.fresh_updated_at && most - Date.parse(u.meta.fresh_updated_at) < FRISS_SZUNET_NAP * NAP) continue;
-    // csak az útmutató utolsó változása UTÁN megjelent, friss hírek számítanak
+    // csak az útmutató utolsó változása UTÁN megjelent hírek számítanak. A hír-ablak
+    // 30 nap — de a RÉGI (≥90 napja nem változott) útmutatónál a teljes megőrzött
+    // hír-állomány (90 nap), hogy ne avuljon el (user 09-27: „nehogy elavultak legyenek").
+    const ablak = (most - utolso >= REGI_NAP * NAP) ? REGI_HIR_NAP : HIR_FRISS_NAP;
     const ujabb = (hirek || []).filter(h => {
       const t = Date.parse(h.publishedAt || '');
-      return Number.isFinite(t) && t > utolso && most - t <= HIR_FRISS_NAP * NAP;
+      return Number.isFinite(t) && t > utolso && most - t <= ablak * NAP;
     });
     if (!ujabb.length) continue;
     // SZIGORÚBB egyezés (2 közös témaszó): a frissítés drágább és kockázatosabb, mint egy új útmutató
