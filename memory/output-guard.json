@@ -1,7 +1,25 @@
 {
-  "at": "2026-09-27T13:25:50.512Z",
+  "at": "2026-09-27T18:36:23.665Z",
   "hir": 579,
   "utmutato": 463,
-  "problems": [],
+  "problems": [
+    {
+      "code": "PARITAS_CSAK_HIR",
+      "uzenet": "csak a hírben van, az útmutatóban nincs: midread, midread__arrow, midread__lbl, midread__link",
+      "elemek": [
+        "midread",
+        "midread__arrow",
+        "midread__lbl",
+        "midread__link"
+      ]
+    },
+    {
+      "code": "PARITAS_TAG",
+      "uzenet": "meg nem magyarázott tag-eltérés: <i>",
+      "elemek": [
+        "i"
+      ]
+    }
+  ],
   "megjavult": []
 }

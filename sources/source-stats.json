@@ -1,7 +1,7 @@
 {
   "_meta": {
     "note": "Forrás-bizonyítvány: frissesség + termés + megbízhatóság forrásonként. Gyártja: core/source-report-card.js",
-    "updated": "2026-09-27T13:30:07.332Z",
+    "updated": "2026-09-27T18:37:33.619Z",
     "thresholds": {
       "DEAD_FEED_DAYS": 365,
       "MIN_SAMPLE": 8,
@@ -104,7 +104,7 @@
     },
     "google-workspace": {
       "name": "Google Workspace Updates (hivatalos)",
-      "feedAgeDays": 0,
+      "feedAgeDays": 1,
       "published30d": 14,
       "truthBlocks": 3,
       "truthUnfixed": 0,
@@ -548,7 +548,7 @@
     },
     "perplexity-news": {
       "name": "Perplexity (hivatalos, Google News szűrve)",
-      "feedAgeDays": 3,
+      "feedAgeDays": 0,
       "published30d": 0,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -608,7 +608,7 @@
     },
     "qwen-news": {
       "name": "Qwen / Alibaba (hivatalos, Google News szűrve)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 2,
       "published30d": 2,
       "truthBlocks": 1,
       "truthUnfixed": 0,
@@ -644,7 +644,7 @@
     },
     "sony-ai": {
       "name": "Sony AI (hivatalos)",
-      "feedAgeDays": 88,
+      "feedAgeDays": 89,
       "published30d": 0,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -680,7 +680,7 @@
     },
     "pixlr": {
       "name": "Pixlr Blog (hivatalos)",
-      "feedAgeDays": 13,
+      "feedAgeDays": 14,
       "published30d": 0,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -704,7 +704,7 @@
     },
     "zapier-blog": {
       "name": "Zapier Blog (hivatalos)",
-      "feedAgeDays": 3,
+      "feedAgeDays": 4,
       "published30d": 5,
       "truthBlocks": 0,
       "truthUnfixed": 0,
