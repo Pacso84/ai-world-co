@@ -14,10 +14,10 @@
 // ===================================================================
 
 import assert from 'assert/strict';
-import { readFileSync } from 'fs';
+import { readFileSync, readdirSync, existsSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
-import { promoKell, promoKartyak, promoCaption, PROMO_NAP, PROMO_SZUNET_NAP, PROMO_UT } from './packs-reel.js';
+import { promoKell, promoKartyak, promoKepUtak, promoCaption, PROMO_NAP, PROMO_SZUNET_NAP, PROMO_UT } from './packs-reel.js';
 import { maiPromo } from './reel-post.js';
 import { SZOVEG_MAX_SZELES, BETU_ARANY, SZOVEG_MIN_MERET, ALCIM_MERET, ALCIM_ARANY } from './short-video.js';
 
@@ -223,6 +223,20 @@ t('maiPromo: ma igen, tegnap nem', () => {
   assert.equal(maiPromo('2026-09-19T02:31:00Z', VASARNAP), false);
   assert.equal(maiPromo('', VASARNAP), false);
   assert.equal(maiPromo(null, VASARNAP), false);
+});
+
+t('🔑 a reklám a KÖZÖS dizájnnal készül: táblánként borítókép, nem a régi papírhát (09-27)', () => {
+  // 09-27-én a vasárnapi reklám a RÉGI papír-dizájnnal ment ki, mert nem
+  // kapott képet — a user: „az menjen ki, amit megcsináltunk, ne a régi".
+  const fs = { readdirSync, readFileSync, existsSync };
+  const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
+  const { cards } = promoKartyak({ utmutatoDb: 100 });
+  const utak = promoKepUtak({ ROOT, join, fs, db: cards.length });
+  assert.ok(Array.isArray(utak) && utak.length === cards.length, 'nincs minden táblához kép');
+  assert.ok(utak.every(u => fs.existsSync(u)), 'nem létező borító');
+  const src = readFileSync(join(ROOT, 'core', 'reel-post.js'), 'utf-8');
+  assert.match(src, /renderVideo\(cards, \{ out: utvonalP, workDir: join\(ROOT, '\.video-munka'\), kepUtak \}\)/,
+    'a reklám kép nélkül renderel → régi dizájn');
 });
 
 console.log(`\n${bukott ? '❌' : '✅'} ${pass} sikeres, ${bukott} bukott`);

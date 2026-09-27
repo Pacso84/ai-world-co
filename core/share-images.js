@@ -207,7 +207,7 @@ async function main() {
   } catch { /* nincs social mappa: marad a puszta 7 napos ablak */ }
 
   const now = Date.now();
-  let made = 0, skipped = 0, noCover = 0;
+  let made = 0, skipped = 0, noCover = 0, hibas = 0;
   for (const f of readdirSync(ARTICLES_DIR).filter(x => x.startsWith('ARTICLE_') && x.endsWith('.json'))) {
     let d;
     try { d = JSON.parse(readFileSync(join(ARTICLES_DIR, f), 'utf-8')); } catch { continue; }
@@ -241,7 +241,7 @@ async function main() {
     const src = (isWeekly && existsSync(mascot)) ? mascot : join(IMG_DIR, slug + '.jpg');
     if (!existsSync(src)) { noCover++; continue; }
 
-    let didWork = false;
+    let didWork = false, hibazott = false;
     for (const fmt of formats) {
       const out = join(OUT_BASE, fmt.key, slug + '.jpg');
       if (existsSync(out) && !FORCE) continue;
@@ -294,13 +294,17 @@ async function main() {
         didWork = true;
       } catch (e) {
         console.log(`   ⚠️ ${slug.slice(0, 40)} [${fmt.key}]: ${e.message.slice(0, 50)}`);
+        hibazott = true;
       }
     }
+    // 2026-09-27: a HIBÁS kép eddig „megvolt"-nak számított — a napló szerint
+    // minden rendben volt, miközben a FB-poszt képe hiányzott.
+    if (hibazott) hibas++;
     if (didWork) { made++; console.log(`   ✅ ${slug.slice(0, 60)}`); }
-    else skipped++;
+    else if (!hibazott) skipped++;
   }
   console.log('─'.repeat(60));
-  console.log(`📊 Kész: ${made} új | megvolt: ${skipped} | borító nélkül: ${noCover}`);
+  console.log(`📊 Kész: ${made} új | megvolt: ${skipped} | borító nélkül: ${noCover}${hibas ? ` | ⚠️ HIBÁS: ${hibas}` : ''}`);
 }
 
 main().then(() => process.exit(0)).catch(e => { console.error('💥 SHARE-IMAGES HIBA:', e); process.exit(1); });

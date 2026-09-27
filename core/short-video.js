@@ -709,7 +709,22 @@ export async function hatterekKepbol(sharp, kepUt, db) {
   }
 }
 
-export async function renderVideo(cards, { out, workDir, voice = 'en-US-AvaMultilingualNeural', kepUt = '' }) {
+/**
+ * TÁBLÁNKÉNT KÜLÖN KÉP (2026-09-27): a csomag-reklámnak nincs saját borítója,
+ * ezért a RÉGI papír-dizájnnal ment ki (a user: „a régi dizájnnal ment ki!").
+ * Itt minden tábla a saját képét kapja (egy-egy illő útmutató borítóját).
+ * Ami hiányzik, azt az első használható kép pótolja; ha egy sincs → null (papír).
+ */
+export async function hatterekKepekbol(sharp, utak) {
+  if (!Array.isArray(utak) || !utak.length) return null;
+  const ki = [];
+  for (const u of utak) ki.push(((await hatterekKepbol(sharp, u, 1)) || [null])[0]);
+  const elso = ki.find(Boolean);
+  if (!elso) return null;
+  return ki.map(k => k || elso);
+}
+
+export async function renderVideo(cards, { out, workDir, voice = 'en-US-AvaMultilingualNeural', kepUt = '', kepUtak = null }) {
   const sharp = (await import('sharp')).default;
   const { MsEdgeTTS, OUTPUT_FORMAT } = await import('msedge-tts');
 
@@ -741,7 +756,9 @@ export async function renderVideo(cards, { out, workDir, voice = 'en-US-AvaMulti
   // olvashatósági garancia: hatterekKepbol() és a KARTYA_* állandók.
   // Ha nincs kép: `null` → a régi, egyszínű papír-tábla megy.
   // (2026-09-23) A színfolt helyett ÉLES kép, lásd hatterekKepbol().
-  const hatterek = await hatterekKepbol(sharp, kepUt, cards.length);
+  const hatterek = (Array.isArray(kepUtak) && kepUtak.length === cards.length)
+    ? await hatterekKepekbol(sharp, kepUtak)
+    : await hatterekKepbol(sharp, kepUt, cards.length);
   const papir = await sharp({ create: { width: W, height: H, channels: 3, background: PAPIR } }).png().toBuffer();
 
   const idok = [];

@@ -428,10 +428,10 @@ export function maiPromo(utolso, now = Date.now()) {
 }
 
 async function prepare(ROOT, join) {
-  const { writeFileSync, existsSync, mkdirSync, rmSync, readFileSync } = await import('fs');
+  const { writeFileSync, existsSync, mkdirSync, rmSync, readFileSync, readdirSync } = await import('fs');
   const { kovetkezoReel } = await import('./reel-queue.js');
   const { cardsFromGuide, renderVideo } = await import('./short-video.js');
-  const { promoKell, promoKartyak, PROMO_SLUG } = await import('./packs-reel.js');
+  const { promoKell, promoKartyak, promoKepUtak, PROMO_SLUG } = await import('./packs-reel.js');
 
   const { maiReelCikk } = await import('./reel-queue.js');
   const cikkek = await cikkekBetolt(ROOT, join);
@@ -468,7 +468,9 @@ async function prepare(ROOT, join) {
       console.log((maMarPromo ? '♻️  Csomag-reklám újragyártása' : '📘 Csomag-reklám készül')
         + ' — ' + utmutatoDb + ' útmutató, ' + cards.length + ' tábla');
       mkdirSync(kiDirP, { recursive: true });
-      const rp = await renderVideo(cards, { out: utvonalP, workDir: join(ROOT, '.video-munka') });
+      // 2026-09-27: táblánként illő útmutató-borító — kép nélkül a RÉGI papír-dizájn ment ki.
+      const kepUtak = promoKepUtak({ ROOT, join, fs: { readdirSync, readFileSync, existsSync }, db: cards.length });
+      const rp = await renderVideo(cards, { out: utvonalP, workDir: join(ROOT, '.video-munka'), kepUtak });
       try { rmSync(join(ROOT, '.video-munka'), { recursive: true, force: true }); } catch { /* */ }
       if (!maMarPromo) {
         const memDirP = join(ROOT, 'memory');

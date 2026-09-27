@@ -30,6 +30,7 @@
 // ===================================================================
 import { tordel } from './short-video.js';
 import { AI_JELOLES } from './social-text.js';
+import { utmutatoE } from './guide-kind.js';
 
 /** A hét melyik napján megy a reklám-Reel (0 = vasárnap, UTC). */
 export const PROMO_NAP = 0;
@@ -117,6 +118,48 @@ export function promoKartyak({ utmutatoDb }) {
   return { cards, reason: '' };
 }
 
+// A reklám tábláihoz illő útmutató-borítók (2026-09-27). Kép nélkül a videó a
+// RÉGI papír-dizájnnal ment ki (a user vette észre). Táblánként egy téma-minta
+// a címre; ha nincs találat, a legfrissebb még nem használt borító megy.
+const PROMO_TEMAK = [
+  null,                                                  // „N free AI guides"
+  /\b(email|e-mail|reply|inbox)\b/i,                     // „Reply to a hard email"
+  /\b(scam|fraud|phishing|deepfake|fake)\b/i,            // „Spot a scam text"
+  /\b(meal|dinner|recipe|grocery|cook|fridge)\b/i,       // „Plan a week of dinners"
+  /\b(study|learn|notes|summar|quiz)\w*/i,               // „Now in PDF packs"
+  /\b(travel|trip|read|document|pdf)\w*/i,               // „Read them offline"
+  null                                                   // záró tábla
+];
+
+/** Táblánként egy borítókép útvonala (a kártyák számával egyező hosszú tömb), vagy null. */
+export function promoKepUtak({ ROOT, join, fs, db = PROMO_TEMAK.length }) {
+  try {
+    const AD = join(ROOT, 'content', 'articles');
+    const IMG = join(ROOT, 'website', 'assets', 'images');
+    const utmutatok = fs.readdirSync(AD).filter(f => f.startsWith('ARTICLE_') && f.endsWith('.json')).map(f => {
+      try {
+        const d = JSON.parse(fs.readFileSync(join(AD, f), 'utf-8'));
+        if (!utmutatoE(f, d)) return null;
+        const slug = d._meta?.slug;
+        const cim = ((d.article_markdown || '').match(/^title:\s*["']?(.+?)["']?\s*$/m) || [])[1] || '';
+        const kep = slug ? join(IMG, slug + '.jpg') : '';
+        return (slug && fs.existsSync(kep)) ? { cim, kep, ido: String(d._meta?.published_at || '') } : null;
+      } catch { return null; }
+    }).filter(Boolean).sort((a, b) => b.ido.localeCompare(a.ido));
+    if (!utmutatok.length) return null;
+    const hasznalt = new Set();
+    const ki = [];
+    for (let i = 0; i < db; i++) {
+      const minta = PROMO_TEMAK[i] || null;
+      const v = (minta && utmutatok.find(u => minta.test(u.cim) && !hasznalt.has(u.kep)))
+        || utmutatok.find(u => !hasznalt.has(u.kep)) || utmutatok[0];
+      hasznalt.add(v.kep);
+      ki.push(v.kep);
+    }
+    return ki;
+  } catch { return null; }
+}
+
 /** A Reel alá kerülő szöveg. A link a poszt egyetlen célja. */
 export function promoCaption({ site = 'https://aiworldhq.com', utmutatoDb = 0 } = {}) {
   const db = Number(utmutatoDb);
@@ -128,4 +171,4 @@ export function promoCaption({ site = 'https://aiworldhq.com', utmutatoDb = 0 } 
     + `\n\n${AI_JELOLES}`;
 }
 
-export default { promoKell, promoKartyak, promoCaption, PROMO_NAP, PROMO_SLUG, PROMO_UT, PROMO_SZUNET_NAP };
+export default { promoKell, promoKartyak, promoKepUtak, promoCaption, PROMO_NAP, PROMO_SLUG, PROMO_UT, PROMO_SZUNET_NAP };
