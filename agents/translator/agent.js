@@ -32,6 +32,7 @@ import { loadStore as loadHuStore } from '../../core/hu-review.js';
 import { orderForTranslation, pruneFails } from '../../core/translation-queue.js';
 import { fileHandback, sourceDefect } from '../../core/handback.js';
 import { remember } from '../../core/memory-manager.js';
+import { peldaDomainJavit } from '../../core/example-domain.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..', '..');
@@ -86,6 +87,8 @@ function loadCache(file) {
 }
 function saveCache(file, data) {
   if (!existsSync(TRANS_DIR)) mkdirSync(TRANS_DIR, { recursive: true });
+  // A példa-cím NEM honosítható (ejemplo.com, pelda.hu = létező oldalak) → core/example-domain.js
+  for (const k of Object.keys(data)) data[k] = peldaDomainJavit(data[k]);
   writeFileSync(join(TRANS_DIR, file), JSON.stringify(data, null, 2), 'utf-8');
 }
 
