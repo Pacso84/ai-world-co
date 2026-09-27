@@ -1,0 +1,27 @@
+{
+  "started_at": "2026-09-27T02:37:04.471Z",
+  "total": 2,
+  "passed": 2,
+  "failed": 0,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.00729026,
+  "by_article": [
+    {
+      "writer": "WRITER_GUIDE_tell-whether-a-job-application-was-written-by-ai-using-huggi.json",
+      "article": "ARTICLE_GUIDE_tell-whether-a-job-application-was-written-by-ai-using-huggi.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.002295
+    },
+    {
+      "writer": "WRITER_GUIDE_turn-any-article-into-a-listenable-audio-file-with-hugging-f.json",
+      "article": "ARTICLE_GUIDE_turn-any-article-into-a-listenable-audio-file-with-hugging-f.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0026763
+    }
+  ],
+  "finished_at": "2026-09-27T02:38:08.273Z",
+  "duration_seconds": 63.802
+}

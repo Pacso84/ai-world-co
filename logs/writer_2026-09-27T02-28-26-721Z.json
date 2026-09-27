@@ -1,0 +1,60 @@
+{
+  "started_at": "2026-09-27T02:24:46.110Z",
+  "drafts_total": 4,
+  "articles_written": 4,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 0,
+  "merged_total": 0,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "total_cost_usd": 0.040604268,
+  "by_article": [
+    {
+      "draft": "2026-09-27T02-24-45-731Z_deepseek-sitemap_DeepSeek___Introducing_DeepSeek-V4_1-Flash__smarte.json",
+      "writer_output": "WRITER_2026-09-27T02-24-45-731Z_deepseek-sitemap_DeepSeek___Introducing_DeepSeek-V4_1-Flash__smarte.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.009516828,
+      "duration_ms": 88013,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-09-24T02-07-26-707Z_salesforce_How_Higher_Ed_Is_Putting_AI_Agents_to_Work.json",
+      "writer_output": "WRITER_2026-09-24T02-07-26-707Z_salesforce_How_Higher_Ed_Is_Putting_AI_Agents_to_Work.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.00845832,
+      "duration_ms": 54398,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-09-24T02-07-26-707Z_databricks_How_Concurrence_governs_clinical_AI_at_a_trillion-.json",
+      "writer_output": "WRITER_2026-09-24T02-07-26-707Z_databricks_How_Concurrence_governs_clinical_AI_at_a_trillion-.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.01230288,
+      "duration_ms": 37819,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-09-24T02-07-26-706Z_anthropic-blog_Claude_discovers_a_novel_enzyme_system___Anthropic.json",
+      "writer_output": "WRITER_2026-09-24T02-07-26-706Z_anthropic-blog_Claude_discovers_a_novel_enzyme_system___Anthropic.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.00951834,
+      "duration_ms": 31146,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    }
+  ],
+  "finished_at": "2026-09-27T02:28:26.720Z",
+  "duration_seconds": 220.61
+}

@@ -1,0 +1,62 @@
+{
+  "_meta": {
+    "written_at": "2026-09-27T02:27:54.362Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.01230288,
+    "original_draft": "2026-09-24T02-07-26-707Z_databricks_How_Concurrence_governs_clinical_AI_at_a_trillion-.json",
+    "source_id": "databricks",
+    "source_name": "Databricks Blog (hivatalos)",
+    "source_link": "https://www.databricks.com/blog/how-concurrence-governs-clinical-ai-trillion-token-scale-unity-gateway",
+    "source_links": [
+      "https://www.databricks.com/blog/how-concurrence-governs-clinical-ai-trillion-token-scale-unity-gateway"
+    ],
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "published_at": "2026-09-27T02:29:08.894Z",
+    "slug": "healthcare-ai-needs-rules-before-something-goes-wrong",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 657
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Article passes quality gate with clear explanations of technical terms (token, agent, governance), a thoughtful structure including a hook, audience-segmented 'What this means for you' section, and a wrap-up with a practical next-step question; all claims about Concurrence are properly attributed.",
+      "_aiCost": 0.00153276,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-09-27T02:29:41.681Z",
+    "guide_worthy": false,
+    "pairing_reason": "Enterprise B2B governance platform for healthcare organizations, not a consumer tool",
+    "image_v": 2,
+    "image_at": "2026-09-27T02:38:23.848Z",
+    "seo": {
+      "meta_description": "Healthcare AI errors can change lives. Discover why governance tools like Concurrence's Unity Gateway are essential for clinical AI agents and patient safety.",
+      "keywords": [
+        "healthcare AI governance",
+        "clinical AI agents",
+        "AI patient safety",
+        "healthcare AI regulation",
+        "AI governance tools",
+        "enterprise AI management healthcare"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more concrete examples of AI governance use cases in healthcare to improve content depth",
+        "Include specific healthcare AI risk scenarios mentioned in the full article to strengthen relevance signals",
+        "Consider adding secondary keywords like 'AI compliance healthcare' or 'medical AI oversight' if the article covers these topics"
+      ],
+      "optimised_at": "2026-09-27T02:39:55.432Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Healthcare AI Needs Rules Before Something Goes Wrong\"\nsubtitle: \"Concurrence says its Unity Gateway is built to govern clinical AI agents — the kind of oversight healthcare can't afford to skip.\"\ncategory: \"ai-news\"\naudience: \"business\"\nread_time_minutes: 4\ntags: [\"healthcare-ai\", \"ai-governance\", \"clinical-ai\", \"ai-safety\"]\n---\n\n# Healthcare AI Needs Rules Before Something Goes Wrong\n\n> **In short:** Concurrence says its Unity Gateway is built to govern clinical AI agents at trillion-token scale, focusing on healthcare — a field where AI errors carry real-world consequences.\n\nWhen you ask a regular chatbot a question and it gets something wrong, the worst that usually happens is a wasted minute. In healthcare, an AI mistake can change someone's life. That gap — between casual AI use and high-stakes AI use — is exactly what a new generation of \"AI governance\" tools is trying to close.\n\n## Why healthcare AI is different\n\nMost AI tools today are general-purpose. You can ask them to write an email, summarize a meeting, or explain a recipe. They're useful, but their mistakes are usually small. According to Concurrence's announcement, \"healthcare AI has little margin for error\" — meaning a wrong answer isn't just inconvenient, it can be dangerous.\n\nThe announcement focuses on AI agents that help coordinate patient care. An \"agent\" here means an AI that can take actions on its own — not just answer questions, but actively help coordinate workflows across different systems. That's powerful, but also risky: the more an AI can do on its own, the more careful you have to be about what it does and when.\n\n## What Concurrence is building\n\nThe company says its tool, called Unity Gateway, is designed to govern these clinical AI systems at what it describes as \"trillion-token scale.\" A \"token\" is just a small chunk of text the AI reads at a time — roughly four characters — so trillion-token means the tool is meant to handle enormous amounts of AI activity without losing track of what's happening.\n\nGovernance, in this context, means setting rules, watching what the AI is doing, and stopping it if it steps outside those rules. Think of it less like a chatbot and more like an air traffic control tower — the goal isn't to fly the planes, but to make sure none of them collide. Concurrence says this kind of oversight is what makes it possible to run AI agents in healthcare at the scale hospitals need.\n\n## What this means for you\n\n- **If you work in healthcare or hospital IT**: AI agents are starting to handle real clinical workflows. Before adopting one, ask the vendor hard questions about how its outputs are monitored, who reviews them, and what happens when the AI goes off-script. \"Governance\" isn't just a buzzword — it's the part that keeps patients safe.\n\n- **If you build or buy AI for a business**: Any AI that takes actions (not just answers questions) needs guardrails. The same logic that applies in a hospital applies in a law office, a factory, or a customer service team — high-stakes AI needs oversight built in, not bolted on later.\n\n- **If you're a patient or simply curious**: You don't need to know what \"trillion-token\" means in detail. Just know that as AI moves into healthcare, more companies are starting to focus on safety, monitoring, and accountability. That's a good thing, and worth asking about any AI tool your doctor or hospital uses.\n\n## Wrap-up\n\nHealthcare AI won't succeed on raw intelligence alone. The harder, less glamorous work — the rules, the monitoring, the guardrails — is what decides whether it actually helps people. Tools like Unity Gateway are an early attempt to make that oversight work at scale, according to Concurrence. A practical next step: next time you see a story about AI in a hospital or clinic, ask the same question — *who is watching the AI, and what happens when it makes a mistake?*",
+  "original_title": "How Concurrence governs clinical AI at a trillion-token scale with Unity Gateway"
+}
