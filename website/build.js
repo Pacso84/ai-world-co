@@ -43,6 +43,7 @@ import { utmutatoE } from '../core/guide-kind.js';
 import { CSOMAG_SZOVEG, PACKS_UI, csomagSzoveg } from '../core/packs-text.js';
 import { CSOMAG_IDK, NAGY_ID } from '../core/packs-data.js';
 import { cimTag } from '../core/title-tag.js';
+import { lepesReszek } from '../core/guide-step-parts.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = join(__dirname, '..');
@@ -259,7 +260,7 @@ const UI_GUIDES = {
         kindOther: 'Other <span class="muted-word">AI tools</span>',
         comingSoon: 'Guides are on their way — check back shortly.',
         audPersonal: 'Everyday life', audBusiness: 'Business', audBoth: 'Life & Business',
-        aiSkills: 'AI skills', coverSub: 'For everyday people', exampleLabel: 'Example', tryTyping: 'Try typing this', xrefNews: 'What prompted this guide', xrefGuide: 'Want to try it? Step-by-step guide',
+        aiSkills: 'AI skills', coverSub: 'For everyday people', exampleLabel: 'Example', tryTyping: 'Try typing this', stepOf: 'Step {n} of {m}', okLabel: 'You\'ll know it worked when', diffLabel: 'If it looks different', nextStep: 'Next step', copyBtn: 'Copy', copiedBtn: 'Copied!', xrefNews: 'What prompted this guide', xrefGuide: 'Want to try it? Step-by-step guide',
         // ⚠️ MI-JELÖLÉS (2026-09-12, EU AI Act 50. cikk). A régi szöveg („AI editorial
         // team") félreérthető volt, és csak a lap ALJÁN állt. Most egyértelmű, és a
         // cikk TETEJÉN is megjelenik (aiLabel*). Őrzi: core/ai-disclosure.test.js.
@@ -280,7 +281,7 @@ const UI_GUIDES = {
         kindOther: 'Egyéb <span class="muted-word">AI-eszközök</span>',
         comingSoon: 'Az útmutatók úton vannak — nézz vissza hamarosan.',
         audPersonal: 'Hétköznapok', audBusiness: 'Üzlet', audBoth: 'Otthon és munka',
-        aiSkills: 'AI-készségek', coverSub: 'Hétköznapi embereknek', exampleLabel: 'Példa', tryTyping: 'Írd be ezt', xrefNews: 'Ebből a hírből született az útmutató', xrefGuide: 'Kipróbálnád? Lépésről lépésre útmutató',
+        aiSkills: 'AI-készségek', coverSub: 'Hétköznapi embereknek', exampleLabel: 'Példa', tryTyping: 'Írd be ezt', stepOf: '{n}. lépés / {m}', okLabel: 'Akkor sikerült, ha', diffLabel: 'Ha másképp néz ki', nextStep: 'Következő lépés', copyBtn: 'Másolás', copiedBtn: 'Kimásolva!', xrefNews: 'Ebből a hírből született az útmutató', xrefGuide: 'Kipróbálnád? Lépésről lépésre útmutató',
         disclosureNews: '✦ Az AI World HQ automatikus szerkesztőségében mesterséges intelligencia készítette, hivatalos forrásokból. Automatikus tény- és minőség-ellenőrzésen ment át — emberi szerkesztő nem nézte át. Hibát látsz? Jelezd a fenti gombokkal.',
         disclosureGuide: '✦ Az AI World HQ automatikus szerkesztőségében mesterséges intelligencia készítette, közérthető nyelven. Automatikus tény- és minőség-ellenőrzésen ment át — emberi szerkesztő nem nézte át. Hibát látsz? Jelezd a fenti gombokkal.',
         aiLabelNews: 'Ezt a cikket mesterséges intelligencia írta. Automatikus tény- és minőség-ellenőrzésen ment át, emberi szerkesztő nem nézte át.',
@@ -298,7 +299,7 @@ const UI_GUIDES = {
         kindOther: 'Otras <span class="muted-word">herramientas de IA</span>',
         comingSoon: 'Las guías están en camino — vuelve pronto.',
         audPersonal: 'Día a día', audBusiness: 'Negocios', audBoth: 'Vida y negocios',
-        aiSkills: 'Habilidades de IA', coverSub: 'Para el día a día', exampleLabel: 'Ejemplo', tryTyping: 'Escribe esto', xrefNews: 'La noticia detrás de esta guía', xrefGuide: '¿Quieres probarlo? Guía paso a paso',
+        aiSkills: 'Habilidades de IA', coverSub: 'Para el día a día', exampleLabel: 'Ejemplo', tryTyping: 'Escribe esto', stepOf: 'Paso {n} de {m}', okLabel: 'Sabrás que funcionó cuando', diffLabel: 'Si se ve distinto', nextStep: 'Siguiente paso', copyBtn: 'Copiar', copiedBtn: '¡Copiado!', xrefNews: 'La noticia detrás de esta guía', xrefGuide: '¿Quieres probarlo? Guía paso a paso',
         disclosureNews: '✦ Generado por IA en la redacción automática de AI World HQ, a partir de fuentes oficiales. Pasó controles automáticos de datos y calidad; ningún editor humano revisó este artículo. ¿Ves un error? Usa los botones de arriba.',
         disclosureGuide: '✦ Generada por IA en la redacción automática de AI World HQ, en lenguaje claro. Pasó controles automáticos de datos y calidad; ningún editor humano revisó esta guía. ¿Ves un error? Usa los botones de arriba.',
         aiLabelNews: 'Este artículo fue escrito por IA. Pasó controles automáticos de datos y calidad; ningún editor humano lo revisó.',
@@ -2165,6 +2166,11 @@ function altSzoveg(s) {
     .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1').replace(/[*_`]/g, '').replace(/\s+/g, ' ').trim());
 }
 
+// „Másolás" gomb a beírandó mintához (2026-09-27) — a kattintást az app.js kezeli.
+function masolGomb(isPrompt) {
+  return isPrompt ? `<button class="g-copy" type="button" data-copied="${escapeHtml(tr('copiedBtn'))}">${escapeHtml(tr('copyBtn'))}</button>` : '';
+}
+
 function stepArtHtml(key, heading = '') {
   // Színes 3D illusztráció (a borítók stílusában) — ha létezik; különben SVG tartalék
   if (existsSync(join(__dirname, 'assets', 'art', key + '.jpg')))
@@ -2242,7 +2248,7 @@ function guideSectionHtml(bodyMd) {
       const lbl = isPrompt ? tr('tryTyping') : tr('exampleLabel');
       const send = isPrompt ? '<span class="g-prompt__send">➤</span>' : '';
       const content = escapeHtml(body).replace(/\n/g, '<br>');
-      return '\n\n<div class="g-prompt"><span class="g-prompt__lbl">💬 ' + lbl + '</span><span class="g-prompt__box">' + content + send + '</span></div>\n\n';
+      return '\n\n<div class="g-prompt"><span class="g-prompt__lbl">💬 ' + lbl + '</span><span class="g-prompt__box">' + content + send + '</span>' + masolGomb(isPrompt) + '</div>\n\n';
     });
   // (1) csak-címke 💬 sor ("💬 **Példa prompt:**") → fűzzük hozzá a következő
   // sort (kód-kerítést SOHA — azt a (0) kezeli)
@@ -2254,7 +2260,7 @@ function guideSectionHtml(bodyMd) {
       const isPrompt = /^[„“"'«‘]/.test(txt.trim());
       const lbl = isPrompt ? tr('tryTyping') : tr('exampleLabel');
       const send = isPrompt ? '<span class="g-prompt__send">➤</span>' : '';
-      return '\n\n<div class="g-prompt"><span class="g-prompt__lbl">💬 ' + lbl + '</span><span class="g-prompt__box">' + txt + send + '</span></div>\n\n';
+      return '\n\n<div class="g-prompt"><span class="g-prompt__lbl">💬 ' + lbl + '</span><span class="g-prompt__box">' + txt + send + '</span>' + masolGomb(isPrompt) + '</div>\n\n';
     });
   return wrapTables(marked.parse(pre));
 }
@@ -2276,9 +2282,22 @@ function buildGuidePage(a) {
     if (STEP_RX.test(t)) {
       stepNo++;
       const heading = t.replace(STEP_RX, '');
-      return `<div class="g-step" id="step-${stepNo}"><div class="g-step__no">${stepNo}</div>
+      // „PREZENTÁCIÓ" NÉZET (2026-09-27, user): a lépés diaszerű kártya — haladásjelző,
+      // a siker-mondat ✅ dobozban, a „ha másképp néz ki" 🔄 dobozban, „Következő lépés".
+      // A szöveg NEM változik, csak a helye (core/guide-step-parts.js) → minden
+      // útmutatóra érvényes, átírás nélkül.
+      const reszek = lepesReszek(s.body, LANG);
+      const osszes = stepHeadings.length;
+      const szazalek = Math.round(stepNo / Math.max(1, osszes) * 100);
+      return `<div class="g-step g-slide" id="step-${stepNo}"><div class="g-step__no">${stepNo}</div>
         <div class="g-step__grid">
-          <div class="g-step__body"><h3 class="g-step__h">${inlineHeadingHtml(heading)}</h3>${guideSectionHtml(s.body)}</div>
+          <div class="g-step__body">
+            <div class="g-slide__top"><span class="g-slide__cnt">${escapeHtml(tr('stepOf').replace('{n}', stepNo).replace('{m}', osszes))}</span><span class="g-slide__bar" aria-hidden="true"><i style="width:${szazalek}%"></i></span></div>
+            <h3 class="g-step__h">${inlineHeadingHtml(heading)}</h3>${guideSectionHtml(reszek.fo)}
+            ${reszek.maskepp ? `<div class="g-diff"><span class="g-diff__lbl">🔄 ${escapeHtml(tr('diffLabel'))}</span>${guideSectionHtml(reszek.maskepp)}</div>` : ''}
+            ${reszek.siker ? `<div class="g-ok"><span class="g-ok__lbl">✅ ${escapeHtml(tr('okLabel'))}</span>${guideSectionHtml(reszek.siker)}</div>` : ''}
+            ${stepNo < osszes ? `<a class="g-next" href="#step-${stepNo + 1}">${escapeHtml(tr('nextStep'))} ↓</a>` : ''}
+          </div>
           ${stepArtHtml(artKeys[stepNo - 1], heading)}
         </div></div>`;
     }

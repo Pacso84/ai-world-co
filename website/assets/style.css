@@ -967,3 +967,24 @@ body {
 .cs-hp{position:absolute;left:-9999px;opacity:0;height:0;width:0}
 .cs-note{font-size:.8rem;opacity:.7}
 .cs-status{font-size:.9rem;min-height:1.2em}
+
+/* ===== „Prezentáció" nézet az útmutató-lépésekhez (2026-09-27, user-kérés) =====
+   Haladásjelző, ✅ „sikerült, ha…" és 🔄 „ha másképp néz ki" doboz, „Következő
+   lépés" gomb, „Másolás" gomb a beírandó mintán. A szöveg nem változik, csak a
+   helye (core/guide-step-parts.js). */
+.g-slide__top { display: flex; align-items: center; gap: 10px; margin: -2px 0 10px; }
+.g-slide__cnt { font-family: 'Schibsted Grotesk', sans-serif; font-size: 12px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+.g-slide__bar { flex: 1; height: 6px; border-radius: 99px; background: color-mix(in srgb, var(--line) 80%, transparent); overflow: hidden; }
+.g-slide__bar i { display: block; height: 100%; border-radius: 99px; background: var(--gc, var(--accent)); }
+.g-ok, .g-diff { margin: 14px 0 4px; padding: 12px 14px; border-radius: 14px; font-size: 15px; line-height: 1.55; }
+.g-ok { background: color-mix(in srgb, #2e9d5b 12%, var(--card)); border: 1px solid color-mix(in srgb, #2e9d5b 40%, var(--line)); }
+.g-diff { background: color-mix(in srgb, #d99a1e 10%, var(--card)); border: 1px solid color-mix(in srgb, #d99a1e 38%, var(--line)); }
+.g-ok__lbl, .g-diff__lbl { display: block; font-family: 'Schibsted Grotesk', sans-serif; font-weight: 800; font-size: 12.5px; letter-spacing: .03em; margin-bottom: 4px; }
+.g-ok p, .g-diff p { margin: 0; }
+.g-next { display: inline-block; margin-top: 14px; padding: 9px 16px; border-radius: 99px; border: 1px solid var(--line); background: var(--paper); color: var(--ink); font-weight: 700; font-size: 14px; text-decoration: none; }
+.g-next:hover { border-color: var(--gc, var(--accent)); }
+.g-prompt { position: relative; }
+.g-copy { margin-top: 8px; padding: 6px 14px; border-radius: 99px; border: 1px solid var(--line); background: var(--card); color: var(--ink); font-weight: 700; font-size: 13px; cursor: pointer; }
+.g-copy:hover { border-color: var(--gc, var(--accent)); }
+.g-copy--ok { background: #2e9d5b; border-color: #2e9d5b; color: #fff; }
+@media (max-width: 560px) { .g-ok, .g-diff { font-size: 14.5px; } .g-next { display: block; text-align: center; } }

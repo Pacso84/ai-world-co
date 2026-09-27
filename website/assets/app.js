@@ -228,3 +228,31 @@
   });
 })();
 
+
+// ---------- „Másolás" gomb a beírandó mintákon (2026-09-27) ----------
+// A doboz szövegét másolja (a ➤ jel nélkül); siker után 2 mp-ig „Kimásolva!".
+(function () {
+  document.addEventListener('click', function (e) {
+    var btn = e.target && e.target.closest ? e.target.closest('.g-copy') : null;
+    if (!btn) return;
+    var box = btn.parentNode && btn.parentNode.querySelector('.g-prompt__box');
+    if (!box) return;
+    var clone = box.cloneNode(true);
+    var send = clone.querySelector('.g-prompt__send');
+    if (send) send.remove();
+    var text = (clone.innerText || clone.textContent || '').trim();
+    var eredeti = btn.textContent;
+    function kesz() {
+      btn.textContent = btn.getAttribute('data-copied') || '✓';
+      btn.classList.add('g-copy--ok');
+      setTimeout(function () { btn.textContent = eredeti; btn.classList.remove('g-copy--ok'); }, 2000);
+    }
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(kesz, function () {});
+      else {
+        var ta = document.createElement('textarea'); ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta); kesz();
+      }
+    } catch (err) { /* a másolás nem kritikus */ }
+  });
+})();
