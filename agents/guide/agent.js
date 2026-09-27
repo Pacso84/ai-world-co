@@ -37,6 +37,8 @@ import { skillsBlock } from '../../core/skills.js';
 import { message } from '../../core/ops.js';
 import { HOWTO_RANGE } from '../../core/article-length.js';
 import { blockingIssues } from '../../core/auto-check-codes.js';
+import { valasztHireket, hirBlokk } from '../../core/guide-sources.js';
+import { utmutatoE } from '../../core/guide-kind.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..', '..');
@@ -654,7 +656,36 @@ One concrete action the reader can take in the next 2 minutes.
 
 Write ${HOWTO_RANGE} words. Output ONLY the markdown — no commentary.`;
 
-function buildUserPrompt(topic, brandContext, lessons, skills) {
+// A SAJÁT HÍREINK az útmutató tényanyagának (2026-09-27, lásd core/guide-sources.js).
+// Egyszer olvassuk be futásonként; csak HÍR (útmutató nem).
+let _hirekCache = null;
+function frontmatterMezo(md, kulcs) {
+  const sor = String(md || '').split('\n').find(l => l.startsWith(kulcs + ':')) || '';
+  return sor.slice(kulcs.length + 1).trim().replace(/^["']|["']$/g, '');
+}
+function sajatHirek() {
+  if (_hirekCache) return _hirekCache;
+  const dir = join(ROOT, 'content', 'articles');
+  const ki = [];
+  try {
+    for (const f of readdirSync(dir).filter(x => x.startsWith('ARTICLE_') && x.endsWith('.json'))) {
+      try {
+        const d = JSON.parse(readFileSync(join(dir, f), 'utf-8'));
+        if (utmutatoE(f, d)) continue;
+        const md = d.article_markdown || '';
+        ki.push({
+          file: f, title: frontmatterMezo(md, 'title') || d.original_title || '',
+          tool: d._meta?.tool || frontmatterMezo(md, 'tool'), company: d._meta?.company || frontmatterMezo(md, 'company'),
+          publishedAt: d._meta?.published_at || '', md, snippet: d._meta?.source_snippet || ''
+        });
+      } catch { /* sérült cikk: kihagyjuk */ }
+    }
+  } catch { /* nincs mappa */ }
+  _hirekCache = ki;
+  return ki;
+}
+
+function buildUserPrompt(topic, brandContext, lessons, skills, hirek = '') {
   const subject = topic.company || topic.tool
     ? `Tool/company: ${[topic.company, topic.tool].filter(Boolean).join(' — ')}`
     : `General topic (not tied to one company)`;
@@ -663,7 +694,7 @@ function buildUserPrompt(topic, brandContext, lessons, skills) {
 GUIDE TITLE TO WRITE: "${topic.title}"
 ${subject}
 Audience: ${topic.audience} · Level: ${topic.level || 'beginner'}
-Angle / what to focus on (a hint, write it in your own words): ${topic.angle || ''}
+Angle / what to focus on (a hint, write it in your own words): ${topic.angle || ''}${hirek}
 
 Follow the exact output format from your instructions (frontmatter + Before you start + numbered Steps + Common mistakes + What this means for you + Try it now). Keep it beginner-friendly and genuinely useful.
 
@@ -716,7 +747,9 @@ function saveGuide(topic, response) {
 async function writeGuide(topic, brandContext) {
   const lessons = await loadLessons();
   const skills = skillsBlock('guide');
-  const userPrompt = buildUserPrompt(topic, brandContext, lessons, skills);
+  const valasztott = valasztHireket(topic, sajatHirek());
+  if (valasztott.length) console.log(`   📰 tényanyag: ${valasztott.length} saját hír (${valasztott.map(h => h.title.slice(0, 40)).join(' · ')})`);
+  const userPrompt = buildUserPrompt(topic, brandContext, lessons, skills, hirBlokk(valasztott));
 
   let response = await ask(userPrompt, { agentName: AGENT_NAME, systemPrompt: GUIDE_SYSTEM_PROMPT, maxTokens: 10000 });
   if (response && !hasGuideStructure(response.text)) {
