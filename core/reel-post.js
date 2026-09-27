@@ -50,6 +50,9 @@ export const MOBIL_VAGAS = 125;
 // A legkisebb hihető videóméret. A mi Reeljeink ~450 KB-osak; egy
 // félbeszakadt vagy üres fájl nagyságrendekkel kisebb.
 export const MIN_VIDEO_BAJT = 100000;
+// CSAK FRISS ÚTMUTATÓBÓL REEL (2026-09-27, user: „a régiek már elavultak, azokat hagyjuk").
+// Ugyanaz a 7 nap, ami a posztoknál a „friss" (core/social-published.js FRESH_DAYS).
+export const REEL_FRISS_NAP = 7;
 
 export function reelVideoUrl(slug, site = SITE) {
   const s = String(slug || '');
@@ -484,7 +487,8 @@ async function prepare(ROOT, join) {
   }
   // ALKALMAS-E? Csak a markdown ismeretében derül ki (kell 3+ lépés).
   const valasztott = kovetkezoReel(cikkek, Date.now(), {
-    alkalmas: c => !!cardsFromGuide(c.md).cards
+    alkalmas: c => !!cardsFromGuide(c.md).cards,
+    maxKorNap: REEL_FRISS_NAP          // 2026-09-27, user: csak a friss útmutatóból Reel
   });
   if (!valasztott) {
     // ── A MAI VIDEÓ ÉLETBEN TARTÁSA (2026-08-26) ──────────────────

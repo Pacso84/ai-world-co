@@ -258,4 +258,16 @@ t('🔑 a sor-döntés MEGKAPJA a tool mezőt (különben fél szabály vak)', (
     '⚠️ a cikkekBetolt() nem adja tovább a tool mezőt — az eszköz-ismétlés némán átcsúszna');
 });
 
+t('🔑 CSAK FRISS: a maxKorNap-nál régebbi útmutatóból nincs Reel (user 09-27)', () => {
+  const ut = (slug, napja) => ({ slug, type: 'guide', published_at: new Date(MOST - napja * 864e5).toISOString(), reel_at: '' });
+  const cikkek = [ut('regi', 40), ut('friss', 2)];
+  assert.equal(kovetkezoReel(cikkek, MOST, { maxKorNap: 7 }).slug, 'friss');
+  assert.equal(kovetkezoReel([ut('regi', 40)], MOST, { maxKorNap: 7 }), null, 'régi útmutatóból Reel készülne');
+  assert.equal(kovetkezoReel([ut('regi', 40)], MOST).slug, 'regi', 'kapcsoló nélkül a régi viselkedés megmarad');
+  const src = readFileSync(new URL('./reel-post.js', import.meta.url), 'utf-8');
+  assert.match(src, /maxKorNap: REEL_FRISS_NAP/, 'a Reel-küldő nem kér csak frisset');
+  const buf = readFileSync(new URL('../agents/social/buffer-poster.js', import.meta.url), 'utf-8');
+  assert.match(buf, /selectSocialBatch\(q, keret, \{ csakFriss: true \}\)/, 'a Threads még a hátralékot üríti');
+});
+
 console.log('\n✅ reel-queue.test: mind a ' + pass + ' eset rendben');

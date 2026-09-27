@@ -72,10 +72,14 @@ export function kovetkezoReel(cikkek, now = Date.now(), opts = {}) {
   if (reelMaMar(cikkek, now)) return null;             // napi egy, és kész
 
   const alkalmas = typeof opts.alkalmas === 'function' ? opts.alkalmas : () => true;
+  // CSAK FRISS (2026-09-27, user: „a lemaradásokat töröljük, csak a frissek menjenek,
+  // a régiek már elavultak"): opts.maxKorNap-nál régebbi útmutatóból nincs Reel.
+  const korHatar = Number.isFinite(opts.maxKorNap) ? now - opts.maxKorNap * 864e5 : -Infinity;
   const jeloltek = cikkek.filter(c =>
     c && c.type === 'guide'
     && !napja(c.reel_at)                                // még nem volt Reel
     && napja(c.published_at)                            // dátum nélkül nem sorolható
+    && Date.parse(c.published_at) >= korHatar           // csak friss (ha a hívó kéri)
     && alkalmas(c)
   );
   if (!jeloltek.length) return null;

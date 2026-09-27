@@ -481,7 +481,8 @@ async function main() {
       continue;
     }
 
-    const batch = reel?.item ? [reel.item] : selectSocialBatch(q, keret);
+    // 2026-09-27 (user): „a lemaradásokat töröljük, csak a frissek menjenek" — a Threadsre is.
+    const batch = reel?.item ? [reel.item] : selectSocialBatch(q, keret, { csakFriss: true });
     console.log(`\n📨 ${cfg.label} (@${ch.user}) — ${q.length} várakozóból ${batch.length} megy ki`
       + (reel?.item ? '  🎬 (a mai Reel)' : ''));
 
