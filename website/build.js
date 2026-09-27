@@ -369,30 +369,33 @@ const CS_FAQ = {
   en: [
     { q: 'What is AI World HQ?', a: `An automated, independent news + guides site that helps everyday people use AI. Content is produced by an AI newsroom with honesty checks, in ${NYELV_SZAM} languages.`, p: '/about' },
     { q: 'How do I report a mistake in an article?', a: 'Use the 👍/👎 buttons under the article, or send us a message — genuine errors get corrected and republished.', p: '/about' },
-    { q: 'Is the site free? How can I support it?', a: 'Everything is free. If you want, you can leave a voluntary tip on the Support page.', p: '/support' },
+    { q: 'Is the site free? How can I support it?', a: 'All articles and guides are free. If you want, you can leave a voluntary tip on the Support page.', p: '/support' },
     { q: 'Where do I find beginner guides?', a: 'The Start page lists the first 5 guides to read, and the Guides page has all of them by topic.', p: '/start' },
     { q: 'What do AI words like prompt or token mean?', a: 'Our AI glossary explains the most common terms in plain language.', p: '/glossary' },
     { q: 'Do you sell anything? What are the packs?', a: 'Our guides are free here and stay free. We also group them by subject into PDF packs you can buy and keep. The packs page lists all of them.', p: '/packs' },
+    { q: 'Can I get a refund for a pack? How do I pay?', a: 'The packs are PDF downloads you get right after payment, so all sales are final — there are no refunds. Payment currently works through PayPal only; paying by card is not available yet.', p: '/packs' },
     { q: 'Is there an RSS feed?', a: 'Yes — every language has its own feed.', p: '/feed.xml' },
     { q: 'How do I contact you / reach a human?', a: 'Use the message form at the bottom of the About page, or write to support@aiworldhq.com — a human reads every message.', p: '/about#contact' }
   ],
   hu: [
     { q: 'Mi az AI World HQ?', a: `Automata, független hír- és útmutató-oldal, ami a hétköznapi AI-használatban segít. A tartalmat AI-szerkesztőség készíti őszinteség-ellenőrzéssel, ${NYELV_SZAM} nyelven.`, p: '/about' },
     { q: 'Hogyan jelezhetek hibát egy cikkben?', a: 'A cikk alatti 👍/👎 gombokkal, vagy írj nekünk — a valódi hibákat javítjuk és újra kiadjuk.', p: '/about' },
-    { q: 'Ingyenes az oldal? Hogyan támogathatom?', a: 'Minden ingyenes. Ha szeretnéd, a Támogatás oldalon önkéntes borravalót adhatsz.', p: '/support' },
+    { q: 'Ingyenes az oldal? Hogyan támogathatom?', a: 'Minden cikk és útmutató ingyenes. Ha szeretnéd, a Támogatás oldalon önkéntes borravalót adhatsz.', p: '/support' },
     { q: 'Hol találom a kezdő útmutatókat?', a: 'A Kezdés oldal az első 5 ajánlott útmutatót mutatja, az Útmutatók oldalon pedig az összes megvan téma szerint.', p: '/start' },
     { q: 'Mit jelentenek az AI-szavak, pl. prompt vagy token?', a: 'Az AI-kisszótárunk közérthetően elmagyarázza a leggyakoribb fogalmakat.', p: '/glossary' },
     { q: 'Árultok valamit? Mik azok a csomagok?', a: 'Az útmutatóink itt ingyenesek, és azok is maradnak. Emellett téma szerint PDF-csomagokba rendezve meg is vásárolhatók. A Csomagok oldal mindet felsorolja.', p: '/packs' },
+    { q: 'Visszakérhetem a csomag árát? Hogyan fizetek?', a: 'A csomagok PDF-ek, amelyeket a fizetés után azonnal letöltesz, ezért minden vásárlás végleges — visszatérítés nincs. A fizetés jelenleg csak PayPalon keresztül működik, bankkártyával egyelőre nem lehet fizetni.', p: '/packs' },
     { q: 'Van RSS?', a: 'Igen — minden nyelvnek saját feedje van.', p: '/feed.xml' },
     { q: 'Hogyan tudlak elérni titeket / élő embert?', a: 'A Rólunk oldal alján lévő üzenet-űrlappal, vagy írj a support@aiworldhq.com címre — minden üzenetet elolvas egy ember.', p: '/about#contact' }
   ],
   es: [
     { q: '¿Qué es AI World HQ?', a: `Un sitio automático e independiente de noticias y guías que te ayuda a usar la IA en el día a día. El contenido lo produce una redacción de IA con controles de honestidad, en ${NYELV_SZAM} idiomas.`, p: '/about' },
     { q: '¿Cómo aviso de un error en un artículo?', a: 'Con los botones 👍/👎 bajo el artículo, o escríbenos — los errores reales se corrigen y se vuelven a publicar.', p: '/about' },
-    { q: '¿El sitio es gratis? ¿Cómo puedo apoyarlo?', a: 'Todo es gratis. Si quieres, puedes dejar una propina voluntaria en la página de Apoyo.', p: '/support' },
+    { q: '¿El sitio es gratis? ¿Cómo puedo apoyarlo?', a: 'Todos los artículos y guías son gratis. Si quieres, puedes dejar una propina voluntaria en la página de Apoyo.', p: '/support' },
     { q: '¿Dónde están las guías para principiantes?', a: 'La página Empezar muestra las 5 primeras guías recomendadas, y en Guías están todas por tema.', p: '/start' },
     { q: '¿Qué significan palabras como prompt o token?', a: 'Nuestro pequeño glosario de IA explica los términos más comunes en lenguaje claro.', p: '/glossary' },
     { q: '¿Vendéis algo? ¿Qué son los packs?', a: 'Nuestras guías son gratis aquí y seguirán siéndolo. Además las agrupamos por tema en packs PDF que puedes comprar y guardar. La página de packs los lista todos.', p: '/packs' },
+    { q: '¿Puedo pedir un reembolso de un pack? ¿Cómo pago?', a: 'Los packs son PDF que descargas justo después de pagar, así que todas las ventas son definitivas: no hay reembolsos. Por ahora el pago solo funciona con PayPal; todavía no se puede pagar con tarjeta.', p: '/packs' },
     { q: '¿Hay RSS?', a: 'Sí — cada idioma tiene su propio feed.', p: '/feed.xml' },
     { q: '¿Cómo os contacto / hablo con una persona?', a: 'Usa el formulario al final de la página Sobre nosotros, o escribe a support@aiworldhq.com — una persona lee todos los mensajes.', p: '/about#contact' }
   ],

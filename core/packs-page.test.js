@@ -337,8 +337,15 @@ t('a csomag-sor és a bolt-gomb a packs.json bolt-címére mutat, nem beégetett
 t('a csevegő GY.I.K. ismeri a /packs oldalt mind a 3 nyelven', () => {
   // A chat-motor CSAK a kb.json-ban szereplő címre linkelhet; enélkül a
   // „árultok valamit?" kérdésre nem tudna hova mutatni.
+  // 09-27 óta nyelvenként KÉT bejegyzés mutat ide („mik a csomagok?" +
+  // „visszatérítés / fizetés") — ezért nyelvenként számolunk, nem összesen.
+  const faq = build.slice(build.indexOf('const CS_FAQ'), build.indexOf('const CS_FAQ') + 20000);
+  const blokkok = { en: faq.split(/\n  hu: \[/)[0], hu: (faq.split(/\n  hu: \[/)[1] || '').split(/\n  es: \[/)[0], es: (faq.split(/\n  es: \[/)[1] || '').split(/\n\};/)[0] };
+  for (const [ny, b] of Object.entries(blokkok)) {
+    assert.ok(/p: '\/packs'/.test(b), ny + ': a GY.I.K.-ban nincs /packs-bejegyzés');
+  }
   const db = (build.match(/p: '\/packs'/g) || []).length;
-  assert.equal(db, 3, '/packs csak ' + db + ' nyelv GY.I.K.-jében van (3 kellene)');
+  assert.ok(db >= 3, '/packs csak ' + db + ' GY.I.K.-bejegyzésben van (legalább 3 kellene)');
 });
 
 // ===================================================================
