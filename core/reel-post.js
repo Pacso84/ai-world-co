@@ -249,6 +249,25 @@ async function main() {
     return;
   }
 
+  // KÉZI CSOMAG-REKLÁM ÚJRAKÜLDÉS (2026-09-27): a vasárnapi promó a Make-ben
+  // hibára futott (a Facebook 3,5 mp után visszadobta), a user újra akarta
+  // küldeni. A MÁR KINT LÉVŐ videót küldi, ugyanazzal a felirattal, mint az
+  // automata — a heti jelölést (memory/packs-reel.json) nem módosítja.
+  // Használat: node core/reel-post.js --promo [--dry]  (reel-test.yml: slug = --promo)
+  if (args.includes('--promo')) {
+    const { promoCaption, PROMO_SLUG } = await import('./packs-reel.js');
+    const { readdirSync } = await import('fs');
+    const utmutatoDb = readdirSync(join(ROOT, 'content', 'articles')).filter(f => f.startsWith('ARTICLE_GUIDE')).length;
+    const video = reelVideoUrl(PROMO_SLUG);
+    const caption = promoCaption({ utmutatoDb });
+    console.log('📘 Csomag-reklám (kézi)\n   videó : ' + video + '\n   leírás : ' + JSON.stringify(caption));
+    const r = await sendReel({ video, caption, hook: (process.env.MAKE_REEL_WEBHOOK_URL || '').trim(), dry });
+    if (r.ok && r.dry) { console.log('🧪 PRÓBA — nem küldtem el; a videó címe él.'); return; }
+    if (r.ok) { console.log('✅ Átvette a Make (HTTP ' + r.status + ') — a Facebook-oldalon kell megjelennie.'); return; }
+    console.error('❌ ' + r.reason);
+    process.exit(1);
+  }
+
   const kulcs = args.find(a => !a.startsWith('--'));
   if (!kulcs) {
     console.log('Használat: node core/reel-post.js <slug> [--dry]');
