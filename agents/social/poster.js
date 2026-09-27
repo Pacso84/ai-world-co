@@ -140,7 +140,9 @@ async function main() {
     console.log('   ⛔ A havi Make-keret elfogyott — NEM küldök, mert a poszt némán elveszne.');
     return;
   }
-  const batch = selectSocialBatch(queue, limit);
+  // 2026-09-27 (user): a Facebookra CSAK a friss megy — a régi útmutatók helyét a
+  // Reel vette át (idegeneknek is ajánlja, és 2 művelet a 3 helyett).
+  const batch = selectSocialBatch(queue, limit, { csakFriss: true });
   const evergreenWaiting = queue.filter(x => !x.isFresh && x.isGuide).length;
   const nEver = batch.filter(x => !x.isFresh).length;
   console.log(`   📋 Sorban: ${queue.length} (ebből örökzöld útmutató: ${evergreenWaiting}) | most kiküldendő: ${batch.length} (${batch.length - nEver} friss + ${nEver} örökzöld)${DRY ? ' (PRÓBA — nem küldöm)' : ''}\n`);

@@ -96,4 +96,16 @@ const napjai = list => list.map(x => x.pubAt.slice(5, 10));
 assert.deepEqual(selectSocialBatch(null, 3), []);
 assert.deepEqual(selectSocialBatch([item('06-01')], 0), []);
 
+// CSAK FRISS (2026-09-27, user): a Facebookra a régi útmutató NEM megy ki —
+// akkor sem, ha kevés a friss és maradna hely; a Threads (kapcsoló nélkül) igen.
+{
+  const q = [item('06-01'), item('06-02'), item('09-26', { isFresh: true }), item('09-27', { isFresh: true })];
+  const fb = selectSocialBatch(q, 5, { csakFriss: true });
+  assert.deepEqual(napjai(fb), ['09-27', '09-26'], 'régi útmutató került a Facebook-kötegbe');
+  const threads = selectSocialBatch(q, 5);
+  assert.ok(threads.some(x => !x.isFresh), 'a Threads nem kap régi útmutatót (a kapcsoló nélkül kellene)');
+  const src = (await import('fs')).readFileSync(new URL('../agents/social/poster.js', import.meta.url), 'utf-8');
+  assert.match(src, /selectSocialBatch\(queue, limit, \{ csakFriss: true \}\)/, 'a Facebook-poszter nem csak frisset kér');
+}
+
 console.log('✅ social-queue: minden teszt átment');

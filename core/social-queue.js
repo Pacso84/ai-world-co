@@ -33,7 +33,7 @@ export const DRAIN_SLOT_FROM = 3;
  * @param {number} limit  hány poszt mehet ki ebben a körben
  * @returns {Array} a kiválasztott elemek, kiküldési sorrendben
  */
-export function selectSocialBatch(items, limit) {
+export function selectSocialBatch(items, limit, { csakFriss = false } = {}) {
   if (!Array.isArray(items) || limit <= 0) return [];
 
   const ujElol = (a, b) => String(b.pubAt || '').localeCompare(String(a.pubAt || ''));
@@ -41,6 +41,12 @@ export function selectSocialBatch(items, limit) {
 
   // FRISS: 7 napon belül publikált — hír ÉS útmutató egyaránt, legújabb elöl.
   const fresh = items.filter(x => x.isFresh).sort(ujElol);
+
+  // CSAK FRISS (2026-09-27, user: „állítsuk le a régi posztok kiküldését, csak a
+  // napinál maradjunk"). A Facebookon a régi útmutatók helyét a REEL veszi át
+  // (az hoz idegeneket, és olcsóbb a Make-kereten); a Threads (Buffer, ingyenes)
+  // továbbra is üríti a hátralékot — ezért kapcsoló, nem törlés.
+  if (csakFriss) return fresh.slice(0, limit);
 
   // HÁTRALÉK: 7 napnál régebbi ÚTMUTATÓ. (Régi HÍR ide nem juthat — azt a
   // hívó már lezárta.) A garantált helyre a LEGRÉGEBBI megy, hogy a sor
