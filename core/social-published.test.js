@@ -177,11 +177,11 @@ t('🔴 a frissesség-vágás PONTOSAN 7 nap — a határ mindkét oldalán', ()
     cikk('ARTICLE_GUIDE_u2.json', { slug: 'utm-friss', at: iso(MOST - 1000) })
   ]);
   const st = s => queueStatus(map, poszt(s, URL(s)), MOST);
-  assert.deepEqual(st('hir-hataron'), { pubAt: iso(MOST - HET_NAP), isGuide: false, stale: false, isFresh: true },
+  assert.deepEqual(st('hir-hataron'), { pubAt: iso(MOST - HET_NAP), isGuide: false, stale: false, isFresh: true, reel: false },
     '🔴 a PONTOSAN 7 napos hír már nem friss / elavult');
-  assert.deepEqual(st('hir-tul'), { pubAt: iso(MOST - HET_NAP - 1), isGuide: false, stale: true, isFresh: false },
+  assert.deepEqual(st('hir-tul'), { pubAt: iso(MOST - HET_NAP - 1), isGuide: false, stale: true, isFresh: false, reel: false },
     '🔴 a 7 napnál 1 ms-mal régebbi hír nem avult el');
-  assert.deepEqual(st('utm-tul'), { pubAt: iso(MOST - HET_NAP - 1), isGuide: true, stale: false, isFresh: false },
+  assert.deepEqual(st('utm-tul'), { pubAt: iso(MOST - HET_NAP - 1), isGuide: true, stale: false, isFresh: false, reel: false },
     '🔴 az örökzöld útmutató elavultnak jelölve');
   assert.equal(st('utm-friss').isFresh, true);
 });
@@ -329,6 +329,18 @@ t('🔌 poster.js: a link kiszedése a közös stripUrl()', () => {
   assert.ok(/import \{[^}]*\bstripUrl\b[^}]*\} from '\.\.\/\.\.\/core\/social-text\.js'/.test(s), '🔴 nincs stripUrl import');
   assert.ok(/const message = stripUrl\(post\.facebook, post\.url\);/.test(s), '🔴 nem a stripUrl() adja az üzenetet');
   assert.ok(!/\.split\(post\.url\)\.join\(''\)/.test(s), '🔴 visszakerült a beírt link-kiszedés');
+});
+
+t('🔑 a REELKÉNT kiment útmutató nem megy ki képes posztként is (user 09-27)', () => {
+  const s = 'how-to-reel-guide';
+  const c = cikk('ARTICLE_GUIDE_reel.json', { slug: s, type: 'guide', at: iso(MOST - 3600e3), title: 'How to reel' });
+  c.data._meta.reel_at = iso(MOST - 600e3);
+  const st = queueStatus(buildPublishedMap([c]), poszt(s, URL(s)), MOST);
+  assert.equal(st.reel, true, 'a Reel-jelölés nem jut el a sorig');
+  const src = readFileSync(join(dirname(fileURLToPath(import.meta.url)), '..', 'agents', 'social', 'poster.js'), 'utf-8');
+  assert.match(src, /if \(st\.reel\) \{\s*post\.posted_fb = 'skipped-reel';/, 'a Facebook-poszter nem hagyja ki a Reelként kiment cikket');
+  const nincsReel = queueStatus(buildPublishedMap([cikk('A.json', { slug: 'x', at: iso(MOST) })]), poszt('x', URL('x')), MOST);
+  assert.equal(nincsReel.reel, false);
 });
 
 if (fails.length) {

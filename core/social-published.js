@@ -68,7 +68,8 @@ export function buildPublishedMap(entries) {
       // hátralék-hely a sorban CSAK útmutatót enged előre, ezért a téves
       // „hír" itt egy örökzöld cikket zárna ki a terjesztésből 7 nap után.
       const isGuide = utmutatoE(f, d);
-      const rec = { at: d._meta?.published_at || '', guide: isGuide };
+      // reel: Reelként már kiment (2026-09-27, user: „amik kimennek Reelbe, azok ne jelenjenek meg posztba")
+      const rec = { at: d._meta?.published_at || '', guide: isGuide, reel: !!d._meta?.reel_at };
       if (d._meta?.slug) map[d._meta.slug] = rec;
       const m = (d.article_markdown || '').match(/^---\n[\s\S]*?^title:\s*["']?(.+?)["']?\s*$/m);
       const legacy = matchSlug((m && m[1]) || d.original_title || f);
@@ -110,7 +111,7 @@ export function queueStatus(map, post, now) {
   const pubAt = rec.at || '';
   const isGuide = !!rec.guide;
   const age = pubAt ? (now - new Date(pubAt).getTime()) : Infinity;
-  return { pubAt, isGuide, stale: !isGuide && age > FRESH_MS, isFresh: age <= FRESH_MS };
+  return { pubAt, isGuide, stale: !isGuide && age > FRESH_MS, isFresh: age <= FRESH_MS, reel: !!rec.reel };
 }
 
 export default { FRESH_DAYS, FRESH_MS, isArticleFile, matchSlug, buildPublishedMap, realSlug, findPublished, queueStatus };

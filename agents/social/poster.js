@@ -107,6 +107,13 @@ async function main() {
     // a körre. A néma eldobás visszafordíthatatlan, a várakozás nem.
     const st = queueStatus(pub, post, now);
     if (!st) continue;
+    // Ami REELKÉNT már kiment, az képként nem megy ki (2026-09-27, user-szabály).
+    // A Reel-küldés (reel-post --send) a CI-ban ELŐTTE fut, és a cikk reel_at-ját írja.
+    if (st.reel) {
+      post.posted_fb = 'skipped-reel';
+      if (!DRY) writeFileSync(path, JSON.stringify(post, null, 2), 'utf-8');
+      continue;
+    }
     if (st.stale) {
       post.posted_fb = 'skipped-stale';
       // A PRÓBA NE ÍRJON (2026-08-02): enélkül a --dry végleges jelölést írt a
