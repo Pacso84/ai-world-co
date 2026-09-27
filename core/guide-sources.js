@@ -27,7 +27,11 @@ export const MIN_KOZOS = 1;   // a címben/Röviden-dobozban egy tartalmas köz�
 const STOP = new Set(['with', 'your', 'from', 'that', 'this', 'into', 'what', 'when', 'using', 'how', 'use', 'for', 'the', 'and',
   'minutes', 'minute', 'first', 'easy', 'quick', 'simple', 'free', 'step', 'steps', 'guide', 'beginner', 'beginners', 'everyday',
   'without', 'about', 'more', 'less', 'just', 'make', 'get', 'can', 'will', 'them', 'they', 'their', 'there', 'where', 'which',
-  'app', 'apps', 'tool', 'tools', 'assistant', 'using', 'help', 'helps', 'turn', 'into', 'new', 'now', 'best', 'every']);
+  'app', 'apps', 'tool', 'tools', 'assistant', 'using', 'help', 'helps', 'turn', 'into', 'new', 'now', 'best', 'every',
+  // 09-27: általános igék/szavak, amik szinte minden hírben ott vannak („plain English", „explain")
+  'read', 'write', 'writing', 'explain', 'explained', 'plain', 'english', 'long', 'draft', 'answer', 'answers', 'question',
+  'questions', 'daily', 'task', 'tasks', 'work', 'phone', 'does', 'mean', 'means', 'practical', 'today', 'people', 'like',
+  'need', 'know', 'things', 'thing', 'ways', 'start', 'started', 'getting', 'work']);
 
 /** A téma tartalmas szavai (≥4 betű, stop-szó és az eszköz/cég neve nélkül), egyszerű tővel. */
 function kulcsszavak(szoveg, kizart = []) {
@@ -77,7 +81,7 @@ function torzs(md) {
  * @param {Array}  hirek   [{ file, title, tool, company, publishedAt, md, snippet }] — CSAK hírek
  * @param {number} most    időbélyeg (teszthez)
  */
-export function valasztHireket(topic, hirek, most = Date.now()) {
+export function valasztHireket(topic, hirek, most = Date.now(), minKozos = MIN_KOZOS) {
   const lista = Array.isArray(hirek) ? hirek : [];
   const ki = [];
   // 1) a párosított hír (a pairing agent kötötte hozzá) — kortól függetlenül
@@ -108,7 +112,7 @@ export function valasztHireket(topic, hirek, most = Date.now()) {
         || (!tool && ceg && String(x.company).toLowerCase() === ceg.toLowerCase()))
       // a közös szó a hír CÍMÉBEN vagy RÖVIDEN-dobozában legyen, ne a szöveg mélyén
       .map(x => ({ x, pont: kozosSzo(temaSzavak, `${x.title} ${rovidenDoboz(x.md)}`) }))
-      .filter(o => o.pont >= MIN_KOZOS)
+      .filter(o => o.pont >= minKozos)
       .sort((a, b) => b.pont - a.pont || String(b.x.publishedAt).localeCompare(String(a.x.publishedAt)))
       .map(o => o.x);
     for (const j of jeloltek) { if (ki.length >= HIR_MAX) break; ki.push(j); }
@@ -133,4 +137,29 @@ Do not copy sentences; do not link or cite them.
 ${reszek.join('\n\n')}`;
 }
 
-export default { valasztHireket, hirBlokk, HIR_MAX, HIR_KOR_NAP };
+/**
+ * A HÍREK betöltése (csak hír, útmutató nem) — EGY példány, az útmutató-író és
+ * a frissítő is ezt hívja. A fájlrendszert a hívó adja (tesztelhető).
+ */
+export function hirekBetolt({ dir, fs, join, utmutatoE }) {
+  const fm = (md, k) => ((String(md || '').split('\n').find(l => l.startsWith(k + ':')) || '')
+    .slice(k.length + 1).trim().replace(/^["']|["']$/g, ''));
+  const ki = [];
+  let fajlok = [];
+  try { fajlok = fs.readdirSync(dir).filter(x => x.startsWith('ARTICLE_') && x.endsWith('.json')); } catch { return ki; }
+  for (const f of fajlok) {
+    try {
+      const d = JSON.parse(fs.readFileSync(join(dir, f), 'utf-8'));
+      if (utmutatoE(f, d)) continue;
+      const md = d.article_markdown || '';
+      ki.push({
+        file: f, title: fm(md, 'title') || d.original_title || '',
+        tool: d._meta?.tool || fm(md, 'tool'), company: d._meta?.company || fm(md, 'company'),
+        publishedAt: d._meta?.published_at || '', md, snippet: d._meta?.source_snippet || ''
+      });
+    } catch { /* sérült cikk: kihagyjuk */ }
+  }
+  return ki;
+}
+
+export default { valasztHireket, hirBlokk, hirekBetolt, HIR_MAX, HIR_KOR_NAP };

@@ -37,7 +37,7 @@ import { skillsBlock } from '../../core/skills.js';
 import { message } from '../../core/ops.js';
 import { HOWTO_RANGE } from '../../core/article-length.js';
 import { blockingIssues } from '../../core/auto-check-codes.js';
-import { valasztHireket, hirBlokk } from '../../core/guide-sources.js';
+import { valasztHireket, hirBlokk, hirekBetolt } from '../../core/guide-sources.js';
 import { utmutatoE } from '../../core/guide-kind.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -659,30 +659,11 @@ Write ${HOWTO_RANGE} words. Output ONLY the markdown — no commentary.`;
 // A SAJÁT HÍREINK az útmutató tényanyagának (2026-09-27, lásd core/guide-sources.js).
 // Egyszer olvassuk be futásonként; csak HÍR (útmutató nem).
 let _hirekCache = null;
-function frontmatterMezo(md, kulcs) {
-  const sor = String(md || '').split('\n').find(l => l.startsWith(kulcs + ':')) || '';
-  return sor.slice(kulcs.length + 1).trim().replace(/^["']|["']$/g, '');
-}
 function sajatHirek() {
-  if (_hirekCache) return _hirekCache;
-  const dir = join(ROOT, 'content', 'articles');
-  const ki = [];
-  try {
-    for (const f of readdirSync(dir).filter(x => x.startsWith('ARTICLE_') && x.endsWith('.json'))) {
-      try {
-        const d = JSON.parse(readFileSync(join(dir, f), 'utf-8'));
-        if (utmutatoE(f, d)) continue;
-        const md = d.article_markdown || '';
-        ki.push({
-          file: f, title: frontmatterMezo(md, 'title') || d.original_title || '',
-          tool: d._meta?.tool || frontmatterMezo(md, 'tool'), company: d._meta?.company || frontmatterMezo(md, 'company'),
-          publishedAt: d._meta?.published_at || '', md, snippet: d._meta?.source_snippet || ''
-        });
-      } catch { /* sérült cikk: kihagyjuk */ }
-    }
-  } catch { /* nincs mappa */ }
-  _hirekCache = ki;
-  return ki;
+  if (!_hirekCache) {
+    _hirekCache = hirekBetolt({ dir: join(ROOT, 'content', 'articles'), fs: { readdirSync, readFileSync }, join, utmutatoE });
+  }
+  return _hirekCache;
 }
 
 function buildUserPrompt(topic, brandContext, lessons, skills, hirek = '') {

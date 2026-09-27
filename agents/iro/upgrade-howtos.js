@@ -71,6 +71,10 @@ import { HOWTO_RANGE } from '../../core/article-length.js';
 // ── KAPUK (2026-09-08) — lásd a „MI HIÁNYZOTT INNEN" szakaszt lentebb ──
 import { truthGate } from '../../core/truth-gate.js';
 import { felujitasKifogas } from '../../core/upgrade-gate.js';
+// ── FRISSÍTÉS, HA AZ ESZKÖZ VÁLTOZIK (2026-09-27) — core/guide-freshness.js ──
+import { frissitendok, nincsValtozas } from '../../core/guide-freshness.js';
+import { hirekBetolt, hirBlokk } from '../../core/guide-sources.js';
+import { utmutatoE } from '../../core/guide-kind.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..', '..');
@@ -140,6 +144,83 @@ ${md}
 Output the full rewritten article as markdown only — starting with the YAML frontmatter (---). No commentary.`;
 }
 
+// ===================================================================
+// FRISSÍTÉS (2026-09-27, user: „oké") — ha új HÍR jött egy eszközről, a róla
+// szóló régi útmutató az új tényekkel frissül. UGYANAZOK a kapuk (ingyenes +
+// hitelesség-bíró), bukásnál a régi marad. Naponta legfeljebb 1 (költség).
+// A hír-összevonó (cluster) MÁST csinál: több ÚJ hírből EGY új hírcikket ír —
+// a meglévő útmutatókhoz nem nyúl. Ez a rés az, amit ez a lépés betölt.
+// ===================================================================
+function frissitoPrompt(md, hirSzoveg, brandContext) {
+  return `Below is one of our published step-by-step guides, and our own VERIFIED NEWS about the same tool that appeared AFTER the guide was written.
+
+DECIDE FIRST: does the news make anything in the guide OUTDATED or WRONG (a renamed feature, a new requirement, changed availability or plan, a step that now works differently), or add a capability that directly belongs in THIS guide's task?
+- If NOT, output exactly: NO_CHANGE
+- If YES, output the full guide, updated: change only what the news changes, keep everything else as it is (same structure, same YAML frontmatter fields, same title unless the news makes it wrong). Facts only from the news; never invent menus, buttons or screens; a company's claims about itself only attributed ("Google says…"); no comparisons between companies; no links, no "Source:" line.
+${hirSzoveg}
+
+BRAND CONTEXT (must follow):
+${brandContext}
+
+THE GUIDE:
+${md}
+
+Output either NO_CHANGE or the full updated guide as markdown (starting with ---). No commentary.`;
+}
+
+async function frissites(brandContext) {
+  const fm = (md, k) => ((String(md || '').split('\n').find(l => l.startsWith(k + ':')) || '').slice(k.length + 1).trim().replace(/^["']|["']$/g, ''));
+  const utmutatok = [];
+  for (const f of readdirSync(ARTICLES_DIR).filter(x => x.startsWith('ARTICLE_') && x.endsWith('.json'))) {
+    let d; try { d = JSON.parse(readFileSync(join(ARTICLES_DIR, f), 'utf-8')); } catch { continue; }
+    if (!utmutatoE(f, d)) continue;
+    const md = d.article_markdown || '';
+    utmutatok.push({ file: f, title: fm(md, 'title'), tool: d._meta?.tool || fm(md, 'tool'), company: d._meta?.company || fm(md, 'company'), meta: d._meta || {}, data: d, md });
+  }
+  const hirek = hirekBetolt({ dir: ARTICLES_DIR, fs: { readdirSync, readFileSync }, join, utmutatoE });
+  const jeloltek = frissitendok(utmutatok, hirek);
+  console.log(`\n🔄 FRISSÍTÉS (új hír az eszközről): ${jeloltek.length ? jeloltek.length + ' jelölt' : 'nincs teendő ma'}`);
+  let cost = 0;
+  for (const { utmutato: u, hirek: v } of jeloltek) {
+    console.log(`   📰 ${u.title.slice(0, 55)} ← ${v[0].title.slice(0, 50)}`);
+    if (DRY) continue;
+    const r = await ask(frissitoPrompt(u.md, hirBlokk(v), brandContext), { agentName: AGENT_NAME, systemPrompt: SYSTEM, maxTokens: 10000 });
+    cost += (r && r.costUsd) || 0;
+    let text = (r && r.text || '').trim();
+    if (!text) { console.log('   ⏸️  nincs AI-válasz — jövő futáskor újra'); continue; }
+    if (nincsValtozas(text)) {
+      // A hír nem tett semmit elavulttá → megjelöljük, hogy ELLENŐRIZVE (ugyanerre a hírre többé nem kérdezünk rá).
+      u.data._meta = { ...u.data._meta, fresh_checked_at: new Date().toISOString() };
+      writeFileSync(join(ARTICLES_DIR, u.file), JSON.stringify(u.data, null, 2), 'utf-8');
+      console.log('   ✅ a hír nem változtat az útmutatón — érintetlen (ellenőrizve)');
+      continue;
+    }
+    if (/^---(?!\r?\n)/.test(text)) text = text.replace(/^---(?!\r?\n)/, '---\n');
+    const kifogas = felujitasKifogas({ regiMd: u.md, ujMd: text, fedez: coversPromise(text), fedezIndok: `${text.split(/\s+/).length} szó / ${stepCount(text)} lépés` });
+    let why = kifogas ? kifogas.indok : null;
+    if (!why) {
+      const gate = await truthGate({ ...u.data, article_markdown: text }, { ask });
+      cost += gate.cost || 0;
+      if (!gate.pass && gate.hold) { console.log('   ⏸️  hitelesség-bíró nem elérhető — jövő futáskor újra'); continue; }
+      if (!gate.pass) why = `🛡️ IGAZSÁG-KAPU: ${(gate.blockers[0] || 'kitalált állítás').slice(0, 110)}`;
+    }
+    if (why) {
+      // Bukásnál a RÉGI marad; ellenőrzöttnek jelöljük, hogy ne égessük a pénzt ugyanerre újra.
+      u.data._meta = { ...u.data._meta, fresh_checked_at: new Date().toISOString() };
+      writeFileSync(join(ARTICLES_DIR, u.file), JSON.stringify(u.data, null, 2), 'utf-8');
+      console.log(`   ❌ a frissítés nem ment át (${why}) — a RÉGI marad`);
+      continue;
+    }
+    u.data.article_markdown = text;
+    u.data._meta = { ...u.data._meta, fresh_updated_at: new Date().toISOString(), fresh_from: v.map(h => h.file) };
+    writeFileSync(join(ARTICLES_DIR, u.file), JSON.stringify(u.data, null, 2), 'utf-8');
+    const tp = join(TRANS_DIR, u.file);
+    if (existsSync(tp)) { try { unlinkSync(tp); } catch { /* a fordító úgyis újraírja */ } }
+    console.log('   ✅ frissítve az új hír alapján (fordítás újrakérve)');
+  }
+  if (jeloltek.length) console.log(`   💰 frissítés költsége: $${cost.toFixed(4)}`);
+}
+
 function candidates() {
   const out = [];
   for (const f of readdirSync(ARTICLES_DIR).filter(x => x.endsWith('.json'))) {
@@ -160,9 +241,8 @@ async function main() {
   const all = candidates();
   const batch = all.slice(0, LIMIT);
   console.log(`   📋 Felújítandó: ${all.length} | most: ${batch.length}${DRY ? ' (PRÓBA)' : ''}\n`);
-  if (!batch.length) { console.log('   ✅ Nincs több hiányos "hogyan"-cikk.'); return; }
-
   const brandContext = loadBrandContext();
+  if (!batch.length) { console.log('   ✅ Nincs több hiányos "hogyan"-cikk.'); await frissites(brandContext); return; }
   let fixed = 0, failed = 0, cost = 0;
 
   for (const c of batch) {
@@ -244,7 +324,8 @@ async function main() {
   }
 
   console.log('─'.repeat(60));
-  console.log(`📊 FELÚJÍTÓ: ${fixed} kész | ${failed} sikertelen | maradt: ${Math.max(0, all.length - fixed)} | költség $${cost.toFixed(4)}`);
+  console.log(`📊 FELÚJÍTÓ: ${fixed} kész | ${failed} sikertelen | maradt: ${Math.max(0, all.length - fixed)} | költség ${cost.toFixed(4)}`);
+  await frissites(brandContext);
 }
 
 main().catch(e => { console.error('💥 FELÚJÍTÓ HIBA:', e); process.exit(1); });
