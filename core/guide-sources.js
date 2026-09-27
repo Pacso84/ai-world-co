@@ -162,4 +162,26 @@ export function hirekBetolt({ dir, fs, join, utmutatoE }) {
   return ki;
 }
 
-export default { valasztHireket, hirBlokk, hirekBetolt, HIR_MAX, HIR_KOR_NAP };
+/**
+ * „MI ÚJSÁG MOST" blokk a TÉMAVÁLASZTÓNAK (2026-09-27). A 56 napos forgalmi
+ * naplóban a leghosszabb életű útmutató (13 nap, 33 belépő) egy ÉPP DIVATOS
+ * dologról szólt; a többi 1–2 nap alatt elhalt. A témaválasztó eddig csak
+ * „örökzöld" témát kért, és a friss híreinket nem is látta.
+ * @returns {string} üres, ha nincs friss hír
+ */
+export function trendBlokk(hirek, most = Date.now(), { napok = 14, db = 8 } = {}) {
+  const frissek = (hirek || [])
+    .filter(h => most - Date.parse(h.publishedAt || 0) <= napok * NAP)
+    .sort((a, b) => String(b.publishedAt).localeCompare(String(a.publishedAt)))
+    .slice(0, db);
+  if (!frissek.length) return '';
+  const sorok = frissek.map(h => {
+    const rov = (String(h.md || '').match(/^>\s*\*\*In short:?\*\*:?\s*(.+)$/mi) || [])[1] || '';
+    return `- ${h.title}${h.tool ? ` [${h.tool}]` : ''}${rov ? ` — ${rov.slice(0, 160)}` : ''}`;
+  });
+  return `\n\nWHAT IS NEW RIGHT NOW (our own verified news from the last ${napok} days):
+${sorok.join('\n')}
+Make 1-2 of your topics a hands-on "try this new thing" guide built on one of these (use the tool/company it names, and only what the news says it can do); keep the rest evergreen.`;
+}
+
+export default { valasztHireket, hirBlokk, hirekBetolt, trendBlokk, HIR_MAX, HIR_KOR_NAP };

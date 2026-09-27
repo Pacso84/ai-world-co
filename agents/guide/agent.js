@@ -37,7 +37,7 @@ import { skillsBlock } from '../../core/skills.js';
 import { message } from '../../core/ops.js';
 import { HOWTO_RANGE } from '../../core/article-length.js';
 import { blockingIssues } from '../../core/auto-check-codes.js';
-import { valasztHireket, hirBlokk, hirekBetolt } from '../../core/guide-sources.js';
+import { valasztHireket, hirBlokk, hirekBetolt, trendBlokk } from '../../core/guide-sources.js';
 import { utmutatoE } from '../../core/guide-kind.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -437,7 +437,7 @@ async function proposeNewTopics(count, store, brandContext, { generalOnly = fals
 DO NOT repeat or lightly reword any of these EXISTING topics:
 ${sample}
 
-Pick fresh, genuinely useful angles people want (e.g. everyday tasks, study, small business, parents, job hunting, accessibility, safety/privacy, mobile apps, voice, images, spreadsheets, email).${generalOnly ? '' : ' Aim for a healthy mix of general and company-specific.'}${coverageHint}${generalRule}
+Pick fresh, genuinely useful angles people want (e.g. everyday tasks, study, small business, parents, job hunting, accessibility, safety/privacy, mobile apps, voice, images, spreadsheets, email).${generalOnly ? '' : trendBlokk(sajatHirek())}${generalOnly ? '' : ' Aim for a healthy mix of general and company-specific.'}${coverageHint}${generalRule}
 
 BRAND CONTEXT:
 ${brandContext}

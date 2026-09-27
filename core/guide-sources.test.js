@@ -6,7 +6,7 @@ import assert from 'assert/strict';
 import { readFileSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
-import { valasztHireket, hirBlokk, HIR_MAX } from './guide-sources.js';
+import { valasztHireket, hirBlokk, trendBlokk, HIR_MAX } from './guide-sources.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 let pass = 0, bukott = 0;
@@ -63,6 +63,17 @@ t('a blokk: tényalap-utasítás, UI csak ha a szöveg megnevezi, a hivatalos ki
   assert.match(b, /Name a button, menu or screen ONLY if these texts name it/);
   assert.match(b, /OFFICIAL EXCERPT TEXT/);
   assert.ok(!/^---/m.test(b.split('FACT BASE')[1]), 'a frontmatter bekerült a blokkba');
+});
+
+t('„mi újság most" blokk: csak friss (≤14 nap) hírek, legújabb elöl, a „próbáld ki" kéréssel', () => {
+  const b = trendBlokk(HIREK, MOST);
+  assert.match(b, /WHAT IS NEW RIGHT NOW/);
+  assert.match(b, /Make 1-2 of your topics a hands-on "try this new thing" guide/);
+  assert.ok(b.indexOf('Parallel AI Agents') < b.indexOf('How to Use Voice Mode'), 'nem a legújabb áll elöl');
+  assert.ok(!/Old but Paired|New Accents/.test(b), 'régi hír került a trend-blokkba');
+  assert.equal(trendBlokk([], MOST), '');
+  const tema = readFileSync(join(ROOT, 'agents', 'guide', 'agent.js'), 'utf-8');
+  assert.match(tema, /trendBlokk\(sajatHirek\(\)\)/, 'a témaválasztó nem kapja meg');
 });
 
 t('az útmutató-író TÉNYLEG megkapja (bekötés)', () => {
