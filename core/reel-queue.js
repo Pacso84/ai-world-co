@@ -69,7 +69,10 @@ export function reelMaMar(cikkek, now = Date.now()) {
  */
 export function kovetkezoReel(cikkek, now = Date.now(), opts = {}) {
   if (!Array.isArray(cikkek) || !cikkek.length) return null;
-  if (reelMaMar(cikkek, now)) return null;             // napi egy, és kész
+  // NAPI KERET (2026-09-27, user: napi 2 — „ha belefér"; a Make-keret ~660/1000).
+  // Kapcsoló nélkül a régi viselkedés: napi egy.
+  const napiMax = Number.isFinite(opts.napiMax) ? opts.napiMax : 1;
+  if (maiReelCikkek(cikkek, now).length >= napiMax) return null;
 
   const alkalmas = typeof opts.alkalmas === 'function' ? opts.alkalmas : () => true;
   // CSAK FRISS (2026-09-27, user: „a lemaradásokat töröljük, csak a frissek menjenek,
@@ -142,7 +145,13 @@ export default { reelMaMar, kovetkezoReel, reelForma, VALTOZATOSSAG_ABLAK };
  * @returns {object|null}
  */
 export function maiReelCikk(cikkek, now = Date.now()) {
-  if (!Array.isArray(cikkek)) return null;
+  return maiReelCikkek(cikkek, now)[0] || null;
+}
+
+/** A MA kiment ÖSSZES Reel cikke (napi 2 óta több is lehet), a korábbi elöl. */
+export function maiReelCikkek(cikkek, now = Date.now()) {
+  if (!Array.isArray(cikkek)) return [];
   const ma = new Date(now).toISOString().slice(0, 10);
-  return cikkek.find(c => napja(c?.reel_at) === ma) || null;
+  return cikkek.filter(c => napja(c?.reel_at) === ma)
+    .sort((a, b) => String(a.reel_at).localeCompare(String(b.reel_at)));
 }

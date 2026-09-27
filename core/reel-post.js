@@ -53,6 +53,9 @@ export const MIN_VIDEO_BAJT = 100000;
 // CSAK FRISS ÚTMUTATÓBÓL REEL (2026-09-27, user: „a régiek már elavultak, azokat hagyjuk").
 // Ugyanaz a 7 nap, ami a posztoknál a „friss" (core/social-published.js FRESH_DAYS).
 export const REEL_FRISS_NAP = 7;
+// NAPI 2 REEL (2026-09-27, user: „ha belefér, rendben") — futásonként legfeljebb 1 új;
+// Make-keret: friss posztok ~540 + 2 Reel ~120 = ~660/1000. Az Instagram marad napi 1.
+export const REEL_NAPI = 2;
 
 export function reelVideoUrl(slug, site = SITE) {
   const s = String(slug || '');
@@ -436,7 +439,7 @@ async function prepare(ROOT, join) {
   const { cardsFromGuide, renderVideo } = await import('./short-video.js');
   const { promoKell, promoKartyak, promoKepUtak, PROMO_SLUG } = await import('./packs-reel.js');
 
-  const { maiReelCikk } = await import('./reel-queue.js');
+  const { maiReelCikkek } = await import('./reel-queue.js');
   const cikkek = await cikkekBetolt(ROOT, join);
 
   // ── CSOMAG-REKLÁM (2026-09-20) ────────────────────────────────────
@@ -488,7 +491,8 @@ async function prepare(ROOT, join) {
   // ALKALMAS-E? Csak a markdown ismeretében derül ki (kell 3+ lépés).
   const valasztott = kovetkezoReel(cikkek, Date.now(), {
     alkalmas: c => !!cardsFromGuide(c.md).cards,
-    maxKorNap: REEL_FRISS_NAP          // 2026-09-27, user: csak a friss útmutatóból Reel
+    maxKorNap: REEL_FRISS_NAP,         // 2026-09-27, user: csak a friss útmutatóból Reel
+    napiMax: REEL_NAPI
   });
   if (!valasztott) {
     // ── A MAI VIDEÓ ÉLETBEN TARTÁSA (2026-08-26) ──────────────────
@@ -510,16 +514,18 @@ async function prepare(ROOT, join) {
     // Az újragyártás INGYENES (ffmpeg + helyi TTS, ~26 mp), ezért inkább
     // minden futásban meglegyen, mint hogy egy elmulasztott Instagram-poszt
     // egy egész napba kerüljön.
-    const mai = maiReelCikk(cikkek);
-    if (mai) {
+    // Napi 2 óta a nap MINDEN Reeljét életben tartjuk (a hiányzó videót újragyártjuk).
+    const maiak = maiReelCikkek(cikkek);
+    let utolsoBetu = null;
+    for (const mai of maiak) {
       const kiDir0 = join(ROOT, 'website', 'assets', 'video', 'shorts');
       const utvonal = join(kiDir0, mai.slug + '.mp4');
       if (existsSync(utvonal)) {
-        console.log('💤 Reel: ma már ment, a videó megvan — nincs teendő.');
-        return;
+        console.log('💤 Reel: ma már ment, a videó megvan — nincs teendő (' + mai.slug + ').');
+        continue;
       }
       const { cards } = cardsFromGuide(mai.md);
-      if (!cards) { console.log('💤 Reel: ma már ment (a videó nem gyártható újra).'); return; }
+      if (!cards) { console.log('💤 Reel: ma már ment (a videó nem gyártható újra).'); continue; }
       console.log('♻️  Reel: ma már ment, de a videó hiányzik — újragyártom, hogy kint maradjon.');
       mkdirSync(kiDir0, { recursive: true });
       // A `cover` 2026-09-17-én megszűnt: a tábla háttere egybefüggő
@@ -540,9 +546,10 @@ async function prepare(ROOT, join) {
       // körül van). Vagyis a jelentést látó futásban MINDIG ez az
       // újragyártó ág fut — ha itt eldobnánk a leletet, a betű-őrszem
       // némán soha nem szólalna meg.
-      return { betu: r0.betu };
+      utolsoBetu = r0.betu;
     }
-    console.log('💤 Reel: ma már ment, vagy nincs alkalmas útmutató — kihagyom.');
+    if (utolsoBetu) return { betu: utolsoBetu };
+    if (!maiak.length) console.log('💤 Reel: nincs alkalmas friss útmutató — kihagyom.');
     return;
   }
 

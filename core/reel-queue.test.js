@@ -13,7 +13,7 @@
 
 import assert from 'assert/strict';
 import { readFileSync } from 'fs';
-import { reelMaMar, kovetkezoReel, maiReelCikk, reelForma } from './reel-queue.js';
+import { reelMaMar, kovetkezoReel, maiReelCikk, maiReelCikkek, reelForma } from './reel-queue.js';
 
 let pass = 0;
 const t = (n, f) => { f(); pass++; console.log('  ✅ ' + n); };
@@ -268,6 +268,21 @@ t('🔑 CSAK FRISS: a maxKorNap-nál régebbi útmutatóból nincs Reel (user 09
   assert.match(src, /maxKorNap: REEL_FRISS_NAP/, 'a Reel-küldő nem kér csak frisset');
   const buf = readFileSync(new URL('../agents/social/buffer-poster.js', import.meta.url), 'utf-8');
   assert.match(buf, /selectSocialBatch\(q, keret, \{ csakFriss: true \}\)/, 'a Threads még a hátralékot üríti');
+});
+
+t('🔑 NAPI 2 REEL: a második is mehet, a harmadik nem; kapcsoló nélkül marad napi 1 (09-27)', () => {
+  const ma = new Date(MOST - 3600e3).toISOString();
+  const ut = (slug, reel = '') => ({ slug, type: 'guide', published_at: new Date(MOST - 2 * 864e5).toISOString(), reel_at: reel });
+  const egyMent = [ut('a', ma), ut('b'), ut('c')];
+  assert.ok(kovetkezoReel(egyMent, MOST, { napiMax: 2 }), 'a második napi Reel nem mehet');
+  assert.equal(kovetkezoReel(egyMent, MOST), null, 'kapcsoló nélkül is mehetne második');
+  const ketMent = [ut('a', ma), ut('b', ma), ut('c')];
+  assert.equal(kovetkezoReel(ketMent, MOST, { napiMax: 2 }), null, 'harmadik Reel is menne');
+  assert.deepEqual(maiReelCikkek(ketMent, MOST).map(c => c.slug).sort(), ['a', 'b']);
+  const src = readFileSync(new URL('./reel-post.js', import.meta.url), 'utf-8');
+  assert.match(src, /export const REEL_NAPI = 2;/);
+  assert.match(src, /napiMax: REEL_NAPI/);
+  assert.match(src, /for \(const mai of maiak\)/, 'a nap minden Reeljét életben kell tartani');
 });
 
 console.log('\n✅ reel-queue.test: mind a ' + pass + ' eset rendben');
