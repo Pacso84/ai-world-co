@@ -214,7 +214,7 @@ async function main() {
       source_link: SITE_URL,
       status: 'awaiting-review'
     },
-    article_markdown: response.text,
+    article_markdown: response.text.trimStart(),   // a selfCheck trimStart-tal nézi; a fordító nem (09-27: "\n\n---")
     original_title: exactTitle
   };
   writeFileSync(join(DRAFTS_DIR, filename), JSON.stringify(out, null, 2), 'utf-8');

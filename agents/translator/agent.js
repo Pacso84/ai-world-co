@@ -116,7 +116,9 @@ BODY:
 
 // Frontmatter szétválasztás + érték-kiolvasás
 function splitFrontmatter(md) {
-  const m = md.match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/);
+  // trimStart (2026-09-28): a 09-27-i heti összefoglaló "\n\n---"-tal kezdődött → némán
+  // nem fordítódott le („nincs frontmatter-e"). A kimenet-ellenőrzés (lent) már eddig is így nézte.
+  const m = String(md || '').trimStart().match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/);
   return m ? { fm: m[1], body: m[2] } : null;
 }
 function fmValue(fm, key) {
