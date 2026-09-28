@@ -1285,15 +1285,6 @@
   ],
   "messages": [
     {
-      "id": "m178921520637239",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "3 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-09-12T12:13:26.372Z"
-    },
-    {
       "id": "m178926533682835",
       "from": "designer",
       "to": "team",
@@ -2637,6 +2628,15 @@
       "text": "6 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-09-28T02:48:53.785Z"
+    },
+    {
+      "id": "m179061205051998",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Draft a Complete FAQ Page for Your Website with Ch\" — The guide is still factually accurate overall — ChatGPT free tier still exists, the process described is still valid. However, one example uses a potentially real domain (ecosip.com.au) which violates the style rule that fictional examples should use example.com.",
+      "ref": "ARTICLE_GUIDE_draft-a-complete-faq-page-for-your-website-with-chatgpt.json",
+      "at": "2026-09-28T16:14:10.519Z"
     }
   ]
 }
