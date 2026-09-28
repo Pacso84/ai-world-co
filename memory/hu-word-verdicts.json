@@ -8,6 +8,7 @@
     "accountot",
     "adagjaid",
     "adagod",
+    "adagok",
     "adagokat",
     "adagokban",
     "adagokhoz",
@@ -78,6 +79,7 @@
     "alapanyagokból",
     "alapanyagokhoz",
     "alapanyagokkal",
+    "alapanyagoknak",
     "alapanyagokra",
     "alapanyagokról",
     "alapcsomagokat",
@@ -330,6 +332,7 @@
     "chatbotól",
     "chatgpt",
     "checkboxok",
+    "checkboxokat",
     "checkekről",
     "checklistaként",
     "checklistben",
@@ -500,6 +503,7 @@
     "csoportcsetben",
     "csv-ként",
     "csven",
+    "csúcmodellt",
     "csúcs-claude-ról",
     "cátmezőbe",
     "cátmeződ",
@@ -777,6 +781,7 @@
     "ezzal",
     "facebook",
     "fado-előadást",
+    "faktorod",
     "faktorokat",
     "faktorokhoz",
     "falevelről",
@@ -1170,6 +1175,7 @@
     "iteratívan",
     "itunesba",
     "izakayát",
+    "izerősítők",
     "jailbreakekről",
     "jane",
     "janos",
@@ -1217,6 +1223,7 @@
     "jére",
     "jével",
     "jócselekedethez",
+    "jószándékú",
     "jüket",
     "kamerakezelőfelületre",
     "kampuszon",
@@ -1255,6 +1262,7 @@
     "kiscukrászda",
     "kislistát",
     "kisméretű",
+    "kitaláltól",
     "kitöltőszöveget",
     "klikkbait",
     "klikkbaitok",
@@ -1319,6 +1327,7 @@
     "kávéspoharat",
     "képanyagok",
     "képernyőmegosztásos",
+    "képernyőmenthetsz",
     "képességet",
     "képgenerátorod",
     "képgenerátorodat",
@@ -1559,6 +1568,7 @@
     "megossd",
     "megosztanivaló",
     "megrezdulsz",
+    "megvennivaló",
     "megvennivalókról",
     "mehívót",
     "melbourne",
@@ -1812,6 +1822,7 @@
     "omni-modal",
     "onboarding",
     "onboardingnál",
+    "onsenhez",
     "onzenhez",
     "openai",
     "operátorokat",
@@ -1871,6 +1882,7 @@
     "pilotprojekttel",
     "pináta",
     "pipeline-ból",
+    "pipáldobozokkal",
     "pitchekhez",
     "pitchekre",
     "pitchhez",
@@ -2262,6 +2274,7 @@
     "supportjegyek",
     "supportjára",
     "supportos",
+    "suttomban",
     "sydney",
     "sync-ről",
     "syncről",
@@ -2716,6 +2729,7 @@
     "walkie",
     "webhosztingért",
     "webináriumhoz",
+    "webmail",
     "weboldalszöveget",
     "westpac",
     "whooshhoz",
@@ -4078,6 +4092,11 @@
     "őszinta": {
       "correct": "őszinte",
       "at": "2026-09-25",
+      "mondattal": true
+    },
+    "hirlevel": {
+      "correct": "hírlevél",
+      "at": "2026-09-28",
       "mondattal": true
     }
   },
@@ -5508,11 +5527,21 @@
       "correct": "megjegyzésestül",
       "at": "2026-09-27",
       "mondattal": true
+    },
+    "esre": {
+      "correct": "érére",
+      "at": "2026-09-28",
+      "mondattal": true
+    },
+    "önéletrajzodatírod": {
+      "correct": "önéletrajzodat írod",
+      "at": "2026-09-28",
+      "mondattal": true
     }
   },
   "scan": {
-    "at": "2026-09-27",
-    "files": 1042,
-    "candidates": 2
+    "at": "2026-09-28",
+    "files": 1047,
+    "candidates": 17
   }
 }
