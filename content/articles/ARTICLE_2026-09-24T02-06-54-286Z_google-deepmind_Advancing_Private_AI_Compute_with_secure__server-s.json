@@ -1,0 +1,64 @@
+{
+  "_meta": {
+    "written_at": "2026-09-28T02:30:27.305Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00807468,
+    "original_draft": "2026-09-24T02-06-54-286Z_google-deepmind_Advancing_Private_AI_Compute_with_secure__server-s.json",
+    "source_id": "google-deepmind",
+    "source_name": "Google DeepMind (hivatalos)",
+    "source_link": "https://deepmind.google/blog/advancing-private-ai-compute-with-secure-server-side-memory/",
+    "source_links": [
+      "https://deepmind.google/blog/advancing-private-ai-compute-with-secure-server-side-memory/"
+    ],
+    "source_snippet": "Introducing private, server-side memory to Private AI Compute for personal AI.",
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "published_at": "2026-09-28T02:31:51.865Z",
+    "slug": "what-private-ai-compute-with-server-side-memory-means-for-everyday-use",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 700
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured explainer that teaches readers about Private AI Compute and server-side memory in plain, friendly language. The hook works, terms are clearly defined (cloud-scale, server-side memory), honest limits are appropriately flagged, and the 'What this means for you' section gives practical advice. No prohibited content, no clichés, and the factual claims are properly attributed to the announcement.",
+      "_aiCost": 0.00113925,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-09-28T02:33:52.070Z",
+    "guide_worthy": false,
+    "pairing_reason": "No specific named product exists — this is an explainer about a general concept (Private AI Compute) with no ship date or usable product",
+    "image_v": 2,
+    "image_at": "2026-09-28T02:37:03.198Z",
+    "seo": {
+      "meta_description": "Private AI Compute's new server-side memory lets AI assistants remember your preferences while keeping your personal data protected during processing.",
+      "keywords": [
+        "private AI compute",
+        "server-side AI memory",
+        "AI assistant privacy",
+        "personal AI data protection",
+        "what is private AI compute",
+        "AI assistants remember preferences",
+        "private server AI processing"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more specific use cases or examples of how everyday users benefit from private server-side memory in AI assistants",
+        "Include the exact name of the update or feature if available in the source material",
+        "Consider adding subheadings that target specific long-tail queries like 'how to keep AI conversations private'"
+      ],
+      "optimised_at": "2026-09-28T02:37:45.966Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"What Private AI Compute with Server-Side Memory Means for Everyday Users\"\nsubtitle: \"A new update adds private memory to server-side AI — promising assistants that know you without exposing you. Here's what actually changed.\"\ncategory: \"explainer\"\naudience: \"personal\"\nread_time_minutes: 3\ntags: [\"privacy\", \"personal-ai\", \"ai-memory\"]\n---\n\n# What Private AI Compute with Server-Side Memory Means for Everyday Users\n\n> **In short:** A new update adds \"private, server-side memory\" to Private AI Compute, meaning personal AI assistants may soon remember your preferences while keeping your data protected during processing.\n\nPersonal AI assistants have a memory problem — and it's not the kind you'd guess. A new update to a service called **Private AI Compute** (a system designed to run AI for you on powerful remote computers while shielding your personal data) aims to fix that, and the change matters if you care about your AI knowing you without exposing you.\n\n## What \"Private AI Compute\" actually means\n\n\"Private AI Compute\" is a category of AI service built to process your requests on big shared servers in a data center, while keeping your personal data from being seen or stored in plain text along the way. The trade-off it's trying to solve is simple: you want your AI to be smart enough to run on serious hardware, but you don't want that hardware learning your secrets.\n\nThe goal is familiar — give you the benefits of cloud-scale AI (cloud-scale just means \"running on those big shared computers instead of your phone\") without the usual privacy cost.\n\n## What's new: server-side memory\n\nUntil now, personal AI systems generally had two choices for memory. They could remember things about you **on your device** — safe, but limited, because your phone or laptop isn't as capable as a data center. Or they could remember things **on the company's servers** — more powerful, but harder to keep private.\n\n**Server-side memory** (memory that lives on the company's remote computers, not on your phone) tries to bridge that gap. According to the announcement, Private AI Compute will now store and use what it knows about you on the server side, but in a way that's designed to stay private during processing. In plain English: the AI remembers you, the computer does the thinking, and your personal details stay wrapped in privacy protections the whole time.\n\nThis matters because the most useful AI assistants are the ones that learn your habits, your work, your writing style. Without memory, every conversation starts from zero.\n\n## The honest limits\n\nPrivacy-focused AI sounds great in a press release, but here's what the announcement doesn't tell us yet:\n\n- No date has been given for when regular users will see this in action, or whether existing personal AI products will be updated automatically.\n- \"Private\" doesn't mean \"anonymous\" — the company still runs the servers and sets the rules. The protection is technical, not absolute.\n- More capable memory usually means the AI knows more about you, so it's worth being intentional about what you share with any assistant.\n\n## What this means for you\n\n- **If you use a personal AI assistant today:** Don't assume it remembers you privately yet. Check your settings to see what memory features are active, and turn off anything you're not comfortable with.\n- **If privacy is a top concern for you:** Watch for products that explain *how* they protect your data, not just that they do. Clear data-deletion options and \"end-to-end\" (meaning only you and the AI can read your data) protections are good signs.\n- **If you're curious about the bigger picture:** This is part of a wider shift — AI assistants are moving from one-off tools to long-term companions that know you. How that \"knowing\" is handled will shape how much you trust them.\n\n## Wrap-up\n\nPersonal AI is getting more personal. The step toward private server-side memory inside Private AI Compute is small in announcement form, but it's part of a bigger story: AI that actually knows you, without the usual privacy cost. For now, the best move is simple — pay attention to what your AI is allowed to remember, and don't share anything you'd be uncomfortable seeing in a leak.",
+  "original_title": "Advancing Private AI Compute with secure, server-side memory"
+}

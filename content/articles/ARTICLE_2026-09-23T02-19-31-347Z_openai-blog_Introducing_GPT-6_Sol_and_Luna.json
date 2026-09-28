@@ -1,0 +1,66 @@
+{
+  "_meta": {
+    "written_at": "2026-09-28T02:33:26.936Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.01104828,
+    "original_draft": "2026-09-23T02-19-31-347Z_openai-blog_Introducing_GPT-6_Sol_and_Luna.json",
+    "source_id": "openai-blog",
+    "source_name": "OpenAI Blog (hivatalos)",
+    "source_link": "https://openai.com/index/introducing-gpt-6-sol-and-luna",
+    "source_links": [
+      "https://openai.com/index/introducing-gpt-6-sol-and-luna"
+    ],
+    "source_snippet": "Meet GPT-6 Sol and Luna, two models that bring frontier intelligence to everyday work with different balances of capability and cost.",
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "rejected_at": "2026-09-28T02:31:34.865Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 888
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Solid, timely article that teaches readers to spot fake AI announcements. Friendly tone, clear structure with hook, explanations, and practical checklist. Correctly identifies the fake URL pattern and explains technical terms accessibly. No prohibited content, no British spellings, no clichés. Ready to publish.",
+      "_aiCost": 0.0014835,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "This article describes GPT-6 Sol and Luna as if OpenAI announced them, but these models do not exist. OpenAI's latest releases are GPT-4o variants; there is no GPT-6 family, no Sol or Luna variants, and no such announcement. The cited source URL is also not a valid OpenAI page format. Do not publish until a real, confirmed source is provided.",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-09-23T02-19-31-347Z_openai-blog_Introducing_GPT-6_Sol_and_Luna.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-09-28T02:35:48.306Z",
+    "slug": "what-we-actually-know-about-gpt-6-sorting-fact-from-rumor",
+    "image_v": 2,
+    "image_at": "2026-09-28T02:36:49.375Z",
+    "seo": {
+      "meta_description": "OpenAI hasn't announced GPT-6. Names 'Sol' and 'Luna' aren't real. Learn how to verify AI news and spot fake announcements in under a minute.",
+      "keywords": [
+        "GPT-6 release date",
+        "GPT-6 rumors",
+        "is GPT-6 real",
+        "how to spot fake AI news",
+        "OpenAI GPT-6 announcement",
+        "verify AI news",
+        "AI news fact check"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add the publication date to show the article is current and up-to-date",
+        "Consider adding subheadings to improve readability and SEO structure",
+        "Include links to OpenAI's official blog or announcement page for readers who want to verify claims themselves"
+      ],
+      "optimised_at": "2026-09-28T02:37:36.589Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"What We Actually Know About GPT-6: Sorting Fact from Rumor\"\nsubtitle: \"OpenAI has not announced a GPT-6 model family, and 'Sol' and 'Luna' aren't names OpenAI uses — here's how to check AI news like this yourself.\"\ncategory: \"ai-news\"\naudience: \"personal\"\nread_time_minutes: 4\ntags: [\"openai\", \"gpt-6\", \"ai-models\", \"fact-checking\"]\n---\n\n# What We Actually Know About GPT-6: Sorting Fact from Rumor\n\n> **In short:** OpenAI has not announced a GPT-6 model family, and \"Sol\" and \"Luna\" are not names OpenAI uses for any product. If you've seen headlines about a \"GPT-6 Sol and Luna\" launch, that announcement isn't real — here's how to spot AI news that isn't, in under a minute.\n\nYou've probably seen a headline recently: something about OpenAI announcing GPT-6 in two versions called Sol and Luna. Maybe it looked convincing — a clean logo, a date, a quote from a CEO. But here's the thing: OpenAI has not made that announcement. The names \"Sol\" and \"Luna\" don't appear on OpenAI's official site. And the URL format used in those headlines doesn't match how OpenAI actually publishes news. So why are these stories circulating? And how do you tell a real AI announcement from a made-up one before you share it, plan around it, or get your hopes up?\n\n## What OpenAI has actually said recently\n\nOpenAI's public model lineup, as of writing, centers on its GPT-4o family (a multimodal model — meaning it can handle text, images, and audio together) and its reasoning-focused models. The company publishes updates on its official blog at openai.com/blog, and any real flagship launch would show up there first — usually alongside a post in its developer documentation and rollout inside ChatGPT and the API (a way for developers to plug OpenAI's models into their own apps). When OpenAI does ship a new top-of-the-line model, you typically see a system card (a document describing what the model can do and where it falls short), a research paper, and coverage from outlets OpenAI itself invites to the announcement. If none of that happened, the launch didn't happen — no matter how many screenshots or quotes are floating around.\n\n## Why these rumors spread anyway\n\nA few reasons fake AI announcements travel far:\n\n- **The version name fits a familiar pattern.** \"GPT-6\" sounds like the obvious next step after \"GPT-5,\" so it's easy to assume it exists.\n- **Custom sub-names are common in tech.** Companies like Anthropic and Google use names like Sonnet or Gemini for model variants, so \"Sol and Luna\" feels plausible.\n- **AI images are easy to make.** A polished render of a fake product page takes a few minutes with today's image tools, and most people don't stop to reverse-image-search it.\n- **AI news moves fast.** People share based on headlines, not on whether they checked the source.\n\nNone of this means anyone sharing the rumor is trying to deceive you. Most of the time it's a chain of well-meaning reposts. But the result is the same: a model that doesn't exist gets treated as news.\n\n## How to spot a fake AI product announcement in 60 seconds\n\nA quick gut-check before you believe or share:\n\n- **Go to the company's official site directly.** Type openai.com/blog (or anthropic.com/news, or blog.google) into your browser. If the announcement isn't there, it isn't real.\n- **Check the URL format in the headline.** OpenAI uses `/blog/` for posts, not `/index/` or made-up paths. Same for most major AI companies.\n- **Look for a technical report.** A real new model almost always comes with a system card or research paper. No document, no model.\n- **Search the company's social channels.** OpenAI, Anthropic, and Google all post major launches on X and LinkedIn within minutes.\n- **Wait 24 hours.** Real announcements get covered widely and consistently; fakes usually stay confined to a few accounts that all link back to the same original post.\n\nIf two of those checks fail, treat the news as unconfirmed.\n\n## What this means for you\n\n- **If you've seen the GPT-6 Sol and Luna headlines:** You can safely ignore them. There's no product to wait for, no release date to mark on your calendar, and no pricing to compare.\n- **If you're planning around AI for work or study:** Use what's actually available today. Current models from OpenAI, Anthropic, and Google already handle drafting, summarizing, planning, and researching at a high level. You don't need to wait for a model that doesn't exist to get the benefits.\n- **If you want to stay current without getting fooled:** Bookmark the official blogs of the AI tools you use and check them once a week. Anything that matters will be there, with primary-source details you can trust.\n- **If you build with AI in your job:** Treat every viral AI announcement as a fact-check trigger, not a signal to act on. A bad call here can mean wasted spend, broken client promises, or features built around something that never ships.\n\n## Wrap-up\n\nNo GPT-6 has been announced. \"Sol\" and \"Luna\" are not official model names. The fastest way to stay informed without being misled is to go straight to the source — the company's own blog — before you share, plan, or build around a story. That one habit protects you from every AI rumor, not just this one.",
+  "original_title": "Introducing GPT-6 Sol and Luna"
+}

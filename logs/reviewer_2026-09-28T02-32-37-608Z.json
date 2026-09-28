@@ -1,0 +1,41 @@
+{
+  "started_at": "2026-09-28T02:31:17.427Z",
+  "total": 4,
+  "passed": 3,
+  "failed": 1,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.007003302,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-09-23T02-19-31-347Z_openai-blog_Introducing_GPT-6_Sol_and_Luna.json",
+      "rejected": "REJECTED_2026-09-23T02-19-31-347Z_openai-blog_Introducing_GPT-6_Sol_and_Luna.json",
+      "decision": "FAIL",
+      "score": 2,
+      "cost_usd": 0.0017835
+    },
+    {
+      "writer": "WRITER_2026-09-24T02-06-54-286Z_google-deepmind_Advancing_Private_AI_Compute_with_secure__server-s.json",
+      "article": "ARTICLE_2026-09-24T02-06-54-286Z_google-deepmind_Advancing_Private_AI_Compute_with_secure__server-s.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.00113925
+    },
+    {
+      "writer": "WRITER_2026-09-24T02-07-11-499Z_nvidia-blog_Sakeena_Fiza_Helps_NVIDIA_Hardware_Succeed_at_Scal.json",
+      "article": "ARTICLE_2026-09-24T02-07-11-499Z_nvidia-blog_Sakeena_Fiza_Helps_NVIDIA_Hardware_Succeed_at_Scal.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.00107415
+    },
+    {
+      "writer": "WRITER_2026-09-27T02-41-21-539Z_aiworld-editorial_This_Week_in_AI.json",
+      "article": "ARTICLE_2026-09-27T02-41-21-539Z_aiworld-editorial_This_Week_in_AI.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.00138285
+    }
+  ],
+  "finished_at": "2026-09-28T02:32:37.608Z",
+  "duration_seconds": 80.181
+}

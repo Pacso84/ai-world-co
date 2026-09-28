@@ -1,15 +1,4 @@
 {
-  "2026-09-10": [
-    {
-      "at": "2026-09-10T02:07:04.288Z",
-      "file": "WRITER_2026-09-10T01-59-45-639Z_picsart_What_is_Lyria_3_5__The_AI_model_that_writes_full_s.json",
-      "action": "block",
-      "reasons": [
-        "Lyria 3.5 is presented as a real, named model with specific version number and features. 'Lyria 3.5' does not appear on the verified-real product list, and the specific claims — that it generates complete songs (not loops), accepts image prompts, produces tracks with intro/verses/chorus structure, and returns tracks 'a couple minutes long' — are presented as established facts rather than speculative or future developments. Without verification that this specific model and these specific capabilities exist, treating them as real in the article constitutes a fabrication."
-      ],
-      "confidence": 6
-    }
-  ],
   "2026-09-11": [
     {
       "at": "2026-09-11T02:01:51.643Z",
@@ -349,6 +338,16 @@
         "The article states Recraft's V4.1 Flash 'can return a finished picture so quickly that you can react, tweak your prompt, and try again' and that 'some models take 30 seconds to a couple of minutes. The fastest ones come back so quickly…' — these specific timing claims and the trade-off characterization (softer/less photorealistic details, narrower style range, worse text-in-images) are not supported by the PicsArt source, which the article fails to even cite. The source only announces V4.1 Flash as 'the fastest image model on the market' without quantifying speeds or listing specific trade-offs."
       ],
       "confidence": 7
+    }
+  ],
+  "2026-09-28": [
+    {
+      "at": "2026-09-28T02:33:45.839Z",
+      "file": "WRITER_2026-09-23T02-19-31-347Z_openai-blog_Introducing_GPT-6_Sol_and_Luna.json",
+      "action": "hold",
+      "reasons": [
+        "AI-bíró nem elérhető (érthetetlen AI-válasz: credible mező hiányzik) — visszatartva a következő futásig"
+      ]
     }
   ]
 }

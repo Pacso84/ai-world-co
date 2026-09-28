@@ -1,118 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t179025531338071",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-24T13:08:33.380Z",
-      "updated": "2026-09-24T13:08:38.562Z"
-    },
-    {
-      "id": "t179025531856446",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-09-24T13:08:38.564Z",
-      "updated": "2026-09-24T13:08:59.776Z"
-    },
-    {
-      "id": "t179030300472917",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-09-25T02:23:24.729Z",
-      "updated": "2026-09-25T02:23:24.905Z"
-    },
-    {
-      "id": "t179030300490718",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-09-25T02:23:24.907Z",
-      "updated": "2026-09-25T02:23:56.398Z"
-    },
-    {
-      "id": "t179030303640043",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-09-25T02:23:56.400Z",
-      "updated": "2026-09-25T02:24:48.094Z"
-    },
-    {
-      "id": "t179030308809684",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-09-25T02:24:48.096Z",
-      "updated": "2026-09-25T02:28:24.237Z"
-    },
-    {
-      "id": "t179030330423921",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-25T02:28:24.239Z",
-      "updated": "2026-09-25T02:29:46.066Z"
-    },
-    {
-      "id": "t179030338606859",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-09-25T02:29:46.068Z",
-      "updated": "2026-09-25T02:34:03.053Z"
-    },
-    {
-      "id": "t179030364305599",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-25T02:34:03.055Z",
-      "updated": "2026-09-25T02:34:48.421Z"
-    },
-    {
-      "id": "t179030368842496",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-09-25T02:34:48.424Z",
-      "updated": "2026-09-25T02:35:19.295Z"
-    },
-    {
-      "id": "t179030371934931",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-09-25T02:35:19.349Z",
-      "updated": "2026-09-25T02:36:41.303Z"
-    },
-    {
-      "id": "t179030380130556",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-25T02:36:41.305Z",
-      "updated": "2026-09-25T02:37:31.735Z"
-    },
-    {
-      "id": "t179030385178536",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-25T02:37:31.785Z",
-      "updated": "2026-09-25T02:38:17.148Z"
-    },
-    {
-      "id": "t179030389715065",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-09-25T02:38:17.150Z",
-      "updated": "2026-09-25T02:39:20.240Z"
-    },
-    {
       "id": "t179030396024295",
       "title": "Run designer",
       "status": "done",
@@ -479,33 +367,121 @@
       "agent": "publisher",
       "created": "2026-09-27T02:40:36.427Z",
       "updated": "2026-09-27T02:40:57.823Z"
+    },
+    {
+      "id": "t179056249681812",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-09-28T02:28:16.818Z",
+      "updated": "2026-09-28T02:28:16.994Z"
+    },
+    {
+      "id": "t179056249699642",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-09-28T02:28:16.996Z",
+      "updated": "2026-09-28T02:28:42.445Z"
+    },
+    {
+      "id": "t179056252244746",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-09-28T02:28:42.447Z",
+      "updated": "2026-09-28T02:28:42.654Z"
+    },
+    {
+      "id": "t179056252265642",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-09-28T02:28:42.656Z",
+      "updated": "2026-09-28T02:31:17.252Z"
+    },
+    {
+      "id": "t179056267725321",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-28T02:31:17.253Z",
+      "updated": "2026-09-28T02:32:37.619Z"
+    },
+    {
+      "id": "t179056275762154",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-09-28T02:32:37.621Z",
+      "updated": "2026-09-28T02:33:26.948Z"
+    },
+    {
+      "id": "t179056280695051",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-28T02:33:26.950Z",
+      "updated": "2026-09-28T02:33:45.849Z"
+    },
+    {
+      "id": "t179056282585111",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-09-28T02:33:45.851Z",
+      "updated": "2026-09-28T02:34:08.183Z"
+    },
+    {
+      "id": "t17905628482433",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-09-28T02:34:08.243Z",
+      "updated": "2026-09-28T02:35:12.942Z"
+    },
+    {
+      "id": "t179056291294434",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-09-28T02:35:12.944Z",
+      "updated": "2026-09-28T02:36:43.943Z"
+    },
+    {
+      "id": "t17905630039978",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-28T02:36:43.997Z",
+      "updated": "2026-09-28T02:37:32.437Z"
+    },
+    {
+      "id": "t179056305243812",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-09-28T02:37:32.438Z",
+      "updated": "2026-09-28T02:38:25.942Z"
+    },
+    {
+      "id": "t179056310594499",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-09-28T02:38:25.944Z",
+      "updated": "2026-09-28T02:38:32.408Z"
+    },
+    {
+      "id": "t17905631124099",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-09-28T02:38:32.409Z",
+      "updated": "2026-09-28T02:38:57.657Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178891991068277",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The lineup looks solid and ready to publish — you have a nice mix of practical emails, professional docs, and heartfelt personal messages that show everyday people how AI can help with real life tasks",
-      "agent": "publisher",
-      "at": "2026-09-09T02:11:50.682Z",
-      "loud": false
-    },
-    {
-      "id": "n178891992534761",
-      "level": "success",
-      "text": "3 hír + 2 útmutató publikálva (költség: $0.0373).",
-      "agent": "ceo",
-      "at": "2026-09-09T02:12:05.347Z",
-      "loud": false
-    },
-    {
-      "id": "n178891997034844",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (nincs meg az útmutató-szerkezet): \"Creating a polished README with GitHub",
-      "agent": "fact-check",
-      "at": "2026-09-09T02:12:50.348Z",
-      "loud": false
-    },
     {
       "id": "n178895738735872",
       "level": "info",
@@ -1281,55 +1257,33 @@
       "agent": "ceo",
       "at": "2026-09-27T02:40:57.870Z",
       "loud": false
+    },
+    {
+      "id": "n179056310593292",
+      "level": "info",
+      "text": "SEO: 6 cikk optimalizálva (átlag 7.8/10).",
+      "agent": "seo",
+      "at": "2026-09-28T02:38:25.932Z",
+      "loud": false
+    },
+    {
+      "id": "n179056311819162",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The lineup is solid and ready — it's a practical, everyday mix of AI writing tools covering everything from complaint letters to resumes, which fits your \"AI for everyone\" mission perfectly. A quick n",
+      "agent": "publisher",
+      "at": "2026-09-28T02:38:38.191Z",
+      "loud": false
+    },
+    {
+      "id": "n179056313771034",
+      "level": "success",
+      "text": "4 hír + 2 útmutató publikálva (költség: $0.0882).",
+      "agent": "ceo",
+      "at": "2026-09-28T02:38:57.710Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178921450385615",
-      "from": "guide",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Kell még adat: \"Summarize long web articles in Safari with Apple Intelligence\" — az Ellenőrző tényt/forrást kér, amit nem találhatok ki: UI_CLAIMS_UNSOURCED: 3 konkrét képernyő-feliratot állít tényként forrás nélkül (\"aa\", \"summarize\", \"show reader\"). Vagy nézd meg a hivatalos oldalon, vagy írd hedge-elve (\"if you don't see…\").",
-      "ref": "GUIDE_summarize-long-web-articles-in-safari-with-apple-intelligenc.json",
-      "open": true,
-      "at": "2026-09-12T12:01:43.856Z"
-    },
-    {
-      "id": "m17892145368927",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Summarize long web articles in Safari with Apple Intelligence\" — mi a baj: Step 4 describes a 'Summarize' option appearing in the Safari Reader-mode page menu (the Aa panel) — this UI element does not exist in Safari. Safari's Reader mode has never included a Summarize button in its page settings menu. This is a fabricated UI element.",
-      "ref": "GUIDE_summarize-long-web-articles-in-safari-with-apple-intelligenc.json",
-      "at": "2026-09-12T12:02:16.892Z"
-    },
-    {
-      "id": "m178921460084586",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Summarize long web articles in Safari with Apple Intelligence\" — javítva: Step 4 describes a 'Summarize' option appearing in the Safari Reader-mode page menu (the Aa panel) — this UI element does not exist in Safari. Safari's Reader mode has never included a Summarize button in its page settings menu. This is a fabricated UI element.; Reviewer verdict: Hitelesség-kapu blokkolta: Step",
-      "ref": "GUIDE_summarize-long-web-articles-in-safari-with-apple-intelligenc.json",
-      "at": "2026-09-12T12:03:20.845Z"
-    },
-    {
-      "id": "m178921463065938",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Summarize long web articles in Safari with Apple Intelligence\" — mi a baj: Step 4 instructs readers to look for a 'Summarize' option in the Safari Reader-mode page menu (the Aa panel) and claims it can appear 'inside the same Aa-style page menu you used in Step 3.' Safari's Reader mode Aa page-settings menu does not contain a Summarize option — this UI element does not exist",
-      "ref": "GUIDE_summarize-long-web-articles-in-safari-with-apple-intelligenc.json",
-      "at": "2026-09-12T12:03:50.659Z"
-    },
-    {
-      "id": "m178921465050846",
-      "from": "ceo",
-      "to": "team",
-      "kind": "decision",
-      "text": "Jóváhagytam (felülbíráltam az Ellenőrzőt) + rendet raktam benne: \"Summarize long web articles in Safari with Apple Intelligence\" — Step 4 lists a fake UI location (Summarize inside the Aa page-settings menu); I've rewritten it to point to Reader view itself, which is where the Summarize control actually lives, and kept the writer's honest 'look around' hedge.",
-      "ref": "ARTICLE_GUIDE_summarize-long-web-articles-in-safari-with-apple-intelligenc.json",
-      "at": "2026-09-12T12:04:10.508Z"
-    },
     {
       "id": "m178921471635975",
       "from": "designer",
@@ -2638,6 +2592,51 @@
       "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Build a Simple Monthly Budget From Scratch With An\" — One tool name has been updated since publication — Mistral's assistant was previously called 'Le Chat' and is now known as 'Mistral Chat' or simply 'Mistral'. The old name is still commonly recognized but is no longer the primary brand name.",
       "ref": "ARTICLE_GUIDE_build-a-simple-monthly-budget-from-scratch-with-any-ai-assis.json",
       "at": "2026-09-27T19:25:12.030Z"
+    },
+    {
+      "id": "m179056269488316",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Introducing GPT-6 Sol and Luna\" — mi a baj: FACTUAL HALLUCINATION: GPT-6 Sol and Luna do not exist — OpenAI has not announced these models; SOURCE DOES NOT APPEAR REAL: The URL openai.com/index/introducing-gpt-6-sol-and-luna is not a valid OpenAI page (OpenAI uses /blog/ for posts); Entire article premise is based on a product announcement that did not happen",
+      "ref": "2026-09-23T02-19-31-347Z_openai-blog_Introducing_GPT-6_Sol_and_Luna.json",
+      "at": "2026-09-28T02:31:34.883Z"
+    },
+    {
+      "id": "m179056280693772",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Introducing GPT-6 Sol and Luna\" — javítva: FACTUAL HALLUCINATION: GPT-6 Sol and Luna do not exist — OpenAI has not announced these models; SOURCE DOES NOT APPEAR REAL: The URL openai.com/index/introducing-gpt-6-sol-and-luna is not a valid OpenAI page (OpenAI uses /blog/ for posts); újraküldöm.",
+      "ref": "2026-09-23T02-19-31-347Z_openai-blog_Introducing_GPT-6_Sol_and_Luna.json",
+      "at": "2026-09-28T02:33:26.937Z"
+    },
+    {
+      "id": "m179056294830736",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Introducing GPT-6 Sol and Luna\" (?/10)",
+      "ref": "2026-09-23T02-19-31-347Z_openai-blog_Introducing_GPT-6_Sol_and_Luna.json",
+      "at": "2026-09-28T02:35:48.307Z"
+    },
+    {
+      "id": "m179056311239593",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 20 → 5/4/2 oszlop.",
+      "ref": "mobile",
+      "at": "2026-09-28T02:38:32.395Z"
+    },
+    {
+      "id": "m179056321045826",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Creating a travel packing list for any trip with A\" — All mentioned assistants can read links/URLs (some cannot); The example weather-forecast reading scenario works universally with all listed assistants; All listed assistants have microphone and paperclip/attach icons for voice input and file upload",
+      "ref": "ARTICLE_GUIDE_creating-a-travel-packing-list-for-any-trip-with-ai-guidance.json",
+      "at": "2026-09-28T02:40:10.458Z"
     }
   ]
 }
