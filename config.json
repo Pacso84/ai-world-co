@@ -1,4 +1,9 @@
 {
+  "website": {
+    "_comment": "2026-09-29 — a user kérte, hogy vissza lehessen állítani. false = a régi nézet a következő build-től. guide_sketch: kóddal rajzolt telefon-vázlat a lépés mellett (core/guide-sketch.js); next_guide: 'Következő útmutató' kártya az utolsó lépés után (core/next-guide.js).",
+    "guide_sketch": true,
+    "next_guide": true
+  },
   "_meta": {
     "description": "AI World Co. központi konfiguráció - KÖLTSÉGHATÉKONY beállítás",
     "version": "2.0",

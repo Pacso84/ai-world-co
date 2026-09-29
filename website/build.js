@@ -44,6 +44,8 @@ import { CSOMAG_SZOVEG, PACKS_UI, csomagSzoveg } from '../core/packs-text.js';
 import { CSOMAG_IDK, NAGY_ID } from '../core/packs-data.js';
 import { cimTag } from '../core/title-tag.js';
 import { lepesReszek, dobozSzoveg } from '../core/guide-step-parts.js';
+import { vazlatHtml } from '../core/guide-sketch.js';
+import { kovetkezoUtmutato } from '../core/next-guide.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = join(__dirname, '..');
@@ -63,6 +65,8 @@ let VERIFY = { google: '', bing: '' };
 // Cloudflare Web Analytics token (látogatás-számláló) — NYILVÁNOS by design
 // (minden oldal HTML-jében látszik), ezért mehet a configba. Ha üres, nincs mérés.
 let CF_BEACON = '';
+// KAPCSOLÓK (2026-09-29, user: „vissza lehessen állítani") — config.json → website.*
+let KAPCSOLO = { vazlat: true, kovetkezo: true };
 // Ügyfélszolgálati chat-doboz kapcsoló + Worker-végpont (Task 3 config: customer_service.*).
 // enabled csak akkor igaz, ha a config engedélyezi ÉS van Turnstile site-key.
 let CS = { enabled: false, base: '', key: '' };
@@ -89,6 +93,8 @@ try {
 try {
   const rawConfig = JSON.parse(readFileSync(join(PROJECT_ROOT, 'config.json'), 'utf-8'));
   const company = rawConfig.company || {};
+  const web = rawConfig.website || {};
+  KAPCSOLO = { vazlat: web.guide_sketch !== false, kovetkezo: web.next_guide !== false };
   CF_BEACON = (company.cf_beacon_token || '').trim();
   SITE_URL = (company.website_url || SITE_URL).replace(/\/$/, '');
   SUPPORT = {
@@ -260,7 +266,7 @@ const UI_GUIDES = {
         kindOther: 'Other <span class="muted-word">AI tools</span>',
         comingSoon: 'Guides are on their way — check back shortly.',
         audPersonal: 'Everyday life', audBusiness: 'Business', audBoth: 'Life & Business',
-        aiSkills: 'AI skills', coverSub: 'For everyday people', exampleLabel: 'Example', tryTyping: 'Try typing this', stepOf: 'Step {n} of {m}', okLabel: 'You\'ll know it worked when', diffLabel: 'If it looks different', nextStep: 'Next step', copyBtn: 'Copy', copiedBtn: 'Copied!', xrefNews: 'What prompted this guide', xrefGuide: 'Want to try it? Step-by-step guide',
+        aiSkills: 'AI skills', coverSub: 'For everyday people', exampleLabel: 'Example', tryTyping: 'Try typing this', stepOf: 'Step {n} of {m}', okLabel: 'You\'ll know it worked when', diffLabel: 'If it looks different', nextStep: 'Next step', nextGuide: 'Next guide', copyBtn: 'Copy', copiedBtn: 'Copied!', xrefNews: 'What prompted this guide', xrefGuide: 'Want to try it? Step-by-step guide',
         // ⚠️ MI-JELÖLÉS (2026-09-12, EU AI Act 50. cikk). A régi szöveg („AI editorial
         // team") félreérthető volt, és csak a lap ALJÁN állt. Most egyértelmű, és a
         // cikk TETEJÉN is megjelenik (aiLabel*). Őrzi: core/ai-disclosure.test.js.
@@ -281,7 +287,7 @@ const UI_GUIDES = {
         kindOther: 'Egyéb <span class="muted-word">AI-eszközök</span>',
         comingSoon: 'Az útmutatók úton vannak — nézz vissza hamarosan.',
         audPersonal: 'Hétköznapok', audBusiness: 'Üzlet', audBoth: 'Otthon és munka',
-        aiSkills: 'AI-készségek', coverSub: 'Hétköznapi embereknek', exampleLabel: 'Példa', tryTyping: 'Írd be ezt', stepOf: '{n}. lépés / {m}', okLabel: 'Akkor sikerült, ha', diffLabel: 'Ha másképp néz ki', nextStep: 'Következő lépés', copyBtn: 'Másolás', copiedBtn: 'Kimásolva!', xrefNews: 'Ebből a hírből született az útmutató', xrefGuide: 'Kipróbálnád? Lépésről lépésre útmutató',
+        aiSkills: 'AI-készségek', coverSub: 'Hétköznapi embereknek', exampleLabel: 'Példa', tryTyping: 'Írd be ezt', stepOf: '{n}. lépés / {m}', okLabel: 'Akkor sikerült, ha', diffLabel: 'Ha másképp néz ki', nextStep: 'Következő lépés', nextGuide: 'Következő útmutató', copyBtn: 'Másolás', copiedBtn: 'Kimásolva!', xrefNews: 'Ebből a hírből született az útmutató', xrefGuide: 'Kipróbálnád? Lépésről lépésre útmutató',
         disclosureNews: '✦ Az AI World HQ automatikus szerkesztőségében mesterséges intelligencia készítette, hivatalos forrásokból. Automatikus tény- és minőség-ellenőrzésen ment át — emberi szerkesztő nem nézte át. Hibát látsz? Jelezd a fenti gombokkal.',
         disclosureGuide: '✦ Az AI World HQ automatikus szerkesztőségében mesterséges intelligencia készítette, közérthető nyelven. Automatikus tény- és minőség-ellenőrzésen ment át — emberi szerkesztő nem nézte át. Hibát látsz? Jelezd a fenti gombokkal.',
         aiLabelNews: 'Ezt a cikket mesterséges intelligencia írta. Automatikus tény- és minőség-ellenőrzésen ment át, emberi szerkesztő nem nézte át.',
@@ -299,7 +305,7 @@ const UI_GUIDES = {
         kindOther: 'Otras <span class="muted-word">herramientas de IA</span>',
         comingSoon: 'Las guías están en camino — vuelve pronto.',
         audPersonal: 'Día a día', audBusiness: 'Negocios', audBoth: 'Vida y negocios',
-        aiSkills: 'Habilidades de IA', coverSub: 'Para el día a día', exampleLabel: 'Ejemplo', tryTyping: 'Escribe esto', stepOf: 'Paso {n} de {m}', okLabel: 'Sabrás que funcionó cuando', diffLabel: 'Si se ve distinto', nextStep: 'Siguiente paso', copyBtn: 'Copiar', copiedBtn: '¡Copiado!', xrefNews: 'La noticia detrás de esta guía', xrefGuide: '¿Quieres probarlo? Guía paso a paso',
+        aiSkills: 'Habilidades de IA', coverSub: 'Para el día a día', exampleLabel: 'Ejemplo', tryTyping: 'Escribe esto', stepOf: 'Paso {n} de {m}', okLabel: 'Sabrás que funcionó cuando', diffLabel: 'Si se ve distinto', nextStep: 'Siguiente paso', nextGuide: 'Siguiente guía', copyBtn: 'Copiar', copiedBtn: '¡Copiado!', xrefNews: 'La noticia detrás de esta guía', xrefGuide: '¿Quieres probarlo? Guía paso a paso',
         disclosureNews: '✦ Generado por IA en la redacción automática de AI World HQ, a partir de fuentes oficiales. Pasó controles automáticos de datos y calidad; ningún editor humano revisó este artículo. ¿Ves un error? Usa los botones de arriba.',
         disclosureGuide: '✦ Generada por IA en la redacción automática de AI World HQ, en lenguaje claro. Pasó controles automáticos de datos y calidad; ningún editor humano revisó esta guía. ¿Ves un error? Usa los botones de arriba.',
         aiLabelNews: 'Este artículo fue escrito por IA. Pasó controles automáticos de datos y calidad; ningún editor humano lo revisó.',
@@ -1080,8 +1086,22 @@ let RELATED = new Map();
 // CÍMKE-ÁTFEDÉST pontoztuk — és élesben egy deepfake-csalásokról szóló cikk alá
 // hétvégi autós utat és szülinapi ajándékötleteket tett, mert a két rokon cikk
 // EGYETLEN címkén sem osztozott. Az indoklás és a mérés a modul fejlécében.
+let MIND_CIKK = [];
 function buildRelated(articles) {
   RELATED = rankRelated(articles);
+  MIND_CIKK = articles;
+}
+
+// „KÖVETKEZŐ ÚTMUTATÓ" (2026-09-29) — egy kiemelt ajánlat KÖZVETLENÜL az utolsó
+// lépés után (a „Kapcsolódó" lista a GYIK után, messze áll). Választás: core/next-guide.js.
+function nextGuideHtml(a) {
+  const r = kovetkezoUtmutato(a, RELATED.get(a.file) || [], MIND_CIKK);
+  if (!r) return '';
+  const lr = localizeArticle(r, LANG);
+  return `<a class="g-nextg" href="${r.slug}"><span class="g-nextg__lbl">🎯 ${escapeHtml(tr('nextGuide'))}</span>`
+    + `<span class="g-nextg__t">${escapeHtml(lr.title)}</span>`
+    + (lr.subtitle ? `<span class="g-nextg__s">${escapeHtml(lr.subtitle)}</span>` : '')
+    + `<span class="g-nextg__arrow" aria-hidden="true">→</span></a>`;
 }
 function relatedBox(a) {
   const rel = RELATED.get(a.file) || [];
@@ -2298,7 +2318,7 @@ function buildGuidePage(a) {
             ${reszek.siker ? `<div class="g-ok"><span class="g-ok__lbl">✅ ${escapeHtml(tr('okLabel'))}</span>${guideSectionHtml(dobozSzoveg(reszek.siker, 'siker', LANG))}</div>` : ''}
             ${stepNo < osszes ? `<a class="g-next" href="#step-${stepNo + 1}">${escapeHtml(tr('nextStep'))} ↓</a>` : ''}
           </div>
-          ${stepArtHtml(artKeys[stepNo - 1], heading)}
+          ${(KAPCSOLO.vazlat && vazlatHtml(reszek.fo, LANG, a.tool)) || stepArtHtml(artKeys[stepNo - 1], heading)}
         </div></div>`;
     }
     if (/before you start|before we start|prerequisit|miel[őo]tt elkezd|kezd[ée]s el[őo]tt|antes de (?:empezar|comenzar)|bevor (?:du|sie) (?:loslegst|beginn)|vorbereitung|avant de commencer/i.test(t)) {
@@ -2418,6 +2438,7 @@ function buildGuidePage(a) {
     ${introHtml ? `<div class="g-intro">${introHtml}</div>` : ''}
     ${blocksLinked ? `<p class="g-steptip">💡 <strong>${tr('stepTipLabel')}:</strong> ${escapeHtml(tr('stepTip'))}</p>` : ''}
     <div class="g-steps">${blocksLinked}</div>
+    ${KAPCSOLO.kovetkezo ? nextGuideHtml(a) : ''}
     ${faqHtml}
     ${xrefBox(a)}
     ${relatedBox(a)}
