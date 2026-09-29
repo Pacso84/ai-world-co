@@ -1,0 +1,41 @@
+{
+  "started_at": "2026-09-29T03:19:17.415Z",
+  "total": 4,
+  "passed": 3,
+  "failed": 1,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.0114546,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-09-29T03-11-58-861Z_aws-ml_Introducing_Claude_Sonnet_5_5_on_AWS.json",
+      "article": "ARTICLE_2026-09-29T03-11-58-861Z_aws-ml_Introducing_Claude_Sonnet_5_5_on_AWS.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0015819
+    },
+    {
+      "writer": "WRITER_2026-09-29T03-11-58-861Z_openai-blog_Basis_completes_a_tax_workbook_2x_faster_with_GPT-.json",
+      "rejected": "REJECTED_2026-09-29T03-11-58-861Z_openai-blog_Basis_completes_a_tax_workbook_2x_faster_with_GPT-.json",
+      "decision": "FAIL",
+      "score": 4,
+      "cost_usd": 0.0025617
+    },
+    {
+      "writer": "WRITER_2026-09-29T03-11-58-861Z_openai-blog_How_we_will_do_better_for_Australia.json",
+      "article": "ARTICLE_2026-09-29T03-11-58-861Z_openai-blog_How_we_will_do_better_for_Australia.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.0016395
+    },
+    {
+      "writer": "WRITER_2026-09-29T03-12-12-277Z_snowflake_Scaling_Mission_AI__3_Lessons_for_Public_Sector.json",
+      "article": "ARTICLE_2026-09-29T03-12-12-277Z_snowflake_Scaling_Mission_AI__3_Lessons_for_Public_Sector.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.0031794
+    }
+  ],
+  "finished_at": "2026-09-29T03:21:39.230Z",
+  "duration_seconds": 141.815
+}

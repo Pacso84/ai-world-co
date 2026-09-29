@@ -1,0 +1,63 @@
+{
+  "_meta": {
+    "written_at": "2026-09-29T03:19:17.216Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.01182558,
+    "original_draft": "2026-09-29T03-11-58-861Z_aws-ml_Introducing_Claude_Sonnet_5_5_on_AWS.json",
+    "source_id": "aws-ml",
+    "source_name": "AWS Machine Learning (hivatalos)",
+    "source_link": "https://aws.amazon.com/blogs/machine-learning/introducing-claude-sonnet-5-5-on-aws/",
+    "source_links": [
+      "https://aws.amazon.com/blogs/machine-learning/introducing-claude-sonnet-5-5-on-aws/"
+    ],
+    "source_snippet": "Claude Sonnet 5.5 is now available on Amazon Bedrock and Claude Platform on AWS. It's a smarter, more efficient Sonnet model for focused coding and knowledge work, with a lower cost per task at faster speed. This post covers what's new, when to choose Sonnet, and how to get started.",
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "published_at": "2026-09-29T03:19:35.648Z",
+    "slug": "claude-sonnet-5-5-is-now-on-aws-bedrock-what-it-means",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 671
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Article is well-structured news with clear hook, explanations of technical terms (Bedrock, Claude Platform), appropriate attribution of claims to Anthropic without fabricating specifics, and a useful 'What this means for you' section with actionable next steps for different reader types.",
+      "_aiCost": 0.0015819,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-09-29T03:22:32.657Z",
+    "guide_worthy": false,
+    "pairing_reason": "Availability announcement for enterprise cloud platform - no specific consumer action or named consumer feature to guide",
+    "image_v": 2,
+    "image_at": "2026-09-29T03:31:47.785Z",
+    "seo": {
+      "meta_description": "Claude Sonnet 5.5 is now on Amazon Bedrock. Anthropic says it's faster and cheaper for coding and knowledge work. Here's what this means for you.",
+      "keywords": [
+        "Claude Sonnet 5.5 Amazon Bedrock",
+        "Claude AI coding assistant",
+        "Anthropic Claude AWS",
+        "Amazon Bedrock AI models",
+        "Claude Sonnet coding",
+        "AI coding tool AWS"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add an H1 heading that includes 'Claude Sonnet 5.5' and 'AWS Bedrock' for better on-page SEO",
+        "Include a brief section on pricing or cost details if available in the full article",
+        "Add schema markup for software application to help search engines understand the content type"
+      ],
+      "optimised_at": "2026-09-29T03:32:52.451Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Claude Sonnet 5.5 Is Now on AWS Bedrock — What It Means\"\nsubtitle: \"Anthropic says the new Sonnet brings faster speed and lower cost per task for focused coding and knowledge work on AWS.\"\ncategory: \"ai-news\"\naudience: \"business\"\nread_time_minutes: 4\ntags: [\"claude\", \"aws\", \"bedrock\", \"anthropic\", \"knowledge-work\"]\n---\n\n# Claude Sonnet 5.5 Is Now on AWS Bedrock — What It Means\n\n> **In short:** Anthropic's Claude Sonnet 5.5 is now available on Amazon Bedrock and the Claude Platform on AWS. Anthropic says it runs faster and costs less per task, with a focus on coding and knowledge work.\n\nAn afternoon wrestling with a messy report. A meeting that should have been an email. The kind of focused, thinking-heavy work that fills most knowledge jobs. Anthropic says its newest model, Claude Sonnet 5.5, is built for exactly that, and it is now live on Amazon's AI platform.\n\n## What is actually new\n\nAnthropic announced that Claude Sonnet 5.5 is available in two places on AWS: through **Amazon Bedrock** and through the **Claude Platform on AWS**. Quick translation if neither name rings a bell.\n\n**Amazon Bedrock** is Amazon's cloud-based hub for AI models. Think of it as a library where businesses pick which AI to plug into their own apps and workflows, without building one from scratch. The **Claude Platform on AWS** is Anthropic's own Claude interface running on Amazon's cloud, basically the same Claude you may already use, hosted on AWS.\n\nAccording to the announcement, Sonnet 5.5 is positioned as a \"smarter, more efficient\" version of Anthropic's mid-tier Sonnet line. The two big claims: faster responses and a lower cost per task. Both come from Anthropic, and the announcement does not include specific numbers, so I cannot tell you exactly how much faster or cheaper. The company says these gains matter most when the model handles focused coding or knowledge work.\n\n## What \"coding and knowledge work\" actually means\n\nYou will hear those phrases constantly in AI news. Both deserve a quick translation.\n\n- **Coding work**: helping write, debug, refactor, or explain code (the step-by-step instructions computers follow). It can range from a developer fixing a broken function to a small-business owner writing a simple automation.\n- **Knowledge work**: the kind of job that lives mostly in your head, like analyzing documents, drafting reports, summarizing meetings, researching a topic, or writing emails. The parts of office work where you are thinking, not typing the same thing twice.\n\nAccording to Anthropic, Sonnet 5.5 is tuned to do well on focused, single-purpose tasks rather than trying to be everything at once.\n\n## What this means for you\n\n- **If you work at a company that uses AWS**: your IT or data team can now add Sonnet 5.5 to the tools they already manage on Bedrock. Projects that needed custom AI setup may become easier and cheaper to try, but check with whoever runs your AWS account before changing anything.\n- **If you already use Claude for work or study**: you can reach Sonnet 5.5 through the Claude Platform on AWS, the same way you have been using Claude. The announcement does not say existing accounts are upgraded automatically, so treat this as \"a new option is available\" rather than \"your account has been switched.\"\n- **If you are curious about AI but not technical**: the simple read is this. There is a newer version of one of the major AI assistants running on one of the biggest cloud platforms, and the company behind it says it is cheaper and faster for everyday work tasks. No action needed from you today.\n\n## Wrap-up\n\nClaude Sonnet 5.5 is on AWS, and Anthropic says it focuses on coding and knowledge work at lower cost and faster speed. The announcement does not include specific numbers, so \"faster\" and \"cheaper\" are claims worth testing yourself. If your team already uses Bedrock, ask your IT folks whether Sonnet 5.5 is worth a pilot on a recurring task, like summarizing the weekly report you have been stitching together by hand.",
+  "original_title": "Introducing Claude Sonnet 5.5 on AWS"
+}

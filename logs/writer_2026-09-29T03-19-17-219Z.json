@@ -1,0 +1,60 @@
+{
+  "started_at": "2026-09-29T03:14:18.462Z",
+  "drafts_total": 4,
+  "articles_written": 4,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 0,
+  "merged_total": 0,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "total_cost_usd": 0.044713158,
+  "by_article": [
+    {
+      "draft": "2026-09-29T03-12-12-277Z_snowflake_Scaling_Mission_AI__3_Lessons_for_Public_Sector.json",
+      "writer_output": "WRITER_2026-09-29T03-12-12-277Z_snowflake_Scaling_Mission_AI__3_Lessons_for_Public_Sector.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.008309808,
+      "duration_ms": 67582,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-09-29T03-11-58-861Z_openai-blog_How_we_will_do_better_for_Australia.json",
+      "writer_output": "WRITER_2026-09-29T03-11-58-861Z_openai-blog_How_we_will_do_better_for_Australia.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.01024398,
+      "duration_ms": 87870,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-09-29T03-11-58-861Z_openai-blog_Basis_completes_a_tax_workbook_2x_faster_with_GPT-.json",
+      "writer_output": "WRITER_2026-09-29T03-11-58-861Z_openai-blog_Basis_completes_a_tax_workbook_2x_faster_with_GPT-.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.01374978,
+      "duration_ms": 63547,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-09-29T03-11-58-861Z_aws-ml_Introducing_Claude_Sonnet_5_5_on_AWS.json",
+      "writer_output": "WRITER_2026-09-29T03-11-58-861Z_aws-ml_Introducing_Claude_Sonnet_5_5_on_AWS.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.01182558,
+      "duration_ms": 70527,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    }
+  ],
+  "finished_at": "2026-09-29T03:19:17.219Z",
+  "duration_seconds": 298.757
+}

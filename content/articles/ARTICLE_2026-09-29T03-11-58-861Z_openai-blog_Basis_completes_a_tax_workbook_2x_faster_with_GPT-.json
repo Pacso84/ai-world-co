@@ -1,0 +1,70 @@
+{
+  "_meta": {
+    "written_at": "2026-09-29T03:21:53.592Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.01667745,
+    "original_draft": "2026-09-29T03-11-58-861Z_openai-blog_Basis_completes_a_tax_workbook_2x_faster_with_GPT-.json",
+    "source_id": "openai-blog",
+    "source_name": "OpenAI Blog (hivatalos)",
+    "source_link": "https://openai.com/index/basis-tax-workbook-with-astra",
+    "source_links": [
+      "https://openai.com/index/basis-tax-workbook-with-astra"
+    ],
+    "source_snippet": "GPT-6 Astra completed a 50-tab tax workbook twice as fast as GPT-5.6 Sol, and its stronger understanding of user intent gives Basis more confidence in real-world use.",
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "rejected_at": "2026-09-29T03:20:51.855Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 718
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured explainer with clear hook, good analogies (literal assistant vs junior coworker), practical tips organized by audience type, and appropriate caution around unverifiable claims. No prohibited content, no rankings, no invented facts.",
+      "_aiCost": 0.0015474,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "The article is well-structured and written in the right voice, but it describes products (GPT-6 Astra, GPT-5.6 Sol) and a company (Basis) that do not appear to exist, presenting their performance claims as established facts. Publishing invented model names and unverified speed claims would mislead readers and damage trust.",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-09-29T03-11-58-861Z_openai-blog_Basis_completes_a_tax_workbook_2x_faster_with_GPT-.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-09-29T03:22:19.064Z",
+    "slug": "why-ai-models-are-getting-better-at-complex-spreadsheets",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-09-29T03:22:40.019Z",
+    "guide_worthy": false,
+    "pairing_reason": "Article is a general explainer about AI improvements on spreadsheets, not news about a specific named feature/tool that users can go use today.",
+    "image_v": 2,
+    "image_at": "2026-09-29T03:31:56.155Z",
+    "seo": {
+      "meta_description": "AI models are now much better at complex, multi-tab spreadsheets — faster and more accurate for handling monthly reports, budget reconciliations, and messy data.",
+      "keywords": [
+        "AI for spreadsheets",
+        "use AI with Excel",
+        "AI spreadsheet assistant",
+        "multi-tab Excel help",
+        "AI handles complex spreadsheets",
+        "LLM Excel automation",
+        "AI budget reconciliation"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add 1-2 specific examples of what AI can now do with spreadsheets (e.g., summarize data across tabs, identify errors in formulas)",
+        "Include the names of specific AI tools (ChatGPT, Claude, Gemini) in the first 100 words for better topical relevance",
+        "Add a section on 'how to try it' with brief steps to attract practical search intent"
+      ],
+      "optimised_at": "2026-09-29T03:33:01.390Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Why AI Models Are Getting Better at Complex Spreadsheets\"\nsubtitle: \"A clear look at what improved AI performance on multi-tab work means for anyone who deals with messy data\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"ai-trends\", \"spreadsheets\", \"productivity\", \"explainer\"]\n---\n\n# Why AI Models Are Getting Better at Complex Spreadsheets\n\n> **In short:** The newest AI models are noticeably faster and more accurate on the kind of multi-tab, cross-referenced work that used to trip them up — a shift that matters for anyone who handles monthly reports, vendor lists, or budget reconciliations.\n\nIf you've ever stared at a 30-tab workbook wondering where to even start, you know the feeling. Spreadsheets with linked sheets, conditional formulas, and a dozen small exceptions eat more hours than anyone wants to admit.\n\n## What's actually improving\n\nAcross the board, the latest generation of large language models (the AI engines behind assistants like ChatGPT, Claude, and Gemini) is doing better on exactly this kind of work. Two things have moved at once.\n\n**Speed.** Tasks that used to make you wait — generating formulas across many sheets, cleaning up a long column of inconsistent entries, rewriting a whole formula in plain English — now come back faster. You can ask a follow-up question and get a real answer instead of a coffee break.\n\n**Accuracy on messy tasks.** The bigger change is what researchers call *intent understanding* — meaning the model is better at figuring out what you actually meant, not just what you literally typed. When you write \"fix the totals,\" older models sometimes changed every number on the page. Newer ones are more likely to guess correctly that you meant the column at the far right.\n\nA useful mental model: think of the older AI as a very literal assistant who follows your exact words. The newer one is closer to a junior coworker who pauses, summarizes what they think you want, and checks before touching anything.\n\n## A simple example\n\nSay you have a workbook tracking your monthly bills, with one tab per provider. Older AI might correctly total column B but break the link to your summary tab. Newer models, based on what several companies have demonstrated in their own benchmarks, are more likely to keep those cross-tab references intact — and more likely to warn you when they can't.\n\n> Most companies describe these improvements as \"better at following complex instructions.\" That phrasing is their own — the real test is whether it works on your actual files, which you can only judge by trying.\n\n## How to actually use this today\n\n- **Start small.** Pick one recurring task you hate — a monthly reconciliation, a name-and-address cleanup — and try it on a copy of your file, not the original.\n- **Describe the goal, not the steps.** Instead of writing the formula yourself, say in plain English what the column should show. The model can usually write the formula better than you'd guess.\n- **Always check the cross-links.** Even with better intent understanding, complex workbooks have surprises. Glance at any totals that pull from multiple tabs before you trust the answer.\n- **Give context.** A useful prompt mentions how many tabs are involved and what each one represents. The model does better when it knows the shape of the problem.\n\n## What this means for you\n\n- **If you handle personal finances at home**: the same improvements make household budgets, tax-prep checklists, and side-income trackers much less of a chore — once you give the AI a clean copy of the file.\n- **If you run a small business or work in ops**: month-end close, vendor reconciliation, and sales-by-region rollups are the prime candidates. The time savings compound when the same thing runs every month.\n- **If you're new to AI**: don't compare one product against another — pick one assistant, learn its quirks, and let it handle one repeatable task for a month. You'll learn more from that than from reading reviews.\n\n## Wrap-up\n\nBetter speed and better intent understanding aren't glamorous upgrades, but they're the ones that quietly change a workday. Pick one spreadsheet task you do regularly, hand it to an AI assistant on a copy of the file, and see what it actually does. That's the only benchmark that counts for you.",
+  "original_title": "Basis completes a tax workbook 2x faster with GPT-6 Astra"
+}
