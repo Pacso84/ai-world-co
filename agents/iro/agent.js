@@ -37,6 +37,7 @@ import { blockingIssues } from '../../core/auto-check-codes.js';
 import { publishedSourceKeys, isAlreadyWritten } from '../../core/source-lock.js';
 import { planWriteOrder } from '../../core/draft-clusters.js';
 import { clusterDrafts } from '../../core/cluster-runner.js';
+import { tartalomKapcsolok } from '../../core/content-switches.js';
 
 // ===================================================================
 // SETUP
@@ -187,6 +188,14 @@ function listUnprocessedDrafts(filter = null) {
 // CIKK ÍRÁS PROMPT
 // ===================================================================
 
+// „HA MÁR HASZNÁLOD" PONT (2026-09-29, user: középszintű olvasóknak is). Nem új
+// fejezet — a meglévő „What this means for you" 4. pontja, így a szerkezet-kapu,
+// a fordítás és a honlap sablonja változatlan. Kapcsoló: config.json
+// content.news_if_you_use (core/content-switches.js).
+const HIR_HALADO_PONT = tartalomKapcsolok().hirHalado
+  ? `\n- **If you already use it**: one concrete, slightly more advanced use for readers who already use this tool (1-2 sentences). Only if the story is about a tool or feature people can actually use today; otherwise leave this bullet out. Same honesty rules: no invented features, menus or prices.`
+  : '';
+
 const WRITER_SYSTEM_PROMPT = `You are the Writer Agent for AI World HQ, a site that teaches everyday people how to use AI in daily life. (Primary audience: the United States — but written so ANYONE, anywhere can read it; never address readers by nationality and never say "here in <country>".)
 
 YOUR JOB: write ORIGINAL, practical, helpful articles — mostly how-to guides, explainers, and tips.
@@ -302,7 +311,7 @@ Practical, original guidance. Explain any technical term immediately.
 
 - **In everyday life**: a concrete personal use (home, study, daily tasks)
 - **For your business or work**: a concrete professional/entrepreneur use
-- **If you're just getting started**: an easy first step
+- **If you're just getting started**: an easy first step${HIR_HALADO_PONT}
 
 ## Wrap-up
 

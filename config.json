@@ -4,6 +4,11 @@
     "guide_sketch": true,
     "next_guide": true
   },
+  "content": {
+    "_comment": "2026-09-29 — user: középszintű tartalom, visszaállíthatóan. false = régi viselkedés a következő futástól. intermediate_guides: napi 1 középszintű útmutató a 2-ből; news_if_you_use: a hírek 'What this means for you' részében 4. pont ('If you already use it'). Olvassa: core/content-switches.js.",
+    "intermediate_guides": true,
+    "news_if_you_use": true
+  },
   "_meta": {
     "description": "AI World Co. központi konfiguráció - KÖLTSÉGHATÉKONY beállítás",
     "version": "2.0",

@@ -39,6 +39,7 @@ import { HOWTO_RANGE } from '../../core/article-length.js';
 import { blockingIssues } from '../../core/auto-check-codes.js';
 import { valasztHireket, hirBlokk, hirekBetolt, trendBlokk } from '../../core/guide-sources.js';
 import { utmutatoE } from '../../core/guide-kind.js';
+import { tartalomKapcsolok, maiKozepDb, szintSorrend } from '../../core/content-switches.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..', '..');
@@ -100,14 +101,34 @@ function saveTopics(data) {
 function isFresh(t) { return !!t.source_news || t.priority === 'fresh' || t.priority === 'requested'; }
 function isBalanceTopic(t) { return t.priority === 'balance' || t.priority === 'coverage'; }
 
+// A MA írt útmutatók _meta-i (drafts + articles) — a középszintű napi kvótához.
+function maiGuideMetak() {
+  const ki = [];
+  for (const dir of [DRAFTS_DIR, join(ROOT, 'content', 'articles')]) {
+    if (!existsSync(dir)) continue;
+    for (const f of readdirSync(dir)) {
+      if (!/GUIDE_.*\.json$/.test(f)) continue;
+      try { ki.push(JSON.parse(readFileSync(join(dir, f), 'utf-8'))._meta || {}); } catch { /* sérült fájl: kihagyjuk */ }
+    }
+  }
+  return ki;
+}
+
 function pickTopics(store, args) {
   if (args.id) return store.topics.filter(t => t.id === args.id);
   if (args.title) return store.topics.filter(t => t.title === args.title);
-  const todo = store.topics.filter(t => t.status !== 'done');
+  // KÖZÉPSZINT (2026-09-29, user): napi 1 középszintű a 2-ből → ha ma még nincs,
+  // az első középszintű téma ELŐRE kerül; ha már van, mára kimaradnak. Kapcsoló:
+  // config.json content.intermediate_guides (core/content-switches.js).
+  const maiKozep = maiKozepDb(maiGuideMetak(), new Date().toISOString().slice(0, 10));
+  const rendezett = szintSorrend(store.topics.filter(t => t.status !== 'done'),
+    { maiKozep, be: tartalomKapcsolok().kozepUtmutato });
+  const out = [];
+  if (rendezett[0]?.level === 'intermediate') out.push(rendezett.shift());
+  const todo = rendezett.filter(t => t.level !== 'intermediate');   // egy futás legfeljebb 1 középszintűt ír
   const fresh = todo.filter(isFresh);
   const balance = todo.filter(t => !isFresh(t) && isBalanceTopic(t));
   const general = todo.filter(t => !isFresh(t) && !isBalanceTopic(t));
-  const out = [];
   for (const t of fresh) { if (out.length >= args.limit) break; out.push(t); }   // 1) friss elöl
   let bi = 0, gi = 0;                                                            // 2-3) balance:general = 2:1
   while (out.length < args.limit && (bi < balance.length || gi < general.length)) {
@@ -339,7 +360,7 @@ async function runBalanceMode(limit, brandContext) {
 
 const IDEAS_SYSTEM_PROMPT = `You are the editorial planner for AI World HQ, a site that teaches everyday people how to use AI in daily life (primary audience: the United States, but written for anyone).
 
-Propose NEW, EVERGREEN, beginner-friendly guide topics — practical "how to…" tutorials people genuinely search for. Mix GENERAL topics (not tied to one company) with COMPANY/TOOL-specific ones (ChatGPT, Gemini, Claude, Copilot, Midjourney, etc.). Favour useful, timeless skills over news.
+Propose NEW, EVERGREEN, everyday-friendly guide topics (beginner or intermediate, exactly as the LEVEL MIX in the request says) — practical "how to…" tutorials people genuinely search for. Mix GENERAL topics (not tied to one company) with COMPANY/TOOL-specific ones (ChatGPT, Gemini, Claude, Copilot, Midjourney, etc.). Favour useful, timeless skills over news.
 
 Return ONLY a JSON array, no prose, in this exact shape:
 [
@@ -432,12 +453,12 @@ async function proposeNewTopics(count, store, brandContext, { generalOnly = fals
     ? `\n\nCRITICAL — these must be COMPANY-FREE everyday-skill topics: each idea must work with ANY mainstream AI assistant (ChatGPT, Gemini, Claude, Copilot…). Do NOT build an idea around one product's unique feature, do NOT put a brand in the title, and set "company" to null for every item. Think: real-life tasks (letters, budgeting, studying, job hunting, travel, health admin, parenting, privacy, spotting scams).`
     : '';
 
-  const userPrompt = `Propose ${count + 4} brand-new beginner guide topics for AI World HQ
+  const userPrompt = `Propose ${count + 4} brand-new guide topics for AI World HQ
 
 DO NOT repeat or lightly reword any of these EXISTING topics:
 ${sample}
 
-Pick fresh, genuinely useful angles people want (e.g. everyday tasks, study, small business, parents, job hunting, accessibility, safety/privacy, mobile apps, voice, images, spreadsheets, email).${generalOnly ? '' : trendBlokk(sajatHirek())}${generalOnly ? '' : ' Aim for a healthy mix of general and company-specific.'}${coverageHint}${generalRule}
+Pick fresh, genuinely useful angles people want (e.g. everyday tasks, study, small business, parents, job hunting, accessibility, safety/privacy, mobile apps, voice, images, spreadsheets, email).${generalOnly ? '' : trendBlokk(sajatHirek())}${generalOnly ? '' : ' Aim for a healthy mix of general and company-specific.'}${coverageHint}${generalRule}${szintKeveres()}
 
 BRAND CONTEXT:
 ${brandContext}
@@ -666,6 +687,24 @@ function sajatHirek() {
   return _hirekCache;
 }
 
+// Az ötletelő szint-keverése: bekapcsolva a témák ~fele középszintű (napi 1-et a
+// pickTopics vesz sorra). Kikapcsolva: csak kezdő szintű témát kérünk.
+function szintKeveres() {
+  return tartalomKapcsolok().kozepUtmutato
+    ? `\n\nLEVEL MIX: make about HALF of the topics "level": "intermediate" — for people who ALREADY use the tool and want to do MORE (a more capable, still practical everyday workflow: reusable instructions, working with a file, multi-step prompts, organizing chats, sending the result to another app). The rest "level": "beginner". Intermediate titles must NOT say "beginner" or "getting started".`
+    : `\n\nAll topics "level": "beginner".`;
+}
+
+// KÖZÉPSZINTŰ ÚTMUTATÓ (2026-09-29, user: „csináljunk középszintű útmutatókat").
+// A rendszer-utasítás „complete beginner"-t mond — ez a blokk a középszintű
+// témánál felülírja a CÉLOLVASÓT, de az átláthatósági és őszinteségi szabályokat NEM.
+const KOZEP_BLOKK = `LEVEL: INTERMEDIATE — this overrides "complete beginner" for the READER only:
+- The reader ALREADY uses this tool for basic tasks (has an account, knows how to start a chat and send a message). Do NOT spend steps on signing up, installing, or sending a first message; mention them once in "Before you start" as assumed.
+- Teach ONE more capable workflow the reader can't do yet: e.g. reusable instructions/templates, working with an uploaded file, a multi-step prompt that builds on earlier answers, organizing chats, or connecting the result to another everyday app. Name a FEATURE only if you are SURE it exists for this tool; if unsure, teach a TECHNIQUE (prompt structure, iteration, checking the answer) instead.
+- ALL clarity and honesty rules still apply unchanged: six parts per step, hedged UI details, "If it looks different" fallback, 💬 examples, "You'll know it worked when…", paid-plan honesty, and what the tool CANNOT do.
+- Frontmatter: level: "intermediate". In "What this means for you", the third bullet is "**If you want to go further:**" (a next, slightly harder idea).
+- Title and subtitle must NOT say "beginner", "first steps" or "getting started".`;
+
 function buildUserPrompt(topic, brandContext, lessons, skills, hirek = '') {
   const subject = topic.company || topic.tool
     ? `Tool/company: ${[topic.company, topic.tool].filter(Boolean).join(' — ')}`
@@ -677,7 +716,7 @@ ${subject}
 Audience: ${topic.audience} · Level: ${topic.level || 'beginner'}
 Angle / what to focus on (a hint, write it in your own words): ${topic.angle || ''}${hirek}
 
-Follow the exact output format from your instructions (frontmatter + Before you start + numbered Steps + Common mistakes + What this means for you + Try it now). Keep it beginner-friendly and genuinely useful.
+Follow the exact output format from your instructions (frontmatter + Before you start + numbered Steps + Common mistakes + What this means for you + Try it now). ${topic.level === 'intermediate' ? KOZEP_BLOKK : 'Keep it beginner-friendly and genuinely useful.'}
 
 BRAND CONTEXT (must follow):
 ${brandContext}${lessons}${skills}
