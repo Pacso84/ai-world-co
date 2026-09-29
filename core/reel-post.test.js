@@ -171,9 +171,12 @@ const mock = (opts = {}) => {
     hivott.push({ method, url, headers: opt.headers, body: opt.body });
     if (method === 'HEAD') {
       if (opts.headThrow) throw new Error('timeout');
+      // headSor: próbánkénti státusz (pl. [404, 200] = az első még 404, a második már él)
+      const heads = hivott.filter(x => x.method === 'HEAD').length;
+      const st = Array.isArray(opts.headSor) ? opts.headSor[Math.min(heads - 1, opts.headSor.length - 1)] : (opts.headOk === false ? 404 : 200);
       return {
-        ok: opts.headOk !== false,
-        status: opts.headOk === false ? 404 : 200,
+        ok: st === 200,
+        status: st,
         headers: { get: (n) => (opts.fejlecek || { 'content-type': 'video/mp4', 'content-length': '468821' })[String(n).toLowerCase()] ?? null }
       };
     }
@@ -212,12 +215,25 @@ await at('📮 JSON content-type nélkül a Make nem képezi le a mezőket', asy
   assert.equal(post.headers['Content-Type'], 'application/json');
 });
 
-await at('⛔ nem létező videó-címre EL SEM INDUL a küldés', async () => {
+await at('⛔ nem létező videó-címre EL SEM INDUL a küldés (a próbák elfogyta után)', async () => {
   const { f, hivott } = mock({ headOk: false });
-  const r = await sendReel({ video: VIDEO, caption: 'c', hook: HOOK, fetchFn: f });
+  const r = await sendReel({ video: VIDEO, caption: 'c', hook: HOOK, fetchFn: f, varasMs: 0 });
   assert.equal(r.ok, false);
   assert.equal(hivott.filter(x => x.method === 'POST').length, 0);
+  assert.equal(hivott.filter(x => x.method === 'HEAD').length, 4, 'tartós 404-nél 4 próba után adja fel');
   assert.match(r.reason, /nem tölthető le|404/i);
+});
+
+await at('🔑 a friss deploy után még 404 → vár és újrapróbál, és KIMEGY (élő eset 09-29 03:42)', async () => {
+  // A Cloudflare a friss fájlt nem azonnal adja minden szerverről: 4 mp-cel a
+  // „Deployment complete" után még 404 jött, a napi 2 Reelből egy elveszett.
+  const alvasok = [];
+  const { f, hivott } = mock({ headSor: [404, 404, 200] });
+  const r = await sendReel({ video: VIDEO, caption: 'c', hook: HOOK, fetchFn: f, varasMs: 15000, alvas: async (ms) => { alvasok.push(ms); } });
+  assert.equal(r.ok, true);
+  assert.equal(hivott.filter(x => x.method === 'HEAD').length, 3);
+  assert.equal(hivott.filter(x => x.method === 'POST').length, 1);
+  assert.deepEqual(alvasok, [15000, 15000]);
 });
 
 await at('⛔ 0 bájtos „videó" is elbukik — a 200 önmagában nem elég', async () => {

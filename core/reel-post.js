@@ -140,7 +140,16 @@ function nyilvanosCim(url) {
  * beállítva webhook (a CI-nak nem szabad elhasalnia tőle). Ez viszont
  * SZÁNDÉKOS, kézzel indított küldés — itt a néma siker megtévesztene.
  */
-export async function sendReel({ video, caption, hook, fetchFn, dry = false, timeoutMs = 20000 }) {
+// ── ÚJRAPRÓBA A FRISS DEPLOY UTÁN (2026-09-29, éles eset) ──────────────
+// 03:42:55 „Deployment complete", 03:42:59 HEAD → 404: a Cloudflare a friss
+// fájlt nem azonnal adja minden szerverről. Egyetlen próba után feladtuk, és a
+// napi 2 Reelből egy elveszett. Tartós 404-nél (tényleg hiányzó fájl) marad a
+// régi viselkedés: nem küldünk — csak kb. 45 mp-cel később.
+export const HEAD_PROBAK = 4;
+export const HEAD_VARAS_MS = 15000;
+
+export async function sendReel({ video, caption, hook, fetchFn, dry = false, timeoutMs = 20000,
+  probak = HEAD_PROBAK, varasMs = HEAD_VARAS_MS, alvas = (ms) => new Promise(r => setTimeout(r, ms)) }) {
   const f = fetchFn || fetch;
   // Próbamódban NEM követeljük meg a webhookot: azt úgysem hívnánk meg, és
   // e nélkül helyben egyáltalán nem lehetne próbálni. A hiányát viszont
@@ -155,10 +164,16 @@ export async function sendReel({ video, caption, hook, fetchFn, dry = false, tim
 
   // 1) Él-e a videó, és videó-e egyáltalán?
   let fej;
-  try {
-    fej = await f(video, { method: 'HEAD', signal: AbortSignal.timeout(timeoutMs) });
-  } catch (e) {
-    return { ok: false, reason: `A videó címe nem érhető el: ${e.message}` };
+  for (let proba = 1; proba <= Math.max(1, probak); proba++) {
+    try {
+      fej = await f(video, { method: 'HEAD', signal: AbortSignal.timeout(timeoutMs) });
+    } catch (e) {
+      return { ok: false, reason: `A videó címe nem érhető el: ${e.message}` };
+    }
+    // Csak a „még nincs ott" (404) és a szerverhiba (5xx) érdemel újrapróbát.
+    const st = fej ? fej.status : 0;
+    if ((fej && fej.ok) || !(st === 404 || st >= 500) || proba >= probak) break;
+    if (varasMs > 0) await alvas(varasMs);
   }
   if (!fej || !fej.ok) {
     return { ok: false, reason: `A videó nem tölthető le (HTTP ${fej ? fej.status : '?'}) — a Facebook ettől bukna el.` };
