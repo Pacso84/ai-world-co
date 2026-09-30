@@ -1,0 +1,72 @@
+{
+  "_meta": {
+    "written_at": "2026-09-30T03:03:19.546Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.005273904,
+    "original_draft": "2026-09-30T02-55-14-270Z_dropbox-blog__Put_your_Dropbox_project_context_to_work_with_Mus.json",
+    "source_id": "dropbox-blog",
+    "source_name": "Dropbox Blog (hivatalos)",
+    "source_link": "  https://blog.dropbox.com/topics/company/put-dropbox-project-context-to-work-meta-muse ",
+    "source_links": [
+      "  https://blog.dropbox.com/topics/company/put-dropbox-project-context-to-work-meta-muse ",
+      "https://zapier.com/blog/zapier-connector-in-muse",
+      "https://about.fb.com/news/2026/09/introducing-muse-small-business/"
+    ],
+    "source_snippet": "Connect Dropbox to Muse, and your personal agent can use your project context to find relevant files, organize project materials, collect what’s missing, and more.\n\n---\n\nZapier today announced that its connector is now available in Meta's Muse agent. Once authorized, users can connect Muse to more than 9,000 apps and 40,000 actions through Zapier MCP. With Zapier MCP, Muse can take action across the tools your team already uses, but only the specific apps and actions you approve. That gives everyone from individuals to enterprises a secure way to run Muse as an always-on agent. For example, give Muse read-only access to your CRM and permission to post in Slack,\n\n---\n\nWe’re launching Muse for Small Business, a personal AI agent that works in the background to help your small business reach its goals. \nThe post The Future Is for Everyone: Muse for Small Business appeared first on Meta Newsroom.",
+    "merged_from": 3,
+    "merged_theme": "Meta Muse agent launch and integrations",
+    "status": "published",
+    "rejected_at": "2026-09-30T03:03:01.313Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1004
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured explainer that hits all marks: plain-language hook, clear term definitions (LLM, MCP), the critical permissions section, actionable personas in What This Means For You, and a practical wrap-up. No prohibited content, no cliches, no invented facts — the Zapier figure is attributed to Zapier, and the planner/toolbox/permission framework is a reasonable, well-presented generalization. US English throughout. Ready to publish.",
+      "_aiCost": 0.00171747,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Hitelesség-kapu blokkolta: \"Meta's Muse\" AI agent is not a known product. Meta has not announced a personal AI agent called 'Muse' with Dropbox and Zapier integrations. This appears to be a fabricated product.",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-09-30T02-55-14-270Z_dropbox-blog__Put_your_Dropbox_project_context_to_work_with_Mus.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-09-30T03:03:44.243Z",
+    "slug": "ai-agents-explained-what-they-are-and-how-they-actually-work",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-09-30T03:04:15.118Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is an explainer article about AI agents as a concept/category, not a news story about a specific named product or feature someone can use today",
+    "image_v": 2,
+    "image_at": "2026-09-30T03:06:42.517Z",
+    "seo": {
+      "meta_description": "Learn what AI agents are and how they work. Unlike regular chatbots, these new assistants can actually use your apps for you — a simple guide.",
+      "keywords": [
+        "what is an AI agent",
+        "AI agents explained",
+        "how AI agents work",
+        "AI agent vs chatbot",
+        "difference between AI agent and chatbot",
+        "what can AI agents do",
+        "AI agents guide"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more subheadings (H2/H3) to improve content structure and readability for both users and search engines",
+        "Include a brief comparison table or bullet list clearly showing agent vs chatbot differences",
+        "Consider adding an FAQ section to target featured snippets and capture 'people also ask' queries"
+      ],
+      "optimised_at": "2026-09-30T03:07:22.238Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"AI Agents Explained: What They Are and How They Actually Work\"\nsubtitle: \"A plain-language guide to AI agents — the new kind of assistant that can act inside your apps, not just chat with you\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"ai-agents\", \"llm\", \"mcp\", \"automation\", \"getting-started\"]\n---\n\n# AI Agents Explained: What They Are and How They Actually Work\n\n> **In short:** An AI agent is a new kind of assistant that can use other apps on your behalf — not just answer questions. You give it permission app by app, and you stay in control of what it can touch.\n\nYou ask your phone for the weather, and it tells you. That's a normal AI assistant. Now imagine asking an AI to find every receipt from last month, add them to your spreadsheet, and email your accountant. That's the promise of an **AI agent** — a different kind of helper that can actually do things, not just talk about them.\n\n## What makes an agent different from a chatbot\n\nA regular chatbot waits for your question, then answers. An **agent** is built to take a goal, break it into a few steps, and carry those steps out using other tools. Think of it like a personal assistant who knows where your files live and which apps you pay for — and can quietly handle a routine job while you focus on something else.\n\nUnder the hood, an agent is still powered by an **LLM** (a large language model — the same kind of engine behind ChatGPT and similar chatbots). The difference is what sits around the model. An agent has three extra pieces:\n\n1. **A planner** — the part that turns your goal into a small list of steps.\n2. **A toolbox** — a set of connections to apps it can ask to do things.\n3. **A permission system** — the rules about which apps it may touch and what it may do there.\n\nThat last piece is the one most people forget to ask about. The power of an agent comes from reaching into your real apps. The risk, if you ignore it, is reaching in too far.\n\n## How agents talk to other apps\n\nFor an agent to do something in your calendar or your inbox, it needs a way to ask. The new standard for that conversation is called **MCP**, short for **Model Context Protocol**. A simple way to picture it: MCP is a secure handshake that lets an AI ask another app, \"please do this small thing,\" and get an answer back.\n\nBefore MCP, every app needed its own custom connection, and most didn't have one. With MCP, an app can offer a single, well-defined door that any AI agent can knock on. The big idea is that you, the user, set the rules on that door — what the agent is allowed to do once it opens.\n\nYou'll also hear the name **Zapier** in this space. Zapier is a long-standing service that connects apps together — for example, \"when a new email arrives, add a row to a spreadsheet.\" It's one of the most common ways for non-developers to glue apps together, and several agent products let you plug Zapier-style actions into the agent's toolbox. According to Zapier, more than 9,000 apps and tens of thousands of actions are available through its platform today.\n\n## The permission model — the part that matters most\n\nHere's the part most marketing pages skip: you don't have to hand an agent the keys to everything. A well-designed agent lets you decide, app by app, what it's allowed to do. Common permission levels include:\n\n- **Read-only** — the agent can look at your data but not change it. Useful for things like your CRM (customer database) or accounting records.\n- **Write to specific places** — the agent can update a chosen spreadsheet or post in a chosen channel, but nothing else.\n- **Full access** — the agent can do anything you can do in that app. Convenient, but only worth granting when you really trust the setup.\n\nA good rule of thumb: start with read-only, then open up one small action at a time. If something feels too broad, narrow it down. You can almost always tighten permissions later, but loosening them by accident is harder to undo.\n\n## What this means for you\n\n- **If you're just curious**: An agent is worth trying on a low-stakes task first — something like summarizing a folder of notes or pulling a few facts from documents you already have. That way you see how it behaves before it touches anything important.\n- **If you run a small business or freelance**: Make a short list of the two or three tasks you do over and over every week — invoice follow-ups, weekly status updates, onboarding emails. Those are the first candidates to hand to an agent. Start with one, watch it work, then add the next.\n- **If you're cautious about AI and your data (a sensible instinct)**: Read the permission screen every time. You're approving specific apps and specific actions, not handing over the whole account. If a permission screen says \"full access\" when \"read-only\" would do, choose read-only.\n- **If you already use AI chatbots**: An agent is the same kind of tool you're used to, with a toolbox bolted on. The shift in your habit is small: instead of asking a question, you describe a goal and approve a plan before the agent runs it.\n\n## Wrap-up\n\nAI agents are the next step up from chatbots — assistants that can act inside the apps you already use, with you staying in control of what they touch. The smartest next step today: pick one small, repetitive task you'd like to stop doing by hand, and look for an agent tool that lets you try it with the narrowest permission setting available. You'll learn the most from a real, low-stakes test — and you'll keep your data safer while you learn.",
+  "original_title": " Put your Dropbox project context to work with Muse, from Meta "
+}

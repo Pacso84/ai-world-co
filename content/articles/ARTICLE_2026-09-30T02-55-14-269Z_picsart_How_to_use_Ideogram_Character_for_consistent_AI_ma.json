@@ -1,0 +1,64 @@
+{
+  "_meta": {
+    "written_at": "2026-09-30T03:00:45.821Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.01111572,
+    "original_draft": "2026-09-30T02-55-14-269Z_picsart_How_to_use_Ideogram_Character_for_consistent_AI_ma.json",
+    "source_id": "picsart",
+    "source_name": "PicsArt Blog (hivatalos)",
+    "source_link": "https://picsart.com/blog/use-ideogram-character-for-ai-mascots/",
+    "source_links": [
+      "https://picsart.com/blog/use-ideogram-character-for-ai-mascots/"
+    ],
+    "source_snippet": "To use Ideogram Character for consistent AI mascot visuals, design the mascot once in Ideogram 4.0, attach that image as the reference, and prompt only for what changes: the pose, the scene, the lighting or the prop. The model holds the face, hair, outfit and proportions from that single image. The result is a brand … \nContinue reading \"How to use Ideogram Character for consistent AI mascot visuals\"",
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "published_at": "2026-09-30T03:02:17.738Z",
+    "slug": "how-to-use-ideogram-character-for-consistent-ai-mascot-visuals",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1402
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": 8,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured how-to guide with clear explanations of technical terms, a strong hook scenario, practical step-by-step instructions, and an audience-segmented What this means for you section. Minor gap: Steps 1 and 3 assume familiarity with Ideogram's UI without explaining how to start a generation or how to attach a reference file, but the 'You'll know it worked when' callouts and context suggest the audience already has basic AI image generation experience. No prohibited content, no clichés, no British spellings, no invented facts.",
+      "_aiCost": 0.0026085,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-09-30T03:04:02.091Z",
+    "guide_worthy": true,
+    "related_guide_topic": "how-to-use-ideogram-character-for-consistent-ai-mascot-visua",
+    "image_v": 2,
+    "image_at": "2026-09-30T03:06:26.003Z",
+    "seo": {
+      "meta_description": "Learn how to use Ideogram 4.0's Character feature to create consistent AI mascot visuals. Design once, reuse for matching faces, outfits, and poses.",
+      "keywords": [
+        "Ideogram 4.0 character feature",
+        "consistent AI mascot design",
+        "how to keep AI character consistent",
+        "Ideogram character reference",
+        "AI mascot generation tutorial",
+        "same character different poses AI",
+        "Ideogram 4.0 mascot guide"
+      ],
+      "seo_score": 9,
+      "suggestions": [
+        "Add a section with actual prompt examples showing the reference syntax and parameters for best results",
+        "Include a comparison image showing the original mascot versus multiple generated poses to demonstrate consistency",
+        "Add a brief troubleshooting section addressing common issues like character drift or unexpected changes"
+      ],
+      "optimised_at": "2026-09-30T03:07:06.298Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"How to Use Ideogram Character for Consistent AI Mascot Visuals\"\nsubtitle: \"Design your mascot once in Ideogram 4.0, then reuse that image as a reference so every new pose keeps the same face, hair, and outfit\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 6\ntags: [\"ideogram\", \"ai-art\", \"character-design\", \"branding\", \"image-generation\"]\n---\n\n# How to Use Ideogram Character for Consistent AI Mascot Visuals\n\n> **In short:** Ideogram's Character feature, available in Ideogram 4.0, lets you design a mascot once and reuse that image as a reference — the model holds the face, hair, outfit, and proportions consistent while you prompt for new poses, scenes, lighting, or props.\n\nYou generate a friendly fox mascot in a denim jacket. You love it. Then you need that same fox on a website banner, in a podcast thumbnail, holding a coffee cup, and waving from a T-shirt. The catch with most AI image tools is that \"the same character\" never really looks the same twice. The nose shifts, the jacket changes color, the hair gets longer — and suddenly you have three mascots instead of one.\n\nAccording to Ideogram's announcement, that's exactly the problem Character is built to fix.\n\n## Before you start: what you'll need\n\n- An **Ideogram account**. Pricing and plan options are listed on Ideogram's official pricing page — check it for the most current details.\n- Access to **Ideogram 4.0**, which is the model version that includes the Character feature. The announcement is built around this version.\n- A clear idea of the mascot you want. Even a rough sketch or a written description helps.\n- A few minutes to save and reuse one reference image. That single image is the whole trick.\n\n> **What is a \"reference image\"?** It's a picture you feed the AI as an example of what something should look like. Instead of describing the character with words, you just show it.\n\n## Step 1 — Generate your base mascot in Ideogram 4.0\n\nStart by creating the \"official\" version of your mascot. Open Ideogram 4.0 and write a **prompt** (the instruction you give the AI) that describes your character in detail: species, outfit, colors, hairstyle, proportions, accessories — anything that's part of the character's identity.\n\nRun a few generations until you get one image that really feels right. Don't worry about pose, background, or lighting yet — those are things you'll vary later. Focus only on the character itself.\n\n💬 Example prompt: *\"Friendly cartoon fox mascot, soft round features, denim jacket over a red t-shirt, big amber eyes, neutral standing pose, simple flat illustration style.\"*\n\n**You'll know it worked when** you have one image you'd be happy to use as the \"official\" version of your mascot — a clean, recognizable look you could put on a business card.\n\n## Step 2 — Save that image as your character anchor\n\nOnce you have the image you love, save it. This is now your character's anchor — the reference that every future generation will be measured against. Give the file a clear name like `mascot-fox-official.png` so you can find it again.\n\nTreat this image the way a brand treats its logo file: as the single source of truth.\n\n💬 Example filename: `mascot-fox-v1-front.png`\n\n**You'll know it worked when** you can find the file easily and you have one — and only one — \"official\" reference image stored somewhere you trust.\n\n## Step 3 — Start a new generation and attach the reference image\n\nFor your next image, begin a fresh generation in Ideogram 4.0 and attach the file from Step 2 as a character reference. According to Ideogram's announcement, this is what tells the model: \"keep this character the same, no matter what else I ask for.\"\n\nYou don't need to re-describe the fox in words. The image already does that work for you.\n\n💬 What to attach: the saved `mascot-fox-v1-front.png` from Step 2.\n\n**You'll know it worked when** the new generation interface shows your reference image attached — usually as a small thumbnail near the prompt area once the upload completes.\n\n## Step 4 — Prompt only for what should change\n\nNow write a new prompt, but only describe the *changes* — pose, scene, lighting, prop. Leave the character's features out of the prompt. The reference image is handling face, hair, outfit, and proportions for you.\n\nThis is the part that takes practice. If you keep describing the fox in the prompt, you may accidentally nudge the model away from your reference. Let the image do the talking.\n\n💬 Example prompt: *\"Same character, now sitting at a wooden desk, holding a coffee mug, warm morning light from the left.\"*\n\n**You'll know it worked when** the new image clearly shows the new pose and setting, but the character's face, hair, jacket, and overall proportions still match your reference image.\n\n## Step 5 — Compare, tweak, and rerun\n\nOpen both images side by side. Does the new image feel like the same character? If yes, great. If something is off — the eyes look different, the jacket color shifted, the hair got longer — adjust the prompt.\n\nAccording to Ideogram's announcement, the model holds the character features *from* the reference image, so your prompt should focus on what should change, not what should stay the same. If a feature keeps drifting, your prompt may be accidentally re-describing it.\n\n💬 Tweak example: if the eyes keep changing color, remove any mention of eyes from your prompt entirely.\n\n**You'll know it worked when** a colleague looking at both images says \"yeah, that's the same character\" without you having to point it out.\n\n## Step 6 — Build a small library of poses\n\nOnce you've got one good variation, repeat. Generate the same mascot waving, pointing, holding a product, sitting at a laptop, in different lighting. Each time, attach the same reference and only change the prompt for the new context.\n\nSoon you'll have a starter library of on-brand mascot images you can drop into a banner, a thumbnail, a slide, or a sticker pack — all visually consistent.\n\n💬 Library starter set: front-facing, three-quarter view, holding a product, sitting at a desk, waving.\n\n**You'll know it worked when** you can pull five to ten images from your library and they all look like they belong to the same brand.\n\n## Common mistakes to avoid\n\n- **Re-describing the character in every prompt.** Once the reference image is attached, the model reads it. Adding a long character description often introduces drift. Describe only what changes.\n- **Using different reference images for the \"same\" character.** Pick one anchor image and stick with it. Mixing references causes mixed features — and a slightly off-model mascot.\n- **Expecting perfect consistency on the first try.** AI image models are not magic. You'll likely need two or three attempts per pose before the result feels right. Plan for that.\n- **Forgetting to save the original in good resolution.** A blurry or low-res reference image gives you blurry or low-res variations. Start with the cleanest version you can get.\n\n## What this means for you\n\n- **If you run a small business or brand:** a consistent mascot used to mean hiring an illustrator for a full set of poses. Ideogram Character lets you start with one AI-generated image and expand from there — useful for early-stage branding, side projects, or merch concepts.\n- **If you create content (podcasts, YouTube, newsletters):** the same mascot can show up on your thumbnail, your about page, and your merch without looking like three different characters. That visual consistency is what audiences recognize.\n- **If you're just experimenting:** pick any character you like — a robot, a cat, a person — and run the workflow a few times. It's a low-cost way to learn how AI image tools handle consistency.\n- **If you already use AI image tools:** the core idea — separate \"what stays the same\" (reference image) from \"what changes\" (prompt) — is a pattern that travels. It works well in any tool that supports reference images.\n\n## Wrap-up\n\nThe big idea behind Ideogram Character is simple: stop describing the same character over and over. Design it once, attach the image, and only prompt for what should change.\n\nYour next step is short and concrete: open Ideogram 4.0, generate one mascot you're happy with, save it, then run Steps 3 and 4 once. Five minutes from now you'll know whether this workflow fits how you work.",
+  "original_title": "How to use Ideogram Character for consistent AI mascot visuals"
+}

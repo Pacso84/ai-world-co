@@ -1,0 +1,64 @@
+{
+  "_meta": {
+    "written_at": "2026-09-30T02:59:52.371Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.01117368,
+    "original_draft": "2026-09-30T02-55-14-269Z_picsart_How_to_use_Recraft_V4_1_for_AI_logo_design.json",
+    "source_id": "picsart",
+    "source_name": "PicsArt Blog (hivatalos)",
+    "source_link": "https://picsart.com/blog/use-recraft-v4-1-for-ai-logo-design/",
+    "source_links": [
+      "https://picsart.com/blog/use-recraft-v4-1-for-ai-logo-design/"
+    ],
+    "source_snippet": "To use Recraft V4.1 for AI logo design, run your early concept rounds on a raster model, then generate the final mark in Recraft V4.1 Vector. Vector returns an SVG built from clean lines, so the same file works on a favicon, a website header and a printed sign without going soft at the edges. … \nContinue reading \"How to use Recraft V4.1 for AI logo design\"",
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "published_at": "2026-09-30T03:02:36.838Z",
+    "slug": "recraft-v4-1-for-ai-logo-design-what-the-workflow-looks-like",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 830
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Solid explainer with good technical explanations (raster vs vector, SVG, favicon) in plain language for everyday readers. Clean structure with hook, main content, audience-specific takeaways, and actionable wrap-up. No prohibited content, no invented facts, no clichés. A useful, trustworthy article.",
+      "_aiCost": 0.00141048,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-09-30T03:04:09.883Z",
+    "guide_worthy": true,
+    "related_guide_topic": "how-to-create-ai-logos-with-recraft-v4-1-vector",
+    "image_v": 2,
+    "image_at": "2026-09-30T03:06:35.437Z",
+    "seo": {
+      "meta_description": "Learn Recraft's two-step AI logo workflow: sketch on raster, then export crisp vector SVG files that scale from favicon to billboard.",
+      "keywords": [
+        "Recraft AI logo design",
+        "AI logo design workflow",
+        "vector vs raster logo design",
+        "how to design logo with AI",
+        "Recraft V4.1 vector",
+        "SVG logo file format",
+        "AI generated logo tools"
+      ],
+      "seo_score": 7,
+      "suggestions": [
+        "Add specific V4.1 features or capabilities to provide more searchable detail",
+        "Include practical tips or steps readers can follow",
+        "Add context about when to use vector vs raster for different logo use cases"
+      ],
+      "optimised_at": "2026-09-30T03:07:13.267Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Recraft V4.1 for AI Logo Design: What the Workflow Looks Like\"\nsubtitle: \"The approach: sketch ideas on a raster model, then move to V4.1 Vector for the final mark — and why a vector file matters\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"ai-design\", \"logo-design\", \"recraft\", \"vector-graphics\"]\n---\n\n# Recraft V4.1 for AI Logo Design: What the Workflow Looks Like\n\n> **In short:** Recraft's approach for AI logo design runs early concept rounds on a raster model, then switches to V4.1 Vector for the final mark — an SVG that stays sharp from a tiny browser tab icon to a printed sign.\n\nDesigning a logo used to mean either learning vector tools yourself or paying a designer. Now AI tools can draft concepts in seconds. But the moment you want that logo to look sharp at every size — from a 16-pixel favicon (the tiny icon in your browser tab) to a banner on a printed sign — the file format matters as much as the picture itself.\n\n## The two-step workflow Recraft describes\n\nAccording to Recraft's own guide on using V4.1 for logo design, the process is split into two stages:\n\n- **Early concept rounds on a raster model.** A raster image is the kind made of pixels — like a regular photo. It's fast to generate and easy to compare lots of ideas side by side, which is what you want when you're still exploring.\n- **The final mark in Recraft V4.1 Vector.** When you have a direction you like, you generate the final version in V4.1 Vector, the AI model that returns a vector file instead of a pixel image.\n\nThe split matters because the two stages need different things from the AI. Early exploration rewards speed and variety. The final mark rewards precision.\n\n## Why the vector output matters\n\nThe output of V4.1 Vector is an SVG (Scalable Vector Graphics) — a file built from mathematical lines and shapes rather than a grid of colored dots. That single difference changes how the logo behaves everywhere it appears:\n\n- **A favicon** — the 16-by-16-pixel icon in your browser tab\n- **A website header** at full size\n- **A printed sign** on a wall or storefront\n\nAll three use the same file. None of them \"go soft at the edges\" — the term Recraft uses to describe what happens when a pixel-based image is scaled beyond its original size and starts to look blurry.\n\nIf you've ever tried to use a regular photo as a logo, you've seen this. The image looks fine on your phone, then turns fuzzy when you stretch it across a website header. A vector file sidesteps that problem because the lines are redrawn at whatever size you need them.\n\n## What to keep in mind when generating logos with AI\n\nA clean SVG is a real advantage, but it's not the whole job. A few things worth thinking through before you commit to an AI-generated logo:\n\n- **Check it at small sizes.** Logos live everywhere from app icons to embroidered shirts. Shrink your design to favicon size before you fall in love with it — if the shape still reads, you're in good shape.\n- **Mind uniqueness and trademarks.** Just because the AI produced it doesn't mean no one else has a similar mark. A quick search before you commit can save you a real headache later.\n- **Keep the editable source.** Once you have a final SVG, save the version Recraft gave you. If you ever want to tweak a curve or change a color, you want the editable file, not just a flattened export.\n\n## What this means for you\n\n- **If you're designing a logo for a side project or hobby:** This kind of workflow lets you sketch many directions cheaply, then settle on a clean final file you can actually use anywhere — without learning Illustrator or hiring a designer.\n- **If you're a small business owner or freelancer:** A vector-based AI workflow means one file works on your website, your invoices, your social media, and a printed sign — closer to what a real branding deliverable looks like.\n- **If you're just curious about AI design tools:** The bigger shift is that AI tools now produce file formats (vector) that used to require specialized design software. That gap is closing for everyday users.\n\n## Wrap-up\n\nRecraft's V4.1 workflow for AI logo design is built around a simple split: rough out ideas with a raster model, then switch to V4.1 Vector for the final mark. The payoff is a single SVG file that holds up at every size you'd realistically need. If you've been holding off on AI logo tools because the output looked blurry when scaled up, that's the specific problem this approach is designed to solve. A reasonable first step today: generate a few rough concepts, pick the one direction you like, and see what the Vector version looks like shrunk down to favicon size.",
+  "original_title": "How to use Recraft V4.1 for AI logo design"
+}

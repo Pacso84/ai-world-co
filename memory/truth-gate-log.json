@@ -1,71 +1,4 @@
 {
-  "2026-09-11": [
-    {
-      "at": "2026-09-11T02:01:51.643Z",
-      "file": "WRITER_2026-09-11T01-58-29-349Z_openai-blog_Expanding_AI_access_and_cyber_defense_for_federal_.json",
-      "action": "hold",
-      "reasons": [
-        "AI-bíró nem elérhető (érthetetlen AI-válasz: credible mező hiányzik) — visszatartva a következő futásig"
-      ]
-    },
-    {
-      "at": "2026-09-11T02:05:19.048Z",
-      "file": "WRITER_2026-09-11T01-58-29-349Z_openai-blog_Expanding_AI_access_and_cyber_defense_for_federal_.json",
-      "action": "hold",
-      "reasons": [
-        "AI-bíró nem elérhető (érthetetlen AI-válasz: credible mező hiányzik) — visszatartva a következő futásig"
-      ]
-    },
-    {
-      "at": "2026-09-11T02:12:51.947Z",
-      "file": "WRITER_GUIDE_create-custom-genmoji-and-images-with-apple-intelligence-ima.json",
-      "action": "block",
-      "reasons": [
-        "Apple Intelligence, Image Playground, and Genmoji are real Apple features, so they are not fabricated. However, the article states 'iOS 18.1 or later for Genmoji, iOS 18.2 or later for the standalone Image Playground app.' While Genmoji did launch with iOS 18.1, the standalone Image Playground app launched with iOS 18.2 in December 2024, so this appears correct.",
-        "The article mentions 'iPhone 17 model' as supported. As of available information through early 2026, there has been no verified announcement or release of an iPhone 17. This is a fabricated product name stated as fact.",
-        "The article states that style options in Image Playground are 'Animation', 'Illustration', and 'Sketch'. While Animation and Illustration are real styles, 'Sketch' is not a confirmed style option for Image Playground based on available information — this may be a fabricated UI element."
-      ],
-      "confidence": 6
-    },
-    {
-      "at": "2026-09-11T12:30:56.502Z",
-      "file": "WRITER_GUIDE_create-custom-genmoji-and-images-with-apple-intelligence-ima.json",
-      "action": "block",
-      "reasons": [
-        "The article states 'iOS 18.1 or later for Genmoji, and iOS 18.2 or later for the standalone Image Playground app' as specific version requirements. While Genmoji and Image Playground are real Apple Intelligence features, the exact iOS version numbers cited (18.1 for Genmoji, 18.2 for Image Playground) are presented as concrete facts but cannot be verified as accurate from the information provided."
-      ],
-      "confidence": 6
-    },
-    {
-      "at": "2026-09-11T12:32:36.961Z",
-      "file": "WRITER_GUIDE_create-custom-genmoji-and-images-with-apple-intelligence-ima.json",
-      "action": "block",
-      "reasons": [
-        "Az AI-bíró kitalált állítást talált (részletek nélkül)"
-      ],
-      "confidence": 2
-    },
-    {
-      "at": "2026-09-11T18:52:49.846Z",
-      "file": "WRITER_2026-09-11T18-51-46-518Z_picsart_How_FLUX_Video_Edit_rewrites_a_clip_from_one_instr.json",
-      "action": "block",
-      "reasons": [
-        "The article presents 'PicsArt Agents' as a real, named product feature with voice control and the ability to interrupt and redirect edits. PicsArt does have an 'AI Agents' feature with voice control that launched, but attributing specific behaviors like 'interrupt mid-task and redirect without starting over' and specific integration with 'OpenAI's real-time speech technology (the same family that powers voice mode in ChatGPT)' as established facts is presented without verifiable sourcing for these specific claims.",
-        "The article presents 'FLUX Video Edit' by Black Forest Labs as a real, released product that performs targeted one-instruction video edits preserving length, camera movement, framing and audio. While Black Forest Labs exists and has FLUX image models, there is no verified release of a 'FLUX Video Edit' product with these specific capabilities described as fact.",
-        "The article states PicsArt is 'wiring the voice side to OpenAI's real-time speech technology' as an established integration fact, with no verifiable confirmation of this specific OpenAI integration powering PicsArt's voice feature."
-      ],
-      "confidence": 7
-    },
-    {
-      "at": "2026-09-11T18:54:12.908Z",
-      "file": "WRITER_2026-09-11T18-51-46-518Z_picsart_How_FLUX_Video_Edit_rewrites_a_clip_from_one_instr.json",
-      "action": "block",
-      "reasons": [
-        "The article states 'PicsArt has been publicly rolling out AI editing agents inside its app, with voice control as part of that direction — that's confirmed.' This asserts PicsArt Agents with voice control as a confirmed, deployed product feature/direction. Per prior verification, the specific combination of PicsArt Agents + voice control as a real, shipped capability is not confirmed and was previously flagged as fabricated."
-      ],
-      "confidence": 7
-    }
-  ],
   "2026-09-12": [
     {
       "at": "2026-09-12T02:16:59.017Z",
@@ -348,6 +281,20 @@
       "reasons": [
         "AI-bíró nem elérhető (érthetetlen AI-válasz: credible mező hiányzik) — visszatartva a következő futásig"
       ]
+    }
+  ],
+  "2026-09-30": [
+    {
+      "at": "2026-09-30T03:03:01.327Z",
+      "file": "WRITER_2026-09-30T02-55-14-270Z_dropbox-blog__Put_your_Dropbox_project_context_to_work_with_Mus.json",
+      "action": "block",
+      "reasons": [
+        "\"Meta's Muse\" AI agent is not a known product. Meta has not announced a personal AI agent called 'Muse' with Dropbox and Zapier integrations. This appears to be a fabricated product.",
+        "Muse for Small Business as described — a personal AI agent for small business owners — is not a real, announced Meta product.",
+        "The claim that Meta made Zapier a 'named connector inside Muse' with access to '9,000 apps and 40,000 actions' via MCP is unverified and likely fabricated.",
+        "Attributing specific quotes ('works in the background to help' framed as Meta describing Muse, and characterizing Muse as 'its answer' to agents) to a 'Meta's announcement' that does not appear to exist constitutes invented specifics."
+      ],
+      "confidence": 9
     }
   ]
 }

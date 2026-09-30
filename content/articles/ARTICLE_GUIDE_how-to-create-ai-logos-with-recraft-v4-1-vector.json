@@ -1,0 +1,63 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "how-to-create-ai-logos-with-recraft-v4-1-vector",
+    "company": "Recraft",
+    "tool": "Recraft",
+    "icon": "🆕",
+    "level": "beginner",
+    "source_news": {
+      "file": "ARTICLE_2026-09-30T02-55-14-269Z_picsart_How_to_use_Recraft_V4_1_for_AI_logo_design.json",
+      "title": "How to use Recraft V4.1 for AI logo design"
+    },
+    "written_at": "2026-09-30T03:05:17.046Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.01237518,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-09-30T03:05:45.108Z",
+    "slug": "how-to-create-ai-logos-with-recraft-v4-1-vector",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1571
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Excellent beginner guide with clear explanations of technical terms, encouraging tone, and well-structured steps that include fallbacks and concrete examples throughout. The two-stage raster-to-vector workflow is clearly explained, and the 'What this means for you' section delivers practical value.",
+      "_aiCost": 0.00189108,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "image_v": 2,
+    "image_at": "2026-09-30T03:06:49.153Z",
+    "seo": {
+      "meta_description": "Learn how to create AI logos with Recraft V4.1 Vector. This beginner guide shows a two-stage workflow for crisp SVG logos at any size.",
+      "keywords": [
+        "how to create AI logos",
+        "Recraft V4.1 Vector",
+        "AI logo design tutorial",
+        "create SVG logos with AI",
+        "vector logo from AI generator",
+        "Recraft logo tutorial for beginners"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more specific details about the two-stage workflow — current excerpt is too brief and cuts off mid-sentence, which may confuse readers and search engines",
+        "Consider adding image alt text recommendations that include the main keyword (e.g., 'AI logo created with Recraft V4.1 Vector in SVG format')",
+        "Include 1-2 FAQs at the end addressing common questions like 'Can I use AI logos commercially?' to capture featured snippet opportunities"
+      ],
+      "optimised_at": "2026-09-30T03:07:29.976Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"How to Create AI Logos with Recraft V4.1 Vector\"\nsubtitle: \"A beginner-friendly walkthrough of the two-stage workflow Recraft describes for designing logos that stay sharp at every size\"\ncategory: \"guide\"\naudience: \"both\"\ncompany: \"Recraft\"\ntool: \"Recraft\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"getting-started\", \"design\", \"logos\"]\n---\n\n# How to Create AI Logos with Recraft V4.1 Vector\n\n> **In short:** Recraft describes a two-stage AI logo workflow — generate lots of concepts on a raster model first to explore ideas, then switch to Recraft V4.1 Vector for the final mark. The vector output is an SVG file that stays crisp from a 16-pixel browser tab icon to a printed sign.\n\nDesigning a logo used to mean either learning vector design software yourself or paying a designer. Today, AI tools like Recraft can sketch dozens of ideas in seconds. The catch is the file format: a regular image — a \"raster\" picture made of tiny colored squares called pixels — can look fuzzy when you blow it up or shrink it down. A vector file, built from mathematical lines instead of pixels, stays sharp at any size.\n\nThis guide walks through Recraft's two-stage approach: explore concepts as raster images first, then generate the final logo in Recraft V4.1 Vector. The final file is an SVG (Scalable Vector Graphics) you can use on a tiny favicon, a website header, or a printed sign without any blurriness.\n\n## Before you start\n\n- A free Recraft account (sign up at recraft.ai with an email address or a Google account — check the site for the current plan options, since free and paid tiers exist)\n- A recent web browser (Chrome, Firefox, Safari, or Edge)\n- A rough idea of your brand: name, vibe, and one or two colors you like\n- About 20–30 minutes for your first attempt\n\n## Step 1 — Sign in and start a new project\n\nOpen recraft.ai in your browser and sign in with the account you just made. Look for a button that says something like \"New design\" or \"Create\" — on most creative tools it sits near the top-left of the canvas. After you click it, a blank workspace opens. You'll see a text box where you type what you want and some style controls to the side. If your screen looks crowded instead of clean, look for a \"Blank canvas\" option in a menu — it's the simplest starting point.\n\n💬 Example: type a one-line description like \"warm coffee shop, hand-lettered feel, soft cream and forest green\" into the prompt box.\n\nYou'll know it worked when the canvas is empty and your cursor is blinking in the prompt field, ready for instructions.\n\n## Step 2 — Generate a batch of concepts on a raster model\n\nIn the style controls (often a sidebar or a row of icons above the prompt box), pick the option that produces raster-style images — sometimes labeled \"Raster,\" \"Photo,\" or shown with a small photo icon rather than a vector-shape icon. Recraft describes starting with raster because it's fast and easy to compare many ideas side by side. Then describe your logo in plain words and click the button that generates results — it usually looks like a small arrow, a sparkle ✨, or the word \"Generate.\" Expect to wait about 10–20 seconds.\n\n💬 Example prompt: \"minimalist logo for a yoga studio, lotus flower, calm pastel palette, no text in the image.\"\n\nYou'll know it worked when several image options appear on the canvas within half a minute. If nothing appears, look for a small \"Retry\" or \"Generate again\" link — sometimes the first attempt stalls.\n\n## Step 3 — Pick a direction and copy what works\n\nScroll through the generated options and click the one that feels closest to what you want. Most AI image tools let you \"favorite\" or \"select\" an image — look for a heart icon, a star, or a \"Use this image\" button when you hover over it. You're not done yet: this is just your starting point. Read the prompt you typed in Step 2 and tweak the words that mattered most — shape, mood, colors — so your next round focuses on what you liked. This is the part of Recraft's workflow where you \"lock in\" the direction.\n\n💬 Example: if you loved the lotus shape but the colors felt too cold, change \"calm pastel palette\" to \"warm peach and sand palette\" before you continue.\n\nYou'll know it worked when you can point to the one image you want to keep, and you have a tighter prompt that names its strongest traits.\n\n## Step 4 — Switch to Recraft V4.1 Vector for the final mark\n\nNow go back to the style controls and switch from the raster setting to the vector setting. Recraft describes V4.1 Vector as the model that returns a clean SVG instead of a pixel image. SVG is just a file format where shapes are stored as mathematical instructions — like a recipe for drawing a circle — rather than a fixed grid of colored dots. Look for a label like \"Vector,\" \"V4.1 Vector,\" or an icon that looks like geometric shapes rather than a photograph. Make sure your refined prompt is still in the text box, then generate again.\n\n💬 Example: paste your tightened prompt from Step 3 — for instance, \"minimalist lotus logo, warm peach and sand palette, simple shapes only, no text.\"\n\nYou'll know it worked when your result looks like a clean illustration with crisp edges — you can zoom in really close without it turning blurry — and the file is described somewhere in the interface as an SVG.\n\n## Step 5 — Export the SVG and verify it at small sizes\n\nFind the export or download control — usually an icon that looks like a downward arrow ⬇, a share icon, or a button labeled \"Export\" or \"Download.\" If asked to choose a format, pick SVG (not PNG or JPG — those are raster formats that go soft when scaled). Save the file somewhere easy to find, like your Desktop. Then comes the honest test: open the SVG on your phone or in any image viewer and shrink it to about 16 pixels tall — that's the size of a browser tab favicon. If your logo still reads clearly at that size, it works. If the details turn to mush, you may need to simplify the design.\n\n💬 Example: open the file in a browser tab, then zoom out until it looks tiny. If the lotus shape is still recognizable, you're good.\n\nYou'll know it worked when the same SVG file looks sharp both as a 16-pixel favicon and at the size of a website header — no blurriness at either end.\n\n## Step 6 — Save variations and name your files well\n\nBefore you call it done, generate one or two more versions with small tweaks — different colors, a simpler version, or one with your business name typed in. Most tools let you download each result separately. Give every file a clear name that describes what's inside — your future self will thank you when you have six SVGs on your desktop and can't tell them apart. A simple naming pattern works: `brandname-logo-style-color.svg`, something like `lotus-logo-minimal-peach.svg`.\n\n💬 Example: `lotusyoga-logo-minimal-peach.svg`, `lotusyoga-logo-simple-mono.svg`, `lotusyoga-logo-with-text.svg`.\n\nYou'll know it worked when you can open any file two weeks from now and instantly know which version it is, without having to open them all.\n\n## Common mistakes\n\n- **Skipping the raster stage and going straight for vector.** The vector model is great for the final mark, but it's slower to compare ideas. Generate lots of cheap raster options first, then commit to vector once you know what you want — that two-step rhythm is the whole point of Recraft's described workflow.\n- **Exporting as PNG or JPG instead of SVG.** Raster files look fine on screen but turn blurry the moment you scale them up or shrink them down. Always pick SVG for the logo you plan to use everywhere.\n- **Adding too much detail.** Tiny text, thin lines, and busy patterns can vanish when the logo is shrunk to favicon size. If your design falls apart at 16 pixels, simplify it — a strong logo usually has one or two clear shapes, not ten.\n\n## What this means for you\n\n- **In everyday life:** you can finally make a logo for your side project, bakery, garage band, or dog-walking business without paying a designer or learning Illustrator. Twenty minutes of experimenting is enough for a first version you can actually use.\n- **For your business or work:** a single SVG file travels anywhere — your website header, email signature, business card, social media profile, even the tiny favicon in the browser tab — and looks identical at every size. That means one design, no redesigns.\n- **If you're just getting started:** don't aim for perfect on your first try. Generate a batch, pick the one that makes you smile, then refine it. AI logo tools reward quick iteration, not overthinking.\n\n## Try it now\n\nOpen recraft.ai, type \"friendly minimalist logo for a [your project name], [two colors you like]\" into the prompt box, and generate a raster batch. Spend five minutes just looking at the results and noticing which shapes and colors pull you in — that's your style direction, and you'll use it as the seed for your vector version.",
+  "original_title": "How to create AI logos with Recraft V4.1 Vector"
+}
