@@ -1,6 +1,18 @@
 {
-  "at": "2026-09-30T02:54:20.770Z",
+  "at": "2026-09-30T14:24:35.810Z",
   "osszes": 126,
-  "bukottak": [],
-  "problems": []
+  "bukottak": [
+    "slug-collisions.test.js",
+    "tool-kinds.test.js"
+  ],
+  "problems": [
+    {
+      "code": "TESZT_BUKOTT",
+      "detail": "slug-collisions.test.js"
+    },
+    {
+      "code": "TESZT_BUKOTT",
+      "detail": "tool-kinds.test.js"
+    }
+  ]
 }
