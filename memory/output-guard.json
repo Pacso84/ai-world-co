@@ -1,7 +1,7 @@
 {
-  "at": "2026-09-30T14:35:59.241Z",
-  "hir": 521,
-  "utmutato": 468,
+  "at": "2026-09-30T20:26:38.819Z",
+  "hir": 516,
+  "utmutato": 469,
   "problems": [
     {
       "code": "PARITAS_CSAK_HIR",
@@ -11,6 +11,13 @@
         "midread__arrow",
         "midread__lbl",
         "midread__link"
+      ]
+    },
+    {
+      "code": "PARITAS_CSAK_UTMUTATO",
+      "uzenet": "nem műfaji elem csak az útmutatóban: pack-foot",
+      "elemek": [
+        "pack-foot"
       ]
     },
     {
