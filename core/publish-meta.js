@@ -64,7 +64,39 @@ export function slugCimbol(markdown, originalTitle, tartalek) {
  * @param {string?} p.most         ISO időbélyeg (injektálható a teszthez)
  * @returns {{ publishedAt: string, slug: string, forditasElavult: boolean }}
  */
-export function publikalasMeta({ elozo = null, uj = {}, fajlnev = '', most = null } = {}) {
+/**
+ * FOGLALT SLUG KIKERÜLÉSE (2026-09-30, élő eset): egy hír és egy útmutató szó
+ * szerint azonos címmel ment ki ugyanabban a futásban → azonos slug → a build az
+ * egyiket a másikkal írta felül. Útmutatónál „-guide", különben „-2", „-3" …;
+ * a toldalékkal együtt is SLUG_MAX-on belül.
+ */
+export function egyediSlug(alap, foglalt, fajlnev = '') {
+  if (!foglalt || !foglalt.has(alap)) return alap;
+  const jeloltek = [...(/_GUIDE_/.test(String(fajlnev)) ? ['-guide'] : []), ...Array.from({ length: 98 }, (_, i) => `-${i + 2}`)];
+  for (const toldalek of jeloltek) {
+    const s = alap.slice(0, SLUG_MAX - toldalek.length).replace(/-+$/, '') + toldalek;
+    if (!foglalt.has(s)) return s;
+  }
+  return alap;   // 100 ütközés után feladjuk — az őr (quality-guard) jelezni fogja
+}
+
+/**
+ * A MÁR KINT LÉVŐ cikkek slugjai (a saját fájl kivételével) — a hívó adja be a fájlrendszert.
+ * @param {string} dir  content/articles
+ * @param {{readdirSync:Function, readFileSync:Function, join:Function}} io
+ * @param {string} kiveve  a most publikált fájl neve (önmagát nem számítjuk)
+ */
+export function foglaltSlugok(dir, { readdirSync, readFileSync, join }, kiveve = '') {
+  const ki = new Set();
+  let fajlok = [];
+  try { fajlok = readdirSync(dir).filter(f => f.endsWith('.json') && f !== kiveve); } catch { return ki; }
+  for (const f of fajlok) {
+    try { const s = JSON.parse(readFileSync(join(dir, f), 'utf-8'))._meta?.slug; if (s) ki.add(s); } catch { /* sérült fájl */ }
+  }
+  return ki;
+}
+
+export function publikalasMeta({ elozo = null, uj = {}, fajlnev = '', most = null, foglalt = null } = {}) {
   const mostIso = most || new Date().toISOString();
 
   // 1. DÁTUM: ha a cikk MÁR megjelent, az EREDETI dátum marad. Enélkül egy
@@ -74,9 +106,9 @@ export function publikalasMeta({ elozo = null, uj = {}, fajlnev = '', most = nul
   // 2. SLUG: a megjelent URL ÖRÖKRE ugyanaz. Sorrend: a már kint lévő cikké →
   //    az újban esetleg meglévő → végül a címből képzett.
   //    ⚠️ A kint lévő az ELSŐ: egy cím-átírás SOHA nem költöztethet oldalt.
+  //    ÚJ megjelenésnél (nincs kint lévő slug) a FOGLALT slugot kikerüljük.
   const slug = elozo?._meta?.slug
-    || uj?._meta?.slug
-    || slugCimbol(uj?.article_markdown, uj?.original_title, fajlnev);
+    || egyediSlug(uj?._meta?.slug || slugCimbol(uj?.article_markdown, uj?.original_title, fajlnev), foglalt, fajlnev);
 
   // 3. FORDÍTÁS: ha a SZÖVEG változott, a gyorsítótár elavult — a nem-angol
   //    oldalak különben a RÉGI szöveget mutatnák tovább.

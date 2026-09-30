@@ -98,6 +98,9 @@ const IMAGE_NAMES = [
   // a Midjourney és a Picsart mellé. Chat-ablaka nincs, tehát `assistant` szóba
   // sem jöhet.
   'Kling', 'Midjourney', 'Picsart',
+  // Ideogram (karakter-/képgenerálás) és Recraft (vektoros logó-/képgenerálás) —
+  // 2026-09-30, a Picsart-forrás két hírével érkeztek. Képet ÁLLÍTANAK ELŐ → `image`.
+  'Ideogram', 'Recraft',
   // eszközök
   'Image Playground',   // Apple Intelligence képgenerátora — nem chat (2026-08-17)
   'Project Genie',      // Google DeepMind világ-/videómodell — nem chat

@@ -33,7 +33,7 @@ import { lengthIssue, HOWTO_MIN, HOWTO_MAX, GATE_MAX } from '../../core/article-
 import { repetitionIssue, firstParagraph, WINDOW as OPENING_WINDOW } from '../../core/opening-variety.js';
 import { blockingIssues, advisoryIssues, lessonFor } from '../../core/auto-check-codes.js';
 import { guideClaimIssues } from '../../core/guide-claims.js';
-import { publikalasMeta } from '../../core/publish-meta.js';
+import { publikalasMeta, foglaltSlugok } from '../../core/publish-meta.js';
 import { findBritish } from '../../core/us-spelling.js';
 import { skillsBlock } from '../../core/skills.js';
 
@@ -597,7 +597,7 @@ function moveToArticles(writerFilename, writerData, autoCheckResult, aiReviewRes
   try { if (existsSync(articlePath)) prev = JSON.parse(readFileSync(articlePath, 'utf-8')); }
   catch { /* sérült előző fájl → új megjelenésként kezeljük */ }
 
-  const pubMeta = publikalasMeta({ elozo: prev, uj: writerData, fajlnev: articleFilename });
+  const pubMeta = publikalasMeta({ elozo: prev, uj: writerData, fajlnev: articleFilename, foglalt: foglaltSlugok(ARTICLES_DIR, { readdirSync, readFileSync, join }, articleFilename) });
   const publishedAt = pubMeta.publishedAt;
   const pinnedSlug = pubMeta.slug;
 

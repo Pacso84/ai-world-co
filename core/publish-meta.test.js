@@ -105,7 +105,7 @@ t('hiányzó bemenetre sem dob', () => {
 
 t('🔌 az ELLENŐRZŐ útja a közös modult használja', () => {
   const s = forras('agents/ellenorzo/agent.js').split('\n').filter(x => !/^\s*\/\//.test(x)).join('\n');
-  assert.ok(/import \{ publikalasMeta \} from '\.\.\/\.\.\/core\/publish-meta\.js'/.test(s),
+  assert.ok(/import \{ publikalasMeta(?:, foglaltSlugok)? \} from '\.\.\/\.\.\/core\/publish-meta\.js'/.test(s),
     '🔴 nincs import');
   assert.ok(/publikalasMeta\(\{ elozo: prev, uj: writerData/.test(s), '🔴 nem hívja');
   // és a RÉGI, beírt logika NEM maradhat ott — különben megint két példány van
@@ -115,7 +115,7 @@ t('🔌 az ELLENŐRZŐ útja a közös modult használja', () => {
 
 t('🔌 a CEO FELÜLBÍRÁLÁS útja is a közös modult használja', () => {
   const s = forras('agents/ceo/escalate-guides.js').split('\n').filter(x => !/^\s*\/\//.test(x)).join('\n');
-  assert.ok(/import \{ publikalasMeta \} from '\.\.\/\.\.\/core\/publish-meta\.js'/.test(s),
+  assert.ok(/import \{ publikalasMeta(?:, foglaltSlugok)? \} from '\.\.\/\.\.\/core\/publish-meta\.js'/.test(s),
     '🔴 nincs import');
   assert.ok(/const meta = publikalasMeta\(\{/.test(s), '🔴 nem hívja');
   assert.ok(/slug: meta\.slug/.test(s), '🔴 a slug NEM kerül a kimenetbe — ez volt az eredeti hiba');
@@ -135,6 +135,39 @@ t('🔴 EGYETLEN publikáló út sem képez slugot a saját kezén', () => {
     if (/\.toLowerCase\(\)\.replace\(\/\[\^a-z0-9\]\+\/g, '-'\)/.test(s)) gyanus.push(p);
   }
   assert.deepEqual(gyanus, [], '🔴 saját slug-képlet maradt itt: ' + gyanus.join(', '));
+});
+
+// ── FOGLALT SLUG (2026-09-30, élő eset) ──────────────────────────────
+// Ugyanabban a futásban egy hír és egy útmutató SZÓ SZERINT azonos címmel ment ki
+// („How to Use Ideogram Character for Consistent AI Mascot Visuals") → azonos slug →
+// a build az egyik oldalt a másikkal írta felül, az útmutató elérhetetlen lett.
+t('🔴 ÚJ megjelenésnél a FOGLALT slug nem adható ki újra (útmutató: -guide, különben -2, -3)', () => {
+  const uj = { article_markdown: '---\ntitle: "How to Use Ideogram"\n---\n', _meta: {} };
+  const foglalt = new Set(['how-to-use-ideogram']);
+  assert.equal(publikalasMeta({ uj, fajlnev: 'ARTICLE_GUIDE_x.json', foglalt }).slug, 'how-to-use-ideogram-guide');
+  assert.equal(publikalasMeta({ uj, fajlnev: 'ARTICLE_2026_x.json', foglalt }).slug, 'how-to-use-ideogram-2');
+  foglalt.add('how-to-use-ideogram-2');
+  assert.equal(publikalasMeta({ uj, fajlnev: 'ARTICLE_2026_x.json', foglalt }).slug, 'how-to-use-ideogram-3');
+  assert.equal(publikalasMeta({ uj, fajlnev: 'ARTICLE_2026_x.json' }).slug, 'how-to-use-ideogram', 'foglalt-lista nélkül a régi viselkedés');
+});
+
+t('🔴 a MÁR KINT LÉVŐ cikk slugja akkor sem változik, ha „foglalt" (önmaga foglalja)', () => {
+  const elozo = { _meta: { slug: 'how-to-use-ideogram', published_at: '2026-09-01' } };
+  const foglalt = new Set(['how-to-use-ideogram']);
+  assert.equal(publikalasMeta({ elozo, uj: { _meta: {} }, fajlnev: 'ARTICLE_GUIDE_x.json', foglalt }).slug, 'how-to-use-ideogram');
+});
+
+t('a hosszú slug a toldalékkal együtt is belefér a plafonba', () => {
+  const hosszu = 'a'.repeat(SLUG_MAX);
+  const r = publikalasMeta({ uj: { _meta: { slug: hosszu } }, fajlnev: 'ARTICLE_GUIDE_x.json', foglalt: new Set([hosszu]) }).slug;
+  assert.ok(r.length <= SLUG_MAX && r.endsWith('-guide'), r);
+});
+
+t('🔑 MINDKÉT publikáló út átadja a foglalt slugokat', () => {
+  const e = readFileSync(join(ROOT, 'agents', 'ellenorzo', 'agent.js'), 'utf-8');
+  const c = readFileSync(join(ROOT, 'agents', 'ceo', 'escalate-guides.js'), 'utf-8');
+  assert.match(e, /publikalasMeta\(\{ elozo: prev, uj: writerData, fajlnev: articleFilename, foglalt: foglaltSlugok\(/);
+  assert.match(c, /foglalt: foglaltSlugok\(/);
 });
 
 console.log(`\n✅ ${pass} teszt rendben`);

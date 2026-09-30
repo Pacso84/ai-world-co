@@ -35,6 +35,16 @@ t('🔑 napi 1 középszintű: ha ma még nincs → az első középszintű ELŐ
   assert.deepEqual(szintSorrend([T('a'), T('b')], { maiKozep: 0 }).map(x => x.id), ['a', 'b'], 'középszintű téma nélkül a sor változatlan');
 });
 
+t('🔑 ha a sorban NINCS középszintű téma → az első nem-kezdő című téma lesz ma középszintű (élő eset 09-30: 10 téma, 0 középszintű)', () => {
+  const sor = [{ id: 'g', title: 'Getting started with Claude', level: 'beginner' }, { id: 'x', title: 'How to Use Ideogram Character for Consistent Mascot Visuals', level: 'beginner' }, { id: 'y', title: 'Plan a trip', level: 'beginner' }];
+  const r = szintSorrend(sor, { maiKozep: 0 });
+  assert.deepEqual(r.map(x => x.id), ['x', 'g', 'y']);
+  assert.equal(r[0].level, 'intermediate');
+  assert.equal(sor[1].level, 'beginner', 'az eredeti témát nem írja át (másolat)');
+  assert.equal(szintSorrend(sor, { maiKozep: 1 }).every(x => x.level === 'beginner'), true, 'ha ma már volt, nem léptet elő');
+  assert.equal(szintSorrend([{ id: 'g', title: 'A beginner guide to Gemini', level: 'beginner' }], { maiKozep: 0 })[0].level, 'beginner', 'kezdő című nem lesz középszintű');
+});
+
 t('a mai középszintűek számlálása a written_at napja szerint', () => {
   const m = [{ level: 'intermediate', written_at: '2026-09-29T03:10:00Z' }, { level: 'intermediate', written_at: '2026-09-28T23:59:00Z' }, { level: 'beginner', written_at: '2026-09-29T08:00:00Z' }];
   assert.equal(maiKozepDb(m, '2026-09-29'), 1);
@@ -51,6 +61,9 @@ t('🔑 a két író TÉNYLEG ezt a modult kérdezi (és a prompt-szövegek a ka
   assert.match(i, /import \{ tartalomKapcsolok \} from '\.\.\/\.\.\/core\/content-switches\.js';/);
   assert.match(i, /const HIR_HALADO_PONT = tartalomKapcsolok\(\)\.hirHalado/);
   assert.match(i, /an easy first step\$\{HIR_HALADO_PONT\}/);
+  // 09-30: a sablon példapontját az író NEM követte (4 hírből 0) → kifejezett szabály is kell
+  assert.match(i, /with practical advice for different reader types\$\{HIR_HALADO_SZABALY\}/);
+  assert.match(i, /const HIR_HALADO_SZABALY = tartalomKapcsolok\(\)\.hirHalado/);
 });
 
 console.log(`\n${bukott ? '❌' : '✅'} ${pass} sikeres, ${bukott} bukott`);

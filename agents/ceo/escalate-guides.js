@@ -29,7 +29,7 @@ import { dirname, join } from 'path';
 import { ask } from '../../core/ai-router.js';
 import { remember } from '../../core/memory-manager.js';
 import { message } from '../../core/ops.js';
-import { publikalasMeta } from '../../core/publish-meta.js';
+import { publikalasMeta, foglaltSlugok } from '../../core/publish-meta.js';
 import { truthGate } from '../../core/truth-gate.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -153,7 +153,8 @@ function publishGuide(rejectedFilename, data, markdown, reason, decisionMeta) {
   const meta = publikalasMeta({
     elozo,
     uj: { _meta: data._meta, article_markdown: markdown, original_title: data.original_title },
-    fajlnev: articleFilename
+    fajlnev: articleFilename,
+    foglalt: foglaltSlugok(ARTICLES_DIR, { readdirSync, readFileSync, join }, articleFilename)
   });
 
   const out = {

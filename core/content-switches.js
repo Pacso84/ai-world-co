@@ -49,13 +49,23 @@ export function maiKozepDb(metak, ma) {
  *   • kikapcsolva → a középszintűek egyáltalán nem kerülnek sorra.
  * A többi téma sorrendje változatlan.
  */
+// Kezdőknek szóló cím — ebből NEM lesz középszintű útmutató.
+const KEZDO_CIM = /\b(?:getting started|beginners?|first steps?|basics|for dummies|introduction to|what is)\b/i;
+
 export function szintSorrend(topics, { maiKozep = 0, be = true, cel = KOZEP_NAPI } = {}) {
   const T = Array.isArray(topics) ? topics : [];
   const kozepE = (t) => t && t.level === 'intermediate';
   if (!be || maiKozep >= cel) return T.filter(t => !kozepE(t));
   const i = T.findIndex(kozepE);
-  if (i <= 0) return T.slice();
-  return [T[i], ...T.slice(0, i), ...T.slice(i + 1)];
+  if (i === 0) return T.slice();
+  if (i > 0) return [T[i], ...T.slice(0, i), ...T.slice(i + 1)];
+  // NINCS középszintű téma a sorban (élő eset 09-30: a témák a hír-párosítóból
+  // jönnek, alapból kezdő szintűek, az ötletelő pedig csak szabad helynél fut —
+  // így a napi középszintű SOSEM került volna sorra). Az első NEM kezdő című
+  // téma lesz ma középszintű. MÁSOLAT: a témasorban a téma nem íródik át.
+  const j = T.findIndex(t => t && !KEZDO_CIM.test(String(t.title || '')));
+  if (j < 0) return T.slice();
+  return [{ ...T[j], level: 'intermediate' }, ...T.slice(0, j), ...T.slice(j + 1)];
 }
 
 export default { tartalomKapcsolok, maiKozepDb, szintSorrend, KOZEP_NAPI };

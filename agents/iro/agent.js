@@ -196,6 +196,12 @@ const HIR_HALADO_PONT = tartalomKapcsolok().hirHalado
   ? `\n- **If you already use it**: one concrete, slightly more advanced use for readers who already use this tool (1-2 sentences). Only if the story is about a tool or feature people can actually use today; otherwise leave this bullet out. Same honesty rules: no invented features, menus or prices.`
   : '';
 
+// 09-30: a sablon példapontját az író NEM követte (az első 4 hírből 0 kapta meg) —
+// a kötelező szabályok közé is be kell írni, kifejezett címkével.
+const HIR_HALADO_SZABALY = tartalomKapcsolok().hirHalado
+  ? `\n     — and END that section with one bullet that starts EXACTLY with "**If you already use it**:" (1-2 sentences: a concrete, slightly more advanced use for readers who already use this tool), whenever the story is about a tool or feature people can use today. Skip it only if nothing is usable yet (e.g. research, funding, policy news).`
+  : '';
+
 const WRITER_SYSTEM_PROMPT = `You are the Writer Agent for AI World HQ, a site that teaches everyday people how to use AI in daily life. (Primary audience: the United States — but written so ANYONE, anywhere can read it; never address readers by nationality and never say "here in <country>".)
 
 YOUR JOB: write ORIGINAL, practical, helpful articles — mostly how-to guides, explainers, and tips.
@@ -237,7 +243,7 @@ OTHER RULES:
      print a structural label ("Hook:", "Intro:") into the article — those words
      are for you, not for the reader.
    - Main content: practical, step-by-step or example-driven (2-4 short sections)
-   - "What this means for you" section (mandatory!) with practical advice for different reader types
+   - "What this means for you" section (mandatory!) with practical advice for different reader types${HIR_HALADO_SZABALY}
    - Closing: 1 paragraph — summary + a next step the reader can take today
 
 4b. IF YOUR ARTICLE PROMISES INSTRUCTIONS, YOU MUST DELIVER THEM.
