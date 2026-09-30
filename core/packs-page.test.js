@@ -308,11 +308,18 @@ t('🔑 az eladó oldal CSAK akkor épül meg, ha van adat (nincs üres boltba m
     'a sitemap-sor nincs PACKS.enabled mögé zárva');
 });
 
-t('🔑 a csomag-sor CSAK a Reellel népszerűsített útmutatók alá kerül (user-döntés)', () => {
-  // A user szűk kísérletet kért: ~27 cikk, nem mind a 449. Ha valaki a
-  // feltételt kiveszi, ez a lépés szól.
-  assert.ok(/a\.reelAt \? packLine\(/.test(build),
-    'a csomag-sor nincs a reelAt feltételhez kötve');
+t('🔑 a csomag-sor MINDEN útmutató alá kerül — kapcsolóval visszaállítható a Reel-es szűkítésre (user 09-30)', () => {
+  // 09-20: szűk kísérlet (~27 Reel-es cikk). 09-30, user: „kéne neki egy kis reklám"
+  // → minden témához sorolható útmutató. A config.json website.pack_line_all = false
+  // visszahozza a Reel-es szűkítést.
+  assert.ok(/\(KAPCSOLO\.csomagMind \|\| a\.reelAt\) \? packLine\(/.test(build),
+    'a csomag-sor feltétele nem a kapcsoló + reelAt');
+  assert.ok(/csomagMind: web\.pack_line_all !== false/.test(build), 'a kapcsoló nincs a configból olvasva');
+  const cfg = JSON.parse(readFileSync(join(ROOT, 'config.json'), 'utf-8'));
+  assert.equal(typeof cfg.website?.pack_line_all, 'boolean');
+  // a sor KONKRÉT: csomagnév + útmutatószám + ár
+  const fv = (build.match(/function packLine\([\s\S]*?\n}/) || [''])[0];
+  assert.ok(fv.includes("tr('packsFootMore')") && fv.includes('packAr(p)'), 'a csomag-sor nem mondja meg a nevét/árát');
   // …és a HÍR-lábléc nem kapja meg: a hír nem örökzöld, a csomag igen.
   const hirLab = (build.match(/disclosureNews[\s\S]{0,300}?back-link/) || [''])[0];
   assert.ok(!hirLab.includes('packLine'), 'a csomag-sor a hír-láblécbe is bekerült');

@@ -2,7 +2,8 @@
   "website": {
     "_comment": "2026-09-29 — a user kérte, hogy vissza lehessen állítani. false = a régi nézet a következő build-től. guide_sketch: kóddal rajzolt telefon-vázlat a lépés mellett (core/guide-sketch.js); next_guide: 'Következő útmutató' kártya az utolsó lépés után (core/next-guide.js).",
     "guide_sketch": true,
-    "next_guide": true
+    "next_guide": true,
+    "pack_line_all": true
   },
   "content": {
     "_comment": "2026-09-29 — user: középszintű tartalom, visszaállíthatóan. false = régi viselkedés a következő futástól. intermediate_guides: napi 1 középszintű útmutató a 2-ből; news_if_you_use: a hírek 'What this means for you' részében 4. pont ('If you already use it'). Olvassa: core/content-switches.js.",

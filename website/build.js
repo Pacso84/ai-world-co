@@ -66,7 +66,7 @@ let VERIFY = { google: '', bing: '' };
 // (minden oldal HTML-jében látszik), ezért mehet a configba. Ha üres, nincs mérés.
 let CF_BEACON = '';
 // KAPCSOLÓK (2026-09-29, user: „vissza lehessen állítani") — config.json → website.*
-let KAPCSOLO = { vazlat: true, kovetkezo: true };
+let KAPCSOLO = { vazlat: true, kovetkezo: true, csomagMind: true };
 // Ügyfélszolgálati chat-doboz kapcsoló + Worker-végpont (Task 3 config: customer_service.*).
 // enabled csak akkor igaz, ha a config engedélyezi ÉS van Turnstile site-key.
 let CS = { enabled: false, base: '', key: '' };
@@ -94,7 +94,7 @@ try {
   const rawConfig = JSON.parse(readFileSync(join(PROJECT_ROOT, 'config.json'), 'utf-8'));
   const company = rawConfig.company || {};
   const web = rawConfig.website || {};
-  KAPCSOLO = { vazlat: web.guide_sketch !== false, kovetkezo: web.next_guide !== false };
+  KAPCSOLO = { vazlat: web.guide_sketch !== false, kovetkezo: web.next_guide !== false, csomagMind: web.pack_line_all !== false };
   CF_BEACON = (company.cf_beacon_token || '').trim();
   SITE_URL = (company.website_url || SITE_URL).replace(/\/$/, '');
   SUPPORT = {
@@ -2445,7 +2445,7 @@ function buildGuidePage(a) {
     <div class="article__foot">
       <div class="fb" data-slug="${a.slug}" data-thanks="${escapeHtml(tr('fbThanks'))}"><span class="fb__q">${tr('fbQ')}</span><button class="fb__btn" data-vote="up" aria-label="👍">👍</button><button class="fb__btn" data-vote="down" aria-label="👎">👎</button></div>
       <p class="ai-disclosure">${tr('disclosureGuide')}</p>
-      ${a.reelAt ? packLine(temaOf(a.titleEn || a.title)) : ''}
+      ${(KAPCSOLO.csomagMind || a.reelAt) ? packLine(temaOf(a.titleEn || a.title)) : ''}
       ${supportLine()}
       <a href="../index" class="back-link">${tr('backStories')}</a>
     </div>
@@ -2686,8 +2686,13 @@ function packLine(temaId) {
   const cel = (p.url || '').trim() || PACKS.shopUrl;
   if (!cel) return '';
   const sz = csomagSzoveg(p.id, LANG) || {};
+  // KONKRÉT SOR (2026-09-30, user: „kéne neki egy kis reklám"): csomagnév + útmutatószám + ár.
+  const db = (p[LANG === 'es' ? 'es' : 'en'] || {}).guides;
+  const felirat = sz.cim && db
+    ? tr('packsFootMore').replace('{name}', sz.cim).replace('{n}', db).replace('{price}', packAr(p))
+    : tr('packsFootLink');
   return `<p class="pack-foot">📘 ${tr('packsFootPre')} `
-    + `<a href="${LP}/packs" title="${escapeHtml(sz.cim || '')}">${tr('packsFootLink')}</a></p>`;
+    + `<a href="${LP}/packs" title="${escapeHtml(sz.cim || '')}">${escapeHtml(felirat)}</a></p>`;
 }
 
 // ===================================================================

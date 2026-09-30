@@ -144,7 +144,8 @@ export const PACKS_UI = {
     packsFromSupport: 'Prefer something in return? We also sell our guides as PDF packs.',
     packsFromSupportLink: 'See the packs',
     packsFootPre: 'Prefer it in one file?',
-    packsFootLink: 'Get this subject as a PDF pack'
+    packsFootLink: 'Get this subject as a PDF pack',
+    packsFootMore: '{name} ({n} guides, printable PDF, {price})'
   },
 
   hu: {
@@ -182,7 +183,8 @@ export const PACKS_UI = {
     packsFromSupport: 'Inkább kapnál valamit cserébe? Az útmutatóinkat PDF-csomagban is áruljuk.',
     packsFromSupportLink: 'Megnézem a csomagokat',
     packsFootPre: 'Egyben is jó lenne?',
-    packsFootLink: 'Ez a téma PDF-csomagban'
+    packsFootLink: 'Ez a téma PDF-csomagban',
+    packsFootMore: '{name} ({n} útmutató, nyomtatható PDF, {price})'
   },
 
   es: {
@@ -220,6 +222,7 @@ export const PACKS_UI = {
     packsFromSupport: '¿Prefieres recibir algo a cambio? También vendemos nuestras guías en packs PDF.',
     packsFromSupportLink: 'Ver los packs',
     packsFootPre: '¿Lo prefieres en un solo archivo?',
-    packsFootLink: 'Este tema en pack PDF'
+    packsFootLink: 'Este tema en pack PDF',
+    packsFootMore: '{name} ({n} guías, PDF imprimible, {price})'
   }
 };
