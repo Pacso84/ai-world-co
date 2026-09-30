@@ -1,7 +1,7 @@
 {
   "_meta": {
     "note": "Forrás-bizonyítvány: frissesség + termés + megbízhatóság forrásonként. Gyártja: core/source-report-card.js",
-    "updated": "2026-09-29T20:24:23.169Z",
+    "updated": "2026-09-30T03:17:20.019Z",
     "thresholds": {
       "DEAD_FEED_DAYS": 365,
       "MIN_SAMPLE": 8,
@@ -12,19 +12,19 @@
     },
     "truth_log": {
       "days": 14,
-      "from": "2026-09-11",
-      "to": "2026-09-28",
-      "blocks": 28
+      "from": "2026-09-12",
+      "to": "2026-09-30",
+      "blocks": 24
     }
   },
   "sources": {
     "openai-blog": {
       "name": "OpenAI Blog (hivatalos)",
-      "feedAgeDays": 0,
+      "feedAgeDays": 1,
       "published30d": 27,
       "truthBlocks": 3,
       "truthUnfixed": 0,
-      "totalAttempts": 14,
+      "totalAttempts": 13,
       "alreadyDisabled": false,
       "lastArticle": "2026-09-29",
       "verdict": "ok",
@@ -56,7 +56,7 @@
     },
     "meta-ai": {
       "name": "Meta Newsroom (hivatalos)",
-      "feedAgeDays": 0,
+      "feedAgeDays": 1,
       "published30d": 3,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -68,7 +68,7 @@
     },
     "microsoft-ai": {
       "name": "Microsoft AI (hivatalos)",
-      "feedAgeDays": 19,
+      "feedAgeDays": 20,
       "published30d": 2,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -92,11 +92,11 @@
     },
     "nvidia-blog": {
       "name": "NVIDIA Blog (hivatalos)",
-      "feedAgeDays": 5,
+      "feedAgeDays": 6,
       "published30d": 8,
-      "truthBlocks": 1,
+      "truthBlocks": 0,
       "truthUnfixed": 0,
-      "totalAttempts": 5,
+      "totalAttempts": 4,
       "alreadyDisabled": false,
       "lastArticle": "2026-09-28",
       "verdict": "ok",
@@ -128,7 +128,7 @@
     },
     "microsoft-research": {
       "name": "Microsoft Research (hivatalos)",
-      "feedAgeDays": 0,
+      "feedAgeDays": 1,
       "published30d": 0,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -428,7 +428,7 @@
     },
     "sap": {
       "name": "SAP Innovation Blog (hivatalos)",
-      "feedAgeDays": 0,
+      "feedAgeDays": 1,
       "published30d": 0,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -452,7 +452,7 @@
     },
     "snowflake": {
       "name": "Snowflake Blog (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 0,
       "published30d": 3,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -464,7 +464,7 @@
     },
     "together": {
       "name": "Together AI Blog (hivatalos)",
-      "feedAgeDays": 0,
+      "feedAgeDays": 1,
       "published30d": 0,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -488,7 +488,7 @@
     },
     "ibm": {
       "name": "IBM Research (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 2,
       "published30d": 1,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -500,7 +500,7 @@
     },
     "ntt-research": {
       "name": "NTT Research (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": null,
       "published30d": 0,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -536,7 +536,7 @@
     },
     "xai-news": {
       "name": "xAI (hivatalos, Google News szűrve)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 0,
       "published30d": 0,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -548,7 +548,7 @@
     },
     "perplexity-news": {
       "name": "Perplexity (hivatalos, Google News szűrve)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 0,
       "published30d": 0,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -692,13 +692,13 @@
     },
     "picsart": {
       "name": "PicsArt Blog (hivatalos)",
-      "feedAgeDays": 0,
-      "published30d": 30,
-      "truthBlocks": 5,
+      "feedAgeDays": 1,
+      "published30d": 33,
+      "truthBlocks": 4,
       "truthUnfixed": 0,
-      "totalAttempts": 11,
+      "totalAttempts": 12,
       "alreadyDisabled": false,
-      "lastArticle": "2026-09-26",
+      "lastArticle": "2026-09-30",
       "verdict": "ok",
       "reason": ""
     },
@@ -716,13 +716,13 @@
     },
     "dropbox-blog": {
       "name": "Dropbox Blog (hivatalos)",
-      "feedAgeDays": 0,
-      "published30d": 3,
-      "truthBlocks": 0,
+      "feedAgeDays": 1,
+      "published30d": 4,
+      "truthBlocks": 1,
       "truthUnfixed": 0,
-      "totalAttempts": 2,
+      "totalAttempts": 3,
       "alreadyDisabled": false,
-      "lastArticle": "2026-09-26",
+      "lastArticle": "2026-09-30",
       "verdict": "ok",
       "reason": ""
     },
