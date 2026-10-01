@@ -147,9 +147,18 @@ function nyilvanosCim(url) {
 // régi viselkedés: nem küldünk — csak kb. 45 mp-cel később.
 export const HEAD_PROBAK = 4;
 export const HEAD_VARAS_MS = 15000;
+// ── LECSENGÉS (2026-10-01 15:21, éles eset) ─────────────────────────────
+// A fenti újrapróba a 3. HEAD-re 200-at kapott (GitHub-futtató, USA), a Make
+// viszont Európából tölt le, és 2 mp múlva a Reel elbukott — a videó később
+// hibátlanul ott volt. 🔑 A „nekem már megvan" nem jelenti, hogy „mindenhol
+// megvan": a terjedés szerverenként halad. Ha MI is láttunk még hiányt, a
+// többi szerver is késhet → az első 200 után még várunk. Elsőre meglévő
+// videónál nincs várakozás.
+export const LECSENGES_MS = 45000;
 
 export async function sendReel({ video, caption, hook, fetchFn, dry = false, timeoutMs = 20000,
-  probak = HEAD_PROBAK, varasMs = HEAD_VARAS_MS, alvas = (ms) => new Promise(r => setTimeout(r, ms)) }) {
+  probak = HEAD_PROBAK, varasMs = HEAD_VARAS_MS, lecsengesMs = LECSENGES_MS,
+  alvas = (ms) => new Promise(r => setTimeout(r, ms)) }) {
   const f = fetchFn || fetch;
   // Próbamódban NEM követeljük meg a webhookot: azt úgysem hívnánk meg, és
   // e nélkül helyben egyáltalán nem lehetne próbálni. A hiányát viszont
@@ -163,7 +172,7 @@ export async function sendReel({ video, caption, hook, fetchFn, dry = false, tim
   }
 
   // 1) Él-e a videó, és videó-e egyáltalán?
-  let fej;
+  let fej, voltHiany = false;
   for (let proba = 1; proba <= Math.max(1, probak); proba++) {
     try {
       fej = await f(video, { method: 'HEAD', signal: AbortSignal.timeout(timeoutMs) });
@@ -173,6 +182,7 @@ export async function sendReel({ video, caption, hook, fetchFn, dry = false, tim
     // Csak a „még nincs ott" (404) és a szerverhiba (5xx) érdemel újrapróbát.
     const st = fej ? fej.status : 0;
     if ((fej && fej.ok) || !(st === 404 || st >= 500) || proba >= probak) break;
+    voltHiany = true;
     if (varasMs > 0) await alvas(varasMs);
   }
   if (!fej || !fej.ok) {
@@ -196,6 +206,11 @@ export async function sendReel({ video, caption, hook, fetchFn, dry = false, tim
   }
 
   if (dry) return { ok: true, dry: true, hookConfigured: !!hook, payload: { video, caption } };
+
+  if (voltHiany && lecsengesMs > 0) {
+    console.log(`   ⏳ A videó csak újrapróbára jelent meg — még ${Math.round(lecsengesMs / 1000)} mp a többi szervernek`);
+    await alvas(lecsengesMs);
+  }
 
   // 2) Küldés. A Make csak annyit mond: „átvettem" — a TÉNYLEGES sikert
   //    a forgatókönyv naplójából kell megnézni (status 1 = jó, 2 = bukás).

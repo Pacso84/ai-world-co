@@ -26,7 +26,7 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import {
   reelVideoUrl, reelArticleUrl, reelCaption, sendReel,
-  MOBIL_VAGAS, MIN_VIDEO_BAJT, SITE, igertLepesszam,
+  MOBIL_VAGAS, MIN_VIDEO_BAJT, SITE, igertLepesszam, LECSENGES_MS,
   futtatFazis, send
 } from './reel-post.js';
 
@@ -233,7 +233,30 @@ await at('🔑 a friss deploy után még 404 → vár és újrapróbál, és KIM
   assert.equal(r.ok, true);
   assert.equal(hivott.filter(x => x.method === 'HEAD').length, 3);
   assert.equal(hivott.filter(x => x.method === 'POST').length, 1);
-  assert.deepEqual(alvasok, [15000, 15000]);
+  // + a LECSENGÉS: az első 200 után is várunk (élő eset 10-01 15:21, lent).
+  assert.deepEqual(alvasok, [15000, 15000, LECSENGES_MS]);
+});
+
+await at('🌍 404 után az első 200 még nem elég: lecsengés a küldés ELŐTT (élő eset 10-01 15:21)', async () => {
+  // A mi HEAD-ünk (GitHub, USA) a 3. próbára 200-at kapott, a Make (Európa)
+  // 2 mp-cel később még nem érte el a videót → a Reel elbukott. A terjedés
+  // szerverenként halad; ha mi is láttunk 404-et, a többi szerver is késhet.
+  const sorrend = [];
+  const { f } = mock({ headSor: [404, 200] });
+  const nyomkovetett = async (url, o) => { sorrend.push(o.method); return f(url, o); };
+  const r = await sendReel({ video: VIDEO, caption: 'c', hook: HOOK, fetchFn: nyomkovetett, varasMs: 15000,
+    alvas: async (ms) => { sorrend.push('alvás ' + ms); } });
+  assert.equal(r.ok, true);
+  assert.deepEqual(sorrend, ['HEAD', 'alvás 15000', 'HEAD', 'alvás ' + LECSENGES_MS, 'POST']);
+  assert.ok(LECSENGES_MS >= 30000, 'a lecsengés legalább fél perc');
+});
+
+await at('⚡ ha a videó ELSŐRE megvan, nincs fölösleges lecsengés', async () => {
+  const alvasok = [];
+  const { f } = mock();
+  const r = await sendReel({ video: VIDEO, caption: 'c', hook: HOOK, fetchFn: f, alvas: async (ms) => { alvasok.push(ms); } });
+  assert.equal(r.ok, true);
+  assert.deepEqual(alvasok, []);
 });
 
 await at('⛔ 0 bájtos „videó" is elbukik — a 200 önmagában nem elég', async () => {
