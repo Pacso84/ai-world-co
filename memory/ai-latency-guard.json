@@ -1,18 +1,30 @@
 {
-  "at": "2026-10-01T03:19:20.874Z",
+  "at": "2026-10-01T03:33:39.466Z",
   "nap": "2026-10-01",
-  "hivasok": 49,
-  "bukott": 0,
-  "osszMp": 1082,
-  "veszettMp": 0,
+  "hivasok": 72,
+  "bukott": 2,
+  "osszMp": 2844.5,
+  "veszettMp": 960,
   "leglassabb": {
-    "agent": "guide",
+    "agent": "translator",
     "provider": "openrouter",
     "model": "minimax/minimax-m3",
-    "mp": 188.4,
-    "ok": true,
-    "tullepes": false
+    "mp": 480,
+    "ok": false,
+    "tullepes": true
   },
-  "idotullepesek": [],
-  "problems": []
+  "idotullepesek": [
+    {
+      "agent": "translator",
+      "model": "minimax/minimax-m3",
+      "db": 2,
+      "mp": 960
+    }
+  ],
+  "problems": [
+    {
+      "code": "AI_IDOTULLEPES",
+      "detail": "2 AI-hívás lógott bele a türelem-plafonba (translator/minimax/minimax-m3 ×2) — 16,0 perc veszett el, nulla tokenért"
+    }
+  ]
 }

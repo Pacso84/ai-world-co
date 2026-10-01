@@ -44,6 +44,7 @@
     "adverzáriális",
     "adóhatóságoknál",
     "agens",
+    "agentek",
     "agentic",
     "agentjei",
     "agentnek",
@@ -74,6 +75,7 @@
     "aktívabb",
     "aktívabban",
     "alacsonabb",
+    "alakura",
     "alapanyagok",
     "alapanyagokat",
     "alapanyagokból",
@@ -497,6 +499,7 @@
     "csomagoknak",
     "csomagoknál",
     "csomagokon",
+    "csomagokra",
     "csomagokról",
     "csomagokért",
     "csomagom",
@@ -591,6 +594,7 @@
     "dolláronként",
     "dollárösszeget",
     "domainek",
+    "domaineken",
     "domaineket",
     "domainekhez",
     "domainekre",
@@ -807,6 +811,7 @@
     "favour",
     "favourite",
     "feed-edben",
+    "feedbe",
     "feedben",
     "feededen",
     "feededet",
@@ -858,6 +863,7 @@
     "forintösszeget",
     "formalityás",
     "forrásanyagod",
+    "forrásanyagok",
     "forrásanyagoknál",
     "forrásanyagokon",
     "forráslink",
@@ -991,6 +997,7 @@
     "hangon",
     "hangosdeszkaként",
     "hangszeren",
+    "hangsúllyozással",
     "hangulatellenőrzés",
     "hangulatellenőrzést",
     "hangunk",
@@ -1185,6 +1192,7 @@
     "irányelvet",
     "iskolai-hirlevel",
     "ismertséget",
+    "ismerősödn",
     "item-ek",
     "itemeket",
     "itemhez",
@@ -1316,6 +1324,7 @@
     "kontaktokat",
     "kontaktoknak",
     "kontaktoknál",
+    "korok",
     "korokat",
     "korokhoz",
     "korunk",
@@ -1752,6 +1761,7 @@
     "nyílát",
     "néven",
     "nézzd",
+    "nézőöd",
     "nőjjön",
     "o-realtime-preview",
     "observability",
@@ -1902,6 +1912,7 @@
     "photorealistic",
     "piactéren",
     "picsart",
+    "pihenőtervet",
     "pillantassal",
     "pillanást",
     "pilotoknál",
@@ -2139,6 +2150,7 @@
     "robotaxik",
     "robotikalaborokhoz",
     "robotikus",
+    "robotikusak",
     "robotikusan",
     "robotikusnak",
     "rollout",
@@ -2510,6 +2522,7 @@
     "testreszabhatod",
     "testreszabható",
     "testreszabhatóságban",
+    "testreszabhatóvá",
     "testreszabott",
     "testreszabottabb",
     "testreszabó",
@@ -2656,6 +2669,7 @@
     "valóságoddal",
     "valóságodhoz",
     "vanlí-e",
+    "varják",
     "varázslósüveget",
     "vastagabb",
     "vastagon",
@@ -2739,6 +2753,7 @@
     "vizuálok",
     "vizuálokat",
     "vizuálokhoz",
+    "vizuálokon",
     "vizuált",
     "vllm",
     "vlogoknál",
@@ -2797,6 +2812,7 @@
     "xlsx",
     "yourbank",
     "yourdocument",
+    "youtube",
     "zapier",
     "zavarodra",
     "zenegenerátorok",
@@ -2877,6 +2893,7 @@
     "észreveszel",
     "észrevesznek",
     "észrevette",
+    "észrevtlenül",
     "ételallergének",
     "ételtip",
     "éttervet",
@@ -2934,6 +2951,7 @@
     "útitervet",
     "útitérképet",
     "útmutatnia",
+    "útprompt",
     "útvonaltervet",
     "überweisen",
     "übeszélgetés",
@@ -4152,6 +4170,11 @@
     "kellené": {
       "correct": "kellene",
       "at": "2026-09-30",
+      "mondattal": true
+    },
+    "videzással": {
+      "correct": "videózással",
+      "at": "2026-10-01",
       "mondattal": true
     }
   },
@@ -5607,11 +5630,41 @@
       "correct": "végigskiccelhetsz",
       "at": "2026-09-30",
       "mondattal": true
+    },
+    "vezetetsz": {
+      "correct": "vezetsz",
+      "at": "2026-10-01",
+      "mondattal": true
+    },
+    "munkt": {
+      "correct": "munkát",
+      "at": "2026-10-01",
+      "mondattal": true
+    },
+    "gynökök": {
+      "correct": "ügynökök",
+      "at": "2026-10-01",
+      "mondattal": true
+    },
+    "ítást": {
+      "correct": "nagyítást",
+      "at": "2026-10-01",
+      "mondattal": true
+    },
+    "youtu": {
+      "correct": "YouTube",
+      "at": "2026-10-01",
+      "mondattal": true
+    },
+    "webinár": {
+      "correct": "webináriumot",
+      "at": "2026-10-01",
+      "mondattal": true
     }
   },
   "scan": {
-    "at": "2026-09-30",
-    "files": 990,
-    "candidates": 0
+    "at": "2026-10-01",
+    "files": 991,
+    "candidates": 25
   }
 }
