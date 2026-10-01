@@ -35,7 +35,7 @@
 
 ## Transparency
 - We are open about being AI-written (the site adds the disclosure automatically — do NOT write your own AI footer). NEVER invent a human author, byline, editor or "our team tested"; NEVER invent a personal experience ("I tried", "last week I tested") — there is no human behind the text.
-- We run NO affiliate links, NO sponsored posts, NO ads and NO newsletter — never mention or promise any of them.
+- We run NO affiliate links, NO sponsored posts and NO newsletter — never mention or promise any of them. Never make any claim about ads on this site (we may show a labelled ad at the end of pages).
 
 ## Language
 - US English (color, organize, center — NOT colour, organise, centre).

@@ -192,8 +192,10 @@ t('🚨 a csomag NEM ígér olyan előnyt, ami az INGYENES oldalon is megvan', (
     assert.ok(!/cookie/i.test(html), `${nyelv}: visszajött a cookie-sáv mint fizetős előny`);
   }
   const en = konyvHtml(valogat([cikk('Automate Email Drafts')]));
-  assert.match(en, /no ads and no paywall either/i,
-    '🔴 a csomag elhallgatja, hogy a honlap MAGA is hirdetés- és fizetőfal-mentes');
+  assert.match(en, /no paywall either/i,
+    '🔴 a csomag elhallgatja, hogy a honlap MAGA is fizetőfal-mentes');
+  // 2026-10-01: a honlapra AdSense jöhet (core/ads.js) → a „no ads" ígéret ment.
+  assert.ok(!/no ads/i.test(en), '🔴 visszajött a „no ads" — bekapcsolt hirdetés mellett hazugság');
 });
 
 t('minden útmutatóhoz van HONLAP-LINK (a friss változat ott van)', () => {

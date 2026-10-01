@@ -3,7 +3,13 @@
     "_comment": "2026-09-29 — a user kérte, hogy vissza lehessen állítani. false = a régi nézet a következő build-től. guide_sketch: kóddal rajzolt telefon-vázlat a lépés mellett (core/guide-sketch.js); next_guide: 'Következő útmutató' kártya az utolsó lépés után (core/next-guide.js).",
     "guide_sketch": true,
     "next_guide": true,
-    "pack_line_all": true
+    "pack_line_all": true,
+    "ads": {
+      "_comment": "2026-10-01 — Google AdSense (core/ads.js). enabled + client (ca-pub-…, NEM titok) = fejléc-kód + ads.txt a Google-igazoláshoz, látható hirdetés még nincs; + slot = EGY hirdetés a cikkek legalján. enabled:false = minden kikapcsolva a következő build-től. Az AdSense-ben az Auto ads maradjon KI.",
+      "enabled": false,
+      "client": "",
+      "slot": ""
+    }
   },
   "content": {
     "_comment": "2026-09-29 — user: középszintű tartalom, visszaállíthatóan. false = régi viselkedés a következő futástól. intermediate_guides: napi 1 középszintű útmutató a 2-ből; news_if_you_use: a hírek 'What this means for you' részében 4. pont ('If you already use it'). Olvassa: core/content-switches.js.",

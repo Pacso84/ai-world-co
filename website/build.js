@@ -46,6 +46,7 @@ import { cimTag } from '../core/title-tag.js';
 import { lepesReszek, dobozSzoveg } from '../core/guide-step-parts.js';
 import { vazlatHtml } from '../core/guide-sketch.js';
 import { kovetkezoUtmutato } from '../core/next-guide.js';
+import { hirdetesBeallitas, fejKod, hirdetesBlokk, adsTxt } from '../core/ads.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = join(__dirname, '..');
@@ -67,6 +68,8 @@ let VERIFY = { google: '', bing: '' };
 let CF_BEACON = '';
 // KAPCSOLÓK (2026-09-29, user: „vissza lehessen állítani") — config.json → website.*
 let KAPCSOLO = { vazlat: true, kovetkezo: true, csomagMind: true };
+// HIRDETÉS (2026-10-01): config.json → website.ads; alapból KI (core/ads.js).
+let HIRDETES = hirdetesBeallitas(null);
 // Ügyfélszolgálati chat-doboz kapcsoló + Worker-végpont (Task 3 config: customer_service.*).
 // enabled csak akkor igaz, ha a config engedélyezi ÉS van Turnstile site-key.
 let CS = { enabled: false, base: '', key: '' };
@@ -95,6 +98,7 @@ try {
   const company = rawConfig.company || {};
   const web = rawConfig.website || {};
   KAPCSOLO = { vazlat: web.guide_sketch !== false, kovetkezo: web.next_guide !== false, csomagMind: web.pack_line_all !== false };
+  HIRDETES = hirdetesBeallitas(web);
   CF_BEACON = (company.cf_beacon_token || '').trim();
   SITE_URL = (company.website_url || SITE_URL).replace(/\/$/, '');
   SUPPORT = {
@@ -275,7 +279,7 @@ const UI_GUIDES = {
         aiLabelNews: 'This article was written by AI. It passed automated fact and quality checks; no human editor reviewed it.',
         aiLabelGuide: 'This guide was written by AI. It passed automated fact and quality checks; no human editor reviewed it.',
         aiMarkTitle: 'Written by AI', aiMarkShort: 'generated',
-        supFootPre: 'Free to read, no ads, no paywall — readers keep it going.', supFootLink: 'Support us (one-off or monthly)' },
+        supFootPre: 'Free to read, no paywall — readers keep it going.', supFootLink: 'Support us (one-off or monthly)' },
   hu: { tagline: 'AI-hírek, közérthetően', forEveryone: 'Mindenkinek',
         lvl_beginner: 'kezdő', lvl_intermediate: 'középhaladó', lvl_advanced: 'haladó',
         guideWordOne: 'útmutató', guideWordMany: 'útmutató',
@@ -293,7 +297,7 @@ const UI_GUIDES = {
         aiLabelNews: 'Ezt a cikket mesterséges intelligencia írta. Automatikus tény- és minőség-ellenőrzésen ment át, emberi szerkesztő nem nézte át.',
         aiLabelGuide: 'Ezt az útmutatót mesterséges intelligencia írta. Automatikus tény- és minőség-ellenőrzésen ment át, emberi szerkesztő nem nézte át.',
         aiMarkTitle: 'Mesterséges intelligencia írta', aiMarkShort: 'generált',
-        supFootPre: 'Ingyenes, hirdetés és fizetőfal nélkül — az olvasók tartják életben.', supFootLink: 'Támogasd (egyszeri vagy havi)' },
+        supFootPre: 'Ingyenes, fizetőfal nélkül — az olvasók tartják életben.', supFootLink: 'Támogasd (egyszeri vagy havi)' },
   es: { tagline: 'Noticias de IA, en lenguaje claro', forEveryone: 'Para todos',
         lvl_beginner: 'principiante', lvl_intermediate: 'intermedio', lvl_advanced: 'avanzado',
         guideWordOne: 'guía', guideWordMany: 'guías',
@@ -311,7 +315,7 @@ const UI_GUIDES = {
         aiLabelNews: 'Este artículo fue escrito por IA. Pasó controles automáticos de datos y calidad; ningún editor humano lo revisó.',
         aiLabelGuide: 'Esta guía fue escrita por IA. Pasó controles automáticos de datos y calidad; ningún editor humano la revisó.',
         aiMarkTitle: 'Escrito por IA', aiMarkShort: 'generado',
-        supFootPre: 'Gratis, sin anuncios ni muro de pago — lo mantienen los lectores.', supFootLink: 'Apóyanos (puntual o mensual)' },
+        supFootPre: 'Gratis, sin muro de pago — lo mantienen los lectores.', supFootLink: 'Apóyanos (puntual o mensual)' },
 
 };
 for (const l of SITE_LANGS) Object.assign(UI[l], UI_GUIDES[l] || {});
@@ -330,37 +334,37 @@ for (const l of SITE_LANGS) Object.assign(UI[l], UI_DAYS[l] || {});
 const UI_SUPPORT = {
   en: { siteDesc: 'AI news and how-to guides for everyday people — fresh, friendly, jargon-free.',
         supPill: 'Support us', supTitle: 'Keep everyday AI <em>free for everyone</em>',
-        supLead: 'AI World is a small, independent project — a team of AI agents and one human — publishing clear, jargon-free guides about AI. We keep it free and ad-free. If you find it useful, you can chip in to help cover the running costs — once, or a small amount each month. Everything stays free either way.',
+        supLead: 'AI World is a small, independent project — a team of AI agents and one human — publishing clear, jargon-free guides about AI. We keep it free to read. If you find it useful, you can chip in to help cover the running costs — once, or a small amount each month. Everything stays free either way.',
         supCard1h: 'Hosting &amp; domain', supCard1p: 'Keeping the site online, fast and reachable for everyone.',
         supCard2h: 'The AI newsroom', supCard2p: 'The models that research, write, fact-check and improve every article.',
         supCard3h: 'Original artwork', supCard3p: 'The custom cover image generated for each story.',
         supThanksH: 'To everyone who chips in — thank you. 💛',
-        supThanksP: "You keep AI World free, ad-free and open to everyone. Every coffee helps cover our hosting and powers the little AI newsroom behind every article. We're a tiny independent team, so it genuinely means the world to us.",
+        supThanksP: "You keep AI World free and open to everyone. Every coffee helps cover our hosting and powers the little AI newsroom behind every article. We're a tiny independent team, so it genuinely means the world to us.",
         supNote: 'Supporting us is completely optional — the site stays free either way. We\'re a small independent project, not a registered charity, so your contribution is a friendly <strong>voluntary tip</strong>, not a tax-deductible donation. Payment currently works <strong>through PayPal only</strong> — paying by card is not available yet. Thank you for reading. 💛',
         supSoon: 'coming soon', supMetaTitle: 'Support',
-        supMetaDesc: 'Help keep AI World free and ad-free. A small voluntary tip covers our hosting and the AI that writes each article.' },
+        supMetaDesc: 'Help keep AI World free. A small voluntary tip covers our hosting and the AI that writes each article.' },
   hu: { siteDesc: 'AI-hírek és útmutatók hétköznapi embereknek — frissen, barátságosan, szakzsargon nélkül.',
         supPill: 'Támogass minket', supTitle: 'Maradjon a hétköznapi AI <em>mindenkinek ingyenes</em>',
-        supLead: 'Az AI World egy kicsi, független projekt — egy csapatnyi AI-ügynök és egyetlen ember —, amely közérthető, szakzsargon-mentes útmutatókat készít az AI-ról. Ingyen adjuk, és nincs rajta reklám. Ha hasznosnak találod, bedobhatsz egy kávéra valót a működési költségekhez — egyszer, vagy havonta egy kis összeggel. Minden ingyenes marad így is.',
+        supLead: 'Az AI World egy kicsi, független projekt — egy csapatnyi AI-ügynök és egyetlen ember —, amely közérthető, szakzsargon-mentes útmutatókat készít az AI-ról. Ingyen olvasható. Ha hasznosnak találod, bedobhatsz egy kávéra valót a működési költségekhez — egyszer, vagy havonta egy kis összeggel. Minden ingyenes marad így is.',
         supCard1h: 'Tárhely és domain', supCard1p: 'Hogy az oldal online, gyors és mindenki számára elérhető maradjon.',
         supCard2h: 'Az AI-szerkesztőség', supCard2p: 'A modellek, amelyek minden cikket kutatnak, megírnak, tényellenőriznek és csiszolnak.',
         supCard3h: 'Eredeti grafikák', supCard3p: 'Minden cikkhez egyedi borítókép készül.',
         supThanksH: 'Mindenkinek, aki beszáll — köszönjük. 💛',
-        supThanksP: 'Neked köszönhető, hogy az AI World ingyenes, reklámmentes és mindenki előtt nyitva áll. Minden kávé a tárhelyet fedezi, és a cikkek mögötti kis AI-szerkesztőséget hajtja. Pici, független csapat vagyunk — tényleg sokat jelent.',
+        supThanksP: 'Neked köszönhető, hogy az AI World ingyenes és mindenki előtt nyitva áll. Minden kávé a tárhelyet fedezi, és a cikkek mögötti kis AI-szerkesztőséget hajtja. Pici, független csapat vagyunk — tényleg sokat jelent.',
         supNote: 'A támogatás teljesen önkéntes — az oldal enélkül is ingyenes marad. Kicsi, független projekt vagyunk, nem bejegyzett jótékonysági szervezet, ezért a hozzájárulásod baráti <strong>önkéntes borravaló</strong>, nem adóból leírható adomány. A fizetés jelenleg <strong>csak PayPalon keresztül</strong> működik — bankkártyával egyelőre nem lehet fizetni. Köszönjük, hogy olvasol. 💛',
         supSoon: 'hamarosan', supMetaTitle: 'Támogatás',
-        supMetaDesc: 'Segíts, hogy az AI World ingyenes és reklámmentes maradjon. Egy kis önkéntes borravaló fedezi a tárhelyet és a cikkeket író AI-t.' },
+        supMetaDesc: 'Segíts, hogy az AI World ingyenes maradjon. Egy kis önkéntes borravaló fedezi a tárhelyet és a cikkeket író AI-t.' },
   es: { siteDesc: 'Noticias y guías de IA para gente común — frescas, cercanas y sin jerga.',
         supPill: 'Apóyanos', supTitle: 'Mantén la IA cotidiana <em>gratis para todos</em>',
-        supLead: 'AI World es un proyecto pequeño e independiente — un equipo de agentes de IA y una sola persona — que publica guías claras y sin jerga sobre la IA. Lo mantenemos gratis y sin anuncios. Si te resulta útil, puedes aportar algo para cubrir los costes — una vez, o una pequeña cantidad cada mes. Todo sigue siendo gratis igualmente.',
+        supLead: 'AI World es un proyecto pequeño e independiente — un equipo de agentes de IA y una sola persona — que publica guías claras y sin jerga sobre la IA. Lo mantenemos gratis. Si te resulta útil, puedes aportar algo para cubrir los costes — una vez, o una pequeña cantidad cada mes. Todo sigue siendo gratis igualmente.',
         supCard1h: 'Alojamiento y dominio', supCard1p: 'Mantener el sitio en línea, rápido y accesible para todos.',
         supCard2h: 'La redacción de IA', supCard2p: 'Los modelos que investigan, escriben, verifican y mejoran cada artículo.',
         supCard3h: 'Ilustraciones originales', supCard3p: 'La imagen de portada creada para cada historia.',
         supThanksH: 'A todos los que aportan: gracias. 💛',
-        supThanksP: 'Gracias a ti, AI World sigue siendo gratuito, sin anuncios y abierto a todos. Cada café ayuda a cubrir el alojamiento y alimenta la pequeña redacción de IA detrás de cada artículo. Somos un equipo diminuto e independiente, así que significa muchísimo.',
+        supThanksP: 'Gracias a ti, AI World sigue siendo gratuito y abierto a todos. Cada café ayuda a cubrir el alojamiento y alimenta la pequeña redacción de IA detrás de cada artículo. Somos un equipo diminuto e independiente, así que significa muchísimo.',
         supNote: 'Apoyarnos es totalmente opcional: el sitio seguirá siendo gratuito de todos modos. Somos un pequeño proyecto independiente, no una organización benéfica registrada, así que tu aportación es una <strong>propina voluntaria</strong>, no un donativo desgravable. Por ahora el pago <strong>solo funciona con PayPal</strong>: todavía no se puede pagar con tarjeta. Gracias por leernos. 💛',
         supSoon: 'muy pronto', supMetaTitle: 'Apóyanos',
-        supMetaDesc: 'Ayuda a que AI World siga siendo gratuito y sin anuncios. Una pequeña propina voluntaria cubre el alojamiento y la IA que escribe cada artículo.' },
+        supMetaDesc: 'Ayuda a que AI World siga siendo gratuito. Una pequeña propina voluntaria cubre el alojamiento y la IA que escribe cada artículo.' },
 
 };
 for (const l of SITE_LANGS) Object.assign(UI[l], UI_SUPPORT[l] || {});
@@ -537,6 +541,47 @@ const UI_ABOUT = {
 
 };
 for (const l of SITE_LANGS) Object.assign(UI[l], UI_ABOUT[l] || {});
+
+// ADATVÉDELEM (2026-10-01) — az AdSense KÖTELEZŐVÉ teszi (a Google sütijeiről
+// tájékoztatni kell). ⚠️ MINDEN MONDAT MÉRT TÉNY, a kódból kiolvasva:
+//   👍/👎 = csak számláló (telegram-worker/src/worker.js handleFeedback),
+//   űrlap + e-mail = 30 nap (cs-routes.js 2592000, email-archive.js EMAIL_TTL_MP),
+//   hash-elt IP = 2 nap (cs-routes.js bump 172800), téma + lépés-pipa = localStorage (app.js).
+// A hirdetés-szakasz CSAK bekapcsolt hirdetésnél jelenik meg (HIRDETES.be).
+// Ha a fenti működés változik, EZ A SZÖVEG IS VÁLTOZZON.
+const UI_PRIV = {
+  en: { privNav: 'Privacy', privTitle: 'Privacy', privTag: 'What we collect, what we don’t, and the choices you have.',
+        privStatsH: 'Visitor statistics', privStatsP: 'We count visits with Cloudflare Web Analytics. It uses no cookies and does not identify you: we only see totals such as page views, country and the site that sent you.',
+        privFbH: 'The 👍/👎 buttons', privFbP: 'A vote only adds one to that article’s counter. We do not store who voted.',
+        privCsH: 'Chat, contact form and email', privCsP: 'What you write to us is used only to answer you. Contact-form messages and emails are deleted after 30 days. Against spam we use Cloudflare Turnstile and keep a scrambled (hashed) form of your IP address for two days — never the address itself.',
+        privLocalH: 'Saved on your device', privLocalP: 'Your light/dark mode choice and the guide steps you tick off are saved in your own browser. They never leave your device.',
+        privPayH: 'Tips and PDF packs', privPayP: 'Payments are handled by Ko-fi and PayPal. We never see your card details.',
+        privAdsH: 'Advertising', privAdsP: 'We show one ad at the end of pages, served by Google AdSense. Google and its partners use cookies to show ads based on your visits to this and other websites. In the EEA, the UK and Switzerland you are asked for your consent first.',
+        privAdsSet: 'Turn off personalised ads in Google’s Ads Settings', privAdsHow: 'How Google uses information from sites that use its services',
+        privNoH: 'What we don’t do', privNoP: 'No accounts, no comments, no newsletter and no Google Analytics. We do not sell your data.',
+        privAskH: 'Questions or deletion requests', privAskP: 'Write to support@aiworldhq.com — we will answer, and delete your data on request.' },
+  hu: { privNav: 'Adatvédelem', privTitle: 'Adatvédelem', privTag: 'Mit gyűjtünk, mit nem, és milyen választásod van.',
+        privStatsH: 'Látogatási statisztika', privStatsP: 'A látogatásokat a Cloudflare Web Analytics számolja. Nem használ sütit, és nem azonosít téged: csak összesítéseket látunk, például oldalletöltést, országot és azt, honnan érkeztél.',
+        privFbH: 'A 👍/👎 gombok', privFbP: 'Egy szavazat csak eggyel növeli a cikk számlálóját. Azt nem tároljuk, ki szavazott.',
+        privCsH: 'Chat, kapcsolati űrlap és e-mail', privCsP: 'Amit nekünk írsz, csak a válaszhoz használjuk. Az űrlapon küldött üzeneteket és az e-maileket 30 nap után töröljük. A kéretlen üzenetek ellen a Cloudflare Turnstile-t használjuk, és az IP-címed összekevert (hash-elt) változatát két napig őrizzük — magát a címet soha.',
+        privLocalH: 'Amit a saját eszközöd tárol', privLocalP: 'A világos/sötét mód választását és az útmutatókban kipipált lépéseket a saját böngésződ menti. Nem hagyják el az eszközödet.',
+        privPayH: 'Támogatás és PDF-csomagok', privPayP: 'A fizetést a Ko-fi és a PayPal intézi. A kártyaadataidat soha nem látjuk.',
+        privAdsH: 'Hirdetés', privAdsP: 'Az oldalak végén egy hirdetést mutatunk, amelyet a Google AdSense szolgál ki. A Google és partnerei sütiket használnak, hogy az ezen és más oldalakon tett látogatásaid alapján mutassanak hirdetést. Az EGT-ben, az Egyesült Királyságban és Svájcban előbb a hozzájárulásodat kérjük.',
+        privAdsSet: 'A személyre szabott hirdetéseket a Google hirdetési beállításaiban kapcsolhatod ki', privAdsHow: 'Hogyan használja a Google a szolgáltatásait használó oldalak adatait',
+        privNoH: 'Amit nem csinálunk', privNoP: 'Nincs regisztráció, nincs komment, nincs hírlevél és nincs Google Analytics. Az adataidat nem adjuk el.',
+        privAskH: 'Kérdés vagy törlési kérés', privAskP: 'Írj a support@aiworldhq.com címre — válaszolunk, és kérésre töröljük az adataidat.' },
+  es: { privNav: 'Privacidad', privTitle: 'Privacidad', privTag: 'Qué recogemos, qué no, y qué opciones tienes.',
+        privStatsH: 'Estadísticas de visitas', privStatsP: 'Contamos las visitas con Cloudflare Web Analytics. No usa cookies y no te identifica: solo vemos totales, como páginas vistas, país y el sitio desde el que llegaste.',
+        privFbH: 'Los botones 👍/👎', privFbP: 'Un voto solo suma uno al contador de ese artículo. No guardamos quién votó.',
+        privCsH: 'Chat, formulario de contacto y correo', privCsP: 'Lo que nos escribes solo se usa para responderte. Los mensajes del formulario y los correos se borran a los 30 días. Contra el spam usamos Cloudflare Turnstile y guardamos una forma cifrada (hash) de tu dirección IP durante dos días, nunca la dirección en sí.',
+        privLocalH: 'Lo que guarda tu dispositivo', privLocalP: 'Tu elección de modo claro/oscuro y los pasos que marcas en las guías se guardan en tu propio navegador. Nunca salen de tu dispositivo.',
+        privPayH: 'Apoyo y packs PDF', privPayP: 'Los pagos los gestionan Ko-fi y PayPal. Nunca vemos los datos de tu tarjeta.',
+        privAdsH: 'Publicidad', privAdsP: 'Mostramos un anuncio al final de las páginas, servido por Google AdSense. Google y sus socios usan cookies para mostrar anuncios basados en tus visitas a este y otros sitios web. En el EEE, el Reino Unido y Suiza primero te pedimos tu consentimiento.',
+        privAdsSet: 'Desactiva los anuncios personalizados en la configuración de anuncios de Google', privAdsHow: 'Cómo usa Google la información de los sitios que usan sus servicios',
+        privNoH: 'Lo que no hacemos', privNoP: 'Sin cuentas, sin comentarios, sin boletín y sin Google Analytics. No vendemos tus datos.',
+        privAskH: 'Preguntas o solicitudes de borrado', privAskP: 'Escribe a support@aiworldhq.com: te responderemos y borraremos tus datos si lo pides.' }
+};
+for (const l of SITE_LANGS) Object.assign(UI[l], UI_PRIV[l] || {});
 
 // HIVATALOS ELÉRHETŐSÉGEK (2026-07-12, user: "ha már van útmutatója, legyen
 // elérhetősége is") — CSAK stabil, hivatalos főoldalak; ahol nincs publikus
@@ -1391,6 +1436,7 @@ function pageShell({ title, description, bodyContent, isArticle = false, noIntro
   <link rel="alternate" type="application/rss+xml" title="${escapeHtml(SITE.name)} RSS" href="${LP}/feed.xml">
   ${VERIFY.google ? `<meta name="google-site-verification" content="${escapeHtml(VERIFY.google)}">` : ''}
   ${VERIFY.bing ? `<meta name="msvalidate.01" content="${escapeHtml(VERIFY.bing)}">` : ''}
+  ${fejKod(HIRDETES)}
   ${jsonld ? `<script type="application/ld+json">${JSON.stringify(jsonld)}</script>` : ''}
   ${DESIGN.mobileCss ? `<style id="responsive">${DESIGN.mobileCss}</style>` : ''}
 </head>
@@ -1443,6 +1489,7 @@ function pageShell({ title, description, bodyContent, isArticle = false, noIntro
       <p class="site-footer__support"><a href="${LP}/about">${tr('aboutNav')}</a></p>
       ${PACKS.enabled ? `<p class="site-footer__support"><a href="${packsPath}">${tr('packsNav')}</a></p>` : ''}
       ${SUPPORT.enabled ? `<p class="site-footer__support"><a href="${supportPath}">${T.support}</a></p>` : ''}
+      <p class="site-footer__support"><a href="${LP}/privacy">${tr('privNav')}</a></p>
       <p class="site-footer__support"><a href="${LP}/feed.xml" title="RSS">📡 RSS</a></p>
       <p class="site-footer__socialt">${escapeHtml(FOLLOW[LANG] || FOLLOW.en)}</p>
       <p class="site-footer__social">
@@ -1924,8 +1971,8 @@ function buildToolsPage(companyGuides, counts) {
 // néz meg és távozik — egy tolakodó doboz ezen csak rontana. A hangnem a
 // brand-szabályt követi: átlátszó, nem kunyerál.
 //
-// ⚠️ AZ ÁLLÍTÁS IGAZ: kimérve, hogy az oldalon NINCS hirdetés-kód és nincs
-// fizetőfal. Ha valaha lesz, EZ A SZÖVEG IS VÁLTOZZON.
+// ⚠️ AZ ÁLLÍTÁS IGAZ: fizetőfal NINCS. A „no ads" rész 2026-10-01-én KIKERÜLT
+// (AdSense, core/ads.js) — hirdetésről itt SEMMIT ne állíts, se így, se úgy.
 function supportLine() {
   if (!SUPPORT.enabled || !SUPPORT.url) return '';
   return `<p class="support-foot">☕ ${tr('supFootPre')} `
@@ -1968,6 +2015,7 @@ function buildArticlePage(a) {
       ${supportLine()}
       <a href="../index" class="back-link">${tr('backStories')}</a>
     </div>
+    ${hirdetesBlokk(HIRDETES, LANG)}
   </article>`;
 
   const canonical = `${SITE.url}${LP}/article/${a.slug}`;
@@ -2449,6 +2497,7 @@ function buildGuidePage(a) {
       ${supportLine()}
       <a href="../index" class="back-link">${tr('backStories')}</a>
     </div>
+    ${hirdetesBlokk(HIRDETES, LANG)}
   </article>`;
 
   const canonical = `${SITE.url}${LP}/article/${a.slug}`;
@@ -3110,6 +3159,39 @@ function buildAboutPage() {
 }
 
 // ===================================================================
+// ADATVÉDELEM (2026-10-01) — a szövegek és a forrásuk: UI_PRIV. A hirdetés-
+// kártya CSAK bekapcsolt hirdetésnél jelenik meg: kikapcsolva igaz marad,
+// hogy az oldal nem használ sütit.
+// ===================================================================
+function buildPrivacyPage() {
+  const kartya = (icon, h, p, extra = '') => `<div class="gloss__card"><h2 class="gloss__term">${icon} ${escapeHtml(tr(h))}</h2><p class="gloss__def">${escapeHtml(tr(p))}</p>${extra}</div>`;
+  const hirdetes = !HIRDETES.be ? '' : kartya('📢', 'privAdsH', 'privAdsP',
+    `<p class="gloss__def"><a href="https://adssettings.google.com/" target="_blank" rel="noopener">${escapeHtml(tr('privAdsSet'))}</a> · `
+    + `<a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">${escapeHtml(tr('privAdsHow'))}</a></p>`);
+  const cards = [
+    kartya('📊', 'privStatsH', 'privStatsP'),
+    kartya('👍', 'privFbH', 'privFbP'),
+    kartya('💬', 'privCsH', 'privCsP'),
+    kartya('📱', 'privLocalH', 'privLocalP'),
+    SUPPORT.enabled || PACKS.enabled ? kartya('☕', 'privPayH', 'privPayP') : '',
+    hirdetes,
+    kartya('🚫', 'privNoH', 'privNoP'),
+    kartya('✉️', 'privAskH', 'privAskP')
+  ].join('\n');
+  const body = `<section class="guides-hero">
+      <p class="intro__kicker">🔒</p>
+      <h1 class="guides-hero__title">${escapeHtml(tr('privTitle'))}</h1>
+      <p class="guides-hero__tag">${escapeHtml(tr('privTag'))}</p>
+    </section>
+    <div class="gloss__grid">${cards}</div>`;
+  return pageShell({
+    title: `${tr('privTitle')} — ${SITE.name}`,
+    description: tr('privTag'),
+    noIntro: true, pagePath: 'privacy.html', bodyContent: body
+  });
+}
+
+// ===================================================================
 // "MELYIK AI VALÓ NEKED?" VARÁZSLÓ — 4 kérdés, kliens-oldali pontozás
 // (WIZ_DATA nyelvenként; a pontozás nyelvfüggetlen s-térképekből megy)
 // ===================================================================
@@ -3414,6 +3496,7 @@ function main() {
     writeFileSync(join(outBase, 'glossary.html'), buildGlossaryPage(), 'utf-8');   // AI-kisszótár
     writeFileSync(join(outBase, 'wizard.html'), buildWizardPage(), 'utf-8');       // Melyik AI való neked?
     writeFileSync(join(outBase, 'about.html'), buildAboutPage(), 'utf-8');         // Rólunk (bizalmi oldal)
+    writeFileSync(join(outBase, 'privacy.html'), buildPrivacyPage(), 'utf-8');     // Adatvédelem (2026-10-01, AdSense-feltétel)
     writeFileSync(join(outBase, 'archive.html'), buildArchivePage(loc), 'utf-8');  // Minden hír (archívum)
     writeFileSync(join(outBase, 'feed.xml'), feedXml(loc, lang), 'utf-8');   // nyelvenkénti RSS
     // Kereső-index (villámkereső a navbarban): cím + alcím + márka + slug
@@ -3488,6 +3571,7 @@ function main() {
       sitemapUrls.push({ loc: `${SITE.url}${lp}/glossary`, date: today });
       sitemapUrls.push({ loc: `${SITE.url}${lp}/wizard`, date: today });
       sitemapUrls.push({ loc: `${SITE.url}${lp}/about`, date: today });
+      sitemapUrls.push({ loc: `${SITE.url}${lp}/privacy`, date: today });
       sitemapUrls.push({ loc: `${SITE.url}${lp}/archive`, date: today });
       for (const a of loc) sitemapUrls.push({ loc: `${SITE.url}${lp}/article/${a.slug}`, date: (a.publishedAt || '').slice(0, 10) || today });
     }
@@ -3621,6 +3705,12 @@ Original content by ${SITE.name} — written and quality-checked by an autonomou
   if (VERIFY.indexnow) {
     writeFileSync(join(OUT_DIR, `${VERIFY.indexnow}.txt`), VERIFY.indexnow, 'utf-8');
     console.log('✅ IndexNow kulcsfájl generálva');
+  }
+
+  // ads.txt (2026-10-01) — CSAK bekapcsolt hirdetésnél (core/ads.js).
+  if (HIRDETES.be) {
+    writeFileSync(join(OUT_DIR, 'ads.txt'), adsTxt(HIRDETES), 'utf-8');
+    console.log('✅ ads.txt (AdSense)');
   }
 
   // Google Search Console fájlos igazolás (a fájl TARTALMA kötelezően ez a formátum).

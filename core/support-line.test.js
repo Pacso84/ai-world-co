@@ -83,18 +83,22 @@ t('🔑 a link ÚJ ABLAKBAN nyílik, biztonságosan', () => {
 // ===================================================================
 // 2. AZ ÁLLÍTÁS IGAZSÁGA — „nincs hirdetés, nincs fizetőfal"
 // ===================================================================
-t('🚨 az „nincs hirdetés" állítás IGAZ marad (hirdetés-kód sehol)', () => {
-  // A sor szó szerint azt állítja: „no ads, no paywall". Ha valaha
-  // hirdetés kerül az oldalra, ez a mondat HAZUDNI fog — és a hazug
-  // mondat rosszabb, mint a hiányzó. A projekt szabálya: minden állítás
-  // csak annyit mondjon, amennyit mér.
-  const gyanus = /adsbygoogle|googlesyndication|pagead2|doubleclick|carbonads|ezoic|mediavine/i;
-  const helyek = [join(ROOT, 'website', 'build.js'), join(ROOT, 'website', 'assets', 'style.css')];
+t('🚨 a „nincs hirdetés" állítás NEM jöhet vissza (2026-10-01 óta AdSense lehet)', () => {
+  // Eddig ez a teszt azt őrizte, hogy hirdetés-kód sehol ne legyen, mert a
+  // sor szó szerint azt állította: „no ads, no paywall". 2026-10-01-én a user
+  // hirdetést kért (core/ads.js, kapcsolóval) — az ÁLLÍTÁS ment, nem a kód.
+  // A mondat most csak a fizetőfalról szól, mert az mérhetően igaz. Ha a
+  // „no ads" visszaszivárog, bekapcsolt hirdetés mellett HAZUDNI fog — és a
+  // hazug mondat rosszabb, mint a hiányzó.
+  const iger = /no ads|ad-free|without ads|sin anuncios|reklámmentes|nincs rajta reklám|hirdetés és fizetőfal nélkül|nincs hirdetés/i;
+  const helyek = [join(ROOT, 'website', 'build.js'), join(ROOT, 'core', 'ebook-build.js'),
+    join(ROOT, 'core', 'packs-text.js'), join(ROOT, 'shared', 'legal-rules-ai.md')];
   for (const h of helyek) {
     if (!existsSync(h)) continue;
-    assert.ok(!gyanus.test(readFileSync(h, 'utf-8')),
-      '⚠️ HIRDETÉS-KÓD került a projektbe (' + h.replace(ROOT, '') + '), de a cikkek alja azt állítja, hogy nincs. '
-      + 'Vagy a kód menjen, vagy a mondat változzon.');
+    // A magyarázó kommentek idézhetik a régi mondatot — csak a KÓD-sorokat nézzük.
+    const sorok = readFileSync(h, 'utf-8').split(/\r?\n/).filter(s => !/^\s*(\/\/|\/\*|\*)/.test(s));
+    const rossz = sorok.find(s => iger.test(s));
+    assert.ok(!rossz, '⚠️ visszajött egy „nincs hirdetés" ígéret (' + h.replace(ROOT, '') + '): ' + String(rossz).trim().slice(0, 120));
   }
 });
 
@@ -127,7 +131,9 @@ t('🔑 ÉLES: MINDEN cikk-oldal megkapja (ez fogta meg az 55%-os hibát)', () =
 t('🔑 ÉLES: mind a három nyelven a SAJÁT nyelvén szól', () => {
   const cikkek = cikkOldalak();
   if (!cikkek.length) return;
-  const vart = { '': /Free to read/, 'hu': /Ingyenes, hirdetés/, 'es': /Gratis, sin anuncios/ };
+  // A NYELVET nézi, nem a pontos szöveget: a CI a build ELŐTT tesztel, tehát
+  // egy szövegváltás napján a régi kimenet is itt van (2026-10-01: „no ads" ki).
+  const vart = { '': /Free to read/, 'hu': /Ingyenes, /, 'es': /Gratis, / };
   // 2026-09-10, user-döntés: ÖNKÉNTES HAVI támogatás — fizetőfal NÉLKÜL.
   // Az előzmény: felmerült, hogy az örökzöld útmutatók legyenek fizetősek.
   // Kimérve elvetettük: 1,17 oldal/látogató (a tipikus olvasó EGY cikket

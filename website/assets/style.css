@@ -1011,3 +1011,7 @@ body {
 .g-nextg__t { display: block; margin-top: 4px; font-size: 18px; font-weight: 800; line-height: 1.3; }
 .g-nextg__s { display: block; margin-top: 4px; font-size: 14px; color: var(--muted); line-height: 1.4; }
 .g-nextg__arrow { position: absolute; right: 18px; top: 50%; transform: translateY(-50%); font-size: 22px; font-weight: 800; color: var(--gc, var(--accent)); }
+
+/* HIRDETÉS (2026-10-01, core/ads.js): EGY egység a cikk legalján, jelölve, elválasztva a tartalomtól. */
+.ad-slot { margin: 28px 0 8px; padding-top: 14px; border-top: 1px solid var(--line); min-height: 120px; }
+.ad-slot__label { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 0 0 8px; }

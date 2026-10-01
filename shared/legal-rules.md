@@ -226,8 +226,11 @@ Az **FTC** (amerikai fogyasztóvédelmi hatóság) szigorú — az Endorsement G
 - Nincs regisztráció, nincs felhasználói fiók
 - Nincs komment szekció
 - **Nincs hírlevél** — 2026-07-27-én teljesen kivezettük
-- Nincs Google Analytics, nincs hirdetési követő
-- Nincs sütiket használó nyomkövetés → **cookie-banner sem kell**
+- Nincs Google Analytics
+- **Hirdetés (2026-10-01-től, kapcsolóval — `config.json` website.ads, `core/ads.js`)**: Google AdSense,
+  EGY jelölt egység a cikkek alján. Bekapcsolva a Google SÜTIT használ → az EGT/UK/CH
+  látogatóknak a Google saját, tanúsított süti-ablaka kell (AdSense → Privacy & messaging),
+  és a `/privacy` oldal hirdetés-szakasza. Kikapcsolva: nincs süti, nincs süti-ablak.
 
 ### Amire figyelni kell (GDPR)
 

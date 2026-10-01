@@ -123,6 +123,8 @@ export const SZOVEG = {
       + 'Each guide title links back to the guide it came from.',
     promptSzam: (db, beir, g) => `${db} examples from ${g} guides — ${beir} of them prompts you can type`,
     oszinteCim: 'Before you start — what this is, honestly',
+    // ⚠️ 2026-10-01: a „no ads" rész is KIKERÜLT (a honlapra AdSense jöhet) —
+    // csak a fizetőfal-mentességet állítjuk, mert az mérhetően igaz.
     // ⚠️ A „hirdetésmentes" ÍGÉRET KIKERÜLT (2026-09-19). A honlap maga
     // hirdetés- és fizetőfal-mentes („no ads, no paywall" — a cikkek alján,
     // tesztel őrizve), tehát a régi mondat („a version with no ads and no
@@ -130,7 +132,7 @@ export const SZOVEG = {
     // változatban is megvan. Ez is túlígérés, csak nem a szerzőségről.
     ingyen: '<strong>Every guide in this pack is also free on our website.</strong> What you paid '
       + 'for is the selection and the order, one offline file you can print or keep on your phone, '
-      + 'and the work of putting it together — not secret knowledge. Our website has no ads and no '
+      + 'and the work of putting it together — not secret knowledge. Our website has no '
       + 'paywall either. If you would rather read them free online, that is completely fine — '
       + 'every guide links back to its page.',
     // 🇪🇺 A MI-JELÖLÉS SZÓ SZERINT AZT MONDJA, AMI IGAZ (átírva 2026-09-19).
@@ -170,7 +172,7 @@ export const SZOVEG = {
     ingyen: '<strong>Todas las guías de este paquete están también gratis en nuestra web.</strong> Lo que '
       + 'has pagado es la selección y el orden, un único archivo sin conexión que puedes imprimir o llevar '
       + 'en el móvil, y el trabajo de reunirlo todo; no conocimiento secreto. Nuestra web tampoco tiene '
-      + 'anuncios ni muro de pago. Si prefieres leerlas gratis en internet, no hay ningún problema: cada '
+      + 'muro de pago. Si prefieres leerlas gratis en internet, no hay ningún problema: cada '
       + 'guía enlaza a su página.',
     // A próza a HONLAP spanyol szövegével egyezik („escrita por IA … ningún
     // editor humano la revisó"), a JEL viszont a nagybetűs angol „AI" —
