@@ -1,0 +1,70 @@
+{
+  "_meta": {
+    "written_at": "2026-10-01T03:08:05.486Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00974472,
+    "original_draft": "2026-10-01T03-00-41-535Z_google-workspace_Customize_the_style_of_your_captions_in_Google_Vid.json",
+    "source_id": "google-workspace",
+    "source_name": "Google Workspace Updates (hivatalos)",
+    "source_link": "http://workspaceupdates.googleblog.com/2026/09/customize-style-of-your-captions-in-Google-Vids.html",
+    "source_links": [
+      "http://workspaceupdates.googleblog.com/2026/09/customize-style-of-your-captions-in-Google-Vids.html",
+      "http://workspaceupdates.googleblog.com/2026/09/create-more-natural-expressive-ai-voiceovers-in-Google-Vids-with-upgraded-Gemini-3.8-Flash-Lite-TTS.html"
+    ],
+    "source_snippet": "Captions in Google Vids are now fully customizable. Until now, captions came in a set style. You can now change their font and typography, where they sit on screen, and how they animate, so they match your brand or the look of your video.\nCaptions make videos easier to follow when the sound is off or when viewers prefer to read along. Captions that look good help your video catch people's attention on social feeds and in company channels. They also make it look finished and ready to share.\nIncreased customization options for captions can help:\n\n\nMarketing and social teams: Match captions to brand fonts and colors for social ads and promo videos. \nCreators: Add animated, eye-catching captions to make short videos more engaging.\n\n\nGetting started\n\n\nAdmins: There is no admin control for this feature.\nEnd users: There is no end user setting for this feature. Visit the Help Center to learn more.\n\n\nRollout pace\n\n\nRapid Release and Scheduled Release domains: Available now\n\n\nAvailability\n\n\nBusiness: Business Starter, Standard, Plus and Base\nEnterprise: Enterprise Starter, Standard, and Plus\nEducation: Education Fundamentals, Standard, and Plus\nConsumer: Google AI Plus and Ultra\nOther Editions: Frontline Starter, Standard, and Plus; Essentials Starter, Enterprise Essentials, and Enterprise Essentials Plus; Individual; Nonprofits\nEducation Add-ons: Google AI Pro for Education; Teaching and Learning\nOther Add-ons: AI Expanded Access\n\n\nResources\n\n\nGoogle Help: Make your document, present\n\n---\n\nWe are upgrading the underlying text-to-speech (TTS) engine powering AI voiceovers and avatar narration in Google Vids to the latest Gemini 3.8 Flash Lite TTS model.\nHigh-quality voiceover is essential for compelling video communication. With this model upgrade, Google Vids creators will experience:\n\n\nSuperior Naturalness & Inflection: Improved sentence flow, lifelike pacing, and context-aware emphasis that reduces robotic cadences.\nFast Generation Latency: Rapid audio synthesis allows you to iterate on scripts and preview voiceovers in real time.\n\n\nGetting started\n\n\nAdmins: There is no admin control for this feature.\nEnd users: There is no end user setting for this feature. Visit the Help Center to learn more.\n\n\nRollout pace\n\n\nRapid Release and Scheduled Release domains: Available now\n\n\nAvailability\n\n\nBusiness: Business Starter, Standard, and Plus\nEnterprise: Enterprise Starter, Standard, and Plus\nEducation: Education Plus\nConsumer: Google AI Pro and Ultra\nOther Editions: Essentials Starter, Enterprise Essentials, and Enterprise Essentials Plus; Individual; Nonprofits\nEducation Add-ons: Google AI Pro for Education; Teaching and Learning\nOther Add-ons: AI Expanded Access\n\n\nResources\n\n\nGoogle Help: Create voiceovers with AI in Google Vids",
+    "merged_from": 2,
+    "merged_theme": "Google Vids caption and voiceover updates",
+    "status": "published",
+    "rejected_at": "2026-10-01T03:05:44.810Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 736
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured news piece with a strong hook, clear explanations of technical terms (TTS, typography), helpful audience-segmented advice, and an actionable wrap-up. No prohibited content, no clichés, US English throughout. Passes all quality gates.",
+      "_aiCost": 0.000857682,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "The article has good voice, structure, and plain-language explanations, but two red flags are blocking: the specific AI model name Gemini 3.8 Flash Lite TTS appears invented (Google's real model names don't follow this pattern), and the category mismatch means it lacks the actionable steps a how-to reader needs.",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-10-01T03-00-41-535Z_google-workspace_Customize_the_style_of_your_captions_in_Google_Vid.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-10-01T03:09:09.877Z",
+    "slug": "google-vids-gets-custom-captions-and-more-natural-ai-voices",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-10-01T03:09:37.598Z",
+    "guide_worthy": true,
+    "related_guide_topic": "gemini-getting-started",
+    "image_v": 2,
+    "image_at": "2026-10-01T03:15:54.317Z",
+    "seo": {
+      "meta_description": "Google Vids now offers customizable captions with font and position controls, plus more natural AI voiceovers. Both updates are available.",
+      "keywords": [
+        "Google Vids custom captions",
+        "Google Vids AI voiceover",
+        "how to customize video captions Google Vids",
+        "Google Vids new features",
+        "video captions customization",
+        "AI voiceover tools Google"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more context in the meta description about what the updates enable users to achieve",
+        "Include the publication date in the article for fresher content signals",
+        "Add related Google Vids tutorials or feature articles as internal links"
+      ],
+      "optimised_at": "2026-10-01T03:16:58.496Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Google Vids Gets Custom Captions and More Natural AI Voices\"\nsubtitle: \"Google says two updates to its video tool give you more control over how videos look and sound\"\ncategory: \"news\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"google-vids\", \"video-creation\", \"ai-voiceover\", \"captions\", \"productivity\"]\n---\n\n# Google Vids Gets Custom Captions and More Natural AI Voices\n\n> **In short:** Google says Vids now lets you fully customize caption style — font, position, and animation — and has upgraded its AI voiceover to sound more natural and generate audio faster. Both are available now on supported plans.\n\nYou've probably scrolled past a video on mute, kept watching because the captions looked good, and clicked away the second they felt generic. That's the kind of detail Google is trying to fix in Vids, its video creation tool — with two updates going out at the same time.\n\n## Captions you can actually style\n\nUntil now, Vids captions came in one fixed look. Google says you can now change the font, the typography (the visual styling — bold, size, that kind of thing), where the captions sit on the screen, and how they animate as they appear.\n\nWhy bother? Captions are how most people follow videos on social feeds, in offices, or anywhere the sound is off. Captions that match your brand colors or your video's mood help a video feel finished — and stop viewers from scrolling past.\n\nGoogle specifically calls out two groups most likely to care: marketing and social teams who need captions to match brand fonts and colors across ads and promo videos, and creators who want animated, eye-catching captions to make short videos more engaging on feeds.\n\n## AI voiceovers that sound less robotic\n\nThe other update is less visible but you'll hear it. Google says the text-to-speech engine (TTS, or the AI that turns written words into spoken audio) behind Vids' voiceover has been upgraded. According to Google, the new engine brings better sentence flow, more lifelike pacing, and \"context-aware emphasis\" — meaning the AI stresses the right words at the right moments instead of reading everything at the same flat volume. Google also says the audio generates faster, so you can preview your voiceover in real time as you tweak the script.\n\nFor anyone who's used an AI voice tool before, the practical change is simple: the result sounds less like a robot reading a teleprompter, and more like a person who knows what they're talking about.\n\n## Who can use these right now\n\nGoogle says both updates are available now on Rapid Release and Scheduled Release domains, and that no admin setup is required. The captions update is rolling out across Google's Business, Enterprise, Education, and several Consumer plans. The voiceover upgrade covers a similar set of Business, Enterprise, Education, and Consumer plans, including Google AI Pro and Ultra.\n\nNeither feature has a dedicated admin toggle, so the Help Center is the place to look for exactly where the controls live in your workspace.\n\n## What this means for you\n\n- **If you're making videos for marketing or social media:** Custom captions are a small thing that can lift a video from \"draft\" to \"ready to post.\" Spend five minutes matching your brand font and color before the next campaign goes out.\n- **If you create training, internal, or explainer videos at work:** A more natural AI voice means you can record scripts without booking a studio. Re-record your last video and you'll likely notice the difference immediately.\n- **If you make videos for fun or as a hobby:** Animated captions and a less robotic voice make short social videos feel more polished — and they help when your audience is watching on mute in a waiting room.\n- **If you already use it:** A useful next step is to re-run an old project with the new voice engine — that's the fastest way to hear what's changed, before you build anything new.\n\n## Wrap-up\n\nCaptions and voice are the two details that decide whether a video feels finished or feels like a rough draft. Google says both just got meaningful upgrades in Vids. If you want to see whether the changes matter to your work, open Vids, pick an old project, and try the new caption style and voice on a short test clip — that should tell you within a few minutes whether it's worth using for your next video.",
+  "original_title": "Customize the style of your captions in Google Vids"
+}

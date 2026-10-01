@@ -1,0 +1,35 @@
+{
+  "started_at": "2026-10-01T03:05:06.181Z",
+  "total": 4,
+  "passed": 2,
+  "failed": 1,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.009925614,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-10-01T03-00-41-535Z_google-workspace_Customize_the_style_of_your_captions_in_Google_Vid.json",
+      "rejected": "REJECTED_2026-10-01T03-00-41-535Z_google-workspace_Customize_the_style_of_your_captions_in_Google_Vid.json",
+      "decision": "FAIL",
+      "score": 6,
+      "cost_usd": 0.0019986
+    },
+    {
+      "writer": "WRITER_2026-10-01T03-00-56-728Z_d-id-news_AI_Video_Agents__How_They_Automate_Video_Content_C.json",
+      "article": "ARTICLE_2026-10-01T03-00-56-728Z_d-id-news_AI_Video_Agents__How_They_Automate_Video_Content_C.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.00155385
+    },
+    {
+      "writer": "WRITER_2026-10-01T03-00-56-729Z_picsart_AI_Video_Clipper_is_here__how_to_clip_videos_in_Pi.json",
+      "article": "ARTICLE_2026-10-01T03-00-56-729Z_picsart_AI_Video_Clipper_is_here__how_to_clip_videos_in_Pi.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.00182778
+    }
+  ],
+  "truth_blocked": 1,
+  "finished_at": "2026-10-01T03:07:34.217Z",
+  "duration_seconds": 148.036
+}

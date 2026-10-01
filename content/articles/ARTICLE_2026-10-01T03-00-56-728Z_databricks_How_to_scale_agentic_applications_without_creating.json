@@ -1,0 +1,70 @@
+{
+  "_meta": {
+    "written_at": "2026-10-01T03:08:32.237Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00794824,
+    "original_draft": "2026-10-01T03-00-56-728Z_databricks_How_to_scale_agentic_applications_without_creating.json",
+    "source_id": "databricks",
+    "source_name": "Databricks Blog (hivatalos)",
+    "source_link": "https://www.databricks.com/blog/how-scale-agentic-applications-without-creating-ai-sprawl",
+    "source_links": [
+      "https://www.databricks.com/blog/how-scale-agentic-applications-without-creating-ai-sprawl"
+    ],
+    "source_snippet": "Building an agent is getting easier. More capable models and coding agents are making...",
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "rejected_at": "2026-10-01T03:06:55.489Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 777
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured explainer with clear hooks, good analogies (urban sprawl, smart-home apps), proper company attribution to Databricks, and a useful 'What this means for you' section covering four audience types. No prohibited content, no invented facts, US English throughout, and accessible language for everyday readers.",
+      "_aiCost": 0.00095256,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Hitelesség-kapu blokkolta: The source is from Databricks (databricks.com/blog), but the article attributes the guide to Datadog, a completely different company ('Datadog, a company that helps businesses monitor their software, ",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-10-01T03-00-56-728Z_databricks_How_to_scale_agentic_applications_without_creating.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-10-01T03:09:30.636Z",
+    "slug": "ai-agents-are-easy-to-build-now-that-s-creating-a-new-problem",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-10-01T03:09:51.940Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is an explainer article about a management concept (AI sprawl) rather than a specific named product or feature users can use",
+    "image_v": 2,
+    "image_at": "2026-10-01T03:16:16.339Z",
+    "seo": {
+      "meta_description": "Learn why building AI agents is easier than ever but managing them is getting messy. Discover the challenge companies face tracking multiple AI helpers.",
+      "keywords": [
+        "what is an AI agent",
+        "how to build AI agents",
+        "AI agent management",
+        "managing AI agents",
+        "scaling AI agents",
+        "AI agents for business",
+        "Databricks agent guide"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add the publication date to help with freshness signals and E-E-A-T credibility",
+        "Include the full guide title 'How to scale agentic applications' to improve keyword relevance for users searching for that specific Databricks resource",
+        "Consider adding 1-2 concrete examples of agent management challenges to match search intent for practical problem-solvers"
+      ],
+      "optimised_at": "2026-10-01T03:17:36.439Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"AI Agents Are Easy to Build Now — That's Creating a New Problem\"\nsubtitle: \"Companies are racing to build AI helpers, but managing all of them is getting messy — and one guide names the trap\"\ncategory: \"explainer\"\naudience: \"business\"\nread_time_minutes: 4\ntags: [\"ai-agents\", \"enterprise-ai\", \"ai-management\"]\n---\n\n# AI Agents Are Easy to Build Now — That's Creating a New Problem\n\n> **In short:** Building AI \"agents\" — small AI helpers that can take actions on their own — is now easier than ever, according to Databricks. But as more teams create more agents, companies are running into a new problem: keeping track of them all.\n\nYou've probably used an AI agent without realizing it. When you ask a chatbot to actually book a flight, reschedule a meeting, or pull up an order, an agent — a piece of AI software that can do things, not just chat — is doing the work behind the scenes.\n\nDatabricks, a company that builds platforms for data and AI, recently published a guide titled \"How to scale agentic applications without creating AI sprawl.\" Here's what that means in plain language, and why it might quietly shape the tools you use at work.\n\n## What is an AI agent?\n\nAn AI agent is a small program powered by AI that can take actions on its own. Think of it as a tiny assistant that doesn't just answer questions — it actually goes and does things. It might check your calendar, send an email, or look up a shipment.\n\nAccording to Databricks, building these agents is \"getting easier.\" Newer AI models and \"coding agents\" (AI tools that help write software) mean even non-developers can piece one together. That's a big shift from a few years ago, when building one required a team of engineers.\n\n## What is \"AI sprawl\"?\n\nSprawl is a word borrowed from city planning. \"Urban sprawl\" means a city growing faster than its roads and services can keep up.\n\nAI sprawl is the same idea. When every team in a company starts building their own AI helpers, with no shared plan, you end up with dozens — or hundreds — of agents doing overlapping work. Nobody knows which one is in charge. Some talk to each other; some don't. Costs add up. Problems hide in corners.\n\nFor a regular person, the closest parallel might be this: imagine your household installed five different smart-home apps, each with its own login, each controlling one light. Now multiply that across a company with 50 teams, each with their own AI helpers.\n\n## Why companies care\n\nWhen AI sprawl gets out of hand, a few things tend to go wrong:\n\n- **Costs balloon**, because nobody is tracking which agents are running or how much they cost.\n- **Security gets fuzzy** — too many tools, not enough oversight.\n- **Agents contradict each other** or quietly duplicate work.\n- **When something breaks**, it's hard to find out why.\n\nThat's why Databricks' guide focuses on the management side, not just the building side. Easier to build means easier to lose control.\n\n## What this means for you\n\n- **If you work at a company using AI tools**: You may notice more AI features appearing in your software — and more behind-the-scenes automation. If something feels chaotic, it might be. Ask your team whether there's a shared plan for the AI helpers being added.\n- **If you're job-hunting or building a career**: Managing AI systems is a growing specialty. Understanding how to organize, monitor, and govern AI tools could be a useful skill in the next few years.\n- **If you're just curious about AI**: Notice that \"agents\" are now a real product category — not just chatbots. The big bet is that AI will move from answering questions to actually taking actions for you.\n- **If you already use it**: The agents behind the scenes of the software you use at work are getting more numerous and more capable. If you've ever wondered who's really in charge when three AI helpers seem to be working on the same task, this is the problem companies are now scrambling to solve.\n\n## Wrap-up\n\nDatabricks' guide is less about a new product and more about a growing pain: AI is now easy to build, but hard to organize. If you work with AI tools in any capacity — even just using them — expect to hear the phrase \"AI sprawl\" more often in the months ahead. The next step you can take today: ask your team or your software provider whether they have a plan for managing all those AI helpers, or if they're simply piling up.",
+  "original_title": "How to scale agentic applications without creating AI sprawl"
+}

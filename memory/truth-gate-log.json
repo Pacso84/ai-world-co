@@ -1,65 +1,4 @@
 {
-  "2026-09-12": [
-    {
-      "at": "2026-09-12T02:16:59.017Z",
-      "file": "WRITER_2026-09-11T18-51-46-518Z_google-workspace_The_Gemini_desktop_app_is_now_available_for_Window.json",
-      "action": "block",
-      "reasons": [
-        "The article states as fact that there is a 'Gemini desktop app' for Windows distributed via the Microsoft Store, with publisher 'Google LLC', installable from the Microsoft Store. As of available information, Google has not publicly released a dedicated Gemini desktop app for Windows via the Microsoft Store under that publisher — this appears to be a fabricated product/UI.",
-        "The article states as fact that the Gemini desktop app is summoned with the keyboard shortcut 'Alt + Space'. There is no verified announcement or documentation of this shortcut being tied to a Gemini Windows app — this appears to be a fabricated UI detail."
-      ],
-      "confidence": 7
-    },
-    {
-      "at": "2026-09-12T02:22:20.469Z",
-      "file": "WRITER_GUIDE_summarize-long-web-articles-in-safari-with-apple-intelligenc.json",
-      "action": "block",
-      "reasons": [
-        "The article claims a 'Summarize' option appears in Safari's page settings (Aa) menu as a discrete option (or with a ✨ sparkles icon) on supported devices. As of available information, Apple Intelligence's web-page summarization in Safari is accessed via the Reader view's summary feature, not as a standalone 'Summarize' button labeled in the Aa page-settings menu — the article describes a specific UI element that does not exist as stated.",
-        "The article states that tapping Summarize produces 'a short list of bullet points' and that 'a small section labeled \"Summary\" appears with 3 to 5 bullet points' — this specific UI behavior (a labeled 'Summary' section with bullet points appearing after tapping Summarize) is fabricated; Apple's Reader-view summary shows a few short lines at the top of the page, not a separately labeled section with bullet points.",
-        "The article claims users 'may also see a related option to ask a follow-up question about the article — for example, \"What's the main argument?\" — which Apple Intelligence answers using the page content.' This follow-up Q&A feature inside Safari's article summary is not a verified Apple Intelligence feature."
-      ],
-      "confidence": 7
-    },
-    {
-      "at": "2026-09-12T11:54:17.128Z",
-      "file": "WRITER_GUIDE_summarize-long-web-articles-in-safari-with-apple-intelligenc.json",
-      "action": "block",
-      "reasons": [
-        "The 'Summarize' option described inside Safari's Reader/Aa page-settings menu is a fabricated UI element. Apple Intelligence article summarization in Safari is triggered via the share sheet → 'Summarize' action, or via the Reader view's built-in summarize button on the article itself — it is not presented as an option within the Aa page-settings menu itself (no ✨ sparkles icon entry inside that menu)."
-      ],
-      "confidence": 8
-    },
-    {
-      "at": "2026-09-12T11:59:43.266Z",
-      "file": "WRITER_GUIDE_summarize-long-web-articles-in-safari-with-apple-intelligenc.json",
-      "action": "block",
-      "reasons": [
-        "Step 4 describes a 'Summarize' button appearing on the article itself in Safari Reader view and a 'Summarize' option in the Share sheet — this is a fabricated UI element. Apple Intelligence web article summarization is not a built-in Safari Reader/Share-sheet feature; users access it via the Apple Intelligence website summarization in Safari's address bar, not via a 'Summarize' button on the article or a Share-sheet action.",
-        "Step 3 and the 'Common mistakes' section imply that Reader view is required for the summarization feature, which is inaccurate — Apple Intelligence can summarize from the standard page, and the article/Share-sheet 'Summarize' controls as described do not exist."
-      ],
-      "confidence": 8
-    },
-    {
-      "at": "2026-09-12T12:02:16.894Z",
-      "file": "WRITER_GUIDE_summarize-long-web-articles-in-safari-with-apple-intelligenc.json",
-      "action": "block",
-      "reasons": [
-        "Step 4 describes a 'Summarize' option appearing in the Safari Reader-mode page menu (the Aa panel) — this UI element does not exist in Safari. Safari's Reader mode has never included a Summarize button in its page settings menu. This is a fabricated UI element."
-      ],
-      "confidence": 9
-    },
-    {
-      "at": "2026-09-12T12:03:50.660Z",
-      "file": "WRITER_GUIDE_summarize-long-web-articles-in-safari-with-apple-intelligenc.json",
-      "action": "block",
-      "reasons": [
-        "Step 4 instructs readers to look for a 'Summarize' option in the Safari Reader-mode page menu (the Aa panel) and claims it can appear 'inside the same Aa-style page menu you used in Step 3.' Safari's Reader mode Aa page-settings menu does not contain a Summarize option — this UI element does not exist in Safari. Apple Intelligence summarization in Safari Reader is accessed via the Reader view toolbar, not through the Aa page-settings panel.",
-        "Step 4 also tells readers to look for Summarize 'at the top or bottom of the Reader view' with a 'sparkles icon,' describing a specific UI element that does not exist in Safari's Reader mode interface."
-      ],
-      "confidence": 9
-    }
-  ],
   "2026-09-14": [
     {
       "at": "2026-09-14T14:38:36.790Z",
@@ -293,6 +232,17 @@
         "Muse for Small Business as described — a personal AI agent for small business owners — is not a real, announced Meta product.",
         "The claim that Meta made Zapier a 'named connector inside Muse' with access to '9,000 apps and 40,000 actions' via MCP is unverified and likely fabricated.",
         "Attributing specific quotes ('works in the background to help' framed as Meta describing Muse, and characterizing Muse as 'its answer' to agents) to a 'Meta's announcement' that does not appear to exist constitutes invented specifics."
+      ],
+      "confidence": 9
+    }
+  ],
+  "2026-10-01": [
+    {
+      "at": "2026-10-01T03:06:55.494Z",
+      "file": "WRITER_2026-10-01T03-00-56-728Z_databricks_How_to_scale_agentic_applications_without_creating.json",
+      "action": "block",
+      "reasons": [
+        "The source is from Databricks (databricks.com/blog), but the article attributes the guide to Datadog, a completely different company ('Datadog, a company that helps businesses monitor their software, recently published a guide titled...'). Datadog did not publish this guide; Databricks did."
       ],
       "confidence": 9
     }
