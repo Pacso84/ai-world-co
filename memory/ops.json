@@ -1285,17 +1285,6 @@
   ],
   "messages": [
     {
-      "id": "m178947750778665",
-      "from": "guide",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Kell még adat: \"How to use Perplexity's Focus modes to get cleaner, faster answers\" — az Ellenőrző tényt/forrást kér, amit nem találhatok ki: Article lacks any source links or citations to verify the claimed feature set (Academic, Social, YouTube, Your Files)",
-      "ref": "GUIDE_how-to-use-perplexity-s-focus-modes-to-get-cleaner-faster-an.json",
-      "open": false,
-      "at": "2026-09-15T13:05:07.786Z",
-      "resolved_at": "2026-09-15T13:05:47.160Z"
-    },
-    {
       "id": "m178947754715987",
       "from": "ellenorzo",
       "to": "guide",
@@ -2639,6 +2628,15 @@
       "text": "6 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-10-01T03:33:39.469Z"
+    },
+    {
+      "id": "m17908872354551",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Draft a meeting agenda and summarise notes with Pe\" — Focus dropdown showing modes like Internet, Academic, Writing, or Social; Writing mode for drafting original text without web lookups",
+      "ref": "ARTICLE_GUIDE_draft-a-meeting-agenda-and-summarise-notes-with-perplexity.json",
+      "at": "2026-10-01T20:40:35.455Z"
     }
   ]
 }
