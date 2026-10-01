@@ -194,11 +194,10 @@ Nem PR-hírek vakon átvéve — saját kommentárral, gyakorlati kontextussal. 
 > AdSense. Ezek közül EGYIK SEM él, és a promptokba kerülve ellentmondtak a
 > tényleges döntéseknek. A mostani állapot:
 
-- ☕ **Önkéntes támogatás** — Ko-fi gomb a cikkek alján (PayPal), fizetőfal NINCS.
-- 📘 **PDF-csomagok** a Ko-fi boltban (`ko-fi.com/aiworldhq/shop`) — az ingyenes
-  útmutatókból válogatott, téma szerinti gyűjtemények. **Minden vásárlás végleges,
-  visszatérítés NINCS** (user-döntés 2026-09-25).
-- ❌ **NINCS**: affiliate link, szponzorált cikk, reklám/AdSense, hírlevél
+- 📢 **Hirdetés (2026-10-01-től)** — Google AdSense, EGY jelölt hirdetés a cikkek legalján. Cikkben ne említsd.
+- ⛔ **Ko-fi támogatás és PDF-bolt: MEGSZŰNT (2026-10-01, user-döntés)** — ne említsd, ne ígérd.
+- Fizetőfal NINCS — minden cikk ingyen olvasható.
+- ❌ **NINCS**: affiliate link, szponzorált cikk, hírlevél, támogatás-gomb, bolt
   (a hírlevél 2026-07-27-én megszűnt). Cikkben ilyet ne említs és ne ígérj.
 - Az ingyenes cikkek MINDIG ingyenesek maradnak.
 
@@ -220,7 +219,7 @@ Nem PR-hírek vakon átvéve — saját kommentárral, gyakorlati kontextussal. 
 
 **Tempó**: naponta legfeljebb 4 hír + 2 útmutató, heti 1 összefoglaló. **Üres nap jobb mint gyenge nap.**
 
-**Bevétel**: önkéntes Ko-fi-támogatás + PDF-csomagok (végleges vásárlás, nincs visszatérítés). NINCS affiliate, szponzor, reklám, hírlevél.
+**Bevétel**: egyetlen jelölt Google-hirdetés a cikkek alján (2026-10-01-től). NINCS affiliate, szponzor, hírlevél, Ko-fi, bolt.
 
 ---
 

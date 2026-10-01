@@ -119,13 +119,18 @@ const cikkOldalak = () => {
   return ki.filter(p => /[\\/]article[\\/]/.test(p));
 };
 
-t('🔑 ÉLES: MINDEN cikk-oldal megkapja (ez fogta meg az 55%-os hibát)', () => {
+t('🔑 ÉLES: MINDEN cikk-oldal megkapja — vagy EGYIK SEM (ez fogta meg az 55%-os hibát)', () => {
+  // 2026-10-01: a user megszüntette a Ko-fit → config company.support_enabled:false.
+  // A kimenetet NEM a config mostani állásához mérjük: a CI a build ELŐTT
+  // tesztel, tehát a kapcsolás napján még a régi kimenet van itt — egy
+  // „a configgal egyezzen" teszt épp azt a buildet akasztaná meg, ami
+  // rendbe tenné. A HIBA a FÉLÚT (mint 09-09-én: 55%), nem a ki/be.
   const cikkek = cikkOldalak();
   if (!cikkek.length) { console.log('     (nincs helyi build — kihagyva; a CI a build ELŐTT tesztel)'); return; }
   const nelkul = cikkek.filter(p => !readFileSync(p, 'utf-8').includes('support-foot'));
   console.log('     ↳ ' + (cikkek.length - nelkul.length) + '/' + cikkek.length + ' cikk-oldalon ott van');
-  assert.equal(nelkul.length, 0,
-    nelkul.length + ' cikk-oldalról hiányzik, pl. ' + (nelkul[0] || '').replace(PUBLIC, ''));
+  assert.ok(nelkul.length === 0 || nelkul.length === cikkek.length,
+    'FÉLÚT: ' + nelkul.length + '/' + cikkek.length + ' cikk-oldalról hiányzik, pl. ' + (nelkul[0] || '').replace(PUBLIC, ''));
 });
 
 t('🔑 ÉLES: mind a három nyelven a SAJÁT nyelvén szól', () => {
@@ -148,6 +153,7 @@ t('🔑 ÉLES: mind a három nyelven a SAJÁT nyelvén szól', () => {
     const f = readdirSync(d).filter(x => x.endsWith('.html'))[0];
     if (!f) continue;
     const sor = (readFileSync(join(d, f), 'utf-8').match(/<p class="support-foot">[\s\S]*?<\/p>/) || [''])[0];
+    if (!sor) continue;   // kikapcsolt támogatás (2026-10-01) — nincs mit nyelvileg mérni
     assert.match(sor, rx, '/' + nyelv + ' nem a saját nyelvén kapta a sort: ' + sor.slice(0, 90));
     assert.match(sor, havi[nyelv],
       '⚠️ /' + nyelv + ': eltűnt a HAVI lehetőség a támogatás-sorból (user-döntés 2026-09-10): ' + sor.slice(0, 110));
@@ -186,6 +192,20 @@ t('a listaoldalakra NEM kerül (csak a cikkek alján van értelme)', () => {
   if (!existsSync(idx)) return;
   assert.ok(!readFileSync(idx, 'utf-8').includes('support-foot'),
     'a főoldalra is kikerült a támogatás-sor — oda nem szántuk');
+});
+
+// ===================================================================
+// 4. KIKAPCSOLVA (2026-10-01: a user megszüntette a Ko-fit — támogatás + bolt KI)
+// ===================================================================
+t('🔌 kikapcsolt támogatás/bolt: a régi címek 301-gyel a főoldalra, a chatbot nem küld oda', () => {
+  // A régi FB-posztok és Reel-leírások /support és /packs címre is mutathatnak:
+  // kikapcsolva ezek NE 404-et adjanak. A chatbot pedig csak élő oldalt ajánljon.
+  assert.ok(/SUPPORT\.enabled \? \[\] : \['support'\]/.test(build), 'a /support átirányítása hiányzik');
+  assert.ok(/PACKS\.enabled \? \[\] : \['packs'\]/.test(build), 'a /packs átirányítása hiányzik');
+  assert.ok(/\$\{kiRules\}`/.test(build), 'az átirányítás nem kerül a _redirects-be');
+  assert.ok(/filter\(f => PACKS\.enabled \|\| f\.p !== '\/packs'\)/.test(build), 'a chatbot kikapcsolt boltba küldhet');
+  const faq = build.slice(build.indexOf('const CS_FAQ = {'), build.indexOf('const CS_FAQ = {') + 9000);
+  assert.ok(!/p: '\/support'/.test(faq), 'a chatbot GY.I.K. a /support oldalra küld');
 });
 
 console.log(`\n${bukott === 0 ? '✅' : '❌'} support-line.test: ${pass} rendben, ${bukott} bukott`);
