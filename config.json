@@ -438,11 +438,10 @@
       "enabled": true,
       "api_key_env": "GROQ_API_KEY",
       "models_available": [
-        "llama-3.3-70b-versatile",
-        "mixtral-8x7b"
+        "openai/gpt-oss-120b"
       ],
       "free_tier": "~30 req/min, napi limit",
-      "pricing_note": "INGYEN. Brutál gyors (1000+ tok/sec)."
+      "pricing_note": "INGYEN. 2026-10-02: a llama-3.3-70b-versatile MEGSZŰNT (404); a vész-háló az openai/gpt-oss-120b (core/ai-router.js FREE_TIER_POOL)."
     },
     "cerebras": {
       "enabled": true,
@@ -450,8 +449,8 @@
       "models_available": [
         "gpt-oss-120b"
       ],
-      "free_tier": "Ingyenes, gyors, nagy modell",
-      "pricing_note": "INGYEN. Hosszú íráshoz kiváló."
+      "free_tier": "2026-10-02: NEM ingyenes többé — a gpt-oss-120b 402-t ad (fizetést kér), a zai-glm-4.7 archiválva. NEM használjuk.",
+      "pricing_note": "Kivéve a vész-hálóból 2026-10-02 (core/ai-router.js)."
     },
     "mistral": {
       "enabled": true,

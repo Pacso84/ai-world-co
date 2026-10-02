@@ -452,6 +452,10 @@ const PRICING = {
   'minimax/minimax-m3': { input: 0.30, output: 1.20 },
   'minimax/minimax-m2.7': { input: 0.25, output: 1.00 },
   'minimax/minimax-m2.5': { input: 0.15, output: 0.90 },
+  // Vész-háló (2026-10-02) — OpenRouter-ár; a valódi költség a usage.cost-ból jön,
+  // ez csak akkor számít, ha az hiányzik (különben a fizetős hívás $0-nak látszana).
+  'google/gemini-3.1-flash-lite': { input: 0.25, output: 1.50 },
+  'openai/gpt-oss-120b': { input: 0, output: 0 },   // Groq ingyenes keret
   // Google — PAID TIER (2026-07-02-től számlázva!). FIGYELEM:
   // a 'gemini-flash-latest' alias a 3.5 Flash-re mutat = 5x drágább a 2.5-nél!
   'gemini-2.5-flash': { input: 0.30, output: 2.50 },
@@ -578,14 +582,17 @@ const QUOTA_PATH = join(__dirname, 'quota-state.json');
 // KIKERÜLT (formátum-romboló volt a rework-ben — gyenge modell tartalmat nem érinthet).
 // KÍNAI ERŐSÍTÉS (2026-07-15, user): GLM-4.7 a Cerebrason (Zhipu csúcsmodell,
 // $0, JSON-módban is tesztelve) + Qwen3-Next-80B az OpenRouteren.
-const FREE_TIER_POOL = [
-  { provider: 'cerebras', model: 'gpt-oss-120b' },
-  { provider: 'cerebras', model: 'zai-glm-4.7' },
-  // 2026-07-22 audit: innen KIVÉVE a 'qwen/qwen3-next-80b-a3b-instruct:free' —
-  // az OpenRouteren NEM LÉTEZIK (élőben ellenőrizve: csak a fizetős változat van),
-  // így minden hívás felesleges 404-kör volt. Marad 3 VALÓDI ingyenes szolgáltató
-  // (Cerebras ×2 + Groq), ami két különböző cég = elég szolgáltató-szintű tartalék.
-  { provider: 'groq', model: 'llama-3.3-70b-versatile' }
+// ⛔ 2026-10-02: A RÉGI HÁROM MIND MEGHALT, és senki nem vette észre, amíg egy
+// fordítás el nem bukott rajta („💥 MINDEN provider elesett", a 03:01-es futás):
+//   cerebras/gpt-oss-120b → 402 (fizetést kér) · cerebras/zai-glm-4.7 → 404 archived
+//   groq/llama-3.3-70b-versatile → 404 nem létezik
+// 🔑 Egy vész-háló, amit soha nem használunk, csendben elrohad — ezért őrzi
+// teszt (core/fallback-pool.test.js) a halottak visszatérését.
+// Helyette: a Groq gpt-oss-120b — élőben ellenőrizve (modell-lista + próba-
+// fordítás + a router kérés-alakjával JSON-módban), $0. MÁS CÉG, mint az
+// OpenRouter: ha maga az OpenRouter esik ki, ez még megy.
+export const FREE_TIER_POOL = [
+  { provider: 'groq', model: 'openai/gpt-oss-120b' }
 ];
 
 // FIZETŐS pool (Google paid tier) — olcsó-megbízható elöl, a DRÁGA
@@ -596,8 +603,17 @@ const FREE_TIER_POOL = [
 // ingyeneset"): a két fizetős Gemini KIVÉVE — csak a MiniMax marad fizetős, minden
 // más tartalék az ingyenes készletből jön (FREE_TIER_POOL). A Google-egyenleg úgyis
 // elfogyott; így egy hívás sem próbál fizetős Geminit.
-const PAID_POOL = [
-  { provider: 'openrouter', model: 'minimax/minimax-m3' }
+//
+// 2026-10-02 (user-döntés: „geminit választom ha azt mondod hogy mint a minimax"):
+// a Gemini 3.1 Flash Lite VISSZAJÖN — de az OPENROUTERRŐL (OR-egyenleg, nem a
+// Google-számla), és CSAK a MiniMax UTÁN, vész-hálónak. Élő próba a valódi
+// fordító-utasítással, 10 jelölt, a magyar szöveget elolvasva: a legtermészetesebb,
+// hiba nélkül, nem gondolkodó (nincs rejtett token-égetés), 4 mp, ~$0,006/cikk.
+// A reasoning-off zászlót és a JSON-módot élőben elfogadja (HTTP 200).
+// ⚠️ A SORREND A LÉNYEG: a Gemini SOHA nem kerülhet a MiniMax elé (teszt őrzi).
+export const PAID_POOL = [
+  { provider: 'openrouter', model: 'minimax/minimax-m3' },
+  { provider: 'openrouter', model: 'google/gemini-3.1-flash-lite' }
 ];
 
 function loadQuota() {
@@ -638,7 +654,9 @@ function isQuotaError(error) {
 // Gondolkodó (reasoning) modellek — ezeknek token-padló kell, különben üres válasz.
 function isThinkingModel(model) {
   const m = String(model || '').toLowerCase();
-  return m.includes('zai-glm') || m.includes('minimax');
+  // gpt-oss (2026-10-02, Groq vész-háló): a gondolkodó-tokenjei a max_tokens-be
+  // számítanak — kis keretnél (pairing 400, seo 500) üres választ adna. $0-s modell.
+  return m.includes('zai-glm') || m.includes('minimax') || m.includes('gpt-oss');
 }
 // Melyik modell TUDJA kikapcsolni a gondolkodást? CSAK az M3 — az M2.5/M2.7
 // HTTP 400-zal ("Reasoning is mandatory") utasítja el (2026-07-24 mérés).
