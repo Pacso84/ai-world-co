@@ -1,102 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t179047668833247",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-27T02:38:08.332Z",
-      "updated": "2026-09-27T02:39:31.127Z"
-    },
-    {
-      "id": "t179047677112958",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-09-27T02:39:31.129Z",
-      "updated": "2026-09-27T02:40:30.148Z"
-    },
-    {
-      "id": "t179047683015095",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-27T02:40:30.150Z",
-      "updated": "2026-09-27T02:40:36.425Z"
-    },
-    {
-      "id": "t179047683642766",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-09-27T02:40:36.427Z",
-      "updated": "2026-09-27T02:40:57.823Z"
-    },
-    {
-      "id": "t179056249681812",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-09-28T02:28:16.818Z",
-      "updated": "2026-09-28T02:28:16.994Z"
-    },
-    {
-      "id": "t179056249699642",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-09-28T02:28:16.996Z",
-      "updated": "2026-09-28T02:28:42.445Z"
-    },
-    {
-      "id": "t179056252244746",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-09-28T02:28:42.447Z",
-      "updated": "2026-09-28T02:28:42.654Z"
-    },
-    {
-      "id": "t179056252265642",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-09-28T02:28:42.656Z",
-      "updated": "2026-09-28T02:31:17.252Z"
-    },
-    {
-      "id": "t179056267725321",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-28T02:31:17.253Z",
-      "updated": "2026-09-28T02:32:37.619Z"
-    },
-    {
-      "id": "t179056275762154",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-09-28T02:32:37.621Z",
-      "updated": "2026-09-28T02:33:26.948Z"
-    },
-    {
-      "id": "t179056280695051",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-28T02:33:26.950Z",
-      "updated": "2026-09-28T02:33:45.849Z"
-    },
-    {
-      "id": "t179056282585111",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-09-28T02:33:45.851Z",
-      "updated": "2026-09-28T02:34:08.183Z"
-    },
-    {
       "id": "t17905628482433",
       "title": "Run guide",
       "status": "done",
@@ -479,33 +383,105 @@
       "agent": "publisher",
       "created": "2026-10-01T03:18:10.808Z",
       "updated": "2026-10-01T03:18:32.997Z"
+    },
+    {
+      "id": "t179091017799775",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-10-02T03:02:57.997Z",
+      "updated": "2026-10-02T03:02:58.202Z"
+    },
+    {
+      "id": "t179091017820429",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-10-02T03:02:58.204Z",
+      "updated": "2026-10-02T03:03:52.858Z"
+    },
+    {
+      "id": "t179091023286068",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-10-02T03:03:52.860Z",
+      "updated": "2026-10-02T03:03:53.058Z"
+    },
+    {
+      "id": "t179091023306069",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-10-02T03:03:53.060Z",
+      "updated": "2026-10-02T03:19:21.301Z"
+    },
+    {
+      "id": "t179091116130384",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-10-02T03:19:21.303Z",
+      "updated": "2026-10-02T03:20:20.794Z"
+    },
+    {
+      "id": "t17909112207976",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-10-02T03:20:20.797Z",
+      "updated": "2026-10-02T03:20:36.453Z"
+    },
+    {
+      "id": "t179091123650670",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-10-02T03:20:36.506Z",
+      "updated": "2026-10-02T03:24:12.888Z"
+    },
+    {
+      "id": "t179091145288949",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-10-02T03:24:12.889Z",
+      "updated": "2026-10-02T03:25:03.235Z"
+    },
+    {
+      "id": "t179091150328592",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-10-02T03:25:03.285Z",
+      "updated": "2026-10-02T03:27:17.691Z"
+    },
+    {
+      "id": "t179091163769240",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-10-02T03:27:17.692Z",
+      "updated": "2026-10-02T03:28:15.097Z"
+    },
+    {
+      "id": "t179091169509935",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-10-02T03:28:15.099Z",
+      "updated": "2026-10-02T03:28:29.499Z"
+    },
+    {
+      "id": "t179091170950121",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-10-02T03:28:29.501Z",
+      "updated": "2026-10-02T03:28:52.485Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178913006871551",
-      "level": "info",
-      "text": "SEO: 2 cikk optimalizálva (átlag 9.0/10).",
-      "agent": "seo",
-      "at": "2026-09-11T12:34:28.715Z",
-      "loud": false
-    },
-    {
-      "id": "n178913008447096",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The line-up looks solid — practical, everyday writing tasks covered across a nice mix of AI tools (ChatGPT, DeepSeek, Grok, Cohere, Qwen, Le Chat, ChatRTX). Articles 2-4 are complaint-focused which co",
-      "agent": "publisher",
-      "at": "2026-09-11T12:34:44.470Z",
-      "loud": false
-    },
-    {
-      "id": "n178913010009886",
-      "level": "success",
-      "text": "0 hír + 2 útmutató publikálva (költség: $0.0245).",
-      "agent": "ceo",
-      "at": "2026-09-11T12:35:00.098Z",
-      "loud": false
-    },
     {
       "id": "n17891528679419",
       "level": "success",
@@ -1281,18 +1257,33 @@
       "agent": "ceo",
       "at": "2026-10-01T03:18:33.036Z",
       "loud": false
+    },
+    {
+      "id": "n179091169508869",
+      "level": "info",
+      "text": "SEO: 5 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-10-02T03:28:15.088Z",
+      "loud": false
+    },
+    {
+      "id": "n179091171395458",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The line-up looks solid — practical, everyday use cases (complaints, resumes, thank-you notes) that match your \"AI for regular people\" mission nicely. A couple of articles don't specify which AI tool ",
+      "agent": "publisher",
+      "at": "2026-10-02T03:28:33.954Z",
+      "loud": false
+    },
+    {
+      "id": "n179091173253175",
+      "level": "success",
+      "text": "3 hír + 2 útmutató publikálva (költség: $0.0769).",
+      "agent": "ceo",
+      "at": "2026-10-02T03:28:52.531Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178947754715987",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"How to use Perplexity's Focus modes to get cleaner, faster answers\" (?/10)",
-      "ref": "GUIDE_how-to-use-perplexity-s-focus-modes-to-get-cleaner-faster-an.json",
-      "at": "2026-09-15T13:05:47.159Z"
-    },
     {
       "id": "m178947764942463",
       "from": "designer",
@@ -2637,6 +2628,15 @@
       "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Draft a meeting agenda and summarise notes with Pe\" — Focus dropdown showing modes like Internet, Academic, Writing, or Social; Writing mode for drafting original text without web lookups",
       "ref": "ARTICLE_GUIDE_draft-a-meeting-agenda-and-summarise-notes-with-perplexity.json",
       "at": "2026-10-01T20:40:35.455Z"
+    },
+    {
+      "id": "m179091170949188",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 22 → 8/4/2 oszlop.",
+      "ref": "mobile",
+      "at": "2026-10-02T03:28:29.491Z"
     }
   ]
 }

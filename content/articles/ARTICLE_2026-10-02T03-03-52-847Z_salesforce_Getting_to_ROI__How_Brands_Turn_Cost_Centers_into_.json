@@ -1,0 +1,64 @@
+{
+  "_meta": {
+    "written_at": "2026-10-02T03:17:46.967Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.0043992,
+    "original_draft": "2026-10-02T03-03-52-847Z_salesforce_Getting_to_ROI__How_Brands_Turn_Cost_Centers_into_.json",
+    "source_id": "salesforce",
+    "source_name": "Salesforce AI Blog (hivatalos)",
+    "source_link": "https://www.salesforce.com/news/stories/getting-to-roi-with-ai/",
+    "source_links": [
+      "https://www.salesforce.com/news/stories/getting-to-roi-with-ai/"
+    ],
+    "source_snippet": "Key Takeaways Salesforce customers across industries recently described their agentic rollouts, sharing what worked, what surprised them, and what they’d tell others just getting started on their own AI journeys. A clear pattern emerged. Customers seeing real results don’t just deploy. They listen to their users, define success, and build the guardrails to sustain it. […]",
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "published_at": "2026-10-02T03:20:20.784Z",
+    "slug": "what-salesforce-customers-learned-about-getting-real-results-from-ai",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 861
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured article with clear explanations of technical terms (agentic AI, guardrails), a useful What this means for you section, and practical takeaways. Brand voice is friendly and instructional. No prohibited content, no clichés, and no invented facts — the Salesforce attribution is clear and claims are responsibly framed.",
+      "_aiCost": 0.0014892,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-10-02T03:20:36.442Z",
+    "guide_worthy": false,
+    "pairing_reason": "Article is a business strategy piece about AI implementation patterns, not about a specific named feature/tool users can activate",
+    "image_v": 2,
+    "image_at": "2026-10-02T03:27:03.176Z",
+    "seo": {
+      "meta_description": "Learn how Salesforce customers got real results from AI — three proven patterns from actual rollouts that drive measurable business outcomes.",
+      "keywords": [
+        "Salesforce AI implementation",
+        "AI ROI best practices",
+        "agentic AI implementation",
+        "AI rollout success",
+        "business AI results",
+        "AI implementation lessons",
+        "measuring AI success"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add the primary keyword 'Salesforce AI' earlier in the title for better ranking signals",
+        "Include more specific long-tail keywords like 'how to get ROI from AI' in subheadings",
+        "Add schema markup for articles to improve SERP appearance"
+      ],
+      "optimised_at": "2026-10-02T03:27:51.743Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"What Salesforce Customers Learned About Getting Real Results From AI\"\nsubtitle: \"Three patterns from real rollouts that turn AI experiments into measurable wins — and what they mean for your business.\"\ncategory: \"ai-news\"\naudience: \"business\"\nread_time_minutes: 4\ntags: [\"salesforce\", \"agentic-ai\", \"business-strategy\", \"enterprise-ai\"]\n---\n\n# What Salesforce Customers Learned About Getting Real Results From AI\n\n> **In short:** Salesforce customers who saw real return on investment from agentic AI — AI that can take actions on its own, not just answer questions — followed three habits: they listened to their users, defined success in plain numbers, and built guardrails to sustain results. Here's what worked, what surprised them, and what to borrow for your own rollout.\n\nYou keep hearing that AI is supposed to save businesses time and money. But a lot of teams are still stuck in the awkward middle phase: the tool is live, the demo looked great, and yet the spreadsheet isn't really changing. A new set of stories from Salesforce customers points to why — and what separates the teams who see real numbers move from the ones who don't.\n\n## The pattern: deploy, then listen\n\nAccording to Salesforce's own recap, the customers seeing real results didn't just flip the switch. They treated the rollout like a listening project, not a launch announcement. They asked the people actually using the AI (customer service reps, salespeople, support agents) what felt clunky, what saved time, and what just created a new problem to fix.\n\nOne customer put it plainly: they didn't try to make the AI perfect before turning it on. They turned it on, watched how humans used it, and then made it better. The launch was the start of the work, not the finish line.\n\n## The pattern: define success before the rollout\n\nThe second habit was defining what \"winning\" looked like — in numbers, not vibes. Before deploying agentic AI (an AI agent is a program that can take multi-step actions for you, like opening a ticket, checking an order, or drafting a reply), the successful teams picked one or two measurable outcomes. Things like:\n\n- Average response time to a customer question\n- Number of cases a single rep can handle in a day\n- Hours spent on routine data entry per week\n- Conversion rate from inquiry to booked meeting\n\nIf a number didn't move, they treated it as data, not failure. That framing — \"the AI is a hypothesis, the metric is the judge\" — kept teams from chasing shiny new features when the basics weren't paying off yet.\n\n## The pattern: build guardrails early\n\nThe third pattern was less glamorous and arguably the most important: **guardrails** (the rules and limits you set around an AI so it stays accurate, on-brand, and safe). The customers who kept their results didn't skip this step to \"move faster.\" They built in checkpoints where a human reviews the AI's work, especially early on. They set clear boundaries on what the AI was allowed to do on its own (draft an email) and what always needed a person to click approve (refund over a certain amount, anything going to a legal team).\n\nSurprises they shared: the AI got the easy stuff right quickly, but the edge cases — oddball customer questions, unusual product configurations, anything outside the happy path — were where guardrails mattered most. Building those in from day one saved them from cleanup projects later.\n\n## What this means for you\n\n- **If you're considering an AI rollout at work:** Pick one team, one metric, one quarter. Don't try to transform the whole company at once. The customers who saw real return treated it like a focused experiment, not a moonshot.\n- **If you're leading the rollout:** Talk to the people who'll actually use the AI before launch, and again two weeks after. Their feedback is more valuable than any vendor benchmark. Attribute any speed or accuracy wins to what the rollout delivered in your specific environment — vendor promises aren't proof.\n- **If you're worried about AI making mistakes:** The good news from these rollouts is that the teams who planned for mistakes — with human review checkpoints and clear \"do this automatically, ask first about that\" rules — were the ones who kept their gains. The risk isn't the AI; it's deploying it without a plan to catch errors.\n- **If you already use Salesforce or a similar platform:** Look for the customer success stories tied to your industry. The patterns above show up again and again, and seeing a peer company's metric (a real number they published, not a vendor claim) is often the fastest way to set your own realistic target.\n\n## Wrap-up\n\nThe lesson from these rollouts isn't a new feature or a slick demo. It's older and more boring, which is exactly why it works: listen to users, define success in numbers, and put guardrails in place before you scale. If you remember nothing else, remember the third one. Teams that skipped guardrails were the ones who quietly rolled the AI back six months later. Teams that built them in kept the wins — and built on them.",
+  "original_title": "Getting to ROI: How Brands Turn Cost Centers into Revenue Engines with AI"
+}
