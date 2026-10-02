@@ -1285,15 +1285,6 @@
   ],
   "messages": [
     {
-      "id": "m178952542059144",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Gmail Search’s AI Overviews now available globally\" — mi a baj: Tool and Company fields are empty in the article metadata despite the article being about a Google/Gmail/Gemini product — while not strictly a fabrication, the article's specific claim that MCP (Model Context Protocol) is the standard connecting Gemini in Workspace to Asana, HubSpot, Salesforce, etc., and that G",
-      "ref": "2026-09-16T02-14-52-457Z_google-workspace_Gmail_Search_s_AI_Overviews_now_available_globally.json",
-      "at": "2026-09-16T02:23:40.591Z"
-    },
-    {
       "id": "m17895254370793",
       "from": "iro",
       "to": "ellenorzo",
@@ -2637,6 +2628,15 @@
       "text": "1 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-10-02T14:42:00.839Z"
+    },
+    {
+      "id": "m179097212088862",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Brainstorm thoughtful gift ideas for one specific \" — The interface description (sidebar, new chat button location) cannot be verified as current — DeepSeek may have updated its UI since publication",
+      "ref": "ARTICLE_GUIDE_brainstorm-thoughtful-gift-ideas-for-one-specific-person-wit.json",
+      "at": "2026-10-02T20:15:20.888Z"
     }
   ]
 }
