@@ -298,6 +298,7 @@
     "builderhez",
     "buildernek",
     "builderrel",
+    "bulletedokkal",
     "bulletpointot",
     "bulletpontok",
     "bulletpontokat",
@@ -475,6 +476,7 @@
     "csevegdobozzal",
     "csevegében",
     "csevegőcsomagok",
+    "csevegőlinken",
     "csevegőrobotbal",
     "csillagokat",
     "csillagokkal",
@@ -837,6 +839,7 @@
     "felmagzódik",
     "felmagzódjon",
     "felsővezetőhöz",
+    "felsővezetőnek",
     "felébresszd",
     "festékesvödör",
     "feszültséget",
@@ -1436,6 +1439,7 @@
     "lassúfőzőnk",
     "lassúfőzős",
     "latténkről",
+    "launch-csom",
     "launch-hype-ot",
     "launch-ról",
     "launchokat",
@@ -2038,6 +2042,7 @@
     "prompttámadások",
     "prompttámadásokat",
     "promptvariációk",
+    "promptírás",
     "promptírási",
     "promptírássá",
     "promptötlet",
@@ -2238,6 +2243,7 @@
     "skillre",
     "skillt",
     "slotba",
+    "slotra",
     "smileyt",
     "snettekkel",
     "snitttípus-puskázó",
@@ -4194,6 +4200,11 @@
       "correct": "számokban",
       "at": "2026-10-02",
       "mondattal": true
+    },
+    "chatbothól": {
+      "correct": "chatbotból",
+      "at": "2026-10-03",
+      "mondattal": true
     }
   },
   "review": {
@@ -5708,11 +5719,26 @@
       "correct": "óravázlatát",
       "at": "2026-10-02",
       "mondattal": true
+    },
+    "helpdeszkbe": {
+      "correct": "helpdeskbe",
+      "at": "2026-10-03",
+      "mondattal": true
+    },
+    "skillsként": {
+      "correct": "skillként",
+      "at": "2026-10-03",
+      "mondattal": true
+    },
+    "vállalkyzásodban": {
+      "correct": "vállalkozásodban",
+      "at": "2026-10-03",
+      "mondattal": true
     }
   },
   "scan": {
-    "at": "2026-10-02",
-    "files": 988,
-    "candidates": 7
+    "at": "2026-10-03",
+    "files": 993,
+    "candidates": 10
   }
 }
