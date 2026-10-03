@@ -1,0 +1,60 @@
+{
+  "started_at": "2026-10-03T02:49:55.343Z",
+  "drafts_total": 10,
+  "articles_written": 4,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 4,
+  "merged_total": 4,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "total_cost_usd": 0.043669650000000004,
+  "by_article": [
+    {
+      "draft": "2026-10-03T02-49-54-992Z_zapier-blog_Gemini_connectors__How_to_connect_Gemini_Enterpris.json",
+      "writer_output": "WRITER_2026-10-03T02-49-54-992Z_zapier-blog_Gemini_connectors__How_to_connect_Gemini_Enterpris.json",
+      "success": true,
+      "merged_from": 2,
+      "merged_theme": "Google Gemini ecosystem integration",
+      "cost_usd": 0.0103488,
+      "duration_ms": 38851,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-10-03T02-49-44-934Z_openai-blog_Chatham_scales_its_capital_markets_expertise_with_.json",
+      "writer_output": "WRITER_2026-10-03T02-49-44-934Z_openai-blog_Chatham_scales_its_capital_markets_expertise_with_.json",
+      "success": true,
+      "merged_from": 3,
+      "merged_theme": "OpenAI enterprise customer transformations",
+      "cost_usd": 0.01379028,
+      "duration_ms": 71806,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-10-03T02-49-44-933Z_openai-blog_A_model_guide_for_the_GPT-6_family.json",
+      "writer_output": "WRITER_2026-10-03T02-49-44-933Z_openai-blog_A_model_guide_for_the_GPT-6_family.json",
+      "success": true,
+      "merged_from": 2,
+      "merged_theme": "OpenAI model releases and guidance",
+      "cost_usd": 0.00628908,
+      "duration_ms": 145848,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-10-03T02-49-44-934Z_github-ai_AI_is_changing_developer_work__Here_are_three_skil.json",
+      "writer_output": "WRITER_2026-10-03T02-49-44-934Z_github-ai_AI_is_changing_developer_work__Here_are_three_skil.json",
+      "success": true,
+      "merged_from": 3,
+      "merged_theme": "Developer AI tools and training programs",
+      "cost_usd": 0.01139388,
+      "duration_ms": 56739,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    }
+  ],
+  "finished_at": "2026-10-03T02:55:21.185Z",
+  "duration_seconds": 325.842
+}

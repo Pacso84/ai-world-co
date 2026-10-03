@@ -1,0 +1,61 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "how-to-draft-a-polite-meeting-agenda-from-a-messy-bullet-lis",
+    "company": "",
+    "tool": "",
+    "icon": "🗓️",
+    "level": "intermediate",
+    "source_news": null,
+    "written_at": "2026-10-03T03:09:16.724Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.01053906,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-10-03T03:10:18.185Z",
+    "slug": "turn-messy-notes-into-a-polite-meeting-agenda-in-five-minutes",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1612
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured guide with clear step-by-step instructions, friendly tone, and practical examples. No prohibited content, no clichés, and the What this means for you section provides solid everyday applications. Minor note: Step 7 mentions saved prompts/custom instructions without specifying where to find them in common assistants, but this is a minor gap that won't block an intermediate audience.",
+      "_aiCost": 0.00185106,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "image_v": 2,
+    "image_at": "2026-10-03T03:11:21.592Z",
+    "seo": {
+      "meta_description": "Transform messy notes or email threads into a clear, timed meeting agenda in 5 minutes using AI. Step-by-step guide for owner-clear agendas.",
+      "keywords": [
+        "how to create meeting agenda from notes",
+        "AI meeting agenda generator",
+        "turn messy notes into agenda",
+        "quick meeting agenda maker",
+        "organize meeting notes with AI",
+        "polite meeting agenda template",
+        "meeting agenda format"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add the primary keyword 'AI meeting agenda' to the title for better search visibility",
+        "Include a meta description under 160 characters with the main keyword to improve CTR",
+        "Add 1-2 more long-tail keywords like 'how to use AI for meeting notes' naturally in the article body"
+      ],
+      "optimised_at": "2026-10-03T03:12:09.025Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Turn Messy Notes into a Polite Meeting Agenda in Five Minutes\"\nsubtitle: \"How to feed a chaotic email thread or bullet list into any AI assistant and walk away with a timed, owner-clear agenda.\"\ncategory: \"guide\"\naudience: \"business\"\ncompany: \"\"\ntool: \"\"\nlevel: \"intermediate\"\nread_time_minutes: 6\ntags: [\"productivity\", \"meetings\", \"prompting\"]\n---\n\n# Turn Messy Notes into a Polite Meeting Agenda in Five Minutes\n\n> **In short:** Paste your messy email thread or bullet list into any AI assistant with a clear instruction about timing, owners, and tone, then iterate. You'll get a polite, structured agenda in under five minutes — though you'll still need to send the invites yourself.\n\nA 30-minute meeting with seven bullet points, three owners, and zero structure usually ends with 20 minutes wasted on \"wait, who's covering that?\" — and another 10 on a follow-up email nobody reads. This guide shows how to feed that mess into any AI assistant and walk out with a timed, owner-clear agenda you can actually send. It's written for people who already use AI for everyday tasks and want one more workflow that saves real time at work.\n\n## Before you start\n\n- An account on any AI assistant you already use — ChatGPT, Claude, Gemini, Copilot, Le Chat, or DeepSeek all handle this pattern. No new signup needed.\n- The messy source material within reach: an email thread to copy from, a notes app with bullet points, or a transcribed voice memo.\n- About five minutes once you've done it once; a little longer the first time as you build your reusable template.\n\n## Step 1 — Gather the messy material in one place\n\nOpen your AI assistant in a browser or app and start a fresh chat. Paste your raw material — the email thread, the bullet list, the voice-note transcript — straight into the message box, and add two short sentences of context before you hit send: what the meeting is for, how long it is, and who's coming. You're not asking for the agenda yet; you're staging the inputs.\n\n💬 Example: \"Below is the email thread about our Q3 launch. Goal: 30-minute sync to unblock the design freeze. Attendees: Maria, John, Sarah.\"\n\nYou'll see your pasted text sitting in the input area, with the send button below it. After you send, the assistant confirms receipt and begins working. If your assistant has a \"Projects\" or \"custom instructions\" feature, you can save the context sentence there for next time — but a plain chat works fine without it.\n\nYou'll know it worked when the assistant's first reply acknowledges the inputs you provided and starts producing structured output rather than asking what you meant.\n\n## Step 2 — Ask for a first draft with explicit structure\n\nSend a follow-up instruction in the same chat telling the assistant how to shape the draft: numbered topics, a duration in minutes next to each, a named owner per topic, a polite opener, and a small buffer between items. The clearer your structure request, the less you'll need to fix later.\n\n💬 Example: \"Now produce the draft. Use a polite opener, list each topic with a duration in minutes and a single owner, leave a 2-minute buffer between topics, and end with a one-line confirmation request.\"\n\nYou'll see a numbered agenda appear, with minutes and names attached to each line. If your assistant formats the response as a table by default — some do — reply with \"please rewrite as a numbered list with bold topic names\" and the next version arrives in the shape you wanted.\n\nYou'll know it worked when your chaotic items are reordered into clear blocks with names and minutes, and you can read the whole meeting in one glance.\n\n## Step 3 — Calibrate the politeness\n\nReply in the same chat asking for tone adjustments. The first draft is almost never the right tone — it usually sounds either too stiff (\"Please find below the agenda…\") or too casual for a workplace you share with senior people. Tell the assistant which direction to move.\n\n💬 Example: \"The opener feels stiff. Loosen it. Our team uses first names and avoids phrases like 'circling back'. Keep the same structure and timings.\"\n\nYou'll see a revised version where the wording changes but the structure stays. If the assistant doesn't pick up your tone signal, paste one sentence of how you'd actually open the meeting and ask it to match that register — that's the fastest shortcut to a natural voice.\n\nYou'll know it worked when the opener reads like something you'd say out loud without wincing.\n\n## Step 4 — Lock down the owners and timing\n\nSend another short instruction asking the assistant to verify two things: each topic has exactly one named owner, and the minutes add up to the meeting length. This is where most agendas quietly fall apart — two topics assigned to the same person back-to-back, or a 45-minute agenda for a 30-minute slot.\n\n💬 Example: \"Confirm each topic has exactly one owner. Add up the minutes and show the total at the end. If anything overflows, suggest what to cut.\"\n\nYou'll see a revised agenda where totals match and names sit beside each item. If the assistant doesn't add a \"Total: X minutes\" footer, ask for one — it's the simplest way to verify the math yourself before you copy anything out.\n\nYou'll know it worked when the total at the bottom equals your available time, and no item is missing a name.\n\n## Step 5 — Add a closing line with next steps\n\nAsk the assistant to add a short \"Next steps\" block at the bottom: who sends the calendar invite, who brings what (slides, doc, numbers), and when the follow-up happens. This is the part most agendas skip, and it's the part that decides whether the meeting actually moves anything.\n\n💬 Example: \"Add a 'Next steps' block at the end: Maria sends the calendar invite by tomorrow morning; John brings the latest design mockup; follow-up sync the following Monday.\"\n\nYou'll see a new block appear below the agenda. If your team uses a specific tool — Notion, Google Docs, Slack — name it in your prompt and the assistant will adjust the closing line to fit that workflow.\n\nYou'll know it worked when each person at the meeting knows exactly what to do before it starts and after it ends.\n\n## Step 6 — Copy the result into your real-world tool\n\nSelect the final agenda in the chat and paste it into the place your team will actually see it — an email draft, a shared doc, a calendar description, or your meeting software. This step is small but it matters: the moment the agenda lives outside the chat, you can edit it, share it, and update it without re-asking the AI.\n\nIf your assistant offers a \"copy\" or \"export\" button, use it; otherwise highlight the text and use your system copy shortcut. The text lands in the new tool with light formatting shifts depending on the destination — that's normal.\n\nYou'll know it worked when the agenda sits in the same place your team already works, and you didn't need to retype a single bullet.\n\n## Step 7 — Save your prompt as a reusable template\n\nHighlight the full chat — your original messy input, the structure request, the tone instructions, the owners-and-timing check, the closing block — and save it as a reusable template. A plain text file in your notes app works. If your assistant supports saved prompts or custom instructions, use that instead so the template loads automatically.\n\n💬 Example: a doc titled \"Agenda from messy notes\" with three labelled blocks: [PASTE INPUT], [STRUCTURE REQUEST], [TONE NOTES].\n\nNext time you have a chaotic thread, you paste the template, swap in the new content, and skip the prompt-writing step. The first time costs you ten minutes; every meeting after that costs you one.\n\nYou'll know it worked when the next agenda takes you under a minute to draft.\n\n## Common mistakes\n\n- **Treating the first draft as final.** The first reply is a sketch. Always run one tone-and-owners pass — usually two — before you copy anything out.\n- **Owners stay vague (\"the team\", \"marketing\").** Vague owners mean nobody follows up. One named person per topic, every time, no exceptions.\n- **Forgetting the AI can't send the invite.** Once you copy the agenda out, the chat ends and the tool stops helping. You still need to send the calendar invite, share the doc, and chase the owners yourself.\n\n## What this means for you\n\n- **In everyday life:** The same pattern tidies up a 10-minute prep before a school meeting, a volunteer group call, or a family planning session — paste the chaos, ask for structure, lock in who does what.\n- **For your business or work:** Every recurring meeting — weekly stand-up, monthly review, project sync — gets a polished, owner-clear agenda in minutes instead of 30 minutes of wrestling with bullet points.\n- **If you want to go further:** Try the same input-to-structure pattern on other meeting artefacts: a recap email after the meeting, a project kickoff brief from a Slack thread, or a status report from scattered updates. The skill is the same — stage the messy input, request the shape you want, iterate on tone and owners.\n\n## Try it now\n\nOpen any AI assistant, paste your messiest recent email thread, and send this single line: \"Turn this into a 30-minute agenda with one named owner per topic and a polite opener.\" Watch what comes back — that's your starting point for the iteration loop above.",
+  "original_title": "How to draft a polite meeting agenda from a messy bullet list"
+}

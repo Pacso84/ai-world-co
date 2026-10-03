@@ -1,15 +1,4 @@
 {
-  "2026-09-14": [
-    {
-      "at": "2026-09-14T14:38:36.790Z",
-      "file": "WRITER_2026-09-14T14-33-06-357Z_salesforce_New_AI_Agent_Ace_Helps_the_TSA_Support_Travelers_a.json",
-      "action": "block",
-      "reasons": [
-        "The article presents a named TSA AI assistant called 'Ace' handling 100,000 conversations/month with a 96% resolution rate as established fact, but 'Ace' is not a recognized official name of any TSA AI product, and the specific statistics (100,000/month, 96%) are not verifiable from any known public source — these appear to be invented specifics about a real-sounding but unverified deployment."
-      ],
-      "confidence": 5
-    }
-  ],
   "2026-09-15": [
     {
       "at": "2026-09-15T02:28:16.052Z",
@@ -243,6 +232,28 @@
       "action": "block",
       "reasons": [
         "The source is from Databricks (databricks.com/blog), but the article attributes the guide to Datadog, a completely different company ('Datadog, a company that helps businesses monitor their software, recently published a guide titled...'). Datadog did not publish this guide; Databricks did."
+      ],
+      "confidence": 9
+    }
+  ],
+  "2026-10-03": [
+    {
+      "at": "2026-10-03T02:56:19.597Z",
+      "file": "WRITER_2026-10-03T02-49-44-934Z_github-ai_AI_is_changing_developer_work__Here_are_three_skil.json",
+      "action": "block",
+      "reasons": [
+        "The article states that 'Claude Frontier Academy' is an Anthropic program with a '$100 million commitment to train 10,000' Frontier Deployed Engineers by end of 2027, but the SOURCE block only contains GitHub's announcement about three skills. Claude Frontier Academy, its $100M funding, the 10,000-engineer target, and the 'Frontier Deployed Engineers' title are not supported by the provided source — they appear to be added fabrications about Anthropic.",
+        "The article states 'more than 1 million Genie Agents were created in 2026 alone' as from GitHub, but the SOURCE block excerpt only contains GitHub's three-skills announcement. This 1 million Genie Agents statistic is not supported by the provided source excerpt and is an added fabrication."
+      ],
+      "confidence": 7
+    },
+    {
+      "at": "2026-10-03T03:07:00.983Z",
+      "file": "WRITER_2026-10-03T02-49-44-934Z_github-ai_AI_is_changing_developer_work__Here_are_three_skil.json",
+      "action": "block",
+      "reasons": [
+        "The claim that 'Claude Frontier Academy' is an Anthropic program 'with a $100 million commitment to train 10,000 by the end of 2027' is a fabricated specific — it is presented as fact in the article's source-quoted block but does not appear in the official GitHub announcement and constitutes an invented program name, dollar figure, headcount, and timeline.",
+        "The claim that 'more than 1 million Genie Agents [were] created in 2026 alone' is an invented statistic presented as fact; it does not appear in the GitHub source and Genie One's agent creation metric is not stated there."
       ],
       "confidence": 9
     }

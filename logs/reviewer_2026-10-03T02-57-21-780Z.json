@@ -1,0 +1,35 @@
+{
+  "started_at": "2026-10-03T02:55:21.359Z",
+  "total": 4,
+  "passed": 2,
+  "failed": 1,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.00894605,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-10-03T02-49-44-933Z_openai-blog_A_model_guide_for_the_GPT-6_family.json",
+      "article": "ARTICLE_2026-10-03T02-49-44-933Z_openai-blog_A_model_guide_for_the_GPT-6_family.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0015162
+    },
+    {
+      "writer": "WRITER_2026-10-03T02-49-44-934Z_openai-blog_Chatham_scales_its_capital_markets_expertise_with_.json",
+      "rejected": "REJECTED_2026-10-03T02-49-44-934Z_openai-blog_Chatham_scales_its_capital_markets_expertise_with_.json",
+      "decision": "FAIL",
+      "score": 5,
+      "cost_usd": 0.002268
+    },
+    {
+      "writer": "WRITER_2026-10-03T02-49-54-992Z_zapier-blog_Gemini_connectors__How_to_connect_Gemini_Enterpris.json",
+      "article": "ARTICLE_2026-10-03T02-49-54-992Z_zapier-blog_Gemini_connectors__How_to_connect_Gemini_Enterpris.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.00130683
+    }
+  ],
+  "truth_blocked": 1,
+  "finished_at": "2026-10-03T02:57:21.779Z",
+  "duration_seconds": 120.42
+}
