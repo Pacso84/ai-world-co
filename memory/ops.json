@@ -1,102 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t179073728405384",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-30T03:01:24.053Z",
-      "updated": "2026-09-30T03:03:01.344Z"
-    },
-    {
-      "id": "t179073738134792",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-09-30T03:03:01.347Z",
-      "updated": "2026-09-30T03:03:19.557Z"
-    },
-    {
-      "id": "t179073739955997",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-30T03:03:19.559Z",
-      "updated": "2026-09-30T03:03:44.253Z"
-    },
-    {
-      "id": "t17907374242563",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-09-30T03:03:44.256Z",
-      "updated": "2026-09-30T03:04:15.130Z"
-    },
-    {
-      "id": "t179073745518777",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-09-30T03:04:15.187Z",
-      "updated": "2026-09-30T03:05:17.057Z"
-    },
-    {
-      "id": "t179073751705977",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-09-30T03:05:17.059Z",
-      "updated": "2026-09-30T03:06:08.852Z"
-    },
-    {
-      "id": "t179073756890166",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-30T03:06:08.901Z",
-      "updated": "2026-09-30T03:06:49.184Z"
-    },
-    {
-      "id": "t179073760918646",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-09-30T03:06:49.186Z",
-      "updated": "2026-09-30T03:07:41.013Z"
-    },
-    {
-      "id": "t179073766101536",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-09-30T03:07:41.015Z",
-      "updated": "2026-09-30T03:07:49.018Z"
-    },
-    {
-      "id": "t179073766901983",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-09-30T03:07:49.019Z",
-      "updated": "2026-09-30T03:08:23.546Z"
-    },
-    {
-      "id": "t179082361187461",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-10-01T03:00:11.874Z",
-      "updated": "2026-10-01T03:00:12.013Z"
-    },
-    {
-      "id": "t179082361201530",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-10-01T03:00:12.015Z",
-      "updated": "2026-10-01T03:01:09.889Z"
-    },
-    {
       "id": "t179082366989115",
       "title": "Run source-scout",
       "status": "done",
@@ -479,33 +383,105 @@
       "agent": "publisher",
       "created": "2026-10-03T03:12:23.596Z",
       "updated": "2026-10-03T03:12:48.576Z"
+    },
+    {
+      "id": "t179103186381912",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-10-03T12:51:03.819Z",
+      "updated": "2026-10-03T12:51:03.921Z"
+    },
+    {
+      "id": "t179103186392236",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-10-03T12:51:03.922Z",
+      "updated": "2026-10-03T12:51:32.749Z"
+    },
+    {
+      "id": "t179103189275039",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-10-03T12:51:32.750Z",
+      "updated": "2026-10-03T12:51:32.877Z"
+    },
+    {
+      "id": "t179103189287920",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-10-03T12:51:32.879Z",
+      "updated": "2026-10-03T12:53:11.131Z"
+    },
+    {
+      "id": "t179103199113297",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-10-03T12:53:11.132Z",
+      "updated": "2026-10-03T12:53:28.959Z"
+    },
+    {
+      "id": "t179103200896159",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-10-03T12:53:28.961Z",
+      "updated": "2026-10-03T12:54:07.687Z"
+    },
+    {
+      "id": "t179103204768814",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-10-03T12:54:07.688Z",
+      "updated": "2026-10-03T12:54:24.508Z"
+    },
+    {
+      "id": "t179103206450936",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-10-03T12:54:24.509Z",
+      "updated": "2026-10-03T12:54:33.192Z"
+    },
+    {
+      "id": "t179103207322698",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-10-03T12:54:33.226Z",
+      "updated": "2026-10-03T12:54:46.302Z"
+    },
+    {
+      "id": "t179103208630399",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-10-03T12:54:46.303Z",
+      "updated": "2026-10-03T12:54:54.529Z"
+    },
+    {
+      "id": "t17910320945306",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-10-03T12:54:54.530Z",
+      "updated": "2026-10-03T12:55:04.965Z"
+    },
+    {
+      "id": "t179103210496736",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-10-03T12:55:04.967Z",
+      "updated": "2026-10-03T12:55:18.939Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n17892145038569",
-      "level": "warn",
-      "text": "📨 guide → ceo: Kell még adat: \"Summarize long web articles in Safari with Apple Intelligence\" — az Ellenőrző tényt/forrást kér, amit ne",
-      "agent": "guide",
-      "at": "2026-09-12T12:01:43.856Z",
-      "loud": false
-    },
-    {
-      "id": "n178921465050855",
-      "level": "info",
-      "text": "📨 ceo → team: Jóváhagytam (felülbíráltam az Ellenőrzőt) + rendet raktam benne: \"Summarize long web articles in Safari with Apple Intel",
-      "agent": "ceo",
-      "at": "2026-09-12T12:04:10.508Z",
-      "loud": false
-    },
-    {
-      "id": "n178921470962338",
-      "level": "info",
-      "text": "SEO: 3 cikk optimalizálva (átlag 8.3/10).",
-      "agent": "seo",
-      "at": "2026-09-12T12:05:09.623Z",
-      "loud": false
-    },
     {
       "id": "n178921472502673",
       "level": "success",
@@ -1281,36 +1257,33 @@
       "agent": "ceo",
       "at": "2026-10-03T03:12:48.622Z",
       "loud": false
+    },
+    {
+      "id": "n179103209452042",
+      "level": "info",
+      "text": "SEO: 1 cikk optimalizálva (átlag 9.0/10).",
+      "agent": "seo",
+      "at": "2026-10-03T12:54:54.520Z",
+      "loud": false
+    },
+    {
+      "id": "n179103210768642",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The lineup looks solid — it's a practical mix of real-life writing tasks (complaints, resumes, agreements, sympathy notes) across multiple AI tools, which fits your \"AI for everyday people\" mission pe",
+      "agent": "publisher",
+      "at": "2026-10-03T12:55:07.686Z",
+      "loud": false
+    },
+    {
+      "id": "n179103211897038",
+      "level": "success",
+      "text": "1 hír + 0 útmutató publikálva (költség: $0.0189).",
+      "agent": "ceo",
+      "at": "2026-10-03T12:55:18.970Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178961268787988",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Brainstorm birthday gift ideas for a hard‑to‑shop‑\" — Example prompt contains specific price \"$50\" — guides must never state specific amounts (rule: ár-szabály)",
-      "ref": "ARTICLE_GUIDE_brainstorm-birthday-gift-ideas-for-a-hard-to-shop-for-relati.json",
-      "at": "2026-09-17T02:38:07.879Z"
-    },
-    {
-      "id": "m178961332387924",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-09-17T02:48:43.879Z"
-    },
-    {
-      "id": "m178964956001630",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Control all your smart lights, plugs, and thermost\" — The specific AI suggestions UI elements described (\"sparkle icon\", \"AI suggestions\" toggle) — these may not exist or work as described, and the guide states them as facts rather than possibilities; The implication that \"AI-assisted suggestions\" are a clearly visible, documented featu",
-      "ref": "ARTICLE_GUIDE_control-all-your-smart-lights-plugs-and-thermostats-with-one.json",
-      "at": "2026-09-17T12:52:40.016Z"
-    },
     {
       "id": "m178964958305687",
       "from": "fact-check",
@@ -2637,6 +2610,33 @@
       "text": "5 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-10-03T03:22:47.354Z"
+    },
+    {
+      "id": "m17910320476792",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"AI is changing developer work. Here are three skills to strengthen.\" — javítva: The claim that 'Claude Frontier Academy' is an Anthropic program 'with a $100 million commitment to train 10,000 by the end of 2027' is a fabricated specific — it is presented as fact in the article's source-quoted block but does not appear in the official GitHub announcement and constitutes an invented p",
+      "ref": "2026-10-03T02-49-44-934Z_github-ai_AI_is_changing_developer_work__Here_are_three_skil.json",
+      "at": "2026-10-03T12:54:07.679Z"
+    },
+    {
+      "id": "m179103206449358",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"AI is changing developer work. Here are three skills to strengthen.\" — mi a baj: The 'Claude Frontier Academy' is described as 'an Anthropic program with a $100 million commitment to train 10,000 Frontier Deployed Engineers by the end of 2027' — this is a fabricated program name with invented financial commitment, headcount, and deadline not supported by the source or any ve",
+      "ref": "2026-10-03T02-49-44-934Z_github-ai_AI_is_changing_developer_work__Here_are_three_skil.json",
+      "at": "2026-10-03T12:54:24.493Z"
+    },
+    {
+      "id": "m179103210495894",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 22 → 8/4/2 oszlop.",
+      "ref": "mobile",
+      "at": "2026-10-03T12:55:04.958Z"
     }
   ]
 }
