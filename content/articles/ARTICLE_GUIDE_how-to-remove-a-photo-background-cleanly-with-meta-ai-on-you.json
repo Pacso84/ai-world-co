@@ -1,0 +1,63 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "how-to-remove-a-photo-background-cleanly-with-meta-ai-on-you",
+    "company": "Meta",
+    "tool": "Meta AI",
+    "icon": "🖼️",
+    "level": "intermediate",
+    "source_news": null,
+    "written_at": "2026-10-04T03:24:42.813Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.006276912,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-10-04T03:27:25.018Z",
+    "slug": "how-to-remove-a-photo-background-cleanly-with-meta-ai-on-your-phone",
+    "auto_check": {
+      "passed": false,
+      "issues": [
+        "UI_CLAIMS_UNSOURCED: 3 konkrét képernyő-feliratot állít tényként forrás nélkül (\"circular blue/purple meta ai icon\", \"paperclip or \"+\" icon\", \"download/save icon\"). Vagy nézd meg a hivatalos oldalon, vagy írd hedge-elve (\"if you don't see…\")."
+      ],
+      "wordCount": 1617
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured guide with clear fallback instructions for different apps, explicit 'what you'll know it worked' checkpoints, helpful example prompts, and a useful common-mistakes section. Technical terms are explained in plain language. No cliches, US English confirmed, no prohibited content.",
+      "_aiCost": 0.00219591,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "image_v": 2,
+    "image_at": "2026-10-04T03:28:02.259Z",
+    "seo": {
+      "meta_description": "Learn how to remove photo backgrounds using Meta AI in WhatsApp, Messenger, or Instagram. Get transparent PNGs in about a minute—no Photoshop needed.",
+      "keywords": [
+        "remove photo background",
+        "remove background Meta AI",
+        "how to remove background from photo",
+        "transparent PNG photo",
+        "remove background without Photoshop",
+        "Meta AI background removal",
+        "phone background remover"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more step-by-step details with specific prompts users can copy-paste",
+        "Include an FAQ section addressing common issues like frizzy hair or sheer fabric",
+        "Add tips for best results with different photo types"
+      ],
+      "optimised_at": "2026-10-04T03:28:31.706Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"How to remove a photo background cleanly with Meta AI on your phone\"\nsubtitle: \"Cut out a person or product, drop in a new background, and save a transparent PNG — no Photoshop needed.\"\ncategory: \"guide\"\naudience: \"personal\"\ncompany: \"Meta\"\ntool: \"Meta AI\"\nlevel: \"intermediate\"\nread_time_minutes: 6\ntags: [\"meta-ai\", \"photo-editing\", \"background-removal\", \"image-editing\"]\n---\n\n# How to remove a photo background cleanly with Meta AI on your phone\n\n> **In short:** Open Meta AI in WhatsApp, Messenger or Instagram, upload a photo, and ask it to \"remove the background.\" Meta AI will usually generate a transparent version you can save as a PNG. You'll get a clean cutout in about a minute, though fine details like frizzy hair or sheer fabric can still need a touch-up.\n\nYou already chat with Meta AI in WhatsApp, Messenger or Instagram. This guide adds one more thing you can do there: turn any photo into a clean cutout (the photo with the background taken away) and drop it onto a new background, all from your phone, no Photoshop, no extra app. The whole workflow takes about five minutes once you've done it once.\n\n## Before you start\n- **The app:** Meta AI built into **WhatsApp, Messenger, or Instagram** on your phone (iPhone or Android). If you can already chat with Meta AI in any of these, you're set.\n- **A photo on your phone:** JPEG or PNG, ideally with a clear subject (a person, a product, a pet) and decent lighting. Busy, low-contrast backgrounds are the hardest to cut.\n- **Roughly 5–10 minutes** for the first try, less after that.\n- **Free.** No paid plan is required for the workflow below. Meta may rate-limit (cap how many times you can ask in a short window) on busy days, so have a backup photo ready.\n- **What Meta AI can and can't do here:** it can usually remove a simple background in one go, but it is not pixel-perfect. Fine hair, glasses, and see-through materials can leave a faint halo (a soft glow around the edges of the cutout). It's great for social posts and product shots, less great for printing at poster size.\n\n## Step 1 — Open a Meta AI chat\nTap the **circular blue/purple Meta AI icon** — in WhatsApp it's usually at the top of your Chats tab or behind a **blue \"AI\" button** in the bottom-right; in Messenger it's the top of the search bar; in Instagram it's in the search/DMs area. If you don't see it, look for a **sparkle or four-pointed star icon** or check the **app's top menu**. The chat screen opens, showing a short welcome message and the message box at the bottom. You'll know it worked when the box at the bottom says something like \"Message Meta AI\" or shows a send arrow.\n\n## Step 2 — Upload the photo you want to cut out\nTap the **paperclip or \"+\" icon** next to the message box to attach a file. From the menu that appears, pick **\"Gallery\"** (Android) or **\"Photo & Video Library\"** (iPhone) and choose the photo. The image appears inside the chat as a small preview above the message box. If your app doesn't show a paperclip, look for a **camera icon** instead — the option is the same. Don't send the message yet; the prompt you add in the next step shapes what Meta AI does with the image.\n\n💬 Example: choose a clear, well-lit photo of a friend standing in front of a plain wall, or a product on a tabletop.\n\nYou'll know it worked when the photo preview is sitting above the message box, ready to go with your next sentence.\n\n## Step 3 — Write the prompt that asks for the cutout\nTap the message box and type a short, direct instruction. Be specific: say \"remove the background\" rather than just \"edit this.\" If you already know where you want to use the image, mention that too — it helps the model (the AI \"brain\" that reads your words and produces the answer) pick a sensible default background color.\n\n💬 Example: `Remove the background from this photo and give me the subject on a transparent background.`\nOr, if you'd like a new background in the same step: `Remove the original background and place the person on a soft white studio background.`\n\nTap **send** (the paper-plane or arrow icon). Meta AI will usually reply within 10–30 seconds with a new version of your image. You'll know it worked when a new picture appears in the chat that looks like your subject on a flat color or transparent-looking background.\n\n## Step 4 — Check the edges before you save\nPinch to zoom in on the edges around the subject — especially around hair, fingers, glasses, and anything thin. Look for a faint color halo (a thin glowing outline) where the old background is bleeding through, or a slightly hard \"stamped\" edge. If the cut is clean, move to Step 5. If you see issues, stay in the same chat and ask for a fix in plain words.\n\n💬 Example: `Zoom in around the hair — I can still see a faint gray halo. Please clean up the edges.`\nOr: `The fingers on the right hand look chopped. Please redo with finer edge detail.`\n\nYou'll know it worked when the second image shows noticeably cleaner edges than the first, with no obvious halo or missing fingers.\n\n## Step 5 — Save the new image to your phone\nLong-press the new image Meta AI produced. A small menu appears with options like **\"Save,\" \"Save to Photos,\"** or **\"Download.\"** Tap the save option. The image lands in your phone's Photos or Gallery app, usually in a folder called **Recents** or **Downloads**. If long-press doesn't show \"Save,\" look for a **three-dot ⋯ menu** on the image instead, or tap the image to open it full-screen and then tap the **download/save icon** in the corner.\n\nYou'll know it worked when the new image appears in your Photos app as its own file, separate from the original you uploaded.\n\n## Step 6 — Drop the cutout onto a new background\nOpen any simple editor on your phone — the built-in **Photos** app on iPhone, or **Google Photos** on Android both work. Open the saved cutout, then tap **Edit**, and look for an option like **\"Add Photo\"** or **\"Overlay / Sticker\"** that lets you put a second image behind the first. Pick your new background — a sunset you took, a logo, a solid color. Resize and reposition, then save.\n\n💬 Example: a beach sunset from your camera roll, so your friend looks like they're standing on vacation.\n\nYou'll know it worked when the final saved image shows your original subject, with clean edges, sitting naturally on the new background you chose.\n\n## Step 7 — Keep your reusable prompt in one easy-to-find place\nDon't retype the prompt every time. Save the working version from Step 3 in your phone's **Notes app** or in the **Notes** feature of WhatsApp/Messenger itself, then copy-paste it next time. For even faster reuse, ask Meta AI in the same chat: `Save this as a reusable prompt I can paste next time.` Meta AI will usually reply with a tidy, copy-ready version you can keep.\n\n💬 Example: `Remove the background from this photo and give me the subject on a transparent background. Keep the subject exactly the same — only the background should change.`\n\nYou'll know it worked when, next time, you can paste the saved prompt, attach a photo, and get a clean cutout in under a minute.\n\n## Common mistakes\n- **Asking vaguely.** \"Edit my photo\" is too open. Always name the change: \"remove the background,\" \"place the subject on white,\" \"tighten the edges.\" A specific instruction gets a specific answer.\n- **Uploading a tiny, blurry, or low-contrast photo.** If the subject and the background are similar colors (a black dog on a dark couch), Meta AI will struggle. Pick a photo with a clear difference between subject and background.\n- **Saving the wrong image.** The chat shows both your original upload and the new generated image. Long-press the *new* one, not the one you sent. If you saved the original by mistake, just repeat Step 3 and save the reply.\n\n## What this means for you\n- **In everyday life:** Clean cutouts are perfect for WhatsApp or Instagram stickers of your pet, a quick profile picture with a softer background, or a fun \"I went to Paris\" photo where you actually went to the kitchen. Five minutes of fiddling beats a desktop app you don't have time to learn.\n- **For your business or work:** If you sell a few products on a side hustle, you can knock out consistent product photos for a catalog or marketplace listing without paying a designer. The edges won't be magazine-perfect, but they're good enough for a small storefront and free.\n- **If you want to go further:** Try a two-step prompt in one chat — first remove the background, then ask `Now place the subject on a marble countertop with soft daylight from the left.` The model remembers the previous image in the same conversation, so each new instruction builds on the last one instead of starting over.\n\n## Try it now\nOpen Meta AI in WhatsApp, Messenger or Instagram right now. Pick a photo of a person or object that is already on your camera roll, paste this prompt, and send:\n\n💬 `Remove the background from this photo and give me the subject on a transparent background.`\n\nSave the result to your phone. That's a complete, reusable workflow you can do again in under a minute next time.",
+  "original_title": "How to remove a photo background cleanly with Meta AI on your phone"
+}

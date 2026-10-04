@@ -1,118 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t179082366989115",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-10-01T03:01:09.891Z",
-      "updated": "2026-10-01T03:01:10.057Z"
-    },
-    {
-      "id": "t179082367005965",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-10-01T03:01:10.059Z",
-      "updated": "2026-10-01T03:05:06.051Z"
-    },
-    {
-      "id": "t179082390605250",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-10-01T03:05:06.052Z",
-      "updated": "2026-10-01T03:07:34.225Z"
-    },
-    {
-      "id": "t179082405422723",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-10-01T03:07:34.227Z",
-      "updated": "2026-10-01T03:08:32.248Z"
-    },
-    {
-      "id": "t179082411224936",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-10-01T03:08:32.249Z",
-      "updated": "2026-10-01T03:09:30.646Z"
-    },
-    {
-      "id": "t179082417064834",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-10-01T03:09:30.648Z",
-      "updated": "2026-10-01T03:10:05.392Z"
-    },
-    {
-      "id": "t179082420543541",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-10-01T03:10:05.435Z",
-      "updated": "2026-10-01T03:14:52.533Z"
-    },
-    {
-      "id": "t17908244925357",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-10-01T03:14:52.535Z",
-      "updated": "2026-10-01T03:15:46.819Z"
-    },
-    {
-      "id": "t179082454686179",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-10-01T03:15:46.861Z",
-      "updated": "2026-10-01T03:16:44.499Z"
-    },
-    {
-      "id": "t179082460450188",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-10-01T03:16:44.501Z",
-      "updated": "2026-10-01T03:17:55.204Z"
-    },
-    {
-      "id": "t179082467520556",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-10-01T03:17:55.205Z",
-      "updated": "2026-10-01T03:18:10.806Z"
-    },
-    {
-      "id": "t179082469080823",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-10-01T03:18:10.808Z",
-      "updated": "2026-10-01T03:18:32.997Z"
-    },
-    {
-      "id": "t179091017799775",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-10-02T03:02:57.997Z",
-      "updated": "2026-10-02T03:02:58.202Z"
-    },
-    {
-      "id": "t179091017820429",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-10-02T03:02:58.204Z",
-      "updated": "2026-10-02T03:03:52.858Z"
-    },
-    {
       "id": "t179091023286068",
       "title": "Run source-scout",
       "status": "done",
@@ -479,33 +367,121 @@
       "agent": "publisher",
       "created": "2026-10-03T12:55:04.967Z",
       "updated": "2026-10-03T12:55:18.939Z"
+    },
+    {
+      "id": "t179108396903036",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-10-04T03:19:29.030Z",
+      "updated": "2026-10-04T03:19:33.166Z"
+    },
+    {
+      "id": "t17910839731680",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-10-04T03:19:33.168Z",
+      "updated": "2026-10-04T03:20:06.827Z"
+    },
+    {
+      "id": "t179108400682871",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-10-04T03:20:06.828Z",
+      "updated": "2026-10-04T03:20:07.008Z"
+    },
+    {
+      "id": "t179108400701033",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-10-04T03:20:07.010Z",
+      "updated": "2026-10-04T03:21:29.784Z"
+    },
+    {
+      "id": "t179108408978610",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-10-04T03:21:29.786Z",
+      "updated": "2026-10-04T03:21:43.148Z"
+    },
+    {
+      "id": "t179108410315125",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-10-04T03:21:43.151Z",
+      "updated": "2026-10-04T03:21:57.972Z"
+    },
+    {
+      "id": "t179108411797339",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-10-04T03:21:57.973Z",
+      "updated": "2026-10-04T03:22:17.331Z"
+    },
+    {
+      "id": "t179108413733358",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-10-04T03:22:17.333Z",
+      "updated": "2026-10-04T03:22:26.088Z"
+    },
+    {
+      "id": "t179108414613350",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-10-04T03:22:26.133Z",
+      "updated": "2026-10-04T03:26:35.359Z"
+    },
+    {
+      "id": "t179108439536177",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-10-04T03:26:35.361Z",
+      "updated": "2026-10-04T03:27:25.031Z"
+    },
+    {
+      "id": "t17910844450737",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-10-04T03:27:25.073Z",
+      "updated": "2026-10-04T03:28:02.280Z"
+    },
+    {
+      "id": "t179108448228233",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-10-04T03:28:02.282Z",
+      "updated": "2026-10-04T03:28:31.726Z"
+    },
+    {
+      "id": "t179108451172796",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-10-04T03:28:31.727Z",
+      "updated": "2026-10-04T03:28:40.315Z"
+    },
+    {
+      "id": "t17910845203163",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-10-04T03:28:40.316Z",
+      "updated": "2026-10-04T03:28:58.265Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178921472502673",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The line-up is solid and ready — practical, everyday AI use cases that feel genuinely useful rather than intimidating. One small note: double-check that Cohere's tool name is exactly right (our last r",
-      "agent": "publisher",
-      "at": "2026-09-12T12:05:25.027Z",
-      "loud": false
-    },
-    {
-      "id": "n17892147416107",
-      "level": "success",
-      "text": "2 hír + 1 útmutató publikálva (költség: $0.0309).",
-      "agent": "ceo",
-      "at": "2026-09-12T12:05:41.610Z",
-      "loud": false
-    },
-    {
-      "id": "n178926531711386",
-      "level": "info",
-      "text": "SEO: 5 cikk optimalizálva (átlag 8.4/10).",
-      "agent": "seo",
-      "at": "2026-09-13T02:08:37.113Z",
-      "loud": false
-    },
     {
       "id": "n178926535451395",
       "level": "success",
@@ -1281,54 +1257,33 @@
       "agent": "ceo",
       "at": "2026-10-03T12:55:18.970Z",
       "loud": false
+    },
+    {
+      "id": "n179108451171884",
+      "level": "info",
+      "text": "SEO: 4 cikk optimalizálva (átlag 7.8/10).",
+      "agent": "seo",
+      "at": "2026-10-04T03:28:31.718Z",
+      "loud": false
+    },
+    {
+      "id": "n179108452314677",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). **Publish Summary:** The lineup looks solid and ready — it covers a nice mix of personal, professional, and casual AI writing use cases across six different tools, which gives readers great variety. O",
+      "agent": "publisher",
+      "at": "2026-10-04T03:28:43.146Z",
+      "loud": false
+    },
+    {
+      "id": "n17910845383057",
+      "level": "success",
+      "text": "2 hír + 2 útmutató publikálva (költség: $0.0473).",
+      "agent": "ceo",
+      "at": "2026-10-04T03:28:58.305Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178969726148840",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Our framework for reporting model misalignment\" — mi a baj: Claim of '1,000 older adults across 10 cities' has no source — invented specific detail; OpenAI misalignment framework not named or explained — central topic left vague; No link or citation to the source (OpenAI Blog) anywhere in the article",
-      "ref": "2026-09-17T02-18-27-380Z_openai-blog_Our_framework_for_reporting_model_misalignment.json",
-      "at": "2026-09-18T02:07:41.488Z"
-    },
-    {
-      "id": "m178969727820318",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Reduce time-to-hire for quality candidates with AI-powered Amazon Connect Talent\" — mi a baj: No direct reference to the source (Amazon Connect Talent) despite source metadata citing it; Agent skills claims lack verifiable citations — 'hundreds of prompts' and 'wide margin' are unsupported; Article reads as general AI news rather than coverage of the AWS Machine Learning ann",
-      "ref": "2026-09-18T02-04-26-641Z_aws-ml_Reduce_time-to-hire_for_quality_candidates_with_AI.json",
-      "at": "2026-09-18T02:07:58.203Z"
-    },
-    {
-      "id": "m178969765729668",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Our framework for reporting model misalignment\" — javítva: Claim of '1,000 older adults across 10 cities' has no source — invented specific detail; OpenAI misalignment framework not named or explained — central topic left vague; újraküldöm.",
-      "ref": "2026-09-17T02-18-27-380Z_openai-blog_Our_framework_for_reporting_model_misalignment.json",
-      "at": "2026-09-18T02:14:17.296Z"
-    },
-    {
-      "id": "m178969767573489",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Reduce time-to-hire for quality candidates with AI-powered Amazon Connect Talent\" — javítva: No direct reference to the source (Amazon Connect Talent) despite source metadata citing it; Agent skills claims lack verifiable citations — 'hundreds of prompts' and 'wide margin' are unsupported; újraküldöm.",
-      "ref": "2026-09-18T02-04-26-641Z_aws-ml_Reduce_time-to-hire_for_quality_candidates_with_AI.json",
-      "at": "2026-09-18T02:14:35.734Z"
-    },
-    {
-      "id": "m178969769308938",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Our framework for reporting model misalignment\" (?/10)",
-      "ref": "2026-09-17T02-18-27-380Z_openai-blog_Our_framework_for_reporting_model_misalignment.json",
-      "at": "2026-09-18T02:14:53.089Z"
-    },
     {
       "id": "m178969771004165",
       "from": "ellenorzo",
@@ -2637,6 +2592,51 @@
       "text": "1 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-10-03T13:01:52.985Z"
+    },
+    {
+      "id": "m179108397315680",
+      "from": "ceo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Főnöki újraindítás: \"AI is changing developer work. Here are three skills to stre\" — rewrite-explainer",
+      "ref": "2026-10-03T02-49-44-934Z_github-ai_AI_is_changing_developer_work__Here_are_three_skil.json",
+      "at": "2026-10-04T03:19:33.156Z"
+    },
+    {
+      "id": "m179108411796195",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"AI is changing developer work. Here are three skills to strengthen.\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite by replacing the fabricated 'Claude Frontier Academy' $100M/10,000-engineers/2027 reference with only the verifiable GitHub content (the three skills: directin",
+      "ref": "2026-10-03T02-49-44-934Z_github-ai_AI_is_changing_developer_work__Here_are_three_skil.json",
+      "at": "2026-10-04T03:21:57.961Z"
+    },
+    {
+      "id": "m17910841373219",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"AI is changing developer work. Here are three skills to strengthen.\" (?/10)",
+      "ref": "2026-10-03T02-49-44-934Z_github-ai_AI_is_changing_developer_work__Here_are_three_skil.json",
+      "at": "2026-10-04T03:22:17.321Z"
+    },
+    {
+      "id": "m17910845203077",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 22 → 8/4/2 oszlop.",
+      "ref": "mobile",
+      "at": "2026-10-04T03:28:40.307Z"
+    },
+    {
+      "id": "m179108459093985",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Draft a polite 'out of office' reply with Meta AI \" — The claim that meta.ai \"always works\" as a guaranteed website — this may no longer be accurate; The specific UI description of finding Meta AI via a \"circle icon\" at the top of chat lists in WhatsApp/Messenger/Instagram — these UI elements have likely changed",
+      "ref": "ARTICLE_GUIDE_draft-a-polite-out-of-office-reply-with-meta-ai-before-your-.json",
+      "at": "2026-10-04T03:29:50.939Z"
     }
   ]
 }
