@@ -1,36 +1,30 @@
 {
   "_meta": {
-    "generated_at": "2026-10-02T14:20:30.795Z",
+    "generated_at": "2026-10-05T16:37:39.148Z",
     "generated_by": "source-scout agent v3.0 (megbízhatóság-kapu)",
     "note": "JAVASLATOK új, MEGBÍZHATÓ hivatalos forrásokra. A felhasználó/főnök dönti el, melyiket adjuk a sources/rss-feeds.json-hoz (enabled:true-val). Minden jelölt megbízhatósági pontszámmal + indoklással.",
     "min_score": 100,
     "checked_orgs": 18,
     "newly_discovered": 0,
-    "rejected_count": 4,
+    "rejected_count": 3,
     "rejected_examples": [
       {
-        "name": "Runway",
-        "host": "runwayml.com",
+        "name": "Jasper AI",
+        "host": "jasper.ai",
         "reason": "pont 94 < 100",
         "score": 94
       },
       {
-        "name": "Pika",
-        "host": "pika.art",
-        "reason": "pont 94 < 100",
-        "score": 94
+        "name": "Oppo AI",
+        "host": "oppo.com",
+        "reason": "pont 66 < 100",
+        "score": 66
       },
       {
-        "name": "Luma AI",
-        "host": "lumalabs.ai",
-        "reason": "pont 94 < 100",
-        "score": 94
-      },
-      {
-        "name": "Fotor",
-        "host": "fotor.com",
-        "reason": "pont 94 < 100",
-        "score": 94
+        "name": "Garmin AI",
+        "host": "garmin.com",
+        "reason": "a friss cikkeinek csak 0%-a szól AI-ról (kell: 60%)",
+        "score": 100
       }
     ]
   },

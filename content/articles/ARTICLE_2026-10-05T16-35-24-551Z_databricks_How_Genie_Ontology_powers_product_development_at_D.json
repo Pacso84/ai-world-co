@@ -1,0 +1,62 @@
+{
+  "_meta": {
+    "written_at": "2026-10-05T16:39:19.876Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.03455145,
+    "original_draft": "2026-10-05T16-35-24-551Z_databricks_How_Genie_Ontology_powers_product_development_at_D.json",
+    "source_id": "databricks",
+    "source_name": "Databricks Blog (hivatalos)",
+    "source_link": "https://www.databricks.com/blog/how-genie-ontology-powers-product-development-databricks",
+    "source_links": [
+      "https://www.databricks.com/blog/how-genie-ontology-powers-product-development-databricks"
+    ],
+    "source_snippet": "General-purpose AI agents are good at searching the web, reasoning, and writing code....",
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "published_at": "2026-10-05T16:42:18.511Z",
+    "slug": "what-databricks-genie-ontology-means-for-the-ai-tools-you-use",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 826
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "This is a well-crafted explainer that hits all structural marks: clear hook, accessible explanations of technical terms (ontology, AI agents), practical 'What this means for you' section with audience-specific takeaways, and a wrap-up with a concrete next step. The brand voice is warm and teaching-focused throughout, factual claims are appropriately attributed to Databricks with no invented specifics, and the language is plain enough for everyday readers.",
+      "_aiCost": 0.0015369,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-10-05T16:42:53.684Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is an internal case study about how Databricks uses AI agents with an ontology for its own product development — not a product or feature available for users to use.",
+    "image_v": 2,
+    "image_at": "2026-10-05T16:43:30.798Z",
+    "seo": {
+      "meta_description": "What is Databricks' Genie Ontology? A plain-language look at how knowledge maps help AI agents build products — and why it matters to you.",
+      "keywords": [
+        "what is Databricks Genie Ontology",
+        "ontology in AI explained",
+        "AI agents product development",
+        "knowledge map for AI",
+        "how AI tools improve"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Consider adding the term 'knowledge graph' as an additional keyword since it's a common search term related to ontology",
+        "The article excerpt is quite short — adding more substantive content with specific details about Genie Ontology could improve search visibility",
+        "Consider a secondary meta description variant focusing on 'AI productivity' for a broader audience"
+      ],
+      "optimised_at": "2026-10-05T16:44:07.171Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"What Databricks' Genie Ontology Means for the AI Tools You Use\"\nsubtitle: \"A plain-language look at how one company uses a knowledge map to help AI agents build products faster — and why that trend matters to you.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"databricks\", \"ai-agents\", \"enterprise-ai\", \"product-development\"]\n---\n\n# What Databricks' Genie Ontology Means for the AI Tools You Use\n\n> **In short:** Databricks published a post about its \"Genie Ontology\" and how it helps product teams use general-purpose AI agents. According to Databricks, those agents can already search the web, reason, and write code — and the ontology gives them a structured map of the company's products.\n\nWhen a company that builds data and AI tools writes about how it uses AI to build its own products, it's a small peek behind the curtain. It doesn't usually make headlines the way a flashy new consumer app does, but it tells you something useful: this is how the tools you already use keep getting better, faster.\n\n## What \"ontology\" actually means here\n\nThe word sounds academic, but the idea is simple. An **ontology** is a structured map of knowledge about a specific domain — in this case, Databricks' products, features, and how they relate. Think of it like a really detailed index at the back of a textbook. Instead of having to read every chapter, you can look up exactly what you need.\n\nFor **AI agents** — software that can take instructions, search, reason, and act — that map is genuinely useful. Without it, the agent is guessing at what a product name means or how two features fit together. With it, the agent has a reliable reference.\n\n## What Databricks is actually saying\n\nThe post is titled \"How Genie Ontology powers product development at Databricks.\" The framing, according to Databricks, is straightforward: **general-purpose AI agents** — AI tools that aren't locked into one job but can handle many — are already capable at a few core things, including pulling information off the web, working through problems step by step, and writing or reading code.\n\nThat's the foundation. The ontology is what lets those agents be useful inside Databricks. Instead of asking a generic AI assistant \"what does feature X do?\", the agent can look up feature X in the ontology and get a precise answer — then help a product team make changes, write tests, or fix bugs with that context in hand.\n\nDatabricks describes this as a way to give agents more reliable context, so they can support product teams more confidently.\n\n## Why this matters for everyday people\n\nYou don't need a Databricks account for any of this to be relevant. It's a signal of where AI-assisted software development is heading, and that affects the apps you use.\n\nMost of the services you rely on — your email client, your photo editor, your bank's mobile app — are being built or improved with AI tools behind the scenes. The better those internal AI tools get at understanding a product, the faster the products you use tend to ship new features and fixes.\n\nIt's also a reminder that general-purpose AI agents aren't magic. They work best when they have good context. Behind many \"the AI just did this amazing thing\" stories is a team that spent time building the right knowledge structure to feed the AI.\n\n## What this means for you\n\n- **If you use AI assistants at work**: Pay attention to whether your tool has been given specific context about your company, products, or projects. An AI that knows your actual context is far more useful than a generic one — that's exactly the problem an ontology solves.\n- **If you build or manage a product**: Think about what a structured map of your own product would look like. You don't need a fancy tool to start — even a clear internal wiki helps the AI (and your team) give better answers.\n- **If you're curious about AI in general**: \"General-purpose AI agent\" is a phrase you'll keep seeing. It just means an AI that can handle a wide range of tasks rather than being locked into a single job.\n- **If you don't write code**: Most of the jargon here doesn't matter to your day. The takeaway is that companies are teaching AI to understand their own products better, which usually means better tools for you in the long run.\n\n## Wrap-up\n\nDatabricks' post is a small, technical read, but the broader pattern is worth noticing: AI is being used to build AI products, and the companies doing it well are giving their AI agents structured context rather than just throwing raw data at them. If you want to follow this space, a simple next step is to ask any major AI assistant what it's actually good at and where it tends to fail. You'll start to see, in plain language, why projects like Genie Ontology exist.",
+  "original_title": "How Genie Ontology powers product development at Databricks"
+}

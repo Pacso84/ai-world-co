@@ -1,0 +1,34 @@
+{
+  "started_at": "2026-10-05T16:41:41.617Z",
+  "total": 3,
+  "passed": 3,
+  "failed": 0,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.00931206,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-10-05T16-35-24-550Z_openai-blog_Our_approach_to_EU_text_provenance_rules.json",
+      "article": "ARTICLE_2026-10-05T16-35-24-550Z_openai-blog_Our_approach_to_EU_text_provenance_rules.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.00103866
+    },
+    {
+      "writer": "WRITER_2026-10-05T16-35-24-551Z_databricks_How_Genie_Ontology_powers_product_development_at_D.json",
+      "article": "ARTICLE_2026-10-05T16-35-24-551Z_databricks_How_Genie_Ontology_powers_product_development_at_D.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0015369
+    },
+    {
+      "writer": "WRITER_2026-10-05T16-35-24-551Z_picsart_Flux_3_Image_in_Picsart__layout_control__precise_e.json",
+      "article": "ARTICLE_2026-10-05T16-35-24-551Z_picsart_Flux_3_Image_in_Picsart__layout_control__precise_e.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.00107184
+    }
+  ],
+  "finished_at": "2026-10-05T16:42:40.960Z",
+  "duration_seconds": 59.343
+}

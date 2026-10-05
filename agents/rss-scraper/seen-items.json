@@ -194,7 +194,9 @@
     "https://openai.com/index/albertsons-reimagining-retail",
     "https://openai.com/index/the-den-family-social",
     "https://openai.com/index/practical-guide-building-gpt-6",
-    "https://openai.com/index/chatham-financial"
+    "https://openai.com/index/chatham-financial",
+    "https://openai.com/index/eu-text-provenance",
+    "https://openai.com/index/new-chatgpt-ads-format-and-measurement"
   ],
   "google-deepmind": [
     "https://deepmind.google/blog/fast-tracking-genetic-leads-to-reverse-cellular-aging/",
@@ -573,7 +575,8 @@
     "https://blogs.nvidia.com/blog/geforce-now-thursday-october-2026-games-list/",
     "https://blogs.nvidia.com/blog/gpus-openai-gpt-6-astra-ultrafast/",
     "https://blogs.nvidia.com/blog/productive-durable-fungible-ai-factories/",
-    "https://blogs.nvidia.com/blog/local-ai-dgx-spark-64gb-sync/"
+    "https://blogs.nvidia.com/blog/local-ai-dgx-spark-64gb-sync/",
+    "https://blogs.nvidia.com/blog/ai-breast-cancer-startups/"
   ],
   "google-workspace": [
     "http://workspaceupdates.googleblog.com/2026/06/google-vault-now-supports-retention-rules-and-litigation-holds-for-Gemini-app.html",
@@ -823,13 +826,10 @@
     "https://github.blog/ai-and-ml/github-copilot/when-chat-is-the-wrong-ui/",
     "https://github.blog/security/application-security/ai-powered-fuzzing-with-the-github-security-lab-taskflow-agent/",
     "https://github.blog/ai-and-ml/github-copilot/github-copilot-app-for-beginners-how-to-build-custom-workflows-with-canvases/",
-    "https://github.blog/ai-and-ml/ai-is-rewriting-the-developer-career-ladder-heres-how-to-stand-out/"
+    "https://github.blog/ai-and-ml/ai-is-rewriting-the-developer-career-ladder-heres-how-to-stand-out/",
+    "https://github.blog/ai-and-ml/github-copilot/reviewbench-an-open-benchmark-for-ai-code-review/"
   ],
   "aws-ml": [
-    "https://aws.amazon.com/blogs/machine-learning/run-nvidia-nemotron-and-openai-gpt-oss-models-on-amazon-bedrock-in-aws-govcloud-us/",
-    "https://aws.amazon.com/blogs/machine-learning/building-a-serverless-a2a-gateway-for-agent-discovery-routing-and-access-control/",
-    "https://aws.amazon.com/blogs/machine-learning/structured-memory-filtering-with-metadata-in-agentcore-memory/",
-    "https://aws.amazon.com/blogs/machine-learning/hipporag-neurobiologically-inspired-rag-using-amazon-bedrock-amazon-neptune-and-personalized-pagerank/",
     "https://aws.amazon.com/blogs/machine-learning/how-inscribe-uses-amazon-bedrock-to-stop-document-fraud-in-seconds/",
     "https://aws.amazon.com/blogs/machine-learning/simplify-model-selection-in-amazon-bedrock-with-the-open-source-model-profiler/",
     "https://aws.amazon.com/blogs/machine-learning/how-amazon-bedrock-catches-ai-generated-phishing/",
@@ -1125,7 +1125,11 @@
     "https://aws.amazon.com/blogs/machine-learning/implementing-multi-environment-access-for-claude-platform-on-aws/",
     "https://aws.amazon.com/blogs/machine-learning/sweep-thousands-of-leases-for-compliance-using-amazon-quick-and-the-adjudicated-query-pattern/",
     "https://aws.amazon.com/blogs/machine-learning/add-secure-web-search-to-claude-desktop-with-amazon-bedrock-agentcore/",
-    "https://aws.amazon.com/blogs/machine-learning/fine-tune-a-search-agent-with-multi-turn-rl-on-amazon-sagemaker-ai/"
+    "https://aws.amazon.com/blogs/machine-learning/fine-tune-a-search-agent-with-multi-turn-rl-on-amazon-sagemaker-ai/",
+    "https://aws.amazon.com/blogs/machine-learning/making-amazon-quick-enterprise-ready-automated-auditable-cross-account-resource-promotion/",
+    "https://aws.amazon.com/blogs/machine-learning/agentic-retrieval-with-langchain-and-amazon-bedrock-knowledge-bases/",
+    "https://aws.amazon.com/blogs/machine-learning/downgrading-user-roles-in-amazon-quick/",
+    "https://aws.amazon.com/blogs/machine-learning/evaluating-multi-agent-systems-for-explainability-and-helpfulness-with-amazon-bedrock-agentcore/"
   ],
   "mistral-ai": [
     "https://mistral.ai/news/ai-now-summit-2026/",
@@ -1266,7 +1270,8 @@
     "https://machinelearning.apple.com/research/harness-autonomous-ml-engineering",
     "https://machinelearning.apple.com/research/rltl-dr-self-improvement",
     "https://machinelearning.apple.com/research/language-discrimination-multilingual-learning",
-    "https://machinelearning.apple.com/research/limits-confidence-diffusion"
+    "https://machinelearning.apple.com/research/limits-confidence-diffusion",
+    "https://machinelearning.apple.com/research/ontological-boundary-negotiation"
   ],
   "salesforce": [
     "https://www.salesforce.com/news/stories/salesforce-closing-ai-skills-gap/",
@@ -1663,7 +1668,8 @@
     "https://www.databricks.com/blog/capital-markets-buy-side-runs-nav-finance-protects-fee",
     "https://www.databricks.com/blog/how-genie-one-reshapes-work-finance-teams",
     "https://www.databricks.com/blog/how-choose-your-first-genie-agents-maximum-impact",
-    "https://www.databricks.com/blog/unlocking-data-portability-preventing-catalog-lock-register-and-unregister-apis"
+    "https://www.databricks.com/blog/unlocking-data-portability-preventing-catalog-lock-register-and-unregister-apis",
+    "https://www.databricks.com/blog/how-genie-ontology-powers-product-development-databricks"
   ],
   "snowflake": [
     "https://www.snowflake.com/content/snowflake-site/global/en/blog/snowflake-postgres-ml-online-feature-store",
@@ -1737,7 +1743,8 @@
     "https://www.snowflake.com/content/snowflake-site/global/en/blog/claude-sonnet-5-5-snowflake-cortex-ai",
     "https://www.snowflake.com/content/snowflake-site/global/en/blog/openai-gpt-6-sol-luna-snowflake-cortex-ai",
     "https://www.snowflake.com/content/snowflake-site/global/en/blog/scaling-mission-ai-lessons-public-sector",
-    "https://www.snowflake.com/content/snowflake-site/global/en/blog/opentelemetry-enterprise-data-asset"
+    "https://www.snowflake.com/content/snowflake-site/global/en/blog/opentelemetry-enterprise-data-asset",
+    "https://www.snowflake.com/content/snowflake-site/global/en/blog/ai-agents-in-advertising"
   ],
   "together": [
     "https://www.together.ai/blog/announcing-our-series-c",
@@ -1777,7 +1784,8 @@
     "https://www.together.ai/blog/migrating-from-closed-to-open-source-models",
     "https://www.together.ai/blog/global-fintech-scales-coding-agent-traffic-with-dedicated-model-inference",
     "https://www.together.ai/blog/canary-rollouts-upgrade-models-in-production-without-downtime",
-    "https://www.together.ai/blog/how-to-train-your-own-jev"
+    "https://www.together.ai/blog/how-to-train-your-own-jev",
+    "https://www.together.ai/blog/together-link-frontier-quality-open-models-in-the-harness-you-already-use"
   ],
   "pinecone": [
     "https://www.pinecone.io/blog/generating-test-data-for-pinecone/",
@@ -1850,7 +1858,8 @@
     "https://research.ibm.com/blog/qec-continuum?utm_medium=rss&utm_source=rss",
     "https://research.ibm.com/blog/quantum-circuits-vs-llms?utm_medium=rss&utm_source=rss",
     "https://research.ibm.com/blog/why-are-silicon-wafers-round?utm_medium=rss&utm_source=rss",
-    "https://research.ibm.com/blog/ponder-this-october-2026?utm_medium=rss&utm_source=rss"
+    "https://research.ibm.com/blog/ponder-this-october-2026?utm_medium=rss&utm_source=rss",
+    "https://research.ibm.com/blog/directed-execution?utm_medium=rss&utm_source=rss"
   ],
   "ntt-research": [
     "https://ntt-research.com/ntt-researchers-contribute-17-papers-to-eurocrypt-2026/",
@@ -2461,7 +2470,9 @@
     "https://picsart.com/blog/ideogram-4-5-vs-gpt-image-2-5/",
     "https://picsart.com/blog/elevenlabs-v4-vs-v4-turbo/",
     "https://picsart.com/blog/how-to-use-ai-to-decorate-a-room/",
-    "https://picsart.com/blog/how-to-make-youtube-shorts/"
+    "https://picsart.com/blog/how-to-make-youtube-shorts/",
+    "https://picsart.com/blog/flux-3-image-picsart-integration/",
+    "https://picsart.com/blog/create-with-blender-mcp-and-picsart-mcp-in-claude/"
   ],
   "zapier-blog": [
     "https://zapier.com/blog/stay-focused-avoid-distractions",
@@ -2592,7 +2603,9 @@
     "https://zapier.com/blog/automate-muse",
     "https://zapier.com/blog/ai-for-gtm",
     "https://zapier.com/blog/gemini-connectors",
-    "https://zapier.com/blog/ai-in-it"
+    "https://zapier.com/blog/ai-in-it",
+    "https://zapier.com/blog/asana-alternatives",
+    "https://zapier.com/blog/inbox-zero"
   ],
   "dropbox-blog": [
     "  https://blog.dropbox.com/topics/company/dropbox-announces-q1-2026-results ",

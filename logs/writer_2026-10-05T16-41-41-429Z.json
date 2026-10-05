@@ -1,0 +1,49 @@
+{
+  "started_at": "2026-10-05T16:37:39.342Z",
+  "drafts_total": 3,
+  "articles_written": 3,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 0,
+  "merged_total": 0,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "total_cost_usd": 0.050412309999999995,
+  "by_article": [
+    {
+      "draft": "2026-10-05T16-35-24-551Z_picsart_Flux_3_Image_in_Picsart__layout_control__precise_e.json",
+      "writer_output": "WRITER_2026-10-05T16-35-24-551Z_picsart_Flux_3_Image_in_Picsart__layout_control__precise_e.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.00658948,
+      "duration_ms": 51396,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-10-05T16-35-24-551Z_databricks_How_Genie_Ontology_powers_product_development_at_D.json",
+      "writer_output": "WRITER_2026-10-05T16-35-24-551Z_databricks_How_Genie_Ontology_powers_product_development_at_D.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.03455145,
+      "duration_ms": 41913,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-10-05T16-35-24-550Z_openai-blog_Our_approach_to_EU_text_provenance_rules.json",
+      "writer_output": "WRITER_2026-10-05T16-35-24-550Z_openai-blog_Our_approach_to_EU_text_provenance_rules.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.00866898,
+      "duration_ms": 140953,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    }
+  ],
+  "finished_at": "2026-10-05T16:41:41.428Z",
+  "duration_seconds": 242.086
+}
