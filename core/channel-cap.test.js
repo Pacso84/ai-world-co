@@ -151,11 +151,16 @@ t('értelmetlen plafon-érték = nincs plafon, nem néma nulla', () => {
 // jött — a hiba a záró ✅ sor UTÁN jelent meg. Ugyanez a csapda 2026-08-23-án
 // már megfogott 7 tesztet egy másik fájlban. Szinkron olvasás = a bukás ott
 // van, ahol keresed.
-t('📌 az ÉLES config.json tényleg napi 1-re fogja az Instagramot', () => {
+t('📌 az ÉLES config.json LEÁLLÍTVA tartja az Instagramot (0)', () => {
+  // 2026-08-24: napi 6 → napi 1. 2026-10-05 (user: „instagramot meg kéne
+  // szüntetni mert nem látom értelmét"): mérve 14 nap alatt 4 belépő → 0.
+  // A 0 valódi plafon: a Reelt is elnémítja (buffer-poster.js, a Reel-ág előtt).
   const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
   const eles = JSON.parse(readFileSync(join(ROOT, 'config.json'), 'utf-8'));
-  assert.equal(capFor(eles, 'instagram'), 1,
-    'a 2026-08-24-i user-döntés: napi 6 → napi 1');
+  assert.equal(capFor(eles, 'instagram'), 0,
+    'a 2026-10-05-i user-döntés: az Instagram leállítva');
+  assert.equal(allowedNow({ sentToday: 0, dailyCap: capFor(eles, 'instagram'), runLimit: 3 }), 0,
+    'a 0-s plafon mellett mégis kimenne poszt');
 });
 
 console.log('\n✅ channel-cap.test: mind a ' + pass + ' eset rendben');
