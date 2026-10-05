@@ -46,7 +46,7 @@ import { composePost, followCta, CHANNELS } from '../../core/social-text.js';
 // A SOR KÖZÖS DÖNTÉSE (2026-09-12) — ugyanaz, mint a Facebook-poszterben.
 // Eddig karakterre lemásolva élt itt; most egy példány: core/social-published.js.
 import { isArticleFile, buildPublishedMap, queueStatus, realSlug } from '../../core/social-published.js';
-import { capFor, allowedNow, countSentToday } from '../../core/channel-cap.js';
+import { capFor, allowedNow, countSentToday, figyelendoCsatornak } from '../../core/channel-cap.js';
 // ⚠️ AZ ŐRSZEM (2026-08-30). Enélkül ez a modul NÉMÁN áll le: lejárt token,
 // levált csatorna vagy bukott createPost esetén csak a CI naplójába írt,
 // ahová senki nem néz — és a fájl végi `catch` még 0-val is lépett ki, tehát
@@ -388,7 +388,7 @@ async function main() {
       .filter(c => c.key && CHANNELS[c.key]);
     if (!channels.length) {
       console.log('   ⚠️ egyik bekötött csatornát sem ismerem.');
-      return { ...alapAllapot(), csatornaLekerdezes: 'ok', csatornak: NYERS_CSATORNAK, ismertCsatornak: [] };
+      return { ...alapAllapot(), csatornaLekerdezes: 'ok', csatornak: figyelendoCsatornak(NYERS_CSATORNAK, CONFIG, SERVICE_MAP), ismertCsatornak: [] };
     }
   }
 
@@ -551,7 +551,8 @@ async function main() {
     socialMappa: true,
     csatornaLekerdezes: token() ? 'ok' : 'kihagyva',
     csatornaHiba: CSATORNA_HIBA,
-    csatornak: NYERS_CSATORNAK,
+    // A szándékosan leállított (0-s plafonú) csatorna leválása nem riaszt (10-05, core/channel-cap.js).
+    csatornak: figyelendoCsatornak(NYERS_CSATORNAK, CONFIG, SERVICE_MAP),
     ismertCsatornak: channels.map(c => c.key),
     hibak, kikuldve, keres
   };

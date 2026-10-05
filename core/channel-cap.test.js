@@ -17,7 +17,7 @@ import assert from 'assert/strict';
 import { readFileSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
-import { allowedNow, countSentToday, capFor } from './channel-cap.js';
+import { allowedNow, countSentToday, capFor, figyelendoCsatornak } from './channel-cap.js';
 
 let pass = 0;
 const t = (n, f) => { f(); pass++; console.log('  ✅ ' + n); };
@@ -151,6 +151,28 @@ t('értelmetlen plafon-érték = nincs plafon, nem néma nulla', () => {
 // jött — a hiba a záró ✅ sor UTÁN jelent meg. Ugyanez a csapda 2026-08-23-án
 // már megfogott 7 tesztet egy másik fájlban. Szinkron olvasás = a bukás ott
 // van, ahol keresed.
+t('🔕 a LEÁLLÍTOTT (0) csatorna lecsatlakozása nem riaszt — a többié igen (10-05: IG-fiók törlése)', () => {
+  const cfg = { limits: { social_daily_caps: { instagram: 0 } } };
+  const nyers = [
+    { service: 'threads', isDisconnected: true },
+    { service: 'instagram', isDisconnected: true },
+    { service: 'Instagram', isLocked: true }
+  ];
+  const marad = figyelendoCsatornak(nyers, cfg, { threads: 'threads', instagram: 'instagram' });
+  assert.deepEqual(marad.map(c => c.service), ['threads'], 'a Threads lecsatlakozását NEM szabad elhallgatni');
+  // Plafon nélkül (vagy 1-es plafonnal) minden marad — az őrszem nem vakulhat meg.
+  assert.equal(figyelendoCsatornak(nyers, { limits: { social_daily_caps: { instagram: 1 } } }, { instagram: 'instagram', threads: 'threads' }).length, 3);
+  assert.equal(figyelendoCsatornak(null, cfg, {}), null, 'a null (nem tudjuk) null marad, nem üres lista');
+});
+
+t('🔗 a honlap nem linkel a törölt Instagram-fiókra (lábléc + JSON-LD)', () => {
+  const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
+  const b = readFileSync(join(ROOT, 'website', 'build.js'), 'utf-8');
+  assert.ok(/const IG_URL = '';/.test(b), 'az IG_URL nem üres — 3000 oldal mutatna a törölt profilra');
+  assert.ok(b.includes('${IG_URL ? `<a href="${IG_URL}"'), 'a lábléc-ikon nem feltételes');
+  assert.ok(b.includes('sameAs: [FB_URL, IG_URL, TH_URL].filter(Boolean)'), 'a JSON-LD üres sameAs-t kapna');
+});
+
 t('📌 az ÉLES config.json LEÁLLÍTVA tartja az Instagramot (0)', () => {
   // 2026-08-24: napi 6 → napi 1. 2026-10-05 (user: „instagramot meg kéne
   // szüntetni mert nem látom értelmét"): mérve 14 nap alatt 4 belépő → 0.

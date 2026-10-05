@@ -79,3 +79,24 @@ export function allowedNow({ sentToday, dailyCap, runLimit }) {
 
   return Math.max(0, Math.min(limit, Math.floor(dailyCap) - Math.floor(sentToday)));
 }
+
+/**
+ * Az őrszemnek átadott csatornalista — a SZÁNDÉKOSAN LEÁLLÍTOTT (0-s plafonú)
+ * csatornák nélkül.
+ *
+ * MIÉRT (2026-10-05). A user leállította, majd TÖRÖLNI akarta az Instagram-
+ * fiókot. Törlés után a Buffer „levált” csatornának látja, és a Buffer-őrszem
+ * minden nap CSATORNA_LEVALT riasztást küldene egy olyan fiókról, amit szándékosan
+ * szüntettünk meg. A riasztás, ami mindig szól, megtanítja a usert, hogy ne
+ * figyeljen rá — és akkor a VALÓDI leválást (Threads) is elnézi.
+ *
+ * ⚠️ CSAK a 0-s plafon szűr: plafon nélkül vagy 1-gyel minden marad, és a
+ * `null` (nem tudjuk) `null` marad — az őrszem nem vakulhat meg némán.
+ */
+export function figyelendoCsatornak(csatornak, config, serviceMap) {
+  if (!Array.isArray(csatornak)) return csatornak;
+  return csatornak.filter(c => {
+    const kulcs = serviceMap && serviceMap[String(c && c.service || '').toLowerCase()];
+    return !(kulcs && capFor(config, kulcs) === 0);
+  });
+}

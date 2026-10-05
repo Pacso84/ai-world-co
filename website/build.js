@@ -192,7 +192,10 @@ function nyelvSzo(lang) {
 }
 // A kivezetett nyelvek EGYETLEN forrása: core/retired-langs.js (sírkő).
 const FB_URL = 'https://www.facebook.com/profile.php?id=61591788804540';   // FB-oldal (követés + JSON-LD sameAs)
-const IG_URL = 'https://www.instagram.com/aiworldhq/';                    // Instagram (Bufferrel posztolunk rá)
+// Instagram: MEGSZŰNT 2026-10-05 (user törli a fiókot; 14 nap alatt 4 belépő).
+// Üres = nincs lábléc-ikon és nincs JSON-LD sameAs — különben 3000 oldal mutatna
+// egy törölt profilra. Visszaállítás: 'https://www.instagram.com/aiworldhq/'.
+const IG_URL = '';
 const TH_URL = 'https://www.threads.com/@aiworldhq';                      // Threads (Bufferrel posztolunk rá)
 // X/Twitter SZÁNDÉKOSAN NINCS: a Buffer nem ismer ilyen csatornát, tehát nem
 // létező profilra nem linkelünk. Ha bekötjük, ide kerül — és a sameAs-be is.
@@ -1494,7 +1497,7 @@ function pageShell({ title, description, bodyContent, isArticle = false, noIntro
       <p class="site-footer__socialt">${escapeHtml(FOLLOW[LANG] || FOLLOW.en)}</p>
       <p class="site-footer__social">
         <a href="${FB_URL}" target="_blank" rel="noopener me" title="Facebook" aria-label="Facebook"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="currentColor"><path d="${ICON.fb}"/></svg></a>
-        <a href="${IG_URL}" target="_blank" rel="noopener me" title="Instagram" aria-label="Instagram"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="currentColor"><path d="${ICON.ig}"/></svg></a>
+        ${IG_URL ? `<a href="${IG_URL}" target="_blank" rel="noopener me" title="Instagram" aria-label="Instagram"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="currentColor"><path d="${ICON.ig}"/></svg></a>` : ''}
         <a href="${TH_URL}" target="_blank" rel="noopener me" title="Threads" aria-label="Threads"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="currentColor"><path d="${ICON.th}"/></svg></a>
       </p>
       <p class="site-footer__fine">${T.footerNote} · © ${year} AI World HQ</p>
@@ -3153,7 +3156,7 @@ function buildAboutPage() {
       '@context': 'https://schema.org', '@type': 'Organization',
       name: SITE.name, url: SITE.url, logo: `${SITE.url}/assets/logo.svg`,
       description: SITE.description,
-      sameAs: [FB_URL, IG_URL, TH_URL]
+      sameAs: [FB_URL, IG_URL, TH_URL].filter(Boolean)
     }
   });
 }
