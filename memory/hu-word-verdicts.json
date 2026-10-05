@@ -1382,6 +1382,8 @@
     "képgenerátoroknál",
     "képgenerátorokon",
     "képminőséget",
+    "képmodelije",
+    "képmodelje",
     "képmodeljének",
     "képmodelleként",
     "képpromptokkal",
@@ -1968,6 +1970,7 @@
     "portlandi",
     "posthoz",
     "poszterbriefet",
+    "poszteren",
     "pozcióban",
     "pozitívat",
     "pptx",
@@ -2483,6 +2486,7 @@
     "tanároknak",
     "tanároktól",
     "tanárom",
+    "tartalom-eredetiséget",
     "tartalomtervet",
     "tasmán",
     "te-ízűnek",
@@ -4223,6 +4227,16 @@
       "correct": "megnyítasz",
       "at": "2026-10-04",
       "mondattal": true
+    },
+    "bizonyítékt": {
+      "correct": "bizonyítékot",
+      "at": "2026-10-05",
+      "mondattal": true
+    },
+    "mdja": {
+      "correct": "módja",
+      "at": "2026-10-05",
+      "mondattal": true
     }
   },
   "review": {
@@ -5757,11 +5771,26 @@
       "correct": "megnyíthatsz",
       "at": "2026-10-04",
       "utkozes": true
+    },
+    "adopterök": {
+      "correct": "korai alkalmazók vagy korai adoptersek",
+      "at": "2026-10-05",
+      "mondattal": true
+    },
+    "ontologyban": {
+      "correct": "ontológiában",
+      "at": "2026-10-05",
+      "mondattal": true
+    },
+    "kpen": {
+      "correct": "képeket",
+      "at": "2026-10-05",
+      "mondattal": true
     }
   },
   "scan": {
     "at": "2026-10-05",
-    "files": 994,
-    "candidates": 4
+    "files": 993,
+    "candidates": 9
   }
 }
