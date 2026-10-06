@@ -1,0 +1,27 @@
+{
+  "started_at": "2026-10-06T03:59:48.511Z",
+  "total": 2,
+  "passed": 1,
+  "failed": 1,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.00551478,
+  "by_article": [
+    {
+      "writer": "WRITER_GUIDE_brainstorm-10-name-ideas-for-a-new-side-project-with-cohere.json",
+      "article": "ARTICLE_GUIDE_brainstorm-10-name-ideas-for-a-new-side-project-with-cohere.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0021576
+    },
+    {
+      "writer": "WRITER_GUIDE_how-to-build-a-reusable-personal-assistant-prompt-you-save-o.json",
+      "rejected": "REJECTED_GUIDE_how-to-build-a-reusable-personal-assistant-prompt-you-save-o.json",
+      "decision": "FAIL",
+      "score": 8,
+      "cost_usd": 0.0027516
+    }
+  ],
+  "finished_at": "2026-10-06T04:01:25.966Z",
+  "duration_seconds": 97.455
+}

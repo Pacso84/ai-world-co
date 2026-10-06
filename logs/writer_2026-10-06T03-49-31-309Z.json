@@ -1,0 +1,60 @@
+{
+  "started_at": "2026-10-06T03:46:23.631Z",
+  "drafts_total": 4,
+  "articles_written": 4,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 0,
+  "merged_total": 0,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "total_cost_usd": 0.038730851999999996,
+  "by_article": [
+    {
+      "draft": "2026-10-06T03-46-23-235Z_grammarly-blog_The_Learning-Visibility_Loop__How_AI_Should_Partic.json",
+      "writer_output": "WRITER_2026-10-06T03-46-23-235Z_grammarly-blog_The_Learning-Visibility_Loop__How_AI_Should_Partic.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.004618992,
+      "duration_ms": 15956,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-10-06T03-46-23-235Z_cohere-blog_North_2__Enterprise_AI_Without_Compromises.json",
+      "writer_output": "WRITER_2026-10-06T03-46-23-235Z_cohere-blog_North_2__Enterprise_AI_Without_Compromises.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.01009068,
+      "duration_ms": 61331,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-10-06T03-46-23-235Z_cohere-blog_Cohere_and_PwC_partnership_announcement.json",
+      "writer_output": "WRITER_2026-10-06T03-46-23-235Z_cohere-blog_Cohere_and_PwC_partnership_announcement.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.01233828,
+      "duration_ms": 69946,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-10-05T16-35-24-550Z_openai-blog_Building_advertising_for_the_way_people_use_AI.json",
+      "writer_output": "WRITER_2026-10-05T16-35-24-550Z_openai-blog_Building_advertising_for_the_way_people_use_AI.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.0109515,
+      "duration_ms": 31963,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    }
+  ],
+  "finished_at": "2026-10-06T03:49:31.309Z",
+  "duration_seconds": 187.678
+}
