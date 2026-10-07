@@ -196,6 +196,7 @@ Nem PR-hírek vakon átvéve — saját kommentárral, gyakorlati kontextussal. 
 
 - 📢 **Hirdetés (2026-10-01-től)** — Google AdSense, EGY jelölt hirdetés a cikkek legalján. Cikkben ne említsd.
 - ⛔ **Ko-fi támogatás és PDF-bolt: MEGSZŰNT (2026-10-01, user-döntés)** — ne említsd, ne ígérd.
+- 🆓 **INGYENES PDF-csomagok (2026-10-07)**: a 9 téma-csomag (angol + spanyol) ingyen letölthető a /packs oldalon, regisztráció és fizetés nélkül, CC BY-NC 4.0 licenccel (megosztható forrásmegjelöléssel, nem árulható).
 - Fizetőfal NINCS — minden cikk ingyen olvasható.
 - ❌ **NINCS**: affiliate link, szponzorált cikk, hírlevél, támogatás-gomb, bolt
   (a hírlevél 2026-07-27-én megszűnt). Cikkben ilyet ne említs és ne ígérj.

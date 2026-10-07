@@ -164,6 +164,8 @@ async function main() {
   try {
     const regi = JSON.parse(readFileSync(ki, 'utf-8'));
     if (typeof regi.live === 'boolean') adat.live = regi.live;
+    // 🆓 Az ingyenes mód (2026-10-07) is KÉZI kapcsoló — újramérés nem kapcsolhatja vissza boltra.
+    if (typeof regi.free === 'boolean') adat.free = regi.free;
     // A pénznem és a Ko-fi termék-linkek is KÉZI adatok (a boltból kiolvasva,
     // 09-25) — egy újramérés ne törölje ki őket.
     if (regi.currency) adat.currency = regi.currency;

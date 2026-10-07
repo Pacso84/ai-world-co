@@ -1,5 +1,5 @@
 // ===================================================================
-// A FIZETŐS CSOMAGOK LEGYÁRTÁSA — HTML, majd PDF (2026-09-09 / 09-18)
+// A CSOMAGOK LEGYÁRTÁSA — HTML, majd PDF (2026-09-09 / 09-18; 10-07 óta INGYENES kiadás, CC BY-NC 4.0)
 // ===================================================================
 // A VÁLOGATÁS a `core/ebook-pack.js`-ben lakik (tiszta, tesztelhető); itt
 // csak az I/O és a formázás van.
@@ -130,11 +130,19 @@ export const SZOVEG = {
     // tesztel őrizve), tehát a régi mondat („a version with no ads and no
     // cookie banners") olyan előnyt sugallt a fizetős csomagnak, ami az INGYEN
     // változatban is megvan. Ez is túlígérés, csak nem a szerzőségről.
-    ingyen: '<strong>Every guide in this pack is also free on our website.</strong> What you paid '
-      + 'for is the selection and the order, one offline file you can print or keep on your phone, '
-      + 'and the work of putting it together — not secret knowledge. Our website has no '
-      + 'paywall either. If you would rather read them free online, that is completely fine — '
-      + 'every guide links back to its page.',
+    // 🆓 INGYENES KIADÁS (2026-10-07, user: „tegyük fel a könyveinket ingyen").
+    // A fizetős korszak mondatai („what you paid for…") kikerültek; a teszt őrzi.
+    ingyen: '<strong>This collection is free, and every guide in it is also free on our website.</strong> '
+      + 'This file just gathers them in one place, in reading order, so you can print it, keep it on '
+      + 'your phone, or read it offline. Our website has no paywall either — every guide links back to '
+      + 'its online page, which is always the newer version.',
+    // A LINK FORRÁSA: aki átveszi, forrást jelöl. CC BY-NC 4.0 = szabadon
+    // másolható és megosztható, hivatkozással, de nem árulható.
+    licenc: '<strong>Free to share.</strong> This collection is licensed under Creative Commons '
+      + 'Attribution-NonCommercial 4.0 (CC BY-NC 4.0): you may copy, print and share it — with your '
+      + 'class, your library or your team — as long as you credit AI World HQ with a link to '
+      + 'aiworldhq.com and do not sell it.',
+    boritoLicenc: 'Free edition · CC BY-NC 4.0 · free to share with credit',
     // 🇪🇺 A MI-JELÖLÉS SZÓ SZERINT AZT MONDJA, AMI IGAZ (átírva 2026-09-19).
     // A régi mondat („written by our AI editorial team and reviewed for
     // accuracy and clarity") KÉT dolgot állított, amit nem tudunk fedezni:
@@ -152,7 +160,6 @@ export const SZOVEG = {
     valtozas: '<strong>Apps change.</strong> Buttons move and menus get renamed. If a step does not '
       + "match what you see, the guide's online version is the newer one — the link is under "
       + 'every title.',
-    koszonet: 'Thank you for supporting a very small, independent project.'
   },
   es: {
     htmlLang: 'es', ut: '/es',
@@ -169,11 +176,14 @@ export const SZOVEG = {
       + 'textos de pantalla que los acompañan. El título de cada guía enlaza con la guía de la que procede.',
     promptSzam: (db, beir, g) => `${db} ejemplos de ${g} guías — ${beir} son prompts que puedes escribir`,
     oszinteCim: 'Antes de empezar: qué es esto, con sinceridad',
-    ingyen: '<strong>Todas las guías de este paquete están también gratis en nuestra web.</strong> Lo que '
-      + 'has pagado es la selección y el orden, un único archivo sin conexión que puedes imprimir o llevar '
-      + 'en el móvil, y el trabajo de reunirlo todo; no conocimiento secreto. Nuestra web tampoco tiene '
-      + 'muro de pago. Si prefieres leerlas gratis en internet, no hay ningún problema: cada '
-      + 'guía enlaza a su página.',
+    ingyen: '<strong>Esta colección es gratuita, y todas sus guías están también gratis en nuestra web.</strong> '
+      + 'Este archivo solo las reúne en un lugar, en orden de lectura, para que puedas imprimirlo, llevarlo '
+      + 'en el móvil o leerlo sin conexión. Nuestra web tampoco tiene muro de pago: cada guía enlaza a su '
+      + 'página en internet, que siempre es la versión más reciente.',
+    licenc: '<strong>Puedes compartirla libremente.</strong> Esta colección tiene licencia Creative Commons '
+      + 'Atribución-NoComercial 4.0 (CC BY-NC 4.0): puedes copiarla, imprimirla y compartirla —con tu clase, '
+      + 'tu biblioteca o tu equipo— siempre que cites a AI World HQ con un enlace a aiworldhq.com y no la vendas.',
+    boritoLicenc: 'Edición gratuita · CC BY-NC 4.0 · compártela citando la fuente',
     // A próza a HONLAP spanyol szövegével egyezik („escrita por IA … ningún
     // editor humano la revisó"), a JEL viszont a nagybetűs angol „AI" —
     // ugyanaz a kettősség, mint a honlap kártyáin (`aiMark()`).
@@ -184,7 +194,6 @@ export const SZOVEG = {
     valtozas: '<strong>Las aplicaciones cambian.</strong> Los botones se mueven y los menús cambian de '
       + 'nombre. Si un paso no coincide con lo que ves, la versión en internet de la guía es la más '
       + 'reciente: el enlace está debajo de cada título.',
-    koszonet: 'Gracias por apoyar un proyecto pequeño e independiente.'
   }
 };
 
@@ -328,6 +337,7 @@ export function konyvHtml(szakaszok, { site = 'https://aiworldhq.com', nyelv = '
   <p>${esc(T.alcim(db))}</p>
   <p>${szakaszok.map(s => esc(szCim(s))).join(' &middot; ')}</p>
   <p style="margin-top:14mm">AI World HQ &middot; ${site}${T.ut}</p>
+  <p style="font-size:10pt;color:#666">${esc(T.boritoLicenc)}</p>
 </div>
 
 <div class="honesty">
@@ -335,7 +345,7 @@ export function konyvHtml(szakaszok, { site = 'https://aiworldhq.com', nyelv = '
   <p>${T.ingyen}</p>
   <p>${T.aiSzerzo(site)}</p>
   <p>${T.valtozas}</p>
-  <p>${esc(T.koszonet)}</p>
+  <p>${T.licenc}</p>
 </div>
 
 <nav class="toc"><h2>${esc(T.tocCim)}</h2><ol>${toc}${tocFuggelek}</ol></nav>

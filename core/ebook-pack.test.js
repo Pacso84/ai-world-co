@@ -198,6 +198,20 @@ t('🚨 a csomag NEM ígér olyan előnyt, ami az INGYENES oldalon is megvan', (
   assert.ok(!/no ads/i.test(en), '🔴 visszajött a „no ads" — bekapcsolt hirdetés mellett hazugság');
 });
 
+t('🆓 INGYENES KIADÁS (2026-10-07): nincs fizetésre utaló mondat, és ott a megosztási licenc', () => {
+  // User: „tegyük fel a könyveinket ingyen" — a cél a LINK: aki átveszi,
+  // forrást jelöl (CC BY-NC 4.0). A fizetős korszak mondatai („what you
+  // paid for", „thank you for supporting") ingyenes fájlban hamisak.
+  for (const nyelv of ['en', 'es']) {
+    const html = konyvHtml(valogat([esCikk('Sort your inbox fast', 'Ordena tu bandeja')], { nyelv }),
+      { nyelv, tema: 'work' });
+    assert.ok(!/you paid|paid for|has pagado|lo que pagas|supporting a very small|apoyar un proyecto|purchase|compra\b/i.test(html),
+      nyelv + ': fizetésre utaló mondat maradt az ingyenes kiadásban');
+    assert.match(html, /CC BY-NC 4\.0/, nyelv + ': nincs megosztási licenc');
+    assert.match(html, /aiworldhq\.com/, nyelv + ': a licenc nem nevezi meg, kire kell hivatkozni');
+  }
+});
+
 t('minden útmutatóhoz van HONLAP-LINK (a friss változat ott van)', () => {
   const v = valogat([cikk('Automate Email Drafts'), cikk('Plan a family dinner')]);
   const html = konyvHtml(v);

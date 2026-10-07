@@ -112,26 +112,53 @@ t('🔬 [hitelesítés] a tiltás-kereső MINDKÉT irányba jól dönt', () => {
     'eltűnt a „no human editor…" mondat — enélkül a termék többet állít magáról');
 });
 
-t('NINCS visszatérítési ígéret — a vásárlás végleges (user-döntés 09-25)', () => {
-  // 09-20-án 30 napos, kérdés nélküli visszatérítést ígértünk; a user 09-25-én
-  // úgy döntött, hogy NINCS visszatérítés. Ami ezen az oldalon áll, az ránk
-  // nézve kötelező — egy visszacsúszó ígéret olyat vállalna, amit nem akarunk.
-  // A Ko-fi „Your Terms" mezője ugyanezt mondja (a user tölti ki).
-  const IGERET = /refund within|30[- ]day|no[- ]questions|we will refund|visszatérítjük|kérdés nélkül|napos,? kérdés|te devolvemos|sin preguntas|reembolso sin/i;
+t('🆓 INGYENES MÓD: se bolt, se fizetés, se visszatérítés-ígéret az oldal szövegében (2026-10-07)', () => {
+  // A bolt 10-01-én megszűnt, a PDF-ek ingyenesek. Egy ottfelejtett „PayPal",
+  // „refund" vagy „buy" mondat ma már HAMIS — és a vevőt nem létező boltba küldené.
+  const FIZETOS = /ko-?fi|paypal|refund|reembolso|visszatérít|checkout|purchase|\bbuy\b|vásárl|compra|\bprice\b|\bshop\b(?! all)|tienda|bolt\b|pénz|(?<!elő)fizetés(?! nélkül)|fizess|\bpay\b|(?<!no )payment|pagas|pagar\b|(?<!sin )pago\b/i;
   for (const ny of NYELVEK) {
-    const a3 = PACKS_UI[ny].packsA3;
-    assert.ok(/^(No|Nem)\b/.test(a3), ny + ': a válasz nem „nem"-mel kezdődik: ' + a3);
-    assert.ok(!IGERET.test(a3), ny + ': visszatérítést ígér: ' + a3);
-    assert.ok(/support@aiworldhq\.com/.test(a3), ny + ': eltűnt a kérdés-cím');
     for (const [k, v] of Object.entries(PACKS_UI[ny])) {
-      assert.ok(!IGERET.test(String(v)), ny + '.' + k + ': visszatérítést ígér');
+      if (k === 'packsShopAll' || k === 'packsSoon') continue;   // ingyenes módban nem jelennek meg
+      if (k === 'packsBuildP') continue;                          // „free or a paid plan" — az ESZKÖZ ára, nem a miénk
+      assert.ok(!FIZETOS.test(String(v)), ny + '.' + k + ': fizetős/bolti szöveg maradt: ' + v);
     }
+    const a3 = PACKS_UI[ny].packsA3;
+    assert.match(a3, /CC BY-NC 4\.0/, ny + ': a megosztás-válaszból hiányzik a licenc');
+    assert.match(a3, /aiworldhq\.com/, ny + ': a licenc nem mondja meg, kire kell hivatkozni');
+    assert.ok(/support@aiworldhq\.com/.test(a3), ny + ': eltűnt a kérdés-cím');
+    assert.ok(String(PACKS_UI[ny].packsFreePrice || '').trim(), ny + ': nincs „ingyenes" ár-felirat');
   }
-  // A honlap GYIK-je (build.js) sem ígérhet — ott is volt, mindhárom nyelven.
+  // A honlap csevegő-GYIK-je is ingyenest mond, mindhárom nyelven.
   const build = readFileSync(join(ROOT, 'website', 'build.js'), 'utf-8');
-  const faq = build.split('\n').filter(s => /\{ q: .*packs/.test(s)).join('\n');
+  const faq = build.split('\n').filter(s => /\{ q: .*p: '\/packs'/.test(s)).join('\n');
   assert.ok(faq.length > 0, 'nem találom a csomagos GYIK-sorokat');
-  assert.ok(!IGERET.test(faq), 'a GYIK visszatérítést ígér');
+  assert.ok(!/refund|reembolso|visszatérít|paypal|after payment|fizetés után|después del pago/i.test(faq),
+    'a csevegő-GYIK még a fizetős boltot írja le');
+  assert.ok((faq.match(/CC BY-NC 4\.0/g) || []).length >= 3, 'a csevegő-GYIK nem ismeri a licencet mindhárom nyelven');
+});
+
+t('🆓 INGYENES MÓD: a packs.json kapcsolója, a letöltés-útvonal, és MIND a 18 PDF ott van', () => {
+  const pj = JSON.parse(readFileSync(join(ROOT, 'website', 'packs.json'), 'utf-8'));
+  assert.equal(pj.free, true, 'a packs.json nem ingyenes módban van');
+  const build = readFileSync(join(ROOT, 'website', 'build.js'), 'utf-8');
+  assert.ok(/const ingyen = rawPacks\.free === true;/.test(build), 'a build nem olvassa a free kapcsolót');
+  assert.ok(/\/assets\/free\/aiworldhq-\$\{id\}-\$\{LANG === 'es' \? 'es' : 'en'\}\.pdf/.test(build),
+    'a letöltés-gomb nem a website/assets/free PDF-jére mutat');
+  // A gomb a FÁJLRA mutat — ha a fájl hiányzik, 404-be visz minden kattintás.
+  const hiany = [];
+  for (const p of pj.packs) for (const ny of ['en', 'es']) {
+    const ut = join(ROOT, 'website', 'assets', 'free', `aiworldhq-${p.id}-${ny}.pdf`);
+    if (!existsSync(ut)) { hiany.push(`${p.id}-${ny}`); continue; }
+    const fej = readFileSync(ut).subarray(0, 5).toString();
+    if (fej !== '%PDF-') hiany.push(`${p.id}-${ny} (nem PDF)`);
+  }
+  assert.deepEqual(hiany, [], 'hiányzó vagy sérült ingyenes PDF: ' + hiany.join(', '));
+  // A PDF-ek a cikkeink másolatai — a keresőben ne versenyezzenek velük.
+  assert.ok(/\/assets\/free\/\*\n {2}X-Robots-Tag: noindex/.test(build.replace(/\r\n/g, '\n')),
+    'a PDF-ek nincsenek noindex mögé téve');
+  // Fizetés nélkül az adatvédelmi „fizetés" kártya hamis lenne.
+  assert.ok(/SUPPORT\.enabled \|\| \(PACKS\.enabled && !PACKS\.free\) \? kartya\('☕'/.test(build),
+    'az adatvédelmi oldal ingyenes módban is fizetést említene');
 });
 
 t('az ár a Ko-fi pénznemében (USD) — nincs kódba égetett „$" (09-25)', () => {
@@ -156,16 +183,6 @@ t('minden csomag gombja a SAJÁT Ko-fi termékére visz (en + es, 18 különböz
     }
   }
   assert.equal(new Set(linkek).size, 18, 'két csomag ugyanarra a termékre visz');
-});
-
-t('a kézbesítés-válasz nem állítja, hogy NEM kell fiók', () => {
-  // A Ko-fi saját boltoldala szerint a be nem jelentkezett vevőt
-  // fiókregisztráció FOGADHATJA. Ezt nem tagadhatjuk le.
-  for (const ny of NYELVEK) {
-    const a2 = PACKS_UI[ny].packsA2.toLowerCase();
-    assert.ok(!/no account|sin cuenta|nincs sz[üu]ks[ée]g fi[óo]kra|nem kell fi[óo]k/.test(a2),
-      ny + ': azt ígéri, hogy nem kell fiók — ezt a Ko-fi nem garantálja');
-  }
 });
 
 // ===================================================================

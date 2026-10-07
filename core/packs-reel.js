@@ -99,8 +99,9 @@ export function promoKartyak({ utmutatoDb }) {
       mond: 'Spot a scam text before you tap the link.' },
     { nagy: 'Plan a week of dinners', kicsi: 'From what is in the fridge',
       mond: 'Plan a week of dinners from what is already in the fridge.' },
-    { nagy: 'Now in PDF packs', kicsi: 'By subject, in reading order',
-      mond: 'And now they come in PDF packs, by subject, in reading order.' },
+    // 🆓 2026-10-07: a csomagok INGYENESEK (a bolt megszűnt) — a reklám ezt mondja.
+    { nagy: 'Free PDF packs', kicsi: 'By subject, in reading order',
+      mond: 'And now they come as free PDF packs, by subject, in reading order.' },
     { nagy: 'Read them offline', kicsi: 'On a plane, or printed on paper',
       mond: 'Read them offline, on a plane, or printed on paper.' }
   ];
@@ -111,9 +112,9 @@ export function promoKartyak({ utmutatoDb }) {
     // A záró tábla NEM megy tördelőn: a cím kézzel tört, hogy a `.com/packs`
     // egyben maradjon. (A napi Reel ugyanígy csinálja.)
     nagy: 'aiworldhq\n.com/packs',
-    kicsi: 'The guides are still free',
+    kicsi: 'Free to download and share',
     // ⚠️ A felolvasó a pontot és a perjelet nem mondja ki.
-    mond: 'Find the packs at aiworldhq dot com.'
+    mond: 'Download them free at aiworldhq dot com.'
   });
   return { cards, reason: '' };
 }
@@ -126,7 +127,7 @@ const PROMO_TEMAK = [
   /\b(email|e-mail|reply|inbox)\b/i,                     // „Reply to a hard email"
   /\b(scam|fraud|phishing|deepfake|fake)\b/i,            // „Spot a scam text"
   /\b(meal|dinner|recipe|grocery|cook|fridge)\b/i,       // „Plan a week of dinners"
-  /\b(study|learn|notes|summar|quiz)\w*/i,               // „Now in PDF packs"
+  /\b(study|learn|notes|summar|quiz)\w*/i,               // „Free PDF packs"
   /\b(travel|trip|read|document|pdf)\w*/i,               // „Read them offline"
   null                                                   // záró tábla
 ];
@@ -166,7 +167,7 @@ export function promoCaption({ site = 'https://aiworldhq.com', utmutatoDb = 0 } 
   const elso = Number.isFinite(db) && db > 0
     ? `We write plain-English AI guides for everyday life — ${db} of them, free to read.`
     : 'We write plain-English AI guides for everyday life, free to read.';
-  return `${elso} Now also grouped by subject into PDF packs you can keep.`
+  return `${elso} Now also grouped by subject into free PDF packs you can download and share.`
     + `\n\n👉 ${String(site).replace(/\/$/, '')}${PROMO_UT}`
     + `\n\n${AI_JELOLES}`;
 }

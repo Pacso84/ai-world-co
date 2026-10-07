@@ -80,15 +80,19 @@ let CS = { enabled: false, base: '', key: '' };
 // üres, `PACKS.enabled` hamis, és az eladó oldal EL SEM KÉSZÜL — nem
 // épül be link sehova. Így a bolt megnyitásáig egyetlen gomb sem visz
 // üres boltba. (A support-gombnál ugyanez az elv működik 07-07 óta.)
-let PACKS = { enabled: false, shopUrl: '', list: [] };
+let PACKS = { enabled: false, free: false, shopUrl: '', list: [] };
 try {
   const rawPacks = JSON.parse(readFileSync(join(__dirname, 'packs.json'), 'utf-8'));
   const list = (rawPacks.packs || []).filter(p => p && p.id && p.price > 0);
+  // 🆓 INGYENES MÓD (2026-10-07, user: „tegyük fel a könyveinket ingyen"): a bolt
+  // megszűnt (10-01), a PDF-ek a honlapról tölthetők le (website/assets/free/).
+  // Ilyenkor bolt-cím NEM kell, és bolt-link sehol nem keletkezik.
+  const ingyen = rawPacks.free === true;
   PACKS = {
-    // A `live` a KÉZI kapcsoló: amíg a 18 tétel nincs fent a Ko-fin,
-    // hamis, és az egész eladó ág néma marad.
-    enabled: rawPacks.live === true && list.length > 0 && !!rawPacks.shop_url,
-    shopUrl: (rawPacks.shop_url || '').trim(),
+    // A `live` a KÉZI kapcsoló: hamis = az egész csomag-ág néma marad.
+    enabled: rawPacks.live === true && list.length > 0 && (ingyen || !!rawPacks.shop_url),
+    free: ingyen,
+    shopUrl: ingyen ? '' : (rawPacks.shop_url || '').trim(),
     currency: rawPacks.currency || 'USD',
     list
   };
@@ -391,8 +395,8 @@ const CS_FAQ = {
     { q: 'Is the site free?', a: 'Yes — all articles and guides are free to read, with no paywall and no sign-up.', p: '/guides' },
     { q: 'Where do I find beginner guides?', a: 'The Start page lists the first 5 guides to read, and the Guides page has all of them by topic.', p: '/start' },
     { q: 'What do AI words like prompt or token mean?', a: 'Our AI glossary explains the most common terms in plain language.', p: '/glossary' },
-    { q: 'Do you sell anything? What are the packs?', a: 'Our guides are free here and stay free. We also group them by subject into PDF packs you can buy and keep. The packs page lists all of them.', p: '/packs' },
-    { q: 'Can I get a refund for a pack? How do I pay?', a: 'The packs are PDF downloads you get right after payment, so all sales are final — there are no refunds. Payment currently works through PayPal only; paying by card is not available yet.', p: '/packs' },
+    { q: 'Do you sell anything? What are the packs?', a: 'We do not sell anything. Our guides are free here, and we also group them by subject into PDF packs you can download free — no account, no email, no payment. The packs page lists all of them.', p: '/packs' },
+    { q: 'Can I share the PDF packs? Do they cost anything?', a: 'They are free. You may copy, print and share them — with a class, a library or a team — under the CC BY-NC 4.0 license: credit AI World HQ with a link to aiworldhq.com, and do not sell them.', p: '/packs' },
     { q: 'Is there an RSS feed?', a: 'Yes — every language has its own feed.', p: '/feed.xml' },
     { q: 'How do I contact you / reach a human?', a: 'Use the message form at the bottom of the About page, or write to support@aiworldhq.com — a human reads every message.', p: '/about#contact' }
   ],
@@ -402,8 +406,8 @@ const CS_FAQ = {
     { q: 'Ingyenes az oldal?', a: 'Igen — minden cikk és útmutató ingyen olvasható, fizetőfal és regisztráció nélkül.', p: '/guides' },
     { q: 'Hol találom a kezdő útmutatókat?', a: 'A Kezdés oldal az első 5 ajánlott útmutatót mutatja, az Útmutatók oldalon pedig az összes megvan téma szerint.', p: '/start' },
     { q: 'Mit jelentenek az AI-szavak, pl. prompt vagy token?', a: 'Az AI-kisszótárunk közérthetően elmagyarázza a leggyakoribb fogalmakat.', p: '/glossary' },
-    { q: 'Árultok valamit? Mik azok a csomagok?', a: 'Az útmutatóink itt ingyenesek, és azok is maradnak. Emellett téma szerint PDF-csomagokba rendezve meg is vásárolhatók. A Csomagok oldal mindet felsorolja.', p: '/packs' },
-    { q: 'Visszakérhetem a csomag árát? Hogyan fizetek?', a: 'A csomagok PDF-ek, amelyeket a fizetés után azonnal letöltesz, ezért minden vásárlás végleges — visszatérítés nincs. A fizetés jelenleg csak PayPalon keresztül működik, bankkártyával egyelőre nem lehet fizetni.', p: '/packs' },
+    { q: 'Árultok valamit? Mik azok a csomagok?', a: 'Nem árulunk semmit. Az útmutatóink itt ingyenesek, és téma szerint PDF-csomagokba rendezve ingyen le is tölthetők — fiók, email-cím és fizetés nélkül. A Csomagok oldal mindet felsorolja.', p: '/packs' },
+    { q: 'Megoszthatom a PDF-csomagokat? Kerülnek valamibe?', a: 'Ingyenesek. A CC BY-NC 4.0 licenc szerint másolhatod, kinyomtathatod és megoszthatod őket — osztállyal, könyvtárral, csapattal —, ha megjelölöd az AI World HQ-t egy aiworldhq.com linkkel, és nem árulod őket.', p: '/packs' },
     { q: 'Van RSS?', a: 'Igen — minden nyelvnek saját feedje van.', p: '/feed.xml' },
     { q: 'Hogyan tudlak elérni titeket / élő embert?', a: 'A Rólunk oldal alján lévő üzenet-űrlappal, vagy írj a support@aiworldhq.com címre — minden üzenetet elolvas egy ember.', p: '/about#contact' }
   ],
@@ -413,8 +417,8 @@ const CS_FAQ = {
     { q: '¿El sitio es gratis?', a: 'Sí: todos los artículos y guías se leen gratis, sin muro de pago y sin registro.', p: '/guides' },
     { q: '¿Dónde están las guías para principiantes?', a: 'La página Empezar muestra las 5 primeras guías recomendadas, y en Guías están todas por tema.', p: '/start' },
     { q: '¿Qué significan palabras como prompt o token?', a: 'Nuestro pequeño glosario de IA explica los términos más comunes en lenguaje claro.', p: '/glossary' },
-    { q: '¿Vendéis algo? ¿Qué son los packs?', a: 'Nuestras guías son gratis aquí y seguirán siéndolo. Además las agrupamos por tema en packs PDF que puedes comprar y guardar. La página de packs los lista todos.', p: '/packs' },
-    { q: '¿Puedo pedir un reembolso de un pack? ¿Cómo pago?', a: 'Los packs son PDF que descargas justo después de pagar, así que todas las ventas son definitivas: no hay reembolsos. Por ahora el pago solo funciona con PayPal; todavía no se puede pagar con tarjeta.', p: '/packs' },
+    { q: '¿Vendéis algo? ¿Qué son los packs?', a: 'No vendemos nada. Nuestras guías son gratis aquí, y además las agrupamos por tema en packs PDF que puedes descargar gratis: sin cuenta, sin correo y sin pago. La página de packs los lista todos.', p: '/packs' },
+    { q: '¿Puedo compartir los packs PDF? ¿Cuestan algo?', a: 'Son gratis. Puedes copiarlos, imprimirlos y compartirlos —con una clase, una biblioteca o un equipo— con la licencia CC BY-NC 4.0: cita a AI World HQ con un enlace a aiworldhq.com y no los vendas.', p: '/packs' },
     { q: '¿Hay RSS?', a: 'Sí — cada idioma tiene su propio feed.', p: '/feed.xml' },
     { q: '¿Cómo os contacto / hablo con una persona?', a: 'Usa el formulario al final de la página Sobre nosotros, o escribe a support@aiworldhq.com — una persona lee todos los mensajes.', p: '/about#contact' }
   ],
@@ -2632,6 +2636,7 @@ function packMetaSor(p) {
 // előtte kódba égetett „$" állt, miközben a Ko-fi €-t mutatott).
 const PENZ_JEL = { USD: '$', EUR: '€', GBP: '£' };
 function packAr(p) {
+  if (PACKS.free) return tr('packsFreePrice');
   const jel = PENZ_JEL[PACKS.currency] || PACKS.currency || '';
   // A dollárjel minden nyelven elöl áll ($3); az euró magyarul/spanyolul hátul (3 €).
   return (LANG === 'en' || PACKS.currency === 'USD') ? jel + p.price : p.price + ' ' + jel;
@@ -2639,7 +2644,14 @@ function packAr(p) {
 
 // A gomb a nyelvhez illő Ko-fi TERMÉKRE visz (a magyar oldal az angolra —
 // magyar csomag nincs); ha nincs termék-link, a bolt nyitólapjára.
+// Ingyenes módban a SAJÁT nyelvű PDF (a magyar oldal az angolt adja — magyar csomag nincs).
+function freePdfUt(id) {
+  return `/assets/free/aiworldhq-${id}-${LANG === 'es' ? 'es' : 'en'}.pdf`;
+}
 function packGomb(p) {
+  if (PACKS.free) {
+    return `<a class="packs__btn" href="${freePdfUt(p.id)}" target="_blank" rel="noopener">${escapeHtml(tr('packsBuy'))}</a>`;
+  }
   const urls = p.urls || {};
   const cel = (urls[LANG === 'es' ? 'es' : 'en'] || '').trim() || (p.url || '').trim() || PACKS.shopUrl;
   if (!cel) return `<span class="packs__btn packs__btn--soon">${escapeHtml(tr('packsSoon'))}</span>`;
@@ -2741,7 +2753,7 @@ function packLine(temaId) {
   if (!PACKS.enabled || !temaId) return '';
   const p = PACKS.list.find(x => x.id === temaId);
   if (!p) return '';
-  const cel = (p.url || '').trim() || PACKS.shopUrl;
+  const cel = PACKS.free ? `${LP}/packs` : ((p.url || '').trim() || PACKS.shopUrl);
   if (!cel) return '';
   const sz = csomagSzoveg(p.id, LANG) || {};
   // KONKRÉT SOR (2026-09-30, user: „kéne neki egy kis reklám"): csomagnév + útmutatószám + ár.
@@ -3182,7 +3194,7 @@ function buildPrivacyPage() {
     kartya('👍', 'privFbH', 'privFbP'),
     kartya('💬', 'privCsH', 'privCsP'),
     kartya('📱', 'privLocalH', 'privLocalP'),
-    SUPPORT.enabled || PACKS.enabled ? kartya('☕', 'privPayH', 'privPayP') : '',
+    SUPPORT.enabled || (PACKS.enabled && !PACKS.free) ? kartya('☕', 'privPayH', 'privPayP') : '',
     hirdetes,
     kartya('🚫', 'privNoH', 'privNoP'),
     kartya('✉️', 'privAskH', 'privAskP')
@@ -3412,6 +3424,16 @@ function main() {
     cpSync(shortsSrc, join(OUT_ASSETS_DIR, 'video', 'shorts'), { recursive: true });
     const db = readdirSync(shortsSrc).filter(f => f.endsWith('.mp4')).length;
     console.log(`✅ ${db} álló rövidvideó másolva`);
+  }
+
+  // 🆓 INGYENES PDF-CSOMAGOK (2026-10-07). Forrás-oldali fájlok (git), mert a
+  // build ÜRÍTI a public/-ot. Gyártás: node core/ebook-build.js --mind --pdf,
+  // majd dist/ebook/*-en|es.pdf → website/assets/free/aiworldhq-<id>-<nyelv>.pdf.
+  const freeSrc = join(ASSETS_SRC, 'free');
+  if (existsSync(freeSrc)) {
+    cpSync(freeSrc, join(OUT_ASSETS_DIR, 'free'), { recursive: true });
+    const db = readdirSync(freeSrc).filter(f => f.endsWith('.pdf')).length;
+    console.log(`✅ ${db} ingyenes PDF-csomag másolva`);
   }
 
   // Képek mappa másolása (ha van)
@@ -3853,7 +3875,12 @@ Original content by ${SITE.name} — written and quality-checked by an autonomou
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+/assets/free/*
+  X-Robots-Tag: noindex
 `, 'utf-8');
+  // ↑ Az ingyenes PDF-ek a cikkeink MÁSOLATAI: indexelve a saját oldalainkkal
+  // versenyeznének a találati listán. A letöltőoldal (/packs) indexelhető marad.
   console.log('✅ _headers generálva (HSTS + biztonsági fejlécek)');
 
   // security.txt — szabványos biztonsági kapcsolat-fájl (RFC 9116; a CF

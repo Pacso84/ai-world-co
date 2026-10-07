@@ -125,7 +125,7 @@ t('🔑 a tördelő nem nyelt le szót', () => {
   // a videó néma csonkot mutatna — és a `mond` mező kimondaná a teljeset,
   // vagyis a kép és a hang elválna.
   const nyersek = ['449 free AI guides', 'Reply to a hard email', 'Spot a scam text',
-    'Plan a week of dinners', 'Now in PDF packs', 'Read them offline'];
+    'Plan a week of dinners', 'Free PDF packs', 'Read them offline'];
   KARTYAK.slice(0, nyersek.length).forEach((c, i) => {
     const kepen = String(c.nagy).replace(/\n/g, ' ');
     assert.equal(kepen, nyersek[i], 'a tördelő megcsonkította: ' + nyersek[i] + ' → ' + kepen);
