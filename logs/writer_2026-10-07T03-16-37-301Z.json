@@ -1,0 +1,60 @@
+{
+  "started_at": "2026-10-07T03:14:04.340Z",
+  "drafts_total": 7,
+  "articles_written": 4,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 2,
+  "merged_total": 2,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "total_cost_usd": 0.028314636,
+  "by_article": [
+    {
+      "draft": "2026-10-07T03-14-03-959Z_zapier-blog_Zapier_Agents_is_now_AI_by_Zapier.json",
+      "writer_output": "WRITER_2026-10-07T03-14-03-959Z_zapier-blog_Zapier_Agents_is_now_AI_by_Zapier.json",
+      "success": true,
+      "merged_from": 2,
+      "merged_theme": "Zapier AI product updates",
+      "cost_usd": 0.004902672,
+      "duration_ms": 18214,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-10-07T03-13-46-175Z_openai-blog_How_Jump_Trading_is_scaling_quant_research_with_Ch.json",
+      "writer_output": "WRITER_2026-10-07T03-13-46-175Z_openai-blog_How_Jump_Trading_is_scaling_quant_research_with_Ch.json",
+      "success": true,
+      "merged_from": 3,
+      "merged_theme": "OpenAI enterprise partnerships and deployments",
+      "cost_usd": 0.004433904,
+      "duration_ms": 20508,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-10-07T03-14-03-959Z_salesforce_Trustworthy__Explainable__and_Accountable__How_to_.json",
+      "writer_output": "WRITER_2026-10-07T03-14-03-959Z_salesforce_Trustworthy__Explainable__and_Accountable__How_to_.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.00909348,
+      "duration_ms": 59618,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-10-07T03-13-46-175Z_openai-blog_Sharing_AI_progress_in_mathematics.json",
+      "writer_output": "WRITER_2026-10-07T03-13-46-175Z_openai-blog_Sharing_AI_progress_in_mathematics.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.00847608,
+      "duration_ms": 41967,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    }
+  ],
+  "finished_at": "2026-10-07T03:16:37.301Z",
+  "duration_seconds": 152.961
+}

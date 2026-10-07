@@ -1,0 +1,46 @@
+{
+  "_meta": {
+    "written_at": "2026-10-07T03:18:19.965Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00740988,
+    "original_draft": "2026-10-07T03-14-03-959Z_zapier-blog_Zapier_Agents_is_now_AI_by_Zapier.json",
+    "source_id": "zapier-blog",
+    "source_name": "Zapier Blog (hivatalos)",
+    "source_link": "https://zapier.com/blog/zapier-agents-is-now-ai-by-zapier",
+    "source_links": [
+      "https://zapier.com/blog/zapier-agents-is-now-ai-by-zapier",
+      "https://zapier.com/blog/automate-google-ai-studio"
+    ],
+    "source_snippet": "Every capability that made Zapier Agents powerful—tool calling, reasoning, autonomous action—now lives inside a single AI step in the Zap editor, using AI by Zapier. Here, I'll map each Zapier Agents feature to its equivalent in AI by Zapier, so if you're coming from Zapier Agents, you know exactly where to click. What's changed between Zapier Agents and AI by Zapier Zapier Agents consisted of four things: a prompt, a set of tools, a trigger, and permission to act. That bundle worked, but it sat\n\n---\n\nAnyone who lives in the Google ecosystem has probably used Gemini for a quick draft or a fast answer. (Or if you're like me, you've been driven to your limit by the Google Docs popups encouraging you to use AI whenever your cursor strays too close to the bottom of the screen.) But a chat window is just the beginning of what Gemini can do. Its real power shows up when you connect it to the rest of your apps and let it do work on your behalf. All of Gemini's models are available in Zapier, so you",
+    "merged_from": 2,
+    "merged_theme": "Zapier AI product updates",
+    "status": "rejected",
+    "rejected_at": "2026-10-07T03:18:53.686Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 785
+    },
+    "ai_review": {
+      "overall_score": 6,
+      "clarity_score": null,
+      "decision": "FAIL",
+      "issues": [
+        "Duplicate 'If you already use' bullet point in 'What this means for you' section — third bullet should specify a distinct user type or use case"
+      ],
+      "verdict": "The article is friendly, well-structured, and explains key terms like AI step, prompt, and trigger clearly. However, it has a structural error: the 'What this means for you' section lists three bullets with 'If you're new to Zapier', 'If you already use Zapier', and 'If you already use it' — the last two are redundant and need to be split into separate reader personas or use cases.",
+      "_aiCost": 0.00142992,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "The article is friendly, well-structured, and explains key terms like AI step, prompt, and trigger clearly. However, it has a structural error: the 'What this means for you' section lists three bullets with 'If you're new to Zapier', 'If you already use Zapier', and 'If you already use it' — the last two are redundant and need to be split into separate reader personas or use cases.",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-10-07T03-14-03-959Z_zapier-blog_Zapier_Agents_is_now_AI_by_Zapier.json",
+    "requeued_unchanged": false
+  },
+  "article_markdown": "---\ntitle: \"Zapier's AI Updates: What They Mean for Your Daily Work\"\nsubtitle: \"Two recent changes from Zapier — an AI step inside every Zap, and Google's Gemini models added to the platform — explained for everyday users.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"zapier\", \"automation\", \"ai-tools\", \"gemini\", \"productivity\"]\n---\n\n# Zapier's AI Updates: What They Mean for Your Daily Work\n\n> **In short:** Zapier has folded its former AI helper, Zapier Agents, into a single AI step inside the regular Zap editor, and has added Google's Gemini models as an option you can plug into any AI step in a workflow.\n\nIf you've ever wished one of your apps could just handle a small task while you sleep, Zapier is one of the names that comes up. It's a tool that connects different apps — think Gmail, Google Sheets, Slack, a calendar — so that when something happens in one, something else can happen automatically in another. The two updates below both make that \"something else\" smarter, in slightly different ways.\n\n## The first update: one AI step, inside every Zap\n\nZapier says that what used to be a separate product called Zapier Agents — its stand-alone AI helper — has now been folded directly into the regular Zap editor as a single **AI by Zapier** step. In plain terms: instead of going off to a separate corner of Zapier to set up an \"agent,\" you just drop one AI block into the workflow you were already building.\n\nAccording to Zapier, that AI step carries over the same four capabilities the old Agents product had:\n\n- **A prompt** — the instruction you give the AI, like \"summarize this email in two sentences\"\n- **A set of tools** — other Zapier actions the AI is allowed to use, such as \"send a Slack message\" or \"create a Calendar event\"\n- **A trigger** — the event that starts the whole thing, such as \"a new email arrives in Gmail\"\n- **Permission to act** — the AI is allowed to do those things on your behalf, not just suggest them\n\nSo if you used Zapier Agents before, Zapier says the new AI step does the same job — it just lives in the same place as the rest of your workflow, which is a smaller change to navigate than learning a whole separate screen.\n\n## The second update: Gemini is now an option inside Zapier\n\nThe second announcement is about Google's **Gemini** family of AI models. Gemini is the name Google uses for its chatbots and the AI models behind them — different versions are meant for quick replies versus longer, more careful thinking.\n\nZapier says Google's Gemini models are now available to plug into an AI step in a Zap. In practice, this means when you set up an AI block in a workflow, Gemini is one of the model choices you can pick. According to Zapier, this matters because sometimes you don't need the most powerful model — you need the cheapest, fastest one that can handle a 50-word summary. And sometimes you do want a more capable model to work through a tangled customer email.\n\n## What this means for you\n\n- **If you're new to Zapier**: Think of Zapier as a way to chain small jobs together. The new AI step is one of those small jobs — it can read something, decide what to do, and then do it. You don't need to learn a separate \"Agents\" product anymore. One block, in one place.\n- **If you already use Zapier**: The biggest practical change is where you click. Anything you used to do inside Zapier Agents is now an AI step inside the regular Zap editor — open any Zap, drop the AI step in, give it a prompt, hand it the apps it can use, and let it run.\n- **If you already use it**: A useful next step is to mix and match. According to Zapier, you can pick which model an AI step uses, so a Zap can run a quick draft with one model and double-check it with another. Different steps, different models, in the same workflow.\n\n## Wrap-up\n\nBoth updates point in the same direction: smarter building blocks, in fewer places. The one thing to remember is this — Zapier now has an AI step you can drop into any workflow, and you can choose Google's Gemini family as the engine for that step. A next step to try today: open a Zap you've already built, add an AI step, and give it a prompt you already find yourself writing by hand — chances are, that's the exact job it's meant to take off your plate.",
+  "original_title": "Zapier Agents is now AI by Zapier"
+}

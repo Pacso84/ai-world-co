@@ -1,0 +1,70 @@
+{
+  "_meta": {
+    "written_at": "2026-10-07T03:17:51.425Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00447,
+    "original_draft": "2026-10-07T03-13-46-175Z_openai-blog_How_Jump_Trading_is_scaling_quant_research_with_Ch.json",
+    "source_id": "openai-blog",
+    "source_name": "OpenAI Blog (hivatalos)",
+    "source_link": "https://openai.com/index/jump-trading",
+    "source_links": [
+      "https://openai.com/index/jump-trading",
+      "https://openai.com/index/atlassian-partnership",
+      "https://openai.com/index/advancing-computer-use-with-ironclad"
+    ],
+    "source_snippet": "Jump Trading uses OpenAI to expand quantitative research. See how longer-running AI workflows combine multiple data sources with human review.\n\n---\n\nAtlassian and OpenAI are expanding their partnership to connect frontier models with enterprise knowledge and help teams plan, build, and deliver work.\n\n---\n\nLearn how OpenAI and Ironclad are training and evaluating AI agents on complex contracting workflows to advance computer use for professional work.",
+    "merged_from": 3,
+    "merged_theme": "OpenAI enterprise partnerships and deployments",
+    "status": "published",
+    "rejected_at": "2026-10-07T03:16:55.044Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 626
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "The article successfully explains longer-running AI workflows in accessible, friendly language with appropriate attribution to OpenAI throughout, covers all required structural elements, and avoids prohibited content or clichés.",
+      "_aiCost": 0.001056972,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "The writing quality and structure are solid with good explanations and a useful 'What this means for you' section. However, the article is built on a false premise: it promises three enterprise partnerships when the source (OpenAI Blog about Jump Trading) only covers one. The Atlassian and Ironclad sections cannot be verified from the source and may be fabricated or from other sources not provided. This must be rewritten to match the actual source material, or additional sources must be provided.",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-10-07T03-13-46-175Z_openai-blog_How_Jump_Trading_is_scaling_quant_research_with_Ch.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-10-07T03:18:39.743Z",
+    "slug": "how-jump-trading-uses-chatgpt-for-longer-running-ai-research",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-10-07T03:18:58.515Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is a company case study about Jump Trading using ChatGPT, not the introduction of a specific named feature",
+    "image_v": 2,
+    "image_at": "2026-10-07T03:27:11.300Z",
+    "seo": {
+      "meta_description": "Discover how Jump Trading uses ChatGPT for multi-step quantitative research, shifting from quick questions to longer AI workflows.",
+      "keywords": [
+        "ChatGPT quantitative research",
+        "using ChatGPT for research",
+        "AI workflows business",
+        "ChatGPT multi-step tasks",
+        "trading firm AI"
+      ],
+      "seo_score": 7,
+      "suggestions": [
+        "Add more specific keywords like 'quantitative research' in the opening paragraph to improve relevance",
+        "Consider a title that more prominently features 'quantitative research' for better search intent matching",
+        "Include more concrete details about what longer AI workflows entail within the article"
+      ],
+      "optimised_at": "2026-10-07T03:27:53.637Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"How Jump Trading Uses ChatGPT for Longer-Running AI Research\"\nsubtitle: \"A trading firm is treating AI less like a quick question box and more like a research teammate — here's what that shift looks like.\"\ncategory: \"explainer\"\naudience: \"business\"\nread_time_minutes: 4\ntags: [\"openai\", \"chatgpt\", \"enterprise-ai\", \"workplace-ai\"]\n---\n\n# How Jump Trading Uses ChatGPT for Longer-Running AI Research\n\n> **In short:** OpenAI says Jump Trading is using ChatGPT for multi-step quantitative research, with humans still checking the work. The bigger story is the shift away from quick chatbot questions toward longer AI workflows inside a company.\n\nMost people use ChatGPT the way they'd text a friend: one quick question, get a quick answer, move on. A trading firm called Jump Trading is doing something different, according to OpenAI — and that difference is what makes this announcement worth a closer look.\n\n## What's actually new\n\nThe phrase OpenAI keeps using is \"longer-running AI workflows.\" If you've only ever typed a single question into a chatbot, the idea is simple: instead of one question, one answer, the team combines several data sources and runs the AI through a multi-step research process before a human reviews the result.\n\nThink of it like the difference between asking a coworker one question over chat versus giving them a small project. The first takes seconds. The second takes longer, but you get something useful back. Jump Trading is the example OpenAI is highlighting to show this kind of deeper, project-style AI use in action.\n\n## Why a trading firm matters as an example\n\nJump Trading uses math and statistics (called \"quantitative research\" — basically, finding patterns in numbers) to make fast decisions. For a team like that, even small improvements in how quickly they can test an idea or pull together research can matter.\n\nThat's why OpenAI is pointing to them: when a company works at that pace, a chatbot that can handle a longer, more complex task — and keep a human in the loop to check the work — is a more interesting story than \"ask one question, get one answer.\"\n\n## What this means for you\n\n- **If you work with data, research, or reports:** the shift OpenAI is describing applies well beyond trading. Any work that means combining several sources, running a first pass, and then reviewing the result is the kind of job this kind of workflow could touch.\n- **If you manage a team:** the lesson is about how people use AI, not which AI they use. A one-off question is fine for a quick lookup. For anything multi-step, the pattern is \"AI does the first pass, the human reviews it.\"\n- **If you're curious but haven't tried this style of work yet:** pick a small recurring task you already do — a weekly summary, a research note, a comparison write-up — and try giving the AI the inputs in one go, with a clear instruction to organize them. You don't need a trading desk to experiment.\n- **If you already use AI at work:** the next step is moving from single prompts to small \"projects\" — a few sources of information, a defined output, and a human checkpoint. OpenAI's own description of this work treats that checkpoint as a non-negotiable part of the workflow.\n\n## Wrap-up\n\nOne announcement, one example, but it points at a clear direction: AI inside companies is starting to look less like a smart search box and more like a research assistant you hand a small project to. The takeaway for anyone — not just traders — is to start thinking about your own work in those terms. Pick one small task this week, give the AI the full set of inputs at once, and see what comes back.",
+  "original_title": "How Jump Trading is scaling quant research with ChatGPT"
+}

@@ -1,118 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t179112090532694",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-10-04T13:35:05.326Z",
-      "updated": "2026-10-04T13:35:17.762Z"
-    },
-    {
-      "id": "t179112091776465",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-10-04T13:35:17.764Z",
-      "updated": "2026-10-04T13:35:24.944Z"
-    },
-    {
-      "id": "t179112092494653",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-10-04T13:35:24.946Z",
-      "updated": "2026-10-04T13:35:50.527Z"
-    },
-    {
-      "id": "t179114003366878",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-10-04T18:53:53.668Z",
-      "updated": "2026-10-04T18:53:53.779Z"
-    },
-    {
-      "id": "t179114003378052",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-10-04T18:53:53.780Z",
-      "updated": "2026-10-04T18:54:23.556Z"
-    },
-    {
-      "id": "t179114006355791",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-10-04T18:54:23.557Z",
-      "updated": "2026-10-04T18:54:23.682Z"
-    },
-    {
-      "id": "t179114006368485",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-10-04T18:54:23.684Z",
-      "updated": "2026-10-04T18:54:23.803Z"
-    },
-    {
-      "id": "t179114006380430",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-10-04T18:54:23.804Z",
-      "updated": "2026-10-04T18:54:23.922Z"
-    },
-    {
-      "id": "t179114006392460",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-10-04T18:54:23.924Z",
-      "updated": "2026-10-04T18:54:24.070Z"
-    },
-    {
-      "id": "t179114006410551",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-10-04T18:54:24.105Z",
-      "updated": "2026-10-04T18:54:24.257Z"
-    },
-    {
-      "id": "t179114006425823",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-10-04T18:54:24.258Z",
-      "updated": "2026-10-04T18:54:24.409Z"
-    },
-    {
-      "id": "t17911400644115",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-10-04T18:54:24.411Z",
-      "updated": "2026-10-04T18:54:38.634Z"
-    },
-    {
-      "id": "t179114007863526",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-10-04T18:54:38.635Z",
-      "updated": "2026-10-04T18:54:53.054Z"
-    },
-    {
-      "id": "t179116895902397",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-10-05T02:55:59.023Z",
-      "updated": "2026-10-05T02:55:59.214Z"
-    },
-    {
       "id": "t179116895921653",
       "title": "Run rss-scraper",
       "status": "done",
@@ -479,33 +367,121 @@
       "agent": "publisher",
       "created": "2026-10-06T14:36:57.547Z",
       "updated": "2026-10-06T14:37:20.887Z"
+    },
+    {
+      "id": "t179134278625340",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-10-07T03:13:06.253Z",
+      "updated": "2026-10-07T03:13:06.424Z"
+    },
+    {
+      "id": "t179134278642694",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-10-07T03:13:06.426Z",
+      "updated": "2026-10-07T03:14:03.973Z"
+    },
+    {
+      "id": "t179134284397498",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-10-07T03:14:03.975Z",
+      "updated": "2026-10-07T03:14:04.171Z"
+    },
+    {
+      "id": "t179134284417337",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-10-07T03:14:04.173Z",
+      "updated": "2026-10-07T03:16:37.316Z"
+    },
+    {
+      "id": "t179134299731879",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-10-07T03:16:37.318Z",
+      "updated": "2026-10-07T03:17:37.793Z"
+    },
+    {
+      "id": "t179134305779661",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-10-07T03:17:37.796Z",
+      "updated": "2026-10-07T03:18:19.975Z"
+    },
+    {
+      "id": "t179134309997776",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-10-07T03:18:19.977Z",
+      "updated": "2026-10-07T03:18:53.702Z"
+    },
+    {
+      "id": "t179134313370565",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-10-07T03:18:53.705Z",
+      "updated": "2026-10-07T03:19:11.162Z"
+    },
+    {
+      "id": "t179134315121424",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-10-07T03:19:11.214Z",
+      "updated": "2026-10-07T03:26:18.918Z"
+    },
+    {
+      "id": "t179134357892085",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-10-07T03:26:18.920Z",
+      "updated": "2026-10-07T03:26:59.638Z"
+    },
+    {
+      "id": "t179134361968668",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-10-07T03:26:59.686Z",
+      "updated": "2026-10-07T03:27:39.537Z"
+    },
+    {
+      "id": "t179134365953854",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-10-07T03:27:39.538Z",
+      "updated": "2026-10-07T03:28:24.147Z"
+    },
+    {
+      "id": "t179134370414986",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-10-07T03:28:24.149Z",
+      "updated": "2026-10-07T03:28:33.438Z"
+    },
+    {
+      "id": "t179134371344066",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-10-07T03:28:33.440Z",
+      "updated": "2026-10-07T03:28:56.844Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178947766942722",
-      "level": "success",
-      "text": "2 hír + 1 útmutató publikálva (költség: $0.0393).",
-      "agent": "ceo",
-      "at": "2026-09-15T13:07:49.427Z",
-      "loud": false
-    },
-    {
-      "id": "n178952691841362",
-      "level": "info",
-      "text": "SEO: 6 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-09-16T02:48:38.413Z",
-      "loud": false
-    },
-    {
-      "id": "n17895275555613",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The line-up looks solid and ready — practical, everyday use cases that demystify AI for regular people. Just one small note: articles 6, 8, and 10 don't specify which AI tool they're using (while othe",
-      "agent": "publisher",
-      "at": "2026-09-16T02:59:15.561Z",
-      "loud": false
-    },
     {
       "id": "n178952757272675",
       "level": "success",
@@ -1281,72 +1257,33 @@
       "agent": "ceo",
       "at": "2026-10-06T14:37:20.936Z",
       "loud": false
+    },
+    {
+      "id": "n179134370413877",
+      "level": "info",
+      "text": "SEO: 5 cikk optimalizálva (átlag 7.8/10).",
+      "agent": "seo",
+      "at": "2026-10-07T03:28:24.138Z",
+      "loud": false
+    },
+    {
+      "id": "n179134371832166",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The lineup looks solid and ready—practical, everyday AI writing templates that cover real needs from complaints to sympathy notes. A quick consistency check: articles 8 and 10 just say \"AI\" while othe",
+      "agent": "publisher",
+      "at": "2026-10-07T03:28:38.321Z",
+      "loud": false
+    },
+    {
+      "id": "n179134373688995",
+      "level": "success",
+      "text": "3 hír + 2 útmutató publikálva (költség: $0.0717).",
+      "agent": "ceo",
+      "at": "2026-10-07T03:28:56.889Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178978400804477",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "info",
-      "text": "A \"New back-to-school features and learning tools availabl\" hír a meglévő útmutatóra mutat: notebooklm-getting-started",
-      "ref": "notebooklm-getting-started",
-      "at": "2026-09-19T02:13:28.044Z"
-    },
-    {
-      "id": "m178978429844797",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 20 → 5/4/2 oszlop.",
-      "ref": "mobile",
-      "at": "2026-09-19T02:18:18.447Z"
-    },
-    {
-      "id": "m178978502315349",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-09-19T02:30:23.153Z"
-    },
-    {
-      "id": "m178981977494722",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Digitize handwritten notes with AI and turn them i\" — Microsoft Lens as a standalone app (merged into OneNote in 2020); Reference to 'purple lens' icon (app no longer exists standalone)",
-      "ref": "ARTICLE_GUIDE_digitize-handwritten-notes-with-ai-and-turn-them-into-editab.json",
-      "at": "2026-09-19T12:09:34.948Z"
-    },
-    {
-      "id": "m178987061437969",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Introducing the Australian Youth Safety Blueprint\" — mi a baj: The article repeatedly refers to an 'OpenAI Youth Safety Blueprint' with six specific pillars as if it is a published, real document. No such named, published document with this title or these six specific pillars is verifiably known to exist. This is a fabricated specific feature/document attributed to OpenAI.",
-      "ref": "2026-09-20T02-14-53-889Z_openai-blog_Introducing_the_Australian_Youth_Safety_Blueprint.json",
-      "at": "2026-09-20T02:16:54.379Z"
-    },
-    {
-      "id": "m178987062963221",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Introducing the Australian Youth Safety Blueprint\" — javítva: The article repeatedly refers to an 'OpenAI Youth Safety Blueprint' with six specific pillars as if it is a published, real document. No such named, published document with this title or these six specific pillars is verifiably known to exist. This is a fabricated specific feature/document attributed to OpenAI.; Reviewer v",
-      "ref": "2026-09-20T02-14-53-889Z_openai-blog_Introducing_the_Australian_Youth_Safety_Blueprint.json",
-      "at": "2026-09-20T02:17:09.632Z"
-    },
-    {
-      "id": "m178987065256714",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Introducing the Australian Youth Safety Blueprint\" (?/10)",
-      "ref": "2026-09-20T02-14-53-889Z_openai-blog_Introducing_the_Australian_Youth_Safety_Blueprint.json",
-      "at": "2026-09-20T02:17:32.567Z"
-    },
     {
       "id": "m178987121220848",
       "from": "designer",
@@ -2637,6 +2574,69 @@
       "text": "1 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-10-06T14:43:08.147Z"
+    },
+    {
+      "id": "m179134301506373",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"How Jump Trading is scaling quant research with ChatGPT\" — mi a baj: Article claims three enterprise partnerships (Jump Trading, Atlassian, Ironclad) but source only covers Jump Trading; Atlassian and Ironclad partnerships are not verifiable from the single source provided; Factual accuracy compromised — cannot confirm the Atlassian or Ironclad announcements exist in the sou",
+      "ref": "2026-10-07T03-13-46-175Z_openai-blog_How_Jump_Trading_is_scaling_quant_research_with_Ch.json",
+      "at": "2026-10-07T03:16:55.063Z"
+    },
+    {
+      "id": "m179134305778280",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Zapier Agents is now AI by Zapier\" — mi a baj: Invented product name: 'Gemini 3.8 Flash' does not appear to be a real Google model — real versions are Gemini 1.5, Gemini 2.0; confirm with source before using; Invented product name: 'Gemini Enterprise' is not a known Google product tier; if real, needs verification; Duplicate audience bullet: Two separate 'If you already use'",
+      "ref": "2026-10-07T03-14-03-959Z_zapier-blog_Zapier_Agents_is_now_AI_by_Zapier.json",
+      "at": "2026-10-07T03:17:37.782Z"
+    },
+    {
+      "id": "m179134307142692",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"How Jump Trading is scaling quant research with ChatGPT\" — javítva: Article claims three enterprise partnerships (Jump Trading, Atlassian, Ironclad) but source only covers Jump Trading; Atlassian and Ironclad partnerships are not verifiable from the single source provided; újraküldöm.",
+      "ref": "2026-10-07T03-13-46-175Z_openai-blog_How_Jump_Trading_is_scaling_quant_research_with_Ch.json",
+      "at": "2026-10-07T03:17:51.426Z"
+    },
+    {
+      "id": "m179134309996650",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Zapier Agents is now AI by Zapier\" — javítva: Invented product name: 'Gemini 3.8 Flash' does not appear to be a real Google model — real versions are Gemini 1.5, Gemini 2.0; confirm with source before using; Invented product name: 'Gemini Enterprise' is not a known Google product tier; if real, needs verification; újraküldöm.",
+      "ref": "2026-10-07T03-14-03-959Z_zapier-blog_Zapier_Agents_is_now_AI_by_Zapier.json",
+      "at": "2026-10-07T03:18:19.966Z"
+    },
+    {
+      "id": "m179134311974478",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"How Jump Trading is scaling quant research with ChatGPT\" (?/10)",
+      "ref": "2026-10-07T03-13-46-175Z_openai-blog_How_Jump_Trading_is_scaling_quant_research_with_Ch.json",
+      "at": "2026-10-07T03:18:39.744Z"
+    },
+    {
+      "id": "m17913431336935",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Zapier Agents is now AI by Zapier\" — mi a baj: Duplicate 'If you already use' bullet point in 'What this means for you' section — third bullet should specify a distinct user type or use case",
+      "ref": "2026-10-07T03-14-03-959Z_zapier-blog_Zapier_Agents_is_now_AI_by_Zapier.json",
+      "at": "2026-10-07T03:18:53.693Z"
+    },
+    {
+      "id": "m17913437134297",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 22 → 8/4/2 oszlop.",
+      "ref": "mobile",
+      "at": "2026-10-07T03:28:33.429Z"
     }
   ]
 }

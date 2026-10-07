@@ -1,0 +1,41 @@
+{
+  "started_at": "2026-10-07T03:16:37.493Z",
+  "total": 4,
+  "passed": 2,
+  "failed": 2,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.0073755240000000005,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-10-07T03-13-46-175Z_openai-blog_How_Jump_Trading_is_scaling_quant_research_with_Ch.json",
+      "rejected": "REJECTED_2026-10-07T03-13-46-175Z_openai-blog_How_Jump_Trading_is_scaling_quant_research_with_Ch.json",
+      "decision": "FAIL",
+      "score": 5,
+      "cost_usd": 0.001938
+    },
+    {
+      "writer": "WRITER_2026-10-07T03-13-46-175Z_openai-blog_Sharing_AI_progress_in_mathematics.json",
+      "article": "ARTICLE_2026-10-07T03-13-46-175Z_openai-blog_Sharing_AI_progress_in_mathematics.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.00116916
+    },
+    {
+      "writer": "WRITER_2026-10-07T03-14-03-959Z_salesforce_Trustworthy__Explainable__and_Accountable__How_to_.json",
+      "article": "ARTICLE_2026-10-07T03-14-03-959Z_salesforce_Trustworthy__Explainable__and_Accountable__How_to_.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.0015528
+    },
+    {
+      "writer": "WRITER_2026-10-07T03-14-03-959Z_zapier-blog_Zapier_Agents_is_now_AI_by_Zapier.json",
+      "rejected": "REJECTED_2026-10-07T03-14-03-959Z_zapier-blog_Zapier_Agents_is_now_AI_by_Zapier.json",
+      "decision": "FAIL",
+      "score": 6,
+      "cost_usd": 0.0017247
+    }
+  ],
+  "finished_at": "2026-10-07T03:17:37.783Z",
+  "duration_seconds": 60.29
+}
