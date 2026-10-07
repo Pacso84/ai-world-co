@@ -1,0 +1,68 @@
+name: TikTok — kézi küldés most
+
+# KÉZZEL indított TikTok-küldés (2026-10-07, user: „most csináljuk!").
+#
+# CSAK a Buffer-poszter TikTok-ága fut: a MAI Reel(ek) videója, ami TikTokra
+# még nem ment ki (core/reel-queue.js videoCsatornaMai). Nincs AI-hívás, nincs
+# Facebook, nincs build — $0. A napi plafon (config: tiktok 2) itt is él, a
+# Buffertől lekérdezve, tehát a napi futással együtt sem mehet ki több.
+#
+# ⚠️ AZ ALAPÉRTELMEZÉS A PRÓBA (dry = true): megmutatja, mi menne ki.
+#
+# A „kiküldve" jelölést (posted_tiktok) visszacommitolja — enélkül a napi
+# futás újra küldené (lásd a 10-07-i elhasalt push esetét).
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry:
+        description: 'Csak próba? (igaz = NEM posztol, csak megmutatja)'
+        type: boolean
+        required: true
+        default: true
+
+permissions:
+  contents: write
+
+# Ugyanaz a csoport, mint a napi futásé: a kettő SOSEM fut egyszerre,
+# így a jelölések nem írják felül egymást.
+concurrency:
+  group: aiworld-auto
+  cancel-in-progress: false
+
+jobs:
+  tiktok:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Függőségek
+        run: npm install
+
+      - name: TikTok-küldés
+        env:
+          BUFFER_ACCESS_TOKEN: ${{ secrets.BUFFER_ACCESS_TOKEN }}
+        run: |
+          if [ "${{ inputs.dry }}" = "true" ]; then
+            node agents/social/buffer-poster.js --only tiktok --dry
+          else
+            node agents/social/buffer-poster.js --only tiktok
+          fi
+
+      - name: Jelölés visszacommitolása
+        if: ${{ inputs.dry == false }}
+        run: |
+          git config user.name "AI World Bot"
+          git config user.email "bot@aiworld.local"
+          git add content/social
+          git commit -m "auto: TikTok kézi küldés $(date -u +%FT%TZ)" || { echo "nincs változás"; exit 0; }
+          for i in 1 2 3; do
+            git push && exit 0
+            git pull --rebase -X theirs || { git rebase --abort 2>/dev/null || true; }
+            sleep 5
+          done
+          git push || { echo "⚠️ a jelölés push-a nem sikerült — a napi futás DUPLÁN küldhet!"; exit 1; }
