@@ -1,102 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t179116895921653",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-10-05T02:55:59.216Z",
-      "updated": "2026-10-05T02:56:31.477Z"
-    },
-    {
-      "id": "t179116899147914",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-10-05T02:56:31.479Z",
-      "updated": "2026-10-05T02:56:31.683Z"
-    },
-    {
-      "id": "t179116899168537",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-10-05T02:56:31.685Z",
-      "updated": "2026-10-05T02:58:19.314Z"
-    },
-    {
-      "id": "t179116909931699",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-10-05T02:58:19.316Z",
-      "updated": "2026-10-05T02:58:39.585Z"
-    },
-    {
-      "id": "t179116911958880",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-10-05T02:58:39.588Z",
-      "updated": "2026-10-05T02:58:48.447Z"
-    },
-    {
-      "id": "t17911691284997",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-10-05T02:58:48.499Z",
-      "updated": "2026-10-05T03:09:30.917Z"
-    },
-    {
-      "id": "t17911697709189",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-10-05T03:09:30.918Z",
-      "updated": "2026-10-05T03:10:22.330Z"
-    },
-    {
-      "id": "t179116982237837",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-10-05T03:10:22.378Z",
-      "updated": "2026-10-05T03:10:40.658Z"
-    },
-    {
-      "id": "t179116984066014",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-10-05T03:10:40.660Z",
-      "updated": "2026-10-05T03:11:08.230Z"
-    },
-    {
-      "id": "t179116986823250",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-10-05T03:11:08.232Z",
-      "updated": "2026-10-05T03:11:17.076Z"
-    },
-    {
-      "id": "t179116987707834",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-10-05T03:11:17.078Z",
-      "updated": "2026-10-05T03:11:42.648Z"
-    },
-    {
-      "id": "t179121809116260",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-10-05T16:34:51.162Z",
-      "updated": "2026-10-05T16:34:51.355Z"
-    },
-    {
       "id": "t179121809135756",
       "title": "Run rss-scraper",
       "status": "done",
@@ -479,49 +383,105 @@
       "agent": "publisher",
       "created": "2026-10-07T03:28:33.440Z",
       "updated": "2026-10-07T03:28:56.844Z"
+    },
+    {
+      "id": "t179138481719098",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-10-07T14:53:37.190Z",
+      "updated": "2026-10-07T14:53:37.387Z"
+    },
+    {
+      "id": "t179138481738998",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-10-07T14:53:37.389Z",
+      "updated": "2026-10-07T14:54:17.526Z"
+    },
+    {
+      "id": "t179138485752872",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-10-07T14:54:17.528Z",
+      "updated": "2026-10-07T14:54:17.749Z"
+    },
+    {
+      "id": "t179138485775152",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-10-07T14:54:17.751Z",
+      "updated": "2026-10-07T15:01:24.431Z"
+    },
+    {
+      "id": "t179138528443318",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-10-07T15:01:24.433Z",
+      "updated": "2026-10-07T15:02:04.267Z"
+    },
+    {
+      "id": "t179138532426930",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-10-07T15:02:04.270Z",
+      "updated": "2026-10-07T15:02:51.875Z"
+    },
+    {
+      "id": "t179138537187628",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-10-07T15:02:51.876Z",
+      "updated": "2026-10-07T15:03:19.864Z"
+    },
+    {
+      "id": "t179138539986796",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-10-07T15:03:19.867Z",
+      "updated": "2026-10-07T15:03:38.341Z"
+    },
+    {
+      "id": "t179138541839691",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-10-07T15:03:38.396Z",
+      "updated": "2026-10-07T15:04:02.956Z"
+    },
+    {
+      "id": "t179138544295889",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-10-07T15:04:02.958Z",
+      "updated": "2026-10-07T15:04:20.975Z"
+    },
+    {
+      "id": "t179138546097781",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-10-07T15:04:20.977Z",
+      "updated": "2026-10-07T15:04:43.525Z"
+    },
+    {
+      "id": "t179138548352710",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-10-07T15:04:43.527Z",
+      "updated": "2026-10-07T15:05:27.071Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178952757272675",
-      "level": "success",
-      "text": "4 hír + 2 útmutató publikálva (költség: $0.0805).",
-      "agent": "ceo",
-      "at": "2026-09-16T02:59:32.726Z",
-      "loud": false
-    },
-    {
-      "id": "n178961262323914",
-      "level": "info",
-      "text": "SEO: 6 cikk optimalizálva (átlag 8.2/10).",
-      "agent": "seo",
-      "at": "2026-09-17T02:37:03.239Z",
-      "loud": false
-    },
-    {
-      "id": "n178961264660961",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The line-up is practical and friendly—exactly what everyday readers need. However, three articles (resume, pet-sitting agreement, sympathy message) don't name a specific AI tool, which breaks our cons",
-      "agent": "publisher",
-      "at": "2026-09-17T02:37:26.609Z",
-      "loud": false
-    },
-    {
-      "id": "n178961265864619",
-      "level": "success",
-      "text": "4 hír + 2 útmutató publikálva (költség: $0.0912).",
-      "agent": "ceo",
-      "at": "2026-09-17T02:37:38.646Z",
-      "loud": false
-    },
-    {
-      "id": "n178969802260258",
-      "level": "info",
-      "text": "SEO: 5 cikk optimalizálva (átlag 8.2/10).",
-      "agent": "seo",
-      "at": "2026-09-18T02:20:22.602Z",
-      "loud": false
-    },
     {
       "id": "n178969803887089",
       "level": "success",
@@ -1281,54 +1241,49 @@
       "agent": "ceo",
       "at": "2026-10-07T03:28:56.889Z",
       "loud": false
+    },
+    {
+      "id": "n179138540344913",
+      "level": "warn",
+      "text": "📨 pairing → guide: Új funkció-hír → kéne hozzá útmutató: \"How to add an AI step to your Zapier workflow\"",
+      "agent": "pairing",
+      "at": "2026-10-07T15:03:23.449Z",
+      "loud": false
+    },
+    {
+      "id": "n179138541832758",
+      "level": "warn",
+      "text": "📨 pairing → guide: Új funkció-hír → kéne hozzá útmutató: \"How to use Nano Banana 2.1 in Picsart for AI image generation\"",
+      "agent": "pairing",
+      "at": "2026-10-07T15:03:38.327Z",
+      "loud": false
+    },
+    {
+      "id": "n179138546096597",
+      "level": "info",
+      "text": "SEO: 2 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-10-07T15:04:20.965Z",
+      "loud": false
+    },
+    {
+      "id": "n179138550813745",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The line-up is nicely task-focused and on-brand—real writing help (complaints, resumes, sympathy notes, agreements) that everyday readers will actually use. One real concern: articles 2, 3, and 4 are ",
+      "agent": "publisher",
+      "at": "2026-10-07T15:05:08.137Z",
+      "loud": false
+    },
+    {
+      "id": "n179138552712134",
+      "level": "success",
+      "text": "2 hír + 0 útmutató publikálva (költség: $0.0132).",
+      "agent": "ceo",
+      "at": "2026-10-07T15:05:27.122Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178987125820742",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Brainstorm birthday gift ideas with Le Chat for an\" — The guide repeatedly mentions specific prices like \"under $25\", \"$25–$75\", \"$75 to $150\", \"under $30\", \"$30–$80\", \"$80–$150\" in examples — these concrete dollar amounts violate the pricing rule from the style guide",
-      "ref": "ARTICLE_GUIDE_brainstorm-birthday-gift-ideas-with-le-chat-for-any-budget-a.json",
-      "at": "2026-09-20T02:27:38.207Z"
-    },
-    {
-      "id": "m178987191740154",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-09-20T02:38:37.401Z"
-    },
-    {
-      "id": "m178995700289696",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"View conference room and meeting location details directly on the Google Meet homepage\" — mi a baj: The article describes a specific feature ('meeting cards showing room and floor details on the Google Meet web homepage') as a real, rolling-out update with no source, no Workspace blog post, no official Google announcement cited. Given the specificity of the claims (prioritiz",
-      "ref": "2026-09-17T02-18-27-380Z_google-workspace_View_conference_room_and_meeting_location_details_.json",
-      "at": "2026-09-21T02:16:42.896Z"
-    },
-    {
-      "id": "m178995701961569",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"This Week in AI: The 5 Stories That Matter (September 20, 2026)\" — mi a baj: NO_LEDE: Hiányzik a RÖVIDEN-doboz (> **In short:** …) közvetlenül a főcím után — az AI-keresők és a Google kivonat-doboza ezt olvassák (style-guide 2a).; Link to non-existent article: https://aiworldhq.com/article/how-ai-companies-are-making-chatbots-safer-for-young-users-and-what-pa.html — fabricat",
-      "ref": "2026-09-20T02-27-27-983Z_aiworld-editorial_This_Week_in_AI.json",
-      "at": "2026-09-21T02:16:59.615Z"
-    },
-    {
-      "id": "m178995705807747",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"View conference room and meeting location details directly on the Google Meet homepage\" — javítva: The article describes a specific feature ('meeting cards showing room and floor details on the Google Meet web homepage') as a real, rolling-out update with no source, no Workspace blog post, no official Google announcement cited. Given the specificity of the claims (prioritizing the mo",
-      "ref": "2026-09-17T02-18-27-380Z_google-workspace_View_conference_room_and_meeting_location_details_.json",
-      "at": "2026-09-21T02:17:38.077Z"
-    },
     {
       "id": "m178995722746353",
       "from": "iro",
@@ -2637,6 +2592,53 @@
       "text": "5 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-10-07T03:38:05.073Z"
+    },
+    {
+      "id": "m179138537186474",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Zapier Agents is now AI by Zapier\" — javítva: Duplicate 'If you already use' bullet point in 'What this means for you' section — third bullet should specify a distinct user type or use case; Reviewer verdict: The article is friendly, well-structured, and explains key terms like AI step, prompt, and trigger clearly. However, it has a structural error: the 'What this means for you' sec",
+      "ref": "2026-10-07T03-14-03-959Z_zapier-blog_Zapier_Agents_is_now_AI_by_Zapier.json",
+      "at": "2026-10-07T15:02:51.864Z"
+    },
+    {
+      "id": "m179138539984786",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Zapier Agents is now AI by Zapier\" (?/10)",
+      "ref": "2026-10-07T03-14-03-959Z_zapier-blog_Zapier_Agents_is_now_AI_by_Zapier.json",
+      "at": "2026-10-07T15:03:19.847Z"
+    },
+    {
+      "id": "m179138540344966",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "need",
+      "text": "Új funkció-hír → kéne hozzá útmutató: \"How to add an AI step to your Zapier workflow\"",
+      "ref": "how-to-add-an-ai-step-to-your-zapier-workflow",
+      "open": true,
+      "at": "2026-10-07T15:03:23.449Z"
+    },
+    {
+      "id": "m179138541832718",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "need",
+      "text": "Új funkció-hír → kéne hozzá útmutató: \"How to use Nano Banana 2.1 in Picsart for AI image generation\"",
+      "ref": "how-to-use-nano-banana-2-1-in-picsart-for-ai-image-generatio",
+      "open": true,
+      "at": "2026-10-07T15:03:38.327Z"
+    },
+    {
+      "id": "m179138548347032",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 22 → 8/4/2 oszlop.",
+      "ref": "mobile",
+      "at": "2026-10-07T15:04:43.470Z"
     }
   ]
 }
