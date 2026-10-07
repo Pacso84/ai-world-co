@@ -1678,6 +1678,7 @@
     "modeledet",
     "modelid",
     "modellfinomhangolásban",
+    "modelllehetőség",
     "modelllicencet",
     "modelllista",
     "modellsorokat",
@@ -2048,6 +2049,7 @@
     "promptolt",
     "promptolás",
     "promptolásból",
+    "promptolási",
     "promptolásnak",
     "promptolással",
     "promptolássá",
@@ -2879,6 +2881,7 @@
     "zsúrok",
     "zugokba",
     "zöldséget",
+    "ábácileves",
     "ágon",
     "állampolgárok",
     "állapotsávon",
@@ -4260,6 +4263,16 @@
     "tévesszd": {
       "correct": "téveszd",
       "at": "2026-10-06",
+      "mondattal": true
+    },
+    "képmodelle": {
+      "correct": "képmodellek",
+      "at": "2026-10-07",
+      "mondattal": true
+    },
+    "megtrténik": {
+      "correct": "megtörténik",
+      "at": "2026-10-07",
       "mondattal": true
     }
   },
@@ -5819,7 +5832,7 @@
   },
   "scan": {
     "at": "2026-10-07",
-    "files": 985,
-    "candidates": 10
+    "files": 987,
+    "candidates": 5
   }
 }
