@@ -225,21 +225,21 @@ export function createPostInput({ channelId, text, image, video, channelKey }) {
     channelId,
     text,
     // Az assets NON_NULL: kép nélkül ÜRES lista megy (X/Threads elfogadja,
-    // az Instagramot kép nélkül a hívó már kihagyta).
+    // a TikTokra videó nélkül a hívó nem is küld).
     assets,
     mode: 'shareNow',
     schedulingType: 'automatic',
     needsApproval: false
   };
 
-  // AZ INSTAGRAM KÜLÖN METAADATOT KÖVETEL. Enélkül a mutáció így felel:
-  //    InvalidInputError: Instagram posts require a type (post, story, or reel)
-  // — és ez a hibaüzenet CSAK azért látszik, mert az unió-variánsokat is
-  // lekérdezzük. Korábban némán „sikernek" tűnt, miközben a poszt létre sem jött.
-  //    PostType = carousel | event | ghost_post | offer | post | reel | short
-  //               | story | thread | whats_new
-  if (channelKey === 'instagram') {
-    input.metadata = { instagram: { type: video ? 'reel' : 'post', shouldShareToFeed: true } };
+  // A TIKTOK „AI-GENERÁLT" JELÖLÉST KAP (2026-10-07, EU AI Act — minden
+  // felületen jelölünk, 2026-09-27). A séma élesben lekérdezve (10-05):
+  //    TikTokPostMetadataInput = { isAiGenerated: Boolean, title: String }
+  // ⚠️ Az Instagram-ág (metadata.instagram.type) 10-07-én KIVEZETVE — a fiók
+  // törölve. Ha egyszer visszajönne: a Buffer ott TÍPUST követel
+  // („Instagram posts require a type"), lásd a git-történetet.
+  if (channelKey === 'tiktok') {
+    input.metadata = { tiktok: { isAiGenerated: true } };
   }
 
   return input;

@@ -300,7 +300,11 @@ for (const [p, kell] of Object.entries(POSZTEREK)) {
     assert.ok(nevek, '🔴 nincs import a core/social-published.js-ből');
     for (const n of kell) assert.ok(nevek.includes(n), `🔴 hiányzik az importból: ${n}`);
     assert.ok(/\.filter\(isArticleFile\)/.test(s), '🔴 a cikk-fájl szűrő nem a közös');
-    assert.ok(/buildPublishedMap\(loadArticles\(\)\)/.test(s), '🔴 a térképet nem a közös függvény építi');
+    // A buffer-poster a betöltött listát a TikTok-videókhoz is használja (2026-10-07),
+    // ezért egyszer tölt és változóból épít — a térkép forrása ugyanúgy a loadArticles().
+    assert.ok(/buildPublishedMap\(loadArticles\(\)\)/.test(s)
+      || (/const cikkLista = loadArticles\(\);/.test(s) && /buildPublishedMap\(cikkLista\)/.test(s)),
+      '🔴 a térképet nem a közös függvény építi');
     assert.ok(/const st = queueStatus\(pub, post, now\);/.test(s), '🔴 a sor-döntést nem a közös függvény hozza');
     assert.ok(/if \(st\.stale\) \{/.test(s), '🔴 az elavult-jelölés nem a közös döntést követi');
     assert.ok(/isFresh: st\.isFresh \}/.test(s), '🔴 a frissesség nem a közös döntésből jön');

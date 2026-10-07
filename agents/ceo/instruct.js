@@ -152,7 +152,7 @@ const TEAM = [
   { key: 'fact-check', name: 'Tényellenőr', emoji: '✅', role: 'kiszűri a valótlan vagy elavult állításokat' },
   { key: 'pairing', name: 'Párosító', emoji: '🔗', role: 'hírhez kapcsolódó útmutatót párosít' },
   { key: 'seo', name: 'SEO-szakértő', emoji: '🔎', role: 'meta-leírás, kulcsszavak, keresőoptimalizálás' },
-  { key: 'social', name: 'Közösségi média', emoji: '📣', role: 'Facebook-, Instagram- és Threads-posztokat ír (a Pinterest 2026-08-09 óta megszűnt)' },
+  { key: 'social', name: 'Közösségi média', emoji: '📣', role: 'Facebook- és Threads-posztokat ír, a napi Reel TikTokra is megy (a Pinterest 2026-08-09, az Instagram 2026-10-07 óta megszűnt)' },
   { key: 'api-expert', name: 'API-szakértő', emoji: '🔌', role: 'API-kulcsok, költség, üzemeltetés' },
   { key: 'analyst', name: 'Elemző', emoji: '📊', role: 'számok, trendek, javaslatok' },
   { key: 'source-scout', name: 'Forráskutató', emoji: '🧭', role: 'új hírforrásokat keres' },

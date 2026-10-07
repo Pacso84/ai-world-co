@@ -37,7 +37,7 @@ npx wrangler pages deploy website/public --project-name=aiworldco --branch=main 
 rss-scraper ──► iro / guide ──► ellenorzo ──► content/articles/*.json ──► website/build.js ──► Cloudflare Pages
                 (írás)          (kapuk +                                    │
                                  AI-bíró +                                  ├──► translator ──► content/translations/
-                                 truth-gate)                                └──► social (Make: Facebook · Buffer: Threads, Instagram)
+                                 truth-gate)                                └──► social (Make: Facebook · Buffer: Threads, TikTok)
 ```
 
 - **`agents/`** — 25 agent, mind saját mappában, `agent.js` belépési ponttal. Ezek költenek pénzt és publikálnak.

@@ -155,3 +155,24 @@ export function maiReelCikkek(cikkek, now = Date.now()) {
   return cikkek.filter(c => napja(c?.reel_at) === ma)
     .sort((a, b) => String(a.reel_at).localeCompare(String(b.reel_at)));
 }
+
+/**
+ * VIDEÓS CSATORNA (TikTok, 2026-10-07): a MAI Reelek, amelyek erre a
+ * csatornára még NEM mentek ki — a korábbi elöl.
+ *
+ * `postOf(slug)` → a cikk SAJÁT közösségi bejegyzése (content/social), vagy
+ * null. Bejegyzés nélkül a videó NEM megy: idegen cikk szövegével kimenni
+ * rosszabb, mint kimaradni (2026-08-25-i próbafutás: szöveg és videó két
+ * különböző cikkről). A tegnapi Reel sem megy — csak friss (user, 09-27).
+ *
+ * @returns {{slug: string, post: object}[]}
+ */
+export function videoCsatornaMai(cikkek, postOf, field, now = Date.now()) {
+  const ki = [];
+  for (const c of maiReelCikkek(cikkek, now)) {
+    const post = c?.slug ? postOf(c.slug) : null;
+    if (!post || post[field]) continue;
+    ki.push({ slug: c.slug, post });
+  }
+  return ki;
+}

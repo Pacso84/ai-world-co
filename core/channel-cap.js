@@ -82,7 +82,7 @@ export function allowedNow({ sentToday, dailyCap, runLimit }) {
 
 /**
  * Az őrszemnek átadott csatornalista — a SZÁNDÉKOSAN LEÁLLÍTOTT (0-s plafonú)
- * csatornák nélkül.
+ * és a KIVEZETETT (általunk nem ismert) csatornák nélkül.
  *
  * MIÉRT (2026-10-05). A user leállította, majd TÖRÖLNI akarta az Instagram-
  * fiókot. Törlés után a Buffer „levált” csatornának látja, és a Buffer-őrszem
@@ -90,13 +90,20 @@ export function allowedNow({ sentToday, dailyCap, runLimit }) {
  * szüntettünk meg. A riasztás, ami mindig szól, megtanítja a usert, hogy ne
  * figyeljen rá — és akkor a VALÓDI leválást (Threads) is elnézi.
  *
- * ⚠️ CSAK a 0-s plafon szűr: plafon nélkül vagy 1-gyel minden marad, és a
+ * 2026-10-07: az Instagram KIKERÜLT a kódból (a helyén TikTok). Amíg a Bufferben
+ * még ott lóg, a `serviceMap`-ben már nincs — ami ott nincs, arra nem is
+ * posztolunk, tehát a leválása sem a mi gondunk.
+ *
+ * ⚠️ Amire posztolunk (a térképben van, és nem 0-s plafonú), az MARAD, és a
  * `null` (nem tudjuk) `null` marad — az őrszem nem vakulhat meg némán.
  */
 export function figyelendoCsatornak(csatornak, config, serviceMap) {
   if (!Array.isArray(csatornak)) return csatornak;
+  // Térkép nélkül NEM szűrünk semmit — inkább szóljon fölöslegesen, mint hogy megvakuljon.
+  if (!serviceMap || typeof serviceMap !== 'object') return csatornak;
   return csatornak.filter(c => {
-    const kulcs = serviceMap && serviceMap[String(c && c.service || '').toLowerCase()];
-    return !(kulcs && capFor(config, kulcs) === 0);
+    const kulcs = serviceMap[String(c && c.service || '').toLowerCase()];
+    if (!kulcs) return false;                       // kivezetett csatorna (pl. Instagram, 10-07)
+    return capFor(config, kulcs) !== 0;             // szándékosan leállított (0-s plafon)
   });
 }

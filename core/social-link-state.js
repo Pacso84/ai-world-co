@@ -30,8 +30,13 @@
 // Pont ez szoktatja le az embert az őrszemről.
 // ===================================================================
 
-/** A csatornák, amelyeken egy bejegyzés lezárható. */
-export const CHANNELS = Object.freeze(['posted_fb', 'posted_threads', 'posted_instagram']);
+/**
+ * A csatornák, amelyeken egy bejegyzés lezárható.
+ * ⚠️ A `posted_tiktok` SZÁNDÉKOSAN NINCS ITT (2026-10-07): a TikTokra csak a
+ * napi Reel megy, a többi bejegyzés SOSEM kapná meg — így egyik sem zárulna
+ * le, és az őr örökké panaszkodna. Az Instagram 10-07-én kivezetve.
+ */
+export const CHANNELS = Object.freeze(['posted_fb', 'posted_threads']);
 
 export const OK       = 'ok';        // él a cikk, a link pontos
 export const CLOSED   = 'closed';    // minden csatornán lezárva — olvasóhoz nem jut

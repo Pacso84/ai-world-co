@@ -13,7 +13,7 @@
 
 import assert from 'assert/strict';
 import { readFileSync } from 'fs';
-import { reelMaMar, kovetkezoReel, maiReelCikk, maiReelCikkek, reelForma } from './reel-queue.js';
+import { reelMaMar, kovetkezoReel, maiReelCikk, maiReelCikkek, reelForma, videoCsatornaMai } from './reel-queue.js';
 
 let pass = 0;
 const t = (n, f) => { f(); pass++; console.log('  ✅ ' + n); };
@@ -283,6 +283,38 @@ t('🔑 NAPI 2 REEL: a második is mehet, a harmadik nem; kapcsoló nélkül mar
   assert.match(src, /export const REEL_NAPI = 2;/);
   assert.match(src, /napiMax: REEL_NAPI/);
   assert.match(src, /for \(const mai of maiak\)/, 'a nap minden Reeljét életben kell tartani');
+});
+
+// ── VIDEÓS CSATORNA (TikTok, 2026-10-07): a mai Reelek, amik ott még nem mentek ki ──
+//
+// A napi 2 Reel két KÜLÖN CI-futásban születik (reggel, délután). A TikTok-
+// poszter mindkét futásban lefut, tehát a döntésnek tudnia kell: ami reggel
+// már kiment TikTokra, az délután NE menjen újra; ami reggel elbukott, azt
+// délután még pótolhatja — de a TEGNAPIT már nem (csak friss, user 09-27).
+
+t('🎬 TikTok: csak a MAI, oda még ki nem küldött Reel — a korábbi elöl', () => {
+  const ma1 = '2026-08-25T03:30:00Z', ma2 = '2026-08-25T15:10:00Z', tegnap = '2026-08-24T15:00:00Z';
+  const cikkek = [
+    g('delutani', '2026-01-01', { reel_at: ma2 }),
+    g('reggeli', '2026-01-01', { reel_at: ma1 }),
+    g('tegnapi', '2026-01-01', { reel_at: tegnap }),
+    g('nincs-reel', '2026-01-01')
+  ];
+  const posztok = {
+    delutani: { slug: 'delutani' },
+    reggeli: { slug: 'reggeli' },
+    tegnapi: { slug: 'tegnapi' }
+  };
+  const p = s => posztok[s] || null;
+  assert.deepEqual(videoCsatornaMai(cikkek, p, 'posted_tiktok', MOST).map(x => x.slug), ['reggeli', 'delutani']);
+
+  posztok.reggeli.posted_tiktok = '2026-08-25T03:40:00Z';
+  assert.deepEqual(videoCsatornaMai(cikkek, p, 'posted_tiktok', MOST).map(x => x.slug), ['delutani'],
+    '🔴 a reggel már kiment TikTok-videó délután újra menne');
+
+  delete posztok.delutani;   // nincs közösségi szöveg → nem megy (idegen szöveggel sem)
+  assert.deepEqual(videoCsatornaMai(cikkek, p, 'posted_tiktok', MOST), []);
+  assert.deepEqual(videoCsatornaMai(null, p, 'posted_tiktok', MOST), []);
 });
 
 console.log('\n✅ reel-queue.test: mind a ' + pass + ' eset rendben');

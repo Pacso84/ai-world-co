@@ -165,6 +165,20 @@ t('🔕 a LEÁLLÍTOTT (0) csatorna lecsatlakozása nem riaszt — a többié ig
   assert.equal(figyelendoCsatornak(null, cfg, {}), null, 'a null (nem tudjuk) null marad, nem üres lista');
 });
 
+t('🔕 a KIVEZETETT (térképben nem szereplő) csatorna leválása sem riaszt (10-07: Instagram ki, TikTok be)', () => {
+  // A Bufferben még ott lóghat a törölt Instagram — de a kód már nem ismeri,
+  // nem is posztol rá. Amire posztolunk (Threads, TikTok), az MARAD.
+  const terkep = { threads: 'threads', tiktok: 'tiktok' };
+  const nyers = [
+    { service: 'instagram', isDisconnected: true },
+    { service: 'threads', isDisconnected: true },
+    { service: 'tiktok', isLocked: true }
+  ];
+  const marad = figyelendoCsatornak(nyers, { limits: { social_daily_caps: { tiktok: 2 } } }, terkep);
+  assert.deepEqual(marad.map(c => c.service), ['threads', 'tiktok'],
+    'a TikTok/Threads leválását NEM szabad elhallgatni, az Instagramét igen');
+});
+
 t('🔗 a honlap nem linkel a törölt Instagram-fiókra (lábléc + JSON-LD)', () => {
   const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
   const b = readFileSync(join(ROOT, 'website', 'build.js'), 'utf-8');
@@ -173,16 +187,16 @@ t('🔗 a honlap nem linkel a törölt Instagram-fiókra (lábléc + JSON-LD)', 
   assert.ok(b.includes('sameAs: [FB_URL, IG_URL, TH_URL].filter(Boolean)'), 'a JSON-LD üres sameAs-t kapna');
 });
 
-t('📌 az ÉLES config.json LEÁLLÍTVA tartja az Instagramot (0)', () => {
-  // 2026-08-24: napi 6 → napi 1. 2026-10-05 (user: „instagramot meg kéne
-  // szüntetni mert nem látom értelmét"): mérve 14 nap alatt 4 belépő → 0.
-  // A 0 valódi plafon: a Reelt is elnémítja (buffer-poster.js, a Reel-ág előtt).
+t('📌 az ÉLES config.json: TikTok napi 2 (= a napi 2 Reel), Instagram-bejegyzés nincs', () => {
+  // 2026-10-05: Instagram leállítva (14 nap alatt 4 belépő), 10-07: kivezetve.
+  // 2026-10-07 (user: „csináljunk egy tiktokot"): a napi 2 Reel megy oda is.
+  // A plafon VÉD: egy elszabadult futás sem küldhet napi 2-nél többet.
   const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
   const eles = JSON.parse(readFileSync(join(ROOT, 'config.json'), 'utf-8'));
-  assert.equal(capFor(eles, 'instagram'), 0,
-    'a 2026-10-05-i user-döntés: az Instagram leállítva');
-  assert.equal(allowedNow({ sentToday: 0, dailyCap: capFor(eles, 'instagram'), runLimit: 3 }), 0,
-    'a 0-s plafon mellett mégis kimenne poszt');
+  assert.equal(capFor(eles, 'tiktok'), 2, 'a TikTok napi plafonja nem 2');
+  assert.equal(allowedNow({ sentToday: 2, dailyCap: capFor(eles, 'tiktok'), runLimit: 3 }), 0,
+    'a napi 2 után mégis kimenne a harmadik');
+  assert.equal(capFor(eles, 'instagram'), null, 'az Instagram-bejegyzés visszakerült a configba');
 });
 
 console.log('\n✅ channel-cap.test: mind a ' + pass + ' eset rendben');

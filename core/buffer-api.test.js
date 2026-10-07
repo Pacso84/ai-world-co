@@ -113,7 +113,7 @@ await at('🔴 (b) HTTP 200 + típusos hiba (InvalidInputError) → HIBA, nem si
   const f = hamisFetch({
     data: { createPost: { __typename: 'InvalidInputError', message: 'Instagram posts require a type' } }
   }, { status: 200 });
-  const r = await createPost({ channelId: 'ch1', text: 'x', channelKey: 'instagram' }, opts(f));
+  const r = await createPost({ channelId: 'ch1', text: 'x', channelKey: 'tiktok' }, opts(f));
   assert.equal(r.data, undefined, '🔴 a hibás választ SIKERNEK vette — ez a 2026-08-14-i néma bukás');
   assert.ok(r.error, 'nincs hibaüzenet');
   assert.match(r.error, /InvalidInputError/, 'a hiba TÍPUSA nem került bele');
@@ -202,14 +202,14 @@ await at('📡 (d) három csatorna = HÁROM külön mutáció, mindegyik a SAJÁ
   const csatornak = [
     { id: 'ch-x', key: 'x' },
     { id: 'ch-threads', key: 'threads' },
-    { id: 'ch-insta', key: 'instagram' }
+    { id: 'ch-tiktok', key: 'tiktok' }
   ];
   for (const c of csatornak) {
     await createPost({ channelId: c.id, text: 'Szia', channelKey: c.key, image: 'https://pelda.invalid/k.jpg' }, opts(f));
   }
   assert.equal(f.hivasok.length, 3, '🔴 nem csatornánként ment ki egy-egy mutáció');
   const kuldottIdk = f.hivasok.map(h => h.body.variables.input.channelId);
-  assert.deepEqual(kuldottIdk, ['ch-x', 'ch-threads', 'ch-insta'], '🔴 nem a saját azonosítóját kapta minden csatorna');
+  assert.deepEqual(kuldottIdk, ['ch-x', 'ch-threads', 'ch-tiktok'], '🔴 nem a saját azonosítóját kapta minden csatorna');
   for (const h of f.hivasok) {
     assert.equal(typeof h.body.variables.input.channelId, 'string', '🔴 a channelId nem egyetlen azonosító');
     assert.equal(h.body.variables.input.channelIds, undefined, '🔴 visszakerült a régi REST-es channelIds tömb');
@@ -247,26 +247,30 @@ t('🖼️ a kötelező mezők mind ott vannak (mode, schedulingType, needsAppro
 t('🖼️ kép esetén image-asset megy, videó esetén video-asset', () => {
   const kep = createPostInput({ channelId: 'c', text: 'x', image: 'https://pelda.invalid/k.jpg', channelKey: 'threads' });
   assert.deepEqual(kep.assets, [{ image: { url: 'https://pelda.invalid/k.jpg' } }]);
-  const vid = createPostInput({ channelId: 'c', text: 'x', video: 'https://pelda.invalid/v.mp4', channelKey: 'instagram' });
+  const vid = createPostInput({ channelId: 'c', text: 'x', video: 'https://pelda.invalid/v.mp4', channelKey: 'tiktok' });
   assert.equal(vid.assets[0].video.url, 'https://pelda.invalid/v.mp4');
 });
 
 t('🎬 a videó csempéje thumbnailOffset — a thumbnailUrl-t a Buffer ELUTASÍTJA', () => {
   // 2026-08-27, éles lecke: a mező SZEREPEL a sémában, mégis hibát ad.
-  const i = createPostInput({ channelId: 'c', text: 'x', video: 'https://pelda.invalid/v.mp4', channelKey: 'instagram' });
+  const i = createPostInput({ channelId: 'c', text: 'x', video: 'https://pelda.invalid/v.mp4', channelKey: 'tiktok' });
   assert.equal(i.assets[0].video.metadata.thumbnailOffset, REEL_CSEMPE_MS);
   assert.ok(!('thumbnailUrl' in i.assets[0].video), '🔴 visszakerült a thumbnailUrl — a poszt el fog bukni');
   assert.ok(REEL_CSEMPE_MS > 0, '🔴 a 0 a legelső képkockára ülne, nem a horog-kártyára');
 });
 
-t('📸 az Instagram metaadatot követel — videónál reel, állóképnél post', () => {
-  const reel = createPostInput({ channelId: 'c', text: 'x', video: 'https://pelda.invalid/v.mp4', channelKey: 'instagram' });
-  assert.deepEqual(reel.metadata, { instagram: { type: 'reel', shouldShareToFeed: true } });
-  const kep = createPostInput({ channelId: 'c', text: 'x', image: 'https://pelda.invalid/k.jpg', channelKey: 'instagram' });
-  assert.equal(kep.metadata.instagram.type, 'post');
-  // A többi csatorna NEM kap instagram-metaadatot.
+t('🤖 a TikTok-videó „AI-generált" jelölést kap (EU AI Act) — a séma élesben lekérdezve', () => {
+  // TikTokPostMetadataInput = { isAiGenerated: Boolean, title: String } (2026-10-05, introspekció)
+  const v = createPostInput({ channelId: 'c', text: 'x', video: 'https://pelda.invalid/v.mp4', channelKey: 'tiktok' });
+  assert.deepEqual(v.metadata, { tiktok: { isAiGenerated: true } }, '🔴 a TikTok-videó MI-jelölés nélkül menne ki');
+  // A többi csatorna NEM kap tiktok-metaadatot.
   const th = createPostInput({ channelId: 'c', text: 'x', channelKey: 'threads' });
-  assert.equal(th.metadata, undefined, '🔴 a Threads is instagram-metaadatot kapott');
+  assert.equal(th.metadata, undefined, '🔴 a Threads is tiktok-metaadatot kapott');
+});
+
+t('⛔ Instagram-metaadat nincs többé (kivezetve 2026-10-07)', () => {
+  const i = createPostInput({ channelId: 'c', text: 'x', video: 'https://pelda.invalid/v.mp4', channelKey: 'instagram' });
+  assert.equal(i.metadata, undefined, 'az Instagram-ág visszakerült');
 });
 
 // ===================================================================

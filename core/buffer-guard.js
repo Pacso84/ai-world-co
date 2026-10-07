@@ -65,7 +65,7 @@ export function bufferProblemak(allapot = {}) {
 
   // A leggyakoribb néma leállás: lejár vagy törlődik a token.
   if (a.tokenVan === false) {
-    ki.push({ code: 'NINCS_TOKEN', detail: 'nincs BUFFER_ACCESS_TOKEN — a Threads és az Instagram NÉMA' });
+    ki.push({ code: 'NINCS_TOKEN', detail: 'nincs BUFFER_ACCESS_TOKEN — a Threads és a TikTok NÉMA' });
   }
 
   if (a.socialMappa === false) {
@@ -129,7 +129,7 @@ export function bufferSor(guard) {
   if (!p.length) return '';
   const MUTAT = 3;
   const reszek = p.slice(0, MUTAT).map(x => rovid(x?.detail || x?.code, 90));
-  return `⚠️ BUFFER-ŐRSZEM (Threads · Instagram): ${p.length} gond — `
+  return `⚠️ BUFFER-ŐRSZEM (Threads · TikTok): ${p.length} gond — `
     + reszek.join(' · ') + (p.length > MUTAT ? ' …' : '');
 }
 

@@ -681,7 +681,7 @@ jobs:
           # alszanak — a lépés akkor is hibátlanul lefut.
           THREADS_MAKE_WEBHOOK_URL: ${{ secrets.THREADS_MAKE_WEBHOOK_URL }}
           X_MAKE_WEBHOOK_URL: ${{ secrets.X_MAKE_WEBHOOK_URL }}
-          # BUFFER (2026-08-14) — X / Threads / Instagram. Amíg üres, a
+          # BUFFER (2026-08-14) — X / Threads / TikTok (10-07, az Instagram helyén). Amíg üres, a
           # buffer-poster alszik: nem hibázik, nem jelöl meg semmit.
           BUFFER_ACCESS_TOKEN: ${{ secrets.BUFFER_ACCESS_TOKEN }}
           # 2026-07-27: a poszter ELŐ-ELLENŐRZI a Make-forgatókönyvet ezzel a
@@ -744,11 +744,11 @@ jobs:
           # képest, ami 189 pinért a Make-keret 62%-át vitte el.
           #
           # A csatornákat a Buffertől kérdezi le, nem hardcode-olt lista —
-          # most Threads + Instagram megy, az X bekötése után magától bővül.
+          # most Threads + TikTok (csak a napi Reel-videó, napi plafon 2), az X bekötése után magától bővül.
           #
           # LIMIT 2 (nem 3), SZÁNDÉKOSAN: a fiókok VADONATÚJAK, 0 követővel.
           # Napi 3 futás × 2 poszt = 6/nap csatornánként. Egy friss fiók napi
-          # 9 posztja spamnek látszik, és az Instagram vissza is foghatja.
+          # 9 posztja spamnek látszik, és a platform vissza is foghatja.
           # Emelés csak MÉRÉS után — és a mérésünk szerint a poszt-szám és a
           # látogató közti korreláció amúgy is csak 0,30.
           #

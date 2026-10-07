@@ -21,22 +21,23 @@ export const CHANNELS = {
   x: { limit: 280, urlWeight: 23, field: 'posted_x', label: 'X' },
   // A Threads a link teljes hosszát beleszámolja az 500-ba.
   threads: { limit: 500, urlWeight: null, field: 'posted_threads', label: 'Threads' },
-  // ── INSTAGRAM (2026-08-14) ──────────────────────────────────────────
-  // A caption 2200 karakter, DE a link NEM KATTINTHATÓ benne. Ezt 08-11-én
-  // mérve rögzítettük: a 2026-03-i "kattintható link" teszt csak Meta
-  // Verified + creator fióknak szólt, havi 10 posztra, és asztali gépen sem
-  // működött. Egy nyers URL a caption végén tehát NEM visz sehová — csak
-  // helyet foglal és elrontottnak látszik. Ezért `linkMode: 'bio'`.
-  // ⚠️ Az Instagram KÉPET is követel; azt a poszter adja (/assets/fb/<slug>.jpg,
-  // 4:5 álló — pont az IG feed ideális aránya).
-  instagram: { limit: 2200, urlWeight: null, field: 'posted_instagram', label: 'Instagram', linkMode: 'bio' }
+  // ── TIKTOK (2026-10-07, user: „csináljunk egy tiktokot") ────────────
+  // Az Instagram HELYÉN (fiók törölve 10-05; 14 nap alatt 4 belépő). Ugyanaz
+  // a két szabály, amit ott mérve tanultunk (2026-08-11):
+  //   • a link a szövegben NEM KATTINTHATÓ → `linkMode: 'bio'` (a profilban,
+  //     üzleti fiókkal van kattintható honlap-link);
+  //   • CSAK VIDEÓ megy (`videoOnly`) — a napi Facebook-Reel ugyanazon fájlja,
+  //     gyártás nélkül. Állókép a TikTokon nincs értelme.
+  // `aiLabel`: az MI-jelölés a SZÖVEGBEN is (EU AI Act, 2026-09-27), a TikTok
+  // saját „AI-generált" kapcsolója mellett (core/buffer-api.js).
+  tiktok: { limit: 2200, urlWeight: null, field: 'posted_tiktok', label: 'TikTok', linkMode: 'bio', videoOnly: true, aiLabel: true }
 };
 
 const SEP = '\n\n';
 const ELLIPSIS = '…';
 
 /**
- * Az Instagram-poszt zárósora. A domaint KIÍRJUK, mert az olvasó be tudja
+ * A TikTok-poszt („link in bio") zárósora. A domaint KIÍRJUK, mert az olvasó be tudja
  * gépelni; a valódi, kattintható link a profilban ("link in bio") van.
  */
 export const BIO_LINE = 'Full guide → link in bio · aiworldhq.com';
@@ -116,10 +117,11 @@ export function composePost({ text, url, channel }) {
   if (!body) return null;
 
   // A ZÁRÓ RÉSZ csatornafüggő: ahol a link kattintható, oda a link megy;
-  // az Instagramon egy nyers URL semmit nem érne (nem kattintható), ezért
+  // a TikTokon egy nyers URL semmit nem érne (nem kattintható), ezért
   // ott a "link in bio" sor a záradék. Mindkettő SZENT: sosem eshet ki, mert
-  // enélkül a poszt nem visz sehová.
-  const tail = cfg.linkMode === 'bio' ? BIO_LINE : String(url);
+  // enélkül a poszt nem visz sehová. Az MI-jelölés ugyanígy (ahol kérjük).
+  const zaro = cfg.linkMode === 'bio' ? BIO_LINE : String(url);
+  const tail = cfg.aiLabel ? zaro + SEP + AI_JELOLES : zaro;
   // A link súlya a csatorna szabálya szerint (X: fix 23, egyébként valós hossz).
   const tailCost = cfg.urlWeight ?? tail.length;
   const room = cfg.limit - SEP.length - tailCost;
