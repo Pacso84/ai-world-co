@@ -184,7 +184,20 @@ t('🔗 a honlap nem linkel a törölt Instagram-fiókra (lábléc + JSON-LD)', 
   const b = readFileSync(join(ROOT, 'website', 'build.js'), 'utf-8');
   assert.ok(/const IG_URL = '';/.test(b), 'az IG_URL nem üres — 3000 oldal mutatna a törölt profilra');
   assert.ok(b.includes('${IG_URL ? `<a href="${IG_URL}"'), 'a lábléc-ikon nem feltételes');
-  assert.ok(b.includes('sameAs: [FB_URL, IG_URL, TH_URL].filter(Boolean)'), 'a JSON-LD üres sameAs-t kapna');
+  assert.ok(b.includes('sameAs: [FB_URL, IG_URL, TH_URL, TT_URL].filter(Boolean)'), 'a JSON-LD üres sameAs-t kapna / a TikTok hiányzik');
+});
+
+t('🎵 a honlap linkel a TikTok-fiókra (lábléc + JSON-LD, 2026-10-07)', () => {
+  // User: „ki kéne rakni az oldalunkra". A fiók SZEMÉLYES, a felhasználónév
+  // egyelőre az automatikus (user…) — a szebb név foglalt volt; átírásnál
+  // EZT az egy konstanst kell frissíteni.
+  const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
+  const b = readFileSync(join(ROOT, 'website', 'build.js'), 'utf-8');
+  const m = b.match(/const TT_URL = '([^']*)';/);
+  assert.ok(m, 'nincs TT_URL konstans');
+  assert.match(m[1], /^https:\/\/www\.tiktok\.com\/@[a-z0-9._]+$/, 'a TikTok-cím alakja hibás: ' + m[1]);
+  assert.ok(b.includes('${TT_URL ? `<a href="${TT_URL}"'), 'nincs (feltételes) TikTok-ikon a láblécben');
+  assert.ok(/\n\s*tt: '[^']{100,}'/.test(b), 'nincs TikTok-ikon (ICON.tt)');
 });
 
 t('📌 az ÉLES config.json: TikTok napi 2 (= a napi 2 Reel), Instagram-bejegyzés nincs', () => {
