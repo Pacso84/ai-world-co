@@ -89,6 +89,7 @@
     "alapköltséget",
     "alapmagyarazatot",
     "alapszférő",
+    "alapértelmezni",
     "albérről",
     "aldomain",
     "aliaszt",
@@ -738,6 +739,7 @@
     "emailekről",
     "emailemben",
     "emailemre",
+    "emailje",
     "emailjeid",
     "emailjeidet",
     "emailjeidhez",
@@ -1421,6 +1423,7 @@
     "környezetedbeli",
     "körülötte",
     "köteget",
+    "kötelezettséget",
     "követd",
     "következetességet",
     "közelképe",
@@ -1502,6 +1505,7 @@
     "localhost",
     "logófájlával",
     "logóterven",
+    "lokáció",
     "lookbookot",
     "lookokat",
     "loopok",
@@ -1972,6 +1976,8 @@
     "pointban",
     "pointek",
     "pointeket",
+    "pointokban",
+    "pointtá",
     "polgárok",
     "polúr",
     "portlandi",
@@ -2398,6 +2404,7 @@
     "szkenneren",
     "szkriptelőeszköz",
     "szlenget",
+    "szoftvercsomagok",
     "szoftveren",
     "szolgáltatásifeltétel-változás",
     "szolárbattery-tárolásának",
@@ -2547,6 +2554,7 @@
     "teljességet",
     "telkók",
     "teltházas",
+    "temperature-et",
     "tenzormagok",
     "termelékenységet",
     "terminálkurzorod",
@@ -3020,6 +3028,7 @@
     "ügyfélmegállapodásokra",
     "ügyfélpitch",
     "ügyfélprezentáción",
+    "ügyféltájékoztatókat",
     "ügyintézel",
     "ügyvédiesen",
     "ünnepségen",
@@ -5801,11 +5810,16 @@
       "correct": "képeket",
       "at": "2026-10-05",
       "mondattal": true
+    },
+    "asszisztést": {
+      "correct": "asszisztenciát",
+      "at": "2026-10-07",
+      "mondattal": true
     }
   },
   "scan": {
-    "at": "2026-10-06",
-    "files": 988,
-    "candidates": 0
+    "at": "2026-10-07",
+    "files": 985,
+    "candidates": 10
   }
 }
