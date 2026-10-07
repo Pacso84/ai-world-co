@@ -118,7 +118,12 @@ assert.equal(composePost({ text: 'a', url: '', channel: 'x' }), null,
   assert.ok(r, 'a TikTok ismert csatorna');
   assert.ok(!r.body.includes(URL), 'a NYERS cikk-URL nem kerül a caption-be');
   assert.ok(!/https?:\/\//.test(r.body), 'semmilyen http(s) link nincs a szövegben');
-  assert.ok(r.body.includes(BIO_LINE), 'a "link in bio" sor viszont ott van');
+  assert.ok(r.body.includes(BIO_LINE), 'a záró (domain-)sor viszont ott van');
+  // 2026-10-07: SZEMÉLYES fiók — 1000 követő alatt a profilban NINCS link
+  // (cég nélkül nem adható meg). A „link in bio" így hamis ígéret lenne;
+  // helyette a begépelhető domain. 1000 követő felett visszaállítható.
+  assert.ok(!/link in bio/i.test(r.body), 'nem létező bio-linkre hivatkozik');
+  assert.ok(r.body.includes('aiworldhq.com'), 'a domain nincs kiírva');
   assert.ok(r.body.includes(AI_JELOLES), 'az MI-jelölés a szövegben is ott van');
   assert.ok(r.body.startsWith(text), 'a mondanivaló marad elöl');
   assert.equal(r.label, 'TikTok');

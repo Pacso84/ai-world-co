@@ -37,10 +37,15 @@ const SEP = '\n\n';
 const ELLIPSIS = '…';
 
 /**
- * A TikTok-poszt („link in bio") zárósora. A domaint KIÍRJUK, mert az olvasó be tudja
- * gépelni; a valódi, kattintható link a profilban ("link in bio") van.
+ * A TikTok-poszt zárósora: a BEGÉPELHETŐ domain.
+ *
+ * ⚠️ NEM „link in bio" (2026-10-07). A TikTok-fiók SZEMÉLYES: 1000 követő
+ * alatt a profilba csak cégbejegyzés igazolásával tehető kattintható link —
+ * cégünk nincs. Egy nem létező bio-linkre mutatni hamis ígéret lenne.
+ * 1000 követő felett (vagy ha lesz link a profilban) visszaírható:
+ * 'Full guide → link in bio · aiworldhq.com'.
  */
-export const BIO_LINE = 'Full guide → link in bio · aiworldhq.com';
+export const BIO_LINE = 'Full guide: aiworldhq.com';
 
 // ---------- KÖVETÉSRE HÍVÁS (2026-08-09) ----------
 //
