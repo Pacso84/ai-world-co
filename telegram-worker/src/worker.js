@@ -40,6 +40,8 @@ import { tg } from './tg.js';
 import { handleChat, handleContact, csExport } from './cs-routes.js';
 import { handleEmail } from './cs-email.js';
 import { pipelineWatchdog } from './watchdog.js';
+// 📚 Ingyenes PDF-letöltés számláló (2026-10-07) — a jelet a honlap middleware-je küldi.
+import { handleDlHit, dlExport } from './pdf-dl.js';
 
 // ===================================================================
 // OLVASÓI 👍/👎 VISSZAJELZÉS (2026-07-07) — a weboldal cikkeiről érkezik.
@@ -85,6 +87,8 @@ async function handleFeedbackExport(request, env) {
   // Ügyfélszolgálat napi számlálói + kézbesítetlen üzenetek a riportoknak
   // (2026-07-20, bővítve 2026-08-30 — lásd a fájl fejlécének 📮 szakaszát)
   try { out.__cs = await csExport(env); } catch { /* skip */ }
+  // A PDF-letöltések (14 nap) a napi riport 📚 sorához; hibánál {error:true}, nem üres.
+  out.__dl = await dlExport(env);
   return new Response(JSON.stringify(out), { status: 200, headers: { 'Content-Type': 'application/json' } });
 }
 
@@ -96,6 +100,7 @@ export default {
     if (path === '/feedback-export') return handleFeedbackExport(request, env);
     if (path === '/chat') return handleChat(request, env);
     if (path === '/contact') return handleContact(request, env);
+    if (path === '/dl-hit') return handleDlHit(request, env);
 
     // Egészség-ellenőrzés / böngészős megnyitás
     if (request.method !== 'POST') {

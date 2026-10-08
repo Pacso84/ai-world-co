@@ -19,14 +19,37 @@
 // middleware ELŐTT értékelődnek ki, ez csak a nem-illeszkedő kéréseket kapja.
 // ===================================================================
 
-const CANONICAL_HOST = 'aiworldhq.com';
+// ===================================================================
+// 📚 INGYENES PDF-LETÖLTÉS SZÁMLÁLÓ (2026-10-07)
+// ===================================================================
+// Ha a kérés a közös szabály (core/pdf-download.js) szerint EMBERI letöltés,
+// a háttérben (waitUntil) jelez a Worker számlálójának. A letöltést SOHA nem
+// lassítja és nem akaszthatja meg: a válasz előbb megy ki, a jel hibája néma.
+import { letoltesFajl } from '../core/pdf-download.js';
 
-export async function onRequest({ request, next }) {
+const CANONICAL_HOST = 'aiworldhq.com';
+const DL_JEL = 'https://aiworld-telegram.pacsi84.workers.dev/dl-hit';
+
+export async function onRequest({ request, next, waitUntil }) {
   const url = new URL(request.url);
   if (url.hostname !== CANONICAL_HOST) {
     url.hostname = CANONICAL_HOST;
     url.protocol = 'https:';
     return Response.redirect(url.toString(), 301);
   }
-  return next();
+  const res = await next();
+  try {
+    const f = letoltesFajl({
+      path: url.pathname, method: request.method, status: res.status,
+      range: request.headers.get('Range'), ua: request.headers.get('User-Agent')
+    });
+    if (f) {
+      waitUntil(fetch(DL_JEL, {
+        // Saját UA: a Cloudflare a robotgyanús (pl. curl) UA-t 403-mal fogja meg — mérve 10-08.
+        method: 'POST', headers: { 'Content-Type': 'application/json', 'User-Agent': 'aiworldhq-pages/1.0 (+https://aiworldhq.com)' },
+        body: JSON.stringify({ f })
+      }).catch(() => {}));
+    }
+  } catch { /* a számláló hibája nem a látogató gondja */ }
+  return res;
 }

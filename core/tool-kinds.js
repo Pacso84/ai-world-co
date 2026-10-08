@@ -122,6 +122,7 @@ const OTHER_NAMES = [
   // cégek
   'Hugging Face',       // modell- és adathalmaz-tárhely, nem chatbot
   'Suno.ai', 'Suno',    // zenegenerálás — se nem chat, se nem kép
+  'Zapier',             // munkafolyamat-automatizálás (AI by Zapier), nem chatbot — 2026-10-07-i hír
   // eszközök
   'Alibaba Cloud',                    // felhőplatform
   'Credential Provider for Windows',  // Windows-bejelentkezés, nem is AI-eszköz

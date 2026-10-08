@@ -39,6 +39,7 @@ import { futasokLekerdez, sodrodasVizsgalat, sodrodasSor } from './watchdog-drif
 import { linkSor } from './internal-link-guard.js';
 import { bufferSor } from './buffer-guard.js';
 import { tesztSor } from './test-guard.js';
+import { pdfLetoltesSor } from './pdf-download.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
@@ -946,7 +947,11 @@ async function main() {
       const cr = await fetch('https://aiworld-telegram.pacsi84.workers.dev/feedback-export',
         { headers: { 'X-Export-Key': exportKey }, signal: AbortSignal.timeout(15000) });
       if (cr.ok) {
-        const cs = (await cr.json()).__cs || {};
+        const exp = await cr.json();
+        const cs = exp.__cs || {};
+        // 📚 INGYENES PDF-LETÖLTÉS (2026-10-07): a Worker számlálója; csend, ha 7 napja 0.
+        const dlSor = pdfLetoltesSor(exp.__dl);
+        if (dlSor) lines.push(dlSor);
         const total = (cs.chat || 0) + (cs.mail || 0);
         if (total + (cs.esc || 0) > 0) lines.push(`💬 Ügyfélszolgálat ma: ${cs.chat || 0} chat-válasz · ${cs.mail || 0} email · ${cs.esc || 0} emberi kézbe adva`
           // A „nem válaszolható" NEM külön riasztás-sor, hanem itt egy utótag.

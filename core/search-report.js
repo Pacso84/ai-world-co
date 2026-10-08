@@ -235,7 +235,8 @@ async function main() {
         { headers: { 'X-Export-Key': expKey }, signal: AbortSignal.timeout(15000) });
       if (fr.ok) {
         const fb = await fr.json();
-        const entries = Object.entries(fb).filter(([s]) => s !== 'proba-cikk');
+        // A '__' kezdetű kulcsok (__cs, __dl) belső összesítők, nem cikkek.
+        const entries = Object.entries(fb).filter(([s]) => s !== 'proba-cikk' && !s.startsWith('__'));
         const votes = entries.reduce((n, [, v]) => n + (v.up || 0) + (v.down || 0), 0);
         if (votes > 0) {
           // slug → MAGYAR cím (a Főnök magyarul jelent — user-kérés 2026-07-08)
