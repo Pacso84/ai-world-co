@@ -1,0 +1,66 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "how-to-add-an-ai-step-to-your-zapier-workflow",
+    "company": "Zapier",
+    "tool": "Zapier",
+    "icon": "🆕",
+    "level": "beginner",
+    "source_news": {
+      "file": "ARTICLE_2026-10-07T03-14-03-959Z_zapier-blog_Zapier_Agents_is_now_AI_by_Zapier.json",
+      "title": "Zapier Agents is now AI by Zapier"
+    },
+    "written_at": "2026-10-08T03:43:51.025Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00787248,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-10-08T03:44:20.797Z",
+    "slug": "how-to-add-an-ai-step-to-your-zapier-workflow",
+    "auto_check": {
+      "passed": false,
+      "issues": [
+        "UI_CLAIMS_UNSOURCED: 4 konkrét képernyő-feliratot állít tényként forrás nélkül (\"+\" between two existing steps\", \"use ai\", \"add a tool\", \"test\"). Vagy nézd meg a hivatalos oldalon, vagy írd hedge-elve (\"if you don't see…\")."
+      ],
+      "wordCount": 1622
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured guide with clear step-by-step instructions, appropriate hedging for UI labels that may vary, fallback instructions when screens differ, explicit What this means for you section, and a practical Try it now exercise — ready to publish as-is.",
+      "_aiCost": 0.00262326,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "image_v": 2,
+    "image_at": "2026-10-08T03:45:30.197Z",
+    "seo": {
+      "meta_description": "Learn how to add an AI step to your Zapier workflow. A beginner-friendly guide to using AI by Zapier, writing prompts, and connecting tools.",
+      "keywords": [
+        "how to add AI to Zapier",
+        "Zapier AI by Zapier",
+        "Zapier workflow automation",
+        "Zapier AI step tutorial",
+        "Zapier agents",
+        "Zapier automation for beginners",
+        "how to use Zapier AI"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add FAQ section addressing common questions about AI by Zapier limits, pricing, and best practices",
+        "Include a concrete use case example like automating email responses or data categorization",
+        "Add internal links to related Zapier tutorials to improve site structure and keep readers engaged"
+      ],
+      "optimised_at": "2026-10-08T03:46:27.622Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"How to Add an AI Step to Your Zapier Workflow\"\nsubtitle: \"A beginner-friendly walkthrough to drop a single AI block into a Zap, write its prompt, and pick the tools it can use.\"\ncategory: \"guide\"\naudience: \"both\"\ncompany: \"Zapier\"\ntool: \"Zapier\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"getting-started\", \"zapier\", \"automation\"]\n---\n\n# How to Add an AI Step to Your Zapier Workflow\n\n> **In short:** In the regular Zap editor, look for the **AI by Zapier** action, type the instructions you want it to follow, and optionally hand it a small list of tools (like \"send a Slack message\" or \"create a Google Sheet row\"). No separate \"agent\" product to learn — it's just one step in the workflow you're already editing.\n\nIf you already use **Zapier** — the service that connects your apps so something happening in one automatically triggers something in another — there's a new way to make a Zap smarter. According to Zapier, the AI capabilities that used to live in a separate product called Zapier Agents have been folded directly into the regular Zap editor as a single **AI by Zapier** action. You drop it in like any other step, write a plain-language instruction, and pick which tools (small actions like \"send an email\" or \"add a row to a spreadsheet\") the AI is allowed to call on while doing its job.\n\nThis guide walks through that exact process, from opening an existing Zap to testing the AI step end-to-end. It's written for someone who has built a basic Zap before but has never added an AI step.\n\n## Before you start\n- A **Zapier account** — a free plan works for basic Zaps, but the AI step's usage may count toward an AI actions limit depending on your plan, so check Zapier's current pricing page if you plan to run it heavily.\n- An existing **Zap** (or the willingness to build a short two-step one to practice on). The AI step is just a third piece in that chain.\n- Roughly **10–15 minutes** for the first run-through, including testing.\n- The apps you want the AI to reach — for example Gmail, Slack, Google Sheets, or a calendar — already connected to your Zapier account.\n\n## Step 1 — Open the Zap you want to enhance\nIn your Zapier dashboard, find the Zap you want to add AI to and click to open it in the editor. You'll land on the visual workflow view, where each step is a card stacked vertically with arrows between them. If you've never built a Zap before, create a simple one first (a trigger plus one action) so you have something to work with. The trigger is the event that starts the Zap (\"a new row in Google Sheets\"), and each action is something the Zap does in another app. If your screen shows a list of Zaps instead of a workflow, click the name of the Zap you want to edit. **You'll know it worked when you see the numbered step cards and the path between them.**\n\n## Step 2 — Add the AI by Zapier action between your trigger and your final step\nClick the **\"+\" between two existing steps** (or after your trigger if your Zap has no actions yet). A small panel opens with a list of apps. Type **\"AI by Zapier\"** into the search bar. When the result appears, click it. Zapier then asks which AI action you want to use — for a general-purpose step that can also call other apps, choose **\"Use AI\"** (the option that lets you write a custom prompt). The action is added as a new card in your workflow. If you don't find a \"+\" between steps, look for an **\"Add step\"** button below the trigger instead — Zapier's editor layout shifts occasionally. **You'll know it worked when a new card labeled \"AI by Zapier\" appears in your workflow, right between the cards that come before and after it.**\n\n## Step 3 — Write the prompt the AI will read each time it runs\nClick the new **AI by Zapier** card to open its settings. You'll see a field labeled something like **\"What should this AI do?\"** or **\"Prompt\"** — the exact label can shift as the product changes, but it's the one big text area at the top of the card. Type the instruction in plain English, exactly as you'd explain the task to a person. Be specific about the input the AI will receive (usually data from your trigger step) and the output you want back. You can reference data from earlier steps by clicking a **field reference** button or similar icon next to the prompt box — it lets you insert variables from the trigger (like the email subject or the spreadsheet row) so the AI sees real data, not placeholders. **You'll know it worked when you can see at least one piece of data from a previous step referenced inside the text — usually shown as a small colored chip or a label like `1. Subject`. Example:** `Read the email below and tell me in one sentence whether the customer is happy, neutral, or upset. Email subject: {{1. Subject}} Email body: {{1. Body}}`\n\n## Step 4 — Tell the AI which tools it's allowed to use\nStill inside the AI step, scroll to a section labeled something like **\"Tools\"** or **\"Available actions\"**. This is where you decide what the AI is allowed to do besides read the prompt. Click **\"Add a tool\"** (or a similarly worded button) and choose from the apps already connected to your account — for example \"Gmail: Send Email\", \"Slack: Send Channel Message,\" \"Google Sheets: Create Row,\" or \"Calendar: Create Event.\" Add only the tools the AI actually needs for this task; more tools means more chances for the AI to choose the wrong one. Each tool you add opens a small configuration panel where you fill in the recipient, the channel, the spreadsheet, and so on — you can either set those values yourself in advance (a static \"send to this address\") or leave them for the AI to fill in from the prompt. If you don't see a Tools area, you may be on a simpler version of the step that only returns a text answer — in that case, skip to Step 5 and come back to tools later. **You'll know it worked when each tool you added appears as a sub-card inside the AI step, with its fields either pre-filled or marked for the AI to fill in.**\n\n## Step 5 — Test the AI step before turning the Zap on\nClick the **\"Test\"** or **\"Test action\"** button on the AI card. It runs your prompt once with a real (or sample) piece of data from your trigger and shows you exactly what the AI wrote back, plus which tools it chose to call and what it sent to them. Read the output carefully — this is your chance to catch a prompt that's too loose or a tool the AI is misusing. If the answer is off, click back into the prompt, tighten the wording (for example, add \"Reply in exactly one sentence\" or \"Only use the Slack tool when the customer is upset\"), and test again. When the output looks right, click **\"Continue\"** or **\"Done editing\"** to save, then turn the Zap on with the toggle at the top of the editor. **You'll know it worked when the test panel shows a non-empty AI response and, if you added tools, a short log of which tool ran and what it did — and your Zap's status switch shows \"On.\"**\n\n## Common mistakes\n- **Writing a vague prompt.** \"Summarize this email\" gives you uneven results; \"Reply in one sentence saying whether the customer is happy, neutral, or upset, and explain your answer in plain English\" gives you something you can rely on.\n- **Giving the AI too many tools.** If you add Gmail, Slack, Sheets, and Calendar all at once, the AI has to guess which one fits. Stick to the one or two tools this step actually needs.\n- **Skipping the test step.** The test is the only place you'll see what the AI actually does before it runs on real data for real people. If you don't test, you're publishing blind — and AI mistakes (wrong recipients, wrong tone) are easy to miss without that preview.\n\n## What this means for you\n- **In everyday life:** A Zap with an AI step can quietly sort your incoming email — flagging the urgent ones, drafting short replies, or pushing the important ones into a priority folder — so your inbox doesn't eat your morning.\n- **For your business or work:** You can build Zaps that read new support tickets, summarize each one, and post a short digest into a team Slack channel, without anyone manually copying text from one app to another.\n- **If you're just getting started:** The easiest first Zap with AI is one trigger you trust (like \"new email in Gmail\") plus the AI step with just a prompt and no extra tools — that lets you see the AI's plain-text answer in the Zap history and decide from there whether to give it tools.\n\n## Try it now\nOpen any Zap you already have, add an **AI by Zapier** action right after it, and write this prompt in the prompt box: `Read the file under the file upload here and let me know what it's about in 2 sentences.` Then run the test. You'll see exactly how the AI step talks, what its output looks like, and whether you want to give it tools — all in under two minutes.",
+  "original_title": "How to add an AI step to your Zapier workflow"
+}

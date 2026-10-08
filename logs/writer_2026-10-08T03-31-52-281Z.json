@@ -1,0 +1,60 @@
+{
+  "started_at": "2026-10-08T03:29:35.881Z",
+  "drafts_total": 4,
+  "articles_written": 4,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 0,
+  "merged_total": 0,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "total_cost_usd": 0.026128055999999997,
+  "by_article": [
+    {
+      "draft": "2026-10-08T03-29-26-576Z_aws-ml_Building_AI_builders__Playbook_for_closing_the_AI_.json",
+      "writer_output": "WRITER_2026-10-08T03-29-26-576Z_aws-ml_Building_AI_builders__Playbook_for_closing_the_AI_.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.004996992,
+      "duration_ms": 28278,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-10-08T03-29-26-575Z_openai-blog_Radisson_Hotel_Group_brings_hotel_discovery_into_C.json",
+      "writer_output": "WRITER_2026-10-08T03-29-26-575Z_openai-blog_Radisson_Hotel_Group_brings_hotel_discovery_into_C.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.00725748,
+      "duration_ms": 34406,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-10-08T03-29-26-575Z_openai-blog_Helping_teens_learn__plan__and_shape_the_future_of.json",
+      "writer_output": "WRITER_2026-10-08T03-29-26-575Z_openai-blog_Helping_teens_learn__plan__and_shape_the_future_of.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.004146864,
+      "duration_ms": 14875,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-10-08T03-29-26-575Z_openai-blog_GPT-6_and_Intelligent_UI_for_everyone.json",
+      "writer_output": "WRITER_2026-10-08T03-29-26-575Z_openai-blog_GPT-6_and_Intelligent_UI_for_everyone.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.00858522,
+      "duration_ms": 45577,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    }
+  ],
+  "finished_at": "2026-10-08T03:31:52.281Z",
+  "duration_seconds": 136.4
+}

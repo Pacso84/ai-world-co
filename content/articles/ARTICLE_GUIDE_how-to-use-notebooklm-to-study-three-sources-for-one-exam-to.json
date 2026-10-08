@@ -1,0 +1,59 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "how-to-use-notebooklm-to-study-three-sources-for-one-exam-to",
+    "company": "Google",
+    "tool": "NotebookLM",
+    "icon": "🎧",
+    "level": "intermediate",
+    "source_news": null,
+    "written_at": "2026-10-08T03:41:03.550Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.01219428,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-10-08T03:44:41.188Z",
+    "slug": "how-to-study-three-sources-for-one-exam-in-notebooklm",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1318
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured guide with clear steps, helpful fallbacks, and practical examples. The warnings about NotebookLM limitations are honest and the What this means for you section extends the learning beyond exams.",
+      "_aiCost": 0.0018087,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "image_v": 2,
+    "image_at": "2026-10-08T03:45:44.811Z",
+    "seo": {
+      "meta_description": "Learn how to use NotebookLM to study three sources for one exam. Create a focused AI study guide from your readings for effective test prep.",
+      "keywords": [
+        "how to study with NotebookLM",
+        "NotebookLM exam preparation",
+        "NotebookLM multiple sources",
+        "AI study guide from readings",
+        "NotebookLM study tips"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add the specific prompt or chat command users can copy to generate the study guide",
+        "Include a brief example of what the study guide output looks like",
+        "Consider mentioning this works best with PDF or Google Doc sources"
+      ],
+      "optimised_at": "2026-10-08T03:46:40.130Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"How to Study Three Sources for One Exam in NotebookLM\"\nsubtitle: \"Turn three readings into a single AI notebook, then ask for a personal study guide tied to one exam topic — ready to review.\"\ncategory: \"guide\"\naudience: \"personal\"\ncompany: \"Google\"\ntool: \"NotebookLM\"\nlevel: \"intermediate\"\nread_time_minutes: 6\ntags: [\"notebooklm\", \"study-skills\", \"exam-prep\"]\n---\n\n# How to Study Three Sources for One Exam in NotebookLM\n\n> **In short:** Put your three readings into one fresh NotebookLM notebook, then ask the chat for a study guide tied to your exam topic — answers come only from those sources, so the summary stays focused on what you actually need to learn.\n\nYou already know how to open NotebookLM and drop a source into a notebook. The next level is treating one notebook as a dedicated study tool for a single exam topic: three sources in, one focused chat conversation out, and a study guide you can actually use the night before the test. Here's how to set that up so the AI gives you answers that match your exam, not a generic overview. One honest note up front: NotebookLM only answers from the sources you upload — it will not pull in outside facts to fill a gap — so choose your three readings carefully.\n\n## Before you start\n- A Google account signed in to NotebookLM (you already have this).\n- Three sources on the same exam topic: PDFs, Google Docs, website links, YouTube URLs, or text you can paste. Roughly 10–30 pages each works best; very long sources slow the tool.\n- About 15–20 minutes the first time, faster after you've done it once.\n\n## Step 1 — Make a fresh notebook named for the exam topic\nOpen NotebookLM and create a brand-new notebook instead of dropping your sources into an old one. Give the notebook the exact exam topic as its title — for example, \"Midterm — Climate Policy\" or \"Module 3 — Cellular Respiration.\" A focused title does two things: it keeps the AI from mixing in sources from another class, and it reminds you later what this notebook is for. After you save the title, you'll see an empty notebook with a place to add sources. If you don't see a \"New notebook\" button, look for a plus-sign icon or a \"Create\" option in the sidebar.\n💬 Example: name the notebook \"Final Exam — Macroeconomic Policy.\"\nYou'll know it worked when the notebook appears in your sidebar with that exact title and the source panel is empty.\n\n## Step 2 — Add your three sources in a deliberate order\nUse the \"Add source\" button — look for it in the main panel where sources normally go — and upload your three readings one at a time. Order matters less than completeness: NotebookLM pulls from every source you give it, so include the textbook chapter, the professor's slides, and any assigned article, even if they overlap. If a source is a website, paste the link; if it's a YouTube lecture, paste the video URL. After each upload, wait for the small confirmation before moving to the next one. If the panel offers multiple formats (Drive, link, upload), pick whichever matches your file type.\n💬 Example: add (1) the Chapter 12 PDF, (2) the lecture slides Google Doc, (3) the journal article link.\nYou'll know it worked when all three appear as separate cards in the source panel, each with a short title and a small page count or duration.\n\n## Step 3 — Pin the exam question in the chat\nOpen the chat panel — look for a \"Chat\" tab or a message-box at the bottom of the notebook — and write a single, specific instruction: tell the AI exactly what the exam will ask and what you want back. Mention the topic, the kind of questions (multiple choice, short answer, essay), and the format you want (a study guide, a quiz, a comparison table). The clearer your instruction, the more useful the answer. The AI can only answer from the three sources you added, so the prompt tells it where to focus.\n💬 Example: \"Create a study guide for my midterm on climate policy. List the 8 most-tested concepts from these sources, define each in 2 sentences, and flag any points where the three sources disagree.\"\nYou'll know it worked when the AI replies with a structured study guide that quotes or paraphrases points from your three readings, not outside knowledge.\n\n## Step 4 — Generate an audio overview for on-the-go review\nLook for an \"Audio Overview\" option — it usually sits near the top of the notebook view, often labeled something like \"Generate\" or accompanied by a sound-wave icon. Tap it once and confirm; NotebookLM turns your three sources into a short spoken summary, with two AI hosts talking through the material. Generation typically takes a few minutes; you'll see a status note while it runs. When it's done, a play button appears and you can listen on the walk to class or during a chore. If you don't see an audio option on your plan, check Google's NotebookLM help page for current availability.\n💬 Example: tap \"Generate\" beside \"Audio Overview,\" then wait for the \"Ready\" badge.\nYou'll know it worked when a play button shows up next to the audio overview and you can hear the two hosts summarize your three sources.\n\n## Step 5 — Drill into weak spots with follow-up questions\nAfter you read the study guide, scan it for anything fuzzy or unfamiliar. In the same chat, type a follow-up that targets one gap at a time — the AI still has your three sources and your earlier instruction loaded, so it can go deeper without you repeating context. Ask it to define a term, compare two concepts, or quiz you with one practice question. If an answer feels off, look for small citation markers in the response and click them to see which source it pulled from; that way you can check the original reading rather than trust the summary blindly.\n💬 Example: \"Quiz me with 5 short-answer questions on the carbon cycle, then show me which source each answer came from.\"\nYou'll know it worked when the AI gives a fresh answer that cites your three readings, and clicking a citation reveals the exact line in the source.\n\n## Common mistakes\n- **Skipping the instruction in Step 3.** A vague \"summarize this\" gives a generic overview. Tell NotebookLM what your exam asks and what format you want — the prompt is half the work.\n- **Uploading sources that don't match the topic.** If one of your three readings is on a different chapter, the study guide will drift off-topic. Glance at each source's title before adding it.\n- **Trusting the summary without checking.** NotebookLM can occasionally misstate a detail from your own sources. When a point matters for your grade, open the source and confirm — the citation markers make this a two-click check.\n\n## What this means for you\n- **In everyday life:** Use the same pattern for any focused decision — three reviews of a product you're buying, three reports on a neighborhood you're considering — and ask the chat for a side-by-side comparison.\n- **For your business or work:** Treat one notebook as a project file: drop in the brief, the data, and the meeting notes, then ask for a one-page summary you can hand to a stakeholder.\n- **If you want to go further:** Once you've used this three-source pattern, try uploading sources in two languages or two formats (a PDF plus a YouTube lecture) and ask NotebookLM to reconcile where they disagree.\n\n## Try it now\nOpen NotebookLM, create a notebook titled after your next exam, add one source, then type: \"Quiz me with 3 questions on this topic.\" Two minutes from now you'll know whether this workflow fits the way you study.",
+  "original_title": "How to use NotebookLM to study three sources for one exam topic"
+}

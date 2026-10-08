@@ -1,25 +1,4 @@
 {
-  "2026-09-15": [
-    {
-      "at": "2026-09-15T02:28:16.052Z",
-      "file": "WRITER_2026-09-15T02-21-21-008Z_nvidia-blog_Perplexity_Portable_Computer_Is_Now_Available_on_W.json",
-      "action": "block",
-      "reasons": [
-        "The article claims 'Perplexity has released a Windows version of its \"Computer\" AI agent that runs locally on your machine, powered by NVIDIA RTX graphics cards.' No such Perplexity product exists. Perplexity's agent product is called 'Perplexity Comet' (a browser), not 'Computer', and there is no verified Windows desktop local-AI agent from Perplexity that runs on NVIDIA RTX GPUs. This appears to be a fabricated product/feature claim presented as fact."
-      ],
-      "confidence": 8
-    },
-    {
-      "at": "2026-09-15T13:03:44.125Z",
-      "file": "WRITER_2026-09-15T12-59-05-468Z_picsart_GPT-6_Astra_now_creates_any_creative_asset_with_Pi.json",
-      "action": "block",
-      "reasons": [
-        "Picsart is not on the verified-real names list, and the article presents as fact that 'Picsart has now made its creative engine available through MCP' with specific capabilities (9:16 poster generation, image/video/audio production via MCP). This is a fabricated feature/announcement attributed to a named company that I cannot verify — the article states MCP integration with Picsart's image, video, and audio models as established fact.",
-        "The claim that 'Picsart is one of the first big creative platforms to open its door this way' via MCP is presented as fact without sourcing and cannot be verified."
-      ],
-      "confidence": 7
-    }
-  ],
   "2026-09-16": [
     {
       "at": "2026-09-16T02:23:40.592Z",
@@ -263,6 +242,18 @@
       "action": "block",
       "reasons": [
         "The 'Claude Frontier Academy' is described as 'an Anthropic program with a $100 million commitment to train 10,000 Frontier Deployed Engineers by the end of 2027' — this is a fabricated program name with invented financial commitment, headcount, and deadline not supported by the source or any verified information."
+      ],
+      "confidence": 9
+    }
+  ],
+  "2026-10-08": [
+    {
+      "at": "2026-10-08T03:33:13.259Z",
+      "file": "WRITER_2026-10-08T03-29-26-576Z_aws-ml_Building_AI_builders__Playbook_for_closing_the_AI_.json",
+      "action": "block",
+      "reasons": [
+        "The article attributes a six-week 'AI Builder' internal training program to Google, but the SOURCE block is from AWS Machine Learning Blog, not Google. The article fabricates Google's authorship of this playbook. Specifics like 'six-week structured program,' weekly cadence (Foundations, First build, Iteration, Sharing, Real customer problem, Public showcase), 'internal AI champions,' and the customer-facing staff description are not in the provided source excerpt and are attributed to the wrong company.",
+        "Confidence: 9 — the source is explicitly labeled as AWS, the article repeatedly and falsely attributes the playbook to Google."
       ],
       "confidence": 9
     }

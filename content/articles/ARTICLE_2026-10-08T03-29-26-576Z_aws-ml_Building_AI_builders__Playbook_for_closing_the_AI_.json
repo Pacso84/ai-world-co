@@ -1,0 +1,70 @@
+{
+  "_meta": {
+    "written_at": "2026-10-08T03:38:30.257Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.01532868,
+    "original_draft": "2026-10-08T03-29-26-576Z_aws-ml_Building_AI_builders__Playbook_for_closing_the_AI_.json",
+    "source_id": "aws-ml",
+    "source_name": "AWS Machine Learning (hivatalos)",
+    "source_link": "https://aws.amazon.com/blogs/machine-learning/building-ai-builders-playbook-for-closing-the-ai-knowledge-capability-gap/",
+    "source_links": [
+      "https://aws.amazon.com/blogs/machine-learning/building-ai-builders-playbook-for-closing-the-ai-knowledge-capability-gap/"
+    ],
+    "source_snippet": "The biggest barrier to AI adoption isn't awareness. It's the gap between talking about AI and building with it. Here's the playbook we used to turn non-technical, customer-facing professionals into confident AI builders in six weeks, and how your organization can replicate it.",
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "rejected_at": "2026-10-08T03:33:13.240Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1410
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": 8,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured how-to with clear steps, friendly tone, and useful prompts. Correctly attributes the framework to AWS's published playbook. Minor note: the \"What this means for you\" section addresses four personas but could mention this is adapted from AWS's approach rather than implying it originated here.",
+      "_aiCost": 0.00168264,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Hitelesség-kapu blokkolta: The article attributes a six-week 'AI Builder' internal training program to Google, but the SOURCE block is from AWS Machine Learning Blog, not Google. The article fabricates Google's authorship of th",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-10-08T03-29-26-576Z_aws-ml_Building_AI_builders__Playbook_for_closing_the_AI_.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-10-08T03:38:49.774Z",
+    "slug": "how-to-turn-non-technical-colleagues-into-confident-ai-builders",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-10-08T03:39:25.297Z",
+    "guide_worthy": false,
+    "pairing_reason": "Article describes a training framework/playbook methodology, not a specific named AI tool or feature that users can go use",
+    "image_v": 2,
+    "image_at": "2026-10-08T03:45:15.612Z",
+    "seo": {
+      "meta_description": "Discover a practical six-step framework to train non-technical employees as confident AI builders, based on AWS's proven upskilling approach.",
+      "keywords": [
+        "AI upskilling",
+        "train employees on AI",
+        "non-technical AI training",
+        "AI building for beginners",
+        "how to use AI at work",
+        "teach AI to non-technical staff",
+        "AI workflow training"
+      ],
+      "seo_score": 9,
+      "suggestions": [
+        "Add more subheadings (H2s) to break up the six-step framework for better readability and SEO structure",
+        "Include 1-2 concrete examples of what employees can actually build to strengthen the article's practical value",
+        "Add an FAQ or 'What you'll learn' section at the top to capture featured snippet opportunities"
+      ],
+      "optimised_at": "2026-10-08T03:46:17.437Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"How to Turn Non-Technical Colleagues Into Confident AI Builders\"\nsubtitle: \"A practical training framework inspired by AWS's published playbook on AI upskilling, adaptable to any team.\"\ncategory: \"how-to\"\naudience: \"business\"\nread_time_minutes: 7\ntags: [\"ai-skills\", \"workplace-learning\", \"ai-training\", \"upskilling\"]\n---\n\n# How to Turn Non-Technical Colleagues Into Confident AI Builders\n\n> **In short:** AWS published a playbook on AI upskilling. The core idea — common to effective adult-learning programs — is that most workers don't lack AI awareness, they lack hands-on building time. Here is a six-step framework any team can adapt.\n\nIf your team can talk fluently about AI but freezes the moment someone says \"build me a small workflow,\" you are not alone. The biggest barrier to using AI at work is rarely knowledge — it is the gap between reading about it and actually wiring it into your day. AWS published a playbook on closing that gap, and the lessons translate cleanly to any team willing to copy the structure.\n\n## Before you start: what you'll need\n\n- **A group of 4–12 learners.** Smaller is easier to coach; larger works with breakouts.\n- **90 minutes per week, for six weeks.** Block this on everyone's calendar before week one. Make it a recurring meeting you don't cancel.\n- **A facilitator who has built something.** Not a teacher — a coach. Someone who has shipped at least one small AI tool themselves.\n- **One AI tool everyone can access.** A chat-based AI with a project workspace, or a **no-code builder** (a tool that lets you create apps without writing code, using a visual drag-and-drop interface), both work well for non-technical learners.\n- **A shared demo slot.** A 20–30 minute weekly show-and-tell where two or three people show what they built.\n\n## Step 1 — Foundations week (what AI actually does)\n\nStart with the smallest possible theory dose: what an **LLM** (large language model — the kind of AI engine behind tools like ChatGPT) actually does, what a **prompt** (the instruction you type to the AI) is, and what an **API** (a way for two programs to talk to each other — think of it as a phone line between your tool and the AI) is. Keep theory to 30 minutes, with plain-language examples.\n\nThen immediately assign the first tiny build. Don't let theory linger.\n\n💬 Try this prompt together: *\"Explain in three sentences what a large language model actually does, like I'm explaining it to a colleague who has never heard the term.\"*\n\nYou'll know it worked when every learner can describe, in their own words, what happens when they type a prompt and hit enter — without using the words \"magic\" or \"AI brain.\"\n\n## Step 2 — First build (something useful to the builder)\n\nEach learner picks one small project that solves a problem in their own work. AWS's playbook, like most adult-learning frameworks, emphasizes that the project must matter personally to the builder — not be an abstract exercise. A FAQ assistant for one shared document. A draft-responder for the team's most common customer email. A meeting-summary helper.\n\n💬 Starter prompt: *\"You are an assistant that answers questions using only the document I paste below. If the answer isn't in the document, say 'I don't know.' Here's the document: [paste text].\"*\n\nYou'll know it worked when the learner has a working demo they can show in under two minutes — even if it's rough.\n\n## Step 3 — Iteration week (prompting is editing)\n\nMost beginners quit here because their first version isn't perfect. The lesson: **prompting** (the way you phrase instructions to the AI) is closer to editing a draft than typing a command. Tweak the wording. Add constraints. Show examples of good and bad answers.\n\nThe facilitator's job this week is to sit with each learner for 15 minutes and help them improve their original build — not start over.\n\n💬 Iteration prompt: *\"Your previous answer was too long. Reply in three sentences max, then ask me one clarifying question.\"*\n\nYou'll know it worked when the learner can name two specific changes they made to the prompt that made the output better.\n\n## Step 4 — Sharing week (demo to peers)\n\nEach learner demos their tool to the group for five minutes, then takes 10 minutes of questions. Effective adult-learning programs treat this show-and-tell as the highest-value session of the program. Teaching forces clarity.\n\nThe facilitator should resist the urge to add new content. The demo IS the lesson.\n\n💬 Demo script template: *\"I built this for [specific problem]. Here's what it does. Here's where it failed. Here's what I'd try next.\"*\n\nYou'll know it worked when at least one other learner says \"I want to try that for my project.\"\n\n## Step 5 — Real workflow problem\n\nThe build task now comes from the learner's actual day-to-day work — not the sandbox. AWS's playbook describes this shift as the moment training becomes useful, because the project has a real stakeholder (the person whose problem it solves).\n\nExamples: a sales rep builds a follow-up email drafter that pulls from the team's top-performing templates. A support agent builds a triage helper for incoming tickets. A teacher builds a quiz generator for one specific unit.\n\n💬 Real-work prompt: *\"You are helping me draft a follow-up email after a sales call. I'll paste the call notes below. Write the email in our team's standard format, then flag anything I should double-check before sending.\"*\n\nYou'll know it worked when at least one teammate outside the cohort asks to use the tool.\n\n## Step 6 — Public showcase and next steps\n\nWeek six is a larger demo event — open to the wider organization. Each learner presents their final tool, what they learned, and what they want to build next. The point is to make the learning visible and to recruit the next round.\n\nEnd the program with a clear path forward: an internal community (a chat channel, a monthly demo, a shared prompt library) where builders keep learning from each other.\n\n💬 Closing prompt for the cohort: *\"Write a five-sentence summary of what you learned in this program, written for someone about to start. What's the one piece of advice you'd give them?\"*\n\nYou'll know it worked when at least one person outside the original cohort asks \"when's the next round?\"\n\n## Common mistakes\n\n- **Mistake: front-loading theory.** *Fix:* cut theory to 30 minutes, then build. Learners remember what they made, not what they watched.\n- **Mistake: assigning abstract projects.** *Fix:* require every project to solve a real problem the builder personally has. No exceptions.\n- **Mistake: skipping the demo week.** *Fix:* the demo IS a deliverable. Treat absence from demo week like missing a deadline.\n- **Mistake: no follow-up community.** *Fix:* end week six with a concrete ongoing space — a chat channel, a monthly demo, a shared doc of starter prompts. Without it, the skills fade in a month.\n\n## What this means for you\n\n- **If you lead a team:** Don't run another AI awareness webinar. Block six weekly 90-minute slots, give every participant one small real project, and end each week with a 20-minute demo. Borrow the rhythm: teach, build, share, repeat.\n- **If you're an individual contributor who wants to keep up:** Don't wait for a corporate program. Pick one tiny, useful thing you wish AI could do for you — a meeting-summary helper, a draft-responder for repetitive emails — and build it in a weekend using a no-code tool. You will learn more from one finished project than from a dozen tutorials.\n- **If you're a manager worried about capability gaps:** The fix is not more documentation. It is structured time to build, plus a culture where showing a half-working draft is welcome. The gap closes when building becomes the default, not the exception.\n- **If you already build with AI:** Volunteer to mentor the next cohort. Find a chat channel, a Friday lunch session, or a shared doc of starter prompts — and offer to coach one new builder through their first project.\n\n## Wrap-up\n\nThe message from AWS's playbook is refreshingly plain: most people are closer to \"AI builder\" than they think, but the jump never happens through reading. It happens through shipping a small real thing, showing it to a peer, and shipping another one the next week. Pick your start date today, name your first tiny project, and block the calendar. That is the whole framework, and it works.",
+  "original_title": "Building AI builders: Playbook for closing the AI knowledge-capability gap"
+}

@@ -1,118 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t179121809135756",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-10-05T16:34:51.357Z",
-      "updated": "2026-10-05T16:35:28.309Z"
-    },
-    {
-      "id": "t179121812831149",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-10-05T16:35:28.311Z",
-      "updated": "2026-10-05T16:37:39.169Z"
-    },
-    {
-      "id": "t179121825917136",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-10-05T16:37:39.171Z",
-      "updated": "2026-10-05T16:41:41.444Z"
-    },
-    {
-      "id": "t179121850144697",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-10-05T16:41:41.446Z",
-      "updated": "2026-10-05T16:42:40.970Z"
-    },
-    {
-      "id": "t179121856097498",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-10-05T16:42:40.974Z",
-      "updated": "2026-10-05T16:43:04.490Z"
-    },
-    {
-      "id": "t17912185845482",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-10-05T16:43:04.548Z",
-      "updated": "2026-10-05T16:43:52.843Z"
-    },
-    {
-      "id": "t179121863284588",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-10-05T16:43:52.845Z",
-      "updated": "2026-10-05T16:44:14.772Z"
-    },
-    {
-      "id": "t179121865477791",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-10-05T16:44:14.777Z",
-      "updated": "2026-10-05T16:44:24.114Z"
-    },
-    {
-      "id": "t179121866411652",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-10-05T16:44:24.116Z",
-      "updated": "2026-10-05T16:44:49.552Z"
-    },
-    {
-      "id": "t179125834718256",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-10-06T03:45:47.182Z",
-      "updated": "2026-10-06T03:45:47.371Z"
-    },
-    {
-      "id": "t179125834737313",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-10-06T03:45:47.373Z",
-      "updated": "2026-10-06T03:46:23.248Z"
-    },
-    {
-      "id": "t179125838325029",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-10-06T03:46:23.250Z",
-      "updated": "2026-10-06T03:46:23.452Z"
-    },
-    {
-      "id": "t179125838345470",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-10-06T03:46:23.454Z",
-      "updated": "2026-10-06T03:49:31.323Z"
-    },
-    {
-      "id": "t179125857132527",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-10-06T03:49:31.325Z",
-      "updated": "2026-10-06T03:50:50.801Z"
-    },
-    {
       "id": "t179125865080414",
       "title": "Run pairing",
       "status": "done",
@@ -479,33 +367,121 @@
       "agent": "publisher",
       "created": "2026-10-07T15:04:43.527Z",
       "updated": "2026-10-07T15:05:27.071Z"
+    },
+    {
+      "id": "t17914301251306",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-10-08T03:28:45.130Z",
+      "updated": "2026-10-08T03:28:45.315Z"
+    },
+    {
+      "id": "t179143012531770",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-10-08T03:28:45.317Z",
+      "updated": "2026-10-08T03:29:35.494Z"
+    },
+    {
+      "id": "t179143017549648",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-10-08T03:29:35.496Z",
+      "updated": "2026-10-08T03:29:35.702Z"
+    },
+    {
+      "id": "t17914301757044",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-10-08T03:29:35.704Z",
+      "updated": "2026-10-08T03:31:52.296Z"
+    },
+    {
+      "id": "t179143031229882",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-10-08T03:31:52.298Z",
+      "updated": "2026-10-08T03:33:13.277Z"
+    },
+    {
+      "id": "t179143039328053",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-10-08T03:33:13.280Z",
+      "updated": "2026-10-08T03:38:30.268Z"
+    },
+    {
+      "id": "t179143071026933",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-10-08T03:38:30.269Z",
+      "updated": "2026-10-08T03:38:49.787Z"
+    },
+    {
+      "id": "t179143072978924",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-10-08T03:38:49.789Z",
+      "updated": "2026-10-08T03:39:25.309Z"
+    },
+    {
+      "id": "t179143076536417",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-10-08T03:39:25.364Z",
+      "updated": "2026-10-08T03:43:51.036Z"
+    },
+    {
+      "id": "t179143103103719",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-10-08T03:43:51.037Z",
+      "updated": "2026-10-08T03:44:41.197Z"
+    },
+    {
+      "id": "t179143108124518",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-10-08T03:44:41.245Z",
+      "updated": "2026-10-08T03:45:44.836Z"
+    },
+    {
+      "id": "t17914311448387",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-10-08T03:45:44.838Z",
+      "updated": "2026-10-08T03:46:40.150Z"
+    },
+    {
+      "id": "t179143120015136",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-10-08T03:46:40.151Z",
+      "updated": "2026-10-08T03:46:54.502Z"
+    },
+    {
+      "id": "t179143121450326",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-10-08T03:46:54.503Z",
+      "updated": "2026-10-08T03:47:23.248Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178969803887089",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The lineup is solid and ready — practical, everyday use cases that show AI as a helpful tool for everyone. Just one note: articles 6, 8, and 10 don't specify which AI tool to use, so either add those ",
-      "agent": "publisher",
-      "at": "2026-09-18T02:20:38.870Z",
-      "loud": false
-    },
-    {
-      "id": "n178969805624269",
-      "level": "success",
-      "text": "3 hír + 2 útmutató publikálva (költség: $0.0847).",
-      "agent": "ceo",
-      "at": "2026-09-18T02:20:56.242Z",
-      "loud": false
-    },
-    {
-      "id": "n178973470281174",
-      "level": "info",
-      "text": "SEO: 2 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-09-18T12:31:42.811Z",
-      "loud": false
-    },
     {
       "id": "n178973472111815",
       "level": "success",
@@ -1281,54 +1257,33 @@
       "agent": "ceo",
       "at": "2026-10-07T15:05:27.122Z",
       "loud": false
+    },
+    {
+      "id": "n179143120014141",
+      "level": "info",
+      "text": "SEO: 6 cikk optimalizálva (átlag 8.2/10).",
+      "agent": "seo",
+      "at": "2026-10-08T03:46:40.141Z",
+      "loud": false
+    },
+    {
+      "id": "n179143122496376",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The lineup is solid and coherent — all articles focus on practical, everyday writing tasks (complaints, emails, resumes, agreements), which gives the site a clear, helpful identity. One note: with so ",
+      "agent": "publisher",
+      "at": "2026-10-08T03:47:04.963Z",
+      "loud": false
+    },
+    {
+      "id": "n179143124329411",
+      "level": "success",
+      "text": "4 hír + 2 útmutató publikálva (költség: $0.0647).",
+      "agent": "ceo",
+      "at": "2026-10-08T03:47:23.294Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m178995722746353",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"This Week in AI: The 5 Stories That Matter (September 20, 2026)\" — javítva: NO_LEDE: Hiányzik a RÖVIDEN-doboz (> **In short:** …) közvetlenül a főcím után — az AI-keresők és a Google kivonat-doboza ezt olvassák (style-guide 2a).; Link to non-existent article: https://aiworldhq.com/article/how-ai-companies-are-making-chatbots-safer-for-young-users-and-what-pa.html — fabricated URL; új",
-      "ref": "2026-09-20T02-27-27-983Z_aiworld-editorial_This_Week_in_AI.json",
-      "at": "2026-09-21T02:20:27.463Z"
-    },
-    {
-      "id": "m17899572410372",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"View conference room and meeting location details directly on the Google Meet homepage\" (?/10)",
-      "ref": "2026-09-17T02-18-27-380Z_google-workspace_View_conference_room_and_meeting_location_details_.json",
-      "at": "2026-09-21T02:20:41.037Z"
-    },
-    {
-      "id": "m17899572539273",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"This Week in AI: The 5 Stories That Matter (September 20, 2026)\" (?/10)",
-      "ref": "2026-09-20T02-27-27-983Z_aiworld-editorial_This_Week_in_AI.json",
-      "at": "2026-09-21T02:20:53.927Z"
-    },
-    {
-      "id": "m178995789751557",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 20 → 5/4/2 oszlop.",
-      "ref": "mobile",
-      "at": "2026-09-21T02:31:37.515Z"
-    },
-    {
-      "id": "m178995839926835",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "4 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-09-21T02:39:59.268Z"
-    },
     {
       "id": "m179000172675459",
       "from": "designer",
@@ -2639,6 +2594,51 @@
       "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 22 → 8/4/2 oszlop.",
       "ref": "mobile",
       "at": "2026-10-07T15:04:43.470Z"
+    },
+    {
+      "id": "m179143039325865",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Building AI builders: Playbook for closing the AI knowledge-capability gap\" — mi a baj: HOWTO_NO_STEPS: A cím utasítást ígér, de csak 0 számozott lépés-szakasz van (kell 4-7, \"## Step 1 — …\" formában), nem egyetlen összevont bekezdés.; The article attributes a six-week 'AI Builder' internal training program to Google, but the SOURCE block is from AWS Machine Learning Blog, n",
+      "ref": "2026-10-08T03-29-26-576Z_aws-ml_Building_AI_builders__Playbook_for_closing_the_AI_.json",
+      "at": "2026-10-08T03:33:13.258Z"
+    },
+    {
+      "id": "m179143071025818",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Building AI builders: Playbook for closing the AI knowledge-capability gap\" — javítva: HOWTO_NO_STEPS: A cím utasítást ígér, de csak 0 számozott lépés-szakasz van (kell 4-7, \"## Step 1 — …\" formában), nem egyetlen összevont bekezdés.; The article attributes a six-week 'AI Builder' internal training program to Google, but the SOURCE block is from AWS Machine Learning Blog, not Google.",
+      "ref": "2026-10-08T03-29-26-576Z_aws-ml_Building_AI_builders__Playbook_for_closing_the_AI_.json",
+      "at": "2026-10-08T03:38:30.258Z"
+    },
+    {
+      "id": "m179143072977621",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Building AI builders: Playbook for closing the AI knowledge-capability gap\" (?/10)",
+      "ref": "2026-10-08T03-29-26-576Z_aws-ml_Building_AI_builders__Playbook_for_closing_the_AI_.json",
+      "at": "2026-10-08T03:38:49.776Z"
+    },
+    {
+      "id": "m179143073974997",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "info",
+      "text": "A \"GPT-6 and Intelligent UI for everyone\" hír a meglévő útmutatóra mutat: create-your-own-custom-gpt-in-chatgpt-no-coding",
+      "ref": "create-your-own-custom-gpt-in-chatgpt-no-coding",
+      "at": "2026-10-08T03:38:59.749Z"
+    },
+    {
+      "id": "m17914312144935",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 23 → 8/4/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-10-08T03:46:54.493Z"
     }
   ]
 }

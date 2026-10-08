@@ -1,23 +1,18 @@
 {
-  "at": "2026-10-07T20:55:43.871Z",
-  "nap": "2026-10-07",
-  "hivasok": 85,
+  "at": "2026-10-08T03:47:51.310Z",
+  "nap": "2026-10-08",
+  "hivasok": 47,
   "bukott": 0,
-  "osszMp": 2244.5,
+  "osszMp": 1072.8,
   "veszettMp": 0,
   "leglassabb": {
     "agent": "iro",
     "provider": "openrouter",
     "model": "minimax/minimax-m3",
-    "mp": 382.4,
+    "mp": 225.2,
     "ok": true,
     "tullepes": false
   },
   "idotullepesek": [],
-  "problems": [
-    {
-      "code": "AI_LASSU_HIVAS",
-      "detail": "a leglassabb hívás 382 mp volt (iro/minimax/minimax-m3) — a türelem-plafon közelében"
-    }
-  ]
+  "problems": []
 }

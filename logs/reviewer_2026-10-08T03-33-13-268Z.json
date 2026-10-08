@@ -1,0 +1,35 @@
+{
+  "started_at": "2026-10-08T03:31:52.464Z",
+  "total": 4,
+  "passed": 3,
+  "failed": 0,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.007730452,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-10-08T03-29-26-575Z_openai-blog_GPT-6_and_Intelligent_UI_for_everyone.json",
+      "article": "ARTICLE_2026-10-08T03-29-26-575Z_openai-blog_GPT-6_and_Intelligent_UI_for_everyone.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.00121989
+    },
+    {
+      "writer": "WRITER_2026-10-08T03-29-26-575Z_openai-blog_Helping_teens_learn__plan__and_shape_the_future_of.json",
+      "article": "ARTICLE_2026-10-08T03-29-26-575Z_openai-blog_Helping_teens_learn__plan__and_shape_the_future_of.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.00115686
+    },
+    {
+      "writer": "WRITER_2026-10-08T03-29-26-575Z_openai-blog_Radisson_Hotel_Group_brings_hotel_discovery_into_C.json",
+      "article": "ARTICLE_2026-10-08T03-29-26-575Z_openai-blog_Radisson_Hotel_Group_brings_hotel_discovery_into_C.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.0015867
+    }
+  ],
+  "truth_blocked": 1,
+  "finished_at": "2026-10-08T03:33:13.268Z",
+  "duration_seconds": 80.804
+}
