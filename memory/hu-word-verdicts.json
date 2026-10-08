@@ -99,6 +99,7 @@
     "alkalmazásáruházra",
     "alkalmazásáruházából",
     "alkaron",
+    "alkártyaként",
     "allergénfigyelmeztetések",
     "alulabb",
     "alügynököket",
@@ -1967,8 +1968,10 @@
     "playbookot",
     "playgroundba",
     "playgroundban",
+    "pluginboltját",
     "pluginokat",
     "pluginokkal",
+    "plugint",
     "podcastekhez",
     "podcastekkel",
     "podcaster",
@@ -2427,6 +2430,7 @@
     "szuperképességeket",
     "szuperképességnek",
     "szuperokos",
+    "szállodaplugin",
     "számlaszkennesek",
     "széleskörű",
     "szélessáv",
@@ -2697,6 +2701,7 @@
     "utóképzésnek",
     "utókérdések",
     "utókérdéseket",
+    "utókérdésekkel",
     "utókérdéssel",
     "utókérdést",
     "utókéréssel",
@@ -2836,6 +2841,7 @@
     "walkie",
     "webhosztingért",
     "webináriumhoz",
+    "webinárt",
     "webmail",
     "weboldalszöveget",
     "westpac",
@@ -3006,6 +3012,7 @@
     "úticélt",
     "útitervet",
     "útitérképet",
+    "útközbeni",
     "útmutatnia",
     "útprompt",
     "útvonaltervet",
@@ -4273,6 +4280,11 @@
     "megtrténik": {
       "correct": "megtörténik",
       "at": "2026-10-07",
+      "mondattal": true
+    },
+    "indokld": {
+      "correct": "indokold",
+      "at": "2026-10-08",
       "mondattal": true
     }
   },
@@ -5831,8 +5843,8 @@
     }
   },
   "scan": {
-    "at": "2026-10-07",
-    "files": 987,
-    "candidates": 5
+    "at": "2026-10-08",
+    "files": 993,
+    "candidates": 8
   }
 }
